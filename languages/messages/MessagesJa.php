@@ -1,8 +1,16 @@
 <?php
-/**
- * Japanese (日本語)
+/** Japanese (日本語)
  *
  * @addtogroup Language
+ *
+ * @author Suisui
+ * @author Marine-Blue
+ * @author Broad-Sky
+ * @author Kahusi
+ * @author G - ג
+ * @author Nike
+ * @author Siebrand
+ * @author Hatukanezumi
  */
 
 $skinNames = array(
@@ -357,6 +365,7 @@ $1',
 $2',
 'namespaceprotected'   => "'''$1''' 名前空間に属するページを編集する権限がありません。",
 'customcssjsprotected' => 'このページはユーザーの環境設定を記録するページです。ユーザー本人以外は編集できません。',
+'ns-specialprotected'  => '{{ns:special}}名前空間内にあるページは編集できません。',
 
 # Login and logout pages
 'logouttitle'                => 'ログアウト',
@@ -574,20 +583,19 @@ $1 または他の[[{{int:grouppage-sysop}}|{{int:group-sysop}}]]にこの件に
 'nocreatetext'              => 'このサイトではページの新規作成を制限しています。元のページに戻って既存のページを編集するか、[[Special:Userlogin|ログイン]]してください。',
 'nocreate-loggedin'         => 'このウィキで新しいページを作成する権限がありません。',
 'permissionserrors'         => '認証エラー',
-'permissionserrorstext'     => '下記に示された理由により、あなたにはこのページの編集権限がありません:',
+'permissionserrorstext'     => 'あなたにはこのページの編集権限がありません。理由は以下の通りです:',
 'recreate-deleted-warn'     => "'''警告:あなたは以前に削除されたページを再作成しようとしています。'''
 
-このページの編集が適切であるかどうか確認してください。
-このページの削除記録は以下の通りです:",
+このページの編集が適切であるかどうか確認してください。参考として以下にこのページの削除記録を表示しています:",
 
 # "Undo" feature
 'undo-success' => '編集の取り消しに成功しました。保存ボタンを押すと変更が確定されます。',
 'undo-failure' => '中間の版での編集と競合したため、自動取り消しできませんでした。',
-'undo-summary' => '[[Special:Contributions/$2|$2]] ([[User talk:$2|会話]]) の編集 ( $1 版 ) を取り消し',
+'undo-summary' => '[[Special:Contributions/$2|$2]] ([[User talk:$2|会話]]) の $1 版の編集を取り消し',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'アカウントを作成できません',
-'cantcreateaccount-text' => "以下の理由から、このIPアドレス('''$1''')からのアカウント作成が [[User:$3|$3]] によりブロックされています。
+'cantcreateaccount-text' => "以下の理由により、このIPアドレス ('''$1''') からのアカウント作成が [[User:$3|$3]] によってブロックされています。
 
 ブロック理由: ''$2''",
 
@@ -892,7 +900,7 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'destfilename'                => '掲載するファイル名',
 'watchthisupload'             => '画像をウォッチ',
 'filewasdeleted'              => 'この名前のファイルは一度アップロードされその後削除されています。アップロードの前に$1を確認してみてください。',
-'filename-bad-prefix'         => 'アップロードしようとしている <strong>"$1"</strong> のファイル名が、デジタルカメラによって自動的に付与されるような名称となっています。どのようなファイルであるのか、ファイル名を見ただけでも分かるような名称にしてください。',
+'upload-wasdeleted'           => "'''警告:あなたは過去に削除されたファイルをアップロードしようとしています。'''
 
 このままアップロードを行うことが適切かどうか確認してください。参考として以下にこのファイルの削除記録を表示しています:",
 'filename-bad-prefix'         => 'アップロードしようとしている <strong>"$1"</strong> のファイル名が、デジタルカメラによって自動的に付与されるような名称となっています。どのようなファイルであるのか、ファイル名を見ただけでも分かるような名称にしてください。',
@@ -1077,6 +1085,8 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'movethispage'            => 'このページを移動',
 'unusedimagestext'        => '<p>他のウェブサイトがURLを直接用いて画像にリンクしている場合もあります。以下の画像一覧には、そのような形で利用されている画像が含まれている可能性があります。</p>',
 'unusedcategoriestext'    => '以下のカテゴリページはどの項目・カテゴリからも使われていません。',
+'notargettitle'           => '対象となるページが存在しません',
+'notargettext'            => '対象となるページ又は利用者が指定されていません',
 
 # Book sources
 'booksources'               => '文献資料',
@@ -1252,7 +1262,7 @@ $NEWPAGE
 
 このページの最後の編集は [[User:$3|$3]] ([[User_talk:$3|会話]] | [[Special:Contributions/$3|履歴]]) によるものです。',
 'editcomment'                 => '編集内容の要約: <i>$1</i>', # only shown if there is an edit comment
-'revertpage'                  => '[[Special:Contributions/$2|$2]] ([[User_talk:$2|会話]]) による編集を [[User:$1|$1]] による版へと差し戻しました。',
+'revertpage'                  => '[[Special:Contributions/$2|$2]] ([[User talk:$2|会話]]) による編集を [[User:$1|$1]] による版へ差し戻し',
 'rollback-success'            => '$2 による編集を $1 による版へと差し戻しました。',
 'sessionfailure'              => 'あなたのログイン・セッションに問題が発生しました。この動作はセッションハイジャックを防ぐために取り消されました。ブラウザの「戻る」を押してからページを再読込し、もう一度送信してください。',
 'protectlogpage'              => '保護記録',
@@ -1327,6 +1337,9 @@ $NEWPAGE
 'undelete-search-prefix'       => '表示するページ名の先頭:',
 'undelete-search-submit'       => '検索',
 'undelete-no-results'          => '一致する削除済みページのアーカイブが見つかりませんでした。',
+'undelete-filename-mismatch'   => '$1 版のファイルを復帰できません: ファイル名が一致しません',
+'undelete-bad-store-key'       => '$1 版のファイルを復帰できません: 削除前にファイルが失われています。',
+'undelete-cleanup-error'       => '使用されていないログファイル "$1" の削除中にエラーが発生しました。',
 'undelete-missing-filearchive' => 'ID $1 の記録がデータベースに存在しないため復帰できません。既に復帰されている可能性があります。',
 'undelete-error-short'         => 'ファイル復帰エラー: $1',
 'undelete-error-long'          => '$1 の復帰中にエラーが発生しました',
@@ -1363,8 +1376,6 @@ $NEWPAGE
 # What links here
 'whatlinkshere'       => 'リンク元',
 'whatlinkshere-title' => '$1 へリンクしているページ',
-'notargettitle'       => '対象となるページが存在しません',
-'notargettext'        => '対象となるページ又は利用者が指定されていません',
 'linklistsub'         => 'リンクの一覧',
 'linkshere'           => '[[:$1]] は以下のページからリンクされています',
 'nolinkshere'         => '[[:$1]] にリンクしているページはありません。',
@@ -1713,6 +1724,7 @@ $NEWPAGE
 'filedelete-missing'              => 'ファイル"$1"は存在しないため、削除することができません。',
 'filedelete-old-unregistered'     => '指定されたファイルの "$1" 版はデータベースにありません。',
 'filedelete-current-unregistered' => '指定されたファイル"$1"はデータベース内にはありません。',
+'filedelete-archive-read-only'    => 'ログ用ディレクトリ "$1" は、ウェブサーバーにより書き込み不可となっています。',
 
 # Browsing diffs
 'previousdiff' => '←前の差分',
@@ -2154,11 +2166,6 @@ $1',
 # Watchlist editor
 'watchlistedit-numitems'       => 'あなたのウォッチリストには $1タイトルが登録されています（ノートページを除く）。',
 'watchlistedit-noitems'        => 'あなたのウォッチリストにはタイトルが登録されていません。',
-'watchlistedit-clear-title'    => 'ウォッチリストを空にする',
-'watchlistedit-clear-legend'   => 'ウォッチリストを空にする',
-'watchlistedit-clear-confirm'  => 'この操作を行うと、あなたのウォッチリストから全てのタイトルが除去されます。よろしいですか? [[Special:Watchlist/edit|タイトルを個別に除去する]]こともできます。',
-'watchlistedit-clear-submit'   => '全て除去',
-'watchlistedit-clear-done'     => 'あなたのウォッチリストは空になりました。',
 'watchlistedit-normal-title'   => 'ウォッチリストの編集',
 'watchlistedit-normal-legend'  => 'ウォッチリストからタイトルを除去',
 'watchlistedit-normal-explain' => 'あなたのウォッチリストにあるタイトルが以下に表示されています。除去したいタイトルの横にあるチェックボックスにチェックを入れ、 &quot;{{int:watchlistedit-normal-submit}}&quot; ボタンをクリックしてください。
@@ -2175,9 +2182,22 @@ $1',
 'watchlistedit-raw-removed'    => '$1タイトルが除去されました:',
 
 # Watchlist editing tools
-'watchlisttools-view'  => 'ウォッチリストの確認',
-'watchlisttools-edit'  => 'ウォッチリストの編集',
-'watchlisttools-raw'   => 'ウォッチリストをテキストで編集',
-'watchlisttools-clear' => 'ウォッチリストを空にする',
+'watchlisttools-view' => 'ウォッチリストの確認',
+'watchlisttools-edit' => 'ウォッチリストの編集',
+'watchlisttools-raw'  => 'ウォッチリストをテキストで編集',
+
+# Unknown messages
+'iranian-calendar-m1'  => 'イラン歴第1月',
+'iranian-calendar-m10' => 'イラン歴第10月',
+'iranian-calendar-m11' => 'イラン歴第11月',
+'iranian-calendar-m12' => 'イラン歴第12月',
+'iranian-calendar-m2'  => 'イラン歴第2月',
+'iranian-calendar-m3'  => 'イラン歴第3月',
+'iranian-calendar-m4'  => 'イラン歴第4月',
+'iranian-calendar-m5'  => 'イラン歴第5月',
+'iranian-calendar-m6'  => 'イラン歴第6月',
+'iranian-calendar-m7'  => 'イラン歴第7月',
+'iranian-calendar-m8'  => 'イラン歴第8月',
+'iranian-calendar-m9'  => 'イラン歴第9月',
 
 );

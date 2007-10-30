@@ -29,13 +29,24 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11151) Add descriptive <title> to revision history page
 * (bug 5412) Add feed links for the site to all pages
 * (bug 11353) Add ability to retrieve raw section content via action=raw
+* Show relevant deletion log lines when uploading a previously deleted file
+* On SkinTemplate based skins (like MonoBook), omit confusing "edit"/"view source"
+  tab entirely if the page doesn't exist and the user isn't allowed to create it
+* Clarify instructions given when an exception is thrown
 * AuthPlugin added strictUserAuth() method to allow per-user override
   of the strict() authentication behavior.
 * (bug 7872) Deleted revisions can now be viewed as diffs showing changes
   against the previous revision, whether currently deleted or live.
-* Added accesskey and tooltip for the "Go" button, and tooltip for the "Search"
-  button.
-
+* Added tooltips for the "Go" and "Search" buttons
+* (bug 11649) Show input form when Special:Whatlinkshere has no parameters
+* isValidEmailAddr hook added to User method of that name, to allow, e.g., re-
+  stricting e-mail addresses to a specific domain
+* Removed "Clear" link in watchlist editor tools, as people were afraid to
+  click it. Existing clear links will fall back to the raw editor, which is
+  very easy to clear your watchlist with.
+* Allow hiding new pages by logged-in users on Special:Newpages
+* (bug 1405) Add wgUseNPPatrol option to control patroling for new articles
+  on Special:Newpages
 
 === Bug fixes in 1.12 ===
 
@@ -79,6 +90,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11450) Fix creation of objectcache table on upgrade
 * Fix namespace selection after submit of Special:Newpages
 * Make input form of Special:Newpages nicer for RTL wikis
+* (bug 11462) Fix typo in LanguageGetSpecialPageAliases hook name
+* (bug 11474) Fix unintentional fall-through in math error handling
+* (bug 11478) Fix undefined method call in file deletion interface
 * (bug 278) Search results no longer highlight incorrect partial word matches
 * Compatibility with incorrectly detected old-style DJVU mime types
 * (bug 11560) Fix broken HTML output from weird link nesting in edit comments.
@@ -88,7 +102,6 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   some browsers.
 * (bug 11574) Add an interface message loginstart, which, similarly to loginend,
   appears just before the login form. Patch by MinuteElectron.
-<<<<<<< .working
 * Do not cache category pages if using 'from' or 'until'
 * Created new hook getUserPermissionsErrors, to go with userCan changes.
 * Diff pages did not properly display css/js pages.
@@ -99,7 +112,17 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11131) Change filearchive width/height columns to int for Postgres
 * Support plural in undeleted{revisions,revisions-files,files}
 * (bug 11343) If the database is read-only, ensure that undelete fails.
-
+* (bug 11690) Show revert link for page moves in Special:Log to allowed users
+  only
+* Initial-lowercase prefix checks in namespaceDupes.php now actually work.
+* Fix regression in LinkBatch.php breaking PHP 5.0
+* (bug 11452) wfMsgExt uses sometimes wrong language object for parsing magic
+  words when called with options ''parsemag'' or ''content''. 
+* (bug 11727) Support plural in 'historysize' message
+* (bug 11744) Incorrect return value from Title::getParentCategories()
+* (bug 11762) Fix native language name of Akan (ak)
+* (bug 11722) Fix inconsistent case in unprotect tabs
+* (bug 11795) Be more paranoid about confirming accept-encoding header is present
 
 === API changes in 1.12 ===
 
@@ -126,10 +149,15 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Add rctype parameter to list=recentchanges that filters by type
 * Add apprtype and apprlevel parameters to filter list=allpages by protection types and levels
 * Add apdir parameter to enable listing all pages from Z to A
+* (bug 11721) Use a different title for results than for the help page.
+* (bug 11562) Added a user_registration parameter/field to the list=allusers query.
+* (bug 11588) Preserve document structure for empty dataset in backlinks query.
 
 === Languages updated in 1.12 ===
 
 * Amharic (am) (new)
+* Aragonese (an)
+* Old English (ang) (new)
 * Arabic (ar)
 * Mapudungun (arn) (new)
 * Asturian (ast)
@@ -175,21 +203,34 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Italian (it)
 * Japanese (ja)
 * Kazakh (kk)
+* Kannada (kn)
 * Korean (ko)
+* Kurdish (Latin) (ku-latn)
+* Cornish (kw) (new)
 * Latin (la)
 * Limbugian (li)
+* Lozi (loz) (new)
+* Lingala (ln)
 * Lithuanian (lt)
 * Malay (ms)
+* Erzya (myv) (new)
 * Nahuatl (nah)
 * Min-nan (nan)
 * Low Saxon (nds)
 * Dutch Low Saxon (nds-nl)
+* Newari (new) (new)
 * Dutch (nl)
 * Norwegian (no)
+* Polish (pl)
+* Piemontèis (pms)
+* Pashto (ps)
 * Portugese (pt)
+* Quechua (qu)
+* Romanian (ro)
 * Russian (ru)
 * Sakha (sah)
 * Sicilian (scn)
+* Sindhi (sd)
 * Sassarese (sdc) (new)
 * Seri (sei) (new)
 * Tachelhit (shi)
@@ -198,10 +239,15 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Sundanese (su)
 * Swedish (sv)
 * Tamil (ta)
+* Teluga (te)
 * Tetun (tet) (new)
+* Tajik (tg)
 * Tagalog (tl) (new)
+* Uyghur (ug)
 * West Flemish (vls)
+* Volapük (vo)
 * Walloon (wa)
+* Wolof (wo)
 * Yiddish (yi)
 * Cantonese (yue)
 * Zhuang (za)

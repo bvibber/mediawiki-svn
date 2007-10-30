@@ -156,7 +156,7 @@ class Skin extends Linker {
 	}
 
 	function initPage( &$out ) {
-		global $wgFavicon, $wgScriptPath, $wgSitename, $wgLanguageCode;
+		global $wgFavicon, $wgScriptPath, $wgSitename, $wgContLang;
 
 		wfProfileIn( __METHOD__ );
 
@@ -164,14 +164,16 @@ class Skin extends Linker {
 			$out->addLink( array( 'rel' => 'shortcut icon', 'href' => $wgFavicon ) );
 		}
 
-		$names = Language::getLanguageNames();
+		$code = $wgContLang->getCode();
+		$name = $wgContLang->getLanguageName( $code );
+		$langName = $name ? $name : $code;
 
 		# OpenSearch description link
 		$out->addLink( array( 
 			'rel' => 'search', 
 			'type' => 'application/opensearchdescription+xml',
 			'href' => "$wgScriptPath/opensearch_desc.php",
-			'title' => "$wgSitename ({$names[$wgLanguageCode]})",
+			'title' => "$wgSitename ($langName)",
 		));
 
 		$this->addMetadataLinks($out);
@@ -1223,7 +1225,8 @@ END;
 			// Otherwise, we display the link for the user, described in their
 			// language (which may or may not be the same as the default language),
 			// but we make the link target be the one site-wide page.
-			return $this->makeKnownLink( wfMsgForContent( $page ), wfMsg( $desc ) );
+			return $this->makeKnownLink( wfMsgForContent( $page ),
+				wfMsgExt( $desc, array( 'parsemag', 'escape' ) ) );
 		}
 	}
 

@@ -2,12 +2,14 @@
 /** Galician (Galego)
  *
  * @addtogroup Language
- * 
- * Betawiki translators
+ *
  * @author Alma
  * @author Prevert
  * @author Xosé
  * @author Lameiro
+ * @author Siebrand
+ * @author Nike
+ * @author G - ג
  */
 
 $messages = array(
@@ -498,7 +500,7 @@ O ID do seu bloqueo é $5. Inclúao nas consultas que faga.',
 'blockedoriginalsource'     => "O código fonte de '''$1''' móstrase a continuación:",
 'blockededitsource'         => "O texto das '''súas edicións''' en '''$1''' móstrase a continuación:",
 'whitelistedittitle'        => 'Cómpre rexistrarse para poder editar',
-'whitelistedittext'         => 'Tense que [[Special:Userlogin|rexistrar]] para poder editar artigos.',
+'whitelistedittext'         => 'Ten que $1 para poder editar páxinas.',
 'whitelistreadtitle'        => 'Cómpre rexistrarse para poder ler',
 'whitelistreadtext'         => 'Tense que [[Special:Userlogin|rexistrar]] para poder ler artigos.',
 'whitelistacctitle'         => 'Non se lle permite crear unha conta',
@@ -649,7 +651,7 @@ pode ampliar detalles no [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} rexi
 'revisiondelete'              => 'Borrar/restaurar revisións',
 'revdelete-nooldid-title'     => 'Non se indicou a revisión',
 'revdelete-nooldid-text'      => 'Non indicou a revisión ou revisións sobre as que realizar esta función.',
-'revdelete-selected'          => 'Seleccionar revisión de [[:$1]]:',
+'revdelete-selected'          => "{{PLURAL:$2|Revisión seleccionada|Revisións seleccionadas}} de '''$1:'''",
 'logdelete-selected'          => "{{PLURAL:$2|Evento de rexistro seleccionado|Eventos de rexistro seleccionados}} para '''$1:'''",
 'revdelete-text'              => 'As revisión eliminadas aínda aparecerán no historial da páxina, pero o contido do seu texto será inaccesíbel ao público.
 
@@ -819,7 +821,7 @@ e a do servidor (UTC).',
 'recentchanges'                     => 'Cambios recentes',
 'recentchangestext'                 => 'Seguir as modificacións máis recentes no wiki nesta páxina.',
 'recentchanges-feed-description'    => 'Seguir as mudanzas máis recentes deste wiki con esta fonte de noticias.',
-'rcnote'                            => 'Abaixo amósanse os últimos <strong>$1</strong> cambios nos últimos <strong>$2</strong> días.',
+'rcnote'                            => "Abaixo {{PLURAL:$1|móstrase '''1''' cambio|móstranse os últimos '''$1''' cambios}} {{PLURAL:$2|no último día|nos últimos '''$2''' días}} en $3.",
 'rcnotefrom'                        => 'Abaixo amósanse os cambios desde <b>$2</b> (móstranse ata <b>$1</b>).',
 'rclistfrom'                        => 'Mostrar os cambios novos desde $1',
 'rcshowhideminor'                   => '$1 edicións pequenas',
@@ -1117,6 +1119,9 @@ Cada fileira contén ligazóns cara á primeira e segunda redirección, e tamén
 'movethispage'            => 'Mover esta páxina',
 'unusedimagestext'        => '<p>Por favor, teña en conta que outros sitios web poden ligar a unha imaxe mediante un enderezo URL e por iso poden aparecer listados aquí, mesmo estando en uso.</p>',
 'unusedcategoriestext'    => 'Existen as seguintes categorías, aínda que ningún artigo ou categoría as emprega.',
+'notargettitle'           => 'Sen obxectivo',
+'notargettext'            => 'Non especificou a páxina ou o usuario no cal
+facer esta función.',
 
 # Book sources
 'booksources'               => 'Fontes dos libros',
@@ -1292,8 +1297,7 @@ A última edición fíxoa [[User:$3|$3]] ([[User talk:$3|disc.]]).',
 'rollback-success'            => 'Desfixéronse as edicións de $1; volveuse á última edición, feita por $2.',
 'sessionfailure'              => 'Parece que hai un problema co rexistro da súa sesión; esta acción cancelouse como precaución fronte ao secuestro de sesións. Prema en "atrás", volva a carregar a páxina da que proviña e ténteo de novo.',
 'protectlogpage'              => 'Rexistro de protección',
-'protectlogtext'              => 'Abaixo amosamos unha lista dos bloqueos e desbloqueos de páxinas.
-Vexa [[Project:Páxina protexida]] para máis información.',
+'protectlogtext'              => 'Abaixo móstrase unha lista dos bloqueos e desbloqueos de páxinas. Vexa a [[Special:Protectedpages|listaxe de páxinas protexidas]] para unha listaxe coas proteccións de páxinas establecidas neste momento.',
 'protectedarticle'            => '"[[$1]]" foi protexido',
 'modifiedarticleprotection'   => 'modificouse o nivel de protección de "[[$1]]"',
 'unprotectedarticle'          => 'desprotexido "[[$1]]"',
@@ -1305,14 +1309,13 @@ Vexa [[Project:Páxina protexida]] para máis información.',
 'protect_expiry_old'          => 'O momento de remate da protección corresponde ao pasado.',
 'unprotectsub'                => '(Desprotexendo "$1")',
 'protect-unchain'             => 'Desbloquear permisos de traslado',
-'protect-text'                => 'Aquí é onde debe ver e cambiar os niveis de protección para esta páxina [[$1]].
-Por favor asegúrese de que segue a [[Project:Protected page|guía de protección de páxinas]].',
+'protect-text'                => 'Aquí é onde pode ver e cambiar os niveis de protección para a páxina <strong>$1</strong>.',
 'protect-locked-blocked'      => 'Non poden modificar os niveis de protección mentres existe un bloqueo. Eis a configuración actual da páxina  <strong>$1</strong>:',
 'protect-locked-dblock'       => 'Os niveis de protección non se poden modificar debido a un bloqueo da base de datos activa.
 Eis a configuración actual da páxina <strong>$1</strong>:',
 'protect-locked-access'       => 'A súa conta non dispón de permisos para mudar os niveis de protección.
 Eis a configuración actual da páxina <strong>$1</strong>:',
-'protect-cascadeon'           => 'Esta páxina está protexida neste momento porque está incluída nas seguintes páxinas que foron protexidas coa opción protección en serie activada. Pode mudar o nivel de protección da páxina pero iso non afectará á protección en serie.',
+'protect-cascadeon'           => 'Esta páxina está protexida neste momento porque está incluída {{PLURAL:$1|na seguinte páxina, que foi protexida|páxinas, que foron protexidas}} coa opción protección en serie activada. Pode mudar o nivel de protección da páxina pero iso non afectará á protección en serie.',
 'protect-default'             => '(predeterminado)',
 'protect-fallback'            => 'Require permisos de "$1"',
 'protect-level-autoconfirmed' => 'Bloquear usuarios non rexistrados',
@@ -1412,9 +1415,6 @@ $1',
 # What links here
 'whatlinkshere'       => 'Páxinas que ligan con esta',
 'whatlinkshere-title' => 'Páxinas que ligan con $1',
-'notargettitle'       => 'Sen obxectivo',
-'notargettext'        => 'Non especificou a páxina ou o usuario no cal
-facer esta función.',
 'linklistsub'         => '(Lista de ligazóns)',
 'linkshere'           => "As seguintes páxinas ligan con '''[[:$1]]''':",
 'nolinkshere'         => "Ningunha páxina liga con '''[[:$1]]'''.",
@@ -1672,6 +1672,8 @@ Todas as accións relacionadas coa importación entre wikis poden verse no [[Spe
 'tooltip-ca-watch'                => 'Engadir esta páxina á listaxe de vixilancia',
 'tooltip-ca-unwatch'              => 'Eliminar esta páxina da súa listaxe de vixilancia',
 'tooltip-search'                  => 'Procurar neste wiki [alt-f]',
+'tooltip-search-go'               => 'Ir a unha páxina con este texto exacto, se existir',
+'tooltip-search-fulltext'         => 'Procurar este texto nas páxinas',
 'tooltip-p-logo'                  => 'Portada',
 'tooltip-n-mainpage'              => 'Visitar a Portada',
 'tooltip-n-portal'                => 'Acerca do proxecto, o que vostede pode facer, onde atopar cousas',
@@ -1776,7 +1778,6 @@ Todas as accións relacionadas coa importación entre wikis poden verse no [[Spe
 'patrol-log-page' => 'Rexistro de revisións',
 'patrol-log-line' => 'marcada $1 de $2 como revisada $3',
 'patrol-log-auto' => '(automático)',
-'patrol-log-diff' => 'r$1',
 
 # Image deletion
 'deletedrevision'                 => 'A revisión vella $1 foi borrada.',
@@ -1822,12 +1823,12 @@ Só se consideran os elementos dunha listaxe (liñas que comezan por *). A prime
 'metadata-expand'   => 'Mostrar detalles',
 'metadata-collapse' => 'Agochar detalles',
 'metadata-fields'   => 'Os campos de meta-datos EXIF listados nesta mensaxe incluiranse ao exhibir a páxina da imaxe cando se reduza a táboa dos meta-datos. Outros agocharanse por omisión. 
-* marca 
-* modelo 
-* data e hora orixinais 
-* tempo de exposición 
-* número f 
-* distancia focal',
+* make
+* model
+* datetimeoriginal
+* exposuretime
+* fnumber
+* focallength',
 
 # EXIF tags
 'exif-imagewidth'                  => 'Ancho',
@@ -2093,7 +2094,7 @@ confirmar que o seu enderezo é válido.',
 'confirmemail_send'       => 'Enviar por correo elecrónico un código de confirmación',
 'confirmemail_sent'       => 'Correo electrónico de confirmación enviado.',
 'confirmemail_oncreate'   => 'Envíouselle un código de confirmación ao enderezo de correo electrónico. Este código non é imprescindible para entrar no wiki pero é preciso para activar as funcións do wiki baseadas no correo.',
-'confirmemail_sendfailed' => 'Non se puido enviar a mensaxe de correo de confirmación. Comprobe que no enderezo non haxa caracteres non válidos.',
+'confirmemail_sendfailed' => 'Non se puido enviar a mensaxe de correo de confirmación. Comprobe que no enderezo non haxa caracteres non válidos. O programa de correo informa do seguinte: $1',
 'confirmemail_invalid'    => 'Código de confirmación non válido. Pode que o código expirase.',
 'confirmemail_needlogin'  => 'Necesita $1 para confirmar o seu enderezo de correo electrónico.',
 'confirmemail_success'    => 'Confirmouse o seu enderezo de correo electrónico. Agora xa se pode rexistrar e facer uso do wiki.',
@@ -2171,12 +2172,6 @@ $1',
 'autoredircomment' => 'Redirixida a [[$1]]',
 'autosumm-new'     => 'Nova páxina: $1',
 
-# Size units
-'size-bytes'     => '$1 B',
-'size-kilobytes' => '$1 KB',
-'size-megabytes' => '$1 MB',
-'size-gigabytes' => '$1 GB',
-
 # Live preview
 'livepreview-loading' => 'A carregar…',
 'livepreview-ready'   => 'A carregar… Listo!',
@@ -2192,11 +2187,6 @@ Tente a vista previa normal.',
 # Watchlist editor
 'watchlistedit-numitems'       => 'A súa listaxe de vixilancia inclúe {{PLURAL:$1|un título|$1 títulos}}, excluíndo as páxinas de discusión.',
 'watchlistedit-noitems'        => 'A súa listaxe de vixilancia non contén ningún título.',
-'watchlistedit-clear-title'    => 'Limpar a listaxe de vixilancia',
-'watchlistedit-clear-legend'   => 'Limpar a listaxe de vixilancia',
-'watchlistedit-clear-confirm'  => 'Isto eliminará todos os títulos da súa listaxe de vixilancia. Está vostede seguro de que quere facer isto? Pode tamén [[Special:Watchlist/edit|eliminar títulos individuais]].',
-'watchlistedit-clear-submit'   => 'Limpar',
-'watchlistedit-clear-done'     => 'Limpouse a súa listaxe de vixilancia. Elimináronse todos os títulos.',
 'watchlistedit-normal-title'   => 'Editar a listaxe de vixilancia',
 'watchlistedit-normal-legend'  => 'Eliminar títulos da listaxe de vixilancia',
 'watchlistedit-normal-explain' => 'Os títulos da súa listaxe de vixilancia aparecen embaixo. Para eliminar un título, escóllao na súa caixa de selección e prema en Eliminar Títulos. Tamén pode [[Special:Watchlist/raw|editar a listaxe simple]] ou [[Special:Watchlist/clear|eliminar todos os títulos]].',
@@ -2214,9 +2204,8 @@ Tente a vista previa normal.',
 'watchlistedit-raw-removed'    => '{{PLURAL:$1|Eliminouse un título|Elimináronse $1 títulos}}:',
 
 # Watchlist editing tools
-'watchlisttools-view'  => 'Ver as modificacións relevantes',
-'watchlisttools-edit'  => 'Ver e editar a listaxe de vixilancia',
-'watchlisttools-raw'   => 'Editar a listaxe de vixilancia simple',
-'watchlisttools-clear' => 'Limpar a listaxe de vixilancia',
+'watchlisttools-view' => 'Ver as modificacións relevantes',
+'watchlisttools-edit' => 'Ver e editar a listaxe de vixilancia',
+'watchlisttools-raw'  => 'Editar a listaxe de vixilancia simple',
 
 );

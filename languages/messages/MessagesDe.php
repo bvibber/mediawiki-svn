@@ -617,7 +617,7 @@ Bevor eine E-Mail von anderen Benutzern über die {{SITENAME}}-Mailfunktion empf
 'showlivepreview'           => 'Live-Vorschau',
 'showdiff'                  => 'Änderungen zeigen',
 'anoneditwarning'           => "Du bearbeitest diese Seite unangemeldet. Wenn du speicherst, wird deine aktuelle IP-Adresse in der Versionsgeschichte aufgezeichnet und ist damit unwiderruflich '''öffentlich''' einsehbar.",
-'missingsummary'            => "'''Hinweis:''' Du hast keine Zusammenfassung angegeben. Wenn du erneut auf „Speichern“ klickst, wird deine Änderung ohne Zusammenfassung übernommen.",
+'missingsummary'            => "'''Hinweis:''' Du hast keine Zusammenfassung angegeben. Wenn du erneut auf „Seite speichern“ klickst, wird deine Änderung ohne Zusammenfassung übernommen.",
 'missingcommenttext'        => 'Bitte gib eine Zusammenfassung ein.',
 'missingcommentheader'      => "'''ACHTUNG:''' Du hast keine Überschrift im Feld „Betreff:“ eingegeben. Wenn du erneut auf „Seite speichern“ klickst, wird deine Bearbeitung ohne Überschrift gespeichert.",
 'summary-preview'           => 'Vorschau der Zusammenfassungszeile',
@@ -696,14 +696,15 @@ Du kannst $1 oder einen der anderen [[{{MediaWiki:grouppage-sysop}}|Administrato
 'previewnote'               => 'Dies ist nur eine Vorschau, die Seite wurde noch nicht gespeichert!',
 'previewconflict'           => 'Diese Vorschau gibt den Inhalt des oberen Textfeldes wieder; so wird die Seite aussehen, wenn du jetzt speicherst.',
 'session_fail_preview'      => '<strong>Deine Bearbeitung konnte nicht gespeichert werden, da deine Sitzungsdaten verloren gegangen sind.
-Bitte versuche es erneut. Sollte das Problem bestehen bleiben, logge dich aus und wieder ein.</strong>',
+Bitte versuche es erneut, indem du unter der folgenden Textvorschau nochmals auf „Seite speichern“ klickst. 
+Sollte das Problem bestehen bleiben, melde dich ab und danach wieder an.</strong>',
 'session_fail_preview_html' => "<strong>Deine Bearbeitung konnte nicht gespeichert werden, da deine Sitzungsdaten verloren gegangen sind.</strong>
 
 ''Da in diesem Wiki reines HTML aktiviert ist, wurde die Vorschau ausgeblendet um JavaScript Attacken vorzubeugen.''
 
-<strong>Bitte versuche es erneut. Sollte das Problem bestehen bleiben, melden dich ab und wieder an.</strong>",
+<strong>Bitte versuche es erneut, indem du unter der folgenden Textvorschau nochmals auf „Seite speichern“ klickst. Sollte das Problem bestehen bleiben, melde dich ab und danach wieder an.</strong>",
 'token_suffix_mismatch'     => '<strong>Deine Bearbeitung wurde zurückgewiesen, da dein Browser Zeichen im Bearbeiten-Token verstümmelt hat.
-Eine Speicherung kann den Seiteninhalt zerstören. Dies geschieht bisweilen durch die Benutzung eines fehlerhaft arbeitenden, anonymen Proxy-Dienstes.</strong>',
+Eine Speicherung kann den Seiteninhalt zerstören. Dies geschieht bisweilen durch die Benutzung eines anonymen Proxy-Dienstes, der fehlerhaft arbeitet.</strong>',
 'editing'                   => 'Bearbeiten von $1',
 'editinguser'               => 'Bearbeiten von Benutzer <b>$1</b>',
 'editingsection'            => 'Bearbeiten von $1 (Absatz)',
@@ -713,7 +714,7 @@ Eine Speicherung kann den Seiteninhalt zerstören. Dies geschieht bisweilen durc
 Das obere Textfeld enthält den aktuellen Stand.
 Das untere Textfeld enthält deine Änderungen.
 Bitte füge deine Änderungen in das obere Textfeld ein.
-<b>Nur</b> der Inhalt des oberen Textfeldes wird gespeichert, wenn du auf „Speichern“ klickst!<br />',
+<b>Nur</b> der Inhalt des oberen Textfeldes wird gespeichert, wenn du auf „Seite speichern“ klickst!<br />',
 'yourtext'                  => 'Dein Text',
 'storedversion'             => 'Gespeicherte Version',
 'nonunicodebrowser'         => '<strong>Achtung:</strong> Dein Browser kann Unicode-Zeichen nicht richtig verarbeiten. Bitte verwende einen anderen Browser um Seiten zu bearbeiten.',
@@ -721,7 +722,7 @@ Bitte füge deine Änderungen in das obere Textfeld ein.
 'yourdiff'                  => 'Unterschiede',
 'copyrightwarning'          => '<strong>Bitte <big>kopiere keine Webseiten</big>, die nicht deine eigenen sind, benutzen <big>keine urheberrechtlich geschützten Werke</big> ohne Erlaubnis des Copyright-Inhabers!</strong><br />
 Du gibst uns hiermit deine Zusage, dass du den Text <strong>selbst verfasst</strong> haben, dass der Text Allgemeingut (<strong>public domain</strong>) ist, oder dass der <strong>Copyright-Inhaber</strong> seine <strong>Zustimmung</strong> gegeben hat. Falls dieser Text bereits woanders veröffentlicht wurde, weise bitte auf der Diskussionsseite darauf hin.
-<i>Bitte beachte, dass alle {{SITENAME}}-Beiträge automatisch unter der „$2“ stehen (siehe $1 für Details). Falls du nicht möchtest, dass deine Arbeit hier von anderen verändert und verbreitet wird, dann drücke nicht auf „Speichern“.</i>',
+<i>Bitte beachte, dass alle {{SITENAME}}-Beiträge automatisch unter der „$2“ stehen (siehe $1 für Details). Falls du nicht möchtest, dass deine Arbeit hier von anderen verändert und verbreitet wird, dann drücke nicht auf „Seite speichern“.</i>',
 'copyrightwarning2'         => 'Bitte beachte, dass alle Beiträge zu {{SITENAME}} von anderen Mitwirkenden bearbeitet, geändert oder gelöscht werden können.
 Reiche hier keine Texte ein, falls du nicht willst, dass diese ohne Einschränkung geändert werden können.
 
@@ -787,7 +788,7 @@ Grund der Sperre: ''$2''",
 'deletedrev'          => '[gelöscht]',
 'histfirst'           => 'Älteste',
 'histlast'            => 'Neueste',
-'historysize'         => '($1 Bytes)',
+'historysize'         => '({{PLURAL:$1|1 Byte|$1 Bytes}})',
 'historyempty'        => '(leer)',
 
 # Revision feed
@@ -1307,6 +1308,8 @@ auf die bereits die erste Weiterleitung zeigen sollte.',
 'movethispage'                    => 'Seite verschieben',
 'unusedimagestext'                => '<p>Bitte beachte, dass andere Webseiten dieses Bild mit einer direkten URL verlinken können. Diese wird nicht als Verwendung erkannt, so dass das Bild hier aufgeführt wird.</p>',
 'unusedcategoriestext'            => 'Diese Spezialseite zeigt alle Kategorien, die selber keiner Kategorie zugewiesen wurden.',
+'notargettitle'                   => 'Keine Seite angegeben',
+'notargettext'                    => 'Du hast nicht angegeben, auf welche Seite diese Funktion angewendet werden soll.',
 
 # Book sources
 'booksources'               => 'ISBN-Suche',
@@ -1596,11 +1599,10 @@ $1',
 'sp-newimages-showfrom' => 'Zeige neue Dateien ab $1',
 
 # What links here
-'whatlinkshere'         => 'Links auf diese Seite',
+'whatlinkshere'         => 'Linkliste',
 'whatlinkshere-title'   => 'Seiten, die auf „$1“ verlinken',
 'whatlinkshere-summary' => 'Diese Spezialseite listet alle internen Links auf eine bestimmte Seite auf. Die möglichen Zusätze „(Vorlageneinbindung)“ und „(Weiterleitungsseite)“ zeigen jeweils an, dass die Seite nicht durch einen normalen Wikilink eingebunden ist. ',
-'notargettitle'         => 'Keine Seite angegeben',
-'notargettext'          => 'Du hast nicht angegeben, auf welche Seite diese Funktion angewendet werden soll.',
+'whatlinkshere-page'    => 'Seite:',
 'linklistsub'           => '(Linkliste)',
 'linkshere'             => "Die folgenden Seiten verlinken auf '''„[[:$1]]“''':",
 'nolinkshere'           => "Keine Seite verlinkt auf '''„[[:$1]]“'''.",
@@ -2357,12 +2359,6 @@ Bitte bestätige, dass du diese Seite wirklich neu erstellen möchten.",
 'autoredircomment' => 'Weiterleitung nach [[$1]] erstellt',
 'autosumm-new'     => 'Die Seite wurde neu angelegt: $1',
 
-# Size units
-'size-bytes'     => '$1 B',
-'size-kilobytes' => '$1 KB',
-'size-megabytes' => '$1 MB',
-'size-gigabytes' => '$1 GB',
-
 # Live preview
 'livepreview-loading' => 'Laden …',
 'livepreview-ready'   => 'Laden … Fertig!',
@@ -2376,12 +2372,6 @@ Bitte bestätige, dass du diese Seite wirklich neu erstellen möchten.",
 # Watchlist editor
 'watchlistedit-numitems'       => 'Deine Beobachtungsliste enthält {{PLURAL:$1|1 Eintrag |$1 Einträge}}, Diskussionsseiten werden nicht gezählt.',
 'watchlistedit-noitems'        => 'Deine Beobachtungsliste ist leer.',
-'watchlistedit-clear-title'    => 'Beobachtungsliste löschen',
-'watchlistedit-clear-legend'   => 'Beobachtungsliste löschen',
-'watchlistedit-clear-confirm'  => 'Hiermit löscht du alle Einträge von deiner Beobachtungsliste. Bist du sicher?
-	Du kannst die Beobachtungsliste auch [[Special:Watchlist/edit|im Listenformat bearbeiten]], um einzelne Einträge/ganze Bereiche individuell zu entfernen.',
-'watchlistedit-clear-submit'   => 'Beobachtungsliste löschen',
-'watchlistedit-clear-done'     => 'Deine Beobachtungsliste wurde gelöscht. Alle Einträge wurden entfernt.',
 'watchlistedit-normal-title'   => 'Beobachtungsliste bearbeiten',
 'watchlistedit-normal-legend'  => 'Einträge von der Beobachtungsliste entfernen',
 'watchlistedit-normal-explain' => 'Dies sind die Einträge deiner Beobachtungsliste. Um Einträge zu entfernen, markiere die Kästchen neben den Einträgen
@@ -2404,6 +2394,5 @@ Bitte bestätige, dass du diese Seite wirklich neu erstellen möchten.",
 'watchlisttools-view'  => 'Beobachtungsliste: Änderungen',
 'watchlisttools-edit'  => 'normal bearbeiten',
 'watchlisttools-raw'   => 'Listenformat bearbeiten (Import/Export)',
-'watchlisttools-clear' => 'löschen',
 
 );

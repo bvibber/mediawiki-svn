@@ -1622,11 +1622,7 @@ class Title {
 	 * @param string $action action that permission needs to be checked for
 	 * @return array the array of groups allowed to edit this article
 	 */
-	public function getRestrictions( $action ) {		
-		$result = array();
-		if( !wfRunHooks('TitleGetRestrictions', array($this, $action, &$result)) )
-			return $result;
-
+	public function getRestrictions( $action ) {
 		if( $this->exists() ) {
 			if( !$this->mRestrictionsLoaded ) {
 				$this->loadRestrictions();
@@ -2497,7 +2493,7 @@ class Title {
 				$data[$wgContLang->getNSText ( NS_CATEGORY ).':'.$x->cl_to] = $this->getFullText();
 			$dbr->freeResult ( $res ) ;
 		} else {
-			$data = '';
+			$data = array();
 		}
 		return $data;
 	}

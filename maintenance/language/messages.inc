@@ -1058,6 +1058,8 @@ $wgMessageStructure = array(
 		'movethispage',
 		'unusedimagestext',
 		'unusedcategoriestext',
+		'notargettitle',
+		'notargettext',
 	),
 	'booksources' => array(
 		'booksources',
@@ -1320,9 +1322,8 @@ $wgMessageStructure = array(
 		'whatlinkshere',
 		'whatlinkshere-title',
 		'whatlinkshere-summary',
+		'whatlinkshere-page',
 		'whatlinkshere-barrow',
-		'notargettitle',
-		'notargettext',
 		'linklistsub',
 		'linkshere',
 		'nolinkshere',
@@ -1698,6 +1699,8 @@ $wgMessageStructure = array(
 		'markedaspatrollederror',
 		'markedaspatrollederrortext',
 		'markedaspatrollederror-noautopatrol',
+		'nppatroldisabled',
+		'nppatroldisabledtext',
 	),
 	'patrol-log' => array(
 		'patrol-log-page',
@@ -2197,11 +2200,6 @@ $wgMessageStructure = array(
 	'watchlisteditor' => array(
 		'watchlistedit-numitems',
 		'watchlistedit-noitems',
-		'watchlistedit-clear-title',
-		'watchlistedit-clear-legend',
-		'watchlistedit-clear-confirm',
-		'watchlistedit-clear-submit',
-		'watchlistedit-clear-done',
 		'watchlistedit-normal-title',
 		'watchlistedit-normal-legend',
 		'watchlistedit-normal-explain',
@@ -2220,7 +2218,6 @@ $wgMessageStructure = array(
 		'watchlisttools-view',
 		'watchlisttools-edit',
 		'watchlisttools-raw',
-		'watchlisttools-clear',
 	),
 );
 /** Comments for each block */
@@ -2408,12 +2405,4 @@ $wgMessageComments = array(
 	'exif-orientation-7'          => '0th row: right; 0th column: bottom',
 	'exif-orientation-8'          => '0th row: left; 0th column: bottom',
 	'movepage-moved'              => 'The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.'
-);
-
-/** Messages which contain dollar signs (which are not followed by numbers), and therefore should use a single apostrophe */
-$wgMessagseWithDollarSigns = array(
-	'linkprefix',
-	'enotif_subject',
-	'enotif_body',
-	'allmessagesnotsupportedDB',
 );

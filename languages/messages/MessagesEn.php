@@ -612,7 +612,7 @@ XHTML id names.
 'protect'           => 'Protect',
 'protect_change'    => 'change protection',
 'protectthispage'   => 'Protect this page',
-'unprotect'         => 'unprotect',
+'unprotect'         => 'Unprotect',
 'unprotectthispage' => 'Unprotect this page',
 'newpage'           => 'New page',
 'talkpage'          => 'Discuss this page',
@@ -1116,7 +1116,7 @@ Legend: (cur) = difference with current version,
 'deletedrev'            => '[deleted]',
 'histfirst'             => 'Earliest',
 'histlast'              => 'Latest',
-'historysize'           => '($1 bytes)',
+'historysize'           => '({{PLURAL:$1|1 byte|$1 bytes}})',
 'historyempty'          => '(empty)',
 
 # Revision feed
@@ -1674,6 +1674,8 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 a direct URL, and so may still be listed here despite being
 in active use.</p>',
 'unusedcategoriestext'            => 'The following category pages exist although no other article or category make use of them.',
+'notargettitle'                   => 'No target',
+'notargettext'                    => 'You have not specified a target page or user to perform this function on.',
 
 # Book sources
 'booksources'               => 'Book sources',
@@ -1994,11 +1996,10 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 
 # What links here
 'whatlinkshere'         => 'What links here',
-'whatlinkshere-title' => 'Pages that link to $1',
+'whatlinkshere-title'   => 'Pages that link to $1',
 'whatlinkshere-summary' => '', # only translate this message to other languages if you have to change it
 'whatlinkshere-barrow'  => '&lt;', # only translate this message to other languages if you have to change it
-'notargettitle'         => 'No target',
-'notargettext'          => 'You have not specified a target page or user to perform this function on.',
+'whatlinkshere-page'    => 'Page:',
 'linklistsub'           => '(List of links)',
 'linkshere'             => "The following pages link to '''[[:$1]]''':",
 'nolinkshere'           => "No pages link to '''[[:$1]]'''.",
@@ -2271,7 +2272,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'accesskey-ca-watch'                => 'w', # don't translate or duplicate this message to other languages
 'accesskey-ca-unwatch'              => 'w', # don't translate or duplicate this message to other languages
 'accesskey-search'                  => 'f', # don't translate or duplicate this message to other languages
-'accesskey-search-go'               => 'g', # don't translate or duplicate this message to other languages
+'accesskey-search-go'               => '', # don't translate or duplicate this message to other languages
 'accesskey-search-fulltext'         => '', # don't translate or duplicate this message to other languages
 'accesskey-p-logo'                  => '', # don't translate or duplicate this message to other languages
 'accesskey-n-mainpage'              => 'z', # don't translate or duplicate this message to other languages
@@ -2434,13 +2435,15 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'markedaspatrollederror'              => 'Cannot mark as patrolled',
 'markedaspatrollederrortext'          => 'You need to specify a revision to mark as patrolled.',
 'markedaspatrollederror-noautopatrol' => 'You are not allowed to mark your own changes as patrolled.',
+'nppatroldisabled'                    => 'New Pages Patrol disabled',
+'nppatroldisabledtext'                => 'The New Pages Patrol feature is currently disabled.',
 
 # Patrol log
 'patrol-log-page'   => 'Patrol log',
 'patrol-log-header' => '', # don't translate or duplicate this message to other languages
 'patrol-log-line'   => 'marked $1 of $2 patrolled $3',
 'patrol-log-auto'   => '(automatic)',
-'patrol-log-diff'   => 'r$1',
+'patrol-log-diff'   => 'r$1', # only translate this message to other languages if you have to change it
 
 # Image deletion
 'deletedrevision' => 'Deleted old revision $1',
@@ -2952,10 +2955,10 @@ $1',
 *207.200.112.0/21', # don't translate or duplicate this message to other languages
 
 # Size units
-'size-bytes'     => '$1 B',
-'size-kilobytes' => '$1 KB',
-'size-megabytes' => '$1 MB',
-'size-gigabytes' => '$1 GB',
+'size-bytes'     => '$1 B', # only translate this message to other languages if you have to change it
+'size-kilobytes' => '$1 KB', # only translate this message to other languages if you have to change it
+'size-megabytes' => '$1 MB', # only translate this message to other languages if you have to change it
+'size-gigabytes' => '$1 GB', # only translate this message to other languages if you have to change it
 
 # Live preview
 'livepreview-loading' => 'Loading…',
@@ -2970,12 +2973,6 @@ $1',
 # Watchlist editor
 'watchlistedit-numitems'       => 'Your watchlist contains {{PLURAL:$1|1 title|$1 titles}}, excluding talk pages.',
 'watchlistedit-noitems'        => 'Your watchlist contains no titles.',
-'watchlistedit-clear-title'    => 'Clear watchlist',
-'watchlistedit-clear-legend'   => 'Clear watchlist',
-'watchlistedit-clear-confirm'  => 'This will remove all titles from your watchlist. Are you sure you
-	want to do this? You can also [[Special:Watchlist/edit|remove individual titles]].',
-'watchlistedit-clear-submit'   => 'Clear',
-'watchlistedit-clear-done'     => 'Your watchlist has been cleared. All titles were removed.',
 'watchlistedit-normal-title'   => 'Edit watchlist',
 'watchlistedit-normal-legend'  => 'Remove titles from watchlist',
 'watchlistedit-normal-explain' => 'Titles on your watchlist are shown below. To remove a title, check
@@ -2998,6 +2995,5 @@ $1',
 'watchlisttools-view'  => 'View relevant changes',
 'watchlisttools-edit'  => 'View and edit watchlist',
 'watchlisttools-raw'   => 'Edit raw watchlist',
-'watchlisttools-clear' => 'Clear watchlist',
 
 );

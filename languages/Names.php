@@ -9,7 +9,7 @@
 	'aa' => 'Afar',			# Afar
 	'ab' => 'Аҧсуа',	# Abkhaz, should possibly add ' бысжѡа'
 	'af' => 'Afrikaans',	# Afrikaans
-	'ak' => 'Akana',		# Akan
+	'ak' => 'Akan',		# Akan
 	'als' => 'Alemannisch',	# Alemannic -- not a valid code, for compatibility
 	'am' => 'አማርኛ',	# Amharic
 	'an' => 'Aragonés',	# Aragonese
@@ -159,6 +159,7 @@
 	'lmo' => 'Lumbaart',	# Lombard
 	'ln' => 'Lingála',		# Lingala
 	'lo' => 'ລາວ',# Laotian
+	'loz' => 'Silozi', # Lozi
 	'lt' => 'Lietuvių',	# Lithuanian
 	'lv' => 'Latviešu',	# Latvian
 	'lzz' => 'Lazuri Nena',	#Laz
@@ -176,6 +177,7 @@
 	'mt' => 'Malti',	# Maltese
 	'mus' => 'Muscogee',	# Creek, should possibly be Muskogee
 	'my' => 'Myanmasa',		# Burmese
+	'myv' => 'эрзянь кель',         # Erzya
 	'mzn' => 'مَزِروني',		# Mazandarin
 	'na' => 'Ekakairũ Naoero',		# Nauruan
 	'nah' => 'Nahuatl',		# Nahuatl, en:Wikipedia writes Nahuatlahtolli, while another form is Náhuatl

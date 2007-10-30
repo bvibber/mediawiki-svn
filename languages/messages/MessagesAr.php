@@ -1,13 +1,19 @@
 <?php
 /** Arabic (العربية)
-  *
-  * @addtogroup Language
-  *
-  * author Meno25
-  * author Mido
-  * author Alnokta
-  * author Gharbeia
-  */
+ *
+ * @addtogroup Language
+ *
+ * @author Meno25
+ * @author Mido
+ * @author Alnokta
+ * @author Gharbeia
+ * @author Nike
+ * @author Mimouni
+ * @author Tarawneh
+ * @author Agurzil
+ * @author G - ג
+ * @author Chaos
+ */
 
 $linkPrefixExtension = true;
 $fallback8bitEncoding = 'windows-1256';
@@ -918,7 +924,7 @@ $1 ساعة.',
 'deletedrev'          => '[محذوف]',
 'histfirst'           => 'أول',
 'histlast'            => 'آخر',
-'historysize'         => '($1 بايت)',
+'historysize'         => '({{PLURAL:$1|1 بايت|$1 بايت}})',
 'historyempty'        => '(فارغ)',
 
 # Revision feed
@@ -1410,6 +1416,9 @@ PICT # misc.
 'movethispage'            => 'انقل هذه الصفحة',
 'unusedimagestext'        => '<p>الرجاء الانتباه إلى أن بعض الصور الموجودة في هذه القائمة قد يكون مشار إليها باستخدام العنوان الكامل (URL) وهي قيد الاستعمال بالرغم من إدراجها هنا.</p>',
 'unusedcategoriestext'    => 'التصنيفات التالية موجودة على الرغم من أنها لا تحتوي على أية مقالات أو تصنيفات أخرى.',
+'notargettitle'           => 'لا هدف',
+'notargettext'            => 'لم تحدد الصفحة او المستخدم المستهدف
+لعمل هذه الخاصية.',
 
 # Book sources
 'booksources'               => 'مصدر كتاب',
@@ -1699,9 +1708,7 @@ $1',
 # What links here
 'whatlinkshere'       => 'ماذا يصل هنا',
 'whatlinkshere-title' => 'الصفحات التي تصل إلى $1',
-'notargettitle'       => 'لا هدف',
-'notargettext'        => 'لم تحدد الصفحة او المستخدم المستهدف
-لعمل هذه الخاصية.',
+'whatlinkshere-page'  => 'الصفحة:',
 'linklistsub'         => '(قائمة الوصلات)',
 'linkshere'           => "الصفحات التالية تحتوي على وصلة إلى '''[[:$1]]''':",
 'nolinkshere'         => "لا توجد صفحات تصل إلى '''[[:$1]]'''.",
@@ -2507,11 +2514,6 @@ $1',
 # Watchlist editor
 'watchlistedit-numitems'       => 'قائمة مراقبتك تحتوي على {{PLURAL:$1|عنوان واحد|$1 عنوان}}، بدون احتساب صفحات النقاش.',
 'watchlistedit-noitems'        => 'قائمة مراقبتك لا تحتوي على أية عناوين.',
-'watchlistedit-clear-title'    => 'إفراغ قائمة المراقبة',
-'watchlistedit-clear-legend'   => 'أفرغ قائمة المراقبة',
-'watchlistedit-clear-confirm'  => 'هذا سيزيل كل العناوين من قائمة مراقبتك. هل أنت متأكد أنك تريد فعل هذا؟ يمكنك أيضا [[Special:Watchlist/edit|إزالة عناوين معينة]].',
-'watchlistedit-clear-submit'   => 'إفراغ',
-'watchlistedit-clear-done'     => 'قائمة مراقبتك تم إفراغها. كل العناوين تم إزالتها.',
 'watchlistedit-normal-title'   => 'تعديل قائمة المراقبة',
 'watchlistedit-normal-legend'  => 'أزل عناوين من قائمة المراقبة',
 'watchlistedit-normal-explain' => 'العناوين في قائمة مراقبتك معروضة بالأسفل. لإزالة عنوان، علم على الصندوق بجانبه، و اضغط إزالة العناوين. يمكنك أيضا [[Special:Watchlist/raw|تعديل القائمة مباشرة]]،
@@ -2529,9 +2531,22 @@ $1',
 'watchlistedit-raw-removed'    => '{{PLURAL:$1|عنوان واحد|$1 عنوان}} تمت إزالته:',
 
 # Watchlist editing tools
-'watchlisttools-view'  => 'عرض التغييرات المرتبطة',
-'watchlisttools-edit'  => 'عرض وتعديل قائمة المراقبة',
-'watchlisttools-raw'   => 'عدل قائمة المراقبة الخام',
-'watchlisttools-clear' => 'مسح قائمة المراقبة',
+'watchlisttools-view' => 'عرض التغييرات المرتبطة',
+'watchlisttools-edit' => 'عرض وتعديل قائمة المراقبة',
+'watchlisttools-raw'  => 'عدل قائمة المراقبة الخام',
+
+# Unknown messages
+'iranian-calendar-m1'  => 'فروردین',
+'iranian-calendar-m10' => 'دی',
+'iranian-calendar-m11' => 'بهمن',
+'iranian-calendar-m12' => 'اسفند',
+'iranian-calendar-m2'  => 'اردیبهشت',
+'iranian-calendar-m3'  => 'خرداد',
+'iranian-calendar-m4'  => 'تیر',
+'iranian-calendar-m5'  => 'امرداد',
+'iranian-calendar-m6'  => 'شهریور',
+'iranian-calendar-m7'  => 'مهر',
+'iranian-calendar-m8'  => 'آبان',
+'iranian-calendar-m9'  => 'آذر',
 
 );
