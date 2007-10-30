@@ -7,7 +7,7 @@ if (!defined('MEDIAWIKI')) die();
  *
  * @author Erik Moeller <Eloquence@gmail.com>
  * @author Kim Bruning <kim@bruning.xs4all.nl>
- * @license public domain or GPL? (requesting info)
+ * @license  GPLv2 or later
  */
 
 

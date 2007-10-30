@@ -1151,9 +1151,9 @@ function getExpressionMeaningIds($spelling, $dc=null) {
 /** Write a concept mapping to db
  * supply mapping as a valid
  * array("dataset_prefix"=>defined_meaning_id,...)
- * @returns: uuid used for mapping. (typically you an just
- *           discard this, but it's kinda important if you
- *	     want to add objects table support
+ * @returns: assoc array of uuids used for mapping. (typically you can just
+ *           discard this, but it is used in copy.php for objects table support
+ *	     array values set to -1 were not mapped.
  */
 
 function createConceptMapping($concepts, $override_transaction=null) {

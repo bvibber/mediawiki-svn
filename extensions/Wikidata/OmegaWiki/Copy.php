@@ -599,6 +599,7 @@ class DefinedMeaningCopier {
 	protected $already_there=false;
 	
 	public function __construct ($dmid, $dc1, $dc2) {
+		#echo "D$dmid; ";
 		$this->dmid=$dmid;
 		$this->dc1=$dc1;
 		$this->dc2=$dc2;
@@ -683,6 +684,9 @@ class DefinedMeaningCopier {
 	}		
 	
 	public static function finishConceptMapping($dc, $uuid) {
+		if ($uuid==-1){  #CreateConceptMapping did not create a new mapping,
+			return; # You can't finish that which was never started.
+		}
 		$object_id=ObjectCopier::makeObjectID($dc, "collection_contents", $uuid);
 		CopyTools::doQuery("	UPDATE ${dc}_collection_contents 
 					SET object_id=$object_id
@@ -696,7 +700,7 @@ class DefinedMeaningCopier {
 	 * Is only called by dup(), after a call to  dup_stub()
 	 * 
 	 * it is possible to cause a runaway recursion with this function, 
-	 * hence  of Copy.php calls dup_stub() instead of dup() 
+	 * hence most of Copy.php calls dup_stub() instead of dup() 
 	 */
 	protected function dup_rest() {
 		$dmid=$this->dmid;
@@ -865,8 +869,10 @@ class CopyTools {
 	 *
 	 */
 	public static function doQuery($query) {
+		#$start=CopyTools::stopwatch();
 		$result = mysql_query($query);
 
+		#echo CopyTools::stopwatch()-$start." "; var_dump($query);
 		if (!$result) 
 			throw new Exception("Mysql query failed: $query");
 
@@ -889,6 +895,7 @@ class CopyTools {
 	 */
 
 	public static function doMultirowQuery($query) {
+		#$start=CopyTools::stopwatch();
 		$result = mysql_query($query);
 		if (!$result) 
 			throw new Exception("Mysql query failed: $query");
@@ -903,6 +910,7 @@ class CopyTools {
 		while ($nextexp=mysql_fetch_assoc($result)) {
 			$items[]=$nextexp;
 		}
+		#echo CopyTools::stopwatch()-$start." "; var_dump($query);
 		return $items;
 	}
 
@@ -927,7 +935,8 @@ class CopyTools {
 	/* see: http://www.php.net/mysql_fetch_assoc (Comment by R. Bradly, 14-Sep-2006)
 	 */
 	public static function mysql_insert_assoc ($my_table, $my_array) {
-
+		$start=CopyTools::stopwatch();
+		
 		// Find all the keys (column names) from the array $my_array
 
 		// We compose the query
@@ -952,8 +961,9 @@ class CopyTools {
 
 		$result = mysql_query($sql);
 		if (!$result) 
-			throw new Exception("Mysql query failed: $sql");
+			throw new Exception("Mysql query failed: $sql , with error message: ".mysql_error());
 
+		echo CopyTools::stopwatch()-$start." "; var_dump($sql);
 		if ($result)
 			return true;
 		else
@@ -963,6 +973,7 @@ class CopyTools {
 	/** similar to mysql_insert_assoc, except now we do an update (naturally) */
 	public static function mysql_update_assoc ($my_table, $my_array, $where) {
 
+		#$start=CopyTools::stopwatch();
 		// Find all the keys (column names) from the array $my_array
 
 		// We compose the query
@@ -987,8 +998,9 @@ class CopyTools {
 		$result = mysql_query($sql);
 
 		if (!$result) 
-			throw new Exception("Mysql query failed: $query");
+			throw new Exception("Mysql query failed: $query , with error message: ".mysql_error());
 
+		#echo CopyTools::stopwatch()-$start." "; var_dump($sql);
 		if ($result)
 			return true;
 		else
