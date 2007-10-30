@@ -2086,6 +2086,7 @@ END
 			$out->addHtml( '</div>' );
 		}
 	}
+
 	/**
 	 * Attempt submission
 	 * @return bool false if output is done, true if the rest of the form should be displayed
@@ -2097,73 +2098,50 @@ END
 		$value = $this->internalAttemptSave( &$resultDetails );
 		switch ($value)
 		{
+			case self::AS_HOOK_ERROR_EXPECTED:
+			case self::AS_CONTENT_TOO_BIG:
+		 	case self::AS_ARTICLE_WAS_DELETED:
+			case self::AS_CONFLICT_DETECTED:
+			case self::AS_SUMMARY_NEEDED:
+			case self::AS_TEXTBOX_EMPTY:
+			case self::AS_MAX_ARTICLE_SIZE_EXCEDED:
 			case self::AS_END:
 				return true;
-		
-			case self::AS_SUCCESS_UPDATE:
-				return false;
-			
-			case self::AS_MAX_ARTICLE_SIZE_EXCEDED:
-				return true;
-			
-			case self::AS_TEXTBOX_EMPTY:
-				return true;
-			
-			case self::AS_SUMMARY_NEEDED:
-				return true;
-			
-			case self::AS_CONFLICT_DETECTED:
-				return true;
-			
-			case self::AS_SUCCESS_NEW_ARTICLE:
-				return false;
-			
-		 	case self::AS_BLANK_ARTICLE:
-		 		$wgOut->redirect( $this->mTitle->getFullURL() );
-		 		return false;
-		 	
-		 	case self::AS_NO_CREATE_PERMISSION;
-		 		$this->noCreatePermission();
-		 		return;
-		 
-		 	case self::AS_ARTICLE_WAS_DELETED:
-		 		return true;
-		 	
-		 	case self::AS_RATE_LIMITED:
-		 		$wgOut->rateLimited();
-		 		return false;
-		 	
-		 	case self::AS_READ_ONLY_PAGE:
-		 		$wgOut->readOnlyPage();
-		 		return false;
-		 	
-		 	case self::AS_READ_ONLY_PAGE_LOGGED:
-				$wgOut->readOnlyPage();
-				return false;
-			
-			case self::AS_READ_ONLY_PAGE_ANON:
-				$this->userNotLoggedInPage();
-				return false;
-			
-			case self::AS_CONTENT_TOO_BIG:
-				return true;
-			
-			case self::AS_BLOCKED_PAGE_FOR_USER:
-				$this->blockedPage();
-				return false;
 			
 			case self::AS_HOOK_ERROR:
+			case self::AS_FILTERING:
+			case self::AS_SUCCESS_NEW_ARTICLE:
+			case self::AS_SUCCESS_UPDATE:
 				return false;
-			
-			case self::AS_HOOK_ERROR_EXPECTED:
-				return true;
-		
+
 			case self::AS_SPAM_ERROR:
 				$this->spamPage ( $resultDetails['spam'] );
 				return false;
-			
-			case self::AS_FILTERING:
+
+			case self::AS_BLOCKED_PAGE_FOR_USER:
+				$this->blockedPage();
 				return false;
+
+			case self::AS_READ_ONLY_PAGE_ANON:
+				$this->userNotLoggedInPage();
+				return false;
+
+		 	case self::AS_READ_ONLY_PAGE_LOGGED:
+		 	case self::AS_READ_ONLY_PAGE:
+		 		$wgOut->readOnlyPage();
+		 		return false;
+
+		 	case self::AS_RATE_LIMITED:
+		 		$wgOut->rateLimited();
+		 		return false;
+
+		 	case self::AS_NO_CREATE_PERMISSION;
+		 		$this->noCreatePermission();
+		 		return;		 	
+		 	
+			case self::AS_BLANK_ARTICLE:
+		 		$wgOut->redirect( $this->mTitle->getFullURL() );
+		 		return false;
 		}
 	}
 }
