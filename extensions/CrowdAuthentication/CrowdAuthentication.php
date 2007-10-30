@@ -20,6 +20,12 @@
  *
  */
 
+$wgExtensionCredits['other'][] = array(
+        'name' => 'Crowd Authentication Plugin',
+        'version' => '$Revision$',
+        'author' => 'River Tarnell',
+        'description' => 'Authentication plugin for Atlassian Crowd',
+        );
 
 require_once("AuthPlugin.php");
 
