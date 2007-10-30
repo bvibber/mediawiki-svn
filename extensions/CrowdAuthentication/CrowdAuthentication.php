@@ -16,6 +16,7 @@
  *    $caApplicationName = 'mediawiki';
  *    $caApplicationPassword = 'whatever';
  *    $caCrowdServerUrl = 'http://localhost:8095/crowd/services';
+ *    $caDefaultGroups = array("jira-users", "confluence-users");
  *    $wgAuth = new CrowdAuthenticator();
  *
  */
@@ -175,6 +176,7 @@ class CrowdAuthenticator extends AuthPlugin {
 
 	public function /*bool*/ addUser(/*User*/ $user, /*string*/ $password,
 					 /*string*/ $email = '', /*string*/ $realname = '') {
+	global	$caDefaultGroups;
 		$crowd = $this->getCrowd();
 		$nameparts = split(" ", $realname, 2);
 		$firstname = $lastname = "";
@@ -203,6 +205,9 @@ class CrowdAuthenticator extends AuthPlugin {
 			$crowd->addPrincipal(array("in0" => $this->token,
 						   "in1" => $principal, 
 						   "in2" => $cred));
+			foreach ($caDefaultGroups as $group)
+				$crowd->addPrincipalToGroup(array("in0" => $this->token, "in1" => $user->getName(), "in2" => $group));
+		
 			return true;
 		} catch (Exception $e) {
 			return false;
