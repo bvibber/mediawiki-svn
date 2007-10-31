@@ -963,7 +963,7 @@ class CopyTools {
 		if (!$result) 
 			throw new Exception("Mysql query failed: $sql , with error message: ".mysql_error());
 
-		echo CopyTools::stopwatch()-$start." "; var_dump($sql);
+		#echo CopyTools::stopwatch()-$start." "; var_dump($sql);
 		if ($result)
 			return true;
 		else
