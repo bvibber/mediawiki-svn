@@ -8,80 +8,28 @@
  * @author Niklas Laxström
  */
 
-if( defined( 'MEDIAWIKI' ) ) {
+if (!defined('MEDIAWIKI')) die();
 
-	$wgExtensionFunctions[] = 'efSetupPIT';
+$wgExtensionCredits['parserhook'][] = array(
+	'name' => 'Parser i18n tags',
+	'description' => 'Access the i18n functions for number formatting, ' .
+		'grammar and plural in any available language',
+	'version' => '2.2',
+	'author' => 'Niklas Laxström',
+);
 
-	$wgExtensionCredits['parserhook'][] = array(
-		'name' => 'Parser i18n tags',
-		'description' => 'Access the i18n functions for number formatting, ' .
-			'grammar and plural in any available language',
-		'version' => '2.1',
-		'author' => 'Niklas Laxström',
-	);
+$dir = dirname(__FILE__) . '/';
+$wgAutoloadClasses['I18nTags'] = $dir . 'I18nTags_body.php';
+$wgExtensionFunctions[] = 'efI18nTagsInit';
+$wgExtensionMessagesFiles['I18nTags'] = $dir . 'I18nTags.i18n.php';
 
-	function efSetupPIT() {
-		global $wgParser;
-		$wgParser->setHook( 'formatnum', 'efFormatnum'  );
-		$wgParser->setHook( 'grammar',   'efGrammar' );
-		$wgParser->setHook( 'plural',    'efPlural'  );
-		$wgParser->setHook( 'linktrail', 'efLinkTrail'  );
-	}
-
-	function efFormatnum( $data, $params, $parser ) {
-		$lang = efGetLangObject( $params );
-		return $lang->formatNum($data);
-	}
-
-	function efGrammar( $data, $params, $parser ) {
-		if ( isset($params['case']) ) {
-			$case = $params['case'];
-		} else {
-			$case = "";
-		}
-		$lang = efGetLangObject( $params );
-		return $lang->convertGrammar($data, $case);
-	}
-
-	function efPlural( $data, $params, $parser ) {
-		if ( isset($params['n']) ) {
-			$n = intval($params['n']);
-		} else {
-			$n = intval(rand()/rand()*1020);
-		}
-		$args = explode('|', $data);
-		while ( count($args) < 5 ) { $args[] = $args[count($args)-1]; }
-		$lang = efGetLangObject( $params );
-		$t = $lang->convertPlural( $n, $args[0], $args[1], $args[2], $args[3], $args[4]);
-		return wfMsgReplaceArgs($t, array($n, 'NOT DEFINED'));
-	}
-
-	function efLinkTrail( $data, $params, $parser ) {
-		$lang = efGetLangObject( $params );
-		$regex = $lang->linkTrail();
-
-		$inside = '';
-		if ( '' != $data ) {
-			$predata = array();
-			preg_match( '/^\[\[([^\]|]+)(\|[^\]]+)?\]\](.*)$/sDu', $data, $predata );
-			$m = array();
-			if ( preg_match( $regex, $predata[3], $m ) ) {
-				$inside = $m[1];
-				$data = $m[2];
-			}
-		}
-		$predata = isset( $predata[2] ) ? $predata[2] : isset( $predata[1] ) ? $predata[1] : $predata[0];
-		return "<b>$predata$inside</b>$data";
-	}
-
-	function efGetLangObject( $params ) {
-		global $wgContLang;
-		return isset( $params['lang'] ) ? Language::factory( $params['lang'] ) : $wgContLang;
-	}
-
-} else {
-	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
-	exit( 1 );
+function efI18nTagsInit() {
+	global $wgParser;
+	$class = 'I18nTags';
+	$wgParser->setHook( 'formatnum', array($class, 'formatNumber')  );
+	$wgParser->setHook( 'grammar',   array($class, 'grammar') );
+	$wgParser->setHook( 'plural',    array($class, 'plural') );
+	$wgParser->setHook( 'linktrail', array($class, 'linktrail') );
+	wfLoadExtensionMessages( 'I18nTags' );
+	$wgParser->setFunctionHook( 'languagename',  array($class, 'languageName' ) );
 }
-
-?>
