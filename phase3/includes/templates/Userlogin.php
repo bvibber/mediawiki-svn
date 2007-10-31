@@ -24,6 +24,7 @@ class UserloginTemplate extends QuickTemplate {
 	<div class="visualClear"></div>
 <?php } ?>
 
+<div id="loginstart"><?php $this->msgWiki( 'loginstart' ); ?></div>
 <div id="userloginForm">
 <form name="userlogin" method="post" action="<?php $this->text('action') ?>">
 	<h2><?php $this->msg('login') ?></h2>
@@ -165,7 +166,11 @@ class UsercreateTemplate extends QuickTemplate {
 						tabindex="5"
 						value="<?php $this->text('email') ?>" size='20' />
 					<div class="prefsectiontip">
-						<?php $this->msgWiki('prefs-help-email'); ?>
+						<?php if( $this->data['emailrequired'] ) {
+									$this->msgWiki('prefs-help-email-required');
+						      } else {
+									$this->msgWiki('prefs-help-email');
+						      } ?>
 					</div>
 				</td>
 			<?php } ?>

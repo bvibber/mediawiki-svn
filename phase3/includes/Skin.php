@@ -156,21 +156,24 @@ class Skin extends Linker {
 	}
 
 	function initPage( &$out ) {
-		global $wgFavicon, $wgScriptPath, $wgSitename, $wgLanguageCode, $wgLanguageNames;
+		global $wgFavicon, $wgScriptPath, $wgSitename, $wgContLang;
 
-		$fname = 'Skin::initPage';
-		wfProfileIn( $fname );
+		wfProfileIn( __METHOD__ );
 
 		if( false !== $wgFavicon ) {
 			$out->addLink( array( 'rel' => 'shortcut icon', 'href' => $wgFavicon ) );
 		}
+
+		$code = $wgContLang->getCode();
+		$name = $wgContLang->getLanguageName( $code );
+		$langName = $name ? $name : $code;
 
 		# OpenSearch description link
 		$out->addLink( array( 
 			'rel' => 'search', 
 			'type' => 'application/opensearchdescription+xml',
 			'href' => "$wgScriptPath/opensearch_desc.php",
-			'title' => "$wgSitename ({$wgLanguageNames[$wgLanguageCode]})",
+			'title' => "$wgSitename ($langName)",
 		));
 
 		$this->addMetadataLinks($out);
@@ -179,7 +182,7 @@ class Skin extends Linker {
 		
 		$this->preloadExistence();
 
-		wfProfileOut( $fname );
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -782,7 +785,7 @@ END;
 	}
 
 	function getUndeleteLink() {
-		global $wgUser, $wgTitle, $wgContLang, $action;
+		global $wgUser, $wgTitle, $wgContLang, $wgLang, $action;
 		if(	$wgUser->isAllowed( 'deletedhistory' ) &&
 			(($wgTitle->getArticleId() == 0) || ($action == "history")) &&
 			($n = $wgTitle->isDeleted() ) )
@@ -795,7 +798,7 @@ END;
 			return wfMsg( $msg,
 				$this->makeKnownLinkObj(
 					SpecialPage::getTitleFor( 'Undelete', $wgTitle->getPrefixedDBkey() ),
-					wfMsgExt( 'restorelink', array( 'parsemag', 'escape' ), $n ) ) );
+					wfMsgExt( 'restorelink', array( 'parsemag', 'escape' ), $wgLang->formatNum( $n ) ) ) );
 		}
 		return '';
 	}
@@ -1222,7 +1225,8 @@ END;
 			// Otherwise, we display the link for the user, described in their
 			// language (which may or may not be the same as the default language),
 			// but we make the link target be the one site-wide page.
-			return $this->makeKnownLink( wfMsgForContent( $page ), wfMsg( $desc ) );
+			return $this->makeKnownLink( wfMsgForContent( $page ),
+				wfMsgExt( $desc, array( 'parsemag', 'escape' ) ) );
 		}
 	}
 

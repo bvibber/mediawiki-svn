@@ -206,13 +206,7 @@ class User {
 				return false;
 			}
 
-			# Save to cache
-			$data = array();
-			foreach ( self::$mCacheVars as $name ) {
-				$data[$name] = $this->$name;
-			}
-			$data['mVersion'] = MW_USER_VERSION;
-			$wgMemc->set( $key, $data );
+			$this->saveToCache();
 		} else {
 			wfDebug( "Got user {$this->mId} from cache\n" );
 			# Restore from cache
@@ -221,6 +215,25 @@ class User {
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * Save user data to the shared cache
+	 */
+	function saveToCache() {
+		$this->load();
+		if ( $this->isAnon() ) {
+			// Anonymous users are uncached
+			return;
+		}
+		$data = array();
+		foreach ( self::$mCacheVars as $name ) {
+			$data[$name] = $this->$name;
+		}
+		$data['mVersion'] = MW_USER_VERSION;
+		$key = wfMemcKey( 'user', 'id', $this->mId );
+		global $wgMemc;
+		$wgMemc->set( $key, $data );
 	}
 
 	/**
@@ -513,6 +526,11 @@ class User {
 	 * @return bool
 	 */
 	public static function isValidEmailAddr( $addr ) {
+		$result = null;
+		if( !wfRunHooks( 'isValidEmailAddr', array( $addr, &$result ) ) ) {
+			return $result;
+		}
+
 		return strpos( $addr, '@' ) !== false;
 	}
 
@@ -1196,11 +1214,13 @@ class User {
 				global $wgMemc;
 				$key = wfMemcKey( 'newtalk', 'ip', $this->getName() );
 				$newtalk = $wgMemc->get( $key );
-				if( $newtalk != "" ) {
+				if( strval( $newtalk ) !== '' ) {
 					$this->mNewtalk = (bool)$newtalk;
 				} else {
-					$this->mNewtalk = $this->checkNewtalk( 'user_ip', $this->getName() );
-					$wgMemc->set( $key, (int)$this->mNewtalk, time() + 1800 );
+					// Since we are caching this, make sure it is up to date by getting it
+					// from the master
+					$this->mNewtalk = $this->checkNewtalk( 'user_ip', $this->getName(), true );
+					$wgMemc->set( $key, (int)$this->mNewtalk, 1800 );
 				}
 			} else {
 				$this->mNewtalk = $this->checkNewtalk( 'user_id', $this->mId );
@@ -1227,18 +1247,22 @@ class User {
 
 		
 	/**
-	 * Perform a user_newtalk check on current slaves; if the memcached data
-	 * is funky we don't want newtalk state to get stuck on save, as that's
-	 * damn annoying.
-	 *
+	 * Perform a user_newtalk check, uncached. 
+	 * Use getNewtalk for a cached check.
+	 * 
 	 * @param string $field
 	 * @param mixed $id
+	 * @param bool $fromMaster True to fetch from the master, false for a slave
 	 * @return bool
 	 * @private
 	 */
-	function checkNewtalk( $field, $id ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		$ok = $dbr->selectField( 'user_newtalk', $field,
+	function checkNewtalk( $field, $id, $fromMaster = false ) {
+		if ( $fromMaster ) {
+			$db = wfGetDB( DB_MASTER );
+		} else {
+			$db = wfGetDB( DB_SLAVE );
+		}
+		$ok = $db->selectField( 'user_newtalk', $field,
 			array( $field => $id ), __METHOD__ );
 		return $ok !== false;
 	}
@@ -1250,17 +1274,18 @@ class User {
 	 * @private
 	 */
 	function updateNewtalk( $field, $id ) {
-		if( $this->checkNewtalk( $field, $id ) ) {
-			wfDebug( __METHOD__." already set ($field, $id), ignoring\n" );
-			return false;
-		}
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->insert( 'user_newtalk',
 			array( $field => $id ),
 			__METHOD__,
 			'IGNORE' );
-		wfDebug( __METHOD__.": set on ($field, $id)\n" );
-		return true;
+		if ( $dbw->affectedRows() ) {
+			wfDebug( __METHOD__.": set on ($field, $id)\n" );
+			return true;
+		} else {
+			wfDebug( __METHOD__." already set ($field, $id)\n" );
+			return false;
+		}
 	}
 
 	/**
@@ -1270,16 +1295,17 @@ class User {
 	 * @private
 	 */
 	function deleteNewtalk( $field, $id ) {
-		if( !$this->checkNewtalk( $field, $id ) ) {
-			wfDebug( __METHOD__.": already gone ($field, $id), ignoring\n" );
-			return false;
-		}
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete( 'user_newtalk',
 			array( $field => $id ),
 			__METHOD__ );
-		wfDebug( __METHOD__.": killed on ($field, $id)\n" );
-		return true;
+		if ( $dbw->affectedRows() ) {
+			wfDebug( __METHOD__.": killed on ($field, $id)\n" );
+			return true;
+		} else {
+			wfDebug( __METHOD__.": already gone ($field, $id)\n" );
+			return false;
+		}
 	}
 
 	/**
@@ -1301,6 +1327,7 @@ class User {
 			$field = 'user_id';
 			$id = $this->getId();
 		}
+		global $wgMemc;
 
 		if( $val ) {
 			$changed = $this->updateNewtalk( $field, $id );
@@ -1308,20 +1335,13 @@ class User {
 			$changed = $this->deleteNewtalk( $field, $id );
 		}
 
-		if( $changed ) {
-			if( $this->isAnon() ) {
-				// Anons have a separate memcached space, since
-				// user records aren't kept for them.
-				global $wgMemc;
-				$key = wfMemcKey( 'newtalk', 'ip', $val );
-				$wgMemc->set( $key, $val ? 1 : 0 );
-			} else {
-				if( $val ) {
-					// Make sure the user page is watched, so a notification
-					// will be sent out if enabled.
-					$this->addWatch( $this->getTalkPage() );
-				}
-			}
+		if( $this->isAnon() ) {
+			// Anons have a separate memcached space, since
+			// user records aren't kept for them.
+			$key = wfMemcKey( 'newtalk', 'ip', $id );
+			$wgMemc->set( $key, $val ? 1 : 0, 1800 );
+		}
+		if ( $changed ) {
 			$this->invalidateCache();
 		}
 	}
@@ -1893,7 +1913,7 @@ class User {
 					'wl_notificationtimestamp' => NULL
 				), array( /* WHERE */
 					'wl_user' => $currentUser
-				), 'UserMailer::clearAll'
+				), __METHOD__
 			);
 
 		# 	we also need to clear here the "you have new message" notification for the own user_talk page
@@ -2252,6 +2272,9 @@ class User {
 		} elseif( $wgAuth->strict() ) {
 			/* Auth plugin doesn't allow local authentication */
 			return false;
+		} elseif( $wgAuth->strictUserAuth( $this->getName() ) ) {
+			/* Auth plugin doesn't allow local authentication for this user name */
+			return false;
 		}
 		$ep = $this->encryptPassword( $password );
 		if ( 0 == strcmp( $ep, $this->mPassword ) ) {
@@ -2375,10 +2398,9 @@ class User {
 			$from = $wgPasswordSender;
 		}
 
-		require_once( 'UserMailer.php' );
 		$to = new MailAddress( $this );
 		$sender = new MailAddress( $from );
-		$error = userMailer( $to, $sender, $subject, $body );
+		$error = UserMailer::send( $to, $sender, $subject, $body );
 
 		if( $error == '' ) {
 			return true;
@@ -2684,5 +2706,6 @@ class User {
 		$this->invalidateCache();
 	}
 }
+
 
 

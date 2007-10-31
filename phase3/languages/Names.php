@@ -9,7 +9,7 @@
 	'aa' => 'Afar',			# Afar
 	'ab' => 'Аҧсуа',	# Abkhaz, should possibly add ' бысжѡа'
 	'af' => 'Afrikaans',	# Afrikaans
-	'ak' => 'Akana',		# Akan
+	'ak' => 'Akan',		# Akan
 	'als' => 'Alemannisch',	# Alemannic -- not a valid code, for compatibility
 	'am' => 'አማርኛ',	# Amharic
 	'an' => 'Aragonés',	# Aragonese
@@ -116,10 +116,11 @@
 	'ii' => 'ꆇꉙ',	# Sichuan Yi
 	'ik' => 'Iñupiak',	# Inupiak
 	'ilo' => 'Ilokano',	# Ilokano
+	'inh' => 'ГІалгІай Ğalğaj',    # Ingush
 	'io' => 'Ido',			# Ido
 	'is' => 'Íslenska',	# Icelandic
 	'it' => 'Italiano',		# Italian
-	'iu' => 'ᐃᓄᒃᑎᑐᑦ',	# Inuktitut
+	'iu' => 'ᐃᓄᒃᑎᑐᑦ/inuktitut',	# Inuktitut
 	'ja' => '日本語',	# Japanese
 	'jbo' => 'Lojban',		# Lojban
 	'jv' => 'Basa Jawa',	# Javanese
@@ -158,6 +159,7 @@
 	'lmo' => 'Lumbaart',	# Lombard
 	'ln' => 'Lingála',		# Lingala
 	'lo' => 'ລາວ',# Laotian
+	'loz' => 'Silozi', # Lozi
 	'lt' => 'Lietuvių',	# Lithuanian
 	'lv' => 'Latviešu',	# Latvian
 	'lzz' => 'Lazuri Nena',	#Laz
@@ -175,6 +177,7 @@
 	'mt' => 'Malti',	# Maltese
 	'mus' => 'Muscogee',	# Creek, should possibly be Muskogee
 	'my' => 'Myanmasa',		# Burmese
+	'myv' => 'эрзянь кель',         # Erzya
 	'mzn' => 'مَزِروني',		# Mazandarin
 	'na' => 'Ekakairũ Naoero',		# Nauruan
 	'nah' => 'Nahuatl',		# Nahuatl, en:Wikipedia writes Nahuatlahtolli, while another form is Náhuatl
@@ -226,10 +229,12 @@
 	'scn' => 'Sicilianu',	# Sicilian
 	'sco' => 'Scots',       # Scots
 	'sd' => 'سنڌي',	# Sindhi
+	'sdc' => 'Sassarese',	# Sassarese
 	'se' => 'Sámegiella',	# Northern Sami
 	'sei' => 'Cmique Itom',	# Seri
 	'sg' => 'Sängö',		# Sango, possible alternative is Sangho
 	'sh' => 'Srpskohrvatski / Српскохрватски', # Serbocroatian
+	'shi' => 'Tašlḥiyt',    # Tachelhit
 	'si' => 'සිංහල',	# Sinhalese
 	'simple' => 'Simple English',	# Simple English
 	'sk' => 'Slovenčina',	# Slovak

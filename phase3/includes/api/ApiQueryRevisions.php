@@ -53,6 +53,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 		// Enumerating revisions on multiple pages make it extremelly 
 		// difficult to manage continuations and require additional sql indexes  
 		$enumRevMode = (!is_null($user) || !is_null($excludeuser) || !is_null($limit) || !is_null($startid) || !is_null($endid) || $dir === 'newer' || !is_null($start) || !is_null($end));
+		
 
 		$pageSet = $this->getPageSet();
 		$pageCount = $pageSet->getGoodTitleCount();
@@ -105,7 +106,10 @@ class ApiQueryRevisions extends ApiQueryBase {
 			$this->addFields('old_id');
 			$this->addFields('old_text');
 			$this->addFields('old_flags');
+
 			$this->fld_content = true;
+			
+			$this->expandTemplates = $expandtemplates;
 		}
 
 		$userMax = ($this->fld_content ? 50 : 500);
@@ -130,7 +134,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 			// one row with the same timestamp for the same page. 
 			// The order needs to be the same as start parameter to avoid SQL filesort.
 
-			if (is_null($startid))
+			if (is_null($startid) && is_null($endid))
 				$this->addWhereRange('rev_timestamp', $dir, $start, $end);
 			else
 				$this->addWhereRange('rev_id', $dir, $startid, $endid);
@@ -246,7 +250,12 @@ class ApiQueryRevisions extends ApiQueryBase {
 		}
 		
 		if ($this->fld_content) {
-			ApiResult :: setContent($vals, Revision :: getRevisionText($row));
+			$text = Revision :: getRevisionText($row);
+			if ($this->expandTemplates) {
+				global $wgParser;
+				$text = $wgParser->preprocess( $text, Title::newFromID($row->rev_page), new ParserOptions() );
+			}
+			ApiResult :: setContent($vals, $text);
 		}
 		
 		return $vals;
@@ -270,8 +279,8 @@ class ApiQueryRevisions extends ApiQueryBase {
 			'limit' => array (
 				ApiBase :: PARAM_TYPE => 'limit',
 				ApiBase :: PARAM_MIN => 1,
-				ApiBase :: PARAM_MAX => ApiBase :: LIMIT_SML1,
-				ApiBase :: PARAM_MAX2 => ApiBase :: LIMIT_SML2
+				ApiBase :: PARAM_MAX => ApiBase :: LIMIT_BIG1,
+				ApiBase :: PARAM_MAX2 => ApiBase :: LIMIT_BIG2
 			),
 			'startid' => array (
 				ApiBase :: PARAM_TYPE => 'integer'
@@ -297,7 +306,9 @@ class ApiQueryRevisions extends ApiQueryBase {
 			),
 			'excludeuser' => array(
 				ApiBase :: PARAM_TYPE => 'user'
-			)
+			),
+			
+			'expandtemplates' => false,
 		);
 	}
 
@@ -312,6 +323,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 			'dir' => 'direction of enumeration - towards "newer" or "older" revisions (enum)',
 			'user' => 'only include revisions made by user',
 			'excludeuser' => 'exclude revisions made by user',
+			'expandtemplates' => 'expand templates in revision content'
 		);
 	}
 

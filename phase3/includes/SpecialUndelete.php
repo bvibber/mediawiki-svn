@@ -194,6 +194,59 @@ class PageArchive {
 			return null;
 		}
 	}
+	
+	/**
+	 * Return the most-previous revision, either live or deleted, against
+	 * the deleted revision given by timestamp.
+	 *
+	 * May produce unexpected results in case of history merges or other
+	 * unusual time issues.
+	 *
+	 * @param string $timestamp
+	 * @return Revision or null
+	 */
+	function getPreviousRevision( $timestamp ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		
+		// Check the previous deleted revision...
+		$row = $dbr->selectRow( 'archive',
+			'ar_timestamp',
+			array( 'ar_namespace' => $this->title->getNamespace(),
+			       'ar_title' => $this->title->getDbkey(),
+			       'ar_timestamp < ' .
+						$dbr->addQuotes( $dbr->timestamp( $timestamp ) ) ),
+			__METHOD__,
+			array(
+				'ORDER BY' => 'ar_timestamp DESC',
+				'LIMIT' => 1 ) );
+		$prevDeleted = $row ? wfTimestamp( TS_MW, $row->ar_timestamp ) : false;
+		
+		$row = $dbr->selectRow( array( 'page', 'revision' ),
+			array( 'rev_id', 'rev_timestamp' ),
+			array(
+				'page_namespace' => $this->title->getNamespace(),
+				'page_title' => $this->title->getDbkey(),
+				'page_id = rev_page',
+				'rev_timestamp < ' .
+						$dbr->addQuotes( $dbr->timestamp( $timestamp ) ) ),
+			__METHOD__,
+			array(
+				'ORDER BY' => 'rev_timestamp DESC',
+				'LIMIT' => 1 ) );
+		$prevLive = $row ? wfTimestamp( TS_MW, $row->rev_timestamp ) : false;
+		$prevLiveId = $row ? intval( $row->rev_id ) : null;
+		
+		if( $prevLive && $prevLive > $prevDeleted ) {
+			// Most prior revision was live
+			return Revision::newFromId( $prevLiveId );
+		} elseif( $prevDeleted ) {
+			// Most prior revision was deleted
+			return $this->getRevision( $prevDeleted );
+		} else {
+			// No prior revision on this page.
+			return null;
+		}
+	}
 
 	/**
 	 * Get the text from an archive row containing ar_text, ar_flags and ar_text_id
@@ -298,14 +351,14 @@ class PageArchive {
 		$log = new LogPage( 'delete' );
 		
 		if( $textRestored && $filesRestored ) {
-			$reason = wfMsgForContent( 'undeletedrevisions-files',
+			$reason = wfMsgExt( 'undeletedrevisions-files', array( 'content', 'parsemag' ),
 				$wgContLang->formatNum( $textRestored ),
 				$wgContLang->formatNum( $filesRestored ) );
 		} elseif( $textRestored ) {
-			$reason = wfMsgForContent( 'undeletedrevisions',
+			$reason = wfMsgExt( 'undeletedrevisions', array( 'content', 'parsemag' ),
 				$wgContLang->formatNum( $textRestored ) );
 		} elseif( $filesRestored ) {
-			$reason = wfMsgForContent( 'undeletedfiles',
+			$reason = wfMsgExt( 'undeletedfiles', array( 'content', 'parsemag' ),
 				$wgContLang->formatNum( $filesRestored ) );
 		} else {
 			wfDebug( "Undelete: nothing undeleted...\n" );
@@ -332,6 +385,8 @@ class PageArchive {
 	 * @return int number of revisions restored on success or UNDELETE_* on failure
 	 */
 	private function undeleteRevisions( $timestamps ) {
+		if ( wfReadOnly() ) return 0;
+
 		$restoreAll = empty( $timestamps );
 		
 		$dbw = wfGetDB( DB_MASTER );
@@ -489,6 +544,7 @@ class UndeleteForm {
 			$wgUser->matchEditToken( $request->getVal( 'wpEditToken' ) );
 		$this->mRestore = $request->getCheck( 'restore' ) && $posted;
 		$this->mPreview = $request->getCheck( 'preview' ) && $posted;
+		$this->mDiff = $request->getCheck( 'diff' );
 		$this->mComment = $request->getText( 'wpComment' );
 		
 		if( $par != "" ) {
@@ -626,10 +682,24 @@ class UndeleteForm {
 			htmlspecialchars( $this->mTargetObj->getPrefixedText() ),
 			'target=' . $this->mTargetObj->getPrefixedUrl()
 		);
-		$time = htmlspecialchars( $wgLang->timeAndDate( $timestamp ) );
+		$time = htmlspecialchars( $wgLang->timeAndDate( $timestamp, true ) );
 		$user = $skin->userLink( $rev->getUser(), $rev->getUserText() )
 			. $skin->userToolLinks( $rev->getUser(), $rev->getUserText() );
-			
+
+		if( $this->mDiff ) {
+			$previousRev = $archive->getPreviousRevision( $timestamp );
+			if( $previousRev ) {
+				$this->showDiff( $previousRev, $rev );
+				if( $wgUser->getOption( 'diffonly' ) ) {
+					return;
+				} else {
+					$wgOut->addHtml( '<hr />' );
+				}
+			} else {
+				$wgOut->addHtml( 'No previous revision found.' );
+			}
+		}
+		
 		$wgOut->addHtml( '<p>' . wfMsgHtml( 'undelete-revision', $link, $time, $user ) . '</p>' );
 		
 		wfRunHooks( 'UndeleteShowRevision', array( $this->mTargetObj, $rev ) );
@@ -662,14 +732,81 @@ class UndeleteForm {
 				'name' => 'wpEditToken',
 				'value' => $wgUser->editToken() ) ) .
 			wfElement( 'input', array(
-				'type' => 'hidden',
-				'name' => 'preview',
-				'value' => '1' ) ) .
-			wfElement( 'input', array(
 				'type' => 'submit',
+				'name' => 'preview',
 				'value' => wfMsg( 'showpreview' ) ) ) .
+			wfElement( 'input', array(
+				'name' => 'diff',
+				'type' => 'submit',
+				'value' => wfMsg( 'showdiff' ) ) ) .
 			wfCloseElement( 'form' ) .
 			wfCloseElement( 'div' ) );
+	}
+	
+	/**
+	 * Build a diff display between this and the previous either deleted
+	 * or non-deleted edit.
+	 * @param Revision $previousRev
+	 * @param Revision $currentRev
+	 * @return string HTML
+	 */
+	function showDiff( $previousRev, $currentRev ) {
+		global $wgOut, $wgUser;
+		
+		$diffEngine = new DifferenceEngine();
+		$diffEngine->showDiffStyle();
+		$wgOut->addHtml(
+			"<div>" .
+			"<table border='0' width='98%' cellpadding='0' cellspacing='4' class='diff'>" .
+			"<col class='diff-marker' />" .
+			"<col class='diff-content' />" .
+			"<col class='diff-marker' />" .
+			"<col class='diff-content' />" .
+			"<tr>" .
+				"<td colspan='2' width='50%' align='center' class='diff-otitle'>" .
+				$this->diffHeader( $previousRev ) .
+				"</td>" .
+				"<td colspan='2' width='50%' align='center' class='diff-ntitle'>" .
+				$this->diffHeader( $currentRev ) .
+				"</td>" .
+			"</tr>" .
+			$diffEngine->generateDiffBody(
+				$previousRev->getText(), $currentRev->getText() ) .
+			"</table>" .
+			"</div>\n" );
+
+	}
+	
+	private function diffHeader( $rev ) {
+		global $wgUser, $wgLang, $wgLang;
+		$sk = $wgUser->getSkin();
+		$isDeleted = !( $rev->getId() && $rev->getTitle() );
+		if( $isDeleted ) {
+			/// @fixme $rev->getTitle() is null for deleted revs...?
+			$targetPage = SpecialPage::getTitleFor( 'Undelete' );
+			$targetQuery = 'target=' .
+				$this->mTargetObj->getPrefixedUrl() .
+				'&timestamp=' .
+				wfTimestamp( TS_MW, $rev->getTimestamp() );
+		} else {
+			/// @fixme getId() may return non-zero for deleted revs...
+			$targetPage = $rev->getTitle();
+			$targetQuery = 'oldid=' . $rev->getId();
+		}
+		return
+			'<div id="mw-diff-otitle1"><strong>' .
+				$sk->makeLinkObj( $targetPage,
+					wfMsgHtml( 'revisionasof',
+						$wgLang->timeanddate( $rev->getTimestamp(), true ) ),
+					$targetQuery ) .
+				( $isDeleted ? ' ' . wfMsgHtml( 'deletedrev' ) : '' ) .
+			'</strong></div>' .
+			'<div id="mw-diff-otitle2">' .
+				$sk->revUserTools( $rev ) . '<br/>' .
+			'</div>' .
+			'<div id="mw-diff-otitle3">' .
+				$sk->revComment( $rev ) . '<br/>' .
+			'</div>';
 	}
 	
 	/**
@@ -803,16 +940,32 @@ class UndeleteForm {
 			# The page's stored (deleted) history:
 			$wgOut->addHTML("<ul>");
 			$target = urlencode( $this->mTarget );
+			$remaining = $revisions->numRows();
+			$earliestLiveTime = $this->getEarliestTime( $this->mTargetObj );
+			
 			while( $row = $revisions->fetchObject() ) {
+				$remaining--;
 				$ts = wfTimestamp( TS_MW, $row->ar_timestamp );
 				if ( $this->mAllowed ) {
 					$checkBox = Xml::check( "ts$ts" );
 					$pageLink = $sk->makeKnownLinkObj( $titleObj,
 						$wgLang->timeanddate( $ts, true ),
 						"target=$target&timestamp=$ts" );
+					if( ($remaining > 0) ||
+							($earliestLiveTime && $ts > $earliestLiveTime ) ) {
+						$diffLink = '(' .
+							$sk->makeKnownLinkObj( $titleObj,
+								wfMsgHtml( 'diff' ),
+								"target=$target&timestamp=$ts&diff=prev" ) .
+							')';
+					} else {
+						// No older revision to diff against
+						$diffLink = '';
+					}
 				} else {
 					$checkBox = '';
 					$pageLink = $wgLang->timeanddate( $ts, true );
+					$diffLink = '';
 				}
 				$userLink = $sk->userLink( $row->ar_user, $row->ar_user_text ) . $sk->userToolLinks( $row->ar_user, $row->ar_user_text );
 				$stxt = '';
@@ -824,7 +977,7 @@ class UndeleteForm {
 					}
 				}
 				$comment = $sk->commentBlock( $row->ar_comment );
-				$wgOut->addHTML( "<li>$checkBox $pageLink . . $userLink $stxt $comment</li>\n" );
+				$wgOut->addHTML( "<li>$checkBox $pageLink $diffLink . . $userLink $stxt $comment</li>\n" );
 
 			}
 			$revisions->free();
@@ -874,6 +1027,18 @@ class UndeleteForm {
 
 		return true;
 	}
+	
+	private function getEarliestTime( $title ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		if( $title->exists() ) {
+			$min = $dbr->selectField( 'revision',
+				'MIN(rev_timestamp)',
+				array( 'rev_page' => $title->getArticleId() ),
+				__METHOD__ );
+			return wfTimestampOrNull( TS_MW, $min );
+		}
+		return null;
+	}
 
 	function undelete() {
 		global $wgOut, $wgUser;
@@ -904,5 +1069,3 @@ class UndeleteForm {
 		return false;
 	}
 }
-
-

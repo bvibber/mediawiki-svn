@@ -30,6 +30,8 @@ $wgIgnoredMessages = array(
 	'accesskey-ca-watch',
 	'accesskey-ca-unwatch',
 	'accesskey-search',
+	'accesskey-search-go',
+	'accesskey-search-fulltext',
 	'accesskey-p-logo',
 	'accesskey-n-mainpage',
 	'accesskey-n-portal',
@@ -75,6 +77,7 @@ $wgIgnoredMessages = array(
 	'exif-software-value',
 	'history_copyright',
 	'licenses',
+	'loginstart',
 	'loginend',
 	'loginlanguagelinks',
 	'markaspatrolledlink',
@@ -205,6 +208,12 @@ $wgOptionalMessages = array(
 	'filedelete-backlink',
 	'pagetitle',
 	'filename-prefix-blacklist',
+	'edittools',
+	'patrol-log-diff',
+	'size-bytes',
+	'size-kilobytes',
+	'size-megabytes',
+	'size-gigabytes',
 );
 
 /** EXIF messages, which may be set as optional in several checks, but are generally mandatory */

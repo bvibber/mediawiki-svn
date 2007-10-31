@@ -1029,7 +1029,7 @@ class Title {
 	 * @param string $action action that permission needs to be checked for
 	 * @param bool $doExpensiveQueries Set this to false to avoid doing unnecessary queries.
 	 * @return array Array of arrays of the arguments to wfMsg to explain permissions problems.
-	*/
+	 */
 	public function getUserPermissionsErrors( $action, $user, $doExpensiveQueries = true ) {
 		$errors = $this->getUserPermissionsErrorsInternal( $action, $user, $doExpensiveQueries );
 
@@ -1109,8 +1109,20 @@ class Title {
 
 		$errors = array();
 
+		// Use getUserPermissionsErrors instead
 		if ( !wfRunHooks( 'userCan', array( &$this, &$user, $action, &$result ) ) ) {
 			return $result ? array() : array( array( 'badaccess-group0' ) );
+		}
+
+		if (!wfRunHooks( 'getUserPermissionsErrors', array( &$this, &$user, $action, &$result ) ) ) {
+			if ($result != array() && is_array($result) && !is_array($result[0]))
+				$errors[] = $result; # A single array representing an error
+			else if (is_array($result) && is_array($result[0]))
+				$errors = array_merge( $errors, $result ); # A nested array representing multiple errors
+			else if ($result != '' && $result != null && $result !== true && $result !== false)
+				$errors[] = array($result); # A string representing a message-id
+			else if ($result === false )
+				$errors[] = array('badaccess-group0'); # a generic "We don't want them to do that"
 		}
 
 		if( NS_SPECIAL == $this->mNamespace ) {
@@ -1189,7 +1201,6 @@ class Title {
 		                $groupName = User::getGroupName( $key );
 		                $groupPage = User::getGroupPage( $key );
 		                if( $groupPage ) {
-		                    $skin = $user->getSkin();
 		                    $groups[] = '[['.$groupPage->getPrefixedText().'|'.$groupName.']]';
 		                } else {
 		                    $groups[] = $groupName;
@@ -2482,7 +2493,7 @@ class Title {
 				$data[$wgContLang->getNSText ( NS_CATEGORY ).':'.$x->cl_to] = $this->getFullText();
 			$dbr->freeResult ( $res ) ;
 		} else {
-			$data = '';
+			$data = array();
 		}
 		return $data;
 	}

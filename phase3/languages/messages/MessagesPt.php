@@ -226,7 +226,7 @@ $messages = array(
 'protect'           => 'Proteger',
 'protect_change'    => 'alterar protecção',
 'protectthispage'   => 'Proteger esta página',
-'unprotect'         => 'desproteger',
+'unprotect'         => 'Desproteger',
 'unprotectthispage' => 'Desproteger esta página',
 'newpage'           => 'Nova página',
 'talkpage'          => 'Discutir esta página',
@@ -548,7 +548,7 @@ Note que não poderá utilizar a funcionalidade "Contactar utilizador" se não p
 Sua ID de bloqueio é $5. Por favor, inclua esse dado em qualquer tentativa de esclarecimentos que for realizar.',
 'blockedoriginalsource'     => "O código de '''$1''' é mostrado abaixo:",
 'blockededitsource'         => "O texto das '''suas edições''' em '''$1''' é mostrado abaixo:",
-'whitelistedittitle'        => 'É necessário autenticar-se para editar páginas.',
+'whitelistedittitle'        => 'É necessário autenticar-se para editar páginas',
 'whitelistedittext'         => 'Precisa de se $1 para poder editar páginas.',
 'whitelistreadtitle'        => 'É necessária a autentificação para poder visualizar',
 'whitelistreadtext'         => 'Precisa de se [[{{ns:special}}:Userlogin|autenticar]] para poder visualizar páginas.',
@@ -1873,6 +1873,7 @@ Any subsequent links on the same line are considered to be exceptions, i.e. arti
 'exif-gaincontrol'                 => 'Controlo de cena',
 'exif-contrast'                    => 'Contraste',
 'exif-saturation'                  => 'Saturação',
+'exif-sharpness'                   => 'Nitidez',
 'exif-devicesettingdescription'    => 'Descrição das configurações do dispositivo',
 'exif-subjectdistancerange'        => 'Distância de alcance do sujeito',
 'exif-imageuniqueid'               => 'Identificação única da imagem',
@@ -1940,6 +1941,13 @@ Any subsequent links on the same line are considered to be exceptions, i.e. arti
 'exif-scenecapturetype-1' => 'Paisagem',
 'exif-scenecapturetype-2' => 'Retrato',
 'exif-scenecapturetype-3' => 'Cena noturna',
+
+'exif-gaincontrol-0' => 'Nenhum',
+
+'exif-contrast-0' => 'Normal',
+'exif-contrast-1' => 'Suave',
+
+'exif-saturation-0' => 'Normal',
 
 'exif-subjectdistancerange-0' => 'Desconhecida',
 'exif-subjectdistancerange-2' => 'Vista próxima',
@@ -2070,13 +2078,6 @@ Tente a previsão comum.',
 # Watchlist editor
 'watchlistedit-numitems'       => 'A sua lista de vigiados possui {{PLURAL:$1|um título|$1 títulos}}, além das respectivas páginas de discussão.',
 'watchlistedit-noitems'        => 'A sua lista de vigiados não possui títulos.',
-'watchlistedit-clear-title'    => 'Limpar lista de vigiados',
-'watchlistedit-clear-legend'   => 'Limpar lista de vigiados',
-'watchlistedit-clear-confirm'  => 'Isto removerá todos os títulos de sua lista de vigiados. Tem certeza de que é isso que deseja? 
-
-Também é possível [[Special:Watchlist/edit|remover títulos individualmente]].',
-'watchlistedit-clear-submit'   => 'Limpar',
-'watchlistedit-clear-done'     => 'A sua lista de vigiados foi limpa. Todos os títulos foram removidos.',
 'watchlistedit-normal-title'   => 'Editar lista de vigiados',
 'watchlistedit-normal-legend'  => 'Remover títulos da lista de vigiados',
 'watchlistedit-normal-explain' => 'Os títulos de sua lista de vigiados são exibidos a seguir. Para remover um título clique no box ao lado do mesmo e no botão Remover Títulos. Você também pode [[{{ns:special}}:Watchlist/raw|editar a lista crua]] ou [[{{ns:special}}:Watchlist/clear|remover todos os títulos]].',
@@ -2097,6 +2098,5 @@ Você também pode [[{{ns:special}}:Watchlist/edit|editar a lista da forma conve
 'watchlisttools-view'  => 'Ver alterações relevantes',
 'watchlisttools-edit'  => 'Ver e editar a lista de vigiados',
 'watchlisttools-raw'   => 'Edição crua dos vigiados',
-'watchlisttools-clear' => 'Limpar a lista de vigiados',
 
 );

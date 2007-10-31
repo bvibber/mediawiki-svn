@@ -1,5 +1,5 @@
 <?php
-/** Ancient Greece (Ἀρχαία ἑλληνικὴ)
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  *
  * @addtogroup Language
  * Translators: LeighvsOptimvsMaximvs, Lefcant, AndreasJS, Neachili, SPQRobin,
@@ -145,7 +145,7 @@ $messages = array(
 'undelete_short'    => 'Ἐπανορθοῦν {{PLURAL:$1|ἕνα μεταγραφέν|$1 μεταγραφέντα}}',
 'protect'           => 'Φυλλάττειν',
 'protectthispage'   => 'Tήνδε τὴν δέλτον φυλάττειν',
-'unprotect'         => 'μὴ φυλάττειν',
+'unprotect'         => 'Μὴ φυλάττειν',
 'unprotectthispage' => 'Tήνδε τὴν δέλτον  μὴ φυλάττειν',
 'newpage'           => 'Δέλτος νέα',
 'talkpage'          => 'Διαλέγε τήνδε τὴν δέλτον',
@@ -184,7 +184,6 @@ $messages = array(
 'badaccess-group0' => 'Οὐκ ἔξεστί σοι ταῦτα διαπράττειν.',
 
 'ok'                  => 'εἶεν',
-'pagetitle'           => '$1 - {{ΙΣΤΟΣΕΛΙΣ}}',
 'youhavenewmessages'  => 'Ἔχεις $1 ($2).',
 'newmessageslink'     => 'νέαι ἀγγελίαι',
 'newmessagesdifflink' => 'ἐσχάτη μεταβολή',

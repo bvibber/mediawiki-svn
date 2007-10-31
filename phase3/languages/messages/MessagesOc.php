@@ -224,7 +224,7 @@ $messages = array(
 'protect'           => 'Protegir',
 'protect_change'    => 'cambiar la proteccion',
 'protectthispage'   => 'Protegir aquesta pagina',
-'unprotect'         => 'desprotegir',
+'unprotect'         => 'Desprotegir',
 'unprotectthispage' => 'Desprotegir aquesta pagina',
 'newpage'           => 'Pagina novèla',
 'talkpage'          => 'Pagina de discussion',
@@ -2000,6 +2000,5 @@ Ensajatz la previsualizacion normala.',
 'watchlisttools-view'  => 'Lista de seguit',
 'watchlisttools-edit'  => 'Veire e modificar la lista de seguit',
 'watchlisttools-raw'   => 'Modificar la lista (mòde brut)',
-'watchlisttools-clear' => 'Voidar la lista de seguit',
 
 );

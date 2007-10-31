@@ -111,7 +111,11 @@ abstract class ApiFormatBase extends ApiBase {
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-	<title>MediaWiki API</title>
+<?php if ($this->mUnescapeAmps) { 
+?>	<title>MediaWiki API</title>
+<?php } else {
+?>	<title>MediaWiki API Result</title>
+<?php } ?>
 </head>
 <body>
 <?php

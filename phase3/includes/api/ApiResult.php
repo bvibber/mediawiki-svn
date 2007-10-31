@@ -139,6 +139,22 @@ class ApiResult extends ApiBase {
 		// Do not use setElement() as it is ok to call this more than once
 		$arr['_element'] = $tag;
 	}
+	
+	/**
+	 * Calls setIndexedTagName() on $arr and each sub-array
+	 */
+	public function setIndexedTagName_recursive(&$arr, $tag)
+	{
+			if(!is_array($arr))
+					return;
+			foreach($arr as $a)
+			{
+					if(!is_array($a))
+							continue;
+					$this->setIndexedTagName($a, $tag);
+					$this->setIndexedTagName_recursive($a, $tag);
+			}
+	}
 
 	/**
 	 * Add value to the output data at the given path.
@@ -179,3 +195,30 @@ class ApiResult extends ApiBase {
 	}
 }
 
+/* For compatibility with PHP versions < 5.1.0, define our own array_intersect_key function. */
+if (!function_exists('array_intersect_key')) {
+	function array_intersect_key($isec, $keys) {
+		$argc = func_num_args();
+		
+		if ($argc > 2) {
+			for ($i = 1; !empty($isec) && $i < $argc; $i++) {
+				$arr = func_get_arg($i);
+				
+				foreach (array_keys($isec) as $key) {
+					if (!isset($arr[$key])) 
+						unset($isec[$key]);
+				}
+			}
+			
+			return $isec;
+		} else {
+			$res = array();
+			foreach (array_keys($isec) as $key) {
+				if (isset($keys[$key]))
+					$res[$key] = $isec[$key];
+			}
+		
+			return $res;
+		}
+	}
+}

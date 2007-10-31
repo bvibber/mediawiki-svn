@@ -304,6 +304,10 @@ $messages = array(
 'thisisdeleted'           => '還$1或閱之？',
 'viewdeleted'             => '閱$1之？',
 'restorelink'             => '$1已刪',
+'site-rss-feed'           => '$1之RSS源',
+'site-atom-feed'          => '$1之Atom源',
+'page-rss-feed'           => '「$1」之RSS源',
+'page-atom-feed'          => '「$1」之Atom源',
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => '文',
@@ -414,6 +418,7 @@ $2',
 'prefs-help-realname'        => '本名可略也。若爾供，則用以註汝之作。',
 'loginerror'                 => '登簿有誤',
 'prefs-help-email'           => '電郵可略也。以此通他人，或於共議處匿論。',
+'prefs-help-email-required'  => '需要電郵也。',
 'nocookiesnew'               => '簿已增而未登。登簿{{SITENAME}}須cookies，請釋之後登。',
 'nocookieslogin'             => '登簿{{SITENAME}}須cookies，請釋之後登。',
 'noname'                     => '簿名缺',
@@ -568,7 +573,9 @@ $2',
 
 # Account creation failure
 'cantcreateaccounttitle' => '新簿莫增',
-'cantcreateaccounttext'  => '子之IP <b>$1</b> 疑嘗惡，故見封。',
+'cantcreateaccount-text' => "子之IP <b>$1</b> 疑嘗惡，由[[User:$3|S3]]見封。
+
+$3見封，''$2''之故",
 
 # History pages
 'revhistory'          => '頁誌',
@@ -589,7 +596,7 @@ $2',
 'page_first'          => '首',
 'page_last'           => '末',
 'histlegend'          => '辨異：擇二孔後，按Enter、或點下鈕以辨之。<br />
-釋，（今）：與今審辨；（新）：與前審辨, M：校',
+釋，（今）：與今審辨；（新）：與前審辨',
 'deletedrev'          => '[刪矣]',
 'histfirst'           => '初',
 'histlast'            => '末',
@@ -625,6 +632,7 @@ $2',
 'revdelete-submit'            => '擇審使之',
 
 # Diffs
+'history-title'                => '「$1」之誌',
 'difference'                => '（辨異）',
 'loadingrev'                => '取審以辨…',
 'lineno'                    => '列$1：',
@@ -795,6 +803,10 @@ $2',
 'sourcefilename'             => '源名',
 'destfilename'               => '欲置檔名',
 'watchthisupload'            => '派哨',
+'upload-wasdeleted'          => "'''警：君欲重置斯檔乎？'''
+
+斯檔也，嘗去耳，其據如下，若異乎君意，當書無妨；若君檔同之，則請三思耳。",
+'filename-bad-prefix'        => '爾呈之檔，<strong>「$1」</strong>首矣，新機自編無意也。選有意檔名之。',
 
 'license-nopreview' => '（預覽無視也）',
 
@@ -853,6 +865,25 @@ $2',
 # Unwatched pages
 'unwatchedpages' => '無哨',
 
+# MIME search
+'mimesearch'         => 'MIME尋',
+'mimesearch-summary' => '此頁開濾檔之IME類。入： contenttype/subtype，例 <tt>image/jpeg</tt>。',
+'mimetype'           => 'MIME類：',
+'download'           => '下載',
+
+# List redirects
+'listredirects' => '示轉向之頁',
+
+# Unused templates
+'unusedtemplates'         => '未用之模',
+'unusedtemplates-summary' => '', # only translate this message to other languages if you have to change it
+'unusedtemplatestext'     => '斯文所示，咸為未用之模，請覆視之，以定存否。',
+'unusedtemplateswlh'      => '他連',
+
+# Random redirect
+'randomredirect'         => '隨意視向',
+'randomredirect-nopages' => '此名集無轉也。',
+
 # Statistics
 'statistics'             => '統計',
 'sitestats'              => '{{SITENAME}}統計',
@@ -868,8 +899,18 @@ $2',
 'doubleredirects'     => '複轉',
 'doubleredirectstext' => '此頁列全之複轉之頁，轉另轉之頁也。每行含複轉鏈，二之目標也，顯「真」目標，首應轉至也。',
 
+'brokenredirects'         => '斷轉',
+'brokenredirectstext'     => '下轉到無存之頁也：',
+'brokenredirects-edit'    => '(纂)',
+'brokenredirects-delete'  => '(刪)',
+
 'brokenredirects'     => '斷轉',
 'brokenredirectstext' => '不通',
+
+'withoutinterwiki' => '無語連之頁',
+'withoutinterwiki-header' => '下頁無語連到他通版也：',
+
+'fewestrevisions' => '少修之文',
 
 # Miscellaneous special pages
 'nbytes'                  => '$1位元組',
@@ -902,6 +943,8 @@ $2',
 'intl'                    => '通他語',
 'move'                    => '遷',
 'movethispage'            => '遷此頁',
+'notargettitle'           => '無向',
+'notargettext'            => '爾無向以實此動也。',
 
 'categoriespagetext' => '大典有門：',
 'version'            => '版',
@@ -1107,7 +1150,7 @@ $1',
 # What links here
 'whatlinkshere'       => '何通此',
 'whatlinkshere-title' => '通$1之頁',
-'notargettitle'       => '無向',
+'whatlinkshere-page'  => '頁:',
 'linklistsub'         => '（表通）',
 'linkshere'           => "下文通'''[[:$1]]''':",
 'nolinkshere'         => "無頁通'''[[:$1]]'''.",
@@ -1246,6 +1289,8 @@ $1',
 'tooltip-ca-watch'                => '置之於哨',
 'tooltip-ca-unwatch'              => '自哨站去之',
 'tooltip-search'                  => '索本站',
+'tooltip-search-go'               => '同題存直之去也',
+'tooltip-search-fulltext'         => '索該字之頁',
 'tooltip-p-logo'                  => '卷首',
 'tooltip-n-mainpage'              => '如卷首',
 'tooltip-n-portal'                => '關乎本策，君可為之事、及何以為之',
@@ -1293,6 +1338,8 @@ $1',
 'rcpatroldisabled'           => '不哨近易',
 'markedaspatrollederror'     => '未可哨',
 'markedaspatrollederrortext' => '揀之方可哨',
+'nppatroldisabled'           => '新哨已止',
+'nppatroldisabledtext'       => '暫止新哨之行',
 
 # Image deletion
 'deletedrevision'                 => '刪舊審$1',
@@ -1433,9 +1480,6 @@ $1',
 
 # Size units
 'size-bytes'     => '$1 位元組',
-'size-kilobytes' => '$1 KB',
-'size-megabytes' => '$1 MB',
-'size-gigabytes' => '$1 GB',
 
 # Live preview
 'livepreview-loading' => '在示…',
@@ -1450,11 +1494,6 @@ $1',
 # Watchlist editor
 'watchlistedit-numitems'       => '不計議論，爾哨計有題$1。',
 'watchlistedit-noitems'        => '爾哨無題也。',
-'watchlistedit-clear-title'    => '清哨',
-'watchlistedit-clear-legend'   => '清哨',
-'watchlistedit-clear-confirm'  => '清整哨也。篤撤之？亦[[Special:Watchlist/edit|治哨站]]也。',
-'watchlistedit-clear-submit'   => '清',
-'watchlistedit-clear-done'     => '爾哨已清。整題已去之。',
 'watchlistedit-normal-title'   => '治哨站',
 'watchlistedit-normal-legend'  => '從哨站撤之',
 'watchlistedit-normal-explain' => '此列有哨之題。要除題，揀之，擊撤題。亦[[Special:Watchlist/raw|治源哨]]或[[Special:Watchlist/clear|清哨]]也。',
@@ -1473,14 +1512,5 @@ $1',
 'watchlisttools-view'  => '察易',
 'watchlisttools-edit'  => '治哨站',
 'watchlisttools-raw'   => '治源哨',
-'watchlisttools-clear' => '清哨',
 
 );
-
-
-
-
-
-
-
-

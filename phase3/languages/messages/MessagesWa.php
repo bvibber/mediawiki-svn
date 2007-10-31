@@ -5,6 +5,8 @@
  * @addtogroup Language
  */
 
+$fallback = 'fr';
+
 # lists "no preferences", normall (long) walloon date,
 # short walloon date, and ISO format
 # MW_DATE_DMY is alias for long format, as it is dd mmmmm yyyy.
@@ -554,12 +556,6 @@ Do côp, vos n' såroz schaper vos candjmints asteure; motoit vos dvrîz copyî 
 'templatesused'             => 'Modeles eployîs e cisse pådje ci:',
 'template-protected'        => '(protedjî)',
 'template-semiprotected'    => '(dimey-protedjî)',
-'edittools'                 => '<div id="editpage-specialchars" class="plainlinks" style="margin-top:1px; border-width:1px; border-style:solid; border-color:#aaaaaa; padding:2px;">
-<small>Ahessåvès letes (clitchîz po les taper):
-<charinsert>Å å Ç ç É é Ê ê È è Î î Ô ô Û û</charinsert> ·
-<charinsert>«+» [+] [[+]] {{+}} </charinsert> ·
-<charinsert>– — ~ | € ° º</charinsert>
-</small></div>',
 'nocreatetitle'             => 'Ahivaedje di pådjes limité',
 'nocreatetext'              => "Cisse waibe ci a limité l' possibilité d' ahiver des novelès pådjes. Vos ploz rivni en erî eyet candjî ene pådje k' egzistêye dedja, oudonbén, [[Special:Userlogin|vos elodjî ou ahiver on conte d' uzeu]].",
 
@@ -766,7 +762,7 @@ Les groupes nén tchoezis èn seront nén candjîs. Vos ploz distchoezi on group
 'number_of_watching_users_pageview' => '[shuvou pa $1 uzeu(s)]',
 'rc_categories'                     => 'Limiter åzès categoreyes (separer avou des «|»)',
 'rc_categories_any'                 => 'Totes',
-'newsectionsummary'                 => '!!FUZZY!!Novele seccion:',
+'newsectionsummary'                 => 'Novele seccion: $1',
 
 # Recent changes linked
 'recentchangeslinked' => 'Candjmints aloyîs',
@@ -1663,7 +1659,6 @@ $1",
 'size-gigabytes' => '$1 Go',
 
 # Watchlist editor
-'watchlistedit-clear-submit' => 'Netyî',
 'watchlistedit-raw-titles'   => 'Tites:',
 
 );

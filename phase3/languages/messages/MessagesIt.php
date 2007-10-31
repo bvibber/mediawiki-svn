@@ -2,7 +2,22 @@
 /** Italian (Italiano)
  *
  * @addtogroup Language
+ *
+ * @author BrokenArrow
+ * @author G - ג
+ * @author Gianfranco
+ * @author Felis
+ * @author Broc
+ * @author .anaconda
+ * @author Nick1915
+ * @author Tonyfroio
+ * @author Cruccone
+ * @author Nike
+ * @author Martorell
+ * @author Cryptex
+ * @author SabineCretella
  */
+
 $namespaceNames = array(
 	NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Speciale',
@@ -273,9 +288,9 @@ I seguenti collegamenti sono in lingua inglese:
 'undelete_short'    => 'Recupera {{PLURAL:$1|una revisione|$1 revisioni}}',
 'protect'           => 'Blocca',
 'protect_change'    => 'modifica protezione',
-'protectthispage'   => 'Blocca questa pagina',
+'protectthispage'   => 'Proteggi questa pagina',
 'unprotect'         => 'Sblocca',
-'unprotectthispage' => 'Sblocca questa pagina',
+'unprotectthispage' => 'Togli la protezione a questa pagina',
 'newpage'           => 'Nuova pagina',
 'talkpage'          => 'Pagina di discussione',
 'talkpagelinktext'  => 'discussione',
@@ -429,7 +444,8 @@ Query: $2',
 'protectedinterface'   => "Questa pagina contiene un elemento che fa parte dell'interfaccia utente del software; è quindi protetta per evitare possibili abusi.",
 'editinginterface'     => "'''Attenzione:''' Il testo di questa pagina fa parte dell'interfaccia utente del sito. Tutte le modifiche apportate a questa pagina si riflettono sui messaggi visualizzati per tutti gli utenti.",
 'sqlhidden'            => '(la query SQL è stata nascosta)',
-'cascadeprotected'     => 'Su questa pagina non è possibile effettuare modifiche perché è stata inclusa {{PLURAL:$1|nella pagina indicata di seguito, che è stata protetta|nelle pagine indicate di seguito, che sono state protette}} selezionando la protezione "ricorsiva":',
+'cascadeprotected'     => 'Su questa pagina non è possibile effettuare modifiche perché è stata inclusa {{PLURAL:$1|nella pagina indicata di seguito, che è stata protetta|nelle pagine indicate di seguito, che sono state protette}} selezionando la protezione "ricorsiva":
+$2',
 'namespaceprotected'   => "Non si dispone dei permessi necessari per modificare le pagine del namespace '''$1'''.",
 'customcssjsprotected' => 'Non si dispone dei permessi necessari alla modifica della pagina, in quanto contiene le impostazioni personali di un altro utente.',
 'ns-specialprotected'  => 'Non è possibile modificare le pagine del namespace {{ns:special}}.',
@@ -568,8 +584,9 @@ Per abilitare l'invio di messaggi e-mail per questo accesso è necessario seguir
 
 Il blocco è stato imposto da $1. La motivazione del blocco è la seguente: ''$2''
 
-Scadenza del blocco: $6
-Intervallo di blocco: $7
+* Inizio del blocco: $8
+* Scadenza del blocco: $6
+* Intervallo di blocco: $7
 
 Se lo si desidera, è possibile contattare $1 o un altro [[{{MediaWiki:grouppage-sysop}}|amministratore]] per discutere del blocco.
 
@@ -581,7 +598,8 @@ La motivazione del blocco è la seguente:
 
 :''$2''
 
-Scadenza del blocco: $6
+* Inizio del blocco: $8
+* Scadenza del blocco: $6
 
 È possibile contattare $1 o un altro [[{{MediaWiki:grouppage-sysop}}|amministratore]] per discutere del blocco.
 
@@ -677,6 +695,9 @@ L'elenco delle relative cancellazioni viene riportato di seguito per comodità:"
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Impossibile registrare un utente',
+'cantcreateaccount-text' => "La creazione di nuovi account a partire da questo indirizzo IP (<b>$1</b>) è stata bloccata da [[User:$3|$3]].
+
+La motivazione del blocco fornita da $3 è la seguente: ''$2''",
 
 # History pages
 'revhistory'          => 'Cronologia delle versioni di questa pagina.',
@@ -757,6 +778,7 @@ Gli altri amministratori del sito potranno accedere comunque ai contenuti nascos
 'overlogpagetext' => "Qui di seguito viene presentata una lista delle cancellazioni e dei blocchi che riguardano contenuti oscurati agli amministratori. Consultare l'[[Special:Ipblocklist|elenco IP bloccati]] per l'elenco dei blocchi e dei bandi al momento operativi.",
 
 # Diffs
+'history-title'             => 'Cronologia delle modifiche di "$1"',
 'difference'                => '(Differenze fra le revisioni)',
 'loadingrev'                => 'caricamento revisione per differenze',
 'lineno'                    => 'Riga $1:',
@@ -790,6 +812,7 @@ Gli altri amministratori del sito potranno accedere comunque ai contenuti nascos
 # Preferences page
 'preferences'              => 'Preferenze',
 'mypreferences'            => 'le mie preferenze',
+'prefs-edits'              => 'Modifiche effettuate:',
 'prefsnologin'             => 'Accesso non effettuato',
 'prefsnologintext'         => "Per poter personalizzare le preferenze è necessario effettuare l'[[Special:Userlogin|accesso]].",
 'prefsreset'               => 'Le preferenze sono state ripristinate ai valori predefiniti.',
@@ -861,18 +884,21 @@ Gli altri amministratori del sito potranno accedere comunque ai contenuti nascos
 'userrights-available-remove' => 'È possibile rimuovere utenti dal gruppo $1.',
 
 # Groups
-'group'            => 'Gruppo:',
-'group-bot'        => 'Bot',
-'group-sysop'      => 'Amministratori',
-'group-bureaucrat' => 'Burocrati',
-'group-all'        => '(utenti)',
+'group'               => 'Gruppo:',
+'group-autoconfirmed' => 'Utenti autoconvalidati',
+'group-bot'           => 'Bot',
+'group-sysop'         => 'Amministratori',
+'group-bureaucrat'    => 'Burocrati',
+'group-all'           => '(utenti)',
 
-'group-sysop-member'      => 'Amministratore',
-'group-bureaucrat-member' => 'Burocrate',
+'group-autoconfirmed-member' => 'Utente autoconvalidato',
+'group-sysop-member'         => 'Amministratore',
+'group-bureaucrat-member'    => 'Burocrate',
 
-'grouppage-bot'        => 'Project:Bot',
-'grouppage-sysop'      => 'Project:Amministratori',
-'grouppage-bureaucrat' => 'Project:Burocrati',
+'grouppage-autoconfirmed' => '{{ns:project}}:Utenti autoconvalidati',
+'grouppage-bot'           => 'Project:Bot',
+'grouppage-sysop'         => 'Project:Amministratori',
+'grouppage-bureaucrat'    => 'Project:Burocrati',
 
 # User rights log
 'rightslog'      => 'Diritti degli utenti',
@@ -901,9 +927,11 @@ Gli altri amministratori del sito potranno accedere comunque ai contenuti nascos
 'number_of_watching_users_pageview' => '[osservata da $1 utenti]',
 'rc_categories'                     => 'Limita alle categorie (separate da "|")',
 'rc_categories_any'                 => 'Qualsiasi',
+'newsectionsummary'                 => '/* $1 */ nuova sezione',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Modifiche correlate',
+'recentchangeslinked-title'    => 'Modifiche correlate a $1',
 'recentchangeslinked-noresult' => 'Nessuna modifica alle pagine collegate nel periodo specificato.',
 'recentchangeslinked-summary'  => "Questa pagina speciale mostra le modifiche più recenti alle pagine collegate a quella specificata. Le pagine osservate sono evidenziate in '''grassetto'''.",
 
@@ -958,7 +986,7 @@ Se si dispone dell'immagine nella risoluzione originale, si prega di caricarla. 
 'fileexists-forbidden'        => 'Un file con questo nome esiste già. Tornare indietro e modificare il nome con il quale caricare il file. [[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => "Un file con questo nome esiste già nell'archivio di risorse multimediali condivise. Tornare indietro e modificare il nome con il quale caricare il file. [[Image:$1|thumb|center|$1]]",
 'successfulupload'            => 'Caricamento completato',
-'uploadwarning'               => 'Avviso di Upload',
+'uploadwarning'               => 'Avviso di caricamento',
 'savefile'                    => 'Salva file',
 'uploadedimage'               => 'ha caricato "[[$1]]"',
 'overwroteimage'              => 'ha caricato una nuova versione di "[[$1]]"',
@@ -971,7 +999,25 @@ Se si dispone dell'immagine nella risoluzione originale, si prega di caricarla. 
 'destfilename'                => 'Nome del file di destinazione',
 'watchthisupload'             => 'Aggiungi agli osservati speciali',
 'filewasdeleted'              => 'Un file con questo nome è stato già caricato e cancellato in passato. Verificare $1 prima di caricarlo di nuovo.',
+'upload-wasdeleted'           => "'''Attenzione: stai caricando un file che in precedenza è stato cancellato.'''
+
+Verifica per favore l'opportunità di continuare con il caricamento di questo file.
+Per tua comodità qui c'è la registrazione della cancellazione:",
 'filename-bad-prefix'         => 'Il nome del file che stai caricando inizia con <strong>"$1"</strong>, che è un nome non-descrittivo tipicamente assegnato automaticamente dalle fotocamere digitali. Per favore scegli un nome più descrittivo per il tuo file.',
+'filename-prefix-blacklist'   => ' #<!-- lascia questa riga esattamente com\'è --> <pre>
+# La sintassi è la seguente: 
+#   * Tutto ciò che segue il carattere "#" sino alla fine della riga è un commento
+#   * Ogni riga non vuota è un prefisso per nomi di file tipici assegnati automaticamente da fotocamere digitali
+CIMG # Casio
+DSC_ # Nikon
+DSCF # Fuji
+DSCN # Nikon
+DUW # alcuni telefonini
+IMG # generic
+JD # Jenoptik
+MGP # Pentax
+PICT # misc.
+ #</pre> <!-- lascia questa riga esattamente com\'è -->',
 
 'upload-proto-error'      => 'Protocollo errato',
 'upload-proto-error-text' => "Per l'upload remoto è necessario specificare URL che iniziano con <code>http://</code> oppure <code>ftp://</code>.",
@@ -1026,6 +1072,7 @@ Se si dispone dell'immagine nella risoluzione originale, si prega di caricarla. 
 'imagelist_name'            => 'Nome',
 'imagelist_user'            => 'Utente',
 'imagelist_size'            => 'Dimensione in byte',
+'imagelist_description'     => 'Descrizione',
 'imagelist_search_for'      => 'Ricerca immagini per nome:',
 
 # File reversion
@@ -1039,8 +1086,17 @@ Se si dispone dell'immagine nella risoluzione originale, si prega di caricarla. 
 'filerevert-badversion'     => 'Non esistono versioni locali precedenti del file con il timestamp richiesto.',
 
 # File deletion
+'filedelete'             => 'Cancella $1',
+'filedelete-legend'      => 'Cancella il file',
+'filedelete-intro'       => "Stai per cancellare '''[[Media:$1|$1]]'''.",
+'filedelete-intro-old'   => '<span class="plainlinks">Stai cancellando la versione di \'\'\'[[Media:$1|$1]]\'\'\' del [$4 $3, $2].</span>',
+'filedelete-comment'     => 'Motivazione:',
+'filedelete-submit'      => 'Cancella',
 'filedelete-success'     => "Il file '''$1''' è stato cancellato.",
 'filedelete-success-old' => '<span class="plainlinks">La versione del $3, $2 del file \'\'\'[[Media:$1|$1]]\'\'\' è stata cancellata.</span>',
+'filedelete-nofile'      => 'In questo sito non esiste un file $1',
+'filedelete-nofile-old'  => "In archivio non ci sono versioni di '''$1''' con le caratteristiche indicate",
+'filedelete-iscurrent'   => 'Stai provando a cancellare la versione più recente di questo file. Per cortesia, prima riportalo ad una versione precedente.',
 
 # MIME search
 'mimesearch'         => 'Ricerca in base al tipo MIME',
@@ -1048,7 +1104,8 @@ Se si dispone dell'immagine nella risoluzione originale, si prega di caricarla. 
 'mimetype'           => 'Tipo MIME:',
 
 # Unwatched pages
-'unwatchedpages' => 'Pagine non osservate',
+'unwatchedpages'         => 'Pagine non osservate',
+'unwatchedpages-summary' => 'Pagine NON sotto osservazione',
 
 # List redirects
 'listredirects' => 'Elenco dei redirect',
@@ -1144,6 +1201,8 @@ Ciascuna riga contiene i collegamenti al primo ed al secondo redirect, oltre all
 'movethispage'            => 'Sposta questa pagina',
 'unusedimagestext'        => "<p>Si noti che è possibile realizzare collegamenti ai file da altri siti, usando direttamente la URL; questi potrebbero quindi essere utilizzati anche se compaiono nell'elenco.</p>",
 'unusedcategoriestext'    => 'Le pagine delle categorie indicate di seguito sono state create ma non contengono nessuna pagina né sottocategoria.',
+'notargettitle'           => 'Dati mancanti',
+'notargettext'            => "Non è stata indicata una pagina o un utente in relazione al quale eseguire l'operazione richiesta.",
 
 # Book sources
 'booksources'               => 'Fonti librarie',
@@ -1228,7 +1287,7 @@ Se in un secondo tempo si desidera eliminare la pagina dalla lista degli osserva
 'unwatch'              => 'Non seguire',
 'unwatchthispage'      => 'Smetti di seguire',
 'notanarticle'         => 'Questa pagina non è una voce',
-'watchnochange'        => 'Nessuna delle pagine osservate è stata modificata nel periodo considerato.',
+'watchnochange'        => 'Nessuna delle pagine osservate è stata modificata nel periodo selezionato.',
 'watchlist-details'    => 'La lista degli osservati speciali contiene {{PLURAL:$1|una pagina (e la rispettiva pagina di discussione)|$1 pagine (e le rispettive pagine di discussione)}}.',
 'wlheader-enotif'      => '* La notifica via e-mail è attiva.',
 'wlheader-showupdated' => "* Le pagine che sono state modificate dopo l'ultima visita sono evidenziate in '''grassetto'''",
@@ -1359,11 +1418,11 @@ Le impostazioni correnti per la pagina sono <strong>$1</strong>:',
 'viewdeletedpage'              => 'Visualizza le pagine cancellate',
 'undeletepagetext'             => "Le pagine indicate di seguito sono state cancellate, ma sono ancora in archivio e pertanto possono essere recuperate. L'archivio può essere svuotato periodicamente.",
 'undeleteextrahelp'            => "Per recuperare l'intera pagina, lasciare tutte le caselle deselezionate e fare clic su '''''Ripristina'''''. Per effettuare un ripristino selettivo, selezionare le caselle corrispondenti alle revisioni da ripristinare e fare clic su '''''Ripristina'''''. Facendo clic su '''''Reset''''' verranno deselezionate tutte le caselle e svuotato lo spazio per il commento.",
-'undeleterevisions'            => '$1 revisioni in archivio',
+'undeleterevisions'            => '{{PLURAL:$1|Una revisione|$1 revisioni}} in archivio',
 'undeletehistory'              => 'Recuperando questa pagina, tutte le sue revisioni verranno inserite di nuovo nella relativa cronologia. Se dopo la cancellazione è stata creata una nuova pagina con lo stesso titolo, le revisioni recuperate saranno inserite nella cronologia e la versione attualmente online della pagina non verrà modificata.',
 'undeleterevdel'               => "Il ripristino non verrà effettuato se dovesse avere come conseguenza la cancellazione parziale della versione corrente della pagina. In tal caso, è necessario rimuovere il segno di spunta o l'oscuramento dalle revisioni cancellate più recenti. Le revisioni dei file per i quali non si possiede il permesso di accesso non verranno ripristinate.",
 'undeletehistorynoadmin'       => 'La pagina è stata cancellata. Il motivo della cancellazione è indicato di seguito, assieme ai dati degli utenti che avevano modificato la pagina prima della cancellazione. Il testo contenuto nelle revisioni cancellate è disponibile solo agli amministratori.',
-'undelete-revision'            => 'Revisione cancellata della pagina $1, inserita il $2',
+'undelete-revision'            => 'Revisione cancellata della pagina $1, inserita il $2 da $3:',
 'undeleterevision-missing'     => "Revisione errata o mancante. Il collegamento è errato oppure la revisione è stata già ripristinata o eliminata dall'archivio.",
 'undeletebtn'                  => 'Ripristina',
 'undeletecomment'              => 'Commento:',
@@ -1419,8 +1478,7 @@ $1',
 
 # What links here
 'whatlinkshere'       => 'Puntano qui',
-'notargettitle'       => 'Dati mancanti',
-'notargettext'        => "Non è stata indicata una pagina o un utente in relazione al quale eseguire l'operazione richiesta.",
+'whatlinkshere-title' => 'Pagine che puntano a $1',
 'linklistsub'         => '(Lista dei collegamenti)',
 'linkshere'           => "Le seguenti pagine contengono dei collegamenti a '''[[:$1]]''':",
 'nolinkshere'         => "Nessuna pagina contiene collegamenti che puntano a '''[[:$1]]'''.",
@@ -1659,6 +1717,8 @@ Tutte le operazioni di importazione trans-wiki sono registrate nel [[Special:Log
 'tooltip-ca-watch'                => 'Aggiungi questa pagina alla tua lista di osservati speciali',
 'tooltip-ca-unwatch'              => 'Elimina questa pagina dalla tua lista di osservati speciali',
 'tooltip-search'                  => "Cerca all'interno di {{SITENAME}}",
+'tooltip-search-go'               => 'Vai a una pagina con il titolo indicato, se esiste',
+'tooltip-search-fulltext'         => 'Cerca il testo indicato nelle pagine',
 'tooltip-p-logo'                  => 'Pagina principale',
 'tooltip-n-mainpage'              => 'Visita la pagina principale',
 'tooltip-n-portal'                => 'Descrizione del progetto, cosa puoi fare, dove trovare le cose',
@@ -1694,6 +1754,7 @@ Tutte le operazioni di importazione trans-wiki sono registrate nel [[Special:Log
 'tooltip-compareselectedversions' => 'Guarda le differenze tra le due versioni selezionate di questa pagina.',
 'tooltip-watch'                   => 'Aggiungi questa pagina alla lista degli osservati speciali',
 'tooltip-recreate'                => 'Ricrea la pagina anche se è stata cancellata',
+'tooltip-upload'                  => 'Inizia il caricamento',
 
 # Stylesheets
 'common.css'   => '/* Gli stili CSS inseriti qui si applicano a tutte le skin */',
@@ -1756,6 +1817,8 @@ Tutte le operazioni di importazione trans-wiki sono registrate nel [[Special:Log
 'markedaspatrollederror'              => 'Impossibile contrassegnare la voce come verificata',
 'markedaspatrollederrortext'          => 'Occorre specificare una revisione da contrassegnare come verificata.',
 'markedaspatrollederror-noautopatrol' => 'Non si dispone dei permessi necessari per segnare le proprie modifiche come verificate.',
+'nppatroldisabled'                    => 'Verifica delle pagine più recenti disabilitata',
+'nppatroldisabledtext'                => 'La funzione di verifica delle pagine più recenti non è attiva al momento.',
 
 # Patrol log
 'patrol-log-page' => 'Modifiche verificate',
@@ -1782,9 +1845,11 @@ $1',
 'mediawarning'         => "'''Attenzione''': Questo file può contenere codice maligno; la sua esecuzione può danneggiare il proprio sistema informatico.<hr />",
 'imagemaxsize'         => 'Dimensione massima delle immagini sulle relative pagine di discussione:',
 'thumbsize'            => 'Grandezza delle miniature:',
+'widthheightpage'      => '$1×$2, $3 pagine',
 'file-info'            => 'Dimensioni: $1, tipo MIME: $2',
 'file-info-size'       => '($1 × $2 pixel, dimensioni: $3, tipo MIME: $4)',
 'file-nohires'         => '<small>Non sono disponibili versioni a risoluzione più elevata.</small>',
+'svg-long-desc'        => '(file in formato SVG, dimensioni nominali $1 × $2 pixel, dimensione del file: $3)',
 'show-big-image'       => 'Versione ad alta risoluzione',
 'show-big-image-thumb' => '<small>Dimensioni di questa anteprima: $1 × $2 pixel</small>',
 
@@ -2185,11 +2250,6 @@ Usare l\'anteprima standard.',
 # Watchlist editor
 'watchlistedit-numitems'       => 'La lista degli osservati speciali contiene {{PLURAL:$1|una pagina (e la rispettiva pagina di discussione)|$1 pagine (e le rispettive pagine di discussione)}}.',
 'watchlistedit-noitems'        => 'La lista degli osservati speciali è vuota.',
-'watchlistedit-clear-title'    => 'Svuotamento pagine osservate',
-'watchlistedit-clear-legend'   => 'Svuota la lista delle pagine osservate',
-'watchlistedit-clear-confirm'  => 'Questa operazione eliminerà tutte le pagine dalla lista degli osservati speciali. Proseguire? Si noti che è anche possibile [[Special:Watchlist/edit|eliminare le pagine singolarmente]].',
-'watchlistedit-clear-submit'   => 'Svuota',
-'watchlistedit-clear-done'     => 'La lista degli osservati speciali è stata svuotata. Tutte le pagine sono state eliminate.',
 'watchlistedit-normal-title'   => 'Modifica osservati speciali',
 'watchlistedit-normal-legend'  => 'Eliminazione di pagine dagli osservati speciali',
 'watchlistedit-normal-explain' => "Di seguito sono elencate tutte le pagine osservate. Per rimuovere una o più pagine dalla lista, selezionare le caselle relative e fare clic sul pulsante 'Elimina pagine' in fondo all'elenco. Si noti che è anche possibile [[Special:Watchlist/raw|modificare la lista in formato testuale]] oppure [[Special:Watchlist/clear|svuotarla completamente]].",
@@ -2205,9 +2265,8 @@ Usare l\'anteprima standard.',
 'watchlistedit-raw-removed'    => '{{PLURAL:$1|È stata eliminata una pagina|Sono state eliminate $1 pagine}}:',
 
 # Watchlist editing tools
-'watchlisttools-view'  => 'Visualizza le modifiche pertinenti',
-'watchlisttools-edit'  => 'Visualizza e modifica la lista',
-'watchlisttools-raw'   => 'Modifica la lista in formato testo',
-'watchlisttools-clear' => 'Svuota la lista',
+'watchlisttools-view' => 'Visualizza le modifiche pertinenti',
+'watchlisttools-edit' => 'Visualizza e modifica la lista',
+'watchlisttools-raw'  => 'Modifica la lista in formato testo',
 
 );

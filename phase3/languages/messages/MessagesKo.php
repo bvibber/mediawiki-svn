@@ -556,6 +556,7 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'permissionserrorstext'     => '해당 명령을 수행할 권한이 없습니다. 다음의 이유를 확인해보세요:',
 
 # "Undo" feature
+'undo-success' => '이 편집을 되돌리려면 아래의 변경되는 사항을 확인한 후 저장해주세요.',
 'undo-failure' => '중간의 다른 편집과 충돌하여 이 편집을 되돌릴 수 없습니다.',
 'undo-summary' => '[[Special:Contributions/$2|$2]]([[User talk:$2|토론]])의 $1판 편집을 되돌림',
 
@@ -1173,6 +1174,10 @@ $NEWPAGE
 'uclinks'       => '최근 $1개 보기; 최근 $2일 보기',
 'uctop'         => ' (최신)',
 
+'sp-contributions-newest'   => '마지막',
+'sp-contributions-oldest'   => '처음',
+'sp-contributions-newer'    => '이전 $1개',
+'sp-contributions-older'    => '다음 $1개',
 'sp-contributions-blocklog' => '차단 기록',
 'sp-contributions-username' => 'IP 주소 혹은 사용자 이름:',
 

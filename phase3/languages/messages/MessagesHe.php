@@ -113,8 +113,18 @@ $magicWords = array(
 	'img_width'             => array( 1,    '$1px',                                 '$1px'                   ),
 	'img_center'            => array( 1,    'מרכז',                                 'center', 'centre'       ),
 	'img_framed'            => array( 1,    'ממוסגר', 'מסגרת',                      'framed', 'enframed', 'frame' ),
+	'img_frameless'         => array( 1,    'לא ממוסגר', 'ללא מסגרת',              'frameless'              ),
 	'img_page'              => array( 1,    'דף=$1', 'דף $1',                       'page=$1', 'page $1'     ),
+	'img_upright'           => array( 1,    'ימין למעלה', 'ימין למעלה=$1', 'ימין למעלה $1', 'upright', 'upright=$1', 'upright $1' ),
 	'img_border'            => array( 1,    'גבולות', 'גבול',                       'border'                 ),
+	'img_baseline'          => array( 1,    'שורת הבסיס',                           'baseline'               ),
+	'img_sub'               => array( 1,    'תחתי',                                 'sub'                    ),
+	'img_super'             => array( 1,    'עילי',                                 'super', 'sup'           ),
+	'img_top'               => array( 1,    'למעלה',                                'top'                    ),
+	'img_text_top'          => array( 1,    'בראש הטקסט',                           'text-top'               ),
+	'img_middle'            => array( 1,    'באמצע',                                'middle'                 ),
+	'img_bottom'            => array( 1,    'למטה',                                 'bottom'                 ),
+	'img_text_bottom'       => array( 1,    'בתחתית הטקסט',                         'text-bottom'            ),
 	'int'                   => array( 0,    'הודעה:',                               'INT:'                   ),
 	'sitename'              => array( 1,    'שם האתר',                              'SITENAME'               ),
 	'ns'                    => array( 0,    'מרחב שם:',                             'NS:'                    ),
@@ -131,6 +141,11 @@ $magicWords = array(
 	'localweek'             => array( 1,    'שבוע מקומי',                           'LOCALWEEK'              ),
 	'localdow'              => array( 1,    'מספר יום מקומי',                       'LOCALDOW'               ),
 	'revisionid'            => array( 1,    'מזהה גרסה',                            'REVISIONID'             ),
+	'revisionday'           => array( 1,    'יום גרסה',                             'REVISIONDAY'            ),
+	'revisionday2'          => array( 1,    'יום גרסה 2',                           'REVISIONDAY2'           ),
+	'revisionmonth'         => array( 1,    'חודש גרסה',                            'REVISIONMONTH'          ),
+	'revisionyear'          => array( 1,    'שנת גרסה',                             'REVISIONYEAR'           ),
+	'revisiontimestamp'     => array( 1,    'זמן גרסה',                             'REVISIONTIMESTAMP'      ),
 	'plural'                => array( 0,    'רבים:',                                'PLURAL:'                ),
 	'fullurl'               => array( 0,    'כתובת מלאה:',                          'FULLURL:'               ),
 	'fullurle'              => array( 0,    'כתובת מלאה מקודד:',                    'FULLURLE:'              ),
@@ -157,6 +172,82 @@ $magicWords = array(
 	'padright'              => array( 0,    'ריפוד מימין',                       'PADRIGHT'               ),
 	'special'               => array( 0,    'מיוחד',                             'special'                ),
 	'defaultsort'           => array( 1,    'מיון רגיל:',                        'DEFAULTSORT:'           ),
+	'filepath'              => array( 0,    'נתיב לקובץ:',                       'FILEPATH:'              ),
+);
+
+$specialPageAliases = array(
+	'DoubleRedirects'           => array( 'הפניות_כפולות' ),
+	'BrokenRedirects'           => array( 'הפניות_לא_תקינות', 'הפניות_שבורות' ),
+	'Disambiguations'           => array( 'פירושונים', 'דפי_פירושונים' ),
+	'Userlogin'                 => array( 'כניסה_לחשבון', 'כניסה', 'כניסה_/_הרשמה_לחשבון' ),
+	'Userlogout'                => array( 'יציאה_מהחשבון', 'יציאה' ),
+	'Preferences'               => array( 'העדפות', 'ההעדפות_שלי' ),
+	'Watchlist'                 => array( 'רשימת_המעקב', 'רשימת_מעקב', 'רשימת_המעקב_שלי' ),
+	'Recentchanges'             => array( 'שינויים_אחרונים' ),
+	'Upload'                    => array( 'העלאה', 'העלאת_קובץ_לשרת' ),
+	'Imagelist'                 => array( 'רשימת_תמונות', 'תמונות' ),
+	'Newimages'                 => array( 'תמונות_חדשות', 'גלריית_תמונות_חדשות' ),
+	'Listusers'                 => array( 'רשימת_משתמשים', 'משתמשים' ),
+	'Statistics'                => array( 'סטטיסטיקות' ),
+	'Randompage'                => array( 'אקראי', 'דף_אקראי' ),
+	'Lonelypages'               => array( 'דפים_יתומים' ),
+	'Uncategorizedpages'        => array( 'דפים_חסרי_קטגוריה' ),
+	'Uncategorizedcategories'   => array( 'קטגוריות_חסרות_קטגוריה' ),
+	'Uncategorizedimages'       => array( 'תמונות_חסרות_קטגוריה' ),
+	'Uncategorizedtemplates'    => array( 'תבניות_חסרות_קטגוריות' ),
+	'Unusedcategories'          => array( 'קטגוריות_שאינן_בשימוש' ),
+	'Unusedimages'              => array( 'תמונות_שאינן_בשימוש' ),
+	'Wantedpages'               => array( 'דפים_מבוקשים' ),
+	'Wantedcategories'          => array( 'קטגוריות_מבוקשות' ),
+	'Mostlinked'                => array( 'הדפים_המקושרים_ביותר' ),
+	'Mostlinkedcategories'      => array( 'הקטגוריות_המקושרות_ביותר' ),
+	'Mostlinkedtemplates'       => array( 'התבניות_המקושרות_ביותר' ),
+	'Mostcategories'            => array( 'הקטגוריות_הרבות_ביותר', 'הדפים_מרובי-הקטגוריות_ביותר' ),
+	'Mostimages'                => array( 'התמונות_המקושרות_ביותר' ),
+	'Mostrevisions'             => array( 'הגרסאות_הרבות_ביותר', 'הדפים_בעלי_מספר_העריכות_הגבוה_ביותר' ),
+	'Fewestrevisions'           => array( 'הגרסאות_המעטות_ביותר', 'הדפים_בעלי_מספר_העריכות_הנמוך_ביותר' ),
+	'Shortpages'                => array( 'דפים_קצרים' ),
+	'Longpages'                 => array( 'דפים_ארוכים' ),
+	'Newpages'                  => array( 'דפים_חדשים' ),
+	'Ancientpages'              => array( 'דפים_מוזנחים' ),
+	'Deadendpages'              => array( 'דפים_ללא_קישורים' ),
+	'Protectedpages'            => array( 'דפים_מוגנים' ),
+	'Allpages'                  => array( 'כל_הדפים' ),
+	'Prefixindex'               => array( 'דפים_המתחילים_ב' ) ,
+	'Ipblocklist'               => array( 'רשימת_חסומים', 'רשימת_משתמשים_חסומים', 'משתמשים_חסומים' ),
+	'Specialpages'              => array( 'דפים_מיוחדים' ),
+	'Contributions'             => array( 'תרומות', 'תרומות_המשתמש' ),
+	'Emailuser'                 => array( 'שליחת_דואר_למשתמש' ),
+	'Whatlinkshere'             => array( 'דפים_המקושרים_לכאן' ),
+	'Recentchangeslinked'       => array( 'שינויים_בדפים_המקושרים' ),
+	'Movepage'                  => array( 'העברת_דף', 'העברה' ),
+	'Blockme'                   => array( 'חסום_אותי' ),
+	'Booksources'               => array( 'משאבי_ספרות', 'משאבי_ספרות_חיצוניים' ),
+	'Categories'                => array( 'קטגוריות', 'רשימת_קטגוריות' ),
+	'Export'                    => array( 'ייצוא', 'ייצוא_דפים' ),
+	'Version'                   => array( 'גרסה', 'גרסת_התוכנה' ),
+	'Allmessages'               => array( 'הודעות_המערכת' ),
+	'Log'                       => array( 'יומנים' ),
+	'Blockip'                   => array( 'חסימת_משתמש', 'חסימה' ),
+	'Undelete'                  => array( 'צפיה_בדפים_מחוקים' ),
+	'Import'                    => array( 'ייבוא', 'ייבוא_דפים' ),
+	'Lockdb'                    => array( 'נעילת_בסיס_הנתונים' ),
+	'Unlockdb'                  => array( 'שחרור_בסיס_הנתונים_מנעילה' ),
+	'Userrights'                => array( 'ניהול_הרשאות_משתמש' ),
+	'MIMEsearch'                => array( 'חיפוש_MIME' ),
+	'Unwatchedpages'            => array( 'דפים_שאינם_במעקב' ),
+	'Listredirects'             => array( 'רשימת_הפניות', 'הפניות' ),
+	'Revisiondelete'            => array( 'מחיקת_ושחזור_גרסאות' ),
+	'Unusedtemplates'           => array( 'תבניות_שאינן_בשימוש' ),
+	'Randomredirect'            => array( 'הפניה_אקראית' ),
+	'Mypage'                    => array( 'הדף_שלי', 'דף_המשתמש_שלי' ),
+	'Mytalk'                    => array( 'דף_השיחה_שלי' ),
+	'Mycontributions'           => array( 'התרומות_שלי' ),
+	'Listadmins'                => array( 'רשימת_מפעילים' ),
+	'Popularpages'              => array( 'דפים_פופולריים' ),
+	'Search'                    => array( 'חיפוש' ),
+	'Resetpass'                 => array( 'איפוס_סיסמה' ),
+	'Withoutinterwiki'          => array( 'דפים_ללא_קישורי_שפה' ),
 );
 
 $namespaceNames = array(
@@ -185,7 +276,7 @@ $messages = array(
 'tog-underline'               => 'סמן קישורים בקו תחתי',
 'tog-highlightbroken'         => 'סמן קישורים לדפים שלא נכתבו <a href="" class="new">כך</a> (או: כך<a href="" class="internal">?</a>))',
 'tog-justify'                 => 'ישר פסקאות',
-'tog-hideminor'               => 'הסתר שינויים משניים ברשימת השינויים האחרונים',
+'tog-hideminor'               => 'הסתרת שינויים משניים ברשימת השינויים האחרונים',
 'tog-extendwatchlist'         => 'הרחב את רשימת המעקב כך שתציג את כל השינויים המתאימים (אחרת: את השינוי האחרון בכל דף בלבד)',
 'tog-usenewrc'                => 'רשימת שינויים אחרונים משופרת (JavaScript)',
 'tog-numberheadings'          => 'מספר כותרות אוטומטית',
@@ -285,8 +376,8 @@ $messages = array(
 'pagecategories'        => '{{plural:$1|קטגוריה|קטגוריות}}',
 'category_header'       => 'דפים בקטגוריה "$1"',
 'subcategories'         => 'קטגוריות משנה',
-'category-media-header' => 'קבצי מדיה בקטגוריה "$1"',
-'category-empty'        => "''קטגוריה זו אינה כוללת דפים או קבצי מדיה.''",
+'category-media-header' => 'קובצי מדיה בקטגוריה "$1"',
+'category-empty'        => "'''קטגוריה זו אינה כוללת דפים או קובצי מדיה.'''",
 
 'mainpagetext'      => "'''תוכנת מדיה־ויקי הותקנה בהצלחה.'''",
 'mainpagedocfooter' => 'היעזרו ב[http://meta.wikimedia.org/wiki/Help:Contents מדריך למשתמש] למידע על שימוש בתוכנת הוויקי.
@@ -347,18 +438,18 @@ $messages = array(
 'specialpage'       => 'דף מיוחד',
 'personaltools'     => 'כלים אישיים',
 'postcomment'       => 'הוסף הערה לדף השיחה',
-'articlepage'       => 'צפיה בדף התוכן',
+'articlepage'       => 'צפייה בדף התוכן',
 'talk'              => 'שיחה',
 'views'             => 'צפיות',
 'toolbox'           => 'תיבת כלים',
-'userpage'          => 'צפיה בדף המשתמש',
-'projectpage'       => 'צפיה בדף המיזם',
-'imagepage'         => 'צפיה בדף התמונה',
-'mediawikipage'     => 'צפיה בדף ההודעה',
-'templatepage'      => 'צפיה בדף התבנית',
-'viewhelppage'      => 'צפיה בדף העזרה',
-'categorypage'      => 'צפיה בדף הקטגוריה',
-'viewtalkpage'      => 'צפיה בדף השיחה',
+'userpage'          => 'צפייה בדף המשתמש',
+'projectpage'       => 'צפייה בדף המיזם',
+'imagepage'         => 'צפייה בדף התמונה',
+'mediawikipage'     => 'צפייה בדף ההודעה',
+'templatepage'      => 'צפייה בדף התבנית',
+'viewhelppage'      => 'צפייה בדף העזרה',
+'categorypage'      => 'צפייה בדף הקטגוריה',
+'viewtalkpage'      => 'צפייה בדף השיחה',
 'otherlanguages'    => 'שפות אחרות',
 'redirectedfrom'    => '(הופנה מהדף $1)',
 'redirectpagesub'   => 'דף הפניה',
@@ -407,9 +498,9 @@ $messages = array(
 'ok'                      => 'אישור',
 'pagetitle'               => '$1 – {{SITENAME}}',
 'retrievedfrom'           => '<br /><span style="font-size: smaller;">מקור: $1</span>',
-'youhavenewmessages'      => 'יש לכם $1 ($2).',
+'youhavenewmessages'      => 'יש לך $1 ($2).',
 'newmessageslink'         => 'הודעות חדשות',
-'newmessagesdifflink'     => 'שינוי אחרון',
+'newmessagesdifflink'     => 'השוואה לגרסה הקודמת',
 'youhavenewmessagesmulti' => 'יש לך הודעות חדשות ב־$1',
 'editsection'             => 'עריכה',
 'editold'                 => 'עריכה',
@@ -457,11 +548,11 @@ $messages = array(
 <th colspan="2" style="background-color: #F8F8F8; text-align: center;">מידע על השגיאה</th>
 </tr>
 <tr>
-<td>השאילתה האחרונה שבוצעה לבסיס הנתונים היתה:</td>
+<td>השאילתה האחרונה שבוצעה לבסיס הנתונים הייתה:</td>
 <td style="direction: ltr;">$1</td>
 </tr>
 <tr>
-<td>הפונקציה הקוראת היתה:</td>
+<td>הפונקציה הקוראת הייתה:</td>
 <td style="direction: ltr;">$2</td>
 </tr>
 <tr>
@@ -475,11 +566,11 @@ $messages = array(
 <th colspan="2" style="background-color: #F8F8F8; text-align: center;">מידע על השגיאה</th>
 </tr>
 <tr>
-<td>השאילתה האחרונה שבוצעה לבסיס הנתונים היתה:</td>
+<td>השאילתה האחרונה שבוצעה לבסיס הנתונים הייתה:</td>
 <td style="direction: ltr;">$1</td>
 </tr>
 <tr>
-<td>הפונקציה הקוראת היתה:</td>
+<td>הפונקציה הקוראת הייתה:</td>
 <td style="direction: ltr;">$2</td>
 </tr>
 <tr>
@@ -578,6 +669,7 @@ $2',
 'prefs-help-realname'        => 'השם האמיתי הוא אופציונאלי, ואם תבחרו לספקו הוא ישמש לייחוס עבודתכם אליכם.',
 'loginerror'                 => 'שגיאה בכניסה לאתר',
 'prefs-help-email'           => 'כתובת דואר אלקטרוני היא אופציונאלית, אך אם תבחרו לספקה היא תאפשר לאחרים לשלוח לכם מסר דרך דף המשתמש או דף השיחה שלכם ללא צורך לחשוף את כתובתכם.',
+'prefs-help-email-required'  => 'כתובת דואר אלקטרוני נדרשת לכתיבה באתר.',
 'nocookiesnew'               => 'נוצר חשבון המשתמש שלכם, אך לא נכנסתם כמשתמשים רשומים למערכת כיוון שניטרלתם את העוגיות, ש{{grammar:תחילית|{{SITENAME}}}} משתמש בהן לצורך כניסה למערכת. אנא הפעילו אותן מחדש, ולאחר מכן תוכלו להיכנס למערכת עם שם המשתמש והסיסמה החדשים שלכם.',
 'nocookieslogin'             => 'לא הצלחתם להיכנס למערכת כמשתמשים רשומים כיוון שניטרלתם את העוגיות, ש{{grammar:תחילית|{{SITENAME}}}} משתמש בהן לצורך כניסה למערכת. אנא הפעילו אותן מחדש, ולאחר מכן תוכלו להיכנס למערכת עם שם המשתמש והסיסמה שלכם.',
 'noname'                     => 'לא הזנתם שם משתמש חוקי',
@@ -736,7 +828,7 @@ $2',
 'explainconflict'           => "משתמש אחר שינה את הדף מאז שהתחלתם לערוך אותו. חלון העריכה העליון מכיל את הטקסט בדף כפי שהוא עתה. השינויים שלכם מוצגים בחלון העריכה התחתון. עליכם למזג את השינויים שלכם לתוך הטקסט הקיים. '''רק''' הטקסט בחלון העריכה העליון יישמר כשתשמרו את הדף.",
 'yourtext'                  => 'הטקסט שלך',
 'storedversion'             => 'גרסה שמורה',
-'nonunicodebrowser'         => "'''אזהרה: הדפדפן שלך אינו תואם לתקן יוניקוד. בשל כך הוכנס לפעולה מעקף של הבאג, כדי לאפשר לך לערוך דפים בבטחה: תווים שאינם ב־ASCII יוצגו בתיבת העריכה כקודים הקסדצימליים.",
+'nonunicodebrowser'         => "'''אזהרה: הדפדפן שלך אינו תואם לתקן יוניקוד. בשל כך הוכנס לפעולה מעקף של הבאג, כדי לאפשר לך לערוך דפים בבטחה: תווים שאינם ב־ASCII יוצגו בתיבת העריכה כקודים הקסדצימליים.'''",
 'editingold'                => "'''זהירות: אתם עורכים גרסה לא עדכנית של דף זה.
 
 אם תשמרו את הדף, כל השינויים שנעשו מאז גרסה זו יאבדו.'''",
@@ -762,7 +854,7 @@ $2',
 'permissionserrorstext'     => 'אינכם מורשים לבצע פעולה זו, {{PLURAL:$1|מהסיבה הבאה|מהסיבות הבאות}}:',
 'recreate-deleted-warn'     => "'''אזהרה: הנכם יוצרים דף חדש שנמחק בעבר.'''
 
-אנא שיקלו האם יהיה זה נכון להמשיך לערוך את הדף.
+אנא שיקלו אם יהיה זה נכון להמשיך לערוך את הדף.
 יומן המחיקות של הדף מוצג להלן:",
 
 # "Undo" feature
@@ -776,7 +868,7 @@ $2',
 
 # History pages
 'revhistory'          => 'היסטוריית שינויים',
-'viewpagelogs'        => 'הצג יומנים עבור דף זה',
+'viewpagelogs'        => 'הצגת יומנים עבור דף זה',
 'nohistory'           => 'אין היסטוריית שינויים עבור דף זה.',
 'revnotfound'         => 'גרסה זו לא נמצאה',
 'revnotfoundtext'     => 'הגרסה הישנה של דף זה לא נמצאה. אנא בדקו את כתובת הקישור שהוביל אתכם הנה.',
@@ -798,7 +890,7 @@ $2',
 'deletedrev'          => '[נמחק]',
 'histfirst'           => 'ראשונות',
 'histlast'            => 'אחרונות',
-'historysize'         => '($1 בתים)',
+'historysize'         => '({{plural:$1|בית אחד|$1 בתים}})',
 'historyempty'        => '(ריק)',
 
 # Revision feed
@@ -858,7 +950,7 @@ $2',
 'editcurrent'               => 'ערוך גרסה נוכחית של הדף',
 'selectnewerversionfordiff' => 'בחר גרסה חדשה יותר להשוואה',
 'selectolderversionfordiff' => 'בחר גרסה ישנה יותר להשוואה',
-'compareselectedversions'   => 'השווה את הגרסאות שנבחרו',
+'compareselectedversions'   => 'השוואת הגרסאות שנבחרו',
 'editundo'                  => 'ביטול',
 'diff-multi'                => '({{plural:$1|גרסת ביניים אחת אינה מוצגת|$1 גרסאות ביניים אינן מוצגות}}.)',
 
@@ -918,7 +1010,7 @@ $2',
 'prefs-watchlist-days'     => 'מספר הימים המירבי שיוצגו ברשימת המעקב:',
 'prefs-watchlist-edits'    => 'מספר העריכות המירבי שיוצגו ברשימת המעקב המורחבת:',
 'prefs-misc'               => 'שונות',
-'saveprefs'                => 'שמור העדפות',
+'saveprefs'                => 'שמירת העדפות',
 'resetprefs'               => 'שחזור ברירת מחדל',
 'oldpassword'              => 'סיסמה ישנה',
 'newpassword'              => 'סיסמה חדשה',
@@ -1020,16 +1112,16 @@ $2',
 
 # Upload
 'upload'                      => 'העלאת קובץ לשרת',
-'uploadbtn'                   => 'העלה קובץ',
-'reupload'                    => 'העלה שנית',
-'reuploaddesc'                => 'חזרו לטופס העלאת קבצים לשרת.',
+'uploadbtn'                   => 'העלאה',
+'reupload'                    => 'העלאה חוזרת',
+'reuploaddesc'                => 'חזרה לטופס העלאת קבצים לשרת.',
 'uploadnologin'               => 'לא נכנסתם לאתר',
 'uploadnologintext'           => 'עליכם [[{{ns:special}}:Userlogin|להיכנס לחשבון]] כדי להעלות קבצים.',
 'upload_directory_read_only'  => 'תיקיית ההעלאות ($1) אינה ניתנת לכתיבה על־ידי שרת האינטרנט, ולפיכך הוא אינו יכול להעלות את התמונה.',
 'uploaderror'                 => 'שגיאה בהעלאת הקובץ',
 'uploadtext'                  => "השתמשו בטופס להלן כדי להעלות תמונות. כדי לראות או לחפש תמונות שהועלו בעבר אנא פנו ל[[{{ns:special}}:Imagelist|רשימת הקבצים המועלים]], וכמו כן, העלאות מוצגות ב[[{{ns:special}}:Log/upload|יומן ההעלאות]], ומחיקות ב[[{{ns:special}}:Log/delete|יומן המחיקות]].
 
-כדי לכלול תמונה בדף, השתמשו בקישור בצורות '''<nowiki>[[{{ns:image}}:file.jpg]]</nowiki>''' לתמונות בפורמט JPG (המיועד לתצלומים), '''<nowiki>[[{{ns:image}}:file.png]]</nowiki>''' לתמונות בפורמט PNG (לאיורים, שרטוטים וסמלים). כדי לקשר ישירות לקובץ קול, השתמשו בקישור בצורה '''<nowiki>[[{{ns:media}}:file.jpg]]</nowiki>''' לקבצי קול בפורמט OGG.",
+כדי לכלול תמונה בדף, השתמשו בקישור בצורות '''<nowiki>[[תמונה:File.jpg]]</nowiki>''' לתמונות בפורמט JPG (המיועד לתצלומים), '''<nowiki>[[תמונה:File.png]]</nowiki>''' לתמונות בפורמט PNG (לאיורים, שרטוטים וסמלים). כדי לקשר ישירות לקובץ קול, השתמשו בקישור בצורה '''<nowiki>[[מדיה:File.jpg]]</nowiki>''' לקובצי קול בפורמט OGG.",
 'uploadlog'                   => 'יומן העלאות קבצים',
 'uploadlogpage'               => 'יומן העלאות',
 'uploadlogpagetext'           => 'להלן רשימה של העלאות הקבצים האחרונות שבוצעו.',
@@ -1040,9 +1132,9 @@ $2',
 'filesource'                  => 'מקור',
 'uploadedfiles'               => 'קבצים שהועלו',
 'ignorewarning'               => 'התעלם מהאזהרה ושמור את הקובץ בכל זאת.',
-'ignorewarnings'              => 'התעלם מכל האזהרות',
-'minlength1'                  => 'שמות של קבצי תמונה צריכים להיות בני תו אחד לפחות.',
-'illegalfilename'             => 'הקובץ "$1" מכיל תוים בלתי חוקיים. אנא שנו את שמו ונסו להעלותו שנית.',
+'ignorewarnings'              => 'התעלמות מכל האזהרות',
+'minlength1'                  => 'שמות של קובצי תמונה צריכים להיות בני תו אחד לפחות.',
+'illegalfilename'             => 'הקובץ "$1" מכיל תווים בלתי חוקיים. אנא שנו את שמו ונסו להעלותו שנית.',
 'badfilename'                 => 'שם התמונה שונה ל־"$1".',
 'filetype-badmime'            => 'לא ניתן להעלות קבצים עם סוג ה־MIME "$1".',
 'filetype-badtype'            => "'''\".\$1\"''' הוא סוג קובץ אסור להעלאה
@@ -1067,7 +1159,7 @@ $2',
 [[{{ns:image}}:$1|thumb|center|$1]]',
 'successfulupload'            => 'העלאת הקובץ הושלמה בהצלחה',
 'uploadwarning'               => 'אזהרת העלאת קבצים',
-'savefile'                    => 'שמור קובץ',
+'savefile'                    => 'שמירת קובץ',
 'uploadedimage'               => 'העלה את הקובץ [[$1]]',
 'overwroteimage'              => 'העלה גרסה חדשה של הקובץ [[$1]]',
 'uploaddisabled'              => 'העלאת קבצים מבוטלת',
@@ -1079,6 +1171,10 @@ $2',
 'destfilename'                => 'שמור קובץ בשם',
 'watchthisupload'             => 'מעקב אחרי דף זה',
 'filewasdeleted'              => 'קובץ בשם זה כבר הועלה בעבר, ולאחר מכן נמחק. אנא בדקו את הדף $1 לפני שתמשיכו להעלותו שנית.',
+'upload-wasdeleted'           => "'''אזהרה: הנכם מעלים קובץ שנמחק בעבר.'''
+
+אנא שיקלו האם יהיה זה נכון להמשיך בהעלאת הקובץ.
+יומן המחיקות של הקובץ מוצג להלן:",
 'filename-bad-prefix'         => 'שם הקובץ שאתם מעלים מתחיל עם <strong>"$1"</strong>, שהוא שם שאינו מתאר את הקובץ ובדרך כלל מוכנס אוטומטית על־ידי מצלמות דיגיטליות. אנא בחרו שם מתאים יותר לקובץ, שיתאר את תכניו.',
 
 'upload-proto-error'      => 'פרוטוקול שגוי',
@@ -1191,9 +1287,9 @@ $2',
 'userstats'              => 'סטטיסטיקות משתמשים',
 'sitestatstext'          => "בבסיס הנתונים יש בסך הכול {{plural:$1|דף '''אחד'''|'''$1''' דפים}}. מספר זה כולל דפים שאינם דפי תוכן, כגון דפי שיחה, דפים אודות {{SITENAME}}, קצרמרים, דפי תוכן ללא קישורים פנימיים, הפניות, וכיוצא בזה. אם לא סופרים את הדפים שאינם דפי תוכן, {{plural:$2|נשאר דף '''אחד''' שהוא ככל הנראה דף תוכן לכל דבר|נשארים '''$2''' דפים שהם ככל הנראה דפי תוכן לכל דבר}}.
 
-מאז תחילת פעולתו של האתר, {{plural:$3|הייתה באתר צפיה '''אחת''' בדפים|היו באתר '''$3''' צפיות בדפים}}, {{plural:$4|ובוצעה פעולת עריכה '''אחת'''|ובוצעו '''$4''' פעולות עריכה}}.
+מאז תחילת פעולתו של האתר, {{plural:$3|הייתה באתר צפייה '''אחת''' בדפים|היו באתר '''$3''' צפיות בדפים}}, {{plural:$4|ובוצעה פעולת עריכה '''אחת'''|ובוצעו '''$4''' פעולות עריכה}}.
 
-בסך הכול {{plural:$5|בוצעה בממוצע עריכה '''אחת''' לדף|בוצעו בממוצע '''$5''' עריכות לדף}}, ו{{plural:$6|הייתה צפיה '''אחת''' לכל עריכה|היו '''$6''' צפיות לכל עריכה}}.
+בסך הכול {{plural:$5|בוצעה בממוצע עריכה '''אחת''' לדף|בוצעו בממוצע '''$5''' עריכות לדף}}, ו{{plural:$6|הייתה צפייה '''אחת''' לכל עריכה|היו '''$6''' צפיות לכל עריכה}}.
 
 אורך [http://meta.wikimedia.org/wiki/Help:Job_queue תור המשימות] הוא '''$7'''.
 
@@ -1224,7 +1320,7 @@ $2',
 'nlinks'                  => '{{plural:$1|קישור אחד|$1 קישורים}}',
 'nmembers'                => '{{plural:$1|דף אחד|$1 דפים}}',
 'nrevisions'              => '{{plural:$1|גרסה אחת|$1 גרסאות}}',
-'nviews'                  => '{{plural:$1|צפיה אחת|$1 צפיות}}',
+'nviews'                  => '{{plural:$1|צפייה אחת|$1 צפיות}}',
 'specialpage-empty'       => 'אין תוצאות.',
 'lonelypages'             => 'דפים יתומים',
 'lonelypagestext'         => 'לדפים הבאים אין קישורים מדפים אחרים באתר זה.',
@@ -1267,6 +1363,8 @@ $2',
 'movethispage'            => 'העבר דף זה',
 'unusedimagestext'        => 'רשימת הקבצים שאינם בשימוש באתר. יש למצוא מקום עבור הקבצים או לסמן אותם למחיקה.',
 'unusedcategoriestext'    => 'למרות שהקטגוריות הבאות קיימות, אין שום דף בו נעשה בהן שימוש.',
+'notargettitle'           => 'אין דף מטרה',
+'notargettext'            => 'לא ציינתם דף מטרה או משתמש לגביו תבוצע פעולה זו.',
 
 # Book sources
 'booksources'               => 'משאבי ספרות חיצוניים',
@@ -1415,7 +1513,7 @@ $NEWPAGE
 'exbeforeblank'               => 'תוכן לפני שרוקן היה: "$1"',
 'exblank'                     => 'הדף היה ריק',
 'confirmdelete'               => 'אישור מחיקת הדף',
-'deletesub'                   => '(מוחק את "$1")',
+'deletesub'                   => '(מחיקה של "$1")',
 'historywarning'              => 'אזהרה – לדף שאתם עומדים למחוק יש היסטוריית שינויים:',
 'confirmdeletetext'           => 'אתם עומדים למחוק דף או תמונה, יחד עם כל ההיסטוריה שלהם, מבסיס הנתונים.
 
@@ -1435,7 +1533,7 @@ $NEWPAGE
 'cantrollback'                => 'לא ניתן לשחזר את העריכה – התורם האחרון הוא היחיד שכתב דף זה; עם זאת, ניתן למחוק את הדף.',
 'alreadyrolled'               => 'לא ניתן לשחזר את עריכת הדף [[:$1]] על־ידי [[{{ns:user}}:$2|$2]] ([[{{ns:user_talk}}:$2|שיחה]]); מישהו אחר כבר ערך או שחזר דף זה.
 
-העריכה האחרונה היתה של [[{{ns:user}}:$3|$3]] ([[{{ns:user_talk}}:$3|שיחה]]).',
+העריכה האחרונה הייתה של [[{{ns:user}}:$3|$3]] ([[{{ns:user_talk}}:$3|שיחה]]).',
 'editcomment'                 => "תקציר העריכה היה: \"'''\$1'''\".", # only shown if there is an edit comment
 'revertpage'                  => 'שוחזר מעריכה של [[{{ns:special}}:Contributions/$2|$2]] ([[{{ns:user_talk}}:$2|שיחה]]) לעריכה האחרונה של [[{{ns:user}}:$1|$1]]',
 'rollback-success'            => 'שוחזר מעריכה של $1 לעריכה האחרונה של $2',
@@ -1445,7 +1543,7 @@ $NEWPAGE
 'protectedarticle'            => 'הגן על [[$1]]',
 'modifiedarticleprotection'   => 'שינה את רמת ההגנה של [[$1]]',
 'unprotectedarticle'          => 'ביטל את ההגנה על [[$1]]',
-'protectsub'                  => '(משנה את רמת ההגנה של "$1")',
+'protectsub'                  => '(שינוי רמת ההגנה של "$1")',
 'confirmprotect'              => 'מאשר את ההגנה',
 'protectcomment'              => 'הערה:',
 'protectexpiry'               => 'פקיעת ההגנה:',
@@ -1467,7 +1565,7 @@ $NEWPAGE
 'protect-level-sysop'         => 'מפעילי מערכת בלבד',
 'protect-summary-cascade'     => 'מדורג',
 'protect-expiring'            => 'פוקעת $1 (UTC)',
-'protect-cascade'             => 'הגן על כל הדפים המוכללים בדף זה (הגנה מדורגת)',
+'protect-cascade'             => 'הגנה על כל הדפים המוכללים בדף זה (הגנה מדורגת)',
 'restriction-type'            => 'הרשאה:',
 'restriction-level'           => 'רמת ההגבלה:',
 'minimum-size'                => 'גודל מינימלי',
@@ -1484,9 +1582,9 @@ $NEWPAGE
 'restriction-level-all'           => 'כל רמה',
 
 # Undelete
-'undelete'                     => 'צפיה בדפים מחוקים',
-'undeletepage'                 => 'צפיה ושחזור דפים מחוקים',
-'viewdeletedpage'              => 'צפיה בדפים מחוקים',
+'undelete'                     => 'צפייה בדפים מחוקים',
+'undeletepage'                 => 'צפייה ושחזור דפים מחוקים',
+'viewdeletedpage'              => 'צפייה בדפים מחוקים',
 'undeletepagetext'             => 'הדפים שלהלן נמחקו, אך הם עדיין בארכיון וניתן לשחזר אותם. הארכיון מנוקה מעת לעת.',
 'undeleteextrahelp'            => 'לשחזור הדף כולו, אל תסמנו אף תיבת סימון ולחצו על "שחזור". לשחזור של גרסאות מסוימות בלבד, סמנו את תיבות הסימון של הגרסאות הללו, ולחצו על "שחזור". לחיצה על "איפוס" תנקה את התקציר, ואת כל תיבות הסימון.',
 'undeleterevisions'            => '{{plural:$1|גרסה אחת נשמרה|$1 גרסאות נשמרו}} בארכיון',
@@ -1499,9 +1597,9 @@ $NEWPAGE
 'undeletereset'                => 'איפוס',
 'undeletecomment'              => 'תקציר:',
 'undeletedarticle'             => 'שחזר את [[$1]]',
-'undeletedrevisions'           => 'שחזר $1 גרסאות',
-'undeletedrevisions-files'     => 'שחזר $1 גרסאות ו־$2 קבצים',
-'undeletedfiles'               => 'שחזר $1 קבצים',
+'undeletedrevisions'           => 'שחזר {{plural:$1|גרסה אחת|$1 גרסאות}}',
+'undeletedrevisions-files'     => 'שחזר {{plural:$1|גרסה אחת|$1 גרסאות}} ו{{plural:$2|קובץ אחד|־$2 קבצים}}',
+'undeletedfiles'               => 'שחזר {{plural:$1|קובץ אחד|$1 קבצים}}',
 'cannotundelete'               => 'השחזור נכשל; ייתכן שמישהו אחר כבר שחזר את הדף.',
 'undeletedpage'                => "'''הדף $1 שוחזר בהצלחה.'''
 
@@ -1553,8 +1651,7 @@ $1
 # What links here
 'whatlinkshere'       => 'דפים המקושרים לכאן',
 'whatlinkshere-title' => 'דפים המקשרים לדף $1',
-'notargettitle'       => 'אין דף מטרה',
-'notargettext'        => 'לא ציינתם דף מטרה או משתמש לגביו תבוצע פעולה זו.',
+'whatlinkshere-page'  => 'דף:',
 'linklistsub'         => '(רשימת קישורים)',
 'linkshere'           => "הדפים שלהלן מקושרים לדף '''[[:$1]]''':",
 'nolinkshere'         => "אין דפים המקושרים לדף '''[[:$1]]'''.",
@@ -1625,9 +1722,9 @@ $1
 'ipblocklist-empty'           => 'רשימת המשתמשים החסומים ריקה.',
 'ipblocklist-no-results'      => 'שם המשתמש או כתובת ה־IP המבוקשים אינם חסומים.',
 'blocklink'                   => 'חסום',
-'unblocklink'                 => 'שחרר חסימה',
+'unblocklink'                 => 'שחרור חסימה',
 'contribslink'                => 'תרומות',
-'autoblocker'                 => 'נחסמת באופן אוטומטי משום שאתה חולק את כתובת ה־IP שלך עם [[{{ns:user}}:$1|$1]]. הנימוק שניתן לחסימת [[{{ns:user}}:$1|$1]] הוא: "$2".',
+'autoblocker'                 => 'נחסמת באופן אוטומטי משום שאתה חולק את כתובת ה־IP שלך עם [[{{ns:user}}:$1|$1]]. הנימוק לחסימה: "$2".',
 'blocklogpage'                => 'יומן חסימות',
 'blocklogentry'               => 'חסם את [[$1]] למשך $2 $3',
 'blocklogtext'                => 'זהו יומן פעולות החסימה והשחרור של משתמשים. כתובות IP הנחסמות באופן אוטומטי אינן מופיעות.
@@ -1705,8 +1802,8 @@ $1
 'movetalk'                => 'העבר גם את דף השיחה.',
 'talkpagemoved'           => 'דף השיחה המשוייך הועבר גם כן.',
 'talkpagenotmoved'        => "דף השיחה המשוייך '''לא''' הועבר.",
-'1movedto2'               => '[[$1]] הועבר לשם [[$2]]',
-'1movedto2_redir'         => '[[$1]] הועבר לשם [[$2]] במקום הפניה',
+'1movedto2'               => '[[$1]] הועבר ל[[$2]]',
+'1movedto2_redir'         => '[[$1]] הועבר ל[[$2]] במקום הפניה',
 'movelogpage'             => 'יומן העברות',
 'movelogpagetext'         => 'להלן רשימה של העברות דפים.',
 'movereason'              => 'סיבה:',
@@ -1732,7 +1829,7 @@ $1
 'export-submit'     => 'ייצוא',
 'export-addcattext' => 'הוספת דפים מהקטגוריה:',
 'export-addcat'     => 'הוספה',
-'export-download'   => 'שמור כקובץ',
+'export-download'   => 'שמירה כקובץ',
 
 # Namespace 8 related
 'allmessages'               => 'הודעות המערכת',
@@ -1764,7 +1861,7 @@ $1
 'import-interwiki-text'      => 'אנא בחרו אתר ויקי ואת כותרת הדף לייבוא.
 תאריכי ועורכי הגרסאות יישמרו בעת הייבוא.
 כל פעולות הייבוא הבין־אתרי נשמרות ביומן הייבוא.',
-'import-interwiki-history'   => 'העתק את כל היסטוריית העריכות של דף זה',
+'import-interwiki-history'   => 'העתקת כל היסטוריית העריכות של דף זה',
 'import-interwiki-submit'    => 'ייבוא',
 'import-interwiki-namespace' => 'העבר את הדפים לתוך מרחב השם:',
 'importtext'                 => 'אנא ייצאו את הקובץ מאתר המקור תוך שימוש בעזר הייצוא, שמרו אותו לדיסק הקשיח שלכם והעלו אותו לכאן.',
@@ -1796,56 +1893,58 @@ $1
 'tooltip-pt-mytalk'               => 'דף השיחה שלי',
 'tooltip-pt-anontalk'             => 'שיחה על תרומות המשתמש האנונימי',
 'tooltip-pt-preferences'          => 'ההעדפות שלי',
-'tooltip-pt-watchlist'            => 'רשימת הדפים שאתה עוקב אחרי השינויים בהם',
+'tooltip-pt-watchlist'            => 'רשימת הדפים שאתם עוקבים אחרי השינויים בהם',
 'tooltip-pt-mycontris'            => 'רשימת התרומות שלי',
 'tooltip-pt-login'                => 'מומלץ להירשם, אך אין חובה לעשות כן',
 'tooltip-pt-anonlogin'            => 'מומלץ להירשם, אך אין חובה לעשות כן',
 'tooltip-pt-logout'               => 'יציאה מהחשבון',
-'tooltip-ca-talk'                 => 'שוחחו על דף זה',
+'tooltip-ca-talk'                 => 'שיחה על דף זה',
 'tooltip-ca-edit'                 => 'באפשרותכם לערוך דף זה. אנא השתמשו בלחצן "תצוגה מקדימה" לפני השמירה',
 'tooltip-ca-addsection'           => 'הוספת הערה לשיחה זו',
 'tooltip-ca-viewsource'           => 'זהו דף מוגן, אך באפשרותכם לצפות במקורו',
 'tooltip-ca-history'              => 'גרסאות קודמות של דף זה.',
-'tooltip-ca-protect'              => 'הגנו על דף זה',
-'tooltip-ca-delete'               => 'מחקו דף זה',
-'tooltip-ca-undelete'             => 'שחזרו עריכות שנעשו בדף זה לפני שנמחק',
-'tooltip-ca-move'                 => 'העבירו דף זה',
-'tooltip-ca-watch'                => 'הוסיפו דף זה לרשימת המעקב',
-'tooltip-ca-unwatch'              => 'הסירו דף זה מרשימת המעקב',
+'tooltip-ca-protect'              => 'הגנה על דף זה',
+'tooltip-ca-delete'               => 'מחיקת דף זה',
+'tooltip-ca-undelete'             => 'שחזור עריכות שנעשו בדף זה לפני שנמחק',
+'tooltip-ca-move'                 => 'העברת דף זה',
+'tooltip-ca-watch'                => 'הוספת דף זה לרשימת המעקב',
+'tooltip-ca-unwatch'              => 'הסרת דף זה מרשימת המעקב',
 'tooltip-search'                  => 'חיפוש ב{{grammar:תחילית|{{SITENAME}}}}',
+'tooltip-search-go'               => 'מעבר לדף בשם הזה בדיוק, אם הוא קיים',
+'tooltip-search-fulltext'         => 'חיפוש טקסט זה בדפים',
 'tooltip-p-logo'                  => 'עמוד ראשי',
-'tooltip-n-mainpage'              => 'בקרו בעמוד הראשי',
+'tooltip-n-mainpage'              => 'ביקור בעמוד הראשי',
 'tooltip-n-portal'                => 'אודות המיזם, איך תוכלו לעזור, איפה למצוא דברים',
-'tooltip-n-currentevents'         => 'מצאו מידע רקע על האירועים האחרונים',
+'tooltip-n-currentevents'         => 'מציאת מידע רקע על האירועים האחרונים',
 'tooltip-n-recentchanges'         => 'רשימת השינויים האחרונים באתר',
 'tooltip-n-randompage'            => 'צפייה בדף תוכן אקראי',
 'tooltip-n-help'                  => 'עזרה בשימוש באתר',
 'tooltip-n-sitesupport'           => 'תרומה',
 'tooltip-t-whatlinkshere'         => 'רשימת כל הדפים המקושרים לכאן',
 'tooltip-t-recentchangeslinked'   => 'השינויים האחרונים שבוצעו בדפים המקושרים לכאן',
-'tooltip-feed-rss'                => 'הוסיפו עדכון אוטומטי על־ידי RSS',
-'tooltip-feed-atom'               => 'הוסיפו עדכון אוטומטי על־ידי Atom',
-'tooltip-t-contributions'         => 'צפו בתרומותיו של משתמש זה',
-'tooltip-t-emailuser'             => 'שלחו דואר אלקטרוני למשתמש זה',
-'tooltip-t-upload'                => 'העלו תמונות או קבצי מדיה',
+'tooltip-feed-rss'                => 'הוספת עדכון אוטומטי על־ידי RSS',
+'tooltip-feed-atom'               => 'הוספת עדכון אוטומטי על־ידי Atom',
+'tooltip-t-contributions'         => 'צפייה בתרומותיו של משתמש זה',
+'tooltip-t-emailuser'             => 'שליחת דואר אלקטרוני למשתמש זה',
+'tooltip-t-upload'                => 'העלאת תמונות או קובצי מדיה',
 'tooltip-t-specialpages'          => 'רשימת כל הדפים המיוחדים',
 'tooltip-t-print'                 => 'גרסה להדפסה של דף זה',
 'tooltip-t-permalink'             => 'קישור קבוע לגרסה זו של הדף',
-'tooltip-ca-nstab-main'           => 'צפו בדף התוכן',
-'tooltip-ca-nstab-user'           => 'צפו בדף המשתמש',
-'tooltip-ca-nstab-media'          => 'צפו בפריט המדיה',
+'tooltip-ca-nstab-main'           => 'צפייה בדף התוכן',
+'tooltip-ca-nstab-user'           => 'צפייה בדף המשתמש',
+'tooltip-ca-nstab-media'          => 'צפייה בפריט המדיה',
 'tooltip-ca-nstab-special'        => 'זהו דף מיוחד, אי אפשר לערוך אותו',
-'tooltip-ca-nstab-project'        => 'צפו בדף המיזם',
-'tooltip-ca-nstab-image'          => 'צפו בדף תיאור התמונה',
-'tooltip-ca-nstab-mediawiki'      => 'צפו בהודעת המערכת',
-'tooltip-ca-nstab-template'       => 'צפו בתבנית',
-'tooltip-ca-nstab-help'           => 'צפו בדף העזרה',
-'tooltip-ca-nstab-category'       => 'צפו בדף הקטגוריה',
+'tooltip-ca-nstab-project'        => 'צפייה בדף המיזם',
+'tooltip-ca-nstab-image'          => 'צפייה בדף תיאור התמונה',
+'tooltip-ca-nstab-mediawiki'      => 'צפייה בהודעת המערכת',
+'tooltip-ca-nstab-template'       => 'צפייה בתבנית',
+'tooltip-ca-nstab-help'           => 'צפייה בדף העזרה',
+'tooltip-ca-nstab-category'       => 'צפייה בדף הקטגוריה',
 'tooltip-minoredit'               => 'סימון עריכה זו כמשנית',
 'tooltip-save'                    => 'שמירת השינויים שביצעתם',
 'tooltip-preview'                 => 'תצוגה מקדימה, אנא השתמשו באפשרות זו לפני השמירה!',
-'tooltip-diff'                    => 'צפיה בשינויים שערכתם בטקסט',
-'tooltip-compareselectedversions' => 'צפיה בהשוואת שתי גרסאות של דף זה',
+'tooltip-diff'                    => 'צפייה בשינויים שערכתם בטקסט',
+'tooltip-compareselectedversions' => 'צפייה בהשוואת שתי גרסאות של דף זה',
 'tooltip-watch'                   => 'הוספת דף זה לרשימת המעקב',
 'tooltip-recreate'                => 'יצירת הדף מחדש למרות שהוא נמחק',
 'tooltip-upload'                  => 'תחילת ההעלאה',
@@ -1903,15 +2002,17 @@ $1
 'mw_math_mathml' => 'MathML אם אפשר (ניסיוני)',
 
 # Patrolling
-'markaspatrolleddiff'                 => 'סמן שינוי כבדוק',
-'markaspatrolledtext'                 => 'סמן דף זה כבדוק',
+'markaspatrolleddiff'                 => 'סימון השינוי כבדוק',
+'markaspatrolledtext'                 => 'סימון דף זה כבדוק',
 'markedaspatrolled'                   => 'השינוי נבדק',
-'markedaspatrolledtext'               => 'השינוי שנבחר נבדק.',
+'markedaspatrolledtext'               => 'השינוי שבחרתם נבדק.',
 'rcpatroldisabled'                    => 'בדיקת השינויים האחרונים מבוטלת',
 'rcpatroldisabledtext'                => 'התכונה של סימון שינוי כבדוק בשינויים האחרונים מבוטלת.',
 'markedaspatrollederror'              => 'לא ניתן לסמן כבדוק',
 'markedaspatrollederrortext'          => 'עליכם לציין גרסה שתציינו כבדוקה.',
 'markedaspatrollederror-noautopatrol' => 'אינכם מורשים לסמן את השינויים של עצמכם כבדוקים.',
+'nppatroldisabled'                    => 'בדיקת הדפים החדשים מבוטלת',
+'nppatroldisabledtext'                => 'התכונה של סימון דף מבין הדפים החדשים כבדוק מבוטלת.',
 
 # Patrol log
 'patrol-log-page' => 'יומן שינויים בדוקים',
@@ -1932,8 +2033,8 @@ $1
 'filedelete-archive-read-only'    => 'השרת אינו יכול לכתוב לתיקיית הארכיון "$1".',
 
 # Browsing diffs
-'previousdiff' => '→ עבור להשוואת הגרסאות הקודמת',
-'nextdiff'     => 'עבור להשוואת הגרסאות הבאה ←',
+'previousdiff' => '→ מעבר להשוואת הגרסאות הקודמת',
+'nextdiff'     => 'מעבר להשוואת הגרסאות הבאה ←',
 
 # Media information
 'mediawarning'         => "'''אזהרה:''' קובץ זה עלול להכיל קוד זדוני, שהרצתו עלולה לסכן את המערכת שלכם.<hr />",
@@ -1961,8 +2062,8 @@ $1
 # Metadata
 'metadata'          => 'מידע נוסף על התמונה',
 'metadata-help'     => 'קובץ זה מכיל מידע נוסף, שיש להניח שהגיע ממצלמה דיגיטלית או מסורק בו התמונה נוצרה או עברה דיגיטציה. אם הקובץ שונה ממצבו הראשוני, כמה מהנתונים להלן עלולים שלא לשקף באופן מלא את מצב התמונה החדש.',
-'metadata-expand'   => 'הצג פרטים מורחבים',
-'metadata-collapse' => 'הסתר פרטים מורחבים',
+'metadata-expand'   => 'הצגת פרטים מורחבים',
+'metadata-collapse' => 'הסתרת פרטים מורחבים',
 'metadata-fields'   => 'שדות המידע הנוסף של EXIF האלה אינם פרטים מורחבים ויוצגו תמיד, לעומת השאר:
 * make
 * model
@@ -2275,7 +2376,7 @@ $1
 
 # Delete conflict
 'deletedwhileediting' => 'אזהרה: דף זה נמחק לאחר שהתחלתם לערוך!',
-'confirmrecreate'     => "המשתמש [[{{ns:user}}:$1|$1]] ([[{{ns:user_talk}}:$1|שיחה]]) מחק את הדף לאחר שהתחלת לערוך אותו, מסיבה זו:
+'confirmrecreate'     => "הדף נמחק על־ידי המשתמש [[{{ns:user}}:$1|$1]] ([[{{ns:user_talk}}:$1|שיחה]]) לאחר שהתחלתם לערוך אותו, מסיבה זו:
 :'''$2'''
 אנא אשרו שאתם אכן רוצים ליצור מחדש את הדף.",
 'recreate'            => 'צור מחדש',
@@ -2338,11 +2439,6 @@ $1',
 # Watchlist editor
 'watchlistedit-numitems'       => 'יש לכם {{plural:$1|פריט אחד|$1 פריטים}} ברשימת המעקב, לא כולל דפי שיחה.',
 'watchlistedit-noitems'        => 'רשימת המעקב ריקה.',
-'watchlistedit-clear-title'    => 'ניקוי רשימת המעקב',
-'watchlistedit-clear-legend'   => 'ניקוי רשימת המעקב',
-'watchlistedit-clear-confirm'  => 'פעולה זו תסיר את כל הדפים מרשימת המעקב. האם אתם בטוחים שברצונכם לעשות זאת? באפשרותכם גם [[Special:Watchlist/edit|לבחור כותרות להסרה]].',
-'watchlistedit-clear-submit'   => 'ניקוי',
-'watchlistedit-clear-done'     => 'רשימת המעקב שלכם רוקנה. כל הדפים הוסרו ממנה.',
 'watchlistedit-normal-title'   => 'עריכת רשימת המעקב',
 'watchlistedit-normal-legend'  => 'הסרת דפים מרשימת המעקב',
 'watchlistedit-normal-explain' => 'כל הדפים ברשימת המעקב מוצגים להלן. כדי להסיר דף, יש לסמן את התיבה לידו, וללחוץ על "הסרת הדפים". באפשרותכם גם [[Special:Watchlist/raw|לערוך את הרשימה הגולמית]], או [[Special:Watchlist/clear|להסיר את כל הדפים]].',
@@ -2358,9 +2454,8 @@ $1',
 'watchlistedit-raw-removed'    => '{{plural:$1|כותרת אחת הוסרה|$1 כותרות הוסרו}}:',
 
 # Watchlist editing tools
-'watchlisttools-view'  => 'הצגת השינויים הרלוונטיים',
-'watchlisttools-edit'  => 'הצגה ועריכה של רשימת המעקב',
-'watchlisttools-raw'   => 'עריכת הרשימה הגולמית',
-'watchlisttools-clear' => 'ניקוי רשימת המעקב',
+'watchlisttools-view' => 'הצגת השינויים הרלוונטיים',
+'watchlisttools-edit' => 'הצגה ועריכה של רשימת המעקב',
+'watchlisttools-raw'  => 'עריכת הרשימה הגולמית',
 
 );

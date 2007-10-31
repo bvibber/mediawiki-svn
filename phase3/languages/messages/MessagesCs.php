@@ -496,7 +496,8 @@ Dotaz: $2',
 'protectedinterface'   => 'Tato stránka obsahuje text softwarového rozhraní a smějí ji editovat jen správci.',
 'editinginterface'     => "'''Upozornění:''' Editujete stránku, která definuje texty rozhraní. Změny této stránky ovlivní vzhled uživatelského rozhraní všem uživatelům.",
 'sqlhidden'            => '(SQL dotaz skryt)',
-'cascadeprotected'     => 'Tato stránka je zamčena, neboť je vložena do {{PLURAL:$1|následující stránky zamčené|následujících stránek zamčených|následujících stránek zamčených}} kaskádovým zámkem: $2',
+'cascadeprotected'     => 'Tato stránka je zamčena, neboť je vložena do {{PLURAL:$1|následující stránky zamčené|následujících stránek zamčených|následujících stránek zamčených}} kaskádovým zámkem:
+$2',
 'namespaceprotected'   => "Nemáte povoleno editovat stránky ve jmenném prostoru '''$1'''.",
 'customcssjsprotected' => 'Nemáte povoleno editovat tuto stránku, protože obsahuje osobní nastavení jiného uživatele.',
 'ns-specialprotected'  => 'Stránky ve jmenném prostoru {{ns:special}} nelze editovat.',
@@ -529,18 +530,18 @@ Váš účet byl vytvořen. Nezapomeňte si upravit své [[Special:Preferences|n
 'createaccountmail'          => 'pomocí e-mailu',
 'badretype'                  => 'Vámi napsaná hesla nesouhlasí.',
 'userexists'                 => 'Uživatel se stejným jménem je už registrován. Zvolte jiné jméno.',
-'youremail'                  => 'Vaše e-mailová adresa: *)',
+'youremail'                  => 'Vaše e-mailová adresa:',
 'username'                   => 'Uživatelské jméno:',
 'uid'                        => 'Uživatelské ID:',
-'yourrealname'               => 'Vaše skutečné jméno: **)',
+'yourrealname'               => 'Vaše skutečné jméno:',
 'yourlanguage'               => 'Jazyk rozhraní',
 'yourvariant'                => 'Jazyková varianta',
 'yournick'                   => 'Alternativní podpis',
 'badsig'                     => 'Chybný podpis, zkontrolujte syntaxi HTML.',
 'badsiglength'               => 'Jméno je příliš dlouhé; musí být kratší než $1 znaků.',
-'prefs-help-realname'        => '**) Skutečné jméno (volitelné): pokud ho zadáte, bude použito pro označení autorství vaší práce.<br />',
+'prefs-help-realname'        => 'Skutečné jméno (volitelné): pokud ho zadáte, bude použito pro označení autorství vaší práce.',
 'loginerror'                 => 'Chyba při přihlašování',
-'prefs-help-email'           => '*) E-mail (volitelný): Umožní ostatním uživatelům vás kontaktovat, aniž by tato adresa byla zobrazena; také vám na tuto adresu může být zasláno nové heslo v případě, že své heslo zapomenete.',
+'prefs-help-email'           => 'E-mail (volitelný): Umožní ostatním uživatelům vás kontaktovat, aniž by tato adresa byla zobrazena; také vám na tuto adresu může být zasláno nové heslo v případě, že své heslo zapomenete.',
 'nocookiesnew'               => 'Uživatelský účet byl vytvořen, ale nejste přihlášeni. {{SITENAME}} používá cookies k přihlášení uživatelů. Vy máte cookies vypnuty. Prosím zapněte je a přihlaste se znovu s vaším novým uživatelským jménem a heslem.',
 'nocookieslogin'             => '{{SITENAME}} používá cookies k přihlášení uživatelů. Vy máte cookies vypnuty. Prosím zapněte je a zkuste znovu.',
 'noname'                     => 'Musíte uvést jméno svého účtu.',
@@ -667,7 +668,7 @@ Mějte však na vědomí, že funkci "Poslat email tomuto uživateli" nemůžete
 'nosuchsectiontext'         => 'Pokoušíte se editovat neexistující sekci. Protože tu není žádná sekce „$1“, není kam uložit Vaši editaci.',
 'loginreqtitle'             => 'Vyžadováno přihlášení',
 'loginreqlink'              => 'přihlásit',
-'loginreqpagetext'          => ' K prohlížení jiných stránek se musíte $1.',
+'loginreqpagetext'          => 'K prohlížení jiných stránek se musíte $1.',
 'accmailtitle'              => 'Heslo odesláno.',
 'accmailtext'               => 'Heslo pro „$1“ bylo odesláno na $2.',
 'newarticle'                => '(Nový)',
@@ -969,7 +970,8 @@ Nezvolené skupiny nebudou změněny. Skupinu můžete vyřadit z vybraných pom
 'rcshowhideanons'                   => '$1 anonymní uživatele',
 'rcshowhidepatr'                    => '$1 prověřené editace',
 'rcshowhidemine'                    => '$1 moje editace',
-'rclinks'                           => 'Ukázat $1 posledních změn během posledních $2 dnů<br />$3',
+'rclinks'                           => 'Ukázat $1 posledních změn během {{plural:$2|posledního dne|posledních $2 dnů|posledních $2 dnů}}<br />
+$3',
 'diff'                              => 'rozdíl',
 'hist'                              => 'historie',
 'hide'                              => 'skrýt',
@@ -1066,6 +1068,10 @@ Načtěte soubor v plném rozlišením, pokud je k dispozici, nebo změňte jmé
 'destfilename'                => 'Cílové jméno',
 'watchthisupload'             => 'Sledovat tuto stránku',
 'filewasdeleted'              => 'Soubor stejného jména byl již dříve načten a posléze smazán. Podrobnosti obsahuje $1.',
+'upload-wasdeleted'           => "'''Upozornění: Načítáte soubor, který byl již dříve smazán.'''
+
+Zvažte zda je vhodné pokračovat v načítání tohoto souboru.
+Zde je příslušný výpis z knihy smazaných stránek:",
 'filename-bad-prefix'         => 'Jméno souboru, který načítáte, začíná na <strong>"$1"</strong>, což je nevhodné jméno, obvykle automaticky přiřazované digitálním fotoaparátem. Zvolte jméno, která Váš soubor lépe popíše.',
 
 'upload-proto-error'      => 'Neplatný protokol',
@@ -1151,7 +1157,8 @@ Načtěte soubor v plném rozlišením, pokud je k dispozici, nebo změňte jmé
 
 # MIME search
 'mimesearch'         => 'Hledání podle MIME typu',
-'mimesearch-summary' => 'Tato stránka umožňuje filtrovat soubory podle MIME typu. Vstup: typobsahu/podtyp, např. <tt>image/jpeg</tt>.',
+'mimesearch-summary' => 'Tato stránka umožňuje filtrovat soubory podle MIME typu.<br />
+Vstup: <code>typ obsahu/podtyp</code>, např. <code>image/jpeg</code>.',
 'mimetype'           => 'MIME typ:',
 'download'           => 'stažení',
 
@@ -1181,7 +1188,7 @@ Načtěte soubor v plném rozlišením, pokud je k dispozici, nebo změňte jmé
 Od založení wiki bylo navštíveno celkem '''$3''' stránek a editováno '''$4'''krát. To činí v průměru '''$5''' editací na stránku a '''$6''' návštěv na editaci.
 
 Aktuální délka fronty údržby je '''$7'''.",
-'userstatstext'          => "Je zde {{PLURAL:$1|'''1''' registrovaný [[Special:Listusers|uživatel]]|'''$1''' registrovaných [[Special:Listusers|uživatelů]]|'''$1''' registrovaných [[Special:Listusers|uživatelů]]}}, z toho '''$2''' (nebo '''$4%''') {{PLURAL:$2|má|má|má}} práva $5.",
+'userstatstext'          => "{{plural:$1|Je|Jsou|Je}} zde '''$1''' {{plural:$1|registrovaný [[Special:Listusers|uživatel]]|registrovaní [[Special:Listusers|uživatelé]]|registrovaných [[Special:Listusers|uživatelů]]}}, z&nbsp;toho '''$2''' (což je '''$4&nbsp;%''') {{plural:$2|má|mají|má}} práva $5.",
 'statistics-mostpopular' => 'Nejčtenější stránky',
 
 'disambiguations'      => 'Stránky odkazující na rozcestníky',
@@ -1754,6 +1761,8 @@ Do níže uvedeného editačního pole zadejte názvy stránek, které chcete ex
 'tooltip-ca-watch'                => 'Přidat tuto stránku mezi sledované',
 'tooltip-ca-unwatch'              => 'Vyjmout tuto stránku ze sledovaných',
 'tooltip-search'                  => 'Prohledat tuto wiki',
+'tooltip-search-go'               => 'Jít na stránka s tímto jménem, pokud existuje',
+'tooltip-search-fulltext'         => 'Hledat stránky s tímto textem',
 'tooltip-p-logo'                  => 'Hlavní strana',
 'tooltip-n-mainpage'              => 'Navštívit Hlavní stranu',
 'tooltip-n-portal'                => 'O projektu, jak můžete pomoci, kde hledat',
@@ -1856,7 +1865,7 @@ Do níže uvedeného editačního pole zadejte názvy stránek, které chcete ex
 
 # Patrol log
 'patrol-log-page' => 'Kniha prověřených editací',
-'patrol-log-line' => 'označit revizi $1 článku $2 za prověřenou $3',
+'patrol-log-line' => 'označuje revizi $1 článku $2 za prověřenou $3',
 'patrol-log-auto' => '(automaticky)',
 
 # Image deletion
@@ -2282,11 +2291,6 @@ $1',
 # Watchlist editor
 'watchlistedit-numitems'       => 'Váš seznam sledovaných stránek obsahuje (mimo diskusních stránek) {{PLURAL:$1|1 položku|$1 položky|$1 položek}}.',
 'watchlistedit-noitems'        => 'Váš seznam sledovaných stránek neobsahuje žádnou položku.',
-'watchlistedit-clear-title'    => 'Vyprázdnění seznamu sledovaných stránek',
-'watchlistedit-clear-legend'   => 'Vyprázdnění seznamu sledovaných stránek',
-'watchlistedit-clear-confirm'  => 'Tato akce smaže všechny položky vašeho seznamu sledovaných stránek. Je to vaším úmyslem? Jednotlivé položky můžete odstranit v [[Special:Watchlist/edit|editoru sledovaných stránek]].',
-'watchlistedit-clear-submit'   => 'Vyprázdnit',
-'watchlistedit-clear-done'     => 'Váš seznam sledovaných stránek byl vyprázdněn. Všechny jeho položky byly odstraněny.',
 'watchlistedit-normal-title'   => 'Editace seznamu sledovaných stránek',
 'watchlistedit-normal-legend'  => 'Odstranění položek ze seznamu sledovaných stránek',
 'watchlistedit-normal-explain' => 'Položky vašeho seznamu sledovaných stránek jsou zobrazeny níže. Ty, které chcete ze seznamu odstranit, označte zaškrtnutím a poté stiskněte tlačítko Odstranit položky. Editovat seznam sledovaných stránek můžete také [[Special:Watchlist/raw|v textové podobě]], případně můžete [[Special:Watchlist/clear|odstranit všechny položky seznamu]].',
@@ -2305,6 +2309,5 @@ $1',
 'watchlisttools-view'  => 'Zobrazit změny sledovaných stránek',
 'watchlisttools-edit'  => 'Zobrazit a editovat seznam sledovaných stránek',
 'watchlisttools-raw'   => 'Editovat textový soubor sledovaných stránek',
-'watchlisttools-clear' => 'Vyprázdnit seznam sledovaných stránek',
 
 );

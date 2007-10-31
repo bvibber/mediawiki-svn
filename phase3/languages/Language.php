@@ -8,18 +8,6 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-#
-# In general you should not make customizations in these language files
-# directly, but should use the MediaWiki: special namespace to customize
-# user interface messages through the wiki.
-# See http://meta.wikipedia.org/wiki/MediaWiki_namespace
-#
-# NOTE TO TRANSLATORS: Do not copy this whole file when making translations!
-# A lot of common constants and a base class with inheritable methods are
-# defined here, which should not be redefined. See the other LanguageXx.php
-# files for examples.
-#
-
 # Read language names
 global $wgLanguageNames;
 require_once( dirname(__FILE__) . '/Names.php' ) ;
@@ -1187,7 +1175,7 @@ class Language {
 		$this->load();
 		if ( !isset( $this->mExtendedSpecialPageAliases ) ) {
 			$this->mExtendedSpecialPageAliases = $this->specialPageAliases;
-			wfRunHooks( 'LangugeGetSpecialPageAliases', 
+			wfRunHooks( 'LanguageGetSpecialPageAliases', 
 				array( &$this->mExtendedSpecialPageAliases, $this->getCode() ) );
 		}
 		return $this->mExtendedSpecialPageAliases;
@@ -1363,7 +1351,7 @@ class Language {
 
 	/**
 	 * Plural form transformations, needed for some languages.
-	 * For example, where are 3 form of plural in Russian and Polish,
+	 * For example, there are 3 form of plural in Russian and Polish,
 	 * depending on "count mod 10". See [[w:Plural]]
 	 * For English it is pretty simple.
 	 *

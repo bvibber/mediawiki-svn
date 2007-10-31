@@ -207,8 +207,8 @@ class PreferencesForm {
 	function savePreferences() {
 		global $wgUser, $wgOut, $wgParser;
 		global $wgEnableUserEmail, $wgEnableEmail;
-		global $wgEmailAuthentication;
-		global $wgAuth;
+		global $wgEmailAuthentication, $wgRCMaxAge;
+		global $wgAuth, $wgEmailConfirmToEdit;
 
 
 		if ( '' != $this->mNewpass && $wgAuth->allowPasswordChange() ) {
@@ -275,7 +275,7 @@ class PreferencesForm {
 		$wgUser->setOption( 'contextlines', $this->validateIntOrNull( $this->mSearchLines ) );
 		$wgUser->setOption( 'contextchars', $this->validateIntOrNull( $this->mSearchChars ) );
 		$wgUser->setOption( 'rclimit', $this->validateIntOrNull( $this->mRecent ) );
-		$wgUser->setOption( 'rcdays', $this->validateInt( $this->mRecentDays, 1, 7 ) );
+		$wgUser->setOption( 'rcdays', $this->validateInt($this->mRecentDays, 1, ceil($wgRCMaxAge / (3600*24))));
 		$wgUser->setOption( 'wllimit', $this->validateIntOrNull( $this->mWatchlistEdits, 0, 1000 ) );
 		$wgUser->setOption( 'rows', $this->validateInt( $this->mRows, 4, 1000 ) );
 		$wgUser->setOption( 'cols', $this->validateInt( $this->mCols, 4, 1000 ) );
@@ -299,20 +299,6 @@ class PreferencesForm {
 		foreach ( $this->mToggles as $tname => $tvalue ) {
 			$wgUser->setOption( $tname, $tvalue );
 		}
-		if (!$wgAuth->updateExternalDB($wgUser)) {
-			$this->mainPrefsForm( 'error', wfMsg( 'externaldberror' ) );
-			return;
-		}
-
-		$msg = '';
-		if ( !wfRunHooks( "SavePreferences", array( $this, $wgUser, &$msg ) ) ) {
-			print "(($msg))";
-			$this->mainPrefsForm( 'error', $msg ); 
-			return;
-		}
-
-		$wgUser->setCookies();
-		$wgUser->saveSettings();
 
 		$error = false;
 		if( $wgEnableEmail ) {
@@ -323,7 +309,6 @@ class PreferencesForm {
 				if( $wgUser->isValidEmailAddr( $newadr ) ) {
 					$wgUser->mEmail = $newadr; # new behaviour: set this new emailaddr from login-page into user database record
 					$wgUser->mEmailAuthenticated = null; # but flag as "dirty" = unauthenticated
-					$wgUser->saveSettings();
 					if ($wgEmailAuthentication) {
 						# Mail a temporary password to the dirty address.
 						# User can come back through the confirmation URL to re-enable email.
@@ -338,14 +323,31 @@ class PreferencesForm {
 					$error = wfMsg( 'invalidemailaddress' );
 				}
 			} else {
+				if( $wgEmailConfirmToEdit && empty( $newadr ) ) {
+					$this->mainPrefsForm( 'error', wfMsg( 'noemailtitle' ) );
+					return;
+				}
 				$wgUser->setEmail( $this->mUserEmail );
-				$wgUser->setCookies();
-				$wgUser->saveSettings();
 			}
 			if( $oldadr != $newadr ) {
 				wfRunHooks( "PrefsEmailAudit", array( $wgUser, $oldadr, $newadr ) );
 			}
 		}
+
+		if (!$wgAuth->updateExternalDB($wgUser)) {
+			$this->mainPrefsForm( 'error', wfMsg( 'externaldberror' ) );
+			return;
+		}
+
+		$msg = '';
+		if ( !wfRunHooks( "SavePreferences", array( $this, $wgUser, &$msg ) ) ) {
+			print "(($msg))";
+			$this->mainPrefsForm( 'error', $msg );
+			return;
+		}
+
+		$wgUser->setCookies();
+		$wgUser->saveSettings();
 
 		if( $needRedirect && $error === false ) {
 			$title =& SpecialPage::getTitleFor( "Preferences" );
@@ -510,6 +512,7 @@ class PreferencesForm {
 		global $wgRCShowWatchingUsers, $wgEnotifRevealEditorAddress;
 		global $wgEnableEmail, $wgEnableUserEmail, $wgEmailAuthentication;
 		global $wgContLanguageCode, $wgDefaultSkin, $wgSkipSkins, $wgAuth;
+		global $wgEmailConfirmToEdit;
 
 		$wgOut->setPageTitle( wfMsg( 'preferences' ) );
 		$wgOut->setArticleRelated( false );
@@ -619,7 +622,7 @@ class PreferencesForm {
 					Xml::label( wfMsg('youremail'), 'wpUserEmail' ),
 					Xml::input( 'wpUserEmail', 25, $this->mUserEmail, array( 'id' => 'wpUserEmail' ) ),
 					Xml::tags('div', array( 'class' => 'prefsectiontip' ),
-						wfMsgExt( 'prefs-help-email', 'parseinline' )
+						wfMsgExt( $wgEmailConfirmToEdit ? 'prefs-help-email-required' : 'prefs-help-email', 'parseinline' )
 					)
 				)
 			);

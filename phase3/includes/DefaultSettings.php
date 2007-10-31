@@ -1215,7 +1215,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '99';
+$wgStyleVersion = '100';
 
 
 # Server-side caching:
@@ -1603,9 +1603,11 @@ $wgMediaHandlers = array(
 	'image/png' => 'BitmapHandler',
 	'image/gif' => 'BitmapHandler',
 	'image/x-ms-bmp' => 'BmpHandler',
-	'image/svg+xml' => 'SvgHandler',
-	'image/svg' => 'SvgHandler',
-	'image/vnd.djvu' => 'DjVuHandler',
+	'image/svg+xml' => 'SvgHandler', // official
+	'image/svg' => 'SvgHandler', // compat
+	'image/vnd.djvu' => 'DjVuHandler', // official
+	'image/x.djvu' => 'DjVuHandler', // compat
+	'image/x-djvu' => 'DjVuHandler', // compat
 );
 
 
@@ -2016,6 +2018,9 @@ $wgExternalDiffEngine = false;
 
 /** Use RC Patrolling to check for vandalism */
 $wgUseRCPatrol = true;
+
+/** Use new page patrolling to check new pages on special:Newpages */
+$wgUseNPPatrol = true;
 
 /** Set maximum number of results to return in syndication feeds (RSS, Atom) for
  * eg Recentchanges, Newpages. */

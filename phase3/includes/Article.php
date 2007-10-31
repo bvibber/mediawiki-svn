@@ -622,7 +622,7 @@ class Article {
 	*/
 	function view()	{
 		global $wgUser, $wgOut, $wgRequest, $wgContLang;
-		global $wgEnableParserCache, $wgStylePath, $wgUseRCPatrol, $wgParser;
+		global $wgEnableParserCache, $wgStylePath, $wgParser;
 		global $wgUseTrackbacks, $wgNamespaceRobotPolicies, $wgArticleRobotPolicies;
 		$sk = $wgUser->getSkin();
 
@@ -868,7 +868,7 @@ class Article {
 
 		# If we have been passed an &rcid= parameter, we want to give the user a
 		# chance to mark this new article as patrolled.
-		if ( $wgUseRCPatrol && !is_null( $rcid ) && $rcid != 0 && $wgUser->isAllowed( 'patrol' ) ) {
+		if (!is_null( $rcid ) && $rcid != 0 && $wgUser->isAllowed( 'patrol' ) ) {
 			$wgOut->addHTML(
 				"<div class='patrollink'>" .
 					wfMsgHtml( 'markaspatrolledlink',
@@ -1508,28 +1508,44 @@ class Article {
 	}
 
 	/**
-	 * Mark this particular edit as patrolled
+	 * Mark this particular edit/page as patrolled
 	 */
 	function markpatrolled() {
-		global $wgOut, $wgRequest, $wgUseRCPatrol, $wgUser;
+		global $wgOut, $wgRequest, $wgUseRCPatrol, $wgUseNPPatrol, $wgUser;
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
-		# Check RC patrol config. option
-		if( !$wgUseRCPatrol ) {
-			$wgOut->errorPage( 'rcpatroldisabled', 'rcpatroldisabledtext' );
-			return;
-		}
+		# Check patrol config options
 
-		# Check permissions
-		if( !$wgUser->isAllowed( 'patrol' ) ) {
-			$wgOut->permissionRequired( 'patrol' );
-			return;
+		if ( !($wgUseNPPatrol || $wgUseRCPatrol)) {
+			$wgOut->errorPage( 'rcpatroldisabled', 'rcpatroldisabledtext' );
+			return;		
 		}
 
 		# If we haven't been given an rc_id value, we can't do anything
-		$rcid = $wgRequest->getVal( 'rcid' );
-		if( !$rcid ) {
+		$rcid = (int) $wgRequest->getVal('rcid');
+		$rc = $rcid ? RecentChange::newFromId($rcid) : null;
+		if ( is_null ( $rc ) )
+		{
 			$wgOut->errorPage( 'markedaspatrollederror', 'markedaspatrollederrortext' );
+			return;
+		}
+
+		if ( $rc->mAttribs['rc_type'] == RC_NEW && !$wgUseNPPatrol ) {
+	                $wgOut->errorpage( 'nppatroldisabled', 'nppatroldisabledtext' );
+			return;
+		}
+		
+		if ( !$wgUseRCPatrol && $rc->mAttribs['rc_type'] != RC_NEW) {
+			$wgOut->errorPage( 'rcpatroldisabled', 'rcpatroldisabledtext' );
+			return;
+		}
+		
+		# Check permissions
+		$permission_errors = $this->mTitle->getUserPermissionsErrors( 'patrol', $wgUser );
+
+		if (count($permission_errors)>0)
+		{
+			$wgOut->showPermissionsErrorPage( $permission_errors );
 			return;
 		}
 
@@ -1538,7 +1554,10 @@ class Article {
 			return;
 		}
 
-		$return = SpecialPage::getTitleFor( 'Recentchanges' );
+		#It would be nice to see where the user had actually come from, but for now just guess
+		$returnto = $rc->mAttribs['rc_type'] == RC_NEW ? 'Newpages' : 'Recentchanges';
+		$return = Title::makeTitle( NS_SPECIAL, $returnto );
+
 		# If it's left up to us, check that the user is allowed to patrol this edit
 		# If the user has the "autopatrol" right, then we'll assume there are no
 		# other conditions stopping them doing so
@@ -2274,6 +2293,8 @@ class Article {
 		if( $bot )
 			$flags |= EDIT_FORCE_BOT;
 		$this->doEdit( $target->getText(), $summary, $flags );
+
+		wfRunHooks( 'ArticleRollbackComplete', array( $this, $wgUser, $target ) );
 
 		$resultDetails = array(
 			'summary' => $summary,

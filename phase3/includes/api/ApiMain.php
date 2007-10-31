@@ -54,6 +54,8 @@ class ApiMain extends ApiBase {
 	private static $Modules = array (
 		'login' => 'ApiLogin',
 		'query' => 'ApiQuery',
+		'expandtemplates' => 'ApiExpandTemplates',
+		'render' => 'ApiRender',
 		'rollback' => 'ApiRollback',
 		'delete' => 'ApiDelete',
 		'undelete' => 'ApiUndelete',
@@ -282,7 +284,7 @@ class ApiMain extends ApiBase {
 				// Something is seriously wrong
 				//
 				$errMessage = array (
-					'code' => 'internal_api_error',
+					'code' => 'internal_api_error_'. get_class($e),
 					'info' => "Exception Caught: {$e->getMessage()}"
 				);
 				ApiResult :: setContent($errMessage, "\n\n{$e->getTraceAsString()}\n\n");
@@ -337,14 +339,15 @@ class ApiMain extends ApiBase {
 	protected function printResult($isError) {
 		$printer = $this->mPrinter;
 		$printer->profileIn();
-		$printer->initPrinter($isError);
 	
 		/* If the help message is requested in the default (xmlfm) format,
 		 * tell the printer not to escape ampersands so that our links do
 		 * not break. */
 		$params = $this->extractRequestParams();
-		$printer->setUnescapeAmps ( $this->mAction == 'help' 
+		$printer->setUnescapeAmps ( ( $this->mAction == 'help' || $isError ) 
 				&& $params['format'] == ApiMain::API_DEFAULT_FORMAT );
+
+		$printer->initPrinter($isError);
 
 		$printer->execute();
 		$printer->closePrinter();
@@ -557,4 +560,5 @@ class UsageException extends Exception {
 		return "{$this->getCodeString()}: {$this->getMessage()}";
 	}
 }
+
 

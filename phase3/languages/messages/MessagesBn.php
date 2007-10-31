@@ -615,7 +615,7 @@ $1',
 'recentchanges'                     => 'সাম্প্রতিক পরিবর্তনসমূহ',
 'rcnote'                            => 'বিগত <strong>$2</strong> দিনে সংঘটিত <strong>$1</strong>টি পরিবর্তন নীচে দেখানো হল (যেখানে বর্তমান সময় ও তারিখ $3)।',
 'rcnotefrom'                        => '<b>$2</b>-এর পরে সংঘটিত পরিবর্তনগুলো নিচে দেখানো হল (<b>$1</b>টি)।',
-'rclistfrom'                        => '* $1-এর পর সংঘটিত নতুন পরিবর্তনগুলো দেখাও।</div></div><br />',
+'rclistfrom'                        => '* $1-এর পর সংঘটিত নতুন পরিবর্তনগুলো দেখাও।<br />',
 'rcshowhideminor'                   => 'অনুল্লেখ্য পরিবর্তনগুলো $1',
 'rcshowhidebots'                    => 'বটগুলো $1',
 'rcshowhideliu'                     => 'প্রবেশ করেছেন এমন ব্যবহারকারীদের $1',
@@ -905,13 +905,29 @@ $1',
 'thumbnail-more' => 'বড় করো',
 
 # Tooltip help for the actions
-'tooltip-ca-delete' => 'পাতাটি মুছে ফেলো',
-'tooltip-t-print'   => 'এ পাতার ছাপানোর উপযোগী সংস্করণ',
+'tooltip-pt-userpage'    => 'আমার ব্যবহারকারী পাতা',
+'tooltip-pt-mytalk'      => 'আমার আলাপের পাতা',
+'tooltip-pt-preferences' => 'আমার পছন্দ',
+'tooltip-pt-mycontris'   => 'আমার অবদানের তালিকা',
+'tooltip-pt-logout'      => 'প্রস্থান',
+'tooltip-ca-addsection'  => 'এই আলোচনায় একটি মন্তব্য যোগ করো।',
+'tooltip-ca-protect'     => 'এই পাতাকে সুরক্ষিত করো',
+'tooltip-ca-delete'      => 'পাতাটি মুছে ফেলো',
+'tooltip-ca-move'        => 'এই পাতাকে সরিয়ে ফেলো',
+'tooltip-ca-watch'       => 'এই পাতাটিকে আপনার নজর তালিকায় যোগ করুন',
+'tooltip-ca-unwatch'     => 'এই পাতাটি আপনার নজর তালিকা থেকে সরিয়ে ফেলুন',
+'tooltip-search'         => 'অনুসন্ধান {{SITENAME}}',
+'tooltip-p-logo'         => 'প্রধান পাতা',
+'tooltip-t-print'        => 'এ পাতার ছাপানোর উপযোগী সংস্করণ',
+'tooltip-watch'          => 'এই পাতাটি আমার নজর তালিকায় যোগ করো',
+'tooltip-upload'         => 'আপলোড শুরু করো',
 
 # Attribution
 'anonymous'        => '{{SITENAME}} এর বেনামী ব্যবহারকারীবৃন্দ',
+'siteuser'         => '{{SITENAME}} ব্যবহারকারী $1',
 'lastmodifiedatby' => 'এই পাতাটিতে শেষ পরিবর্তন হয়েছিল $2, $1 by $3।', # $1 date, $2 time, $3 user
 'and'              => 'এবং',
+'others'           => 'অন্যান্য',
 
 # Spam protection
 'subcategorycount'     => 'এই বিষয়শ্রেণীতে $1 টি উপবিষয়শ্রেণী রয়েছে।',
@@ -987,6 +1003,8 @@ $1',
 'exif-model'            => 'ক্যামেরা মডেল',
 'exif-software'         => 'ব্যবহৃত সফটওয়্যার',
 'exif-artist'           => 'স্রষ্টা',
+'exif-makernote'        => 'প্রস্তুতকারকের নোট',
+'exif-usercomment'      => 'ব্যবহারকারীর মন্তব্য',
 'exif-lightsource'      => 'বাতির উৎস',
 
 'exif-unknowndate' => 'অজানা তারিখ',
@@ -994,6 +1012,8 @@ $1',
 'exif-orientation-1' => 'সাধারণ', # 0th row: top; 0th column: left
 
 'exif-componentsconfiguration-0' => 'বিদ্যমান নয়',
+
+'exif-exposureprogram-0' => 'অসংজ্ঞায়িত',
 
 'exif-subjectdistance-value' => '$1 মিটার',
 
@@ -1051,8 +1071,16 @@ $1',
 'confirmemail_error'      => 'আপনার নিশ্চিতকরণ সংরক্ষণ করতে হয়তো কিছু সমস্যা হয়েছিল',
 'confirmemail_subject'    => '{{SITENAME}} ই-মেইল ঠিকানা নিশ্চিতকরণ',
 
+# Scary transclusion
+'scarytranscludefailed'  => '[$1 এর জন্য টেম্পলেট আনা অসফল হয়েছে; দুঃখিত]',
+'scarytranscludetoolong' => '[URL টি বেশ লম্বা; দুঃখিত]',
+
+# Trackbacks
+'trackbackremove' => ' ([$1 অবলুপ্ত])',
+
 # Delete conflict
 'deletedwhileediting' => 'সতর্কীকরণ: আপনি পাতাটি সম্পাদনা শুরু করার পর পাতাটিকে মুছে ফেলা হয়েছে!',
+'recreate'            => 'পুনরায় তৈরি করো',
 
 # HTML dump
 'redirectingto' => '[[$1]] পাতায় পুনঃনির্দেশিত হচ্ছে...',
@@ -1110,10 +1138,6 @@ $1',
 # Watchlist editor
 'watchlistedit-numitems'      => 'আপনার নজর তালিকায় আলাপের পাতা ছাড়া {{PLURAL:$1|1 শিরোনাম|$1 শিরোনাম}} রয়েছে।',
 'watchlistedit-noitems'       => 'আপনার নজর তালিকায় কোন পাতার শিরোনাম নাই।',
-'watchlistedit-clear-title'   => 'নজর তালিকা পরিস্কার করো',
-'watchlistedit-clear-legend'  => 'নজর তালিকা পরিস্কার করো',
-'watchlistedit-clear-submit'  => 'পরিস্কার করো',
-'watchlistedit-clear-done'    => 'আপনার নজর তালিকা পরিস্কার করা হয়েছে। সমস্ত শিরোনাম মুছে ফেলা হয়েছে।',
 'watchlistedit-normal-title'  => 'নজর তালিকা সম্পাদনা করো',
 'watchlistedit-normal-legend' => 'নজর তালিকা থেকে শিরোনামসমূহ মুছে ফেলো',
 'watchlistedit-normal-submit' => 'শিরোনাম মুছে ফেলো',
@@ -1130,6 +1154,5 @@ $1',
 'watchlisttools-view'  => 'সম্পর্কিত পরিবর্তনসমূহ দেখুন',
 'watchlisttools-edit'  => 'নজর তালিকা দেখুন এবং সম্পাদনা করুন',
 'watchlisttools-raw'   => 'অশোধিত নজর তালিকা সম্পাদনা করো',
-'watchlisttools-clear' => 'নজরতালিকা পরিস্কার করো',
 
 );

@@ -8,20 +8,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * Global functions used everywhere
  */
 
-/**
- * Some globals and requires needed
- */
-
-/** Total number of articles */
-$wgNumberOfArticles = -1; # Unset
-
-/** Total number of views */
-$wgTotalViews = -1;
-
-/** Total number of edits */
-$wgTotalEdits = -1;
-
-
 require_once dirname(__FILE__) . '/LogPage.php';
 require_once dirname(__FILE__) . '/normal/UtfNormalUtil.php';
 require_once dirname(__FILE__) . '/XmlFunctions.php';
@@ -110,11 +96,6 @@ if ( !function_exists( 'array_diff_key' ) ) {
 function wfClone( $object ) {
 	return clone( $object );
 }
-
-/**
- * Where as we got a random seed
- */
-$wgRandomSeeded = false;
 
 /**
  * Seed Mersenne Twister
@@ -416,11 +397,10 @@ function wfMsgNoDBForContent( $key ) {
  * @return String: the requested message.
  */
 function wfMsgReal( $key, $args, $useDB = true, $forContent=false, $transform = true ) {
-	$fname = 'wfMsgReal';
-	wfProfileIn( $fname );
+	wfProfileIn( __METHOD__ );
 	$message = wfMsgGetKey( $key, $useDB, $forContent, $transform );
 	$message = wfMsgReplaceArgs( $message, $args );
-	wfProfileOut( $fname );
+	wfProfileOut( __METHOD__ );
 	return $message;
 }
 
@@ -569,6 +549,7 @@ function wfMsgWikiHtml( $key ) {
  *  <i>escape</i>: filters message trough htmlspecialchars
  *  <i>replaceafter</i>: parameters are substituted after parsing or escaping
  *  <i>parsemag</i>: transform the message using magic phrases
+ *  <i>content</i>: fetch message for content language instead of interface
  */
 function wfMsgExt( $key, $options ) {
 	global $wgOut, $wgParser;
@@ -581,16 +562,21 @@ function wfMsgExt( $key, $options ) {
 		$options = array($options);
 	}
 
-	$string = wfMsgGetKey( $key, true, false, false );
+	$forContent = false;
+	if( in_array('content', $options) ) {
+		$forContent = true;
+	}
+
+	$string = wfMsgGetKey( $key, /*DB*/true, $forContent, /*Transform*/false );
 
 	if( !in_array('replaceafter', $options) ) {
 		$string = wfMsgReplaceArgs( $string, $args );
 	}
 
 	if( in_array('parse', $options) ) {
-		$string = $wgOut->parse( $string, true, true );
+		$string = $wgOut->parse( $string, true, !$forContent );
 	} elseif ( in_array('parseinline', $options) ) {
-		$string = $wgOut->parse( $string, true, true );
+		$string = $wgOut->parse( $string, true, !$forContent );
 		$m = array();
 		if( preg_match( '/^<p>(.*)\n?<\/p>\n?$/sU', $string, $m ) ) {
 			$string = $m[1];
@@ -598,7 +584,7 @@ function wfMsgExt( $key, $options ) {
 	} elseif ( in_array('parsemag', $options) ) {
 		global $wgMessageCache;
 		if ( isset( $wgMessageCache ) ) {
-			$string = $wgMessageCache->transform( $string );
+			$string = $wgMessageCache->transform( $string, !$forContent );
 		}
 	}
 
@@ -1783,7 +1769,7 @@ function wfUrlProtocols() {
  * for code that just takes the ini_get() return value as a boolean.
  *
  * To make things extra interesting, setting via php_value accepts
- * "true" as true, but php.ini and php_flag consider it false. :)
+ * "true" and "yes" as true, but php.ini and php_flag consider them false. :)
  * Unrecognized values go false... again opposite PHP's own coercion
  * from string to bool.
  *
@@ -1798,9 +1784,10 @@ function wfUrlProtocols() {
 function wfIniGetBool( $setting ) {
 	$val = ini_get( $setting );
 	// 'on' and 'true' can't have whitespace around them, but '1' can.
-	return trim( $val ) == '1'
-		|| strtolower( $val ) == 'on'
-		|| strtolower( $val ) == 'true';
+	return strtolower( $val ) == 'on'
+		|| strtolower( $val ) == 'true'
+		|| strtolower( $val ) == 'yes'
+		|| preg_match( "/^\s*[+-]?0*[1-9]/", $val ); // approx C atoi() function
 }
 
 /**

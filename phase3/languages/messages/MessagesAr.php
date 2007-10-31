@@ -1,8 +1,19 @@
 <?php
 /** Arabic (العربية)
-  *
-  * @addtogroup Language
-  */
+ *
+ * @addtogroup Language
+ *
+ * @author Meno25
+ * @author Mido
+ * @author Alnokta
+ * @author Gharbeia
+ * @author Nike
+ * @author Mimouni
+ * @author Tarawneh
+ * @author Agurzil
+ * @author G - ג
+ * @author Chaos
+ */
 
 $linkPrefixExtension = true;
 $fallback8bitEncoding = 'windows-1256';
@@ -293,12 +304,12 @@ $specialPageAliases = array(
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'ضع خط تحت الوصلات:',
-'tog-highlightbroken'         => 'أظهر الوصلات المكسورة <a href="" class="new">بهذا الشكل</a> (البديل بهذا الشكل<a href="" class="internal">؟</a>).',
+'tog-highlightbroken'         => 'أظهر الوصلات المكسورة <a href="" class="new">بهذا الشكل</a> (البديل: بهذا الشكل<a href="" class="internal">؟</a>).',
 'tog-justify'                 => 'اجعل عرض الأسطر في الفقرات متساو',
 'tog-hideminor'               => 'خبئ التعديلات الطفيفة في أحدث التغييرات',
 'tog-extendwatchlist'         => 'مدد قائمة المراقبة لإظهار جميع التغييرات المطبقة',
 'tog-usenewrc'                => 'شكل متقدم من أحدث التغييرات (جافا سكريبت)',
-'tog-numberheadings'          => 'رقّم العناوين تلقائيا',
+'tog-numberheadings'          => 'رقم العناوين تلقائيا',
 'tog-showtoolbar'             => 'اعرض شريط التحرير (جافا سكريبت)',
 'tog-editondblclick'          => 'عدل الصفحات عند النقر المزدوج (جافا سكريبت)',
 'tog-editsection'             => 'فعّل تعديل الأقسام عن طريق وصلات [تحرير]',
@@ -532,6 +543,10 @@ $messages = array(
 'restorelink'             => '{{PLURAL:$1|تعديل واحد محذوف|تعديلان محذوفان|$1 تعديلات محذوفة|$1 تعديل محذوف|$1 تعديلا محذوفا}}',
 'feedlinks'               => 'تلقيم:',
 'feed-invalid'            => 'نوع اشتراك التليقم غير صحيح.',
+'site-rss-feed'           => '$1 تلقيم أر إس إس',
+'site-atom-feed'          => '$1 تلقيم أتوم',
+'page-rss-feed'           => '"$1" تلقيم أر إس إس',
+'page-atom-feed'          => '"$1" تلقيم أتوم',
 'feed-atom'               => 'أتوم',
 'feed-rss'                => 'أر إس إس',
 
@@ -727,7 +742,9 @@ $1 ساعة.',
 'math_tip'        => 'صيغة رياضية (لا تك)',
 'nowiki_sample'   => 'أدخل النص غير المنسق هنا',
 'nowiki_tip'      => 'أهمل تهيئة الويكي',
+'image_sample'    => 'Example.jpg',
 'image_tip'       => 'إدراج صورة',
+'media_sample'    => 'Example.ogg',
 'media_tip'       => 'وصلة ملف وسائط',
 'sig_tip'         => 'توقيعك مع الساعة والتاريخ',
 'hr_tip'          => 'خط أفقي (تجنب الاستخدام بكثرة)',
@@ -907,7 +924,7 @@ $1 ساعة.',
 'deletedrev'          => '[محذوف]',
 'histfirst'           => 'أول',
 'histlast'            => 'آخر',
-'historysize'         => '($1 بايت)',
+'historysize'         => '({{PLURAL:$1|1 بايت|$1 بايت}})',
 'historyempty'        => '(فارغ)',
 
 # Revision feed
@@ -963,6 +980,7 @@ $1 ساعة.',
 'overlogpagetext' => 'بالأسفل قائمة بأحدث عمليات الحذف والمنع المتضمنة محتويات تم إخفائها عن الإداريين. انظر [[Special:Ipblocklist|قائمة منع عناوين الأيبي]] لترى حالات المنع والطرد الحالية.',
 
 # Diffs
+'history-title'             => 'تاريخ مراجعة "$1"',
 'difference'                => '(الفرق بين النسخ)',
 'loadingrev'                => 'تحميل التعديل للمقارنة',
 'lineno'                    => 'سطر $1:',
@@ -1189,6 +1207,10 @@ $1 ساعة.',
 'destfilename'                => 'تخرين الملف باسم',
 'watchthisupload'             => 'راقب هذه الصفحة',
 'filewasdeleted'              => 'تم رفع ثم حذف ملف بهذا الاسم من قبل. من الأفضل مراجعة $1 قبل رفعه مرة أخرى.',
+'upload-wasdeleted'           => "'''تحذير: أنت تقوم برفع ملف تم حذفه في السابق.'''
+
+يجب عليك التيقن من أن الاستمرار برفع هذا الملف ملائم.
+سجل الحذف لهذا الملف معروض هنا:",
 'filename-bad-prefix'         => 'اسم الملف الذي ترفعه يبدأ ب<strong>"$1"</strong>، و هو اسم غير وصفي عادة يوضع تلقائيا من الكاميرات الرقمية. من فضلك اختر اسما أكثر وصفا لملفك.',
 'filename-prefix-blacklist'   => ' #<!-- leave this line exactly as it is --> <pre>
 # الصيغة كالتالي: 
@@ -1394,6 +1416,9 @@ PICT # misc.
 'movethispage'            => 'انقل هذه الصفحة',
 'unusedimagestext'        => '<p>الرجاء الانتباه إلى أن بعض الصور الموجودة في هذه القائمة قد يكون مشار إليها باستخدام العنوان الكامل (URL) وهي قيد الاستعمال بالرغم من إدراجها هنا.</p>',
 'unusedcategoriestext'    => 'التصنيفات التالية موجودة على الرغم من أنها لا تحتوي على أية مقالات أو تصنيفات أخرى.',
+'notargettitle'           => 'لا هدف',
+'notargettext'            => 'لم تحدد الصفحة او المستخدم المستهدف
+لعمل هذه الخاصية.',
 
 # Book sources
 'booksources'               => 'مصدر كتاب',
@@ -1683,9 +1708,7 @@ $1',
 # What links here
 'whatlinkshere'       => 'ماذا يصل هنا',
 'whatlinkshere-title' => 'الصفحات التي تصل إلى $1',
-'notargettitle'       => 'لا هدف',
-'notargettext'        => 'لم تحدد الصفحة او المستخدم المستهدف
-لعمل هذه الخاصية.',
+'whatlinkshere-page'  => 'الصفحة:',
 'linklistsub'         => '(قائمة الوصلات)',
 'linkshere'           => "الصفحات التالية تحتوي على وصلة إلى '''[[:$1]]''':",
 'nolinkshere'         => "لا توجد صفحات تصل إلى '''[[:$1]]'''.",
@@ -1938,6 +1961,8 @@ $1',
 'tooltip-ca-watch'                => 'أضف هذه الصفحة إلى قائمة مراقبتك',
 'tooltip-ca-unwatch'              => 'أزل هذه الصفحة من قائمة مراقبتك',
 'tooltip-search'                  => 'ابحث في {{SITENAME}}',
+'tooltip-search-go'               => 'اذهب إلى صفحة بنفس هذا الاسم إن وجدت',
+'tooltip-search-fulltext'         => 'ابحث في الصفحات عن هذا النص',
 'tooltip-p-logo'                  => 'الصفحة الرئيسية',
 'tooltip-n-mainpage'              => 'زيارة الصفحة الرئيسية',
 'tooltip-n-portal'                => 'حول المشروع، ماذا يمكن أن تفعل، أين يمكن أن تجد ما تحتاجه',
@@ -2489,11 +2514,6 @@ $1',
 # Watchlist editor
 'watchlistedit-numitems'       => 'قائمة مراقبتك تحتوي على {{PLURAL:$1|عنوان واحد|$1 عنوان}}، بدون احتساب صفحات النقاش.',
 'watchlistedit-noitems'        => 'قائمة مراقبتك لا تحتوي على أية عناوين.',
-'watchlistedit-clear-title'    => 'إفراغ قائمة المراقبة',
-'watchlistedit-clear-legend'   => 'أفرغ قائمة المراقبة',
-'watchlistedit-clear-confirm'  => 'هذا سيزيل كل العناوين من قائمة مراقبتك. هل أنت متأكد أنك تريد فعل هذا؟ يمكنك أيضا [[Special:Watchlist/edit|إزالة عناوين معينة]].',
-'watchlistedit-clear-submit'   => 'إفراغ',
-'watchlistedit-clear-done'     => 'قائمة مراقبتك تم إفراغها. كل العناوين تم إزالتها.',
 'watchlistedit-normal-title'   => 'تعديل قائمة المراقبة',
 'watchlistedit-normal-legend'  => 'أزل عناوين من قائمة المراقبة',
 'watchlistedit-normal-explain' => 'العناوين في قائمة مراقبتك معروضة بالأسفل. لإزالة عنوان، علم على الصندوق بجانبه، و اضغط إزالة العناوين. يمكنك أيضا [[Special:Watchlist/raw|تعديل القائمة مباشرة]]،
@@ -2511,9 +2531,22 @@ $1',
 'watchlistedit-raw-removed'    => '{{PLURAL:$1|عنوان واحد|$1 عنوان}} تمت إزالته:',
 
 # Watchlist editing tools
-'watchlisttools-view'  => 'عرض التغييرات المرتبطة',
-'watchlisttools-edit'  => 'عرض وتعديل قائمة المراقبة',
-'watchlisttools-raw'   => 'عدل قائمة المراقبة الخام',
-'watchlisttools-clear' => 'مسح قائمة المراقبة',
+'watchlisttools-view' => 'عرض التغييرات المرتبطة',
+'watchlisttools-edit' => 'عرض وتعديل قائمة المراقبة',
+'watchlisttools-raw'  => 'عدل قائمة المراقبة الخام',
+
+# Unknown messages
+'iranian-calendar-m1'  => 'فروردین',
+'iranian-calendar-m10' => 'دی',
+'iranian-calendar-m11' => 'بهمن',
+'iranian-calendar-m12' => 'اسفند',
+'iranian-calendar-m2'  => 'اردیبهشت',
+'iranian-calendar-m3'  => 'خرداد',
+'iranian-calendar-m4'  => 'تیر',
+'iranian-calendar-m5'  => 'امرداد',
+'iranian-calendar-m6'  => 'شهریور',
+'iranian-calendar-m7'  => 'مهر',
+'iranian-calendar-m8'  => 'آبان',
+'iranian-calendar-m9'  => 'آذر',
 
 );

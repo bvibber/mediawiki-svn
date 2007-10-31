@@ -512,6 +512,10 @@ $messages = array(
 'restorelink'             => '$1 suntingan yang telah dihapus',
 'feedlinks'               => 'Asupan:',
 'feed-invalid'            => 'Tipe permintaan asupan tidak tepat.',
+'site-rss-feed'           => 'Umpan RSS $1',
+'site-atom-feed'          => 'Umpan Atom $1',
+'page-rss-feed'           => 'Umpan RSS "$1"',
+'page-atom-feed'          => 'Umpan Atom "$1"',
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'Artikel',
@@ -794,7 +798,10 @@ ID pemblokiran Anda adalah $5. Tolong sertakan ID ini dalam setiap pertanyaan An
 'nocreate-loggedin'         => 'Anda tak memiliki hak akses untuk membuat halaman baru pada wiki ini.',
 'permissionserrors'         => 'Kesalahan Hak Akses',
 'permissionserrorstext'     => 'Anda tak memiliki hak untuk melakukan hal itu karena {{PLURAL:$1|alasan|alasan-alasan}} berikut:',
-'recreate-deleted-warn'     => "'''Peringatan: Anda membuat ulang suatu halaman yang sudah pernah dihapus.''' Harap pertimbangkan apakah layak untuk melanjutkan suntingan Anda. Berikut adalah log penghapusan dari halaman ini:",
+'recreate-deleted-warn'     => "'''Peringatan: Anda membuat ulang suatu halaman yang sudah pernah dihapus.''',
+
+Harap pertimbangkan apakah layak untuk melanjutkan suntingan Anda.
+Berikut adalah log penghapusan dari halaman ini:",
 
 # "Undo" feature
 'undo-success' => 'Suntingan ini dapat dibatalkan. Tolong cek perbandingan di bawah untuk meyakinkan bahwa benar itu yang Anda ingin lakukan, lalu simpan perubahan tersebut untuk menyelesaikan pembatalan suntingan.',
@@ -877,6 +884,7 @@ Pengurus lain akan dapat mengakses isi tersebunyi dan dapat membatalkan penghapu
 'overlogpagetext' => 'Berikut ini adalah daftar terbaru penghapusan dan pemblokiran yang melibatkan isi yang disembunyikan dari pengurus. Lihat [[Special:Ipblocklist|daftar blokir IP]] untuk daftar terkini pencekalan dan pemblokiran yang berlaku.',
 
 # Diffs
+'history-title'             => 'Riwayat revisi dari "$1"',
 'difference'                => '(Perbedaan antarrevisi)',
 'loadingrev'                => 'memuat revisi untuk dibandingkan',
 'lineno'                    => 'Baris $1:',
@@ -1102,6 +1110,10 @@ Jika Anda memiliki versi resolusi penuh dari gambar ini, harap muatkan berkas te
 'destfilename'                => 'Nama berkas tujuan',
 'watchthisupload'             => 'Pantau halaman ini',
 'filewasdeleted'              => 'Suatu berkas dengan nama ini pernah dimuat dan selanjutnya dihapus. Harap cek $1 sebelum memuat lagi berkas tersebut.',
+'upload-wasdeleted'           => "'''Peringatan: Anda memuat suatu berkas yang telah pernah dihapus.'''
+
+Anda harus mempertimbangkan apakah perlu untuk melanjutkan pemuatan berkas ini.
+Log penghapusan berkas adalah sebagai berikut:",
 'filename-bad-prefix'         => 'Nama berkas yang Anda muat diawali dengan <strong>"$1"</strong>, yang merupakan nama non-deskriptif yang biasanya diberikan secara otomatis oleh kamera digital. Harap pilih nama lain yang lebih deskriptif untuk berkas Anda.',
 
 'upload-proto-error'      => 'Protokol tak tepat',
@@ -2315,11 +2327,6 @@ Coba dengan pratayang normal.',
 # Watchlist editor
 'watchlistedit-numitems'       => 'Daftar pantauan Anda berisi {{PLURAL:$1|1 judul|$1 judul}},tidak termasuk halaman pembicaraan.',
 'watchlistedit-noitems'        => 'Daftar pantauan Anda kosong.',
-'watchlistedit-clear-title'    => 'Kosongkan daftar pantauan',
-'watchlistedit-clear-legend'   => 'Kosongkan daftar pantauan',
-'watchlistedit-clear-confirm'  => 'Tindakan ini akan menghapus seluruh judul dari daftar pantauan Anda. Anda yakin? Anda juga dapat [[Special:Watchlist/edit|menghapus suatu judul tertentu]].',
-'watchlistedit-clear-submit'   => 'Kosongkan',
-'watchlistedit-clear-done'     => 'Daftar pantauan Anda telah dikosongkan. Semua judul telah dihapus.',
 'watchlistedit-normal-title'   => 'Sunting daftar pantauan',
 'watchlistedit-normal-legend'  => 'Hapus judul dari daftar pantauan',
 'watchlistedit-normal-explain' => 'Judul-judul pada daftar pantauan Anda ditampilkan di bawah ini. Untuk menghapus suatu judul, centang kotak di sampingnya, dan klik Hapus judul. Anda juga dapat [[Special:Watchlist/raw|menyunting daftar mentah]], atau [[Special:Watchlist/clear|menghapus seluruh judul]].',
@@ -2338,6 +2345,5 @@ Coba dengan pratayang normal.',
 'watchlisttools-view'  => 'Tampilkan perubahan terkait',
 'watchlisttools-edit'  => 'Tampilkan dan sunting daftar pantauan',
 'watchlisttools-raw'   => 'Sunting daftar pantauan mentah',
-'watchlisttools-clear' => 'Kosongkan daftar pantauan',
 
 );

@@ -602,6 +602,13 @@ class SkinTemplate extends Skin {
 			global $wgContLang;
 			$text = $wgContLang->getFormattedNsText( Namespace::getSubject( $title->getNamespace() ) );
 		}
+		
+		$result = array();
+		if( !wfRunHooks('SkinTemplateTabAction', array(&$this,
+				$title, $message, $selected, $checkEdit,
+				&$classes, &$query, &$text, &$result)) ) {
+			return $result;
+		}
 
 		return array(
 			'class' => implode( ' ', $classes ),
@@ -685,7 +692,7 @@ class SkinTemplate extends Skin {
 						'href' => $this->mTitle->getLocalUrl( 'action=edit&section=new' )
 					);
 				}
-			} else {
+			} elseif ( $this->mTitle->exists() || $this->mTitle->isAlwaysKnown() ) {
 				$content_actions['viewsource'] = array(
 					'class' => ($action == 'edit') ? 'selected' : false,
 					'text' => wfMsg('viewsource'),

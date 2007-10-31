@@ -1,9 +1,12 @@
 <?php
-/** Norwegian (Norsk (bokmål))
+/** Norwegian (‪Norsk (bokmål)‬)
  *
  * @addtogroup Language
- * Translators:
+ *
  * @author Jon Harald Søby
+ * @author G - ג
+ * @author Nike
+ * @author Teak
  */
 
 $skinNames = array(
@@ -266,6 +269,9 @@ $messages = array(
 'anontalk'       => 'Brukerdiskusjon for denne IP-adressa',
 'navigation'     => 'Navigasjon',
 
+# Metadata in edit box
+'metadata_help' => 'Metadata:',
+
 'errorpagetitle'    => 'Feil',
 'returnto'          => 'Tilbake til $1.',
 'tagline'           => 'Fra {{SITENAME}}',
@@ -285,7 +291,7 @@ $messages = array(
 'editthispage'      => 'Rediger siden',
 'delete'            => 'Slett',
 'deletethispage'    => 'Slett side',
-'undelete_short'    => 'Gjenopprett $1 revisjoner',
+'undelete_short'    => 'Gjenopprett {{PLURAL:én revisjon|$1 revisjoner}}',
 'protect'           => 'Lås',
 'protect_change'    => 'endre beskyttelse',
 'protectthispage'   => 'Lås siden',
@@ -354,6 +360,7 @@ $messages = array(
 'versionrequired'     => 'Versjon $1 av MediaWiki påtrengt',
 'versionrequiredtext' => 'Versjon $1 av MediaWiki er nødvendig for å bruke denne siden. Se [[Special:Version]]',
 
+'ok'                      => 'OK',
 'retrievedfrom'           => 'Hentet fra «$1»',
 'youhavenewmessages'      => 'Du har $1 ($2).',
 'newmessageslink'         => 'nye meldinger',
@@ -370,6 +377,10 @@ $messages = array(
 'restorelink'             => '{{plural:$1|én slettet revisjon|$1 slettede revisjoner}}',
 'feedlinks'               => 'Mating:',
 'feed-invalid'            => 'Ugyldig matingstype.',
+'site-rss-feed'           => '$1 RSS-føde',
+'site-atom-feed'          => '$1 Atom-føde',
+'page-rss-feed'           => '«$1» RSS-føde',
+'page-atom-feed'          => '«$1» Atom-føde',
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'Artikkel',
@@ -435,12 +446,14 @@ til siden.',
 Funksjon: $1<br />
 Spørring: $2',
 'viewsource'           => 'Vis kildekode',
+'viewsourcefor'        => 'for $1',
 'protectedpagetext'    => 'Denne siden har blitt låst for redigeringer.',
 'viewsourcetext'       => 'Du kan se og kopiere kilden til denne siden:',
 'protectedinterface'   => 'Denne siden viser brukergrensesnittet for programvaren, og er låst for å hindre misbruk.',
 'editinginterface'     => "'''Advarsel:''' Du redigerer en side som brukes i grensesnittet for programvaren. Endringer på denne siden vil påvirke hvordan grensesnittet vil se ut.",
 'sqlhidden'            => '(SQL-spørring skjult)',
-'cascadeprotected'     => 'Denne siden har blitt låst for redigering, fordi den inkluderes i følgende sider, som er låst med «dypbeskyttelse» slått på:<!--$1-->',
+'cascadeprotected'     => 'Denne siden har blitt låst for redigering, fordi den inkluderes i følgende sider, som er låst med «dypbeskyttelse» slått på:<!--{{PLURAL:$1}}-->
+$2',
 'namespaceprotected'   => "Du har ikke tillatelse til å redigere sider i navnerommet '''$1'''.",
 'customcssjsprotected' => 'Du har ikke tillatelse til å redigere denne siden, fordi den inneholder en annen brukers personlige innstillinger.',
 'ns-specialprotected'  => 'Sier i navnerommet {{ns:special}} kan ikke redigeres.',
@@ -479,6 +492,7 @@ Brukerkontoen din har blitt opprettet. Ikke glem å endre [[Special:Preferences|
 'uid'                        => 'Bruker-ID:',
 'yourrealname'               => 'Virkelig navn *',
 'yourlanguage'               => 'Språk:',
+'yourvariant'                => 'Variant',
 'yournick'                   => 'Signatur',
 'badsig'                     => 'Ugyldig råsignatur; sjekk HTML-tagger.',
 'badsiglength'               => 'Brukernavn for langt; må være kortere enn $1 tegn.',
@@ -650,7 +664,7 @@ så du kan ikke lagre dine endringer akkurat nå. Det kan være en god idé å
 kopiere teksten din til en tekstfil, så du kan lagre den til senere.</strong>',
 'protectedpagewarning'      => '<strong>ADVARSEL: Denne siden er låst, slik at kun brukere med administratorrettigheter kan redigere den.</strong>',
 'semiprotectedpagewarning'  => "'''Merk:''' Denne siden har blitt låst slik at kun registrerte brukere kan endre den. Nyopprettede og anonyme brukere kan ikke redigere.",
-'cascadeprotectedwarning'   => "'''Advarsel:''' Denne siden har blitt låst slik at kun brukere med administratorrettigheter kan redigere den, fordi den inkluderes i følgende dypbeskyttede sider:<!--$1-->",
+'cascadeprotectedwarning'   => "'''Advarsel:''' Denne siden har blitt låst slik at kun brukere med administratorrettigheter kan redigere den, fordi den inkluderes i følgende dypbeskyttede sider:<!--{{PLURAL:$1}}-->",
 'templatesused'             => 'Maler i bruk på denne siden:',
 'templatesusedpreview'      => 'Maler som brukes i denne forhåndsvisningen:',
 'templatesusedsection'      => 'Maler brukt i denne seksjonen:',
@@ -809,6 +823,9 @@ Andre administratorer på denne wikien vil fortsatt kunne se det skjulte innhold
 'math_image_error'         => 'PNG-konversjon mislyktes',
 'math_bad_tmpdir'          => 'Kan ikke skrive til eller opprette midlertidig mappe',
 'math_bad_output'          => 'Kan ikke skrive til eller opprette resultatmappe',
+'math_notexvc'             => 'Missing texvc executable; please see math/README to configure.
+
+Mangler kjørbar texvc; vennligst se math/README for å konfigurerer.',
 'prefs-personal'           => 'Brukerdata',
 'prefs-rc'                 => 'Siste endringer',
 'prefs-watchlist'          => 'Overvåkningsliste',
@@ -895,8 +912,13 @@ Andre administratorer på denne wikien vil fortsatt kunne se det skjulte innhold
 'rcshowhidepatr'                    => '$1 godkjente endringer',
 'rcshowhidemine'                    => '$1 mine endringer',
 'rclinks'                           => 'Vis siste $1 endringer i de siste $2 dagene<br />$3',
+'diff'                              => 'diff',
+'hist'                              => 'hist',
 'hide'                              => 'skjul',
 'show'                              => 'vis',
+'minoreditletter'                   => 'm',
+'newpageletter'                     => 'N',
+'boteditletter'                     => 'b',
 'number_of_watching_users_pageview' => '[$1 overvåkende {{plural:$1|bruker|brukere}}]',
 'rc_categories'                     => 'Begrens til kategorier (skilletegn: «|»)',
 'rc_categories_any'                 => 'Alle',
@@ -970,6 +992,9 @@ Om filen du har sjekket er det samme bildet, men i opprinnelig størrelse, er de
 'destfilename'                => 'Ønsket filnavn',
 'watchthisupload'             => 'Overvåk siden',
 'filewasdeleted'              => 'Ei fil ved dette navnet har blitt lastet opp tidligere, og så slettet. Sjekk $1 før du forsøker å laste det opp igjen.',
+'upload-wasdeleted'           => "'''Advarsel: Du laster opp en fil som tidligere har blitt slettet.'''
+
+Vurder om det er riktig å fortsette å laste opp denne filen. Slettingsloggen for filen gis nedenunder:",
 'filename-bad-prefix'         => 'Navnet på filen du laster opp begynner med <strong>«$1»</strong>, hvilket er et ikke-beksrivende navn som vanligvis brukes automatisk av digitalkameraer. Vennligst bruk et mer beskrivende navn på filen.',
 'filename-prefix-blacklist'   => ' #<!-- leave this line exactly as it is --> <pre>
 # Syntaksen er som følger:
@@ -1168,6 +1193,8 @@ Det har vært totalt '''$3''' sidevisninger, og '''$4''' redigeringer siden wiki
 'movethispage'            => 'Flytt siden',
 'unusedimagestext'        => '<p>Merk at andre sider kanskje lenker til et bilde med en direkte lenke, så bildet listes her selv om det faktisk er i bruk.</p>',
 'unusedcategoriestext'    => 'Følgende kategorier eksisterer, men det er ingen sider i dem.',
+'notargettitle'           => 'Intet mål',
+'notargettext'            => 'Du har ikke spesifisert en målside eller bruker å utføre denne funksjonen på.',
 
 # Book sources
 'booksources'               => 'Bokkilder',
@@ -1226,6 +1253,7 @@ Det har vært totalt '''$3''' sidevisninger, og '''$4''' redigeringer siden wiki
 'emailto'         => 'Til',
 'emailsubject'    => 'Emne',
 'emailmessage'    => 'Beskjed',
+'emailsend'       => 'Send',
 'emailccme'       => 'Send meg en kopi av beskjeden min.',
 'emailccsubject'  => 'Kopi av din beskjed til $1: $2',
 'emailsent'       => 'E-post sendt',
@@ -1234,6 +1262,7 @@ Det har vært totalt '''$3''' sidevisninger, og '''$4''' redigeringer siden wiki
 # Watchlist
 'watchlist'            => 'Overvåkningsliste',
 'mywatchlist'          => 'Overvåkningsliste',
+'watchlistfor'         => "(for '''$1''')",
 'nowatchlist'          => 'Du har ingenting i overvåkningslista.',
 'watchlistanontext'    => 'Vennligst $1 for å vise eller redigere sider på overvåkningslista di.',
 'watchnologin'         => 'Ikke logget inn',
@@ -1421,6 +1450,7 @@ $1',
 # Contributions
 'contributions' => 'Bidrag',
 'mycontris'     => 'Mine bidrag',
+'contribsub2'   => 'For $1 ($2)',
 'nocontribs'    => 'Ingen endringer er funnet som passer disse kriteriene.',
 'ucnote'        => 'Her er denne brukerens siste <b>$1</b> endringer i de siste <b>$2</b> dagene.',
 'uclinks'       => 'Vis de siste $1 endringene; vis de siste $2 dagene.',
@@ -1444,8 +1474,6 @@ $1',
 # What links here
 'whatlinkshere'       => 'Lenker hit',
 'whatlinkshere-title' => 'Sider som lenker til $1',
-'notargettitle'       => 'Intet mål',
-'notargettext'        => 'Du har ikke spesifisert en målside eller bruker å utføre denne funksjonen på.',
 'linklistsub'         => '(Liste over lenker)',
 'linkshere'           => "Følgende sider lenker til '''[[:$1]]''':",
 'nolinkshere'         => "Ingen sider lenker til '''[[:$1]]'''.",
@@ -1694,6 +1722,8 @@ For å eksportere sider, skriv inn titler i tekstboksen under, én tittel per li
 'tooltip-ca-watch'                => 'Legg til denne siden til din overvåkningsliste.',
 'tooltip-ca-unwatch'              => 'Fjern denne siden fra din overvåkningsliste.',
 'tooltip-search'                  => 'Søk i {{SITENAME}}',
+'tooltip-search-go'               => 'Gå til en side med dette navnet dersom det finnes',
+'tooltip-search-fulltext'         => 'Søk etter denne teksten',
 'tooltip-p-logo'                  => 'Hovedside',
 'tooltip-n-mainpage'              => 'Gå til hovedsiden',
 'tooltip-n-portal'                => 'Om prosjektet; hva du kan gjøre og hvor du kan finne ting',
@@ -1841,6 +1871,7 @@ Kun listeelementer (linjer som starter med *) tas med. Den første lenka på en 
 'variantname-ku-latn' => 'ku-Latn',
 
 # Metadata
+'metadata'          => 'Metadata',
 'metadata-help'     => 'Denne fila inneholder tilleggsinformasjon, antagligvis fra digitalkameraet eller skanneren brukt til å lage eller digitalisere det. Hvis fila har blitt forandret fra utgangspunktet, kan enkelte detaljer kanskje være unøyaktige.',
 'metadata-expand'   => 'Vis detaljer',
 'metadata-collapse' => 'Skjul detaljer',
@@ -1877,7 +1908,9 @@ Kun listeelementer (linjer som starter med *) tas med. Den første lenka på en 
 'exif-copyright'                   => 'Opphavsbeskyttelse tilhører',
 'exif-exifversion'                 => 'Exif-versjon',
 'exif-flashpixversion'             => 'Støttet Flashpix-versjon',
+'exif-colorspace'                  => 'Fargerom',
 'exif-componentsconfiguration'     => 'Betydning av hver komponent',
+'exif-compressedbitsperpixel'      => 'Bildekompresjonsmodus',
 'exif-pixelydimension'             => 'Gyldig bildebredde',
 'exif-pixelxdimension'             => 'Gyldig bildehøyde',
 'exif-makernote'                   => 'Fabrikkmerknader',
@@ -1888,15 +1921,20 @@ Kun listeelementer (linjer som starter med *) tas med. Den første lenka på en 
 'exif-exposuretime'                => 'Eksponeringstid',
 'exif-exposuretime-format'         => '$1 sek ($2)',
 'exif-fnumber'                     => 'F-nummer',
+'exif-exposureprogram'             => 'Eksponeringsprogram',
+'exif-spectralsensitivity'         => 'Spektralsensitivitet',
 'exif-shutterspeedvalue'           => 'Lukkerhastighet',
 'exif-subjectdistance'             => 'Avstand til subjekt',
 'exif-lightsource'                 => 'Lyskilde',
 'exif-flash'                       => 'Blits',
 'exif-flashenergy'                 => 'Blitsenergi',
+'exif-exposureindex'               => 'Eksponeringsindeks',
 'exif-filesource'                  => 'Filkilde',
+'exif-scenetype'                   => 'Scenetype',
 'exif-cfapattern'                  => 'CFA-mønster',
 'exif-exposuremode'                => 'Eksponeringsmodus',
 'exif-whitebalance'                => 'Hvit balanse',
+'exif-gaincontrol'                 => 'Scenekontroll',
 'exif-contrast'                    => 'Kontrast',
 'exif-sharpness'                   => 'Skarphet',
 'exif-imageuniqueid'               => 'Unikk bilde-ID',
@@ -1922,6 +1960,8 @@ Kun listeelementer (linjer som starter med *) tas med. Den første lenka på en 
 'exif-gpsdestlongitude'            => 'Mållengdegrad',
 'exif-gpsdestdistanceref'          => 'Referanse for lengde til mål',
 'exif-gpsdestdistance'             => 'Lengde til mål',
+'exif-gpsprocessingmethod'         => 'Navn på GPS-prosesseringsmetode',
+'exif-gpsareainformation'          => 'Navn på GPS-område',
 'exif-gpsdatestamp'                => 'GPS-dato',
 
 # EXIF attributes
@@ -1929,9 +1969,16 @@ Kun listeelementer (linjer som starter med *) tas med. Den første lenka på en 
 
 'exif-unknowndate' => 'Ukjent dato',
 
+'exif-orientation-1' => 'Normal', # 0th row: top; 0th column: left
 'exif-orientation-2' => 'Snudd horisontalt', # 0th row: top; 0th column: right
 'exif-orientation-3' => 'Rotert 180°', # 0th row: bottom; 0th column: right
 'exif-orientation-4' => 'Snudd vertikalt', # 0th row: bottom; 0th column: left
+'exif-orientation-5' => 'Rotated 90° CCW and flipped vertically
+
+Rotert 90° mot klokka og vridd vertikalt', # 0th row: left; 0th column: top
+'exif-orientation-6' => 'Rotert 90° med klokka', # 0th row: right; 0th column: top
+'exif-orientation-7' => 'Rotert 90° med klokka og vridd vertikalt', # 0th row: right; 0th column: bottom
+'exif-orientation-8' => 'Rotert 90° mot klokka', # 0th row: left; 0th column: bottom
 
 'exif-componentsconfiguration-0' => 'finnes ikke',
 
@@ -1955,6 +2002,9 @@ Kun listeelementer (linjer som starter med *) tas med. Den første lenka på en 
 'exif-lightsource-9'   => 'Fint vær',
 'exif-lightsource-10'  => 'Overskyet',
 'exif-lightsource-11'  => 'Skygge',
+'exif-lightsource-17'  => 'Standardlys A',
+'exif-lightsource-18'  => 'Standardlys B',
+'exif-lightsource-19'  => 'Standardlys C',
 'exif-lightsource-255' => 'Annen lyskilde',
 
 'exif-focalplaneresolutionunit-2' => 'tommer',
@@ -1965,14 +2015,28 @@ Kun listeelementer (linjer som starter med *) tas med. Den første lenka på en 
 'exif-customrendered-0' => 'Normal prosess',
 'exif-customrendered-1' => 'Tilpasset prosess',
 
+'exif-exposuremode-0' => 'Automatisk eksponering',
+'exif-exposuremode-1' => 'Manuell eksponering',
+
+'exif-whitebalance-0' => 'Automatisk hvitbalanse',
+'exif-whitebalance-1' => 'Manuell hvitbalanse',
+
+'exif-scenecapturetype-0' => 'Standard',
 'exif-scenecapturetype-1' => 'Landskap',
 'exif-scenecapturetype-2' => 'Portrett',
+'exif-scenecapturetype-3' => 'Nattscene',
 
 'exif-gaincontrol-0' => 'Ingen',
 
+'exif-contrast-0' => 'Normal',
 'exif-contrast-1' => 'Myk',
+'exif-contrast-2' => 'Hard',
 
+'exif-saturation-0' => 'Normal',
+
+'exif-sharpness-0' => 'Normal',
 'exif-sharpness-1' => 'Myk',
+'exif-sharpness-2' => 'Hard',
 
 'exif-subjectdistancerange-0' => 'Ukjent',
 'exif-subjectdistancerange-1' => 'Makro',
@@ -2054,7 +2118,8 @@ $1
 'redirectingto' => 'Omdirigerer til [[$1]]…',
 
 # action=purge
-'confirm_purge' => "Vil du slette tjenerens mellomlagrede versjon (''cache'') av denne siden? $1",
+'confirm_purge'        => "Vil du slette tjenerens mellomlagrede versjon (''cache'') av denne siden? $1",
+'confirm_purge_button' => 'OK',
 
 # AJAX search
 'searchcontaining' => "Søk etter artikler som inneholder ''$1''.",
@@ -2100,11 +2165,6 @@ Prøv vanlig forhåndsvisning.',
 # Watchlist editor
 'watchlistedit-numitems'       => 'Overvåkningslista di inneholder {{PLURAL:$1|én tittel|$1 titler}}, ikke inkludert diskusjonssider.',
 'watchlistedit-noitems'        => 'Overvåkningslista di inneholder ingen titler.',
-'watchlistedit-clear-title'    => 'Fjern alt fra overvåkningslista',
-'watchlistedit-clear-legend'   => 'Fjern alt fra overvåkningslista',
-'watchlistedit-clear-confirm'  => 'Dette vil fjerne alle titler fra overvåkningslista di. Er du sikker på at du vil fjerne alt? Du kan også [[Special:Watchlist/edit|fjerne individuelle titler]].',
-'watchlistedit-clear-submit'   => 'Fjern alt',
-'watchlistedit-clear-done'     => 'Alle titler har blitt fjernet fra overvåkningslista di.',
 'watchlistedit-normal-title'   => 'Rediger overvåkningsliste',
 'watchlistedit-normal-legend'  => 'Fjern titler fra overvåkninglista',
 'watchlistedit-normal-explain' => 'Titler på overvåkningslista di vises nedenunder. For å fjerne en tittel, merk av boksen ved siden av den og klikk Fjern titler. Du kan også [[Special:Watchlist/raw|redigere den rå overvåkningslista]] eller [[Special:Watchlist/clear|fjerne alle titler]].',
@@ -2120,9 +2180,8 @@ Prøv vanlig forhåndsvisning.',
 'watchlistedit-raw-removed'    => '{{PLURAL:$1|Én tittel|$1 titler}} ble fjernet:',
 
 # Watchlist editing tools
-'watchlisttools-view'  => 'Vis relevante endringer',
-'watchlisttools-edit'  => 'Vis og rediger overvåkningsliste',
-'watchlisttools-raw'   => 'Rediger rå overvåkningsliste',
-'watchlisttools-clear' => 'Fjern alt fra overvåkningslisten',
+'watchlisttools-view' => 'Vis relevante endringer',
+'watchlisttools-edit' => 'Vis og rediger overvåkningsliste',
+'watchlisttools-raw'  => 'Rediger rå overvåkningsliste',
 
 );
