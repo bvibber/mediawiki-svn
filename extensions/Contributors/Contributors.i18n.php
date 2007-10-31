@@ -257,13 +257,13 @@ function efContributorsMessages() {
 
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
-'contributors' => 'Contribuanten',
-'contributors-toolbox' => 'Belangrijkste contribuanten',
-'contributors-legend' => 'Toon belangrijkste contribuanten van een pagina',
+'contributors' => 'Bijdragers',
+'contributors-toolbox' => 'Belangrijkste bijdragers',
+'contributors-legend' => 'Belangrijkste bijdragers van een pagina tonen',
 'contributors-target' => 'Titel:',
-'contributors-submit' => 'Toon',
-'contributors-subtitle' => 'Belangrijkste contribuanten aan $1',
-'contributors-others-long' => 'Er zijn $1 andere contribuanten aan deze pagina.',
+'contributors-submit' => 'Tonen',
+'contributors-subtitle' => 'Belangrijkste bijdragers aan $1',
+'contributors-others-long' => 'Er zijn $1 andere bijdragers aan deze pagina.',
 'contributors-others' => 'en $1 anderen',
 'contributors-badtitle' => 'Onjuiste titel.',
 'contributors-nosuchpage' => 'De pagina $1 bestaat niet.',
@@ -335,6 +335,10 @@ function efContributorsMessages() {
 'contributors-others' => 'e $1 outros',
 'contributors-badtitle' => 'Título inválido.',
 'contributors-nosuchpage' => 'O artigo $1 não existe.',
+),
+
+'rm' => array(
+'contributors-target' => 'Titel:',
 ),
 
 'ro' => array(

@@ -457,6 +457,11 @@ function efBadImageMessages() {
 'badimages-log-remove' => 'removida [[$1]] da lista de imagens com problemas',
 ),
 
+'rm' => array(
+'badimages-name' => 'Num:',
+'badimages-reason' => 'Motiv:',
+),
+
 /* Russian (Alexander Sigachov) */
 'ru' => array(
 'badimages' => 'Список нежелательных изображений',

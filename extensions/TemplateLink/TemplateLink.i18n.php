@@ -29,6 +29,11 @@ $allMessages = array(
                 'templatelink_empty' => 'Ein Parameter muss angegeben werden.',
                 'templatelink_newtitle' => '$1 (ersetzt)',
         ),
+	'gl' => array(
+		'templatelink' => 'Ligazón do modelo',
+		'templatelink_empty' => 'Vostede ten que proporcionar un parámetro.',
+		'templatelink_newtitle' => '$1 (transcluído)',
+	),
 	'hsb' => array(
 		'templatelink' => 'Předłohowy wotkaz',
 		'templatelink_empty' => 'Dyrbiš parameter podać.',

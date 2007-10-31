@@ -27,6 +27,10 @@ $wgDataSearchMessages['fr'] = array(
 	'datasearch' => 'Wikidata: Recherche de données',
 );
 
+$wgDataSearchMessages['gl'] = array(
+	'datasearch' => 'Wikidata: Procura de datos',
+);
+
 $wgDataSearchMessages['hsb'] = array(
 	'datasearch' => 'Wikidata: Pytanje datow',
 );
@@ -41,6 +45,10 @@ $wgDataSearchMessages['nl'] = array(
 
 $wgDataSearchMessages['sk'] = array(
 	'datasearch' => 'Wikidata: Hľadanie údajov',
+);
+
+$wgDataSearchMessages['sv'] = array(
+	'datasearch' => 'Wikidata: Datasökning',
 );
 
 $wgDataSearchMessages['yue'] = array(
@@ -61,4 +69,3 @@ $wgDataSearchMessages['zh-hk'] = $wgDataSearchMessages['zh-hant'];
 $wgDataSearchMessages['zh-sg'] = $wgDataSearchMessages['zh-hans'];
 $wgDataSearchMessages['zh-tw'] = $wgDataSearchMessages['zh-hant'];
 $wgDataSearchMessages['zh-yue'] = $wgDataSearchMessages['yue'];
-

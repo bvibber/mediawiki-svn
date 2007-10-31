@@ -72,6 +72,10 @@ $wgDismissableSiteNoticeMessages['hu'] = array(
 	'sitenotice_close' => 'elrejt',
 );
 
+$wgDismissableSiteNoticeMessages['hy'] = array(
+	'sitenotice_close' => 'փակել',
+);
+
 $wgDismissableSiteNoticeMessages['id'] = array(
 	'sitenotice_close' => 'tutup',
 );

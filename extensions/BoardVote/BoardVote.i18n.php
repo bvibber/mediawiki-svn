@@ -615,6 +615,7 @@ até o momento. $1 para os datos encriptados.</p>',
 	'boardvote_edits_many'    => 'moitos',
 	'group-boardvote'         => 'Administradores da votación ao Consello de Administración',
 	'group-boardvote-member'  => 'Administrador da votación ao Consello de Administración',
+	'grouppage-boardvote'     => '{{ns:project}}:Administrador de eleccións ao Consello de Administración',
 	'boardvote_blocked'       => 'Sentímolo, vostede foi bloqueado no wiki no que está rexistrado. Aos usuarios bloqueados non se lles permite votar.',
 	'boardvote_welcome'       => 'Reciba a nosa benvida, \'\'\'$1\'\'\'!',
 	'go_to_board_vote'        => 'Eleccións do Consello de Administración de Wikimedia de 2007',
@@ -1393,6 +1394,10 @@ A versão da encriptação segue-se, e será publicada em [[Especial:Boardvote/d
 	'group-boardvote'         => 'Board vote administradores',
 	'group-boardvote-member'  => 'Board vote administrador',
 	'grouppage-boardvote'     => '{{ns:project}}:Board vote admin',
+);
+$wgBoardVoteMessages['rm'] = array(
+	'boardvote_user'          => 'Utilisader',
+	'boardvote_welcome'       => 'Chau \'\'\'$1\'\'\'!',
 );
 $wgBoardVoteMessages['ru'] = array(
 	'boardvote'               => "Выборы в Совет поверенных фонда «Викимедиа»",

@@ -82,6 +82,24 @@ on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|
 		'createsigndoc-create' => 'Creal',
 		'createsigndoc-error-pagenoexist' => 'Marru: La páhina [[$1]] nu desisti.',
 	),
+	'gl' => array(
+		'createsigndocument' => 'Habilitar a Sinatura de Documentos',
+		'createsigndoc-pagename' => 'Páxina:',
+		'createsigndoc-allowedgroup' => 'Grupo permitido:',
+		'createsigndoc-email' => 'Enderezo electrónico:',
+		'createsigndoc-address' => 'Enderezo familiar:',
+		'createsigndoc-extaddress' => 'Cidade, Estado, País:',
+		'createsigndoc-phone' => 'Número de teléfono:',
+		'createsigndoc-bday' => 'Aniversario:',
+		'createsigndoc-minage' => 'Idade minima:',
+		'createsigndoc-introtext' => 'Introdución:',
+		'createsigndoc-hidden' => 'Oculto',
+		'createsigndoc-optional' => 'Opcional',
+		'createsigndoc-create' => 'Crear',
+		'createsigndoc-error-generic' => 'Erro: $1',
+		'createsigndoc-error-pagenoexist' => 'Erro: A páxina [[$1]] non existe.',
+		'createsigndoc-success' => 'O documento asinado foi habilitado con exito en [[$1]]. Para comprobalo, visite [{{SERVER}}{{localurl: Special: SignDocument|doc=$2}} esta páxina].',
+	),
 	'hsb' => array(
 		'createsigndocument' => 'Podpisanje dokumentow zmóžnić',
 		'createsigndoc-head' => 'Wužij tutón formular, zo by stronu \'Podpisny dokument\' za wotpowědny nastawk wutworił, zo by wužiwarjo přez [[Special:Signdocument]] podpisać móhli. Prošu podaj mjeno nastawka, na kotrymž chceš digatalny podpis zmóžnił, kotři čłonojo kotreje wužiwarskeje skupiny smědźa tam podpisać, kotre pola wužiwarjo smědźa widźeć a kotre měli opcionalne być, trěbnu minimalnu starobu za podpisanje dokumenta (njeje minimum, jeli žane podaće njeje) a krótki zawodny tekst, kotryž tutón dokumement wopisuje a wužiwarjam pokiwy poskića.
@@ -143,6 +161,14 @@ en zorg er alstublieft voor dat alle velden de juiste waarden hebben
 		'createsigndoc-error-pagenoexist' => 'Error: De pagina [[$1]] bestaat niet.',
 		'createsigndoc-success'      => 'Documentondertekening is ingeschakeld op
 [[$1]]. Ga alstublieft naar [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} deze pagina] om het te testen.',
+	),
+	'pl' => array(
+		'createsigndoc-pagename' => 'Strona:',
+		'createsigndoc-email' => 'Adres e-mail:',
+		'createsigndoc-phone' => 'Numer telefonu:',
+		'createsigndoc-bday' => 'Data urodzenia:',
+		'createsigndoc-error-generic' => 'Błąd: $1',
+		'createsigndoc-error-pagenoexist' => 'Błąd: Strona [[$1]] nie istnieje',
 	),
 	'pms' => array(
 		'createsigndocument' => 'Visché la firma digital ëd na pàgina coma document',

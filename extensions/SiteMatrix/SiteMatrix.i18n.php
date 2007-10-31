@@ -83,6 +83,12 @@ $wgSiteMatrixMessages['fr'] = array(
 $wgSiteMatrixMessages['frc'] = array(
 	'sitematrix' => 'Liste de wikis à Wikimedia',
 );
+$wgSiteMatrixMessages['gl'] = array(
+	'sitematrix' => 'Listaxe dos wikis de Wikimedia',
+	'sitematrix-language' => 'Linguaxe',
+	'sitematrix-project' => 'Nome do proxecto, ligazón entre proxectos e ligazón entre wikis',
+	'sitematrix-others' => 'Outros proxectos de Wikimedia',
+);
 $wgSiteMatrixMessages['he'] = array(
 	'sitematrix'          => 'רשימת אתרי ויקי של ויקימדיה',
 	'sitematrix-language' => 'שפה',
@@ -189,6 +195,9 @@ $wgSiteMatrixMessages['pt'] = array(
 );
 $wgSiteMatrixMessages['pt-br'] = array(
 	"sitematrix" => "Lista de wikis da Wikimedia",
+);
+$wgSiteMatrixMessages['rm'] = array(
+	'sitematrix-language' => 'Linguatg',
 );
 $wgSiteMatrixMessages['ro'] = array(
 	'sitematrix' => 'Lista proiectelor Wikimedia',

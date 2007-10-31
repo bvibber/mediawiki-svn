@@ -79,6 +79,11 @@ $allMessages = array(
 		'passwordreset-success' => 'La ciav ëd l\'utent $1 a l\'é staita cambià',
 	),
 
+	'rm' => array(
+		'passwordreset-username' => 'Num d\'utilisader',
+	),
+
+
 	'yue' => array( 
 		'passwordreset' => '密碼重設',
 		'passwordreset-invalidusername' => '無效嘅用戶名',

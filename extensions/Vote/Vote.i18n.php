@@ -108,6 +108,27 @@ sphinx|Sphinx",
 'vote-invalid-choice' => 'Vous devez choisir une des options disponible.',
 ),
 
+'gl' => array(
+'vote' => 'Votación',
+'vote-header' => 'Pode votar polo \'\'\'Amo Supremo do Mundo\'\'\' aquí!',
+'vote-current' => 'O seu voto actual é para \'\'\'$1\'\'\'.',
+'vote-legend' => 'Votar ou modificar o voto',
+'vote-caption' => 'A súa escolla:',
+'vote-choices' => 'joker|O Joker
+penguin|O Pingüín
+riddler|Riddler',
+'vote-submit' => 'Votar',
+'vote-registered' => 'O seu voto foi rexistrado.',
+'vote-view-results' => 'Ver os resultados',
+'vote-results' => 'Resultados da votación',
+'vote-results-choice' => 'Escolla',
+'vote-results-count' => 'Reconto',
+'vote-results-none' => 'Aínda non se rexistrou ningún voto.',
+'vote-login' => 'Ten que $1 para votar.',
+'vote-login-link' => 'rexistrarse',
+'vote-invalid-choice' => 'Ten que escoller unha das opcións disponíbeis.',
+),
+
 'hsb' => array(
 'vote' => 'Hłosować',
 'vote-header' => 'Móžeš tu za \'\'\'Supreme Overlord of the World\'\'\' hłosować!',

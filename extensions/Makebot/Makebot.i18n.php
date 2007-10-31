@@ -582,6 +582,10 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'removido estatuto de bot para [[$1]]',
 ),
 
+'rm' => array(
+'makebot-username'        => 'Num d\'utilisader:',
+),
+
 /* Romanian (KlaudiuMihăilă) */
 'ro' => array(
 'makebot'                 => 'Acordarea şi revocarea statutului de robot',

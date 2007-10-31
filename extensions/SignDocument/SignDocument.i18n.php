@@ -1,4 +1,4 @@
-	<?PHP
+<?php
 $allMessages = array(
 	'en' => array(
 		'signaturelogpage'      => 'Signature Log',
@@ -16,6 +16,12 @@ $allMessages = array(
 		'signaturelogpage'      => 'Unterschrifts-Logbuch',
 		'signaturelogpagetext'  => 'Dies ist das Unterschrifts-Logbuch für Dokumente, die über die Seite [[{{ns:special}}:SignDocument]] unterschrieben werden können.',
 		'signaturelogentry'     => 'hat das Dokument $1 unterschrieben',
+	),
+
+	'gl' => array(
+		'signaturelogpage' => 'Rexistro de Sinaturas',
+		'signaturelogpagetext' => 'Este é un rexistro de todas as sinaturas engadidas aos documentos mediante [[Special:SignDocument]].',
+		'signaturelogentry' => 'asinou o documento $1',
 	),
 
 	'hsb' => array(

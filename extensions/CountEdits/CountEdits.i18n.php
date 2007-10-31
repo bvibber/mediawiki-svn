@@ -133,6 +133,18 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'Njejsu žane změny w tutym wikiju.',
 ),
 
+'hy' => array(
+'countedits' => 'Հաշվել խմբագրումները',
+'countedits-warning' => '\'\'\'Զգուշացում.\'\'\' մի դատեք գրքի մասին կազմով և մասնակցի մասին՝ խմբագրումների քանակով։',
+'countedits-username' => 'Մասնակից.',
+'countedits-ok' => 'OK',#identical but defined
+'countedits-nosuchuser' => '$1 անվանմամբ մասնակից չկա։',
+'countedits-resultheader' => 'Արդյունքներ $1 մասնակցի համար',
+'countedits-resulttext' => '$1 մասնակիցը կատարել է $2 խմբագրում',
+'countedits-mostactive' => 'Ամենաակտիվ մասնակիցները',
+'countedits-nocontribs' => 'Այս վիքիում ոչ մի խմբագրում չի եղել։',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'countedits' => 'Jumlah suntingan',

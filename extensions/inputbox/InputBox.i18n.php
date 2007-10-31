@@ -158,7 +158,9 @@ function efInputBoxMessages() {
 ),
 
 'gl' => array(
-	'createarticle' => 'Crear artigo',
+	'tryexact'                => 'Tentar coincidencias exactas',
+	'searchfulltext'          => 'Buscar o texto completo',
+	'createarticle'           => 'Crear artigo',
 ),
 
 'hak' => array(

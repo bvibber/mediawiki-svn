@@ -53,6 +53,11 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'Dèsolâ, lo titro de cél articllo est pas ôtorisâ a étre sôvo.',
 ),
 
+'gl' => array(
+	'block_title_error_page_title' => 'Título Bloqueado',
+	'block_title_error' => 'Desculpas, non se permite gardar o título deste artigo.',
+),
+
 'hsb' => array(
 	'block_title_error_page_title' => 'Mjeno nastawka zablokowane',
 	'block_title_error' => 'Wodaj, ale njeje dowolene nastawk z tutym mjenom składować.',

@@ -299,6 +299,7 @@ $wgNewuserlogMessages['ur'] = array(
 );
 $wgNewuserlogMessages['vls'] = array(
 	'newuserlogpage'           => 'Logboek nieuwe gebrukers',
+	'newuserlog-create-entry'  => 'Nieuwe gebruker',
 );
 $wgNewuserlogMessages['wa'] = array(
 	'newuserlogpage'           => 'Djournå des noveas uzeus',

@@ -305,6 +305,10 @@ function efPatrollerMessages() {
 'grouppage-patroller' => '{{ns:project}}:patoja',
 ),
 
+'rm' => array(
+'patrol-revert-reason' => 'Motiv:',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'patrol' => 'Strážiť úpravy',

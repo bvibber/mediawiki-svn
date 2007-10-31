@@ -29,6 +29,10 @@ $wgLanguageManagerMessages['fr'] = array(
 	'langman_title' => 'Gestion des langues',
 	'languages' => 'Wikidata: Gestion des langues',
 );
+$wgLanguageManagerMessages['gl'] = array(
+	'langman_title' => 'Xestor de linguas',
+	'languages' => 'Wikidata: Xestor de linguas',
+);
 $wgLanguageManagerMessages['he'] = array(
 	'langman_title' => 'מנהל שפות',
 );

@@ -215,6 +215,9 @@ $wgLinkSearchMessages['pt'] = array(
 // Brazillian portuguese inherits portuguese.
 $wgLinkSearchMessages['pt-br'] = $wgLinkSearchMessages['pt'];
 
+$wgLinkSearchMessages['rm'] = array(
+	'linksearch-ok'    => 'Tschertgar',
+);
 $wgLinkSearchMessages['ru'] = array(
 	'linksearch'       => 'Поиск внешних ссылок',
 	'linksearch-pat'   => 'Шаблон для поиска:',

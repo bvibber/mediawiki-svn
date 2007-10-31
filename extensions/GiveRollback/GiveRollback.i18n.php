@@ -265,6 +265,10 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 'giverollback-logentryrevoke' => 'drit d\'anulament gavà a [[$1]]',
 ),
 
+'rm' => array(
+'giverollback-username' => 'Num d\'utilisader:',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'giverollback' => 'Udeliť alebo odobrať právo rollback',

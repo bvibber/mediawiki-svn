@@ -37,6 +37,11 @@ function efUserImagesMessages() {
 'userimages-noname' => 'Nom d’utilisateur invalide ou manquant.',
 'userimages-noimages' => '$1 n’a importé aucune image.',
 ),
+'gl' => array(
+'userimages-caption' => 'Imaxes enviadas por $1',
+'userimages-noname' => 'O nome de usuario non é válido ou non se deu.',
+'userimages-noimages' => '$1 non enviou ningunha imaxe.',
+),
 'hsb' => array(
 'userimages-caption' => 'Wobrazy wot $1 nahrate',
 'userimages-noname' => 'Njepłaćiwe wužiwarske mjeno abo njepodate.',

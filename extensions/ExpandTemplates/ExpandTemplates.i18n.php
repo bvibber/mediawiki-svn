@@ -144,6 +144,9 @@ Kibontja az elemző függvényeket (pl. <nowiki>{{</nowiki>#if:...}}), és a vá
 	'expand_templates_output'          => 'Eredmény',
 	'expand_templates_remove_comments' => 'Megjegyzések eltávolítása',
 );
+$wgExpandTemplatesMessages['hy'] = array(
+	'expandtemplates'                  => 'Կաղապարների ընդարձակում',
+);
 $wgExpandTemplatesMessages['id'] = array(
 	'expandtemplates'                  => 'Pengembangan templat',
 	'expand_templates_intro'           => 'Halaman istimewa ini menerima teks dan mengembangkan semua templat di dalamnya secara rekursif. Halaman ini juga menerjemahkan semua fungsi parser seperti <nowiki>{{</nowiki>#if:...}}, dan variabel seperti <nowiki>{{</nowiki>CURRENTDAY}}&mdash;bahkan bisa dibilang segala sesuatu yang berada di antara dua tanda kurung. Ini dilakukan dengan memanggil tahapan parser yang sesuai dari MediaWiki.',

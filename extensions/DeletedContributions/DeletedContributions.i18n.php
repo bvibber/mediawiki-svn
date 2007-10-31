@@ -82,6 +82,10 @@ $wgDeletedContribsMessages['ga'] = array(
 	'deletedcontributions' => 'Dréachtaí úsáideora scriosta',
 );
 
+$wgDeletedContribsMessages['gl'] = array(
+	'deletedcontributions' => 'Contribucións eliminadas do usuario',
+);
+
 $wgDeletedContribsMessages['he'] = array(
 	'deletedcontributions' => 'תרומות משתמש מחוקות',
 );

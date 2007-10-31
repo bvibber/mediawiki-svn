@@ -96,7 +96,7 @@ $SpecialFormMessages =array(
 	),
 
 	'fr' => array(
-        'form' => 'Formulaire',
+	        'form' => 'Formulaire',
 		'formnoname' => 'Aucun nom',
 		'formnonametext' => 'Veuillez spécifier le nom du formulaire, sous la forme "Special:Formulaire/NomDuFormulaire".',
 		'formbadname' => 'Nom incorrect',
@@ -112,6 +112,27 @@ $SpecialFormMessages =array(
 		'formsaveerrortext' => 'Une erreur inconnue s\'est produite pendant la sauvegarde de l\'article \'$1\'.'
 	),
 
+	'gl' => array(
+		'form' => 'Formulario',
+		'formnoname' => 'Formulario sen Nome',
+		'formnonametext' => 'Tenlle que dar un nome ao formulario, como "Special:Form/Nomedoformulario".',
+		'formbadname' => 'Formulario con Nome incorrecto',
+		'formbadnametext' => 'Non hai ningún formulario con ese nome.',
+		'formpattern' => 'formulario-$1',
+		'formtemplatepattern' => '$1',#identical but defined
+		'formtitlepattern' => 'Engadir Novo $1',
+		'formsave' => 'Gardar',
+		'formarticleexists' => 'A páxina Existe',
+		'formarticleexiststext' => 'A páxina [[$1]] xa existe.',
+		'formbadpagename' => 'Nome de Páxina incorrecto',
+		'formbadpagenametext' => 'O formulario de datos que vostede introduciu fixo un nome de páxina incorrecto, "$1".',
+		'formrequiredfieldpluralerror' => 'Os campos $ 1 son requeridos para este formulario. Énchaos.',
+		'formrequiredfielderror' => 'O campo $1 é requerido para este formulario. Énchao.',
+		'formsavesummary' => 'Nova páxina usando [[Special:Form/$1]]',
+		'formsaveerror' => 'Erro ao gardar o formulario',
+		'formsaveerrortext' => 'Houbo un erro descoñecido ao gardar a páxina \'$1\'.',
+	),
+
 	'hsb' => array(
 		'form' => 'Formular',
 		'formnoname' => 'Žane formularne mjeno',
@@ -119,9 +140,9 @@ $SpecialFormMessages =array(
 		'formbadname' => 'Wopačne formularne mjeno',
 		'formbadnametext' => 'Njeje formular z tutym mjenom',
 		'formpattern' => '$1 formular',
-		'formtemplatepattern' => '$1',#identical but defined
 		'formtitlepattern' => 'Nowe $1 přidać',
 		'formsave' => 'Składować',
+		'formindexmismatch' => 'Tutón formular ma njejenake mjenowe mustry a předłohi wot indeksa $1.',
 		'formarticleexists' => 'Nastawk hižo eksistuje',
 		'formarticleexiststext' => 'Nastawk [[$1]] hižo eksistuje.',
 		'formbadpagename' => 'Njedowolene mjeno strony',
