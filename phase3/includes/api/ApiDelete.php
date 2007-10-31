@@ -166,4 +166,3 @@ class ApiDelete extends ApiBase {
 		return __CLASS__ . ': $Id: ApiDelete.php 22289 2007-05-20 23:31:44Z yurik $';
 	}
 }
-?>

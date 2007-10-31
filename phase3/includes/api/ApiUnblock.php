@@ -120,4 +120,3 @@ class ApiUnblock extends ApiBase {
 		return __CLASS__ . ': $Id$';
 	}
 }
-?>

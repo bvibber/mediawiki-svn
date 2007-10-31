@@ -157,4 +157,3 @@ class ApiBlock extends ApiBase {
 		return __CLASS__ . ': $Id$';
 	}
 }
-?>

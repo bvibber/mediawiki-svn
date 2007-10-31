@@ -136,4 +136,3 @@ class ApiProtect extends ApiBase {
 		return __CLASS__ . ': $Id$';
 	}
 }
-?>

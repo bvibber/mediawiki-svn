@@ -165,4 +165,3 @@ class ApiChangeRights extends ApiBase {
 		return __CLASS__ . ': $Id$';
 	}
 }
-?>
