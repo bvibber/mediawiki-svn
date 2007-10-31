@@ -502,21 +502,28 @@ $wgLuceneSearchMessages['oc'] = array(
 	'lucenefallback'        => 'Un problèma es subrevengut amb la recèrca wiki. Aqueste problèma es probablament temporari ; mercé de tornar ensajar dins un moment o d’utilizar un servici de recèrca extèrna.',
 );
 $wgLuceneSearchMessages['pl'] = array(
-	'searchnumber'          => "<strong>Wyniki $1-$2 z $3</strong>",
-	'searchprev'            => "&#x00AB; <span style='font-size: small'>Poprzednia</span>",
-	'searchnext'            => "<span style='font-size: small'>Następna</span> &#x00BB;",
-	'searchscore'           => "Trafność: $1",
-	'searchsize'            => "$1 KB ($2 słów)",
-	'searchdidyoumean'      => "Może chodziło Ci o \"<a href=\"1\">$2</a>\"?",
-	'searchnoresults'       => "Niestety nie znaleziono stron pasujących do podanych kryteriów wyszukiwania.",
-	'searchnearmatches'     => "<b>Strony o podobnych nazwach:</b>\n",
-	'lucenepowersearchtext' => "
-Szukaj w przestrzeniach nazw:\n
-$1\n
-Szukana fraza $3 $9 $10",
-	'lucenefallback'        => "Wystąpił błąd z wyszukiwaniem w wiki.
+	'searchnumber'          => '<strong>Wyniki $1-$2 z $3</strong>',
+	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Poprzednia</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>Następna</span> &#x00BB;',
+	'searchscore'           => 'Trafność: $1',
+	'searchsize'            => '$1 KB ($2 słów)',
+	'searchdidyoumean'      => 'Może chodziło Ci o "<a href="1">$2</a>"?',
+	'searchnoresults'       => 'Niestety nie znaleziono stron pasujących do podanych kryteriów wyszukiwania.',
+	'searchnearmatches'     => '<b>Strony o podobnych nazwach:</b>
+',
+	'lucenepowersearchtext' => '
+Szukaj w przestrzeniach nazw:
+
+$1
+
+Szukana fraza $3 $9 $10',
+	'lucenefallback'        => 'Wystąpił błąd z wyszukiwaniem w wiki.
 Jest to tymczasowe; spróbuj ponownie za parę chwil
-lub przeszukaj wiki za pomocą zewnętrznych wyszukiwarek:\n"
+lub przeszukaj wiki za pomocą zewnętrznych wyszukiwarek:
+',
+	'searchexactcase'       => 'Szukanie czułe na wielkość znaków',
+	'searchall'             => 'wszystkie',
+	'searchincategory'      => 'w kategorii',
 );
 /* Piedmontese (Bèrto 'd Sèra) */
 $wgLuceneSearchMessages['pms'] = array(
