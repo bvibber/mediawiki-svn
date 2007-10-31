@@ -16,7 +16,7 @@ class CrossNamespaceLinks extends SpecialPage {
 	/**
 	 * main()
 	 */
-	function execute( $par = null ) {
+	function execute( $parameters ) {
 		$this->setHeaders();
 		list( $limit, $offset ) = wfCheckLimits();
 		
