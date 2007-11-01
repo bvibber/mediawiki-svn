@@ -11,6 +11,9 @@ Article.php
 * Added begin() and commit() to Article::doDeleteArticle() (r23590)
 * Added begin() and commit() to Article::updateRestrictions() (r25388)
 
+Title.php
+* Added $createRedirect parameter to Title::moveTo(), Title::moveToNewTitle() and Title::moveOverExistingRedirect() (r27105)
+
 SpecialUndelete.php
 * Added begin() and commit() to PageArchive::undelete() (r23687)
 * Changed PageArchive::undelete() to return useful information (r23697)
@@ -66,11 +69,14 @@ api/ApiQueryBlocks.php (NEW)
 api/ApiChangeRights.php (NEW)
 * action=changerights module that changes users' rights (r25834)
 
+api/ApiMove.php (NEW)
+* action=move module that wraps around Title::moveTo() (r27105)
+
 AutoLoader.php
-* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiQueryDeletedRevs (r23668), ApiUndelete (r23687), ApiProtect (r23588), ApiBlock (r25548), ApiQueryBlocks (r25735), ApiChangeRights (r25834)
+* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiQueryDeletedRevs (r23668), ApiUndelete (r23687), ApiProtect (r23588), ApiBlock (r25548), ApiQueryBlocks (r25735), ApiChangeRights (r25834), ApiMove (r27105)
 
 api/ApiMain.php
-* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiUndelete (r23687), ApiProtect (r23588), ApiBlock (r25548), ApiChangeRights (r25834)
+* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiUndelete (r23687), ApiProtect (r23588), ApiBlock (r25548), ApiChangeRights (r25834), ApiMove (r27105)
 
 api/ApiQuery.php
 * Added entries for ApiQueryDeletedRevs (r23668), ApiQueryBlocks (r25735)

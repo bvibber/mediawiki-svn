@@ -341,6 +341,7 @@ function __autoload($className) {
 		'ApiBlock' => 'includes/api/ApiBlock.php',
 		'ApiChangeRights' => 'includes/api/ApiChangeRights.php',
 		'ApiDelete' => 'includes/api/ApiDelete.php',
+		'ApiMove' => 'includes/api/ApiMove.php',
 		'ApiProtect' => 'includes/api/ApiProtect.php',
 		'ApiQueryBlocks' => 'includes/api/ApiQueryBlocks.php',
 		'ApiQueryDeletedrevs' => 'includes/api/ApiQueryDeletedrevs.php',
