@@ -38,6 +38,7 @@ class ApiUndelete extends ApiBase {
 
 	public function execute() {
 		global $wgUser;
+		$this->requestWriteMode();
 		$params = $this->extractRequestParams();
 		
 		$titleObj = NULL;
@@ -66,6 +67,8 @@ class ApiUndelete extends ApiBase {
 			$params['timestamps'][$i] = wfTimestamp(TS_MW, $ts);
 
 		$pa = new PageArchive($titleObj);
+		$dbw = wfGetDb(DB_MASTER);
+		$dbw->begin();
 		$retval = $pa->undelete((isset($params['timestamps']) ? $params['timestamps'] : array()), $params['reason']);
 		if(!is_array($retval))
 			switch($retval)
@@ -77,7 +80,8 @@ class ApiUndelete extends ApiBase {
 				case PageArchive::UNDELETE_UNKNOWNERR:
 					$this->dieUsage('Undeletion failed with unknown error', 'unknownerror');
 			}
-
+		$dbw->commit();
+		
 		$info['title'] = $titleObj->getPrefixedText();
 		$info['revisions'] = $retval[0];
 		$info['fileversions'] = $retval[1];

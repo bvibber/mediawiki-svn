@@ -39,6 +39,7 @@ class ApiMove extends ApiBase {
 	
 	public function execute() {
 		global $wgUser;
+		$this->requestWriteMode();
 		$params = $this->extractRequestParams();
 		if(is_null($params['reason']))
 				$params['reason'] = '';
@@ -70,7 +71,9 @@ class ApiMove extends ApiBase {
 		if(!$toTitle)
 				$this->dieUsage("Bad title ``{$params['to']}''", 'invalidtitle');
 		$toTalk = $toTitle->getTalkPage();
-				
+
+		$dbw = wfGetDB(DB_MASTER);
+		$dbw->begin();				
 		$retval = $fromTitle->moveTo($toTitle, true, $params['reason'], !$params['noredirect']);
 		if($retval !== true)
 				switch($retval)
@@ -132,7 +135,6 @@ class ApiMove extends ApiBase {
 										$r['talkmove-error-info'] = "Unknown error ``$retval''";
 						}				
 		}
-		$dbw = wfGetDB(DB_MASTER);
 		$dbw->commit(); // Make sure all changes are really written to the DB
 		$this->getResult()->addValue(null, $this->getModuleName(), $r);
 	}

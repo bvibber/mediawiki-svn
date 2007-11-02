@@ -38,6 +38,7 @@ class ApiBlock extends ApiBase {
 
 	public function execute() {
 		global $wgUser;
+		$this->requestWriteMode();
 		$params = $this->extractRequestParams();
 
 		if($params['gettoken'])
@@ -72,6 +73,8 @@ class ApiBlock extends ApiBase {
 		$form->BlockEmail = $params['noemail'];
 		$form->BlockHideName = $params['hidename'];
 
+		$dbw = wfGetDb(DB_MASTER);
+		$dbw->begin();
 		$retval = $form->doBlock($userID, $expiry);
 		switch($retval)
 		{
@@ -92,6 +95,8 @@ class ApiBlock extends ApiBase {
 			default:
 				$this->dieDebug(__METHOD__, "IPBlockForm::doBlock() returned an unknown error ($retval)");
 		}
+		$dbw->commit();
+		
 		$res['user'] = $params['user'];
 		$res['userID'] = $userID;
 		$res['expiry'] = ($expiry == Block::infinity() ? 'infinite' : $expiry);

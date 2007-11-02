@@ -1813,7 +1813,6 @@ class Article {
 				} else {
 					$log->addEntry( 'unprotect', $this->mTitle, $reason );
 				}
-				$dbw->commit();
 
 			} # End hook
 		} # End "changed" check
@@ -2189,7 +2188,6 @@ class Article {
 		# Clear the cached article id so the interface doesn't act like we exist
 		$this->mTitle->resetArticleID( 0 );
 		$this->mTitle->mArticleID = 0;
-		$dbw->commit();
 		return true;
 	}
 

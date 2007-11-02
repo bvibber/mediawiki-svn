@@ -84,6 +84,7 @@ class ApiDelete extends ApiBase {
 
 	public function execute() {
 		global $wgUser;
+		$this->requestWriteMode();
 		$params = $this->extractRequestParams();
 		
 		$titleObj = NULL;
@@ -108,6 +109,8 @@ class ApiDelete extends ApiBase {
 
 		$articleObj = new Article($titleObj);
 		$reason = (isset($params['reason']) ? $params['reason'] : NULL);
+		$dbw = wfGetDb(DB_MASTER);
+		$dbw->begin();
 		$retval = self::delete(&$articleObj, $params['token'], &$reason);
 
 		switch($retval)
@@ -129,6 +132,7 @@ class ApiDelete extends ApiBase {
 				$this->dieDebug(__METHOD__, "delete() returned an unknown error ($retval)");
 		}
 		// $retval has to be self::DELETE_SUCCESS if we get here
+		$dbw->commit();
 		$r = array('title' => $titleObj->getPrefixedText(), 'reason' => $reason);
 		$this->getResult()->addValue(null, $this->getModuleName(), $r);
 	}

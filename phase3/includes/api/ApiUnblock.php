@@ -38,6 +38,7 @@ class ApiUnblock extends ApiBase {
 
 	public function execute() {
 		global $wgUser;
+		$this->requestWriteMode();
 		$params = $this->extractRequestParams();
 
 		if($params['gettoken'])
@@ -63,7 +64,10 @@ class ApiUnblock extends ApiBase {
 		$id = $params['id'];
 		$user = $params['user'];
 		$reason = $params['reason'];
+		$dbw = wfGetDb(DB_MASTER);
+		$dbw->begin();
 		$retval = IPUnblockForm::doUnblock(&$id, &$user, &$reason);
+
 		switch($retval)
 		{
 			case IPUnblockForm::UNBLOCK_SUCCESS:
@@ -77,6 +81,8 @@ class ApiUnblock extends ApiBase {
 			default:
 				$this->dieDebug(__METHOD__, "IPBlockForm::doBlock() returned an unknown error ($retval)");
 		}
+		$dbw->commit();
+		
 		$res['id'] = $id;
 		$res['user'] = $user;
 		$res['reason'] = $reason;

@@ -38,6 +38,7 @@ class ApiProtect extends ApiBase {
 
 	public function execute() {
 		global $wgUser;
+		$this->requestWriteMode();
 		$params = $this->extractRequestParams();
 		
 		$titleObj = NULL;
@@ -84,10 +85,13 @@ class ApiProtect extends ApiBase {
 			$protections[$p[0]] = ($p[1] == 'all' ? '' : $p[1]);
 		}
 
+		$dbw = wfGetDb(DB_MASTER);
+		$dbw->begin();
 		$ok = $articleObj->updateRestrictions($protections, $params['reason'], $params['cascade'], $expiry);
 		if(!$ok)
 			// This is very weird. Maybe the article was deleted or the user was blocked/desysopped in the meantime?
 			$this->dieUsage('Unknown error', 'unknownerror');
+		$dbw->commit();
 		$res = array('title' => $titleObj->getPrefixedText(), 'reason' => $params['reason'], 'expiry' => $expiry);
 		if($params['cascade'])
 			$res['cascade'] = '';

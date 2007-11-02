@@ -38,6 +38,7 @@ class ApiRollback extends ApiBase {
 
 	public function execute() {
 		global $wgUser;
+		$this->requestWriteMode();
 		$params = $this->extractRequestParams();
 		
 		$titleObj = NULL;
@@ -67,6 +68,8 @@ class ApiRollback extends ApiBase {
 		$articleObj = new Article($titleObj);
 		$summary = (isset($params['summary']) ? $params['summary'] : "");
 		$details = NULL;
+		$dbw = wfGetDb(DB_MASTER);
+		$dbw->begin();
 		$retval = $articleObj->doRollback($username, $summary, $params['token'], $params['markbot'], &$details);
 
 		switch($retval)
@@ -97,6 +100,7 @@ class ApiRollback extends ApiBase {
 				$this->dieDebug(__METHOD__, "rollback() returned an unknown error ($retval)");
 		}
 		// $retval has to be Article::SUCCESS if we get here
+		$dbw->commit();
 		$current = $target = $summary = NULL;
 		extract($details);
 

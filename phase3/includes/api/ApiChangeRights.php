@@ -38,6 +38,7 @@ class ApiChangeRights extends ApiBase {
 
 	public function execute() {
 		global $wgUser, $wgRequest;
+		$this->requestWriteMode();
 		
 		if(wfReadOnly())
 				$this->dieUsage('The wiki is in read-only mode', 'readonly');
@@ -108,8 +109,10 @@ class ApiChangeRights extends ApiBase {
 			if(in_array($g, $curgroups))
 				$rmfrom[] = $g;
 		}
-
+		$dbw = wfGetDb(DB_MASTER);
+		$dbw->begin();
 		$ur->doSaveUserGroups($u, $rmfrom, $addto, $params['reason']);
+		$dbw->commit();
 		$res['user'] = $uName;
 		$res['addedto'] = $addto;
 		$res['removedfrom'] = $rmfrom;
@@ -141,7 +144,7 @@ class ApiChangeRights extends ApiBase {
 			'user' => 'The user you want to add to or remove from groups.',
 			'token' => 'A changerights token previously obtained through the gettoken parameter.',
 			'gettoken' => 'Output a token. Note that the user parameter still has to be set.',
-			'listgroups' => 'List the groups the user is in, and te ones you can add them to and remove them from.',
+			'listgroups' => 'List the groups the user is in, and the ones you can add them to and remove them from.',
 			'addto' => 'Pipe-separated list of groups to add this user to',
 			'rmfrom' => 'Pipe-separated list of groups to remove this user from',
 			'reason' => 'Reason for change (optional)'
