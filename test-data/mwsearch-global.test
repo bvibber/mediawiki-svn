@@ -31,6 +31,7 @@ hmwiki : (nssplit,3) (nspart1,[0,1],false,5,20,2) (nspart2,[12,13,14,15]) (nspar
 192.168.0.2 : hmwiki.nspart1 hmwiki.nspart2 hmwiki.nspart3
 [Search-Group]
 192.168.0.1 : njawiki entest.spell
+192.168.0.1 : hmwiki.nspart1.sub1.hl
 
 # Index nodes
 # host: db1.role, db2.role

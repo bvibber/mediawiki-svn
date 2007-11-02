@@ -15,7 +15,7 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 	protected Scorer stemtitleScorer, relatedScorer;
 	
 	
-	public final static boolean DEBUG = true; // TODO: set to false in release
+	public final static boolean DEBUG = false; // TODO: set to false in release
 	public HashMap<Integer,ArrayList<Explanation>> explanations = null;
 	
 	CustomPhraseScorer(Weight weight, TermPositions[] tps, int[] offsets, int stopWordCount, Similarity similarity, 

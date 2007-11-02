@@ -28,6 +28,7 @@ import org.wikimedia.lsearch.util.StringUtils;
 public class Wildcards {
 	protected static Logger log = Logger.getLogger(Wildcards.class);
 	public static final int MAX_TERMS = 1024;
+	public static final int MAX_PATTERNS_PER_QUERY = 3;
 	protected static SearcherCache searcherCache = null;
 	protected enum WildcardType { PREFIX, SUFFIX, INVALID };
 	
@@ -61,7 +62,10 @@ public class Wildcards {
 			client = new RMIMessengerClient();
 		
 		HashSet<String> terms = wildcardCache.get(wildcard);
-		if(terms == null){		
+		if(terms == null){
+			if(wildcardCache.size() >= MAX_PATTERNS_PER_QUERY){
+				return null; // limit number of wildcard queries
+			}
 			terms = new HashSet<String>();		
 			for(Entry<String,String> e : hosts.entrySet()){
 				try {
@@ -101,16 +105,43 @@ public class Wildcards {
 		return q;		
 	}
 	
+	public boolean hasWildcards(){
+		return wildcardCache.size() > 0;
+	}
+	
+	protected static int first(int a, int b){
+		if(a < 0)
+			return b;
+		if(b < 0)
+			return a;
+		return Math.min(a,b);
+	}
+	
+	protected static int last(int a, int b){
+		if(a < 0)
+			return b;
+		if(b < 0)
+			return a;
+		return Math.max(a,b);
+	}
+	
 	protected static WildcardType getType(String wildcard){
 		if(wildcard == null || wildcard.equals(""))
 			return WildcardType.INVALID;
 		boolean pre = wildcard.startsWith("*") || wildcard.startsWith("?");
 		boolean suff = wildcard.endsWith("*") || wildcard.endsWith("?"); 
+		int preInx = first(wildcard.indexOf("*"),wildcard.indexOf("?"));
+		int sufInx = last(wildcard.lastIndexOf("*"),wildcard.lastIndexOf("?"));
 		if(pre && !suff)
 			return WildcardType.PREFIX;
 		else if(suff && !pre)
 			return WildcardType.SUFFIX;
-		else
+		else if(preInx != -1 && sufInx != -1){
+			if(preInx > (wildcard.length()-sufInx-1)) // more letter at the beginning of the word
+				return WildcardType.PREFIX;
+			else
+				return WildcardType.SUFFIX;
+		} else 
 			return WildcardType.INVALID;		
 	}
 	

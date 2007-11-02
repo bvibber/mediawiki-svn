@@ -284,7 +284,7 @@ public class GlobalConfigurationTest extends TestCase {
 		assertNull(sub1.getImportPath());
 		
 		IndexId enmain = IndexId.get("entest.mainpart");
-		assertEquals(sub1,enmain.getSubpart(0));
+		assertEquals(sub1,enmain.getSubpart(1));
 		assertTrue(enmain.isFurtherSubdivided());
 		assertFalse(enmain.isSubdivided());
 		assertEquals(3,enmain.getSubdivisionFactor());
@@ -302,6 +302,12 @@ public class GlobalConfigurationTest extends TestCase {
 		assertNotNull(hmsub1.getImportPath());
 		assertEquals(2,hmsub1.getSubdivisionFactor());
 		assertEquals("192.168.0.2",hmsub1.getIndexHost());
+		
+		IndexId hhl1 = IndexId.get("hmwiki.nspart1.sub1.hl");
+		assertTrue(hhl1.isSubdivided());
+		assertTrue(hhl1.isHighlight());
+		assertEquals(hhl1,IndexId.get("hmwiki.nspart1.hl").getSubpart(1));
+		assertEquals("[192.168.0.1]",hhl1.getSearchHosts().toString());
 		
 	}
 }

@@ -9,6 +9,7 @@ import java.util.Hashtable;
 
 import org.apache.commons.lang.WordUtils;
 import org.apache.lucene.analysis.Token;
+import org.wikimedia.lsearch.analyzers.ExtToken.Position;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.util.Localization;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
@@ -31,8 +32,8 @@ public class FastWikiTokenizerEngine {
 	private final char[] buffer = new char[MAX_WORD_LEN]; // buffer of text, e.g. gödel
 	private final char[] aliasBuffer = new char[MAX_WORD_LEN]; // buffer for aliases, e.g. goedel
 	private final char[] decompBuffer = new char[MAX_WORD_LEN]; // buffer for dedomposed text e.g. godel
-	private static final int IO_BUFFER_SIZE = 1024;
-	private final char[] ioBuffer = new char[IO_BUFFER_SIZE];
+	private final char[] glueBuffer = new char[MAX_WORD_LEN]; // buffer of spaces, etc.. that glues tokens together to produce the original (for highlight)
+	private final char[] tempBuffer = new char[MAX_WORD_LEN]; // buffer for temp stuff
 	private char[] text;
 	private String textString; // original text in string format
 	private int textLength;
@@ -42,8 +43,11 @@ public class FastWikiTokenizerEngine {
 	protected HashSet<String> keywords;
 	protected ArrayList<String> headingText;
 	private int decompLength=0, aliasLength=0;
+	private int glueLength = 0; // length for glue buffer
+	private int tempLength = 0;
 	private int length = 0; // length of token
 	private int start = 0; // start position of token
+	private int glueStart = 0; // start position of glue token
 	private int cur = 0; // current position in the input string
 	private char c, c1 = ' '; // current character, next char
 	private int lookup; // lookup counter
@@ -58,6 +62,10 @@ public class FastWikiTokenizerEngine {
 	private ArrayList<Token> nonContentTokens; // tokens from the beginning of the article that are not content, but templates, images, etc..
 	private ArrayList<Token> references; // stuff between <ref></ref> tags should go to the end
 	private boolean inRef = false, firstRef = false; // if we are within a ref tag
+	private boolean inHeading = false; // if we are in section heading
+	private boolean inImageCategoryInterwiki = false; // if we are in any of these
+	private boolean inExternalLink = false, inUrl = false;
+	private boolean lastImgLinkCatWord = false; // if we are parsing the last word in a link, even when inImageCat.. is false if this is true, the word will be in the link
 	
 	private int prefixLen = 0;
 	private final char[] prefixBuf = new char[MAX_WORD_LEN];
@@ -115,24 +123,7 @@ public class FastWikiTokenizerEngine {
 		firstRef = false;
 		references = new ArrayList<Token>();
 	}
-	
-	/** Note: this will read only 1024 bytes of reader, it's
-	 *  ment to be used only for parsing queries! 
-	 * @param reader
-	 */
-	@Deprecated
-	public FastWikiTokenizerEngine(Reader reader){
-		try {
-			reader.read(ioBuffer);
-			text = ioBuffer;
-			textLength = ioBuffer.length;	
-			textString = new String(ioBuffer,0,ioBuffer.length);
-			init();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-	}
-	
+		
 	public FastWikiTokenizerEngine(String text, IndexId iid, TokenizerOptions options){
 		this.text = text.toCharArray();
 		this.textString = text;
@@ -171,15 +162,37 @@ public class FastWikiTokenizerEngine {
 	 * alternative transliterations (e.g. ö -> oe)
 	 */
 	private final void addToken(){
+		addToken(true);
+	}	
+		
+	/** foundNonLetter - if this a nonLetter char is encountered */
+	private final void addToken(boolean foundNonLetter){
 		if(length!=0){
-			if(numberToken && (buffer[length-1]=='.' || buffer[length-1]==','))
+			if(options.highlightParsing && glueLength != 0){
+				// we collected some glue, flush
+				ExtToken t = makeGlueToken();
+				if(t != null)
+					addToTokens(t);
+				glueLength = 0;
+			}
+			if(numberToken && (buffer[length-1]=='.' || buffer[length-1]==',')){
 				length--; // strip trailing . and , in numbers
+				if(options.highlightParsing){
+					glueStart = cur; // we know glueLength will be 0
+					glueBuffer[glueLength++] = buffer[length];
+				}
+			}
 			// decompose token, maintain alias if needed
 			decompLength = 0;
 			aliasLength = 0;
 			boolean addToAlias;
 			boolean addDecomposed = false;
 			for(int i=0;i<length;i++){
+				if(decomposer.isCombiningChar(buffer[i])){
+					addDecomposed = true;
+					continue; // skip 
+				}
+				
 				addToAlias = true;
 				if( ! options.exactCase )
 					cl = Character.toLowerCase(buffer[i]);
@@ -240,8 +253,14 @@ public class FastWikiTokenizerEngine {
 				} else if(cl == 'œ'){
 					addToTokenAlias("oe");
 					addToAlias = false;
-				}
+				} 
 				
+				// delete single quotes in aliases
+				if(cl == '\''){
+					addToTokenAlias("");
+					addToAlias = false;
+				}
+								
 				decomp = decompose(cl);
 				// no decomposition
 				if(decomp == null){
@@ -278,8 +297,7 @@ public class FastWikiTokenizerEngine {
 			
 			// add decomposed token to stream
 			if(decompLength!=0){
-				Token t = new Token(
-						new String(decompBuffer, 0, decompLength), start, start + length);
+				Token t = makeToken(new String(decompBuffer, 0, decompLength), start, start + length, true);
 				/*if(!"de".equals(language)){
 					t.setPositionIncrement(0);
 					t.setType("transliteration");
@@ -291,8 +309,7 @@ public class FastWikiTokenizerEngine {
 			}
 			// add alias (if any) token to stream
 			if(aliasLength!=0){
-				Token t = new Token(
-						new String(aliasBuffer, 0, aliasLength), start, start + length);
+				Token t = makeToken(new String(aliasBuffer, 0, aliasLength), start, start + length, false);
 				t.setPositionIncrement(0);
 				t.setType("transliteration");
 				addToTokens(t);
@@ -301,8 +318,106 @@ public class FastWikiTokenizerEngine {
 			numberToken = false;
 			
 		}
+		// keep track of "glue"
+		if(options.highlightParsing && foundNonLetter){		
+			if(glueLength == 0)
+				glueStart = cur;
+			if(glueLength < glueBuffer.length){
+				glueBuffer[glueLength++] = c;  
+			}
+		}
+		if(lastImgLinkCatWord)
+			lastImgLinkCatWord = false; // always reset
 	}
 	
+	/** Make regular text token */
+	private final Token makeToken(String text, int start, int end, boolean addOriginal){
+		if(!options.highlightParsing)
+			return new Token(text,start,end);
+		else{
+			ExtToken.Type type = ExtToken.Type.TEXT;
+			Position pos = getPosition();
+			
+			String original = new String(buffer,0,length);
+			if(!addOriginal || original.equals(text))
+				original = null;
+			
+			return new ExtToken(text,start,end,type,pos,original,text);
+		}			
+	}
+	
+	/** get current position in parsing */
+	private final Position getPosition(){
+		ExtToken.Position pos = Position.NORMAL;
+		if(inRef)
+			pos = Position.REFERENCE;
+		else if(inImageCategoryInterwiki || lastImgLinkCatWord)
+			pos = Position.IMAGE_CAT_IW;
+		else if(inExternalLink)
+			pos = Position.EXT_LINK;
+		else if(templateLevel > 0)
+			pos = Position.TEMPLATE;
+		else if(headings == 0 && templateLevel == 0 && keywordTokens <= KEYWORD_TOKEN_LIMIT)
+			pos = Position.FIRST_SECTION;
+		else if(inHeading)
+			pos = Position.HEADING;			
+		return pos;
+	}
+
+	/** tidy the glue buffer, and return the token */
+	private final ExtToken makeGlueToken(){
+		tempLength = 0;
+		char last = '\0', top ='\0';
+		ExtToken.Type type = ExtToken.Type.GLUE;		
+		for(int i=0;i<glueLength;i++,last=lc){
+			lc = glueBuffer[i];
+			
+			if(top == lc && !Character.isLetterOrDigit(lc) && lc != '/') // last two are for external links, e.g. http://blahblah.com
+				continue;
+			if((last == '-' && lc == '{') || (last == '}' && lc == '-') || (i<glueLength-1 && lc=='-' && glueBuffer[i+1]=='{'))
+				continue; 
+			if(last == '|' && lc=='-')
+				continue;
+			
+			// work out breaks
+			if(lc == '.')
+				type = ExtToken.Type.SENTENCE_BREAK;
+			if(last == '\n' && (lc == ':' || lc == '*' || lc=='#' || lc=='\n'))
+				type = ExtToken.Type.SENTENCE_BREAK;
+			
+			if(lc == '{' || lc == '}' || lc == '|' || lc == '[' || lc == ']' 
+				|| lc == '<' || lc == '>' || lc=='*' || lc=='#' 
+				|| lc == '\n' || lc == '\r' || lc == '=')
+				continue; // forbidden chars
+			
+			if(lc == '\'' && (last == '\'' || (i<glueLength-1 && glueBuffer[i+1]=='\'')))
+				continue; // more than one '
+						
+			// work out minor breaks within sentences
+			if(type != ExtToken.Type.SENTENCE_BREAK && isMinorBreak(lc)){
+				type = ExtToken.Type.MINOR_BREAK;
+			}
+			
+			tempBuffer[tempLength++] = lc;
+			top = lc;
+		}
+		String glue = null;
+		if(tempLength != 0)
+			glue = new String(tempBuffer,0,tempLength);
+		else
+			glue = " ";
+		
+		if(inUrl) // always overrides everything else
+			type = ExtToken.Type.URL;
+		return new ExtToken(glue,glueStart,glueStart+glueLength,type,getPosition());
+	}
+	
+	/** Check if char is a small break in the sentence structure, but not end of sentence */
+	public static final boolean isMinorBreak(char ch){
+		return ch == '\"' || ch == ':' || ch == ';' || ch == ',' || ch == '(' || ch == ')';
+	}
+	
+
 	/** 
 	 * Add a token to tokens list, in case of initial templates adds to special 
 	 * nonContentToken list, and later reintroduces them 
@@ -321,7 +436,7 @@ public class FastWikiTokenizerEngine {
 			}
 			references.add(t);
 			return;
-		} else if(templateLevel > 0 && keywordTokens < FIRST_SECTION_GAP){
+		} else if((templateLevel > 0 || inImageCategoryInterwiki) && keywordTokens < FIRST_SECTION_GAP){
 			nonContentTokens.add(t);
 			return;
 		} else if(t.getPositionIncrement() == FIRST_SECTION_GAP){
@@ -335,6 +450,7 @@ public class FastWikiTokenizerEngine {
 			}
 			nonContentTokens.clear();
 			t.setPositionIncrement(PARAGRAPH_GAP);
+			keywordTokens += PARAGRAPH_GAP; 
 		}
 		tokens.add(t);
 	}
@@ -346,9 +462,9 @@ public class FastWikiTokenizerEngine {
 	private final void addLetter(){
 		try{			
 			// add new character to buffer
-			if(Character.isLetter(c)){				
+			if(Character.isLetter(c) || (c == '\'' && cur>0 && Character.isLetter(text[cur-1])) || decomposer.isCombiningChar(c)){				
 				if(numberToken) // we were fetching a number
-					addToken();
+					addToken(false);
 
 				if(length == 0)
 					start = cur;
@@ -363,9 +479,7 @@ public class FastWikiTokenizerEngine {
 
 				if(length<buffer.length)
 					buffer[length++] = c;
-			} else if(decomposer.isCombiningChar(c)); // ignore 
-			else if(c == '\''); // ignore if single quote				
-			else{
+			} else{
 				addToken();
 			}
 		} catch(Exception e){
@@ -468,7 +582,7 @@ public class FastWikiTokenizerEngine {
 	}
 	
 	/** When encountering '=' check if this line is actually a heading */ 
-	private void checkHeadings() {
+	private boolean checkHeadings() {
 		// make sure = is at a begining of a line
 		if(cur == 0 || text[cur-1]=='\n' || text[cur-1]=='\r'){
 			int endOfLine;
@@ -497,8 +611,10 @@ public class FastWikiTokenizerEngine {
 			if(start == end && start != 0 && start+end<endOfLine-cur && start>=2 && start<=4){
 				headings++;
 				headingText.add(deleteRefs(new String(text,cur+start,endOfLine-(cur+start+end))));
+				return true;
 			}
 		}		
+		return false;
 	}
 	
 	/** Delete <ref></ref> text from a string */ 
@@ -554,10 +670,20 @@ public class FastWikiTokenizerEngine {
 			case WORD:
 				switch(c){
 				case '\'':
-					continue; // ignore single quotes
+					if(cur + 1 < textLength ){
+						c1 = text[cur+1];
+						if(Character.isLetter(c1) && length>0 && Character.isLetter(buffer[length-1])){
+							addLetter(); // collect single quotes
+							continue;
+						}
+					}
+					addToken();
+					continue; 
 				case '=':
 					addToken();
-					checkHeadings();
+					if( checkHeadings() ){
+						inHeading = true;
+					}
 					if(options.relocationParsing){
 						if(headings == 1)
 							gap = FIRST_SECTION_GAP;
@@ -566,6 +692,8 @@ public class FastWikiTokenizerEngine {
 					}
 					continue;
 				case '\n':
+					if(inHeading)
+						inHeading = false;
 					addToken();
 					if(options.relocationParsing && cur + 1 < textLength){
 						switch(text[cur+1]){
@@ -654,20 +782,29 @@ public class FastWikiTokenizerEngine {
 				}
 				continue;
 			case EXTERNAL_URL:
+				inExternalLink = true;
+				inUrl = true;
 				switch(c){
 				case ' ':
+					addToken();
 					state = ParserState.EXTERNAL_WORDS;
 					continue;
 				case ']':
+					addToken();
 					state = ParserState.WORD;
 					continue;
+				default:
+					addToken(); // for glue
 				}
 				continue;
 			case EXTERNAL_WORDS:
-				if(c == ']')
+				inUrl = false;
+				if(c == ']'){
+					addToken();
 					state = ParserState.WORD;
-				else
-					addLetter();
+					inExternalLink = false;
+				} else
+					addLetter();				
 				continue;
 			case LINK_BEGIN:
 				pipeInx = pipeLookup();
@@ -682,17 +819,20 @@ public class FastWikiTokenizerEngine {
 					if(isImage(prefix)){
 						if( !imageCaptionSeek() )
 							state = ParserState.LINK_END;
+						inImageCategoryInterwiki = true;
 						continue;
 					} else if(isCategory(prefix)){
 						cur = semicolonInx;
 						fetch = FetchState.CATEGORY;
 						state = ParserState.LINK_FETCH;
 						fetchStart = cur;
+						inImageCategoryInterwiki = true;
 						continue;
 					} else if(isInterwiki(prefix)){
 						cur = semicolonInx;
 						fetch = FetchState.INTERWIKI;
 						state = ParserState.LINK_FETCH;
+						inImageCategoryInterwiki = true;
 						continue;
 					}
 				}
@@ -759,9 +899,11 @@ public class FastWikiTokenizerEngine {
 			case LINK_END:
 				if(c == ']'){ // good link ending
 					state = ParserState.WORD;
+					lastImgLinkCatWord = inImageCategoryInterwiki;
+					inImageCategoryInterwiki = false;
 					
 					switch(fetch){
-					case WORD:
+					case WORD:						
 						// don't add token to get syntax like [[bean]]s
 						continue;
 					case CATEGORY:						

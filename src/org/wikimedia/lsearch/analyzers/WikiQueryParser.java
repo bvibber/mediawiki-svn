@@ -114,6 +114,7 @@ public class WikiQueryParser {
 	public static float WHOLE_TITLE_BOOST = 8f;
 	public static float EXACT_CONTENTS_BOOST = 1f;
 	public static float ANCHOR_BOOST = 0.02f;
+	public static float WILDCARD_BOOST = 2f;
 	
 	public static boolean ADD_STEM_TITLE = true;
 	public static boolean ADD_TITLE_PHRASES = true;
@@ -829,9 +830,11 @@ public class WikiQueryParser {
 		// wildcard signs are allowed only at the end of the word, minimum one letter word
 		if(length>1 && wildcards != null && bufferIsWildCard()){
 			Term term = makeTerm();
+			if(term.field().equals("stemtitle") || term.field().equals("stemtitle_exact"))
+				return null; // don't do wildcards for stemtitles
 			Query ret = wildcards.makeQuery(term.text(),term.field());
 			if(ret != null){
-				ret.setBoost(defaultBoost);
+				ret.setBoost(WILDCARD_BOOST);
 				return ret;
 			} else{
 				// something is wrong, try making normal query
@@ -1578,7 +1581,7 @@ public class WikiQueryParser {
 		return pq;
 	}
 	
-	/** Make the stemtitle query for additional score */
+	/** Make the stemtitle query, words and phrases anchored in non-stopwords */
 	public Query makeStemtitle(ArrayList<String> words, String field, float boost, float minScore){
 		BooleanQuery bq = new BooleanQuery(true);
 		if(words.size() == 1){
@@ -1742,12 +1745,17 @@ public class WikiQueryParser {
 			return bq;
 
 		HashSet<String> preStopWords = StopWords.getPredefinedSet(builder.getFilters().getIndexId());
-		Query alttitleQuery = makeAlttitlePhrase(words,fields.alttitle(),10,1,preStopWords);
+		Query alttitleQuery = null;		
+		Query alttitle2Query = null;
+		if(wildcards==null || !wildcards.hasWildcards()){
+			alttitleQuery = makeAlttitlePhrase(words,fields.alttitle(),10,1,preStopWords);
+			alttitle2Query = makeAlttitlePhrases(words,fields.alttitle(),ALT_PHRASES_BOOST);
+		}
 		Query stemTitleQuery = 
 			new LogTransformScore(makeStemtitle(words,fields.stemtitle(),1,0.1f));
 		stemTitleQuery.setBoost(TITLE_ADD_BOOST);
 		Query relatedQuery = makePhrasesForRelated(words,RELATED_SLOP,RELATED_BOOST);
-		Query alttitle2Query = makeAlttitlePhrases(words,fields.alttitle(),ALT_PHRASES_BOOST);
+		
 		Query mainPhrase = makeMainPhrase(words,fields.contents(),MAINPHRASE_SLOP,MAINPHRASE_BOOST,alttitle2Query,relatedQuery,preStopWords);
 		if(mainPhrase == null)
 			return bq;

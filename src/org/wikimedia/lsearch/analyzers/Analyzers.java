@@ -45,6 +45,16 @@ public class Analyzers {
 	public static Analyzer getReusableAnalyzer(FilterFactory filters, boolean exactCase){
 		return new ReusableLanguageAnalyzer(filters,exactCase);
 	}
+	
+	/** 
+	 * Reusable analyzer, actually parses the input text
+	 * 
+	 * @param language
+	 * @return
+	 */
+	public static Analyzer getReusableHighlightAnalyzer(FilterFactory filters){
+		return new ReusableLanguageAnalyzer(filters,false,true);
+	}
 
 	/**
 	 * Analyzer used during indexing 
@@ -106,8 +116,34 @@ public class Analyzers {
 				getReusableAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		analyzer.addAnalyzer(fields.keyword(), 
 				getReusableAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
-		analyzer.addAnalyzer(fields.anchor(), 
-				getReusableAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+		
+		return analyzer;
+	}
+	
+	public static PerFieldAnalyzerWrapper getHighlightAnalyzer(IndexId iid){
+		return getHighlightAnalyzer(new FilterFactory(iid), new FieldNameFactory());
+	}
+	
+	/**
+	 * Analyzer used to process raw text for highlighting 
+	 * 
+	 * @param text
+	 * @return
+	 */
+	public static PerFieldAnalyzerWrapper getHighlightAnalyzer(FilterFactory filters, FieldNameFactory fields) {
+		PerFieldAnalyzerWrapper analyzer = null;
+		
+		analyzer = new PerFieldAnalyzerWrapper(getReusableHighlightAnalyzer(filters));
+		analyzer.addAnalyzer(fields.contents(), 
+				getReusableHighlightAnalyzer(filters));
+		analyzer.addAnalyzer(fields.title(),
+				getReusableHighlightAnalyzer(filters.getNoStemmerFilterFactory()));
+		analyzer.addAnalyzer(fields.stemtitle(),
+				getReusableHighlightAnalyzer(filters));
+		analyzer.addAnalyzer(fields.alttitle(),
+				getReusableHighlightAnalyzer(filters.getNoStemmerFilterFactory()));
+		analyzer.addAnalyzer(fields.keyword(), 
+				getReusableHighlightAnalyzer(filters.getNoStemmerFilterFactory()));
 		
 		return analyzer;
 	}

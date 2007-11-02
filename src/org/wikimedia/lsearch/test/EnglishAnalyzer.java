@@ -53,7 +53,7 @@ public class EnglishAnalyzer extends Analyzer {
 	}
 	
 	public TokenStream tokenStream(String fieldName, Reader reader) {
-		return new AliasPorterStemFilter(new WikiTokenizer(reader));
+		throw new UnsupportedOperationException("Use tokenStream(String,String)");
 	}
 
 	public final TokenStream tokenStream(String fieldName, String text) {

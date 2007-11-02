@@ -8,19 +8,26 @@ import java.util.Map.Entry;
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
+import org.apache.lucene.document.Field;
+import org.apache.lucene.document.Field.Index;
+import org.apache.lucene.document.Field.Store;
 import org.apache.lucene.index.IndexWriter;
 import org.wikimedia.lsearch.analyzers.Analyzers;
+import org.wikimedia.lsearch.analyzers.ExtToken;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
+import org.wikimedia.lsearch.analyzers.ReusableLanguageAnalyzer;
 import org.wikimedia.lsearch.analyzers.StopWords;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.IndexReportCard;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.highlight.CleanupParser;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.index.WikiSimilarity;
 import org.wikimedia.lsearch.ranks.Links;
+import org.wikimedia.lsearch.util.Buffer;
 
 /**
  * IndexWriter for building indexes from scratch.
@@ -38,7 +45,8 @@ public class SimpleIndexWriter {
 	protected boolean newIndex;
 	protected String langCode;
 	protected Links links;
-	protected Analyzer analyzer;
+	protected Analyzer indexAnalyzer;
+	protected ReusableLanguageAnalyzer highlightAnalyzer;
 	protected HashSet<String> stopWords;
 	
 	public SimpleIndexWriter(IndexId iid, Boolean optimize, Integer mergeFactor, Integer maxBufDocs, boolean newIndex){
@@ -51,8 +59,9 @@ public class SimpleIndexWriter {
 		langCode = global.getLanguage(iid.getDBname());
 		FieldBuilder.Case dCase = (global.exactCaseIndex(iid.getDBname()))? FieldBuilder.Case.EXACT_CASE : FieldBuilder.Case.IGNORE_CASE; 		
 		builder = new FieldBuilder(iid,dCase);
-		indexes = new HashMap<String,IndexWriter>();
-		analyzer = Analyzers.getIndexerAnalyzer(builder);
+		indexes = new HashMap<String,IndexWriter>();		
+		indexAnalyzer = Analyzers.getIndexerAnalyzer(builder);
+		highlightAnalyzer = new ReusableLanguageAnalyzer(builder.getBuilder().getFilters(),false,true);
 		stopWords = StopWords.getPredefinedSet(iid);
 		// open all relevant indexes
 		for(IndexId part : iid.getPhysicalIndexIds()){
@@ -98,6 +107,17 @@ public class SimpleIndexWriter {
 	public void addArticle(Article a){
 		if(!WikiIndexModifier.checkAddPreconditions(a,langCode))
 			return; // don't add if preconditions are not met
+		
+		IndexId target = getTarget(a);
+		IndexWriter writer = indexes.get(target.toString());
+		if(writer == null)
+			return;
+		Document doc = WikiIndexModifier.makeDocument(a,builder,target,stopWords);
+		addDocument(writer,doc,a,target);
+	}
+	
+	/** Get a target index for this article */
+	protected IndexId getTarget(Article a){
 		IndexId target;
 		if(iid.isSingle())
 			target = iid;
@@ -109,19 +129,39 @@ public class SimpleIndexWriter {
 		if(target.isFurtherSubdivided()){
 			target = target.getSubpart(1+(int)(Math.random()*target.getSubdivisionFactor()));
 		}
-		
-		IndexWriter writer = indexes.get(target.toString());
-		if(writer == null)
-			return;
-		Document doc = WikiIndexModifier.makeDocument(a,builder,iid,stopWords);
+		return target;
+	}
+
+	/** Add document to a writer, with all exception handling */
+	protected void addDocument(IndexWriter writer, Document doc, Article a, IndexId target){
 		try {
-			writer.addDocument(doc,analyzer);
-			log.debug(iid+": Adding document "+a);
+			writer.addDocument(doc,indexAnalyzer);
+			log.debug(target+": Adding document "+a);
 		} catch (IOException e) {
-			log.error("I/O Error writing articlet "+a+" to index "+target.getImportPath());
+			log.error("I/O Error writing article "+a+" to index "+target.getImportPath());
 		} catch(Exception e){
 			e.printStackTrace();
 			log.error("Error adding document "+a+" with message: "+e.getMessage());
+		}
+	}
+	
+	/** Add to highlight index */
+	public void addArticleHighlight(Article a){		
+		IndexId target = getTarget(a);		
+		IndexWriter writer = indexes.get(target.toString());
+		if(writer == null)
+			return;		
+		String key = a.getTitleObject().getKey();
+		try {
+			// TODO: move to WikiIndexModifier?
+			Document doc = new Document();
+			doc.add(new Field("key",key,Store.NO,Index.UN_TOKENIZED));
+			doc.add(new Field("text",ExtToken.serialize(highlightAnalyzer.tokenStream("contents",a.getContents())),Store.COMPRESS));
+			doc.add(new Field("alttitle",WikiIndexModifier.serializeAltTitle(a,iid,highlightAnalyzer.getWikiTokenizer().getHeadingText()),Store.COMPRESS));
+			addDocument(writer,doc,a,target);
+		} catch (IOException e) {
+			e.printStackTrace();
+			log.error("Error adding document for key="+key+" : "+e.getMessage());
 		}
 	}
 	
@@ -131,6 +171,7 @@ public class SimpleIndexWriter {
 		for(Entry<String,IndexWriter> en : indexes.entrySet()){
 			IndexId iid = IndexId.get(en.getKey());
 			IndexWriter writer = en.getValue();
+			log.info("Optimizing "+iid);
 			try{
 				if(optimize!=null){
 					if(optimize)

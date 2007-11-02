@@ -33,6 +33,7 @@ import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.beans.ResultSet;
 import org.wikimedia.lsearch.beans.SearchResults;
 import org.wikimedia.lsearch.beans.Title;
+import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.frontend.SearchDaemon;
@@ -60,11 +61,17 @@ public class SearchEngine {
 	protected final int maxlines = 1000;
 	protected final int maxoffset = 10000;
 	protected static GlobalConfiguration global = null;
+	protected static Configuration config = null;
 	protected static Hashtable<String,Hashtable<String,Integer>> dbNamespaces = new Hashtable<String,Hashtable<String,Integer>>();
+	protected long timelimit;
 	
 	public SearchEngine(){
+		if(config == null)
+			config = Configuration.open();
 		if(global == null)
 			global = GlobalConfiguration.getInstance();
+		
+		timelimit = config.getInt("Search","timelimit",5000);
 	}
 	
 	/** Main search method, call this from the search frontend */
@@ -241,6 +248,9 @@ public class SearchEngine {
 			if(localfilter != null)
 				log.info("Using local filter: "+localfilter);
 			TopDocs hits = searcher.search(q,localfilter,offset+limit);
+			/*TimedTopDocCollector col = new TimedTopDocCollector(offset+limit,timelimit);
+			searcher.search(q,localfilter,col);
+			TopDocs hits = col.topDocs(); */
 			return makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);		
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -365,6 +375,9 @@ public class SearchEngine {
 				Wildcards wildcards = new Wildcards(searcher.getAllHosts(),exactCase);
 				q = parseQuery(searchterm,parser,iid,raw,nsfw,searchAll,wildcards);
 				
+				/* TimedTopDocCollector col = new TimedTopDocCollector(offset+limit,timelimit);
+				searcher.search(q,nsfw,col);
+				hits = col.topDocs(); */
 				hits = searcher.search(q,nsfw,offset+limit);
 				res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
 				if(sug != null){
@@ -390,7 +403,13 @@ public class SearchEngine {
 					}
 				}
 				return res;
-			} catch(Exception e){
+			} catch(Exception e){				
+				if(e.getMessage().equals("time limit")){
+					res = new SearchResults();
+					res.setErrorMsg("Time limit of "+timelimit+"ms exceeded");
+					log.warn("Execution time limit of "+timelimit+"ms exceeded.");
+					return res;
+				}
 				e.printStackTrace();
 				res = new SearchResults();
 				res.retry();

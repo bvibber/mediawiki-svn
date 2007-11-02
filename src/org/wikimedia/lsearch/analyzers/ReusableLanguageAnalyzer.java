@@ -17,9 +17,17 @@ public class ReusableLanguageAnalyzer extends LanguageAnalyzer {
 	protected TokenizerOptions options;
 	
 	public ReusableLanguageAnalyzer(FilterFactory filters, boolean exactCase){
-		super(filters,null);
-		this.options = new TokenizerOptions.NoRelocation(exactCase);
+		this(filters,exactCase,false);
 	}
+	
+	public ReusableLanguageAnalyzer(FilterFactory filters, boolean exactCase, boolean forHighlight){
+		super(filters,null);
+		if(forHighlight)
+			this.options = new TokenizerOptions.Highlight();
+		else
+			this.options = new TokenizerOptions.NoRelocation(exactCase);
+	}
+
 	
 	/**
 	 * Used in {@link WikiQueryParser} to parse parts of the query.

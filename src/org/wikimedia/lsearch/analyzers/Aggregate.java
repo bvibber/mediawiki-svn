@@ -23,11 +23,22 @@ public class Aggregate {
 		TokenizerOptions options = new TokenizerOptions.NoRelocation(exactCase);
 		tokens = new FastWikiTokenizerEngine(text,iid,options).parse();
 		this.boost = boost;
-		noStopWordsLength = 0;
-		for(Token t : tokens){
-			if(!stopWords.contains(t))
-				noStopWordsLength++;
-		}
+		if(stopWords != null){
+			noStopWordsLength = 0;		
+			for(Token t : tokens){
+				if(!stopWords.contains(t))
+					noStopWordsLength++;
+			}
+		} else
+			noStopWordsLength = tokens.size();
+	}
+	
+	/** Construct for highlight */
+	public Aggregate(String text, float boost, IndexId iid){
+		TokenizerOptions options = new TokenizerOptions.Highlight();
+		tokens = new FastWikiTokenizerEngine(text,iid,options).parse();
+		this.boost = boost;
+		this.noStopWordsLength = tokens.size();
 	}
 	
 	/** Number of tokens */

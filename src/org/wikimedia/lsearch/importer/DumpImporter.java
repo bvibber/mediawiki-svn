@@ -36,17 +36,21 @@ public class DumpImporter implements DumpWriter {
 	static Logger log = Logger.getLogger(DumpImporter.class);
 	Page page;
 	Revision revision;
-	SimpleIndexWriter writer;
+	SimpleIndexWriter indexWriter = null, highlightWriter = null;
 	int count = 0, limit;
 	Links links;
 	String langCode;
 	RelatedStorage related;
 
 	public DumpImporter(String dbname, int limit, Boolean optimize, Integer mergeFactor, 
-			Integer maxBufDocs, boolean newIndex, Links links, String langCode){
+			Integer maxBufDocs, boolean newIndex, Links links, String langCode,
+			boolean makeIndex, boolean makeHighlight){
 		Configuration.open(); // make sure configuration is loaded
 		IndexId iid = IndexId.get(dbname);
-		writer = new SimpleIndexWriter(iid, optimize, mergeFactor, maxBufDocs, newIndex);
+		if(makeIndex)
+			indexWriter = new SimpleIndexWriter(iid, optimize, mergeFactor, maxBufDocs, newIndex);
+		if(makeHighlight)
+			highlightWriter = new SimpleIndexWriter(iid.getHighlight(), optimize, mergeFactor, maxBufDocs, newIndex);
 		this.limit = limit;
 		this.links = links;
 		this.langCode = langCode;
@@ -62,28 +66,37 @@ public class DumpImporter implements DumpWriter {
 	}
 	public void writeEndPage() throws IOException {
 		String key = page.Title.Namespace+":"+page.Title.Text;
-		int references = links.getNumInLinks(key);
-		boolean isRedirect = links.isRedirect(key);
-		int redirectTargetNamespace = isRedirect? links.getRedirectTargetNamespace(key) : -1;
-		
-		// make list of redirects
+		// defaults:
+		int references = 0;
+		boolean isRedirect = false;
+		int redirectTargetNamespace = -1;
 		ArrayList<Redirect> redirects = new ArrayList<Redirect>();
 		ArrayList<String> anchors = new ArrayList<String>();
+		ArrayList<RelatedTitle> rel = new ArrayList<RelatedTitle>();
+		
+		references = links.getNumInLinks(key);
+		isRedirect = links.isRedirect(key);
+		redirectTargetNamespace = isRedirect? links.getRedirectTargetNamespace(key) : -1;
+		
+		// make list of redirects
+		redirects = new ArrayList<Redirect>();
 		for(String rk : links.getRedirectsTo(key)){
 			String[] parts = rk.toString().split(":",2);
 			int redirectRef = links.getNumInLinks(rk);
 			redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],redirectRef));
 		}
 		// related
-		ArrayList<RelatedTitle> rel = null;
 		if(related != null)
 			rel = related.getRelated(key);
-		else
-			rel = new ArrayList<RelatedTitle>();
 		// make article
 		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,
 				references,redirectTargetNamespace,redirects,rel,anchors);
-		writer.addArticle(article);
+		// index
+		if(indexWriter != null)
+			indexWriter.addArticle(article);
+		if(highlightWriter != null)
+			highlightWriter.addArticleHighlight(article);
+		
 		count++;
 		if(limit >= 0 && count > limit)
 			throw new IOException("stopped");
@@ -103,7 +116,10 @@ public class DumpImporter implements DumpWriter {
 	}
 	
 	public void closeIndex() throws IOException {
-		writer.close();
+		if(indexWriter != null)
+			indexWriter.close();
+		if(highlightWriter != null)
+			highlightWriter.close();
 	}
 	
 

@@ -71,6 +71,9 @@ public class IndexId {
 	/** full dbroles of every subpart, e.g. enwiki.nspart1.sub1, enwiki.nspart1.sub2 ..  */
 	protected String[] subParts = null;
 	
+	/** If this is the highlight index, containing the fulltext version of articles */
+	protected boolean highlight = false; 
+	
 	/** Type of index, enumeration */
 	protected IndexType type;
 	/** Part number in split repestnation, e.g. 1..N */
@@ -186,7 +189,14 @@ public class IndexId {
 			this.type = IndexType.PREFIX_TITLES;
 		else if(type.equals("subdivided"))
 			this.type = IndexType.SUBDIVIDED;
-
+		
+		// highlight index
+		String suffix = "";
+		if(dbrole.endsWith(".hl")){
+			highlight = true;
+			dbrole = dbrole.substring(0,dbrole.lastIndexOf('.'));
+			suffix = ".hl";
+		}
 		
 		// parts
 		part = null;
@@ -207,8 +217,8 @@ public class IndexId {
 		// split part names
 		if(this.type == IndexType.MAINSPLIT){
 			splitParts = new String[2];
-			splitParts[0] = dbname+".mainpart";
-			splitParts[1] = dbname+".restpart";
+			splitParts[0] = dbname+".mainpart"+suffix;
+			splitParts[1] = dbname+".restpart"+suffix;
 			
 			if(part == null);
 			else if(part.equalsIgnoreCase("mainpart"))
@@ -219,7 +229,7 @@ public class IndexId {
 			splitFactor = Integer.parseInt(typeParams.get("number"));
 			splitParts = new String[splitFactor];
 			for(int i=0;i<splitFactor;i++)
-				splitParts[i] = dbname+".part"+(i+1);
+				splitParts[i] = dbname+".part"+(i+1)+suffix;
 			if(part != null)
 				partNum = Integer.parseInt(part.substring(4));
 			else
@@ -228,7 +238,7 @@ public class IndexId {
 			splitFactor = Integer.parseInt(typeParams.get("number"));
 			splitParts = new String[splitFactor];
 			for(int i=0;i<splitFactor;i++)
-				splitParts[i] = dbname+".nspart"+(i+1);			
+				splitParts[i] = dbname+".nspart"+(i+1)+suffix;			
 			if(part!=null){
 				partNum = Integer.parseInt(part.substring(6));
 				namespaceSet = new HashSet<String>();
@@ -244,7 +254,7 @@ public class IndexId {
 			subFactor = Integer.parseInt(params.get("subdivisions"));
 			subParts = new String[subFactor];
 			for(int i=1;i<=subFactor;i++)
-				subParts[i-1] = dbname+"."+part+".sub"+i;
+				subParts[i-1] = dbname+"."+part+".sub"+i+suffix;
 			if(this.type == IndexType.SUBDIVIDED)
 				this.furtherSubdivided = false; // cannot futher subdivide
 			else
@@ -255,23 +265,23 @@ public class IndexId {
 		if(myIndex 
 				&& !(part == null && (this.type==IndexType.SPLIT || this.type==IndexType.MAINSPLIT || this.type==IndexType.NSSPLIT))
 				&& !furtherSubdivided){
-			indexPath = localIndexPath + "index" + sep + dbrole;
-			importPath = localIndexPath + "import" + sep + dbrole;
-			snapshotPath = localIndexPath + "snapshot" + sep + dbrole;
+			indexPath = localIndexPath + "index" + sep + this.dbrole;
+			importPath = localIndexPath + "import" + sep + this.dbrole;
+			snapshotPath = localIndexPath + "snapshot" + sep + this.dbrole;
 		} else{
 			indexPath = null;
 			importPath = null;
 			snapshotPath = null;
 		}
 		
-		rsyncSnapshotPath = indexRsyncPath+"snapshot/" + dbrole;
-		statusPath = localIndexPath + "status" + sep + dbrole;
-		transactionPath = localIndexPath + "transaction" + sep + dbrole;
-		tempPath = localIndexPath + "temp" + sep + dbrole;
+		rsyncSnapshotPath = indexRsyncPath+"snapshot/" + this.dbrole;
+		statusPath = localIndexPath + "status" + sep + this.dbrole;
+		transactionPath = localIndexPath + "transaction" + sep + this.dbrole;
+		tempPath = localIndexPath + "temp" + sep + this.dbrole;
 
 		if(mySearch){
-			searchPath = localIndexPath + "search" + sep + dbrole;
-			updatePath = localIndexPath + "update" + sep + dbrole;
+			searchPath = localIndexPath + "search" + sep + this.dbrole;
+			updatePath = localIndexPath + "update" + sep + this.dbrole;
 		} else{
 			searchPath = null;
 			updatePath = null;
@@ -378,10 +388,14 @@ public class IndexId {
 		return dbrole;
 	}
 
+	/** If this is the index containing higlighing info */
+	public boolean isHighlight(){
+		return highlight;
+	}
 	/** If this index (e.g. mainpart) has been subdivided into smaller indexes */
 	public boolean isFurtherSubdivided(){
 		return furtherSubdivided;
-	}
+	}	
 	/** Get textual repesentation of subdivided part, e.g. sub1 */
 	public String getSubpartString(){
 		return subpart;
@@ -654,6 +668,14 @@ public class IndexId {
 	/** Get the prefix titles index iid */
 	public IndexId getPrefixTitles() {
 		return get(dbname+".prefix_titles");
+	}
+	
+	/** Get the higlight index for this iid */
+	public IndexId getHighlight() {
+		if(highlight)
+			return get(dbrole);
+		else
+			return get(dbrole+".hl");
 	}
 	
 	/** Get language code for this db, e.g. "en" */

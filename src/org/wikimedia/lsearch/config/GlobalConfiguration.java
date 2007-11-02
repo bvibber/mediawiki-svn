@@ -265,11 +265,15 @@ public class GlobalConfiguration {
 						String host = indexLocation.get(dbname);
 						indexLocation.put(dbrole,host);
 						index.get(host).add(dbrole);
-					}
-					else{
+					} else{
 						System.out.println("ERROR in Global Configuration: index "+dbrole+" does not have an index host.");
 						return false;
 					}
+					// add same index location for highlight .hl index
+					/* String host = indexLocation.get(dbrole); 
+					indexLocation.put(dbrole+".hl",host);
+					index.get(host).add(dbrole+".hl"); */
+					
 				}
 				boolean searched = (getSearchHosts(dbrole).size() != 0); 
 				if(!searched && !(typeid.equals("mainsplit") || typeid.equals("split") 
@@ -591,9 +595,35 @@ public class GlobalConfiguration {
 						                    isSubdivided);
 				indexIdPool.put(dbrole,iid);
 				
+				if(type.equals("single") || type.equals("mainsplit") || type.equals("split") 
+						||	type.equals("nssplit") || type.equals("subdivided")){
+					// add highlight index
+					dbrole+=".hl";
+					searchHosts = getSearchHosts(dbrole);
+					mySearchHosts = getMySearchHosts(dbname,dbrole);
+					mySearch = searchHosts.contains(hostAddr) || searchHosts.contains(hostName);
+					// other options are identical!
+					iid = new IndexId(dbrole,
+							            type,
+							            indexHost,
+							            rsyncIndexPath,
+							            database.get(dbname).get(type),
+							            typeidParams,
+							            searchHosts,
+							            mySearchHosts,
+							            indexPath,
+							            myIndex,
+							            mySearch,
+							            oairepo,
+							            isSubdivided);
+					indexIdPool.put(dbrole,iid);
+				}
+				
 			}
-			if(indexIdPool.get(dbname).isNssplit())
+			if(indexIdPool.get(dbname).isNssplit()){
 				indexIdPool.get(dbname).rebuildNsMap(indexIdPool);
+				indexIdPool.get(dbname+".hl").rebuildNsMap(indexIdPool);
+			}
 		}
 		
 	}

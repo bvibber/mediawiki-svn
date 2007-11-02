@@ -136,13 +136,15 @@ public class Article implements Serializable  {
 		return title;
 	}
 	
+	public Title getTitleObject(){
+		return new Title(Integer.parseInt(namespace),title);
+	}
+	
 	public long getPageId() {
 		return pageId;
 	}
 	/**
-	 * Articles need to be easily identifiable by an exact match
-	 * for replacement of updated items when updating an existing
-	 * search index.
+	 * Return page_id
 	 * 
 	 * @return Returns unique id.
 	 */

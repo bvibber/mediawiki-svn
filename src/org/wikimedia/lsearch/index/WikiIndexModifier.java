@@ -52,6 +52,7 @@ import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.related.RelatedTitle;
 import org.wikimedia.lsearch.spell.api.SpellCheckIndexer;
+import org.wikimedia.lsearch.util.Buffer;
 import org.wikimedia.lsearch.util.Localization;
 import org.wikimedia.lsearch.util.MathFunc;
 import org.wikimedia.lsearch.util.StringUtils;
@@ -99,7 +100,7 @@ public class WikiIndexModifier {
 		 * SimpleIndexModifier
 		 * 
 		 * @param iid 
-		 * @param analyzer
+		 * @param indexAnalyzer
 		 * @param rewrite - if true, will create new index
 		 */
 		SimpleIndexModifier(IndexId iid, String langCode, boolean rewrite, boolean exactCase){
@@ -548,6 +549,32 @@ public class WikiIndexModifier {
 		}
 		makeAggregate(doc,prefix,items);
 	}
+	
+	
+	public enum AlttitleTypes { TITLE, REDIRECT, HEADING };
+	
+	public static byte[] serializeAltTitle(Article article, IndexId iid, ArrayList<String> headingText) throws IOException{
+		WikiIndexModifier.transformArticleForIndexing(article);
+		Buffer b = new Buffer();
+		
+		// add title
+		String title = article.getTitle();
+		b.writeAggregate(title,new Aggregate(title,article.getRank(),iid),AlttitleTypes.TITLE.ordinal());
+		// add all redirects
+		ArrayList<String> redirects = article.getRedirectKeywords();
+		ArrayList<Integer> ranks = article.getRedirectKeywordRanks();
+		for(int i=0;i<redirects.size();i++){
+			b.writeAggregate(redirects.get(i),new Aggregate(redirects.get(i),ranks.get(i),iid),AlttitleTypes.REDIRECT.ordinal());
+		}
+		// add section headings!
+		for(String h : headingText){
+			b.writeAggregate(h,new Aggregate(h,article.getRank()*HEADINGS_BOOST,iid),AlttitleTypes.HEADING.ordinal());
+		}
+		
+		return b.getBytes();		
+	}
+	
+	
 	
 	private static void addToItems(ArrayList<Aggregate> items, Aggregate a){
 		if(a.length() != 0)
