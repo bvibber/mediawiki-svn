@@ -29,6 +29,7 @@
         <select id="language" name="language">
             <option value="en"><fmt:message key="langselect.lang.en" /></option>
             <option value="fr"><fmt:message key="langselect.lang.fr" /></option>
+            <option value="de"><fmt:message key="langselect.lang.de" /></option>
             <option value="it"><fmt:message key="langselect.lang.it" /></option>
             <option value="ja"><fmt:message key="langselect.lang.ja" /></option>
             <option value="no"><fmt:message key="langselect.lang.no" /></option>
