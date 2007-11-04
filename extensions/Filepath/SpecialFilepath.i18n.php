@@ -15,7 +15,9 @@ $wgFilepathMessages['en'] = array(
 	
 	Enter the file name without the "{{ns:image}}:" prefix.',
 );
-
+$wgFilepathMessages['af'] = array(
+	'filepath'        => 'Lêerpad',
+);
 /* Arabic (Meno25) */
 $wgFilepathMessages['ar'] = array(
 	'filepath'        => 'مسار ملف',

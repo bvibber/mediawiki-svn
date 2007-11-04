@@ -56,18 +56,27 @@ $messages = array(
 	'group-steward-member' => 'مضيف',
 	'grouppage-steward' => '{{ns:project}}:مضيفون',
 ),
+
 'az' => array(
 	'already_sysop'        => 'Bu istifadəçi hazirdə idarəçidir',
 	'already_bureaucrat'   => 'Bu istifadəçi hazirdə bürokratdı',
 ),
+
 'ba' => array(
 	'makesysopname'        => 'Ҡатнашыусы исеме:',
 ),
+
+'bar' => array(
+	'already_sysop' => 'Dea Benutza is scho Administrator',
+	'already_bureaucrat' => 'Dea Benutza is scho Bürokrat',
+),
+
 'bcl' => array(
 	'makesysopname' => 'Pangaran kan parágamit:',
 	'rights' => 'Derechos:',
 	'already_sysop' => 'An parágamit na ini sarô nang administrador',
 ),
+
 'be' => array(
 	'makesysoptitle'       => 'Зрабіць карыстальніка сісопам',
 	'makesysopsubmit'      => 'Зрабіць карыстальніка сісопам',
@@ -77,12 +86,14 @@ $messages = array(
 	'already_sysop'        => 'Гэты карыстальнік ужо мае статус адміністратара',
 	'already_bureaucrat'   => 'Гэты карыстальнік ужо мае статус бюракрата',
 ),
+
 'be-x-old' => array(
 	'makesysopname'        => 'Імя ўдзельніка/ўдзельніцы:',
 	'makesysop'            => 'Зрабіць удзельніка адміністратарам',
 	'already_sysop'        => 'Гэты ўдзельнік ужо зьяўляецца адміністратарам',
 	'already_bureaucrat'   => 'Гэты ўдзельнік ужо зьяўляецца бюракратам',
 ),
+
 'bg' => array(
 	'makesysoptitle'       => 'Превръщане на потребител в администратор',
 	'makesysoptext'        => 'Този формуляр се използва от бюрократи за превръщане на обикновени потребители в администратори.
@@ -101,10 +112,12 @@ $messages = array(
 	'already_sysop'        => 'Този потребител беше вече администратор',
 	'already_bureaucrat'   => 'Този потребител беше вече бюрократ',
 ),
+
 'bpy' => array(
 	'already_sysop'         => 'আতাকুরা এগ এচুদিনে ডান্ডি(প্রশাসক)গ ইয়াপরিলগাহে',
 	'already_bureaucrat'    => 'আতাকুরা এগ এচুদিনে ব্যুরোক্র্যাটগ ইয়াপরিলগাহে',
 ),
+
 'br' => array(
 	'makesysoptitle' => 'A ro ar statud merour.',
 	'makesysoptext' => 'Graet e vez gant ar furmskrid-mañ gant ar Pennoù-bras a-benn reiñ ar statud merour.
@@ -122,6 +135,7 @@ Lakait anv an implijer(ez) er voest ha pouezit war ar bouton evit reiñ ar gwiri
 	'already_sysop' => 'Merour eo an implijer-mañ dija',
 	'already_bureaucrat' => 'Penn-bras eo an implijer-mañ dija',
 ),
+
 'bs' => array(
 	'makesysoptitle'       => 'Pretvorite korisnika u administratora',
 	'makesysoptext'        => 'Ovaj formular se koristi sa strane birokrata da se obični korisnici pretvore u administratore.  Unesite ime korisnika u kutiju i pritisnite dugme da bi korisnik postao administrator.',
@@ -136,6 +150,7 @@ Lakait anv an implijer(ez) er voest ha pouezit war ar bouton evit reiñ ar gwiri
 	'set_rights_fail'      => '<b>Korisnička prava za $"1" nisu mogla da se podese.  (Da li ste pravilno unijeli ime?)</b>',
 	'makesysop'            => 'Dodijeli administratorska prava korisniku',
 ),
+
 'ca' => array(
 	'makesysoptitle' => 'Converteix en administrador',
 	'makesysoptext' => 'Aquest formulari serveix per a que els buròcrates puguin convertir un usuari en administrador.
@@ -149,6 +164,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'already_sysop' => 'Aquest usuari ja és un administrador',
 	'already_bureaucrat' => 'Aquest usuari ja és buròcrata',
 ),
+
 'cs' => array(
 	'makesysoptitle'       => 'Učinit uživatele správcem',
 	'makesysoptext'        => 'Pomocí tohoto formuláře mohou byrokraté uživateli přidělit práva správce. Vepište jméno uživatele do políčka a stiskněte tlačítko; zaškrtnutím políčka přidáte uživateli také oprávnění „byrokrat“.',
@@ -169,14 +185,17 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'group-steward-member' => 'Stevard',
 	'grouppage-steward'    => '{{ns:project}}:Stevardi',
 ),
+
 'csb' => array(
 	'rights' => 'Prawa:',
 	'already_sysop' => 'Nen brëkòwnik je ju administratorã',
 	'already_bureaucrat' => 'Nen brëkòwnik je ju biurokratą',
 ),
+
 'cv' => array(
 	'rights'               => 'Тума пултарать:',
 ),
+
 'cy' => array(
 	"makesysoptitle"       => "Gwnewch sysop allan o defnyddiwr",
 	"makesysoptext"	       => "Defnyddiwch y ffurflen hon i troi defnyddiwr cyffredin i gweinyddwr. Teipiwch enw'r defnyddiwr yn y blwch a cliciwch y botwm i troi'r defnyddiwr i gweinyddwr",
@@ -186,6 +205,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	"makesysopfail"	       => "<b>Wedi methu troi defnyddwr '$1' i gweinyddwr. (Ydych chi wedi sillafu'r enw'n iawn?)</b>",
 	"setbureaucratflag"    => "Gosod y fflag biwrocrat",
 ),
+
 'da' => array(
 	'makesysoptitle'	=> 'Gør en bruger til administrator - sysop',
 	'makesysoptext'		=> 'Denne formular bruges af bureaukrater til at gøre almindelige brugere til administratorer og/eller tildele andre rettigheder til en bruger. Indsæt navnet på brugeren i tekstboksen og tryk på knappen for at ændre rettighederne (i.e. gøre brugeren til administrator',
@@ -202,6 +222,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'already_sysop'		=> 'Denne bruger er allerede administrator',
 	'already_bureaucrat'	=> 'Denne bruger er allerede bureaucrat',
 ),
+
 'de' => array(
 	'makesysoptitle'       => 'Mache einen Benutzer zum Administrator',
 	'makesysoptext'        => 'Mit diesem Formular können Bürokraten normale Benutzer zu Administratoren machen.',
@@ -223,6 +244,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
 ),
+
 'el' => array(
 	'makesysoptitle'       => 'Κάντε ένα χρήστη διαχειριστή',
 	'makesysoptext'        => 'Η φόρμα αυτή απευθύνεται στους διαχειριστές και χρησιμεύει στο να χαρακτηρισθεί ένας χρήστης \'διαχειριστής\'. Πληκτρολογήστε το όνομα του χρήστη στο πεδίο κειμένου και επικυρώστε πατώντας το αντίστοιχο κουμπί.',
@@ -239,6 +261,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'already_sysop'        => 'Ο χρήστης αυτός είναι ήδη διαχειριστής.',
 	'already_bureaucrat'   => 'Ο χρήστης αυτός είναι ήδη διαχειριστής.',
 ),
+
 'eo' => array(
 	'makesysoptitle' => 'Igu uzanton administranto',
 	'makesysoptext' => 'Ĉi formularo estas uzita de burokratoj por igi ordinarajn uzantojn administrantoj. Bonvlolu tajpi la nomon de la uzanto en la skatoleton kaj premu la butonon por igi la uzanton administranto.',
@@ -260,6 +283,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'group-steward-member' => 'Stevardo',
 	'grouppage-steward' => '{{ns:project}}:Stevardoj',
 ),
+
 'es' => array(
 	'makesysoptitle'       => 'Convertir a este usuario en administrador',
 	'makesysoptext'        => 'Con este formulario los burócratas pueden convertir usuarios normales en administradores. Escribe el nombre del usuario en la caja y pulsa el botón para convertir a este usuario en administrador.',
@@ -280,11 +304,13 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
 ),
+
 'et' => array(
 	'user_rights_set' => '<b>Kasutaja "$1" õigused muudetud</b>',
 	'already_sysop' => 'See kasutaja on juba administraator',
 	'already_bureaucrat' => 'See kasutaja on juba bürokraat',
 ),
+
 'eu' => array(
 	'makesysoptitle'	=> 'Lankide bat administratzaile egin',
 	'makesysoptext'		=> 'Lankide arruntei administratzaile baimenak emateko erabiltzen da orrialde hau. Lankidearen izena ipini laukian eta botoia sakatu.',
@@ -301,6 +327,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'already_sysop'		=> 'Erabiltzaile hau bada administratzailea',
 	'already_bureaucrat'	=> 'Erabiltzaile hau bada burokrata',
 ),
+
 'ext' => array(
 	'makesysoptitle' => 'Hazel duendi a un usuáriu',
 	'makesysopname' => 'Nombri el usuáriu:',
@@ -308,6 +335,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'already_sysop' => 'Esti usuáriu ya es un duendi',
 	'already_bureaucrat' => 'Esti usuáriu ya es un alministraol',
 ),
+
 'fi' => array(
 	'makesysoptitle'       => 'Tee käyttäjästä ylläpitäjä',
 	'makesysoptext'        => 'Byrokraatit voivat tällä lomakkeella tehdä käyttäjistä ylläpitäjiä ja byrokraatteja. Kirjoita laatikkoon sen käyttäjän nimi, jolle haluat antaa oikeuksia.',
@@ -328,11 +356,13 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'group-steward-member' => 'ylivalvoja',
 	'grouppage-steward'    => '{{ns:project}}:ylivalvojat',
 ),
+
 'fo' => array(
-'makesysopname' => 'Navn á brúkara:',
-'rights' => 'Rættindi:',
-'makesysop' => 'Ger ein brúkara til sysop',
+	'makesysopname' => 'Navn á brúkara:',
+	'rights' => 'Rættindi:',
+	'makesysop' => 'Ger ein brúkara til sysop',
 ),
+
 'fr' => array(
 	'makesysoptitle'       => 'Donner les droits d’administrateur à un utilisateur',
 	'makesysoptext'	       => 'Ce formulaire est utilisé par les bureaucrates ' .
@@ -357,6 +387,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Steward',
 ),
+
 'ga' => array(
 	'makesysoptitle'	=> 'Déan oibreoir córais de húsáideoir',
 	'makesysoptext'		=> 'Úsáideann maorlathaigh an fhoirm seo chun riarthóirí a dhéanamh de ghnáthúsáideoirí. Iontráil ainm an úsáideora sa bosca seo agus brúigh an cnaipe chun riarthóir a dhéanamh den úsáideoir',
@@ -373,18 +404,22 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'already_sysop'		=> 'Is oibreoir córais é an usáideoir seo cheana féin',
 	'already_bureaucrat'	=> 'Is maorlathach é an úsáideoir seo cheana féin',
 ),
+
 'gl' => array(
 	'already_bureaucrat' => 'Este usuario xa é burócrata',
 ),
+
 'gsw' => array(
 	'already_bureaucrat'	=> 'Selle Benutzer isch scho Bürokrat.',
 	'already_sysop'		=> 'Selle Benutzer isch scho Adminischtrator.',
 ),
+
 'hak' => array(
 	'user_rights_set' => '<b>Yung-fu "$1" ke hí-khó-khièn yí-kîn kiên-sîn</b>',
 	'already_sysop' => 'Liá-vi yung-fu yí-kîn he yit-miàng kón-lî-yèn',
 	'already_bureaucrat' => 'Liá-vi yung-fu yí-kîn he yit-miàng hàng-chṳn-yèn',
 ),
+
 'he' => array(
 	'makesysoptitle'       => 'הפוך משתמש למפעיל מערכת',
 	'makesysoptext'        => 'דף זה משמש ביורוקרטים להפיכת משתמש רגיל למפעיל מערכת. אנא הקישו את שם המשתמש בתיבת הטקסט ולחצו על הכפתור על מנת להפוך את המשתמש למפעיל מערכת.',
@@ -406,6 +441,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'group-steward-member' => 'דייל',
 	'grouppage-steward'    => '{{ns:project}}:דיילים',
 ),
+
 'hr' => array(
 	'makesysoptitle'       => 'Načini suradnika administratorom',
 	'makesysoptext'        => 'Ovaj obrazac služi birokratima za dodjeljivanje administratorskih prava pojedinom suradniku. Utipkajte ime suradnika u kućicu i pritisnite dugme kako biste suradniku dali administratorska prava.',
@@ -422,6 +458,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'already_sysop'        => 'Ovaj je suradnik već administrator',
 	'already_bureaucrat'   => 'Ovaj je suradnik već birokrat',
 ),
+
 'hsb' => array(
 	'makesysoptitle' => 'Wužiwarja k administratorej činić',
 	'makesysoptext' => 'Tutón formular so wot běrokratow wužiwa, zo bychu so jednori wužiwarjo do administratorow přeměnili. Zadodajće wužiwarske mjeno do wotpowědneho pola a klikńće na tłočatko, zo byšće wužiwarja k administratorej činił(a).',
@@ -443,6 +480,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'group-steward-member' => 'steward',
 	'grouppage-steward' => '{{ns:project}}:Stewardźa',
 ),
+
 'hu' => array(
 	'makesysoptitle' => 'Felhasználó adminisztrátorrá tétele',
 	'makesysoptext' => 'Ezt az űrlapot a bürokraták használják, hogy a felhasználókat adminisztrátorrá tegyék.
@@ -461,12 +499,14 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'group-steward' => 'Helytartók',
 	'group-steward-member' => 'Helytartó',
 ),
+
 'hy' => array(
 	'already_sysop'        => 'Այս մասնակիցը արդեն ադմինիստրատոր է',
 	'already_bureaucrat'   => 'Այս մասնակիցը արդեն բյուրոկրատ է',
 	'makesysoptext'        => 'Տվյալ ձևն օգտագործվում է "բյուրոկրատների" կողմից, հասարակ օգտագործողներին ադմինիստրատոր հաստատելու համար: Նշեք օգտագործողի անունը հետևյալ տուփոմ և սեղմեք համապատասխան կոճակը, օգտագործողին ադմինիստրատոր կարգափոխելու համար:',
 	'makesysopname'        => 'Մասնակցի անունը`',
 ),
+
 'id' => array(
 	'makesysoptitle'       => 'Pemberian status pengurus',
 	'makesysoptext'        => 'Formulir ini digunakan oleh para birokrat untuk menjadikan pengguna biasa menjadi seorang pengurus. Ketikkan nama pengguna yang dimaksud dalam kotak dan tekan tombol untuk menjadikan pengguna tersebut seorang pengurus.',
@@ -488,6 +528,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => 'Project:Steward',
 ),
+
 'is' => array(
 	'makesysoptext' => 'Kerfissíða þessi er notuð af möppudýrum til að veita venjulegum notendum stjórnendaréttindi.',
 	'makesysopname' => 'Notandi:',
@@ -500,6 +541,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'already_sysop' => 'Þessi notandi hefur þegar verið gerður að stjórnanda.',
 	'already_bureaucrat' => 'Þessi notandi hefur þegar verið gerður möppudýr',
 ),
+
 'it' => array(
 	'makesysoptitle' => 'Trasforma un utente in amministratore',
 	'makesysoptext' => 'Questo modulo consente ai burocrati di assegnare i privilegi di amministratore a un utente normale. Inserire il nome utente nella casella di testo e premere il pulsante per consentirne l\'accesso come amministratore.',
@@ -520,6 +562,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'group-steward' => 'Steward',
 	'grouppage-steward' => '{{ns:project}}:Steward',
 ),
+
 'ja' => array(
 	'makesysoptitle' => '{{int:Makesysop}}',
 	'makesysoptext' => 'このフォームは通常の利用者を{{int:group-sysop}}にするために使用します。{{int:group-sysop}}にする利用者名を入力し、{{int:Makesysopsubmit}}ボタンを押してください。',
@@ -540,6 +583,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'group-steward-member' => '{{int:group-steward}}',
 	'grouppage-steward' => '{{ns:project}}:{{int:group-steward}}',
 ),
+
 'kk-kz' => array(
 	'makesysoptitle'       => 'Қатысушыны әкімші қылу',
 	'makesysoptext'        => 'Бұл үлгітті қарапайым қатысушыны әкімші қылу үшін төрешілер қолданады. Жолаққа қатысушы атын енгізіңіз де, және бұл қатысушыны әкімші қылу үшін, түймені басыңыз.',
@@ -561,6 +605,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'group-steward-member' => 'жетекші',
 	'grouppage-steward'    => '{{ns:project}}:Жетекшілер',
 ),
+
 'kk-tr' => array(
 	'makesysoptitle'       => 'Qatıswşını äkimşi qılw',
 	'makesysoptext'        => 'Bul ülgitti qarapaýım qatıswşını äkimşi qılw üşin töreşiler qoldanadı. Jolaqqa qatıswşı atın engiziñiz de, jäne bul qatıswşını äkimşi qılw üşin, tüýmeni basıñız.',
@@ -582,6 +627,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'group-steward-member' => 'jetekşi',
 	'grouppage-steward'    => '{{ns:project}}:Jetekşiler',
 ),
+
 'kk-cn' => array(
 	'makesysoptitle'       => 'قاتىسۋشىنى ٵكٸمشٸ قىلۋ',
 	'makesysoptext'        => 'بۇل ٷلگٸتتٸ قاراپايىم قاتىسۋشىنى ٵكٸمشٸ قىلۋ ٷشٸن تٶرەشٸلەر قولدانادى. جولاققا قاتىسۋشى اتىن ەنگٸزٸڭٸز دە, جٵنە بۇل قاتىسۋشىنى ٵكٸمشٸ قىلۋ ٷشٸن, تٷيمەنٸ باسىڭىز.',
@@ -603,10 +649,12 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'group-steward-member' => 'جەتەكشٸ',
 	'grouppage-steward'    => '{{ns:project}}:جەتەكشٸلەر',
 ),
+
 'kn' => array(
 	'makesysopname'        => 'ಸದಸ್ಯನ ಹೆಸರು:',
 	'rights'               => 'ಹಕ್ಕುಗಳು:',
 ),
+
 'ko' => array(
 	'makesysoptitle' => '사용자에게 관리자 권한 주기',
 	'makesysoptext' => '이 양식은 뷰로크랫 권한이 있는 사용자가 다른 사용자에게 관리자 권한을 줄 때 사용됩니다. 사용자 이름을 입력하고 확인을 눌러 관리자 권한을 줄 수 있습니다.',
@@ -627,6 +675,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'group-steward-member' => '스튜워드',
 	'grouppage-steward' => 'Project:스튜워드',
 ),
+
 'ksh' => array(
 	'makesysoptitle'       => 'Maach ene Wiki Köbes us däm Metmaacher',
 	'makesysoptext'        => 'Hee künne Bürrokrade us enem normale Metmaacher ene Wiki Köbes oder och ene
@@ -645,9 +694,11 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'already_sysop'        => 'Dä Metmaacher es ald ene Wiki Köbes.',
 	'already_bureaucrat'   => 'Dä Metmaacher es ald ene Bürrokrad.',
 ),
+
 'ku' => array(
 	'makesysopname'        => 'Navê bikarhêner:',
 ),
+
 'la' => array(
 	'makesysopname' => 'Nomen usoris:',
 	'makesysopok' => '<b>Usor "$1" nunc est magistratus</b>',
@@ -656,14 +707,17 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'already_sysop' => 'Hic usor etiam est [[{{MediaWiki:grouppage-sysop}}|magistratus]].',
 	'already_bureaucrat' => 'Hic usor etiam est [[{{MediaWiki:grouppage-bureaucrat}}|grapheocrates]].',
 ),
+
 'li' => array(
 	'already_sysop'        => 'Deze gebroeker is al systeemwèrker',
 	'already_bureaucrat'   => 'Deze gebroeker is al amtenaer',
 ),
+
 'lo' => array(
 	'already_sysop'        => 'ຜູ້ໃຊ້ນີ້ ເປັນ ຜູ້ບໍລິຫານ ແລ້ວ',
 	'already_bureaucrat'   => 'ຜູ້ໃຊ້ນີ້​ ແມ່ນ buraucrat ແລ້ວ',
 ),
+
 'lt' => array(
 	'makesysoptitle'     => 'Padaryti naudotoją administratoriumi',
 	'makesysoptext'      => 'Ši forma yra naudojama biurokratų, kad paprastus naudotojus pavestų į administratorius. Įveskite naudotojo vardą ir paspauskite mygtuką, kad padarytumėte naudotoją administratoriumi',
@@ -680,6 +734,7 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'already_sysop'      => 'Naudotojas jau yra administratorius',
 	'already_bureaucrat' => 'Naudotojas jau yra biurokratas',
 ),
+
 'mk' => array(
 	'makesysoptitle'       => 'Претвори го корисникот во администратор',
 	'makesysoptext'        => 'Овој формулар се користи од бирократи за претворање на обични корисници во администратори. Напишете го името на корисникот во полето и притиснете го копчето да го претворите корисникот во администратор',
@@ -700,12 +755,14 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'group-steward-member' => 'Стјуард',
 	'grouppage-steward'    => '{{ns:project}}:Стјуарди',
 ),
+
 'nan' => array(
 	'makesysoptitle'       => 'Kā iōng-chiá piàn chò hêng-chèng jîn-oân',
 	'makesysopname'        => 'Iōng-chiá ê miâ:',
 	'makesysopsubmit'      => 'Kā chit ūi iōng-chiá piàn chò hêng-chèng jîn-oân',
 	'makesysop'            => 'Kā iōng-chiá piàn chò hêng-chèng jîn-oân',
 ),
+
 'nds' => array(
 	'makesysoptitle' => 'Maak en Bruker to en Administrater',
 	'makesysoptext' => 'Disse Mask warrt vun Bürokraten bruukt, üm normale Bruker to Administratern to maken.',
@@ -722,6 +779,7 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'already_sysop' => 'De Bruker is al en Administrater.',
 	'already_bureaucrat' => 'De Bruker is al en Bürokrat.',
 ),
+
 'nl' => array(
 	'makesysoptitle' => 'Maak een gebruiker beheerder',
 	'makesysoptext' => 'Dit formulier wordt door bureaucraten gebruikt om een gebruiker beheerder te maken. Geef de naam van een gebruiker in het veld in en klik op de knop om de gebruiker beheerder te maken.',
@@ -743,6 +801,7 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'group-steward-member' => 'Steward',#identical but defined
 	'grouppage-steward' => '{{ns:project}}:Stewards',#identical but defined
 ),
+
 'nn' => array(
 	'makesysoptitle'	=> 'Gjer brukar om til administrator',
 	'makesysoptext'		=> 'Dette skjemaet kan brukast av byråkratar til å gjera vanlege brukarar om til administratorar. Skriv inn namnet på brukaren i tekstboksen og trykk på knappen for å gjere brukaren om til administrator',
@@ -759,27 +818,29 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'already_sysop'         => 'Denne brukaren har allereie administratortilgang',
 	'already_bureaucrat'    => 'Denne brukaren har allereie byråkrat-tilgang',
 ),
+
 'no' => array(
-'makesysoptitle' => 'Gjør en bruker til administrator',
-'makesysoptext' => 'Dette skjemaet blir brukt av byråkrater for å gjøre vanlige brukere til administratorer. Skriv brukernavnet i boksen og trykk på knappen for å gjøre en bruker til administrator.',
-'makesysopname' => 'Brukernavn:',
-'makesysopsubmit' => 'Gjør denne brukeren til administrator',
-'makesysopok' => '<b>«$1» er nå administrator</b>',
-'makebureaucratok' => '<b>Brukeren «$1» er nå en byråkrat</b>',
-'makesysopfail' => '<b>«$1» kunne ikke bli administrator. (Er brukernavnet skrevet riktig?)</b>',
-'setbureaucratflag' => 'Gjør til byråkrat',
-'rights' => 'Rettigheter:',
-'set_user_rights' => 'Sett brukerrettigheter',
-'user_rights_set' => '<b>Brukerrettigheter for «$1» er oppdatert</b>',
-'set_rights_fail' => '<b>Brukerrettigheter for «$1» kunne ikke settes. (Skrev du navnet riktig?)</b>',
-'makesysop' => 'Gjør en bruker til administrator',
-'already_sysop' => 'Den brukeren er allerede administrator',
-'already_bureaucrat' => 'Denne brukeren er allerede byråkrat',
-'makesysop-nodatabase' => 'Ugyldig interwiki-brukernavn: $1',
-'group-steward' => 'Stewards',#identical but defined
-'group-steward-member' => 'Steward',#identical but defined
-'grouppage-steward' => 'Project:Stewards',
+	'makesysoptitle' => 'Gjør en bruker til administrator',
+	'makesysoptext' => 'Dette skjemaet blir brukt av byråkrater for å gjøre vanlige brukere til administratorer. Skriv brukernavnet i boksen og trykk på knappen for å gjøre en bruker til administrator.',
+	'makesysopname' => 'Brukernavn:',
+	'makesysopsubmit' => 'Gjør denne brukeren til administrator',
+	'makesysopok' => '<b>«$1» er nå administrator</b>',
+	'makebureaucratok' => '<b>Brukeren «$1» er nå en byråkrat</b>',
+	'makesysopfail' => '<b>«$1» kunne ikke bli administrator. (Er brukernavnet skrevet riktig?)</b>',
+	'setbureaucratflag' => 'Gjør til byråkrat',
+	'rights' => 'Rettigheter:',
+	'set_user_rights' => 'Sett brukerrettigheter',
+	'user_rights_set' => '<b>Brukerrettigheter for «$1» er oppdatert</b>',
+	'set_rights_fail' => '<b>Brukerrettigheter for «$1» kunne ikke settes. (Skrev du navnet riktig?)</b>',
+	'makesysop' => 'Gjør en bruker til administrator',
+	'already_sysop' => 'Den brukeren er allerede administrator',
+	'already_bureaucrat' => 'Denne brukeren er allerede byråkrat',
+	'makesysop-nodatabase' => 'Ugyldig interwiki-brukernavn: $1',
+	'group-steward' => 'Stewards',#identical but defined
+	'group-steward-member' => 'Steward',#identical but defined
+	'grouppage-steward' => 'Project:Stewards',
 ),
+
 'oc' => array(
 	'makesysoptitle' => 'Balhar los dreches d’administrator a un utilizaire',
 	'makesysoptext' => 'Aqueste formulari es utilizat pels burocratas per balhar los dreches d’administrator a un utilizaire ordinari. Inscrivissètz lo nom de l’utilizaire dins lo quadre e clicatz sul boton per balhar los dreches en question.',
@@ -797,31 +858,34 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'already_bureaucrat' => 'Aqueste utilizaire ja es burocrata',
 	'makesysop-nodatabase' => 'Marrit nom d’utilizaire interwiki : $1',
 ),
+
 'os' => array(
 	'makesysopname' => 'Архайæджы ном:',
 	'rights'        => 'Бартæ',
 ),
+
 'pl' => array(
-'makesysoptitle' => 'Nadaj użytkownikowi uprawnienia administratora',
-'makesysoptext' => 'Ten formularz jest wykorzystywany przez użytkowników o statusie biurokraty do przyznawania innym użytkownikom praw administratora. Aby to uczynić, wpisz nazwę użytkownika i kliknij na przycisk.',
-'makesysopname' => 'Nazwa użytkownika:',
-'makesysopsubmit' => 'Przyznaj temu użytkownikowi uprawnienia administratora',
-'makesysopok' => '<b>Użytkownik "$1" otrzymał uprawnienia administratora</b>',
-'makebureaucratok' => '<b>Użytkownik "$1" otrzymał uprawnienia biurokraty</b>',
-'makesysopfail' => '<b>Użytkownik "$1" nie otrzymał uprawnienień administratora. (Czy wprowadziłeś poprawną nazwę użytkownika?)</b>',
-'setbureaucratflag' => 'Ustaw status biurokraty',
-'rights' => 'Uprawnienia:',
-'set_user_rights' => 'Zmień uprawnienia użytkownika',
-'user_rights_set' => '<b>Uprawnienia użytkownika "$1" zostały zmienione</b>',
-'set_rights_fail' => '<b>Uprawnienia użytkownika "$1" nie zostały zmienione. (Czy wprowadziłeś poprawną nazwę użytkownika?)</b>',
-'makesysop' => 'Przyznaj użytkownikowi uprawnienia administratora',
-'already_sysop' => 'Ten użytkownik jest już administratorem',
-'already_bureaucrat' => 'Ten użytkownik jest już biurokratą',
-'makesysop-nodatabase' => 'Niewłaściwa nazwa użytkownika w interwiki: $1',
-'group-steward' => 'Zarządcy',
-'group-steward-member' => 'Zarządca',
-'grouppage-steward' => '{{ns:project}}:Stewardzi',
+	'makesysoptitle' => 'Nadaj użytkownikowi uprawnienia administratora',
+	'makesysoptext' => 'Ten formularz jest wykorzystywany przez użytkowników o statusie biurokraty do przyznawania innym użytkownikom praw administratora. Aby to uczynić, wpisz nazwę użytkownika i kliknij na przycisk.',
+	'makesysopname' => 'Nazwa użytkownika:',
+	'makesysopsubmit' => 'Przyznaj temu użytkownikowi uprawnienia administratora',
+	'makesysopok' => '<b>Użytkownik "$1" otrzymał uprawnienia administratora</b>',
+	'makebureaucratok' => '<b>Użytkownik "$1" otrzymał uprawnienia biurokraty</b>',
+	'makesysopfail' => '<b>Użytkownik "$1" nie otrzymał uprawnienień administratora. (Czy wprowadziłeś poprawną nazwę użytkownika?)</b>',
+	'setbureaucratflag' => 'Ustaw status biurokraty',
+	'rights' => 'Uprawnienia:',
+	'set_user_rights' => 'Zmień uprawnienia użytkownika',
+	'user_rights_set' => '<b>Uprawnienia użytkownika "$1" zostały zmienione</b>',
+	'set_rights_fail' => '<b>Uprawnienia użytkownika "$1" nie zostały zmienione. (Czy wprowadziłeś poprawną nazwę użytkownika?)</b>',
+	'makesysop' => 'Przyznaj użytkownikowi uprawnienia administratora',
+	'already_sysop' => 'Ten użytkownik jest już administratorem',
+	'already_bureaucrat' => 'Ten użytkownik jest już biurokratą',
+	'makesysop-nodatabase' => 'Niewłaściwa nazwa użytkownika w interwiki: $1',
+	'group-steward' => 'Zarządcy',
+	'group-steward-member' => 'Zarządca',
+	'grouppage-steward' => '{{ns:project}}:Stewardzi',
 ),
+
 'pms' => array(
 	'makesysoptitle' => 'Deje a n\'utent la qualìfica da aministrator',
 	'makesysoptext' => 'Sta domanda-sì a la dòvro ij mangiapapé për deje a n\'utent normal la qualìfica da aministrator. Che a scriva lë stranòm dl\'utent che a veul fé aministrator e peuj che a sgnaca ël boton për deje la qualìfica.',
@@ -843,6 +907,7 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'group-steward-member' => 'Controlor',
 	'grouppage-steward' => '{{ns:project}}:Controlor',
 ),
+
 'pt' => array(
 	'makesysoptitle'       => 'Tornar um utilizador num administrador',
 	'makesysoptext'        => 'Este formulário é utilizado por burocratas para tornar utilizadores comuns em administradores. Introduza o nome do utilizador na caixa e clique no botão para tornar o utilizador num administrador.',
@@ -864,9 +929,11 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
 ),
+
 'rmy' => array(
 	'rights'               => 'Chachimata (xakaya):',
 ),
+
 'ro' => array(
 	'makesysoptitle' => 'Acordarea permisiunilor de administrator',
 	'makesysoptext' => 'Acest formular este utilizat de birocraţi pentru a transforma utilizatori în administratori. 
@@ -888,6 +955,7 @@ Tastează numele utilizatorului în cutie şi apasă butonul pentru a face din u
 	'group-steward' => 'Stewarzi',
 	'grouppage-steward' => '{{ns:project}}:Stewarzi',
 ),
+
 'ru' => array(
 
 	'makesysoptitle'       => 'Сделать пользователя администратором',
@@ -909,10 +977,12 @@ Tastează numele utilizatorului în cutie şi apasă butonul pentru a face din u
 	'group-steward-member' => 'стюард',
 	'grouppage-steward'    => '{{ns:project}}:Стюарды',
 ),
+
 'sd' => array(
 	'already_sysop' => 'ھيءُ يُوزر اڳي ئي منتظم آھي.',
 	'already_bureaucrat' => 'ھي يوزر اڳي ئي ڪامورو آھي.',
 ),
+
 'sk' => array(
 	'makesysoptitle' => 'Urob z používateľa správcu',
 	'makesysoptext' => 'Tento formulár je používaný byrokratmi na udelenie stavu správca používateľom. 
@@ -934,6 +1004,7 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'group-steward' => 'Stewardi',
 	'grouppage-steward' => '{{ns:project}}:Stewardi',
 ),
+
 'sl' => array(
 	'makesysoptitle'       => 'Povišaj uporabnika v administratorja',
 	'makesysoptext'        => 'Obrazec uporabljajo birokrati za povišanje navadnih uporabnikov v administratorje. Da izbranega uporabnika povišate, vpišite njegovo ime v okence in pritisnite gumb.',
@@ -954,6 +1025,7 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'group-steward-member' => 'Upravnik',
 	'grouppage-steward'    => '{{ns:project}}:Upravniki',
 ),
+
 'sq' => array(
 	'makesysoptitle'       => 'Jepini privilegjin e titullit administrues',
 	'makesysoptext'        => "Ky formular përdoret për tu dhënë titullin [[{{SITENAME}}:Administruesit|administrues]] një përdoruesi të thjeshtë. Kini kujdes, mbasi të jetë dhënë, vetëm një ''zhvillues'' mund t'ia heqi këtë titull një administruesi.",
@@ -974,6 +1046,7 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'group-steward-member' => 'Përgjegjës',
 	'grouppage-steward'    => '{{ns:project}}:Përgjegjës',
 ),
+
 'sr-ec' => array(
 	'makesysoptitle' => 'Претворите корисника у администратора',
 	'makesysoptext' => 'Овај формулар се користи од стране бирократа да се обични корисници претворе у администраторе. Унесите име корисника у кутију и притисните дугме да би корисник постао администратор',
@@ -994,6 +1067,7 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'group-steward-member' => 'Стјуард',
 	'grouppage-steward' => '{{ns:project}}:стјуарди',
 ),
+
 'sr-el' => array(
 	'makesysoptitle'       => 'Pretvorite korisnika u administratora',
 	'makesysoptext'        => 'Ovaj formular se koristi od strane birokrata da se obični korisnici pretvore u administratore. Unesite ime korisnika u kutiju i pritisnite dugme da bi korisnik postao administrator',
@@ -1014,6 +1088,7 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'group-steward-member' => 'stjuard',
 	'grouppage-steward'    => '{{ns:project}}:stjuardi',
 ),
+
 'su' => array(
 	'makesysoptitle' => 'Ngangkat pamaké jadi kuncén',
 	'makesysoptext' => 'Formulir ieu dipaké ku birokrat pikeun ngangkat pamaké biasa jadi kuncén. Ketik ngaran pamaké na kotak, terus pencét tombol pikeun ngangkat pamaké jadi kuncén.',
@@ -1033,6 +1108,7 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'makesysop-nodatabase' => 'Ngaran pamaké interwiki salah: $1',
 	'grouppage-steward' => '{{ns:project}}:Steward',
 ),
+
 'sv' => array(
 	'makesysoptitle'       => 'Gör en användare till administratör',
 	'makesysoptext'        => 'Det här formuläret används av byråkrater för att göra vanliga användare till administratörer. Skriv användarens namn i rutan och tryck på knappen för att göra användaren till administratör',
@@ -1054,6 +1130,7 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewarder',
 ),
+
 'te' => array(
 	'already_bureaucrat'   => 'ఈ సభ్యుడు ఇప్పటికే అధికారి',
 	'already_sysop'        => 'ఈ సభ్యుడు ఇప్పటికే నిర్వాహకుడు',
@@ -1064,8 +1141,8 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'makesysopsubmit'      => 'ఈ సభ్యుని నిర్వాహకుడిని చెయ్యి',
 	'makesysoptext'        => 'మామూలు సభ్యులను నిర్వాహకులు చెయ్యడానికి అధికారులు ఈ ఫారంను వాడతారు. దీని కొరకు సభ్యుని పేరు పెట్టెలో టైపు చేసి, మీట నొక్కండి.',
 	'rights'               => 'హక్కులు:',
-
 ),
+
 'tet' => array(
 	'makesysoptitle' => 'Fó kuana administradór',
 	'makesysoptext' => 'Burokrata bele uza pájina ne\'e ba fó kuana administradó ba uza-na\'in ida.',
@@ -1084,12 +1161,14 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'group-steward-member' => 'Steward',#identical but defined
 	'grouppage-steward' => '{{ns:project}}:Steward sira',
 ),
+
 'tr' => array(
 	'already_bureaucrat'   => 'Bu kullanıcı zaten bürokrat',
 	'already_sysop'        => 'Bu kullanıcı zaten yönetici',
 	'rights'               => 'Haklar:',
 	'user_rights_set'      => '<b>"$1" için kullanıcı hakları güncellendi</b>',
 ),
+
 'tt' => array(
 	'makesysoptitle'	=> 'Äğzäne idäräçe itep quyu',
 	'makesysopname'		=> 'Bu äğzäne:',
@@ -1101,9 +1180,11 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'user_rights_set'	=> '<b>«$1» atlı äğzä xoquqı yañartıldı</b>',
 	'makesysop'		=> 'Äğzäne idäräçe itep quyu',
 ),
+
 'tyv' => array(
 	'makesysopname'		=> 'Ажыглакчыниң ады:',
 ),
+
 'uk' => array(
 	'makesysoptitle'       => 'Надати користувачу права адміністратора (sysop)',
 	'makesysoptext'        => "Ця форма призначена для бюрократів й дозволяє надавати користувачам статус адміністратора.
@@ -1123,6 +1204,7 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'group-steward'        => 'Стюарди',
 	'group-steward-member' => 'стюард',
 ),
+
 'ur' => array(
 	'makesysoptitle'       => 'صارف کو منتظم بنائیں',
 	'makesysopname'        => 'صارف کا نام:',
@@ -1132,6 +1214,7 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'makesysop'            => 'صارف کو منتظم بنائیں',
 	'already_sysop'        => 'یہ صارف پہلے ہی منتظم ہے',
 ),
+
 'vec' => array(
 	'makesysoptitle'       => 'Rendi aministradore un utente',
 	'makesysoptext'        => 'Sto form xè usà dai burocrati par far diventare amistradori i utenti normali. Scrivi el nome de l\'utente ne la caseła e struca el botón par far diventare aministradore un utente.',
@@ -1145,6 +1228,7 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'already_sysop'        => 'Sto utente l\'è xà un aministradór',
 	'already_bureaucrat'   => 'Sto utente l\'è xà un burocrate',
 ),
+
 'vi' => array(
 	'makesysoptitle'       => 'Phong một thành viên làm quản lý',
 	'makesysoptext'        => 'Mẫu này được các tổng quản lý dùng để phong các thành viên bình thường thành người quản lý. Hãy gõ tên của thành viên cần phong quyền quản lý vào ô này và nhấn nút.',
@@ -1161,6 +1245,7 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'already_sysop'        => 'Người này đã là quản lý',
 	'already_bureaucrat'   => 'Người này đã là tổng quản lý',
 ),
+
 'wa' => array(
 	'makesysoptitle' => 'Diner a èn uzeu on livea di manaedjeu',
 	'makesysoptext' => 'Cisse pådje ci c\'&nbsp;est po les mwaisses-manaedjeus («burocrates») poleur hôssî l\'&nbsp;livea d\'&nbsp;èn uzeu do livea d\'&nbsp;simpe uzeu eredjîstré, å ci d\'&nbsp;manaedjeu. Tapez l\'&nbsp;no d\'&nbsp;l\'&nbsp;uzeu dins l\'&nbsp;boesse di tecse poy clitchîz sol boton po ndè fé on manaedjeu.',
@@ -1179,6 +1264,7 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'group-steward' => 'Mwaisse-manaedjeus tot avå',
 	'group-steward-member' => 'mwaisse-manaedjeu tot avå',
 ),
+
 'yue' => array(
 	'makesysoptitle'       => '整一位用戶做操作員',
 	'makesysoptext'        => '呢一個表格係畀事務員用嘅，去轉普通嘅用戶到管理員。
@@ -1201,6 +1287,7 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'group-steward-member' => '執行員',
 	'grouppage-steward'    => '{{ns:project}}:執行員',
 ),
+
 'zh-classical' => array(
 	'makesysoptitle'       => '封有秩',
 	'makesysopname'        => '簿名：',
@@ -1211,6 +1298,7 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'already_sysop'        => '早封有秩矣',
 	'already_bureaucrat'   => '早封門下矣',
 ),
+
 'zh-hans' => array(
 	'makesysoptitle'       => '将用户设置为操作员',
 	'makesysoptext'        => '这个由行政管理员使用的表单可以将普通用户变为管理员。在输入框中输入用户名并点击按钮就可以将用户设置为管理员。',
@@ -1232,6 +1320,7 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'group-steward-member' => '监管员',
 	'grouppage-steward'    => '{{ns:project}}:监管员',
 ),
+
 'zh-hant' => array(
 	'makesysoptitle'       => '將用戶設置為操作員',
 	'makesysoptext'        => '這個由行政管理員使用的表單可以將普通用戶變為管理員。在輸入框中輸入用戶名並點擊按鈕就可以將用戶設置為管理員。',
@@ -1253,6 +1342,7 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'group-steward-member' => '監管員',
 	'grouppage-steward'    => '{{ns:project}}:監管員',
 ),
+
 'zh-tw' => array(
 	'rights'               => '許可權：',
 	'set_user_rights'      => '設定用戶許可權',

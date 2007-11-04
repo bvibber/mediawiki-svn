@@ -39,9 +39,10 @@ $wgLuceneSearchMessages['af'] = array(
 	'searchdidyoumean'      => 'Het u "<a href="$1">$2</a>" bedoel?',
 	'searchnoresults'       => 'Jammer, daar was niks wat u navraag presies pas nie.',
 	'searchnearmatches'     => '<b>Hierdie bladsye het titels soortgelyk aan u navraag:</b>',
-	'lucenepowersearchtext' => "Soek in naamruimtes:\n
-$1\n
-Soek vir $3 $9 $10",
+	'lucenepowersearchtext' => 'Soek in naamruimtes:
+<br />
+$1
+<br />Soek vir $3 $9',
 );
 
 $wgLuceneSearchMessages['ar'] = array(

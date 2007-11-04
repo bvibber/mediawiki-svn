@@ -87,6 +87,10 @@ You will be redirected to this external server in 20 seconds. [$1 Click here] to
 A security warning about an unsigned certificate may be displayed.',
 );
 
+$wgBoardVoteMessages['af'] = array(
+	'boardvote'               => 'Wikimedia-Trusteeraadverkiesing',
+);
+
 $wgBoardVoteMessages['ang'] = array(
 	'boardvote_user'          => 'Brūcend',
 );

@@ -22,6 +22,10 @@ It does this by calling the relevant parser stage from MediaWiki itself.',
 	'expand_templates_preview'         => 'Preview',
 );
 
+$wgExpandTemplatesMessages['af'] = array(
+	'expandtemplates'                  => 'Brei sjablone uit',
+);
+
 $wgExpandTemplatesMessages['ar'] = array(
 	'expandtemplates'                  => 'فرد القوالب',
 	'expand_templates_intro'           => 'تتعامل هذه الصفحة الخاصة مع نصوص الويكي وتقوم بفرد كل القوالب الموجودة به. وتقوم أيضا بفرد دوال القوالب مثل <nowiki>{{</nowiki>#if:...}}, و المتغيرات مثل <nowiki>{{</nowiki>يوم}}-- و تقوم التعامل مع كل ما بين الأقواس المزدوجة. و تقوم بفعل هذا عن طريق استدعاء المعالج المناسب من الميدياويكي.',

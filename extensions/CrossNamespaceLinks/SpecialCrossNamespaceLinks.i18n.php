@@ -12,6 +12,9 @@ $wgCrossNamespaceLinksMessages['en'] = array(
 	'crossnamespacelinks-summary' => 'This page provides a list of links from a page in the main namespace to a page in other namespaces (except for {{ns:special}}, {{ns:talk}}, {{ns:project}} and {{ns:template}} namespaces), which are not advisable to use.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|link|links}} to $3'
 );
+$wgCrossNamespaceLinksMessages['af'] = array(
+	'crossnamespacelinks'         => 'Skakels oor naamruimtes',
+);
 /* Arabic (Meno25) */
 $wgCrossNamespaceLinksMessages['ar'] = array(
 	'crossnamespacelinks'         => 'وصلات من نطاقات مختلفة',
