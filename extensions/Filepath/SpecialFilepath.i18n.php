@@ -73,10 +73,10 @@ $wgFilepathMessages['fo'] = array(
 	'filepath_page'   => 'Fíla:',
 );
 $wgFilepathMessages['fr'] = array(
-	'filepath'        => 'Chemin d’un fichier',
+	'filepath'        => 'Chemin d\'accès d’un fichier',
 	'filepath_page'   => 'Fichier :',
-	'filepath_submit' => 'Chemin',
-	'filepath-summary' => 'Cette page spéciale donne le chemin complet d’un fichier ; les images sont montrées en haute résolution, les fichiers audio et vidéo s’exécutent avec leur programme associé.
+	'filepath_submit' => 'Chemin d\'accès',
+	'filepath-summary' => 'Cette page affiche le chemin d\'accès complet d’un fichier ; les images sont montrées en haute résolution, les fichiers audio et vidéo s’exécutent avec leur programme associé.
 
 Entrez le nom du fichier sans le préfixe « {{ns:image}}: »',
 );

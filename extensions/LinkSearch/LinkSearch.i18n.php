@@ -65,13 +65,13 @@ $wgLinkSearchMessages['fo'] = array(
 );
 
 $wgLinkSearchMessages['fr'] = array(
-	'linksearch'	   => 'Rechercher des liens internet',
+	'linksearch'       => 'Rechercher des liens Internet',
 	'linksearch-pat'   => 'Rechercher l’expression :',
 	'linksearch-ns'    => 'Espace de noms :',
 	'linksearch-ok'    => 'Rechercher',
 	'linksearch-text'  => 'Cette page spéciale permet de rechercher les pages dans lesquelles un lien externe apparaît.<br />Des caractères « joker » peuvent être utilisés, par exemple <code>*.wikipedia.org</code>.',
 	'linksearch-line'  => '$1 avec un lien à partir de $2',
-	'linksearch-error' => 'Les caractères « joker » ne peuvent être utilisés qu’au début du nom de domaine.'
+	'linksearch-error' => 'Les caractères « joker » ne peuvent être utilisés qu’au début du nom de domaine.',
 );
 $wgLinkSearchMessages['gl'] = array(
 	'linksearch'       => 'Buscar ligazóns web',

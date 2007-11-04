@@ -18,9 +18,9 @@ $wgMathStatFunctionsMessages['ar'] = array(
 	'msfunc_div_zero' => 'القسمة على صفر',
 );
 $wgMathStatFunctionsMessages['fr'] = array(
-        'msfunc_nan' => "Le résultat n’est pas un nombre" ,
-        'msfunc_inf' => "Le résultat est l’infini" ,
-        'msfunc_div_zero' => "Division par zéro",
+	'msfunc_nan' => 'Le résultat n’est pas un nombre.',
+	'msfunc_inf' => 'Le résultat est l’infini.',
+	'msfunc_div_zero' => 'Division par zéro',
 );
 $wgMathStatFunctionsMessages['hsb'] = array(
 	'msfunc_nan' => 'Wuslědk ličba njeje.',

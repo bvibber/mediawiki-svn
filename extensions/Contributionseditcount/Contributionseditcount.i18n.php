@@ -37,7 +37,7 @@ function efContributionseditcountMessages()  {
 ),
 
 'fr' => array(
-	'contributionseditcount'  =>  'Cet utilisateur a $1 éditions.',
+	'contributionseditcount' => 'Cet utilisateur a {{PLURAL:$1|$1 édition|$1 éditions}}.',
 ),
 
 'gl' => array(

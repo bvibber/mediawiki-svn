@@ -58,6 +58,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Edellinen ($1)',
 ),
 
+'fr' => array(
+	'backforth-next' => 'Suivant ($1)',
+	'backforth-prev' => 'Précédent ($1)',
+),
+
 'frp' => array(
 	'backforth-next' => 'Siuvent ($1)',
 	'backforth-prev' => 'Prècèdent ($1)',

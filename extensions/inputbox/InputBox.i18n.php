@@ -140,11 +140,11 @@ function efInputBoxMessages() {
 ),
 
 'fr' => array(
-	'inputbox-error-no-type'  => 'Vous n’avez pas précisé le type de la boîte d’entrée à créer',
-	'inputbox-error-bad-type' => 'Type de boîte entrée $1 non reconnue. Indiquez les options "create", "comment" "search" ou "searche2".',
-	'tryexact'       => 'Essayez la correspondance exacte',
-	'searchfulltext' => 'Recherche en texte intégral',
-	'createarticle'  => 'Créer l’article',
+	'inputbox-error-no-type'  => 'Vous n’avez pas précisé le type de la boîte d’entrée à créer.',
+	'inputbox-error-bad-type' => 'Type de boîte entrée $1 non reconnue. Indiquez l\'option \'\'create\'\', \'\'comment\'\', \'\'search\'\' ou \'\'searche2\'\'.',
+	'tryexact'                => 'Essayez la correspondance exacte.',
+	'searchfulltext'          => 'Recherche en texte intégral',
+	'createarticle'           => 'Créer l’article',
 ),
 
 'fur' => array(

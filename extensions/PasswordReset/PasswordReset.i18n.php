@@ -34,6 +34,19 @@ $allMessages = array(
 		'passwordreset' => 'Passwort zurücksetzen',
 	),
 
+	'fr' => array(
+		'passwordreset' => 'Remise à zéro du mot de passe',
+		'passwordreset-invalidusername' => 'Nom d\'usager inconnu',
+		'passwordreset-emptyusername' => 'Nom d\'usager vide',
+		'passwordreset-nopassmatch' => 'Les mots de passe que vous avez saisis ne sont pas identiques.',
+		'passwordreset-badtoken' => 'Token de modification inconnu',
+		'passwordreset-username' => 'Nom d\'usager',
+		'passwordreset-newpass' => 'Nouveau mot de passe',
+		'passwordreset-confirmpass' => 'Confirmez le mot de passe',
+		'passwordreset-submit' => 'Remise à zéro du mot de passe',
+		'passwordreset-success' => 'Le mot de passe a été remis à zréo pour le \'\'user_id\'\' $1.',
+	),
+
 	'hsb' => array(
 		'passwordreset' => 'Hesło wróćo stajić',
 		'passwordreset-invalidusername' => 'Njepłaćiwe wužiwarske mjeno',

@@ -140,6 +140,22 @@ $wgChemFunctions_Messages['de'] = array(
 	'ChemFunctions_ChemFormInputError' => 'Chemform: Eingabe Fehler!'
 );
 
+$wgChemFunctions_Messages['fr'] = array(
+	'chemicalsources' => 'Sources pour la chimie',
+	'ChemFunctions_ListPage' => 'Sources pour la chimie',
+	'ChemFunctions_DataList' => 'Suit une liste de liens vers des sites qui peuvent apporter des informations à propos des substances chimiques que vous recherchez.
+
+* [http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI Composé $MIXCASNameFormula], NIST
+* [http://ptcl.chem.ox.ac.uk/MSDS/ MSDS], Université d\'Oxford',
+	'ChemFunctions_CAS' => 'Numéro CAS',
+	'ChemFunctions_EINECS' => 'Numéro EINECS',
+	'ChemFunctions_CHEBI' => 'ChEBI',
+	'ChemFunctions_ATCCode' => 'Code ATC',
+	'ChemFunctions_Formula' => 'Formule',
+	'ChemFunctions_Name' => 'Nom UICPA',
+	'ChemFunctions_ChemFormInputError' => 'Chemform, intrant erroné!',
+);
+
 $wgChemFunctions_Messages['gl'] = array(
 	'chemicalsources' => 'Fontes químicas',
 );

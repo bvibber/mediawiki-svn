@@ -73,13 +73,13 @@ $wgDesysopMessages['ext'] = array(
 );
 $wgDesysopMessages['fr'] = array(
 	'desysoptitle'         => 'Enlever les droits d’administrateur à cet utilisateur',
-	'desysoptext'          => "Ce formulaire est utilisé par les bureaucrates pour enlever ses droits à un administrateur. Entrez le nom d’un administrateur ci-dessous et pressez le bouton pour enlever les droits.",
+	'desysoptext'          => 'Ce formulaire est utilisé par les bureaucrates pour enlever ses droits à un administrateur. Entrez le nom d’un administrateur ci-dessous et pressez le bouton pour enlever les droits.',
 	'desysopname'          => 'Nom de l’utilisateur :',
-	'desysopok'            => "<b>L’utilisateur « $1 » n’est plus administrateur</b>",
+	'desysopok'            => '\'\'\'L’utilisateur « $1 » n’est plus administrateur.\'\'\'',
 	'desysopsetrights'     => 'Appliquer les droits utilisateur',
-	'desysoprightsfail'    => "<b>Les droits utilisateur n’ont pas pu être mis à jour pour « $1 ». (Vérifiez que le nom est correct)</b>",
+	'desysoprightsfail'    => '\'\'\'Les droits utilisateur n’ont pas pu être mis à jour pour « $1 » (vérifiez que le nom est correct).\'\'\'',
 	'desysop'              => 'Enlever les droits d’administrateur',
-	'desysopnot_sysop'     => 'Cet utilisateur n’est pas un administrateur',
+	'desysopnot_sysop'     => 'Cet utilisateur n’est pas un administrateur.',
 );
 $wgDesysopMessages['gl'] = array(
 	'desysoptitle'         => 'Retirarlle o acceso como administrador a un usuario',
