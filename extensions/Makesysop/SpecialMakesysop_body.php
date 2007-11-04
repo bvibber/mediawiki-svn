@@ -97,7 +97,7 @@ class MakesysopForm {
 				<td align='left'>" . Xml::input( 'wpMakesysopUser', 40, $encUser ) . "</td>
 			</tr><tr>
 				<td align='right'>$reason</td>
-				<td align='left'>" . Xml::input( 'wpMakesysopReason', 40, $this->mReason ) . "</td>
+				<td align='left'>" . Xml::input( 'wpMakesysopReason', 40, $this->mReason, array( 'maxlength' => 255 ) ) . "</td>
 			</tr><tr>
 				<td>&nbsp;</td>
 				<td align='left'>" . Xml::checkLabel( $makebureaucrat, 'wpSetBureaucrat', 'wpSetBureaucrat', $this->mSetBureaucrat ) . "</td>
