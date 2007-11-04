@@ -127,7 +127,7 @@ sphinx|Sphinx",
 
 'gl' => array(
 	'vote' => 'Votación',
-	'vote-header' => 'Pode votar polo \'\'\'Amo Supremo do Mundo\'\'\' aquí!',
+	'vote-header' => 'Pode votar aquí polo \'\'\'Mellor Candidato do Mundo\'\'\'!',
 	'vote-current' => 'O seu voto actual é para \'\'\'$1\'\'\'.',
 	'vote-legend' => 'Votar ou modificar o voto',
 	'vote-caption' => 'A súa escolla:',

@@ -84,6 +84,18 @@ on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|
 	),
 	'gl' => array(
 		'createsigndocument' => 'Habilitar a Sinatura de Documentos',
+		'createsigndoc-head' => 'Empregue este formulario para crear unha páxina "Asinar Documento" para o artigo relacionado, de tal
+xeito que os usuarios o poidan asinar mediante [[Special:SignDocument]]. Especifique o nome
+do artigo no que quere activar a sinatura dixital, os membros de que grupo de usuariores poden
+asinalo, que campos lles resultan visíbeis aos usuarios e cales han de ser optativos, a idade
+mínima que se lles esixe aos usuarios para asinar o documento (sen mínimo se se omitir) e un
+texto introdutorio breve que describa o documento e lles dea instrucións aos usuarios.
+
+<b>Actualmente non resulta posíbel eliminar ou modificar os documentos de sinatura unha vez que sexan
+creados</b> sen acceso directo á base de datos. Ademais, o texto do artigo que se mostra na páxina de
+sinaturas será o texto \'\'actual\'\' da páxina, independentemente das modificacións que se lle fagan despois
+de hoxe. Asegúrese ben de que o documento está en situación de estabilidade antes de asinalo e asegúrese
+tamén de que especifica todos os campos exactamente como han de ser \'\'antes de enviar este formulario\'\'.',
 		'createsigndoc-pagename' => 'Páxina:',
 		'createsigndoc-allowedgroup' => 'Grupo permitido:',
 		'createsigndoc-email' => 'Enderezo electrónico:',

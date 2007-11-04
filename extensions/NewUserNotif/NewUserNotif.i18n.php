@@ -16,8 +16,8 @@ function efNewUserNotifMessages() {
 ),
 
 'ar' => array(
-'newusernotifsubj' => 'إخطار مستخدم جديد ل$1',
-'newusernotifbody' => 'مرحبا يا $1،
+	'newusernotifsubj' => 'إخطار مستخدم جديد ل$1',
+	'newusernotifbody' => 'مرحبا يا $1،
 
 حساب مستخدم جديد، $2، تم إنشاؤه على $3 في $4.',
 ),
@@ -32,42 +32,51 @@ function efNewUserNotifMessages() {
 	'newusernotifbody' => "Bonjour $1,\n\nUn nouveau compte utilisateur, $2, a été créé sur $3 le $4.",
 ),
 
+'gl' => array(
+	'newusernotifsubj' => 'Notificación de novo usuario para $1',
+	'newusernotifbody' => 'Ola $1,
+
+Unha nova conta de usuario, $2, foi creada sobre $3 en $4.',
+),
+
 'hsb' => array(
-'newusernotifsubj' => 'Zdźělenka za noweho wužiwarja $1',
-'newusernotifbody' => 'Witaj $1,
+	'newusernotifsubj' => 'Zdźělenka za noweho wužiwarja $1',
+	'newusernotifbody' => 'Witaj $1,
 
 Nowe wužiwarske konto, $2, bu dnja $4 na $3 wutworjene.',
 ),
 
 'hy' => array(
-'newusernotifsubj' => 'Նոր Մասնակցի Տեղեկացում $1 մասնակցի համար',
-'newusernotifbody' => 'Ողջո՜ւյն, $1։
+	'newusernotifsubj' => 'Նոր Մասնակցի Տեղեկացում $1 մասնակցի համար',
+	'newusernotifbody' => 'Ողջո՜ւյն, $1։
 
 $3 կայքում ստեղծվել է նոր մասնակցային հաշիվ՝ $2, $4-ին։',
 ),
 
 'nl' => array(
-	'newusernotifsubj' => 'Notificatie nieuwe gebruiker voor  $1',
-	'newusernotifbody' => "Hallo $1.\n\nEr is een nieuwe gebruiker $2 aangemaakt om $3 op $4.",
+'newusernotifsubj' => 'Melding van een nieuwe gebruiker op $1',
+'newusernotifbody' => 'Hallo $1.
+
+Er is een nieuwe gebruiker $2 aangemaakt om $3 op $4.',
 ),
 
 'no' => array(
-'newusernotifsubj' => 'Beskjed om ny bruker for $1',
-'newusernotifbody' => 'Hei, $1. En ny brukerkonto, $2, ble opprettet på $3 $4.',
+	'newusernotifsubj' => 'Beskjed om ny bruker for $1',
+	'newusernotifbody' => 'Hei, $1. En ny brukerkonto, $2, ble opprettet på $3 $4.',
 ),
 
 'pl' => array(
-'newusernotifsubj' => 'Powiadamianie użytkownika $1 o nowych użytkownikach',
+	'newusernotifsubj' => 'Powiadamianie użytkownika $1 o nowych użytkownikach',
 ),
 
 'pms' => array(
-'newusernotifsubj' => 'Notìfica d\'utent neuv për $1',
-'newusernotifbody' => 'Bondì $1, un neuv utent, $2, a l\'é stait creà ansima a $3 dël $4.',
+	'newusernotifsubj' => 'Notìfica d\'utent neuv për $1',
+	'newusernotifbody' => 'Bondì $1, un neuv utent, $2, a l\'é stait creà ansima a $3 dël $4.',
 ),
 
 'tet' => array(
-'newusernotifsubj' => 'Mensajen kona-ba uza-na\'in foun ba $1',
-'newusernotifbody' => 'Olá $1,\n\nuza-na\'in foun, $2, registrar tiha iha $3 iha loron $4.',
+	'newusernotifsubj' => 'Mensajen kona-ba uza-na\'in foun ba $1',
+	'newusernotifbody' => 'Olá $1,\n\nuza-na\'in foun, $2, registrar tiha iha $3 iha loron $4.',
 ),
 
 'yue' => array(

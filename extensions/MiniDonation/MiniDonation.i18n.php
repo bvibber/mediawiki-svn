@@ -28,6 +28,9 @@ $wgMiniDonationMessages['fi'] = array(
 $wgMiniDonationMessages['fr'] = array(
 	'donationform-submit' => 'Faire un don avec PayPal',
 );
+$wgMiniDonationMessages['gl'] = array(
+	'donationform-submit' => 'Doar mediante PayPal',
+);
 $wgMiniDonationMessages['he'] = array(
 	'donationform-submit' => 'תרומה באמצעות PayPal',
 );

@@ -87,6 +87,11 @@ $wgAjaxShowEditorsMessages['id'] = array(
 	'ajax-se-pending' => 'pemuatan ulang ditunda ... (klik kotak ini atau mulai menyunting)',
 	'ajax-se-idling'  => '($1d lalu)',
 );
+$wgAjaxShowEditorsMessages['is'] = array(
+	'ajax-se-title' => 'Breyti:',
+	'ajax-se-pending' => 'beðið er eftir glæðingu ... (smelltu á þennan kassa eða breyttu efninu)',
+	'ajax-se-idling' => '(fyrir $1 sekúndum)',
+);
 $wgAjaxShowEditorsMessages['it'] = array(
 	'ajax-se-title' => 'Modifica in corso:',
 	'ajax-se-pending' => 'in attesa di aggiornamento ... (fare clic su questa casella o iniziare la modifica)',

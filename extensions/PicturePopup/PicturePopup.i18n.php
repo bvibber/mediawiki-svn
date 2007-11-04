@@ -42,6 +42,13 @@ function efPicturePopupMessages() {
 	'picturepopup_invalid_icon' => 'Le modèle de licence n’a pas d’élément « imageLicenseIcon » ou est invalide.',
 ),
 
+'gl' => array(
+	'picturepopup_invalid_title' => 'Título de imaxe non válido',
+	'picturepopup_no_license' => 'A imaxe non conta cunha etiqueta de licenza',
+	'picturepopup_no_image' => 'A imaxe non existe',
+	'picturepopup_no_license_list' => 'A listaxe de licenza non é válida ou falta',
+),
+
 'hsb' => array(
 	'picturepopup_invalid_title' => 'Njepłaciwy wobrazowy titul',
 	'picturepopup_no_license' => 'Wobraz licencny etiket nima',

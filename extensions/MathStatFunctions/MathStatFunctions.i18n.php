@@ -22,6 +22,11 @@ $wgMathStatFunctionsMessages['fr'] = array(
 	'msfunc_inf' => 'Le résultat est l’infini.',
 	'msfunc_div_zero' => 'Division par zéro',
 );
+$wgMathStatFunctionsMessages['gl'] = array(
+	'msfunc_nan' => 'O valor resultante non é un número',
+	'msfunc_inf' => 'O valor resultante é infinito',
+	'msfunc_div_zero' => 'División por cero',
+);
 $wgMathStatFunctionsMessages['hsb'] = array(
 	'msfunc_nan' => 'Wuslědk ličba njeje.',
 	'msfunc_inf' => 'Wuslědk je njekónčna hódnota.',

@@ -36,6 +36,31 @@ function efCommentSpammerMessages() {
 	'cspammer-log-page' => 'Journal du créateur de pourriels',
 ),
 
+'gl' => array(
+	'commentspammer-save-blocked' => 'O seu enderezo IP é sospeitoso de facer comentarios spam - gardar bloqueados. Cree unha conta para evitalo.',
+	'commentspammer-log-msg' => 'editar de [[Special:Contributions/$1|$1]] a [[$2]].',
+	'commentspammer-log-msg-info' => 'Último correo spam $1 {{PLURAL:$1|día|días}} atrás, nivel de ameaza é de $2, e código de delito é de $3. 
+[http://www.projecthoneypot.org/search_ip.php?ip=$4 ver detalles], ou [[Special:Blockip/$4|bloqueo]].',
+	'cspammerlogpagetext' => 'Historial das edicións que se permitiron ou denegaron sobre a base de si a fonte foi un coñecido comentario spam.',
+	'cspammer-log-page' => 'Rexistro dos comentarios Spam',
+),
+
+'hsb' => array(
+	'commentspammer-save-blocked' => 'Twoja IP-adresa je podhladny komentarne spamowar - składowanje zablokowane. Wutwor konto, zo by to wobešoł.',
+	'commentspammer-log-msg' => 'změna wot [[Special:Contributions/$1|$1]] k [[$2]]',
+	'commentspammer-log-msg-info' => 'Posledni spam před $1 {{PLURAL:$1|dnjom|dnjomaj|dnjemi|dnjemi}}, stopjeń hroženja je $2 a nadpadowy kod je $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Hlej podrobnosće] abo [[Special:Blockip/$4|blokowanje]].',
+	'cspammerlogpagetext' => 'Datowa sadźba změnow, kotrež buchu dowolene abo wotpokazane, po tym hač žórło je znaty spamowar abo nic.',
+	'cspammer-log-page' => 'Protokol komentarnych spamowarjow',
+),
+
+'nl' => array(
+	'commentspammer-save-blocked' => 'Uw IP-adres wordt verdacht van spammen - opslaan is geweigerd. Maak een gebruiker aan om dit te voorkomen.',
+	'commentspammer-log-msg' => 'bewerking van [[Special:Contributions/$1|$1]] aan [[$2]].',
+	'commentspammer-log-msg-info' => 'Spamde voor het laatst $1 {{PLURAL:$1|dag|dagen}} geleden. Dreigingsniveau is $2 en de overtredingscode is $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Details bekijken] of [[Special:Blockip/$4|blokkeren]].',
+	'cspammerlogpagetext' => 'Logboek met bewerkingen die toegestaan of geweigerd zijn omdat de bron een bekende spammer was.',
+	'cspammer-log-page' => 'Spamlogboek',
+),
+
         );
 
         return $messages;

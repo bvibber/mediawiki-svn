@@ -158,6 +158,8 @@ function efInputBoxMessages() {
 ),
 
 'gl' => array(
+	'inputbox-error-no-type'  => 'Non se especificou o tipo de caixa de entrada para crear.',
+	'inputbox-error-bad-type' => 'A caixa de entrada de tipo "$1" non se recoñece. Especifique "crear", "comentario", "procurar" ou "procurar2".',
 	'tryexact'                => 'Tentar coincidencias exactas',
 	'searchfulltext'          => 'Buscar o texto completo',
 	'createarticle'           => 'Crear artigo',
@@ -323,9 +325,9 @@ function efInputBoxMessages() {
 'nl' => array(
 	'inputbox-error-no-type'  => 'U heeft het type inputbox niet aangegeven. Zie [http://www.mediawiki.org/wiki/Extension:Inputbox MediaWiki.org] voor meer informatie.',
 	'inputbox-error-bad-type' => 'Inputbox-type "$1" niet herkend. Gebruik "create", "comment", "search" of "search2".',
-	'tryexact'                => 'Zoek op exacte overeenkomst',
+	'tryexact'                => 'Zoeken op exacte overeenkomst',
 	'searchfulltext'          => 'Volledige tekst doorzoeken',
-	'createarticle'           => 'Maak nieuwe pagina',
+	'createarticle'           => 'Nieuwe pagina maken',
 ),
 
 'nn' => array(

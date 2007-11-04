@@ -64,6 +64,11 @@ function efMediaFunctionsMessages() {
 	'mediafunctions-not-exist'     => '« $1 » n\'existe pas.',
 ),
 
+'gl' => array(
+	'mediafunctions-invalid-title' => '"$1" non é un título válido',
+	'mediafunctions-not-exist'     => '"$1" non existe',
+),
+
 'hsb' => array(
 	'mediafunctions-invalid-title' => '"$1" płaćiwe mjeno njeje.',
 	'mediafunctions-not-exist'     => '"1" njeeksistuje',

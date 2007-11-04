@@ -37,6 +37,10 @@ function efMinimumNameLengthMessages() {
 'minnamelength-error' => 'Votre nom d\'utilisateur est trop court (minimum $1).',
 ),
 
+'gl' => array(
+'minnamelength-error' => 'O seu nome de usuario é curto de máis. O tamaño mínimo é $1.',
+),
+
 'hsb' => array(
 'minnamelength-error' => 'Wužiwarske mjeno je překrótke. Minimalna dołhosć je $1 znamješkow.',
 ),

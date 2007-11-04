@@ -170,6 +170,7 @@ $SpecialFormMessages =array(
 		'formtemplatepattern' => '$1',#identical but defined
 		'formtitlepattern' => 'Voeg nieuw $1 toe',
 		'formsave' => 'Opslaan',
+		'formindexmismatch' => 'Dit formulier heeft ongekoppelde naampatronen en sjablonen vanaf index $1.',
 		'formarticleexists' => 'Pagina bestaat al',
 		'formarticleexiststext' => 'De pagina [[$1]] bestaat al.',
 		'formbadpagename' => 'Onjuiste paginanaam',

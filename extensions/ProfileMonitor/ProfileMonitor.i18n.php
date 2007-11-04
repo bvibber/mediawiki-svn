@@ -50,6 +50,11 @@ function efProfileMonitorMessages() {
 	'profiling-no-data' => 'Aucune donnée correspondante trouvée',
 ),
 
+'gl' => array(
+	'profiling-wildcard' => 'Empregar comodín',
+	'profiling-ok' => 'De acordo',
+),
+
 'hsb' => array(
 	'profiling' => 'Profilowanske daty',
 	'profiling-process' => 'Znamjenjowy slěd předźěłać:',
@@ -186,5 +191,4 @@ function efProfileMonitorMessages() {
 	$messages['zh-yue'] = $messages['yue'];
 
 	return $messages;
-
 }

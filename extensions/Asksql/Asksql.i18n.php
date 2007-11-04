@@ -152,6 +152,16 @@ To móže husto serwer sylnišo wobćežić, prošu wužij tuž tutu funkciju zr
 	'querysuccessful' => 'Kueri berhasil',
 ),
 
+'is' => array(
+	'asksql'           => 'SQL-fyrirspurn',
+	'asksqltext'       => 'Notaðu eyðublaðið fyrir neðan til að gera beina fyrirspurn til gagnagrunnsins. Notaðu einfaldar gæsalappir (\'eins og þessar\') til að afmarka strenglesgildi. Þetta getur bætt töluverðugu álagi á vefþjónin, svo notaðu þessa aðgerð sparlega.',
+	'sqlislogged'      => 'Athugið að allar fyrirspurnir eru skráðar.',
+	'sqlquery'         => 'Skrifaðu fyrirspurn',
+	'querybtn'         => 'Sendu fyrirspurnina',
+	'selectonly'       => 'Einungis lestrarfyrirspurnir leyfðar.',
+	'querysuccessful'  => 'Fyrirspurn heppnaðist',
+),
+
 /* Italian (BrokenArrow) */
 'it' => array(
 	'asksql' => 'Query SQL',

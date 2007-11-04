@@ -177,6 +177,7 @@ $wgSiteMatrixMessages['no'] = array(
 );
 $wgSiteMatrixMessages['oc'] = array(
 	'sitematrix' => 'Lista dels wikis Wikimedia',
+	'sitematrix-language' => 'Lenga',
 );
 $wgSiteMatrixMessages['pl'] = array(
 	'sitematrix' => 'Lista projektów Wikimedia',

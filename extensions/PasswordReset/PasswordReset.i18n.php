@@ -47,6 +47,17 @@ $allMessages = array(
 		'passwordreset-success' => 'Le mot de passe a été remis à zréo pour le \'\'user_id\'\' $1.',
 	),
 
+	'gl' => array(
+		'passwordreset-invalidusername' => 'Nome de usuario non válido',
+		'passwordreset-emptyusername' => 'Nome de usuario baleiro',
+		'passwordreset-nopassmatch' => 'Os contrasinais non coinciden',
+		'passwordreset-username' => 'Nome de usuario',
+		'passwordreset-newpass' => 'Contrasinal Novo',
+		'passwordreset-confirmpass' => 'Confirme o Contrasinal',
+		'passwordreset-submit' => 'Limpar o Contrasinal',
+		'passwordreset-success' => 'Limpouse o contrasinal para o id de usuario: $1',
+	),
+
 	'hsb' => array(
 		'passwordreset' => 'Hesło wróćo stajić',
 		'passwordreset-invalidusername' => 'Njepłaćiwe wužiwarske mjeno',

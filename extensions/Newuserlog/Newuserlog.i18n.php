@@ -93,6 +93,9 @@ $wgNewuserlogMessages['fr'] = array(
 );
 $wgNewuserlogMessages['gl'] = array(
 	'newuserlogpage'           => 'Rexistro de usuarios',
+	'newuserlogpagetext'       => 'Este é un rexistro de creación de usuarios',
+	'newuserlog-create-entry'  => 'Novo usuario',
+	'newuserlog-create2-entry' => 'creada conta para $1',
 );
 $wgNewuserlogMessages['hak'] = array(
 	'newuserlogpage'           => 'Sîn-chin yung-fu miàng-chhak',
@@ -196,7 +199,7 @@ $wgNewuserlogMessages['lo'] = array(
 $wgNewuserlogMessages['nl'] = array(
 	'newuserlogpage'           => 'Logboek nieuwe gebruikers',
 	'newuserlogpagetext'       => 'Hieronder staan de nieuw ingeschreven gebruikers',
-	'newuserlog-create-entry'  => 'heeft zich ingeschreven',
+	'newuserlog-create-entry'  => 'Nieuwe gebruiker',
 	'newuserlog-create2-entry' => 'heeft gebruiker $1 ingeschreven',
 );
 $wgNewuserlogMessages['no'] = array(

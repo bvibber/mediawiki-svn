@@ -195,6 +195,10 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 'oversight-header' => 'Ci-dessous, figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges d’Oversight.',
 ),
 
+'gl' => array(
+	'oversight-view' => 'detalles',
+),
+
 /* Hebrew (Rotem Liss) */
 'he' => array(
 'hiderevision' => 'מחיקת גרסאות לצמיתות',
