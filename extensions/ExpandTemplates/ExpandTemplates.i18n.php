@@ -73,6 +73,10 @@ $wgExpandTemplatesMessages['de'] = array(
 	'expand_templates_remove_comments' => 'Kommentare entfernen',
 	'expand_templates_preview'         => 'Vorschau',
 );
+$wgExpandTemplatesMessages['eo'] = array(
+	'expand_templates_remove_comments' => 'Forigu komentojn',
+	'expand_templates_preview'         => 'Antaŭrigardo',
+);
 $wgExpandTemplatesMessages['es'] = array(
 	'expandtemplates'                  => 'Sustituidor de plantillas',
 	'expand_templates_input'           => 'Texto a expandir:',
