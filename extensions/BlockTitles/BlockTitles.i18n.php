@@ -50,7 +50,7 @@ function efBlockTitlesMessages() {
 
 'frp' => array(
 	'block_title_error_page_title' => 'Titro envalido',
-	'block_title_error' => 'Dèsolâ, lo titro de cél articllo est pas ôtorisâ a étre sôvo.',
+	'block_title_error' => 'Dèsolâ, lo titro de cél articllo est pas ôtorisâ a étre sôvâ.',
 ),
 
 'gl' => array(

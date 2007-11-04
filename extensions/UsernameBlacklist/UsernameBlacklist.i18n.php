@@ -74,6 +74,19 @@ function efUsernameBlacklistMessages( $single = false ) {
 'usernameblacklist-invalid-lines' => 'Die {{PLURAL:$1|folgende Zeile|folgenden Zeilen}} in der Liste unerwünschter Benutzernamen {{PLURAL:$1|ist|sind}} ungültig; bitte korrigiere sie vor dem Speichern:',
 ),
 
+'fa' => array(
+'blacklistedusername' => 'نام کاربری غیر مجاز',
+'blacklistedusernametext' => 'نام کاربری مورد نظر شما در با [[MediaWiki:Usernameblacklist|فهرست سیاه نام‌های کاربری]] مطابقت دارد. لطفاً یک نام کاربری دیگر انتخاب کنید.',
+'usernameblacklist' => '<pre>
+# مدخل‌های این صفحه به عنوان یک الگوی regular expression برای 
+# فهرست سیاه هنگام ثبت نام کاربری به کار می‌روند. هر مورد باید
+# در یک سطر جدا که با علامت * آغاز شده باشد تعریف گردد، مانند:
+#
+# * فلان
+</pre>',
+'usernameblacklist-invalid-lines' => '{{PLURAL:$1|سطر|سطرهای}} زیر از فهرست سیاه نام کاربری غیر مجاز {{PLURAL:$1|است|هستند}}؛ لطفاً {{PLURAL:$1|آن|آن‌ها}} را قبل از ذخیره کردن صفحه اصلاح کنید:',
+),
+
 /* French */
 'fr' => array(
 'blacklistedusername' => 'Noms d’utilisateurs en liste noire',

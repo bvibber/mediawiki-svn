@@ -65,7 +65,7 @@ $wgAjaxShowEditorsMessages['frc'] = array(
 $wgAjaxShowEditorsMessages['frp'] = array(
 	'ajax-se-title' => 'Aprés étre modifiâ per :',
 	'ajax-se-pending' => 'rafrèchissement en cors ... (clicâd sur ceti mèssâjo ou modifiâd la pâge)',
-	'ajax-se-idling' => '(cen fét/fât $1 s)',
+	'ajax-se-idling' => '(cen fât $1 s)',
 );
 $wgAjaxShowEditorsMessages['gl'] = array(
 	'ajax-se-title' => 'Neste momento está a editar:',

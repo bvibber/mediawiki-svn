@@ -405,6 +405,9 @@ $wgBoardVoteMessages['ext'] = array(
 	'boardvote_dumplink'      => 'Pulsa aquí',
 	'boardvote_welcome'       => 'Bienviniu \'\'\'$1\'\'\'!',
 );
+$wgBoardVoteMessages['fa'] = array(
+	'boardvote'               => 'انتخابات هیئت امنای ویکی‌مدیا',
+);
 $wgBoardVoteMessages['fi'] = array(
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Äänestä]]
 * [[Special:Boardvote/list|Listaa tähänastiset äänet]]
@@ -510,7 +513,7 @@ Cela pèrsona et los ôtros membros votants du Consèly d’administracion contr
 Dècideront des moyens de financement et de l’afèctacion des fonds.</p>
 
 <p>Liéséd bien les dècllaracions des candidats et lors rèponses a les quèstions devant que votar.
-Tôs los candidats sont des utilisators rèspèctâs, qu’ont balyê tot plen de temps et d’èfôrt por fére/fâre de celos projèts un endrêt recevent consacrâ u dèvelopament de l’abada difusion du savêr humen.</p>
+Tôs los candidats sont des utilisators rèspèctâs, qu’ont balyê tot plen de temps et d’èfôrt por fâre de celos projèts un endrêt recevent consacrâ u dèvelopament de l’abada difusion du savêr humen.</p>
 
 <p>Vos pouede votar por atant de candidats que vos lo souhètâd. Celi que remporterat lo més de vouèx serat dècllarâ èlu por lo pôsto uquint s’est presentâ. En câs de balotâjo, y arat un voto/una votacion de dèpartâjo.</p>
 
@@ -529,14 +532,14 @@ Il at étâ criptâ avouéc la cllâf publica des scrutators oficièls por l’�
 
 <pre>$2</pre>
 
-La vèrsion criptâ siut. Serat afichiêe publicament dessus [[Special:Boardvote/dump]].
+La vèrsion criptâ siut. Serat afichiê publicament dessus [[Special:Boardvote/dump]].
 
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Retôrn]]',
 	'boardvote_nosession'     => 'Empossiblo de dètèrmenar voutron identifiant Wikimedia. Volyéd tornar a voutron vouiqui d’origina, vos enregistrar, et pués alar a la pâge <nowiki>[[Special:Boardvote]]</nowiki>. Vos dête avêr un compto avouéc u muens $1 contribucions fêtes devant lo $2, et avêr fêt voutra premiére èdicion devant lo $3.',
-	'boardvote_notloggedin'   => 'Orendrêt vos éte pas ôtentifiâ. Por votar, vos dête utilisar un compto comportent u muens $1 contribucions devant lo $2, et que la premiére remonte u $3.',
-	'boardvote_notqualified'  => 'Vos rèpondéd pas a yona de les condicions requises por votar pendent ceta èlèccion. O fôt avêr $3 contribucions devant lo $2, et vos en éd fêtes $1. Et pués, voutra premiére modificacion dâte du $4, et dêt avêr étâ fêta devant lo $5.',
+	'boardvote_notloggedin'   => 'Orendrêt, vos éte pas ôtentifiâ. Por votar, vos dête utilisar un compto èyent u muens $1 contribucions devant lo $2, et que la premiére remonte u $3.',
+	'boardvote_notqualified'  => 'Vos rèpondéd pas a yona de les condicions requises por votar pendent ceta èlèccion. Fôt avêr $3 contribucions devant lo $2, et vos en éd fêtes $1. Et pués, voutra premiére modificacion dâte du $4, et dêt avêr étâ fêta devant lo $5.',
 	'boardvote_novotes'       => 'Nion at adés votâ.',
 	'boardvote_time'          => 'Hora',
 	'boardvote_user'          => 'Utilisator',
@@ -548,9 +551,9 @@ La vèrsion criptâ siut. Serat afichiêe publicament dessus [[Special:Boardvote
 	'boardvote_submit'        => 'D’acôrd',
 	'boardvote_strike'        => 'Traciér',
 	'boardvote_unstrike'      => 'Dètraciér',
-	'boardvote_needadmin'     => 'Solèts los administrators du voto/de la votacion pôvont fére/fâre cela opèracion.',
+	'boardvote_needadmin'     => 'Solèts los administrators du voto/de la votacion pôvont fâre cela opèracion.',
 	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">Èlèccions u Consèly d’administracion de la Wikimedia Foundation</a> : voto uvèrt/votacion uvèrta tant qu’u 12 de julyèt 2005.',
-	'boardvote_notstarted'    => 'Lo voto/la votacion est p’oncor comenciê(e).',
+	'boardvote_notstarted'    => 'Lo voto/la votacion est p’oncor comenciê.',
 	'boardvote_closed'        => 'L’èlèccion est dês ora cllôsa. Lo rèsultat est procllamâ sur [[:meta:Board elections/2006/Results/fr|<span title="« Board elections/2006/Results/fr » : pâge en francês" style="text-decoration:none">la pâge des rèsultats</span>]].',
 	'boardvote_edits_many'    => 'plusiors',
 	'group-boardvote'         => 'Membros votants du Consèly d’administracion',

@@ -59,8 +59,8 @@ function efBackAndForthMessages() {
 ),
 
 'frp' => array(
-	'backforth-next' => 'Siuventa ($1)',
-	'backforth-prev' => 'Prècèdenta ($1)',
+	'backforth-next' => 'Siuvent ($1)',
+	'backforth-prev' => 'Prècèdent ($1)',
 ),
 
 'gl' => array(
