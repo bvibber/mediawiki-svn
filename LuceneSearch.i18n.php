@@ -205,6 +205,25 @@ Texte à rechercher : $3 $9 $10",
 	'lucenefallback'        => "Un problème est survenu avec la recherche wiki. Ce souci est probablement temporaire ; merci de réessayer dans un instant ou d’utiliser un service de recherche externe.",
 	'searchexactcase'       => 'Rechercher (sensible à la casse)',
 );
+$wgLuceneSearchMessages['gl'] = array(
+	'searchnumber'          => '<strong>Resultados $1-$2 de $3</strong>',
+	'searchscore'           => 'Relevancia: $1',
+	'searchsize'            => '$1 KB ($2 palabras)',
+	'searchdidyoumean'      => 'Quixo dicir: "<a href="$1">$2</a>"?',
+	'searchnoresults'       => 'Sentímolo, non hai coincidencias exactas para a súa procura.',
+	'searchnearmatches'     => '<b>Estas páxinas teñen títulos semellantes aos da súa procura:</b>',
+	'lucenepowersearchtext' => 'Procura en espazos de nomes:
+
+$1
+
+Procura para $3 $9 $10',
+	'lucenefallback'        => 'Houbo un problema coa procura wiki.
+É probabelmente temporal; ténteo de novo nunhos minutos,
+ou vostede pode buscar o wiki a través dun servizo de procura externa:',
+	'searchexactcase'       => 'Caso-exacto de procura',
+	'searchall'             => 'todo',
+	'searchincategory'      => 'na categoría',
+);
 $wgLuceneSearchMessages['hak'] = array(
 	'searchnumber'          => '<strong>Khiung-yû $3 hong chhìm-chhut ke kiet-kó, yî-ha he thi $1-$2 hong ke kiet-kó</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Song yit-hong</span>',
@@ -499,7 +518,7 @@ $wgLuceneSearchMessages['oc'] = array(
 	'searchdidyoumean'      => 'Pensavetz a : « <a href="$1">$2</a> » ?',
 	'searchnoresults'       => 'O planhem, existís pas cap de correspondéncia exacta a vòstra requèsta.',
 	'searchnearmatches'     => '<strong>Aquestas paginas an un títol similar a vòstra requèsta.</strong>',
-	'lucenepowersearchtext' => 'Recercar dins los espacis : $1<br />Tèxt de recercar : $3 $9 $10',
+	'lucenepowersearchtext' => 'Recercar dins los espacis : $1<br />Tèxt de recercar : $3 $9',
 	'lucenefallback'        => 'Un problèma es subrevengut amb la recèrca wiki. Aqueste problèma es probablament temporari ; mercé de tornar ensajar dins un moment o d’utilizar un servici de recèrca extèrna.',
 );
 $wgLuceneSearchMessages['pl'] = array(
