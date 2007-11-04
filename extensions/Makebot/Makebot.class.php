@@ -137,7 +137,7 @@ class MakeBot extends SpecialPage {
 		$form .= wfOpenElement( 'td', array( 'align' => 'right' ) );
 		$form .= wfElement( 'label', array( 'for' => 'comment' ), wfMsg( 'makebot-comment' ) );
 		$form .= wfOpenElement( 'td' );
-		$form .= wfElement( 'input', array( 'type' => 'text', 'name' => 'comment', 'id' => 'comment', 'size' => 45 ) );
+		$form .= wfElement( 'input', array( 'type' => 'text', 'name' => 'comment', 'id' => 'comment', 'size' => 45, 'maxlength' => 255 ) );
 		$form .= wfCloseElement( 'td' ) . wfCloseElement( 'tr' );
 		# End table
 		$form .= wfCloseElement( 'table' );
