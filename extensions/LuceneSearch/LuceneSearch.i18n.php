@@ -190,20 +190,21 @@ $wgLuceneSearchMessages['fo'] = array(
 	'lucenepowersearchtext' => 'Leita í navnaøki: $1 Leita eftur $3 $9',
 );
 $wgLuceneSearchMessages['fr'] = array(
-	'searchnumber'          => "<strong>Résultats $1 – $2 sur $3</strong>",
-	'searchprev'            => "&#x00AB; <span style='font-size: small'>Préc.</span>",
-	'searchnext'            => "<span style='font-size: small'>Suiv.</span> &#x00BB;",
-	'searchscore'           => "Pertinence : $1",
-	'searchsize'            => "$1 ko ($2 mots)",
-	'searchdidyoumean'      => "Pensiez-vous à : « <a href=\"$1\">$2</a> » ?",
-	'searchnoresults'       => "Désolé, il n’existe aucune correspondance exacte à votre requête.",
-	'searchnearmatches'     => "<strong>Ces pages ont un titre similaire à votre requête.</strong>\n",
-	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "
+	'searchnumber'          => '<strong>Résultats $1 – $2 sur $3</strong>',
+	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Préc.</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>Suiv.</span> &#x00BB;',
+	'searchscore'           => 'Pertinence : $1',
+	'searchsize'            => '$1 ko ($2 mots)',
+	'searchdidyoumean'      => 'Pensiez-vous à : « <a href="$1">$2</a> » ?',
+	'searchnoresults'       => 'Désolé, il n’existe aucune correspondance exacte à votre requête.',
+	'searchnearmatches'     => '<strong>Ces pages ont un titre similaire à votre requête.</strong>',
+	'lucenepowersearchtext' => '
 Rechercher dans les espaces : $1 <br/>
-Texte à rechercher : $3 $9 $10",
-	'lucenefallback'        => "Un problème est survenu avec la recherche wiki. Ce souci est probablement temporaire ; merci de réessayer dans un instant ou d’utiliser un service de recherche externe.",
+Texte à rechercher : $3 $9 $10',
+	'lucenefallback'        => 'Un problème est survenu avec la recherche wiki. Ce souci est probablement temporaire ; merci de réessayer dans un instant ou d’utiliser un service de recherche externe.',
 	'searchexactcase'       => 'Rechercher (sensible à la casse)',
+	'searchall'             => 'Tous',
+	'searchincategory'      => 'Chercher dans les catégories',
 );
 $wgLuceneSearchMessages['gl'] = array(
 	'searchnumber'          => '<strong>Resultados $1-$2 de $3</strong>',

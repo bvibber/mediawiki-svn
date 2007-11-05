@@ -134,6 +134,27 @@ function efPatrollerMessages() {
 	'grouppage-patroller' => '{{ns:project}}:Patrouilleur',
 ),
 
+'gl' => array(
+	'patrol' => 'Patrullar edicións',
+	'patrol-revert' => 'Desfacer',
+	'patrol-revert-reason' => 'Motivo:',
+	'patrol-skip' => 'Saltar',
+	'patrol-reverting' => 'A desfacer: $1',
+	'patrol-nonefound' => 'Non se atoparon edicións adecuadas para patrullar.',
+	'patrol-endorsed-ok' => 'Marcouse esta edición como patrullada.',
+	'patrol-endorsed-failed' => 'Non se puido marcar a edición como patrullada.',
+	'patrol-reverted-ok' => 'Desfíxose esta edición.',
+	'patrol-reverted-failed' => 'Non se puido desfacer esta edición.',
+	'patrol-skipped-ok' => 'Ignórase a edición.',
+	'patrol-reasons' => '* Simple vandalismo
+* Probas de novato
+* Ver a páxina de discusión',
+	'patrol-another' => 'Mostrar outra edición, se existe.',
+	'patrol-stopped' => 'Optou por non patrullar outra edición. $1',
+	'group-patroller' => 'Patrulleiros',
+	'group-patroller-member' => 'Patrulleiro',
+),
+
 'hsb' => array(
 'patrol' => 'Dohladowanje změnow',
 	'patrol-endorse' => 'Přihłosować',

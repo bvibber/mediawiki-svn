@@ -196,7 +196,26 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 ),
 
 'gl' => array(
+	'hiderevision' => 'Agochar revisións permanentemente',
+	'hiderevision-prompt' => 'Número de revisión a eliminar:',
+	'hiderevision-continue' => 'Continuar',
+	'hiderevision-reason' => 'Motivo (rexistrarase de maneira privada):',
+	'hiderevision-submit' => 'Agochar estes datos permanentemente',
+	'hiderevision-tab' => 'Agochar revisión',
+	'hiderevision-norevisions' => 'Non se especificaron revisións para eliminar.',
+	'hiderevision-noreason' => 'Ten que describir o motivo desta eliminación.',
+	'hiderevision-status' => 'Revisión $1: $2',
+	'hiderevision-success' => 'Arquivada e eliminada sen problemas.',
+	'hiderevision-error-missing' => 'Non se atopou na base de datos.',
+	'hiderevision-error-current' => 'Non se puido eliminar a última edición dunha páxina. Desfaga esta modificación primeiro.',
+	'hiderevision-error-delete' => 'Non se puido arquivar; foi eliminada con anterioridade?',
+	'hiderevision-archive-status' => 'Eliminouse a revisión de $1: $2',
+	'oversight-nodiff' => 'Foi imposíbel seguir as modificacións xa que non existe actualmente unha revisión anterior desta páxina. Pode que:
+*Se eliminase a páxina
+*Esta revisión agochada sexa a primeira revisión',
+	'oversight-log-hiderev' => 'eliminouse unha edición de $1',
 	'oversight-view' => 'detalles',
+	'oversight-hidden' => 'Revisión agochada',
 ),
 
 /* Hebrew (Rotem Liss) */

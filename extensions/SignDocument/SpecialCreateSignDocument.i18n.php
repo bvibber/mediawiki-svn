@@ -82,6 +82,27 @@ on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|
 		'createsigndoc-create' => 'Creal',
 		'createsigndoc-error-pagenoexist' => 'Marru: La páhina [[$1]] nu desisti.',
 	),
+	'fr' => array(
+		'createsigndocument' => 'Activer l\'authentification des documents',
+		'createsigndoc-head' => 'Utiliser ce formulaire pour créer une page d\'authentification de documents pour l\'article en question, de façon que chaque utilisateur sera capable d\'authentifier via [[Special:SignDocument]]. Prière d\'indiquer le nom de l\'article pour lequel vous souhaitez activer la fonction, les membres du groupe d\'utilisateurs, quels champs seront accessibles aux utilisateurs (lesquels seront optionnels), l\'âge minimal pour être membre du groupe (pas de minimum sinon) et un bref document expliquant le document et donnant des instructions aux utilisateurs.
+
+\'\'\'Présentement, il n\'y a aucun moyen d\'effacer les documents une fois créés\'\'\', sauf en éditant la base de données du wiki. De plus, le texte de l\'article affiché sur la page authentifiée sera le texte \'\'courant\'\', peu importe les modifications faites par après. Pour cette raison, soyez certain que le document est sufisamment stable pour être authentifié et, \'\'avant de soumettre le formulaire\'\', vérifiez que vous avez bien choisi les champs tels que vous souhaitez qu\'ils soient.',
+		'createsigndoc-pagename' => 'Page :',
+		'createsigndoc-allowedgroup' => 'Groupe authorisé :',
+		'createsigndoc-email' => 'Addresse de courriel :',
+		'createsigndoc-address' => 'Adresse résidentielle :',
+		'createsigndoc-extaddress' => 'Ville, état (département ou province), pays :',
+		'createsigndoc-phone' => 'Numéro de téléphone :',
+		'createsigndoc-bday' => 'Date de naissance :',
+		'createsigndoc-minage' => 'Âge minimum :',
+		'createsigndoc-introtext' => 'Introduction :',
+		'createsigndoc-hidden' => 'Caché',
+		'createsigndoc-optional' => 'Optionnel',
+		'createsigndoc-create' => 'Créer',
+		'createsigndoc-error-generic' => 'Erreur : $1',
+		'createsigndoc-error-pagenoexist' => 'La page [[$1]] n\'existe pas.',
+		'createsigndoc-success' => 'L\'authentification des documents est activée sur [[$1]]. Pour la tester, voir [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} cette page].',
+	),
 	'gl' => array(
 		'createsigndocument' => 'Habilitar a Sinatura de Documentos',
 		'createsigndoc-head' => 'Empregue este formulario para crear unha páxina "Asinar Documento" para o artigo relacionado, de tal

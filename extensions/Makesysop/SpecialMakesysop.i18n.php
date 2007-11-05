@@ -416,7 +416,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'makesysop' => 'Converter un usuario nun administrador',
 	'already_sysop' => 'Este usuario xa é administrador',
 	'already_bureaucrat' => 'Este usuario xa é burócrata',
-	'makesysop-nodatabase' => 'Incorrecto nome de usuario interwiki: $1',
+	'makesysop-nodatabase' => 'Nome de usuario interwiki incorrecto: $1',
 ),
 
 'gsw' => array(

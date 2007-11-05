@@ -209,6 +209,14 @@ $messages = array(
 	),
 
 	'gl' => array(
+		'ogg-short-audio' => 'Ficheiro de son Ogg $1, $2',
+		'ogg-short-video' => 'Ficheiro de vídeo Ogg $1, $2',
+		'ogg-short-general' => 'Ficheiro multimedia Ogg $1, $2',
+		'ogg-long-audio' => '(Ficheiro de son Ogg $1, duración $2, $3)',
+		'ogg-long-video' => '(Ficheiro de vídeo Ogg $1, duración $2, $4×$5 píxeles, $3)',
+		'ogg-long-multiplexed' => '(Ficheiro de audio/vídeo Ogg multiplex, $1, duración $2, $4×$5 píxeles, $3 total)',
+		'ogg-long-general' => 'Ficheiro multimedia Ogg, duración $2, $3)',
+		'ogg-long-error' => '(Ficheiro ogg non válido: $1)',
 		'ogg-play' => 'Reproducir',
 		'ogg-pause' => 'Deter',
 		'ogg-stop' => 'Parar',
@@ -223,6 +231,7 @@ $messages = array(
 		'ogg-player-vlc-activex' => 'VLC (ActiveX)',#identical but defined
 		'ogg-player-quicktime-mozilla' => 'QuickTime',#identical but defined
 		'ogg-player-quicktime-activex' => 'QuickTime (ActiveX)',#identical but defined
+		'ogg-player-thumbnail' => 'Só instantánea',
 		'ogg-player-soundthumb' => 'Ningún reprodutor',
 		'ogg-player-selected' => '(seleccionado)',
 		'ogg-use-player' => 'Usar o reprodutor:',

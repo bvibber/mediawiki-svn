@@ -268,7 +268,7 @@ function efMakeBotMessages() {
 	'makebot-granted'         => 'Agora [[User:$1|$1]] ten o estatuto de bot.',
 	'makebot-revoked'         => '[[User:$1|$1]] xa non ten estatuto de bot.',
 	'makebot-logpage'         => 'Rexistro de bots',
-	'makebot-logpagetext'     => 'Este é un rexistro dos cambios dos usuarios\' de estatuto de [[{{MediaWiki:Grouppage-bot}}|bot]].',
+	'makebot-logpagetext'     => 'Este é un rexistro dos cambios do estatuto de [[{{MediaWiki:Grouppage-bot}}|bot]] dos usuarios.',
 	'makebot-logentrygrant'   => 'outorgado estatuto de bot a [[$1]]',
 	'makebot-logentryrevoke'  => 'retirado estatuto de bot a [[$1]]',
 ),

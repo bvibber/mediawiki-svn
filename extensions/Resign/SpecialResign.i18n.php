@@ -70,6 +70,19 @@ Muista: '''Et voi saada oikeuksiasi takaisin tämän sivun avulla!''' Sinun täy
 	'resign-logentry'  => 'poisti oikeudet $2 itseltään',
 ),
 
+'fr' => array(
+	'resign' => 'Quitter',
+	'resign-text' => 'Vous pouvez vous \'\'\'retirer vos droits\'\'\' (d\'adminsitrateurs, par exemple) dans cette page-ci. Prière de vérifier celles que vous souhaitez retirer.
+
+\'\'\'Par contre, vous ne pouvez plus les obtenir par cette page-ci !\'\'\' Vous devrez convaincre un bureaucrate ou un steward de vous les rendre. Dès lors, soyez prudent avant de modifier vos permissions.',
+	'resign-reason' => 'Raison(s) :',
+	'resign-confirm' => 'Je confirme que je veux retirer tous les droits que j\'ai choisis.',
+	'resign-noconfirm' => 'Prière de cocher si vous souhaitez retirer vos droits.',
+	'resign-nogroups' => 'Prière de cocher les droits que vous souhaitez retirer.',
+	'resign-success' => '\'\'\'Les droits sont maintenant retirés.\'\'\'',
+	'resign-logentry' => 'a retiré les droits $2 pour son compte',
+),
+
 'gl' => array(
 	'resign' => 'Dimitir',
 	'resign-text' => 'Pode \'\'\'retirar os seus permisos\'\'\' (p.ex. administrador) nesta páxina. Seleccione os permisos que quere retirar.

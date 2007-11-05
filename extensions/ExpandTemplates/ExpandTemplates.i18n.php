@@ -110,8 +110,7 @@ qui sont développés recursivement. Les fonctions et les variables prédéfinie
 telles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}} sont aussi développées.',
 	'expand_templates_title'           => 'Titre de l’article, utile par exemple si le modèle utilise {{PAGENAME}} :',
 	'expand_templates_input'           => 'Entrez votre texte ici :',
-	'expand_templates_output'          => 'Visualisez le résultat',
-	'expand_templates_ok'              => 'OK',
+	'expand_templates_output'          => 'Résultat',
 	'expand_templates_remove_comments' => 'Supprimer les commentaires.',
 	'expand_templates_preview'         => 'Prévisualisation',
 );

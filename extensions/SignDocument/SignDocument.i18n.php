@@ -18,6 +18,12 @@ $allMessages = array(
 		'signaturelogentry'     => 'hat das Dokument $1 unterschrieben',
 	),
 
+	'fr' => array(
+		'signaturelogpage' => 'Journal des signatures',
+		'signaturelogpagetext' => 'Ceci est le journal de toutes les signatures ajoutées aux documents via [[Special:SignDocument]].',
+		'signaturelogentry' => 'a signé le document $1.',
+	),
+
 	'gl' => array(
 		'signaturelogpage' => 'Rexistro de Sinaturas',
 		'signaturelogpagetext' => 'Este é un rexistro de todas as sinaturas engadidas aos documentos mediante [[Special:SignDocument]].',
