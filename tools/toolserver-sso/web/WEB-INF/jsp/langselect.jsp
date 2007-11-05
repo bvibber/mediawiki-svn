@@ -35,6 +35,7 @@
             <option value="no"><fmt:message key="langselect.lang.no" /></option>
             <option value="es"><fmt:message key="langselect.lang.es" /></option>
             <option value="nl"><fmt:message key="langselect.lang.nl" /></option>
+			<option value="ru"><fmt:message key="langselect.lang.ru" /></option>
         </select>
         
         <input type="submit" value="<fmt:message key="langselect.label.submit" />" />
