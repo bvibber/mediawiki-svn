@@ -1450,7 +1450,7 @@ class Article {
 				$rcid = RecentChange::notifyNew( $now, $this->mTitle, $isminor, $wgUser, $summary, $bot,
 				  '', strlen( $text ), $revisionId );
 				# Mark as patrolled if the user can
-				if( $GLOBALS['wgUseRCPatrol'] && $wgUser->isAllowed( 'autopatrol' ) ) {
+				if( ($GLOBALS['wgUseRCPatrol'] || $GLOBALS['wgUseNPPatrol']) && $wgUser->isAllowed( 'autopatrol' ) ) {
 					RecentChange::markPatrolled( $rcid );
 					PatrolLog::record( $rcid, true );
 				}
@@ -1853,7 +1853,8 @@ class Article {
 		// Get the article's contents
 		$contents = $rev->getText();
 		$blank = false;
-		// If the page is blank, use the text from the previous revision (which can't be blank)
+		// If the page is blank, use the text from the previous revision,
+		// which can only be blank if there's a move/import/protect dummy revision involved
 		if($contents == '')
 		{
 			$prev = $rev->getPrevious();
@@ -1863,10 +1864,6 @@ class Article {
 				$blank = true;
 			}
 		}
-		// Get the first 150 chars
-		$contents = $wgContLang->truncate($contents, 150, '...');
-		// Replace newlines with spaces to prevent uglyness
-		$contents = preg_replace("/[\n\r]/", ' ', $contents);
 
 		// Find out if there was only one contributor
 		// Only scan the last 20 revisions
@@ -1887,16 +1884,29 @@ class Article {
 			}
 		$dbw->freeResult($res);
 
-		// Summary generation time
+		// Generate the summary with a '$1' placeholder
 		if($blank)
-			$reason = wfMsgForContent('exbeforeblank');
+			// The current revision is blank and the one before is also
+			// blank. It's just not our lucky day
+			$reason = wfMsgForContent('exbeforeblank', '$1');
 		else
 		{
 			if($onlyAuthor)
-				$reason = wfMsgForContent('excontentauthor', $contents, $onlyAuthor);
+				$reason = wfMsgForContent('excontentauthor', '$1', $onlyAuthor);
 			else
-				$reason = wfMsgForContent('excontent', $contents);
+				$reason = wfMsgForContent('excontent', '$1');
 		}
+		
+		// Replace newlines with spaces to prevent uglyness
+		$contents = preg_replace("/[\n\r]/", ' ', $contents);
+		// Calculate the maximum amount of chars to get
+		// Max content length = max comment length - length of the comment (excl. $1) - '...'
+		$maxLength = 255 - (strlen($reason) - 2) - 3;
+		$contents = $wgContLang->truncate($contents, $maxLength, '...');
+		// Remove possible unfinished links
+		$text = preg_replace( '/\[\[([^\]]*)\]?$/', '$1', $text );
+		// Now replace the '$1' placeholder
+		$reason = str_replace( '$1', $text, $reason );
 		return $reason;
 	}
 
@@ -2029,7 +2039,7 @@ class Article {
 				<label for='wpReason'>{$delcom}:</label>
 			</td>
 			<td align='left'>
-				<input type='text' size='60' name='wpReason' id='wpReason' value=\"" . htmlspecialchars( $reason ) . "\" tabindex=\"1\" />
+				<input type='text' maxlength='255' size='60' name='wpReason' id='wpReason' value=\"" . htmlspecialchars( $reason ) . "\" tabindex=\"1\" />
 			</td>
 		</tr>
 		<tr>

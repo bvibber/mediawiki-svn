@@ -2219,6 +2219,20 @@ $wgMessageStructure = array(
 		'watchlisttools-edit',
 		'watchlisttools-raw',
 	),
+	'iranian-dates' => array(
+		'iranian-calendar-m1',
+		'iranian-calendar-m2',
+		'iranian-calendar-m3',
+		'iranian-calendar-m4',
+		'iranian-calendar-m5',
+		'iranian-calendar-m6',
+		'iranian-calendar-m7',
+		'iranian-calendar-m8',
+		'iranian-calendar-m9',
+		'iranian-calendar-m10',
+		'iranian-calendar-m11',
+		'iranian-calendar-m12',
+	),
 );
 /** Comments for each block */
 $wgBlockComments = array(
@@ -2385,8 +2399,9 @@ Variants for Chinese language",
 	'sizeunits'           => 'Size units',
 	'livepreview'         => 'Live preview',
 	'lagwarning'          => 'Friendlier slave lag warnings',
-	'watchlisteditor' => 'Watchlist editor',
-	'watchlisttools' => 'Watchlist editing tools',
+	'watchlisteditor'     => 'Watchlist editor',
+	'watchlisttools'      => 'Watchlist editing tools',
+	'iranian-dates'       => 'Iranian month names',
 );
 
 /** Short comments for standalone messages */

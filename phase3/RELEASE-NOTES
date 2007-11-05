@@ -44,9 +44,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Removed "Clear" link in watchlist editor tools, as people were afraid to
   click it. Existing clear links will fall back to the raw editor, which is
   very easy to clear your watchlist with.
-* Allow hiding new pages by logged-in users on Special:Newpages
 * (bug 1405) Add wgUseNPPatrol option to control patroling for new articles
   on Special:Newpages
+* LogLine hook added to allow formatting custom entries in Special:Log.
+* Support for Iranian calendar
+* (bug 1401) Allow hiding logged-in users, bots and patrolled pages on Special:Newpages
 
 === Bug fixes in 1.12 ===
 
@@ -125,6 +127,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11795) Be more paranoid about confirming accept-encoding header is present
 * (bug 11809) Use formatNum() for more numbers
 * (bug 11818) Fix native language name of Inuktitut (iu)
+* Remove all commas when parsing float numbers in sorted tables
+* Limit text field of deletion, protection and user rights changes reasons to
+  255 characters (already restricted in the database)
+* In the deletion default reasons, calculate how much text to get from the
+  article text, rather than getting 150 characters (which may be too much)
 
 === API changes in 1.12 ===
 
@@ -154,16 +161,22 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * (bug 11721) Use a different title for results than for the help page.
 * (bug 11562) Added a user_registration parameter/field to the list=allusers query.
 * (bug 11588) Preserve document structure for empty dataset in backlinks query.
+* Allow staying logged in through lg* parameters instead of cookies
+* Outputting list of all user preferences rather than having to request them by name
 
 === Languages updated in 1.12 ===
 
+* Afrikaans (af)
+* Akan (ak) (new)
 * Amharic (am) (new)
 * Aragonese (an)
 * Old English (ang) (new)
 * Arabic (ar)
 * Mapudungun (arn) (new)
+* Assamese (as)
 * Asturian (ast)
 * Samogitian (bat-smg)
+* Boarisch (bar)
 * Bikol Central (bcl)
 * Belarusian Taraskievica orthography (be-tarask)
 * Bulgarian (bg)
@@ -174,6 +187,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Catalan (ca)
 * Czech (cs)
 * Cassubian (csb)
+* Old Church Slavonic (cu)
 * Welsh (cy)
 * Danish (da)
 * German (de)
@@ -200,6 +214,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Hebrew (he)
 * Croatian (hr)
 * Upper Sorbian (hsb)
+* Hungarian (hu)
 * Armenian (hy)
 * Indonesian (id)
 * Ingush (inh) (new)
@@ -227,6 +242,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Newari (new) (new)
 * Dutch (nl)
 * Norwegian (no)
+* Occitan (oc)
 * Deitsch (pdc) (new)
 * Polish (pl)
 * Piemontèis (pms)
@@ -251,7 +267,9 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Tetun (tet) (new)
 * Tajik (tg)
 * Tagalog (tl) (new)
+* Turkish (tr)
 * Uyghur (ug)
+* Vietnamese (vi)
 * West Flemish (vls)
 * Volapük (vo)
 * Walloon (wa)
