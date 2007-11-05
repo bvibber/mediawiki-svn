@@ -61,7 +61,7 @@ $wgDismissableSiteNoticeMessages['gl'] = array(
 );
 
 $wgDismissableSiteNoticeMessages['he'] = array(
-	'sitenotice_close' => 'הסתר',
+	'sitenotice_close' => 'הסתרה',
 );
 
 $wgDismissableSiteNoticeMessages['hsb'] = array(
