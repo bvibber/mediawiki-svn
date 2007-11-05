@@ -158,10 +158,11 @@ ENDFORM2;
 		
 		$buttonlabel = htmlspecialchars( $this->buttonlabel );
 		$searchbuttonlabel = htmlspecialchars( $this->searchbuttonlabel );
+		$id = Sanitizer::escapeId( $this->id );
 		
 		$type = $this->hidden ? 'hidden' : 'text';
 		$searchform=<<<ENDFORM
-<form action="$search" class="bodySearch" id="bodySearch{$this->id}"><div class="bodySearchWrap"><label for="bodySearchIput{$this->id}">{$this->labeltext}</label><input type="{$type}" name="search" size="{$this->width}" class="bodySearchIput" id="bodySearchIput{$this->id}" /><input type="submit" name="go" value="{$buttonlabel}" class="bodySearchBtnGo" />
+<form action="$search" class="bodySearch" id="bodySearch{$id}"><div class="bodySearchWrap"><label for="bodySearchIput{$id}">{$this->labeltext}</label><input type="{$type}" name="search" size="{$this->width}" class="bodySearchIput" id="bodySearchIput{$id}" /><input type="submit" name="go" value="{$buttonlabel}" class="bodySearchBtnGo" />
 ENDFORM;
 
 		if ( !empty( $this->fulltextbtn ) ) // this is wrong...
