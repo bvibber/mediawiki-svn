@@ -81,20 +81,24 @@ class Inputbox {
 			$this->searchbuttonlabel = wfMsgHtml( 'searchfulltext' );
 		}
 
-
+		$buttonlabel = htmlspecialchars( $this->buttonlabel );
+		$searchbuttonlabel = htmlspecialchars( $this->searchbuttonlabel );
+		$defaulttext = htmlspecialchars( $this->defaulttext );
+		$bgcolor = htmlspecialchars( $this->bgcolor );
+ 
 		$type = $this->hidden ? 'hidden' : 'text';
 		$searchform=<<<ENDFORM
 		<table border="0" width="100%" cellspacing="0" cellpadding="0">
 		<tr>
-		<td align="center" bgcolor="{$this->bgcolor}">
+		<td align="center" bgcolor="{$bgcolor}">
 		<form name="searchbox" action="{$search}" class="searchbox">
 		<input class="searchboxInput" name="search" type="{$type}"
-		value="{$this->defaulttext}" size="{$this->width}" />{$this->br}
+		value="{$defaulttext}" size="{$this->width}" />{$this->br}
 ENDFORM;
 
 		// disabled when namespace filter active
 		$gobutton=<<<ENDGO
-<input type='submit' name="go" class="searchboxGoButton" value="{$this->buttonlabel}" />&nbsp;
+<input type='submit' name="go" class="searchboxGoButton" value="{$buttonlabel}" />&nbsp;
 ENDGO;
 		// Determine namespace checkboxes
 		$namespaces = $wgContLang->getNamespaces();
@@ -129,7 +133,7 @@ ENDGO;
 		} 
 		$searchform3=<<<ENDFORM2
 		{$gobutton}
-		<input type='submit' name="fulltext" class="searchboxSearchButton" value="{$this->searchbuttonlabel}" />
+		<input type='submit' name="fulltext" class="searchboxSearchButton" value="{$searchbuttonlabel}" />
 		</form>
 		</td>
 		</tr>
@@ -152,13 +156,16 @@ ENDFORM2;
 		$this->labeltext = str_replace('<p>', '', $this->labeltext);
 		$this->labeltext = str_replace('</p>', '', $this->labeltext);
 		
+		$buttonlabel = htmlspecialchars( $this->buttonlabel );
+		$searchbuttonlabel = htmlspecialchars( $this->searchbuttonlabel );
+		
 		$type = $this->hidden ? 'hidden' : 'text';
 		$searchform=<<<ENDFORM
-<form action="$search" class="bodySearch" id="bodySearch{$this->id}"><div class="bodySearchWrap"><label for="bodySearchIput{$this->id}">{$this->labeltext}</label><input type="{$type}" name="search" size="{$this->width}" class="bodySearchIput" id="bodySearchIput{$this->id}" /><input type="submit" name="go" value="{$this->buttonlabel}" class="bodySearchBtnGo" />
+<form action="$search" class="bodySearch" id="bodySearch{$this->id}"><div class="bodySearchWrap"><label for="bodySearchIput{$this->id}">{$this->labeltext}</label><input type="{$type}" name="search" size="{$this->width}" class="bodySearchIput" id="bodySearchIput{$this->id}" /><input type="submit" name="go" value="{$buttonlabel}" class="bodySearchBtnGo" />
 ENDFORM;
 
 		if ( !empty( $this->fulltextbtn ) ) // this is wrong...
-			$searchform .= '<input type="submit" name="fulltext" class="bodySearchBtnSearch" value="{$this->searchbuttonlabel}" />';
+			$searchform .= '<input type="submit" name="fulltext" class="bodySearchBtnSearch" value="{$searchbuttonlabel}" />';
 
 		$searchform .= '</div></form>';
 
@@ -180,21 +187,29 @@ ENDFORM;
 			if(!$this->buttonlabel) {			
 				$this->buttonlabel = wfMsgHtml( "createarticle" );
 			}
-		}		
+		}
+		
+		$bgcolor = htmlspecialchars( $this->bgcolor );
+		$preload = htmlspecialchars( $this->preload );
+		$editintro = htmlspecialchars( $this->editintro );
+		$comment = htmlspecialchars( $this->comment );
+		$defaulttext = htmlspecialchars( $this->defaulttext );
+		$buttonlabel = htmlspecialchars( $this->buttonlabel );
+		
 		$type = $this->hidden ? 'hidden' : 'text';
 		$createform=<<<ENDFORM
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
 <tr>
-<td align="center" bgcolor="{$this->bgcolor}">
+<td align="center" bgcolor="{$bgcolor}">
 <form name="createbox" action="$action" method="get" class="createbox">
 	<input type='hidden' name="action" value="edit" />
-	<input type="hidden" name="preload" value="{$this->preload}" />
-	<input type="hidden" name="editintro" value="{$this->editintro}" />
+	<input type="hidden" name="preload" value="{$preload}" />
+	<input type="hidden" name="editintro" value="{$editintro}" />
 	{$comment}
 	<input class="createboxInput" name="title" type="{$type}"
-	value="{$this->defaulttext}" size="{$this->width}" />{$this->br}
+	value="{$defaulttext}" size="{$this->width}" />{$this->br}
 	<input type='submit' name="create" class="createboxButton"
-	value="{$this->buttonlabel}" />
+	value="{$buttonlabel}" />
 </form>
 </td>
 </tr>
