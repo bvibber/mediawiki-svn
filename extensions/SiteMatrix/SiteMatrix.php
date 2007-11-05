@@ -21,3 +21,6 @@ if ( !function_exists( 'extAddSpecialPage' ) ) {
 }
 extAddSpecialPage( dirname(__FILE__) . '/SiteMatrix_body.php', 'SiteMatrix', 'SiteMatrixPage' );
 
+$wgAutoloadClasses['ApiQuerySiteMatrix'] = dirname( __FILE__ ) . '/SiteMatrix_body.php';
+$wgAPIModules['sitematrix'] = 'ApiQuerySiteMatrix';
+
