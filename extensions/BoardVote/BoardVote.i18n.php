@@ -1611,12 +1611,12 @@ $wgBoardVoteMessages['su'] = array(
 );
 
 $wgBoardVoteMessages['sv'] = array(
-	'boardvote'               => "Val till Wikimedias styrelse (Wikimedia Board of Trustees)",
-	'boardvote_entry'         => "* [[m:Election_candidates_2006/Sv|Kandidaternas presentationer]]
+	'boardvote'               => 'Val till Wikimedias styrelse (Wikimedia Board of Trustees)',
+	'boardvote_entry'         => '* [[m:Election_candidates_2006/Sv|Kandidaternas presentationer]]
 * [[Special:Boardvote/vote|Rösta]]
 * [[Special:Boardvote/list|Lista röster]]
-* [[Special:Boardvote/dump|Dumpa krypterad röstpost]]",
-	'boardvote_intro'         => "<p>Välkommen till det tredje valet till Wikimedia Foundations styrelse. Vi ska välja en person som ska representera wikigemenskapen, det vill säga användarna på de olika Wikimedia-projekten. Denna person ska, tillsammans med styrelsens andra användarrepresentant, hjälpa till att bestämma Wikimediaprojektens framtida inriktning vart för sig och som grupp, och i styrelsen representera <em>dina</em> intressen och bekymmer. Styrelsen ska besluta om sätt att få in pengar och hur dessa ska fördelas.</p>
+* [[Special:Boardvote/dump|Dumpa krypterad röstpost]]',
+	'boardvote_intro'         => '<p>Välkommen till det tredje valet till Wikimedia Foundations styrelse. Vi ska välja en person som ska representera wikigemenskapen, det vill säga användarna på de olika Wikimedia-projekten. Denna person ska, tillsammans med styrelsens andra användarrepresentant, hjälpa till att bestämma Wikimediaprojektens framtida inriktning vart för sig och som grupp, och i styrelsen representera <em>dina</em> intressen och bekymmer. Styrelsen ska besluta om sätt att få in pengar och hur dessa ska fördelas.</p>
 
 <p>Innan du röstar, läs kandidaternas programförklaringar och deras svar på andra användares frågor. Alla kandidaterna är respekterade anvädnare som lagt ner åtskillig tid och möda för att göra projekten till en välkomnande miljö, ägnat åt inskaffande och fri spridning av mänsklig kunskap.</p>
 
@@ -1625,12 +1625,12 @@ $wgBoardVoteMessages['sv'] = array(
 <p>En påminnelse: du får bara rösta en gång. Även om du har 400 redigeringar på flera olika projekt, innebär inte det att du har rätt att rösta flera gånger. Om du vill ändra din röst innan valet är slut, var snäll gör det från det projekt som du tidigare röstat ifrån.</p>
 
 <p>Mera information hittas på:</p>
-<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2006/Sv\" class=\"external\">Vanliga frågor</a></li>
-<li><a href=\"http://meta.wikipedia.org/wiki/Election_candidates_2006/Sv\" class=\"external\">Kandidaterna</a></li></ul>",
-	'boardvote_intro_change'  => "<p>Du har redan röstat. Emellertid kan du ändra din röst genom att använda nedanstående formulär. Var god markera rutorna invid de kandidater du röstar på.</p>
+<ul><li><a href="http://meta.wikipedia.org/wiki/Election_FAQ_2006/Sv" class="external">Vanliga frågor</a></li>
+<li><a href="http://meta.wikipedia.org/wiki/Election_candidates_2006/Sv" class="external">Kandidaterna</a></li></ul>',
+	'boardvote_intro_change'  => '<p>Du har redan röstat. Emellertid kan du ändra din röst genom att använda nedanstående formulär. Var god markera rutorna invid de kandidater du röstar på.</p>
 
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_candidates_2006/Sv\" class=\"external\">Kandidaternas presentationer</a></li>",
-	'boardvote_entered'       => "Tack för det. Din röst är registrerad.
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Sv" class="external">Kandidaternas presentationer</a></li>',
+	'boardvote_entered'       => 'Tack för det. Din röst är registrerad.
 
 Om du så önskar, kan du notera följande detaljer. Din röst är registrerad som :
 
@@ -1644,20 +1644,27 @@ Den resulterande krypterade versionen följer här. Den kommer att visas öppet 
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Tillbaka]]",
-	'boardvote_notloggedin'   => "Du är inte inloggad. För att rösta måste du ha ett konto med minst $1 bidrag före $2.",
-	'boardvote_notqualified'  => "Tyvärr har du enbart gjort $1 redigeringar före $2. Du måste ha minst $3 redigeringar för att få rösta.
+[[Special:Boardvote/entry|Tillbaka]]',
+	'boardvote_nosession'     => 'Jag kan inte fastställa din användaridentitet på Wikimedia. Var snäll och logga in på den wiki där du har rätt att rösta och gå till <nowiki>[[Special:Boardvote]]</nowiki>. Du måste använda dig av ett konto med åtminstone $1 bidrag innan $2 och där den första redigeringen utfördes innan $3.',
+	'boardvote_notloggedin'   => 'Du är inte inloggad. För att rösta måste du ha ett konto med minst $1 bidrag före $2.',
+	'boardvote_notqualified'  => 'Tyvärr har du enbart gjort $1 redigeringar före $2. Du måste ha minst $3 redigeringar för att få rösta.
 
-Om du fick detta meddelande trots att du '''har gjort''' fler än $1 redigeringar i ett Wikimediaprojekt, v g försäkra dig om att du röstar från rätt projekt.",
-	'boardvote_novotes'       => "Ingen har röstat ännu.",
-	'boardvote_time'          => "Tid",
-	'boardvote_user'          => "Användare",
-	'boardvote_edits'         => "Redigeringar",
-	'boardvote_listintro'     => "<p>Det här är en lista över alla röster som har registrerats hittills.
-$1 för de krypterade uppgifterna.</p>",
-	'boardvote_dumplink'      => "Klicka här",
-	'boardvote_needadmin'     => "Endast valadministratörer kan utföra denna operation.",
-	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Styrelseval i Wikimediastiftelsen</a>:  Valet pågår till och med den 12 juli kl 02:00 (CEST)",
+Om du fick detta meddelande trots att du \'\'\'har gjort\'\'\' fler än $1 redigeringar i ett Wikimediaprojekt, v g försäkra dig om att du röstar från rätt projekt.',
+	'boardvote_novotes'       => 'Ingen har röstat ännu.',
+	'boardvote_time'          => 'Tid',
+	'boardvote_user'          => 'Användare',
+	'boardvote_edits'         => 'Redigeringar',
+	'boardvote_days'          => 'Dagar',
+	'boardvote_ip'            => 'IP',#identical but defined
+	'boardvote_listintro'     => '<p>Det här är en lista över alla röster som har registrerats hittills.
+$1 för de krypterade uppgifterna.</p>',
+	'boardvote_dumplink'      => 'Klicka här',
+	'boardvote_submit'        => 'OK',#identical but defined
+	'boardvote_strike'        => 'Stryk',
+	'boardvote_unstrike'      => 'Återställ efter strykning',
+	'boardvote_needadmin'     => 'Endast valadministratörer kan utföra denna operation.',
+	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">Styrelseval i Wikimediastiftelsen</a>:  Valet pågår till och med den 12 juli kl 02:00 (CEST)',
+	'boardvote_notstarted'    => 'Röstning har ej påbörjats än',
 );
 $wgBoardVoteMessages['wa'] = array(
 	'boardvote' => 'Vôtaedje po les manaedjeus del fondåcion Wikimedia',

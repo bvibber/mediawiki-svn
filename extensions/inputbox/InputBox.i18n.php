@@ -425,7 +425,8 @@ function efInputBoxMessages() {
 ),
 
 'su' => array(
-	'createarticle' => 'Jieun artikel',
+	'searchfulltext'          => 'Sungsi dina téks lengkap',
+	'createarticle'           => 'Jieun artikel',
 ),
 
 'sv' => array(

@@ -308,6 +308,18 @@ používajte túto funkciu s rozmyslom.",
 	'querysuccessful'  => 'Pamundut tos laksana',
 ),
 
+'sv' => array(
+	'asksql'           => 'SQL-fråga',
+	'asksqltext'       => 'Använd nedanstående formulär för att ställa en direkt fråga till databasen. 
+Använd enkla citationstecken (\'så här\') för att avgränsa textsträngar.
+Detta kan leda till väsentlig belastning av servern, så använd denna funktion med måtta.',
+	'sqlislogged'      => 'Observera att alla frågor loggförs.',
+	'sqlquery'         => 'Mata in fråga',
+	'querybtn'         => 'Skicka in fråga',
+	'selectonly'       => 'Endast läs-frågor tillåts.',
+	'querysuccessful'  => 'Frågan lyckades',
+),
+
 /* Cantonese (Shinjiman) */
 'yue' => array(
 	'asksql' => 'SQL查詢',

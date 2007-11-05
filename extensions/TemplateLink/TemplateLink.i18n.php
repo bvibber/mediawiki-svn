@@ -44,4 +44,13 @@ $allMessages = array(
                 'templatelink_empty' => 'Geef een parameter op.',
                 'templatelink_newtitle' => '$1 (getranscludeerd)',
         ),
+
+	'pl' => array(
+		'templatelink_empty' => 'Musisz podać parametr',
+	),
+	'pms' => array(
+		'templatelink' => 'Anliura dlë stamp',
+		'templatelink_empty' => 'A venta ch\'a buta un paràmetr.',
+		'templatelink_newtitle' => '$1 (an transclusion)',
+	),
 );

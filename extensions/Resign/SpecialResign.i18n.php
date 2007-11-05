@@ -162,7 +162,13 @@ Husk: \'\'\'Du kan ikke få tilbake rettighetene på denne måten!\'\'\' Du må 
 
 'pl' => array(
 	'resign' => 'Rezygnacja',
+	'resign-text' => 'Możesz na tej stronie \'\'\'odebrać sobie uprawnienia\'\'\' (np. administratora). Zaznacz uprawnienia, które chciałbyś usunąć. Pamiętaj: \'\'\'Nie możesz w ten sposób przywrócić sobie uprawnień!\'\'\' Konieczne będzie przekonanie biurokraty lub stewarda do przyznania ci z powrotem uprawnień. Używaj tej strony bardzo ostrożnie.',
 	'resign-reason' => 'Powód:',
+	'resign-confirm' => 'Potwierdzam, że chcę usunąć wszystkie zaznaczone uprawnienia.',
+	'resign-noconfirm' => 'Zaznacz pole potwierdzenia jeśli chcesz, by odebrano ci uprawnienia.',
+	'resign-nogroups' => 'Zaznacz uprawnienia, które chcesz usunąć.',
+	'resign-success' => '\'\'\'Uprawnienia zostały pomyślnie usunięte.\'\'\'',
+	'resign-logentry' => 'usunięto własne uprawnienia $2',
 ),
 
 /* Piedmontese (Bèrto 'd Sèra) */

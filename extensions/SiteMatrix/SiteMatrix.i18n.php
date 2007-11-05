@@ -187,6 +187,9 @@ $wgSiteMatrixMessages['pl'] = array(
 );
 $wgSiteMatrixMessages['pms'] = array(
 	'sitematrix' => 'Lista ëd le wiki gestìe da Wikimedia',
+	'sitematrix-language' => 'Lenga',
+	'sitematrix-project' => 'Nòm dël proget, anliura antra proget e anliura antrawiki',
+	'sitematrix-others' => 'Àutri proget ëd Wikimedia',
 );
 $wgSiteMatrixMessages['pt'] = array(
 	'sitematrix' => 'Lista de sítios Wikimedia',
@@ -240,6 +243,9 @@ $wgSiteMatrixMessages['tet'] = array(
 	'sitematrix-language' => 'Lian',
 	'sitematrix-project' => 'Naran projetu nian, ligasaun projetu no ligasaun interwiki',
 	'sitematrix-others' => 'Projetu seluk Wikimedia nian',
+);
+$wgSiteMatrixMessages['tr'] = array(
+	'sitematrix' => 'Tüm Wikimedia vikilerin listesi',
 );
 $wgSiteMatrixMessages['ur'] = array(
 	"sitematrix" => 'فہرست وکی میڈیا کے دیگر وکییوں کی',

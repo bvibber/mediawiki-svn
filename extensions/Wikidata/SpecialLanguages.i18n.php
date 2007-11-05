@@ -58,9 +58,17 @@ $wgLanguageManagerMessages['nl'] = array(
 	'langman_title' => 'Taalmanager',
 	'languages'=>'Wikidata: Taalmanager',
 );
+$wgLanguageManagerMessages['pms'] = array(
+	'langman_title' => 'Gestor dle lenghe',
+	'languages' => 'Wikidata: Gestor dle lenghe',
+);
 $wgLanguageManagerMessages['sk'] = array(
 	'langman_title' => 'Správca jazykov',
 	'languages' => 'Wikidata: Správca jazykov',
+);
+$wgLanguageManagerMessages['sv'] = array(
+	'langman_title' => 'Språkhanterare',
+	'languages' => 'Wikidata: Språkhanterare',
 );
 $wgLanguageManagerMessages['zh-hans'] = array(
 	'langman_title' => '语言管理员',

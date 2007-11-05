@@ -108,6 +108,11 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'Prepáčte, články s týmto názvom nie je povolené ukladať.',
 ),
 
+'sv' => array(
+	'block_title_error_page_title' => 'Blockerad titel',
+	'block_title_error' => 'Det är inte tillåtet att spara en artikel under denna titel.',
+),
+
 /**
  * 
  * Cantonese (Shinjiman)

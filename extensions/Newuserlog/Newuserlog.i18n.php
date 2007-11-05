@@ -218,7 +218,7 @@ $wgNewuserlogMessages['pl'] = array(
 	'newuserlogpage'           => 'Nowi użytkownicy',
 	'newuserlogpagetext'       => 'To jest rejestr ostatnio utworzonych kont użytkowników',
 	'newuserlog-create-entry'  => 'Nowy użytkownik',
-	'newuserlog-create2-entry' => 'utworzono konto dla $1',
+	'newuserlog-create2-entry' => 'utworzono nowe konto $1',
 );
 /* Piedmontese (Bèrto 'd Sèra) */
 $wgNewuserlogMessages['pms'] = array(
@@ -294,6 +294,12 @@ $wgNewuserlogMessages['tet'] = array(
 	'newuserlogpagetext'       => 'Ne\'e lista kria uza-na\'in',
 	'newuserlog-create-entry'  => 'Uza-na\'in foun',
 	'newuserlog-create2-entry' => 'registrar uza-na\'in $1',
+);
+$wgNewuserlogMessages['tr'] = array(
+	'newuserlogpage'           => 'Yeni kullanıcı kayıtları',
+	'newuserlogpagetext'       => 'En son kaydolan kullanıcı kayıtları',
+	'newuserlog-create-entry'  => 'Yeni kullanıcı',
+	'newuserlog-create2-entry' => '$1 yeni hesap yarattı',
 );
 $wgNewuserlogMessages['ur'] = array(
 	'newuserlogpage'           => 'نوشتۂ آمد صارف',

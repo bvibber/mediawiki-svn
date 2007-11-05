@@ -61,6 +61,14 @@ function efCommentSpammerMessages() {
 	'cspammer-log-page' => 'Spamlogboek',
 ),
 
+'pl' => array(
+	'commentspammer-save-blocked' => 'Twój adres IP jest podejrzewany o bycie spammerem - zapisywanie stron jest zablokowane. Utwórz konto, aby uniknąć tego komunikatu.',
+	'commentspammer-log-msg' => 'edycja [[Special:Contributions/$1|$1]] w [[$2]].',
+	'commentspammer-log-msg-info' => 'Ostatni spam $1 {{PLURAL:$1|dzień|dni}} temu, poziom zagrożenia $2, kod naruszenia $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Zobacz szczegóły] lub [[Special:Blockip/$4|zablokuj]].',
+	'cspammerlogpagetext' => 'Zapis edycji, które zostały dozwolone lub zakazane na podstawie tego, czy dokonała ich osoba znana jako spammer.',
+	'cspammer-log-page' => 'Rejestr spammerów',
+),
+
         );
 
         return $messages;

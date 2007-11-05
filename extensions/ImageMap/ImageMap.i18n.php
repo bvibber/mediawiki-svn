@@ -268,6 +268,12 @@ function efImageMapMessages() {
 ),
 
 'pl' => array(
+	'imagemap_no_image'             => '&lt;imagemap&gt;: należy wpisać grafikę w pierwszej linii',
+	'imagemap_invalid_image'        => '&lt;imagemap&gt;: grafika jest niepoprawna lub nie istnieje',
+	'imagemap_no_link'              => '&lt;imagemap&gt;: nie znaleziono poprawnego linku na końcu linii $1',
+	'imagemap_invalid_title'        => '&lt;imagemap&gt;: niepoprawny tytuł linku w linii $1',
+	'imagemap_missing_coord'        => '&lt;imagemap&gt;: niewystarczająca liczba współrzędnych dla kształtu zdefiniowanego w linii $1',
+	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: nierozpoznany kształt w linii $1; każda linia musi zawierać tekst: default, rect, circle lub poly',
 	'imagemap_no_areas'             => '&lt;imagemap&gt;: należy podać przynajmniej jedną specyfikację pola',
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: nieprawidłowa współrzędna w linii $1; należy podać liczbę',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: nieprawidłowa specyfikacja opisu; należy wpisać jeden z wariantów: <tt>$1</tt>',

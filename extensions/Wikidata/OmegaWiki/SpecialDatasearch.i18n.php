@@ -43,6 +43,10 @@ $wgDataSearchMessages['nl'] = array(
 	'datasearch' => 'Wikidata: Gegevens zoeken',
 );
 
+$wgDataSearchMessages['pms'] = array(
+	'datasearch' => 'Wikidata: Arsërca antra ij dat',
+);
+
 $wgDataSearchMessages['sk'] = array(
 	'datasearch' => 'Wikidata: Hľadanie údajov',
 );

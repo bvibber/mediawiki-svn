@@ -67,6 +67,7 @@ Er is een nieuwe gebruiker $2 aangemaakt om $3 op $4.',
 
 'pl' => array(
 	'newusernotifsubj' => 'Powiadamianie użytkownika $1 o nowych użytkownikach',
+	'newusernotifbody' => 'Witaj $1, nowe konto użytkownika, $2, zostało stworzone w dniu $3 o $4.',
 ),
 
 'pms' => array(

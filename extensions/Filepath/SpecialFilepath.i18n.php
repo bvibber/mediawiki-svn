@@ -186,7 +186,7 @@ $wgFilepathMessages['pl'] = array(
 	'filepath'        => 'Ścieżka do pliku',
 	'filepath_page'   => 'Plik:',
 	'filepath_submit' => 'Ścieżka',
-	'filepath-summary' => 'Ta specjalna strona zwraca pełną ścieżkę do pliku. Grafiki są pokazywane w pełnej rozdzielczości, inne typy plików są otwierane w skojarzonym z nimi programie. Wpisz nazwę pliku bez prefiksu "{{ns:image}}:".',
+	'filepath-summary' => 'Ta strona specjalna zwraca pełną ścieżkę do pliku. Grafiki są pokazywane w pełnej rozdzielczości, inne typy plików są otwierane w skojarzonym z nimi programie. Wpisz nazwę pliku bez prefiksu "{{ns:image}}:".',
 );
 /* Piedmontese (Bèrto 'd Sèra) */
 $wgFilepathMessages['pms'] = array(

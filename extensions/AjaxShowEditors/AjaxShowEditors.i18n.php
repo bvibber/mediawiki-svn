@@ -165,6 +165,11 @@ $wgAjaxShowEditorsMessages['su'] = array(
 	'ajax-se-pending' => 'muatkeun koropak deui ditunda... (klik kotak ieu atawa mimiti ngédit)',
 	'ajax-se-idling' => '($1 nu kaliwat)',
 );
+$wgAjaxShowEditorsMessages['sv'] = array(
+	'ajax-se-title' => 'Redigeras just nu:',
+	'ajax-se-pending' => 'avvaktar omläsning ... (klicka på denna ruta eller börja redigera)',
+	'ajax-se-idling' => '($1s sedan)',
+);
 $wgAjaxShowEditorsMessages['yue'] = array(
 	'ajax-se-title' => '而家編輯緊:',
 	'ajax-se-pending' => '而家重新整理緊 ... (click this box or start editing)',
