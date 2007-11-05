@@ -29,6 +29,11 @@ $allMessages = array(
                 'templatelink_empty' => 'Ein Parameter muss angegeben werden.',
                 'templatelink_newtitle' => '$1 (ersetzt)',
         ),
+	'fr' => array(
+		'templatelink' => 'Lien vers modèle',
+		'templatelink_empty' => 'Vous devez saisir un paramètre.',
+		'templatelink_newtitle' => '$1 (tranclus)',
+	),
 	'gl' => array(
 		'templatelink' => 'Ligazón do modelo',
 		'templatelink_empty' => 'Vostede ten que proporcionar un parámetro.',

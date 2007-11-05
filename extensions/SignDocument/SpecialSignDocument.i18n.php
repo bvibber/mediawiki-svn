@@ -213,6 +213,89 @@ $allMessages = array(
 		'sign-signatures' => 'Firmas',
 		'sign-closed' => 'afechau',
 	),
+	'fr' => array(
+		'signdocument' => 'Authentifier le document',
+		'sign-nodocselected' => 'Prière de choisir le document que vous voulez authentifier',
+		'sign-selectdoc' => 'Document :',
+		'sign-docheader' => '<div class="noarticletext">Prière d\'utiliser ce formulaire pour authentifier le document « [[$1]] » affichée ci-dessous. Lire le document au complet, et si vous souhaitez signifier votre appui, remplir les champs pour l\'authentifier.</div>',
+		'sign-error-nosuchdoc' => 'Le document demandé ($1) n\'existe pas.',
+		'sign-realname' => 'Nom :',
+		'sign-address' => 'Adresse civique :',
+		'sign-city' => 'Ville :',
+		'sign-state' => 'État, département ou province :',
+		'sign-zip' => 'Code postal :',
+		'sign-country' => 'Pays :',
+		'sign-phone' => 'Numéro de téléphone :',
+		'sign-bday' => 'Âge :',
+		'sign-email' => 'Adresse de courriel :',
+		'sign-indicates-req' => '<small><i><font color="red">*</font> indique les champs obligatoires.</i></small>',
+		'sign-hide-note' => '<small><i><font color="red">**</font> Les informations non listées sont toujours visibles pour les modérateurs.</i></small>',
+		'sign-list-anonymous' => 'Lister de façon anonyme',
+		'sign-list-hideaddress' => 'Ne pas lister l\'adresse',
+		'sign-list-hideextaddress' => 'Ne pas lister la ville, l\'état (le département ou la province), le code postal ou le pays',
+		'sign-list-hidephone' => 'Ne pas lister le numéro de téléphone',
+		'sign-list-hidebday' => 'Ne pas lister l\'âge',
+		'sign-list-hideemail' => 'Ne pas lister l\'adresse de courriel',
+		'sign-submit' => 'Authentifier le document',
+		'sign-information' => '<div class="noarticletext">Merci d\'avoir complètement lu ce document. Si vous êtes d\'accord avec son contenu, signifiez votre appui en remplissant les champs requis ci-dessous et en cliquant « Authentifier document ». Prière de vérifier que vos informations personnelles sont exactes et que nous possédons un moyen de vous contacter pour valider votre identité. Votre adresse IP et d\'autres informations qui peuvent vous identifier sont notées et seront utilisées par les modérateurs pour éliminer des signatures en doublon et confirmer les informations saisies. Les proxys ne nous permettent pas d\'identifier à coup sûr le signataire, les signatures obtenues à travers les proxys ne seront probablement pas comptées. Si vous êtes connecté à travers un proxy, prière d\'utiliser un compte qui ne l\'utilise pas.</div>
+
+$1',
+		'sig-success' => 'Vous avez authentifié le document.',
+		'sign-view-selectfields' => '\'\'\'Champs à afficher :\'\'\'',
+		'sign-viewfield-entryid' => 'ID de l\'entrée',
+		'sign-viewfield-timestamp' => 'Timestamp',#identical but defined
+		'sign-viewfield-realname' => 'Nom',
+		'sign-viewfield-address' => 'Adresse',
+		'sign-viewfield-city' => 'Ville',
+		'sign-viewfield-state' => 'État (département ou province)',
+		'sign-viewfield-country' => 'Pays',
+		'sign-viewfield-zip' => 'Code postal',
+		'sign-viewfield-ip' => 'Adresse IP',
+		'sign-viewfield-agent' => 'User-Agent',
+		'sign-viewfield-phone' => 'Numéro de téléphone',
+		'sign-viewfield-email' => 'Adresse de courriel',
+		'sign-viewfield-age' => 'Âge',
+		'sign-viewfield-options' => 'Options',#identical but defined
+		'sign-viewsigs-intro' => 'CI-dessous apparaissent les signatures enrgistrées pour <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
+		'sign-sigadmin-currentlyopen' => 'L\'authentification est présentement activée pour ce document.',
+		'sign-sigadmin-close' => 'Désactiver l\'authentification',
+		'sign-sigadmin-currentlyclosed' => 'L\'authentification est présentement désactivée pour ce document.',
+		'sign-sigadmin-open' => 'Activer l\'authentification',
+		'sign-signatures' => 'Signatures',#identical but defined
+		'sign-sigadmin-closesuccess' => 'L\'authentification est désactivée.',
+		'sign-sigadmin-opensuccess' => 'L\'authentification est activée.',
+		'sign-viewsignatures' => 'Voir les signatures',
+		'sign-closed' => 'fermée',
+		'sign-error-closed' => 'L\'authentification de ce document est présentée désactivée.',
+		'sig-anonymous' => '\'\'Anonymement\'\'',
+		'sig-private' => '\'\'Privé\'\'',
+		'sign-sigdetails' => 'Détails de la signature',
+		'sign-emailto' => '<a href="mailto:$1">$1</a>',#identical but defined
+		'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+		-->[[User:$1|$1]] ([[User talk:$1|talk]] • <!--
+		-->[[Special:Contributions/$1|contribs]] • <!--
+		-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+		-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+		-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+		-->[[Special:Blockip/$1|block user]] • <!--
+		-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} block log] • <!--
+		-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
+		--></span>',#identical but defined
+		'sign-viewfield-stricken' => 'Fautif',
+		'sign-viewfield-reviewedby' => 'Réviseur',
+		'sign-viewfield-reviewcomment' => 'Commentaire',
+		'sign-detail-uniquequery' => 'Entités semblables',
+		'sign-detail-uniquequery-run' => 'Lancer la requête',
+		'sign-detail-strike' => 'Biffer la signature',
+		'sign-reviewsig' => 'Réviser la signature',
+		'sign-review-comment' => 'Commentaire',
+		'sign-submitreview' => 'Soumettre la révision',
+		'sign-uniquequery-similarname' => 'Nom semblable',
+		'sign-uniquequery-similaraddress' => 'Adresse semblable',
+		'sign-uniquequery-similarphone' => 'Numéro de téléphone semblable',
+		'sign-uniquequery-similaremail' => 'Adresse de courriel semblable',
+		'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] a authentifié [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
+	),
 	'gl' => array(
 		'signdocument' => 'Asine o Documento',
 		'sign-nodocselected' => 'Seleccione o documento que vostede quere asinar.',

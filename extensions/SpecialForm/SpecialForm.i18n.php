@@ -97,20 +97,24 @@ $SpecialFormMessages =array(
 	),
 
 	'fr' => array(
-	        'form' => 'Formulaire',
+		'form' => 'Formulaire',
 		'formnoname' => 'Aucun nom',
 		'formnonametext' => 'Veuillez spécifier le nom du formulaire, sous la forme "Special:Formulaire/NomDuFormulaire".',
 		'formbadname' => 'Nom incorrect',
 		'formbadnametext' => 'Le nom choisi pour le formulaire est incorrect. Aucun formulaire n\'existe sous ce nom.',
 		'formpattern' => 'formulaire-$1',
-		'formtemplatepattern' => '$1',
 		'formtitlepattern' => 'Ajouter un(e) $1',
 		'formsave' => 'Sauvegarder',
-		'formarticleexists' => 'L\'article existe déjà',
+		'formindexmismatch' => 'Ce formulaire a des patrons et des modèles qui ne correspondent pas à partir de $1.',
+		'formarticleexists' => 'L\'article existe déjà.',
 		'formarticleexiststext' => 'L\'article nommé [[$1]] existe déjà.',
+		'formbadpagename' => 'Mauvais nom de page',
+		'formbadpagenametext' => 'Les données saisies forment un mauvais nom de page, « $1 ».',
+		'formrequiredfieldpluralerror' => 'Les champs $1 sont requis dans ce formulaire.',
+		'formrequiredfielderror' => 'Le champ $1 est requis dans ce formulaire.',
 		'formsavesummary' => 'Créer un nouvel article à l\'aide de [[Special:Formulaire/$1]]',
 		'formsaveerror' => 'Une erreur s\'est produite pendant la sauvegarde.',
-		'formsaveerrortext' => 'Une erreur inconnue s\'est produite pendant la sauvegarde de l\'article \'$1\'.'
+		'formsaveerrortext' => 'Une erreur inconnue s\'est produite pendant la sauvegarde de \'\'$1\'\'.',
 	),
 
 	'gl' => array(
