@@ -1259,12 +1259,15 @@ function writeDmToCollection($dc, $collid, $uuid, $dm_id, $override_transaction=
 	$result=$dbr->query($sql);
 }
 
-/**read a ConceptMapping from the database
+/**read a ConceptMapping from the database.
  * map is in the form;
  * array("dataset_prefix"=>defined_meaning_id,...)
  * (possibly to rename $map or $concepts, to remain consistent)
  * note that we are using collection_contents.internal_member_id
  * as our ConceptMap ID.
+ *
+ * Later Note: This is somewhat redundant with the objects table.
+ *
  * see also: createConceptMapping($concepts)
  */
 function &readConceptMapping($concept_id) {
@@ -1312,7 +1315,6 @@ function getConceptId($dm,$dc){
 }
 
 function &getAssociatedByConcept($dm, $dc) {
-    	#$dbr = & wfGetDB(DB_SLAVE);
 	$concept_id=getConceptId($dm,$dc);
 	return readConceptMapping($concept_id);
 }

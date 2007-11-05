@@ -224,7 +224,9 @@ class ObjectCopier {
 		return $objectCopier->create_key($uuid);
 	}
 
-	function dup() {
+	/** Duplicate thds object ientry in the destination (dc2) dataset
+	 */
+	public function dup() {
 		if (is_null($this->id)) {
 			if ($this->autovivify) {
 				$this->create_key();
@@ -266,12 +268,12 @@ class ObjectCopier {
  * @param $dc1			dataset to READ expression FROM
  */
 function expression($expression_id, $dc1) {
-	return CopyTools::getRow($dc1, "expression", "WHERE expression_id=$expression_id");
+	return CopyTools::getRow($dc1, "expression", "WHERE expression_id=$expression_id", true);
 }
 
 
 function getOldSyntrans($dc1, $dmid, $expid) {
-	return CopyTools::getRow($dc1, "syntrans", "where defined_meaning_id=$dmid and expression_id=$expid");
+	return CopyTools::getRow($dc1, "syntrans", "where defined_meaning_id=$dmid and expression_id=$expid", true);
 }
 
 function writeSyntrans($syntrans, $newdmid, $newexpid, $dc2) {
@@ -292,7 +294,7 @@ function dupSyntrans($dc1, $dc2, $olddmid, $oldexpid, $newdmid, $newexpid) {
 }
 
 function get_syntranses($dmid, $dc1) {
-	return CopyTools::getRows($dc1, "syntrans", "where defined_meaning_id=$dmid");
+	return CopyTools::getRows($dc1, "syntrans", "where defined_meaning_id=$dmid",true);
 }
 
 
@@ -333,7 +335,7 @@ function dup_syntranses($src_dmid, $dst_dmid, $dc1, $dc2) {
 }
 
 function read_translated_content($dc1,$tcid) {
-	return CopyTools::getRows($dc1,"translated_content","where translated_content_id=$tcid");
+	return CopyTools::getRows($dc1,"translated_content","where translated_content_id=$tcid", true);
 }
 
 function write_translated_content($dc1, $dc2, $tcid, $content) { 
@@ -428,7 +430,7 @@ class RelationsCopier extends Copier {
 	function read() {
 		$dc1=$this->dc1;
 		$dmid=$this->old_dmid;
-		return CopyTools::getRows($dc1,$this->tableName,"where meaning1_mid=$dmid");
+		return CopyTools::getRows($dc1,$this->tableName,"where meaning1_mid=$dmid", true);
 	}
 
 	function write_single($relation) {
@@ -482,13 +484,13 @@ class CollectionCopier extends Copier {
 			$dc=$this->dc1;
 		}
 		$dmid=$this->dmid;
-		return CopyTools::getRows($dc, "collection_contents", "WHERE member_mid=$dmid");
+		return CopyTools::getRows($dc, "collection_contents", "WHERE member_mid=$dmid", true);
 	}
 
 
 	public function read_definition($collection_id) {
 		$dc1=$this->dc1;
-		return CopyTools::getRow($dc1,"collection","WHERE collection_id=$collection_id");
+		return CopyTools::getRow($dc1,"collection","WHERE collection_id=$collection_id", true);
 	}
 
 	/** write collection definition (and associated dm) to dc2
@@ -611,7 +613,7 @@ class DefinedMeaningCopier {
 			throw new Exception ("DefinedMeaningCopier: read(): cannot read a dmid that is null");
 		if (is_null($this->dc1))
 			throw new Exception ("DefinedMeaningCopier: read(): cannot read from dc1: is null. ");
-		$this->defined_meaning=CopyTools::getRow($this->dc1,"defined_meaning","where defined_meaning_id=$dmid");
+		$this->defined_meaning=CopyTools::getRow($this->dc1,"defined_meaning","where defined_meaning_id=$dmid", true);
 		return $this->defined_meaning; # for convenience
 	}
 
@@ -638,6 +640,7 @@ class DefinedMeaningCopier {
 		return $this->save_meaning["defined_meaning_id"];
 	}
 
+
 	/** duplicate a basic defined meaning, translated text, and syntrans
 	 * this is relatively old code by now, and can probably be tidied/refactored
 	 * use dup_rest to duplicate everything else.
@@ -653,18 +656,40 @@ class DefinedMeaningCopier {
 
 		# bit of exp here too (defnitely need to tidy)
 		$defining_expression=expression($this->defined_meaning["expression_id"], $dc1);
-		$dm_target_table=mysql_real_escape_string("${dc2}_defined_meaning");
-		$copier=new ObjectCopier($this->defined_meaning["defined_meaning_id"], $dc1, $dc2);
-		$target_dmid=$copier->dup();
+
+		# is it already mapped?
+
+		$target_dmid=$this->getMappedId();
+
+		# no?
+		if (!$target_dmid) {
+			$copier=new ObjectCopier($this->defined_meaning["defined_meaning_id"], $dc1, $dc2);
+			$target_dmid=$copier->dup();
+			$this->already_there=$copier->already_there();
+		} else { #yes? # and no, we  weren't advertising merging, so you're outta luck :-P
+			$this->already_there=true;
+		}
+
+		#test code only:
+		#$spelling=$defining_expression["spelling"];
+		#echo "$spelling, ";
+		
+		# now something potentially useful?
+		#echo "->$dc2:$target_dmid";
+
+		
+		#echo".  ";
+		#end test code;
+		
 		$this->save_meaning=$this->defined_meaning;
 		$this->save_meaning["defined_meaning_id"]=$target_dmid;
 
-		$this->already_there=$copier->already_there();
-		if (!($copier->already_there())) {
+		
+		if (!($this->already_there)) {
 			$this->save_meaning["expression_id"]=write_expression($defining_expression, $dmid, $target_dmid, $dc1, $dc2);
 		}
 		$this->save_meaning["meaning_text_tcid"]=dup_translated_content($dc1, $dc2, $this->defined_meaning["meaning_text_tcid"]);
-		if (!($copier->already_there())) {
+		if (!($this->already_there)) {
 			CopyTools::dc_insert_assoc($dc2, "defined_meaning", $this->save_meaning);
 
 			$title_name=$defining_expression["spelling"];
@@ -672,17 +697,30 @@ class DefinedMeaningCopier {
 			$title=str_replace(" ","_",$title_name)."_(".$title_number.")";
 			CopyTools::createPage($title);
 		
+			$concepts=array(
+				$dc1 => $this->defined_meaning["defined_meaning_id"],
+				$dc2 => $this->save_meaning["defined_meaning_id"]);
+			$uuid_data=createConceptMapping($concepts, getUpdateTransactionId());
+			DefinedMeaningCopier::finishConceptMapping($dc1, $uuid_data[$dc1]);
+			DefinedMeaningCopier::finishConceptMapping($dc2, $uuid_data[$dc2]);
 		}
-		$concepts=array(
-			$dc1 => $this->defined_meaning["defined_meaning_id"],
-			$dc2 => $this->save_meaning["defined_meaning_id"]);
-		$uuid_data=createConceptMapping($concepts, getUpdateTransactionId());
-		DefinedMeaningCopier::finishConceptMapping($dc1, $uuid_data[$dc1]);
-		DefinedMeaningCopier::finishConceptMapping($dc2, $uuid_data[$dc2]);
-
+		
 		return $this->save_meaning["defined_meaning_id"];
 	}		
-	
+
+	/** if there is an existing conceptmapping for this dm, return the provided id, else return false
+	 */
+	public function getMappedId() {
+		$dmid=$this->dmid;
+		$dc1=$this->dc1;
+		$dc2=$this->dc2;
+		$map=getAssociatedByConcept($dmid,$dc1);
+		$dst_dmid=$map[$dc2];
+
+		return ($dst_dmid>0) ? $dst_dmid : null;
+	}
+
+
 	public static function finishConceptMapping($dc, $uuid) {
 		if ($uuid==-1){  #CreateConceptMapping did not create a new mapping,
 			return; # You can't finish that which was never started.
@@ -834,12 +872,17 @@ class CopyTools {
 	 * @returns an associative array, representing our row. \
 	 *	keys=column headers, values = row contents
 	 */
-	public static function getRow($dc, $table, $where) {
+	public static function getRow($dc, $table, $where, $checkremove=false) {
 		$target_table=mysql_real_escape_string("${dc}_${table}");
 		$query="SELECT * FROM $target_table ".$where;
+		if ($checkremove)
+			$query .= " AND remove_transaction_id IS NULL";
 		return CopyTools::doQuery($query);
 	}
 
+	/** same as getRow, except does not use dataset context
+	 * transactioning is only for prefixed tables, so no checkremove..
+	 */
 	public static function getRow_noDC($table, $where) {
 		$target_table=mysql_real_escape_string("${table}");
 		$query="SELECT * FROM $target_table ".$where;
@@ -854,12 +897,46 @@ class CopyTools {
 	 *	each associative array is structured with:		\
 	 *	keys=column headers, values = row contents
 	 */
-	public static function getRows($dc, $table, $where) {
+	public static function getRows($dc, $table, $where, $checkremove=false) {
 		$target_table=mysql_real_escape_string("${dc}_${table}");
 		$query="SELECT * FROM $target_table ".$where;
+		if ($checkremove)
+			$query .= " AND remove_transaction_id IS NULL";
 		return CopyTools::doMultirowQuery($query);
 	}
 
+	/** utility function, maps bootstrapped defined meanings across multiple datasets. 
+	 * @param $key_dataset: any dataset which has a known-good bootstrap table. We assume all others are the same.
+	 * @param $datasets: an array with the datasets to map (eg: array("uw", "sp", "umls") ).
+	*/
+	public static function map_bootstraps($key_dataset, $datasets) {
+		$bootstrap_raw=CopyTools::getRows($key_dataset,"bootstrapped_defined_meanings","");
+		$bootstrap=CopyTools::_table_to_assoc($bootstrap_raw, "name", "defined_meaning_id");
+		# only use the keys from the key dataset :-P
+		foreach ($bootstrap as $name => $dmid_ignored) {
+			$concepts=array();
+			foreach ($datasets as $dataset) {
+				$other_bootstrap_raw=CopyTools::getRows($dataset,"bootstrapped_defined_meanings","");
+				$other_bootstrap=CopyTools::_table_to_assoc($other_bootstrap_raw, "name", "defined_meaning_id");
+				$concepts[$dataset]=$other_bootstrap[$name];
+			}
+			createConceptMapping($concepts);
+		}
+	}
+
+	/** Takes two 2 columns from getRows, and forms them into an associative array.
+	 * @param $table	output from getRows
+	 * @param $key_column	string, name of column to use as keys
+	 * @param $value_column	string, name of column to use as values
+	 * @return an associative array, made from teh 2 columns specified
+	 */
+	protected static function _table_to_assoc($table, $key_column, $value_column) {
+		$assoc=array();
+		foreach ($table as $item) {
+			$assoc[ $item[$key_column] ]=$item[$value_column];	
+		}
+		return $assoc;
+	}
 
 	/** Performs an arbitrary SQL query and returns an associative array
 	 * Assumes that only 1 row can be returned!
@@ -1060,7 +1137,7 @@ class ClassMembershipCopier extends Copier{
 	public function read() {
 		$dc1=$this->dc1;
 		$class_member_mid=$this->old_class_member_mid;
-		return CopyTools::getRows($dc1, "class_membership", "WHERE class_member_mid=$class_member_mid");
+		return CopyTools::getRows($dc1, "class_membership", "WHERE class_member_mid=$class_member_mid", true);
 	}
 
 	public function write($memberships) {
@@ -1128,7 +1205,7 @@ class ClassAttributesCopier extends Copier {
 	public function read() {
 		$dc1=$this->dc1;
 		$class_mid=$this->src_class_mid;
-		return CopyTools::getRows($dc1, "class_attributes", "WHERE class_mid=$class_mid");
+		return CopyTools::getRows($dc1, "class_attributes", "WHERE class_mid=$class_mid", true);
 	}
 
 	public function write($attributes) {
@@ -1190,7 +1267,7 @@ class ClassAttributesCopier2 extends Copier {
 	public function read() {
 		$dc1=$this->dc1;
 		$object_id=$this->object_id;
-		return CopyTools::getRows($dc1, $this->tableName, "WHERE object_id=$object_id");
+		return CopyTools::getRows($dc1, $this->tableName, "WHERE object_id=$object_id", true);
 	}
 
 	#refactor_candidate
@@ -1400,7 +1477,7 @@ abstract class AttributeCopier extends Copier {
 		if (is_null($tableName)) 
 			throw new Exception("*AttributeCopier: cannot read: table name is null");
 
-		return CopyTools::getRows($this->dc1, $tableName, "WHERE object_id=$src_object_id");
+		return CopyTools::getRows($this->dc1, $tableName, "WHERE object_id=$src_object_id", true);
 	}
 
 	/** slightly different dup interface yet again. 
@@ -1473,7 +1550,7 @@ class OptionAttributeOptionsCopier extends Copier {
 	public function read(){
 		$dc1=$this->dc1;
 		$option_id=$this->option_id;
-		return CopyTools::getRows($dc1, $tableName, "WHERE option_id=$option_id");
+		return CopyTools::getRows($dc1, $tableName, "WHERE option_id=$option_id", true);
 	}
 
 	/**
@@ -1638,7 +1715,7 @@ class AltMeaningTextCopier extends Copier{
 	public function read() {
 		$dc1=$this->dc1;
 		$src_meaning_mid=$this->src_meaning_mid;
-		return CopyTools::getRows($dc1, $this->tableName, "WHERE meaning_mid=$src_meaning_mid");
+		return CopyTools::getRows($dc1, $this->tableName, "WHERE meaning_mid=$src_meaning_mid", true);
 	}
 
 	

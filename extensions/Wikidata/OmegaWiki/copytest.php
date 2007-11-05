@@ -56,20 +56,28 @@ function main() {
 	$sequence[]=array('69931', 'umls', 'uw');
 	$sequence[]=array('71663', 'umls', 'uw');
 	$sequence[]=array('71902', 'umls', 'uw');
+	
 	echo "Connect ... \n";
-
 	connect();
+
+	#WARNING: Do this only once! (I still need to write a small script to call this)
+	echo "doing bootstraps\n";
+
+	mysql_query("START TRANSACTION");
+	CopyTools::map_bootstraps("uw",array("uw", "sp"));
+	
+	echo "now copying\n";
+	
 	foreach ($sequence as $test) {
-		#mysql_query("START TRANSACTION");
 		$dmid=$test[0];
 		$dc1=$test[1];
 		$dc2=$test[2];
 		echo "==== $dmid:   $dc1 -> $dc2  \n";
 		doCopy($dmid,$dc1, $dc2);
 		echo "\n";
-		#mysql_query("ROLLBACK");
-		mysql_query("COMMIT");
 	}
+	mysql_query("ROLLBACK");
+	#mysql_query("COMMIT");
 }
 
 
