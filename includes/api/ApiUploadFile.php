@@ -57,8 +57,7 @@ class ApiUploadFile extends ApiBase {
         if (sizeof($_POST) > 0) {
             extract($this->extractRequestParams());
 
-            $data = array(//'wpUploadFile' => $file,
-                          'wpSourceType' => "file",
+            $data = array('wpSourceType' => "file",
                           'wpDestFile' => $destfile,
                           'wpUploadDescription' => $summary,
                           'wpWatchthis' => $watch,
@@ -117,8 +116,9 @@ class ApiUploadFile extends ApiBase {
 			}
 
 		 	$details = null;
-			$this->process($form->internalProcessUpload( $details ));
-//			$this->cleanupTempFile();
+			$value = $form->internalProcessUpload( $details );
+			$form->cleanupTempFile();
+			$this->process($value);
 
         } else {
         	$this->process( self::UPLOAD_WITHOUT_POSTPARAMETERS );
@@ -191,8 +191,8 @@ class ApiUploadFile extends ApiBase {
 	            $result['result'] = 'UPLOAD_PROTECTED_PAGE';
 			    break;
 
-			case UploadForm::OVERWRITE_NOT_ALLOWED:
-	            $result['result'] = 'UPLOAD_OVERWRITE_NOT_ALLOWED';
+			case UploadForm::OVERWRITE_EXISTING_FILE:
+	            $result['result'] = 'UPLOAD_OVERWRITE_EXISTING_FILE';
 			    break;
 
 			case UploadForm::FILETYPE_MISSING:
@@ -213,10 +213,6 @@ class ApiUploadFile extends ApiBase {
 
 			case UploadForm::UPLOAD_WARNING:
 	            $result['result'] = 'UPLOAD_WARNING';
-			    break;
-
-			case UploadForm::OVERWRITE_EXISTING_FILES:
-	            $result['result'] = 'UPLOAD_OVERWRITE_EXISTING_FILES';
 			    break;
 
             default :
@@ -279,18 +275,17 @@ class ApiUploadFile extends ApiBase {
 				"Multipart post request:  api.php ? action=upload ",
 				"Post Parameters:",
 				"  upfile=<path_to_file>",
-				"  upsourcetype=<file>",
 				"  updestfile=<file_name.jpg>",
 				"  upsummary=<summary>",
 				"  [upwatch=yes/no]",
 				"  [upignore=yes/no]",
 				"  [uplicense=<License>]",
 				"  [upuserid=<userId>]",
-				"  [uplgtoken=lgToken]",
+				"  [upusertoken=lgToken]",
 			);
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiUploadFile.php 23819 2007-08-29 14:45:09Z abernala $';
+		return __CLASS__ . ': $Id: ApiUploadFile.php 23819 2007-11-06 17:45:10Z abernala $';
 	}
 }
