@@ -37,7 +37,7 @@ $wgExtensionCredits['specialpage'][] = array(
         'description' => 'Adds a special page for reviewing tasks assignments'
 );
 
-$wgUseProjects = true;
+$wgUseProjects = false;
 
 $wgAutoloadClasses['TaskList'] = dirname(__FILE__) . '/SpecialTaskList_body.php';
 $wgSpecialPages['TaskList'] = 'TaskList';
