@@ -280,9 +280,10 @@ $wgExpandTemplatesMessages['oc'] = array(
 	'expand_templates_intro'           => 'Aquesta pagina permet de testar l’espandiment de modèls, que son desvolopats recursivament. Las foncions e las variablas predefinidas, coma <nowiki>{{</nowiki>#if:...}} e <nowiki>{{</nowiki>CURRENTDAY}} tanben son desvolopadas.',
 	'expand_templates_title'           => 'Títol de l’article, util per exemple se lo modèl utiliza {{PAGENAME}} :',
 	'expand_templates_input'           => 'Picatz vòstre tèxt aicí :',
-	'expand_templates_output'          => 'Visualizatz lo resultat',
+	'expand_templates_output'          => 'Visualizatz lo resultat :',
 	'expand_templates_ok'              => 'D\'acòrdi',
 	'expand_templates_remove_comments' => 'Suprimir los comentaris.',
+	'expand_templates_preview'         => 'Previsualizacion',
 );
 $wgExpandTemplatesMessages['pl'] = array(
 	'expandtemplates'                  => 'Rozwijanie szablonów',

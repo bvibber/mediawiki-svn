@@ -73,6 +73,11 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'Siamo spiacenti, non è consentito salvare una voce con questo titolo.',
 ),
 
+'la' => array(
+	'block_title_error_page_title' => 'Titulus obstructus',
+	'block_title_error' => 'Paginam huius tituli servare non licet.',
+),
+
 'nl' => array(
 	'block_title_error_page_title' => 'Geblokkeerde paginanaam',
 	'block_title_error' => 'Sorry, het is niet toegestaan een pagina met deze naam op te slaan.',

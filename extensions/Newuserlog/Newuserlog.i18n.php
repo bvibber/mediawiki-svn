@@ -190,6 +190,10 @@ $wgNewuserlogMessages['la'] = array(
 	'newuserlog-create-entry'  => 'Usor novus',
 	'newuserlog-create2-entry' => 'creavit rationem pro $1',
 );
+$wgNewuserlogMessages['lb'] = array(
+	'newuserlogpagetext'       => 'Dëst ass d\'Lescht vun de Benotzernimm déi ugeluecht goufen',
+	'newuserlog-create-entry'  => 'Neie Benotzer',
+);
 $wgNewuserlogMessages['lo'] = array(
 	'newuserlogpage'           => 'ບັນທຶກການສ້າງບັນຊີຜູ້ໃຊ້',
 	'newuserlogpagetext'       => 'ນີ້ແມ່ນ ບັນທຶກການສ້າງ ບັນຊີຜູ້ໃຊ້ໃໝ່',

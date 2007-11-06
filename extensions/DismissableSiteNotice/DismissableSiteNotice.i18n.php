@@ -97,8 +97,12 @@ $wgDismissableSiteNoticeMessages['kk-tr'] = array(
 $wgDismissableSiteNoticeMessages['kk-cn'] = array(
 	'sitenotice_close' => 'تاسالاۋ',
 );
+
 $wgDismissableSiteNoticeMessages['kk']= $wgDismissableSiteNoticeMessages['kk-kz'];
 
+$wgDismissableSiteNoticeMessages['lb'] = array(
+	'sitenotice_close' => 'verstoppen',
+);
 
 $wgDismissableSiteNoticeMessages['lt'] = array(
 	'sitenotice_close' => 'paslėpti',

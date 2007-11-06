@@ -22,6 +22,10 @@ $wgLanguageManagerMessages['bn'] = array(
 	'langman_title' => 'ভাষা ব্যবস্থাপক',
 	'languages' => 'Wikidata: ভাষা ব্যবস্থাপক',
 );
+$wgLanguageManagerMessages['br'] = array(
+	'langman_title' => 'Merer yezhoù',
+	'languages' => 'Wikidata: Merer yezhoù',
+);
 $wgLanguageManagerMessages['de'] = array(
 	'langman_title' => 'Sprachmanager',
 );
