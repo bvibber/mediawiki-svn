@@ -67,7 +67,7 @@ $wgDeletedContribsMessages['eu'] = array(
 );
 
 $wgDeletedContribsMessages['fa'] = array(
-	'deletedcontributions' => 'مشارکت‌های حذف شد',
+	'deletedcontributions' => 'مشارکت‌های حذف شده',
 );
 
 $wgDeletedContribsMessages['fi'] = array(
