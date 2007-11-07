@@ -16,6 +16,22 @@ $allMessages = array(
 		'tasklistbyname'          => '== Todo List for %s ==',
 	),
 
+	'de' => array(
+		'tasklist'                => 'Aufgabenliste',
+		'tasklistbyproject'       => 'Aufgabenliste pro Projekt',
+		'tasklistunknownproject'  => 'Unbekanntes Projekt',
+		'tasklistunspecuser'      => 'Unbestimmter Benutzername',
+		'tasklistincorrectuser'   => 'Falscher Benutzername',
+		'tasklistemail'           => 'Hallo %s',
+		'tasklistemailsubject'    => '[%s]-Aufgabenliste Änderungen',
+		'tasklistmytasks'         => 'Meine Aufgaben',
+		'tasklistbyprojectbad'    => "Projekt '''%s''' ist nicht vorhanden. Für eine Liste gültiger Projekt siehe [[MediaWiki:TodoTasksValidProjects]].",
+		'tasklistbyprojname'      => "Zugewiesene Aufgaben für '''%s'''",
+		'tasklistchooseproj'      => 'Projekt: auswählen:',
+		'tasklistprojdisp'        => 'Anzeigen',
+		'tasklistbyname'          => '== Aufgabenliste für %s ==',
+	),
+
 	'gl' => array(
 		'tasklistunknownproject'  => 'Proxecto descoñecido',
 		'tasklistunspecuser'      => 'Usuario sen especificar',
