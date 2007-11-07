@@ -3,7 +3,7 @@
 // HAWHAW: HTML and WML hybrid adapted webserver
 // PHP class library
 // Copyright (C) 2007 Norbert Huffschmid
-// Last modified: 11. April 2007
+// Last modified: 7. November 2007
 //
 // This library is free software; you can redistribute it and/or modify it under the
 // terms of the GNU Library General Public License as published by the Free Software
@@ -13,7 +13,7 @@
 // This library is distributed in the hope that it will be useful, but WITHOUT ANY
 // WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 // PARTICULAR PURPOSE. See the GNU Library General Public License for more details.
-// http://www.gnu.org/copyleft/lgpl.html
+// http://www.gnu.org/copyleft/library.html
 //
 // If you modify this library, you have to make sure that the "powered by HAWHAW"
 // copyright link below the display area is kept unchanged.
@@ -21,15 +21,34 @@
 // For further information about this library and its license terms please visit:
 // http://www.hawhaw.de/
 //
-// modifications against V5.13:
-// - bugfix: no VoiceXML timeout for non-triggerable HAW_phone objects
-// - new feature: dotmobi compliance
-// - optimization: create "submit links" for Nokia WAP browsers 
-// - bugfix: "0"-string in add_option() and add_button()
+// changes against V5.15:
+// - optimization: consider HTTP_UA_OS header in browser detection
+
+###################################
+#   BEGIN OF CONFIGURATION PART   #
+###################################
+
+# path to your TeraWurfl installation (if any)
+# http://www.tera-wurfl.com/
+# Tera-WURFL can be used OPTIONALLY for improved device detection
+# recommended settings in tera_wurfl_config.php:
+#   define("MATCH_TO_UA_PREFIX", false);
+#   define("RETURN_GENERIC", true);
+# un-comment and adapt the following define statement
+#   in order to activate Tera-WURFL usage
+//define("HAW_TERA_WURFL_PATH", "../TeraWurfl");
+
+###################################
+#    END OF CONFIGURATION PART    #
+###################################
 
 // miscellaneous constants
-define("HAW_VERSION", "HAWHAW V5.14B");
+define("HAW_HAW_VERSION", "HAWHAW V5.16B");
 define("HAW_COPYRIGHT", "(C) Norbert Huffschmid");
+if (defined("HAW_TERA_WURFL_PATH"))
+  define("HAW_VERSION", HAW_HAW_VERSION . "/Tera-WURFL");
+else
+  define("HAW_VERSION", HAW_HAW_VERSION);
 
 // constants for markup languages
 define("HAW_HTML", 1);
@@ -523,13 +542,14 @@ class HAW_deck
   var $timeout;
   var $red_url;
   var $disable_cache = false;
+  var $css = "";
   var $ml;
   var $element = array();
-  var $number_of_elements;
-  var $number_of_forms;
-  var $number_of_linksets;
-  var $number_of_links;
-  var $number_of_phones;
+  var $number_of_elements = 0;
+  var $number_of_forms = 0;
+  var $number_of_linksets = 0;
+  var $number_of_links = 0;
+  var $number_of_phones = 0;
   var $top_banners;
   var $number_of_top_banners = 0;
   var $bottom_banners;
@@ -646,7 +666,12 @@ class HAW_deck
     else
       $HTTP_ACCEPT = "";
 
-    if (isset($_SERVER['HTTP_HOST']))
+    if (isset($_SERVER['HTTP_UA_OS']))
+      $HTTP_UA_OS = $_SERVER['HTTP_UA_OS'];
+    else
+      $HTTP_UA_OS = "";
+
+      if (isset($_SERVER['HTTP_HOST']))
       $HTTP_HOST = $_SERVER['HTTP_HOST'];
     else
       $HTTP_HOST = "";
@@ -755,154 +780,14 @@ class HAW_deck
       }
     }
 
-    // determine markup language to create
-
-    if (strstr(strtolower($HTTP_USER_AGENT), "docomo") ||
-        strstr(strtolower($HTTP_USER_AGENT), "portalmmm") ||
-        strstr(strtolower($HTTP_USER_AGENT), "o2imode") ||
-        strstr(strtolower($HTTP_USER_AGENT), "opera ") ||
-        strstr(strtolower($HTTP_USER_AGENT), "reqwirelessweb") ||
-        strstr(strtolower($HTTP_ACCEPT), "vnd.wap.xhtml"))
+    if (defined("HAW_TERA_WURFL_PATH") && !$forced_output)
     {
-      $this->ml = HAW_HTML;   // create HTML (even when device accepts text/vnd.wap.wml too!)
-    }
-    elseif (strstr(strtolower($HTTP_ACCEPT), "text/vnd.wap.wml"))
-    {
-      $this->ml = HAW_WML;  // create WML
-
-      if (strstr($HTTP_USER_AGENT, "UP/") ||
-          strstr($HTTP_USER_AGENT, "UP.B"))
-        $this->upbrowser = true; // UP browser
-
-      if ((strstr($HTTP_USER_AGENT, "UP/") ||
-           strstr($HTTP_USER_AGENT, "UP.B")) &&
-           strstr($HTTP_USER_AGENT, "GUI") &&
-           strstr($HTTP_USER_AGENT, "UP.Link")) // Non-UP.Link gateways sometimes have problems!
-        $this->owgui_1_3 = true; // device accepts Openwave GUI extensions for WML 1.3
-    }
-    elseif (strstr(strtolower($HTTP_ACCEPT), "hdml;version=3.")) // HDML 3.0 and 3.1
-      $this->ml = HAW_HDML; // create HDML
-    elseif (strstr(strtolower($HTTP_ACCEPT), "vxml") ||               // VoiceXML signalled in accept header
-            strstr(strtolower($HTTP_ACCEPT), "voicexml") ||           // alternative accept header
-            strstr($HTTP_USER_AGENT, "OpenVXI") ||                    // Speechworks OpenVXI
-            strstr(strtolower($HTTP_USER_AGENT), "publicvoicexml") || // PublicVoiceXML voice browser
-            strstr(strtolower($HTTP_USER_AGENT), "hastenix") ||       // hawhaw asterisk adapter
-            strstr($HTTP_USER_AGENT, "Tellme"))                       // Tellme studio voice browser
-    {
-      $this->ml = HAW_VXML; // create VoiceXML
-
-      // PublicVoiceXML browser cannot handle <break> elements!!!
-      if (strstr(strtolower($HTTP_USER_AGENT), "publicvoicexml"))
-      {
-        $this->supportsVXMLBreakTag = false;
-      }
-
-      // detect Motorola VoiceXML platform
-      if (strstr(strtolower($HTTP_USER_AGENT), "motorola"))
-      {
-        $this->MotorolaVoiceXML = true;
-      }
+      $this->determine_capabilities_terawurfl();
     }
     else
     {
-      if (strstr($HTTP_USER_AGENT, "Mozilla") ||
-          strstr($HTTP_USER_AGENT, "MSIE") ||
-          strstr(strtolower($HTTP_USER_AGENT), "lynx") ||
-          strstr(strtolower($HTTP_USER_AGENT), "avantgo") ||
-          strstr(strtolower($HTTP_USER_AGENT), "pendragonweb") ||
-          strstr(strtolower($HTTP_USER_AGENT), "j-"))
-        $this->ml = HAW_HTML;   // HTML-based browser
-      else
-      {
-      	if (!$HTTP_ACCEPT ||
-      	     (strcmp(substr($_SERVER['HTTP_HOST'], -5), '.mobi') == 0))
-      	{
-          // let's be dotmobi compliant ...
-          $this->ml = HAW_HTML;
-          $this->xhtml = true;
-          $this->pureHTML = false;
-          $this->display_banners = false;
-          $this->gif_enabled = true;
-          $this->css_enabled = true;
-      	}
-      	else
-          $this->ml = HAW_WML;    // try it with WML
-      }
+      $this->determine_capabilities_generic($HTTP_USER_AGENT, $HTTP_ACCEPT, $HTTP_UA_OS);
     }
-
-    $this->number_of_elements = 0;
-    $this->number_of_forms = 0;
-    $this->number_of_linksets = 0;
-    $this->number_of_links = 0;
-    $this->number_of_phones = 0;
-
-
-
-    if (strstr(strtolower($HTTP_ACCEPT), "vnd.wap.xhtml") ||
-        strstr(strtolower($HTTP_USER_AGENT), "opera mini") ||
-        strstr(strtolower($HTTP_USER_AGENT), "google wireless transcoder"))
-    {
-      // XHTML device detected
-      $this->xhtml = true;
-      $this->pureHTML = false;
-      $this->display_banners = false;
-      $this->gif_enabled = true;
-      $this->css_enabled = true;
-    }
-    elseif ( strstr(strtolower($HTTP_USER_AGENT), "avantgo") ||
-             strstr(strtolower($HTTP_USER_AGENT), "reqwirelessweb") ||
-             strstr(strtolower($HTTP_USER_AGENT), "pendragonweb") ||
-             strstr(strtolower($HTTP_USER_AGENT), "palmos") ||
-             strstr(strtolower($HTTP_USER_AGENT), "windows ce") ||
-             strstr($HTTP_USER_AGENT, "Mozilla/4.7"))
-    {
-      // PDA browser detected  (or poor old Netscape 4.7x which messes with CSS)
-      $this->PDAstyle = true;
-      $this->pureHTML = false;
-      $this->display_banners = false;
-    }
-    elseif (strstr(strtolower($HTTP_USER_AGENT), "docomo") ||
-            strstr(strtolower($HTTP_USER_AGENT), "portalmmm") ||
-            strstr(strtolower($HTTP_USER_AGENT), "o2imode"))
-    {
-      // i-mode browser detected
-      $this->iModestyle = true;
-      $this->pureHTML = false;
-      $this->display_banners = false;
-    }
-    elseif (strstr(strtolower($HTTP_USER_AGENT), "j-"))
-    {
-      // MML browser detected
-      $this->MMLstyle = true;
-      $this->pureHTML = false;
-      $this->display_banners = false;
-    }
-    elseif (strstr(strtolower($HTTP_USER_AGENT), "lynx"))
-    {
-      // text browser detected
-      $this->lynx = true;
-      $this->css_enabled = true; // enabled in the meaning of silently discarding it ...
-      $this->pureHTML = true;
-      $this->display_banners = false;
-    }
-
-    // determine if browser is CSS-enbled
-    if (($this->ml == HAW_HTML) &&
-        (strstr($HTTP_USER_AGENT, "MSIE") ||
-         strstr($HTTP_USER_AGENT, "Mozilla") ||
-         strstr($HTTP_USER_AGENT, "Opera")))
-      $this->css_enabled = true;
-
-    // determine if browser is able to display GIF images
-    if (($this->ml == HAW_HTML) ||
-        (strstr(strtolower($HTTP_ACCEPT), "image/gif")) ||
-        (strstr(strtolower($HTTP_USER_AGENT), "t68")))
-      $this->gif_enabled = true; // browsers can display GIF
-
-    // determine how forms are to be transmitted 
-    if (strstr(strtolower($HTTP_USER_AGENT), "ericsson") ||
-        (strstr(strtolower($HTTP_USER_AGENT), "nokia")))
-      $this->submitViaLink = true; // with some WAP devices it's quite difficult to submit WML forms
   }
 
 
@@ -1320,6 +1205,16 @@ class HAW_deck
   function set_bgcolor($bgcolor)
   {
     $this->bgcolor = $bgcolor;
+  }
+
+
+  /**
+    Sets a css file for css-enabled browsers.
+    @param css file with css (cascading style sheets) declarations.
+  */
+  function set_css($css)
+  {
+    $this->css = $css;
   }
 
 
@@ -1774,6 +1669,10 @@ class HAW_deck
 
       if ($this->xhtml)
       {
+        // advice transcoding proxies (http://dev.mobi/node/611)
+        header("cache-control: no-transform");
+        header("vary: User-Agent, Accept");
+
         printf("<?xml version=\"1.0\" encoding=\"%s\"?>\n", $this->charset);
 
         if ($this->lynx)
@@ -1840,6 +1739,11 @@ class HAW_deck
         echo "<meta name=\"HandheldFriendly\" content=\"True\" $endtag\n";
       }
 
+      if ($this->css_enabled && $this->css)
+      {
+        printf("<link href=\"%s\" type=\"text/css\" rel=\"stylesheet\" />\n", $this->css);
+      }
+
       // init style properties
       $bgcolor = "";
       $background = "";
@@ -1872,15 +1776,18 @@ class HAW_deck
             $bodystyle .= sprintf("background-image:url(%s); ", $this->background);
           }
 
-          // set display defaults, if not assigned by yet
-          if (!$this->disp_bgcolor)
-            $this->disp_bgcolor = HAW_DISP_BGCOLOR;
-          if (!$this->link_color)
-            $this->link_color = HAW_DISP_LINKCOLOR;
-          if (!$this->vlink_color)
-            $this->vlink_color = HAW_DISP_VLINKCOLOR;
-          if (!$this->face)
-            $this->face = HAW_DISP_FACE;
+          if (!$this->css) // settings in css-file have priority
+          {
+            // set display defaults, if not assigned by yet
+            if (!$this->disp_bgcolor)
+              $this->disp_bgcolor = HAW_DISP_BGCOLOR;
+            if (!$this->link_color)
+              $this->link_color = HAW_DISP_LINKCOLOR;
+            if (!$this->vlink_color)
+              $this->vlink_color = HAW_DISP_VLINKCOLOR;
+            if (!$this->face)
+              $this->face = HAW_DISP_FACE;
+          }
         }
         else
         {
@@ -2291,10 +2198,11 @@ class HAW_deck
 
         if (!$this->lynx)
         {
+        	$default_text = "Powered by HAWHAW (C)";
           if ($haw_license_holder && $haw_signature)
           {
             if ($haw_signature == 1)
-              $signature = "<small>Powered by HAWHAW (C)</small>\n";
+              $signature = "<small>" . $default_text . "</small>\n";
             else
               if ($haw_sig_text)
                 if ($haw_sig_link)
@@ -2303,7 +2211,8 @@ class HAW_deck
                   $signature = sprintf("<small>%s</small>\n", $haw_sig_text);
           }
           else
-            $signature = sprintf("<a href=\"http://info.hawhaw.de/index.htm?host=%s\" target=\"_blank\"><small>Powered by HAWHAW (C)</small></a>\n", $this->waphome);
+            $signature = sprintf("<a href=\"http://info.hawhaw.de/index.htm?host=%s\" target=\"_blank\"><small>%s</small></a>\n",
+                                 $this->waphome, $default_text);
 
           echo $signature;
         }
@@ -2386,6 +2295,238 @@ class HAW_deck
       HAW_voice_eventhandler("nomatch", $this->voice_nomatch, $this);
 
       echo "</vxml>\n";
+    }
+  }
+  
+  function determine_capabilities_generic($HTTP_USER_AGENT, $HTTP_ACCEPT, $HTTP_UA_OS)
+  {
+    if (strstr(strtolower($HTTP_USER_AGENT), "docomo") ||
+        strstr(strtolower($HTTP_USER_AGENT), "portalmmm") ||
+        strstr(strtolower($HTTP_USER_AGENT), "o2imode") ||
+        strstr(strtolower($HTTP_USER_AGENT), "opera ") ||
+        strstr(strtolower($HTTP_USER_AGENT), "reqwirelessweb") ||
+        strstr(strtolower($HTTP_ACCEPT), "vnd.wap.xhtml"))
+    {
+      $this->ml = HAW_HTML;   // create HTML (even when device accepts text/vnd.wap.wml too!)
+    }
+    elseif (strstr(strtolower($HTTP_ACCEPT), "text/vnd.wap.wml"))
+    {
+      $this->ml = HAW_WML;  // create WML
+
+      if (strstr($HTTP_USER_AGENT, "UP/") ||
+          strstr($HTTP_USER_AGENT, "UP.B"))
+        $this->upbrowser = true; // UP browser
+
+      if ((strstr($HTTP_USER_AGENT, "UP/") ||
+           strstr($HTTP_USER_AGENT, "UP.B")) &&
+           strstr($HTTP_USER_AGENT, "GUI") &&
+           strstr($HTTP_USER_AGENT, "UP.Link")) // Non-UP.Link gateways sometimes have problems!
+        $this->owgui_1_3 = true; // device accepts Openwave GUI extensions for WML 1.3
+    }
+    elseif (strstr(strtolower($HTTP_ACCEPT), "hdml;version=3.")) // HDML 3.0 and 3.1
+      $this->ml = HAW_HDML; // create HDML
+    elseif (strstr(strtolower($HTTP_ACCEPT), "vxml") ||               // VoiceXML signalled in accept header
+            strstr(strtolower($HTTP_ACCEPT), "voicexml") ||           // alternative accept header
+            strstr($HTTP_USER_AGENT, "OpenVXI") ||                    // Speechworks OpenVXI
+            strstr(strtolower($HTTP_USER_AGENT), "publicvoicexml") || // PublicVoiceXML voice browser
+            strstr(strtolower($HTTP_USER_AGENT), "hastenix") ||       // hawhaw asterisk adapter
+            strstr($HTTP_USER_AGENT, "Tellme"))                       // Tellme studio voice browser
+    {
+      $this->ml = HAW_VXML; // create VoiceXML
+
+      // PublicVoiceXML browser cannot handle <break> elements!!!
+      if (strstr(strtolower($HTTP_USER_AGENT), "publicvoicexml"))
+      {
+        $this->supportsVXMLBreakTag = false;
+      }
+
+      // detect Motorola VoiceXML platform
+      if (strstr(strtolower($HTTP_USER_AGENT), "motorola"))
+      {
+        $this->MotorolaVoiceXML = true;
+      }
+    }
+    else
+    {
+      if (strstr($HTTP_USER_AGENT, "Mozilla") ||
+          strstr($HTTP_USER_AGENT, "MSIE") ||
+          strstr(strtolower($HTTP_USER_AGENT), "lynx") ||
+          strstr(strtolower($HTTP_USER_AGENT), "avantgo") ||
+          strstr(strtolower($HTTP_USER_AGENT), "pendragonweb") ||
+          strstr(strtolower($HTTP_USER_AGENT), "j-"))
+        $this->ml = HAW_HTML;   // HTML-based browser
+      else
+      {
+      	if (!$HTTP_ACCEPT ||
+      	     (strcmp(substr($_SERVER['HTTP_HOST'], -5), '.mobi') == 0))
+      	{
+          // let's be dotmobi compliant ...
+          $this->ml = HAW_HTML;
+          $this->xhtml = true;
+          $this->pureHTML = false;
+          $this->display_banners = false;
+          $this->gif_enabled = true;
+          $this->css_enabled = true;
+      	}
+      	else
+          $this->ml = HAW_WML;    // try it with WML
+      }
+    }
+
+    if (strstr(strtolower($HTTP_ACCEPT), "vnd.wap.xhtml") ||
+        strstr(strtolower($HTTP_USER_AGENT), "opera mini") ||
+        strstr(strtolower($HTTP_USER_AGENT), "google wireless transcoder") ||
+        strstr($HTTP_USER_AGENT, "iPhone"))
+    {
+      // XHTML device detected
+      $this->xhtml = true;
+      $this->pureHTML = false;
+      $this->display_banners = false;
+      $this->gif_enabled = true;
+      $this->css_enabled = true;
+    }
+    elseif ( strstr(strtolower($HTTP_USER_AGENT), "avantgo") ||
+             strstr(strtolower($HTTP_USER_AGENT), "reqwirelessweb") ||
+             strstr(strtolower($HTTP_USER_AGENT), "pendragonweb") ||
+             strstr(strtolower($HTTP_USER_AGENT), "palmos") ||
+             strstr(strtolower($HTTP_USER_AGENT), "windows ce") ||
+             strstr(strtolower($HTTP_UA_OS),      "windows ce") ||
+             strstr($HTTP_USER_AGENT, "Mozilla/4.7"))
+    {
+      // PDA browser detected  (or poor old Netscape 4.7x which messes with CSS)
+      $this->PDAstyle = true;
+      $this->pureHTML = false;
+      $this->display_banners = false;
+    }
+    elseif (strstr(strtolower($HTTP_USER_AGENT), "docomo") ||
+            strstr(strtolower($HTTP_USER_AGENT), "portalmmm") ||
+            strstr(strtolower($HTTP_USER_AGENT), "o2imode"))
+    {
+      // i-mode browser detected
+      $this->iModestyle = true;
+      $this->pureHTML = false;
+      $this->display_banners = false;
+    }
+    elseif (strstr(strtolower($HTTP_USER_AGENT), "j-"))
+    {
+      // MML browser detected
+      $this->MMLstyle = true;
+      $this->pureHTML = false;
+      $this->display_banners = false;
+    }
+    elseif (strstr(strtolower($HTTP_USER_AGENT), "lynx"))
+    {
+      // text browser detected
+      $this->lynx = true;
+      $this->css_enabled = true; // enabled in the meaning of silently discarding it ...
+      $this->pureHTML = true;
+      $this->display_banners = false;
+    }
+
+    // determine if browser is CSS-enbled
+    if (($this->ml == HAW_HTML) &&
+        (strstr($HTTP_USER_AGENT, "MSIE") ||
+         strstr($HTTP_USER_AGENT, "Mozilla") ||
+         strstr($HTTP_USER_AGENT, "Opera")))
+      $this->css_enabled = true;
+
+    // determine if browser is able to display GIF images
+    if (($this->ml == HAW_HTML) ||
+        (strstr(strtolower($HTTP_ACCEPT), "image/gif")) ||
+        (strstr(strtolower($HTTP_USER_AGENT), "t68")))
+      $this->gif_enabled = true; // browsers can display GIF
+
+    // determine how forms are to be transmitted 
+    if (strstr(strtolower($HTTP_USER_AGENT), "ericsson") ||
+        (strstr(strtolower($HTTP_USER_AGENT), "nokia")))
+      $this->submitViaLink = true; // with some WAP devices it's quite difficult to submit WML forms
+  }
+  
+  function determine_capabilities_terawurfl()
+  {
+    require_once(dirname(__FILE__) . '/' . HAW_TERA_WURFL_PATH . '/tera_wurfl_config.php');
+    require_once(WURFL_CLASS_FILE);
+
+    $wurflObj = new tera_wurfl();
+
+    // get the capabilites from the user agent and take a look at the
+    // HTTP-ACCEPT headers in case the user agent is not found
+    $identified = $wurflObj->GetDeviceCapabilitiesFromAgent($_SERVER['HTTP_USER_AGENT'], true);
+    
+    if ($identified)
+    {
+      $cap = $wurflObj->capabilities;
+
+      if ($cap['product_info']['is_wireless_device'])
+      {
+        // wireless device    	
+
+        $this->pureHTML = false;
+        $this->display_banners = false;
+      
+        if ($cap['markup']['xhtml_support_level'] >= 1)
+        {
+          // XHTML-capable device
+          $this->ml = HAW_HTML;
+          $this->xhtml = true;
+          $this->css_enabled = true;
+        }
+        else if ($cap['markup']['html_wi_imode_html_1'] ||
+                 $cap['markup']['html_wi_imode_html_2'] ||
+                 $cap['markup']['html_wi_imode_html_3'] ||
+                 $cap['markup']['html_wi_imode_html_4'] ||
+                 $cap['markup']['html_wi_imode_html_5'])
+        {
+          // i-Mode device
+          $this->ml = HAW_HTML;
+          $this->iModestyle = true;
+        }
+        else if ($cap['markup']['html_web_3_2'] ||
+                 $cap['markup']['html_web_4_0'])
+        {
+          // HTML-prefering device
+          $this->ml = HAW_HTML;
+          $this->PDAstyle = true;
+        }
+        else if ($cap['markup']['wml_1_1'] ||
+                 $cap['markup']['wml_1_2'] ||
+                 $cap['markup']['wml_1_3'])
+        {
+          // WML device
+          $this->ml = HAW_WML;
+
+          if ($cap['wml_ui']['opwv_wml_extensions_support'])
+            $this->owgui_1_3 = true; // device accepts Openwave GUI extensions for WML 1.3
+        }
+      }
+      else
+      {
+        // no wireless device
+
+        if ($cap['markup']['voicexml'])
+        {
+          $this->ml = HAW_VXML;
+        }
+        else
+        {
+          // treat it as normal web browser
+          $this->ml = HAW_HTML;
+          $this->css_enabled = true;
+        }
+      }
+    
+      if ($cap['image_format']['gif'])
+        $this->gif_enabled = true;
+    }
+    else
+    {
+      // Tera-WURFL was not able to identify device
+      $this->pureHTML = false;
+      $this->display_banners = false;
+      $this->ml = HAW_HTML;
+      $this->xhtml = true;
+      $this->css_enabled = true;
+      $this->gif_enabled = true;
     }
   }
 };
@@ -2861,6 +3002,7 @@ class HAW_text
   var $attrib;
   var $color;
   var $boxcolor;
+  var $css_class;
   var $br;
   var $voice_text;
   var $voice_audio_src;
@@ -2884,6 +3026,7 @@ class HAW_text
     $this->attrib = $attrib;
     $this->color = "";
     $this->boxcolor = "";
+    $this->css_class = "";
     $this->br = 1; // default: 1 line break after text
     $this->voice_text = $text;
     $this->voice_audio_src = "";
@@ -2901,6 +3044,15 @@ class HAW_text
   {
     $this->color = $color;
     $this->boxcolor = $boxcolor;
+  }
+
+  /**
+    Sets a css class for this object in a (X)HTML page.
+    @param css_class CSS class to be defined in the deck's central CSS file
+  */
+  function set_css_class($css_class)
+  {
+    $this->css_class = $css_class;
   }
 
   /**
@@ -3048,9 +3200,19 @@ class HAW_text
           printf("<font color=\"%s\">", $this->color);
       }
 
+      if (($deck->ml == HAW_HTML) && $deck->css_enabled && $this->css_class)
+      {
+        printf("<span class=\"%s\">\n", $this->css_class);
+      }
+
       // print text
       if (isset($this->text))
         printf("%s\n", HAW_specchar($this->text, $deck));
+
+      if (($deck->ml == HAW_HTML) && $deck->css_enabled && $this->css_class)
+      {
+        echo "</span>\n";
+      }
 
       if (($deck->ml == HAW_HTML) && $this->color)
       {
@@ -3156,6 +3318,8 @@ class HAW_image
   var $localsrc;
   var $chtml_icon;
   var $mml_icon;
+  var $html_width;
+  var $html_height;
   var $voice_text;
   var $voice_audio_src;
 
@@ -3180,6 +3344,8 @@ class HAW_image
     $this->localsrc = "";	// no localsrc attribute
     $this->chtml_icon = 0;	// no cHTML icon
     $this->mml_icon = 0;	// no MML icon
+    $this->html_width = ""; // not specified
+    $this->html_height = "";// not specified
     $this->voice_text = "";
     $this->voice_audio_src = "";
   }
@@ -3241,6 +3407,24 @@ class HAW_image
   }
 
   /**
+    Specifies the width of the HTML image.
+    @param width image width in pixels.
+  */
+  function set_html_width($width)
+  {
+    $this->html_width = $width;
+  }
+
+  /**
+    Specifies the height of the HTML image.
+    @param height image height in pixels.
+  */
+  function set_html_height($height)
+  {
+    $this->html_height = $height;
+  }
+
+  /**
     Sets text to be spoken by voice browsers. <br>
     @param text Some text that represents the image for voice users.
     @param audio_src Some audio file (e.g. *.wav file) to play (optional).
@@ -3294,6 +3478,12 @@ class HAW_image
     {
       // HTML or WML
 
+      $size = "";
+      if ($this->html_width)
+        $size .= sprintf(" width=\"%d\"", $this->html_width);
+      if ($this->html_height)
+        $size .= sprintf(" height=\"%d\"", $this->html_height);
+      
       if ($deck->ml == HAW_HTML)
       {
         // HTML
@@ -3312,8 +3502,8 @@ class HAW_image
         {
           // use HTML bitmap
 
-          printf("<img src=\"%s\" alt=\"%s\" />\n",
-                 $this->src_html, HAW_specchar($this->alt, $deck));
+          printf("<img src=\"%s\" alt=\"%s\"%s />\n",
+                 $this->src_html, HAW_specchar($this->alt, $deck), $size);
         }
 
         // evaluate HTML break instruction
@@ -3335,8 +3525,8 @@ class HAW_image
 
         if ($deck->gif_enabled && (substr(strtolower($this->src_html), -4) == ".gif"))
           // user agent is able to display the provided GIF image
-          printf("<img src=\"%s\" alt=\"%s\"%s/>\n", $this->src_html,
-                  HAW_specchar($this->alt, $deck), $localsrc);
+          printf("<img src=\"%s\" alt=\"%s\"%s%s/>\n", $this->src_html,
+                  HAW_specchar($this->alt, $deck), $localsrc, $size);
 
         elseif (strstr(strtolower($HTTP_ACCEPT), "image/vnd.wap.wbmp"))
           // user agent is able to display .wbmp image
@@ -3469,7 +3659,7 @@ class HAW_table
     if ($deck->ml == HAW_HTML)
     {
       // HTML
-      if ($deck->xhtml)
+      if ($deck->xhtml && !$deck->css)
         // border attribute is not allowed in XHTML
         echo "<table style=\"border-width:1px; border-style:solid;\">\n";
       else
@@ -5250,6 +5440,7 @@ class HAW_link
   var $url;
   var $title;
   var $accesskey; // "1", "2", ... "0", "*", "#"
+  var $css_class;
   var $br;
   var $voice_text;
   var $voice_audio_src;
@@ -5272,11 +5463,21 @@ class HAW_link
     $this->title = $title;
     $this->accesskey = HAW_NO_ACCESSKEY; // no accesskey assigned
                                          // can be assigned later e.g. from HAW_linkset object if required
+    $this->css_class = "";
     $this->br = 1; // default: 1 line break after text
     $this->voice_text = $label;
     $this->voice_audio_src = "";
     $this->voice_timeout = 10; // voice decks with text and links only terminate after 10 sec
     $this->voice_input = $label;
+  }
+
+  /**
+    Sets a css class for this object in a (X)HTML page.
+    @param css_class CSS class to be defined in the deck's central CSS file
+  */
+  function set_css_class($css_class)
+  {
+    $this->css_class = $css_class;
   }
 
   /**
@@ -5409,9 +5610,19 @@ class HAW_link
         for ($i=0; $i < $this->br; $i++)
           $br .= "<br />";
 
+        if ($deck->css_enabled && $this->css_class)
+        {
+          printf("<span class=\"%s\">\n", $this->css_class);
+        }
+
         printf("[<a href=\"%s\"%s%s>%s</a>]%s\n",
                HAW_specchar($this->url, $deck), $title_option, $accesskey_option,
                HAW_specchar($this->label, $deck), $br);
+
+        if ($deck->css_enabled && $this->css_class)
+        {
+          echo "</span>\n";
+        }
       }
 
       elseif ($deck->ml == HAW_WML)
