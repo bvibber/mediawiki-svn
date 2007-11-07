@@ -29,9 +29,10 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Current items',
 	'badimages-unprivileged' => '(You do not have sufficient permission to alter the list)',
 	'badimages-log-name' => 'Bad image list',
-	'badimages-log-header' => 'This is a log of changes to the [[Help:Bad image list|bad image list]].',
+	'badimages-log-header' => 'This is a log of changes to the [[{{MediaWiki:Badimages-page}}|bad image list]].',
 	'badimages-log-add' => 'added [[$1]] to the bad image list',
 	'badimages-log-remove' => 'removed [[$1]] from the bad image list',
+	'badimages-page' => '{{ns:help}}:Bad image list',
 ),
 
 'ang' => array(
@@ -90,7 +91,7 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Elfennoù red',
 	'badimages-unprivileged' => '(ho statud ne aotre ket ac\'hanoc\'h da zegas kemmoù er roll)',
 	'badimages-log-name' => 'Roll ar skeudennoù fall',
-	'badimages-log-header' => 'Setu roll ar c\'hemmoù bet degaset d\'ar [[Help:Bad image list|roll skeudennoù fall]].',
+	'badimages-log-header' => 'Setu roll ar c\'hemmoù bet degaset d\'ar [[{{MediaWiki:Badimages-page}}|roll skeudennoù fall]].',
 	'badimages-log-add' => 'ouzhpennet eo bet [[$1]] d\'ar roll skeudennoù fall',
 	'badimages-log-remove' => 'tennet eo bet [[$1]] a-ziwar ar roll skeudennoù fall',
 ),
@@ -112,7 +113,7 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Aktuelle Einträge',
 	'badimages-unprivileged' => '(Sie haben keine Berechtigung, die Liste zu ändern)',
 	'badimages-log-name' => 'Liste unerwünschter Bilder',
-	'badimages-log-header' => 'Dies ist das Logbuch der Änderungen an der Liste unerwünschter Bilder.', # [[Help:Bad image list]] anpassen und einfügen, sobald Seite übersetzt wurde.
+	'badimages-log-header' => 'Dies ist das Logbuch der Änderungen an der Liste unerwünschter Bilder.',
 	'badimages-log-add' => 'fügte [[$1]] zu der Liste unerwünschter Bilder hinzu',
 	'badimages-log-remove' => 'entfernte [[$1]] von der Liste unerwünschter Bilder',
 ),
@@ -164,9 +165,10 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Liste actuelle',
 	'badimages-unprivileged' => '(Vous n’avez pas la permission de modifier la liste.)',
 	'badimages-log-name' => 'Liste des images indésirables',
-	'badimages-log-header' => 'Historique des modifications de la [[Aide:Liste des images indésirables|liste des images indésirables]].',
+	'badimages-log-header' => 'Historique des modifications de la [[{{MediaWiki:Badimages-page}}|liste des images indésirables]].',
 	'badimages-log-add' => 'a ajouté [[$1]] à la liste des images indésirables',
 	'badimages-log-remove' => 'a retiré [[$1]] de la liste des images indésirables',
+	'badimages-page' => '{{ns:help}}:Liste des images indésirables',
 ),
 
 'frc' => array(
@@ -185,9 +187,10 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Liste courante',
 	'badimages-unprivileged' => '(Vous avez pas la permission de changer la liste.)',
 	'badimages-log-name' => 'Liste des mauvaises images',
-	'badimages-log-header' => 'Ça ici, c\'est une liste de changements à la [[Aide:Liste des mauvaises images|liste des mauvaises images]].',
+	'badimages-log-header' => 'Ça ici, c\'est une liste de changements à la [[{{MediaWiki:Badimages-page}}|liste des mauvaises images]].',
 	'badimages-log-add' => 'a additionné [[$1]] à la liste des mauvaises images',
 	'badimages-log-remove' => 'a ôté [[$1]] de la liste des mauvaises images',
+	'badimages-page' => '{{ns:help}}:Liste des mauvaises images',
 ),
 
 'frp' => array(
@@ -206,9 +209,10 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Lista d’ora',
 	'badimages-unprivileged' => '(Vos avéd pas la pèrmission de modifiar la lista.)',
 	'badimages-log-name' => 'Lista de les émâges endèsirâbles',
-	'badimages-log-header' => 'Historico de les modificacions de la [[Éde:Lista de les émâges endèsirâbles|lista de les émâges endèsirâbles]].',
+	'badimages-log-header' => 'Historico de les modificacions de la [[{{MediaWiki:Badimages-page}}|lista de les émâges endèsirâbles]].',
 	'badimages-log-add' => 'at apondu [[$1]] a la lista de les émâges endèsirâbles',
 	'badimages-log-remove' => 'at reteriê [[$1]] de la lista de les émâges endèsirâbles',
+	'badimages-page' => '{{ns:help}}:Lista de les émâges endèsirâbles',
 ),
 
 'gl' => array(
@@ -227,9 +231,10 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Temas actuais',
 	'badimages-unprivileged' => '(Vostede non ten permisos suficientes para alterar a listaxe)',
 	'badimages-log-name' => 'Listaxe de imaxes con fallas',
-	'badimages-log-header' => 'Este é un rexistro dos cambios para a [[Axuda:Listaxe de imaxes con fallas|Listaxe de imaxes con fallas]].',
+	'badimages-log-header' => 'Este é un rexistro dos cambios para a [[{{MediaWiki:Badimages-page}}|Listaxe de imaxes con fallas]].',
 	'badimages-log-add' => 'engadido [[$1]] á listaxe de imaxes con fallas',
 	'badimages-log-remove' => 'eliminado [[$1]] da listaxe de imaxes con fallas',
+	'badimages-page' => '{{ns:help}}:Listaxe de imaxes con fallas',
 ),
 
 'hsb' => array(
@@ -270,9 +275,10 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Daftar sekarang',
 	'badimages-unprivileged' => '(Anda tidak memiliki cukup hak untuk mengubah daftar)',
 	'badimages-log-name' => 'Daftar berkas tidak sah',
-	'badimages-log-header' => 'Berikut ini adalah log perubahanan untuk [[Help:Daftar berkas tidak sah|daftar berkas tidak sah]].',
+	'badimages-log-header' => 'Berikut ini adalah log perubahanan untuk [[{{MediaWiki:Badimages-page}}|daftar berkas tidak sah]].',
 	'badimages-log-add' => 'menambahkan [[$1]] ke daftar berkas tidak sah',
 	'badimages-log-remove' => 'menghapus [[$1]] dari daftar berkas tidak sah',
+	'badimages-page' => '{{ns:help}}:Daftar berkas tidak sah',
 ),
 
 /* Italian (BrokenArrow) */
@@ -314,7 +320,7 @@ function efBadImageMessages() {
 	'badimages-subheading' => '現在の一覧',
 	'badimages-unprivileged' => '一覧を編集する権限がありません。',
 	'badimages-log-name' => '{{int:badimages}}編集記録',
-	'badimages-log-header' => 'これは [[Help:Bad image list|{{int:badimages}}]]への変更の記録です。',
+	'badimages-log-header' => 'これは [[{{MediaWiki:Badimages-page}}|{{int:badimages}}]]への変更の記録です。',
 	'badimages-log-add' => '[[$1]] を一覧に追加しました。',
 	'badimages-log-remove' => '[[$1]] を一覧から削除しました。',
 ),
@@ -344,9 +350,10 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Huidige inhoud',
 	'badimages-unprivileged' => '(U heeft niet de juiste rol om de lijst te kunnen wijzigen)',
 	'badimages-log-name' => 'Verwijderlijst afbeeldingen',
-	'badimages-log-header' => 'Dit is het logboek van wijzigingen in de [[Help:Verwijderlijst afbeeldingen|verwijderlijst afbeeldingen]].',
+	'badimages-log-header' => 'Dit is het logboek van wijzigingen in de [[{{MediaWiki:Badimages-page}}|verwijderlijst afbeeldingen]].',
 	'badimages-log-add' => '[[$1]] is toegevoegd aan de verwijderlijst afbeeldingen',
 	'badimages-log-remove' => '[[$1]] is verwijderd uit de verwijderlijst afbeeldingen',
+	'badimages-page' => '{{ns:help}}:Verwijderlijst afbeeldingen',
 ),
 
 /* Norwegian (Jon Harald Søby) */
@@ -366,7 +373,7 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Nåværende objekter',
 	'badimages-unprivileged' => '(Du har ikke rettigheter til å endre listen)',
 	'badimages-log-name' => 'Liste over blokkerte bilder',
-	'badimages-log-header' => 'Dette er en logg over endringer i [[Help:Bad image list|lista over blokkerte bilder]].',
+	'badimages-log-header' => 'Dette er en logg over endringer i [[{{MediaWiki:Badimages-page}}|lista over blokkerte bilder]].',
 	'badimages-log-add' => 'la til [[$1]] på lista over blokkerte bilder',
 	'badimages-log-remove' => 'fjernet [[$1]] fra lista over blokkerte bilder',
 ),
@@ -387,9 +394,10 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Lista actuala',
 	'badimages-unprivileged' => '(Avètz pas la permission de modificar la lista)',
 	'badimages-log-name' => 'Lista dels imatges indesirables',
-	'badimages-log-header' => 'Istoric de las modificacions de la [[Ajuda:Lista dels imatges indesirables|lista dels imatges indesirables]].',
+	'badimages-log-header' => 'Istoric de las modificacions de la [[{{MediaWiki:Badimages-page}}|lista dels imatges indesirables]].',
 	'badimages-log-add' => 'a ajustat [[$1]] a la lista dels imatges indesirables',
 	'badimages-log-remove' => 'a levat [[$1]] de la lista dels imatges indesirables',
+	'badimages-page' => '{{ns:help}}:Lista dels imatges indesirables',
 ),
 
 'pl' => array(
@@ -408,7 +416,7 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Aktualne elementy',
 	'badimages-unprivileged' => '(Nie masz wystarczających uprawnień by zmienić listę)',
 	'badimages-log-name' => 'Lista złych grafik',
-	'badimages-log-header' => 'Lista zmian w [[Help:Bad image list|liście złych grafik]].',
+	'badimages-log-header' => 'Lista zmian w [[{{MediaWiki:Badimages-page}}|liście złych grafik]].',
 	'badimages-log-add' => 'dodano [[$1]] do listy złych grafik',
 	'badimages-log-remove' => 'usunięto [[$1]] z listy złych grafik',
 ),
@@ -430,7 +438,7 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Al dì d\'ancheuj andrinta a-i son:',
 	'badimages-unprivileged' => '(A l\'ha pa la qualìfica dont a fa da manca për modifichè sta lista-sì)',
 	'badimages-log-name' => 'Figure ch\'a venta deje deuit.',
-	'badimages-log-header' => 'Sossì a l\'é lòn ch\'a l\'é riva-ie a la [[Help:Bad image list|lista dle figure ch\'a venta deje deuit]].',
+	'badimages-log-header' => 'Sossì a l\'é lòn ch\'a l\'é riva-ie a la [[{{MediaWiki:Badimages-page}}|lista dle figure ch\'a venta deje deuit]].',
 	'badimages-log-add' => '[[$1]] a l\'é stait marcà ch\'a venta deje deuit.',
 	'badimages-log-remove' => '[[$1]] a l\'é stait gavà da lòn ch\'a venta deje deuit.',
 ),
@@ -452,9 +460,10 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Itens atuais',
 	'badimages-unprivileged' => '(Você não possui permissões suficientes para alterar a listagem)',
 	'badimages-log-name' => 'Registo de imagens com problemas',
-	'badimages-log-header' => 'Este é um registo das alterações feitas na [[Help:Lista de imagens com problemas|lista de imagens com problemas]].',
+	'badimages-log-header' => 'Este é um registo das alterações feitas na [[{{MediaWiki:Badimages-page}}|lista de imagens com problemas]].',
 	'badimages-log-add' => 'adicionada [[$1]] na lista de imagens com problemas',
 	'badimages-log-remove' => 'removida [[$1]] da lista de imagens com problemas',
+	'badimages-page' => 'Lista de imagens com problemas',
 ),
 
 'rm' => array(
@@ -479,9 +488,10 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Текущее содержание',
 	'badimages-unprivileged' => '(у вас недостаточно прав для изменения этого списка)',
 	'badimages-log-name' => 'Список нежелательных изображений',
-	'badimages-log-header' => 'Это журнал изменений [[Справка:Список нежелательных изображени|списка нежелательных изображений]].',
+	'badimages-log-header' => 'Это журнал изменений [[{{MediaWiki:Badimages-page}}|списка нежелательных изображений]].',
 	'badimages-log-add' => ' [[$1]] добавлено в список нежелательных изображений',
 	'badimages-log-remove' => '[[$1]] удалено из списка нежелательных изображений',
+	'badimages-page' => '{{ns:help}}:Список нежелательных изображени',
 ),
 
 'sah' => array(
@@ -499,7 +509,7 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Билигин бааллар',
 	'badimages-unprivileged' => '(Эн испииһэги уларытар кыаҕыҥ суох)',
 	'badimages-log-name' => 'Көҥүллэммэт ойуулар испииһэктэрэ',
-	'badimages-log-header' => 'Бу билэ [[Help:Bad image list|көҥүллэммэт ойуулар испииһэктэрин]] уларыйыытын көрдөрөр.',
+	'badimages-log-header' => 'Бу билэ [[{{MediaWiki:Badimages-page}}|көҥүллэммэт ойуулар испииһэктэрин]] уларыйыытын көрдөрөр.',
 	'badimages-log-add' => '[[$1]] көҥүллэммэт ойуулар испииһэктэригэр киирдэ',
 	'badimages-log-remove' => '[[$1]] көҥүллэммэт ойуулар испииһэктэриттэн сотулунна',
 ),
@@ -542,7 +552,7 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Aktuálne položky',
 	'badimages-unprivileged' => '(pre zmenu zoznamu nemáte dostatočné oprávnenie)',
 	'badimages-log-name' => 'Zoznam zlých obrázkov',
-	'badimages-log-header' => 'Toto je záznam zmien [[Help:Bad image list|Zoznamu zlých obrázkov]].',
+	'badimages-log-header' => 'Toto je záznam zmien [[{{MediaWiki:Badimages-page}}|Zoznamu zlých obrázkov]].',
 	'badimages-log-add' => '[[$1]] pridaný do zoznamu zlých obrázkov',
 	'badimages-log-remove' => '[[$1]] odstránený zo zoznamu zlých obrázkov',
 ),
@@ -564,9 +574,10 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Тренутно у списку',
 	'badimages-unprivileged' => '(Немате овлашћења за мењање списка)',
 	'badimages-log-name' => 'Списак лоших слика',
-	'badimages-log-header' => 'Ово је историја промена за [[Помоћ:Списак лоших слика|списак лоших слика]].',
+	'badimages-log-header' => 'Ово је историја промена за [[{{MediaWiki:Badimages-page}}|списак лоших слика]].',
 	'badimages-log-add' => 'додата [[$1]] у списак лоших слика',
 	'badimages-log-remove' => 'уклоњена [[$1]] са списка лоших слика',
+	'badimages-page' => '{{ns:help}}:Списак лоших слика',
 ),
 
 /* Serbian cyrillic (Sasa Stefanovic) */
@@ -586,9 +597,10 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Тренутно у списку',
 	'badimages-unprivileged' => '(Немате овлашћења за мењање списка)',
 	'badimages-log-name' => 'Списак лоших слика',
-	'badimages-log-header' => 'Ово је историја промена за [[Помоћ:Списак лоших слика|списак лоших слика]].',
+	'badimages-log-header' => 'Ово је историја промена за [[{{MediaWiki:Badimages-page}}|списак лоших слика]].',
 	'badimages-log-add' => 'додата [[$1]] у списак лоших слика',
 	'badimages-log-remove' => 'уклоњена [[$1]] са списка лоших слика',
+	'badimages-page' => '{{ns:help}}:Списак лоших слика',
 ),
 
 /* Serbian latin (Sasa Stefanovic) */
@@ -608,9 +620,10 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Trenutno u spisku',
 	'badimages-unprivileged' => '(Nemate ovlašćenja za menjanje spiska)',
 	'badimages-log-name' => 'Spisak loših slika',
-	'badimages-log-header' => 'Ovo je istorija promena za [[Pomoć:Spisak loših slika|spisak loših slika]].',
+	'badimages-log-header' => 'Ovo je istorija promena za [[{{MediaWiki:Badimages-page}}:Spisak loših slika|spisak loših slika]].',
 	'badimages-log-add' => 'dodata [[$1]] u spisak loših slika',
 	'badimages-log-remove' => 'uklonjena [[$1]] sa spiska loših slika',
+	'badimages-page' => '{{ns:help}}:Spisak loših slika',
 ),
 
 /* Sundanese (Kandar via BetaWiki) */
@@ -630,9 +643,10 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Daptar kiwari',
 	'badimages-unprivileged' => '(Anjeun teu boga <u>hak</u> keur ngarobah daptar)',
 	'badimages-log-name' => 'Daptar gambar rusak',
-	'badimages-log-header' => 'Ieu log parobahan keur [[Help:Daptar gambar rusak|daptar gambar rusak]].',
+	'badimages-log-header' => 'Ieu log parobahan keur [[{{MediaWiki:Badimages-page}}|daptar gambar rusak]].',
 	'badimages-log-add' => 'nambahkeun [[$1]] ka daptar gambar rusak',
 	'badimages-log-remove' => 'ngahapus [[$1]] ti daptar gambar rusak',
+	'badimages-page' => '{{ns:help}}:Daptar gambar rusak',
 ),
 
 'sv' => array(
@@ -651,7 +665,7 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Nuvarande poster',
 	'badimages-unprivileged' => '(Du har inte tillräcklig behörighet för att ändra i listan)',
 	'badimages-log-name' => 'Lista över dåliga bilder',
-	'badimages-log-header' => 'Detta är en logg över ändringar i [[Help:Bad image list|listan över dåliga bilder]].',
+	'badimages-log-header' => 'Detta är en logg över ändringar i [[{{MediaWiki:Badimages-page}}|listan över dåliga bilder]].',
 	'badimages-log-add' => 'la till [[$1]] till listan över dåliga bilder',
 	'badimages-log-remove' => 'strök [[$1]] från listan över dåliga bilder',
 ),
@@ -673,7 +687,7 @@ function efBadImageMessages() {
 	'badimages-subheading' => '現有嘅項目',
 	'badimages-unprivileged' => '(你重未有足夠嘅權限去改呢個表)',
 	'badimages-log-name' => '壞圖清單',
-	'badimages-log-header' => '哩道係[[Help:壞圖清單|壞圖清單]]嘅修訂。',
+	'badimages-log-header' => '哩道係[[{{MediaWiki:Badimages-page}}|壞圖清單]]嘅修訂。',
 	'badimages-log-add' => '加[[$1]]入壞圖清單',
 	'badimages-log-remove' => '由壞圖清單度減[[$1]]',
 ),
@@ -695,7 +709,7 @@ function efBadImageMessages() {
 	'badimages-subheading' => '当前的项目',
 	'badimages-unprivileged' => '(您没有足够的权限去修改这个列表)',
 	'badimages-log-name' => '坏图像列表',
-	'badimages-log-header' => '这是在[[Help:坏图像列表|坏图像列表]]中的修订记录。',
+	'badimages-log-header' => '这是在[[{{MediaWiki:Badimages-page}}|坏图像列表]]中的修订记录。',
 	'badimages-log-add' => '已经加入 [[$1]] 到坏图像列表',
 	'badimages-log-remove' => '已经由坏图像列表中移除 [[$1]]',
 ),
@@ -717,7 +731,7 @@ function efBadImageMessages() {
 	'badimages-subheading' => '目前的項目',
 	'badimages-unprivileged' => '(您沒有足夠的權限去修改這個列表)',
 	'badimages-log-name' => '壞圖像列表',
-	'badimages-log-header' => '這是在[[Help:壞圖像列表|壞圖像列表]]中的修訂記錄。',
+	'badimages-log-header' => '這是在[[{{MediaWiki:Badimages-page}}|壞圖像列表]]中的修訂記錄。',
 	'badimages-log-add' => '已經加入 [[$1]] 到壞圖像列表',
 	'badimages-log-remove' => '已經由壞圖像列表中移除 [[$1]]',
 ),
