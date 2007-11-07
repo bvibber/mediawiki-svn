@@ -17,12 +17,12 @@ $allMessages = array(
 	),
 
 	'gl' => array(
-		'tasklistunknownproject'  => 'Proxecto descoñecido',
+		'tasklistunknownproject'  => 'Proxecto descoÃ±ecido',
 		'tasklistunspecuser'      => 'Usuario sen especificar',
 		'tasklistincorrectuser'   => 'Nome de usuario incorrecto',
 		'tasklistemail'           => 'Querido %s',
-		'tasklistmytasks'         => 'As miñas tarefas',
-		'tasklistbyprojectbad'    => 'O Proxecto \'\'\'%s\'\'\' non é un proxecto válido. Para unha listaxe de proxectos válidos, vexa
+		'tasklistmytasks'         => 'As miÃ±as tarefas',
+		'tasklistbyprojectbad'    => 'O Proxecto \'\'\'%s\'\'\' non Ã© un proxecto vÃ¡lido. Para unha listaxe de proxectos vÃ¡lidos, vexa
 [[MediaWiki:TodoTasksValidProjects]].',
 		'tasklistchooseproj'      => 'Seleccionar Proxecto:',
 		'tasklistprojdisp'        => 'Pantalla',
@@ -32,8 +32,8 @@ $allMessages = array(
 		'tasklist'                => 'Liscina nadawkow',
 		'tasklistbyproject'       => 'Liscina nadawkow po projekce',
 		'tasklistunknownproject'  => 'Njeznaty projekt',
-		'tasklistunspecuser'      => 'Wužiwar njepodaty',
-		'tasklistincorrectuser'   => 'Njekorektne wužiwarske mjeno',
+		'tasklistunspecuser'      => 'WuÅ¾iwar njepodaty',
+		'tasklistincorrectuser'   => 'Njekorektne wuÅ¾iwarske mjeno',
 		'tasklistemail'           => 'Luby %s',
 		'tasklistemailsubject'    => '[%s] Zmena lisciny nadawkow',
 		'tasklistmytasks'         => 'Moje nadawki',
