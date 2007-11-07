@@ -67,6 +67,10 @@ class ApiUploadFile extends ApiBase {
 
 			$form = new UploadForm( $request );
 
+			# mDestWarningAck is initialized to 1 for the getExistsWarning function in SpecialUpload.php won't be called
+			# because html code is written there.
+			$form->mDestWarningAck = "1";
+
 			$form->mTempPath       = $wgRequest->getFileTempName( 'upfile' );
 			$form->mSrcName        = $wgRequest->getFileName( 'upfile' );
 			$form->mCurlError      = $wgRequest->getUploadError( 'upfile' );
