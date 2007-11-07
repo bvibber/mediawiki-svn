@@ -620,7 +620,7 @@ function efBadImageMessages() {
 	'badimages-subheading' => 'Trenutno u spisku',
 	'badimages-unprivileged' => '(Nemate ovlašćenja za menjanje spiska)',
 	'badimages-log-name' => 'Spisak loših slika',
-	'badimages-log-header' => 'Ovo je istorija promena za [[{{MediaWiki:Badimages-page}}:Spisak loših slika|spisak loših slika]].',
+	'badimages-log-header' => 'Ovo je istorija promena za [[{{MediaWiki:Badimages-page}}|spisak loših slika]].',
 	'badimages-log-add' => 'dodata [[$1]] u spisak loših slika',
 	'badimages-log-remove' => 'uklonjena [[$1]] sa spiska loših slika',
 	'badimages-page' => '{{ns:help}}:Spisak loših slika',
