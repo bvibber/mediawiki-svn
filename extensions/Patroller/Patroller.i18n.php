@@ -136,6 +136,7 @@ function efPatrollerMessages() {
 
 'gl' => array(
 	'patrol' => 'Patrullar edicións',
+	'patrol-endorse' => 'Apoiar',
 	'patrol-revert' => 'Desfacer',
 	'patrol-revert-reason' => 'Motivo:',
 	'patrol-skip' => 'Saltar',
@@ -151,8 +152,10 @@ function efPatrollerMessages() {
 * Ver a páxina de discusión',
 	'patrol-another' => 'Mostrar outra edición, se existe.',
 	'patrol-stopped' => 'Optou por non patrullar outra edición. $1',
+	'patrol-resume' => 'Prema eiquí para recomezar.',
 	'group-patroller' => 'Patrulleiros',
 	'group-patroller-member' => 'Patrulleiro',
+	'grouppage-patroller' => '{{ns:project}}: Apatrullar',
 ),
 
 'hsb' => array(

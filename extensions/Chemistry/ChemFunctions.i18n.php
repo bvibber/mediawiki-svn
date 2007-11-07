@@ -158,7 +158,12 @@ $wgChemFunctions_Messages['fr'] = array(
 
 $wgChemFunctions_Messages['gl'] = array(
 	'chemicalsources' => 'Fontes químicas',
+	'ChemFunctions_ListPage' => 'Fontes químicas',
+	'ChemFunctions_DataList' => 'Embaixo hai unha listaxe das ligazóns aos sitios que poden proporcionar información acerca da sustancia química que procura.<br /><br /> * <a 
+href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Composto $MIXCASNameFormula en NIST</a><br /> * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Universidade de Oxford (UK) (non consultábel)</a><br />',
+	'ChemFunctions_CAS' => 'número CAS',
 );
+
 
 $wgChemFunctions_Messages['hsb'] = array(
 	'chemicalsources' => 'Chemiske žórła',

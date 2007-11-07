@@ -48,6 +48,7 @@ $allMessages = array(
 	),
 
 	'gl' => array(
+		'passwordreset' => 'Eliminar o contrasinal',
 		'passwordreset-invalidusername' => 'Nome de usuario non válido',
 		'passwordreset-emptyusername' => 'Nome de usuario baleiro',
 		'passwordreset-nopassmatch' => 'Os contrasinais non coinciden',

@@ -88,6 +88,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Precedenti ($1)',
 ),
 
+'ja' => array(
+	'backforth-next' => '次 ($1)',
+	'backforth-prev' => '前 ($1)',
+),
+
 'nl' => array(
 	'backforth-next' => 'Volgende ($1)',
 	'backforth-prev' => 'Vorige ($1)',

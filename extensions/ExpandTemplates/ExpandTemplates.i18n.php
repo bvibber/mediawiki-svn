@@ -115,6 +115,7 @@ telles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}} sont 
 	'expand_templates_preview'         => 'Prévisualisation',
 );
 $wgExpandTemplatesMessages['gl'] = array(
+	'expandtemplates'                  => 'Ampliar modelos',
 	'expand_templates_title'           => 'Título do contexto, para {{PAGENAME}} etc.:',
 	'expand_templates_input'           => 'Texto de entrada:',
 	'expand_templates_output'          => 'Resultado',

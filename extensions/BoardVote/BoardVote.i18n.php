@@ -570,6 +570,9 @@ Un avèrtissement regardent un cèrtificat pas signê serat pôt-étre afichiê.
 );
 $wgBoardVoteMessages['gl'] = array(
 	'boardvote'               => 'Elección dos Membros do Consello de Administración de Wikimedia',
+	'boardvote_entry'         => '* [[Special:Boardvote/vote|Votar]]
+* [[Special:Boardvote/list|Listaxe de votos ata a data]]
+* [[Special:Boardvote/dump|Desfacerse do rexistro de eleccións cifradas]]',
 	'boardvote_intro'         => '<p>Reciba a nosa benvida ás segundas eleccións de Membros do Consello de Administración de Wikimedia.
 Estamos a escoller dúas persoas para que representen á comunidade de usuarios dos diversos
 proxectos de Wikipedia. Axudarán a determinar a dirección futura que tomarán os proxectos de
@@ -891,6 +894,16 @@ Il voto espresso in forma cifrata è riportato di seguito. È inoltre visibile a
 	'boardvote_redirecting'   => 'Per una migliore sicurezza e trasparenza, il voto si tiene su un server esterno, a controllo indipendente. Sarai reindirizzato a questo server esterno in 20 secondi. [$1 Clicca qui] per raggiungerlo direttamente. Potrebbe apparire un avviso di sicurezza riguardante un certificato di protezione non verificato.',
 );
 $wgBoardVoteMessages['ja'] = array(
+	'boardvote'               => 'ウィキメディア財団理事選挙',
+	'boardvote_novotes'       => 'まだ誰も投票していません。',
+	'boardvote_user'          => '利用者',
+	'boardvote_dumplink'      => 'ここをクリック',
+	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">ウィキメディア財団総選挙</a>:  7月12日まで投票実施中',
+	'boardvote_notstarted'    => 'まだ投票は始まっていません',
+	'group-boardvote'         => '選挙管理委員会',
+	'group-boardvote-member'  => '選挙管理委員',
+	'boardvote_welcome'       => '\'\'\'$1\'\'\'さん ようこそ!',
+	'go_to_board_vote'        => 'ウィキメディア財団総選挙2007',
 	'boardvote_redirecting'   => 'セキュリティと透明性を確保するため、外部の独立したサーバ上で投票を行っています。
 
 20秒後に外部サーバへ転送されます。[$1 ここをクリック]するとすぐに投票ページに移動できます。

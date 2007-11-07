@@ -16,6 +16,34 @@ $allMessages = array(
 		'tasklistbyname'          => '== Todo List for %s ==',
 	),
 
+	'gl' => array(
+		'tasklistunknownproject'  => 'Proxecto descoñecido',
+		'tasklistunspecuser'      => 'Usuario sen especificar',
+		'tasklistincorrectuser'   => 'Nome de usuario incorrecto',
+		'tasklistemail'           => 'Querido %s',
+		'tasklistmytasks'         => 'As miñas tarefas',
+		'tasklistbyprojectbad'    => 'O Proxecto \'\'\'%s\'\'\' non é un proxecto válido. Para unha listaxe de proxectos válidos, vexa
+[[MediaWiki:TodoTasksValidProjects]].',
+		'tasklistchooseproj'      => 'Seleccionar Proxecto:',
+		'tasklistprojdisp'        => 'Pantalla',
+	),
+
+	'hsb' => array(
+		'tasklist'                => 'Liscina nadawkow',
+		'tasklistbyproject'       => 'Liscina nadawkow po projekce',
+		'tasklistunknownproject'  => 'Njeznaty projekt',
+		'tasklistunspecuser'      => 'Wuiwar njepodaty',
+		'tasklistincorrectuser'   => 'Njekorektne wuiwarske mjeno',
+		'tasklistemail'           => 'Luby %s',
+		'tasklistemailsubject'    => '[%s] Zmena lisciny nadawkow',
+		'tasklistmytasks'         => 'Moje nadawki',
+		'tasklistbyprojectbad'    => 'Projekt \'\'\'%s\'\'\' placiwy projekt njeje. Za liscinu placiwych projektow, hlej [[MediaWiki:TodoTasksValidProjects]].',
+		'tasklistbyprojname'      => 'Nadawki so za \'\'\'%s\'\'\' pripokazachu.',
+		'tasklistchooseproj'      => 'Wubjer projekt:',
+		'tasklistprojdisp'        => 'Pokazac',
+		'tasklistbyname'          => '== Nadawkowa liscina za %s ==',
+	),
+
 	'nl' => array(
 		'tasklist'                => 'Takenlijst',
 		'tasklistbyproject'       => 'Takenlijst per project',

@@ -13,5 +13,6 @@
 $messages = array(
 	'pageby-first' => 'Páxina creada por $1, $2',
 	'pageby-last' => 'Última  <a href="$3">modificación</a> por $1, $2',
+	'pageby-contributors' => 'Colaboradores:',
 	'pageby-anon' => '<i>anónimo</i>',
 );

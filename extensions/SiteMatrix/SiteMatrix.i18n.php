@@ -75,10 +75,10 @@ $wgSiteMatrixMessages['fi'] = array(
 	"sitematrix" => "Luettelo Wikimedian wikeistä",
 );
 $wgSiteMatrixMessages['fr'] = array(
-	'sitematrix' => 'Liste des wikis Wikimedia',
+	'sitematrix' => 'Liste des wikis de Wikimedia Foundation',
 	'sitematrix-language' => 'Langue',
 	'sitematrix-project' => 'Nom du projet, lien interprojet et lien interwiki',
-	'sitematrix-others' => 'Autres projets de Wikimedia',
+	'sitematrix-others' => 'Autres projets de Wikimedia Foundation',
 );
 $wgSiteMatrixMessages['frc'] = array(
 	'sitematrix' => 'Liste de wikis à Wikimedia',

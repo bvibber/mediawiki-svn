@@ -98,6 +98,8 @@ $wgAjaxShowEditorsMessages['it'] = array(
 	'ajax-se-idling' => '(da $1 s)',
 );
 $wgAjaxShowEditorsMessages['ja'] = array(
+	'ajax-se-title' => '現在編集中:',
+	'ajax-se-pending' => '更新します（この枠内をクリックするか編集を始めてください）',
 	'ajax-se-idling' => '（$1秒前）',
 );
 $wgAjaxShowEditorsMessages['kk-kz'] = array(

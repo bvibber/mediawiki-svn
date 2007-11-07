@@ -199,6 +199,15 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 	'hiderevision' => 'Agochar revisións permanentemente',
 	'hiderevision-prompt' => 'Número de revisión a eliminar:',
 	'hiderevision-continue' => 'Continuar',
+	'hiderevision-text' => 'Isto debe ser usado \'\'\'só\'\'\' para os seguintes casos:
+* Información persoal inapropiada
+*:\'\'Enderezos e números de teléfono, números de seguridade social, etcétera\'\'
+
+\'\'\'O uso indebido deste sistema terá como resultado a pérdida de privilexios.\'\'\'
+
+Os elementos eliminados non serán visíbeis para calquera persoa a través da páxina web,
+pero as supresións son rexistradas e poden ser restauradas de forma manual por un
+administrador das bases de datos no caso de que vostede cometa un erro.',
 	'hiderevision-reason' => 'Motivo (rexistrarase de maneira privada):',
 	'hiderevision-submit' => 'Agochar estes datos permanentemente',
 	'hiderevision-tab' => 'Agochar revisión',
@@ -214,8 +223,13 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 *Se eliminase a páxina
 *Esta revisión agochada sexa a primeira revisión',
 	'oversight-log-hiderev' => 'eliminouse unha edición de $1',
+	'oversight' => 'Supervisión',
 	'oversight-view' => 'detalles',
+	'oversight-difference' => '(Diferenza das anteriores pendentes de revisión)',
+	'oversight-prev' => 'Última revisión anterior',
 	'oversight-hidden' => 'Revisión agochada',
+	'oversight-header' => 'Embaixo amósase unha listaxe recente das revisións ocultas permanentemente á opinión pública.
+Á liberación desta información pode resultar na perda permanente dos privilexios de Supervisión.',
 ),
 
 /* Hebrew (Rotem Liss) */
