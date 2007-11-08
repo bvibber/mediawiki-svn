@@ -38,7 +38,6 @@ function main() {
 	CopyTools::map_bootstraps("uw",array("uw", "sp"));
 	mysql_query("COMMIT");
 	echo "done.\n";
-	}
 }
 
 
