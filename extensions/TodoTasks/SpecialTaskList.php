@@ -18,7 +18,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 if (!defined('MEDIAWIKI')) die();
 
-$wgTodoTasksExtensionVersion = '0.9.0';
+$wgTodoTasksExtensionVersion = '0.9.1';
 
 $wgExtensionCredits['parserhook'][]    = array(
         'version'     => $wgTodoTasksExtensionVersion,
@@ -37,7 +37,7 @@ $wgExtensionCredits['specialpage'][] = array(
         'description' => 'Adds a special page for reviewing tasks assignments'
 );
 
-$wgUseProjects = false;
+$wgUseProjects = true;
 
 $wgAutoloadClasses['TaskList'] = dirname(__FILE__) . '/SpecialTaskList_body.php';
 $wgSpecialPages['TaskList'] = 'TaskList';
