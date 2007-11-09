@@ -155,5 +155,3 @@ $wgExtensionCredits['other'][] = array(
         'description' => 'adds edit assertions for use by bots',
         'url' => 'http://www.mediawiki.org/wiki/Extension:Assert_Edit'
         );
-
-?>
