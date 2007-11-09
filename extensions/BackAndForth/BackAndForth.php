@@ -14,6 +14,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionCredits['other'][] = array(
 		'name' => 'Back and Forth',
 		'author' => 'Rob Church',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Back-and-Forth',
 	);
 	
 	/**

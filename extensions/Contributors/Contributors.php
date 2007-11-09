@@ -14,6 +14,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		'name' => 'Contributors',
 		'author' => 'Rob Church',
 		'description' => 'Summarises the main contributors to an article',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Contributors',
 	);
 	
 	$wgAutoloadClasses['SpecialContributors'] = dirname( __FILE__ ) . '/Contributors.page.php';
