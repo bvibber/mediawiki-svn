@@ -25,9 +25,8 @@ function wfLoadContribsLink( $id, $nt, &$links ) {
 	global $wgUser;
 	if( $wgUser->isAllowed( 'deletedhistory' ) ) {
 		$links[] = $wgUser->getSkin()->makeKnownLinkObj(
-			SpecialPage::getTitleFor( 'DeletedContributions' ),
-			wfMsgHtml( 'deletedcontributions' ),
-			'target=' . $nt->getPartialUrl()
+			SpecialPage::getTitleFor( 'DeletedContributions', $nt->getDBkey() ),
+			wfMsgHtml( 'deletedcontributions' )
 		);
 	}
 	return true;
