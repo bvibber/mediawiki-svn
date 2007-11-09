@@ -124,7 +124,7 @@ class DeletedContribsPager extends IndexPager {
 			$this->messages['deletionlog'],
 			'type=delete&page=' . $page->getPrefixedUrl() );
 		
-		$reviewlink = $sk->makeKnownLinkObj( $undelete,
+		$reviewlink = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Undelete', $page->getPrefixedDBkey() ),
 			$this->messages['undeletebtn'],
 			'target=' . $page->getPrefixedUrl() );
 		
@@ -134,7 +134,7 @@ class DeletedContribsPager extends IndexPager {
 			'&timestamp=' . $rev->getTimestamp() );
 
 		$last = $sk->makeKnownLinkObj( $undelete,
-			$this->messages['diff'], 
+			$this->messages['diff'],
 			"target=" . $page->getPrefixedUrl() .
 			"&timestamp=" . $rev->getTimestamp() .
 			"&diff=prev" );
@@ -285,7 +285,7 @@ function deletedContributionsSub( $nt, $id ) {
 		# Other logs link
 		$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Log' ), wfMsgHtml( 'log' ), 'user=' . $nt->getPartialUrl() );
 		# Link to undeleted contributions
-		$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Contributions' ), wfMsgHtml( 'contributions' ), 'target=' . $nt->getPartialUrl() );
+		$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Contributions', $nt->getDBkey() ), wfMsgHtml( 'contributions' ) );
 
 		$links = implode( ' | ', $tools );
 	}
