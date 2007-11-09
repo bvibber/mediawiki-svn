@@ -125,8 +125,7 @@ class DeletedContribsPager extends IndexPager {
 			'type=delete&page=' . $page->getPrefixedUrl() );
 		
 		$reviewlink = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Undelete', $page->getPrefixedDBkey() ),
-			$this->messages['undeletebtn'],
-			'target=' . $page->getPrefixedUrl() );
+			$this->messages['undeletebtn'] );
 		
 		$link = $sk->makeKnownLinkObj( $undelete,
 			htmlspecialchars( $page->getPrefixedText() ),
