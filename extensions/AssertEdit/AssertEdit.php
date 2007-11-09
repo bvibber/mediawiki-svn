@@ -19,8 +19,6 @@ if ( ! defined( 'MEDIAWIKI' ) )
 
 class AssertEdit 
 {
-  static $messg = 'Assert failed';
-
   /**
    * methods for core assertions
    */
