@@ -73,6 +73,10 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'Siamo spiacenti, non è consentito salvare una voce con questo titolo.',
 ),
 
+'ja' => array(
+	'block_title_error' => '申し訳ありませんが、この項目名で保存することはできません。',
+),
+
 'la' => array(
 	'block_title_error_page_title' => 'Titulus obstructus',
 	'block_title_error' => 'Paginam huius tituli servare non licet.',

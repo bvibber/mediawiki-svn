@@ -193,6 +193,9 @@ riddler|Riddler",
 	'vote-current' => 'Uw huidige stem is voor \'\'\'$1\'\'\'.',
 	'vote-legend' => 'Stem of wijzig stem',
 	'vote-caption' => 'Uw keuze:',
+	'vote-choices' => 'joker|The Joker
+penguin|The Penguin
+riddler|Riddler',#identical but defined
 	'vote-submit' => 'Stem',
 	'vote-registered' => 'Uw stem is opgeslagen.',
 	'vote-view-results' => 'Bekijk resultaten',

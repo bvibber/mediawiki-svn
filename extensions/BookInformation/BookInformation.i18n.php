@@ -261,7 +261,7 @@ function efBookInformationMessages() {
 	'bookinfo-error-nosuchitem' => 'Aqueste element existís pas o es pas pogut èsser trobat.',
 	'bookinfo-error-nodriver' => 'Impossible d’inicializar un motor d’informacion suls obratges.',
 	'bookinfo-error-noresponse' => 'Cap de responsa o depassament de la sosta.',
-	'bookinfo-purchase' => 'Comprar aquest libre sus $1',
+	'bookinfo-purchase' => 'Comprar aqueste libre sus $1',
 	'bookinfo-provider' => 'Fornidor de donadas : $1',
 ),
 

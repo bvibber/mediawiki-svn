@@ -156,6 +156,11 @@ $wgChemFunctions_Messages['fr'] = array(
 	'ChemFunctions_ChemFormInputError' => 'Chemform, intrant erroné!',
 );
 
+$wgChemFunctions_Messages['frp'] = array(
+	'chemicalsources' => 'Sôrses por la ch·imie',
+	'ChemFunctions_ListPage' => 'Sôrses por la ch·imie',
+);
+
 $wgChemFunctions_Messages['gl'] = array(
 	'chemicalsources' => 'Fontes químicas',
 	'ChemFunctions_ListPage' => 'Fontes químicas',
@@ -279,6 +284,16 @@ $wgChemFunctions_Messages['no'] = array(
 	'ChemFunctions_Formula' => 'Formula',#identical but defined
 	'ChemFunctions_Name' => 'IUPAC-navn',
 	'ChemFunctions_ChemFormInputError' => 'Chemform: Input-feil!',
+);
+
+$wgChemFunctions_Messages['oc'] = array(
+	'chemicalsources' => 'Fonts per la quimia',
+	'ChemFunctions_ListPage' => 'Fonts per la quimia',
+	'ChemFunctions_CAS' => 'Numèro CAS',
+	'ChemFunctions_EINECS' => 'Numèro EINECS',
+	'ChemFunctions_ATCCode' => 'Còdi ATC',
+	'ChemFunctions_Name' => 'Nom UICPA',
+	'ChemFunctions_ChemFormInputError' => 'Chemform, dintrant erronèu!',
 );
 
 $wgChemFunctions_Messages['pms'] = array(

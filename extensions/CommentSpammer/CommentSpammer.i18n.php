@@ -70,6 +70,14 @@ function efCommentSpammerMessages() {
 	'cspammer-log-page' => 'Spamlogboek',
 ),
 
+'oc' => array(
+	'commentspammer-save-blocked' => 'Vòstra adreça IP es la d\'una persona sospechada de crear de spams, la pagina es pas estada salvagardada. [[Special:Userlogin|Conectatz-vos o creatz un compte]] per contornar aqueste interdich.',
+	'commentspammer-log-msg' => 'Modificacions de [[Special:Contributions/$1|$1]] a [[$2]].',
+	'commentspammer-log-msg-info' => 'Lo darrièr spam remonta a {{PLURAL:$1|$1 jorn|$1 jorns}}, lo nivèl d\'alèrta es a $2 e lo còdi d\'atac es $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Vejatz los detalhs] o [[Special:Blockip/$4|blocatz]].',
+	'cspammerlogpagetext' => 'Jornal de las modificacions acceptadas o rejetadas segon que la font èra un creator de spams conegut.',
+	'cspammer-log-page' => 'Jornal del creator de spams',
+),
+
 'pl' => array(
 	'commentspammer-save-blocked' => 'Twój adres IP jest podejrzewany o bycie spammerem - zapisywanie stron jest zablokowane. Utwórz konto, aby uniknąć tego komunikatu.',
 	'commentspammer-log-msg' => 'edycja [[Special:Contributions/$1|$1]] w [[$2]].',

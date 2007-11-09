@@ -45,19 +45,19 @@ $allMessages = array(
 	),
 
 	'hsb' => array(
-		'tasklist'                => 'Liscina nadawkow',
-		'tasklistbyproject'       => 'Liscina nadawkow po projekce',
+		'tasklist'                => 'Lisćina nadawkow',
+		'tasklistbyproject'       => 'Lisćina nadawkow po projekće',
 		'tasklistunknownproject'  => 'Njeznaty projekt',
 		'tasklistunspecuser'      => 'Wužiwar njepodaty',
 		'tasklistincorrectuser'   => 'Njekorektne wužiwarske mjeno',
 		'tasklistemail'           => 'Luby %s',
-		'tasklistemailsubject'    => '[%s] Zmena lisciny nadawkow',
+		'tasklistemailsubject'    => '[%s] Změna lisćiny nadawkow',
 		'tasklistmytasks'         => 'Moje nadawki',
-		'tasklistbyprojectbad'    => 'Projekt \'\'\'%s\'\'\' placiwy projekt njeje. Za liscinu placiwych projektow, hlej [[MediaWiki:TodoTasksValidProjects]].',
-		'tasklistbyprojname'      => 'Nadawki so za \'\'\'%s\'\'\' pripokazachu.',
+		'tasklistbyprojectbad'    => 'Projekt \'\'\'%s\'\'\' płaćiwy projekt njeje. Za lisćinu płaćiwych projektow, hlej [[MediaWiki:TodoTasksValidProjects]].',
+		'tasklistbyprojname'      => 'Nadawki so za \'\'\'%s\'\'\' připokazachu.',
 		'tasklistchooseproj'      => 'Wubjer projekt:',
-		'tasklistprojdisp'        => 'Pokazac',
-		'tasklistbyname'          => '== Nadawkowa liscina za %s ==',
+		'tasklistprojdisp'        => 'Pokazać',
+		'tasklistbyname'          => '== Nadawkowa lisćina za %s ==',
 	),
 
 	'nl' => array(
