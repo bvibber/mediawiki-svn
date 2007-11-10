@@ -52,7 +52,7 @@ public class Analyzers {
 	 * @param language
 	 * @return
 	 */
-	public static Analyzer getReusableHighlightAnalyzer(FilterFactory filters){
+	public static ReusableLanguageAnalyzer getReusableHighlightAnalyzer(FilterFactory filters){
 		return new ReusableLanguageAnalyzer(filters,false,true);
 	}
 

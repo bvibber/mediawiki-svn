@@ -83,6 +83,7 @@ public class WikiQueryParser {
 	
 	private TokenStream tokenStream; 
 	private ArrayList<Token> tokens; // tokens from analysis
+	protected ArrayList<String> words;
 	
 	/** sometimes the fieldsubquery takes the bool modifier, to retrieve it, use this variable,
 	 *  this will always point to the last unused bool modifier */
@@ -1731,7 +1732,7 @@ public class WikiQueryParser {
 		Object[] qtwords = makeTitleQuery(queryText);
 		// qt = title query, qp = title phrase query
 		Query qt = (Query) qtwords[0];
-		ArrayList<String> words = (ArrayList<String>) qtwords[1];
+		words = (ArrayList<String>) qtwords[1];
 		if(qc == null || qt == null)
 			return new BooleanQuery();		
 		if(qc.equals(qt))
@@ -1837,6 +1838,10 @@ public class WikiQueryParser {
 	}
 	public void setBuilder(FieldBuilder.BuilderSet builder) {
 		this.builder = builder;
-	}	
+	}
+	
+	public ArrayList<String> getWords(){
+		return words;
+	}
 	
 }

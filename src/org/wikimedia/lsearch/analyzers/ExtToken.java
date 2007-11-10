@@ -100,6 +100,14 @@ public class ExtToken extends Token implements Serializable {
 		this.inCase = inCase;
 	}
 	
+	/** get text, original if available, otherwise termtext */
+	public String getText(){
+		if(original != null)
+			return original;
+		else
+			return termText();
+	}
+	
 	public String toString(){
 		return "\""+termText()+"\",t="+type+",p="+pos+(original!=null? ",o={"+original+"}" : "")+",i="+getPositionIncrement();
 	}
@@ -153,10 +161,20 @@ public class ExtToken extends Token implements Serializable {
 						b.writeString(t.termText());
 				}
 			}
-			// control 1: original word
+			
 			if(t.getPositionIncrement() > 0 && t.original != null){
-				b.writeControl(1);
-				b.writeStringWithLength(t.original);
+				String w  = t.termText();
+				if(t.original.equals(w.substring(0,1).toUpperCase()+w.substring(1))){
+					// control 6: original is title case
+					b.writeControl(6);
+				} else if(t.original.equals(w.toUpperCase())){
+					// control 7: original is upper case
+					b.writeControl(7);
+				} else{
+					// control 1: original word
+					b.writeControl(1);
+					b.writeStringWithLength(t.original);
+				}
 			}
 			// control 2: alias
 			if(t.getPositionIncrement() == 0){
@@ -294,12 +312,18 @@ public class ExtToken extends Token implements Serializable {
 						throw new RuntimeException("Bad serialized data: trying to assing a sentence break to text");
 					t.setType(Type.SENTENCE_BREAK);
 					break;
-				case 5:
+				case 5: // url
 					{ int len = serialized[cur++];
 					ExtToken tt = new ExtToken(new String(serialized,cur,len,"utf-8"),cur,cur+len,Type.URL,Position.EXT_LINK);
 					tokens.add(tt);
 					cur += len;
 					break; }
+				case 6: // original is title case
+					t.setOriginal(t.termText().substring(0,1).toUpperCase()+t.termText().substring(1));
+					break;
+				case 7: // original is upper case
+					t.setOriginal(t.termText().toUpperCase());
+					break;					
 				default:
 					throw new RuntimeException("Unkown control sequence "+control);
 				}				

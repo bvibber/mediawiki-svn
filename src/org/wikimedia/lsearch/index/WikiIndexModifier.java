@@ -22,6 +22,8 @@ import org.apache.lucene.analysis.PerFieldAnalyzerWrapper;
 import org.apache.lucene.analysis.SimpleAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
+import org.apache.lucene.document.Field.Index;
+import org.apache.lucene.document.Field.Store;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.Term;
@@ -29,9 +31,11 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.wikimedia.lsearch.analyzers.Aggregate;
 import org.wikimedia.lsearch.analyzers.AggregateAnalyzer;
+import org.wikimedia.lsearch.analyzers.Alttitles;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.CategoryAnalyzer;
 import org.wikimedia.lsearch.analyzers.ContextAnalyzer;
+import org.wikimedia.lsearch.analyzers.ExtToken;
 import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
 import org.wikimedia.lsearch.analyzers.FieldNameFactory;
@@ -39,6 +43,7 @@ import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.analyzers.KeywordsAnalyzer;
 import org.wikimedia.lsearch.analyzers.LanguageAnalyzer;
 import org.wikimedia.lsearch.analyzers.RelatedAnalyzer;
+import org.wikimedia.lsearch.analyzers.ReusableLanguageAnalyzer;
 import org.wikimedia.lsearch.analyzers.StopWords;
 import org.wikimedia.lsearch.analyzers.TokenizerOptions;
 import org.wikimedia.lsearch.analyzers.WikiTokenizer;
@@ -138,7 +143,11 @@ public class WikiIndexModifier {
 				}
 				for(IndexUpdateRecord rec : records){								
 					if(rec.doDelete()){
-						int count = reader.deleteDocuments(new Term("key", rec.getKey()));
+						int count = 0;
+						if(iid.isHighlight())
+							count = reader.deleteDocuments(new Term("key", rec.getHighlightKey()));
+						else // normal index
+							count = reader.deleteDocuments(new Term("key", rec.getKey()));
 						if(count == 0)
 							nonDeleteDocuments.add(rec);
 						IndexReportCard card = getReportCard(rec);
@@ -184,7 +193,14 @@ public class WikiIndexModifier {
 			writer.setMaxFieldLength(MAX_FIELD_LENGTH);
 			FieldBuilder.Case dCase = (exactCase)? FieldBuilder.Case.EXACT_CASE : FieldBuilder.Case.IGNORE_CASE; 
 			FieldBuilder builder = new FieldBuilder(iid,dCase);
-			Analyzer analyzer = Analyzers.getIndexerAnalyzer(builder);
+			Analyzer analyzer = null;
+			ReusableLanguageAnalyzer highlightContentAnalyzer = null;
+			if(iid.isHighlight()){
+				highlightContentAnalyzer = Analyzers.getReusableHighlightAnalyzer(builder.getBuilder(dCase).getFilters());
+				analyzer = Analyzers.getHighlightAnalyzer(iid); 			
+			} else
+				analyzer = Analyzers.getIndexerAnalyzer(builder);
+			
 			HashSet<String> stopWords = StopWords.getPredefinedSet(iid);
 			for(IndexUpdateRecord rec : records){								
 				if(rec.doAdd()){
@@ -193,8 +209,13 @@ public class WikiIndexModifier {
 					if(!checkPreconditions(rec))
 						continue; // article shouldn't be added for some reason					
 					IndexReportCard card = getReportCard(rec);
-					Document doc = makeDocument(rec.getArticle(),builder,iid,stopWords);
+					Document doc;					
 					try {
+						if(iid.isHighlight())
+							doc = makeHighlightDocument(rec.getArticle(),analyzer,highlightContentAnalyzer,iid);
+						else // normal index
+							doc = makeDocument(rec.getArticle(),builder,iid,stopWords);
+						
 						writer.addDocument(doc,analyzer);
 						log.debug(iid+": Adding document "+rec.getKey()+" "+rec.getArticle());
 						if(card != null)
@@ -279,7 +300,7 @@ public class WikiIndexModifier {
 	 * 
 	 * @param article
 	 */
-	protected static void transformArticleForIndexing(Article ar) {
+	public static void transformArticleForIndexing(Article ar) {
 		ArrayList<Redirect> redirects = ar.getRedirects();
 		// sort redirect by their rank
 		Collections.sort(redirects,new Comparator<Redirect>() {
@@ -365,6 +386,18 @@ public class WikiIndexModifier {
 	}
 	
 	/**
+	 * Update both the search and highlight index for iid.
+	 *  
+	 * @param iid
+	 * @param updateRecords
+	 */
+	public boolean updateDocuments(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
+		boolean index = updateDocumentsOn(iid,updateRecords);
+		boolean highlight = updateDocumentsOn(iid.getHighlight(),updateRecords);
+		return index && highlight;
+	}
+	
+	/**
 	 * Update all documents in the collection. If needed the request  
 	 * is forwarded to a remote object (i.e. if the part of the split
 	 * index is indexed by another host). 
@@ -372,7 +405,7 @@ public class WikiIndexModifier {
 	 * @param iid
 	 * @param updateRecords
 	 */
-	public boolean updateDocuments(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
+	protected boolean updateDocumentsOn(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
 		long now = System.currentTimeMillis();
 		log.info("Starting update of "+updateRecords.size()+" records on "+iid+", started at "+now);
 		boolean succ = true;
@@ -521,6 +554,17 @@ public class WikiIndexModifier {
 		return doc;
 	}
 	
+	/** Make the document that will be indexed as highlighting data */
+	public static Document makeHighlightDocument(Article article, Analyzer analyzer, ReusableLanguageAnalyzer contentAnalyzer, IndexId iid) throws IOException{
+		String key = article.getTitleObject().getKey();
+		Document doc = new Document();
+		doc.add(new Field("key",key,Store.NO,Index.UN_TOKENIZED));
+		doc.add(new Field("text",ExtToken.serialize(contentAnalyzer.tokenStream("contents",article.getContents())),Store.COMPRESS));
+		ArrayList<String> sections = contentAnalyzer.getWikiTokenizer().getHeadingText();
+		doc.add(new Field("alttitle",Alttitles.serializeAltTitle(article,iid,sections,analyzer,"alttitle"),Store.COMPRESS));
+		return doc;
+	}
+	
 	/** add related aggregate field */
 	protected static void makeRelated(Document doc, String prefix, Article article, IndexId iid, HashSet<String> stopWords){
 		ArrayList<Aggregate> items = new ArrayList<Aggregate>();
@@ -548,32 +592,7 @@ public class WikiIndexModifier {
 			addToItems(items, new Aggregate(title+" "+h,rankBoost*HEADINGS_BOOST,iid,exactCase,stopWords));
 		}
 		makeAggregate(doc,prefix,items);
-	}
-	
-	
-	public enum AlttitleTypes { TITLE, REDIRECT, HEADING };
-	
-	public static byte[] serializeAltTitle(Article article, IndexId iid, ArrayList<String> headingText) throws IOException{
-		WikiIndexModifier.transformArticleForIndexing(article);
-		Buffer b = new Buffer();
-		
-		// add title
-		String title = article.getTitle();
-		b.writeAggregate(title,new Aggregate(title,article.getRank(),iid),AlttitleTypes.TITLE.ordinal());
-		// add all redirects
-		ArrayList<String> redirects = article.getRedirectKeywords();
-		ArrayList<Integer> ranks = article.getRedirectKeywordRanks();
-		for(int i=0;i<redirects.size();i++){
-			b.writeAggregate(redirects.get(i),new Aggregate(redirects.get(i),ranks.get(i),iid),AlttitleTypes.REDIRECT.ordinal());
-		}
-		// add section headings!
-		for(String h : headingText){
-			b.writeAggregate(h,new Aggregate(h,article.getRank()*HEADINGS_BOOST,iid),AlttitleTypes.HEADING.ordinal());
-		}
-		
-		return b.getBytes();		
-	}
-	
+	}	
 	
 	
 	private static void addToItems(ArrayList<Aggregate> items, Aggregate a){

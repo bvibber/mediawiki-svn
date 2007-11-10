@@ -61,6 +61,7 @@
 			<zipfileset src="lib/snowball.jar" />
 			<zipfileset src="lib/mwdumper.jar" />
 			<zipfileset src="lib/mysql-connector-java-3.0.17-ga-bin.jar" />
+			<zipfileset src="lib/lucene-highlighter-2.2.0.jar" />
 		</jar>
 	</target>
 

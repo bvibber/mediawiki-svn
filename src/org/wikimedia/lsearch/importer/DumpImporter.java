@@ -41,6 +41,7 @@ public class DumpImporter implements DumpWriter {
 	Links links;
 	String langCode;
 	RelatedStorage related;
+	boolean makeIndex, makeHighlight;
 
 	public DumpImporter(String dbname, int limit, Boolean optimize, Integer mergeFactor, 
 			Integer maxBufDocs, boolean newIndex, Links links, String langCode,
@@ -53,6 +54,8 @@ public class DumpImporter implements DumpWriter {
 			highlightWriter = new SimpleIndexWriter(iid.getHighlight(), optimize, mergeFactor, maxBufDocs, newIndex);
 		this.limit = limit;
 		this.links = links;
+		this.makeIndex = makeIndex;
+		this.makeHighlight = makeHighlight;
 		this.langCode = langCode;
 		this.related = new RelatedStorage(iid);
 		if(!related.canRead())
@@ -86,7 +89,7 @@ public class DumpImporter implements DumpWriter {
 			redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],redirectRef));
 		}
 		// related
-		if(related != null)
+		if(makeIndex && related != null)
 			rel = related.getRelated(key);
 		// make article
 		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,

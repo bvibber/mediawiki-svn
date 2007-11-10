@@ -1,9 +1,12 @@
 package org.wikimedia.lsearch.analyzers;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.Token;
+import org.apache.lucene.analysis.TokenStream;
 import org.wikimedia.lsearch.config.IndexId;
 
 /**
@@ -20,6 +23,7 @@ public class Aggregate {
 	
 	/** Construct from arbitrary text that will be tokenized */
 	public Aggregate(String text, float boost, IndexId iid, boolean exactCase, HashSet<String> stopWords){
+		// FIXME: hey, we should use an analyzer here!!!
 		TokenizerOptions options = new TokenizerOptions.NoRelocation(exactCase);
 		tokens = new FastWikiTokenizerEngine(text,iid,options).parse();
 		this.boost = boost;
@@ -33,14 +37,23 @@ public class Aggregate {
 			noStopWordsLength = tokens.size();
 	}
 	
-	/** Construct for highlight */
-	public Aggregate(String text, float boost, IndexId iid){
-		TokenizerOptions options = new TokenizerOptions.Highlight();
-		tokens = new FastWikiTokenizerEngine(text,iid,options).parse();
+	/** Construct with specific analyzer  
+	 * @throws IOException */
+	public Aggregate(String text, float boost, IndexId iid, Analyzer analyzer, String field) throws IOException{		
+		this.tokens = toTokenArray(analyzer.tokenStream(field,text));
 		this.boost = boost;
 		this.noStopWordsLength = tokens.size();
 	}
 	
+	private ArrayList<Token> toTokenArray(TokenStream stream) throws IOException {
+		ArrayList<Token> tt = new ArrayList<Token>();
+		Token t = null;
+		while( (t = stream.next()) != null){
+			tt.add(t);
+		}
+		return tt;
+	}
+
 	/** Number of tokens */
 	public int length(){
 		if(tokens != null)

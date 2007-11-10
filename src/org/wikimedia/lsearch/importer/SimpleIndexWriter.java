@@ -46,7 +46,8 @@ public class SimpleIndexWriter {
 	protected String langCode;
 	protected Links links;
 	protected Analyzer indexAnalyzer;
-	protected ReusableLanguageAnalyzer highlightAnalyzer;
+	protected Analyzer highlightAnalyzer;	
+	protected ReusableLanguageAnalyzer highlightContentAnalyzer;
 	protected HashSet<String> stopWords;
 	
 	public SimpleIndexWriter(IndexId iid, Boolean optimize, Integer mergeFactor, Integer maxBufDocs, boolean newIndex){
@@ -61,7 +62,8 @@ public class SimpleIndexWriter {
 		builder = new FieldBuilder(iid,dCase);
 		indexes = new HashMap<String,IndexWriter>();		
 		indexAnalyzer = Analyzers.getIndexerAnalyzer(builder);
-		highlightAnalyzer = new ReusableLanguageAnalyzer(builder.getBuilder().getFilters(),false,true);
+		highlightAnalyzer = Analyzers.getHighlightAnalyzer(iid);
+		highlightContentAnalyzer = new ReusableLanguageAnalyzer(builder.getBuilder().getFilters(),false,true);
 		stopWords = StopWords.getPredefinedSet(iid);
 		// open all relevant indexes
 		for(IndexId part : iid.getPhysicalIndexIds()){
@@ -151,17 +153,12 @@ public class SimpleIndexWriter {
 		IndexWriter writer = indexes.get(target.toString());
 		if(writer == null)
 			return;		
-		String key = a.getTitleObject().getKey();
 		try {
-			// TODO: move to WikiIndexModifier?
-			Document doc = new Document();
-			doc.add(new Field("key",key,Store.NO,Index.UN_TOKENIZED));
-			doc.add(new Field("text",ExtToken.serialize(highlightAnalyzer.tokenStream("contents",a.getContents())),Store.COMPRESS));
-			doc.add(new Field("alttitle",WikiIndexModifier.serializeAltTitle(a,iid,highlightAnalyzer.getWikiTokenizer().getHeadingText()),Store.COMPRESS));
+			Document doc = WikiIndexModifier.makeHighlightDocument(a,highlightAnalyzer,highlightContentAnalyzer,target);
 			addDocument(writer,doc,a,target);
 		} catch (IOException e) {
 			e.printStackTrace();
-			log.error("Error adding document for key="+key+" : "+e.getMessage());
+			log.error("Error adding document for key="+a.getTitleObject().getKey()+" : "+e.getMessage());
 		}
 	}
 	

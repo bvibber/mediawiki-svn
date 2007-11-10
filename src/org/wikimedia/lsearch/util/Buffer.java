@@ -1,15 +1,75 @@
 package org.wikimedia.lsearch.util;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 import org.wikimedia.lsearch.analyzers.Aggregate;
+import org.wikimedia.lsearch.analyzers.Alttitles;
 import org.wikimedia.lsearch.analyzers.ExtToken;
 import org.wikimedia.lsearch.analyzers.LanguageAnalyzer;
 
 public class Buffer {
 	public byte[] buf = new byte[256];
 	public int len=0;
+	
+	/** for writing */
+	public Buffer(){		
+	}
+	
+	/** for reading */
+	public Buffer(byte[] buf){
+		this.buf = buf;
+	}
+	
+	public byte read(){
+		return buf[len++];
+	}
+	
+	public int readInt(){
+		int ch1 = read() & 0xFF;
+      int ch2 = read() & 0xFF;
+      int ch3 = read() & 0xFF;
+      int ch4 = read() & 0xFF;
+      return ((ch1 << 24) + (ch2 << 16) + (ch3 << 8) + (ch4 << 0));
+	}
+	
+	public String readStringWithLength(){
+		int strlen = read();
+		String s;
+		try {
+			s = new String(buf,len,strlen,"utf-8");
+			len += strlen;
+			return s;
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return null;
+		}		
+	}
+	
+	public byte[] readBytesWithLength(){
+		int l = readInt();
+		byte[] b = new byte[l];
+		System.arraycopy(buf,len,b,0,l);
+		len += l;
+		return b;
+	}
+	
+	/** @return Integer type, String title, Integer rank(boost), ArrayList<ExtToken> tokens */ 
+	public Object[] readAlttitleInfo(){
+		Integer type = (int)read();
+		Integer boost = readInt();
+		String title = readStringWithLength();
+		ArrayList<ExtToken> tokens = ExtToken.deserialize(readBytesWithLength());
+		return new Object[] { type, new Alttitles.Info(title,boost,tokens)};
+	}
+	
+	public boolean hasMore(){
+		return len < buf.length;
+	}
+	
+	///////// WRITE ///////////
 	
 	public byte[] getBytes(){
 		byte[] ret = new byte[len];
@@ -82,7 +142,7 @@ public class Buffer {
 	
 	/** Format: type (1b), rank (4b), text (string), size of serialized (4b), serialized (bytes) 
 	 * @throws IOException */ 
-	public final void writeAggregate(String text, Aggregate a, int type) throws IOException{
+	public final void writeAlttitleInfo(String text, Aggregate a, int type) throws IOException{
 		write(type);
 		writeInt((int)a.boost());
 		writeStringWithLength(text);
