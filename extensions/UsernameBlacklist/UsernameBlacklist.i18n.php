@@ -31,9 +31,9 @@ function efUsernameBlacklistMessages( $single = false ) {
 	'blacklistedusernametext' => 'اسم المستخدم الذي اخترته يطابق [[MediaWiki:Usernameblacklist|
 قائمة أسماء المستخدمين السوداء]]. من فضلك اختر اسما آخر.',
 	'usernameblacklist' => '<pre>
-# المدخلات في هذه القائمة ستستخدم كجزء من of a regular expression when
-# blacklisting usernames from registration. Each item should be part of
-# a bulleted list, e.g.
+# المدخلات في هذه القائمة ستستخدم كجزء من تعبير منتظم عند
+# منع أسماء المستخدمين في القائمة السوداء من التسجيل. كل مدخلة يجب أن تكون جزءا من
+# قائمة مرقمة، كمثال.
 #
 # * Foo
 # * [Bb]ar

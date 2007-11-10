@@ -159,6 +159,17 @@ $wgChemFunctions_Messages['fr'] = array(
 $wgChemFunctions_Messages['frp'] = array(
 	'chemicalsources' => 'Sôrses por la ch·imie',
 	'ChemFunctions_ListPage' => 'Sôrses por la ch·imie',
+	'ChemFunctions_DataList' => 'Siut una lista de lims vers des setos que pôvont aduire des enformacions a propôs de les substances ch·imiques que vos rechèrchiéd.
+
+* [http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI <span title="« NIST » : pâge en anglès" style="text-decoration:none">Composâ $MIXCASNameFormula</span>], NIST
+* [http://ptcl.chem.ox.ac.uk/MSDS/ <span title="« MSDS » : pâge en anglès" style="text-decoration:none">MSDS</span>], Univèrsitât d’Oxford',
+	'ChemFunctions_CAS' => 'Numerô CAS',
+	'ChemFunctions_EINECS' => 'Numerô EINECS',
+	'ChemFunctions_CHEBI' => 'ChEBI',
+	'ChemFunctions_ATCCode' => 'Code ATC',
+	'ChemFunctions_ECNumber' => 'Numerô CE',
+	'ChemFunctions_Name' => 'Nom IUPAC',
+	'ChemFunctions_ChemFormInputError' => 'Chemform, entrent fôtif !',
 );
 
 $wgChemFunctions_Messages['gl'] = array(

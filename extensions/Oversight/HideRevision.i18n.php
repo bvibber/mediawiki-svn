@@ -53,10 +53,10 @@ Releasing this information can result in permanent loss of Oversight privileges.
 ),
 
 'ar' => array(
-'hiderevision' => 'أخف النسخ بشكل دائم',
-'hiderevision-prompt' => 'رقم النسخة للإزالة:',
-'hiderevision-continue' => 'استمر',
-'hiderevision-text' => 'هذا يجب أن يستخدم \'\'\'فقط\'\'\' في الحالات التالية:
+	'hiderevision' => 'أخف النسخ بشكل دائم',
+	'hiderevision-prompt' => 'رقم النسخة للإزالة:',
+	'hiderevision-continue' => 'استمر',
+	'hiderevision-text' => 'هذا يجب أن يستخدم \'\'\'فقط\'\'\' في الحالات التالية:
 * معلومات شخصية غير ملائمة
 *: \'\'عناوين المنازل وأرقام الهواتف, أرقام التأمين الاجتماعي، إلى آخره\'\'
 
@@ -64,27 +64,27 @@ Releasing this information can result in permanent loss of Oversight privileges.
 
 المدخلات المزالة لن تكون مرئية لأي شخص عبر موقع الويب،
 لكن عمليات الحذف ستسجل ويمكن استرجاعها يدويا بواسطة مدير قاعدة بيانات لو ارتكبت خطأ.',
-'hiderevision-reason' => 'السبب (سيسجل سرا):',
-'hiderevision-submit' => 'أخف هذه البيانات بشكل دائم',
-'hiderevision-tab' => 'إخفاء النسخة',
-'hiderevision-norevisions' => 'لا نسخ محددة للحذف.',
-'hiderevision-noreason' => 'يجب أن تصف السبب لهذه الإزالة.',
-'hiderevision-status' => 'النسخة $1: $2',
-'hiderevision-success' => 'تمت الأرشفة والحذف بنجاح.',
-'hiderevision-error-missing' => 'غير موجود في قاعدة البيانات.',
-'hiderevision-error-current' => 'لا يمكن حذف آخر تعديل لصفحة. استرجع هذا التغيير أولا.',
-'hiderevision-error-delete' => 'لم يمكن الأرشفة؛ هل تم حذفها سابقا؟',
-'hiderevision-archive-status' => 'النسخة المحذوفة من $1: $2',
-'oversight-nodiff' => 'غير قادر على تتبع التغييرات حيث أنه لا توجد نسخة سابقة للصفحة. إما:
+	'hiderevision-reason' => 'السبب (سيسجل سرا):',
+	'hiderevision-submit' => 'أخف هذه البيانات بشكل دائم',
+	'hiderevision-tab' => 'إخفاء النسخة',
+	'hiderevision-norevisions' => 'لا نسخ محددة للحذف.',
+	'hiderevision-noreason' => 'يجب أن تصف السبب لهذه الإزالة.',
+	'hiderevision-status' => 'النسخة $1: $2',
+	'hiderevision-success' => 'تمت الأرشفة والحذف بنجاح.',
+	'hiderevision-error-missing' => 'غير موجود في قاعدة البيانات.',
+	'hiderevision-error-current' => 'لا يمكن حذف آخر تعديل لصفحة. استرجع هذا التغيير أولا.',
+	'hiderevision-error-delete' => 'لم يمكن الأرشفة؛ هل تم حذفها سابقا؟',
+	'hiderevision-archive-status' => 'النسخة المحذوفة من $1: $2',
+	'oversight-nodiff' => 'غير قادر على تتبع التغييرات حيث أنه لا توجد نسخة سابقة للصفحة. إما:
 *الصفحة تم حذفها
 *هذه النسخة المخفية كانت النسخة الأولى',
-'oversight-log-hiderev' => 'أزال تعديلا من $1',
-'oversight' => 'أوفرسايت',
-'oversight-view' => 'التفاصيل',
-'oversight-difference' => '(الفرق من النسخة المتبقية السابقة)',
-'oversight-prev' => 'آخر نسخة سابقة',
-'oversight-hidden' => 'نسخة مخفية',
-'oversight-header' => 'بالأسفل قائمة بالنسخ التي تم إخفاؤها بشكل دائم حديثا عن العامة.
+	'oversight-log-hiderev' => 'أزال تعديلا من $1',
+	'oversight' => 'أوفرسايت',
+	'oversight-view' => 'التفاصيل',
+	'oversight-difference' => '(الفرق من النسخة المتبقية السابقة)',
+	'oversight-prev' => 'آخر نسخة سابقة',
+	'oversight-hidden' => 'نسخة مخفية',
+	'oversight-header' => 'بالأسفل قائمة بالنسخ التي تم إخفاؤها بشكل دائم حديثا عن العامة.
 إفشاء هذه المعلومات يمكن أن ينتج عنه فقد دائم لصلاحيات الأوفرسايت.',
 ),
 
@@ -132,67 +132,59 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 ),
 
 'fi' => array(
-'hiderevision' => 'Pysyvä versioiden piilottaminen',
-'hiderevision-prompt' => 'Poistettava versionumero:',
-'hiderevision-continue' => 'Jatka',
-'hiderevision-text' => 'Tätä toimintoa tulisi käyttää \'\'\'vain\'\'\' seuraavissa tapauksissa:
+	'hiderevision' => 'Pysyvä versioiden piilottaminen',
+	'hiderevision-prompt' => 'Poistettava versionumero:',
+	'hiderevision-continue' => 'Jatka',
+	'hiderevision-text' => 'Tätä toimintoa tulisi käyttää \'\'\'vain\'\'\' seuraavissa tapauksissa:
 * Sopimattomat henkilötiedot
 *: \'\'esim. kotiosoitteet, puhelinnumerot ja henkilötunnukset.\'\'
 
 \'\'\'Tämän järjestelmän väärinkäyttö johtaa käyttöoikeuksien menetykseen.\'\'\'
 
 Poistetut kohteet eivät näy kenellekään web-sivuston kautta, mutta kaikki poistot kirjataan ja tietokannan ylläpitäjä voi manuaalisesti palauttaa vahingossa poistetut kohteet.',
-'hiderevision-reason' => 'Syy (kirjataan yksityisesti):',
-'hiderevision-submit' => 'Piilota nämä tiedot pysyvästi',
-'hiderevision-tab' => 'Piilota versio',
-'hiderevision-norevisions' => 'Poistettavaa versiota ei ole määritelty.',
-'hiderevision-noreason' => 'Poistosyy on määriteltävä.',
-'hiderevision-success' => 'Arkistoitu ja poistettu onnistuneesti.',
-'hiderevision-error-missing' => 'Ei löydy tietokannasta.',
-'hiderevision-error-current' => 'Uusinta muokkausta ei voi poistaa. Palauta muutos ensin.',
-'oversight-log-hiderev' => 'poisti muokkauksen sivulta $1',
+	'hiderevision-reason' => 'Syy (kirjataan yksityisesti):',
+	'hiderevision-submit' => 'Piilota nämä tiedot pysyvästi',
+	'hiderevision-tab' => 'Piilota versio',
+	'hiderevision-norevisions' => 'Poistettavaa versiota ei ole määritelty.',
+	'hiderevision-noreason' => 'Poistosyy on määriteltävä.',
+	'hiderevision-success' => 'Arkistoitu ja poistettu onnistuneesti.',
+	'hiderevision-error-missing' => 'Ei löydy tietokannasta.',
+	'hiderevision-error-current' => 'Uusinta muokkausta ei voi poistaa. Palauta muutos ensin.',
+	'oversight-log-hiderev' => 'poisti muokkauksen sivulta $1',
 ),
 
 /* French (Bertrand Grondin) */
 'fr' => array(
-'hiderevision' => 'Cacher définitivement les révisions',
-// Empty form
-'hiderevision-prompt' => 'Numéro d’édition à supprimer :',
-'hiderevision-continue' => 'Continuer',
-// Confirmation form
-'hiderevision-text' =>
-"Cette fonctionnalité doit être utilisée '''uniquement''' pour les cas suivants :
+	'hiderevision' => 'Cacher définitivement les révisions',
+	'hiderevision-prompt' => 'Numéro d’édition à supprimer :',
+	'hiderevision-continue' => 'Continuer',
+	'hiderevision-text' => 'Cette fonctionnalité doit être utilisée \'\'\'uniquement\'\'\' pour les cas suivants :
 * Information personnelle inappropriée,
-*: ''Adresse personnelle et numéro de téléphone, numéro de sécurité sociale, etc...''
+*: \'\'Adresse personnelle et numéro de téléphone, numéro de sécurité sociale, etc...\'\'
 
-''' L'abus de cette fonctionnalité impliquera la perte de ces privilèges.'''
+\'\'\' L\'abus de cette fonctionnalité impliquera la perte de ces privilèges.\'\'\'
 
-Les articles effacés ne sont plus visibles dans ce système, mais ces suppressions sont journalisées et peuvent être restaurées manuellement par un administrateur ayant l'accès direct sur la base de données si vous avez fait une erreur.",
-'hiderevision-reason' => 'Motif (sera enregistré séparément) :',
-'hiderevision-submit' => 'Cacher cette donnée de manière permanente',
-// Tab displayed to allowed users on old revision display
-'hiderevision-tab' => 'Cacher la modification',
-// Status & errors on action
-'hiderevision-norevisions' => 'Aucune modification indiquée à supprimer.',
-'hiderevision-noreason' => 'Vous devez indiquer la raison précise de cette suppression.',
-'hiderevision-status' => 'Modification $1 : $2',
-'hiderevision-success' => 'Archivé et supprimé avec succès.',
-'hiderevision-error-missing' => 'Non trouvé dans la base de données.',
-'hiderevision-error-current' => 'Ne peut supprimer la dernière révision dans une page. Faites une annulation d’édition auparavant.',
-'hiderevision-error-delete' => 'Ne peut être archivé ; la page aurait-elle été supprimée ?',
-'hiderevision-archive-status' => 'Modification supprimée de $1 : $2',
-'oversight-nodiff' => 'Impossible de détecter des changements tant que ne se trouve aucune révision antérieure pour la page. Les raisons peuvent être les suivantes :
+Les articles effacés ne sont plus visibles dans ce système, mais ces suppressions sont journalisées et peuvent être restaurées manuellement par un administrateur ayant l\'accès direct sur la base de données si vous avez fait une erreur.',
+	'hiderevision-reason' => 'Motif (sera enregistré séparément) :',
+	'hiderevision-submit' => 'Cacher cette donnée de manière permanente',
+	'hiderevision-tab' => 'Cacher la modification',
+	'hiderevision-norevisions' => 'Aucune modification indiquée à supprimer.',
+	'hiderevision-noreason' => 'Vous devez indiquer la raison précise de cette suppression.',
+	'hiderevision-status' => 'Modification $1 : $2',
+	'hiderevision-success' => 'Archivé et supprimé avec succès.',
+	'hiderevision-error-missing' => 'Non trouvé dans la base de données.',
+	'hiderevision-error-current' => 'Ne peut supprimer la dernière révision dans une page. Faites une annulation d’édition auparavant.',
+	'hiderevision-error-delete' => 'Ne peut être archivé ; la page aurait-elle été supprimée ?',
+	'hiderevision-archive-status' => 'Modification supprimée de $1 : $2',
+	'oversight-nodiff' => 'Impossible de détecter des changements tant que ne se trouve aucune révision antérieure pour la page. Les raisons peuvent être les suivantes :
 *La page a été supprimée,
 *La révision cachée était la toute première de la page',
-// Logging
-'oversight-log-hiderev' => 'a supprimé une édition de $1',
-// Oversight review page
-'oversight' => 'Oversight',
-'oversight-view' => 'détails',
-'oversight-difference' => '(Différence par rapport à la révision précédente)',
-'oversight-prev' => 'Dernière révision précédente',
-'oversight-hidden' => 'Révision cachée',
-'oversight-header' => 'Ci-dessous, figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges d’Oversight.',
+	'oversight-log-hiderev' => 'a supprimé une édition de $1',
+	'oversight-view' => 'détails',
+	'oversight-difference' => '(Différence par rapport à la révision précédente)',
+	'oversight-prev' => 'Dernière révision précédente',
+	'oversight-hidden' => 'Révision cachée',
+	'oversight-header' => 'Ci-dessous, figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges d’Oversight.',
 ),
 
 'gl' => array(
@@ -276,109 +268,100 @@ administrador das bases de datos no caso de que vostede cometa un erro.',
 ),
 
 'hsb' => array(
-'hiderevision' => 'Wersije na přeco schować',
-'hiderevision-prompt' => 'Wersijowe čisło, kotrež ma so wotstronić:',
-'hiderevision-continue' => 'Dale',
-'hiderevision-text' => 'To smě \'\'\'jeničce\'\'\' w slědowacych padach wužić;
+	'hiderevision' => 'Wersije na přeco schować',
+	'hiderevision-prompt' => 'Wersijowe čisło, kotrež ma so wotstronić:',
+	'hiderevision-continue' => 'Dale',
+	'hiderevision-text' => 'To smě \'\'\'jeničce\'\'\' w slědowacych padach wužić;
 * Wosobinske informacije:
 *: \'\'woprawdźite mjeno, adresa, telefonowe čisło a podobne priwatne podrobnosće\'\'
 
 \'\'\'Znjewužiwanje tutoho systema zawinuje zhubjenje tutych prawow!\'\'\'
 
 Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wušmórnjenja protokoluja so a hodźa so manuelnje wot administratora datoweje banki wobnowić, jeli činiš zmylk.',
-'hiderevision-reason' => 'Přičina (protokoluje so skradźu)',
-'hiderevision-submit' => 'Tute daty na stajnje schować',
-'hiderevision-tab' => 'Wersiju schować',
-'hiderevision-norevisions' => 'Žane wersije za wušmórnjenje podate.',
-'hiderevision-noreason' => 'Dyrbiš přičinu za wotstronjenje podać.',
-'hiderevision-status' => 'Wersija $1: $2',
-'hiderevision-success' => 'Wuspěšnje archiwowany a zničeny.',
-'hiderevision-error-missing' => 'W datowej bance njenamakany.',
-'hiderevision-error-current' => 'Poslednja změna njehodźi so wušmórnyć. Staj tutu změnu wróćo.',
-'hiderevision-error-delete' => 'Njemóžno do archiwa přewjesć – bu wersija do toho wušmórnjena?',
-'hiderevision-archive-status' => 'Wušmórnjena wersija z $1: $2',
-'oversight-nodiff' => 'Njeje přirunanje wersijow móžno, dokelž prjedawša wersija njeje. Móžnej přičinje:
+	'hiderevision-reason' => 'Přičina (protokoluje so skradźu)',
+	'hiderevision-submit' => 'Tute daty na stajnje schować',
+	'hiderevision-tab' => 'Wersiju schować',
+	'hiderevision-norevisions' => 'Žane wersije za wušmórnjenje podate.',
+	'hiderevision-noreason' => 'Dyrbiš přičinu za wotstronjenje podać.',
+	'hiderevision-status' => 'Wersija $1: $2',
+	'hiderevision-success' => 'Wuspěšnje archiwowany a zničeny.',
+	'hiderevision-error-missing' => 'W datowej bance njenamakany.',
+	'hiderevision-error-current' => 'Poslednja změna njehodźi so wušmórnyć. Staj tutu změnu wróćo.',
+	'hiderevision-error-delete' => 'Njemóžno do archiwa přewjesć – bu wersija do toho wušmórnjena?',
+	'hiderevision-archive-status' => 'Wušmórnjena wersija z $1: $2',
+	'oversight-nodiff' => 'Njeje přirunanje wersijow móžno, dokelž prjedawša wersija njeje. Móžnej přičinje:
 *Strona bu zničena
 *Schowana wersija běše přenja wersija',
-'oversight-log-hiderev' => 'změna wot $1 bu wotstronjena.',
-'oversight' => 'Oversight',#identical but defined
-'oversight-view' => 'podrobnosće',
-'oversight-difference' => '(Rozdźěl wot předchadneje zwostawaceje wersije)',
-'oversight-prev' => 'Poslednja předchadna wersija',
-'oversight-hidden' => 'Schowana wersija',
-'oversight-header' => 'Slěduje lisćina wersijow na stajnje schowanych za zjawnosć. Wozjewjenje tutych informacijow móže k stajnemu zhubjenju prawow za Oversight wjesć.',
+	'oversight-log-hiderev' => 'změna wot $1 bu wotstronjena.',
+	'oversight-view' => 'podrobnosće',
+	'oversight-difference' => '(Rozdźěl wot předchadneje zwostawaceje wersije)',
+	'oversight-prev' => 'Poslednja předchadna wersija',
+	'oversight-hidden' => 'Schowana wersija',
+	'oversight-header' => 'Slěduje lisćina wersijow na stajnje schowanych za zjawnosć. Wozjewjenje tutych informacijow móže k stajnemu zhubjenju prawow za Oversight wjesć.',
 ),
 
 /* Italian (BrokenArrow) */
 'it' => array(
-'hiderevision' => 'Oscuramento permanente di una revisione',
-// Empty form
-'hiderevision-prompt' => 'Numero della revisione da oscurare:',
-'hiderevision-continue' => 'Continua',
-// Confirmation form
-'hiderevision-text' =>
-"Questa funzione deve essere usata '''unicamente''' nei seguenti casi:
+	'hiderevision' => 'Oscuramento permanente di una revisione',
+	'hiderevision-prompt' => 'Numero della revisione da oscurare:',
+	'hiderevision-continue' => 'Continua',
+	'hiderevision-text' => 'Questa funzione deve essere usata \'\'\'unicamente\'\'\' nei seguenti casi:
 * Dati personali non appropriati
-*: ''indirizzi postali, numeri di telefono, codici fiscali, ecc.''
+*: \'\'indirizzi postali, numeri di telefono, codici fiscali, ecc.\'\'
 
-'''Qualunque abuso del sistema comporterà la rimozione dei relativi privilegi.'''
+\'\'\'Qualunque abuso del sistema comporterà la rimozione dei relativi privilegi.\'\'\'
 
 Gli elementi oscurati sono invisibili per chiunque sul sito, ma
 esiste un registro delle revisioni oscurate e la possibilità di
 un ripristino manuale da parte di un amministratore del database
-in caso di errori.",
-'hiderevision-reason' => 'Motivo (per il registro riservato):',
-'hiderevision-submit' => 'Oscura i dati in modo permanente',
-// Tab displayed to allowed users on old revision display
-'hiderevision-tab' => 'Oscura revisione',
-// Status & errors on action
-'hiderevision-norevisions' => 'Non è stata indicata alcuna revisione da oscurare.',
-'hiderevision-noreason' => 'È necessario indicare il motivo dell\'oscuramento.',
-'hiderevision-status' => 'Revisione $1: $2',
-'hiderevision-success' => 'Archiviazione e oscuramento completati.',
-'hiderevision-error-missing' => 'Non presente nel database.',
-'hiderevision-error-current' => 'Impossibile oscurare l\'ultima modifica di una pagina. Annullare la modifica prima di procedere all\'oscuramento.',
-'hiderevision-error-delete' => 'Impossibile archiviare; c\'erano delle cancellazioni precedenti?',
-'hiderevision-archive-status' => 'Revisione oscurata di $1: $2',
-'oversight-nodiff' => 'Impossibile mostrare le modifiche in quanto non sono presenti revisioni precedenti della pagina. Possibili cause:
+in caso di errori.',
+	'hiderevision-reason' => 'Motivo (per il registro riservato):',
+	'hiderevision-submit' => 'Oscura i dati in modo permanente',
+	'hiderevision-tab' => 'Oscura revisione',
+	'hiderevision-norevisions' => 'Non è stata indicata alcuna revisione da oscurare.',
+	'hiderevision-noreason' => 'È necessario indicare il motivo dell\'oscuramento.',
+	'hiderevision-status' => 'Revisione $1: $2',
+	'hiderevision-success' => 'Archiviazione e oscuramento completati.',
+	'hiderevision-error-missing' => 'Non presente nel database.',
+	'hiderevision-error-current' => 'Impossibile oscurare l\'ultima modifica di una pagina. Annullare la modifica prima di procedere all\'oscuramento.',
+	'hiderevision-error-delete' => 'Impossibile archiviare; c\'erano delle cancellazioni precedenti?',
+	'hiderevision-archive-status' => 'Revisione oscurata di $1: $2',
+	'oversight-nodiff' => 'Impossibile mostrare le modifiche in quanto non sono presenti revisioni precedenti della pagina. Possibili cause:
 *La pagina è stata cancellata
 *Questa revisione oscurata era la prima per la pagina',
-// Logging
-'oversight-log-hiderev' => 'ha oscurato una modifica di $1',
-// Oversight review page
-'oversight' => 'Oversight',
-'oversight-view' => 'dettagli',
-'oversight-difference' => '(Differenza rispetto alla versione precedente rimasta)',
-'oversight-prev' => 'Ultima revisione precedente',
-'oversight-hidden' => 'Revisione oscurata',
-'oversight-header' => 'Qui di seguito viene presentata una lista delle revisioni oscurate in modo permanente ai visitatori del sito.
+	'oversight-log-hiderev' => 'ha oscurato una modifica di $1',
+	'oversight-view' => 'dettagli',
+	'oversight-difference' => '(Differenza rispetto alla versione precedente rimasta)',
+	'oversight-prev' => 'Ultima revisione precedente',
+	'oversight-hidden' => 'Revisione oscurata',
+	'oversight-header' => 'Qui di seguito viene presentata una lista delle revisioni oscurate in modo permanente ai visitatori del sito.
 La divulgazione di tali informazioni può dar luogo alla rimozione permanente dei diritti di oversight.',
 ),
 
 'ja' => array(
-'hiderevision' => '永久的な版の消去',
-'hiderevision-prompt' => '消去する版の番号(oldid):',
-'hiderevision-continue' => '続ける',
-'hiderevision-text' => 'これは、\'\'\'以下の場合に限って\'\'\'使用すべきです：
+	'hiderevision' => '永久的な版の消去',
+	'hiderevision-prompt' => '消去する版の番号(oldid):',
+	'hiderevision-continue' => '続ける',
+	'hiderevision-text' => 'これは、\'\'\'以下の場合に限って\'\'\'使用すべきです：
 * 不適切な個人情報
 *: \'\'個人の住所や電話番号、社会保障番号、その他\'\'
 
 \'\'\'このシステムを悪用したり乱用したりする事は、権限を失う事になります。\'\'\'
 
 消去されたアイテムはウェブサイト上では誰も見る事が出来ません。しかし、貴方が間違って消去した場合、削除はログ化されている為、データベース管理者により手動で復帰する事が出来ます。',
-'hiderevision-reason' => '理由(内密に記録されます):',
-'hiderevision-submit' => '永久にこのデータを消去する',
-'hiderevision-tab' => '版の消去',
-'hiderevision-noreason' => '消去する理由を記して下さい。',
-'hiderevision-status' => '版番号 $1 に就いて: $2',
-'hiderevision-success' => 'アーカイブと削除に成功しました。',
-'hiderevision-error-missing' => 'データベース内に見付かりません。',
-'hiderevision-error-current' => 'ページの最新版は削除することが出来ません。先にこの版を差し戻してください。',
-'hiderevision-error-delete' => 'アーカイブ出来ませんでした。その版は過去に消去されていませんか?',
-'oversight-nodiff' => '現在前の差分を辿る事が出来ません。ページが削除されたか、消去した版が最初の版であると考えられます。',
-'oversight-log-hiderev' => '―― $1の編集を消去',
-'oversight-view' => '詳細',
-'oversight-header' => '下記は、最近永久に消去され、非公開となった版の一覧です。この情報を公開する事は、Oversight権限を永久に失う事になりかねません。',
+	'hiderevision-reason' => '理由(内密に記録されます):',
+	'hiderevision-submit' => '永久にこのデータを消去する',
+	'hiderevision-tab' => '版の消去',
+	'hiderevision-noreason' => '消去する理由を記して下さい。',
+	'hiderevision-status' => '版番号 $1 に就いて: $2',
+	'hiderevision-success' => 'アーカイブと削除に成功しました。',
+	'hiderevision-error-missing' => 'データベース内に見付かりません。',
+	'hiderevision-error-current' => 'ページの最新版は削除することが出来ません。先にこの版を差し戻してください。',
+	'hiderevision-error-delete' => 'アーカイブ出来ませんでした。その版は過去に消去されていませんか?',
+	'oversight-nodiff' => '現在前の差分を辿る事が出来ません。ページが削除されたか、消去した版が最初の版であると考えられます。',
+	'oversight-log-hiderev' => '―― $1の編集を消去',
+	'oversight-view' => '詳細',
+	'oversight-header' => '下記は、最近永久に消去され、非公開となった版の一覧です。この情報を公開する事は、Oversight権限を永久に失う事になりかねません。',
 ),
 
 /* Kazakh Cyrillic (AlefZet) */
@@ -549,6 +532,31 @@ teruggeet worden door databasebeheerders als u een fout maakt.',
 'oversight-hidden' => 'Verborgen versie',
 'oversight-header' => 'Hieronder staat een lijst met versies die permanent verborgen zijn voor iedereen.
 Het vrijgeven van deze informatie kan tot gevolg hebben dat Oversightrechten worden ingenomen.',
+),
+
+'oc' => array(
+	'hiderevision' => 'Amagar definitivament las revisions',
+	'hiderevision-prompt' => 'Numèro d’edicion de suprimir :',
+	'hiderevision-continue' => 'Contunhar',
+	'hiderevision-text' => 'Aquesta foncionalitat deu èsser utilizada \'\'\'unicament\'\'\' pels cases seguents : * Informacion personala inapropriada, *: \'\'Adreça personala e numèro de telèfon, numèro de seguretat sociala, etc...\'\' \'\'\' L\'abús d\'aquesta foncionalitat implicarà la pèrda d\'aquestes privilègis.\'\'\' Los articles escafats son pas mai visibles dins aqueste sistèma, mas aquestas supressions son jornalizadas e pòdon èsser restauradas manualament per un administrator qu\'a un accès dirècte sus la banca de donadas se avètz fach una error.',
+	'hiderevision-reason' => 'Motiu (serà enregistrat separadament) :',
+	'hiderevision-submit' => 'Amagar aquesta donada de biais permanent',
+	'hiderevision-tab' => 'Amagar la modificacion',
+	'hiderevision-norevisions' => 'Cap de modificacion indicada de suprimir.',
+	'hiderevision-noreason' => 'Devètz indicar la rason precisa d\'aquesta supression.',
+	'hiderevision-status' => 'Modificacion $1 : $2',
+	'hiderevision-success' => 'Archivat e suprimit amb succès.',
+	'hiderevision-error-missing' => 'Pas trobat dins la banca de donadas.',
+	'hiderevision-error-current' => 'Pòt pas suprimir la darrièra revision dins una pagina. Fasetz una anullacion d’edicion de per abans.',
+	'hiderevision-error-delete' => 'Pòt pas èsser archivat ; la pagina seriá estada suprimida ?',
+	'hiderevision-archive-status' => 'Modificacion suprimida de $1 : $2',
+	'oversight-nodiff' => 'Impossible de detectar de cambiaments tant que se tròba pas cap de revision anteriora per la pagina. Las rasons pòdon èsser las seguentas : *La pagina es estada suprimida, *La revision amagada èra la tota primièra de la pagina',
+	'oversight-log-hiderev' => 'a suprimit una edicion de $1',
+	'oversight-view' => 'detalhs',
+	'oversight-difference' => '(Diferéncia per rapòrt a la revision precedenta)',
+	'oversight-prev' => 'Darrièra revision precedenta',
+	'oversight-hidden' => 'Revision amagada',
+	'oversight-header' => 'Çai jos, figura la lista de las revisions amagadas de biais permanent al public. La divulgacion d\'aquesta informacion pòt aver coma consequéncia la descasença dels privilègis d’Oversight.',
 ),
 
 'pl' => array(
@@ -841,6 +849,17 @@ i administratori baze podataka ih mogu ručno vratiti ako napravite grešku.",
 // Oversight review page
 'oversight' => 'Propust',
 'oversight-view' => 'detalji',
+),
+
+'tet' => array(
+	'hiderevision-prompt' => 'Sura versaun nian ne\'ebé hakarak halakon:',
+	'hiderevision-tab' => 'Subar versaun',
+	'hiderevision-norevisions' => 'Versaun lá\'os ba halakon',
+	'hiderevision-status' => 'Versaun $1: $2',
+	'hiderevision-error-current' => 'La bele subar versaun foun pájina nian. Ulun filak pájina.',
+	'oversight-log-hiderev' => 'subar edita husi $1',
+	'oversight-view' => 'barak liu',
+	'oversight-hidden' => 'Versaun nasubar tiha ona',
 ),
 
 /* Cantonese (Shinjiman) */

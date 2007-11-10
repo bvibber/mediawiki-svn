@@ -16,6 +16,22 @@ $allMessages = array(
 		'tasklistbyname'          => '== Todo List for %s ==',
 	),
 
+	'ar' => array(
+		'tasklist'                => 'قائمة المهام',
+		'tasklistbyproject'       => 'قائمة المهام حسب المشروع',
+		'tasklistunknownproject'  => 'مشروع غير معروف',
+		'tasklistunspecuser'      => 'مستخدم غير محدد',
+		'tasklistincorrectuser'   => 'اسم مستخدم غير صحيح',
+		'tasklistemail'           => 'عزيزي %s',
+		'tasklistemailsubject'    => 'التغيير في قائمة مهام [%s]',
+		'tasklistmytasks'         => 'مهامي',
+		'tasklistbyprojectbad'    => 'المشروع \'\'\'%s\'\'\' ليس مشروعا صحيحا. لقائمة بالمشاريع الصحيحة، انظر [[MediaWiki:TodoTasksValidProjects]].',
+		'tasklistbyprojname'      => 'المهام الموكلة ل\'\'\'%s\'\'\'',
+		'tasklistchooseproj'      => 'اختر المشروع:',
+		'tasklistprojdisp'        => 'عرض',
+		'tasklistbyname'          => '== قائمة العمل ل%s ==',
+	),
+
 	'de' => array(
 		'tasklist'                => 'Aufgabenliste',
 		'tasklistbyproject'       => 'Aufgabenliste pro Projekt',

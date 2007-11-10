@@ -85,6 +85,19 @@ $allMessages = array(
 		'passwordreset-success' => 'Wachtwoord voor gebruikers-ID $1 is opnieuw ingesteld',
 	),
 
+	'oc' => array(
+		'passwordreset' => 'Remesa a zèro del senhal',
+		'passwordreset-invalidusername' => 'Nom d\'utilizaire desconegut',
+		'passwordreset-emptyusername' => 'Nom d\'utilizaire void',
+		'passwordreset-nopassmatch' => 'Los senhals qu\'avètz picats son pas identics.',
+		'passwordreset-badtoken' => 'Token de modificacion desconegut',
+		'passwordreset-username' => 'Nom d\'utilizaire',
+		'passwordreset-newpass' => 'Senhal novèl',
+		'passwordreset-confirmpass' => 'Confirmatz lo senhal',
+		'passwordreset-submit' => 'Remesa a zèro del senhal',
+		'passwordreset-success' => 'Lo senhal es estat remés a zèro per lo \'\'user_id\'\' $1.',
+	),
+
 	'pl' => array(
 		'passwordreset' => 'Wyczyszczenie hasła',
 		'passwordreset-invalidusername' => 'Nieprawidłowa nazwa użytkownika',

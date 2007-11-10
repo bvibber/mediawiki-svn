@@ -24,9 +24,9 @@ $wgSiteMatrixMessages['ang'] = array(
 	'sitematrix-language' => 'Sprǣc',
 );
 $wgSiteMatrixMessages['ar'] = array(
-	'sitematrix' => 'قائمة بمشاريع ويكيميديا',
+	'sitematrix' => 'قائمة مشاريع ويكيميديا',
 	'sitematrix-language' => 'اللغة',
-	'sitematrix-project' => 'اسم المشروع، وصلة المشروع الداخلية و وصلة الإنترويكي',
+	'sitematrix-project' => 'اسم المشروع، وصلة المشروع الداخلية ووصلة الإنترويكي',
 	'sitematrix-others' => 'مشاريع ويكيميديا الأخرى',
 );
 $wgSiteMatrixMessages['bcl'] = array(
@@ -178,6 +178,8 @@ $wgSiteMatrixMessages['no'] = array(
 $wgSiteMatrixMessages['oc'] = array(
 	'sitematrix' => 'Lista dels wikis Wikimedia',
 	'sitematrix-language' => 'Lenga',
+	'sitematrix-project' => 'Nom del projècte, ligam interprojècte e ligam interwiki',
+	'sitematrix-others' => 'Autres projèctes de Wikimedia Foundation',
 );
 $wgSiteMatrixMessages['pl'] = array(
 	'sitematrix' => 'Lista projektów Wikimedia',

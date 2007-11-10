@@ -554,7 +554,7 @@ La vèrsion criptâ siut. Serat afichiê publicament dessus [[Special:Boardvote/
 	'boardvote_needadmin'     => 'Solèts los administrators du voto/de la votacion pôvont fâre cela opèracion.',
 	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">Èlèccions u Consèly d’administracion de la Wikimedia Foundation</a> : voto uvèrt/votacion uvèrta tant qu’u 12 de julyèt 2005.',
 	'boardvote_notstarted'    => 'Lo voto/la votacion est p’oncor comenciê.',
-	'boardvote_closed'        => 'L’èlèccion est dês ora cllôsa. Lo rèsultat est procllamâ sur [[:meta:Board elections/2006/Results/fr|<span title="« Board elections/2006/Results/fr » : pâge en francês" style="text-decoration:none">la pâge des rèsultats</span>]].',
+	'boardvote_closed'        => 'L’èlèccion est dês ora cllôsa. Lo rèsultat est procllamâ sur la [[:meta:Board elections/2006/Results/fr|<span title="« Board elections/2006/Results/fr » : pâge en francês" style="text-decoration:none">pâge des rèsultats</span>]].',
 	'boardvote_edits_many'    => 'plusiors',
 	'group-boardvote'         => 'Membros votants du Consèly d’administracion',
 	'group-boardvote-member'  => 'Membro votant du Consèly d’administracion',

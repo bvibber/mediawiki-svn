@@ -42,6 +42,12 @@ $allMessages = array(
 		'signaturelogentry'     => 'ondertekende het document $1',
 	),
 
+	'oc' => array(
+		'signaturelogpage' => 'Jornal de las signaturas',
+		'signaturelogpagetext' => 'Aquò es lo jornal de totas las signaturas ajustadas als documents via [[Special:SignDocument]].',
+		'signaturelogentry' => 'a signat lo document $1.',
+	),
+
 	'pms' => array(
 		'signaturelogpage' => 'Registr dle firme',
 		'signaturelogpagetext' => 'Sòn a l\'é ël registr dle firme giontà ant sëj document ën dovrand la fonsion ëd [[Special:SignDocument|firma digital]].',

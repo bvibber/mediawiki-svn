@@ -54,8 +54,8 @@ $3 կայքում ստեղծվել է նոր մասնակցային հաշիվ՝
 ),
 
 'nl' => array(
-'newusernotifsubj' => 'Melding van een nieuwe gebruiker op $1',
-'newusernotifbody' => 'Hallo $1.
+	'newusernotifsubj' => 'Melding van een nieuwe gebruiker op $1',
+	'newusernotifbody' => 'Hallo $1.
 
 Er is een nieuwe gebruiker $2 aangemaakt om $3 op $4.',
 ),
@@ -63,6 +63,11 @@ Er is een nieuwe gebruiker $2 aangemaakt om $3 op $4.',
 'no' => array(
 	'newusernotifsubj' => 'Beskjed om ny bruker for $1',
 	'newusernotifbody' => 'Hei, $1. En ny brukerkonto, $2, ble opprettet på $3 $4.',
+),
+
+'oc' => array(
+	'newusernotifsubj' => 'Notificacion d’un utilizaire novèl per $1',
+	'newusernotifbody' => 'Adissiatz $1, Un compte novèl d\'utilizaire, $2, es estat creat sus $3 lo $4.',
 ),
 
 'pl' => array(

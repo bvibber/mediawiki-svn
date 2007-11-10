@@ -111,6 +111,14 @@ $wgDesysopMessages['hsb'] = array(
 	'desysop'              => 'Desysop',
 	'desysopnot_sysop'     => 'Tutón wužiwar administrator njeje.',
 );
+$wgDesysopMessages['hu'] = array(
+	'desysopname'          => 'Felhasználó neve:',
+	'desysopok'            => '<b>„$1” adminisztrátori joga el lett távolítva</b>',
+	'desysopsetrights'     => 'Jogok beállítása',
+	'desysoprightsfail'    => '<b>„$1” szerkesztési jogait nem sikerült beállítani. (Biztosan jól írtad be a nevet?)</b>',
+	'desysop'              => 'Adminisztrátori jog megvonása',
+	'desysopnot_sysop'     => 'Ez a szerkesztő nem adminisztrátor',
+);
 $wgDesysopMessages['id'] = array(
 	'desysoptitle'         => 'Mencabut akses pengurus dari pengguna',
 	'desysoptext'          => "Formulir ini digunakan oleh birokrat untuk mencabut hak pengurus dari seorang pengguna. Masukkan nama pengguna di kotak yang tersedia dan tekan tombol untuk mencabut hak sebagai pengurus dari pengguna yang bersangkutan.",
@@ -149,9 +157,14 @@ $wgDesysopMessages['ko'] = array(
 	'desysoprightsfail'    => '\'\'\'$1 사용자에게 관리자 권한을 줄 수 없습니다(철자를 맞게 입력했는지 확인해주세요).\'\'\'',
 );
 $wgDesysopMessages['la'] = array(
-	'desysoptitle'         => 'Revocare statum magistratum usoris',
+	'desysoptitle'         => 'Revocare statum magistratus usoris',
+	'desysoptext'          => 'Grapheocrates hac pagina uti possunt ad revocandum statum magistratus usoris. Nomen usoris in capsam inscribe et preme in "Revocare statum magistratus" ad statum revocandum.',
 	'desysopname'          => 'Nomen usoris:',
-	'not_sysop'            => 'Hic usor non est magistratus',
+	'desysopok'            => '<b>Usor "$1" non iam est magistratus</b>',
+	'desysopsetrights'     => 'Revocare statum magistratus',
+	'desysoprightsfail'    => '<b>Status usoris "$1" mutare non potuit. (Nomen usoris recte inscripsisti?)</b>',
+	'desysop'              => 'Statum magistratus usoris revocare',
+	'desysopnot_sysop'     => 'Hic usor not est magistratus',
 );
 $wgDesysopMessages['nds'] = array(
 	'desysoptitle'         => 'Bruker as Admin aflohnen',

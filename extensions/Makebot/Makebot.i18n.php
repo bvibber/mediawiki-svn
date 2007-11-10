@@ -548,8 +548,8 @@ function efMakeBotMessages() {
 ),
 
 'pl' => array(
-	'makebot'                 => 'Nadaj lub odbierz flagę bota',
-	'makebot-header'          => '\'\'\'Lokalny biurokrata może użyć tej strony do przyznania lub odebrania kontu użytkownika [[Help:Bot|flagi bota]].\'\'\'<br />Flaga bota ukrywa edycje użytkownika w [[Special:Recentchanges|liście ostatnich zmian]] i podobnych listach, jest przydatna do oznaczania użytkowników, którzy robią automatyczne edycje. Przyznawanie flagi bota powinno się odbywać w zgodzie z lokalnymi zasadami.',
+	'makebot'                 => 'Nadawanie i odbieranie flagi bota',
+	'makebot-header'          => '\'\'\'Lokalny biurokrata może użyć tej strony do przyznania lub odebrania kontu użytkownika [[{{MediaWiki:Grouppage-bot}}|flagi bota]].\'\'\'<br />Flaga bota ukrywa edycje użytkownika w [[Special:Recentchanges|liście ostatnich zmian]] i podobnych listach, jest przydatna do oznaczania użytkowników, którzy robią automatyczne edycje. Przyznawanie flagi bota powinno się odbywać w zgodzie z lokalnymi zasadami.',
 	'makebot-username'        => 'Konto:',
 	'makebot-search'          => 'Start',
 	'makebot-isbot'           => '[[User:$1|$1]] ma status bota.',
@@ -561,10 +561,10 @@ function efMakeBotMessages() {
 	'makebot-comment'         => 'Komentarz:',
 	'makebot-granted'         => '[[User:$1|$1]] otrzymał status bota.',
 	'makebot-revoked'         => 'Konto [[User:$1|$1]] nie ma już flagi bota.',
-	'makebot-logpage'         => 'Log flag bota',
-	'makebot-logpagetext'     => 'Operacje nadawania i zdejmowania [[Help:Bots|flagi bota]]:',
-	'makebot-logentrygrant'   => 'nadał/a kontu [[$1]] flagę bota.',
-	'makebot-logentryrevoke'  => 'odebrał/a kontu [[$1]] flagę bota.',
+	'makebot-logpage'         => 'Rejestr flag bota',
+	'makebot-logpagetext'     => 'Operacje nadawania i zdejmowania [[{{MediaWiki:Grouppage-bot}}|flagi bota]]:',
+	'makebot-logentrygrant'   => 'nadano kontu [[$1]] flagę bota.',
+	'makebot-logentryrevoke'  => 'odebrano kontu [[$1]] flagę bota.',
 ),
 
 /* Piedmontese (Bèrto 'd Sèra) */
@@ -658,7 +658,7 @@ function efMakeBotMessages() {
 /* Slovak (helix84) */
 'sk' => array(
 	'makebot'                 => 'Udeliť alebo odobrať status bota',
-	'makebot-header'          => '\'\'\'Miestny byrokrat môže použiť túto stránku na udelenie alebo odobranie [[Help:Bot|statusu bot]] inému používateľskému účtu.\'\'\'<br />Status bot skrýva úpravy používateľa z [[Special:Recentchanges|posledných zmien]] a podobných zoznamov, používa sa na označenie používateľov, ktorí robia automatizované úpravy. Využívanie tejto stránky by malo prebiehať v súlade s prijatými zásadami.',
+	'makebot-header'          => '\'\'\'Miestny byrokrat môže použiť túto stránku na udelenie alebo odobranie [[{{MediaWiki:Grouppage-bot}}|statusu bot]] inému používateľskému účtu.\'\'\'<br />Status bot skrýva úpravy používateľa z [[Special:Recentchanges|posledných zmien]] a podobných zoznamov, používa sa na označenie používateľov, ktorí robia automatizované úpravy. Využívanie tejto stránky by malo prebiehať v súlade s prijatými zásadami.',
 	'makebot-username'        => 'Používateľské meno:',
 	'makebot-search'          => 'Vykonaj',
 	'makebot-isbot'           => '[[User:$1|$1]] má status bot.',
@@ -671,7 +671,7 @@ function efMakeBotMessages() {
 	'makebot-granted'         => '[[User:$1|$1]] odteraz má status bot.',
 	'makebot-revoked'         => '[[User:$1|$1]] odteraz nemá status bot.',
 	'makebot-logpage'         => 'Záznam statusu bot',
-	'makebot-logpagetext'     => 'Toto je záznam zmien používateľského stavu na/z [[Help:Bot|bot]].',
+	'makebot-logpagetext'     => 'Toto je záznam zmien používateľského stavu na/z [[{{MediaWiki:Grouppage-bot}}|bot]].',
 	'makebot-logentrygrant'   => 'udelený status bot používateľovi [[$1]]',
 	'makebot-logentryrevoke'  => 'odobratý status bot používateľovi [[$1]]',
 ),

@@ -89,6 +89,11 @@ function efMediaFunctionsMessages() {
 	'mediafunctions-not-exist'     => '«$1» eksisterer ikke',
 ),
 
+'oc' => array(
+	'mediafunctions-invalid-title' => '« $1 » es pas un títol valid.',
+	'mediafunctions-not-exist'     => '« $1 » existís pas.',
+),
+
 'pl' => array(
 	'mediafunctions-invalid-title' => '"$1" nie jest poprawnym tytułem',
 	'mediafunctions-not-exist'     => '"$1" nie istnieje',

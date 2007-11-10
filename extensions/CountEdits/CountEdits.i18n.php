@@ -25,7 +25,7 @@ function efCountEditsMessages( $single = false ) {
 
 /* Arabic (Meno25) */
 'ar' => array(
-	'countedits' => 'عد المساهمات',
+	'countedits' => 'عد التعديلات',
 	'countedits-warning' => '\'\'\'تحذير:\'\'\' لا تحكم على كتاب من غلافه. لا تحكم على مساهم من خلال عدد مساهماته.',
 	'countedits-username' => 'اسم المستخدم:',
 	'countedits-ok' => 'موافق',

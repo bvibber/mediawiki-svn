@@ -26,7 +26,7 @@ function efPicturePopupMessages() {
 	'picturepopup_no_license' => 'الصورة بدون ترخيص',
 	'picturepopup_no_image' => 'الصورة غير موجودة',
 	'picturepopup_no_license_list' => 'قائمة التراخيص غير صحيحة أو مفقودة',
-	'picturepopup_license_list' => 'Project:معرفات حقوق التأليف و النشر للصور',
+	'picturepopup_license_list' => '{{ns:project}}:معرفات حقوق التأليف والنشر للصور',
 	'picturepopup_no_license_text' => 'قالب الترخيص لا يوجد به العنصر id=imageLicenseText',
 	'picturepopup_invalid_icon' => 'قالب الترخيص به العنصر imageLicenseIcon مفقود أو غير صحيح',
 ),

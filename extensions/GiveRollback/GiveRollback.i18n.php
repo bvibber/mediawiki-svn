@@ -54,6 +54,7 @@ function efGiveRollbackMessages() {
 	'giverollback-logpagetext' => 'هذا سجل بالتغييرات لصلاحيات [[{{MediaWiki:Giverollback-page}}|الاسترجاع]] لغير الإداريين.',
 	'giverollback-logentrygrant' => 'منح صلاحيات استرجاع إلى [[$1]]',
 	'giverollback-logentryrevoke' => 'أزال صلاحيات استرجاع من [[$1]]',
+	'giverollback-page' => '{{ns:help}}:استرجاع',
 ),
 
 /* German (Raymond) */
@@ -169,6 +170,7 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logpagetext' => 'Tuto je protokol wo změnach prawow wróćostajenja za njeadministratorow.',
 	'giverollback-logentrygrant' => 'je wužiwarjej [[$1]] prawo wróćostajenja dał',
 	'giverollback-logentryrevoke' => 'je wužiwarjej [[$1]] prawo wróćostajenja zebrał',
+	'giverollback-page' => '{{ns:help}}:Wróćostajenje',
 ),
 
 /* Italian (BrokenArrow) */
@@ -244,6 +246,27 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logpagetext' => 'Dette er en logg over endringer i brukeres [[{{MediaWiki:Giverollback-page}}|tilbakerullingsrettigheter]].',
 	'giverollback-logentrygrant' => 'ga [[$1]] tilbakerullingsrettigheter',
 	'giverollback-logentryrevoke' => 'fjernet tilbakerullingsrettigheter fra [[$1]]',
+),
+
+'oc' => array(
+	'giverollback' => 'Balhar o levar los dreches de revocacion',
+	'giverollback-header' => '\'\'\'Un burocrata local pòt utilizar aquesta pagina per balhar o levar los dreches de revocacion (« revert ») a un compte d\'utilizaire.\'\'\'<br /> Se pòt l’utilizar per autorizar de non-administrators a revocar de vandalismes mai rapidament. Los burocratas deurián o far pas qu’en acòrdi amb las règlas en vigor.',
+	'giverollback-username' => 'Nom d’utilizaire :',
+	'giverollback-search' => 'Cercar',
+	'giverollback-hasrb' => '[[User:$1|$1]] a los dreches de revocacion.',
+	'giverollback-norb' => '[[User:$1|$1]] a pas los dreches de revocacion.',
+	'giverollback-toonew' => '[[User:$1|$1]] es tròp recent, e pòt pas recebre los dreches de revocacion.',
+	'giverollback-sysop' => '[[User:$1|$1]] es un administrator, e pòt ja revocar los articles.',
+	'giverollback-change' => 'Cambiar l\'estatut :',
+	'giverollback-grant' => 'Balhar',
+	'giverollback-revoke' => 'Levar',
+	'giverollback-comment' => 'Comentari :',
+	'giverollback-granted' => '[[User:$1|$1]] possedís ara los dreches de revocacion.',
+	'giverollback-revoked' => '[[User:$1|$1]] possedís pas mai los dreches de revocacion.',
+	'giverollback-logpage' => 'Istoric dels dreches de revocacion',
+	'giverollback-logpagetext' => 'Aquesta pagina presenta un jornal del cambiament dels dreches de revocacion.',
+	'giverollback-logentrygrant' => 'a balhat los dreches de revocacion a [[$1]]',
+	'giverollback-logentryrevoke' => 'a levat los dreches de revocacion de [[$1]]',
 ),
 
 'pl' => array(

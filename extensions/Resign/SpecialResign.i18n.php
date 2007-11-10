@@ -23,11 +23,11 @@ Remember: '''You cannot get your permissions back this way!''' You will have to 
 ),
 
 /* Arabic (Meno25) */
-	'ar' => array(
+'ar' => array(
 	'resign' => 'استقالة',
 	'resign-text' => 'يمكنك \'\'\'إزالة صلاحياتك\'\'\' (مثال الصلاحيات الإدارية) في هذه الصفحة. من فضلك علم على الصلاحيات التي تود إزالتها.
 
-تذكر: \'\'\'لا يمكنك استرجاع صلاحياتك بهذه الطريقة!\'\'\' سيتوجب عليك إقناع بيروقرط أوستيوارد لكي يعيد لك الصلاحيات. من فضلك استخدم هذه الصفحة بحرص شديد.',
+تذكر: \'\'\'لا يمكنك استرجاع صلاحياتك بهذه الطريقة!\'\'\' سيتوجب عليك إقناع بيروقرط أو ستيوارد لكي يعيد لك الصلاحيات. من فضلك استخدم هذه الصفحة بحرص شديد.',
 	'resign-reason' => 'السبب:',
 	'resign-confirm' => 'أؤكد أنني أريد إزالة كل الصلاحيات التي اخترتها.',
 	'resign-noconfirm' => 'من فضلك علم على صندوق التأكيد إذا كنت تريد إزالة صلاحياتك.',
@@ -170,7 +170,14 @@ Husk: \'\'\'Du kan ikke få tilbake rettighetene på denne måten!\'\'\' Du må 
 ),
 
 'oc' => array(
-	'resign-reason' => 'Motiu:',
+	'resign' => 'Quitar',
+	'resign-text' => 'Podètz vos \'\'\'levar vòstres dreches\'\'\' (d\'adminsitrators, per exemple) dins aquesta pagina. Prec de verificar las que desiratz levar. \'\'\'Per contra, podètz pas mai los obténer per aquesta pagina !\'\'\' Deuretz convéncer un burocrata o un steward de vos los tornar. Tre alara, siatz prudent abans de modificar vòstras permissions.',
+	'resign-reason' => 'Rason(s) :',
+	'resign-confirm' => 'Confirmi que vòli levar totes los dreches qu\'ai causits.',
+	'resign-noconfirm' => 'Mercés de marcar se desiratz levar vòstres dreches.',
+	'resign-nogroups' => 'Mercés de marcar los dreches que desiratz levar.',
+	'resign-success' => '\'\'\'Ara los dreches son levats.\'\'\'',
+	'resign-logentry' => 'a levat los dreches $2 per son compte',
 ),
 
 'pl' => array(

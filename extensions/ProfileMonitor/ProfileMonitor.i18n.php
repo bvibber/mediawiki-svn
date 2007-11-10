@@ -117,6 +117,19 @@ function efProfileMonitorMessages() {
 	'profiling-no-data' => 'Geen gegevens gevonden.',
 ),
 
+'oc' => array(
+	'profiling' => 'Donadas per evaluar',
+	'profiling-process' => 'Cadena de caractèrs de tractar :',
+	'profiling-wildcard' => 'Utilizatz de « joker »',
+	'profiling-ok' => 'Acceptar',
+	'profiling-data' => 'Donadas d\'evaluacion de « $1 »',
+	'profiling-data-process' => 'Tractar',
+	'profiling-data-count' => 'Comptar',
+	'profiling-data-time' => 'Durada (tot)',
+	'profiling-data-average' => 'Durada (mejana)',
+	'profiling-no-data' => 'Cap de donada correspondenta pas trobada',
+),
+
 'pms' => array(
 	'profiling' => 'Antramentr ch\'as càlcola ël profil da \'nt ij dat',
 	'profiling-process' => 'Espression processà:',

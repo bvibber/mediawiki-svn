@@ -57,6 +57,11 @@ $wgMathStatFunctionsMessages['no'] = array(
 	'msfunc_inf' => 'Resultatverdien er uendelig',
 	'msfunc_div_zero' => 'Deling på null',
 );
+$wgMathStatFunctionsMessages['oc'] = array(
+	'msfunc_nan' => 'Lo resultat es pas un nombre.',
+	'msfunc_inf' => 'Lo resultat es l’infinit.',
+	'msfunc_div_zero' => 'Division per zèro',
+);
 $wgMathStatFunctionsMessages['pl'] = array(
 	'msfunc_nan' => 'Wartość wynikowa nie jest liczbą',
 	'msfunc_inf' => 'Wartość wynikowa to nieskończoność',

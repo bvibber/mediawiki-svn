@@ -190,6 +190,15 @@ $wgLinkSearchMessages['no'] = array(
 	'linksearch-line'  => '$1 lenkes fra $2',
 	'linksearch-error' => 'Jokertegn kan kun brukes foran tjenernavnet.',
 );
+$wgLinkSearchMessages['oc'] = array(
+	'linksearch'       => 'Recercar de ligams Internet',
+	'linksearch-pat'   => 'Recercar l’expression :',
+	'linksearch-ns'    => 'Espaci de noms :',
+	'linksearch-ok'    => 'Recercar',
+	'linksearch-text'  => 'Aquesta pagina especiala permetís de recercar las paginas dins lasqualas un ligam extèrn apareis.<br />De caractèrs « joker » pòdon èsser utilizats, per exemple <code>*.wikipedia.org</code>.',
+	'linksearch-line'  => '$1 amb un ligam a partir de $2',
+	'linksearch-error' => 'Los caractèrs « joker » pòdon pas èsser utilizats qu’al començament del nom de domeni.',
+);
 $wgLinkSearchMessages['pl'] = array(
 	'linksearch'       => 'Szukanie linków zewnętrznych',
 	'linksearch-pat'   => 'Wzorzec wyszukiwania:',

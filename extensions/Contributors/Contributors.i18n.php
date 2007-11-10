@@ -35,7 +35,7 @@ function efContributorsMessages() {
 	'contributors-others-long' => 'هناك $1 مساهم آخر لهذه الصفحة.',
 	'contributors-others' => 'و $1 آخرين',
 	'contributors-badtitle' => 'عنوان خاطئ.',
-	'contributors-nosuchpage' => 'لا يوجد مقالة بعنوان $1.',
+	'contributors-nosuchpage' => 'لا توجد مقالة بعنوان $1.',
 ),
 
 'bcl' => array(
