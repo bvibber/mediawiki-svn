@@ -55,7 +55,7 @@ function efBlockTitlesMessages() {
 
 'gl' => array(
 	'block_title_error_page_title' => 'Título Bloqueado',
-	'block_title_error' => 'Desculpas, non se permite gardar o título deste artigo.',
+	'block_title_error' => 'Sentímolo, non se permite gardar o título deste artigo.',
 ),
 
 'hsb' => array(

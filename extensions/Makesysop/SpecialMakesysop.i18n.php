@@ -790,7 +790,7 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 
 'nl' => array(
 	'makesysoptitle' => 'Een gebruiker beheerder maken',
-	'makesysoptext' => 'Dit formulier wordt door bureaucraten gebruikt om een gebruiker beheerder te maken. Geef de naam van een gebruiker in het veld in en klik op de knop om de gebruiker beheerder te maken.',
+	'makesysoptext' => 'Dit formulier wordt door bureaucraten gebruikt om een gebruiker [[{{MediaWiki:Grouppage-sysop}}|beheerder]] te maken. Geef de naam van een gebruiker in het veld in en klik op de knop om de gebruiker beheerder te maken.',
 	'makesysopname' => 'Gebruikersnaam:',
 	'makesysopsubmit' => 'Gebruikersrechten wijzigen',
 	'makesysopok' => '<b>Gebruiker "$1" is nu beheerder</b>',
@@ -1042,7 +1042,7 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 
 'sq' => array(
 	'makesysoptitle' => 'Jepini privilegjin e titullit administrues',
-	'makesysoptext' => 'Ky formular përdoret për tu dhënë titullin [[{{ns:project}}:Administruesit|administrues]] një përdoruesi të thjeshtë. Kini kujdes, mbasi të jetë dhënë, vetëm një \'\'zhvillues\'\' mund t\'ia heqi këtë titull një administruesi.',
+	'makesysoptext' => 'Ky formular përdoret për tu dhënë titullin [[{{MediaWiki:Grouppage-sysop}}|administrues]] një përdoruesi të thjeshtë. Kini kujdes, mbasi të jetë dhënë, vetëm një \'\'zhvillues\'\' mund t\'ia heqi këtë titull një administruesi.',
 	'makesysopname' => 'Emri i përdoruesit:',
 	'makesysopsubmit' => 'Jepini privilegjin',
 	'makesysopok' => '<b>Përdoruesi \'$1\' u bë administrues</b>',
