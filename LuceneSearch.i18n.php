@@ -523,6 +523,9 @@ $wgLuceneSearchMessages['oc'] = array(
 	'searchnearmatches'     => '<strong>Aquestas paginas an un títol similar a vòstra requèsta.</strong>',
 	'lucenepowersearchtext' => 'Recercar dins los espacis : $1<br />Tèxt de recercar : $3 $9',
 	'lucenefallback'        => 'Un problèma es subrevengut amb la recèrca wiki. Aqueste problèma es probablament temporari ; mercé de tornar ensajar dins un moment o d’utilizar un servici de recèrca extèrna.',
+	'searchexactcase'       => 'Recercar (sensible a la cassa)',
+	'searchall'             => 'Totes',
+	'searchincategory'      => 'Cercar dins las categorias',
 );
 $wgLuceneSearchMessages['pl'] = array(
 	'searchnumber'          => '<strong>Wyniki $1-$2 z $3</strong>',
