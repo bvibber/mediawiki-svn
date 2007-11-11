@@ -60,6 +60,10 @@ function efContributionseditcountMessages()  {
 	'contributionseditcount' => 'Denne brukeren har $1 redigeringer.',
 ),
 
+'oc' => array(
+	'contributionseditcount' => 'Aqueste utilizaire a {{PLURAL:$1|$1 edicion|$1 edicions}}.',
+),
+
 'pl' => array(
 	'contributionseditcount' => 'Ten użytkownik ma $1 edycji.',
 ),

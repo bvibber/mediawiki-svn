@@ -270,6 +270,8 @@ zwarte lijst van gebruikersnamen]]. Kies alstublieft een andere naam.',
 'oc' => array(
 	'blacklistedusername' => 'Noms d’utilizaires en lista negra',
 	'blacklistedusernametext' => 'Lo nom d’utilizaire qu\'avètz causit se tròba sus la [[MediaWiki:Usernameblacklist|lista dels noms interdiches]]. Causissètz un autre nom.',
+	'usernameblacklist' => '<pre> # Las dintradas d\'aquesta lista seràn utilizadas en tant qu\'expressions regularas # per empachar la creacion de noms d\'utilizaires interdiches. Cada item deu # far partida d\'una lista de piuses, per exemple # # * Foo # * [Bb]ar </pre>',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|La linha seguenta|Las linhas seguentas}} de la lista negra dels noms d\'utilizaires {{PLURAL:$1|es invalida|son invalidas}} ; corregissetz-{{PLURAL:$1|la|las}} abans d\'enregistrar :',
 ),
 
 'pl' => array(

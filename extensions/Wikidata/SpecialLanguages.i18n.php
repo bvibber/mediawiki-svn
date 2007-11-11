@@ -62,6 +62,10 @@ $wgLanguageManagerMessages['nl'] = array(
 	'langman_title' => 'Taalmanager',
 	'languages'=>'Wikidata: Taalmanager',
 );
+$wgLanguageManagerMessages['oc'] = array(
+	'langman_title' => 'Gestion de las lengas',
+	'languages' => 'Wikidata: Gestion de las lengas',
+);
 $wgLanguageManagerMessages['pms'] = array(
 	'langman_title' => 'Gestor dle lenghe',
 	'languages' => 'Wikidata: Gestor dle lenghe',

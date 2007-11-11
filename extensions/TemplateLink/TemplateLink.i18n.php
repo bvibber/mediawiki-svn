@@ -50,6 +50,12 @@ $allMessages = array(
                 'templatelink_newtitle' => '$1 (getranscludeerd)',
         ),
 
+	'oc' => array(
+		'templatelink' => 'Ligam vèrs modèl',
+		'templatelink_empty' => 'Devètz picar un paramètre.',
+		'templatelink_newtitle' => '$1 (tranclut)',
+	),
+
 	'pl' => array(
 		'templatelink_empty' => 'Musisz podać parametr',
 	),

@@ -662,6 +662,10 @@ por administrador da base de dados, caso você tenha cometido um engano.",
 Liberar tais dados poderá resultar na perda em definitivo dos privilégios de oversight.',
 ),
 
+'rmy' => array(
+	'hiderevision-submit' => 'Garav o paruvipen',
+),
+
 /* Russian */
 'ru' => array(
 'hiderevision' => 'Скрыть версию страницы',
