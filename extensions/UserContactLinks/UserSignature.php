@@ -22,7 +22,8 @@ $wgExtensionCredits['parserhook'][] = array(
         'version'     => '0.3',
         'name'        => 'UserSignature',
         'author'      => 'Paul Grinberg',
-        'email'       => 'gri6507 at yahoo dot com',
+	'email'       => 'gri6507 at yahoo dot com',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:User_Contact_Links',
         'description' => 'provides the ability to simply and consistantly add other user names using ^^^user^^^ syntax');
 
 function parseUserSignatures(&$parser, &$text, &$strip_state) {
