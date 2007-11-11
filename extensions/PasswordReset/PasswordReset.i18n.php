@@ -30,8 +30,17 @@ $allMessages = array(
 		'passwordreset-success' => 'كلمة السر تم ضبطها ل user_id: $1',
 	),
 
-	'de' => array( 
-		'passwordreset' => 'Passwort zurücksetzen',
+	'de' => array(
+		'passwordreset'                 => 'Passwort zurücksetzen',
+		'passwordreset-invalidusername' => 'Ungültiger Benutzername',
+		'passwordreset-emptyusername'   => 'Leerer Benutzername',
+		'passwordreset-nopassmatch'     => 'Passwörter stimmen nicht überein',
+		'passwordreset-badtoken'        => 'Ungültiger „Edit Token“',
+		'passwordreset-username'        => 'Benutzername',
+		'passwordreset-newpass'         => 'Neues Passwort',
+		'passwordreset-confirmpass'     => 'Passwort bestätigen',
+		'passwordreset-submit'          => 'Passwort zurücksetzen',
+		'passwordreset-success'         => 'Passwort für Benutzer-ID $1 wurde zurückgesetzt'
 	),
 
 	'fr' => array(
