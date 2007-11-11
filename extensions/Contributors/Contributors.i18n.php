@@ -194,6 +194,12 @@ function efContributorsMessages() {
 	'contributors-nosuchpage' => 'ページ $1 は存在しません。',
 ),
 
+'kab' => array(
+	'contributors-target' => 'Azwel:',
+	'contributors-submit' => 'Ssken',
+	'contributors-nosuchpage' => 'Amagrad $1 ulac-it.',
+),
+
 /* Kazakh Cyrillic (AlefZet) */
 'kk-kz' => array(
 	'contributors' => 'Үлескерлер',

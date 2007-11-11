@@ -293,6 +293,7 @@ Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wuš
 *Strona bu zničena
 *Schowana wersija běše přenja wersija',
 	'oversight-log-hiderev' => 'změna wot $1 bu wotstronjena.',
+	'oversight' => 'Oversight',#identical but defined
 	'oversight-view' => 'podrobnosće',
 	'oversight-difference' => '(Rozdźěl wot předchadneje zwostawaceje wersije)',
 	'oversight-prev' => 'Poslednja předchadna wersija',

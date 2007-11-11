@@ -122,10 +122,10 @@ cela fonccion avouéc parcimonie.',
 	'asksqltext'       => 'Use o formulario de embaixo para facer unha consulta directa na base de datos.
 Use só as comiñas ("desta maneira") para delimitar cadeas literais.
 Isto con frecuencia pode engadir unha carga considerábel ao servidor, así que por favor use esta función moderadamente.',
-	'sqlislogged'      => 'Por favor dése conta de que todas as consultas son rexistradas.',
+	'sqlislogged'      => 'Por favor dese conta de que todas as consultas son rexistradas.',
 	'sqlquery'         => 'Introducir consulta',
 	'querybtn'         => 'Enviar consulta',
-	'selectonly'       => 'Só lecturas e só consultas están permitidas',
+	'selectonly'       => 'Só se permiten consultas de só lectura',
 	'querysuccessful'  => 'Consulta con éxito',
 ),
 

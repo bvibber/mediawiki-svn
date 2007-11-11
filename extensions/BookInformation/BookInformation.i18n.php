@@ -148,7 +148,7 @@ function efBookInformationMessages() {
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Publicación:',
 	'bookinfo-result-year' => 'Ano:',
-	'bookinfo-error-invalidisbn' => 'O ISBN introducido non é inválido.',
+	'bookinfo-error-invalidisbn' => 'O ISBN introducido non é válido.',
 	'bookinfo-error-nosuchitem' => 'O artigo non existe ou non foi atopado.',
 	'bookinfo-error-nodriver' => 'Non é posíbel comezar unha apropiada búsqueda de información sobre libros.',
 	'bookinfo-error-noresponse' => 'Non se recibiu resposta ou a solicitude caducou.',

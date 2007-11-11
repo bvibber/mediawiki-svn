@@ -107,7 +107,7 @@ on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|
 		'createsigndocument' => 'Habilitar a Sinatura de Documentos',
 		'createsigndoc-head' => 'Empregue este formulario para crear unha páxina "Asinar Documento" para o artigo relacionado, de tal
 xeito que os usuarios o poidan asinar mediante [[Special:SignDocument]]. Especifique o nome
-do artigo no que quere activar a sinatura dixital, os membros de que grupo de usuariores poden
+do artigo no que quere activar a sinatura dixital, os membros de que grupo de usuarios poden
 asinalo, que campos lles resultan visíbeis aos usuarios e cales han de ser optativos, a idade
 mínima que se lles esixe aos usuarios para asinar o documento (sen mínimo se se omitir) e un
 texto introdutorio breve que describa o documento e lles dea instrucións aos usuarios.
@@ -131,7 +131,7 @@ tamén de que especifica todos os campos exactamente como han de ser \'\'antes d
 		'createsigndoc-create' => 'Crear',
 		'createsigndoc-error-generic' => 'Erro: $1',
 		'createsigndoc-error-pagenoexist' => 'Erro: A páxina [[$1]] non existe.',
-		'createsigndoc-success' => 'O documento asinado foi habilitado con exito en [[$1]]. Para comprobalo, visite [{{SERVER}}{{localurl: Special: SignDocument|doc=$2}} esta páxina].',
+		'createsigndoc-success' => 'O documento asinado foi habilitado con éxito en [[$1]]. Para comprobalo, visite [{{SERVER}}{{localurl: Special: SignDocument|doc=$2}} esta páxina].',
 	),
 	'hsb' => array(
 		'createsigndocument' => 'Podpisanje dokumentow zmóžnić',

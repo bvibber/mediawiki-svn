@@ -152,6 +152,9 @@ $wgDesysopMessages['ja'] = array(
 	'desysop'              => '管理者権限の取り消し',
 	'desysopnot_sysop'     => 'この利用者は管理者ではありません',
 );
+$wgDesysopMessages['kab'] = array(
+	'desysopname'          => 'Isem n wemseqdac:',
+);
 $wgDesysopMessages['ko'] = array(
 	'desysopsetrights'     => '사용자 권한 설정',
 	'desysoprightsfail'    => '\'\'\'$1 사용자에게 관리자 권한을 줄 수 없습니다(철자를 맞게 입력했는지 확인해주세요).\'\'\'',

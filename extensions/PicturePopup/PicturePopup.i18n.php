@@ -49,7 +49,7 @@ function efPicturePopupMessages() {
 	'picturepopup_no_license_list' => 'A listaxe de licenza non é válida ou falta',
 	'picturepopup_license_list' => 'Proxecto: Etiquetas dos dereitos de autor das imaxes',
 	'picturepopup_no_license_text' => 'O modelo da licenza non ten ningún elemento con id=imageLicenseText',
-	'picturepopup_invalid_icon' => 'O modelo da licenza ten perdido ou non válida imageLicenseIcon element',
+	'picturepopup_invalid_icon' => 'O modelo da licenza carece do elemento imageLicenseIcon ou este non é válido',
 ),
 
 'hsb' => array(

@@ -163,6 +163,9 @@ $wgSiteMatrixMessages['lo'] = array(
 $wgSiteMatrixMessages['lt'] = array(
 	"sitematrix" => "Wikimedia projektų sąrašas",
 );
+$wgSiteMatrixMessages['lv'] = array(
+	'sitematrix' => 'Visu Wikimedia wiki projektu uzskaitījums',
+);
 $wgSiteMatrixMessages['nan'] = array(
 	'sitematrix' => 'Wikimedia wiki lia̍t-toaⁿ',
 );

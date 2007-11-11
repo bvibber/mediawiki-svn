@@ -58,7 +58,7 @@ function efProfileMonitorMessages() {
 	'profiling-data-process' => 'Procedemento',
 	'profiling-data-count' => 'Contar',
 	'profiling-data-time' => 'Tempo (todo)',
-	'profiling-data-average' => 'Tempo (avg)',
+	'profiling-data-average' => 'Tempo (media)',
 	'profiling-no-data' => 'Non coinciden os datos atopados.',
 ),
 

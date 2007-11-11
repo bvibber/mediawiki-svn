@@ -49,15 +49,20 @@ $allMessages = array(
 	),
 
 	'gl' => array(
+		'tasklist'                => 'Listaxe de Tarefas',
+		'tasklistbyproject'       => 'Listaxe de Tarefas por Proxecto',
 		'tasklistunknownproject'  => 'Proxecto descoñecido',
 		'tasklistunspecuser'      => 'Usuario sen especificar',
 		'tasklistincorrectuser'   => 'Nome de usuario incorrecto',
 		'tasklistemail'           => 'Querido %s',
+		'tasklistemailsubject'    => '[%s] Cambio na Listaxe de Tarefas',
 		'tasklistmytasks'         => 'As miñas tarefas',
 		'tasklistbyprojectbad'    => 'O Proxecto \'\'\'%s\'\'\' non é un proxecto válido. Para unha listaxe de proxectos válidos, vexa
 [[MediaWiki:TodoTasksValidProjects]].',
+		'tasklistbyprojname'      => 'Tarefas asignadas a \'\'\'%s\'\'\'',
 		'tasklistchooseproj'      => 'Seleccionar Proxecto:',
 		'tasklistprojdisp'        => 'Pantalla',
+		'tasklistbyname'          => '== Lista de cousas por facer de %s ==',
 	),
 
 	'hsb' => array(

@@ -208,6 +208,8 @@ Texte à rechercher : $3 $9 $10',
 );
 $wgLuceneSearchMessages['gl'] = array(
 	'searchnumber'          => '<strong>Resultados $1-$2 de $3</strong>',
+	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Anterior</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>Seguinte</span> &#x00BB;',
 	'searchscore'           => 'Relevancia: $1',
 	'searchsize'            => '$1 KB ($2 palabras)',
 	'searchdidyoumean'      => 'Quixo dicir: "<a href="$1">$2</a>"?',

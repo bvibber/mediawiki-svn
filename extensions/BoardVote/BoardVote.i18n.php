@@ -572,7 +572,7 @@ $wgBoardVoteMessages['gl'] = array(
 	'boardvote'               => 'Elección dos Membros do Consello de Administración de Wikimedia',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Votar]]
 * [[Special:Boardvote/list|Listaxe de votos ata a data]]
-* [[Special:Boardvote/dump|Desfacerse do rexistro de eleccións cifradas]]',
+* [[Special:Boardvote/dump|Crear un vaciado do rexistro cifrado de eleccións]]',
 	'boardvote_intro'         => '<p>Reciba a nosa benvida ás segundas eleccións de Membros do Consello de Administración de Wikimedia.
 Estamos a escoller dúas persoas para que representen á comunidade de usuarios dos diversos
 proxectos de Wikipedia. Axudarán a determinar a dirección futura que tomarán os proxectos de
