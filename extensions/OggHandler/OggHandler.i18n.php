@@ -148,6 +148,8 @@ $messages = array(
 
 	'es' => array(
 		'ogg-more' => 'Opciones...',
+		'ogg-dismiss' => 'Cerrar',
+		'ogg-download' => 'Bajar archivo',
 	),
 
 	'fi' => array(

@@ -78,6 +78,18 @@ function efCountEditsMessages( $single = false ) {
 	'countedits-nocontribs' => 'In {{ns:project}} sind keine Bearbeitungen vorhanden.',
 ),
 
+'eo' => array(
+	'countedits' => 'Nombro de redaktoj',
+	'countedits-warning' => '\'\'\'Averto:\'\'\' Ne juĝu libron laŭ ĝia kovrilo. Ne juĝu kontribuanton laŭ lia redaktaro.',
+	'countedits-username' => 'Uzantonomo:',
+	'countedits-ok' => 'Ek',
+	'countedits-nosuchuser' => 'Ne ekzistas uzanto kun la nomo $1.',
+	'countedits-resultheader' => 'Rezultoj por $1',
+	'countedits-resulttext' => '$1 faris $2 redaktojn',
+	'countedits-mostactive' => 'Plej aktivaj kontribuantoj',
+	'countedits-nocontribs' => 'Ne estas iuj kontribuaĵoj por ĉi tiu vikio.',
+),
+
 'ext' => array(
 	'countedits-username' => 'Nombri d´usuáriu:',
 	'countedits-resulttext' => '$1 á hechu $2 eicionis',
