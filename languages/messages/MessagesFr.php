@@ -430,7 +430,7 @@ Votre compte a été créé. N’oubliez pas de personnaliser vos préférences 
 'nocookieslogin'             => "{{SITENAME}} utilise des témoins (''cookies'') pour la connexion mais vous les avez désactivés. Veuillez les activer et vous reconnecter.",
 'noname'                     => 'Vous n’avez pas saisi un nom d’utilisateur valide.',
 'loginsuccesstitle'          => 'Identification réussie.',
-'loginsuccess'               => 'Vous êtes maintenant connecté sur {{SITENAME}} en tant que « $1 ».',
+'loginsuccess'               => 'Vous êtes maintenant connecté à {{SITENAME}} en tant que « $1 ».',
 'nosuchuser'                 => 'L’utilisateur « $1 » n’existe pas.
 Vérifiez que vous avez bien orthographié le nom, ou utilisez le formulaire ci-dessous pour créer un nouveau compte utilisateur.',
 'nosuchusershort'            => 'Il n’y a pas de contributeur avec le nom « $1 ». Veuillez vérifier l’orthographe.',
@@ -850,7 +850,7 @@ $2 Inclure les pages de redirection<br /> Rechercher $3 $9',
 'recentchangeslinked-summary'  => "Cette page spéciale montre les modifications récentes sur les pages qui sont liées. Les pages de votre liste de suivi sont '''en gras'''.",
 
 # Upload
-'upload'                      => 'Importer une image ou un son',
+'upload'                      => 'Importer le fichier',
 'uploadbtn'                   => 'Importer le fichier',
 'reupload'                    => 'Copier à nouveau',
 'reuploaddesc'                => 'Retour au formulaire.',
@@ -1737,6 +1737,8 @@ Toutes les actions d’importation interwiki sont conservées dans le [[Special:
 'markedaspatrollederror'              => 'Ne peut être marqué comme non vandalisé',
 'markedaspatrollederrortext'          => 'Vous devez sélectionner une version pour pouvoir la marquer comme non vandalisée.',
 'markedaspatrollederror-noautopatrol' => 'Vous n’avez pas le droit de marquer vos propres modifications comme surveillées.',
+'nppatroldisabled'                    => 'Patrouille des nouvelles pages désactivée.',
+'nppatroldisabledtext'                => 'La Patrouille des nouvelles pages est actuellement désactivée.',
 
 # Patrol log
 'patrol-log-page' => 'Historique des versions patrouillées',

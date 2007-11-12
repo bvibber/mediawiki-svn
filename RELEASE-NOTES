@@ -44,11 +44,17 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Removed "Clear" link in watchlist editor tools, as people were afraid to
   click it. Existing clear links will fall back to the raw editor, which is
   very easy to clear your watchlist with.
-* Allow hiding new pages by logged-in users on Special:Newpages
 * (bug 1405) Add wgUseNPPatrol option to control patroling for new articles
   on Special:Newpages
 * LogLine hook added to allow formatting custom entries in Special:Log.
 * Support for Iranian calendar
+* (bug 1401) Allow hiding logged-in users, bots and patrolled pages on Special:Newpages
+* ChangesListInsertArticleLink hook added for adding extra article info to RC.
+* MediaWikiPerformAction hook added for diverting control after the main
+  globals have been set up but before any actions have been taken.
+* BeforeWatchlist hook added for filtering or replacing watchlist.
+* SkinTemplateTabAction hook added for altering the properties of tab links.
+* OutputPage::getRedirect public method added.
 
 === Bug fixes in 1.12 ===
 
@@ -172,7 +178,9 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Aragonese (an)
 * Old English (ang) (new)
 * Arabic (ar)
+* Aramaic (arc)
 * Mapudungun (arn) (new)
+* Assamese (as)
 * Asturian (ast)
 * Samogitian (bat-smg)
 * Boarisch (bar)
@@ -209,11 +217,14 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Galician (gl)
 * Gilaki (glk) (new)
 * Ancient Greek (grc) (new)
+* Swiss German (gsw)
 * Hakka (hak)
 * Hebrew (he)
 * Croatian (hr)
 * Upper Sorbian (hsb)
+* Hungarian (hu)
 * Armenian (hy)
+* Interlingua (ia)
 * Indonesian (id)
 * Ingush (inh) (new)
 * Icelandic (is)
@@ -223,9 +234,11 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Kazakh (kk)
 * Kannada (kn)
 * Korean (ko)
+* Kölsch (ksh)
 * Kurdish (Latin) (ku-latn)
 * Cornish (kw) (new)
 * Latin (la)
+* Luxembourgish (lb)
 * Limbugian (li)
 * Lozi (loz) (new)
 * Lingala (ln)
@@ -267,6 +280,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Tagalog (tl) (new)
 * Turkish (tr)
 * Uyghur (ug)
+* Venitian (vec)
 * Vietnamese (vi)
 * West Flemish (vls)
 * Volapük (vo)

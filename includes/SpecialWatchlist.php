@@ -96,11 +96,6 @@ function wfSpecialWatchlist( $par ) {
 	$nitems = floor($s->n / 2);
 #	$nitems = $s->n;
 
-	if($nitems == 0) {
-		$wgOut->addWikiText( wfMsg( 'nowatchlist' ) );
-		return;
-	}
-
 	if( is_null($days) || !is_numeric($days) ) {
 		$big = 1000; /* The magical big */
 		if($nitems > $big) {
@@ -121,6 +116,16 @@ function wfSpecialWatchlist( $par ) {
 	wfAppendToArrayIfNotDefault('hideBots' , (int)$hideBots, $defaults, $nondefaults);
 	wfAppendToArrayIfNotDefault( 'hideMinor', (int)$hideMinor, $defaults, $nondefaults );
 	wfAppendToArrayIfNotDefault('namespace', $nameSpace    , $defaults, $nondefaults);
+
+	$hookSql = "";
+	if( ! wfRunHooks('BeforeWatchlist', array($nondefaults, $wgUser, &$hookSql)) ) {
+		return;
+	}
+	
+	if($nitems == 0) {
+		$wgOut->addWikiText( wfMsg( 'nowatchlist' ) );
+		return;
+	}
 
 	if ( $days <= 0 ) {
 		$andcutoff = '';
@@ -193,6 +198,7 @@ function wfSpecialWatchlist( $par ) {
 	  $andHideBots
 	  $andHideMinor
 	  $nameSpaceClause
+	  $hookSql
 	  ORDER BY rc_timestamp DESC
 	  $limitWatchlist";
 
