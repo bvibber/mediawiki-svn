@@ -344,6 +344,7 @@ function __autoload($className) {
 		'ApiRegUser' => 'includes/api/ApiRegUser.php',
 		'ApiUploadFile' => 'includes/api/ApiUploadFile.php',
 		'ApiTalk' 		=>	'includes/api/ApiTalk.php',
+		'ApiQueryRandomPage' => 'includes/api/ApiQueryRandomPage.php',
 	);
 	
 	wfProfileIn( __METHOD__ );
