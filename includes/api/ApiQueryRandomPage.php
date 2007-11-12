@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Created on Oct 15, 2007
+ * Created on Nov 12, 2007
  *
  * API for MediaWiki 1.8+
  *
@@ -112,7 +112,7 @@ class ApiQueryRandomPage extends ApiQueryGeneratorBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryRandomPage.php 25838 2007-10-15 23:48:35Z abernala $';
+		return __CLASS__ . ': $Id: ApiQueryRandomPage.php 25838 2007-11-12 13:10:35Z abernala $';
 	}
 }
 
