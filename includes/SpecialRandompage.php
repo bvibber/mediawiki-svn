@@ -99,7 +99,7 @@ class RandomPage {
 			$extra
 			ORDER BY page_random";
 
-		$sql = $dbr->limitResult( $sql, 2, 0 );
+		$sql = $dbr->limitResult( $sql, 1, 0 );
 		$res = $dbr->query( $sql, $fname );
 		return $dbr->fetchObject( $res );
 	}
