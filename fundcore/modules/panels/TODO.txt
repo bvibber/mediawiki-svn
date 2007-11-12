@@ -1,0 +1,12 @@
+TODO:
+
+This is a brief list of the things that may still need to be done. No guarantee
+of them ever getting done.
+
+content type: phptemplate
+
+access control to pages
+access control to content types
+
+dashboard node extension
+

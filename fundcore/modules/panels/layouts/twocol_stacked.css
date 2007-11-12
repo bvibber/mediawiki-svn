@@ -1,0 +1,27 @@
+/* $Id: twocol_stacked.css,v 1.4.4.1 2007/03/15 20:16:53 merlinofchaos Exp $ */
+
+.panel-2col-stacked { 
+  /* border: 1px solid red; */ 
+  overflow: hidden; 
+}
+
+.panel-2col-stacked div > div {
+  margin: .5px;
+}
+
+.panel-2col-stacked .panel-col-top,
+.panel-2col-stacked .panel-col-bottom {
+  width: 99.9%;
+  clear: both;
+}
+.panel-2col-stacked .panel-col-first {
+  float: left;
+  width: 47%;
+}
+.panel-2col-stacked .panel-col-last {
+  float: right;
+  width: 47%;
+}
+.panel-clearer {
+  clear: both;
+}

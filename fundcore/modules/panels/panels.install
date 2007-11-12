@@ -1,0 +1,84 @@
+<?php
+// $Id: panels.install,v 1.1.4.4 2007/04/03 16:36:05 merlinofchaos Exp $
+
+/**
+ * Install the panels tables
+ */
+function panels_install() {
+  switch ($GLOBALS['dbtype']) {
+    case 'pgsql':
+      db_query(<<<EOT
+        CREATE TABLE {panels_info} (
+          did int not null default 0 primary key,
+          title varchar(128),
+          access varchar(128),
+          path varchar(128),
+          css_id varchar(128),
+          layout varchar(32)
+        );
+EOT
+      );
+      
+      db_query("CREATE SEQUENCE {panels_info}_id_seq;");
+  
+      db_query(<<<EOT
+        CREATE TABLE {panels_area} (
+          did int NOT NULL DEFAULT 0,
+          area varchar(32),
+          type varchar(32),
+          configuration text,
+          position int
+        );
+EOT
+  );
+  
+      db_query("CREATE INDEX {panels_area}_did_idx ON {panels_area} (did);");
+      break;
+    case 'mysql':
+    case 'mysqli':
+    default:
+      db_query(<<<EOT
+        create table {panels_info} (
+          did int(10) not null default 0 primary key,
+          title varchar(128),
+          access varchar(128),
+          path varchar(128),
+          css_id varchar(128),
+          layout varchar(32)
+        ) /*!40100 DEFAULT CHARACTER SET utf8 */
+EOT
+      );
+      db_query(<<<EOT
+        create table {panels_area} (
+          did int(10) not null default 0,
+          area varchar(32),
+          type varchar(32),
+          configuration longtext,
+          position int(5),
+          key (did)
+        ) /*!40100 DEFAULT CHARACTER SET utf8 */
+EOT
+  );
+  }
+}
+
+/**
+ * Uninstall the panels tables
+ */
+function panels_uninstall() {
+  switch ($GLOBALS['db_type']) {
+    case 'pgsql':
+    case 'mysql':
+    case 'mysqli':
+    default:
+      db_query("DROP TABLE {panels_info}");
+      db_query("DROP TABLE {panels_area}");
+  }
+}
+
+/**
+ * Update the tables to UTF-8
+ */
+function panels_update_1() {
+  return _system_update_utf8(array('panels_info', 'panels_area'));
+}

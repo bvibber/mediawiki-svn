@@ -1,0 +1,10 @@
+; $Id: panels.info,v 1.2 2006/10/27 16:36:18 merlinofchaos Exp $
+name = Panels
+description = Create pages that are divided into areas of the page.
+version = 1.1
+
+
+; Information added by drupal.org packaging script on 2007-04-03
+version = "5.x-1.2"
+project = "panels"
+

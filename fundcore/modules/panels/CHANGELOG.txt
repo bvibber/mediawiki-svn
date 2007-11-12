@@ -1,0 +1,27 @@
+Panels 5.x-1.2
+  o Block visibility code used improper array_merge, causing silly errors.
+
+Panels 5.x-1.1
+  o #120919 (by grugnog) empty content caused array error
+  o #102572 (by yched, harriska2, cbutera, et al) -- missing views_load_cache when using views and panels together
+  o #84204 (by drewish, et al) make tables install UTF-8.
+  o #110771 (by Robrecht Jacques) Save panel did on creation allowing modules to interact with it
+  o #111646 (by Robrecht Jacques) uninstall hook
+  o #114772 (by Tobias Maier) allow custom content to specify CSS Info
+  o #120913 (by Grugnog2) provide panels_is_panel_page() function for context
+  o #118954 (by slantview) respect block visibility settings
+  o #110461 (by Robrecht Jacques) fixed improper use of drupal_goto on delete submit
+  o #81949 (by RobRoy) fixed another problem with arrays and empty panels
+  o #117581 (by pearcec) Allow node types to suppress their title.
+  o #89174 (by amatan) fix PHP 5 referencing error.
+  o #93355 (by redsky) PGSQL table support
+  o #119841: Force page title in case menu title has been changed
+  o #108616 (by joel_guesclin) Change 2col stacked CSS to be more resilient in IE.
+  o Can now set role-based access control on panels (also patch by stephanmaximilianhuber)
+  o #86630: Add option to retain title on Views.
+  o #110449: Respect Views access settings. Requires Views 1.6 to work.
+  o #100793: Respect Node access settings.
+  o #125440: Missing args broke Views by sending NULLs when it shouldn't send anything.
+
+Panels 5.x-1.0
+  Initial release under the new release system.
