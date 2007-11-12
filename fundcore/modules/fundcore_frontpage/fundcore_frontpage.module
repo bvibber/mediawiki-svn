@@ -1,25 +1,27 @@
 <?php
 
-function fundcore_frontpage_menu($may_cache) {
-  $items = array();
-  
-  if ($may_cache) {
-    $items[] = array(
-      'path' => 'fundcore_frontpage',
-      'type' => MENU_CALLBACK,
-      'access' => TRUE,
-      'callback' => 'fundcore_frontpage_page',
-    );
-  }
-  
+function fundcore_frontpage_panels_layouts() {
+  $items['fundcore_frontpage'] = array(
+    'module' => 'fundcore_frontpage_panel',
+    'title' => t('Fundraising CORE Frontpage'),
+    'icon' => 'fundcore_frontpage_panel.png',
+    'theme' => 'fundcore_frontpage_panel',
+    'css' => 'fundcore_frontpage_panel_layout.css',
+    'content areas' => array(
+      'left' => t('Left side'),
+      'right' => t('Right side'),
+    ),
+  );
+
   return $items;
 }
 
-function fundcore_frontpage_page() {
-  //drupal_set_title('Contribute');
-
-  $content = _fundcore_frontpage_render('fundcore_frontpage.content.inc');
-  
+function theme_fundcore_frontpage_panel($id, $content) {
+  $content = '<table border="0" cellspacing="0" cellpadding="0"><tr>
+					<td width="463" valign="top">' . $content['left'] . '</td>
+					<td width="38"></td><!-- Spacer middle of the page -->
+					<td width="321" valign="top">' . $content['right'] . '</td>
+				</tr></table>';
   return $content;
 }
 
@@ -34,17 +36,29 @@ function _fundcore_frontpage_render($file, $variables = array()) {
 
 function fundcore_frontpage_block($op = 'list', $delta = 0, $edit = array()) {
   if ($op == 'list') {
-    $blocks[0] = array(
-      'info' => t('Fundraising footer'),
-      'weight' => 0,
-      'enabled' => 1,
-      'region' => 'last_line'
+    $blocks['donatebox'] = array(
+      'info' => t('FundCORE Frontpage: Donation box'),
+    );
+    $blocks['otherbox'] = array(
+      'info' => t('FundCORE Frontpage: Other box'),
+    );
+    $blocks['storybox'] = array(
+      'info' => t('FundCORE Frontpage: Story box'),
+    );
+    $blocks['videobox'] = array(
+      'info' => t('FundCORE Frontpage: Video box'),
+    );
+    $blocks['whatweneedbox'] = array(
+      'info' => t('FundCORE Frontpage: What We Need box'),
+    );
+    $blocks['lastline'] = array(
+      'info' => t('FundCORE Frontpage: Last line text'),
     );
     return $blocks;
   }
   else if ($op == 'view') {
     $block = array(
-      'content' => _fundcore_frontpage_render('fundcore_frontpage.block.inc'),
+      'content' => _fundcore_frontpage_render('content/' . $delta . '.inc'),
     );
     return $block;
   }
