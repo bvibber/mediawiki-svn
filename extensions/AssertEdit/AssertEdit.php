@@ -52,8 +52,7 @@ class AssertEdit
      'exists' => array('AssertEdit', 'assert_exists'),
      //override these in LocalSetting.php
      'test' => false,      //Do we allow random tests?
-     'local' => true,      //Is this for local use?
-     'wikimedia' => false, //is this an offical wikimedia site?
+     //'wikimedia' => false, //is this an offical wikimedia site?
      );
 
   static function setAssert($key,$val) 
@@ -101,25 +100,22 @@ class AssertEdit
 function wfAssertEditHook(&$editpage) {
   global $wgOut, $wgRequest;
   
-  $negate = false;
   $assertv = $wgRequest->GetVal('assert');
-  //if no positive assert, check for negative assert
-  if ($assertv == '') {
+  $assertp = true;
+  
+  if ($assertv != '')
+    $assertp = AssertEdit::callAssert($assertv, false);
+
+  //check for negative assert
+  if ($assertp) {
     $assertv = $wgRequest->GetVal('nassert');
-    $negate = true;
+    if ($assertv != '')
+      $assertp = AssertEdit::callAssert($assertv, true);
   }
-  
-  //still no assert..
-  if ($assertv == '') 
-    return true;
-  
-  $assertp = AssertEdit::callAssert($assertv, $negate);
   
   if ($assertp)
     return true;
   else {
-    //wfAssertEditSetup();
-
     //slightly modified from showErrorPage(), to return back here.
     $wgOut->setPageTitle( wfMsg( 'assert_edit_title' ) );
     $wgOut->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
@@ -129,7 +125,7 @@ function wfAssertEditHook(&$editpage) {
     $wgOut->mRedirect = '';
     
     $wgOut->mBodytext = '';
-    $wgOut->addWikiText( wfMsg( 'assert_edit_message' ) );
+    $wgOut->addWikiText( wfMsg( 'assert_edit_message', $assertv ) );
 
     $wgOut->returnToMain(false,$editpage->mTitle);
     return false;
@@ -142,7 +138,7 @@ function wfAssertEditSetup()
   $wgMessageCache->addMessages
     (array(
 	   'assert_edit_title' => 'Assert failed',
-	   'assert_edit_message' => 'The specified assertion failed.'
+	   'assert_edit_message' => 'The specified assertion ($1) failed.'
 	   ));
 }
 
