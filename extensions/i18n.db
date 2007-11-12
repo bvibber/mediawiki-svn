@@ -55,8 +55,8 @@
 ./Chemistry/ChemFunctions.i18n.php wgChemFunctions_Messages
 ./Cite/Cite.i18n.php wgCiteMessages
 ./Cite/SpecialCite.i18n.php wgSpecialCiteMessages
-./ConfirmEdit/ConfirmEdit.i18n.php wgConfirmEditMessages
-./ConfirmEdit/FancyCaptcha.i18n.php efFancyCaptchaMessages
+./ConfirmEdit/ConfirmEdit.i18n.php messages
+./ConfirmEdit/FancyCaptcha.i18n.php messages
 ./Contributors/Contributors.i18n.php efContributorsMessages
 ./CountEdits/CountEdits.i18n.php efCountEditsMessages
 ./CrossNamespaceLinks/SpecialCrossNamespaceLinks.i18n.php wgCrossNamespaceLinksMessages
@@ -95,6 +95,7 @@
 #./SelectCategory/i18n/SelectCategory.i18n.it.php
 #./SelectCategory/i18n/SelectCategory.i18n.sk.php
 ./SiteMatrix/SiteMatrix.i18n.php wgSiteMatrixMessages
+./SpamBlacklist/SpamBlacklist.i18n.php messages
 ./SyntaxHighlight_GeSHi/SyntaxHighlight_GeSHi.i18n.php efSyntaxHighlight_GeSHiMessages
 ./Translate/SpecialTranslate.i18n.php wgTranslateMessages
 ./UserImages/UserImages.i18n.php efUserImagesMessages
