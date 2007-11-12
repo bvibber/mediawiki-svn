@@ -123,6 +123,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11762) Fix native language name of Akan (ak)
 * (bug 11722) Fix inconsistent case in unprotect tabs
 * (bug 11795) Be more paranoid about confirming accept-encoding header is present
+* (bug 11809) Use formatNum() for more numbers
 
 === API changes in 1.12 ===
 
@@ -202,6 +203,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Icelandic (is)
 * Italian (it)
 * Japanese (ja)
+* Georgian (ka)
 * Kazakh (kk)
 * Kannada (kn)
 * Korean (ko)
@@ -212,6 +214,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Lozi (loz) (new)
 * Lingala (ln)
 * Lithuanian (lt)
+* Malayalam (ml)
 * Malay (ms)
 * Erzya (myv) (new)
 * Nahuatl (nah)
