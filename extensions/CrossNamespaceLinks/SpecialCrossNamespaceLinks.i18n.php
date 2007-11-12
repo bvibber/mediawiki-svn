@@ -34,9 +34,9 @@ $wgCrossNamespaceLinksMessages['cs'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|odkaz|odkazy|odkazů}} do $3'
 );
 $wgCrossNamespaceLinksMessages['de'] = array(
-	'crossnamespacelinks'     => 'Artikel mit Links in andere Namensräume',
-	'crossnamespacelinks-summary' => 'Diese Liste zeigt Artikel, die Links auf Seiten anderer Namensräume enthalten. Ausgenommen sind dabei die Namensräume {{ns:special}}, {{ns:talk}}, {{ns:project}} und {{ns:template}}.',
- 	'crossnamespacelinkstext' => '$1: {{PLURAL:$2|1 Link zeigt|$2 Links zeigen}} in den $3-Namensraum'
+	'crossnamespacelinks'     => 'Seiten mit Links in andere Namensräume',
+	'crossnamespacelinks-summary' => 'Diese Liste zeigt Seiten, die Links auf Seiten anderer Namensräume enthalten. Ausgenommen sind dabei die Namensräume {{ns:special}}, {{ns:talk}}, {{ns:project}} und {{ns:template}}.',
+ 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|Link zeigt|Links zeigen}} in den $3-Namensraum'
 );
 $wgCrossNamespaceLinksMessages['es'] = array(
 	'crossnamespacelinks'         => 'Enlaces entre diferentes espacios de nombres',

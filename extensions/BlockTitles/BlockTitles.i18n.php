@@ -36,8 +36,8 @@ function efBlockTitlesMessages() {
 ),
 
 'de' => array(
-	'block_title_error_page_title' => 'Sperre Artikelname',
-	'block_title_error'            => 'Entschuldigung, aber ein Artikel mit diesem Namen darf nicht gespeichert werden.',
+	'block_title_error_page_title' => 'Sperre Seitenname',
+	'block_title_error'            => 'Entschuldigung, aber eine Seite mit diesem Namen darf nicht gespeichert werden.',
 ),
 
 /**

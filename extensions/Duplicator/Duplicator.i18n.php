@@ -127,7 +127,7 @@ copies of all histories. This is useful for article forking, etc.',
 	'duplicator'         => 'Seite duplizieren',
 	'duplicator-header'  => 'Mit dieser Spezialseite können Seiten komplett dupliziert werden. Dabei wird die gesamte ' .
 				'Versionsgeschichte übernommen. Dies kann beispielsweise nützlich sein, um eine Seite in ' .
-				'Unterartikel aufzuteilen.',
+				'Unterseiten aufzuteilen.',
 	'duplicator-options' => 'Optionen',
 	'duplicator-source'  => 'Quelle:',
 	'duplicator-dest'    => 'Ziel:',

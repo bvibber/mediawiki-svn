@@ -81,7 +81,7 @@ function efBookInformationMessages() {
 	'bookinfo-result-publisher' => 'Verlag:',
 	'bookinfo-result-year' => 'Jahr:',
 	'bookinfo-error-invalidisbn' => 'ISBN ungültig.',
-	'bookinfo-error-nosuchitem' => 'Der Artikel ist nicht vorhanden oder wurde nicht gefunden.',
+	'bookinfo-error-nosuchitem' => 'Die Seite ist nicht vorhanden oder wurde nicht gefunden.',
 	'bookinfo-error-nodriver' => 'Es war nicht möglich, die entsprechende Buchinformations-Schnittstelle zu initialisieren.',
 	'bookinfo-error-noresponse' => 'Keine Antwort oder Zeitüberschreitung.',
 	'bookinfo-purchase' => 'Dieses Buch kann von $1 bezogen werden.',
