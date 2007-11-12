@@ -1450,7 +1450,7 @@ class Article {
 				$rcid = RecentChange::notifyNew( $now, $this->mTitle, $isminor, $wgUser, $summary, $bot,
 				  '', strlen( $text ), $revisionId );
 				# Mark as patrolled if the user can
-				if( $GLOBALS['wgUseRCPatrol'] && $wgUser->isAllowed( 'autopatrol' ) ) {
+				if( ($GLOBALS['wgUseRCPatrol'] || $GLOBALS['wgUseNPPatrol']) && $wgUser->isAllowed( 'autopatrol' ) ) {
 					RecentChange::markPatrolled( $rcid );
 					PatrolLog::record( $rcid, true );
 				}
@@ -1923,30 +1923,43 @@ class Article {
 
 			$length = strlen( $text );
 
-			# this should not happen, since it is not possible to store an empty, new
-			# page. Let's insert a standard text in case it does, though
+			# If the last revision is a blank revision (move, import or
+			# protection summary) and the one before it was blank
 			if( $length == 0 && $reason === '' ) {
 				$reason = wfMsgForContent( 'exblank' );
 			}
 
 			if( $reason === '' ) {
-				# comment field=255, let's grep the first 150 to have some user
-				# space left
-				global $wgContLang;
-				$text = $wgContLang->truncate( $text, 150, '...' );
+				if( !$blanked ) {
+					if( $authorOfAll === false ) {
+						$reason = wfMsgForContent( 'excontent', '$1' );
+					} else {
+						$reason = wfMsgForContent( 'excontentauthor', '$1', $authorOfAll );
+					}
+				} else {
+					$reason = wfMsgForContent( 'exbeforeblank', '$1' );
+				}
+
+				# comment field=255, find the max length of the content from page
+				# Max content length is max comment length, minus length of the actual
+				# comment (except for the $1), and minus the possible ... chars
+				$maxLength = 255 - ( strlen( $reason ) - 2 ) - 3;
+				if( $maxLength < 0 ) {
+					$maxLength = 0;
+				}
 
 				# let's strip out newlines
 				$text = preg_replace( "/[\n\r]/", '', $text );
 
-				if( !$blanked ) {
-					if( $authorOfAll === false ) {
-						$reason = wfMsgForContent( 'excontent', $text );
-					} else {
-						$reason = wfMsgForContent( 'excontentauthor', $text, $authorOfAll );
-					}
-				} else {
-					$reason = wfMsgForContent( 'exbeforeblank', $text );
-				}
+				# Truncate to max length
+				global $wgContLang;
+				$text = $wgContLang->truncate( $text, $maxLength, '...' );
+
+				# Remove possible unfinished links
+				$text = preg_replace( '/\[\[([^\]]*)\]?$/', '$1', $text );
+
+				# Add to the reason field
+				$reason = str_replace( '$1', $text, $reason );
 			}
 		}
 
@@ -2027,7 +2040,7 @@ class Article {
 				<label for='wpReason'>{$delcom}:</label>
 			</td>
 			<td align='left'>
-				<input type='text' size='60' name='wpReason' id='wpReason' value=\"" . htmlspecialchars( $reason ) . "\" tabindex=\"1\" />
+				<input type='text' maxlength='255' size='60' name='wpReason' id='wpReason' value=\"" . htmlspecialchars( $reason ) . "\" tabindex=\"1\" />
 			</td>
 		</tr>
 		<tr>

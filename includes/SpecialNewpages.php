@@ -11,13 +11,17 @@
 class NewPagesPage extends QueryPage {
 
 	var $namespace;
-	var $username = '';
+	var $username;
 	var $hideliu;
-
-	function NewPagesPage( $namespace = NS_MAIN, $username = '', $hideliu= false ) {
+	var $hidepatrolled;
+	var $defaults;
+		
+	function NewPagesPage( $namespace, $username, $hideliu, $hidepatrolled, $defaults) {
 		$this->namespace = $namespace;
 		$this->username = $username;
 		$this->hideliu = $hideliu;
+		$this->hidepatrolled = $hidepatrolled;
+		$this->defaults = $defaults;
 	}
 
 	function getName() {
@@ -31,14 +35,17 @@ class NewPagesPage extends QueryPage {
 
 	function makeUserWhere( &$dbo ) {
 		global $wgGroupPermissions;
+		$where = '';
+		if ($this->hidepatrolled) 
+			$where = ' AND rc_patrolled = 0';
 		if ($wgGroupPermissions['*']['createpage'] == true && $this->hideliu) {
-			return  ' AND rc_user = 0';	
+			return  $where . ' AND rc_user = 0';	
 		} else {
 			$title = Title::makeTitleSafe( NS_USER, $this->username );
 			if( $title ) {
-				return ' AND rc_user_text = ' . $dbo->addQuotes( $title->getText() );
+				return $where . ' AND rc_user_text = ' . $dbo->addQuotes( $title->getText() );
 			} else {
-				return '';
+				return $where;
 			}
 		}
 	}
@@ -51,7 +58,7 @@ class NewPagesPage extends QueryPage {
 
 	function getSQL() {
 		global $wgUser, $wgUseNPPatrol;
-		$usepatrol = ( $wgUseNPPatrol && $wgUser->isAllowed( 'patrol' ) ) ? 1 : 0;
+		$usepatrol = ( $wgUseNPPatrol ) ? 1 : 0;
 		$dbr = wfGetDB( DB_SLAVE );
 		list( $recentchanges, $page ) = $dbr->tableNamesN( 'recentchanges', 'page' );
 
@@ -145,9 +152,32 @@ class NewPagesPage extends QueryPage {
 	 * @return string
 	 */	
 	function getPageHeader() {
-		global $wgScript, $wgContLang, $wgGroupPermissions;
+		global $wgScript, $wgContLang, $wgGroupPermissions, $wgUser, $wgUseNPPatrol;
 		$align = $wgContLang->isRTL() ? 'left' : 'right';
 		$self = SpecialPage::getTitleFor( $this->getName() );
+
+		// show/hide links
+		$showhide = array( wfMsg( 'show' ), wfMsg( 'hide' ));
+
+		$nondefaults = array();
+		wfAppendToArrayIfNotDefault( 'hidepatrolled', $this->hidepatrolled, $this->defaults, $nondefaults);
+		wfAppendToArrayIfNotDefault( 'hideliu', $this->hideliu, $this->defaults, $nondefaults);
+		wfAppendToArrayIfNotDefault( 'namespace', $this->namespace, $this->defaults, $nondefaults);
+		wfAppendToArrayIfNotDefault( 'limit', $this->limit , $this->defaults, $nondefaults);
+		wfAppendToArrayIfNotDefault( 'offset', $this->offset , $this->defaults, $nondefaults);
+		wfAppendToArrayIfNotDefault( 'username', $this->username , $this->defaults, $nondefaults);
+		
+		$liuLink =  $wgUser->getSkin()->makeKnownLink( $wgContLang->specialPage( 'Newpages' ),
+			htmlspecialchars( $showhide[1-$this->hideliu] ), wfArrayToCGI( array( 'hideliu' => 1-$this->hideliu ),  $nondefaults ) );
+		$patrLink =  $wgUser->getSkin()->makeKnownLink( $wgContLang->specialPage( 'Newpages' ),
+			htmlspecialchars( $showhide[1-$this->hidepatrolled] ), wfArrayToCGI( array( 'hidepatrolled' => 1-$this->hidepatrolled ),  $nondefaults ) );
+		$links = array();
+		if( $wgGroupPermissions['*']['createpage'] == true )
+			$links[] = wfMsgHtml( 'rcshowhideliu', $liuLink );
+                if( $wgUseNPPatrol )
+                	$links[] = wfMsgHtml( 'rcshowhidepatr', $patrLink );
+                $hl = implode( ' | ', $links );                
+
 		$form = Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) ) .
 			Xml::hidden( 'title', $self->getPrefixedDBkey() ) .
 			Xml::openElement( 'table' ) .
@@ -166,14 +196,7 @@ class NewPagesPage extends QueryPage {
 				<td>" .
 					Xml::input( 'username', 30, $this->username, array( 'id' => 'mw-np-username' ) ) .
 				"</td>
-			</tr>";
-			if ($wgGroupPermissions['*']['createpage'] == true) {
-			$form = $form . "<tr><td></td>
-				<td colspan=\"2\">" . Xml::checkLabel( wfMsgHtml( 'rcshowhideliu',  wfMsg( 'hide' ) ),
-					 'hideliu', 'hideliu', $this->hideliu,  array( 'id' => 'mw-np-hideliu' ) ) . "
-				</td></tr>";
-			}		
-			$form = $form . "
+			</tr><tr><td></td><td>" . $hl . "</td></tr>
 			<tr> <td></td>
 				<td>" .
 					Xml::submitButton( wfMsg( 'allpagessubmit' ) ) .
@@ -192,7 +215,7 @@ class NewPagesPage extends QueryPage {
 	 * @return array
 	 */
 	function linkParameters() {
-		return( array( 'namespace' => $this->namespace, 'username' => $this->username, 'hideliu' => $this->hideliu ) );
+		return( array( 'namespace' => $this->namespace, 'username' => $this->username, 'hideliu' => $this->hideliu, 'hidepatrolled' => $this->hidepatrolled ) );
 	}
 	
 }
@@ -203,10 +226,19 @@ class NewPagesPage extends QueryPage {
 function wfSpecialNewpages($par, $specialPage) {
 	global $wgRequest, $wgContLang;
 
+
 	list( $limit, $offset ) = wfCheckLimits();
-	$namespace = NS_MAIN;
-	$username = '';
-	$hideliu = false; 
+
+	$defaults = array(
+        /* bool */ 'hideliu' => false,  
+        /* bool */ 'hidepatrolled' => false,
+        /* text */ 'namespace' => NS_MAIN,
+        /* text */ 'username' => '',
+        /* int  */ 'offset' => $offset,
+        /* int  */ 'limit' => $limit,
+        );
+                                                                                                        	
+	extract($defaults);        
 
 	if ( $par ) {
 		$bits = preg_split( '/\s*,\s*/', trim( $par ) );
@@ -215,6 +247,8 @@ function wfSpecialNewpages($par, $specialPage) {
 				$shownavigation = true;
 			if ( 'hideliu' == $bit )
 				$hideliu = true;
+			if ( 'hidepatrolled' == $bit )
+				$hidepatrolled = true;
 			if ( is_numeric( $bit ) )
 				$limit = $bit;
 
@@ -237,13 +271,15 @@ function wfSpecialNewpages($par, $specialPage) {
 			$username = $un;
 		if( $hliu = $wgRequest->getBool( 'hideliu' ) )
 			$hideliu = $hliu;
+		if( $hpatrolled = $wgRequest->getBool( 'hidepatrolled' ) )
+			$hidepatrolled = $hpatrolled;
 			
 	}
 	
 	if ( ! isset( $shownavigation ) )
 		$shownavigation = ! $specialPage->including();
 
-	$npp = new NewPagesPage( $namespace, $username, $hideliu );
+	$npp = new NewPagesPage( $namespace, $username, $hideliu, $hidepatrolled, $defaults );
 
 	if ( ! $npp->doFeed( $wgRequest->getVal( 'feed' ), $limit ) )
 		$npp->doQuery( $offset, $limit, $shownavigation );
