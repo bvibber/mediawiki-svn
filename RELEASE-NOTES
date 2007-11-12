@@ -55,6 +55,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * BeforeWatchlist hook added for filtering or replacing watchlist.
 * SkinTemplateTabAction hook added for altering the properties of tab links.
 * OutputPage::getRedirect public method added.
+* (bug 11848) Allow URL parameters 'editintro' and 'preload' in Special:Mypage 
+  and Special:Mytalk
 
 === Bug fixes in 1.12 ===
 
@@ -138,6 +140,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   255 characters (already restricted in the database)
 * In the deletion default reasons, calculate how much text to get from the
   article text, rather than getting 150 characters (which may be too much)
+* Add two messages for Special:Blockme which were used but undefined
 
 === API changes in 1.12 ===
 
@@ -199,6 +202,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Danish (da)
 * German (de)
 * Lower Sorbian (dsb) (new)
+* Divehi (dv)
 * Ewe (ee) (new)
 * Greek (el)
 * Spanish (es)
@@ -231,6 +235,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Italian (it)
 * Japanese (ja)
 * Georgian (ka)
+* Kara-Kalpak (kaa)
 * Kazakh (kk)
 * Kannada (kn)
 * Korean (ko)
@@ -238,7 +243,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Kurdish (Latin) (ku-latn)
 * Cornish (kw) (new)
 * Latin (la)
-* Luxembourgish (lb)
+* Luxembourgish (lb) (new)
+* Lak (lbe) (new)
 * Limbugian (li)
 * Lozi (loz) (new)
 * Lingala (ln)
@@ -257,6 +263,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Deitsch (pdc) (new)
 * Polish (pl)
 * Piemontèis (pms)
+* Pontic (pnt) (new)
 * Pashto (ps)
 * Portugese (pt)
 * Quechua (qu)

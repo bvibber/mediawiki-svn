@@ -210,6 +210,7 @@
 	'pih' => 'Norfuk / Pitkern', # Norfuk/Pitcairn/Norfolk
 	'pl' => 'Polski',		# Polish
 	'pms' => 'Piemontèis', 	# Piedmontese
+	'pnt' => 'Ποντιακά', 	# Pontic, aka Pontic Greek
 	'ps' => 'پښتو',	# Pashto
 	'pt' => 'Português',	# Portuguese
 	'pt-br' => 'Português do Brasil',	# Brazilian Portuguese
@@ -221,7 +222,6 @@
 	'roa-rup' => 'Armãneashce', # Aromanian
 	'roa-tara' => 'Tarandíne',	# Tarantino
 	'ru' => 'Русский',	# Russian
-	'ru-sib' => 'Сибирской',	# Siberian/North Russian
 	'rw' => 'Kinyarwanda',	# Kinyarwanda, should possibly be Kinyarwandi
 	'sa' => 'संस्कृत',	# Sanskrit
 	'sah' => 'Саха тыла', # Sakha

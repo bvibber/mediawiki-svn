@@ -5,7 +5,6 @@
  *
  * @author Sky Harbor
  * @author Gangleri
- * @author G - ?
  * @author Siebrand
  * @author G - ג
  */
@@ -330,6 +329,6 @@ Pumili muli ng ibang pangalan.',
 'tooltip-pt-preferences' => 'Aking mga kagustuhan',
 
 # Delete conflict
-'deletedwhileediting' => 'Babala: Nabura na ang pahinang ito pagkatapos mong magsimula nang magbago!',
+'deletedwhileediting' => 'Babala: Nabura na ang pahinang ito pagkatapos mong magsimulang magbago!',
 
 );

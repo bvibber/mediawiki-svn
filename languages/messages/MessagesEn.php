@@ -364,7 +364,7 @@ $specialPageAliases = array(
 	'Uncategorizedpages'        => array( 'Uncategorizedpages' ),
 	'Uncategorizedcategories'   => array( 'Uncategorizedcategories' ),
 	'Uncategorizedimages'       => array( 'Uncategorizedimages' ),
-	'Uncategorizedtemplates' 	=> array( 'Uncategorizedtemplates' ),
+	'Uncategorizedtemplates'    => array( 'Uncategorizedtemplates' ),
 	'Unusedcategories'          => array( 'Unusedcategories' ),
 	'Unusedimages'              => array( 'Unusedimages' ),
 	'Wantedpages'               => array( 'Wantedpages', 'Brokenlinks' ),
@@ -1938,6 +1938,7 @@ before deletion. The actual text of these deleted revisions is only available to
 'undelete-revision' => 'Deleted revision of $1 (as of $2) by $3:',
 'undeleterevision-missing' => 'Invalid or missing revision. You may have a bad link, or the
 revision may have been restored or removed from the archive.',
+'undelete-nodiff'          => 'No previous revision found.',
 'undeletebtn'              => 'Restore',
 'undeletereset'            => 'Reset',
 'undeletecomment'          => 'Comment:',
@@ -1960,7 +1961,7 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 'undelete-missing-filearchive' => 'Unable to restore file archive ID $1 because it isn\'t in the database. ' .
 	'It may have already been undeleted.',
 'undelete-error-short'     => 'Error undeleting file: $1',
-'undelete-error-long'      => "Errors were encountered while undeleting the file:\n\n$1\n",
+'undelete-error-long'      => "Errors were encountered while undeleting the file:\n\n$1",
 
 # Namespace form on various pages
 'namespace'      => 'Namespace:',
@@ -2087,9 +2088,11 @@ the list of currently operational bans and blocks.',
 'range_block_disabled'        => 'The sysop ability to create range blocks is disabled.',
 'ipb_expiry_invalid'          => 'Expiry time invalid.',
 'ipb_already_blocked'         => '"$1" is already blocked',
-'ip_range_invalid'            => 'Invalid IP range.',
-'proxyblocker'                => 'Proxy blocker',
 'ipb_cant_unblock'            => 'Error: Block ID $1 not found. It may have been unblocked already.',
+'ip_range_invalid'            => 'Invalid IP range.',
+'blockme'                     => 'Block me',
+'proxyblocker'                => 'Proxy blocker',
+'proxyblocker-disabled'       => 'This function is disabled.',
 'proxyblockreason'            => 'Your IP address has been blocked because it is an open proxy. Please contact your Internet service provider or tech support and inform them of this serious security problem.',
 'proxyblocksuccess'           => 'Done.',
 'sorbs'                       => 'DNSBL', # only translate this message to other languages if you have to change it
@@ -2448,7 +2451,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 # Image deletion
 'deletedrevision' => 'Deleted old revision $1',
 'filedeleteerror-short' => "Error deleting file: $1",
-'filedeleteerror-long' => "Errors were encountered while deleting the file:\n\n$1\n",
+'filedeleteerror-long' => "Errors were encountered while deleting the file:\n\n$1",
 'filedelete-missing' => 'The file "$1" cannot be deleted, because it doesn\'t exist.',
 'filedelete-old-unregistered' => 'The specified file revision "$1" is not in the database.',
 'filedelete-current-unregistered' => 'The specified file "$1" is not in the database.',
@@ -2997,17 +3000,17 @@ $1',
 'watchlisttools-raw'   => 'Edit raw watchlist',
 
 # Iranian month names
-'iranian-calendar-m1'  => 'Farvardin',
-'iranian-calendar-m2'  => 'Ordibehesht',
-'iranian-calendar-m3'  => 'Khordad',
-'iranian-calendar-m4'  => 'Tir',
-'iranian-calendar-m5'  => 'Mordad',
-'iranian-calendar-m6'  => 'Shahrivar',
-'iranian-calendar-m7'  => 'Mehr',
-'iranian-calendar-m8'  => 'Aban',
-'iranian-calendar-m9'  => 'Azar',
-'iranian-calendar-m10' => 'Dey',
-'iranian-calendar-m11' => 'Bahman',
-'iranian-calendar-m12' => 'Esfand',
+'iranian-calendar-m1'  => 'Farvardin', # only translate this message to other languages if you have to change it
+'iranian-calendar-m2'  => 'Ordibehesht', # only translate this message to other languages if you have to change it
+'iranian-calendar-m3'  => 'Khordad', # only translate this message to other languages if you have to change it
+'iranian-calendar-m4'  => 'Tir', # only translate this message to other languages if you have to change it
+'iranian-calendar-m5'  => 'Mordad', # only translate this message to other languages if you have to change it
+'iranian-calendar-m6'  => 'Shahrivar', # only translate this message to other languages if you have to change it
+'iranian-calendar-m7'  => 'Mehr', # only translate this message to other languages if you have to change it
+'iranian-calendar-m8'  => 'Aban', # only translate this message to other languages if you have to change it
+'iranian-calendar-m9'  => 'Azar', # only translate this message to other languages if you have to change it
+'iranian-calendar-m10' => 'Dey', # only translate this message to other languages if you have to change it
+'iranian-calendar-m11' => 'Bahman', # only translate this message to other languages if you have to change it
+'iranian-calendar-m12' => 'Esfand', # only translate this message to other languages if you have to change it
 
 );
