@@ -200,6 +200,12 @@ $wgNewuserlogMessages['lo'] = array(
 	'newuserlog-create-entry'  => 'ຜູ້ໃຊ້ໃໝ່',
 	'newuserlog-create2-entry' => 'ໄດ້ສ້າງບັນຊີ ໃຫ້ $1',
 );
+$wgNewuserlogMessages['mk'] = array(
+	'newuserlogpage'           => 'Листа на нови корисници',
+	'newuserlogpagetext'       => 'Ова е листа на скоро регистрирани корисници',
+	'newuserlog-create-entry'  => 'Нов корисник:',
+	'newuserlog-create2-entry' => 'направив налог за $1',
+);
 $wgNewuserlogMessages['nl'] = array(
 	'newuserlogpage'           => 'Logboek nieuwe gebruikers',
 	'newuserlogpagetext'       => 'Hieronder staan de nieuw ingeschreven gebruikers',
