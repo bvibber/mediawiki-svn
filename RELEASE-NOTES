@@ -20,6 +20,10 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 
 === Configuration changes in 1.12 ===
 
+=== Removed features in 1.12 ===
+* {{REVISIONID}} will no longer give the correct revision ID for current revision 
+  views. It will still work for history views. 
+
 === New features in 1.12 ===
 * (bug 10735) Add a warning for non-descriptive filenames at Special:Upload
 * Add {{filepath:}} parser function to get full path to an uploaded file,
@@ -57,6 +61,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * OutputPage::getRedirect public method added.
 * (bug 11848) Allow URL parameters 'editintro' and 'preload' in Special:Mypage 
   and Special:Mytalk
+* Add special page for getting random page from category
+* Add link on Special:Randomincategory to sidebar
+* Add ot=raw to Special:Allmessages
 
 === Bug fixes in 1.12 ===
 
@@ -141,6 +148,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * In the deletion default reasons, calculate how much text to get from the
   article text, rather than getting 150 characters (which may be too much)
 * Add two messages for Special:Blockme which were used but undefined
+* (bug 11921) Support plural in message number_of_watching_users_pageview
 
 === API changes in 1.12 ===
 
@@ -194,7 +202,9 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Bengali (bn)
 * Bishnupriya Manipuri (bpy)
 * Breton (br)
+* Buginese (bug) (new)
 * Catalan (ca)
+* Zamboangueño (cbk-zam) (new)
 * Czech (cs)
 * Cassubian (csb)
 * Old Church Slavonic (cu)
@@ -205,6 +215,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Divehi (dv)
 * Ewe (ee) (new)
 * Greek (el)
+* English (en)
 * Spanish (es)
 * Extremaduran (ext)
 * Finnish (fi)
@@ -278,6 +289,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Tachelhit (shi)
 * Slovak (sk)
 * Serbian (Cyrillic) (sr-ec)
+* Swati (ss) (new)
+* Saterland Frisian (stq) (new)
 * Sundanese (su)
 * Swedish (sv)
 * Tamil (ta)
@@ -286,6 +299,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Tajik (tg)
 * Tagalog (tl) (new)
 * Turkish (tr)
+* Tuvinian (tyv)
 * Uyghur (ug)
 * Venitian (vec)
 * Vietnamese (vi)

@@ -357,7 +357,10 @@ class SkinTemplate extends Skin {
 				$x = $dbr->fetchObject( $res );
 				$numberofwatchingusers = $x->n;
 				if ($numberofwatchingusers > 0) {
-					$tpl->set('numberofwatchingusers', wfMsg('number_of_watching_users_pageview', $numberofwatchingusers));
+					$tpl->set('numberofwatchingusers',
+						wfMsgExt('number_of_watching_users_pageview', array('parseinline'),
+						$wgLang->formatNum($numberofwatchingusers))
+					);
 				} else {
 					$tpl->set('numberofwatchingusers', false);
 				}
@@ -890,6 +893,13 @@ class SkinTemplate extends Skin {
 				);
 		}
 
+		if( $this->mTitle->getNamespace() == NS_CATEGORY || $this->mTitle->getNamespace() == NS_CATEGORY_TALK ) {
+			$nav_urls['randomincategory'] = array(
+				'text' => wfMsg( 'randomincategory-toolbox' ),
+				'href' => self::makeSpecialUrlSubpage( 'Randomincategory', $this->mTitle->getText() ),
+			);
+		}
+
 		if( $this->mTitle->getNamespace() == NS_USER || $this->mTitle->getNamespace() == NS_USER_TALK ) {
 			$id = User::idFromName($this->mTitle->getText());
 			$ip = User::isIP($this->mTitle->getText());
@@ -1192,4 +1202,5 @@ class QuickTemplate {
 		return ($msg != '-') && ($msg != ''); # ????
 	}
 }
+
 

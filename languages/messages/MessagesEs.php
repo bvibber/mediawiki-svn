@@ -1,8 +1,20 @@
 <?php
 /** Spanish (Español)
-  *
-  * @addtogroup Language
-  */
+ *
+ * @addtogroup Language
+ *
+ * @author Icvav
+ * @author Platonides
+ * @author G - ג
+ * @author Sanbec
+ * @author Lin linao
+ * @author Alhen
+ * @author Spacebirdy
+ * @author Orgullomoore
+ * @author Mahadeva
+ * @author Alpertron
+ * @author Better
+ */
 
 $skinNames = array(
 	'standard' => 'Estándar',
@@ -140,7 +152,7 @@ $messages = array(
 'dec'           => 'dic',
 
 # Bits of text used by many pages
-'categories'            => '{{PLURAL:$1|Categoría|Categorías}}',
+'categories'            => 'Categorías',
 'pagecategories'        => '{{PLURAL:$1|Categoría|Categorías}}',
 'category_header'       => 'Artículos en la categoría "$1"',
 'subcategories'         => 'Subcategorías',
@@ -812,6 +824,7 @@ Los grupos no seleccionados no cambiarán. Puede deseleccionar pulsando la tecla
 
 # Recent changes linked
 'recentchangeslinked'          => 'Cambios en enlazadas',
+'recentchangeslinked-title'    => 'Cambios relacionados con $1',
 'recentchangeslinked-noresult' => 'No hubo cambios en las páginas enlazadas durante el periodo indicado.',
 'recentchangeslinked-summary'  => "Esta página especial lista los últimos cambios en las páginas enlazadas. Las páginas en su lista de seguimiento están en '''negrita'''.",
 
@@ -895,6 +908,7 @@ Si tienes esta imagen a toda resolución súbela, si no, por favor cambia el nom
 
 'license'            => 'Licencia',
 'nolicense'          => 'Ninguna seleccionada',
+'license-nopreview'  => '(Previsualización no disponible)',
 'upload_source_url'  => ' (una URL válida y accesible públicamente)',
 'upload_source_file' => ' (un archivo en su ordenador)',
 
@@ -931,6 +945,9 @@ Si tienes esta imagen a toda resolución súbela, si no, por favor cambia el nom
 
 # File deletion
 'filedelete'            => 'Borrar $1',
+'filedelete-intro'      => "Estás borrando '''[[Media:$1|$1]]'''.",
+'filedelete-submit'     => 'Borrar',
+'filedelete-success'    => "'''$1''' ha sido borrado.",
 'filedelete-nofile-old' => "No existe una versión guardada de '''$1''' con los atributos especificados.",
 
 # MIME search
@@ -1038,6 +1055,8 @@ Cada fila contiene enlaces al segundo y tercer redirect, así como la primera l�
 'movethispage'            => 'Trasladar esta página',
 'unusedimagestext'        => '<p>Por favor, ten en cuenta que otros sitios web pueden enlazar a una imagen directamente con su URL, y de esa manera no aparecer listados aquí pese a estar en uso.</p>',
 'unusedcategoriestext'    => 'Las siguientes categorías han sido creadas, pero ningún artículo o categoría las utiliza.',
+'notargettitle'           => 'No hay página objetivo',
+'notargettext'            => 'Especifique sobre qué página desea llevar a cabo esta acción.',
 
 # Book sources
 'booksources'               => 'Fuentes de libros',
@@ -1315,8 +1334,6 @@ Consulta el [[Special:Log/delete|registro de borrados]] para ver una lista de lo
 # What links here
 'whatlinkshere'       => 'Lo que enlaza aquí',
 'whatlinkshere-title' => 'Páginas que enlazan a $1',
-'notargettitle'       => 'No hay página objetivo',
-'notargettext'        => 'Especifique sobre qué página desea llevar a cabo esta acción.',
 'linklistsub'         => '(Lista de enlaces)',
 'linkshere'           => "Las siguientes páginas enlazan a '''[[:$1]]''':",
 'nolinkshere'         => "Ninguna página enlaza con '''[[:$1]]'''.",
@@ -1400,9 +1417,9 @@ las páginas en particular que han sido objeto de vandalismo).',
 'range_block_disabled'        => 'La facultad de administrador de crear bloqueos por rangos está deshabilitada.',
 'ipb_expiry_invalid'          => 'El tiempo de caducidad no es válido.',
 'ipb_already_blocked'         => '"$1" ya se encuentra bloqueado.',
+'ipb_cant_unblock'            => "'''Error''': Número ID $1 de bloqueo no encontrado. Pudo haber sido desbloqueado ya.",
 'ip_range_invalid'            => 'El rango de IP no es válido.',
 'proxyblocker'                => 'Bloqueador de proxies',
-'ipb_cant_unblock'            => "'''Error''': Número ID $1 de bloqueo no encontrado. Pudo haber sido desbloqueado ya.",
 'proxyblockreason'            => 'Su dirección IP ha sido bloqueada porque es un proxy abierto. Por favor, contacte con su proveedor de servicios de Internet o con su servicio de asistencia técnica e infórmeles de este grave problema de seguridad.',
 'proxyblocksuccess'           => 'Hecho.',
 'sorbsreason'                 => 'Su dirección IP está listada como proxy abierto en DNSBL.',
@@ -1602,6 +1619,7 @@ Todas las importaciones transwiki se registran en el [[Special:Log/import|regist
 'tooltip-compareselectedversions' => 'Ver las diferencias entre las dos versiones seleccionadas de esta página.',
 'tooltip-watch'                   => 'Añadir esta página a su lista de seguimiento',
 'tooltip-recreate'                => 'Recupera una página que ha sido borrada',
+'tooltip-upload'                  => 'Empieza la subida',
 
 # Stylesheets
 'common.css'   => '/* Los estilos CSS definidos aquí aplicarán a todas las pieles (skins) */',
@@ -2072,8 +2090,8 @@ Intenta la previsualización normal.',
 'watchlistedit-raw-removed'    => '{{PLURAL:$1|Una página ha sido borrada|$1 páginas han sido borradas}}:',
 
 # Watchlist editing tools
-'watchlisttools-view'  => 'Ver cambios',
-'watchlisttools-edit'  => 'Ver y editar tu lista de seguimiento',
-'watchlisttools-raw'   => 'Editar lista de seguimiento en crudo',
+'watchlisttools-view' => 'Ver cambios',
+'watchlisttools-edit' => 'Ver y editar tu lista de seguimiento',
+'watchlisttools-raw'  => 'Editar lista de seguimiento en crudo',
 
 );
