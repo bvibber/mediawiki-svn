@@ -31,3 +31,21 @@ function _fundcore_frontpage_render($file, $variables = array()) {
   ob_end_clean();
   return $contents;
 }
+
+function fundcore_frontpage_block($op = 'list', $delta = 0, $edit = array()) {
+  if ($op == 'list') {
+    $blocks[0] = array(
+      'info' => t('Fundraising footer'),
+      'weight' => 0,
+      'enabled' => 1,
+      'region' => 'last_line'
+    );
+    return $blocks;
+  }
+  else if ($op == 'view') {
+    $block = array(
+      'content' => _fundcore_frontpage_render('fundcore_frontpage.block.inc'),
+    );
+    return $block;
+  }
+}

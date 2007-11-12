@@ -38,7 +38,7 @@
 				</tr>
 			</table>
 
-      <div id="content">
+      <div id="content" style="width: 886px;">
         <?php if ($messages) { ?>  <div id="messages"><?php echo $messages; ?></div> <?php } ?>
         <?php if ($breadcrumb) { ?>  <div style="float: right; padding-top:16px;"><?php echo $breadcrumb; ?></div> <?php } ?>
         <?php if ($title): print fundcore_direction('<h1>'. $title .'</h1>'); endif; ?>
@@ -56,7 +56,7 @@
 			<br><br>
 
 			<div id="lastline">
-				<?php echo $last_link; ?>
+				<?php echo $last_line; ?>
 			</div>
 			<br><br>
 

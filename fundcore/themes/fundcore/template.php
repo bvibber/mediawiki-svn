@@ -2,7 +2,7 @@
 
 function fundcore_regions() {
   return array(
-    'last_time' => t('Last line'),
+    'last_line' => t('Last line'),
   );
 }
 
