@@ -47,6 +47,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Allow hiding new pages by logged-in users on Special:Newpages
 * (bug 1405) Add wgUseNPPatrol option to control patroling for new articles
   on Special:Newpages
+* LogLine hook added to allow formatting custom entries in Special:Log.
+
 
 === Bug fixes in 1.12 ===
 
@@ -124,6 +126,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11722) Fix inconsistent case in unprotect tabs
 * (bug 11795) Be more paranoid about confirming accept-encoding header is present
 * (bug 11809) Use formatNum() for more numbers
+* (bug 11818) Fix native language name of Inuktitut (iu)
 
 === API changes in 1.12 ===
 
@@ -183,6 +186,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Extremaduran (ext)
 * Finnish (fi)
 * Persian (fa)
+* Fulah (ff)
 * Võro (fiu-vro)
 * Faroese (fo)
 * French (fr)
@@ -192,6 +196,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Irish (ga)
 * Gön-gnŷ (gan) (new)
 * Galician (gl)
+* Gilaki (glk) (new)
 * Ancient Greek (grc) (new)
 * Hakka (hak)
 * Hebrew (he)
@@ -224,11 +229,13 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Newari (new) (new)
 * Dutch (nl)
 * Norwegian (no)
+* Deitsch (pdc) (new)
 * Polish (pl)
 * Piemontèis (pms)
 * Pashto (ps)
 * Portugese (pt)
 * Quechua (qu)
+* Rhaeto-Romance (rm) (new)
 * Romanian (ro)
 * Russian (ru)
 * Sakha (sah)
