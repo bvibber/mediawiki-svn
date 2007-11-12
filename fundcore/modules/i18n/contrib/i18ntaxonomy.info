@@ -1,0 +1,9 @@
+name = i18n - taxonomy
+description = Translates taxonomy terms using localization system.
+dependencies = i18n translation
+package = Multilanguage - i18n
+version = 5.0 dev
+; Information added by drupal.org packaging script on 2007-05-06
+version = "5.x-2.1"
+project = "i18n"
+

@@ -1,0 +1,5 @@
+name = Moneybookers
+description = Moneybookers support.
+core = 5.x
+dependencies = fundcore
+package = Fundraising CORE

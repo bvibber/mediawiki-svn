@@ -1,0 +1,314 @@
+<?php
+
+function fundcore_meter_menu($may_cache) {
+  $items = array();
+  
+  if ($may_cache) {
+    $items[] = array(
+      'path' => 'fundcore_meter',
+      'access' => TRUE,
+      'type' => MENU_CALLBACK,
+      'callback' => 'fundcore_meter_page',
+    );
+    $items[] = array(
+      'path' => 'admin/settings/fundcore_meter',
+      'title' => t('Fundraising CORE Meter'),
+      'callback' => 'drupal_get_form',
+      'callback arguments' => array('fundcore_meter_settings'),
+      'access' => user_access('administer site configuration'),
+    );
+  }
+  
+  return $items;
+}
+
+function _fundcore_meter_meterLocalizeFormat( $number, $lang ) {
+	$text = array(
+		'an' => '[1.234.567] personas han donato',
+		'ar' => '[1.234.567] شخص قد تبرعوا',
+		'bg' => '[1 234 567] човека направиха дарения',
+		'bn' => '[১,২৩৪,৫৬৭] জন লোক ইতিমধ্যে দান করেছেন',
+		'ca' => '[1.234.567] persones han fet un donatiu',
+		'ceb' => '[1,234,567] na ka tawo ang midonar',
+		'cs' => '[1 234 567] lidí přispělo',
+		'da' => '[1.234.567] personer har doneret',
+		'de' => '[1.234.567] Personen haben gespendet',
+		'el' => '[1.234.567] άτομα έχουν κάνει δωρεά',
+		'en' => '[1,234,567] people have donated',
+		'eo' => '[1.234.567] personoj jam donacis',
+		'es' => '[1.234.567] personas han donado',
+		'et' => '[1 234 567] inimest on annetanud',
+		'fa' => '[۱.۲۳۴.۵۶۷] :شمار افرادی که کمک مالی کرده‌ان',
+		'fr' => '[1 234 567] personnes ont fait un don',
+		'fi' => '[1.234.567] ihmistä on lahjoittanut',
+		'gl' => '[1.234.567] persoas xa fixeron unha doazón',
+		'he' => '[1,234,567] איש כבר תרמו',
+		'hr' => '[1.234.567] ljudi je darivalo',
+		'hsb' => '[1.234.567] wosobow je dariło',
+		'hu' => '[1 234 567] ember már adakozott',
+		'id' => '[1.234.567] orang telah menyumbang',
+		'is' => '[1.234.567] hafa aðstoðað með fjárframlögum',
+		'it' => '[1.234.567] persone hanno donato',
+		'ja' => '[1,234.567]人の方々に寄付をたまわりました。',
+		'ka' => 'მიღებულია [1,234,567] ადამიანის შემოწირულობა',
+		'kn' => '[೧,೨೩೪,೫೬೭] ಜನ ಆಗಲೆ ಕಾಣಿಕೆ ನೀಡಿದ್ದಾರೆ',
+		'ko' => '현재까지 [1,234,567]분께서 기부해 주셨습니다.',
+		'lmo' => '[1.234.567] personn ann gjamò faa dunazziún',
+		'lt' => '[1 234 567] asmenų jau paaukojo',
+		'nap' => '[1.234.567] perzone già facettero na nferta',
+		'new' => '[१२.३४.५६७] मनुतेसं दान यानादीधुंकल',
+		'nl' => '[1.234.567] mensen hebben gedoneerd',
+		'nn' => '[1 234 567] personar har donert',
+		'no' => '[1 234 567] personer har donert',
+		'pms' => '[1.234.567] person-e a l\'han fait n\'oferta',
+		'pl' => '[1 234 567] osób wsparło ją finansowo',
+		'pt' => '[1 234 567] pessoas já fizeram uma doação',
+		'ro' => '[1.234.567] au donat deja',
+//		'ru' => '[1 234 567] человек сделали пожертвования',
+    'ru' => '[1 234 567] уже пожертвовали',
+		'sk' => '[1 234 567] ľudí prispelo finančným darom',
+		'sl' => 'Prispevalo je 1.234.567 ljudi.',
+		'sr' => '[1.234.567] људи је донирало.',
+		'sv' => '[1 234 567] personer har donerat',
+		'te' => '[1.234.567] మంది విరాళాలు అందించారు',
+		'th' => '[1,234,567] คนได้บริจาคเงินช่วยเหลือ',
+		'tr' => '[1.234.567] kişi Wikipedia\'ya bağışta bulundu',
+		'uk' => '[1,234,567] осіб зробили пожертвування',
+		'vo' => 'Pösods [1 234 567] ya egivons monastütotis',
+		'zh' => '[1.234.567] 人已捐獻',
+	);
+	
+	$rtl = array( 'ar', 'he', 'fa' );
+	
+	if( isset( $text[$lang] ) ) {
+		$base = $text[$lang];
+	} else {
+		$base = $text['en'];
+	}
+	
+	$digits = array( '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' );
+	$indianSep = false;
+	
+	if( preg_match( '/\[.(.)...(.)..(.)\]/u', $base, $matches ) ) {
+		list(, $millions, $thousands, $seven ) = $matches;
+		$zero = _fundcore_meter_bvUtf8ToCodepoint( $seven ) - 7;
+		for( $i = 0; $i < 10; $i++ ) {
+			$digits[$i] = _fundcore_meter_bvCodepointToUtf8( $zero + $i );
+		}
+		$digits[','] = $thousands;
+		if( $millions != $thousands ) {
+			// Digit grouping is by hundreds after the first thousand
+			$indianSep = true;
+		}
+	}
+	
+	if( $indianSep ) {
+		// tough
+		$work = strrev( $number );
+		$out = substr( $work, 0, 3 );
+		$work = substr( $work, 3 );
+		for( $i = 0; $i < strlen( $work ); $i++ ) {
+			if( $i % 2 == 0 ) {
+				$out .= '.';
+			}
+			$out .= $work[$i];
+		}
+		$str = strrev( $out );
+	} else {
+		$str = number_format( $number, 0, '.', ',' );
+	}
+	$str = strtr( $str, $digits );
+	
+	return preg_replace( '/\[.*\]/', $str, $base );
+}
+
+
+/**
+ * Determine the Unicode codepoint of a single-character UTF-8 sequence.
+ * Does not check for invalid input data.
+ *
+ * @param $char String
+ * @return Integer
+ * @public
+ */
+function _fundcore_meter_bvUtf8ToCodepoint( $char ) {
+	# Find the length
+	$z = ord( $char{0} );
+	if ( $z & 0x80 ) {
+		$length = 0;
+		while ( $z & 0x80 ) {
+			$length++;
+			$z <<= 1;
+		}
+	} else {
+		$length = 1;
+	}
+
+	if ( $length != strlen( $char ) ) {
+		return false;
+	}
+	if ( $length == 1 ) {
+		return ord( $char );
+	}
+
+	# Mask off the length-determining bits and shift back to the original location
+	$z &= 0xff;
+	$z >>= $length;
+
+	# Add in the free bits from subsequent bytes
+	for ( $i=1; $i<$length; $i++ ) {
+		$z <<= 6;
+		$z |= ord( $char{$i} ) & 0x3f;
+	}
+
+	return $z;
+}
+
+
+/**
+ * Return UTF-8 sequence for a given Unicode code point.
+ * May die if fed out of range data.
+ *
+ * @param $codepoint Integer:
+ * @return String
+ * @public
+ */
+function _fundcore_meter_bvCodepointToUtf8( $codepoint ) {
+	if($codepoint <		0x80) return chr($codepoint);
+	if($codepoint <    0x800) return chr($codepoint >>	6 & 0x3f | 0xc0) .
+									 chr($codepoint		  & 0x3f | 0x80);
+	if($codepoint <  0x10000) return chr($codepoint >> 12 & 0x0f | 0xe0) .
+									 chr($codepoint >>	6 & 0x3f | 0x80) .
+									 chr($codepoint		  & 0x3f | 0x80);
+	if($codepoint < 0x110000) return chr($codepoint >> 18 & 0x07 | 0xf0) .
+									 chr($codepoint >> 12 & 0x3f | 0x80) .
+									 chr($codepoint >>	6 & 0x3f | 0x80) .
+									 chr($codepoint		  & 0x3f | 0x80);
+
+	echo "Asked for code outside of range ($codepoint)\n";
+	die( -1 );
+}
+
+function fundcore_meter_settings() {
+  $form = array();
+  
+  $form['fundcore_meter_begin_date'] = array(
+    '#type' => 'date',
+    '#title' => t('Beginning date'),
+    '#default_value' => variable_get('fundcore_meter_begin_date', NULL),
+  );
+  
+  return system_settings_form($form);
+}
+
+function fundcore_meter_page($language = 'en', $current = NULL) {
+  if (!isset($current)) {
+    $current = fundcore_meter_total();
+  }
+	$image =  fundcore_meter_render($language, $current);
+	header("content-type: image/png");
+	header('content-disposition: inline; filename="meter.png"');
+	imagepng($image);  
+}
+
+function fundcore_meter_total() {
+  $begin = variable_get('fundcore_meter_begin_date', NULL);
+  $begin = strtotime($begin['year'] . '-' . $begin['month'] . '-' . $begin['day'] . ' 00:00:00 UTC');
+
+  $count = db_result(db_query('SELECT COUNT(*) FROM {fundcore_contribution} WHERE stored >= %d AND processed = 1', $begin));
+
+  return $count;
+}
+
+function fundcore_meter_render($language, $current)
+{
+  $meter_config = array(
+//    'font_file' => 'GillSansStd.otf',
+    'font_file' => 'DejaVuSans.ttf',
+    'font_size' => 9,
+    'max' => 100000,
+    'big_tick' => 10000,
+    'small_tick' => 5000,
+    'width' => 407,
+    'height' => 14,
+    'bar_r' => 51,
+    'bar_g' => 153,
+    'bar_b' => 102,
+    'force_right' => TRUE,
+  );
+  
+  $meter_config['font_file'] = drupal_get_path('module', 'fundcore_meter') . '/' . $meter_config['font_file'];
+
+  // Cap current at maximum
+  $real_current = $current;
+  if ($current > $meter_config['max'])
+    $current = $meter_config['max'];
+  
+  // Establish image attributes
+  $image		= imagecreatetruecolor($meter_config['width'], $meter_config['height']);
+  $color_bg	= ImageColorAllocate($image, 255, 255, 255);
+  $color_fg   = ImageColorAllocate($image, $meter_config['bar_r'], $meter_config['bar_g'], $meter_config['bar_b']);
+  $color_text = ImageColorAllocate($image, 0, 0, 0);
+  $color_tick_left = ImageColorAllocate($image, 71, 173, 122);
+  $color_tick_right = ImageColorAllocate($image, 220, 220, 220);
+  $bar_width  = ($meter_config['width'] * $current) / $meter_config['max'];
+  
+  // Create while background
+  ImageFilledRectangle($image, 0, 0, $meter_config['width'], $meter_config['height'], $color_bg);
+  
+  // Draw bar
+  ImageFilledRectangle($image, 0, 0, $bar_width, $meter_config['height'], $color_fg);
+
+  // Outline the meter
+  ImageRectangle($image, 0, 0, $meter_config['width'] - 1, $meter_config['height'] - 1, $color_fg);
+  
+  // Add big ticks
+  $big_tick_width = ($meter_config['width'] / $meter_config['max']) * $meter_config['big_tick'];
+  for($x = 0; $x < $meter_config['width'] - 1; $x += $big_tick_width)
+  {
+    $color_tick = $color_tick_right;
+    if ($x < $bar_width)
+      $color_tick = $color_tick_left;
+    imageline($image, $x, 1, $x,  $meter_config['height'] - 2, $color_tick);
+  }
+
+  // Add small ticks
+  $big_tick_width = ($meter_config['width'] / $meter_config['max']) * $meter_config['small_tick'];
+  for($x = 0; $x < $meter_config['width']; $x += $big_tick_width)
+  {
+    $color_tick = $color_tick_right;
+    if ($x < $bar_width)
+      $color_tick = $color_tick_left;
+    imageline($image, $x, 5, $x,  $meter_config['height'] - 6, $color_tick);
+  }
+  
+  $text = _fundcore_meter_meterLocalizeFormat($real_current, $language);
+  
+  // Add the text
+  /*
+  if ($real_current == 1) {
+    $text = t('!count person has donated', array('!count' => number_format($real_current)));  
+  }
+  else {
+    $text = t('!count people have donated', array('!count' => number_format($real_current)));  
+  }
+  */
+  
+  $attr = imagettfbbox($meter_config['font_size'], 0, $meter_config['font_file'], $text);
+  $text_height = $attr[3] - $attr[7] - 2;
+  $text_width = $attr[2] - $attr[6];
+  
+  $text_left = $bar_width + 3;
+  $text_color = $color_text;
+  if ($text_left + $text_width >= $meter_config['width'] || $meter_config['force_right'])
+  {
+    $text_left = $meter_config['width'] - $text_width - 1;
+    if ($text_left + $text_width >= $meter_config['width']) {
+      $text_color = $color_bg;
+    }
+  }
+  
+  imagettftext($image, $meter_config['font_size'], 0, $text_left, $text_height, $text_color, $meter_config['font_file'], $text);
+  
+  return $image;
+}

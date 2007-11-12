@@ -1,0 +1,33 @@
+# Drupal - i18n update script
+#
+# updates i18n_tables from version 4.5 to 4.6
+#
+# Jose A. Reyero, 2005
+
+# 
+# Table: 'i18n_taxonomy_term'
+#
+CREATE TABLE `i18n_taxonomy_term` (
+  `trid` int(10) unsigned NOT NULL default '0',
+  `tid` int(11) NOT NULL default '0',  
+  PRIMARY KEY  (`trid`,`tid`)
+) TYPE=MyISAM; 
+
+# Populate i18n_taxonomy_term
+INSERT INTO i18n_taxonomy_term(trid, tid)
+SELECT trid, tid FROM term_data WHERE trid > 0;
+
+# Drop trid field from term_data
+ALTER TABLE `term_data` DROP `trid`;
+
+# Add language to vocabulary
+ALTER TABLE `vocabulary`
+ADD `language` varchar(12) NOT NULL default '';
+
+# Update!. Support for long locale name
+
+ALTER TABLE node 
+CHANGE language language varchar(12) NOT NULL default '';
+
+ALTER TABLE term_data
+CHANGE language language varchar(12) NOT NULL default '';

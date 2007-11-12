@@ -1,0 +1,107 @@
+<?php
+// $Id: i18nviews.module,v 1.1.2.5 2007/04/25 19:07:02 jareyero Exp $
+
+/**
+ * @file
+ * Views support for Internationalization (i18n) package
+ *
+ * This module uses i18n module namespace to add some views hooks
+ * 
+ * @author Jose A. Reyero, 2007
+ */
+
+/**
+ * Views integration
+ */
+function i18n_views_tables() {
+  $tables['i18n'] = array(
+    'name' => 'i18n_node',
+    'join' => array(
+      'left' => array(
+        'table' => 'node',
+        'field' => 'nid'
+      ),
+      'right' => array(
+        'field' => 'nid'
+      )
+    )
+  );
+  $tables['i18n']['fields']['language'] = array(
+   'name' => t('Internationalization: Language'),
+   'sortable' => true,
+   'handler' => 'i18n_views_handler_language',
+  );
+  $tables['i18n']['filters']['language'] = array(
+    'name' => t('Internationalization: Language'),
+    'list-type' => 'list',
+    'value-type' => 'array',
+    'list' => 'i18n_views_language_list',
+    'operator' => 'views_handler_operator_or',
+    'help' => t('Enabled languages for content.'),
+  );
+  $tables['i18n']['filters']['extlanguage'] = array(
+    'field' => 'language',
+    'name' => t('Internationalization: Language (extended)'),
+    'list-type' => 'list',
+    'value-type' => 'array',
+    'list' => 'i18n_views_language_list_all',
+    'operator' => 'views_handler_operator_or',
+    'help' => t('All defined languages for content.'),
+  );  
+  $tables['i18n']['filters']['selection'] = array(
+    'name' => t('Internationalization: Selection'),
+    'handler' => 'i18n_views_filter_handler',
+    'list-type' => 'select',
+    'operator' => array('=' => t('Is')),
+    'list' => '_i18n_selection_mode',
+    'help' => t('Content language.'),
+    'cacheable' => 'no' // This query condition cannot be cached
+  );
+  return $tables;
+}
+
+function i18n_views_language_list($a, $b){
+  return i18n_language_list();
+}
+function i18n_views_language_list_all($a, $b){
+  return i18n_language_list(TRUE);
+}
+function i18n_views_handler_language($fieldinfo, $fielddata, $value, $data) {
+  $languages = i18n_language_list(TRUE);
+  return $languages[$value];
+}
+
+/**
+ * Filter handler callback. Manages language selection mode
+ */
+function i18n_views_filter_handler($filterdata, $filterinfo, &$query) {
+  if ($filterdata == 'handler' && $filterinfo['field'] == 'i18n.selection' && $mode = $filterinfo['value']) {
+    // If this filter is used, rollback value set in pre_query and set the new one.
+    i18n_selection_mode('reset');
+    i18n_selection_mode($mode);
+  } 
+}
+/**
+ * Implementation of hook_views_pre_query().
+ * 
+ * Disable language conditions for views. This is called before filter handlers
+ */
+function i18n_views_pre_query(&$view) {
+  // If any language filter, the language selection mode will be 'off'
+  foreach($view->exposed_filter as $filter) {
+    if($filter['field'] == 'i18n.language') {
+      i18n_selection_mode('off');
+      return;
+    }
+  }
+  // If no filter, sets the one from settings for this view 
+  i18n_selection_mode(variable_get('i18n_selection_mode', 'simple'));
+}
+/**
+ * Implementation of hook_views_pre_view().
+ * 
+ * If used language selection filter, reset query rewriting again
+ */
+function i18n_views_pre_view(&$view, &$items) {
+  i18n_selection_mode('reset');
+}

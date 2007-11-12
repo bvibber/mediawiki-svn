@@ -1,0 +1,10 @@
+; $Id: macro.info,v 1.1.2.4 2007/06/13 19:41:05 dww Exp $
+name = Macro
+description = Allows administrators to record and playback form submissions.
+package = Development
+
+; Information added by drupal.org packaging script on 2007-10-21
+version = "5.x-1.x-dev"
+project = "devel"
+datestamp = "1192968157"
+

@@ -1,0 +1,5 @@
+name = Contribute
+description = Contributions system
+core = 5.x
+dependencies = fundcore
+package = Fundraising CORE

@@ -1,0 +1,11 @@
+<?php
+
+function exchange_rates_install() {
+  db_query("CREATE TABLE IF NOT EXISTS {exchange_rates} (
+      `currency` char(3) NOT NULL,
+      `value_in_usd` double NOT NULL default '0',
+      `bank_update` int(11) unsigned NOT NULL,
+      `local_update` int(11) unsigned NOT NULL,
+      PRIMARY KEY  (`bank_update`,`currency`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
+}

@@ -1,0 +1,33 @@
+<?php
+// $Id: i18ncontent.module,v 1.1.2.1 2007/02/11 15:45:22 jareyero Exp $
+
+/**
+ * @file
+ * Internationalization (i18n) package - translatable content type parameters
+ * 
+ * @author Jose A. Reyero, 2007
+ *
+ */
+
+/**
+ * Returns node types with translated info
+ */
+function i18ncontent_node_info() {
+  $type_result = db_query('SELECT nt.type, nt.* FROM {node_type} nt ORDER BY nt.type ASC', 'nt', 'type');
+  while ($type = db_fetch_object($type_result)) {
+    $type->name = tt('content_type_name:'.$type->type, $type->name);
+    $type->description = tt('content_type_description:'.$type->type, $type->description);
+    $info[$type->type] = (array)$type;
+  }
+
+  return $info;  
+}
+
+/**
+ * Blocks retrieving of normal content types
+ */
+function i18ncontent_db_rewrite_sql($query, $primary_table, $primary_key) {
+  if (preg_match("/SELECT nt\.type, nt\.\* FROM {node_type} nt/", $query)) {
+    return array('where' => 'FALSE');
+  }
+}

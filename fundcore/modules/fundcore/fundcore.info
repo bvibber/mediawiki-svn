@@ -1,0 +1,5 @@
+name = Fundraising CORE
+description = The central online reporting engine for fundraising.
+core = 5.x
+dependencies = exchange_rates pressflow_transaction
+package = Fundraising CORE

@@ -1,0 +1,7 @@
+<?php
+// $Id: i18ntaxonomy.install,v 1.1.2.1 2007/04/03 20:54:55 jareyero Exp $
+
+function i18ntaxonomy_install() {
+  // Set module weight
+  db_query("UPDATE {system} SET weight = 20 WHERE name = 'i18ntaxonomy' AND type = 'module'");
+}

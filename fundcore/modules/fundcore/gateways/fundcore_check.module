@@ -1,0 +1,64 @@
+<?php
+
+function fundcore_check_menu($may_cache) {
+  $items = array();
+  
+  if ($may_cache) {
+    $items[] = array(
+      'path' => 'admin/settings/fundcore_check',
+      'title' => t('Fundraising CORE Check'),
+      'callback' => 'drupal_get_form',
+      'callback arguments' => array('fundcore_check_settings'),
+      'access' => user_access('administer site configuration'),
+    );
+  }
+  
+  return $items;
+}
+
+function fundcore_check_contribution_form() {
+  $form = array();
+
+  $form['check'] = array(
+    '#type' => 'fieldset',
+    '#title' => '<big>' . t('Check (by mail)') . '</big>',
+    '#attributes' => array(
+      'style' => 'margin-right: 10px; width: 300px; height: 380px;',
+    )
+  );
+ 
+  $content = array();
+
+  $content[] = '<img style="display: block; margin-left: auto; margin-right: auto;" src="/sites/all/modules/fundcore/gateways/check.png" />';
+  $content[] = '<p><strong>' . t('Donate via regular mail.') . '</strong></p>';
+
+  $content[] = '<p>' . t('Please make the cheque payable to "!payable_to" To prevent theft, please do not send cash through the mail.',
+    array('!payable_to' => variable_get('fundcore_check_payable_to', ''))) . '</p>';
+
+  $content[] = '<p><strong>' . t('Our mailing address (for checks):') . '</strong></p>';
+
+  $content[] = variable_get('fundcore_check_address', '');
+  
+  $form['check'][] = array(
+    '#value' => implode("\n", $content),
+  );
+  return $form;
+}
+
+function fundcore_check_settings() {
+  $form = array();
+  
+  $form['fundcore_check_payable_to'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Payable to'),
+    '#default_value' => variable_get('fundcore_check_payable_to', ''),
+  );
+
+  $form['fundcore_check_address'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Address'),
+    '#default_value' => variable_get('fundcore_check_address', ''),
+  );
+  
+  return system_settings_form($form);
+}

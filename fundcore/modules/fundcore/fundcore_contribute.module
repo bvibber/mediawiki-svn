@@ -1,0 +1,35 @@
+<?php
+
+function fundcore_contribute_menu($may_cache) {
+  $items = array();
+  
+  if ($may_cache) {
+    $items[] = array(
+      'path' => 'fundcore_contribute',
+      'title' => t('Contribute'),
+      'access' => TRUE,
+      'callback' => 'fundcore_contribute_page',
+    );
+  }
+  
+  return $items;
+}
+
+function fundcore_contribute_page() {
+  $content = array();
+  
+  drupal_set_title(t('Contribute'));
+
+  $count = 0;
+  $content[] = '<table style="border: 0; padding: 10px;"><tr>';
+  foreach (module_implements('contribution_form') as $module) {
+    $content[] = '<td>' . drupal_get_form($module . '_contribution_form') . '</td>';
+    if ($count % 2 == 1) {
+      $content[] = '</tr><tr>';
+    }
+    ++$count;
+  }
+  $content[] = '</tr></table>';
+  
+  return implode("\n", $content);
+}

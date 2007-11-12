@@ -1,0 +1,138 @@
+<?php
+
+function fundcore_browse_menu($may_cache) {
+  $items = array();
+  
+  if ($may_cache) {
+    $items[] = array(
+      'path' => 'fundcore_browse',
+      'title' => t('Recent contributions'),
+      'access' => TRUE,
+      'callback' => 'fundcore_browse_recent_contributions_page',
+    );
+  }
+  
+  return $items;
+}
+
+function fundcore_browse_recent_contributions_page() {
+  $content = array();
+
+  $content[] = drupal_get_form('fundcore_browse_recent_contributions_filter_form');
+  $content[] = fundcore_browse_recent_contributions_listing();
+
+  return implode("\n", $content);
+}
+
+function fundcore_browse_recent_contributions_listing() {
+  $content = array();
+  
+  $args = _fundcore_browse_arguments();
+  
+  if ($args['comment']) {
+    $where .= ' AND comment <> "" ';
+  }
+  $sql = 'SELECT anonymous, name, original_currency, original_gross, gross, stored, comment FROM {fundcore_contribution} WHERE processed = 1 AND gross >= %f ' . $where . ' ORDER BY stored DESC';
+  $count = 'SELECT 10000';
+  $res = pager_query($sql, 25, 0, $count, $args['minimum']);
+  //$res = db_queryd($sql, $args['minimum']);
+
+	$cols = array();
+	
+	$cols[] = t('Name and Comment');
+	$cols[] = array('data' => t('Time (!timezone)', array('!timezone' => 'UTC')), 'style' => 'width: 60px;');
+	$cols[] = array('data' => t('Amount'), 'style' => 'text-align: right;');
+	$cols[] = array('data' => t('Equivalent in !currency', array('!currency' => 'USD')), 'style' => 'text-align: right;');
+
+  while ($row = db_fetch_object($res)) {
+    $name = t('Anonymous');
+    if (!$row->anonymous) {
+      $name = check_plain($row->name);
+    }
+    $name = '<strong>' . $name . '</strong>';
+
+		if ($row->comment != '')
+		{
+			$name .= '<br />' . check_plain($row->comment);
+		}
+    
+    $date = format_date($row->stored);
+    
+    /*
+    $interval = time() - $row->stored;
+    if ($interval < 60 * 60 * 24 * 7) {
+      $date = t('!time ago', array('!time' => format_interval($interval)));
+    }
+    */
+    
+		$trow = array();
+		$trow[] = array('data' => $name, 'style' => 'width: 300px');
+		$trow[] = array('data' => $date, 'style' => 'width: 180px;');
+		$trow[] = array('data' => check_plain($row->original_currency . ' ' . number_format($row->original_gross, 2)), 'style' => 'text-align: right;');
+		$trow[] = array('data' => check_plain('$' . number_format($row->gross, 2)), 'style' => 'text-align: right;');
+		$rows[] = $trow;
+  }
+  
+	if (count($rows) == 0)
+	{
+		return '<p>' . t('Sorry, there are no matching contributions.') . '</p>';
+	}
+  
+  $content[] = theme('table', $cols, $rows, array('style' => 'width: 100%;'));
+	$content[] = theme('pager', NULL, 25, 0);
+  return implode("\n", $content);
+}
+
+function _fundcore_browse_arguments() {
+  // TODO: Remove hardcoding
+  $args = array(
+    'comment' => 1,
+    'minimum' => 5,
+  );
+  
+  if (isset($_GET['minimum']) && !isset($_GET['comment'])) {
+    $args['comment'] = 0;
+  }
+  
+  return array_merge($args, $_GET);
+}
+
+function fundcore_browse_recent_contributions_filter_form() {
+  $form = array();
+  
+  $args = _fundcore_browse_arguments();
+  
+	$form['#method'] = 'GET';
+  $form['#redirect'] = FALSE;
+
+  $form['filter'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Filter contributions'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  
+  $form['filter']['minimum'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Minimum value (USD or equivalent)'),
+    '#default_value' => $args['minimum'],
+    '#required' => TRUE,
+  );
+
+  $comment = 0;
+  if (isset($_GET['filtered'])) {
+    $comment = $_GET['comment'];
+  }
+  $form['filter']['comment'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Only show contributions with comments'),
+    '#default_value' => $args['comment'],
+  );
+  
+  $form['filter'][] = array(
+    '#type' => 'submit',
+    '#value' => t('View results'),
+  );
+  
+  return $form;
+}

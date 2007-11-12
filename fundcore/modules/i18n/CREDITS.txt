@@ -1,0 +1,27 @@
+Drupal module created by Jose A. Reyero, <drupal at reyero dot net>
+
+My website http://freelance.reyero.net, it uses this module.
+
+** Some code taken from Walkah's translate_node module, from the sandbox.
+
+DEVELOPERS
+----------
+Jose A. Reyero
+Karoly Negyesi
+
+CONTRIBUTORS
+Code & Documentation
+------------
+Ber Kessels
+bartvb
+Rich Cowan
+Jonathan Lane
+Marcin Konicki
+jsaints
+
+Flags
+-----
+Gabor Suveg
+Jens Herden
+Jarno Elonen
+Jim Tittsler

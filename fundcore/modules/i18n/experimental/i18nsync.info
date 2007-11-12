@@ -1,0 +1,10 @@
+; $Id: i18nsync.info,v 1.1.2.1 2007/02/11 15:45:22 jareyero Exp $
+name = Synchronization
+description = Synchronizes translations
+version = "$Name: DRUPAL-5--2-1 $"
+dependencies = i18n translation
+package = Multilanguage - i18n - experimental
+; Information added by drupal.org packaging script on 2007-05-06
+version = "5.x-2.1"
+project = "i18n"
+

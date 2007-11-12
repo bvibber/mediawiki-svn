@@ -1,0 +1,11 @@
+name = Transaction
+description = Provides an API for nested SQL transactions.
+version = 1.0
+package = PressFlow
+version = "5.x-1.0"
+
+; Information added by drupal.org packaging script on 2007-06-04
+version = "5.x-1.1"
+project = "pressflow_transaction"
+datestamp = "1180945809"
+

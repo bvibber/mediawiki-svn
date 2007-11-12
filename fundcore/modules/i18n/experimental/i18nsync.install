@@ -1,0 +1,8 @@
+<?php
+/**
+ * Set module weight
+ * Make sure this runs after taxonomy, i18n and translation modules
+ */
+function i18nsync_install() {
+  db_query("UPDATE {system} SET weight = 10 WHERE name = 'i18nsync' AND type = 'module'");
+}

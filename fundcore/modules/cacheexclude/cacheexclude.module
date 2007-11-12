@@ -1,0 +1,53 @@
+<?php
+//$Id: cacheexclude.module,v 1.3.2.2 2007/04/11 21:18:33 crell Exp $
+
+function cacheexclude_menu($may_cache) {
+  $items[] = array(
+    'path' => 'admin/settings/cacheexclude',
+    'title' => 'Cache Exclude',
+    'description' => t('Configure pages to exclude from caching.'),
+    'callback' => 'drupal_get_form',
+    'callback arguments' => array('cacheexclude_admin_settings'),
+    'access' => user_access('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+function cacheexclude_admin_settings() {
+  $form['cacheexclude_list'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Pages to exclude from caching'),
+    '#default_value' => variable_get('cacheexclude_list', ''),
+    '#width' => 40,
+    '#height' => 10,
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * Implementation of hook_exit().
+ */
+function cacheexclude_exit($destination = NULL) {
+  global $base_root;
+
+  if ($destination == NULL) {
+    $pages = trim(variable_get('cacheexclude_list', ''));
+    if (strlen($pages) == 0) {
+      return;
+    }
+    else {
+      $pages = explode("\n", variable_get('cacheexclude_list', ''));
+      $this_page = request_uri();
+      foreach ($pages as $page) {
+        $page = trim($page);
+        if ($page && strstr($this_page, $page) !== false ) {
+          cache_clear_all($base_root . $this_page, 'cache_page');
+          return;
+        }
+      }
+    }
+  }
+}

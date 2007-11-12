@@ -1,0 +1,156 @@
+<?php
+// $Id: ttext.module,v 1.1.2.1 2007/02/11 15:45:22 jareyero Exp $
+
+/**
+ * @file
+ * Defines simple ttext field types.
+ */
+
+/**
+ * Implementation of hook_field_info().
+ */
+function ttext_field_info() {
+  return array(
+    'ttext' => array('label' => 'Translatable Text'),
+  );
+}
+
+/**
+ * Implementation of hook_field_settings().
+ */
+function ttext_field_settings($op, $field) {
+  //drupal_set_message("DEBUG: ttext_field_settings op=$op");
+  switch ($op) {
+    case 'database columns':
+      return;
+    default:
+      return text_field_settings($op, $field);
+  }
+}
+
+/**
+ * Implementation of hook_field().
+ */
+function ttext_field($op, &$node, $field, &$node_field, $teaser, $page) {
+  $fieldname = $field['field_name'];
+  //drupal_set_message("DEBUG: ttext_field $op, name = $fieldname");
+  switch ($op) {
+    case 'validate':
+      return text_field($op, $node, $field, $node_field, $teaser, $page);
+    case 'update':
+      foreach($node_field as $delta => $item) {
+        db_query("DELETE FROM {node_data_field_ttext} WHERE nid = %d AND vid = %d AND name = '%s' AND language = '%s' AND delta = %d", $node->nid, $node->vid, $fieldname, i18n_get_lang(), $delta);
+      }
+      //db_query("UPDATE {node_data_field_ttext} SET value = '%s' WHERE nid = %d AND vid = %d AND name = '%s' AND language = '%s' AND delta = %d", $value, $node->nid, $node->vid, $fieldname, i18n_get_lang(), $delta);
+      // Intentional no break    
+    case 'insert':
+      foreach($node_field as $delta => $item) {
+        db_query("INSERT INTO {node_data_field_ttext}(nid, vid, name, language, delta, value) VALUES(%d, %d, '%s', '%s', %d, '%s')", $node->nid, $node->vid, $fieldname, i18n_get_lang(), $delta, $item['value']);
+      }
+      break;
+
+    case 'load':
+      $result = db_query("SELECT delta, value FROM {node_data_field_ttext} WHERE nid = %d AND vid = %d AND name = '%s' AND language = '%s' AND delta = %d", $node->nid, $node->vid, $fieldname, i18n_get_lang());
+      while($data = db_fetch_object($result)) {
+        $node_field[$data->delta]['value'] = $data->value;
+      }
+      return array($fieldname => $node_field);
+    case 'delete':
+      break;
+  }
+}
+
+/**
+ * Implementation of hook_field_formatter_info().
+ */
+/**
+ * Implementation of hook_field_formatter_info().
+ */
+function ttext_field_formatter_info() {
+  return array(
+    'default' => array(
+      'label' => 'Default',
+      'field types' => array('ttext'),
+    ),
+    'plain' => array(
+      'label' => 'Plain text',
+      'field types' => array('ttext'),
+    ),
+    'trimmed' => array(
+      'label' => 'Trimmed',
+      'field types' => array('ttext'),
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_field_formatter().
+ *
+ * The $node argument is necessary so that filter access can be checked on
+ * node preview.
+ */
+function ttext_field_formatter($field, $item, $formatter, $node) {
+  drupal_set_message('ttext_field_formatter: '. $item['value']);
+  if (!isset($item['value'])) {
+    return '';
+  }
+
+  if ($allowed_values = ttext_allowed_values($field)) {
+    return $allowed_values[$item['value']];
+  }
+
+  if ($field['ttext_processing']) {
+    $ttext = check_markup($item['value'], $item['format'], is_null($node) || isset($node->in_preview));
+  }
+  else {
+    $ttext = check_plain($item['value']);
+  }
+
+  switch ($formatter) {
+    case 'plain':
+      return strip_tags($ttext);
+
+    case 'trimmed':
+      return node_teaser($ttext, $field['ttext_processing'] ? $item['format'] : NULL);
+
+    default:
+      return $ttext;
+  }
+}
+
+
+/**
+ * Implementation of hook_widget_info().
+ */
+function ttext_widget_info() {
+  return array(
+    'ttext' => array(
+      'label' => 'Translatable Text Field',
+      'field types' => array('ttext'),
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_widget_settings().
+ */
+function ttext_widget_settings($op, $widget) {
+  drupal_set_message("ttext_widget_settings: $op");
+  return text_widget_settings($op, $widget);
+}
+
+
+/**
+ * Implementation of hook_widget().
+ */
+function ttext_widget($op, &$node, $field, &$items) {
+  drupal_set_message("ttext_widget: op=$op");
+  return text_widget($op, &$node, $field, &$items);
+}
+
+/**
+ *  Create an array of the allowed values for this field
+ */
+function ttext_allowed_values($field) {
+  return text_allowed_values($field);
+}

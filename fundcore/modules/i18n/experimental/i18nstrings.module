@@ -1,0 +1,140 @@
+<?php
+// $Id: i18nstrings.module,v 1.1.2.1 2007/02/11 15:45:22 jareyero Exp $
+
+/**
+ * @file
+ * Internationalization (i18n) package - translattable strings
+ * 
+ * @author Jose A. Reyero, 2007
+ *
+ */
+
+/**
+ * Implementation of hook_menu().
+ */
+function i18nstrings_menu($may_cache) {
+  $items = array();
+  if ($may_cache) {
+    $items[] = array(
+      'path' => 'admin/settings/i18n/strings',
+      'type' => MENU_LOCAL_TASK,
+      'title' => t('Strings'),
+      'description' => t('Translatable strings.'),
+      'callback' => 'i18nstrings_admin',
+       'access' => user_access('administer site configuration'),
+      );
+  } else {   
+
+  }
+
+  return $items;
+}
+
+/**
+ * Menu callback. Administration page
+ */
+function i18nstrings_admin($op = NULL, $strid = NULL) {
+  switch($op) {
+    case 'edit':
+      return drupal_get_form('i18nstrings_admin_form', $strid);
+    default:
+      return i18nstrings_admin_overview();
+  }
+}
+
+/**
+ * List of strings
+ */
+function i18nstrings_admin_overview() {
+  $output = '';
+  $header = array(t('String Id'), t('Default'), '');
+  $result = db_query("SELECT DISTINCT(strid) FROM {i18n_strings} ORDER BY strid", i18n_default_language());
+  $rows = array();
+  while($str = db_fetch_object($result)) {
+    $rows[] = array(
+      $str->strid, 
+      tt($str->strid), 
+      l(t('edit'), 'admin/settings/i18n/strings/edit/'.$str->strid)
+    );
+  }
+  $output .= theme('table', $header, $rows);
+  return $output;
+}
+
+/**
+ * Form callback: i18nstrings_admin_form
+ */
+function i18nstrings_admin_form($strid) {
+  $strings = i18nstrings_load($strid);
+  $form['strid'] = array('#type' => 'value', '#value' => $strid);
+  $form['languages'] = array('#type' => 'fieldset', '#tree' => TRUE, '#title' => t('Translations'));
+
+  // Approximate the number of rows in a textfield with a maximum of 10.
+  $default = i18nstrings_get_string($strid, i18n_default_language());
+  $rows = min(ceil(str_word_count($default) / 12), 10);
+  
+  foreach (i18n_supported_languages() as $language => $name) {
+    $form['languages'][$language] = array(
+      '#type' => 'textarea',
+      '#rows' => $rows,
+      '#title' => $name,
+      '#default_value' => i18nstrings_get_string($strid, $language)
+    );
+  }
+  $form['submit'] = array('#type' => 'submit', '#value' => t('Save'));
+  return $form;
+}
+
+/**
+ * Form submit callback
+ */
+function i18nstrings_admin_form_submit($form_id, $form_values) {
+  $strid = $form_values['strid'];
+  foreach (i18n_supported_languages() as $language => $name) {
+    i18nstrings_save_string($strid, $language, $form_values['languages'][$language]);
+  }
+  drupal_set_message(t('The strings have been updated'));
+  return 'admin/settings/i18n/strings';
+}
+
+/**
+ * Load string translations
+ */
+function i18nstrings_load($strid) {
+  $strings = array();
+  $result = db_query("SELECT * FROM {i18n_strings} WHERE strid = '%s'", $strid);
+  while ($str = db_fetch_object($result)) {
+    $strings[$str->locale] = $str->text;
+  }
+}
+
+/**
+ * Get string for a language
+ */
+function i18nstrings_get_string($strid, $language) {
+  return db_result(db_query("SELECT text FROM {i18n_strings} WHERE strid = '%s' AND locale = '%s'", $strid, $language));
+}
+
+/**
+ * Save string for a language
+ */
+function i18nstrings_save_string($strid, $language, $value) {
+  drupal_set_message("DEBUG: i18n_strings_save: $strid($language)= $value");
+  db_query("DELETE FROM {i18n_strings} WHERE strid = '%s' AND locale = '%s'", $strid, $language);
+  db_query("INSERT INTO {i18n_strings}(strid, locale, text) VALUES('%s', '%s', '%s')", $strid, $language, $value);
+}
+ 
+/**
+ * Translate configurable string
+ */
+function tt($strid, $default = NULL, $language = NULL) {
+  $language = $language ? $language : i18n_get_lang();
+  if ($translation = i18nstrings_get_string($strid, $language)) {
+    return $translation;
+  } elseif ($default) {
+    i18nstrings_save_string($strid, $language, $default);
+    return $default;
+  } elseif ($language != i18n_default_language() && $translation = i18nstrings_get_string($strid, i18n_default_language())) {
+    return $translation;
+  } 
+}

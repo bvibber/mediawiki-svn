@@ -1,0 +1,87 @@
+<?php
+// $Id: i18nblocks.install,v 1.1.2.2 2007/05/03 09:34:34 jareyero Exp $
+
+/**
+ * Implementation of hook_install().
+ */
+function i18nblocks_install() {
+  switch ($GLOBALS['db_type']) {
+    case 'mysql':
+    case 'mysqli':
+      db_query("CREATE TABLE {i18n_blocks} (
+  `delta` varchar(32) NOT NULL default '0',
+  `info` varchar(64) NOT NULL default '',
+  `type` varchar(64) NOT NULL default '',
+  `param` int(10) NOT NULL default '0',
+  PRIMARY KEY  (`delta`)
+) /*!40100 DEFAULT CHARACTER SET UTF8 */ ");
+
+      db_query("CREATE TABLE {i18n_blocks_i18n} (
+  `bid` int(10) NOT NULL auto_increment,
+  `language` varchar(12) NOT NULL default '',
+  `module` varchar(64) NOT NULL default '',
+  `delta` varchar(32) NOT NULL default '0',
+  PRIMARY KEY  (`bid`,`language`)
+) /*!40100 DEFAULT CHARACTER SET UTF8 */ ");
+      break;
+    case 'pgsql':
+      db_query("CREATE TABLE {i18n_blocks} (
+ delta varchar(32) NOT NULL DEFAULT '0',
+ info varchar(64) NOT NULL DEFAULT '',
+ type varchar(64) NOT NULL DEFAULT '',
+ param int4 NOT NULL DEFAULT 0,
+ PRIMARY KEY (delta))");
+      db_query("CREATE TABLE {i18n_blocks_i18n} (
+ bid serial4 NOT NULL,
+ language varchar(12) NOT NULL DEFAULT '',
+ module varchar(64) NOT NULL DEFAULT '',
+ delta varchar(32) NOT NULL DEFAULT '0',
+ PRIMARY KEY (bid,language))");
+      break;
+  }
+  db_query("UPDATE {system} SET weight = 20 WHERE name = 'i18nblocks' AND type = 'module'");
+}
+
+/**
+ * Update: move old variable to new tables
+ */
+
+function i18nblocks_update_1() {
+  $ret = array();
+  require_once drupal_get_path('module', 'i18nblocks').'/i18nblocks.module';
+  require_once drupal_get_path('module', 'i18n').'/i18n.module';
+  // Create the tables if updating from previous version
+  i18nblocks_install();
+  // Move old data from variables into new tables
+  $languages = i18n_supported_languages();
+  if($number = variable_get('i18nblocks_number', 0)) {
+    for($delta = 1; $delta <= $number; $delta++) {
+      if ($block = variable_get('i18nblocks_'.$delta, NULL)) {
+        $update = update_sql("INSERT INTO {i18n_blocks}(delta) VALUES('".db_escape_string($delta)."')");
+        $ret[] = $update;
+        $metablock = array();
+        if ($update['success']) {
+          $metablock['delta'] = $delta;
+        }
+        $metablock['info'] = isset($block['name']) ? $block['name'] : '';
+        $metablock['i18nblocks'] = array();
+        foreach(array_keys($languages) as $lang) {
+          if(isset($block[$lang]) && isset($block[$lang]['module']) && isset($block[$lang]['delta'])) {
+            $metablock['i18nblocks'][$lang] = $block[$lang]['module'].':'.$block[$lang]['delta'];
+          }
+        }
+      }
+      i18nblocks_save($metablock);
+    }
+    drupal_set_message('The i18nblocks have been updated. Please, review your block settings.');
+  }
+  return $ret;
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function i18nblocks_uninstall() {
+  db_query('DROP TABLE {i18n_blocks}');
+  db_query('DROP TABLE {i18n_blocks_i18n}');  
+}

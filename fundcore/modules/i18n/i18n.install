@@ -1,0 +1,139 @@
+<?php
+// $Id: i18n.install,v 1.9.2.5 2007/05/03 09:34:34 jareyero Exp $
+/**
+ * Set language field in its own table
+ * Do not drop node.language now, just in case
+ * TO-DO: Drop old tables, fields
+ */
+function i18n_install() {
+  switch ($GLOBALS['db_type']) {
+    case 'mysql':
+    case 'mysqli':
+      db_query("CREATE TABLE {i18n_node} (
+        nid int(11) unsigned NOT NULL ,
+        trid int(10) unsigned NOT NULL default '0',
+        language VARCHAR(12) NOT NULL default '',  
+        status smallint(6) NOT NULL default '0',
+        PRIMARY KEY (nid) 
+      ) /*!40100 DEFAULT CHARACTER SET UTF8 */");
+      db_query("ALTER TABLE {term_data}
+        ADD language varchar(12) NOT NULL default '',
+        ADD trid int(10) unsigned NOT NULL default '0'
+      ");
+      db_query("ALTER TABLE {vocabulary}
+        ADD language varchar(12) NOT NULL default ''
+      ");
+      db_query("CREATE TABLE {i18n_variable} (
+        name varchar(48) NOT NULL default '',
+        language varchar(12) NOT NULL default '',
+        value longtext NOT NULL,
+        PRIMARY KEY (name, language)
+      ) /*!40100 DEFAULT CHARACTER SET UTF8 */ ");
+      db_query("ALTER TABLE {menu} 
+        ADD language VARCHAR(12) NOT NULL default ''
+      ");
+      break;
+   
+    case 'pgsql':
+      db_query("CREATE TABLE {i18n_node} (
+        nid integer NOT NULL default '0', 
+        trid integer NOT NULL default '0',
+        language varchar(12) NOT NULL default '',
+        status smallint NOT NULL default '0',
+        PRIMARY KEY  (nid)
+      )");
+      db_query("CREATE TABLE {i18n_variable} (
+        name varchar(48) NOT NULL default '',
+        language varchar(12) NOT NULL default '',
+        value text NOT NULL,
+        PRIMARY KEY (name, language)
+      )");
+      db_query("ALTER TABLE {term_data} ADD language varchar(12)");
+      db_query("UPDATE {term_data} SET language=''");
+      db_query("ALTER TABLE {term_data} ALTER COLUMN language SET NOT NULL");
+      db_query("ALTER TABLE {term_data} ALTER COLUMN language SET DEFAULT ''");
+
+      db_query("ALTER TABLE {term_data} ADD trid integer");
+      db_query("UPDATE {term_data} SET trid='0'");
+      db_query("ALTER TABLE {term_data} ALTER COLUMN trid SET NOT NULL");
+      db_query("ALTER TABLE {term_data} ALTER COLUMN trid SET DEFAULT '0'");
+            
+      db_query("ALTER TABLE {vocabulary} ADD language varchar(12)");
+      db_query("UPDATE {vocabulary} SET language=''");
+      db_query("ALTER TABLE {vocabulary} ALTER COLUMN language SET NOT NULL");
+      db_query("ALTER TABLE {vocabulary} ALTER COLUMN language SET DEFAULT ''");
+           
+      db_query("ALTER TABLE {menu} ADD language varchar(12)");
+      db_query("UPDATE {menu} SET language=''");
+      db_query("ALTER TABLE {menu} ALTER COLUMN language SET NOT NULL");
+      db_query("ALTER TABLE {menu} ALTER COLUMN language SET DEFAULT ''");
+           
+      // Sequences
+      db_query("CREATE SEQUENCE {i18n_node}_trid_seq INCREMENT 1 START 1");
+      db_query("CREATE SEQUENCE {term_data}_trid_seq INCREMENT 1 START 1");
+      
+  }
+  // Set module weight for it to run after core modules
+  db_query("UPDATE {system} SET weight = -10 WHERE name = 'i18n' AND type = 'module'");
+  db_query("UPDATE {system} SET weight = 10 WHERE name = 'translation' AND type = 'module'");
+}
+
+/**
+ *  Drupal 4.7 updates 
+ **/ 
+function i18n_update_1() {
+  $items = array();
+  $items[] = update_sql("ALTER TABLE {i18n_node} ADD language VARCHAR(12)");
+  $items[] = update_sql("UPDATE {i18n_node} i INNER JOIN {node} n ON i.nid = n.nid SET i.language = n.language ");
+  $items[] = update_sql("INSERT INTO {i18n_node}(nid,language) SELECT n.nid, n.language FROM {node} n LEFT JOIN {i18n_node} i ON n.nid = i.nid WHERE n.language != '' AND i.nid IS NULL");
+  return $items;
+}
+
+function i18n_update_2() {
+  $items = array();
+  $items[] = update_sql("ALTER TABLE {term_data} ADD trid int(10) unsigned NOT NULL default '0'");
+  $items[] = update_sql("UPDATE {term_data} t INNER JOIN {i18n_taxonomy_term} i ON i.tid = t.tid SET t.trid = i.trid");
+  return $items;
+}
+
+function i18n_update_3(){
+  $items = array();
+  $items[] = update_sql("ALTER TABLE {i18n_node} MODIFY COLUMN trid INTEGER UNSIGNED NOT NULL default '0', DROP PRIMARY KEY, ADD PRIMARY KEY(nid)");
+  $items[] = update_sql("ALTER TABLE {term_data} MODIFY COLUMN trid INTEGER UNSIGNED NOT NULL default '0', DROP PRIMARY KEY, ADD PRIMARY KEY(tid)");
+  return $items;
+}
+
+function i18n_update_4(){
+  $items[] = update_sql("CREATE TABLE {i18n_variable} (
+        name varchar(48) NOT NULL default '',
+        language varchar(12) NOT NULL default '',
+        value longtext NOT NULL,
+        PRIMARY KEY (name, language)
+      )");
+  return $items;
+}
+
+/**
+ * Drupal 5 updates
+ */
+// Multilingual menu items
+function i18n_update_5(){
+  $items[] = update_sql("ALTER TABLE {menu} ADD language VARCHAR(12) NOT NULL default ''");
+  return $items; 
+}
+// Module weithgts
+function i18n_update_6(){
+  // Old module weights. Caused some trouble with other modules. 
+}
+// Redefinition of module weights
+function i18n_update_7(){
+  $items[] = update_sql("UPDATE {system} SET weight = -10 WHERE name = 'i18n' AND type = 'module'");
+  $items[] = update_sql("UPDATE {system} SET weight = 10 WHERE name = 'translation' AND type = 'module'");
+  return $items;
+}
+// Update tables to utf8
+function i18n_update_8(){
+  return _system_update_utf8(array('i18n_variable'));
+}
+
+?>

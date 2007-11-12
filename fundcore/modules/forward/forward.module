@@ -1,0 +1,717 @@
+<?php
+/* $Id: forward.module,v 1.30.2.28 2007/10/13 17:41:39 seanr Exp $ */
+
+include(drupal_get_path('module', 'forward') .'/forward.theme');
+
+/**
+ * Forward This Page Module
+ * NGP Software
+ *
+ * Written by Peter Feddo & Sean Robertson
+ * Some code borrowed from Nick White's EmailPage module
+ * Updated for Drupal 4.7
+ *
+ * http://www.ngpsystems.com
+ *
+ * Customized by development seed
+ * http://www.developmentseed.org
+ */
+
+/**
+ * Permissions
+ */
+function forward_perm() {
+  return array('access forward', 'administer forward');
+}
+
+/**
+ * Menu Hooks
+ */
+function forward_menu($may_cache) {
+  $items = array();
+  if ($may_cache) {
+    $items[] = array(
+      'path'     => 'epostcard',
+      'title'    => variable_get('forward_epostcard_title', t('Send an e-Postcard')),
+      'callback' => 'drupal_get_form',
+      'callback arguments' => array('forward_form'),
+      'access'   => (user_access('access forward')),
+      'type'     => MENU_CALLBACK
+    );
+    $items[] = array(
+      'path'     => 'admin/logs/forward',
+      'description'  => 'Track forwarded posts',
+      'title'    => t('Forward tracking'),
+      'callback' => 'forward_tracking',
+      'access'   => (user_access('administer forward')),
+    );
+    // 5.x admin menu
+    $items[] = array(
+      'path'    => 'admin/settings/forward',
+      'description' => t('Configure settings for forward module.'),
+      'title'    => t('Forward'),
+      'callback'  => 'drupal_get_form',
+      'callback arguments'  => array('forward_admin_settings'),
+      'access'  => user_access('administer forward'),
+      'type'    => MENU_NORMAL_ITEM
+    );
+  }
+  else {
+    if (is_numeric($arg1 = arg(1))) {
+      $items[] = array(
+        'path'     => 'forward',
+        'title'    => variable_get('forward_page_title', t('Forward this page')),
+        'callback' => 'drupal_get_form',
+        'callback arguments' => array('forward_form', $arg1, FALSE),
+        'access'   => (user_access('access forward')) && node_access('view', node_load($arg1)),
+        'type'     => MENU_CALLBACK
+      );
+    } else if (is_numeric($arg2 = arg(2))) {
+      $items[] = array(
+        'path'     => 'forward/emailref',
+        'title'    => t('Track email clickthrus'),
+        'callback' => 'forward_tracker',
+        'callback arguments' => array($arg2),
+        'access'   => (user_access('access content')) && node_access('view', node_load($arg2)),
+        'type'     => MENU_CALLBACK
+      );
+    } else {
+      $items[] = array(
+        'path'     => 'forward/emailref',
+        'title'    => t('Track email clickthrus'),
+        'callback' => 'forward_tracker',
+        'access'   => (user_access('access content')),
+        'type'     => MENU_CALLBACK
+      );
+    }
+  };
+  return $items;
+}
+
+/**
+ * Administration Page
+ */
+function forward_admin_settings() {
+  global $base_url;
+
+  $host=parse_url($base_url);
+
+  // Administrative Options
+  $form['forward_options'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Administrative Options'),
+    '#collapsible' => true,
+    '#collapsed' => false
+  );
+  $form['forward_options']['forward_link_type'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Use Node Type in Link'),
+    '#return_value' => 1,
+    '#default_value' => variable_get('forward_link_type', false),
+    '#description' => t('If checked, the link will read &quot;email this <em>nodetype</em>&quot;; if not, it will just read &quot;email this page&quot;'),
+  );
+  $form['forward_options']['forward_show_teasers'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show Forward on teasers'),
+    '#return_value' => 1,
+    '#default_value' => variable_get('forward_show_teasers', false),
+    '#description' => t('If checked, the link/form will appear on teasers in lists of nodes'),
+  );
+  $form['forward_options']['forward_form_type'] = array(
+    '#type' => 'select',
+    '#title' => t('Form Type'),
+    '#default_value' => variable_get('forward_form_type', 'link'),
+    '#options' => array('link' => 'link', 'form' => 'form'),
+    '#description' => t('Select link for a forward this page link or form to use a collapsible forwarding form.'),
+  );
+  $form['forward_options']['forward_flood_control'] = array(
+    '#type' => 'select',
+    '#title' => t('Flood Control Limit'),
+    '#default_value' => variable_get('forward_flood_control', 10),
+    '#options' => array('1' => '1', '5' => '5', '10' => '10', '15' => '15', '20' => '20', '25' => '25', '30' => '30', '35' => '35', '40' => '40', '50' => '50'),
+    '#description' => t('How many times a user can use the form in a one hour period. This will help prevent the forward module from being used for spamming.'),
+  );
+  $form['forward_options']['forward_flood_error'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Flood Control Error'),
+    '#default_value' => variable_get('forward_flood_error', t('You can\'t send more than !number messages per hour. Please try again later.')),
+    '#cols' => 40,
+    '#rows' => 10,
+    '#description' => t('This text appears if a user exceeds the flood control limit.  The value of the flood control limit setting will appear in place of %number in the message presented to users'),
+  );
+
+  // Page Text Values
+  $form['forward_text_values'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Page Text Values'),
+    '#collapsible' => true,
+    '#collapsed' => false
+  );
+  $form['forward_text_values']['forward_instructions'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Forward Instructions'),
+    '#default_value' => variable_get('forward_instructions', '<p>'. t('Thank you for your interest in spreading the word on') .' '. variable_get('site_name', 'drupal') .'.</p><p>'. t('NOTE: We only request your email address so that the person you are recommending the page to knows that you wanted them to see it, and that it is not junk mail. We do not capture any email address.') .'</p>'),
+    '#cols' => 40,
+    '#rows' => 10,
+    '#description' => t('This message will be displayed above the form.'),
+  );
+  $form['forward_text_values']['forward_thankyou'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Thank You Message'),
+    '#default_value' => variable_get('forward_thankyou', t('Thank you for your help in spreading the word about') .' '. variable_get('site_name', 'drupal') .'. '. t('We appreciate your help.')),
+    '#cols' => 40,
+    '#rows' => 10,
+    '#description' => t('This message will be displayed after the user successfully submits the form.'),
+  );
+
+  // Forward Form Default Values
+  $form['forward_default_values'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Forward Form Default Values'),
+    '#collapsible' => true,
+    '#collapsed' => false
+  );
+  $form['forward_default_values']['forward_sender_addy'] = array(
+    '#type' => 'textfield',
+    '#title' => t('From Address'),
+    '#default_value' => variable_get('forward_sender_addy', 'NoReply@'. $host['host']),
+    '#size' => 40,
+    '#maxlength' => 40,
+    '#description' => t('The address to send from.  Should be a functioning email address.'),
+  );
+  $form['forward_default_values']['forward_header_image'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Header Image for Email'),
+    '#default_value' => variable_get('forward_header_image', ''),
+    '#size' => 40,
+    '#maxlength' => 256,
+    '#description' => t('Enter the URL of the image to as a logo at the top of forwarded pages.'),
+    '#attributes' => false,
+  );
+  $form['forward_default_values']['forward_page_title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Forward Page Title'),
+    '#default_value' => variable_get('forward_page_title', t('Forward this page')),
+    '#size' => 40,
+    '#maxlength' => 256,
+    '#description' => t('Title to display above the Forward page form'),
+  );
+  $form['forward_default_values']['forward_emailsubject'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Forward Message Subject'),
+    '#default_value' => variable_get('forward_emailsubject', t('!name has forwarded a page to you from !site')),
+    '#size' => 40,
+    '#maxlength' => 256,
+    '#description' => t('Email subject line.  The sender\'s name will appear in place of !name in the subject.  The web site name will be inserted in place of !site.'),
+  );
+  $form['forward_default_values']['forward_emailmessage'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Forward Message Body'),
+    '#default_value' => variable_get('forward_emailmessage', t('!name thought you would like to see this page from the !site web site.')),
+    '#cols' => 40,
+    '#rows' => 10,
+    '#description' => t('Email message body.  The sender\'s name will appear in place of !name in the message body.  The web site name will be inserted in place of !site.  The sender will be able to add their own message after this.'),
+  );
+  $form['forward_default_values']['forward_epostcard_title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Forward e-Postcard Title'),
+    '#default_value' => variable_get('forward_epostcard_title', t('Send an e-Postcard')),
+    '#size' => 40,
+    '#maxlength' => 256,
+    '#description' => t('Title to display above the Forward page form'),
+  );
+  $form['forward_default_values']['forward_postcardsubject'] = array(
+    '#type' => 'textfield',
+    '#title' => t('e-Postcard Message Subject'),
+    '#default_value' => variable_get('forward_postcardsubject', t('!name has sent you an e-postcard from !site')),
+    '#size' => 40,
+    '#maxlength' => 256,
+    '#description' => t('Postcard subject line.  The sender\'s name will appear in place of !name in the subject.  The web site name will be inserted in place of !site.'),
+  );
+  $form['forward_default_values']['forward_postcardmessage'] = array(
+    '#type' => 'textarea',
+    '#title' => t('e-Postcard Message Body'),
+    '#default_value' => variable_get('forward_postcardmessage', t('!name has sent you an e-postcard from the !site web site.  Please take a moment to visit our web site.')),
+    '#cols' => 40,
+    '#rows' => 10,
+    '#description' => t('Postcard message body.  The sender\'s name will appear in place of !name in the message body.  The web site name will be inserted in place of !site.  The sender will be able to add their own message after this.'),
+  );
+  $form['forward_default_values']['forward_ad_footer'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Oranization Ad'),
+    '#default_value' => variable_get('forward_ad_footer', " "),
+    '#cols' => 40,
+    '#rows' => 10,
+    '#description' => t('This message will be just above the footer message in the email.'),
+  );
+  $form['forward_default_values']['forward_footer'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Footer Message'),
+    '#default_value' => variable_get('forward_footer', " "),
+    '#cols' => 40,
+    '#rows' => 4,
+    '#description' => t('This message will be postpended as a footer message to the email.'),
+  );
+  $dyn_options = array(
+    'node' => t('Latest Blog Articles'),
+    'user' => t('Latest Users'),
+    'comment' => t('Latest Comments'),
+    'popular' => t('Most Popular Content'),
+    'none' => t('None')
+  );
+  $form['forward_default_values']['forward_dynamic_block'] = array(
+    '#type' => 'radios',
+    '#title' => t('Dynamic Block'),
+    '#default_value' => variable_get('forward_dynamic_block', 'none'),
+    '#options' => $dyn_options,
+    '#description' => t('Choose the dynamic block to send with these emails'),
+    '#required' => true,
+    '#attributes' => null,
+  );
+  return system_settings_form($form);
+}
+
+/**
+ * Email Tracker
+ */
+function forward_tracker($nid = 'postcard') {
+  db_query("INSERT INTO {forward_log} (nid, type, timestamp) VALUES ('%d', '%s', %d)", $nid, 'REF', time());
+  if ($nid == 'postcard') {
+    drupal_goto(drupal_get_path_alias(''));
+  }
+  else {
+    drupal_goto(drupal_get_path_alias('node/'. $nid));
+  }
+}
+
+/**
+ * Form
+ */
+function forward_form($nid = null, $nodeapi = FALSE) {
+  global $base_url, $user;
+
+  $form = array();
+
+  if ($nid != '') {
+    $emailtype = 'email';
+    $form['node'] = array('#type' => 'value', '#value' => node_load((int)$nid));
+  }
+  else {
+    $emailtype = 'postcard';
+  }
+  
+  if ($nodeapi == TRUE) {
+    $form['message'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Forward this page to a friend'),
+      '#description' => '',
+      '#collapsed' => true,
+      '#collapsible' => true,
+    );
+  }
+  $form['message']['yemail'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Your Email'),
+    '#default_value' => $user->mail,
+    '#size' => 58,
+    '#maxlength' => 256,
+    '#description' => null,
+    '#attributes' => null,
+    '#required' => true,
+  );
+  $form['message']['yname'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Your Name'),
+    '#default_value' => $user->name,
+    '#size' => 58,
+    '#maxlength' => 256,
+    '#description' => null,
+    '#attributes' => null,
+    '#required' => true,
+  );
+  $form['message']['recipients'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Send To'),
+    '#default_value' => str_replace(', ', "\n", $recipients),
+    '#cols' => 50,
+    '#rows' => 5,
+    '#description' => t('Enter multiple addresses on separate lines or separate them with commas.'),
+    '#attributes' => null,
+    '#required' => true,
+  );
+  if (($emailtype == 'email') && ($nodeapi == FALSE)) {
+    $form['message']['page'] = array(
+      '#type' => 'item',
+      '#title' => t('You are going to email the following'),
+      '#value' => l($form['node']['#value']->title, "node/" . $form['node']['#value']->nid),
+    );
+  }
+  $form['message']['subject'] = array(
+    '#type' => 'item',
+    '#title' => t('Message Subject'),
+    '#value' => t(variable_get('forward_'. $emailtype .'subject', '!name has sent you a message from !site'), array('!name' => t('(Your Name)'), '!site' => variable_get('site_name', 'drupal'))),
+    '#description' => '',
+  );
+  $form['message']['body'] = array(
+    '#type' => 'item',
+    '#title' => t('Message Body'),
+    '#value' => t(variable_get('forward_'. $emailtype .'message', '!name thought you would like to see the !site web site.'), array('!name' => t('(Your Name)'), '!site' => variable_get('site_name', 'drupal'))),
+    '#description' => '',
+  );
+  $form['message']['message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Your Personal Message'),
+    '#default_value' => '',
+    '#cols' => 50,
+    '#rows' => 10,
+    '#description' => '',
+    '#attributes' => null,
+    '#required' => true,
+  );
+  $form['message']['nid'] = array(
+    '#type' => 'hidden',
+    '#value' => $nid,
+  );
+  $form['message']['forward_footer'] = array(
+    '#type' => 'hidden',
+    '#value' => variable_get('forward_footer', ''),
+  );
+  $form['message']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Send Message'),
+  );
+
+  return $form;
+}
+
+/**
+ * Generate nodeapi integration, foward signup
+ */
+function forward_nodeapi(&$node, $op, $teaser = 0) {
+  if ((variable_get('forward_form_type', 'link') == 'form') && (!$node->in_preview) && (variable_get('forward_display_'. $node->type, '1') == 1) && (!$teaser || variable_get('forward_show_teasers', 0))) {
+    switch ($op) {
+      case 'view':
+        $output = drupal_get_form('forward_form', $node->nid, TRUE);
+        $node->content['forward'] = array('#value' => $output, '#weight' => 10);
+        break;
+    }
+  }
+}
+
+function forward_form_validate($form_id, &$form) {
+  // Here the global variable where form values are stored is brought into the function for possible editing
+  global $form_values;
+  // To check values, simply access them w/ the same name with which they were declared
+  if (!user_access('administer forward')) {
+    if (!flood_is_allowed('forward', variable_get('forward_flood_control', 10))) {
+      form_set_error(null, variable_get('forward_flood_error', t('You can\'t send more than %number messages per hour. Please try again later.', array('%number' => variable_get('forward_flood_control', 10)))));
+    }
+  }
+
+  $yname      = $form['edit']['yname'];
+  $yemail     = $form['edit']['yemail'];
+  $recipients = $form['edit']['recipients'];
+  $message    = $form['edit']['message'];
+  $nid        = $form['edit']['nid'];
+  $url        = $base_url .'/node/'. $nid;
+
+  // normalize address entries
+  $recipients = trim($form['recipients']);
+  $recipients = str_replace(array("\r\n", "\n", "\r"), ',', $recipients);
+  $recipients = str_replace(' ', '', $recipients);
+
+  // convert addresses to an array
+  $recipient_addresses = explode(',', $recipients);
+
+  $bad_items = array('Content-Type:', 'MIME-Version:', 'Content-Transfer-Encoding:', 'bcc:', 'cc:');
+  foreach ($bad_items as $item) {
+    if (eregi($item, $yemail) || eregi($item, $subject)) {
+      $bad_string = true;
+    }
+  }
+  if (strpos($form['yemail'], "\r") !== false || strpos($yemail, "\n") !== false || $bad_string == true) {
+    form_set_error('yemail', t('Header injection attempt detected.  Do not enter line feed characters into the from field!'));
+  }
+  if (user_validate_mail($form['yemail'])) {
+    form_set_error('yemail', t('Your Email address is invalid.'));
+  }
+  if (!$form['yname']) {
+    form_set_error('yname', t('You must enter your name.'));
+  }
+  if ($recipients == '') {
+    form_set_error('recipients', t('You did not enter any recipients.'));
+  }
+  else {
+    foreach ($recipient_addresses as $address) {
+      if ((user_validate_mail($address)) && ($address != '')) {
+        form_set_error('recipients', t('One of your Recipient addresses is invalid:') .'<br />'. $address);
+      }
+    }
+  }
+  if (!$form['message']) {
+    form_set_error('message', t('You must enter a message.'));
+  }
+}
+
+function forward_form_submit($form_id, $edit) {
+  // Prepare the sender:
+  $from = $edit['mail'];
+  // Compose the body:
+  // Note how the form values are accessed the same way they were accessed in the validate function
+
+  //If selected assemble dynamic footer block.
+  switch (variable_get('forward_dynamic_block', '')) {
+    case 'node':
+      $dynamic_content = '<h3>'. t('Recent blog posts') .'</h3>';
+      $query = "SELECT n.nid, n.title FROM {node} n WHERE n.type = 'blog' AND n.status = 1 ORDER BY n.created DESC";
+      $dynamic_content .= forward_top5_list($query, $base_url, 'blog');
+      break;
+    case 'user':
+      $dynamic_content = '<h3>'. t("Who's new") .'</h3>';
+      $query = 'SELECT u.uid, u.name FROM {users} u WHERE status != 0 ORDER BY uid DESC';
+      $dynamic_content .= forward_top5_list($query, $base_url, 'user');
+      break;
+    case 'comment':
+      $dynamic_content = '<h3>'. t('Recent comments') .'</h3>';
+      $query = 'SELECT c.nid, c.cid, c.subject FROM {comments} c WHERE c.status = 0 ORDER BY c.timestamp DESC';
+      $dynamic_content .= forward_top5_list($query, $base_url, 'comment');
+      break;
+    case 'popular':
+      $dynamic_content = '<h3>'. t('Most Popular Content') .'</h3>';
+      $query = "SELECT n.nid, n.title FROM {node_counter} s INNER JOIN {node} n ON s.nid = n.nid WHERE s.timestamp <> '0' AND n.status = 1 ORDER BY s.timestamp DESC";
+      $dynamic_content .= forward_top5_list($query, $base_url, 'blog');
+      break;
+  }
+
+  if (!$edit['nid']) {
+    $emailtype = 'postcard';
+    $nid = '';
+    $content_title = '';
+    $content_name = '';
+    $content_teaser = '';
+    $returnurl = drupal_get_path_alias('');
+  }
+  else {
+    $nid = $edit['nid'];
+    $emailtype = 'email';
+    //Get article information.
+    $content = node_load($nid);
+    $content->teaser = check_markup($content->teaser, $content->format, false);
+    $returnurl = drupal_get_path_alias('node/'. $nid);
+  }
+  $vars = array(
+    'forward_header_image' => variable_get('forward_header_image', ''),
+    'site_name' => variable_get('site_name', 'Drupal'),
+    'yemail' => $edit['yemail'],
+    'forward_message' => t(variable_get('forward_'. $emailtype .'message', '!name thought you would like to see the !site web site.'), array('!name' => l($edit['yname'], 'mailto:'. $edit['yemail'], null, null, null, true), '!site' => variable_get('site_name', 'drupal'))),
+    'message' => $edit['message'],
+    'base_url' => $base_url,
+    'content' => $content,
+    'dynamic_content' => $dynamic_content,
+    'forward_ad_footer' => variable_get('forward_ad_footer', ''),
+    'forward_footer' => variable_get('forward_footer', '')
+  );
+
+  $body = theme('forward_'. $emailtype, $vars);
+  $subject = t(variable_get('forward_'. $emailtype .'subject', '!name has sent you a message from !site'), array('!name' => $edit['yname'], '!site' => variable_get('site_name', 'drupal')));
+
+  $from = $edit['yemail'];
+  $headers['MIME-Version'] = '1.0';
+  $headers['Content-Type'] = 'text/html; charset=utf-8';
+
+  $recipients = trim($edit['recipients']);
+  $recipients = str_replace(array("\r\n", "\n", "\r"), ', ', $recipients);
+  $recipients = str_replace(', ', ', ', $recipients);
+  $recipients = str_replace(',  ', ', ', $recipients);
+  $recipients = explode(', ', $recipients);
+  
+  foreach ($recipients as $to) {
+    drupal_mail('forward', $to, $subject, $body, $from, $headers);
+  }
+
+  // insert record into db to record nid, type and timestamp of send
+  db_query("INSERT INTO {forward_log} (nid, type, timestamp) VALUES ('%d', '%s', %d)", $nid, 'SENT', time());
+  variable_set('forward_total', variable_get('forward_total', 0) +1);
+  variable_set('forward_recipients', variable_get('forward_recipients', 0) + count($recipients));
+
+  flood_register_event('forward');
+
+  drupal_set_message(variable_get('forward_thankyou', t('Thank you for your help in spreading the word about') .' '. variable_get('site_name', 'drupal') .'. '. t('We appreciate your help.')), 'status');
+  return $returnurl;
+}
+
+/**
+ * Generate links for pages
+ */
+function forward_link($type, $node=0, $teaser=0) {
+  if ('comment' == $type && !variable_get('forward_display_comment', '1')) {
+    return;
+  }
+  
+  if (($type == 'node' || $type == 'comment') && user_access('access forward') && (variable_get('forward_form_type', 'link') == 'link') && variable_get('forward_display_'. $node->type, '1')) {
+    $links=array();
+    if (($type == 'system')) {
+      // URL, page title, func called for page content, arg, 1 = don't disp menu
+      menu('forward', t('Email this page'), 'forward_page', 1, 1);
+    }
+
+    // This var is set in the settings section under the admin/modules/forward section
+    // It shows 'email this $nodetype' or 'email this page'
+    $forward_link_type = variable_get('forward_link_type', 0);
+    if ($forward_link_type) {
+      if ($type == 'comment') {
+        $forward_link_type = t('comment');
+      }
+      else {$forward_link_type = node_get_types("name", $node);}
+    }
+    else $forward_link_type = t('page');
+
+    if (!$teaser || variable_get('forward_show_teasers', 0)) {
+      $links['forward_links'] = array(
+        'title'      => t('Email this !type', array('!type' => $forward_link_type)),
+        'href'       => "forward/$node->nid",
+        'attributes' => array('title' => t('Forward this page to a friend'), 'class' => 'forward-page'));
+      return $links;
+    }
+  }
+}
+
+function forward_form_alter($form_id, &$form) {
+  // Add the node-type settings option to activate the email this page link
+  if ('node_type_form' == $form_id) {
+    $form['workflow']['forward_display'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Show forwarding link/form'),
+      '#return_value' => 1,
+      '#default_value' => variable_get('forward_display_'. $form['#node_type']->type, '1'),
+      '#description' => t('Displays the form/link to allow visitors to forward the page to a friend. Further configuration is available on the !settings.', array('!settings' => l(t('settings page'), 'admin/settings/forward' ))),
+    );
+  }
+  else if ('comment_admin_settings' == $form_id) {
+    $form['viewing_options']['forward_display_comment'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Show forwarding link/form'),
+      '#return_value' => 1,
+      '#default_value' => variable_get('forward_display_comment', '1'),
+      '#description' => t('Displays the form/link to allow visitors to forward the page to a friend. Further configuration is available on the !settings.', array('!settings' => l(t('settings page'), 'admin/settings/forward' ))),
+    );
+  }
+}
+
+/**
+ * Forward Tracking Page
+ */
+function forward_tracking() {
+  $header = array(
+    array('data' => t('Time'), 'field' => 'f.timestamp', 'sort' => 'desc'),
+    array('data' => t('Type'), 'field' => 'f.type'),
+    array('data' => t('Path')),
+    array('data' => t('Title'), 'field' => 'n.title')
+  );
+
+  $result = pager_query('SELECT f.*, n.title FROM {forward_log} f LEFT JOIN {node} n ON f.nid = n.nid'. tablesort_sql($header), 30, 0, null);
+  if (db_num_rows($result)) {
+    while ($log = db_fetch_object($result)) {
+      $_path = drupal_get_path_alias('node/'. $log->nid);
+      $rows[] = array(
+        array('data' => format_date($log->timestamp, 'small'), 'nowrap' => 'nowrap'),
+        $log->type,
+        l($_path, $_path),
+        l(_forward_column_width($log->title), $_path)
+      );
+    }
+    if ($pager = theme('pager', null, 30, 0)) {
+      $rows[] = array(array('data' => $pager, 'colspan' => '4'));
+    }
+
+    $output = '<p><strong>'. variable_get('forward_total', 0) .'</strong> '. t('emails sent to') .' <strong>'. variable_get('forward_recipients', 0) .'</strong> '. t('recipients') .'</p>';
+    $output .= theme('table', $header, $rows);
+  }
+  else {
+    $output = '<p>'. t('No one has used Forward yet.') .'</p>';
+  }
+  print theme('page', $output);
+  drupal_set_title(t('Forward Tracking'));
+}
+
+
+/**
+ * Implementation of hook_block().
+ */
+function forward_block($op = 'list', $delta = 0, $edit = array()) {
+  switch ($op) {
+    case 'list':
+      $blocks[0]['info'] = t('Most Emailed');
+      return $blocks;
+    case 'configure':
+      $block_options = array(
+        'today' => t('Most Emailed Today'),
+        'week' => t('Most Emailed This Week'),
+        'allTime' => t('Most Emailed of All Time'),
+        'recent' => t('Most Recently Emailed')
+      );
+      $form['forward_block_type'] = array(
+        '#type' => 'radios',
+        '#title' => t('Block Type'),
+        '#default_value' => variable_get('forward_block_type', " "),
+        '#options' => $block_options,
+        '#description' => t('Choose the block type'),
+        '#required' => null,
+        '#attributes' => true,
+      );
+      return $form;
+    case 'save':
+      variable_set('forward_block_type', $edit['forward_block_type']);
+      break;
+    case 'view':
+      if (user_access('access content')) {
+        switch (variable_get('forward_block_type', 'allTime')) {
+          case 'today':
+            $pastday = time()-(24 * 60 * 60);
+            $query="SELECT n.nid, n.title, count(*) AS cnt FROM {forward_log} s LEFT JOIN {node} n ON s.nid = n.nid WHERE s.type='sent' AND n.status=1 AND timestamp > ". $pastday .' GROUP BY n.nid, n.title ORDER BY cnt DESC';
+            $block['subject'] = t("Today's Most Emailed");
+            $block['content'] = node_title_list(db_query_range($query, 0, 5));
+            break;
+          case 'week':
+            $pastweek = time()-(7 * 24 * 60 * 60);
+            $query="SELECT n.nid, n.title, count(*) AS cnt FROM {forward_log} s LEFT JOIN {node} n ON s.nid = n.nid WHERE s.type='sent' AND n.status=1 AND timestamp > ". $pastweek .' GROUP BY n.nid, n.title ORDER BY cnt DESC';
+            $block['subject'] = t("This Week's Most Emailed");
+            $block['content'] = node_title_list(db_query_range($query, 0, 5));
+            break;
+          case 'allTime':
+            $query="SELECT n.nid, n.title, count(*) AS cnt FROM {forward_log} s LEFT JOIN {node} n ON s.nid = n.nid WHERE s.type='sent' AND n.status=1 GROUP BY n.nid, n.title ORDER BY cnt DESC";
+            $block['subject'] = t("Most Emailed");
+            $block['content'] = node_title_list(db_query_range($query, 0, 5));
+            break;
+          case 'recent':
+            $query="SELECT DISTINCT n.nid, n.title FROM {node} n LEFT JOIN {forward_log} s ON s.nid = n.nid WHERE s.timestamp <> '0' AND s.type='SENT' AND n.status = 1 ORDER BY s.timestamp DESC";
+            $block['subject'] = t("Most Recently Emailed");
+            $block['content'] = node_title_list(db_query_range($query, 0, 5));
+            break;
+        }
+        return $block;
+      }
+  }
+}
+
+//  this function supports the dynamic footer generation
+function forward_top5_list($query, $base_url, $type) {
+  $items = '<ol>';
+  $result = db_query_range($query, 0, 5);
+  while ($item = db_fetch_object($result)) {
+    if ($type == 'user') {
+      $items .= '<li>'. l($item->name, 'user/'. $item->uid, array(), NULL, NULL, TRUE) .'</li>';
+    }
+    elseif ($type == 'comment') {
+      $items .= '<li>'. l($item->subject, 'node/'. $item->cid .'#comment-'. $item[1], array(), NULL, NULL, TRUE) .'</li>';
+    }
+    else {
+      $items .= '<li>'. l($item->title, 'node/'. $item->nid, array(), NULL, NULL, TRUE) .'</li>';
+    }
+  }
+  return $items .'</ol>';
+}
+
+function _forward_column_width($column, $width = 35) {
+  return (strlen($column) > $width ? substr($column, 0, $width) .'...' : $column);
+}

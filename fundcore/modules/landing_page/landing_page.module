@@ -1,0 +1,112 @@
+<?php
+
+function landing_page_menu($may_cache) {
+  $items = array();
+  
+  if ($may_cache) {
+    $items[] = array(
+      'path' => 'campaign',
+      'access' => TRUE,
+      'type' => MENU_CALLBACK,
+      'callback' => 'landing_page_campaign_router',
+    );
+  }
+  
+  return $items;
+}
+
+function landing_page_campaign_router($campaign = NULL) {
+  global $user;
+  
+  //watchdog('landing page', print_r($user, TRUE));
+  $sid = session_id();
+  
+  // Check if campaign pages exist for the given campaign
+  $landing_page_nids = array();
+  $nid = db_result(db_query_range('SELECT n.nid FROM {node} n INNER JOIN {landing_page} lp ON lp.vid = n.vid AND n.status = 1 WHERE lp.campaign = "%s" ORDER BY RAND()', $campaign, 0, 1));
+
+  if ($nid) {
+    db_query('INSERT INTO {landing_page_influence} (uid, sid, campaign, timestamp, landing_page_nid) VALUES (%d, "%s", "%s", %d, %d)', $user->uid, $sid, $campaign, time(), $nid);
+    drupal_goto('node/' . $nid);
+  }
+
+  global $user;
+  db_query('INSERT INTO {landing_page_influence} (uid, sid, campaign, timestamp) VALUES (%d, "%s", "%s", %d)', $user->uid, $sid, $campaign, time());
+  
+  // Return to the homepage
+  drupal_goto(base_path());
+}
+
+// Import anonymous history into new user account
+function landing_page_user($op, &$edit, &$account, $category = NULL) {
+  if ($op == 'insert') {
+    global $user;
+    db_query('UPDATE {landing_page_influence} SET uid = %d WHERE uid = 0 AND sid = "%s"', $account->uid, $user->sid);
+  }
+}
+
+function landing_page_node_info() {
+  return array(
+    'landing_page' => array(
+      'name' => t('Landing page'),
+      'module' => 'landing_page',
+      'description' => t('A landing page with targeted content.'),
+    ),
+  );
+}
+
+function landing_page_form($node) {
+  $form = array();
+  
+  $form['title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Title'),
+    '#default_value' => $node->title,
+    '#required' => TRUE,
+  );
+
+  $form['campaign'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Campaign'),
+    '#default_value' => $node->campaign,
+    '#required' => TRUE,
+  );
+
+  $form['body_filter']['body'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Body'),
+    '#default_value' => $node->body,
+    '#required' => TRUE,
+  );
+  $form['body_filter']['filter'] = filter_form($node->format);
+  
+  return $form;
+}
+
+function landing_page_insert($node) {
+  db_query('INSERT INTO {landing_page} (campaign, vid) VALUES ("%s", %d)', $node->campaign, $node->vid);
+}
+
+function landing_page_update($node) {
+  if ($node->revision) {
+    landing_page_insert($node);
+  }
+  else {
+    db_query('UPDATE {landing_page} SET campaign = "%s", WHERE vid = %d', $node->campaign, $node->vid);
+  }
+}
+
+function landing_page_load($node) {
+  $additions = db_fetch_array(db_query('SELECT * FROM {landing_page} WHERE vid = %d', $node->vid));
+  return $additions;
+}
+
+/*
+function landing_page_view($node, $teaser = FALSE, $page = FALSE) {
+  $node = node_prepare($node);
+  $node->content['body'] = array(
+    '#value' => $node->body,
+  );
+  return $node;
+}
+*/

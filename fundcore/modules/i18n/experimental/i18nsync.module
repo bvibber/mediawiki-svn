@@ -1,0 +1,112 @@
+<?php
+// $Id: i18nsync.module,v 1.1.2.1 2007/02/11 15:45:22 jareyero Exp $
+
+/**
+ * @file
+ * Internationalization (i18n) package. Synchronization of translations
+ * 
+ * Keeps vocabulary terms in sync for translations.
+ * This is a per-vocabulary option
+ * 
+ * Ref: http://drupal.org/node/115463
+ * 
+ * Notes:
+ * This module needs to run after taxonomy, i18n, translation. Check module weight
+ */
+ 
+ /**
+ * Implementation of hook_form_alter().
+ */
+function i18nsync_form_alter($form_id, &$form) {
+  if ($form_id == 'taxonomy_form_vocabulary') { // Taxonomy vocabulary
+    $nodesync = variable_get('i18n_vocabulary_nodesync', array());
+    $form['i18n']['nodesync'] = array(
+      '#type' => 'checkbox', '#title' => t('Synchronize node translations'),
+      '#default_value' => isset($form['vid']) && is_numeric($form['vid']['#value']) && $nodesync[$form['vid']['#value']],
+      '#description' => t('Synchronize terms of this vocabulary for node translations.')
+    ); 
+  }      
+}
+
+/**
+ * Implementation of hook taxonomy.
+ */
+function i18nsync_taxonomy($op, $type = NULL, $edit = NULL) {
+  switch ("$type/$op") {
+    case 'vocabulary/insert':
+    case 'vocabulary/update':
+      $current = variable_get('i18n_vocabulary_nodesync', array());
+      if ($edit['nodesync']) {
+        $current[$edit['vid']] = 1;
+      } else {
+        unset($current[$edit['vid']]);
+      }
+      variable_set('i18n_vocabulary_nodesync', $current);
+      break;
+  }
+}
+
+/**
+ * Implementation of hook_nodeapi().
+ */
+function i18nsync_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
+  if (variable_get("i18n_node_$node->type", 0)) {
+    switch ($op) {
+      case 'insert':
+      case 'update':
+        // Taxonomy synchronization
+        if($node->language && $node->trid && $sync = variable_get('i18n_vocabulary_nodesync', array())) {
+          // Get vocabularies synchronized for this node type
+          $result = db_query("SELECT v.* FROM {vocabulary} v INNER JOIN {vocabulary_node_types} n ON v.vid = n.vid WHERE n.type = '%s' AND v.vid IN (%s)", $node->type, implode(',', array_keys($sync)));
+          $count = 0;
+          while($vocabulary = db_fetch_object($result)) {
+            i18nsync_node_taxonomy($node, $vocabulary);
+            $count++;
+          }
+          if ($count) {
+            drupal_set_message(t('Node translations have been synchronized.'));
+          }
+        }
+        // No need to refresh cache. It will be refreshed on node insert/update anyway
+        break;
+    }
+  }
+}
+
+/**
+ * Actual synchronization for node, vocabulary
+ * 
+ * These are the 'magic' db queries.
+ */
+function i18nsync_node_taxonomy($node, $vocabulary) {
+  // Paranoid extra check. This queries may really delete data
+  if ($vocabulary->language || !$node->nid || !$node->trid || !$node->language || !$vocabulary->vid) return;
+  
+  // Reset all terms for this vocabulary for other nodes in the translation set
+  db_query("DELETE FROM {term_node} WHERE nid != %d ".
+    " AND nid IN (SELECT nid FROM {i18n_node} WHERE trid = %d) ". 
+    " AND tid IN (SELECT tid FROM {term_data} WHERE vid = %d)", 
+    $node->nid, $node->trid, $vocabulary->vid);
+  
+  // Copy terms with no language
+  db_query("INSERT INTO {term_node}(tid, nid) SELECT tn.tid, n.nid " .
+        " FROM {i18n_node} n ,  {term_node} tn " .
+        " INNER JOIN {term_data} td ON tn.tid = td.tid " . // This one to check no language
+        " WHERE tn.nid = %d AND n.nid != %d AND n.trid = %d AND td.vid = %d " .
+        " AND td.language = '' OR td.language IS NULL", // Only terms without language
+         $node->nid, $node->nid, $node->trid, $vocabulary->vid);
+  
+  // Now copy terms translating on the fly
+  db_query("INSERT INTO {term_node}(tid, nid) SELECT tdt.tid, n.nid " .
+        " FROM {i18n_node} n ,  {term_data} tdt " . // This will be term data translations
+        " INNER JOIN {term_data} td ON tdt.trid = td.trid " . // Same translation set
+        " INNER JOIN {term_node} tn ON tn.tid = td.tid " .
+        " INNER JOIN {term_data} tnd ON tn.tid = tnd.tid ".
+        " WHERE tdt.language = n.language AND n.nid != %d AND tn.nid = %d AND n.trid = %d AND td.vid = %d",
+         $node->nid, $node->nid, $node->trid, $vocabulary->vid);  
+}
+
+
+
+
+

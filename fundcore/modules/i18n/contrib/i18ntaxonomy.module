@@ -1,0 +1,252 @@
+<?php
+// $Id: i18ntaxonomy.module,v 1.1.2.1 2007/04/03 20:54:55 jareyero Exp $
+
+/**
+ * @file
+ * Internationalization (i18n) package - taxonomy term translation
+ * 
+ * Translates taxonomy term for selected vocabularies running them through the localization system
+ * It also translates terms for views filters and views results
+ * 
+ * @author Jose A. Reyero, 2007
+ *
+ */
+
+/**
+ * Implementation of hook_form_alter().
+ */
+function i18ntaxonomy_form_alter($form_id, &$form) {
+  if ($form_id == 'translation_admin_settings') {
+    // Translation settings
+    $translate = variable_get('i18ntaxonomy_vocabularies', array());
+    $form['i18ntaxonomy_vocabularies'] = array(
+      '#type' => 'fieldset',
+      '#collapsible' => TRUE,
+      '#title' => t('Vocabulary Translation'),
+      '#tree' => TRUE, 
+      '#weight' => 0,
+      '#description' => t('Vocabularies to translate through localization system')
+      );
+    foreach(taxonomy_get_vocabularies() as $voc) {
+      $form['i18ntaxonomy_vocabularies'][$voc->vid] = array(
+        '#type' => 'checkbox',
+        '#title' => $voc->name,
+        '#default_value' => $translate[$voc->vid]
+      );
+    }
+  } elseif (isset($form['type']) && $form['type']['#value'] .'_node_form' == $form_id 
+    && ($node = $form['#node']) && isset($form['taxonomy']) && $translate = variable_get('i18ntaxonomy_vocabularies', array())) {
+    // Node form. Translate vocabularies
+    if (!isset($node->taxonomy)) {
+      if ($node->nid) {
+        $terms = taxonomy_node_get_terms($node->nid);
+      }
+      else {
+        $terms = array();
+      }
+    }
+    else {
+      $terms = $node->taxonomy;
+    }
+    // Regenerate the whole field for translatable vocabularies
+    foreach (element_children($form['taxonomy']) as $vid) {
+      if (is_numeric($vid) && $translate[$vid]) {
+        // Rebuild this vocabulary's form
+        $vocabulary = taxonomy_get_vocabulary($vid);
+        // Extract terms belonging to the vocabulary in question.
+        $default_terms = array();
+        foreach ($terms as $term) {
+          if ($term->vid == $vid) {
+            $default_terms[$term->tid] = $term;
+          }
+        }        
+
+        $form['taxonomy'][$vid] = i18ntaxonomy_form($vocabulary->vid, array_keys($default_terms));
+        $form['taxonomy'][$vid]['#weight'] = $vocabulary->weight;
+        $form['taxonomy'][$vid]['#required'] = $vocabulary->required;
+      }
+    }
+    
+  } else if($form_id == 'views_filters' && $translate = variable_get('i18ntaxonomy_vocabularies', array())) {
+    // We only translate exposed filters here
+    $view = $form['view']['#value'];
+    if($view->exposed_filter) {
+      foreach($view->exposed_filter as $index => $filter) {
+        $matches = array();
+        if($filter['field'] == 'term_node.tid') {
+          // That's a full taxonomy box. Translate options: arary(tid => "Vocabulary: Term")
+          // First, we get a translated list. Then we replace on the options array
+          $replace = _i18ntaxonomy_vocabulary_terms(array_keys($translate));
+          foreach($replace as $tid => $name) {
+            if(isset($form["filter$index"]['#options'][$tid])) {
+              $form["filter$index"]['#options'][$tid] = $name;
+            }
+          }
+        } elseif(preg_match("/term_node_(\d+)\.tid/", $filter['field'], $matches)) {
+          $vid = $matches[1];
+          if ($translate[$vid]) { 
+            // Translate this vocabulary terms, field name is filter$index vid = $matches[1]
+            foreach ($form["filter$index"]['#options'] as $value => $option) {
+              if ($value != '**ALL**') { // ALL option should be already localized
+                // This may be an object with an option property being an array (tid => name)
+                if (is_object($option) && is_array($option->option)) {
+                  foreach (array_keys($option->option) as $tid) {
+                    $option->option[$tid] = t($option->option[$tid]);
+                  }
+                  $form["filter$index"]['#options'][$value] = $option;
+                // But it used to be a plain string, so let's keep this just in case...
+                } elseif(is_string($option)) {
+                  $form["filter$index"]['#options'][$value] = t($option);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implementation of hook_nodeapi()
+ * 
+ * This runs after taxonomy:nodeapi, so we just translate terms here
+ */
+function i18ntaxonomy_nodeapi(&$node, $op, $teaser, $page) {
+  if ($op == 'view' && array_key_exists('taxonomy', $node)) {
+    _i18ntaxonomy_translate_terms($node->taxonomy);
+  }
+}
+
+/**
+ * Implementation of hook_views_pre_view().
+ * 
+ * Translate table header for taxonomy fields
+ * //field[i][id] = term_node_1.name, translate table header
+ * and replace handler for that field
+ */
+function i18ntaxonomy_views_pre_view(&$view, &$items) {
+  //var_dump($view);
+  $translate = variable_get('i18ntaxonomy_vocabularies', array());
+  foreach($view->field as $index => $data) {
+    $matches = array();
+    if($data['id'] == 'term_node.name') {
+      // That's a full taxonomy box
+      $view->field[$index]['handler'] = 'i18ntaxonomy_views_handler_field_allterms';
+    } elseif(preg_match("/term_node_(\d+)\.name/", $data['id'], $matches)) {
+      $vid = $matches[1];
+      if ($translate[$vid]) { 
+        // Set new handler for this field
+        $view->field[$index]['handler'] = 'i18ntaxonomy_views_handler_field_allterms';
+      }
+    }
+  }
+
+}
+
+/**
+ * Field handler for taxonomy term fields
+ * 
+ * Remake of views_handler_field_allterms with term name translation
+ */
+function i18ntaxonomy_views_handler_field_allterms($fieldinfo, $fielddata, $value, $data) {
+  if ($fieldinfo['vocabulary']) {
+    $terms = taxonomy_node_get_terms_by_vocabulary($data->nid, $fieldinfo['vocabulary']);
+  }
+  else {
+    $terms = taxonomy_node_get_terms($data->nid);
+  }
+  // Translate all these terms
+  _i18ntaxonomy_translate_terms($terms);
+  
+  if ($fielddata['options'] == 'nolink') {
+    foreach ($terms as $term) {
+      $links[] = check_plain($term->name);
+    }
+    $links = !empty($links) ? implode(' | ', $links) : '';
+  }
+  else {
+    $node = new stdClass();
+    $node->taxonomy = $terms;
+    $links = theme('links', taxonomy_link('taxonomy terms', $node));
+  }
+  return $links;
+}
+
+/**
+ * Generate a form element for selecting terms from a vocabulary.
+ * Translates all translatable strings.
+ */
+function i18ntaxonomy_form($vid, $value = 0, $help = NULL, $name = 'taxonomy') {
+  $vocabulary = taxonomy_get_vocabulary($vid);
+  $help = $vocabulary->help ? t($vocabulary->help) : '';
+  if ($vocabulary->required) {
+    $blank = 0;
+  }
+  else {
+    $blank = '<'. t('none') .'>';
+  }
+
+  return _i18ntaxonomy_term_select(t(check_plain($vocabulary->name)), $name, $value, $vid, $help, intval($vocabulary->multiple), $blank);
+}
+
+// Produces translated tree
+function _i18ntaxonomy_term_select($title, $name, $value, $vocabulary_id, $description, $multiple, $blank, $exclude = array()) {
+  $tree = taxonomy_get_tree($vocabulary_id);
+  $options = array();
+
+  if ($blank) {
+    $options[0] = $blank;
+  }
+  if ($tree) {
+    foreach ($tree as $term) {
+      if (!in_array($term->tid, $exclude)) {
+        $choice = new stdClass();
+        $choice->option = array($term->tid => str_repeat('-', $term->depth) . t($term->name));
+        $options[] = $choice;
+      }
+    }
+    if (!$blank && !$value) {
+      // required but without a predefined value, so set first as predefined
+      $value = $tree[0]->tid;
+    }
+  }
+
+  return array('#type' => 'select',
+    '#title' => $title,
+    '#default_value' => $value,
+    '#options' => $options,
+    '#description' => $description,
+    '#multiple' => $multiple,
+    '#size' => $multiple ? min(9, count($options)) : 0,
+    '#weight' => -15,
+    '#theme' => 'taxonomy_term_select',
+  );
+}
+
+// Translate an array of term objects
+function _i18ntaxonomy_translate_terms(&$terms) {
+  if ($translate = variable_get('i18ntaxonomy_vocabularies', array())) {
+    foreach(array_keys($terms) as $tid) {
+      if($translate[$terms[$tid]->vid]) {
+        $terms[$tid]->name = t($terms[$tid]->name);
+      }
+    } 
+  }
+}
+
+// Get a list of vocabularies and terms
+function _i18ntaxonomy_vocabulary_terms($vid = NULL, $fullname = TRUE) {
+  $tids = array();
+  if (is_numeric($vid)) {
+    $where = "WHERE td.vid = $vid";
+  } elseif(is_array($vid)) {
+    $where = "WHERE td.vid IN(".implode(',', $vid).')';
+  }  
+  $result = db_query("SELECT DISTINCT(td.tid), td.name, td.weight, v.name as vocabname, v.weight FROM {term_data} td LEFT JOIN {vocabulary} v ON v.vid = td.vid $where ORDER BY v.weight, v.name, td.weight, td.name");
+  while ($obj = db_fetch_object($result)) {
+    $tids[$obj->tid] = $fullname ? t($obj->vocabname).': '.t($obj->name) : t($obj->name);
+  }
+
+  return $tids;
+}

@@ -1,0 +1,9 @@
+name = Internationalization
+description = Enables multilingual content.
+dependencies = locale
+package = Multilanguage - i18n
+version = "$Name: DRUPAL-5--2-1 $"
+; Information added by drupal.org packaging script on 2007-05-06
+version = "5.x-2.1"
+project = "i18n"
+

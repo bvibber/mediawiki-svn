@@ -1,0 +1,124 @@
+# LANGUAGE translation of PROJECT
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2004-08-12 17:58+0200\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: i18n.module:54
+msgid "\n        <p>This module provides support for internationalization of Drupal sites in various ways:</p>\n        <ul><li>Translation of the user interface for registered and anonymous users</li>\n        <li>Multi-language for content, combined with url aliasing. For this feature to be used, you must enable it in the module configuration and then use url aliasing to keep pages in various languages. I.e. 'en/mypage', 'es/mypage' should be English and Spanish versions of the same page</li>\n        <li>Detection of the brower language</li>\n        <li>Keeps the language settings accross consecutive requests, using a number of methods: URL rewriting, sessions, cookies</li>\n        <li>Provides a block for language selection and two theme functions: <i>i18n_flags</i> and <i>i18n_links</i></li></ul>\n        <p>For url rewriting you need to have the file <b>i18n.inc</b> in the <i>includes</i> folder and add the following line to your configuration file:</p>\n        <pre>\n        include 'includes/i18n.inc';\n        </pre>\n        <p>You can try different settings to have only content translation, interface translation or both.</p>\n        <p><small>Module developed by <a href=\"http://freelance.reyero.net\">freelance.reyero.net</a></small></p>"
+msgstr ""
+
+#: i18n.module:69
+msgid "Supports site internationalization (i18n)."
+msgstr ""
+
+#: i18n.module:87
+msgid "edit %language"
+msgstr ""
+
+#: i18n.module:97
+msgid "Interface translation"
+msgstr ""
+
+#: i18n.module:97;98;106;111
+msgid "Disabled"
+msgstr ""
+
+#: i18n.module:97;98;111
+msgid "Enabled"
+msgstr ""
+
+#: i18n.module:97
+msgid "If disabled, uses Drupal's default. If enabled, translates the interface to selected language"
+msgstr ""
+
+#: i18n.module:98
+msgid "Content translation"
+msgstr ""
+
+#: i18n.module:98
+msgid "If enabled, prepends language code to url and searches for translated content"
+msgstr ""
+
+#: i18n.module:99
+msgid "Synchronize content"
+msgstr ""
+
+#: i18n.module:100
+msgid "Nodes"
+msgstr ""
+
+#: i18n.module:101
+msgid "Taxonomy"
+msgstr ""
+
+#: i18n.module:102
+msgid "Synchronize tables for different languages. When some element is created/removed, it will be created/removed for all languages with the same id"
+msgstr ""
+
+#: i18n.module:104
+msgid "Front page"
+msgstr ""
+
+#: i18n.module:104
+msgid "Default"
+msgstr ""
+
+#: i18n.module:104
+msgid "Language dependant"
+msgstr ""
+
+#: i18n.module:104
+msgid "If language dependant and <i>Content translation</i> is enabled, default front page will be prepended with language code, i.e. 'en/node'"
+msgstr ""
+
+#: i18n.module:105
+msgid "Keep Language"
+msgstr ""
+
+#: i18n.module:107
+msgid "URL rewriting"
+msgstr ""
+
+#: i18n.module:108
+msgid "Session"
+msgstr ""
+
+#: i18n.module:109
+msgid "Cookie"
+msgstr ""
+
+#: i18n.module:110
+msgid "A language code independent of user's language will be kept accross requests using the selected method"
+msgstr ""
+
+#: i18n.module:111
+msgid "Detect browser language"
+msgstr ""
+
+#: i18n.module:112
+msgid "Flags directory"
+msgstr ""
+
+#: i18n.module:112
+msgid "Path for flags. Asterisk '*' is a placeholder for language code. This is only needed when you want a language selector block"
+msgstr ""
+
+#: i18n.module:119;122
+msgid "Languages"
+msgstr ""
+
+#: i18n.module:0
+msgid "i18n"
+msgstr ""
+

@@ -1,0 +1,310 @@
+# LANGUAGE translation of Drupal (moderation_log.module)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from file:
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: i18n.module\n"
+"POT-Creation-Date: 2007-04-09 00:11+0100\n"
+"PO-Revision-Date: 2007-04-09 19:42+0100\n"
+"Last-Translator: Alexander Mikhailian <mikhailian@mova.org>\n"
+"Language-Team: RDTT <translators@drupal.ru>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+
+#: i18n.module:63
+msgid ""
+"\n"
+"        <p>This module provides support for multilingual content in Drupal sites:</p>\n"
+"        <ul>\n"
+"        <li>Translation of the user interface for anonymous users (combined with locale)</li>\n"
+"        <li>Multi-language for content. Adds a language field for nodes and taxonomy vocabularies and terms</li>\n"
+"        <li>Basic translation management</li>\n"
+"        <li>Browser language detection</li>\n"
+"        <li>Keeps the language setting accross consecutive requests using URL rewriting</li>\n"
+"        <li>Provides a block for language selection and two theme functions: <i>i18n_flags</i> and <i>i18n_links</i></li>\n"
+"        <li>Support for long locale names</li>\n"
+"        </ul>\n"
+"        <p><small>Module developed by Jose A. Reyero, <a href=\"http://www.reyero.net\">www.reyero.net</a></small></p>"
+msgstr ""
+"\n"
+"        <p>Этот модуль добавляет поддержку многоязычности в Друпал:</p>\n"
+"        <ul>\n"
+"        <li>Перевод интерфейса для анонимных посетителей (вместе с локалью)</li>\n"
+"        <li>Многоязычное содержимое. Определяет язык для документов, таксономии, категорий и терминов</li>\n"
+"        <li>Базовая функциональности управления переводами</li>\n"
+"        <li>Автоопределение языка</li>\n"
+"        <li>Сохраняет выбор языка, добавляя его в URL.</li>\n"
+"        <li>Добавляет блок для выбора языка и две функции для тем: <i>i18n_flags</i> и <i>i18n_links</i></li>\n"
+"        <li>Поддерживает длинные имена локалей</li>\n"
+"        </ul>\n"
+"        <p><small>МОдуль разработан Jose A. Reyero, <a href=\"http://www.reyero.net\">www.reyero.net</a></small></p>"
+
+#: i18n.module:76
+msgid "Enables multilingual content. <b>Requires locale module for interface translation</b>"
+msgstr "Включает многоязычность. <b>Требует для работы модуля locale.</b>"
+
+#: i18n.module:114
+msgid "Browser language detection"
+msgstr "Автоопределение языка в броузере"
+
+#: i18n.module:117
+msgid "A description of this setting."
+msgstr "Описание данного параметра"
+
+#: i18n.module:123
+msgid "Language icons settings"
+msgstr "Установки пиктограмм языков"
+
+#: i18n.module:129
+msgid "Language icons path"
+msgstr "Путь к пиктограммам языков"
+
+#: i18n.module:133
+msgid "Path for language icons, relative to Drupal installation. '*' is a placeholder for language code."
+msgstr "Путь к пиктограммам языков, относительно инсталляции Друпала. '*' заменяется на код языка."
+
+#: i18n.module:137
+msgid "Language icons size"
+msgstr "Размер пиктограмм языков"
+
+#: i18n.module:141
+msgid "Image size for language icons, in the form \"width x height\"."
+msgstr "Размер пиктограмм языков в формате \"ширина x высота\"."
+
+#: i18n.module:147
+msgid "Advanced settings"
+msgstr "Дополнительные настройки"
+
+#: i18n.module:153
+msgid "Content selection mode"
+msgstr "Способ выборки содержимого"
+
+#: i18n.module:156
+msgid "Determines which content to show depending on language."
+msgstr "Выборка содержимого в зависимости от выбранного языка"
+
+#: i18n.module:383
+msgid "Only current language and no language"
+msgstr "Только выбранный языка и без языка"
+
+#: i18n.module:384
+msgid "Only current and default languages and no language"
+msgstr "Только выбранный язык и язык по умолчанию, а также без языка."
+
+#: i18n.module:385
+msgid "Only default language and no language"
+msgstr "Только язык по умолчанию и без языка."
+
+#: i18n.module:386
+msgid "Only current language"
+msgstr "Только текущий язык"
+
+#: i18n.module:387
+msgid "All content. No language conditions apply"
+msgstr "Всё содержимое. Отключить выборку по языку."
+
+#: i18n.module:0
+msgid "i18n"
+msgstr "i18n"
+
+#: i18n.module:116
+#: i18n.inc:139
+msgid "Disabled"
+msgstr "Отключено"
+
+#: i18n.module:116
+#: i18n.inc:139
+msgid "Enabled"
+msgstr "Включено"
+
+#: translation.module:122
+#: i18n.inc:301
+msgid "Languages"
+msgstr "Языки"
+
+#: translation.module:240;667
+#: i18n.inc:148;207
+msgid "Language"
+msgstr "Язык"
+
+#: i18n.inc:122
+msgid "This language will be set for all terms in this vocabulary"
+msgstr "Этот язык будет выбран для всех терминов категории."
+
+#: i18n.inc:137
+msgid "Multilingual support"
+msgstr "Поддержка многоязычности"
+
+#: i18n.inc:140
+msgid "Enables language field and multilingual support for this content type."
+msgstr "Включает поля для языка и поддержку многоязычности для этого типа содержимого."
+
+#: i18n.inc:151
+msgid "If you change the Language, you must click on <i>Preview</i> to get the right Categories &amp; Terms for that language."
+msgstr "Если вы изменяете язык, вы должны кликнуть на  <i>Просмотр</i>, чтобы получить список Категорий и Терминов для этого языка."
+
+#: i18n.inc:234
+msgid "Reset language for all terms."
+msgstr "Сбросить язык для всех терминов."
+
+#: i18n.inc:298
+msgid "Language switcher"
+msgstr "Переключатель языка"
+
+#: translation.module:19
+msgid ""
+"\n"
+"        <p>This module is part of i18n package and provides support for translation relationships.</p>\n"
+"        <p>The objects you can define translation relationships for are:</p>\n"
+"        <ul>\n"
+"        <li>Nodes</li>\n"
+"        <li>Taxonomy Terms</li>\n"
+"        </ul>\n"
+"        <p><small>Module developed by Jose A. Reyero, <a href=\"http://www.reyero.net\">www.reyero.net</a></small></p>"
+msgstr ""
+"\n"
+"        <p>Этот модуль является частью пакета i18n и связывает все переводы.</p>\n"
+"        <p>Вы можете связать переводы следующих типов данных:</p>\n"
+"        <ul>\n"
+"        <li>Документя</li>\n"
+"        <li>Термины таксономии</li>\n"
+"        </ul>\n"
+"        <p><small>Модуль разработан Jose A. Reyero, <a href=\"http://www.reyero.net\">www.reyero.net</a></small></p>"
+
+#: translation.module:29
+msgid "Manages translations between nodes and taxonomy terms. <b>Requires i18n module</b>"
+msgstr "Управляет переводами между документами и терминами таксономии. <b>Зависит от модуля i18n</b>"
+
+#: translation.module:32
+msgid "<h2>Translations</h2>"
+msgstr "<h2>Переводы</h2>"
+
+#: translation.module:33
+msgid "<strong>translate nodes</strong> <p>This one, combined with create content permissions, will allow to create node translation</p>"
+msgstr "<strong>перевод документов</strong> <p>Эта страница, вместе со страницей управления доступом, позволяет настоить перевод документов</p>"
+
+#: translation.module:60;69;0
+msgid "translation"
+msgstr "перевод"
+
+#: translation.module:97
+msgid "Language Management"
+msgstr "Управление языками"
+
+#: translation.module:99
+msgid "Interface language depends on content."
+msgstr "Язык интерфейса зависит от содержимого."
+
+#: translation.module:99
+msgid "Interface language is independent"
+msgstr "Язык интерфейса существует отдельно"
+
+#: translation.module:100;107
+msgid "How interface language and content language are managed."
+msgstr "Как происходит управление языком интерфейса и языком содержимого."
+
+#: translation.module:104
+msgid "Links to node translations"
+msgstr "Ссылки на переводы документов"
+
+#: translation.module:106
+msgid "None."
+msgstr "Пусто."
+
+#: translation.module:106
+msgid "Main page only"
+msgstr "Только главная страница"
+
+#: translation.module:106
+msgid "Teaser and Main page"
+msgstr "Резюме и главная страница"
+
+#: translation.module:119
+msgid "Translations"
+msgstr "Переводы"
+
+#: translation.module:164
+msgid "Language and translations"
+msgstr "Язык и переводы"
+
+#: translation.module:222;281;436;520
+msgid "Save"
+msgstr "Сохранить"
+
+#: translation.module:226;255
+msgid "Remove"
+msgstr "Удалить"
+
+#: translation.module:239
+msgid "<h2>Current translations</h2>"
+msgstr "<h2>Текущие переводы</h2>"
+
+#: translation.module:240;667
+msgid "Title"
+msgstr "Заголовок"
+
+#: translation.module:240
+msgid "Options"
+msgstr "Опции"
+
+#: translation.module:247
+msgid "Not translated"
+msgstr "Не переведено"
+
+#: translation.module:248
+msgid "create translation"
+msgstr "создать перевод"
+
+#: translation.module:250
+msgid "select node"
+msgstr "выбрать документ"
+
+#: translation.module:255
+msgid "Remove node from this translation set"
+msgstr "Документ удалён из данного набора переводов"
+
+#: translation.module:277
+msgid "Select translation for %language"
+msgstr "Выберите перевод для %language"
+
+#: translation.module:284
+msgid "<p>No nodes available in %language</p>"
+msgstr "<p>Нет документов на языке '%language'</p>"
+
+#: translation.module:303
+msgid "The translation has been saved"
+msgstr "Перевод сохранён"
+
+#: translation.module:342
+msgid "Removed translation information from term"
+msgstr "Информация о переводах термина удалена"
+
+#: translation.module:438
+msgid "Edit term translations"
+msgstr "Изменить переводы термина"
+
+#: translation.module:441;442
+msgid "Submit"
+msgstr "Отправить"
+
+#: translation.module:464
+msgid "Operations"
+msgstr "Действия"
+
+#: translation.module:486
+msgid "edit"
+msgstr "изменить"
+
+#: translation.module:490
+msgid "new translation"
+msgstr "новый перевод"
+
+#: translation.module:541
+msgid "Term translations have been updated"
+msgstr "Переводы терминов были обновлены"
+

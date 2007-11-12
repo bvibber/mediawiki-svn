@@ -1,0 +1,165 @@
+<?php
+
+function fundcore_menu($may_cache) {
+  $items = array();
+  
+  if ($may_cache) {
+    $items[] = array(
+      'path' => 'fundcore_gateway',
+      'access' => TRUE,
+      'callback' => 'fundcore_gateway',
+      'type' => MENU_CALLBACK,
+    );
+    $items[] = array(
+      'path' => 'fundcore_contribution',
+      'access' => user_access('administer site configuration'),
+      'callback' => 'drupal_get_form',
+      'callback arguments' => array('fundcore_contribution_page'),
+      'type' => MENU_CALLBACK,
+    );
+  }
+  
+  return $items;
+}
+
+function fundcore_contribution_page($cid = NULL) {
+  $form = array();
+  $contribution = fundcore_contribution_load($cid);
+  $form[] = array(
+    '#value' => '<pre>' . print_r($contribution, TRUE) . '</pre>',
+  );
+  
+  $form['cid'] = array(
+    '#type' => 'hidden',
+    '#value' => $cid,
+  );
+  $form[] = array(
+    '#type' => 'submit',
+    '#value' => t('Reprocess'),
+  );
+  
+  return $form;
+}
+
+function fundcore_contribution_page_submit($form_id, $form_values) {
+  drupal_set_message('Contribution reprocessed.');
+
+  // Load the contribution
+  $contribution = fundcore_contribution_load($form_values['cid']);
+
+  // Transform the contribution data
+  module_invoke_all('contribution', $contribution);
+  
+  // Store the contribution
+  fundcore_contribution_save($contribution);
+}
+
+function fundcore_gateway($gateway) {
+  if (empty($_POST)) {
+    return;
+  }
+
+  global $user;
+
+  // Record to the DB before we do anything fancy
+  $contribution = (object) NULL;
+  $contribution->data = $_POST;
+  $contribution->gateway = $gateway;
+  fundcore_contribution_save($contribution);
+
+  // Transform the contribution data
+  module_invoke_all('contribution', $contribution);
+  
+  // Store the contribution
+  fundcore_contribution_save($contribution);
+}
+
+// Import anonymous history into new user account
+function fundcore_user($op, &$edit, &$account, $category = NULL) {
+  if ($op == 'insert') {
+    global $user;
+    db_query('UPDATE {fundcore_contribution} SET uid = %d WHERE uid = 0 AND sid = "%s"', $account->uid, $user->sid);
+  }
+}
+
+function fundcore_contribution_load($cid) {
+  $contribution = db_fetch_object(db_query('SELECT * FROM {fundcore_contribution} WHERE cid = %d', $cid));
+  $contribution->data = unserialize($contribution->data);
+  return $contribution;
+}
+
+// This code could be more efficient
+function fundcore_contribution_save(&$contribution) {
+  $txn = new pressflow_transaction();
+
+  if (!isset($contribution->cid)) {
+    $contribution->cid = db_next_id('fundcore_contribution');
+    db_query('INSERT INTO {fundcore_contribution} (cid) VALUES (%d)', $contribution->cid);
+  }
+ 
+  if ($contribution->uid == 0) {
+    $uid = db_result(db_query('SELECT uid FROM {sessions} WHERE sid = "%s"', $contribution->sid));
+    if (is_numeric($uid)) {
+      $contribution->uid = $uid;
+    }
+  }
+  
+  if (!isset($contribution->stored)) {
+    $contribution->stored = time();
+  }
+  
+  db_query('UPDATE {fundcore_contribution} SET
+    processed = %d,
+    sid = "%s",
+    uid = %d,
+    data = "%s",
+    gateway = "%s",
+    gateway_txn_id = "%s",
+    stored = %d,
+    original_currency = "%s",
+    original_gross = %f,
+    gross = %f,
+    net = %f,
+    fee = %f,
+    anonymous = %d,
+    name = "%s",
+    email = "%s",
+    comment = "%s",
+    address_street1 = "%s",
+    address_street2 = "%s",
+    address_city = "%s",
+    address_zone = "%s",
+    address_postal_code = "%s",
+    address_country = "%s"
+    WHERE cid = %d',
+    $contribution->processed,
+    $contribution->sid,
+    $contribution->uid,
+    serialize($contribution->data),
+    $contribution->gateway,
+    $contribution->gateway_txn_id,
+    $contribution->stored,
+    $contribution->original_currency,
+    $contribution->original_gross,
+    $contribution->gross,
+    $contribution->net,
+    $contribution->fee,
+    $contribution->anonymous,
+    $contribution->name,
+    $contribution->email,
+    $contribution->comment,
+    $contribution->address_street1,
+    $contribution->address_street2,
+    $contribution->address_city,
+    $contribution->address_zone,
+    $contribution->address_postal_code,
+    $contribution->address_country,
+    $contribution->cid
+    );
+  db_query('DELETE FROM {cache_page} WHERE cid LIKE "%fundcore_browse%"');
+}
+
+function fundcore_cron() {
+  watchdog('fundcore', 'Cleared recent donations page cache.');
+  db_query('DELETE FROM {cache_page} WHERE cid LIKE "%fundcore_browse%"');
+}

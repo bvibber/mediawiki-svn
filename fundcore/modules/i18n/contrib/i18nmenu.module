@@ -1,0 +1,53 @@
+<?php
+// $Id: i18nmenu.module,v 1.4.2.1 2007/04/02 20:41:02 jareyero Exp $
+
+/**
+ * Internationalization (i18n) submodule: Menu translation
+ *
+ * @author Jose A. Reyero, 2005
+ *
+ */
+/**
+ * Implementation of hook_menu().
+ */
+function i18nmenu_menu($may_cache){
+  static $menu_translate;
+  if($may_cache){
+    // The menu is being rebuilt. Prepares to translate on second call.
+    $menu_translate = TRUE;
+  } elseif($menu_translate) {
+    // This runs only when menu_hook is called twice
+    i18nmenu_translate_all();
+  }
+}
+
+function i18nmenu_translate_all(){
+  global $_menu;
+  global $user;
+  global $locale;
+  $cid = "$user->uid:$locale";
+  cache_clear_all($cid, 'cache_menu');
+  // Translate all user defined meny items
+  foreach($_menu['items'] as $mid => $item) {
+    if($item['type'] & MENU_CREATED_BY_ADMIN) {
+      $_menu['items'][$mid]['title'] = t($_menu['items'][$mid]['title']);
+    }
+  }
+  // Update cache
+  cache_set($cid, 'cache_menu', serialize($_menu), time() + (60 * 60 * 24));
+}
+
+function i18nmenu_help($section = 'admin/help#i18nmenu' ) {
+  switch ($section) {
+    case 'admin/help#i18nmenu' :
+      return t('
+        <p>This module provides support for translatable custom menu items:</p>
+        <ul>
+        <li>Create menus as usual, with names in English. If the menu is already created, no changes are needeed</li>
+        <li>Show the menu in some block</li>
+        <li>Switch language to some non english one -while viewing the block-, so the <i>locales</i> table is populated with the new strings</li>
+        <li>Use the localization system to translate menu item strings</li>
+        </ul>' );
+  }
+}
+

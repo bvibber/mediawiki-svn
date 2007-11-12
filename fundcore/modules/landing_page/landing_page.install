@@ -1,0 +1,18 @@
+<?php
+
+function landing_page_install() {
+  db_query("CREATE TABLE {landing_page_influence} (
+    `uid` INT UNSIGNED NOT NULL ,
+    `timestamp` INT UNSIGNED NOT NULL ,
+    `campaign` VARCHAR( 32 ) NOT NULL ,
+    `landing_page_nid` INT UNSIGNED NULL
+    ) ENGINE = innodb;");
+    
+  db_query("CREATE TABLE {landing_page} (
+    `vid` INT UNSIGNED NOT NULL ,
+    `campaign` VARCHAR( 32 ) NOT NULL ,
+    PRIMARY KEY ( `vid` ) ,
+    INDEX ( `campaign` )
+    ) ENGINE = innodb;");
+  db_query("ALTER TABLE {landing_page} ADD FOREIGN KEY ( `vid` ) REFERENCES {node_revisions} (`vid`) ON DELETE CASCADE ;");
+}

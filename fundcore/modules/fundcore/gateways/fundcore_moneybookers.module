@@ -1,0 +1,171 @@
+<?php
+
+function fundcore_moneybookers_menu($may_cache) {
+  $items = array();
+  
+  if ($may_cache) {
+    $items[] = array(
+      'path' => 'admin/settings/fundcore_moneybookers',
+      'title' => t('Fundraising CORE Moneybookers'),
+      'callback' => 'drupal_get_form',
+      'callback arguments' => array('fundcore_moneybookers_settings'),
+      'access' => user_access('administer site configuration'),
+    );
+  }
+  
+  return $items;
+}
+
+function fundcore_moneybookers_contribution_form() {
+  $form = array();
+  
+  $form['#action'] = 'https://www.moneybookers.com/app/payment.pl';
+
+  $form['moneybookers'] = array(
+    '#type' => 'fieldset',
+    '#title' => '<big>' . t('Moneybookers') . '</big>',
+    '#attributes' => array(
+      'style' => 'margin-right: 10px; width: 300px; height: 400px;',
+    )
+  );
+
+  $form['moneybookers'][] = array(
+    '#value' => '<img style="display: block; margin-left: auto; margin-right: auto;" src="/sites/all/modules/fundcore/gateways/logo_moneybookers.gif" />',
+  );
+  
+  $form['moneybookers']['pay_to_email'] = array(
+    '#type' => 'hidden',
+    '#value' => variable_get('fundcore_moneybookers_account', ''),
+  );
+
+  $form['moneybookers']['status_url'] = array(
+    '#type' => 'hidden',
+    '#value' => url('fundcore_gateway/moneybookers', NULL, NULL, TRUE),
+  );
+
+  $form['moneybookers']['language'] = array(
+    '#type' => 'hidden',
+    '#value' => 'en',
+  );
+
+  $form['moneybookers']['merchant_fields'] = array(
+    '#type' => 'hidden',
+    '#value' => 'os0, os1',
+  );
+
+  $form['moneybookers']['detail1_description'] = array(
+    '#type' => 'hidden',
+    '#value' => t('One-time donation'),
+  );
+
+  $form['moneybookers']['detail1_text'] = array(
+    '#type' => 'hidden',
+    '#value' => 'DONATE',
+  );
+  
+  $form['moneybookers']['on1'] = array(
+    '#type' => 'hidden',
+    '#value' => 'Comment',
+  );
+
+  $form['moneybookers']['amount'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Donation amount'),
+    '#size' => 25,
+    '#required' => TRUE,
+  );
+
+  $form['moneybookers']['currency'] = array(
+    '#type' => 'select',
+    '#title' => t('Currency'),
+    '#options' => variable_get('fundcore_moneybookers_currencies', array()),
+    '#required' => TRUE,
+    '#default_value' => 'USD',
+  );
+  
+  $form['moneybookers']['os1'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Public comment'),
+    '#maxlength' => 200,
+    '#size' => 25,
+  );
+  
+  global $user;
+  $form['moneybookers']['os0'] = array(
+    '#type' => 'radios',
+    '#title' => t('Privacy'),
+    '#options' => array(
+      'anonymous;' . $user->sid => t('List as anonymous'),
+      'public;' . $user->sid => t('List my name'),      
+    ),
+    '#default_value' => 'anonymous;' . $user->sid,
+    '#required' => TRUE,
+  );
+  
+  $form['moneybookers'][] = array(
+    '#type' => 'submit',
+    '#value' => t('Donate!'),
+    '#prefix' => '<div class="form-item">',
+    '#suffix' => '</div>',
+  );
+
+  return $form;
+}
+
+
+function fundcore_moneybookers_contribution(&$contribution) {
+  if ($contribution->gateway == 'moneybookers') {
+    $attr = $contribution->data;
+  
+    // Verify hash
+    $secret_word_md5 = strtoupper(md5(variable_get('fundcore_moneybookers_secret_word', '')));    
+    $expected_md5 = md5($attr['merchant_id'] . $attr['transaction_id'] . $secret_word_md5 . $attr['mb_amount'] . $attr['mb_currency'] . $attr['status']);
+    if (strtoupper($expected_md5) == strtoupper($attr['md5sig']))
+    {
+      // Verify success
+      if ($attr['status'] == 2)
+      {
+        $split = explode('@', $attr['pay_from_email']);
+        $contribution->name = $split[0];
+        $contribution->email = $attr['pay_from_email'];
+        $split = explode(';', $attr['os0']);
+        $contribution->anonymous = ($split[0] != 'public');
+        $contribution->sid = $split[1];
+        $contribution->gateway_txn_id = $attr['mb_transaction_id'];
+        $contribution->original_currency = $attr['currency'];
+        $contribution->original_gross = $attr['amount'];
+        $contribution->gross = $attr['mb_amount'];
+        $contribution->net = $contribution->gross;
+
+        $contribution->comment = $attr['os1'];
+        $contribution->processed = 1;
+      }
+    }
+  }
+}
+
+function fundcore_moneybookers_settings() {
+  $form = array();
+  
+  $form['fundcore_moneybookers_secret_word'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Secret word'),
+    '#default_value' => variable_get('fundcore_moneybookers_secret_word', ''),
+  );
+
+  $form['fundcore_moneybookers_account'] = array(
+    '#type' => 'textfield',
+    '#title' => t('MoneyBookers account'),
+    '#default_value' => variable_get('fundcore_moneybookers_account', ''),
+  );
+
+  $form['fundcore_moneybookers_currencies'] = array(
+    '#type' => 'select',
+    '#multiple' => TRUE,
+    '#title' => t('Currencies'),
+    '#options' => exchange_rates_get_currencies(),
+    '#default_value' => variable_get('fundcore_moneybookers_currencies', array()),
+  );
+
+  return system_settings_form($form);
+}

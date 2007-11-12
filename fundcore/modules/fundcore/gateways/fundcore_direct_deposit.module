@@ -1,0 +1,96 @@
+<?php
+
+function fundcore_direct_deposit_menu($may_cache) {
+  $items = array();
+  
+  if ($may_cache) {
+    $items[] = array(
+      'path' => 'admin/settings/fundcore_direct deposit',
+      'title' => t('Fundraising CORE Direct Deposit'),
+      'callback' => 'drupal_get_form',
+      'callback arguments' => array('fundcore_direct_deposit_settings'),
+      'access' => user_access('administer site configuration'),
+    );
+  }
+  
+  return $items;
+}
+
+function fundcore_direct_deposit_contribution_form() {
+  $form = array();
+
+  $form['direct deposit'] = array(
+    '#type' => 'fieldset',
+    '#title' => '<big>' . t('Direct Deposit') . '</big>',
+    '#attributes' => array(
+      'style' => 'margin-right: 10px; width: 300px; height: 380px;',
+    )
+  );
+ 
+  $content = array();
+
+  $content[] = '<img style="float: right;" src="/sites/all/modules/fundcore/gateways/vault.png" />';
+  $content[] = '<p><strong>' . t('Deposit money directly into our bank account.') . '</strong></p>';
+
+  $content[] = '<p>' . t('!organization has a bank account that accepts money transfers.',
+    array('!organization' => variable_get('fundcore_direct_deposit_organization', ''))) . '</p>';
+
+  $content[] = '<p><strong>' . t('Account holder:') . '</strong></p>';
+  $content[] = variable_get('fundcore_direct_deposit_account_holder', '');
+
+  $content[] = '<p><strong>' . t('Bank:') . '</strong></p>';
+  $content[] = variable_get('fundcore_direct_deposit_bank', '');
+
+  $content[] = '<p><strong>' . t('Account:') . '</strong></p>';
+  $content[] = '<p>' . t('<strong>IBAN:</strong> !iban', array('!iban' => variable_get('fundcore_direct_deposit_iban', ''))) . '</p>';
+  $content[] = '<p>' . t('<strong>BIC:</strong> !bic', array('!bic' => variable_get('fundcore_direct_deposit_bic', ''))) . '</p>';
+  $content[] = '<p>' . t('<strong>Belgian account:</strong> !belgian', array('!belgian' => variable_get('fundcore_direct_deposit_belgian_account', ''))) . '</p>';
+
+  
+  $form['direct deposit'][] = array(
+    '#value' => implode("\n", $content),
+  );
+  return $form;
+}
+
+function fundcore_direct_deposit_settings() {
+  $form = array();
+  
+  $form['fundcore_direct_deposit_organization'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Organization'),
+    '#default_value' => variable_get('fundcore_direct_deposit_organization', ''),
+  );
+
+  $form['fundcore_direct_deposit_account_holder'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Account holder'),
+    '#default_value' => variable_get('fundcore_direct_deposit_account_holder', ''),
+  );
+
+  $form['fundcore_direct_deposit_bank'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Bank'),
+    '#default_value' => variable_get('fundcore_direct_deposit_bank', ''),
+  );
+
+  $form['fundcore_direct_deposit_iban'] = array(
+    '#type' => 'textfield',
+    '#title' => t('IBAN'),
+    '#default_value' => variable_get('fundcore_direct_deposit_iban', ''),
+  );
+
+  $form['fundcore_direct_deposit_bic'] = array(
+    '#type' => 'textfield',
+    '#title' => t('BIC'),
+    '#default_value' => variable_get('fundcore_direct_deposit_bic', ''),
+  );
+
+  $form['fundcore_direct_deposit_belgian_account'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Belgian account number'),
+    '#default_value' => variable_get('fundcore_direct_deposit_belgian_account', ''),
+  );
+  
+  return system_settings_form($form);
+}

@@ -1,0 +1,141 @@
+4-7-4 to 5-0
+--------------
+- Added terms with no language for translations
+- Added: Switch to user's language after login
+- Fixed bug with default language
+29/01/2007
+- Added automatic taxonomy translation when translating nodes
+- Added language session tracking
+- Added per language menu items
+- Added support for RTL languages
+- Added native names for languages
+- Cleaned up multilingual variable management
+- Handling of attachments as file revisions. No need to duplicate anymore
+
+4-6-0 to 4-7-4
+--------------
+30/11/2005
+- Added basic workflow support for translations
+- Lost of bug fixes
+- Content administration tab for translations
+
+20/08/2005
+- Updated for HEAD
+- Simplified patches
+
+13/06/2005
+- Fixed some minor bugs
+- Created HOWTO.txt for misc documentation
+- Added Russian flag
+- Updated patches for 4.6.1
+
+16/05/2005
+- Updated README.txt, taxonomy translations
+- Fixed i18n_includes.patch
+
+4-5-0 to 4-6-0
+--------------
+24/04/2005
+- Created 4-6 branch
+- Updated docs
+
+11/04/2005
+- Fixed bug http://drupal.org/node/20305 (pgsql typo)
+- Updated generated links to latest changes in l()
+- Some code cleanup
+- Update script from 4.5 to CVS
+
+29/03/2005
+- Japanese flag
+- Updated contributors
+
+26/03/2005
+- Added some logic in query rewriting functions to get all terms & vocabs when administering categories and the right ones when editing a node.
+- Reworked configuration options for flags. Now language appears in the alt text for icons. Accesibility++
+- Added support for long locale names (http://drupal.org/node/14814). Still needs some fallback mechanism.
+- Merging all the code in only one include file: i18n.inc
+- Not running anymore the language name through localization system: http://drupal.org/node/19179
+- Added & updated PostgreSQL schema
+- Changed block HTML from using tables to HTML list, for consistency with the rest of Drupal blocks
+- Added some contributed language flags
+- Some cleaning up, WIP, preparing for 4.6 release
+
+04/02/2005
+- Applied patch http://drupal.org/node/15966 (Switch to translated nodes and taxonomy listings)
+- Moved the file i18n.mysql and fixed bug
+- Cleaned up the patches (NK)
+
+02/02/2005
+- Term translations in a new table
+- Implemented db_rewrite_sql hook
+- Improved taxonomy forms
+- Fixed bug with update.php
+- Moved most of the hooks to i18n.inc, to fix some problems and speed up cached pages
+
+23/01/2005
+- Reworked init system, module.inc patch not needed anymore
+- Implemented hook_node_query_sql, node.module patch not needed anymore
+- Using redirects from the main page depending on browser language
+- Removed translations from taxonomy terms
+- Added language to vocabularies
+
+04/01/2004
+- Now language icons are not displayed with teasers
+- Fixed http://drupal.org/node/15062 (Inconsistent i18n_front_page vs. i18n_frontpage)
+- Fixed http://drupal.org/node/14640 (Page not found)
+- Fixed http://drupal.org/node/14475 (all init hooks disabled by cvs patch)
+
+07/12/2004
+- Fixed http://drupal.org/node/13982 (setting languages in config file fails)
+- Changed configurable path to language icons, to configurable html tag. Reconfiguration of the module needed.
+- Changed 'flags' to 'language icons', and the images to 16x12px png
+- Fixed http://drupal.org/node/13319 (some issues with cached pages)
+- Reworked initialization system. New patches for bootstrap.inc, module.inc
+
+30/11/2004
+
+- Updated to current DRUPAL-4-5 branch, won't work with 4.5.0 anymore
+- Cleaned the code as suggested by Dries
+- Renamed some database fields: 'lang' to 'language' in 'node' and 'taxonomy_term'
+
+23/11/2004 [Full rewrite]
+- Updated INSTALL.txt and README.txt
+- Basic translation interface for nodes and taxonomy terms
+- Simplified configuration, removed many options
+- Language code is now kept only in url
+- No need for include file anymore (patched common.inc::url)
+- Moving ahead from multi-table approach
+- Drop all the multi-table-synchronization logic
+- Simple database patches for 'node' and 'taxonomy_term' tables
+
+4-4-0 to 4-5-0
+--------------
+- Removed the common.inc patch 01, as it already got into the core
+- Added language dependent variables
+- Refined node and taxonomy synchronization
+- Rearranged configuration interface
+- Option to get supported languages from locale module
+- Replaced some global variables with functions.
+- Fixed an issue with outgoing links and url prefixing
+- Some integration with locale module
+- $languages changed to i18n_languages in the config file
+- Added patch for locale system to get the language from i18n
+- Partial rewriting and cleaning up of the code
+- Now, any two letter prefix in url will be taken as language
+- Fixed bug with url rewriting
+
+13/07/2004
+- Updated according to patches and description on http://drupal.org/node/view/8977
+
+06/04/2004
+- Changed options in conf file
+- Added taxonomy synchronization
+- Added node synchronization
+- Added *real* content translation with language-dependant tables
+- Repackaging: placed all the files under modules/i18n
+- Fix Call to undefined function: drupal_get_path_map()
+- Fixed small problem with drupal_goto
+
+4-4-0
+------------
+- Initial release

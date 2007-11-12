@@ -1,0 +1,21 @@
+<?php
+// $Id: i18nstrings.install,v 1.1.2.2 2007/03/19 12:30:44 jareyero Exp $
+
+function i18nstrings_install() {
+  switch ($GLOBALS['db_type']) {
+    case 'mysql':
+    case 'mysqli':
+      db_query("
+CREATE TABLE  {i18n_strings} (
+  `strid` varchar(100) NOT NULL,
+  `locale` varchar(12) NOT NULL,
+  `text` text NOT NULL,
+  PRIMARY KEY  (`strid`,`locale`)
+)  /*!40100 DEFAULT CHARACTER SET UTF8 */ 
+");
+
+      break;
+    default:
+      drupal_set_message(t('Database type not supported. This module, i18nstrings, needs manual installation.'));
+  }
+}

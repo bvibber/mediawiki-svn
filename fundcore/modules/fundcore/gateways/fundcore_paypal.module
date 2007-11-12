@@ -1,0 +1,234 @@
+<?php
+
+function fundcore_paypal_menu($may_cache) {
+  $items = array();
+  
+  if ($may_cache) {
+    $items[] = array(
+      'path' => 'admin/settings/fundcore_paypal',
+      'title' => t('Fundraising CORE PayPal'),
+      'callback' => 'drupal_get_form',
+      'callback arguments' => array('fundcore_paypal_settings'),
+      'access' => user_access('administer site configuration'),
+    );
+  }
+  
+  return $items;
+}
+
+function _fundcore_paypal_download($url, $vars = null)
+{
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_HEADER, 0);
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  
+  if ($vars !== null)
+  {
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $vars);
+  }
+  $data = curl_exec($ch);
+  curl_close($ch);
+  if (!$data)
+  {
+      return curl_error($ch);
+  }
+  return $data;
+}	
+
+function fundcore_paypal_contribution(&$contribution) {
+  if ($contribution->gateway == 'paypal') {
+    $attr = $contribution->data;
+    
+    $postback_url = 'https://www.paypal.com/cgi-bin/webscr';
+    if (isset($attr['test_ipn']))
+    {
+      $postback_url = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
+    }
+    $attr['cmd'] = '_notify-validate';
+    
+    $status = _fundcore_paypal_download($postback_url, $attr);
+    
+    /*
+    $response = drupal_http_request($postback_url, array(), 'POST', http_build_query($attr));
+    $status = $response->data;
+    */
+    
+    ksort($attr);
+    if ($status == 'INVALID')
+    {
+      watchdog('fundcore_paypal', 'Authentication failure: ' . $attr['txn_id'], WATCHDOG_ERROR);
+    }
+    else if ($status != 'VERIFIED')
+    {
+      $attr['error'] = $status;
+      watchdog('fundcore_paypal', 'Transaction not verified: ' . $attr['txn_id'], WATCHDOG_ERROR);
+    }
+    
+    if ($status == 'VERIFIED' && $attr['payment_status'] == 'Completed')
+    {
+      // Store the transaction
+  
+      $contribution->email = $attr['payer_email'];
+      $contribution->name = $attr['first_name'] . ' ' . $attr['last_name'];
+
+      /*
+      $contribution->first_name	= $attr['first_name'];
+      $contribution->last_name = $attr['last_name'];
+      $contribution->location_name = $attr['address_name'];
+      */
+      
+      $split = split("\n", str_replace("\r", '', $attr['address_street']));
+      
+      $contribution->address_street1	= $split[0];
+      $contribution->address_street2	= $split[1];
+      $contribution->address_city = $attr['address_city'];
+      $contribution->address_zone = $attr['address_state'];
+      $contribution->address_country	= $attr['address_country_code'];
+      $contribution->address_postal_code	= $attr['address_zip'];
+      
+      $split = explode(';', $attr['option_selection1']);
+      $contribution->anonymous = ($split[0] != 'public');
+      $contribution->sid = $split[1];
+      $contribution->gateway_txn_id = $attr['txn_id'];
+      $contribution->original_currency = $attr['mc_currency'];
+      $contribution->original_gross = $attr['mc_gross'];
+      $contribution->fee = exchange_rate_convert($attr['mc_currency'], $attr['mc_fee']);
+      $contribution->gross = exchange_rate_convert($attr['mc_currency'], $attr['mc_gross']);
+      $contribution->net = $contribution->gross - $contribution->fee;
+      $contribution->comment = $attr['option_selection2'];
+      $contribution->processed = 1;
+    }
+  }
+}
+
+function fundcore_paypal_contribution_form() {
+  $form = array();
+  
+  $form['#action'] = 'https://www.paypal.com/cgi-bin/webscr';
+
+  $form['paypal'] = array(
+    '#type' => 'fieldset',
+    '#title' => '<big>' . t('Credit Card or PayPal') . '</big>',
+    '#attributes' => array(
+      'style' => 'margin-right: 10px; width: 300px; height: 400px;',
+    )
+  );  
+
+  $form['paypal'][] = array(
+    '#value' => '<img style="display: block; margin-left: auto; margin-right: auto;" src="/sites/all/modules/fundcore/gateways/horizontal_solution_PP.gif" />',
+  );
+  
+  $form['paypal']['business'] = array(
+    '#type' => 'hidden',
+    '#value' => variable_get('fundcore_paypal_account', ''),
+  );
+  
+  $form['paypal']['item_name'] = array(
+    '#type' => 'hidden',
+    '#value' => t('One-time donation'),
+  );
+  
+  $form['paypal']['item_number'] = array(
+    '#type' => 'hidden',
+    '#value' => 'DONATE',
+  );
+  
+  $form['paypal']['no_note'] = array(
+    '#type' => 'hidden',
+    '#value' => 0,  
+  );
+  
+  $form['paypal']['cmd'] = array(
+    '#type' => 'hidden',
+    '#value' => '_xclick',
+  );
+
+  $form['paypal']['on0'] = array(
+    '#type' => 'hidden',
+    '#value' => 'Anonymity',
+  );
+  
+  $form['paypal']['on1'] = array(
+    '#type' => 'hidden',
+    '#value' => 'Comment',
+  );
+
+
+  /** Removed due to paypal bug -- TS 2007-10-25T12:50
+  $form['paypal']['lc'] = array(
+    '#type' => 'hidden',
+    '#value' => 'en',
+  );
+   */
+
+  $form['paypal']['notify_url'] = array(
+    '#type' => 'hidden',
+    '#value' => url('fundcore_gateway/paypal', NULL, NULL, TRUE),
+  );
+
+  $form['paypal']['amount'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Donation amount'),
+    '#required' => TRUE,
+    '#size' => 25,
+  );
+
+  $form['paypal']['currency_code'] = array(
+    '#type' => 'select',
+    '#title' => t('Currency'),
+    '#options' => variable_get('fundcore_paypal_currencies', array()),
+    '#required' => TRUE,
+    '#default_value' => 'USD',
+  );
+  
+  $form['paypal']['os1'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Public comment'),
+    '#maxlength'  => 200,
+    '#size' => 25,
+  );
+  
+  global $user;  
+  $form['paypal']['os0'] = array(
+    '#type' => 'radios',
+    '#title' => t('Privacy'),
+    '#options' => array(
+      'anonymous;' . $user->sid => t('List as anonymous'),
+      'public;' . $user->sid => t('List my name'),      
+    ),
+    '#default_value' => 'anonymous;' . $user->sid,
+    '#required' => TRUE,
+  );
+  
+  $form['paypal'][] = array(
+    '#type' => 'submit',
+    '#value' => t('Donate!'),
+    '#prefix' => '<div class="form-item">',
+    '#suffix' => '</div>',
+  );
+
+  return $form;
+}
+
+function fundcore_paypal_settings() {
+  $form = array();
+  
+  $form['fundcore_paypal_account'] = array(
+    '#type' => 'textfield',
+    '#title' => t('PayPal account'),
+    '#default_value' => variable_get('fundcore_paypal_account', ''),
+  );
+
+  $form['fundcore_paypal_currencies'] = array(
+    '#type' => 'select',
+    '#multiple' => TRUE,
+    '#title' => t('Currencies'),
+    '#options' => exchange_rates_get_currencies(),
+    '#default_value' => variable_get('fundcore_paypal_currencies', array()),
+  );
+  
+  return system_settings_form($form);
+}

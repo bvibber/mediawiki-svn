@@ -1,0 +1,37 @@
+<?php
+// $Id: i18nprofile.install,v 1.2.2.1 2007/03/19 12:30:42 jareyero Exp $
+/**
+ * Set language field in its own table
+ * Do not drop node.language now, just in case
+ * TO-DO: Drop old tables, fields
+ */
+
+function i18nprofile_install() {
+  switch ($GLOBALS['db_type']) {
+    case 'mysql':
+    case 'mysqli':
+      db_query("CREATE TABLE {i18n_profile_fields} (
+  `fid` int(10) NOT NULL,
+  `language` varchar(10) NOT NULL default '',
+  `title` varchar(255) default '',
+  `explanation` text,
+  `page` varchar(255) default '',
+  `options` text,
+   PRIMARY KEY  (`fid`, `language`)
+   ) /*!40100 DEFAULT CHARACTER SET UTF8 */ ");
+ 
+      break;
+   
+    case 'pgsql':
+      drupal_set_message("PGSQL automatic install is not supported for i18nprofile module");
+      break;
+  }
+}
+
+/**
+ * Update table to utf-8
+ */
+function i18nprofile_update_1() {
+  return _system_update_utf8(array('i18n_profile_fields'));
+}
+?>

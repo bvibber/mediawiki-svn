@@ -1,0 +1,43 @@
+<?php
+class pressflow_transaction {
+  private static $layers = 0;
+  private static $allow_commit = TRUE;
+  
+  function __construct()
+  {
+    if (self::$layers == 0)
+      db_query('BEGIN');
+    self::$layers++;
+  }
+
+  function __destruct()
+  {
+    self::$layers--;     
+    if (self::$layers == 0) {
+      if (self::$allow_commit) {
+        db_query('COMMIT');
+      } else {
+        db_query('ROLLBACK'); 
+      }
+      // Reset the ROLLBACK propagator
+      self::$allow_commit = TRUE;
+    }
+  }
+  
+  public function rollback_if_false($var)
+  {
+    if ($var === FALSE) {
+       $this->rollback();
+    }
+  }
+  
+  public function rollback()
+  {
+    self::$allow_commit = FALSE;
+  }
+  
+  static public function will_rollback()
+  {
+    return !self::$allow_commit;
+  }
+}

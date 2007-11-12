@@ -1,0 +1,37 @@
+<?php
+function forward_install() {
+  drupal_set_message('Installing forward');
+  switch ($GLOBALS['db_type']) {
+    case 'mysqli':
+    case 'mysql':
+      $query = db_query("create table {forward_log} (
+        nid int(10) unsigned NOT NULL default '0',
+        type varchar(8) NOT NULL default '',
+        timestamp int(11) NOT NULL default '0',
+        KEY (nid)
+      ) /*!40100 DEFAULT CHARACTER SET utf8 */;");
+      break;
+    case 'pgsql':
+      $query = db_query("CREATE TABLE {forward_log} (
+         nid integer references node (nid) NOT NULL,
+         type text NOT NULL,
+         timestamp integer NOT NULL
+        );
+      ");
+        db_query("CREATE index idx_forward_log_nid on {forward_log} (nid);");
+      break;
+    default:
+      break;
+  } // End case
+
+  if ($query) {
+    drupal_set_message(t('Forward module installed tables successfully.'));
+  }
+  else {
+    drupal_set_message(t('Table installation for the Forward module was unsuccessful. The tables may need to be installed by hand. See forward.install file for a list of the installation queries.'), 'error');
+  }
+}
+
+function forward_uninstall() {
+  db_query('DROP TABLE {forward_log}');
+}
