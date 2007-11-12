@@ -1,0 +1,26 @@
+<?php
+
+function fundcore_frontpage_menu($may_cache) {
+  $items = array();
+  
+  if ($may_cache) {
+    $items[] = array(
+      'path' => 'fundcore_frontpage',
+      'type' => MENU_CALLBACK,
+      'access' => TRUE,
+      'callback' => 'fundcore_frontpage_page',
+    );
+  }
+  
+  return $items;
+}
+
+function fundcore_frontpage_page() {
+  drupal_set_title('Contribute');
+
+  $content = array();
+  
+  
+  
+  return implode("\n", $content);
+}
