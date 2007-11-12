@@ -1,4 +1,4 @@
 name = Frontpage
 description = Provides the frontpage for fundraising.
 core = 5.x
-package = FundCORE
+package = Fundraising CORE

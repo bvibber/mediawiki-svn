@@ -16,11 +16,18 @@ function fundcore_frontpage_menu($may_cache) {
 }
 
 function fundcore_frontpage_page() {
-  drupal_set_title('Contribute');
+  //drupal_set_title('Contribute');
 
-  $content = array();
+  $content = _fundcore_frontpage_render('fundcore_frontpage.content.inc');
   
-  
-  
-  return implode("\n", $content);
+  return $content;
+}
+
+function _fundcore_frontpage_render($file, $variables = array()) {
+  extract($variables, EXTR_SKIP);
+  ob_start();
+  include $file;
+  $contents = ob_get_contents();
+  ob_end_clean();
+  return $contents;
 }
