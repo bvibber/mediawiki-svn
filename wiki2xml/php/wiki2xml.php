@@ -1423,6 +1423,7 @@ class wiki2xml
 #    $this->w = str_replace ( "\n<!--" , "<!--" , $this->w ) ;
 		$this->w= preg_replace('/\n<!--(.|\s)*?-->\n/', "<!-- --> ", $this->w);
 		$this->w= preg_replace('/<!--(.|\s)*?-->/', '', $this->w);
+		$this->w= preg_replace('/<!--(.|\s)*$/', '', $this->w);
 		
 		# Run the thing!
 #		$this->tables = array () ;

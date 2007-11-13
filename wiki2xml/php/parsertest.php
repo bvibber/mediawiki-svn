@@ -1,5 +1,7 @@
 <?PHP
 
+error_reporting ( E_ALL ) ;
+
 require_once ( "mediawiki_converter.php" ) ;
 
 function treat ( $s ) {
@@ -63,6 +65,7 @@ $xmlg['templates'] = array () ;
 $xmlg['add_gfdl'] = false ;
 $xmlg['keep_interlanguage'] = true ;
 $xmlg['keep_categories'] = true ;
+$xmlg['xml_articles_header'] = "<articles>" ;
 
 $xmlg['xhtml_justify'] = false ;
 $xmlg['xhtml_logical_markup'] = false ;
@@ -70,41 +73,39 @@ $xmlg['xhtml_source'] = false ;
 
 
 $cnt = 1 ;
-print "<table border=1 width='100%'><tr><th>Test</th><th>Result</th><th>wiki2xml</th><th>Input</th></tr>" ;
+print "<table border=1 width='100%'><tr><th>Test</th><th>Result</th><th>wiki2xml</th><th>Input</th><th>XML</th></tr>" ;
 foreach ( $tests AS $t ) {
   $res = $t->result ;
   $col = '' ;
-  if ( $cnt > 10 ) $nr = '' ;
-  else {
-    $converter = new MediaWikiConverter ;
-    $xml = $converter->article2xml ( "" , $t->input , $xmlg ) ;
-    $nr = $converter->articles2xhtml ( $xml , $xmlg ) ;
-    $nr = array_pop ( explode ( '<body>' , $nr , 2 ) ) ;
-    $nr = array_shift ( explode ( '</body>' , $nr , 2 ) ) ;
-    
-    # Fixing things to compare to the stupid parser test formatting
-    $res = trim ( $res ) ;
-    $res = str_replace ( "\n<" , "<" , $res ) ;
-    $res = str_replace ( "\n" , " " , $res ) ;
-    $res = str_replace ( " </p>" , "</p>" , $res ) ;
-    do { $o = $res ; $res = str_replace ( "  " , " " , $res ) ; } while ( $o != $res ) ;
-    
-    $nr = trim ( $nr ) ;
-    $nr = str_replace ( "\n<" , "<" , $nr ) ;
-    $nr = str_replace ( "\r" , "" , $nr ) ;
-    $nr = str_replace ( "\n" , " " , $nr ) ;
-    do { $o = $nr ; $nr = str_replace ( "  " , " " , $nr ) ; } while ( $o != $nr ) ;
-    
-    
-    $arr = array ( 'li' ) ;
-    foreach ( $arr AS $a ) $nr = str_replace ( "<$a>" , "<$a> " , $nr ) ;
+  $content_provider = new ContentProviderHTTP ;
+  $converter = new MediaWikiConverter ;
+  $xml = $converter->article2xml ( "" , $t->input , $xmlg ) ;
+  $nr = $converter->articles2xhtml ( $xml , $xmlg ) ;
+  $nr = array_pop ( explode ( '<body>' , $nr , 2 ) ) ;
+  $nr = array_shift ( explode ( '</body>' , $nr , 2 ) ) ;
+  
+  # Fixing things to compare to the stupid parser test formatting
+  $res = trim ( $res ) ;
+  $res = str_replace ( "\n<" , "<" , $res ) ;
+  $res = str_replace ( "\n" , " " , $res ) ;
+  $res = str_replace ( " </p>" , "</p>" , $res ) ;
+  do { $o = $res ; $res = str_replace ( "  " , " " , $res ) ; } while ( $o != $res ) ;
+  
+  $nr = trim ( $nr ) ;
+  $nr = str_replace ( "\n<" , "<" , $nr ) ;
+  $nr = str_replace ( "\r" , "" , $nr ) ;
+  $nr = str_replace ( "\n" , " " , $nr ) ;
+  do { $o = $nr ; $nr = str_replace ( "  " , " " , $nr ) ; } while ( $o != $nr ) ;
+  
+  
+  $arr = array ( 'li' ) ;
+  foreach ( $arr AS $a ) $nr = str_replace ( "<$a>" , "<$a> " , $nr ) ;
 
 
-    # Indicator color
-    $col = 'red' ;
-    if ( $res == $nr ) $col = 'green' ;
+  # Indicator color
+  $col = 'red' ;
+  if ( $res == $nr ) $col = 'green' ;
 #    $nr = str_replace ( '</' , "\n</" , $xml ) ;
-  }
 
   
   
@@ -112,9 +113,10 @@ foreach ( $tests AS $t ) {
   print "<td>" . treat ( $res ) . "</td>" ;
   print "<td>" . treat ( $nr ) . "</td>" ;
   print "<td>" . treat ( $t->input ) . "</td>" ;
+  print "<td>" . treat ( $xml ) . "</td>" ;
 
   $cnt++ ;
-  if ( $cnt > 10 ) break ;
+  if ( $cnt > 40 ) break ;
 }
 print "</table>" ;
 
