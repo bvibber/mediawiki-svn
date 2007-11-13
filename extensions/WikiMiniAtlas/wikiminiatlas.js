@@ -17,8 +17,6 @@ function WikiMiniAtlas( obj )
  this.coordinate_region = '';
  this.width = 500;
  this.height = 300;
- this.imgbase = 'http://tools.wikimedia.de/~dschwen/wikiminiatlas/tiles/';
- this.database = 'http://tools.wikimedia.de/~dschwen/wikiminiatlas/label/';
 
  // globals
  this.widget = null;
@@ -37,7 +35,6 @@ function WikiMiniAtlas( obj )
  this.gx = 0;
  this.gy = 0;
  this.zoom = 1;
- this.zoomsize = [ 3, 6 ,12 ,24 ,48, 96, 192, 384, 768, 1536,  3072, 6144, 12288, 24576, 49152, 98304 ];
  this.marker = { lat: 0.0, lon: 0.0, obj: null, locked: true };
  this.taget_button = null;
  this.settings = null;
@@ -83,18 +80,7 @@ function WikiMiniAtlas( obj )
   for( var item in this.strings )
    if( !this.strings[item][this.lang] ) this.strings[item][this.lang] = this.strings[item]['en'];
 
-
-  //scheiss innerHTML durch richtiges DOM ersetzen!
-  /*
-  var button_plus = document.createElement( 'img ');
-  button_plus.title = strings.zoomIn[this.lang]; 
-  setStyleButton( button_plusi, 'button_plus.png' );
-  button_plus.style.left = '10px';
-  button_plus.style.top = '10px';
-  this.addEvent( button_plus, 'mousedown', this.zoomIn );
-  */
-
-  this.newElement( 'img', 
+  var button_plus = this.newElement( 'img', 
    { 
     src: this.imgbase + 'button_plus.png', 
     title: this.strings.zoomIn[this.lang], 
@@ -108,7 +94,7 @@ function WikiMiniAtlas( obj )
     style: { left: '10px', top: '32px' }
    }, { mousedown: this.zoomOut } );
 
-  var button_target = this.newElement( 'img',
+  this.taget_button = this.newElement( 'img',
    {
     src: this.imgbase + 'button_target_locked.png',
     title: this.strings.center[this.lang],
@@ -123,17 +109,26 @@ function WikiMiniAtlas( obj )
    }, { click: this.toggleSettings } );
 
 
+
+  var homepage_link = this.newElement( 'img',
+   {
+    href: 'http://meta.wikimedia.org/wiki/WikiMiniAtlas/' + this.lang,
+    target: '_top',
+    style: { zIndex: '11', position: 'absolute', right: '10px', bottom: '3px', color: 'black', fontSize: '5pt' }
+   }, {} );
+  homepage_link.appendChild( document.createTextNode( "WikiMiniAtlas" ) );
+
+  var scalebox = document.createElement( 'div' );
+  this.scalebar = document.createElement( 'div' );
+  this.scalelabel = document.createElement( 'div' );
+  this.scalelabel.appendChild( document.createTextNode( "null" ) );
+  scalebox.appendChild( this.scalebar );
+  scalebox.appendChild( this.scalelabel );
+
   WikiMiniAtlasHTML = '';
 
-  WikiMiniAtlasHTML += '<a href="http://meta.wikimedia.org/wiki/WikiMiniAtlas/'+this.lang+'" target="_top" style="z-index:11; position:absolute; bottom:3px; right: 10px; color:black; font-size:5pt">WikiMiniAtlas</a>';
-
-  WikiMiniAtlasHTML += '<div id="wikiminiatlas_map" style="position:absolute; width:'+this.width+'px; height:'+this.height+'px; border: 1px solid gray; cursor: move; background-color: #aaaaaa; clip:rect(0px, '+this.width+'px, '+this.height+'px, 0px);"></div>';
+  //WikiMiniAtlasHTML += '<div id="wikiminiatlas_map" style="position:absolute; width:'+this.width+'px; height:'+this.height+'px; border: 1px solid gray; cursor: move; background-color: #aaaaaa; clip:rect(0px, '+this.width+'px, '+this.height+'px, 0px);"></div>';
   
-  // Scalebar
-  WikiMiniAtlasHTML += 
-   '<div id="scalebox"><div id="scalebar"></div>' +
-   '<div id="scalelabel">null</div></div>';
- 
   // Settings page
   WikiMiniAtlasHTML += 
    '<div id="wikiminiatlas_settings">' +
@@ -168,24 +163,30 @@ function WikiMiniAtlas( obj )
    '</div>' +
    '</div>';
 
-  obj.innerHTML = WikiMiniAtlasHTML ;
-  widget  = document.getElementById('wikiminiatlas_widget');
+  this.widget.style.clip = 'rect(0px,' + this.width + 'px,' + this.height + 'px,0px)';
+  this.widget.oncontextmenu = function() { return false; };
+  this.widget.innerHTML = WikiMiniAtlasHTML ;
 
-  scalelabel = document.getElementById('scalelabel');
-  scalebar = document.getElementById('scalebar');
-
-  //button_plus.onmousedown = this.zoomIn;
-  //button_minus.onmousedown = this.zoomOut;
-
-  document.body.oncontextmenu = function() { return false; };
+  this.widget.appendChild( button_minus );
+  this.widget.appendChild( button_plus );
+  this.widget.appendChild( button_menu );
+  this.widget.appendChild( this.taget_button );
+  this.widget.appendChild( homepage_link );
 
   old_onmouseup = document.onmouseup;
   old_onmousemove = document.onmousemove;
 
   this.initializeMap();
-  wmaMoveToTarget();
+  this.moveToTarget();
  }
 }
+
+//
+// Globals
+//
+WikiMiniAtlas.prototype.imgbase = 'http://tools.wikimedia.de/~dschwen/wikiminiatlas/tiles/';
+WikiMiniAtlas.prototype.database = 'http://tools.wikimedia.de/~dschwen/wikiminiatlas/label/';
+
 
 //
 // Hook up instalation function
@@ -242,7 +243,7 @@ console.log( 'nx, ny = ' + this.nx , ',' + this.ny );
   {
    this.widget.innerHTML += '<div id="wmatile'+n+'" style="position:absolute; width:128px; height:128px;"></div>';
    thistile = document.getElementById('wmatile'+n);
-   thistile.onmousedown = mouseDownWikiMiniAtlasMap;
+   thistile.onmousedown = this.mouseDownHandler;
    n++;
   }
 
@@ -251,13 +252,13 @@ console.log( 'nx, ny = ' + this.nx , ',' + this.ny );
   
  //this.widget.innerHTML += '<div id="wmamarker" style="z-index:21; position:absolute; width:11px; height:11px; background-image:url(\''+wikiminiatlas_imgbase+'red_dot.png\'); background-repeat: no-repeat"></div>';
 
- this.marker = this.newElement( 'div', 
+ this.marker.obj = this.newElement( 'div', 
   { style: { width: '11px', height: '11px', zIndex: '21', position: 'absolute', 
              backgroundImage: 'url(\'' + this.imgbase + 'red_dot.png\')', 
              backgroundRepeat: 'none' } 
   }, {} );
 
- this.widget.appendChild( this.marker );
+ this.widget.appendChild( this.marker.obj );
 }
 
 WikiMiniAtlas.prototype.setStyleZPWH = function( obj, z, p, w ,h )
@@ -314,25 +315,25 @@ WikiMiniAtlas.prototype.newElement = function( tag, props, events )
 //function moveWikiMiniAtlasMapTo()
 WikiMiniAtlas.prototype.moveMapTo = function()
 {
- if( gy < 0 ) gy = 0;
- if( gx < 0 ) gx += Math.floor( zoomsize[zoom] * 256 );
+ if( this.gy < 0 ) this.gy = 0;
+ if( this.gx < 0 ) this.gx += Math.floor( this.getZoomsize() * 256 );
 
- var lx = Math.floor( gx / 128 ) % nx;
- var ly = Math.floor( gy / 128 ) % ny;
- var fx = gx % 128;
- var fy = gy % 128;
+ var lx = Math.floor( this.gx / 128 ) % this.nx;
+ var ly = Math.floor( this.gy / 128 ) % this.ny;
+ var fx = this.gx % 128;
+ var fy = this.gy % 128;
  var n;
  var thistile;
  var tileurl;
  var dataurl;
 
- wmaUpdateScalebar();
+ this.updateScalebar();
  //document.getElementById('debugbox').innerHTML='';
 
- for(var j = 0; j < ny; j++)
-  for(var i = 0; i < nx; i++)
+ for(var j = 0; j < this.ny; j++)
+  for(var i = 0; i < this.nx; i++)
   {
-   n = ( (i+lx) % nx ) + ( (j+ly) % ny ) * nx;
+   n = ( (i+lx) % this.nx ) + ( (j+ly) % this.ny ) * this.nx;
 
    thistile = document.getElementById('wmatile'+n);
    thistile.style.left = (i*128-fx) + 'px';
@@ -340,33 +341,33 @@ WikiMiniAtlas.prototype.moveMapTo = function()
 
    //thistile.innerHTML = (Math.floor(wikiminiatlas_gx/128)+i)+','+(Math.floor(wikiminiatlas_gy/128)+j);
    tileurl = 'url("' + 
-    tilesets[tileset].getTileURL((Math.floor(gy/128)+j),(Math.floor(gx/128)+i),zoom) + '")';
-   dataurl = wmaGetDataURL( ( Math.floor( gy/128 ) + j ), ( Math.floor( gx/128 ) + i ), zoom );
+    this.tilesets[ this.tileset ].getTileURL( (Math.floor( this.gy/128)+j), (Math.floor(this.gx/128)+i), this.zoom ) + '")';
+   dataurl = this.getDataURL( ( Math.floor( this.gy/128 ) + j ), ( Math.floor( this.gx/128 ) + i ), this.zoom );
 
-   if( tile[n] != tileurl )
+   if( this.tile[n] != tileurl )
    {
-    tile[n] = tileurl;
-    thistile.style.backgroundImage=tileurl;
+    this.tile[n] = tileurl;
+    thistile.style.backgroundImage = tileurl;
 
-    if( xmlhttp[n] &&
-     ( xmlhttp[n].readyState == 1 ||
-       xmlhttp[n].readyState == 2 ||
-       xmlhttp[n].readyState == 3 ) )
+    if( this.xmlhttp[n] &&
+     ( this.xmlhttp[n].readyState == 1 ||
+       this.xmlhttp[n].readyState == 2 ||
+       this.xmlhttp[n].readyState == 3 ) )
     {
-     xmlhttp[n].abort();
+     this.xmlhttp[n].abort();
     }
 
-    xmlhttp[n].open( "GET", dataurl, true );
+    this.xmlhttp[n].open( "GET", dataurl, true );
     thistile.innerHTML = 'loading';
-    xmlhttp[n].onreadystatechange = xmlhttp_callback[n];
-    xmlhttp[n].send( null );
+    this.xmlhttp[n].onreadystatechange = this.xmlhttp_callback[n];
+    this.xmlhttp[n].send( null );
    }
 
-   var newcoords = LatLonToXY( this.marker.lat, this.marker.lon );
-   var newx = ( newcoords.x - gx );
-   if( newx < -100 ) newx += (zoomsize[zoom]*256);
+   var newcoords = this.latLonToXY( this.marker.lat, this.marker.lon );
+   var newx = ( newcoords.x - this.gx );
+   if( newx < -100 ) newx += ( this.getZoomsize() * 256 );
    this.marker.obj.style.left = ( newx - 6 ) + 'px';
-   this.marker.obj.style.top  = ( newcoords.y - gy -6 ) + 'px';
+   this.marker.obj.style.top  = ( newcoords.y - this.gy -6 ) + 'px';
   }
 
 }
@@ -406,14 +407,14 @@ WikiMiniAtlas.prototype.mouseUpHandler = function()
 //function mouseMoveWikiMiniAtlasMap(ev)
 WikiMiniAtlas.prototype.mouseMoveHandler = function( ev )
 {
- window.scrollTo(0,0);
+ //window.scrollTo(0,0);
  if( this.dragging != null )
  {
   var newev = ev || window.event;
   var newcoords = mouseCoords(newev);
 
-  gx -= ( newcoords.x - this.dragging.x );
-  gy -= ( newcoords.y - this.dragging.y );
+  this.gx -= ( newcoords.x - this.dragging.x );
+  this.gy -= ( newcoords.y - this.dragging.y );
   this.dragging = newcoords;
 
   moveMapTo();
@@ -472,7 +473,7 @@ WikiMiniAtlas.prototype.mouseCoords = function( ev )
 //function wmaGetDataURL(y,x,z)
 WikiMiniAtlas.prototype.getDataURL = function( y, x, z )
 {
- return database + this.site + '_' + (zoomsize[z]-y-1) + '_' + (x % (zoomsize[z]*2) ) + '_' + z;
+ return this.database + this.site + '_' + ( this.getZoomsize() - y - 1 ) + '_' + ( x % ( this.getZoomsize() * 2 ) ) + '_' + z;
 }
 
 WikiMiniAtlas.prototype.tilesetUpgrade = function()
@@ -490,12 +491,12 @@ WikiMiniAtlas.prototype.tilesetUpgrade = function()
 
 WikiMiniAtlas.prototype.tilesetDowngrade = function()
 {
- for( var i = tileset-1; i >= 0; i-- )
+ for( var i = this.tileset-1; i >= 0; i-- )
  {
-  if( tilesets[i].minzoom < (zoom-1) )
+  if( this.tilesets[i].minzoom < ( this.zoom - 1 ) )
   {
-   tileset = i;
-   zoom--;
+   this.tileset = i;
+   this.zoom--;
    return;
   }
  }
@@ -504,7 +505,7 @@ WikiMiniAtlas.prototype.tilesetDowngrade = function()
 //function wmaZoomIn( ev )
 WikiMiniAtlas.prototype.zoomIn = function( ev )
 {
- var mapcenter = wmaXYToLatLon( gx + width/2, gy + height/2 );
+ var mapcenter = this.XYToLatLon( this.gx + this.width/2, this.gy + this.height/2 );
  var rightclick = false;
 
  if(!ev) var ev = window.event;
@@ -515,25 +516,25 @@ WikiMiniAtlas.prototype.zoomIn = function( ev )
 
  if( rightclick )
  {
-  zoom = tilesets[tileset].maxzoom;
+  this.zoom = this.tilesets[this.tileset].maxzoom;
  }
  else
  {
-  if( zoom >= tilesets[tileset].maxzoom )
-   tilesetUpgrade();
+  if( thia.zoom >= thia.tilesets[thia.tileset].maxzoom )
+   thia.tilesetUpgrade();
   else 
-   zoom++;
+   thia.zoom++;
  }
 
  var newcoords;
 
  if( this.marker.locked )
-  newcoords = LatLonToXY( this.marker.lat, this.marker.lon );
+  newcoords = this.latLonToXY( this.marker.lat, this.marker.lon );
  else
-  newcoords = LatLonToXY( mapcenter.lat, mapcenter.lon );
+  newcoords = this.latLonToXY( mapcenter.lat, mapcenter.lon );
 
- gx = newcoords.x - width/2;
- gy = newcoords.y - height/2;
+ this.gx = newcoords.x - this.width/2;
+ this.gy = newcoords.y - this.height/2;
  this.moveMapTo();
 
  return false;
@@ -542,7 +543,7 @@ WikiMiniAtlas.prototype.zoomIn = function( ev )
 //function wmaZoomOut( e )
 WikiMiniAtlas.prototype.zoomOut = function( e )
 {
- var mapcenter = wmaXYToLatLon( this.gx + this.width/2, this.gy + this.height/2 );
+ var mapcenter = this.XYToLatLon( this.gx + this.width/2, this.gy + this.height/2 );
  var rightclick = false;
 
  if(!ev) var ev = window.event;
@@ -563,7 +564,7 @@ WikiMiniAtlas.prototype.zoomOut = function( e )
    this.zoom--;
  }
 
- var newcoords = LatLonToXY( mapcenter.lat, mapcenter.lon );
+ var newcoords = thia.latLonToXY( mapcenter.lat, mapcenter.lon );
  this.gx = newcoords.x - this.width/2;
  this.gy = newcoords.y - this.height/2;
  this.moveMapTo();
@@ -582,9 +583,9 @@ WikiMiniAtlas.prototype.selectTileset = function( n )
  this.tileset = n;
 
  if( this.zoom != newz ) {
-  var mapcenter = XYToLatLon( this.gx + this.width/2, this.gy + this.height/2 );
+  var mapcenter = this.XYToLatLon( this.gx + this.width/2, this.gy + this.height/2 );
   this.zoom = newz;
-  var newcoords = LatLonToXY( mapcenter.lat, mapcenter.lon );
+  var newcoords = this.latLonToXY( mapcenter.lat, mapcenter.lon );
   this.gx = newcoords.x - this.width/2;
   this.gy = newcoords.y - this.height/2;
  }
@@ -616,11 +617,11 @@ WikiMiniAtlas.prototype.labelSet = function( s )
 //function wmaUpdateScalebar()
 WikiMiniAtlas.prototype.updateScalebar = function()
 {
- var sblocation = XYToLatLon( this.gx + this.width/2, this.gy + this.height/2 );
+ var sblocation = this.XYToLatLon( this.gx + this.width/2, this.gy + this.height/2 );
  var slen1 = 50, slen2;
  var skm1,skm2;
  //scalelabel.innerHTML = 
- skm1 = Math.cos( sblocation.lat * 0.0174532778) * circ_eq * slen1 / ( 256 * zoomsize[zoom] );
+ skm1 = Math.cos( sblocation.lat * 0.0174532778) * this.circ_eq * slen1 / ( 256 * this.getZoomsize() );
  skm2 = Math.pow( 10, Math.floor( Math.log(skm1) / Math.log(10) ) );
  slen2 = slen1*skm2/skm1;
  if( 5*slen2 < slen1 ) { slen2=slen2*5; skm2=skm2*5; }
@@ -641,9 +642,9 @@ WikiMiniAtlas.prototype.updateTargetButton = function()
 //function wmaMoveToTarget()
 WikiMiniAtlas.prototype.moveToTarget = function()
 {
- var newcoords = wmaLatLonToXY(wikiminiatlas_marker_lat,wikiminiatlas_marker_lon);
- this.gx = newcoords.x-wikiminiatlas_width/2;
- this.gy = newcoords.y-wikiminiatlas_height/2;
+ var newcoords = this.latLonToXY( this.marker.lat, this.marker.lon);
+ this.gx = newcoords.x - this.width / 2;
+ this.gy = newcoords.y - this.height / 2;
  this.moveMapTo();
 
  this.marker.locked = true;
@@ -651,17 +652,25 @@ WikiMiniAtlas.prototype.moveToTarget = function()
 }
 
 //function wmaLatLonToXY(lat,lon)
-WikiMiniAtlas.prototype.LatLonToXY = function( lat, lon )
+WikiMiniAtlas.prototype.latLonToXY = function( lat, lon )
 {
- var newx = Math.floor((lon/360.0)*wikiminiatlas_zoomsize[wikiminiatlas_zoom]*256);
- if( newx < 0 ) newx+=wikiminiatlas_zoomsize[wikiminiatlas_zoom]*256;
- return { y:Math.floor((0.5-lat/180.0)*wikiminiatlas_zoomsize[wikiminiatlas_zoom]*128), x:newx };
+ var newx = Math.floor( ( lon / 360.0 ) * this.getZoomsize() * 256 );
+ if( newx < 0 ) newx += this.getZoomsize() * 256;
+ return { y: Math.floor( ( 0.5 - lat / 180.0 ) * this.getZoomsize() * 128 ), 
+          x: newx };
 }
 
 //function wmaXYToLatLon(x,y)
 WikiMiniAtlas.prototype.XYToLatLon = function( x , y )
 {
- return { lat:180.0*(0.5-y/(this.zoomsize[this.zoom]*128)), lon:360.0*(x/(this.zoomsize[this.zoom]*256)) };
+ return { lat: 180.0 * ( 0.5 - y / ( this.getZoomsize() * 128 ) ), 
+          lon: 360.0 * ( x / ( this.getZoomsize() * 256 ) ) };
+}
+
+// get the current zoomsize in number of tiles
+WikiMiniAtlas.prototype.getZoomsize = function()
+{
+ return this.tilesets[this.tileset].zoomsize[ this.zoom ];
 }
 
 //
@@ -680,7 +689,7 @@ WikiMiniAtlas.prototype.initializeXMLHTTP = function()
  /*@if (@_jscript_version >= 5)
  // Internet Explorer (uses Conditional compilation)
  // traps security blocked creation of the objects.
-  wmaDebug('Microsoft section');
+  //wmaDebug('Microsoft section');
   try {
    this.xmlhttp = new Array(n_total);
    for(i=0; i< n_total; i++) this.xmlhttp[i] = new ActiveXObject("Msxml2.XMLHTTP");
@@ -712,10 +721,10 @@ WikiMiniAtlas.prototype.initializeXMLHTTP = function()
  if (!this.xmlhttp && window.createRequest) {
   try {
    this.xmlhttp = new Array(n_total);
-   for(i=0; i< n_total; i++) wikiminiatlas_xmlhttp[i] = new window.createRequest();
+   for(i=0; i< n_total; i++) this.xmlhttp[i] = new window.createRequest();
    wmaDebug('* window.createRequest success');
   } catch (e) {
-   wikiminiatlas_xmlhttp=false;
+   this.xmlhttp=false;
   }
  }
 }
@@ -725,13 +734,13 @@ WikiMiniAtlas.prototype.initializeXMLHTTP = function()
 // Build them all
 //
 //function wmaInitializeXMLHTTPCallBacks()
-WikiMiniAtlas.prototype.wmaInitializeXMLHTTPCallBacks = function()
+WikiMiniAtlas.prototype.initializeXMLHTTPCallBacks = function()
 {
  var i;
- var n_total = wikiminiatlas_nx*wikiminiatlas_ny;
- wikiminiatlas_xmlhttp_callback = new Array(n_total);
+ var n_total = this.nx * this.ny;
+ this.xmlhttp_callback = new Array(n_total);
  for(i=0; i< n_total; i++)
-  wikiminiatlas_xmlhttp_callback[i] = new Function("if (wikiminiatlas_xmlhttp["+i+"].readyState==4) { document.getElementById('wmatile"+i+"').innerHTML = wikiminiatlas_xmlhttp["+i+"].responseText; }");
+  this.xmlhttp_callback[i] = new Function("if (this.xmlhttp["+i+"].readyState==4) { document.getElementById('wmatile"+i+"').innerHTML = wikiminiatlas_xmlhttp["+i+"].responseText; }");
 }
 
  // cross-browser event attachment (John Resig)
@@ -1045,9 +1054,10 @@ WikiMiniAtlas.prototype.tilesets =
   name: "Full basemap (VMAP0)",
   getTileURL: function(y,x,z) 
   { 
-   return imgbase+'mapnik'+(z+1)+'/tile_'+y+'_'+(x % (zoomsize[z]*2) )+'.png'; 
+   return WikiMiniAtlas.prototype.imgbase + 'mapnik' + ( z + 1 ) + '/tile_' + y + '_' + ( x % ( this.zoomsize[z] * 2 ) ) + '.png'; 
   },
   linkcolor: "#2255aa",
+  zoomsize: [ 3, 6 ,12 ,24 ,48, 96, 192, 384, 768, 1536,  3072, 6144, 12288, 24576, 49152, 98304 ],
   maxzoom: 10,
   minzoom: 0
  },
@@ -1055,9 +1065,10 @@ WikiMiniAtlas.prototype.tilesets =
   name: "Physical",
   getTileURL: function(y,x,z) 
   { 
-   return imgbase+'relief/'+z+'/'+y+'_'+(x % (zoomsize[z]*2) )+'.png'; 
+   return this.imgbase+'relief/'+z+'/'+y+'_'+( x % ( this.zoomsize[z] * 2 ) ) + '.png'; 
   },
   linkcolor: "#2255aa",
+  zoomsize: [ 3, 6 ,12 ,24 ,48, 96, 192, 384, 768, 1536,  3072, 6144, 12288, 24576, 49152, 98304 ],
   maxzoom: 5,
   minzoom: 0
  },
@@ -1065,9 +1076,10 @@ WikiMiniAtlas.prototype.tilesets =
   name: "Minimal basemap (coastlines)",
   getTileURL: function(y,x,z) 
   { 
-   return imgbase+'newzoom'+(z+1)+'/tile_'+y+'_'+(x % (zoomsize[z]*2) )+'.png'; 
+   return this.imgbase+'newzoom'+(z+1)+'/tile_'+y+'_'+(x % ( this.zoomsize[z] * 2 ) ) + '.png'; 
   },
   linkcolor: "#2255aa",
+  zoomsize: [ 3, 6 ,12 ,24 ,48, 96, 192, 384, 768, 1536,  3072, 6144, 12288, 24576, 49152, 98304 ],
   maxzoom: 7,
   minzoom: 0
  },
@@ -1075,12 +1087,13 @@ WikiMiniAtlas.prototype.tilesets =
   name: "Landsat",
   getTileURL: function(y,x,z) 
   { 
-   var x1 = x % (zoomsize[z]*2);
-   if( x1<0 ) x1+=(zoomsize[z]*2);
+   var x1 = x % ( this.zoomsize[z] * 2 );
+   if( x1<0 ) x1 += ( this.zoomsize[z] * 2 );
 
    return imgbase + 'satellite/earth/'+z+'/'+y+'_'+x1+'.jpg'; 
   },
   linkcolor: "white",
+  zoomsize: [ 3, 6 ,12 ,24 ,48, 96, 192, 384, 768, 1536,  3072, 6144, 12288, 24576, 49152, 98304 ],
   maxzoom: 13,
   minzoom: 0
  },
@@ -1088,9 +1101,10 @@ WikiMiniAtlas.prototype.tilesets =
   name: "Night on Earth",
   getTileURL: function(y,x,z) 
   { 
-   return imgbase+'nightonearth/'+z+'/'+y+'_'+(x % (zoomsize[z]*2) )+'.png'; 
+   return imgbase+'nightonearth/'+z+'/'+y+'_'+(x % ( this.zoomsize[z] * 2 ) ) + '.png'; 
   },
   linkcolor: "#2255aa",
+  zoomsize: [ 3, 6 ,12 ,24 ,48, 96, 192, 384, 768, 1536,  3072, 6144, 12288, 24576, 49152, 98304 ],
   maxzoom: 5,
   minzoom: 0
  },
@@ -1099,9 +1113,10 @@ WikiMiniAtlas.prototype.tilesets =
   getTileURL: function(y,x,z) 
   {
    return imgbase + 
-    'satellite/sat2.php?x='+(x % (zoomsize[z]*2) )+'&y='+y+'&z='+z+'&l=0'; 
+    'satellite/sat2.php?x='+(x % ( this.zoomsize[z] * 2 ) ) + '&y=' + y + '&z=' + z + '&l=0'; 
   },
   linkcolor: "#aa0000",
+  zoomsize: [ 3, 6 ,12 ,24 ,48, 96, 192, 384, 768, 1536,  3072, 6144, 12288, 24576, 49152, 98304 ],
   maxzoom: 7,
   minzoom: 0
  },
@@ -1110,9 +1125,10 @@ WikiMiniAtlas.prototype.tilesets =
   getTileURL: function(y,x,z) 
   { 
    return imgbase + 
-    'satellite/sat2.php?x='+(x % (zoomsize[z]*2) )+'&y='+y+'&z='+z+'&l=1'; 
+    'satellite/sat2.php?x='+(x % ( this.zoomsize[z] * 2 ) )+'&y='+y+'&z='+z+'&l=1'; 
   },
   linkcolor: "#aa0000",
+  zoomsize: [ 3, 6 ,12 ,24 ,48, 96, 192, 384, 768, 1536,  3072, 6144, 12288, 24576, 49152, 98304 ],
   maxzoom: 7,
   minzoom: 0
  },
@@ -1120,12 +1136,13 @@ WikiMiniAtlas.prototype.tilesets =
   name: "Moon (experimental!)",
   getTileURL: function(y,x,z) 
   { 
-   var x1 = x % (zoomsize[z]*2);
-   if( x1<0 ) x1+=(zoomsize[z]*2);
+   var x1 = x % ( this.zoomsize[z] * 2 );
+   if( x1<0 ) x1+=( this.prototype.zoomsize[z] * 2 );
 
    return imgbase + 'satellite/moon/'+z+'/'+y+'_'+x1+'.jpg'; 
   },
   linkcolor: "#aa0000",
+  zoomsize: [ 3, 6 ,12 ,24 ,48, 96, 192, 384, 768, 1536,  3072, 6144, 12288, 24576, 49152, 98304 ],
   maxzoom: 7,
   minzoom: 0
  }
