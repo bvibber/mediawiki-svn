@@ -191,9 +191,9 @@ class XML2XHTML {
 	function tag_xhtml_em ( $open , &$attrs ) { $this->simple_tag ( $open , "em" ) ; }
 	function tag_xhtml_ol ( $open , &$attrs ) { $this->simple_tag ( $open , "ol" ) ; }
 	function tag_xhtml_ul ( $open , &$attrs ) { $this->simple_tag ( $open , "ul" ) ; }
-	function tag_xhtml_dl ( $open , &$attrs ) { $this->simple_tag ( $open , "dl" ) ; }
 	function tag_xhtml_li ( $open , &$attrs ) { $this->simple_tag ( $open , "li" ) ; }
 	function tag_xhtml_dt ( $open , &$attrs ) { $this->simple_tag ( $open , "dt" ) ; }
+	function tag_xhtml_dl ( $open , &$attrs ) { $this->simple_tag ( $open , "dl" ) ; }
 	function tag_xhtml_dd ( $open , &$attrs ) { $this->simple_tag ( $open , "dd" ) ; }
 	function tag_xhtml_code ( $open , &$attrs ) { $this->simple_tag ( $open , "code" ) ; }
 	function tag_preblock ( $open , &$attrs ) { $this->simple_tag ( $open , "pre" ) ; }
@@ -227,7 +227,9 @@ class XML2XHTML {
 			$this->close_tag ( $o->tag ) ;
 			return ;
 		}
-		if ( $o->tag == 'dl' || $o->tag == 'dt' || $o->tag == 'dd' ) $this->tag_xhtml_dt ( $open , $attrs ) ;
+		if ( $o->tag == 'dt' ) $this->tag_xhtml_dt ( $open , $attrs ) ;
+		else if ( $o->tag == 'dl' ) $this->tag_xhtml_dl ( $open , $attrs ) ;
+		else if ( $o->tag == 'dd' ) $this->tag_xhtml_dd ( $open , $attrs ) ;
 		else $this->tag_xhtml_li ( $open , $attrs ) ;
 	}
 	

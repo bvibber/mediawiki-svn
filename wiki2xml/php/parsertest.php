@@ -9,7 +9,7 @@ function treat ( $s ) {
   return $s ;
 }
 
-$lines = explode ( "\n" , file_get_contents ( "../../phase3/maintenance/parserTests.txt" ) ) ; # This path is for trunk
+$lines = explode ( "\n" , str_replace ( "\r" , "" , file_get_contents ( "../../phase3/maintenance/parserTests.txt" ) ) ) ; # This path is for trunk
 
 $tests = array () ;
 $articles = array () ;
@@ -80,17 +80,21 @@ foreach ( $tests AS $t ) {
     $nr = array_pop ( explode ( '<body>' , $nr , 2 ) ) ;
     $nr = array_shift ( explode ( '</body>' , $nr , 2 ) ) ;
     
-    $col = 'red' ;
-    $res = str_replace ( "\r" , "" , $res ) ;
-#    $res = str_replace ( "\n" , "" , $res ) ;
+    # Fixing things to compare to the stupid parser test formatting
     $res = trim ( $res ) ;
-    $arr = array ( 'li','p' ) ;
+    $res = str_replace ( " \n" , "\n" , $res ) ;
+    
+    $arr = array ( 'li','p','dd' ) ;
     foreach ( $arr AS $a ) $nr = str_replace ( "</$a>" , "\n</$a>" , $nr ) ;
+    
     $arr = array ( 'li' ) ;
     foreach ( $arr AS $a ) $nr = str_replace ( "<$a>" , "<$a> " , $nr ) ;
 
 
+    # Indicator color
+    $col = 'red' ;
     if ( $res == $nr ) $col = 'green' ;
+#    $nr = str_replace ( '</' , "\n</" , $xml ) ;
   }
 
   

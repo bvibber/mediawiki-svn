@@ -316,6 +316,7 @@ class wiki2xml
 			$between = str_replace ( "</includeonly>" , "" , $between ) ;
 
       # Remove HTML comments
+      $between = str_replace ( "-->\n" , "-->" , $between ) ;
       $between = preg_replace( '?<!--.*-->?msU', '', $between) ;
 
 			# Replacing template variables.
@@ -1419,7 +1420,9 @@ class wiki2xml
 		$this->w = str_replace ( "\r" , "" , $this->w ) ;
 		
 		# Remove HTML comments
-		$this->w = preg_replace( '?<!--.*-->?msU', '', $this->w);
+#    $this->w = str_replace ( "\n<!--" , "<!--" , $this->w ) ;
+		$this->w= preg_replace('/\n<!--(.|\s)*?-->\n/', "<!-- --> ", $this->w);
+		$this->w= preg_replace('/<!--(.|\s)*?-->/', '', $this->w);
 		
 		# Run the thing!
 #		$this->tables = array () ;
