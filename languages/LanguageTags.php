@@ -9,7 +9,7 @@ global $wgLanguageIds, $wgLanguageWikimedia, $wgLanguageNames, $wgMainCacheType;
 
 // FIXME: Don't do this.
 $vars=array('wgLanguageNames','wgLanguageIds','wgLanguageWikimedia','wgLanguageProper');
-foreach($vars as $v) $$v=array();
+foreach($vars as $v) if(!(isset($$v) && is_array($$v))) $$v=array();
 if($wgMainCacheType!==CACHE_NONE) {
 	$cache = wfGetMessageCacheStorage(); // 80ms for 7k language codes
 	$x=0; foreach($vars as $v) if(!count($$v)) ($$v=$cache->get($v)) === false ? $$v=array() : $x++;
@@ -22,8 +22,12 @@ if($wgMainCacheType!==CACHE_NONE) {
 function wgLanguageWikimedia($code='en') {
 	global $wgLanguageWikimedia,$wgLanguageNames;
 	if(!array_key_exists($code,$wgLanguageNames)) return $code;
-	if(array_key_exists($code,$wgLanguageWikimedia)) $code = $wgLanguageWikimedia[$code];
-	return $code;
+	if(array_key_exists($code,$wgLanguageWikimedia)) return $wgLanguageWikimedia[$code];
+	else {
+		$wgLanguageWikimedia[$code] = '';
+		wgLanguageTagFromConds(array('wikimedia_key'=>$code));
+		return $wgLanguageWikimedia[$code];
+	}
 }
 
 /**
@@ -44,7 +48,7 @@ function wgLanguageCodeProper($str) {
 function wgLanguageCodeLegacy($str) {
         global $wgLanguageIds, $wgLanguageWikimedia, $wgLanguageNames, $wgMainCacheType;
 	if($str == 'und' || $str=='mul') return $GLOBALS['wgLanguageCode'];
-	if(strlen($str) < 3) return $str;
+	if(strlen($str) < 2) return $str;
 
         if(in_array($str,$wgLanguageIds,1)) {
 		if(!array_key_exists($str,$wgLanguageWikimedia)) {
@@ -72,7 +76,9 @@ function wgLanguageCode3($str) {
 	global $wgLanguageIds, $wgLanguageWikimedia, $wgLanguageNames, $wgMainCacheType;
 	if(!strlen($str) || $str===null || $str=='   ') return 'und';
 	if(in_array($str,$wgLanguageIds,1)) return $str;
-	if(!in_array($str,$wgLanguageWikimedia,1)) return wgLanguageCode(wgLanguageId($str));
+	if(in_array($str,$wgLanguageWikimedia,1)) return $wgLanguageWikimedia[$str];
+	else $str = wgLanguageWikimedia($str);	
+	return wgLanguageCode(wgLanguageId($str));
 }
 
 function wgLanguageTagFromConds($conds) { 

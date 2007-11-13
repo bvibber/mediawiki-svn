@@ -742,6 +742,7 @@ class EditPage {
 			}
 
 			$isComment=($this->section=='new');
+			$this->attemptSaveSet( );
 			$this->mArticle->insertNewArticle( $this->textbox1, $this->summary,
 				$this->minoredit, $this->watchthis, false, $isComment);
 
@@ -879,30 +880,9 @@ class EditPage {
 		}
 
 		# update the article here
-		if( $this->mArticle->updateArticle( $text, $this->summary, $this->minoredit,
+		$this->attemptSaveSet( );
+		if( $this->mArticle->updateArticle( $this->textbox1, $this->summary, $this->minoredit,
 			$this->watchthis, '', $sectionanchor ) ) {
-
-			if(strlen($this->textset)) {
-				$x=explode('[[',$this->textset); $textset=array();
-				global $wgLanguageTag; $dbr=$this->mArticle->getDB();
-				array_shift($x); foreach($x as $y) {
-					$t=strpos($y,']]'); 
-					if($t===false) continue;
-					$t=substr($y,0,$t); $tt=$this->mTitle->newFromText($t);
-					if(null===$tt->mLanguage) $tt->mLanguage=$this->mTitle->mLanguage;
-					$t=$this->mArticle->pageDataFromTitle($dbr,$tt);
-					if($t && $t->page_id>0) $textset[$t->page_id]=$t;
-				}
-				$x=$dbr->select('pagesets',array('page_id'),array('set_id'=>$this->mTitle->mArticleID));
-				$z=array(); while($y=$dbr->fetchRow($x)) $z[]=$y['page_id'];
-				$x=array_keys($textset); 
-				foreach($x as $v) if(!in_array($v,$z)) 
-					$dbr->insert('pagesets',array('page_id'=>$v, 'set_id'=>$this->mTitle->mArticleID));
-				$z=array_diff($z,$x);
-				if(count($z)) foreach($z as $v)
-					$dbr->delete('pagesets',array('page_id'=>$v, 'set_id'=>$this->mTitle->mArticleID));
-			}
-
 			wfProfileOut( $fname );
 			return false;
 		} else {
@@ -910,6 +890,46 @@ class EditPage {
 		}
 		wfProfileOut( $fname );
 		return true;
+	}
+
+	function attemptSaveSet() {
+		global $wgParser;
+		$dbr=$this->mArticle->getDB();
+
+		$setID = false;
+		if($this->mArticle->mTitle->getNamespace() == NS_SET) {
+			$text = $this->textbox1;
+			$title = $this->mTitle;
+		} else if (strlen($this->textset) && $this->mArticle->mTitle->getNamespace() != NS_IMAGE
+				&& $this->mArticle->mTitle->getNamespace() != NS_MEDIAWIKI ) {
+			$set = $dbr->selectField('pagesets','set_id',array('page_id'=>$this->mTitle->mArticleID));
+			if(!$set) return false;
+			$set = new Article( Title::newFromID ( $set ) );
+			$set->updateArticle( $this->textset, $this->summary, $this->minoredit, $this->watchthis, '');
+			$text = $this->textset;
+			$title = $set->mTitle;
+		}
+
+		if(!strlen($text)) return false;	
+		$set = $wgParser->parse( $text, $title, new ParserOptions(), true, true );
+		$setID = $title->mArticleID;	
+
+		$links = $set->getLinks();
+		$pageset = array();;
+		foreach($links as $v) {
+			foreach($v as $vv) {
+				$pageset = array_merge($pageset,array_values($vv));
+			}
+		}
+
+		$x=$dbr->select('pagesets',array('page_id'),array('set_id'=>$setID));
+		$z=array(); while($y=$dbr->fetchRow($x)) $z[]=$y['page_id'];
+		foreach($pageset as $v) if($v && !in_array($v,$z)) 
+			$dbr->insert('pagesets',array('page_id'=>$v, 'set_id'=>$setID));
+
+		$z=array_diff($z,$pageset);
+		if(count($z)) foreach($z as $v)
+			$dbr->delete('pagesets',array('page_id'=>$v, 'set_id'=>$setID));
 	}
 
 	/**
@@ -925,9 +945,14 @@ class EditPage {
 		if ( !$this->mArticle->exists() && $this->mArticle->mTitle->getNamespace() == NS_MEDIAWIKI )
 			$this->textbox1 = wfMsgWeirdKey( $this->mArticle->mTitle->getText() );
 		$dbr=&$this->mArticle->getDB();
-		$x=$dbr->select('pagesets',array('page_id'),array('set_id'=>$this->mTitle->mArticleID));
+                $setID = $dbr->selectField('pagesets','set_id',array('page_id'=>$this->mTitle->mArticleID));
+                $x=$dbr->select('pagesets',array('page_id'),array('set_id'=>$setID));
 		$z=array(); while($y=$dbr->fetchRow($x)) $z[]=$this->mArticle->mTitle->nameOf($y);
 	 	if(count($z)) $this->textset = '[['.join (']] [[', $z).']]';
+		if($setID) {
+			$set = new Article( Title::newFromID ( $setID ) );
+			$this->textset = $set->getContent();
+		}
 		wfProxyCheck();
 		return true;
 	}
@@ -1178,12 +1203,29 @@ class EditPage {
 		}
 		else $metadata = "" ;
 
-		if($this->mTitle->mNamespace==NS_SET) {
-			$metadata.=wfMsgWikiHtml( 'otherlanguages');
-			$metadata.="<textarea tabindex=7 id='wpTextboxSet' name=\"wpTextboxSet\" rows='4' cols='{$cols}' wrap='virtual'>"
+		if($this->mTitle->mNamespace!=NS_SET && $this->mTitle->mNamespace!=NS_IMAGE && $this->mTitle->mNamespace != NS_MEDIAWIKI && !$this->mTitle->isTalkPage()) {
+			$set_guess = $this->mTitle->getText();
+			$metadata .= wfMsgWikiHtml( 'otherlanguages' );
+			if(!strlen($this->textset)) {
+				$guess = new Article( Title::newFromText ( $set_guess, NS_SET ) );
+				if($guess->exists()) {
+					$this->textset = $guess->getContent();
+					for($x=1,$guess='';$x<11;$x++) {
+						if(!Title::newFromText($set_guess." ($x)", NS_SET)->exists()) break;
+					}
+					$set_guess .= " ($x)";	
+				}
+				else {
+					$this->textset = '';
+				} 
+				$metadata .= "<input type='radio' name='wpRadioSet' value='{$set_id}'> Use the list below (or) ";
+				$metadata .= "<input type='radio' name='wpRadioSet' value=''> Use the list called ";
+				$metadata .= "<input type='text' name='wpTextboxSet' value='$set_guess'> ";
+			}
+			$metadata .= "<textarea tabindex=7 id='wpTextboxSet' name=\"wpTextboxSet\" rows='4' cols='{$cols}' wrap='virtual'>"
 				. htmlspecialchars( $this->safeUnicodeOutput( $this->textset ) ) . "\n</textarea>";
                 }
-		else if($this->mTitle->mNamespace!=NS_MEDIA) {
+		else if(0 && $this->mTitle->mNamespace!=NS_MEDIA) {
 
 		$dbr =& wfGetDB( DB_SLAVE );	
 		$x=$dbr->select('pagesets',array('set_id'),array('page_id'=>$this->mTitle->mArticleID));

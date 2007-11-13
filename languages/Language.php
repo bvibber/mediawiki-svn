@@ -174,8 +174,9 @@ class Language {
 	}
 
         function getFormattedLanguagefilters() {
-		$ns=array(''=>'Languages I speak and new communities','en'=>'English');
-                foreach($ns as $k => $v) {
+		$ns=array(''=>'Languages I speak and new communities');
+		$langs = $this->getMessageFromDB('languagefilters');
+		foreach($ns as $k => $v) {
                         $ns[$k] = strtr($v, '_', ' ');
                 }
                 return $ns;

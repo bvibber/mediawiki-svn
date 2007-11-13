@@ -638,6 +638,8 @@ XHTML id names.
 'categorypage'      => 'View category page',
 'viewtalkpage'      => 'View discussion',
 'otherlanguages'    => 'In other languages',
+'languagefilter'    => 'Languages I speak and new communities',
+'languagefilters' => '*',
 'redirectedfrom'    => '(Redirected from $1)',
 'redirectpagesub'   => 'Redirect page',
 'lastmodifiedat'    => 'This page was last modified $2, $1.', # $1 date, $2 time

@@ -94,7 +94,14 @@ class ParserOutput
 		if ( is_null( $id ) ) {
 			$id = $title->getArticleID();
 		}
-		$this->mLinks[$ns][$dbk] = $id;
+		global $wgLanguageTag; if($wgLanguageTag) {
+			if( !isset( $this->mLinks[$ns][$dbk] ) ) {
+				$this->mLinks[$ns][$dbk] = array();
+			}
+			$this->mLinks[$ns][$dbk][$title->getLanguage()] = $id;
+		} else {
+			$this->mLinks[$ns][$dbk] = $id;
+		}
 	}
 	
 	function addImage( $name ) {

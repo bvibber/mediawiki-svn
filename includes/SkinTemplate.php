@@ -425,33 +425,43 @@ class SkinTemplate extends Skin {
 		# Language links
 		$language_urls = array();
 
-		// FIXME!  Move to Skin.php?
-		// Should do one query, use makeTitle, and have an optional page_title (if page_id is null/0)
-                global $wgLanguageTag,$wgDBprefix;
+		// Move to Skin.php?
+                global $wgLanguageTag,$wgDBprefix,$wgDBtype;
 		if($wgLanguageTag) if(!(array_key_exists('action',$_REQUEST) && $_REQUEST['action']=='edit')) {
 			global $wgLanguageNames,$wgLanguageIds;
                         $dbr =& wfGetDB( DB_SLAVE );
-                        $x=$dbr->select('pagesets',array('set_id'),array('page_id'=>$this->mTitle->mArticleID));
-			$y=$dbr->fetchRow($x); $set_id=$y[0];
+			$fields = array('page_language','page_namespace','page_title','display_name','tag_name');
+			$conds  = '(page_language=language_id';
+			if($wgDBtype=='mysql') $conds .= ' OR (page_language IS NULL AND language_id IS NULL)';
+			# mysql 5.0.24 unstable query if a unique index exists on language_id
+			$conds.=')';
+			$conds .= " AND ".$dbr->tableName('page').".page_id != {$this->mTitle->mArticleID}";
+			$conds .= " AND page_namespace != ".NS_SET;
 			if($this->mTitle->mNamespace===NS_SET) {
-				if($this->mTitle->mArticleID) if(!$_REQUEST['action']) $wgOut->mBodytext.="\n<hr>";//<h3>set</h3>";
-				$set_id = $this->mTitle->mArticleID;
+				$x=$dbr->select(array('page','langtags','pagesets'),$fields,
+						array(0=>$conds,
+						      1=>$dbr->tableName('pagesets').'.page_id='.$dbr->tableName('page').'.page_id',
+						'set_id'=>$this->mTitle->mArticleID),null,array('DISTINCT','ORDER BY'=>'display_name'));
+			} else if($this->mTitle->mNamespace===NS_IMAGE) { 
+				$x=$dbr->select(array('page','langtags'),$fields,
+						array(0=>$conds,
+						'page_title'=>$this->mTitle->mDbkeyform,
+						'page_namespace'=>NS_IMAGE),null,array('ORDER BY'=>'display_name'));
+			} else {
+				$x=$dbr->select(array('page','langtags','pagesets',$dbr->tableName('pagesets').' AS pagesets2'),$fields,
+					 array(0=>$conds,
+					       1=>$dbr->tableName('pagesets').'.page_id='.$dbr->tableName('page').'.page_id',
+					       2=>$dbr->tableName('pagesets').'.set_id=pagesets2.set_id',
+					       3=>"pagesets2.page_id={$this->mTitle->mArticleID}"
+					),null,array(0=>'DISTINCT','ORDER BY'=>'display_name'));
 			}
-			if($this->mTitle->mNamespace===NS_IMAGE) { 
-                         $x=$dbr->select(array('page','langtags'),array('page_language','page_namespace','page_title','display_name','tag_name'),
-					 array(0=>'page_language=language_id','page_title'=>$this->mTitle->mDbkeyform,'page_namespace'=>NS_IMAGE),null,array('ORDER BY'=>'display_name'));
-			} else if($set_id) 
-       	                 $x=$dbr->select(array('pagesets','page','langtags'),array('page_language','page_namespace','page_title','display_name','tag_name'),
-					 array(0=>'(page_language=language_id OR (page_language IS NULL and language_id IS NULL)) AND '.$wgDBprefix.'pagesets.page_id='.$wgDBprefix.'page.page_id','set_id'=>$set_id),null,array('ORDER BY'=>'display_name'));
-//  set_id=page.page_id OR (pagesets.page_id=page.page_id AND page_language is null AND language_id is null)',
-                        while($row=$dbr->fetchObject($x)) {
+
+			while($row=$dbr->fetchObject($x)) {
 				$wgLanguageNames[$row->page_language]=$row->display_name;
 				$wgLanguageIds[$row->page_language]=$row->tag_name;
-				$text = $row->display_name; // $tis->mTextform;
-				if($row->page_namespace == NS_SET) $text.=" - set";
+				$text = $row->display_name;
 				$ts = Title::makeTitle( $row->page_namespace, $row->page_title, $row->page_language);
-				if($this->mTitle->mNamespace==NS_SET) { if(!$_REQUEST['action']) $wgOut->mBodytext.="\n ".$this->makeKnownLinkObj($ts).'<br>'; }
-				else $language_urls[] = array ('href'=> $ts->getFullURL(), 'text'=>$text, 'class'=>'interlang-'.$ts->mLanguageCode);
+				$language_urls[] = array ('href'=> $ts->getFullURL(), 'text'=>$text, 'class'=>'interlang-'.$ts->getLanguageCode());
 			}
                 }
 

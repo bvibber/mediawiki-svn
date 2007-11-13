@@ -464,15 +464,8 @@ class MessageCache {
 		$langcode = $lang->getCode();
                 // if(!$lang->mCodeId)
 
-		// FIXME  $lang->mCodeId
 		if($lang->getCode3() == 'und') $lang->setCode($lang->getCode3());
 		else $lang->setCode($lang->getCode());
-
-		// if(!$lang->getCode()) $lang->setCode($wgLanguageCode);
-		// $lang->setCode($clang);
-//		$clang=$lang->getCode();
-// langcode;
-//		$lang->setCode($clang);
 
 		# If uninitialised, someone is trying to call this halfway through Setup.php
 		if( !$this->mInitialised ) {

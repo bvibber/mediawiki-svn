@@ -709,8 +709,9 @@ $wgLanguageTag = false;
 $wgLanguageDomain= false;
 /* On converting from monolingual multilingual,
    wgLanguageTag defaults to treat old pages as having a null langspace.
-   with this enabled, plain page links point to the "mult" language space. */
+   with this enabled, plain page links point to the "mul" language space. */
 $wgLanguageMulti = false;
+$wgLanguageUnd = "und";
 
 /**
  * Some languages need different word forms, usually for different cases.

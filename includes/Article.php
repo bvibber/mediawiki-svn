@@ -315,7 +315,7 @@ class Article {
 				 $fields['page_language']=$title->getLanguage();
 			}
 			else {
-				$fields[]='page_language is null';
+				$fields[]='page_language IS NULL';
 			}
 		}
 
@@ -1053,6 +1053,7 @@ class Article {
 		global $wgLanguageTag;
 		if($wgLanguageTag) {
 			$fields['page_language']=$this->mTitle->getLanguage();
+			if(!strlen($fields['page_language'])) unset($fields['page_language']); # Use default NULL
 		}
 		$dbw->insert( 'page', $fields, __METHOD__ );
 		$newid = $dbw->insertId();

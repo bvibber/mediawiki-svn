@@ -242,11 +242,15 @@ class Title {
 		$t->mInterwiki = '';
 		$t->mFragment = '';
 
-		if($language!==false) {
-			global $wgLanguageTag;
-			if($wgLanguageTag) {
-				$t->mLanguage = $language === null ? '' : $language;
-		 		$t->mLanguageCode=$language !==null && false!==($language=wgLanguageCode($language)) ? $language : 'und';
+		global $wgLanguageTag,$wgLanguageUnd;
+		if($wgLanguageTag && $language!==false) {
+			if($language === null || false === wgLanguageCode($language)) {
+				$t->mLanguage = '';
+				$t->mLanguageCode = $wgLanguageUnd;
+			}
+			else {
+				$t->mLanguage = $language;
+		 		$t->mLanguageCode = wgLanguageCode($language);
 			}
 		}
 		$t->mNamespace = $ns = intval( $ns );

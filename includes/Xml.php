@@ -146,6 +146,7 @@ class Xml {
 
         public static function &languagefilterSelector($selected = '', $alllanguagefilters = null, $includehidden=false) {
                 global $wgContLang;
+
                 if( $selected !== '' ) {
                         if( is_null( $selected ) ) {
                                 // No namespace selected; let exact match work without hitting Main
@@ -215,6 +216,17 @@ class Xml {
 			)
 		);
 
+	}
+
+        public static function languagesSelector( $selected, $customisedOnly = true ) {
+		global $wgLang, $wgContLang;
+		return array(
+			Xml::label( wfMsg('yourlanguage'), 'wpUserLanguage' ),
+			Xml::tags( 'textarea',
+				array( 'id' => 'wpUserLanguages', 'name' => 'wpUserLanguages', 'rows' => 4 ),
+				$selected
+			)
+		);
 	}
 
 	public static function span( $text, $class, $attribs=array() ) {

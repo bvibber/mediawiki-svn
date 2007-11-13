@@ -213,11 +213,12 @@ DROP TABLE {$wgDBprefix}langtags_rfc4646;
 DROP TABLE {$wgDBprefix}langtags_wikimedia;
 E;
 
+### A unique index in some mysql 5.0 versions will cause unstable joins when language_id is null
 if($wgDBtype=='mysql') $sql.=<<<E
 ALTER TABLE {$wgDBprefix}langtags MODIFY language_id INT;
 ALTER TABLE {$wgDBprefix}langtags DROP PRIMARY KEY;
 ALTER TABLE {$wgDBprefix}langtags CHANGE language_id language_id int;
-CREATE UNIQUE INDEX language_id ON {$wgDBprefix}langtags(language_id);
+CREATE INDEX language_id ON {$wgDBprefix}langtags(language_id);
 E;
 
 ### Undefined language tag (main namespace) 

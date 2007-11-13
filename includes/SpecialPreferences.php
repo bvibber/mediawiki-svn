@@ -699,6 +699,13 @@ class PreferencesForm {
 			}
 		}
 
+		global $wgLanguageTag; if($wgLanguageTag) {
+			global $wgContLang, $wgLang;
+
+       			list( $lsLabel, $lsSelect) = Xml::languagesSelector( join(", ",array_unique( array( wgLanguageWikimedia($this->mUserLanguage), $wgContLang->getCode3(), $wgLang->getCode3() ) ) ) );
+			$wgOut->addHTML( $this->tableRow( $lsLabel, $lsSelect ) );
+		}
+
 		# Password
 		if( $wgAuth->allowPasswordChange() ) {	
 			$wgOut->addHTML(
