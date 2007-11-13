@@ -302,7 +302,7 @@ $wgChemFunctions_Messages['oc'] = array(
 	'ChemFunctions_ListPage' => 'Fonts per la quimia',
 	'ChemFunctions_CAS' => 'Numèro CAS',
 	'ChemFunctions_EINECS' => 'Numèro EINECS',
-	'ChemFunctions_ATCCode' => 'Còdi ATC',
+	'ChemFunctions_ATCCode' => 'Còde ATC',
 	'ChemFunctions_Name' => 'Nom UICPA',
 	'ChemFunctions_ChemFormInputError' => 'Chemform, dintrant erronèu!',
 );

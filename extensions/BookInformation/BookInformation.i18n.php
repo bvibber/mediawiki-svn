@@ -88,6 +88,10 @@ function efBookInformationMessages() {
 	'bookinfo-provider' => 'Daten-Lieferant: $1',
 ),
 
+'el' => array(
+	'bookinfo-result-year' => 'Χρόνος:',
+),
+
 'ext' => array(
 	'bookinfo-header' => 'Enhormación el libru',
 	'bookinfo-result-title' => 'Entítulu:',

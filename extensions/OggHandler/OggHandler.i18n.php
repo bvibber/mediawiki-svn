@@ -544,8 +544,8 @@ $messages = array(
 		'ogg-use-player' => 'Utilizar lo lector :',
 		'ogg-more' => 'Mai…',
 		'ogg-dismiss' => 'Tampar',
-		'ogg-download' => 'Telecargar lo fiquièr',
-		'ogg-desc-link' => 'A prepaus d\'aqueste fiquièr',
+		'ogg-download' => 'Telecargar lo fichièr',
+		'ogg-desc-link' => 'A prepaus d\'aqueste fichièr',
 	),
 
 	'pl' => array(

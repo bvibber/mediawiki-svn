@@ -78,6 +78,10 @@ function efCountEditsMessages( $single = false ) {
 	'countedits-nocontribs' => 'In {{ns:project}} sind keine Bearbeitungen vorhanden.',
 ),
 
+'el' => array(
+	'countedits-ok' => 'ΟΚ',
+),
+
 'eo' => array(
 	'countedits' => 'Nombro de redaktoj',
 	'countedits-warning' => '\'\'\'Averto:\'\'\' Ne juĝu libron laŭ ĝia kovrilo. Ne juĝu kontribuanton laŭ lia redaktaro.',

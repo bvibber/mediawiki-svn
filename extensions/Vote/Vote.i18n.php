@@ -79,6 +79,11 @@ riddler|Riddler",
 	'vote-login-link' => 'en em enrollañ',
 ),
 
+'el' => array(
+	'vote-login-link' => 'Εγγραφή',
+	'vote-invalid-choice' => 'Πρέπει να επιλέξετε μια από της διαθέσιμες επιλογές.',
+),
+
 'ext' => array(
 	'vote' => 'Votal',
 	'vote-submit' => 'Votal',
