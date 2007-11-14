@@ -2,8 +2,10 @@ package org.wikimedia.lsearch.highlight;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Set;
 
 import org.wikimedia.lsearch.analyzers.Alttitles;
+import org.wikimedia.lsearch.analyzers.ExtToken;
 
 /**
  * Snippet of highlighted text.
@@ -51,13 +53,9 @@ public class Snippet implements Serializable {
 	protected String text = null;
 	protected ArrayList<Range> highlighted = new ArrayList<Range>();
 	
-	protected Alttitles.Info alttitle = null;
+	protected String originalText = null;
 
-	public Snippet(){
-	
-	}
-	public Snippet(String text){
-		this.text = text;
+	public Snippet(){	
 	}
 	
 	public void addRange(Range r){
@@ -79,29 +77,41 @@ public class Snippet implements Serializable {
 		this.text = text;
 	}
 	
+	public String toString(){
+		return getFormatted();
+	}
+	
+	/** Get default formatting with <b> and </b> tags */
 	public String getFormatted(){
+		return getFormatted("<b>","</b>");
+	}
+	
+	/** Get formating with custom html begin and end tags */
+	public String getFormatted(String beginTag, String endTag){	
 		StringBuilder sb = new StringBuilder();
 		int last = 0;
 		for(Range r : highlighted){
 			sb.append(text.substring(last,r.start));
-			sb.append("<b>");
+			sb.append(beginTag);
 			sb.append(text.substring(r.start,r.end));
-			sb.append("</b>");
+			sb.append(endTag);
 			last = r.end;
 		}
 		if(last != text.length())
 			sb.append(text.substring(last));
 		return sb.toString();
 	}
-	public Alttitles.Info getAlttitle() {
-		return alttitle;
-	}
-	public void setAlttitle(Alttitles.Info alttitle) {
-		this.alttitle = alttitle;
-	}
+	
 	public void setHighlighted(ArrayList<Range> highlighted) {
 		this.highlighted = highlighted;
 	}
+	public String getOriginalText() {
+		return originalText;
+	}
+	public void setOriginalText(String originalText) {
+		this.originalText = originalText;
+	}
+	
 	
 	
 }

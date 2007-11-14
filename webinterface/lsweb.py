@@ -5,8 +5,8 @@ from os import curdir, sep
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 from urllib2 import URLError, HTTPError
 
-search_host = { 'enwiki' : "srv79:8123", '<default>': 'srv79:8123' }
-#search_host = {'<default>' : 'localhost:8123' }
+#search_host = { 'enwiki' : "srv79:8123", '<default>': 'srv79:8123' }
+search_host = {'<default>' : 'localhost:8123' }
 
 canon_namespaces = { 0 : '', 1: 'Talk', 2: 'User', 3: 'User_talk',
                     4 : 'Project', 5 : 'Project_talk', 6 : 'Image', 7 : 'Image_talk',
@@ -139,7 +139,12 @@ class MyHandler(BaseHTTPRequestHandler):
                     
                     # show results
                     self.wfile.write('Score / Article<br>')
+                    lines = []
                     for line in results:
+                        lines.append(line)
+                    i = 0
+                    while i < len(lines):
+                        line = lines[i]
                         parts = line.split(' ')
                         score = float(parts[0])
                         ns = canon_namespaces[int(parts[1])]
@@ -150,10 +155,38 @@ class MyHandler(BaseHTTPRequestHandler):
                             link = 'http://%s.wiktionary.org/wiki/%s' % (dbname[0:2],title)
                         else:
                             link = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],title)
-                        decoded = urllib.unquote(title.replace('_',' '))                        
-                        self.wfile.write('%1.2f -- <a href="%s">%s</a><br>' % (score,link,decoded))
+                        decoded = urllib.unquote(title.replace('_',' '))
+                        self.wfile.write('%1.2f -- <a href="%s">%s</a>' % (score,link,decoded))
+                        textHl = ''
+                        redirectHl = ''
+                        redirectLink = ''
+                        sectionHl = ''
+                        sectionLink = ''
+                        titleHl = ''
+                        while i+1 < len(lines):
+                            extra = lines[i+1]
+                            if extra.startswith('#h.text'):
+                                textHl = extra[extra.find(' '):]
+                            elif extra.startswith('#h.title'):
+                                titleHl = extra[extra.find(' '):]
+                            elif extra.startswith('#h.redirect'):
+                                [htype, redirectLink, redirectHl] = extra.split(' ',2)
+                                redirectLink = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],redirectLink)                                
+                            elif extra.startswith('#h.section'):
+                                [htype, sectionLink, sectionHl] = extra.split(' ',2)
+                                sectionLink = 'http://%s.wikipedia.org/wiki/%s#%s' % (dbname[0:2],title,sectionLink)
+                            else:
+                                break
+                            i+=1
+                        if redirectLink != '':
+                            self.wfile.write('<small> (redirected from <a href="%s">%s</a>)</small>' % (redirectLink, redirectHl))
+                        if sectionLink != '':
+                            self.wfile.write('<small> (section <a href="%s">%s</a></small>)' % (sectionLink, sectionHl))
+                        self.wfile.write('<br>');
+                        if textHl != '':
+                            self.wfile.write('<div style="width:500px"><small>%s</small></div>' % textHl)
+                        i += 1 
                     self.wfile.write('<hr>')
-                    
                     # show lower search bar
                     self.wfile.write(searchbar)
                     self.wfile.write('</body></html>')

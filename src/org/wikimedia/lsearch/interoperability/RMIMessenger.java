@@ -1,14 +1,21 @@
 package org.wikimedia.lsearch.interoperability;
 
+import java.io.IOException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
+import org.apache.lucene.index.Term;
 import org.apache.lucene.search.Query;
 import org.wikimedia.lsearch.beans.IndexReportCard;
 import org.wikimedia.lsearch.beans.ResultSet;
 import org.wikimedia.lsearch.beans.SearchResults;
+import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.highlight.HighlightResult;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
+import org.wikimedia.lsearch.search.HighlightPack;
 import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
 
 /** Facilitates communication between both indexers and searcher */
@@ -64,7 +71,7 @@ public interface RMIMessenger extends Remote {
 	 * @param limit
 	 * @throws RemoteException
 	 */
-	public SearchResults searchPart(String dbrole, String searchterm, Query query, NamespaceFilterWrapper filter, int offset, int limit, boolean explain) throws RemoteException;
+	public HighlightPack searchPart(String dbrole, String searchterm, Query query, NamespaceFilterWrapper filter, int offset, int limit, boolean explain) throws RemoteException;
 	
 	/**
 	 * Returns index queue size. Needed for incremental updater, so it doesn't overload the indexer. 
@@ -108,4 +115,18 @@ public interface RMIMessenger extends Remote {
 	 * @throws RemoteException
 	 */
 	public ArrayList<String> getTerms(String dbrole, String wildcard, boolean exactCase) throws RemoteException;
+	
+	/**
+	 * Highlight articles
+	 * 
+	 * @param hits - keys (ns:title) to articles to highlight
+	 * @param dbrole - iid
+	 * @param terms - terms used in query (including aliases)
+	 * @param df - document frequencies for all terms
+	 * @param maxDoc - max number of documents in the index (needed for idf calculation)
+	 * @param words - main phrase words, gives extra score
+	 * @param exactCase - if this is an exact case query
+	 * @return map: key -> highlighting result
+	 */
+	public HashMap<String,HighlightResult> highlight(ArrayList<String> hits, String dbrole, Term[] terms, int df[], int maxDoc, ArrayList<String> words, boolean exactCase) throws RemoteException;
 }

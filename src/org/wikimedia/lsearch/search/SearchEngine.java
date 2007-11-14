@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
@@ -20,6 +21,7 @@ import org.apache.lucene.index.TermDocs;
 import org.apache.lucene.index.TermEnum;
 import org.apache.lucene.queryParser.ParseException;
 import org.apache.lucene.search.Hits;
+import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.Searchable;
 import org.apache.lucene.search.SearchableMul;
@@ -38,6 +40,7 @@ import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.frontend.SearchDaemon;
 import org.wikimedia.lsearch.frontend.SearchServer;
+import org.wikimedia.lsearch.highlight.HighlightResult;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.ranks.StringList;
@@ -62,6 +65,7 @@ public class SearchEngine {
 	protected final int maxoffset = 10000;
 	protected static GlobalConfiguration global = null;
 	protected static Configuration config = null;
+	protected static SearcherCache cache = null;
 	protected static Hashtable<String,Hashtable<String,Integer>> dbNamespaces = new Hashtable<String,Hashtable<String,Integer>>();
 	protected long timelimit;
 	
@@ -70,6 +74,8 @@ public class SearchEngine {
 			config = Configuration.open();
 		if(global == null)
 			global = GlobalConfiguration.getInstance();
+		if(cache == null)
+			cache = SearcherCache.getInstance();
 		
 		timelimit = config.getInt("Search","timelimit",5000);
 	}
@@ -232,7 +238,7 @@ public class SearchEngine {
 	}
 
 	/** Search mainpart or restpart of the split index */
-	public SearchResults searchPart(IndexId iid, String searchterm, Query q, NamespaceFilterWrapper filter, int offset, int limit, boolean explain){
+	public HighlightPack searchPart(IndexId iid, String searchterm, Query q, NamespaceFilterWrapper filter, int offset, int limit, boolean explain){
 		if( ! (iid.isMainsplit() || iid.isNssplit()))
 			return null;
 		try {			
@@ -248,16 +254,19 @@ public class SearchEngine {
 			if(localfilter != null)
 				log.info("Using local filter: "+localfilter);
 			TopDocs hits = searcher.search(q,localfilter,offset+limit);
-			/*TimedTopDocCollector col = new TimedTopDocCollector(offset+limit,timelimit);
-			searcher.search(q,localfilter,col);
-			TopDocs hits = col.topDocs(); */
-			return makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);		
+			SearchResults res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
+			HighlightPack pack = new HighlightPack(res);
+			// pack extra info needed for highlighting
+			pack.terms = getTerms(q);
+			pack.dfs = searcher.docFreqs(pack.terms);
+			pack.maxDoc = searcher.maxDoc();
+			return pack;
 		} catch (IOException e) {
 			e.printStackTrace();
-			SearchResults res = new SearchResults();
-			res.setErrorMsg("Internal error in SearchEngine: "+e.getMessage());
+			HighlightPack pack = new HighlightPack(new SearchResults());
+			pack.res.setErrorMsg("Internal error in SearchEngine: "+e.getMessage());
 			log.error("Internal error in SearchEngine while trying to search main part: "+e.getMessage());
-			return res;
+			return pack;
 		}
 		
 	}
@@ -343,7 +352,8 @@ public class SearchEngine {
 						q = parseQuery(searchterm,parser,iid,raw,nsfw,searchAll,wildcards);
 						
 						RMIMessengerClient messenger = new RMIMessengerClient();						
-						res = messenger.searchPart(piid,searchterm,q,nsfw,offset,limit,explain,host);
+						HighlightPack pack = messenger.searchPart(piid,searchterm,q,nsfw,offset,limit,explain,host);
+						res = pack.res;
 						if(sug != null){
 							SuggestQuery sq = sug.suggest(searchterm,parser,res);
 							if(sq == null)
@@ -352,6 +362,7 @@ public class SearchEngine {
 								res.setSuggest(sq.getFormated());
 							}
 						}
+						highlight(iid,q,parser.getWords(),pack.terms,pack.dfs,pack.maxDoc,res,exactCase);
 						return res;
 					}
 				} 
@@ -402,6 +413,7 @@ public class SearchEngine {
 						} */
 					}
 				}
+				highlight(iid,q,parser.getWords(),searcher,res,exactCase);
 				return res;
 			} catch(Exception e){				
 				if(e.getMessage().equals("time limit")){
@@ -523,6 +535,60 @@ public class SearchEngine {
 		
 		return res;
 
+	}
+	
+	protected Term[] getTerms(Query q){
+		HashSet<Term> termSet = new HashSet<Term>();
+		q.extractTerms(termSet);
+		Iterator<Term> it = termSet.iterator();
+		while(it.hasNext()){
+			String field = it.next().field(); 
+			if(!(field.equals("contents") || field.equals("contents_exact")))
+				it.remove();
+		}
+		return termSet.toArray(new Term[] {});
+	}
+	
+	/** Highlight search results, and set the property in ResultSet */
+	protected void highlight(IndexId iid, Query q, ArrayList<String> words, Searcher searcher, SearchResults res, boolean exactCase) throws IOException{
+		Term[] terms = getTerms(q);
+		// FIXME: theoretically unnecessary call to docFreqs, however information is lost 
+		// in the multisearcher createWeight() method... 
+		int[] df = searcher.docFreqs(terms); 
+		int maxDoc = searcher.maxDoc();
+		highlight(iid,q,words,terms,df,maxDoc,res,exactCase);
+	}
+	
+	protected void highlight(IndexId iid, Query q, ArrayList<String> words, Term[] terms, int[] df, int maxDoc, SearchResults res, boolean exactCase) throws IOException{
+		// iid -> array of keys
+		HashMap<IndexId,ArrayList<String>> map = new HashMap<IndexId,ArrayList<String>>();
+		// key -> result
+		HashMap<String,ResultSet> keys = new HashMap<String,ResultSet>();
+		for(ResultSet r : res.getResults()){
+			IndexId piid = iid.getPartByNamespace(r.namespace);
+			ArrayList<String> hits = map.get(piid);
+			if(hits == null){
+				hits = new ArrayList<String>();
+				map.put(piid,hits);
+			}
+			hits.add(r.getKey());
+			keys.put(r.getKey(),r);
+		}
+		// highlight!
+		HashMap<String,HighlightResult> results = new HashMap<String,HighlightResult>();
+		RMIMessengerClient messenger = new RMIMessengerClient();
+		
+		for(Entry<IndexId,ArrayList<String>> e : map.entrySet()){
+			IndexId piid = e.getKey();
+			for(IndexId hiid : piid.getPhysicalIndexIds()){
+				String host = cache.getRandomHost(hiid);
+				results.putAll(messenger.highlight(host,e.getValue(),hiid.toString(),terms,df,maxDoc,words,exactCase));
+			}
+		}
+		// set highlight property
+		for(Entry<String,HighlightResult> e : results.entrySet()){
+			keys.get(e.getKey()).setHighlight(e.getValue());
+		}
 	}
 	
 	protected int min(int i1, int i2, int i3){

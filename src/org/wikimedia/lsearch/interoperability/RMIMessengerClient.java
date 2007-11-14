@@ -8,17 +8,21 @@ import java.rmi.registry.Registry;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
+import org.apache.lucene.index.Term;
 import org.apache.lucene.search.Query;
 import org.wikimedia.lsearch.beans.IndexReportCard;
 import org.wikimedia.lsearch.beans.SearchHost;
 import org.wikimedia.lsearch.beans.SearchResults;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.highlight.HighlightResult;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
+import org.wikimedia.lsearch.search.HighlightPack;
 import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
 import org.wikimedia.lsearch.search.SearcherCache;
 import org.wikimedia.lsearch.search.Wildcards;
@@ -165,11 +169,11 @@ public class RMIMessengerClient {
 		}
 	}
 	
-	public SearchResults searchPart(IndexId iid, String searchterm, Query query, NamespaceFilterWrapper filter, int offset, int limit, boolean explain, String host){
+	public HighlightPack searchPart(IndexId iid, String searchterm, Query query, NamespaceFilterWrapper filter, int offset, int limit, boolean explain, String host){
 		try {
 			RMIMessenger r = messengerFromCache(host);
 			log.debug("Calling searchPart("+iid+",("+query+"),"+offset+","+limit+") on "+host);
-			SearchResults res = r.searchPart(iid.toString(),searchterm,query,filter,offset,limit,explain);
+			HighlightPack res = r.searchPart(iid.toString(),searchterm,query,filter,offset,limit,explain);
 			log.debug(" \\-> got: "+res);
 			return res;
 		} catch (Exception e) {
@@ -177,11 +181,11 @@ public class RMIMessengerClient {
 			if(cache == null)
 				cache = SearcherCache.getInstance();
 			cache.invalidateSearchable(iid,host);
-			SearchResults res = new SearchResults();
-			res.retry();
+			HighlightPack pack = new HighlightPack(new SearchResults());
+			pack.res.retry();			
 			log.warn("Error invoking remote method searchPart on host "+host+" : "+e.getMessage());
 			e.printStackTrace();
-			return res;
+			return pack;
 		}
 	}
 	
@@ -228,5 +232,16 @@ public class RMIMessengerClient {
 			e.printStackTrace();
 			return new ArrayList<String>();
 		}
+	}
+	
+	public HashMap<String,HighlightResult> highlight(String host, ArrayList<String> hits, String dbrole, Term[] terms, int df[], int maxDoc, ArrayList<String> words, boolean exactCase){
+		try{
+			RMIMessenger r = messengerFromCache(host);
+			return r.highlight(hits,dbrole,terms,df,maxDoc,words,exactCase);
+		} catch(Exception e){
+			e.printStackTrace();
+			return new HashMap<String,HighlightResult>();
+		}
+		
 	}
 }

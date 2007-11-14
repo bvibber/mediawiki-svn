@@ -21,11 +21,10 @@ public class Aggregate {
 	protected float boost;
 	protected int noStopWordsLength;
 	
-	/** Construct from arbitrary text that will be tokenized */
-	public Aggregate(String text, float boost, IndexId iid, boolean exactCase, HashSet<String> stopWords){
-		// FIXME: hey, we should use an analyzer here!!!
-		TokenizerOptions options = new TokenizerOptions.NoRelocation(exactCase);
-		tokens = new FastWikiTokenizerEngine(text,iid,options).parse();
+	/** Construct from arbitrary text that will be tokenized 
+	 * @throws IOException */
+	public Aggregate(String text, float boost, IndexId iid, Analyzer analyzer, String field, HashSet<String> stopWords) throws IOException{
+		this.tokens = toTokenArray(analyzer.tokenStream(field,text));
 		this.boost = boost;
 		if(stopWords != null){
 			noStopWordsLength = 0;		

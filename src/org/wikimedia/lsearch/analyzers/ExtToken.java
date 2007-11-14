@@ -285,6 +285,8 @@ public class ExtToken extends Token implements Serializable {
 				ExtToken t = (tokens.size() == 0)? null : tokens.get(tokens.size()-1);
 				
 				cur = controlInx+1;
+				if(cur >= serialized.length)
+					break;
 				int control = serialized[cur++];
 				switch(control){
 				case 1: // original

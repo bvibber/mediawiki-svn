@@ -632,7 +632,7 @@ public class IndexId {
 			else
 				return getRestPart();
 		} else
-			return null;
+			return this;
 	}
 
 	/** Return the set of namespaces which are searched by this nssplit part */

@@ -15,6 +15,8 @@ import org.wikimedia.lsearch.beans.ResultSet;
 import org.wikimedia.lsearch.beans.SearchResults;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.highlight.HighlightResult;
+import org.wikimedia.lsearch.highlight.Snippet;
 import org.wikimedia.lsearch.search.SearchEngine;
 import org.wikimedia.lsearch.util.QueryStringMap;
 
@@ -92,6 +94,13 @@ public class SearchDaemon extends HttpHandler {
 					}
 					if(rs.getExplanation() != null)
 						sendOutputLine(rs.getExplanation().toString());
+					if(rs.getHighlight() != null){
+						HighlightResult hr = rs.getHighlight();
+						sendHighlight("title",hr.getFormattedTitle());
+						sendHighlight("text",hr.getFormattedText());
+						sendHighlightWithTitle("redirect",hr.getFormattedRedirect(),hr.getRedirect());
+						sendHighlightWithTitle("section",hr.getFormattedSection(),hr.getSection());
+					}
 				}
 			} else{
 				sendError(500, "Server error", res.getErrorMsg());
@@ -100,8 +109,27 @@ public class SearchDaemon extends HttpHandler {
 			e.printStackTrace();
 			sendError(500,"Server error","Error opening index.");
 		}
-		
 	}
+	
+	private void sendHighlight(String type, String text){
+		if(text != null)
+			sendOutputLine("#h."+type+" "+text);
+	}
+	
+	private void sendHighlightWithTitle(String type, String text, Snippet snippet){
+		if(text != null && snippet != null)
+			sendOutputLine("#h."+type+" "+encodeTitle(snippet.getOriginalText().trim())+" "+text);
+	}
+	
+	private String encodeTitle(String title){
+		try {
+			return URLEncoder.encode(title.replaceAll(" ", "_"), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return "";
+		}
+	}
+
 	
 	private void robotsTxt() {
 		contentType = "text/plain";
@@ -131,8 +159,7 @@ public class SearchDaemon extends HttpHandler {
 	 */
 	private void sendResultLine(double score, String namespace, String title) {
 		try{
-		sendOutputLine(score + " " + namespace + " " +
-			URLEncoder.encode(title.replaceAll(" ", "_"), "UTF-8"));
+		sendOutputLine(score + " " + namespace + " " + encodeTitle(title));
 		} catch(Exception e){
 			log.error("Error sending result line ("+score + " " + namespace + " " + title +"): "+e.getMessage());
 		}
@@ -140,7 +167,7 @@ public class SearchDaemon extends HttpHandler {
 	
 	private void sendResultLine(String namespace, String title) {
 		try{
-			sendOutputLine(namespace + " " +	URLEncoder.encode(title.replaceAll(" ", "_"), "UTF-8"));
+			sendOutputLine(namespace + " " +	encodeTitle(title));
 		} catch(Exception e){
 			log.error("Error sending prefix result line (" + namespace + " " + title +"): "+e.getMessage());
 		}

@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.apache.lucene.index.Term;
+
 /** Complete search results for a query, also containts
  *  info about the error if any. 
  * 

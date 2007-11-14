@@ -4,9 +4,12 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 import org.apache.log4j.Logger;
+import org.apache.lucene.index.Term;
 import org.apache.lucene.search.Query;
+import org.wikimedia.lsearch.analyzers.StopWords;
 import org.wikimedia.lsearch.beans.IndexReportCard;
 import org.wikimedia.lsearch.beans.LocalIndex;
 import org.wikimedia.lsearch.beans.SearchResults;
@@ -14,8 +17,11 @@ import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.config.IndexRegistry;
 import org.wikimedia.lsearch.frontend.IndexDaemon;
+import org.wikimedia.lsearch.highlight.Highlight;
+import org.wikimedia.lsearch.highlight.HighlightResult;
 import org.wikimedia.lsearch.index.IndexThread;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
+import org.wikimedia.lsearch.search.HighlightPack;
 import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
 import org.wikimedia.lsearch.search.NetworkStatusThread;
 import org.wikimedia.lsearch.search.SearchEngine;
@@ -85,7 +91,7 @@ public class RMIMessengerImpl implements RMIMessenger {
 	}
 
 	// inherit javadoc
-	public SearchResults searchPart(String dbrole, String searchterm, Query query, NamespaceFilterWrapper filter, int offset, int limit, boolean explain) throws RemoteException {
+	public HighlightPack searchPart(String dbrole, String searchterm, Query query, NamespaceFilterWrapper filter, int offset, int limit, boolean explain) throws RemoteException {
 		log.debug("Received request searchMainPart("+dbrole+","+query+","+offset+","+limit+")");
 		return new SearchEngine().searchPart(IndexId.get(dbrole),searchterm,query,filter,offset,limit,explain);
 	}
@@ -117,6 +123,17 @@ public class RMIMessengerImpl implements RMIMessenger {
 		return IndexThread.flushAndNotify(dbname);
 	}
 
+	// inherit javadoc
+	public HashMap<String, HighlightResult> highlight(ArrayList<String> hits, String dbrole, Term[] terms, int[] df, int maxDoc, ArrayList<String> words, boolean exactCase) throws RemoteException{
+		IndexId iid = IndexId.get(dbrole);
+		try{
+			return Highlight.highlight(hits,iid,terms,df,maxDoc,words,StopWords.getPredefinedSet(iid),exactCase);
+		} catch(IOException e){
+			throw new RemoteException("IOException on "+dbrole,e);
+		}
+	}
+
+
 	protected RMIMessengerImpl(){
 		networkStatus = null;
 		indexRegistry = null;
@@ -129,5 +146,4 @@ public class RMIMessengerImpl implements RMIMessenger {
 		
 		return instance;
 	}
-
 }

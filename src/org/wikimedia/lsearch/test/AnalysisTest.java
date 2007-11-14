@@ -154,10 +154,10 @@ public class AnalysisTest {
 		displayTokens(Analyzers.getSearcherAnalyzer(IndexId.get("jawiki")),"パ ン");
 		
 		ArrayList<Aggregate> items = new ArrayList<Aggregate>();
-		items.add(new Aggregate("douglas adams",10,IndexId.get("enwiki"),false,stopWords));
-		items.add(new Aggregate("{{something|alpha|beta}} the selected works...",2.1f,IndexId.get("enwiki"),false,stopWords));
-		items.add(new Aggregate("hurricane",3.22f,IndexId.get("enwiki"),false,stopWords));
-		items.add(new Aggregate("and some other stuff",3.2f,IndexId.get("enwiki"),false,stopWords));
+		items.add(new Aggregate("douglas adams",10,IndexId.get("enwiki"),analyzer,"related",stopWords));
+		items.add(new Aggregate("{{something|alpha|beta}} the selected works...",2.1f,IndexId.get("enwiki"),analyzer,"related",stopWords));
+		items.add(new Aggregate("hurricane",3.22f,IndexId.get("enwiki"),analyzer,"related",stopWords));
+		items.add(new Aggregate("and some other stuff",3.2f,IndexId.get("enwiki"),analyzer,"related",stopWords));
 		displayTokens(new AggregateAnalyzer(items),"AGGREGATE TEST");
 		
 		// redirects?

@@ -76,6 +76,11 @@ public class Analyzers {
 					getReusableAnalyzer(filters,exactCase));
 			analyzer.addAnalyzer(fields.reverse_title(),
 					getReusableAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+			// and aggregates:
+			analyzer.addAnalyzer(fields.related(),
+					getReusableAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+			analyzer.addAnalyzer(fields.alttitle(),
+					getReusableAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		}
 		
 		return analyzer;

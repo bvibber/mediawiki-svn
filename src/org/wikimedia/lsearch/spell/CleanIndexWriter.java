@@ -95,9 +95,9 @@ public class CleanIndexWriter {
 	protected void addArticle(Article a, IndexWriter writer){
 		if(!WikiIndexModifier.checkAddPreconditions(a,langCode))
 			return; // don't add if preconditions are not met
-
-		Document doc = WikiIndexModifier.makeDocument(a,builder,iid,stopWords);
+		
 		try {
+			Document doc = WikiIndexModifier.makeDocument(a,builder,iid,stopWords,analyzer);
 			writer.addDocument(doc,analyzer);
 			log.debug(iid+": Adding document "+a);
 		} catch (IOException e) {

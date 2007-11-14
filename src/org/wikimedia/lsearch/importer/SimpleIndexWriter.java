@@ -105,8 +105,9 @@ public class SimpleIndexWriter {
 		return writer;
 	}
 
-	/** Add single article to logical index. It will add the article to the right index part */
-	public void addArticle(Article a){
+	/** Add single article to logical index. It will add the article to the right index part 
+	 * @throws IOException */
+	public void addArticle(Article a) throws IOException{
 		if(!WikiIndexModifier.checkAddPreconditions(a,langCode))
 			return; // don't add if preconditions are not met
 		
@@ -114,7 +115,7 @@ public class SimpleIndexWriter {
 		IndexWriter writer = indexes.get(target.toString());
 		if(writer == null)
 			return;
-		Document doc = WikiIndexModifier.makeDocument(a,builder,target,stopWords);
+		Document doc = WikiIndexModifier.makeDocument(a,builder,target,stopWords,indexAnalyzer);
 		addDocument(writer,doc,a,target);
 	}
 	

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.apache.lucene.search.Explanation;
+import org.wikimedia.lsearch.highlight.HighlightResult;
 
 /** A single search result */
 public class ResultSet implements Serializable {
@@ -12,7 +13,8 @@ public class ResultSet implements Serializable {
 	public String namespace;
 	public String title;
 	public ArrayList<String> context;
-	Explanation explanation;
+	public Explanation explanation;
+	public HighlightResult highlight;
 	
 	public ResultSet(String key) {
 		int colon = key.indexOf(':');
@@ -69,6 +71,31 @@ public class ResultSet implements Serializable {
 	public String getKey(){
 		return namespace+":"+title;
 	}
-	
-	
+	public String getNamespace() {
+		return namespace;
+	}
+	public void setNamespace(String namespace) {
+		this.namespace = namespace;
+	}
+	public double getScore() {
+		return score;
+	}
+	public void setScore(double score) {
+		this.score = score;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public void setContext(ArrayList<String> context) {
+		this.context = context;
+	}
+	public HighlightResult getHighlight() {
+		return highlight;
+	}
+	public void setHighlight(HighlightResult highlight) {
+		this.highlight = highlight;
+	}
 }

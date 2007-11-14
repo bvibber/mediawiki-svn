@@ -166,6 +166,23 @@ public class SearcherCache {
 		}
 	}
 	
+	/** get a random host that searches iid, always returns "localhost" for local searchers */
+	public String getRandomHost(IndexId iid){
+		if(iid.isMySearch())
+			return "localhost";
+		if(!initialized.contains(iid.toString()))
+			initialize(iid);
+		synchronized(lock){			
+			Set<String> keys = remoteKeys.get(iid.toString());
+			if(keys==null || keys.size()==0)
+				return null;
+			int random = (int)(Math.floor(Math.random()*keys.size()));
+			String[] strkeys = keys.toArray(new String[] {});
+			String key = strkeys[random];
+			return key.substring(key.indexOf('@'));
+		}
+	}
+	
 	/** Get searcher from local cache, or if doesn't exist null */
 	protected IndexSearcherMul fromLocalCache(String key){
 		SearcherPool pool = localCache.get(key);
