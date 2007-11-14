@@ -317,25 +317,17 @@ WikiMiniAtlas.prototype.newElement = function( tag, props, events )
   if( typeof( props[prop] ) == 'object' )
    for( subprop in props[prop] ) 
    {
-    //console.log('setting subprop ' + prop + '.' + subprop + '=' + props[prop][subprop] );
     el[prop][subprop] = props[prop][subprop];
-    //console.log('done setting subprop');
     //el[prop].setProperty( subprop, props[prop][subprop] );
    }
   else 
   {
-   //console.log( 'setting prop'+ prop + '=' + props[prop] );
    el[prop] = props[prop];
-   //console.log('done setting prop');
-  }
    //el.setProperty( prop, props[prop] );
+  }
 
  for( ev in events )
- {
-  //console.log( 'adding event '+ ev + '=' + events[ev] );
   this.addEvent( el, ev, events[ev] );
-  //console.log('done adding event');
- }
 
  return el;
 }
@@ -410,10 +402,7 @@ WikiMiniAtlas.prototype.dblclickHandler = function( ev )
 {
  var me = this.WMA || this;
  ev = ev || window.event;
-
  var test = me.mouseCoords(ev);
-
- console.log( 'dblClick at: ' + test.x + ',' + test.y );
 
  me.gx += test.x - me.width/2;
  me.gy += test.y - me.height/2;
@@ -513,24 +502,26 @@ WikiMiniAtlas.prototype.wheelHandler = function( ev )
   if (ev.preventDefault)
    ev.preventDefault();
   ev.returnValue = false;
-
-  console.log('Wheel.');
  }
 }
 
 
 //
 // extract mouse coordinates from an event object
+// (0,0) origin at top left corner of the map
 //
 WikiMiniAtlas.prototype.mouseCoords = function( ev )
 {
  if(ev.pageX || ev.pageY)
  {
-  return {x:ev.pageX, y:ev.pageY};
+  return {
+   x: ev.pageX - this.widget.offsetLeft,
+   y:ev.pageY - this.widget.offsetTop
+  };
  }
  return {
-  x:ev.clientX + document.body.scrollLeft - document.body.clientLeft,
-  y:ev.clientY + document.body.scrollTop  - document.body.clientTop
+  x:ev.clientX + document.body.scrollLeft - document.body.clientLeft - this.widget.offsetLeft,
+  y:ev.clientY + document.body.scrollTop  - document.body.clientTop - this.widget.offsetTop
  };
 }
 
@@ -700,13 +691,15 @@ WikiMiniAtlas.prototype.updateTargetButton = function()
 
 WikiMiniAtlas.prototype.moveToTarget = function()
 {
- var newcoords = this.latLonToXY( this.marker.lat, this.marker.lon);
- this.gx = newcoords.x - this.width / 2;
- this.gy = newcoords.y - this.height / 2;
- this.moveMapTo();
+ var me = this.WMA || this;
 
- this.marker.locked = true;
- this.updateTargetButton();
+ var newcoords = me.latLonToXY( me.marker.lat, me.marker.lon);
+ me.gx = newcoords.x - me.width / 2;
+ me.gy = newcoords.y - me.height / 2;
+ me.moveMapTo();
+
+ me.marker.locked = true;
+ me.updateTargetButton();
 }
 
 WikiMiniAtlas.prototype.latLonToXY = function( lat, lon )
