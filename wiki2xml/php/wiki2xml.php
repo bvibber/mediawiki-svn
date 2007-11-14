@@ -859,7 +859,7 @@ class wiki2xml
 		# What happens in between?
 		$between = substr ( $this->w , $begin , $last - $begin ) ;
 		
-		if ( $tag != "pre" && $tag != "nowiki" && $tag != "math" ) 
+		if ( $tag != "nowiki" && $tag != "math" ) 
 			{
 			if ( $tag == 'gallery' ) {
 				$this->gallery2wiki ( $between ) ;

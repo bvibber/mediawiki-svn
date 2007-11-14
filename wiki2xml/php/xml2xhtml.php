@@ -3,16 +3,20 @@
 # Setting allowed XHTML construct list
 global $xhtml_allowed ;
 $xhtml_inline = "a,b,br,cite,code,em,font,i,img,small,strong,span,sub,sup,tt,var,";
-$xhtml_block = "blockquote,div,dl,h1,h2,h3,h4,h5,h6,hr,ol,p,pre,table,ul,";
+$xhtml_block = "blockquote,div,dl,h1,h2,h3,h4,h5,h6,hr,ol,p,pre,table,ul,dd,dl2,center,";
 $xhtml_allowed = array ( # A => B means B allowed in A
 	'' => $xhtml_block,
-	'p' => $xhtml_inline."table",
+	'p' => $xhtml_inline."table,pre",
+	'pre' => $xhtml_inline,
+	'center' => $xhtml_inline,
 	'table' => 'caption,col,colgroup,thead,tfoot,tbody,tr',
 	'tbody' => 'tr',
 	'tr' => 'td,th',
 	'td' => $xhtml_inline.$xhtml_block,
 	'th' => $xhtml_inline.$xhtml_block,
 	'caption' => $xhtml_inline,
+	'dl2' => 'dt',
+	'listitem' => 'defkey,defval',
 	'ul' => 'li',
 	'ol' => 'li',
 	'dl' => 'dt,dd',
@@ -93,7 +97,8 @@ class XML2XHTML {
 	}
 	
 	function close_tag ( $tag ) {
-		if ( count ( $this->tags ) == 0 ) die ( "CLOSING NON-OPEN TAG {$tag}" ) ;
+    if ( $tag == '' ) return ;
+		if ( count ( $this->tags ) == 0 ) die ( "CLOSING NON-OPEN TAG \"{$tag}\" (empty list)" ) ;
 		$x = array_pop ( $this->tags ) ;
 		if ( $tag != $x->tag ) die ( "CLOSING {$tag} instead of {$x->tag}" ) ;
 		if ( $x->really_open ) $this->add ( "</{$x->tag}>" ) ;
@@ -196,6 +201,7 @@ class XML2XHTML {
 	function tag_xhtml_dl ( $open , &$attrs ) { $this->simple_tag ( $open , "dl" ) ; }
 	function tag_xhtml_dd ( $open , &$attrs ) { $this->simple_tag ( $open , "dd" ) ; }
 	function tag_xhtml_code ( $open , &$attrs ) { $this->simple_tag ( $open , "code" ) ; }
+	function tag_xhtml_pre ( $open , &$attrs ) { $this->simple_tag ( $open , "pre" ) ; }
 	function tag_preblock ( $open , &$attrs ) { $this->simple_tag ( $open , "pre" ) ; }
 	function tag_preline ( $open , &$attrs ) { if ( !$open ) $this->add ( "\n" ) ; }
 	
@@ -204,7 +210,11 @@ class XML2XHTML {
 		if ( $open ) $this->add_tag ( "font" , $attrs ) ;
 		else $this->close_tag ( "font" ) ;
 	}
-	
+
+	function tag_defkey ( $open , &$attrs ) {
+    $this->simple_tag ( $open , "defkey" ) ;
+  }
+  
 	function tag_list ( $open , &$attrs ) {
 		if ( !$open ) {
 			$o = $this->top_tag () ;
@@ -218,9 +228,17 @@ class XML2XHTML {
 			$this->tag_xhtml_ol ( $open , $attrs ) ;
 		} else if ( $type == 'ident' ) {
 			$this->tag_xhtml_dl ( $open , $attrs ) ;
+		} else if ( $type == 'def' ) {
+      $this->simple_tag ( $open , "dl2" ) ;
+      $this->s = str_replace ( 'dl2>' , 'dl>' , $this->s ) ;
 		} else return ;
 	}
 
+#	function tag_defkey ( $open , &$attrs ) {
+#    if ( $open ) array_pop ( $this->tags ) ; # Remove dd
+#    $this->tag_xhtml_dt ( $open , $attrs ) ;
+#  }
+  
 	function tag_listitem ( $open , &$attrs ) {
 		$o = $this->top_tag() ;
 		if ( !$open ) {
@@ -228,8 +246,8 @@ class XML2XHTML {
 			return ;
 		}
 		if ( $o->tag == 'dt' ) $this->tag_xhtml_dt ( $open , $attrs ) ;
-		else if ( $o->tag == 'dl' ) $this->tag_xhtml_dl ( $open , $attrs ) ;
-		else if ( $o->tag == 'dd' ) $this->tag_xhtml_dd ( $open , $attrs ) ;
+		else if ( $o->tag == 'dl' ) $this->tag_xhtml_dd ( $open , $attrs ) ;
+		else if ( $o->tag == 'dl2' ) $this->tag_xhtml_dt ( $open , $attrs ) ;
 		else $this->tag_xhtml_li ( $open , $attrs ) ;
 	}
 	
@@ -521,7 +539,6 @@ function convert_xml_xhtml ( &$xml ) {
 		xml_parse($xml_parser_handle, $xml) ;
 		xml_parse($xml_parser_handle, '</articles>' ) ;
 	}
-
 
 
 	

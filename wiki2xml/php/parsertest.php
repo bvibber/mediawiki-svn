@@ -86,20 +86,24 @@ foreach ( $tests AS $t ) {
   
   # Fixing things to compare to the stupid parser test formatting
   $res = trim ( $res ) ;
+  $res = str_replace ( "<li> " , "<li>" , $res ) ;
+  $res = str_replace ( "<dd> " , "<dd>" , $res ) ;
   $res = str_replace ( "\n<" , "<" , $res ) ;
   $res = str_replace ( "\n" , " " , $res ) ;
   $res = str_replace ( " </p>" , "</p>" , $res ) ;
   do { $o = $res ; $res = str_replace ( "  " , " " , $res ) ; } while ( $o != $res ) ;
   
   $nr = trim ( $nr ) ;
+  $nr = str_replace ( "<li> " , "<li>" , $nr ) ;
+  $nr = str_replace ( "<dd> " , "<dd>" , $nr ) ;
   $nr = str_replace ( "\n<" , "<" , $nr ) ;
   $nr = str_replace ( "\r" , "" , $nr ) ;
   $nr = str_replace ( "\n" , " " , $nr ) ;
   do { $o = $nr ; $nr = str_replace ( "  " , " " , $nr ) ; } while ( $o != $nr ) ;
   
   
-  $arr = array ( 'li' ) ;
-  foreach ( $arr AS $a ) $nr = str_replace ( "<$a>" , "<$a> " , $nr ) ;
+#  $arr = array ( 'li' ) ;
+#  foreach ( $arr AS $a ) $nr = str_replace ( "<$a>" , "<$a> " , $nr ) ;
 
 
   # Indicator color
