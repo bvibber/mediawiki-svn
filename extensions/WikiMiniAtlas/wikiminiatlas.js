@@ -14,7 +14,17 @@ var WMA_Global =
  tile: [],
  tile_URL: [],
  XHR: [],
- XHR_callback: []
+ XHR_callback: [],
+ WMA: [],
+
+ mouseUpHandler: function( e )
+ {
+  for( var i = 0; i < WMA_Global.WMA.length; i++ ) WMA_Global.WMA[i].mouseUpHandler();
+ },
+ mouseMoveHandler: function( e )
+ {
+  for( var i = 0; i < WMA_Global.WMA.length; i++ ) WMA_Global.WMA[i].mouseMoveHandler( e );
+ }
 };
 
 //
@@ -37,17 +47,16 @@ function WikiMiniAtlas( obj )
  this.widget = null;
  this.id = WMA_Global.max_id;
  WMA_Global.max_id++;
+ WMA_Global.WMA[this.id] = this;
 
  this.map = null;
  this.nx = 0;
  this.ny = 0;
  this.tile = 0;
- this.old_onmouseup = null;
- this.old_onmousemove;
 
  this.date = new Date();
  this.lastwheel = 0;
- this.wheeldelay = 200;
+ this.wheeldelay = 1;
 
  this.dragging = null;
  this.gx = 0;
@@ -100,28 +109,28 @@ function WikiMiniAtlas( obj )
    { 
     src: this.imgbase + 'button_plus.png', 
     title: this.strings.zoomIn[this.lang], 
-    style: { left: '10px', top: '10px' } 
+    style: { left: '10px', top: '10px',  zIndex: '30', position: 'absolute', cursor: 'pointer' } 
    }, { mousedown: this.zoomIn } ); 
 
   var button_minus = this.newElement( 'img',
    {
     src: this.imgbase + 'button_minus.png',
     title: this.strings.zoomOut[this.lang],
-    style: { left: '10px', top: '32px' }
+    style: { left: '10px', top: '32px',  zIndex: '30', position: 'absolute', cursor: 'pointer' }
    }, { mousedown: this.zoomOut } );
 
   this.taget_button = this.newElement( 'img',
    {
     src: this.imgbase + 'button_target_locked.png',
     title: this.strings.center[this.lang],
-    style: { left: '10px', top: '54px' }
+    style: { left: '10px', top: '54px',  zIndex: '30', position: 'absolute', cursor: 'pointer' }
    }, { mousedown: this.moveToTarget } );
 
   var button_menu = this.newElement( 'img',
    {
     src: this.imgbase + 'button_menu.png',
     title: this.strings.settings[this.lang],
-    style: { right: '40px', top: '8px', width: '18px', zIndex: '50'  }
+    style: { right: '40px', top: '8px', width: '18px', zIndex: '50', position: 'absolute', cursor: 'pointer'  }
    }, { click: this.toggleSettings } );
 
 
@@ -143,8 +152,6 @@ function WikiMiniAtlas( obj )
 
   WikiMiniAtlasHTML = '';
 
-  //WikiMiniAtlasHTML += '<div id="wikiminiatlas_map" style="position:absolute; width:'+this.width+'px; height:'+this.height+'px; border: 1px solid gray; cursor: move; background-color: #aaaaaa; clip:rect(0px, '+this.width+'px, '+this.height+'px, 0px);"></div>';
-  
   // Settings page
   WikiMiniAtlasHTML += 
    '<div id="wikiminiatlas_settings">' +
@@ -180,7 +187,9 @@ function WikiMiniAtlas( obj )
    '</div>';
 
   this.widget.style.clip = 'rect(0px,' + this.width + 'px,' + this.height + 'px,0px)';
-  console.log( this.widget.style.clip );
+  this.widget.style.position = 'absolute';
+  this.widget.style.overflow = 'hidden';
+
   this.widget.oncontextmenu = function() { return false; };
   this.widget.innerHTML = WikiMiniAtlasHTML ;
 
@@ -190,8 +199,12 @@ function WikiMiniAtlas( obj )
   this.widget.appendChild( this.taget_button );
   this.widget.appendChild( homepage_link );
 
-  old_onmouseup = document.onmouseup;
-  old_onmousemove = document.onmousemove;
+  // register global events (just once!)
+  if( this.id == 0 )
+  {
+   document.onmousemove = WMA_Global.mouseMoveHandler;
+   document.onmouseup = WMA_Global.mouseUpHandler;
+  }
 
   this.initializeMap();
   this.moveToTarget();
@@ -222,10 +235,12 @@ WikiMiniAtlas.prototype.toggle = function()
 
 WikiMiniAtlas.prototype.toggleSettings = function()
 {
- if(settings.style.visibility != "visible")
-   settings.style.visibility="visible";
+ var me = this.WMA || this;
+
+ if( me.settings.style.visibility != "visible")
+   me.settings.style.visibility="visible";
  else
-   settings.style.visibility="hidden";
+   me.settings.style.visibility="hidden";
 
  return false;
 }
@@ -233,10 +248,9 @@ WikiMiniAtlas.prototype.toggleSettings = function()
 // initializeWikiMiniAtlasMap()
 WikiMiniAtlas.prototype.initializeMap = function()
 {
- this.widget.onmousedown = this.mouseDownHandler;
- document.onmousemove = this.mouseMoveHandler;
- document.onmouseup = this.mouseUpHandler;
-
+ this.addEvent( this.widget, 'mousedown', this.mouseDownHandler );
+ 
+ this.widget.WMA = this;
  if (window.addEventListener)
   /** DOMMouseScroll is for mozilla. */
   this.widget.addEventListener('DOMMouseScroll', this.wheelHandler, false);
@@ -245,7 +259,7 @@ WikiMiniAtlas.prototype.initializeMap = function()
   this.widget.onmousewheel = this.wheelHandler;
 
  //a'dblclick', map
- this.widget.ondblclick = this.dblclickHandler;
+ this.addEvent( this.widget, 'dblclick', this.dblclickHandler );
 
  this.nx = Math.floor( this.width / 128 ) + 2;
  this.ny = Math.floor( this.height / 128 ) + 2;
@@ -262,7 +276,7 @@ WikiMiniAtlas.prototype.initializeMap = function()
      style: { position: 'absolute', width: '128px', height: '128px' }
     }, {} );
    this.widget.appendChild( WMA_Global.tile[this.id][n] );
-   WMA_Global.tile[this.id][n].onmousedown = this.mouseDownHandler;
+   this.addEvent( WMA_Global.tile[this.id][n], 'mousedown', this.mouseDownHandler );
    n++;
   }
 
@@ -392,11 +406,25 @@ WikiMiniAtlas.prototype.moveMapTo = function()
 //
 // Double-Click handler
 //
-WikiMiniAtlas.prototype.dblclickMap = function( ev )
+WikiMiniAtlas.prototype.dblclickHandler = function( ev )
 {
+ var me = this.WMA || this;
  ev = ev || window.event;
- var test = this.mouseCoords(ev);
- alert( test.x + ',' + test.y );
+
+ var test = me.mouseCoords(ev);
+
+ console.log( 'dblClick at: ' + test.x + ',' + test.y );
+
+ me.gx += test.x - me.width/2;
+ me.gy += test.y - me.height/2;
+
+ if( me.marker.locked )
+ {
+  me.marker.locked = false;
+  me.updateTargetButton();
+ }
+
+ me.moveMapTo();
 }
 
 //
@@ -405,7 +433,7 @@ WikiMiniAtlas.prototype.dblclickMap = function( ev )
 WikiMiniAtlas.prototype.mouseDownHandler = function( ev )
 {
  ev = ev || window.event;
- this.dragging = this.mouseCoords(ev);
+ this.WMA.dragging = this.WMA.mouseCoords(ev);
 }
 
 
@@ -415,7 +443,6 @@ WikiMiniAtlas.prototype.mouseDownHandler = function( ev )
 WikiMiniAtlas.prototype.mouseUpHandler = function()
 {
  this.dragging = null;
- if( old_onmouseup != null ) old_onmouseup();
 }
 
 
@@ -424,26 +451,32 @@ WikiMiniAtlas.prototype.mouseUpHandler = function()
 //
 WikiMiniAtlas.prototype.mouseMoveHandler = function( ev )
 {
+ // 
+ // 'me' refers to the current WikiMiniAtlas object
+ // it will either be 'this' when the function is called
+ // directly, or 'this.WMA' when called in an object 
+ // context through an event
+ //
+ var me = this.WMA || this;
+ 
  //window.scrollTo(0,0);
- if( this.dragging != null )
+ if( me.dragging != null )
  {
   var newev = ev || window.event;
-  var newcoords = this.mouseCoords(newev);
+  var newcoords = me.mouseCoords(newev);
 
-  this.gx -= ( newcoords.x - this.dragging.x );
-  this.gy -= ( newcoords.y - this.dragging.y );
-  this.dragging = newcoords;
+  me.gx -= ( newcoords.x - me.dragging.x );
+  me.gy -= ( newcoords.y - me.dragging.y );
+  me.dragging = newcoords;
 
-  moveMapTo();
+  me.moveMapTo();
 
-  if( this.marker.locked )
+  if( me.marker.locked )
   {
-   this.marker.locked = false;
-   this.updateTargetButton();
+   me.marker.locked = false;
+   me.updateTargetButton();
   }
  }
-
- if( old_onmousemove != null ) old_onmousemove( ev ); 
 }
 
 
@@ -452,29 +485,37 @@ WikiMiniAtlas.prototype.mouseMoveHandler = function( ev )
 //
 WikiMiniAtlas.prototype.wheelHandler = function( ev )
 {
- var now = this.date.getTime();
- //if( now - lastwheel > 100 ) 
+ var me = this.WMA || this;
+ var now = me.date.getTime();
 
- var delta = 0;
- if (!ev) /* For IE. */
-  var ev = window.event;
- if (ev.wheelDelta) { /* IE/Opera. */
-  delta = ev.wheelDelta/120;
-  if (window.opera)
-   delta = -delta;
- } 
- else if (ev.detail) { /** Mozilla case. */
-  delta = -ev.detail/3;
+ //
+ // avoid wheel events fired in short succession
+ //
+ if( now - me.lastwheel > me.wheeldelay ) 
+ {
+  me.lastwheel = now;
+  
+  var delta = 0;
+  if (!ev) /* For IE. */
+   var ev = window.event;
+  if (ev.wheelDelta) { /* IE/Opera. */
+   delta = ev.wheelDelta/120;
+   if (window.opera)
+    delta = -delta;
+  } 
+  else if (ev.detail) { /** Mozilla case. */
+   delta = -ev.detail/3;
+  }
+
+  if( delta>0 ) me.zoomIn();
+  if( delta<0 ) me.zoomOut();
+
+  if (ev.preventDefault)
+   ev.preventDefault();
+  ev.returnValue = false;
+
+  console.log('Wheel.');
  }
-
- if( delta>0 ) zoomIn();
- if( delta<0 ) zoomOut();
-
- if (ev.preventDefault)
-  ev.preventDefault();
- ev.returnValue = false;
-
- console.log('Wheel.');
 }
 
 
@@ -501,12 +542,12 @@ WikiMiniAtlas.prototype.getDataURL = function( y, x, z )
 
 WikiMiniAtlas.prototype.tilesetUpgrade = function()
 {
- for( var i = tileset+1; i < tilesets.length; i++ )
+ for( var i = this.tileset + 1; i < this.tilesets.length; i++ )
  {
-  if( tilesets[i].maxzoom > (zoom+1) )
+  if( this.tilesets[i].maxzoom > ( this.zoom + 1 ) )
   {
-   tileset = i;
-   zoom++;
+   this.tileset = i;
+   this.zoom++;
    return;
   }
  }
@@ -527,7 +568,8 @@ WikiMiniAtlas.prototype.tilesetDowngrade = function()
 
 WikiMiniAtlas.prototype.zoomIn = function( ev )
 {
- var mapcenter = this.XYToLatLon( this.gx + this.width/2, this.gy + this.height/2 );
+ var me = this.WMA || this;
+ var mapcenter = me.XYToLatLon( me.gx + me.width/2, me.gy + me.height/2 );
  var rightclick = false;
 
  if(!ev) var ev = window.event;
@@ -538,33 +580,34 @@ WikiMiniAtlas.prototype.zoomIn = function( ev )
 
  if( rightclick )
  {
-  this.zoom = this.tilesets[this.tileset].maxzoom;
+  me.zoom = me.tilesets[me.tileset].maxzoom;
  }
  else
  {
-  if( this.zoom >= this.tilesets[this.tileset].maxzoom )
-   this.tilesetUpgrade();
+  if( me.zoom >= me.tilesets[me.tileset].maxzoom )
+   me.tilesetUpgrade();
   else 
-   this.zoom++;
+   me.zoom++;
  }
 
  var newcoords;
 
- if( this.marker.locked )
-  newcoords = this.latLonToXY( this.marker.lat, this.marker.lon );
+ if( me.marker.locked )
+  newcoords = me.latLonToXY( me.marker.lat, me.marker.lon );
  else
-  newcoords = this.latLonToXY( mapcenter.lat, mapcenter.lon );
+  newcoords = me.latLonToXY( mapcenter.lat, mapcenter.lon );
 
- this.gx = newcoords.x - this.width/2;
- this.gy = newcoords.y - this.height/2;
- this.moveMapTo();
+ me.gx = newcoords.x - me.width/2;
+ me.gy = newcoords.y - me.height/2;
+ me.moveMapTo();
 
  return false;
 }
 
 WikiMiniAtlas.prototype.zoomOut = function( e )
 {
- var mapcenter = this.XYToLatLon( this.gx + this.width/2, this.gy + this.height/2 );
+ var me = this.WMA || this;
+ var mapcenter = me.XYToLatLon( me.gx + me.width/2, me.gy + me.height/2 );
  var rightclick = false;
 
  if(!ev) var ev = window.event;
@@ -575,20 +618,20 @@ WikiMiniAtlas.prototype.zoomOut = function( e )
 
  if( rightclick )
  {
-  this.zoom = this.tilesets[tileset].minzoom;
+  me.zoom = me.tilesets[me.tileset].minzoom;
  }
  else
  {
-  if( thsi.zoom <= thsi.tilesets[thsi.tileset].minzoom ) 
-   this.tilesetDowngrade();
+  if( me.zoom <= me.tilesets[me.tileset].minzoom ) 
+   me.tilesetDowngrade();
   else 
-   this.zoom--;
+   me.zoom--;
  }
 
- var newcoords = this.latLonToXY( mapcenter.lat, mapcenter.lon );
- this.gx = newcoords.x - this.width/2;
- this.gy = newcoords.y - this.height/2;
- this.moveMapTo();
+ var newcoords = me.latLonToXY( mapcenter.lat, mapcenter.lon );
+ me.gx = newcoords.x - me.width/2;
+ me.gy = newcoords.y - me.height/2;
+ me.moveMapTo();
 
  return false;
 }
@@ -764,6 +807,9 @@ WikiMiniAtlas.prototype.initializeXMLHTTPCallBacks = function()
  // http://www.quirksmode.org/blog/archives/2005/10/_and_the_winner_1.html
 WikiMiniAtlas.prototype.addEvent = function ( obj, type, fn )
 {
+ // Add reference to the current WMA object
+ obj.WMA = this;
+
  if (obj.addEventListener)
   obj.addEventListener( type, fn, false );
  else if (obj.attachEvent)
