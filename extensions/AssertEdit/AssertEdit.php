@@ -47,8 +47,8 @@ class AssertEdit
 		'bot' => array( 'AssertEdit', 'assert_bot' ),
 		'exists' => array( 'AssertEdit', 'assert_exists' ),
 		//override these in LocalSettings.php
-		'test' => false,      //Do we allow random tests?
 		//'wikimedia' => false, //is this an offical wikimedia site?
+		'test' => false      //Do we allow random tests?
 	);
 
 	static function setAssert( $key, $val ) {
@@ -136,7 +136,8 @@ function wfAssertEditSetup()
 		array(
 			'assert_edit_title' => 'Assert failed',
 			'assert_edit_message' => 'The specified assertion ($1) failed.'
-		));
+		)
+	);
 }
 
 $wgHooks['AlternateEdit'][] = 'wfAssertEditHook';
