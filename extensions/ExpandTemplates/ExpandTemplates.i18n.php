@@ -55,13 +55,13 @@ $wgExpandTemplatesMessages['ca'] = array(
 	'expand_templates_remove_comments' => 'Elimina els comentaris',
 );
 $wgExpandTemplatesMessages['cs'] = array(
-	'expandtemplates'                  => 'Substituovat šablony',
+	'expandtemplates'                  => 'Substituce šablon',
 	'expand_templates_intro'           => 'Pomocí této speciální stránky můžete nechat v textu substituovat všechny šablony a funkce parseru jako <code><nowiki>{{</nowiki>#if:…...}}</code> či proměnné jako <code><nowiki>{{</nowiki>CURRENTDAY}} – tzn. prakticky všechno v dvojitých složených závorkách. K tomu se používají přímo odpovídající funkce parseru MediaWiki.',
 	'expand_templates_title'           => 'Název stránky kvůli kontextu pro <code>{{PAGENAME}}</code> apod.:',
 	'expand_templates_input'           => 'Vstupní text:',
 	'expand_templates_output'          => 'Výstup',
-	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Odstranit komentáře',
+	'expand_templates_preview'         => 'Náhled',
 );
 $wgExpandTemplatesMessages['de'] = array(
 	'expandtemplates'                  => 'Vorlagen expandieren',

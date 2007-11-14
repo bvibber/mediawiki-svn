@@ -58,6 +58,20 @@ function efUsernameBlacklistMessages( $single = false ) {
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|La següent línia|Les següents línies}} de la llista negra de noms d\'usuari no {{PLURAL:$1|és vàlida|són vàlides}}; si us plau, corregiu{{PLURAL:$1|-la|-les}} abans de desar-ho:',
 ),
 
+'cs' => array(
+	'blacklistedusername' => 'Nepovolené uživatelské jméno',
+	'blacklistedusernametext' => 'Vámi vybrané uživatelské jméno se shoduje s&nbsp;některým ze [[MediaWiki:Usernameblacklist|seznamu nepovolených uživatelských jmen]]. Prosíme, vyberte si jiné jméno.',
+	'usernameblacklist' => '<pre>
+# Položky v&nbsp;tomto seznamu budou použity jako části regulárního výrazu
+# při kontrole nepovolených uživatelských jmen při registraci.
+# Každý výraz by měl být označen jako položka nečíslovaného seznamu, např.:
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => 'Následující {{plural:$1|řádka|řádky|řádky}} v&nbsp;seznamu nepovolených uživatelských jmen {{plural:$1|je neplatná|jsou neplatné|jsou neplatné}}; prosíme, opravte {{plural:$1|ji|je|je}} před uložením:',
+),
+
 /* German (Raymond) */
 'de' => array(
 	'blacklistedusername'             => 'Benutzername auf der Sperrliste',

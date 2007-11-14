@@ -43,6 +43,18 @@ $allMessages = array(
 		'passwordreset-success'         => 'Passwort für Benutzer-ID $1 wurde zurückgesetzt'
 	),
 
+	'el' => array(
+		'passwordreset' => 'Κωδικός επαναφοράς',
+		'passwordreset-invalidusername' => 'Άκυρο όνομα χρήστη',
+		'passwordreset-emptyusername' => 'Κενό όνομα χρήστη',
+		'passwordreset-nopassmatch' => 'Οι Κωδικοί δεν αντιστοιχούν',
+		'passwordreset-username' => 'Όνομα χρήστη',
+		'passwordreset-newpass' => 'Νέος Κωδικός',
+		'passwordreset-confirmpass' => 'Επιβεβαιώστε τον κωδικό πρόσβασης',
+		'passwordreset-submit' => 'Επαναφορά κωδικού',
+		'passwordreset-success' => 'Ο κωδικός έχει επαναφερθεί για τον user_id: $1',
+	),
+
 	'fr' => array(
 		'passwordreset' => 'Remise à zéro du mot de passe',
 		'passwordreset-invalidusername' => 'Nom d\'usager inconnu',
