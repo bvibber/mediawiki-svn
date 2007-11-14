@@ -19,135 +19,132 @@ if ( ! defined( 'MEDIAWIKI' ) )
 
 class AssertEdit 
 {
-  /**
-   * methods for core assertions
-   */
-  static function assert_user () 
-    {
-      global $wgUser;
-      return $wgUser->isLoggedIn();
-    }
-  static function assert_bot () 
-    {
-      global $wgUser;
-      return $wgUser->isBot();
-    }
-  static function assert_exists()
-    {
-      global $wgTitle;
-      return ($wgTitle->getArticleID() != 0);
-    }
+	/**
+	 * methods for core assertions
+	 */
+	static function assert_user() {
+		global $wgUser;
+		return $wgUser->isLoggedIn();
+	}
+	static function assert_bot() {
+		global $wgUser;
+		return $wgUser->isBot();
+	}
+	static function assert_exists() {
+		global $wgTitle;
+		return ( $wgTitle->getArticleID() != 0 );
+	}
 
-  /*
-   * List of assertions; can be modified with setAssert
-   */
-  static private $msAssert=array
-    (
-     //simple constants, i.e. to test if the extension is installed.
-     'true' => true,
-     'false' => false,
-     //useful variable tests, to ensure we stay logged in
-     'user' => array('AssertEdit', 'assert_user'),
-     'bot' => array('AssertEdit', 'assert_bot'),
-     'exists' => array('AssertEdit', 'assert_exists'),
-     //override these in LocalSetting.php
-     'test' => false,      //Do we allow random tests?
-     //'wikimedia' => false, //is this an offical wikimedia site?
-     );
+	/*
+	 * List of assertions; can be modified with setAssert
+	 */
+	static private $msAssert = array(
+		//simple constants, i.e. to test if the extension is installed.
+		'true' => true,
+		'false' => false,
+		//useful variable tests, to ensure we stay logged in
+		'user' => array( 'AssertEdit', 'assert_user' ),
+		'bot' => array( 'AssertEdit', 'assert_bot' ),
+		'exists' => array( 'AssertEdit', 'assert_exists' ),
+		//override these in LocalSettings.php
+		'test' => false,      //Do we allow random tests?
+		//'wikimedia' => false, //is this an offical wikimedia site?
+	);
 
-  static function setAssert($key,$val) 
-    {
-      
-      //Don't confuse things by changing core assertions.
-      switch ($key) {
-      case 'true':
-      case 'false':
-      case 'user':
-      case 'bot':
-      case 'exists':
-	return false;
-      }
-      //make sure it's useable.
-      if (is_bool($value) or is_callable($value)) {
-	self::$msAssert[$key] = $value;
-	return true;
-      }
-      else
-	return false;
-    }
-  //call the specified assertion
-  static function callAssert($assertv, $negate) 
-    {
-      if (isset(self::$msAssert[$assertv])){
-	if (is_bool(self::$msAssert[$assertv]))
-	  $assertp = self::$msAssert[$assertv];
-	elseif (is_callable(self::$msAssert[$assertv]))
-	  $assertp = call_user_func(self::$msAssert[$assertv]);
+	static function setAssert( $key, $val ) {
+		//Don't confuse things by changing core assertions.
+		switch ( $key ) {
+			case 'true':
+			case 'false':
+			case 'user':
+			case 'bot':
+			case 'exists':
+				return false;
+		}
+		//make sure it's useable.
+		if ( is_bool( $value ) or is_callable( $value ) ) {
+			self::$msAssert[$key] = $value;
+			return true;
+		} else {
+			return false;
+		}
+	}
 
-	if ($negate and isset($assertp))
-	  $assertp = !$assertp;
-	
-      } else {
-	//unrecognized assert fails, regardless of negation.
-	$assertp = false;
-      }
-      return $assertp;
-    }
-  
+	//call the specified assertion
+	static function callAssert( $assertName, $negate ) {
+		if ( isset( self::$msAssert[$assertName] ) ) {
+			if ( is_bool( self::$msAssert[$assertName] ) ) {
+				$pass = self::$msAssert[$assertName];
+			} elseif ( is_callable( self::$msAssert[$assertName] ) ) {
+				$pass = call_user_func( self::$msAssert[$assertName] );
+			}
+
+			if ( $negate and isset( $pass ) ) {
+				$pass = !$pass;
+			}
+		} else {
+			//unrecognized assert fails, regardless of negation.
+			$pass = false;
+		}
+		return $pass;
+	}
+
 }
 
 
-function wfAssertEditHook(&$editpage) {
-  global $wgOut, $wgRequest;
-  
-  $assertv = $wgRequest->GetVal('assert');
-  $assertp = true;
-  
-  if ($assertv != '')
-    $assertp = AssertEdit::callAssert($assertv, false);
+function wfAssertEditHook( &$editpage ) {
+	global $wgOut, $wgRequest;
 
-  //check for negative assert
-  if ($assertp) {
-    $assertv = $wgRequest->GetVal('nassert');
-    if ($assertv != '')
-      $assertp = AssertEdit::callAssert($assertv, true);
-  }
-  
-  if ($assertp)
-    return true;
-  else {
-    //slightly modified from showErrorPage(), to return back here.
-    $wgOut->setPageTitle( wfMsg( 'assert_edit_title' ) );
-    $wgOut->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
-    $wgOut->setRobotpolicy( 'noindex,nofollow' );
-    $wgOut->setArticleRelated( false );
-    $wgOut->enableClientCache( false );
-    $wgOut->mRedirect = '';
-    
-    $wgOut->mBodytext = '';
-    $wgOut->addWikiText( wfMsg( 'assert_edit_message', $assertv ) );
+	$assertName = $wgRequest->getVal( 'assert' );
+	$pass = true;
 
-    $wgOut->returnToMain(false,$editpage->mTitle);
-    return false;
-  }
+	if ( $assertName != '' ) {
+		$pass = AssertEdit::callAssert( $assertName, false );
+	}
+
+	//check for negative assert
+	if ( $pass ) {
+		$assertName = $wgRequest->getVal( 'nassert' );
+		if ( $assertName != '' ) {
+			$pass = AssertEdit::callAssert( $assertName, true );
+		}
+	}
+
+	if ( $pass ) {
+		return true;
+	} else {
+		//slightly modified from showErrorPage(), to return back here.
+		$wgOut->setPageTitle( wfMsg( 'assert_edit_title' ) );
+		$wgOut->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
+		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setArticleRelated( false );
+		$wgOut->enableClientCache( false );
+		$wgOut->mRedirect = '';
+
+		$wgOut->mBodytext = '';
+		$wgOut->addWikiText( wfMsg( 'assert_edit_message', $assertName ) );
+
+		$wgOut->returnToMain( false, $editpage->mTitle );
+		return false;
+	}
 }
 
 function wfAssertEditSetup()
 {
-  global $wgMessageCache;
-  $wgMessageCache->addMessages
-    (array(
-	   'assert_edit_title' => 'Assert failed',
-	   'assert_edit_message' => 'The specified assertion ($1) failed.'
-	   ));
+	global $wgMessageCache;
+	$wgMessageCache->addMessages( 
+		array(
+			'assert_edit_title' => 'Assert failed',
+			'assert_edit_message' => 'The specified assertion ($1) failed.'
+		));
 }
 
 $wgHooks['AlternateEdit'][] = 'wfAssertEditHook';
 $wgExtensionFunctions[] = 'wfAssertEditSetup';
 
 $wgExtensionCredits['other'][] = array(
-        'name' => 'AssertEdit',
-        'author' => 'Steve Sanbeg',
-        'description' => 'adds edit assertions for use by bots',
-        'url' => 'http://www.mediawiki.org/wiki/Extension:Assert_Edit'
-        );
+	'name' => 'AssertEdit',
+	'author' => 'Steve Sanbeg',
+	'description' => 'adds edit assertions for use by bots',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Assert_Edit'
+);
