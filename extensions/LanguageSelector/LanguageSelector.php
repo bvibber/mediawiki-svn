@@ -73,6 +73,7 @@ function wfLanguageSelectorExtension() {
 	$wgParser->setHook('languageselector', 'wfLanguageSelectorTag' );
 
 	$wgMessageCache->addMessage('languageselector-setlang', 'set');
+	$wgMessageCache->addMessage('languageselector', 'Language');
 
 	if ( $wgLanguageSelectorLanguages === NULL ) {
 		$wgLanguageSelectorLanguages = @$GLOBALS['wgPolyglotLanguages'];
