@@ -18,7 +18,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 if (!defined('MEDIAWIKI')) die();
 
-$wgTodoTasksExtensionVersion = '0.9.1';
+$wgTodoTasksExtensionVersion = '0.9.2';
 
 $wgExtensionCredits['parserhook'][]    = array(
         'version'     => $wgTodoTasksExtensionVersion,

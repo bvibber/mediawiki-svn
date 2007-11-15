@@ -367,7 +367,7 @@ class TaskListByProject extends SpecialPage
         foreach ($validprojects as $vp) 
             $wgOut->addHtml("<option value=\"$vp\">$vp</option>");
 
-        $wgOut->addHtml("</select><INPUT TYPE=submit VALUE='" . wfMsgTL('tasklistprojdisp') . "'>");
+        $wgOut->addHtml("</select><INPUT TYPE=submit VALUE='" . wfMsgTL('tasklistprojdisp') . "'></FORM>");
     }
 }
 
