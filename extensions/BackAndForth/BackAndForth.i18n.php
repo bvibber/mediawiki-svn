@@ -44,6 +44,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Vorherige ($1)',
 ),
 
+'el' => array(
+	'backforth-next' => 'Επόμενο ($1)',
+	'backforth-prev' => 'Προηγούμενο ($1)',
+),
+
 'eo' => array(
 	'backforth-next' => 'Sekva ($1)',
 	'backforth-prev' => 'Antaŭa ($1)',

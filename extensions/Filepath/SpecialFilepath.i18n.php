@@ -124,6 +124,9 @@ $wgFilepathMessages['ja'] = array(
 	'filepath_page'   => 'ファイル名:',
 	'filepath_submit' => 'パスを取得',
 );
+$wgFilepathMessages['kaa'] = array(
+	'filepath'        => 'Fayl jolı',
+);
 $wgFilepathMessages['kk-kz'] = array(
 	'filepath'        => 'Файл орналасуы ',
 	'filepath_page'   => 'Файл аты:',

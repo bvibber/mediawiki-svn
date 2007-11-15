@@ -233,6 +233,10 @@ function efInputBoxMessages() {
 	'createarticle'  => 'სტატიის შექმნა',
 ),
 
+'kaa' => array(
+	'createarticle'           => 'Bet jaratıw',
+),
+
 'kab' => array(
 	'tryexact'       => 'Nadi ɣef uzwel kif-kif',
 	'searchfulltext' => 'Nadi aḍris ettmam',

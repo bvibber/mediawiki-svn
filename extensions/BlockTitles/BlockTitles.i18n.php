@@ -40,6 +40,11 @@ function efBlockTitlesMessages() {
 	'block_title_error'            => 'Entschuldigung, aber eine Seite mit diesem Namen darf nicht gespeichert werden.',
 ),
 
+'el' => array(
+	'block_title_error_page_title' => 'Παρεμποδισμένος τίτλος',
+	'block_title_error' => 'Συγγνώμη, ο τίτλος αυτού του άρθρου δεν επιτρέπεται να αποθηκευτεί.',
+),
+
 /**
  * French (Bertrand Grondin)
  */
