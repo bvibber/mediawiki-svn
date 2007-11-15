@@ -14,6 +14,12 @@ if ( ! defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionFunctions[] = 'efCommentSpammer';
+$wgExtensionCredits['other'][] = array(
+        'name' => 'CommentSpammer',
+        'author' => 'Nick Jenkins',
+        'url' => 'http://www.mediawiki.org/wiki/Extension:CommentSpammer',
+        'description' => 'Rejects edits from suspected comment spammers on a DNS blacklist.',
+);
 
 function efCommentSpammer() {
 	global $wgMessageCache;
@@ -25,7 +31,7 @@ function efCommentSpammer() {
 /**
  * Add the hook on which we trigger.
  */
-$wgHooks['EditFilter'][]      = array( 'HoneyPotCommentSpammer::commentSpammerHook' );
+$wgHooks['EditFilter'][]      = 'HoneyPotCommentSpammer::commentSpammerHook';
 
 /**
  * Another log type, 'cSpammer', is added, if logging has been enabled, and appropriate 
@@ -37,7 +43,7 @@ if( isset( $wgCommentSpammerLog )
 	$wgLogTypes[] = 'cSpammer';
 	$wgLogHeaders['cSpammer'] = 'cspammerlogpagetext';
 	$wgLogNames['cSpammer'] = 'cspammer-log-page';
-	$wgHooks['LogLine'][] = array( 'HoneyPotCommentSpammer::showLogLine' );
+	$wgHooks['LogLine'][] = 'HoneyPotCommentSpammer::showLogLine';
 }
 
 /**
@@ -48,8 +54,8 @@ if( isset( $wgCommentSpammerLog )
 class HoneyPotCommentSpammer {
 
 	/**
-     * Class constants that relate to: http://www.projecthoneypot.org/httpbl_api.php
-     */
+	 * Class constants that relate to: http://www.projecthoneypot.org/httpbl_api.php
+	 */
 	const HONEY_POT_DNSBL      = 'dnsbl.httpbl.org';
 	const HONEY_POT_NO_ERROR   = 127; // The "everything is a-okay" response code that we want to see.
 	const MAX_STALENESS        = 14;  // Number of days since this IP last spammed before we forgive.
@@ -57,10 +63,10 @@ class HoneyPotCommentSpammer {
 	const COMMENT_SPAMMER_CODE = 4;   // The code for a comment spammer.
 
 	/**
-     * Determines whether the specified IP address corresponds to a known active comment spammer.
-     * @param string $ip_addr A IP address string like '87.101.244.10'
-     * @return boolean True for spammer, false for non-spammer or if get unexpected results.
-     */
+	 * Determines whether the specified IP address corresponds to a known active comment spammer.
+	 * @param string $ip_addr A IP address string like '87.101.244.10'
+	 * @return boolean True for spammer, false for non-spammer or if get unexpected results.
+	 */
 	public static function isCommentSpammer( $ip_addr = null ) {
 		// logged in users are assumed to not be comment spammers.
 		global $wgUser;
@@ -145,14 +151,14 @@ class HoneyPotCommentSpammer {
 	}
 	
 	/**
-     * Determines whether the specified IP address corresponds to a known active comment spammer, and if
-     * so denies the edit and outputs a message to this effect.
-     * // @param EditPage $editPage EditPage object for page modification.
-     * // @param string $textbox The text the user submitted. (param not used)
-     * // @param string $section The section the user modified. (param not used)
-     * // @param string $hookError Return value for error about why the edit was rejected, if applicable. (param not used)
-     * @return boolean True for allowing the edit, false for denying the edit.
-     */
+	 * Determines whether the specified IP address corresponds to a known active comment spammer, and if
+	 * so denies the edit and outputs a message to this effect.
+	 * // @param EditPage $editPage EditPage object for page modification.
+	 * // @param string $textbox The text the user submitted. (param not used)
+	 * // @param string $section The section the user modified. (param not used)
+	 * // @param string $hookError Return value for error about why the edit was rejected, if applicable. (param not used)
+	 * @return boolean True for allowing the edit, false for denying the edit.
+	 */
 	public static function commentSpammerHook( /* $editPage = null, $textbox = '', $section = '', & $hookError = '' */ ) {
 		$spammer = self::isCommentSpammer( );
 		if( $spammer ) { 
@@ -163,10 +169,10 @@ class HoneyPotCommentSpammer {
 	}
 
 	/**
-     * Gets the blacklist DNS response for the specified IP address.
-     * @param string $ip_addr A IP address string like '87.101.244.10'
-     * @return array DNS data as an array.
-     */
+	 * Gets the blacklist DNS response for the specified IP address.
+	 * @param string $ip_addr A IP address string like '87.101.244.10'
+	 * @return array DNS data as an array.
+	 */
 	private static function getDnsResults( $ip_addr ) {
 		global $wgHoneyPotKey;
 
@@ -184,11 +190,11 @@ class HoneyPotCommentSpammer {
 	}
 
 	/**
-     * Determines whether the DNS results indicate a spammer or not.
-     * @param array $result DNS data as an array.
-     * @param array $params Return array built with the response values from the DNS result.
-     * @return boolean  True for spammer, false for non-spammer, or if get unexpected results.
-     */
+	 * Determines whether the DNS results indicate a spammer or not.
+	 * @param array $result DNS data as an array.
+	 * @param array $params Return array built with the response values from the DNS result.
+	 * @return boolean  True for spammer, false for non-spammer, or if get unexpected results.
+	 */
 	private static function resultsSaySpammer( $result, & $params ) {
 		//wfDebug( __METHOD__ . ": Entering\n" );
 		// if there was anything wrong with the data we got, assume they're
