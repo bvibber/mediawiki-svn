@@ -20,10 +20,6 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 
 === Configuration changes in 1.12 ===
 
-=== Removed features in 1.12 ===
-* {{REVISIONID}} will no longer give the correct revision ID for current revision 
-  views. It will still work for history views. 
-
 === New features in 1.12 ===
 * (bug 10735) Add a warning for non-descriptive filenames at Special:Upload
 * Add {{filepath:}} parser function to get full path to an uploaded file,
@@ -62,6 +58,12 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11848) Allow URL parameters 'editintro' and 'preload' in Special:Mypage 
   and Special:Mytalk
 * Add ot=raw to Special:Allmessages
+* Support for Hebrew calendar
+* Support for Hebrew numerals in dates and times
+* (bug 11315) Signatures can be configured in [[MediaWiki:Signature]] and
+  [[MediaWiki:Signature-anon]]
+* Signatures for anonymous users link to Special:Contributions page rather than user page
+* Added --override switch for disabled pages in updateSpecialPages.php
 
 === Bug fixes in 1.12 ===
 
@@ -149,6 +151,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11921) Support plural in message number_of_watching_users_pageview
 * If an IP address is blocked as part of a rangeblock, attempting to unblock
   the single IP should not unblock the entire range.
+* (bug 6695) Fix native language name of Southern Sotho (Sesotho) (st)
 
 === API changes in 1.12 ===
 
@@ -178,7 +181,6 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * (bug 11721) Use a different title for results than for the help page.
 * (bug 11562) Added a user_registration parameter/field to the list=allusers query.
 * (bug 11588) Preserve document structure for empty dataset in backlinks query.
-* Allow staying logged in through lg* parameters instead of cookies
 * Outputting list of all user preferences rather than having to request them by name
 
 === Languages updated in 1.12 ===
@@ -247,6 +249,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Japanese (ja)
 * Georgian (ka)
 * Kara-Kalpak (kaa)
+* Kabyle (kab)
 * Kazakh (kk)
 * Kannada (kn)
 * Korean (ko)
@@ -261,6 +264,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Lingala (ln)
 * Lithuanian (lt)
 * Malayalam (ml)
+* Macedonian (mk)
 * Malay (ms)
 * Erzya (myv) (new)
 * Nahuatl (nah)
@@ -282,6 +286,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Romanian (ro)
 * Russian (ru)
 * Sakha (sah)
+* Sardinian (sc)
 * Sicilian (scn)
 * Sindhi (sd)
 * Sassarese (sdc) (new)

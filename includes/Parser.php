@@ -2528,6 +2528,10 @@ class Parser
 				$subjPage = $this->mTitle->getSubjectPage();
 				return $subjPage->getPrefixedUrl();
 			case 'revisionid':
+				// Let the edit saving system know we should parse the page
+				// *after* a revision ID has been assigned.
+				$this->mOutput->setFlag( 'vary-revision' );
+				wfDebug( __METHOD__ . ": {{REVISIONID}} used, setting vary-revision...\n" );
 				return $this->mRevisionId;
 			case 'revisionday':
 				return intval( substr( $this->getRevisionTimestamp(), 6, 2 ) );
@@ -3874,8 +3878,13 @@ class Parser
 		$nickname = $this->cleanSigInSig( $nickname );
 
 		# If we're still here, make it a link to the user page
-		$userpage = $user->getUserPage();
-		return( '[[' . $userpage->getPrefixedText() . '|' . wfEscapeWikiText( $nickname ) . ']]' );
+		$userText = wfEscapeWikiText( $username );
+		$nickText = wfEscapeWikiText( $nickname );
+		if ( $user->isAnon() )  {
+			return wfMsgForContent( 'signature-anon', $userText, $nickText );
+		} else {
+			return wfMsgForContent( 'signature', $userText, $nickText );
+		}
 	}
 
 	/**

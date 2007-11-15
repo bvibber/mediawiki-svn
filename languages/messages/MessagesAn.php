@@ -151,7 +151,7 @@ $messages = array(
 'about'          => 'Informazión sobre',
 'article'        => 'Articlo',
 'newwindow'      => "(s'ubre en una nueba finestra)",
-'cancel'         => 'Nular',
+'cancel'         => 'Anular',
 'qbfind'         => 'Mirar',
 'qbbrowse'       => 'Nabegar',
 'qbedit'         => 'Editar',
@@ -271,12 +271,13 @@ $messages = array(
 'thisisdeleted'           => '¿Quiere fer beyer u restaurar $1?',
 'viewdeleted'             => '¿Quiere fer beyer $1?',
 'restorelink'             => '{{PLURAL:$1|una edizión borrata|$1 edizions borratas}}',
-'feedlinks'               => 'Sendicazión de fuent de notizias:',
-'feed-invalid'            => 'Sendicazión de fuent de notizias no balida.',
+'feedlinks'               => 'Sendicazión como fuent de notizias:',
+'feed-invalid'            => 'Tipo imbalido de sendicazión como fuent de notizias.',
 
-# Short words for each namespace, by default used in the 'page' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Articlo',
 'nstab-user'      => "Pachina d'usuario",
+'nstab-media'     => 'Pachina multimedia',
 'nstab-special'   => 'Espezial',
 'nstab-project'   => "Pachina d'o proyeuto",
 'nstab-image'     => 'Imachen',
@@ -285,25 +286,102 @@ $messages = array(
 'nstab-help'      => 'Aduya',
 'nstab-category'  => 'Categoría',
 
+# Main script and global functions
+'nosuchaction'      => 'No se reconoxe ista aizión',
+'nosuchactiontext'  => "{{SITENAME}} no reconoxe l'aizión espezificata en l'adreza URL",
+'nosuchspecialpage' => 'No esiste ixa pachina espezial',
+'nospecialpagetext' => "'''<big> A pachina espezial que ha demandato no esiste.</big>'''
+
+Puede trobar una lista de pachinas espezials en [[Special:Specialpages]].",
+
 # General errors
-'viewsource'    => 'Beyer codigo fuen',
-'viewsourcefor' => 'ta $1',
+'databaseerror'        => "Error d'a base de datos",
+'dberrortext'          => 'Ha escaizito una error de sintacsis en una consulta á la base de datos.
+Isto podría endicar una error en o programa.
+A zaguera consulta que se miró de fer estió: <blockquote><tt>$1</tt></blockquote> aintro d\'a funzión "<tt>$2</tt>". A error tornata por a base de datos estió "<tt>$3: $4</tt>".',
+'dberrortextcl'        => 'Ha escaizito una error de sintacsis en una consulta á la base de datos. A zaguera consulta que se miró de fer estió: 
+"$1" 
+aintro d\'a funzión "$2". 
+A base de datos retornó a error "<tt>$3: $4</tt>".',
+'noconnect'            => "A wiki tiene agora bellas dificultaz tecnicas, y no se podió contautar con o serbidor d'a base de datos. <br />
+$1",
+'nodb'                 => 'No se podió trigar a base de datos $1',
+'cachederror'          => "Ista ye una copia en caché d'a pachina demandata, y puestar que no siga autualizata.",
+'laggedslavemode'      => "Pare cuenta: podrían faltar as zagueras autualizazions d'ista pachina.",
+'readonly'             => 'Base de datos bloquiata',
+'enterlockreason'      => "Esplique o motibo d'o bloqueyo, encluyendo una estimazión de cuán se produzirá o desbloqueyo",
+'readonlytext'         => "A base de datos de {{SITENAME}} ye bloquiata temporalment, probablement por mantenimiento rutinario, dimpués d'ixo tornará á la normalidat.
+L'almenistrador que la bloquió dió ista esplicazión:
+<p>$1",
+'missingarticle'       => "A base de datos no trobó o testo d'a pachina \"\$1\", que abría d'aber trobato.
+
+Isto gosa pasar si se sigue un binclo enta una esferenzia de bersions zircunduzita, u enta un istorial d'una pachina que ha estato borrata.
+
+Si ista no ye a causa, podría aber trobato una error en o programa. Por fabor, informe d'isto á un almenistrador, endicando-le l'adreza URL.",
+'readonly_lag'         => 'A base de datos ye bloquiata temporalment entre que os serbidors se sincronizan.',
+'internalerror'        => 'Error interna',
+'internalerror_info'   => 'Error interna: $1',
+'filecopyerror'        => 'No s\'ha puesto copiar l\'archibo "$1" ta "$2".',
+'filerenameerror'      => 'No s\'ha puesto cambiar o nombre de l\'archibo "$1" á "$2".',
+'filedeleteerror'      => 'No s\'ha puesto borrar l\'archibo "$1".',
+'directorycreateerror' => 'No s\'ha puesto crear o direutorio "$1".',
+'filenotfound'         => 'No s\'ha puesto trobar l\'archibo "$1".',
+'fileexistserror'      => 'No s\'ha puesto escribir en l\'archibo "$1": l\'archibo ya esiste',
+'unexpected'           => 'Balura no prebista: "$1"="$2".',
+'formerror'            => 'Error: no se podió nimbiar o formulario',
+'badarticleerror'      => 'Ista aizión no se puede no se puede reyalizar en ista pachina.',
+'cannotdelete'         => "No se podió borrar a pachina u l'archibo espezificato. (Puestar que belatro usuario l'aiga borrato dinantes)",
+'badtitle'             => 'Títol incorreuto',
+'badtitletext'         => "O títol d'a pachina demandata ye buedo, incorreuto, u tiene un binclo interwiki mal feito. Puede contener uno u más carauters que no se pueden fer serbir en títols.",
+'perfdisabled'         => "S'ha desautibato temporalment ista opzión porque fa lenta a base de datos de traza que denguno no puede usar o wiki.",
+'perfcached'           => 'Os datos que siguen son en caché, y podrían no estar esbiellatos:',
+'perfcachedts'         => 'Istos datos se troban en a caché, que estió esbiellata por zaguer begada o $1.',
+'querypage-no-updates' => "S'han desautibato as autualizazions d'ista pachina. Por ixo, no s'esta esbiellando os datos.",
+'wrong_wfQuery_params' => 'Parametros incorreutos ta wfQuery()<br />
+Funzión: $1<br />
+Consulta: $2',
+'viewsource'           => 'Beyer codigo fuen',
+'viewsourcefor'        => 'ta $1',
+'protectedpagetext'    => 'Ista pachina ha estato bloquiata y no se puede editar.',
+'viewsourcetext'       => "Puez beyer y copiar o codigo fuent d'ista pachina:",
+'protectedinterface'   => "Ista pachina furne o testo d'a interfaz ta o software. Ye protexita ta pribar o bandalismo. Si creye que bi ha bella error, contaute con un [[{{MediaWiki:grouppage-sysop}}|Almenistrador]].",
+'editinginterface'     => "'''Pare cuenta:''' Ye editando una pachina emplegata ta furnir o testo d'a interfaz de {{SITENAME}}. Os cambeos en ista pachina tendrán efeuto en l'aparenzia d'a interfaz ta os atros usuarios.",
+'sqlhidden'            => '(Consulta SQL amagata)',
+'cascadeprotected'     => 'Ista pachina ye protexita y no se puede editar porque ye encluyita en {{PLURAL:$1|a siguient pachina|as siguients pachinas}}, que son protexitas con a opzión de "cascada":',
+'namespaceprotected'   => "No tiens premiso ta editar as pachinas d'o espazio de nombres '''$1'''.",
+'customcssjsprotected' => "No tiens premiso ta editar ista pachina porque contiene para editar esta página porque contiene a confegurazión presonal d'atro usuario.",
+'ns-specialprotected'  => "No ye posible editar as pachinas d'o espazio de nombres {{ns:special}}.",
 
 # Login and logout pages
-'yourname'          => "Nombre d'usuario:",
-'yourpassword'      => 'A tuya parabra de paso:',
-'yourpasswordagain' => 'Torna á escribir a tuya parabra de paso:',
-'userlogin'         => 'Creyar una cuenta u dentrar-ie',
-'userlogout'        => 'Salir',
-'nologin'           => 'No tiens una cuenta? $1.',
-'nologinlink'       => 'Creyar una nueba cuenta',
-'createaccount'     => 'Creyar una nueba cuenta',
-'username'          => "Nombre d'usuario:",
-'yourrealname'      => 'O tuyo nombre reyal:',
-'yourlanguage'      => 'Lenguache:',
-'yournick'          => 'A tuya embotada (ta siñar):',
-'prefs-help-email'  => "Correu-e (ozional): Premite á atros usuarios contautar con tu por meyo de a tuya pachina d'usuario u a tuya pachina de descusión sin de aber menester de rebelar a tuya identidá.",
-'noname'            => "No has introduziu un nombre d'usuario correuto.",
+'logouttitle'        => 'Fin de sesión',
+'logouttext'         => "Ha rematato a suya sesión.
+Puede continar nabegando por {{SITENAME}} anonimament, u puede enzetar unatra sesión atra begada con o mesmo u atro usuario. Pare cuenta que bellas pachinas se pueden amostrar encara como si continase en a sesión anterior, dica que se limpie a caché d'o nabegador.",
+'welcomecreation'    => "== ¡Bienbeniu(da), $1! ==
+
+S'ha creyato a suya cuenta. No xublide presonalizar as [[Special:Preferences|preferenzias]].",
+'loginpagetitle'     => 'Enzetar sesión',
+'yourname'           => "Nombre d'usuario:",
+'yourpassword'       => 'Parabra de paso:',
+'yourpasswordagain'  => 'Torne á escribir a parabra de paso:',
+'remembermypassword' => "Remerar datos d'usuario entre sesions.",
+'yourdomainname'     => 'Su dominio:',
+'externaldberror'    => "Bi abió una error autenticazión esterna d'a base de datos u bien no tiene premisos ta autualizar a suya cuenta esterna.",
+'loginproblem'       => '<b>Escaizió un problema con a suya autenticazión.</b><br />¡Prebe unatra begada!',
+'login'              => 'Enzetar sesión',
+'loginprompt'        => 'Ha de autibar as <i>cookies</i> en o nabegador ta rechistrar-se en {{SITENAME}}.',
+'userlogin'          => 'Enzetar sesión / creyar cuenta',
+'userlogout'         => 'Salir',
+'notloggedin'        => 'No ha enzetato sesión',
+'nologin'            => 'No tiene cuenta? $1.',
+'nologinlink'        => 'Creyar una nueba cuenta',
+'createaccount'      => 'Creyar una nueba cuenta',
+'gotaccount'         => 'Tiene ya una cuenta? $1.',
+'username'           => "Nombre d'usuario:",
+'yourrealname'       => 'O tuyo nombre reyal:',
+'yourlanguage'       => 'Lenguache:',
+'yournick'           => 'A tuya embotada (ta siñar):',
+'prefs-help-email'   => "Correu-e (ozional): Premite á atros usuarios contautar con tu por meyo de a tuya pachina d'usuario u a tuya pachina de descusión sin de aber menester de rebelar a tuya identidá.",
+'noname'             => "No has introduziu un nombre d'usuario correuto.",
 
 # Edit page toolbar
 'nowiki_tip' => 'Innorar o formato wiki',
@@ -333,7 +411,9 @@ Si bi has plegau por error, puncha o botón d'o tuyo nabegador ta ir entazaga.",
 'revhistory'   => 'Istorial de rebisions',
 'nohistory'    => "Ista pachina no tiene un istorial d'edizions.",
 'nextrevision' => 'Rebisión siguién →',
+'cur'          => 'aut',
 'next'         => 'siguién',
+'last'         => 'zagu',
 
 # Search results
 'searchresults' => "Resultaus d'a rechira",
@@ -378,7 +458,7 @@ Si bi has plegau por error, puncha o botón d'o tuyo nabegador ta ir entazaga.",
 # Unused templates
 'unusedtemplates' => 'Plantillas sin de uso',
 
-# Random pages
+# Random page
 'randompage' => "Una pachina á l'azar",
 
 # Random redirect
@@ -441,7 +521,7 @@ Si bi has plegau por error, puncha o botón d'o tuyo nabegador ta ir entazaga.",
 'unwatchthispage' => 'Dixar de bexilar',
 
 # Delete/protect/revert
-'historywarning' => 'Para cuenta: A pachina que bas a borrar tiene un istorial de cambeos:',
+'historywarning' => 'Pare cuenta: A pachina que ba a borrar tiene un istorial de cambeos:',
 'actioncomplete' => 'Aizión rematada',
 'protectcomment' => 'Razón ta protexer:',
 
@@ -479,12 +559,32 @@ Si bi has plegau por error, puncha o botón d'o tuyo nabegador ta ir entazaga.",
 'allmessagescurrent' => 'Testo autual',
 'allmessagestext'    => 'Ista ye una lista de toz os mensaches disposables en o espazio de nombres MediaWiki.',
 
+# Tooltip help for the actions
+'tooltip-pt-login'        => 'Li recomendamos rechistrar-se, encara que no ye obligatorio',
+'tooltip-ca-talk'         => "Descusión sobre l'articlo",
+'tooltip-ca-edit'         => 'Puede editar ista pachina. Por fabor, faga serbir o botón de bisualizazión prebia antes de grabar.',
+'tooltip-search'          => 'Mirar en {{SITENAME}}',
+'tooltip-n-mainpage'      => 'Besitar a Portalada',
+'tooltip-n-portal'        => 'Sobre o procheuto, que puede fer, án trobar as cosas',
+'tooltip-n-recentchanges' => "A lista d'os zaguers cambeos en o wiki",
+'tooltip-n-randompage'    => 'Cargar una pachina aleatoriament',
+'tooltip-n-help'          => 'O puesto ta saber más.',
+'tooltip-n-sitesupport'   => 'Refirme o procheuto',
+'tooltip-t-whatlinkshere' => "Lista de todas as pachinas d'o wiki binculatas con ista",
+'tooltip-t-upload'        => 'Puyar imáchens u archibos multimedia ta o serbidor',
+'tooltip-t-specialpages'  => 'Lista de todas as pachinas espezials',
+
 # Attribution
 'and'    => 'y',
 'others' => 'atros',
 
 # Special:Newimages
 'newimages' => 'Galería de nuebas imachens',
+
+# Bad image list
+'bad_image_list' => "O formato ye asinas:
+
+Se consideran nomás os elementos d'una lista (linias que escomienzan por *). O primer binclo de cada linia ha d'estar un binclo ta una imachen mala. Cualsiquiers atros binclos en a mesma linia se consideran eszepzions, i.e. pachinas an que a imachen puede amanexer enserita en a línia.",
 
 # 'all' in various places, this might be different for inflected languages
 'namespacesall' => 'todo',
