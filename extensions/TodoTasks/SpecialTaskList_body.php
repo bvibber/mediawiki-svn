@@ -186,12 +186,14 @@ function wfTodoParserFunction_Render( &$parser, $input, $users, $project='') {
 
 function addPersonalUrl(&$personal_urls, $wgTitle)
 {
-    global $wgOut;
+    global $wgOut, $wgUser;
 
-    $personal_urls['mytasks'] = array(
+    if ($wgUser->isLoggedIn()) {
+        $personal_urls['mytasks'] = array(
             'text' => wfMsgTL('tasklistmytasks'),
             'href' => Skin::makeSpecialUrl( 'TaskList')
-    );
+        );
+    }
     return true;
 }
 
