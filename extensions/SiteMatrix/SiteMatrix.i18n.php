@@ -72,7 +72,9 @@ $wgSiteMatrixMessages['ext'] = array(
 	'sitematrix-language' => 'Palra',
 );
 $wgSiteMatrixMessages['fi'] = array(
-	"sitematrix" => "Luettelo Wikimedian wikeistä",
+	'sitematrix' => 'Luettelo Wikimedian wikeistä',
+	'sitematrix-language' => 'Kieli',
+	'sitematrix-others' => 'Muut Wikimedian projektit',
 );
 $wgSiteMatrixMessages['fr'] = array(
 	'sitematrix' => 'Liste des wikis de Wikimedia Foundation',

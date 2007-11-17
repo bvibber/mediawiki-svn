@@ -19,6 +19,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Previous ($1)',
 ),
 
+'af' => array(
+	'backforth-next' => 'Volgende ($1)',
+	'backforth-prev' => 'Vorige ($1)',
+),
+
 'ang' => array(
 	'backforth-next' => 'Nīehst ($1)',
 	'backforth-prev' => 'Beforan ($1)',

@@ -34,6 +34,9 @@ all fields exactly as they should be, ''before submitting this form''.",
 		'createsigndoc-success'      => 'Document signing has been successfully enabled
 on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} this page].',
 	),
+	'af' => array(
+		'createsigndoc-pagename' => 'Bladsy:',
+	),
 	'ang' => array(
 		'createsigndoc-pagename' => 'Tramet:',
 	),

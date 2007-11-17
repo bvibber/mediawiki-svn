@@ -38,6 +38,10 @@ $messages = array(
 		'ogg-desc-link'        => 'About this file',
 	),
 
+	'af' => array(
+		'ogg-more' => 'Meer...',
+	),
+
 	'ar' => array(
 		'ogg-short-audio' => 'Ogg $1 ملف صوت، $2',
 		'ogg-short-video' => 'Ogg $1 ملف فيديو، $2',
@@ -55,7 +59,7 @@ $messages = array(
 		'ogg-no-player' => 'عذرا، نظامك يبدو أنه لا يمتلك أي برنامج مدعوم للعرض. من فضلك نصب <a href="http://www.java.com/en/download/manual.jsp">جافا</a>.',
 		'ogg-no-xiphqt' => 'لا يبدو أنك تملك مكون XiphQT لكويك تايم. كويك تايم لا يمكنه عرض ملفات Ogg بدون هذا المكون. من فضلك <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">حمل XiphQT</a> أو اختر برنامجا آخر.',
 		'ogg-player-videoElement' => '<video> عنصر',
-		'ogg-player-oggPlugin' => 'إضافة أو جي جي',
+		'ogg-player-oggPlugin' => 'إضافة Ogg',
 		'ogg-player-cortado' => 'كور تادو (جافا)',
 		'ogg-player-vlc-mozilla' => 'في إل سي',
 		'ogg-player-vlc-activex' => 'في إل سي (أكتيف إكس)',

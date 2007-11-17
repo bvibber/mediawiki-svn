@@ -35,6 +35,12 @@ function efGiveRollbackMessages() {
 	'giverollback-page' => '{{ns:help}}:Rollback',
 ),
 
+'af' => array(
+	'giverollback-username' => 'Gebruikersnaam:',
+	'giverollback-search' => 'Gaan',
+	'giverollback-page' => '{{ns:help}}:Rol terug',
+),
+
 'ar' => array(
 	'giverollback' => 'منح أو سحب صلاحيات الاسترجاع',
 	'giverollback-header' => '\'\'\'بيروقراط محلي يمكن أن يستخدم هذه الصفحة لمنح أو سحب [[Help:Rollback|صلاحيات الاسترجاع]] لحساب مستخدم آخر.\'\'\'<br />هذا يمكن أن يستخدم للسماح لغير الإداريين باسترجاع التخريب سريعا. هذا يجب أن ينفذ بالتوافق مع السياسات المطبقة.',

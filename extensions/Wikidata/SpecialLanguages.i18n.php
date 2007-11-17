@@ -29,6 +29,10 @@ $wgLanguageManagerMessages['br'] = array(
 $wgLanguageManagerMessages['de'] = array(
 	'langman_title' => 'Sprachmanager',
 );
+$wgLanguageManagerMessages['el'] = array(
+	'langman_title' => 'Διαχειριστής γλώσσας',
+	'languages' => 'Wikidata: Διαχειριστής γλώσσας',
+);
 $wgLanguageManagerMessages['fr'] = array(
 	'langman_title' => 'Gestion des langues',
 	'languages' => 'Wikidata: Gestion des langues',

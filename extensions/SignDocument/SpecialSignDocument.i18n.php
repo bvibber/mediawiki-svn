@@ -100,6 +100,10 @@ $allMessages = array(
 		'sign-uniquequery-1signed2'    => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} '.
 		'$1] signed [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 	),
+	'af' => array(
+		'sign-realname' => 'Naam:',
+		'sign-viewfield-realname' => 'Naam',
+	),
 	'ang' => array(
 		'sign-realname' => 'Nama:',
 	),
