@@ -243,41 +243,35 @@ $wgNewuserlogMessages['pt'] = array(
 	'newuserlog-create-entry'  => 'Novo utilizador',
 	'newuserlog-create2-entry' => 'criou conta para $1',
 );
-
 $wgNewuserlogMessages['ro'] = array(
 	'newuserlogpage'           => 'Jurnal utilizatori noi',
 	'newuserlog-create-entry'  => 'Utilizator nou',
 	'newuserlog-create2-entry' => 'a deschis cont pentru $1',
 );
-
 $wgNewuserlogMessages['ru'] = array(
 	'newuserlogpage'           => 'Журнал регистрации участников',
 	'newuserlogpagetext'       => 'Список недавно зарегистрировавшихся участников',
 	'newuserlog-create-entry'  => 'Новый участник',
 	'newuserlog-create2-entry' => 'cоздал новую учётную запись: $1',
 );
-
 $wgNewuserlogMessages['sk'] = array(
 	'newuserlogpage'           => 'Záznam vytvorených používateľov',
 	'newuserlogpagetext'       => 'Toto je záznam naposledy vytvorených používateľských účtov',
 	'newuserlog-create-entry'  => 'Nový používateľ',
 	'newuserlog-create2-entry' => 'Bol vytvorený účet pre $1',
 );
-
 $wgNewuserlogMessages['sq'] = array(
 	'newuserlog-create-entry'  => 'Përdorues i ri',
 	'newuserlog-create2-entry' => 'krijoi llogarin për përdouesin $1',
 	'newuserlogpage'           => 'Regjistri i llogarive',
 	'newuserlogpagetext'       => 'Ky është një regjistër i llogarive të fundit që janë hapur',
 );
-
 $wgNewuserlogMessages['sr-ec'] = array(
 	'newuserlogpage'           => 'историја креирања корисника',
 	'newuserlogpagetext'       => 'Ово је историја скорашњих креација корисника',
 	'newuserlog-create-entry'  => 'Нови корисник',
 	'newuserlog-create2-entry' => 'направио налог за $1',
 );
-
 $wgNewuserlogMessages['sr-el'] = array(
 	'newuserlogpage'           => 'istorija kreiranja korisnika',
 	'newuserlogpagetext'       => 'Ovo je istorija skorašnjih kreacija korisnika',
@@ -285,14 +279,16 @@ $wgNewuserlogMessages['sr-el'] = array(
 	'newuserlog-create2-entry' => 'napravio nalog za $1',
 );
 $wgNewuserlogMessages['sr'] = $wgNewuserlogMessages['sr-ec'];
-
+$wgNewuserlogMessages['stq'] = array(
+	'newuserlogpage'           => 'Näianmäldengs-Logbouk',
+	'newuserlogpagetext'       => 'Dit is dät Logbouk fon näi anmäldede Benutsere.',
+);
 $wgNewuserlogMessages['su'] = array(
 	'newuserlogpage'           => 'Log pamaké anyar',
 	'newuserlogpagetext'       => 'Di handap ieu béréndélan log pamaké anyar',
 	'newuserlog-create-entry'  => 'Pamaké anyar',
 	'newuserlog-create2-entry' => 'rekening pikeun $1 geus dijieun',
 );
-
 $wgNewuserlogMessages['sv'] = array(
 	'newuserlogpage'           => 'Logg över nya användare',
 	'newuserlogpagetext'       => 'Detta är en logg över nyligen skapade användarkonton',

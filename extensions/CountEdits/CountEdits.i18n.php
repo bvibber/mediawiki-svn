@@ -238,6 +238,15 @@ function efCountEditsMessages( $single = false ) {
 	'countedits-nocontribs' => 'بۇل ۋيكيدە ەش ٷلەس بولعان جوق.',
 ),
 
+'ku-latn' => array(
+	'countedits' => 'Guherandinan bihesbîne',
+	'countedits-username' => 'Navî bikarhêner:',
+	'countedits-ok' => 'OK',#identical but defined
+	'countedits-nosuchuser' => 'Li vê derê ne bikarhênerek bi navê $1 heye.',
+	'countedits-resulttext' => '$1 $2 guherandinan çêkirîye',
+	'countedits-nocontribs' => 'Di vê wîkîyê da guherandin tune ne.',
+),
+
 'la' => array(
 	'countedits-username' => 'Nomen usoris:',
 ),

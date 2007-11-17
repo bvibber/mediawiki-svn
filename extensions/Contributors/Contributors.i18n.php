@@ -242,6 +242,19 @@ function efContributorsMessages() {
 	'contributors-nosuchpage' => '$1 دەگەن ماقالا بٸزدە جوق.',
 ),
 
+'ku-latn' => array(
+	'contributors' => 'Bikarhêner',
+	'contributors-toolbox' => 'Bikarhênerên serekî',
+	'contributors-legend' => 'Lîsteya bikarhênerên serekî yê gotarekê',
+	'contributors-target' => 'Sernav:',
+	'contributors-submit' => 'Pêşêkê',
+	'contributors-subtitle' => 'Bikarhênerên serekî yê $1',
+	'contributors-others-long' => 'Li vê derê hên $1 bikarhênerên din yê vê rûpelê hene.',
+	'contributors-others' => 'û $1 yên din',
+	'contributors-badtitle' => 'Sernavekî şaş.',
+	'contributors-nosuchpage' => 'Gotarê $2 tune ye.',
+),
+
 'la' => array(
 	'contributors-target' => 'Titulus:',
 	'contributors-submit' => 'Monstrare',

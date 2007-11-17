@@ -159,6 +159,14 @@ $wgDesysopMessages['ko'] = array(
 	'desysopsetrights'     => '사용자 권한 설정',
 	'desysoprightsfail'    => '\'\'\'$1 사용자에게 관리자 권한을 줄 수 없습니다(철자를 맞게 입력했는지 확인해주세요).\'\'\'',
 );
+$wgDesysopMessages['ku-latn'] = array(
+	'desysopname'          => 'Navî bikarhêner:',
+	'desysopok'            => '<b>Bikarhêner "$1" niha hate neadminkirin</b>',
+	'desysopsetrights'     => 'Qebûlkirinên bikarhêneran biguherîne',
+	'desysoprightsfail'    => '<b>Qebûlkirinên bikarhêneran ji "$1" nikanîn daban. (Te nêv serrast nivîsand?)</b>',
+	'desysop'              => 'Bikarhênerekî neadmîn ke',
+	'desysopnot_sysop'     => 'Ev bikarhênera ne admînek e',
+);
 $wgDesysopMessages['la'] = array(
 	'desysoptitle'         => 'Revocare statum magistratus usoris',
 	'desysoptext'          => 'Grapheocrates hac pagina uti possunt ad revocandum statum magistratus usoris. Nomen usoris in capsam inscribe et preme in "Revocare statum magistratus" ad statum revocandum.',

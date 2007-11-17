@@ -131,7 +131,12 @@ $wgDeletedContribsMessages['kk-tr'] = array(
 $wgDeletedContribsMessages['kk-cn'] = array(
 	'deletedcontributions' => 'پايدالانۋشىنىڭ جويلعان ٷلەستەرٸ',
 );
+
 $wgDeletedContribsMessages['kk'] = $wgDeletedContribsMessages['kk-kz'];
+
+$wgDeletedContribsMessages['ku-latn'] = array(
+	'deletedcontributions' => 'Guherandinên bikarhênerekî yê jêbirî',
+);
 
 $wgDeletedContribsMessages['nan'] = array(
 	'deletedcontributions' => 'Hō͘ lâng thâi tiāu ê kòng-hiàn',

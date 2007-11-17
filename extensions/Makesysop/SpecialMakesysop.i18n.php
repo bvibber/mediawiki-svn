@@ -1102,6 +1102,16 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'grouppage-steward' => '{{ns:project}}:stjuardi',
 ),
 
+'stq' => array(
+	'makesysoptitle' => 'Moake n Benutser tou n Administrator',
+	'makesysoptext' => 'Disse Maske wäd fon Bürokraten benutsed, uum normoale Benutsere tou Administratore tou moakjen.',
+	'makesysopname' => 'Noome fon dän Benutser:',
+	'makesysopsubmit' => 'Moake dissen Benutser tou n Administrator',
+	'makesysopok' => '<b>Benutser "$1" is nu n Administrator.</b>',
+	'makesysopfail' => '<b>Benutser "$1" kuude nit tou n Administrator moaked wäide. (Hääbe Jie dän Noome gjucht schrieuwen?)</b>',
+	'makesysop' => 'Moak n Benutser tou Administrator',
+),
+
 'su' => array(
 	'makesysoptitle' => 'Ngangkat pamaké jadi kuncén',
 	'makesysoptext' => 'Formulir ieu dipaké ku birokrat pikeun ngangkat pamaké biasa jadi kuncén. Ketik ngaran pamaké na kotak, terus pencét tombol pikeun ngangkat pamaké jadi kuncén.',
