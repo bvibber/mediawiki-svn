@@ -16,9 +16,8 @@ class I18nTags {
 	public static function plural( $data, $params, $parser ) {
 		$n = isset($params['n']) ? intval($params['n']) : intval(rand()/rand()*1020);
 		$args = explode('|', $data);
-		while ( count($args) < 5 ) { $args[] = $args[count($args)-1]; }
 		$lang = self::languageObject( $params );
-		$t = $lang->convertPlural( $n, $args[0], $args[1], $args[2], $args[3], $args[4]);
+		$t = $lang->convertPlural( $n, $args );
 		return wfMsgReplaceArgs($t, array($n, 'NOT DEFINED'));
 	}
 
