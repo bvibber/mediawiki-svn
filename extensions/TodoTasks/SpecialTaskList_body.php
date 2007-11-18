@@ -74,7 +74,13 @@ if (!function_exists('getUserIDFromUserText')) {
 }
 
 function getValidProjects() {
+    global $wgOut;
+
     $ProjPageTitle = Title::newFromText ('TodoTasksValidProjects', NS_MEDIAWIKI) ;
+    if ($ProjPageTitle == NULL) {
+        $wgOut->addWikiText(wfMsgTL('tasklistnoprojects'));
+        return;
+    }
     return Revision::newFromTitle($ProjPageTitle)->getText();
 }
 
@@ -140,7 +146,10 @@ function wfTodoParserFunction_Render( &$parser, $input, $users, $project='') {
                 $u = User::newFromId($userid);
                 $username = $u->getName();
                 $fullname = $u->getRealName();
-                $task_text .= "${fullname}";
+                if ($fullname == '')
+                    $task_text .= $username;
+                else
+                    $task_text .= $fullname;
                 array_push($userIdList, $userid);
                 array_push($userIdList2, $userid);
             } else {                                    // fall through to worst case scenario
@@ -248,7 +257,10 @@ function todoSavePreparser(&$q) {
                     $u = User::newFromId($userid);
                     $username = $u->getName();
                     $fullname = $u->getRealName();
-                    $newpagetext .= "${fullname}";
+                    if ($fullname == '')
+                        $newpagetext .= $username;
+                    else
+                        $newpagetext .= $fullname;
                 } else {                                    // fall through to worst case scenario
                     $newpagetext .= $user;
                 }

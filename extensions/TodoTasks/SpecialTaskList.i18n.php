@@ -14,6 +14,7 @@ $allMessages = array(
 		'tasklistchooseproj'      => 'Select Project: ',
 		'tasklistprojdisp'        => 'Display',
 		'tasklistbyname'          => '== Todo List for %s ==',
+        'tasklistnoprojects'      => "ERROR: It looks like you enabled '''\$wgUseProjects''', but did not create [[MediaWiki:TodoTasksValidProjects]]. See [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] for more details."
 	),
 
 	'ar' => array(
