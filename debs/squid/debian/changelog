@@ -1,3 +1,15 @@
+squid (2.6.16-1wm1) edgy; urgency=medium
+
+  * New upstream release 2.6.STABLE16
+    - Drop patch 23-storedir-minobjsize, now integrated upstream
+    - Drop patch 01-cf.debian, conflicts with upstream changes and serves
+      no purpose for Wikimedia use
+  * Add a build dependencies on libgoogle-perftools-dev, debhelper and
+    devscripts
+  * Include HTTP header array repacking patch by Adrian Chadd
+
+ -- Mark Bergsma <mark@wikimedia.org>  Mon, 19 Nov 2007 10:40:15 +0000
+
 squid (2.6.13-1wm1) edgy; urgency=low
 
   * New upstream version 2.6.STABLE13

@@ -3,7 +3,7 @@ Section: web
 Priority: optional
 Maintainer: Mark Bergsma <mark@wikimedia.org>
 Standards-Version: 3.7.2
-Build-Depends: libldap2-dev, libpam0g-dev, sharutils, dpatch (>= 2.0.9), po-debconf, libdb4.4-dev, wget
+Build-Depends: libldap2-dev, libpam0g-dev, sharutils, dpatch (>= 2.0.9), debhelper, devscripts, po-debconf, libdb4.4-dev, wget, libgoogle-perftools-dev
 
 Package: squid
 Architecture: any

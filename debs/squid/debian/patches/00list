@@ -1,4 +1,3 @@
-01-cf.data.debian
 02-dfl-error-dir
 03-no-append-domain-localhost
 04-smb-auth
@@ -6,6 +5,6 @@
 20-wikimedia-errors
 21-nomanglerequestheaders
 22-udplog
-23-storedir-minobjsize.dpatch
-23-variant-invalidation.dpatch
+23-variant-invalidation
+24-httpheader-repacking
 25-coss-remove-swap-log
