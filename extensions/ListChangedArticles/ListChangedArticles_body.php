@@ -22,7 +22,7 @@ class ListChangedArticles extends UnlistedSpecialPage
 		$fname = "getListOfChangedArticlesSince" ;
 		wfProfileIn( $fname );
 		
-		$rowlimit = 30000 ; # THe maximum number of results
+		$rowlimit = 30000 ; # The maximum number of results
 	
 		$ret = "" ;
 		$dbr =& wfGetDB( DB_SLAVE );
