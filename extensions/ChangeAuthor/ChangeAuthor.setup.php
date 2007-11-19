@@ -28,7 +28,7 @@ $wgExtensionCredits['specialpage'][] = array(
 		'author' => 'Roan Kattouw',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:ChangeAuthor',
 		'version' => '1.0',
-		'description' => 'Allows changing a revision\'s author afterwards'
+		'description' => 'Allows changing a revision\'s author'
 );
 
 $wgAutoloadClasses['ChangeAuthor'] = dirname(__FILE__) . '/ChangeAuthor.body.php';
