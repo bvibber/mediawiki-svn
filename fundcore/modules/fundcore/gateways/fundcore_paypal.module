@@ -108,6 +108,7 @@ function fundcore_paypal_contribution_form() {
   $form = array();
   
   $form['#action'] = 'https://www.paypal.com/cgi-bin/webscr';
+  $form['#attributes'] = array('onsubmit' => 'if(document.getElementById(\'paypal_amount\').value.indexOf(\'.\') >= 0 && document.getElementById(\'paypal_amount\').value.indexOf(\'.00\') < 0) {alert(\'' . t('Sorry, but we can only accept donations in whole amounts.') . '\'); return false;}');
 
   $form['paypal'] = array(
     '#type' => 'fieldset',
@@ -170,6 +171,7 @@ function fundcore_paypal_contribution_form() {
   );
 
   $form['paypal']['amount'] = array(
+    '#id' => 'paypal_amount',
     '#type' => 'textfield',
     '#title' => t('Donation amount'),
     '#required' => TRUE,

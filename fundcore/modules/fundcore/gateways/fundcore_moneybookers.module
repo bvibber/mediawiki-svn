@@ -20,6 +20,7 @@ function fundcore_moneybookers_contribution_form() {
   $form = array();
   
   $form['#action'] = 'https://www.moneybookers.com/app/payment.pl';
+  $form['#attributes'] = array('onsubmit' => 'if(document.getElementById(\'moneybookers_amount\').value.indexOf(\'.\') >= 0 && document.getElementById(\'moneybookers_amount\').value.indexOf(\'.00\') < 0) {alert(\'' . t('Sorry, but we can only accept donations in whole amounts.') . '\'); return false;}');
 
   $form['moneybookers'] = array(
     '#type' => 'fieldset',
@@ -69,6 +70,7 @@ function fundcore_moneybookers_contribution_form() {
   );
 
   $form['moneybookers']['amount'] = array(
+    '#id' => 'moneybookers_amount',
     '#type' => 'textfield',
     '#title' => t('Donation amount'),
     '#size' => 25,
