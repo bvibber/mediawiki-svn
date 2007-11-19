@@ -1147,6 +1147,31 @@ function getExpressionMeaningIds($spelling, $dc=null) {
 	return $result;
 }
 
+function getExpressionMeaningIdsForLanguages($spelling, $languageIds, $dc=null) {
+    if(is_null($dc)) {
+    	$dc=wdGetDataSetContext();
+    }
+    $dbr = & wfGetDB(DB_SLAVE);
+    $queryResult = $dbr->query(
+		"SELECT defined_meaning_id, language_id" .
+		" FROM {$dc}_expression, {$dc}_syntrans " .
+        " WHERE spelling=". $dbr->addQuotes($spelling) .
+        " AND {$dc}_expression.expression_id={$dc}_syntrans.expression_id" .
+        " AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
+        " AND " . getLatestTransactionRestriction("{$dc}_expression")
+    );
+
+	$result = array();
+	
+	while ($synonymRecord = $dbr->fetchObject($queryResult)) {
+		if (in_array($synonymRecord->language_id, $languageIds)) {
+        	$result[] = $synonymRecord->defined_meaning_id;
+		}
+	}
+
+	return $result;
+}
+
 
 /** Write a concept mapping to db
  * supply mapping as a valid
@@ -1471,6 +1496,80 @@ function getExpressions($spelling, $dc=null) {
 
 }
 
+/**
+ * Returns the definitions and translations of the given defined meaning in the 
+ * given languages in an associative array.
+ * @param $dmid the defined meaning id.
+ * @param $languages an aray of language id's.
+ * @return array an associative array with two entries per language: def_lid and trans_lid 
+ * (where lid is the language id); def_lid contains the definition in the language,
+ * trans_lid contains the translations in a single string separated by the | character.
+ */
+function getDefinitionsAndTranslationsForLanguages($dmid, $languages, $dc=null) {
+	if(is_null($dc)) {
+		$dc=wdGetDataSetContext();
+	}
+	$dbr =& wfGetDB(DB_SLAVE);
+
+	// First we'll fill an associative array with the definitions and
+	// translations. Then we'll use the isoCodes array to put them in the
+	// proper order.
+	
+	// the associative array holding the definitions and translations
+	$data = array();
+	
+	// ****************************
+	// query to get the definitions
+	// ****************************
+	$qry = 'SELECT txt.text_text, trans.language_id ';
+	$qry .= "FROM {$dc}_text txt, {$dc}_translated_content trans, {$dc}_defined_meaning dm ";
+	$qry .= 'WHERE txt.text_id = trans.text_id ';
+	$qry .= 'AND trans.translated_content_id = dm.meaning_text_tcid ';
+	$qry .= "AND dm.defined_meaning_id = $dmid ";
+	$qry .= 'AND trans.language_id IN (' . implode(',', $languages) . ') ';
+	$qry .= 'AND ' . getLatestTransactionRestriction('trans');
+	$qry .= 'AND ' . getLatestTransactionRestriction('dm');
+	
+							
+	$definitions = $dbr->query($qry);
+	while($row = $dbr->fetchRow($definitions)) {
+		// $key becomes something like def_23
+		$key = 'def_'.$row['language_id'];
+		$data[$key] = $row['text_text'];
+	}
+	$dbr->freeResult($definitions);
+	
+	// *****************************
+	// query to get the translations
+	// *****************************
+	$qry = "SELECT exp.spelling, exp.language_id ";
+	$qry .= "FROM {$dc}_expression exp ";
+	$qry .= "INNER JOIN {$dc}_syntrans trans ON exp.expression_id=trans.expression_id ";
+	$qry .= "WHERE trans.defined_meaning_id=$dmid ";
+	$qry .= "AND " . getLatestTransactionRestriction("exp");
+	$qry .= "AND " . getLatestTransactionRestriction("trans");
+	
+	$translations = $dbr->query($qry);
+	while($row = $dbr->fetchRow($translations)) {
+		// qry gets all languages, we filter them here. Saves an order 
+		// of magnitude execution time.
+		if (in_array($row['language_id'], $languages)) {
+			// $key becomes something like trans_23
+			$key = 'trans_'.$row['language_id'];
+			if (!isset($data[$key]))
+				$data[$key] = $row['spelling'];
+			else
+				$data[$key] = $data[$key].'|'.$row['spelling'];
+		}
+	}
+	$dbr->freeResult($translations);
+	
+	return $data;
+	
+}
+
+
+
 class ClassAttribute {
 	public $attributeId;
 	public $levelName;
@@ -1542,6 +1641,6 @@ class ClassAttributes {
 		
 		return $result;
 	}
-
-
+	
 }
+

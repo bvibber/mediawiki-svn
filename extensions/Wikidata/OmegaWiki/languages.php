@@ -47,16 +47,38 @@ function getLanguageIdForCode($code) {
 
 function getLanguageIdForIso639_3($code) {
 
-	static $languageIsos=null;
-	if(is_null($languageIsos)) {
+	static $languages = null;
+	
+	if (is_null($languages)) {
 		$dbr =& wfGetDB( DB_SLAVE );
-		$id_res=$dbr->query("select language_id,iso639_3 from language");
-		while($id_row=$dbr->fetchObject($id_res)) {
-			$languageIsos[$id_row->iso639_3]=$id_row->language_id;
+		$result = $dbr->query("SELECT language_id,iso639_3 FROM language");
+		while($row=$dbr->fetchObject($result)) {
+			$languages[$row->iso639_3] = $row->language_id;
 		}
 	}
-	if(is_array($languageIsos) && array_key_exists($code,$languageIsos)) {
-		return $languageIsos[$code];
+	
+	if (is_array($languages) && array_key_exists($code, $languages)) {
+		return $languages[$code];
+	} else {
+		return null;
+	}
+	
+}
+
+function getLanguageIso639_3ForId($id) {
+
+	static $languages = null;
+	
+	if(is_null($languages)) {
+		$dbr =& wfGetDB( DB_SLAVE );
+		$result = $dbr->query("SELECT language_id,iso639_3 FROM language");
+		while($row=$dbr->fetchObject($result)) {
+			$languages['id'.$row->language_id] = $row->iso639_3;
+		}
+	}
+	
+	if (is_array($languages) && array_key_exists('id'.$id, $languages)) {
+		return $languages['id'.$id];
 	} else {
 		return null;
 	}
