@@ -180,6 +180,26 @@ function efMakeBotMessages() {
 	'makebot-logentryrevoke'  => 'quitó el flag de bot a [[$1]]',
 ),
 
+'eu' => array(
+	'makebot'                 => 'Bot egoera ezarri edo baliogabetu',
+	'makebot-header'          => '\'\'\'Bertako burokrata batek orrialde hau erabil dezake erabiltzaile bati [[{{MediaWiki:Grouppage-bot}}]] egoera eman edo kentzeko.\'\'\'<br />Bot egoerak erabiltzailearen aldaketak ezkutatzen ditu [[Special:Recentchanges|aldaketa berriak]] eta antzeko zerrendetatik, eta erabilgarria da aldaketa automatikoak egiten dituzten erabiltzaileak markatzeko. Hau politikak kontuan izanez burutu behar da.',
+	'makebot-username'        => 'Erabiltzaile izena:',
+	'makebot-search'          => 'Joan',
+	'makebot-isbot'           => '[[User:$1|$1]] erabiltzaileak bot egoera dauka.',
+	'makebot-notbot'          => '[[User:$1|$1]] erabiltzaileak ez dauka bot egoera.',
+	'makebot-privileged'      => '[[User:$1|$1]] erabiltzaileak [[Special:Listadmins|administratzaile edo burokrata baimenak]] dauzka eta ezin zaio bot egoera ezarri.',
+	'makebot-change'          => 'Egoera aldatu:',
+	'makebot-grant'           => 'Baimenak eman',
+	'makebot-revoke'          => 'Baliogabetu',
+	'makebot-comment'         => 'Iruzkina:',
+	'makebot-granted'         => '[[User:$1|$1]] erabiltzaileak bot egoera dauka orain.',
+	'makebot-revoked'         => '[[User:$1|$1]] erabiltzaileak bot egoera izateari utzi dio.',
+	'makebot-logpage'         => 'Bot egoera erregistroa',
+	'makebot-logpagetext'     => 'Erabiltzaileen [[{{MediaWiki:Grouppage-bot}}|bot]] egoera aldaketen erregistroa da hau.',
+	'makebot-logentrygrant'   => 'bot egoera ezarri zaio [[$1]](r)i',
+	'makebot-logentryrevoke'  => 'bot egoera kendu zaio [[$1]](r)i',
+),
+
 'ext' => array(
 	'makebot-username'        => 'Nombri el usuáriu:',
 	'makebot-search'          => 'Dil',

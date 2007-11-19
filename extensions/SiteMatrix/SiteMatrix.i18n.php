@@ -125,6 +125,12 @@ $wgSiteMatrixMessages['it'] = array(
 $wgSiteMatrixMessages['ja'] = array(
 	"sitematrix" => "Wikimediaウィキの一覧",
 );
+$wgSiteMatrixMessages['kaa'] = array(
+	'sitematrix' => 'Wikimedia wikileri dizimi',
+	'sitematrix-language' => 'Til',
+	'sitematrix-project' => 'Proyekt atı, proyekt aralıq sıltewi ha\'m til aralıq siltewi',
+	'sitematrix-others' => 'Basqa Wikimedia proektleri',
+);
 $wgSiteMatrixMessages['kk-kz'] = array(
 	"sitematrix"          => "Барлық Wikimedia уики тізімі",
 	'sitematrix-language' => 'Тілі',
