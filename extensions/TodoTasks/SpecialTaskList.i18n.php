@@ -14,7 +14,7 @@ $allMessages = array(
 		'tasklistchooseproj'      => 'Select Project: ',
 		'tasklistprojdisp'        => 'Display',
 		'tasklistbyname'          => '== Todo List for %s ==',
-        'tasklistnoprojects'      => "ERROR: It looks like you enabled '''\$wgUseProjects''', but did not create [[MediaWiki:TodoTasksValidProjects]]. See [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] for more details."
+		'tasklistnoprojects'      => "ERROR: It looks like you enabled '''\$wgUseProjects''', but did not create [[MediaWiki:TodoTasksValidProjects]]. See [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] for more details.",
 	),
 
 	'ar' => array(
@@ -47,6 +47,7 @@ $allMessages = array(
 		'tasklistchooseproj'      => 'Projekt: auswählen:',
 		'tasklistprojdisp'        => 'Anzeigen',
 		'tasklistbyname'          => '== Aufgabenliste für %s ==',
+		'tasklistnoprojects'      => "Fehler: Es sieht so aus, als wenn '''\$wgUseProjects''' aktiviert wäre, aber es wurde keine Seiten [[MediaWiki:TodoTasksValidProjects]] erstellt. Siehe die [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installationsanweisungen] für weitere Details.",
 	),
 
 	'gl' => array(
