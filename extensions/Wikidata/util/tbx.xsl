@@ -29,7 +29,7 @@
 				<xsl:value-of select="@defined-meaning-id" />
 			</xsl:attribute>
 			<xsl:for-each select="definition/translated-text-list/translated-text">
-				<xsl:param name="language" select="@language"/>
+				<xsl:variable name="language" select="@language"/>
 				<langSet>
 					<xsl:attribute name="xml:lang">
 						<xsl:value-of select="$language" />
