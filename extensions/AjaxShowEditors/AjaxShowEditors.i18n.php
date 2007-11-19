@@ -72,6 +72,11 @@ $wgAjaxShowEditorsMessages['gl'] = array(
 	'ajax-se-pending' => 'pendente de refresco... (clique nesta caixa ou comece a editar)',
 	'ajax-se-idling' => '(hai $1s)',
 );
+$wgAjaxShowEditorsMessages['hr'] = array(
+	'ajax-se-title' => 'Trenutno uređujete:',
+	'ajax-se-pending' => 'osvježavanje slijedi ... (kliknite na ovaj okvir ili počnite s uređivanjem)',
+	'ajax-se-idling' => '(prije $1s)',
+);
 $wgAjaxShowEditorsMessages['hsb'] = array(
 	'ajax-se-title' => 'Wobdźěłuje so runje wot:',
 	'ajax-se-pending' => 'aktualizuje so ... (klikń do tutoho pola abo póčni wobdźěłować)',

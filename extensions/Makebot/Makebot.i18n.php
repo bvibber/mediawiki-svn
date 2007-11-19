@@ -49,7 +49,7 @@ function efMakeBotMessages() {
 	'makebot-granted'         => '[[User:$1|$1]] لديه الآن صلاحية بوت.',
 	'makebot-revoked'         => 'فقد [[User:$1|$1]] صلاحية البوت.',
 	'makebot-logpage'         => 'سجل صلاحيات البوت',
-	'makebot-logpagetext'     => 'هذا سجل لتغييرات صلاحية [[Help:بوت|البوت]].',
+	'makebot-logpagetext'     => 'هذا سجل لتغييرات صلاحية [[{{MediaWiki:Grouppage-bot}}|البوت]].',
 	'makebot-logentrygrant'   => 'منح صلاحية بوت إلى [[$1]]',
 	'makebot-logentryrevoke'  => 'سحب صلاحية بوت من [[$1]]',
 ),

@@ -98,6 +98,22 @@ $allMessages = array(
 		'tasklistbyname'          => '== Takenlijst voor %s ==',
 	),
 
+	'pl' => array(
+		'tasklist'                => 'Lista zadań',
+		'tasklistbyproject'       => 'Listy zadań według projektu',
+		'tasklistunknownproject'  => 'Nieznany projekt',
+		'tasklistunspecuser'      => 'Nie określono użytkownika',
+		'tasklistincorrectuser'   => 'Niepoprawna nazwa użytkownika',
+		'tasklistemail'           => '%s',
+		'tasklistemailsubject'    => '[%s] Zmiana listy zadań',
+		'tasklistmytasks'         => 'Moje zadania',
+		'tasklistbyprojectbad'    => 'Projekt \'\'\'%s\'\'\' nie jest poprawnym projektem. By zobaczyć listę poprawnych projektów, odwiedź stronę [[MediaWiki:TodoTasksValidProjects]].',
+		'tasklistbyprojname'      => 'Przypisano zadania do \'\'\'%s\'\'\'',
+		'tasklistchooseproj'      => 'Wybierz projekt:',
+		'tasklistprojdisp'        => 'Pokaż',
+		'tasklistbyname'          => '== Lista do zrobienia dla %s ==',
+	),
+
 	'zh_tw' => array(            //Taiwanese Chinese
 		'tasklist'                => '任務清單',  //Task List
 		'tasklistbyproject'       => '依專案列出任務', //Task List By Project

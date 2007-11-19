@@ -89,6 +89,8 @@ A security warning about an unsigned certificate may be displayed.',
 
 $wgBoardVoteMessages['af'] = array(
 	'boardvote'               => 'Wikimedia-Trusteeraadverkiesing',
+	'boardvote_user'          => 'Gebruiker',
+	'boardvote_welcome'       => 'Welkom \'\'\'$1\'\'\'!',
 );
 
 $wgBoardVoteMessages['ang'] = array(
@@ -383,6 +385,11 @@ Du wirst in 20 Sekunden zu diesem externen Server weitergeleitet. [$1 klicke hie
 Eine Sicherheitswarnung über ein unsigniertes Zertifikat kann angezeigt werden.',
 );
 $wgBoardVoteMessages['el'] = array(
+	'boardvote_user'          => 'Χρήστης',
+	'boardvote_days'          => 'Ημέρες',
+	'boardvote_dumplink'      => 'Πάτησε εδώ',
+	'boardvote_submit'        => 'Εντάξει',
+	'boardvote_notstarted'    => 'Η ψηφοφορία δεν έχει αρχίσει ακόμη',
 	'boardvote_redirecting'   => 'Για καλύτερη ασφάλεια και διαφάνεια, η ψηφοφορία διεξάγεται σε εξωτερικό, ανεξάρτητα ελεγχόμενο server.
 
 Θα μεταφερθείτε αυτόματα στον εξωτερικό αυτό server σε 20 δευτερόλεπτα. [$1 Πατήστε εδώ] για να μεταφερθείτε εκεί άμεσα.
@@ -395,6 +402,39 @@ $wgBoardVoteMessages['es'] = array(
 Serás redireccionado a este servidor externo en 20 segundos. [$1 Haz click aquí] para ir ahora.
 
 Un aviso de seguridad sobre un certificado no cifrado podría aparacer.',
+);
+$wgBoardVoteMessages['eu'] = array(
+	'boardvote'               => 'Wikimediaren Administrazio Kontseiluaren aukeraketa',
+	'boardvote_entry'         => '* [[Special:Boardvote/vote|Bozkatu]]
+* [[Special:Boardvote/list|Orain arteko botuen zerrenda]]
+* [[Special:Boardvote/dump|Erregistroa]]',
+	'boardvote_entered'       => 'Mila esker, zure botua gorde egin da.
+
+Nahi izanez gero, hurrengo datuak gorde ditzakezu. Zure botu erregistroa:
+
+<pre>$1</pre>
+
+Hauteskundeetako administratzaileen gako publikoarekin zifratu da:
+
+<pre>$2</pre>.
+
+Publikoki erakutsiko da [[Special:Boardvote/dump]] orrialdean.
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Atzera]]',
+	'boardvote_novotes'       => 'Oraindik ez du inork bozkatu.',
+	'boardvote_time'          => 'Ordua',
+	'boardvote_user'          => 'Erabiltzaile',
+	'boardvote_edits'         => 'aldaketak',
+	'boardvote_days'          => 'Egunak',
+	'boardvote_ua'            => 'Erabiltzaile agentea',
+	'boardvote_listintro'     => '<p>Honako hau orain arteko botu guztien zerrenda da. Zifratutako datuentzako $1.</p>',
+	'boardvote_dumplink'      => 'Egin klik hemen',
+	'boardvote_needadmin'     => 'Hauteskundeko administratzaileek baino ezin dute eragiketa hori burutu.',
+	'boardvote_notstarted'    => 'Oraindik ez da bozketa hasi',
+	'boardvote_edits_many'    => 'hainbat',
+	'boardvote_welcome'       => 'Ongi etorri \'\'\'$1\'\'\'!',
 );
 $wgBoardVoteMessages['ext'] = array(
 	'boardvote_novotes'       => 'Naidi á votau entovia.',

@@ -160,6 +160,20 @@ function efBookInformationMessages() {
 	'bookinfo-provider' => 'Fornecedor de datos: $1',
 ),
 
+'hr' => array(
+	'bookinfo-header' => 'Informacije o knjizi',
+	'bookinfo-result-title' => 'Naslov:',
+	'bookinfo-result-author' => 'Autor:',
+	'bookinfo-result-publisher' => 'Izdavač:',
+	'bookinfo-result-year' => 'Godina:',
+	'bookinfo-error-invalidisbn' => 'Nevaljan ISBN broj.',
+	'bookinfo-error-nosuchitem' => 'Knjiga ne postoji/nije nađena.',
+	'bookinfo-error-nodriver' => 'Ne mogu inicijalizirati odgovarajući program za informacije o knjigama.',
+	'bookinfo-error-noresponse' => 'Nema odgovora ili istek vremena za upit (\'\'timeout\'\').',
+	'bookinfo-purchase' => 'Kupi ovu knjigu od $1',
+	'bookinfo-provider' => 'Dobavljač podataka: $1',
+),
+
 'hsb' => array(
 	'bookinfo-header' => 'Informacije wo knihach',
 	'bookinfo-result-title' => 'Titul:',

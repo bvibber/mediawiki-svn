@@ -204,7 +204,7 @@ $wgLinkSearchMessages['pl'] = array(
 	'linksearch-pat'   => 'Wzorzec wyszukiwania:',
 	'linksearch-ns'    => 'Przestrzeń nazw:',
 	'linksearch-ok'    => 'Szukaj',
-	'linksearch-text'  => 'Można używać masek typu "*.wikipedia.org" may be used.<br />Obsługiwane protokoły: <tt>$1</tt>',
+	'linksearch-text'  => 'Można używać masek typu "*.wikipedia.org".<br />Obsługiwane protokoły: <tt>$1</tt>',
 	'linksearch-line'  => '$1 linkuje z $2',
 	'linksearch-error' => 'Maski można użyć tylko na początku nazwy hosta.',
 );

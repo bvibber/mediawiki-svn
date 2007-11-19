@@ -18,7 +18,7 @@ $wgSiteMatrixMessages['af'] = array(
 );
 $wgSiteMatrixMessages['an'] = array(
 	'sitematrix' => 'Lista de wikis de Wikimedia',
-	'sitematrix-language' => 'Lenguache',
+	'sitematrix-language' => 'Luenga',
 );
 $wgSiteMatrixMessages['ang'] = array(
 	'sitematrix-language' => 'Sprǣc',

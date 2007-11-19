@@ -224,7 +224,7 @@ $allMessages = array(
 		'sign-docheader' => '<div class="noarticletext">Prière d\'utiliser ce formulaire pour authentifier le document « [[$1]] » affichée ci-dessous. Lire le document au complet, et si vous souhaitez signifier votre appui, remplir les champs pour l\'authentifier.</div>',
 		'sign-error-nosuchdoc' => 'Le document demandé ($1) n\'existe pas.',
 		'sign-realname' => 'Nom :',
-		'sign-address' => 'Adresse civique :',
+		'sign-address' => 'Adresse rue :',
 		'sign-city' => 'Ville :',
 		'sign-state' => 'État, département ou province :',
 		'sign-zip' => 'Code postal :',

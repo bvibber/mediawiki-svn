@@ -38,7 +38,7 @@ function efCommentSpammerMessages() {
 ),
 
 'fr' => array(
-	'commentspammer-save-blocked' => 'Votre adresse IP est celle d\'une personne suspectée de créer du pourriel, la page n\'a pas été sauvegardée. Veuillez vous [[Special:Userlogin|connecter ou créer un compte]] pour contourner cet interdit.',
+	'commentspammer-save-blocked' => 'Votre adresse IP est celle d\'une personne suspectée de créer du pourriel : la page n\'a donc pas été sauvegardée. Veuillez vous [[Special:Userlogin|connecter ou créer un compte]] pour contourner cette interdiction.',
 	'commentspammer-log-msg' => 'Modifications de [[Special:Contributions/$1|$1]] à [[$2]].',
 	'commentspammer-log-msg-info' => 'Le dernier pourriel remonte à {{PLURAL:$1|$1 jour|$1 jours}}, le niveau d\'alerte est à $2 et le code d\'attaque est $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Voir détails] ou [[Special:Blockip/$4|bloquer]].',
 	'cspammerlogpagetext' => 'Journal des modifications acceptées ou rejetées selon que la source était un créateur de pourriels connu.',

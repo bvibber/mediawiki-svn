@@ -309,6 +309,7 @@ function efPatrollerMessages() {
 	'patrol-revert' => 'Cofnij',
 	'patrol-revert-reason' => 'Powód:',
 	'patrol-skip' => 'Pomiń',
+	'patrol-reverting' => 'Wycofywanie: $1',
 	'patrol-nonefound' => 'Nie znaleziono edycji do patrolowania.',
 	'patrol-endorsed-ok' => 'Edycja została oznaczona jako sprawdzona.',
 	'patrol-endorsed-failed' => 'Nie udało się oznaczyć edycji jako sprawdzonej.',

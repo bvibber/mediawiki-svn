@@ -87,6 +87,11 @@ function efUsernameBlacklistMessages( $single = false ) {
 	'usernameblacklist-invalid-lines' => 'Die {{PLURAL:$1|folgende Zeile|folgenden Zeilen}} in der Liste unerwünschter Benutzernamen {{PLURAL:$1|ist|sind}} ungültig; bitte korrigiere sie vor dem Speichern:',
 ),
 
+'eu' => array(
+	'blacklistedusername' => 'Zerrenda beltzeko erabiltzaile izena',
+	'blacklistedusernametext' => 'Hautatu duzun erabiltzaile izena [[MediaWiki:Usernameblacklist|zerrenda beltzean]] ageri da. Aukeratu ezazu beste bat.',
+),
+
 'fa' => array(
 	'blacklistedusername' => 'نام کاربری غیر مجاز',
 	'blacklistedusernametext' => 'نام کاربری مورد نظر شما در با [[MediaWiki:Usernameblacklist|فهرست سیاه نام‌های کاربری]] مطابقت دارد. لطفاً یک نام کاربری دیگر انتخاب کنید.',
