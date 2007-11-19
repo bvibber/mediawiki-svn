@@ -27,7 +27,7 @@ $wgBlahtexOptions = '--texvc-compatible-commands --mathml-version-1-fonts --disa
 $wgExtensionFunctions[] = 'efBlahtex';
 $wgExtensionCredits['other'][] = array( 'name' => 'Blahtex', 
 					'author' => 'David Harvey and Jitse Niesen', 
-					'url' => 'http://meta.wikimedia.org/wiki/Blahtex',
+					'url' => 'http://www.mediawiki.org/wiki/Extension:Blahtex',
 					'description' => 'MathML output for &lt;math&gt; tags' );
 
 /**
@@ -461,6 +461,3 @@ class blahtexOutputParser  {
 		$this->prevCdata = true;
 	}
 }
-
-
-
