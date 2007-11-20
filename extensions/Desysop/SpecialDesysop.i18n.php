@@ -57,6 +57,7 @@ $wgDesysopMessages['de'] = array(
 $wgDesysopMessages['el'] = array(
 	'desysopsetrights'     => 'Καθορισμός δικαιωμάτων χρήστη',
 	'desysoprightsfail'    => '<b>Δεν ήταν δυνατή η ρύθμιση των δικαιωμάτων για το χρήστη "$1". Βεβαιωθείτε πως έχετε πληκτρολογήσει σωστά το όνομα.</b>',
+	'desysopnot_sysop'     => 'Αυτός ο χρήστης δεν είναι διαχειριστής',
 );
 $wgDesysopMessages['eo'] = array(
 	'desysoptitle'         => 'Revoku administrantan akceson por uzanto',

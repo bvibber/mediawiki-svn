@@ -35,6 +35,9 @@ $wgSiteMatrixMessages['bcl'] = array(
 	'sitematrix-project' => 'Pangaran kan proyekto, interproject link asin interwiki link',
 	'sitematrix-others' => 'Ibang mga proyekto kan Wikimedia',
 );
+$wgSiteMatrixMessages['be'] = array(
+	'sitematrix' => 'Сьпіс усіх праектаў фундацыі Wikimedia',
+);
 $wgSiteMatrixMessages['bg'] = array(
 	'sitematrix' => 'Списък на уикитата на Уикимедия',
 );
@@ -58,6 +61,9 @@ $wgSiteMatrixMessages['de'] = array(
 	'sitematrix-language' => 'Sprache',
 	'sitematrix-project'  => 'Projektname, Interprojekt-Link und Interwiki-Link',
 	'sitematrix-others'   => 'Weitere Wikimedia-Projekte',
+);
+$wgSiteMatrixMessages['el'] = array(
+	'sitematrix-language' => 'Γλώσσα',
 );
 $wgSiteMatrixMessages['eo'] = array(
 	'sitematrix' => 'Listo de vikioj de Wikimedia',

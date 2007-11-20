@@ -80,6 +80,10 @@ riddler|Riddler",
 ),
 
 'el' => array(
+	'vote' => 'Ψηφοφορία',
+	'vote-caption' => 'Η επιλογή σας:',
+	'vote-submit' => 'Ψηφοφορία',
+	'vote-results-choice' => 'Επιλογή',
 	'vote-login-link' => 'Εγγραφή',
 	'vote-invalid-choice' => 'Πρέπει να επιλέξετε μια από της διαθέσιμες επιλογές.',
 ),

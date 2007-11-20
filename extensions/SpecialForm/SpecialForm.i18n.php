@@ -96,6 +96,10 @@ $SpecialFormMessages =array(
 		'formsaveerrortext'            => 'Es gab einen unbekannten Fehler beim Speichern der Seite „$1“.',
 	),
 
+	'el' => array(
+		'formtemplatepattern' => '$1',#identical but defined
+	),
+
 	'fr' => array(
 		'form' => 'Formulaire',
 		'formnoname' => 'Aucun nom',

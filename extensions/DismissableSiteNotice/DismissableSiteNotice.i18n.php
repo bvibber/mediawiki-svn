@@ -52,6 +52,10 @@ $wgDismissableSiteNoticeMessages['fiu-vro'] = array(
 	'sitenotice_close' => 'Käkiq ärq',
 );
 
+$wgDismissableSiteNoticeMessages['fo'] = array(
+	'sitenotice_close' => 'flyt burtur',
+);
+
 $wgDismissableSiteNoticeMessages['fr'] = array(
 	'sitenotice_close' => 'cacher',
 );

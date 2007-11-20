@@ -104,6 +104,12 @@ function efContributorsMessages() {
 	'contributors-nosuchpage' => 'Die Seite $1 ist nicht vorhanden.',
 ),
 
+'el' => array(
+	'contributors' => 'Συνεισφέροντες',
+	'contributors-target' => 'Τίτλος:',
+	'contributors-badtitle' => 'Άκυρος τίτλος.',
+),
+
 'ext' => array(
 	'contributors-toolbox' => 'Prencipalis colabutaoris',
 	'contributors-target' => 'Entítulu:',

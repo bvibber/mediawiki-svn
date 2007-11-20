@@ -43,6 +43,9 @@ $wgFilepathMessages['de'] = array(
 
 	Die Eingabe muss ohne den Zusatz „{{ns:image}}:“ erfolgen.',
 );
+$wgFilepathMessages['el'] = array(
+	'filepath_page'   => 'Αρχείο:',
+);
 $wgFilepathMessages['eo'] = array(
 	'filepath'        => 'Dosiera pado',
 	'filepath_page'   => 'Dosiero:',
