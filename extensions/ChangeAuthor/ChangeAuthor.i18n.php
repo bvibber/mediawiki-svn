@@ -26,7 +26,7 @@ EOT;
 $allMessages = array(
 	'en' => array( 
 		'changeauthor' => 'Change revision author',
-		'changeauthor-short' => 'ChangeAuthor',
+		'changeauthor-short' => 'ChangeAuthor', # don't translate or duplicate this message to other languages
 		'changeauthor-title' => 'Change the author of a revision',
 		'changeauthor-search-box' => 'Search revisions',
 		'changeauthor-pagename-or-revid' => 'Article name or revision ID:',
@@ -50,7 +50,6 @@ $allMessages = array(
 	),
 	'ar' => array(
 		'changeauthor' => 'غير مؤلف النسخة',
-		'changeauthor-short' => 'غير المؤلف',
 		'changeauthor-title' => 'غير مؤلف نسخة',
 		'changeauthor-search-box' => 'ابحث في النسخ',
 		'changeauthor-pagename-or-revid' => 'اسم المقالة أو رقم النسخة:',
@@ -96,7 +95,6 @@ $allMessages = array(
 	),
 	'hsb' => array(
 		'changeauthor' => 'Wersijoweho awtora změnić',
-		'changeauthor-short' => 'ChangeAuthor',#identical but defined
 		'changeauthor-title' => 'Awtora wersije změnić',
 		'changeauthor-search-box' => 'Wersije pytać',
 		'changeauthor-pagename-or-revid' => 'Mjeno nastawka abo ID wersije:',
@@ -118,7 +116,6 @@ $allMessages = array(
 	),
 	'nl' => array(
 		'changeauthor' => 'Auteur versie wijzigen',
-		'changeauthor-short' => 'AuteurWijzigen',
 		'changeauthor-title' => 'De auteur van een bewerkingsversie wijzigen',
 		'changeauthor-search-box' => 'Versies zoeken',
 		'changeauthor-pagename-or-revid' => 'Paginanaam of versienummer:',
