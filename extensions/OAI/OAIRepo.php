@@ -90,9 +90,12 @@ function oaiUpdatePage( $id, $action ) {
 	#$dbw->commit();
 }
 
-function oaiUpdateSave( $article, $user, $text, $summary, $isminor, $iswatch, $section ) {
-	$id = $article->getID();
-	oaiUpdatePage( $id, 'modify' );
+function oaiUpdateSave( $article, $user, $text, $summary, $isminor, $iswatch, $section, $flags, $revision ) {
+	if( $revision ) {
+		// Only save a record for real updates, not null edits.
+		$id = $article->getID();
+		oaiUpdatePage( $id, 'modify' );
+	}
 	return true;
 }
 
