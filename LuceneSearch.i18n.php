@@ -186,6 +186,7 @@ Hakulauseke $3 $9 $10',
 	'searchincategory'      => 'luokassa',
 );
 $wgLuceneSearchMessages['fo'] = array(
+	'searchnumber'          => '<strong>Úrslit $1-$2 av $3</strong>',
 	'searchnoresults'       => 'Tíverri vóru ongar síður, ið luku tíni leitikrøv.',
 	'lucenepowersearchtext' => 'Leita í navnaøki: $1 Leita eftur $3 $9',
 );
