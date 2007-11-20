@@ -63,7 +63,7 @@ public class SimpleIndexWriter {
 		indexes = new HashMap<String,IndexWriter>();		
 		indexAnalyzer = Analyzers.getIndexerAnalyzer(builder);
 		highlightAnalyzer = Analyzers.getHighlightAnalyzer(iid);
-		highlightContentAnalyzer = new ReusableLanguageAnalyzer(builder.getBuilder().getFilters(),false,true);
+		highlightContentAnalyzer = Analyzers.getReusableHighlightAnalyzer(builder.getBuilder().getFilters());
 		stopWords = StopWords.getPredefinedSet(iid);
 		// open all relevant indexes
 		for(IndexId part : iid.getPhysicalIndexIds()){

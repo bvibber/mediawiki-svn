@@ -53,7 +53,16 @@ public class Analyzers {
 	 * @return
 	 */
 	public static ReusableLanguageAnalyzer getReusableHighlightAnalyzer(FilterFactory filters){
-		return new ReusableLanguageAnalyzer(filters,false,true);
+		return getReusableHighlightAnalyzer(filters,false);
+	}
+	
+	public static ReusableLanguageAnalyzer getReusableHighlightAnalyzer(FilterFactory filters, boolean original){
+		TokenizerOptions options = null;
+		if(original)
+			options = new TokenizerOptions.HighlightOriginal();
+		else
+			options = new TokenizerOptions.Highlight();
+		return new ReusableLanguageAnalyzer(filters,false,options);
 	}
 
 	/**
@@ -146,7 +155,7 @@ public class Analyzers {
 		analyzer.addAnalyzer(fields.stemtitle(),
 				getReusableHighlightAnalyzer(filters));
 		analyzer.addAnalyzer(fields.alttitle(),
-				getReusableHighlightAnalyzer(filters.getNoStemmerFilterFactory()));
+				getReusableHighlightAnalyzer(filters.getNoStemmerFilterFactory(),true));
 		analyzer.addAnalyzer(fields.keyword(), 
 				getReusableHighlightAnalyzer(filters.getNoStemmerFilterFactory()));
 		

@@ -14,6 +14,8 @@ public class TokenizerOptions {
 	boolean relocationParsing = true;
 	/** parse for highlighting, will parse tokens and gaps (which are normalized) */
 	boolean highlightParsing = false;
+	/** if text should be tidied */
+	boolean simplifyGlue = false;
 	
 	public TokenizerOptions(boolean exactCase){
 		this.exactCase = exactCase;
@@ -31,6 +33,16 @@ public class TokenizerOptions {
 			super(false); 
 			this.highlightParsing = true;
 			this.relocationParsing = false;
+			this.simplifyGlue = true;
+		}
+	}
+	
+	public static class HighlightOriginal extends TokenizerOptions {
+		public HighlightOriginal(){
+			super(false); 
+			this.highlightParsing = true;
+			this.relocationParsing = false;
+			this.simplifyGlue = false;
 		}
 	}
 }

@@ -157,6 +157,7 @@ class MyHandler(BaseHTTPRequestHandler):
                             link = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],title)
                         decoded = urllib.unquote(title.replace('_',' '))
                         self.wfile.write('%1.2f -- <a href="%s">%s</a>' % (score,link,decoded))
+                        # decode highlight info
                         textHl = ''
                         redirectHl = ''
                         redirectLink = ''
@@ -179,12 +180,12 @@ class MyHandler(BaseHTTPRequestHandler):
                                 break
                             i+=1
                         if redirectLink != '':
-                            self.wfile.write('<small> (redirected from <a href="%s">%s</a>)</small>' % (redirectLink, redirectHl))
+                            self.wfile.write('<small> (redirected <a href="%s">%s</a>)</small>' % (redirectLink.strip(), redirectHl.strip()))
                         if sectionLink != '':
-                            self.wfile.write('<small> (section <a href="%s">%s</a></small>)' % (sectionLink, sectionHl))
+                            self.wfile.write('<small> (section <a href="%s">%s</a></small>)' % (sectionLink.strip(), sectionHl.strip()))
                         self.wfile.write('<br>');
                         if textHl != '':
-                            self.wfile.write('<div style="width:500px"><small>%s</small></div>' % textHl)
+                            self.wfile.write('<div style="width:500px"><font size="-1">%s</font></div>' % textHl)
                         i += 1 
                     self.wfile.write('<hr>')
                     # show lower search bar

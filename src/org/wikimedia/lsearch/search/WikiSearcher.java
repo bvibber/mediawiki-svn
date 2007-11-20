@@ -133,6 +133,11 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 	public int docFreq(Term term) throws IOException {
 		return searcher.docFreq(term);
 	}
+	
+	@Override
+	public int[] docFreqs(Term[] terms) throws IOException {
+		return searcher.docFreqs(terms);
+	}
 
 	@Override
 	public Explanation explain(Weight weight, int doc) throws IOException {

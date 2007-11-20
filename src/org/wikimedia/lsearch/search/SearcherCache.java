@@ -179,7 +179,7 @@ public class SearcherCache {
 			int random = (int)(Math.floor(Math.random()*keys.size()));
 			String[] strkeys = keys.toArray(new String[] {});
 			String key = strkeys[random];
-			return key.substring(key.indexOf('@'));
+			return key.substring(key.indexOf('@')+1);
 		}
 	}
 	

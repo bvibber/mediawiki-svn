@@ -123,7 +123,7 @@ public class SearchEngine {
 		} else if (what.equals("prefix")){
 			return prefixSearch(iid, searchterm);
 		} else if (what.equals("related")){
-			int offset = 0, limit = 100; boolean exactCase = false;
+			int offset = 0, limit = 100; 
 			if (query.containsKey("offset"))
 				offset = Math.max(Integer.parseInt((String)query.get("offset")), 0);
 			if (query.containsKey("limit"))
@@ -552,8 +552,8 @@ public class SearchEngine {
 	/** Highlight search results, and set the property in ResultSet */
 	protected void highlight(IndexId iid, Query q, ArrayList<String> words, Searcher searcher, SearchResults res, boolean exactCase) throws IOException{
 		Term[] terms = getTerms(q);
-		// FIXME: theoretically unnecessary call to docFreqs, however information is lost 
-		// in the multisearcher createWeight() method... 
+		// FIXME: theoretically unnecessary call to docFreqs, however dfs are 
+		// lost in the multisearcher createWeight() method... 
 		int[] df = searcher.docFreqs(terms); 
 		int maxDoc = searcher.maxDoc();
 		highlight(iid,q,words,terms,df,maxDoc,res,exactCase);
@@ -562,6 +562,7 @@ public class SearchEngine {
 	protected void highlight(IndexId iid, Query q, ArrayList<String> words, Term[] terms, int[] df, int maxDoc, SearchResults res, boolean exactCase) throws IOException{
 		// iid -> array of keys
 		HashMap<IndexId,ArrayList<String>> map = new HashMap<IndexId,ArrayList<String>>();
+		iid = iid.getHighlight();
 		// key -> result
 		HashMap<String,ResultSet> keys = new HashMap<String,ResultSet>();
 		for(ResultSet r : res.getResults()){

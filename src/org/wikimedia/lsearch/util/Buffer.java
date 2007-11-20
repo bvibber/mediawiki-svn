@@ -23,6 +23,8 @@ public class Buffer {
 		this.buf = buf;
 	}
 	
+	///////////////// READ //////////////////
+	
 	public byte read(){
 		return buf[len++];
 	}
@@ -131,9 +133,12 @@ public class Buffer {
 	public final void writeStringWithLength(String s){
 		try {
 			byte[] bytes = s.getBytes("utf-8");
-			write((byte)bytes.length);
-			for(byte c : bytes){
-				write(c);
+			int len = bytes.length;
+			if(len > 254)
+				len = 254;
+			write((byte)len);
+			for(int i=0;i<len;i++){
+				write(bytes[i]);
 			}
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();

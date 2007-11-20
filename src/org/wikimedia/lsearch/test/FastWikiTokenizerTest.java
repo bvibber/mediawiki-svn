@@ -28,7 +28,7 @@ public class FastWikiTokenizerTest {
 			Token[] tokens = parser.parse().toArray(new Token[] {});
 			for (int i = 0; i < tokens.length; i++) {
 				Token token = tokens[i];
-				System.out.print("[" + token.toString() + "] ");
+				System.out.println("[" + token.toString() + "] ");
 			}
 			System.out.println();
 			String[] cats = parser.getCategories().toArray(new String[] {});
@@ -71,6 +71,12 @@ public class FastWikiTokenizerTest {
 		public static void main(String args[]) throws Exception{
 			Configuration.open();
 			String text = "(ant) and some. it's stupid it's something and 5\"6' or more";
+			showTokens(text);
+			text = ":''This page is about the franchise. You may be looking for the [[The Hitchhiker's Guide to the Galaxy (book)|book]], [[The Hitchhiker's Guide to the Galaxy (film)|film]], [[The Hitchhiker's Guide to the Galaxy (computer game)|computer game]], [[The Hitchhiker's Guide to the Galaxy (radio series)|radio series]] or [[The Hitchhiker's Guide to the Galaxy (TV series)|TV series]].\n[[Image:Hitchhiker's Guide (book cover).jpg|frame|The cover of the [[The Hitchhiker's Guide to the Galaxy (book)|first novel]] in the Hitchhiker's series, from a late 1990s printing. The cover features the [[42 Puzzle]] devised by [[Douglas Adams]].]] First section";
+			showTokens(text);
+			text = "*[http://www.google.com/gwt/n?u=http%3A%2F%2Fwww.digitaljournal.com%2Farticle%2F92325%2FSuicides_Imitating_Saddam_Hussein_s_Hanging_&_gwt_pg=0&hl=en&mrestrict=xhtml&q=+children+hang+themselves++imitating+saddam+hussein+video+blamed&source=m&output=xhtml&site=search Over dozens of children Suicides Imitating Saddam Hussein's Hanging]";
+			showTokens(text);
+			text = "{| border=\"1\" cellpadding=\"2\"\n|-\n|width=\"100pt\"|This column is 100 points wide\n|width=\"200pt\"|This column is 200 points wide\n|width=\"300pt\"|This column is 300 points wide\n|-\n|blah || blah || blah\n|}";
 			showTokens(text);
 			text = "Æ (ď), l' (ľ), תּפר ä, ö, ü; for instance, Ø ÓóÒò Goedel for Gödel; ĳ čakšire תפר   ";
 			showTokens(text);

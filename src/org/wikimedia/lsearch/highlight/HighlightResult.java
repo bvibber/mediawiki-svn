@@ -15,7 +15,7 @@ public class HighlightResult implements Serializable {
 	protected Snippet section = null;
 	protected ArrayList<Snippet> text = new ArrayList<Snippet>();
 	
-	public static final String SEPARATOR=" ... ";
+	public static final String SEPARATOR=" <b>...</b> ";
 	
 	public HighlightResult(){		
 	}
@@ -28,10 +28,12 @@ public class HighlightResult implements Serializable {
 		StringBuilder sb = new StringBuilder();
 		if(text==null || text.size()==0)
 			return null;
-		sb.append(SEPARATOR);
 		for(Snippet t : text){
-			sb.append(getFormatted(t));
-			sb.append(SEPARATOR);
+			sb.append(getFormatted(t).trim());
+			if(t.getSuffix() != null)
+				sb.append(t.getSuffix());
+			else
+				sb.append(SEPARATOR);
 		}
 		return sb.toString();
 	}
@@ -78,9 +80,25 @@ public class HighlightResult implements Serializable {
 	public void addTextSnippet(Snippet t){
 		text.add(t);
 	}
+	
+	public void insertTextSnippet(Snippet t, int index){
+		text.add(index,t);
+	}
+	
+	public void replaceTextSnippet(Snippet t, int index){
+		text.remove(index);
+		text.add(index,t);
+	}
 
 	public ArrayList<Snippet> getText() {
 		return text;
+	}
+	
+	public int textLength(){
+		int len = 0;
+		for(Snippet t : text)
+			len += t.length();
+		return len;
 	}
 	
 

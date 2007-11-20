@@ -1,10 +1,12 @@
 package org.wikimedia.lsearch.highlight;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.wikimedia.lsearch.analyzers.Alttitles;
 import org.wikimedia.lsearch.analyzers.ExtToken;
+import org.wikimedia.lsearch.analyzers.ExtToken.Position;
 import org.wikimedia.lsearch.highlight.Highlight.FragmentScore;
 
 /**
@@ -20,6 +22,11 @@ public class RawSnippet {
 	protected int bestEnd = -1;
 	protected Set<String> highlight;
 	protected Alttitles.Info alttitle;
+	
+	protected FragmentScore next, section, cur;
+	protected Position pos;
+	protected HashSet<String> found;
+	protected int sequenceNum;
 	
 	/** number of chars in [start,end) */
 	protected int charLen(int start, int end){
@@ -112,12 +119,25 @@ public class RawSnippet {
 		Snippet s = new Snippet();
 		StringBuilder sb = new StringBuilder();
 		int start=0, end=0; // range 
+		if(showBegin > 0 && tokens.get(showBegin).getType() == ExtToken.Type.TEXT)
+			showBegin--; // always start with nontext token to catch " and (
+		if(showEnd == tokens.size())
+			s.setShowsEnd(true);
+		if(showBegin == 0 && showEnd == tokens.size())
+			s.setShowsAll(true);
+		// don't show the final space if any
+		if(tokens.size()>1 && tokens.get(tokens.size()-1).getText().equals(" ")){
+			tokens.remove(tokens.size()-1);
+			showEnd--;
+		}
 		for(int i=showBegin;i<showEnd;i++){
 			ExtToken t = tokens.get(i);
 			if(i == showBegin && t.getType() != ExtToken.Type.TEXT){
 				// omit first nontext token
 				if(t.getText().endsWith("\""))
-					sb.append("\""); // hack to include initial "
+					sb.append("\""); // hack to include initial " 
+				else if(t.getText().endsWith("("))
+					sb.append("("); // hack to include initial (
 				continue;
 			}
 			if(t.getPositionIncrement() != 0){
@@ -142,7 +162,17 @@ public class RawSnippet {
 		this.highlight = highlight;
 		this.score = f.score;
 		this.bestStart = f.bestStart - f.start;
+		if(bestStart < 0)
+			bestStart = 0;
 		this.bestEnd = f.bestEnd - f.start;
+		if(bestEnd < 0)
+			bestEnd = 0;
+		this.pos = f.pos;
+		this.found = f.found;
+		this.next = f.next;
+		this.section = f.section;
+		this.cur = f;
+		this.sequenceNum = f.sequenceNum;
 	}
 
 	public int getBestEnd() {
@@ -191,6 +221,83 @@ public class RawSnippet {
 
 	public void setAlttitle(Alttitles.Info alttitle) {
 		this.alttitle = alttitle;
+	}
+
+	public FragmentScore getNext() {
+		return next;
+	}
+
+	public void setNext(FragmentScore next) {
+		this.next = next;
+	}
+
+	public Position getPos() {
+		return pos;
+	}
+
+	public void setPos(Position pos) {
+		this.pos = pos;
+	}
+
+	public FragmentScore getSection() {
+		return section;
+	}
+
+	public void setSection(FragmentScore section) {
+		this.section = section;
+	}
+	
+	public FragmentScore getCur() {
+		return cur;
+	}
+
+	public void setCur(FragmentScore cur) {
+		this.cur = cur;
+	}
+
+	public HashSet<String> getFound() {
+		return found;
+	}
+
+	public void setFound(HashSet<String> found) {
+		this.found = found;
+	}
+
+	public int getSequenceNum() {
+		return sequenceNum;
+	}
+
+	public void setSequenceNum(int sequenceNum) {
+		this.sequenceNum = sequenceNum;
+	}
+
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		result = PRIME * result + ((cur == null) ? 0 : cur.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final RawSnippet other = (RawSnippet) obj;
+		if (cur == null) {
+			if (other.cur != null)
+				return false;
+		} else if (!cur.equals(other.cur))
+			return false;
+		return true;
+	}
+	
+	public String toString(){
+		return "first="+Boolean.toString(cur.isFirstSentence)+", sequence="+sequenceNum+", score="+score+", bestStart="+bestStart+", bestEnd="+bestEnd+", next="+next+", tokens="+tokens;
 	}
 	
 	

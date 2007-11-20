@@ -52,10 +52,16 @@ public class Snippet implements Serializable {
 	}
 	protected String text = null;
 	protected ArrayList<Range> highlighted = new ArrayList<Range>();
+	protected String suffix = null;
+	protected boolean extendable = true;
 	
 	protected String originalText = null;
-
-	public Snippet(){	
+	/** if this snippet goes to the end of sentence */
+	protected boolean showsEnd = false;
+	/** if all of sentence text is showed */
+	protected boolean showsAll = false;
+	
+	public Snippet(){
 	}
 	
 	public void addRange(Range r){
@@ -75,6 +81,10 @@ public class Snippet implements Serializable {
 	
 	public void setText(String text){
 		this.text = text;
+	}
+	
+	public int length(){
+		return text.length();
 	}
 	
 	public String toString(){
@@ -111,6 +121,40 @@ public class Snippet implements Serializable {
 	public void setOriginalText(String originalText) {
 		this.originalText = originalText;
 	}
+
+	public String getSuffix() {
+		return suffix;
+	}
+
+	public void setSuffix(String suffix) {
+		this.suffix = suffix;
+	}
+
+	public boolean isExtendable() {
+		return extendable;
+	}
+
+	public void setExtendable(boolean extendable) {
+		this.extendable = extendable;
+	}
+
+	public boolean isShowsEnd() {
+		return showsEnd;
+	}
+
+	public void setShowsEnd(boolean showsEnd) {
+		this.showsEnd = showsEnd;
+	}
+
+	public boolean isShowsAll() {
+		return showsAll;
+	}
+
+	public void setShowsAll(boolean showsAll) {
+		this.showsAll = showsAll;
+	}
+	
+	
 	
 	
 	

@@ -7,6 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Token;
 import org.apache.lucene.analysis.TokenStream;
 import org.wikimedia.lsearch.util.Buffer;
@@ -18,9 +19,10 @@ import org.wikimedia.lsearch.util.UnicodeDecomposer;
  * @author rainman
  *
  */
-public class ExtToken extends Token implements Serializable {	
+public class ExtToken extends Token implements Serializable {
+	static Logger log = Logger.getLogger(ExtToken.class);
 	/** position within the text */
-	public enum Position { NORMAL, FIRST_SECTION, TEMPLATE, IMAGE_CAT_IW, EXT_LINK, HEADING, REFERENCE };
+	public enum Position { NORMAL, FIRST_SECTION, TEMPLATE, IMAGE_CAT_IW, EXT_LINK, HEADING, REFERENCE, BULLETINS };
 	/** type of token */
 	public enum Type { TEXT, GLUE, SENTENCE_BREAK, MINOR_BREAK, URL };
 	protected Position pos = Position.NORMAL;
@@ -274,7 +276,7 @@ public class ExtToken extends Token implements Serializable {
 		
 		int cur = 1; // current position in serialized
 		try {
-			//System.out.println(new String(serialized,0,serialized.length,"utf-8"));
+			//System.out.println("SERIALIZED: "+new String(serialized,0,serialized.length,"utf-8"));
 			for(;cur < serialized.length;){
 				int controlInx = findControl(serialized,cur);
 				if(controlInx != cur){
@@ -290,32 +292,34 @@ public class ExtToken extends Token implements Serializable {
 				int control = serialized[cur++];
 				switch(control){
 				case 1: // original
-					{ int len = serialized[cur++];
+					{ int len = serialized[cur++]&0xff;
 					t.setOriginal(new String(serialized,cur,len,"utf-8"));
 					if(t.type != Type.TEXT || t.getPositionIncrement()==0)
-						throw new RuntimeException("Bad serialized data: trying to assign original string to nontext token or alias");
+						raiseException(serialized,cur,t,"Bad serialized data: trying to assign original string to nontext token or alias");
 					cur += len;
 					break; }
 				case 2: // alias
-					{ int len = serialized[cur++];
+					{ int len = serialized[cur++]&0xff;
 					ExtToken tt = new ExtToken(new String(serialized,cur,len,"utf-8"),t.startOffset(),t.endOffset(),t.type,t.pos);
 					tt.setPositionIncrement(0);
 					tokens.add(tt);
-					if(t.type != Type.TEXT)
-						throw new RuntimeException("Bad serialized data: trying to assign alias to nontext token");
+					if(t.type != Type.TEXT)						
+						raiseException(serialized,cur,t,"Bad serialized data: trying to assign alias to nontext token");						
 					cur += len;
 					break; }
 				case 3: // change pos
-					pos = posMap.get((int)serialized[cur++]);
+					pos = posMap.get((int)(serialized[cur++]&0xff));
 					t.setPosition(pos);
 					break;
 				case 4: // sentence break
 					if(t.type == Type.TEXT)
-						throw new RuntimeException("Bad serialized data: trying to assing a sentence break to text");
+						raiseException(serialized,cur,t,"Bad serialized data: trying to assing a sentence break to text");
 					t.setType(Type.SENTENCE_BREAK);
 					break;
 				case 5: // url
-					{ int len = serialized[cur++];
+					{ int len = serialized[cur++]&0xff;
+					/* int controlEnd = findControl(serialized,cur);
+					int len = controlEnd - cur; */
 					ExtToken tt = new ExtToken(new String(serialized,cur,len,"utf-8"),cur,cur+len,Type.URL,Position.EXT_LINK);
 					tokens.add(tt);
 					cur += len;
@@ -337,6 +341,17 @@ public class ExtToken extends Token implements Serializable {
 
 		
 		return tokens;
+	}
+
+	private static void raiseException(byte[] serialized, int cur, ExtToken t, String string) {
+		try {
+			int len = Math.min(40,serialized.length-cur+10);
+			log.error(string+", token="+t+", around: "+new String(serialized,cur-10,len,"utf-8"));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		};
+		throw new RuntimeException(string);
+		
 	}
 	
 

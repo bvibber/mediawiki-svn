@@ -95,6 +95,7 @@ public class CachedSearchable implements SearchableMul {
 
 	public int docFreq(Term term) throws IOException {
 		log.debug("called docFreq("+term+")");
+		log.warn("Should never call docFreq(Term), but docFreqs(Term[])");
 		Thread.dumpStack();
 		try{
 			return searchable.docFreq(term);

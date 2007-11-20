@@ -98,7 +98,8 @@ public class AnalysisTest {
 		HashSet<String> stopWords = new HashSet<String>();
 		stopWords.add("the"); stopWords.add("of"); stopWords.add("is"); stopWords.add("in"); stopWords.add("and"); stopWords.add("he") ;
 		//Analyzer analyzer = Analyzers.getSpellCheckAnalyzer(IndexId.get("enwiki"),stopWords);
-		Analyzer analyzer = Analyzers.getSearcherAnalyzer(IndexId.get("enwiki"));
+		//Analyzer analyzer = Analyzers.getSearcherAnalyzer(IndexId.get("enwiki"));
+		Analyzer analyzer = Analyzers.getHighlightAnalyzer(IndexId.get("enwiki"));
 		Analyzer old = new EnglishAnalyzer();
 		String text = "a-b compatibly compatible Gödel; The who is a band. The who is Pascal's earliest work was in the natural and applied sciences where he made important contributions to the construction of mechanical calculators, the study of fluids, and clarified the concepts of pressure and vacuum by generalizing the work of Evangelista Torricelli. Pascal also wrote powerfully in defense of the scientific method.";
 		displayTokens(analyzer,text);
