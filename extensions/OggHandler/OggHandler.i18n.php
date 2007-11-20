@@ -137,7 +137,9 @@ $messages = array(
 		'ogg-stop'                => 'Stop',
 		'ogg-play-video'          => 'Video abspielen',
 		'ogg-play-sound'          => 'Audio abspielen',
-		'ogg-no-player'           => 'Dein System scheint über keine Abspielsoftware zu verfügen. Bitte installiere <a href="http://www.java.com/de/download/manual.jsp">Java</a>',
+		'ogg-no-player'           => 'Dein System scheint über keine Abspielsoftware zu verfügen. Bitte installiere <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware</a>.',
+		'ogg-no-xiphqt'           => 'Dein System scheint nicht über die XiphQT-Komponente für QuickTime zu verfügen. QuickTime kann ohne diese Komponente keine Ogg-Dateien abspielen.' .
+			'Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">lade XiphQT</a> oder währe eine andere Abspielsoftware.',
 		'ogg-player-videoElement' => '<video>-Element',
 		'ogg-player-oggPlugin'    => 'Ogg-Plugin',
 		'ogg-player-thumbnail'    => 'Zeige Vorschaubild',
