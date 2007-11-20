@@ -75,6 +75,12 @@ $wgNewuserlogMessages['es'] = array(
 	'newuserlog-create-entry'  => 'Usuario nuevo',
 	'newuserlog-create2-entry' => 'creó una cuenta para $1',
 );
+$wgNewuserlogMessages['eu'] = array(
+	'newuserlogpage'           => 'Erabiltzaile erregistroa',
+	'newuserlogpagetext'       => 'Hau azken erabiltzaileen sorreren erregistroa da',
+	'newuserlog-create-entry'  => 'Lankide berria',
+	'newuserlog-create2-entry' => '$1(r)entzako kontua sortu da',
+);
 $wgNewuserlogMessages['fi'] = array(
 	'newuserlogpage'           => 'Uudet käyttäjät',
 	'newuserlogpagetext'       => 'Tämä on loki luoduista käyttäjätunnuksista.',

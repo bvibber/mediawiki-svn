@@ -48,6 +48,9 @@ $wgCrossNamespaceLinksMessages['fi'] = array(
 	'crossnamespacelinks-summary' => 'Alla on lista linkeistä, jotka osoittavat päänimiavaruudesta toiseen nimiavaruuteen — pois lukien linkit {{ns:special}}-, {{ns:talk}}-, {{ns:project}}- ja {{ns:template}}nimiavaruuksiin. Linkkejä muihin nimiavaruuksiin tulisi välttää.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|linkki|linkkiä}} nimiavaruuteen $3'
 );
+$wgCrossNamespaceLinksMessages['fo'] = array(
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|slóð|slóðir}} til $3',
+);
 $wgCrossNamespaceLinksMessages['fr'] = array(
 	'crossnamespacelinks'         => 'Pages contenant des liens vers un autre espace de nom',
 	'crossnamespacelinks-summary' => 'Cette page fournit une liste des pages de l’espace de nom principal qui ont un lien vers un autre espace de nom (excepté pour les espaces de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} et {{ns:template}}), ce qui n’est recommandé.',
@@ -101,6 +104,9 @@ $wgCrossNamespaceLinksMessages['ja'] = array(
 	'crossnamespacelinks'         => '名前空間をまたぐリンク',
 	'crossnamespacelinks-summary' => '通常名前空間から他の名前空間（ {{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} を除く）のページへとリンクしているページの一覧です。',
 	'crossnamespacelinkstext'     => '$1: $2 個 の $3 へのリンク',
+);
+$wgCrossNamespaceLinksMessages['kaa'] = array(
+	'crossnamespacelinks'         => 'Basqa isimler ko\'pligine silteytug\'ın betler',
 );
 $wgCrossNamespaceLinksMessages['kk-kz'] = array(
 	'crossnamespacelinks'         => 'Басқа есім аясына сілтейтін беттер',

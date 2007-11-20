@@ -337,7 +337,8 @@ function efDuplicatorMessages() {
 'nl' => array(
 	'duplicator' => 'Kopieer een pagina',
 	'duplicator-toolbox' => 'Kopieer deze pagina',
-	'duplicator-header' => 'Deze pagina maakt het mogelijk een pagina volledig te kopiëren, waardoor er onafhankelijke kopieën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzovoort.',
+	'duplicator-header' => 'Deze pagina maakt het mogelijk een pagina volledig te kopiëren, waardoor er onafhankelijke
+kopieën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzovoort.',
 	'duplicator-options' => 'Opties',
 	'duplicator-source' => 'Bron:',
 	'duplicator-dest' => 'Doel:',

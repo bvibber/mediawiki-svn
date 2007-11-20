@@ -238,7 +238,9 @@ $wgSiteMatrixMessages['sr-el'] = array(
 	"sitematrix" => "Tabela svih vikija",
 );
 $wgSiteMatrixMessages['sr'] = $wgSiteMatrixMessages['sr-ec'];
-
+$wgSiteMatrixMessages['ss'] = array(
+	'sitematrix-language' => 'Lúlwîmi',
+);
 $wgSiteMatrixMessages['su'] = array(
 	'sitematrix' => 'Béréndélan wiki Wikimédia',
 	'sitematrix-language' => 'Basa',

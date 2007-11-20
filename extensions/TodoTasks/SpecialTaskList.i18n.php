@@ -31,6 +31,7 @@ $allMessages = array(
 		'tasklistchooseproj'      => 'اختر المشروع:',
 		'tasklistprojdisp'        => 'عرض',
 		'tasklistbyname'          => '== قائمة العمل ل%s ==',
+		'tasklistnoprojects'      => 'خطأ: يبدو أنك فعلت \'\'\'$wgUseProjects\'\'\'، لكن لم تنشيء [[MediaWiki:TodoTasksValidProjects]]. انظر [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 تعليمات التنصيب] لمزيد من التفاصيل.',
 	),
 
 	'de' => array(
@@ -81,6 +82,7 @@ $allMessages = array(
 		'tasklistchooseproj'      => 'Wubjer projekt:',
 		'tasklistprojdisp'        => 'Pokazać',
 		'tasklistbyname'          => '== Nadawkowa lisćina za %s ==',
+		'tasklistnoprojects'      => 'ZMYLK: Zda so, zo sy \'\'\'$wgUseProjects\'\'\' aktiwizował, ale njejsy [[MediaWiki:TodoTasksValidProjects]] wutworił. Hlej [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] za dalše podrobnosće.',
 	),
 
 	'nl' => array(
@@ -97,6 +99,7 @@ $allMessages = array(
 		'tasklistchooseproj'      => 'Project selecteren:',
 		'tasklistprojdisp'        => 'Tonen',
 		'tasklistbyname'          => '== Takenlijst voor %s ==',
+		'tasklistnoprojects'      => 'FOUT: het lijkt alsof u \'\'\'$wgUseProjects\'\'\' hebt ingeschakeld, maar [[MediaWiki:TodoTasksValidProjects]] niet heeft aangemaakt. Zie de  [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 installatie-instructies] voor meer details.',
 	),
 
 	'pl' => array(

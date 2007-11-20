@@ -257,5 +257,9 @@ Për piasì, ch\'a varda d\'avej controlà sò test coma ch\'as dev anans che ma
 		'createsigndoc-error-pagenoexist' => 'Eror: a-i é pa gnun-a pàgina ch\'as ciama [[$1]].',
 		'createsigndoc-success' => 'La procedura për buté an firma [[$1]] a l\'é andaita a bonfin. Për provela, për piasì ch\'a varda [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} ambelessì].',
 	),
+	'ss' => array(
+		'createsigndoc-phone' => 'Inombolo yelucingo:',
+		'createsigndoc-create' => 'Kúdála',
+	),
 );
 ?>

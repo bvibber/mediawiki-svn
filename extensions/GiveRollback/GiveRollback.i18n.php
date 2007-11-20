@@ -409,6 +409,10 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logentryrevoke' => 'oduzeo prava vraćanja korisniku [[$1]]',
 ),
 
+'ss' => array(
+	'giverollback-search' => 'Kúhámba',
+),
+
 /* Cantonese (Shinjiman) */
 'yue' => array(
 	'giverollback' => '畀或收番一撳還原權限',

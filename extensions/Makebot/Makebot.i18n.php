@@ -781,6 +781,10 @@ function efMakeBotMessages() {
 	'makebot-logentryrevoke'  => 'uklonio status bota: [[$1]]',
 ),
 
+'ss' => array(
+	'makebot-search'          => 'Kúhámba',
+),
+
 /* Sundanese (Kandar via BetaWiki) */
 'su' => array(
 	'makebot'                 => 'Leler atawa cabut status bot',

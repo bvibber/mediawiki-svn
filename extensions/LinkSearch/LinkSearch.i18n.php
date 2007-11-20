@@ -260,6 +260,9 @@ $wgLinkSearchMessages['sr'] = array(
 	'linksearch-line'  => '$1 повезана са $2',
 	'linksearch-error' => 'Џокери могу да се појављују само на почетку домена.'
 );
+$wgLinkSearchMessages['ss'] = array(
+	'linksearch-ok'    => 'Kucálata',
+);
 $wgLinkSearchMessages['sv'] = array(
 	'linksearch'       => 'Sök webblänkar',
 	'linksearch-pat'   => 'Sökmönster:',

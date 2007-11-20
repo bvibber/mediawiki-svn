@@ -357,6 +357,14 @@ $1
 ',
 );
 
+$wgLuceneSearchMessages['kaa'] = array(
+	'lucenepowersearchtext' => 'Mına isimler ko\'pliginde izlew:
+
+$1
+
+İzlew sorawı: $3 $9 $10',
+);
+
 $wgLuceneSearchMessages['kk-kz'] = array(
 	'searchnumber'          => "<strong>$3 ішіндегі $1—$2 нәтиже</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Алдыңғыға</span>",

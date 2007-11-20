@@ -139,6 +139,10 @@ function efInputBoxMessages() {
 	'createarticle'  => 'Luuq leht',
 ),
 
+'fo' => array(
+	'createarticle'           => 'Stovna grein',
+),
+
 'fr' => array(
 	'inputbox-error-no-type'  => 'Vous n’avez pas précisé le type de la boîte d’entrée à créer.',
 	'inputbox-error-bad-type' => 'Type de boîte entrée $1 non reconnue. Indiquez l\'option \'\'create\'\', \'\'comment\'\', \'\'search\'\' ou \'\'searche2\'\'.',
@@ -428,6 +432,10 @@ function efInputBoxMessages() {
 	'tryexact'       => 'Pokušaj tačno',
 	'searchfulltext' => 'Pretraži ceo tekst',
 	'createarticle'  => 'Napravi članak',
+),
+
+'ss' => array(
+	'createarticle'           => 'Kúdála intfo',
 ),
 
 'su' => array(
