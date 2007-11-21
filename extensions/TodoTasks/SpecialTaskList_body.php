@@ -277,7 +277,7 @@ function todoSavePreparser(&$q) {
 }
 
 
-require ("$IP/includes/SpecialPage.php");
+require_once("$IP/includes/SpecialPage.php");
 
 class TaskList extends SpecialPage
 {
