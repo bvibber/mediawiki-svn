@@ -37,8 +37,9 @@ $wgHooks['userCan'][] = 'EditOwn';
 function EditOwn($title, $user, $action, &$result)
 {
 		static $cache = array();
+		global $wgEditOwnExcludedNamespaces;
 		
-		if($action != 'edit' || $user->isAllowed('editall'))
+		if($action != 'edit' || $user->isAllowed('editall') || in_array($title->getNamespace(), $wgEditOwnExcludedNamespaces))
 		{
 				$result = null;
 				return true;
