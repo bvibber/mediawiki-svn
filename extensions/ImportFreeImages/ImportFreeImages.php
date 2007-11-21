@@ -33,9 +33,6 @@ $wgIFI_ThumbType = "t"; // s for square t for thumbnail
 
 require_once("SpecialPage.php");
 
-
-
-
 $wgExtensionCredits['other'][] = array(
     'name' => 'ImportFreeImages',
     'author' => 'Travis Derouin',
@@ -43,30 +40,15 @@ $wgExtensionCredits['other'][] = array(
     'url' => 'http://www.mediawiki.org/wiki/Extension:ImportFreeImages',
 );
 
-
 function wfImportFreeImages() {
 
-
-	SpecialPage::AddPage(new SpecialPage('ImportFreeImages'));
-
-    global $wgMessageCache;
-     $wgMessageCache->addMessages(     array(
-			'importfreeimages' => 'Import Free Images',
-			'importfreeimages_description' => 'This page allows you to search properly licensed photos from flickr and import them into your wiki.',	
-			'importfreeimages_noapikey' => 'You have not configured your Flickr API Key. To do so, please obtain a API key from  [http://www.flickr.com/services/api/misc.api_keys.html here] and set wgFlickrAPIKey in ImportFreeImages.php.',
-			'importfreeimages_nophotosfound' => 'No photos were found for your search criteria \'$1\', please try again.',
-			'importfreeimages_owner' => 'Author',
-			'importfreeimages_importthis' => 'import this',
-			'importfreeimages_next' => 'Next $1',
-			'importfreeimages_filefromflickr' => '$1 by user <b>[$2]</b> from flickr. Original URL',
-			'importfreeimages_promptuserforfilename' => 'Please enter a destination filename:',
-			'importfreeimages_returntoform' => 'Or, click <a href=\'$1\'>here</a> to return to return to your search results',
-        )
-    );
-
-
+	SpecialPage::AddPage( new SpecialPage( 'ImportFreeImages' ) );
+	require_once( dirname( __FILE__ ) . '/ImportFreeImages.i18n.php' );
+	global $wgMessageCache;
+	foreach( efImportFreeImagesMessages() as $lang => $messages ) {
+		$wgMessageCache->addMessages( $messages, $lang );
+	}
 }
-
 
 // I wish I didn't have to copy paste most of 
 
@@ -325,5 +307,3 @@ function wfSpecialImportFreeImages( $par )
                 //print_r($photo);
 	}
 }
-
-
