@@ -14,7 +14,7 @@ function efImportFreeImagesMessages() {
 			'importfreeimages_next'           => 'Next $1',
 			'importfreeimages_filefromflickr' => '$1 by user <b>[$2]</b> from flickr. Original URL',
 			'importfreeimages_promptuserforfilename' => 'Please enter a destination filename:',
-			'importfreeimages_returntoform'   => 'Or, click <a href=\'$1\'>here</a> to return to return to your search results',
+			'importfreeimages_returntoform'   => 'Or, click <a href=\'$1\'>here</a> to return to your search results',
 		),
 
 		'de' => array(
