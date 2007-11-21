@@ -39,13 +39,13 @@ class PasswordReset extends SpecialPage
  
                     if ( !is_object( $objUser ) || $userID == 0 ) {
                       $validUser = false;
-                      $wgOut->addHTML( "<span style=\"color: red;\">" . wfMsgForContent('passwordreset-invalidusername') . "</span><br>\n" );
+                      $wgOut->addHTML( "<span style=\"color: red;\">" . wfMsg('passwordreset-invalidusername') . "</span><br>\n" );
                     } else {
                       $validUser = true;
                     }
                   } else {
                     $validUser = false;
-                    $wgOut->addHTML( "<span style=\"color: red;\">" . wfMsgForContent('passwordreset-emptyusername') . "</span><br>\n" );
+                    $wgOut->addHTML( "<span style=\"color: red;\">" . wfMsg('passwordreset-emptyusername') . "</span><br>\n" );
                   }
  
                   $newpass = $wgRequest->getText( 'newpass' );
@@ -57,13 +57,13 @@ class PasswordReset extends SpecialPage
                   } else {
                     //Passwords DO NOT match
                     $passMatch = false;
-                    $wgOut->addHTML( "<span style=\"color: red;\">" . wfMsgForContent('passwordreset-nopassmatch') . "</span><br>\n" );
+                    $wgOut->addHTML( "<span style=\"color: red;\">" . wfMsg('passwordreset-nopassmatch') . "</span><br>\n" );
                   }
  
                   if (!$wgUser->matchEditToken( $wgRequest->getVal( 'token' ) ) ) {
                     $validUser = false;
                     $passMatch = false;
-                    $wgOut->addHTML( "<span style=\"color: red;\">" . wfMsgForContent('passwordreset-badtoken') . "</span><br>\n" );
+                    $wgOut->addHTML( "<span style=\"color: red;\">" . wfMsg('passwordreset-badtoken') . "</span><br>\n" );
  
                   }
                 }
@@ -75,20 +75,20 @@ class PasswordReset extends SpecialPage
 <form id='passwordresetform' method='post' action=\"$action\">
 <table>
         <tr>
-                <td align='right'>" . wfMsgForContent('passwordreset-username') . "</td>
+                <td align='right'>" . wfMsg('passwordreset-username') . "</td>
                 <td align='left'><input tabindex='1' type='text' size='20' name='username' id='username' value=\"$username_text\" onFocus=\"document.getElementById('username').select;\" /></td>
         </tr>
         <tr>
-                <td align='right'>" . wfMsgForContent('passwordreset-newpass') . "</td>
+                <td align='right'>" . wfMsg('passwordreset-newpass') . "</td>
                 <td align='left'><input tabindex='2' type='password' size='20' name='newpass' id='newpass' value=\"$newpass\" onFocus=\"document.getElementById('newpass').select;\" /></td>
         </tr>
         <tr>
-                <td align='right'>" . wfMsgForContent('passwordreset-confirmpass') . "</td>
+                <td align='right'>" . wfMsg('passwordreset-confirmpass') . "</td>
                 <td align='left'><input tabindex='3' type='password' size='20' name='confirmpass' id='confirmpass' value=\"$confirmpass\" onFocus=\"document.getElementById('confirmpass').select;\" /></td>
         </tr>
         <tr>
                 <td>&nbsp;</td>
-                <td align='right'><input type='submit' name='submit' value=\"" . wfMsgForContent('passwordreset-submit') . "\" /></td>
+                <td align='right'><input type='submit' name='submit' value=\"" . wfMsg('passwordreset-submit') . "\" /></td>
         </tr>
 </table>
 <input type='hidden' name='token' value='$token' />
@@ -113,7 +113,7 @@ class PasswordReset extends SpecialPage
 						'user_id' => $userID
 					)
 				);
-				return wfMsgForContent('passwordreset-success', $userID);
+				return wfMsg('passwordreset-success', $userID);
         }
  
         function loadMessages() {
