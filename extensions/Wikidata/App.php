@@ -14,6 +14,10 @@ $wgExtensionFunctions[]='initializeWikidata';
 $wgCustomHandlerPath = array('*'=>"{$IP}/extensions/Wikidata/OmegaWiki/");
 $wgDefaultClassMids = array(402295);
 
+# Register the classes needed for the wikidata api with the autoloader.
+$wgAutoloadClasses['ApiWikiData'] = "extensions/Wikidata/includes/api/ApiWikiData.php"; 
+$wgAutoloadClasses['ApiWikiDataFormatBase'] = "extensions/Wikidata/includes/api/ApiWikiDataFormatBase.php"; 
+$wgAutoloadClasses['ApiWikiDataFormatXml'] = "extensions/Wikidata/includes/api/ApiWikiDataFormatXml.php"; 
 
 
 # The term dataset prefix identifies the Wikidata instance that will
