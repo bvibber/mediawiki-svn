@@ -45,14 +45,14 @@ function efInputBoxRender( $input, $params, $parser ) {
 }
 
 class Inputbox {
-	var $type,$width,$preload,$editintro, $br;
+	var $type, $width, $preload, $editintro, $br, $comment;
 	var $defaulttext,$bgcolor,$buttonlabel,$searchbuttonlabel;
 	var $hidden, $namespaces;
-	
+
 	function InputBox( &$parser ) {
 		$this->parser =& $parser;
 	}
-	
+
 	function render() {
 		switch( $this->type ) {
 			case 'create':
@@ -69,7 +69,7 @@ class Inputbox {
 				return "<div><strong class=\"error\">{$message}</strong></div>";
 		}
 	}
-	
+
 	function getSearchForm() {
 		global $wgContLang;
 		$search = SpecialPage::getTitleFor( 'Search' )->escapeLocalUrl();
@@ -85,7 +85,7 @@ class Inputbox {
 		$searchbuttonlabel = htmlspecialchars( $this->searchbuttonlabel );
 		$defaulttext = htmlspecialchars( $this->defaulttext );
 		$bgcolor = htmlspecialchars( $this->bgcolor );
- 
+
 		$type = $this->hidden ? 'hidden' : 'text';
 		$searchform=<<<ENDFORM
 		<table border="0" width="100%" cellspacing="0" cellpadding="0">
@@ -155,11 +155,11 @@ ENDFORM2;
 		$this->labeltext = $output->getText();
 		$this->labeltext = str_replace('<p>', '', $this->labeltext);
 		$this->labeltext = str_replace('</p>', '', $this->labeltext);
-		
+
 		$buttonlabel = htmlspecialchars( $this->buttonlabel );
 		$searchbuttonlabel = htmlspecialchars( $this->searchbuttonlabel );
 		$id = Sanitizer::escapeId( $this->id );
-		
+
 		$type = $this->hidden ? 'hidden' : 'text';
 		$searchform=<<<ENDFORM
 <form action="$search" class="bodySearch" id="bodySearch{$id}"><div class="bodySearchWrap"><label for="bodySearchIput{$id}">{$this->labeltext}</label><input type="{$type}" name="search" size="{$this->width}" class="bodySearchIput" id="bodySearchIput{$id}" /><input type="submit" name="go" value="{$buttonlabel}" class="bodySearchBtnGo" />
@@ -173,10 +173,10 @@ ENDFORM;
 		return $searchform;
 	}
 
-	
+
 	function getCreateForm() {
 		global $wgScript;	
-		
+
 		$action = htmlspecialchars( $wgScript );		
 		if($this->type=="comment") {
 			$comment='<input type="hidden" name="section" value="new" />';
@@ -189,14 +189,14 @@ ENDFORM;
 				$this->buttonlabel = wfMsgHtml( "createarticle" );
 			}
 		}
-		
+
 		$bgcolor = htmlspecialchars( $this->bgcolor );
 		$preload = htmlspecialchars( $this->preload );
 		$editintro = htmlspecialchars( $this->editintro );
 		$comment = htmlspecialchars( $this->comment );
 		$defaulttext = htmlspecialchars( $this->defaulttext );
 		$buttonlabel = htmlspecialchars( $this->buttonlabel );
-		
+
 		$type = $this->hidden ? 'hidden' : 'text';
 		$createform=<<<ENDFORM
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
@@ -233,7 +233,7 @@ ENDFORM;
 		if( $this->width <= 0 )
 			$this->width = 50;
 	}
-	
+
 	/**
 	 * Extract options from a blob of text
 	 *
@@ -241,7 +241,7 @@ ENDFORM;
 	 */
 	public function extractOptions( $text ) {
 		wfProfileIn( __METHOD__ );
-	
+
 		// Parse all possible options
 		$values = array();
 		foreach( explode( "\n", $text ) as $line ) {
@@ -271,12 +271,12 @@ ENDFORM;
 			if( isset( $values[$name] ) )
 				$this->$var = $values[$name];
 		}
-		
+
 		// Some special-case fix-ups
 		$this->lineBreak();
 		$this->checkWidth();
-		
-		wfProfileOut( __METHOD__ );	
+
+		wfProfileOut( __METHOD__ );
 	}
-	
+
 }
