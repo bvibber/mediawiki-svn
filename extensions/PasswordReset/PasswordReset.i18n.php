@@ -1,4 +1,5 @@
 <?php
+#coding: utf-8
 /** \file
 * \brief Internationalization file for the Password Reset Extension.
 */
