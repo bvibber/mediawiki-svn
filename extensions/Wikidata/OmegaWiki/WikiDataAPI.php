@@ -323,6 +323,31 @@ function removeRelationWithId($relationId) {
 				" AND remove_transaction_id IS NULL");
 }
 
+/**
+ * Return the defined meaning ids of all defined meanings related to the given defined meaning
+ * by a relation of type relationTypeId.
+ *
+ * @param unknown_type $relationTypeId dmid of the relationtype
+ * @param unknown_type $dmId dmid of the subject.
+ * @param unknown_type $dc the dataset, optional
+ */
+function getRelatedDefinedMeanings($relationTypeId, $dmId, $dc=null) {
+	$result = array();
+	
+	$dc=wdGetDataSetContext($dc);
+	$dbr =& wfGetDB(DB_MASTER);
+	$query = "SELECT meaning1_mid FROM {$dc}_meaning_relations " .
+			"WHERE meaning2_mid={$dmId} AND relationtype_mid={$relationTypeId}";
+	//echo $query;
+	$queryResult = $dbr->query($query);
+	
+	while ($row = $dbr->fetchRow($queryResult)) {
+		$result[] = $row['meaning1_mid'];
+	}
+	
+	return $result;
+}
+
 function addClassAttribute($classMeaningId, $levelMeaningId, $attributeMeaningId, $attributeType) {
 	if (!classAttributeExists($classMeaningId, $levelMeaningId, $attributeMeaningId, $attributeType)) 
 		createClassAttribute($classMeaningId, $levelMeaningId, $attributeMeaningId, $attributeType);		
@@ -1089,7 +1114,29 @@ function getCollectionContents($collectionId) {
 		$collectionContents[$collectionEntry->internal_member_id] = $collectionEntry->member_mid;
 	
 	return $collectionContents;
-} 
+}
+
+/**
+ * Returns an array containing the ids of the defined meanings belonging to the collection
+ * with the given id. 
+ *
+ * @param unknown_type $collectionId
+ * @param unknown_type $dc
+ */
+function getCollectionMembers($collectionId, $dc=null) {
+	$memberMids = array();
+	$dc=wdGetDataSetContext();
+	$dbr = & wfGetDB(DB_SLAVE);
+	$query = "SELECT member_mid FROM {$dc}_collection_contents WHERE collection_id=$collectionId " .
+			"AND ".getLatestTransactionRestriction("{$dc}_collection_contents");
+	$result = $dbr->query($query);
+	
+	while ($row = $dbr->fetchRow($result)) {
+		$memberMids[] = $row['member_mid'];
+	}
+	
+	return $memberMids;
+}
 
 function getCollectionMemberId($collectionId, $sourceIdentifier) {
     $dc=wdGetDataSetContext();
