@@ -28,9 +28,9 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Ævar Arnfjörð Bjarmason'
 );
 
-if ( !function_exists( 'extAddSpecialPage' ) ) {
-	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
-}
-extAddSpecialPage( dirname(__FILE__) . '/AdvancedRandom_body.php', 'AdvancedRandom', 'SpecialAdvancedRandom' );
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['AdvancedRandom'] = $dir . 'SpecialAdvancedRandom.i18n.php';
 
+$wgAutoloadClasses['SpecialAdvancedRandom'] = $dir . 'AdvancedRandom_body.php';
 
+$wgSpecialPages['AdvancedRandom'] = 'SpecialAdvancedRandom';

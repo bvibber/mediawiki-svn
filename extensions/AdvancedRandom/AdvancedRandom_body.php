@@ -3,10 +3,6 @@
 if ( ! defined( 'MEDIAWIKI' ) )
 	die();
 
-global $wgMessageCache;
-$wgMessageCache->addMessage( 'advancedrandom', 'Advanced random' );
-
-
 class SpecialAdvancedRandom extends SpecialPage {
 	/**
 	 * Constructor
@@ -16,10 +12,18 @@ class SpecialAdvancedRandom extends SpecialPage {
 	}
 
 	/**
+	 * @see SpecialPage::getDescription
+	 */
+	function getDescription() {
+		return wfMsg( 'advancedrandom' );
+	}
+
+	/**
 	 * main()
 	 */
-	public function execute( $par = null ) {
+	public function execute( $params ) {
 		global $wgOut;
+		wfLoadExtensionMessages( 'AdvancedRandom' );
 
 		$fname = 'SpecialAdvancedRandom::execute';
 
@@ -33,7 +37,7 @@ class SpecialAdvancedRandom extends SpecialPage {
 			wfProfileOut( $fname );
 			return;
 		}
-		
+
 		$rand = wfRandom();
 		$dbr =& wfGetDB( DB_SLAVE );
 		$res = $dbr->selectRow(
@@ -72,7 +76,7 @@ class SpecialAdvancedRandom extends SpecialPage {
 
 		$wgOut->redirect( $title->getFullUrl() );
 	}
-	
+
 	/**
 	 * Parse the page and namespace parts of the input and return them
 	 *
@@ -98,6 +102,3 @@ class SpecialAdvancedRandom extends SpecialPage {
 		return array( $page, $namespace );
 	}
 }
-
-
-
