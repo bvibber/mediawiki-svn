@@ -8,8 +8,8 @@ Add
 to your LocalSettings.php. It should be (one of) the first extension(s) to include, as it adds to the toolbox in the sidebar.
 Otherextensions might add a new box there, putting the "Watchers" link in the wrong box.
 
-After inclusion in LocalSettings.php, you can set $wgWatchersLimit 
-to a number to anonymize results ("X or more" / "Less that X" people watching this page)
+After inclusion in LocalSettings.php, you can set $wgWatchersLimit
+to a number to anonymize results ("X or more" / "Fewer than X" people watching this page)
 */
 
 
@@ -19,9 +19,12 @@ if( !defined( 'MEDIAWIKI' ) ) die();
 
 $wgExtensionCredits['Watchers'][] = array(
         'name' => 'Watchers',
-        'description' => 'An extension show who is watching a page.',
+        'description' => 'An extension to show who is watching a page.',
         'author' => 'Magnus Manske'
 );
+
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['Watchers'] = $dir . 'Watchers.i18n.php';
 
 $wgExtensionFunctions[] = 'wfWatchersExtension';
 
@@ -43,17 +46,9 @@ function wfWatchersAddCache() { # Checked for HTML and MySQL insertion attacks
 	if( $wgWatchersAddCache ) {
 		return;
 	}
+	wfLoadExtensionMessages( 'Watchers' );
 	$wgWatchersAddCache = true;
-
-	// Default language is english
-	require_once('language/en.php');
-
-	global $wgLang;
-	$filename = 'language/' . addslashes($wgLang->getCode()) . '.php' ;
-	// inclusion might fail :p
-	include( $filename );
 }
-
 
 /**
  * Display link in toolbox
@@ -68,9 +63,9 @@ function wfWatchersExtensionAfterToolbox( &$tpl ) { # Checked for HTML and MySQL
 		# No special pages please
 		return true;
 	}
-	
+
 	wfWatchersAddCache();
-	
+
 
 	echo '<li id="t-watchers"><a href="' ;
 	$nt = Title::newFromText ( 'watchers' , NS_SPECIAL ) ;
@@ -78,7 +73,7 @@ function wfWatchersExtensionAfterToolbox( &$tpl ) { # Checked for HTML and MySQL
 	echo '">' ;
 	echo wfMsg('watchers_link_title');
 	echo "</a></li>\n" ;
-	
+
 	return true;
 }
 
@@ -88,9 +83,6 @@ function wfWatchersExtensionAfterToolbox( &$tpl ) { # Checked for HTML and MySQL
 function wfWatchersExtension() {
 	global $IP, $wgMessageCache;
 	wfWatchersAddCache();
-
-	// FIXME : i18n
-	$wgMessageCache->addMessage( 'watchers', 'Watchers' );
 
 	require_once $IP.'/includes/SpecialPage.php';
 
@@ -105,17 +97,24 @@ function wfWatchersExtension() {
 		}
 
 		/**
+		 * @see SpecialPage::getDescription
+		 */
+		function getDescription() {
+			return wfMsg( 'watchers' );
+		}
+
+		/**
 		 * Renders the special page
 		*/
 		function execute( $par = null ) {
 			global $wgOut , $wgRequest , $wgUser , $wgWatchersLimit ;
-			
+
 			$out = "" ;
 			$fname = "wfWatchersExtension::execute" ;
 			$sk =& $wgUser->getSkin() ;
 			$id = $wgRequest->getInt ( 'article' , 0 ) ;
 			$title = Title::newFromID ( $id ) ;
-			
+
 			# Check for valid title
 			if ( $id == 0 || $title->getArticleID() <= 0 ) {
 				$out = wfMsg ( 'watchers_error_article' ) ;
@@ -123,10 +122,10 @@ function wfWatchersExtension() {
 				$wgOut->addHtml( $out );
 				return ;
 			}
-			
+
 			$link1 = $sk->makeLinkObj( $title );
 			$out .= "<h2>" . wfMsg ( 'watchers_header' , $link1 ) . "</h2>" ;
-			
+
 			$dbr =& wfGetDB( DB_SLAVE );
 			$conds = array (
 				'wl_namespace' => $title->getNamespace() ,
@@ -157,7 +156,7 @@ function wfWatchersExtension() {
 					$user_ids[] = $o->wl_user ;
 				}
 				$dbr->freeResult( $res );
-				
+
 				if ( count ( $user_ids ) == 0 ) {
 					$out .= "<p>" . wfMsg ( 'watchers_noone_watches' ) . "</p>" ;
 				} else {
@@ -172,7 +171,7 @@ function wfWatchersExtension() {
 					$out .= "</ol>" ;
 				}
 			}
-			
+
 			$this->setHeaders();
 			$wgOut->addHtml( $out );
 		}
@@ -182,6 +181,3 @@ function wfWatchersExtension() {
 
 	SpecialPage::addPage( new SpecialWatchers );
 }
-
-
-
