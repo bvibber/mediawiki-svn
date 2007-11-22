@@ -13,11 +13,21 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * @link http://www.mediawiki.org/wiki/Extension:Assert_Edit
  *
  * @author Steve Sanbeg
- * @copyright Copyright © 2006, Steve Sanbeg
+ * @copyright Copyright © 2006-2007, Steve Sanbeg
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-class AssertEdit 
+$wgExtensionCredits['other'][] = array(
+	'name' => 'AssertEdit',
+	'author' => 'Steve Sanbeg',
+	'description' => 'Adds edit assertions for use by bots',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Assert_Edit'
+);
+
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['AssertEdit'] = $dir . 'AssertEdit.i18n.php';
+
+class AssertEdit
 {
 	/**
 	 * methods for core assertions
@@ -91,7 +101,6 @@ class AssertEdit
 
 }
 
-
 function wfAssertEditHook( &$editpage ) {
 	global $wgOut, $wgRequest;
 
@@ -113,6 +122,8 @@ function wfAssertEditHook( &$editpage ) {
 	if ( $pass ) {
 		return true;
 	} else {
+		wfLoadExtensionMessages( 'AssertEdit' );
+
 		//slightly modified from showErrorPage(), to return back here.
 		$wgOut->setPageTitle( wfMsg( 'assert_edit_title' ) );
 		$wgOut->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
@@ -129,23 +140,4 @@ function wfAssertEditHook( &$editpage ) {
 	}
 }
 
-function wfAssertEditSetup()
-{
-	global $wgMessageCache;
-	$wgMessageCache->addMessages( 
-		array(
-			'assert_edit_title' => 'Assert failed',
-			'assert_edit_message' => 'The specified assertion ($1) failed.'
-		)
-	);
-}
-
 $wgHooks['AlternateEdit'][] = 'wfAssertEditHook';
-$wgExtensionFunctions[] = 'wfAssertEditSetup';
-
-$wgExtensionCredits['other'][] = array(
-	'name' => 'AssertEdit',
-	'author' => 'Steve Sanbeg',
-	'description' => 'adds edit assertions for use by bots',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Assert_Edit'
-);
