@@ -38,6 +38,9 @@ function EditOwn($title, $user, $action, &$result)
 {
 		static $cache = array();
 		global $wgEditOwnExcludedNamespaces;
+		if(!is_array($wgEditOwnExcludedNamespaces))
+				// Prevent PHP from whining
+				$wgEditOwnExcludedNamespaces = array();
 		
 		if($action != 'edit' || $user->isAllowed('editall') || in_array($title->getNamespace(), $wgEditOwnExcludedNamespaces))
 		{
