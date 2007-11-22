@@ -33,6 +33,7 @@ $wgExtensionCredits['other'][] = array(
 
 $wgHooks['userCan'][] = 'EditOwn';
 
+$wgEditOwnExcludedNamespaces = array();
 
 function EditOwn($title, $user, $action, &$result)
 {
