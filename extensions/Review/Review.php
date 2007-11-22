@@ -37,6 +37,8 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Review'
 );
 
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['Review'] = $dir . 'Review.i18n.php';
 $wgExtensionFunctions[] = 'wfReviewExtensionFunction';
 
 # Hooks
@@ -67,8 +69,9 @@ function wfReviewExtensionInitMessages () {
 		# Been there, done that
 		return;
 	}
+	wfLoadExtensionMessages( 'Review' );
 	$wgReviewExtensionInitMessages = true;
-#	$wgUserTogglesEn[] = "show_task_comments" ;
+
 
 	# Set the CSS
 	$wgOut->addLink(array(
@@ -79,13 +82,6 @@ function wfReviewExtensionInitMessages () {
 	));
 
 
-	// Default language is english
-	require_once('language/en.php');
-
-	global $wgLang;
-	$filename = 'language/' . addslashes($wgLang->getCode()) . '.php' ;
-	// inclusion might fail :p
-	include( $filename );
 
 	# Now parsing the topics
 	$s = explode ( "\n" , wfMsg ( 'review_topics' ) ) ;
