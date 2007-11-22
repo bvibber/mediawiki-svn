@@ -118,6 +118,7 @@ Alternativ kannst du auch die externen Suchmöglichkeiten nutzen:\n",
 
 );
 $wgLuceneSearchMessages['el'] = array(
+	'searchsize'            => '$1 KB ($2 λέξεις)',
 	'lucenefallback'        => 'Υπήρξε κάποιο πρόβλημα με την αναζήτηση στο wiki. Αυτό είναι μάλλον προσωρινό. Προσπαθήστε ξανά αργότερα ή πραγματοποιήστε την αναζήτησή σας στο wiki μέσω μιας εξωτερικής υπηρεσίας αναζήτησης:',
 );
 $wgLuceneSearchMessages['eo'] = array(
@@ -187,6 +188,10 @@ Hakulauseke $3 $9 $10',
 );
 $wgLuceneSearchMessages['fo'] = array(
 	'searchnumber'          => '<strong>Úrslit $1-$2 av $3</strong>',
+	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Undanfarnu</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>Næstu</span> &#x00BB;',
+	'searchscore'           => 'Viðkomandi: $1',
+	'searchsize'            => '$1 KB ($2 orð)',
 	'searchnoresults'       => 'Tíverri vóru ongar síður, ið luku tíni leitikrøv.',
 	'lucenepowersearchtext' => 'Leita í navnaøki: $1 Leita eftur $3 $9',
 );
