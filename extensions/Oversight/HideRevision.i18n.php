@@ -153,6 +153,10 @@ Poistetut kohteet eivät näy kenellekään web-sivuston kautta, mutta kaikki po
 	'oversight-log-hiderev' => 'poisti muokkauksen sivulta $1',
 ),
 
+'fo' => array(
+	'oversight' => 'Yvirlit',
+),
+
 /* French (Bertrand Grondin) */
 'fr' => array(
 	'hiderevision' => 'Cacher définitivement les révisions',

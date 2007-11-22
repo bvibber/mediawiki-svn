@@ -85,6 +85,10 @@ function efGiveRollbackMessages() {
 	'giverollback-logentryrevoke' => 'entzog das Zurücksetzen-Recht von [[$1]]',
 ),
 
+'el' => array(
+	'giverollback-username' => 'Όνομα χρήστη:',
+),
+
 'ext' => array(
 	'giverollback-username' => 'Nombri el usuáriu:',
 	'giverollback-search' => 'Dil',

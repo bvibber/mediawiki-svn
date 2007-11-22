@@ -105,6 +105,9 @@ $1',
 	'bcl' => array(
 		'webstore_no_response' => 'Mayong simbag hali sa server',
 	),
+	'el' => array(
+		'webstore_404' => 'Το αρχείο δεν βρέθηκε.',
+	),
 	'ext' => array(
 		'webstore_rename' => 'Marru rehucheandu el archivu "$1" a "$2".',
 		'webstore_no_file' => 'Nu s´á empuntau dengún archivu.',

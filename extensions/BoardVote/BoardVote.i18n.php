@@ -472,7 +472,11 @@ $wgBoardVoteMessages['fi'] = array(
 	'boardvote_welcome'       => 'Tervetuloa \'\'\'$1\'\'\'!',
 );
 $wgBoardVoteMessages['fo'] = array(
+	'boardvote_user'          => 'Brúkari',
+	'boardvote_edits'         => 'Rættingar',
 	'boardvote_days'          => 'Dagar',
+	'boardvote_dumplink'      => 'Trýst her',
+	'boardvote_welcome'       => 'Vælkomin \'\'\'$1\'\'\'!',
 );
 $wgBoardVoteMessages['fr'] = array(
 	'boardvote'               => "Élections au conseil d’administration de la Wikimedia Foundation",

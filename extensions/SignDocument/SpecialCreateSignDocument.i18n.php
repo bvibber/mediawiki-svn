@@ -78,6 +78,15 @@ on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|
 		'createsigndoc-create' => 'Maggibo',
 		'createsigndoc-error-generic' => 'Salâ: $1',
 	),
+	'el' => array(
+		'createsigndoc-pagename' => 'Σελίδα:',
+		'createsigndoc-email' => 'Διεύθυνση ηλεκτρονικού ταχυδρομείου:',
+		'createsigndoc-address' => 'Διεύθυνση Οικίας:',
+		'createsigndoc-phone' => 'Τηλεφωνικός αριθμός:',
+		'createsigndoc-bday' => 'Ημερομηνία Γέννησης:',
+		'createsigndoc-error-generic' => 'Σφάλμα: $1',
+		'createsigndoc-error-pagenoexist' => 'Σφάλμα: Η σελίδα [[$1]] δεν υπάρχει.',
+	),
 	'ext' => array(
 		'createsigndoc-pagename' => 'Páhina:',
 		'createsigndoc-allowedgroup' => 'Alabán premitiu:',
