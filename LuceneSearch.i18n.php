@@ -695,6 +695,16 @@ ili pretražite viki preko nekog od spoljnih pretraživačkih servisa:\n",
 	'searchincategory'      => "укатегорији\nukategoriji"
 );
 $wgLuceneSearchMessages['sr'] = $wgLuceneSearchMessages['sr-ec'];
+$wgLuceneSearchMessages['stq'] = array(
+	'searchnumber'          => '<strong>Resultoate $1-$2 fon $3</strong>',
+	'searchprev'            => '&larr; <span style=\'font-size: smaller\'>Foarige</span>',
+	'searchnext'            => '<span style=\'font-size: smaller\'>Naiste</span> &rarr;',
+	'searchscore'           => 'Relevanz: $1',
+	'searchsize'            => '$1 kB ($2 Woude)',
+	'searchdidyoumean'      => 'Ätter "<a href="$1">$2</a>" säike?',
+	'searchnoresults'       => 'Deer wuuden neen paasende Sieden fuunen.',
+	'searchnearmatches'     => '<b>Disse Sieden hääbe tou ju Säikanfroage äänelke Tittel:</b>',
+);
 $wgLuceneSearchMessages['sv'] = array(
 	'searchnumber'          => "<strong>Resultat $1-$2 av $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Föregående</span>",
