@@ -9,7 +9,7 @@
  * @copyright © 2006 Rob Church
  * @licence GNU General Public Licence 2.0
  */
- 
+
 if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'efUserRightsNotifierSetup';
@@ -17,16 +17,18 @@ if( defined( 'MEDIAWIKI' ) ) {
 		'name' => 'User Rights Email Notification',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:User_Rights_Email_Notification',
 		'author' => 'Rob Church',
-		'desc' => 'Sends email notification to users upon rights changes',
+		'description' => 'Sends email notification to users upon rights changes',
 	);
+
+	$dir = dirname(__FILE__) . '/';
+	$wgExtensionMessagesFiles['UserRightsNotif'] = $dir . 'UserRightsNotif.i18n.php';
 
 	# Change this to alter the email sender
 	$wgUserRightsNotif['sender'] = $wgPasswordSender;
 
 	function efUserRightsNotifierSetup() {
-		global $wgMessageCache, $wgHooks;
-		$wgMessageCache->addMessage( 'userrightsnotifysubject', 'Group membership change on $1' );
-		$wgMessageCache->addMessage( 'userrightsnotifybody', "Hello $1\n\nThis is to inform you that your group memberships on $2 were changed by $3 at $4.\n\nAdded: $5\nRemoved: $6\n\nWith regards,\n\n$2" );
+		global $wgHooks;
+		wfLoadExtensionMessages( 'UserRightsNotif' );
 		$wgHooks['UserRights'][] = 'efUserRightsNotifier';
 	}
 
@@ -40,7 +42,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$message = wfMsg( 'userrightsnotifybody', $user->getName(), $wgSitename, $wgUser->getName(), $wgContLang->timeAndDate( wfTimestampNow() ), $added, $removed );
 			$user->sendMail( $subject, $message, $wgUserRightsNotif['sender'] );
 		}
-		return true;	
+		return true;
 	}
 
 } else {
