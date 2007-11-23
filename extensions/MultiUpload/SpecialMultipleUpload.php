@@ -229,9 +229,9 @@ class MultipleUploadForm extends UploadForm {
 
 	function showWarningOptions() {
 		global $wgOut, $wgMaxUploadFiles;
-		$save = wfMsgHtml( 'saveallfiles' );
+		$save = wfMsgHtml( 'multipleupload-saveallfiles' );
 		$reupload = wfMsgHtml( 'reupload' );
-		$iw = wfMsgWikiHtml( 'ignoreallwarnings' );
+		$iw = wfMsgWikiHtml( 'multipleupload-ignoreallwarnings' );
 		$reup = wfMsgWikiHtml( 'reuploaddesc' );
 		if ( $wgUseCopyrightUpload )
 		{
@@ -290,11 +290,11 @@ class MultipleUploadForm extends UploadForm {
 
 		if ( '' != $msg ) {
 			$wgOut->addHTML( "<b>{$this->mUploadSaveName}</b>\n<br/>" );
-			$sub = wfMsgHtml( 'addresswarnings' );
+			$sub = wfMsgHtml( 'multipleupload-addresswarnings' );
 			$wgOut->addHTML( "<b>{$sub}</b><br/><span class='error'>{$msg}</span>\n" );
 		}
 		$wgOut->addHTML( '<div id="uploadtext">' );
-		$wgOut->addWikiText( wfMsg('multiuploadtext', $wgMaxUploadFiles) );
+		$wgOut->addWikiText( wfMsg('multipleupload-text', $wgMaxUploadFiles) );
 		$wgOut->addHTML( '</div>' );
 		$sk = $wgUser->getSkin();
 
