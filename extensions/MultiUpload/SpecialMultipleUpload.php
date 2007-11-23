@@ -3,8 +3,8 @@ if ( ! defined( 'MEDIAWIKI' ) )
     die();
 
 /**#@+
- * An extension that allows users to upload multiple photos at once.  
- * 
+ * An extension that allows users to upload multiple photos at once.
+ *
  * @addtogroup Extensions
  *
  * @link http://www.mediawiki.org/wiki/Extension:MultiUpload
@@ -17,10 +17,6 @@ if ( ! defined( 'MEDIAWIKI' ) )
 // change this parameter to limit the # of files one can upload
 $wgMaxUploadFiles = 5;
 
-require_once("SpecialPage.php");
-
-
-
 $wgExtensionFunctions[] = 'wfMultipleUpload';
 
 $wgExtensionCredits['specialpage'][] = array(
@@ -30,27 +26,16 @@ $wgExtensionCredits['specialpage'][] = array(
     'url' => 'http://www.mediawiki.org/wiki/Extension:MultiUpload',
 );
 
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['MultiUpload'] = $dir . 'SpecialMultipleUpload.i18n.php';
+
 function wfMultipleUpload() {
 	SpecialPage::AddPage(new SpecialPage('MultipleUpload'));
-    global $wgMessageCache, $wgMaxUploadFiles;
-    $wgMaxUploadFiles = intval( $wgMaxUploadFiles );
-    $wgMessageCache->addMessages(
-        array(
-			'ignoreallwarnings' => "Ignore <b>all warnings</b> and save the files anyway.",
-            'multipleupload' => "Upload Files",
-			'saveallfiles' => "Save all files",
-			'addresswarnings' => "Please address any warnings before reuploading files.",
-			'multiuploadtext' => "Upload multiple files here. <br/><br/>
-				Choose 'Browse' and select each file you wish to upload. You can upload from 1 to $wgMaxUploadFiles
-				files at a time. <br/><br/>
-				You can enter an optional <b>Destination filename</b> and provide a <b>Summary</b> describing your photo. <br/><br/>
-				<br/>
-				Inappropriate images will be deleted immediately, see the [[Project:Image Deletion Policy|Image Deletion Policy]]<br/><br/>
-				",
-        )
-    );
-}
 
+	global $wgMaxUploadFiles;
+	$wgMaxUploadFiles = intval( $wgMaxUploadFiles );
+	wfLoadExtensionMessages( 'MultiUpload' );
+}
 
 /**
  *
@@ -74,8 +59,8 @@ class MultipleUploadForm extends UploadForm {
 	// extra goodies
 	// access private
 	var  $mUploadTempNameArray, $mUploadSizeArray, $mOnameArray, $mUploadError, $mDestFileArray;
-	var  $mUploadDescriptionArray; 	
-	var  $mShowUploadForm, $mHasWarning, $mFileIndex; 
+	var  $mUploadDescriptionArray;
+	var  $mShowUploadForm, $mHasWarning, $mFileIndex;
 	/**
 	 * Constructor : initialise object
 	 * Get data POSTed through the form and assign them to the object
@@ -86,7 +71,7 @@ class MultipleUploadForm extends UploadForm {
 		// call the parent constructor
 		parent::UploadForm(&$request);
 
-		//initialize 
+		//initialize
 		$this->mUploadTempNameArray= $this->mUploadSizeArray= $this->mOnameArray= $this->mUploadError= $this->mDestFileArray = $this->mUploadDescriptionArray = array();
 		$this->mShowUploadForm = true;
 		$this->mFileIndex = 0;
@@ -98,15 +83,12 @@ class MultipleUploadForm extends UploadForm {
 			return ;
 		}
 
-
-
 		for ($x = 0; $x < $wgMaxUploadFiles; $x++) {
 			$this->mDestFile[$x] = $request->getText( "wpDestFile_$x" );
 			$this->mUploadDescriptionArray[$x] = $request->getText( "wpUploadDescription_$x" );
 		}
 		$this->mSessionKey        = $request->getInt( 'wpSessionKey' );
 
-		
 		if( !empty( $this->mSessionKey )  ) {
 			for ($x = 0; $x < $wgMaxUploadFiles; $x++) {
 				//if (!isset($_SESSION["wsUploadData_$x"][$this->mSessionKey])) continue;
@@ -123,13 +105,12 @@ class MultipleUploadForm extends UploadForm {
 				$this->mUploadTempNameArray[$x] = $request->getFileTempName( "wpUploadFile_$x" );
 				$this->mUploadSizeArray [$x]    = $request->getFileSize( "wpUploadFile_$x" );
 				$this->mOnameArray[$x]          = $request->getFileName( "wpUploadFile_$x" );
-				$this->mUploadErrorArray[$x]    = $request->getUploadError( "wpUploadFile_$x" );	
+				$this->mUploadErrorArray[$x]    = $request->getUploadError( "wpUploadFile_$x" );
 				$this->mUploadDescriptionArray [$x] = $request->getVal("wpUploadDescription_$x");
 			}
 		}
 
 	}
-
 
 	/* -------------------------------------------------------------- */
 
@@ -142,30 +123,29 @@ class MultipleUploadForm extends UploadForm {
 		global $wgMaxUploadFiles, $wgOut;
 
 		$wgOut->addHTML("<table>");
-		$this->mShowUploadForm = false;	
+		$this->mShowUploadForm = false;
 		for ($x = 0; $x < $wgMaxUploadFiles; $x++) {
 			$this->mFileIndex = $x;
 			if (!isset ($this->mUploadTempNameArray[$x]) || $this->mUploadTempNameArray[$x] == null) continue;
-    		$this->mUploadTempName = $this->mUploadTempNameArray[$x];
-			$this->mUploadSize = $this->mUploadSizeArray[$x]; 
-			$this->mOname = $this->mOnameArray [$x]; 
-			$this->mUploadError = $this->mUploadErrorArray [$x]; 
+			$this->mUploadTempName = $this->mUploadTempNameArray[$x];
+			$this->mUploadSize = $this->mUploadSizeArray[$x];
+			$this->mOname = $this->mOnameArray [$x];
+			$this->mUploadError = $this->mUploadErrorArray [$x];
 			$this->mDestFile = $this->mDestFileArray [$x];
-			$this->mUploadDescription = $this->mUploadDescriptionArray [$x]; 	
+			$this->mUploadDescription = $this->mUploadDescriptionArray [$x];
 			$wgOut->addHTML("<tr><td>");
 			parent::processUpload();
 			$wgOut->addHTML("</td></tr>");
 		}
 
 		$wgOut->addHTML("</table>");
-		$this->mShowUploadForm = false;	
+		$this->mShowUploadForm = false;
 		$wgOut->redirect(''); // clear the redirect, we want to show a nice page of images
-		$this->mShowUploadForm = true;	
+		$this->mShowUploadForm = true;
 		if ($this->mHasWarning) {
 			$this->showWarningOptions();
 		}
 	}
-
 
 	/* -------------------------------------------------------------- */
 
@@ -225,27 +205,27 @@ class MultipleUploadForm extends UploadForm {
 		$wgOut->addHTML( "<ul class='warning'>{$warning}</ul><br />\n" );
 		$wgOut->addHTML(" <input type='hidden' name='wpUploadDescription_{$this->mFileIndex}' value=\"" . htmlspecialchars( $this->mUploadDescription ) . "\" />");
 
-
 	}
-    function stashSession() {
-        $stash = $this->saveTempUploadedFile(
-            $this->mUploadSaveName, $this->mUploadTempName );
+	function stashSession() {
+		$stash = $this->saveTempUploadedFile(
+			$this->mUploadSaveName, $this->mUploadTempName );
 
-        if( !$stash ) {
-            # Couldn't save the file.
-            return false;
-        }
+		if( !$stash ) {
+			# Couldn't save the file.
+			return false;
+		}
 
-        if ($this->mSessionKey == null) 
+		if ($this->mSessionKey == null)
 			$key = mt_rand( 0, 0x7fffffff );
-		else 
+		else
 			$key = $this->mSessionKey;
-        $_SESSION["wsUploadData_" . $this->mFileIndex][$key] = array(
-            'mUploadTempName' => $stash,
-            'mUploadSize'     => $this->mUploadSize,
-            'mOname'          => $this->mOname );
-        return $key;
-    }
+		$_SESSION["wsUploadData_" . $this->mFileIndex][$key] = array(
+			'mUploadTempName' => $stash,
+			'mUploadSize'     => $this->mUploadSize,
+			'mOname'          => $this->mOname
+		);
+		return $key;
+	}
 
 	function showWarningOptions() {
 		global $wgOut, $wgMaxUploadFiles;
@@ -267,9 +247,9 @@ class MultipleUploadForm extends UploadForm {
 		<input type='hidden' name='wpSessionKey' value=\"" . htmlspecialchars( $this->mSessionKey ) . "\" />
 		<input type='hidden' name='wpLicense' value=\"" . htmlspecialchars( $this->mLicense ) . "\" />
 		");
-		        for ($x = 0; $x < $wgMaxUploadFiles; $x++) {
-					$wgOut->addHTML("<input type='hidden' name='wpDestFile_$x' value=\"" . htmlspecialchars( $this->mDestFileArray[$x] ) . "\" />");
-				}
+		for ($x = 0; $x < $wgMaxUploadFiles; $x++) {
+			$wgOut->addHTML("<input type='hidden' name='wpDestFile_$x' value=\"" . htmlspecialchars( $this->mDestFileArray[$x] ) . "\" />");
+		}
 		$wgOut->addHTML("<input type='hidden' name='wpWatchthis' value=\"" . htmlspecialchars( intval( $this->mWatchthis ) ) . "\" />
 	{$copyright}
 	<table border='0'>
@@ -314,10 +294,9 @@ class MultipleUploadForm extends UploadForm {
 			$wgOut->addHTML( "<b>{$sub}</b><br/><span class='error'>{$msg}</span>\n" );
 		}
 		$wgOut->addHTML( '<div id="uploadtext">' );
-		$wgOut->addWikiText( wfMsg( 'multiuploadtext' ) );
+		$wgOut->addWikiText( wfMsg('multiuploadtext', $wgMaxUploadFiles) );
 		$wgOut->addHTML( '</div>' );
 		$sk = $wgUser->getSkin();
-
 
 		$sourcefilename .= wfMsgHtml( 'sourcefilename' );
 		$destfilename = wfMsgHtml( 'destfilename' );
@@ -328,10 +307,8 @@ class MultipleUploadForm extends UploadForm {
 		$licenseshtml = $licenses->getHtml();
 		$ulb = wfMsgHtml( 'uploadbtn' );
 
-
 		$titleObj = Title::makeTitle( NS_SPECIAL, 'MultipleUpload' );
 		$action = $titleObj->escapeLocalURL();
-
 
 		$watchChecked = $wgUser->getOption( 'watchdefault' )
 			? 'checked="checked"'
@@ -343,7 +320,7 @@ function fillDestFilenameMulti(i) {
     if (!document.getElementById)
         return;
 	var path = document.getElementById('wpUploadFile_' + i).value;
-    // Find trailing part 
+    // Find trailing part
     var slash = path.lastIndexOf('/');
     var backslash = path.lastIndexOf('\\\\');
     var fname;
@@ -354,15 +331,15 @@ function fillDestFilenameMulti(i) {
     } else {
         fname = path.substring(backslash+1, 10000);
     }
-    
+
     // Capitalise first letter and replace spaces by underscores
     fname = fname.charAt(0).toUpperCase().concat(fname.substring(1,10000)).replace(/ /g, '_');
-    
+
     // Output result
     var destFile = document.getElementById('wpDestFile_' + i);
     if (destFile)
         destFile.value = fname;
-}  
+}
 </script>
 
 	<form id='upload' method='post' enctype='multipart/form-data' action=\"$action\">
@@ -411,7 +388,7 @@ function fillDestFilenameMulti(i) {
 			$copystatus =  htmlspecialchars( $this->mUploadCopyStatus );
 			$filesource = wfMsgHtml ( 'filesource' );
 			$uploadsource = htmlspecialchars( $this->mUploadSource );
-			
+
 			$wgOut->addHTML( "
 			        <td align='right' nowrap='nowrap'><label for='wpUploadCopyStatus'>$filestatus:</label></td>
 			        <td><input tabindex='5' type='text' name='wpUploadCopyStatus' id='wpUploadCopyStatus' value=\"$copystatus\" size='40' /></td>
@@ -424,11 +401,10 @@ function fillDestFilenameMulti(i) {
 		");
 		}
 
-
 		$wgOut->addHtml( "
 		<td>
  			<input tabindex='7' type='checkbox' name='wpWatchthis' id='wpWatchthis' $watchChecked value='true' />
-            <label for='wpWatchthis'>" . wfMsgHtml( 'watchthis' ) . "</label>
+			<label for='wpWatchthis'>" . wfMsgHtml( 'watchthis' ) . "</label>
 			<input tabindex='8' type='checkbox' name='wpIgnoreWarning' id='wpIgnoreWarning' value='true' />
 			<label for='wpIgnoreWarning'>" . wfMsgHtml( 'ignorewarnings' ) . "</label>
 		</td>
@@ -455,6 +431,4 @@ function fillDestFilenameMulti(i) {
 
 	/* -------------------------------------------------------------- */
 
-
 }
-
