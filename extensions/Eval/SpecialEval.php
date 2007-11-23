@@ -18,46 +18,41 @@ $wgExtensionCredits['specialpage'][] = array(
 	'description' => 'adds [[Special:Eval|an interface]] to the <code>eval()</code> function',
 );
 
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['Eval'] = $dir . 'SpecialEval.i18n.php';
+
 function wfSpecialEval() {
 	wfUsePHP( 5.0 );
 	wfUseMW( '1.6alpha' );
-	
+
 	global $IP;
-	
-	require_once "$IP/includes/SpecialPage.php";
-	
+
 	class Evaluate extends SpecialPage {
 		public function __construct() {
-			global $wgMessageCache;
-			
-			$wgMessageCache->addMessages(
-				array(
-					'eval' => 'Eval',
-					'eval_submit' => 'Evaluate',
-					'eval_escape' => 'Escape output',
-					'eval_out' => 'Output',
-					'eval_code' => 'Code'
-				)
-			);
 
 			SpecialPage::SpecialPage( 'Eval' );
 		}
-		
+
+		function getDescription() {
+			return wfMsg( 'eval' );
+		}
+
 		public function execute( $par ) {
 			global $wgOut, $wgRequest, $wgUseTidy;
+			wfLoadExtensionMessages( 'Eval' );
 
 			$this->setHeaders();
 
 			$code = isset( $par ) ? $par : $wgRequest->getText( 'code' );
 			$escape = $wgRequest->getBool( 'escape' );
-			
+
 			$eform = new EvaluateForm( $code, $escape );
 
 			if ( trim( $code ) === '' )
 				$eform->execute();
 			else {
 				$eform->execute();
-				
+
 				$eout = new EvaluateOutput( $code, $escape );
 				$eout->execute();
 			}
@@ -66,12 +61,12 @@ function wfSpecialEval() {
 
 	class EvaluateForm {
 		private $mCode, $mEscape;
-		
+
 		public function __construct( $code, $escape ) {
 			$this->mCode =& $code;
 			$this->mEscape =& $escape;
 		}
-		
+
 		public function execute() {
 			global $wgOut, $wgTitle;
 
@@ -125,12 +120,12 @@ function wfSpecialEval() {
 	class EvaluateOutput {
 		private $mCode, $mEscape;
 		private $mErr;
-		
+
 		public function __construct( &$code, &$escape ) {
 			$this->mCode =& $code;
 			$this->mEscape =& $escape;
 		}
-		
+
 		public function execute() {
 			ob_start();
 			eval( $this->mCode );
@@ -144,7 +139,7 @@ function wfSpecialEval() {
 
 			if ( $this->mCode !== '' )
 				$this->code();
-			
+
 			if ( $this->mErr !== '' ) {
 				$this->mErr =  preg_replace( '/^<br \/>/', '', $this->mErr );
 				$wgOut->addHTML( wfElement( 'h2', null, wfMsg( 'eval_out' ) ) );
@@ -166,13 +161,13 @@ function wfSpecialEval() {
 			$geshi = new Geshi( $this->mCode, 'php' );
 			$geshi->enable_line_numbers( GESHI_NORMAL_LINE_NUMBERS );
 			$geshi->set_header_type( GESHI_HEADER_DIV );
-			
+
 			$wgOut->addHTML(
 				wfElement( 'h2', null, wfMsg( 'eval_code' ) ) .
 				$geshi->parse_code()
 			);
 		}
 	}
-	
+
 	SpecialPage::addPage( new Evaluate );
 }
