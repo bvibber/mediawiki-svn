@@ -79,6 +79,7 @@ function efCountEditsMessages( $single = false ) {
 ),
 
 'el' => array(
+	'countedits-username' => 'Όνομα χρήστη:',
 	'countedits-ok' => 'ΟΚ',
 ),
 

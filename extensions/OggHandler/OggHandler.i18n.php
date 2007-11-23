@@ -152,6 +152,11 @@ $messages = array(
 		'ogg-desc-link'           => 'Über diese Datei',
 	),
 
+	'el' => array(
+		'ogg-pause' => 'Παύση',
+		'ogg-desc-link' => 'Σχετικά με αυτό τα αρχείο',
+	),
+
 	'es' => array(
 		'ogg-more' => 'Opciones...',
 		'ogg-dismiss' => 'Cerrar',
@@ -278,6 +283,39 @@ $messages = array(
 		'ogg-desc-link'           => 'אודות הקובץ',
 	),
 
+	'hr' => array(
+		'ogg-short-audio' => 'Ogg $1 zvučna datoteka, $2',
+		'ogg-short-video' => 'Ogg $1 video datoteka, $2',
+		'ogg-short-general' => 'Ogg $1 medijska datoteka, $2',
+		'ogg-long-audio' => '(Ogg $1 zvučna datoteka, duljine $2, $3)',
+		'ogg-long-video' => '(Ogg $1 video datoteka, duljine $2, $4x$5 piksela, $3)',
+		'ogg-long-multiplexed' => '(Ogg multipleksirana zvučna/video datoteka, $1, duljine $2, $4×$5 piksela, $3 ukupno)',
+		'ogg-long-general' => '(Ogg medijska datoteka, duljine $2, $3)',
+		'ogg-long-error' => '(nevaljana ogg datoteka: $1)',
+		'ogg-play' => 'Pokreni',
+		'ogg-pause' => 'Pauziraj',
+		'ogg-stop' => 'Zaustavi',
+		'ogg-play-video' => 'Pokreni video',
+		'ogg-play-sound' => 'Sviraj zvuk',
+		'ogg-no-player' => 'Oprostite, izgleda da Vaš operacijski sustav nema instalirane medijske preglednike. Molimo <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">instalirajte medijski preglednik (\'\'player\'\')</a>.',
+		'ogg-no-xiphqt' => 'Nemate instaliranu XiphQT komponentu za QuickTime (ili je neispravno instalirana). QuickTime ne može pokretati Ogg datoteke bez ove komponente. Molimo <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">instalirajte XiphQT</a> ili izaberite drugi preglednik (\'\'player\'\').',
+		'ogg-player-videoElement' => '<slikovni> element',
+		'ogg-player-oggPlugin' => 'Ogg plugin',#identical but defined
+		'ogg-player-cortado' => 'Cortado (Java)',#identical but defined
+		'ogg-player-vlc-mozilla' => 'VLC',#identical but defined
+		'ogg-player-vlc-activex' => 'VLC (ActiveX kontrola)',
+		'ogg-player-quicktime-mozilla' => 'QuickTime',#identical but defined
+		'ogg-player-quicktime-activex' => 'QuickTime (ActiveX)',#identical but defined
+		'ogg-player-thumbnail' => 'Samo (nepokretne) slike',
+		'ogg-player-soundthumb' => 'Nema preglednika',
+		'ogg-player-selected' => '(odabran)',
+		'ogg-use-player' => 'Rabi preglednik (\'\'player\'\'):',
+		'ogg-more' => 'Više...',
+		'ogg-dismiss' => 'Zatvori',
+		'ogg-download' => 'Snimi datoteku',
+		'ogg-desc-link' => 'O ovoj datoteci',
+	),
+
 	'hsb' => array(
 		'ogg-short-audio' => 'Awdiodataja Ogg $1, $2',
 		'ogg-short-video' => 'Widejodataja Ogg $1, $2',
@@ -289,6 +327,7 @@ $messages = array(
 		'ogg-long-error' => '(Njepłaćiwa ogg-dataja: $1)',
 		'ogg-play' => 'Wothrać',
 		'ogg-pause' => 'Přestawka',
+		'ogg-stop' => 'Stój',
 		'ogg-play-video' => 'Widejo wothrać',
 		'ogg-play-sound' => 'Zynk wothrać',
 		'ogg-no-player' => 'Bohužel twój system po wšěm zdaću nima wothrawansku software. Prošu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">sćehń wothrawak</a>.',

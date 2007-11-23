@@ -220,7 +220,8 @@ function efDuplicatorMessages() {
 'gl' => array(
 	'duplicator' => 'Duplicar un artigo',
 	'duplicator-toolbox' => 'Duplicar este artigo',
-	'duplicator-header' => 'Esta páxina permite a duplicación completa dun artigo e crea copias independentes de todos os historiais. Resulta útil cando se subdivide un artigo, etc.',
+	'duplicator-header' => 'Esta páxina permite a duplicación completa dun artigo e crea copias independentes
+de todos os historiais. Resulta útil cando se subdivide un artigo, etc.',
 	'duplicator-options' => 'Opcións',
 	'duplicator-source' => 'Fonte:',
 	'duplicator-dest' => 'Destino:',

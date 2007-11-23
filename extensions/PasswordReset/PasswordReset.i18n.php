@@ -98,6 +98,11 @@ $allMessages = array(
 		'passwordreset-success' => 'Hesło bu za wužiwarski ID $1 wróćo stajene.',
 	),
 
+	'ie' => array(
+		'passwordreset-username' => 'Vor nómine usatori',
+		'passwordreset-newpass' => 'Nov passa-parol',
+	),
+
 	'nl' => array(
 		'passwordreset' => 'Wachtwoord opnieuw instellen',
 		'passwordreset-invalidusername' => 'Onjuiste gebruiker',

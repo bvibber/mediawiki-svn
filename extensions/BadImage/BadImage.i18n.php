@@ -290,6 +290,28 @@ function efBadImageMessages() {
 	'badimages-page' => '{{ns:help}}:Daftar berkas tidak sah',
 ),
 
+'is' => array(
+	'badimages' => 'Slæmur myndalisti',
+	'badimages-add-btn' => 'Bæta við',
+	'badimages-added' => '$1 var bætt við listann.',
+	'badimages-count' => 'Það eru \'\'\'$1\'\'\' myndir á slæma myndalistanum.',
+	'badimages-name' => 'Nafn:',
+	'badimages-not-added' => 'Ekki var hægt að bæta myndinni við.',
+	'badimages-not-removed' => 'Ekki var hægt að færa fjarlægja myndina.',
+	'badimages-reason' => 'Ástæða:',
+	'badimages-remove' => '(fjarlægja)',
+	'badimages-remove-btn' => 'Fjarlægja',
+	'badimages-remove-confirm' => 'Vinsamlegast staðfestu að þú viljir fjarlægja $1 af listanum:',
+	'badimages-removed' => '$1 var fjarlægð af listanum.',
+	'badimages-subheading' => 'Núverandi hlutir',
+	'badimages-unprivileged' => '(Þú hefur ekki nægileg réttindi til að breyta listanum)',
+	'badimages-log-name' => 'Slæmur myndalisti',
+	'badimages-log-header' => 'Þetta er atburðaskrá yfir breytingar á [[{{MediaWiki:Badimages-page}}|slæma myndalistanum]].',
+	'badimages-log-add' => 'bæta [[$1]] við slæma myndalistann',
+	'badimages-log-remove' => 'fjarlægja [[$1]] af slæma myndalistanum',
+	'badimages-page' => '{{ns:help}}:Slæmi myndalistinn',
+),
+
 /* Italian (BrokenArrow) */
 'it' => array(
 	'badimages' => 'Elenco dei file discutibili',

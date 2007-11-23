@@ -83,6 +83,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Anterior ($1)',
 ),
 
+'hr' => array(
+	'backforth-next' => 'Slijedeći ($1)',
+	'backforth-prev' => 'Prethodni ($1)',
+),
+
 'hsb' => array(
 	'backforth-next' => 'Přichodne ($1)',
 	'backforth-prev' => 'Předchadne ($1)',
@@ -93,6 +98,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Նախորդ ($1)',
 ),
 
+'is' => array(
+	'backforth-next' => 'Næsta ($1)',
+	'backforth-prev' => 'Síðasta ($1)',
+),
+
 'it' => array(
 	'backforth-next' => 'Successivi ($1)',
 	'backforth-prev' => 'Precedenti ($1)',
@@ -101,6 +111,11 @@ function efBackAndForthMessages() {
 'ja' => array(
 	'backforth-next' => '次 ($1)',
 	'backforth-prev' => '前 ($1)',
+),
+
+'kn' => array(
+	'backforth-next' => 'ಮುಂದಿನ ($1)',
+	'backforth-prev' => 'ಹಿಂದಿನ ($1)',
 ),
 
 'nl' => array(

@@ -140,6 +140,10 @@ function efMakeBotMessages() {
 	'makebot-logentryrevoke' => 'entfernte den Botstatus von „[[$1]]“',
 ),
 
+'el' => array(
+	'makebot-username'        => 'Όνομα χρήστη:',
+),
+
 'eo' => array(
 	'makebot'                 => 'Koncedi aŭ revoki robotan statuson',
 	'makebot-header'          => '\'\'\'Loka burokrato povas uzi ĉi tiun paĝon por koncedi aŭ revoki [[{{MediaWiki:Grouppage-bot}}|robotan statuson]] al alia uzantokonto.\'\'\'<br />Robota statuso kaŝas uzantoredaktojn de la [[Special:Recentchanges|lastaj ŝanĝoj]] kaj similaj listoj, kaj estas utila por markigo de uzantoj kiuj faras aŭtomatajn redaktojn. Ĉi tio estu farata en akordo kun ĉi tieaj reguloj.',
@@ -312,6 +316,26 @@ function efMakeBotMessages() {
 	'makebot-logpagetext'    => 'זהו יומן השינויים בהרשאות ה[[{{ns:help}}:בוט|בוט]] של המשתמשים.',
 	'makebot-logentrygrant'  => 'העניק הרשאת בוט למשתמש [[$1]]',
 	'makebot-logentryrevoke' => 'ביטל את הרשאת הבוט למשתמש [[$1]]',
+),
+
+'hr' => array(
+	'makebot'                 => 'Dodjela ili ukidanje \'\'bot\'\' statusa',
+	'makebot-header'          => '\'\'\'Lokalni birokrat korištenjem ove stranice dodjeljuje ili povlači [[{{MediaWiki:Grouppage-bot}}|bot status]] suradnicima.\'\'\'<br />Bot status sakriva promjene suradnika na [[Special:Recentchanges|nedavnim promjenama]] i sličnim popisima, i koristan je za označavanje suradnika koji uređuju članke automatski (skriptama). To valja činiti u skladu s važećim smjernicama.',
+	'makebot-username'        => 'Suradnik:',
+	'makebot-search'          => 'Izvrši',
+	'makebot-isbot'           => '[[User:$1|$1]] ima status bota.',
+	'makebot-notbot'          => '[[User:$1|$1]] nema bot status.',
+	'makebot-privileged'      => '[[User:$1|$1]] ima [[Special:Listadmins|administratorska ili birokratska prava]], i ne može dobiti bot status.',
+	'makebot-change'          => 'Promijeni status:',
+	'makebot-grant'           => 'Dodijeli',
+	'makebot-revoke'          => 'Ukini',
+	'makebot-comment'         => 'Komentar:',
+	'makebot-granted'         => '[[Suradnik:$1|$1]] je dobio bot status.',
+	'makebot-revoked'         => 'Suradniku [[User:$1|$1]] je ukinut bot status.',
+	'makebot-logpage'         => 'Evidencija bot-prava',
+	'makebot-logpagetext'     => 'Ovo je evidencija promjena suradničkog [[{{MediaWiki:Grouppage-bot}}|bot]] statusa.',
+	'makebot-logentrygrant'   => 'dodijeljen bot status suradniku [[$1]]',
+	'makebot-logentryrevoke'  => 'ukinut bot status suradniku [[$1]]',
 ),
 
 'hsb' => array(

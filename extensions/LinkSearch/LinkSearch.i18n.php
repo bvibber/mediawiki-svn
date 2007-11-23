@@ -48,6 +48,9 @@ $wgLinkSearchMessages['de'] = array(
 	'linksearch-line'  => '$1 ist verlinkt von $2',
 	'linksearch-error' => 'Wildcards können nur am Anfang der URL verwendet werden.',
 );
+$wgLinkSearchMessages['el'] = array(
+	'linksearch-ok'    => 'Αναζήτηση',
+);
 $wgLinkSearchMessages['ext'] = array(
 	'linksearch-ok'    => 'Landeal',
 );

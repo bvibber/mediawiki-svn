@@ -17,6 +17,19 @@ function efImportFreeImagesMessages() {
 			'importfreeimages_returntoform'   => 'Or, click <a href=\'$1\'>here</a> to return to your search results',
 		),
 
+		'ar' => array(
+			'importfreeimages'              => 'استيراد صور حرة',
+			'importfreeimages_description'  => 'هذه الصفحة تسمح لك بالبحث في الصور المرخصة جيدا من فلكر واستيرادها إلى الويكي الخاص بك.',
+			'importfreeimages_noapikey'     => 'لم تقم بضبط مفتاح API فلكر الخاص بك. لفعل هذا، من فضلك احصل على مفتاح API من  [http://www.flickr.com/services/api/misc.api_keys.html هنا] واضبط wgFlickrAPIKey في ImportFreeImages.php.',
+			'importfreeimages_nophotosfound' => 'لا صور تم العثور عليها لمدخلة البحث الخاصة بك \'$1\'، من فضلك حاول مرة ثانية.',
+			'importfreeimages_owner'        => 'المؤلف',
+			'importfreeimages_importthis'   => 'استورد هذا',
+			'importfreeimages_next'         => '$1 التالي',
+			'importfreeimages_filefromflickr' => '$1 بواسطة المستخدم <b>[$2]</b> من فلكر. المسار الأصلي',
+			'importfreeimages_promptuserforfilename' => 'من فضلك أدخل اسما لتخزين الملف به:',
+			'importfreeimages_returntoform' => 'أو، اضغط <a href=\'$1\'>هنا</a> للعودة إلى نتائج بحثك',
+		),
+
 		'de' => array(
 			'importfreeimages'                => 'Import freier Bilder',
 			'importfreeimages_description'    => 'Diese Seite erlaubt dir, auf Flickr nach Bildern unter einer freien Lizenz zu suchen und diese in dein Wiki zu importieren.',

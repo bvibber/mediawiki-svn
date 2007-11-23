@@ -89,6 +89,10 @@ function efBookInformationMessages() {
 ),
 
 'el' => array(
+	'bookinfo-header' => 'Βιβλίο πληροφοριών',
+	'bookinfo-result-title' => 'Τίτλος:',
+	'bookinfo-result-author' => 'Συντάκτης:',
+	'bookinfo-result-publisher' => 'Εκδότης:',
 	'bookinfo-result-year' => 'Χρόνος:',
 ),
 

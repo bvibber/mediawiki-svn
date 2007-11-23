@@ -106,6 +106,7 @@ $1',
 		'webstore_no_response' => 'Mayong simbag hali sa server',
 	),
 	'el' => array(
+		'webstore_invalid_zone' => 'Άκυρη ζώνη "$1".',
 		'webstore_404' => 'Το αρχείο δεν βρέθηκε.',
 	),
 	'ext' => array(

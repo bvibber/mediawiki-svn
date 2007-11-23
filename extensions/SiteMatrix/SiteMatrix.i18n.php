@@ -247,6 +247,9 @@ $wgSiteMatrixMessages['sr'] = $wgSiteMatrixMessages['sr-ec'];
 $wgSiteMatrixMessages['ss'] = array(
 	'sitematrix-language' => 'Lúlwîmi',
 );
+$wgSiteMatrixMessages['stq'] = array(
+	'sitematrix' => 'Lieste fon Wikimedia-Wikis',
+);
 $wgSiteMatrixMessages['su'] = array(
 	'sitematrix' => 'Béréndélan wiki Wikimédia',
 	'sitematrix-language' => 'Basa',

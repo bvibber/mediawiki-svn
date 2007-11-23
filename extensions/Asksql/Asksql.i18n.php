@@ -129,6 +129,18 @@ Isto con frecuencia pode engadir unha carga considerábel ao servidor, así que 
 	'querysuccessful'  => 'Consulta con éxito',
 ),
 
+'hr' => array(
+	'asksql'           => 'SQL upit',
+	'asksqltext'       => 'Rabite donju formu za direktne upite na bazu podataka.
+Početak i kraj stringa ograničava se jednostrukim navodnicima (\'poput ovih\').
+Ova funkcija može opteretiti poslužitelj, stoga ju nemojte rabiti prečesto.',
+	'sqlislogged'      => 'Svi upiti se evidentiraju.',
+	'sqlquery'         => 'Upišite upit',
+	'querybtn'         => 'Izvrši upit',
+	'selectonly'       => 'Samo upiti koji čitaju iz baze su dozvoljeni.',
+	'querysuccessful'  => 'Upit uspješno izvršen',
+),
+
 'hsb' => array(
 	'asksql'           => 'SQL wotprašenje',
 	'asksqltext'       => 'Wužij tutón formular, zo by datowu banku direktnje wotprašował.

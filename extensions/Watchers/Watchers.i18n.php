@@ -17,6 +17,16 @@ $messages['en'] = array(
 		'watchers_less_than_x' => "Less than $1 people watch this page.",
 );
 
+$messages['ar'] = array(
+	'watchers'               => 'المراقبون',
+	'watchers_link_title'    => 'من يراقب هذه الصفحة؟',
+	'watchers_error_article' => '<b>خطأ:</b> المقالة غير موجودة.',
+	'watchers_header'        => 'الناس الذين يراقبون "$1"',
+	'watchers_noone_watches' => 'لا أحد يراقب هذه الصفحة.',
+	'watchers_x_or_more'     => '$1 أو أكثر يراقبون هذه الصفحة.',
+	'watchers_less_than_x'   => 'أقل من $1 يراقبون هذه الصفحة.',
+);
+
 $messages['de'] = array(
 		'watchers_link_title' => "Wer beobachtet diese Seite?",
 		'watchers_error_article' => "<b>Fehler:</b> Seite existiert nicht.",
@@ -42,6 +52,16 @@ $messages['fr'] = array(
 		'watchers_noone_watches' => "Personne ne suit cette page.",
 		'watchers_x_or_more' => "Au moins $1 utilisateur(s) suit cette page.",
 		'watchers_less_than_x' => "Moins de $1 utilisateurs suivent cette page.",
+);
+
+$messages['hsb'] = array(
+	'watchers'               => 'Wobkedźbowarjo',
+	'watchers_link_title'    => 'Štó tutu stronu wobkedźbuje?',
+	'watchers_error_article' => '\'\'\'Zmylk:\'\'\' Nastawk njeeksistuje.',
+	'watchers_header'        => 'Wužiwarjo, kotřiž "$1" wobkedźbuja',
+	'watchers_noone_watches' => 'Nichtó tutu stronu njewobkedźbuje.',
+	'watchers_x_or_more'     => '$1 abo wjace ludźi tutu stronu wobkedźbuje.',
+	'watchers_less_than_x'   => 'Mjenje hač $1 wužiwarjow tutu stronu wobkedźbuje.',
 );
 
 $messages['nl'] = array(

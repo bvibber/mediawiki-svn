@@ -385,11 +385,15 @@ Du wirst in 20 Sekunden zu diesem externen Server weitergeleitet. [$1 klicke hie
 Eine Sicherheitswarnung über ein unsigniertes Zertifikat kann angezeigt werden.',
 );
 $wgBoardVoteMessages['el'] = array(
+	'boardvote_novotes'       => 'Κανείς δεν έχει ψηφίσει ακόμη.',
 	'boardvote_user'          => 'Χρήστης',
+	'boardvote_edits'         => 'Επεξεργασίες',
 	'boardvote_days'          => 'Ημέρες',
+	'boardvote_ip'            => 'IP',#identical but defined
 	'boardvote_dumplink'      => 'Πάτησε εδώ',
 	'boardvote_submit'        => 'Εντάξει',
 	'boardvote_notstarted'    => 'Η ψηφοφορία δεν έχει αρχίσει ακόμη',
+	'boardvote_welcome'       => 'Καλώς ήλθατε \'\'\'$1\'\'\'!',
 	'boardvote_redirecting'   => 'Για καλύτερη ασφάλεια και διαφάνεια, η ψηφοφορία διεξάγεται σε εξωτερικό, ανεξάρτητα ελεγχόμενο server.
 
 Θα μεταφερθείτε αυτόματα στον εξωτερικό αυτό server σε 20 δευτερόλεπτα. [$1 Πατήστε εδώ] για να μεταφερθείτε εκεί άμεσα.
@@ -743,6 +747,21 @@ $wgBoardVoteMessages['he'] = array(
 בתוך 20 שניות תבוצע הפניה לשרת החיצוני הזה. [$1 לחצו כאן] כדי להגיע לשם עכשיו.
 
 ייתכן שתוצג אזהרת אבטחה בגלל תעודת אישור בלתי חתומה.',
+);
+
+$wgBoardVoteMessages['hr'] = array(
+	'boardvote_novotes'       => 'Nitko još nije glasovao.',
+	'boardvote_time'          => 'Vrijeme',
+	'boardvote_user'          => 'Suradnik',
+	'boardvote_edits'         => 'Broj uređivanja',
+	'boardvote_days'          => 'Dana',
+	'boardvote_ip'            => 'IP adresa',
+	'boardvote_ua'            => 'Web klijent',
+	'boardvote_dumplink'      => 'Klikni ovdje',
+	'boardvote_submit'        => 'Glasuj',
+	'boardvote_strike'        => 'Poništi',
+	'boardvote_unstrike'      => 'Poništi poništenje',
+	'boardvote_welcome'       => 'Dobrodošli \'\'\'$1\'\'\'!',
 );
 
 $wgBoardVoteMessages['hsb'] = array(
