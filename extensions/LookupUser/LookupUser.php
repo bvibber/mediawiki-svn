@@ -1,53 +1,47 @@
 <?php
 
-if ( !defined( 'MEDIAWIKI' ) ):
-?>
-<html><head><title>LookupUser</title></head>
-<body>
-<h1>LookupUser</h1>
-<p>LookupUser is a special page to retrieve information about a user such as email address and ID.</p>
-</body>
-</html>
-<?php
-exit(1);
-endif;
+/**
+ * Extension to to retrieve information about a user such as email address and ID.
+ *
+ * @addtogroup Extensions
+ * @author Tim Starling
+ * @copyright 2006 Tim Starling
+ * @licence GNU General Public Licence
+ */
+
+if( !defined( 'MEDIAWIKI' ) ) {
+	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
+	die( 1 );
+}
 
 $wgExtensionFunctions[] = 'wfSetupLookupUser';
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'Lookup User',
+	'author' => 'Tim Starling',
+	'description' => 'Retrieve information about a user such as email address and ID',
+);
+
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['LookupUser'] = $dir . 'LookupUser.i18n.php';
+
+$wgSpecialPages['LookupUser'] = 'LookupUserPage';
 $wgAvailableRights[] = 'lookupuser';
 
 function wfSetupLookupUser() {
-	global $wgMessageCache, $IP;
+	global $IP;
 
-	$wgMessageCache->addMessages( array(
-		'lookupuser' => 'Look up user info',
-		'lookupuser_username' => 'Username:',
-		'lookupuser_nonexistent' => 'User does not exist',
-		'lookupuser_authenticated' => 'authenticated on $1',
-		'lookupuser_not_authenticated' => 'not authenticated',
-		'lookupuser_info' => 
-'* Name: $1
-* User ID: $2
-* Email address: $3
-* Real name: $4
-* Registration date: $5
-* User record last touched: $6
-* Email authentication: $7
-
-User options:
-
-$8
-',
-	));
-
-	require_once( "$IP/includes/SpecialPage.php" );
-	
 	class LookupUserPage extends SpecialPage {
 		function __construct() {
-			parent::__construct( 'LookupUser', 'lookupuser' );
+		SpecialPage::SpecialPage( 'LookupUser' );
+		}
+
+		function getDescription() {
+			return wfMsg( 'lookupuser' );
 		}
 
 		function execute( $subpage ) {
 			global $wgRequest, $wgUser;
+			wfLoadExtensionMessages( 'LookupUser' );
 
 			$this->setHeaders();
 
@@ -55,7 +49,7 @@ $8
 				$this->displayRestrictionError();
 				return;
 			}
-			
+
 			if ( $subpage ) {
 				$target = $subpage;
 			} else {
@@ -107,7 +101,7 @@ EOT
 				foreach ( $user->mOptions as $name => $value ) {
 					$optionsString .= "$name = $value <br />";
 				}
-				$wgOut->addWikiText( wfMsg( 'lookupuser_info', 
+				$wgOut->addWikiText( wfMsg( 'lookupuser_info',
 					$user->getName(),
 					$user->getId(),
 					$user->getEmail(),
@@ -120,7 +114,4 @@ EOT
 			}
 		}
 	}
-
-	SpecialPage::addPage( new LookupUserPage );
 }
-?>
