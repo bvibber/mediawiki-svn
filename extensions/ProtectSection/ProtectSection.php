@@ -23,38 +23,40 @@
  * @addtogroup Extensions
  *
  * @author ThomasV <thomasv1@gmx.de>
- * @copyright Copyright © 2006, ThomasV 
+ * @author Jim Hu (remove Section Edit links in protected text, bug fixes)
+ * @author Siebrand Mazeland (i18n and SVN merge)
+ * @copyright Copyright © 2006, ThomasV
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-if ( ! defined( 'MEDIAWIKI' ) ) die();
+if( !defined( 'MEDIAWIKI' ) ) {
+	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
+	die( 1 );
+}
+
+$wgExtensionCredits['other'][] = array(
+	'name' => 'ProtectSection',
+	'author' => 'ThomasV',
+	'description' => 'Allows authorised users to protect parts of a text',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:ProtectSection'
+);
+
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['ProtectSection'] = $dir . 'ProtectSection.i18n.php';
 
 // Two new permissions
 $wgGroupPermissions['sysop']['protectsection']         = true;
 $wgGroupPermissions['bureaucrat']['protectsection']    = true;
 $wgAvailableRights[] = 'protectsection';
- 
+
 $wgExtensionFunctions[] = 'wfProtectSectionSetup';
 
 // Register hooks
-$wgHooks['ParserBeforeStrip'][] = 'wfStripProtectTags' ;
+$wgHooks['ParserAfterTidy'][] = 'wfStripProtectTags' ;
 $wgHooks['EditFilter'][] = 'wfCheckProtectSection' ;
 
-/**
- * TODO: use some arrays in ./languages/ for proper l10n
- */
 function wfProtectSectionSetup() {
-	global $wgMessageCache;
-	$wgMessageCache->addMessages(
-	array(
-		'protectsection_add_remove' => 
-			'You tried to add or remove a protected section',
-		'protectsection_modify' => 
-			'You tried to modify protected text',
-		'protectsection_forbidden' =>
-			'Forbidden',
-		)
-	);
+	wfLoadExtensionMessages( 'ProtectSection' );
 }
 
 /**
@@ -62,13 +64,26 @@ function wfProtectSectionSetup() {
  * @param &$text The text being parsed
  * @param &$x Something not used FIXME
  */
-function wfStripProtectTags ( &$parser , &$text, &$x ) { 
+function wfStripProtectTags ( &$parser , &$text) {
 
-	$text = preg_replace("/<protect>/i","<span class='protected'>",$text);
-	$text = preg_replace("/<\/protect>/i","</span>",$text);
+	global $wgUser;
+
+	$tmp = explode("&lt;protect&gt;",$text);
+	$sections = array();
+	$sections[] = array_shift($tmp);
+	foreach($tmp as $block){
+		$tmp = explode("&lt;/protect&gt;",$block);
+		if ( $wgUser->isAllowed( 'protectsection' ) ) {
+			$sections[] = "<span class='protected'>".$tmp[0]."</span>";
+		}else{
+			$sections[] = "<span class='protected'>".preg_replace("/<div class=\"editsection(.*?)<\/div>/i", "", $tmp[0])."</span>";
+		}
+		array_shift($tmp);
+		$sections[] = implode('',$tmp);
+	}
+	$text = implode("",$sections);
 	return true;
 }
-
 
 /**
  * @todo Document
@@ -78,24 +93,34 @@ function wfStripProtectTags ( &$parser , &$text, &$x ) {
  */
 function wfCheckProtectSection ( $editpage, $textbox1, $section )  {
 
-	# check for partial protection 
-	global $wgUser;
+	# check for partial protection
+	global $wgUser,$wgParser;
 
 	if ( !$wgUser->isAllowed( 'protectsection' ) ) {
-		$modifyProtect = false; 
+		$modifyProtect = false;
 		$text1 = $editpage->mArticle->getContent(true);
+
+		if( $section != '' ) {
+			if( $section == 'new' ) {
+				$text1 = "";
+			} else {
+				$text1 = $wgParser->getSection( $text1, $section );
+			}
+		}
+
 		$text2 = $textbox1 ;
 
-		preg_match_all( "/<protect>(.*?)<\/protect>/si", $text1, $list1, PREG_SET_ORDER );
-		preg_match_all( "/<protect>(.*?)<\/protect>/si", $text2, $list2, PREG_SET_ORDER );
-		if( count($list1) != count($list2)) { 
-			$msg = wfMsg( 'protectsection_add_remove'); 
-			$modifyProtect = true; 
+		preg_match_all( "/<protect>(.*?)<\/protect>|<protect>(.*?)$/si", $text1, $list1, PREG_SET_ORDER );
+		preg_match_all( "/<protect>(.*?)<\/protect>|<protect>(.*?)$/si", $text2, $list2, PREG_SET_ORDER );
+
+		if( count($list1) != count($list2)) {
+			$msg = wfMsg( 'protectsection_add_remove');
+			$modifyProtect = true;
 		}
 		else for ( $i=0 ; $i < count( $list1 ); $i++ ) {
-			if( $list1[$i][0] != $list2[$i][0]) { 
+			if( $list1[$i][0] != $list2[$i][0]) {
 				$msg = wfMsg( 'protectsection_modify' );
-				$modifyProtect = true; 
+				$modifyProtect = true;
 				break;
 			}
 		}
@@ -109,4 +134,3 @@ function wfCheckProtectSection ( $editpage, $textbox1, $section )  {
 	}
 	return true;
 }
-
