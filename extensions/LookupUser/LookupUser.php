@@ -19,6 +19,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Lookup User',
 	'author' => 'Tim Starling',
 	'description' => 'Retrieve information about a user such as email address and ID',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:LookupUser',
 );
 
 $dir = dirname(__FILE__) . '/';
@@ -66,6 +67,7 @@ function wfSetupLookupUser() {
 			$title = htmlspecialchars( $this->getTitle()->getPrefixedText() );
 			$action = htmlspecialchars( $wgScript );
 			$target = htmlspecialchars( $target );
+			$ok = wfMsg( 'go' );
 			$username = wfMsg( 'username' );
 			$inputformtop = wfMsg( 'lookupuser' );
 
@@ -80,7 +82,7 @@ function wfSetupLookupUser() {
 <tr>
 <td align="right">$username</td>
 <td align="left"><input type="text" size="50" name="target" value="$target" />
-<td colspan="2" align="center"><input type="submit" name="submit" value="OK" /></td>
+<td colspan="2" align="center"><input type="submit" name="submit" value="$ok" /></td>
 </tr>
 </table>
 </form>
