@@ -4,7 +4,7 @@ function fundcore_frontpage_panels_layouts() {
   $items['fundcore_frontpage'] = array(
     'module' => 'fundcore_frontpage_panel',
     'title' => t('Fundraising CORE Frontpage'),
-    'icon' => 'fundcore_frontpage_panel.png',
+    'icon' => drupal_get_path('module', 'fundcore_frontpage') . '/fundcore_frontpage_panel_layout.png',
     'theme' => 'fundcore_frontpage_panel',
     'css' => 'fundcore_frontpage_panel_layout.css',
     'content areas' => array(
