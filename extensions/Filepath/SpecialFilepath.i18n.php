@@ -155,6 +155,11 @@ $wgFilepathMessages['kk-cn'] = array(
 	فايل اتاۋىن «{{ns:image}}:» دەگەن باستاۋىشسىز ەڭگٸزٸڭٸز.',
 );
 $wgFilepathMessages['kk'] = $wgFilepathMessages['kk-kz'];
+$wgFilepathMessages['ksh'] = array(
+	'filepath'        => 'Bellder, Tööhn, uew. zëije, med ier URL',
+	'filepath_page'   => 'Dattëij_Name:',
+	'filepath_submit' => 'Zëĳsh dä Pahdt',
+);
 $wgFilepathMessages['la'] = array(
 	'filepath'        => 'Fasciculorum inscriptio',
 	'filepath_page'   => 'Fasciculus:',

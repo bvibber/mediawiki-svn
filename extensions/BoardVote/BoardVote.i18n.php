@@ -1115,6 +1115,54 @@ $wgBoardVoteMessages['kk-cn'] = array(
 	'grouppage-boardvote'     => '{{ns:project}}:كەڭەس سايلاۋ ٴاكٴىمشٴىلەرٴى',
 );
 $wgBoardVoteMessages['kk'] = $wgBoardVoteMessages['kk-kz'];
+$wgBoardVoteMessages['ksh'] = array(
+	'boardvote'               => 'Waahle för_t „Wikimedia Board of Trustees“ (De forantwochtlijje Füürshtändt bëij Wikkimedija)',
+	'boardvote_entry'         => '* [[Special:Boardvote/vote|Affshtemme]]
+* [[Special:Boardvote/list|Zëĳsh de affjejovvene Shtemme beß jäz]]
+* [[Special:Boardvote/dump|Zëĳsh de affjejovvene Shtemme beß jäz en ÷:ksh:MediaWiki:MediaWiki:boardvote_dumplink]]',
+	'boardvote_intro_change'  => '<p>Do häß alld fröjer affjeshtemmp.
+Do kannß ävver Ding affjejovvene Shtemm änndere.
+Maach unge ëijnfach e Höksche odder Ding Krüzzje
+nevven di Kandidaate, di de ungershtözze wellß.</p>',
+	'boardvote_entered'       => 'Häzlijjen Dangk. Ding Shtemm eß jäz faßßjehallde.
+
+Wänn_De wellß, donn Der de Ëijnzelhëĳte fun hee shpëijshere. Ding Daate fun de Affshtemmung sinn:
+
+<pre>$1</pre>
+
+Se weede foschlößßeldt jedshpëijshot, me_m [http://ksh.wikipedia.org/wiki/%C3%96ffentlijje_Schl%C3%B6%C3%9F%C3%9Fel öffentlijje Schlößßel] fun däm Lëijder fun dä Affshtemmung. Dä Schlößßel eß:
+
+<pre>$2</pre>
+
+Hee de foschlößßelte Väsjohn fun_Dinge Daate:
+
+<pre>$3</pre>
+
+Alle Shtemme kannß_De_Der [[Special:Boardvote/dump|hee en ÷:ksh:MediaWiki:MediaWiki:boardvote_dumplink]] aanluure.<br />Sönß [[Special:Boardvote/entry|jangk zerögk]]',
+	'boardvote_notloggedin'   => 'Do beß nit aanjemälldt.
+För affshtemme ze dörrəve, moß de aanjemelldt sinn,
+un Do moßß füür_em $2 minnßtenß $1 Bëijdrääsh unger Däm ÷:ksh:User_Naam jemaat hann.',
+	'boardvote_notqualified'  => '\'\'\'Schaadt.\'\'\'
+Ding beßheerijje $1 Bëijdrääsh füür_em $2 sin_nit jenooch.
+Mer moßß winnishßtenß $3 Bëijdrääsh füürem Shtėshdaach jeschrevve hann,
+iih dat mer bëijem Affshtemme övver de Diräktoore
+un Füüshtändt zohjelooße eß.
+Beß nit kott.
+Bëijm nääkße Mool klabb_et beshtemmp.',
+	'boardvote_novotes'       => 'Noch hät Këijne hee affjeshtimmp…',
+	'boardvote_time'          => 'Dattum un Zigk',
+	'boardvote_user'          => '÷:ksh:User',
+	'boardvote_edits'         => 'Bëijdrääsh',
+	'boardvote_days'          => 'Dare',
+	'boardvote_listintro'     => '<p>Hee küdd_en Lėßß med_all dä Shtemme,
+di_mer heß_jäz faßßjehallde hann,
+noh_m Allfabet zotteet.</p>
+<p>(Mer künne die Daate och en $1 aanzëije)</p>',
+	'boardvote_dumplink'      => 'Foschlößßeldt',
+	'boardvote_needadmin'     => 'Nuur de ÷:ksh:MediaWiki:group-sysop fö_de Waahle künne dat maache.',
+	'boardvote_closed'        => 'De Waahl ess_eröm, luuer dann op de [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation Sigk medt_te Waal_Äjeepnißße], wadd_errußß_koohm.',
+	'boardvote_edits_many'    => '— janz fill —',
+);
 $wgBoardVoteMessages['la'] = array(
 	'boardvote_time'          => 'Tempus',
 	'boardvote_user'          => 'Usor',

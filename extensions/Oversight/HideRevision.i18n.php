@@ -501,6 +501,10 @@ Bul mälimetti barşağa aşqanda Nusqa jasırwşı quqıqtarıñız ärdaýım 
 بۇل مٵلٸمەتتٸ بارشاعا اشقاندا نۇسقا جاسىرۋشى قۇقىقتارىڭىز ٵردايىم ٶشٸرٸلەدٸ.',
 ),
 
+'ksh' => array(
+	'hiderevision-submit' => 'Důnn_di Väsjohn foshtäshe',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'hiderevision' => 'Versies permanent verbergen',

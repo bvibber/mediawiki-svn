@@ -495,6 +495,25 @@ function efMakeBotMessages() {
 	'makebot-logentryrevoke' => '[[$1]] دەگەننەن بوت كٷيٸ الاستاتىلدى',
 ),
 
+'ksh' => array(
+	'makebot'                 => '{{NS:User}} zom Bot maache un ömmjekiijot',
+	'makebot-username'        => 'Hee dä {{ns:user}}_Name fö_dä Bot:',
+	'makebot-search'          => 'Loßß_Jonn!',
+	'makebot-isbot'           => 'Dä {{ns:user}} „[[User:$1|$1]]“ eß alld_enne Bot.',
+	'makebot-notbot'          => 'Dä {{ns:user}} „[[:User:$1|$1]]“ eß këĳnne Bot.',
+	'makebot-privileged'      => 'Dä {{ns:user}} [[:User:$1|$1]] ess_[[:Special:Listadmins|enne Wikki_Köbeß odder_enne Bürokraat]], un dä kann dröm nit zom Bot jemaat wääde.',
+	'makebot-change'          => 'Änndere:',
+	'makebot-grant'           => 'Zom Bot maache',
+	'makebot-revoke'          => 'Fott_Nämme',
+	'makebot-comment'         => 'Bemärrkung:',
+	'makebot-granted'         => 'Dä {{ns:user}} „[[:User:$1|$1]]“ eß jäz enn Bot.',
+	'makebot-revoked'         => 'Dä {{ns:user}} „[[User:$1|$1]]“ eß jäz këĳnne Bot mih.',
+	'makebot-logpage'         => 'Logbooch met Bot_Shtatus_Änderonge',
+	'makebot-logpagetext'     => 'He is opjelėßß, wat fö_n {{ns:user}} wat fö_n anndere {{ns:user}} dä Shtatuß als_enne Bot_jejovve oddo_fottjenumme hann.',
+	'makebot-logentrygrant'   => 'hät dä_{{ns:user}} „[[$1]]“ zom Bot jemaat',
+	'makebot-logentryrevoke'  => 'hät däm_{{ns:user}} „[[$1]]“ de Bot-Ëĳeschaff jenůmme',
+),
+
 'la' => array(
 	'makebot-username'        => 'Nomen usoris:',
 	'makebot-search'          => 'Ire',

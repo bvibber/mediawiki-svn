@@ -186,6 +186,12 @@ $wgNewuserlogMessages['ko'] = array(
 	'newuserlogpagetext'       => '사용자 등록 기록입니다.',
 	'newuserlog-create-entry'  => '새 사용자',
 );
+$wgNewuserlogMessages['ksh'] = array(
+	'newuserlogpage'           => 'Logbooch för nöü Users',
+	'newuserlogpagetext'       => 'He sin de Users opjelėßß, di sesh nöü aanjemäldt han.',
+	'newuserlog-create-entry'  => 'eß enne nöüje User',
+	'newuserlog-create2-entry' => 'Nöüje Zojang enjerėshdt för „$1“',
+);
 $wgNewuserlogMessages['ku'] = array(
 	'newuserlogpage'           => 'Reşahiya çêkirina hesabên nû',
 	'newuserlog-create-entry'  => 'Bikarhênerekî nuh',
