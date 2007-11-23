@@ -58,6 +58,8 @@ class ApiMove extends ApiBase {
 				$this->dieUsage('You have been blocked from editing', 'blocked');
 		if(wfReadOnly())
 				$this->dieUsage('The wiki is in read-only mode', 'readonly');
+		if($params['noredirect'] && !$wgUser->isAllowed('suppressredirect'))
+				$this->dieUsage("You don't have permission to suppress redirect creation", 'nosuppress');
 
 		$fromTitle = Title::newFromText($params['from']);
 		if(!$fromTitle)

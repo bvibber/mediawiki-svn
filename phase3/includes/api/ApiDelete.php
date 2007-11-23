@@ -71,7 +71,7 @@ class ApiDelete extends ApiBase {
 		// Auto-generate a summary, if necessary
 		if(is_null($reason))
 		{
-			$reason = $article->generateReason();
+			$reason = $article->generateReason($hasHistory);
 			if($reason === false)
 				return self::DELETE_BADARTICLE;
 		}

@@ -66,7 +66,7 @@ class ApiUnblock extends ApiBase {
 		$reason = $params['reason'];
 		$dbw = wfGetDb(DB_MASTER);
 		$dbw->begin();
-		$retval = IPUnblockForm::doUnblock(&$id, &$user, &$reason);
+		$retval = IPUnblockForm::doUnblock(&$id, &$user, &$reason, &$range);
 
 		switch($retval)
 		{
@@ -76,6 +76,8 @@ class ApiUnblock extends ApiBase {
 				$this->dieUsage("There is no block with ID ``$id''", 'nosuchid');
 			case IPUnblockForm::UNBLOCK_USER_NOT_BLOCKED:
 				$this->dieUsage("User ``$user'' is not blocked", 'notblocked');
+			case IPUnblockForm::UNBLOCK_BLOCKED_AS_RANGE:
+				$this->dieUsage("IP address ``$user'' was blocked as part of range ``$range''. You can't unblock the IP invidually, but you can unblock the range as a whole.", 'blockedasrange');
 			case IPUnblockForm::UNBLOCK_UNKNOWNERR:
 				$this->dieUsage("Unknown error", 'unknownerr');
 			default:

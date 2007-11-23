@@ -93,8 +93,8 @@ class ApiRollback extends ApiBase {
 						"The current revision ID is ``$currentID''", 'alreadyrolled');
 			case Article::ONLY_AUTHOR:
 				$this->dieUsage("User ``$username'' is the only author of the page", 'onlyauthor');
-			case Article::EDIT_FAILED:
-				$this->dieDebug(__METHOD__, 'Article::doEdit() failed');
+			case Article::RATE_LIMITED:
+				$this->dieUsage("You can't rollback too many articles in too short a time. Please wait a little while and try again", 'ratelimited');
 			default:
 				// rollback() has apparently invented a new error, which is extremely weird
 				$this->dieDebug(__METHOD__, "rollback() returned an unknown error ($retval)");
