@@ -41,14 +41,14 @@ Remember: '''You cannot get your permissions back this way!''' You will have to 
 ),
 
 'de' => array(
-	'resign'           => 'Rücktritt',
-	'resign-text'      => "Sie können auf dieser Seite '''Ihre Berechtigungen zurückgeben''' (z.B. die Administrator-Berechtigung). Bitte prüfen Sie die Berechtigungen, die Sie zurückgeben möchten.
+	'resign'           => 'Rückgabe von Berechtigungen',
+	'resign-text'      => "Du kannst auf dieser Seite '''deine Berechtigungen zurückgeben''' (z.B. die Administrator-Berechtigung). Bitte prüfe die Berechtigungen, die du zurückgeben möchtest.
 
-Wichtig: '''Dieser Schritt ist unwiderruflich.!''' Sie müssen einen Bürokraten oder Steward kontaktieren, um Ihre Rechte wiederzuerhalten. Bitte benutzen Sie diese Seite daher nur nach sorgfäliger Überlegung.",
+Wichtig: '''Dieser Schritt ist unwiderruflich!''' Du musst einen Bürokraten oder Steward kontaktieren, um deine Rechte wiederzuerhalten. Bitte benutze diese Seite daher nur nach sorgfäliger Überlegung.",
 	'resign-reason'    => 'Grund:',
 	'resign-confirm'   => 'Ich bestätige, dass ich alle markierten Berechtigungen zurückgeben möchte.',
-	'resign-noconfirm' => 'Bitte markieren Sie das Bestätigungsfeld um Ihre Berechtigungen zurückzugeben.',
-	'resign-nogroups'  => 'Bitte markieren Sie die Berechtigungen, die Sie zurückgeben möchten.',
+	'resign-noconfirm' => 'Bitte markiere das Bestätigungsfeld, um deine Berechtigungen zurückzugeben.',
+	'resign-nogroups'  => 'Bitte markiere die Berechtigungen, die du zurückgeben möchtest.',
 	'resign-success'   => "'''Die Rückgabe der Berechtigungen war erfolgreich.'''",
 	'resign-logentry'  => 'gab die Berechtigung(en) $2 zurück',
 ),
