@@ -20,6 +20,7 @@ public class Benchmark extends Thread {
 	protected String namespace;
 	protected String namespaceFilter;
 	protected static boolean sample;
+	protected int limit;
 	
 	protected int thread; // current thread
 		
@@ -37,12 +38,12 @@ public class Benchmark extends Thread {
 	protected static Object sharedLock = new Object();
 	
 	/** Use this to construct the main thread */
-	public Benchmark(String host, int port, String database, String verb, Terms terms, int words, String namespace, String namespaceFilter) {
-		this(host,port,database,verb,terms,words,namespace,namespaceFilter,0,0);
+	public Benchmark(String host, int port, String database, String verb, Terms terms, int words, String namespace, String namespaceFilter, int limit) {
+		this(host,port,database,verb,terms,words,namespace,namespaceFilter,limit,0,0);
 	}
 	
 	/** Use this to construct a benchmark thread */
-	public Benchmark(String host, int port, String database, String verb, Terms terms, int words, String namespace, String namespaceFilter, int runs, int thread) {
+	public Benchmark(String host, int port, String database, String verb, Terms terms, int words, String namespace, String namespaceFilter, int limit, int runs, int thread) {
 		this.host = host;
 		this.port = port;
 		this.database = database;
@@ -53,6 +54,7 @@ public class Benchmark extends Thread {
 		this.words = words;
 		this.namespace = namespace;
 		this.namespaceFilter = namespaceFilter;
+		this.limit = limit;
 	}
 
 	/** Start benchmarking on main thread */
@@ -67,7 +69,7 @@ public class Benchmark extends Thread {
 		collector = new Collector(100,threads*runs,threads);
 		
 		for(int i=0;i<threads;i++)
-			new Benchmark(host,port,database,verb,terms,words,namespace,namespaceFilter,runs,i).start();
+			new Benchmark(host,port,database,verb,terms,words,namespace,namespaceFilter,limit,runs,i).start();
 		
 		// wait until all thread finish
 		while(activeThreads != 0){
@@ -121,10 +123,10 @@ public class Benchmark extends Thread {
 		String urlString;
 		if(namespace.equals("")){
 			query = URLEncoder.encode(query).replaceAll("\\+","%20");
-			urlString = "http://"+host+":"+port+"/"+verb+"/"+database+"/"+query+"?limit=20&namespaces="+namespaceFilter;
+			urlString = "http://"+host+":"+port+"/"+verb+"/"+database+"/"+query+"?limit="+limit+"&namespaces="+namespaceFilter;
 		} else{
 			query = URLEncoder.encode(namespace+":"+query).replaceAll("\\+","%20");
-			urlString = "http://"+host+":"+port+"/"+verb+"/"+database+"/"+query+"?limit=20";
+			urlString = "http://"+host+":"+port+"/"+verb+"/"+database+"/"+query+"?limit="+limit;
 		}
 		if(sample){
 			System.out.println("url ~ "+urlString);
@@ -190,6 +192,7 @@ public class Benchmark extends Thread {
 		sample = true;
 		String wordfile = null;
 		Terms terms;
+		int defaultLimit = 20;
 		
 		for(int i = 0; i < args.length; i++) {
 			if (args[i].equals("-h")) {
@@ -213,6 +216,8 @@ public class Benchmark extends Thread {
 				namespace ="";
 			} else if (args[i].equals("-w")) {
 				words = Integer.parseInt(args[++i]);
+			} else if (args[i].equals("-lm")) {
+				defaultLimit = Integer.parseInt(args[++i]);
 			} else if (args[i].equals("-l") || args[i].equals("-lang")) {
 				lang = args[++i];
 			} else if (args[i].equals("-s") || args[i].equals("-sample")) {
@@ -230,6 +235,7 @@ public class Benchmark extends Thread {
 				                   "  -f  namespace filter (default: "+namespaceFilter+")\n"+
 				                   "  -l  language (default: "+lang+")\n"+
 				                   "  -s  show sample url (default: "+sample+")\n"+
+				                   "  -lm  limit number of results (default: "+defaultLimit+")\n"+
 				                   "  -wf <file> use file with search terms (default: none)\n");
 				return;
 			} else{
@@ -247,7 +253,7 @@ public class Benchmark extends Thread {
 			terms = new WordTerms("./test-data/words-wikilucene.ngram.gz");
 		
 		System.out.println("Running benchmark on "+database+" "+host+":"+port+" with "+threads+" theads each "+runs+" runs, "+words+" words, filter: "+((namespace == "")? namespaceFilter : namespace)+", lang "+lang);
-		Benchmark bench = new Benchmark(host, port, database, verb, terms, words, namespace, namespaceFilter);
+		Benchmark bench = new Benchmark(host, port, database, verb, terms, words, namespace, namespaceFilter, defaultLimit);
 		bench.startBenchmark(threads,runs);
 		bench.printReport();
 	}

@@ -116,7 +116,7 @@ public class Snippet implements Serializable {
 		this.highlighted = highlighted;
 	}
 	public String getOriginalText() {
-		return originalText;
+		return originalText.trim();
 	}
 	public void setOriginalText(String originalText) {
 		this.originalText = originalText;

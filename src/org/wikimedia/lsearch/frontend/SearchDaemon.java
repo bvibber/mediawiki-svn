@@ -99,7 +99,7 @@ public class SearchDaemon extends HttpHandler {
 						sendHighlight("title",hr.getFormattedTitle());
 						sendHighlight("text",hr.getFormattedText());
 						sendHighlightWithTitle("redirect",hr.getFormattedRedirect(),hr.getRedirect());
-						sendHighlightWithTitle("section",hr.getFormattedSection(),hr.getSection());
+						sendHighlightWithFragment("section",hr.getFormattedSection(),hr.getSection());
 					}
 				}
 			} else{
@@ -113,17 +113,41 @@ public class SearchDaemon extends HttpHandler {
 	
 	private void sendHighlight(String type, String text){
 		if(text != null)
-			sendOutputLine("#h."+type+" "+text);
+			sendOutputLine("#h."+type+" "+encode(text));
 	}
 	
 	private void sendHighlightWithTitle(String type, String text, Snippet snippet){
 		if(text != null && snippet != null)
-			sendOutputLine("#h."+type+" "+encodeTitle(snippet.getOriginalText().trim())+" "+text);
+			sendOutputLine("#h."+type+" "+encodeTitle(snippet.getOriginalText())+" "+encode(text));
+	}
+	
+	private void sendHighlightWithFragment(String type, String text, Snippet snippet){
+		if(text != null && snippet != null)
+			sendOutputLine("#h."+type+" "+encodeFragment(snippet.getOriginalText())+" "+encode(text));
+	}
+	
+	private String encode(String text){
+		try {
+			return URLEncoder.encode(text, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return "";
+		}
 	}
 	
 	private String encodeTitle(String title){
 		try {
 			return URLEncoder.encode(title.replaceAll(" ", "_"), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return "";
+		}
+	}
+	
+	private String encodeFragment(String fragment){
+		try {
+			String enc = URLEncoder.encode(fragment.replaceAll(" ", "_"), "UTF-8");
+			return enc.replaceAll("%3A",":").replaceAll("%",".");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			return "";

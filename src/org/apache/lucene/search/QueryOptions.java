@@ -78,7 +78,7 @@ public class QueryOptions implements Serializable {
 		public AlttitleExactOptions(PhraseInfo alttitleInfo){
 			aggregateMeta = alttitleInfo;
 			takeMaxScore = true;
-			wholeBoost = 500;
+			wholeBoost = 50000;
 		}
 	}
 	
@@ -88,6 +88,20 @@ public class QueryOptions implements Serializable {
 			aggregateMeta = alttitleInfo;
 			takeMaxScore = true;
 			wholeBoost = 10;
+		}
+	}
+	
+	/** Options for mainphrase combined */
+	public static class CombinedMainOptions extends QueryOptions {
+		public CombinedMainOptions(Query stemtitleQuery, Query relatedQuery){
+			stemtitle = stemtitleQuery;
+			related = relatedQuery;
+		}
+	}
+	
+	/** Options for alttitle combined */
+	public static class CombinedAlttitleOptions extends QueryOptions {
+		public CombinedAlttitleOptions(){
 		}
 	}
 }

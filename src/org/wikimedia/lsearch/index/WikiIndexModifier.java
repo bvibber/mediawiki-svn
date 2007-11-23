@@ -590,7 +590,7 @@ public class WikiIndexModifier {
 			addToItems(items, new Aggregate(redirects.get(i),transformRank(ranks.get(i)),iid,analyzer,prefix,stopWords));
 		}
 		// add section headings!
-		for(String h : tokenizer.getHeadingText()){
+		for(String h : tokenizer.getHeadingText()){			
 			addToItems(items, new Aggregate(title+" "+h,rankBoost*HEADINGS_BOOST,iid,analyzer,prefix,stopWords));
 		}
 		makeAggregate(doc,prefix,items);

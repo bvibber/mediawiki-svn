@@ -10,12 +10,14 @@ import org.apache.lucene.search.CustomPhraseQuery.CustomPhraseWeight;
 import org.apache.lucene.search.*;
 
 public class CombinedPhraseQuery extends Query {
+	QueryOptions options;
 	QueryOptions sloppyOptions;
 	QueryOptions exactOptions;
 	CustomPhraseQuery sloppy, exact;
 	HashSet<String> stopWords;
 	
-	public CombinedPhraseQuery(QueryOptions sloppyOptions, QueryOptions exactOptions, HashSet<String> stopWords){
+	public CombinedPhraseQuery(QueryOptions combinedOptions, QueryOptions sloppyOptions, QueryOptions exactOptions, HashSet<String> stopWords){
+		this.options = combinedOptions;
 		this.sloppyOptions = sloppyOptions;
 		this.exactOptions = exactOptions;
 		this.stopWords = stopWords;
@@ -58,7 +60,12 @@ public class CombinedPhraseQuery extends Query {
 	
 	@Override
 	public String toString(String f) {
-		return "[combined: "+sloppy.toString(f)+" "+exact.toString(f)+"]";
+		String s = "[combined: "+sloppy.toString(f)+" "+exact.toString(f);
+		if(options.stemtitle != null)
+			s += ", with "+options.stemtitle;
+		if(options.related != null)
+			s += ", with "+options.related;
+		return s +"]";
 	}
 	
 	protected class CombinedPhraseWeight implements Weight {
@@ -70,22 +77,30 @@ public class CombinedPhraseQuery extends Query {
 			similarity = searcher.getSimilarity();
 			sloppyWeight = sloppy.createWeight(searcher);
 			exactWeight = exact.createWeight(searcher);
+			// init additional weights
+			if(options.stemtitle != null)
+				stemtitleWeight = options.stemtitle.createWeight(searcher);
+			if(options.related != null)
+				relatedWeight = options.related.createWeight(searcher);			
 		}
 
 		public Explanation explain(IndexReader reader, int doc) throws IOException {
 	      Explanation e = new Explanation();
 	      e.setDescription("weight(combined["+getQuery()+"] in "+doc+"), product of:");
-	      Explanation sum = scorer(reader).explain(doc);
-	      Explanation sl = sloppyWeight.explain(reader,doc);
-	      if(sl.isMatch())
-	      	sum.addDetail(sl);
-	      Explanation ex = exactWeight.explain(reader,doc);
-	      if(ex.isMatch())
-	      	sum.addDetail(ex);
-	      e.addDetail(sum);
+	      Explanation prod = scorer(reader).explain(doc);
+	      if(prod.getDetails().length > 0){
+	      	Explanation sum = prod.getDetails()[prod.getDetails().length-1];
+	      	Explanation sl = sloppyWeight.explain(reader,doc);
+	      	if(sl.isMatch())
+	      		sum.addDetail(sl);
+	      	Explanation ex = exactWeight.explain(reader,doc);
+	      	if(ex.isMatch())
+	      		sum.addDetail(ex);
+	      }
+	      e.addDetail(prod);
 	      Explanation b = new Explanation(getBoost(),"boost factor");
 	      e.addDetail(b);
-	      e.setValue(sum.getValue()*b.getValue());
+	      e.setValue(prod.getValue()*b.getValue());
 	      return e;
 		}
 
@@ -98,15 +113,31 @@ public class CombinedPhraseQuery extends Query {
 		}
 
 		public void normalize(float norm) {
+			if(stemtitleWeight != null)
+				stemtitleWeight.normalize(norm);
+			if(relatedWeight != null)
+				relatedWeight.normalize(norm);
 			sloppyWeight.normalize(norm);
 			exactWeight.normalize(norm);
 		}
 
 		public Scorer scorer(IndexReader reader) throws IOException {
-			return new CombinedPhraseScorer(this, similarity, sloppyWeight.scorer(reader), exactWeight.scorer(reader));
+			// additional scorers
+			Scorer stemtitleScorer = null;
+			Scorer relatedScorer = null;
+			if(stemtitleWeight != null)
+				stemtitleScorer = stemtitleWeight.scorer(reader);
+			if(relatedWeight != null)
+				relatedScorer = relatedWeight.scorer(reader);
+			return new CombinedPhraseScorer(this, similarity, sloppyWeight.scorer(reader), exactWeight.scorer(reader), 
+					stemtitleScorer, relatedScorer);
 		}
 
-		public float sumOfSquaredWeights() throws IOException {
+		public float sumOfSquaredWeights() throws IOException {			
+			if(stemtitleWeight != null)
+				stemtitleWeight.sumOfSquaredWeights();
+			if(relatedWeight != null)
+				relatedWeight.sumOfSquaredWeights();
 			return sloppyWeight.sumOfSquaredWeights()
 			+ exactWeight.sumOfSquaredWeights();
 		}

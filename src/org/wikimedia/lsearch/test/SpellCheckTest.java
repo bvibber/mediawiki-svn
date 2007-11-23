@@ -97,6 +97,8 @@ public class SpellCheckTest {
    	{"livia tremor control","olivia tremor control"},
    	{"ommmited","omitted"},
    	{"Good Thomas fft","Good Thomas fft"},
+   	{"Sanitazer","Sanitizer"},
+   	{"Sanitizer",""},
    	
    };
 

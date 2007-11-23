@@ -22,7 +22,7 @@ import org.wikimedia.lsearch.util.UnicodeDecomposer;
 public class ExtToken extends Token implements Serializable {
 	static Logger log = Logger.getLogger(ExtToken.class);
 	/** position within the text */
-	public enum Position { NORMAL, FIRST_SECTION, TEMPLATE, IMAGE_CAT_IW, EXT_LINK, HEADING, REFERENCE, BULLETINS };
+	public enum Position { NORMAL, FIRST_SECTION, TEMPLATE, IMAGE_CAT_IW, EXT_LINK, HEADING, REFERENCE, BULLETINS, TABLE };
 	/** type of token */
 	public enum Type { TEXT, GLUE, SENTENCE_BREAK, MINOR_BREAK, URL };
 	protected Position pos = Position.NORMAL;
@@ -126,6 +126,7 @@ public class ExtToken extends Token implements Serializable {
 	public static byte[] serialize(TokenStream tokens) throws IOException{
 		Buffer b = new Buffer();
 		Position pos = Position.NORMAL, lastPos = null;
+		Type lastType = null;
 		boolean wroteFirst = false;
 		
 		Token tt = null;
@@ -149,6 +150,11 @@ public class ExtToken extends Token implements Serializable {
 				//b.write((byte)t.type.ordinal());
 				b.write((byte)t.pos.ordinal());
 				wroteFirst = true;
+			}
+			
+			// control 8: two adjecent glue tokens
+			if(t.type != Type.TEXT && t.type != Type.URL && lastType != Type.TEXT && lastType != Type.URL){
+				b.writeControl(8);
 			}
 			
 			// control 5: URLs
@@ -192,6 +198,9 @@ public class ExtToken extends Token implements Serializable {
 			if(t.type == Type.SENTENCE_BREAK){
 				b.writeControl(4);
 			}
+			
+			lastType = t.type;
+				
 		}		
 		return b.getBytes();
 	}
@@ -216,15 +225,18 @@ public class ExtToken extends Token implements Serializable {
 	enum ParseType { TEXT, NUMBER, GAP};
 	
 	/** c - current char, prev - previous char */
-	private static boolean isText(char c, char prev){
-		return Character.isLetterOrDigit(c) || (c=='\'' && Character.isLetter(prev)) || decomposer.isCombiningChar(c); 
+	private static boolean isText(char c, char prev, char next){
+		return Character.isLetterOrDigit(c) || (c=='\'' && Character.isLetter(prev) && Character.isLetter(next)) || decomposer.isCombiningChar(c); 
 	}
 	
 	/** Get a single token from a string, beginning at position inx */
 	private static ExtToken getToken(String s, int inx){
 		Type type;
-		char c = s.charAt(inx);		 
-		if(isText(c,'\0'))
+		char c = s.charAt(inx);
+		char c1 = '\0';
+		if(inx + 1 < s.length())
+			c1 = s.charAt(inx+1);
+		if(isText(c,'\0',c1))
 			type = Type.TEXT;
 		else if(FastWikiTokenizerEngine.isMinorBreak(c))
 			type = Type.MINOR_BREAK;
@@ -237,7 +249,9 @@ public class ExtToken extends Token implements Serializable {
 		char prev = c;
 		for(int i=inx+1;i<s.length();i++,prev=c){
 			c = s.charAt(i);
-			if(type == Type.TEXT && !isText(c,prev)){
+			if(i+1 < s.length())
+				c1 = s.charAt(i+1);
+			if(type == Type.TEXT && !isText(c,prev,c1)){
 				end = i;
 				break;
 			} else if(type != Type.TEXT){
@@ -245,7 +259,7 @@ public class ExtToken extends Token implements Serializable {
 				if(FastWikiTokenizerEngine.isMinorBreak(c))
 					type = Type.MINOR_BREAK;
 				
-				if(isText(c,prev)){
+				if(isText(c,prev,c1)){
 					end = i;
 					break;
 				}					
@@ -330,6 +344,9 @@ public class ExtToken extends Token implements Serializable {
 				case 7: // original is upper case
 					t.setOriginal(t.termText().toUpperCase());
 					break;					
+				case 8:
+					// nop, just double-glue token delimiter
+					break;
 				default:
 					throw new RuntimeException("Unkown control sequence "+control);
 				}				

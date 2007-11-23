@@ -64,7 +64,7 @@ class MyHandler(BaseHTTPRequestHandler):
                 params = cgi.parse_qs(s[4])
 
                 # defaults
-                limit = 20
+                limit = 10
                 offset = 0
                 namespaces = []
                 case = "ignore"
@@ -180,11 +180,14 @@ class MyHandler(BaseHTTPRequestHandler):
                                 break
                             i+=1
                         if redirectLink != '':
-                            self.wfile.write('<small> (redirected <a href="%s">%s</a>)</small>' % (redirectLink.strip(), redirectHl.strip()))
+                            redirectHl = urllib.unquote_plus(redirectHl)
+                            self.wfile.write('<small> (redirect <a href="%s">%s</a>)</small>' % (redirectLink.strip(), redirectHl))
                         if sectionLink != '':
-                            self.wfile.write('<small> (section <a href="%s">%s</a></small>)' % (sectionLink.strip(), sectionHl.strip()))
+                            sectionHl = urllib.unquote_plus(sectionHl)
+                            self.wfile.write('<small> (section <a href="%s">%s</a></small>)' % (sectionLink.strip(), sectionHl))
                         self.wfile.write('<br>');
                         if textHl != '':
+                            textHl = urllib.unquote_plus(textHl)
                             self.wfile.write('<div style="width:500px"><font size="-1">%s</font></div>' % textHl)
                         i += 1 
                     self.wfile.write('<hr>')

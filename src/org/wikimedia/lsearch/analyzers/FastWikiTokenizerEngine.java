@@ -65,8 +65,10 @@ public class FastWikiTokenizerEngine {
 	private boolean inHeading = false; // if we are in section heading
 	private boolean inBulletin = false; // if we are in ordered lists and such
 	private boolean inImageCategoryInterwiki = false; // if we are in any of these
-	private boolean inExternalLink = false, inUrl = false;
+	private boolean inExternalLink = false, inUrl = false; // parts of url
+	private boolean inLink = false; // if we are parsing internal links
 	private boolean lastImgLinkCatWord = false; // if we are parsing the last word in a link, even when inImageCat.. is false if this is true, the word will be in the link
+	private int tableLevel = 0;
 	
 	private int prefixLen = 0;
 	private final char[] prefixBuf = new char[MAX_WORD_LEN];
@@ -370,6 +372,8 @@ public class FastWikiTokenizerEngine {
 			pos = Position.TEMPLATE;
 		else if(inBulletin)
 			pos = Position.BULLETINS;
+		else if(tableLevel > 0)
+			pos = Position.TABLE;
 		else if(headings == 0 && templateLevel == 0 && keywordTokens <= KEYWORD_TOKEN_LIMIT)
 			pos = Position.FIRST_SECTION;
 		else if(inHeading)
@@ -394,7 +398,7 @@ public class FastWikiTokenizerEngine {
 					continue;
 
 				// work out breaks
-				if(lc == '.')
+				if(lc == '.' && !inLink)
 					type = ExtToken.Type.SENTENCE_BREAK;
 				if(last == '\n' && (lc == ':' || lc == '*' || lc=='#' || lc=='\n'))
 					type = ExtToken.Type.SENTENCE_BREAK;
@@ -485,7 +489,7 @@ public class FastWikiTokenizerEngine {
 	private final void addLetter(){
 		try{			
 			// add new character to buffer
-			if(Character.isLetter(c) || (c == '\'' && cur>0 && Character.isLetter(text[cur-1])) || decomposer.isCombiningChar(c)){				
+			if(Character.isLetter(c) || (c == '\'' && cur>0 && Character.isLetter(text[cur-1]) && cur+1<textLength && Character.isLetter(text[cur+1]) ) || decomposer.isCombiningChar(c)){				
 				if(numberToken) // we were fetching a number
 					addToken(false);
 
@@ -646,7 +650,7 @@ public class FastWikiTokenizerEngine {
 					break;
 			}
 			// check
-			if(start == end && start != 0 && start+end<endOfLine-cur && start>=2 && start<=4){
+			if(start == end && start != 0 && start+end<endOfLine-cur && start>=2 && start<=5){
 				headings++;
 				headingText.add(deleteRefs(new String(text,cur+start,endOfLine-(cur+start+end))));
 				return true;
@@ -741,49 +745,73 @@ public class FastWikiTokenizerEngine {
 					continue;
 				case '|':
 					addToken();
-					// tables, check for "|| colspan = 3|" kind of syntax
-					if(cur + 1 < textLength && text[cur+1]=='|'){
-						table_col : for( lookup = cur + 2 ; lookup < textLength ; lookup++ ){
-							switch(text[lookup]){
-							case '\n': break table_col;
-							case '|': cur = lookup; break table_col;
+					// table params
+					if(templateLevel==0 && cur + 1 < textLength){
+						// check for "|| colspan = 3|" kind of syntax
+						if(text[cur+1] == '|'){
+							table_col : for( lookup = cur + 2 ; lookup < textLength ; lookup++ ){
+								switch(text[lookup]){
+								case '\n': break table_col;
+								case '|': cur = lookup; break table_col;
+								}
+							} 
+						} else if(text[cur+1] == '-'){
+							// |- align="center" kind of syntax, ignore till end of line
+							for(lookup = cur+2 ; lookup < textLength ; lookup++){
+								if(text[lookup] == '\n'){
+									cur = lookup-1;
+									break;
+								}
 							}
 						}
 					}
 					continue;
 				case '\n':
 					if(inHeading){
+						flushGlue();
 						inHeading = false;
 					}
 					addToken();
-					// check table params
-					if(cur + 1 < textLength){
-						switch(text[cur+1]){
-						case '|': 
-						case '!':
-							boolean seenNonPipe = false; // seen any other character than pipe
-							table_params : for( lookup = cur + 2 ; lookup < textLength ; lookup++ ){
-								switch(text[lookup]){
-								case '\n': break table_params;
-								case '|': 
-									if(seenNonPipe){
-										cur = lookup; 
-										break table_params;
-									} 
-									break;
-								default: 
-									if(!seenNonPipe) 
-										seenNonPipe = true;
+					// check table end and table params
+					if(templateLevel==0 && cur + 1 < textLength){
+						if(cur+2 < textLength && text[cur+1]=='|' && text[cur+2]=='}'){
+							if(tableLevel > 0)
+								tableLevel--;
+						} else{
+							switch(text[cur+1]){
+							case '|': 
+							case '!':
+								boolean seenNonPipe = false; // seen any other character than pipe
+								table_params : for( lookup = cur + 2 ; lookup < textLength ; lookup++ ){
+									switch(text[lookup]){
+									case '\n': break table_params;
+									case '|': 
+										if(seenNonPipe){
+											cur = lookup; 
+											break table_params;
+										} 
+										break;
+									default: 
+										if(!seenNonPipe) 
+											seenNonPipe = true;
+									}
 								}
 							}
 						}
 					}
-					// adjust gaps
+					// adjust gaps & figure out bulletins
 					gap = 1; inBulletin = false;
-					if(options.relocationParsing && cur + 1 < textLength){
+					if(cur + 1 < textLength){
 						switch(text[cur+1]){
-						case '\n': gap = PARAGRAPH_GAP; break;
-						case '*': case ':': case '#': gap = BULLETIN_GAP; inBulletin = true; break;
+						case '\n': 
+							if(options.relocationParsing)
+								gap = PARAGRAPH_GAP; 
+							break;
+						case '*': case ':': case '#': 
+							if(options.relocationParsing)
+								gap = BULLETIN_GAP; 
+							inBulletin = true; 
+							break;
 						}
 					}					
 					continue;
@@ -805,6 +833,7 @@ public class FastWikiTokenizerEngine {
 						firstRef = true;
 					}					
 					if(matchesString("</ref>")){
+						flushGlue();
 						inRef = false;
 						gap = 1;
 					}					
@@ -826,7 +855,7 @@ public class FastWikiTokenizerEngine {
 						state = ParserState.EXTERNAL_URL;
 						continue;
 					}
-				case '{':
+					case '{':
 					addToken();
 					if(cur + 1 < textLength )
 						c1 = text[cur+1];
@@ -947,6 +976,8 @@ public class FastWikiTokenizerEngine {
 				}
 				// fall-thru
 			case LINK_WORDS:
+				if(!inLink)
+					inLink = true;
 				if(c == '['){
 					addToken();
 					if(cur + 1 < textLength )
@@ -1000,6 +1031,8 @@ public class FastWikiTokenizerEngine {
 				continue;					
 			case LINK_END:
 				if(c == ']'){ // good link ending
+					flushGlue();
+					inLink = false;
 					if(returnToState != null){
 						state = returnToState; // nested states
 						returnToState = null;
@@ -1061,6 +1094,7 @@ public class FastWikiTokenizerEngine {
 				addLetter();
 				continue;
 			case TABLE_BEGIN:
+				tableLevel++;
 				// ignore everything up to the newspace, since they are table display params
 				while(cur < textLength && (text[cur]!='\r' && text[cur]!='\n'))
 					cur++;

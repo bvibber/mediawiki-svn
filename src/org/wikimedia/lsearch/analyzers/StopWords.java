@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.index.TermDocs;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.config.IndexRegistry;
 import org.wikimedia.lsearch.search.IndexSearcherMul;
 import org.wikimedia.lsearch.search.SearcherCache;
 import org.wikimedia.lsearch.util.HighFreqTerms;
@@ -90,7 +91,8 @@ public class StopWords {
 		}		
 	}
 	
-	protected static Hashtable<String,ArrayList<String>> cache = new Hashtable<String,ArrayList<String>>(); 
+	protected static Hashtable<String,ArrayList<String>> cache = new Hashtable<String,ArrayList<String>>();
+	protected static IndexRegistry registry = null;
 	
 	/** Get a cached entry from spell-check metadata 
 	 * @throws IOException */
@@ -100,20 +102,25 @@ public class StopWords {
 		if(stopWords != null)
 			return (ArrayList<String>) stopWords.clone();
 		else{
-			synchronized(cache){
-				stopWords = new ArrayList<String>();
-				IndexSearcherMul searcher = SearcherCache.getInstance().getLocalSearcher(iid.getSpell());
-				TermDocs d = searcher.getIndexReader().termDocs(new Term("metadata_key","stopWords"));
-				if(d.next()){
-					String val = searcher.doc(d.doc()).get("metadata_value");
-					for(String sw : val.split(" ")){
-						stopWords.add(sw);
+			if(registry == null)
+				registry = IndexRegistry.getInstance();
+			if(registry.getCurrentSearch(iid.getSpell()) != null){
+				synchronized(cache){
+					stopWords = new ArrayList<String>();
+					IndexSearcherMul searcher = SearcherCache.getInstance().getLocalSearcher(iid.getSpell());
+					TermDocs d = searcher.getIndexReader().termDocs(new Term("metadata_key","stopWords"));
+					if(d.next()){
+						String val = searcher.doc(d.doc()).get("metadata_value");
+						for(String sw : val.split(" ")){
+							stopWords.add(sw);
+						}
 					}
+					cache.put(iid.toString(),stopWords);
 				}
-				cache.put(iid.toString(),stopWords);
+				return (ArrayList<String>) stopWords.clone();
 			}
-			return (ArrayList<String>) stopWords.clone();
 		}
+		return new ArrayList<String>();
 	}
 	
 	/** Get brand new set of stop words (to be used within one thread) */

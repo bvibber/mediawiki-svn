@@ -297,7 +297,7 @@ public class RawSnippet {
 	}
 	
 	public String toString(){
-		return "first="+Boolean.toString(cur.isFirstSentence)+", sequence="+sequenceNum+", score="+score+", bestStart="+bestStart+", bestEnd="+bestEnd+", next="+next+", tokens="+tokens;
+		return "first="+Boolean.toString(cur.isFirstSentence)+", sequence="+sequenceNum+", score="+score+", bestStart="+bestStart+", bestEnd="+bestEnd+", next=["+next+"], tokens="+tokens;
 	}
 	
 	

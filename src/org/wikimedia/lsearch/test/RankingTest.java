@@ -30,6 +30,8 @@ public class RankingTest {
 		ArrayList<ResultSet> results = new ArrayList<ResultSet>();
 		while ( (line = br.readLine()) != null ) {
 			if(lineNum > 1){
+				if(line.startsWith("#"))
+					continue;
 				String[] parts = line.split(" ",3);
 				String title = URLDecoder.decode(parts[2]).replace("_"," ");
 				results.add(new ResultSet(Double.parseDouble(parts[0]),parts[1],title));

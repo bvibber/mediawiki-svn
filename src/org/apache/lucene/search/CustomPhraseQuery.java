@@ -16,17 +16,10 @@ import org.apache.lucene.search.PhraseQuery.PhraseWeight;
  */
 public class CustomPhraseQuery extends PhraseQuery {
 	protected QueryOptions options; 
-	/**  for combined queries */
-	protected QueryOptions additionalOptions;
 	protected int stopWordCount = 0;
 	
 	public CustomPhraseQuery(QueryOptions options){
 		this.options = options;
-	}
-	
-	public CustomPhraseQuery(QueryOptions sloppyOptions, QueryOptions exactOptions){
-		this.options = sloppyOptions;
-		this.additionalOptions = exactOptions;
 	}
 
 	/** Add to end of phrase */

@@ -70,10 +70,29 @@ public class Alttitles {
 		
 		// type 2: sections
 		for(String s : sections){
-			b.writeAlttitleInfo(s,new Aggregate(s,1,iid,analyzer,field),2);
+			String cs = canonizeHeadline(s);
+			if(cs != null)
+				b.writeAlttitleInfo(cs,new Aggregate(cs,1,iid,analyzer,field),2);
 		}
 
 		return b.getBytes();
+	}
+	
+	/** 
+	 * Try to emulate the MediaWiki section headline canonization (for anchors)
+	 * If cleanup fails (i.e. if there are templates in heading), returns null 
+	 * @return
+	 */
+	public static String canonizeHeadline(String heading){
+		if((heading.contains("{{") && heading.contains("}}"))
+			|| (heading.contains("<ref") && heading.contains("</ref>")))
+			return null;
+
+		return heading.replaceAll("\\[\\[([^|]+?)\\]\\]", "$1")
+		.replaceAll("\\[\\[([^|]+\\|)(.*?)\\]\\]", "$2")
+		.replaceAll("<math>.*?</math>","")
+		.replaceAll("'{2,10}","")
+		.replaceAll("<.*?>","");		
 	}
 	
 	public static Alttitles deserializeAltTitle(byte[] serialized){

@@ -416,7 +416,7 @@ public class SearchEngine {
 				highlight(iid,q,parser.getWords(),searcher,res,exactCase);
 				return res;
 			} catch(Exception e){				
-				if(e.getMessage().equals("time limit")){
+				if(e.getMessage()!=null && e.getMessage().equals("time limit")){
 					res = new SearchResults();
 					res.setErrorMsg("Time limit of "+timelimit+"ms exceeded");
 					log.warn("Execution time limit of "+timelimit+"ms exceeded.");

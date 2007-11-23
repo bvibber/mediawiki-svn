@@ -105,7 +105,7 @@ public class WikiQueryParser {
 	public static float KEYWORD_BOOST = 0.02f;
 	public static float CONTENTS_BOOST = 0.2f;
 	
-	public static int MAINPHRASE_SLOP = 10;
+	public static int MAINPHRASE_SLOP = 50;
 	public static float MAINPHRASE_BOOST = 2f;
 	public static float TITLE_ADD_BOOST = 1f;
 	public static float RELATED_BOOST = 2f;	
@@ -1486,7 +1486,7 @@ public class WikiQueryParser {
 			pq.setBoost(boost);
 			return pq;
 		} else{
-			CombinedPhraseQuery pq = new CombinedPhraseQuery(new QueryOptions.ContentsSloppyOptions(val,stemtitle,related),
+			CombinedPhraseQuery pq = new CombinedPhraseQuery(new QueryOptions.CombinedMainOptions(null,null),new QueryOptions.ContentsSloppyOptions(val,stemtitle,related),
 					new QueryOptions.ContentsExactOptions(val,stemtitle,related),preStopWords);
 			for(String w : words){
 				pq.add(new Term(field,w));
@@ -1668,7 +1668,7 @@ public class WikiQueryParser {
 	} 
 	
 	/** Make the phrase that will match redirects, etc..  */
-	public Query makeAlttitlePhrase(ArrayList<String> words, String field, int slop, float boost, HashSet<String> preStopWords){
+	public Query makeAlttitleWholePhrase(ArrayList<String> words, String field, int slop, float boost, HashSet<String> preStopWords){
 		AggregatePhraseInfo ap = new AggregatePhraseInfo();
 		boolean allStopWords = true;
 		for(String w : words){
@@ -1686,7 +1686,7 @@ public class WikiQueryParser {
 			pq.setBoost(boost);
 			return pq;
 		} else{
-			CombinedPhraseQuery pq = new CombinedPhraseQuery(new QueryOptions.AlttitleSloppyOptions(ap),
+			CombinedPhraseQuery pq = new CombinedPhraseQuery(new QueryOptions.CombinedAlttitleOptions(), new QueryOptions.AlttitleSloppyOptions(ap),
 					new QueryOptions.AlttitleExactOptions(ap),preStopWords);
 			for(String w : words){
 				pq.add(new Term(field,w));
@@ -1746,18 +1746,18 @@ public class WikiQueryParser {
 			return bq;
 
 		HashSet<String> preStopWords = StopWords.getPredefinedSet(builder.getFilters().getIndexId());
-		Query alttitleQuery = null;		
-		Query alttitle2Query = null;
+		Query wholeAlttitleQuery = null;		
+		Query alttitleQuery = null;
 		if(wildcards==null || !wildcards.hasWildcards()){
-			alttitleQuery = makeAlttitlePhrase(words,fields.alttitle(),10,1,preStopWords);
-			alttitle2Query = makeAlttitlePhrases(words,fields.alttitle(),ALT_PHRASES_BOOST);
+			wholeAlttitleQuery = makeAlttitleWholePhrase(words,fields.alttitle(),10,1,preStopWords);
+			alttitleQuery = makeAlttitlePhrases(words,fields.alttitle(),ALT_PHRASES_BOOST);
 		}
 		Query stemTitleQuery = 
 			new LogTransformScore(makeStemtitle(words,fields.stemtitle(),1,0.1f));
 		stemTitleQuery.setBoost(TITLE_ADD_BOOST);
 		Query relatedQuery = makePhrasesForRelated(words,RELATED_SLOP,RELATED_BOOST);
 		
-		Query mainPhrase = makeMainPhrase(words,fields.contents(),MAINPHRASE_SLOP,MAINPHRASE_BOOST,alttitle2Query,relatedQuery,preStopWords);
+		Query mainPhrase = makeMainPhrase(words,fields.contents(),MAINPHRASE_SLOP,MAINPHRASE_BOOST,alttitleQuery,relatedQuery,preStopWords);
 		if(mainPhrase == null)
 			return bq;
 		// build the final query
@@ -1766,8 +1766,8 @@ public class WikiQueryParser {
 		
 		if(mainPhrase != null)
 			additional.add(mainPhrase,Occur.MUST);
-		if(alttitleQuery != null)
-			additional.add(alttitleQuery,Occur.SHOULD);
+		if(wholeAlttitleQuery != null)
+			additional.add(wholeAlttitleQuery,Occur.SHOULD);
 		if(stemTitleQuery != null)
 			additional.add(stemTitleQuery,Occur.SHOULD);
 		if(relatedQuery != null)
