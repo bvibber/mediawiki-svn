@@ -32,12 +32,12 @@ function wfSetupLookupUser() {
 
 	class LookupUserPage extends SpecialPage {
 		function __construct() {
-		SpecialPage::SpecialPage( 'LookupUser' );
-		}
+		SpecialPage::SpecialPage( 'LookupUser', 'lookupuser' );
+	}
 
-		function getDescription() {
-			return wfMsg( 'lookupuser' );
-		}
+	function getDescription() {
+		return wfMsg( 'lookupuser' );
+	}
 
 		function execute( $subpage ) {
 			global $wgRequest, $wgUser;
@@ -49,7 +49,7 @@ function wfSetupLookupUser() {
 				$this->displayRestrictionError();
 				return;
 			}
-
+			
 			if ( $subpage ) {
 				$target = $subpage;
 			} else {
@@ -66,21 +66,25 @@ function wfSetupLookupUser() {
 			$title = htmlspecialchars( $this->getTitle()->getPrefixedText() );
 			$action = htmlspecialchars( $wgScript );
 			$target = htmlspecialchars( $target );
-			$username = htmlspecialchars( wfMsg( 'lookupuser_username' ) );
+			$username = wfMsg( 'username' );
+			$inputformtop = wfMsg( 'lookupuser' );
+
+			$wgOut->addWikiText( wfMsg( 'lookupuser_intro' ));
 
 			$wgOut->addHTML( <<<EOT
+<fieldset>
+<legend>$inputformtop</legend>
 <form method="get" action="$action">
 <input type="hidden" name="title" value="{$title}" />
 <table border="0">
 <tr>
 <td align="right">$username</td>
 <td align="left"><input type="text" size="50" name="target" value="$target" />
-</tr>
-<tr>
 <td colspan="2" align="center"><input type="submit" name="submit" value="OK" /></td>
 </tr>
 </table>
 </form>
+</fieldset>
 EOT
 			);
 		}
@@ -89,7 +93,7 @@ EOT
 			global $wgOut, $wgLang;
 			$user = User::newFromName( $target );
 			if ( $user->getId() == 0 ) {
-				$wgOut->addWikiText( wfMsg( 'lookupuser_nonexistent', $target ) );
+				$wgOut->addWikiText( '<span class="error">' . wfMsg( 'lookupuser_nonexistent', $target ) . '</span>' );
 			} else {
 				$authTs = $user->getEmailAuthenticationTimestamp();
 				if ( $authTs ) {
@@ -101,17 +105,17 @@ EOT
 				foreach ( $user->mOptions as $name => $value ) {
 					$optionsString .= "$name = $value <br />";
 				}
-				$wgOut->addWikiText( wfMsg( 'lookupuser_info',
-					$user->getName(),
-					$user->getId(),
-					$user->getEmail(),
-					$user->getRealName(),
-					$wgLang->timeanddate( $user->mRegistration ),
-					$wgLang->timeanddate( $user->mTouched ),
-					$authenticated,
-					$optionsString
-				));
+				$name = $user->getName();
+				$wgOut->addWikiText( '*' . wfMsg( 'username' ) . ' [[User:' . $name . '|' . $name . ']] ([[User talk:' . $name . '|' . wfMsg( 'talkpagelinktext' ) . ']] | [[Special:Contributions/' . $name . '|' . wfMsg( 'contribslink' ) . ']])' );
+				$wgOut->addWikiText( '*' . wfMsg( 'lookupuser_id', $user->getId() ));
+				$wgOut->addWikiText( '*' . wfMsg( 'lookupuser_email', $user->getEmail(), $name ));
+				$wgOut->addWikiText( '*' . wfMsg( 'lookupuser_realname', $user->getRealName() ));
+				$wgOut->addWikiText( '*' . wfMsg( 'lookupuser_registration', $wgLang->timeanddate( $user->mRegistration ) ));
+				$wgOut->addWikiText( '*' . wfMsg( 'lookupuser_touched', $wgLang->timeanddate( $user->mTouched ) ));
+				$wgOut->addWikiText( '*' . wfMsg( 'lookupuser_authenticated', $authenticated ));
+				$wgOut->addWikiText( '*' . wfMsg( 'lookupuser_useroptions' ) . '<br />' . $optionsString );
 			}
 		}
 	}
+
 }
