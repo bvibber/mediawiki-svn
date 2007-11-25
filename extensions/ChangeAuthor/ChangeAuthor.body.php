@@ -29,8 +29,8 @@ class ChangeAuthor extends SpecialPage
 		function __construct()
 		{
 				global $wgUser;
-				parent::__construct(wfMsg('changeauthor-short'), 'changeauthor');
 				self::loadMessages();
+				parent::__construct(wfMsg('changeauthor-short'), 'changeauthor');
 				$this->selfTitle = Title::makeTitleSafe(NS_SPECIAL, wfMsg('changeauthor-short'));
 				$this->skin = $wgUser->getSkin();
 		}
