@@ -14,6 +14,8 @@ $wgExtensionCredits['other'][] = array(
 	'description' => 'Adds a purge tab on all normal pages and bypasses the purge check for anonymous users allowing for quick purging of the cache'
 );
 
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['Purge'] = $dir . 'Purge.i18n.php';
 
 function wfPurge() {
 	wfUsePHP( 5.1 );
@@ -22,9 +24,7 @@ function wfPurge() {
 	class PurgeAction {
 		public function __construct() {
 			global $wgMessageCache, $wgHooks;
-			
-			$wgMessageCache->addMessage( 'purge', 'Purge' );
-			
+		wfLoadExtensionMessages( 'Purge' );		
 			$wgHooks['SkinTemplateContentActions'][] = array( &$this, 'contentHook' );
 			#$wgHooks['ArticlePurge'][] = array( &$this, 'purgeHook' );
 		}
