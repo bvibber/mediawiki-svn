@@ -84,6 +84,9 @@ $wgLinkSearchMessages['gl'] = array(
 	'linksearch-text'  => 'Extensións como "*.wikipedia.org" poden ser usadas. <br />Protocolos soportados: <tt>$1</tt>',
 	'linksearch-line'  => '$1 vinculado a $2',
 );
+$wgLinkSearchMessages['grc'] = array(
+	'linksearch-ok'    => 'Ζητεῖν',
+);
 $wgLinkSearchMessages['he'] = array(
 	'linksearch'       => 'חיפוש קישורים חיצוניים',
 	'linksearch-pat'   => 'קישור לחיפוש:',
@@ -176,13 +179,13 @@ $wgLinkSearchMessages['nan'] = array(
 	'linksearch'       => 'Chhiau-chhoē chām-goā liân-kiat',
 );
 $wgLinkSearchMessages['nl'] = array(
-	'linksearch'       => 'Zoek externe links',
+	'linksearch'       => 'Externe links zoeken',
 	'linksearch-pat'   => 'Zoekpatroon:',
 	'linksearch-ns'    => 'Naamruimte:',
 	'linksearch-ok'    => 'Zoeken',
 	'linksearch-text'  => 'Wildcards zoals "*.wikipedia.org" of "*.org" zijn toegestaan.',
 	'linksearch-line'  => '$1 gelinkt vanaf $2',
-	'linksearch-error' => 'Wildcards zijn alleen toegestaan aan het begin van een hostnaam.'
+	'linksearch-error' => 'Wildcards zijn alleen toegestaan aan het begin van een hostnaam.',
 );
 $wgLinkSearchMessages['no'] = array(
 	'linksearch'       => 'Søk i eksterne lenker',

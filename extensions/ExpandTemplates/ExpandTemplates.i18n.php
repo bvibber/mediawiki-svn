@@ -111,6 +111,7 @@ telles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}} sont 
 	'expand_templates_title'           => 'Titre de l’article, utile par exemple si le modèle utilise {{PAGENAME}} :',
 	'expand_templates_input'           => 'Entrez votre texte ici :',
 	'expand_templates_output'          => 'Résultat',
+	'expand_templates_ok'              => 'Accepter',
 	'expand_templates_remove_comments' => 'Supprimer les commentaires.',
 	'expand_templates_preview'         => 'Prévisualisation',
 );

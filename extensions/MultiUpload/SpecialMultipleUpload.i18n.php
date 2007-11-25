@@ -22,6 +22,21 @@ You can enter an optional '''Destination filename''' and provide a '''Summary'''
 Inappropriate images will be deleted immediately, see the [[{{MediaWiki:Multipleupload-page}}|image deletion policy]].",
 );
 
+$messages['ar'] = array(
+	'multipleupload'    => 'رفع الملفات',
+	'multipleupload-ignoreallwarnings' => 'تجاهل \'\'\'كل التحذيرات\'\'\' واحفظ الملفات على أية حال.',
+	'multipleupload-saveallfiles' => 'حفظ كل الملفات',
+	'multipleupload-addresswarnings' => 'من فضلك صحح أية تحذيرات قبل إعادة رفع الملفات.',
+	'multipleupload-page' => '{{ns:project}}:سياسة حذف الصور',
+	'multipleupload-text' => 'ارفع ملفات متعددة هنا.
+
+اختر \'Browse\' واختر كل ملف تود رفعه. يمكنك رفع من 1 إلى $1 ملف في المرة.
+
+يمكنك إدخال \'\'\'اسم ملف الوجهة\'\'\' اختياريا وتوفير \'\'\'ملخص\'\'\' يصف صورتك.
+
+الصور غير الملائمة سيتم حذفها فورا، انظر [[{{MediaWiki:Multipleupload-page}}|سياسة حذف الصور]].',
+);
+
 $messages['fr'] = array(
 	'multipleupload'                   => "Télécharger des fichiers",
 	'multipleupload-ignoreallwarnings' => "Ignorer '''tous les avertissements''' et sauvegarder les fichiers en question.",
@@ -36,7 +51,31 @@ Vous pouver inscrire la '''destination du fichier''' et Remplir le '''Sommaire''
 Les images non pertinentes pourront être effacées immédiatement. Voyez la page [[{{MediaWiki:Multipleupload-page}}|image deletion policy]].",
 );
 
+$messages['hsb'] = array(
+	'multipleupload'    => 'Dataje nahrać',
+	'multipleupload-ignoreallwarnings' => '\'\'\'Wšě warnowanja\'\'\' ignorować a dataje składować.',
+	'multipleupload-saveallfiles' => 'Wšě dataje składować',
+	'multipleupload-addresswarnings' => 'Prošu wobkedźbuj warnowanja, prjedy hač dataje znowa nahraješ.',
+	'multipleupload-page' => '{{ns:project}}:Prawidła za wušmórnjenje wobrazow',
+	'multipleupload-text' => 'Nahraj wjacore dataje jowle.
+
+Wuzwolij \'Přepytać\' a wubjer kóždu dataju, kotruž chceš nahrać. Móžeš 1 hač $1 {{PLURAL:$1|dataju|dataji|dataje|datajow}} naraz nahrać.
+
+Móžeš opcionalne \'\'\'mjeno za cilowu dataju\'\'\' zapodać a \'\'\'Zjeće\'\'\' podać, kotrež twoje foto wopisuje.
+
+Njepřihódne wobrazy budu so hnydom wušmórować, hlej [[{{MediaWiki:Multipleupload-page}}|prawidła za wušmórnjenje wobrazow]].',
+);
+
 $messages['nl'] = array(
-	'multipleupload'                   => "Bestanden uploaden",
-	'multipleupload-saveallfiles'      => "Alle bestanden opslaan", 
+	'multipleupload'    => 'Bestanden uploaden',
+	'multipleupload-ignoreallwarnings' => '\'\'\'Alle waarschuwingen\'\'\' negeren en de bestanden sowieso uploaden.',
+	'multipleupload-saveallfiles' => 'Alle bestanden opslaan',
+	'multipleupload-page' => '{{ns:project}}:Verwijderingsbeleid van afbeeldingen',
+	'multipleupload-text' => 'Hier kunt u verschillende bestanden uploaden.
+
+Kies \'Doorzoeken\' en selecteer elk bestand dat u wil uploaden. U kan van 1 tot $1 bestanden tegelijk uploaden.
+
+U kunt een optionele \'\'\'Bestemming bestandsnaam\'\'\'  opgeven en een \'\'\'Samenvatting\'\'\' die uw foto beschrijft opgeven.
+
+Onrelevante afbeeldingen zullen onmiddelijk verwijderd worden, zie het [[{{MediaWiki:Multipleupload-page}}|verwijderingsbeleid van afbeeldingen]].',
 );

@@ -99,7 +99,6 @@ $wgCrossNamespaceLinksMessages['it'] = array(
 Sono esclusi i collegamenti verso i namespace {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|collegamento|collegamenti}} al namespace $3',
 );
-
 $wgCrossNamespaceLinksMessages['ja'] = array(
 	'crossnamespacelinks'         => '名前空間をまたぐリンク',
 	'crossnamespacelinks-summary' => '通常名前空間から他の名前空間（ {{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} を除く）のページへとリンクしているページの一覧です。',
@@ -203,7 +202,9 @@ $wgCrossNamespaceLinksMessages['sr-el'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|veza|veze|veza}} ka $3 imenskom prostoru'
 );
 $wgCrossNamespaceLinksMessages['sr'] = $wgCrossNamespaceLinksMessages['sr-ec'];
-
+$wgCrossNamespaceLinksMessages['stq'] = array(
+	'crossnamespacelinks'         => 'Sieden mäd Links ätter uur Noomensruume',
+);
 $wgCrossNamespaceLinksMessages['su'] = array(
 	'crossnamespacelinks'         => 'Tumbu antara-ngaranspasi',
 	'crossnamespacelinks-summary' => 'Kaca ieu mikeun daptar tumbu ti hiji kaca di ngaran spasi utama ka kaca séjén di ngaran spasi séjén (kajaba {{ns:special}}, {{ns:talk}}, {{ns:project}} sarta ngaran spasi {{ns:template}}), anu henteu dianjurkeun pikeun dipaké.',

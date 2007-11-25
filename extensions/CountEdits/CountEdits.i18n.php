@@ -118,6 +118,7 @@ function efCountEditsMessages( $single = false ) {
 	'countedits' => 'Compteur d’éditions',
 	'countedits-warning' => 'Avertissement : ne jugez pas un livre par sa couverture. Ne jugez pas non plus un utilisateur en fonction du nombre de ses contributions.',
 	'countedits-username' => 'Utilisateur',
+	'countedits-ok' => 'Accepter',
 	'countedits-nosuchuser' => 'Il n’y a aucun utilisateur correspondant à $1',
 	'countedits-resultheader' => 'Résultats pour $1',
 	'countedits-resulttext' => '$1 a fait {{PLURAL:$2|$2 édition|$2 éditions}}',

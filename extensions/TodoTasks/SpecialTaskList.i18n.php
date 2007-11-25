@@ -51,6 +51,23 @@ $allMessages = array(
 		'tasklistnoprojects'      => "Fehler: Es sieht so aus, als wenn '''\$wgUseProjects''' aktiviert wäre, aber es wurde keine Seiten [[MediaWiki:TodoTasksValidProjects]] erstellt. Siehe die [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installationsanweisungen] für weitere Details.",
 	),
 
+	'fr' => array(
+		'tasklist'                => 'Liste de tâches',
+		'tasklistbyproject'       => 'Liste de tâches par projet',
+		'tasklistunknownproject'  => 'Projet inconnu',
+		'tasklistunspecuser'      => 'Contributeur inconnu',
+		'tasklistincorrectuser'   => 'Pseudonyme incorrect',
+		'tasklistemail'           => 'Cher %s',
+		'tasklistemailsubject'    => '[%s] Changement à la liste de tâches',
+		'tasklistmytasks'         => 'Mes tâches',
+		'tasklistbyprojectbad'    => 'Le projet \'\'\'%s\'\'\' n\'est pas valide. Consulter la [[MediaWiki:TodoTasksValidProjects|liste des projets]].',
+		'tasklistbyprojname'      => 'Tâches assignées pour \'\'\'%s\'\'\'.',
+		'tasklistchooseproj'      => 'Projet sélectionné :',
+		'tasklistprojdisp'        => 'Afficher',
+		'tasklistbyname'          => '== Liste de tâches à faire pour %s ==',
+		'tasklistnoprojects'      => 'Errur : il semble que vous avez activé \'\'\'$wgUseProjects\'\'\', mais n\'avez pas créé [[MediaWiki:TodoTasksValidProjects]]. Prière de lire les [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instructions d\'installation] pour plus de détails.',
+	),
+
 	'gl' => array(
 		'tasklist'                => 'Listaxe de Tarefas',
 		'tasklistbyproject'       => 'Listaxe de Tarefas por Proxecto',
@@ -127,9 +144,9 @@ $allMessages = array(
 		'tasklistemail'           => '%s您好',  //Dear %s
 		'tasklistemailsubject'    => '[%s] 任務清單變更', //Task List Change
 		'tasklistmytasks'         => '我的任務',  //My tasks
-		'tasklistbyprojectbad'    => "專案「'''%s'''」並非是個有效的專案項目.請參考[[MediaWiki:TodoTasksValidProjects]]頁面以察看專案清單", 
+		'tasklistbyprojectbad'    => "專案「'''%s'''」並非是個有效的專案項目.請參考[[MediaWiki:TodoTasksValidProjects]]頁面以察看專案清單",
 		'tasklistbyprojname'      => "'''%s'''項下的任務", //Assigned Tasks for '''%s'''
-		'tasklistchooseproj'      => '選取專案：', //Select Project: 
+		'tasklistchooseproj'      => '選取專案：', //Select Project:
 		'tasklistprojdisp'        => '顯示',  //Display
 		'tasklistbyname'          => '==  名稱為「%s」的任務 ==', //== Todo List for %s ==
 	),
@@ -143,9 +160,9 @@ $allMessages = array(
 		'tasklistemail'           => '%s您好',  //Dear %s
 		'tasklistemailsubject'    => '[%s] 任务列表变更', //Task List Change
 		'tasklistmytasks'         => '我的任务',  //My tasks
-		'tasklistbyprojectbad'    => "专案「'''%s'''」并非是个有效的专案项目.请参考[[MediaWiki:TodoTasksValidProjects]]页面以察看专案列表",  
+		'tasklistbyprojectbad'    => "专案「'''%s'''」并非是个有效的专案项目.请参考[[MediaWiki:TodoTasksValidProjects]]页面以察看专案列表",
 		'tasklistbyprojname'      => "'''%s'''项下的任务", //Assigned Tasks for '''%s'''
-		'tasklistchooseproj'      => '选取专案：', //Select Project: 
+		'tasklistchooseproj'      => '选取专案：', //Select Project:
 		'tasklistprojdisp'        => '显示',  //Display
 		'tasklistbyname'          => '==  名称为「%s」的任务 ==', //== Todo List for %s ==
 	),

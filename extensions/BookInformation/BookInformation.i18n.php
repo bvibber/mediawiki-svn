@@ -316,6 +316,20 @@ function efBookInformationMessages() {
 	'bookinfo-provider' => 'Sorgiss dij dat: $1',
 ),
 
+'pt' => array(
+	'bookinfo-header' => 'Informação de livro',
+	'bookinfo-result-title' => 'Título:',
+	'bookinfo-result-author' => 'Autor:',
+	'bookinfo-result-publisher' => 'Editora:',
+	'bookinfo-result-year' => 'Ano:',
+	'bookinfo-error-invalidisbn' => 'O código ISBN introduzido é inválido.',
+	'bookinfo-error-nosuchitem' => 'O item não existe ou não foi encontrado.',
+	'bookinfo-error-nodriver' => 'Não foi possível inicializar um Dispositivo de Informação de Livro apropriado.',
+	'bookinfo-error-noresponse' => 'Sem resposta ou tempo de pedido expirado.',
+	'bookinfo-purchase' => 'Comprar este livro a $1',
+	'bookinfo-provider' => 'Provedor de dados: $1',
+),
+
 /* Russian (Alexander Sigaachov) */
 'ru' => array(
 	'bookinfo-header' => 'Информация о книге',

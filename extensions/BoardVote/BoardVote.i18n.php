@@ -1474,11 +1474,11 @@ A sarà ëmnà a sta màchina esterna antra 20 second. [$1 Ch;a bata ambelessì]
 Ch\'a ten-a da ment che ën bogiandse a peul arsèive n\'avis dla sigurëssa ëd sò calcolator, rësgoard a un certificà sensa firma.',
 );
 $wgBoardVoteMessages['pt'] = array(
-	'boardvote'               => "Eleições para o Comité da Fundação Wikimedia",
-	'boardvote_entry'         => "<!--* [[Special:Boardvote/vote|Votar]]-->
+	'boardvote'               => 'Eleições para o Comité da Fundação Wikimedia',
+	'boardvote_entry'         => '<!--* [[Special:Boardvote/vote|Votar]]-->
 * [[Special:Boardvote/list|Listar votos por data]]
-* [[Special:Boardvote/dump|Dados encriptados da eleição]]",
-	'boardvote_intro'         => "
+* [[Special:Boardvote/dump|Dados encriptados da eleição]]',
+	'boardvote_intro'         => '
 <p>Bem-vindo à segunda edição das eleições para o Comité da Fundação Wikimedia. A votação irá designar duas pessoas para representar a comunidade de utilizadores nos vários projectos Wikimedia. Essas duas pessoas irão ajudar a determinar a orientação futura a seguir pelos projectos Wikimedia, individualmente ou como um todo, e representar os <em>seus</em> interesses e preocupações em relação ao Comité. Irão, também, tomar as decisões respeitantes ao financiamento e alocação de fundos.</p>
 
 <p>Por favor, leia cuidadosamente os discursos dos candidatos e respostas a perguntas antes de votar. Cada um dos candidatos é um utilizador respeitado, consideravelmente em tempo e dedicação para tornar estes projectos um ambiente acolhedor empenhado na procura e livre distribuição do conhecimento humano.</p>
@@ -1486,11 +1486,11 @@ $wgBoardVoteMessages['pt'] = array(
 <p>Poderá votar em tantos candidatos quantos desejar. O candidato que apurar mais votos em cada posição será declarado vencedor dessa posição. Em caso de empate, serão lançadas votações para desempate.</p>
 
 <p>Para mais informações, consulte:</p>
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2006\" class=\"external\">FAQ de eleição</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2006\" class=\"external\">Candidatos</a></li></ul>
-",
-	'boardvote_intro_change'  => "<p>Já votou anteriormente. Contudo pode alterar o seu voto utilizando o formulário abaixo. Por favor marque a caixa ao lado de cada candidato que aprovar.</p>",
-	'boardvote_entered'       => "Obrigado, o seu voto foi registado.
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">FAQ de eleição</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006" class="external">Candidatos</a></li></ul>
+',
+	'boardvote_intro_change'  => '<p>Já votou anteriormente. Contudo pode alterar o seu voto utilizando o formulário abaixo. Por favor marque a caixa ao lado de cada candidato que aprovar.</p>',
+	'boardvote_entered'       => 'Obrigado, o seu voto foi registado.
 
 Se desejar pode guardar os seguintes detalhes. O seu registo de voto é:
 
@@ -1504,27 +1504,26 @@ A versão da encriptação segue-se, e será publicada em [[Especial:Boardvote/d
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Voltar]]",
-	'boardvote_notloggedin'   => "Não se encontra autentificado. De modo a poder votar, deve utilizar uma conta com pelo menos $1 contribuições antes de $2.",
-	'boardvote_notqualified'  => "Desculpe, mas só fez $1 edições antes de $2. Precisa de ter no mínimo $3 edições de modo a poder votar.",
-	'boardvote_novotes'       => "Ninguém votou até ao momento.",
-	'boardvote_time'          => "Data",
-	'boardvote_user'          => "Utilizador",
-	'boardvote_edits'         => "Contribuições",
-	'boardvote_days'          => "Dias",
-	'boardvote_ip'            => "IP",
-	'boardvote_ua'            => "Agente do utilizador",
-	'boardvote_listintro'     => "<p>Esta é uma lista de todos votos registados até à data. $1 para os dados encriptados.</p>",
-	'boardvote_dumplink'      => "Clique aqui",
-	'boardvote_strike'        => "Riscar",
-	'boardvote_unstrike'      => "Limpar risco",
-	'boardvote_needadmin'     => "Apenas administradores podem efectuar esta operação.",
-	'boardvote_sitenotice'    => "<a href=\"{{localurle:Especial:Boardvote/vote}}\">Comité da Fundação Wikimedia</a>: Votação aberta até 12 de Julho",
+[[Special:Boardvote/entry|Voltar]]',
+	'boardvote_notloggedin'   => 'Não se encontra autentificado. De modo a poder votar, deve utilizar uma conta com pelo menos $1 contribuições antes de $2.',
+	'boardvote_notqualified'  => 'Desculpe, mas só fez $1 edições antes de $2. Precisa de ter no mínimo $3 edições de modo a poder votar.',
+	'boardvote_novotes'       => 'Ninguém votou até ao momento.',
+	'boardvote_time'          => 'Data',
+	'boardvote_user'          => 'Utilizador',
+	'boardvote_edits'         => 'Contribuições',
+	'boardvote_days'          => 'Dias',
+	'boardvote_ua'            => 'Agente do utilizador',
+	'boardvote_listintro'     => '<p>Esta é uma lista de todos votos registados até à data. $1 para os dados encriptados.</p>',
+	'boardvote_dumplink'      => 'Clique aqui',
+	'boardvote_submit'        => 'OK',#identical but defined
+	'boardvote_strike'        => 'Riscar',
+	'boardvote_unstrike'      => 'Limpar risco',
+	'boardvote_needadmin'     => 'Apenas administradores podem efectuar esta operação.',
+	'boardvote_sitenotice'    => '<a href="{{localurle:Especial:Boardvote/vote}}">Comité da Fundação Wikimedia</a>: Votação aberta até 12 de Julho',
 	'boardvote_closed'        => 'As eleições estão agora encerradas, ver [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/Pt a página de eleições para os resultados] brevemente.',
 	'boardvote_edits_many'    => 'muitos',
 	'group-boardvote'         => 'Board vote administradores',
 	'group-boardvote-member'  => 'Board vote administrador',
-	'grouppage-boardvote'     => '{{ns:project}}:Board vote admin',
 );
 $wgBoardVoteMessages['rm'] = array(
 	'boardvote_user'          => 'Utilisader',

@@ -64,10 +64,6 @@ $wgChemFunctions_Parameters = array ('CAS',
 
 $wgChemFunctions_Messages = array();
 
-/**
- *  en
- */
-
 $wgChemFunctions_Messages['en'] = array(
 	'chemicalsources' => 'Chemical sources',
 	'ChemFunctions_ListPage' => 'Chemical sources',
@@ -112,10 +108,6 @@ $wgChemFunctions_Messages['ar'] = array(
 	'ChemFunctions_ChemFormInputError' => 'Chemform: خطأ إدخال!',
 );
 
-/**
- * de
- */
-
 $wgChemFunctions_Messages['de'] = array(
 	'chemicalsources' => 'Chemische Quellen',
 	'ChemFunctions_ListPage' => 'Chemische Quellen',
@@ -140,6 +132,11 @@ $wgChemFunctions_Messages['de'] = array(
 	'ChemFunctions_ChemFormInputError' => 'Chemform: Eingabe Fehler!'
 );
 
+$wgChemFunctions_Messages['el'] = array(
+	'chemicalsources' => 'Χημικές πηγές',
+	'ChemFunctions_ListPage' => 'Χημικές πηγές',
+);
+
 $wgChemFunctions_Messages['fr'] = array(
 	'chemicalsources' => 'Sources pour la chimie',
 	'ChemFunctions_ListPage' => 'Sources pour la chimie',
@@ -150,7 +147,12 @@ $wgChemFunctions_Messages['fr'] = array(
 	'ChemFunctions_CAS' => 'Numéro CAS',
 	'ChemFunctions_EINECS' => 'Numéro EINECS',
 	'ChemFunctions_CHEBI' => 'ChEBI',
+	'ChemFunctions_PubChem' => 'PubChem',#identical but defined
+	'ChemFunctions_InChI' => 'InChl',
+	'ChemFunctions_RTECS' => 'RTECS',#identical but defined
+	'ChemFunctions_KEGG' => 'KEGG',#identical but defined
 	'ChemFunctions_ATCCode' => 'Code ATC',
+	'ChemFunctions_DrugBank' => 'DrugBank',#identical but defined
 	'ChemFunctions_Formula' => 'Formule',
 	'ChemFunctions_Name' => 'Nom UICPA',
 	'ChemFunctions_ChemFormInputError' => 'Chemform, intrant erroné!',
@@ -180,7 +182,6 @@ href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">
 	'ChemFunctions_CAS' => 'número CAS',
 );
 
-
 $wgChemFunctions_Messages['hsb'] = array(
 	'chemicalsources' => 'Chemiske žórła',
 	'ChemFunctions_ListPage' => 'Chemiske žórła',
@@ -191,10 +192,6 @@ $wgChemFunctions_Messages['hsb'] = array(
 	'ChemFunctions_Name' => 'Mjeno IUPAC',
 	'ChemFunctions_ChemFormInputError' => 'Chemform: Zapodatny zmylk',
 );
-
-/**
- * id
- */
 
 $wgChemFunctions_Messages['id'] = array(
 	'chemicalsources' => 'Rujukan kimia',
@@ -217,10 +214,6 @@ $wgChemFunctions_Messages['id'] = array(
 	'ChemFunctions_Name' => 'Nama IUPAC',
 	'ChemFunctions_ChemFormInputError' => 'Chemform: Kesalahan pada masukan!',
 );
-
-/**
- * it
- */
 
 $wgChemFunctions_Messages['it'] = array(
 	'chemicalsources' => 'Informazioni sui composti chimici',
@@ -246,10 +239,6 @@ $wgChemFunctions_Messages['it'] = array(
 	'ChemFunctions_ChemFormInputError' => 'Chemform: Input non corretto.'
 
 );
-
-/**
- * nl
- */
 
 $wgChemFunctions_Messages['nl'] = array(
 	'chemicalsources' => 'Chemicaliën bronnen',
@@ -317,10 +306,6 @@ $wgChemFunctions_Messages['pms'] = array(
 	'ChemFunctions_ChemFormInputError' => 'Chemform: eror ant ij dat!',
 );
 
-/**
- *  ru
- */
-
 $wgChemFunctions_Messages['ru'] = array(
 	'chemicalsources' => 'Источники по химии',
 	'ChemFunctions_ListPage' => 'Источники по химии',
@@ -345,10 +330,6 @@ $wgChemFunctions_Messages['ru'] = array(
 	'ChemFunctions_ChemFormInputError' => 'Chemform: ошибка ввода!'
 );
 
-/**
- * sk
- */
-
 $wgChemFunctions_Messages['sk'] = array(
 	'chemicalsources' => 'Chemické zdroje',
 	'ChemFunctions_ListPage' => 'Chemické zdroje',
@@ -372,10 +353,6 @@ $wgChemFunctions_Messages['sk'] = array(
 
 	'ChemFunctions_ChemFormInputError' => 'Chemform: Input error!'
 );
-
-/**
- *  sr
- */
 
 $wgChemFunctions_Messages['sr-ec'] = array(
 	'chemicalsources' => 'Хемијски извори',
@@ -426,10 +403,6 @@ $wgChemFunctions_Messages['sr-el'] = array(
 );
 
 $wgChemFunctions_Messages['sr'] = $wgChemFunctions_Messages['sr-ec'];
-
-/**
- *  vi
- */
 
 $wgChemFunctions_Messages['vi'] = array(
 	'chemicalsources' => 'Nguồn hóa học',

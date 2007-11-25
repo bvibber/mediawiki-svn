@@ -384,6 +384,11 @@ function efMakeBotMessages() {
 	'makebot-logentryrevoke'  => 'menarik status bot dari [[$1]]',
 ),
 
+'io' => array(
+	'makebot-username'        => 'Uzantonomo:',
+	'makebot-search'          => 'Irar',
+),
+
 'is' => array(
 	'makebot-username'        => 'Notandanafn:',
 	'makebot-search'          => 'Áfram',

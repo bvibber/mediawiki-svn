@@ -27,23 +27,24 @@ if (defined('MEDIAWIKI')) {
 	define('MEDIAWIKI_MICROID_VERSION', '0.1');
 
 	$wgExtensionFunctions[] = 'setupMicroID';
-	$wgExtensionCredits['other'][] = array('name' => 'MicroID',
-										   'version' => MEDIAWIKI_MICROID_VERSION,
-										   'author' => 'Evan Prodromou',
-										   'url' => 'http://www.mediawiki.org/wiki/MicroID_extension',
-										   'description' => 'adds a [http://www.microid.org/ MicroID] ' .
-										   'to user pages to confirm account with external services');
+	$wgExtensionCredits['other'][] = array(
+		'name' => 'MicroID',
+		'version' => MEDIAWIKI_MICROID_VERSION,
+		'author' => 'Evan Prodromou',
+		'url' => 'http://www.mediawiki.org/wiki/MicroID_extension',
+		'description' => 'adds a [http://www.microid.org/ MicroID] to user pages to confirm account with external services',
+	);
 
 	function setupMicroID() {
-		
+
 		global $wgOut, $wgRequest, $wgMessageCache, $wgHooks;
-		
-		$wgMessageCache->addMessages(array('tog-microid' => 
-										   'Publish a <a href="http://microid.org/">MicroID</a> ' . 
-										   'to confirm account with external services'));
+
+		$wgMessageCache->addMessages(array(
+			'tog-microid' => 'Publish a <a href="http://microid.org/">MicroID</a> to confirm account with external services',
+		));
 
 		$wgHooks['UserToggles'][] = 'MicroIDUserToggle';
-		
+
 		$action = $wgRequest->getText('action', 'view');
 
 		if ($action == 'view') {
@@ -64,19 +65,19 @@ if (defined('MEDIAWIKI')) {
 				}
 			}
 
-  		    $nt = Title::newFromText($title);
+			$nt = Title::newFromText($title);
 
-		    // If the page being viewed is a user page...
-			
-		    if ($nt && 
+			// If the page being viewed is a user page...
+
+			if ($nt &&
 				($nt->getNamespace() == NS_USER) &&
 				strpos($nt->getText(), '/') === false)
 			{
 				// If the user qualifies...
 				wfDebug("MicroID: on User page " . $nt->getText() . "\n");
-				
+
 				$user = User::newFromName($nt->getText());
-				
+
 				if ($user &&                             // got a user
 					$user->getID() != 0 &&               // they're real
 					$user->getEmail() &&                 // they've added an email address
@@ -89,14 +90,13 @@ if (defined('MEDIAWIKI')) {
 		    }
 		}
 	}
-	
+
 	function MakeMicroID($email, $url) {
 		return sha1( sha1( 'mailto:' . $email ) . sha1( $url ) );
 	}
-	
+
 	function MicroIDUserToggle(&$arr) {
 		$arr[] = 'microid';
 		return true;
 	}
 }
-

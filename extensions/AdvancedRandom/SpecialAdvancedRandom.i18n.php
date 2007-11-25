@@ -19,6 +19,10 @@ $messages['fr'] = array(
 	'advancedrandom' => 'Accès aléatoire avancé',
 );
 
+$messages['frp'] = array(
+	'advancedrandom' => 'Accès pas de sûr avanciê',
+);
+
 $messages['hr'] = array(
 	'advancedrandom' => 'Napredne slučajne stranice',
 );

@@ -169,6 +169,10 @@ function efInputBoxMessages() {
 	'createarticle'           => 'Crear artigo',
 ),
 
+'grc' => array(
+	'createarticle'           => 'Δέλτον ποιῆσαι',
+),
+
 'hak' => array(
 	'tryexact'       => 'Sòng-chhṳ chîn-khok phit-phi',
 	'searchfulltext' => 'Chhiòn vùn-kiám chhìm-cháu',
@@ -232,9 +236,9 @@ function efInputBoxMessages() {
 ),
 
 'ka' => array(
-	'tryexact'       => 'სცადეთ ზუსტი ძიება',
-	'searchfulltext' => 'სრული ტექსტის ძიება',
-	'createarticle'  => 'სტატიის შექმნა',
+	'tryexact'                => 'სცადე ზუსტი დამთხვევა',
+	'searchfulltext'          => 'სრული ტექსტის ძიება',
+	'createarticle'           => 'სტატიის შექმნა',
 ),
 
 'kaa' => array(
@@ -436,6 +440,11 @@ function efInputBoxMessages() {
 
 'ss' => array(
 	'createarticle'           => 'Kúdála intfo',
+),
+
+'stq' => array(
+	'searchfulltext'          => 'Dän ganse Text truchsäike',
+	'createarticle'           => 'Artikkel anlääse',
 ),
 
 'su' => array(

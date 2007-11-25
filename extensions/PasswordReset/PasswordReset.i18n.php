@@ -103,6 +103,11 @@ $allMessages = array(
 		'passwordreset-newpass' => 'Nov passa-parol',
 	),
 
+	'io' => array(
+		'passwordreset-username' => 'Uzantonomo',
+		'passwordreset-newpass' => 'Nova Kontrolajo',
+	),
+
 	'nl' => array(
 		'passwordreset' => 'Wachtwoord opnieuw instellen',
 		'passwordreset-invalidusername' => 'Onjuiste gebruiker',

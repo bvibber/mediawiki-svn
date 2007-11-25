@@ -205,12 +205,18 @@ $messages = array(
 		'ogg-long-general' => '(Fichier média Ogg, durée $2, $3)',
 		'ogg-long-error' => '(Fichier Ogg invalide : $1)',
 		'ogg-play' => 'Lire',
+		'ogg-pause' => 'Pause',#identical but defined
+		'ogg-stop' => 'Arrêt',
 		'ogg-play-video' => 'Lire la vidéo',
 		'ogg-play-sound' => 'Lire le son',
 		'ogg-no-player' => 'Désolé, votre système ne possède apparemment aucun des lecteurs supportés. Veuillez installer <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">un des lecteurs supportés</a>.',
 		'ogg-no-xiphqt' => 'Vous n\'avez apparemment pas le composant XiphQT pour Quicktime. Quicktime ne peut pas lire les fichiers Ogg sans ce composant. Veuillez <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">télécharger XiphQT</a> ou choisir un autre lecteur.',
 		'ogg-player-videoElement' => 'Élément <video>',
 		'ogg-player-oggPlugin' => 'Plugin Ogg',
+		'ogg-player-cortado' => 'Cortado (Java)',#identical but defined
+		'ogg-player-vlc-activex' => 'VLC (ActiveX)',#identical but defined
+		'ogg-player-quicktime-mozilla' => 'QuickTime',#identical but defined
+		'ogg-player-quicktime-activex' => 'QuickTime (ActiveX)',#identical but defined
 		'ogg-player-thumbnail' => 'Image statique seulement',
 		'ogg-player-soundthumb' => 'Aucun lecteur',
 		'ogg-player-selected' => '(sélectionné)',

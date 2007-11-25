@@ -22,6 +22,11 @@ $messages['fr'] = array(
 	'assert_edit_message' => 'L\'insertion indiquée ($1) a échoué.',
 );
 
+$messages['frp'] = array(
+	'assert_edit_title'   => 'Falyita de l’entrebetâ',
+	'assert_edit_message' => 'L’entrebetâ endicâ ($1) at pas reussia.',
+);
+
 $messages['hsb'] = array(
 	'assert_edit_title'   => 'Twjerdźenje njeporadźiło',
 	'assert_edit_message' => 'Podate twjerdźenje ($1) je so njeporadźiło.',

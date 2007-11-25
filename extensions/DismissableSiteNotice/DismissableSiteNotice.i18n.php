@@ -40,6 +40,10 @@ $wgDismissableSiteNoticeMessages['de'] = array(
 	'sitenotice_close' => 'Schließen',
 );
 
+$wgDismissableSiteNoticeMessages['el'] = array(
+	'sitenotice_close' => 'απομάκρυνση',
+);
+
 $wgDismissableSiteNoticeMessages['es'] = array(
 	'sitenotice_close' => 'ocultar',
 );

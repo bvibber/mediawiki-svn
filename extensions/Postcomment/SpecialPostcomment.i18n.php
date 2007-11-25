@@ -20,3 +20,52 @@ $messages['en'] = array(
 	'postcomment_replyto' => 'Reply to $1',
 	'postcomment_nopostingtoadd' => 'No posting to add.',
 );
+
+$messages['ar'] = array(
+	'postcomment_discussionprotected' => 'صفحة النقاش تمت حمايتها من رسائل أخرى.',
+	'postcomment_notloggedin' => 'أنت غير مسجل الدخول.',
+	'postcomment_youareloggedinas' => 'أنت مسجل الدخول باسم $1',
+	'postcomment_addcommentdiscussionpage' => 'أضف تعليقك في صفحة النقاش هذه',
+	'postcomment_leavemessagefor' => 'اترك رسالة ل$1',
+	'postcomment_post' => 'إرسال',
+	'postcomment_on' => 'على',
+	'postcomment_said' => 'قال',
+	'postcomment_invalidrequest' => 'طلب غير صحيح.',
+	'postcomment_replyto' => 'رد على $1',
+	'postcomment_nopostingtoadd' => 'لا رسالة للإضافة.',
+);
+
+$messages['fr'] = array(
+	'postcomment_discussionprotected' => 'La page de discussion a été protégée en écriture.',
+	'postcomment_notloggedin' => 'Vous n\'êtes pas identifié.',
+	'postcomment_youareloggedinas' => 'Vous n\'êtes pas identifié en tant que $1.',
+	'postcomment_addcommentdiscussionpage' => 'Ajoutez un commentaire sur cette page de discussion',
+	'postcomment_leavemessagefor' => 'Laissez un message pour $1',
+	'postcomment_invalidrequest' => 'Requête invalide',
+	'postcomment_replyto' => 'Répondre à $1',
+);
+
+$messages['hsb'] = array(
+	'postcomment_discussionprotected' => 'Tuta diskusijna strona je přećiwo dalšim zdźělenkam škitana.',
+	'postcomment_notloggedin' => 'Njejsy so přizjewił.',
+	'postcomment_youareloggedinas' => 'Sy nětko jako $1 přizjewjeny.',
+	'postcomment_addcommentdiscussionpage' => 'Twój komentar k tutej diskusijnej stronje přidać',
+	'postcomment_leavemessagefor' => 'Powěsć za $1 zawostajić',
+	'postcomment_post' => 'Póst',
+	'postcomment_on' => 'Na',
+	'postcomment_said' => 'praješe',
+	'postcomment_invalidrequest' => 'Njepłaciwe požadanje.',
+	'postcomment_replyto' => 'Na $1 wotmołwić',
+	'postcomment_nopostingtoadd' => 'Njeje powěsć, kotraž hodźi so přidać.',
+);
+
+$messages['nl'] = array(
+	'postcomment_discussionprotected' => 'Deze overlegpagina is beveiligd tegen verdere antwoorden en opmerkingen.',
+	'postcomment_notloggedin' => 'U bent niet aangemeld.',
+	'postcomment_youareloggedinas' => 'U bent aangemeld als $1',
+	'postcomment_addcommentdiscussionpage' => 'Uw opmerking toevoegen op deze overlegpagina',
+	'postcomment_leavemessagefor' => 'Een bericht achterlaten voor $1',
+	'postcomment_said' => 'zei',
+	'postcomment_invalidrequest' => 'Ongeldige aanvraag.',
+	'postcomment_replyto' => 'Antwoorden aan $1',
+);

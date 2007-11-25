@@ -245,6 +245,14 @@ function efBadImageMessages() {
 	'badimages-page' => '{{ns:help}}:Listaxe de imaxes con fallas',
 ),
 
+'hr' => array(
+	'badimages-add-btn' => 'Dodaj',
+	'badimages-name' => 'Ime:',
+	'badimages-reason' => 'Razlog:',
+	'badimages-remove' => '(ukloni)',
+	'badimages-remove-btn' => 'Ukloni',
+),
+
 'hsb' => array(
 	'badimages' => 'Lisćina njewitanych wobrazow',
 	'badimages-add-btn' => 'Přidać',

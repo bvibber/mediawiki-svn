@@ -143,6 +143,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'André ($1)',
 ),
 
+'pt' => array(
+	'backforth-next' => 'Próximo ($1)',
+	'backforth-prev' => 'Anterior ($1)',
+),
+
 'sah' => array(
 	'backforth-next' => 'Аныгыскы ($1)',
 	'backforth-prev' => 'Иннинээҕи ($1)',

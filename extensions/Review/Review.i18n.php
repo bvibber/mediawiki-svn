@@ -89,6 +89,96 @@ $messages['ar'] = array(
 	'review_comment' => 'تعليق',
 );
 
+$messages['fr'] = array(
+	'review_sidebar_title' => 'Révision',
+	'review_topics' => '# Liste de sujets pour l\'extension « review » de MediaWiki.
+# ....
+# Chaque sujet est défini par une liste de données séparées par « : » (toute autre liste est ignorée).
+# ....
+# Les données dans l\'ordre sont :
+## identifiant numérique (>0)
+## nom
+## étendue (>1)
+## signification de la plus petite valeur (ex. « mauvais »)
+## signification de la plus grande valeur (ex. « bon »)
+# ....
+# Par exemple, s\'il faut seulement choisir « non » ou « oui », l\'étendue vaut 2.
+# Par exemple, s\'il faut choisir entre « médiocre », « mauvais », « à améliorer », « bien » ou « très bien », l\'étendue vaut 5.
+# ....
+1:Qualité:5:mauvais:bon
+2:Prêt pour 1.0:2:non:oui',
+	'review_topic_page' => 'Sujets à révision',
+	'review_sidebar_explanation' => 'La boîte à cocher à la gauche toute signifie toujours « sans opinion ».',
+	'review_your_review' => 'Votre révision de cette page ou révision :',
+	'review_sidebar_you_have_other_reviews_for_this_article' => 'Vous avez déjà révisé les autres versions de cette page. Vos autres évaluations seront fusionnées avec celle-ci si vous avez sélectionné « sans opinion ».',
+	'review_page_link' => 'Statistiques de révisions',
+	'review_for_page' => 'Révision pour la page « $1 »',
+	'review_for_user' => 'Révision pour contributeur « $1 »',
+	'review_error' => 'Quelque chose est brisé.',
+	'review_no_reviews_for_page' => 'Il n\'y a pas de révisions pour « $1 ».',
+	'review_total_statistics' => 'Total',#identical but defined
+	'review_statistics_left_corner' => 'Révision',
+	'review_version_link' => 'Révision #$1',
+	'review_statistic_cell' => 'Moyenne : $1 de $2<br/>(contributeurs : $4 inscrits, $5 anonymes)',
+	'review_version_statistic_cell' => '$1 de $2',
+	'review_version_reviews_link' => '<small>(révisions de version)</small>',
+	'review_concerns_page' => 'Cete révision est à propos de la page « $1 ».',
+	'review_concerns_user' => 'C\'est à propos des revisions faites par le contributeur « $1 ».',
+	'review_user_reviews' => '<small>(révisions par ce contributeur)</small>',
+	'review_user_page_list' => 'Le contributeur a révisé les pages suivantes :',
+	'review_user_details_link' => '(détails)',
+	'review_has_been_stored' => '<font id=\'review_has_been_stored\'>Votre révision a été sauvegardée.</font>',
+	'revision_review_this_page_version_link' => 'Réviser cette version de la page',
+	'review_page_review' => 'Révision de la page « $1 »',
+	'review_blocked' => 'Vous êtes bloqué.',
+	'review_wrong_namespace' => 'Les pages dans cet espace de nom ne peuvent être révisées.',
+	'review_topic' => 'Sujet',
+	'review_no_opinion' => 'Sans opinion',
+	'review_rating' => 'Évaluation',
+	'review_comment' => 'Commentaire',
+);
+
+$messages['hsb'] = array(
+	'review_sidebar_title' => 'Přepruwować',
+	'review_topics' => '# Deleka je lisćina temow a wobwodow za rozšěrjenje Review.
+# Kóžda tema definuje so přez linku pjeć hódnotow wotdźělenych přez \':\' (wšě druhe linki ignoruja so).
+# Porjad je: numeriski kluč (>0), mjeno, maksimalny wobwod (>1; 2=haj/ně), woznam najnišeje hódnoty (na př. \'špatny\'), woznam najwyšeje hódnoty (na př. \'dobry\').
+1:Kajkosć:5:špatny:dobry
+2:Hotowy za 1.0:2:ně:haj',
+	'review_topic_page' => 'Temy přepruwować',
+	'review_sidebar_explanation' => 'Lěwy kontrolowy kašćik přeco \'žane měnjenje\' woznamjenja.',
+	'review_save' => 'Přepruwowanje składować',
+	'review_your_review' => 'Waše přepruwowanje tuteje strony/wersije:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => 'Sy hižo druhe wersije tutoho nastawka přepruwował. Twoje druhe pohódnoćenja budu so z tutym zjednoćeć, hdźež sy \'žane měnjenje\' wubrał.',
+	'review_page_link' => 'Statistiku přepruwować',
+	'review_sidebar_final' => 'Za přepruwowanske daty tutoho napohlada strony, hlej jeho $1',
+	'review_for_page' => 'Přepruwowanje za stronu "$1"',
+	'review_for_user' => 'Přepruwowanje za wužiwarja "$1"',
+	'review_error' => 'Je někajki zmylk!',
+	'review_no_reviews_for_page' => 'Tuchwilu žane přepruwowanja za "$1" njejsu.',
+	'review_total_statistics' => 'Dohromady',
+	'review_statistics_left_corner' => 'Wersija',
+	'review_version_link' => 'Wersija #$1',
+	'review_statistic_cell' => 'Přerězk: $1 z $2<br />($4 {{PLURAL:$4|wužiwar|wužiwarjej|wužiwarjo|wužiwarjow}}, $5 {{PLURAL:$5|anonymny|anonymnej|anonymne|anonymnych}})',
+	'review_version_statistic_cell' => '$1 z $2',
+	'review_version_reviews_link' => '<small>(wersijowe přepruwowanja)</small>',
+	'review_concerns_page' => 'Tute přepruwowanje je za stronu "$1".',
+	'review_concerns_user' => 'To je wo přepruwowanjach wot wužiwarja "$1".',
+	'review_user_reviews' => '<small>(přepruwowanja wot tutoho wužiwarja)</small>',
+	'review_user_page_list' => 'Wužiwar je slědowace strony přepruwował:',
+	'review_user_details_link' => '(podrobnosće)',
+	'review_do_merge' => 'Moje přepruwowanja druhich wersijow tuteje strony z tutym zjednoćić',
+	'review_has_been_stored' => '<font id=\'review_has_been_stored\'>Waše přepruwowanje je so składowało!</font>',
+	'revision_review_this_page_version_link' => 'Přepruwuj tutu wersiju strony.',
+	'review_page_review' => 'Přepruwowanje strony "$1"',
+	'review_blocked' => 'Sy blokowany, dźi preč.',
+	'review_wrong_namespace' => 'Strony w tutym mjenowym rumje njehodźa so přepruwować!',
+	'review_topic' => 'Tema',
+	'review_no_opinion' => 'Žane měnjenje',
+	'review_rating' => 'Pohódnoćenje',
+	'review_comment' => 'Komentar',
+);
+
 $messages['nl'] = array(
 	'review_sidebar_title' => 'Beoordelen',
 	'review_topics' => '# The following is the list of topics and ranges for the review extension.

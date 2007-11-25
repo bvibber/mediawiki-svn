@@ -184,6 +184,7 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 *La page a été supprimée,
 *La révision cachée était la toute première de la page',
 	'oversight-log-hiderev' => 'a supprimé une édition de $1',
+	'oversight' => 'Surveiller',
 	'oversight-view' => 'détails',
 	'oversight-difference' => '(Différence par rapport à la révision précédente)',
 	'oversight-prev' => 'Dernière révision précédente',

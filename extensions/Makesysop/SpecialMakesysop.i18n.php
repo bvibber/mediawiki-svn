@@ -390,6 +390,8 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'already_sysop' => 'Cet utilisateur est déjà administrateur.',
 	'already_bureaucrat' => 'Cet utilisateur est déjà bureaucrate.',
 	'makesysop-nodatabase' => 'Mauvais nom d’utilisateur interwiki : $1',
+	'group-steward' => 'Stewards',#identical but defined
+	'group-steward-member' => 'Steward',#identical but defined
 	'grouppage-steward' => '{{ns:project}}:Steward',
 ),
 
@@ -607,6 +609,11 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'group-steward' => 'スチュワード',
 	'group-steward-member' => '{{int:group-steward}}',
 	'grouppage-steward' => '{{ns:project}}:{{int:group-steward}}',
+),
+
+'ka' => array(
+	'makesysopname' => 'მომხმარებლის სახელი:',
+	'set_user_rights' => 'მომხმარებლის უფლებების განსაზღვრა',
 ),
 
 'kk-kz' => array(
