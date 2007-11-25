@@ -118,7 +118,7 @@ $allMessages = array(
 		'tasklistbyname'          => '== Lista do zrobienia dla %s ==',
 	),
 
-	'zh_tw' => array(            //Taiwanese Chinese
+	'zh-tw' => array(            //Taiwanese Chinese
 		'tasklist'                => '任務清單',  //Task List
 		'tasklistbyproject'       => '依專案列出任務', //Task List By Project
 		'tasklistunknownproject'  => '未知的專案', //Unknown project
@@ -134,7 +134,7 @@ $allMessages = array(
 		'tasklistbyname'          => '==  名稱為「%s」的任務 ==', //== Todo List for %s ==
 	),
 
-	'zh_cn' => array(         //Simple Chinese
+	'zh-cn' => array(         //Simple Chinese
 		'tasklist'                => '任务列表',  //Task List
 		'tasklistbyproject'       => '依专案列出任务', //Task List By Project
 		'tasklistunknownproject'  => '未知的专案', //Unknown project
