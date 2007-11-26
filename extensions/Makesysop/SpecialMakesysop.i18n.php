@@ -165,6 +165,16 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'already_bureaucrat' => 'Aquest usuari ja és buròcrata',
 ),
 
+'cdo' => array(
+	'makesysoptitle'       => 'Niông 1 ciáh ê̤ṳng-hô có̤ guāng-lī-uòng',
+	'makesysopname'        => 'Ciā ê̤ṳng-hô gì miàng:',
+	'makesysopsubmit'      => 'Niông cī ciáh ê̤ṳng-hô có̤ guāng-lī-uòng',
+	'makesysopok'          => '<b>Ê̤ṳng-hô "$1" hiêng-câi sê guāng-lī-uòng lāu</b>',
+	'makesysop'            => 'Niông 1 ciáh ê̤ṳng-hô có̤ guāng-lī-uòng',
+	'already_sysop'        => 'Ciā ê̤ṳng-hô ī-gĭng sê guāng-lī-uòng lāu',
+	'already_bureaucrat'   => 'Ciā ê̤ṳng-hô ī-gĭng sê guăng-lièu lāu',
+),
+
 'cs' => array(
 	'makesysoptitle'       => 'Učinit uživatele správcem',
 	'makesysoptext'        => 'Pomocí tohoto formuláře mohou byrokraté uživateli přidělit práva správce. Vepište jméno uživatele do políčka a stiskněte tlačítko; zaškrtnutím políčka přidáte uživateli také oprávnění „byrokrat“.',

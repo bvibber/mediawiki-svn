@@ -45,6 +45,10 @@ $wgNewuserlogMessages['ca'] = array(
 	'newuserlog-create-entry'  => 'Nou usuari',
 	'newuserlog-create2-entry' => 's\'ha creat un compte per a $1',
 );
+$wgNewuserlogMessages['cdo'] = array(
+	'newuserlogpage'           => 'Kŭi dióng-hô̤ nĭk-cé',
+	'newuserlog-create-entry'  => 'Sĭng ê̤ṳng-hô',
+);
 $wgNewuserlogMessages['cs'] = array(
 	'newuserlogpage'           => 'Kniha nových uživatelů',
 	'newuserlogpagetext'       => 'Toto je záznam nově zaregistrovaných uživatelů.',

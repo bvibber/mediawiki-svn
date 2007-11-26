@@ -33,6 +33,9 @@ $wgLinkSearchMessages['bcl'] = array(
 	'linksearch-ok'    => 'Hanápon',
 	'linksearch-line'  => '$1 an nakatakod sa $2',
 );
+$wgLinkSearchMessages['cdo'] = array(
+	'linksearch-ok'    => 'Sìng-tō̤',
+);
 $wgLinkSearchMessages['cs'] = array(
 	'linksearch'       => 'Hledání externích odkazů',
 	'linksearch-text'  => 'Lze používat zástupné znaky, např. „*.wikipedia.org“.',

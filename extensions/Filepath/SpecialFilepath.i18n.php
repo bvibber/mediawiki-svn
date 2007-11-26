@@ -30,6 +30,9 @@ $wgFilepathMessages['ca'] = array(
 	'filepath_page'   => 'Arxiu:',
 	'filepath_submit' => 'Camí',
 );
+$wgFilepathMessages['cdo'] = array(
+	'filepath_page'    => 'Ùng-giông:',
+);
 $wgFilepathMessages['cs'] = array(
 	'filepath'        => 'Cesta k souboru',
 	'filepath_page'   => 'Soubor:',

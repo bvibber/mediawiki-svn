@@ -253,6 +253,13 @@ D\'aquí 20 segons sereu redirigit a aquesta pàgina. [$1 Cliqueu aquí] per ana
 
 Tingueu en compte que us pot aparèixer un avís de certificat de seguretat.',
 );
+$wgBoardVoteMessages['cdo'] = array(
+	'boardvote_time'          => "Sì-găng",
+	'boardvote_user'          => "Ê̤ṳng-hô",
+	'boardvote_edits'         => "Siŭ-gāi",
+	'boardvote_dumplink'      => "Áik cŭ-uái",
+	'boardvote_submit'        => 'Hō̤',
+);
 $wgBoardVoteMessages['cs'] = array(
 	'boardvote'               => "Volby do Správní rady nadace Wikimedia",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Hlasovat]]

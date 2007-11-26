@@ -80,6 +80,27 @@ function efMakeBotMessages() {
 	'makebot-logentryrevoke'  => 'retirada la marca de bot a [[$1]]',
 ),
 
+/* Min Dong (GnuDoyng) */
+'cdo' => array(
+	'makebot' => 'Dò̤-ké̤ṳk hĕ̤k dò̤-duōng gĭ-ké-nè̤ng sĭng-hông',
+	'makebot-header'          => '\'\'\'Buōng câng gì guăng-lièu ô nièng-ngài sāi cī hiĕk lì dò̤-ké̤ṳk hĕ̤k-ciā dò̤-duōng bĕk-bĭk dióng-hô̤ gì [[Help:Gĭ-ké-nè̤ng|gĭ-ké-nè̤ng sĭng-hông]].\'\'\'<br />Gĭ-ké-nè̤ng sĭng-hông â̤ găk [[Special:Recentchanges|cī-bŏng gāi-biéng gì dăng-dăng]] (hĕ̤k-ciā gì-tă dăng-dăng) gà̤-dēng káung kī cê-gă sū có̤ gì siŭ-gāi gé-liŏh, iâ â̤ biĕu-gé có̤ cê̤ṳ-dông siŭ-gāi gì ê̤ṳng-hô. Sāi-ê̤ṳng sèng-âu, diŏh gâe̤ng céng-cháik ô gák.',
+	'makebot-username'        => 'Ê̤ṳng-hô-miàng:',
+	'makebot-search'          => 'Kó̤',
+	'makebot-isbot'           => '[[User:$1|$1]] ô gĭ-ké-nè̤ng sĭng-hông.',
+	'makebot-notbot'          => '[[User:$1|$1]] mò̤ gĭ-ké-nè̤ng sĭng-hông.',
+	'makebot-privileged'      => '[[User:$1|$1]] ô [[Special:Listadmins|guāng-lī-uòng hĕ̤k-ciā guăng-lièu sĭng-hông]], mâ̤-sāi có̤ gĭ-ké-nè̤ng.',
+	'makebot-change'          => 'Gāi-biéng sĭng-hông:',
+	'makebot-grant'           => 'Dò̤-ké̤ṳk',
+	'makebot-revoke'          => 'Dò̤-duōng',
+	'makebot-comment'         => 'Pàng-lâung:',
+	'makebot-granted'         => '[[User:$1|$1]] hiêng-câi ô gĭ-ké-nè̤ng sĭng-hông lāu.',
+	'makebot-revoked'         => '[[User:$1|$1]] ī-gĭng mò̤ gĭ-ké-nè̤ng sĭng-hông lāu.',
+	'makebot-logpage'         => 'Gĭ-ké-nè̤ng sĭng-hông nĭk-cé',
+	'makebot-logpagetext'     => 'Cuòi sê gé-liŏh gāi-biéng ê̤ṳng-hô [[Help:Bot|gĭ-ké-nè̤ng]] sĭng-hông gì nĭk-cé.',
+	'makebot-logentrygrant'   => 'gău ké̤ṳk [[$1]] gĭ-ké-nè̤ng sĭng-hông',
+	'makebot-logentryrevoke'  => 'siŭ duōng [[$1]] gì gĭ-ké-nè̤ng sĭng-hông',
+),
+
 /* Czech */
 'cs' => array(
 	'makebot'                 => 'Přidat nebo odebrat příznak bot',

@@ -34,6 +34,10 @@ $wgDeletedContribsMessages['ca'] = array(
 	'deletedcontributions' => 'Contribucions esborrades',
 );
 
+$wgDeletedContribsMessages['cdo'] = array(
+	'deletedcontributions' => 'Ké̤ṳk chēng lâi gì ê̤ṳng-hô góng-hióng',
+);
+
 $wgDeletedContribsMessages['cs'] = array(
 	'deletedcontributions' => 'Smazané editace uživatele',
 );

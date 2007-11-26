@@ -32,6 +32,10 @@ $wgDismissableSiteNoticeMessages['ca'] = array(
 	'sitenotice_close' => 'amaga',
 );
 
+$wgDismissableSiteNoticeMessages['cdo'] = array(
+	'sitenotice_close' => 'cĕk lâi',
+);
+
 $wgDismissableSiteNoticeMessages['cs'] = array(
 	'sitenotice_close' => 'zavřít',
 );

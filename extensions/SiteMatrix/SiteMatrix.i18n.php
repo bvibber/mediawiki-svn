@@ -47,6 +47,9 @@ $wgSiteMatrixMessages['br'] = array(
 $wgSiteMatrixMessages['ca'] = array(
 	'sitematrix' => 'Llista de tots els projectes en els diferents idiomes.',
 );
+$wgSiteMatrixMessages['cdo'] = array(
+	"sitematrix"          => "Wikimedia wiki gì dăng-dăng",
+);
 $wgSiteMatrixMessages['cs'] = array(
 	'sitematrix' => 'Seznam všech wiki nadace Wikimedia',
 	'sitematrix-language' => 'Jazyk',
