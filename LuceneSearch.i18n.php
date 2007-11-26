@@ -82,6 +82,14 @@ $wgLuceneSearchMessages['ca'] = array(
 	'searchnoresults'       => 'Malauradament no s\'ha trobat cap resultat per aquesta cerca.',
 );
 
+$wgLuceneSearchMessages['cdo'] = array(
+	'searchnumber'          => "<strong>$3 bĭk giék-guō gì $1-$2</strong>",
+	'searchscore'           => "Guăng-lièng-séng: $1",
+	'searchsize'            => "$1 KB ($2 cê)",
+	'searchnoresults'       => "Dó̤i-bók-cê̤ṳ, tō̤ mâ̤ diŏh dū-dū siŏh-iông gì.",
+	'lucenefallback'        => "Cī-lùng wiki sìng-tō̤ gŭng-nèng ô nék-giāng ông-dà̤. Cuòi kō̤-nèng sê hàng-mò̤-siŏh-sì gì; chiāng nṳ̄ dīng nék-gū gái ché, hĕ̤k-ciā sāi-ê̤ṳng nguôi-buô gì sìng-tō̤ hŭk-ô:\n",
+);
+
 $wgLuceneSearchMessages['cs'] = array(
 	'searchnumber'          => '<strong>Výsledky $1–$2 z $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Předchozí</span>",
