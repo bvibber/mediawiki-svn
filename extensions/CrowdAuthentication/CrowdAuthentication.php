@@ -214,7 +214,8 @@ class CrowdAuthenticator extends AuthPlugin {
 	global	$caDefaultGroups;
 		$crowd = $this->getCrowd();
 		$nameparts = split(" ", $realname, 2);
-		$firstname = $lastname = "";
+		$firstname = $user->getName(); 
+		$lastname = "";
 		if (count($nameparts) > 0)
 			$firstname = $nameparts[0];
 		if (count($nameparts) > 1)
