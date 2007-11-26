@@ -552,7 +552,7 @@ function efMakeBotMessages() {
 	'makebot-granted'         => '[[User:$1|$1]] nunc statum bot habet.',
 	'makebot-revoked'         => '[[User:$1|$1]] non iam statum bot habet.',
 	'makebot-logpage'         => 'Index mutationum statui bot',
-	'makebot-logpagetext'     => 'Hic est index mutationum statui [[{{MediaWiki:grouppage-bot}}|bot]] usorum.',
+	'makebot-logpagetext'     => 'Hic est index mutationum statui [[{{MediaWiki:Grouppage-bot}}|bot]] usorum.',
 	'makebot-logentrygrant'   => 'licuit statum bot pro [[$1]]',
 	'makebot-logentryrevoke'  => 'removit statum bot usoris [[$1]]',
 ),

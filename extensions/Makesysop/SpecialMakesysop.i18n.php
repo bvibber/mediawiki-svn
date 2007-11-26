@@ -746,8 +746,8 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'makesysopok' => '<b>Usor "$1" nunc est magistratus</b>',
 	'makebureaucratok' => '<b>Usor "$1" nunc est grapheocrates</b>',
 	'rights' => 'Iures:',
-	'already_sysop' => 'Hic usor etiam est [[{{MediaWiki:grouppage-sysop}}|magistratus]].',
-	'already_bureaucrat' => 'Hic usor etiam est [[{{MediaWiki:grouppage-bureaucrat}}|grapheocrates]].',
+	'already_sysop' => 'Hic usor etiam est [[{{MediaWiki:Grouppage-sysop}}|magistratus]].',
+	'already_bureaucrat' => 'Hic usor etiam est [[{{MediaWiki:Grouppage-bureaucrat}}|grapheocrates]].',
 ),
 
 'li' => array(
