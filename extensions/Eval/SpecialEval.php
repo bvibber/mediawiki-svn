@@ -111,6 +111,14 @@ function wfSpecialEval() {
 						),
 						''
 					) .
+					wfElement('input',
+						array(
+							'type' => 'hidden',
+							'name' => 'title',
+							'value' => 'Special:Eval'
+						),
+						''
+					) .
 				wfCloseElement( 'form' )
 			);
 		}
@@ -156,7 +164,7 @@ function wfSpecialEval() {
 			global $wgOut;
 
 			if ( ! class_exists( 'GeSHi' ) )
-				require_once 'geshi/geshi.php';
+				require_once '../extensions/geshi/geshi.php';
 
 			$geshi = new Geshi( $this->mCode, 'php' );
 			$geshi->enable_line_numbers( GESHI_NORMAL_LINE_NUMBERS );
