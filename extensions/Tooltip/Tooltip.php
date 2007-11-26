@@ -1,18 +1,33 @@
 <?php
 
-$wgExtensionFunctions[] = "wfToolTipExtension";
+$wgExtensionFunctions[]             = "wfToolTipExtension";
+$wgHooks['LanguageGetMagic'][]      = 'wfTooltipParserFunction_Magic';
 $wgExtensionCredits['parserhook'][] = array(
     'name'        => 'ToolTip',
     'author'      => 'Paul Grinberg',
-    'description' => 'adds <nowiki><tooltip></nowiki> tag',
-    'version'     => '0.3'
+    'description' => 'adds <nowiki><tooltip></nowiki> and <nowiki>{{#tooltip:}}</nowiki>tag',
+    'version'     => '0.4'
 );
 
 function wfToolTipExtension() {
     global $wgParser;
     $wgParser->setHook( "tooltip", "renderToolTip" );
+    $wgParser->setFunctionHook( 'tooltip', 'wfTooltipParserFunction_Render' );
 }
 
+function wfTooltipParserFunction_Magic( &$magicWords, $langCode ) {
+        # Add the magic word
+        # The first array element is case sensitive, in this case it is not case sensitive
+        # All remaining elements are synonyms for our parser function
+        $magicWords['tooltip'] = array( 0, 'tooltip' );
+        # unless we return true, other parser functions extensions won't get loaded.
+        return true;
+}
+
+function wfTooltipParserFunction_Render( &$parser, $basetext = '', $tooltiptext = '', $x = 0, $y = 0) {
+    $output = renderToolTip($tooltiptext, array('text'=>$basetext, 'x'=>$x, 'y'=>$y), &$parser);
+    return array($output, 'noparse' => true, 'isHTML' => true);
+}
 
 function renderToolTip($input, $argv, &$parser) {
     global $wgToolTip,$wgScriptPath;
