@@ -1,12 +1,12 @@
-<?PHP
+<?php
 /**#@+
-*      Extension used for blocking users names and IP addresses with regular expressions. Contains both the blocking mechanism and a special page to add/manage blocks
-*
-* @addtogroup SpecialPage
-*
-* @author Bartek
-* @copyright Copyright © 2007, Wikia Inc.
-* @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+ * Extension used for blocking users names and IP addresses with regular expressions. Contains both the blocking mechanism and a special page to add/manage blocks
+ *
+ * @addtogroup SpecialPage
+ *
+ * @author Bartek
+ * @copyright Copyright © 2007, Wikia Inc.
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
 */
 
 /* add hook */
@@ -19,8 +19,8 @@ $wgHooks['GetBlockedStatus'][] = 'wfRegexBlockCheck';
 */
 function wfRegexBlockCheck ($current_user) {
 	global $wgMemc, $wgSharedDB ;
-        if (!wfSimplifiedRegexCheckSharedDB())
-	                return ;
+	if (!wfSimplifiedRegexCheckSharedDB())
+		return ;
 	$ip_to_check = wfGetIP () ;
 	$key = "$wgSharedDB:regexBlockCore:blockers" ;
 	$cached = $wgMemc->get ($key) ;
@@ -30,11 +30,11 @@ function wfRegexBlockCheck ($current_user) {
 		$dbr =& wfGetDB (DB_SLAVE);	
 		$query = "SELECT blckby_blocker FROM ".wfRegexBlockGetTable()." GROUP BY blckby_blocker" ;
 		$res = $dbr->query($query) ;
-	        while ( $row = $dbr->fetchObject( $res ) ) {
+		while ( $row = $dbr->fetchObject( $res ) ) {
 			wfGetRegexBlocked ($row->blckby_blocker, $current_user, $ip_to_check) ;
 			array_push ($blockers_array, $row->blckby_blocker) ;	
-	        }
-	        $dbr->freeResult ($res) ;
+		}
+		$dbr->freeResult ($res) ;
 		$wgMemc->set ($key, $blockers_array, REGEXBLOCK_EXPIRE) ;
 	} else {
 		/* get from cache */
@@ -114,17 +114,17 @@ function wfRegexBlockExpireCheck ($user, $names = null, $ips = null) {
 	$ret = array() ;
 	$dbr =& wfGetDB (DB_SLAVE) ;
 	/* for EACH match check whether timestamp expired until found VALID timestamp
-           but: only for a BLOCKED user, and it will be memcached 
+	   but: only for a BLOCKED user, and it will be memcached 
 	   moreover, expired blocks will be consequently deleted
 	*/
 	foreach ($array_match as $single) {
-        	$key = "$wgSharedDB:regexBlockCore:blocked:$single" ;
-	        $cached = $wgMemc->get ($key) ;
+		$key = "$wgSharedDB:regexBlockCore:blocked:$single" ;
+		$cached = $wgMemc->get ($key) ;
 		if ( !is_object ($cached) ) {
 			/* get from database */
 			$query = "SELECT blckby_timestamp, blckby_expire, blckby_blocker, blckby_create, blckby_exact, blckby_reason 
-			  	  FROM ".wfRegexBlockGetTable()." 
-			          WHERE blckby_name like {$dbr->addQuotes('%'.$single.'%')}" ;
+				  FROM ".wfRegexBlockGetTable()." 
+				  WHERE blckby_name like {$dbr->addQuotes('%'.$single.'%')}" ;
 
 			$res = $dbr->query ($query) ;
 			if ($row = $dbr->fetchObject ($res) ) {
@@ -139,18 +139,18 @@ function wfRegexBlockExpireCheck ($user, $names = null, $ips = null) {
 				} else {  /* clean up an obsolete block */
 					wfRegexBlockClearExpired ($single, $row->blckby_blocker) ;
 				}
-       	 		}
+			}
 			$dbr->freeResult ($res) ;
 		} else {
-		       	/* get from cache */ 
+			/* get from cache */ 
  			if ((wfTimestampNow () <= $cached->blckby_expire) || ('infinite' == $cached->blckby_expire)) {
-                        	$ret['create'] = $cached->blckby_create ;
-                                $ret['exact'] = $cached->blckby_exact ;
-                                $ret['reason'] = $cached->blckby_reason ;
-                                return $ret ;
-                        } else {  /* clean up an obsolete block */
-                                wfRegexBlockClearExpired ($single, $cached->blckby_blocker) ;
-                        }
+				$ret['create'] = $cached->blckby_create ;
+				$ret['exact'] = $cached->blckby_exact ;
+				$ret['reason'] = $cached->blckby_reason ;
+				return $ret ;
+			} else {  /* clean up an obsolete block */
+				wfRegexBlockClearExpired ($single, $cached->blckby_blocker) ;
+			}
 		}
 	}
 	return false ;
@@ -163,13 +163,13 @@ function wfRegexBlockExpireCheck ($user, $names = null, $ips = null) {
 */
 function wfRegexBlockClearExpired ($username, $blocker) {
 	$dbw =& wfGetDB( DB_MASTER );
-        $query = "DELETE FROM ".wfRegexBlockGetTable()." WHERE blckby_name = ".$dbw->addQuotes($username) ;
-        $dbw->query ($query) ;
-        if ( $dbw->affectedRows() ) {
-        	/* success, remember to delete cache key  */
-                wfRegexBlockUnsetKeys ($blocker, $username) ;
+	$query = "DELETE FROM ".wfRegexBlockGetTable()." WHERE blckby_name = ".$dbw->addQuotes($username) ;
+	$dbw->query ($query) ;
+	if ( $dbw->affectedRows() ) {
+		/* success, remember to delete cache key  */
+		wfRegexBlockUnsetKeys ($blocker, $username) ;
 		return true ;
-        }
+	}
 	return false ;
 }
 
@@ -211,7 +211,7 @@ function wfGetRegexBlocked ($blocker, $user, $user_ip) {
 			$valid = wfRegexBlockExpireCheck ($user, null, $ip_matches) ;
 		}
 		else {
-                 	$valid = wfRegexBlockExpireCheck ($user, $matches, null) ;
+			$valid = wfRegexBlockExpireCheck ($user, $matches, null) ;
 		}
 		if ( is_array ($valid) ) {
 			$user->mBlockedby = $blocker ;
@@ -219,11 +219,11 @@ function wfGetRegexBlocked ($blocker, $user, $user_ip) {
 				$user->mBlockreason = $valid['reason'] ;
 			} else { /* display generic reasons */
 				if ($matched_ip && ($ips != "") ) { /* we blocked by IP */
-					$user->mBlockreason = REGEXBLOCK_REASON_IP ;
+					$user->mBlockreason = wfMsgHtml('regexblock-reason-ip', $wgContactLink) ;
 				} else if ($valid['exact'] == 1) { /* we blocked by username exact match */
-					$user->mBlockreason = REGEXBLOCK_REASON_NAME ;
+					$user->mBlockreason =  wfMsgHtml('regexblock-reason-name', $wgContactLink) ;
 				} else { /* we blocked by regex match */
-					$user->mBlockreason = REGEXBLOCK_REASON_REGEX ;
+					$user->mBlockreason =  wfMsgHtml('regexblock-reason-regex', $wgContactLink) ;
 				}
 			}
 			/* account creation check goes through the same hook... */			
@@ -233,5 +233,3 @@ function wfGetRegexBlocked ($blocker, $user, $user_ip) {
 		}
 	}
 }
-
-
