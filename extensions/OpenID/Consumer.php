@@ -50,7 +50,7 @@ if (defined('MEDIAWIKI')) {
 	# Where to store transitory data. Can be 'memc' for the $wgMemc
 	# global caching object, or 'file' if caching is turned off
 	# completely and you need a fallback.
-	
+
 	# Default is memc unless the global cache is disabled.
 
 	$wgOpenIDConsumerStoreType = ($wgMainCacheType == CACHE_NONE) ? 'file' : 'memc';
@@ -77,7 +77,7 @@ if (defined('MEDIAWIKI')) {
 		if ($wgRequest->getText('returnto')) {
 			OpenIDConsumerSetReturnTo($wgRequest->getText('returnto'));
 		}
-		
+
 		$openid_url = $wgRequest->getText('openid_url');
 		if (isset($openid_url) && strlen($openid_url) > 0) {
 			OpenIDLogin($openid_url);
@@ -772,7 +772,7 @@ if (defined('MEDIAWIKI')) {
 	function OpenIDConsumerReturnTo() {
 		return $_SESSION['openid_consumer_returnto'];
 	}
-	
+
 	function OpenIDConsumerSetReturnTo($returnto) {
 		$_SESSION['openid_consumer_returnto'] = $returnto;
 	}

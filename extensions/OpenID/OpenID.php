@@ -37,72 +37,32 @@ if (defined('MEDIAWIKI')) {
 
 	$wgExtensionFunctions[] = 'setupOpenID';
 	$wgExtensionCredits['other'][] = array('name' => 'OpenID',
-										   'version' => MEDIAWIKI_OPENID_VERSION,
-										   'author' => 'Evan Prodromou',
-										   'url' => 'http://www.mediawiki.org/wiki/Extension:OpenID',
-										   'description' => 'lets users login to the wiki with an [http://openid.net/ OpenID] ' .
-										   'and login to other OpenID-aware Web sites with their wiki user account');
-	
-	# Whether to hide the "Login with OpenID link" link; set to true if you already have this link in your skin.
-	
-	$wgHideOpenIDLoginLink = false;
-	
-	# Location of the OpenID login logo. You can copy this to your server if you want.
-	
-	$wgOpenIDLoginLogoUrl = 'http://www.openid.net/login-bg.gif';
-	
-	# Whether to show the OpenID identity URL on a user's home page. Possible values are 'always', 'never', or 'user' 
-	# 'user' lets the user decide.
-	
-	$wgOpenIDShowUrlOnUserPage = 'user';
-	
-	function setupOpenID() {
-		global $wgMessageCache, $wgOut, $wgRequest, $wgHooks;
+		'version' => MEDIAWIKI_OPENID_VERSION,
+		'author' => 'Evan Prodromou',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:OpenID',
+		'description' => 'lets users login to the wiki with an [http://openid.net/ OpenID] ' .
+			'and login to other OpenID-aware Web sites with their wiki user account');
 
-		$wgMessageCache->addMessages(array('openidlogin' => 'Login with OpenID',
-										   'openidfinish' => 'Finish OpenID login',
-										   'openidserver' => 'OpenID server',
-										   'openidconvert' => 'OpenID converter',
-										   'openidlogininstructions' => 'Enter your OpenID identifier to log in:',
-										   'openiderror' => 'Verification error',
-										   'openiderrortext' => 'An error occured during verification of the OpenID URL.',
-										   'openidconfigerror' => 'OpenID Configuration Error',
-										   'openidconfigerrortext' => 'The OpenID storage configuration for this wiki is invalid.  Please consult this site\'s administrator.',
-										   'openidpermission' => 'OpenID permissions error',
-										   'openidpermissiontext' => 'The OpenID you provided is not allowed to login to this server.',
-										   'openidcancel' => 'Verification cancelled',
-										   'openidcanceltext' => 'Verification of the OpenID URL was cancelled.',
-										   'openidfailure' => 'Verification failed',
-										   'openidfailuretext' => 'Verification of the OpenID URL failed.',
-										   'openidsuccess' => 'Verification succeeded',
-										   'openidsuccesstext' => 'Verification of the OpenID URL succeeded.',
-										   'openidusernameprefix' => 'OpenIDUser',
-										   'openidserverlogininstructions' => 'Enter your password below to log in to $3 as user $2 (user page $1).',
-										   'openidtrustinstructions' => 'Check if you want to share data with $1.',
-										   'openidallowtrust' => 'Allow $1 to trust this user account.',
-										   'openidnopolicy' => 'Site has not specified a privacy policy.',
-										   'openidpolicy' => 'Check the <a target="_new" href="$1">privacy policy</a> for more information.',
-										   'openidoptional' => 'Optional',
-										   'openidrequired' => 'Required',
-										   'openidnickname' => 'Nickname',
-										   'openidfullname' => 'Fullname',
-										   'openidemail' => 'Email address',
-										   'openidlanguage' => 'Language',
-										   'openidnotavailable' => 'Your preferred nickname ($1) is already in use by another user.',
-										   'openidnotprovided' => 'Your OpenID server did not provide a nickname (either because it can\'t, or because you told it not to).',
-										   'openidchooseinstructions' => 'All users need a nickname; you can choose one from the options below.',
-										   'openidchoosefull' => 'Your full name ($1)',
-										   'openidchooseurl' => 'A name picked from your OpenID ($1)',
-										   'openidchooseauto' => 'An auto-generated name ($1)',
-										   'openidchoosemanual' => 'A name of your choice: ',
-										   'openidconvertinstructions' => 'This form lets you change your user account to use an OpenID URL.',
-										   'openidconvertsuccess' => 'Successfully converted to OpenID',
-										   'openidconvertsuccesstext' => 'You have successfully converted your OpenID to $1.',
-										   'openidconvertyourstext' => 'That is already your OpenID.',
-										   'openidconvertothertext' => 'That is someone else\'s OpenID.',
-										   'openidalreadyloggedin' => '<strong>User $1, you are already logged in!</strong>',
-										   'tog-hideopenid' => 'Hide your <a href="http://openid.net/">OpenID</a> on your user page, if you log in with OpenID.',
-										   ));
+	$dir = dirname(__FILE__) . '/';
+	$wgExtensionMessagesFiles['OpenID'] = $dir . 'OpenID.i18n.php';
+
+	# Whether to hide the "Login with OpenID link" link; set to true if you already have this link in your skin.
+
+	$wgHideOpenIDLoginLink = false;
+
+	# Location of the OpenID login logo. You can copy this to your server if you want.
+
+	$wgOpenIDLoginLogoUrl = 'http://www.openid.net/login-bg.gif';
+
+	# Whether to show the OpenID identity URL on a user's home page. Possible values are 'always', 'never', or 'user'
+	# 'user' lets the user decide.
+
+	$wgOpenIDShowUrlOnUserPage = 'user';
+
+	function setupOpenID() {
+		global $wgOut, $wgRequest, $wgHooks;
+
+		wfLoadExtensionMessages( 'OpenID' );
 
 		SpecialPage::AddPage(new UnlistedSpecialPage('OpenIDLogin'));
 		SpecialPage::AddPage(new UnlistedSpecialPage('OpenIDFinish'));
@@ -114,7 +74,7 @@ if (defined('MEDIAWIKI')) {
 		$wgHooks['UserToggles'][] = 'OpenIDUserToggles';
 
 		$wgOut->addHeadItem('openidloginstyle', OpenIDLoginStyle());
-		
+
 		$action = $wgRequest->getText('action', 'view');
 
 		if ($action == 'view') {
@@ -151,12 +111,12 @@ if (defined('MEDIAWIKI')) {
 					$openid = OpenIdGetUserUrl($user);
 					if (isset($openid) && strlen($openid) != 0) {
 						global $wgOpenIDShowUrlOnUserPage;
-						
+
 						if ($wgOpenIDShowUrlOnUserPage == 'always' ||
 							($wgOpenIDShowUrlOnUserPage == 'user' && !$user->getOption('hideopenid')))
 						  {
 								global $wgOpenIDLoginLogoUrl;
-						
+
 								$url = OpenIDToUrl($openid);
 								$disp = htmlspecialchars($openid);
 								$wgOut->setSubtitle("<span class='subpages'>" .
@@ -207,9 +167,9 @@ if (defined('MEDIAWIKI')) {
 			}
 			return new Auth_OpenID_FileStore($options['path']);
 
-		 default:
+		default:
 			$wgOut->errorPage('openidconfigerror', 'openidconfigerrortext');
-	    }
+		}
 	}
 
 	function OpenIDXriBase($xri) {
@@ -226,41 +186,41 @@ if (defined('MEDIAWIKI')) {
 
 	function OpenIDToUrl($openid) {
 		/* ID is either an URL already or an i-name */
-        if (Services_Yadis_identifierScheme($openid) == 'XRI') {
+		if (Services_Yadis_identifierScheme($openid) == 'XRI') {
 			return OpenIDXriToUrl($openid);
 		} else {
 			return $openid;
 		}
 	}
-	
+
 	function OpenIDPersonalUrls(&$personal_urls, &$title) {
 		global $wgHideOpenIDLoginLink, $wgUser, $wgLang;
-		
+
 		if (!$wgHideOpenIDLoginLink && $wgUser->getID() == 0) {
 			$sk = $wgUser->getSkin();
 			$returnto = ($title->getPrefixedUrl() == $wgLang->specialPage( 'Userlogout' )) ?
 			  '' : ('returnto=' . $title->getPrefixedURL());
-			  
+
 			$personal_urls['openidlogin'] = array(
 					'text' => wfMsg('openidlogin'),
 					'href' => $sk->makeSpecialUrl( 'OpenIDLogin', $returnto ),
 					'active' => $title->isSpecial( 'OpenIDLogin' )
 				);
 		}
-		
+
 		return true;
 	}
-	
+
 	function OpenIDUserToggles(&$extraToggles) {
 		global $wgOpenIDShowUrlOnUserPage;
-		
+
 		if ($wgOpenIDShowUrlOnUserPage == 'user') {
 			$extraToggles[] = 'hideopenid';
 		}
-		
+
 		return true;
 	}
-	
+
 	function OpenIDLoginStyle() {
 		global $wgOpenIDLoginLogoUrl;
 		return <<<EOS
@@ -274,4 +234,3 @@ li#pt-openidlogin {
 EOS;
 	}
 }
-
