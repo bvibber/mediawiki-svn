@@ -809,7 +809,16 @@ class WikiOAIRecord extends OAIRecord {
 		return "<metadata>\n$data</metadata>\n";
 	}
 	
-	/** FIXME: seems to be completely broken (at least on MW 1.5+) */
+	/**
+	 * Note: old versions that worked on MW 1.4 included the page text as
+	 * the dc:description field. Then it was broken for a long time. :)
+	 * I'm now stripping out the text, as it's not really appropriate
+	 * for the description field.
+	 *
+	 * This allows the use of oai_dc format to grab metadata about the pages
+	 * without fetching the actual page content, which should be more useful
+	 * for those simply wanting a set of page update notifications.
+	 */
 	function renderDublinCore() {
 		$title = Title::makeTitle( $this->_row->page_namespace, $this->_row->page_title );
 		global $wgMimeType, $wgContLanguageCode;
@@ -825,9 +834,8 @@ class WikiOAIRecord extends OAIRecord {
 			oaiTag( 'dc:type',        array(), 'Text' ) . "\n" .
 			oaiTag( 'dc:format',      array(), $wgMimeType ) . "\n" .
 			oaiTag( 'dc:identifier',  array(), $title->getFullUrl() ) . "\n" .
-			oaiTag( 'dc:contributor', array(), $this->_row->user_text ) . "\n" .
+			oaiTag( 'dc:contributor', array(), $this->_row->rev_user_text ) . "\n" .
 			oaiTag( 'dc:date',        array(), oaiDatestamp( $this->getDatestamp() ) ) . "\n" .
-			oaiTag( 'dc:description', array(), Article::getRevisionText( $this->_row, '' ) ) . "\n" .
 			"</oai_dc:dc>\n";
 		return $out;
 	}
