@@ -6,7 +6,7 @@ $wgExtensionCredits['parserhook'][] = array(
     'name'        => 'ToolTip',
     'author'      => 'Paul Grinberg',
     'description' => 'adds <nowiki><tooltip></nowiki> and <nowiki>{{#tooltip:}}</nowiki>tag',
-    'version'     => '0.4'
+    'version'     => '0.4.1'
 );
 
 function wfToolTipExtension() {
@@ -26,7 +26,7 @@ function wfTooltipParserFunction_Magic( &$magicWords, $langCode ) {
 
 function wfTooltipParserFunction_Render( &$parser, $basetext = '', $tooltiptext = '', $x = 0, $y = 0) {
     $output = renderToolTip($tooltiptext, array('text'=>$basetext, 'x'=>$x, 'y'=>$y), &$parser);
-    return array($output, 'noparse' => true, 'isHTML' => true);
+    return array($output, 'nowiki' => false, 'noparse' => true, 'isHTML' => false);
 }
 
 function renderToolTip($input, $argv, &$parser) {
@@ -61,13 +61,16 @@ function renderToolTip($input, $argv, &$parser) {
 END;
         $wgToolTip = 1;
     }
-    
-    $tooltipid = uniqid('tooltipid');
-    $parentid = uniqid('parentid');
-    $output .= "<div id='$tooltipid' class='xstooltip'><font color=white>" . $parser->unstrip($parser->recursiveTagParse($input),$parser->mStripState) . "</font></div>";
-    $output .= "<font color='green'><span id='$parentid' onmouseover=\"xstooltip_show('$tooltipid', '$parentid', $xoffset, $yoffset);\" onmouseout=\"xstooltip_hide('$tooltipid');\">" . $parser->unstrip($parser->recursiveTagParse($text),$parser->mStripState) . "</span></font>";
 
-    return $output . "</span>";
+    if ($input != '') {
+        $tooltipid = uniqid('tooltipid');
+        $parentid = uniqid('parentid');
+        $output .= "<div id='$tooltipid' class='xstooltip'><font color=white>" . $parser->unstrip($parser->recursiveTagParse($input),$parser->mStripState) . "</font></div>";
+        $output .= "<font color='green'><span id='$parentid' onmouseover=\"xstooltip_show('$tooltipid', '$parentid', $xoffset, $yoffset);\" onmouseout=\"xstooltip_hide('$tooltipid');\">" . $parser->unstrip($parser->recursiveTagParse($text),$parser->mStripState) . "</span></font>";
+    }
+    $output .= "</span>";
+
+    return $output;
 }
 
 ?>
