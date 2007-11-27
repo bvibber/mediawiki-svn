@@ -130,8 +130,8 @@ class ApiQueryBlocks extends ApiQueryBase {
 				$block['reason'] = $row->ipb_reason;
 			if($fld_range)
 			{
-				$block['range_start'] = $this->convertHexIP($row->ipb_range_start);
-				$block['range_end'] = $this->convertHexIP($row->ipb_range_end);
+				$block['rangestart'] = $this->convertHexIP($row->ipb_range_start);
+				$block['rangeend'] = $this->convertHexIP($row->ipb_range_end);
 			}
 			if($fld_flags)
 			{
