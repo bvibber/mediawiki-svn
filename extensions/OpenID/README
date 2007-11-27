@@ -108,6 +108,11 @@ Theoretically it should work out of the box, but you'll almost
 definitely want to set the trust root and access controls (see
 Configuration below).
 
+When installing this installation on Windows, add the following line to
+LocalSettings.php:
+
+	define('Auth_OpenID_RAND_SOURCE', null);
+
 === Caching ===
 
 The extension stores some semi-persistent data in the $wgMemc object.
