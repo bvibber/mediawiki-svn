@@ -27,7 +27,9 @@ class Stalepages extends SpecialPage
 	}
 
 	function execute( $parameters ) {
-		wfLoadExtensionMessages( 'Stalepages' );
+		if( version_compare( $wgVersion, '1.12alpha', '>=' ) ) {    
+			wfLoadExtensionMessages( 'Stalepages' );
+		}
 
 		$this->setHeaders();
 		list( $limit, $offset ) = wfCheckLimits();

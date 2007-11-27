@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'stalepages' => 'Stale Pages',
+	'stalepages' => 'Stale pages',
 	'stalepages-summary' => 'This is a list of pages that have not been edited in the last $1 days.',
 );
 
