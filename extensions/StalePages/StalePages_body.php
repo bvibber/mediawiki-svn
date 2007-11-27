@@ -27,6 +27,7 @@ class Stalepages extends SpecialPage
 	}
 
 	function execute( $parameters ) {
+		global $wgVersion;
 		if( version_compare( $wgVersion, '1.12alpha', '>=' ) ) {    
 			wfLoadExtensionMessages( 'Stalepages' );
 		}
