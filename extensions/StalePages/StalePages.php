@@ -9,7 +9,6 @@ if (!defined('MEDIAWIKI')) {
 	exit(1);
 }
 
-$wgExtensionFunctions[] = 'efStalepages';
 $wgExtensionCredits['specialpage'][] = array(
 	'name'=>'Stale Pages',
 	'url'=>'http://www.mediawiki.org/wiki/Extension:Stale_Pages',
@@ -23,7 +22,3 @@ $wgExtensionMessagesFiles['Stalepages'] = $dir . 'StalePages.i18n.php';
 $wgAutoloadClasses['Stalepages'] = $dir . 'StalePages_body.php';
 
 $wgSpecialPages['Stalepages'] = 'Stalepages';
-
-function efAddStalePages( &$wgQueryPages) {
-	$wgQueryPages['Stalepages'] = 'Stalepages';
-}
