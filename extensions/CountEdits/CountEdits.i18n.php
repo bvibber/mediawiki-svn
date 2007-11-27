@@ -138,6 +138,18 @@ function efCountEditsMessages( $single = false ) {
 	'countedits-nocontribs' => 'Non houbo ningunha colaboración neste wiki.',
 ),
 
+'hr' => array(
+	'countedits' => 'Broj uređivanja',
+	'countedits-warning' => '\'\'\'Upozorenje:\'\'\' Ne sudite knjigu po koricama. Ne sudite suradnike po njihovom broju uređivanja.',
+	'countedits-username' => 'Suradničko ime:',
+	'countedits-ok' => 'Prikaži',
+	'countedits-nosuchuser' => 'Ne postoji suradnik s imenom/nadimkom $1.',
+	'countedits-resultheader' => 'Rezultati za $1',
+	'countedits-resulttext' => 'Broj uređivanja suradnika $1: $2',
+	'countedits-mostactive' => 'Najaktivniji suradnici',
+	'countedits-nocontribs' => 'Nema suradnika na ovom wikiju.',
+),
+
 'hsb' => array(
 	'countedits' => 'Ličak přinoškow',
 	'countedits-warning' => '\'\'\'Kedźbu\'\'\': Njeposudź knihu wobalki dla, njeposudź wužiwarja ličby jeho přinoškow dla!',
@@ -443,10 +455,12 @@ function efCountEditsMessages( $single = false ) {
 ),
 
 'tet' => array(
+	'countedits' => 'Sura edita',
 	'countedits-username' => 'Naran uza-na\'in:',
 	'countedits-ok' => 'OK',#identical but defined
 	'countedits-nosuchuser' => 'Uza-na\'in ho naran $1 lá\'os iha ne\'e.',
 	'countedits-resulttext' => '$1 edita tiha ona ba dala $2',
+	'countedits-nocontribs' => 'Ema lá\'os kintribui iha wiki ne\'e.',
 ),
 
 /* Cantonese (Shinjiman) */

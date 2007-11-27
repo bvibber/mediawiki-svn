@@ -55,6 +55,7 @@ $wgDesysopMessages['de'] = array(
 	'desysopnot_sysop'     => 'Dieser Benutzer ist kein Administrator.',
 );
 $wgDesysopMessages['el'] = array(
+	'desysopname'          => 'Όνομα του χρήστη:',
 	'desysopsetrights'     => 'Καθορισμός δικαιωμάτων χρήστη',
 	'desysoprightsfail'    => '<b>Δεν ήταν δυνατή η ρύθμιση των δικαιωμάτων για το χρήστη "$1". Βεβαιωθείτε πως έχετε πληκτρολογήσει σωστά το όνομα.</b>',
 	'desysopnot_sysop'     => 'Αυτός ο χρήστης δεν είναι διαχειριστής',
@@ -238,6 +239,16 @@ $wgDesysopMessages['pms'] = array(
 	'desysoprightsfail'    => '<b>As peul pa buteje sò drit a "$1". (Ha-lo pa mai scrivù mal lë stranòm?)</b>',
 	'desysop'              => 'Gaveje la qualìfica d\'aministrator a n\'utent',
 	'desysopnot_sysop'     => 'St\'utent-sì a l\'é pa n\'aministrator',
+);
+$wgDesysopMessages['pt'] = array(
+	'desysoptitle'         => 'Revogar acesso de administrador a um utilizador',
+	'desysoptext'          => 'Este formulário é usado por burocratas para revogar a permissão de administração de um utilizador. Introduza o nome do utilizador na caixa e pressione o botão para revogar o acesso de administração do utilizador.',
+	'desysopname'          => 'Nome do utilizador:',
+	'desysopok'            => '<b>O utilizador "$1" deixou de ser administrador</b>',
+	'desysopsetrights'     => 'Definir privilégios de utilizador',
+	'desysoprightsfail'    => '<b>Direitos de utilizador para "$1" não puderam ser definidos. (Introduziu o nome correctamente?)</b>',
+	'desysop'              => 'Retirar privilégio de administração a um utilizador',
+	'desysopnot_sysop'     => 'Este utilizador não é um administrador',
 );
 $wgDesysopMessages['ro'] = array(
 	'desysoptitle'         => 'Revocarea permisiunilor de administrator',

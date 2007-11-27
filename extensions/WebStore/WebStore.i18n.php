@@ -108,6 +108,7 @@ $1',
 	'el' => array(
 		'webstore_invalid_zone' => 'Άκυρη ζώνη "$1".',
 		'webstore_404' => 'Το αρχείο δεν βρέθηκε.',
+		'webstore_metadata_not_found' => 'Το Αρχείο δεν βρέθηκε: $1',
 	),
 	'ext' => array(
 		'webstore_rename' => 'Marru rehucheandu el archivu "$1" a "$2".',

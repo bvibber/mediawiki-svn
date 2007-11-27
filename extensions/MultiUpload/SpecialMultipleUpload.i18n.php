@@ -37,6 +37,10 @@ $messages['ar'] = array(
 الصور غير الملائمة سيتم حذفها فورا، انظر [[{{MediaWiki:Multipleupload-page}}|سياسة حذف الصور]].',
 );
 
+$messages['el'] = array(
+	'multipleupload-saveallfiles' => 'Αποθηκεύστε όλα τα αρχεία',
+);
+
 $messages['fr'] = array(
 	'multipleupload'                   => "Télécharger des fichiers",
 	'multipleupload-ignoreallwarnings' => "Ignorer '''tous les avertissements''' et sauvegarder les fichiers en question.",

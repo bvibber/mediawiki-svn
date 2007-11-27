@@ -134,6 +134,16 @@ $wgExpandTemplatesMessages['he'] = array(
 	'expand_templates_remove_comments' => 'הסר הערות',
 	'expand_templates_preview'         => 'תצוגה מקדימה',
 );
+$wgExpandTemplatesMessages['hr'] = array(
+	'expandtemplates'                  => 'Prikaz sadržaja predložaka',
+	'expand_templates_intro'           => 'Posebna stranica zauzima tekst i širi se na sve predloške unutar te stranice. Također proširuje funkcije kao <nowiki>{{</nowiki>#if:...}} i varijable kao <nowiki>{{</nowiki>CURRENTDAY}}. Funkcionira na način da se umeće na sve relevantne stranice potekavši iz samoga MediaWikija.',
+	'expand_templates_title'           => 'Kontekstni naslov, za {{PAGENAME}} itd.:',
+	'expand_templates_input'           => 'Ulazni tekst:',
+	'expand_templates_output'          => 'Rezultat',
+	'expand_templates_ok'              => 'Prikaži',
+	'expand_templates_remove_comments' => 'Ukloni komentare',
+	'expand_templates_preview'         => 'Vidi kako će izgledati',
+);
 $wgExpandTemplatesMessages['hsb'] = array(
 	'expandtemplates'                  => 'Předłohi ekspandować',
 	'expand_templates_intro'           => 'Na tutej specialnej stronje móžeš tekst zapodać a wšitke do njeje zapřijate předłohi so rekursiwnje ekspanduja. Tež funkcije parsera kaž <nowiki>{{</nowiki>#if:...}} a wariable kaž <nowiki>{{</nowiki>CURRENTDAY}} so wuhódnočeja – faktisce wšo, štož steji mjezy dwójnymaj wopušatymaj spinkomaj. To so přez zawołanje jednotliwych fazow parsera software MediaWiki stawa.',

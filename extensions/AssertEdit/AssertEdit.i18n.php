@@ -31,3 +31,8 @@ $messages['hsb'] = array(
 	'assert_edit_title'   => 'Twjerdźenje njeporadźiło',
 	'assert_edit_message' => 'Podate twjerdźenje ($1) je so njeporadźiło.',
 );
+
+$messages['pt'] = array(
+	'assert_edit_title'   => 'A asserção falhou',
+	'assert_edit_message' => 'A asserção especificada ($1) falhou.',
+);

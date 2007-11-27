@@ -107,6 +107,7 @@ $SpecialFormMessages =array(
 		'formbadname' => 'Nom incorrect',
 		'formbadnametext' => 'Le nom choisi pour le formulaire est incorrect. Aucun formulaire n\'existe sous ce nom.',
 		'formpattern' => 'formulaire-$1',
+		'formtemplatepattern' => '$1',#identical but defined
 		'formtitlepattern' => 'Ajouter un(e) $1',
 		'formsave' => 'Sauvegarder',
 		'formindexmismatch' => 'Ce formulaire a des patrons et des modèles qui ne correspondent pas à partir de $1.',

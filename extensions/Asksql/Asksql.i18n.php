@@ -246,6 +246,18 @@ Sòn soèns a men-a a carié ëd travaj la màchina serventa, donca për piasì 
 	'querysuccessful'  => 'Operassion andaita a bon fin',
 ),
 
+'pt' => array(
+	'asksql'           => 'Consulta SQL',
+	'asksqltext'       => 'Utilize o formulário abaixo para realizar consultas directas à base de dados.
+Use aspas simples (\'como estas\') para delimitar cadeias de caracteres literais.
+Esta função frequentemente adiciona uma carga considerável ao servidor, por isso utilize-a com reserva.',
+	'sqlislogged'      => 'Por favor, note que todas as consultas são registadas.',
+	'sqlquery'         => 'Introduza consulta',
+	'querybtn'         => 'Submeter consulta',
+	'selectonly'       => 'Apenas consultas só de leitura são permitidas.',
+	'querysuccessful'  => 'Consulta com sucesso',
+),
+
 /* Romanian (KlaudiuMihăilă) */
 'ro' => array(
 	'asksql'           => 'Interogare SQL',

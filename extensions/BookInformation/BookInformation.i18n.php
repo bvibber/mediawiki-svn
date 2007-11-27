@@ -94,6 +94,7 @@ function efBookInformationMessages() {
 	'bookinfo-result-author' => 'Συντάκτης:',
 	'bookinfo-result-publisher' => 'Εκδότης:',
 	'bookinfo-result-year' => 'Χρόνος:',
+	'bookinfo-purchase' => 'Αγοράστε αυτό το βιβλίο από $1',
 ),
 
 'ext' => array(

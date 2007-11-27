@@ -154,6 +154,8 @@ $messages = array(
 
 	'el' => array(
 		'ogg-pause' => 'Παύση',
+		'ogg-more' => 'Περισσότερα...',
+		'ogg-download' => 'Κατεβάστε το αρχείο',
 		'ogg-desc-link' => 'Σχετικά με αυτό τα αρχείο',
 	),
 
@@ -298,6 +300,7 @@ $messages = array(
 		'ogg-no-xiphqt' => 'Nemate instaliranu XiphQT komponentu za QuickTime (ili je neispravno instalirana). QuickTime ne može pokretati Ogg datoteke bez ove komponente. Molimo <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">instalirajte XiphQT</a> ili izaberite drugi preglednik (\'\'player\'\').',
 		'ogg-player-videoElement' => '<slikovni> element',
 		'ogg-player-oggPlugin' => 'Ogg plugin',#identical but defined
+		'ogg-player-vlc-activex' => 'VLC (ActiveX kontrola)',#optional
 		'ogg-player-thumbnail' => 'Samo (nepokretne) slike',
 		'ogg-player-soundthumb' => 'Nema preglednika',
 		'ogg-player-selected' => '(odabran)',
@@ -628,6 +631,13 @@ $messages = array(
 		'ogg-dismiss' => 'sëré',
 		'ogg-download' => 'Dëscarié l\'archivi',
 		'ogg-desc-link' => 'Rësgoard a st\'archivi',
+	),
+
+	'pt' => array(
+		'ogg-play' => 'Reproduzir',
+		'ogg-pause' => 'Pausar',
+		'ogg-stop' => 'Parar',
+		'ogg-player-thumbnail' => 'Apenas imagem estática',
 	),
 
 	'ru' => array(

@@ -74,6 +74,10 @@ $wgLanguageManagerMessages['pms'] = array(
 	'langman_title' => 'Gestor dle lenghe',
 	'languages' => 'Wikidata: Gestor dle lenghe',
 );
+$wgLanguageManagerMessages['pt'] = array(
+	'langman_title' => 'Gestor de línguas',
+	'languages' => 'Wikidata: Gestor de línguas',
+);
 $wgLanguageManagerMessages['sk'] = array(
 	'langman_title' => 'Správca jazykov',
 	'languages' => 'Wikidata: Správca jazykov',

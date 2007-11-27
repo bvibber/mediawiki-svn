@@ -120,8 +120,8 @@ function efGiveRollbackMessages() {
 /* French */
 'fr' => array(
 	'giverollback' => 'Donner ou enlever les droits de révocation',
-	'giverollback-header' => "'''Un bureaucrate local peut utiliser cette page pour donner ou enlever les droits de révocation (« revert ») à un compte utilisateur.'''<br />
-On peut l’utiliser pour autoriser des non-administrateurs à révoquer des vandalismes plus rapidement. Les bureaucrates ne devraient le faire qu’en accord avec les règles en vigueur.",
+	'giverollback-header' => '\'\'\'Un bureaucrate local peut utiliser cette page pour donner ou enlever les droits de révocation (« revert ») à un compte utilisateur.\'\'\'<br />
+On peut l’utiliser pour autoriser des non-administrateurs à révoquer des vandalismes plus rapidement. Les bureaucrates ne devraient le faire qu’en accord avec les règles en vigueur.',
 	'giverollback-username' => 'Nom d’utilisateur :',
 	'giverollback-search' => 'Chercher',
 	'giverollback-hasrb' => '[[User:$1|$1]] a les droits de révocation.',
@@ -138,6 +138,7 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logpagetext' => 'Cette page présente un journal du changement des droits de révocation.',
 	'giverollback-logentrygrant' => 'a donné les droits de révocation à [[$1]]',
 	'giverollback-logentryrevoke' => 'a enlevé les droits de révocation de [[$1]]',
+	'giverollback-page' => '{{ns:help}}:Rollback',#identical but defined
 ),
 
 'gl' => array(

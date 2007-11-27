@@ -448,6 +448,18 @@ kopieën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzo
 	'duplicator-toomanyrevisions' => '[[$1]] a l\'ha tròpe ($2) revision e as peul pa copiesse. Al dì d\'ancheuj ël màssim a l\'é $3.',
 ),
 
+'pt' => array(
+	'duplicator' => 'Duplicar um artigo',
+	'duplicator-toolbox' => 'Duplicar este artigo',
+	'duplicator-header' => 'Esta página permite a duplicação completa de uma artigo, criando cópias independentes de todo o histórico. Isto é útil para separar versões de artigos, etc.',
+	'duplicator-options' => 'Opções',
+	'duplicator-source' => 'Fonte:',
+	'duplicator-dest' => 'Destino:',
+	'duplicator-dotalk' => 'Duplicar página de discussão (se aplicável)',
+	'duplicator-submit' => 'Duplicar',
+	'duplicator-summary' => 'Copiado de [[$1]]',
+),
+
 /* Russian */
 'ru' => array(
 	'duplicator' => 'Клонировать статью',

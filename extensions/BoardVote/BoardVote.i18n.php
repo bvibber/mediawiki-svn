@@ -1189,7 +1189,7 @@ $wgBoardVoteMessages['nan'] = array(
 $wgBoardVoteMessages['nl'] = array(
 	'boardvote'               => 'Wikimedia Board of Trustees-verkiezing',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Stemmen]]
-* [[Special:Boardvote/list|Toon uitgebrachte stemmen]]
+* [[Special:Boardvote/list|Uitgebrachte stemmen tonen]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]',
 	'boardvote_intro'         => '
 <p>Welkom bij de tweede verkiezingen voor de Wikimedia Board of Trustees. We
@@ -1255,13 +1255,13 @@ uitgebracht. $1 voor de versleutelde gegevens.</p>',
 	'boardvote_notstarted'    => 'Het stemmen is nog niet gestart',
 	'boardvote_closed'        => 'Stemming is nu gesloten, zie binnenkort [http://meta.wikimedia.org/wiki/Board_elections de verkiezingspagina voor de resultaten].',
 	'boardvote_edits_many'    => 'veel',
-	'group-boardvote'         => 'Board vote beheerders',
-	'group-boardvote-member'  => 'Board vote beheerder',
-	'grouppage-boardvote'     => '{{ns:project}}:Board vote beheerder',
+	'group-boardvote'         => 'Boardvote-beheerders',
+	'group-boardvote-member'  => 'Boardvote-beheerder',
+	'grouppage-boardvote'     => '{{ns:project}}:Boardvote-beheerder',
 	'boardvote_blocked'       => 'Sorry, u bent geblokkeerd op uw geregistreerde wiki. Geblokkeerde gebruikers mogen niet stemmen.',
 	'boardvote_welcome'       => 'Welkom, \'\'\'$1\'\'\'!',
 	'go_to_board_vote'        => 'Wikimedia Bestuursverkiezing 2007',
-	'boardvote_redirecting'   => 'Vanwege een betere beveiliging en meer transparantie vinden de verkiezingen plaats op een externe, onafhankelijke beheerde server.
+	'boardvote_redirecting'   => 'Vanwege een betere beveiliging en meer transparantie vinden de verkiezingen plaats op een externe, onafhankelijk beheerde server.
 
 U wordt over 20 seconden omgeleid naar deze externe server. [$1 Klik hier] om er nu heen te gaan.
 
@@ -1512,6 +1512,7 @@ A versão da encriptação segue-se, e será publicada em [[Especial:Boardvote/d
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Voltar]]',
+	'boardvote_nosession'     => 'Não foi possível determinar o seu ID de utilizador Wikimedia. Por favor, efectue login no wiki onde está qualificado e vá a <nowiki>[[Special:Boardvote]]</nowiki>. Deverá usar uma conta com pelo menos $1 contribuições antes de $2, e com a primeira edição antes de $3.',
 	'boardvote_notloggedin'   => 'Não se encontra autentificado. De modo a poder votar, deve utilizar uma conta com pelo menos $1 contribuições antes de $2.',
 	'boardvote_notqualified'  => 'Desculpe, mas só fez $1 edições antes de $2. Precisa de ter no mínimo $3 edições de modo a poder votar.',
 	'boardvote_novotes'       => 'Ninguém votou até ao momento.',
@@ -1527,10 +1528,18 @@ A versão da encriptação segue-se, e será publicada em [[Especial:Boardvote/d
 	'boardvote_unstrike'      => 'Limpar risco',
 	'boardvote_needadmin'     => 'Apenas administradores podem efectuar esta operação.',
 	'boardvote_sitenotice'    => '<a href="{{localurle:Especial:Boardvote/vote}}">Comité da Fundação Wikimedia</a>: Votação aberta até 12 de Julho',
+	'boardvote_notstarted'    => 'A votação ainda não começou',
 	'boardvote_closed'        => 'As eleições estão agora encerradas, ver [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/Pt a página de eleições para os resultados] brevemente.',
 	'boardvote_edits_many'    => 'muitos',
 	'group-boardvote'         => 'Board vote administradores',
 	'group-boardvote-member'  => 'Board vote administrador',
+	'boardvote_blocked'       => 'Desculpe, mas a sua conta foi bloqueada no seu wiki de registo. Utilizadores bloqueados não estão autorizados a votar.',
+	'boardvote_welcome'       => 'Bem-vindo, \'\'\'$1\'\'\'!',
+	'boardvote_redirecting'   => 'Para maior segurança e transparência, estamos a realizar a votação num servidor externo controlado independentemente.
+
+Será redireccionado para este servidor externo dentro de 20 segundos. [$1 Clique aqui] para ser redireccionado agora.
+
+Um aviso de segurança sobre um certificado não assinado poderá eventualmente ser apresentado.',
 );
 $wgBoardVoteMessages['rm'] = array(
 	'boardvote_user'          => 'Utilisader',

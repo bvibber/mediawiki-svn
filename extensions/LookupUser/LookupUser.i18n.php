@@ -36,6 +36,11 @@ $messages['ar'] = array(
 	'lookupuser_useroptions' => 'خيارات المستخدم:',
 );
 
+$messages['el'] = array(
+	'lookupuser_realname' => 'Πραγματικό όνομα: $1',
+	'lookupuser_useroptions' => 'Επιλογές χρήστη:',
+);
+
 $messages['fr'] = array(
 	'lookupuser' => 'Parcourir les informations de l\'usager',
 	'lookupuser_intro' => 'Saisir un nom d\'utilisateur pour voir ses préférences',

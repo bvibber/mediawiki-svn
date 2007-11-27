@@ -148,6 +148,7 @@ $wgChemFunctions_Messages['fr'] = array(
 	'ChemFunctions_EINECS' => 'Numéro EINECS',
 	'ChemFunctions_CHEBI' => 'ChEBI',
 	'ChemFunctions_PubChem' => 'PubChem',#identical but defined
+	'ChemFunctions_SMILES' => 'SMILE',
 	'ChemFunctions_InChI' => 'InChl',
 	'ChemFunctions_RTECS' => 'RTECS',#identical but defined
 	'ChemFunctions_KEGG' => 'KEGG',#identical but defined
@@ -241,27 +242,17 @@ $wgChemFunctions_Messages['it'] = array(
 );
 
 $wgChemFunctions_Messages['nl'] = array(
-	'chemicalsources' => 'Chemicaliën bronnen',
-	'ChemFunctions_ListPage' => 'Chemicaliën bronnen',
-	'ChemFunctions_SearchExplanation' => '',
-	'ChemFunctions_DataList' => 'Hieronder staat een lijst van pagina\'s die meer informatie over de chemische verbinding kunnen verschaffen.<br /><br />
-	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Verbinding $MIXCASNameFormula op de pagina van het NIST</a><br />
-	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS op de pagina van de Oxford University (UK) (geen zoekresultaten)</a><br />',
-	'ChemFunctions_CAS' => 'CAS-nummer',
-	'ChemFunctions_EINECS' => 'Einecs',
-	'ChemFunctions_CHEBI' => 'CHEBI',
-	'ChemFunctions_PubChem' => 'PubChem',
-	'ChemFunctions_SMILES' => 'SMILES',
-	'ChemFunctions_InChI' => 'InChI',
-	'ChemFunctions_RTECS' => 'RTECS',
-	'ChemFunctions_KEGG' => 'KEGG',
-	'ChemFunctions_ATCCode' => 'ATC-code',
-	'ChemFunctions_DrugBank' => 'DrugBank',
-	'ChemFunctions_ECNumber' => 'EC-nummer',
-	'ChemFunctions_Formula' => 'Formula',
-	'ChemFunctions_Name' => 'IUPAC-naam',
+	'chemicalsources' => 'Scheikundige bronnen',
+	'ChemFunctions_ListPage' => 'Scheikundige bronnen',
+	'ChemFunctions_DataList' => 'Hieronder staat een lijst van pagina\'s die meer informatie over de scheikundige verbinding kunnen verschaffen.
 
-	'ChemFunctions_ChemFormInputError' => 'Chemform: Invoerfout!'
+* [http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI Verbinding $MIXCASNameFormula op de pagina van het NIST]
+* [http://ptcl.chem.ox.ac.uk/MSDS/ MSDS op de pagina van de Oxford University (UK) (geen zoekresultaten)]',
+	'ChemFunctions_CAS' => 'CAS-nummer',
+	'ChemFunctions_ATCCode' => 'ATC-code',
+	'ChemFunctions_ECNumber' => 'EC-nummer',
+	'ChemFunctions_Name' => 'IUPAC-naam',
+	'ChemFunctions_ChemFormInputError' => 'Chemform: Invoerfout!',
 );
 
 $wgChemFunctions_Messages['no'] = array(
@@ -304,6 +295,14 @@ $wgChemFunctions_Messages['pms'] = array(
 	'ChemFunctions_Formula' => 'Fòrmula',
 	'ChemFunctions_Name' => 'Nòm IUPAC',
 	'ChemFunctions_ChemFormInputError' => 'Chemform: eror ant ij dat!',
+);
+
+$wgChemFunctions_Messages['pt'] = array(
+	'chemicalsources' => 'Fontes de química',
+	'ChemFunctions_ListPage' => 'Fontes de química',
+	'ChemFunctions_CAS' => 'Número CAS',
+	'ChemFunctions_Formula' => 'Fórmula',
+	'ChemFunctions_ChemFormInputError' => 'Chemform: Erro nos dados introduzidos!',
 );
 
 $wgChemFunctions_Messages['ru'] = array(

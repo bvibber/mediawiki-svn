@@ -43,6 +43,9 @@ $wgCrossNamespaceLinksMessages['es'] = array(
 	'crossnamespacelinks-summary' => 'Ésta página proporciona una lista de enlaces desde una página en el espacio de nombres principal hacia una página en otros espacios de nombres (excepto para los espacios de nombres {{ns:special}}, {{ns:talk}}, {{ns:project}} y {{ns:template}}), los cuales no son aconsejables.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|enlace a página|enlaces a páginas}} de $3',
 );
+$wgCrossNamespaceLinksMessages['et'] = array(
+	'crossnamespacelinks'         => 'Lingid teise nimeruumi',
+);
 $wgCrossNamespaceLinksMessages['fi'] = array(
 	'crossnamespacelinks'         => 'Nimiavaruuksienväliset linkit',
 	'crossnamespacelinks-summary' => 'Alla on lista linkeistä, jotka osoittavat päänimiavaruudesta toiseen nimiavaruuteen — pois lukien linkit {{ns:special}}-, {{ns:talk}}-, {{ns:project}}- ja {{ns:template}}nimiavaruuksiin. Linkkejä muihin nimiavaruuksiin tulisi välttää.',

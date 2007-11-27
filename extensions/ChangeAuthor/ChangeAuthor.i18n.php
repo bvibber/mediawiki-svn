@@ -93,6 +93,10 @@ $allMessages = array(
 		'changeauthor-logpagetext' => '',
 		'changeauthor-rev' => 'Version $1',
 	),
+	'el' => array(
+		'changeauthor-invalid-username' => 'Άκυρο όνομα-χρήστη  "$1".',
+		'changeauthor-rev' => 'r$1',#identical but defined
+	),
 	'fr' => array(
 		'changeauthor' => 'Changer l\'auteur des révisions',
 		'changeauthor-title' => 'Changer l\'auteur d\'une révision',

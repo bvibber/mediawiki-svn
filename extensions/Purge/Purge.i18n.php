@@ -12,7 +12,15 @@ $messages['en'] = array(
 	'purge' => 'purge',
 );
 
+$messages['ar'] = array(
+	'purge' => 'إفراغ الكاش',
+);
+
 /*Translation by Bertrand GRONDIN*/
 $messages['fr'] = array(
 	'purge' => 'purger',
+);
+
+$messages['nl'] = array(
+	'purge' => 'cache legen',
 );

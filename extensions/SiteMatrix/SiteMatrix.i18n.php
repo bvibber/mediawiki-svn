@@ -77,6 +77,10 @@ $wgSiteMatrixMessages['eo'] = array(
 $wgSiteMatrixMessages['es'] = array(
 	'sitematrix' => 'Lista de wikis de Wikimedia',
 );
+$wgSiteMatrixMessages['et'] = array(
+	'sitematrix' => 'Wikimedia vikide nimekiri',
+	'sitematrix-language' => 'Keel',
+);
 $wgSiteMatrixMessages['ext'] = array(
 	'sitematrix-language' => 'Palra',
 );
@@ -127,12 +131,18 @@ $wgSiteMatrixMessages['hy'] = array(
 $wgSiteMatrixMessages['id'] = array(
 	"sitematrix" => "Daftar wiki Wikimedia",
 );
+$wgSiteMatrixMessages['io'] = array(
+	'sitematrix-language' => 'Linguo',
+);
 $wgSiteMatrixMessages['it'] = array(
 	'sitematrix' => 'Elenco di tutti i progetti Wikimedia nelle varie lingue',
 	'sitematrix-language' => 'Lingua',
 );
 $wgSiteMatrixMessages['ja'] = array(
 	"sitematrix" => "Wikimediaウィキの一覧",
+);
+$wgSiteMatrixMessages['ka'] = array(
+	'sitematrix-language' => 'ენა',
 );
 $wgSiteMatrixMessages['kaa'] = array(
 	'sitematrix' => 'Wikimedia wikileri dizimi',
@@ -216,8 +226,8 @@ $wgSiteMatrixMessages['pms'] = array(
 $wgSiteMatrixMessages['pt'] = array(
 	'sitematrix' => 'Lista de sítios Wikimedia',
 	'sitematrix-language' => 'Idioma',
-	'sitematrix-project' => 'Nome do projeto, link interprojeto e link interwiki',
-	'sitematrix-others' => 'Outros projetos da Wikimedia',
+	'sitematrix-project' => 'Nome do projecto, link interprojecto e link interwiki',
+	'sitematrix-others' => 'Outros projectos da Wikimedia',
 );
 $wgSiteMatrixMessages['pt-br'] = array(
 	"sitematrix" => "Lista de wikis da Wikimedia",

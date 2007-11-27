@@ -24,6 +24,23 @@ $messages['en'] = array(
 	'spamdifftool_submit_buttom' => 'Submit',
 	);
 
+$messages['ar'] = array(
+	'spamdifftool' => 'التحكم في قائمة السبام السوداء',
+	'spamdifftool_cantedit' => 'عذرا - أنت لا تمتلك الصلاحية لتعديل قائمة السبام السوداء.',
+	'spamdifftool_notext' => 'لا يوجد نص لإضافته إلى قائمة السبام السوداء. اضغط <a href=\'$1\'>هنا</a> للمتابعة.',
+	'spamdifftool_confirm' => 'أكد أنك تريد إضافة هذه المدخلات إلى قائمة السبام السوداء. (اضغط <a href=\'http://www.mediawiki.org/w/index.php?title=Talk:SpamDiffTool_Extension&action=edit&section=new\' target=\'new\'>هنا</a> للإبلاغ عن مشكلة.)',
+	'spamdifftool_summary' => 'جاري الإضافة إلى قائمة السبام السوداء',
+	'spamdifftool_urls_detected' => 'المسارات التالية تم التعرف عليها في التعديل(ات)، أيها تود إضافتها إلى قائمة السبام السوداء؟ هذه الخيارات مرتبة من الأكثر منعا إلى الأقل منعا، منع النطاق بأكمله سيمنع كل الوصلات لأي شيء من هذا النطاق. <br/><br/>تأكد من عدم منع كل النطاقات التي تستضيف حسابات مستخدمين، مثل blogpost.com، geocities.com، إلى آخره.',
+	'spamdifftool_no_urls_detected' => 'لم يتم التعرف على أية مسارات. اضغط <a href=\'$1\'>هنا</a> للعودة.',
+	'spamdifftool_spam_link_text' => 'الكل إلى السبام',
+	'spamdifftool_option_domain' => 'الكل من هذا النطاق',
+	'spamdifftool_option_subdomain' => 'الكل من هذا النطاق الفرعي',
+	'spamdifftool_option_directory' => 'هذا النطاق الفرعي والمجلد',
+	'spamdifftool_option_none' => 'لا شيء',
+	'spamdifftool_block' => 'منع:',
+	'spamdifftool_submit_buttom' => 'تنفيذ',
+);
+
 $messages['fr'] = array(
 	'spamdifftool' => 'Gestion de la Liste Noire des Spams',
 	'spamdifftool_cantedit' => 'Désolé - Vous n’avez pas la permission d’éditer la Liste Noire des Spams.',
@@ -39,4 +56,32 @@ $messages['fr'] = array(
 	'spamdifftool_option_none' => 'néant',
 	'spamdifftool_block' => 'Bloquer :',
 	'spamdifftool_submit_buttom' => 'Soumettre',
+);
+
+$messages['hsb'] = array(
+	'spamdifftool' => 'Spamowu čornu lisćinu zrjadować',
+	'spamdifftool_cantedit' => 'Bohužel nimaš dowolenje spamowu čornu lisćinu wobdźěłować.',
+	'spamdifftool_notext' => 'Njeje žadyn tekst, kotryž móhł so spamowej čornej lisćinje přidać. Klikń <href=\'$1\'>sem</a>, zo by pokročował.',
+	'spamdifftool_confirm' => 'Potwjerdź, zo chceš tute zapiski spamowej čornej lisćinje přidać. (Klikń <a href=\'http://www.mediawiki.org/w/index.php?title=Talk:SpamDiffTool_Extension&action=edit&section=new\' target=\'new\'>sem</a>, zo by wo problemje rozprawjał.)',
+	'spamdifftool_summary' => 'Spamowej čornej lisćinje přidać',
+	'spamdifftool_urls_detected' => 'Slědowace URL buchu w změnach wotkryte, kotre z nich chceš rady spamowej čornej lisćinje přidać? Tute opcije rjaduja wot bóle restriktiwne do mjenje restriktiwne, blokowanje cyłeje domejny budźe wšě wotkazy k něčemu, štož z tuteje domejny přińdźe, blokować.<br /><br />Zawěsć so, zo njeby cyle domejny blokował, kotrež wužiwarske konta hospoduja, kaž blogpost.com, geocities.com atd.',
+	'spamdifftool_no_urls_detected' => 'Njebuchu žane url wotkryte. Klikń <a href=\'$1\'>sem</a>, zo by so wróćił.',
+	'spamdifftool_spam_link_text' => 'k spamej přidać',
+	'spamdifftool_option_domain' => 'wšo z tuteje domejny',
+	'spamdifftool_option_subdomain' => 'wšě z tuteje poddomejny',
+	'spamdifftool_option_directory' => 'tutu poddomejnu a tutón zapis',
+	'spamdifftool_option_none' => 'ničo',
+	'spamdifftool_block' => 'Blokować:',
+	'spamdifftool_submit_buttom' => 'Wotesłać',
+);
+
+$messages['nl'] = array(
+	'spamdifftool' => 'Zwarte Lijst beheren',
+	'spamdifftool_cantedit' => 'Sorry - u heeft geen toelating om de Zwarte Lijst tegen Spam te bewerken.',
+	'spamdifftool_notext' => 'Er is geen tekst om toe te voegen aan de Zwarte Lijst tegen spam. Klik <a href=\'$1\'>hier</a> om door te gaan.',
+	'spamdifftool_summary' => 'Toevoegen aan de Zwarte Lijst tegen spam',
+	'spamdifftool_no_urls_detected' => 'Er werden geen URL\'s gevonden. Klik <a href=\'$1\'>hier</a> om terug te keren.',
+	'spamdifftool_option_none' => 'niets',
+	'spamdifftool_block' => 'Blokkeren:',
+	'spamdifftool_submit_buttom' => 'OK',
 );

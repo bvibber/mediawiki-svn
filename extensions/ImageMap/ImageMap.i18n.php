@@ -75,6 +75,10 @@ function efImageMapMessages() {
 	'imagemap_desc_types'           => 'oben rechts, unten rechts, unten links, oben links, keine',
 ),
 
+'el' => array(
+	'imagemap_description'          => 'Σχετικά με αυτήν την εικόνα',
+),
+
 'ext' => array(
 	'imagemap_description'          => 'Al tentu esta imahin',
 ),

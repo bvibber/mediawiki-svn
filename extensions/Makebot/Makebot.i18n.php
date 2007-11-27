@@ -163,6 +163,7 @@ function efMakeBotMessages() {
 
 'el' => array(
 	'makebot-username'        => 'Όνομα χρήστη:',
+	'makebot-comment'         => 'Σχόλιο:',
 ),
 
 'eo' => array(

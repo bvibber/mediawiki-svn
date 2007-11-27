@@ -232,10 +232,27 @@ $messages['hsb'] = array(
 );
 
 $messages['nl'] = array(
+	'math_CannotCreateTexFile'              => 'Kan geen tex-bestand aanmaken',
+	'math_InvalidColour'                    => 'De kleur "$1" is ongeldig',
+	'math_InvalidUtf8Input'                 => 'De invoertekst was geen geldig UTF-8',
+	'math_MismatchedBeginAndEnd'            => 'Bevelen "$1" en "$1" komen niet overeen',
+	'math_ReservedCommand'                  => 'Het bevel "$1" is gereserveerd voor intern gebruik door blahtex',
 	'math_TooManyTokens'                    => 'De invoer is te lang',
 );
 
 $messages['pt'] = array(
+	'math_noblahtex'                        => 'Não é possível executar blahtex, que deveria estar em $1',
+	'math_AmbiguousInfix'                   => 'Posicionamento ambígua de "$1" (experimente usar chavetas adicionais "{ ... }" para desfazer a ambiguidade)',
+	'math_CannotRunLatex'                   => 'Não é possível executar latex',
 	'math_IllegalCharacter'                 => 'Caracter inválido nos dados introduzidos',
 	'math_InvalidColour'                    => 'A cor "$1" é inválida',
+	'math_InvalidUtf8Input'                 => 'O texto introduzido não é UTF-8 válido',
+	'math_LatexFontNotSpecified'            => 'Nenhum tipo de letra LaTeX foi especificado para "$1"',
+	'math_MissingDelimiter'                 => 'Falta delimitador depois de "$1"',
+	'math_MissingOpenBraceAfter'            => 'Falta chaveta de abertura "{" depois de "$1"',
+	'math_MissingOpenBraceAtEnd'            => 'Falta chaveta de abertura "{" no fim do texto introduzido',
+	'math_MissingOpenBraceBefore'           => 'Falta chaveta de abertura "{" antes de "$1"',
+	'math_TooManyTokens'                    => 'O texto introduzido é demasiado longo',
+	'math_UnrecognisedCommand'              => 'Comando "$1" não reconhecido',
 );
+

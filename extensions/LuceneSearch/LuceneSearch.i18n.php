@@ -172,6 +172,18 @@ o emplee algún buscador externo para explorar la wiki.',
 	'searchincategory'      => 'en categoría',
 );
 
+$wgLuceneSearchMessages['et'] = array(
+	'searchnumber'          => '<strong>Tulemused $1-$2 (kokku $3)</strong>',
+	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Eelmine</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>Järgmine</span> &#x00BB;',
+	'searchscore'           => 'Sobivus: $1',
+	'searchsize'            => '$1KB ($2 sõna)',
+	'searchnoresults'       => 'Teie päringule ei leidunud ühtegi vastet.',
+	'lucenefallback'        => 'Viki otsinguga oli mingi probleem.
+See on tõenäoliselt ainult ajutine;
+proovige mõne hetke pärast uuesti või otsige välise teenuse abil:',
+);
+
 $wgLuceneSearchMessages['ext'] = array(
 	'searchall'             => 'tó',
 );
@@ -446,6 +458,14 @@ $1<br />
 );
 
 $wgLuceneSearchMessages['kk'] = $wgLuceneSearchMessages['kk-kz'];
+
+$wgLuceneSearchMessages['la'] = array(
+	'lucenepowersearchtext' => 'In spatiis nominalibus petere:
+
+$1
+
+Petere $3 $9 $10',
+);
 
 $wgLuceneSearchMessages['lo'] = array(
 	'searchdidyoumean'      => "ຫຼື ທ່ານໝາຍຄວາມວ່າ",

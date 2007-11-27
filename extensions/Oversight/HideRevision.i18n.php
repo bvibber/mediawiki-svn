@@ -131,6 +131,10 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 'oversight-header' => 'Es folgt die Liste der dauerhaft für die öffentliche Einsicht entfernten Versionen. Die Veröffentlichung dieser Informationen kann den dauerhaften Entzug der Oversight-Rechte bedeuten.',
 ),
 
+'el' => array(
+	'hiderevision-continue' => 'Συνέχεια',
+),
+
 'fi' => array(
 	'hiderevision' => 'Pysyvä versioiden piilottaminen',
 	'hiderevision-prompt' => 'Poistettava versionumero:',

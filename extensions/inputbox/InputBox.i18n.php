@@ -332,6 +332,11 @@ function efInputBoxMessages() {
 	'searchfulltext'          => 'Chhiau choan-bûn',
 ),
 
+'nap' => array(
+	'searchfulltext'          => 'Ascià dint&#39;&#39;o testo',
+	'createarticle'           => 'Cria voce',
+),
+
 'nds' => array(
 	'tryexact'       => 'exakte Söök versöken',
 	'searchfulltext' => 'in’n Vulltext söken',
@@ -447,6 +452,7 @@ function efInputBoxMessages() {
 ),
 
 'stq' => array(
+	'tryexact'                => 'Fersäik exakte Säike:',
 	'searchfulltext'          => 'Dän ganse Text truchsäike',
 	'createarticle'           => 'Artikkel anlääse',
 ),

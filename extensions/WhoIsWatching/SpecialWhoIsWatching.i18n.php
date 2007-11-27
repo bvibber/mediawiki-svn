@@ -8,19 +8,28 @@ $allMessages = array(
 	),
 
 	'ar' => array(
-		'specialwhoiswatching'        => 'من يراقب صفحة ويكي',
+		'whoiswatching'               => 'من يراقب صفحة ويكي',
 		'specialwhoiswatchingthepage' => 'من يراقب %s',
 		'specialwhoiswatchingusage'   => 'هذه الصفحة الخاصة لا يمكن استخدامها بمفردها. من فضلك استخدم الصفحة [[MediaWiki:Number_of_watching_users_pageview]] لتعريف نقطة مدخل إلى هذه الصفحة الخاصة.',
 	),
 
+	'fr' => array(
+		'specialwhoiswatchingusage'   => 'Cette page spéciale ne peut être utilisée seule. Passez par [[MediaWiki:Number_of_watching_users_pageview]] pour définir un point d\'entrée vers cette page spéciale.',
+	),
+
 	'hsb' => array(
-		'specialwhoiswatching'        => 'Štó wobkedźbuje wiki-stronu',
+		'whoiswatching'               => 'Štó wobkedźbuje wiki-stronu',
 		'specialwhoiswatchingthepage' => 'Štó wobkedźbuje %s',
 		'specialwhoiswatchingusage'   => 'Tuta specialna strona njeda so na so wužiwać. Prošu wužij stronu [[MediaWiki:Number_of_watching_users_pageview]], zo by přistupny dypk za tutu specialnu stronu definował.',
 	),
 
 	'nl' => array(
-		'specialwhoiswatching'        => 'Wie volgt een pagina',
+		'whoiswatching'               => 'Wie volgt een pagina',
 		'specialwhoiswatchingthepage' => 'Wie volgt %s',
+	),
+	'pt' => array(
+		'whoiswatching'               => 'Quem Está a Vigiar uma página wiki',
+		'specialwhoiswatchingthepage' => 'Quem está a vigiar %s',
+		'specialwhoiswatchingusage'   => 'Esta página especial não pode ser usada por si só. Por favor, utilize a página [[MediaWiki:Number_of_watching_users_pageview]] para definir um ponto de entrada para esta página especial.',
 	),
 );

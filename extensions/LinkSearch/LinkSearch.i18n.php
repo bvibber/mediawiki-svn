@@ -99,6 +99,15 @@ $wgLinkSearchMessages['he'] = array(
 	'linksearch-line'  => '$1 מקושר מהדף $2',
 	'linksearch-error' => 'תווים כלליים יכולים להופיע רק בתחילת שם השרת.',
 );
+$wgLinkSearchMessages['hr'] = array(
+	'linksearch'       => 'Pretraživanje poveznica (s članaka na wikiju)',
+	'linksearch-pat'   => 'Uzorak traženja:',
+	'linksearch-ns'    => 'Imenski prostor:',
+	'linksearch-ok'    => 'Traži',
+	'linksearch-text'  => 'Možete koristiti džoker znakove poput "*.wikipedia.org".<br />Podržani su protokoli: <tt>$1</tt>',
+	'linksearch-line'  => '$1 poveznica s članka $2',
+	'linksearch-error' => 'Džoker znakovi se mogu rabiti samo na početku imena poslužitelja.',
+);
 $wgLinkSearchMessages['hsb'] = array(
 	'linksearch'       => 'Pytanje eksternych wotkazow',
 	'linksearch-pat'   => 'Pytanski muster:',
@@ -172,6 +181,7 @@ $wgLinkSearchMessages['kk-cn'] = array(
 );
 $wgLinkSearchMessages['kk'] = $wgLinkSearchMessages['kk-kz'];
 $wgLinkSearchMessages['la'] = array(
+	'linksearch'       => 'Quaerere nexus externos',
 	'linksearch-ns'    => 'Spatium nominale:',
 	'linksearch-ok'    => 'Quaerere',
 );
@@ -180,6 +190,9 @@ $wgLinkSearchMessages['lo'] = array(
 );
 $wgLinkSearchMessages['nan'] = array(
 	'linksearch'       => 'Chhiau-chhoē chām-goā liân-kiat',
+);
+$wgLinkSearchMessages['nap'] = array(
+	'linksearch-ok'    => 'Truova',
 );
 $wgLinkSearchMessages['nl'] = array(
 	'linksearch'       => 'Externe links zoeken',
