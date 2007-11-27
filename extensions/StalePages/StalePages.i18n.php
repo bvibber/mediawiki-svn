@@ -1,11 +1,18 @@
 <?php
-#coding: utf-8
-/** \file
-* \brief Internationalisation file for the Stale Pages Extension.
+/**
+ * Internationalisation file for extension StalePages.
+ *
+ * @addtogroup Extensions
 */
 
-$stalePagesMessages = array(
-	'en' => array( 
-		'stalepages' => 'Stale Pages',
-		'stalepages-summary' => 'This is a list of pages that have not been edited in the last $1 days.'
-	));
+$messages = array();
+
+$messages['en'] = array(
+	'stalepages' => 'Stale Pages',
+	'stalepages-summary' => 'This is a list of pages that have not been edited in the last $1 days.',
+);
+
+$messages['nl'] = array(
+	'stalepages' => 'Vergeten pagina\'s',
+	'stalepages-summary' => 'Dit is een lijst van pagina\'s die niet bewerkt zijn in de afgelopen $1 dagen.',
+);

@@ -18,16 +18,22 @@ require_once "$IP/includes/QueryPage.php";
 class Stalepages extends SpecialPage
 {
 	///StalePages Class Constructor
-	function Stalepages() {
-			SpecialPage::SpecialPage("Stalepages");
+	public function __construct() {
+		SpecialPage::SpecialPage( 'Stalepages' );
+	}
+
+	function getDescription() {
+		return wfMsg( 'stalepages' );
 	}
 
 	function execute( $parameters ) {
+		wfLoadExtensionMessages( 'Stalepages' );
+
 		$this->setHeaders();
 		list( $limit, $offset ) = wfCheckLimits();
-		
+
 		$sp = new StalepagesPage();
-		
+
 		$sp->doQuery( $offset, $limit );
 	}
 }
@@ -46,7 +52,7 @@ class StalepagesPage extends QueryPage
 		global $wgOut;
 		return $wgOut->parse( wfMsg( 'stalepages-summary', 270) );
 	}
-	
+
 	function isSyndicated() { return false; }
 
 	function getSQL() {
@@ -61,14 +67,14 @@ class StalepagesPage extends QueryPage
 		$dateString = $db->timestamp($date);
 
 		return
-			"SELECT 'Stalepages' as type, 
-			page_namespace as namespace, 
-			page_title as title, 
-			$epoch as value 	
-			FROM $page, $revision 
-			WHERE page_latest=rev_id 
+			"SELECT 'Stalepages' as type,
+			page_namespace as namespace,
+			page_title as title,
+			$epoch as value
+			FROM $page, $revision
+			WHERE page_latest=rev_id
 			AND page_namespace=" . NS_MAIN . "
-			AND page_is_redirect=0 
+			AND page_is_redirect=0
 			AND rev_timestamp < '$dateString'";
 	}
 

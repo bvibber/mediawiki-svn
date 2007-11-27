@@ -5,35 +5,25 @@
 
 # Not a valid entry point, skip unless MEDIAWIKI is defined
 if (!defined('MEDIAWIKI')) {
-        echo "Stale Pages extension";
-        exit(1);
+	echo "Stale Pages extension";
+	exit(1);
 }
- 
+
 $wgExtensionFunctions[] = 'efStalepages';
 $wgExtensionCredits['specialpage'][] = array(
-    'name'=>'Stale Pages',
-    'url'=>'http://www.mediawiki.org/wiki/Extension:Stale_Pages',
-    'author'=>'Tim Laqua',
-    'description'=>'Generates a list of pages that have not been edited recently',
-    'version'=>'0.6'
+	'name'=>'Stale Pages',
+	'url'=>'http://www.mediawiki.org/wiki/Extension:Stale_Pages',
+	'author'=>'Tim Laqua',
+	'description'=>'Generates a list of pages that have not been edited recently',
+	'version'=>'0.7'
 );
 
-
-$wgAutoloadClasses['Stalepages'] = dirname(__FILE__) . '/StalePages_body.php';
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['Stalepages'] = $dir . 'StalePages.i18n.php';
+$wgAutoloadClasses['Stalepages'] = $dir . 'StalePages_body.php';
 
 $wgSpecialPages['Stalepages'] = 'Stalepages';
 
-
 function efAddStalePages( &$wgQueryPages) {
 	$wgQueryPages['Stalepages'] = 'Stalepages';
-}
-
-function efStalePages() {
-	global $wgMessageCache;
-	
-	#Add Messages
-	require( dirname( __FILE__ ) . '/StalePages.i18n.php' );
-	foreach( $stalePagesMessages as $key => $value ) {
-		$wgMessageCache->addMessages( $stalePagesMessages[$key], $key );
-	}
 }
