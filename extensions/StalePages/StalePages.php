@@ -18,13 +18,12 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 if( version_compare( $wgVersion, '1.12alpha', '>=' ) ) {    
-	$dir = dirname(__FILE__) . '/';
-	$wgExtensionMessagesFiles['Stalepages'] = $dir . 'StalePages.i18n.php';
+	$wgExtensionMessagesFiles['Stalepages'] = $dirname(__FILE__) . '/StalePages.i18n.php';
 } else {
 	$wgExtensionFunctions[] = 'efStalepages';
 }
 
-$wgAutoloadClasses['Stalepages'] = $dir . 'StalePages_body.php';
+$wgAutoloadClasses['Stalepages'] = dirname(__FILE__) . '/StalePages_body.php';
 
 $wgSpecialPages['Stalepages'] = 'Stalepages';
 
