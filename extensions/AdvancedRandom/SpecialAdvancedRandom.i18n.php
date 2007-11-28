@@ -15,6 +15,10 @@ $messages['ar'] = array(
 	'advancedrandom' => 'عشوائي متقدم',
 );
 
+$messages['de'] = array(
+	'advancedrandom' => 'Zufällige Seite (erweitert)',
+);
+
 $messages['fr'] = array(
 	'advancedrandom' => 'Accès aléatoire avancé',
 );
@@ -25,10 +29,6 @@ $messages['frp'] = array(
 
 $messages['hr'] = array(
 	'advancedrandom' => 'Napredne slučajne stranice',
-);
-
-$messages['hsb'] = array(
-	'advancedrandom' => 'Advanced random',#identical but defined
 );
 
 $messages['nl'] = array(
