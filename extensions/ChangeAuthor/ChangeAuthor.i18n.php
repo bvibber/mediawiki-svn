@@ -177,4 +177,8 @@ $allMessages = array(
 		'changeauthor-logpagename' => 'Auteurswijzigingenlogboek',
 		'changeauthor-rev' => 'r$1',#identical but defined
 	),
+	'pt' => array(
+		'changeauthor-nosuchuser' => 'Utilizador "$1" não existe.',
+		'changeauthor-nosuchtitle' => 'Não existe nenhum artigo chamado "$1".',
+	),
 );

@@ -190,9 +190,11 @@ function efInputBoxMessages() {
 ),
 
 'hr' => array(
-	'tryexact'       => 'Pokušaj naći točan pogodak',
-	'searchfulltext' => 'Traži po cjelokupnom tekstu',
-	'createarticle'  => 'Stvori članak',
+	'inputbox-error-no-type'  => 'Niste naveli tip ulaznog polja koje želite stvoriti.',
+	'inputbox-error-bad-type' => 'Tip ulaznog polja "$1" nije prepoznat. Molimo navedite "create", "comment", "search" ili "search2".',
+	'tryexact'                => 'Pokušaj naći točan pogodak',
+	'searchfulltext'          => 'Traži po cjelokupnom tekstu',
+	'createarticle'           => 'Stvori članak',
 ),
 
 'hsb' => array(

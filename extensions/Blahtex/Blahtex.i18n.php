@@ -245,6 +245,12 @@ $messages['pt'] = array(
 	'math_AmbiguousInfix'                   => 'Posicionamento ambígua de "$1" (experimente usar chavetas adicionais "{ ... }" para desfazer a ambiguidade)',
 	'math_CannotRunLatex'                   => 'Não é possível executar latex',
 	'math_IllegalCharacter'                 => 'Caracter inválido nos dados introduzidos',
+	'math_IllegalCommandInMathMode'         => 'O comando "$1" é inválido em modo matemático',
+	'math_IllegalCommandInMathModeWithHint' => 'O comando "$1" é inválido em modo matemático (talvez pretendesse usar "$2"?)',
+	'math_IllegalCommandInTextMode'         => 'O comando "$1" é inválido em modo de texto',
+	'math_IllegalCommandInTextModeWithHint' => 'O comando "$1" é inválido em modo de texto (talvez pretendesse usar "$2"?)',
+	'math_IllegalDelimiter'                 => 'Delimitador inválido após "$1"',
+	'math_IllegalFinalBackslash'            => 'Barra inversa "\" inválida no fim dos dados introduzidos',
 	'math_InvalidColour'                    => 'A cor "$1" é inválida',
 	'math_InvalidUtf8Input'                 => 'O texto introduzido não é UTF-8 válido',
 	'math_LatexFontNotSpecified'            => 'Nenhum tipo de letra LaTeX foi especificado para "$1"',
@@ -253,6 +259,8 @@ $messages['pt'] = array(
 	'math_MissingOpenBraceAtEnd'            => 'Falta chaveta de abertura "{" no fim do texto introduzido',
 	'math_MissingOpenBraceBefore'           => 'Falta chaveta de abertura "{" antes de "$1"',
 	'math_TooManyTokens'                    => 'O texto introduzido é demasiado longo',
+	'math_UnavailableSymbolFontCombination' => 'O símbolo "$1" não está disponível no tipo de letra "$2"',
 	'math_UnrecognisedCommand'              => 'Comando "$1" não reconhecido',
+	'math_WrongFontEncoding'                => 'O símbolo "$1" não pode aparecer na codificação de tipo de letra "$2"',
+	'math_WrongFontEncodingWithHint'        => 'O símbolo "$1" não pode aparecer na codificação de tipo de letra "$2" (experimente usar o comando "$3{...}")',
 );
-
