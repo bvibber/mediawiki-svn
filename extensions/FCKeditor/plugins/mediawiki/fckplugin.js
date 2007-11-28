@@ -84,8 +84,9 @@ FCK.DataProcessor =
 	{
 		// rootNode is <body>.
 
-		// Normalize the document for text node processing.
-		rootNode.normalize() ;
+		// Normalize the document for text node processing (except IE - #1586).
+		if ( !FCKBrowserInfo.IsIE )
+			rootNode.normalize() ;
 
 		var stringBuilder = new Array() ;
 		this._AppendNode( rootNode, stringBuilder ) ;
