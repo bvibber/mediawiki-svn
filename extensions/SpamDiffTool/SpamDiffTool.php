@@ -141,7 +141,7 @@ function wfSpecialSpamDiffTool() {
 					<input type='hidden' name='newurls' value=\"" . htmlspecialchars($text) . "\">
 					<input type='hidden' name='returnto' value=\"" . htmlspecialchars($wgRequest->getVal('returnto')) . "\">
 				");
-			$wgOut->addHTML(wfMsg('spamdifftool_confirm') . "<pre>$text</pre>");
+			$wgOut->addHTML(wfMsg('spamdifftool_confirm', 'http://www.mediawiki.org/w/index.php?title=Extension_talk:SpamDiffTool&action=edit&section=new') . "<pre>$text</pre>");
 			$wgOut->addHTML("</table><input type=submit value=\"" . htmlspecialchars(wfMsg('spamdifftool_submit_buttom')) . "\"></form>");
 			return;
 		}
