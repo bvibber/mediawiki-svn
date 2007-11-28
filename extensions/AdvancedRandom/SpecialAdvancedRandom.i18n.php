@@ -31,6 +31,10 @@ $messages['hr'] = array(
 	'advancedrandom' => 'Napredne slučajne stranice',
 );
 
+$messages['hsb'] = array(
+	'advancedrandom' => 'Rozšěrjena připadna strona',
+);
+
 $messages['nl'] = array(
 	'advancedrandom' => 'Willekeurige pagina (geavanceerd)',
 );

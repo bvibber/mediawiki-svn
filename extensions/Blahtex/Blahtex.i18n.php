@@ -238,6 +238,7 @@ $messages['nl'] = array(
 	'math_MismatchedBeginAndEnd'            => 'Bevelen "$1" en "$1" komen niet overeen',
 	'math_ReservedCommand'                  => 'Het bevel "$1" is gereserveerd voor intern gebruik door blahtex',
 	'math_TooManyTokens'                    => 'De invoer is te lang',
+	'math_UnrecognisedCommand'              => 'Onherkend bevel "$1"',
 );
 
 $messages['pt'] = array(

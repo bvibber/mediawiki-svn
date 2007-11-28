@@ -89,7 +89,12 @@ A security warning about an unsigned certificate may be displayed.',
 
 $wgBoardVoteMessages['af'] = array(
 	'boardvote'               => 'Wikimedia-Trusteeraadverkiesing',
+	'boardvote_time'          => 'Tyd',
 	'boardvote_user'          => 'Gebruiker',
+	'boardvote_edits'         => 'Redigerings',
+	'boardvote_days'          => 'Dae',
+	'boardvote_dumplink'      => 'Kliek hier',
+	'boardvote_edits_many'    => 'baie',
 	'boardvote_welcome'       => 'Welkom \'\'\'$1\'\'\'!',
 );
 

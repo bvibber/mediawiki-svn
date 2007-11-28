@@ -65,6 +65,7 @@ $messages['nl'] = array(
 	'postcomment_youareloggedinas' => 'U bent aangemeld als $1',
 	'postcomment_addcommentdiscussionpage' => 'Uw opmerking toevoegen op deze overlegpagina',
 	'postcomment_leavemessagefor' => 'Een bericht achterlaten voor $1',
+	'postcomment_on' => 'Op',
 	'postcomment_said' => 'zei',
 	'postcomment_invalidrequest' => 'Ongeldige aanvraag.',
 	'postcomment_replyto' => 'Antwoorden aan $1',
