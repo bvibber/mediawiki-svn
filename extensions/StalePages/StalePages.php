@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version'=>'0.7'
 );
 
-if( version_compare( $wgVersion, '1.12alpha', '>=' ) ) {    
+if( version_compare( $wgVersion, '1.11', '>=' ) ) {    
 	$wgExtensionMessagesFiles['Stalepages'] = $dirname(__FILE__) . '/StalePages.i18n.php';
 } else {
 	$wgExtensionFunctions[] = 'efStalepages';
