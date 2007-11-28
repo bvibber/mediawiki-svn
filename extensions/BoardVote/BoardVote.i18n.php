@@ -1730,6 +1730,12 @@ Sledi rezultujuća šifrirana verzija. Biće javno predstavljena na [[Special:Bo
 
 $wgBoardVoteMessages['sr'] = $wgBoardVoteMessages['sr-ec'];
 
+$wgBoardVoteMessages['stq'] = array(
+	'boardvote_edits'         => 'Beoarbaidengen',
+	'boardvote_days'          => 'Deege',
+	'boardvote_dumplink'      => 'Klik hier',
+);
+
 $wgBoardVoteMessages['su'] = array(
 	'boardvote'               => 'Saémbara Anggota Déwan Kapercayaan Yayasan Wikimedia',
 	'boardvote_novotes'       => 'Acan aya pamilih.',

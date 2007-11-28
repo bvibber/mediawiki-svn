@@ -326,4 +326,10 @@ $1',
 		'webstore_php_error' => 'A son riva-ie dj\'eror dël PHP:',
 		'webstore_no_handler' => 'A-i manca l\'utiss (handler) për ardimensioné sta sòrt MIME-sì',
 	),
+	'pt' => array(
+		'inplace_access_disabled' => 'O acesso a este serviço foi desabilitado para todos os clientes.',
+		'inplace_access_denied' => 'Este serviço está restringido por IP de cliente.',
+		'inplace_scaler_no_temp' => 'Não existe directoria temporária, defina $wgLocalTmpDirectory com uma directoria onde seja possível escrever.',
+		'inplace_scaler_not_enough_params' => 'Parâmetros insuficientes.',
+	),
 );

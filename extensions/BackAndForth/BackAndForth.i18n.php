@@ -113,6 +113,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => '前 ($1)',
 ),
 
+'kaa' => array(
+	'backforth-next' => 'Keyingi ($1)',
+	'backforth-prev' => 'Aldın\'g\'ı ($1)',
+),
+
 'kn' => array(
 	'backforth-next' => 'ಮುಂದಿನ ($1)',
 	'backforth-prev' => 'ಹಿಂದಿನ ($1)',
