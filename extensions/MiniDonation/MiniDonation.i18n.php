@@ -78,6 +78,9 @@ $wgMiniDonationMessages['pl'] = array(
 $wgMiniDonationMessages['pms'] = array(
 	'donationform-submit' => 'Fé na donassion con PayPal',
 );
+$wgMiniDonationMessages['pt'] = array(
+	'donationform-submit' => 'Doe pelo PayPal',
+);
 $wgMiniDonationMessages['sk'] = array(
 	'donationform-submit' => 'Darujte pomocou PayPal',
 );

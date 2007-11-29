@@ -32,6 +32,9 @@ $messages = array(
 'af' => array(
 	'already_sysop' => 'Hierdie gebruiker is al reeds \'n administrateur.',
 	'already_bureaucrat' => 'Hierdie gebruiker is al reeds \'n burokraat.',
+	'group-steward' => 'Waarde',
+	'group-steward-member' => 'Waard',
+	'grouppage-steward' => '{{ns:project}}:Waarde',
 ),
 
 /* Arabic (Meno25) */

@@ -178,7 +178,11 @@ $allMessages = array(
 		'changeauthor-rev' => 'r$1',#identical but defined
 	),
 	'pt' => array(
+		'changeauthor-comment' => 'Comentário:',
+		'changeauthor-changeauthors-multi' => 'Alterar autor(es)',
+		'changeauthor-invalid-username' => 'Nome de utilizador "$1" inválido.',
 		'changeauthor-nosuchuser' => 'Utilizador "$1" não existe.',
+		'changeauthor-revview' => 'Revisão #$1 de $2',
 		'changeauthor-nosuchtitle' => 'Não existe nenhum artigo chamado "$1".',
 	),
 );

@@ -76,6 +76,10 @@ function efContributionseditcountMessages()  {
 	'contributionseditcount' => 'St\'utent-sì a l\'ha fait $1 modìfiche.',
 ),
 
+'pt' => array(
+	'contributionseditcount' => 'Este utilizador tem $1 edições.',
+),
+
 'sah' => array(
 	'contributionseditcount' => 'Бу кыттааччы $1 көннөрүүлээх.',
 ),

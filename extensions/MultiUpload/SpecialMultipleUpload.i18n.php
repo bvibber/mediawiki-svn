@@ -89,12 +89,12 @@ $messages['nl'] = array(
 	'multipleupload'    => 'Bestanden uploaden',
 	'multipleupload-ignoreallwarnings' => '\'\'\'Alle waarschuwingen\'\'\' negeren en de bestanden sowieso uploaden.',
 	'multipleupload-saveallfiles' => 'Alle bestanden opslaan',
-	'multipleupload-page' => '{{ns:project}}:Verwijderingsbeleid van afbeeldingen',
+	'multipleupload-page' => '{{ns:project}}:Verwijderingsbeleid van bestanden',
 	'multipleupload-text' => 'Hier kunt u verschillende bestanden uploaden.
 
 Kies \'Doorzoeken\' en selecteer elk bestand dat u wil uploaden. U kan van 1 tot $1 bestanden tegelijk uploaden.
 
-U kunt een optionele \'\'\'Bestemming bestandsnaam\'\'\'  opgeven en een \'\'\'Samenvatting\'\'\' die uw foto beschrijft opgeven.
+U kunt een optionele \'\'\'Bestemming bestandsnaam\'\'\'  opgeven en een \'\'\'Samenvatting\'\'\' die uw bestand beschrijft opgeven.
 
-Onrelevante afbeeldingen zullen onmiddelijk verwijderd worden, zie het [[{{MediaWiki:Multipleupload-page}}|verwijderingsbeleid van afbeeldingen]].',
+Onrelevante afbeeldingen zullen onmiddelijk verwijderd worden, zie het [[{{MediaWiki:Multipleupload-page}}|verwijderingsbeleid van bestanden]].',
 );

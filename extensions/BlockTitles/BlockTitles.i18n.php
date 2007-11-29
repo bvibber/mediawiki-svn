@@ -112,6 +112,10 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'Ch\'a scusa, ma ës tìtol-sì as peul nen dovresse',
 ),
 
+'pt' => array(
+	'block_title_error_page_title' => 'Título Bloqueado',
+),
+
 'scn' => array(
 	'block_title_error_page_title' => 'Tìtulu bluccatu',
 	'block_title_error' => 'Semu spiacenti, nun è cunzintitu sarvari na vuci cu chistu tìtulu.',

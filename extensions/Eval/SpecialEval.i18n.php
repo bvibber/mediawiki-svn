@@ -42,3 +42,7 @@ $messages['hsb'] = array(
 $messages['nl'] = array(
 	'eval_out'    => 'Uitvoer',
 );
+
+$messages['pt'] = array(
+	'eval_code'   => 'Código',
+);

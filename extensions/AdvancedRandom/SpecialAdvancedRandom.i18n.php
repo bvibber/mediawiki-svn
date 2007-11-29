@@ -38,3 +38,7 @@ $messages['hsb'] = array(
 $messages['nl'] = array(
 	'advancedrandom' => 'Willekeurige pagina (geavanceerd)',
 );
+
+$messages['pt'] = array(
+	'advancedrandom' => 'Aleatório avançado',
+);

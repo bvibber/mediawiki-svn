@@ -17,6 +17,8 @@ $wgFilepathMessages['en'] = array(
 );
 $wgFilepathMessages['af'] = array(
 	'filepath'        => 'Lêerpad',
+	'filepath_page'   => 'Lêer:',
+	'filepath_submit' => 'Pad',
 );
 /* Arabic (Meno25) */
 $wgFilepathMessages['ar'] = array(
