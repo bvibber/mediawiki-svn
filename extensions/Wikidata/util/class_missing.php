@@ -1,5 +1,6 @@
 <?php
 header("Content-type: text/html; charset=UTF-8");
+$dc="uw";
 
 define('MEDIAWIKI', true );
 
@@ -38,10 +39,10 @@ $language_esc=mysql_real_escape_string( $language_id);
 
 $result = mysql_query(
 "SELECT spelling
-FROM  uw_defined_meaning, uw_expression
+FROM  ${dc}_defined_meaning, ${dc}_expression
 WHERE defined_meaning_id=$class_id
-AND uw_defined_meaning.expression_id=uw_expression.expression_id
-AND uw_expression.remove_transaction_id is NULL
+AND ${dc}_defined_meaning.expression_id=${dc}_expression.expression_id
+AND ${dc}_expression.remove_transaction_id is NULL
 ")or die ("error ".mysql_error());
 
 
@@ -71,21 +72,21 @@ $result = mysql_query("
 		FROM
 		(
 		 SELECT class_member_mid as id
-		 FROM uw_class_membership WHERE
+		 FROM ${dc}_class_membership WHERE
 		 class_mid = $class_esc
 		 AND remove_transaction_id IS NULL
 		) as member
  		LEFT JOIN
 		(
 		 SELECT spelling, defined_meaning_id
-		 FROM uw_syntrans, uw_expression WHERE
-		 uw_expression.expression_id = uw_syntrans.expression_id
-		 AND uw_syntrans.remove_transaction_id IS NULL
+		 FROM ${dc}_syntrans, ${dc}_expression WHERE
+		 ${dc}_expression.expression_id = ${dc}_syntrans.expression_id
+		 AND ${dc}_syntrans.remove_transaction_id IS NULL
 		 AND language_id = $language_esc
 		 AND defined_meaning_id IN
 	 	(
 			SELECT class_member_mid as id
-			FROM uw_class_membership WHERE
+			FROM ${dc}_class_membership WHERE
 			class_mid = $class_esc
 			AND remove_transaction_id IS NULL
 		)
@@ -98,14 +99,14 @@ $result = mysql_query("
 			 FROM 
 			 (
 				 SELECT spelling as spelling_dm, defined_meaning_id
-				 FROM uw_defined_meaning,  uw_expression WHERE
-				 uw_expression.expression_id = uw_defined_meaning.expression_id
-				 AND uw_defined_meaning.remove_transaction_id IS NULL
-				 AND uw_expression.remove_transaction_id IS NULL
+				 FROM ${dc}_defined_meaning,  ${dc}_expression WHERE
+				 ${dc}_expression.expression_id = ${dc}_defined_meaning.expression_id
+				 AND ${dc}_defined_meaning.remove_transaction_id IS NULL
+				 AND ${dc}_expression.remove_transaction_id IS NULL
 				 AND defined_meaning_id IN
 				(
 					SELECT class_member_mid as id
-					FROM uw_class_membership WHERE
+					FROM ${dc}_class_membership WHERE
 					class_mid = $class_esc
 					AND remove_transaction_id IS NULL
 				)
@@ -113,14 +114,14 @@ $result = mysql_query("
 			LEFT JOIN
 			(
 				 SELECT spelling as spelling_en, defined_meaning_id
-				 FROM uw_syntrans, uw_expression WHERE
-				 uw_expression.expression_id = uw_syntrans.expression_id
-				 AND uw_syntrans.remove_transaction_id IS NULL
+				 FROM ${dc}_syntrans, ${dc}_expression WHERE
+				 ${dc}_expression.expression_id = ${dc}_syntrans.expression_id
+				 AND ${dc}_syntrans.remove_transaction_id IS NULL
 				 AND language_id = 85
 				 AND defined_meaning_id IN
 				(
 					SELECT class_member_mid as id
-					FROM uw_class_membership WHERE
+					FROM ${dc}_class_membership WHERE
 					class_mid = $class_esc
 					AND remove_transaction_id IS NULL
 				)
@@ -157,14 +158,14 @@ print "<hr>\n
 
 $result = mysql_query(" 
 		SELECT defined_meaning_id, spelling
-		FROM uw_syntrans, uw_expression WHERE
-		uw_expression.expression_id = uw_syntrans.expression_id 
-		AND uw_syntrans.remove_transaction_id IS NULL 
+		FROM ${dc}_syntrans, ${dc}_expression WHERE
+		${dc}_expression.expression_id = ${dc}_syntrans.expression_id 
+		AND ${dc}_syntrans.remove_transaction_id IS NULL 
 		AND language_id = $language_esc 
-		AND uw_syntrans.defined_meaning_id IN
+		AND ${dc}_syntrans.defined_meaning_id IN
 		(
 		 SELECT class_member_mid as id
-		 FROM uw_class_membership WHERE
+		 FROM ${dc}_class_membership WHERE
 		 class_mid = $class_esc
 		 AND remove_transaction_id IS NULL
 		)

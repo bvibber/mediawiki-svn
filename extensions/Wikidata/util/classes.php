@@ -1,5 +1,6 @@
 <?php
 header("Content-type: text/html; charset=UTF-8");
+$dc="uw";
 
 define('MEDIAWIKI', true );
 
@@ -43,17 +44,17 @@ $result = mysql_query("
   SELECT classes.id, spelling, counts.total FROM
   (
     SELECT defined_meaning_id as id, spelling
-    FROM uw_collection_contents, uw_defined_meaning, uw_expression
+    FROM ${dc}_collection_contents, ${dc}_defined_meaning, ${dc}_expression
     WHERE collection_id=725304
-    AND uw_collection_contents.remove_transaction_id is NULL
+    AND ${dc}_collection_contents.remove_transaction_id is NULL
     AND member_mid=defined_meaning_id 
-    AND uw_defined_meaning.expression_id=uw_expression.expression_id
+    AND ${dc}_defined_meaning.expression_id=${dc}_expression.expression_id
   ) AS classes JOIN
   ( 
     SELECT defined_meaning_id AS id ,count(*) AS total
-    FROM  uw_defined_meaning, uw_class_membership
+    FROM  ${dc}_defined_meaning, ${dc}_class_membership
     WHERE class_mid=defined_meaning_id
-    AND uw_class_membership.remove_transaction_id is NULL
+    AND ${dc}_class_membership.remove_transaction_id is NULL
     GROUP BY defined_meaning_id
   ) AS counts
     ON classes.id=counts.id

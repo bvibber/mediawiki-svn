@@ -1,6 +1,8 @@
 <?php
 header("Content-type: text/html; charset=UTF-8");
 
+$dc="uw";
+
 define('MEDIAWIKI', true );
 include_once("../../../includes/Defines.php");
 include_once("../../../LocalSettings.php");
@@ -34,10 +36,10 @@ $class_id=$_REQUEST['class'];
 
 $result = mysql_query(
 "SELECT spelling
-FROM  uw_defined_meaning, uw_expression
+FROM  ${dc}_defined_meaning, ${dc}_expression
 WHERE defined_meaning_id=$class_id
-AND uw_defined_meaning.expression_id=uw_expression.expression_id
-AND uw_expression.remove_transaction_id is NULL
+AND ${dc}_defined_meaning.expression_id=${dc}_expression.expression_id
+AND ${dc}_expression.remove_transaction_id is NULL
 ")or die ("error ".mysql_error());
 
 $row= mysql_fetch_array($result, MYSQL_NUM);
@@ -66,13 +68,13 @@ $lang[$row[0]]=$row[2];
 $class_esc=mysql_real_escape_string( $class_id);
 $result = mysql_query("SELECT 
 language_id, COUNT(DISTINCT defined_meaning_id) as counts
-FROM uw_class_membership, uw_syntrans, uw_expression
+FROM ${dc}_class_membership, ${dc}_syntrans, ${dc}_expression
 WHERE  class_mid = $class_esc
-AND  uw_syntrans.defined_meaning_id= uw_class_membership.class_member_mid
-AND uw_expression.expression_id = uw_syntrans.expression_id
-AND uw_expression.remove_transaction_id IS NULL
-AND uw_syntrans.remove_transaction_id IS NULL
-AND uw_class_membership.remove_transaction_id is NULL
+AND  ${dc}_syntrans.defined_meaning_id= ${dc}_class_membership.class_member_mid
+AND ${dc}_expression.expression_id = ${dc}_syntrans.expression_id
+AND ${dc}_expression.remove_transaction_id IS NULL
+AND ${dc}_syntrans.remove_transaction_id IS NULL
+AND ${dc}_class_membership.remove_transaction_id is NULL
 GROUP BY language_id
 ORDER BY counts DESC
  ")or die ("error ".mysql_error());
