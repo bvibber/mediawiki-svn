@@ -12,14 +12,14 @@ $messages['en'] = array(
 	'multipleupload-ignoreallwarnings' => "Ignore '''all warnings''' and save the files anyway.",
 	'multipleupload-saveallfiles'      => "Save all files",
 	'multipleupload-addresswarnings'   => "Please address any warnings before reuploading files.",
-	'multipleupload-page'              => "{{ns:project}}:Image deletion policy",
+	'multipleupload-page'              => "{{ns:project}}:File deletion policy",
 	'multipleupload-text'              => "Upload multiple files here.
 
 Choose 'Browse' and select each file you wish to upload. You can upload from 1 to $1 files at a time.
 
-You can enter an optional '''Destination filename''' and provide a '''Summary''' describing your photo.
+You can enter an optional '''Destination filename''' and provide a '''Summary''' describing your file.
 
-Inappropriate images will be deleted immediately, see the [[{{MediaWiki:Multipleupload-page}}|image deletion policy]].",
+Inappropriate files will be deleted immediately, see the [[{{MediaWiki:Multipleupload-page}}|file deletion policy]].",
 );
 
 $messages['ar'] = array(
@@ -35,6 +35,21 @@ $messages['ar'] = array(
 يمكنك إدخال \'\'\'اسم ملف الوجهة\'\'\' اختياريا وتوفير \'\'\'ملخص\'\'\' يصف صورتك.
 
 الصور غير الملائمة سيتم حذفها فورا، انظر [[{{MediaWiki:Multipleupload-page}}|سياسة حذف الصور]].',
+);
+
+$messages['de'] = array(
+	'multipleupload'                   => 'Dateien hochladen',
+	'multipleupload-ignoreallwarnings' => "Ignoriere '''alle Warnungen''' und speichere die Dateien.",
+	'multipleupload-saveallfiles'      => "Alle Dateien speichern",
+	'multipleupload-addresswarnings'   => "Bitte jede Warnung anzeigen for dem erneuten Hochladen von Dateien.",
+	'multipleupload-page'              => "{{ns:project}}:Löschrichtlinien",
+	'multipleupload-text'              => "Gleichzeitiges Hochladen mehrerer Dateien.
+
+Währe 'Browse' und wähle jede Datei aus, die du hochladen möchtest. Dz kannst gleichzeitig zwischen 1 und $1 Dateien hochladen.
+
+Du kannst wahlweise auch einen '''Ziel-Dateinamen''' vorgeben und eine '''Beschreibung''' für deine Dateien.
+
+Ungeeignete Dateien werden sofort gelöscht, siehe die [[{{MediaWiki:Multipleupload-page}}|Löschrichtlinien]].",
 );
 
 $messages['el'] = array(

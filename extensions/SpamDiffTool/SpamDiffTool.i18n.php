@@ -10,10 +10,10 @@ $messages = array();
 $messages['en'] = array(
 	'spamdifftool' => 'Manage Spam Blacklist',
 	'spamdifftool_cantedit' => 'Sorry - you don\'t have permission to edit the Spam Blacklist.',
-	'spamdifftool_notext' => 'There is no text to add to the Spam Blacklist. Click <a href=\'$1\'>here</a> to continue. ',
+	'spamdifftool_notext' => 'There is no text to add to the Spam Blacklist. Click <a href=\'$1\'>here</a> to continue.',
 	'spamdifftool_confirm' => 'Confirm that you want to add these entries to the Spam Blacklist. (Click <a href=\'$1\' target=\'new\'>here</a> to report a problem.)',
 	'spamdifftool_summary' => 'Adding to Spam Blacklist',
-	'spamdifftool_urls_detected' => 'The following URLs were detected in the edit(s), which ones would you like to add to the Spam Blacklist? These options order from more restrictive to less restrictive, blocking the entire domain will block all links to anything coming from that domain. <br/><br/>Be sure not to block entire domains that host user accounts, like blogpost.com, geocities.com, etc. ',
+	'spamdifftool_urls_detected' => 'The following URLs were detected in the edit(s), which ones would you like to add to the Spam Blacklist? These options order from more restrictive to less restrictive, blocking the entire domain will block all links to anything coming from that domain. <br /><br />Be sure not to block entire domains that host user accounts, like blogpost.com, geocities.com, etc.',
 	'spamdifftool_no_urls_detected' => 'No urls were detected. Click <a href=\'$1\'>here</a> to return.',
 	'spamdifftool_spam_link_text' => 'add to spam',
 	'spamdifftool_option_domain' => 'all from this domain',
@@ -40,6 +40,25 @@ $messages['ar'] = array(
 	'spamdifftool_block' => 'منع:',
 	'spamdifftool_submit_buttom' => 'تنفيذ',
 );
+
+$messages['de'] = array(
+	'spamdifftool'                  => 'Spam-Blacklist bearbeiten',
+	'spamdifftool_cantedit'         => 'Du hast keine Berechitung zur Bearbeitung der Spam-Blacklist.',
+	'spamdifftool_notext'           => 'Es gibt keinen Text, welcher der Spam-Blacklist hinzugefügt werden könnte. Klicke <a href=\'$1\'>hier</a> zum Forfahren.',
+	'spamdifftool_confirm'          => 'Bestätige, dass du diese Einträge der Spam-Blacklist hinzufügen möchtest. (Klicke <a href=\'http://www.mediawiki.org/w/index.php?title=Talk:SpamDiffTool_Extension&action=edit&section=new\' target=\'new\'>hier</a>, um ein Problem zu melden.)',
+	'spamdifftool_summary'          => 'Zur Spam-Blacklist hinzufügen',
+	'spamdifftool_urls_detected'    => 'Die folgenden URLs wurden in der Bearbeitung gefunden, welche davon möchtest du der Spam-Blacklist hinzufügen? 
+	Die Reihenfolge geht von sehr einschränkend bis weniger einschränkend, das Eintragen einer ganzen Domain blockiert alle Links, die von dieser Domain kommen.<br /><br />
+	Stelle sicher, dass du nicht komplette Domains blockirst, die separate Benutzerinhalte bereitstellen, wie z. B. blogpost.com, geocities.com usw.',
+	'spamdifftool_no_urls_detected' => 'Es wurden keine URLs gefunden. Klicke <a href=\'$1\'>hier</a>, um zurückzugehen.',
+	'spamdifftool_spam_link_text'   => 'zu Spam hinzufügen',
+	'spamdifftool_option_domain'    => 'alle von dieser Domain',
+	'spamdifftool_option_subdomain' => 'alle von dieser Subdomain',
+	'spamdifftool_option_directory' => 'diese Subdomain und das Verzeichnis',
+	'spamdifftool_option_none'      => 'nichts',
+	'spamdifftool_block'            => 'Sperre:',
+	'spamdifftool_submit_buttom'    => 'Speichern',
+	);
 
 $messages['fr'] = array(
 	'spamdifftool' => 'Gestion de la Liste Noire des Spams',

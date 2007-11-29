@@ -16,6 +16,10 @@ $messages['ar'] = array(
 	'purge' => 'إفراغ الكاش',
 );
 
+$messages['de'] = array(
+	'purge' => 'Cache leeren',
+);
+
 /*Translation by Bertrand GRONDIN*/
 $messages['fr'] = array(
 	'purge' => 'purger',

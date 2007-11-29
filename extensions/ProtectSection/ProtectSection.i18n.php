@@ -19,6 +19,12 @@ $messages['ar'] = array(
 	'protectsection_forbidden'  => 'محظور',
 );
 
+$messages['de'] = array(
+	'protectsection_add_remove' => 'Du hast versucht, einen geschützten Abschnitt hinzuzufügen oder zu entfernen.',
+	'protectsection_modify'     => 'Du hast versucht, einen geschützten Text zu bearbeiten.',
+	'protectsection_forbidden'  => 'Verboten',
+);
+
 $messages['fr'] = array(
 	'protectsection_add_remove' => 'Vous avez tenté d\'ajouter ou d\'effacer une section protégée.',
 	'protectsection_modify'     => 'Vous avez tenté de modifier du texte protégé.',
