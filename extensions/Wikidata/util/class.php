@@ -1,4 +1,5 @@
 <?php
+die("Unsafe script -- no error checking, may be vulnerable to attacks.");
 header("Content-type: text/html; charset=UTF-8");
 
 $dc="uw";
