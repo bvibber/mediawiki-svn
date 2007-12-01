@@ -19,10 +19,10 @@
 #    2. Copy the /SpamRegex folder and its contents into /extensions.
 #    3. Copy SpamRegex.php to /extensions.
 #    4. If not already supplied with RegexBlock extension, copy SimplifiedRegex.php into /extensions.
-#    5. Include the SpamRegex.php in GlobalSettings.php. 
+#    5. Include the SpamRegex.php in GlobalSettings.php.
 #    6. This extension uses Memcached - please check if Memcached is configured properly in Global/LocalSettings.
 #
-#    That should do the trick. If people belonging to staff cannot access the extension, check if relogin helps. If not, please check if the staff permissions are not overwritten after the initialization of the extension. If that is the case, the permissions should be rather appended (the extension adds one new permission right). 
+#    That should do the trick. If people belonging to staff cannot access the extension, check if relogin helps. If not, please check if the staff permissions are not overwritten after the initialization of the extension. If that is the case, the permissions should be rather appended (the extension adds one new permission right).
 #
 #
 
