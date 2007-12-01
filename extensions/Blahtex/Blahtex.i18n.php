@@ -252,6 +252,7 @@ $messages['pt'] = array(
 	'math_IllegalCommandInTextModeWithHint' => 'O comando "$1" é inválido em modo de texto (talvez pretendesse usar "$2"?)',
 	'math_IllegalDelimiter'                 => 'Delimitador inválido após "$1"',
 	'math_IllegalFinalBackslash'            => 'Barra inversa "\" inválida no fim dos dados introduzidos',
+	'math_IllegalNestedFontEncodings'       => 'Comandos de codificação de tipo de letra não podem ser encapsulados uns nos outros',
 	'math_InvalidColour'                    => 'A cor "$1" é inválida',
 	'math_InvalidUtf8Input'                 => 'O texto introduzido não é UTF-8 válido',
 	'math_LatexFontNotSpecified'            => 'Nenhum tipo de letra LaTeX foi especificado para "$1"',

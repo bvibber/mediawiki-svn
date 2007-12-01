@@ -27,6 +27,10 @@ $wgFilepathMessages['ar'] = array(
 	'filepath_submit' => 'المسار',
 	'filepath-summary' => 'هذه الصفحة الخاصة تعرض المسار الكامل لملف. ستعرض الصور بأقصى دقة، ستعمل أنواع الملفات الأخرى بالبرنامج المخصص لهم مباشرة؛ أدخل اسم الملف بدون البادئة "{{ns:image}}:"',
 );
+$wgFilepathMessages['arc'] = array(
+	'filepath'        => 'ܫܒܝܠܐ ܕܫܘܦܝܢܐ',
+	'filepath_submit' => 'ܫܒܝܠܐ',
+);
 $wgFilepathMessages['ca'] = array(
 	'filepath'        => 'Camí d\'arxiu',
 	'filepath_page'   => 'Arxiu:',
@@ -105,6 +109,14 @@ $wgFilepathMessages['he'] = array(
 	'filepath-summary' => 'דף זה מציג את הנתיב המלא לקבצים שהועלו. תמונות מוצגות ברזולוציה מלאה, ואילו סוגי קבצים אחרים מוצגים ישירות באמצעות התוכנה שהוגדרה להצגתם.
 	
 	יש להקליד את שם הקובץ ללא הקידומת "{{ns:image}}:".',
+);
+$wgFilepathMessages['hr'] = array(
+	'filepath'        => 'Putanja datoteke',
+	'filepath_page'   => 'Datoteka:',
+	'filepath_submit' => 'Putanja',
+	'filepath-summary' => 'Ova posebna stranica daje Vam kompletnu putanju do neke datoteke. Slike se na taj način prikazuju u punoj rezoluciji, drugi tipovi datoteka se otvaraju na klik (kako je već namješteno u vašem operacijskom sustavu).
+	
+	Unesite ime datoteke bez predmetka (\'\'prefiksa\'\') imenskog prostora "{{ns:image}}:".',
 );
 $wgFilepathMessages['hsb'] = array(
 	'filepath'        => 'Puć k dataji',

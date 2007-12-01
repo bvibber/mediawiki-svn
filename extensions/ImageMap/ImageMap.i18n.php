@@ -126,6 +126,19 @@ function efImageMapMessages() {
 	'imagemap_description'          => 'אודות התמונה',
 ),
 
+'hr' => array(
+	'imagemap_no_image'             => '&lt;imagemap&gt;: morate navesti ime slike koju rabite u prvom retku',
+	'imagemap_invalid_image'        => '&lt;imagemap&gt;: slika ne postoji ili je krivog tipa',
+	'imagemap_no_link'              => '&lt;imagemap&gt;: nema (ispravne) poveznice na kraju retka $1',
+	'imagemap_invalid_title'        => '&lt;imagemap&gt;: loš naziv u poveznici u retku $1',
+	'imagemap_missing_coord'        => '&lt;imagemap&gt;: nedovoljan broj koordinata za oblik u retku $1',
+	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: oblik u retku $1 nije prepoznat, svaki redak mora početi s jednim od oblika: default, rect, circle ili poly',
+	'imagemap_no_areas'             => '&lt;imagemap&gt;: najmanje jedna specifikacija područja mora biti zadana',
+	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: nevaljane koordinate u retku $1, mora biti broj',
+	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: nevaljan opis, mora biti jedan od: <tt>$1</tt>',
+	'imagemap_description'          => 'O ovoj slici',
+),
+
 'hsb' => array(
 	'imagemap_no_image'             => '&lt;imagemap&gt; zmylk: Dyrbiš w prěnjej lince wobraz podać',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt; zmylk: Wobraz je njepłaćiwy abo njeeksistuje',

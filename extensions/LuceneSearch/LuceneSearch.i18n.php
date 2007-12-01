@@ -285,6 +285,26 @@ $1\n
 	'searchincategory'      => 'בקטגוריה',
 );
 
+$wgLuceneSearchMessages['hr'] = array(
+	'searchnumber'          => '<strong>Rezultati $1-$2 od $3</strong>',
+	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Prethodno</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>Slijedeći</span> &#x00BB;',
+	'searchscore'           => 'Povezanost: $1',
+	'searchsize'            => '$1 KB ($2 riječi)',
+	'searchdidyoumean'      => 'Da li ste mislili: "<a href="$1">$2</a>"?',
+	'searchnoresults'       => 'Oprostite, niti jedan zapis ne odgovara traženom upitu.',
+	'searchnearmatches'     => '<b>Ove stranice imaju sličan naziv Vašem upitu:</b>',
+	'lucenepowersearchtext' => 'Traži u imenskim prostorima:
+
+$1',
+	'lucenefallback'        => 'Pretraživanje wikija ne radi.
+To je najvjerojatnije privremeno; pokušajte opet za par trenutaka,
+ili možete pretraživati wiki pomoću vanjske tražilice:',
+	'searchexactcase'       => 'Razlikuj velika i mala slova',
+	'searchall'             => 'sve',
+	'searchincategory'      => 'u kategoriji',
+);
+
 $wgLuceneSearchMessages['hsb'] = array(
 	'searchnumber'          => '<strong>Wuslědki $1–$2 z $3</strong>',
 	'searchprev'            => '&larr; <span style=\'font-size: smaller\'>Předchadny</span>',

@@ -10,6 +10,9 @@ $wgMiniDonationMessages = array();
 $wgMiniDonationMessages['en'] = array(
 	'donationform-submit' => 'Donate via PayPal',
 );
+$wgMiniDonationMessages['an'] = array(
+	'donationform-submit' => 'Donar fendo serbir Paypal',
+);
 $wgMiniDonationMessages['ar'] = array(
 	'donationform-submit' => 'تبرع من خلال باي بال',
 );

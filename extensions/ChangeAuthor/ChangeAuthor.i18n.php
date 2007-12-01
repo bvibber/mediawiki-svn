@@ -178,6 +178,7 @@ $allMessages = array(
 		'changeauthor-rev' => 'r$1',#identical but defined
 	),
 	'pt' => array(
+		'changeauthor-pagenameform-go' => 'Ir',
 		'changeauthor-comment' => 'Comentário:',
 		'changeauthor-changeauthors-multi' => 'Alterar autor(es)',
 		'changeauthor-invalid-username' => 'Nome de utilizador "$1" inválido.',

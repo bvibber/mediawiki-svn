@@ -54,6 +54,14 @@ $wgLinkSearchMessages['de'] = array(
 $wgLinkSearchMessages['el'] = array(
 	'linksearch-ok'    => 'Αναζήτηση',
 );
+$wgLinkSearchMessages['es'] = array(
+	'linksearch'       => 'Buscar enlaces a páginas web',
+	'linksearch-pat'   => 'Patrón de búsqueda:',
+	'linksearch-ns'    => 'Nombre de espacio:',
+	'linksearch-ok'    => 'Buscar',
+	'linksearch-line'  => '$1 enlazado desde $2',
+	'linksearch-error' => 'Los comodines sólo pueden aparecer al principio del nombre de sitio.',
+);
 $wgLinkSearchMessages['ext'] = array(
 	'linksearch-ok'    => 'Landeal',
 );

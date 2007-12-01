@@ -60,3 +60,29 @@ $messages ['fr'] = array(
 	'spamregex-text' => '(Texte)',
 	'spamregex-summary-log' => '(Commentaire)',
 );
+
+$messages['nl'] = array(
+	'spamregex' => 'SpamRegex',#identical but defined
+	'spamregex_summary' => 'De tekst is gevonden in de paginasamenvatting.',
+	'spamregex-intro' => 'Gebruik dit formulier om doeltreffend uitdrukkingen te blokkeren van opslaan in een paginatekst. Als de tekst de gegeven uitdrukkingen bevat, dan zal de wijziging niet worden opgeslaan en zal een uitleg getoond worden aan de gebruiker die de pagina probeerde op te slaan. Het wordt aangeraden dat de uitdrukkingen niet te kort of te veelvoorkomend zouden mogen zijn.',
+	'spamregex-currently-blocked' => '\'\'\'Huidig geblokkeerde zinnen:\'\'\'',
+	'spamregex-no-currently-blocked' => '\'\'\'Er zijn geen geblokkeerde zinnen.\'\'\'',
+	'spamregex-log-1' => '* \'\'\'$1\'\'\' $2 ([{{SERVER}}$3&text=$4 verwijderen]) toegevoegd door',
+	'spamregex-log-2' => ' op $1',
+	'spamregex-page-title-1' => 'Zinnen blokkeren met reguliere expressies',
+	'spamregex-unblock-success' => 'Deblokkade gelukt',
+	'spamregex-unblock-message' => 'Zin \'\'\'$1\'\'\' is gedeblokkeerd van bewerkingen.',
+	'spamregex-page-title-2' => 'Zinnen blokkeren van opslaan met reguliere expressies',
+	'spamregex-block-success' => 'Blokkade gelukt.',
+	'spamregex-block-message' => 'Zin \'\'\'$1\'\'\' is geblokkeerd.',
+	'spamregex-warning-1' => 'Geef een zin om te blokkeren.',
+	'spamregex-error-1' => 'Ongeldige reguliere expressie.',
+	'spamregex-warning-2' => 'Gelieve tenminste één blokkeermogelijkheid aan te klikken.',
+	'spamregex-already-blocked' => '"$1" is al geblokkeerd',
+	'spamregex-phrase-block' => 'Zin om te blokkeren:',
+	'spamregex-phrase-block-text' => 'zin blokkeren in paginatekst',
+	'spamregex-phrase-block-summary' => 'zin blokkeren in samenvatting',
+	'spamregex-block-submit' => 'Deze&nbsp;zin&nbsp;blokkeren',
+	'spamregex-text' => '(Tekst)',
+	'spamregex-summary-log' => '(Samenvatting)',
+);

@@ -40,5 +40,5 @@ $messages['nl'] = array(
 );
 
 $messages['pt'] = array(
-	'advancedrandom' => 'Aleatório avançado',
+	'advancedrandom' => 'Acesso aleatório avançado',
 );

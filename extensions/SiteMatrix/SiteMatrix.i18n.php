@@ -112,6 +112,9 @@ $wgSiteMatrixMessages['he'] = array(
 );
 $wgSiteMatrixMessages['hr'] = array(
 	'sitematrix' => 'Tablica Wikimedijinih projekata',
+	'sitematrix-language' => 'Jezik',
+	'sitematrix-project' => 'Ime projekta, poveznica među projektima i međuwiki poveznica',
+	'sitematrix-others' => 'Ostali projekti Wikimedije',
 );
 $wgSiteMatrixMessages['hsb'] = array(
 	'sitematrix' => 'Lisćina wšěch wikijow we Wikimediji',
