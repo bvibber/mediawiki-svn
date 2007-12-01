@@ -1,8 +1,13 @@
 <?php
+if ( ! defined( 'MEDIAWIKI' ) )
+	die();
 /**
  * MicroID.php -- Generate MicroID meta info for user pages
  * Copyright 2006 Internet Brands (http://www.internetbrands.com/)
  * By Evan Prodromou <evan@wikitravel.org>
+ *
+ * See http://svn.wikimedia.org/svnroot/mediawiki/branches/REL1_10/extensions/MicroID/
+ * for a verion compatible with MediaWiki < REL1_11
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -22,81 +27,77 @@
  * @addtogroup Extensions
  */
 
-if (defined('MEDIAWIKI')) {
+define('MEDIAWIKI_MICROID_VERSION', '0.2');
 
-	define('MEDIAWIKI_MICROID_VERSION', '0.1');
+$wgExtensionFunctions[] = 'setupMicroID';
+$wgExtensionCredits['other'][] = array(
+	'name' => 'MicroID',
+	'version' => MEDIAWIKI_MICROID_VERSION,
+	'author' => 'Evan Prodromou',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:MicroID',
+	'description' => 'Adds a [http://www.microid.org/ MicroID] to user pages to confirm account with external services',
+);
 
-	$wgExtensionFunctions[] = 'setupMicroID';
-	$wgExtensionCredits['other'][] = array(
-		'name' => 'MicroID',
-		'version' => MEDIAWIKI_MICROID_VERSION,
-		'author' => 'Evan Prodromou',
-		'url' => 'http://www.mediawiki.org/wiki/MicroID_extension',
-		'description' => 'adds a [http://www.microid.org/ MicroID] to user pages to confirm account with external services',
-	);
+$wgExtensionMessagesFiles['MicroID'] = dirname(__FILE__) . '/MicroID.i18n.php';
 
-	function setupMicroID() {
+function setupMicroID() {
 
-		global $wgOut, $wgRequest, $wgMessageCache, $wgHooks;
+	global $wgOut, $wgRequest, $wgHooks;
+	wfLoadExtensionMessages( 'MicroID' );
 
-		$wgMessageCache->addMessages(array(
-			'tog-microid' => 'Publish a <a href="http://microid.org/">MicroID</a> to confirm account with external services',
-		));
+	$wgHooks['UserToggles'][] = 'MicroIDUserToggle';
 
-		$wgHooks['UserToggles'][] = 'MicroIDUserToggle';
+	$action = $wgRequest->getText('action', 'view');
 
-		$action = $wgRequest->getText('action', 'view');
+	if ($action == 'view') {
 
-		if ($action == 'view') {
+		$title = $wgRequest->getText('title');
 
-			$title = $wgRequest->getText('title');
-
-			if (!isset($title) || strlen($title) == 0) {
-				# If there's no title, and Cache404 is in use, check using its stuff
-				if (defined('CACHE404_VERSION')) {
-					if ($_SERVER['REDIRECT_STATUS'] == 404) {
-						$url = getRedirectUrl($_SERVER);
-						if (isset($url)) {
-							$title = cacheUrlToTitle($url);
-						}
+		if (!isset($title) || strlen($title) == 0) {
+			# If there's no title, and Cache404 is in use, check using its stuff
+			if (defined('CACHE404_VERSION')) {
+				if ($_SERVER['REDIRECT_STATUS'] == 404) {
+					$url = getRedirectUrl($_SERVER);
+					if (isset($url)) {
+						$title = cacheUrlToTitle($url);
 					}
-				} else {
-					$title = wfMsg('mainpage');
 				}
+			} else {
+				$title = wfMsg('mainpage');
 			}
+		}
 
-			$nt = Title::newFromText($title);
+		$nt = Title::newFromText($title);
 
-			// If the page being viewed is a user page...
+		// If the page being viewed is a user page...
 
-			if ($nt &&
-				($nt->getNamespace() == NS_USER) &&
-				strpos($nt->getText(), '/') === false)
+		if ($nt &&
+			($nt->getNamespace() == NS_USER) &&
+			strpos($nt->getText(), '/') === false)
+		{
+			// If the user qualifies...
+			wfDebug("MicroID: on User page " . $nt->getText() . "\n");
+
+			$user = User::newFromName($nt->getText());
+
+			if ($user &&                             // got a user
+				$user->getID() != 0 &&               // they're real
+				$user->getEmail() &&                 // they've added an email address
+				$user->isEmailConfirmed() &&         // it's been confirmed
+				$user->getOption('microid'))         // they authorize microid
 			{
-				// If the user qualifies...
 				wfDebug("MicroID: on User page " . $nt->getText() . "\n");
-
-				$user = User::newFromName($nt->getText());
-
-				if ($user &&                             // got a user
-					$user->getID() != 0 &&               // they're real
-					$user->getEmail() &&                 // they've added an email address
-					$user->isEmailConfirmed() &&         // it's been confirmed
-					$user->getOption('microid'))         // they authorize microid
-				{
-					wfDebug("MicroID: on User page " . $nt->getText() . "\n");
-					$wgOut->addMeta('microid', MakeMicroID($user->getEmail(), $nt->getFullURL()));
-				}
-		    }
+				$wgOut->addMeta('microid', MakeMicroID($user->getEmail(), $nt->getFullURL()));
+			}
 		}
 	}
+}
 
-	function MakeMicroID($email, $url) {
-		return sha1( sha1( 'mailto:' . $email ) . sha1( $url ) );
-	}
+function MakeMicroID($email, $url) {
+	return sha1( sha1( 'mailto:' . $email ) . sha1( $url ) );
+}
 
-	function MicroIDUserToggle(&$arr) {
-		$arr[] = 'microid';
-		return true;
-	}
+function MicroIDUserToggle(&$arr) {
+	$arr[] = 'microid';
+	return true;
 }
