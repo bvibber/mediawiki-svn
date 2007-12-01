@@ -1841,7 +1841,9 @@ class Article {
 		return implode( ':', $bits );
 	}
 
-	/** Auto-generates a deletion reason */
+	/** 
+	 * Auto-generates a deletion reason
+	 */
 	public function generateReason()
 	{
 		global $wgContLang;

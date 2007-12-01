@@ -320,8 +320,6 @@ class PageArchive {
 	function undelete( $timestamps, $comment = '', $fileVersions = array() ) {
 		// If both the set of text revisions and file revisions are empty,
 		// restore everything. Otherwise, just restore the requested items.
-		$dbw = wfGetDB(DB_MASTER);
-		$dbw->begin();
 		$restoreAll = empty( $timestamps ) && empty( $fileVersions );
 		
 		$restoreText = $restoreAll || !empty( $timestamps );
@@ -338,10 +336,7 @@ class PageArchive {
 		if( $restoreText ) {
 			$textRestored = $this->undeleteRevisions( $timestamps );
 			if($textRestored < 0) // It must be one of UNDELETE_*
-			{
-				$dbw->rollback();
 				return $textRestored;
-			}
 		} else {
 			$textRestored = 0;
 		}
@@ -362,14 +357,13 @@ class PageArchive {
 				$wgContLang->formatNum( $filesRestored ) );
 		} else {
 			wfDebug( "Undelete: nothing undeleted...\n" );
-			return UNDELETE_NOTHINGRESTORED;
+			return self::UNDELETE_NOTHINGRESTORED;
 		}
 		
 		if( trim( $comment ) != '' )
 			$reason .= ": {$comment}";
 		$log->addEntry( 'restore', $this->title, $reason );
 
-		$dbw->commit();
 		return array($textRestored, $filesRestored, $reason);
 	}
 	
