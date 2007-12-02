@@ -5,9 +5,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-global $wgMessageCache;
-$wgMessageCache->addMessage( "findspam", "Find spam" );
-$wgMessageCache->addMessage( 'findspam-ip', 'IP address:' );
+wfLoadExtensionMessages( 'FindSpam' );
 
 class FindSpamPage extends SpecialPage {
 
@@ -33,7 +31,7 @@ class FindSpamPage extends SpecialPage {
 		$form  = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
 		$form .= '<table><tr><td align="right">' . wfMsgHtml( 'findspam-ip' ) . '</td>';
 		$form .= '<td>' . wfInput( 'ip', 50, $ip ) . '</td></tr>';
-		$form .= '<tr><td></td><td>' . wfSubmitButton( wfMsg( 'ok' ) ) . '</td></tr></table></form>';
+		$form .= '<tr><td></td><td>' . wfSubmitButton( wfMsg( 'findspam-ok' ) ) . '</td></tr></table></form>';
 		$wgOut->addHtml( $form );
 
 		if ( $ip ) {
@@ -41,7 +39,7 @@ class FindSpamPage extends SpecialPage {
 			$s  = '';
 
 			foreach ( $wgLocalDatabases as $db ) {
-				$sql = "SELECT rc_namespace,rc_title,rc_timestamp,rc_user_text,rc_last_oldid FROM $db.recentchanges WHERE rc_ip='" . $dbr->strencode( $ip ) . 
+				$sql = "SELECT rc_namespace,rc_title,rc_timestamp,rc_user_text,rc_last_oldid FROM $db.recentchanges WHERE rc_ip='" . $dbr->strencode( $ip ) .
 				  "' AND rc_this_oldid=0";
 				$res = $dbr->query( $sql, "findspam.php" );
 				list( $site, $lang ) = $wgConf->siteFromDB( $db );
@@ -54,7 +52,7 @@ class FindSpamPage extends SpecialPage {
 				if ( $dbr->numRows( $res ) ) {
 					$s .= "\n$db\n";
 					while ( $row = $dbr->fetchObject( $res ) ) {
-								
+
 						if ( $row->rc_namespace == 0 ){
 							$title = $row->rc_title;
 						} else {
@@ -78,11 +76,9 @@ class FindSpamPage extends SpecialPage {
 				}
 			}
 			if ( $s == '' ) {
-				$s = "No contributions found\n";
+				$s = wfMsg('findspam-notextfound');
 			}
-			$wgOut->addWikiText( $s );
+			$wgOut->addWikiText( $s."<br/>" );
 		}
 	}
 }
-
-
