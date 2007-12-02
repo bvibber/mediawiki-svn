@@ -4,7 +4,7 @@
  *    require_once( "$IP/extensions/ScanSet/ScanSet.php" );
  *
  * And optionally, after that, something like:
- *    $wgScanSetSettings = array( 
+ *    $wgScanSetSettings = array(
  *        'baseDirectory'   => '/local/path/to/images',
  *        'basePath'        => '/url/path/to/images',
  *    );
@@ -12,6 +12,14 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die( 'Not a valid entry point.' );
 
+$wgExtensionCredits['other'][] = array(
+	'name' => 'ScanSet',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:ScanSet',
+	'description' => 'View scanned page images from Andreas Grosz\'s CD/DVD sets',
+	'author' => 'Tim Starling',
+);
+
+$wgExtensionMessagesFiles['ScanSet'] = dirname(__FILE__) . '/ScanSet.i18n.php';
 $wgExtensionFunctions[] = 'wfScanSetSetup';
 $wgScanSetSettings = array();
 
@@ -27,5 +35,3 @@ function wfScanSetHook( $content, $params, &$parser ) {
 	$ss = new ScanSet( $params, $parser, $wgScanSetSettings );
 	return $ss->execute();
 }
-
-

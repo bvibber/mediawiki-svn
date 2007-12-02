@@ -27,7 +27,7 @@ class ScanSet {
 		$this->attributes = $attributes;
 		$this->parser =& $parser;
 
-		$this->initialiseMessages();
+		wfLoadExtensionMessages( 'ScanSet' );
 	}
 
 	function execute() {
@@ -74,7 +74,7 @@ class ScanSet {
 
 		$this->vol = false;
 		$this->page = false;
-		
+
 		if ( isset( $this->attributes['vol'] ) ) $this->vol = $this->attributes['vol'];
 		if ( isset( $this->attributes['page'] ) ) $this->page = $this->attributes['page'];
 		if ( isset( $this->attributes['type'] ) ) $this->type = $this->attributes['type'];
@@ -116,13 +116,13 @@ class ScanSet {
 			$css = '';
 		}
 		$css .= '
-			/*<![CDATA[*/ 
-			.scanset_vollist { 
+			/*<![CDATA[*/
+			.scanset_vollist {
 				border-color: #cccccc;
 				border-width: thin;
 				border-style: solid;
 				float: left;
-			} 
+			}
 			.scanset_pagelist {
 				border-color: #cccccc;
 				border-width: thin;
@@ -185,7 +185,7 @@ class ScanSet {
 			$this->doError( 'opendir_error' );
 			return false;
 		}
-		
+
 		$volumes = array();
 		while ( ( $file = readdir( $dir ) ) !== false ) {
 			if ( preg_match( '/^VOL([0-9]+) (.*)$/', $file, $m ) ) {
@@ -193,7 +193,7 @@ class ScanSet {
 				// Is this the current volume? Use strcmp to enforce leading zeros
 				if ( !strcmp( $m[1], $this->vol ) ) {
 					$this->currentVolDir = $file;
-				}	
+				}
 			}
 		}
 		closedir( $dir );
@@ -215,7 +215,7 @@ class ScanSet {
 		}
 
 		// Now do the page list, by reading the relevant text file
-		// We have to keep in mind that the text file could be user input, it 
+		// We have to keep in mind that the text file could be user input, it
 		// has to be validated carefully.
 		$lines = @file( "{$this->directory}/(Indices)/VOL{$this->vol}.txt" );
 		if ( $lines === false || count( $lines ) == 0 ) {
@@ -257,7 +257,7 @@ class ScanSet {
 		return true;
 	}
 
-	/** 
+	/**
 	 * Output the <img> tag and whatever else goes into displaying a scanned page
 	 * In the case of Grosz indexes, this relies on data gathered during the index display
 	 */
@@ -265,7 +265,7 @@ class ScanSet {
 		if ( !preg_match( '/^\w+$/', $this->page ) ) {
 			return false;
 		}
-		
+
 		if ( $this->currentVolDir ) {
 			$url = $this->path . '/' . rawurlencode( $this->currentVolDir );
 		} elseif ( $this->vol && preg_match( '/^\w+$/', $this->vol ) ) {
@@ -277,7 +277,7 @@ class ScanSet {
 			$url = $this->path;
 		}
 		$url .= '/' . rawurlencode( $this->page ) . '.' . rawurlencode( $this->type );
-		
+
 		$this->text .= "<div class='scanset_image'>\n";
 		if ( strtolower( $this->type ) == 'tif' ) {
 			$this->text .= "<object width=\"{$this->width}\" height=\"{$this->height}\" " .
@@ -287,7 +287,7 @@ class ScanSet {
 				  "type=\"image/tiff\" src=\"$url\">" .
 				"</object></div>";
 		} else {
-			$this->text .= 
+			$this->text .=
 				"<a href=\"$url\">" .
 				"<img width=\"{$this->width}\" height=\"{$this->height}\" src=\"$url\" />\n" .
 				"</a></div>";
@@ -323,7 +323,7 @@ class ScanSet {
 			} else {
 				$query = '';
 			}
-			return "<a href=\"" . 
+			return "<a href=\"" .
 				$this->parser->getTitle()->escapeLocalUrl( $query ) .
 				"\">$description</a>";
 		}
@@ -347,7 +347,7 @@ class ScanSet {
 			} else {
 				$query = 'vol=' . urlencode( $vol );
 			}
-			return "<li><a href=\"" . 
+			return "<li><a href=\"" .
 				$this->parser->getTitle()->escapeLocalUrl( $query ) .
 				"\">$description</a></li>\n";
 		}
@@ -376,27 +376,4 @@ class ScanSet {
 		}
 		return $text;
 	}
-
-	/**
-	 * Put localisable messages for this extension into the message cache
-	 */
-	function initialiseMessages() {
-		global $wgMessageCache;
-		$wgMessageCache->addMessages( array(
-			'scanset_no_name' => 'ScanSet: You must specify a scan set name, e.g. &lt;scanset name="EB1911" /&gt;.',
-			'scanset_invalid_name' => 'ScanSet: Invalid or missing scan set.',
-			'scanset_unrecognised_index_format' => 'ScanSet: Unknown index format',
-			'scanset_opendir_error' => 'ScanSet: Error, cannot open directory $1',
-			'scanset_no_files' => 'ScanSet: No files present in the specified directory.',
-			'scanset_no_volumes' => 'ScanSet: No volume directories found',
-			'scanset_missing_index_file' => 'ScanSet: Index file $1 not found',
-			'scanset_index_file_error' => 'ScanSet: Error in index file format at line $1',
-			'scanset_invalid_volume' => 'ScanSet: Invalid volume',
-			'scanset_next' => 'Next &gt;',
-			'scanset_prev' => '&lt; Prev',
-		));
-		return true;
-	}
 }
-
-
