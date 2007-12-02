@@ -395,7 +395,6 @@ class Title {
 		$title=$n == '' ? $title : "$n:$title";
 		if($wgLanguageTag && $language!==false) $language = !$language ? 'und' : wgLanguageCode($language);
 		if($language) $title="$language:$title";
-
 		return $title;
 	}
 
@@ -2704,11 +2703,18 @@ class Title {
 	 * @return array
 	 */
 	public function pageCond() {
+		global $wgLanguageTag;
+
 		$cond = array( 'page_namespace' => $this->mNamespace, 'page_title' => $this->mDbkeyform );
-		global $wgLanguageTag; if($wgLanguageTag) {
-			if(!strlen($this->mLanguage)) $cond[] = 'page_language IS NULL';
-			else $cond['page_language'] = $this->mLanguage();
-		} 
+
+		if($wgLanguageTag) {
+			if(!strlen($this->getLanguage())) {
+				$cond[] = 'page_language IS NULL';
+			}
+			else {
+				$cond['page_language'] = $this->getLanguage();
+			}
+		}
 		return $cond;
 	}
 

@@ -21,4 +21,7 @@ the LanguageEn object has no code at all--it just inherits the
 English defaults of the Language base class).
 
 The names of the namespaces are also contained in the language
-object, though the numbers are fixed.
+object, though the numbers are fixed. Language tagging allows
+for multiple languages. There is an integer and text presentation.
+If language tagging is disabled, the language integer will be false.
+Otherwise, the language may be NULL or a positive integer.

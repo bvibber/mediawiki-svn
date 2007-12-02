@@ -179,7 +179,7 @@ function wgLanguageId($code='en',$strict=false) {
 
 if(!$wgLanguageWikimedia) {
 ### This fails when language tables are not yet defined
-//	wgLanguageId('eng');
+	wgLanguageId('eng');
 }
 
 ?>

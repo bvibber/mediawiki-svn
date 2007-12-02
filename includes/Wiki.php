@@ -145,7 +145,7 @@ class MediaWiki {
 		wfProfileIn( 'MediaWiki::initializeSpecialCases' );
 
 
-		/* FIXME wgFallbackLanguage || en */
+		/* FIXME wgUserLanguage  || wgFallbackLanguage || en */
 		if($title) $code=$title->getLanguageCode();
 		else $code='en';  global $wgLanguageWikimedia,$wgLanguageTag;
 	 	$wgLanguageCode=$GLOBALS['wgLanguageCode'];

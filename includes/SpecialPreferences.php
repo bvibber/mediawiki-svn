@@ -49,6 +49,7 @@ class PreferencesForm {
 		$this->mEmailFlag = $request->getCheck( 'wpEmailFlag' ) ? 0 : 1;
 		$this->mNick = $request->getVal( 'wpNick' );
 		$this->mUserLanguage = $request->getVal( 'wpUserLanguage' );
+		$this->mUserLanguages = $request->getVal( 'wpUserLanguages' );
 		$this->mUserVariant = $request->getVal( 'wpUserVariant' );
 		$this->mSearch = $request->getVal( 'wpSearch' );
 		$this->mRecent = $request->getVal( 'wpRecent' );
@@ -95,7 +96,7 @@ class PreferencesForm {
 
 		# Validate language
 		if ( !preg_match( '/^[a-z\-]*$/', $this->mUserLanguage ) ) {
-			$this->mUserLanguage = 'nolanguage';
+			$this->mUserLanguage = 'i-default';
 		}
 
 		wfRunHooks( "InitPreferencesForm", array( $this, $request ) );
@@ -262,6 +263,7 @@ class PreferencesForm {
 		}
 
 		$wgUser->setOption( 'language', $this->mUserLanguage );
+		$wgUser->setOption( 'languages', $this->mUserLanguages );;
 		$wgUser->setOption( 'variant', $this->mUserVariant );
 		$wgUser->setOption( 'nickname', $this->mNick );
 		$wgUser->setOption( 'quickbar', $this->mQuickbar );
@@ -372,6 +374,7 @@ class PreferencesForm {
 
 		# language value might be blank, default to content language
 		$this->mUserLanguage = $wgUser->getOption( 'language', $wgContLanguageCode );
+		$this->mUserLanguages = $wgUser->getOption( 'languages' );
 
 		$this->mUserVariant = $wgUser->getOption( 'variant');
 		$this->mEmailFlag = $wgUser->getOption( 'disablemail' ) == 1 ? 1 : 0;
@@ -702,7 +705,13 @@ class PreferencesForm {
 		global $wgLanguageTag; if($wgLanguageTag) {
 			global $wgContLang, $wgLang;
 
-       			list( $lsLabel, $lsSelect) = Xml::languagesSelector( join(", ",array_unique( array( wgLanguageWikimedia($this->mUserLanguage), $wgContLang->getCode3(), $wgLang->getCode3() ) ) ) );
+       			list( $lsLabel, $lsSelect) = Xml::languagesSelector(
+				$this->mUserLanguages ? $this->mUserLanguages :
+				join(", ",array_unique( array(
+					wgLanguageWikimedia($this->mUserLanguage),
+					$wgContLang->getCode3(),
+					$wgLang->getCode3()
+			) ) ) );
 			$wgOut->addHTML( $this->tableRow( $lsLabel, $lsSelect ) );
 		}
 

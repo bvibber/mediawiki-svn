@@ -798,6 +798,16 @@ class User {
 			while( $row = $dbr->fetchObject( $res ) ) {
 				$this->mGroups[] = $row->ug_group;
 			}
+
+			global $wgLanguageTag; if(!$wgLanguageTag) return true;
+			$res = $dbr->select( 'user_langs',
+				array( 'language_id' ),
+				array( 'user_id' => $this->mId ),
+				__METHOD__ );
+			$this->mLanguages = array();
+			while( $row = $dbr->fetchObject( $res ) ) {
+				$this->mLanguages[] = $row->language_id;
+			}
 			return true;
 		} else {
 			# Invalid user_id
@@ -2012,6 +2022,31 @@ class User {
 				'user_id' => $this->mId
 			), __METHOD__
 		);
+
+		if(array_key_exists('languages',$this->mOptions)) {
+			$languages = $this->mOptions['languages'];
+			$x = $dbw->select( 'langtags', 'language_id',
+				array( 'tag_name'=>array_unique(array_filter(split("[\r\n\t ,]+", $languages))) ) );
+			$languages = array();
+			while($language=$dbw->fetchObject($x)) {
+				$languages[] = $language->language_id;
+			}
+			$user_languages = array();
+			$x = $dbw->select ( 'user_langs', 'language_id', array( 'user_id'=>$this->mId ) );
+			while($language=$dbw->fetchObject($x)) {
+				$user_languages[] = $language->language_id;
+			}	
+			$delete_languages = array_diff($user_languages, $languages);
+
+			if(count($delete_languages)) {
+				$dbw->delete( 'user_langs', array( 'user_id'=> $this->mId, 'language_id'=>$delete_languages ) );
+			}
+			$insert_languages = array_diff($languages, $user_languages);
+			foreach($insert_languages as $language) {
+					$dbw->insert( 'user_langs', array( 'user_id'=>$this->mId, 'language_id'=>$language ) );
+			}
+		}
+
 		$this->clearSharedCache();
 	}
 
@@ -2079,6 +2114,16 @@ class User {
 		} else {
 			$newUser = null;
 		}
+
+		if(array_key_exists('languages',$this->mOptions)) {
+			$languages = $this->mOptions['languages'];
+			$x = $dbw->select( 'langtags', 'language_id',
+				array( 'tag_name'=>array_unique(array_filter(split("[\r\n\t ,]+", $languages))) ) );
+			while($language=$dbw->fetchObject($x)) {
+				$dbw->insert( 'user_langs', array( 'user_id'=>$newUser, 'language_id'=>$language->language_id ) );
+			}
+		}
+
 		return $newUser;
 	}
 	

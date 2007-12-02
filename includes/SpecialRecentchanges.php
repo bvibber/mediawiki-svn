@@ -35,6 +35,7 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 	/* bool */ 'hidemyself' => false,
 	/* text */ 'from' => '',
 	/* text */ 'namespace' => null,
+	/* text */ 'languagefilter' => null,
 	/* bool */ 'invert' => false,
 	/* bool */ 'categories_any' => false,
 	);
@@ -63,6 +64,7 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 	} else {
 
 		$namespace = $wgRequest->getIntOrNull( 'namespace' );
+		$languagefilter = $wgRequest->getVal( 'languagefilter' ) ;	
 		$invert = $wgRequest->getBool( 'invert', $defaults['invert'] );
 		$hidebots = $wgRequest->getBool( 'hidebots', $defaults['hidebots'] );
 		$hideanons = $wgRequest->getBool( 'hideanons', $defaults['hideanons'] );
@@ -153,14 +155,28 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 	# Namespace filtering
 	$hidem .= is_null( $namespace ) ?  '' : ' AND rc_namespace' . ($invert ? '!=' : '=') . $namespace;
 
+	# Language filtering
+	global $wgLanguageTag;
+	$languages = array();
+	if($languagefilter) {
+		$x = $dbr->select( 'langtags', 'language_id',
+			array( 'tag_name'=>array_unique(array_filter(split("[\r\n\t ,]+", $languagefilter))) ) );
+		while($language = $x->fetchObject()) $languages[] = $language->language_id;
+		if(count($languages)) $where['page_language'] = $languages;
+		if($languages) {
+			$hidem = ' AND rc_language IN ('.join(',',$languages).')';
+		}
+	}
+
 	// This is the big thing!
 
 	$uid = $wgUser->getID();
-
+	
 	// Perform query
 	$forceclause = $dbr->useIndexClause("rc_timestamp");
 	$sql2 = "SELECT * FROM $recentchanges $forceclause".
-	  ($uid ? "LEFT OUTER JOIN $watchlist ON wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace " : "") .
+	  ($uid ? "LEFT OUTER JOIN $watchlist ON wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace " .
+		( $wgLanguageTag ? " AND wl_language=rc_language " : "") : "") .
 	  "WHERE rc_timestamp >= '{$cutoff}' {$hidem} " .
 	  "ORDER BY rc_timestamp DESC";
 	$sql2 = $dbr->limitResult($sql2, $limit, 0);
@@ -169,27 +185,17 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 	// Fetch results, prepare a batch link existence check query
 	$rows = array();
 	$batch = new LinkBatch;
-	global $wgLanguageTag;
+
 	while( $row = $dbr->fetchObject( $res ) ){
 		$rows[] = $row;
 		if ( !$feedFormat ) {
-			if($wgLanguageTag) {
-                        // User page link
-                        $title = Title::makeTitleSafe( NS_USER, $row->rc_user_text, $row->rc_language );
-                        $batch->addObj( $title );
-
-                        // User talk
-                        $title = Title::makeTitleSafe( NS_USER_TALK, $row->rc_user_text , $row->rc_language);
-                        $batch->addObj( $title );
-			} else {
 			// User page link
-			$title = Title::makeTitleSafe( NS_USER, $row->rc_user_text );
+			$title = Title::makeTitleSafe( NS_USER, $row->rc_user_text, $wgLanguageTag ? $row->rc_language : false );
 			$batch->addObj( $title );
 
 			// User talk
-			$title = Title::makeTitleSafe( NS_USER_TALK, $row->rc_user_text );
+			$title = Title::makeTitleSafe( NS_USER_TALK, $row->rc_user_text, $wgLanguageTag ? $row->rc_language : false );
 			$batch->addObj( $title );
-			}
 		}
 
 	}
@@ -222,12 +228,13 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 			wfAppendToArrayIfNotDefault( 'hidemyself', $hidemyself, $defaults, $nondefaults);
 			wfAppendToArrayIfNotDefault( 'from', $from, $defaults, $nondefaults);
 			wfAppendToArrayIfNotDefault( 'namespace', $namespace, $defaults, $nondefaults);
+			wfAppendToArrayIfNotDefault( 'languagefilter', $namespace, $defaults, $nondefaults);
 			wfAppendToArrayIfNotDefault( 'invert', $invert, $defaults, $nondefaults);
 			wfAppendToArrayIfNotDefault( 'categories_any', $any, $defaults, $nondefaults);
 
 			// Add end of the texts
 			$wgOut->addHTML( '<div class="rcoptions">' . rcOptionsPanel( $defaults, $nondefaults ) . "\n" );
-			$wgOut->addHTML( rcNamespaceForm( $namespace, $invert, $nondefaults, $any ) . '</div>'."\n");
+			$wgOut->addHTML( rcNamespaceForm( $namespace, $invert, $nondefaults, $any, $languagefilter ) . '</div>'."\n");
 		}
 
 		// And now for the content
@@ -262,6 +269,9 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 
 				if ($wgRCShowWatchingUsers && $wgUser->getOption( 'shownumberswatching' )) {
 					$sql3 = "SELECT COUNT(*) AS n FROM $watchlist WHERE wl_title='" . $dbr->strencode($obj->rc_title) ."' AND wl_namespace=$obj->rc_namespace" ;
+					if($wgLanguageTag) {
+						$sql3 .= " AND wl_language=$obj->rc_language";
+					}
 					$res3 = $dbr->query( $sql3, 'wfSpecialRecentChanges');
 					$x = $dbr->fetchObject( $res3 );
 					$rc->numberofWatchingusers = $x->n;
@@ -278,6 +288,7 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 }
 
 function rcFilterByCategories ( &$rows , $categories , $any ) {
+	global $wgLanguageTag;
 	# Filter categories
 	$cats = array () ;
 	foreach ( $categories AS $cat ) {
@@ -290,7 +301,7 @@ function rcFilterByCategories ( &$rows , $categories , $any ) {
 	$articles = array () ;
 	$a2r = array () ;
 	foreach ( $rows AS $k => $r ) {
-		$nt = Title::newFromText ( $r->rc_title , $r->rc_namespace ) ;
+		$nt = Title::newFromText ( $r->rc_title , $r->rc_namespace, $wgLanguageTag ? $r->rc_language : false ) ;
 		$id = $nt->getArticleID() ;
 		if ( $id == 0 ) continue ; # Page might have been deleted...
 		if ( !in_array ( $id , $articles ) ) {
@@ -580,7 +591,7 @@ function rcOptionsPanel( $defaults, $nondefaults ) {
  *
  * @return string
  */
-function rcNamespaceForm( $namespace, $invert, $nondefaults, $categories_any ) {
+function rcNamespaceForm( $namespace, $invert, $nondefaults, $categories_any, $languagefilter ) {
 	global $wgScript, $wgAllowCategorizedRecentChanges, $wgRequest;
 	$t = SpecialPage::getTitleFor( 'Recentchanges' );
 
@@ -616,10 +627,14 @@ function rcNamespaceForm( $namespace, $invert, $nondefaults, $categories_any ) {
 	{$namespaceselect}{$submitbutton}{$invertbox} <label for='nsinvert'>" . wfMsgHtml('invert') . "</label>{$catbox}\n</div>";
 
 	global $wgLanguageCode,$wgLanguageTag;
-	if($wgLanguageTag) {
-		$languagefilter = HTMLlanguagefilterselector($wgLanguageCode, '');
-		$out .="<label for='languagefilter'>Language filter</label>{$languagefilter}{$submitbutton}";
-	}
+        if($wgLanguageTag) {
+                $languageSelector = Xml::languagefilterSelector($languagefilter, null);
+		if($languageSelector) {
+                                $out .= Xml::label( 'Language filter', 'languagefilter' ) .
+                                $languageSelector .
+				$submitbutton;
+                }
+        }
 	$out .= '</form></div>';
 	return $out;
 }

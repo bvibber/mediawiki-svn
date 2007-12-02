@@ -489,7 +489,7 @@ class MessageCache {
 			if(!$isFullKey && ($langcode != $clang) ) {
 		 	       global $wgLanguageTag; if($wgLanguageTag) $title .= '/' . $langcode;
 			}
-			$message = $this->getMsgFromNamespace( $title , $lang->getCodeId());
+			$message = $this->getMsgFromNamespace( $title , $lang->getCodeId() );
 		}
 		else {	
 			$title = $wgContLang->ucfirst( $lckey );
@@ -566,10 +566,9 @@ class MessageCache {
 
 		$message = false;
 
-		$otitle=$title; if($language!==false) $title.='/'.$language;
-
 		$type = false;
 
+		$otitle=$title; if($language!==false) $title.='/'.$language;
 
 		# Try the cache
 		if( $this->mUseCache && isset( $this->mCache[$title] ) ) {
@@ -615,6 +614,7 @@ class MessageCache {
 
 		# Try loading it from the DB
 		$revision = Revision::newFromTitle( Title::makeTitle( NS_MEDIAWIKI, $otitle, $language ) );
+
 		if( $revision ) {
 			$message = $revision->getText();
 			if ($this->mUseCache) {

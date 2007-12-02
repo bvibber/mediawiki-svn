@@ -17,6 +17,8 @@ function wfSpecialAllpages( $par=NULL, $specialPage ) {
 
 	$namespaces = $wgContLang->getNamespaces();
 
+	$languagefilter = $wgRequest->getVal ( 'languagefilter' );
+
 	$indexPage = new SpecialAllpages();
 
 	$wgOut->setPagetitle( ( $namespace > 0 && in_array( $namespace, array_keys( $namespaces) ) )  ?
@@ -25,11 +27,11 @@ function wfSpecialAllpages( $par=NULL, $specialPage ) {
 		);
 
 	if ( isset($par) ) {
-		$indexPage->showChunk( $namespace, $par, $specialPage->including() );
+		$indexPage->showChunk( $namespace, $par, $specialPage->including(), $languagefilter );
 	} elseif ( isset($from) ) {
-		$indexPage->showChunk( $namespace, $from, $specialPage->including() );
+		$indexPage->showChunk( $namespace, $from, $specialPage->including(), $languagefilter );
 	} else {
-		$indexPage->showToplevel ( $namespace, $specialPage->including() );
+		$indexPage->showToplevel ( $namespace, $specialPage->including(), $languagefilter );
 	}
 }
 
@@ -49,7 +51,7 @@ class SpecialAllpages {
  * @param integer $namespace A namespace constant (default NS_MAIN).
  * @param string $from Article name we are starting listing at.
  */
-function namespaceForm ( $namespace = NS_MAIN, $from = '' ) {
+function namespaceForm ( $namespace = NS_MAIN, $from = '', $languagefilter = false ) {
 	global $wgScript, $wgContLang, $wgLanguageTag, $wgLanguageCode;
 	$t = SpecialPage::getTitleFor( $this->name );
 	$align = $wgContLang->isRtl() ? 'left' : 'right';
@@ -75,15 +77,19 @@ function namespaceForm ( $namespace = NS_MAIN, $from = '' ) {
 				Xml::submitButton( wfMsg( 'allpagessubmit' ) ) .
 			"</td>
 			</tr>";
+	
 	if($wgLanguageTag) {
+		$languageSelector = Xml::languagefilterSelector($languagefilter, null);
+		if($languageSelector) {
 		$out .= "<tr>
 			<td align='$align'>" .
 				Xml::label( 'Language filter', 'languagefilter' ) .
 			"</td>
 			<td>" .
-				Xml::languagefilterSelector($wgLanguageCode, null).
+				$languageSelector .
 			"</td>
 			</tr>";
+		}
 	}
 	$out .= Xml::closeElement( 'table' );
 	$out .= Xml::closeElement( 'form' );
@@ -95,7 +101,7 @@ function namespaceForm ( $namespace = NS_MAIN, $from = '' ) {
 /**
  * @param integer $namespace (default NS_MAIN)
  */
-function showToplevel ( $namespace = NS_MAIN, $including = false ) {
+function showToplevel ( $namespace = NS_MAIN, $including = false, $languagefilter = false ) {
 	global $wgOut, $wgContLang;
 	$fname = "indexShowToplevel";
 	$align = $wgContLang->isRtl() ? 'left' : 'right';
@@ -106,6 +112,13 @@ function showToplevel ( $namespace = NS_MAIN, $including = false ) {
 	$dbr = wfGetDB( DB_SLAVE );
 	$out = "";
 	$where = array( 'page_namespace' => $namespace );
+	$languages = array();
+	if($languagefilter) {
+		$x = $dbr->select( 'langtags', 'language_id',
+			array( 'tag_name'=>array_unique(array_filter(split("[\r\n\t ,]+", $languagefilter))) ) );
+		while($language = $x->fetchObject()) $languages[] = $language->language_id;
+		if(count($languages)) $where['page_language'] = $languages;
+	} 
 
 	global $wgMemc;
 	$key = wfMemcKey( 'allpages', 'ns', $namespace );
@@ -140,11 +153,12 @@ function showToplevel ( $namespace = NS_MAIN, $including = false ) {
 				array_push( $lines, $s->page_title );
 			} else {
 				// Final chunk, but ended prematurely. Go back and find the end.
-				$endTitle = $dbr->selectField( 'page', 'MAX(page_title)',
-					array(
+				$conds = array(
 						'page_namespace' => $namespace,
 						$chunk
-					), $fname );
+				);
+				if($languages) $conds['page_language'] = $languages;
+				$endTitle = $dbr->selectField( 'page', 'MAX(page_title)', $conds, $fname );
 				array_push( $lines, $endTitle );
 				$done = true;
 			}
@@ -164,7 +178,7 @@ function showToplevel ( $namespace = NS_MAIN, $including = false ) {
 	// If there are only two or less sections, don't even display them.
 	// Instead, display the first section directly.
 	if( count( $lines ) <= 2 ) {
-		$this->showChunk( $namespace, '', $including );
+		$this->showChunk( $namespace, '', $including, $languagefilter );
 		return;
 	}
 
@@ -176,7 +190,7 @@ function showToplevel ( $namespace = NS_MAIN, $including = false ) {
 		$out .= $this->showline ( $inpoint, $outpoint, $namespace, false );
 	}
 	$out .= '</table>';
-	$nsForm = $this->namespaceForm ( $namespace, '', false );
+	$nsForm = $this->namespaceForm ( $namespace, '', $languagefilter );
 
 	# Is there more?
 	if ( $including ) {
@@ -222,7 +236,7 @@ function showline( $inpoint, $outpoint, $namespace = NS_MAIN ) {
  * @param integer $namespace (Default NS_MAIN)
  * @param string $from list all pages from this name (default FALSE)
  */
-function showChunk( $namespace = NS_MAIN, $from, $including = false ) {
+function showChunk( $namespace = NS_MAIN, $from, $including = false, $languagefilter = false ) {
 	global $wgOut, $wgUser, $wgContLang, $wgLanguageTag;
 
 	$fname = 'indexShowChunk';
@@ -233,6 +247,13 @@ function showChunk( $namespace = NS_MAIN, $from, $including = false ) {
 	$align = $wgContLang->isRtl() ? 'left' : 'right';
 
 	$n = 0;
+	$dbr = wfGetDB( DB_SLAVE );
+	$languages = array();
+	if($languagefilter) {
+		$x = $dbr->select( 'langtags', 'language_id',
+			array( 'tag_name'=>array_unique(array_filter(split("[\r\n\t ,]+", $languagefilter))) ) );
+		while($language = $x->fetchObject()) $languages[] = $language->language_id;
+	}
 
 	if ( !$fromList ) {
 		$out = wfMsgWikiHtml( 'allpagesbadtitle' );
@@ -247,12 +268,14 @@ function showChunk( $namespace = NS_MAIN, $from, $including = false ) {
 		$fields = array( 'page_namespace', 'page_title', 'page_is_redirect' );
 		if($wgLanguageTag) $fields[]='page_language';
 
-		$res = $dbr->select( 'page',
-			$fields,
-			array(
+		$conds = array(
 				'page_namespace' => $namespace,
 				'page_title >= ' . $dbr->addQuotes( $fromKey )
-			),
+		);
+		if($languages) $conds['page_language'] = $languages;
+		$res = $dbr->select( 'page',
+			$fields,
+			$conds,
 			$fname,
 			array(
 				'ORDER BY'  => 'page_title',
@@ -299,10 +322,12 @@ function showChunk( $namespace = NS_MAIN, $from, $including = false ) {
 		} else {
 			# Get the last title from previous chunk
 			$dbr = wfGetDB( DB_SLAVE );
+			$conds = array( 'page_namespace' => $namespace, 'page_title < '.$dbr->addQuotes($from) );
+			if($languages) $conds['page_language'] = $languages;
 			$res_prev = $dbr->select(
 				'page',
 				'page_title',
-				array( 'page_namespace' => $namespace, 'page_title < '.$dbr->addQuotes($from) ),
+				$conds,
 				$fname,
 				array( 'ORDER BY' => 'page_title DESC', 'LIMIT' => $this->maxPerPage, 'OFFSET' => ($this->maxPerPage - 1 ) )
 			);
@@ -318,7 +343,9 @@ function showChunk( $namespace = NS_MAIN, $from, $including = false ) {
 				if ( ! $dbr->implicitOrderby() ) {
 					$options['ORDER BY'] = 'page_title';
 				}
-				$reallyFirstPage_title = $dbr->selectField( 'page', 'page_title', array( 'page_namespace' => $namespace ), $fname, $options );
+				$conds = array( 'page_namespace' => $namespace );
+				if($languages) $conds['page_language'] = $languages;
+				$reallyFirstPage_title = $dbr->selectField( 'page', 'page_title', $conds, $fname, $options );
 				# Show the previous link if it s not the current requested chunk
 				if( $from != $reallyFirstPage_title ) {
 					$prevTitle =  Title::makeTitle( $namespace, $reallyFirstPage_title );
@@ -328,7 +355,7 @@ function showChunk( $namespace = NS_MAIN, $from, $including = false ) {
 			}
 		}
 
-		$nsForm = $this->namespaceForm ( $namespace, $from );
+		$nsForm = $this->namespaceForm ( $namespace, $from, $languagefilter );
 		$out2 = '<table style="background: inherit;" width="100%" cellpadding="0" cellspacing="0" border="0">';
 		$out2 .= '<tr valign="top"><td>' . $nsForm;
 		$out2 .= '</td><td align="' . $align . '" style="font-size: smaller; margin-bottom: 1em;">' .

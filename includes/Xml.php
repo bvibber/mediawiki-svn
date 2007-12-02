@@ -147,35 +147,30 @@ class Xml {
         public static function &languagefilterSelector($selected = '', $alllanguagefilters = null, $includehidden=false) {
                 global $wgContLang;
 
-                if( $selected !== '' ) {
-                        if( is_null( $selected ) ) {
-                                // No namespace selected; let exact match work without hitting Main
-                                $selected = '';
-                        } else {
-                                // Let input be numeric strings without breaking the empty match.
-                                $selected = intval( $selected );
-                        }
-                }
-                $s = "\n<select id='languagefilter' name='languagefilter' class='languagefilterselector'>\n";
-                $arr = $wgContLang->getFormattedLanguagefilters();
-                if( !is_null($alllanguagefilters) ) {
-                        $arr = array($alllanguagefilters => wfMsg('languagefiltersall')) + $arr;
-                }
-                foreach ($arr as $index => $name) {
-                        if ($index < NS_MAIN) continue;
+		if( is_null ($selected ) ) {
+			$selected = '';
+		}
+		$s = "\n<select id='languagefilter' name='languagefilter' class='languagefilterselector'>\n";
+		$arr = $wgContLang->getFormattedLanguagefilters();
+		if( !is_null($alllanguagefilters) ) {
+			$arr = array($alllanguagefilters => wfMsg('languagefiltersall')) + $arr;
+		}
+		if(!count($arr)) return false;
+		foreach ($arr as $index => $name) {
+			if ($index < NS_MAIN) continue;
 
-                        $name = $index !== 0 ? $name : wfMsg('blanklanguagefilter');
+                	$name = $index !== 0 ? $name : wfMsg('blanklanguagefilter');
 
-                        if ($index === $selected) {
-                                $s .= "\t" . self::element("option",
-                                                array("value" => $index, "selected" => "selected"),
-                                                $name) . "\n";
-                        } else {
-                                $s .= "\t" . self::element("option", array("value" => $index), $name) . "\n";
-                        }
-                }
-                $s .= "</select>\n";
-                return $s;
+                	if ($index === $selected) {
+				$s .= "\t" . self::element("option",
+						array("value" => $index, "selected" => "selected"),
+						$name) . "\n";
+			} else {
+				$s .= "\t" . self::element("option", array("value" => $index), $name) . "\n";
+			}
+		}
+		$s .= "</select>\n";
+		return $s;
         }
 
 
@@ -221,7 +216,7 @@ class Xml {
         public static function languagesSelector( $selected, $customisedOnly = true ) {
 		global $wgLang, $wgContLang;
 		return array(
-			Xml::label( wfMsg('yourlanguage'), 'wpUserLanguage' ),
+			Xml::label( wfMsg('yourlanguage'), 'wpUserLanguages' ),
 			Xml::tags( 'textarea',
 				array( 'id' => 'wpUserLanguages', 'name' => 'wpUserLanguages', 'rows' => 4 ),
 				$selected

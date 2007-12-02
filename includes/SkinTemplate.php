@@ -279,13 +279,12 @@ class SkinTemplate extends Skin {
 		$tpl->setRef( 'scriptpath', $wgScriptPath );
 		$tpl->setRef( 'serverurl', $wgServer );
 		$tpl->setRef( 'logopath', $wgLogo );
-		$tpl->set( "lang", $wgContLanguageCode=='und'?'':$wgContLanguageCode);
 		$tpl->set( 'dir', $wgLang->isRTL() ? "rtl" : "ltr" );
 		$tpl->set( 'rtl', $wgLang->isRTL() );
 		if($wgContLang->isRTL()!=$wgLang->isRTL()||1)
 		$tpl->set( 'contentdir', $wgContLang->isRTL() ? "rtl" : "ltr");
 		$tpl->set( 'lang', $wgContLang->getCode()=='und'?'':$wgContLang->getCode());
-		$tpl->set( 'langname', $wgContLang->getLanguageName( $wgContLanguageCode ) );
+		$tpl->set( 'langname', $wgContLang->getLanguageName( $wgContLang->getCode() ) );
 		$tpl->set( 'showjumplinks', $wgUser->getOption( 'showjumplinks' ) );
 		$tpl->set( 'username', $wgUser->isAnon() ? NULL : $this->username );
 		$tpl->setRef( 'userpage', $this->userpage);

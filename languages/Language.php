@@ -174,12 +174,15 @@ class Language {
 	}
 
         function getFormattedLanguagefilters() {
-		$ns=array(''=>'Languages I speak and new communities');
-		$langs = $this->getMessageFromDB('languagefilters');
-		foreach($ns as $k => $v) {
-                        $ns[$k] = strtr($v, '_', ' ');
+		$filters=array(''=>'Languages I speak and new communities');
+		$languages = $this->getMessageFromDB('languagefilters');
+		$dbr = wfGetDB( DB_SLAVE );
+		$x = $dbr->select( 'langtags', array('tag_name','display_name'),
+			array( 'tag_name'=>array_unique(array_filter(split("[\r\n\t ,]+", $languages))) ) );
+		while($language = $x->fetchObject()) {
+                        $filters[$language->tag_name] = $language->display_name;
                 }
-                return $ns;
+                return count($filters) > 1 ? $filters : array();
         }
 
 	/**
@@ -377,7 +380,6 @@ class Language {
 			# User language
 			return wfMsg( $msg );
 		} else {
-			# Neither, get from localisation
 			return $this->getMessage( $msg );
 		}
 	}
@@ -386,7 +388,7 @@ class Language {
 		global $wgLanguageNames;
 		if ( ! array_key_exists( $code, $wgLanguageNames ) ) {
 			global $wgLanguageTag; if($wgLanguageTag) {
-				return ''; global $dbr;
+				return ''; $dbr = wfGetDB( DB_SLAVE );
 				$name=$dbr->fetchObject('language',array('iso639_3'=>$name));
 				$wgLanguageNames[$code]=$name?$name:''; 
 			}

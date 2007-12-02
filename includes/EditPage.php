@@ -1205,7 +1205,8 @@ class EditPage {
 
 		if($this->mTitle->mNamespace!=NS_SET && $this->mTitle->mNamespace!=NS_IMAGE && $this->mTitle->mNamespace != NS_MEDIAWIKI && !$this->mTitle->isTalkPage()) {
 			$set_guess = $this->mTitle->getText();
-			$metadata .= wfMsgWikiHtml( 'otherlanguages' );
+			// $metadata .= wfMsgWikiHtml( 'otherlanguages' );
+			$metadata .= '<label for="wpRadioSet">'.wfMsg( 'otherlanguages' ).':'.'</label>';
 			if(!strlen($this->textset)) {
 				$guess = new Article( Title::newFromText ( $set_guess, NS_SET ) );
 				if($guess->exists()) {
@@ -1218,8 +1219,10 @@ class EditPage {
 				else {
 					$this->textset = '';
 				} 
-				$metadata .= "<input type='radio' name='wpRadioSet' value='{$set_id}'> Use the list below (or) ";
-				$metadata .= "<input type='radio' name='wpRadioSet' value=''> Use the list called ";
+				if(strlen($this->textset)) {
+					$metadata .= "<input type='radio' name='wpRadioSet' value='{$set_id}'> Use the list below (or) ";
+					$metadata .= "<input type='radio' name='wpRadioSet' value=''> Use the list called ";
+				} else $metadata .= "<input type='checkbox' name='wpRadioSet' value=''> Create a list called ";
 				$metadata .= "<input type='text' name='wpTextboxSet' value='$set_guess'> ";
 			}
 			$metadata .= "<textarea tabindex=7 id='wpTextboxSet' name=\"wpTextboxSet\" rows='4' cols='{$cols}' wrap='virtual'>"
