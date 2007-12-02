@@ -1328,6 +1328,12 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'group-steward-member' => 'mwaisse-manaedjeu tot avå',
 ),
 
+'wuu' => array(
+	'makesysopname'        => '用户个名字：',
+	'rights'               => '权限:',
+	'set_user_rights'      => '设定用户权限',
+),
+
 'yue' => array(
 	'makesysoptitle'       => '整一位用戶做操作員',
 	'makesysoptext'        => '呢一個表格係畀事務員用嘅，去轉普通嘅用戶到管理員。

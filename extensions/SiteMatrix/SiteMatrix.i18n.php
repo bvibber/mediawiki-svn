@@ -296,6 +296,10 @@ $wgSiteMatrixMessages['wa'] = array(
 	'sitematrix-project' => 'No do pordjet, loyén eterpordjet eyet loyén eterwiki',
 	'sitematrix-others' => 'Ôtes pordjes Wikimedia',
 );
+$wgSiteMatrixMessages['wuu'] = array(
+	"sitematrix" => "维基媒体基金会维基列表",
+	'sitematrix-language' => '闲话',
+);
 $wgSiteMatrixMessages['yue'] = array(
 	"sitematrix" => "Wikimedia嘅wiki一覽",
 	'sitematrix-language' => '語言',

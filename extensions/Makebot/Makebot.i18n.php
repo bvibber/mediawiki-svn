@@ -957,6 +957,12 @@ function efMakeBotMessages() {
 	'makebot-logentryrevoke'  => 'a rsaetchî l\' livea d\' robot da [[$1]]',
 ),
 
+/* Wu */
+'wuu' => array(
+	'makebot-username'        => '用户名：',
+	'makebot-logpage'         => '机器人状态日志',
+),
+
 /* Cantonese (Hillgentleman, Shinjiman) */
 'yue' => array(
 	'makebot'                 => '畀或收番機械人身份',

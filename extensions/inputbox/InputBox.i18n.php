@@ -520,6 +520,11 @@ function efInputBoxMessages() {
 	'createarticle' => 'Ahiver årtike',
 ),
 
+'wuu' => array(
+	'searchfulltext'          => '全文搜寻',
+	'createarticle'           => '建立新文章',
+),
+
 'yue' => array(
 	'inputbox-error-no-type'  => '你重未指定開輸入盒嘅指定類型。',
 	'inputbox-error-bad-type' => '輸入盒類型"$1"認唔到。請指定"create"、"comment"、"search"或"search2"。',

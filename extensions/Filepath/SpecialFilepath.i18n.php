@@ -286,6 +286,11 @@ $wgFilepathMessages['sv'] = array(
 	
 	Ange filens namn utan prefixet "{{ns:image}}:".',
 );
+$wgFilepathMessages['wuu'] = array(
+	'filepath'        => '文件路径',
+	'filepath_page'   => '文件：',
+	'filepath_submit' => '路径',
+);
 $wgFilepathMessages['yue'] = array(
 	'filepath'        => '檔案路徑',
 	'filepath_page'   => '檔名：',
