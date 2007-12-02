@@ -332,7 +332,7 @@ $messages = array(
 'bugreportspage'    => 'Project:Feilmeldinger',
 'copyright'         => 'Innholdet er tilgjengelig under $1.',
 'copyrightpagename' => 'Opphavsrett',
-'copyrightpage'     => 'Project:Opphavsrett',
+'copyrightpage'     => '{{ns:project}}:Opphavsrett',
 'currentevents'     => 'Aktuelt',
 'currentevents-url' => 'Project:Aktuelt',
 'disclaimers'       => 'Opphavsrett',
@@ -382,7 +382,7 @@ $messages = array(
 'page-rss-feed'           => '«$1» RSS-føde',
 'page-atom-feed'          => '«$1» Atom-føde',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Artikkel',
 'nstab-user'      => 'Brukerside',
 'nstab-media'     => 'Mediaside',
@@ -500,6 +500,7 @@ Brukerkontoen din har blitt opprettet. Ikke glem å endre [[Special:Preferences|
 'prefs-help-realname'        => '* Virkelig navn (valgfritt): dersom du velger å oppgi navnet, vil det bli brukt til å kreditere deg for ditt arbeid.',
 'loginerror'                 => 'Innloggingsfeil',
 'prefs-help-email'           => '* E-post (valgfritt): Muliggjør at andre kan kontakte deg uten at identiteten din blir avslørt.',
+'prefs-help-email-required'  => 'E-postadresse er påkrevd.',
 'nocookiesnew'               => 'Din brukerkonto er nå opprettet, men du har ikke logget på. {{SITENAME}} bruker informasjonskapsler («cookies») for å logge brukere på. Du har slått dem av. Slå dem p åfor å kunne logge på med ditt nye brukernavn og passord.',
 'nocookieslogin'             => '{{SITENAME}} bruker informasjonskapsler («cookies») for å logge brukere på. Du har slått dem av. Slå dem på og prøv igjen.',
 'noname'                     => 'Du har ikke oppgitt et gyldig brukernavn.',
@@ -530,6 +531,10 @@ Dersom noen andre gjorde denne forespørselen eller om du kom på passordet og i
 'invalidemailaddress'        => 'E-postadressa kan ikke aksepteres, fordi den er ugyldig formatert. Skriv inn en fungerende e-postadresse eller tøm feltet.',
 'accountcreated'             => 'Brukerkonto opprettet',
 'accountcreatedtext'         => 'Brukerkonto for $1 har blitt opprettet.',
+'createaccount-title'        => 'Kontoopretting på {{SITENAME}}',
+'createaccount-text'         => 'Noen ($1) opprettet en konto for $2 på {{SITENAME}} ($4). Passordet for «$2» er «$3». Du burde logge inn og endre passordet nå.
+
+Du kan ignorere denne beskjeden dersom kontoen feilaktig ble opprettet.',
 'loginlanguagelabel'         => 'Språk: $1',
 
 # Password reset dialog
@@ -588,7 +593,7 @@ Blokkeringen ble utført av $1. Grunnen som ble oppgitt var ''$2''.
 
 Blokkeringen utgår: $6
 
-Du kan kontakte $1 eller en annen [[{{mediaWiki:Grouppage-sysop}}|administrator]] for å diskutere blokkeringen. Du kan ikke bruke «E-post til denne brukeren-funksjonen med mindre du har oppgitt en gyldig e-postadresse i [[Special:Preferences|innstillingene dine]]. Din nåværende IP-adresse er $3, og blokkerings-ID-en er #$5. Vennligst inkluder begge disse ved henvendelser.",
+Du kan kontakte $1 eller en annen [[{{MediaWiki:Grouppage-sysop}}|administrator]] for å diskutere blokkeringen. Du kan ikke bruke «E-post til denne brukeren-funksjonen med mindre du har oppgitt en gyldig e-postadresse i [[Special:Preferences|innstillingene dine]]. Din nåværende IP-adresse er $3, og blokkerings-ID-en er #$5. Vennligst inkluder begge disse ved henvendelser.",
 'autoblockedtext'           => "Din IP-adresse har blitt automatisk blokkert fordi den ble brukt av en annen bruker som ble blokkert av $1.
 Den oppgitte grunnen var:
 
@@ -601,6 +606,7 @@ Du kan kontakte $1 eller en av de andre [[{{MediaWiki:Grouppage-sysop}}|administ
 Merk at du ikke kan bruke «E-post til denne brukeren»-funksjonen med mindre du har registrert en gyldig e-postadresse i [[Special:Preferences|innstillingene dine]].
 
 Din blokkerings-ID er $5. Vennligst inkluder denne ID-en i din forespørsel.",
+'blockednoreason'           => 'ingen grunn gitt',
 'blockedoriginalsource'     => "Kilden til '''$1''' vises nedenfor:",
 'blockededitsource'         => "Teksten i '''dine endringer''' på '''$1''' vises nedenfor:",
 'whitelistedittitle'        => 'Innlogging kreves for å redigere',
@@ -619,15 +625,16 @@ Din blokkerings-ID er $5. Vennligst inkluder denne ID-en i din forespørsel.",
 'accmailtitle'              => 'Passord sendt',
 'accmailtext'               => 'Passordet for «$1» har blitt sendt til $2.',
 'newarticle'                => '(ny)',
-'newarticletext'            => "Du har fulgt en lenke til en side som ikke finnes ennå. For å opprette siden, start å skrive i boksen under (se [[{{MediaWiki:helppage}}|hjelpesiden]] for mer informasjon). Om du kom hit ved en feil, bare trykk på nettleserens '''tilbake'''-knapp.",
+'newarticletext'            => "Du har fulgt en lenke til en side som ikke finnes ennå. For å opprette siden, start å skrive i boksen under (se [[{{MediaWiki:Helppage}}|hjelpesiden]] for mer informasjon). Om du kom hit ved en feil, bare trykk på nettleserens '''tilbake'''-knapp.",
 'anontalkpagetext'          => "----
 ''Dette er en diskusjonsside for en anonym bruker som ikke har opprettet konto eller ikke er logget inn. Vi er derfor nødt til å bruke den numeriske IP-adressa til å identifisere ham eller henne. En IP-adresse kan være delt mellom flere brukere. Hvis du er en anonym bruker og synes at du har fått irrelevante kommentarer på en slik side, [[Special:Userlogin|logg på]] så vi unngår framtidige forvekslinger med andre anonyme brukere.''",
 'noarticletext'             => 'Det er ikke noe tekst på denne siden. Du kan [[Special:Search/{{PAGENAME}}|søke etter siden]] i andre sider, eller [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigere siden].',
+'userpage-userdoesnotexist' => 'Brukerkontoen «$1» er ikke registrert. Sjekk om du ønsker å opprette/redigere denne siden.',
 'clearyourcache'            => "'''NB:''' Etter å ha lagret må du tømme nettleserens mellomlager («cache») for å kunne se endringene: '''Mozilla/Safari/Konqueror:''' hold nede ''Shift'' mens du klikker på ''Reload'' (eller trykk ''Ctrl-Shift-R''), '''IE:''' trykk ''Ctrl-F5'', '''Opera:''' trykk ''F5''.",
 'usercssjsyoucanpreview'    => '<strong>Tips:</strong> Bruk «Forhåndsvisning»-knappen for å teste din nye CSS/JS før du lagrer.',
 'usercsspreview'            => "'''Husk at dette bare er en forhåndsvisning av din bruker-CSS og at den ikke er lagret!'''",
 'userjspreview'             => "'''Husk at dette bare er en test eller forhåndsvisning av ditt bruker-JavaScript, og det ikke er lagret!'''",
-'userinvalidcssjstitle'     => "'''Advarsel:''' Det finnes ikke noe utseende ved navn «$1». Husk at .css- og .js-sider bruker titler i små bokstaver, for eksempel User:Eksempel/monobook.css, ikke User:Eksempel/Monobook.css",
+'userinvalidcssjstitle'     => "'''Advarsel:''' Det finnes ikke noe utseende ved navn «$1». Husk at .css- og .js-sider bruker titler i små bokstaver, for eksempel {{ns:user}}:Eksempel/monobook.css, ikke {{ns:user}}:Eksempel/Monobook.css",
 'updated'                   => '(Oppdatert)',
 'note'                      => '<strong>Merk:</strong>',
 'previewnote'               => '<strong>Dette er bare en forhåndsvisning; endringer har ikke blitt lagret!</strong>',
@@ -764,6 +771,28 @@ Andre administratorer på denne wikien vil fortsatt kunne se det skjulte innhold
 'oversightlog'    => 'Overoppsynslogg',
 'overlogpagetext' => 'Under er en liste over de nyligste slettinger og blokkeringer som involverer innhold skjult for administratorer. Se [[Special:Ipblocklist|IP-blokkeringslista]] for nåværende bannlysninger og blokkeringer.',
 
+# History merging
+'mergehistory'         => 'Flett sidehistorikker',
+'mergehistory-header'  => "Denne siden lar deg flette historikken til to sider. Forsikre deg om at denne endringen vil opprettholde historisk sidekontinuitet.
+
+'''I hvert fall den siste revisjonen til kildesiden må forbli.'''",
+'mergehistory-box'     => 'Flett historikken til to sider:',
+'mergehistory-from'    => 'Kildeside:',
+'mergehistory-into'    => 'Målside:',
+'mergehistory-list'    => 'Flettbar redigeringshistorikk',
+'mergehistory-merge'   => 'Følgende revisjoner av [[:$1]] kan flettes til [[:$2]]. Du kan velge å flette kun de revisjonene som kom før tidspunktet gitt i tabellen. Merk at bruk av navigasjonslenkene vil resette denne kolonnen.',
+'mergehistory-go'      => 'Vis flettbare redigeringer',
+'mergehistory-submit'  => 'Flett revisjoner',
+'mergehistory-empty'   => 'Ingen revisjoner kan flettes',
+'mergehistory-success' => '$3 revisjoner av [[:$1]] ble flettet til [[:$2]].',
+'mergehistory-fail'    => 'Kunne ikke utføre historikkfletting; vennligst sjekk siden og tidsparameterne igjen.',
+
+# Merge log
+'mergelog'           => 'Flettingslogg',
+'pagemerge-logentry' => 'flettet [[$1]] til [[$2]] (revisjoner fram til $3)',
+'revertmerge'        => 'Omgjør fletting',
+'mergelogpagetext'   => 'Nedenfor er en liste over de nyligste flettingene av sidehistorikker.',
+
 # Diffs
 'history-title'             => 'Revisjonshistorikk for «$1»',
 'difference'                => '(Forskjeller mellom versjoner)',
@@ -778,7 +807,7 @@ Andre administratorer på denne wikien vil fortsatt kunne se det skjulte innhold
 
 # Search results
 'searchresults'         => 'Søkeresultater',
-'searchresulttext'      => 'For mer informasjon om søking i {{SITENAME}}, se [[{{MediaWiki:helppage}}|{{int:help}}]].',
+'searchresulttext'      => 'For mer informasjon om søking i {{SITENAME}}, se [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => 'Du søkte på «[[$1]]».',
 'searchsubtitleinvalid' => 'For forespørsel "$1"',
 'noexactmatch'          => "'''Det er ingen side med tittelen «$1».''' Du kan [[:$1|opprette siden]].",
@@ -887,9 +916,9 @@ Mangler kjørbar texvc; vennligst se math/README for å konfigurerer.',
 'group-bureaucrat-member'    => 'byråkrat',
 
 'grouppage-autoconfirmed' => '{{ns:project}}:Autobekreftede brukere',
-'grouppage-bot'           => 'Project:Roboter',
-'grouppage-sysop'         => 'Project:Administratorer',
-'grouppage-bureaucrat'    => 'Project:Byråkrater',
+'grouppage-bot'           => '{{ns:project}}:Roboter',
+'grouppage-sysop'         => '{{ns:project}}:Administratorer',
+'grouppage-bureaucrat'    => '{{ns:project}}:Byråkrater',
 
 # User rights log
 'rightslog'      => 'Rettighetslogg',
@@ -942,10 +971,10 @@ Mangler kjørbar texvc; vennligst se math/README for å konfigurerer.',
 'uploadtext'                  => "Bruk skjemaet under for å laste opp filer. For å se eller søke i tidligere opplastede filer, gå til [[Special:Imagelist|fillista]]. Opplastinger lagres også i [[Special:Log/upload|opplastingsloggen]].
 
 For å inkludere et bilde på en side, bruk ei slik lenke:
-*'''<nowiki>[[</nowiki>{{ns:Image}}:Filnavn.jpg<nowiki>]]</nowiki>'''
-*'''<nowiki>[[</nowiki>{{ns:Image}}:Filnavn.png|Alternativ tekst<nowiki>]]</nowiki>'''
+*'''<nowiki>[[</nowiki>{{ns:image}}:Filnavn.jpg<nowiki>]]</nowiki>'''
+*'''<nowiki>[[</nowiki>{{ns:image}}:Filnavn.png|Alternativ tekst<nowiki>]]</nowiki>'''
 For å lenke direkte til bildet, skriv:
-*'''<nowiki>[[</nowiki>{{ns:Media}}:Filnavn.ogg<nowiki>]]</nowiki>'''",
+*'''<nowiki>[[</nowiki>{{ns:media}}:Filnavn.ogg<nowiki>]]</nowiki>'''",
 'uploadlog'                   => 'opplastingslogg',
 'uploadlogpage'               => 'Opplastingslogg',
 'uploadlogpagetext'           => 'Her er en liste over de siste opplastede filene.',
@@ -972,7 +1001,7 @@ For å lenke direkte til bildet, skriv:
 Navnet på din fil: <strong><tt>$1</tt></strong><br />
 Navn på eksisterende fil: <strong><tt>$2</tt></strong><br />
 Den eneste forskjellen ligger i store/små bokstaver i filendelsen. Vennligst sjekk filene for likheter.',
-'fileexists-thumb'            => "'''<center>Eksisterende bilde</center>'''",
+'fileexists-thumb'            => "<center>'''Eksisterende bilde'''</center>",
 'fileexists-thumbnail-yes'    => 'Filen ser ut til å være et bilde av redusert størrelse. Vennligst sjekk filen <strong><tt>$1</tt></strong>.<br />
 Om filen du har sjekket er det samme bildet, men i opprinnelig størrelse, er det ikke nødvendig å laste opp en ekstra fil.',
 'file-thumbnail-no'           => 'Filnavnet begynner med <strong><tt>$1</tt></strong>. Det virker som om det er et bilde av redusert størrelse. Om du har dette bildet i stor utgave, last opp det, eller endre filnavnet på denne filen.',
@@ -1109,6 +1138,10 @@ PICT # div.
 'unusedtemplatestext' => 'Denne siden lister opp alle sider i malnavnerommet som ikke er inkludert på en annen side. Husk å sjekke for andre slags lenker til malen før du sletter den.',
 'unusedtemplateswlh'  => 'andre lenker',
 
+# Random page
+'randompage'         => 'Tilfeldig side',
+'randompage-nopages' => 'Det er ingen sider i dette navnerommet.',
+
 # Random redirect
 'randomredirect'         => 'Tilfeldig omdirigering',
 'randomredirect-nopages' => 'Det er ingen omdirigeringer i dette navnerommet.',
@@ -1171,8 +1204,6 @@ Det har vært totalt '''$3''' sidevisninger, og '''$4''' redigeringer siden wiki
 'mostrevisions'           => 'Artikler med flest revisjoner',
 'allpages'                => 'Alle sider',
 'prefixindex'             => 'Prefiksindeks',
-'randompage'              => 'Tilfeldig side',
-'randompage-nopages'      => 'Det er ingen sider i dette navnerommet.',
 'shortpages'              => 'Korte sider',
 'longpages'               => 'Lange sider',
 'deadendpages'            => 'Blindveisider',
@@ -1342,7 +1373,7 @@ Tilbakemeldinger og videre assistanse:
 'confirmdelete'               => 'Bekreft sletting',
 'deletesub'                   => '(Sletter «[[$1]]»)',
 'historywarning'              => 'Advarsel: Siden du er i ferd med å slette har en historikk:',
-'confirmdeletetext'           => 'Du holder på å slette en side eller et bilde sammen med historikken. Bilder som slettes kan ikke gjenopprettes, men alle andre sider som slettes på denne måten kan gjenopprettes. Bekreft at du virkelig vil slette denne siden, og at du gjør det i samsvar med [[{{MediaWiki:policy-url}}|retningslinjene]].',
+'confirmdeletetext'           => 'Du holder på å slette en side eller et bilde sammen med historikken. Bilder som slettes kan ikke gjenopprettes, men alle andre sider som slettes på denne måten kan gjenopprettes. Bekreft at du virkelig vil slette denne siden, og at du gjør det i samsvar med [[{{MediaWiki:Policy-url}}|retningslinjene]].',
 'actioncomplete'              => 'Gjennomført',
 'deletedtext'                 => '«[[$1]]» er slettet. Se $2 for en oversikt over de siste slettingene.',
 'deletedarticle'              => 'slettet «[[$1]]»',
@@ -1351,6 +1382,12 @@ Tilbakemeldinger og videre assistanse:
 'deletionlog'                 => 'slettingslogg',
 'reverted'                    => 'Gjenopprettet en tidligere versjon',
 'deletecomment'               => 'Begrunnelse for sletting',
+'deleteotherreason'           => 'Annen grunn:',
+'deletereasonotherlist'       => 'Annen grunn',
+'deletereason-dropdown'       => '* Vanlige grunner for sletting
+** På forfatters etterspørsel
+** Opphavsrettsbrudd
+** Hærverk',
 'rollback'                    => 'Fjern redigeringer',
 'rollback_short'              => 'Tilbakestill',
 'rollbacklink'                => 'tilbakestill',
@@ -1417,6 +1454,7 @@ på siden.',
 'undeletehistorynoadmin'       => 'Denne artikkelen har blitt slettet. Grunnen for slettingen vises i oppsummeringen nedenfor, sammen med detaljer om brukerne som redigerte siden før den ble slettet. Teksten i disse slettede revisjonene er kun tilgjengelig for administratorer.',
 'undelete-revision'            => 'Slettet revisjon av $1 fra $2:',
 'undeleterevision-missing'     => 'Ugyldig eller manglende revisjon. Du kan ha en ødelagt lenke, eller revisjonen har blitt fjernet fra arkivet.',
+'undelete-nodiff'              => 'Ingen tidligere revisjoner funnet.',
 'undeletebtn'                  => 'Gjenopprett',
 'undeletereset'                => 'Resett skjema',
 'undeletecomment'              => 'Forklaring:',
@@ -1487,7 +1525,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => 'Blokker IP-adresse',
-'blockiptext'                 => 'Bruk skjemaet under for å blokkere en IP-adresses tilgang til å redigere artikler. Dette må kun gjøres for å forhindre hærverk, og i overensstemmelse med [[{{MediaWiki:policy-url}}|retningslinjene]]. Fyll ut en spesiell begrunnelse under.',
+'blockiptext'                 => 'Bruk skjemaet under for å blokkere en IP-adresses tilgang til å redigere artikler. Dette må kun gjøres for å forhindre hærverk, og i overensstemmelse med [[{{MediaWiki:Policy-url}}|retningslinjene]]. Fyll ut en spesiell begrunnelse under.',
 'ipaddress'                   => 'IP-adresse',
 'ipadressorusername'          => 'IP-adresse eller brukernavn',
 'ipbexpiry'                   => 'Utløper',
@@ -1552,9 +1590,11 @@ $1',
 'range_block_disabled'        => 'Muligheten til å blokkere flere IP-adresser om gangen er slått av.',
 'ipb_expiry_invalid'          => 'Ugyldig utløpstid.',
 'ipb_already_blocked'         => '«$1» er allerede blokkert',
-'ip_range_invalid'            => 'Ugyldig IP-rad.',
-'proxyblocker'                => 'Proxyblokker',
 'ipb_cant_unblock'            => 'Feil: Blokk-ID $1 ikke funnet. Kan ha blitt avblokkert allerede.',
+'ip_range_invalid'            => 'Ugyldig IP-rad.',
+'blockme'                     => 'Blokkert meg',
+'proxyblocker'                => 'Proxyblokker',
+'proxyblocker-disabled'       => 'Denne funksjonen er slått av.',
 'proxyblockreason'            => 'IP-adressa di har blitt blokkert fordi den er en åpen proxy. Kontakt internettleverandør eller teknisk støtte og informer dem om dette alvorlige sikkerhetsproblemet.',
 'proxyblocksuccess'           => 'Utført.',
 'sorbsreason'                 => 'IP-adressa di er oppgitt som åpen proxy i DNSBL.',
@@ -1656,7 +1696,7 @@ For å eksportere sider, skriv inn titler i tekstboksen under, én tittel per li
 'allmessagesdefault'        => 'Standardtekst',
 'allmessagescurrent'        => 'Nåværende tekst',
 'allmessagestext'           => 'Dette er en liste over tilgjengelige systemmeldinger i MediaWiki-navnerommet.',
-'allmessagesnotsupportedDB' => "''Special:Allmessages'' kan ikke brukes fordi '''\$wgUseDatabaseMessages''' er slått av.",
+'allmessagesnotsupportedDB' => "''{{ns:special}}:Allmessages'' kan ikke brukes fordi '''\$wgUseDatabaseMessages''' er slått av.",
 'allmessagesfilter'         => 'Filter:',
 'allmessagesmodified'       => 'Vis kun endrede',
 
@@ -1824,8 +1864,6 @@ For å eksportere sider, skriv inn titler i tekstboksen under, én tittel per li
 'markedaspatrollederror'              => 'Kan ikke merke som godkjent',
 'markedaspatrollederrortext'          => 'Du må spesifisere en versjon å merke som godkjent.',
 'markedaspatrollederror-noautopatrol' => 'Du kan ikke merke dine egne endringer som godkjente.',
-'nppatroldisabled'                    => 'Patruljering av nye sider slått av',
-'nppatroldisabledtext'                => 'Funksjonen Patruljering av nye sider er for tiden slått av.',
 
 # Patrol log
 'patrol-log-page' => 'Godkjenningslogg',

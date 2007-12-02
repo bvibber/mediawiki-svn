@@ -256,16 +256,16 @@ pe titlul secţiunii (JavaScript)',
 'bugreportspage'    => 'Project:Rapoarte probleme',
 'copyright'         => 'Conţinutul este disponibil sub $1.',
 'copyrightpagename' => 'Drepturi de autor în {{SITENAME}}',
-'copyrightpage'     => 'Project:Drepturi de autor',
+'copyrightpage'     => '{{ns:project}}:Drepturi de autor',
 'currentevents'     => 'Discută la cafenea',
 'currentevents-url' => 'Project:Cafenea',
 'disclaimers'       => 'Termeni',
 'disclaimerpage'    => 'Project:Termeni',
 'edithelp'          => 'Ajutor pentru modificare',
-'edithelppage'      => 'Project:Cum să modifici o pagină',
+'edithelppage'      => 'Help:Cum să modifici o pagină',
 'faq'               => 'Întrebări frecvente',
 'faqpage'           => 'Project:Întrebări frecvente',
-'helppage'          => 'Project:Ajutor',
+'helppage'          => 'Help:Ajutor',
 'mainpage'          => 'Pagina principală',
 'policy-url'        => 'Project:Politică',
 'portal'            => 'Portalul comunităţii',
@@ -499,7 +499,7 @@ Adresa dumneavoastră IP este $3, iar identificatorul de blocare este #$5.<br />
 Blocarea expiră la: $6<br />
 Intended blockee: $7
 
-Dacă nu înţelegeţi motivul blocării vă invităm să consultaţi [[{{MediaWiki:policy-url}}|regulamentul de blocare]]. În cazul în care vă consideraţi nedreptăţit îl puteţi contacta pe $1 sau pe unul dintre ceilalţi [[{{MediaWiki:grouppage-sysop}}|administratori]] pentru a explica situaţia.
+Dacă nu înţelegeţi motivul blocării vă invităm să consultaţi [[{{MediaWiki:Policy-url}}|regulamentul de blocare]]. În cazul în care vă consideraţi nedreptăţit îl puteţi contacta pe $1 sau pe unul dintre ceilalţi [[{{MediaWiki:Grouppage-sysop}}|administratori]] pentru a explica situaţia.
 
 '''Blocarea nu se referă la citirea paginilor {{SITENAME}}, ci doar la modificarea lor.''' 
 
@@ -512,7 +512,7 @@ Motivul blocării este:
 Blcoarea expiră la: $6
 
 Puteţi contacta pe $1 sau pe unul dintre ceilalţi
-[[{{MediaWiki:grouppage-sysop}}|administratori]] pentru a discuta situaţia.
+[[{{MediaWiki:Grouppage-sysop}}|administratori]] pentru a discuta situaţia.
 
 Nu veţi putea folosi opţiunea de "trimite e-mail" decât dacă aveţi înregistrată o adresă de e-mail validă la [[Special:Preferences|preferinţe]] şi nu sunteţi blocat la folosirea ei.
 
@@ -534,14 +534,14 @@ Identificatorul dumneavoastră de blocare este $5. Vă rugăm să îl includeţi
 'accmailtitle'              => 'Parola a fost trimisă.',
 'accmailtext'               => "Parola pentru '$1' a fost trimisă la $2.",
 'newarticle'                => '(Nou)',
-'newarticletext'            => 'Ai ajuns la o pagină care nu există. Pentru a o crea, începe să scrii în caseta de mai jos (vezi [[{{MediaWiki:helppage}}|pagina de ajutor]] pentru mai multe informaţii). Dacă ai ajuns aici din greşeală, întoarce-te folosind controalele browser-ului tău',
+'newarticletext'            => 'Ai ajuns la o pagină care nu există. Pentru a o crea, începe să scrii în caseta de mai jos (vezi [[{{MediaWiki:Helppage}}|pagina de ajutor]] pentru mai multe informaţii). Dacă ai ajuns aici din greşeală, întoarce-te folosind controalele browser-ului tău',
 'anontalkpagetext'          => "---- ''Aceasta este pagina de discuţii pentru un utilizator care nu şi-a creat un cont încă, sau care nu s-a autentificat. De aceea trebuie să folosim adresă IP pentru a identifica această persoană. O adresă IP poate fi folosită în comun de mai mulţi utilizatori. Dacă sunteţi un astfel de utilizator şi credeţi că vă sunt adresate mesaje irelevante, vă rugăm să [[Special:Userlogin|vă creaţi un cont sau să vă autentificaţi]] pentru a evita confuzii cu alţi utilizatori anonimi în viitor.''",
 'noarticletext'             => '{{SITENAME}} nu are încă un articol referitor la această pagină. Puteţi [[Special:Search/{{PAGENAME}}|căuta titlul paginii cu acest nume]] în alte pagini sau [{{fullurl:{{FULLPAGENAME}}|action=edit}} edita această pagină].',
 'clearyourcache'            => "'''Notă:''' După salvare, trebuie să treceţi peste cache-ul browser-ului pentru a vedea modificările. '''Mozilla/Safari/Konqueror:''' ţineţi apăsat ''Shift'' în timp ce apăsaţi ''Reload'' (sau apăsaţi ''Ctrl-Shift-R''), '''IE:''' apăsaţi ''Ctrl-F5'', '''Opera:''' apăsaţi ''F5''.",
 'usercssjsyoucanpreview'    => "<strong>Sfat:</strong> Foloseşte butonul 'Arată previzualizare' pentru a testa noul tău css/js înainte de a salva.",
 'usercsspreview'            => "'''Reţine că urmăreşti doar o previzualizare a css-ului tău de utilizator, acesta nu este încă salvat!'''",
 'userjspreview'             => "'''Reţine că urmăreşti doar un test/o previzualizare a javascript-ului tău de utilizator, acesta nu este încă salvat!'''",
-'userinvalidcssjstitle'     => '<b>Avertizare:</b> Nu există skin "$1". Aminteşte-ţi că paginile .css and .js specifice utilizatorilor au titluri care încep cu literă mică, de exemplu User:Foo/monobook.css în comparaţie cu User:Foo/Monobook.css.',
+'userinvalidcssjstitle'     => '<b>Avertizare:</b> Nu există skin "$1". Aminteşte-ţi că paginile .css and .js specifice utilizatorilor au titluri care încep cu literă mică, de exemplu {{ns:user}}:Foo/monobook.css în comparaţie cu {{ns:user}}:Foo/Monobook.css.',
 'updated'                   => '(Actualizat)',
 'note'                      => '<strong>Notă:</strong>',
 'previewnote'               => 'Aceasta este doar o previzualizare! Pentru a salva pagina în forma actuală, descrieţi succint modificările efectuate şi apăsaţi butonul <strong>Salvează pagina</strong>.',
@@ -769,9 +769,9 @@ Căutări după $3 $9',
 'group-sysop-member'      => 'Administrator',
 'group-bureaucrat-member' => 'Birocrat',
 
-'grouppage-bot'        => 'Project:Boţi',
-'grouppage-sysop'      => 'Project:Administratori',
-'grouppage-bureaucrat' => 'Project:Birocraţi',
+'grouppage-bot'        => '{{ns:project}}:Boţi',
+'grouppage-sysop'      => '{{ns:project}}:Administratori',
+'grouppage-bureaucrat' => '{{ns:project}}:Birocraţi',
 
 # User rights log
 'rightslog'      => 'Raportul drepturilor de utilizator',
@@ -819,14 +819,14 @@ $3',
 'uploadnologintext'           => 'Trebuie să fiţi [[Special:Userlogin|autentificat]] pentru a putea trimite fişiere.',
 'upload_directory_read_only'  => 'Directorul de trimitere ($1) nu are drepturi de scriere de către server.',
 'uploaderror'                 => 'Eroare la trimitere fişier',
-'uploadtext'                  => "<strong>STOP!</strong> Înainte de a trimite un fişier aici, te rugăm să citeşti şi să respecţi [[{{MediaWiki:policy-url}}|politica de utilizare a imaginilor]].<br />
+'uploadtext'                  => "<strong>STOP!</strong> Înainte de a trimite un fişier aici, te rugăm să citeşti şi să respecţi [[{{MediaWiki:Policy-url}}|politica de utilizare a imaginilor]].<br />
 Pentru a vizualiza sau căuta imagini deja trimise, mergi la [[Special:Imagelist|lista de imagini]]. Fişierele noi şi cele şterse sunt contorizate pe pagina [[Special:Log/upload|raport de trimiteri]].<br />
 Foloseşte formularul de mai jos pentru a trimite imagini noi pe care le vei putea folosi pentru a ilustra articolele. În majoritatea browserelor vei vedea un buton \"Răsfoire...\" (sau \"Browse...\") care va deschide fereastra standard dialog a sistemului tău de operare pentru alegerea de fişiere. Când alegei un fişier în acest fel, caseta de dialog se va completa cu calea locală către acesta. Este de asemenea necesar să bifezi căsuţa asociată textului în care confirmi că nu violezi nici un drept de autor trimiţând această imagine. În final, apasă pe butonul \"Trimite\" pentru a trimite efectiv fişierul. Această operaţiune poate dura, mai ales dacă ai o legătură lentă la Internet.<br />
 Formatele preferate sunt JPEG pentru imagini fotografice, PNG pentru desene şi alte imagini cu contururi clare şi OGG pentru fişiere de sunet. Te rugăm să foloseşti nume explicite pentru fişiere ca să eviţi confuziile. Pentru a include o imagine într-un articol, foloseşte o legătură de forma<br />
-* '''<nowiki>[[</nowiki>{{ns:Image}}<nowiki>:Fişier.jpg]]</nowiki>'''
-* '''<nowiki>[[</nowiki>{{ns:Image}}<nowiki>:Fişier.png|text alternativ]]</nowiki>'''
+* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Fişier.jpg]]</nowiki>'''
+* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Fişier.png|text alternativ]]</nowiki>'''
 Pentru a include un fişier de sunet într-un articol, foloseşti o legătură de forma
-* '''<nowiki>[[</nowiki>{{ns:Media}}<nowiki>:Fişier.ogg]]</nowiki>'''
+* '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:Fişier.ogg]]</nowiki>'''
 Te rugăm reţine că, la fel ca şi în cazul celorlalte secţiuni din {{SITENAME}}, alte persoane pot edita sau şterge fişierele pe care le trimiţi dacă e în interesul enciclopediei, şi ţi se poate chiar bloca accesul la trimiterea de fişiere dacă abuzezi de sistem.",
 'uploadlog'                   => 'Raportul fişierelor trimise',
 'uploadlogpage'               => 'Raportul fişierelor trimise',
@@ -850,7 +850,7 @@ Te rugăm reţine că, la fel ca şi în cazul celorlalte secţiuni din {{SITENA
 'largefileserver'             => 'Fişierul este mai mare decât este configurat serverul să permită.',
 'emptyfile'                   => 'Fişierul pe care l-aţi încărcat pare a fi gol. Aceasta poate fi datorită unei greşeli în numele fişierului. Verificaţi dacă într-adevăr doriţi să încărcaţi acest fişier.',
 'fileexists'                  => 'Un fişier cu acelaşi nume există deja, vă rugăm verificaţi $1 dacă nu sunteţi sigur dacă doriţi să îl modificaţi.',
-'fileexists-thumb'            => "'''<center>Imagine existentă</center>'''",
+'fileexists-thumb'            => "<center>'''Imagine existentă'''</center>",
 'fileexists-forbidden'        => 'Un fişier cu acest nume există deja; mergeţi înapoi şi încărcaţi acest fişier sub un nume nou. [[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Un fişier cu acest nume există deja în magazia de imagini comune; mergeţi înapoi şi încărcaţi fişierul sub un nou nume. [[Image:$1|thumb|center|$1]]',
 'successfulupload'            => 'Fişierul a fost trimis',
@@ -1158,7 +1158,7 @@ Pentru a modifica preferinţele listei de urmărire, vizitaţi
 {{fullurl:{{ns:special}}:Watchlist/edit}}
 
 Asistenţă şi suport:
-{{fullurl:{{MediaWiki:helppage}}}}',
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'                  => 'Şterge pagina',
@@ -1170,7 +1170,7 @@ Asistenţă şi suport:
 'confirmdelete'               => 'Confirmă ştergere',
 'deletesub'                   => '(Şterg "$1")',
 'historywarning'              => 'Atenţie! Pagina pe care o ştergi are istorie:',
-'confirmdeletetext'           => 'Sunteţi pe cale să ştergeţi permanent o pagină sau imagine din baza de date, împreună cu istoria asociată acesteia. Vă rugăm să confirmaţi alegerea făcută de dvs., faptul că înţelegeţi consecinţele acestei acţiuni şi faptul că o faceţi în conformitate cu [[{{MediaWiki:policy-url}}|Politica oficială]].',
+'confirmdeletetext'           => 'Sunteţi pe cale să ştergeţi permanent o pagină sau imagine din baza de date, împreună cu istoria asociată acesteia. Vă rugăm să confirmaţi alegerea făcută de dvs., faptul că înţelegeţi consecinţele acestei acţiuni şi faptul că o faceţi în conformitate cu [[{{MediaWiki:Policy-url}}|Politica oficială]].',
 'actioncomplete'              => 'Acţiune finalizată',
 'deletedtext'                 => 'Pagina "$1" a fost ştearsă. Vedeţi $2 pentru o listă a elementelor şterse recent.',
 'deletedarticle'              => 'a şters "[[$1]]"',
@@ -1202,7 +1202,7 @@ Ultima editare a fost făcută de către [[User:$3|$3]] ([[User talk:$3|discuţi
 'protectexpiry'               => 'Expirare',
 'unprotectsub'                => '(Deprotejând "$1")',
 'protect-unchain'             => 'Deblochează permisiunile de mutare',
-'protect-text'                => 'Poţi vizualiza sau modifica nivelul de protecţie pentru pagina <strong>$1</strong>. Asigură-te că acţionezi în conformitate cu [[{{MediaWiki:policy-url}}|politica proiectului]].',
+'protect-text'                => 'Poţi vizualiza sau modifica nivelul de protecţie pentru pagina <strong>$1</strong>. Asigură-te că acţionezi în conformitate cu [[{{MediaWiki:Policy-url}}|politica proiectului]].',
 'protect-default'             => '(standard)',
 'protect-fallback'            => 'Cere permisiunea "$1"',
 'protect-level-autoconfirmed' => 'Blochează utilizatorii neînregistraţi',
@@ -1288,7 +1288,7 @@ Consultaţi [[Special:Log/delete|raportul ştergerilor]] pentru a vedea toate ş
 # Block/unblock
 'blockip'                     => 'Blochează utilizator / IP',
 'blockiptext'                 => "Pentru a bloca un utilizator completaţi rubricile de mai jos.<br />
-'''Respectaţi [[{{MediaWiki:policy-url}}|politica de blocare]].'''<br />
+'''Respectaţi [[{{MediaWiki:Policy-url}}|politica de blocare]].'''<br />
 Precizaţi motivul blocării; de exemplu indicaţi paginile vandalizate de acest utilizator.",
 'ipaddress'                   => 'Adresa IP',
 'ipadressorusername'          => 'Adresă IP sau nume de utilizator',
@@ -1451,7 +1451,7 @@ Articolul de destinaţie "[[$1]]" există deja. Doriţi să îl ştergeţi pentr
 'allmessagesdefault'        => 'Textul standard',
 'allmessagescurrent'        => 'Textul curent',
 'allmessagestext'           => 'Aceasta este lista completă a mesajelor disponibile în domeniul "MediaWiki:"',
-'allmessagesnotsupportedDB' => "'''Special:Allmessages''' nu poate fi folosit deoarece '''\$wgUseDatabaseMessages''' este închisă.",
+'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' nu poate fi folosit deoarece '''\$wgUseDatabaseMessages''' este închisă.",
 'allmessagesfilter'         => 'Filtrare în funcţie de titlul mesajului:',
 'allmessagesmodified'       => 'Arată doar mesajele modificate.',
 

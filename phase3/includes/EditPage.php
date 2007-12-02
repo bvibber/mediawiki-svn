@@ -623,17 +623,31 @@ class EditPage {
 	 */
 	private function showIntro() {
 		global $wgOut, $wgUser;
-		if( $this->suppressIntro ) return;
+		if( $this->suppressIntro )
+			return;
+
+		# Show a warning message when someone creates/edits a user (talk) page but the user does not exists
+		if( $this->mTitle->getNamespace() == NS_USER || $this->mTitle->getNamespace() == NS_USER_TALK ) {
+			$parts = explode( '/', $this->mTitle->getText(), 2 );
+			$username = $parts[0];
+			$id = User::idFromName( $username );
+			$ip = User::isIP( $username );
+
+			if ( $id == 0 && !$ip ) {
+				$wgOut->addWikiText( '<div class="mw-userpage-userdoesnotexist error">' . wfMsg( 'userpage-userdoesnotexist', $username ) . '</div>' );
+			}
+		}
+
 		if( !$this->showCustomIntro() && !$this->mTitle->exists() ) {
 			if( $wgUser->isLoggedIn() ) {
-				$wgOut->addWikiText( wfMsg( 'newarticletext' ) );
+				$wgOut->addWikiText( '<div class="mw-newarticletext">' . wfMsg( 'newarticletext' ) . '</div>' );
 			} else {
-				$wgOut->addWikiText( wfMsg( 'newarticletextanon' ) );
+				$wgOut->addWikiText( '<div class="mw-newarticletextanon">' . wfMsg( 'newarticletextanon' ) . '</div>' );
 			}
 			$this->showDeletionLog( $wgOut );
 		}
 	}
-	
+
 	/**
 	 * Attempt to show a custom editing introduction, if supplied
 	 *
@@ -768,7 +782,15 @@ class EditPage {
 					return self::AS_BLANK_ARTICLE;
 			}
 
-			$isComment=($this->section=='new');
+			// Run post-section-merge edit filter
+			if ( !wfRunHooks( 'EditFilterMerged', array( $this, $this->textbox1, &$this->hookError ) ) ) {
+				# Error messages etc. could be handled within the hook...
+				wfProfileOut( $fname );
+				return false;
+			}
+
+			$isComment = ( $this->section == 'new' );
+			
 			$this->mArticle->insertNewArticle( $this->textbox1, $this->summary,
 				$this->minoredit, $this->watchthis, false, $isComment);
 
@@ -842,6 +864,13 @@ class EditPage {
 		}
 
 		$oldtext = $this->mArticle->getContent();
+
+		// Run post-section-merge edit filter
+		if ( !wfRunHooks( 'EditFilterMerged', array( $this, $text, &$this->hookError ) ) ) {
+			# Error messages etc. could be handled within the hook...
+			wfProfileOut( $fname );
+			return false;
+		}
 
 		# Handle the user preference to force summaries here, but not for null edits
 		if( $this->section != 'new' && !$this->allowBlankSummary && $wgUser->getOption( 'forceeditsummary')
@@ -1012,9 +1041,13 @@ class EditPage {
 			}
 			if ( isset( $this->mArticle ) && isset( $this->mArticle->mRevision ) ) {
 			// Let sysop know that this will make private content public if saved
-				if( $this->mArticle->mRevision->isDeleted( Revision::DELETED_TEXT ) ) {
+				
+				if( !$this->mArticle->mRevision->userCan( Revision::DELETED_TEXT ) ) {
+					$wgOut->addWikiText( wfMsg( 'rev-deleted-text-permission' ) );
+				} else if( $this->mArticle->mRevision->isDeleted( Revision::DELETED_TEXT ) ) {
 					$wgOut->addWikiText( wfMsg( 'rev-deleted-text-view' ) );
 				}
+				
 				if( !$this->mArticle->mRevision->isCurrent() ) {
 					$this->mArticle->setOldSubtitle( $this->mArticle->mRevision->getId() );
 					$wgOut->addWikiText( wfMsg( 'editingold' ) );
@@ -1464,6 +1497,7 @@ END
 
 			if ( $this->mMetaData != "" ) $toparse .= "\n" . $this->mMetaData ;
 			$parserOptions->setTidy(true);
+			$parserOptions->enableLimitReport();
 			$parserOutput = $wgParser->parse( $this->mArticle->preSaveTransform( $toparse ) ."\n\n",
 					$this->mTitle, $parserOptions );
 
@@ -2112,10 +2146,10 @@ END
 		$resultDetails = false;
 		$value = $this->internalAttemptSave( $resultDetails );
 		
-		if( $value == self::AS_SUCCESS_UPDATE || $value = self::AS_SUCCESS_NEW_ARTICLE ) {
+		if( $value == self::AS_SUCCESS_UPDATE || $value == self::AS_SUCCESS_NEW_ARTICLE ) {
 			$this->didSave = true;
 		}
-		
+
 		switch ($value)
 		{
 			case self::AS_HOOK_ERROR_EXPECTED:

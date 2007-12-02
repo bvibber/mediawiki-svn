@@ -7,6 +7,7 @@
  * @author Niklas Laxström
  * @author G - ג
  * @author Nike
+ * @author Siebrand
  */
 
 $fallback = 'it';
@@ -294,25 +295,25 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Àutri nformazzioni su {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:Àutri nformazzioni',
+'aboutpage'         => 'Project:Àutri nformazzioni',
 'bugreports'        => 'Malifunziunamenti',
-'bugreportspage'    => '{{ns:project}}:Malifunziunamenti',
+'bugreportspage'    => 'Project:Malifunziunamenti',
 'copyright'         => 'Lu cuntinutu è utilizzàbbili secunnu la $1.',
 'copyrightpagename' => 'Lu copyright supra {{SITENAME}}',
 'copyrightpage'     => '{{ns:project}}:Copyright',
 'currentevents'     => 'Nutizzî',
-'currentevents-url' => '{{ns:project}}:Nutizzî',
+'currentevents-url' => 'Project:Nutizzî',
 'disclaimers'       => 'Avvirtenzi',
-'disclaimerpage'    => '{{ns:project}}:Avvirtenzi ginirali',
-'edithelppage'      => '{{ns:help}}:Canciamentu',
-'helppage'          => '{{ns:help}}:Cuntinuti',
+'disclaimerpage'    => 'Project:Avvirtenzi ginirali',
+'edithelppage'      => 'Help:Canciamentu',
+'helppage'          => 'Help:Cuntinuti',
 'mainpage'          => 'Pàggina principali',
 'portal'            => 'Porta dâ cumunitati',
-'portal-url'        => '{{ns:project}}:Porta dâ cumunitati',
+'portal-url'        => 'Project:Porta dâ cumunitati',
 'privacy'           => 'Pulìtica supra la privacy',
-'privacypage'       => '{{ns:project}}:Pulìtica rilativa â privacy',
+'privacypage'       => 'Project:Pulìtica rilativa â privacy',
 'sitesupport'       => 'Dunazzioni',
-'sitesupport-url'   => '{{ns:project}}:Dunazzioni',
+'sitesupport-url'   => 'Project:Dunazzioni',
 
 'badaccess'        => 'Pirmessi nun sufficienti',
 'badaccess-group0' => "Nun hai li pirmessi nicissari p'esèquiri l'azzioni addumannata.",
@@ -339,7 +340,7 @@ $messages = array(
 'restorelink'             => '{{PLURAL:$1|nu canciamentu annullatu|$1 canciamenti annullati}}',
 'feed-invalid'            => 'Mudalitati di suttascrizzioni dû feed nun vàlida.',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'artìculu',
 'nstab-user'      => "Pàggina d'utenti",
 'nstab-media'     => 'File multimidiali',
@@ -355,7 +356,7 @@ $messages = array(
 'nosuchaction'      => 'Opirazzioni nun ricanusciuta',
 'nosuchactiontext'  => 'La URL mmessa nun currispunni a un cumannu ricanusciutu dû software MediaWiki',
 'nosuchspecialpage' => 'Sta pàggina spiciali nun è dispunìbbili',
-'nospecialpagetext' => "'''<big>Hai cercatu na pàggina spiciali nun vàlida.</big>'''
+'nospecialpagetext' => "<big>'''Hai cercatu na pàggina spiciali nun vàlida.'''</big>
 
 L'alencu dî pàggini spiciali vàlidi s'attrova 'n [[Special:Specialpages|Alencu dî pàggini spiciali]].",
 
@@ -409,7 +410,7 @@ Query: $2',
 $2',
 'namespaceprotected'   => "Non hai lu pirmissu pi canciari li pàggini ntô namespace '''$1'''.",
 'customcssjsprotected' => "Non hai lu pirmissu di canciari chista pàggina, picchì cunteni li mpostazzioni pirsonali di n'àutru utenti.",
-'ns-specialprotected'  => 'Li pàggini ntô namespace  {{ns:special}} non ponnu èssiri canciati.',
+'ns-specialprotected'  => 'Li pàggini ntô namespace {{ns:special}} non ponnu èssiri canciati.',
 
 # Login and logout pages
 'logouttitle'                => 'Logout utenti',
@@ -452,6 +453,7 @@ L'account hà statu criatu currettamenti. Nun ti scurdari di pirsunalizzari li p
 'prefs-help-realname'        => '* Nomu veru (upziunali): siddu scegghi di furnìrilu veni usatu pi dàriti crèditu dû tò travagghiu.',
 'loginerror'                 => "Erruri nta l'accessu",
 'prefs-help-email'           => "* Imeil (opziunali): abbìlita l'àutri utenti a cuntattàriti attraversu la tò pàggina d'utenti o di discussioni, senza pi chissu rivilari la tò identitati.",
+'prefs-help-email-required'  => 'Lu nnirizzu email è nicissariu.',
 'nocookiesnew'               => 'La riggistrazzioni hà statu cumplitatu, ma nun hai effittuatu lu log in. {{SITENAME}} usa li cookies pi gistiri li log in. Lu tò browser havi li cookies disabbilitati. Abbìlita li cookies, appoi effèttua lu login cu li tò username e password novi.',
 'nocookieslogin'             => '{{SITENAME}} usa li cookies pi gistiri lu log in. Lu tò browser havi li cookies disabbilitati. Abbìlita li cookies, appoi effèttua lu login cu li tò username e password.',
 'noname'                     => 'Lu nomu utenti innicatu nun è vàlidu, nun è pussìbbili criari un account a stu nomu.',
@@ -539,7 +541,7 @@ Lu bloccu fu fattu da $1. Lu mutivu è ''$2''.
 * Fini dû bloccu: $6
 * Ntirvallu dû bloccu: $7
 
-Poi contattari $1 o n'àutru [[{{MediaWiki:grouppage-sysop}}|amministraturi]] pi discùtiri dû bloccu.
+Poi contattari $1 o n'àutru [[{{MediaWiki:Grouppage-sysop}}|amministraturi]] pi discùtiri dû bloccu.
 Non poi usari la caratteristica 'manna n'email a st'utenti' siddu non è spicificatu n'innirizzu email validu nte li toi [[Special:Preferences|prifirenzi]] e non hai statu bluccatu dall'usàrila.
 Lu tò nnirizzu IP attuarmenti è $3, e l'ID dû bloccu è #$5. Pi favuri ncludi unu o tutti dî dui nte tutti li dumanni.",
 'autoblockedtext'           => "Lu tò nnirizzu IP hà statu bluccatu automaticamenti picchì fu usatu di n'àutru utenti, chi fu bluccatu di $1.
@@ -550,7 +552,7 @@ Lu motivu è chistu:
 * Ncignata dû bloccu: $8
 * Fini dû bloccu: $6
 
-Poi contattari $1 o n'àutru [[{{MediaWiki:grouppage-sysop}}|amministraturi]] pi discùtiri dû bloccu.
+Poi contattari $1 o n'àutru [[{{MediaWiki:Grouppage-sysop}}|amministraturi]] pi discùtiri dû bloccu.
 
 Non poi usari la caratteristica 'manna n'email a st'utenti' siddu non è spicificatu n'innirizzu email validu nte li toi [[Special:Preferences|prifirenzi]] e non hai statu bluccatu dall'usàrila.
 
@@ -574,7 +576,7 @@ L'ID dû bloccu è $5. Pi favuri ncludilu nte tutti li dumanni.",
 'accmailtext'               => 'La password pi l\'utenti "$1" fu nviata a lu ndirizzu $2.',
 'newarticle'                => '(Novu)',
 'newarticletext'            => "Sta pàggina ancora nun esisti. 
-Pi criari na pàggina cu stu tìtulu, accumenza a scrìviri ccassutta (talìa la [[{{MediaWiki:helppage}}|pàggina d'aiutu]] pi aviri maiuri nfurmazzioni).
+Pi criari na pàggina cu stu tìtulu, accumenza a scrìviri ccassutta (talìa la [[{{MediaWiki:Helppage}}|pàggina d'aiutu]] pi aviri maiuri nfurmazzioni).
 Si agghicasti ccà pi sbagghiu, clicca lu buttuni ''''n arreri (back)''' dû tò browser.",
 'anontalkpagetext'          => "----''Chista è la pàggina di discussioni di n’utenti anònimu, ca nun hà ancora criatu n’accessu o comu è gghiè nun l’usa. P’idintificàrilu è quinni nicissariu usari lu nùmmiru di lu sò nnirizzu IP. Li nnirizzi IP ponnu pirò èssiri cunnivisi di cchiù utenti. Siddu sî n’utenti anònimu e riteni ca li cummenti prisenti nta sta pàggina nun si rifirìscinu a tia, [[Special:Userlogin|crea n’accessu novu o trasi]] cu chiddu ca già hai p’evitari d’èssiri cunfusu cu àutri utenti anònimi ‘n futuru''",
 'noarticletext'             => "Nta stu mumentu la pàggina richiesta è vacanti. È pussìbbili [[Special:Search/{{PAGENAME}}|circari stu tìtulu]] nta l'àutri pàggini dû situ oppuru [{{fullurl:{{FULLPAGENAME}}|action=edit}} canciari la pàggina ora].",
@@ -714,7 +716,7 @@ Lu motivu è ''$2''",
 
 # Search results
 'searchresults'         => 'Risurtati dâ circata',
-'searchresulttext'      => 'Pi maiuri nformazzioni supra la ricerca nterna di {{SITENAME}}, talìa [[{{MediaWiki:helppage}}|{{int:help}}]].',
+'searchresulttext'      => 'Pi maiuri nformazzioni supra la ricerca nterna di {{SITENAME}}, talìa [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "Pruvasti a circari: '''[[$1]]'''",
 'searchsubtitleinvalid' => "Circata di '''$1'''",
 'noexactmatch'          => "'''Nun c'è na pàggina chi si ntìtula \"\$1\".''' Putiti [[:\$1|criari sta pàggina]].",
@@ -870,10 +872,10 @@ Lu motivu è ''$2''",
 'uploadtext'                  => "Usa lu modulu ccà sutta pi carricari novi file. Pi vìdiri o cercari li file già carricati, talìa lu [[Special:Imagelist|log dî file carricati]]. Carricamenti e cancillazioni di file sugnu riggistrati nto [[Special:Log/upload|log de li upload]].
 
 Pi nziriri na mmàggini nte na pàggina, fari nu liami accussì:
-* '''<nowiki>[[</nowiki>{{ns:Image}}<nowiki>:File.png]]</nowiki>'''
-* '''<nowiki>[[</nowiki>{{ns:Image}}<nowiki>:File.png|testu alternativu]]</nowiki>'''
+* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png]]</nowiki>'''
+* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|testu alternativu]]</nowiki>'''
 usari mmeci
-* '''<nowiki>[[</nowiki>{{ns:Media}}<nowiki>:File.ogg]]</nowiki>'''
+* '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki>'''
 pi culligari direttamenti l'àutri tipi di file.",
 'uploadlog'                   => 'File carricati',
 'uploadlogpage'               => 'File carricati',
@@ -900,7 +902,7 @@ pi culligari direttamenti l'àutri tipi di file.",
 Nomu dû file carricatu: <strong><tt>$1</tt></strong><br />
 Nome dû file esistenti: <strong><tt>$2</tt></strong><br />
 Pi favuri scegghiti n'àutru nomu.",
-'fileexists-thumb'            => "'''<center>Mmagini esistenti</center>'''",
+'fileexists-thumb'            => "<center>'''Mmagini esistenti'''</center>",
 'fileexists-thumbnail-yes'    => "Lu file carricato sembra èssiri lu risurtatu di n'antiprima <i>(thumbnail)</i>. Virificari, pi cunfruntu, lu file <strong><tt>$1</tt></strong>.<br />
 Siduu si tratta dâ stissa mmagini, nte dimenzioni urigginali, nun è nicissariu carricara àutri antiprimi.",
 'file-thumbnail-no'           => "Lu nomu dô file ncigna cu <strong><tt>$1</tt></strong>; sembra quinni èssiri lu risurtatu di n'antiprima <i>(thumbnail)</i>.
@@ -1032,6 +1034,10 @@ PICT # arcuni
 'unusedtemplatestext' => 'Nta sta pàggina vèninu alincati tutti li template (pàggini dû namespace Template) ca nun sunnu nclusi n nudda pàggina. Prima di cancillàrili è appurtunu virificari ca li sìnguli template nun hannu àutri culligamenti trasenti.',
 'unusedtemplateswlh'  => 'àutri liami',
 
+# Random page
+'randompage'         => 'Na pàggina ammuzzu',
+'randompage-nopages' => 'Nudda pàggina ntô namespace silizziunatu.',
+
 # Random redirect
 'randomredirect'         => 'Un redirect a muzzu',
 'randomredirect-nopages' => 'Nuddu rinnirizzamentu ntô namespace silizziunatu.',
@@ -1092,8 +1098,6 @@ La coda dî processi a esequiri 'n background cunteni {{PLURAL:\$7|'''1''' eleme
 'mostrevisions'           => 'Artìculi urdinati secunnu chiddi chi hannu cchiù canciamenti',
 'allpages'                => 'Tutti li paggini',
 'prefixindex'             => 'Ìnnici secunnu un prifissu',
-'randompage'              => 'Na pàggina ammuzzu',
-'randompage-nopages'      => 'Nudda pàggina ntô namespace silizziunatu.',
 'shortpages'              => 'Artìculi urdinati secunnu la lunchizza (li cchiù curti prima)',
 'longpages'               => 'Artìculi urdinati secunnu la lunchizza (li cchiù lonchi prima)',
 'deadendpages'            => 'Pàggini senza nisciuta',
@@ -1244,7 +1248,7 @@ Pi mudificari li mpustazzioni dâ lista di l\'ossirvati spiciali, vìsita
 {{fullurl:{{ns:special}}:Watchlist/edit}} 
 
 Pi dari lu tò feedback e arricèviri ultiriuri assistenza:
-{{fullurl:{{MediaWiki:helppage}}}}',
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'                  => 'Elìmina la pàggina',
@@ -1256,7 +1260,7 @@ Pi dari lu tò feedback e arricèviri ultiriuri assistenza:
 'confirmdelete'               => 'Cunferma la cancillazzioni',
 'deletesub'                   => '(Cancillannu "$1")',
 'historywarning'              => 'Accura: La pàggina ca stai pi cancillari havi na cronoluggìa:',
-'confirmdeletetext'           => "Stai cancillannu dû databbasi na pàggina o na mmàggini cu tutta la sò storia di manera pirmanenti. Pi fauri, cunferma ca tu ntenni fari sta cosa, ca tu hai caputu li cunziquenzi, e chi lu fai secunnu li linìi guida stabbiliti 'n [[{{MediaWiki:policy-url}}]].",
+'confirmdeletetext'           => "Stai cancillannu dû databbasi na pàggina o na mmàggini cu tutta la sò storia di manera pirmanenti. Pi fauri, cunferma ca tu ntenni fari sta cosa, ca tu hai caputu li cunziquenzi, e chi lu fai secunnu li linìi guida stabbiliti 'n [[{{MediaWiki:Policy-url}}]].",
 'actioncomplete'              => 'Azzioni cumpritata',
 'deletedtext'                 => '"$1" ha statu cancillatu.
 Talìa $2 pi na lista di cancillazzioni ricenti.',
@@ -1397,7 +1401,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => "Blocca l'utenti",
-'blockiptext'                 => "Usa lu mòdulu cassutta pi bluccari la pussibbilità di scrìviri pi n'utenti o pi nu ndirizzu IP spicìficu. Chistu s'havi a fari sulu pi privèniri lu vannalismu e secunnu la [[{{MediaWiki:policy-url}}|pulìtica di {{SITENAME}}]]. Scrivi na raggiùni valida ccà sutta (pi asempiu, cita li pàggini chi foru vannalizzati).",
+'blockiptext'                 => "Usa lu mòdulu cassutta pi bluccari la pussibbilità di scrìviri pi n'utenti o pi nu ndirizzu IP spicìficu. Chistu s'havi a fari sulu pi privèniri lu vannalismu e secunnu la [[{{MediaWiki:Policy-url}}|pulìtica di {{SITENAME}}]]. Scrivi na raggiùni valida ccà sutta (pi asempiu, cita li pàggini chi foru vannalizzati).",
 'ipaddress'                   => 'Ndirizzu IP:',
 'ipadressorusername'          => 'Ndirizzu IP o nomu utenti:',
 'ipbexpiry'                   => 'Durata dû bloccu:',
@@ -1423,8 +1427,8 @@ $1',
 'ipbhidename'                 => "Ammuccia lu nomu utenti o lu nnirizzu IP dô log dî blocchi, di l'alencu dî blocchi attivi e di l'alencu utenti.",
 'badipaddress'                => 'Ndirizzu IP nun vàlidu.',
 'blockipsuccesssub'           => 'Bloccu esiquitu',
-'blockipsuccesstext'          => "[[{{ns:Special}}:Contributions/$1|$1]] fu bluccatu.
-<br />Pi maggiuri nfurmazzioni, talìa la [[{{ns:Special}}:Ipblocklist|lista di l'IP bluccati]] .",
+'blockipsuccesstext'          => "[[{{ns:special}}:Contributions/$1|$1]] fu bluccatu.
+<br />Pi maggiuri nfurmazzioni, talìa la [[{{ns:special}}:Ipblocklist|lista di l'IP bluccati]] .",
 'ipb-edit-dropdown'           => 'Mutivi pô bloccu',
 'ipb-unblock'                 => "Sblocca n'utenti o nu ndirizzu IP",
 'ipb-blocklist-addr'          => 'Alenca li blocchi attivi pi $1',
@@ -1458,9 +1462,9 @@ $1',
 'range_block_disabled'        => 'La pussibbilitati di bluccari ntervalli di ndirizzi IP è disattiva a lu mumentu.',
 'ipb_expiry_invalid'          => 'Durata o scadenza dû bloccu nun vàlida.',
 'ipb_already_blocked'         => 'L\'utenti "$1" è già bluccatu',
+'ipb_cant_unblock'            => 'Erruri: Mpussìbbili attruvari lu bloccu cu ID $1. Putissi aviri già statu sbluccatu.',
 'ip_range_invalid'            => 'Ntervallu di ndirizzi IP nun vàlidu.',
 'proxyblocker'                => 'Blocca proxy',
-'ipb_cant_unblock'            => 'Erruri: Mpussìbbili attruvari lu bloccu cu ID $1. Putissi aviri già statu sbluccatu.',
 'proxyblockreason'            => "Lu tò ndirizzu IP hà statu bluccatu pirchì è un open proxy. Pi favuri cuntatta lu tò furnituri d'accessu a Internet o lu supportu tècnicu e nfòrmali di stu gravi prubbrema di sicurizza.",
 'proxyblocksuccess'           => 'Esiquitu.',
 'sorbsreason'                 => 'Lu tò ndirizzu IP è alincatu comu proxy apertu ntâ lista DNSBL.',
@@ -1528,11 +1532,11 @@ La pàggina di distinazzioni "[[$1]]" asisti già. S\'addisìa cancillàrila pi 
 
 # Export
 'export'            => 'Esporta pàggini',
-'exporttext'        => "È pussìbbili espurtari lu testu e la cronoluggìa dî canciamenti di na pàggina o d'un gruppu di pàggini n furmatu XML pi mpurtàrili n àutri siti ca utilìzzanu lu software MediaWiki, attraversu la pàggina [[{{ns:Special}}:Import|d'importu]].
+'exporttext'        => "È pussìbbili espurtari lu testu e la cronoluggìa dî canciamenti di na pàggina o d'un gruppu di pàggini n furmatu XML pi mpurtàrili n àutri siti ca utilìzzanu lu software MediaWiki, attraversu la pàggina [[{{ns:special}}:Import|d'importu]].
 
 P'espurtari li pàggini innicari li tìtuli ntâ casella di testu suttastanti, unu pi riga, e spicificari siddu s'addisìa attèniri la virsioni currenti e tutti li virsioni pricidenti, cu li dati dâ cronoluggìa dâ pàggina, oppuru surtantu l'ùrtima virsioni e li dati currispunnenti a l'ùrtimu canciamentu. 
 
-Nta st'ùrtimu casu si pò macari utilizzari un culligamentu, p'asempiu [[{{ns:Special}}:Export/{{Mediawiki:mainpage}}]] p'espurtari \"[[{{Mediawiki:mainpage}}]]\".",
+Nta st'ùrtimu casu si pò macari utilizzari un culligamentu, p'asempiu [[{{ns:special}}:Export/{{Mediawiki:mainpage}}]] p'espurtari \"[[{{Mediawiki:mainpage}}]]\".",
 'exportcuronly'     => 'Ncludi sulu la rivisioni attuali, nun la ntera cronoluggìa',
 'exportnohistory'   => "---- '''Nota:''' l'espurtazzioni dâ ntera cronoluggìa dî pàggini attraversu sta nterfaccia hà stata disattivata pi mutivi ligati a li pristazzioni dû sistema.",
 'export-submit'     => 'Espurtazzioni',

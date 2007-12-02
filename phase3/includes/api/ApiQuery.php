@@ -78,6 +78,7 @@ class ApiQuery extends ApiBase {
 	private $mQueryMetaModules = array (
 		'siteinfo' => 'ApiQuerySiteinfo',
 		'userinfo' => 'ApiQueryUserInfo',
+		'allmessages' => 'ApiQueryAllmessages',
 	);
 
 	private $mSlaveDB = null;
@@ -457,6 +458,11 @@ class ApiQuery extends ApiBase {
 	public function makeHelpMsgParameters() {
 		$psModule = new ApiPageSet($this);
 		return $psModule->makeHelpMsgParameters() . parent :: makeHelpMsgParameters();
+	}
+	
+	// @todo should work correctly
+	public function shouldCheckMaxlag() {
+		return true;
 	}
 
 	protected function getParamDescription() {

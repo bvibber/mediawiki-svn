@@ -4,6 +4,7 @@
  * @addtogroup Language
  *
  * @author Tagir
+ * @author Siebrand
  */
 
 $fallback = 'ru';
@@ -187,24 +188,24 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Описани {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:Описани',
+'aboutpage'         => 'Project:Описани',
 'bugreports'        => 'Гiалата хоам',
-'bugreportspage'    => '{{ns:project}}:Гiалата хоам',
+'bugreportspage'    => 'Project:Гiалата хоам',
 'currentevents'     => 'Хьанзар доалара хамаж',
-'currentevents-url' => '{{ns:project}}:Хьанзар доалара хама',
+'currentevents-url' => 'Project:Хьанзар доалара хама',
 'edithelp'          => 'Хувцамаш йие гIо',
-'edithelppage'      => '{{ns:help}}:Хувцамаш йие гIо',
+'edithelppage'      => 'Help:Хувцамаш йие гIо',
 'faq'               => 'КХХ (Каста Хоатташ доа Хамаж)',
-'faqpage'           => '{{ns:project}}:КХХ (Каста Хоатташ доа Хамаж)',
-'helppage'          => '{{ns:help}}:Хьехар',
+'faqpage'           => 'Project:КХХ (Каста Хоатташ доа Хамаж)',
+'helppage'          => 'Help:Хьехар',
 'mainpage'          => 'Кертера оагIув',
-'policy-url'        => '{{ns:project}}:Бокъонаш',
+'policy-url'        => 'Project:Бокъонаш',
 'portal'            => 'Гiоз',
-'portal-url'        => '{{ns:project}}:ГIоз',
+'portal-url'        => 'Project:ГIоз',
 'privacy'           => 'Конфиденциальности бокъонаш',
-'privacypage'       => '{{ns:project}}:Конфиденциальности бокъона',
+'privacypage'       => 'Project:Конфиденциальности бокъона',
 'sitesupport'       => 'СагIа',
-'sitesupport-url'   => '{{ns:project}}:СагIа',
+'sitesupport-url'   => 'Project:СагIа',
 
 'badaccess'        => 'Чу валар гIалата',
 'badaccess-group0' => 'Хьо де воалара хьюна де пурам дац',

@@ -260,6 +260,20 @@ define( 'UTF8_FFFF', "\xef\xbf\xbf" /*codepointToUtf8( 0xffff )*/ );
 define( 'UTF8_HEAD', false );
 define( 'UTF8_TAIL', true );
 
+# Hook support constants
+define( 'MW_SUPPORTS_EDITFILTERMERGED', 1 );
 
+# Allowed values for Parser::$mOutputType
+# Parameter to Parser::startExternalParse().
+define( 'OT_HTML', 1 );
+define( 'OT_WIKI', 2 );
+define( 'OT_MSG' , 3 );
+define( 'OT_PREPROCESS', 4 );
 
+# Flags for Parser::setFunctionHook
+define( 'SFH_NO_HASH', 1 );
+define( 'SFH_OBJECT_ARGS', 2 );
+
+# Flags for Parser::replaceLinkHolders
+define( 'RLH_FOR_UPDATE', 1 );
 

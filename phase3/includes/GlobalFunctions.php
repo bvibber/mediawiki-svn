@@ -546,10 +546,12 @@ function wfMsgWikiHtml( $key ) {
  * @param array $options Processing rules:
  *  <i>parse</i>: parses wikitext to html
  *  <i>parseinline</i>: parses wikitext to html and removes the surrounding p's added by parser or tidy
- *  <i>escape</i>: filters message trough htmlspecialchars
+ *  <i>escape</i>: filters message through htmlspecialchars
+ *  <i>escapenoentities</i>: same, but allows entity references like &nbsp; through
  *  <i>replaceafter</i>: parameters are substituted after parsing or escaping
  *  <i>parsemag</i>: transform the message using magic phrases
  *  <i>content</i>: fetch message for content language instead of interface
+ * Behavior for conflicting options (e.g., parse+parseinline) is undefined.
  */
 function wfMsgExt( $key, $options ) {
 	global $wgOut, $wgParser;
@@ -590,6 +592,10 @@ function wfMsgExt( $key, $options ) {
 
 	if ( in_array('escape', $options) ) {
 		$string = htmlspecialchars ( $string );
+	} elseif ( in_array( 'escapenoentities', $options ) ) {
+		$string = htmlspecialchars( $string );
+		$string = str_replace( '&amp;', '&', $string );
+		$string = Sanitizer::normalizeCharReferences( $string );
 	}
 
 	if( in_array('replaceafter', $options) ) {
@@ -889,8 +895,8 @@ function wfCheckLimits( $deflimit = 50, $optionname = 'rclimit' ) {
  */
 function wfEscapeWikiText( $text ) {
 	$text = str_replace(
-		array( '[',     '|',      '\'',    'ISBN ',     'RFC ',     '://',     "\n=",     '{{' ),
-		array( '&#91;', '&#124;', '&#39;', 'ISBN&#32;', 'RFC&#32;', '&#58;//', "\n&#61;", '&#123;&#123;' ),
+		array( '[',     '|',      ']',     '\'',    'ISBN ',     'RFC ',     '://',     "\n=",     '{{' ),
+		array( '&#91;', '&#124;', '&#93;', '&#39;', 'ISBN&#32;', 'RFC&#32;', '&#58;//', "\n&#61;", '&#123;&#123;' ),
 		htmlspecialchars($text) );
 	return $text;
 }
@@ -2181,11 +2187,7 @@ function wfGetPrecompiledData( $name ) {
 function wfGetCaller( $level = 2 ) {
 	$backtrace = wfDebugBacktrace();
 	if ( isset( $backtrace[$level] ) ) {
-		if ( isset( $backtrace[$level]['class'] ) ) {
-			$caller = $backtrace[$level]['class'] . '::' . $backtrace[$level]['function'];
-		} else {
-			$caller = $backtrace[$level]['function'];
-		}
+		return wfFormatStackFrame($backtrace[$level]);
 	} else {
 		$caller = 'unknown';
 	}
@@ -2194,13 +2196,14 @@ function wfGetCaller( $level = 2 ) {
 
 /** Return a string consisting all callers in stack, somewhat useful sometimes for profiling specific points */
 function wfGetAllCallers() {
-	return implode('/', array_map(
-		create_function('$frame',' 
-			return isset( $frame["class"] )?
-				$frame["class"]."::".$frame["function"]:
-				$frame["function"]; 
-			'),
-		array_reverse(wfDebugBacktrace())));
+	return implode('/', array_map('wfFormatStackFrame',array_reverse(wfDebugBacktrace())));
+}
+
+/** Return a string representation of frame */
+function wfFormatStackFrame($frame) {
+	return isset( $frame["class"] )?
+		$frame["class"]."::".$frame["function"]:
+		$frame["function"];
 }
 
 /**
@@ -2338,4 +2341,24 @@ function wfGetNull() {
 	return wfIsWindows()
 		? 'NUL'
 		: '/dev/null';
+}
+
+/**
+ * Displays a maxlag error
+ * 
+ * @param string $host Server that lags the most
+ * @param int $lag Maxlag (actual)
+ * @param int $maxLag Maxlag (requested)
+ */
+function wfMaxlagError( $host, $lag, $maxLag ) {
+	global $wgShowHostnames;
+	header( 'HTTP/1.1 503 Service Unavailable' );
+	header( 'Retry-After: ' . max( intval( $maxLag ), 5 ) );
+	header( 'X-Database-Lag: ' . intval( $lag ) );
+	header( 'Content-Type: text/plain' );
+	if( $wgShowHostnames ) {
+		echo "Waiting for $host: $lag seconds lagged\n";
+	} else {
+		echo "Waiting for a database server: $lag seconds lagged\n";
+	}
 }

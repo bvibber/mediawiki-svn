@@ -56,6 +56,7 @@ class ApiMain extends ApiBase {
 		'query' => 'ApiQuery',
 		'expandtemplates' => 'ApiExpandTemplates',
 		'render' => 'ApiRender',
+		'parse' => 'ApiParse',
 		'rollback' => 'ApiRollback',
 		'delete' => 'ApiDelete',
 		'undelete' => 'ApiUndelete',
@@ -96,24 +97,11 @@ class ApiMain extends ApiBase {
 	* @param $enableWrite bool should be set to true if the api may modify data
 	*/
 	public function __construct($request, $enableWrite = false) {
-		global $wgRequest, $wgUser; 
 
 		$this->mInternalMode = ($request instanceof FauxRequest);
 
 		// Special handling for the main module: $parent === $this
 		parent :: __construct($this, $this->mInternalMode ? 'main_int' : 'main');
-		
-		// Check if request has cookie-like variables, and set them
-		if( ($request->getVal('lgtoken')) && ($request->getVal('lgusername')) && ($request->getVal('lguserid')) ) {
-			
-			// Got variables, set cookies. 
-			$_SESSION['wsUserID'] = $request->getVal('lguserid');
-			$_SESSION['wsUserName'] = $request->getVal('lgusername');
-			$_SESSION['wsToken'] = $request->getVal('lgtoken');
-			
-			// Reinitialize $wgUser from session data
-			$wgUser = User::newFromSession();			
-		} 
 
 		if (!$this->mInternalMode) {
 			
@@ -322,6 +310,21 @@ class ApiMain extends ApiBase {
 
 		// Instantiate the module requested by the user
 		$module = new $this->mModules[$this->mAction] ($this, $this->mAction);
+		
+		if( $module->shouldCheckMaxlag() && isset( $params['maxlag'] ) ) {
+			// Check for maxlag
+			global $wgLoadBalancer, $wgShowHostnames;
+			$maxLag = $params['maxlag'];
+			list( $host, $lag ) = $wgLoadBalancer->getMaxLag();
+			if ( $lag > $maxLag ) {
+				if( $wgShowHostnames ) {
+					ApiBase :: dieUsage( "Waiting for $host: $lag seconds lagged", 'maxlag' );
+				} else {
+					ApiBase :: dieUsage( "Waiting for a database server: $lag seconds lagged", 'maxlag' );
+				}
+				return;
+			}
+		}
 
 		if (!$this->mInternalMode) {
 
@@ -334,6 +337,9 @@ class ApiMain extends ApiBase {
 
 			if ($this->mPrinter->getNeedsRawData())
 				$this->getResult()->setRawMode();
+
+			if( $this->mAction == 'help' )
+				$this->mPrinter->setHelp();
 		}
 
 		// Execute
@@ -381,7 +387,10 @@ class ApiMain extends ApiBase {
 				ApiBase :: PARAM_DFLT => 'help',
 				ApiBase :: PARAM_TYPE => $this->mModuleNames
 			),
-			'version' => false
+			'version' => false,
+			'maxlag'  => array (
+				ApiBase :: PARAM_TYPE => 'integer'
+			),
 		);
 	}
 
@@ -392,7 +401,8 @@ class ApiMain extends ApiBase {
 		return array (
 			'format' => 'The format of the output',
 			'action' => 'What action you would like to perform',
-			'version' => 'When showing help, include version for each module'
+			'version' => 'When showing help, include version for each module',
+			'maxlag' => 'Maximum lag'
 		);
 	}
 
@@ -481,11 +491,12 @@ class ApiMain extends ApiBase {
 	} 
 
 	private $mIsBot = null;
-	
 	private $mIsSysop = null;
+	private $mCanApiHighLimits = null;
 	
 	/**
 	 * Returns true if the currently logged in user is a bot, false otherwise
+	 * OBSOLETE, use canApiHighLimits() instead
 	 */
 	public function isBot() {
 		if (!isset ($this->mIsBot)) {
@@ -498,6 +509,7 @@ class ApiMain extends ApiBase {
 	/**
 	 * Similar to isBot(), this method returns true if the logged in user is
 	 * a sysop, and false if not.
+	 * OBSOLETE, use canApiHighLimits() instead
 	 */
 	public function isSysop() {
 		if (!isset ($this->mIsSysop)) {
@@ -506,6 +518,15 @@ class ApiMain extends ApiBase {
 		}
 
 		return $this->mIsSysop;
+	}
+	
+	public function canApiHighLimits() {
+		if (!isset($this->mCanApiHighLimits)) {
+			global $wgUser;
+			$this->mCanApiHighLimits = $wgUser->isAllowed('apihighlimits');
+		}
+
+		return $this->mCanApiHighLimits;
 	}
 
 	public function getShowVersions() {

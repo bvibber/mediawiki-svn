@@ -479,7 +479,7 @@ class Skin extends Linker {
 	function reallyDoGetUserStyles() {
 		global $wgUser;
 		$s = '';
-		if (($undopt = $wgUser->getOption("underline")) != 2) {
+		if (($undopt = $wgUser->getOption("underline")) < 2) {
 			$underline = $undopt ? 'underline' : 'none';
 			$s .= "a { text-decoration: $underline; }\n";
 		}
@@ -490,17 +490,14 @@ class Skin extends Linker {
 a.new, #quickbar a.new,
 a.stub, #quickbar a.stub {
 	color: inherit;
-	text-decoration: inherit;
 }
 a.new:after, #quickbar a.new:after {
 	content: "?";
 	color: #CC2200;
-	text-decoration: $underline;
 }
 a.stub:after, #quickbar a.stub:after {
 	content: "!";
 	color: #772233;
-	text-decoration: $underline;
 }
 END;
 		}
@@ -1079,7 +1076,10 @@ END;
 				"' AND  wl_namespace=" . $wgTitle->getNamespace() ;
 			$res = $dbr->query( $sql, 'Skin::pageStats');
 			$x = $dbr->fetchObject( $res );
-			$s .= ' ' . wfMsg('number_of_watching_users_pageview', $x->n );
+
+			$s .= ' ' . wfMsgExt( 'number_of_watching_users_pageview',
+				array( 'parseinline' ), $wgLang->formatNum($x->n)
+			);
 		}
 
 		return $s . ' ' .  $this->getCopyright();
@@ -1226,7 +1226,7 @@ END;
 			// language (which may or may not be the same as the default language),
 			// but we make the link target be the one site-wide page.
 			return $this->makeKnownLink( wfMsgForContent( $page ),
-				wfMsgExt( $desc, array( 'parsemag', 'escape' ) ) );
+				wfMsgExt( $desc, array( 'parsemag', 'escapenoentities' ) ) );
 		}
 	}
 

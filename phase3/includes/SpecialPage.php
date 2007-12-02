@@ -131,14 +131,14 @@ class SpecialPage
 		'Log'                       => array( 'SpecialPage', 'Log' ),
 		'Blockip'                   => array( 'SpecialPage', 'Blockip', 'block' ),
 		'Undelete'                  => array( 'SpecialPage', 'Undelete', 'deletedhistory' ),
-		'Import'                    => array( 'SpecialPage', "Import", 'import' ),
+		'Import'                    => array( 'SpecialPage', 'Import', 'import' ),
 		'Lockdb'                    => array( 'SpecialPage', 'Lockdb', 'siteadmin' ),
 		'Unlockdb'                  => array( 'SpecialPage', 'Unlockdb', 'siteadmin' ),
 		'Userrights'                => array( 'SpecialPage', 'Userrights', 'userrights' ),
 		'MIMEsearch'                => array( 'SpecialPage', 'MIMEsearch' ),
 		'Unwatchedpages'            => array( 'SpecialPage', 'Unwatchedpages', 'unwatchedpages' ),
 		'Listredirects'             => array( 'SpecialPage', 'Listredirects' ),
-		'Revisiondelete'            => array( 'SpecialPage', 'Revisiondelete', 'deleterevision' ),
+		'Revisiondelete'            => array( 'UnlistedSpecialPage', 'Revisiondelete', 'deleterevision' ),
 		'Unusedtemplates'           => array( 'SpecialPage', 'Unusedtemplates' ),
 		'Randomredirect'            => array( 'SpecialPage', 'Randomredirect' ),
 		'Withoutinterwiki'          => array( 'SpecialPage', 'Withoutinterwiki' ),
@@ -147,7 +147,9 @@ class SpecialPage
 		'Mytalk'                    => array( 'SpecialMytalk' ),
 		'Mycontributions'           => array( 'SpecialMycontributions' ),
 		'Listadmins'                => array( 'SpecialRedirectToSpecial', 'Listadmins', 'Listusers', 'sysop' ),
-	);
+		'MergeHistory'              => array( 'SpecialPage', 'MergeHistory', 'mergehistory' ),
+		'Listbots'                  => array( 'SpecialRedirectToSpecial', 'Listbots', 'Listusers', 'bot' ),
+		);
 
 	static public $mAliases;
 	static public $mListInitialised = false;
@@ -486,6 +488,11 @@ class SpecialPage
 
 	/**
 	 * Get the local name for a specified canonical name
+	 *
+	 * @param $name
+	 * @param mixed $subpage Boolean false, or string
+	 *
+	 * @return string
 	 */
 	static function getLocalNameFor( $name, $subpage = false ) {
 		global $wgContLang;
@@ -642,7 +649,7 @@ class SpecialPage
 		if ( $this->userCanExecute( $wgUser ) ) {
 			$func = $this->mFunction;
 			// only load file if the function does not exist
-			if(!function_exists($func) and $this->mFile) {
+			if(!is_callable($func) and $this->mFile) {
 				require_once( $this->mFile );
 			}
 			# FIXME: these hooks are broken for extensions and anything else that subclasses SpecialPage. 
@@ -650,7 +657,7 @@ class SpecialPage
 				$this->outputHeader();
 			if ( ! wfRunHooks( 'SpecialPageExecuteBeforePage', array( &$this, &$par, &$func ) ) )
 				return;
-			$func( $par, $this );
+			call_user_func( $func, $par, $this );
 			if ( ! wfRunHooks( 'SpecialPageExecuteAfterPage', array( &$this, &$par, &$func ) ) )
 				return;
 		} else {
@@ -776,7 +783,7 @@ class SpecialRedirectToSpecial extends UnlistedSpecialPage {
 class SpecialMypage extends UnlistedSpecialPage {
 	function __construct() {
 		parent::__construct( 'Mypage' );
-		$this->mAllowedRedirectParams = array( 'action' );
+		$this->mAllowedRedirectParams = array( 'action' , 'preload' , 'editintro' );
 	}
 
 	function getRedirect( $subpage ) {
@@ -796,7 +803,7 @@ class SpecialMypage extends UnlistedSpecialPage {
 class SpecialMytalk extends UnlistedSpecialPage {
 	function __construct() {
 		parent::__construct( 'Mytalk' );
-		$this->mAllowedRedirectParams = array( 'action' );
+		$this->mAllowedRedirectParams = array( 'action' , 'preload' , 'editintro' );
 	}
 
 	function getRedirect( $subpage ) {
@@ -823,5 +830,3 @@ class SpecialMycontributions extends UnlistedSpecialPage {
 		return SpecialPage::getTitleFor( 'Contributions', $wgUser->getName() );
 	}
 }
-
-

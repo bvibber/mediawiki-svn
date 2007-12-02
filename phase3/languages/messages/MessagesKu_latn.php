@@ -5,6 +5,8 @@
  *
  * @author Bangin
  * @author Nike
+ * @author SieBot
+ * @author Siebrand
  */
 
 $namespaceNames = array(
@@ -220,29 +222,29 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Der barê {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:Der barê',
+'aboutpage'         => 'Project:Der barê',
 'bugreports'        => 'Raporên çewtiyan',
-'bugreportspage'    => '{{ns:project}}:Raporên çewtiyan',
+'bugreportspage'    => 'Project:Raporên çewtiyan',
 'copyright'         => 'Ji bo naverokê $1 derbas dibe.',
 'copyrightpagename' => 'Mafên nivîsanê',
 'copyrightpage'     => '{{ns:project}}:Mafên nivîsanê',
 'currentevents'     => 'Bûyerên rojane',
-'currentevents-url' => 'Bûyerên rojane',
+'currentevents-url' => 'Project:Bûyerên rojane',
 'disclaimers'       => 'Ferexetname',
-'disclaimerpage'    => '{{ns:project}}:Ferexetname',
+'disclaimerpage'    => 'Project:Ferexetname',
 'edithelp'          => 'Alîkarî ji bo guherandin',
-'edithelppage'      => '{{ns:help}}:Rûpeleke çawa biguherînim',
+'edithelppage'      => 'Help:Rûpeleke çawa biguherînim',
 'faq'               => 'Pirs û Bersîv (FAQ)',
-'faqpage'           => '{{ns:project}}:Pirs û Bersîv',
-'helppage'          => '{{ns:help}}:Alîkarî',
+'faqpage'           => 'Project:Pirs û Bersîv',
+'helppage'          => 'Help:Alîkarî',
 'mainpage'          => 'Destpêk',
-'policy-url'        => '{{ns:project}}:Qebûlkirin',
+'policy-url'        => 'Project:Qebûlkirin',
 'portal'            => 'Portala komê',
-'portal-url'        => '{{ns:project}}:Portala komê',
+'portal-url'        => 'Project:Portala komê',
 'privacy'           => "Parastinê data'yan",
-'privacypage'       => "{{ns:project}}:Parastinê data'yan",
+'privacypage'       => "Project:Parastinê data'yan",
 'sitesupport'       => 'Ji bo Weqfa Wikimedia Beş',
-'sitesupport-url'   => '{{ns:project}}:Alîkarîya diravî',
+'sitesupport-url'   => 'Project:Alîkarîya diravî',
 
 'badaccess'        => 'Eror li bi dest Hînan',
 'badaccess-group0' => 'Tu nikanî vê tiştî bikê.',
@@ -275,7 +277,7 @@ $messages = array(
 'page-rss-feed'           => '"$1" RSS Feed',
 'page-atom-feed'          => '"$1" Atom Feed',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Gotar',
 'nstab-user'      => 'Bikarhêner',
 'nstab-media'     => 'Medya',
@@ -291,7 +293,7 @@ $messages = array(
 'nosuchaction'      => 'Çalakiyek bi vê rengê tune',
 'nosuchactiontext'  => "Ew tişta yê di wê URL'ê da tê gotin ji MediaWiki netê çêkirin.",
 'nosuchspecialpage' => 'Rûpeleke taybet bi vê rengê tune',
-'nospecialpagetext' => "'''<big>Rûpelê taybetî yê te xwastîyê tune ye.</big>'''
+'nospecialpagetext' => "<big>'''Rûpelê taybetî yê te xwastîyê tune ye.'''</big>
 
 Hemû rûpelên taybetî di [[{{ns:special}}:Specialpages|lîsteya rûpelên taybetî]] da werin dîtin.",
 
@@ -345,6 +347,7 @@ Fonksîyon: $1<br />
 Jêpirskirin: $2",
 'viewsource'           => 'Çavkanî',
 'viewsourcefor'        => 'ji $1 ra',
+'actionthrottled'      => 'Hejmarê guherandinan hatîye hesibandin',
 'protectedpagetext'    => 'Ev rûpela hatîye parastin ji bo nenivîsandinê.',
 'viewsourcetext'       => 'Tu dikarê li çavkanîyê vê rûpelê sekê û wê kopîbikê:',
 'protectedinterface'   => "Di vê rûpelê da nivîsandin ji bo interface'î zimanan yê vê software'ê ye. Ew tê parstin ji bo vandalîzm li vê derê çênebe.",
@@ -355,6 +358,8 @@ $2
 
 </strong>',
 'namespaceprotected'   => "Qebûlkirinê te tune, ku tu vê rûpelê di namespace'a $1 da biguherînê.",
+'customcssjsprotected' => 'Qebûlkirinên te tune ne, tu nikanê vê rûpelê biguherînê, ji ber ku di vir da tercihên bikarhênerekî din hene.',
+'ns-specialprotected'  => "Rûpel di namespace'a {{ns:special}} nikanin werin guherandin.",
 
 # Login and logout pages
 'logouttitle'                => 'Derketina bikarhêner',
@@ -369,6 +374,7 @@ Hesaba te hat afirandin. Tu dikarî niha tercîhên xwe eyar bikî.',
 'yourpasswordagain'          => 'Şîfreya xwe careke din binîvîse',
 'remembermypassword'         => 'Şifreya min di her rûniştdemê de bîne bîra xwe.',
 'yourdomainname'             => 'Domaînê te',
+'externaldberror'            => "Ya şaşbûnek di naskirinê derva heye, ya tu nikarî account'î xwe yê derva bikarwînê.",
 'loginproblem'               => '<b>Di qeyda te (login) de pirsgirêkek derket.</b><br />Careke din biceribîne!',
 'login'                      => 'Têkeve (login)',
 'loginprompt'                => "<b>Eger tu xwe nû qeyd bikî, nav û şîfreya xwe hilbijêre.</b> Ji bo xwe qeyd kirinê di {{SITENAME}} de divê ku ''cookies'' gengaz be.",
@@ -383,32 +389,51 @@ Hesaba te hat afirandin. Tu dikarî niha tercîhên xwe eyar bikî.',
 'gotaccountlink'             => 'Têkeve (login)',
 'createaccountmail'          => 'bi e-name',
 'badretype'                  => 'Herdu şîfreyên ku te nivîsîn hevûdin nagirin.',
+'userexists'                 => 'Ev navî bikarhênerî berê tê bikaranîn. Xêra xwe navekî din bibe.',
 'youremail'                  => 'E-maila te*',
 'username'                   => 'Navê bikarhêner:',
 'uid'                        => "ID'ya bikarhêner:",
 'yourrealname'               => 'Navê te yê rastî*',
 'yourlanguage'               => 'Ziman',
+'yourvariant'                => 'Varîyant',
 'yournick'                   => 'Leqeba te (ji bo îmza)',
+'badsig'                     => 'Nivîsandinê îmzê ne baş e; xêra xwe nivîsandina HTML seke, ku şaşbûn hene ya na.',
 'badsiglength'               => 'Navî te zêde dirêj e; ew gireke di bin $1 nîşanan da be.',
 'email'                      => 'E-name',
+'prefs-help-realname'        => 'Ne gereke. Tu dikarî navî xwe binivisînê, ew ê bi karkirên te were nivîsandin.',
 'loginerror'                 => 'Çewtî (Login error)',
+'prefs-help-email'           => 'Adrêsa te yê e-nameyan ne gereke were nivîsandin, lê ew qebûldike, ku bikarhênerên din vê naskirinê te kanibin e-nameyan ji te ra bişînin.',
+'prefs-help-email-required'  => 'Adrêsa e-nameyan gereke.',
+'nocookiesnew'               => "Account'î bikarhêner hatibû çêkirin, lê te xwe qeyd nekirîye. {{SITENAME}} cookie'yan bikartîne ji bo qeydkirinê bikarhêneran. Te cookie'yan girtîye. Xêra xwe cookie'yan qebûlbike, manê tu kanibê bi navî bikarhêner û şîfreya xwe qeydbikê.",
 'nocookieslogin'             => 'Ji bo qeydkirina bikarhêneran {{SITENAME}} "cookies" bikartîne. Te fonksîyona "cookies" girtîye. Xêra xwe kerema xwe "cookies" gengaz bike û careke din biceribîne.',
 'noname'                     => 'Navê ku te nivîsand derbas nabe.',
 'loginsuccesstitle'          => 'Têketin serkeftî!',
 'loginsuccess'               => 'Tu niha di {{SITENAME}} de qeydkirî yî wek "$1".',
 'nosuchuser'                 => 'Bikarhênera/ê bi navê "$1" tune. Navê rast binivîse an bi vê formê <b>hesabeke nû çêke</b>. (Ji bo hevalên nû "Têkeve" çênabe!)',
+'nosuchusershort'            => 'Li vê derê ne bikarhênerek bi navî "$1" heye. Li nivîsandinê xwe seke.',
+'nouserspecified'            => 'Navî xwe wek bikarhêner têkê.',
 'wrongpassword'              => 'Şifreya ku te nivîsand şaşe. Ji kerema xwe careke din biceribîne.',
 'wrongpasswordempty'         => 'Cîhê şîfreya te vala ye. Carekê din binivisîne.',
+'passwordtooshort'           => 'Şîfreya te netê qebûlkirin: Şîfreya te gereke bi kêmani $1 nîşanên xwe hebe û ne wek navî tê wek bikarhêner be.',
 'mailmypassword'             => 'Şîfreyeke nû bi e-mail ji min re bişîne',
+'passwordremindertitle'      => 'Şîfreyakekî nuh ji hesabekî {{SITENAME}} ra',
+'passwordremindertext'       => 'Kesek (têbê tu, bi IP\'ya $1) xwast ku şîfreyekî nuh ji {{SITENAME}} ($4) ji te ra were şandin. Şîfreya nuh ji bikarhêner "$2" niha "$3" e. Tu dikarî niha têkevê û şîfreya xwe biguherînê.
+
+Eger kesekî din vê xastinê ji te ra xast ya şîfreya kevin dîsa hate bîrê te, tu dikarê guh nedê vê peyamê û tu dikarê bi şîfreya xwe yê kevin hên karbikê.',
 'noemail'                    => 'Navnîşana bikarhênerê/î "$1" nehat tomar kirine.',
 'passwordsent'               => 'Ji navnîşana e-mail ku ji bo "$1" hat tomarkirin şîfreyekê nû hat şandin. Vê bistîne û dîsa têkeve.',
+'mailerror'                  => 'Şaşbûnek li cem şandina e-nameyekê: $1',
 'acct_creation_throttle_hit' => 'Biborîne! Te hesab $1 vekirine. Tu êdî nikarî hesabên din vekî.',
+'emailauthenticated'         => 'Adresa e-nameya hate naskirin: $1.',
 'emailconfirmlink'           => 'E-Mail adresê xwe nasbike',
 'accountcreated'             => 'Account hate çêkirin',
+'accountcreatedtext'         => 'Hesabê bikarhêneran ji $1 ra hate çêkirin.',
+'createaccount-title'        => 'Çêkirina hesabekî ji {{SITENAME}}',
 'loginlanguagelabel'         => 'Ziman: $1',
 
 # Password reset dialog
-'resetpass_text' => '<!-- Nivîsê xwe li vir binivisîne -->',
+'resetpass_text'   => '<!-- Nivîsê xwe li vir binivisîne -->',
+'resetpass_header' => 'Şîfreya xwe betalbike',
 
 # Edit page toolbar
 'bold_sample'     => 'Nivîsa estûr',
@@ -436,8 +461,10 @@ Hesaba te hat afirandin. Tu dikarî niha tercîhên xwe eyar bikî.',
 'savearticle'            => 'Rûpelê tomar bike',
 'preview'                => 'Pêşdîtin',
 'showpreview'            => 'Pêşdîtin',
+'showlivepreview'        => 'Pêşdîtinê zindî',
 'showdiff'               => 'Guherandinê nîşan bide',
 'anoneditwarning'        => "'''Zanibe:''' Tu neketîyê! Navnîşana IP'ya te wê di dîroka guherandina vê rûpelê da bê tomar kirin.",
+'summary-preview'        => 'Pêşdîtinê kurtenivîsê',
 'subject-preview'        => 'Pêşdîtinê sernivîsê',
 'blockedtitle'           => 'Bikarhêner hat asteng kirin',
 'blockedtext'            => "<big>'''Navî te ya IP'ya te hate astengkirin.'''</big>
@@ -448,7 +475,7 @@ Astengkirinê te ji $1 hate çêkirin. Sedemê astengkirinê te ev e: ''$2''.
 * Xelasbûnê astengkirinê: $6
 * Astengkirinê ji van ra: $7
 
-Tu dikarî bi $1 ya [[{{MediaWiki:grouppage-sysop}}|koordînatorekî]] din ra ji astengkirinê te ra dengkê. Tu nikanê 'Ji vê/î bikarhênerê/î re e-name bişîne' bikarwîne eger te di [[Special:Preferences|tercihên xwe]] da adrêsê e-nameyekê nenivîsandîye ya tu ji vê fonksîyonê ra jî hatîyê astengkirin.
+Tu dikarî bi $1 ya [[{{MediaWiki:Grouppage-sysop}}|koordînatorekî]] din ra ji astengkirinê te ra dengkê. Tu nikanê 'Ji vê/î bikarhênerê/î re e-name bişîne' bikarwîne eger te di [[Special:Preferences|tercihên xwe]] da adrêsê e-nameyekê nenivîsandîye ya tu ji vê fonksîyonê ra jî hatîyê astengkirin.
 
 IP'yê te yê niha $3 ye, û ID'ya astengkirinê te #$5 e. Xêra xwe yek ji van nimran têke peyamê xwe.",
 'whitelistedittitle'     => 'Ji bo guherandinê vê gotarê tu gireke xwe qeydbikê.',
@@ -462,7 +489,7 @@ IP'yê te yê niha $3 ye, û ID'ya astengkirinê te #$5 e. Xêra xwe yek ji van 
 'accmailtext'            => "Şîfreya '$1' hat şandin ji $2 re.",
 'newarticle'             => '(Nû)',
 'newarticletext'         => "Ev rûpel hîn tune. Eger tu bixwazî vê rûpelê çêkî, dest bi nivîsandinê bike û piştre qeyd bike. '''Wêrek be''', biceribîne!<br />
-Ji bo alîkarî binêre: [[{{MediaWiki:helppage}}|Alîkarî]].<br />
+Ji bo alîkarî binêre: [[{{MediaWiki:Helppage}}|Alîkarî]].<br />
 Eger tu bi şaştî hatî, bizivire rûpela berê.",
 'anontalkpagetext'       => "----
 ''Ev rûpela guftûgo ye ji bo bikarhênerên nediyarkirî ku hîn hesabekî xwe çênekirine an jî bikarnaînin. Ji ber vê yekê divê em wan bi navnîşana IP ya hejmarî nîşan bikin. Navnîşaneke IP dikare ji aliyê gelek kesan ve were bikaranîn. Heger tu bikarhênerekî nediyarkirî bî û bawerdikî ku nirxandinên bê peywend di der barê te de hatine kirin ji kerema xwe re [[Special:Userlogin|hesabekî xwe veke an jî têkeve]] da ku tu xwe ji tevlîheviyên bi bikarhênerên din re biparêzî.''",
@@ -569,7 +596,7 @@ hidden from Sysops. See the [[Special:Ipblocklist|IP block list]] for the list o
 
 # Search results
 'searchresults'         => 'Encamên lêgerînê',
-'searchresulttext'      => 'Ji bo zêdetir agahî der barê lêgerînê di {{SITENAME}} de, binêre [[{{MediaWiki:helppage}}|Searching {{SITENAME}}]].',
+'searchresulttext'      => 'Ji bo zêdetir agahî der barê lêgerînê di {{SITENAME}} de, binêre [[{{MediaWiki:Helppage}}|Searching {{SITENAME}}]].',
 'searchsubtitle'        => 'Ji bo query "[[:$1]]"',
 'searchsubtitleinvalid' => 'Ji bo query "$1"',
 'noexactmatch'          => "'''Rûpeleke bi navê \"\$1\" tune.''' Tu dikarî [[:\$1|vê rûpelê biafirînî]]",
@@ -592,9 +619,13 @@ $2 Ragihandinan nîşan bide &amp;nbsp; Lêbigere: $3 $9',
 # Preferences page
 'preferences'       => 'Tercîhên min',
 'mypreferences'     => 'Tercihên min',
+'prefs-edits'       => 'Hejmarê guherandinan:',
 'prefsnologin'      => 'Xwe qeyd nekir',
 'changepassword'    => 'Şîfre biguherîne',
 'skin'              => 'Pêste',
+'math'              => 'TeX',
+'dateformat'        => 'Formata rojê',
+'datedefault'       => 'Tercih tune ne',
 'datetime'          => 'Dem û rêkewt',
 'prefs-personal'    => 'Agahiyên bikarhênerê/î',
 'prefs-rc'          => 'Guherandinên dawî',
@@ -654,10 +685,10 @@ $2 Ragihandinan nîşan bide &amp;nbsp; Lêbigere: $3 $9',
 
 Yek ji lînkên jêr ji bo bikarhînana wêne an faylê di gotarê de bikar bihîne:
 
-* '''<nowiki>[[{{ns:Image}}:File.jpg]]</nowiki>'''
-* '''<nowiki>[[{{ns:Image}}:File.png|alt text]]</nowiki>'''
+* '''<nowiki>[[{{ns:image}}:File.jpg]]</nowiki>'''
+* '''<nowiki>[[{{ns:image}}:File.png|alt text]]</nowiki>'''
 anjî ji bo faylên dengî
-* '''<nowiki>[[{{ns:Media}}:File.ogg]]</nowiki>'''",
+* '''<nowiki>[[{{ns:media}}:File.ogg]]</nowiki>'''",
 'uploadlogpage'        => 'Înformasyon li ser barkirinê',
 'filename'             => 'Navê dosyayê',
 'filedesc'             => 'Kurte',
@@ -674,7 +705,7 @@ anjî ji bo faylên dengî
 Navî datayê yê tê barkirin: <strong><tt>$1</tt></strong><br />
 Navî datayê yê berê heyê: <strong><tt>$2</tt></strong><br />
 Xêra xwe navekî din bibîne.',
-'fileexists-thumb'     => "'''<center>Wêne yê berê heye</center>'''",
+'fileexists-thumb'     => "<center>'''Wêne yê berê heye'''</center>",
 'file-thumbnail-no'    => 'Navî vê datayê bi <strong><tt>$1</tt></strong> destpêdike. Ev dibêje ku ev wêneyekî çûçik e <i>(thumbnail)</i>. Xêra xwe seke, ku belkî versyonekî mezin yê vê wêneyê li cem te heye û wê wêneyê mezintir di bin navî orîjînal da barbike.',
 'fileexists-forbidden' => 'Medyayek bi vê navî heye; xêra xwe şonda here û vê medyayê bi navekî din barbike.
 [[Image:$1|thumb|center|$1]]',
@@ -734,6 +765,9 @@ Xêra xwe navekî din bibîne.',
 # Unused templates
 'unusedtemplateswlh' => 'lînkên din',
 
+# Random page
+'randompage' => 'Rûpelek bi helkeft',
+
 # Statistics
 'statistics'    => 'Statîstîk',
 'sitestats'     => 'Statîstîkên rûpelê',
@@ -771,7 +805,6 @@ Dirêjahîya [http://meta.wikimedia.org/wiki/Help:Job_queue ''job queue''] '''$7
 'wantedpages'             => 'Rûpelên ku tên xwestin',
 'mostcategories'          => 'Gotar bi pir kategorîyan',
 'allpages'                => 'Hemû rûpel',
-'randompage'              => 'Rûpelek bi helkeft',
 'shortpages'              => 'Rûpelên kurt',
 'longpages'               => 'Rûpelên dirêj',
 'deadendpages'            => 'Rûpelên bê dergeh',
@@ -898,7 +931,7 @@ Eger tu dixazê lîstêya xwe yê şopandinê biguherînê, li
 {{fullurl:{{ns:special}}:Watchlist/edit}} seke.
 
 "Feedback" û alîkarîyê din:
-{{fullurl:{{MediaWiki:helppage}}}}',
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'                  => 'Rûpelê jê bibe',
@@ -986,7 +1019,7 @@ Guhartoya dawî bi [[User:$3|$3]] ([[User talk:$3|guftûgo]]).',
 # Block/unblock
 'blockip'                => 'Bikarhêner asteng bike',
 'blockiptext'            => 'Ji bo astengkirina nivîsandinê ji navnîşaneke IP an bi navekî bikarhêner, vê formê bikarbîne.
-Ev bes gireke were bikaranîn ji bo vandalîzmê biskinîne (bi vê [[{{MediaWiki:policy-url}}|qebûlkirinê]]). 
+Ev bes gireke were bikaranîn ji bo vandalîzmê biskinîne (bi vê [[{{MediaWiki:Policy-url}}|qebûlkirinê]]). 
 
 Sedemekê binivîse!',
 'ipaddress'              => "adresê IP'yekê",
@@ -1063,6 +1096,7 @@ da bikarî navê wê rûpelê biguherînî.',
 'movelogpage'             => 'Reşahiya nav guherandin',
 'movelogpagetext'         => 'Li jêr lîsteyek ji rûpelan ku navê wan hatiye guherandin heye.',
 'movereason'              => 'Sedem',
+'revertmove'              => 'şondabike',
 'delete_and_move'         => 'Jêbibe û nav biguherîne',
 'delete_and_move_confirm' => 'Erê, wê rûpelê jêbibe',
 'delete_and_move_reason'  => 'Jêbir ji bo navguherandinê',
@@ -1072,7 +1106,7 @@ da bikarî navê wê rûpelê biguherînî.',
 'allmessagesname'           => 'Nav',
 'allmessagescurrent'        => 'Texta niha',
 'allmessagestext'           => 'Ev lîsteya hemû mesajên di namespace a MediaWiki: de ye.',
-'allmessagesnotsupportedDB' => "'''Special:Allmessages''' cannot be used because '''\$wgUseDatabaseMessages''' is switched off.",
+'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' cannot be used because '''\$wgUseDatabaseMessages''' is switched off.",
 
 # Thumbnails
 'thumbnail-more' => 'Mezin bike',
@@ -1101,6 +1135,7 @@ da bikarî navê wê rûpelê biguherînî.',
 'tooltip-ca-talk'                 => 'guftûgo û şîrove ser vê rûpelê',
 'tooltip-ca-edit'                 => 'Vê rûpelê biguherîne! Berê qeydkirinê bişkoka "Pêşdîtin',
 'tooltip-ca-addsection'           => 'Beşekê zêde bike.',
+'tooltip-ca-viewsource'           => 'Ev rûpela tê parastin. Tu dikarê bes li çavkanîyê sekê.',
 'tooltip-ca-history'              => 'Versyonên berê yên vê rûpelê.',
 'tooltip-ca-protect'              => 'Vê rûplê biparêze',
 'tooltip-ca-delete'               => 'Vê rûpelê jê bibe',
@@ -1201,6 +1236,7 @@ if (wgUserLanguage == "ku-arab")
 'file-info'      => '(mezinbûnê data: $1, MIME-typ: $2)',
 'file-info-size' => '($1 × $2 pixel, mezinbûnê data: $3, MIME-typ: $4)',
 'file-nohires'   => '<small>Versyonekî jê mezintir tune.</small>',
+'show-big-image' => 'Mezînbûn',
 
 # Special:Newimages
 'newimages' => 'Pêşangeha wêneyên nû',

@@ -382,28 +382,28 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Про {{grammar:accusative|{{SITENAME}}}}',
-'aboutpage'         => '{{ns:project}}:Про',
+'aboutpage'         => 'Project:Про',
 'bugreports'        => 'Звіт про помилку',
-'bugreportspage'    => '{{ns:project}}:Звіт про помилку',
+'bugreportspage'    => 'Project:Звіт про помилку',
 'copyright'         => 'Вміст доступний згідно з $1.',
 'copyrightpagename' => 'Авторські права проекту {{SITENAME}}',
 'copyrightpage'     => '{{ns:project}}:Авторське право',
 'currentevents'     => 'Поточні події',
-'currentevents-url' => 'Поточні події',
+'currentevents-url' => 'Project:Поточні події',
 'disclaimers'       => 'Умови використання',
-'disclaimerpage'    => '{{ns:project}}:Умови використання',
+'disclaimerpage'    => 'Project:Умови використання',
 'edithelp'          => 'Довідка про редагування',
-'edithelppage'      => '{{ns:project}}:Як редагувати статті',
+'edithelppage'      => 'Help:Як редагувати статті',
 'faq'               => 'Часті питання',
-'faqpage'           => '{{ns:project}}:Часті питання',
-'helppage'          => '{{ns:project}}:Довідка',
+'faqpage'           => 'Project:Часті питання',
+'helppage'          => 'Help:Довідка',
 'mainpage'          => 'Головна стаття',
 'portal'            => 'Портал спільноти',
-'portal-url'        => '{{ns:project}}:Портал спільноти',
+'portal-url'        => 'Project:Портал спільноти',
 'privacy'           => 'Політика конфіденційності',
-'privacypage'       => '{{ns:project}}:Політика конфіденційності',
+'privacypage'       => 'Project:Політика конфіденційності',
 'sitesupport'       => 'Пожертвування',
-'sitesupport-url'   => '{{ns:project}}:Пожертвування',
+'sitesupport-url'   => 'Project:Пожертвування',
 
 'badaccess'        => 'Доступ заборонено',
 'badaccess-group0' => 'Вам не дозволено виконувати дію, яку ви запросили.',
@@ -1432,7 +1432,7 @@ $NEWPAGE
 'ipbotheroption'              => 'Інший термін',
 'badipaddress'                => 'IP-адреса записана в невірному форматі, або користувача з таким іменем не існує.',
 'blockipsuccesssub'           => 'Блокування проведено',
-'blockipsuccesstext'          => '[[{{ns:Special}}:Contributions/$1|«$1»]] заблоковано.
+'blockipsuccesstext'          => '[[{{ns:special}}:Contributions/$1|«$1»]] заблоковано.
 <br />Див. [[{{ns:special}}:Ipblocklist|список заблокованих IP-адрес]].',
 'unblockip'                   => 'Розблокувати IP-адресу',
 'unblockiptext'               => 'Використовуйте подану нижче форму, щоб відновити можливість збереження з раніше заблокованої IP-адреси.',
@@ -1553,7 +1553,7 @@ $NEWPAGE
 
 Щоб експортувати статті, введіть їх назви в поле редагування, одну назву на рядок, й виберіть чи бажаєте ви експортувати всю історію змін статей, чи тільки останні версії статей.
 
-Ви також можете використовувати спеціальну адресу для експорту тільки останньої версії. Наприклад, для сторіники «{{int:mainpage}}» ця адреса така: [[{{ns:Special}}:Export/{{int:mainpage}}]].',
+Ви також можете використовувати спеціальну адресу для експорту тільки останньої версії. Наприклад, для сторіники «{{int:mainpage}}» ця адреса така: [[{{ns:special}}:Export/{{int:mainpage}}]].',
 'exportcuronly'   => 'Включати тільки поточну версію, без повної історії',
 'exportnohistory' => "----
 '''Зауваження:''' експорт всієї історії змін сторінок вимкнутий через проблеми з ресурсами.",
@@ -1565,7 +1565,7 @@ $NEWPAGE
 'allmessagesdefault'        => 'Стандартний текст',
 'allmessagescurrent'        => 'Поточний текст',
 'allmessagestext'           => 'Це список усіх системних повідомлень, які доступні в просторі імен «MediaWiki:».',
-'allmessagesnotsupportedDB' => "'''Special:Allmessages''' не підтримується, так як вимкнена опція '''wgUseDatabaseMessages'''.",
+'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' не підтримується, так як вимкнена опція '''wgUseDatabaseMessages'''.",
 'allmessagesfilter'         => 'Фільтр в форматі регулярного виразу:',
 'allmessagesmodified'       => 'Показати лише змінені',
 

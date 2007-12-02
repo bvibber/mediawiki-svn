@@ -6,6 +6,7 @@
  * @author ChrisPtDe
  * @author G - ג
  * @author Nike
+ * @author Siebrand
  */
 
 $fallback = 'fr';
@@ -173,7 +174,7 @@ $messages = array(
 'category-empty'        => "''Ceta catègorie contint gins d’articllo, de sot-catègorie ou de fichiér multimèdia.''",
 
 'mainpagetext'      => "<big>'''MediaWiki at étâ enstalâ avouéc reusséta.'''</big>",
-'mainpagedocfooter' => 'Consultâd lo [http://meta.wikimedia.org/wiki/Aide:Contenu Guido de l’utilisator] por més d’enformacions sur l’usâjo de la programeria vouiqui.
+'mainpagedocfooter' => 'Consultâd lo [http://meta.wikimedia.org/wiki/Aide:Contenu Guido d’utilisator] por més d’enformacions sur l’usâjo de la programeria vouiqui.
 
 == Dèmarrar avouéc MediaWiki ==
 
@@ -255,28 +256,28 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'A propôs de {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:A propôs',
+'aboutpage'         => 'Project:A propôs',
 'bugreports'        => 'Rapôrt d’èrrors',
-'bugreportspage'    => '{{ns:project}}:Rapôrt d’èrrors',
+'bugreportspage'    => 'Project:Rapôrt d’èrrors',
 'copyright'         => 'Lo contegnu est disponiblo d’aprés los tèrmos de la licence $1.',
 'copyrightpagename' => 'licence {{SITENAME}}',
 'copyrightpage'     => '{{ns:project}}:Copyright',
 'currentevents'     => 'Novèles',
-'currentevents-url' => 'Portâl:Novèles',
+'currentevents-url' => 'Project:Novèles',
 'disclaimers'       => 'Avèrtissements',
-'disclaimerpage'    => '{{ns:project}}:Avèrtissements g·ènèrals',
+'disclaimerpage'    => 'Project:Avèrtissements g·ènèrals',
 'edithelp'          => 'Éde',
-'edithelppage'      => '{{ns:help}}:Coment èditar/modifiar una pâge',
-'faqpage'           => '{{ns:help}}:FAQ',
-'helppage'          => '{{ns:help}}:Somèro',
+'edithelppage'      => 'Help:Coment èditar/modifiar una pâge',
+'faqpage'           => 'Project:FAQ',
+'helppage'          => 'Help:Somèro',
 'mainpage'          => 'Reçua',
 'policy-url'        => 'Project:Policy',
 'portal'            => 'Comunôtât',
-'portal-url'        => '{{ns:project}}:Reçua',
+'portal-url'        => 'Project:Reçua',
 'privacy'           => 'Politica de confidencialitât',
-'privacypage'       => '{{ns:project}}:Politique de confidentialité',
+'privacypage'       => 'Project:Politique de confidentialité',
 'sitesupport'       => 'Fâre un don',
-'sitesupport-url'   => '{{ns:project}}:Faire un don',
+'sitesupport-url'   => 'Project:Faire un don',
 
 'badaccess'        => 'Èrror de pèrmission',
 'badaccess-group0' => 'Vos avéd pas los drêts sufisents por rèalisar l’accion que vos demandâd.',
@@ -309,7 +310,7 @@ $messages = array(
 'page-rss-feed'           => 'Flux RSS de « $1 »',
 'page-atom-feed'          => 'Flux Atom de « $1 »',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Articllo',
 'nstab-user'      => 'Pâge utilisator',
 'nstab-media'     => 'Mèdia',
@@ -325,7 +326,7 @@ $messages = array(
 'nosuchaction'      => 'Accion encognua',
 'nosuchactiontext'  => 'L’accion spècefiâ dens l’URL est pas recognua per lo vouiqui.',
 'nosuchspecialpage' => 'Pâge spèciâla pas ègzistenta',
-'nospecialpagetext' => "'''<big>Vos éd demandâ una pâge spèciâla qu’est pas recognua per lo vouiqui.</big>'''
+'nospecialpagetext' => "<big>'''Vos éd demandâ una pâge spèciâla qu’est pas recognua per lo vouiqui.'''</big>
 
 Una lista de les pâges spèciâles pôt étre trovâ dessus [[Special:Specialpages]].",
 
@@ -354,7 +355,7 @@ $1',
 'readonlytext'         => 'Les aponses et mises a jorn sur la bâsa de balyês sont ora blocâs, probâblament por pèrmetre la mantegnence de la bâsa, aprés què, tot rentrerat dedens l’ôrdre.
 
 L’administrator èyent vèrrolyê la bâsa de balyês at balyê l’èxpllicacion siuventa : $1',
-'missingarticle'       => 'La bâsa de balyês at pas possu trovar lo tèxte d’una pâge qu’ègziste portant, que lo nom est « $1 ».
+'missingarticle'       => 'La bâsa de balyês at pas possu trovar lo tèxte d’una pâge ègzistenta, que lo nom est « $1 ».
 
 Cen est g·ènèralament diu a un dif pas més utilisâ ou un lim vers l’historico d’una pâge èfaciê.
 
@@ -385,6 +386,8 @@ Fonccion : $1<br />
 Requéta : $2',
 'viewsource'           => 'Vêre lo tèxte sôrsa',
 'viewsourcefor'        => 'por $1',
+'actionthrottled'      => 'Accion limitâ',
+'actionthrottledtext'  => 'Por combatre lo spame, l’usâjo de cela accion est limitâ a un cèrtin nombro de côps dens un moment prod côrt. S’acomplét que vos éd dèpassâ ceta limita. Tornâd èprovar dens doux-três menutes.',
 'protectedpagetext'    => 'Ceta pâge at étâ protègiê por empachiér sa modificacion.',
 'viewsourcetext'       => 'Vos pouede vêre et copiyér lo contegnu de la pâge por povêr travalyér dessus :',
 'protectedinterface'   => 'Ceta pâge fornét du tèxte d’entèrface por la programeria et est protègiê por èvitar los abus.',
@@ -438,6 +441,7 @@ Voutron compto utilisator at étâ crèâ. Oubliâd pas de pèrsonalisar voutres
 'prefs-help-realname'        => '(u chouèx) : se vos lo spècefiâd, serat utilisâ por l’atribucion de voutres contribucions.',
 'loginerror'                 => 'Èrror d’identificacion',
 'prefs-help-email'           => '(u chouèx) : pèrmèt de sè veriér vers vos dês lo seto sen dèvouèlar voutra identitât.',
+'prefs-help-email-required'  => 'Una adrèce de mèl est requisa.',
 'nocookiesnew'               => 'Lo compto utilisator at étâ crèâ, mas vos éte pas conèctâ. {{SITENAME}} utilise des cookies por la conèccion mas vos los éd dèsactivâs. Volyéd los activar et vos tornar conèctar avouéc lo mémo nom et lo mémo mot de pâssa.',
 'nocookieslogin'             => '{{SITENAME}} utilise des cookies por la conèccion mas vos los éd dèsactivâs. Volyéd los activar et vos tornar conèctar.',
 'noname'                     => 'Vos éd pas grepâ un nom d’utilisator valido.',
@@ -472,6 +476,11 @@ Devant qu’un ôtro mèl seye emmandâ a cél compto, vos devréd siuvre les en
 'invalidemailaddress'        => 'Ceta adrèce de mèl pôt pas étre accèptâ perce que semble avêr un format envalido. Volyéd entrar una adrèce valida ou lèssiér cél champ vouedo.',
 'accountcreated'             => 'Compto crèâ.',
 'accountcreatedtext'         => 'Lo compto utilisator por $1 at étâ crèâ.',
+'createaccount-title'        => 'Crèacion d’un compto por {{SITENAME}}',
+'createaccount-text'         => 'Quârqu’un ($1) at crèâ un compto por $2 dessus {{SITENAME}}
+($4). Lo mot de pâssa por « $2 » est « $3 ». Vos devriâd uvrir una sèssion et changiér dês ora ceti mot de pâssa.
+
+Ignorâd ceti mèssâjo se ceti compto at étâ crèâ per èrror.',
 'loginlanguagelabel'         => 'Lengoua : $1',
 
 # Password reset dialog
@@ -531,7 +540,7 @@ Lo blocâjo at étâ fêt per $1 por la rêson siuventa : ''$2''.
 * Comencement du blocâjo : $8
 * Èxpiracion du blocâjo : $6
 
-Vos pouede vos veriér vers $1 ou yon des ôtros [[{{MediaWiki:grouppage-sysop}}|administrators]] por nen discutar. Vos pouede utilisar la fonccion « Emmandar un mèssâjo a ceti utilisator » ren que s’una adrèce de mèl valida est spècefiâ dens voutres [[Special:Preferences|prèferences]]. Voutra adrèce IP d’ora est $3 et voutron identifiant de blocâjo est #$5. Volyéd los spècefiar dens tota requéta.",
+Vos pouede vos veriér vers $1 ou yon des ôtros [[{{MediaWiki:Grouppage-sysop}}|administrators]] por nen discutar. Vos pouede utilisar la fonccion « Emmandar un mèssâjo a ceti utilisator » ren que s’una adrèce de mèl valida est spècefiâ dens voutres [[Special:Preferences|prèferences]]. Voutra adrèce IP d’ora est $3 et voutron identifiant de blocâjo est #$5. Volyéd los spècefiar dens tota requéta.",
 'autoblockedtext'           => "Voutra adrèce IP at étâ blocâ ôtomaticament perce qu’el at étâ utilisâ per un ôtro utilisator, lui-mémo blocâ per $1.
 La rêson balyê est :
 
@@ -540,11 +549,12 @@ La rêson balyê est :
 * Comencement du blocâjo : $8
 * Èxpiracion du blocâjo : $6
 
-Vos pouede vos veriér vers $1 ou yon des ôtros [[{{MediaWiki:grouppage-sysop}}|administrators]] por nen discutar.
+Vos pouede vos veriér vers $1 ou yon des ôtros [[{{MediaWiki:Grouppage-sysop}}|administrators]] por nen discutar.
 
 Se vos éd balyê una adrèce de mèl valida dens voutres [[Special:Preferences|prèferences]] et que son usâjo vos est pas dèfendu, vos pouede utilisar la fonccion « Emmandar un mèssâjo a ceti utilisator » por vos veriér vers un administrator.
 
 Voutra adrèce IP est $3 et voutron identifiant de blocâjo est #$5. Volyéd los spècefiar dens tota requéta.",
+'blockednoreason'           => 'Niona rêson balyê',
 'blockedoriginalsource'     => "Lo code sôrsa de '''$1''' est endicâ ce-desot :",
 'blockededitsource'         => "Lo contegnu de '''voutres modificacions''' aplicâs a '''$1''' est endicâ ce-desot :",
 'whitelistedittitle'        => 'Enregistrament nècèssèro por modifiar lo contegnu',
@@ -563,14 +573,14 @@ Voutra adrèce IP est $3 et voutron identifiant de blocâjo est #$5. Volyéd los
 'accmailtitle'              => 'Mot de pâssa emmandâ.',
 'accmailtext'               => 'Lo mot de pâssa de « $1 » at étâ emmandâ a l’adrèce $2.',
 'newarticle'                => '(Novél)',
-'newarticletext'            => "Vos éd siuvu un lim vers una pâge qu’ègziste p’oncor. Por crèar cela pâge, entrâd voutron tèxte dens la bouèta ce-desot (vos pouede consultar [[{{MediaWiki:helppage}}|la pâge d’éde]] por més d’enformacion). Se vos éte arrevâ ice per èrror, clicâd sur lo boton '''retôrn''' de voutron navigator.",
-'anontalkpagetext'          => "---- ''Vos éte sur la pâge de discussion d’un utilisator anonimo qu’at p’oncor crèâ un compto ou que l’utilise pas. Por cela rêson, nos devens utilisar son adrèce IP por l’identifiar. Una adrèce IP pôt étre partagiê per plusiors utilisators. Se vos éte un utilisator anonimo et se vos constatâd que des comentèros que vos regârdont pas vos ont étâ adrèciês, vos pouede [[Special:Userlogin|crèar un compto ou vos conèctar]] por èvitar tota confusion futura avouéc d’ôtros contributors anonimos.''",
+'newarticletext'            => "Vos éd siuvu un lim vers una pâge qu’ègziste p’oncor. Por crèar cela pâge, entrâd voutron tèxte dens la bouèta ce-desot (vos pouede consultar la [[{{MediaWiki:Helppage}}|pâge d’éde]] por més d’enformacion). Se vos éte arrevâ ice per èrror, clicâd sur lo boton '''retôrn''' de voutron navigator.",
+'anontalkpagetext'          => "---- ''Vos éte sur la pâge de discussion d’un utilisator anonimo qu’at p’oncor crèâ un compto ou que l’utilise pas. Por cela rêson, nos devens utilisar son adrèce IP por l’identifiar. Una adrèce IP pôt étre partagiê per plusiors utilisators. Se vos éte un utilisator anonimo et se vos constatâd que des comentèros que vos regârdont pas vos ont étâ adrèciês, vos pouede vos [[Special:Userlogin|conèctar ou crèar un compto]] por èvitar tota confusion futura avouéc d’ôtros contributors anonimos.''",
 'noarticletext'             => 'Y at por lo moment gins de tèxte sur ceta pâge ; vos pouede [[Special:Search/{{PAGENAME}}|lanciér una rechèrche sur lo titro de ceta pâge]] ou [{{fullurl:{{NAMESPACE}}:{{FULLPAGENAME}}|action=edit}} la modifiar].',
 'clearyourcache'            => "'''Nota :''' aprés avêr sôvâ, vos dête forciér lo rechargement de la pâge por vêre los changements : '''Mozilla / Firefox :''' ''Shift-Ctrl-R'' (''Shift-Cmd-R'' en '''Apple Mac'''), '''IE :''' ''Ctrl-F5'', '''Opera :''' ''F5'', '''Safari :''' ''⌘-R'', '''Konqueror :''' ''Ctrl-R''.",
 'usercssjsyoucanpreview'    => "'''Combina :''' utilisâd lo boton « Prèvisualisacion » por èprovar voutra novèla fôlye css/js devant que l’enregistrar.",
 'usercsspreview'            => "'''Rapelâd-vos que vos éte aprés prèvisualisar voutra prôpra fôlye css et qu’el at p’oncor étâ enregistrâ !'''",
 'userjspreview'             => "'''Rapelâd-vos que vos éte aprés visualisar ou èprovar voutron code JavaScript et qu’il at p’oncor étâ enregistrâ !'''",
-'userinvalidcssjstitle'     => "'''Atencion :''' ègziste pas de stilo « $1 ». Rapelâd-vos que les pâges a sè avouéc èxtensions .css et .js utilisont des titros en petiôtes lètres aprés lo nom d’utilisator et la bârra de fraccion /.<br />D’ense, Utilisator:Foo/monobook.css est valido, pendent que Utilisator:Foo/Monobook.css serat una fôlye de stilo envalida.",
+'userinvalidcssjstitle'     => "'''Atencion :''' ègziste pas de stilo « $1 ». Rapelâd-vos que les pâges a sè avouéc èxtensions .css et .js utilisont des titros en petiôtes lètres aprés lo nom d’utilisator et la bârra de fraccion /.<br />D’ense, {{ns:user}}:Foo/monobook.css est valido, pendent que {{ns:user}}:Foo/Monobook.css serat una fôlye de stilo envalida.",
 'updated'                   => '(Betâ a jorn)',
 'note'                      => '<strong>Nota :</strong>',
 'previewnote'               => '<strong>Atencion, ceti tèxte est ren qu’una prèvisualisacion et at p’oncor étâ sôvâ !</strong>',
@@ -608,7 +618,7 @@ vos porréd vêr pas sôvar voutres modificacions d’abôrd. Vos pouede copiyé
 'protectedpagewarning'      => '<strong>ATENCION : ceta pâge est protègiê.
 Solèts los utilisators èyent lo statut d’administrator pôvont la modifiar.</strong>',
 'semiprotectedpagewarning'  => "'''Nota :''' ceta pâge at étâ protègiê de tâla façon que solèts los contributors enregistrâs pouessont la modifiar.",
-'cascadeprotectedwarning'   => "<strong>ATENCION : ceta pâge at étâ protègiê por cen que solèts los [[{{MediaWiki:grouppage-sysop}}|administrators]] pouessont l’èditar. Cela protèccion at étâ fêta perce que ceta pâge est encllua dens {{PLURAL:$1|una pâge protègiê|des pâges protègiês}} avouéc la « protèccion en cascâda » activâ.</strong> Por suprimar la protèccion un administrator dêt enlevar l’encllusion de ''{{FULLPAGENAME}}'' de {{PLURAL:$1|la pâge siuventa|les pâges siuventes}} :",
+'cascadeprotectedwarning'   => "<strong>ATENCION : ceta pâge at étâ protègiê por cen que solèts los [[{{MediaWiki:Grouppage-sysop}}|administrators]] pouessont l’èditar. Cela protèccion at étâ fêta perce que ceta pâge est encllua dens {{PLURAL:$1|una pâge protègiê|des pâges protègiês}} avouéc la « protèccion en cascâda » activâ.</strong> Por suprimar la protèccion un administrator dêt enlevar l’encllusion de ''{{FULLPAGENAME}}'' de {{PLURAL:$1|la pâge siuventa|les pâges siuventes}} :",
 'templatesused'             => 'Modèlos utilisâs sur ceta pâge :',
 'templatesusedpreview'      => 'Modèlos utilisâs dens ceta prèvisualisacion :',
 'templatesusedsection'      => 'Modèlos utilisâs dens ceta sèccion :',
@@ -616,7 +626,7 @@ Solèts los utilisators èyent lo statut d’administrator pôvont la modifiar.<
 'template-semiprotected'    => '(mié-protègiê)',
 'edittools'                 => '<!-- Tot tèxte entrâ ique serat afichiê desot les bouètes de modificacion ou d’impôrt de fichiér. -->',
 'nocreatetitle'             => 'Crèacion de pâge limitâ',
-'nocreatetext'              => 'Ceti seto at rètrent la possibilitât de crèar de novèles pâges. Vos pouede tornar arriér et modifiar una pâge ègzistenta, [[Special:Userlogin|vos conèctar ou crèar un compto]].',
+'nocreatetext'              => 'Ceti seto at rètrent la possibilitât de crèar de novèles pâges. Vos pouede tornar arriér et modifiar una pâge ègzistenta, vos [[Special:Userlogin|conèctar ou crèar un compto]].',
 'nocreate-loggedin'         => 'Vos avéd pas la pèrmission de crèar de novèles pâges sur ceti vouiqui.',
 'permissionserrors'         => 'Èrror de pèrmissions',
 'permissionserrorstext'     => 'Vos avéd pas la pèrmission de fâre l’opèracion demandâ por {{PLURAL:$1|la rêson siuventa|les rêsons siuventes}} :',
@@ -731,7 +741,7 @@ Consultâd la [[Special:Ipblocklist|lista des comptos blocâs]] por la lista des
 
 # Search results
 'searchresults'         => 'Rèsultats de la rechèrche',
-'searchresulttext'      => 'Por més d’enformacions sur la rechèrche dens {{SITENAME}}, vêre [[{{MediaWiki:helppage}}|{{int:help}}]].',
+'searchresulttext'      => 'Por més d’enformacions sur la rechèrche dens {{SITENAME}}, vêre [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "Vos éd rechèrchiê « '''[[:$1]]''' »",
 'searchsubtitleinvalid' => "Vos éd rechèrchiê « '''$1''' »",
 'noexactmatch'          => "'''Niona pâge avouéc lo titro « $1 » ègziste pas.''' Vos pouede [[:$1|crèar cél articllo]].",
@@ -820,7 +830,7 @@ Atencion, lor endèxacion du contegnu de {{SITENAME}} pôt pas étre a jorn.',
 'userrights-user-editname'    => 'Entrâd un nom d’utilisator :',
 'editusergroup'               => 'Modificacion des groupes d’utilisators',
 'userrights-editusergroup'    => 'Èditar los groupes de l’utilisator',
-'saveusergroups'              => 'Sôvar los groupes d’utilisators',
+'saveusergroups'              => 'Sôvar los groupes de l’utilisator',
 'userrights-groupsmember'     => 'Membro de :',
 'userrights-groupsavailable'  => 'Groupes disponiblos :',
 'userrights-groupshelp'       => 'Chouèsésséd/cièrde los groupes desquints vos voléd reteriér ou ben rapondre l’utilisator.
@@ -869,7 +879,7 @@ Los groupes pas sèlèccionâs seront pas modifiâs. Vos pouede dèsèlèccionar
 'diff'                              => 'dif',
 'hide'                              => 'mâscar',
 'show'                              => 'afichiér',
-'number_of_watching_users_pageview' => '[$1 utilisator(s) siuvent(s)]',
+'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|utilisator siuvent|utilisators siuvents}}]',
 'rc_categories'                     => 'Limita de les catègories (sèparacion avouéc « | »)',
 'rc_categories_any'                 => 'Totes',
 'newsectionsummary'                 => '/* $1 */ novèla sèccion',
@@ -922,7 +932,7 @@ ou ben por liyér tot drêt vers lo fichiér :
 Nom du fichiér a importar : <strong><tt>$1</tt></strong><br />
 Nom du fichiér ègzistent : <strong><tt>$2</tt></strong><br />
 la solèta difèrence est la câssa (grantes lètres / petiôtes lètres) de l’èxtension. Volyéd controlar que lo fichiér est difèrent et changiér son nom.',
-'fileexists-thumb'            => "'''<center>Émâge ègzistenta</center>'''",
+'fileexists-thumb'            => "<center>'''Émâge ègzistenta'''</center>",
 'fileexists-thumbnail-yes'    => 'Lo fichiér semble étre una émâge en talye rèduita <i>(thumbnail)</i>. Volyéd controlar lo fichiér <strong><tt>$1</tt></strong>.<br />
 Se lo fichiér controlâ est la méma émâge (dens una rèsolucion mèlyora), y at pas fôta d’importar una vèrsion rèduita.',
 'file-thumbnail-no'           => 'Lo nom du fichiér comence per <strong><tt>$1</tt></strong>. O est possiblo que s’ag·ésse d’una vèrsion rèduita <i>(thumbnail)</i>.
@@ -1046,6 +1056,10 @@ Vos devriâd considèrar s’o est convegnâblo de continuar l’impôrt de cél
 'unusedtemplatestext' => 'Ceta pâge liste totes les pâges de l’èspâço de nom « Modèlo » que sont pas encllues dens niona ôtra pâge. Oubliâd pas de controlar s’y at pas d’ôtros lims vers los modèlos devant que los suprimar.',
 'unusedtemplateswlh'  => 'ôtros lims',
 
+# Random page
+'randompage'         => 'Una pâge a l’hasârd',
+'randompage-nopages' => 'Y at gins de pâge dens ceti èspâço de nom.',
+
 # Random redirect
 'randomredirect'         => 'Una pâge de redirèccion a l’hasârd',
 'randomredirect-nopages' => 'Y at gins de pâge de redirèccion dens ceti èspâço de nom.',
@@ -1113,8 +1127,6 @@ Cen reprèsente una moyena de {{PLURAL:$5|'''$5''' modificacion|'''$5''' modific
 'mostrevisions'           => 'Articllos los ples modifiâs',
 'allpages'                => 'Totes les pâges',
 'prefixindex'             => 'Totes les pâges per premiéres lètres',
-'randompage'              => 'Una pâge a l’hasârd',
-'randompage-nopages'      => 'Y at gins de pâge dens ceti èspâço de nom.',
 'shortpages'              => 'Pâges côrtes',
 'longpages'               => 'Pâges longes',
 'deadendpages'            => 'Pâges en cul-de-sac',
@@ -1147,7 +1159,7 @@ Cen reprèsente una moyena de {{PLURAL:$5|'''$5''' modificacion|'''$5''' modific
 
 'categoriespagetext' => 'Les catègories siuventes ègzistont dens lo vouiqui.',
 'data'               => 'Balyês',
-'userrights'         => 'Maneyance des drêts d’utilisator',
+'userrights'         => 'Maneyance des drêts de l’utilisator',
 'groups'             => 'Groupes d’utilisators',
 'alphaindexline'     => '$1 a $2',
 'version'            => 'Vèrsion',
@@ -1280,7 +1292,7 @@ Por modifiar los paramètres de voutra lista de siuvu, visitâd
 {{fullurl:Special:Watchlist/edit}}
 
 Retôrn et assistance :
-{{fullurl:{{MediaWiki:helppage}}}}',
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'                  => 'Suprimar una pâge',
@@ -1292,7 +1304,7 @@ Retôrn et assistance :
 'confirmdelete'               => 'Confirmar la suprèssion',
 'deletesub'                   => '(Suprèssion de « $1 »)',
 'historywarning'              => 'Atencion : la pâge que vos éte prèst a suprimar at un historico :',
-'confirmdeletetext'           => 'Vos éte prèst a suprimar por tojorn de la bâsa de balyês una pâge ou una émâge, et pués totes ses vèrsions prècèdentes. Volyéd confirmar qu’o est franc cen que vos voléd fâre, que vos en compregnéd les consèquences et que vos féte cen en acôrd avouéc les [[{{MediaWiki:policy-url}}|règlles de dedens]].',
+'confirmdeletetext'           => 'Vos éte prèst a suprimar por tojorn de la bâsa de balyês una pâge ou una émâge, et pués totes ses vèrsions prècèdentes. Volyéd confirmar qu’o est franc cen que vos voléd fâre, que vos en compregnéd les consèquences et que vos féte cen en acôrd avouéc les [[{{MediaWiki:Policy-url}}|règlles de dedens]].',
 'actioncomplete'              => 'Accion fêta',
 'deletedtext'                 => '« $1 » at étâ suprimâ.
 Vêre l’$2 por una lista de les novèles suprèssions.',
@@ -1367,7 +1379,7 @@ Vê-que los règllâjos d’ora de la pâge <strong>$1</strong> :',
 'viewdeletedpage'              => 'Historico de la pâge suprimâ',
 'undeletepagetext'             => 'Cetes pâges ont étâ suprimâs et sè trovont dens les arch·ives, sont adés dens la bâsa de balyês et pôvont étre rèstorâs.
 Les arch·ives pôvont étre èfaciês règuliérement.',
-'undeleteextrahelp'            => "Por rèstorar totes les vèrsions de cela pâge, lèssiéd vièrges totes les câses a marcar, et pués clicâd dessus '''''Rèstorar !'''''.<br /> Por fâre una rèstoracion sèlèctiva, marcâd les câses corrèspondent a les vèrsions que sont a rèstorar, et pués clicâd dessus '''''Rèstorar !'''''.<br /> En cliquent sur lo boton '''''Tornar inicialisar''''', la bouèta de rèsumâ et les câses marcâs seront remêses a zérô.",
+'undeleteextrahelp'            => "Por rèstorar totes les vèrsions de cela pâge, lèssiéd vouedes totes les câses a marcar, et pués clicâd dessus '''''Rèstorar !'''''.<br /> Por fâre una rèstoracion sèlèctiva, marcâd les câses corrèspondent a les vèrsions que sont a rèstorar, et pués clicâd dessus '''''Rèstorar !'''''.<br /> En cliquent sur lo boton '''''Tornar inicialisar''''', la bouèta de rèsumâ et les câses marcâs seront remêses a zérô.",
 'undeleterevisions'            => '$1 {{PLURAL:$1|vèrsion arch·ivâ|vèrsions arch·ivâs}}',
 'undeletehistory'              => 'Se vos rèstorâd la pâge, totes les vèrsions seront rèstorâs dens l’historico.
 
@@ -1377,6 +1389,7 @@ les vèrsions rèstorâs aparêtront dens l’historico prècèdent et la vèrsi
 'undeletehistorynoadmin'       => 'Ceti articllo at étâ suprimâ. La rêson de la suprèssion est endicâ dens lo rèsumâ ce-desot, avouéc los dètalys des utilisators que l’ont modifiâ devant sa suprèssion. Lo contegnu de cetes vèrsions est accèssiblo ren qu’ux administrators.',
 'undelete-revision'            => 'Vèrsion suprimâ de $1, (vèrsion du $2) per $3 :',
 'undeleterevision-missing'     => 'Vèrsion envalida ou manquenta. Vos avéd pôt-étre un môvés lim, ou la vèrsion at étâ rèstorâ ou suprimâ de les arch·ives.',
+'undelete-nodiff'              => 'Niona vèrsion prècèdenta trovâ.',
 'undeletebtn'                  => 'Rèstorar !',
 'undeletereset'                => 'Tornar inicialisar',
 'undeletecomment'              => 'Rèsumâ :',
@@ -1449,7 +1462,7 @@ $1',
 'blockip'                     => 'Blocar una adrèce IP ou un utilisator',
 'blockiptext'                 => 'Utilisâd lo formulèro ce-desot por blocar l’accès en ècritura dês una adrèce IP balyê ou un nom d’utilisator.
 
-Una tâla mesera dêt étre prêsa ren que por empachiér lo vandalismo et en acôrd avouéc les [[{{MediaWiki:policy-url}}|règlles de dedens]].
+Una tâla mesera dêt étre prêsa ren que por empachiér lo vandalismo et en acôrd avouéc les [[{{MediaWiki:Policy-url}}|règlles de dedens]].
 Balyéd ce-desot una rêson cllâra (per ègzemplo en endiquent les pâges qu’ont étâ vandalisâs).',
 'ipaddress'                   => 'Adrèce IP :',
 'ipadressorusername'          => 'Adrèce IP ou nom d’utilisator :',
@@ -1492,7 +1505,7 @@ d’una adrèce IP prècèdament blocâ.',
 'unblocked-id'                => 'Lo blocâjo $1 at étâ enlevâ',
 'ipblocklist'                 => 'Lista des utilisators blocâs',
 'ipblocklist-legend'          => 'Chèrchiér un utilisator blocâ',
-'ipblocklist-username'        => 'Nom de l’utilisator ou adrèce IP :',
+'ipblocklist-username'        => 'Nom d’utilisator ou adrèce IP :',
 'ipblocklist-summary'         => 'La lista ce-desot montre tôs los utilisators et totes les adrèces IP blocâs, per ôrdre anticronologico. Consultar lo [[Special:Log/block|jornal des blocâjos]] por vêre les dèrriéres accions de blocâjo et dèblocâjo fêtes.',
 'ipblocklist-submit'          => 'Chèrchiér',
 'blocklistline'               => '$1 ($4) : $2 at blocâ $3',
@@ -1519,9 +1532,12 @@ d’una adrèce IP prècèdament blocâ.',
 'range_block_disabled'        => 'Lo blocâjo de plages d’IP at étâ dèsactivâ.',
 'ipb_expiry_invalid'          => 'Temps d’èxpiracion envalido.',
 'ipb_already_blocked'         => '« $1 » est ja blocâ',
-'ip_range_invalid'            => 'Bloc IP fôx.',
-'proxyblocker'                => 'Bloquior de proxy',
 'ipb_cant_unblock'            => 'Èrror : lo blocâjo d’ID $1 ègziste pas. O est possiblo qu’un dèblocâjo èye ja étâ fêt.',
+'ipb_blocked_as_range'        => 'Èrror : l’adrèce IP $1 at pas étâ blocâ tot drêt et pôt vêr pas étre dèblocâ. Portant el at étâ blocâ per la plage $2 laquinta pôt étre dèblocâ.',
+'ip_range_invalid'            => 'Bloc IP fôx.',
+'blockme'                     => 'Blocâd-mè',
+'proxyblocker'                => 'Bloquior de proxy',
+'proxyblocker-disabled'       => 'Cela fonccion est dèsactivâ.',
 'proxyblockreason'            => 'Voutra adrèce IP at étâ blocâ perce qu’el est un proxy uvèrt. Marci de vos veriér vers voutron fornissor d’accès u Malyâjo ou voutron supôrt tècnico et de l’enformar de ceti problèmo de sècuritât.',
 'proxyblocksuccess'           => 'Chavonâ.',
 'sorbsreason'                 => 'Voutra adrèce IP est listâ a titro de proxy uvèrt DNSBL.',
@@ -1544,7 +1560,7 @@ Volyéd confirmar qu’o est franc cen que vos voléd fâre.',
 'lockdbsuccesssub'    => 'Vèrrolyâjo de la bâsa reussi.',
 'unlockdbsuccesssub'  => 'Bâsa dèvèrrolyê.',
 'lockdbsuccesstext'   => 'La bâsa de balyês de {{SITENAME}} est vèrrolyê.
-<br />Oubliâd pas de la [[Special:Unlockdb|dèvèrrolyér]] quand vos aréd chavonâ voutra opèracion de mantegnence.',
+<br />Oubliâd pas de [[Special:Unlockdb|la dèvèrrolyér]] quand vos aréd chavonâ voutra opèracion de mantegnence.',
 'unlockdbsuccesstext' => 'La bâsa de balyês de {{SITENAME}} est dèvèrrolyê.',
 'lockfilenotwritable' => 'Lo fichiér de blocâjo de la bâsa de balyês est pas enscriptiblo. Por blocar ou dèblocar la bâsa de balyês, vos dête povêr ècrire sur lo sèrvior Vouèbe.',
 'databasenotlocked'   => 'La bâsa de balyês est pas vèrrolyê.',
@@ -1612,7 +1628,7 @@ L’articllo de dèstinacion « [[$1]] » ègziste ja. Voléd-vos lo suprimar po
 
 Por èxportar des pâges, entrâd lors titros dens la bouèta de tèxte ce-desot, un titro per legne, et sèlèccionâd se vos dèsirâd ou pas la vèrsion d’ora avouéc totes les vielyes vèrsions, avouéc la pâge d’historico, ou simplament la pâge d’ora avouéc des enformacions sur la dèrriére modificacion.
 
-Dens cél dèrriér câs, vos pouede asse-ben utilisar un lim, coment [[Special:Export/{{MediaWiki:mainpage}}]] por la pâge {{MediaWiki:mainpage}}.',
+Dens cél dèrriér câs, vos pouede asse-ben utilisar un lim, coment [[Special:Export/{{MediaWiki:Mainpage}}]] por la pâge {{MediaWiki:Mainpage}}.',
 'exportcuronly'     => 'Èxportar ren que la vèrsion corenta sen l’historico complèt',
 'exportnohistory'   => "---- 
 '''Nota :''' l’èxportacion complèta de l’historico de les pâges avouéc ceti formulèro at étâ dèsactivâ por des rêsons de pèrformances.",
@@ -1627,7 +1643,7 @@ Dens cél dèrriér câs, vos pouede asse-ben utilisar un lim, coment [[Special:
 'allmessagesdefault'        => 'Mèssâjo per dèfôt',
 'allmessagescurrent'        => 'Mèssâjo d’ora',
 'allmessagestext'           => 'Cen est la lista de tôs los mèssâjos sistèmo disponiblos dens l’èspâço MediaWiki.',
-'allmessagesnotsupportedDB' => '<b>Special:Allmessages</b> est pas disponiblo perce que <b>$wgUseDatabaseMessages</b> est dèsactivâ.',
+'allmessagesnotsupportedDB' => '\'\'\'{{ns:special}}:Allmessages\'\'\' est pas disponiblo perce que \'\'\'$wgUseDatabaseMessages\'\'\' est dèsactivâ.',
 'allmessagesfilter'         => 'Filtro d’èxprèssion racionâla :',
 'allmessagesmodified'       => 'Afichiér ren que les modificacions',
 
@@ -1669,9 +1685,9 @@ Totes les accions d’importacion entèrvouiqui sont consèrvâs dens lo [[Speci
 'importlogpage'                    => 'Historico de les importacions de pâges',
 'importlogpagetext'                => 'Impôrts administratifs de pâges avouéc l’historico dês los ôtros vouiquis.',
 'import-logentry-upload'           => 'at importâ (tèlèchargement) [[$1]]',
-'import-logentry-upload-detail'    => '$1 vèrsion(s)',
+'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|vèrsion|vèrsions}}',
 'import-logentry-interwiki'        => 'at importâ (entèrvouiqui) [[$1]]',
-'import-logentry-interwiki-detail' => '$1 vèrsion(s) dês $2',
+'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|vèrsion|vèrsions}} dês $2',
 
 # Tooltip help for the actions
 'tooltip-pt-userpage'             => 'Ma pâge utilisator',
@@ -1687,7 +1703,7 @@ Totes les accions d’importacion entèrvouiqui sont consèrvâs dens lo [[Speci
 'tooltip-ca-talk'                 => 'Discussion a propôs de ceta pâge',
 'tooltip-ca-edit'                 => 'Vos pouede modifiar ceta pâge. Marci de prèvisualisar devant qu’enregistrar.',
 'tooltip-ca-addsection'           => 'Apondre un comentèro a ceta discussion',
-'tooltip-ca-viewsource'           => 'Ceta pâge est protègiê. Vos pouede portant nen vêre lo contegnu.',
+'tooltip-ca-viewsource'           => 'Ceta pâge est protègiê. Portant vos pouede nen vêre lo contegnu.',
 'tooltip-ca-history'              => 'Los ôtors et les vèrsions prècèdentes de ceta pâge',
 'tooltip-ca-protect'              => 'Protègiér ceta pâge',
 'tooltip-ca-delete'               => 'Suprimar ceta pâge',
@@ -1760,9 +1776,9 @@ Totes les accions d’importacion entèrvouiqui sont consèrvâs dens lo [[Speci
 'nocredits'        => 'Y at pas d’enformacions d’atribucion disponibles por ceta pâge.',
 
 # Spam protection
-'spamprotectiontitle'    => 'Pâge ôtomaticament protègiê a côsa de purrièl',
+'spamprotectiontitle'    => 'Pâge ôtomaticament protègiê a côsa de spame',
 'spamprotectiontext'     => 'La pâge que vos éd tâchiê de sôvar at étâ blocâ per lo filtro antipurrièl. Cen est probâblament côsâ per un lim vers un seto de defôr.',
-'spamprotectionmatch'    => "La chêna de caractèros « '''$1''' » at dècllenchiê lo dècelior de purrièl.",
+'spamprotectionmatch'    => "La chêna de caractèros « '''$1''' » at dècllenchiê lo dècelior de spame.",
 'subcategorycount'       => '{{PLURAL:$1|Yona sot-catègorie est listâ|$1 sot-catègories sont listâs}} ce-desot. S’un lim « (200 prècèdents) » ou ben « (200 siuvents) » est present ce-dessus, pôt menar a d’ôtres sot-catègories.',
 'categoryarticlecount'   => 'Y at {{PLURAL:$1|yon articllo|$1 articllos}} dens ceta catègorie.',
 'category-media-count'   => 'Y at {{PLURAL:$1|yon fichiér|$1 fichiérs}} multimèdia dens <u>ceta sèccion</u> de ceta catègorie.',
@@ -2230,7 +2246,7 @@ $1',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|Yona pâge at étâ enlevâ|$1 pâges ont étâ enlevâs}} de voutra lista de siuvu :',
 'watchlistedit-raw-title'      => 'Modificacion de la lista de siuvu (fôrma bruta)',
 'watchlistedit-raw-legend'     => 'Modificacion de la lista de siuvu en fôrma bruta',
-'watchlistedit-raw-explain'    => 'La lista de les pâges de voutra lista de siuvu est montrâ ce-desot, sen les pâges de discussion (ôtomaticament encllues) et triyês per èspâço de nom. Vos pouede modifiar la lista : apondéd les pâges que vos voléd siuvre (yô que seye), yona pâge per legne, et enlevâd les pâges que vos voléd pas més siuvre. Quand vos éd feni, clicâd sur lo boton d’avâl por betar la lista a jorn. Vos pouede asse-ben utilisar [[Special:Watchlist/edit|l’èditor normal]].',
+'watchlistedit-raw-explain'    => 'La lista de les pâges de voutra lista de siuvu est montrâ ce-desot, sen les pâges de discussion (ôtomaticament encllues) et triyês per èspâço de nom. Vos pouede modifiar la lista : apondéd les pâges que vos voléd siuvre (yô que seye), yona pâge per legne, et enlevâd les pâges que vos voléd pas més siuvre. Quand vos éd feni, clicâd sur lo boton d’avâl por betar la lista a jorn. Vos pouede asse-ben utilisar l’[[Special:Watchlist/edit|èditor normal]].',
 'watchlistedit-raw-titles'     => 'Pâges :',
 'watchlistedit-raw-submit'     => 'Betar a jorn la lista de siuvu',
 'watchlistedit-raw-done'       => 'Voutra lista de siuvu at étâ betâ a jorn.',
@@ -2241,5 +2257,23 @@ $1',
 'watchlisttools-view' => 'Lista de siuvu',
 'watchlisttools-edit' => 'Vêre et modifiar la lista de siuvu',
 'watchlisttools-raw'  => 'Modifiar la lista de siuvu (fôrma bruta)',
+
+# Iranian month names
+'iranian-calendar-m3' => 'Khordād',
+'iranian-calendar-m5' => 'Mordād',
+'iranian-calendar-m8' => 'Ābān',
+'iranian-calendar-m9' => 'Āzar',
+
+# Hebrew month names
+'hebrew-calendar-m1'      => 'Tishri',
+'hebrew-calendar-m2'      => 'Heshvan',
+'hebrew-calendar-m7'      => 'Nissan',
+'hebrew-calendar-m10'     => 'Tamouz',
+'hebrew-calendar-m12'     => 'Eloul',
+'hebrew-calendar-m1-gen'  => 'Tishri',
+'hebrew-calendar-m2-gen'  => 'Heshvan',
+'hebrew-calendar-m7-gen'  => 'Nissan',
+'hebrew-calendar-m10-gen' => 'Tamouz',
+'hebrew-calendar-m12-gen' => 'Eloul',
 
 );

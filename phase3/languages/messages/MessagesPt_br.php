@@ -1,11 +1,11 @@
 <?php
 /** Brazilian Portugese (Portuguêsi do Brasil)
-  * @addtogroup Language
-  */
-#
-# This translation was made by Yves Marques Junqueira
-# and Rodrigo Calanca Nishino from Portuguese Wikipedia
-#
+ *
+ * @addtogroup Language
+ *
+ * @author Yves Marques Junqueira
+ * @author Rodrigo Calanca Nishino
+ */
 
 $fallback = 'pt';
 
@@ -137,17 +137,17 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Sobre a {{SITENAME}}',
-'aboutpage'         => '{{ns:4}}:Sobre',
+'aboutpage'         => 'Project:Sobre',
 'bugreports'        => "Reportagem de 'bugs'",
-'bugreportspage'    => '{{ns:4}}:Reportag_Bug',
+'bugreportspage'    => 'Project:Reportag_Bug',
 'copyrightpagename' => 'Direitos Autorais da {{SITENAME}}',
-'copyrightpage'     => '{{ns:4}}:Copyrights',
+'copyrightpage'     => '{{ns:project}}:Copyrights',
 'currentevents'     => 'Eventos atuais',
 'edithelp'          => 'Ajuda de edição',
-'edithelppage'      => '{{ns:4}}:Como_editar_uma_página',
+'edithelppage'      => 'Help:Como_editar_uma_página',
 'faq'               => 'FAQ',
-'faqpage'           => '{{ns:4}}:FAQ',
-'helppage'          => '{{ns:4}}:Ajuda',
+'faqpage'           => 'Project:FAQ',
+'helppage'          => 'Help:Ajuda',
 'mainpage'          => 'Página principal',
 
 'ok'              => 'OK',
@@ -270,7 +270,7 @@ Por favor, reconecte-se ao recebê-lo.',
 'blockedtitle'         => 'Usuário está bloqueado',
 'blockedtext'          => "Seu nome de usuário ou numero de IP foi bloqueado por $1.
 O motivo é:<br />''$2''<p>Você pode contactar $1 ou outro
-[[{{ns:4}}:administradores|administrador]] para discutir sobre o bloqueio.",
+[[{{ns:project}}:administradores|administrador]] para discutir sobre o bloqueio.",
 'whitelistedittitle'   => 'Login necessário para edição',
 'whitelistedittext'    => 'Você precisa se [[Especial:Userlogin|logar]] para editar artigos.',
 'whitelistreadtitle'   => 'Login necessário para leitura',
@@ -281,8 +281,8 @@ O motivo é:<br />''$2''<p>Você pode contactar $1 ou outro
 'accmailtext'          => "A senha de '$1' foi enviada para $2.",
 'newarticle'           => '(Novo)',
 'newarticletext'       => "Você seguiu um link para um artigo que não existe.
-Para criá-lo, começe escrevendo na caixa abaixo 
-(veja [[{{ns:4}}:Ajuda|a página de ajuda]] para mais informações).
+Para criá-lo, começe escrevendo na caixa abaixo
+(veja [[{{ns:project}}:Ajuda|a página de ajuda]] para mais informações).
 Se você chegou aqui por engano, apenas clique no botão '''voltar''' do seu navegador.",
 'anontalkpagetext'     => "---- ''Esta é a página de discussão para um usuário anônimo que não criou uma conta ainda ou que não a usa. Então nós temos que usar o endereço numérico de IP para identificá-lo. Um endereço de IP pode ser compartilhado por vários usuários. Se você é um usuário anônimo e acha irrelevante que os comentários sejam direcionados a você, por favor [[Especial:Userlogin|crie uma conta ou autentique-se]] para evitar futuras confusões com outros usuários anônimos.''",
 'noarticletext'        => '(Não há atualmente nenhum texto nesta página)',
@@ -404,14 +404,14 @@ para definir suas preferências.',
 # Recent changes
 'recentchanges'     => 'Mudanças Recentes',
 'recentchangestext' => 'Veja as mais novas mudanças na {{SITENAME}} nesta página.
-[[{{ns:4}}:Bem Vindo,_novatos|Bem Vindo, novatos]]!
-Por favor, dê uma olhada nestas páginas: [[{{ns:4}}:FAQ|FAQ da {{SITENAME}}]],
-[[{{ns:4}}:Políticas e Normas| Política da {{SITENAME}}]]
-(especialmente [[{{ns:4}}:Convenções de nomenclatura|convenções de nomenclatura]],
-[[{{ns:4}}:Ponto de vista neutro|Ponto de vista neutro]]),
-e [[{{ns:4}}:Most common {{SITENAME}} faux pas|most common {{SITENAME}} faux pas]].
+[[{{ns:project}}:Bem Vindo,_novatos|Bem Vindo, novatos]]!
+Por favor, dê uma olhada nestas páginas: [[{{ns:project}}:FAQ|FAQ da {{SITENAME}}]],
+[[{{ns:project}}:Políticas e Normas| Política da {{SITENAME}}]]
+(especialmente [[{{ns:project}}:Convenções de nomenclatura|convenções de nomenclatura]],
+[[{{ns:project}}:Ponto de vista neutro|Ponto de vista neutro]]),
+e [[{{ns:project}}:Most common {{SITENAME}} faux pas|most common {{SITENAME}} faux pas]].
 
-Se você quer ver a {{SITENAME}} crescer, é muito importante que você não adicione material restrito por outras [[{{ns:4}}:Copyrights|copyrights]].
+Se você quer ver a {{SITENAME}} crescer, é muito importante que você não adicione material restrito por outras [[{{ns:project}}:Copyrights|copyrights]].
 Um problema legal poderia realmente prejudicar o projeto de maneira que pedimos, por avor, não faça isso.',
 'rcnote'            => 'Abaixo estão as últimas <strong>$1</strong> alterações nos últimos <strong>$2</strong> dias.',
 'rcnotefrom'        => 'Abaixo estão as mudanças desde <b>$2</b> (até <b>$1</b> mostradas).',
@@ -486,7 +486,7 @@ O que nos leva a aproximadamente <b>$5</b> edições por página, e <b>$6</b> vi
 Destes, <b>$2</b> são administradores (veja $3).',
 
 'disambiguations'     => 'Páginas de desambiguamento',
-'disambiguationspage' => '{{ns:4}}:Links_para_desambiguar_páginas',
+'disambiguationspage' => '{{ns:project}}:Links_para_desambiguar_páginas',
 
 'doubleredirects'     => 'Double Redirects',
 'doubleredirectstext' => '<b>Atenção:</b> Esta lista pode conter positivos falsos. O que usualmente significa que há texto adicional com links depois do primeiro #REDIRECT.<br />
@@ -578,7 +578,7 @@ Se você quiser remover futuramente o artigo da sua lista de artigos vigiados, c
 'deletesub'         => '(Apagando "$1")',
 'historywarning'    => 'Atenção: A página que você quer deletar tem um histórico:',
 'confirmdeletetext' => 'Você está  prestes a deletar permanentemente uma página ou imagem junto com todo seu histórico do banco de dados.
-Por favor, confirme que você realmente pretende fazer isto, que você compreende as consequências, e que você está fazendo isto em acordo com a [[{{MediaWiki:policy-url}}|Política da {{SITENAME}}]].',
+Por favor, confirme que você realmente pretende fazer isto, que você compreende as consequências, e que você está fazendo isto em acordo com a [[{{MediaWiki:Policy-url}}|Política da {{SITENAME}}]].',
 'actioncomplete'    => 'Ação efetuada com sucesso',
 'deletedtext'       => '"$1" foi deletada.
 Veja $2 para um registro de deleções recentes.',

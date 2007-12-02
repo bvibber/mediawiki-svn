@@ -1,8 +1,21 @@
 <?php
 /** Spanish (Español)
-  *
-  * @addtogroup Language
-  */
+ *
+ * @addtogroup Language
+ *
+ * @author Icvav
+ * @author Platonides
+ * @author G - ג
+ * @author Sanbec
+ * @author Lin linao
+ * @author Alhen
+ * @author Spacebirdy
+ * @author Orgullomoore
+ * @author Mahadeva
+ * @author Alpertron
+ * @author Better
+ * @author Nike
+ */
 
 $skinNames = array(
 	'standard' => 'Estándar',
@@ -140,7 +153,7 @@ $messages = array(
 'dec'           => 'dic',
 
 # Bits of text used by many pages
-'categories'            => '{{PLURAL:$1|Categoría|Categorías}}',
+'categories'            => 'Categorías',
 'pagecategories'        => '{{PLURAL:$1|Categoría|Categorías}}',
 'category_header'       => 'Artículos en la categoría "$1"',
 'subcategories'         => 'Subcategorías',
@@ -232,15 +245,13 @@ $messages = array(
 'bugreportspage'    => 'Project:Informes de error',
 'copyright'         => 'El contenido está disponible bajo los términos de la <i>$1</i>',
 'copyrightpagename' => 'Copyright de {{SITENAME}}',
-'copyrightpage'     => 'Project:Copyrights',
 'currentevents'     => 'Actualidad',
-'currentevents-url' => 'Actualidad',
+'currentevents-url' => 'Project:Actualidad',
 'disclaimers'       => 'Aviso legal',
 'disclaimerpage'    => 'Project:Limitación general de responsabilidad',
 'edithelp'          => 'Ayuda de edición',
 'edithelppage'      => 'Help:Cómo se edita una página',
-'faqpage'           => 'Project:FAQ',
-'helppage'          => 'Project:Ayuda',
+'helppage'          => 'Help:Ayuda',
 'mainpage'          => 'Portada',
 'policy-url'        => 'Project:Políticas',
 'portal'            => 'Portal de la comunidad',
@@ -276,7 +287,7 @@ $messages = array(
 'feedlinks'               => 'Sindicación:',
 'feed-invalid'            => 'Tipo de subscripción a sindicación de noticias inválida.',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Artículo',
 'nstab-user'      => 'Usuario',
 'nstab-media'     => 'Media',
@@ -342,7 +353,7 @@ Consulta: $2',
 'viewsourcefor'        => 'para $1',
 'protectedpagetext'    => 'Esta página ha sido bloqueada para evitar su edición.',
 'viewsourcetext'       => 'Puedes ver y copiar el código fuente de esta página:',
-'protectedinterface'   => 'Esta página provee texto del interfaz del software. Está protegida para evitar vandalismos. Si cree que debería cambiarse el texto, hable con un [[{{MediaWiki:grouppage-sysop}}|Administrador]].',
+'protectedinterface'   => 'Esta página provee texto del interfaz del software. Está protegida para evitar vandalismos. Si cree que debería cambiarse el texto, hable con un [[{{MediaWiki:Grouppage-sysop}}|Administrador]].',
 'editinginterface'     => "'''Aviso:''' Estás editando una página usada para proporcionar texto a la interfaz de {{SITENAME}}. Los cambios en esta página afectarán a la apariencia de la interfaz para los demás usuarios.",
 'sqlhidden'            => '(Consulta SQL oculta)',
 'cascadeprotected'     => 'Esta página ha sido protegida para su edición, porque está incluida en {{PLURAL:$1|la siguiente página|las siguientes páginas}}, que están protegidas con las opción de "cascada":',
@@ -480,7 +491,7 @@ Hasta que lo hagas, las siguientes funciones no estarán disponibles.',
 
 El bloqueo fue hecho por \$1. La razón dada es ''\$2''.
 
-Puedes contactar con \$1 o con otro [[{{MediaWiki:grouppage-sysop}}|administrador]] para discutir el bloqueo.
+Puedes contactar con \$1 o con otro [[{{MediaWiki:Grouppage-sysop}}|administrador]] para discutir el bloqueo.
 
 No puedes usar el enlace \"enviar correo electrónico a este usuario\" si no has registrado una dirección válida de correo electrónico en tus [[Special:Preferences|preferencias]]. Tu dirección IP actual es \$3, y el identificador del bloqueo es #\$5. Por favor incluye uno o ambos datos en cualquier consulta que hagas.",
 'autoblockedtext'           => 'Tu dirección IP ha sido bloqueada automáticamente porque era utilizada por otro ususario que fue bloqueado por $1.
@@ -492,7 +503,7 @@ La razón dada es esta:
 Caducidad del bloqueo: $6
 
 
-Puedes contactar con $1 o con otro de los [[{{MediaWiki:grouppage-sysop}}|administradores]] para discutir el bloqueo.
+Puedes contactar con $1 o con otro de los [[{{MediaWiki:Grouppage-sysop}}|administradores]] para discutir el bloqueo.
 
 Nota que no puedes utilizar la función "Enviar correo electrónico a este usuario" a menos que tengas una dirección de correo electrónico válida registrada en tus [[Special:Preferences|preferencias de usuario]].
 
@@ -515,7 +526,7 @@ Tu identificador de bloqueo es $5. Por favor, incluye este identificador en cual
 'accmailtitle'              => 'La contraseña ha sido enviada.',
 'accmailtext'               => "La contraseña para '$1' se ha enviado a $2.",
 'newarticle'                => '(Nuevo)',
-'newarticletext'            => 'Ha seguido un enlace a una página que aún no existe. Si lo que quiere es crear esta página, escriba a continuación. Para más información consulte la [[{{MediaWiki:helppage}}|página de ayuda]]. Si llegó aquí por error, vuelva a la página anterior.',
+'newarticletext'            => 'Ha seguido un enlace a una página que aún no existe. Si lo que quiere es crear esta página, escriba a continuación. Para más información consulte la [[{{MediaWiki:Helppage}}|página de ayuda]]. Si llegó aquí por error, vuelva a la página anterior.',
 'anontalkpagetext'          => "---- ''Esta es la página de discusión de un usuario anónimo que aún no ha creado una cuenta, o no la usa. Por lo tanto, tenemos que usar su dirección IP para identificarlo. Una dirección IP puede ser compartida por varios usuarios. Si eres un usuario anónimo y crees que se han dirigido a ti con comentarios improcedentes, por favor [[Special:Userlogin|crea una cuenta o entra]] para evitar confusiones futuras con otros usuarios anónimos.''",
 'noarticletext'             => 'En este momento no hay texto en esta página, puedes [[Special:Search/{{PAGENAME}}|buscar por el título de esta página]] en otras páginas o [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar esta página].',
 'clearyourcache'            => "'''Nota:''' Tras guardar el archivo, debe refrescar la caché de su navegador para ver los cambios:
@@ -526,7 +537,7 @@ Tu identificador de bloqueo es $5. Por favor, incluye este identificador en cual
 'usercssjsyoucanpreview'    => '<strong>Consejo:</strong> Use el botón «Mostrar previsualización» para probar su nuevo css/js antes de grabarlo.',
 'usercsspreview'            => "'''¡Recuerde que sólo está previsualizando su css de usuario y aún no se ha grabado!'''",
 'userjspreview'             => "'''¡Recuerde que sólo está previsualizando su javascript de usuario y aún no se ha grabado!'''",
-'userinvalidcssjstitle'     => "'''Aviso:''' No existe la piel \"\$1\". Recuerda que las páginas personalizadas .css y .js tienen un título en minúsculas, p.e. Usuario:Foo/monobook.css en vez de  Usuario:Foo/Monobook.css.",
+'userinvalidcssjstitle'     => "'''Aviso:''' No existe la piel \"\$1\". Recuerda que las páginas personalizadas .css y .js tienen un título en minúsculas, p.e. {{ns:user}}:Foo/monobook.css en vez de  {{ns:user}}:Foo/Monobook.css.",
 'updated'                   => '(Actualizado)',
 'note'                      => '<strong>Nota:</strong>',
 'previewnote'               => '¡Recuerde que esto es sólo una previsualización y aún no se ha grabado!',
@@ -556,9 +567,7 @@ Por favor considere la posibilidad de dividir esta página en secciones más peq
 'longpageerror'             => '<strong>ERROR: El texto que has enviado ocupa $1 kilobytes, lo cual es mayor que $2 kilobytes. No se puede guardar.</strong>',
 'readonlywarning'           => '<strong>Atención: La base de datos ha sido bloqueada por cuestiones de mantenimiento, así que no podrá guardar sus modificaciones en este momento.
 Puede copiar y pegar el texto a un archivo en su ordenador y grabarlo para más tarde.</strong>',
-'protectedpagewarning'      => '<strong>ADVERTENCIA: Esta página ha sido protegida de manera que sólo usuarios con permisos de administrador pueden editarla. Asegúrate de que estás siguiendo las [[Project:Políticas de bloqueo de páginas|Políticas de bloqueo de páginas]].</strong>
-__NOEDITSECTION__<h3>La edición de esta página está [[Project:Esta página está protegida|protegida]].</h3>
-* Puedes opinar sobre este bloqueo en la [[{{TALKPAGENAME}}|página de discusión]] del artículo.<br />',
+'protectedpagewarning'      => '<strong>ADVERTENCIA: Esta página ha sido protegida de manera que sólo usuarios con permisos de administrador pueden editarla.</strong>',
 'semiprotectedpagewarning'  => "'''Nota:''' Esta página ha sido protegida para que sólo usuarios registrados puedan editarla.",
 'cascadeprotectedwarning'   => "'''Aviso:''' Esta página está protegida, sólo los administradores pueden editarla porque está transcluida en las siguientes páginas protegidas con la opción de ''cascada'':",
 'templatesused'             => 'Plantillas usadas en esta página:',
@@ -675,7 +684,7 @@ Otros administradores de este wiki aún podrán acceder al contenido oculto y po
 
 # Search results
 'searchresults'         => 'Resultados de la búsqueda',
-'searchresulttext'      => 'Para más información acerca de las búsquedas en {{SITENAME}}, consulte la [[{{MediaWiki:helppage}}|{{int:help}}]].',
+'searchresulttext'      => 'Para más información acerca de las búsquedas en {{SITENAME}}, consulte la [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "Has consultado por '''[[:$1]]'''",
 'searchsubtitleinvalid' => 'Para consulta "$1"',
 'noexactmatch'          => "'''No existe una página llamada \"\$1\".''' Puedes [[:\$1|crearla]].",
@@ -778,9 +787,9 @@ Los grupos no seleccionados no cambiarán. Puede deseleccionar pulsando la tecla
 'group-sysop-member'      => 'Administrador',
 'group-bureaucrat-member' => 'Burócrata',
 
-'grouppage-bot'        => 'Project:Bot',
+'grouppage-bot'        => '{{ns:project}}:Bot',
 'grouppage-sysop'      => '{{ns:project}}:Administradores',
-'grouppage-bureaucrat' => 'Project:Burócratas',
+'grouppage-bureaucrat' => '{{ns:project}}:Burócratas',
 
 # User rights log
 'rightslog'      => 'Cambios de perfil de usuario',
@@ -812,6 +821,7 @@ Los grupos no seleccionados no cambiarán. Puede deseleccionar pulsando la tecla
 
 # Recent changes linked
 'recentchangeslinked'          => 'Cambios en enlazadas',
+'recentchangeslinked-title'    => 'Cambios relacionados con $1',
 'recentchangeslinked-noresult' => 'No hubo cambios en las páginas enlazadas durante el periodo indicado.',
 'recentchangeslinked-summary'  => "Esta página especial lista los últimos cambios en las páginas enlazadas. Las páginas en su lista de seguimiento están en '''negrita'''.",
 
@@ -859,7 +869,7 @@ Para incluir la imágen en una página, usa un enlace en el formulario '''<nowik
 Nombre del archivo que se está subiendo: <strong><tt>$1</tt></strong><br />
 Nombre del archivo ya existente: <strong><tt>$2</tt></strong><br />
 Por favor, elige un nombre diferente.',
-'fileexists-thumb'            => "'''<center>Imagen existente</center>'''",
+'fileexists-thumb'            => "<center>'''Imagen existente'''</center>",
 'fileexists-thumbnail-yes'    => 'El archivo parece ser una imagen de tamaño reducido <i>(thumbnail)</i>. Por favor comprueba el archivo <strong><tt>$1</tt></strong>.<br />
 Si el archivo comprobado es la misma imagen a tamaño original no es necesario subir un thumbnail más.',
 'file-thumbnail-no'           => 'El nombre del archivo comienza con <strong><tt>$1</tt></strong>. Parece ser una imagen de tamaño reducido <i>(thumbnail)</i>.
@@ -895,6 +905,7 @@ Si tienes esta imagen a toda resolución súbela, si no, por favor cambia el nom
 
 'license'            => 'Licencia',
 'nolicense'          => 'Ninguna seleccionada',
+'license-nopreview'  => '(Previsualización no disponible)',
 'upload_source_url'  => ' (una URL válida y accesible públicamente)',
 'upload_source_file' => ' (un archivo en su ordenador)',
 
@@ -931,6 +942,11 @@ Si tienes esta imagen a toda resolución súbela, si no, por favor cambia el nom
 
 # File deletion
 'filedelete'            => 'Borrar $1',
+'filedelete-legend'     => 'Borrar archivo',
+'filedelete-intro'      => "Estás borrando '''[[Media:$1|$1]]'''.",
+'filedelete-comment'    => 'Motivo:',
+'filedelete-submit'     => 'Borrar',
+'filedelete-success'    => "'''$1''' ha sido borrado.",
 'filedelete-nofile-old' => "No existe una versión guardada de '''$1''' con los atributos especificados.",
 
 # MIME search
@@ -948,6 +964,10 @@ Si tienes esta imagen a toda resolución súbela, si no, por favor cambia el nom
 'unusedtemplates'     => 'Plantillas sin uso',
 'unusedtemplatestext' => 'Aquí se enumeran todas las páginas en la zona de plantillas que no están incluidas en otras páginas. Recuerda mirar lo que enlaza a las plantillas antes de borrarlas.',
 'unusedtemplateswlh'  => 'otros enlaces',
+
+# Random page
+'randompage'         => 'Página aleatoria',
+'randompage-nopages' => 'No hay páginas en este espacio de nombres.',
 
 # Random redirect
 'randomredirect'         => 'Ir a una redirección cualquiera',
@@ -1016,8 +1036,6 @@ Cada fila contiene enlaces al segundo y tercer redirect, así como la primera l�
 'mostrevisions'           => 'Artículos con más ediciones',
 'allpages'                => 'Todas las páginas',
 'prefixindex'             => 'Páginas por prefijo',
-'randompage'              => 'Página aleatoria',
-'randompage-nopages'      => 'No hay páginas en este espacio de nombres.',
 'shortpages'              => 'Páginas cortas',
 'longpages'               => 'Páginas largas',
 'deadendpages'            => 'Páginas sin salida',
@@ -1038,6 +1056,8 @@ Cada fila contiene enlaces al segundo y tercer redirect, así como la primera l�
 'movethispage'            => 'Trasladar esta página',
 'unusedimagestext'        => '<p>Por favor, ten en cuenta que otros sitios web pueden enlazar a una imagen directamente con su URL, y de esa manera no aparecer listados aquí pese a estar en uso.</p>',
 'unusedcategoriestext'    => 'Las siguientes categorías han sido creadas, pero ningún artículo o categoría las utiliza.',
+'notargettitle'           => 'No hay página objetivo',
+'notargettext'            => 'Especifique sobre qué página desea llevar a cabo esta acción.',
 
 # Book sources
 'booksources'               => 'Fuentes de libros',
@@ -1199,6 +1219,11 @@ Véase $2 para un registro de los borrados recientes.',
 'deletionlog'                 => 'registro de borrados',
 'reverted'                    => 'Recuperar una revisión anterior',
 'deletecomment'               => 'Motivo del borrado',
+'deletereasonotherlist'       => 'Otra razón',
+'deletereason-dropdown'       => '*Razones comunes de borrado
+** A petición del mismo autor
+** Violación de copyright
+** Vandalismo',
 'rollback'                    => 'Revertir ediciones',
 'rollback_short'              => 'Revertir',
 'rollbacklink'                => 'Revertir',
@@ -1212,8 +1237,7 @@ Véase $2 para un registro de los borrados recientes.',
 esta acción ha sido cancelada como medida de precaución contra secuestros de sesión.
 Por favor, pulsa "Atrás", recarga la página de la que viniste e inténtalo de nuevo.',
 'protectlogpage'              => 'Protecciones de páginas',
-'protectlogtext'              => 'Abajo se presenta una lista de protección y desprotección de página.
-Véase [[Project:Esta página está protegida]] para más información.',
+'protectlogtext'              => 'Abajo se presenta una lista de protección y desprotección de página. Véase [[Special:Protectedpages|Esta página está protegida]] para más información.',
 'protectedarticle'            => 'protegió [[$1]]',
 'modifiedarticleprotection'   => 'Cambiado el nivel de protección de "[[$1]]"',
 'unprotectedarticle'          => 'desprotegió [[$1]]',
@@ -1315,8 +1339,6 @@ Consulta el [[Special:Log/delete|registro de borrados]] para ver una lista de lo
 # What links here
 'whatlinkshere'       => 'Lo que enlaza aquí',
 'whatlinkshere-title' => 'Páginas que enlazan a $1',
-'notargettitle'       => 'No hay página objetivo',
-'notargettext'        => 'Especifique sobre qué página desea llevar a cabo esta acción.',
 'linklistsub'         => '(Lista de enlaces)',
 'linkshere'           => "Las siguientes páginas enlazan a '''[[:$1]]''':",
 'nolinkshere'         => "Ninguna página enlaza con '''[[:$1]]'''.",
@@ -1400,9 +1422,9 @@ las páginas en particular que han sido objeto de vandalismo).',
 'range_block_disabled'        => 'La facultad de administrador de crear bloqueos por rangos está deshabilitada.',
 'ipb_expiry_invalid'          => 'El tiempo de caducidad no es válido.',
 'ipb_already_blocked'         => '"$1" ya se encuentra bloqueado.',
+'ipb_cant_unblock'            => "'''Error''': Número ID $1 de bloqueo no encontrado. Pudo haber sido desbloqueado ya.",
 'ip_range_invalid'            => 'El rango de IP no es válido.',
 'proxyblocker'                => 'Bloqueador de proxies',
-'ipb_cant_unblock'            => "'''Error''': Número ID $1 de bloqueo no encontrado. Pudo haber sido desbloqueado ya.",
 'proxyblockreason'            => 'Su dirección IP ha sido bloqueada porque es un proxy abierto. Por favor, contacte con su proveedor de servicios de Internet o con su servicio de asistencia técnica e infórmeles de este grave problema de seguridad.',
 'proxyblocksuccess'           => 'Hecho.',
 'sorbsreason'                 => 'Su dirección IP está listada como proxy abierto en DNSBL.',
@@ -1498,7 +1520,7 @@ En el último caso también puedes usar un enlace, por ejemplo [[Special:Export/
 'allmessagesdefault'        => 'Texto predeterminado',
 'allmessagescurrent'        => 'Texto actual',
 'allmessagestext'           => 'Esta es una lista de mensajes del sistema disponibles en el espacio de nombres MediaWiki:',
-'allmessagesnotsupportedDB' => 'Special:AllMessages no está disponible porque wgUseDatabaseMessages está deshabilitado.',
+'allmessagesnotsupportedDB' => '{{ns:special}}:AllMessages no está disponible porque wgUseDatabaseMessages está deshabilitado.',
 'allmessagesfilter'         => 'Filtrar por nombre del mensaje:',
 'allmessagesmodified'       => 'Mostrar sólo los modificados',
 
@@ -1602,6 +1624,7 @@ Todas las importaciones transwiki se registran en el [[Special:Log/import|regist
 'tooltip-compareselectedversions' => 'Ver las diferencias entre las dos versiones seleccionadas de esta página.',
 'tooltip-watch'                   => 'Añadir esta página a su lista de seguimiento',
 'tooltip-recreate'                => 'Recupera una página que ha sido borrada',
+'tooltip-upload'                  => 'Empieza la subida',
 
 # Stylesheets
 'common.css'   => '/* Los estilos CSS definidos aquí aplicarán a todas las pieles (skins) */',
@@ -1697,12 +1720,12 @@ Todas las importaciones transwiki se registran en el [[Special:Log/import|regist
 'metadata-expand'   => 'Mostrar datos detallados',
 'metadata-collapse' => 'Ocultar datos detallados',
 'metadata-fields'   => 'Los campos de metadatos EXIF que se listan en este mensaje se mostrarán en la página de descripción de la imagen aún cuando la tabla de metadatos esté plegada. Existen otros campos que se mantendrán ocultos por defecto. 
-* Fabricante
-* Modelo
-* Fecha y hora de creación
-* Tiempo de exposición
-* Número f
-* Distancia focal',
+* make
+* model
+* datetimeoriginal
+* exposuretime
+* fnumber
+* focallength',
 
 # EXIF tags
 'exif-imagewidth'                  => 'Anchura',
@@ -2072,8 +2095,8 @@ Intenta la previsualización normal.',
 'watchlistedit-raw-removed'    => '{{PLURAL:$1|Una página ha sido borrada|$1 páginas han sido borradas}}:',
 
 # Watchlist editing tools
-'watchlisttools-view'  => 'Ver cambios',
-'watchlisttools-edit'  => 'Ver y editar tu lista de seguimiento',
-'watchlisttools-raw'   => 'Editar lista de seguimiento en crudo',
+'watchlisttools-view' => 'Ver cambios',
+'watchlisttools-edit' => 'Ver y editar tu lista de seguimiento',
+'watchlisttools-raw'  => 'Editar lista de seguimiento en crudo',
 
 );

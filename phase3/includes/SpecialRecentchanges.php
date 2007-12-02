@@ -172,13 +172,9 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 	while( $row = $dbr->fetchObject( $res ) ){
 		$rows[] = $row;
 		if ( !$feedFormat ) {
-			// User page link
-			$title = Title::makeTitleSafe( NS_USER, $row->rc_user_text );
-			$batch->addObj( $title );
-
-			// User talk
-			$title = Title::makeTitleSafe( NS_USER_TALK, $row->rc_user_text );
-			$batch->addObj( $title );
+			// User page and talk links
+			$batch->add( NS_USER, str_replace( ' ', '_', $row->rc_user_text ) );
+			$batch->add( NS_USER_TALK, str_replace( ' ', '_', $row->rc_user_text ) );
 		}
 
 	}
@@ -231,6 +227,10 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 
 		$s = $list->beginRecentChangesList();
 		$counter = 1;
+
+		$showWatcherCount = $wgRCShowWatchingUsers && $wgUser->getOption( 'shownumberswatching' );
+		$watcherCache = array();
+
 		foreach( $rows as $obj ){
 			if( $limit == 0) {
 				break;
@@ -249,13 +249,20 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 					$rc->notificationtimestamp = false;
 				}
 
-				if ($wgRCShowWatchingUsers && $wgUser->getOption( 'shownumberswatching' )) {
-					$sql3 = "SELECT COUNT(*) AS n FROM $watchlist WHERE wl_title='" . $dbr->strencode($obj->rc_title) ."' AND wl_namespace=$obj->rc_namespace" ;
-					$res3 = $dbr->query( $sql3, 'wfSpecialRecentChanges');
-					$x = $dbr->fetchObject( $res3 );
-					$rc->numberofWatchingusers = $x->n;
-				} else {
-					$rc->numberofWatchingusers = 0;
+				$rc->numberofWatchingusers = 0; // Default
+				if ($showWatcherCount && $obj->rc_namespace >= 0) {
+					if (!isset($watcherCache[$obj->rc_namespace][$obj->rc_title])) {
+						$sql3 =
+							'SELECT COUNT(*) AS n ' .
+							"FROM $watchlist " .
+							"WHERE wl_title='{$dbr->strencode($obj->rc_title)}' " .
+							"AND wl_namespace=$obj->rc_namespace" ;
+						$res3 = $dbr->query( $sql3, __METHOD__ . '-watchers');
+						$x = $dbr->fetchObject( $res3 );
+						$watcherCache[$obj->rc_namespace][$obj->rc_title] = $x->n;
+						$dbr->freeResult( $res3 );
+					}
+					$rc->numberofWatchingusers = $watcherCache[$obj->rc_namespace][$obj->rc_title];
 				}
 				$s .= $list->recentChangesLine( $rc, !empty( $obj->wl_user ) );
 				--$limit;
@@ -267,6 +274,10 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 }
 
 function rcFilterByCategories ( &$rows , $categories , $any ) {
+	if( empty( $categories ) ) {
+		return;
+	}
+	
 	# Filter categories
 	$cats = array () ;
 	foreach ( $categories AS $cat ) {
@@ -279,7 +290,7 @@ function rcFilterByCategories ( &$rows , $categories , $any ) {
 	$articles = array () ;
 	$a2r = array () ;
 	foreach ( $rows AS $k => $r ) {
-		$nt = Title::newFromText ( $r->rc_title , $r->rc_namespace ) ;
+		$nt = Title::makeTitle( $r->rc_title , $r->rc_namespace );
 		$id = $nt->getArticleID() ;
 		if ( $id == 0 ) continue ; # Page might have been deleted...
 		if ( !in_array ( $id , $articles ) ) {
@@ -379,9 +390,12 @@ function rcOutputFeed( $rows, $feedFormat, $limit, $hideminor, $lastmod ) {
 	return true;
 }
 
+/**
+ * @todo document
+ * @param $rows Database resource with recentchanges rows
+ */
 function rcDoOutputFeed( $rows, &$feed ) {
-	$fname = 'rcDoOutputFeed';
-	wfProfileIn( $fname );
+	wfProfileIn( __METHOD__ );
 
 	$feed->outHeader();
 
@@ -406,7 +420,7 @@ function rcDoOutputFeed( $rows, &$feed ) {
 		$item = new FeedItem(
 			$title->getPrefixedText(),
 			rcFormatDiff( $obj ),
-			$title->getFullURL(),
+			$title->getFullURL( 'diff=' . $obj->rc_this_oldid . '&oldid=prev' ),
 			$obj->rc_timestamp,
 			$obj->rc_user_text,
 			$talkpage->getFullURL()
@@ -414,7 +428,7 @@ function rcDoOutputFeed( $rows, &$feed ) {
 		$feed->outItem( $item );
 	}
 	$feed->outFooter();
-	wfProfileOut( $fname );
+	wfProfileOut( __METHOD__ );
 }
 
 /**

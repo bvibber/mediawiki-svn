@@ -364,7 +364,7 @@ $specialPageAliases = array(
 	'Uncategorizedpages'        => array( 'Uncategorizedpages' ),
 	'Uncategorizedcategories'   => array( 'Uncategorizedcategories' ),
 	'Uncategorizedimages'       => array( 'Uncategorizedimages' ),
-	'Uncategorizedtemplates' 	=> array( 'Uncategorizedtemplates' ),
+	'Uncategorizedtemplates'    => array( 'Uncategorizedtemplates' ),
 	'Unusedcategories'          => array( 'Unusedcategories' ),
 	'Unusedimages'              => array( 'Unusedimages' ),
 	'Wantedpages'               => array( 'Wantedpages', 'Brokenlinks' ),
@@ -463,7 +463,7 @@ XHTML id names.
 'tog-showtoolbar'             => 'Show edit toolbar (JavaScript)',
 'tog-editondblclick'          => 'Edit pages on double click (JavaScript)',
 'tog-editsection'             => 'Enable section editing via [edit] links',
-'tog-editsectiononrightclick' => 'Enable section editing by right clicking<br /> on section titles (JavaScript)',
+'tog-editsectiononrightclick' => 'Enable section editing by right clicking on section titles (JavaScript)',
 'tog-showtoc'                 => 'Show table of contents (for pages with more than 3 headings)',
 'tog-rememberpassword'        => 'Remember my login on this computer',
 'tog-editwidth'               => 'Edit box has full width',
@@ -555,10 +555,10 @@ XHTML id names.
 'categories'            => 'Categories',
 'pagecategories'        => '{{PLURAL:$1|Category|Categories}}',
 'pagecategorieslink'    => 'Special:Categories', # don't translate or duplicate this message to other languages
-'category_header'       => 'Articles in category "$1"',
+'category_header'       => 'Pages in category "$1"',
 'subcategories'         => 'Subcategories',
 'category-media-header' => 'Media in category "$1"',
-'category-empty' => "''This category currently contains no articles or media.''",
+'category-empty' => "''This category currently contains no pages or media.''",
 'linkprefix'        => '/^(.*?)([a-zA-Z\x80-\xff]+)$/sD', # only translate this message to other languages if you have to change it
 'mainpagetext'      => "<big>'''MediaWiki has been successfully installed.'''</big>",
 'mainpagedocfooter' => "Consult the [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] for information on using the wiki software.
@@ -650,9 +650,9 @@ XHTML id names.
 'bugreportspage'    => 'Project:Bug reports',
 'copyright'         => 'Content is available under $1.',
 'copyrightpagename' => '{{SITENAME}} copyright',
-'copyrightpage'     => 'Project:Copyrights',
+'copyrightpage'     => '{{ns:project}}:Copyrights',
 'currentevents'     => 'Current events',
-'currentevents-url' => 'Current events',
+'currentevents-url' => 'Project:Current events',
 'disclaimers'       => 'Disclaimers',
 'disclaimerpage'    => 'Project:General disclaimer',
 'edithelp'          => 'Editing help',
@@ -710,8 +710,8 @@ XHTML id names.
 'anonnotice'              => '-', # don't translate or duplicate this message to other languages
 'newsectionheaderdefaultlevel' => '== $1 ==', # don't translate or duplicate this message to other languages
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
-'nstab-main'      => 'Article',
+# Short words for each namespace, by default used in the namespace tab in monobook
+'nstab-main'      => 'Page',
 'nstab-user'      => 'User page',
 'nstab-media'     => 'Media page',
 'nstab-special'   => 'Special',
@@ -727,7 +727,7 @@ XHTML id names.
 'nosuchactiontext'  => 'The action specified by the URL is not
 recognized by the wiki',
 'nosuchspecialpage' => 'No such special page',
-'nospecialpagetext' => "'''<big>You have requested an invalid special page.</big>'''
+'nospecialpagetext' => "<big>'''You have requested an invalid special page.'''</big>
 
 A list of valid special pages can be found at [[Special:Specialpages]].",
 
@@ -787,6 +787,8 @@ Function: $1<br />
 Query: $2',
 'viewsource'           => 'View source',
 'viewsourcefor'        => 'for $1',
+'actionthrottled'      => 'Action Throttled',
+'actionthrottledtext'  => "As an anti-spam measure, you are limited from performing this action too many times in a short space of time, and you have exceeded this limit. Please try again in a few minutes.",
 'protectedpagetext'    => 'This page has been locked to prevent editing.',
 'viewsourcetext'       => 'You can view and copy the source of this page:',
 'protectedinterface'   => 'This page provides interface text for the software, and is locked to prevent abuse.',
@@ -856,7 +858,7 @@ Your account has been created. Don't forget to change your {{SITENAME}} preferen
 'wrongpasswordempty'         => 'Password entered was blank. Please try again.',
 'passwordtooshort'           => 'Your password is invalid or too short. It must have at least $1 characters and be different from your username.',
 'mailmypassword'             => 'E-mail password',
-'passwordremindertitle'      => 'Password reminder from {{SITENAME}}',
+'passwordremindertitle'      => 'New temporary password for {{SITENAME}}',
 'passwordremindertext'       => 'Someone (probably you, from IP address $1)
 requested that we send you a new password for {{SITENAME}} ($4).
 The password for user "$2" is now "$3".
@@ -891,6 +893,12 @@ will be sent for any of the following features.',
 format. Please enter a well-formatted address or empty that field.',
 'accountcreated'             => 'Account created',
 'accountcreatedtext'         => 'The user account for $1 has been created.',
+'createaccount-title'        => 'Account creation for {{SITENAME}}',
+'createaccount-text'         => 'Someone ($1) created an account for $2 on {{SITENAME}}
+($4). The password for "$2" is "$3". You should log in and change your password
+now.
+
+You may ignore this message, if this account was created in error.',
 'loginlanguagelabel'         => 'Language: $1',
 'loginlanguagelinks'         => '* Deutsch|de
 * English|en
@@ -958,7 +966,7 @@ The block was made by $1. The reason given is ''$2''.
 * Expiry of block: $6
 * Intended blockee: $7
 
-You can contact $1 or another [[{{MediaWiki:grouppage-sysop}}|administrator]] to discuss the block.
+You can contact $1 or another [[{{MediaWiki:Grouppage-sysop}}|administrator]] to discuss the block.
 You cannot use the 'email this user' feature unless a valid email address is specified in your
 [[Special:Preferences|account preferences]] and you have not been blocked from using it.
 Your current IP address is $3, and the block ID is #$5. Please include either or both of these in any queries.",
@@ -971,12 +979,13 @@ The reason given is this:
 * Expiry of block: $6
 
 You may contact $1 or one of the other
-[[{{MediaWiki:grouppage-sysop}}|administrators]] to discuss the block.
+[[{{MediaWiki:Grouppage-sysop}}|administrators]] to discuss the block.
 
 Note that you may not use the "e-mail this user" feature unless you have a valid e-mail address
 registered in your [[Special:Preferences|user preferences]] and you have not been blocked from using it.
 
 Your block ID is $5. Please include this ID in any queries you make.',
+'blockednoreason'           => 'no reason given',
 'blockedoriginalsource'     => "The source of '''$1''' is 
 shown below:",
 'blockededitsource'         => "The text of '''your edits''' to '''$1''' is shown below:",
@@ -998,13 +1007,14 @@ shown below:",
 'newarticle'                => '(New)',
 'newarticletext'            => "You've followed a link to a page that doesn't exist yet.
 To create the page, start typing in the box below
-(see the [[{{MediaWiki:helppage}}|help page]] for more info).
+(see the [[{{MediaWiki:Helppage}}|help page]] for more info).
 If you are here by mistake, just click your browser's '''back''' button.",
 'newarticletextanon'        => '{{int:newarticletext}}', # don't translate or duplicate this message to other languages
 'talkpagetext'              => '<!-- MediaWiki:talkpagetext -->', # don't translate or duplicate this message to other languages
 'anontalkpagetext'          => "----''This is the discussion page for an anonymous user who has not created an account yet or who does not use it. We therefore have to use the numerical IP address to identify him/her. Such an IP address can be shared by several users. If you are an anonymous user and feel that irrelevant comments have been directed at you, please [[Special:Userlogin|create an account or log in]] to avoid future confusion with other anonymous users.''",
 'noarticletext'             => 'There is currently no text in this page, you can [[Special:Search/{{PAGENAME}}|search for this page title]] in other pages or [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit this page].',
 'noarticletextanon'         => '{{int:noarticletext}}', # don't translate or duplicate this message to other languages
+'userpage-userdoesnotexist' => 'User account "$1" is not registered. Please check if you want to create/edit this page.',
 'clearyourcache'            => "'''Note:''' After saving, you may have to bypass your browser's cache to see the changes. '''Mozilla / Firefox / Safari:''' hold down ''Shift'' while clicking ''Reload'', or press ''Ctrl-Shift-R'' (''Cmd-Shift-R'' on Apple Mac); '''IE:''' hold ''Ctrl'' while clicking ''Refresh'', or press ''Ctrl-F5''; '''Konqueror:''': simply click the ''Reload'' button, or press ''F5''; '''Opera''' users may need to completely clear their cache in ''Tools→Preferences''.",
 'usercssjsyoucanpreview'    => "<strong>Tip:</strong> Use the 'Show preview' button to test your new CSS/JS before saving.",
 'usercsspreview'            => "'''Remember that you are only previewing your user CSS, it has not yet been saved!'''",
@@ -1022,7 +1032,7 @@ Please try again. If it still doesn't work, try logging out and logging back in.
 
 <strong>If this is a legitimate edit attempt, please try again. If it still doesn't work, try logging out and logging back in.</strong>",
 'token_suffix_mismatch'     => '<strong>Your edit has been rejected because your client mangled the punctuation characters 
-in the edit token. The edit has been rejected to prevent corruption of the article text. 
+in the edit token. The edit has been rejected to prevent corruption of the page text. 
 This sometimes happens when you are using a buggy web-based anonymous proxy service.</strong>',
 'editing'                   => 'Editing $1',
 'editinguser'               => 'Editing user <b>$1</b>',
@@ -1037,7 +1047,7 @@ You will have to merge your changes into the existing text.
 press "Save page".<br />',
 'yourtext'                  => 'Your text',
 'storedversion'             => 'Stored version',
-'nonunicodebrowser'         => '<strong>WARNING: Your browser is not unicode compliant. A workaround is in place to allow you to safely edit articles: non-ASCII characters will appear in the edit box as hexadecimal codes.</strong>',
+'nonunicodebrowser'         => '<strong>WARNING: Your browser is not unicode compliant. A workaround is in place to allow you to safely edit pages: non-ASCII characters will appear in the edit box as hexadecimal codes.</strong>',
 'editingold'                => '<strong>WARNING: You are editing an out-of-date
 revision of this page.
 If you save it, any changes made since this revision will be lost.</strong>',
@@ -1174,6 +1184,29 @@ undelete it again through this same interface, unless additional restrictions ar
 'overlogpagetext' => 'Below is a list of the most recent deletions and blocks involving content
 hidden from Sysops. See the [[Special:Ipblocklist|IP block list]] for the list of currently operational bans and blocks.',
 
+# History merging
+'mergehistory'          => 'Merge page histories',
+'mergehistory-header'   => "This page lets you merge revisions of the history of one source page into a newer page.
+Make sure that this change will maintain historical page continuity.
+
+'''At least the current revision of the source page must remain.'''",
+'mergehistory-box'      => 'Merge revisions of two pages:',
+'mergehistory-from'     => 'Source page:',
+'mergehistory-into'     => 'Destination page:',
+'mergehistory-list'     => 'Mergeable edit history',
+'mergehistory-merge'    => 'The following revisions of [[:$1]] can be merged into [[:$2]]. Use the radio button column to merge in only the revisions created at and before the specified time. Note that using the navigation links will reset this column.',
+'mergehistory-go'       => 'Show mergeable edits',
+'mergehistory-submit'   => 'Merge revisions',
+'mergehistory-empty'    => 'No revisions can be merged',
+'mergehistory-success'  => '$3 revisions of [[:$1]] successfully merged into [[:$2]].',
+'mergehistory-fail'     => 'Unable to perform history merge, please recheck the page and time parameters.',
+
+# Merge log
+'mergelog'              => 'Merge log',
+'pagemerge-logentry'    => 'merged [[$1]] into [[$2]] (revisions up to $3)',
+'revertmerge'           => 'Unmerge',
+'mergelogpagetext'      => 'Below is a list of the most recent merges of one page history into another.',
+
 # Diffs
 'history-title'             => 'Revision history of "$1"',
 'difference'                => '(Difference between revisions)',
@@ -1188,11 +1221,11 @@ hidden from Sysops. See the [[Special:Ipblocklist|IP block list]] for the list o
 
 # Search results
 'searchresults'         => 'Search results',
-'searchresulttext'      => 'For more information about searching {{SITENAME}}, see [[{{MediaWiki:helppage}}|{{int:help}}]].',
+'searchresulttext'      => 'For more information about searching {{SITENAME}}, see [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "You searched for '''[[:$1]]'''",
 'searchsubtitleinvalid' => "You searched for '''$1'''",
 'noexactmatch'          => "'''There is no page titled \"\$1\".''' You can [[:\$1|create this page]].",
-'titlematches'          => 'Article title matches',
+'titlematches'          => 'Page title matches',
 'notitlematches'        => 'No page title matches',
 'textmatches'           => 'Page text matches',
 'notextmatches'         => 'No page text matches',
@@ -1270,7 +1303,7 @@ containing all of the search terms will appear in the result).",
 'resultsperpage'           => 'Hits per page:',
 'contextlines'             => 'Lines per hit:',
 'contextchars'             => 'Context per line:',
-'stub-threshold'           => 'Threshold for <a href="#" class="stub">stub link</a> formatting:',
+'stub-threshold'           => 'Threshold for <a href="#" class="stub">stub link</a> formatting (bytes):',
 'recentchangesdays'        => 'Days to show in recent changes:',
 'recentchangescount'       => 'Number of edits to show in recent changes:',
 'savedprefs'               => 'Your preferences have been saved.',
@@ -1349,7 +1382,7 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 'boteditletter'                     => 'b',
 'sectionlink'                       => '→', # only translate this message to other languages if you have to change it
 'number_of_watching_users_RCview'   => '[$1]', # don't translate or duplicate this message to other languages
-'number_of_watching_users_pageview' => '[$1 watching user/s]',
+'number_of_watching_users_pageview' => '[$1 watching {{PLURAL:$1|user|users}}]',
 'rc_categories'                     => 'Limit to categories (separate with "|")',
 'rc_categories_any'                 => 'Any',
 'rc-change-size'                    => '$1', # only translate this message to other languages if you have to change it
@@ -1360,6 +1393,8 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 'recentchangeslinked-title' => 'Changes related to $1',
 'recentchangeslinked-noresult' => 'No changes on linked pages during the given period.',
 'recentchangeslinked-summary'  => "This special page lists the last changes on pages who are linked. Pages on your watchlist are '''bold'''.",
+'recentchangeslinked-feed-entry' => 'User $1 edited $2',
+'recentchangeslinked-feed-entry-comment' => 'User $1 edited $2 ($3)',
 
 # Upload
 'upload'                      => 'Upload file',
@@ -1403,7 +1438,7 @@ To include the image in a page, use a link in the form
 Name of the uploading file: <strong><tt>$1</tt></strong><br />
 Name of the existing file: <strong><tt>$2</tt></strong><br />
 Please choose a different name.',
-'fileexists-thumb'            => "'''<center>Existing image</center>'''",
+'fileexists-thumb'            => "<center>'''Existing image'''</center>",
 'fileexists-thumbnail-yes'    => 'The file seems to be an image of reduced size <i>(thumbnail)</i>. Please check the file <strong><tt>$1</tt></strong>.<br />
 If the checked file is the same image of original size it is not necessary to upload an extra thumbnail.',
 'file-thumbnail-no'           => 'The filename begins with <strong><tt>$1</tt></strong>. It seems to be an image of reduced size <i>(thumbnail)</i>.
@@ -1550,9 +1585,14 @@ PICT # misc.
 'unusedtemplatestext'     => 'This page lists all pages in the template namespace which are not included in another page. Remember to check for other links to the templates before deleting them.',
 'unusedtemplateswlh'      => 'other links',
 
+# Random page
+'randompage'                      => 'Random page',
+'randompage-nopages'              => 'There are no pages in this namespace.',
+'randompage-url'                  => 'Special:Random', # don't translate or duplicate this message to other languages
+
 # Random redirect
-'randomredirect'         => 'Random redirect',
-'randomredirect-nopages' => 'There are no redirects in this namespace.',
+'randomredirect'                  => 'Random redirect',
+'randomredirect-nopages'          => 'There are no redirects in this namespace.',
 
 # Statistics
 'statistics'             => 'Statistics',
@@ -1595,7 +1635,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 'withoutinterwiki-header'  => 'The following pages do not link to other language versions:',
 'withoutinterwiki-summary' => '', # only translate this message to other languages if you have to change it
 
-'fewestrevisions'         => 'Articles with the fewest revisions',
+'fewestrevisions'         => 'Pages with the fewest revisions',
 'fewestrevisions-summary' => '', # only translate this message to other languages if you have to change it
 
 # Miscellaneous special pages
@@ -1631,19 +1671,16 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 'mostlinkedcategories-summary'    => '', # only translate this message to other languages if you have to change it
 'mostlinkedtemplates'             => 'Most linked-to templates',
 'mostlinkedtemplates-summary'     => '', # only translate this message to other languages if you have to change it
-'mostcategories'                  => 'Articles with the most categories',
+'mostcategories'                  => 'Pages with the most categories',
 'mostcategories-summary'          => '', # only translate this message to other languages if you have to change it
 'mostimages'                      => 'Most linked to images',
 'mostimages-summary'              => '', # only translate this message to other languages if you have to change it
-'mostrevisions'                   => 'Articles with the most revisions',
+'mostrevisions'                   => 'Pages with the most revisions',
 'mostrevisions-summary'           => '', # only translate this message to other languages if you have to change it
 'allpages'                        => 'All pages',
 'allpages-summary'                => '', # only translate this message to other languages if you have to change it
 'prefixindex'                     => 'Prefix index',
 'prefixindex-summary'             => '', # only translate this message to other languages if you have to change it
-'randompage'                      => 'Random page',
-'randompage-nopages'              => 'There are no pages in this namespace.',
-'randompage-url'                  => 'Special:Random', # don't translate or duplicate this message to other languages
 'shortpages'                      => 'Short pages',
 'shortpages-summary'              => '', # only translate this message to other languages if you have to change it
 'longpages'                       => 'Long pages',
@@ -1673,7 +1710,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 'unusedimagestext'                => '<p>Please note that other web sites may link to an image with
 a direct URL, and so may still be listed here despite being
 in active use.</p>',
-'unusedcategoriestext'            => 'The following category pages exist although no other article or category make use of them.',
+'unusedcategoriestext'            => 'The following category pages exist although no other page or category make use of them.',
 'notargettitle'                   => 'No target',
 'notargettext'                    => 'You have not specified a target page or user to perform this function on.',
 
@@ -1713,7 +1750,7 @@ You can narrow down the view by selecting a log type, the user name, or the affe
 'nextpage'          => 'Next page ($1)',
 'prevpage'          => 'Previous page ($1)',
 'allpagesfrom'      => 'Display pages starting at:',
-'allarticles'       => 'All articles',
+'allarticles'       => 'All pages',
 'allinnamespace'    => 'All pages ($1 namespace)',
 'allnotinnamespace' => 'All pages (not in $1 namespace)',
 'allpagesprev'      => 'Previous',
@@ -1830,7 +1867,7 @@ To change your watchlist settings, visit
 {{fullurl:{{ns:special}}:Watchlist/edit}}
 
 Feedback and further assistance:
-{{fullurl:{{MediaWiki:helppage}}}}',
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'                  => 'Delete page',
@@ -1846,7 +1883,7 @@ Feedback and further assistance:
 or image along with all of its history from the database.
 Please confirm that you intend to do this, that you understand the
 consequences, and that you are doing this in accordance with
-[[{{MediaWiki:policy-url}}]].',
+[[{{MediaWiki:Policy-url}}]].',
 'actioncomplete'              => 'Action complete',
 'deletedtext'                 => '"$1" has been deleted.
 See $2 for a record of recent deletions.',
@@ -1856,6 +1893,13 @@ See $2 for a record of recent deletions.',
 'deletionlog'                 => 'deletion log',
 'reverted'                    => 'Reverted to earlier revision',
 'deletecomment'               => 'Reason for deletion',
+'deleteotherreason'           => 'Other/additional reason:',
+'deletereasonotherlist'       => 'Other reason',
+'deletereason-dropdown'       => '
+*Common delete reasons
+** Author request
+** Copyright violation
+** Vandalism',
 'rollback'                    => 'Roll back edits',
 'rollback_short'              => 'Rollback',
 'rollbacklink'                => 'rollback',
@@ -1899,6 +1943,7 @@ Here are the current settings for the page <strong>$1</strong>:',
 'protect-summary-cascade'     => 'cascading',
 'protect-expiring'            => 'expires $1 (UTC)',
 'protect-cascade'             => 'Protect pages included in this page (cascading protection)',
+'protect-cantedit'	      => 'You cannot change the protection levels of this page, because you do not have permission to edit it.',
 'restriction-type'            => 'Permission:',
 'restriction-level'           => 'Restriction level:',
 'minimum-size'                => 'Min size',
@@ -1927,17 +1972,17 @@ comment field and all checkboxes.",
 'undeleterevisions'        => '$1 {{PLURAL:$1|revision|revisions}} archived',
 'undeletehistory'          => 'If you restore the page, all revisions will be restored to the history.
 If a new page with the same name has been created since the deletion, the restored
-revisions will appear in the prior history, and the current revision of the live page
-will not be automatically replaced. Also note that restrictions on file revisions are lost upon restoration',
+revisions will appear in the prior history. Also note that restrictions on file revisions are lost upon restoration',
 'undeleterevdel'           => "Undeletion will not be performed if it will result in the top page revision being
 partially deleted. In such cases, you must uncheck or unhide the newest deleted revisions. Revisions of files
 that you don't have permission to view will not be restored.",
-'undeletehistorynoadmin'   => 'This article has been deleted. The reason for deletion is
+'undeletehistorynoadmin'   => 'This page has been deleted. The reason for deletion is
 shown in the summary below, along with details of the users who had edited this page
 before deletion. The actual text of these deleted revisions is only available to administrators.',
 'undelete-revision' => 'Deleted revision of $1 (as of $2) by $3:',
 'undeleterevision-missing' => 'Invalid or missing revision. You may have a bad link, or the
 revision may have been restored or removed from the archive.',
+'undelete-nodiff'          => 'No previous revision found.',
 'undeletebtn'              => 'Restore',
 'undeletereset'            => 'Reset',
 'undeletecomment'          => 'Comment:',
@@ -1960,7 +2005,7 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 'undelete-missing-filearchive' => 'Unable to restore file archive ID $1 because it isn\'t in the database. ' .
 	'It may have already been undeleted.',
 'undelete-error-short'     => 'Error undeleting file: $1',
-'undelete-error-long'      => "Errors were encountered while undeleting the file:\n\n$1\n",
+'undelete-error-long'      => "Errors were encountered while undeleting the file:\n\n$1",
 
 # Namespace form on various pages
 'namespace'      => 'Namespace:',
@@ -2015,7 +2060,7 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 'blockiptext'                 => 'Use the form below to block write access
 from a specific IP address or username.
 This should be done only to prevent vandalism, and in
-accordance with [[{{MediaWiki:policy-url}}|policy]].
+accordance with [[{{MediaWiki:Policy-url}}|policy]].
 Fill in a specific reason below (for example, citing particular
 pages that were vandalized).',
 'ipaddress'                   => 'IP Address:',
@@ -2087,9 +2132,12 @@ the list of currently operational bans and blocks.',
 'range_block_disabled'        => 'The sysop ability to create range blocks is disabled.',
 'ipb_expiry_invalid'          => 'Expiry time invalid.',
 'ipb_already_blocked'         => '"$1" is already blocked',
-'ip_range_invalid'            => 'Invalid IP range.',
-'proxyblocker'                => 'Proxy blocker',
 'ipb_cant_unblock'            => 'Error: Block ID $1 not found. It may have been unblocked already.',
+'ipb_blocked_as_range'        => 'Error: The IP $1 is not blocked directly and cannot be unblocked. It is, however, blocked as part of the range $2, which can be unblocked.',
+'ip_range_invalid'            => 'Invalid IP range.',
+'blockme'                     => 'Block me',
+'proxyblocker'                => 'Proxy blocker',
+'proxyblocker-disabled'       => 'This function is disabled.',
 'proxyblockreason'            => 'Your IP address has been blocked because it is an open proxy. Please contact your Internet service provider or tech support and inform them of this serious security problem.',
 'proxyblocksuccess'           => 'Done.',
 'sorbs'                       => 'DNSBL', # only translate this message to other languages if you have to change it
@@ -2172,7 +2220,7 @@ Please choose another name.',
 'delete_and_move'         => 'Delete and move',
 'delete_and_move_text'    => '==Deletion required==
 
-The destination article "[[$1]]" already exists. Do you want to delete it to make way for the move?',
+The destination page "[[$1]]" already exists. Do you want to delete it to make way for the move?',
 'delete_and_move_confirm' => 'Yes, delete the page',
 'delete_and_move_reason'  => 'Deleted to make way for move',
 'selfmove'                => "Source and destination titles are the same; can't move a page over itself.",
@@ -2188,7 +2236,7 @@ To export pages, enter the titles in the text box below, one title per line, and
 select whether you want the current version as well as all old versions, with the page
 history lines, or just the current version with the info about the last edit.
 
-In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{MediaWiki:mainpage}}]] for the page "[[{{MediaWiki:mainpage}}]]".',
+In the latter case you can also use a link, e.g. [[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]] for the page "[[{{MediaWiki:Mainpage}}]]".',
 'exportcuronly'     => 'Include only the current revision, not the full history',
 'exportnohistory'   => "----
 '''Note:''' Exporting the full history of pages through this form has been disabled due to performance reasons.",
@@ -2245,9 +2293,9 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'importlogpage'                    => 'Import log',
 'importlogpagetext'                => 'Administrative imports of pages with edit history from other wikis.',
 'import-logentry-upload'           => 'imported [[$1]] by file upload',
-'import-logentry-upload-detail'    => '$1 revision(s)',
+'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|revision|revisions}}',
 'import-logentry-interwiki'        => 'transwikied $1',
-'import-logentry-interwiki-detail' => '$1 revision(s) from $2',
+'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|revision|revisions}} from $2',
 
 # Keyboard access keys for power users
 'accesskey-pt-userpage'             => '.', # don't translate or duplicate this message to other languages
@@ -2401,7 +2449,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'spamprotectiontext'     => 'The page you wanted to save was blocked by the spam filter. This is probably caused by a link to an external site.',
 'spamprotectionmatch'    => 'The following text is what triggered our spam filter: $1',
 'subcategorycount'       => 'There {{PLURAL:$1|is one subcategory|are $1 subcategories}} to this category.',
-'categoryarticlecount'   => 'There {{PLURAL:$1|is one article|are $1 articles}} in this category.',
+'categoryarticlecount'   => 'There {{PLURAL:$1|is one page|are $1 pages}} in this category.',
 'category-media-count'   => 'There {{PLURAL:$1|is one file|are $1 files}} in this category.',
 'listingcontinuesabbrev' => 'cont.',
 'spambot_username'       => 'MediaWiki spam cleanup',
@@ -2410,10 +2458,10 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 
 # Info page
 'infosubtitle'   => 'Information for page',
-'numedits'       => 'Number of edits (article): $1',
+'numedits'       => 'Number of edits (page): $1',
 'numtalkedits'   => 'Number of edits (discussion page): $1',
 'numwatchers'    => 'Number of watchers: $1',
-'numauthors'     => 'Number of distinct authors (article): $1',
+'numauthors'     => 'Number of distinct authors (page): $1',
 'numtalkauthors' => 'Number of distinct authors (discussion page): $1',
 
 # Math options
@@ -2427,7 +2475,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 # Patrolling
 'markaspatrolleddiff'                 => 'Mark as patrolled',
 'markaspatrolledlink'                 => '[$1]', # don't translate or duplicate this message to other languages
-'markaspatrolledtext'                 => 'Mark this article as patrolled',
+'markaspatrolledtext'                 => 'Mark this page as patrolled',
 'markedaspatrolled'                   => 'Marked as patrolled',
 'markedaspatrolledtext'               => 'The selected revision has been marked as patrolled.',
 'rcpatroldisabled'                    => 'Recent Changes Patrol disabled',
@@ -2435,8 +2483,6 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'markedaspatrollederror'              => 'Cannot mark as patrolled',
 'markedaspatrollederrortext'          => 'You need to specify a revision to mark as patrolled.',
 'markedaspatrollederror-noautopatrol' => 'You are not allowed to mark your own changes as patrolled.',
-'nppatroldisabled'                    => 'New Pages Patrol disabled',
-'nppatroldisabledtext'                => 'The New Pages Patrol feature is currently disabled.',
 
 # Patrol log
 'patrol-log-page'   => 'Patrol log',
@@ -2448,7 +2494,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 # Image deletion
 'deletedrevision' => 'Deleted old revision $1',
 'filedeleteerror-short' => "Error deleting file: $1",
-'filedeleteerror-long' => "Errors were encountered while deleting the file:\n\n$1\n",
+'filedeleteerror-long' => "Errors were encountered while deleting the file:\n\n$1",
 'filedelete-missing' => 'The file "$1" cannot be deleted, because it doesn\'t exist.',
 'filedelete-old-unregistered' => 'The specified file revision "$1" is not in the database.',
 'filedelete-current-unregistered' => 'The specified file "$1" is not in the database.',
@@ -2487,7 +2533,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'bad_image_list' => 'The format is as follows:
 
 Only list items (lines starting with *) are considered. The first link on a line must be a link to a bad image.
-Any subsequent links on the same line are considered to be exceptions, i.e. articles where the image may occur inline.',
+Any subsequent links on the same line are considered to be exceptions, i.e. pages where the image may occur inline.',
 
 /*
 Short names for language variants used for language conversion links.
@@ -2495,11 +2541,13 @@ To disable showing a particular link, set it to 'disable', e.g.
 'variantname-zh-sg' => 'disable',
 Variants for Chinese language
 */
-'variantname-zh-cn' => 'cn', # only translate this message to other languages if you have to change it
-'variantname-zh-tw' => 'tw', # only translate this message to other languages if you have to change it
-'variantname-zh-hk' => 'hk', # only translate this message to other languages if you have to change it
-'variantname-zh-sg' => 'sg', # only translate this message to other languages if you have to change it
-'variantname-zh'    => 'zh', # only translate this message to other languages if you have to change it
+'variantname-zh-hans' => 'hans', # only translate this message to other languages if you have to change it
+'variantname-zh-hant' => 'hant', # only translate this message to other languages if you have to change it
+'variantname-zh-cn'   => 'cn', # only translate this message to other languages if you have to change it
+'variantname-zh-tw'   => 'tw', # only translate this message to other languages if you have to change it
+'variantname-zh-hk'   => 'hk', # only translate this message to other languages if you have to change it
+'variantname-zh-sg'   => 'sg', # only translate this message to other languages if you have to change it
+'variantname-zh'      => 'zh', # only translate this message to other languages if you have to change it
 
 # Variants for Serbian language
 'variantname-sr-ec' => 'sr-ec', # only translate this message to other languages if you have to change it
@@ -2869,7 +2917,7 @@ will expire at $4.',
 
 # Trackbacks
 'trackbackbox'      => '<div id="mw_trackbacks">
-Trackbacks for this article:<br />
+Trackbacks for this page:<br />
 $1
 </div>',
 'trackback'         => '; $4$5 : [$2 $1]', # don't translate or duplicate this message to other languages
@@ -2897,9 +2945,9 @@ $1',
 'confirm_purge_button' => 'OK',
 
 # AJAX search
-'searchcontaining' => "Search for articles containing ''$1''.",
-'searchnamed'      => "Search for articles named ''$1''.",
-'articletitles'    => "Articles starting with ''$1''",
+'searchcontaining' => "Search for pages containing ''$1''.",
+'searchnamed'      => "Search for pages named ''$1''.",
+'articletitles'    => "Pages starting with ''$1''",
 'hideresults'      => 'Hide results',
 
 # Separator for categories in page lists
@@ -2997,17 +3045,51 @@ $1',
 'watchlisttools-raw'   => 'Edit raw watchlist',
 
 # Iranian month names
-'iranian-calendar-m1'  => 'Farvardin',
-'iranian-calendar-m2'  => 'Ordibehesht',
-'iranian-calendar-m3'  => 'Khordad',
-'iranian-calendar-m4'  => 'Tir',
-'iranian-calendar-m5'  => 'Mordad',
-'iranian-calendar-m6'  => 'Shahrivar',
-'iranian-calendar-m7'  => 'Mehr',
-'iranian-calendar-m8'  => 'Aban',
-'iranian-calendar-m9'  => 'Azar',
-'iranian-calendar-m10' => 'Dey',
-'iranian-calendar-m11' => 'Bahman',
-'iranian-calendar-m12' => 'Esfand',
+'iranian-calendar-m1'  => 'Farvardin', # only translate this message to other languages if you have to change it
+'iranian-calendar-m2'  => 'Ordibehesht', # only translate this message to other languages if you have to change it
+'iranian-calendar-m3'  => 'Khordad', # only translate this message to other languages if you have to change it
+'iranian-calendar-m4'  => 'Tir', # only translate this message to other languages if you have to change it
+'iranian-calendar-m5'  => 'Mordad', # only translate this message to other languages if you have to change it
+'iranian-calendar-m6'  => 'Shahrivar', # only translate this message to other languages if you have to change it
+'iranian-calendar-m7'  => 'Mehr', # only translate this message to other languages if you have to change it
+'iranian-calendar-m8'  => 'Aban', # only translate this message to other languages if you have to change it
+'iranian-calendar-m9'  => 'Azar', # only translate this message to other languages if you have to change it
+'iranian-calendar-m10' => 'Dey', # only translate this message to other languages if you have to change it
+'iranian-calendar-m11' => 'Bahman', # only translate this message to other languages if you have to change it
+'iranian-calendar-m12' => 'Esfand', # only translate this message to other languages if you have to change it
+
+# Hebrew month names
+'hebrew-calendar-m1'      => 'Tishrei', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m2'      => 'Cheshvan', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m3'      => 'Kislev', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m4'      => 'Tevet', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m5'      => 'Shevat', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m6'      => 'Adar', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m6a'     => 'Adar I', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m6b'     => 'Adar II', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m7'      => 'Nisan', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m8'      => 'Iyar', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m9'      => 'Sivan', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m10'     => 'Tamuz', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m11'     => 'Av', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m12'     => 'Elul', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m1-gen'  => 'Tishrei', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m2-gen'  => 'Cheshvan', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m3-gen'  => 'Kislev', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m4-gen'  => 'Tevet', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m5-gen'  => 'Shevat', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m6-gen'  => 'Adar', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m6a-gen' => 'Adar I', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m6b-gen' => 'Adar II', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m7-gen'  => 'Nisan', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m8-gen'  => 'Iyar', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m9-gen'  => 'Sivan', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m10-gen' => 'Tamuz', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m11-gen' => 'Av', # only translate this message to other languages if you have to change it
+'hebrew-calendar-m12-gen' => 'Elul', # only translate this message to other languages if you have to change it
+
+# Signatures
+'signature' => '[[{{ns:user}}:$1|$2]]', # don't translate or duplicate this message to other languages
+'signature-anon' => '[[{{#special:Contributions}}/$1|$2]]', # don't translate or duplicate this message to other languages
 
 );

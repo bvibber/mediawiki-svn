@@ -55,6 +55,8 @@ $messages = array(
 'tog-editwidth'               => 'Yazma alanı tam genişlikte olsun',
 'tog-watchcreations'          => 'Yaratmış olduğum sayfaları izleme listeme ekle',
 'tog-watchdefault'            => 'Değişiklik yapılan sayfayı izleme listesine ekle',
+'tog-watchmoves'              => 'Taşıdığım sayfaları izleme listeme ekle',
+'tog-watchdeletion'           => 'Sildiğim sayfaları izleme listeme ekle',
 'tog-minordefault'            => "Değişikliği 'küçük değişiklik' olarak seçili getir",
 'tog-previewontop'            => 'Önizlemeyi yazma alanın üstünde göster',
 'tog-previewonfirst'          => 'Değiştirmede önizlemeyi göster',
@@ -71,6 +73,7 @@ $messages = array(
 'tog-forceeditsummary'        => 'Özeti boş bıraktığımda beni uyar',
 'tog-watchlisthideown'        => 'İzleme listemden benim değişikliklerimi gizle',
 'tog-watchlisthidebots'       => 'İzleme listemden bot değişikliklerini gizle',
+'tog-watchlisthideminor'      => 'İzleme listemden küçük değişiklikleri gizle',
 
 'underline-always'  => 'Daima',
 'underline-never'   => 'Asla',
@@ -197,19 +200,19 @@ $messages = array(
 'aboutsite'         => '{{SITENAME}} Hakkında',
 'aboutpage'         => 'Project:Hakkında',
 'bugreports'        => 'Hata Raporları',
-'bugreportspage'    => '{{ns:project}}:Hata raporları',
+'bugreportspage'    => 'Project:Hata raporları',
 'copyright'         => 'İçerik $1 altındadır.',
 'copyrightpagename' => '{{SITENAME}} telif hakları',
-'copyrightpage'     => 'Project:Telif hakları',
+'copyrightpage'     => '{{ns:project}}:Telif hakları',
 'currentevents'     => 'Güncel olaylar',
-'currentevents-url' => 'Güncel olaylar',
+'currentevents-url' => 'Project:Güncel olaylar',
 'disclaimers'       => 'Sorumluluk reddi',
-'disclaimerpage'    => '{{ns:project}}:Genel_sorumluluk_reddi',
+'disclaimerpage'    => 'Project:Genel_sorumluluk_reddi',
 'edithelp'          => 'Nasıl değiştirilir?',
-'edithelppage'      => 'Yardım:Sayfa nasıl değiştirilir',
+'edithelppage'      => 'Help:Sayfa nasıl değiştirilir',
 'faq'               => 'SSS',
 'faqpage'           => 'Project:SSS',
-'helppage'          => 'Yardım:İçindekiler',
+'helppage'          => 'Help:İçindekiler',
 'mainpage'          => 'Ana Sayfa',
 'portal'            => 'Topluluk portalı',
 'portal-url'        => 'Project:Topluluk portalı',
@@ -244,7 +247,7 @@ $messages = array(
 'feedlinks'               => 'Besleme:',
 'feed-invalid'            => 'Hatalı besleme tipi.',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Madde',
 'nstab-user'      => 'kullanıcı sayfası',
 'nstab-media'     => 'Medya',
@@ -437,7 +440,7 @@ Eğer [[Special:Preferences|tercihler]] kısmında geçerli bir e-posta adresi g
 'usercssjsyoucanpreview'   => "<strong>İpucu:</strong> Sayfayı kaydetmeden önce <font style=\"border: 1px solid #0; background: #EEEEEE; padding : 2px\">'''önizlemeyi göster'''</font>'e tıklayarak yaptığınız yeni sayfayı gözden geçirin.",
 'usercsspreview'           => "'''Sadece test ediyorsun ya da önizleme görüyorsun - kullanıcı CSS dosyası henüz kaydolmadı.'''",
 'userjspreview'            => "'''Sadece test ediyorsun ya da önizleme görüyorsun - kullanıcı JavaScript'i henüz kaydolmadı.'''",
-'userinvalidcssjstitle'    => "''Uyarı:''' \"\$1\" adıyla bir tema yoktur. tema-adı.css ve .js dosyalarının adları küçük harf ile yazması gerek, yani User:Temel/'''M'''onobook.css değil, User:Temel/'''m'''onobook.css.",
+'userinvalidcssjstitle'    => "''Uyarı:''' \"\$1\" adıyla bir tema yoktur. tema-adı.css ve .js dosyalarının adları küçük harf ile yazması gerek, yani {{ns:user}}:Temel/'''M'''onobook.css değil, {{ns:user}}:Temel/'''m'''onobook.css.",
 'updated'                  => '(Güncellendi)',
 'note'                     => '<strong>Not: </strong>',
 'previewnote'              => 'Bu yalnızca bir önizlemedir, ve değişiklikleriniz henüz kaydedilmemiştir!',
@@ -596,8 +599,8 @@ $2 yönlendirmeleri listele &nbsp; Aranacak: $3 $9',
 'group-sysop-member'      => 'Yönetici',
 'group-bureaucrat-member' => 'Bürokrat',
 
-'grouppage-bot'        => 'Project:Botlar',
-'grouppage-sysop'      => 'Project:Yöneticiler',
+'grouppage-bot'        => '{{ns:project}}:Botlar',
+'grouppage-sysop'      => '{{ns:project}}:Yöneticiler',
 'grouppage-bureaucrat' => '{{ns:project}}:Bürokratlar',
 
 # Recent changes
@@ -638,10 +641,10 @@ $2 yönlendirmeleri listele &nbsp; Aranacak: $3 $9',
 yüklenenler ve silinmişler [[Special:Log/upload|yükleme kaydı sayfasında da]] görülebilir.
 
 Sayfaya resim koymak için;
-*'''<nowiki>[[</nowiki>{{ns:Image}}<nowiki>:Örnek.jpg]]</nowiki>'''
-*'''<nowiki>[[</nowiki>{{ns:Image}}<nowiki>:Örnek.png|açıklama]]</nowiki>'''
+*'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Örnek.jpg]]</nowiki>'''
+*'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Örnek.png|açıklama]]</nowiki>'''
 veya doğrudan bağlantı için
-*'''<nowiki>[[</nowiki>{{ns:Media}}<nowiki>:Örnek.ogg]]</nowiki>'''",
+*'''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:Örnek.ogg]]</nowiki>'''",
 'uploadlog'                   => 'yükleme kaydı',
 'uploadlogpage'               => 'Dosya yükleme kayıtları',
 'uploadlogpagetext'           => 'Aşağıda en son eklenen dosyaların bir listesi bulunmaktadır.',
@@ -709,6 +712,9 @@ veya doğrudan bağlantı için
 'unusedtemplatestext' => 'Bu sayfa şablon alan adında bulunan ve diğer sayfalara eklenmemiş olan şablonları göstermektedir. Şablonlara olan diğer bağlantıları da kontrol etmeden silmeyiniz.',
 'unusedtemplateswlh'  => 'diğer bağlantılar',
 
+# Random page
+'randompage' => 'Rastgele sayfa',
+
 # Random redirect
 'randomredirect' => 'Rastgele yönlendirme',
 
@@ -761,7 +767,6 @@ Toplam sayfa görüntülenme sayısı '''\$3''', değişiklik başına görünt�
 'mostrevisions'           => 'En çok değişikliğe uğramış sayfalar',
 'allpages'                => 'Tüm sayfalar',
 'allpages-summary'        => 'Bu sayfa sitedeki bütün sayfaları listeler.',
-'randompage'              => 'Rastgele sayfa',
 'shortpages'              => 'Kısa sayfalar',
 'longpages'               => 'Uzun sayfalar',
 'deadendpages'            => 'Başka sayfalara bağlantısı olmayan sayfalar',
@@ -896,7 +901,7 @@ Ayarları değiştirmek için:
 {{fullurl:Special:Watchlist/edit}}
 
 Yardım ve öneriler için:
-{{fullurl:{{MediaWiki:helppage}}}}',
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'                  => 'Sayfayı sil',
@@ -986,7 +991,7 @@ Daha fazla bilgi için [[Project:Koruma altına alınmış sayfa]] sayfasına ba
 
 # Block/unblock
 'blockip'            => "Bu IP'den erişimi engelle",
-'blockiptext'        => "Aşağıdaki formu kullanarak belli bir IP'nin veya kayıtlı kullanıcının değişiklik yapmasını engelleyebilirsiniz. Bu sadece vandalizmi engellemek için ve [[{{MediaWiki:policy-url}}|kurallara]] uygun olarak yapılmalı. Aşağıya mutlaka engelleme ile ilgili bir açıklama yazınız. (örnek: -Şu- sayfalarda vandalizm yapmıştır).",
+'blockiptext'        => "Aşağıdaki formu kullanarak belli bir IP'nin veya kayıtlı kullanıcının değişiklik yapmasını engelleyebilirsiniz. Bu sadece vandalizmi engellemek için ve [[{{MediaWiki:Policy-url}}|kurallara]] uygun olarak yapılmalı. Aşağıya mutlaka engelleme ile ilgili bir açıklama yazınız. (örnek: -Şu- sayfalarda vandalizm yapmıştır).",
 'ipaddress'          => 'IP Adresi',
 'ipadressorusername' => 'IP adresi veya kullanıcı adı',
 'ipbexpiry'          => 'Bitiş süresi',
@@ -1087,7 +1092,7 @@ In the latter case you can also use a link, e.g. [[Special:Export/{{int:Mainpage
 'allmessagesdefault'        => 'Orjinal metin',
 'allmessagescurrent'        => 'Kullanımdaki metin',
 'allmessagestext'           => "Bu liste  MediaWiki'de mevcut olan tüm terimlerin listesidir",
-'allmessagesnotsupportedDB' => "'''\$wgUseDatabaseMessages''' kapalı olduğu için '''Special:Allmessages''' kullanıma açık değil.",
+'allmessagesnotsupportedDB' => "'''\$wgUseDatabaseMessages''' kapalı olduğu için '''{{ns:special}}:Allmessages''' kullanıma açık değil.",
 'allmessagesfilter'         => 'Metin ayrıştırıcı filtresi:',
 'allmessagesmodified'       => 'Sadece değiştirilmişleri göster',
 

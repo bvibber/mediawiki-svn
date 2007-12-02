@@ -231,7 +231,7 @@ $messages = array(
 'navigation'     => 'Jangk noh',
 
 # Metadata in edit box
-'metadata_help' => 'Däm Beld sing Meta-Daate ([[{{ns:project}}:Meta-Daate vun Belder|hee sin se usenanderposementeet]])',
+'metadata_help' => 'Meta-Daate:',
 
 'errorpagetitle'    => 'Fähler',
 'returnto'          => 'Jangk widder noh: „$1“.',
@@ -285,28 +285,28 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Üvver de {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:Üvver de {{SITENAME}}',
+'aboutpage'         => 'Project:Üvver de {{SITENAME}}',
 'bugreports'        => 'Fähler melde',
-'bugreportspage'    => '{{ns:project}}:Kontak',
+'bugreportspage'    => 'Project:Kontak',
 'copyright'         => 'Dä Enhald steiht unger de $1.',
 'copyrightpagename' => 'Lizenz',
 'copyrightpage'     => '{{ns:project}}:Lizenz',
 'currentevents'     => 'Et Neuste',
-'currentevents-url' => '{{ns:project}}:Et Neuste',
+'currentevents-url' => 'Project:Et Neuste',
 'disclaimers'       => 'Hinwies',
-'disclaimerpage'    => '{{ns:project}}:Impressum',
+'disclaimerpage'    => 'Project:Impressum',
 'edithelp'          => 'Hölp för et Bearbeide',
-'edithelppage'      => '{{ns:project}}:Hölp',
+'edithelppage'      => 'Help:Hölp',
 'faq'               => 'FAQ',
-'faqpage'           => '{{ns:project}}:FAQ',
-'helppage'          => '{{ns:project}}:Hölp',
+'faqpage'           => 'Project:FAQ',
+'helppage'          => 'Help:Hölp',
 'mainpage'          => 'Haupsigg',
 'portal'            => 'Üvver {{SITENAME}}',
-'portal-url'        => '{{ns:project}}:Metmaacher Pooz',
+'portal-url'        => 'Project:Metmaacher Pooz',
 'privacy'           => 'Daateschotz un Jeheimhaldung',
-'privacypage'       => '{{ns:project}}:Daateschotz un Jeheimhaldung',
+'privacypage'       => 'Project:Daateschotz un Jeheimhaldung',
 'sitesupport'       => 'Spende',
-'sitesupport-url'   => '{{ns:project}}:Spende',
+'sitesupport-url'   => 'Project:Spende',
 
 'badaccess'        => 'Nit jenoch Räächde',
 'badaccess-group0' => 'Do häs nit jenoch Räächde.',
@@ -629,7 +629,7 @@ Metmaacher_CSS mäht, et es noch nit jesechert!</b>',
 Metmaacher_Java_Skripp mäht, et es noch nit jesechert!</b>',
 'userinvalidcssjstitle'     => '<strong>Opjepass:</strong> Et jitt kein Ussinn met däm Name: „<strong>$1</strong>“ - 
 denk dran, dat ene Metmaacher eije Dateie för et Ussinn han kann, un dat die met kleine Buchstave 
-aanfange dun, alsu etwa: {{ns:User}}:Name/monobook.css, un {{ns:User}}:Name/monobook.js heiße.',
+aanfange dun, alsu etwa: {{ns:user}}:Name/monobook.css, un {{ns:user}}:Name/monobook.js heiße.',
 'updated'                   => '(Aanjepack)',
 'note'                      => '<strong>Opjepass:</strong>',
 'previewnote'               => '<strong>Hee kütt nor de Vör-Aansich - Ding Änderunge sin noch nit jesechert!</strong>',
@@ -784,7 +784,7 @@ dem Wiki singe Installation dat anders fassjelaht woode es.',
 
 # Search results
 'searchresults'         => 'Wat beim Söke eruskom',
-'searchresulttext'      => 'Luur op de Sigg üvver et [[{{ns:project}}:Söke en de {{SITENAME}}|Söke en de {{SITENAME}}]] noh, wann de mieh drüvver wesse wells, wie mer en de {{SITENAME}} jet fingk.',
+'searchresulttext'      => 'Luur op de Sigg üvver et [[{{MediaWiki:Helppage}}|{{int:help}}]] noh, wann de mieh drüvver wesse wells, wie mer en de {{SITENAME}} jet fingk.',
 'searchsubtitle'        => 'För Ding Froch noh „[[:$1]]“.',
 'searchsubtitleinvalid' => 'För Ding Froch noh „$1“.',
 'badquery'              => 'Verkihrte Aanfroch för et Söke',
@@ -881,8 +881,7 @@ Wiki-Köbes, enem Sörver-Minsch, oder luur ens en de
 'servertime'               => 'De Uhrzigg om Sörver es jetz:',
 'guesstimezone'            => 'Fing et erus üvver dä Brauser',
 'allowemail'               => 'E-Mail vun andere Metmaacher zolooße',
-'defaultns'                => 'Dun standaadmäßich en hee dä 
-[[{{ns:project}}:Appachtemeng_%E2%80%94_Wat_es_dat%3F|Appachtemengs]] söke:',
+'defaultns'                => 'Dun standaadmäßich en hee dä Appachtemengs söke:',
 'default'                  => 'Standaad',
 'files'                    => 'Dateie',
 
@@ -960,12 +959,12 @@ Bürrokrade, Stewards, â€¦ kanns De nohlese, wat domet es.',
 kanns dann Ding Werk tirek enbinge, en dä Aate:<ul style=\"list-style:none outside none; 
 list-style-position:outside; list-style-image:none; list-style-type:none\"><li style=\"list-style:none outside none; 
 list-style-position:outside; list-style-image:none; 
-list-style-type:none\"><code>'''[[{{ns:Image}}:'''''Beldche'''''.jpg]]'''</code></li><li
+list-style-type:none\"><code>'''[[{{ns:image}}:'''''Beldche'''''.jpg]]'''</code></li><li
 style=\"list-style:none outside none; list-style-position:outside; list-style-image:none; 
-list-style-type:none\"><code>'''[[{{ns:Image}}:'''''Esu süht dat us'''''.png | '''''ene Tex, dä die
+list-style-type:none\"><code>'''[[{{ns:image}}:'''''Esu süht dat us'''''.png | '''''ene Tex, dä die
 Brausere zeije, die kein Belder künne''''']]'''</code></li><li style=\"list-style:none outside none; 
 list-style-position:outside; list-style-image:none; 
-list-style-type:none\"><code>'''[[{{ns:Media}}:'''''Su hürt sich dat aan'''''.ogg]]'''</code></li></ul>
+list-style-type:none\"><code>'''[[{{ns:media}}:'''''Su hürt sich dat aan'''''.ogg]]'''</code></li></ul>
 Usführlich met alle Möchlichkeite fings de dat bei de Hölp.
 Wann De jetz entschlosse bes, dat De et hee huhlade wells:
 * Aanluure, wat mer hee en de {{SITENAME}} ald han, kanns De en uns [[Special:Imagelist|Belder Liss]].
@@ -999,8 +998,8 @@ huhlade wells.',
 'fileexists'                  => 'Et jitt ald en Datei met däm Name. Wann De op „<span style="padding:2px; 
 background-color:#ddd; color:black">Datei avspeichere</span>“ klicks, weed se ersetz. Bes esu jod  un luur Der $1 
 aan, wann De nit 100% secher bes.',
-'fileexists-forbidden'        => 'Et jitt ald en Datei met däm Name. Jangk zeröck un lad se unger enem andere Name huh. [[{{ns:Image}}:$1|thumb|center|$1]]',
-'fileexists-shared-forbidden' => 'Et jitt ald en Datei met däm Name em jemeinsame Speicher. Jangk zeröck un lad se unger enem andere Name huh. [[{{ns:Image}}:$1|thumb|center|$1]]',
+'fileexists-forbidden'        => 'Et jitt ald en Datei met däm Name. Jangk zeröck un lad se unger enem andere Name huh. [[{{ns:image}}:$1|thumb|center|$1]]',
+'fileexists-shared-forbidden' => 'Et jitt ald en Datei met däm Name em jemeinsame Speicher. Jangk zeröck un lad se unger enem andere Name huh. [[{{ns:image}}:$1|thumb|center|$1]]',
 'successfulupload'            => 'Et Huhlade hät jeflupp',
 'uploadwarning'               => 'Warnung beim Huhlade',
 'savefile'                    => 'Datei avspeichere',
@@ -1319,8 +1318,7 @@ Do kanns hee noh Hölp luure:
 'deletesub'                   => '(De Sigg „$1“ soll fottjeschmesse wääde)',
 'historywarning'              => '<strong>Opjepass:</strong> Die Sigg hät ene janze Püngel Versione',
 'confirmdeletetext'           => 'Do bes koot dovör, en Sigg för iwich fottzeschmieße. Dobei verschwind och de janze Verjangenheit vun dä Sigg us de Daatebank, met all ehr Änderunge un Metmaacher Name, un all dä Opwand, dä do dren stich. Do muss hee jetz bestätije, dat de versteihs, wat dat bedügg, un dat De weiß, wat Do do mähs.
-<strong>Dun et nor, wann De met de [[{{ns:project}}:Üvver et Sigge Fottschmieße|Rejele doför]] wirklich zosamme 
-jeihs!</strong>',
+<strong>Dun et nor, wann De met de [[{{MediaWiki:Policy-url}}]] wirklich zosamme jeihs!</strong>',
 'actioncomplete'              => 'Erledich',
 'deletedtext'                 => 'De Sigg „$1“ es jetz fottjeschmesse woode. Luur Der „$2“ aan, do häs De en Liss met de Neuste fottjeschmesse Sigge.',
 'deletedarticle'              => 'hät fottjeschmesse: „[[$1]]“',
@@ -1424,7 +1422,7 @@ un widder herjehollte Sigge.',
 IP-Adresse sperre, su dat se hee em Wiki nit mieh 
 schrieve und Sigge ändere künne. Dat sollt nor jedon wääde om sujenannte 
 Vandaale ze bremse. Un mer müsse uns dobei natörlich aan uns 
-[[{{ns:project}}:Policy|Rejele]] för sun Fäll halde.
+[[{{MediaWiki:Policy-url}}|Rejele]] för sun Fäll halde.
 Drag bei „Aanlass“ ene möchlichs jenaue Jrund en, wöröm dat Sperre passeet. Nenn un Link op de Sigge wo Einer kapott jemaat hät, zem Beispill.
 Luur op [[Special:Ipblocklist|de Liss met jesperrte IP_Adresse]] wann de ne Üvverbleck üvver de Sperrunge han wells, un och wann De se ändere wells.',
 'ipaddress'                   => 'IP-Adress',
@@ -1559,7 +1557,7 @@ Dat ka'mer en en ander Wiki
 * Schriev de Titele vun dä Sigge en dat Feld för Tex enzejevve, unge, eine Titel en jede Reih.
 * Dann dun onoch ussöke, ov De all de vörherije Versione vun dä Sigge han wells, oder nor de aktuelle met dä 
 Informatione vun de letzte Änderung. (En däm Fall künns De, för en einzelne Sigg, och ene tirekte Link bruche, 
-zom Beispill „[[{{ns:Special}}:Export/{{int:mainpage}}]]“ för de Sigg „[[{{int:mainpage}}]]“ ze exporteere)
+zom Beispill „[[{{ns:special}}:Export/{{int:mainpage}}]]“ för de Sigg „[[{{int:mainpage}}]]“ ze exporteere)
 
 Denk dran, datte dat Zeuch em Unicode Format avspeichere muss,
 wann De jet domet aanfange künne wells.",
@@ -1575,7 +1573,7 @@ zo jroße Lass för dä Sörver.',
 'allmessagesdefault'        => 'Dä standaadmäßije Tex',
 'allmessagescurrent'        => 'Esu es dä Tex jetz',
 'allmessagestext'           => 'Hee kütt en Liss met Texte, Texstöck, un Nachrichte em Appachtemeng „MediaWiki:“',
-'allmessagesnotsupportedDB' => '<strong>Dat wor nix!</strong> Mer künne „Special:Allmessages“ nit zeije, <code>wgUseDatabaseMessages</code> es usjeschalt!',
+'allmessagesnotsupportedDB' => '<strong>Dat wor nix!</strong> Mer künne „{{ns:special}}:Allmessages“ nit zeije, <code>wgUseDatabaseMessages</code> es usjeschalt!',
 'allmessagesfilter'         => 'Fingk dat Stöck hee em Name:',
 'allmessagesmodified'       => 'Dun nor de Veränderte aanzeije',
 

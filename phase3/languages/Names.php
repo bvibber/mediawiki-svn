@@ -53,7 +53,7 @@
 	'cr' => 'Nēhiyawēwin / ᓀᐦᐃᔭᐍᐏᐣ',		# Cree
 	'crh' => 'Qırımtatarca',   # Crimean Tatar
 	'crh-latn' => "\xE2\x80\xAAQırımtatarca (Latin)\xE2\x80\xAC",       # Crimean Tatar (Latin)
-	'crh-cyrl' => "\xE2\x80\xAAQırımtatarca (Kiril)\xE2\x80\xAC",       # Crimean Tatar (Cyrillic)
+	'crh-cyrl' => "\xE2\x80\xAAКъырымтатарджа (Кирилл)",       # Crimean Tatar (Cyrillic)
 	'cs' => 'Česky',	# Czech
 	'csb' => 'Kaszëbsczi',	# Cassubian
 	'cu' => 'Словѣньскъ', 	# Old Church Slavonic (ancient language)
@@ -210,6 +210,7 @@
 	'pih' => 'Norfuk / Pitkern', # Norfuk/Pitcairn/Norfolk
 	'pl' => 'Polski',		# Polish
 	'pms' => 'Piemontèis', 	# Piedmontese
+	'pnt' => 'Ποντιακά', 	# Pontic, aka Pontic Greek
 	'ps' => 'پښتو',	# Pashto
 	'pt' => 'Português',	# Portuguese
 	'pt-br' => 'Português do Brasil',	# Brazilian Portuguese
@@ -221,7 +222,6 @@
 	'roa-rup' => 'Armãneashce', # Aromanian
 	'roa-tara' => 'Tarandíne',	# Tarantino
 	'ru' => 'Русский',	# Russian
-	'ru-sib' => 'Сибирской',	# Siberian/North Russian
 	'rw' => 'Kinyarwanda',	# Kinyarwanda, should possibly be Kinyarwandi
 	'sa' => 'संस्कृत',	# Sanskrit
 	'sah' => 'Саха тыла', # Sakha
@@ -249,7 +249,8 @@
 	'sr-el' => 'latinica',	# Serbian latin ekavian
 	'sr-jl' => 'ijekavica',	# Serbian latin iyekavian
 	'ss' => 'SiSwati',		# Swati
-	'st' => 'seSotho',		# Southern Sotho
+	'st' => 'Sesotho',		# Southern Sotho
+	'stq' => 'Seeltersk',		# Saterland Frisian
 	'su' => 'Basa Sunda',	# Sundanese
 	'sv' => 'Svenska',		# Swedish
 	'sw' => 'Kiswahili',	# Swahili

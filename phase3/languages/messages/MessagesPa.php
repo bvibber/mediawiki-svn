@@ -1,11 +1,15 @@
 <?php
 /** Punjabi (Gurmukhi)
-  * @addtogroup Language
-  */
-# This file is dual-licensed under GFDL and GPL.
-#
-# See: http://bugzilla.wikimedia.org/show_bug.cgi?id=1478
-# and http://bugzilla.wikimedia.org/show_bug.cgi?id=11145
+ * @addtogroup Language
+ *
+ * @author Sukh
+ * @author Ævar Arnfjörð Bjarmason
+ * @author AS Alam
+ * @license http://www.gnu.org/copyleft/fdl.html GNU Free Documentation License
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ * @see http://bugzilla.wikimedia.org/show_bug.cgi?id=1478
+ * @see http://bugzilla.wikimedia.org/show_bug.cgi?id=11145
+ */
 
 $skinNames = array(
 	'standard'    => 'ਕਲਾਸਿਕ',
@@ -202,29 +206,29 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => '{{SITENAME}} ਬਾਰੇ',
-'aboutpage'         => 'ਪਰੋਜੈਕਟ: ਬਾਰੇ',
+'aboutpage'         => 'Project:ਬਾਰੇ',
 'bugreports'        => 'ਬੱਗ ਰਿਪੋਰਟਾਂ',
-'bugreportspage'    => 'ਪਰੋਜੈਕਟ: ਬੱਗ ਰਿਪੋਰਟ',
+'bugreportspage'    => 'Project:ਬੱਗ ਰਿਪੋਰਟ',
 'copyright'         => 'ਸਮੱਗਰੀ $1 ਹੇਠ ਉਪਲੱਬਧ ਹੈ।',
 'copyrightpagename' => '{{SITENAME}} ਕਾਪੀਰਾਈਟ',
-'copyrightpage'     => 'ਪਰੋਜੈਕਟ: ਕਾਪੀਰਾਈਟ',
+'copyrightpage'     => '{{ns:project}}:ਕਾਪੀਰਾਈਟ',
 'currentevents'     => 'ਮੌਜੂਦਾ ਇਵੈਂਟ',
-'currentevents-url' => 'ਮੌਜੂਦਾ ਈਵੈਂਟ',
+'currentevents-url' => 'Project:ਮੌਜੂਦਾ ਈਵੈਂਟ',
 'disclaimers'       => 'ਦਾਆਵਾ',
-'disclaimerpage'    => 'ਪਰੋਜੈਕਟ: ਆਮ ਡਿਕਲੇਅਮਰ',
+'disclaimerpage'    => 'Project:ਆਮ ਡਿਕਲੇਅਮਰ',
 'edithelp'          => 'ਮੱਦਦ ਐਡੀਟਿੰਗ',
-'edithelppage'      => 'ਮੱਦਦ: ਐਡਟਿੰਗ',
+'edithelppage'      => 'Help:ਐਡਟਿੰਗ',
 'faq'               => 'ਸਵਾਲ-ਜਵਾਬ',
-'faqpage'           => 'ਪਰੋਜੈਕਟ: ਸਵਾਲ-ਜਵਾਬ',
-'helppage'          => 'ਮੱਦਦ: ਸਮੱਗਰੀ',
+'faqpage'           => 'Project:ਸਵਾਲ-ਜਵਾਬ',
+'helppage'          => 'Help:ਸਮੱਗਰੀ',
 'mainpage'          => 'ਮੁੱਖ ਪੇਜ਼',
-'policy-url'        => 'ਪਰੋਜੈਕਟ: ਪਾਲਸੀ',
+'policy-url'        => 'Project:ਪਾਲਸੀ',
 'portal'            => 'ਕਮਿਊਨਟੀ ਪੋਰਟਲ',
-'portal-url'        => 'ਪਰੋਜੈਕਟ: ਕਮਿਊਨਟੀ ਪੋਰਟਲ',
+'portal-url'        => 'Project:ਕਮਿਊਨਟੀ ਪੋਰਟਲ',
 'privacy'           => 'ਪਰਾਈਵੇਸੀ ਪਾਲਸੀ',
-'privacypage'       => 'ਪਰੋਜੈਕਟ: ਪਰਾਈਵੇਸ ਪੇਜ਼',
+'privacypage'       => 'Project:ਪਰਾਈਵੇਸ ਪੇਜ਼',
 'sitesupport'       => 'ਦਾਨ',
-'sitesupport-url'   => 'ਪਰੋਜੈਕਟ: ਸਾਇਟ ਸਹਿਯੋਗ',
+'sitesupport-url'   => 'Project:ਸਾਇਟ ਸਹਿਯੋਗ',
 
 'badaccess'        => 'ਅਧਿਕਾਰ ਗਲਤੀ',
 'badaccess-group0' => 'ਤੁਹਾਨੂੰ ਉਹ ਐਕਸ਼ਨ ਕਰਨ ਦੀ ਮਨਜ਼ੂਰੀ ਨਹੀਂ, ਜਿਸ ਦੀ ਤੁਸੀਂ ਮੰਗ ਕੀਤੀ ਹੈ।',
@@ -260,7 +264,7 @@ $messages = array(
 # Main script and global functions
 'nosuchaction'      => 'ਕੋਈ ਇੰਝ ਦਾ ਐਕਸ਼ਨ ਨਹੀਂ',
 'nosuchspecialpage' => 'ਕੋਈ ਇੰਝ ਦਾ ਖਾਸ ਪੇਜ਼ ਨਹੀਂ',
-'nospecialpagetext' => "'''<big>ਤੁਸੀਂ ਇੱਕ ਅਵੈਧ ਖਾਸ ਪੇਜ਼ ਦੀ ਮੰਗ ਕੀਤੀ ਹੈ।</big>'''
+'nospecialpagetext' => "<big>'''ਤੁਸੀਂ ਇੱਕ ਅਵੈਧ ਖਾਸ ਪੇਜ਼ ਦੀ ਮੰਗ ਕੀਤੀ ਹੈ।'''</big>
 
 A list of valid special pages can be found at [[Special:Specialpages]].",
 
@@ -473,7 +477,7 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 
 # Search results
 'searchresults'         => 'ਖੋਜ ਨਤੀਜੇ',
-'searchresulttext'      => '{{SITENAME}} ਖੋਜ ਬਾਰੇ ਹੋਰ ਜਾਣਕਾਰੀ ਲਵੋ, ਵੇਖੋ [[{{MediaWiki:helppage}}|{{int:help}}]].',
+'searchresulttext'      => '{{SITENAME}} ਖੋਜ ਬਾਰੇ ਹੋਰ ਜਾਣਕਾਰੀ ਲਵੋ, ਵੇਖੋ [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "ਤੁਸੀਂ '''[[:$1]]''' ਲਈ ਖੋਜ ਕੀਤੀ।",
 'searchsubtitleinvalid' => "ਤੁਸੀਂ'''$1''' ਲਈ ਖੋਜ ਕੀਤੀ।",
 'noexactmatch'          => "'''\"\$1\"''' ਟਾਇਟਲ ਨਾਲ ਕੋਈ ਪੇਜ਼ ਨਹੀਂ ਹੈ। ਤੁਸੀਂ [[:\$1|ਇਹ ਪੇਜ਼]] ਬਣਾ ਸਕਦੇ ਹੋ।",
@@ -583,7 +587,7 @@ to upload files.',
 ਅੱਪਲੋਡ ਕੀਤੀ ਫਾਇਲ ਦਾ ਨਾਂ: <strong><tt>$1</tt></strong><br />
 ਮੌਜੂਦ ਫਾਇਲ ਦਾ ਨਾਂ: <strong><tt>$2</tt></strong><br />
 ਇੱਕ ਵੱਖਰਾ ਨਾਂ ਚੁਣੋ ਜੀ',
-'fileexists-thumb'     => "'''<center>ਮੌਜੂਦ ਚਿੱਤਰ</center>'''",
+'fileexists-thumb'     => "<center>'''ਮੌਜੂਦ ਚਿੱਤਰ'''</center>",
 'successfulupload'     => 'ਠੀਕ ਤਰ੍ਹਾਂ ਅੱਪਲੋਡ',
 'uploadwarning'        => 'ਅੱਪਲੋਡ ਚੇਤਾਵਨੀ',
 'savefile'             => 'ਫਾਇਲ ਸੰਭਾਲੋ',

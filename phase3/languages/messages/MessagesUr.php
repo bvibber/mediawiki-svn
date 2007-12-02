@@ -1,4 +1,8 @@
 <?php
+/**
+ *
+ * @addtogroup Language
+ */
 
 $rtl = true;
 $defaultUserOptionOverrides = array(
@@ -112,23 +116,23 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => '{{SITENAME}} کا تعارف',
-'aboutpage'         => '{{ns:project}}:تعارف',
+'aboutpage'         => 'Project:تعارف',
 'copyright'         => 'تمام مواد $1 کے تحت میسر ہے۔',
 'copyrightpagename' => 'ویـکـیـپـیـڈ یـا حق تصنیف',
 'copyrightpage'     => '{{ns:project}}:حقوق تصانیف',
 'currentevents'     => 'تعارف وکیپیڈیا',
-'currentevents-url' => '{{ns:project}}:تعارف وکیپیڈیا',
+'currentevents-url' => 'Project:تعارف وکیپیڈیا',
 'disclaimers'       => 'اعلانات',
 'edithelp'          => 'معاونت براۓ ترمیم',
 'faq'               => 'معلوماتِ عامہ',
-'faqpage'           => '{{ns:project}}:معلوماتِ عامہ',
-'helppage'          => '{{ns:project}}:فہرست',
+'faqpage'           => 'Project:معلوماتِ عامہ',
+'helppage'          => 'Help:فہرست',
 'mainpage'          => 'صفحہ اول',
 'portal'            => 'دیوان عام',
-'portal-url'        => 'تبادلۂ خیال منصوبہ:دیوان عام',
+'portal-url'        => 'Project:دیوان عام',
 'privacy'           => 'اصول براۓ اخفائے راز',
 'sitesupport'       => 'رابطہ',
-'sitesupport-url'   => '{{ns:project}}:رابطہ',
+'sitesupport-url'   => 'Project:رابطہ',
 
 'badaccess-group0' => 'آپ متمنی عمل کا اجراء کرنے کے مُجاز نہیں۔',
 
@@ -482,7 +486,7 @@ $messages = array(
 'confirmdelete'        => 'تائید تنسیخ',
 'deletesub'            => '(حذف کیا جارہاہے "$1")',
 'historywarning'       => 'انتباہ: جو صفحہ آپ حذف کرنے جارہے ہیں اس سے ایک تاریخچہ منسلک ہے۔',
-'confirmdeletetext'    => 'آپ نے اس صفحے کو اس سے ملحقہ تاریخچہ سمیت حذف کرنے کا ارادہ کیا ہے۔ براۓ مہربانی تصدیق کرلیجیۓ کہ آپ اس عمل کے نتائج سے بخوبی آگاہ ہیں، اور یہ بھی یقین کرلیجیۓ کہ آپ ایسا [[{{MediaWiki:policy-url}}|ویکیپیڈیا کی حکمت عملی]] کے دائرے میں رہ کر کر رہے ہیں۔',
+'confirmdeletetext'    => 'آپ نے اس صفحے کو اس سے ملحقہ تاریخچہ سمیت حذف کرنے کا ارادہ کیا ہے۔ براۓ مہربانی تصدیق کرلیجیۓ کہ آپ اس عمل کے نتائج سے بخوبی آگاہ ہیں، اور یہ بھی یقین کرلیجیۓ کہ آپ ایسا [[{{MediaWiki:Policy-url}}|ویکیپیڈیا کی حکمت عملی]] کے دائرے میں رہ کر کر رہے ہیں۔',
 'actioncomplete'       => 'اقدام تکمیل کو پہنچا',
 'deletedtext'          => '"$1" کو حذف کر دیا گیا ہے ۔
 حالیہ حذف شدگی کے تاریخ نامہ کیلیۓ  $2  دیکھیۓ',

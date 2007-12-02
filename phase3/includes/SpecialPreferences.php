@@ -98,7 +98,7 @@ class PreferencesForm {
 			$this->mUserLanguage = 'nolanguage';
 		}
 
-		wfRunHooks( "InitPreferencesForm", array( $this, $request ) );
+		wfRunHooks( 'InitPreferencesForm', array( $this, $request ) );
 	}
 
 	function execute() {
@@ -213,23 +213,23 @@ class PreferencesForm {
 
 		if ( '' != $this->mNewpass && $wgAuth->allowPasswordChange() ) {
 			if ( $this->mNewpass != $this->mRetypePass ) {
-				wfRunHooks( "PrefsPasswordAudit", array( $wgUser, $this->mNewpass, 'badretype' ) );
+				wfRunHooks( 'PrefsPasswordAudit', array( $wgUser, $this->mNewpass, 'badretype' ) );
 				$this->mainPrefsForm( 'error', wfMsg( 'badretype' ) );
 				return;
 			}
 
 			if (!$wgUser->checkPassword( $this->mOldpass )) {
-				wfRunHooks( "PrefsPasswordAudit", array( $wgUser, $this->mNewpass, 'wrongpassword' ) );
+				wfRunHooks( 'PrefsPasswordAudit', array( $wgUser, $this->mNewpass, 'wrongpassword' ) );
 				$this->mainPrefsForm( 'error', wfMsg( 'wrongpassword' ) );
 				return;
 			}
 			
 			try {
 				$wgUser->setPassword( $this->mNewpass );
-				wfRunHooks( "PrefsPasswordAudit", array( $wgUser, $this->mNewpass, 'success' ) );
+				wfRunHooks( 'PrefsPasswordAudit', array( $wgUser, $this->mNewpass, 'success' ) );
 				$this->mNewpass = $this->mOldpass = $this->mRetypePass = '';
 			} catch( PasswordError $e ) {
-				wfRunHooks( "PrefsPasswordAudit", array( $wgUser, $this->mNewpass, 'error' ) );
+				wfRunHooks( 'PrefsPasswordAudit', array( $wgUser, $this->mNewpass, 'error' ) );
 				$this->mainPrefsForm( 'error', $e->getMessage() );
 				return;
 			}
@@ -250,7 +250,7 @@ class PreferencesForm {
 				wfMsg( 'badsiglength', $wgLang->formatNum( $wgMaxSigChars ) ) );
 			return;
 		} elseif( $this->mToggles['fancysig'] ) {
-			if( Parser::validateSig( $this->mNick ) !== false ) {
+			if( $wgParser->validateSig( $this->mNick ) !== false ) {
 				$this->mNick = $wgParser->cleanSig( $this->mNick );
 			} else {
 				$this->mainPrefsForm( 'error', wfMsg( 'badsig' ) );
@@ -330,7 +330,7 @@ class PreferencesForm {
 				$wgUser->setEmail( $this->mUserEmail );
 			}
 			if( $oldadr != $newadr ) {
-				wfRunHooks( "PrefsEmailAudit", array( $wgUser, $oldadr, $newadr ) );
+				wfRunHooks( 'PrefsEmailAudit', array( $wgUser, $oldadr, $newadr ) );
 			}
 		}
 
@@ -340,7 +340,7 @@ class PreferencesForm {
 		}
 
 		$msg = '';
-		if ( !wfRunHooks( "SavePreferences", array( $this, $wgUser, &$msg ) ) ) {
+		if ( !wfRunHooks( 'SavePreferences', array( $this, $wgUser, &$msg ) ) ) {
 			print "(($msg))";
 			$this->mainPrefsForm( 'error', $msg );
 			return;
@@ -350,7 +350,7 @@ class PreferencesForm {
 		$wgUser->saveSettings();
 
 		if( $needRedirect && $error === false ) {
-			$title =& SpecialPage::getTitleFor( "Preferences" );
+			$title = SpecialPage::getTitleFor( 'Preferences' );
 			$wgOut->redirect($title->getFullURL('success'));
 			return;
 		}
@@ -408,7 +408,7 @@ class PreferencesForm {
 			}
 		}
 
-		wfRunHooks( "ResetPreferences", array( $this, $wgUser ) );
+		wfRunHooks( 'ResetPreferences', array( $this, $wgUser ) );
 	}
 
 	/**
@@ -1013,7 +1013,7 @@ class PreferencesForm {
 		}
 		$wgOut->addHTML( '</fieldset>' );
 
-		wfRunHooks( "RenderPreferencesForm", array( $this, $wgOut ) );
+		wfRunHooks( 'RenderPreferencesForm', array( $this, $wgOut ) );
 
 		$token = htmlspecialchars( $wgUser->editToken() );
 		$skin = $wgUser->getSkin();

@@ -326,17 +326,17 @@ I seguenti collegamenti sono in lingua inglese:
 'bugreportspage'    => 'Project:Malfunzionamenti',
 'copyright'         => "Contenuti soggetti a licenza d'uso $1.",
 'copyrightpagename' => 'Il copyright su {{SITENAME}}',
-'copyrightpage'     => 'Project:Copyright',
+'copyrightpage'     => '{{ns:project}}:Copyright',
 'currentevents'     => 'Attualità',
-'currentevents-url' => 'Attualità',
+'currentevents-url' => 'Project:Attualità',
 'disclaimers'       => 'Avvertenze',
 'disclaimerpage'    => 'Project:Avvertenze generali',
 'edithelp'          => 'Guida',
-'edithelppage'      => 'Project:Modifica',
+'edithelppage'      => 'Help:Modifica',
 'faqpage'           => 'Project:FAQ',
 'helppage'          => 'Help:Indice',
 'mainpage'          => 'Pagina principale',
-'policy-url'        => '{{ns:Project}}:Policy',
+'policy-url'        => 'Project:Policy',
 'portal'            => 'Portale comunità',
 'portal-url'        => 'Project:Portale comunità',
 'privacy'           => 'Informazioni sulla privacy',
@@ -588,9 +588,9 @@ Il blocco è stato imposto da $1. La motivazione del blocco è la seguente: ''$2
 * Scadenza del blocco: $6
 * Intervallo di blocco: $7
 
-Se lo si desidera, è possibile contattare $1 o un altro [[{{MediaWiki:grouppage-sysop}}|amministratore]] per discutere del blocco.
+Se lo si desidera, è possibile contattare $1 o un altro [[{{MediaWiki:Grouppage-sysop}}|amministratore]] per discutere del blocco.
 
-Si noti che la funzione 'Scrivi all'utente' non è attiva se non è stato registrato un indirizzo e-mail valido nelle proprie [[{{ns:Special}}:Preferences|preferenze]].
+Si noti che la funzione 'Scrivi all'utente' non è attiva se non è stato registrato un indirizzo e-mail valido nelle proprie [[{{ns:special}}:Preferences|preferenze]].
 
 Si prega di specificare l'indirizzo IP attuale ($3) o il numero del blocco (ID #$5) in qualsiasi richiesta di chiarimenti.",
 'autoblockedtext'           => "Questo indirizzo IP è stato bloccato automaticamente perché condiviso con un altro utente, a sua volta bloccato da $1.
@@ -601,7 +601,7 @@ La motivazione del blocco è la seguente:
 * Inizio del blocco: $8
 * Scadenza del blocco: $6
 
-È possibile contattare $1 o un altro [[{{MediaWiki:grouppage-sysop}}|amministratore]] per discutere del blocco.
+È possibile contattare $1 o un altro [[{{MediaWiki:Grouppage-sysop}}|amministratore]] per discutere del blocco.
 
 Si noti che la funzione 'Scrivi all'utente' non è attiva se non è stato registrato un indirizzo e-mail valido nelle proprie [[Special:Preferences|preferenze]].
 
@@ -626,7 +626,7 @@ Si prega di specificare il numero del blocco (ID #$5) in qualsiasi richiesta di 
 'newarticle'                => '(Nuovo)',
 'newarticletext'            => "Il collegamento appena seguito corrisponde a una pagina non ancora esistente.
 Se si desidera creare la pagina ora, basta cominciare a scrivere il testo nella casella qui sotto
-(fare riferimento alle [[{{MediaWiki:helppage}}|pagine di aiuto]] per maggiori informazioni).
+(fare riferimento alle [[{{MediaWiki:Helppage}}|pagine di aiuto]] per maggiori informazioni).
 Se il collegamento è stato seguito per errore, è sufficiente fare clic sul pulsante '''Indietro''' del proprio browser.",
 'anontalkpagetext'          => "----''Questa è la pagina di discussione di un utente anonimo, che non ha ancora creato un accesso o comunque non lo usa. Per identificarlo è quindi necessario usare il numero del suo indirizzo IP. Gli indirizzi IP possono però essere condivisi da più utenti. Se sei un utente anonimo e ritieni che i commenti presenti in questa pagina non si riferiscano a te, [[Special:Userlogin|crea un nuovo accesso o entra]] con quello che già hai per evitare di essere confuso con altri utenti anonimi in futuro''",
 'noarticletext'             => 'In questo momento la pagina richiesta è vuota. È possibile [[Special:Search/{{PAGENAME}}|cercare questo titolo]] nelle altre pagine del sito oppure [{{fullurl:{{FULLPAGENAME}}|action=edit}} modificare la pagina ora].',
@@ -634,7 +634,7 @@ Se il collegamento è stato seguito per errore, è sufficiente fare clic sul pul
 'usercssjsyoucanpreview'    => "<strong>Suggerimento:</strong> si consiglia di usare il pulsante 'Visualizza anteprima' per provare i nuovi CSS o JavaScript prima di salvarli.",
 'usercsspreview'            => "'''Questa è solo un'anteprima del proprio CSS personale; le modifiche non sono ancora state salvate!'''",
 'userjspreview'             => "'''Questa è solo un'anteprima per provare il proprio JavaScript personale; le modifiche non sono ancora state salvate!'''",
-'userinvalidcssjstitle'     => "'''Attenzione:'''  Non esiste alcuna skin con nome \"\$1\". Si noti che le pagine per i .css e .js personalizzati hanno l'iniziale del titolo minuscola, ad esempio {{ns:User}}:Esempio/monobook.css e non {{ns:User}}:Esempio/Monobook.css.",
+'userinvalidcssjstitle'     => "'''Attenzione:'''  Non esiste alcuna skin con nome \"\$1\". Si noti che le pagine per i .css e .js personalizzati hanno l'iniziale del titolo minuscola, ad esempio {{ns:user}}:Esempio/monobook.css e non {{ns:user}}:Esempio/Monobook.css.",
 'updated'                   => '(Aggiornato)',
 'note'                      => '<strong>NOTA:</strong>',
 'previewnote'               => 'Questa è solo una anteprima; le modifiche alla pagina NON sono ancora state salvate!',
@@ -791,7 +791,7 @@ Gli altri amministratori del sito potranno accedere comunque ai contenuti nascos
 
 # Search results
 'searchresults'         => 'Risultati della ricerca',
-'searchresulttext'      => 'Per maggiori informazioni sulla ricerca interna di {{SITENAME}}, vedi [[{{MediaWiki:helppage}}|{{int:help}}]].',
+'searchresulttext'      => 'Per maggiori informazioni sulla ricerca interna di {{SITENAME}}, vedi [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "Ricerca di '''[[:$1]]'''",
 'searchsubtitleinvalid' => "Ricerca di '''$1'''",
 'noexactmatch'          => "'''La pagina \"\$1\" non esiste.''' È possibile [[:\$1|crearla ora]].",
@@ -896,9 +896,9 @@ Gli altri amministratori del sito potranno accedere comunque ai contenuti nascos
 'group-bureaucrat-member'    => 'Burocrate',
 
 'grouppage-autoconfirmed' => '{{ns:project}}:Utenti autoconvalidati',
-'grouppage-bot'           => 'Project:Bot',
-'grouppage-sysop'         => 'Project:Amministratori',
-'grouppage-bureaucrat'    => 'Project:Burocrati',
+'grouppage-bot'           => '{{ns:project}}:Bot',
+'grouppage-sysop'         => '{{ns:project}}:Amministratori',
+'grouppage-bureaucrat'    => '{{ns:project}}:Burocrati',
 
 # User rights log
 'rightslog'      => 'Diritti degli utenti',
@@ -947,10 +947,10 @@ Gli altri amministratori del sito potranno accedere comunque ai contenuti nascos
 'uploadtext'                  => "Usare il modulo sottostante per caricare nuovi file. Per visualizzare o ricercare i file già caricati, consultare il [[Special:Imagelist|log dei file caricati]]. Caricamenti e cancellazioni di file sono registrati nel [[Special:Log/upload|log degli upload]].
 
 Per inserire un'immagine in una pagina, fare un collegamento di questo tipo:
-* '''<nowiki>[[</nowiki>{{ns:Image}}<nowiki>:File.png]]</nowiki>'''
-* '''<nowiki>[[</nowiki>{{ns:Image}}<nowiki>:File.png|testo alternativo]]</nowiki>'''
+* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png]]</nowiki>'''
+* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|testo alternativo]]</nowiki>'''
 usare invece
-* '''<nowiki>[[</nowiki>{{ns:Media}}<nowiki>:File.ogg]]</nowiki>'''
+* '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki>'''
 per collegare direttamente gli altri tipi di file.",
 'uploadlog'                   => 'File caricati',
 'uploadlogpage'               => 'Log dei file caricati',
@@ -978,7 +978,7 @@ per collegare direttamente gli altri tipi di file.",
 Nome del file caricato: <strong><tt>$1</tt></strong><br />
 Nome del file esistente: <strong><tt>$2</tt></strong><br />
 Verificare che i due file non siano identici.",
-'fileexists-thumb'            => "'''<center>Immagine esistente</center>'''",
+'fileexists-thumb'            => "<center>'''Immagine esistente'''</center>",
 'fileexists-thumbnail-yes'    => "Il file caricato sembra essere il risultato di un'anteprima <i>(thumbnail)</i>. Verificare, per confronto, il file <strong><tt>$1</tt></strong>.<br />
 Se si tratta della stessa immagine, nelle dimensioni originali, non è necessario caricarne altre anteprime.",
 'file-thumbnail-no'           => "Il nome del file inizia con <strong><tt>$1</tt></strong>; sembra quindi essere il risultato di un'anteprima <i>(thumbnail)</i>.
@@ -1351,7 +1351,7 @@ Per dare il tuo feedback e ricevere ulteriore assistenza:
 'confirmdelete'               => 'Conferma cancellazione',
 'deletesub'                   => '(Cancellazione di "$1")',
 'historywarning'              => 'Attenzione: La pagina che si sta per cancellare ha una cronologia:',
-'confirmdeletetext'           => 'Stai per cancellare permanentemente dal database una pagina o una immagine, insieme a tutta la sua cronologia. Per cortesia, conferma che è tua intenzione procedere a tale cancellazione, che hai piena consapevolezza delle conseguenze della tua azione e che essa è conforme alle linee guida stabilite in [[{{MediaWiki:policy-url}}]].',
+'confirmdeletetext'           => 'Stai per cancellare permanentemente dal database una pagina o una immagine, insieme a tutta la sua cronologia. Per cortesia, conferma che è tua intenzione procedere a tale cancellazione, che hai piena consapevolezza delle conseguenze della tua azione e che essa è conforme alle linee guida stabilite in [[{{MediaWiki:Policy-url}}]].',
 'actioncomplete'              => 'Azione completata',
 'deletedtext'                 => 'La pagina "$1" è stata cancellata. Consultare il $2 per un elenco delle pagine cancellate di recente.',
 'deletedarticle'              => 'ha cancellato "[[$1]]"',
@@ -1491,7 +1491,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => 'Blocco utente',
-'blockiptext'                 => "Usare il modulo sottostante per bloccare l'accesso in scrittura ad uno specifico utente o indirizzo IP. Il blocco dev'essere operato per prevenire atti di vandalismo e in stretta osservanza della [[{{MediaWiki:policy-url}}|policy di {{SITENAME}}]]. Specificare in dettaglio il motivo del blocco nel campo seguente (ad es. indicando i titoli delle pagine oggetto di vandalismo).",
+'blockiptext'                 => "Usare il modulo sottostante per bloccare l'accesso in scrittura ad uno specifico utente o indirizzo IP. Il blocco dev'essere operato per prevenire atti di vandalismo e in stretta osservanza della [[{{MediaWiki:Policy-url}}|policy di {{SITENAME}}]]. Specificare in dettaglio il motivo del blocco nel campo seguente (ad es. indicando i titoli delle pagine oggetto di vandalismo).",
 'ipaddress'                   => 'Indirizzo IP:',
 'ipadressorusername'          => 'Indirizzo IP o nome utente:',
 'ipbexpiry'                   => 'Scadenza del blocco:',
@@ -1648,7 +1648,7 @@ In quest'ultimo caso si può anche utilizzare un collegamento, ad esempio [[Spec
 'allmessagesdefault'        => 'Testo predefinito',
 'allmessagescurrent'        => 'Testo attuale',
 'allmessagestext'           => 'Questa è la lista di tutti i messaggi di sistema disponibili nel namespace MediaWiki:',
-'allmessagesnotsupportedDB' => "'''Special:Allmessages''' non è supportato perché il flag '''\$wgUseDatabaseMessages''' non è attivo.",
+'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' non è supportato perché il flag '''\$wgUseDatabaseMessages''' non è attivo.",
 'allmessagesfilter'         => 'Filtro sui messaggi:',
 'allmessagesmodified'       => 'Mostra solo quelli modificati',
 
@@ -1817,8 +1817,6 @@ Tutte le operazioni di importazione trans-wiki sono registrate nel [[Special:Log
 'markedaspatrollederror'              => 'Impossibile contrassegnare la voce come verificata',
 'markedaspatrollederrortext'          => 'Occorre specificare una revisione da contrassegnare come verificata.',
 'markedaspatrollederror-noautopatrol' => 'Non si dispone dei permessi necessari per segnare le proprie modifiche come verificate.',
-'nppatroldisabled'                    => 'Verifica delle pagine più recenti disabilitata',
-'nppatroldisabledtext'                => 'La funzione di verifica delle pagine più recenti non è attiva al momento.',
 
 # Patrol log
 'patrol-log-page' => 'Modifiche verificate',

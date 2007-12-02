@@ -1,15 +1,17 @@
 <?php
-/** Dutch Lower Saxon (Nedersaksisch)
-  *
-  * @addtogroup Language
-  *
-  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>, Jens Frank
-  * @author Gangleri
-  * @author SPQRobin
-  * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason, Jens Frank
-  * @copyright Copyright © 2007, Betawiki users
-  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
-  */
+/** Nedersaksisch (Nedersaksisch)
+ *
+ * @addtogroup Language
+ *
+ * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>, Jens Frank
+ * @author Gangleri
+ * @author SPQRobin
+ * @author G - ג
+ * @author Erwin85
+ * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason, Jens Frank
+ * @copyright Copyright © 2007, Betawiki users
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+ */
 
 $fallback = 'nl';
 
@@ -190,9 +192,99 @@ $magicWords = array(
         'defaultsort'            => array( 1,    'DEFAULTSORT:', 'STANDARDSORTERING:' )
 );
 
+$specialPageAliases = array(
+	'DoubleRedirects'           => array( 'Dubbele_deurverwiezingen' ),
+	'BrokenRedirects'           => array( 'Ebreuken_deurverwiezingen' ),
+	'Disambiguations'           => array( 'Deurverwiespagina\'s' ),
+	'Userlogin'                 => array( 'Anmelden' ),
+	'Userlogout'                => array( 'Ofmelden' ),
+	'Preferences'               => array( 'Veurkeuren' ),
+	'Watchlist'                 => array( 'Volglieste' ),
+	'Recentchanges'             => array( 'Leste_wiezigingen' ),
+	'Upload'                    => array( 'Bestanden_toevoegen' ),
+	'Imagelist'                 => array( 'Ofbeeldingenlieste' ),
+	'Newimages'                 => array( 'Nieje_ofbeeldingen' ),
+	'Listusers'                 => array( 'Gebrukerslieste' ),
+	'Statistics'                => array( 'Staotestieken' ),
+	'Randompage'                => array( 'Willekeurige_pagina' ),
+	'Lonelypages'               => array( 'Weespagina\'s' ),
+	'Uncategorizedpages'        => array( 'Pagina\'s_zonder_kattegerie' ),
+	'Uncategorizedcategories'   => array( 'Kattergieën_zonder_kattegerie' ),
+	'Uncategorizedimages'       => array( 'Ofbeeldingen_zonder_kattegerie' ),
+	'Unusedcategories'          => array( 'Ongebruken_kattegerieën' ),
+	'Unusedimages'              => array( 'Ongebruken_ofbeeldingen' ),
+	'Wantedpages'               => array( 'Gewunste_pagina\'s' ),
+	'Wantedcategories'          => array( 'Gewunste_kattegerieën' ),
+	'Mostlinked'                => array( 'Meest_naor_verwezen_pagina\'s' ),
+	'Mostlinkedcategories'      => array( 'Meestgebruken_kattegerieën' ),
+	'Mostcategories'            => array( 'Meeste_kattegerieën' ),
+	'Mostimages'                => array( 'Meeste_ofbeeldingen' ),
+	'Mostrevisions'             => array( 'Meeste_bewarkingen' ),
+	'Fewestrevisions'           => array( 'Minste_bewarkingen' ),
+	'Shortpages'                => array( 'Korte_artikels' ),
+	'Longpages'                 => array( 'Lange_artikels' ),
+	'Newpages'                  => array( 'Nieje_pagina\'s' ),
+	'Ancientpages'              => array( 'Oudste_pagina\'s' ),
+	'Deadendpages'              => array( 'Doodlopende_deurverwiezingen' ),
+	'Protectedpages'            => array( 'Beveiligen_pagina\'s' ),
+	'Allpages'                  => array( 'Alle_pagina\'s' ),
+	'Prefixindex'               => array( 'Prefixindex' ),
+	'Ipblocklist'               => array( 'IP-blokkeerlieste' ),
+	'Specialpages'              => array( 'Speciale_pagina\'s' ),
+	'Contributions'             => array( 'Biedragen' ),
+	'Emailuser'                 => array( 'Berich_sturen' ),
+	'Whatlinkshere'             => array( 'Verwiezingen_naor_disse_pagina' ),
+	'Recentchangeslinked'       => array( 'Volg_verwiezingen' ),
+	'Movepage'                  => array( 'Herneum_pagina' ),
+	'Blockme'                   => array( 'Blokkeer_mien' ),
+	'Booksources'               => array( 'Boekinfermasie' ),
+	'Categories'                => array( 'Kattegerieën' ),
+	'Export'                    => array( 'Uutvoeren' ),
+	'Version'                   => array( 'Versie' ),
+	'Allmessages'               => array( 'Alle_systeemteksen' ),
+	'Log'                       => array( 'Log', 'Logs' ),
+	'Blockip'                   => array( 'Blokkeer_IP' ),
+	'Undelete'                  => array( 'Weerummeplaosen' ),
+	'Import'                    => array( 'Invoeren' ),
+	'Lockdb'                    => array( 'Databanke_blokkeren' ),
+	'Unlockdb'                  => array( 'Databanke_vriegeven' ),
+	'Userrights'                => array( 'Gebrukersrechen' ),
+	'MIMEsearch'                => array( 'MIME-zeuken' ),
+	'Unwatchedpages'            => array( 'Neet-evolgen_pagina\'s' ),
+	'Listredirects'             => array( 'Deurverwiezingslieste' ),
+	'Revisiondelete'            => array( 'Versie_vortdoon' ),
+	'Unusedtemplates'           => array( 'Ongebruken_sjablonen' ),
+	'Randomredirect'            => array( 'Willekeurige_deurverwiezing' ),
+	'Mypage'                    => array( 'Mien_gebrukerspagina' ),
+	'Mytalk'                    => array( 'Mien_overleg' ),
+	'Mycontributions'           => array( 'Mien_biedragen' ),
+	'Listadmins'                => array( 'Beheerderslieste' ),
+	'Popularpages'              => array( 'Populaire_artikels' ),
+	'Search'                    => array( 'Zeuken' ),
+	'Resetpass'                 => array( 'Wachwoord_opniej_instellen' ),
+	'Cite'                      => array( 'Citeer' ),
+	'Filepath'                  => array( 'Bestanslokasie' ),
+	'Boardvote'                 => array( 'Bestuursverkiezing' ),
+	'CategoryTree'              => array( 'Kattegerieboomstructuur' ),
+	'SiteMatrix'                => array( 'Wikimedia-wiki\'s' ),
+	'CrossNamespaceLinks'       => array( 'Verwiezingen_naor_aandere_naamruumtes' ),
+	'Withoutinterwiki'          => array( 'Gien_interwiki' ),
+	'ExpandTemplates'           => array( 'Sjablonen_substitueren' ),
+	'Makebot'                   => array( 'Botrechen' ),
+	'Makesysop'                 => array( 'Beheerdersrechen' ),
+	'DeletedContributions'      => array( 'Vort-ehaolen_gebrukersbiedragen' ),
+	);
+
 $linkTrail = '/^([a-zäöüïëéèà]+)(.*)$/sDu';
 
 $messages = array(
+# User preference toggles
+'tog-hideminor'      => 'Kleine wiezigingen verbargen in leste wiezigingen',
+'tog-watchcreations' => 'Artikels dee-j anmaken an volglieste toevoegen',
+'tog-watchdefault'   => 'Artikels dee-j wiezigen an volglieste toevoegen',
+'tog-watchmoves'     => "Pagina's dee-k herneum an mien volglieste toevoegen",
+'tog-watchdeletion'  => 'Voeg pagina dee-k vortdo an mien volglieste toe',
+
 # Dates
 'sunday'       => 'zundag',
 'monday'       => 'maondag',
@@ -229,9 +321,10 @@ $messages = array(
 'toolbox'       => 'Hulpmiddels',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+'aboutsite'         => 'Over {{SITENAME}}',
 'copyright'         => 'De inhold is beschikbaor onder de $1.',
 'currentevents'     => "In 't niejs",
-'currentevents-url' => "Project:In 't niejs",
+'currentevents-url' => 'Project:In \'t niejs',
 'disclaimers'       => 'Veurbehold',
 'disclaimerpage'    => 'Project:Veurbehold',
 'mainpage'          => 'Heufdpagina',
@@ -240,7 +333,7 @@ $messages = array(
 'sitesupport'       => 'Financiële steun',
 'sitesupport-url'   => 'Project:Financiële steun',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-user'      => 'Gebruker',
 'nstab-special'   => 'Speciaol',
 'nstab-mediawiki' => 'Berich',
@@ -266,9 +359,11 @@ $messages = array(
 # Upload
 'upload' => 'Bestand toevoegen',
 
+# Random page
+'randompage' => 'Willekeurig artikel',
+
 # Miscellaneous special pages
 'allpages'     => "Alle pagina's",
-'randompage'   => 'Willekeurig artikel',
 'specialpages' => "Speciaole pagina's",
 'move'         => 'herneumen',
 

@@ -1,9 +1,14 @@
 <?php
-/** Low Saxon (Plattdüütsch)
+/** Low German (Plattdüütsch)
  *
  * @addtogroup Language
+ *
+ * @author Slomox
+ * @author G - ג
+ * @author Nike
+ * @author SPQRobin
  */
- 
+
 $fallback = 'de';
 
 $magicWords = array(
@@ -257,21 +262,21 @@ un dat [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Brukerhandbook] 
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Över {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:Över_{{SITENAME}}',
+'aboutpage'         => 'Project:Över_{{SITENAME}}',
 'bugreports'        => 'Kontakt',
-'bugreportspage'    => '{{ns:project}}:Kontakt',
+'bugreportspage'    => 'Project:Kontakt',
 'copyright'         => 'Inholt is verfögbor ünner de $1.',
 'copyrightpagename' => '{{SITENAME}} Copyright',
 'copyrightpage'     => '{{ns:project}}:Lizenz',
 'currentevents'     => 'Aktuell Schehn',
-'currentevents-url' => '{{ns:project}}:Aktuell Schehn',
+'currentevents-url' => 'Project:Aktuell Schehn',
 'disclaimers'       => 'Lizenzbestimmen',
-'disclaimerpage'    => '{{ns:project}}:Lizenzbestimmen',
+'disclaimerpage'    => 'Project:Lizenzbestimmen',
 'edithelp'          => 'Bearbeidenshülp',
-'edithelppage'      => '{{ns:project}}:Ännern',
+'edithelppage'      => 'Help:Ännern',
 'faq'               => 'Faken stellte Fragen',
-'faqpage'           => '{{ns:project}}:Faken stellte Fragen',
-'helppage'          => '{{ns:help}}:Hülp',
+'faqpage'           => 'Project:Faken stellte Fragen',
+'helppage'          => 'Help:Hülp',
 'mainpage'          => 'Hööftsiet',
 'portal'            => '{{SITENAME}}-Portal',
 'portal-url'        => 'Project:{{SITENAME}}-Portal',
@@ -301,7 +306,7 @@ un dat [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Brukerhandbook] 
 'viewdeleted'             => '$1 ankieken?',
 'restorelink'             => '$1 löscht Bearbeidensvörgäng',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the 'page' tab in monobook
 'nstab-main'      => 'Artikel',
 'nstab-user'      => 'Siet vun den Bruker',
 'nstab-media'     => 'Media',
@@ -478,7 +483,7 @@ As Grund is angeven:
 
 :$2
 
-De Duer steiht in’t [[Special:Log/block|Logbook]]. Wenn du glöövst, dat Sparren weer unrecht, denn mell di bi een vun de [[{{MediaWiki:grouppage-sysop}}|Administraters]]. Geev bi Fragen jümmer ok dien IP-Adress ($3) oder de ID vun dien Block (#$5) mit an.',
+De Duer steiht in’t [[Special:Log/block|Logbook]]. Wenn du glöövst, dat Sparren weer unrecht, denn mell di bi een vun de [[{{MediaWiki:Grouppage-sysop}}|Administraters]]. Geev bi Fragen jümmer ok dien IP-Adress ($3) oder de ID vun dien Block (#$5) mit an.',
 'whitelistedittitle'       => 'de Siet to ännern is dat nödig anmellt to wesen',
 'whitelistedittext'        => 'Du musst di $1, dat du Sieden ännern kannst.',
 'whitelistreadtitle'       => 'üm to Lesen is dat neudig anmellt to ween',
@@ -616,7 +621,7 @@ Versöök [[Special:Search|dat Söken]] na annere relevante Sieden.',
 
 # Search results
 'searchresults'         => 'Söökresultaten',
-'searchresulttext'      => 'För mehr Informatschonen över {{SITENAME}}, kiek [[{{MediaWiki:helppage}}|{{SITENAME}} dörsöken]].',
+'searchresulttext'      => 'För mehr Informatschonen över {{SITENAME}}, kiek [[{{MediaWiki:Helppage}}|{{SITENAME}} dörsöken]].',
 'searchsubtitle'        => 'För de Söökanfraag „[[:$1]]“',
 'searchsubtitleinvalid' => 'För de Söökanfraag „$1“',
 'noexactmatch'          => 'Dor existeert kene Siet mit dissen Naam. Versöök de Vulltextsöök oder legg de Siet [[:$1|nieg]] an.',
@@ -646,7 +651,7 @@ de aver nich jümmer den aktuellsten Stand weerspegelt.<p>',
 'mypreferences'            => 'För mi Instellen',
 'prefs-edits'              => 'Wo faken du in dit Wiki Sieden ännert hest:',
 'prefsnologin'             => 'Nich anmellt',
-'prefsnologintext'         => 'Du musst [[{{ns:-1}}:Userlogin|anmellt]] wesen, üm dien Instellen to ännern.',
+'prefsnologintext'         => 'Du musst [[{{ns:special}}:Userlogin|anmellt]] wesen, üm dien Instellen to ännern.',
 'prefsreset'               => 'Instellen sünd op Standard trüchsett.',
 'qbsettings'               => 'Siedenliest',
 'qbsettings-none'          => 'Keen',
@@ -887,6 +892,10 @@ Dat geev en internen Fehler bi dat Anleggen vun en temporäre Datei op’n Serve
 # Unused templates
 'unusedtemplates' => 'Nich bruukte Vörlagen',
 
+# Random pages
+'randompage'         => 'Tofällige Siet',
+'randompage-nopages' => 'Gifft kene Sieden in dissen Naamruum.',
+
 # Random redirect
 'randomredirect'         => 'Tofällig Redirect',
 'randomredirect-nopages' => 'Gifft kene Redirects in dissen Naamruum.',
@@ -910,11 +919,7 @@ Dorvun {{PLURAL:$2|hett '''een'''|hebbt '''$2'''}} {{PLURAL:$1||($4 %)}} $5-Rech
 'statistics-mostpopular' => 'opmehrst ankekene Sieden',
 
 'disambiguations'     => 'Mehrdüdige Begrepen',
-'disambiguationspage' => "Op disse Siet schöölt all Vörlagen un Redirects na sone Vörlagen indragen warrn, de bi Begrepen staht, de mehrdüdig sünd un den Leser op de richtige Siet wiederwiest. Op Sieden mit disse Vörlagen schall keen Lenk wiesen. Lenken, de dor doch op wiest, warrt denn op de Siet [[Special:Disambiguations]] optellt.
-
-<small>Vun disse Siet warrt blots de Lenken na den Vörlagen-Naamruum utleest ('''<nowiki>[[</nowiki>{{ns:template}}<nowiki>:...]]</nowiki>''') un allens annere kann geern ännert warrn.</small>
-
-* [[{{ns:template}}:mehrdüdig Begreep]]",
+'disambiguationspage' => 'Template:Mehrdüdig_Begreep',
 
 'doubleredirects'     => 'Dubbelte Wiederleiden',
 'doubleredirectstext' => '<b>Wohrscho:</b> Disse List kann „falsche Positive“ bargen.
@@ -957,8 +962,6 @@ to den vun den tweeten Wiederleiden wiest warrt, un to den de eerste Wiederleide
 'mostimages'              => 'Biller, de veel bruukt warrt',
 'mostrevisions'           => 'Sieden mit de mehrsten Versionen',
 'allpages'                => 'Alle Sieden',
-'randompage'              => 'Tofällige Siet',
-'randompage-nopages'      => 'Gifft kene Sieden in dissen Naamruum.',
 'shortpages'              => 'Korte Sieden',
 'longpages'               => 'Lange Sieden',
 'deadendpages'            => 'Sackstraatsieden',
@@ -979,6 +982,8 @@ to den vun den tweeten Wiederleiden wiest warrt, un to den de eerste Wiederleide
 'movethispage'            => 'Siet schuven',
 'unusedimagestext'        => 'Denk doran, dat annere Wikis mööglicherwies en poor vun disse Biller bruken.',
 'unusedcategoriestext'    => 'Disse Kategorien sünd leddig, keen Artikel un kene Ünnerkategorie steiht dor in.',
+'notargettitle'           => 'Kene Siet angeven',
+'notargettext'            => 'Du hest nich angeven, op welke Siet du disse Funktschoon anwennen willst.',
 
 # Book sources
 'booksources'               => 'Bookhannel',
@@ -1094,7 +1099,7 @@ Du kannst de List körter maken, wenn du den Logbook-Typ, den Brukernaam oder de
 'deletesub'                   => '(Smiet „$1“ weg)',
 'historywarning'              => 'Wohrschau: De Siet, de du bi büst to löschen, hett en Versionshistorie:',
 'confirmdeletetext'           => 'Du büst dorbi, en Siet oder en Bild un alle ölleren Versionen duersam ut de Datenbank to löschen.
-Segg to, dat du över de Folgen Bescheed weetst un dat du in Övereenstimmen mit uns [[{{MediaWiki:policy-url}}|Leidlienen]] hannelst.',
+Segg to, dat du över de Folgen Bescheed weetst un dat du in Övereenstimmen mit uns [[{{MediaWiki:Policy-url}}|Leidlienen]] hannelst.',
 'actioncomplete'              => 'Akschoon trech',
 'deletedtext'                 => 'De Artikel „$1“ is nu wegsmeten. Op $2 gifft dat en Logbook vun de letzten Löschakschonen.',
 'deletedarticle'              => '„$1“ wegsmeten',
@@ -1171,8 +1176,6 @@ Naam schreven worrn is, warrt de weerholten Versionen as ole Versionen vun disse
 
 # What links here
 'whatlinkshere'  => 'Wat wiest na disse Siet hen',
-'notargettitle'  => 'Kene Siet angeven',
-'notargettext'   => 'Du hest nich angeven, op welke Siet du disse Funktschoon anwennen willst.',
 'linklistsub'    => '(List vun de Verwiesen)',
 'linkshere'      => 'Disse Sieden wiest hierher:',
 'nolinkshere'    => 'Kene Siet wiest hierher.',
@@ -1182,7 +1185,7 @@ Naam schreven worrn is, warrt de weerholten Versionen as ole Versionen vun disse
 # Block/unblock
 'blockip'                  => 'IP-Adress blocken',
 'blockiptext'              => 'Bruuk dat Formular, ene IP-Adress to blocken.
-Dit schall blots maakt warrn, Vandalismus to vermasseln, aver jümmer in Övereenstimmen mit uns [[{{MediaWiki:policy-url}}|Leidlienen]].
+Dit schall blots maakt warrn, Vandalismus to vermasseln, aver jümmer in Övereenstimmen mit uns [[{{MediaWiki:Policy-url}}|Leidlienen]].
 Ok den Grund för dat Blocken indregen.',
 'ipaddress'                => 'IP-Adress',
 'ipadressorusername'       => 'IP-Adress oder Brukernaam:',
@@ -1288,7 +1291,7 @@ Diskuschoonssiet nich, vun wegen dat dor al en Siet mit dissen Titel existeert. 
 'allmessagesdefault'        => 'Standardtext',
 'allmessagescurrent'        => 'Text nu',
 'allmessagestext'           => 'Dit is de List vun all de Systemnarichten, de dat in den Mediawiki-Naamruum gifft.',
-'allmessagesnotsupportedDB' => 'special:Allmessages is nich ünnerstütt, vun wegen dat wgUseDatabaseMessages utstellt is.',
+'allmessagesnotsupportedDB' => '{{ns:special}}:Allmessages is nich ünnerstütt, vun wegen dat wgUseDatabaseMessages utstellt is.',
 'allmessagesfilter'         => 'Narichtennaamfilter:',
 
 # Thumbnails
@@ -1561,7 +1564,7 @@ $1
 
 # Delete conflict
 'deletedwhileediting' => 'Wohrschau: Disse Siet is wegsmeten worrn, as du se graad ännert hest!',
-'confirmrecreate'     => "De Bruker [[{{NS:2}}:$1|$1]] ([[{{NS:3}}:$1|talk]]) hett disse Siet wegsmeten, nadem du dat Ännern anfungen hest. He hett as Grund schreven:
+'confirmrecreate'     => "De Bruker [[User:$1|$1]] ([[User talk:$1|talk]]) hett disse Siet wegsmeten, nadem du dat Ännern anfungen hest. He hett as Grund schreven:
 : ''$2''
 Wist du de Siet würklich nee anleggen?",
 'recreate'            => 'wedder nee anleggen',
@@ -1597,10 +1600,10 @@ $1',
 'table_pager_empty'        => 'Kene Resultaten',
 
 # Auto-summaries
-'autosumm-blank'   => '[[{{ns:12}}:Autokommentar|AK]]: Siet leddig maakt',
-'autosumm-replace' => '[[{{ns:12}}:Autokommentar|AK]]: Siet leddig maakt un ‚$1‘ rinschreven',
-'autoredircomment' => '[[{{ns:12}}:Autokommentar|AK]]: Redirect sett na [[$1]]',
-'autosumm-new'     => '[[{{ns:12}}:Autokommentar|AK]]: Ne’e Siet: ‚$1‘',
+'autosumm-blank'   => '[[{{ns:help}}:Autokommentar|AK]]: Siet leddig maakt',
+'autosumm-replace' => '[[{{ns:help}}:Autokommentar|AK]]: Siet leddig maakt un ‚$1‘ rinschreven',
+'autoredircomment' => '[[{{ns:help}}:Autokommentar|AK]]: Redirect sett na [[$1]]',
+'autosumm-new'     => '[[{{ns:help}}:Autokommentar|AK]]: Ne’e Siet: ‚$1‘',
 
 # Live preview
 'livepreview-loading' => 'Läädt…',

@@ -176,14 +176,14 @@ $messages = array(
 'aboutsite'         => 'Informazions su {{SITENAME}}',
 'copyright'         => 'Il contignût al è disponibil sot de $1',
 'currentevents'     => 'Lis gnovis',
-'currentevents-url' => 'Lis gnovis',
+'currentevents-url' => 'Project:Lis gnovis',
 'disclaimers'       => 'Avîs legâi',
 'edithelp'          => 'Jutori pai cambiaments',
 'edithelppage'      => 'Help:Cambiaments',
 'helppage'          => 'Help:Contignûts',
 'mainpage'          => 'Pagjine principâl',
 'portal'            => 'Ostarie',
-'portal-url'        => '{{ns:project}}:Ostarie',
+'portal-url'        => 'Project:Ostarie',
 'privacy'           => 'Politiche pe privacy',
 'privacypage'       => 'Project:Politiche_pe_privacy',
 'sitesupport'       => 'Doninus',
@@ -313,7 +313,7 @@ La tô identitât e je stade creade. No stâ dismenteâti di gambiâ lis prefere
 'accmailtitle'     => 'Password mandade.',
 'accmailtext'      => 'La password par "$1" e je stade mandade a $2.',
 'newarticle'       => '(Gnûf)',
-'newarticletext'   => "Tu âs seguît un leam a une pagjine che no esist ancjemò. Par creâ une pagjine, scomence a scrivi tal spazi ca sot (cjale il [[{{MediaWiki:helppage}}|jutori]] par altris informazions). Se tu sês ca par erôr, frache semplicementri il boton '''Indaûr''' dal to sgarfadôr.",
+'newarticletext'   => "Tu âs seguît un leam a une pagjine che no esist ancjemò. Par creâ une pagjine, scomence a scrivi tal spazi ca sot (cjale il [[{{MediaWiki:Helppage}}|jutori]] par altris informazions). Se tu sês ca par erôr, frache semplicementri il boton '''Indaûr''' dal to sgarfadôr.",
 'noarticletext'    => '(Par cumò nol è nuie in cheste pagjine)',
 'updated'          => '(Inzornât)',
 'previewnote'      => 'Visiti che cheste e je dome une anteprime, e no je stade ancjemò salvade!',
@@ -346,7 +346,7 @@ Tu varâs di inserî di gnûf i tiei cambiaments tal test esistint.
 
 # Search results
 'searchresults'         => 'Risultâts de ricercje',
-'searchresulttext'      => 'Par plui informazions su lis ricercjis in {{SITENAME}}, cjale [[{{MediaWiki:helppage}}|{{int:help}}]].',
+'searchresulttext'      => 'Par plui informazions su lis ricercjis in {{SITENAME}}, cjale [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => 'Pal test "[[:$1]]"',
 'searchsubtitleinvalid' => 'Pal test "$1"',
 'matchtotals'           => 'La ricercje "$1" e à cjatât $2 titui di pagjinis e il test di $3 pagjinis.',
@@ -435,9 +435,9 @@ $2 Liste redirezions &nbsp; Cîr $3 $9',
 'uploadtext'         => "Dopre la form ca sot par cjamâ sù un file, par cjalâ o cirî i files cjamâts sù in precedence va te [[Special:Imagelist|liste dai files cjamâts sù]], lis cjamadis e lis eliminazions a son ancje regjistrâts tal [[Special:Log/upload|regjistri des cjamadis]].
 
 Par includi une figure intune pagjine, dopre un leam inte form
-'''<nowiki>[[</nowiki>{{ns:6}}<nowiki>:file.jpg]]</nowiki>''',
-'''<nowiki>[[</nowiki>{{ns:6}}<nowiki>:file.png|alt text]]</nowiki>''' or
-'''<nowiki>[[</nowiki>{{ns:-2}}<nowiki>:file.ogg]]</nowiki>''' par un leam diret al file.",
+'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:file.jpg]]</nowiki>''',
+'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:file.png|alt text]]</nowiki>''' or
+'''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:file.ogg]]</nowiki>''' par un leam diret al file.",
 'uploadlog'          => 'regjistri cjamâts sù',
 'uploadlogpagetext'  => 'Ca sot e je une liste dai file cjamâts su di recent.',
 'filename'           => 'Non dal file',

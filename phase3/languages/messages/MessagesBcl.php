@@ -1,8 +1,8 @@
 <?php
-/** Bikol (Bikol Central)
+/** Bikol Central (Bikol Central)
  *
  * @addtogroup Language
- * Translators:
+ *
  * @author Filipinayzd
  * @author Steven*fung
  * @author Siebrand Mazeland
@@ -221,29 +221,29 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Manonongod sa {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:Manonongod',
+'aboutpage'         => 'Project:Manonongod',
 'bugreports'        => 'Mga reportahe nin mga salâ',
-'bugreportspage'    => '{{ns:project}}:Mga reportahe nin salâ',
+'bugreportspage'    => 'Project:Mga reportahe nin salâ',
 'copyright'         => 'Makukua an laog sa $1.',
 'copyrightpagename' => '{{SITENAME}} derechos nin parásurat',
 'copyrightpage'     => '{{ns:project}}:Mga derechos nin parásurat',
 'currentevents'     => 'Mga panyayari sa ngonyan',
-'currentevents-url' => 'Mga panyayari sa ngonyan',
+'currentevents-url' => 'Project:Mga panyayari sa ngonyan',
 'disclaimers'       => 'Mga renunsya',
-'disclaimerpage'    => '{{ns:project}}:Heneral na renunsya',
+'disclaimerpage'    => 'Project:Heneral na renunsya',
 'edithelp'          => 'Paghirá kan pagtabang',
-'edithelppage'      => '{{ns:help}}:Paghirá',
+'edithelppage'      => 'Help:Paghirá',
 'faq'               => 'HD',
-'faqpage'           => '{{ns:project}}:HD',
-'helppage'          => '{{ns:help}}:Mga laog',
+'faqpage'           => 'Project:HD',
+'helppage'          => 'Help:Mga laog',
 'mainpage'          => 'Pangenot na Pahina',
-'policy-url'        => '{{ns:project}}:Palakaw',
+'policy-url'        => 'Project:Palakaw',
 'portal'            => 'Portal kan komunidad',
-'portal-url'        => '{{ns:project}}:Portal kan Komunidad',
+'portal-url'        => 'Project:Portal kan Komunidad',
 'privacy'           => 'Palakaw nin pribasidad',
-'privacypage'       => '{{ns:project}}:Palakaw nin pribasidad',
+'privacypage'       => 'Project:Palakaw nin pribasidad',
 'sitesupport'       => 'Mga donasyon',
-'sitesupport-url'   => "{{ns:project}}:Suporta sa ''site''",
+'sitesupport-url'   => "Project:Suporta sa ''site''",
 
 'badaccess'        => 'Salang permiso',
 'badaccess-group0' => 'Dai ka tinotogotan na gibohon an aksyon na saimong hinahagad.',
@@ -293,7 +293,7 @@ $messages = array(
 'nosuchaction'      => 'Mayong siring na aksyón',
 'nosuchactiontext'  => 'An gibo na pinilî nin URL dai bisto kan wiki',
 'nosuchspecialpage' => 'Mayong siring na espesyal na páhina',
-'nospecialpagetext' => "'''<big>Dai puede an páhinang especial na pinilî mo.</big>'''
+'nospecialpagetext' => "<big>'''Dai puede an páhinang especial na pinilî mo.'''</big>
 
 Pwede mong mahiling an lista nin mga marhay na páhina sa [[Special:Specialpages]].",
 
@@ -405,6 +405,7 @@ Nagibo na an ''account'' mo. Giromdomon tabi na ribayán an saimong mga kabôtan
 'prefs-help-realname'        => 'Opsyonal an totoong pangaran asin kun itatao mo ini, gagamiton ini yangarig an mga sinurat mo maatribuir saimo.',
 'loginerror'                 => 'Salâ an paglaog',
 'prefs-help-email'           => "Opsyonal an ''e''-surat, pero pwede kan masosog kan iba sa paagi kan saimong páhina o páhina nin olay na dai kinakaipuhan na ipabisto an identidad mo.",
+'prefs-help-email-required'  => "Kaipuhan an ''e''-surat.",
 'nocookiesnew'               => "Nagibo na an ''account'' kan parágamit, alagad dai ka pa nakalaog. Naggagamit nin ''cookies'' an {{SITENAME}} para magpalaog sa mga parágamit. Nakapondo an ''cookies'' mo. Paandaron tabî ini, dangan, maglaog gamit an bâgo mong pangaran asin sekretong panlaog.",
 'nocookieslogin'             => 'Naggagamit nin mga cookies an {{SITENAME}} para magpalaog nin mga paragamit. Nakapondo an mga cookies mo. Paandaron tabi ini asin probaran giraray.',
 'noname'                     => 'Dai ka pa nagkaag nin pwedeng gamiton na pangaran.',
@@ -503,7 +504,7 @@ Si $1 an nagbagat. Ini an itinaong rasón, ''$2''.
 * Pagpasó kan pagbagat: $6
 * Piniling bagaton: $7
 
-Pwede mong suratan si $1 o an iba pang [[{{MediaWiki:grouppage-sysop}}|administrador]] para pagoralayan an manonongod sa pagbagat.
+Pwede mong suratan si $1 o an iba pang [[{{MediaWiki:Grouppage-sysop}}|administrador]] para pagoralayan an manonongod sa pagbagat.
 Dai mo pwedeng gamiton an ' ''e''-suratan an parágamit ' kun mayong tamang ''e''-surat sa  [[Special:Preferences|mga kabôtan kan ''account'']] mo asin dai ka pigbagat sa paggamit kaini.
 $3 an presente mong IP, asin #$5 an ID nin pigbagat. Ikaag tabî an arin man o pareho sain man na hapót.",
 'autoblockedtext'           => "Enseguidang pigbagat an IP mo ta ginamit ini kan ibang parágamit, na binagat ni \$1.
@@ -515,7 +516,7 @@ Ini an rasón:
 * Pagpasó kan pagbagat: \$6
 
 Pwedeng mong suratan si \$1 o an iba pang mga
-[[{{MediaWiki:grouppage-sysop}}|administrador]] para pagolayan an manonongod sa pagbagat.
+[[{{MediaWiki:Grouppage-sysop}}|administrador]] para pagolayan an manonongod sa pagbagat.
 
 Giromdomon tabî na pwede mo sanang gamiton an \"''e''-suratan ining parágamit\" na gamit kun igwa kang tamang ''e''-surat na nakarehistro saimong [[Special:Preferences|mga kabôtan nin parágamit]] asin dai ka pigbabagat sa paggamit kaini.
 
@@ -540,7 +541,7 @@ Giromdomon tabî na pwede mo sanang gamiton an \"''e''-suratan ining parágamit\
 'newarticle'                => '(Bâgo)',
 'newarticletext'            => "Sinunod mo an takod sa pahinang mayô pa man.
 Para magibo an páhina, magpoon pagsurat sa kahon sa babâ
-(hilingón an [[{{MediaWiki:helppage}}|páhina nin tabang]] para sa iba pang impormasyon).
+(hilingón an [[{{MediaWiki:Helppage}}|páhina nin tabang]] para sa iba pang impormasyon).
 Kun dai tinuyong nakaabot ka digdi, pindoton sana an '''back''' sa ''browser'' mo.",
 'anontalkpagetext'          => "----''Ini an páhina kan olay kan sarong parágamit na dai bisto na dai pa naggibo nin'' account ''o dai naggagamit kaini. Entonces, piggagamit mi an numero nin IP para mabisto siya. Ining IP pwede gamiton kan manlain-lain na mga parágamit. Kun ika sarong páragamit na dai bisto asin konbensido ka na pigsasabi ka ining mga komento bakô man dapit saimo,  [[Special:Userlogin|maggibo nin'' account ''o maglaog]] tabî para maibitaran an pagkaribong saimo asin sa ibang mga parágamit na dai bisto.''",
 'noarticletext'             => 'Mayo man na teksto sa páhinang ini, pwede mong [[Special:Search/{{PAGENAME}}|hanápon ining titulo nin páhina]] sa ibang mga páhina o [{{fullurl:{{FULLPAGENAME}}|action=edit}} hirahon ining páhina].',
@@ -710,7 +711,7 @@ Hilingon tabî an [[Special:Ipblocklist|lista nin binagat na IP]] para sa lista 
 
 # Search results
 'searchresults'         => 'Hanapon an mga resulta',
-'searchresulttext'      => 'Para sa iba pang impormasyon manonongod sa paghanap sa {{SITENAME}}, hilingon tabî an [[{{MediaWiki:helppage}}|{{int:help}}]].',
+'searchresulttext'      => 'Para sa iba pang impormasyon manonongod sa paghanap sa {{SITENAME}}, hilingon tabî an [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "Hinanap mo an '''[[:$1]]'''",
 'searchsubtitleinvalid' => "Hinanap mo an '''$1'''",
 'noexactmatch'          => "'''Mayong siring na páhinang may títulong \"\$1\".''' Pwede mong [[:\$1|gibohon ining páhina]].",
@@ -898,7 +899,7 @@ Kun boot mong ikaag an ladawan sa páhina, gamiton tabî an takod arog kan
 Pangaran kan pigkakargang ''file'': <strong><tt>$1</tt></strong><br />
 Pangaran kan yaon nang ''file'': <strong><tt>$2</tt></strong><br />
 Magpili tabî nin ibang pangaran.",
-'fileexists-thumb'            => "'''<center>Presenteng ladawan</center>'''",
+'fileexists-thumb'            => "<center>'''Presenteng ladawan'''</center>",
 'fileexists-thumbnail-yes'    => "An ''file'' garo ladawan kan pinasadit <i>(thumbnail)</i>. Sosogon tabî an ''file'' <strong><tt>$1</tt></strong>.<br />
 Kun an sinosog na ''file'' iyo an parehong ladawan na nasa dating sokol, dai na kaipuhan magkarga nin iba pang retratito.",
 'file-thumbnail-no'           => "An ''filename'' nagpopoon sa <strong><tt>$1</tt></strong>. Garo ladawan na pinasadit ini <i>(thumbnail)</i>.
@@ -1112,6 +1113,8 @@ Maabot sa '''\$5''' na hira kada páhina sa medio, asin '''\$6''' na paghiling k
 'movethispage'            => 'Ibalyó ining páhina',
 'unusedimagestext'        => "<p>Giromdomon tabî na an mga ibang ''site'' pwedeng nakatakod sa ladawan na may direktong URL, pues pwede ser na nakalista pa digdi a pesar na ini piggagamit pa.</p>",
 'unusedcategoriestext'    => 'Igwa ining mga pahinang kategoria maski mayo man na iba pang pahina o kategoria an naggagamit kaiyan.',
+'notargettitle'           => 'Mayong target',
+'notargettext'            => 'Dai ka pa nagpili nin pahina o paragamit na muya mong gibohon an accion na ini.',
 
 # Book sources
 'booksources'               => 'Ginikanang libro',
@@ -1254,7 +1257,7 @@ Para bâgohon an pagpwesto kan saimong mga pigbabantayan, bisitahon an
 {{fullurl:{{ns:special}}:Watchlist/edit}}
 
 Komentaryo asin iba pang tabang:
-{{fullurl:{{MediaWiki:helppage}}}}',
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'                  => 'Parâon an pahina',
@@ -1269,7 +1272,7 @@ Komentaryo asin iba pang tabang:
 'confirmdeletetext'           => 'Paparâon mo sa base nin datos ining páhina
 o ladawan kasabay an gabos na mga historya kaini.
 Konpirmaron tabî na talagang boot mong gibohon ini, nasasabotan mo an mga resulta, asin an piggigibo mo ini konporme sa
-[[{{MediaWiki:policy-url}}]].',
+[[{{MediaWiki:Policy-url}}]].',
 'actioncomplete'              => 'Nagibo na',
 'deletedtext'                 => 'Pigparâ na an "$1" .
 Hilingón tabî an $2 para mahiling an lista nin mga kaaagi pa sanang pagparâ.',
@@ -1409,8 +1412,6 @@ $1",
 # What links here
 'whatlinkshere'       => 'An nakatakod digdi',
 'whatlinkshere-title' => 'Mga pahinang nakatakod sa $1',
-'notargettitle'       => 'Mayong target',
-'notargettext'        => 'Dai ka pa nagpili nin pahina o paragamit na muya mong gibohon an accion na ini.',
 'linklistsub'         => '(Lista kan mga takod)',
 'linkshere'           => "An mga minasunod na pahina nakatakod sa '''[[:$1]]''':",
 'nolinkshere'         => "Mayong pahinang nakatakod sa '''[[:$1]]'''.",
@@ -1424,7 +1425,7 @@ $1",
 # Block/unblock
 'blockip'                     => 'Bagáton an parágamit',
 'blockiptext'                 => 'Gamiton an pormularyo sa babâ para bagaton an pagsurat kan sarong espesipikong IP o ngaran nin parágamit.
-Dapat gibohon sana ini para maibitaran vandalismo, asin kompirmi sa [[{{MediaWiki:policy-url}}|palakaw]].
+Dapat gibohon sana ini para maibitaran vandalismo, asin kompirmi sa [[{{MediaWiki:Policy-url}}|palakaw]].
 Magkaag nin espisipikong rason (halimbawa, magtao nin ehemplo kan mga páhinang rinaot).',
 'ipaddress'                   => 'Direksyón nin IP:',
 'ipadressorusername'          => 'dirección nin IP o gaha:',
@@ -1492,9 +1493,9 @@ IP dai nakalista digdi. Hilingon an [[Special:Ipblocklist|IP lista nin mga binag
 'range_block_disabled'        => 'Pigpopondo an abilidad kan sysop na maggibo nin bagat na hilera.',
 'ipb_expiry_invalid'          => 'Dai pwede ini bilang oras kan pagpasó.',
 'ipb_already_blocked'         => 'Dating binagat na si "$1"',
+'ipb_cant_unblock'            => 'Error: Dai nahanap an ID nin binagat na $1. Puede ser na dati nang binawi an pagbagat kaini.',
 'ip_range_invalid'            => 'Dai pwede ining serye nin IP.',
 'proxyblocker'                => 'Parabagát na karibay',
-'ipb_cant_unblock'            => 'Error: Dai nahanap an ID nin binagat na $1. Puede ser na dati nang binawi an pagbagat kaini.',
 'proxyblockreason'            => 'Binagat an saimong direccion nin IP ta ini sarong bukas na proxy. Apodon tabi an saimong Internet service provider o tech support asin ipaaram sainda ining seriosong problema nin seguridad.',
 'proxyblocksuccess'           => 'Tapos.',
 'sorbsreason'                 => 'An saimong direccion in IP nakalista na bukas na proxy sa DNSBL na piggagamit kaining sitio.',
@@ -1570,7 +1571,7 @@ Igwa nang páhina na "[[$1]]". Gusto mong parâon ini tangarig maibalyó?',
 
 Para makapadara nin mga páhina, ilaag an mga titulo sa kahon para sa teksto sa babâ, sarong titulo kada linya, dangan pilîon kun boot mo presenteng bersyón asin dating bersyón, na may mga linya kan historya, o an presenteng bersyón sana na may impormasyon manonongod sa huring hirá.
 
-Sa kaso kan huri, pwede ka man na maggamit nin takod, arog kan [[{{ns:Special}}:Export/{{MediaWiki:mainpage}}]] para sa páhinang "[[{{MediaWiki:mainpage}}]]".',
+Sa kaso kan huri, pwede ka man na maggamit nin takod, arog kan [[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]] para sa páhinang "[[{{MediaWiki:Mainpage}}]]".',
 'exportcuronly'     => 'Mga presenteng pagpakarhay sana an ibali, bakong an enterong historya',
 'exportnohistory'   => "----
 '''Paisi:''' Dai pigpatogotan an pagpadara kan enterong historya kan mga páhina sa paagi kaining forma huli sa mga rasón dapit sa pagsagibo kaini.",
@@ -1945,12 +1946,6 @@ $1',
 'autoredircomment' => 'Piglilikay sa [[$1]]',
 'autosumm-new'     => 'Bâgong páhina: $1',
 
-# Size units
-'size-bytes'     => '$1 B',
-'size-kilobytes' => '$1 KB',
-'size-megabytes' => '$1 MB',
-'size-gigabytes' => '$1 GB',
-
 # Live preview
 'livepreview-loading' => 'Pigkakarga…',
 'livepreview-ready'   => 'Pigkakarga… Magpreparar!',
@@ -1981,8 +1976,8 @@ $1',
 'watchlistedit-raw-removed'    => '{{PLURAL:$1|1 an titulong|$1 mga titulong}} hinalî:',
 
 # Watchlist editing tools
-'watchlisttools-view'  => 'Hilingón an mga dapít na pagbabâgo',
-'watchlisttools-edit'  => 'Hilingón asin hirahón an pigbabantayan',
-'watchlisttools-raw'   => 'Hirahón an bâgong pigbabantayan',
+'watchlisttools-view' => 'Hilingón an mga dapít na pagbabâgo',
+'watchlisttools-edit' => 'Hilingón asin hirahón an pigbabantayan',
+'watchlisttools-raw'  => 'Hirahón an bâgong pigbabantayan',
 
 );

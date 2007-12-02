@@ -207,26 +207,26 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Euver {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:Info',
+'aboutpage'         => 'Project:Info',
 'bugreports'        => 'Fouterapportaasj',
-'bugreportspage'    => '{{ns:project}}:Fouterapportaasj',
+'bugreportspage'    => 'Project:Fouterapportaasj',
 'copyright'         => 'De inhawd is besjikbaar ónger de $1.',
 'copyrightpagename' => '{{SITENAME}} auteursrechte',
 'copyrightpage'     => '{{ns:project}}:Auteursrechte',
 'currentevents'     => "In 't nuujs",
-'currentevents-url' => "{{ns:project}}:In 't nuujs",
+'currentevents-url' => 'Project:In \'t nuujs',
 'disclaimers'       => 'Aafwiezinge aansjprakelikheid',
-'disclaimerpage'    => '{{SITENAME}}: Algemein aafwiezing aansjprakelikheid',
+'disclaimerpage'    => 'Project:Algemein aafwiezing aansjprakelikheid',
 'edithelp'          => 'Hulp bie bewirke',
-'edithelppage'      => '{{ns:help}}:Instructies',
-'faqpage'           => '{{ns:project}}:Veulgestjilde vraoge',
-'helppage'          => '{{ns:project}}:Help',
+'edithelppage'      => 'Help:Instructies',
+'faqpage'           => 'Project:Veulgestjilde vraoge',
+'helppage'          => 'Help:Help',
 'mainpage'          => 'Veurblaad',
 'portal'            => 'Gebroekersportaol',
-'portal-url'        => '{{ns:project}}:Gebroekersportaol',
-'privacypage'       => '{{ns:project}}:Privacy_policy',
+'portal-url'        => 'Project:Gebroekersportaol',
+'privacypage'       => 'Project:Privacy_policy',
 'sitesupport'       => 'Donaties',
-'sitesupport-url'   => '{{ns:project}}:Gifte',
+'sitesupport-url'   => 'Project:Gifte',
 
 'badaccess'        => 'Toeganksfout',
 'badaccess-group0' => 'Doe höbs gén rechte om de gevräögde hanjeling oet te veure.',
@@ -253,7 +253,7 @@ $messages = array(
 'restorelink'             => '$1 verwiederde versies',
 'feed-invalid'            => 'Feedtype wörd neet ongersteund.',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Artikel',
 'nstab-user'      => 'Gebroeker',
 'nstab-media'     => 'Mediapazjena',
@@ -448,7 +448,7 @@ De opgegaeve reje is:
 * Aanvang blokkade: $8
 * Einde blokkade: $6
 
-Doe kins deze blokkaasj bespraeke mèt $1 of 'ne angere [[{{MediaWiki:grouppage-sysop}}|beheerder]]. Doe kins gén gebroek make van de functie 'e-mail deze gebroeker', tenzijse 'n geldig e-mailadres opgegaeve höbs in dien [[{{ns:special}}:Preferences|veurkeure]] en 't gebroek van deze functie neet is geblokkeerd. Dien hujig IP-adres is $3 en ' nömmer vanne blokkaasj is #$5. Vermeld beide gegaeves esse örges euver deze blokkaasj reageers.",
+Doe kins deze blokkaasj bespraeke mèt $1 of 'ne angere [[{{MediaWiki:Grouppage-sysop}}|beheerder]]. Doe kins gén gebroek make van de functie 'e-mail deze gebroeker', tenzijse 'n geldig e-mailadres opgegaeve höbs in dien [[{{ns:special}}:Preferences|veurkeure]] en 't gebroek van deze functie neet is geblokkeerd. Dien hujig IP-adres is $3 en ' nömmer vanne blokkaasj is #$5. Vermeld beide gegaeves esse örges euver deze blokkaasj reageers.",
 'blockedoriginalsource'     => "Hiej onger stuit de bronteks van '''$1''':",
 'blockededitsource'         => "Hiej onger stuit de teks van '''dien bewèrkinge''' aan '''$1''':",
 'whitelistedittitle'        => 'Geer mót óch inlogke óm te bewirke',
@@ -475,7 +475,7 @@ Type in de box hiejónger óm de pazjena te beginne (zuug de [[Help:Contents|hel
 'usercssjsyoucanpreview'    => "<strong>Tip:</strong> Gebroek de knoep 'Tuun bewerking ter controle' om dien nuuje css/js te teste alveures op sjlaon.",
 'usercsspreview'            => "'''Dit is allein 'n veurvertuun van dien perseunlike css, deze is neet opgeslage!'''",
 'userjspreview'             => "'''Let op: doe tes noe dien perseunlik JavaScript. De pazjena is neet opgeslage!'''",
-'userinvalidcssjstitle'     => "'''Waorsjuwing:''' d'r is geine skin \"\$1\". Let op: dien eige .css- en .js-pazjena's beginne mèt  'ne kleine letter, bijveurbeeld User:Naam/monobook.css in plaats van User:Naam/Monobook.css.",
+'userinvalidcssjstitle'     => "'''Waorsjuwing:''' d'r is geine skin \"\$1\". Let op: dien eige .css- en .js-pazjena's beginne mèt  'ne kleine letter, bijveurbeeld {{ns:user}}:Naam/monobook.css in plaats van {{ns:user}}:Naam/Monobook.css.",
 'updated'                   => '(Biegewèrk)',
 'note'                      => '<strong>Opmirking:</strong>',
 'previewnote'               => "Lèt op: dit is 'n controlepazjena; dien tèks is nog neet opgesjlage!",
@@ -624,7 +624,7 @@ Anger beheerders van deze wiki kinne de verborge inhoud benäöjere en de verwie
 
 # Search results
 'searchresults'         => 'Zeukresultate',
-'searchresulttext'      => 'Veur mier informatie euver zeuke op {{SITENAME}}, zuug [[{{MediaWiki:helppage}}|{{int:help}}]].',
+'searchresulttext'      => 'Veur mier informatie euver zeuke op {{SITENAME}}, zuug [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "Doe zòchs veur '''[[:$1]]'''",
 'searchsubtitleinvalid' => 'Voor zoekopdracht "$1"',
 'noexactmatch'          => "'''d'r Bestuit geine pazjena mit ongerwerp  $1.''' Doe kins 'm [[:$1|aanmake]].",
@@ -779,10 +779,10 @@ Neet geselecteerde gruup waere neet gewiezig. Deselecteer \'ne groep mit "Ctrl +
 'uploadtext'                  => "Gebroek 't óngersjtaonde formuleer óm besjtande op te laje. Óm ierder opgelaje besjtande te bekieke of te zeuke, gank nao de [[Special:Imagelist|lies van opgelaje besjtande]]. Uploads en verwiederinge waere ouch biegehauwte in 't [[Special:Log/upload|uploadlogbook]]. 
 
 Gebroek óm 'n plaetje of 'n besjtand in 'n pazjena op te numme 'ne link in de vörm:
-* '''<nowiki>[[</nowiki>{{ns:Image}}<nowiki>:Besjtand.jpg]]</nowiki>'''
-* '''<nowiki>[[</nowiki>{{ns:Image}}<nowiki>:Besjtand.png|alternatief teks]]</nowiki>'''
+* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Besjtand.jpg]]</nowiki>'''
+* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Besjtand.png|alternatief teks]]</nowiki>'''
 of veur mediabesjtande:
-* '''<nowiki>[[</nowiki>{{ns:Media}}<nowiki>:Besjtand.ogg]]</nowiki>'''",
+* '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:Besjtand.ogg]]</nowiki>'''",
 'uploadlog'                   => 'uploadlogbook',
 'uploadlogpage'               => 'Uploadlogbook',
 'uploadlogpagetext'           => 'Hieonger de lies mit de meist recent ge-uploade besjtande. Alle tiede zunt servertiede (UTC).',
@@ -808,7 +808,7 @@ of veur mediabesjtande:
 Naam van 't geüploade bestand: <strong><tt>$1</tt></strong><br />
 Naam van 't bestaonde bestand: <strong><tt>$2</tt></strong><br />
 Lèver 'ne angere naam te keze.",
-'fileexists-thumb'            => "'''<center>Bestaonde afbeilding</center>'''",
+'fileexists-thumb'            => "<center>'''Bestaonde afbeilding'''</center>",
 'fileexists-thumbnail-yes'    => "'t Liek 'n afbeilding van 'n verkleinde grootte te zeen <i>(thumbnail)</i>. Lèver 't bestand <strong><tt>$1</tt></strong> te controlere.<br />
 Es 't gecontroleerde bestand dezelfde afbeilding van oorspronkelike grootte is, is 't neet noodzakelik 'ne extra thumbnail te uploade.",
 'file-thumbnail-no'           => "De bestandsnaam begint met <strong><tt>$1</tt></strong>. 't Liek 'n verkleinde afbeelding te zeen <i>(thumbnail)</i>. Esse deze afbeelding in volledige resolutie höbs, upload dae afbeelding dan. Wiezig anges estebleef de bestandsnaam.",
@@ -927,6 +927,10 @@ Lèver zeker te zeen detse gesjik bös om door te gaon met 't uploade van dit be
 'unusedtemplatestext' => 'Deze pagina guf alle pagina\'s weer in de naamruumde sjabloon die op gein inkele pagina gebroek waere. Vergaet neet de "Links nao deze pagina" te controlere veures dit sjabloon te wösse.',
 'unusedtemplateswlh'  => 'anger links',
 
+# Random page
+'randompage'         => 'Willekäörige pazjena',
+'randompage-nopages' => "d'r zeen gein pagina's in deze naamruumde.",
+
 # Random redirect
 'randomredirect'         => 'Willekäörige redirect',
 'randomredirect-nopages' => "d'r zeen gein redirects in deze naamruumde.",
@@ -991,8 +995,6 @@ Op eder raegel vings te de ierste redirectpazjena, de twiede redirectpazjena en 
 'mostrevisions'           => 'Artikele mit de meiste bewirkinge',
 'allpages'                => "Alle pazjena's",
 'prefixindex'             => 'Indèks dèr veurveugsele',
-'randompage'              => 'Willekäörige pazjena',
-'randompage-nopages'      => "d'r zeen gein pagina's in deze naamruumde.",
 'shortpages'              => 'Korte artikele',
 'longpages'               => 'Lang artikele',
 'deadendpages'            => "Doedloupende pazjena's",
@@ -1365,8 +1367,8 @@ Zuug de [[Special:Ipblocklist|lies van geblokkeerde IP-adresse]].',
 'block-log-flags-noautoblock' => 'autoblok ongedaon gemaak',
 'range_block_disabled'        => "De meugelikheid veur beheerders om 'ne groep IP-adresse te blokkere is oetgesjakeld.",
 'ipb_expiry_invalid'          => 'Ongeldig verloup.',
-'proxyblocker'                => 'Proxyblokker',
 'ipb_cant_unblock'            => 'Fout: Blokkadenummer $1 neet gevonje. Mesjiens is de blokkade al opgeheve.',
+'proxyblocker'                => 'Proxyblokker',
 'proxyblockreason'            => "Dien IP-adres is geblokkeerd ómdat 't 'n aope proxy is. Contacteer estebleef diene internet service provider of technische óngersjteuning en informeer ze euver dit serjeus veiligheidsprebleem.",
 'proxyblocksuccess'           => 'Klaor.',
 'sorbsreason'                 => 'Dien IP-adres is opgenaome in de DNS-blacklist es open proxyserver.',
@@ -1430,7 +1432,7 @@ De doeltitel "[[$1]]" besjteit al. Wils te dit artikel wisse óm ruumde te make 
 'allmessagesdefault'        => 'Obligaten teks',
 'allmessagescurrent'        => 'Hujige teks',
 'allmessagestext'           => "Dit is 'n lies van alle systeemberichte besjikbaar in de MediaWiki:-naamruumde.",
-'allmessagesnotsupportedDB' => 'special:Allmessages neet óngersjteundj ómdat wgUseDatabaseMessages oet (off) sjteit.',
+'allmessagesnotsupportedDB' => '{{ns:special}}:Allmessages neet óngersjteundj ómdat wgUseDatabaseMessages oet (off) sjteit.',
 'allmessagesfilter'         => 'Berich naamfilter:',
 'allmessagesmodified'       => 'Tuun allein gewiezigde systeemtekste',
 

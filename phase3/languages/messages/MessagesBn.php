@@ -1,8 +1,14 @@
 <?php
 /** Bengali (বাংলা)
-  *
-  * @addtogroup Language
-  */
+ *
+ * @addtogroup Language
+ *
+ * @author Bellayet
+ * @author Zaheen
+ * @author G - ג
+ * @author Siebrand
+ * @author Nike
+ */
 
 $namespaceNames = array(
 	NS_SPECIAL        => 'বিশেষ',
@@ -219,29 +225,29 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => '{{SITENAME}} বৃত্তান্ত',
-'aboutpage'         => '{{ns:project}}:বৃত্তান্ত',
+'aboutpage'         => 'Project:বৃত্তান্ত',
 'bugreports'        => 'ত্রুটি বিবরণী',
-'bugreportspage'    => '{{ns:project}}:ত্রুটি বিবরণী',
+'bugreportspage'    => 'Project:ত্রুটি বিবরণী',
 'copyright'         => '$1 এর আওতায় প্রাপ্য।',
 'copyrightpagename' => '{{SITENAME}} কপিরাইট',
 'copyrightpage'     => '{{ns:project}}:কপিরাইটসমূহ',
 'currentevents'     => 'সমসাময়িক ঘটনা',
-'currentevents-url' => 'সমসাময়িক ঘটনাসমূহ',
+'currentevents-url' => 'Project:সমসাময়িক ঘটনাসমূহ',
 'disclaimers'       => 'দাবিত্যাগ',
-'disclaimerpage'    => '{{ns:project}}:সাধারণ দাবিত্যাগ',
+'disclaimerpage'    => 'Project:সাধারণ দাবিত্যাগ',
 'edithelp'          => 'সম্পাদনা সহায়িকা',
-'edithelppage'      => '{{ns:project}}:কিভাবে একটি পাতা সম্পাদনা করবেন',
+'edithelppage'      => 'Help:কিভাবে একটি পাতা সম্পাদনা করবেন',
 'faq'               => 'সম্ভাব্য প্রশ্নসমূহ',
-'faqpage'           => '{{ns:project}}:সম্ভাব্য প্রশ্নসমূহ',
-'helppage'          => '{{ns:project}}:সহায়িকা',
+'faqpage'           => 'Project:সম্ভাব্য প্রশ্নসমূহ',
+'helppage'          => 'Help:সহায়িকা',
 'mainpage'          => 'প্রধান পাতা',
-'policy-url'        => '{{ns:project}}:নীতি',
+'policy-url'        => 'Project:নীতি',
 'portal'            => 'সম্প্রদায়ের প্রবেশদ্বার',
-'portal-url'        => '{{ns:project}}:সম্প্রদায়ের প্রবেশদ্বার',
+'portal-url'        => 'Project:সম্প্রদায়ের প্রবেশদ্বার',
 'privacy'           => 'গোপনীয়তার নীতি',
-'privacypage'       => '{{ns:project}}:গোপনীয়তার নীতি',
+'privacypage'       => 'Project:গোপনীয়তার নীতি',
 'sitesupport'       => 'দান করুন',
-'sitesupport-url'   => '{{ns:project}}:দান করুন',
+'sitesupport-url'   => 'Project:দান করুন',
 
 'badaccess'        => 'অনুমোদন ত্রুটি',
 'badaccess-group0' => 'আপনি যে কাজের জন্য অনুরোধ করেছেন, যে কাজটি সম্পন্ন করার অনুমতি নাই',
@@ -263,7 +269,7 @@ $messages = array(
 'hidetoc'                 => 'আড়ালে রাখো',
 'restorelink'             => '{{PLURAL:$1|একটি মুছে ফেলা সম্পাদনা|$1 মুছে ফেলা সম্পাদনাসমূহ}}',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'নিবন্ধ',
 'nstab-user'      => 'ব্যবহারকারীর পাতা',
 'nstab-media'     => 'মিডিয়া পাতা',
@@ -420,7 +426,7 @@ $1',
 'blockedtext'              => "আপনার ব্যবহারকারী নাম অথবা আইপি ঠিকানাকে $1 বাধা দিয়েছেন। 
 এর কারণ হিসেবে বলা হয়েছেঃ:<br />''$2''
 
-আপনি  $1 অথবা [[{{MediaWiki:grouppage-sysop}}|প্রশাসকদের]] মধ্যে অন্য কারো সাথে এই বাধাদান সংক্রান্ত বিষয়ে আলোচনা করতে পারেন।
+আপনি  $1 অথবা [[{{MediaWiki:Grouppage-sysop}}|প্রশাসকদের]] মধ্যে অন্য কারো সাথে এই বাধাদান সংক্রান্ত বিষয়ে আলোচনা করতে পারেন।
 
 বিশেষ দ্রস্টব্যঃ আপনার ই-মেইল ঠিকানা যদি [[Special:Preferences|আপনার পছন্দ তালিকাতে]] লিপিবদ্ধ করা না থাকে, তাহলে আপনি {{SITENAME}} হতে অন্য ব্যবহারকারীকে ই-মেইল করতে পারবেন না।
 
@@ -532,7 +538,7 @@ $1',
 
 # Search results
 'searchresults'         => 'অনুসন্ধানের ফলাফল',
-'searchresulttext'      => '{{SITENAME}} এ অনুসন্ধানের ব্যাপারে আরও তথ্যের জন্য [[{{MediaWiki:helppage}}|{{int:help}}]] দেখুন।',
+'searchresulttext'      => '{{SITENAME}} এ অনুসন্ধানের ব্যাপারে আরও তথ্যের জন্য [[{{MediaWiki:Helppage}}|{{int:help}}]] দেখুন।',
 'searchsubtitle'        => "আপনি অনুসন্ধান করেছেন '''[[:$1]]'''",
 'searchsubtitleinvalid' => "আপনি অনুসন্ধান করেছেন '''$1'''",
 'noexactmatch'          => "'''\"\$1\" শিরোনামের কোন পাতা নেই।''' আপনি [[:\$1|পাতাটি সৃষ্টি করতে পারেন]]।",
@@ -615,7 +621,7 @@ $1',
 'recentchanges'                     => 'সাম্প্রতিক পরিবর্তনসমূহ',
 'rcnote'                            => 'বিগত <strong>$2</strong> দিনে সংঘটিত <strong>$1</strong>টি পরিবর্তন নীচে দেখানো হল (যেখানে বর্তমান সময় ও তারিখ $3)।',
 'rcnotefrom'                        => '<b>$2</b>-এর পরে সংঘটিত পরিবর্তনগুলো নিচে দেখানো হল (<b>$1</b>টি)।',
-'rclistfrom'                        => '* $1-এর পর সংঘটিত নতুন পরিবর্তনগুলো দেখাও।<br />',
+'rclistfrom'                        => '$1-এর পর সংঘটিত নতুন পরিবর্তনগুলো দেখাও।',
 'rcshowhideminor'                   => 'অনুল্লেখ্য পরিবর্তনগুলো $1',
 'rcshowhidebots'                    => 'বটগুলো $1',
 'rcshowhideliu'                     => 'প্রবেশ করেছেন এমন ব্যবহারকারীদের $1',
@@ -683,6 +689,9 @@ $1',
 # MIME search
 'download' => 'ডাউনলোড',
 
+# Random page
+'randompage' => 'অজানা যেকোনো পাতা',
+
 # Statistics
 'statistics'             => 'পরিসংখ্যান',
 'sitestats'              => 'সাইট পরিসংখ্যান',
@@ -716,7 +725,6 @@ $1',
 'mostcategories'          => 'সবচেয়ে বেশী বিষয়শ্রেণী-সমৃদ্ধ নিবন্ধসমূহ',
 'mostrevisions'           => 'সবচেয়ে বেশী বার সম্পাদিত নিবন্ধসমূহ',
 'allpages'                => 'সব পাতা',
-'randompage'              => 'অজানা যেকোনো পাতা',
 'shortpages'              => 'সংক্ষিপ্ত পাতাসমূহ',
 'longpages'               => 'দীর্ঘ পাতাসমূহ',
 'deadendpages'            => 'যেসব পাতা থেকে কোনো সংযোগ নেই',
@@ -1151,8 +1159,8 @@ $1',
 'watchlistedit-raw-removed'   => '{{PLURAL:$1|1 শিরোনাম|$1 শিরোনামসমূহ}} মুছে ফেলা হয়েছে:',
 
 # Watchlist editing tools
-'watchlisttools-view'  => 'সম্পর্কিত পরিবর্তনসমূহ দেখুন',
-'watchlisttools-edit'  => 'নজর তালিকা দেখুন এবং সম্পাদনা করুন',
-'watchlisttools-raw'   => 'অশোধিত নজর তালিকা সম্পাদনা করো',
+'watchlisttools-view' => 'সম্পর্কিত পরিবর্তনসমূহ দেখুন',
+'watchlisttools-edit' => 'নজর তালিকা দেখুন এবং সম্পাদনা করুন',
+'watchlisttools-raw'  => 'অশোধিত নজর তালিকা সম্পাদনা করো',
 
 );

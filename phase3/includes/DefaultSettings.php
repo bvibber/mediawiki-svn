@@ -13,7 +13,7 @@
  * depends on it.
  *
  * Documentation is in the source and on:
- * http://www.mediawiki.org/wiki/Help:Configuration_settings
+ * http://www.mediawiki.org/wiki/Manual:Configuration_settings
  *
  */
 
@@ -594,7 +594,21 @@ $wgSharedDB = null;
 #   These and any other user-defined properties will be assigned to the mLBInfo member
 #   variable of the Database object.
 #
-# Leave at false to use the single-server variables above
+# Leave at false to use the single-server variables above. If you set this 
+# variable, the single-server variables will generally be ignored (except 
+# perhaps in some command-line scripts). 
+#
+# The first server listed in this array (with key 0) will be the master. The 
+# rest of the servers will be slaves. To prevent writes to your slaves due to 
+# accidental misconfiguration or MediaWiki bugs, set read_only=1 on all your 
+# slaves in my.cnf. You can set read_only mode at runtime using:
+#
+#     SET @@read_only=1;
+#
+# Since the effect of writing to a slave is so damaging and difficult to clean
+# up, we at Wikimedia set read_only=1 in my.cnf on all our DB servers, even 
+# our masters, and then set read_only=0 on masters at runtime. 
+#
 $wgDBservers		= false;
 
 /** How long to wait for a slave to catch up to the master */
@@ -792,6 +806,12 @@ $wgMsgCacheExpiry	= 86400;
  */
 $wgMaxMsgCacheEntrySize = 10000;
 
+/**
+ * Set to false if you are thorough system admin who always remembers to keep
+ * serialized files up to date to save few mtime calls.
+ */
+$wgCheckSerialized = true;
+
 # Whether to enable language variant conversion.
 $wgDisableLangConversion = false;
 
@@ -866,6 +886,8 @@ $wgShowIPinHeader	= true; # For non-logged in users
 $wgMaxNameChars		= 255;  # Maximum number of bytes in username
 $wgMaxSigChars      = 255;  # Maximum number of Unicode characters in signature
 $wgMaxArticleSize	= 2048; # Maximum article size in kilobytes
+
+$wgMaxPPNodeCount = 1000000;  # A complexity limit on template expansion
 
 $wgExtraSubtitle	= '';
 $wgSiteSupportPage	= ''; # A page where you users can receive donations
@@ -1055,6 +1077,8 @@ $wgGroupPermissions['bot'  ]['bot']             = true;
 $wgGroupPermissions['bot'  ]['autoconfirmed']   = true;
 $wgGroupPermissions['bot'  ]['nominornewtalk']  = true;
 $wgGroupPermissions['bot'  ]['autopatrol']      = true;
+$wgGroupPermissions['bot'  ]['suppressredirect'] = true;
+$wgGroupPermissions['bot'  ]['apihighlimits']   = true;
 
 // Most extra permission abilities go to this group
 $wgGroupPermissions['sysop']['block']           = true;
@@ -1080,6 +1104,10 @@ $wgGroupPermissions['sysop']['autoconfirmed']   = true;
 $wgGroupPermissions['sysop']['upload_by_url']   = true;
 $wgGroupPermissions['sysop']['ipblock-exempt']	= true;
 $wgGroupPermissions['sysop']['blockemail']      = true;
+$wgGroupPermissions['sysop']['markbotedits']	= true;
+$wgGroupPermissions['sysop']['suppressredirect'] = true;
+$wgGroupPermissions['sysop']['apihighlimits']   = true;
+#$wgGroupPermissions['sysop']['mergehistory']    = true;
 
 // Permission to change users' group assignments
 $wgGroupPermissions['bureaucrat']['userrights'] = true;
@@ -1332,6 +1360,11 @@ $wgInternalServer = $wgServer;
  * days
  */
 $wgSquidMaxage = 18000;
+
+/**
+ * Default maximum age for raw CSS/JS accesses
+ */
+$wgForcedRawSMaxage = 300;
 
 /**
  * List of proxy servers to purge on changes; default port is 80. Use IP addresses.
@@ -1855,7 +1888,13 @@ $wgAlwaysUseTidy = false;
 $wgTidyBin = 'tidy';
 $wgTidyConf = $IP.'/includes/tidy.conf';
 $wgTidyOpts = '';
-$wgTidyInternal = function_exists( 'tidy_load_config' );
+$wgTidyInternal = extension_loaded( 'tidy' );
+
+/**
+ * Put tidy warnings in HTML comments
+ * Only works for internal tidy.
+ */
+$wgDebugTidy = false;
 
 /** See list of skins and their symbolic names in languages/Language.php */
 $wgDefaultSkin = 'monobook';
@@ -1927,7 +1966,11 @@ $wgSkinExtensionFunctions = array();
  * Extension messages files
  * Associative array mapping extension name to the filename where messages can be found.
  * The file must create a variable called $messages.
- * When the messages are needed, the extension should call wfLoadMessagesFile()
+ * When the messages are needed, the extension should call wfLoadExtensionMessages().
+ *
+ * Example: 
+ *    $wgExtensionMessagesFiles['ConfirmEdit'] = dirname(__FILE__).'/ConfirmEdit.i18n.php';
+ *
  */
 $wgExtensionMessagesFiles = array();
 
@@ -2248,6 +2291,7 @@ $wgLogTypes = array( '',
 	'move',
 	'import',
 	'patrol',
+	'merge',
 );
 
 /**
@@ -2266,6 +2310,7 @@ $wgLogNames = array(
 	'move'    => 'movelogpage',
 	'import'  => 'importlogpage',
 	'patrol'  => 'patrol-log-page',
+	'merge'   => 'mergelog',
 );
 
 /**
@@ -2284,6 +2329,7 @@ $wgLogHeaders = array(
 	'move'    => 'movelogpagetext',
 	'import'  => 'importlogpagetext',
 	'patrol'  => 'patrol-log-header',
+	'merge'   => 'mergelogpagetext',
 );
 
 /**
@@ -2309,6 +2355,7 @@ $wgLogActions = array(
 	'move/move_redir'   => '1movedto2_redir',
 	'import/upload'     => 'import-logentry-upload',
 	'import/interwiki'  => 'import-logentry-interwiki',
+	'merge/merge'        => 'pagemerge-logentry',
 );
 
 /**
@@ -2758,3 +2805,19 @@ $wgDisableOutputCompression = false;
  */
 $wgSlaveLagWarning = 10;
 $wgSlaveLagCritical = 30;
+
+/**
+ * Parser configuration. Associative array with the following members:
+ *
+ *     class        The class name
+ * 
+ * The entire associative array will be passed through to the constructor as 
+ * the first parameter. Note that only Setup.php can use this variable -- 
+ * the configuration will change at runtime via $wgParser member functions, so 
+ * the contents of this variable will be out-of-date. The variable can only be 
+ * changed during LocalSettings.php, in particular, it can't be changed during 
+ * an extension setup function. 
+ */
+$wgParserConf = array( 
+	'class' => 'Parser',
+);

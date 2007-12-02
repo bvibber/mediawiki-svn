@@ -52,19 +52,11 @@ class Linker {
 	}
 
 	/** @todo document */
-	function getInternalLinkAttributes( $link, $text, $broken = false ) {
+	function getInternalLinkAttributes( $link, $text, $class='' ) {
 		$link = urldecode( $link );
 		$link = str_replace( '_', ' ', $link );
 		$link = htmlspecialchars( $link );
-
-		if( $broken == 'stub' ) {
-			$r = ' class="stub"';
-		} else if ( $broken == 'yes' ) {
-			$r = ' class="new"';
-		} else {
-			$r = '';
-		}
-
+		$r = ($class != '') ? ' class="' . htmlspecialchars( $class ) . '"' : '';
 		$r .= " title=\"{$link}\"";
 		return $r;
 	}
@@ -72,19 +64,32 @@ class Linker {
 	/**
 	 * @param $nt Title object.
 	 * @param $text String: FIXME
-	 * @param $broken Boolean: FIXME, default 'false'.
+	 * @param $class String: CSS class of the link, default ''.
 	 */
-	function getInternalLinkAttributesObj( &$nt, $text, $broken = false ) {
-		if( $broken == 'stub' ) {
-			$r = ' class="stub"';
-		} else if ( $broken == 'yes' ) {
-			$r = ' class="new"';
-		} else {
-			$r = '';
-		}
-
+	function getInternalLinkAttributesObj( &$nt, $text, $class='' ) {
+		$r = ($class != '') ? ' class="' . htmlspecialchars( $class ) . '"' : '';
 		$r .= ' title="' . $nt->getEscapedText() . '"';
 		return $r;
+	}
+
+	/**
+	 * Return the CSS colour of a known link
+	 *
+	 * @param mixed $s
+	 * @param integer $id 
+	 * @param integer $threshold
+	 */
+	function getLinkColour( $s, $threshold ) {
+		if( $threshold > 0 && $s!=false ) {
+			$colour = (	$s->page_len >= $threshold || 
+					$s->page_is_redirect ||
+					!Namespace::isContent( $s->page_namespace ) 
+			    ? '' : 'stub' );
+		}
+		else {
+			$colour = '';
+		}
+		return $colour;
 	}
 
 	/**
@@ -155,6 +160,8 @@ class Linker {
 	}
 
 	/**
+	 * @deprecated use makeColouredLinkObj
+	 * 
 	 * This function is a shortcut to makeStubLinkObj(Title::newFromText($title),...). Do not call
 	 * it if you already have a title object handy. See makeStubLinkObj for further documentation.
 	 * 
@@ -240,25 +247,19 @@ class Linker {
 			if ( 0 == $aid ) {
 				$retVal = $this->makeBrokenLinkObj( $nt, $text, $query, $trail, $prefix );
 			} else {
-				$stub = false;
+				$colour = '';
 				if ( $nt->isContentPage() ) {
 					$threshold = $wgUser->getOption('stubthreshold');
 					if ( $threshold > 0 ) {
 						$dbr = wfGetDB( DB_SLAVE );
 						$s = $dbr->selectRow(
 							array( 'page' ),
-							array( 'page_len',
-							       'page_is_redirect' ),
+							array( 'page_len', 'page_is_redirect', 'page_namespace' ),
 							array( 'page_id' => $aid ), __METHOD__ ) ;
-						$stub = ( $s !== false && !$s->page_is_redirect &&
-							  $s->page_len < $threshold );
+						$colour = $this->getLinkColour( $s, $threshold );
 					}
 				}
-				if ( $stub ) {
-					$retVal = $this->makeStubLinkObj( $nt, $text, $query, $trail, $prefix );
-				} else {
-					$retVal = $this->makeKnownLinkObj( $nt, $text, $query, $trail, $prefix );
-				}
+				$retVal = $this->makeColouredLinkObj( $nt, $colour, $text, $query, $trail, $prefix );
 			}
 			wfProfileOut( __METHOD__.'-immediate' );
 		}
@@ -345,7 +346,7 @@ class Linker {
 		if ( '' == $text ) {
 			$text = htmlspecialchars( $nt->getPrefixedText() );
 		}
-		$style = $this->getInternalLinkAttributesObj( $nt, $text, "yes" );
+		$style = $this->getInternalLinkAttributesObj( $nt, $text, 'new' );
 
 		list( $inside, $trail ) = Linker::splitTrail( $trail );
 		$s = "<a href=\"{$u}\"{$style}>{$prefix}{$text}{$inside}</a>{$trail}";
@@ -355,6 +356,8 @@ class Linker {
 	}
 
 	/**
+	 * @deprecated use makeColouredLinkObj
+	 * 
 	 * Make a brown link to a short article.
 	 * 
 	 * @param $title String: the text of the title
@@ -365,7 +368,25 @@ class Linker {
 	 *                      the end of the link.
 	 */
 	function makeStubLinkObj( $nt, $text = '', $query = '', $trail = '', $prefix = '' ) {
-		$style = $this->getInternalLinkAttributesObj( $nt, $text, 'stub' );
+		return $this->makeColouredLinkObj( $nt, 'stub', $text, $query, $trail, $prefix );
+	}
+
+	/**
+	 * Make a coloured link.
+	 * 
+	 * @param $title  String:  the text of the title
+	 * @param $colour Integer: colour of the link
+	 * @param $text   String:  link text
+	 * @param $query  String:  optional query part
+	 * @param $trail  String:  optional trail. Alphabetic characters at the start of this string will
+	 *                      be included in the link text. Other characters will be appended after
+	 *                      the end of the link.
+	 */
+	function makeColouredLinkObj( $nt, $colour, $text = '', $query = '', $trail = '', $prefix = '' ) {
+
+		if($colour != ''){
+			$style = $this->getInternalLinkAttributesObj( $nt, $text, $colour );
+		} else $style = '';
 		return $this->makeKnownLinkObj( $nt, $text, $query, $trail, $prefix, '', $style );
 	}
 
@@ -384,11 +405,8 @@ class Linker {
 	function makeSizeLinkObj( $size, $nt, $text = '', $query = '', $trail = '', $prefix = '' ) {
 		global $wgUser;
 		$threshold = intval( $wgUser->getOption( 'stubthreshold' ) );
-		if( $size < $threshold ) {
-			return $this->makeStubLinkObj( $nt, $text, $query, $trail, $prefix );
-		} else {
-			return $this->makeKnownLinkObj( $nt, $text, $query, $trail, $prefix );
-		}
+		$colour = ( $size < $threshold ) ? 'stub' : '';
+		return $this->makeColouredLinkObj( $nt, $colour, $text, $query, $trail, $prefix );
 	}
 
 	/** 
@@ -555,6 +573,15 @@ class Linker {
 			return $prefix.$this->makeThumbLink2( $title, $file, $fp, $hp ).$postfix;
 		}
 
+		if ( $file && isset( $fp['frameless'] ) ) {
+			$srcWidth = $file->getWidth( $page );
+			# For "frameless" option: do not present an image bigger than the source (for bitmap-style images)
+			# This is the same behaviour as the "thumb" option does it already.
+			if ( $srcWidth && !$file->mustRender() && $hp['width'] > $srcWidth ) {
+				$hp['width'] = $srcWidth;
+			}
+		}
+
 		if ( $file && $hp['width'] ) {
 			# Create a resized image, without the additional thumbnail features
 			$thumb = $file->transform( $hp );
@@ -700,7 +727,7 @@ class Linker {
 				if( $query != '' )
 					$q .= '&' . $query;
 				list( $inside, $trail ) = self::splitTrail( $trail );
-				$style = $this->getInternalLinkAttributesObj( $title, $text, 'yes' );
+				$style = $this->getInternalLinkAttributesObj( $title, $text, 'new' );
 				wfProfileOut( __METHOD__ );
 				return '<a href="' . $upload->escapeLocalUrl( $q ) . '"'
 					. $style . '>' . $prefix . $text . $inside . '</a>' . $trail;
@@ -1337,6 +1364,8 @@ class Linker {
 	 *   element (e.g., ' title="This does something [x]" accesskey="x"').
 	 */
 	public function tooltipAndAccesskey($name) {
+		$fname="Linker::tooltipAndAccesskey";
+		wfProfileIn($fname);
 		$out = '';
 
 		$tooltip = wfMsg('tooltip-'.$name);
@@ -1352,6 +1381,7 @@ class Linker {
 		} elseif ($out) {
 			$out .= '"';
 		}
+		wfProfileOut($fname);
 		return $out;
 	}
 
@@ -1376,7 +1406,3 @@ class Linker {
 		return $out;
 	}
 }
-
-
-
-

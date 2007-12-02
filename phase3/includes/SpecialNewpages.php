@@ -17,7 +17,7 @@ class NewPagesPage extends QueryPage {
 	var $hidebots;
 	var $defaults;
 		
-	function NewPagesPage( $namespace, $username, $hideliu, $hidepatrolled, $hidebots, $defaults) {
+	function NewPagesPage( $namespace=NS_MAIN, $username='', $hideliu=false, $hidepatrolled=false, $hidebots=false, $defaults=array()) {
 		$this->namespace = $namespace;
 		$this->username = $username;
 		$this->hideliu = $hideliu;
@@ -60,8 +60,8 @@ class NewPagesPage extends QueryPage {
 	}
 
 	function getSQL() {
-		global $wgUser, $wgUseNPPatrol;
-		$usepatrol = ( $wgUseNPPatrol ) ? 1 : 0;
+		global $wgUser, $wgUseNPPatrol, $wgUseRCPatrol;
+		$usepatrol = ( $wgUseNPPatrol || $wgUseRCPatrol ) ? 1 : 0;
 		$dbr = wfGetDB( DB_SLAVE );
 		list( $recentchanges, $page ) = $dbr->tableNamesN( 'recentchanges', 'page' );
 
@@ -133,8 +133,10 @@ class NewPagesPage extends QueryPage {
 	 * @return bool
 	 */
 	function patrollable( $result ) {
-		global $wgUser, $wgUseNPPatrol;
-		return $wgUseNPPatrol && $wgUser->isAllowed( 'patrol' ) && !$result->patrolled;
+		global $wgUser, $wgUseRCPatrol, $wgUseNPPatrol;
+		return ( $wgUseRCPatrol || $wgUseNPPatrol )
+			&& $wgUser->isAllowed( 'patrol' )
+			&& !$result->patrolled;
 	}
 
 	function feedItemDesc( $row ) {
@@ -155,7 +157,7 @@ class NewPagesPage extends QueryPage {
 	 * @return string
 	 */	
 	function getPageHeader() {
-		global $wgScript, $wgContLang, $wgGroupPermissions, $wgUser, $wgUseNPPatrol;
+		global $wgScript, $wgContLang, $wgGroupPermissions, $wgUser, $wgUseRCPatrol, $wgUseNPPatrol;
 		$align = $wgContLang->isRTL() ? 'left' : 'right';
 		$self = SpecialPage::getTitleFor( $this->getName() );
 
@@ -165,6 +167,7 @@ class NewPagesPage extends QueryPage {
 		$nondefaults = array();
 		wfAppendToArrayIfNotDefault( 'hidepatrolled', $this->hidepatrolled, $this->defaults, $nondefaults);
 		wfAppendToArrayIfNotDefault( 'hideliu', $this->hideliu, $this->defaults, $nondefaults);
+		wfAppendToArrayIfNotDefault( 'hidebots', $this->hidebots, $this->defaults, $nondefaults);
 		wfAppendToArrayIfNotDefault( 'namespace', $this->namespace, $this->defaults, $nondefaults);
 		wfAppendToArrayIfNotDefault( 'limit', $this->limit , $this->defaults, $nondefaults);
 		wfAppendToArrayIfNotDefault( 'offset', $this->offset , $this->defaults, $nondefaults);
@@ -179,7 +182,7 @@ class NewPagesPage extends QueryPage {
 		$links = array();
 		if( $wgGroupPermissions['*']['createpage'] == true )
 			$links[] = wfMsgHtml( 'rcshowhideliu', $liuLink );
-		if( $wgUseNPPatrol )
+		if( $wgUseNPPatrol || $wgUseRCPatrol )
 			$links[] = wfMsgHtml( 'rcshowhidepatr', $patrLink );
 		$links[] = wfMsgHtml( 'rcshowhidebots', $botsLink );
 		$hl = implode( ' | ', $links );
@@ -274,7 +277,7 @@ function wfSpecialNewpages($par, $specialPage) {
 			}
 		}
 	} else {
-		if( $ns = $wgRequest->getText( 'namespace', NS_MAIN ) )
+		if( $ns = $wgRequest->getInt( 'namespace', NS_MAIN ) )
 			$namespace = $ns;
 		if( $un = $wgRequest->getText( 'username' ) )
 			$username = $un;

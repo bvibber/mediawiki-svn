@@ -238,26 +238,26 @@ agus an [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Lámhleabhar ú
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Maidir le {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:Maidir leis',
+'aboutpage'         => 'Project:Maidir leis',
 'bugreports'        => 'Fabht-thuairiscí',
-'bugreportspage'    => '{{ns:project}}:Fabht-thuairiscí',
+'bugreportspage'    => 'Project:Fabht-thuairiscí',
 'copyright'         => 'Tá an t-ábhar le fáil faoin $1.',
 'copyrightpagename' => 'Cóipcheart {{GRAMMAR:genitive|{{SITENAME}}}}',
 'copyrightpage'     => '{{ns:project}}:Cóipchearta',
 'currentevents'     => 'Cursaí reatha',
-'currentevents-url' => 'Cursaí reatha',
+'currentevents-url' => 'Project:Cursaí reatha',
 'disclaimers'       => 'Séanadh',
-'disclaimerpage'    => '{{ns:project}}:Séanadh_ginearálta',
+'disclaimerpage'    => 'Project:Séanadh_ginearálta',
 'edithelp'          => 'Cabhair eagarthóireachta',
-'edithelppage'      => '{{ns:help}}:Eagarthóireacht',
+'edithelppage'      => 'Help:Eagarthóireacht',
 'faq'               => 'Ceisteanna Coiteanta',
-'faqpage'           => '{{ns:project}}:Ceisteanna_Coiteanta',
-'helppage'          => 'Cabhair:Clár_ábhair',
+'faqpage'           => 'Project:Ceisteanna_Coiteanta',
+'helppage'          => 'Help:Clár_ábhair',
 'mainpage'          => 'Príomhleathanach',
 'portal'            => 'Ionad pobail',
-'portal-url'        => '{{ns:project}}:Ionad pobail',
+'portal-url'        => 'Project:Ionad pobail',
 'sitesupport'       => 'Síntiúis',
-'sitesupport-url'   => '{{ns:project}}:Tacaíocht an tsuímh',
+'sitesupport-url'   => 'Project:Tacaíocht an tsuímh',
 
 'badaccess' => 'Earráid ceada',
 
@@ -457,7 +457,7 @@ Iontráil seoladh dea-fhormáidte le do thoil, nó glan an réimse sin.',
 'blockedtitle'           => 'Tá an úsáideoir seo faoi chosc',
 'blockedtext'            => 'Chuir $1 cosc ar d\'ainm úsáideora nó ar do sheoladh IP.
 Seo é an cúis a thugadh:<br />\'\'$2\'\'<p>Is féidir leat teagmháil a dhéanamh le $1 nó le ceann eile de na
-[[{{MediaWiki:grouppage-sysop}}|riarthóirí]] chun an cosc a phléigh.
+[[{{MediaWiki:Grouppage-sysop}}|riarthóirí]] chun an cosc a phléigh.
 
 Tabhair faoi deara nach bhfuil cead agat an gné "cuir ríomhphost chuig an úsáideoir seo" a úsáid
 mura bhfuil seoladh ríomhphoist bailí cláraithe i do [[Special:Preferences|shainroghanna úsáideora]].
@@ -476,7 +476,7 @@ isteach]] agus caithfidh go bhfuil an cead riachtanach agat.',
 'newarticle'             => '(Nua)',
 'newarticletext'         => "Lean tú nasc chuig leathanach a nach bhfuil ann fós.
 Chun an leathanach a chruthú, tosaigh ag clóscríobh san bosca anseo thíos
-(féach ar an [[{{MediaWiki:helppage}}|leathanach cabhrach]] chun a thuilleadh eolais a fháil).
+(féach ar an [[{{MediaWiki:Helppage}}|leathanach cabhrach]] chun a thuilleadh eolais a fháil).
 Má tháinig tú anseo as dearmad, brúigh an cnaipe '''ar ais''' ar do líonléitheoir.",
 'anontalkpagetext'       => "---- ''Is é seo an leathanach plé do úsáideoir gan ainm nach chruthaigh
 cuntas fós nó nach úsáideann a chuntas phéarsanta. Dá bhrí sin, caithfimid an seoladh IP uimhriúil a úsáid
@@ -559,7 +559,7 @@ Treoir: (rth) = difríocht ón leagan reatha, (rmh) = difríocht ón leagan roim
 
 # Search results
 'searchresults'         => 'Torthaí an chuardaigh',
-'searchresulttext'      => 'Féach ar [[{{MediaWiki:helppage}}|{{int:help}}]] chun a thuilleadh eolais a fháil maidir le cuardaigh {{GRAMMAR:genitive|{{SITENAME}}}}.',
+'searchresulttext'      => 'Féach ar [[{{MediaWiki:Helppage}}|{{int:help}}]] chun a thuilleadh eolais a fháil maidir le cuardaigh {{GRAMMAR:genitive|{{SITENAME}}}}.',
 'searchsubtitle'        => 'Don iarratas "[[:$1]]"',
 'searchsubtitleinvalid' => 'Don iarratas "$1"',
 'noexactmatch'          => 'Níl aon leathanach ann leis an teideal áirithe seo air. Tá cuardach á dhéanamh sa téacs iomlán...',
@@ -673,7 +673,7 @@ Ní bheidh aon athrú le grúpaí neamhroghnaithe. Is féidir leat grúpa a dír
 'uploadnologintext' => 'Ní mór duit [[Special:Userlogin|logáil isteach]] chun comhaid a huaslódáil.',
 'uploaderror'       => 'Earráid uaslódála',
 'uploadtext'        => "'''STOP!''' Sul má dhéanann tú uaslódáil anseo,
-bí cinnte an [[{{MediaWiki:policy-url}}|polasaí úsáide íomhá]] atá ag {{SITENAME}} a léamh agus géilleadh dó.
+bí cinnte an [[{{MediaWiki:Policy-url}}|polasaí úsáide íomhá]] atá ag {{SITENAME}} a léamh agus géilleadh dó.
 
 Má tá comhad ann cheana leis an ainm céanna atá tú ag tabhairt don chomhad nua, cuirfear an comhad nua
 in áit an sean-chomhaid gan fógra.
@@ -912,7 +912,7 @@ Chun do chuid socruithe a athrú maidir leis an liosta faire, teir go dtí
 {{fullurl:Special:Watchlist/edit}}
 
 Aiseolas agus a thuilleadh cabhrach:
-{{fullurl:{{MediaWiki:helppage}}}}',
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'         => 'Scrios an leathanach',
@@ -926,7 +926,7 @@ Aiseolas agus a thuilleadh cabhrach:
 'confirmdeletetext'  => 'Tá tú ar tí leathanach nó íomhá a scrios,
 chomh maith leis a chuid stair, ón bunachar sonraí.
 Cinntigh go mian leis an méid seo a dhéanamh, go dtuigeann tú na
-iarmhairtaí, agus go ndéanann tú é dar le [[{{MediaWiki:policy-url}}]].',
+iarmhairtaí, agus go ndéanann tú é dar le [[{{MediaWiki:Policy-url}}]].',
 'actioncomplete'     => 'Gníomh críochnaithe',
 'deletedtext'        => 'scriosadh "$1".
 Féach ar $2 chun cuntas na scriosiadh deireanacha a fháil.',
@@ -950,7 +950,7 @@ d'athúsáid duine eile eagrán níos luaí cheana féin.
 'revertpage'         => "D'athúsáideadh an athrú seo caite le $1",
 'protectlogpage'     => 'Cuntas_cosanta',
 'protectlogtext'     => 'Seo é liosta de glais a cuireadh ar / baineadh de leathanaigh.
-Féach ar [[{{ns:4}}:Leathanach glasáilte]] chun a thuilleadh eolais a fháil.',
+Féach ar [[{{ns:project}}:Leathanach glasáilte]] chun a thuilleadh eolais a fháil.',
 'protectedarticle'   => 'glasáladh "[[$1]]"',
 'unprotectedarticle' => 'díghlasáladh "[[$1]]"',
 'protectsub'         => '(Ag glasáil "$1")',
@@ -1006,7 +1006,7 @@ chun an gníomh seo a dhéanamh ar.',
 'blockiptext'          => 'Úsáid an foirm anseo thíos chun bealach scríofa a chosc ó
 seoladh IP nó ainm úsáideora áirithe.
 Is féidir leat an rud seo a dhéanamh amháin chun an chreachadóireacht a chosc, de réir
-mar a deirtear sa [[{{MediaWiki:policy-url}}|polasaí {{GRAMMAR:genitive|{{SITENAME}}}}]].
+mar a deirtear sa [[{{MediaWiki:Policy-url}}|polasaí {{GRAMMAR:genitive|{{SITENAME}}}}]].
 Líonaigh cúis áirithe anseo thíos (mar shampla, is féidir leat a luaigh
 leathanaigh áirithe a rinne an duine damáiste ar).',
 'ipaddress'            => 'Seoladh IP / ainm úsáideora',
@@ -1136,7 +1136,7 @@ air, nó is féidir leat é a coinniú do do chuid shiamsa féin.',
 # Namespace 8 related
 'allmessages'               => 'Teachtaireachtaí córais',
 'allmessagestext'           => 'Liosta is ea seo de theachtaireachtaí córais atá le fáil san ainmspás MediaWiki: .',
-'allmessagesnotsupportedDB' => 'Níl aon tacaíocht anseo do Speisialta:AllMessages dá bharr
+'allmessagesnotsupportedDB' => 'Níl aon tacaíocht anseo do {{ns:special}}:AllMessages dá bharr
 go bhfuil wgUseDatabaseMessages druidte.',
 
 # Thumbnails

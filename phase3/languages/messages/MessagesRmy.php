@@ -1,15 +1,15 @@
 <?php
-/**
- * Vlax Romany (Romani)
+/** Romani (Romani)
  *
  * @addtogroup Language
  *
  * @author Niklas Laxström
+ * @author G - ג
+ * @author Desiphral
+ * @author Siebrand
+ * @author Nike
  */
 
-/**
- * Use Romanian as default instead of English
- */
 $fallback = 'ro';
 
 $namespaceNames = array(
@@ -123,20 +123,20 @@ $messages = array(
 'aboutsite'         => 'Andar {{SITENAME}}',
 'aboutpage'         => 'Project:Andar',
 'copyright'         => 'Ander dino tar o $1.',
-'copyrightpage'     => 'Project:Autorenge xakaya (chachimata)',
+'copyrightpage'     => '{{ns:project}}:Autorenge xakaya (chachimata)',
 'currentevents'     => 'Nevimata',
-'currentevents-url' => '{{ns:project}}:Nevimata',
+'currentevents-url' => 'Project:Nevimata',
 'disclaimers'       => 'Termenurya',
-'disclaimerpage'    => '{{ns:project}}:Termenurya',
+'disclaimerpage'    => 'Project:Termenurya',
 'edithelp'          => 'Editisaripnasko zhutipen',
-'edithelppage'      => 'Project:Sar te editisares ek patrin',
-'helppage'          => '{{ns:help}}:Zhutipen',
+'edithelppage'      => 'Help:Sar te editisares ek patrin',
+'helppage'          => 'Help:Zhutipen',
 'mainpage'          => 'Sherutni patrin',
 'portal'            => 'Maladipnasko than',
 'portal-url'        => 'Project:Maladipnasko than',
 'privacy'           => 'Pativyako forovipen',
 'sitesupport'       => 'Denimata',
-'sitesupport-url'   => '{{ns:project}}:Denimata',
+'sitesupport-url'   => 'Project:Denimata',
 
 'retrievedfrom'   => 'Lino katar "$1"',
 'editsection'     => 'editisar',
@@ -145,7 +145,7 @@ $messages = array(
 'showtoc'         => 'dikh',
 'hidetoc'         => 'garav',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Lekh',
 'nstab-user'      => 'Jeneski patrin',
 'nstab-media'     => 'Mediya patrin',
@@ -236,7 +236,7 @@ Mishto si te jas kai {{SITENAME}} thai te paruves tiro lav sigo.',
 'accmailtext'        => "O nakhavipnasko lav andar '$1' bićhaldo ko $2.",
 'newarticle'         => '(Nevo)',
 'newarticletext'     => 'Avilyan kai ek patrin so na si.
-Te keres la, shai te shirdes (astares) te lekhaves ando telutno moxton (dikh [[{{MediaWiki:helppage}}|zhutipnaski patrin]] te janes buteder).
+Te keres la, shai te shirdes (astares) te lekhaves ando telutno moxton (dikh [[{{MediaWiki:Helppage}}|zhutipnaski patrin]] te janes buteder).
 Kana avilyan kathe doshatar, ja palpale.',
 'noarticletext'      => "Andi '''{{SITENAME}}''' nai ji akana ek lekh kadale anavesa.
 * Te shirdes (astares) te keres o lekh, ker klik  '''[{{fullurl:{{FULLPAGENAME}}|action=edit}} kathe]'''.",
@@ -360,6 +360,9 @@ Kana avilyan kathe doshatar, ja palpale.',
 'unusedtemplates'    => 'Bilabyarde sikavne',
 'unusedtemplateswlh' => 'aver phandimata',
 
+# Random page
+'randompage' => 'Ekh patrin savigodi',
+
 # Statistics
 'statistics'    => 'Beshimata',
 'sitestats'     => 'Site-ske beshimata',
@@ -369,7 +372,6 @@ Mashkar lende <b>$2</b> si administratorurya (dikh $3).',
 # Miscellaneous special pages
 'wantedpages'  => 'Kamle pajine',
 'allpages'     => 'Savore patrya',
-'randompage'   => 'Ekh patrin savigodi',
 'shortpages'   => 'Xarne patrya',
 'deadendpages' => 'Biphandimatenge patrya',
 'listusers'    => 'Jenengo patrinipen',

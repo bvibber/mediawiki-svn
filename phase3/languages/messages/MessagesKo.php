@@ -236,13 +236,13 @@ $messages = array(
 'bugreportspage'    => 'Project:버그 신고',
 'copyright'         => '문서는 $1 저작권 하에 있습니다.',
 'copyrightpagename' => '{{SITENAME}} 저작권',
-'copyrightpage'     => 'Project:저작권',
+'copyrightpage'     => '{{ns:project}}:저작권',
 'currentevents'     => '요즘 화제',
-'currentevents-url' => '요즘 화제',
+'currentevents-url' => 'Project:요즘 화제',
 'disclaimers'       => '면책 조항',
 'disclaimerpage'    => 'Project:면책 조항',
 'edithelp'          => '편집 도움말',
-'edithelppage'      => 'Project:문서 편집 도움말',
+'edithelppage'      => 'Help:문서 편집 도움말',
 'helppage'          => 'Help:목차',
 'mainpage'          => '대문',
 'policy-url'        => 'Project:정책',
@@ -476,7 +476,7 @@ $2',
 * 차단이 만료되는 시간: $6
 * 차단된 사용자: $7
 
-$1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 대해 연락할 수 있습니다. [[Special:Preferences|계정 환경 설정]]에 올바른 이메일 주소가 있어야만 \'이메일 보내기\' 기능을 사용할 수 있습니다. 당신의 현재 IP 주소는 $3이고, 차단 ID는 #$5입니다. 이메일을 보낼 때에 이 주소를 같이 알려주세요.',
+$1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 대해 연락할 수 있습니다. [[Special:Preferences|계정 환경 설정]]에 올바른 이메일 주소가 있어야만 \'이메일 보내기\' 기능을 사용할 수 있습니다. 당신의 현재 IP 주소는 $3이고, 차단 ID는 #$5입니다. 이메일을 보낼 때에 이 주소를 같이 알려주세요.',
 'autoblockedtext'           => "당신의 IP 주소는 $1이 차단한 사용자가 사용했던 IP이기 때문에, 자동으로 차단되었습니다. 차단된 이유는 다음과 같습니다:
 
 :$2
@@ -484,7 +484,7 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 * 차단이 시작된 시간: $8
 * 차단이 만료되는 시간: $6
 
-$1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 대해 연락할 수 있습니다.
+$1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 대해 연락할 수 있습니다.
 
 [[Special:Preferences|계정 환경 설정]]에 올바른 이메일 주소가 있어야만 '이메일 보내기' 기능을 사용할 수 있습니다. 또한 이메일 보내기 기능이 차단되어 있으면 이메일을 보낼 수 없습니다.
 
@@ -505,7 +505,7 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'accmailtitle'              => '암호를 보냈습니다.',
 'accmailtext'               => '‘$1’의 암호를 $2로 보냈습니다.',
 'newarticle'                => '(새 문서)',
-'newarticletext'            => "이 문서는 아직 만들어지지 않았습니다. 문서를 만들기 위해서는 아래의 상자에 내용을 입력하면 됩니다. (자세한 내용은 [[{{MediaWiki:helppage}}|도움말 문서]]를 읽어 주시기 바랍니다.) 만약 잘못 찾아온 문서라면 브라우저의 '''뒤로''' 버튼을 눌러 주세요.",
+'newarticletext'            => "이 문서는 아직 만들어지지 않았습니다. 문서를 만들기 위해서는 아래의 상자에 내용을 입력하면 됩니다. (자세한 내용은 [[{{MediaWiki:Helppage}}|도움말 문서]]를 읽어 주시기 바랍니다.) 만약 잘못 찾아온 문서라면 브라우저의 '''뒤로''' 버튼을 눌러 주세요.",
 'anontalkpagetext'          => '----
 여기는 계정에 로그인하지 않은 익명 사용자를 위한 토론 문서입니다. 익명 사용자의 사용자 이름은 IP 주소로 나오기 때문에, 한 IP 주소를 여러 명이 같이 쓰거나 유동 IP를 사용하는 경우 엉뚱한 사람에게 의견이 전달될 수 있습니다. 이러한 문제를 피하려면 [[Special:Userlogin|계정을 만들거나 로그인해 주시기 바랍니다]].',
 'noarticletext'             => '현재 문서는 비어 있습니다. 이 제목으로 [[Special:Search/{{PAGENAME}}|검색]]하거나 문서를 [{{fullurl:{{FULLPAGENAME}}|action=edit}} 편집]할 수 있습니다.',
@@ -713,9 +713,9 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'group-sysop-member'      => '관리자',
 'group-bureaucrat-member' => '뷰로크랫',
 
-'grouppage-bot'        => 'Project:봇',
-'grouppage-sysop'      => 'Project:관리자',
-'grouppage-bureaucrat' => 'Project:뷰로크랫',
+'grouppage-bot'        => '{{ns:project}}:봇',
+'grouppage-sysop'      => '{{ns:project}}:관리자',
+'grouppage-bureaucrat' => '{{ns:project}}:뷰로크랫',
 
 # User rights log
 'rightslog'      => '사용자 권한 기록',
@@ -789,7 +789,7 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 올리려는 파일 이름: <strong><tt>$1</tt></strong><br />
 존재하는 파일 이름: <strong><tt>$2</tt></strong><br />
 다른 이름으로 시도해 주세요.',
-'fileexists-thumb'            => "'''<center>존재하는 그림</center>'''",
+'fileexists-thumb'            => "<center>'''존재하는 그림'''</center>",
 'fileexists-forbidden'        => '같은 이름의 파일이 이미 있습니다. 뒤로 돌아가서 다른 이름으로 시도해 주시기 바랍니다. [[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => '같은 이름의 파일이 이미 공용 파일 저장소에 있습니다. 뒤로 돌아가서 다른 이름으로 시도해 주시기 바랍니다. [[Image:$1|thumb|center|$1]]',
 'successfulupload'            => '올리기 성공',
@@ -1075,7 +1075,7 @@ $NEWPAGE
 {{fullurl:{{ns:special}}:Watchlist/edit}}
 
 도움말:
-{{fullurl:{{MediaWiki:helppage}}}}',
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'                  => '문서 삭제하기',
@@ -1328,7 +1328,7 @@ $NEWPAGE
 'allmessagesdefault'        => '기본 내용',
 'allmessagescurrent'        => '현재 내용',
 'allmessagestext'           => 'MediaWiki 네임스페이스에 있는 모든 시스템 메시지의 목록입니다.',
-'allmessagesnotsupportedDB' => "'''\$wgUseDatabaseMessages'''가 해제되어 있어서 '''Special:Allmessages'''를 사용할 수 없습니다.",
+'allmessagesnotsupportedDB' => "'''\$wgUseDatabaseMessages'''가 해제되어 있어서 '''{{ns:special}}:Allmessages'''를 사용할 수 없습니다.",
 'allmessagesfilter'         => '다음 메시지만 보이기:',
 'allmessagesmodified'       => '변경된 것만 보여주기',
 

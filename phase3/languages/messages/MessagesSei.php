@@ -1,12 +1,13 @@
 <?php
-/**
-  * Seri (Cmique Itom)
-  *
-  * @addtogroup Language
-  *
-  * @author SeriCtam
-  * @author Ccaxjoj Iteja Z Iti Poop
-  */
+/** Cmique Itom (Cmique Itom)
+ *
+ * @addtogroup Language
+ *
+ * @author SeriCtam
+ * @author Ccaxjoj Iteja Z Iti Poop
+ * @author Teak
+ * @author Siebrand
+ */
 
 $messages = array(
 # User preference toggles
@@ -161,7 +162,7 @@ $messages = array(
 'protect'           => 'Protectom',
 'protect_change'    => 'Proteccion quiix',
 'protectthispage'   => 'Protectom jan páhina',
-'unprotect'         => 'Unprotectom',
+'unprotect'         => 'unprotectom',
 'unprotectthispage' => 'Unprotectom jan páhina',
 'newpage'           => 'Páhina quiih',
 'talkpage'          => 'Czaxö jan páhina',
@@ -193,29 +194,29 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => '{{SITENAME}} mii',
-'aboutpage'         => '{{ns:project}}:Miilà',
+'aboutpage'         => 'Project:Miilà',
 'bugreports'        => 'Iitómde bug',
-'bugreportspage'    => '{{ns:project}}:Iitómde bug',
+'bugreportspage'    => 'Project:Iitómde bug',
 'copyright'         => 'Contentua coitáamb $1 tan.',
 'copyrightpagename' => 'Copyright {{SITENAME}}',
 'copyrightpage'     => '{{ns:project}}:Copyrightám',
 'currentevents'     => 'Hualtezxes',
-'currentevents-url' => '{{ns:project}}:Hualtezxes',
+'currentevents-url' => 'Project:Hualtezxes',
 'disclaimers'       => 'Isój cacóomx',
-'disclaimerpage'    => '{{ns:project}}:Isoj cacóomx geniiraloj',
+'disclaimerpage'    => 'Project:Isoj cacóomx geniiraloj',
 'edithelp'          => 'Help ticpatlöx',
-'edithelppage'      => '{{ns:help}}:Ticpatlöx',
+'edithelppage'      => 'Help:Ticpatlöx',
 'faq'               => 'Cocmíiit cmaa',
-'faqpage'           => '{{ns:project}}:Cocmíiit cmaa',
-'helppage'          => '{{ns:help}}:Caálixötöj',
+'faqpage'           => 'Project:Cocmíiit cmaa',
+'helppage'          => 'Help:Caálixötöj',
 'mainpage'          => 'Caálixötöj',
-'policy-url'        => '{{ns:project}}:Cáyun',
+'policy-url'        => 'Project:Cáyun',
 'portal'            => 'Portalde ctám',
-'portal-url'        => '{{ns:project}}:Portalde ctám',
+'portal-url'        => 'Project:Portalde ctám',
 'privacy'           => 'Cáyunde privacy',
-'privacypage'       => '{{ns:project}}:Cáyunde privacy',
+'privacypage'       => 'Project:Cáyunde privacy',
 'sitesupport'       => 'Donación',
-'sitesupport-url'   => '{{ns:project}}:Donación',
+'sitesupport-url'   => 'Project:Donación',
 
 'badaccess'        => 'Römjde permicion',
 'badaccess-group0' => 'Menepermicion executan accion z hecocmíiit.',
@@ -248,7 +249,7 @@ $messages = array(
 'page-rss-feed'           => '"$1" Fiiytde RSS',
 'page-atom-feed'          => '"$1" Fiiytde Atom',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Páhina',
 'nstab-user'      => 'Caitom páhina',
 'nstab-media'     => 'Media páhina',
@@ -264,7 +265,7 @@ $messages = array(
 'nosuchaction'      => "Ne'dáár accion",
 'nosuchactiontext'  => 'Accion apualte URLsan z coccebj nepualat wiki zo san',
 'nosuchspecialpage' => "Ne'dáár páhina extrava",
-'nospecialpagetext' => "'''<big>Meccan páhina extrava invalida.</big>'''
+'nospecialpagetext' => "<big>'''Meccan páhina extrava invalida.'''</big>
 
 Meccan páhina extrava valide pac [[Special:Specialpages]] iti.",
 
@@ -469,7 +470,7 @@ Block zo expondal $1. Rasonna zo coccebj: ''$2''.
 * Xanzo block zo: $6
 * Jonzicuatl blockam zo: $7
 
-Me contactam $1 jöx pac [[{{MediaWiki:grouppage-sysop}}|sysop]] discussom iti block zo.
+Me contactam $1 jöx pac [[{{MediaWiki:Grouppage-sysop}}|sysop]] discussom iti block zo.
 Me nenusor e-iitom päzxo hab' adressade e-iitom validom coccebj [[Special:Preferences|mequáatlaác]] ö'me neblockomde e-iitom.
 Me adressa IP coccebj $3 ö ID block z coccebj #$5. Includam 1 jöx 2 pac querinám iti.",
 'autoblockedtext'           => "Menadressade IP coccebj blocköx auto. Zo coccebj usadad diijömde caitom miii, jan coccebj blocköxde $1.
@@ -480,7 +481,7 @@ Rasonna zo coccebj:
 * Start block zo: $8
 * Xanzo block zo: $6
 
-Me contactam $1 jöx pac [[{{MediaWiki:grouppage-sysop}}|sysop]] discussom iti block zo.
+Me contactam $1 jöx pac [[{{MediaWiki:Grouppage-sysop}}|sysop]] discussom iti block zo.
 
 Me nenusor e-iitom päzxo hab' adressade e-iitom validom coccebj [[Special:Preferences|mequáatlaác]] ö'me neblockomde e-iitom.
 
@@ -505,7 +506,7 @@ Me IDde block coccebj $5. Includam 1 jöx 2 pac querinám iti.",
 'newarticle'                => '(Quiih)',
 'newarticletext'            => 'Meclickom linkamde páhina tazo necoccebj zo.
 Huants createnom jan páhina, startom type mii box !-cmaa iti
-([[{{MediaWiki:helppage}}|páhinade helpom]] zo viside plus informacion).
+([[{{MediaWiki:Helppage}}|páhinade helpom]] zo viside plus informacion).
 Me coccebj römjasi poop, clickom meback-buttonde browser coccebj perfectua.',
 'anontalkpagetext'          => "----''Jan coccebj czaxö zode caitomde IDde adressade IP. Isój necoccebj caápo. Jan coccebj rae'de usadadde adressade IP numerical identificacion 'prenisój. Plusöxde caitom pos-coccebj jan adressade IP. Me pos-coccebj anonimo ö commentua irrevelantua coccebj directomde me poop, [[Special:Userlogin|caápo-jande]] exitom confucion diijömde IP-caitóm mii.''",
 'noarticletext'             => 'Jan páhina necoccebj textua zo, me pos-coccebj [[Special:Search/{{PAGENAME}}|yahöx jan páhina]] diijömde páhinám iti jöx [{{fullurl:{{FULLPAGENAME}}|action=edit}} ticpatlöx jan páhina].',
@@ -632,7 +633,7 @@ Informacion: (curt) = quiíxde vercion currentua,
 
 # Search results
 'searchresults'         => 'Resuluámde yahöx',
-'searchresulttext'      => 'Plusöxde informaciónde yahöx {{SITENAME}} iti, jumpöx [[{{MediaWiki:helppage}}|{{int:help}}]].',
+'searchresulttext'      => 'Plusöxde informaciónde yahöx {{SITENAME}} iti, jumpöx [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "Me yahöx '''[[:$1]]''' iti",
 'searchsubtitleinvalid' => "Me yahöx '''$1''' iti",
 'noexactmatch'          => "'''Páhina zo \"\$1\" coccebj ne'dáár.''' Mecoccebj [[:\$1|hunpáhinámom]].",
@@ -837,6 +838,10 @@ Informacion: (curt) = quiíxde vercion currentua,
 # Unused templates
 'unusedtemplateswlh' => 'diijömde linkám',
 
+# Random page
+'randompage'         => 'Páhina cáulituniit',
+'randompage-nopages' => 'Zo necoccebj páhinám jan ipartuatl iti.',
+
 # Random redirect
 'randomredirect'         => 'Meniitomöx cáulituniit',
 'randomredirect-nopages' => 'Zo necoccebj meniitomöx jan ipartuatl iti.',
@@ -862,8 +867,6 @@ Informacion: (curt) = quiíxde vercion currentua,
 'nviews'              => '$1 {{PLURAL:$1|cohuatl|cohuátl}}',
 'allpages'            => 'Jöxde páhinám',
 'prefixindex'         => 'Indexde prefix',
-'randompage'          => 'Páhina cáulituniit',
-'randompage-nopages'  => 'Zo necoccebj páhinám jan ipartuatl iti.',
 'shortpages'          => 'Páhinám diibajlipám',
 'longpages'           => 'Páhinám bajlipám',
 'deadendpages'        => 'Páhinám huiquiix',

@@ -1,10 +1,12 @@
 <?php
-/** Sámegiella
- * This is the Sámegiella localisation file
+/** Northern Sami (Sámegiella)
  *
- * @author Skuolfi (September 2007)
- * 
  * @addtogroup Language
+ *
+ * @author Skuolfi
+ * @author G - ג
+ * @author Siebrand
+ * @author Teak
  */
 
 $messages = array(
@@ -183,22 +185,22 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Dieđut {{GRAMMAR:elative|{{SITENAME}}}}',
-'aboutpage'         => '{{ns:project}}:Dieđut',
+'aboutpage'         => 'Project:Dieđut',
 'bugreports'        => 'Váttisvuođat ja buorridanevttohusat',
-'bugreportspage'    => '{{ns:project}}:Váttisvuođat ja buorridanevttohusat',
+'bugreportspage'    => 'Project:Váttisvuođat ja buorridanevttohusat',
 'copyright'         => 'Sisdoalu sáhttá geavahit liseanssain $1.',
 'currentevents'     => 'Áigeguovdil',
-'currentevents-url' => '{{ns:project}}:Áigeguovdil',
+'currentevents-url' => 'Project:Áigeguovdil',
 'disclaimers'       => 'Friijavuohta vástideamis',
-'disclaimerpage'    => '{{ns:project}}:Friijavuohta vástideamis',
+'disclaimerpage'    => 'Project:Friijavuohta vástideamis',
 'edithelp'          => 'Rievdadanrávvagat',
-'edithelppage'      => '{{ns:help}}:Mo rievdadit siidduid',
-'helppage'          => '{{ns:help}}:Rávvagat',
+'edithelppage'      => 'Help:Mo rievdadit siidduid',
+'helppage'          => 'Help:Rávvagat',
 'mainpage'          => 'Váldosiidu',
 'portal'            => 'Gáffestohpu',
-'portal-url'        => '{{ns:project}}:Gáffestohpu',
+'portal-url'        => 'Project:Gáffestohpu',
 'sitesupport'       => 'Skeaŋkkat',
-'sitesupport-url'   => '{{ns:project}}:Skeaŋkkat',
+'sitesupport-url'   => 'Project:Skeaŋkkat',
 
 'versionrequired'     => 'MediaWikis gáibiduvvo unnimusta veršuvdna $1',
 'versionrequiredtext' => 'MediaWikis gáibiduvvo unnimusta veršuvdna $1 dán siiddu geavaheapmái. Geahča [[Special:Version|veršuvdna]]',
@@ -218,7 +220,7 @@ $messages = array(
 'viewdeleted'             => 'Čájet $1?',
 'restorelink'             => '{{PLURAL:$1|okta sihkojuvvon rievdadus|$1 sihkojuvvon rievdadusa}}',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Siidu',
 'nstab-user'      => 'Geavaheaddjisiidu',
 'nstab-media'     => 'Media',
@@ -255,7 +257,7 @@ $messages = array(
 'perfcached'           => 'Dieđut leat gaskabottosašmuittus eaige sihkarit vástit dálá hámi.',
 'perfcachedts'         => 'Čuovvovaš data lea buktojuvvon gaskabottosašmuittus ja dat lea maŋimusta beaividuvvon $1.',
 'querypage-no-updates' => 'Dán siiddu dieđut eai beaividuvvo.',
-'viewsource'           => 'Geahčča gálddu',
+'viewsource'           => 'Geahča gálddu',
 'viewsourcefor'        => 'siidui $1',
 'protectedpagetext'    => 'Dát siidu lea suodjaluvvon rievdadusain.',
 'viewsourcetext'       => 'Sáhtat geahčat ja kopieret dán siiddu gáldokoda:',
@@ -429,6 +431,7 @@ Du geavaheaddjidovddaldat lea dál anus. Ále vajáldahte rievdadit [[Special:Pr
 'previousrevision'    => '← Boarrásut veršuvdna',
 'nextrevision'        => 'Ođđasut veršuvdna →',
 'currentrevisionlink' => 'Dálá veršuvdna',
+'cur'                 => 'dálá',
 'next'                => 'čuovvovaš',
 'last'                => 'ovddit',
 'orig'                => 'originála',
@@ -628,7 +631,7 @@ $1 | $2',
 'filetype-missing'   => 'Fiillas vailui fiilageažus – ovdamearkkan <tt>.jpg</tt>.',
 'large-file'         => 'Fiilla max. sturrodat lea $1. Fiila man lasihit lea $2.',
 'largefileserver'    => 'Dát fiila lea menddo stuoris.',
-'fileexists-thumb'   => "'''<center>Dálá govva</center>'''",
+'fileexists-thumb'   => "<center>'''Dálá govva'''</center>",
 'successfulupload'   => 'Lasiheapmi lihkosmuvai',
 'uploadwarning'      => 'Lasihanvaruhus',
 'savefile'           => 'Vurke',
@@ -731,6 +734,10 @@ $1 | $2',
 'unusedtemplatestext' => 'Dás lea listu mállevuođuin, mat eai leat geavahuvvon ovttage siiddus. Muite dárkistit leago mállevuođđu das fuolatkeahttá anus.',
 'unusedtemplateswlh'  => 'eará liŋkkat',
 
+# Random page
+'randompage'         => 'Summal siidu',
+'randompage-nopages' => 'Dán nammagomuvuođas eai leat siiddut.',
+
 # Random redirect
 'randomredirect'         => 'Summal ođđasitstivren',
 'randomredirect-nopages' => 'Dán nammagomuvuođas eai leat ođđasitstivremat.',
@@ -782,8 +789,6 @@ $1 | $2',
 'mostimages'              => 'Govat, maidda lea čujuhuvvon dávjemus',
 'mostrevisions'           => 'Siiddut, mat leat rievdáduvvon eanemustá',
 'allpages'                => 'Buot siiddut',
-'randompage'              => 'Summal siidu',
-'randompage-nopages'      => 'Dán nammagomuvuođas eai leat siiddut.',
 'shortpages'              => 'Oanehis siiddut',
 'longpages'               => 'Guhkes siiddut',
 'deadendpages'            => 'Siiddut, main eai leat liŋkkat',
@@ -803,6 +808,8 @@ $1 | $2',
 'movethispage'            => 'Sirdde dán siiddu',
 'unusedimagestext'        => 'Fuomaš, ahte eará neahttasiiddut sáhtet čujuhit fiilii njuolgga URL-čujuhusain. Dalle fiila soaitá leat dán listtus, vaikko dat leage anus.',
 'unusedcategoriestext'    => 'Dát luohkát dihttot, muhto dat eai geavahuvvo.',
+'notargettitle'           => 'Ii mearri',
+'notargettext'            => 'It leat meroštallan mearresiiddu dahje -geavaheaddji, masa dahku laktása.',
 
 # Book sources
 'booksources'               => 'Girjegálddut',
@@ -920,7 +927,7 @@ $1 | $2',
 'confirmdelete'               => 'Sihkaraste sihkkuma',
 'deletesub'                   => 'Siiddu $1 sihkon',
 'historywarning'              => 'Siiddu, man aiggot sihkut, lea rievdaduvvon dávjit go oktii:',
-'confirmdeletetext'           => 'Leat sihkumin siiddu dahje fiilla ja buot dan historjjá. Ádde dagu váikkuhsaid ja sihko {{GRAMMAR:genitive|{{SITENAME}}}} [[{{MediaWiki:policy-url}}|geavahaid]] mielde.',
+'confirmdeletetext'           => 'Leat sihkumin siiddu dahje fiilla ja buot dan historjjá. Ádde dagu váikkuhsaid ja sihko {{GRAMMAR:genitive|{{SITENAME}}}} [[{{MediaWiki:Policy-url}}|geavahaid]] mielde.',
 'actioncomplete'              => 'Doaibma lea dahkkon',
 'deletedtext'                 => "'''[[Special:Undelete/$1|$1]]''' lea sihkojuvvon. Siiddus $2 lea listu maŋimus sihkomiin.",
 'deletedarticle'              => 'sihkoi siiddu $1',
@@ -1016,8 +1023,6 @@ $1 | $2',
 # What links here
 'whatlinkshere'       => 'Siiddut mat čujuhit deikke',
 'whatlinkshere-title' => 'Siiddut mat čujuhit $1',
-'notargettitle'       => 'Ii mearri',
-'notargettext'        => 'It leat meroštallan mearresiiddu dahje -geavaheaddji, masa dahku laktása.',
 'linklistsub'         => 'Liŋkalistu',
 'linkshere'           => 'Čuovvovaš siidduin lea liŋka siidui <strong>[[:$1]]</strong>:',
 'nolinkshere'         => 'Siidui <strong>[[:$1]]</strong> eai leat liŋkkat.',
@@ -1107,6 +1112,9 @@ $1 | $2',
 
 # Thumbnails
 'filemissing' => 'Fiila váilo',
+
+# Special:Import
+'import-revision-count' => '$1 {{PLURAL:$1|veršuvdna|veršuvnna}}',
 
 # Import log
 'import-logentry-upload-detail' => '$1 veršuvdna/veršuvnna',
@@ -1334,7 +1342,7 @@ $1 | $2',
 'watchlistedit-raw-removed'  => '{{PLURAL:$1|Okta siidu|$1 siiddu}} sihkkojuvvui:',
 
 # Watchlist editing tools
-'watchlisttools-view'  => 'Čájet rievdadusaid',
-'watchlisttools-edit'  => 'Ođasmahte listtu',
+'watchlisttools-view' => 'Čájet rievdadusaid',
+'watchlisttools-edit' => 'Ođasmahte listtu',
 
 );

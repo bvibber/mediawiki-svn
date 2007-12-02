@@ -13,6 +13,7 @@
  * @author 555
  * @author Malafaya
  * @author G - ג
+ * @author SPQRobin
  */
 
 $namespaceNames = array(
@@ -173,8 +174,8 @@ $messages = array(
 'pagecategories'        => '{{PLURAL:$1|Categoria|Categorias}}',
 'category_header'       => 'Páginas na categoria "$1"',
 'subcategories'         => 'Subcategorias',
-'category-media-header' => 'Multimídia na categoria "$1"',
-'category-empty'        => "''Esta categoria de momento não possui nenhuma página de conteúdo ou ficheiro multimídia.''",
+'category-media-header' => 'Multimédia na categoria "$1"',
+'category-empty'        => "''Esta categoria de momento não possui nenhuma página de conteúdo ou ficheiro multimédia.''",
 
 'mainpagetext'      => "<big>'''MediaWiki instalado com sucesso.'''</big>",
 'mainpagedocfooter' => 'Consulte o [http://meta.wikimedia.org/wiki/Help:Contents Guia de Utilizadores] para informações acerca de como utilizar o software wiki.
@@ -260,27 +261,27 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Sobre',
-'aboutpage'         => '{{ns:project}}:Sobre',
+'aboutpage'         => 'Project:Sobre',
 'bugreports'        => 'Relatar bugs',
-'bugreportspage'    => '{{ns:project}}:Relatos_de_bugs',
+'bugreportspage'    => 'Project:Relatos_de_bugs',
 'copyright'         => 'Conteúdo disponível sob $1.',
-'copyrightpagename' => 'Direitos autorais da {{SITENAME}}',
+'copyrightpagename' => 'Direitos de autor de {{SITENAME}}',
 'copyrightpage'     => '{{ns:project}}:Direitos_de_autor',
 'currentevents'     => 'Eventos actuais',
-'currentevents-url' => 'Eventos actuais',
+'currentevents-url' => 'Project:Eventos actuais',
 'disclaimers'       => 'Alerta de Conteúdo',
-'disclaimerpage'    => '{{ns:project}}:Aviso_geral',
+'disclaimerpage'    => 'Project:Aviso_geral',
 'edithelp'          => 'Ajuda de edição',
-'edithelppage'      => 'Ajuda:Editar',
-'helppage'          => 'Ajuda:Conteúdos',
+'edithelppage'      => 'Help:Editar',
+'helppage'          => 'Help:Conteúdos',
 'mainpage'          => 'Página principal',
 'policy-url'        => 'Project:Políticas',
 'portal'            => 'Portal comunitário',
-'portal-url'        => '{{ns:project}}:Portal comunitário',
+'portal-url'        => 'Project:Portal comunitário',
 'privacy'           => 'Política de privacidade',
-'privacypage'       => '{{ns:project}}:Política_de_privacidade',
+'privacypage'       => 'Project:Política_de_privacidade',
 'sitesupport'       => 'Doações',
-'sitesupport-url'   => '{{ns:project}}:Apoio',
+'sitesupport-url'   => 'Project:Apoio',
 
 'badaccess'        => 'Erro de permissão',
 'badaccess-group0' => 'Você não está autorizado a executar a acção requisitada.',
@@ -306,8 +307,10 @@ $messages = array(
 'viewdeleted'             => 'Ver $1?',
 'restorelink'             => '{{PLURAL:$1|uma edição eliminada|$1 edições eliminadas}}',
 'feed-invalid'            => 'Tipo de subscrição feed inválido.',
+'site-rss-feed'           => 'Feed RSS $1',
+'site-atom-feed'          => 'Feed Atom $1',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Artigo',
 'nstab-user'      => 'Página de utilizador',
 'nstab-media'     => 'Mídia',
@@ -378,6 +381,7 @@ Function: $1<br />
 Query: $2',
 'viewsource'           => 'Ver código',
 'viewsourcefor'        => 'para $1',
+'actionthrottledtext'  => 'Como medida "anti-spam", está impedido de realizar esta operação demasiadas vezes num curto espaço de tempo, e já excedeu esse limite. Por favor, tente de novo dentro de alguns minutos.',
 'protectedpagetext'    => 'Esta página foi protegida contra novas edições.',
 'viewsourcetext'       => 'Você pode ver e copiar o código desta página:',
 'protectedinterface'   => 'Esta página fornece texto de interface ao software e encontra-se trancada para prevenir abusos.',
@@ -433,6 +437,7 @@ A sua conta foi criada. Não se esqueça de personalizar as suas [[{{ns:special}
 'prefs-help-realname'        => 'O fornecimento de seu Nome verdadeiro é opcional, mas, caso decida o revelar, este será utilizado para lhe dar crédito pelo seu trabalho.',
 'loginerror'                 => 'Erro de autenticação',
 'prefs-help-email'           => 'O fornecimento de um endereço de e-mail é opcional, mas permite que os utilizadores entrem em contacto consigo sem que tenha de lhes revelar o seu endereço de e-mail.',
+'prefs-help-email-required'  => 'O endereço de correio electrónico é requerido.',
 'nocookiesnew'               => 'A conta de utilizador foi criada, mas você não foi autenticado. {{SITENAME}} utiliza <i>cookies</i> para ligar os utilizadores às suas contas. Por favor, os active, depois autentique-se com o seu nome de utilizador e a sua palavra-chave.',
 'nocookieslogin'             => 'Você tem os <i>cookies</i> desactivados no seu navegador, e a {{SITENAME}} utiliza <i>cookies</i> para ligar os utilizadores às suas contas. Por favor os active e tente novamente.',
 'noname'                     => 'Você não colocou um nome de utilizador válido.',
@@ -470,6 +475,7 @@ $1 horas.',
 'invalidemailaddress'        => 'O endereço de correio electrónico não pode ser aceite devido a talvez possuír um formato inválido. Por favor, introduza um endereço bem formatado ou esvazie o campo.',
 'accountcreated'             => 'Conta criada',
 'accountcreatedtext'         => 'A conta de utilizador para $1 foi criada.',
+'createaccount-title'        => 'Criação de conta em {{SITENAME}}',
 'loginlanguagelabel'         => 'Idioma: $1',
 
 # Password reset dialog
@@ -530,7 +536,7 @@ O bloqueio foi realizado por $1. O motivo apresentado foi \'\'$2\'\'.
 * Expiração do bloqueio: $6
 * Destino do bloqueio: $7
 
-Você pode contactar $1 ou outro [[{{MediaWiki:grouppage-sysop}}|administrador]] para discutir sobre o bloqueio.
+Você pode contactar $1 ou outro [[{{MediaWiki:Grouppage-sysop}}|administrador]] para discutir sobre o bloqueio.
 
 Note que não poderá utilizar a funcionalidade "Contactar utilizador" se não possuir uma conta neste wiki ({{SITENAME}}) com um endereço de email válido indicado nas suas [[{{ns:special}}:Preferences|preferências de utilizador]] e se tiver sido bloqueado de utilizar tal recurso.
 
@@ -543,7 +549,7 @@ O motivo apresentado foi:
 * Início do bloqueio: $8
 * Expiração do bloqueio: $6
 
-Você pode contactar $1 ou outro [[{{MediaWiki:grouppage-sysop}}|administrador]] para discutir sobre o bloqueio.
+Você pode contactar $1 ou outro [[{{MediaWiki:Grouppage-sysop}}|administrador]] para discutir sobre o bloqueio.
 
 Note que não poderá utilizar a funcionalidade "Contactar utilizador" se não possuir uma conta neste wiki ({{SITENAME}}) com um endereço de email válido indicado nas suas [[{{ns:special}}:Preferences|preferências de utilizador]] e se tiver sido bloqueado de utilizar tal recurso.
 
@@ -568,7 +574,7 @@ Sua ID de bloqueio é $5. Por favor, inclua esse dado em qualquer tentativa de e
 'newarticle'                => '(Novo)',
 'newarticletext'            => "Você seguiu um link para uma página que ainda não existe. 
 Para criá-la, escreva o seu conteúdo na caixa abaixo
-(veja a [[{{MediaWiki:helppage}}|página de ajuda]] para mais detalhes).
+(veja a [[{{MediaWiki:Helppage}}|página de ajuda]] para mais detalhes).
 Se você chegou até aqui por engano, clique no botão '''voltar''' (ou ''back'') do seu navegador.",
 'anontalkpagetext'          => "----
 ''Esta é a página de discussão para um utilizador anónimo que ainda não criou uma conta ou que não a utiliza, de modo a que temos que utilizar o endereço de IP para identificá-lo(a). Um endereço de IP pode ser partilhado por vários utilizadores. Se é um utilizador anónimo e sente que comentários irrelevantes foram direccionados a você, por favor [[{{ns:special}}:Userlogin|crie uma conta ou autentique-se]] para evitar futuras confusões com outros utilizadores anónimos.''",
@@ -610,12 +616,12 @@ Você terá que mesclar suas modificações no texto existente.
 desactualizada desta página.
 Se salvá-la, todas as mudanças feitas a partir desta revisão serão perdidas.</strong>',
 'yourdiff'                  => 'Diferenças',
-'copyrightwarning'          => 'Por favor, note que todas as suas contributições em {{SITENAME}} são consideradas como lançadas nos termos da licença $2 (veja $1 para detalhes). Se você não deseja que o seu texto seja inexoravelmente editado e redistribuído de tal forma, não o envie.<br />
-Você está, ao mesmo tempo, garantindo a nós que isto é algo escrito por você mesmo ou algo copiado de alguma fonte de textos em domínio público ou similarmente de teor livre.
-<strong>NÃO ENVIE TRABALHO PROTEGIDO POR DIREITOS AUTORAIS SEM A DEVIDA PERMISSÃO!</strong>',
-'copyrightwarning2'         => 'Por favor, note que todas as suas contributições em {{SITENAME}} podem ser editadas, alteradas ou removidas por outros contribuidores. Se você não deseja que o seu texto seja inexoravelmente editado, não o envie.<br />
-Você está, ao mesmo tempo, garantindo a nós que isto é algo escrito por você mesmo ou algo copiado de alguma fonte de textos em domínio público ou similarmente de teor livre (veja $1 para detalhes).
-<strong>NÃO ENVIE TRABALHO PROTEGIDO POR DIREITOS AUTORAIS SEM A DEVIDA PERMISSÃO!</strong>',
+'copyrightwarning'          => 'Por favor, note que todas as suas contribuições em {{SITENAME}} são consideradas como lançadas nos termos da licença $2 (veja $1 para detalhes). Se não deseja que o seu texto seja inexoravelmente editado e redistribuído de tal forma, não o envie.<br />
+Você está, ao mesmo tempo, a garantir-nos que isto é algo escrito por si, ou algo copiado de uma fonte de textos em domínio público ou similarmente de teor livre.
+<strong>NÃO ENVIE TRABALHO PROTEGIDO POR DIREITOS DE AUTOR SEM A DEVIDA PERMISSÃO!</strong>',
+'copyrightwarning2'         => 'Por favor, note que todas as suas contribuições em {{SITENAME}} podem ser editadas, alteradas ou removidas por outros contribuidores. Se você não deseja que o seu texto seja inexoravelmente editado, não o envie.<br />
+Você está, ao mesmo tempo, a garantir-nos que isto é algo escrito por si, ou algo copiado de alguma fonte de textos em domínio público ou similarmente de teor livre (veja $1 para detalhes).
+<strong>NÃO ENVIE TRABALHO PROTEGIDO POR DIREITOS DE AUTOR SEM A DEVIDA PERMISSÃO!</strong>',
 'longpagewarning'           => '<strong>AVISO: Esta página possui $1 kilobytes; alguns 
 navegadores possuem problemas em editar páginas maiores que 32kb.
 Por favor, considere seccionar a página em secções de menor dimensão.</strong>',
@@ -729,7 +735,11 @@ Outros administradores nesta wiki continuarão a poder aceder ao conteúdo escon
 
 # Oversight log
 'oversightlog'    => 'Registo de edições ocultadas',
-'overlogpagetext' => 'É exibida a seguir uma listagem das deleções e bloqueios mais recentes envolvendo conteúdos ocultados por {{int:group-sysop}}. Veja a [[{{ns:special}}:Ipblocklist|lista de bloqueios]] para os bloqueios e banimentos atualmente vigentes.',
+'overlogpagetext' => 'É exibida a seguir uma listagem das deleções e bloqueios mais recentes envolvendo conteúdos ocultados por Administradores. Veja a [[{{ns:special}}:Ipblocklist|lista de bloqueios]] para os bloqueios e banimentos atualmente vigentes.',
+
+# History merging
+'mergehistory-box'     => 'Fundir revisões de duas páginas:',
+'mergehistory-success' => '$3 revisões de [[:$1|$1]] fundidas em [[:$2|$2]] com sucesso.',
 
 # Diffs
 'history-title'             => 'Histórico de edições de "$1"',
@@ -745,7 +755,7 @@ Outros administradores nesta wiki continuarão a poder aceder ao conteúdo escon
 
 # Search results
 'searchresults'         => 'Resultados de pesquisa',
-'searchresulttext'      => 'Para mais informações de como pesquisar na {{SITENAME}}, consulte [[{{MediaWiki:helppage}}|{{int:help}}]].',
+'searchresulttext'      => 'Para mais informações de como pesquisar na {{SITENAME}}, consulte [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => 'Você pesquisou por "[[:$1]]"',
 'searchsubtitleinvalid' => 'Você pesquisou por "$1"',
 'noexactmatch'          => "'''Não existe uma página com o título \"\$1\".''' Você pode [[:\$1|criar tal página]].",
@@ -911,7 +921,7 @@ Para incluír a imagem numa página, utilize o link na forma de
 'filename'                    => 'Nome do ficheiro',
 'filedesc'                    => 'Descrição do ficheiro',
 'fileuploadsummary'           => 'Sumário:',
-'filestatus'                  => 'Estado de direitos autorais',
+'filestatus'                  => 'Estado de direitos de autor',
 'filesource'                  => 'Fonte',
 'uploadedfiles'               => 'Ficheiros carregados',
 'ignorewarning'               => 'Ignorar aviso e salvar de qualquer forma.',
@@ -931,7 +941,7 @@ Para incluír a imagem numa página, utilize o link na forma de
 Nome do ficheiro que está sendo enviado: <strong><tt>$1</tt></strong><br />
 Nome do ficheiro existente: <strong><tt>$2</tt></strong><br />
 Por gentileza, escolha um nome diferente.',
-'fileexists-thumb'            => "'''<center>Imagem existente</center>'''",
+'fileexists-thumb'            => "<center>'''Imagem existente'''</center>",
 'fileexists-thumbnail-yes'    => 'O ficheiro aparenta ser uma imagem de tamanho reduzido (<i>miniatura</i>, ou <i>thumbnail)</i>. Por gentileza, verifique o ficheiro <strong><tt>$1</tt></strong>.<br />
 Se o ficheiro enviado é o mesmo do de tamanho original, não é necessário enviar uma versão de miniatura adicional.',
 'file-thumbnail-no'           => 'O nome do ficheiro começa com <strong><tt>$1</tt></strong>. Isso faz parecer se tratar de uma imagem de tamanho reduzido (<i>miniatura</i>, ou <i>thumbnail)</i>.
@@ -1044,8 +1054,12 @@ Por gentileza, se você tem acesso à imagem de tamanho completo, prefira envia-
 
 # Unused templates
 'unusedtemplates'     => 'Predefinições não utilizadas',
-'unusedtemplatestext' => 'Esta página lista todas as páginas no espaço nominal {{ns:10}} que não estão incluídas numa outra página. Lembre-se de verificar por outras ligações para as predefinições antes de as apagar.',
+'unusedtemplatestext' => 'Esta página lista todas as páginas no espaço nominal {{ns:template}} que não estão incluídas numa outra página. Lembre-se de verificar por outras ligações para as predefinições antes de as apagar.',
 'unusedtemplateswlh'  => 'outras ligações',
+
+# Random page
+'randompage'         => 'Página aleatória',
+'randompage-nopages' => 'Não há páginas neste espaço nominal.',
 
 # Random redirect
 'randomredirect'         => 'Redireccionamento aleatório',
@@ -1109,8 +1123,6 @@ O tamanho da [http://meta.wikimedia.org/wiki/Help:Job_queue fila de tarefas] é 
 'mostrevisions'           => 'Páginas de conteúdo com mais revisões',
 'allpages'                => 'Todas as páginas',
 'prefixindex'             => 'Índice de prefixo',
-'randompage'              => 'Página aleatória',
-'randompage-nopages'      => 'Não há páginas neste espaço nominal.',
 'shortpages'              => 'Páginas curtas',
 'longpages'               => 'Páginas longas',
 'deadendpages'            => 'Páginas sem saída',
@@ -1276,7 +1288,7 @@ Para alterar as suas preferências da lista de artigos vigiados, visite
 {{fullurl:Special:Watchlist/edit}}
 
 Contacto e assistência
-{{fullurl:{{MediaWiki:helppage}}}}',
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'                  => 'Eliminar página',
@@ -1289,7 +1301,7 @@ Contacto e assistência
 'deletesub'                   => '(Eliminando "$1")',
 'historywarning'              => 'Aviso: A página que está prestes a eliminar possui um histórico:',
 'confirmdeletetext'           => 'Encontra-se prestes a eliminar permanentemente uma página ou uma imagem e todo o seu histórico.
-Por favor, confirme que possui a intenção de fazer isto, que compreende as consequências e que encontra-se a fazer isto de acordo com as [[{{MediaWiki:policy-url}}|políticas]] do projecto.',
+Por favor, confirme que possui a intenção de fazer isto, que compreende as consequências e que encontra-se a fazer isto de acordo com as [[{{MediaWiki:Policy-url}}|políticas]] do projecto.',
 'actioncomplete'              => 'Acção completada',
 'deletedtext'                 => '"$1" foi eliminada.
 Consulte $2 para um registo de eliminações recentes.',
@@ -1413,8 +1425,8 @@ $1',
 
 'sp-contributions-newest'      => 'Mais recente',
 'sp-contributions-oldest'      => 'Mais antigo',
-'sp-contributions-newer'       => 'Novo $1',
-'sp-contributions-older'       => 'Antigo $1',
+'sp-contributions-newer'       => '$1 mais recentes',
+'sp-contributions-older'       => '$1 mais antigas',
 'sp-contributions-newbies'     => 'Pesquisar apenas nas contribuições de contas recentes',
 'sp-contributions-newbies-sub' => 'Para contas novas',
 'sp-contributions-blocklog'    => 'Registo de bloqueios',
@@ -1440,7 +1452,7 @@ $1',
 # Block/unblock
 'blockip'                     => 'Bloquear utilizador',
 'blockiptext'                 => 'Utilize o formulário abaixo para bloquear o acesso à escrita de um endereço específico de IP ou nome de utilizador.
-Isto só deve ser feito para prevenir vandalismo, e de acordo com a [[{{MediaWiki:policy-url}}|política]]. Preencha com um motivo específico a seguir (por exemplo, citando páginas que sofreram vandalismo).',
+Isto só deve ser feito para prevenir vandalismo, e de acordo com a [[{{MediaWiki:Policy-url}}|política]]. Preencha com um motivo específico a seguir (por exemplo, citando páginas que sofreram vandalismo).',
 'ipaddress'                   => 'Endereço de IP:',
 'ipadressorusername'          => 'Endereço de IP ou nome de utilizador:',
 'ipbexpiry'                   => 'Expiração:',
@@ -1466,7 +1478,7 @@ Isto só deve ser feito para prevenir vandalismo, e de acordo com a [[{{MediaWik
 'ipbhidename'                 => 'Ocultar utilizador/IP do registo de bloqueios, lista de bloqueios e lista de utilizadores',
 'badipaddress'                => 'Endereço de IP inválido',
 'blockipsuccesssub'           => 'Bloqueio bem sucedido',
-'blockipsuccesstext'          => '[[{{ns:Special}}:Contributions/$1|$1]] foi bloqueado.<br />Consulte a [[Special:Ipblocklist|lista de IPs bloqueados]] para rever os bloqueios.',
+'blockipsuccesstext'          => '[[{{ns:special}}:Contributions/$1|$1]] foi bloqueado.<br />Consulte a [[Special:Ipblocklist|lista de IPs bloqueados]] para rever os bloqueios.',
 'ipb-edit-dropdown'           => 'Editar motivos de bloqueio',
 'ipb-unblock-addr'            => 'Desbloquear $1',
 'ipb-unblock'                 => 'Desbloquear um utilizador ou endereço de IP',
@@ -1492,6 +1504,7 @@ Isto só deve ser feito para prevenir vandalismo, e de acordo com a [[{{MediaWik
 'ipblocklist-no-results'      => 'O endereço de IP ou nome de utilizador procurado não se encontra bloqueado.',
 'blocklink'                   => 'bloquear',
 'unblocklink'                 => 'desbloquear',
+'contribslink'                => 'contribs',
 'autoblocker'                 => 'Você foi automaticamente bloqueado, pois partilha um endereço de IP com "$1". O motivo apresentado foi: "$2".',
 'blocklogpage'                => 'Registo de bloqueio',
 'blocklogentry'               => '"[[$1]]" foi bloqueado com um tempo de expiração de $2 $3',
@@ -1504,9 +1517,11 @@ Isto só deve ser feito para prevenir vandalismo, e de acordo com a [[{{MediaWik
 'range_block_disabled'        => 'A funcionalidade de bloquear gamas de IPs encontra-se desactivada.',
 'ipb_expiry_invalid'          => 'Tempo de expiração inválido.',
 'ipb_already_blocked'         => '"$1" já encontra-se bloqueado',
-'ip_range_invalid'            => 'Gama de IPs inválida.',
-'proxyblocker'                => 'Bloqueador de proxy',
 'ipb_cant_unblock'            => 'Erro: Bloqueio com ID $1 não encontrado. Poderá já ter sido desbloqueado.',
+'ip_range_invalid'            => 'Gama de IPs inválida.',
+'blockme'                     => 'Bloquear-me',
+'proxyblocker'                => 'Bloqueador de proxy',
+'proxyblocker-disabled'       => 'Esta função está desabilitada.',
 'proxyblockreason'            => 'O seu endereço de IP foi bloqueado por ser um proxy público. Por favor contacte o seu fornecedor do serviço de Internet ou o apoio técnico e informe-os deste problema de segurança grave.',
 'proxyblocksuccess'           => 'Concluído.',
 'sorbsreason'                 => 'O seu endereço IP encontra-se listado como proxy aberto pela DNSBL utilizada por este sítio.',
@@ -1582,7 +1597,7 @@ A página de destino ("[[$1]]") já existe. Deseja eliminá-la de modo a poder m
 
 Para exportar páginas, introduza os títulos na caixa de texto abaixo, um título por linha, e seleccione se deseja todas as versões, com as linhas de histórico de edições, ou apenas a edição atual e informações apenas sobre a mais recente das edições.
 
-Se desejar, pode utilizar uma ligação, por exemplo [[{{ns:Special}}:Export/{{Mediawiki:mainpage}}]] para a [[{{Mediawiki:mainpage}}]].',
+Se desejar, pode utilizar uma ligação, por exemplo [[{{ns:special}}:Export/{{Mediawiki:mainpage}}]] para a [[{{Mediawiki:mainpage}}]].',
 'exportcuronly'     => 'Incluir apenas a revisão actual, não o histórico inteiro',
 'exportnohistory'   => "----
 '''Nota:''' a exportação do histórico completo das páginas através deste formulário foi desactivada devido a motivos de performance.",
@@ -1596,7 +1611,7 @@ Se desejar, pode utilizar uma ligação, por exemplo [[{{ns:Special}}:Export/{{M
 'allmessagesname'           => 'Nome',
 'allmessagesdefault'        => 'Texto padrão',
 'allmessagescurrent'        => 'Texto actual',
-'allmessagestext'           => 'Esta é uma lista de todas mensagens de sistema disponíveis no espaço nominal {{ns:8}}:.',
+'allmessagestext'           => 'Esta é uma lista de todas mensagens de sistema disponíveis no espaço nominal {{ns:mediawiki}}:.',
 'allmessagesnotsupportedDB' => '{{ns:special}}:Allmessages não pode ser utilizado devido ao wgUseDatabaseMessages estar desligado.',
 'allmessagesfilter'         => 'Filtro de nome de mensagem:',
 'allmessagesmodified'       => 'Mostrar apenas modificados',
@@ -1859,6 +1874,7 @@ Any subsequent links on the same line are considered to be exceptions, i.e. arti
 'exif-exposuretime-format'         => '$1 seg ($2)',
 'exif-fnumber'                     => 'Número F',
 'exif-exposureprogram'             => 'Programa de exposição',
+'exif-spectralsensitivity'         => 'Sensibilidade espectral',
 'exif-isospeedratings'             => 'Taxa de velocidade ISO',
 'exif-oecf'                        => 'Factor optoelectrónico de conversão.',
 'exif-shutterspeedvalue'           => 'Velocidade do obturador',
@@ -1867,6 +1883,7 @@ Any subsequent links on the same line are considered to be exceptions, i.e. arti
 'exif-exposurebiasvalue'           => 'Polarização de exposição',
 'exif-maxaperturevalue'            => 'Abertura máxima',
 'exif-subjectdistance'             => 'Distância do sujeito',
+'exif-meteringmode'                => 'Modo de medição',
 'exif-lightsource'                 => 'Fonte de luz',
 'exif-focallength'                 => 'Comprimento de foco da lente',
 'exif-subjectarea'                 => 'Área de sujeito',
@@ -1879,6 +1896,7 @@ Any subsequent links on the same line are considered to be exceptions, i.e. arti
 'exif-cfapattern'                  => 'padrão CFA',
 'exif-exposuremode'                => 'Modo de exposição',
 'exif-digitalzoomratio'            => 'Proporção de zoom digital',
+'exif-focallengthin35mmfilm'       => 'Distância focal em filme de 35 mm',
 'exif-scenecapturetype'            => 'Tipo de captura de cena',
 'exif-gaincontrol'                 => 'Controlo de cena',
 'exif-contrast'                    => 'Contraste',
@@ -1925,6 +1943,10 @@ Any subsequent links on the same line are considered to be exceptions, i.e. arti
 'exif-componentsconfiguration-0' => 'não existe',
 
 'exif-exposureprogram-0' => 'Não definido',
+'exif-exposureprogram-2' => 'Programa normal',
+'exif-exposureprogram-3' => 'Prioridade de abertura',
+'exif-exposureprogram-4' => 'Prioridade de obturador',
+'exif-exposureprogram-5' => 'Programa criativo (com tendência para profundidade de campo)',
 'exif-exposureprogram-6' => 'Programa de movimento (tende a velocidade de disparo mais rápida)',
 'exif-exposureprogram-7' => 'Modo de retrato (para fotos em <i>closeup</i> com o fundo fora de foco)',
 'exif-exposureprogram-8' => 'Modo de paisagem (para fotos de paisagem com o fundo em foco)',
@@ -1936,6 +1958,7 @@ Any subsequent links on the same line are considered to be exceptions, i.e. arti
 'exif-lightsource-0'   => 'Desconhecida',
 'exif-lightsource-1'   => 'Luz do dia',
 'exif-lightsource-2'   => 'Fluorescente',
+'exif-lightsource-3'   => 'Tungsténio (luz incandescente)',
 'exif-lightsource-10'  => 'Tempo nublado',
 'exif-lightsource-255' => 'Outra fonte de luz',
 

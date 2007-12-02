@@ -7,6 +7,8 @@ ini_set('unserialize_callback_func', '__autoload' );
 function __autoload($className) {
 	global $wgAutoloadClasses;
 
+	# Locations of core classes
+	# Extension classes are specified with $wgAutoloadClasses
 	static $localClasses = array(
 		# Includes
 		'AjaxDispatcher' => 'includes/AjaxDispatcher.php',
@@ -55,6 +57,8 @@ function __autoload($className) {
 		'Diff' => 'includes/DifferenceEngine.php',
 		'MappedDiff' => 'includes/DifferenceEngine.php',
 		'DiffFormatter' => 'includes/DifferenceEngine.php',
+		'UnifiedDiffFormatter' => 'includes/DifferenceEngine.php',
+		'ArrayDiffFormatter' => 'includes/DifferenceEngine.php',
 		'DjVuImage' => 'includes/DjVuImage.php',
 		'_HWLDF_WordAccumulator' => 'includes/DifferenceEngine.php',
 		'WordLevelDiff' => 'includes/DifferenceEngine.php',
@@ -133,9 +137,11 @@ function __autoload($className) {
 		'ReverseChronologicalPager' => 'includes/Pager.php',
 		'TablePager' => 'includes/Pager.php',
 		'Parser' => 'includes/Parser.php',
+		'Parser_OldPP' => 'includes/Parser_OldPP.php',
+		'Parser_DiffTest' => 'includes/Parser_DiffTest.php',
+		'ParserCache' => 'includes/ParserCache.php',
 		'ParserOutput' => 'includes/ParserOutput.php',
 		'ParserOptions' => 'includes/ParserOptions.php',
-		'ParserCache' => 'includes/ParserCache.php',
 		'PatrolLog' => 'includes/PatrolLog.php',
 		'ProfilerSimple' => 'includes/ProfilerSimple.php',
 		'ProfilerSimpleUDP' => 'includes/ProfilerSimpleUDP.php',
@@ -206,6 +212,7 @@ function __autoload($className) {
 		'PopularPagesPage' => 'includes/SpecialPopularpages.php',
 		'PreferencesForm' => 'includes/SpecialPreferences.php',
 		'SpecialPrefixindex' => 'includes/SpecialPrefixindex.php',
+		'RandomPage' => 'includes/SpecialRandompage.php',
 		'PasswordResetForm' => 'includes/SpecialResetpass.php',
 		'RevisionDeleteForm' => 'includes/SpecialRevisiondelete.php',
 		'RevisionDeleter' => 'includes/SpecialRevisiondelete.php',
@@ -290,7 +297,6 @@ function __autoload($className) {
 
 		# Languages
 		'Language' => 'languages/Language.php',
-		'RandomPage' => 'includes/SpecialRandompage.php',
 
 		# API
 		'ApiBase' => 'includes/api/ApiBase.php',
@@ -310,6 +316,7 @@ function __autoload($className) {
 		'ApiMain' => 'includes/api/ApiMain.php',
 		'ApiOpenSearch' => 'includes/api/ApiOpenSearch.php',
 		'ApiPageSet' => 'includes/api/ApiPageSet.php',
+		'ApiParse' => 'includes/api/ApiParse.php',
 		'ApiQuery' => 'includes/api/ApiQuery.php',
 		'ApiQueryAllpages' => 'includes/api/ApiQueryAllpages.php',
 		'ApiQueryAllLinks' => 'includes/api/ApiQueryAllLinks.php',
@@ -331,6 +338,7 @@ function __autoload($className) {
 		'ApiQueryRecentChanges'=> 'includes/api/ApiQueryRecentChanges.php',
 		'ApiQueryRevisions' => 'includes/api/ApiQueryRevisions.php',
 		'ApiQuerySearch' => 'includes/api/ApiQuerySearch.php',
+		'ApiQueryAllmessages' => 'includes/api/ApiQueryAllmessages.php',
 		'ApiQuerySiteinfo' => 'includes/api/ApiQuerySiteinfo.php',
 		'ApiQueryUserInfo' => 'includes/api/ApiQueryUserInfo.php',
 		'ApiQueryWatchlist' => 'includes/api/ApiQueryWatchlist.php',

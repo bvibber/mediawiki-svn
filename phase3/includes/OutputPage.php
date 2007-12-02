@@ -63,6 +63,10 @@ class OutputPage {
 		$this->mRedirect = str_replace( "\n", '', $url );
 		$this->mRedirectCode = $responsecode;
 	}
+	
+	public function getRedirect() {
+		return $this->mRedirect;
+	}
 
 	/**
 	 * Set the HTTP status code to send with the output.
@@ -760,6 +764,9 @@ class OutputPage {
 
 		$name = User::whoIs( $wgUser->blockedBy() );
 		$reason = $wgUser->blockedFor();
+		if( $reason == '' ) {
+			$reason = wfMsg( 'blockednoreason' );
+		}
 		$blockTimestamp = $wgLang->timeanddate( wfTimestamp( TS_MW, $wgUser->mBlock->mTimestamp ), true );
 		$ip = wfGetIP();
 
@@ -1326,14 +1333,20 @@ class OutputPage {
 	/**
 	 * Turn off regular page output and return an error reponse
 	 * for when rate limiting has triggered.
-	 * @todo i18n
 	 */
 	public function rateLimited() {
 		global $wgOut;
-		$wgOut->disable();
-		wfHttpError( 500, 'Internal Server Error',
-			'Sorry, the server has encountered an internal error. ' .
-			'Please wait a moment and hit "refresh" to submit the request again.' );
+
+		$this->setPageTitle(wfMsg('actionthrottled'));
+		$this->setRobotPolicy( 'noindex,follow' );
+		$this->setArticleRelated( false );
+		$this->enableClientCache( false );
+		$this->mRedirect = '';
+		$this->clearHTML();
+		$this->setStatusCode(503);
+		$this->addWikiText( wfMsg('actionthrottledtext') );
+
+		$this->returnToMain( false, $wgTitle );
 	}
 	
 	/**

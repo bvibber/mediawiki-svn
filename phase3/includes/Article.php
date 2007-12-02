@@ -47,6 +47,7 @@ class Article {
 	const BAD_TITLE = 5;		// $this is not a valid Article
 	const ALREADY_ROLLED = 6;	// Someone else already rolled this back. $from and $summary will be set
 	const ONLY_AUTHOR = 7;		// User is the only author of the page
+	const RATE_LIMITED = 8;
  
 	/**
 	 * Constructor and clear the article
@@ -135,6 +136,7 @@ class Article {
 		$this->mRevIdFetched = 0;
 		$this->mRedirectUrl = false;
 		$this->mLatest = false;
+		$this->mPreparedEdit = false;
 	}
 
 	/**
@@ -868,7 +870,7 @@ class Article {
 
 		# If we have been passed an &rcid= parameter, we want to give the user a
 		# chance to mark this new article as patrolled.
-		if (!is_null( $rcid ) && $rcid != 0 && $wgUser->isAllowed( 'patrol' ) ) {
+		if( !is_null( $rcid ) && $rcid != 0 && $wgUser->isAllowed( 'patrol' ) && $this->mTitle->exists() ) {
 			$wgOut->addHTML(
 				"<div class='patrollink'>" .
 					wfMsgHtml( 'markaspatrolledlink',
@@ -1330,7 +1332,8 @@ class Article {
 		if ($flags & EDIT_AUTOSUMMARY && $summary == '')
 			$summary = $this->getAutosummary( $oldtext, $text, $flags );
 
-		$text = $this->preSaveTransform( $text );
+		$editInfo = $this->prepareTextForEdit( $text );
+		$text = $editInfo->pst;
 		$newsize = strlen( $text );
 
 		$dbw = wfGetDB( DB_MASTER );
@@ -1530,12 +1533,10 @@ class Article {
 			return;
 		}
 
-		if ( $rc->mAttribs['rc_type'] == RC_NEW && !$wgUseNPPatrol ) {
-	                $wgOut->errorpage( 'nppatroldisabled', 'nppatroldisabledtext' );
-			return;
-		}
-		
 		if ( !$wgUseRCPatrol && $rc->mAttribs['rc_type'] != RC_NEW) {
+			// Only new pages can be patrolled if the general patrolling is off....???
+			// @fixme -- is this necessary? Shouldn't we only bother controlling the
+			// front end here?
 			$wgOut->errorPage( 'rcpatroldisabled', 'rcpatroldisabledtext' );
 			return;
 		}
@@ -1708,7 +1709,7 @@ class Article {
 		global $wgUser, $wgRestrictionTypes, $wgContLang;
 
 		$id = $this->mTitle->getArticleID();
-		if( !$wgUser->isAllowed( 'protect' ) || wfReadOnly() || $id == 0 ) {
+		if( array() != $this->mTitle->getUserPermissionsErrors( 'protect', $wgUser ) || wfReadOnly() || $id == 0 ) {
 			return false;
 		}
 
@@ -1739,7 +1740,6 @@ class Article {
 			if( wfRunHooks( 'ArticleProtect', array( &$this, &$wgUser, $limit, $reason ) ) ) {
 
 				$dbw = wfGetDB( DB_MASTER );
-				$dbw->begin();
 
 				$encodedExpiry = Block::encodeExpiry($expiry, $dbw );
 
@@ -1840,11 +1840,12 @@ class Article {
 		}
 		return implode( ':', $bits );
 	}
-
-	/** 
+	
+	/**
 	 * Auto-generates a deletion reason
+	 * @param bool &$hasHistory Whether the page has a history
 	 */
-	public function generateReason()
+	public function generateReason(&$hasHistory)
 	{
 		global $wgContLang;
 		$dbw = wfGetDB(DB_MASTER);
@@ -1875,6 +1876,10 @@ class Article {
 		if($res === false)
 			// This page has no revisions, which is very weird
 			return false;
+		if($res->numRows() > 1)
+				$hasHistory = true;
+		else
+				$hasHistory = false;
 		$row = $dbw->fetchObject($res);
 		$onlyAuthor = $row->rev_user_text;
 		// Try to find a second contributor
@@ -1906,11 +1911,12 @@ class Article {
 		$maxLength = 255 - (strlen($reason) - 2) - 3;
 		$contents = $wgContLang->truncate($contents, $maxLength, '...');
 		// Remove possible unfinished links
-		$text = preg_replace( '/\[\[([^\]]*)\]?$/', '$1', $text );
+		$contents = preg_replace( '/\[\[([^\]]*)\]?$/', '$1', $contents );
 		// Now replace the '$1' placeholder
-		$reason = str_replace( '$1', $text, $reason );
+		$reason = str_replace( '$1', $contents, $reason );
 		return $reason;
 	}
+
 
 	/*
 	 * UI entry point for page deletion
@@ -1919,7 +1925,15 @@ class Article {
 		global $wgUser, $wgOut, $wgRequest;
 		$confirm = $wgRequest->wasPosted() &&
 			$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) );
-		$reason = $wgRequest->getText( 'wpReason' );
+		$this->DeleteReasonList = $wgRequest->getText( 'wpDeleteReasonList' );
+		$this->DeleteReason = $wgRequest->getText( 'wpReason' );
+		$reason = $this->DeleteReasonList;
+		if ( $reason != 'other' && $this->DeleteReason != '') {
+			// Entry from drop down menu + additional comment
+			$reason .= ': ' . $this->DeleteReason;
+		} elseif ( $reason == 'other' ) {
+			$reason = $this->DeleteReason;
+		}
 
 		# This code desperately needs to be totally rewritten
 
@@ -1953,17 +1967,16 @@ class Article {
 			return;
 		}
 
-		# determine whether this page has earlier revisions
-		# and insert a warning if it does
-		$authors = $this->getLastNAuthors( 2, $latest );
+		// Generate deletion reason
+		$hasHistory = false;
+		if ( !$reason ) $reason = $this->generateReason($hasHistory);
 
-		if( count( $authors ) > 1 && !$confirm ) {
+		// If the page has a history, insert a warning
+		if( $hasHistory && !$confirm ) {
 			$skin=$wgUser->getSkin();
 			$wgOut->addHTML( '<strong>' . wfMsg( 'historywarning' ) . ' ' . $skin->historyLink() . '</strong>' );
 		}
-
-		$reason = $this->generateReason();
-
+		
 		return $this->confirmDelete( '', $reason );
 	}
 
@@ -2029,16 +2042,61 @@ class Article {
 		$formaction = $this->mTitle->escapeLocalURL( 'action=delete' . $par );
 
 		$confirm = htmlspecialchars( wfMsg( 'deletepage' ) );
-		$delcom = htmlspecialchars( wfMsg( 'deletecomment' ) );
+		$delcom = Xml::label( wfMsg( 'deletecomment' ), 'wpDeleteReasonList' );
 		$token = htmlspecialchars( $wgUser->editToken() );
 		$watch = Xml::checkLabel( wfMsg( 'watchthis' ), 'wpWatch', 'wpWatch', $wgUser->getBoolOption( 'watchdeletion' ) || $this->mTitle->userIsWatching(), array( 'tabindex' => '2' ) );
+		
+		$mDeletereasonother = Xml::label( wfMsg( 'deleteotherreason' ), 'wpReason' );
+		$mDeletereasonotherlist = wfMsgHtml( 'deletereasonotherlist' );
+		$scDeleteReasonList = wfMsgForContent( 'deletereason-dropdown' );
 
+		$deleteReasonList = '';
+		if ( $scDeleteReasonList != '' && $scDeleteReasonList != '-' ) { 
+			$deleteReasonList = "<option value=\"other\">$mDeletereasonotherlist</option>";
+			$optgroup = "";
+			foreach ( explode( "\n", $scDeleteReasonList ) as $option) {
+				$value = trim( htmlspecialchars($option) );
+				if ( $value == '' ) {
+					continue;
+				} elseif ( substr( $value, 0, 1) == '*' && substr( $value, 1, 1) != '*' ) {
+					// A new group is starting ...
+					$value = trim( substr( $value, 1 ) );
+					$deleteReasonList .= "$optgroup<optgroup label=\"$value\">";
+					$optgroup = "</optgroup>";
+				} elseif ( substr( $value, 0, 2) == '**' ) {
+					// groupmember
+					$selected = "";
+					$value = trim( substr( $value, 2 ) );
+					if ( $this->DeleteReasonList === $value)
+						$selected = ' selected="selected"';
+					$deleteReasonList .= "<option value=\"$value\"$selected>$value</option>";
+				} else {
+					// groupless delete reason
+					$selected = "";
+					if ( $this->DeleteReasonList === $value)
+						$selected = ' selected="selected"';
+					$deleteReasonList .= "$optgroup<option value=\"$value\"$selected>$value</option>";
+					$optgroup = "";
+				}
+			}
+			$deleteReasonList .= $optgroup;
+		}
 		$wgOut->addHTML( "
 <form id='deleteconfirm' method='post' action=\"{$formaction}\">
 	<table border='0'>
 		<tr>
 			<td align='right'>
-				<label for='wpReason'>{$delcom}:</label>
+				$delcom:
+			</td>
+			<td align='left'>
+				<select tabindex='2' id='wpDeleteReasonList' name=\"wpDeleteReasonList\">
+					$deleteReasonList
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				$mDeletereasonother
 			</td>
 			<td align='left'>
 				<input type='text' maxlength='255' size='60' name='wpReason' id='wpReason' value=\"" . htmlspecialchars( $reason ) . "\" tabindex=\"1\" />
@@ -2137,7 +2195,6 @@ class Article {
 		//
 		// In the future, we may keep revisions and mark them with
 		// the rev_deleted field, which is reserved for this purpose.
-		$dbw->begin();
 		$dbw->insertSelect( 'archive', array( 'page', 'revision' ),
 			array(
 				'ar_namespace'  => 'page_namespace',
@@ -2240,6 +2297,10 @@ class Article {
 		if( !$wgUser->matchEditToken( $token, array( $this->mTitle->getPrefixedText(), $fromP ) ) )
 			return self::BAD_TOKEN;
 
+		if ( $wgUser->pingLimiter('rollback') || $wgUser->pingLimiter() ) {
+			return self::RATE_LIMITED;
+		}
+
 		$dbw = wfGetDB( DB_MASTER );
 
 		# Get the last editor
@@ -2274,7 +2335,7 @@ class Article {
 		}
 	
 		$set = array();
-		if ( $bot ) {
+		if ( $bot && $wgUser->isAllowed('markbotedits') ) {
 			# Mark all reverted edits as bot
 			$set['rc_bot'] = 1;
 		}
@@ -2376,6 +2437,9 @@ class Article {
 				$wgOut->setPageTitle( wfMsg( 'rollbackfailed' ) );
 				$wgOut->addHtml( wfMsg( 'cantrollback' ) );
 				break;
+			case self::RATE_LIMITED:
+				$wgOut->rateLimited();
+				break;
 			case self::SUCCESS:
 				$current = $details['current'];
 				$target = $details['target'];
@@ -2417,6 +2481,29 @@ class Article {
 	}
 
 	/**
+	 * Prepare text which is about to be saved.
+	 * Returns a stdclass with source, pst and output members
+	 */
+	function prepareTextForEdit( $text, $revid=null ) {
+		if ( $this->mPreparedEdit && $this->mPreparedEdit->newText == $text && $this->mPreparedEdit->revid == $revid) {
+			// Already prepared
+			return $this->mPreparedEdit;
+		}
+		global $wgParser;
+		$edit = (object)array();
+		$edit->revid = $revid;
+		$edit->newText = $text;
+		$edit->pst = $this->preSaveTransform( $text );
+		$options = new ParserOptions;
+		$options->setTidy( true );
+		$options->enableLimitReport();
+		$edit->output = $wgParser->parse( $edit->pst, $this->mTitle, $options, true, true, $revid );
+		$edit->oldText = $this->getContent();
+		$this->mPreparedEdit = $edit;
+		return $edit;
+	}
+
+	/**
 	 * Do standard deferred updates after page edit.
 	 * Update links tables, site stats, search index and message cache.
 	 * Every 100th edit, prune the recent changes table.
@@ -2435,16 +2522,21 @@ class Article {
 		wfProfileIn( __METHOD__ );
 
 		# Parse the text
-		$options = new ParserOptions;
-		$options->setTidy(true);
-		$poutput = $wgParser->parse( $text, $this->mTitle, $options, true, true, $newid );
+		# Be careful not to double-PST: $text is usually already PST-ed once
+		if ( !$this->mPreparedEdit || $this->mPreparedEdit->output->getFlag( 'vary-revision' ) ) {
+			wfDebug( __METHOD__ . ": No prepared edit or vary-revision is set...\n" );
+			$editInfo = $this->prepareTextForEdit( $text, $newid );
+		} else {
+			wfDebug( __METHOD__ . ": No vary-revision, using prepared edit...\n" );
+			$editInfo = $this->mPreparedEdit;
+		}
 
 		# Save it to the parser cache
 		$parserCache =& ParserCache::singleton();
-		$parserCache->save( $poutput, $this, $wgUser );
+		$parserCache->save( $editInfo->output, $this, $wgUser );
 
 		# Update the links tables
-		$u = new LinksUpdate( $this->mTitle, $poutput );
+		$u = new LinksUpdate( $this->mTitle, $editInfo->output );
 		$u->doUpdate();
 
 		if( wfRunHooks( 'ArticleEditUpdatesDeleteFromRecentchanges', array( &$this ) ) ) {
@@ -3055,9 +3147,11 @@ class Article {
 
 		$popts = $wgOut->parserOptions();
 		$popts->setTidy(true);
+		$popts->enableLimitReport();
 		$parserOutput = $wgParser->parse( $text, $this->mTitle,
 			$popts, true, true, $this->getRevIdFetched() );
 		$popts->setTidy(false);
+		$popts->enableLimitReport( false );
 		if ( $cache && $this && $parserOutput->getCacheTime() != -1 ) {
 			$parserCache =& ParserCache::singleton();
 			$parserCache->save( $parserOutput, $this, $wgUser );

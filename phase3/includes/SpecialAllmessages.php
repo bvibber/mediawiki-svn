@@ -45,15 +45,31 @@ function wfSpecialAllmessages() {
 	wfProfileIn( __METHOD__ . '-output' );
 	if ( $ot == 'php' ) {
 		$navText .= makePhp( $messages );
-		$wgOut->addHTML( 'PHP | <a href="' . $wgTitle->escapeLocalUrl( 'ot=html' ) . '">HTML</a><pre>' . htmlspecialchars( $navText ) . '</pre>' );
+		$wgOut->addHTML( 'PHP | <a href="' . $wgTitle->escapeLocalUrl( 'ot=html' ) . '">HTML</a> | <a href="' . $wgTitle->escapeLocalUrl( 'ot=xml' ) . '">XML</a><pre>' . htmlspecialchars( $navText ) . '</pre>' );
+	} else if ( $ot == 'xml' ) {
+		$wgOut->disable();
+		header( 'Content-type: text/xml' );
+		echo makeXml( $messages );
 	} else {
-		$wgOut->addHTML( '<a href="' . $wgTitle->escapeLocalUrl( 'ot=php' ) . '">PHP</a> | HTML' );
+		$wgOut->addHTML( '<a href="' . $wgTitle->escapeLocalUrl( 'ot=php' ) . '">PHP</a> | HTML |  <a href="' . $wgTitle->escapeLocalUrl( 'ot=xml' ) . '">XML</a>' );
 		$wgOut->addWikiText( $navText );
 		$wgOut->addHTML( makeHTMLText( $messages ) );
 	}
 	wfProfileOut( __METHOD__ . '-output' );
 
 	wfProfileOut( __METHOD__ );
+}
+
+function makeXml( $messages ) {
+	global $wgLang;
+	$lang = $wgLang->getCode();
+	$txt = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n";
+	$txt .= "<messages lang=\"$lang\">\n";
+	foreach( $messages as $key => $m ) {
+		$txt .= "\t" . Xml::element( 'message', array( 'name' => $key ), $m['msg'] ) . "\n";
+	}
+	$txt .= "</messages>";
+	return $txt;
 }
 
 /**

@@ -1,10 +1,13 @@
 <?php
-/**
- * Amharic
+/** Amharic (አማርኛ)
  *
  * @addtogroup Language
  *
  * @author Codex Sinaiticus
+ * @author Siebrand
+ * @author Nike
+ * @author G - ג
+ * @author SPQRobin
  */
 
 $messages = array(
@@ -54,7 +57,7 @@ $messages = array(
 'category-empty'  => 'ይህ መደብ አሁን ባዶ ነው።',
 
 'newwindow'  => '(ባዲስ መስኮት ውስጥ ይከፈታል።)',
-'cancel'     => 'ይቅር! (ለመሰረዝ)',
+'cancel'     => '<br>ይቅር! (ለመሰረዝ)',
 'mytalk'     => 'የኔ ውይይት፤',
 'navigation' => 'የማውጫ ቁልፎች',
 
@@ -101,7 +104,7 @@ $messages = array(
 'showtoc'             => 'ይታይ',
 'hidetoc'             => 'ይደበቅ',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'መጣጥፍ',
 'nstab-user'      => 'ያባል መኖርያ ገጽ',
 'nstab-special'   => 'ልዩ ገጽ',
@@ -127,7 +130,7 @@ $messages = array(
 በጥቂት ሴኮንድ ውስጥ ወደሚከተለው ገጽ በቀጥታ ይመለሳል፦',
 'welcomecreation'       => '== ሰላምታ፣ $1! ==
 
-የብዕር ስምዎ ተፈጥሯል። ስለ [[Wikipedia:Welcome, newcomers!|ምርጫዎች ምክር]] ይረዱ።',
+የብዕር ስምዎ ተፈጥሯል። [[Special:Preferences|ምርጫዎችዎን]] ለማስተካከል ይችላሉ።',
 'yourname'              => 'Username / የብዕር ስም:',
 'yourpassword'          => 'Password / መግቢያ ቃል',
 'yourpasswordagain'     => 'መግቢያ ቃልዎን ዳግመኛ ይስጡ',
@@ -177,7 +180,7 @@ $messages = array(
 'anoneditwarning'          => "'''ማስታወቂያ:''' እርስዎ አሁን በአባል ስምዎ ያልገቡ ነዎት። ማዘጋጀት ይቻሎታል፤ ነገር ግን ለውጦችዎ በአባል ስም ሳይሆን በቁጥር አድራሻዎ ይመዘገባሉ። ከፈለጉ፥ በአባልነት [[Special:Userlogin|መግባት]] ይችላሉ።",
 'missingsummary'           => "'''ማስታወሻ፦''' ማጠቃለያ ገና አላቀረቡም። እንደገና «ገጹን ለማቅረብ» ቢጫኑ፣ ያለ ማጠቃለያ ይላካል።",
 'summary-preview'          => 'የማጠቃለያ ቅድመ እይታ',
-'newarticletext'           => 'ይኸው ገጽ ገና አይኖርም። ገጹን አዲስ ለመፍጠር፣ ዝም ብለው ከታች በሚገኘው ሳጥን ውስጥ ማቀነባበር ሊጀምሩ ይችላሉ። ለተጨማሪ መረጃ፣ [[{{MediaWiki:helppage}}|የረዳቱን ገጽ]] ይጐብኙት።
+'newarticletext'           => 'ይኸው ገጽ ገና አይኖርም። ገጹን አዲስ ለመፍጠር፣ ዝም ብለው ከታች በሚገኘው ሳጥን ውስጥ ማቀነባበር ሊጀምሩ ይችላሉ። ለተጨማሪ መረጃ፣ [[{{MediaWiki:Helppage}}|የረዳቱን ገጽ]] ይጐብኙት።
 
 ወደዚህ በስሕተት የደረሱ እንደ ሆነ፣ «Back» የሚለውን በኮምፒውተርዎ ብራውዘር መጫን ይችላሉ።',
 'anontalkpagetext'         => "----''ይኸው ገጽ ገና ያልገባ ወይም ብዕር ስም የሌለው ተጠቃሚ ውይይት ገጽ ነው። መታወቂያው በ[[ቁጥር አድራሻ]] እንዲሆን ያስፈልጋል። አንዳንዴ ግን አንድ የቁጥር አድራሻ በሁለት ወይም በብዙ ተጠቃሚዎች የጋራ ሊሆን ይችላል። ስለዚህ ለርስዎ የማይገባ ውይይት እንዳይደርስልዎ፣ [[Special:Userlogin|«መግቢያ»]] በመጫን የብዕር ስም ለማውጣት ይችላሉ።''",
@@ -192,7 +195,7 @@ $messages = array(
 
 ይህ እትም የአሁኑ አይደለም፣ ከዚህ ሁናቴ ታድሷል።
 
- ይህንን እንዳቀረቡ ከዚህ እትም በኋላ የተቀየረው ለውጥ ሁሉ ያልፋል።</strong>',
+ይህንን እንዳቀረቡ ከዚህ እትም በኋላ የተቀየረው ለውጥ ሁሉ ያልፋል።</strong>',
 'copyrightwarning'         => "*<big> '''መጣጥፎችን ለመፍጠርና ለማሻሻል አይፈሩ''!''''' — </big>ሥራዎ ትክክለኛ ካልሆነ፣ በሌሎቹ አዘጋጆች ሊታረም ይችላል።",
 'longpagewarning'          => '<strong>ማስጠንቀቂያ፦ የዚሁ ገጽ መጠን እስከ $1 kilobyte ድረስ ደርሷል፤ አንድ ጽሑፍ ከ32 kilobyte የበለጠ ሲሆን ይህ ግዙፍነት ለአንዳንድ ተጠቃሚ ዌብ-ብራውዘር ያስቸግራል። እባክዎን፣ ገጹን ወደ ተለያዩ ገጾች ማከፋፈልን ያስቡበት። </strong>',
 'readonlywarning'          => ':<strong>ማስታወቂያ፦</strong> {{SITENAME}} አሁን ለአጭር ግዜ ተቆልፎ ገጹን ለማቅረብ አይቻልም። ጥቂት ደቂቃ ቆይተው እባክዎ እንደገና ይሞክሩት!
@@ -204,10 +207,7 @@ $messages = array(
 
 *እባክዎ፥ ገጹ እንደገና እንዲፈጠር የሚገባ መሆኑን ያረጋግጡ።
 
-*የገጹ መጥፋት ዝርዝር ከዚህ ታች ይታያል።
-
-'''Warning:''' This page has previously been deleted. Please consider whether it is appropriate to recreate this page.
-The deletion log for this page appears below:",
+*የገጹ መጥፋት ዝርዝር ከዚህ ታች ይታያል።",
 
 # "Undo" feature
 'undo-success' => "ያ ለውጥ በቀጥታ ሊገለበጥ ይቻላል። እባክዎ ከታች ያለውን ማነጻጸርያ ተመልክተው ይህ እንደሚፈልጉ ያረጋግጡና ለውጡ እንዲገለበጥ '''ገጹን ለማቅረብ''' ይጫኑ።",
@@ -242,7 +242,7 @@ The deletion log for this page appears below:",
 'diff-multi'              => '(ከነዚህ 2 እትሞች መካከል {{plural:$1|አንድ ለውጥ ነበር|$1 ለውጦች ነበሩ}}።)',
 
 # Search results
-'searchresulttext' => 'በተጨማሪ ስለ ፍለጋዎች ለመረዳት፣ [[{{MediaWiki:helppage}}]] ያንብቡ።',
+'searchresulttext' => 'በተጨማሪ ስለ ፍለጋዎች ለመረዳት፣ [[{{MediaWiki:Helppage}}]] ያንብቡ።',
 'searchsubtitle'   => "'''ፍለጋ ለ[[:$1]]፦'''",
 'noexactmatch'     => "በ«$1» አርዕስት የሚሰየም መጣጥፍ '''አልተገኘም'''፤ እርሶ ግን [[:$1|ሊፈጥሩት ይችላሉ]]... ።",
 'prevn'            => 'ፊተኛ $1',
@@ -283,7 +283,7 @@ The deletion log for this page appears below:",
 'recentchangescount'    => 'በዝርዝርዎ ላይ ስንት ለውጥ ይታይ? (እስከ 500)',
 'savedprefs'            => 'ምርጫዎችህ ተቆጥበዋል።',
 'timezonelegend'        => 'የሰዓት ክልል',
-'timezonetext'          => 'ከ Server time (UTC) ያለው ልዩነት (በሰዓቶች ቁጥር) <br/>(እንደ ኢትዮጵያ ጊዜ ለማድረግ እንደገና ስድስት ሰዓት ይጨምሩ።)',
+'timezonetext'          => 'ከ Server time (UTC) ያለው ልዩነት (በሰዓቶች ቁጥር) <br />(እንደ ኢትዮጵያ ጊዜ ለማድረግ እንደገና ስድስት ሰዓት ይጨምሩ።)',
 'timezoneoffset'        => 'ኦፍ ሰት¹',
 'guesstimezone'         => 'ከኮምፒውተርዎ መዝገብ ልዩነቱ ይገኝ',
 'allowemail'            => 'ኢሜል ከሌሎች ተጠቃሚዎች ለመፍቀድ',
@@ -366,6 +366,9 @@ The deletion log for this page appears below:",
 'unusedtemplatestext' => 'እነኚህ መልጠፊያዎች አሁን ባንዳችም ገጽ ላይ አልተለጠፉም።',
 'unusedtemplateswlh'  => 'ሌሎች መያያዣዎች',
 
+# Random page
+'randompage' => 'ማናቸውንም ለማየት',
+
 # Random redirect
 'randomredirect' => 'ማናቸውም መምሪያ መንገድ',
 
@@ -420,7 +423,6 @@ The deletion log for this page appears below:",
 'mostrevisions'           => 'ለውጦች የበዙላቸው መጣጥፎች',
 'allpages'                => 'ገጾች ሁሉ በሙሉ',
 'prefixindex'             => 'ገጾች በፊደል ለመፈልግ',
-'randompage'              => 'ማናቸውንም ለማየት',
 'shortpages'              => 'ጽሁፎች ካጭሩ ተደርድረው',
 'longpages'               => 'ጽሁፎች ከረጅሙ ተደርድረው',
 'deadendpages'            => 'መያያዣ የሌለባቸው ፅሑፎች',
@@ -526,7 +528,7 @@ The deletion log for this page appears below:",
 'actioncomplete'            => 'ተፈጽሟል',
 'deletedtext'               => '«$1» ጠፍቷል።
 
- (የጠፉትን ገጾች ሁሉ ለመመልከት $2 ይዩ።)',
+(የጠፉትን ገጾች ሁሉ ለመመልከት $2 ይዩ።)',
 'deletedarticle'            => '«[[$1]]» አጠፋ',
 'dellogpage'                => 'የማጥፋት መዝገብ (del log)',
 'dellogpagetext'            => 'በቅርቡ የጠፉት ገጾች ከዚህ ታች የዘረዝራሉ።',
@@ -589,7 +591,7 @@ The deletion log for this page appears below:",
 
 # Block/unblock
 'ipblocklist'              => 'የአሁኑ ማገጃዎች ዝርዝር',
-'ipblocklist-legend'       => 'አንድ የታገደውን ተጠቃሚ ለመለግ፦',
+'ipblocklist-legend'       => 'አንድ የታገደውን ተጠቃሚ ለመፈለግ፦',
 'ipblocklist-username'     => 'ይህ ብዕር ስም ወይም የቁጥር አድራሻ #፡',
 'ipblocklist-submit'       => 'ይፈለግ',
 'blocklistline'            => '$1 (እ.ኤ.አ.)፦ $2 በ$3 ላይ ማገጃ ጣለ ($4)',
@@ -720,8 +722,8 @@ $3
 'watchlistedit-raw-removed'    => '$1 አርዕስት {{PLURAL:$1|ተወገደ|ተወገዱ}}፦',
 
 # Watchlist editing tools
-'watchlisttools-view'  => 'የምከታተላቸው ለውጦች',
-'watchlisttools-edit'  => 'ዝርዝሩን ለማስተካከል',
-'watchlisttools-raw'   => 'የዝርዝሩ ጥሬ ኮድ',
+'watchlisttools-view' => 'የምከታተላቸው ለውጦች',
+'watchlisttools-edit' => 'ዝርዝሩን ለማስተካከል',
+'watchlisttools-raw'  => 'የዝርዝሩ ጥሬ ኮድ',
 
 );

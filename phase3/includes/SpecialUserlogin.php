@@ -123,7 +123,7 @@ class LoginForm {
 		// Wipe the initial password and mail a temporary one
 		$u->setPassword( null );
 		$u->saveSettings();
-		$result = $this->mailPasswordInternal( $u, false );
+		$result = $this->mailPasswordInternal( $u, false, 'createaccount-title', 'createaccount-text' );
 
 		wfRunHooks( 'AddNewAccount', array( $u ) );
 
@@ -264,22 +264,29 @@ class LoginForm {
 			return false;
 		}
 
+		# check for minimal password length
 		if ( !$u->isValidPassword( $this->mPassword ) ) {
-			$this->mainLoginForm( wfMsg( 'passwordtooshort', $wgMinimalPasswordLength ) );
-			return false;
+			if ( !$this->mCreateaccountMail ) {
+				$this->mainLoginForm( wfMsg( 'passwordtooshort', $wgMinimalPasswordLength ) );
+				return false;
+			} else {
+				# do not force a password for account creation by email
+				# set pseudo password, it will be replaced later by a random generated password
+				$this->mPassword = '-';
+			}
 		}
-		
+
 		# if you need a confirmed email address to edit, then obviously you need an email address.
 		if ( $wgEmailConfirmToEdit && empty( $this->mEmail ) ) {
 			$this->mainLoginForm( wfMsg( 'noemailtitle' ) );
 			return false;
 		}
-		
+
 		if( !empty( $this->mEmail ) && !User::isValidEmailAddr( $this->mEmail ) ) {
 			$this->mainLoginForm( wfMsg( 'invalidemailaddress' ) );
 			return false;
 		}
-		
+
 		# Set some additional data so the AbortNewAccount hook can be
 		# used for more than just username validation
 		$u->setEmail( $this->mEmail );
@@ -534,7 +541,7 @@ class LoginForm {
 			return;
 		}
 
-		$result = $this->mailPasswordInternal( $u, true );
+		$result = $this->mailPasswordInternal( $u, true, 'passwordremindertitle', 'passwordremindertext' );
 		if( WikiError::isError( $result ) ) {
 			$this->mainLoginForm( wfMsg( 'mailerror', $result->getMessage() ) );
 		} else {
@@ -544,10 +551,14 @@ class LoginForm {
 
 
 	/**
+	 * @param object user
+	 * @param bool throttle
+	 * @param string message name of email title
+	 * @param string message name of email text
 	 * @return mixed true on success, WikiError on failure
 	 * @private
 	 */
-	function mailPasswordInternal( $u, $throttle = true ) {
+	function mailPasswordInternal( $u, $throttle = true, $emailTitle = 'passwordremindertitle', $emailText = 'passwordremindertext' ) {
 		global $wgCookiePath, $wgCookieDomain, $wgCookiePrefix, $wgCookieSecure;
 		global $wgServer, $wgScript;
 
@@ -565,9 +576,9 @@ class LoginForm {
 		$ip = wfGetIP();
 		if ( '' == $ip ) { $ip = '(Unknown)'; }
 
-		$m = wfMsg( 'passwordremindertext', $ip, $u->getName(), $np, $wgServer . $wgScript );
+		$m = wfMsg( $emailText, $ip, $u->getName(), $np, $wgServer . $wgScript );
+		$result = $u->sendMail( wfMsg( $emailTitle ), $m );
 
-		$result = $u->sendMail( wfMsg( 'passwordremindertitle' ), $m );
 		return $result;
 	}
 
@@ -684,7 +695,7 @@ class LoginForm {
 			$linkq .= '&uselang=' . $this->mLanguage;
 
 		$link = '<a href="' . htmlspecialchars ( $titleObj->getLocalUrl( $linkq ) ) . '">';
-		$link .= wfMsgHtml( $linkmsg . 'link' );
+		$link .= wfMsgHtml( $linkmsg . 'link' ); # Calling either 'gotaccountlink' or 'nologinlink'
 		$link .= '</a>';
 
 		# Don't show a "create account" link if the user can't
@@ -815,7 +826,9 @@ class LoginForm {
 			foreach( $langs as $lang ) {
 				$lang = trim( $lang, '* ' );
 				$parts = explode( '|', $lang );
-				$links[] = $this->makeLanguageSelectorLink( $parts[0], $parts[1] );
+				if (count($parts) >= 2) {
+					$links[] = $this->makeLanguageSelectorLink( $parts[0], $parts[1] );
+				}
 			}
 			return count( $links ) > 0 ? wfMsgHtml( 'loginlanguagelabel', implode( ' | ', $links ) ) : '';
 		} else {

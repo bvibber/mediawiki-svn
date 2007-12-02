@@ -931,7 +931,7 @@ class Title {
 	/**
 	 * Does the title correspond to a protected article?
 	 * @param string $what the action the page is protected from,
-	 *	by default checks move and edit
+	 * by default checks move and edit
 	 * @return boolean
 	 */
 	public function isProtected( $action = '' ) {
@@ -980,7 +980,7 @@ class Title {
 		return $this->mWatched;
 	}
 
- 	/**
+	/**
 	 * Can $wgUser perform $action on this page?
 	 * This skips potentially expensive cascading permission checks.
 	 *
@@ -999,7 +999,7 @@ class Title {
 	/**
 	 * Determines if $wgUser is unable to edit this page because it has been protected
 	 * by $wgNamespaceProtection.
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public function isNamespaceProtected() {
@@ -1013,7 +1013,7 @@ class Title {
 		return false;
 	}
 
- 	/**
+	/**
 	 * Can $wgUser perform $action on this page?
 	 * @param string $action action that permission needs to be checked for
 	 * @param bool $doExpensiveQueries Set this to false to avoid doing unnecessary queries.
@@ -1024,7 +1024,7 @@ class Title {
 		return ( $this->getUserPermissionsErrorsInternal( $action, $wgUser, $doExpensiveQueries ) === array());
 	}
 
-        /**
+	/**
 	 * Can $user perform $action on this page?
 	 * @param string $action action that permission needs to be checked for
 	 * @param bool $doExpensiveQueries Set this to false to avoid doing unnecessary queries.
@@ -1056,6 +1056,9 @@ class Title {
 
 			$id = $user->blockedBy();
 			$reason = $user->blockedFor();
+			if( $reason == '' ) {
+				$reason = wfMsg( 'blockednoreason' );
+			}
 			$ip = wfGetIP();
 
 			if ( is_numeric( $id ) ) {
@@ -1185,6 +1188,13 @@ class Title {
 			}
 		}
 
+		if ($action == 'protect')
+		{
+			if ($this->getUserPermissionsErrors('edit', $user) != array()) {
+				$errors[] = array( 'protect-cantedit' ); // If they can't edit, they shouldn't protect.
+			}
+		}
+
 		if( $action == 'create' ) {
 			if( (  $this->isTalkPage() && !$user->isAllowed( 'createtalk' ) ) ||
 				( !$this->isTalkPage() && !$user->isAllowed( 'createpage' ) ) ) {
@@ -1192,9 +1202,9 @@ class Title {
 			}
 		} elseif( $action == 'move' && !( $this->isMovable() && $user->isAllowed( 'move' ) ) ) {
 			$errors[] = $user->isAnon() ? array ( 'movenologintext' ) : array ('movenotallowed');
-        } else if ( !$user->isAllowed( $action ) ) {
+       		} else if ( !$user->isAllowed( $action ) ) {
 			$return = null;
-		    $groups = array();
+			$groups = array();
 			global $wgGroupPermissions;
 		        foreach( $wgGroupPermissions as $key => $value ) {
 		            if( isset( $value[$action] ) && $value[$action] == true ) {
@@ -1318,8 +1328,13 @@ class Title {
 			 * and check again
 			 */
 			if( $this->getNamespace() == NS_SPECIAL ) {
-				$name = $this->getText();
+				$name = $this->getDBKey();
 				list( $name, /* $subpage */) = SpecialPage::resolveAliasWithSubpage( $name );
+				if ( $name === false ) {
+					# Invalid special page, but we show standard login required message
+					return false;
+				}
+
 				$pure = SpecialPage::getTitleFor( $name )->getPrefixedText();
 				if( in_array( $pure, $wgWhitelistRead, true ) )
 					return true;
@@ -2185,7 +2200,8 @@ class Title {
 	 * @param bool $auth indicates whether $wgUser's permissions
 	 * 	should be checked
 	 * @param string $reason The reason for the move
-	 * @param bool $createRedirect Whether to create a redirect from the old title to the new title
+	 * @param bool $createRedirect Whether to create a redirect from the old title to the new title.
+	 *  Ignored if the user doesn't have the suppressredirect right.
 	 * @return mixed true on success, message name on failure
 	 */
 	public function moveTo( &$nt, $auth = true, $reason = '', $createRedirect = true ) {
@@ -2260,10 +2276,11 @@ class Title {
 	 * @param Title &$nt the page to move to, which should currently
 	 * 	be a redirect
 	 * @param string $reason The reason for the move
-	 * @param bool $createRedirect Whether to leave a redirect at the old title
+	 * @param bool $createRedirect Whether to leave a redirect at the old title.
+	 *  Ignored if the user doesn't have the suppressredirect right
 	 */
 	private function moveOverExistingRedirect( &$nt, $reason = '', $createRedirect = true ) {
-		global $wgUseSquid;
+		global $wgUseSquid, $wgUser;
 		$fname = 'Title::moveOverExistingRedirect';
 		$comment = wfMsgForContent( '1movedto2_redir', $this->getPrefixedText(), $nt->getPrefixedText() );
 
@@ -2301,7 +2318,7 @@ class Title {
 		$linkCache->clearLink( $nt->getPrefixedDBkey() );
 
 		# Recreate the redirect, this time in the other direction.
-		if($createRedirect)
+		if($createRedirect || !$wgUser->isAllowed('suppressredirect'))
 		{
 			$mwRedir = MagicWord::get( 'redirect' );
 			$redirectText = $mwRedir->getSynonym( 0 ) . ' [[' . $nt->getPrefixedText() . "]]\n";
@@ -2329,7 +2346,7 @@ class Title {
 		# Log the move
 		$log = new LogPage( 'move' );
 		$log->addEntry( 'move_redir', $this, $reason, array( 1 => $nt->getPrefixedText() ) );
-		
+
 		# Purge squid
 		if ( $wgUseSquid ) {
 			$urls = array_merge( $nt->getSquidURLs(), $this->getSquidURLs() );
@@ -2343,9 +2360,10 @@ class Title {
 	 * @param Title &$nt the new Title
 	 * @param string $reason The reason for the move
 	 * @param bool $createRedirect Whether to create a redirect from the old title to the new title
+	 *  Ignored if the user doesn't have the suppressredirect right
 	 */
 	private function moveToNewTitle( &$nt, $reason = '', $createRedirect = true ) {
-		global $wgUseSquid;
+		global $wgUseSquid, $wgUser;
 		$fname = 'MovePageForm::moveToNewTitle';
 		$comment = wfMsgForContent( '1movedto2', $this->getPrefixedText(), $nt->getPrefixedText() );
 		if ( $reason ) {
@@ -2376,7 +2394,7 @@ class Title {
 
 		$linkCache->clearLink( $nt->getPrefixedDBkey() );
 
-		if($createRedirect)
+		if($createRedirect || !$wgUser->isAllowed('suppressredirect'))
 		{
 			# Insert redirect
 			$mwRedir = MagicWord::get( 'redirect' );
@@ -2624,9 +2642,15 @@ class Title {
 	 * @return bool
 	 */
 	public function isAlwaysKnown() {
+		// If the page is form Mediawiki:message/lang, calling wfMsgWeirdKey causes
+		// the full l10n of that language to be loaded. That takes much memory and
+		// isn't needed. So we strip the language part away.
+		// Also, extension messages which are not loaded, are shown as red, because
+		// we don't call MessageCache::loadAllMessages.
+		list( $basename, /* rest */ ) = explode( '/', $this->mDbkeyform, 2 );
 		return $this->isExternal()
 			|| ( $this->mNamespace == NS_MAIN && $this->mDbkeyform == '' )
-			|| ( $this->mNamespace == NS_MEDIAWIKI && wfMsgWeirdKey( $this->mDbkeyform ) );
+			|| ( $this->mNamespace == NS_MEDIAWIKI && wfMsgWeirdKey( $basename ) );
 	}
 
 	/**

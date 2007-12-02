@@ -12,6 +12,27 @@
  * @author G - ג
  */
 
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Especial',
+	NS_MAIN           => '',
+	NS_TALK           => 'Conversa',
+	NS_USER           => 'Usuario',
+	NS_USER_TALK      => 'Conversa_Usuario',
+	# NS_PROJECT set by \$wgMetaNamespace
+	NS_PROJECT_TALK   => 'Conversa_$1',
+	NS_IMAGE          => 'Imaxe',
+	NS_IMAGE_TALK     => 'Conversa_Imaxe',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'Conversa_MediaWiki',
+	NS_TEMPLATE       => 'Modelo',
+	NS_TEMPLATE_TALK  => 'Conversa_Modelo',
+	NS_HELP           => 'Axuda',
+	NS_HELP_TALK      => 'Conversa_Axuda',
+	NS_CATEGORY       => 'Categoría',
+	NS_CATEGORY_TALK  => 'Conversa_Categoría',
+);
+
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'Subliñar ligazóns:',
@@ -203,29 +224,29 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Acerca de {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:Acerca de',
+'aboutpage'         => 'Project:Acerca de',
 'bugreports'        => 'Informes de erro',
-'bugreportspage'    => '{{ns:project}}:Informe de erros',
+'bugreportspage'    => 'Project:Informe de erros',
 'copyright'         => 'Todo o texto está dispoñíbel baixo $1.',
 'copyrightpagename' => 'Dereitos de autor (copyright) de {{SITENAME}}',
 'copyrightpage'     => '{{ns:project}}: Dereitos de autor (Copyrights)',
 'currentevents'     => 'Actualidade',
-'currentevents-url' => '{{ns:project}}:Actualidade',
+'currentevents-url' => 'Project:Actualidade',
 'disclaimers'       => 'Advertencias',
-'disclaimerpage'    => '{{ns:project}}:Advertencia xeral',
+'disclaimerpage'    => 'Project:Advertencia xeral',
 'edithelp'          => 'Axuda de edición',
-'edithelppage'      => '{{ns:project}}:Como editar unha páxina',
+'edithelppage'      => 'Help:Como editar unha páxina',
 'faq'               => 'PMF',
-'faqpage'           => '{{ns:project}}:PMF',
-'helppage'          => '{{ns:project}}:Axuda',
+'faqpage'           => 'Project:PMF',
+'helppage'          => 'Help:Axuda',
 'mainpage'          => 'Portada',
-'policy-url'        => '{{ns:project}}:Política e normas',
+'policy-url'        => 'Project:Política e normas',
 'portal'            => 'Portal da comunidade',
-'portal-url'        => '{{ns:project}}:Portal da comunidade',
+'portal-url'        => 'Project:Portal da comunidade',
 'privacy'           => 'Política de Privacidade',
-'privacypage'       => '{{ns:project}}:Política de Privacidade',
+'privacypage'       => 'Project:Política de Privacidade',
 'sitesupport'       => 'Doazóns',
-'sitesupport-url'   => '{{ns:project}}:Axuda do sitio',
+'sitesupport-url'   => 'Project:Axuda do sitio',
 
 'badaccess'        => 'Erro de permisos',
 'badaccess-group0' => 'Non ten autorización para executar a acción que solicitou.',
@@ -258,7 +279,7 @@ $messages = array(
 'page-rss-feed'           => 'Fonte de noticias RSS para "$1"',
 'page-atom-feed'          => 'Fonte de noticias Atom para "$1"',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Artigo',
 'nstab-user'      => 'Páxina de usuario',
 'nstab-media'     => 'Páxina multimedia',
@@ -274,7 +295,7 @@ $messages = array(
 'nosuchaction'      => 'Non existe esa acción',
 'nosuchactiontext'  => 'A acción especificada polo URL non é recoñecida polo wiki',
 'nosuchspecialpage' => 'Non existe esa páxina especial',
-'nospecialpagetext' => "'''<big>Pediu unha páxina especial que non está recoñecida polo wiki.</big>'''
+'nospecialpagetext' => "<big>'''Pediu unha páxina especial que non está recoñecida polo wiki.'''</big>
 
 Pode atopar unha listaxe coas páxinas especiais válidas en [[Special:Specialpages]].",
 
@@ -478,7 +499,7 @@ O bloqueo foi realizado por $1. A razón que deu foi \'\'$2\'\'.
 * Pretendeuse bloquear a: $7
 
 Pode contactar con $1 ou con calquera outro 
-[[{{MediaWiki:grouppage-sysop}}|administrador]] para discutir este bloqueo.
+[[{{MediaWiki:Grouppage-sysop}}|administrador]] para discutir este bloqueo.
 
 Non pode empregar "enviar un correo a este usuario" a non ser que dispoña dun enderezo electrónico válido rexistrado nas súas [[Special:Preferences|preferencias de usuario]] e que o seu uso non fose bloqueado.
 O seu enderezo IP actual é $3 e o ID do bloqueo é nº $5. Por favor inclúa eses datos nas consultas que faga.',
@@ -492,7 +513,7 @@ A razón que deu foi a seguinte:
 * Caducidade do bloqueo: $6 
 
 Pode contactar con $1 ou con calquera outro 
-[[{{MediaWiki:grouppage-sysop}}|administrador]] para discutir este bloqueo.
+[[{{MediaWiki:Grouppage-sysop}}|administrador]] para discutir este bloqueo.
 
 Teña en conta que non pode empregar "enviar un correo a este usuario" a non ser que dispoña dun enderezo electrónico válido rexistrado nas súas [[Special:Preferences|preferencias de usuario]].
 
@@ -517,7 +538,7 @@ O ID do seu bloqueo é $5. Inclúao nas consultas que faga.',
 'newarticle'                => '(Novo)',
 'newarticletext'            => "Seguiu unha ligazón a unha páxina que aínda non existe.
 Para crear a páxina, comece a escribir na caixa de embaixo
-(vexa a [[{{MediaWiki:helppage}}|páxina de axuda]] para máis información).
+(vexa a [[{{MediaWiki:Helppage}}|páxina de axuda]] para máis información).
 Se chegou aquí por erro, simplemente prema no botón '''para tras''' do seu navegador.",
 'anontalkpagetext'          => "---- ''Esta é a páxina de discusión dun usuario anónimo que aínda non creou unha conta ou que non a usa. Polo tanto, empregamos o enderezo IP para a súa identificación. Este enderezo IP pódeno compartir varios usuarios distintos. Se vostede pensa que foron dirixidos contra a súa persoa comentarios inadecuados, por favor [[Special:Userlogin|cree unha conta]] para evitar futuras confusións con outros usuarios anónimos.''",
 'noarticletext'             => 'Actualmente non existe texto nesta páxina. Pode [[Special:Search/{{PAGENAME}}|procurar polo título desta páxina]] noutras páxinas ou [{{fullurl:{{FULLPAGENAME}}|action=edit}} editala].',
@@ -692,7 +713,7 @@ Outros administradores deste wiki poderán acceder aínda ao contido oculto e po
 
 # Search results
 'searchresults'         => 'Resultados da procura',
-'searchresulttext'      => 'Para máis información sobre como realizar procuras en {{SITENAME}}, vexa [[{{MediaWiki:helppage}}|{{int:help}}]].',
+'searchresulttext'      => 'Para máis información sobre como realizar procuras en {{SITENAME}}, vexa [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "A súa busca de '''[[:$1]]'''",
 'searchsubtitleinvalid' => "A súa busca de '''$1'''",
 'noexactmatch'          => "'''Non hai ningunha páxina titulada \"\$1\".''' Pode [[:\$1|creala]].",
@@ -890,7 +911,7 @@ Para incluir unha imaxe na páxina, use unha ligazón do seguinte xeito:
 Nome do ficheiro que tenta cargar: <strong><tt>$1</tt></strong><br />
 Nome de ficheiro que hai: <strong><tt>$2</tt></strong><br />
 A única diferenza é o uso de minúsculas/maiúsculas na extensión. Por favor comprobe se se trata dun ficheiro diferente e cárgueo con outro nome.',
-'fileexists-thumb'            => "'''<center>Imaxe existente</center>'''",
+'fileexists-thumb'            => "<center>'''Imaxe existente'''</center>",
 'fileexists-thumbnail-yes'    => 'Parece que o ficheiro é unha imaxe de tamaño reducido <i>(miniatura)</i>. Comprobe o ficheiro <strong><tt>$1</tt></strong>.<br />
 Se o ficheiro seleccionado é a mesma imaxe de tamaño orixinal non é preciso enviar unha miniatura adicional.',
 'file-thumbnail-no'           => 'O nome do ficheiro comeza por <strong><tt>$1</tt></strong>. Parece tratarse dunha imaxe de tamaño reducido <i>(miniatura)</i>.
@@ -1029,6 +1050,10 @@ PICT # misc.
 'unusedtemplatestext' => "Esta páxina contén unha listaxe de todas as páxinas no espazo de nomes ''template'' que non están incluídas en ningunha outra páxina. Lembre verificar outros enlaces cara os ''templates'' antes de borralos.",
 'unusedtemplateswlh'  => 'outros enlaces',
 
+# Random page
+'randompage'         => 'Páxina aleatoria',
+'randompage-nopages' => 'Non hai páxinas neste espazo de nomes.',
+
 # Random redirect
 'randomredirect'         => 'Redirección aleatoria',
 'randomredirect-nopages' => 'Non hai redireccións neste espazo de nomes.',
@@ -1097,8 +1122,6 @@ Cada fileira contén ligazóns cara á primeira e segunda redirección, e tamén
 'mostrevisions'           => 'Artigos con máis revisións',
 'allpages'                => 'Todas as páxinas',
 'prefixindex'             => 'Mostrar páxinas clasificadas polas letras iniciais',
-'randompage'              => 'Páxina aleatoria',
-'randompage-nopages'      => 'Non hai páxinas neste espazo de nomes.',
 'shortpages'              => 'Páxinas curtas',
 'longpages'               => 'Páxinas longas',
 'deadendpages'            => 'Páxinas sen ligazóns cara a outras',
@@ -1273,7 +1296,7 @@ Feedback e axuda:
 'confirmdelete'               => 'Confirmar borrado',
 'deletesub'                   => '(Borrando "$1")',
 'historywarning'              => 'Atención: A páxina que está a borrar ten un historial:',
-'confirmdeletetext'           => 'Está a piques de borrar de xeito permanente unha páxina ou imaxe con todo o seu historial na base de datos. Por favor, confirme que é realmente a súa intención, que comprende as consecuencias e que está obrando de acordo coas regras da [[{{MediaWiki:policy-url}}]].',
+'confirmdeletetext'           => 'Está a piques de borrar de xeito permanente unha páxina ou imaxe con todo o seu historial na base de datos. Por favor, confirme que é realmente a súa intención, que comprende as consecuencias e que está obrando de acordo coas regras da [[{{MediaWiki:Policy-url}}]].',
 'actioncomplete'              => 'A acción foi completada',
 'deletedtext'                 => '"$1" foi borrado. 
 En $2 pode ver unha listaxe dos borrados recentes.',
@@ -1427,7 +1450,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => 'Bloqueo de usuario',
-'blockiptext'                 => 'Use o seguinte formulario para bloquear o acceso de escritura desde un enderezo IP ou para bloquear a un usuario específico. Isto debería facerse só para previr vandalismo, e de acordo coa [[{{MediaWiki:policy-url}}|política e normas]] vixentes. Explique a razón específica do bloqueo (por exemplo, citando as páxinas concretas que sufriron vandalismo).',
+'blockiptext'                 => 'Use o seguinte formulario para bloquear o acceso de escritura desde un enderezo IP ou para bloquear a un usuario específico. Isto debería facerse só para previr vandalismo, e de acordo coa [[{{MediaWiki:Policy-url}}|política e normas]] vixentes. Explique a razón específica do bloqueo (por exemplo, citando as páxinas concretas que sufriron vandalismo).',
 'ipaddress'                   => 'Enderezo IP/nome de usuario',
 'ipadressorusername'          => 'Enderezo IP ou nome do usuario:',
 'ipbexpiry'                   => 'Duración:',
@@ -1494,9 +1517,9 @@ a un enderezo IP ou usuario que estea bloqueado.',
 'range_block_disabled'        => 'A funcionalidade de administrador de crear rangos de bloqueos está deshabilitada.',
 'ipb_expiry_invalid'          => 'Tempo de duración non válido.',
 'ipb_already_blocked'         => '"$1" xa está bloqueado',
+'ipb_cant_unblock'            => 'Erro: Non se atopa o Block ID $1. Posiblemente xa foi desbloqueado.',
 'ip_range_invalid'            => 'Rango IP non válido.',
 'proxyblocker'                => 'Bloqueador de proxy',
-'ipb_cant_unblock'            => 'Erro: Non se atopa o Block ID $1. Posiblemente xa foi desbloqueado.',
 'proxyblockreason'            => 'O seu enderezo de IP foi bloqueado porque é un proxy aberto. Por favor contacte co seu fornecedor de acceso a internet ou co seu soporte técnico e informe deste grave problema de seguridade.',
 'proxyblocksuccess'           => 'Feito.',
 'sorbsreason'                 => "O seu enderezo IP está rexistrado na listaxe DNSBL como un ''proxy'' aberto.",
@@ -1588,7 +1611,7 @@ O artigo de destino "[[$1]]" xa existe. Quéreo eliminar para facer sitio para m
 
 Para exportar páxinas, insira os títulos na caixa de texto que está máis abaixo, poñendo un título por liña, e se quere seleccione a versión actual e todas as versións vellas, coas liñas do historial da páxina, ou só a versión actual con información sobre a última edición.
 
-No último caso, pode usar tamén unha ligazón, por exemplo [[{{ns:Special}}:Export/{{MediaWiki:mainpage}}]], para a páxina "[[{{MediaWiki:mainpage}}]]".',
+No último caso, pode usar tamén unha ligazón, por exemplo [[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]], para a páxina "[[{{MediaWiki:Mainpage}}]]".',
 'exportcuronly'     => 'Incluír só a revisión actual, non o historial completo',
 'exportnohistory'   => "---- 
 '''Aviso:''' Foi desactivada a exportación do historial completo das páxinas con este formulario debido a razóns relacionadas co rendemento do servidor.",

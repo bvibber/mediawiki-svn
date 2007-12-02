@@ -1,6 +1,5 @@
 <?php
-/**
- * Tajik (Тоҷикӣ)
+/** Tajik (Тоҷикӣ)
  *
  * @addtogroup Language
  *
@@ -8,6 +7,9 @@
  * @author SPQRobin
  * @author Gangleri
  * @author Soroush
+ * @author G - ג
+ * @author FrancisTyers
+ * @author Siebrand
  */
 
 $namespaceNames = array(
@@ -29,6 +31,36 @@ $namespaceNames = array(
 	NS_HELP_TALK      => "Баҳси_роҳнамо",
 	NS_CATEGORY       => "Гурӯҳ",
 	NS_CATEGORY_TALK  => "Баҳси_гурӯҳ",
+);
+
+$datePreferences = array(
+	'default',
+	'dmy',
+	'persian',
+	'ISO 8601',
+);
+
+$defaultDateFormat = 'dmy';
+
+$datePreferenceMigrationMap = array(
+	'default',
+	'default',
+	'default',
+	'default'
+);
+
+$dateFormats = array(
+	'dmy time' => 'H:i',
+	'dmy date' => 'j xg Y',
+	'dmy both' => 'H:i، j xg Y',
+
+	'persian time' => 'H:i',
+	'persian date' => 'xij xiF xiY',
+	'persian both' => 'H:i، xij xiF xiY',
+
+	'ISO 8601 time' => 'xnH:xni:xns',
+	'ISO 8601 date' => 'xnY-xnm-xnd',
+	'ISO 8601 both' => 'xnY-xnm-xnd"T"xnH:xni:xns',
 );
 
 $linkTrail = '/^([a-zабвгдеёжзийклмнопрстуфхчшъэюяғӣқўҳҷцщыь]+)(.*)$/sDu';
@@ -69,13 +101,13 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'     => 'Дар бораи {{SITENAME}}',
-'aboutpage'     => '{{ns:project}}:Дар бораи',
+'aboutpage'     => 'Project:Дар бораи',
 'currentevents' => 'Вокеаҳои кунунӣ',
 'mainpage'      => 'Саҳифаи Аслӣ',
 'portal'        => 'Вуруди корбарон',
 'sitesupport'   => 'Кӯмаки молӣ',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'     => 'Мақола',
 'nstab-user'     => 'Саҳифаи корбар',
 'nstab-template' => 'Шаблон',
@@ -112,9 +144,11 @@ $messages = array(
 'ilsubmit'       => 'Ҷустуҷӯи',
 'imagelist_user' => 'Корбар',
 
+# Random page
+'randompage' => 'Саҳифаҳои тасодуфӣ',
+
 # Miscellaneous special pages
 'allpages'     => 'Ҳамаи саҳифаҳо',
-'randompage'   => 'Саҳифаҳои тасодуфӣ',
 'specialpages' => 'Саҳифаҳои вижа',
 'ancientpages' => 'Саҳифаҳои кӯҳнатарин',
 'move'         => 'Кӯчонидан',
@@ -172,5 +206,19 @@ $messages = array(
 
 # Auto-summaries
 'autosumm-new' => 'Саҳифаи нав: $1',
+
+# Iranian month names
+'iranian-calendar-m1'  => 'Ҳамал',
+'iranian-calendar-m2'  => 'Савр',
+'iranian-calendar-m3'  => 'Ҷавзо',
+'iranian-calendar-m4'  => 'Саратон',
+'iranian-calendar-m5'  => 'Асад',
+'iranian-calendar-m6'  => 'Сунбула',
+'iranian-calendar-m7'  => 'Мизон',
+'iranian-calendar-m8'  => 'Ақраб',
+'iranian-calendar-m9'  => 'Қавс',
+'iranian-calendar-m10' => 'Ҷадӣ',
+'iranian-calendar-m11' => 'Далв',
+'iranian-calendar-m12' => 'Ҳут',
 
 );
