@@ -72,6 +72,10 @@ $wgLuceneSearchMessages['bcl'] = array(
 	'searchincategory'      => 'sakategorya',
 );
 
+$wgLuceneSearchMessages['br'] = array(
+	'searchnoresults'       => 'Siwazh deoc\'h, n\'eus ket bet kavet respont ebet o klotañ-rik gant ho koulenn.',
+);
+
 $wgLuceneSearchMessages['ca'] = array(
 	'searchnumber'          => '<strong>Resultats $1-$2 de $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Anterior</span>',
