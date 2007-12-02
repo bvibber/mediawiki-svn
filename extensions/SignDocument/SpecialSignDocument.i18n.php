@@ -202,6 +202,10 @@ $allMessages = array(
 		'sign-viewfield-reviewcomment' => 'Komento',
 		'sign-review-comment' => 'Komento',
 	),
+	'bg' => array(
+		'sign-viewfield-phone' => 'Телефон',
+		'sign-viewfield-reviewcomment' => 'Коментар',
+	),
 	'el' => array(
 		'sign-realname' => 'Όνομα:',
 		'sign-city' => 'Πόλη:',

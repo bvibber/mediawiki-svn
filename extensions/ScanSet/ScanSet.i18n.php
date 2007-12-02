@@ -20,3 +20,22 @@ $messages['en'] = array(
 	'scanset_next' => 'Next &gt;',
 	'scanset_prev' => '&lt; Prev',
 );
+
+$messages['ar'] = array(
+	'scanset_no_name' => 'سكان مجموعة: يجب عليك تحديد اسم سكان مجموعة، مثال &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'سكان مجموعة: سكان مجموعة غير صحيحة أو ناقصة.',
+	'scanset_unrecognised_index_format' => 'سكان مجموعة: صيغة فهرس غير معروفة',
+	'scanset_opendir_error' => 'سكان مجموعة: خطأ، لا يمكن فتح المجلد $1',
+	'scanset_no_files' => 'سكان مجموعة: لا توجد ملفات في المجلد المحدد.',
+	'scanset_no_volumes' => 'سكان مجموعة: لا توجد مجلدات حجم',
+	'scanset_missing_index_file' => 'سكان مجموعة: ملف الفهرس $1 لم يتم العثور عليه',
+	'scanset_index_file_error' => 'سكان مجموعة: خطأ في صيغة ملف الفهرس عند السطر $1',
+	'scanset_invalid_volume' => 'سكان مجموعة: حجم غير صحيح',
+	'scanset_next' => 'التالي &gt;',
+	'scanset_prev' => '&lt; السابق',
+);
+
+$messages['nl'] = array(
+	'scanset_next' => 'Volgende &gt;',
+	'scanset_prev' => '&lt; Vorige',
+);

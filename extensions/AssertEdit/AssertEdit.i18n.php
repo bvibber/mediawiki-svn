@@ -27,6 +27,11 @@ $messages['frp'] = array(
 	'assert_edit_message' => 'L’entrebetâ endicâ ($1) at pas reussia.',
 );
 
+$messages['hr'] = array(
+	'assert_edit_title'   => 'Neuspjelo potvrđivanje',
+	'assert_edit_message' => 'Specificirano potvrđivanje ($1) nije uspjelo.',
+);
+
 $messages['hsb'] = array(
 	'assert_edit_title'   => 'Twjerdźenje njeporadźiło',
 	'assert_edit_message' => 'Podate twjerdźenje ($1) je so njeporadźiło.',

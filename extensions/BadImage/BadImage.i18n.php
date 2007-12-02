@@ -76,6 +76,12 @@ function efBadImageMessages() {
 	'badimages-log-remove' => 'Pighalî an [[$1]] sa lista kan salang ladawan',
 ),
 
+'bg' => array(
+	'badimages-add-btn' => 'Добавяне',
+	'badimages-reason' => 'Причина:',
+	'badimages-remove-btn' => 'Премахване',
+),
+
 'br' => array(
 	'badimages' => 'Roll ar skeudennoù fall',
 	'badimages-add-btn' => 'Ouzhpennañ',

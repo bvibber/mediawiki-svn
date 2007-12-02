@@ -34,6 +34,33 @@ $messages['en'] = array(
 	'spamregex-summary-log' => '(Summary)',
 );
 
+$messages['ar'] = array(
+	'spamregex' => 'سبام ريجيكس',
+	'spamregex_summary' => 'النص تم العثور عليه في ملخص المقالة.',
+	'spamregex-intro' => 'استخدم هذه الاستمارة لمنع تعبيرات من الحفظ في نص صفحة بكفاءة. لو أن النص يحتوي على التعبير المعطى، لن يتم حفظ التغيير وسيتم عرض تفسير للمستخدم الذي حاول حفظ الصفحة. ينصح بالحذر، التعبيرات لا ينبغي أن تكون قصيرة جدا أو شائعة جدا.',
+	'spamregex-page-title' => 'منع سبام ريجيكس التعبيرات غير المرغوب فيها',
+	'spamregex-currently-blocked' => '\'\'\'العبارات الممنوعة حاليا:\'\'\'',
+	'spamregex-no-currently-blocked' => '\'\'\'لا توجد عبارات ممنوعة.\'\'\'',
+	'spamregex-log-1' => '* \'\'\'$1\'\'\' $2 ([{{SERVER}}$3&text=$4 إزالة]) تمت إضافتها بواسطة',
+	'spamregex-log-2' => ' في $1',
+	'spamregex-page-title-1' => 'منع عبارة باستخدام التعبيرات المنتظمة',
+	'spamregex-unblock-success' => 'رفع المنع نجح',
+	'spamregex-unblock-message' => 'العبارة \'\'\'$1\'\'\' تم رفع المنع عنها ضد التحرير.',
+	'spamregex-page-title-2' => 'منع العبارات من الحفظ باستخدام التعبيرات المنتظمة',
+	'spamregex-block-success' => 'المنع نجح',
+	'spamregex-block-message' => 'العبارة \'\'\'$1\'\'\' تم منعها.',
+	'spamregex-warning-1' => 'أعط عبارة للمنع.',
+	'spamregex-error-1' => 'تعبير منتظم غير صحيح.',
+	'spamregex-warning-2' => 'من فضلك علم على نمط منع واحد على الأقل.',
+	'spamregex-already-blocked' => '"$1" ممنوعة بالفعل',
+	'spamregex-phrase-block' => 'العبارة للمنع:',
+	'spamregex-phrase-block-text' => 'منع عبارة في نص مقالة',
+	'spamregex-phrase-block-summary' => 'منع عبارة في ملخص',
+	'spamregex-block-submit' => 'منع&nbsp;هذه&nbsp;العبارة',
+	'spamregex-text' => '(نص)',
+	'spamregex-summary-log' => '(ملخص)',
+);
+
 $messages ['fr'] = array(
 	'spamregex' => 'Expressions régulières de Spams',
 	'spamregex_summary' => 'Le texte en question a été détecté dans le commentaire de la page.',

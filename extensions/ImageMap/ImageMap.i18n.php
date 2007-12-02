@@ -136,7 +136,7 @@ function efImageMapMessages() {
 	'imagemap_no_areas'             => '&lt;imagemap&gt;: najmanje jedna specifikacija područja mora biti zadana',
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: nevaljane koordinate u retku $1, mora biti broj',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: nevaljan opis, mora biti jedan od: <tt>$1</tt>',
-	'imagemap_description'          => 'O ovoj slici',
+	'imagemap_description'          => 'Ovo je slika/karta s poveznicama (\'\'imagemap\'\')',
 ),
 
 'hsb' => array(

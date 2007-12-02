@@ -186,6 +186,10 @@ $wgBoardVoteMessages['bcl'] = array(
 	'boardvote_blocked'       => 'Despensa, pigbágat ka sa pagrehistrohan mong wiki. An mga pigbágat na parágamit dai pigtotogotan na makaboto.',
 	'boardvote_welcome'       => 'Dagos \'\'\'$1\'\'\'!',
 );
+$wgBoardVoteMessages['bg'] = array(
+	'boardvote_user'          => 'Потребител',
+	'boardvote_edits'         => 'Редакции',
+);
 $wgBoardVoteMessages['br'] = array(
 	'boardvote'               => 'Dilennadeg Kuzul-merañ Diazezadur Wikimedia',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Vot]]

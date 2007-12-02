@@ -45,6 +45,12 @@ function efBookInformationMessages() {
 	'bookinfo-result-year' => 'Taon:',
 ),
 
+'bg' => array(
+	'bookinfo-result-title' => 'Заглавие:',
+	'bookinfo-result-author' => 'Автор:',
+	'bookinfo-result-year' => 'Година:',
+),
+
 'br' => array(
 	'bookinfo-header' => 'Titouroù war al levr',
 	'bookinfo-result-title' => 'Titl :',

@@ -53,6 +53,7 @@ Ungeeignete Dateien werden sofort gelöscht, siehe die [[{{MediaWiki:Multipleupl
 );
 
 $messages['el'] = array(
+	'multipleupload'    => 'Επιφόρτιση αρχείων',
 	'multipleupload-saveallfiles' => 'Αποθηκεύστε όλα τα αρχεία',
 );
 

@@ -39,6 +39,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Nakaagi ($1)',
 ),
 
+'bg' => array(
+	'backforth-next' => 'Следващи ($1)',
+	'backforth-prev' => 'Предишни ($1)',
+),
+
 'br' => array(
 	'backforth-next' => 'War-lerc\'h ($1)',
 	'backforth-prev' => 'Kent ($1)',

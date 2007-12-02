@@ -74,6 +74,10 @@ $SpecialFormMessages =array(
 		'formsave' => 'Itagama',
 	),
 
+	'bg' => array(
+		'formsave' => 'Съхранение',
+	),
+
 	'de' => array(
 		'form'                         => 'Formular',
 		'formnoname'                   => 'Kein Formularname',

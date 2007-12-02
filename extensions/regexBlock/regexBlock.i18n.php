@@ -167,6 +167,7 @@ $messages['nl'] = array(
 	'regexblock-form-submit-regex' => 'Ongeldige reguliere expressie.',
 	'regexblock-already-blocked' => '$1 is al geblokkeerd.',
 	'regexblock-stats-username' => 'Voor $1',
+	'regexblock-stats-times' => 'is geblokkeerd op',
 	'regexblock-view-all' => 'Alles',
 	'regexblock-view-go' => 'Gaan',
 	'regexblock-view-reason' => 'reden: $1',

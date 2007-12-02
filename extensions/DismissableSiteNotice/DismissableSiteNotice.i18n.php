@@ -28,6 +28,10 @@ $wgDismissableSiteNoticeMessages['bn'] = array(
 	'sitenotice_close' => 'নোটিশ বন্ধ করুন',
 );
 
+$wgDismissableSiteNoticeMessages['br'] = array(
+	'sitenotice_close' => 'kuzhat',
+);
+
 $wgDismissableSiteNoticeMessages['ca'] = array(
 	'sitenotice_close' => 'amaga',
 );

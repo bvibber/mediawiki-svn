@@ -140,6 +140,20 @@ function efUsernameBlacklistMessages( $single = false ) {
 	'blacklistedusernametext' => 'Ngì só sién-chet ke yung-fu-miàng he lâu [[MediaWiki:Usernameblacklist|Yung-fu-miàng het-miàng-tân lie̍t-péu]] fù-ha̍p. Chhiáng sién-chet nang-ngoi yit-ke miàng-chhṳ̂n.',
 ),
 
+'hr' => array(
+	'blacklistedusername' => 'Nedozvoljeno suradničko ime',
+	'blacklistedusernametext' => 'Ime koje ste izabrali je na popisu [[MediaWiki:Usernameblacklist|nedozvoljenih imena]]. Molimo izaberite drugo ime.',
+	'usernameblacklist' => '<pre>
+# Zapisi u ovom popisu će biti rabljeni kao dio regularnog izraza pri
+# provjeravanju suradničkih imena pri prijavljivanju/registraciji. Svako ime treba navesti kao dio
+# popisa, npr:
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|$1 slijedeći redak|Slijedeća $1 retka|Slijedećih $1 redova}} u popisu zabranjenih suradničkih imena {{PLURAL:$1|je nevaljan|su nevaljana|je nevaljano}}; molimo ispravite {{PLURAL:$1|ga|ih|ih}} prije snimanja:',
+),
+
 'hsb' => array(
 	'blacklistedusername' => 'Tute wužiwarske mjeno steji na čornej lisćinje.',
 	'blacklistedusernametext' => 'Wubrane wužiwarske mjeno steji na [[MediaWiki:Usernameblacklist|čornej lisćinje wužiwarskich mjenow]]. Prošu wubjer druhe mjeno.',

@@ -68,8 +68,12 @@ riddler|Riddler",
 	'vote-login-link' => 'maglaog',
 ),
 
+'bg' => array(
+	'vote-submit' => 'Гласуване',
+),
+
 'br' => array(
-'vote' => 'Votiñ',
+	'vote' => 'Votiñ',
 	'vote-current' => 'Votet hoc\'h eus evit \'\'\'$1\'\'\'.',
 	'vote-registered' => 'Enrollet eo bet ho vot.',
 	'vote-view-results' => 'Gwelet an disoc\'hoù',

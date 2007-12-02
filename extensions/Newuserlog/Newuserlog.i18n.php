@@ -39,6 +39,9 @@ $wgNewuserlogMessages['ar'] = array(
 $wgNewuserlogMessages['bcl'] = array(
 	'newuserlog-create-entry'  => 'Bâgong parágamit',
 );
+$wgNewuserlogMessages['br'] = array(
+	'newuserlog-create-entry'  => 'Implijer nevez',
+);
 $wgNewuserlogMessages['ca'] = array(
 	'newuserlogpage'           => 'Registre de creació de l\'usuari',
 	'newuserlogpagetext'       => 'Aquest és un registre de creació de nous usuaris',

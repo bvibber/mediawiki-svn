@@ -40,9 +40,11 @@ $wgSiteMatrixMessages['be'] = array(
 );
 $wgSiteMatrixMessages['bg'] = array(
 	'sitematrix' => 'Списък на уикитата на Уикимедия',
+	'sitematrix-language' => 'Език',
 );
 $wgSiteMatrixMessages['br'] = array(
 	'sitematrix' => 'Roll holl raktresoù Wikimedia',
+	'sitematrix-language' => 'Yezh',
 );
 $wgSiteMatrixMessages['ca'] = array(
 	'sitematrix' => 'Llista de tots els projectes en els diferents idiomes.',
@@ -103,6 +105,9 @@ $wgSiteMatrixMessages['gl'] = array(
 	'sitematrix-language' => 'Linguaxe',
 	'sitematrix-project' => 'Nome do proxecto, ligazón entre proxectos e ligazón entre wikis',
 	'sitematrix-others' => 'Outros proxectos de Wikimedia',
+);
+$wgSiteMatrixMessages['grc'] = array(
+	'sitematrix-language' => 'γλωσσα',
 );
 $wgSiteMatrixMessages['he'] = array(
 	'sitematrix'          => 'רשימת אתרי ויקי של ויקימדיה',
