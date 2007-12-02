@@ -6,10 +6,6 @@
  * @addtogroup Extensions
 */
 
-$messages = array();
-
-$messages['en'] = array(
-
 $messages= array();
 
 $messages['en'] = array(
