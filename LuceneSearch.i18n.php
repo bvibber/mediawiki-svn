@@ -788,6 +788,14 @@ $wgLuceneSearchMessages['wa'] = array(
 	'lucenepowersearchtext' => 'Cweraedje dins les espåces di lomaedje: $1 <br />
 Cweraedje di: $3 $9 $10',
 );
+$wgLuceneSearchMessages['wuu'] = array(
+	'searchnoresults'       => "对弗起，寻弗着搭倷个要求完全匹配个结果。",
+	'searchnearmatch'       => "<li>$1</li>\n",
+	'lucenepowersearchtext' => "
+拉名字空间里向寻：\n
+$1\n
+寻：$3 $9 $10",
+);
 $wgLuceneSearchMessages['yue'] = array(
 	'searchnumber'          => "<strong>一共有$3項搜尋結果，以下係第$1-$2項結果</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>上一版</span>",
