@@ -12,14 +12,14 @@
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or 
+ the Free Software Foundation; either version 2 of the License, or
  (at your option) any later version.
- 
+
  This program is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License along
  with this program; if not, write to the Free Software Foundation, Inc.,
  59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
@@ -51,10 +51,10 @@ $wgExtensionCredits['parserhook'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Intersection'
 );
 
- 
+
 function wfDynamicPageList() {
     global $wgParser, $wgMessageCache;
-   
+
     $wgMessageCache->addMessages( array(
 					'dynamicpagelist_toomanycats' => 'DynamicPageList: Too many categories!',
 					'dynamicpagelist_toofewcats' => 'DynamicPageList: Too few categories!',
@@ -65,7 +65,7 @@ function wfDynamicPageList() {
 
     $wgParser->setHook( "DynamicPageList", "DynamicPageList" );
 }
- 
+
 // The callback function for converting the input text to HTML output
 function DynamicPageList( $input ) {
     global $wgUser;
@@ -73,7 +73,7 @@ function DynamicPageList( $input ) {
     global $wgContLang;
     global $wgDLPminCategories, $wgDLPmaxCategories,$wgDLPMinResultCount, $wgDLPMaxResultCount;
     global $wgDLPAllowUnlimitedResults, $wgDLPAllowUnlimitedCategories;
-     
+
     $aParams = array();
     $bCountSet = false;
 
@@ -92,7 +92,7 @@ function DynamicPageList( $input ) {
     $bSuppressErrors = false;
     $bShowNamespace = true;
     $bAddFirstCategoryDate = false;
-    
+
     $aCategories = array();
     $aExcludeCategories = array();
 
@@ -113,14 +113,14 @@ function DynamicPageList( $input ) {
         $title = Title::newFromText( $parser->transformMsg($sArg, $poptions) );
         if( is_null( $title ) )
           continue;
-        $aCategories[] = $title; 
+        $aCategories[] = $title;
       }
       else if ($sType == 'notcategory')
       {
         $title = Title::newFromText( $parser->transformMsg($sArg, $poptions) );
         if( is_null( $title ) )
           continue;
-        $aExcludeCategories[] = $title; 
+        $aExcludeCategories[] = $title;
       }
       else if ('namespace' == $sType)
       {
@@ -282,7 +282,7 @@ function DynamicPageList( $input ) {
         $bCountSet = true;
       }
     }
-    
+
     //disallow showing date if the query doesn't have an inclusion category parameter
     if ($iCatCount < 1)
       $bAddFirstCategoryDate = false;
@@ -298,7 +298,7 @@ function DynamicPageList( $input ) {
       $sSqlWhere = ' WHERE page_namespace='.$iNamespace.' ';
     else
       $sSqlWhere = ' WHERE 1=1 ';
-      
+
     switch ($sRedirects)
     {
       case 'only':
@@ -342,32 +342,32 @@ function DynamicPageList( $input ) {
       $sSqlWhere .= ' ORDER BY c1.cl_timestamp ';
 
     $sSqlWhere .= $sSqlOrder;
-    
+
 
     if ($bCountSet)
     {
       $sSqlWhere .= ' LIMIT ' . $iCount;
     }
 
-    //DEBUG: output SQL query 
-    //$output .= 'QUERY: [' . $sSqlSelectFrom . $sSqlWhere . "]<br />";    
+    //DEBUG: output SQL query
+    //$output .= 'QUERY: [' . $sSqlSelectFrom . $sSqlWhere . "]<br />";
 
     // process the query
     $res = $dbr->query($sSqlSelectFrom . $sSqlWhere);
-	
+
     $sk =& $wgUser->getSkin();
 
-    if ($dbr->numRows( $res ) == 0) 
+    if ($dbr->numRows( $res ) == 0)
     {
       if (false == $bSuppressErrors)
 	return htmlspecialchars( wfMsg( 'dynamicpagelist_noresults' ) );
       else
 	return '';
     }
-    
+
     //start unordered list
     $output .= $sStartList . "\n";
-	
+
     //process results of query, outputing equivalent of <li>[[Article]]</li> for each result,
     //or something similar if the list uses other startlist/endlist
     while ($row = $dbr->fetchObject( $res ) ) {
