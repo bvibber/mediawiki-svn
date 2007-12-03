@@ -1,8 +1,8 @@
 <?php
-
-# This is a simple debugging tool to inspect the contents of the shared cache
-# It is unrestricted and insecure, do not enable it on a public site.
-
+/*
+ * This is a simple debugging tool to inspect the contents of the shared cache
+ * It is unrestricted and insecure, do not enable it on a public site.
+ */
 
 # Not a valid entry point, skip unless MEDIAWIKI is defined
 if (!defined('MEDIAWIKI')) {
@@ -10,7 +10,15 @@ if (!defined('MEDIAWIKI')) {
 	exit(1);
 }
 
-require_once( dirname(__FILE__) . '/../ExtensionFunctions.php' );
-extAddSpecialPage( dirname(__FILE__) . '/InspectCache_body.php', 'InspectCache', 'InspectCache' );
+$wgExtensionCredits['specialpage'][] = array(
+	'version'     => '0.2',
+	'name'        => 'InspectCache',
+	'author'      => 'Tim Starling, Brion Vibber',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:InspectCache',
+	'description' => 'A simple debugging tool to inspect the contents of the shared cache',
+);
 
-
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['InspectCache'] = $dir . 'InspectCache.i18n.php';
+require_once( $dir . '../ExtensionFunctions.php' );
+extAddSpecialPage( $dir . 'InspectCache_body.php', 'InspectCache', 'InspectCache' );
