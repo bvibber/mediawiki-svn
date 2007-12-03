@@ -358,7 +358,7 @@ function DynamicPageList( $input ) {
 	}
 
 	//start unordered list
-	$output .= $sStartList . "\n";
+	$output = $sStartList . "\n";
 
 	//process results of query, outputing equivalent of <li>[[Article]]</li> for each result,
 	//or something similar if the list uses other startlist/endlist
