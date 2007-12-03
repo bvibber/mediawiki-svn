@@ -25,3 +25,19 @@ Ce courrier a vous a été envoyé grâce au systeme de messagerie de {{SITENAME
 
 $2',
 );
+
+$messages['no'] = array(
+	'email_footer' => '
+
+----------------------------------------------------------------------------
+Denne e-posten har blitt sendt deg fra $1 via {{SITENAME}}s e-postsystem.',
+);
+
+$messages['sk'] = array(
+	'email_footer' => '
+
+----------------------------------------------------------------------------
+Tento email vám poslal $1 pomocou emailového systému {{GRAMMAR:genitív|{{SITENAME}}}}.
+
+$2',
+);

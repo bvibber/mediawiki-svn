@@ -15,3 +15,7 @@ $messages['en'] = array(
 $messages ['fr'] = array(
 	'usercontactlink-baduser' => 'nom d’utilisateur incorrect',
 );
+
+$messages['nl'] = array(
+	'usercontactlink-baduser' => 'onjuiste gebruikersnaam',
+);

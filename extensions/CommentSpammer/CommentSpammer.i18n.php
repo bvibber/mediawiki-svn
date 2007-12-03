@@ -78,6 +78,14 @@ function efCommentSpammerMessages() {
 	'cspammer-log-page' => 'Spamlogboek',
 ),
 
+'no' => array(
+	'commentspammer-save-blocked' => 'IP-adressa di mistenkes for å være en kommentarforsøpler, så siden kan ikke lagres. [[Special:Userlogin|Logg inn eller opprett en konto]] for å unngå dette.',
+	'commentspammer-log-msg' => 'redigering på [[:$2]] av [[Special:Contributions/$1|$1]].',
+	'commentspammer-log-msg-info' => 'Sist forsøplet for $1 {{PLURAL:$1|dag|dager}} siden, trusselnivået er $2, og fornærmelseskoden er $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Se detaljer] eller [[Special:Blockip/$4|blokkert]].',
+	'cspammerlogpagetext' => 'Register over redigeringer som har blitt godtatt eller nektet basert på hvorvidt kilden var en kjent kommentarforsøpler.',
+	'cspammer-log-page' => 'Kommentarforsøplerlogg',
+),
+
 'oc' => array(
 	'commentspammer-save-blocked' => 'Vòstra adreça IP es la d\'una persona sospechada de crear de spams, la pagina es pas estada salvagardada. [[Special:Userlogin|Conectatz-vos o creatz un compte]] per contornar aqueste interdich.',
 	'commentspammer-log-msg' => 'Modificacions de [[Special:Contributions/$1|$1]] a [[:$2]].',

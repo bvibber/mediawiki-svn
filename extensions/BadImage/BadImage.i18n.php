@@ -585,7 +585,7 @@ function efBadImageMessages() {
 	'badimages' => 'Zoznam zlých obrázkov',
 	'badimages-add-btn' => 'Pridať',
 	'badimages-added' => '$1 bol pridaný do zoznamu.',
-	'badimages-count' => "V zozname zlých obrázkov je '''$1''' obrázkov.",
+	'badimages-count' => 'V zozname zlých obrázkov je \'\'\'$1\'\'\' obrázkov.',
 	'badimages-name' => 'Názov:',
 	'badimages-not-added' => 'Obrázok nebolo možné pridať.',
 	'badimages-not-removed' => 'Obrázok nebolo možné odstrániť.',
@@ -600,6 +600,7 @@ function efBadImageMessages() {
 	'badimages-log-header' => 'Toto je záznam zmien [[{{MediaWiki:Badimages-page}}|Zoznamu zlých obrázkov]].',
 	'badimages-log-add' => '[[$1]] pridaný do zoznamu zlých obrázkov',
 	'badimages-log-remove' => '[[$1]] odstránený zo zoznamu zlých obrázkov',
+	'badimages-page' => '{{ns:help}}:Zoznam zlých obrázkov',
 ),
 
 /* Serbian default (Sasa Stefanovic) */
@@ -720,7 +721,7 @@ function efBadImageMessages() {
 	'badimages' => '壞圖清單',
 	'badimages-add-btn' => '加',
 	'badimages-added' => '加咗$1入壞圖列表度。',
-	'badimages-count' => "壞圖清單有 '''$1'''幅圖。",
+	'badimages-count' => '壞圖清單有 \'\'\'$1\'\'\'幅圖。',
 	'badimages-name' => '名:',
 	'badimages-not-added' => '呢幅圖唔加得。',
 	'badimages-not-removed' => '呢哩幅圖唔減得。',
@@ -735,6 +736,7 @@ function efBadImageMessages() {
 	'badimages-log-header' => '哩道係[[{{MediaWiki:Badimages-page}}|壞圖清單]]嘅修訂。',
 	'badimages-log-add' => '加[[$1]]入壞圖清單',
 	'badimages-log-remove' => '由壞圖清單度減[[$1]]',
+	'badimages-page' => '{{ns:help}}:壞圖清單',
 ),
 
 /* Chinese (Simplified) (Shinjiman) */
@@ -742,7 +744,7 @@ function efBadImageMessages() {
 	'badimages' => '坏图像列表',
 	'badimages-add-btn' => '加入',
 	'badimages-added' => '已经加入 $1 到列表中。',
-	'badimages-count' => "在坏图列表中共有 '''$1''' 幅图像。",
+	'badimages-count' => '在坏图列表中共有 \'\'\'$1\'\'\' 幅图像。',
 	'badimages-name' => '名称:',
 	'badimages-not-added' => '这幅图像不能加入。',
 	'badimages-not-removed' => '这幅图像不能移除。',
@@ -757,6 +759,7 @@ function efBadImageMessages() {
 	'badimages-log-header' => '这是在[[{{MediaWiki:Badimages-page}}|坏图像列表]]中的修订记录。',
 	'badimages-log-add' => '已经加入 [[$1]] 到坏图像列表',
 	'badimages-log-remove' => '已经由坏图像列表中移除 [[$1]]',
+	'badimages-page' => '{{ns:help}}:坏图像列表',
 ),
 
 /* Chinese (Traditional) (Shinjiman) */
@@ -764,7 +767,7 @@ function efBadImageMessages() {
 	'badimages' => '壞圖像列表',
 	'badimages-add-btn' => '加入',
 	'badimages-added' => '已經加入 $1 到列表中。',
-	'badimages-count' => "在壞圖列表中共有 '''$1''' 幅圖像。",
+	'badimages-count' => '在壞圖列表中共有 \'\'\'$1\'\'\' 幅圖像。',
 	'badimages-name' => '名稱:',
 	'badimages-not-added' => '這幅圖像不能加入。',
 	'badimages-not-removed' => '這幅圖像不能移除。',
@@ -779,6 +782,7 @@ function efBadImageMessages() {
 	'badimages-log-header' => '這是在[[{{MediaWiki:Badimages-page}}|壞圖像列表]]中的修訂記錄。',
 	'badimages-log-add' => '已經加入 [[$1]] 到壞圖像列表',
 	'badimages-log-remove' => '已經由壞圖像列表中移除 [[$1]]',
+	'badimages-page' => '{{ns:help}}:壞圖像列表',
 ),
 
 	);

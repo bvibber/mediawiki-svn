@@ -73,6 +73,11 @@ $wgCrossNamespaceLinksMessages['he'] = array(
 	'crossnamespacelinks-summary' => 'דף זה מספק רשימה של קישורים מדפים במרחב השם הראשי לדפים במרחבי שם אחרים (למעט מרחבי השם {{ns:special}}, {{ns:talk}}, {{ns:project}} ו{{ns:template}}), שאינם רצויים לשימוש.',
 	'crossnamespacelinkstext'     => '$1: {{plural:$2|קישור אחד|$2 קישורים}} למרחב $3'
 );
+$wgCrossNamespaceLinksMessages['hr'] = array(
+	'crossnamespacelinks'         => 'Poveznice između imenskih prostora',
+	'crossnamespacelinks-summary' => 'Slijedi popis poveznica sa stranica u glavnom imenskom prostoru prema stranicama u ostalim imenskim prostorima (osim {{ns:special}}, {{ns:talk}}, {{ns:project}} i {{ns:template}}), koje nije preporučljivo rabiti.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|poveznica|poveznice|poveznica}} na imenski prostor $3',
+);
 $wgCrossNamespaceLinksMessages['hsb'] = array(
 	'crossnamespacelinks'         => 'Wotkazy přez mjenowe rumy',
 	'crossnamespacelinks-summary' => 'Tuta specialna strona naliči wotkazy z nastawka we hłownym (nastawkowym) mjenowym rumje do druhich mjenowych rumow (nimo {{ns:special}}, {{ns:talk}}, {{ns:project}} a {{ns:template}}), kotrychž wužiwanje njeje doporučomne.',

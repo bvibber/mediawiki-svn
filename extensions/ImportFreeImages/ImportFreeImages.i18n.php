@@ -82,6 +82,18 @@ function efImportFreeImagesMessages() {
 			'importfreeimages_promptuserforfilename' => 'Gelieve een bestandsnaam op te geven:',
 			'importfreeimages_returntoform' => 'Of, klik <a href=\'$1\'>hier</a> om terug te keren naar uw zoekresultaten',
 		),
+		'no' => array(
+			'importfreeimages'              => 'Imperter frie bilder',
+			'importfreeimages_description'  => 'Denne siden lar deg søke i bilder med riktig lisens på Flickr og importere dem til wikien din.',
+			'importfreeimages_noapikey'     => 'Du har ikke konfigurert API-nøkkelen din for Flickr. For å gjøre det må du skaffe en API-nøkkel [http://www.flickr.com/services/api/misc.api_keys.html herfra] og sette wgFlickrAPIKey i ImportFreeImages.php.',
+			'importfreeimages_nophotosfound' => 'Ingen bilder ble funnet for søket «$1». Prøv igjen.',
+			'importfreeimages_owner'        => 'Opphavsperson',
+			'importfreeimages_importthis'   => 'importer',
+			'importfreeimages_next'         => 'Neste $1',
+			'importfreeimages_filefromflickr' => '$1 av brukeren <b>[$2]</b> fra Flickr. Original URL',
+			'importfreeimages_promptuserforfilename' => 'Skriv inn et målnavn for filen:',
+			'importfreeimages_returntoform' => 'Elle rklikk <a href="$1">her</a> for å gå tilbake til søkeresultatene',
+		),
 	);
 	return $messages;
 }

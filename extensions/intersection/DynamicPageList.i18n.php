@@ -30,9 +30,23 @@ $messages['fr'] = array (
 	'intersection_noincludecats' => 'DynamicPageList : vous avez besoin d’inclure au moins une catégorie, ou préciser un nom d’espace !',
 );
 
+$messages['hsb'] = array(
+	'intersection_toomanycats' => 'DynamicPageList: Přewjele kategorijow!',
+	'intersection_toofewcats' => 'DynamicPageList: Přemało kategorijow!',
+	'intersection_noresults' => 'DynamicPageList: Žane wuslědki!',
+	'intersection_noincludecats' => 'DynamicPageList: Dyrbiš znajmjeńša kednu kategoriju zapřijeć abo mjenowy rum podać!',
+);
+
 $messages['nl'] = array(
 	'intersection_toomanycats' => 'DynamicPageList: Te veel categorieën!',
 	'intersection_toofewcats' => 'DynamicPageList: Te weinig categorieën!',
 	'intersection_noresults' => 'DynamicPageList: Geen resultaten!',
 	'intersection_noincludecats' => 'DynamicPageList: U moet tenminste een categorie of een naamruimte opgeven!',
+);
+
+$messages['no'] = array(
+	'intersection_toomanycats' => 'Dynamisk sideliste: For mange kategorier!',
+	'intersection_toofewcats' => 'Dynamisk sidelist: For få kategorier!',
+	'intersection_noresults' => 'Dynamisk sideliste: Ingen resultater!',
+	'intersection_noincludecats' => 'Dynamisk sideliste: Du må inkludere minst én kategori, eller oppgi et navnerom!',
 );

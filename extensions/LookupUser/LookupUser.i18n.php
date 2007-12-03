@@ -80,3 +80,17 @@ $messages['nl'] = array(
 	'lookupuser_touched' => 'Gebruikersvoorkeuren laatst gewijzigd: $1',
 	'lookupuser_useroptions' => 'Gebruikersopties:',
 );
+
+$messages['no'] = array(
+	'lookupuser' => 'Finn brukerinformasjon',
+	'lookupuser_intro' => 'Skriv inn et brukernavn for å vise brukerens innstillinger.',
+	'lookupuser_nonexistent' => 'Feil: Brukeren eksisterer ikke',
+	'lookupuser_authenticated' => 'E-postbekrefting: $1',
+	'lookupuser_not_authenticated' => 'ikke bekreftet',
+	'lookupuser_id' => 'Bruker-ID: <tt>#$1</tt>',
+	'lookupuser_email' => 'E-post: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname' => 'Virkelig navn: $1',
+	'lookupuser_registration' => 'Registrasjonsdato: $1',
+	'lookupuser_touched' => 'Innstillinger sist endret: $1',
+	'lookupuser_useroptions' => 'Brukervalg:',
+);

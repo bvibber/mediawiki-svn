@@ -179,7 +179,7 @@ $wgAjaxShowEditorsMessages['sv'] = array(
 );
 $wgAjaxShowEditorsMessages['yue'] = array(
 	'ajax-se-title' => '而家編輯緊:',
-	'ajax-se-pending' => '而家重新整理緊 ... (click this box or start editing)',
+	'ajax-se-pending' => '而家重新整理緊 ... (撳一下呢個盒或者開始編輯)',
 	'ajax-se-idling' => '($1秒前)',
 );
 $wgAjaxShowEditorsMessages['zh-hans'] = array(

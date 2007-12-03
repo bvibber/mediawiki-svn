@@ -547,6 +547,18 @@ $messages = array(
 		'ogg-stop' => 'Stopp',
 		'ogg-play-video' => 'Spill av video',
 		'ogg-play-sound' => 'Spill av lyd',
+		'ogg-no-player' => 'Beklager, systemet ditt har ingen medieavspillere som støtter filformatet. Vennligst <a href="http://mediawiki.org/wiki/Extension:OggHandler/Client_download">last ned en avspiller</a> som støtter formatet.',
+		'ogg-no-xiphqt' => 'Du har ingen XiphQT-komponent for QuickTime. QuickTime kan ikke spille Ogg-filer uten denne komponenten. <a href="http://mediawiki.org/wiki/Extension:OggHandler/Client_download">last ned XiphQT</a> eller velg en annen medieavspiller.',
+		'ogg-player-videoElement' => '<video>-element',
+		'ogg-player-oggPlugin' => 'Ogg-plugin',
+		'ogg-player-thumbnail' => 'Kun stillbilder',
+		'ogg-player-soundthumb' => 'Ingen medieavspiller',
+		'ogg-player-selected' => '(valgt)',
+		'ogg-use-player' => 'Bruk avspiller:',
+		'ogg-more' => 'Mer...',
+		'ogg-dismiss' => 'Lukk',
+		'ogg-download' => 'Last ned fil',
+		'ogg-desc-link' => 'Om denne filen',
 	),
 
 	'oc' => array(

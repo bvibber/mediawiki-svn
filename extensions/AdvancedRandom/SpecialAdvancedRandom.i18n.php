@@ -39,6 +39,26 @@ $messages['nl'] = array(
 	'advancedrandom' => 'Willekeurige pagina (geavanceerd)',
 );
 
+$messages['no'] = array(
+	'advancedrandom' => 'Avansert tilfeldig side',
+);
+
 $messages['pt'] = array(
 	'advancedrandom' => 'Acesso aleatório avançado',
+);
+
+$messages['sk'] = array(
+	'advancedrandom' => 'Rozšírený náhodný výber',
+);
+
+$messages['yue'] = array(
+	'advancedrandom' => '進階隨便',
+);
+
+$messages['zh-hans'] = array(
+	'advancedrandom' => '高级随机',
+);
+
+$messages['zh-hant'] = array(
+	'advancedrandom' => '進階隨機',
 );

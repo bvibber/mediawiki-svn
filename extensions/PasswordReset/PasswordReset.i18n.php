@@ -121,6 +121,19 @@ $allMessages = array(
 		'passwordreset-success' => 'Wachtwoord voor gebruikers-ID $1 is opnieuw ingesteld',
 	),
 
+	'no' => array(
+		'passwordreset' => 'Passordresetting',
+		'passwordreset-invalidusername' => 'Ugyldig brukernavn',
+		'passwordreset-emptyusername' => 'Tomt brukernavn',
+		'passwordreset-nopassmatch' => 'Passordene er ikke de samme',
+		'passwordreset-badtoken' => 'Ugyldig redigeringstegn',
+		'passwordreset-username' => 'Brukernavn',
+		'passwordreset-newpass' => 'Nytt passord',
+		'passwordreset-confirmpass' => 'Bekreft passord',
+		'passwordreset-submit' => 'Resett passord',
+		'passwordreset-success' => 'Passordet for brukeren «$1» har blitt resatt.',
+	),
+
 	'oc' => array(
 		'passwordreset' => 'Remesa a zèro del senhal',
 		'passwordreset-invalidusername' => 'Nom d\'utilizaire desconegut',

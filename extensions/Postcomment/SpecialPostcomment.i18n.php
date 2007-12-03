@@ -70,3 +70,17 @@ $messages['nl'] = array(
 	'postcomment_invalidrequest' => 'Ongeldige aanvraag.',
 	'postcomment_replyto' => 'Antwoorden aan $1',
 );
+
+$messages['no'] = array(
+	'postcomment_discussionprotected' => 'Denne diskusjonssiden har blitt beskyttet fra videre posting.',
+	'postcomment_notloggedin' => 'Du er ikke logget inn.',
+	'postcomment_youareloggedinas' => 'Du er logget inn som $1',
+	'postcomment_addcommentdiscussionpage' => 'Legg til din kommentar på denne diskusjonssiden',
+	'postcomment_leavemessagefor' => 'Legg igjen en beskjed til $1',
+	'postcomment_post' => 'Post',#identical but defined
+	'postcomment_on' => 'På',
+	'postcomment_said' => 'sa',
+	'postcomment_invalidrequest' => 'Ugyldig forespørsel.',
+	'postcomment_replyto' => 'Svar på $1',
+	'postcomment_nopostingtoadd' => 'Ingen postinger å legge til.',
+);

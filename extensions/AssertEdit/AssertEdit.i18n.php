@@ -41,3 +41,23 @@ $messages['pt'] = array(
 	'assert_edit_title'   => 'A asserção falhou',
 	'assert_edit_message' => 'A asserção especificada ($1) falhou.',
 );
+
+$messages['sk'] = array(
+	'assert_edit_title'   => 'Predpoklad zlyhal',
+	'assert_edit_message' => 'Uvedený predpoklad ($1) zlyhal.',
+);
+
+$messages['yue'] = array(
+	'assert_edit_title'   => '維護失敗',
+	'assert_edit_message' => '所指定嘅斷言 ($1) 失敗。',
+);
+
+$messages['zh-hans'] = array(
+	'assert_edit_title'   => '维护失败',
+	'assert_edit_message' => '所指定的断言 ($1) 失败。',
+);
+
+$messages['zh-hant'] = array(
+	'assert_edit_title'   => '維護失敗',
+	'assert_edit_message' => '所指定的斷言 ($1) 失敗。',
+);

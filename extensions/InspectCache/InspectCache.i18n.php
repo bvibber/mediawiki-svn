@@ -28,3 +28,29 @@ $messages ['fr'] = array(
 	'inspectcache-delete' => 'Supprimer',
 	'inspectcache-deleted' => 'Cache supprimé',
 );
+
+$messages['nl'] = array(
+	'inspectcache-delete' => 'Verwijderen',
+);
+
+$messages['no'] = array(
+	'inspectcache' => 'Inspiser mellomlagring',
+	'inspectcache-ok' => 'OK',#identical but defined
+	'inspectcache-general' => 'Generell mellomlagring',
+	'inspectcache-parser' => 'Parsermellomlagring',
+	'inspectcache-message' => 'Mellomlagring av meldinger',
+	'inspectcache-get' => 'Skaff',
+	'inspectcache-delete' => 'Slett',
+	'inspectcache-deleted' => 'Slettet mellomlagring',
+);
+
+$messages['sk'] = array(
+	'inspectcache' => 'Inšpekcia vyrovnávacej pamäte',
+	'inspectcache-ok' => 'OK',#identical but defined
+	'inspectcache-general' => 'Všeobecná vyrovnávacia pamäť',
+	'inspectcache-parser' => 'Vyrovnávacia pamäť syntaktického analyzátora',
+	'inspectcache-message' => 'Vyrovnávacia pamäť správ',
+	'inspectcache-get' => 'Získať',
+	'inspectcache-delete' => 'Zmazať',
+	'inspectcache-deleted' => 'Zmazaná vyrovnávacia pamäť',
+);

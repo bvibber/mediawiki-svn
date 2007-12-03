@@ -15,6 +15,14 @@ $messages['ar'] = array(
 	'tog-microid' => 'انشر <a href="http://microid.org/">هوية مصغرة</a> لتأكيد الحساب مع الخدمات الخارجية',
 );
 
+$messages['hsb'] = array(
+	'tog-microid' => '<a href="http://microid.org/">MicroID</a> publikować, zo by so konto z wonkownymi słužbami potwjerdźiło',
+);
+
 $messages['nl'] = array(
 	'tog-microid' => 'Publiceer een <a href="http://microid.org/">MicroID</a> om een gebruiker te bevestigen bij externe diensten',
+);
+
+$messages['no'] = array(
+	'tog-microid' => 'Publiser en <a href="http://microid.org/">MicroID</a> for å bekrefte kontoen for eksterne tjenester',
 );

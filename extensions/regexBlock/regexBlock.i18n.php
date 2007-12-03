@@ -161,6 +161,7 @@ $messages['nl'] = array(
 	'regexblock-form-username' => 'IP-adres of gebruikersnaam:',
 	'regexblock-form-reason' => 'Reden:',
 	'regexblock-form-account-block' => 'Het aanmaken van nieuwe gebruikers blokkeren',
+	'regexblock-form-submit' => 'Deze&nbsp;gebruiker&nbsp;blokkeren',
 	'regexblock-block-log' => 'Gebruikersnaam of IP-adres \'\'\'$1\'\'\' is geblokkeerd.',
 	'regexblock-block-success' => 'Het blokkeren is gelukt',
 	'regexblock-form-submit-empty' => 'Geef een gebruikersnaam of een IP-adres om te blokkeren.',

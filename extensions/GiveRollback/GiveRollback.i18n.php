@@ -257,6 +257,7 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logpagetext' => 'Dette er en logg over endringer i brukeres [[{{MediaWiki:Giverollback-page}}|tilbakerullingsrettigheter]].',
 	'giverollback-logentrygrant' => 'ga [[$1]] tilbakerullingsrettigheter',
 	'giverollback-logentryrevoke' => 'fjernet tilbakerullingsrettigheter fra [[$1]]',
+	'giverollback-page' => '{{ns:help}}:Rollback',#identical but defined
 ),
 
 'oc' => array(
@@ -329,7 +330,7 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 /* Slovak (helix84) */
 'sk' => array(
 	'giverollback' => 'Udeliť alebo odobrať právo rollback',
-	'giverollback-header' => "'''Miestny byrokrat m§že použiť túto stránku na udelenie alebo odobranie [[{{MediaWiki:Giverollback-page}}|práva rollback]] inému používateľskému účtu.'''<br />Tak je možné napríklad umožniť používateľom, ktorí nie sú správci rýchlejšie vracať vandalské úpravy. Využívanie tejto stránky by malo prebiehať v súlade s prijatými zásadami.",
+	'giverollback-header' => '\'\'\'Miestny byrokrat m§že použiť túto stránku na udelenie alebo odobranie [[{{MediaWiki:Giverollback-page}}|práva rollback]] inému používateľskému účtu.\'\'\'<br />Tak je možné napríklad umožniť používateľom, ktorí nie sú správci rýchlejšie vracať vandalské úpravy. Využívanie tejto stránky by malo prebiehať v súlade s prijatými zásadami.',
 	'giverollback-username' => 'Používateľské meno:',
 	'giverollback-search' => 'Choď',
 	'giverollback-hasrb' => '[[User:$1|$1]] má právo rollback.',
@@ -346,6 +347,7 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logpagetext' => 'Toto je záznam zmien práv používateľov, ktorí nie sú správcovia.\' [[{{MediaWiki:Giverollback-page}}|rollback]] rights.',
 	'giverollback-logentrygrant' => 'udelené právo rollback používateľovi [[$1]]',
 	'giverollback-logentryrevoke' => 'odobraté právo rollback používateľovi [[$1]]',
+	'giverollback-page' => '{{ns:help}}:Rollback',#identical but defined
 ),
 
 /* Serbian default (Sasa Stefanovic) */
