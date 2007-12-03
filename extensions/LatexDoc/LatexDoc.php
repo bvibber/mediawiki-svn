@@ -4,12 +4,22 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "Not a valid entry point\n" );
 }
 
+$wgExtensionCredits['other'][] = array(
+	'version'     => '0.2',
+	'name'        => 'LatexDoc',
+	'author'      => 'Tim Starling',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:LatexDoc',
+	'description' => 'LatexDoc',
+);
+
 $wgExtensionFunctions[] = 'wfLatexDocInit';
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['LatexDoc'] = $dir . 'LatexDoc.i18n.php';
 
 class LatexDoc {
 	var $latexCommand = 'latex';
 	var $pdflatexCommand = 'pdflatex';
-	
+
 	var $workingDir;
 	var $workingPath;
 
@@ -18,10 +28,10 @@ class LatexDoc {
 
 		$this->workingDir = "$wgUploadDirectory/latexdoc";
 		$this->workingPath = "$wgUploadPath/latexdoc";
-		
+
 		return true;
 	}
-	
+
 	function onUnknownAction( $action, &$article ) {
 		global $wgOut, $wgRequest;
 
@@ -29,21 +39,21 @@ class LatexDoc {
 		if ( $action != 'latexdoc' ) {
 			return true;
 		}
-		
+
 		// Check for non-existent article
 		if ( !$article || !( $text = $article->fetchContent() ) ) {
 			$wgOut->addWikiText( wfMsg( 'latexdoc_no_text' ) );
 			return false;
-		} 
-			
+		}
+
 		// Check permissions
 		if ( !$article->mTitle->userCanRead() ) {
 			$wgOut->loginToUse();
 			return false;
 		}
-		
+
 		$ext = $wgRequest->getText( 'ext' );
-		
+
 		$wgOut->setArticleFlag( false );
 		$wgOut->setArticleRelated( true );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
@@ -62,9 +72,9 @@ class LatexDoc {
 		global $wgOut, $IP;
 
 		// Filter out obvious insecure control sequences
-		$text = preg_replace( "/\\\\(input|openin|openout|read|write|escapechar)/", 
+		$text = preg_replace( "/\\\\(input|openin|openout|read|write|escapechar)/",
 		  '\begin{math}\backslash\end{math}\1', $text );
-		
+
 		// Get path
 		if ( !is_dir( $this->workingDir ) ) {
 			if ( !mkdir( $this->workingDir, 0777 ) ) {
@@ -72,11 +82,11 @@ class LatexDoc {
 				return;
 			}
 		}
-		
+
 		$hash = md5( $text );
 		$fn = $this->workingDir . '/' . 'ltd_' . $hash;
 		$url = $this->workingPath . '/' . 'ltd_' . $hash;
-		
+
 		if ( !file_exists( "$fn.$ext" ) ) {
 			// Write input file
 
@@ -89,16 +99,16 @@ class LatexDoc {
 			fclose( $inFile );
 
 			// Run LaTeX
-			$cmd = $command . 
-			  ' -interaction=batchmode -quiet ' . 
+			$cmd = $command .
+			  ' -interaction=batchmode -quiet ' .
 			  '\input ' . wfEscapeShellArg( "$fn.tex" ) . ' 2>&1';
-			
+
 			chdir( $this->workingDir );
 			$errorText = shell_exec( $cmd );
 			chdir( $IP );
 
 			// Report errors
-			if ( !file_exists( "$fn.$ext" ) ){ 
+			if ( !file_exists( "$fn.$ext" ) ){
 				wfSuppressWarnings();
 				$log = '<pre>' . file_get_contents( "$fn.log" ) . '</pre>';
 				wfRestoreWarnings();
@@ -109,24 +119,24 @@ class LatexDoc {
 
 		// Redirect to output file
 		$wgOut->redirect( "$url.$ext" );
-		
+
 		// Delete temporary files
 		@unlink( "$fn.tex" );
 		@unlink( "$fn.aux" );
 		@unlink( "$fn.log" );
-		
+
 	}
 
 	function onParserBeforeStrip( &$parser, &$text, &$stripState ) {
 		// If the article looks vaguely like TeX, render it as a pre, with a button for DVI generation
 		if ( strpos( $text, '\begin{document}' ) !== false ) {
 			$sk =& $parser->getOptions()->getSkin();
-			$dviLink = $sk->makeKnownLinkObj( $parser->getTitle(), wfMsg( 'latexdoc_get_dvi' ), 
+			$dviLink = $sk->makeKnownLinkObj( $parser->getTitle(), wfMsg( 'latexdoc_get_dvi' ),
 			  'action=latexdoc&ext=dvi' );
-			$pdfLink = $sk->makeKnownLinkObj( $parser->getTitle(), wfMsg( 'latexdoc_get_pdf' ), 
+			$pdfLink = $sk->makeKnownLinkObj( $parser->getTitle(), wfMsg( 'latexdoc_get_pdf' ),
 			  'action=latexdoc&ext=pdf' );
 			$htmlLatex = nl2br( htmlspecialchars( $text ) );
-			
+
 			$framedLatex = <<<ENDTEXT
 $dviLink | $pdfLink
 <hr />
@@ -142,22 +152,8 @@ ENDTEXT;
 $wgLatexDoc = new LatexDoc;
 
 function wfLatexDocInit() {
-	global $wgHooks, $wgLatexDoc, $wgMessageCache;
-
+	global $wgHooks, $wgLatexDoc;
+	wfLoadExtensionMessages( 'LatexDoc' );
 	$wgHooks['UnknownAction'][] = &$wgLatexDoc;
 	$wgHooks['ParserBeforeStrip'][] = &$wgLatexDoc;
-
-	$wgMessageCache->addMessages( array( 
-		'latexdoc_no_text' => 'Article contains no text, cannot generate DVI',
-		'latexdoc_cant_create_dir' => 'Cannot create temporary directory $1',
-		'latexdoc_cant_write' => 'Cannot write to file $1',
-		'latexdoc_error' => "LaTeX error\n\n" .
-			"Command: $1 <br />\n" .
-			"Output: $2\n\n" .
-			"$3",
-		'latexdoc_get_dvi' => 'Get DVI',
-		'latexdoc_get_pdf' => 'Get PDF',
-	));
 }
-
-
