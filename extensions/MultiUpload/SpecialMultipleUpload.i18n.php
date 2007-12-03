@@ -41,7 +41,7 @@ $messages['de'] = array(
 	'multipleupload'                   => 'Dateien hochladen',
 	'multipleupload-ignoreallwarnings' => "Ignoriere '''alle Warnungen''' und speichere die Dateien.",
 	'multipleupload-saveallfiles'      => "Alle Dateien speichern",
-	'multipleupload-addresswarnings'   => "Bitte jede Warnung anzeigen for dem erneuten Hochladen von Dateien.",
+	'multipleupload-addresswarnings'   => "Bitte jede Warnung anzeigen vor dem erneuten Hochladen von Dateien.",
 	'multipleupload-page'              => "{{ns:project}}:Löschrichtlinien",
 	'multipleupload-text'              => "Gleichzeitiges Hochladen mehrerer Dateien.
 
