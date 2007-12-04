@@ -189,6 +189,7 @@ $wgBoardVoteMessages['bcl'] = array(
 $wgBoardVoteMessages['bg'] = array(
 	'boardvote_user'          => 'Потребител',
 	'boardvote_edits'         => 'Редакции',
+	'boardvote_edits_many'    => 'много',
 );
 $wgBoardVoteMessages['br'] = array(
 	'boardvote'               => 'Dilennadeg Kuzul-merañ Diazezadur Wikimedia',

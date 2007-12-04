@@ -17,6 +17,14 @@ This email has been sent to you through the {{SITENAME}} email system by $1.
 $2',
 );
 
+$messages['ar'] = array(
+	'email_footer' => '
+----------------------------------------------------------------------------
+هذا البريد الإلكتروني تم إرساله إليك من خلال نظام البريد الإلكتروني في {{SITENAME}} بواسطة $1.
+
+$2',
+);
+
 $messages ['fr'] = array (
 	'email_footer' => '
 
@@ -24,6 +32,11 @@ $messages ['fr'] = array (
 Ce courrier a vous a été envoyé grâce au systeme de messagerie de {{SITENAME}} par $1.
 
 $2',
+);
+
+$messages['hsb'] = array(
+	'email_footer' => '----------------------------------------------------------------------------
+Tuta e-mejl bu ći wot $1 přez e-mejlowy system {{SITENAME}} pósłana.',
 );
 
 $messages['no'] = array(

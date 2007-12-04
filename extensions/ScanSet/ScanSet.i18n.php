@@ -35,6 +35,16 @@ $messages['ar'] = array(
 	'scanset_prev' => '&lt; السابق',
 );
 
+$messages['hsb'] = array(
+	'scanset_unrecognised_index_format' => 'ScanSet: Njeznaty indeksowy format',
+	'scanset_opendir_error' => 'ScanSet: Zmylk, zapis $1 njeda so wočinjeć',
+	'scanset_no_files' => 'ScanSet: Žane dataje w podatym zapisu.',
+	'scanset_missing_index_file' => 'ScanSet: Indeksowa dataja $1 njenamakana',
+	'scanset_index_file_error' => 'ScanSet: Zmylk we formaće indeksoweje dataje w lince $1',
+	'scanset_next' => 'Přichodny &gt;',
+	'scanset_prev' => '&lt; Předchadny',
+);
+
 $messages['nl'] = array(
 	'scanset_next' => 'Volgende &gt;',
 	'scanset_prev' => '&lt; Vorige',

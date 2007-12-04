@@ -18,6 +18,17 @@ $messages['en'] = array(
 	'inspectcache-deleted' => 'Deleted Cache',
 );
 
+$messages['ar'] = array(
+	'inspectcache' => 'اشتبه في الكاش',
+	'inspectcache-ok' => 'موافق',
+	'inspectcache-general' => 'الكاش العام',
+	'inspectcache-parser' => 'كاش البارسر',
+	'inspectcache-message' => 'كاش الرسالة',
+	'inspectcache-get' => 'تنفيذ',
+	'inspectcache-delete' => 'حذف',
+	'inspectcache-deleted' => 'الكاش المحذوف',
+);
+
 $messages ['fr'] = array(
 	'inspectcache' => 'Inspection du Cache',
 	'inspectcache-ok' => 'Lancer',
@@ -27,6 +38,17 @@ $messages ['fr'] = array(
 	'inspectcache-get' => 'Obtenir',
 	'inspectcache-delete' => 'Supprimer',
 	'inspectcache-deleted' => 'Cache supprimé',
+);
+
+$messages['hsb'] = array(
+	'inspectcache' => 'Pufrowak pruwować',
+	'inspectcache-ok' => 'W porjadku',
+	'inspectcache-general' => 'Powšitkowny pufrowak',
+	'inspectcache-parser' => 'Parserowy pufrowak',
+	'inspectcache-message' => 'Zdźělenkowy pufrowak',
+	'inspectcache-get' => 'Wzać',
+	'inspectcache-delete' => 'Wuprózdnić',
+	'inspectcache-deleted' => 'Wuprózdnjeny pufrowak',
 );
 
 $messages['nl'] = array(

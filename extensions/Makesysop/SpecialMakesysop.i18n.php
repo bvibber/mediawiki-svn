@@ -1329,9 +1329,11 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 ),
 
 'wuu' => array(
-	'makesysopname'        => '用户个名字：',
-	'rights'               => '权限:',
-	'set_user_rights'      => '设定用户权限',
+	'makesysopname' => '用户个名字：',
+	'rights' => '权限:',
+	'set_user_rights' => '设定用户权限',
+	'already_sysop' => '该个用户已经是一名管理员',
+	'already_bureaucrat' => '该个用户已经是一名行政员',
 ),
 
 'yue' => array(

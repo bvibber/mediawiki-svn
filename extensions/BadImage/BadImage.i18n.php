@@ -78,7 +78,9 @@ function efBadImageMessages() {
 
 'bg' => array(
 	'badimages-add-btn' => 'Добавяне',
+	'badimages-name' => 'Име:',
 	'badimages-reason' => 'Причина:',
+	'badimages-remove' => '(премахване)',
 	'badimages-remove-btn' => 'Премахване',
 ),
 

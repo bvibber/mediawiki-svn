@@ -187,6 +187,18 @@ $SpecialFormMessages =array(
 		'formsaveerrortext' => 'Er is een onbekende fout opgetreden bij het opslaan van pagina \'$1\'.',
 	),
 
+	'no' => array(
+		'form' => 'Skjema',
+		'formnoname' => 'Intet skjemanavn',
+		'formnonametext' => 'Du må oppgi et skjemanavn, som «Special:Form/Skjemanavn».',
+		'formbadname' => 'Ugyldig skjemanavn',
+		'formbadnametext' => 'Det er ingen skjema ved det navnet.',
+		'formpattern' => '$1-skjema',
+		'formtitlepattern' => 'Legger til nytt $1',
+		'formsave' => 'Lagre',
+		'formindexmismatch' => 'Dette skjemaet har upassende navnemønstre og maler som starter på indeks $1.',
+	),
+
 	'oc' => array(
 		'form' => 'Formulari',
 		'formnoname' => 'Cap de nom',

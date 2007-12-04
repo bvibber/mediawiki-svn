@@ -88,6 +88,32 @@ $messages ['fr'] = array(
 	'spamregex-summary-log' => '(Commentaire)',
 );
 
+$messages['hsb'] = array(
+	'spamregex_summary' => 'Tekst je so w zjeću nastawka namakał.',
+	'spamregex-intro' => 'Wužij tutón formular, zo by wurazy skutkownje přećiwo składowanju w teksće strony blokował. Jel tekst daty wuraz wobsahuje, změna njeby so składowała a wujasnjenje so wužiwarjej, kiž je spytał stronu składować, pokaza. Jewi so warnowanje, zo wurazy njesmědźa překrótke abo přepowšitkowne być.',
+	'spamregex-page-title' => 'Spam Regex Blokowanje njepožadanych wurazow',
+	'spamregex-currently-blocked' => '\'\'\'Tuchwilu zablokowane frazy:\'\'\'',
+	'spamregex-no-currently-blocked' => '\'\'\'Zablokowane frazy njejsu.\'\'\'',
+	'spamregex-log-1' => '* \'\'\'$1\'\'\' $2 ([{{SERVER}}$3&text=$4 wotstronić]) přidaty wot',
+	'spamregex-log-2' => 'na $1',
+	'spamregex-page-title-1' => 'Frazu, kotraž regularne wurazy wužiwa, blokować',
+	'spamregex-unblock-success' => 'Wotblokowanje wuspěšne',
+	'spamregex-unblock-message' => 'Fraza \'\'\'$1\'\'\' bu za wobdźěłowanje dopušćena.',
+	'spamregex-page-title-2' => 'Frazy z pomocu regularnych wurazow za składowanje blokować',
+	'spamregex-block-success' => 'Blokowanje wuspěšne',
+	'spamregex-block-message' => 'Fraza \'\'\'$1\'\'\' bu zablokowana.',
+	'spamregex-warning-1' => 'Podaj frazu za blokowanje.',
+	'spamregex-error-1' => 'Njepłaćiwy regularny wuraz.',
+	'spamregex-warning-2' => 'Prošu přepruwuj znajmjeńša jedyn blokowanski modus.',
+	'spamregex-already-blocked' => '"$1" je hižo zablokowany',
+	'spamregex-phrase-block' => 'Fraza, kotraž ma so blokować:',
+	'spamregex-phrase-block-text' => 'frazu w teksće nastawka blokować',
+	'spamregex-phrase-block-summary' => 'frazu w zjeću blokować',
+	'spamregex-block-submit' => 'Tutu&nbsp;frazu&nbsp;blokować',
+	'spamregex-text' => '(Tekst)',
+	'spamregex-summary-log' => '(Zjeće)',
+);
+
 $messages['nl'] = array(
 	'spamregex' => 'SpamRegex',#identical but defined
 	'spamregex_summary' => 'De tekst is gevonden in de paginasamenvatting.',
