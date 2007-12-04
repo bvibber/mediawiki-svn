@@ -2,17 +2,17 @@
 /**
  * Copyright (C) 2005 Brion Vibber <brion@pobox.com>
  * http://www.mediawiki.org/
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or 
+ * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
@@ -25,8 +25,18 @@
  * Requires real memcached with proper expiration semantics
  */
 
+$wgExtensionCredits['other'][] = array(
+	'version'     => '0.2',
+	'name' => 'Throttle',
+	'author' => 'Brion Vibber',
+	'description' => 'Throttle user creation',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Throttle',
+);
+
 $wgExtensionFunctions[] = 'throttleSetup';
 $wgHooks['AbortNewAccount'][] = 'throttleGlobalHit';
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['AbortNewAccount'] = $dir . 'UserThrottle.i18n.php';
 
 $wgGlobalAccountCreationThrottle = array(
 	'min_interval' => 5,   // Hard minimum time between creations
@@ -35,17 +45,7 @@ $wgGlobalAccountCreationThrottle = array(
 );
 
 function throttleSetup() {
-	global $wgMessageCache;
-	$wgMessageCache->addMessages( array(
-		'acct_creation_global_soft_throttle_hit' =>
-			"Account creation has been automatically suspended for a few moments " .
-			"due to an unusually large number of recent login attempts. " .
-			"Please wait a few minutes and try again.",
-		'acct_creation_global_hard_throttle_hit' =>
-			"Account creation has been automatically suspended for a few seconds " .
-			"to reduce registration flood attacks. " .
-			"Please wait a moment and hit 'reload' in your browser to resubmit.",
-	) );
+	wfLoadExtensionMessages( 'AbortNewAccount' );
 }
 
 /**
@@ -57,7 +57,7 @@ function throttleSetup() {
 function throttleGlobalHit( $user ) {
 	global $wgMemc, $wgDBname, $wgGlobalAccountCreationThrottle;
 	extract( $wgGlobalAccountCreationThrottle );
-	
+
 	if( $min_interval > 0 ) {
 		$key = "$wgDBname:acctcreate:global:hard";
 		$value = $wgMemc->incr( $key );
@@ -69,7 +69,7 @@ function throttleGlobalHit( $user ) {
 		}
 		throttleDebug( "hard limit ok (min_interval $min_interval)" );
 	}
-	
+
 	if( $soft_limit > 0 ) {
 		$key = "$wgDBname:acctcreate:global:soft";
 		$value = $wgMemc->incr( $key );
@@ -81,7 +81,7 @@ function throttleGlobalHit( $user ) {
 		}
 		throttleDebug( "soft passed! ($value of soft_limit $soft_limit in $soft_time)" );
 	}
-	
+
 	// Go ahead...
 	return true;
 }
@@ -107,4 +107,3 @@ function throttleDebug( $text, $full=false ) {
 	}
 	wfDebugLog( 'UserThrottle', "UserThrottle: $text $info" );
 }
-
