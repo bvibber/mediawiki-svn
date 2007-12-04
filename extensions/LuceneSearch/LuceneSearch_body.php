@@ -465,7 +465,9 @@ class LuceneSearch extends SpecialPage
 			}
 
 			$text = $rev->getText();
-			$size = wfMsg( 'search-result-size', $this->mSkin->formatSize( sprintf( "%.1f", strlen( $text ) / 1024 ), str_word_count( $text ) ) );
+			$size = wfMsgHtml( 'search-result-size',
+				$this->mSkin->formatSize( strlen( $text ) ),
+				str_word_count( $text ) );
 			$text = $this->removeWiki($text);
 			$date = $wgContLang->timeanddate($rev->getTimestamp());
 		} else {
