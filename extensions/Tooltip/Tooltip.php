@@ -6,7 +6,7 @@ $wgExtensionCredits['parserhook'][] = array(
     'name'        => 'ToolTip',
     'author'      => 'Paul Grinberg',
     'description' => 'adds <nowiki><tooltip></nowiki> and <nowiki>{{#tooltip:}}</nowiki>tag',
-    'version'     => '0.5'
+    'version'     => '0.5.1'
 );
 
 function wfToolTipExtension() {
@@ -96,7 +96,7 @@ function wfTooltipParserFunction_Magic( &$magicWords, $langCode ) {
 }
 
 function wfTooltipParserFunction_Render( $parser, $basetext = '', $tooltiptext = '', $x = 0, $y = 0) {
-    $output = renderToolTip($tooltiptext, array('text'=>$basetext, 'x'=>$x, 'y'=>$y), &$parser);
+    $output = renderToolTip($tooltiptext, array('text'=>$basetext, 'x'=>$x, 'y'=>$y), $parser);
     return array($output, 'nowiki' => false, 'noparse' => true, 'isHTML' => false);
 }
 
