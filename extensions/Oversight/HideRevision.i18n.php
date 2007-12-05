@@ -632,46 +632,38 @@ Het vrijgeven van deze informatie kan tot gevolg hebben dat Oversightrechten wor
 
 /* Portuguese (Lugusto) */
 'pt' => array(
-'hiderevision' => 'Ocultar revisões permanentemente',
-// Empty form
-'hiderevision-prompt' => 'Número da revisão (edição) a ser removida:',
-'hiderevision-continue' => 'Avançar',
-// Confirmation form
-'hiderevision-text' =>
-"Isto deverá ser utilizado '''apenas''' nos seguintes casos:
+	'hiderevision' => 'Ocultar revisões permanentemente',
+	'hiderevision-prompt' => 'Número da revisão (edição) a ser removida:',
+	'hiderevision-continue' => 'Avançar',
+	'hiderevision-text' => 'Isto deverá ser utilizado \'\'\'apenas\'\'\' nos seguintes casos:
 * Informações pessoais inadequadas
-*: ''endereços residenciais e números de telefone, número do seguro social, etc''
+*: \'\'endereços residenciais e números de telefone, número do seguro social, etc\'\'
 
-'''Abusos com este recurso poderão resultar na perda dos privilégios de acesso.'''
+\'\'\'Abusos com este recurso poderão resultar na perda dos privilégios de acesso.\'\'\'
 
 Os itens removidos não estarão mais visíveis a todos neste sítio,
 mas estarão registados e poderão ser restaurados manualmente
-por administrador da base de dados, caso você tenha cometido um engano.",
-'hiderevision-reason' => 'Motivo (será registado privadamente):',
-'hiderevision-submit' => 'Ocultar estes dados permanentemente',
-// Tab displayed to allowed users on old revision display
-'hiderevision-tab' => 'Ocultar revisões',
-// Status & errors on action
-'hiderevision-norevisions' => 'Não foram especificadas revisões a serem ocultadas.',
-'hiderevision-noreason' => 'É necessário descrever o motivo para esta remoção.',
-'hiderevision-status' => 'Revisão $1: $2',
-'hiderevision-success' => 'Arquivado e deletado com sucesso.',
-'hiderevision-error-missing' => 'Não foi localizada na base de dados.',
-'hiderevision-error-current' => 'Não é possível ocultar a edição mais recente de uma página. Reverta a alteração primeiro.',
-'hiderevision-error-delete' => 'Não é possível arquivar; não teria sido eliminada antes da tentativa?',
-'hiderevision-archive-status' => 'Revisão ocultada de $1: $2',
-'oversight-nodiff' => 'Não foi possível verificar as alterações, uma vez que não há edições anteriores para esta página. Motivos possíveis:
+por administrador da base de dados, caso você tenha cometido um engano.',
+	'hiderevision-reason' => 'Motivo (será registado privadamente):',
+	'hiderevision-submit' => 'Ocultar estes dados permanentemente',
+	'hiderevision-tab' => 'Ocultar revisões',
+	'hiderevision-norevisions' => 'Não foram especificadas revisões a serem ocultadas.',
+	'hiderevision-noreason' => 'É necessário descrever o motivo para esta remoção.',
+	'hiderevision-status' => 'Revisão $1: $2',
+	'hiderevision-success' => 'Arquivado e apagado com sucesso.',
+	'hiderevision-error-missing' => 'Não foi localizada na base de dados.',
+	'hiderevision-error-current' => 'Não é possível ocultar a edição mais recente de uma página. Reverta a alteração primeiro.',
+	'hiderevision-error-delete' => 'Não é possível arquivar; não teria sido eliminada antes da tentativa?',
+	'hiderevision-archive-status' => 'Revisão ocultada de $1: $2',
+	'oversight-nodiff' => 'Não foi possível verificar as alterações, uma vez que não há edições anteriores para esta página. Motivos possíveis:
 *A página foi eliminada
 *Esta edição oculta era a primeira edição da página',
-// Logging
-'oversight-log-hiderev' => 'removida uma edição de $1',
-// Oversight review page
-'oversight' => 'Oversight',
-'oversight-view' => 'detalhes',
-'oversight-difference' => '(Diferenças entre as edições anteriores restantes)',
-'oversight-prev' => 'Última edição anterior',
-'oversight-hidden' => 'Edição oculta',
-'oversight-header' => 'Listagem de edições permanentemente ocultas de serem vistas publicamente.
+	'oversight-log-hiderev' => 'removida uma edição de $1',
+	'oversight-view' => 'detalhes',
+	'oversight-difference' => '(Diferenças entre as edições anteriores restantes)',
+	'oversight-prev' => 'Última edição anterior',
+	'oversight-hidden' => 'Edição oculta',
+	'oversight-header' => 'Listagem de edições permanentemente ocultas de serem vistas publicamente.
 Liberar tais dados poderá resultar na perda em definitivo dos privilégios de oversight.',
 ),
 
