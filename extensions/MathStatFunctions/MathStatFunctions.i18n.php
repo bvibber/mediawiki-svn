@@ -84,17 +84,17 @@ $wgMathStatFunctionsMessages['sr-el'] = array(
 );
 $wgMathStatFunctionsMessages['sr'] = $wgMathStatFunctionsMessages['sr-ec'];
 $wgMathStatFunctionsMessages['yue'] = array(
-        'msfunc_nan' => "結果數值係一個數字" ,
+        'msfunc_nan' => "結果唔係個數" ,
         'msfunc_inf' => "結果數值係無限" ,
         'msfunc_div_zero' => "除以零",
 );
 $wgMathStatFunctionsMessages['zh-hans'] = array(
-        'msfunc_nan' => "结果数值是一个数字" ,
+        'msfunc_nan' => "结果数值不是一个数字" ,
         'msfunc_inf' => "结果数值是无限" ,
         'msfunc_div_zero' => "除以零",
 );
 $wgMathStatFunctionsMessages['zh-hant'] = array(
-        'msfunc_nan' => "結果數值是一個數字" ,
+        'msfunc_nan' => "結果數值不是一個數字" ,
         'msfunc_inf' => "結果數值是無限" ,
         'msfunc_div_zero' => "除以零",
 );
