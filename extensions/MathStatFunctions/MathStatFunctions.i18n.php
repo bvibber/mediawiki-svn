@@ -8,14 +8,19 @@ $wgMathStatFunctionsMessages = array();
 $wgMathStatFunctionsMagic = array();
 
 $wgMathStatFunctionsMessages['en'] = array(
-        'msfunc_nan' => "Resulting value is not a number" ,
-        'msfunc_inf' => "Resulting value is infinity" ,
-        'msfunc_div_zero' => "Division by zero",
+        'msfunc_nan'      => 'Resulting value is not a number',
+        'msfunc_inf'      => 'Resulting value is infinity',
+        'msfunc_div_zero' => 'Division by zero',
 );
 $wgMathStatFunctionsMessages['ar'] = array(
 	'msfunc_nan' => 'القيمة الناتجة ليست رقما',
 	'msfunc_inf' => 'القيمة الناتجة هي المالانهاية',
 	'msfunc_div_zero' => 'القسمة على صفر',
+);
+$wgMathStatFunctionsMessages['de'] = array(
+        'msfunc_nan'      => 'Ergebniswert ist keine Zahl',
+        'msfunc_inf'      => 'Ergebniswert ist unendlich',
+        'msfunc_div_zero' => 'Division durch Null',
 );
 $wgMathStatFunctionsMessages['fr'] = array(
 	'msfunc_nan' => 'Le résultat n’est pas un nombre.',
