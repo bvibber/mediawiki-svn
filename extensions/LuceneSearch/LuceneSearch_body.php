@@ -465,7 +465,7 @@ class LuceneSearch extends SpecialPage
 			}
 
 			$text = $rev->getText();
-			$size = wfMsgHtml( 'search-result-size',
+			$size = wfMsgHtml( 'lucene-resultsize',
 				$this->mSkin->formatSize( strlen( $text ) ),
 				str_word_count( $text ) );
 			$text = $this->removeWiki($text);
@@ -511,8 +511,8 @@ class LuceneSearch extends SpecialPage
 		wfProfileOut($fname);
 		if (!$wgDisableSearchContext) { $date = $wgContLang->timeanddate($rev->getTimestamp()); }
 		else { $date = ''; }
-		$percent = sprintf('%2.1f%%', $result->getScore() * 100);
-		$score = wfMsg('searchscore', $wgLang->formatNum( $percent ) );
+		$percent = sprintf( '%2.1f', $result->getScore() * 100 );
+		$score = wfMsg( 'lucene-searchscore', $wgLang->formatNum( $percent ) );
 		//$url = $t->getFullURL();
 		return '<li style="padding-bottom: 1em;">'.$link.$extract.'<br />'
 			.'<span style="color: green; font-size: small;">'
