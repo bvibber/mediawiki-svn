@@ -384,9 +384,12 @@ class ApiWikiData extends ApiBase {
 	protected function getExamples() {
 		return array(
 			'api.php?action=wikidata&wdexpression=bier&wdexplanguage=nld&wdsections=def|syntrans&wdlanguages=deu|eng|fra',
+			'api.php?action=wikidata&wdtype=definedmeaning&wddmid=6715&wdformat=tbx',
 			'api.php?action=wikidata&wdtype=randomdm&wdtranslanguage=nld&wddeflanguage=nld&wdcollection=376322',
 			'api.php?action=wikidata&wdtype=relation&wdrelation=3&wdrelleft=6715',
-			'api.php?action=wikidata&wdtype=randomdm&wdrelation=3&wdrelright=339'
+			'api.php?action=wikidata&wdtype=relation&wdrelleft=339',
+			'api.php?action=wikidata&wdtype=randomdm&wdrelation=3&wdrelright=339',
+			'api.php?action=wikidata&wdtype=randomdm&wdformat=tbx&wdresplanguage=nld'
 		);
 	}
 
