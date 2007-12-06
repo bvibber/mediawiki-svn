@@ -324,25 +324,69 @@ function removeRelationWithId($relationId) {
 }
 
 /**
- * Return the defined meaning ids of all defined meanings related to the given defined meaning
- * by a relation of type relationTypeId.
+ * Return defined meaning id's for which ever part of the relation is unspecified.
+ * If you specify the relation type and the left hand side of a relation, you'll
+ * get an array of defined meaning id's found on the right hand side. And vice versa.
+ * If you don't specify a relation type dmid but do give either a right hand side or
+ * left hand side, you'll get all relations that exist in which the dm you did specify
+ * is involved. 
  *
- * @param unknown_type $relationTypeId dmid of the relationtype
- * @param unknown_type $dmId dmid of the subject.
- * @param unknown_type $dc the dataset, optional
+ * @param unknown_type $relationTypeId dmid of the relationtype, optional.
+ * @param unknown_type $lhs dmid of the left hand side, optional.
+ * @param unknown_type $dmId dmid of the right hand side, optional.
+ *  * @param unknown_type $dc the dataset, optional
  */
-function getRelatedDefinedMeanings($relationTypeId, $dmId, $dc=null) {
+function getRelationDefinedMeanings($relationTypeId=null, $lhs=null, $rhs=null, $dc=null) {
 	$result = array();
 	
 	$dc=wdGetDataSetContext($dc);
 	$dbr =& wfGetDB(DB_MASTER);
-	$query = "SELECT meaning1_mid FROM {$dc}_meaning_relations " .
-			"WHERE meaning2_mid={$dmId} AND relationtype_mid={$relationTypeId}";
-	//echo $query;
+	if ($relationTypeId == null) {
+		if ($lhs == null) {
+			if ($rhs == null) return $result;
+			$query = "SELECT rel.relationtype_mid FROM {$dc}_meaning_relations rel " .
+				"INNER JOIN {$dc}_defined_meaning dm ON rel.relationtype_mid=dm.defined_meaning_id " .
+				"WHERE rel.meaning2_mid={$rhs} ".
+				"AND" . getLatestTransactionRestriction('rel') . 
+				"AND" . getLatestTransactionRestriction('dm') .
+				"GROUP BY rel.relationtype_mid";
+		}
+		else if ($rhs == null) {
+			$query = "SELECT rel.relationtype_mid FROM {$dc}_meaning_relations rel " .
+				"INNER JOIN {$dc}_defined_meaning dm ON rel.relationtype_mid=dm.defined_meaning_id " .
+				"WHERE rel.meaning1_mid={$lhs} ".
+				"AND" . getLatestTransactionRestriction('rel') . 
+				"AND" . getLatestTransactionRestriction('dm') .
+				"GROUP BY rel.relationtype_mid ";
+		}
+		else {
+			$query = "SELECT rel.relationtype_mid FROM {$dc}_meaning_relations rel " .
+				"INNER JOIN {$dc}_defined_meaning dm ON rel.relationtype_mid=dm.defined_meaning_id " .
+				"WHERE rel.meaning1_mid={$lhs} AND rel.meaning2_mid={$rhs} ".
+				"AND" . getLatestTransactionRestriction('rel') . 
+				"AND" . getLatestTransactionRestriction('dm');
+		}
+	}
+	else if ($lhs == null) {
+		if ($rhs == null) return $result;
+		$query = "SELECT rel.meaning1_mid FROM {$dc}_meaning_relations rel " .
+			"INNER JOIN {$dc}_defined_meaning dm ON rel.meaning1_mid=dm.defined_meaning_id " .
+			"WHERE rel.meaning2_mid={$rhs} AND rel.relationtype_mid={$relationTypeId} ".
+			"AND" . getLatestTransactionRestriction('rel') . 
+			"AND" . getLatestTransactionRestriction('dm');
+	}
+	else {
+		$query = "SELECT rel.meaning2_mid FROM {$dc}_meaning_relations rel " .
+			"INNER JOIN {$dc}_defined_meaning dm ON rel.meaning2_mid=dm.defined_meaning_id " .
+			"WHERE rel.meaning1_mid={$lhs} AND rel.relationtype_mid={$relationTypeId} ".
+			"AND" . getLatestTransactionRestriction('rel') . 
+			"AND" . getLatestTransactionRestriction('dm');
+	}
+	
 	$queryResult = $dbr->query($query);
 	
 	while ($row = $dbr->fetchRow($queryResult)) {
-		$result[] = $row['meaning1_mid'];
+		$result[] = $row[0];
 	}
 	
 	return $result;

@@ -171,7 +171,14 @@ function getDefinedMeaningReferenceRecords(array $definedMeaningIds, $usedAs) {
 	$definedMeaningIdsForExpressions = $definedMeaningIds;
 
 	if (count($definedMeaningIds) > 0) {
-		$userLanguage = getLanguageIdForCode($wgUser->getOption('language'));
+		global $wgRecordSetLanguage;
+		
+		if ($wgRecordSetLanguage > 0) {
+			$userLanguage = $wgRecordSetLanguage;
+		}
+		else {
+			$userLanguage = getLanguageIdForCode($wgUser->getOption('language'));
+		}
 		
 		if ($userLanguage > 0)
 			$definingLanguage = $userLanguage;

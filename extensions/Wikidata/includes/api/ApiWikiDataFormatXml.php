@@ -90,7 +90,8 @@ class ApiWikiDataFormatXml extends ApiWikiDataFormatBase {
 				$xsl = new DOMDocument();
 				$xsl->load("extensions/Wikidata/util/tbx.xsl");
 				$tbxProc = new XSLTProcessor();
-				$xsl = $tbxProc->importStylesheet($xsl);
+				$tbxProc->importStylesheet($xsl);
+				$tbxProc->setParameter('', 'siteUrl', 'http://kantoor.edia.nl/wikidata/index.php?title=DefinedMeaning:');	
 			}
 			return $tbxProc;
 		}

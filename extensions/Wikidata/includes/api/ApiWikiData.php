@@ -44,9 +44,16 @@ class ApiWikiData extends ApiBase {
 		$dataset = null;
 		$languages = null;
 		$explanguage = null;
+		$deflanguage = null;
+		$resplanguage = null;
 		$sections = null;
 		$format = null;
 		$collection = null;
+		$relation = null;
+		$relleft = null;
+		$relright = null;
+		$translanguage = null;
+		$deflanguage = null;
 		
 		// read the request parameters
 		extract($this->extractRequestParams());
@@ -54,7 +61,7 @@ class ApiWikiData extends ApiBase {
 		$datasets = wdGetDataSets();
 		if (!isset($datasets[$dataset])) {
 			// TODO how do we report an error?
-			$dataset = 'uw';
+			$printer->addErrorMessage("Unknown data set: $dataset");
 		}
 		
 		// **********************************
@@ -96,7 +103,7 @@ class ApiWikiData extends ApiBase {
 					$printer->setIncludeRelations(true);
 				}
 				else {
-					// TODO handle error
+					$printer->addErrorMessage("Unknown section: $section");
 				}
 				
 			}
@@ -112,10 +119,14 @@ class ApiWikiData extends ApiBase {
 					$printer->addOutputLanguageId($langId);
 				}
 				else {
-					// TODO handle error
+					$printer->addErrorMessage($langCode.' is not an ISO 639-3 language code.');
 				}
 			}
 		}
+		
+		// The response language
+		global $wgRecordSetLanguage;
+		$wgRecordSetLanguage = getLanguageIdForIso639_3($resplanguage);
 		
 		// *************************
 		// Handle the actual request
@@ -126,6 +137,9 @@ class ApiWikiData extends ApiBase {
 			$record = $dmModel->getRecord();
 			$printer->addDefinedMeaningRecord($record);
 		}
+		// *******************
+		// QUERY BY EXPRESSION
+		// *******************
 		else if ($type == 'expression') {
 			$dmIds = array();
 			if ($explanguage == null) {
@@ -152,50 +166,119 @@ class ApiWikiData extends ApiBase {
 			}
 			
 		}
+		// **********************
+		// RANDOM DEFINED MEANING
+		// **********************
 		else if ($type == 'randomdm') {
-			$allDmIds = array();
-			if ($collection != null) {
-				// get collection contents
-				$contents = getCollectionMembers($collection, $datasets[$dataset]);
-				if (count($contents) > 0) {
-					$allDmIds = $contents;
-				}
-				else {
-					$printer->addErrorMessage("The collection is empty.");
-				}
-			}
-			if ($relation != null) {
-				if ($dmid != null) {
-					$related = getRelatedDefinedMeanings($relation, $dmid, $dataset);
-					if (count($related) > 0) {
-						if (count($allDmIds) == 0) {
-							$allDmIds = $related;
-						}
-						else {
-							// only elements in both collections apply.
-							$allDmIds = array_intersect($allDmIds, $related);
-							if (count($allDmIds) == 0) {
-								$printer->addErrorMessage("The combination of a collection and a relation query did not return any results.");
-							}
-						}
-					}
-					else {
-						$printer->addErrorMessage("Your relations query did not return any results.");
-					}
-				}
-				else {
-					$printer->addErrorMessage("Missing parameter: wddmid");
-				}
-			}
-			// get a random value from it
-			$randomKey = array_rand($allDmIds);
-			$randomDmId = $allDmIds[$randomKey];
 			
-			// look up that dmid
-			$dmModel = new DefinedMeaningModel($randomDmId, null, $datasets[$dataset]);
-			$dmModel->loadRecord();
-			$record = $dmModel->getRecord();
-			$printer->addDefinedMeaningRecord($record);
+			// I want all the allowed parameters for this type of query to work in combination. 
+			// So a client can, for example, get a random defined meaning from the destiazione 
+			// italia collection that has a definition and translation in spanish and that has 
+			// a 'part of theme' relationship with some other defined meaning.  
+			// We'll build one monster query for all these parameters. I've seen this take up
+			// to one second on a development machine.
+			
+			$query =  "SELECT dm.defined_meaning_id " .
+			          "FROM {$dataset}_defined_meaning dm ";
+			
+			// JOINS GO HERE 
+			// dm must have a translation in given language
+			if ($translanguage != null) {
+				$query .= "INNER JOIN {$dataset}_syntrans st ON dm.defined_meaning_id=st.defined_meaning_id " .
+			              "INNER JOIN {$dataset}_expression exp ON st.expression_id=exp.expression_id ";
+			}
+			
+			// dm must have a definition in given language
+			if ($deflanguage != null) {
+				$query .= "INNER JOIN {$dataset}_translated_content tc ON dm.meaning_text_tcid=tc.translated_content_id ";
+			}
+			
+			// dm must be part of given collection
+			if ($collection != null) {
+				$query .= "INNER JOIN {$dataset}_collection_contents col on dm.defined_meaning_id=col.member_mid ";
+			}
+					
+			// dm must be related to another dm
+			if ($relation != null && ($relleft != null || $relright != null)) {
+				if ($relright != null) {
+					$query .= "INNER JOIN {$dataset}_meaning_relations rel ON dm.defined_meaning_id=rel.meaning1_mid ";
+				}
+				else {
+					$query .= "INNER JOIN {$dataset}_meaning_relations rel ON dm.defined_meaning_id=rel.meaning2_mid ";
+				}
+			}
+			
+			// WHERE CLAUSE GOES HERE
+			$query .= "WHERE dm.remove_transaction_id is null ";
+			
+			// dm must have a translation in given language
+			if ($translanguage != null) {
+				$query .= "AND st.remove_transaction_id is null " .
+			              "AND exp.remove_transaction_id is null " .
+			              "AND exp.language_id=".getLanguageIdForIso639_3($translanguage)." ";
+			}
+			
+			// dm must have a definition in given language
+			if ($deflanguage != null) {
+				$query .= "AND tc.remove_transaction_id is null " .
+			              "AND tc.language_id=".getLanguageIdForIso639_3($deflanguage)." ";
+			}
+			
+			// dm must be part of given collection
+			if ($collection != null) {
+				$query .= "AND col.remove_transaction_id is null " .
+			              "AND col.collection_id=$collection ";
+			}
+			
+			// dm must be related to another dm
+			if ($relation != null && ($relleft != null || $relright != null)) {
+				$query .= "AND rel.remove_transaction_id is null " .
+			              "AND rel.relationtype_mid=$relation ";
+				if ($relright != null) {
+					$query .= "AND rel.meaning2_mid=$relright ";
+				}
+				else {
+					$query .= "AND rel.meaning1_mid=$relleft ";
+				}  
+			}
+			
+			// We may get doubles for multiple expressions or relations. Pretty trivial, but affects probability
+			$query .= "GROUP BY dm.defined_meaning_id ";
+			// pick one at random
+			$query .= "ORDER BY RAND() LIMIT 0,1";
+			
+			//echo $query;
+			
+			$dbr =& wfGetDB(DB_SLAVE);
+			$result = $dbr->query($query);
+			if ($dbr->numRows($result) > 0) {
+				$row = $dbr->fetchRow($result);
+				$dmModel = new DefinedMeaningModel($row[0], null, $datasets[$dataset]);
+				$dmModel->loadRecord();
+				$record = $dmModel->getRecord();
+				$printer->addDefinedMeaningRecord($record);	
+			}
+			
+		}
+		else if ($type == 'relation') {
+			if ($relation != null || $relleft != null || $relright != null) {
+				$related = 	getRelationDefinedMeanings($relation, $relleft, $relright, $datasets[$dataset]);
+				if (count($related) > 0) {
+					foreach ($related as $dmId) {
+						$dmModel = new DefinedMeaningModel($dmId, null, $datasets[$dataset]);
+						$dmModel->loadRecord();
+						$record = $dmModel->getRecord();
+						$printer->addDefinedMeaningRecord($record);
+					}
+				}
+				else {
+					$printer->addErrorMessage("Your relations query did not return any results.");
+				}
+			}
+			else {
+				$printer->addErrorMessage('To get relations you must at least specify a left or right hand side dmid and optionally a relation type dmid.');
+			}
+			
 		}
 		
 	}
@@ -214,7 +297,8 @@ class ApiWikiData extends ApiBase {
 				ApiBase :: PARAM_TYPE => array (
 					'expression',
 					'definedmeaning',
-					'randomdm'
+					'randomdm',
+					'relation'
 				)
 			),
 			'expression' => null,
@@ -222,7 +306,12 @@ class ApiWikiData extends ApiBase {
 			'dmid' => null,
 			'collection' => null,
 			'relation' => null,
+			'relleft' => null,
+			'relright' => null,
+			'translanguage' => null,
+			'deflanguage' => null,
 			'dataset' => 'uw',
+			'resplanguage' => 'eng',
 			'languages' => null,
 			'sections' => array (
 				ApiBase :: PARAM_DFLT => null,
@@ -252,14 +341,20 @@ class ApiWikiData extends ApiBase {
 				'Query type.',
 				'expression:     query an expression.',
 				'definedmeaning: defined meaning by id',
-				'randomdm:       a radom defined meaning'
+				'randomdm:       a random defined meaning',
+				'relation:       find relations or related defined meanings'
 			),
 			'expression' => 'For type \'expression\': the expression.',
-			'explanguage' => 'Source language of an expression. Omit to search all languages.',
+			'explanguage' => 'For type \'expression\': the expression language. Omit to search all languages.',
 			'dmid' => 'For type \'definedmeaning\': the defined meaning id.',
 			'collection' => 'For type \'randomdm\': the collection (by dmid) to pick a defined meaning from.',
-			'relation' => 'For type \'randomdm\': the relation (by relationtype dmid) to another defined meaning, given in wddmid.',
+			'relation' => 'For type \'randomdm\'or \'relation\': the relation (by relationtype dmid) to another defined meaning, given in wdrelleft or wdrelright.',
+			'relleft' => 'When looking for a related defined meaning: the left hand side of the relation by dmid.',
+			'relright' => 'When looking for a related defined meaning: the right hand side of the relation by dmid.',
+			'translanguage' => 'For type \'randomdm\': a translation in this language must be present. ISO 639-3 language code.',
+			'deflanguage' => 'For type \'randomdm\': a definition in this language must be present. ISO 639-3 language code.',
 			'dataset' => 'The dataset to query.',
+			'resplanguage' => 'Response language: language strings in the response document are set in this language. ISO 639-3 language code.',
 			'languages' => array (
 				'Output languages.',
 				'Values (separate with \'|\'): any ISO 639-3 language code'
@@ -288,7 +383,10 @@ class ApiWikiData extends ApiBase {
 	
 	protected function getExamples() {
 		return array(
-			'api.php?action=wikidata&wdexpression=bier&wdexplanguage=fri&wdsections=def|syntrans&wdlanguages=nld|eng|fra'
+			'api.php?action=wikidata&wdexpression=bier&wdexplanguage=nld&wdsections=def|syntrans&wdlanguages=deu|eng|fra',
+			'api.php?action=wikidata&wdtype=randomdm&wdtranslanguage=nld&wddeflanguage=nld&wdcollection=376322',
+			'api.php?action=wikidata&wdtype=relation&wdrelation=3&wdrelleft=6715',
+			'api.php?action=wikidata&wdtype=randomdm&wdrelation=3&wdrelright=339'
 		);
 	}
 

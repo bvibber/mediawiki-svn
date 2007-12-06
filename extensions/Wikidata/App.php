@@ -286,6 +286,11 @@ function initializeWikidata() {
 		$messageCacheOK;
 		
 	$messageCacheOK = true;
-
+	
+	global
+		$wgRecordSetLanguage;
+		
+	$wgRecordSetLanguage = 0;
+	
 	return true;
 }
