@@ -60,8 +60,7 @@ class ApiWikiData extends ApiBase {
 		
 		$datasets = wdGetDataSets();
 		if (!isset($datasets[$dataset])) {
-			// TODO how do we report an error?
-			$printer->addErrorMessage("Unknown data set: $dataset");
+			$this->dieUsage("Unknown data set: $dataset", 'unknown_dataset');
 		}
 		
 		// **********************************
