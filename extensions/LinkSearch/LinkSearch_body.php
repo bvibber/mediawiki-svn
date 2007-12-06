@@ -7,7 +7,7 @@ class LinkSearchSpecialPage extends SpecialPage {
 		parent::__construct( 'Linksearch' );
 	}
 
-	function initMessages() {
+	static function initMessages() {
 		static $done = false;
 		if ( $done ) {
 			return true;
@@ -23,12 +23,12 @@ class LinkSearchSpecialPage extends SpecialPage {
 
 
 
-	function execute( $par = null, $ns = null ) {
+	function execute( $par ) {
 		$this->setHeaders();
 		list( $limit, $offset ) = wfCheckLimits();
 		global $wgOut, $wgRequest, $wgUrlProtocols, $wgMiserMode;
 		$target = $GLOBALS['wgRequest']->getVal( 'target', $par );
-		$namespace = $GLOBALS['wgRequest']->getIntorNull( 'namespace', $ns );
+		$namespace = $GLOBALS['wgRequest']->getIntorNull( 'namespace', null );
 
 		$protocols_list[] = '';
 		foreach( $wgUrlProtocols as $prot ) {
@@ -67,7 +67,7 @@ class LinkSearchSpecialPage extends SpecialPage {
 			Xml::label( wfMsg( 'linksearch-pat' ), 'target' ) . ' ' .
 			Xml::input( 'target', 50 , $target ) . ' ';
 		if ( !$wgMiserMode ) {
-			$s .= Xml::label( wfMsg( 'linksearch-ns' ), 'namespace' ) .
+			$s .= Xml::label( wfMsg( 'linksearch-ns' ), 'namespace' ) . ' ' .
 				XML::namespaceSelector( $namespace, '' );
 		}
 		$s .=	Xml::submitButton( wfMsg( 'linksearch-ok' ) ) .
@@ -85,7 +85,7 @@ class LinkSearchSpecialPage extends SpecialPage {
 
 
 class LinkSearchPage extends QueryPage {
-	function __construct( $query , $ns , $prot ) {
+	function __construct( $query, $ns, $prot ) {
 		$this->mQuery = $query;
 		$this->mNs = $ns;
 		$this->mProt = $prot;
@@ -110,7 +110,7 @@ class LinkSearchPage extends QueryPage {
 	}
 
 	function linkParameters() {
-		return array( 'target' => $this->mQuery, 'namespace' => $this->mNs );
+		return array( 'target' => $this->mProt . $this->mQuery, 'namespace' => $this->mNs );
 	}
 
 	function getSQL() {

@@ -11,6 +11,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Brion Vibber',
 	'description' => 'Find pages with external links matching specific patterns',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:LinkSearch',
+	'version' => '1.1',
 );
 $wgHooks['LoadAllMessages'][] = 'LinkSearchSpecialPage::initMessages';
 
