@@ -15,6 +15,10 @@ $messages['ar'] = array(
 	'usercontactlink-baduser' => 'اسم مستخدم غير صحيح',
 );
 
+$messages['de'] = array(
+	'usercontactlink-baduser' => 'falscher Benutzername',
+);
+
 #Translation in french language by Bertrand GRONDIN
 $messages ['fr'] = array(
 	'usercontactlink-baduser' => 'nom d’utilisateur incorrect',

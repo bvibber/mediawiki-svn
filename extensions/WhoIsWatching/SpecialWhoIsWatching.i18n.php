@@ -13,6 +13,12 @@ $allMessages = array(
 		'specialwhoiswatchingusage'   => 'هذه الصفحة الخاصة لا يمكن استخدامها بمفردها. من فضلك استخدم الصفحة [[MediaWiki:Number_of_watching_users_pageview]] لتعريف نقطة مدخل إلى هذه الصفحة الخاصة.',
 	),
 
+	'de' => array(
+		'whoiswatching'               => 'Wer beobachtet eine Seite',
+		'specialwhoiswatchingthepage' => 'Wer beobachtet %s',
+		'specialwhoiswatchingusage'   => 'Diese Spezialseite kann nicht auf sich selber angewendet werden. Bitte definiere über die Seite [[MediaWiki:Number of watching users pageview]] eine Einstiegsseite für diese Spezialseite.',
+	),
+
 	'fr' => array(
 		'specialwhoiswatchingusage'   => 'Cette page spéciale ne peut être utilisée seule. Passez par [[MediaWiki:Number_of_watching_users_pageview]] pour définir un point d\'entrée vers cette page spéciale.',
 	),

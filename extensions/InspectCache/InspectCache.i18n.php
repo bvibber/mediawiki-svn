@@ -29,6 +29,17 @@ $messages['ar'] = array(
 	'inspectcache-deleted' => 'الكاش المحذوف',
 );
 
+$messages['de'] = array(
+	'inspectcache'         => 'Cache ansehen',
+	'inspectcache-ok'      => 'OK',
+	'inspectcache-general' => 'Allgemeiner Cache',
+	'inspectcache-parser'  => 'Parser-Cache',
+	'inspectcache-message' => 'Nachrichten-Cache',
+	'inspectcache-get'     => 'Holen',
+	'inspectcache-delete'  => 'Löschen',
+	'inspectcache-deleted' => 'Gelöschter Cache',
+);
+
 $messages ['fr'] = array(
 	'inspectcache' => 'Inspection du Cache',
 	'inspectcache-ok' => 'Lancer',

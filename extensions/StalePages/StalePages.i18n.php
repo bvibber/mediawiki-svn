@@ -17,6 +17,11 @@ $messages['ar'] = array(
 	'stalepages-summary' => 'هذه قائمة بالصفحات التي لم يتم تعديلها في آخر $1 يوم.',
 );
 
+$messages['de'] = array(
+	'stalepages' => 'Alte Seiten',
+	'stalepages-summary' => 'Dies ist eine Liste von Seiten, die in den letzten $1 Tagen nicht bearbeitet wurden.',
+);
+
 $messages['fr'] = array(
 	'stalepages' => 'Pages dépassées',
 	'stalepages-summary' => 'Ceci est une liste de pages qui n\'ont pas été modifiées depuis {{plural:$1|$1 jour|$1 jours}}.',

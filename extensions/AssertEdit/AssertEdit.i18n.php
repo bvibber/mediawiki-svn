@@ -17,6 +17,11 @@ $messages['ar'] = array(
 	'assert_edit_message' => 'التأكيد المحدد ($1) فشل.',
 );
 
+$messages['de'] = array(
+	'assert_edit_title'   => 'Anspruch fehlgeschlagen',
+	'assert_edit_message' => 'Der angegebene Anspruch ($1) ist fehlgeschlagen.',
+);
+
 $messages['fr'] = array(
 	'assert_edit_title'   => 'Échec de l\'insertion',
 	'assert_edit_message' => 'L\'insertion indiquée ($1) a échoué.',

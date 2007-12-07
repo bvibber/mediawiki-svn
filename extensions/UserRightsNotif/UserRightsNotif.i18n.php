@@ -26,6 +26,20 @@ $messages['ar'] = array(
 $2',
 );
 
+$messages['de'] = array(
+	'userrightsnotifysubject' => 'Änderung der Gruppenzugehörigkeit vom $1',
+	'userrightsnotifybody'    => "Hallo $1
+
+Dies ist eine Information, dass deine Gruppenzugehörigkeit von $2 durch $3 am $4 geändert wurde.
+
+Hinzugefügt: $5
+Entfernt: $6\
+
+Mit freundlichen Grüßen,
+
+$2",
+);
+
 $messages['fr'] = array(
 	'userrightsnotifysubject' => 'Changement d’appartenance à des groupes d’utilisateurs sur $1',
 	'userrightsnotifybody'    => "Bonjour $1,\n\nJ’ai l'honneur de vous informer que votre appartenance aux groupes d'utilisateurs sur $2 a été modifiée par $3 le $4.\n\nAjouté : $5\nRetiré : $6\n\nCordialement,\n\n$2",

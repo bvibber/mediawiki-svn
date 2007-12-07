@@ -21,6 +21,13 @@ $messages['ar'] = array(
 	'findspam-notextfound' => 'لم يتم العثور على مساهمات',
 );
 
+$messages['de'] = array(
+	'findspam'             => 'Spam finden',
+	'findspam-ip'          => 'IP-Adresse:',
+	'findspam-ok'          => 'OK',
+	'findspam-notextfound' => 'Keine Beiträge gefunden',
+);
+
 $messages['el'] = array(
 	'findspam-ip' => 'Διεύθυνση IP:',
 );

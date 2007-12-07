@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'email_header' => '',
+	'email_header' => '', # don't translate or duplicate this message to other languages
 	'email_footer' => '
 
 ----------------------------------------------------------------------------
@@ -21,6 +21,15 @@ $messages['ar'] = array(
 	'email_footer' => '
 ----------------------------------------------------------------------------
 هذا البريد الإلكتروني تم إرساله إليك من خلال نظام البريد الإلكتروني في {{SITENAME}} بواسطة $1.
+
+$2',
+);
+
+$messages['de'] = array(
+	'email_footer' => '
+
+----------------------------------------------------------------------------
+Diese E-Mail wurde dir von $1 über das {{SITENAME}}-E-Mail-System zugesandt.
 
 $2',
 );

@@ -36,6 +36,21 @@ $messages['ar'] = array(
 	'lookupuser_useroptions' => 'خيارات المستخدم:',
 );
 
+$messages['de'] = array(
+	'lookupuser'                   => 'Benutzerinformationen einsehen',
+	'lookupuser_intro'             => 'Gib einen Benutzernamen ein, um dir die persönlichen Einstellungen eines Benutzers anzusehen.',
+	'lookupuser_nonexistent'       => 'Fehler: Benutzer nicht vorhanden',
+	'lookupuser_authenticated'     => 'bestätigt am $1',
+	'lookupuser_not_authenticated' => 'nicht bestätigt',
+	'lookupuser_id'                => 'Benutzer-ID: <tt>#$1</tt>',
+	'lookupuser_email'             => 'E-Mail: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'          => 'Wirklicher Name: $1',
+	'lookupuser_registration'      => 'Datum der Registrierung: $1',
+	'lookupuser_touched'           => 'Benutzerkonto zuletzt berührt: $1',
+	'lookupuser_authenticated'     => 'E-Mail-Bestätigung: $1',
+	'lookupuser_useroptions'       => 'Einstellungen des Benutzerkontos:',
+);
+
 $messages['el'] = array(
 	'lookupuser_realname' => 'Πραγματικό όνομα: $1',
 	'lookupuser_useroptions' => 'Επιλογές χρήστη:',
