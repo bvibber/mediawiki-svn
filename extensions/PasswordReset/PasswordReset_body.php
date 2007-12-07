@@ -20,7 +20,7 @@ class PasswordReset extends SpecialPage
  
         function execute( $par ) {
                 global $wgRequest, $wgOut, $wgUser, $wgTitle;
- 
+				
                 $this->setHeaders();
  
                 if ( !$wgUser->isAllowed( 'passwordreset' ) ) {
@@ -66,7 +66,11 @@ class PasswordReset extends SpecialPage
                     $wgOut->addHTML( "<span style=\"color: red;\">" . wfMsg('passwordreset-badtoken') . "</span><br>\n" );
  
                   }
-                }
+                } else {
+					$validUser = false;
+					$confirmpass = '';
+					$newpass = '';
+				}
  
                 $action = $wgTitle->escapeLocalUrl();
                 $token = $wgUser->editToken();
