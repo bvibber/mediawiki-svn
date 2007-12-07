@@ -30,7 +30,17 @@ class PasswordReset extends SpecialPage
  
                 $username = Title::newFromText( $wgRequest->getText( 'username' ) );
                 $username_text = is_object( $username ) ? $username->getText() : '';
- 
+				
+				$disableuser = $wgRequest->getCheck('disableuser');
+				
+				if ($disableuser) {
+					$disableuserchecked = ' CHECKED';
+					$passwordfielddisabled = ' disabled="true"';
+				} else {
+					$disableuserchecked = '';
+					$passwordfielddisabled = '';
+				}
+				
                 if (strlen($wgRequest->getText('username').$wgRequest->getText('newpass').$wgRequest->getText('confirmpass'))>0) {
                   //POST data found
                   if (strlen($username_text)>0) {
@@ -51,7 +61,7 @@ class PasswordReset extends SpecialPage
                   $newpass = $wgRequest->getText( 'newpass' );
                   $confirmpass = $wgRequest->getText( 'confirmpass' );
  
-                  if ($newpass==$confirmpass && strlen($newpass.$oldpass)>0) {
+                  if (($newpass==$confirmpass && strlen($newpass)>0) || $disableuser) {
                     //Passwords match
                     $passMatch = true;
                   } else {
@@ -76,6 +86,18 @@ class PasswordReset extends SpecialPage
                 $token = $wgUser->editToken();
  
                 $wgOut->addHTML( "
+<script language=\"Javascript\">
+	function disableUserClicked() {
+		if (document.getElementById('disableuser').checked) {
+			document.getElementById('newpass').disabled = false;
+			document.getElementById('confirmpass').disabled = false;
+		} else {
+			document.getElementById('newpass').disabled = true;
+			document.getElementById('confirmpass').disabled = true;
+		}
+		return true;
+	}
+</script>
 <form id='passwordresetform' method='post' action=\"$action\">
 <table>
         <tr>
@@ -84,11 +106,15 @@ class PasswordReset extends SpecialPage
         </tr>
         <tr>
                 <td align='right'>" . wfMsg('passwordreset-newpass') . "</td>
-                <td align='left'><input tabindex='2' type='password' size='20' name='newpass' id='newpass' value=\"$newpass\" onFocus=\"document.getElementById('newpass').select;\" /></td>
+                <td align='left'><input tabindex='2' type='password' size='20' name='newpass' id='newpass' value=\"$newpass\" onFocus=\"document.getElementById('newpass').select;\"{$passwordfielddisabled} /></td>
         </tr>
         <tr>
                 <td align='right'>" . wfMsg('passwordreset-confirmpass') . "</td>
-                <td align='left'><input tabindex='3' type='password' size='20' name='confirmpass' id='confirmpass' value=\"$confirmpass\" onFocus=\"document.getElementById('confirmpass').select;\" /></td>
+                <td align='left'><input tabindex='3' type='password' size='20' name='confirmpass' id='confirmpass' value=\"$confirmpass\" onFocus=\"document.getElementById('confirmpass').select;\"{$passwordfielddisabled} /></td>
+        </tr>
+        <tr>
+                <td align='right'>" . wfMsg('passwordreset-disableuser') . "</td>
+                <td align='left'><input tabindex='4' type='checkbox' name='disableuser' id='disableuser' onmouseup='return disableUserClicked();'{$disableuserchecked} /> " . wfMsg('passwordreset-disableuserexplain') . "</td>
         </tr>
         <tr>
                 <td>&nbsp;</td>
@@ -100,24 +126,32 @@ class PasswordReset extends SpecialPage
  
                 if ($validUser && $passMatch) {
                   $wgOut->addWikiText ( "<hr />\n" );
-                  $wgOut->addWikiText ( $this->resetPassword( $userID, $newpass ) );
+                  $wgOut->addWikiText ( $this->resetPassword( $userID, $newpass, $disableuser ) );
                 } else {
                   //Invalid user or passwords don't match - do nothing
                 }
         }
  
-        private function resetPassword( $userID, $newpass ) {
+        private function resetPassword( $userID, $newpass, $disableuser ) {
                 $dbw =& wfGetDB( DB_MASTER );
+				
+				if ($disableuser) {
+					$passHash = 'DISABLED';
+					$message = wfMsg('passwordreset-disablesuccess', $userID);
+				} else {
+					$passHash = wfEncryptPassword( $userID, $newpass );
+					$message = wfMsg('passwordreset-success', $userID);
+				}
 				
 				$dbw->update( 'user',
 					array(
-						'user_password' => wfEncryptPassword( $userID, $newpass )
+						'user_password' => $passHash
 					),
 					array(
 						'user_id' => $userID
 					)
 				);
-				return wfMsg('passwordreset-success', $userID);
+				return $message;
         }
  
         function loadMessages() {

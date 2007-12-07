@@ -14,7 +14,7 @@ $wgExtensionCredits['specialpage'][] = array(
     'url'=>'http://www.mediawiki.org/wiki/Extension:Password_Reset',
     'author'=>'Tim Laqua',
     'description'=>"Resets Wiki user's passwords - requires 'passwordreset' privileges",
-    'version'=>'1.2.1'
+    'version'=>'1.3'
 );
  
 $wgAutoloadClasses['PasswordReset'] = dirname(__FILE__) . '/PasswordReset_body.php';
