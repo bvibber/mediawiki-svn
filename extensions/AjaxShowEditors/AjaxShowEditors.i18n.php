@@ -147,6 +147,9 @@ $wgAjaxShowEditorsMessages['pt'] = array(
 	'ajax-se-pending' => 'atualização pendente... (clique neste box ou inicie a edição)',
 	'ajax-se-idling' => '($1 segundos atrás)',
 );
+$wgAjaxShowEditorsMessages['ro'] = array(
+	'ajax-se-idling' => '(acum $1s)',
+);
 $wgAjaxShowEditorsMessages['ru'] = array(
 	'ajax-se-title' => 'В настоящий момент редактируют:',
 	'ajax-se-pending' => 'ожидание обновления... (нажмите здесь или начните редактирование)',

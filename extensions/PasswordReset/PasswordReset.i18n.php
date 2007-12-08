@@ -99,6 +99,9 @@ $allMessages = array(
 		'passwordreset-confirmpass' => 'Hesło wobkrućić',
 		'passwordreset-submit' => 'Hesło wróćo stajić',
 		'passwordreset-success' => 'Hesło bu za wužiwarski ID $1 wróćo stajene.',
+		'passwordreset-disableuser' => 'Wužiwarske konto znjemóžnić?',
+		'passwordreset-disableuserexplain' => '(nastaja njepłaćiwy hesłowy šmjat - wužiwar njemóže so přizjewić)',
+		'passwordreset-disablesuccess' => 'Wužiwarske konto bu znjemóžnjene (wužiwarski_id: $1)',
 	),
 
 	'ie' => array(

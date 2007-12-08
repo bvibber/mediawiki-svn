@@ -54,6 +54,11 @@ function efMediaFunctionsMessages() {
 	'mediafunctions-not-exist'     => '"$1" غير موجود',
 ),
 
+'bg' => array(
+	'mediafunctions-invalid-title' => '"$1" не е валидно заглавие',
+	'mediafunctions-not-exist'     => '"$1" не съществува',
+),
+
 'de' => array(
 	'mediafunctions-invalid-title' => '„$1“ ist kein gültiger Name',
 	'mediafunctions-not-exist'     => '„$1“ ist nicht vorhanden',

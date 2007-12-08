@@ -60,6 +60,25 @@ function efMakeBotMessages() {
 	'makebot-comment'         => 'Komento:',
 ),
 
+'bg' => array(
+	'makebot'                 => 'Даване или отнемане на бот статус',
+	'makebot-header'          => '\'\'\'Чрез тази страница бюрократите могат да дават или отнемат [[{{MediaWiki:Grouppage-bot}}|бот статуса]] на други потребителски сметки.\'\'\'<br /> Бот статусът скрива редакциите на потребителската сметка от списъка с [[Special:Recentchanges|последните промени]] и други подобни списъци, и е подходящо да се дава на потребители, които правят автоматизирани редакции. Даването на такъв статус трябва да се извършва в съответствие с действащите правила и политики.',
+	'makebot-username'        => 'Потребителско име:',
+	'makebot-isbot'           => '[[User:$1|$1]] има бот статус.',
+	'makebot-notbot'          => '[[User:$1|$1]] няма бот статус.',
+	'makebot-privileged'      => '[[User:$1|$1]] има [[Special:Listadmins|пълномощия на администратор или бюрократ]] и не може да получи бот статус.',
+	'makebot-change'          => 'Промяна на статуса:',
+	'makebot-grant'           => 'Даване',
+	'makebot-revoke'          => 'Отнемане',
+	'makebot-comment'         => 'Коментар:',
+	'makebot-granted'         => '[[User:$1|$1]] вече има бот статус.',
+	'makebot-revoked'         => '[[User:$1|$1]] вече няма бот статус.',
+	'makebot-logpage'         => 'Дневник на промените в бот статусите',
+	'makebot-logpagetext'     => 'Това е дневник на промените на [[{{MediaWiki:Grouppage-bot}}|бот статусите]] на потребители.',
+	'makebot-logentrygrant'   => 'даден бот статус на [[$1]]',
+	'makebot-logentryrevoke'  => 'отнет бот статус на [[$1]]',
+),
+
 'ca' => array(
 	'makebot'                 => 'Donar o treure la marca de bot',
 	'makebot-header'          => '\'\'\'Un buròcrata local pot fer servir aquesta pàgina per a concedir o retirar l\'estatus de [[{{MediaWiki:Grouppage-bot}}|bot]] a qualsevol compte d\'usuari.\'\'\'<br />L\'estatus de bot oculta les edicions d\'un usuari a la pàgina de [[Special:Recentchanges|canvis recents]] i llistes semblants, i és útil per a usuaris que realitzen edicions automàticament. Això s\'ha de fer segons les polítiques aplicables.',
@@ -99,6 +118,10 @@ function efMakeBotMessages() {
 	'makebot-logpagetext'     => 'Cuòi sê gé-liŏh gāi-biéng ê̤ṳng-hô [[Help:Bot|gĭ-ké-nè̤ng]] sĭng-hông gì nĭk-cé.',
 	'makebot-logentrygrant'   => 'gău ké̤ṳk [[$1]] gĭ-ké-nè̤ng sĭng-hông',
 	'makebot-logentryrevoke'  => 'siŭ duōng [[$1]] gì gĭ-ké-nè̤ng sĭng-hông',
+),
+
+'co' => array(
+	'makebot-comment'         => 'Cummentu:',
 ),
 
 /* Czech */

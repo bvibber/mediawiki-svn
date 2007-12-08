@@ -27,6 +27,16 @@ $messages['ar'] = array(
 	'watchers_less_than_x'   => 'أقل من $1 يراقبون هذه الصفحة.',
 );
 
+$messages['bg'] = array(
+	'watchers'               => 'Наблюдаващи',
+	'watchers_link_title'    => 'Кой наблюдава тази страница?',
+	'watchers_error_article' => '<b>Грешка:</b> Страницата не съществува.',
+	'watchers_header'        => 'Хора, които наблюдават "$1"',
+	'watchers_noone_watches' => 'Тази страница не се наблюдава от никого.',
+	'watchers_x_or_more'     => '$1 или повече хора наблюдават тази страница.',
+	'watchers_less_than_x'   => 'Най-много $1 души наблюдават тази страница.',
+);
+
 $messages['de'] = array(
 	'watchers_link_title'    => 'Wer beobachtet diese Seite?',
 	'watchers_error_article' => '"<b>Fehler:</b> Seite existiert nicht.',
@@ -36,13 +46,12 @@ $messages['de'] = array(
 	'watchers_less_than_x'   => 'Weniger als $1 Benutzer beobachten diese Seite.',
 );
 
-$messages['it'] = array(
-	'watchers_link_title' => "Chi osserva questa pagina?",
-	'watchers_error_article' => "<b>Errore:</b> la pagina richiesta non esiste.",
-	'watchers_header' => "Utenti che osservano la pagina \"$1\"",
-	'watchers_noone_watches' => "La pagina non è osservata da alcun utente.",
-	'watchers_x_or_more' => "La pagina è osservata da almeno $1 utenti.",
-	'watchers_less_than_x' => "La pagina è osservata da meno di $1 utenti.",
+$messages['el'] = array(
+	'watchers'               => 'Παρατηρητές',
+	'watchers_link_title'    => 'Ποιος παρατηρεί αυτήν τη σελίδα;',
+	'watchers_error_article' => '<b>Σφάλμα:</b> Το άρθρο δεν υπάρχει.',
+	'watchers_noone_watches' => 'Κανείς δεν παρατηρεί αυτήν την σελίδα.',
+	'watchers_x_or_more'     => '$1 ή περισσότεροι άνθρωποι παρατηρούν αυτήν τη σελίδα.',
 );
 
 $messages['fr'] = array(
@@ -63,6 +72,15 @@ $messages['hsb'] = array(
 	'watchers_noone_watches' => 'Nichtó tutu stronu njewobkedźbuje.',
 	'watchers_x_or_more'     => '$1 abo wjace ludźi tutu stronu wobkedźbuje.',
 	'watchers_less_than_x'   => 'Mjenje hač $1 wužiwarjow tutu stronu wobkedźbuje.',
+);
+
+$messages['it'] = array(
+	'watchers_link_title' => "Chi osserva questa pagina?",
+	'watchers_error_article' => "<b>Errore:</b> la pagina richiesta non esiste.",
+	'watchers_header' => "Utenti che osservano la pagina \"$1\"",
+	'watchers_noone_watches' => "La pagina non è osservata da alcun utente.",
+	'watchers_x_or_more' => "La pagina è osservata da almeno $1 utenti.",
+	'watchers_less_than_x' => "La pagina è osservata da meno di $1 utenti.",
 );
 
 $messages['nl'] = array(

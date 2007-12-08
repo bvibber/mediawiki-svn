@@ -17,6 +17,11 @@ $wgMathStatFunctionsMessages['ar'] = array(
 	'msfunc_inf' => 'القيمة الناتجة هي المالانهاية',
 	'msfunc_div_zero' => 'القسمة على صفر',
 );
+$wgMathStatFunctionsMessages['bg'] = array(
+	'msfunc_nan' => 'Стойността на резултата не е число',
+	'msfunc_inf' => 'Стойността на резултата е безкрайност',
+	'msfunc_div_zero' => 'Деление на нула',
+);
 $wgMathStatFunctionsMessages['de'] = array(
         'msfunc_nan'      => 'Ergebniswert ist keine Zahl',
         'msfunc_inf'      => 'Ergebniswert ist unendlich',

@@ -70,6 +70,10 @@ $allMessages = array(
 		'changeauthor-logpagename' => 'سجل تغيير المؤلفين',
 		'changeauthor-rev' => 'ن$1',
 	),
+	'bg' => array(
+		'changeauthor-comment' => 'Коментар:',
+		'changeauthor-revview' => 'Редакция #$1 от $2',
+	),
 	'de' => array( 
 		'changeauthor' => 'Autor einer Version ändern',
 		'changeauthor-title' => 'Autor einer Version ändern',

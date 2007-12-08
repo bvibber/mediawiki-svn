@@ -25,6 +25,11 @@ $messages['ar'] = array(
 $2',
 );
 
+$messages['bg'] = array(
+	'email_footer' => '-------------------------------
+Този имейл ви е бил изпратен от $1 чрез системата за електронна поща на {{SITENAME}}.',
+);
+
 $messages['de'] = array(
 	'email_footer' => '
 
@@ -46,6 +51,14 @@ $2',
 $messages['hsb'] = array(
 	'email_footer' => '----------------------------------------------------------------------------
 Tuta e-mejl bu ći wot $1 přez e-mejlowy system {{SITENAME}} pósłana.',
+);
+
+$messages['nl'] = array(
+	'email_footer' => '
+----------------------------------------------------------------------------
+Deze email is naar u verzonden via het {{SITENAME}}-emailsysteem door $1.
+
+$2',
 );
 
 $messages['no'] = array(

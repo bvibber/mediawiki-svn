@@ -89,6 +89,10 @@ $messages['ar'] = array(
 	'review_comment' => 'تعليق',
 );
 
+$messages['el'] = array(
+	'review_comment' => 'Σχόλιο',
+);
+
 $messages['fr'] = array(
 	'review_sidebar_title' => 'Révision',
 	'review_topics' => '# Liste de sujets pour l\'extension « review » de MediaWiki.

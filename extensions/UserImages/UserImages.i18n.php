@@ -22,6 +22,11 @@ function efUserImagesMessages() {
 	'userimages-noname' => 'اسم مستخدم خاطئ أو لم يتم تحديد أحد.',
 	'userimages-noimages' => 'ليس لدى $1 صور مرفوعة.',
 ),
+'bg' => array(
+	'userimages-caption' => 'Картинки, качени от $1',
+	'userimages-noname' => 'Невалидно или липсващо потребителско име.',
+	'userimages-noimages' => '$1 няма качени картинки.',
+),
 'bn' => array(
 	'userimages-caption' => 'চিত্রসমূহ $1 দ্বারা আপলোড হয়েছে',
 	'userimages-noname' => 'অসিদ্ধ ব্যবহারকারী নাম দেওয়া হয়েছে অথবা ব্যবহারকারী নাম দেওয়া হয় নাই।',

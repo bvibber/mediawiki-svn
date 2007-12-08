@@ -50,6 +50,11 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'Συγγνώμη, ο τίτλος αυτού του άρθρου δεν επιτρέπεται να αποθηκευτεί.',
 ),
 
+'fi' => array(
+	'block_title_error_page_title' => 'Estetty sivunnimi',
+	'block_title_error' => 'Tämän sivun nimen tallentaminen on kielletty.',
+),
+
 /**
  * French (Bertrand Grondin)
  */

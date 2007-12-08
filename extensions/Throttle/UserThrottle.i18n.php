@@ -31,3 +31,8 @@ $messages['hsb'] = array(
 	'acct_creation_global_soft_throttle_hit' => 'Wutworjenje wužiwarskich kontow bu za něšto wokomikow dla přewšo wysokeje ličby přizjewjenskich pospytow zastajene. Prošu počakaj něšto mjeńšin a spytaj hišće raz.',
 	'acct_creation_global_hard_throttle_hit' => 'Wutworjenje wužiwarskich kontow bu za něšto sekundow zastajene, zo by so nawal registrowanjow redukował. Prošu počakaj wokomik a klikń na \'Znowa\' we swojim wobhladowaku, zo by hišće raz spytał.',
 );
+
+$messages['nl'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Het aanmaken van gebruikers is automatisch geblokkeerd voor enkele ogenblikken door een ongebruikelijk hoog aantal recente aanmeldingen. Gelieve even te wachten en probeer dan opnieuw.',
+	'acct_creation_global_hard_throttle_hit' => 'Het aanmaken van gebruikers is automatisch geblokkeerd voor enkele seconden om een overvoed aan registraties te verminderen. Gelieve even te wachten en klik dan op \'herladen\' in uw browser om u opnieuw proberen te registreren.',
+);

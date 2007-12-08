@@ -35,6 +35,18 @@ $messages['ar'] = array(
 	'postcomment_nopostingtoadd' => 'لا رسالة للإضافة.',
 );
 
+$messages['bg'] = array(
+	'postcomment_discussionprotected' => 'Тази дискусионна страница е защитена за по-нататъшно редактиране.',
+	'postcomment_notloggedin' => 'Не сте влезли в системата.',
+	'postcomment_youareloggedinas' => 'Влязохте в системата като $1',
+	'postcomment_addcommentdiscussionpage' => 'Добавете своя коментар на тази дискусионна страница',
+	'postcomment_leavemessagefor' => 'Оставете съобщение за $1',
+	'postcomment_said' => 'каза',
+	'postcomment_invalidrequest' => 'Невалидна заявка.',
+	'postcomment_replyto' => 'Отговор до $1',
+	'postcomment_nopostingtoadd' => 'Няма коментар за добавяне.',
+);
+
 $messages['fr'] = array(
 	'postcomment_discussionprotected' => 'La page de discussion a été protégée en écriture.',
 	'postcomment_notloggedin' => 'Vous n\'êtes pas identifié.',

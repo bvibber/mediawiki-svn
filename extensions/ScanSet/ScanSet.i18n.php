@@ -36,11 +36,15 @@ $messages['ar'] = array(
 );
 
 $messages['hsb'] = array(
+	'scanset_no_name' => 'ScanSet: Dyrbiš mjeno za skanowansku sadźbu podać, na př. &lt;mjeno skanowanskeje sadźby="EB1911" /&gt;',
+	'scanset_invalid_name' => 'ScanSet: Njepłaćiwa abo falowaca skanowanska sadźba.',
 	'scanset_unrecognised_index_format' => 'ScanSet: Njeznaty indeksowy format',
 	'scanset_opendir_error' => 'ScanSet: Zmylk, zapis $1 njeda so wočinjeć',
 	'scanset_no_files' => 'ScanSet: Žane dataje w podatym zapisu.',
+	'scanset_no_volumes' => 'ScanSet: Žane zapisy za zwjazki namakane',
 	'scanset_missing_index_file' => 'ScanSet: Indeksowa dataja $1 njenamakana',
 	'scanset_index_file_error' => 'ScanSet: Zmylk we formaće indeksoweje dataje w lince $1',
+	'scanset_invalid_volume' => 'ScanSet: Njepłaćiwy zwjazk',
 	'scanset_next' => 'Přichodny &gt;',
 	'scanset_prev' => '&lt; Předchadny',
 );

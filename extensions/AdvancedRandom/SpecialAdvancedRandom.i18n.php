@@ -19,6 +19,9 @@ $messages['de'] = array(
 	'advancedrandom' => 'Zufällige Seite (erweitert)',
 );
 
+$messages['fi'] = array(
+	'advancedrandom' => 'Ehdollinen satunnainen sivu',
+);
 $messages['fr'] = array(
 	'advancedrandom' => 'Accès aléatoire avancé',
 );

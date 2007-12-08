@@ -20,6 +20,10 @@ function efContributionseditcountMessages()  {
 	'contributionseditcount' => 'An parágamit na ini igwang $1 na mga hirá.',
 ),
 
+'bg' => array(
+	'contributionseditcount' => 'Този потребител е направил $1 редакции.',
+),
+
 'bn' => array(
 	'contributionseditcount' => 'এ ব্যবহারকারীর $1 সম্পাদনা হয়েছে।',
 ),

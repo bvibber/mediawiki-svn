@@ -46,6 +46,13 @@ $messages['hsb'] = array(
 	'findspam-notextfound' => 'Žane přinoški namakane',
 );
 
+$messages['nl'] = array(
+	'findspam' => 'Spam vinden',
+	'findspam-ip' => 'IP-adres:',
+	'findspam-ok' => 'OK',#identical but defined
+	'findspam-notextfound' => 'Geen bijdragen gevonden',
+);
+
 $messages['no'] = array(
 	'findspam' => 'Finn forsøpling',
 	'findspam-ip' => 'IP-adresse:',

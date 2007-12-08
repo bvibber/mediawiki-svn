@@ -23,6 +23,10 @@ function efMinimumNameLengthMessages() {
 	'minnamelength-error' => 'An saimong username halîpoton. An minimum na labâ $1.',
 ),
 
+'bg' => array(
+	'minnamelength-error' => 'Потребителското ви име е твърде кратко. Минималната му дължина е $1.',
+),
+
 /* German */
 'de' => array(
 	'minnamelength-error' => 'Der Benutzername ist zu kurz. Die Mindestlänge beträgt $1 Zeichen.',

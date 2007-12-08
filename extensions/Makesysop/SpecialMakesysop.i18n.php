@@ -98,22 +98,26 @@ $messages = array(
 ),
 
 'bg' => array(
-	'makesysoptitle'       => 'Превръщане на потребител в администратор',
-	'makesysoptext'        => 'Този формуляр се използва от бюрократи за превръщане на обикновени потребители в администратори.
+	'makesysoptitle' => 'Превръщане на потребител в администратор',
+	'makesysoptext' => 'Този формуляр се използва от бюрократи за превръщане на обикновени потребители в администратори.
 
 Въведете името на потребителя в полето и натиснете бутона, за да направите съответния потребител администратор',
-	'makesysopname'        => 'Име на потребителя:',
-	'makesysopsubmit'      => 'Превръщане на потребителя в администратор',
-	'makesysopok'          => '<b>Потребителят „$1“ беше направен администратор</b>.',
-	'makesysopfail'        => '<b>Потребителят „$1“ не беше направен администратор. (Правилно ли въведохте името?)</b>',
-	'rights'               => 'Права:',
-	'setbureaucratflag'    => 'Вдигане на флага „бюрократ“',
-	'set_user_rights'      => 'Даване на потребителски права',
-	'user_rights_set'      => '<b>Потребителските права на „$1“ са променени</b>',
-	'set_rights_fail'      => '<b>Потребителските права на „$1“ не бяха променени. (Правилно ли въведохте името?)</b>',
-	'makesysop'            => 'Превръщане на потребител в администратор',
-	'already_sysop'        => 'Този потребител беше вече администратор',
-	'already_bureaucrat'   => 'Този потребител беше вече бюрократ',
+	'makesysopname' => 'Име на потребителя:',
+	'makesysopsubmit' => 'Превръщане на потребителя в администратор',
+	'makesysopok' => '<b>Потребителят „$1“ беше направен администратор</b>.',
+	'makebureaucratok' => '<b>Потребител "$1" получи статус на бюрократ</b>',
+	'makesysopfail' => '<b>Потребителят „$1“ не беше направен администратор. (Правилно ли въведохте името?)</b>',
+	'setbureaucratflag' => 'Вдигане на флага „бюрократ“',
+	'rights' => 'Права:',
+	'set_user_rights' => 'Даване на потребителски права',
+	'user_rights_set' => '<b>Потребителските права на „$1“ са променени</b>',
+	'set_rights_fail' => '<b>Потребителските права на „$1“ не бяха променени. (Правилно ли въведохте името?)</b>',
+	'makesysop' => 'Превръщане на потребител в администратор',
+	'already_sysop' => 'Този потребител беше вече администратор',
+	'already_bureaucrat' => 'Този потребител беше вече бюрократ',
+	'group-steward' => 'Стюарди',
+	'group-steward-member' => 'Стюард',
+	'grouppage-steward' => '{{ns:project}}:Стюарди',
 ),
 
 'bpy' => array(
@@ -176,6 +180,14 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'makesysop'            => 'Niông 1 ciáh ê̤ṳng-hô có̤ guāng-lī-uòng',
 	'already_sysop'        => 'Ciā ê̤ṳng-hô ī-gĭng sê guāng-lī-uòng lāu',
 	'already_bureaucrat'   => 'Ciā ê̤ṳng-hô ī-gĭng sê guăng-lièu lāu',
+),
+
+'co' => array(
+	'rights' => 'Dritti:',
+	'already_sysop' => 'Istu utilizatore hè digià amministratore',
+	'already_bureaucrat' => 'Istu utilizatore hè digià burocratu',
+	'group-steward' => 'Steward',
+	'grouppage-steward' => '{{ns:project}}:Steward',
 ),
 
 'cs' => array(

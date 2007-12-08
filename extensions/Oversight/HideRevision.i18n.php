@@ -88,6 +88,12 @@ Releasing this information can result in permanent loss of Oversight privileges.
 إفشاء هذه المعلومات يمكن أن ينتج عنه فقد دائم لصلاحيات الأوفرسايت.',
 ),
 
+'co' => array(
+	'hiderevision' => 'Piattà e revisione di manera permanente',
+	'hiderevision-continue' => 'Cuntinuà',
+	'hiderevision-status' => 'Revisione $1: $2',
+),
+
 /* German (Raymond) */
 'de' => array(
 'hiderevision' => 'Versionen dauerhaft entfernen',
@@ -274,6 +280,43 @@ administrador das bases de datos no caso de que vostede cometa un erro.',
 'oversight-hidden' => 'גרסה מוסתרת',
 'oversight-header' => 'להלן רשימת גרסאות שנמחקו לאחרונה לצמיתות מתצוגה ציבורית.
 שחרור מידע זה לציבור עלול לגרום להסרה לצמיתות של ההרשאות.',
+),
+
+'hr' => array(
+	'hiderevision' => 'Trajno sakrij uređivanja',
+	'hiderevision-prompt' => 'Oznaka (broj) uređivanja koju sakrivate:',
+	'hiderevision-continue' => 'Nastavi',
+	'hiderevision-text' => 'Ovaj alat treba biti uporabljen \'\'\'samo\'\'\' u slijedećim slučajevima:
+* Navođenje osobnih informacija
+*: \'\'kućne adrese i telefonski brojevi, JMBG itd\'\'
+
+\'\'\'Zloporaba ovog alata povlači gubitak prava.\'\'\'
+
+Uklonjene promjene neće biti vidljive nikome putem web preglednika,
+ali uklanjanje se evidentira i može biti vraćeno ručno ukoliko
+učinite pogrešku.',
+	'hiderevision-reason' => 'Razlog (bit će pohranjen u evidenciji nedostupnoj suradnicima):',
+	'hiderevision-submit' => 'Trajno sakrij',
+	'hiderevision-tab' => 'Sakrij uređivanje',
+	'hiderevision-norevisions' => 'Niste naveli uređivanja koje želite ukloniti.',
+	'hiderevision-noreason' => 'Morate navesti razlog uklanjanja/skrivanja uređivanja.',
+	'hiderevision-status' => 'Uređivanje $1: $2',
+	'hiderevision-success' => 'Uspješno arhivirano i obrisano.',
+	'hiderevision-error-missing' => 'Nije nađeno u bazi podataka.',
+	'hiderevision-error-current' => 'Ne mogu obrisati posljednje uređivanje stranice. Prvo uklonite tu promjenu (\'\'revert\'\').',
+	'hiderevision-error-delete' => 'Ne mogu arhivirati; moguće je promjena već bila prethodno obrisana?',
+	'hiderevision-archive-status' => 'Obrisana uređivanja $1: $2',
+	'oversight-nodiff' => 'Nemoguće praćenje promjena jer nema prethodnih promjena stranice. Ili je:
+*stranica obrisana
+*ova skrivena promjena je prva promjena',
+	'oversight-log-hiderev' => 'uklonjeno uređivanje $1',
+	'oversight' => 'Nadzor (\'\'oversight\'\')',
+	'oversight-view' => 'potankosti',
+	'oversight-difference' => '(razlike prema prethodnim promjenama)',
+	'oversight-prev' => 'Posljednje prethodno uređivanje',
+	'oversight-hidden' => 'Skriveno uređivanje',
+	'oversight-header' => 'Slijedi popis uređivanja nedavno trajno skrivenih od javnosti.
+Objavljivanje ove informacije može prouzročiti trajan gubitak prava nadzora.',
 ),
 
 'hsb' => array(

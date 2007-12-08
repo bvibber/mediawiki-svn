@@ -31,6 +31,10 @@ function efPicturePopupMessages() {
 	'picturepopup_invalid_icon' => 'قالب الترخيص به العنصر imageLicenseIcon مفقود أو غير صحيح',
 ),
 
+'co' => array(
+	'picturepopup_no_image' => 'Issa imagine ùn esiste micca',
+),
+
 /* French */
 'fr' => array(
 	'picturepopup_invalid_title' => 'Titre de l’image invalide',

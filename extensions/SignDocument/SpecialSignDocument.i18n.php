@@ -203,6 +203,8 @@ $allMessages = array(
 		'sign-review-comment' => 'Komento',
 	),
 	'bg' => array(
+		'sign-phone' => 'Телефонен номер:',
+		'sign-bday' => 'Възраст:',
 		'sign-viewfield-phone' => 'Телефон',
 		'sign-viewfield-age' => 'Възраст',
 		'sign-viewfield-reviewcomment' => 'Коментар',

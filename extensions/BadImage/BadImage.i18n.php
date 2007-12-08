@@ -518,6 +518,17 @@ function efBadImageMessages() {
 	'badimages-reason' => 'Motiv:',
 ),
 
+'ro' => array(
+	'badimages-add-btn' => 'Adaugă',
+	'badimages-added' => '$1 a fost adăugat în listă.',
+	'badimages-name' => 'Nume:',
+	'badimages-reason' => 'Motiv:',
+	'badimages-remove' => '(şterge)',
+	'badimages-remove-btn' => 'Şterge',
+	'badimages-removed' => '$1 a fost şters din listă.',
+	'badimages-subheading' => 'Elemente curente',
+),
+
 /* Russian (Alexander Sigachov) */
 'ru' => array(
 	'badimages' => 'Список нежелательных изображений',

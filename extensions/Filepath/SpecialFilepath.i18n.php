@@ -31,6 +31,14 @@ $wgFilepathMessages['arc'] = array(
 	'filepath'        => 'ܫܒܝܠܐ ܕܫܘܦܝܢܐ',
 	'filepath_submit' => 'ܫܒܝܠܐ',
 );
+$wgFilepathMessages['bg'] = array(
+	'filepath'        => 'Път до файла',
+	'filepath_page'   => 'Файл:',
+	'filepath_submit' => 'Път',
+	'filepath-summary' => 'Тази специална страница връща пълния път до даден файл. Изображенията се показват в пълната им резолюция, а други типове файлове се отварят направо с приложенията, с които са асоциирани.
+	
+	Напишете името на файла без префикса "{{ns:image}}:"',
+);
 $wgFilepathMessages['ca'] = array(
 	'filepath'        => 'Camí d\'arxiu',
 	'filepath_page'   => 'Arxiu:',
@@ -38,6 +46,9 @@ $wgFilepathMessages['ca'] = array(
 );
 $wgFilepathMessages['cdo'] = array(
 	'filepath_page'    => 'Ùng-giông:',
+);
+$wgFilepathMessages['co'] = array(
+	'filepath_page'   => 'Schedariu:',
 );
 $wgFilepathMessages['cs'] = array(
 	'filepath'        => 'Cesta k souboru',

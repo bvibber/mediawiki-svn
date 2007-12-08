@@ -65,7 +65,7 @@ $allMessages = array(
 		'tasklistchooseproj'      => 'Projet sélectionné :',
 		'tasklistprojdisp'        => 'Afficher',
 		'tasklistbyname'          => '== Liste de tâches à faire pour %s ==',
-		'tasklistnoprojects'      => 'Errur : il semble que vous avez activé \'\'\'$wgUseProjects\'\'\', mais n\'avez pas créé [[MediaWiki:TodoTasksValidProjects]]. Prière de lire les [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instructions d\'installation] pour plus de détails.',
+		'tasklistnoprojects'      => 'Erreur : il semble que vous ayez activé \'\'\'$wgUseProjects\'\'\', mais sans avoir créé [[MediaWiki:TodoTasksValidProjects]]. Prière de lire les [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instructions d\'installation] pour plus de détails.',
 	),
 
 	'gl' => array(

@@ -37,6 +37,13 @@ $messages['ar'] = array(
 الصور غير الملائمة سيتم حذفها فورا، انظر [[{{MediaWiki:Multipleupload-page}}|سياسة حذف الصور]].',
 );
 
+$messages['bg'] = array(
+	'multipleupload'    => 'Качване на файлове',
+	'multipleupload-ignoreallwarnings' => 'Пренебрегване на \'\'\'всички предупреждения\'\'\' и съхраняване на файловете въпреки тях.',
+	'multipleupload-saveallfiles' => 'Запазване на всички файлове',
+	'multipleupload-page' => '{{ns:project}}:Политика за изтриване на файлове',
+);
+
 $messages['de'] = array(
 	'multipleupload'                   => 'Dateien hochladen',
 	'multipleupload-ignoreallwarnings' => "Ignoriere '''alle Warnungen''' und speichere die Dateien.",

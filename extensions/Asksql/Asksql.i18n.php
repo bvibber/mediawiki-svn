@@ -46,6 +46,18 @@ this function sparingly.",
 	'querysuccessful'  => 'Matriumpo an paghapot',
 ),
 
+'bg' => array(
+	'asksql'           => 'SQL заявка',
+	'asksqltext'       => 'Използвайте формата по-долу, за да отправите директна заявка към базата данни.
+Използвайте единични кавички (\'като тези\'), за да ограничите низовите литерали.
+С действието си може значително да натоварите сървъра, затова е желателно да използвате тази функционалност пестеливо.',
+	'sqlislogged'      => 'Имайте предвид, че за всички заявки се пази информация.',
+	'sqlquery'         => 'Въвеждане на заявка',
+	'querybtn'         => 'Изпращане на заявка',
+	'selectonly'       => 'Позволени са единствено заявки само за четене.',
+	'querysuccessful'  => 'Заявката е успешна',
+),
+
 'br' => array(
 	'asksql'           => 'Reked SQL',
 	'asksqltext'       => 'Ober gant ar furmskrid a-is evit sevel ur reked war-eeun ouzh ar bank titouroù.

@@ -33,8 +33,21 @@ $wgLinkSearchMessages['bcl'] = array(
 	'linksearch-ok'    => 'Hanápon',
 	'linksearch-line'  => '$1 an nakatakod sa $2',
 );
+$wgLinkSearchMessages['bg'] = array(
+	'linksearch'       => 'Търсене на външни препратки',
+	'linksearch-pat'   => 'Търсене по:',
+	'linksearch-ns'    => 'Именно пространство:',
+	'linksearch-ok'    => 'Търсене',
+	'linksearch-text'  => 'Възможна е употребата на заместващи знаци като: "*.wikipedia.org".<br />Поддържани протоколи: <tt>$1</tt>',
+	'linksearch-line'  => '$1 с препратка от $2',
+	'linksearch-error' => 'Заместващите знаци могат да стоят само в началото на името на хоста.',
+);
 $wgLinkSearchMessages['cdo'] = array(
 	'linksearch-ok'    => 'Sìng-tō̤',
+);
+$wgLinkSearchMessages['co'] = array(
+	'linksearch-ns'    => 'Spaziu:',
+	'linksearch-ok'    => 'Ricerca',
 );
 $wgLinkSearchMessages['cs'] = array(
 	'linksearch'       => 'Hledání externích odkazů',
@@ -67,8 +80,8 @@ $wgLinkSearchMessages['ext'] = array(
 );
 $wgLinkSearchMessages['fi'] = array(
 	'linksearch'       => 'Etsi ulkoisia linkkejä',
-	'linksearch-pat'   => 'Hakukenttä:',
-	'linksearch-ns'    => 'Nimiavaruus:',
+	'linksearch-pat'   => 'Osoite',
+	'linksearch-ns'    => 'Nimiavaruus',
 	'linksearch-ok'    => 'Etsi',
 	'linksearch-text'  => 'Asteriskia (*) voi käyttää jokerimerkkinä, esimerkiksi ”*.wikipedia.org”.',
 	'linksearch-line'  => '$1 on linkitetty sivulta $2',

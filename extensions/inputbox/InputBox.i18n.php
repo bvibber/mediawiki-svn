@@ -68,6 +68,11 @@ function efInputBoxMessages() {
 	'createarticle' => 'Kŭi hiĕk',
 ),
 
+'co' => array(
+	'searchfulltext'          => 'Ricerca testu cumplettu',
+	'createarticle'           => 'Creà l\'articulu',
+),
+
 'cs' => array(
 	'tryexact'       => 'Vyzkoušet přesné hledání',
 	'searchfulltext' => 'Plnotextové hledání',

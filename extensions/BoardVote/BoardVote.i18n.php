@@ -187,8 +187,10 @@ $wgBoardVoteMessages['bcl'] = array(
 	'boardvote_welcome'       => 'Dagos \'\'\'$1\'\'\'!',
 );
 $wgBoardVoteMessages['bg'] = array(
+	'boardvote_novotes'       => 'Все още никой не е гласувал.',
 	'boardvote_user'          => 'Потребител',
 	'boardvote_edits'         => 'Редакции',
+	'boardvote_notstarted'    => 'Гласуването все още не е започнало',
 	'boardvote_edits_many'    => 'много',
 );
 $wgBoardVoteMessages['br'] = array(
@@ -269,6 +271,11 @@ $wgBoardVoteMessages['cdo'] = array(
 	'boardvote_edits'         => "Siŭ-gāi",
 	'boardvote_dumplink'      => "Áik cŭ-uái",
 	'boardvote_submit'        => 'Hō̤',
+);
+$wgBoardVoteMessages['co'] = array(
+	'group-boardvote'         => 'Cummissione eletturale',
+	'group-boardvote-member'  => 'Cummissariu eletturale',
+	'grouppage-boardvote'     => '{{ns:project}}:Cummissarii eletturali',
 );
 $wgBoardVoteMessages['cs'] = array(
 	'boardvote'               => "Volby do Správní rady nadace Wikimedia",

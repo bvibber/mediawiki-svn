@@ -54,6 +54,9 @@ $wgExpandTemplatesMessages['ca'] = array(
 	'expand_templates_output'          => 'Resultat:',
 	'expand_templates_remove_comments' => 'Elimina els comentaris',
 );
+$wgExpandTemplatesMessages['co'] = array(
+	'expand_templates_output'          => 'Risultatu',
+);
 $wgExpandTemplatesMessages['cs'] = array(
 	'expandtemplates'                  => 'Substituce šablon',
 	'expand_templates_intro'           => 'Pomocí této speciální stránky můžete nechat v textu substituovat všechny šablony a funkce parseru jako <code><nowiki>{{</nowiki>#if:…...}}</code> či proměnné jako <code><nowiki>{{</nowiki>CURRENTDAY}} – tzn. prakticky všechno v dvojitých složených závorkách. K tomu se používají přímo odpovídající funkce parseru MediaWiki.',

@@ -41,6 +41,15 @@ $messages['ar'] = array(
 	'spamdifftool_submit_buttom' => 'تنفيذ',
 );
 
+$messages['bg'] = array(
+	'spamdifftool_summary' => 'Добавяне към черния списък със спам',
+	'spamdifftool_option_domain' => 'всичко от този домейн',
+	'spamdifftool_option_subdomain' => 'всичко от този поддомейн',
+	'spamdifftool_option_none' => 'нищо',
+	'spamdifftool_block' => 'Блокиране:',
+	'spamdifftool_submit_buttom' => 'Съхранение',
+);
+
 $messages['de'] = array(
 	'spamdifftool'                  => 'Spam-Blacklist bearbeiten',
 	'spamdifftool_cantedit'         => 'Du hast keine Berechitung zur Bearbeitung der Spam-Blacklist.',
@@ -104,6 +113,7 @@ $messages['nl'] = array(
 	'spamdifftool_spam_link_text' => 'toevoegen aan spam',
 	'spamdifftool_option_domain' => 'alles van dit domein',
 	'spamdifftool_option_subdomain' => 'alles van dit subdomein',
+	'spamdifftool_option_directory' => 'dit subdomein en deze map',
 	'spamdifftool_option_none' => 'niets',
 	'spamdifftool_block' => 'Blokkeren:',
 	'spamdifftool_submit_buttom' => 'OK',

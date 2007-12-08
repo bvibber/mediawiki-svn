@@ -61,6 +61,22 @@ $messages['ar'] = array(
 	'spamregex-summary-log' => '(ملخص)',
 );
 
+$messages['bg'] = array(
+	'spamregex-currently-blocked' => '\'\'\'Текущо блокирани фрази:\'\'\'',
+	'spamregex-no-currently-blocked' => '\'\'\'Няма блокирани фрази.\'\'\'',
+	'spamregex-page-title-1' => 'Блокиране на фрази чрез регулярни изрази',
+	'spamregex-unblock-success' => 'Успешно разблокиране',
+	'spamregex-page-title-2' => 'Блокиране на съхранението на фраза посредством регулярни изрази',
+	'spamregex-block-success' => 'Успешно блокиране',
+	'spamregex-block-message' => 'Фразата \'\'\'$1\'\'\' беше блокирана.',
+	'spamregex-error-1' => 'Невалиден регулярен израз.',
+	'spamregex-phrase-block' => 'Фраза за блокиране:',
+	'spamregex-phrase-block-text' => 'блокиране на фраза в текста на статията',
+	'spamregex-phrase-block-summary' => 'блокиране на фраза в резюмето',
+	'spamregex-text' => '(Текст)',
+	'spamregex-summary-log' => '(Резюме)',
+);
+
 $messages ['fr'] = array(
 	'spamregex' => 'Expressions régulières de Spams',
 	'spamregex_summary' => 'Le texte en question a été détecté dans le commentaire de la page.',
@@ -118,6 +134,7 @@ $messages['nl'] = array(
 	'spamregex' => 'SpamRegex',#identical but defined
 	'spamregex_summary' => 'De tekst is gevonden in de paginasamenvatting.',
 	'spamregex-intro' => 'Gebruik dit formulier om doeltreffend uitdrukkingen te blokkeren van opslaan in een paginatekst. Als de tekst de gegeven uitdrukkingen bevat, dan zal de wijziging niet worden opgeslaan en zal een uitleg getoond worden aan de gebruiker die de pagina probeerde op te slaan. Het wordt aangeraden dat de uitdrukkingen niet te kort of te veelvoorkomend zouden mogen zijn.',
+	'spamregex-page-title' => 'Blokkeren van uitdrukkingen met regex',
 	'spamregex-currently-blocked' => '\'\'\'Huidig geblokkeerde zinnen:\'\'\'',
 	'spamregex-no-currently-blocked' => '\'\'\'Er zijn geen geblokkeerde zinnen.\'\'\'',
 	'spamregex-log-1' => '* \'\'\'$1\'\'\' $2 ([{{SERVER}}$3&text=$4 verwijderen]) toegevoegd door',
