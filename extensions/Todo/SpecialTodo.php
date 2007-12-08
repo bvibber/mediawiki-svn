@@ -17,8 +17,19 @@ INDEX owner_status_queue_timestamp(todo_owner,todo_status,todo_queue,todo_timest
 );
 */
 
+$wgExtensionCredits['other'][] = array(
+	'name' => 'Todo',
+	'version' => '0.2',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Todo',
+	'description' => 'Experimental personal todo list extension',
+	'author' => 'Brion Vibber, Bertrand Grondin',
+);
+
 $wgExtensionFunctions[] = 'todoSetup';
 $wgHooks['SkinTemplateTabs'][] = 'todoAddTab';
+
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['todoAddTab'] = $dir . 'SpecialTodo.i18n.php';
 
 // Creates a group of users who can have todo lists
 $wgGroupPermissions['todo']['todo'] = true;
@@ -29,22 +40,8 @@ $wgGroupPermissions['user']['todosubmit'] = true;
 $wgGroupPermissions['sysop']['todosubmit'] = true;
 
 function todoSetup() {
-	global $wgMessageCache;
-	$wgMessageCache->addMessages( array(
-		'todo' => 'Todo list',
-		'todo-new-queue' => 'new',
-		'todo-mail-subject' => "Completed item on $1's todo list",
-		'todo-mail-body' => <<<ENDS
-You requested e-mail confirmation about the completion of an item you submitted to $1's online todo list.
-
-Item: $2
-Submitted: $3
-
-This item has been marked as completed, with this comment:
-$4
-ENDS
-	) );
-    SpecialPage::addPage( new SpecialPage( 'Todo' ) );
+	wfLoadExtensionMessages( 'todoAddTab' );
+	SpecialPage::addPage( new SpecialPage( 'Todo' ) );
 }
 
 /**
@@ -77,7 +74,7 @@ function wfSpecialTodo( $par=null ) {
 	}
 	if( is_null( $user ) || !$user->isAllowed( 'todo' ) ) {
 		global $wgOut;
-		$wgOut->fatalError( "Todo given invalid, missing, or un-todoable user." );
+		$wgOut->fatalError( wfMsgHtml('todo-user-invalide') );
 	} else {
 		global $wgRequest;
 		$todo = new TodoForm( $user );
@@ -94,7 +91,7 @@ class TodoForm {
 		$this->target = $user;
 		$this->self = Title::makeTitle( NS_SPECIAL, 'Todo/' . $user->getName() );
 	}
-	
+
 	function submit( $request ) {
 		if( $request->getVal( 'wpNewItem' ) ) {
 			$this->submitNew( $request );
@@ -104,7 +101,7 @@ class TodoForm {
 		$this->showError( $result );
 		$this->show();
 	}
-	
+
 	function submitNew( $request ) {
 		$result = TodoItem::add(
 			$this->target,
@@ -113,17 +110,17 @@ class TodoForm {
 			$request->getVal( 'wpEmail' ) );
 		return $result;
 	}
-	
+
 	function submitUpdate( $request ) {
 		$id = $request->getInt( 'wpItem' );
 		$item = TodoItem::loadFromId( $id );
 		if( is_null( $item ) ) {
-			return new WikiError( "Missing or invalid item" );
+			return new WikiError( wfMsgHtml('todo-invalid-item') );
 		}
 
 		global $wgUser;
 		if( $item->owner != $wgUser->getId() ) {
-			return new WikiError( "Trying to update someone else's items" );
+			return new WikiError( wfMsgHtml('todo-update-else-item') );
 		}
 
 		switch( $request->getVal( 'wpUpdateField' ) ) {
@@ -140,27 +137,27 @@ class TodoForm {
 			return new WikiError( "Unrecognized type" );
 		}
 	}
-	
+
 	function show() {
 		global $wgOut, $IP, $wgUser, $wgScriptPath;
-		$wgOut->setPageTitle( "Todo list for " . $this->target->getName() );
-		
-		
-		$wgOut->addWikiText( "== New item ==\n" );
-		
-		require_once $IP . '/extensions/todo/TodoForm.php';
+		$wgOut->setPageTitle( wfmsgHtml('todo-list-for') ." ". $this->target->getName() );
+
+
+		$wgOut->addWikiText( "== ".wfMsg('todo-new-item')." ==\n" );
+
+		require_once ('TodoForm.php');
 		$form = new TodoTemplate();
 		$form->set( 'action', $this->self->getLocalUrl( 'action=submit' ) );
 		$form->set( 'script', "$wgScriptPath/extensions/Todo/todo.js" );
 		$wgOut->addTemplate( $form );
-		
+
 		if( $wgUser->getName() == $this->target->getName() ) {
-			$wgOut->addWikiText( "== Your items ==\n" );
+			$wgOut->addWikiText( "== ". wfMsg('todo-item-list') ." ==\n" );
 			$list = new TodoList( $this->target );
 			$list->show();
 		}
 	}
-	
+
 	function showError( $result ) {
 		if( WikiError::isError( $result ) ) {
 			$wgOut->addHTML( '<p class="error">' .
@@ -168,7 +165,7 @@ class TodoForm {
 				"</p>\n" );
 		}
 	}
-	
+
 }
 
 class TodoList {
@@ -180,13 +177,13 @@ class TodoList {
 	function TodoList( $user ) {
 		$this->owner = $user->getId();
 		$dbr =& wfGetDB( DB_SLAVE );
-		
+
 		$result = $dbr->select( 'todolist', '*', array(
 			'todo_owner' => $this->owner,
 			'todo_status' => 'open' ),
 			'TodoList::TodoList',
 			array( 'ORDER BY' => 'todo_owner,todo_status,todo_queue,todo_timestamp DESC' ) );
-		
+
 		$this->items = array();
 		while( $row = $dbr->fetchObject( $result ) ) {
 			$item = new TodoItem( $row );
@@ -194,33 +191,33 @@ class TodoList {
 		}
 		$dbr->freeResult( $result );
 	}
-	
+
 	function show() {
 		global $wgOut;
-		
+
 		$queues = array_keys( $this->items );
 		usort( $queues, array( 'TodoList', 'queueSort' ) );
-		
+
 		if( count( $queues ) == 0 ) {
-			$wgOut->addWikiText( 'No todo items.' );
+			$wgOut->addWikiText( wfMsg('todo-no-item'));
 			return;
 		}
-		
+
 		$wgOut->addHtml( "<table>\n<tr>" );
 		foreach( $queues as $queue ) {
 			$wgOut->addHtml( wfElement( 'th', null, $queue ) );
 		}
 		$wgOut->addHtml( "</tr>\n<tr>\n" );
-		
+
 		foreach( $queues as $queue ) {
 			$wgOut->addHtml( "<td valign='top'>\n<table border='1'>\n" );
 			$this->showQueue( $queue, $queues );
 			$wgOut->addHtml( "</table>\n</td>\n" );
 		}
-		
+
 		$wgOut->addHtml( "</tr>\n</table>\n" );
 	}
-	
+
 	/**
 	 * Sort callback to force the 'new' queue to the front
 	 * @param string $a
@@ -240,7 +237,7 @@ class TodoList {
 		}
 		return strcmp( $a, $b );
 	}
-	
+
 	function showQueue( $queue, $queues ) {
 		global $wgOut;
 		foreach( $this->items[$queue] as $item ) {
@@ -262,7 +259,7 @@ class TodoItem {
 		$this->comment = $row->todo_comment;
 		$this->email = $row->todo_email;
 	}
-	
+
 	/**
 	 * @param int $id
 	 * @static
@@ -279,7 +276,7 @@ class TodoItem {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * @param User $owner
 	 * @param string $summary
@@ -302,40 +299,40 @@ class TodoItem {
 		return true;
 	}
 
-	
+
 	function show( $queues ) {
 		global $wgOut, $wgUser, $wgLang;
 		$id = $this->id;
-		
+
 		$wgOut->addHtml( wfElement( 'div', array(
 			'class' => 'mwTodoTitle',
 			'id' => "mwTodoTitle$id",
 			'ondblclick' => "todoEditTitle($id,true)" ) ) .
 			htmlspecialchars( $this->title ) .
 			"&nbsp;</div>\n" );
-		
+
 		$wgOut->addHtml( $this->buildHiddenForm( 'title', $this->title, 1 ) );
-		
+
 		$wgOut->addHtml( "<div class='mwTodoTimestamp'>" . $wgLang->timeanddate( $this->timestamp ) . "</div>\n" );
-		
+
 		$wgOut->addHtml( wfOpenElement( 'div', array(
 			'class' => 'mwTodoComment',
 			'id' => "mwTodoComment$id",
 			'ondblclick' => "todoEditComment($id,true)" ) ) );
 		$wgOut->addWikiText( $this->comment );
 		$wgOut->addHtml( "&nbsp;</div>" );
-		
+
 		$wgOut->addHtml( $this->buildHiddenForm( 'comment', $this->comment, 6 ) );
-		
+
 		$wgOut->addHtml( $this->buildQueueForm( $queues ) );
 	}
-	
+
 	function buildHiddenForm( $field, $val, $rows ) {
 		global $wgUser;
 		$capField = ucfirst( $field );
 		$id = $this->id;
 		$todo = Title::makeTitle( NS_SPECIAL, 'Todo' );
-		
+
 		return wfOpenElement( 'div', array(
 				'id' => "mwTodo{$capField}Update$id",
 				'style' => 'display:none' ) ) .
@@ -357,15 +354,15 @@ class TodoItem {
 			"<br />\n" .
 			wfElement( 'input', array(
 				'type' => 'submit',
-				'value' => 'Change' ) ) .
+				'value' => wfMsg('todo-list-change') ) ) .
 			" " .
 			wfElement( 'input', array(
 				'type' => 'button',
-				'value' => 'Cancel',
+				'value' => wfMsg('todo-list-cancel'),
 				'onclick' => "todoEdit{$capField}($id,false)" ) ) .
 			"</form></div>\n";
 	}
-	
+
 	function buildQueueForm( $queues ) {
 		global $wgUser;
 		$id = $this->id;
@@ -383,25 +380,25 @@ class TodoItem {
 			$this->buildMoveSelector( $queues ) .
 			"</form>\n";
 	}
-	
+
 	function buildMoveSelector( $queues ) {
 		$out = "<select name='wpQueue' id='mwTodoQueue" . $this->id . "' onchange='todoMoveQueue(" . $this->id . ")'>";
 		foreach( $queues as $queue ) {
 			if( $queue == $this->queue ) {
 				$out .= wfElement( 'option',
 					array( 'value' => '', 'selected' => 'selected' ),
-					'Move to queue...' );
+					wfMsgHtml('todo-move-queue') );
 			} else {
 				$out .= wfElement( 'option',
 					array( 'value' => $queue ),
 					$queue );
 			}
 		}
-		$out .= "<option value='+' />Add queue...</option>\n";
+		$out .= "<option value='+' />".wfMsgHtml('todo-add-queue')."</option>\n";
 		$out .= "</select>";
 		return $out;
 	}
-	
+
 	/**
 	 * @param string $queue
 	 */
@@ -409,7 +406,7 @@ class TodoItem {
 		$this->queue = $queue;
 		return $this->updateRecord( array( 'todo_queue' => $queue ) );
 	}
-	
+
 	/**
 	 * @param string $comment
 	 */
@@ -417,7 +414,7 @@ class TodoItem {
 		$this->comment = $comment;
 		return $this->updateRecord( array( 'todo_comment' => rtrim( $comment ) ) );
 	}
-	
+
 	/**
 	 * @param string $title
 	 */
@@ -425,7 +422,7 @@ class TodoItem {
 		$this->title = $title;
 		return $this->updateRecord( array( 'todo_title' => trim( $title ) ) );
 	}
-	
+
 	/**
 	 * @param string $comment
 	 * @param bool $sendMail false to supppress sending of email to submitter
@@ -437,19 +434,19 @@ class TodoItem {
 			$this->sendConfirmationMail( $comment );
 		}
 	}
-	
+
 	/**
 	 * @param string $closeComment
 	 * @return mixed true on success, WikiError on failure
 	 */
 	function sendConfirmationMail( $closeComment ) {
 		require_once 'includes/UserMailer.php';
-		
+
 		$owner = User::newFromId( $this->owner );
 		if( is_null( $owner ) ) {
-			return new WikiError( 'Invalid owner on this item' );
+			return new WikiError( wfMsgHtml('todo-invalid-owner') );
 		}
-		
+
 		$sender = new MailAddress( $owner );
 		$recipient = new MailAddress( $this->email );
 		return userMailer( $recipient, $sender,
@@ -460,7 +457,7 @@ class TodoItem {
 				$this->title,
 				$closeComment ) ) );
 	}
-	
+
 	/**
 	 * @param array $changes Fields to change in the record
 	 * @access private
@@ -473,6 +470,3 @@ class TodoItem {
 			'TodoItem::updateRecord' );
 	}
 }
-
-
-

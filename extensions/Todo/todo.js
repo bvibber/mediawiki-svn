@@ -24,7 +24,7 @@ function todoMoveQueue(id) {
 function todoEditTitle(id, enable) {
 	var block = document.getElementById( "mwTodoTitle" + id );
 	block.style.display = enable ? "none" : "block";
-	
+
 	var form = document.getElementById( "mwTodoTitleUpdate" + id );
 	form.style.display = enable ? "block" : "none";
 }
@@ -32,7 +32,7 @@ function todoEditTitle(id, enable) {
 function todoEditComment(id, enable) {
 	var block = document.getElementById( "mwTodoComment" + id );
 	block.style.display = enable ? "none" : "block";
-	
+
 	var form = document.getElementById( "mwTodoCommentUpdate" + id );
 	form.style.display = enable ? "block" : "none";
 }
