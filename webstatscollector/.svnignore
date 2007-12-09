@@ -2,3 +2,4 @@
 .bzrignore
 dumps
 collector
+.gdb_history
