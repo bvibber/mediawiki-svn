@@ -2,7 +2,7 @@
 
 class SmoothGallery {
 
-        static function setHeaders(  &$outputPage ) {
+        static function setGalleryHeaders(  &$outputPage ) {
                 global $wgSmoothGalleryExtensionPath;
 
                 $extensionpath = $wgSmoothGalleryExtensionPath;
@@ -14,6 +14,7 @@ class SmoothGallery {
 
                 //Add SmoothGallery javascript
                 $outputPage->addScript( '<script src="' . $extensionpath . '/scripts/jd.gallery.js" type="text/javascript"></script>' );
+                $outputPage->addScript( '<script src="' . $extensionpath . '/scripts/HistoryManager.js" type="text/javascript"></script>' );
 
                 //Add SmoothGallery css 
                 $outputPage->addLink( 
@@ -31,5 +32,13 @@ class SmoothGallery {
                 return true;
         }
 
+        static function setGallerySetHeaders(  &$outputPage ) {
+                global $wgSmoothGalleryExtensionPath;
+
+                $extensionpath = $wgSmoothGalleryExtensionPath;
+                $outputPage->addScript( '<script src="' . $extensionpath . '/scripts/jd.gallery.set.js" type="text/javascript"></script>' );
+
+		return true;
+	}
 }
 

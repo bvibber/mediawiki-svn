@@ -46,6 +46,7 @@ function wfSmoothGallery() {
 	global $wgParser;
 
 	$wgParser->setHook( 'sgallery', 'renderSmoothGallery' );
+	$wgParser->setHook( 'sgalleryset', 'renderSmoothGallerySet' );
 }
 
 function smoothGalleryImagesByCat( $title ) {
@@ -74,7 +75,7 @@ function smoothGalleryImagesByCat( $title ) {
 	return $images;
 }
 
-function renderSmoothGallery( $input, $argv, &$parser ) {
+function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial ) {
 	global $wgContLang, $wgUser, $wgTitle;
 	global $wgSmoothGalleryDelimiter;
 	global $wgVersion;
@@ -90,8 +91,13 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
 	}
 
 	//Give this gallery a random name so that we can have more than one gallery
-	//on a page.
-	$name = "myGallery" . mt_rand();
+	//on a page. But don't do this on a special page, because it will cause
+	//us problems with javascript that uses the css classname
+	if ( $calledfromspecial ) {
+		$name = "myGallery";
+	} else {
+		$name = "myGallery" . mt_rand();
+	}
 
 	//Parse arguments, set defaults, and do sanity checks
 	if ( isset( $argv["height"] ) && is_numeric( $argv["height"] ) ) {
@@ -366,13 +372,37 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
 		$output .= ', showInfopane: false';
 	}
 
+	$output .= ', useHistoryManager: true';
+	#$output .= ', preloader: true';
+	#$output .= ', preloaderImage: true';
+	#$output .= ', preloaderErrorImage: true';
+	#$output .= ', carouselPreloader: true';
+	#$output .= ", textPreloadingCarousel: '" . wfMsg("smoothgallery-loading") . "'";
+
 	$output .= '});';
+	$output .= 'HistoryManager.start();';
 	$output .= '}';
-	$output .= 'addOnloadHook(startGallery_' . $name . ');';
+	$output .= "window.addEvent('domready', startGallery_$name);";
+	#$output .= 'addOnloadHook(startGallery_' . $name . ');';
 	$output .= '</script>';
 
 	//Finished, let's send it out
 	return $output;
+}
+
+function renderSmoothGallerySet( $text, $args, &$parser, $calledfromspecial ) {
+	//Give this gallery a random name so that we can have more than one gallery
+	//on a page. But don't do this on a special page, because it will cause
+	//us problems with javascript that uses the css classname
+	if ( $calledfromspecial ) {
+		$name = "myGallerySet";
+	} else {
+		$name = "myGallerySet" . mt_rand();
+	}
+	$parser->mOutput->mSmoothGallerySetTag = true; # flag for use by smoothGalleryParserOutput
+
+	$output = $parser->recursiveTagParse( $text );
+	return '<div id="">' . $output . '</div>';
 }
 
 /**
@@ -381,7 +411,10 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
  */
 function smoothGalleryParserOutput( &$outputPage, &$parserOutput )  {
 	if ( !empty( $parserOutput->mSmoothGalleryTag ) ) {
-		SmoothGallery::setHeaders( $outputPage );
+		SmoothGallery::setGalleryHeaders( $outputPage );
+	}
+	if ( !empty( $parserOutput->mSmoothGallerySetTag ) ) {
+		SmoothGallery::setGallerySetHeaders( $outputPage );
 	}
 	return true;
 }

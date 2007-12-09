@@ -63,7 +63,7 @@ class SpecialSmoothGallery extends SpecialPage {
 
 		SmoothGallery::setHeaders( $wgOut );
 
-                $wgOut->addHTML( renderSmoothGallery( $this->mInput, $this->mOptionArray, $wgParser ) );
+                $wgOut->addHTML( renderSmoothGallery( $this->mInput, $this->mOptionArray, $wgParser, true ) );
         }
 
 }
