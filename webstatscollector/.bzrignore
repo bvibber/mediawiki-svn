@@ -1,0 +1,4 @@
+collector
+.gdb_history
+*.db
+dumps
