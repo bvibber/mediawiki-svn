@@ -17,6 +17,11 @@ $messages['ar'] = array(
 	'assert_edit_message' => 'التأكيد المحدد ($1) فشل.',
 );
 
+$messages['br'] = array(
+	'assert_edit_title'   => 'C\'hwitet eo an enframmañ',
+	'assert_edit_message' => 'C\'hwitet eo an enframmadenn goulennet.',
+);
+
 $messages['de'] = array(
 	'assert_edit_title'   => 'Anspruch fehlgeschlagen',
 	'assert_edit_message' => 'Der angegebene Anspruch ($1) ist fehlgeschlagen.',

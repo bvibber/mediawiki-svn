@@ -17,6 +17,11 @@ $messages['ar'] = array(
 	'stalepages-summary' => 'هذه قائمة بالصفحات التي لم يتم تعديلها في آخر $1 يوم.',
 );
 
+$messages['bg'] = array(
+	'stalepages' => 'Стари страници',
+	'stalepages-summary' => 'Това е списък от страници, които не са били редактирани през последните $1 дни.',
+);
+
 $messages['de'] = array(
 	'stalepages' => 'Alte Seiten',
 	'stalepages-summary' => 'Dies ist eine Liste von Seiten, die in den letzten $1 Tagen nicht bearbeitet wurden.',

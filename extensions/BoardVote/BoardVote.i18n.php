@@ -1569,6 +1569,17 @@ $wgBoardVoteMessages['rm'] = array(
 	'boardvote_user'          => 'Utilisader',
 	'boardvote_welcome'       => 'Chau \'\'\'$1\'\'\'!',
 );
+$wgBoardVoteMessages['ro'] = array(
+	'boardvote_novotes'       => 'Nimeni nu a votat încă.',
+	'boardvote_time'          => 'Timp',
+	'boardvote_user'          => 'Utilizator',
+	'boardvote_edits'         => 'Modificări',
+	'boardvote_days'          => 'Zile',
+	'boardvote_ip'            => 'IP',#identical but defined
+	'boardvote_listintro'     => '<p>Aceasta este o listă a tuturor voturilor înregistrate până acum. $1 pentru datele criptate.</p>',
+	'boardvote_submit'        => 'OK',#identical but defined
+	'boardvote_notstarted'    => 'Votarea încă nu a început',
+);
 $wgBoardVoteMessages['ru'] = array(
 	'boardvote'               => "Выборы в Совет поверенных фонда «Викимедиа»",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Проголосовать]]

@@ -148,6 +148,7 @@ $wgAjaxShowEditorsMessages['pt'] = array(
 	'ajax-se-idling' => '($1 segundos atrás)',
 );
 $wgAjaxShowEditorsMessages['ro'] = array(
+	'ajax-se-title' => 'Modificare curentă:',
 	'ajax-se-idling' => '(acum $1s)',
 );
 $wgAjaxShowEditorsMessages['ru'] = array(

@@ -119,6 +119,10 @@ $messages['ar'] = array(
 	'math_WrongFontEncodingWithHint'        => 'الرمز "$1" ربما لا يظهر في إنكودنج الخط "$2" (حاول استخدام أمر "$3{...}")',
 );
 
+$messages['br'] = array(
+	'math_noblahtex'                        => 'Dibosupl erounit Blahtex, a zlefe bezañ e $1',
+);
+
 $messages['fr'] = array(
 	'math_noblahtex'                        => 'Ne peut exécuter blahtex, qui devrait être à $1',
 	'math_AmbiguousInfix'                   => 'La position de « $1 » est ambigue (ajouter des balises additionnelles « { ... } » peut lever l\'ambiguité)',

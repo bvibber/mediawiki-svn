@@ -46,9 +46,13 @@ function efBookInformationMessages() {
 ),
 
 'bg' => array(
+	'bookinfo-header' => 'Информация за книга',
 	'bookinfo-result-title' => 'Заглавие:',
 	'bookinfo-result-author' => 'Автор:',
+	'bookinfo-result-publisher' => 'Издател:',
 	'bookinfo-result-year' => 'Година:',
+	'bookinfo-error-invalidisbn' => 'Въведеният ISBN е грешен.',
+	'bookinfo-purchase' => 'Купуване на тази книга от $1',
 ),
 
 'br' => array(
@@ -335,6 +339,16 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Sem resposta ou tempo de pedido expirado.',
 	'bookinfo-purchase' => 'Comprar este livro a $1',
 	'bookinfo-provider' => 'Provedor de dados: $1',
+),
+
+'ro' => array(
+	'bookinfo-result-title' => 'Titlu:',
+	'bookinfo-result-author' => 'Autor:',
+	'bookinfo-result-publisher' => 'Editură:',
+	'bookinfo-result-year' => 'An:',
+	'bookinfo-error-invalidisbn' => 'ISBN nevalid.',
+	'bookinfo-error-nosuchitem' => 'Elementul nu există sau nu a putut fi găsit.',
+	'bookinfo-purchase' => 'Cumpăraţi această carte de la $1',
 ),
 
 /* Russian (Alexander Sigaachov) */

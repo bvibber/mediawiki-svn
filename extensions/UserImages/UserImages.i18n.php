@@ -98,6 +98,11 @@ function efUserImagesMessages() {
 	'userimages-noname' => 'Stranòm nen bon ò ch\'a-i é nen d\'autut.',
 	'userimages-noimages' => '$1 a l\'ha pa carià gnun-a figura.',
 ),
+'ro' => array(
+	'userimages-caption' => 'Imagini încărcate de $1',
+	'userimages-noname' => 'Nume de utilizator nevalid sau nespecificat.',
+	'userimages-noimages' => '$1 nu a încărcat imagini.',
+),
 /* Slovak (by helix84) */
 'sk' => array(
 	'userimages-caption' => 'Obrázky nahrané používateľom $1',

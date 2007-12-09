@@ -77,11 +77,25 @@ function efBadImageMessages() {
 ),
 
 'bg' => array(
+	'badimages' => 'Списък с неприемливи файлове',
 	'badimages-add-btn' => 'Добавяне',
+	'badimages-added' => '$1 беше добавен към списъка.',
+	'badimages-count' => 'Списъкът съдържа \'\'\'$1\'\'\' неприемливи файла.',
 	'badimages-name' => 'Име:',
+	'badimages-not-added' => 'Файлът не може да бъде добавен.',
+	'badimages-not-removed' => 'Файлът не може да бъде премахнат.',
 	'badimages-reason' => 'Причина:',
 	'badimages-remove' => '(премахване)',
 	'badimages-remove-btn' => 'Премахване',
+	'badimages-remove-confirm' => 'Потвърждение за премахване на $1 от списъка:',
+	'badimages-removed' => '$1 беше премахнат от списъка.',
+	'badimages-subheading' => 'Текущи записи',
+	'badimages-unprivileged' => '(Нямате необходимите права, за да променяте списъка)',
+	'badimages-log-name' => 'Списък с неприемливи файлове',
+	'badimages-log-header' => 'Страницата съдържа дневник на промените в [[{{MediaWiki:Badimages-page}}|списъка с неприемливи файлове]].',
+	'badimages-log-add' => 'добави [[$1]] към списъка с неприемливи файлове',
+	'badimages-log-remove' => 'премахна [[$1]] от списъка с неприемливи файлове',
+	'badimages-page' => '{{ns:help}}:Неприемливи файлове',
 ),
 
 'br' => array(
@@ -103,6 +117,7 @@ function efBadImageMessages() {
 	'badimages-log-header' => 'Setu roll ar c\'hemmoù bet degaset d\'ar [[{{MediaWiki:Badimages-page}}|roll skeudennoù fall]].',
 	'badimages-log-add' => 'ouzhpennet eo bet [[$1]] d\'ar roll skeudennoù fall',
 	'badimages-log-remove' => 'tennet eo bet [[$1]] a-ziwar ar roll skeudennoù fall',
+	'badimages-page' => '{{ns:help}}:Roll ar skeudennoù didalvoud',
 ),
 
 /* German (Raymond) */
@@ -527,8 +542,10 @@ function efBadImageMessages() {
 	'badimages-reason' => 'Motiv:',
 	'badimages-remove' => '(şterge)',
 	'badimages-remove-btn' => 'Şterge',
+	'badimages-remove-confirm' => 'Confirmaţi ştergerea $1 din listă:',
 	'badimages-removed' => '$1 a fost şters din listă.',
 	'badimages-subheading' => 'Elemente curente',
+	'badimages-unprivileged' => '(Nu aveţi drepturi suficiente pentru modificarea listei)',
 ),
 
 /* Russian (Alexander Sigachov) */

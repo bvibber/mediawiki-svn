@@ -15,6 +15,10 @@ $messages['ar'] = array(
 	'advancedrandom' => 'عشوائي متقدم',
 );
 
+$messages['br'] = array(
+	'advancedrandom' => 'Moned dargouezhek araokaet',
+);
+
 $messages['de'] = array(
 	'advancedrandom' => 'Zufällige Seite (erweitert)',
 );

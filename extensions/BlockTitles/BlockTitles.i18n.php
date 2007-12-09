@@ -126,6 +126,11 @@ function efBlockTitlesMessages() {
 	'block_title_error_page_title' => 'Título Bloqueado',
 ),
 
+'ro' => array(
+	'block_title_error_page_title' => 'Titlu blocat',
+	'block_title_error' => 'Ne pare rău, titlul acestui articol nu poate fi salvat.',
+),
+
 'scn' => array(
 	'block_title_error_page_title' => 'Tìtulu bluccatu',
 	'block_title_error' => 'Semu spiacenti, nun è cunzintitu sarvari na vuci cu chistu tìtulu.',

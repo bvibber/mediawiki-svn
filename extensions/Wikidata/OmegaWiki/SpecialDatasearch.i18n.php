@@ -23,6 +23,10 @@ $wgDataSearchMessages['bn'] = array(
 	'datasearch' => 'Wikidata: তথ্য অনুসন্ধান',
 );
 
+$wgDataSearchMessages['br'] = array(
+	'datasearch' => 'Wikidata: Klask roadennoù',
+);
+
 $wgDataSearchMessages['el'] = array(
 	'datasearch' => 'Βικιδεδομένα: Αναζήτηση δεδομένων',
 );
@@ -57,6 +61,10 @@ $wgDataSearchMessages['pms'] = array(
 
 $wgDataSearchMessages['pt'] = array(
 	'datasearch' => 'Wikidata: Pesquisa de dados',
+);
+
+$wgDataSearchMessages['ro'] = array(
+	'datasearch' => 'Wikidata: Căutare de date',
 );
 
 $wgDataSearchMessages['sk'] = array(

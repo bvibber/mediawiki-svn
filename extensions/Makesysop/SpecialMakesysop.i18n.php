@@ -115,6 +115,7 @@ $messages = array(
 	'makesysop' => 'Превръщане на потребител в администратор',
 	'already_sysop' => 'Този потребител беше вече администратор',
 	'already_bureaucrat' => 'Този потребител беше вече бюрократ',
+	'makesysop-nodatabase' => 'Грешно междууики: $1',
 	'group-steward' => 'Стюарди',
 	'group-steward-member' => 'Стюард',
 	'grouppage-steward' => '{{ns:project}}:Стюарди',
