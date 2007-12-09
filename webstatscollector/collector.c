@@ -128,9 +128,11 @@ void handleMessage(char *buf,ssize_t l) {
 	char keytext[1200];
 	int r;
 	
+	unsigned long long serial;
+	
 	struct wcstats incoming;
 	/* project count bytesize page */
-	const char msgformat[]="%127s %llu %llu %1023[^\n]"; 
+	const char msgformat[]="%llu %127s %llu %llu %1023[^\n]"; 
 	
 	buf[l]=0;
 	pp=buf;
@@ -143,11 +145,11 @@ void handleMessage(char *buf,ssize_t l) {
 			return;
 		}
 		bzero(&incoming,sizeof(incoming));
-		r=sscanf(p,msgformat,(char *)&project,
+		r=sscanf(p,msgformat,&serial,(char *)&project,
 			&incoming.wc_count,
 			&incoming.wc_bytes,
 			(char *)&title);
-		if (r<4)
+		if (r<5)
 			continue;
 		snprintf(keytext,1499,"%s:%s",project,title);
 		
@@ -170,10 +172,10 @@ DB * initEmptyDB() {
 void increaseStatistics(DB *db, char *keytext, struct wcstats *incoming ) {
 	struct wcstats *old;
 	DBT key,data;
-	
+		
 	bzero(&key,sizeof(key));
 	key.data=keytext;
-	key.size=strlen(keytext);
+	key.size=strlen(keytext)+1;
 	
 	bzero(&data,sizeof(data));
 		
@@ -227,7 +229,7 @@ void produceDump() {
 	pthread_t dumper,aggrdumper;
 	static struct dumperjob dumperJob, aggrDumperJob;
 	DB *olddb,*oldaggr;
-	time_t dumptime;
+	time_t dumptime=0;
 	
 	time(&dumptime);
 	
@@ -249,7 +251,8 @@ void produceDump() {
 
 	pthread_create(&aggrdumper,NULL,(void *)statsDumper,(void *)&aggrDumperJob);
 	
-	alarm(PERIOD-(dumptime%PERIOD)+1);
+	needdump=0;
+	alarm(PERIOD-(dumptime%PERIOD));
 }
 
 /* TCP connection handling logic - unsafe dump of data in DB - should be avoided at large datasets */
@@ -280,6 +283,7 @@ void handleConnection(int c) {
 /* Event handling - most of them are not used or should not be used due to reentry possibilities */
 
 void alarmed() {
+	alarm(0);
 	needdump=1;
 }
 

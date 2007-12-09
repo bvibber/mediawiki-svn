@@ -28,10 +28,6 @@ void dumpData(FILE *fd, DB *db) {
 	bzero(&key,sizeof(key));
 	bzero(&data,sizeof(data));
 	
-	if (db==NULL) {
-		db_create(&db,NULL,0);
-		db->open(db,NULL,"stats.db",NULL,DB_BTREE,0,0);
-	}
 	db->cursor(db,NULL,&c,0);
 	while(c->c_get(c, &key, &data, DB_NEXT )==0) {
 		entry=data.data;
@@ -44,7 +40,7 @@ void dumpData(FILE *fd, DB *db) {
 		
 		/* Get EVENT */
 		fprintf(fd,"%s %s %llu %llu\n",
-				project,(page==NULL?page:"-"),
+				project,(page?page:"-"),
 				entry->wc_count, entry->wc_bytes);
 	}
 	c->c_close(c);
