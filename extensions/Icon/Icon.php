@@ -46,10 +46,8 @@ function efIcon_Render(&$parser, $img, $alt=null, $width=null, $page=null) {
 	}
 
 	// Optional parameters
-	if (!empty($alt))		$alt    = "alt='${alt}'"; 		else $alt='';
+	if (!empty($alt))		$alt    = "alt='${alt}' title='${alt}'"; 		else $alt='';
 	if (!empty($width))		$width  = "width='${width}'"; 	else $width='';
-	//if (!empty($height))	$height = "height='${height}'";	else $height='';
-	if (!empty($border))	$border = "border='${border}'";	else $border='';
 
 	$imageString = "<img src='${iURL}' $alt $width $height $border />";
 	
