@@ -57,6 +57,8 @@ $oaiAuditDatabase = false;
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'OAIRepository',
+	'version' => '1.1',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:OAIRepository',
 	'author' => 'Brion Vibber',
 	'description' => 'Provides [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] repository interface',
 );
@@ -133,5 +135,3 @@ function oaiUpdateUndelete( $title, $isnewid ) {
 	oaiUpdatePage( $id, 'modify' );
 	return true;
 }
-
-

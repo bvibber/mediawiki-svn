@@ -4,6 +4,7 @@ $wgAjaxShowEditorsTimeout = 60;
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Ajax Show Editors',
+	'version' => '1.1',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AjaxShowEditors',
 	'author' => 'Ashar Voultoiz',
 	'description' => 'Let you see who is editing the page you are editing yourself.',

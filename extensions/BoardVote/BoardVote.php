@@ -10,7 +10,10 @@ if (!defined('MEDIAWIKI')) {
 # Extension credits
 $wgExtensionCredits['other'][] = array(
 	'name' => 'BoardVote',
-	'description' => '[[meta:Board elections|Wikimedia Board of Trustees election]]'
+	'version' => '1.1',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:BoardVote',
+	'author' => 'Tim Starling, Rob Church, Brion Vibber',
+	'description' => '[[meta:Board elections|Wikimedia Board of Trustees election]]',
 );
 
 # Default settings
