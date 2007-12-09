@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+### Fancy Planet HTML template.
+### 
+### When combined with the stylesheet and images in the output/ directory
+### of the Planet source, this gives you a much prettier result than the
+### default examples template and demonstrates how to use the config file
+### to support things like faces
+### 
+### For documentation on the more boring template elements, see
+### examples/config.ini and examples/index.html.tmpl in the Planet source.
+
+<head>
+<title><TMPL_VAR name></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="<TMPL_VAR generator ESCAPE="HTML">">
+<link rel="stylesheet" href="planet.css" type="text/css">
+<TMPL_IF feedtype>
+<link rel="alternate" href="<TMPL_VAR feed ESCAPE="HTML">" title="<TMPL_VAR channel_title_plain ESCAPE="HTML">" type="application/<TMPL_VAR feedtype>+xml">
+</TMPL_IF>
+</head>
+
+<body>
+<h1><TMPL_VAR name></h1>
+
+<TMPL_LOOP Items>
+<TMPL_IF new_date>
+<TMPL_UNLESS __FIRST__>
+### End <div class="channelgroup">
+</div>
+### End <div class="daygroup">
+</div>
+</TMPL_UNLESS>
+<div class="daygroup">
+<h2><TMPL_VAR new_date></h2>
+</TMPL_IF>
+
+<TMPL_IF new_channel>
+<TMPL_UNLESS new_date>
+### End <div class="channelgroup">
+</div>
+</TMPL_UNLESS>
+<div class="channelgroup">
+
+### Planet provides template variables for *all* configuration options for
+### the channel (and defaults), even if it doesn't know about them.  We
+### exploit this here to add hackergotchi faces to our channels.  Planet
+### doesn't know about the "face", "facewidth" and "faceheight" configuration
+### variables, but makes them available to us anyway.
+
+<h3><a href="<TMPL_VAR channel_link ESCAPE="HTML">" title="<TMPL_VAR channel_title_plain ESCAPE="HTML">"><TMPL_VAR channel_name></a></h3>
+<TMPL_IF channel_face>
+<img class="face" src="images/<TMPL_VAR channel_face ESCAPE="HTML">" width="<TMPL_VAR channel_facewidth ESCAPE="HTML">" height="<TMPL_VAR channel_faceheight ESCAPE="HTML">" alt="">
+</TMPL_IF>
+</TMPL_IF>
+
+
+<div class="entrygroup" id="<TMPL_VAR id>"<TMPL_IF channel_language> lang="<TMPL_VAR channel_language>"</TMPL_IF>>
+<TMPL_IF title>
+<h4<TMPL_IF title_language> lang="<TMPL_VAR title_language>"</TMPL_IF>><a href="<TMPL_VAR link ESCAPE="HTML">"><TMPL_VAR title></a></h4>
+</TMPL_IF>
+<div class="entry">
+<div class="content"<TMPL_IF content_language> lang="<TMPL_VAR content_language>"</TMPL_IF>>
+<TMPL_VAR content>
+</div>
+
+### Planet also makes available all of the information from the feed
+### that it can.  Use the 'planet-cache' tool on the cache file for
+### a particular feed to find out what additional keys it supports.
+### Comment extra fields are 'author' and 'category' which we
+### demonstrate below.
+
+<p class="date">
+<a href="<TMPL_VAR link ESCAPE="HTML">"><TMPL_IF author>by <TMPL_VAR author> at </TMPL_IF><TMPL_VAR date><TMPL_IF category> under <TMPL_VAR category></TMPL_IF></a>
+</p>
+</div>
+</div>
+
+<TMPL_IF __LAST__>
+### End <div class="channelgroup">
+</div>
+### End <div class="daygroup">
+</div>
+</TMPL_IF>
+</TMPL_LOOP>
+
+
+<div class="sidebar">
+<img src="images/logo.png" width="136" height="136" alt="">
+<h2>Subscribe</h2>
+<ul><li>
+<a href="/atom.xml">atom feed</A></li>
+<li><a href="/rss10.xml">rss 1.0</A></li>
+<li><a href="/rss20.xml">rss 2.0</a></li>
+</ul>
+
+<h2>About</h2>
+
+<I>Planet Wikimedia is a combined view on what Wikimedia project participants have to say in their blogs about wikis. <a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia">More information ..</A>
+</I>
+
+<h2>Subscriptions</h2>
+<ul>
+<TMPL_LOOP Channels>
+<li>
+<a href="<TMPL_VAR url ESCAPE="HTML">" title="subscribe"><img src="images/feed-icon-10x10.png" alt="(feed)"></a> <a <TMPL_IF link>href="<TMPL_VAR link ESCAPE="HTML">" </TMPL_IF><TMPL_IF message>class="message" title="<TMPL_VAR message ESCAPE="HTML">"</TMPL_IF><TMPL_UNLESS message>title="<TMPL_VAR title_plain ESCAPE="HTML">"</TMPL_UNLESS>><TMPL_VAR name></a>
+</li>
+</TMPL_LOOP>
+</ul>
+<P>
+<strong><a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia">Add your blog</A> &ndash; <a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia/New_language">Request new language</A></strong>
+</P>
+<p>
+<strong>Last updated:</strong><br>
+<TMPL_VAR date><br>
+<em>All times are UTC.</em><br>
+<br>
+Powered by:<br>
+<a href="http://www.planetplanet.org/"><img src="images/planet.png" width="80" height="15" alt="Planet" border="0"></a>
+</p>
+<P>
+<H2>Disclaimer</H2>
+Planet Wikimedia is operated by the non-profit <a href="http://wikimediafoundation.org/">Wikimedia Foundation</A> for the purpose of facilitating the sharing of
+information and opinions among members of the Wikimedia community. The aggregation of posts from weblogs is a computer-controlled process, and the Wikimedia Foundation is not liable for any material 
+submitted by participants in this online community.
+</P>
+<p>
+<h2>Planetarium:</h2>
+<ul>
+<li><a href="http://wikiblogplanet.com/">Wiki Blog Planet</a></li>
+<li><a href="http://planet.laptop.org/">Planet OLPC</A></li>
+<li><a href="http://planet.freedesktop.org/">Planet freedesktop.org</a></li>
+<li><a href="http://planet.mozilla.org/">Planet Mozilla</A></li>
+<li><a href="http://planet.inkscape.org/">Planet Inkscape</A></li>
+<li><a href="http://planet.ubuntu.com/">Planet Ubuntu</A></li>
+<li><a href="http://planet.debian.net/">Planet Debian</a></li>
+<li><a href="http://planet.fedoraproject.org/">Planet Fedora</a></li>
+<li><a href="http://intelligentdesigns.net/Planet_tracker">more...</a></li>
+</ul>
+</p>
+<p>
+<h2>In other languages:</h2>
+<ul>
+<li><a href="http://ar.planet.wikimedia.org">العربية</a></li>
+<li><a href="http://de.planet.wikimedia.org">Deutsch</a></li>
+<li><a href="http://pl.planet.wikimedia.org">Polski</a></li>
+<li><a href="http://pt.planet.wikimedia.org">Português</a></li>
+<li><a href="http://zh.planet.wikimedia.org">中文</a></li>
+</ul>
+</p>
+</div>
+</body>
+
+</html>
