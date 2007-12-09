@@ -25,6 +25,14 @@ $messages['fr'] = array(
 	'purge' => 'purger',
 );
 
+$messages['hsb'] = array(
+	'purge' => 'rjedźić',
+);
+
 $messages['nl'] = array(
 	'purge' => 'cache legen',
+);
+
+$messages['no'] = array(
+	'purge' => 'gjenoppfrisk',
 );

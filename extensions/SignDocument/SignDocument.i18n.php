@@ -42,6 +42,12 @@ $allMessages = array(
 		'signaturelogentry'     => 'ondertekende het document $1',
 	),
 
+	'no' => array(
+		'signaturelogpage' => 'Signaturlogg',
+		'signaturelogpagetext' => 'Dette er en logg over alle signaturer lagt til dokumenter via [[Special:SignDocument]].',
+		'signaturelogentry' => 'signerte dokumentet $1',
+	),
+
 	'oc' => array(
 		'signaturelogpage' => 'Jornal de las signaturas',
 		'signaturelogpagetext' => 'Aquò es lo jornal de totas las signaturas ajustadas als documents via [[Special:SignDocument]].',

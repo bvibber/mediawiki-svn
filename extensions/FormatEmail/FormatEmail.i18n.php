@@ -63,7 +63,6 @@ $2',
 
 $messages['no'] = array(
 	'email_footer' => '
-
 ----------------------------------------------------------------------------
 Denne e-posten har blitt sendt deg fra $1 via {{SITENAME}}s e-postsystem.',
 );

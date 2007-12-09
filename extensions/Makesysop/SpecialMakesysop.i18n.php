@@ -1291,17 +1291,18 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 ),
 
 'vec' => array(
-	'makesysoptitle'       => 'Rendi aministradore un utente',
-	'makesysoptext'        => 'Sto form xè usà dai burocrati par far diventare amistradori i utenti normali. Scrivi el nome de l\'utente ne la caseła e struca el botón par far diventare aministradore un utente.',
-	'makesysopname'        => 'Nome dell\'utente:',
-	'makesysopsubmit'      => 'Fa diventar sto utente un aministrador',
-	'makesysopok'          => '\'\'\'L\'utente \'$1\' adesso xè un aministrador\'\'\'',
-	'makesysopfail'        => '<b>Impossibiłe far diventare aministrador l\'utente "$1". Verificare che el nome utente sia stà scrito coretamente.</b>',
-	'setbureaucratflag'    => 'Imposta i diritti del burocrate',
-	'set_user_rights'      => 'Imposta diritti utente',
-	'makesysop'            => 'Rendi un utente aministrador',
-	'already_sysop'        => 'Sto utente l\'è xà un aministradór',
-	'already_bureaucrat'   => 'Sto utente l\'è xà un burocrate',
+	'makesysoptitle' => 'Rendi aministradore un utente',
+	'makesysoptext' => 'Sto form xè usà dai burocrati par far diventare amistradori i utenti normali. 
+Scrivi el nome de l\'utente ne la caseła e struca el botón par far diventare aministradore un utente.',
+	'makesysopname' => 'Nome dell\'utente:',
+	'makesysopsubmit' => 'Fa diventar sto utente un aministrador',
+	'makesysopok' => '\'\'\'L\'utente \'$1\' adesso xè un aministrador\'\'\'',
+	'makesysopfail' => '<b>Impossibiłe far diventare aministrador l\'utente "$1". Verificare che el nome utente sia stà scrito coretamente.</b>',
+	'setbureaucratflag' => 'Imposta i diritti del burocrate',
+	'set_user_rights' => 'Imposta diritti utente',
+	'makesysop' => 'Rendi un utente aministrador',
+	'already_sysop' => 'Sto utente l\'è xà un aministradór',
+	'already_bureaucrat' => 'Sto utente l\'è xà un burocrate',
 ),
 
 'vi' => array(

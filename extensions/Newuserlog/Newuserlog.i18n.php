@@ -340,6 +340,9 @@ $wgNewuserlogMessages['ur'] = array(
 	'newuserlogpagetext'       => 'یہ نۓ صارفوں کی آمد کا نوشتہ ہے',
 	'newuserlog-create-entry'  => 'صارف جدید',
 );
+$wgNewuserlogMessages['vec'] = array(
+	'newuserlogpagetext'       => 'Questo xè el log dei novi utenti registrai',
+);
 $wgNewuserlogMessages['vls'] = array(
 	'newuserlogpage'           => 'Logboek nieuwe gebrukers',
 	'newuserlog-create-entry'  => 'Nieuwe gebruker',

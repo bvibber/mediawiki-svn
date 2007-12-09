@@ -207,6 +207,27 @@ en zorg er alstublieft voor dat alle velden de juiste waarden hebben
 		'createsigndoc-success'      => 'Documentondertekening is ingeschakeld op
 [[$1]]. Ga alstublieft naar [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} deze pagina] om het te testen.',
 	),
+	'no' => array(
+		'createsigndocument' => 'Slå på dokumentsignering',
+		'createsigndoc-head' => 'Bruk dette skjemaet for å opprette et «signaturdokument» for denne artikkelen, slik at brukere kan signere den via [[Special:SignDocument]]. Vennligst oppgi artikkelens navn, hvilken brukergruppe som skal kunne signere den, hvilke felter som skal være synlige for brukerne, hvilke som skal være valgfrie, minimumsalder for å kunne signere dokumentet (om denne ikke oppgis, er det ingen grense), og en kjapp introduksjonstekst som beskriver dokumentet og gir instruksjoner til brukerne.
+
+<b>Det er ingen måte å slette eller endre signaturdokumenter etter at de opprettes</b> uten direkte databasetilgang. Teksten på artikkelen på signatursiden vil også være den \'\'nåværende\'\' teksten, uavhengig av hvilke endringer som gjøres etter i dag. Vær hundre prosent sikker på at dokumentet er stabilt når det signeres, og vær også sikker på at du oppgir alle felt som de burde være, \'\'før du lagrer dette skjemaet\'\'.',
+		'createsigndoc-pagename' => 'Side:',
+		'createsigndoc-allowedgroup' => 'Tillatt gruppe:',
+		'createsigndoc-email' => 'E-postadresse:',
+		'createsigndoc-address' => 'Hjemmeadresse:',
+		'createsigndoc-extaddress' => 'By, stat, land:',
+		'createsigndoc-phone' => 'Telefonnummer:',
+		'createsigndoc-bday' => 'Fødselsdato:',
+		'createsigndoc-minage' => 'Minimumsalder:',
+		'createsigndoc-introtext' => 'Introduksjon:',
+		'createsigndoc-hidden' => 'Skjult',
+		'createsigndoc-optional' => 'Valgfri',
+		'createsigndoc-create' => 'Opprett',
+		'createsigndoc-error-generic' => 'Feil: $1',
+		'createsigndoc-error-pagenoexist' => 'Feil: Siden [[$1]] eksisterer ikke.',
+		'createsigndoc-success' => 'Dokumentsignering har blitt slått på for [[$1]]. For å signere det, besøk [{{fullurl:Special:SignDocument|doc=$2}} denne siden].',
+	),
 	'oc' => array(
 		'createsigndocument' => 'Activar l\'autentificacion dels documents',
 		'createsigndoc-head' => 'Utilizatz aqueste formulari per crear una pagina d\'autentificacion de documents per l\'article en question, de biais que cada utilizaire serà capable d\'autentificar via [[Special:SignDocument]]. Mercés d\'indicar lo nom de l\'article pelqual desiratz activar la foncion, los membres del grop d\'utilizaires, quals camps seràn accessibles als utilizaires (losquals seràn opcionals), l\'edat minimala per èsser membre del grop (pas de minimom siquenon) e un document brèu explicant lo document e balhant d\'instruccions als utilizaires. \'\'\'Presentadament, i a pas cap de mejan d\'escafar los documents un còp creats\'\'\', al despart en editant la banca de donadas del wiki. E mai, lo tèxt de l\'article afichat sus la pagina autentificada serà lo tèxt \'\'corrent\'\', pauc impòrta las modificacions fachas de per aprèp. Per aquesta rason, siatz segur que lo document es sufisentament estable per èsser autentificat e, \'\'abans de sometre lo formulari\'\', verificatz qu\'avètz plan causit los camps tals coma desiratz que sián.',

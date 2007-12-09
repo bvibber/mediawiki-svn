@@ -117,6 +117,19 @@ function efProfileMonitorMessages() {
 	'profiling-no-data' => 'Geen gegevens gevonden.',
 ),
 
+'no' => array(
+	'profiling' => 'Profileringsdata',
+	'profiling-process' => 'Prosesseringsstreng:',
+	'profiling-wildcard' => 'Bruk vilkårlig tegn',
+	'profiling-ok' => 'OK',#identical but defined
+	'profiling-data' => 'Profileringsdata for «$1»',
+	'profiling-data-process' => 'Prosesser',
+	'profiling-data-count' => 'Antall',
+	'profiling-data-time' => 'Tid (alle)',
+	'profiling-data-average' => 'Tid (gj.snitt)',
+	'profiling-no-data' => 'Ingen passende resultater.',
+),
+
 'oc' => array(
 	'profiling' => 'Donadas per evaluar',
 	'profiling-process' => 'Cadena de caractèrs de tractar :',

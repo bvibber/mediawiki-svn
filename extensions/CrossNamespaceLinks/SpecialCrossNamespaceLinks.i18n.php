@@ -229,6 +229,10 @@ $wgCrossNamespaceLinksMessages['sv'] = array(
 	'crossnamespacelinks-summary' => 'På den här sidan finns en lista över länkar från sidor i huvudnamnrymden till sidor i andra namnrymder (utom till namnrymderna {{ns:special}}, {{ns:talk}}, {{ns:project}} och {{ns:template}}). Det rekommenderas att sådana länkar inte används.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|länk|länkar}} till $3'
 );
+$wgCrossNamespaceLinksMessages['vec'] = array(
+	'crossnamespacelinks'         => 'Collegamenti da un namespace a l\'altro',
+	'crossnamespacelinkstext'     => '$1: $2 cołegamento/i $3',
+);
 $wgCrossNamespaceLinksMessages['yue'] = array(
 	'crossnamespacelinks'     => '跨空間名連結',
 	'crossnamespacelinks-summary' => '呢一頁提供一個由主空間名到其它空間名嘅連結一覽（除咗 {{ns:special}}, {{ns:talk}}, {{ns:project}} 同埋 {{ns:template}} 空間名之外），呢種做法係唔推薦去用嘅。',

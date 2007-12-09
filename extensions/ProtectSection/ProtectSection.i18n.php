@@ -42,3 +42,9 @@ $messages['nl'] = array(
 	'protectsection_modify'     => 'U probeerde beveiligde tekst te bewerken',
 	'protectsection_forbidden'  => 'Verboden',
 );
+
+$messages['no'] = array(
+	'protectsection_add_remove' => 'Du prøvde å legge til eller fjerne et beskyttet avsnitt',
+	'protectsection_modify'     => 'Du prøvde å endre beskyttet tekst',
+	'protectsection_forbidden'  => 'Forbudt',
+);

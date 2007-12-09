@@ -28,7 +28,6 @@ $messages['fr'] = array(
 	'eval_submit' => 'Évaluer',
 	'eval_escape' => 'Arrêter la sortie',
 	'eval_out'    => 'Sortie',
-	'eval_code'   => 'Code',#identical but defined
 );
 
 $messages['hsb'] = array(
@@ -45,4 +44,11 @@ $messages['nl'] = array(
 
 $messages['pt'] = array(
 	'eval_code'   => 'Código',
+);
+
+$messages['sk'] = array(
+	'eval_submit' => 'Vyhodnotiť',
+	'eval_escape' => 'Výstup s únikovými klauzulami',
+	'eval_out'    => 'Výstup',
+	'eval_code'   => 'Kód',
 );

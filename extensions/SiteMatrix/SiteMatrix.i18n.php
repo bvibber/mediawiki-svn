@@ -295,6 +295,9 @@ $wgSiteMatrixMessages['tr'] = array(
 $wgSiteMatrixMessages['ur'] = array(
 	"sitematrix" => 'فہرست وکی میڈیا کے دیگر وکییوں کی',
 );
+$wgSiteMatrixMessages['vec'] = array(
+	'sitematrix' => 'Ełenco de tuti i projeti Wikimedia ne le varie lengoe',
+);
 $wgSiteMatrixMessages['wa'] = array(
 	'sitematrix' => 'Djivêye des wikis Wikimedia',
 	'sitematrix-language' => 'Lingaedje',
