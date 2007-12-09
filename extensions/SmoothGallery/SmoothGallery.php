@@ -154,6 +154,10 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial ) {
 		$showinfopane = true;
 	}
 
+	if ( isset( $argv["fallback"] ) {
+		$failback = $argv["fallback"];
+	}
+
 	if ( isset( $argv["special"] ) ) {
 		//The user wants a link to a special page instead. Let's provide a link with
 		//the relevant info
@@ -334,17 +338,36 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial ) {
 	//Close the outer div of the gallery
 	$output .= '</div>';
 
+	if ( $fallback == "image" ) {
+		//output full image
+	} elseif ( $fallback == "image-warn" ) {
+		//output full image w/ warning
+	} else {
+		$output .= outputPlainGallery ( $name );
+	}
+
+	$output .= outputJavascript( $name, $delay );
+
+	//Finished, let's send it out
+	return $output;
+}
+
+function outputPlainGallery ( $name ) {
 	//Wrapper div for plain old gallery, to be shown per default, if JS is off.
 	$output .= '<div id="' . $name . '-plain">';
 
 	$output .= $plain_gallery->toHTML();
 
-	//Close the wrappe div for the plain old gallery
+	//Close the wrapper div for the plain old gallery
 	$output .= '</div>';
 
+	return $output;
+}
+
+function outputJavascript ( $name, $delay ) {
 	//Output the javascript needed for the gallery with any
 	//options the user requested
-	$output .= '<script type="text/javascript">';
+	$output = '<script type="text/javascript">';
 
 	$output .= 'document.getElementById("' . $name . '-plain").style.display = "none";'; //hide plain gallery
 	$output .= 'document.getElementById("' . $name . '").style.display = "block";'; //show smooth gallery
@@ -386,7 +409,6 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial ) {
 	#$output .= 'addOnloadHook(startGallery_' . $name . ');';
 	$output .= '</script>';
 
-	//Finished, let's send it out
 	return $output;
 }
 
