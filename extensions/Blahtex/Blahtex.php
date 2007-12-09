@@ -27,9 +27,10 @@ $wgBlahtexOptions = '--texvc-compatible-commands --mathml-version-1-fonts --disa
 $wgExtensionFunctions[] = 'efBlahtex';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Blahtex',
+	'version' => '1.1',
 	'author' => 'David Harvey and Jitse Niesen',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Blahtex',
-	'description' => 'MathML output for &lt;math&gt; tags'
+	'description' => 'MathML output for &lt;math&gt; tags',
 );
 
 $dir = dirname(__FILE__) . '/';

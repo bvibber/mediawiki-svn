@@ -13,10 +13,12 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionFunctions[] = 'efBackAndForth';
 	$wgExtensionCredits['other'][] = array(
 		'name' => 'Back and Forth',
+		'version' => '1.1',
 		'author' => 'Rob Church',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Back-and-Forth',
+		'description' => 'Adds \'next\' and \'previous\' alphabetic paging links to the top of articles',
 	);
-	
+
 	/**
 	 * Extension setup function
 	 */
@@ -27,7 +29,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$wgMessageCache->addMessages( $messages, $lang );
 		$wgHooks['ArticleViewHeader'][] = 'BackAndForth::viewHook';
 	}
-	
+
 } else {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	exit( 1 );

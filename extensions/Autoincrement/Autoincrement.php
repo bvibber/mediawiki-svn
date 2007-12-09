@@ -13,29 +13,31 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['variable'][] = array(
 	'name' => 'Autoincrement',
-	'description' => 'a variable hook that adds an autoincrementing variable, <nowiki>{{AUTOINCREMENT}}</nowiki>',
-	'author' => 'Ævar Arnfjörð Bjarmason'
+	'version' => '1.1',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Autoincrement',
+	'description' => 'A variable hook that adds an autoincrementing variable, <nowiki>{{AUTOINCREMENT}}</nowiki>',
+	'author' => 'Ævar Arnfjörð Bjarmason',
 );
 
 class Autoincrement {
 	var $mCount;
-	
+
 	function Autoincrement() {
 		global $wgHooks;
-		
+
 		$this->mCount = 0;
-		
+
 		$wgHooks['MagicWordwgVariableIDs'][] = array( $this, 'wfAutoincrementHookVariables' );
 		$wgHooks['LanguageGetMagic'][] = array( $this, 'wfAutoincrementHookRaw' );
 		$wgHooks['ParserGetVariableValueSwitch'][] = array( $this, 'wfAutoincrementHookSwitch' );
 	}
-	
+
 	function wfAutoincrementHookVariables( &$wgVariableIDs ) {
 		$wgVariableIDs[] = 'autoincrement';
 
 		return true;
 	}
-	
+
 	function wfAutoincrementHookRaw( &$raw ) {
 		$raw['autoincrement'] = array( 0, 'AUTOINCREMENT' );;
 
@@ -45,7 +47,7 @@ class Autoincrement {
 	function wfAutoincrementHookSwitch( &$parser, &$varCache, &$index, &$ret ) {
 		if ( $index === 'autoincrement' )
 			$ret = ++$this->mCount; // No formatNum() just like url autonumbering
-	
+
 		return true;
 	}
 }

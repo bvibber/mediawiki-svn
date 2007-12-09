@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'MEDIAWIKI' ) )
 	die();
-    
+
 /**#@+
  * Provides a basic way of preventing articles with certain titles from being saved or created
  * @addtogroup Extensions
@@ -16,12 +16,13 @@ if ( ! defined( 'MEDIAWIKI' ) )
 $wgExtensionFunctions[] = 'wfBlockTitles';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'BlockTitles',
+	'version' => '1.1',
 	'author' => 'Travis Derouin',
 	'description' => 'Provides a basic way of preventing articles with certain titles from being saved or created',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:BlockTitles',
 );
 
-// CONFIGURE - place any regular expressions you want here.  
+// CONFIGURE - place any regular expressions you want here.
 $wgBlockTitlePatterns = array (
 		#"/^http/i",  // if you want to block titles of articles that are URLs
 	);
@@ -45,7 +46,7 @@ function wfCheckBlockTitles (&$article ) {
 			// too bad you can't pass parameter to errorpage
 			$wgOut->errorpage('block_title_error_page_title', 'block_title_error' );
 			return false;
-		}	
+		}
 	}
 
 	return true;
