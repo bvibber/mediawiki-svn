@@ -34,6 +34,36 @@ $4",
 	'todo-form-submit' => 'Submit Query',
 );
 
+$messages['ar'] = array(
+	'todo' => 'قائمة للعمل',
+	'todo-new-queue' => 'جديد',
+	'todo-mail-subject' => 'المدخلة المكملة في قائمة $1 للعمل',
+	'todo-mail-body' => 'أنت طلبت تأكيدا بالبريد الإلكتروني حول إكمال مدخلة أنت أضفتها إلى قائمة $1 للعمل.
+
+المدخلة: $2
+المنفذة: $3
+
+هذه المدخلة تم التعليم عليها كمكملة، مع هذا التعليق:
+$4',
+	'todo-invalid-item' => 'مدخلة مفقودة أو غير صحيحة',
+	'todo-update-else-item' => 'محاولة تحديث مدخلات شخص آخر',
+	'todo-unrecognize-type' => 'نوع غير متعرف عليه',
+	'todo-user-invalide' => 'للعمل معطاة مستخدم غير صحيح، مفقود، أو لا يمكن إضافته للعمل.',
+	'todo-item-list' => 'مدخلاتك',
+	'todo-no-item' => 'لا مدخلات للعمل.',
+	'todo-invalid-owner' => 'مالك غير صحيح لهذه المدخلة',
+	'todo-add-queue' => 'أضف الطابور...',
+	'todo-move-queue' => 'انقل إلى الطابور...',
+	'todo-list-for' => 'قائمة للعمل ل',
+	'todo-list-change' => 'تغيير',
+	'todo-list-cancel' => 'إلغاء',
+	'todo-new-item' => 'مدخلة جديدة',
+	'todo-issue-summary' => 'ملخص القضية:',
+	'todo-form-details' => 'التفاصيل:',
+	'todo-form-email' => 'لاستقبال إخطار بواسطة البريد الإلكتروني عندما يتم إغلاق المدخلة، اكتب عنوانك هنا:',
+	'todo-form-submit' => 'تنفيذ',
+);
+
 $messages['fr'] = array (
 	'todo' => 'Liste des tâches à exécuter',
 	'todo-new-queue' => 'Nouveau',
@@ -62,4 +92,18 @@ $4",
 	'todo-form-details' => 'Précisions :',
 	'todo-form-email' => 'Pour recevoir les notifications par courriel une fois l’article cloturé, inscrivez votre adresse dans le cadre ci-dessous :',
 	'todo-form-submit' => 'Soumettre la requête',
+);
+
+$messages['nl'] = array(
+	'todo' => 'Takenlijst',
+	'todo-new-queue' => 'nieuw',
+	'todo-invalid-item' => 'Missend of ongeldig item',
+	'todo-unrecognize-type' => 'Onherkend type',
+	'todo-item-list' => 'Uw items',
+	'todo-no-item' => 'Geen tedoen-items.',
+	'todo-invalid-owner' => 'Ongeldige eigenaar voor dit item',
+	'todo-list-for' => 'Takenlijst voor',
+	'todo-list-change' => 'Wijzigen',
+	'todo-list-cancel' => 'Annuleren',
+	'todo-new-item' => 'Nieuw item',
 );

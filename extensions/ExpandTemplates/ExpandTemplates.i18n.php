@@ -41,6 +41,12 @@ $wgExpandTemplatesMessages['bcl'] = array(
 	'expand_templates_remove_comments' => 'Tanggalon an mga komento',
 	'expand_templates_preview'         => 'Patânaw',
 );
+$wgExpandTemplatesMessages['bg'] = array(
+	'expand_templates_output'          => 'Резултат',
+	'expand_templates_ok'              => 'ОК',
+	'expand_templates_remove_comments' => 'Премахване на коментари',
+	'expand_templates_preview'         => 'Преглед',
+);
 $wgExpandTemplatesMessages['br'] = array(
 	'expand_templates_output'          => 'Disoc\'h :',
 	'expand_templates_ok'              => 'Mat eo',

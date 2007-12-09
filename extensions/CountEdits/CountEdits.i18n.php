@@ -41,6 +41,18 @@ function efCountEditsMessages( $single = false ) {
 	'countedits-mostactive' => 'Pinaka mahigos na mga kontributor',
 ),
 
+'bg' => array(
+	'countedits' => 'Броене на редакции',
+	'countedits-warning' => '\'\'\'Внимание:\'\'\' Не съдете за книгата по нейната корица. Не съдете за редактора по броя на редакциите му.',
+	'countedits-username' => 'Потребителско име:',
+	'countedits-ok' => 'ОК',
+	'countedits-nosuchuser' => 'Няма потребител на име $1.',
+	'countedits-resultheader' => 'Резултати за $1',
+	'countedits-resulttext' => '$1 е направил(а) $2 редакции',
+	'countedits-mostactive' => 'Най-активни редактори',
+	'countedits-nocontribs' => 'Няма приноси към това уики.',
+),
+
 'br' => array(
 	'countedits' => 'Degasadennoù ar gont',
 	'countedits-warning' => '\'\'\'Diwallit :\'\'\' Ne varner ket ul levr diouzh ar golo anezhañ. Arabat barnañ un implijer diouzh an niver a zegasadennoù graet gantañ.',

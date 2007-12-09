@@ -69,6 +69,11 @@ function efDuplicatorMessages() {
 	'duplicator-summary' => 'Kinopya sa [[$1]]',
 ),
 
+'bg' => array(
+	'duplicator-success-talkcopied' => 'Дискусионната страница също беше копирана.',
+	'duplicator-success-talknotcopied' => 'Дискусионната страница не можа да бъде копирана.',
+),
+
 'br' => array(
 	'duplicator'=> 'Eilañ ur pennad',
 	'duplicator-toolbox'=> 'Eilañ ar pennad-mañ',

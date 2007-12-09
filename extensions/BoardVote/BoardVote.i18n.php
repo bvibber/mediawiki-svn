@@ -187,10 +187,17 @@ $wgBoardVoteMessages['bcl'] = array(
 	'boardvote_welcome'       => 'Dagos \'\'\'$1\'\'\'!',
 );
 $wgBoardVoteMessages['bg'] = array(
+	'boardvote'               => 'Избори за борда на Фондация Уикимедия',
+	'boardvote_intro_change'  => '<p>Вие вече сте гласували. Ако желаете, обаче, можете да промените вота си, като използвате формата по-долу. Отбележете кутийките срещу имената на всички кандидати, които одобрявате.</p>',
+	'boardvote_notloggedin'   => 'Не сте влезли в системата. За да гласувате, трябва да използвате сметка с най-малко $1 приноса към $2, като първата ви редакция е отпреди $3.',
+	'boardvote_notqualified'  => 'Не отговаряте на условията за гласуване в тези избори. Трябвало е да имате $3 редакции към $2, като първата ви редакция е отпреди $5.',
 	'boardvote_novotes'       => 'Все още никой не е гласувал.',
 	'boardvote_user'          => 'Потребител',
 	'boardvote_edits'         => 'Редакции',
+	'boardvote_days'          => 'Дни',
+	'boardvote_dumplink'      => 'Тук',
 	'boardvote_notstarted'    => 'Гласуването все още не е започнало',
+	'boardvote_closed'        => 'Гласуването е приключено, вижте [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En страницата с резултатите].',
 	'boardvote_edits_many'    => 'много',
 );
 $wgBoardVoteMessages['br'] = array(

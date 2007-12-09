@@ -36,6 +36,9 @@ $allMessages = array(
 		'passwordreset-confirmpass' => 'أكد كلمة السر',
 		'passwordreset-submit' => 'أعد ضبط كلمة السر',
 		'passwordreset-success' => 'كلمة السر تم ضبطها ل user_id: $1',
+		'passwordreset-disableuser' => 'عطل حساب المستخدم؟',
+		'passwordreset-disableuserexplain' => '(يضبط هاش كلمة سر غير صحيح - المستخدم لا يمكنه الدخول)',
+		'passwordreset-disablesuccess' => 'حساب المستخدم تم تعطيله (رقم_المستخدم: $1)',
 	),
 
 	'de' => array(
