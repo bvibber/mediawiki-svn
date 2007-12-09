@@ -522,6 +522,8 @@ function efBadImageMessages() {
 	'badimages-add-btn' => 'Adaugă',
 	'badimages-added' => '$1 a fost adăugat în listă.',
 	'badimages-name' => 'Nume:',
+	'badimages-not-added' => 'Imaginea nu a putut fi adăugată.',
+	'badimages-not-removed' => 'Imaginea nu a putut fi ştearsă.',
 	'badimages-reason' => 'Motiv:',
 	'badimages-remove' => '(şterge)',
 	'badimages-remove-btn' => 'Şterge',
