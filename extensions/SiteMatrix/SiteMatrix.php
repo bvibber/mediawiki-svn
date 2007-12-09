@@ -12,7 +12,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'SiteMatrix',
 	'version' => '1.1',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SiteMatrix',
-	'description' => 'Displays a list of Wikimedia wikis'
+	'description' => 'Displays a list of Wikimedia wikis',
 	'author' => 'Tim Starling, Brion Vibber',
 );
 
