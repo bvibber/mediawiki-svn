@@ -17,9 +17,10 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['Extension'][] = array(
     'name' => 'ChemFunctions',
+    'version' => '1.1',
     'description' => 'Adds the <chemform> tag, for chemical formulae',
     'author' => 'Dirk Beetstra',
-    'url' => 'http://meta.wikimedia.org/wiki/Chemistry/ChemFunctions.php'
+    'url' => 'http://www.mediawiki.org/wiki/Extension:Chemistry',
 );
 
 /** Chemform wikipedia extension.
@@ -73,7 +74,7 @@ function RenderChemForm( $input, $argv ) {
     if ( isset( $argv["query"] ) )
         $searchfor = $argv["query"];
 
-    if (!$showthis) 
+    if (!$showthis)
         $showthis = $searchfor;
 
     $showthis = htmlentities( Sanitizer::StripAllTags ( $showthis ) );                   # tagstripping
@@ -84,7 +85,7 @@ function RenderChemForm( $input, $argv ) {
 
     $searchfor = htmlentities( Sanitizer::StripAllTags ( $searchfor ) );
 
-    if (! ( $showthis . $searchfor ) ) 
+    if (! ( $showthis . $searchfor ) )
         return wfMsg('ChemFunctions_ChemFormInputError');
 
     if ( $link ) {
@@ -108,6 +109,3 @@ function RenderChemForm( $input, $argv ) {
 
     return $output;
 }
-
-#End of php.
-
