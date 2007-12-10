@@ -346,6 +346,7 @@ Funkcija: $1<br />
 Wótpšašanje: $2',
 'viewsource'           => 'Žrědłowy tekst wobglědaś',
 'viewsourcefor'        => 'za $1',
+'actionthrottled'      => 'Akcije limitowane',
 'protectedpagetext'    => 'Wobźěłanje toś togo boka jo se znjemóžniło.',
 'viewsourcetext'       => 'Žrědłowy tekst togo boka móžoš se woglědaś a kopěrowaś:',
 'protectedinterface'   => 'Toś ten bok wopśimujo tekst za rěcny zwjerch softwary. Jogo wobźěłowanje jo se znjemóžniło, aby se znjewužywanjeju zadorało.',
@@ -433,6 +434,11 @@ Nježli až wótpósćelo se dalšna e-mail na to wužywarske konto, dejš slěd
 'invalidemailaddress'        => 'Toś ta e-mailowa adresa njamóžo se akceptěrowaś, dokulaž ma njekorektny format. Pšošym zapódaj adresu w korektnem formaśe abo wulašuj to pólo.',
 'accountcreated'             => 'Wužywarske konto jo se wutwóriło.',
 'accountcreatedtext'         => 'Wužywarske konto $1 jo se wutwóriło.',
+'createaccount-title'        => 'Wužywarske konto za {{SITENAME}} nawarjone',
+'createaccount-text'         => 'Něchten ($1) za $2 jo na boku {{SITENAME}} ($4) wužywarske konto wutwórił.
+Pótajmne słowo za "$2" jo "$3". Trjeba se pśizjawiś a swóje pótajmne słowo pśemjeniś.
+
+Móžoš toś tom informacije zabyś kak to jano zmólka była.',
 'loginlanguagelabel'         => 'Rěc: $1',
 
 # Password reset dialog
@@ -510,6 +516,7 @@ Ty móžoš wužywarja $1 abo [[{{MediaWiki:grouppage-sysop}}|administrator]] ko
 Njamóžoš e-mail wótpósłaś nježlic až njezapódajoš płaśecu adresu na boku [[Special:Preferences|user preferences]] a nježlic až se blokěrowanje njezwignjo.
 
 ID twójogo blokěrowanja jo $5. Pšosym pódaj ju w swójich pšašanjach.",
+'blockednoreason'           => 'Pśicyna njejo dana',
 'blockedoriginalsource'     => "Žrědłowy tekst boka '''$1''':",
 'blockededitsource'         => "Žrědłowy tekst '''Twójich pśinoskow''' do '''$1''' jo:",
 'whitelistedittitle'        => 'Za wobźěłanje dejš se pśizjawiś',
@@ -901,7 +908,7 @@ Pšosym mysli na to, až mógu druge wužywarje twóje dataje wulašowaś a změ
 Mě dataje, kótaraž dej se uploadowaś: <strong><tt>$1</tt></strong><br />
 Mě eksistěrujuceje dataje: <strong><tt>$2</tt></strong><br />
 Wuzwól nowe mě, jolic až sy se wěsty, až dataji njejstej identiskej.',
-'fileexists-thumb'            => "'''<center>Eksistěrujucy wobraz</center>'''",
+'fileexists-thumb'            => "<center>'''Eksistěrujucy wobraz'''</center>",
 'fileexists-thumbnail-yes'    => 'Zazdaśim ma wobraz reducěrowanu wjelikosć <i>(thumbnail)</i>. Kontrolěruj pšosym dataju <strong><tt>$1</tt></strong>.<br />
 Jadna-lic se wó wobraz w originalnej wjelikosći, pón njejo notne, separatny pśeglědowy wobraz uploadowaś.',
 'file-thumbnail-no'           => 'Mě dataje zachopijo z <strong><tt>$1</tt></strong>. To pokazujo na wobraz z reducěrowaneju wjelikosću. <i>(thumbnail)</i>.

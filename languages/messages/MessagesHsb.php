@@ -424,6 +424,8 @@ Funkcija: $1
 Wotprašenje: $2',
 'viewsource'           => 'Žórło wobhladać',
 'viewsourcefor'        => 'za $1',
+'actionthrottled'      => 'Akcije wobmjezowane',
+'actionthrottledtext'  => 'Jako připrawa přećiwo spamej, je častosć wuwjedźenja tuteje akcije w krótkej dobje wobmjezowana a ty sy tutón limit překročił. Prošu spytaj za něšto mjeńšiny hišće raz.',
 'protectedpagetext'    => 'Strona je přećiwo wobdźěłowanju škitana.',
 'viewsourcetext'       => 'Móžeš pak jeje žórło wobhladać a jo kopěrować:',
 'protectedinterface'   => 'Tuta strona skići tekst za rěčny zwjerch a je škitana zo by so znjewužiwanju zadźěwało.',
@@ -514,6 +516,10 @@ Prjedy hač so druha mejlka ke kontu pósćele, dyrbiš so po instrukcijach w me
 format. Prošu zapodaj płaćiwu adresu abo wuprózdń polo.',
 'accountcreated'             => 'Wužiwarske konto wutworjene',
 'accountcreatedtext'         => 'Wužiwarske konto za $1 bu wutworjene.',
+'createaccount-title'        => 'Wutworjenje wužiwarskeho konta za {{SITENAME}}',
+'createaccount-text'         => 'Něchtó ($1) je wužiwarske konto za "$2" na {{SITENAME}} ($4) wutworił. Hesło za "$2" je "$3". Ty měł so nětko přizjewić a swoje hesło změnić.
+
+Móžeš tutu zdźělenku ignorować, jeli so wužiwarske konto ze zmylkom wutworiło.',
 'loginlanguagelabel'         => 'Rěč: $1',
 
 # Password reset dialog
@@ -980,7 +986,7 @@ abo zo by so direktnje z dataju zwjazało
 Mjeno dataje, kotruž chceš nahrać: <strong><tt>$1</tt></strong><br />
 Mjeno eksistowaceje dataje: <strong><tt>$2</tt></strong><br />
 Jenož kóncowce rozeznawatej so we wulko- a małopisanju. Prošu wuzwol hinaše mjeno.',
-'fileexists-thumb'            => "'''<center>Eksistowacy wobraz</center>'''",
+'fileexists-thumb'            => "<center>'''Eksistowacy wobraz'''</center>",
 'fileexists-thumbnail-yes'    => 'Dataja zda so minaturka <i>(thumbnail)</i> być. Prošu přepruwuj dataju <strong><tt>$1</tt></strong>.<br />
 Jeli je to wobraz w originalnej wulkosći, njetrjebaš minaturku nahrać.',
 'file-thumbnail-no'           => 'Mjeno dataje započa so z <strong><tt>$1</tt></strong>. Móže to na wobraz pomjeńšeneje wulkosće <i>(thumbnail, miniaturka)</i> pokazać.

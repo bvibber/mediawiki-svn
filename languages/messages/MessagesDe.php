@@ -430,7 +430,7 @@ $messages = array(
 'nosuchaction'      => 'Diese Aktion gibt es nicht',
 'nosuchactiontext'  => 'Die in der URL angegebene Aktion wird von MediaWiki nicht unterstützt.',
 'nosuchspecialpage' => 'Spezialseite nicht vorhanden',
-'nospecialpagetext' => "'''<big>Die aufgerufene Spezialseite ist nicht vorhanden.</big>'''
+'nospecialpagetext' => "<big>'''Die aufgerufene Spezialseite ist nicht vorhanden.'''</big>
 
 Alle verfügbaren Spezialseiten sind in der [[{{ns:special}}:Specialpages|Liste der Spezialseiten]] zu finden.",
 
@@ -1068,7 +1068,7 @@ Bitte beachte, dass, genau wie bei normalen Seiteninhalten, andere Benutzer dein
 Name der hochzuladenden Datei: <strong><tt>$1</tt></strong><br />
 Name der vorhandenen Datei: <strong><tt>$2</tt></strong><br />
 Nur die Dateiendung unterscheidet sich in Groß-/Kleinschreibung. Bitte prüfe, ob die Dateien inhaltlich identisch sind.',
-'fileexists-thumb'            => "'''<center>Vorhandenes Bild</center>'''",
+'fileexists-thumb'            => "<center>'''Vorhandenes Bild'''</center>",
 'fileexists-thumbnail-yes'    => 'Bei der Datei scheint es sich um ein Bild verringerter Größe <i>(thumbnail)</i> zu handeln. Bitte prüfe die Datei <strong><tt>$1</tt></strong>.<br />
 Wenn es sich um das Bild in Originalgröße handelt, so braucht kein separates Vorschaubild hochgeladen zu werden.',
 'file-thumbnail-no'           => 'Der Dateiname beginnt mit <strong><tt>$1</tt></strong>. Dies deutet auf ein Bild verringerter Größe <i>(thumbnail)</i> hin.
@@ -1827,10 +1827,10 @@ Alle Transwiki-Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] p
 # Import log
 'importlogpage'                    => 'Import-Logbuch',
 'importlogpagetext'                => 'Administrativer Import von Seiten mit Versionsgeschichte von anderen Wikis.',
-'import-logentry-upload'           => 'hat „[[$1]]“ importiert',
-'import-logentry-upload-detail'    => '{{PLURAL:$1|1 Version|$1 Versionen}}',
+'import-logentry-upload'           => 'hat „[[$1]]“ von einer Datei importiert',
+'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|Version|Versionen}}',
 'import-logentry-interwiki'        => 'hat „[[$1]]“ importiert (Transwiki)',
-'import-logentry-interwiki-detail' => '$1 Version(en) von $2',
+'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|Version|Versionen}} von $2',
 
 # Tooltip help for the actions
 'tooltip-pt-userpage'             => 'Eigene Benutzerseite',

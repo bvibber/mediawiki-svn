@@ -426,8 +426,8 @@ $messages = array(
 'help'              => 'עזרה',
 'search'            => 'חיפוש',
 'searchbutton'      => 'חיפוש',
-'go'                => 'עבור',
-'searcharticle'     => 'לערך',
+'go'                => 'הצגה',
+'searcharticle'     => 'לדף',
 'history'           => 'היסטוריית הדף',
 'history_short'     => 'היסטוריה',
 'updatedmarker'     => 'עודכן מאז ביקורך האחרון',
@@ -1166,7 +1166,7 @@ $2',
 שם הקובץ המועלה: <strong><tt>$1</tt></strong><br />
 שם הקובץ הקיים: <strong><tt>$2</tt></strong><br />
 ההבדל היחיד הוא בשימוש באותיות רישיות וקטנות בסיומת הקובץ. אנא בדקו אם הקבצים זהים.',
-'fileexists-thumb'            => "'''<center>תמונה קיימת</center>'''",
+'fileexists-thumb'            => "<center>'''תמונה קיימת'''</center>",
 'fileexists-thumbnail-yes'    => 'הקובץ עשוי להיות תמונה מוקטנת (ממוזערת). אנא בדקו את הקובץ <strong><tt>$1</tt></strong>.<br />
 אם הקובץ שבדקתם הוא אותה התמונה בגודל מקורי, אין זה הכרחי להעלות גם תמונה ממוזערת.',
 'file-thumbnail-no'           => 'שם הקובץ מתחיל עם <strong><tt>$1</tt></strong>. נראה שזוהי תמונה מוקטנת (ממוזערת).
@@ -1389,7 +1389,7 @@ $2',
 # Book sources
 'booksources'               => 'משאבי ספרות חיצוניים',
 'booksources-search-legend' => 'חיפוש משאבי ספרות חיצוניים',
-'booksources-go'            => 'עבור',
+'booksources-go'            => 'הצגה',
 'booksources-text'          => 'להלן רשימת קישורים לאתרים אחרים המוכרים ספרים חדשים ויד־שנייה, ושבהם עשוי להיות מידע נוסף לגבי ספרים שאתם מחפשים:',
 
 'categoriespagetext' => 'אלו הקטגוריות הקיימות באתר.',
@@ -1405,7 +1405,7 @@ $2',
 'log'                  => 'יומנים',
 'all-logs-page'        => 'כל היומנים',
 'log-search-legend'    => 'חיפוש יומנים',
-'log-search-submit'    => 'עבור',
+'log-search-submit'    => 'הצגה',
 'alllogstext'          => 'תצוגה משולבת של כל סוגי היומנים הזמינים ב{{grammar:תחילית|{{SITENAME}}}}.
 ניתן לצמצם את התצוגה על־ידי בחירת סוג היומן, שם המשתמש או הדפים המושפעים.',
 'logempty'             => 'אין פריטים תואמים ביומן.',
@@ -1420,7 +1420,7 @@ $2',
 'allnotinnamespace' => 'כל הדפים (שלא במרחב השם $1)',
 'allpagesprev'      => 'הקודם',
 'allpagesnext'      => 'הבא',
-'allpagessubmit'    => 'עבור',
+'allpagessubmit'    => 'הצגה',
 'allpagesprefix'    => 'הדפים ששמם מתחיל ב…:',
 'allpagesbadtitle'  => 'כותרת הדף המבוקש הייתה לא־חוקית, ריקה, קישור ויקי פנימי, או פנים שפה שגוי. ייתכן שהיא כוללת תו אחד או יותר האסורים לשימוש בכותרות.',
 'allpages-bad-ns'   => 'אין מרחב שם בשם "$1".',
@@ -1904,11 +1904,11 @@ $1',
 
 # Import log
 'importlogpage'                    => 'יומן ייבוא',
-'importlogpagetext'                => 'ייבוא מנהלי של דפים כולל היסטוריית העריכות שלהם מאתרי ויקי אחרים.',
+'importlogpagetext'                => 'ייבוא מנהלי של דפים (כולל היסטוריית העריכות שלהם) מאתרי ויקי אחרים.',
 'import-logentry-upload'           => 'ייבא את [[$1]] על־ידי העלאת קובץ',
-'import-logentry-upload-detail'    => '$1 גרסאות',
+'import-logentry-upload-detail'    => '{{plural:$1|גרסה אחת|$1 גרסאות}}',
 'import-logentry-interwiki'        => 'ייבא את $1 בייבוא בין־אתרי',
-'import-logentry-interwiki-detail' => '$1 גרסאות מהאתר $2',
+'import-logentry-interwiki-detail' => '{{plural:$1|גרסה אחת|$1 גרסאות}} מהאתר $2',
 
 # Tooltip help for the actions
 'tooltip-pt-userpage'             => 'דף המשתמש שלי',
@@ -2419,8 +2419,8 @@ $1',
 # Multipage image navigation
 'imgmultipageprev'   => '&rarr; לדף הקודם',
 'imgmultipagenext'   => 'לדף הבא &larr;',
-'imgmultigo'         => 'עבור!',
-'imgmultigotopre'    => 'עבור לדף',
+'imgmultigo'         => 'הצגה',
+'imgmultigotopre'    => 'מעבר לדף',
 'imgmultiparseerror' => 'קובץ התמונה פגום או שגוי, ולפיכך אין אפשרות לקבל רשימת דפים.',
 
 # Table pager
@@ -2431,12 +2431,12 @@ $1',
 'table_pager_first'        => 'הדף הראשון',
 'table_pager_last'         => 'הדף האחרון',
 'table_pager_limit'        => 'הצגת $1 פריטים בדף',
-'table_pager_limit_submit' => 'עבור',
+'table_pager_limit_submit' => 'הצגה',
 'table_pager_empty'        => 'ללא תוצאות',
 
 # Auto-summaries
-'autosumm-blank'   => 'מסיר את כל התוכן מדף זה',
-'autosumm-replace' => "מחליף את הדף עם '$1'",
+'autosumm-blank'   => 'הסרת כל התוכן מדף זה',
+'autosumm-replace' => "החלפת הדף עם '$1'",
 'autoredircomment' => 'הפניה לדף [[$1]]',
 'autosumm-new'     => 'דף חדש: $1',
 
