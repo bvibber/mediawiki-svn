@@ -15,6 +15,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionFunctions[] = 'efNewUserNotifSetup';
 	$wgExtensionCredits['other'][] = array(
 		'name' => 'New User Email Notification',
+		'version'     => '1.1',
 		'author' => 'Rob Church',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:New_User_Email_Notification',
 		'description' => 'Sends email notification when user accounts are created',
@@ -24,12 +25,12 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 * Email address to use as the sender
 	 */
 	$wgNewUserNotifSender = $wgPasswordSender;
-	
+
 	/**
 	 * Users who should receive notification mails
 	 */
 	$wgNewUserNotifTargets[] = 1;
-	
+
 	/**
 	 * Additional email addresses to send mails to
 	 */
@@ -45,7 +46,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		foreach( efNewUserNotifMessages() as $lang => $messages )
 			$wgMessageCache->addMessages( $messages, $lang );
 	}
-	
+
 	/**
 	 * Hook account creation
 	 *
@@ -55,7 +56,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	function efNewUserNotif( $user ) {
 		return NewUserNotifier::hook( $user );
 	}
-	
+
 } else {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	exit( 1 );

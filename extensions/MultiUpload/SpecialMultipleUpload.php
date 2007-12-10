@@ -20,10 +20,11 @@ $wgMaxUploadFiles = 5;
 $wgExtensionFunctions[] = 'wfMultipleUpload';
 
 $wgExtensionCredits['specialpage'][] = array(
-    'name' => 'MultipleUpload',
-    'author' => 'Travis Derouin',
-    'description' => 'Allows users to upload several files at once.',
-    'url' => 'http://www.mediawiki.org/wiki/Extension:MultiUpload',
+	'name' => 'MultipleUpload',
+	'version'     => '1.1',
+	'author' => 'Travis Derouin',
+	'description' => 'Allows users to upload several files at once.',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:MultiUpload',
 );
 
 $dir = dirname(__FILE__) . '/';

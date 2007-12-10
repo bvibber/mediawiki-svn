@@ -39,6 +39,7 @@ $wgMiniPreviewMessagesInitialized = false;
 $wgExtensionFunctions[] = 'efMiniPreview';
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'MiniPreview',
+	'version'     => '1.1',
 	'author' => 'Magnus Manske',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MiniPreview',
 	'description' => 'MiniPreview displays, next to an image, small previews of other images in the same categories or displayed on the same pages',
@@ -424,5 +425,3 @@ function wfMiniPreviewMessage( $msg , $args = array() ) {
   }
   return wfMsgReal( $msg, $args );
 }
-
-

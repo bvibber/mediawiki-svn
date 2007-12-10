@@ -15,9 +15,10 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
-$wgExtensionCredits['other'][] = array( 
-	'name' => 'News', 
-	'author' => 'Daniel Kinzler, brightbyte.de', 
+$wgExtensionCredits['other'][] = array(
+	'name' => 'News',
+	'version'     => '1.1',
+	'author' => 'Daniel Kinzler, brightbyte.de',
 	'url' => 'http://mediawiki.org/wiki/Extension:News',
 	'description' => 'shows customized recent changes on a wiki pages or as RSS or Atom feed',
 );
@@ -79,7 +80,7 @@ function wfNewsArticleFromTitle( &$title, &$article ) {
     if ($ns < 0 || $ns == NS_SPECIAL || $ns == NS_MEDIAWIKI) return true;
 
     $format = $wgRequest->getVal( 'feed' );
-    if (!$format) return true; 
+    if (!$format) return true;
 
     $format = strtolower( trim($format) );
 
@@ -118,4 +119,3 @@ function wfNewsSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
     $tpl->setRef( 'feeds', $feeds );
     return true;
 }
-

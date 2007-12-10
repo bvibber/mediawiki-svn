@@ -13,8 +13,10 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionFunctions[] = 'efMinimumNameLengthSetup';
 	$wgExtensionCredits['other'][] = array(
 		'name' => 'Minimum Username Length',
+		'version'     => '1.1',
 		'author' => 'Rob Church',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Minimum_Name_Length',
+		'description' => 'Enforce a minimum username length during account registration',
 	);
 
 	/**
@@ -32,7 +34,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		foreach( efMinimumNameLengthMessages() as $lang => $messages )
 			$wgMessageCache->addMessages( $messages, $lang );
 	}
-	
+
 	/**
 	 * Hooks account creation and checks the
 	 * username length, cancelling with an error
@@ -56,4 +58,3 @@ if( defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software. It cannot be used standalone.\n" );
 	exit( 1 );
 }
-

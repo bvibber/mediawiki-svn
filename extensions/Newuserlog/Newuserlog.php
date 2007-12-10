@@ -14,9 +14,10 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionFunctions[] = 'wfNewuserlog';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Newuserlog',
+	'version'     => '1.1',
 	'description' => 'adds a [[Special:Log/newusers|log of account creations]] to [[Special:Log]]',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Newuserlog',
-	'author' => 'Ævar Arnfjörð Bjarmason'
+	'author' => 'Ævar Arnfjörð Bjarmason',
 );
 
 # Internationalisation file
@@ -78,4 +79,3 @@ function wfNewuserlogHook( $user = null ) {
 
 	return true;
 }
-

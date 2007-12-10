@@ -37,11 +37,12 @@ if (defined('MEDIAWIKI')) {
 
 	$wgExtensionFunctions[] = 'setupOpenID';
 	$wgExtensionCredits['other'][] = array('name' => 'OpenID',
-										   'version' => MEDIAWIKI_OPENID_VERSION,
-										   'author' => 'Evan Prodromou',
-										   'url' => 'http://www.mediawiki.org/wiki/Extension:OpenID',
-										   'description' => 'lets users login to the wiki with an [http://openid.net/ OpenID] ' .
-										   'and login to other OpenID-aware Web sites with their wiki user account');
+		'version' => MEDIAWIKI_OPENID_VERSION,
+		'author' => 'Evan Prodromou',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:OpenID',
+		'description' => 'Lets users login to the wiki with an [http://openid.net/ OpenID] ' .
+		 'and login to other OpenID-aware Web sites with their wiki user account',
+	);
 	
 	# Whether to hide the "Login with OpenID link" link; set to true if you already have this link in your skin.
 	
@@ -274,4 +275,3 @@ li#pt-openidlogin {
 EOS;
 	}
 }
-
