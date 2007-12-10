@@ -8,28 +8,30 @@
  * @author Rob Church <robchur@gmail.com>
  * Please see the LICENCE file for terms of use and redistribution
  */
- 
+
 if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgAutoloadClasses['SpecialVote'] = dirname( __FILE__ ) . '/Vote.page.php';
 	$wgSpecialPages['Vote'] = 'SpecialVote';
 	$wgExtensionFunctions[] = 'efVote';
 	$wgExtensionCredits['specialpage'][] = array(
-			'name' => 'Vote',
-			'author' => 'Rob Church',
-			'description' => 'Provides simple polling capabilities',
+		'name'        => 'Vote',
+		'version'     => '1.1',
+		'url'         => 'http://www.mediawiki.org/wiki/Extension:Vote',
+		'author'      => 'Rob Church',
+		'description' => 'Provides simple polling capabilities',
 	);
-	
+
 	/**
 	 * Users who can vote
 	 */
 	$wgGroupPermissions['user']['vote'] = true;
-	
+
 	/**
 	 * Users who can view vote results
 	 */
 	$wgGroupPermissions['bureaucrat']['voteadmin'] = true;
-	
+
 	/**
 	 * Extension setup function
 	 */
@@ -40,7 +42,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$wgMessageCache->addMessages( $messages, $lang );
 		$wgHooks['SkinTemplateSetupPageCss'][] = 'efVoteCss';
 	}
-	
+
 	/**
 	 * Add extra CSS to the skin
 	 */

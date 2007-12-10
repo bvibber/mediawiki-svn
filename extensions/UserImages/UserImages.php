@@ -7,7 +7,7 @@
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
- 
+
 if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgAutoloadClasses['UserImagesGallery'] = dirname( __FILE__ ) . '/UserImages.class.php';
@@ -15,17 +15,19 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionCredits['parserhook'][] = array(
 		'name' => 'User Image Gallery',
+		'version' => '1.1',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:UserImages',
 		'author' => 'Rob Church',
 		'description' => 'Generate galleries of user-uploaded images with <code><nowiki><userimage /></nowiki></code>',
 	);
-	
+
 	/**
 	 * Set this to true to disable the parser cache for pages which
 	 * contain a <userimages> tag; this keeps the galleries up to date
 	 * at the cost of a performance overhead on page views
 	 */
 	$wgUserImagesNoCache = false;
-	
+
 	/**
 	 * Extension initialisation function
 	 */
@@ -36,7 +38,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$wgMessageCache->addMessages( $messages, $lang );
 		$wgParser->setHook( 'userimages', 'efUserImagesRender' );
 	}
-	
+
 	/**
 	 * Extension rendering function
 	 *
@@ -57,4 +59,3 @@ if( defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	exit();
 }
-

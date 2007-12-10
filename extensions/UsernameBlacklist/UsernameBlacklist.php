@@ -14,10 +14,11 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionFunctions[] = 'efUsernameBlacklistSetup';
 	$wgExtensionCredits['other'][] = array(
 		'name' => 'Username Blacklist',
+		'version' => '1.1',
 		'author' => 'Rob Church',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Username_Blacklist',
 		'description' => 'Restrict the creation of user accounts matching one or more regular expressions',
-		);
+	);
 
 	$wgAvailableRights[] = 'uboverride';
 	$wgGroupPermissions['sysop']['uboverride'] = true;
@@ -58,7 +59,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			return true;
 		}
 	}
-	
+
 	/**
 	 * When the blacklist page is edited, invalidate the blacklist cache
 	 *
@@ -72,18 +73,18 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$blacklist->invalidateCache();
 		}
 		return true;
-	}	
-	
+	}
+
 	/**
 	 * If editing the username blacklist page, check for validity and whine at the user.
 	 */
 	function efUsernameBlacklistValidate( $editPage, $text, $section, &$hookError ) {
 		if( $editPage->mTitle->getNamespace() == NS_MEDIAWIKI &&
 		 	$editPage->mTitle->getDbKey() == 'Usernameblacklist' ) {
-			
+
 			$blacklist = UsernameBlacklist::fetch();
 			$badLines = $blacklist->validate( $text );
-			
+
 			if( $badLines ) {
 				$badList = "*<tt>" .
 					implode( "</tt>\n*<tt>",
@@ -96,18 +97,18 @@ if( defined( 'MEDIAWIKI' ) ) {
 					$badList .
 					"</div>\n" .
 					"<br clear='all' />\n";
-				
+
 				// This is kind of odd, but... :D
 				return true;
 			}
 		}
 		return true;
 	}
-	
+
 	class UsernameBlacklist {
-		
-		var $regex;		
-		
+
+		var $regex;
+
 		/**
 		 * Trim leading spaces and asterisks from the text
 		 * @param $text Text to trim
@@ -116,7 +117,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		function transform( $text ) {
 			return trim( $text, ' *' );
 		}
-		
+
 		/**
 		 * Is the supplied text an appropriate fragment to include?
 		 *
@@ -126,7 +127,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		function isUsable( $text ) {
 			return substr( $text, 0, 1 ) == '*';
 		}
-		
+
 		/**
 		 * Attempt to fetch the blacklist from cache; build it if needs be
 		 *
@@ -143,7 +144,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 				return $list;
 			}
 		}
-		
+
 		/**
 		 * Build the blacklist from scratch, using the message page
 		 *
@@ -157,7 +158,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 				return array();
 			}
 		}
-		
+
 		/**
 		 * Build one or more blacklist regular expressions from the input.
 		 * If a fragment causes an error, we'll return multiple items
@@ -170,11 +171,11 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$groups = $this->fragmentsFromInput( $input );
 			if( count( $groups ) ) {
 				$combinedRegex = '/(' . implode( '|', $groups ) . ')/u';
-			
+
 				wfSuppressWarnings();
 				$ok = ( preg_match( $combinedRegex, '' ) !== false );
 				wfRestoreWarnings();
-			
+
 				if( $ok ) {
 					return array( $combinedRegex );
 				} else {
@@ -188,7 +189,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 				return array();
 			}
 		}
-		
+
 		/**
 		 * Break input down by line, remove comments, and strip to regex fragments.
 		 * @input string
@@ -204,7 +205,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			}
 			return $groups;
 		}
-		
+
 		/**
 		 * Go through a set of input and return a list of lines which
 		 * produce invalid regexes.
@@ -226,7 +227,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			}
 			return $bad;
 		}
-		
+
 		/**
 		 * Invalidate the blacklist cache
 		 */
@@ -234,7 +235,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			global $wgMemc;
 			$wgMemc->delete( $this->key );
 		}
-		
+
 		/**
 		 * Match a username against the blacklist
 		 * @param $username Username to check
@@ -245,7 +246,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 				wfSuppressWarnings();
 				$match = preg_match( $regex, $username );
 				wfRestoreWarnings();
-				
+
 				if( $match ) {
 					return true;
 				} elseif( $match === false ) {
@@ -254,7 +255,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			}
 			return false;
 		}
-		
+
 		/**
 		 * Constructor
 		 * Prepare the regular expression
@@ -275,9 +276,9 @@ if( defined( 'MEDIAWIKI' ) ) {
 				$blackList = new UsernameBlacklist();
 			return $blackList;
 		}
-		
+
 	}
-	
+
 } else {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	die( 1 );

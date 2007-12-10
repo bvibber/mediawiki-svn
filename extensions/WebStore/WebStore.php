@@ -1,6 +1,5 @@
 <?php
 
-
 $wgWebStoreSettings = array(
 	/**
 	 * Set this in LocalSettings.php to an array of IP ranges allowed to access 
@@ -68,10 +67,11 @@ $wgAutoloadClasses['WebStorePostFile'] = 'extensions/WebStore/WebStorePostFile.p
 $wgHooks['LoadAllMessages'][] = 'WebStoreCommon::initialiseMessages';
 
 $wgExtensionCredits['other'][] = array(
-	'name' => 'WebStore',
-	'author' => 'Tim Starling',
+	'name'        => 'WebStore',
+	'version'     => '1.1',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:WebStore',
+	'author'      => 'Tim Starling',
 	'description' => 'Web-only (non-NFS) file storage middleware',
 );
 
 define( 'MW_WEBSTORE_ENABLED', 1 );
-

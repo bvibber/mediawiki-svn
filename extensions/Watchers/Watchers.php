@@ -18,9 +18,11 @@ if( !defined( 'MEDIAWIKI' ) ) die();
 # Integrating into the MediaWiki environment
 
 $wgExtensionCredits['Watchers'][] = array(
-        'name' => 'Watchers',
-        'description' => 'An extension to show who is watching a page.',
-        'author' => 'Magnus Manske'
+	'name'        => 'Watchers',
+	'version'     => '1.1',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:Watchers',
+	'description' => 'An extension to show who is watching a page.',
+	'author'      => 'Magnus Manske',
 );
 
 $dir = dirname(__FILE__) . '/';

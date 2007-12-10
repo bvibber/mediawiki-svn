@@ -3,17 +3,19 @@
 $wgExtensionFunctions[]             = "wfToolTipExtension";
 $wgHooks['LanguageGetMagic'][]      = 'wfTooltipParserFunction_Magic';
 $wgExtensionCredits['parserhook'][] = array(
-    'name'        => 'ToolTip',
-    'author'      => 'Paul Grinberg',
-    'description' => 'adds <nowiki><tooltip></nowiki> and <nowiki>{{#tooltip:}}</nowiki>tag',
-    'version'     => '0.5.1'
+	'name'        => 'ToolTip',
+	'author'      => 'Paul Grinberg',
+	'email'       => 'gri6507 at yahoo dot com',
+	'description' => 'adds <nowiki><tooltip></nowiki> and <nowiki>{{#tooltip:}}</nowiki>tag',
+	'version'     => '0.5.1',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:Tooltip',
 );
 
 function wfToolTipExtension() {
     global $wgParser;
     global $wgOut;
     global $wgScriptPath;
-    
+
     $output .= <<< END
 <style type="text/css">
     .xstooltip{
@@ -132,5 +134,3 @@ function renderToolTip($input, $argv, &$parser) {
 
     return $output;
 }
-
-?>
