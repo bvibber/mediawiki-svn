@@ -278,7 +278,7 @@ class LoginForm {
 		if ( !$u->isValidPassword( $this->mPassword ) ) {
 			if ( !$this->mCreateaccountMail ) {
 				$this->mainLoginForm( wfMsg( 'passwordtooshort', $wgMinimalPasswordLength ) );
-				return false;
+				return self::TOO_SHORT;
 			} else {
 				# do not force a password for account creation by email
 				# set pseudo password, it will be replaced later by a random generated password
