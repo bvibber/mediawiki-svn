@@ -46,10 +46,24 @@ function efIcon_Render(&$parser, $img, $alt=null, $width=null, $page=null) {
 	}
 
 	// Optional parameters
-	if (!empty($alt))		$alt    = "alt='${alt}' title='${alt}'"; 		else $alt='';
-	if (!empty($width))		$width  = "width='${width}'"; 	else $width='';
-
-	$imageString = "<img src='${iURL}' $alt $width $height $border />";
+	if (empty($alt))
+		$alt='';
+	
+	if (!empty($width))	{
+		$width  = intval($width);
+		if ($width > 0) {
+			$thumb = $image->transform( array( 'width' => $width ) );
+			if ( $thumb->isError() ) {
+				$imageString = 'Bad Image';
+			} else {
+				$imageString = $thumb->toHtml( array( 'alt' => $alt, 'title' => $alt ) );
+			}
+		} else {
+			$imageString = 'Bad Width';
+		}
+	} else {
+		$imageString = "<img src='${iURL}' alt=\"{$alt}\" title=\"{$alt}\" />";
+	}
 
 	if (!empty($page)) {
 		$ptitle = Title::newFromText( $page );
