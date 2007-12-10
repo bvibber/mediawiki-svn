@@ -175,7 +175,7 @@ $messages = array(
 'about'          => 'Proyekt haqqında',
 'article'        => "Mag'lıwmat beti",
 'newwindow'      => "(jan'a aynada)",
-'cancel'         => 'Biykar',
+'cancel'         => 'Biykar etiw',
 'qbfind'         => 'Tabıw',
 'qbbrowse'       => "Ko'riw",
 'qbedit'         => "O'zgertiw",
@@ -250,7 +250,7 @@ $messages = array(
 'bugreports'        => 'Qatelik esabatları',
 'bugreportspage'    => '{{ns:project}}:Qatelik esabatları',
 'copyrightpagename' => "{{SITENAME}} proyektinin' avtorlıq huquqları",
-'copyrightpage'     => '{{ns:project}}:Avtorlıq huquqlar',
+'copyrightpage'     => '{{ns:project}}:Avtorlıq huquqları',
 'currentevents'     => "Ha'zirgi ha'diyseler",
 'currentevents-url' => "Ha'zirgi ha'diyseler",
 'disclaimers'       => 'Juwapkershilikten bas tartıw',
@@ -418,6 +418,7 @@ Bloklawdı \$1 a'melge asırg'an. Keltirilgen sebebi: ''\$2''.
 Usı bloklawdı diskussiya qılıw ushın \$1 yamasa basqa [[{{{{ns:mediawiki}}:grouppage-sysop}}|administratorlar]] menen baylanısqa shıg'ıwın'ızg'a boladı.
 Siz [[{{ns:special}}:Preferences|akkaunt sazlawların'ızda]] haqıyqıy e-mailin'izdı ko'rsetpegenin'izshe ha'mde onı paydalanıwdan bloklang'an bolg'anısha \"Usı paydalanıwshıg'a xat jazıw\" qa'siyetinen qollana almaysız.
 Sizin' ha'zirgi IP adresin'iz: \$3, bloklaw IDı: #\$5. Usılardın' birewin yamasa ekewinde ha'r bir sorawın'ızg'a qosın'.",
+'blockednoreason'        => 'hesh sebep keltirilmegen',
 'blockedoriginalsource'  => "'''$1''' degennin' deregi
 to'mende ko'rsetilgen:",
 'blockededitsource'      => "'''$1''' degennin' '''siz ozgertken''' teksti to'mende ko'rsetilgen:",
@@ -455,7 +456,7 @@ Qosqan u'lesin'iz o'zin'izdin' jazg'anın'ız yamasa ashıq tu'rdegi derekten al
 'nocreatetitle'          => 'Bet jaratıw sheklengen',
 'nocreatetext'           => "Bul saytta taza betlerdi jaratıw sheklengen. 
 Arqag'a qaytip bar betti o'zgertiwin'iz mu'mkin, yamasa [[{{ns:special}}:Userlogin|kiriwin'izge / akkaunt jaratıwın'ızg'a]] boladı.",
-'nocreate-loggedin'      => "Bul wikide taza betler jaratıwına ruxsatın'ız joq.",
+'nocreate-loggedin'      => "Bul wikide taza betler jaratıwın'ızg'a ruxsatın'ız joq.",
 'permissionserrors'      => 'Ruxsatnamalar Qatelikleri',
 'recreate-deleted-warn'  => "'''Esletpe: Aldın o'shirilgen betti qayta jaratajaqsız.'''
 
@@ -464,6 +465,9 @@ Qolaylıq ushın to'mende o'shiriw jurnalı keltirilgen:",
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Akkaunt jaratılmadı',
+'cantcreateaccount-text' => "[[{{ns:user}}:$3|$3]] usı IP adresten (<b>$1</b>) akkaunt jaratıwın blokladı.
+
+$3 keltirilgen sebebi: ''$2''",
 
 # History pages
 'revhistory'          => 'Nusqa tariyxı',
@@ -508,6 +512,9 @@ Sha'rtli belgiler: (ha'z.) = ha'zirgi nusqasi menen parqı,
 'revdelete-log'          => 'Jurnal kommentariyi:',
 'revdelete-logentry'     => "[[$1]] nusqa ko'rinisin o'zgertti",
 
+# Oversight log
+'oversightlog' => 'Nusqa jasırıw jurnalı',
+
 # Diffs
 'history-title'             => '"$1" betinin\' nusqa tariyxı',
 'difference'                => "(Nusqalar arasındag'ı ayırmashılıq)",
@@ -540,7 +547,7 @@ Sha'rtli belgiler: (ha'z.) = ha'zirgi nusqasi menen parqı,
 'skin'                  => "Sırtqı ko'rinis",
 'math'                  => 'Formulalar',
 'dateformat'            => "Sa'ne formatı",
-'datedefault'           => 'Hesh sazlawsız',
+'datedefault'           => 'Hesh sazlawlarsız',
 'datetime'              => "Sa'ne ha'm waqıt",
 'math_unknown_error'    => "belgisiz qa'telik",
 'math_unknown_function' => 'belgisiz funktsiya',
@@ -676,7 +683,7 @@ Sha'rtli belgiler: (ha'z.) = ha'zirgi nusqasi menen parqı,
 'linkstoimage'              => "To'mendegi betler bul faylg'a siltelgen:",
 'nolinkstoimage'            => "Bul faylg'a hesh bir bet siltelmegen.",
 'sharedupload'              => "Bul ortalıq fayl ha'm basqa proektlerde paydalanılsa boladı.",
-'shareduploadwiki-linktext' => "fayl juwmaq'ının' beti",
+'shareduploadwiki-linktext' => "fayl juwmag'ının' beti",
 'noimage'                   => "Bunday atı fayl joq, $1 mu'mkinshiligin'iz bar.",
 'noimage-linktext'          => 'usını aploud qılıw',
 'uploadnewversion-linktext' => "Bul fayldın' jan'a nusqasın aploud qılıw",
@@ -693,8 +700,8 @@ Sha'rtli belgiler: (ha'z.) = ha'zirgi nusqasi menen parqı,
 # File deletion
 'filedelete'             => "$1 degendi o'shiriw",
 'filedelete-legend'      => "Fayldı o'shiriw",
-'filedelete-intro'       => "'''[[{{ns:media}}:$1|$1]]''' o'shirilmektesiz.",
-'filedelete-intro-old'   => "<span class=\"plainlinks\"> [\$4 \$3, \$2] waqtındag'ı '''[[{{ns:media}}:\$1|\$1]]''' nusqasın o'shirilmektesiz.</span>",
+'filedelete-intro'       => "'''[[{{ns:media}}:$1|$1]]''' o'shirilmekte.",
+'filedelete-intro-old'   => "<span class=\"plainlinks\"> [\$4 \$3, \$2] waqtındag'ı '''[[{{ns:media}}:\$1|\$1]]''' nusqası o'shirilmekte.</span>",
 'filedelete-comment'     => 'Kommentariy:',
 'filedelete-submit'      => "O'shiriw",
 'filedelete-success'     => "'''$1''' o'shirildi.",
@@ -773,7 +780,7 @@ Sha'rtli belgiler: (ha'z.) = ha'zirgi nusqasi menen parqı,
 'deadendpagestext'        => "To'mendegi betler usi wikidegi basqa betlerge siltelmegen.",
 'protectedpages'          => "Qorg'alg'an betler",
 'protectedpagestext'      => "To'mendegi betler ko'shiriw ha'm o'zgertiwden qorg'alg'an",
-'protectedpagesempty'     => "Usı sazlawlarmen ha'zir hesh bet qorg'almag'an",
+'protectedpagesempty'     => "Usı parametrler menen ha'zir hesh bet qorg'almag'an",
 'listusers'               => 'Paydalanıwshı dizimi',
 'specialpages'            => 'Arnawlı betler',
 'spheading'               => "Ha'mme paydalanıwshılardın' arnawlı betleri",
@@ -791,7 +798,7 @@ Sha'rtli belgiler: (ha'z.) = ha'zirgi nusqasi menen parqı,
 'booksources-search-legend' => 'Kitap haqqında informatsiya izlew',
 'booksources-go'            => "O'tin'",
 
-'categoriespagetext' => 'Usı wikide keyingi kategoriyalar bar.',
+'categoriespagetext' => "Usı wikide to'mendegi kategoriyalar bar.",
 'data'               => "Mag'lıwmatlar",
 'userrights'         => 'Paydalanıwshı huqıqların basqarıw',
 'groups'             => 'Paydalanıwshı toparları',
@@ -805,7 +812,7 @@ Sha'rtli belgiler: (ha'z.) = ha'zirgi nusqasi menen parqı,
 'all-logs-page'        => "Ha'mme jurnallar",
 'log-search-legend'    => 'Jurnallardı izlew',
 'log-search-submit'    => "O'tin'",
-'log-title-wildcard'   => "Mına tekstten baslag'an atamalardı izlew",
+'log-title-wildcard'   => "Usı tekstten baslang'an atamalardı izlew",
 
 # Special:Allpages
 'nextpage'          => 'Keyingi bet ($1)',
@@ -1241,7 +1248,7 @@ Sol qatardag'ı keyingi ha'r bir siltewler tısqarı qabıl etiledi, mısalı qa
 'autosumm-new'     => 'Taza bet: $1',
 
 # Friendlier slave lag warnings
-'lag-warn-normal' => "$1 sekundtan jan'alaw o'zgerisler usı dizimde ko'rsetilmewi mu'mkin.",
+'lag-warn-normal' => "Usı dizimde $1 sekundtan jan'alaw bolg'an o'zgerisler ko'rsetilmewi mu'mkin.",
 
 # Watchlist editor
 'watchlistedit-numitems'      => "Sizin' baqlaw dizimin'izde, sa'wbet betlerin esapqa almag'anda {{PLURAL:$1|1 atama|$1 atama}} bar.",
