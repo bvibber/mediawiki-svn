@@ -977,6 +977,7 @@ Note that you may not use the "e-mail this user" feature unless you have a valid
 registered in your [[Special:Preferences|user preferences]] and you have not been blocked from using it.
 
 Your block ID is $5. Please include this ID in any queries you make.',
+'blockednoreason'           => 'no reason given',
 'blockedoriginalsource'     => "The source of '''$1''' is 
 shown below:",
 'blockededitsource'         => "The text of '''your edits''' to '''$1''' is shown below:",
@@ -2439,8 +2440,6 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'markedaspatrollederror'              => 'Cannot mark as patrolled',
 'markedaspatrollederrortext'          => 'You need to specify a revision to mark as patrolled.',
 'markedaspatrollederror-noautopatrol' => 'You are not allowed to mark your own changes as patrolled.',
-'nppatroldisabled'                    => 'New Pages Patrol disabled',
-'nppatroldisabledtext'                => 'The New Pages Patrol feature is currently disabled.',
 
 # Patrol log
 'patrol-log-page'   => 'Patrol log',
@@ -3044,8 +3043,8 @@ $1',
 'hebrew-calendar-m11-gen' => 'Av', # only translate this message to other languages if you have to change it
 'hebrew-calendar-m12-gen' => 'Elul', # only translate this message to other languages if you have to change it
 
-# Default signatures for all languages. Do not duplicate to other languages
-'signature' => '[[User:$1|$2]]', # default signature for registered users
-'signature-anon' => '[[Special:Contributions/$1|$2]]', # default signature for anonymous users
+# Signatures
+'signature' => '[[User:$1|$2]]', # don't translate or duplicate this message to other languages
+'signature-anon' => '[[Special:Contributions/$1|$2]]', # don't translate or duplicate this message to other languages
 
 );

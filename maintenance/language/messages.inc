@@ -461,6 +461,7 @@ $wgMessageStructure = array(
 		'blockedtitle',
 		'blockedtext',
 		'autoblockedtext',
+		'blockednoreason',
 		'blockedoriginalsource',
 		'blockededitsource',
 		'whitelistedittitle',
@@ -1706,8 +1707,6 @@ $wgMessageStructure = array(
 		'markedaspatrollederror',
 		'markedaspatrollederrortext',
 		'markedaspatrollederror-noautopatrol',
-		'nppatroldisabled',
-		'nppatroldisabledtext',
 	),
 	'patrol-log' => array(
 		'patrol-log-page',

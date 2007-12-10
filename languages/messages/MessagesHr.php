@@ -301,7 +301,7 @@ i [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Vodič za suradnike] 
 'page-rss-feed'           => '"$1" RSS izvor',
 'page-atom-feed'          => '"$1" Atom izvor',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Članak',
 'nstab-user'      => 'Stranica suradnika',
 'nstab-media'     => 'Mediji',
@@ -456,6 +456,9 @@ koristiti staru lozinku.',
 'blocked-mailpassword'       => 'Vašoj IP adresi je blokirano uređivanje stranica, a da bi se spriječila nedozvoljena akcija, mogućnost zahtijevanja nove lozinke je također onemogućena.',
 'eauthentsent'               => 'Na navedenu adresu poslan je e-mail s potvrdom. Prije nego što pošaljemo daljnje poruke,
 molimo vas da otvorite e-mail i slijedite u njemu sadržana uputstva.',
+'throttled-mailpassword'     => 'Već Vam je poslan e-mail za promjenu lozinke, u {{PLURAL:$1|zadnjih sat vremena|zadnja $1 sata|zadnjih $1 sati}}.
+Da bi spriječili zloupotrebu, moguće je poslati jedan e-mail
+za promjenu lozinke {{PLURAL:$1|svakih sat vremena|svaka $1 sata|svakih $1 sati}}.',
 'mailerror'                  => 'Greška pri slanju e-maila: $1',
 'acct_creation_throttle_hit' => 'Nažalost, ne možete otvoriti nove suradničke račune. Već ste otvorili $1.',
 'emailauthenticated'         => 'Vaša e-mail adresa je ovjerena $1.',
@@ -471,8 +474,10 @@ Molim unesite ispravno oblikovanu adresu ili ostavite polje praznim.',
 
 # Password reset dialog
 'resetpass'               => 'Postavi novu lozinku',
+'resetpass_announce'      => 'Prijavljeni ste s privremenom lozinkom. Da završite proces mijenjanja lozinke, upišite ovdje novu lozinku:',
 'resetpass_header'        => 'Resetiraj lozinku',
 'resetpass_submit'        => 'Postavite lozinku i prijavite se',
+'resetpass_success'       => 'Lozinka uspješno postavljena! Prijava u tijeku...',
 'resetpass_bad_temporary' => 'Nevažeća privremena lozinka. Možda ste već uspješno promijenili svoju lozinku ili ste zatražili novu privremenu lozinku.',
 'resetpass_forbidden'     => 'Na ovom wikiju lozinka ne može biti promijenjena',
 'resetpass_missing'       => 'Forma ne sadrži tražene podatke.',
@@ -664,9 +669,10 @@ Molimo provjerite URL koji vas je doveo ovamo.',
 'historyempty'        => '(prazna stranica)',
 
 # Revision feed
-'history-feed-title'       => 'Povijest promjena',
-'history-feed-description' => 'Povijest promjena ove stranice na wikiju',
-'history-feed-empty'       => 'Tražena stranica ne postoji.
+'history-feed-title'          => 'Povijest promjena',
+'history-feed-description'    => 'Povijest promjena ove stranice na wikiju',
+'history-feed-item-nocomment' => '$1 u (test) $2', # user at time
+'history-feed-empty'          => 'Tražena stranica ne postoji.
 Stranica je vjerojatno prethodno izbrisana s wikija, ili preimenovana.
 Pokušajte [[Special:Search|pretražiti]] važnije nove stranice na wikiju.',
 
@@ -696,6 +702,7 @@ vratiti ga u javni pristup putem ovog sučelja, osim ako operateri na projektu n
 postavili dodatna ograničenja.',
 'revdelete-legend'            => 'Postavi ograničenja na izmjenu:',
 'revdelete-hide-text'         => 'Sakrij tekst izmjene',
+'revdelete-hide-name'         => 'Sakrij uređivanje i njegov predmet',
 'revdelete-hide-comment'      => 'Sakrij komentar (sažetak)',
 'revdelete-hide-user'         => 'Sakrij suradnikovo ime/IP adresu',
 'revdelete-hide-restricted'   => 'Postavi ograničenja i za administratore kao i za ostale suradnike',
@@ -707,7 +714,9 @@ postavili dodatna ograničenja.',
 'revdelete-logaction'         => '$1 {{PLURAL:$1|izmjena|izmjene|izmjena}} postavljena u mod $2',
 
 # Oversight log
-'oversightlog' => 'Oversight log',
+'oversightlog'    => 'Oversight log',
+'overlogpagetext' => 'Slijedi popis posljednjih brisanja stranica i blokiranja koja uključuju sadržaj sakriven od Administratora.
+Vidi [[Special:Ipblocklist|IP popis blokiranja]] za popis trenutno blokiranih IP adresa.',
 
 # Diffs
 'history-title'             => 'Povijest izmjena stranice "$1"',
@@ -1036,6 +1045,10 @@ Slijedi evidencija brisanja ove datoteke s obrazloženjem prethodnog brisanja:",
 'unusedtemplatestext' => 'Slijedi popis svih stranica imenskog prostora "Predlošci", koje nisu umetnute na drugim stranicama. Pripazite da prije brisanja provjerite druge poveznice koje vode na te predloške.',
 'unusedtemplateswlh'  => 'druge poveznice',
 
+# Random page
+'randompage'         => 'Slučajna stranica',
+'randompage-nopages' => 'Nema stranica u ovom imenskom prostoru.',
+
 # Random redirect
 'randomredirect'         => 'Slučajno preusmjeravanje',
 'randomredirect-nopages' => 'Nema preusmjeravanja u ovom imenskom prostoru.',
@@ -1106,14 +1119,13 @@ koja obično ukazuje na "pravu" odredišnu stranicu, na koju bi trebalo pokaziva
 'mostrevisions'           => 'Popis članaka po broju uređivanja',
 'allpages'                => 'Sve stranice',
 'prefixindex'             => 'Kazalo prema početku naslova',
-'randompage'              => 'Slučajna stranica',
-'randompage-nopages'      => 'Nema stranica u ovom imenskom prostoru.',
 'shortpages'              => 'Kratke stranice',
 'longpages'               => 'Duge stranice',
 'deadendpages'            => 'Slijepe ulice',
 'deadendpagestext'        => 'Slijedeće stranice nemaju poveznice na druge stranice na {{SITENAME}}.',
 'protectedpages'          => 'Zaštićene stranice',
 'protectedpagestext'      => 'Slijedeće stranice su zaštićene od premještanja ili uređivanja',
+'protectedpagesempty'     => 'Nema zaštićenih stranica koje ispunjavaju uvjete koje ste postavili.',
 'listusers'               => 'Popis suradnika',
 'specialpages'            => 'Posebne stranice',
 'spheading'               => 'Posebne stranice za sve suradnike',
@@ -1329,6 +1341,7 @@ Pogledajte [[Special:Protectedpages|zaštićene stranice]] za popis trenutno za�
 'protect-text'                => 'Ovdje možete pregledati i promijeniti razinu zaštite za stranicu <strong>$1</strong>.
 Molim pripazite da ovo radite u skladu s [[{{MediaWiki:policy-url}}|pravilima]].',
 'protect-default'             => '(bez zaštite)',
+'protect-fallback'            => 'Potrebno je imati "$1" ovlasti',
 'protect-level-autoconfirmed' => 'Blokiraj neregistrirane suradnike',
 'protect-level-sysop'         => 'Samo administratori',
 'protect-summary-cascade'     => 'prenosiva zaštita',
@@ -1343,6 +1356,10 @@ Molim pripazite da ovo radite u skladu s [[{{MediaWiki:policy-url}}|pravilima]].
 # Restrictions (nouns)
 'restriction-edit' => 'Uređivanje',
 'restriction-move' => 'Premještanje',
+
+# Restriction levels
+'restriction-level-sysop'         => 'samo administratori',
+'restriction-level-autoconfirmed' => 'samo prijavljeni suradnici',
 
 # Undelete
 'undelete'                 => 'Vrati izbrisanu stranicu',
@@ -1416,6 +1433,8 @@ Pogledajte [[Special:Log/delete|evidenciju brisanja]] za zapise nedavnih brisanj
 'nolinkshere-ns'      => "Nijedna stranica ne vodi na '''[[:$1]]''' u odabranom imenskom prostoru.",
 'isredirect'          => 'stranica za preusmjeravanje',
 'istemplate'          => 'kao predložak',
+'whatlinkshere-prev'  => '{{PLURAL:$1|prethodna|prethodne|prethodnih}} $1',
+'whatlinkshere-next'  => '{{PLURAL:$1|slijedeća|slijedeće|slijedećih}} $1',
 'whatlinkshere-links' => '← poveznice',
 
 # Block/unblock
@@ -1471,6 +1490,7 @@ vandalizirane).',
 'noautoblockblock'            => 'blokiranje samoga sebe je onemogućeno',
 'createaccountblock'          => 'blokirano stvaranje suradničkog računa',
 'emailblock'                  => 'e-mail je blokiran',
+'ipblocklist-empty'           => 'Popis blokiranja je prazan.',
 'ipblocklist-no-results'      => 'Tražena IP adresa ili suradničko ime nije blokirano.',
 'blocklink'                   => 'blokiraj',
 'unblocklink'                 => 'deblokiraj',
@@ -1487,7 +1507,10 @@ blokiranja vidi [[Special:Ipblocklist|listu IP blokiranja]].',
 'block-log-flags-noemail'     => 'e-mail je blokiran',
 'range_block_disabled'        => 'Isključena je administratorska naredba za blokiranje raspona IP adresa.',
 'ipb_expiry_invalid'          => 'Vremenski rok nije valjan.',
+'ipb_already_blocked'         => '"$1" je već blokiran',
+'ipb_cant_unblock'            => 'Greška: blok ID $1 nije nađen. Moguće je da je suradnik već odblokiran.',
 'ip_range_invalid'            => 'Raspon IP adresa nije valjan.',
+'blockme'                     => 'Blokiraj me',
 'proxyblocker'                => 'Zaštita od otvorenih posrednika (proxyja)',
 'proxyblocker-disabled'       => 'Ova funkcija je onemogućena.',
 'proxyblockreason'            => 'Vaša je IP adresa blokirana jer se radi o otvorenom posredniku (proxyju). Molim stupite u vezu s vašim davateljem internetskih usluga (ISP-om) ili službom tehničke podrške i obavijestite ih o ovom ozbiljnom sigurnosnom problemu.',
@@ -1759,7 +1782,11 @@ Transwiki uvoz stranica je zabilježen u [[Special:Log/import|evidenciji uvoza s
 # Image deletion
 'deletedrevision'                 => 'Izbrisana stara inačica $1',
 'filedeleteerror-short'           => 'Greška u brisanju datoteke: $1',
+'filedeleteerror-long'            => 'Dogodila se greška prilikom brisanja datoteke:
+
+$1',
 'filedelete-missing'              => 'Datoteka "$1" ne može biti obrisana, jer ne postoji.',
+'filedelete-old-unregistered'     => 'Navedena promjena datoteke "$1" ne postoji u bazi podataka.',
 'filedelete-current-unregistered' => 'Navedene datoteke "$1" nema u bazi podataka.',
 'filedelete-archive-read-only'    => 'Web poslužitelj nema pravo pisanja u direktorij "$1".',
 
@@ -1785,6 +1812,12 @@ Transwiki uvoz stranica je zabilježen u [[Special:Log/import|evidenciji uvoza s
 'showhidebots' => '($1 botova)',
 'noimages'     => 'Nema slika.',
 
+# Bad image list
+'bad_image_list' => "Rabi se slijedeći format:
+
+Samo retci koji počinju sa zvjezdicom su prikazani. Prva poveznica u retku mora biti poveznica na nevaljanu sliku.
+Svaka slijedeća poveznica u istom retku je izuzetak, npr. kod stranica gdje se slike pojavljuju ''inline''.",
+
 # Variants for Serbian language
 'variantname-sr-ec' => 'ћирилица',
 'variantname-sr-el' => 'latinica',
@@ -1794,6 +1827,13 @@ Transwiki uvoz stranica je zabilježen u [[Special:Log/import|evidenciji uvoza s
 'metadata-help'     => 'Ova datoteka sadržava dodatne podatke koje je vjerojatno dodala digitalna kamera ili skener u procesu snimanja odnosno digitalizacije. Ako je datoteka mijenjana, podatci možda nisu u skladu sa stvarnim stanjem.',
 'metadata-expand'   => 'Pokaži sve podatke',
 'metadata-collapse' => 'Sakrij dodatne podatke',
+'metadata-fields'   => "Slijedeći EXIF metapodaci će biti prikazani ispod slike u tablici s metapodacima. Ostali će biti sakriveni (možete ih vidjeti ako kliknete na poveznicu ''Pokaži sve podatke'').
+* proizvođač kamere
+* model kamere
+* datum i vrijeme slikanja
+* trajanje ekspozicije
+* F broj dijafragme
+* žarišna duljina leće",
 
 # EXIF tags
 'exif-imagewidth'                  => 'Širina',
@@ -2105,6 +2145,7 @@ Valjanost ovog potvrdnog koda istječe $4.',
 $1
 </div>",
 'trackbackremove'   => ' ([$1 izbrisati])',
+'trackbacklink'     => 'Trackback',
 'trackbackdeleteok' => 'Trackback izbrisan.',
 
 # Delete conflict
@@ -2130,10 +2171,11 @@ $1',
 'hideresults'      => 'Sakrij rezultate',
 
 # Multipage image navigation
-'imgmultipageprev' => '← prethodna slika',
-'imgmultipagenext' => 'slijedeća slika →',
-'imgmultigo'       => 'Idi!',
-'imgmultigotopre'  => 'Idi na stranicu',
+'imgmultipageprev'   => '← prethodna slika',
+'imgmultipagenext'   => 'slijedeća slika →',
+'imgmultigo'         => 'Idi!',
+'imgmultigotopre'    => 'Idi na stranicu',
+'imgmultiparseerror' => 'Slika je neispravna, te {{SITENAME}} ne može prikazati popis stranica slike.',
 
 # Table pager
 'ascending_abbrev'         => 'rast',

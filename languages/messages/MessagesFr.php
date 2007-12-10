@@ -534,6 +534,7 @@ Vous pouvez contacter $1 ou l’un des autres [[{{MediaWiki:grouppage-sysop}}|ad
 Si vous avez donné une adresse de courriel valide dans vos [[Special:Preferences|préférences]] et que son utilisation ne vous est pas interdite, vous pouvez utiliser la fonction « Envoyer un message à cet utilisateur » pour contacter un administrateur.
 
 Votre adresse IP est $3 et votre identifiant de blocage est #$5. Veuillez les préciser dans toute requête.",
+'blockednoreason'           => 'Aucune raison donnée',
 'blockedoriginalsource'     => "Le code source de  '''$1''' est indiqué ci-dessous :",
 'blockededitsource'         => "Le contenu de '''vos modifications''' apportées à '''$1''' est indiqué ci-dessous :",
 'whitelistedittitle'        => 'Connexion nécessaire pour modifier le contenu',
@@ -1743,8 +1744,6 @@ Toutes les actions d’importation interwiki sont conservées dans le [[Special:
 'markedaspatrollederror'              => 'Ne peut être marqué comme non vandalisé',
 'markedaspatrollederrortext'          => 'Vous devez sélectionner une version pour pouvoir la marquer comme non vandalisée.',
 'markedaspatrollederror-noautopatrol' => 'Vous n’avez pas le droit de marquer vos propres modifications comme surveillées.',
-'nppatroldisabled'                    => 'Patrouille des nouvelles pages désactivée.',
-'nppatroldisabledtext'                => 'La Patrouille des nouvelles pages est actuellement désactivée.',
 
 # Patrol log
 'patrol-log-page' => 'Historique des versions patrouillées',
