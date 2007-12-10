@@ -6,7 +6,7 @@
  * (at your option) any later version.
  *
  * @author Roan Kattouw <roan.kattouw@home.nl>
- * @copyright Copyright (C) 2007 Roan Kattouw 
+ * @copyright Copyright (C) 2007 Roan Kattouw
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
  *
  * An extension that shows interwiki tabs above Image: pages
@@ -22,7 +22,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Joe Beaudoin Jr. and Roan Kattouw',
 	'description' => 'Adds tabs with interwiki links above Image: pages',
 	'version' => '1.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Imagetabs'
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Imagetabs',
 );
 
 function createImageTabs_setup()

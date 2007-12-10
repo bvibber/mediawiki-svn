@@ -14,6 +14,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionCredits['specialpage'][] = array(
 		'name' => 'Give Rollback',
+		'version' => '1.1',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:GiveRollback',
 		'author' => 'Rob Church',
 		'description' => 'Allows local bureaucrats to give [[Special:Giverollback|rollback permissions]] to a non-sysop user',
 	);
@@ -53,4 +55,3 @@ if( defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	die( 1 );
 }
-

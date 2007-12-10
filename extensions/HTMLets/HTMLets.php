@@ -21,8 +21,9 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 $wgExtensionCredits['other'][] = array( 
 	'name' => 'HTMLets', 
+	'version' => '1.1',
 	'author' => 'Daniel Kinzler', 
-	'url' => 'http://mediawiki.org/wiki/Extension:HTMLets',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:HTMLets',
 	'description' => 'lets you inline HTML snippets from files',
 );
 
@@ -121,4 +122,3 @@ function wfRenderHTMLetHackPostProcess( &$parser, &$text ) {
 
    return true;
 }
-

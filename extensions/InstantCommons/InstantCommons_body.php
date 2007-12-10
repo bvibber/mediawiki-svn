@@ -12,12 +12,12 @@ if (!defined('MEDIAWIKI')) {
 
 class ApiInstantCommons extends ApiBase {
 	var $arrOutput = array();
-   	var $resParser;
-   	var $strXmlData;
-	
+	var $resParser;
+	var $strXmlData;
+
 	public function __construct($main, $action) {
 		parent :: __construct($main, $action);
-	}	
+	}
 
 	/**
 	 * InstantCommons execution happens in the following steps:
@@ -26,7 +26,7 @@ class ApiInstantCommons extends ApiBase {
 		$media = $maint = $meta = null;
 		extract($this->extractRequestParams());
 		$data = array();
-		$data = $this->fetchImage($media);		
+		$data = $this->fetchImage($media);
 		if($data!=NULL){
 			$this->getResult()->addValue('instantcommons', 'image', $data);
 		}
@@ -80,10 +80,10 @@ class ApiInstantCommons extends ApiBase {
 		return array (
 			'media' => 'Get properties for the media',
 			'maint' => 'Which maintenance actions to perform',
-			'meta' => 'Which meta data to get about this site',			
+			'meta' => 'Which meta data to get about this site',
 		);
 	}
-	
+
 	protected function getDescription() {
 		return array (
 			'InstantCommons API InstantCommons is an API feature of MediaWiki to ' .
@@ -113,64 +113,64 @@ class ApiInstantCommons extends ApiBase {
 		$vers[] = $psModule->getVersion();
 		return $vers;
 	}
-	
+
 	/**
 	 * Fetch the media from the commons server in the background.
 	 * Save it as a local media (but noting its source in the appropriate media table)
 	 * @fileName is a fully qualified mediawiki object name (e.g. Image:sing.png)
 	 * @return an associative array containing file properties in property=>value pairs
 	 */
-	public function fetchImage($fileName){		
-		global $wgScriptPath;		
-		$nt = Title::newFromText( $fileName );		
-		if(is_object($nt)){		
-			$image = new Image ($nt);			
+	public function fetchImage($fileName){
+		global $wgScriptPath;
+		$nt = Title::newFromText( $fileName );
+		if(is_object($nt)){
+			$image = new Image ($nt);
 			if($image->exists()){
-				$image->url = substr(strstr($image->repo->url, $wgScriptPath), strlen($wgScriptPath)).'/'.$image->repo->getHashPath($image->name).$image->name;				
-				$image->metadata = addslashes($image->metadata);				
-				$ari=(array)$image;				
-				//unset non-string elements		
+				$image->url = substr(strstr($image->repo->url, $wgScriptPath), strlen($wgScriptPath)).'/'.$image->repo->getHashPath($image->name).$image->name;
+				$image->metadata = addslashes($image->metadata);
+				$ari=(array)$image;
+				//unset non-string elements
 				foreach($ari as $property=>$value){
 					if(is_object($value)){
 						unset($ari[$property]);
 					}
-				}								
-				return $ari;			
+				}
+				return $ari;
 			}else{
-				return array('error'=>1, 'description'=>'File not found'); //file not found			
+				return array('error'=>1, 'description'=>'File not found'); //file not found
 			}
 		}
 		else
 		{
-			return array('error'=>2, 'description'=>'Not a valid title'); //not a valid title			
-		}			
+			return array('error'=>2, 'description'=>'Not a valid title'); //not a valid title
+		}
 	}
-	
 
-  
-   function parse($strInputXML) {  
+
+
+   function parse($strInputXML) {
            $this->resParser = xml_parser_create ();
            xml_set_object($this->resParser,$this);
            xml_set_element_handler($this->resParser, "tagOpen", "tagClosed");
-          
+
            xml_set_character_data_handler($this->resParser, "tagData");
-      
+
            $this->strXmlData = xml_parse($this->resParser,$strInputXML );
            if(!$this->strXmlData) {
                die(sprintf("XML error: %s at line %d",
            xml_error_string(xml_get_error_code($this->resParser)),
            xml_get_current_line_number($this->resParser)));
            }
-                          
+
            xml_parser_free($this->resParser);
-          
+
            return $this->arrOutput;
    }
    function tagOpen($parser, $name, $attrs) {
        $tag=array("name"=>$name,"attrs"=>$attrs);
        array_push($this->arrOutput,$tag);
    }
-  
+
    function tagData($parser, $tagData) {
        if(trim($tagData)) {
            if(isset($this->arrOutput[count($this->arrOutput)-1]['tagData'])) {
@@ -181,11 +181,10 @@ class ApiInstantCommons extends ApiBase {
            }
        }
    }
-  
+
    function tagClosed($parser, $name) {
        $this->arrOutput[count($this->arrOutput)-2]['children'][] = $this->arrOutput[count($this->arrOutput)-1];
        array_pop($this->arrOutput);
    }
-	
+
 }
-?>

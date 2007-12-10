@@ -1,11 +1,11 @@
 <?php
 
-$wgExtensionCredits['other'][] = array( 
-	'name'        	=> 'Icon', 
-	'version'     	=> '1.0',
-	'author'      	=> 'Tim Laqua', 
-	'description' 	=> 'Allows you to use Images as Icons and Icon Links',
-	'url' 			=> 'http://mediawiki.org/wiki/Extension:Icon',			
+$wgExtensionCredits['other'][] = array(
+	'name'        => 'Icon',
+	'version'     => '1.0',
+	'author'      => 'Tim Laqua',
+	'description' => 'Allows you to use Images as Icons and Icon Links',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:Icon',
 );
 
 $wgExtensionFunctions[] = 'efIcon_Setup';
@@ -30,14 +30,14 @@ function efIcon_LanguageGetMagic( &$magicWords, $langCode ) {
 function efIcon_Render(&$parser, $img, $alt=null, $width=null, $page=null) {
 	$ititle = Title::newFromText( $img );
 
-	// this really shouldn't happen... not much we can do here.		
-	if (!is_object($ititle)) 
+	// this really shouldn't happen... not much we can do here.
+	if (!is_object($ititle))
 		return '';
 
 	// check if we are dealing with an InterWiki link
 	if ( $ititle->isLocal() ) {
 		$image = Image::newFromName( $img );
-		if (!$image->exists()) 
+		if (!$image->exists())
 			return '[[Image:'.$img.']]';
 
 		$iURL = $image->getURL();
@@ -50,10 +50,10 @@ function efIcon_Render(&$parser, $img, $alt=null, $width=null, $page=null) {
 	if (!empty($width))		$width  = "width='${width}'"; 	else $width='';
 
 	$imageString = "<img src='${iURL}' $alt $width $height $border />";
-	
+
 	if (!empty($page)) {
 		$ptitle = Title::newFromText( $page );
-		
+
 		// this might happen in templates...
 		if (!is_object( $ptitle )) {
 			//May be too assuming... w/e.
@@ -62,7 +62,7 @@ function efIcon_Render(&$parser, $img, $alt=null, $width=null, $page=null) {
 			if ( $ptitle->isLocal() )
 			{
 				$tURL = $ptitle->getLocalUrl();
-				$aClass=''; 			
+				$aClass='';
 			}
 			else
 			{
@@ -74,6 +74,6 @@ function efIcon_Render(&$parser, $img, $alt=null, $width=null, $page=null) {
 	} else {
 		$output = $imageString;
 	}
-	
+
 	return array($output, 'noparse' => true, 'isHTML' => true);
 }

@@ -8,7 +8,7 @@
  *
  *      include( "extensions/gis/geo.php" );
  *
- *  If $wgMapsourcesURL is not defined, there will not be links to the 
+ *  If $wgMapsourcesURL is not defined, there will not be links to the
  *  "Map sources" page, but the geo tag will still be rendered.
  *
  *  To add the points to a database, see the gis/geodb extension
@@ -60,9 +60,11 @@ if ( !function_exists( 'extAddSpecialPage' ) ) {
 extAddSpecialPage( dirname(__FILE__) . '/Specialgeo_body.php', 'Geo', 'GeoPage' );
 
 $wgExtensionCredits['specialpage'][] = array(
-        'name' => 'Geo',
-        'description' => 'Enables rich geotagging functionality',
-        'author' => 'Egil Kvaleberg, Jens Frank'
+	'name' => 'Geo',
+	'version' => '1.1',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Gis',
+	'description' => 'Enables rich geotagging functionality',
+	'author' => 'Egil Kvaleberg, Jens Frank',
 );
 
 global $wgAutoloadClasses;
@@ -75,7 +77,7 @@ $wgAutoloadClasses['GisDatabase'] = dirname(__FILE__) . '/GisDatabase.php';
  *  Use the ArticleSaveComplete instead of ArticleSave since the ID is
  *  not available upon ArticleSave for new articles
  */
-function articleSaveGeo ( $article, $user, $text ) 
+function articleSaveGeo ( $article, $user, $text )
 {
 	$id = $article->getID();
 
@@ -92,7 +94,7 @@ function articleSaveGeo ( $article, $user, $text )
 		$content = $tagresult[1];
 		$params = $tagresult[2];
 		$full = $tagresult[3];
-		
+
 		if ( $tagname != 'geo' ) {
 			continue;
 		}
@@ -112,7 +114,7 @@ function articleSaveGeo ( $article, $user, $text )
 /**
  *  Hook function called every time a page is deleted
  */
-function articleDeleteGeo ( $article ) 
+function articleDeleteGeo ( $article )
 {
 	$id = $article->getID();
 
@@ -160,5 +162,3 @@ function parseGeo ( $text, $params, &$parser ) {
 	return $skin->makeKnownLink( 'Special:Geo', $geo->get_markup(), $geo->get_param_string() );
 
 }
-
-

@@ -1,8 +1,8 @@
 <?php
 
 /**
- * This file contains the main include file for the Inputbox extension of 
- * MediaWiki. 
+ * This file contains the main include file for the Inputbox extension of
+ * MediaWiki.
  *
  * Usage: require_once("path/to/inputbox.php"); in LocalSettings.php
  *
@@ -10,7 +10,7 @@
  *
  * @author Erik Moeller <moeller@scireview.de>
  *  namespaces search improvements partially by
- *  Leonardo Pimenta <leo.lns@gmail.com> 
+ *  Leonardo Pimenta <leo.lns@gmail.com>
  * @copyright Public domain
  * @license Public domain
  * @version 0.1.1
@@ -18,10 +18,11 @@
 
 /**
  * Register the Inputbox extension with MediaWiki
- */ 
+ */
 $wgExtensionFunctions[] = 'efInputBoxSetup';
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Inputbox',
+	'version' => '0.1.1',
 	'author' => array( 'Erik Moeller', 'Leonardo Pimenta', 'Rob Church' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Inputbox',
 	'description' => 'Allow inclusion of predefined HTML forms.',
@@ -73,7 +74,7 @@ class Inputbox {
 	function getSearchForm() {
 		global $wgContLang;
 		$search = SpecialPage::getTitleFor( 'Search' )->escapeLocalUrl();
-		
+
 		if(!$this->buttonlabel) {
 			$this->buttonlabel = wfMsgHtml( 'tryexact' );
 		}
@@ -125,12 +126,12 @@ ENDGO;
 					}
 				}
 			}
-			//Line feed 
-			$searchform2 .= $this->br;		
-			//If namespaces are defined remove the go button 
-			//because go button doesn't accept namespaces parameters 
+			//Line feed
+			$searchform2 .= $this->br;
+			//If namespaces are defined remove the go button
+			//because go button doesn't accept namespaces parameters
 			$gobutton='';
-		} 
+		}
 		$searchform3=<<<ENDFORM2
 		{$gobutton}
 		<input type='submit' name="fulltext" class="searchboxSearchButton" value="{$searchbuttonlabel}" />
@@ -175,9 +176,9 @@ ENDFORM;
 
 
 	function getCreateForm() {
-		global $wgScript;	
+		global $wgScript;
 
-		$action = htmlspecialchars( $wgScript );		
+		$action = htmlspecialchars( $wgScript );
 		if($this->type=="comment") {
 			$comment='<input type="hidden" name="section" value="new" />';
 			if(!$this->buttonlabel) {
@@ -185,7 +186,7 @@ ENDFORM;
 			}
 		} else {
 			$comment='';
-			if(!$this->buttonlabel) {			
+			if(!$this->buttonlabel) {
 				$this->buttonlabel = wfMsgHtml( "createarticle" );
 			}
 		}

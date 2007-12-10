@@ -1,6 +1,6 @@
 <?php
 /*
-	
+
  Purpose:       outputs a bulleted list of most recent
                 items residing in a category, or a union
                 of several categories.
@@ -45,8 +45,10 @@ $wgDLPAllowUnlimitedCategories = false; // Allow unlimited categories
 $wgExtensionFunctions[] = "wfDynamicPageList";
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'DynamicPageList',
+	'version' => '1.1',
 	'description' => 'outputs a bulleted list of the most recent items residing in a category, or a union of several categories',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Intersection'
+	'author' => 'Ilya Haykinson, Amgine',
 );
 
 $dir = dirname(__FILE__) . '/';
