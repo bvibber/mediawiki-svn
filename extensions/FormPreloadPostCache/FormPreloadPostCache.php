@@ -21,7 +21,7 @@ class FormPreloadPostCache {
 
 		$dom = new DOMDocument;
 		wfSuppressWarnings();
-		$result = $dom->loadHTML( "<html>$text</html>" );
+		$result = $dom->loadXML( "<html>$text</html>" );
 		wfRestoreWarnings();
 		if ( !$result ) {
 			return true;
@@ -85,8 +85,13 @@ class FormPreloadPostCache {
 			}
 		}
 
-		$result = $dom->saveHTML();
-		$text = preg_replace( '/^<html>(.*)<\/html>$/', '\\1', $result );
+		$dom->encoding = 'utf-8';
+		$result = $dom->saveXML();
+		if ( preg_match( '!<html>(.*)</html>!s', $result, $m ) ) {
+			$text = $m[1];
+		} else {
+			var_dump( $result );
+		}
 		return true;
 	}
 }
