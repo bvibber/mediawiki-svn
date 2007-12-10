@@ -21,7 +21,7 @@ $wgExtensionCredits['Watchers'][] = array(
 	'name'        => 'Watchers',
 	'version'     => '1.1',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:Watchers',
-	'description' => 'An extension to show who is watching a page.',
+	'description' => 'An extension to show who is watching a page',
 	'author'      => 'Magnus Manske',
 );
 

@@ -10,12 +10,12 @@ EOT;
 }
 
 $wgExtensionCredits['specialpage'][] = array(
-    'version'     => '0.3',
-    'name'        => 'WhoIsWatching',
-    'author'      => 'Paul Grinberg, Siebrand Mazeland',
-    'email'       => 'gri6507 at yahoo dot com',
-    'url'         => 'http://www.mediawiki.org/wiki/Extension:WhoIsWatching',
-    'description' => 'Provides a listing of usernames watching a wiki page'
+	'version'     => '0.3',
+	'name'        => 'WhoIsWatching',
+	'author'      => 'Paul Grinberg, Siebrand Mazeland',
+	'email'       => 'gri6507 at yahoo dot com',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:WhoIsWatching',
+	'description' => 'Provides a listing of usernames watching a wiki page',
 );
 
 $wgAutoloadClasses['WhoIsWatching'] = dirname(__FILE__) . '/SpecialWhoIsWatching_body.php';

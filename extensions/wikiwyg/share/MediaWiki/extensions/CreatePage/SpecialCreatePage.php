@@ -11,10 +11,11 @@ if(!defined('MEDIAWIKI'))
 
 $wgExtensionFunctions[] = 'wfCreatePageSetup';
 $wgExtensionCredits['specialpage'][] = array(
-   'name' => 'Create Page',
-   'author' => 'Bartek Lapinski',
-   'url' => 'http://www.wikia.com' ,
-   'description' => 'allows to create a new page - with the wysiwyg editor '
+	'name'        => 'Create Page',
+	'version'     => '1.1',
+	'author'      => 'Bartek Lapinski',
+	'url'         => 'http://www.wikia.com',
+	'description' => 'Allows to create a new page - with the wysiwyg editor',
 );
 
 /* special page init */
@@ -39,7 +40,7 @@ function wfCreatePageSetup() {
 			'createpage_show_cloud' => '[show category cloud]' ,
 			'createpage_hide_cloud' => '[hide category cloud]' ,
 			'createpage_alternate_creation' => 'or click $1 to use original editor' ,
-			'createpage_categories_help' => 'Categories help organize information in this wiki. Please choose from the list below or type a new one.' 
+			'createpage_categories_help' => 'Categories help organize information in this wiki. Please choose from the list below or type a new one.'
                 )
         );
 	SpecialPage::addPage(new SpecialPage('Createpage', '', true, 'wfCreatePageSpecial', false));
@@ -214,7 +215,7 @@ class CreatePageForm {
 			<tr>
 				<td class=\"editpage_header\">".wfMsg ('createpage_categories')."</td>
 				<td>
-					<textarea name=\"category\" id=\"category\" rows=\"1\" cols=\"80\" /></textarea>		
+					<textarea name=\"category\" id=\"category\" rows=\"1\" cols=\"80\" /></textarea>
 					<div id=\"category_cloud_wrapper\" class=\editpage_inside\">
 					<div id=\"editpage_cloud_section\" style=\"line-height: 22pt; border: 1px solid gray; padding: 15px 15px 15px 15px\">                                        ".$cloud_html."
 					</div>
@@ -270,5 +271,3 @@ class CreatePageForm {
 		$wgOut->setSubTitle ( wfMsg ('createpage_success_subtitle', wfMsg('createpage_'.$this->mMode) ) ) ;
 	}
 }
-
-?>

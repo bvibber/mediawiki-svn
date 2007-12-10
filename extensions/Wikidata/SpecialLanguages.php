@@ -13,8 +13,11 @@ $wgGroupPermissions['bureaucrat']['addlanguage'] = true;
 
 $wgExtensionFunctions[] = 'wfSpecialManageLanguages';
 $wgExtensionCredits['specialpage'][] = array(
-	'name' => 'Language manager',
-	'author' => 'Erik Moeller',
+	'name'        => 'Language manager',
+	'version'     => '1.1',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:Wikidata',
+	'author'      => 'Erik Moeller',
+	'description' => 'Add languages, runnable by users with the \'addlanguage\' right',
 );
 
 # Internationalisation file
@@ -33,7 +36,7 @@ function wfSpecialManageLanguages() {
 		function SpecialLanguages() {
 			SpecialPage::SpecialPage( 'Languages' );
 		}
-		
+
 		function execute( $par ) {
 			global $wgOut, $wgRequest, $wgTitle, $wgUser;
 			$wgOut->setPageTitle(wfMsg('langman_title'));
@@ -55,7 +58,7 @@ function wfSpecialManageLanguages() {
 				} else {
 					$wgOut->addHTML('Adding language '.$langname.' with key '.$langiso6393.'.');
 					$sql='INSERT INTO language(iso639_2,iso639_3,wikimedia_key) values('.$dbr->addQuotes($langiso6392).','.$dbr->addQuotes($langiso6393).','.$dbr->addQuotes($langwmf).')';
-					
+
 					$dbr->query($sql);
 					$id=$dbr->insertId();
 					$sql='INSERT INTO language_names(language_id,name_language_id,language_name) values ('.$id.',85,'.$dbr->addQuotes($langname).')';
@@ -120,6 +123,6 @@ END
 
 		}
 	}
-	
+
 	SpecialPage::addPage( new SpecialLanguages );
 }

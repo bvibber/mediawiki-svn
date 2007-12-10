@@ -2,7 +2,7 @@
 if (!defined('MEDIAWIKI')) die();
 /**
  * A Special Page extension to copy defined meanings between datasets.
- * 
+ *
  * Copied over from SpecialConceptMapping.
  * User Interface temporarily retained (but currently flawed)
  * Web API will be implemented
@@ -18,8 +18,11 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionFunctions[] = 'wfSpecialCopy';
 $wgExtensionCredits['specialpage'][] = array(
-	'name' => 'SpecialCopy',
-	'author' => 'Alan Smithee',
+	'name'        => 'SpecialCopy',
+	'version'     => '1.1',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:OmegaWiki',
+	'description' => 'Copy defined meanings between datasets',
+	'author'      => 'Alan Smithee',
 );
 
 function wfSpecialCopy() {
@@ -28,7 +31,7 @@ function wfSpecialCopy() {
 
         global $wgMessageCache;
         $wgMessageCache->addMessages(array('Copy'=>'Wikidata: Copy'),'en');
-                
+
 	require_once("Wikidata.php");
 	require_once("WikiDataAPI.php");
 	require_once("Utilities.php");
@@ -59,7 +62,7 @@ function wfSpecialCopy() {
 			} elseif ($action=="help"){
 				$this->help();
 			} else {
-				$wgOut->addWikiText(wfMsgSc("no_action_specified",$action));	
+				$wgOut->addWikiText(wfMsgSc("no_action_specified",$action));
 				$wgOut->addWikiText(wfMsgSc("copy_help"));
 			}
 		}
@@ -72,7 +75,7 @@ function wfSpecialCopy() {
 
 		}
 
-		/** display a helpful help message. 
+		/** display a helpful help message.
 		 * (if desired)
 		 */
 		protected function help() {
@@ -80,17 +83,17 @@ function wfSpecialCopy() {
 			$wgOut->addWikiText("<h2>Help</h2>");
 			$wgOut->addWikiText(wfMsgSc("copy_help"));
 		}
-		
+
 		/**read in and partially validate parameters,
 		 * then call _doCopy()
 		 */
 		protected function copy_by_param() {
-			global 
+			global
 				$wgRequest, $wgOut;
-			
+
 			$dmid_dirty=$wgRequest->getText("dmid");
 			$dc1_dirty=$wgRequest->getText("dc1");
-			$dc2_dirty=$wgRequest->getText("dc2");	
+			$dc2_dirty=$wgRequest->getText("dc2");
 
 			$abort=false; 	# check all input before aborting
 
@@ -122,12 +125,12 @@ function wfSpecialCopy() {
 		 * make sure you haven't used $wgOut before calling this!
 		 */
 		protected function autoredir() {
-			global 
+			global
 				$wgTitle, $wgOut, $wgRequest;
 
-			$dmid_dirty=$wgRequest->getText("dmid");	
-			$dc1_dirty=$wgRequest->getText("dc1");	
-			$dc2_dirty=$wgRequest->getText("dc2");	
+			$dmid_dirty=$wgRequest->getText("dmid");
+			$dc1_dirty=$wgRequest->getText("dc1");
+			$dc2_dirty=$wgRequest->getText("dc2");
 
 			# Where should we redirect to?
 			$meanings=getDefinedMeaningDataAssociatedByConcept($dmid_dirty, $dc1_dirty);
@@ -145,9 +148,9 @@ function wfSpecialCopy() {
 		/* Using Copy.php; perform a copy of a defined meaning from one dataset to another,
 		   provided the user has permission to do so,*/
 		protected function _doCopy($dmid_dirty, $dc1_dirty, $dc2_dirty) {
-			global 
+			global
 				$wgCommunityEditPermission, $wgOut, $wgUser, $wgCommunity_dc;
-			
+
 			# escape parameters
 			$dmid=mysql_real_escape_string($dmid_dirty);
 			$dc1=mysql_real_escape_string($dc1_dirty);
@@ -162,9 +165,9 @@ function wfSpecialCopy() {
 			# copy
 			CopyTools::newCopyTransaction($dc1, $dc2);
 			$dmc=new DefinedMeaningCopier($dmid, $dc1, $dc2);
-			$dmc->dup(); 
+			$dmc->dup();
 
-			# For purposes of current "edit copy", 
+			# For purposes of current "edit copy",
 			# having the dm be already_there() is ok.
 			# (hence commented out)
 			#if ($dmc->already_there() ) {
@@ -173,10 +176,8 @@ function wfSpecialCopy() {
 			#}
 
 			return true; # seems everything went ok.
-	
+
 		}
 	}
 	SpecialPage::addPage( new SpecialCopy );
-	
 }
-

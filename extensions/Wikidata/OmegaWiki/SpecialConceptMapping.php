@@ -13,8 +13,11 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionFunctions[] = 'wfSpecialConceptMapping';
 $wgExtensionCredits['specialpage'][] = array(
-	'name' => 'foo',
-	'author' => 'Kim Bruning',
+	'name'        => 'Concept Mapping',
+	'version'     => '1.1',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:OmegaWiki',
+	'description' => 'Create concept-mappings. Also provides a web-api',
+	'author'      => 'Kim Bruning',
 );
 
 function wfSpecialConceptMapping() {
@@ -23,7 +26,7 @@ function wfSpecialConceptMapping() {
 
         global $wgMessageCache;
         $wgMessageCache->addMessages(array('conceptmapping'=>'Wikidata: Concept mapping'),'en');
-                
+
 	require_once("Wikidata.php");
 	require_once("WikiDataAPI.php");
 	require_once("Utilities.php");
@@ -56,7 +59,7 @@ function wfSpecialConceptMapping() {
 			} elseif ($action=="get_associated"){
 				$this->get_associated();
 			} else {
-				$wgOut->addWikiText(wfMsgSc("conceptmapping_no_action_specified",$action));	
+				$wgOut->addWikiText(wfMsgSc("conceptmapping_no_action_specified",$action));
 				$wgOut->addWikiText(wfMsgSc("conceptmapping_help"));
 			}
 		}
@@ -65,7 +68,7 @@ function wfSpecialConceptMapping() {
 
 			global $wgOut, $wgRequest, $wgUser;
 			$lang=$wgUser->getOption("language");
-			require_once("forms.php");			
+			require_once("forms.php");
 			$wgOut->addHTML(wfMsgSc("conceptmapping_uitext"));
 			$sets=wdGetDataSets();
 			$options = array();
@@ -118,9 +121,9 @@ function wfSpecialConceptMapping() {
 						}
 					}
 				}
-				$wgOut->addHTML("<br>\n");	
+				$wgOut->addHTML("<br>\n");
 			}
-			if (sizeOf($mappings)>1) { 
+			if (sizeOf($mappings)>1) {
 				createConceptMapping($mappings);
 				$wgOut->addHTML(wfMsgSc("mapping_successful"));
 			} else {
@@ -137,17 +140,17 @@ function wfSpecialConceptMapping() {
 			return $html;
 		}
 
-		
+
 		protected function help() {
 			global $wgOut;
 			$wgOut->addWikiText("<h2>Help</h2>");
 			$wgOut->addWikiText(wfMsgSc("conceptmapping_help"));
 		}
-		
+
 		protected function insert() {
-			global 
+			global
 				$wgRequest, $wgOut;
-			
+
 			# $wgRequest->getText( 'page' );
 			$sets=wdGetDataSets();
 			#$requests=$wgRequest->getValues();
@@ -160,7 +163,7 @@ function wfSpecialConceptMapping() {
 
 				$dm_id_ui=$dm_id; # Only for teh purdy
 				if ($dm_id_ui==null)
-					$dm_id_ui="unset";  
+					$dm_id_ui="unset";
 				$wgOut->addWikiText("$name ->$dm_id_ui");
 				$map[$dc]=$dm_id;
 			#$dbr=&wfGetDB(DB_MASTER);
@@ -169,7 +172,7 @@ function wfSpecialConceptMapping() {
 		}
 
 		protected function get() {
-			global 
+			global
 				$wgOut, $wgRequest;
 			$concept_id=$wgRequest->getText("concept");
 			$wgOut->addWikiText("<h2>".wfMsgSc("contents_of_mapping")."</h2>");
@@ -204,6 +207,5 @@ function wfSpecialConceptMapping() {
 	}
 
 	SpecialPage::addPage( new SpecialConceptMapping );
-	
-}
 
+}

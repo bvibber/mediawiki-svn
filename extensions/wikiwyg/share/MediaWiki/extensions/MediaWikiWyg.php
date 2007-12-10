@@ -1,4 +1,4 @@
-<?PHP
+<?php
 
 global $wgHooks, $wgInPageEnabled ;
     if (!isset($wgInPageEnabled) || ($wgInPageEnabled == false)) {
@@ -12,17 +12,17 @@ $wgHooks['getEditingPreferencesTab'][] = 'wfWikiwygAddEditingPrefs' ;
 
 $wgExtensionFunctions[] = 'registerWikiwygExtension';
 $wgExtensionCredits['other'][] = array(
-    'name' => 'MediaWikiWyg',
-    'author' => 'http://svn.wikiwyg.net/code/trunk/wikiwyg/AUTHORS, Bartek Lapinski',
-    'version' => 0.20,
-    'url' => 'http://www.wikiwyg.net, http://www.wikia.com',
-    'description' => 'Mediawiki integration of the Wikiwyg WYSIWYG wiki editor'
+	'name'        => 'MediaWikiWyg',
+	'author'      => '[http://svn.wikiwyg.net/code/trunk/wikiwyg/AUTHORS author list], Bartek Lapinski',
+	'version'     => '0.20',
+	'url'         => 'http://www.wikiwyg.net, http://www.wikia.com',
+	'description' => 'Mediawiki integration of the Wikiwyg WYSIWYG wiki editor',
 );
 
 function wfGetDependingOnSkin () {
     $useInPageTrue = '' ;
     global $wgCookiePrefix, $wgUser, $wgInPageEnabled ;
-    
+
     /* do not forget about editor disabled from variable... */
 	if (!$wgInPageEnabled || !isset ($wgInPageEnabled)) {
 	return 0 ;
@@ -352,7 +352,7 @@ class PocketDiff extends UnlistedSpecialPage
 		$edittime = $epage->mArticle->getTimestamp();
 		$newtext = $epage->mArticle->replaceSection(
 				$section, $text, '', $edittime );
-		
+
 		$newtext = $epage->mArticle->preSaveTransform( $newtext );
 		$oldtitle = wfMsgExt( 'currentrev', array('parseinline') );
 		$newtitle = wfMsgExt( 'yourtext', array('parseinline') );
@@ -366,7 +366,7 @@ class PocketDiff extends UnlistedSpecialPage
 
 		$diffdiv = '<div id="wikiDiff">' . $difftext . '</div>';
 		$wgOut->addHTML ($diffdiv) ;
-		
+
 	}
 }
 
@@ -440,5 +440,3 @@ function wfWikiwygHandleEditingPrefs () {
 }
 
 } # End if(defined MEDIAWIKI)
-
-?>
