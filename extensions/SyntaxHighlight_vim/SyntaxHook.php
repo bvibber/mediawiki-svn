@@ -12,19 +12,21 @@ if ( ! defined( 'MEDIAWIKI' ) )
 $wgExtensionFunctions[] = 'wfSyntaxHook';
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Syntax',
+	'version'     => '1.1',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:Syntax',
 	'author' => 'Ævar Arnfjörð Bjarmason',
-	'description' => 'adds a <code>&lt;syntax&gt;</code> parser hook for highlighting'
+	'description' => 'Adds a <code>&lt;syntax&gt;</code> parser hook for highlighting',
 );
 
 function wfSyntaxHook() {
 	wfUsePHP( 5.1 );
 	wfUseMW( '1.6alpha' );
-	
+
 	class SyntaxHook {
 		public function __construct() {
 			$this->setHook();
 		}
-		
+
 		private function setHook() {
 			global $wgParser;
 
@@ -38,6 +40,6 @@ function wfSyntaxHook() {
 			return $syntax->getOut();
 		}
 	}
-	
+
 	new SyntaxHook;
 }

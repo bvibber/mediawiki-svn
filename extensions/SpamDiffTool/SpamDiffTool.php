@@ -1,10 +1,10 @@
 <?php
 if ( ! defined( 'MEDIAWIKI' ) )
 	die();
-    
+
 /**#@+
- * An extension that allows users to rate articles. 
- * 
+ * An extension that allows users to rate articles.
+ *
  * @addtogroup Extensions
  *
  * @link http://www.mediawiki.org/wiki/SpamDiffTool_Extension Documentation
@@ -20,10 +20,11 @@ $wgSpamBlacklistArticle = "Project:Spam-Blacklist";
 require_once("SpecialPage.php");
 
 $wgExtensionCredits['other'][] = array(
-	'name' => 'SpamDiffTool',
-	'author' => 'Travis Derouin',
+	'name'        => 'SpamDiffTool',
+	'version'     => '1.1',
+	'author'      => 'Travis Derouin',
 	'description' => 'Provides a basic way of adding new entries to the Spam Blacklist from diff pages',
-	'url' => 'http://www.mediawiki.org/wiki/SpamDiffTool_Extension',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:SpamDiffTool',
 );
 
 $dir = dirname(__FILE__) . '/';
@@ -86,12 +87,12 @@ function wfSpecialSpamDiffTool() {
 				if ($i !== false) {
 					$text = substr($text, 0, $i)
 							. $wgRequest->getVal('newurls')
-							. "\n" . substr($text, $i);	
-				} else {  
+							. "\n" . substr($text, $i);
+				} else {
 					$text .= "\n" . $wgRequest->getVal('newurls');
-				} 
+				}
 			    $watch = false;
-    			if ($wgUser->getID() > 0) 
+    			if ($wgUser->getID() > 0)
        			$watch = $wgUser->isWatched($t);
 				if ($insert) {
 					$a->insertNewArticle($text, wfMsg('spamdifftool_summary'), false, $watch);
@@ -100,12 +101,12 @@ function wfSpecialSpamDiffTool() {
 					$a->updateArticle($text, wfMsg('spamdifftool_summary'), false, $watch) ;
 				}
 				$returnto = $wgRequest->getVal('returnto', null);
-				if ($returnto != null && $returnto != '') 	
+				if ($returnto != null && $returnto != '')
 					$wgOut->redirect($wgScript . "?" . urldecode($returnto) ); // clear the redirect set by updateArticle
 				return;
 			}
 			$vals = $wgRequest->getValues();
-			$text = ''; 
+			$text = '';
 			foreach ($vals as $key=>$value) {
 				if (strpos($key, "http://") === 0) {
 					$url = str_replace("%2E", ".", $key);
@@ -127,14 +128,14 @@ function wfSpecialSpamDiffTool() {
 							$url = str_replace("http://", "", $url);
 							$url = str_replace(".", "\.", $url); // escape the periods
 							$url = str_replace("/", "\/", $url); // escape the slashes
-							break;	
+							break;
 					}
 					$text .= "$url\n";
 				}
 			}
 			if (trim($text) == '') {
 				$wgOut->addHTML( wfMsg('spamdifftool_notext', $wgScript . "?" . urldecode($wgRequest->getVal('returnto') )));
-				return;		
+				return;
 			}
 			$wgOut->addHTML("<form method=POST>
 					<input type='hidden' name='confirm' value='true'>
@@ -147,7 +148,7 @@ function wfSpecialSpamDiffTool() {
 		}
         if ( !is_null( $diff ) ) {
             require_once( 'DifferenceEngine.php' );
-			
+
 	        # Get the last edit not by this guy
 			$current = Revision::newFromTitle( $title );
  			$dbw =& wfGetDB( DB_MASTER );
@@ -176,7 +177,7 @@ function wfSpecialSpamDiffTool() {
 			} else {
             	$de = new DifferenceEngine( $title, $oldid, $diff);
 			}
-	
+
 			$de->loadText();
 			$otext = $de->mOldtext;
 			$ntext = $de->mNewtext;
@@ -193,7 +194,7 @@ function wfSpecialSpamDiffTool() {
 		} else {
 			$a = new Article($title);
 			$text = $a->getContent(true);
-		}	
+		}
 
 //header("Content-type: text/plain;");
 $matches = array();
@@ -209,12 +210,12 @@ preg_match_all($preg, $text, $matches);
 					<input type='hidden' name='returnto' value=\"" . htmlspecialchars($wgRequest->getVal('returnto')) . "\">
 				<style type='text/css'>
 						td.spam-url-row {
-							border: 1px solid #ccc; 
+							border: 1px solid #ccc;
 						}
 				</style> " . wfMsg('spamdifftool_urls_detected') . "
 			<br/><br/><table cellpadding='5px' width='100%'>");
-		
-			$urls = array();	
+
+			$urls = array();
 			foreach ($matches as $match) {
 				foreach ($match as $url) {
 					if (isset($urls[$url])) continue; // avoid dupes
@@ -224,11 +225,11 @@ preg_match_all($preg, $text, $matches);
 						<td class='spam-url-row'><b>$url</b><br/>
 						" . wfMsg('spamdifftool_block') . " &nbsp;&nbsp;
 						<INPUT type='radio' name=\"" . $name . "\"	value='domain' checked> " . wfMsg('spamdifftool_option_domain') . "
-						<INPUT type='radio' name=\"" . $name . "\"	value='subdomain'> " . wfMsg('spamdifftool_option_subdomain') . " 
-						<INPUT type='radio' name=\"" . $name . "\"	value='dir'>" . wfMsg('spamdifftool_option_directory') . " 
-						<INPUT type='radio' name=\"" . $name . "\"	value='none'>" . wfMsg('spamdifftool_option_none') . " 
+						<INPUT type='radio' name=\"" . $name . "\"	value='subdomain'> " . wfMsg('spamdifftool_option_subdomain') . "
+						<INPUT type='radio' name=\"" . $name . "\"	value='dir'>" . wfMsg('spamdifftool_option_directory') . "
+						<INPUT type='radio' name=\"" . $name . "\"	value='none'>" . wfMsg('spamdifftool_option_none') . "
 					</td>
-					</tr>	
+					</tr>
 					");
 				}
 			}
@@ -237,5 +238,3 @@ preg_match_all($preg, $text, $matches);
             $RevIdFetched = $de->mNewid;
             //$de->showDiffPage();
 }
-
-

@@ -13,15 +13,17 @@ if ( ! defined( 'MEDIAWIKI' ) ) die();
  */
 $wgExtensionFunctions[] = 'wfSpecialTalk';
 $wgExtensionCredits['other'][] = array(
-	'name' => 'Special talk',
+	'name'        => 'Special talk',
+	'version'     => '1.1',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:Special_talk',
 	'description' => 'Adds a talk tab to Special Pages',
-	'author' => 'Ævar Arnfjörð Bjarmason'
+	'author'      => 'Ævar Arnfjörð Bjarmason',
 );
 
 function wfSpecialTalk() {
 	wfUsePHP( 5.1 );
 	wfUseMW( '1.6alpha' );
-	
+
 	class SpecialTalk {
 		public function __construct() {
 			global $wgHooks;
@@ -45,7 +47,7 @@ function wfSpecialTalk() {
 				// check existance
 				true
 			);
-			
+
 			return true;
 		}
 	}

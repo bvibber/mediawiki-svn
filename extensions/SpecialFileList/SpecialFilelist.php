@@ -13,8 +13,10 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionFunctions[] = 'wfSpecialFilelist';
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'File list',
+	'version'     => '1.1',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:File_list',
 	'description' => 'Special Page for listing uploaded files',
-	'author' => 'Magnus Manske'
+	'author'      => 'Magnus Manske',
 );
 	
 require_once( 'ImageGallery.php' );

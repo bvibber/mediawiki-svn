@@ -14,10 +14,10 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url'=>'http://www.mediawiki.org/wiki/Extension:Stale_Pages',
 	'author'=>'Tim Laqua',
 	'description'=>'Generates a list of pages that have not been edited recently',
-	'version'=>'0.7'
+	'version'=>'0.7',
 );
 
-if( version_compare( $wgVersion, '1.11', '>=' ) ) {    
+if( version_compare( $wgVersion, '1.11', '>=' ) ) {
 	$wgExtensionMessagesFiles['Stalepages'] = $dirname(__FILE__) . '/StalePages.i18n.php';
 } else {
 	$wgExtensionFunctions[] = 'efStalepages';
@@ -30,11 +30,11 @@ $wgSpecialPages['Stalepages'] = 'Stalepages';
 
 ///Message Cache population for versions that did not support $wgExtensionFunctions
 function efStalePages() {
-	global $wgMessageCache;   
-	
-	#Add Messages   
-	require( dirname( __FILE__ ) . '/StalePages.i18n.php' );   
-	foreach( $messages as $key => $value ) {   
-		  $wgMessageCache->addMessages( $messages[$key], $key );   
-	}   
-} 
+	global $wgMessageCache;
+
+	#Add Messages
+	require( dirname( __FILE__ ) . '/StalePages.i18n.php' );
+	foreach( $messages as $key => $value ) {
+		  $wgMessageCache->addMessages( $messages[$key], $key );
+	}
+}

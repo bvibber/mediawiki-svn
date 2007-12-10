@@ -16,14 +16,15 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
-$wgExtensionCredits['other'][] = array( 
-	'name' => 'TalkHere', 
-	'author' => 'Daniel Kinzler', 
+$wgExtensionCredits['other'][] = array(
+	'name' => 'TalkHere',
+	'version'     => '1.1',
+	'author' => 'Daniel Kinzler',
 	'url' => 'http://mediawiki.org/wiki/Extension:TalkHere',
 	'description' => 'puts the talk page into the article page',
 );
 
-$wgTalkHereNamespaces = NULL; //namespaces to apply TalkHere to. 
+$wgTalkHereNamespaces = NULL; //namespaces to apply TalkHere to.
 
 ///// hook it up /////////////////////////////////////////////////////
 $wgAutoloadClasses['TalkHereArticle'] = dirname( __FILE__ ) . '/TalkHereArticle.php';
@@ -40,17 +41,17 @@ $wgAjaxExportList[] = 'wfTalkHereAjaxEditor';
 function wfTalkHereExtension( ) {
 	global $wgOut, $wgScriptPath, $wgJsMimeType, $wgUseAjax;
 
-	$wgOut->addLink( 
-		array( 
-			'rel' => 'stylesheet', 
-			'type' => 'text/css', 
-			'href' => $wgScriptPath . '/extensions/TalkHere/TalkHere.css' 
-		) 
+	$wgOut->addLink(
+		array(
+			'rel' => 'stylesheet',
+			'type' => 'text/css',
+			'href' => $wgScriptPath . '/extensions/TalkHere/TalkHere.css'
+		)
 	);
 
-	if ( $wgUseAjax ) $wgOut->addScript( 
+	if ( $wgUseAjax ) $wgOut->addScript(
 		"<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/extensions/TalkHere/TalkHere.js\">" .
-		"</script>\n" 
+		"</script>\n"
 	);
 }
 
@@ -69,7 +70,7 @@ function wfTalkHereArticleFromTitle( &$title, &$article ) {
 
 	$ns = $title->getNamespace();
 
-	if ( !Namespace::isTalk($ns) && Namespace::canTalk($ns) && $title->exists() 
+	if ( !Namespace::isTalk($ns) && Namespace::canTalk($ns) && $title->exists()
 		&& ( !$wgTalkHereNamespaces || in_array($ns, $wgTalkHereNamespaces) ) ) {
 		$tns = Namespace::getTalk($ns);
 		$talk = Title::makeTitle($tns, $title->getDBKey());
@@ -77,7 +78,7 @@ function wfTalkHereArticleFromTitle( &$title, &$article ) {
 		if ($talk && $talk->userCan('read')) {
 			$t = clone $title;
 			$t->noTalkHere = true; //stop recursion
-	
+
 			$a = MediaWiki::articleFromTitle( $t );
 			$article = new TalkHereArticle( $a, $talk );
 		}
@@ -146,9 +147,9 @@ function wfTalkHereAjaxEditor( $page, $section, $returnto ) {
 	if ( !$wgTitle ) return false;
 
 	//fake editor environment
-	$args = array( 'wpTalkHere' => '1', 
-			'wpReturnTo' => $returnto, 
-			'action' => 'edit', 
+	$args = array( 'wpTalkHere' => '1',
+			'wpReturnTo' => $returnto,
+			'action' => 'edit',
 			'section' => $section );
 
 	$wgRequest = new FauxRequest( $args );
@@ -179,14 +180,13 @@ function loadTalkHereI18n() {
 	if ( $initialized ) return;
 
 	$messages= array();
-	
+
 	$f= dirname( __FILE__ ) . '/TalkHere.i18n.php';
 	include( $f );
-	
+
 	$f= dirname( __FILE__ ) . '/TalkHere.i18n.' . $wgLang->getCode() . '.php';
 	if ( file_exists( $f ) ) include( $f );
-	
+
 	$initialized = true;
 	$wgMessageCache->addMessages( $messages );
 }
-
