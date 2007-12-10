@@ -80,7 +80,6 @@ class ApiMain extends ApiBase {
 		'xmlfm' => 'ApiFormatXml',
 		'yaml' => 'ApiFormatYaml',
 		'yamlfm' => 'ApiFormatYaml',
-		'raw' => 'ApiFormatRaw',
 		'rawfm' => 'ApiFormatJson'
 	);
 
@@ -191,17 +190,6 @@ class ApiMain extends ApiBase {
 	 * have been accumulated, and replace it with an error message and a help screen.
 	 */
 	protected function executeActionWithErrorHandling() {
-		$params = $this->extractRequestParams();
-		if( isset( $params['maxlag'] ) ) {
-			// Check for maxlag
-			global $wgLoadBalancer;
-			$maxLag = $params['maxlag'];
-			list( $host, $lag ) = $wgLoadBalancer->getMaxLag();
-			if ( $lag > $maxLag ) {
-				wfMaxlagError( $host, $lag, $maxLag );
-				return;
-			}
-		}
 
 		// In case an error occurs during data output,
 		// clear the output buffer and print just the error information
@@ -306,17 +294,23 @@ class ApiMain extends ApiBase {
 
 		// Instantiate the module requested by the user
 		$module = new $this->mModules[$this->mAction] ($this, $this->mAction);
+		
+		if( $module->shouldCheckMaxlag() && isset( $params['maxlag'] ) ) {
+			// Check for maxlag
+			global $wgLoadBalancer, $wgShowHostnames;
+			$maxLag = $params['maxlag'];
+			list( $host, $lag ) = $wgLoadBalancer->getMaxLag();
+			if ( $lag > $maxLag ) {
+				if( $wgShowHostnames ) {
+					ApiBase :: dieUsage( "Waiting for $host: $lag seconds lagged", 'maxlag' );
+				} else {
+					ApiBase :: dieUsage( "Waiting for a database server: $lag seconds lagged", 'maxlag' );
+				}
+				return;
+			}
+		}
 
 		if (!$this->mInternalMode) {
-
-			//Check usage of raw printer
-			if( $params['format'] == 'raw' ) {
-				if( !$module->supportRaw() ) {
-					ApiBase :: dieUsage( 'This module doesn\'t support format=raw', 'rawnotsupported' );
-					return;
-				}
-				$module->setRaw();
-			}
 
 			// See if custom printer is used
 			$this->mPrinter = $module->getCustomPrinter();
@@ -571,6 +565,5 @@ class UsageException extends Exception {
 		return "{$this->getCodeString()}: {$this->getMessage()}";
 	}
 }
-
 
 

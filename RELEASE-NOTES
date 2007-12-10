@@ -19,6 +19,9 @@ Those wishing to use the latest code instead of a branch release can obtain
 it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 
 === Configuration changes in 1.12 ===
+* Marking edits as bot edits with Special:Contributions?bot=1 now requires the
+  markbotedit permission, rather than the rollback permission previously used.
+  This permission is assigned by default to the sysop group.
 
 === New features in 1.12 ===
 * (bug 10735) Add a warning for non-descriptive filenames at Special:Upload
@@ -66,6 +69,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Added --override switch for disabled pages in updateSpecialPages.php
 * Provide a unique message (ipb_blocked_as_range) if unblock of a single IP fails 
   because it is part of a blocked range.
+* (bug 3973) Use a separate message for the email content when an account is 
+  created by another user
 
 === Bug fixes in 1.12 ===
 
@@ -164,6 +169,75 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Check for if IP is blocked as part of a range when unblocking (see above bug-
   fix) was faulty. Now fixed.
 * Fixed wpReason URL parameter to action=delete.
+* Do not force a password for account creation by email
+* Ensure that rate-limiting is applied to rollbacks.
+* Make a better rate-limiting error message (i.e. a normal MW error,
+  rather than an "Internal Server Error").
+
+== Parser changes in 1.12 ==
+
+The parser pass order has changed from
+
+   * Extension tag strip and render
+   * HTML normalisation and security
+   * Template expansion
+   * Main section...
+
+to 
+
+   * Template and extension tag parse to intermediate representation
+   * Template expansion and extension rendering
+   * HTML normalisation and security
+   * Main section...
+
+The main effect of this for the user is that the rules for uncovered syntax 
+have changed. 
+
+Uncovered main-pass syntax, such as HTML tags, are now generally valid, whereas
+previously in some cases they were escaped. For example, you could have "<ta" in
+one template, and "ble>" in another template, and put them together to make a
+valid <table> tag. Previously the result would have been "&lt;table&gt;". 
+
+Uncovered preprocessor syntax is generally not recognised. For example, if you
+have "{{a" in Template:A and "b}}" in Template:B, then "{{a}}{{b}}" will be
+converted to a literal "{{ab}}" rather than the contents of Template:Ab. This
+was the case previously in HTML output mode, and is now uniformly the case in 
+the other modes as well. HTML-style comments uncovered by template expansion
+will not be recognised by the preprocessor and hence will not prevent template
+expansion within them, but they will be stripped by the following HTML security 
+pass.
+
+The rules for template expansion during message transformation were
+counterintuitive, mostly accidental and buggy. There are a few small changes in
+this version: for example, templates with dynamic names, as in "{{ {{a}} }}",
+are fully expanded as they are in HTML mode, whereas previously only the inner
+template was expanded. I'd like to make some larger breaking changes to message
+transformation, after a review of typical use cases.
+
+The header identification routines for section edit and for numbering section
+edit links have been merged. This removes a significant failure mode and fixes a
+whole category of bugs (tracked by bug #4899). Wikitext headings uncovered by
+template expansion or comment removal will still be rendered into a heading tag,
+and will get an entry in the TOC, but will not have a section edit link. 
+HTML-style headings will also not have a section edit link. Valid wikitext
+headings present in the template source text will get a template section edit 
+link. This is a major break from previous behaviour, but I believe the effects 
+are almost entirely beneficial.
+
+The main motivation for making these changes was performance. The new two-pass
+preprocessor can skip "dead branches" in template expansion, such as unfollowed
+#switch cases and unused defaults for template arguments. This provides a
+significant performance improvement in template-heavy test cases taken from 
+Wikipedia. Parser function hooks can participate in this performance improvement
+by using the new SFH_OBJECT_ARGS flag during registration.
+
+The pre-expand include size limit has been removed, since there's no efficient
+way to calculate such a figure, and it would now be meaningless for performance
+anyway. The "preprocessor node count" takes its place, with a generous default
+limit.
+
+The context in which XML-style extension tags are called has changed, so
+extensions which make use of the parser state may need compatibility changes.
 
 === API changes in 1.12 ===
 
@@ -194,7 +268,6 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * (bug 11562) Added a user_registration parameter/field to the list=allusers query.
 * (bug 11588) Preserve document structure for empty dataset in backlinks query.
 * Outputting list of all user preferences rather than having to request them by name
-* Add raw formatting support. Now several actions like expandtemplates support raw output with format=raw
 * (bug 11206) api.php should honor maxlag
 
 === Languages updated in 1.12 ===

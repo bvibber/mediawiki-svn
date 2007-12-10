@@ -457,6 +457,11 @@ class ApiQuery extends ApiBase {
 		$psModule = new ApiPageSet($this);
 		return $psModule->makeHelpMsgParameters() . parent :: makeHelpMsgParameters();
 	}
+	
+	// @todo should work correctly
+	public function shouldCheckMaxlag() {
+		return true;
+	}
 
 	protected function getParamDescription() {
 		return array (

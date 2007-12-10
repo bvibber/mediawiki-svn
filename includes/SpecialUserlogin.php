@@ -274,21 +274,29 @@ class LoginForm {
 			return self::BAD_RETYPE;
 		}
 
+		# check for minimal password length
 		if ( !$u->isValidPassword( $this->mPassword ) ) {
-			return self::TOO_SHORT;
+			if ( !$this->mCreateaccountMail ) {
+				$this->mainLoginForm( wfMsg( 'passwordtooshort', $wgMinimalPasswordLength ) );
+				return false;
+			} else {
+				# do not force a password for account creation by email
+				# set pseudo password, it will be replaced later by a random generated password
+				$this->mPassword = '-';
+			}
 		}
-		
+
 		# if you need a confirmed email address to edit, then obviously you need an email address.
 		if ( $wgEmailConfirmToEdit && empty( $this->mEmail ) ) {
 			$this->mainLoginForm( wfMsg( 'noemailtitle' ) );
 			return false;
 		}
-		
+
 		if( !empty( $this->mEmail ) && !User::isValidEmailAddr( $this->mEmail ) ) {
 			$this->mainLoginForm( wfMsg( 'invalidemailaddress' ) );
 			return false;
 		}
-		
+
 		# Set some additional data so the AbortNewAccount hook can be
 		# used for more than just username validation
 		$u->setEmail( $this->mEmail );
@@ -655,10 +663,14 @@ class LoginForm {
 
 
 	/**
+	 * @param object user
+	 * @param bool throttle
+	 * @param string message name of email title
+	 * @param string message name of email text
 	 * @return mixed true on success, WikiError on failure
 	 * @private
 	 */
-	function mailPasswordInternal( $u, $throttle = true ) {
+	function mailPasswordInternal( $u, $throttle = true, $emailTitle = 'passwordremindertitle', $emailText = 'passwordremindertext' ) {
 		global $wgCookiePath, $wgCookieDomain, $wgCookiePrefix, $wgCookieSecure;
 		global $wgServer, $wgScript;
 
@@ -676,9 +688,9 @@ class LoginForm {
 		$ip = wfGetIP();
 		if ( '' == $ip ) { $ip = '(Unknown)'; }
 
-		$m = wfMsg( 'passwordremindertext', $ip, $u->getName(), $np, $wgServer . $wgScript );
+		$m = wfMsg( $emailText, $ip, $u->getName(), $np, $wgServer . $wgScript );
+		$result = $u->sendMail( wfMsg( $emailTitle ), $m );
 
-		$result = $u->sendMail( wfMsg( 'passwordremindertitle' ), $m );
 		return $result;
 	}
 

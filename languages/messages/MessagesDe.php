@@ -481,6 +481,8 @@ Funktion: $1<br />
 Abfrage: $2',
 'viewsource'           => 'Quelltext betrachten',
 'viewsourcefor'        => 'für $1',
+'actionthrottled'      => 'Aktionsanzahl limitiert',
+'actionthrottledtext'  => 'Die Ausführung dieser Aktion zu oft in einem kurzen Zeitabstand ist limitiert. Du hast dieses soeben Limit erreicht. Bitte versuche es in einigen Minuten erneut.',
 'protectedpagetext'    => 'Diese Seite ist für das Bearbeiten gesperrt.',
 'viewsourcetext'       => 'Quelltext dieser Seite:',
 'protectedinterface'   => 'Diese Seite enthält Text für das Sprach-Interface der Software und ist gesperrt, um Missbrauch zu verhindern.',
@@ -559,9 +561,9 @@ Bitte ignoriese diese E-Mail, falls du diese nicht selbst angefordert haben. Das
 'passwordsent'               => 'Ein neues, temporäres Passwort wurde an die E-Mail-Adresse von Benutzer „$1“ gesendet.
 Bitte melde dich damit an, sobald du es erhalten hast. Das alte Passwort bleibt weiterhin gültig.',
 'blocked-mailpassword'       => 'Die von dir verwendete IP-Adresse ist für das Ändern von Seiten gesperrt. Um einen Missbrauch zu verhindern, wurde die Möglichkeit zur Anforderung eines neuen Passwortes ebenfalls gesperrt.',
-'eauthentsent'               => 'Eine Bestätigungsmail wurde an die angegebene E-Mail-Adresse verschickt.
+'eauthentsent'               => 'Eine Bestätigungs-E-Mail wurde an die angegebene Adresse verschickt. 
 
-Bevor eine E-Mail von anderen Benutzern über die {{SITENAME}}-Mailfunktion empfangen werden kann, muss die Adresse und ihre tatsächliche Zugehörigkeit zu diesem Benutzerkonto erst bestätigt werden. Bitte befolge die Hinweise in der Bestätigungsmail.',
+Bevor eine E-Mail von anderen Benutzern über die E-Mail-Funktion empfangen werden kann, muss die Adresse und ihre tatsächliche Zugehörigkeit zu diesem Benutzerkonto erst bestätigt werden. Bitte befolge die Hinweise in der Bestätigungs-E-Mail.',
 'throttled-mailpassword'     => 'Es wurde innerhalb der letzten $1 Stunden bereits ein neues Passwort angefordert. Um einen Missbrauch der Funktion zu verhindern, kann nur alle $1 Stunden ein neues Passwort angefordert werden.',
 'mailerror'                  => 'Fehler beim Senden der E-Mail: $1',
 'acct_creation_throttle_hit' => 'Du hast schon $1 Benutzerkonten angelegt und kannst jetzt keine weiteren mehr anlegen.',
@@ -572,6 +574,11 @@ Bevor eine E-Mail von anderen Benutzern über die {{SITENAME}}-Mailfunktion empf
 'invalidemailaddress'        => 'Die E-Mail-Adresse wurde nicht akzeptiert, da sie ein ungültiges Format aufzuweisen scheint. Bitte gib eine Adresse in einem gültigen Format ein oder leere das Feld.',
 'accountcreated'             => 'Benutzerkonto erstellt',
 'accountcreatedtext'         => 'Das Benutzerkonto $1 wurde eingerichtet.',
+'createaccount-title'        => 'Erstellung eines Benutzerkontos für {{SITENAME}}',
+'createaccount-text'         => 'Jemand ($1) hat ein Benutzerkonto "$2" auf {{SITENAME}}.
+($4) erstellt. Das Passwort for "$2" ist "$3". Du solltest dich nun anmelden und dein Passwort ändern.
+
+Du kannst diese Nachricht ignorieren, falls das Benutzerkonto durch einen Fehler angelegt wurde.',
 'loginlanguagelabel'         => 'Sprache: $1',
 
 # Password reset dialog
@@ -663,6 +670,7 @@ Du kannst $1 oder einen der anderen [[{{MediaWiki:grouppage-sysop}}|Administrato
 *IP-Adresse: $3
 *Sperr-ID: #$5
 </div>',
+'blockednoreason'           => 'keine Begründung angegeben',
 'blockedoriginalsource'     => "Der Quelltext von '''$1''' wird hier angezeigt:",
 'blockededitsource'         => "Der Quelltext '''deiner Änderungen''' an '''$1''':",
 'whitelistedittitle'        => 'Zum Bearbeiten ist es erforderlich, angemeldet zu sein',
@@ -1256,7 +1264,7 @@ auf die bereits die erste Weiterleitung zeigen sollte.',
 'uncategorizedtemplates'          => 'Nicht kategorisierte Vorlagen',
 'uncategorizedtemplates-summary'  => 'Diese Spezialseite zeigt alle Vorlagen, die in keine Kategorie eingeordnet wurden.',
 'unusedcategories'                => 'Verwaiste Kategorien',
-'unusedimages'                    => 'Verwaiste Dateien',
+'unusedimages'                    => 'Unbenutzte Dateien',
 'popularpages'                    => 'Beliebte Seiten',
 'wantedcategories'                => 'Benutzte, aber nicht angelegte Kategorien',
 'wantedcategories-summary'        => 'Diese Spezialseite listet Kategorien auf, die zwar in Seiten verwendet werden, welche aber nicht als Kategorie angelegt worden sind.',
@@ -1356,7 +1364,7 @@ auf die bereits die erste Weiterleitung zeigen sollte.',
 'listusers-noresult' => 'Keinen Benutzer gefunden.',
 
 # E-mail user
-'mailnologin'     => 'E-Mail-Versand nicht möglich',
+'mailnologin'     => 'Fehler beim E-Mail-Versand',
 'mailnologintext' => 'Du musst [[{{ns:special}}:Userlogin|angemeldet sein]] und eine [[{{ns:special}}:Confirmemail|bestätigte]] E-Mail-Adresse haben, um anderen Benutzern E-Mails schicken zu können.',
 'emailuser'       => 'E-Mail an diesen Benutzer',
 'emailpage'       => 'E-Mail an Benutzer',
@@ -1599,7 +1607,7 @@ $1',
 'sp-newimages-showfrom' => 'Zeige neue Dateien ab $1',
 
 # What links here
-'whatlinkshere'         => 'Linkliste',
+'whatlinkshere'         => 'Links auf diese Seite',
 'whatlinkshere-title'   => 'Seiten, die auf „$1“ verlinken',
 'whatlinkshere-summary' => 'Diese Spezialseite listet alle internen Links auf eine bestimmte Seite auf. Die möglichen Zusätze „(Vorlageneinbindung)“ und „(Weiterleitungsseite)“ zeigen jeweils an, dass die Seite nicht durch einen normalen Wikilink eingebunden ist. ',
 'whatlinkshere-page'    => 'Seite:',
@@ -1680,7 +1688,7 @@ Zur Aufhebung der Sperre siehe die [[{{ns:special}}:Ipblocklist|Liste aller akti
 'blocklogpage'                => 'Benutzersperr-Logbuch',
 'blocklogentry'               => 'sperrte „[[$1]]“ für einen Zeitraum von: $2 $3',
 'blocklogtext'                => 'Dies ist das Logbuch über Sperrungen und Entsperrungen von Benutzern und IP-Adressen. Automatisch gesperrte IP-Adressen werden nicht erfasst. Siehe die [[{{ns:special}}:Ipblocklist|{{int:ipblocklist}}]] für alle aktiven Sperren.',
-'unblocklogentry'             => 'hat die Sperre von „[[$1]]“ aufgehoben.',
+'unblocklogentry'             => 'hat die Sperre von „[[$1]]“ aufgehoben',
 'block-log-flags-anononly'    => 'nur Anonyme',
 'block-log-flags-nocreate'    => 'Erstellung von Benutzerkonten gesperrt',
 'block-log-flags-noautoblock' => 'Autoblock deaktiviert',
@@ -1689,6 +1697,7 @@ Zur Aufhebung der Sperre siehe die [[{{ns:special}}:Ipblocklist|Liste aller akti
 'ipb_expiry_invalid'          => 'Die eingegebene Dauer ist ungültig.',
 'ipb_already_blocked'         => '„$1“ wurde bereits gesperrt',
 'ipb_cant_unblock'            => 'Fehler: Sperr-ID $1 nicht gefunden. Die Sperre wurde bereits aufgehoben.',
+'ipb_blocked_as_range'        => 'Fehler: Die IP-Adresse $1 wurde als Teil der Bereichssperre $2 indirekt gesperrt. Eine Entsperrung von $1 alleine ist nicht möglich.',
 'ip_range_invalid'            => 'Ungültiger IP-Addressbereich.',
 'blockme'                     => 'Sperre mich',
 'proxyblocker'                => 'Proxy blocker',
@@ -1944,19 +1953,19 @@ Alle Transwiki-Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] p
 'mw_math_mathml' => 'MathML (experimentell)',
 
 # Patrolling
-'markaspatrolleddiff'                 => 'Als geprüft markieren',
-'markaspatrolledtext'                 => 'Diese Seitenänderung als geprüft markieren',
-'markedaspatrolled'                   => 'Als geprüft markiert',
-'markedaspatrolledtext'               => 'Die ausgewählte Seitenänderung wurde als geprüft markiert.',
-'rcpatroldisabled'                    => 'Prüfung der letzten Änderungen gesperrt',
-'rcpatroldisabledtext'                => 'Die Prüfung der letzten Änderungen ist zur Zeit gesperrt.',
-'markedaspatrollederror'              => 'Markierung als „geprüft“ nicht möglich.',
-'markedaspatrollederrortext'          => 'Sie müssen eine Seitenänderung auswählen.',
-'markedaspatrollederror-noautopatrol' => 'Es ist nicht erlaubt, eigene Bearbeitungen als geprüft zu markieren.',
+'markaspatrolleddiff'                 => 'Als kontrolliert markieren',
+'markaspatrolledtext'                 => 'Diese Seitenänderung als kontrolliert markieren',
+'markedaspatrolled'                   => 'Als kontrolliert markiert',
+'markedaspatrolledtext'               => 'Die ausgewählte Seitenänderung wurde als kontrolliert markiert.',
+'rcpatroldisabled'                    => 'Kontrolle der letzten Änderungen gesperrt',
+'rcpatroldisabledtext'                => 'Die Kontrolle der letzten Änderungen ist zur Zeit gesperrt.',
+'markedaspatrollederror'              => 'Markierung als „kontrolliert“ nicht möglich.',
+'markedaspatrollederrortext'          => 'Du musst eine Seitenänderung auswählen.',
+'markedaspatrollederror-noautopatrol' => 'Es ist nicht erlaubt, eigene Bearbeitungen als kontrolliert zu markieren.',
 
 # Patrol log
-'patrol-log-page' => 'Prüf-Logbuch',
-'patrol-log-line' => 'hat $1 von $2 als geprüft markiert $3.',
+'patrol-log-page' => 'Kontroll-Logbuch',
+'patrol-log-line' => 'hat $1 von $2 als kontrolliert markiert $3',
 'patrol-log-auto' => '(automatisch)',
 'patrol-log-diff' => 'Version $1',
 
@@ -2288,9 +2297,9 @@ Rückmeldung des Mailservers: $1',
 'confirmemail_subject'    => '[{{SITENAME}}] - Bestätigung der E-Mail-Adresse',
 'confirmemail_body'       => 'Hallo,
 
-jemand mit der IP-Adresse $1, wahrscheinlich du selbst, hat eine Bestätigung dieser E-Mail-Adresse für das Benutzerkonto "$2" in der Wikipedia angefordert. 
+jemand mit der IP-Adresse $1, wahrscheinlich du selbst, hat eine Bestätigung dieser E-Mail-Adresse für das Benutzerkonto "$2" in {{SITENAME}} angefordert. 
 
-Um die E-Mail-Funktion für Wikipedia (wieder) zu aktivieren und um zu bestätigen, dass dieses Benutzerkonto wirklich zu deiner E-Mail-Adresse und damit zu dir gehört, öffne bitte die folgende Web-Adresse:
+Um die E-Mail-Funktion für {{SITENAME}} (wieder) zu aktivieren und um zu bestätigen, dass dieses Benutzerkonto wirklich zu deiner E-Mail-Adresse und damit zu dir gehört, öffne bitte die folgende Web-Adresse:
 
 $3
 

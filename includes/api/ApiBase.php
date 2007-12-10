@@ -509,28 +509,13 @@ abstract class ApiBase {
 		wfDebugDieBacktrace("Internal error in $method: $message");
 	}
 
-	private $mRawFormat = false;
-
 	/**
-	 * Returns if module supports raw mode
+	 * Indicates if API needs to check maxlag
 	 */
-	public function supportRaw() {
-		return false;
+	public function shouldCheckMaxlag() {
+		return true;
 	}
 
-	/**
-	 * Enables raw mode
-	 */
-	public function setRaw() {
-		$this->mRawFormat = true;
-	}
-
-	/**
-	 * Checks if raw mode is enabled
-	 */
-	public function isRaw() {
-		return $this->mRawFormat;
-	}
 
 	/**
 	 * Profiling: total module execution time
@@ -639,5 +624,4 @@ abstract class ApiBase {
 		return __CLASS__ . ': $Id$';
 	}
 }
-
 
