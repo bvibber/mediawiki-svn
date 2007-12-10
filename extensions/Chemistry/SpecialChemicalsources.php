@@ -37,9 +37,10 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionFunctions[] = 'wfSpecialChemicalsources';
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Special:Chemicalsources',
+	'version' => '1.1',
 	'description' => 'Special Page for Chemical sources',
 	'author' => 'Dirk Beetstra',
-	'url' => 'http://meta.wikimedia.org/wiki/Chemistry/SpecialChemicalsources.php'
+	'url' => 'http://meta.wikimedia.org/wiki/Chemistry/SpecialChemicalsources.php',
 );
 
 #Includes
@@ -229,6 +230,3 @@ class SpecialChemicalsources extends SpecialPage {
 		$wgOut->addHTML("<tr><td>");
 	}
 }
-
-#End of php.
-

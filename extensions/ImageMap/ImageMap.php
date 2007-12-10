@@ -7,7 +7,7 @@ $wgExtensionCredits['parserhook']['ImageMap'] = array(
 	'version' => '1.1',
 	'author' => 'Tim Starling',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ImageMap',
-	'description' => 'Allows client-side clickable image maps using <nowiki><imagemap></nowiki> tag.',
+	'description' => 'Allows client-side clickable image maps using <nowiki><imagemap></nowiki> tag',
 );
 
 function wfSetupImageMap() {

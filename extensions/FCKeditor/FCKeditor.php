@@ -51,11 +51,11 @@ $wgAjaxExportList[] = 'wfSajaxGetImageUrl';
 $wgAjaxExportList[] = 'wfSajaxGetMathUrl';
 
 $wgExtensionCredits['other'][] = array(
-"name" => "FCKeditor extension",
-"author" => "FCKeditor.net (inspired by the code written by Mafs [Meta])",
-"version" => 'fckeditor/mw-extension $Rev$ 2007',
-"url" => "http://meta.wikimedia.org/wiki/FCKeditor",
-"description" => "FCKeditor extension"
+	"name" => "FCKeditor extension",
+	"author" => "FCKeditor.net (inspired by the code written by Mafs [Meta])",
+	"version" => 'fckeditor/mw-extension $Rev$ 2007',
+	"url" => "http://meta.wikimedia.org/wiki/FCKeditor",
+	"description" => "FCKeditor extension",
 );
 
 $fckeditor = new FCKeditor("fake");
@@ -63,11 +63,3 @@ $wgFCKEditorIsCompatible = $fckeditor->IsCompatible();
 
 $oFCKeditorExtension = new FCKeditor_MediaWiki();
 $oFCKeditorExtension->registerHooks();
-
-
-
-
-
-
-
-

@@ -37,7 +37,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'ImportFreeImages',
 	'version' => '1.1',
 	'author' => 'Travis Derouin',
-	'description' => 'Provides a way of importing properly licensed photos from flickr.',
+	'description' => 'Provides a way of importing properly licensed photos from Flickr',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ImportFreeImages',
 );
 

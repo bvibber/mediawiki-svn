@@ -64,7 +64,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '1.1',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Gis',
 	'description' => 'Enables rich geotagging functionality',
-	'author' => 'Egil Kvaleberg, Jens Frank',
+	'author' => array( 'Egil Kvaleberg', 'Jens Frank' ),
 );
 
 global $wgAutoloadClasses;

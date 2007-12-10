@@ -1,11 +1,11 @@
 <?php
 
 $wgExtensionCredits['other'][] = array(
-        'name' => 'DismissableSiteNotice',
-        'version' => '1.1',
+	'name' => 'DismissableSiteNotice',
+	'version' => '1.1',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:DismissableSiteNotice',
-        'author' => 'Brion Vibber',
-        'description' => 'Allows users to close the sitenotice.'
+	'author' => 'Brion Vibber',
+	'description' => 'Allows users to close the sitenotice',
 );
 
 function wfDismissableSiteNotice( &$notice ) {
