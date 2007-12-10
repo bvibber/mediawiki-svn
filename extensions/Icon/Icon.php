@@ -55,20 +55,22 @@ function efIcon_Render(&$parser, $img, $alt=null, $width=null, $page=null) {
 		$ptitle = Title::newFromText( $page );
 		
 		// this might happen in templates...
-		if (!is_object( $ptitle ))
-			return 'IconLink: invalid title name.';
-
-		if ( $ptitle->isLocal() )
-		{
-			$tURL = $ptitle->getLocalUrl();
-			$aClass=''; 			
+		if (!is_object( $ptitle )) {
+			//May be too assuming... w/e.
+			$output = $imageString;
+		} else {
+			if ( $ptitle->isLocal() )
+			{
+				$tURL = $ptitle->getLocalUrl();
+				$aClass=''; 			
+			}
+			else
+			{
+				$tURL = $ptitle->getFullURL();
+				$aClass = 'class="extiw"';
+			}
+			$output = "<a ".$aClass." href='${tURL}'>{$imageString}</a>";
 		}
-		else
-		{
-			$tURL = $ptitle->getFullURL();
-			$aClass = 'class="extiw"';
-		}
-		$output = "<a ".$aClass." href='${tURL}'>{$imageString}</a>";
 	} else {
 		$output = $imageString;
 	}
