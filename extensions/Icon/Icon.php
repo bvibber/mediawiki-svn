@@ -1,8 +1,17 @@
 <?php
+/** \file
+* \brief Contains code for the Icon Extension.
+*/
+
+# Not a valid entry point, skip unless MEDIAWIKI is defined
+if (!defined('MEDIAWIKI')) {
+	echo "Icon extension";
+	exit(1);
+}
 
 $wgExtensionCredits['other'][] = array(
 	'name'        => 'Icon',
-	'version'     => '1.0',
+	'version'     => '1.1',
 	'author'      => 'Tim Laqua',
 	'description' => 'Allows you to use Images as Icons and Icon Links',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:Icon',
@@ -12,9 +21,17 @@ $wgExtensionFunctions[] = 'efIcon_Setup';
 $wgHooks['LanguageGetMagic'][]       = 'efIcon_LanguageGetMagic';
 
 function efIcon_Setup() {
-        global $wgParser;
+        global $wgParser, $wgMessageCache;
+	
+		#Add Messages
+		require( dirname( __FILE__ ) . '/Icon.i18n.php' );
+		foreach( $messages as $key => $value ) {
+			  $wgMessageCache->addMessages( $messages[$key], $key );
+		}
+		
         # Set a function hook associating the "example" magic word with our function
         $wgParser->setFunctionHook( 'icon', 'efIcon_Render' );
+		
 		return true;
 }
 
@@ -29,7 +46,7 @@ function efIcon_LanguageGetMagic( &$magicWords, $langCode ) {
 
 function efIcon_Render(&$parser, $img, $alt=null, $width=null, $page=null) {
 	$ititle = Title::newFromText( $img );
-
+	
 	// this really shouldn't happen... not much we can do here.
 	if (!is_object($ititle))
 		return '';
@@ -48,18 +65,20 @@ function efIcon_Render(&$parser, $img, $alt=null, $width=null, $page=null) {
 	// Optional parameters
 	if (empty($alt))
 		$alt='';
+	else
+		$alt = htmlspecialchars($alt);
 	
 	if (!empty($width))	{
 		$width  = intval($width);
 		if ($width > 0) {
 			$thumb = $image->transform( array( 'width' => $width ) );
 			if ( $thumb->isError() ) {
-				$imageString = 'Bad Image';
+				$imageString = wfMsgForContent('icon-badimage');
 			} else {
 				$imageString = $thumb->toHtml( array( 'alt' => $alt, 'title' => $alt ) );
 			}
 		} else {
-			$imageString = 'Bad Width';
+			$imageString = wfMsgForContent('icon-badwidth');
 		}
 	} else {
 		$imageString = "<img src='${iURL}' alt=\"{$alt}\" title=\"{$alt}\" />";
