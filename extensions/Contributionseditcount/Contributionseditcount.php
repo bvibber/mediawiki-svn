@@ -15,7 +15,7 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionFunctions[] = 'wfContributionseditcount';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Contributionseditcount',
-	'version'=>'1.1'
+	'version'=>'1.1',
 	'url'=>'http://www.mediawiki.org/wiki/Extension:Contribution_Scores',
 	'description' => 'displays an edit count on Special:Contributions',
 	'author' => 'Ævar Arnfjörð Bjarmason',
