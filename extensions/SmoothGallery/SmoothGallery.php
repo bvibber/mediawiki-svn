@@ -40,7 +40,7 @@ $wgSpecialPages['SmoothGallery'] = 'SpecialSmoothGallery';
 
 //sane defaults. always initialize to avoid register_globals vulnerabilities
 $wgSmoothGalleryDelimiter = "\n";
-$wgSmoothGalleryExtensionPath = $wgScriptPath . '/extensions/SmoothGallery'; 
+$wgSmoothGalleryExtensionPath = $wgScriptPath . '/extensions/SmoothGallery';
 
 function wfSmoothGallery() {
 	global $wgParser;
@@ -292,7 +292,7 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial ) {
 				$fulldesc =  strip_tags( $pout->getText() );
 			}
 			else { //fall back to HTML-escaping
-				$fulldesc = htmlspecialchars( $fulldesc ); 
+				$fulldesc = htmlspecialchars( $fulldesc );
 			}
 		}
 
@@ -470,10 +470,9 @@ function loadSmoothGalleryI18n() {
  * Add extension information to Special:Version
  */
 $wgExtensionCredits['other'][] = array(
-	'name' => 'SmoothGallery parser extension',
-	'version' => '1.0i',
-	'author' => 'Ryan Lane',
+	'name'        => 'SmoothGallery parser extension',
+	'version'     => '1.0i',
+	'author'      => 'Ryan Lane',
 	'description' => 'Allows users to create galleries with images that have been uploaded. Allows most options of SmoothGallery',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:SmoothGallery'
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:SmoothGallery',
 );
-

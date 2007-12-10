@@ -10,6 +10,8 @@
 $wgExtensionFunctions[] = 'wfPurge';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Purge',
+	'version' => '1.1',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Purge',
 	'author' => 'Ævar Arnfjörð Bjarmason',
 	'description' => 'Adds a purge tab on all normal pages and bypasses the purge check for anonymous users allowing for quick purging of the cache'
 );

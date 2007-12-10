@@ -3,7 +3,7 @@
 /**
  * Sets up the extension.
  */
-	
+
 if (!defined('MEDIAWIKI')) die();
 
 /**
@@ -16,15 +16,16 @@ if (!defined('MEDIAWIKI')) die();
  * @copyright Copyright © 2007, Daniel Cannon
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
-		 
 
 $wgExtensionFunctions[] = 'wfSpecialSignDocument';
 $wgExtensionFunctions[] = 'wfSpecialCreateSignDocument';
 $wgExtensionFunctions[] = 'wfCreateSignatureLog';
 
 $wgExtensionCredits['specialpage'][] = array(
-	'name' => 'SignDocument',
-	'author' => 'Daniel Cannon',
+	'name'        => 'SignDocument',
+	'version'     => '1.1',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:SignDocument',
+	'author'      => 'Daniel Cannon',
 	'description' => 'Enables document signing',
 );
 
@@ -44,7 +45,7 @@ function wfSpecialSignDocument() {
 	$GLOBALS['wgSpecialPages']['signdocument'] = array( /*class*/ 'SignDocument',
 			/*name*/ 'signdocument', /* permission */'', /*listed*/ true,
 			/*function*/ false, /*file*/ false );
-													
+
 }
 
 /**
@@ -55,7 +56,7 @@ function wfSpecialCreateSignDocument() {
 	if ( !function_exists( 'extAddSpecialPage' ) ) {
 		require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 	}
-	extAddSpecialPage( dirname(__FILE__) . '/SpecialCreateSignDocument.php', 
+	extAddSpecialPage( dirname(__FILE__) . '/SpecialCreateSignDocument.php',
 			'createsigndocument', 'CreateSignDocument' );
 }
 
@@ -71,7 +72,7 @@ function wfCreateSignatureLog() {
 	foreach( $allMessages as $key => $value ) {
 		$wgMessageCache->addMessages( $value, $key );
 	}
-	
+
 	# Add a new log type
 	global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
 
@@ -90,8 +91,7 @@ function wfCreateSignatureLog() {
 function wfLogSignDocumentSignature( $sig ) {
 	global $wgUser;
 	$log = new LogPage( 'signature' );
-	$log->addEntry( 'sign', Title::newFromId( $sig->mForm->getPageId() ), 
+	$log->addEntry( 'sign', Title::newFromId( $sig->mForm->getPageId() ),
 		'id=' . $sig->mId );
 
 }
-?>

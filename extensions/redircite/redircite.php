@@ -6,23 +6,23 @@
  * (at your option) any later version.
  *
  * @author Roan Kattouw <roan.kattouw@home.nl>
- * @copyright Copyright (C) 2007 Roan Kattouw 
+ * @copyright Copyright (C) 2007 Roan Kattouw
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
  *
  * An extension that allows for abbreviated inline citations.
- * Idea by Joe Beaudoin Jr. from The Great Machine wiki <http://tgm.firstones.com/> 
+ * Idea by Joe Beaudoin Jr. from The Great Machine wiki <http://tgm.firstones.com/>
  * Code by Roan Kattouw (AKA Catrope) <roan.kattouw@home.nl>
  * For information on how to install and use this extension, see the README file.
  *
  */
- 
+
 $wgExtensionFunctions[] = 'redircite_setup';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'redircite',
 	'author' => 'Roan Kattouw',
 	'description' => 'Allows for abbreviated inline citations',
 	'version' => '1.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Redircite'
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Redircite',
 );
 
 function redircite_setup()
@@ -52,10 +52,10 @@ function redircite_render($input, $args, $parser)
 	if(!$title2) // Page is not a redirect
 		// Just output a normal link
 		return $link1text;
-	
+
 	$link2 = $lparse->parse("[[{$title2->getPrefixedText()}|$input]]", $parser->mTitle, $parser->mOptions, false, false);
 	$link2text = $link2->getText();
-	
+
 	$marker = "xx-redircite-marker-" . count($markerList) . "-redircite-xx";
 	$markerList[] = "<span onmouseout='this.firstChild.innerHTML = \"$input\";' onmouseover='this.firstChild.innerHTML = \"{$title2->getPrefixedText()}\";'>$link2text</span>";
 	return $marker;
@@ -70,4 +70,3 @@ function redircite_afterTidy(&$parser, &$text)
 		$text = preg_replace("/xx-redircite-marker-$i-redircite-xx/", $output, $text);
 	return true;
 }
-?>
