@@ -40,6 +40,7 @@ $wgGroupPermissions['*']['oversight'] = false;
 $wgExtensionFunctions[] = 'hrSetup';
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Oversight',
+	'version' => '1.1',
 	'author' => 'Brion Vibber',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Oversight',
 	'description' => 'Hide individual revisions from all users for legal reasons, etc.',
@@ -690,4 +691,3 @@ function sosShowDiff( $revision )
 	}
 	$dbr->freeResult( $result );
 }
-

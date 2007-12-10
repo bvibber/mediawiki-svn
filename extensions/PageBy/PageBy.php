@@ -15,11 +15,12 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
-$wgExtensionCredits['other'][] = array( 
-	'name' => 'PageBy', 
-	'author' => 'Daniel Kinzler, brightbyte.de', 
+$wgExtensionCredits['other'][] = array(
+	'name' => 'PageBy',
+	'version' => '1.1',
+	'author' => 'Daniel Kinzler, brightbyte.de',
 	'url' => 'http://mediawiki.org/wiki/Extension:PageBy',
-	'description' => 'shows contributors inline on a wiki page',
+	'description' => 'Shows contributors inline on a wiki page',
 );
 
 $wgExtensionFunctions[] = "wfPageByExtension";
@@ -51,15 +52,13 @@ function loadPageByI18n() {
 	if ( $initialized ) return;
 
 	$messages= array();
-	
+
 	$f= dirname( __FILE__ ) . '/PageBy.i18n.php';
 	include( $f );
-	
+
 	$f= dirname( __FILE__ ) . '/PageBy.i18n.' . $wgContLang->getCode() . '.php';
 	if ( file_exists( $f ) ) include( $f );
-	
+
 	$initialized = true;
 	$wgMessageCache->addMessages( $messages );
 }
-
-

@@ -10,32 +10,33 @@
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
- 
+
 if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'efPreloader';
 	$wgExtensionCredits['other'][] = array(
-			'name' => 'Preloader',
-			'author' => 'Rob Church',
-			'url' => 'http://www.mediawiki.org/wiki/Extension:Preloader',
-			'description' => 'Provides customisable per-namespace boilerplate text for new pages',
+		'name' => 'Preloader',
+		'version' => '1.1',
+		'author' => 'Rob Church',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Preloader',
+		'description' => 'Provides customisable per-namespace boilerplate text for new pages',
 	);
-	
+
 	/**
 	 * Sources of preloaded content for each namespace
 	 */
 	$wgPreloaderSource[ NS_MAIN ] = 'Template:Preload';
-	
+
 	function efPreloader() {
 		new Preloader();
 	}
-	
+
 	class Preloader {
-	
+
 		function Preloader() {
 			$this->setHooks();
 		}
-		
+
 		/** Hook function for the preloading */
 		function mainHook( &$text, &$title ) {
 			$src = $this->preloadSource( $title->getNamespace() );
@@ -46,20 +47,20 @@ if( defined( 'MEDIAWIKI' ) ) {
 			}
 			return true;
 		}
-		
+
 		/** Hook function for the parser */
 		function parserHook( $input, $args, &$parser ) {
 			$output = $parser->parse( $input, $parser->getTitle(), $parser->getOptions(), false, false );
 			return $output->getText();
 		}
-		
+
 		/**
 		 * Determine what page should be used as the source of preloaded text
 		 * for a given namespace and return the title (in text form)
 		 *
 		 * @param $namespace Namespace to check for
 		 * @return mixed
-		 */ 
+		 */
 		function preloadSource( $namespace ) {
 			global $wgPreloaderSource;
 			if( isset( $wgPreloaderSource[ $namespace ] ) ) {
@@ -68,7 +69,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 				return false;
 			}
 		}
-		
+
 		/**
 		 * Grab the current text of a given page if it exists
 		 *
@@ -84,7 +85,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 				return false;
 			}
 		}
-		
+
 		/**
 		 * Remove <nopreload> sections from the text and trim whitespace
 		 *
@@ -94,19 +95,17 @@ if( defined( 'MEDIAWIKI' ) ) {
 		function transform( $text ) {
 			return trim( preg_replace( '/<nopreload>.*<\/nopreload>/s', '', $text ) );
 		}
-		
+
 		/** Register the hook functions with MediaWiki */
 		function setHooks() {
 			global $wgHooks, $wgParser;
 			$wgHooks['EditFormPreloadText'][] = array( &$this, 'mainHook' );
 			$wgParser->setHook( 'nopreload', array( &$this, 'parserHook' ) );
 		}
-	
+
 	}
 
 } else {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	exit( 1 );
 }
-
-

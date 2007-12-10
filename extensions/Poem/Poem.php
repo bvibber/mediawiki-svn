@@ -8,7 +8,7 @@
 # (with modified parser callback and attribute additions)
 #
 # Anyone is allowed to use this code for any purpose.
-# 
+#
 # To install, copy the extension to your extensions directory and add line
 # include("extensions/Poem.php");
 # to the bottom of your LocalSettings.php
@@ -21,9 +21,10 @@
 $wgExtensionFunctions[]="wfPoemExtension";
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Poem',
+	'version' => '1.1',
 	'author' => array( 'Nikola Smolenski', 'Brion Vibber', 'Steve Sanbeg' ),
 	'description' => 'Adds <tt>&lt;poem&gt;</tt> tag for poem formatting',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Poem'
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Poem',
 );
 $wgParserTestFiles[] = dirname( __FILE__ ) . "/poemParserTests.txt";
 
@@ -42,7 +43,7 @@ function PoemExtension( $in, $param=array(), $parser=null ) {
 		$in );
 		$text = $parser->recursiveTagParse($text);
      } else {
-  
+
 	$text = preg_replace(
 		array("/^\n/","/\n$/D","/\n/",    "/^( +)/me"),
 		array("",     "",      "<br />\n","str_replace(' ','&nbsp;','\\1')"),
@@ -59,10 +60,10 @@ function PoemExtension( $in, $param=array(), $parser=null ) {
 		// thing up.
 		false
 	);
-	
+
 	$text = $ret->getText();
     }
-  
+
 	global $wgVersion;
 	if( version_compare( $wgVersion, "1.7alpha" ) >= 0 ) {
 		// Pass HTML attributes through to the output.
@@ -71,18 +72,16 @@ function PoemExtension( $in, $param=array(), $parser=null ) {
 		// Can't guarantee safety on 1.6 or older.
 		$attribs = array();
 	}
-	
+
 	// Wrap output in a <div> with "poem" class.
 	if( isset( $attribs['class'] ) ) {
 		$attribs['class'] = 'poem ' . $attribs['class'];
 	} else {
 		$attribs['class'] = 'poem';
 	}
-	
+
 	return wfOpenElement( 'div', $attribs ) .
 		"\n" .
 		trim( $text ) .
 		"\n</div>";
 }
-
-

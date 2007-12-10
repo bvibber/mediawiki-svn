@@ -17,6 +17,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionCredits['specialpage'][] = array(
 		'name' => 'Patroller',
+		'version' => '1.1',
 		'author' => 'Rob Church',
 		'description' => 'Enhanced patrolling interface with workload sharing',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Patroller',
@@ -30,5 +31,3 @@ if( defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	exit( 1 );
 }
-
-
