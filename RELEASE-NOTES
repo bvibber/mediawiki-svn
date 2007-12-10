@@ -64,6 +64,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   [[MediaWiki:Signature-anon]]
 * Signatures for anonymous users link to Special:Contributions page rather than user page
 * Added --override switch for disabled pages in updateSpecialPages.php
+* Provide a unique message (ipb_blocked_as_range) if unblock of a single IP fails 
+  because it is part of a blocked range.
 
 === Bug fixes in 1.12 ===
 
@@ -157,6 +159,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   pages which had spaces in theirs names
 * If restricted read access was enabled, requests for non-existing special pages
   threw an exception
+* Feeds for recent changes now provide correct URLs for the change, not just
+  the page
+* Check for if IP is blocked as part of a range when unblocking (see above bug-
+  fix) was faulty. Now fixed.
+* Fixed wpReason URL parameter to action=delete.
 
 === API changes in 1.12 ===
 
@@ -187,6 +194,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * (bug 11562) Added a user_registration parameter/field to the list=allusers query.
 * (bug 11588) Preserve document structure for empty dataset in backlinks query.
 * Outputting list of all user preferences rather than having to request them by name
+* Add raw formatting support. Now several actions like expandtemplates support raw output with format=raw
+* (bug 11206) api.php should honor maxlag
 
 === Languages updated in 1.12 ===
 
@@ -200,6 +209,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Mapudungun (arn) (new)
 * Assamese (as)
 * Asturian (ast)
+* Aymara (ay)
 * Samogitian (bat-smg)
 * Boarisch (bar)
 * Bikol Central (bcl)
@@ -213,7 +223,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Buginese (bug) (new)
 * Catalan (ca)
 * Zamboangueño (cbk-zam) (new)
-* Cebuano (ceb)
+* Chechen (ce)
+* Cebuano (ceb) (new)
 * Czech (cs)
 * Cassubian (csb)
 * Old Church Slavonic (cu)

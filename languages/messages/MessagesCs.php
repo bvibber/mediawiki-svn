@@ -10,6 +10,7 @@
  * @author Martin Kozák
  * @author Michawiki
  * @author Nike
+ * @author Siebrand
  */
 
 $fallback8bitEncoding = 'cp1250';
@@ -1074,7 +1075,7 @@ váš uživatelský účet zablokován.',
 Jméno načítaného souboru: <strong><tt>$1</tt></strong><br />
 Jméno existujícího souboru: <strong><tt>$2</tt></strong><br />
 Vyberte jiné jméno.',
-'fileexists-thumb'            => "'''<center>Existujícího soubor:</center>'''",
+'fileexists-thumb'            => "'''<center\">Existující soubor:</center>'''",
 'fileexists-thumbnail-yes'    => 'Toto soubor je možná obrázek ve zmenšené velikosti <i>(náhled)</i>. Zkontrolujte soubor <strong><tt>$1</tt></strong>.<br />
 Pokud je zmiňovaný soubor větší, ale jinak stejný, není potřeba zvlášť načítat jeho zmenšenou verzi.',
 'file-thumbnail-no'           => 'Jméno souboru začíná na <strong><tt>$1</tt></strong>. Možná to je obrázek ve zmenšené velikosti <i>(náhled)</i>. 
@@ -1122,7 +1123,7 @@ Zde je příslušný výpis z knihy smazaných stránek:",
 
 # Image list
 'imagelist'                 => 'Seznam načtených obrázků',
-'imagelisttext'             => "Níže je seznam '''$1''' {{PLURAL:$1|obrázku|obrázků|obrázků}}, seřazených $2.",
+'imagelisttext'             => "Níže je {{plural:$1|jeden obrázek|seznam '''$1'''&nbsp;obrázků seřazených $2|seznam '''$1'''&nbsp;obrázků seřazených $2}}.",
 'getimagelist'              => 'načítám seznam obrázků',
 'ilsubmit'                  => 'Hledat',
 'showlast'                  => 'Ukázat posledních $1 obrázků řazených $2.',
@@ -1284,7 +1285,7 @@ Aktuální délka fronty údržby je '''$7'''.",
 'intl'                    => 'Mezijazykové odkazy',
 'move'                    => 'Přesunout',
 'movethispage'            => 'Přesunout stránku',
-'unusedimagestext'        => '<p>Jiné WWW stránky mohou odkazovat přímo pomocí URL, na takové odkazy se v tomto seznamu nebere zřetel.',
+'unusedimagestext'        => '<p>Jiné WWW stránky mohou odkazovat přímo pomocí URL, na takové odkazy se v&nbsp;tomto seznamu nebere zřetel.</p>',
 'unusedcategoriestext'    => 'Následující kategorie mají své stránky, ačkoli je žádná stránka ani jiná kategorie nepoužívá.',
 'notargettitle'           => 'Bez cílové stránky',
 'notargettext'            => 'Této funkci musíte určit cílovou stránku nebo uživatele.',
@@ -1432,7 +1433,7 @@ Rady a kontakt:
 'exblank'                     => 'stránka byla prázdná',
 'confirmdelete'               => 'Potvrdit smazání',
 'deletesub'                   => '(Maže se „$1“)',
-'historywarning'              => ' Varování: Stránka, kterou chcete smazat, má historii:&nbsp;',
+'historywarning'              => 'Varování: Stránka, jíž chcete smazat, má historii:',
 'confirmdeletetext'           => 'Chystáte se trvale smazat z databáze stránku nebo obrázek s celou jeho historií. Prosím potvrďte, že to opravdu chcete učinit, že si uvědomujete důsledky a že je to v souladu s [[{{MediaWiki:policy-url}}|pravidly]].',
 'actioncomplete'              => 'Provedeno',
 'deletedtext'                 => ' Stránka nebo soubor „$1“ byla smazána; $2 zaznamenává poslední smazání.',
@@ -1448,7 +1449,7 @@ Rady a kontakt:
 'rollbackfailed'              => 'Nešlo vrátit zpět',
 'cantrollback'                => 'Nelze vrátit zpět poslední editaci, neboť poslední přispěvatel je jediným autorem této stránky.',
 'alreadyrolled'               => 'Nelze vrátit zpět poslední editaci [[:$1]] od [[User:$2|$2]] ([[User talk:$2|Diskuse]]), protože někdo jiný již stránku editoval nebo vrátil tuto změnu zpět. Poslední editace byla od [[User:$3|$3]] ([[User talk:$3|Diskuse]]).',
-'editcomment'                 => 'Shrnutí editace bylo: „<i>$1</i>“.', # only shown if there is an edit comment
+'editcomment'                 => 'Shrnutí editace bylo: <i>„$1“</i>.', # only shown if there is an edit comment
 'revertpage'                  => 'Editace uživatele „$2“ vrácena do předchozího stavu, jehož autorem je „$1“.',
 'rollback-success'            => 'Editace uživatele $1 byla vrácena na poslední verzi od uživatele $2.',
 'sessionfailure'              => 'Zřejmě je nějaký problém s vaším přihlášením;
@@ -1741,7 +1742,7 @@ Do níže uvedeného editačního pole zadejte názvy stránek, které chcete ex
 'thumbnail_dest_directory' => 'Nelze vytvořit cílový adresář',
 
 # Special:Import
-'import'                     => 'Importovat stránky',
+'import'                     => 'Import stránek',
 'importinterwiki'            => 'Import mezi wiki',
 'import-interwiki-text'      => 'Pro import zvolte zdrojovou wiki a název stránky. Data revizí a jména autorů budou zachována. Všechny importy se zaznamenávají do [[Special:Log/import|knihy importů]].',
 'import-interwiki-history'   => 'Zkopírovat všechny historické verze této stránky',
@@ -1793,7 +1794,7 @@ Do níže uvedeného editačního pole zadejte názvy stránek, které chcete ex
 'tooltip-ca-watch'                => 'Přidat tuto stránku mezi sledované',
 'tooltip-ca-unwatch'              => 'Vyjmout tuto stránku ze sledovaných',
 'tooltip-search'                  => 'Prohledat tuto wiki',
-'tooltip-search-go'               => 'Jít na stránka s tímto jménem, pokud existuje',
+'tooltip-search-go'               => 'Jít na stránku s&nbsp;tímto jménem, pokud existuje',
 'tooltip-search-fulltext'         => 'Hledat stránky s tímto textem',
 'tooltip-p-logo'                  => 'Hlavní strana',
 'tooltip-n-mainpage'              => 'Navštívit Hlavní stranu',

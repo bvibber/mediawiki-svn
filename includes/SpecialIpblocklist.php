@@ -159,11 +159,13 @@ class IPUnblockForm {
 
 				if ( !$block ) { 
 					$block = null;
-				} else if ( !$block->mUser && $block->mRangeStart 
+				} else if ( $block->mRangeStart != $block->mRangeEnd
 						&& !strstr ( $this->ip, "/" ) ) {
 					/* If the specified IP is a single address, and the block is
 					 * a range block, don't unblock the range. */
-					$block = null;
+
+					$this->showForm ( wfMsg ( 'ipb_blocked_as_range', $this->ip, $block->mAddress ) );
+					return;
 				}
 			}
 		}

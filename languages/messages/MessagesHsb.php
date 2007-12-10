@@ -605,6 +605,7 @@ Móžeš administratora $1 abo jednoho z druhich [[{{MediaWiki:grouppage-sysop}}
 *IP-adresa: $3
 *ID blokowanja: #$5
 </div>',
+'blockednoreason'           => 'žana přičina podata',
 'blockedoriginalsource'     => 'To je žórłowy tekst strony <b>$1</b>:',
 'blockededitsource'         => 'Tekst <b>twojich změnow</b> strony <b>$1</b> so tu pokazuje:',
 'whitelistedittitle'        => 'Za wobdźěłowanje je přizjewjenje trěbne.',
@@ -1605,6 +1606,7 @@ $1',
 'ipb_expiry_invalid'          => 'Čas spadnjenja je njepłaćiwy.',
 'ipb_already_blocked'         => 'Wužiwar „$1” je hižo zablokowany.',
 'ipb_cant_unblock'            => 'Zmylk: Njemóžno ID zablokowanja $1 namakać. Zablokowanje je so najskerje mjeztym zběhnyło.',
+'ipb_blocked_as_range'        => 'Zmylk: IP $1 njeje direktnje zablokowana a njeda so wublokować. Blokuje so wšak jako dźěl wobwoda $2, kotryž da so wublokować.',
 'ip_range_invalid'            => 'Njepłaciwy wobłuk IP-adresow.',
 'blockme'                     => 'Blokować',
 'proxyblocker'                => 'Awtomatiske blokowanje wotewrjenych proksy-serwerow',
