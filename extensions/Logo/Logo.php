@@ -6,15 +6,21 @@
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
- 
+
 if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'efLogo';
-	$wgExtensionCredits['other'][] = array( 'name' => 'Logo', 'author' => 'Rob Church' );
-	
+	$wgExtensionCredits['other'][] = array(
+		'name'        => 'Logo',
+		'version'     => '1.1',
+		'url'         => 'http://www.mediawiki.org/wiki/Extension:Logo',
+		'description' => 'Allow customising the site logo via the MediaWiki namespace',
+		'author'      => 'Rob Church',
+	);
+
 	/** Whether or not to auto-scale the image to the required size */
 	$wgLogoAutoScale = $wgUseImageResize;
-	
+
 	function efLogo() {
 		global $wgLogo, $wgLogoAutoScale;
 		$msg = wfMsgForContent( 'logo' );

@@ -62,7 +62,5 @@ $wgExtensionCredits['other'][] = array(
 	'version' => '1.0a',
 	'author' => 'Ryan Lane',
 	'description' => 'Allows users to create tables that are memorizable like those on Memorizable.org',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Memorizable'
-	);
-
-
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Memorizable',
+);

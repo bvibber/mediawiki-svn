@@ -7,11 +7,11 @@
  */
 
 $wgExtensionCredits['specialpage'][] = array(
-	'name' => 'Link Search',
-	'author' => 'Brion Vibber',
+	'name'        => 'Link Search',
+	'author'      => 'Brion Vibber',
 	'description' => 'Find pages with external links matching specific patterns',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:LinkSearch',
-	'version' => '1.1',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:LinkSearch',
+	'version'     => '1.1',
 );
 $wgHooks['LoadAllMessages'][] = 'LinkSearchSpecialPage::initMessages';
 
@@ -20,4 +20,3 @@ $wgSpecialPages['Linksearch'] = array( /*class*/ 'LinkSearchSpecialPage',
 	/*function*/ false, /*file*/ false );
 $wgAutoloadClasses['LinkSearchPage'] = dirname(__FILE__) . '/LinkSearch_body.php';
 $wgAutoloadClasses['LinkSearchSpecialPage'] = dirname(__FILE__) . '/LinkSearch_body.php';
-

@@ -8,7 +8,7 @@
  * @author Rob Church <robchur@gmail.com>
  * @version 1.1
  */
- 
+
 if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgHooks['LanguageGetMagic'][] = 'efMediaFunctionsGetMagic';
@@ -16,11 +16,12 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgAutoloadClasses['MediaFunctions'] = dirname( __FILE__ ) . '/MediaFunctions.class.php';
 	$wgExtensionCredits['parserhook'][] = array(
 		'name' => 'MediaFunctions',
+		'version'     => '1.1',
 		'author' => 'Rob Church',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:MediaFunctions',
 		'description' => 'Parser functions for obtaining information about media files',
-	);	
-	
+	);
+
 	/**
 	 * Register function callbacks and add error messages to
 	 * the message cache
@@ -37,7 +38,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		foreach( efMediaFunctionsMessages() as $lang => $messages )
 			$wgMessageCache->addMessages( $messages, $lang );
 	}
-	
+
 	/**
 	 * Associate magic words with synonyms
 	 *

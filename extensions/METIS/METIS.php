@@ -21,7 +21,13 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionFunctions[] = 'efMetis';
-$wgExtensionCredits['other'][] = array( 'name' => 'METIS', 'author' => 'Jens Frank' );
+$wgExtensionCredits['other'][] = array(
+	'name'        => 'METIS',
+	'version'     => '1.1',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:METIS',
+	'description' => 'METIS',
+	'author'      => 'Jens Frank',
+);
 
 function efMetis() {
 	global $wgHooks;
@@ -45,5 +51,3 @@ function efMetisAddPixel( &$article ) {
 	}
 	return true;
 }
-
-?>

@@ -17,6 +17,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionFunctions[] = 'wfSetupLookupUser';
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Lookup User',
+	'version' => '1.1',
 	'author' => 'Tim Starling',
 	'description' => 'Retrieve information about a user such as email address and ID',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:LookupUser',
@@ -50,7 +51,7 @@ function wfSetupLookupUser() {
 				$this->displayRestrictionError();
 				return;
 			}
-			
+
 			if ( $subpage ) {
 				$target = $subpage;
 			} else {
