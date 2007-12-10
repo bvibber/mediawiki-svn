@@ -20,8 +20,8 @@ $wgExtensionMessagesFiles['FindSpam'] = $dir . 'FindSpam.i18n.php';
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'FindSpam',
+	'version' => '1.1',
 	'url'=>'http://www.mediawiki.org/wiki/Extension:Find_Spam',
 	'author' => 'Tim Starling',
-	'description' => 'Adds a special page that allows to find recently added spam.'
+	'description' => 'Adds a special page that allows to find recently added spam',
 );
-

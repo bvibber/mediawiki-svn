@@ -17,6 +17,7 @@ $wgExtensionFunctions[] = 'wfFormatEmailInit';
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'FormatEmail',
+	'version' => '1.1',
 	'author' => 'Travis Derouin',
 	'description' => 'Allows custom headers/footers to be added to user to user emails.',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:FormatEmail',

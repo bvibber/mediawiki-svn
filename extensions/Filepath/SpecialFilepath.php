@@ -10,9 +10,10 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Filepath',
+	'version' => '1.1',
 	'author' => 'Ævar Arnfjörð Bjarmason',
 	'description' => '[[Special:Filepath|a special page]] to get the full path of a file from its name',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Filepath'
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Filepath',
 );
 
 # Internationalisation file
@@ -22,5 +23,3 @@ if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 }
 extAddSpecialPage( dirname(__FILE__) . '/SpecialFilepath_body.php', 'Filepath', 'SpecialFilepath' );
-
-
