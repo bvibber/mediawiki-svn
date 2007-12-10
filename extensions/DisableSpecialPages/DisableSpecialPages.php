@@ -8,11 +8,17 @@
  * @copyright © 2006 Rob Church
  * @licence GNU General Public Licence 2.0 or later
  */
- 
+
 if( defined( 'MEDIAWIKI' ) ) {
 
-	$wgExtensionCredits['other'][] = array( 'name' => 'Disable Special Pages', 'author' => 'Rob Church' );
-	
+	$wgExtensionCredits['other'][] = array(
+		'name' => 'Disable Special Pages',
+		'version' => '1.1',
+		'author' => 'Rob Church',
+		'description' => 'Allows wiki administrators to make a special page unavailable',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:DisableSpecialPages',
+	);
+
 	if( version_compare( $wgVersion, '1.7.0' ) ) {
 		# Use the new hooks in 1.7+
 		$wgHooks['SpecialPage_initList'][] = 'efDspHook';
@@ -21,13 +27,13 @@ if( defined( 'MEDIAWIKI' ) ) {
 		require_once( 'SpecialPage.php' );
 		$wgExtensionFunctions[] = 'efDspOldMethod';
 	}
-	
+
 	/**
 	 * Titles of special pages to disable; Special:Userlogin, Special:Userlogout
 	 * and Special:Search cannot be disabled via this interface
 	 */
 	$wgDisabledSpecialPages = array();
-	
+
 	function efDspHook( &$list ) {
 		global $wgDisabledSpecialPages;
 		foreach( $wgDisabledSpecialPages as $page ) {
@@ -56,14 +62,13 @@ if( defined( 'MEDIAWIKI' ) ) {
 			return false;
 		}
 	}
-	
+
 	function efDspWhitelisted( &$title ) {
 		$whitelist = array( 'Search', 'Userlogin', 'Userlogout' );
 		return in_array( $title->getText(), $whitelist );
 	}
-	
+
 } else {
 	echo( "This file is an extension to the MediaWiki software, and cannot be used standalone.\n" );
 	die( 1 );
 }
-

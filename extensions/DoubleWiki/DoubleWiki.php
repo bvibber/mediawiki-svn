@@ -16,27 +16,28 @@
 # http://www.gnu.org/copyleft/gpl.html
 #
 #
-# This extension displays an article and its 
+# This extension displays an article and its
 # translation on two columns of the same page.
-# The translation comes from another wiki 
+# The translation comes from another wiki
 # that can be accessed through interlanguage links
 
- 
+
 $wgHooks['OutputPageBeforeHTML'][] = 'addMatchedText' ;
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'DoubleWiki',
-	//'author' => '',
-	//'url' => '',
+	'version' => '1.1',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:DoubleWiki',
+	'author' => 'Brion Vibber',
 	'description' => 'Displays an article and its translation from another wiki on two columns of the same page',
 );
 
-function addMatchedText ( &$parserOutput , &$text ) { 
+function addMatchedText ( &$parserOutput , &$text ) {
 
 	global $wgContLang, $wgRequest, $wgLang, $wgContLanguageCode, $wgTitle;
 
 	$match_request = $wgRequest->getText( 'match' );
-	if ( $match_request === '' ) { 
+	if ( $match_request === '' ) {
 		return true;
 	}
 
@@ -44,22 +45,22 @@ function addMatchedText ( &$parserOutput , &$text ) {
 		$nt = Title::newFromText( $l );
 		$iw = $nt->getInterwiki();
 		if( $iw === $match_request ){
-			$url =  $nt->getFullURL(); 
+			$url =  $nt->getFullURL();
 			$myURL = $wgTitle -> getLocalURL() ;
 			$languageName = $wgContLang->getLanguageName( $nt->getInterwiki() );
 			$myLanguage = $wgLang->getLanguageName( $wgContLanguageCode );
-			
-			$sep = ( in_string( '?', $url ) ) ? '&' : '?'; 
+
+			$sep = ( in_string( '?', $url ) ) ? '&' : '?';
 			$translation = wfGetHttp( $url.$sep.'action=render' );
 			if ( $translation !== null ) {
 				#first find all links that have no 'class' parameter.
-				#these links are local so we add '?match=xx' to their url, 
-				#unless it already contains a '?' 
-				$translation = preg_replace( 
+				#these links are local so we add '?match=xx' to their url,
+				#unless it already contains a '?'
+				$translation = preg_replace(
 					"/<a href=\"http:\/\/([^\"\?]*)\"(([\s]+)(c(?!lass=)|[^c\>\s])([^\>\s]*))*\>/i",
 					"<a href=\"http://\\1?match={$wgContLanguageCode}\"\\2>", $translation );
 				#now add class='extiw' to these links
-				$translation = preg_replace( 
+				$translation = preg_replace(
 					"/<a href=\"http:\/\/([^\"]*)\"(([\s]+)(c(?!lass=)|[^c\>\s])([^\>\s]*))*\>/i",
 					"<a href=\"http://\\1\" class=\"extiw\"\\3>", $translation );
 				#use class='extiw' for images too
@@ -76,9 +77,9 @@ function addMatchedText ( &$parserOutput , &$text ) {
 				$text = preg_replace("/<font id=\"(.*?)\"/i","<font id=\"r_\\1\"", $text );
 
 				#add tags before h2 and h3 sections
-				$translation = preg_replace("/<h2>/i","<div title=\"@@h2\"></div>\n<h2>", 
+				$translation = preg_replace("/<h2>/i","<div title=\"@@h2\"></div>\n<h2>",
 							    $translation );
-				$translation = preg_replace("/<h3>/i","<div title=\"@@h3\"></div>\n<h3>", 
+				$translation = preg_replace("/<h3>/i","<div title=\"@@h3\"></div>\n<h3>",
 							    $translation );
 				$text = preg_replace("/<h2>/i","<div title=\"@@h2\"></div>\n<h2>", $text );
 				$text = preg_replace("/<h3>/i","<div title=\"@@h3\"></div>\n<h3>", $text );
@@ -88,7 +89,7 @@ function addMatchedText ( &$parserOutput , &$text ) {
 						"<a href=\"/\\1?match={$match_request}\"", $text );
 
 				#do the job
-				$text = matchColumns ( $text, $myLanguage, $myURL , 
+				$text = matchColumns ( $text, $myLanguage, $myURL ,
 						       $translation, $languageName, $url );
 			}
 			return true;
@@ -99,16 +100,16 @@ function addMatchedText ( &$parserOutput , &$text ) {
 
 
 /**
- * Return table with two columns of text 
+ * Return table with two columns of text
  * Text is split into slices based on title tags
  */
 
 function matchColumns( $left_text, $left_title, $left_url, $right_text, $right_title, $right_url ){
 
-	# note about emdedding: 
-	# text is split only at a single level. 
+	# note about emdedding:
+	# text is split only at a single level.
 	# initially we assume that this level is zero
-	# if nesting is encountered before the 
+	# if nesting is encountered before the
 	# first paragraph, then this split level is increased
 	# we keep track of the current nesting level during processing
 	# if (current level != split level) then we do not split the text
@@ -122,13 +123,13 @@ function matchColumns( $left_text, $left_title, $left_url, $right_text, $right_t
 	$left_splitlevel = -1;
 	$right_splitlevel = -1;
 
-	# split text 
+	# split text
 	$tag_pattern = "/<div title=\"([^\"]*)\"><\/div>/i";
 	$left_slices = preg_split( $tag_pattern, $left_text );
 	$right_slices = preg_split( $tag_pattern, $right_text );
 	preg_match_all( $tag_pattern, $left_text,  $left_tags, PREG_PATTERN_ORDER );
 	preg_match_all( $tag_pattern, $right_text, $right_tags, PREG_PATTERN_ORDER );
-  
+
 	/**
 	 * Order slices in a two-column array.
 	 * slices that are surrounded by the same tag belong in the same line
@@ -136,27 +137,27 @@ function matchColumns( $left_text, $left_title, $left_url, $right_text, $right_t
 	 */
 	$body = '';
 	$left_chunk = '';
-	$right_chunk = ''; 
+	$right_chunk = '';
 
 	$j=0;
 	$max_i = count( $left_slices );
 	for ( $i=0 ; $i < $max_i ; $i++ ) {
 		$found = false;
 		$left_chunk .= $left_slices[$i];
- 
+
 		$max_k = count( $right_slices );
 
 		# if we are at the end of the loop, finish quickly
-		if ( $i==$max_i - 1 )  { 
+		if ( $i==$max_i - 1 )  {
 			for ( $k=$j ; $k < $max_k  ; $k++ ) $right_chunk .= $right_slices[$k];
 			$found = true;
-		} 
+		}
 		else for ( $k=$j ; $k < $max_k  ; $k++ ) {
-			
+
 			#look for requested tag in the text
 			$a = strpos ( $right_slices[$k], $left_tags[1][$i] );
 			if( $a ) {
-				#go to beginning of paragraph 
+				#go to beginning of paragraph
 				#this regexp matches the rightmost delimiter
 				$sub = substr( $right_slices[$k], 0, $a);
 				if ( preg_match("/(.*)<(p|dl)>/is", $sub, $matches ) ){
@@ -172,7 +173,7 @@ function matchColumns( $left_text, $left_title, $left_url, $right_text, $right_t
 				$j = $k;
 				break;
 			}
-			
+
 			$right_chunk .= $right_slices[$k];
 
 			if( $k < $max_k - 1 ) {
@@ -182,7 +183,7 @@ function matchColumns( $left_text, $left_title, $left_url, $right_text, $right_t
 				    break;
 				}
 			}
-		  
+
 		}
 		if( $found ) {
 
@@ -204,7 +205,7 @@ function matchColumns( $left_text, $left_title, $left_url, $right_text, $right_t
 				  $right_bits[$l] = $right_seps[0][$l-1].$right_bits[$l];
 			}
 
-			$max = max( count( $left_bits ) , count( $right_bits )); 
+			$max = max( count( $left_bits ) , count( $right_bits ));
 			# initialize missing elements
 			for($l= count( $left_bits ); $l<$max; $l++) $left_bits[$l]='';
 			for($l= count( $right_bits ); $l<$max; $l++) $right_bits[$l]='';
@@ -220,9 +221,9 @@ function matchColumns( $left_text, $left_title, $left_url, $right_text, $right_t
 				#are we at the end?
 				$the_end = ($l == $max-1) && ($i == $max_i -1 );
 
-				if(( $left_splitlevel == -1) && ($right_splitlevel == -1)) { 
+				if(( $left_splitlevel == -1) && ($right_splitlevel == -1)) {
 					$left_splitlevel  = $left_nesting;
-					$right_splitlevel = $right_nesting; 
+					$right_splitlevel = $right_nesting;
 					$left_opening  = $left_o;
 					$right_opening = $right_o;
 					$left_closure  = $left_c;
@@ -246,9 +247,9 @@ function matchColumns( $left_text, $left_title, $left_url, $right_text, $right_t
 					$right_suffix = $right_closure;
 				}
 
-				if( ( ($left_nesting == $left_splitlevel) 
+				if( ( ($left_nesting == $left_splitlevel)
 				      && ($right_nesting == $right_splitlevel) ) || $the_end)  {
-					$body .= 
+					$body .=
 					"<tr><td valign=\"top\" style=\"padding-right: 0.5em\">"
 					."<div style=\"width:35em; margin:0px auto\">\n"
 					.$left_prefix.$left_bits[$l].$left_suffix
@@ -281,7 +282,7 @@ function matchColumns( $left_text, $left_title, $left_url, $right_text, $right_t
 	# format table head and return results
 	$left_url = htmlspecialchars( $left_url );
 	$right_url = htmlspecialchars( $right_url );
-	$head = 
+	$head =
 "<table width=\"100%\" border=\"0\" bgcolor=\"white\" rules=\"cols\" cellpadding=\"0\">
 <colgroup><col width=\"50%\"/><col width=\"50%\"/></colgroup><thead>
 <tr><td bgcolor=\"#cfcfff\" align=\"center\">
@@ -294,7 +295,7 @@ function matchColumns( $left_text, $left_title, $left_url, $right_text, $right_t
 
 
 /*
- * returns how much the stack is changed 
+ * returns how much the stack is changed
  * also returns opening and closing sequences of tag
  */
 function nesting_delta ( $text ) {
@@ -322,7 +323,7 @@ function nesting_delta ( $text ) {
 			#}
 		}
 	}
-	for($i=0; $i<$counter; $i++){					
+	for($i=0; $i<$counter; $i++){
 		$opening .= $stack[$i][0];
 		$closure = "</".$stack[$i][1].">".$closure;
 	}
@@ -330,5 +331,3 @@ function nesting_delta ( $text ) {
 	return array($counter, $opening, $closure);
 
 }
-
-

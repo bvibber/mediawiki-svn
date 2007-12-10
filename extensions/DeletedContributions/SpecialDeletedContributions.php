@@ -7,9 +7,10 @@
 
 $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Aaron Schulz',
+	'version' => '1.1',
 	'name' => 'Deleted user contributions',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:DeletedContributions',
-	'description' => 'Gives sysops the ability to browse a user\'s deleted edits.'
+	'description' => 'Gives sysops the ability to browse a user\'s deleted edits',
 );
 
 # Internationalisation
@@ -44,5 +45,3 @@ function efLoadDeletedContribsMessages() {
 
 $wgSpecialPages['DeletedContributions'] = array( 'SpecialPage', 'DeletedContributions', 'deletedhistory',
 		/*listed*/ true, /*function*/ false, /*file*/ false );
-
-
