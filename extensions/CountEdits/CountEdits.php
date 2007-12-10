@@ -11,11 +11,13 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'efCountEdits';
 	$wgExtensionCredits['specialpage'][] = array(
-			'name' => 'Count Edits',
-			'author' => 'Rob Church',
-			'description' => 'Special page that counts user edits and provides a top-ten contributor list',
+		'name' => 'Count Edits',
+		'version' => '1.1',
+		'author' => 'Rob Church',
+		'description' => 'Special page that counts user edits and provides a top-ten contributor list',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:CountEdits',
 	);
-	
+
 	/* This line will have no effect on pre-1.7 wikis */
 	$wgAutoloadClasses['SpecialCountEdits'] = dirname( __FILE__ ) . '/CountEdits.page.php';
 	/* However, on pre-1.7 wikis, we can't afford to mess this up */
@@ -49,5 +51,3 @@ if( defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	exit( 1 );
 }
-
-

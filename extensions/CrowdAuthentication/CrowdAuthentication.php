@@ -24,11 +24,12 @@
  */
 
 $wgExtensionCredits['other'][] = array(
-        'name' => 'Crowd Authentication Plugin',
-        'version' => '$Revision$',
-        'author' => 'River Tarnell',
-        'description' => 'Authentication plugin for Atlassian Crowd',
-        );
+	'name' => 'Crowd Authentication Plugin',
+	'version' => '$Revision$',
+	'author' => 'River Tarnell',
+	'description' => 'Authentication plugin for Atlassian Crowd',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:CrowdAuthentication',
+);
 
 require_once("AuthPlugin.php");
 
@@ -128,7 +129,7 @@ class CrowdAuthenticator extends AuthPlugin {
 
 		return null;
 	}
-				
+
 	public function /*bool*/ userExists(/*string*/ $name) {
 		return !is_null($this->findUsername($name));
 	}
@@ -214,7 +215,7 @@ class CrowdAuthenticator extends AuthPlugin {
 	global	$caDefaultGroups;
 		$crowd = $this->getCrowd();
 		$nameparts = split(" ", $realname, 2);
-		$firstname = $user->getName(); 
+		$firstname = $user->getName();
 		$lastname = "";
 		if (count($nameparts) > 0)
 			$firstname = $nameparts[0];
@@ -239,11 +240,11 @@ class CrowdAuthenticator extends AuthPlugin {
 
 		try {
 			$crowd->addPrincipal(array("in0" => $this->token,
-						   "in1" => $principal, 
+						   "in1" => $principal,
 						   "in2" => $cred));
 			foreach ($caDefaultGroups as $group)
 				$crowd->addPrincipalToGroup(array("in0" => $this->token, "in1" => $user->getName(), "in2" => $group));
-		
+
 			return true;
 		} catch (Exception $e) {
 			return false;

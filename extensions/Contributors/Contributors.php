@@ -6,31 +6,32 @@
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
- 
+
 if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'efContributors';
 	$wgExtensionCredits['specialpage'][] = array(
 		'name' => 'Contributors',
+		'version' => '1.1',
 		'author' => 'Rob Church',
 		'description' => 'Summarises the main contributors to an article',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Contributors',
 	);
-	
+
 	$wgAutoloadClasses['SpecialContributors'] = dirname( __FILE__ ) . '/Contributors.page.php';
 	$wgSpecialPages['Contributors'] = 'SpecialContributors';
-	
+
 	/**
 	 * Intelligent cut-off limit; see below
 	 */
 	$wgContributorsLimit = 10;
-	
+
 	/**
 	 * After $wgContributorsLimit is reach, contributors with less than this
 	 * number of edits to a page won't be listed in normal or inclusion lists
 	 */
 	$wgContributorsThreshold = 2;
-	
+
 	/**
 	 * Extension initialisation function
 	 */
@@ -45,7 +46,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgHooks['SkinTemplateBuildNavUrlsNav_urlsAfterPermalink'][] = 'efContributorsNavigation';
 		$wgHooks['MonoBookTemplateToolboxEnd'][] = 'efContributorsToolbox';
 	}
-	
+
 	/**
 	 * Invalidate the cache we saved for a given title
 	 *
@@ -54,10 +55,10 @@ if( defined( 'MEDIAWIKI' ) ) {
 	function efContributorsInvalidateCache( &$article ) {
 		global $wgMemc;
 		$wgMemc->delete( wfMemcKey( 'contributors', $article->getId() ) );
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * Prepare the toolbox link
 	 */
@@ -91,4 +92,3 @@ if( defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	exit( 1 );
 }
-

@@ -2,19 +2,20 @@
 
 ///Add-on to Contributions Extension by Rob Church
 /**
- * The Contributions extension MUST be installed for 
+ * The Contributions extension MUST be installed for
  * this Extension to function.  This extension adds
  * JS popup DIVs when the user moves their mouse over
  * the "Main Contributors" link.
- * 
+ *
  * @addtogroup Extensions
  * @author Tim Laqua <t.laqua@gmail.com>
  */
- 
+
 if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionFunctions[] = 'efContributorsAddon';
 	$wgExtensionCredits['other'][] = array(
 		'name' => 'ContributorsAddon',
+		'version' => '1.1',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:ContributorsAddon',
 		'author' => 'Tim Laqua',
 		'description' => 'Adds JS onMouseOver popups to "Main Contributors" links',
@@ -27,7 +28,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgHooks['OutputPageParserOutput'][] = 'efContributorsAddonSetup';
 		return true;
 	}
-	
+
 	function efContributorsAddonSetup(&$out, &$parseroutput) {
 		global $wgScriptPath;
 		$out->addScript( '<link rel="stylesheet" type="text/css" href="' . $wgScriptPath . '/extensions/ContributorsAddon/ContributorsAddon.css" />' );
