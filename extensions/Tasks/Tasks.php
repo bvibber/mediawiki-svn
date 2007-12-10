@@ -69,9 +69,11 @@ $wgTaskExtensionTasksCachedTitle = '' ;
 # Integrating into the MediaWiki environment
 
 $wgExtensionCredits['Tasks'][] = array(
-        'name' => 'Tasks',
-        'description' => 'An extension to manage tasks.',
-        'author' => 'Magnus Manske'
+	'name'        => 'Tasks',
+	'version'     => '1.1',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:Tasks',
+	'description' => 'An extension to manage tasks.',
+	'author'      => 'Magnus Manske',
 );
 
 $wgExtensionFunctions[] = 'wfTasksExtension';
@@ -166,9 +168,9 @@ function wfTaskExtensionHeaderHook( &$article ) { # Checked for HTML and MySQL i
 		wfTaskExtensionHeaderSign();
 		return true;
 	}
-	
+
 	$subtitle = '';
-	
+
 	if( ctype_digit( $title->getText() ) ) {
 		// Page title format 'Task:123', suggested by Rowan Collins
 		$taskid = intval( $title->getText() );
@@ -176,7 +178,7 @@ function wfTaskExtensionHeaderHook( &$article ) { # Checked for HTML and MySQL i
 		// Invalid page title; can't extract the task id
 		return true;
 	}
-	
+
 	wfTasksAddCache();
 	$st = new SpecialTasks();
 	$task = '';
@@ -191,11 +193,11 @@ function wfTaskExtensionHeaderHook( &$article ) { # Checked for HTML and MySQL i
 	$link1 = $sk->makeLinkObj( $page_title );
 	$link2 = $sk->makeLinkObj( $page_title, wfMsgHTML( 'tasks_here' ), 'action=tasks' );
 	$subtitle .= '<div id="task_header">' . wfMsgForContent( 'tasks_discussion_page_for', $link1, $link2 ) . "</div>\n" ;
-	$subtitle .= '<table border="1" cellspacing="1" cellpadding="2" id="task_header_table">' . 
+	$subtitle .= '<table border="1" cellspacing="1" cellpadding="2" id="task_header_table">' .
 				'<tr>' . wfTaskExtensionGetTableHeader( false ) . "</tr>\n";
 	$subtitle .= $st->get_task_table_row( $task, $page_title, false, $returnto );
 	$subtitle .= "</table>\n";
-	
+
 	$subtitle = $wgOut->getSubtitle() . '<br />' . $subtitle;
 	$wgOut->setSubtitle( $subtitle );
 	return true;
@@ -220,10 +222,10 @@ function wfTaskExtensionHeaderSign() {
 	$st = new SpecialTasks();
 	$tasks = $st->get_open_task_list( $wgTitle, true );
 	if( count( $tasks ) == 0 ) {
-		# No tasks	
+		# No tasks
 		return;
 	}
-	
+
 	$out = '';
 	$max = 0;
 	foreach( $tasks as $task ) {
@@ -247,10 +249,10 @@ function wfTaskExtensionHeaderSign() {
 		# Nothing for you to see here, please move along
 		return;
 	}
-	
+
 	// Wiki-safe output
 	$out = $wgOut->parse( '<div id="task_sign">' . $max_msg . '</div>' );
-	
+
 	$subtitle = $wgOut->getSubtitle() . '<br />' . $out;
 	$wgOut->setSubtitle( $subtitle );
 }
@@ -280,12 +282,12 @@ function wfTasksExtensionAfterToolbox( &$tpl ) { # Checked for HTML and MySQL in
 		# No special pages please
 		return;
 	}
-	
+
 	wfTasksAddCache();
 	$st = new SpecialTasks;
 	$tasks = $st->get_open_task_list( $wgTitle, true );
 	if( count( $tasks ) == 0 ) {
-		# No tasks	
+		# No tasks
 		return;
 	}
 
@@ -314,7 +316,7 @@ function wfTasksExtensionAfterToolbox( &$tpl ) { # Checked for HTML and MySQL in
 				}
 				?></li>
 <?php
-		
+
 	}
 	return true ;
 }
@@ -374,10 +376,10 @@ function wfTasksExtensionArticleSaveComplete( &$article, &$user, $text, $summary
 		# No tasks for talk pages, no need to bother the database...
 		return false;
 	}
-	
+
 	$st = new SpecialTasks;
 	$tasks = $st->get_tasks_for_page( $t, true );
-	
+
 	# Mark creation tasks as closed
 	foreach( $tasks as $task ) {
 		if( !$st->is_creation_task( $task->task_type ) ) {
@@ -390,13 +392,13 @@ function wfTasksExtensionArticleSaveComplete( &$article, &$user, $text, $summary
 		}
 		$st->change_task_status( $task->task_id, MW_TASK_CLOSED );
 		$st->set_new_article_id( $t );
-		
+
 		$id = $t->getArticleId();
 		# Nothing more to do
 		break;
 	}
-	
-	# OPTIONALLY create a new task 
+
+	# OPTIONALLY create a new task
 	$on_create = $st->get_task_num( wfMsgForContent( 'tasks_event_on_creation' ) );
 	$on_create_anon = $st->get_task_num( wfMsgForContent( 'tasks_event_on_creation_anon' ) );
 	$add_task = MW_TASK_INVALID;
@@ -409,7 +411,7 @@ function wfTasksExtensionArticleSaveComplete( &$article, &$user, $text, $summary
 		$comment = htmlspecialchars( wfMsgForContent( 'tasks_on_creation_comment' ) );
 		$st->add_new_task( $t, $comment, $add_task ) ;
 	}
-	
+
 	return false;
 }
 
@@ -456,12 +458,12 @@ function wfTasksExtensionAction( $action, $article ) { # Checked for HTML and My
 		# Not my kind of action!
 		return true;
 	}
-	
+
 	wfTasksAddCache();
-	
+
 	$t = new SpecialTasks;
 	$t->page_management( $article->getTitle() );
-	
+
 	return false;
 }
 
@@ -480,7 +482,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 	require_once $IP.'/includes/SpecialPage.php';
 
 	class SpecialTasks extends SpecialPage {
-	
+
 		var $status_types = array(
 			MW_TASK_OPEN     => 'open',
 			MW_TASK_ASSIGNED => 'assigned',
@@ -492,7 +494,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		var $creation_tasks; # e.g., ( 1, 2, 3 )
 		var $task_order = array(); # e.g., 'delete' => 5
 		var $pagemode = '' ;
-	
+
 		/**
 		* Constructor
 		*/
@@ -501,7 +503,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$this->includable( true );
 			$this->update_types();
 		}
-		
+
 		/**
 		 * Returns the order of the type, or 0 if not defined
 		 * @param string $type key like 'create' or 'cleanup'
@@ -514,7 +516,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				return 0;
 			}
 		}
-		
+
 		/**
 		 * Returns the type constant associated with the text key, or MW_TASK_INVALID
 		 * @param string $type text key
@@ -529,7 +531,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				return $key;
 			}
 		}
-		
+
 		/**
 		 * Returns the text key for a given task type constant
 		 * @param $num numeric key
@@ -542,14 +544,14 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			}
 			return $this->task_types[$num];
 		}
-		
+
 		/**
 		 * Updates task_types and creation_tasks from wfMsg
 		 * @fixme Provide localized display names for user's UI language
 		 */
 		function update_types() { # Checked for HTML and MySQL insertion attacks
 			wfTasksAddCache();
-			
+
 			# task type numeric key, text key, localized text
 			$this->task_types = array();
 			$s = wfMsgForContent( 'tasks_task_types' );
@@ -570,7 +572,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				$this->task_types[$keyNum] = $keyName;
 				$this->task_types_text[$keyName] = $localName;
 			}
-			
+
 			# List of creation-type tasks
 			$this->creation_tasks = array();
 			$s = wfMsgForContent( 'tasks_creation_tasks' );
@@ -583,7 +585,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				}
 				$this->creation_tasks[] = $keyNum;
 			}
-			
+
 			$this->task_order = array();
 			$s = wfMsgForContent( 'tasks_significance_order' );
 			$s = explode( '<' , $s );
@@ -595,7 +597,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				}
 			}
 		}
-		
+
 		/**
 		 * @param string $type_key 'open', 'wontfix', etc
 		 * @return string localized name as text: 'Open', 'Nefarinda', etc
@@ -607,7 +609,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			}
 			return $this->task_types_text[$type_key];
 		}
-		
+
 		/**
 		 * @param string $type_key
 		 * @return string HTML-escaped localized name
@@ -623,7 +625,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		function is_creation_task( $task_type ) { # Checked for HTML and MySQL insertion attacks
 			return in_array( $task_type, $this->creation_tasks );
 		}
-		
+
 		/**
 		 * @param int $status key
 		 * @return bool
@@ -639,7 +641,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		function is_closed( $status ) { # Checked for HTML and MySQL insertion attacks
 			return !$this->is_open( $status );
 		}
-		
+
 		/**
 		 * Takes a title and a list of existing tasks, and decides which new tasks can be created.
 		 * There's no point in having a dozen "wikify" tasks for a single article, now is there? :-)
@@ -652,14 +654,14 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$tasks = $this->get_tasks_for_page( $title );
 			$new_tasks = array();
 			$tg = array();
-			
+
 			foreach( $tasks as $t ) {
 				# Assemble types; if multiple of one type, assemble open ones
 				if( !isset( $tg[$t->task_type] ) || $this->is_open( $t->task_status ) ) {
 					$tg[$t->task_type] = $t->task_status;
 				}
 			}
-			
+
 			foreach( array_keys( $this->task_types ) as $a ) {
 				if( $exists == $this->is_creation_task( $a ) ) {
 					# Creation task and existence exclude each other
@@ -685,12 +687,12 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				# No form
 				return '';
 			}
-			
+
 			$out = '';
 			$tasks = array();
 			$type = $wgRequest->getInt( 'type' );
 			$name = $wgRequest->getText( 'username' );
-			
+
 			$comment = $wgRequest->getText( 'text', '' ); # Not evaluated here; stored in database through safe database function
 			$new_tasks = $this->get_valid_new_tasks( $title, $tasks );
 			if( !isset( $new_tasks[$type] ) ) {
@@ -702,7 +704,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			}
 			return $out;
 		}
-		
+
 		/**
 		 * Adds a new task
 		 */
@@ -729,7 +731,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 					'task_timestamp'     => $dbw->timestamp()
 					) );
 		}
-		
+
 		/**
 		* For a list of tasks, get a single table row
 		* This function is heavy on output!
@@ -761,7 +763,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$out .= '<b>' . $encType . '</b><br /><i>';
 			$out .= wfMsgForContent( 'tasks_status_' . $this->status_types[$status] );
 			$out .= '</i><br />' ;
-			
+
 			# Additional info
 			$help_title = Title::makeTitleSafe( NS_HELP, wfMsgForContent('tasks_help_page') );
 			$help_title->mFragment = $encType ;
@@ -769,8 +771,8 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$more_title = Title::makeTitleSafe( NS_SPECIAL, 'Tasks'); # This special page
 			$ext2 = $sk->makeLinkObj( $more_title , wfMsgForContent('tasks_more_like_it') , 'task_type='.$task->task_type );
 			$out .= wfMsgForContent ( 'tasks_help_separator' , $ext1 , $ext2 ) ;
-			
-			
+
+
 			$out .= '</td>';
 			$out .= '<td align="left" valign="top" nowrap>';
 			$out .= wfMsgHTML( 'tasks_created_by', $sk->makeLinkObj( $cu, htmlspecialchars( $task->task_user_text ) ) );
@@ -831,11 +833,11 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 					# Closed or wontfix, can reopen (maybe)
 					$txt[] = $sk->makeLinkObj( $title, wfMsgHTML( 'tasks_reopen' ), "action=tasks&mode=reopen&taskid={$tid}{$returnto}" );
 				}
-				
+
 				if( $wgUser->isAllowed( 'delete' ) ) {
 					$txt[] = $sk->makeLinkObj( $title, wfMsgHTML( 'tasks_delete' ), "action=tasks&mode=delete&taskid={$tid}{$returnto}" );
 				}
-				
+
 				if( count( $txt ) > 0 ) {
 					$out .= '<br />' . implode( ' - ', $txt );
 				}
@@ -844,7 +846,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$tdp = $this->get_task_discussion_page( $task );
 			$out .= '<br />' . $sk->makeLinkObj( $tdp, wfMsgHTML('tasks_discussion_page_link') );
 			$out .= '</td></tr>' ;
-			
+
 			# Transclude comments page, if wanted
 			if( $wgUser->getOption( 'show_task_comments' ) ) {
 				if( $this->pagemode == 'search' || $this->pagemode == 'tasks_of_page' ) {
@@ -855,7 +857,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		}
 
 		/**
-		 * Returns the 
+		 * Returns the
 		 * @param Title $title of task page to load
 		 * @param int $col_compensator Number of table columns to span
 		 * @return string HTML table row, or empty string
@@ -866,7 +868,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				# Nothing to transclude
 				return '';
 			}
-			
+
 			global $wgOut;
 			$art = new Article( $title );
 			$ret = $art->getContent( false );
@@ -897,12 +899,12 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			}
 
 			$out = "<h2>" . wfMsgHTML( 'tasks_existing_header' ) . "</h2>\n" .
-				"<table border='1' cellspacing='1' cellpadding='2'>" . 
+				"<table border='1' cellspacing='1' cellpadding='2'>" .
 				"<tr>" . wfTaskExtensionGetTableHeader() . "</tr>" .
 				$out . "</table>";
 			return $out;
 		}
-		
+
 		/**
 		 * Checks if there's a "mode" set in the URL of the current page
 		 * (performs changes on tasks, like assigning or closing them)
@@ -925,7 +927,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				# Needs to be logged in
 				return '';
 			}
-			
+
 			$out = '';
 			$fname = 'Tasks::check_mode';
 			$dbw =& wfGetDB( DB_MASTER );
@@ -991,7 +993,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 					$dbw->delete( 'tasks',
 						array( 'task_id' => $taskid ),
 						$fname );
-					
+
 					# Log task deletion
 					$act = wfMsgForContent( 'tasks_action_delete' );
 					$log = new LogPage( 'tasks' );
@@ -1014,7 +1016,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 
 			return $out;
 		}
-		
+
 		/**
 		 * Returns the number for the status
 		 * @param string $status key
@@ -1029,7 +1031,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			# Invalid status
 			return 0;
 		}
-		
+
 		/**
 		 * Changes the status of a task, performs some associated cleanup, and logs the action
 		 */
@@ -1037,7 +1039,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			global $wgUser;
 			$fname = 'Tasks:change_task_status';
 			$dbw =& wfGetDB( DB_MASTER );
-			
+
 			if( !is_numeric( $new_status ) || !is_numeric( $taskid ) ) {
 				# Paranoia
 				return;
@@ -1047,7 +1049,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$as = array( 'task_status' => $new_status );
 			# Where to change it:
 			$aw = array( 'task_id' => $taskid );
-			
+
 			if( $this->is_closed( $new_status ) ) {
 				# When closing, set closing user ID, and reset assignment
 				$as['task_user_close'] = $wgUser->getID();
@@ -1059,7 +1061,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				$as['task_user_close'] = 0;
 				$as['task_timestamp_closed'] = '';
 			}
-			
+
 			$dbw->update( 'tasks',
 				$as, # SET
 				$aw, # WHERE
@@ -1072,8 +1074,8 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$log = new LogPage( 'tasks' );
 			$log->addEntry( 'tasks', $title, $act );
 		}
-		
-		
+
+
 		/**
 		 * Returns the list of active tasks for this page, for display in the sidebar
 		 */
@@ -1121,7 +1123,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			}
 			return $title;
 		}
-		
+
 		/**
 		 * Returns a single task by its ID
 		 */
@@ -1140,7 +1142,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$dbr->freeResult( $res );
 			return $task;
 		}
-		
+
 		/**
 		 * Sets the article ID (on page creation)
 		 */
@@ -1169,7 +1171,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				$conds,
 				$fname );
 		}
-		
+
 		/**
 		* Called for page moves
 		*/
@@ -1179,9 +1181,9 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$dbw->update( 'tasks',
 				array( 'task_page_title' => $new_title->getPrefixedDBkey() ), # SET
 				array( 'task_page_title' => $old_title->getPrefixedDBkey() ), # WHERE
-				$fname );			
+				$fname );
 		}
-		
+
 		/**
 		* THIS IS THE MAIN FUNCTION FOR THE TAB-BASED INTERFACE
 		*/
@@ -1190,7 +1192,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				# No tasks for talk pages, no need to bother the database...
 				return;
 			}
-			
+
 			global $wgOut, $action, $wgRequest, $wgUser, $wgTitle;
 			$out = '';
 			$tasks = array();
@@ -1202,19 +1204,19 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			));
 			$wgOut->setSubtitle( wfMsgHTML( 'tasks_title', $title->getPrefixedText() ) );
 			$this->pagemode = 'tasks_of_page' ;
-			
+
 			# Create from form
 			$out .= $this->create_from_form( $title );
-			
+
 			# Check for mode
 			$out .= $this->check_mode( $title );
-			
+
 			# Get list of tasks that can be created
 			$new_tasks = $this->get_valid_new_tasks( $title, $tasks );
-			
+
 			# Show task creation form, if tasks can be created
 			$out .= $this->generate_form( $new_tasks );
-			
+
 			# Existing tasks
 			$out .= $this->show_existing_tasks( $title, $tasks );
 
@@ -1223,7 +1225,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			if( $this->isValidRedirect( $returnto ) ) {
 				# Forward to other page
 				$wgOut->redirect( $returnto );
-				
+
 				$skin =& $wgUser->getSkin();
 				$link = $skin->makeExternalLink( $returnto, wfMsgHTML( 'tasks_here' ) );
 				$msg = wfMsgHTML( 'tasks_returnto', $link );
@@ -1233,7 +1235,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				$wgOut->addHtml( $out );
 			}
 		}
-		
+
 		/**
 		 * Confirm that the given redirect page is local to this site
 		 * FIXME: this can still pass you anywhere on the domain,
@@ -1252,7 +1254,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$url1 = $url1[0] . '/' . $url1[1] .'/' . $url1[2];
 			$url2 = explode( '/', $url );
 			$url2 = $url2[0] . '/' . $url2[1] .'/' . $url2[2];
-			
+
 			return ( $url1 == $url2 );
 		}
 
@@ -1294,7 +1296,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			;
 			return $out;
 		}
-		
+
 		/**
 		* Returns the exisiting tasks for a single page
 		*/
@@ -1313,7 +1315,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 					/* SELECT */ '*',
 					/* WHERE  */ $conds
 			);
-			
+
 			$ret = array();
 			while( $line = $dbr->fetchObject( $res ) ) {
 				$ret[$line->task_timestamp.':'.$line->task_id] = $line;
@@ -1322,13 +1324,13 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			krsort( $ret );
 			return $ret;
 		}
-		
+
 		function get_assigned_tasks( $userid ) { # Checked for HTML and MySQL insertion attacks
 			if( !is_numeric( $userid ) ) {
 				# Paranoia
 				return null;
 			}
-		
+
 			$dbr =& wfGetDB( DB_SLAVE );
 
 			$res = $dbr->select(
@@ -1336,7 +1338,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 					/* SELECT */ '*',
 					/* WHERE  */ array( 'task_user_assigned' => $userid )
 			);
-			
+
 			$ret = array();
 			while( $line = $dbr->fetchObject( $res ) ) {
 				$ret[$line->task_timestamp.':'.$line->task_id] = $line;
@@ -1345,7 +1347,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			krsort( $ret );
 			return $ret;
 		}
-	
+
 		/**
 		* Special page main function
 		*/
@@ -1357,7 +1359,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$mode = trim( $wgRequest->getVal( 'mode' ) );
 			$skin =& $wgUser->getSkin();
 			$dbr =& wfGetDB( DB_SLAVE );
-			
+
 			# Assignments
 			if( $wgUser->isLoggedIn() ) {
 				if( $mode == 'myassignments' ) {
@@ -1405,7 +1407,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 
 				}
 			}
-			
+
 			# Read former form
 			$task_type = array();
 			$status_type = array( 1 => 1 ) ; # Default : open tasks
@@ -1416,13 +1418,13 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				$status_type = $_POST['status_type'];
 			}
 			$ascending = $wgRequest->getCheck( 'ascending' );
-			
+
 			$get_task_type = $wgRequest->getInt( 'task_type' , 0 ) ;
 			if ( count ( $task_type ) == 0 && $get_task_type > 0 ) {
 				$task_type = array() ;
 				$task_type[$get_task_type] = 1 ;
 			}
-			
+
 			if( !is_array( $status_type ) ) {
 				return;
 			}
@@ -1445,7 +1447,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 					# No choice => search all
 					$search_status = array_keys( $this->status_types );
 				}
-					
+
 				$limit = intval( wfMsg( 'tasks_search_limit' ) );
 				$offset = $wgRequest->getInt( 'offset', 0 );
 				if( $wgRequest->getCheck( 'next' ) ) {
@@ -1477,7 +1479,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 					$tasks[] = $line;
 				}
 				$dbr->freeResult( $res );
-				
+
 				if( count( $tasks ) > 0 ) {
 
 					$out .= '<h2>' . wfMsgHTML( 'tasks_search_results' ) . "</h2>\n";
@@ -1548,7 +1550,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$this->setHeaders();
 			$wgOut->addHtml( $out );
 		}
-		
+
 		/**
 		 * Format an HTML checkbox
 		 * @param string $name
@@ -1579,6 +1581,3 @@ function wfTasksTestTables( &$tables ) {
 	$tables[] = 'tasks';
 	return true;
 }
-
-
-?>

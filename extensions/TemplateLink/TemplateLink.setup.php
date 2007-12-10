@@ -20,17 +20,19 @@ EOT;
 
 # Credits
 $wgExtensionCredits['specialpage'][] = array(
-       'name' => 'TemplateLink',
-       'author' =>'Magnus Manske', 
-       'url' => 'http://www.mediawiki.org/wiki/Extension:TemplateLink',
-       'description' => 'This extension can show a template as a new page'
-       );
+	'name' => 'TemplateLink',
+	'version'     => '1.1',
+	'author' =>'Magnus Manske',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:TemplateLink',
+	'description' => 'This extension can show a template as a new page',
+);
 $wgExtensionCredits['parserhook'][] = array(
-       'name' => 'TemplateLink',
-       'author' =>'Magnus Manske', 
-       'url' => 'http://www.mediawiki.org/wiki/Extension:TemplateLink',
-       'description' => 'This extension can show a template as a new page'
-       );
+	'name' => 'TemplateLink',
+	'version'     => '1.1',
+	'author' =>'Magnus Manske',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:TemplateLink',
+	'description' => 'This extension can show a template as a new page',
+);
 
 
 # Special page registration
@@ -38,28 +40,28 @@ $wgAutoloadClasses['TemplateLink'] = dirname(__FILE__). '/TemplateLink.body.php'
 $wgSpecialPages['TemplateLink'] = 'TemplateLink'; # Let MediaWiki know about your new special page.
 $wgHooks['LoadAllMessages'][] = 'TemplateLink::loadMessages'; # Load the internationalization messages for your special page.
 $wgHooks['LanguageGetSpecialPageAliases'][] = 'TemplateLinkLocalizedPageName'; # Add any aliases for the special page.
- 
+
 function TemplateLinkLocalizedPageName(&$specialPageArray, $code){
   # The localized title of the special page is among the messages of the extension:
   TemplateLink::loadMessages();
   $text = wfMsg('TemplateLink');
- 
+
   # Convert from title in text form to DBKey and put it into the alias array:
   $title = Title::newFromText($text);
   $specialPageArray['TemplateLink'][] = $title->getDBKey();
- 
+
   return true;
 }
 
 
 # The tag
 $wgExtensionFunctions[] = 'efTemplateLinkSetup';
- 
+
 function efTemplateLinkSetup(){
     global $wgParser;
     $wgParser->setHook( 'templatelink', 'efTemplateLink' );
 }
- 
+
 function efTemplateLink( $input, $args, $parser ){
   $template = trim( $input );
   if( trim( $template )== '' )return htmlspecialchars( $template );
@@ -67,7 +69,7 @@ function efTemplateLink( $input, $args, $parser ){
   if( isset( $args['text'] ))$text = $args['text'];
   else $text = ucfirst( trim( array_shift( explode( '|' , $template , 2 ))));
 
-  
+
   $nt = Title::newFromText( "Special:TemplateLink" );
   $url = $nt->escapeLocalURL();
   $url .= "?template=" . urlencode( $template );
