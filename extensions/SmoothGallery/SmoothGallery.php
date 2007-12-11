@@ -154,8 +154,10 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial ) {
 		$showinfopane = true;
 	}
 
-	if ( isset( $argv["fallback"] ) {
-		$failback = $argv["fallback"];
+	if ( isset( $argv["fallback"] ) ) {
+		$fallback = $argv["fallback"];
+	} else {
+		$fallback = "gallery";
 	}
 
 	if ( isset( $argv["special"] ) ) {
@@ -223,6 +225,7 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial ) {
 	$missing_img = "";
 
 	$plain_gallery = new ImageGallery();
+	$first_image = '';
 
 	foreach ( $title_arr as $title ) {
 		//Get the image object from the database
@@ -255,10 +258,14 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial ) {
 			continue;
 		}
 
-		if ( $full_thumb == "" ) {
+		if ( $full_thumb == '' ) {
 			//The thumbnail we requested was larger than the image;
 			//we need to just provide the image
 			$full_thumb = $img_obj->getUrl();
+		}
+
+		if ( $first_image == '' ) {
+			$first_image = '<img src="' . $full_thumb . '"  class="full" />';
 		}
 
 		if ( $carousel ) {
@@ -339,22 +346,29 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial ) {
 	$output .= '</div>';
 
 	if ( $fallback == "image" ) {
-		//output full image
+		$output .= '<div id="' . $name . '-fallback" class="myGallerySingleImage" style="width: ' . $width . ';height: ' . $height . ';">';
+		$output .= $first_image;
+		$output .= '</div>';
 	} elseif ( $fallback == "image-warn" ) {
-		//output full image w/ warning
+		loadSmoothGalleryI18n();
+		$output .= '<div id="' . $name . '-fallback" class="myGalleryWarning" style="width: ' . $width . ';height: ' . $height . ';">';
+		$output .= wfMsg("smoothgallery-javascript-disabled");
+		$output .= '<div class="myGallerySingleImage">';
+		$output .= $first_image;
+		$output .= '</div></div>';
 	} else {
-		$output .= outputPlainGallery ( $name );
+		$output .= outputPlainGallery ( $name, $plain_gallery );
 	}
 
-	$output .= outputJavascript( $name, $delay );
+	$output .= outputJavascript( $name, $timed, $delay, $carousel, $showarrows, $showinfopane );
 
 	//Finished, let's send it out
 	return $output;
 }
 
-function outputPlainGallery ( $name ) {
+function outputPlainGallery ( $name, $plain_gallery ) {
 	//Wrapper div for plain old gallery, to be shown per default, if JS is off.
-	$output .= '<div id="' . $name . '-plain">';
+	$output .= '<div id="' . $name . '-fallback">';
 
 	$output .= $plain_gallery->toHTML();
 
@@ -364,12 +378,12 @@ function outputPlainGallery ( $name ) {
 	return $output;
 }
 
-function outputJavascript ( $name, $delay ) {
+function outputJavascript ( $name, $timed, $delay, $carousel, $showarrows, $showinfopane ) {
 	//Output the javascript needed for the gallery with any
 	//options the user requested
 	$output = '<script type="text/javascript">';
 
-	$output .= 'document.getElementById("' . $name . '-plain").style.display = "none";'; //hide plain gallery
+	$output .= 'document.getElementById("' . $name . '-fallback").style.display = "none";'; //hide plain gallery
 	$output .= 'document.getElementById("' . $name . '").style.display = "block";'; //show smooth gallery
 
 	$output .= 'function startGallery_' . $name . '() {';
