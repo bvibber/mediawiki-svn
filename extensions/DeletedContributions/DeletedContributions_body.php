@@ -65,10 +65,10 @@ class DeletedContribsPager extends IndexPager {
 			return $this->mNavigationBar;
 		}
 		$linkTexts = array(
-			'prev' => wfMsgHtml( "sp-contributions-newer", $this->mLimit ),
-			'next' => wfMsgHtml( 'sp-contributions-older', $this->mLimit ),
-			'first' => wfMsgHtml('sp-contributions-newest'),
-			'last' => wfMsgHtml( 'sp-contributions-oldest' )
+			'prev' => wfMsgHtml( 'pager-newer-n', $this->mLimit ),
+			'next' => wfMsgHtml( 'pager-older-n', $this->mLimit ),
+			'first' => wfMsgHtml( 'page_first' ),
+			'last' => wfMsgHtml( 'page_last' )
 		);
 
 		$pagingLinks = $this->getPagingLinks( $linkTexts );
