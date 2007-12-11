@@ -58,6 +58,10 @@ $messages['sk'] = array(
 	'advancedrandom' => 'Rozšírený náhodný výber',
 );
 
+$messages['stq'] = array(
+	'advancedrandom' => 'Toufällige Siede (ferruumed)',
+);
+
 $messages['yue'] = array(
 	'advancedrandom' => '進階隨便',
 );

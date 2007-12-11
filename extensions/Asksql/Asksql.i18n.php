@@ -333,6 +333,18 @@ používajte túto funkciu s rozmyslom.",
 	'querysuccessful' => 'Požiadavka úspešne vykonaná',
 ),
 
+'stq' => array(
+	'asksql'           => 'SQL Froage',
+	'asksqltext'       => 'Bruuk dät Formular hier unner uum fluks ne Oufroage fon ju Doatenboank tou moakjen.
+Bruuk eenpelde Anfierengsteekene (\'as disse\') uum Riegen-Eenden outougränsjen.
+Dit kon oafte dän Server oarich beläästigje, bruuk dät deeruum spoarsoam.',
+	'sqlislogged'      => 'Beoachtje dät aal Oufroagen apteekend sunt.',
+	'sqlquery'         => 'Fang ju Oufroage oun',
+	'querybtn'         => 'Reek ju Oufroage ien',
+	'selectonly'       => 'Bloot schrieuwschutsede Oufroagen sunt ferlööwed.',
+	'querysuccessful'  => 'Oufroage glukked',
+),
+
 /* Sundanese (Kandar via BetaWiki) */
 'su' => array(
 	'asksql'           => 'Pamundut SQL',

@@ -94,6 +94,12 @@ $4",
 	'todo-form-submit' => 'Soumettre la requête',
 );
 
+$messages['gl'] = array(
+	'todo-new-queue' => 'novo',
+	'todo-list-change' => 'Cambiar',
+	'todo-list-cancel' => 'Cancelar',
+);
+
 $messages['nl'] = array(
 	'todo' => 'Takenlijst',
 	'todo-new-queue' => 'nieuw',

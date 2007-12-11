@@ -101,6 +101,10 @@ $messages['ar'] = array(
 	'regexblock-view-time' => 'في $1',
 );
 
+$messages['el'] = array(
+	'regexblock-stats-username' => 'Για $1',
+);
+
 $messages ['fr'] = array(
 	'regexblock' => 'Expressions régulières pour bloquer un utilisateur ou une IP',
 	'regexblock-page-title' => 'Blocage d’un nom par une expression régulière',

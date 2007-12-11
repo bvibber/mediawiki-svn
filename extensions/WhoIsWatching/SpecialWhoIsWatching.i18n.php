@@ -20,6 +20,8 @@ $allMessages = array(
 	),
 
 	'fr' => array(
+		'whoiswatching'               => 'Utilisateurs regardant une page du wiki',
+		'specialwhoiswatchingthepage' => 'Utilisateurs regardant %s',
 		'specialwhoiswatchingusage'   => 'Cette page spéciale ne peut être utilisée seule. Passez par [[MediaWiki:Number_of_watching_users_pageview]] pour définir un point d\'entrée vers cette page spéciale.',
 	),
 

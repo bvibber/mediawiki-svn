@@ -11,5 +11,7 @@
  */
 
 $messages = array(
+	'talkhere-notalk' => '\'\'(все още няма коментари)\'\'',
 	'talkhere-addcomment' => 'добавяне на коментар',
+	'talkhere-loading' => 'зареждане на редактора...',
 );

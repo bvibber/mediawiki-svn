@@ -53,8 +53,15 @@ $messages['fr'] = array(
 	'postcomment_youareloggedinas' => 'Vous n\'êtes pas identifié en tant que $1.',
 	'postcomment_addcommentdiscussionpage' => 'Ajoutez un commentaire sur cette page de discussion',
 	'postcomment_leavemessagefor' => 'Laissez un message pour $1',
+	'postcomment_said' => 'a dit',
 	'postcomment_invalidrequest' => 'Requête invalide',
 	'postcomment_replyto' => 'Répondre à $1',
+);
+
+$messages['gl'] = array(
+	'postcomment_discussionprotected' => 'A páxina de conversa foi protexida de novas publicacións.',
+	'postcomment_addcommentdiscussionpage' => 'Engade o teu comentario na páxina de conversa',
+	'postcomment_leavemessagefor' => 'Deixar unha mensaxe para $1',
 );
 
 $messages['hsb'] = array(

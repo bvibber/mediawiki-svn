@@ -35,6 +35,11 @@ $messages['ar'] = array(
 	'scanset_prev' => '&lt; السابق',
 );
 
+$messages['fr'] = array(
+	'scanset_next' => 'Suivant &gt;',
+	'scanset_prev' => '&lt; Précédent',
+);
+
 $messages['hsb'] = array(
 	'scanset_no_name' => 'ScanSet: Dyrbiš mjeno za skanowansku sadźbu podać, na př. &lt;mjeno skanowanskeje sadźby="EB1911" /&gt;',
 	'scanset_invalid_name' => 'ScanSet: Njepłaćiwa abo falowaca skanowanska sadźba.',

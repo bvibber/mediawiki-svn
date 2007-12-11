@@ -57,6 +57,14 @@ function efImportFreeImagesMessages() {
 			'importfreeimages_returntoform'   => 'ou, cliquez <a href=\'$1\'>ici</a> pour revenir à votre liste de résultats.',
 		),
 
+		'gl' => array(
+			'importfreeimages'              => 'Importar Imaxes Libres',
+			'importfreeimages_nophotosfound' => 'Ningunhas fotos foron atopadas cos criterios \'$1\' de procura, ténteo de novo.',
+			'importfreeimages_owner'        => 'Autor',
+			'importfreeimages_next'         => 'Seguinte $1',
+			'importfreeimages_filefromflickr' => '$1 polo usuario <b>[$2]</b> de flickr. Orixinal URL',
+		),
+
 		'hsb' => array(
 			'importfreeimages'              => 'Swobodne wobrazy importować',
 			'importfreeimages_description'  => 'Tuta strona ći dowola na Flickr za wobrazami z prihódnej ličencu pytać a je do swojeho wiki importować.',

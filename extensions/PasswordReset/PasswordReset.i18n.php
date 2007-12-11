@@ -80,6 +80,8 @@ $allMessages = array(
 		'passwordreset-confirmpass' => 'Confirmez le mot de passe',
 		'passwordreset-submit' => 'Remise à zéro du mot de passe',
 		'passwordreset-success' => 'Le mot de passe a été remis à zréo pour le \'\'user_id\'\' $1.',
+		'passwordreset-disableuser' => 'Désactiver le compte utilisateur ?',
+		'passwordreset-disablesuccess' => 'Compte utilisateur désactivé (user_id : $1)',
 	),
 
 	'gl' => array(

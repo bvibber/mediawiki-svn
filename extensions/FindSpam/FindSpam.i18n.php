@@ -39,6 +39,13 @@ $messages['fr'] = array(
 	'findspam-notextfound' => 'Aucune contribution trouvée',
 );
 
+$messages['gl'] = array(
+	'findspam' => 'Atopar spam',
+	'findspam-ip' => 'Enderezo IP:',
+	'findspam-ok' => 'De acordo',
+	'findspam-notextfound' => 'Non foron atopadas contribucións',
+);
+
 $messages['hsb'] = array(
 	'findspam' => 'Spam namakać',
 	'findspam-ip' => 'IP-adresa',

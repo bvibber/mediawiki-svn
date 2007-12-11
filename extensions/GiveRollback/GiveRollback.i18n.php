@@ -87,6 +87,7 @@ function efGiveRollbackMessages() {
 
 'el' => array(
 	'giverollback-username' => 'Όνομα χρήστη:',
+	'giverollback-comment' => 'Σχόλιο:',
 ),
 
 'ext' => array(

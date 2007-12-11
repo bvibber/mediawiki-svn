@@ -392,29 +392,30 @@ La divulgazione di tali informazioni può dar luogo alla rimozione permanente de
 ),
 
 'ja' => array(
-	'hiderevision' => '永久的な版の消去',
+	'hiderevision' => '永久的な版の秘匿',
 	'hiderevision-prompt' => '消去する版の番号(oldid):',
 	'hiderevision-continue' => '続ける',
 	'hiderevision-text' => 'これは、\'\'\'以下の場合に限って\'\'\'使用すべきです：
-* 不適切な個人情報
-*: \'\'個人の住所や電話番号、社会保障番号、その他\'\'
+; 不適切な個人情報
+: \'\'個人の住所や電話番号、社会保障番号、その他\'\'
 
-\'\'\'このシステムを悪用したり乱用したりする事は、権限を失う事になります。\'\'\'
+\'\'\'このシステムを悪用したり乱用したりする事は、Oversight権限を失う事になります。\'\'\'
 
-消去されたアイテムはウェブサイト上では誰も見る事が出来ません。しかし、貴方が間違って消去した場合、削除はログ化されている為、データベース管理者により手動で復帰する事が出来ます。',
-	'hiderevision-reason' => '理由(内密に記録されます):',
-	'hiderevision-submit' => '永久にこのデータを消去する',
-	'hiderevision-tab' => '版の消去',
+消去されたアイテムはウェブサイト上では誰も見る事が出来ません。但し、消去はログ化されている為、貴方が間違って消去した場合に、データベース管理者により手動で復帰する事が出来ます。',
+	'hiderevision-reason' => '理由(内密にログ化されます):',
+	'hiderevision-submit' => '永久にこのデータを秘匿する',
+	'hiderevision-tab' => '版の秘匿',
 	'hiderevision-noreason' => '消去する理由を記して下さい。',
 	'hiderevision-status' => '版番号 $1 に就いて: $2',
-	'hiderevision-success' => 'アーカイブと削除に成功しました。',
+	'hiderevision-success' => 'アーカイブ化と削除に成功しました。',
 	'hiderevision-error-missing' => 'データベース内に見付かりません。',
 	'hiderevision-error-current' => 'ページの最新版は削除することが出来ません。先にこの版を差し戻してください。',
-	'hiderevision-error-delete' => 'アーカイブ出来ませんでした。その版は過去に消去されていませんか?',
-	'oversight-nodiff' => '現在前の差分を辿る事が出来ません。ページが削除されたか、消去した版が最初の版であると考えられます。',
+	'hiderevision-error-delete' => 'アーカイブ化出来ませんでした。その版は過去に削除されていませんか?',
+	'oversight-nodiff' => '現在前の差分を辿る事が出来ません。ページが削除されたか、秘匿した版が最初の版であると考えられます。',
 	'oversight-log-hiderev' => '―― $1の編集を消去',
 	'oversight-view' => '詳細',
-	'oversight-header' => '下記は、最近永久に消去され、非公開となった版の一覧です。この情報を公開する事は、Oversight権限を永久に失う事になりかねません。',
+	'oversight-hidden' => '秘匿された版',
+	'oversight-header' => '下記は、最近永久に秘匿され、非公開となった版の一覧です。この情報を公開する事は、Oversight権限を永久に失う事になるかも知れません。',
 ),
 
 /* Kazakh Cyrillic (AlefZet) */

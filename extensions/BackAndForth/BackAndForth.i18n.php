@@ -173,6 +173,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Predošlé ($1)',
 ),
 
+'stq' => array(
+	'backforth-next' => 'Naiste ($1)',
+	'backforth-prev' => 'Foarige ($1)',
+),
+
 'sv' => array(
 	'backforth-next' => 'Nästa ($1)',
 	'backforth-prev' => 'Föregående ($1)',

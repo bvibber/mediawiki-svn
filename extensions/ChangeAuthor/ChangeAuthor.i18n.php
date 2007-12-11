@@ -98,6 +98,7 @@ $allMessages = array(
 		'changeauthor-rev' => 'Version $1',
 	),
 	'el' => array(
+		'changeauthor-comment' => 'Σχόλιο:',
 		'changeauthor-invalid-username' => 'Άκυρο όνομα-χρήστη  "$1".',
 		'changeauthor-rev' => 'r$1',#identical but defined
 	),
@@ -120,6 +121,7 @@ $allMessages = array(
 		'changeauthor-invalidform' => 'Prière d\'utiliser le formulaire généré par Special:ChangeAuthor plutôt qu\'un formulaire personnel',
 		'changeauthor-success' => 'Votre requête a été traitée avec succès.',
 		'changeauthor-logpagename' => 'Journal des changements faits par l\'auteur',
+		'changeauthor-rev' => 'r$1',#identical but defined
 	),
 	'frp' => array(
 		'changeauthor' => 'Changiér l’ôtor de les vèrsions',
@@ -137,6 +139,25 @@ $allMessages = array(
 		'changeauthor-success' => 'Voutra requéta at étâ trètâ avouéc reusséta.',
 		'changeauthor-logpagename' => 'Jornal des changements fêts per l’ôtor',
 		'changeauthor-rev' => 'v$1',
+	),
+	'gl' => array(
+		'changeauthor' => 'Mudar a revisión do autor',
+		'changeauthor-title' => 'Cambiar ao autor da revisión',
+		'changeauthor-search-box' => 'Procurar revisións',
+		'changeauthor-pagename-or-revid' => 'Nome do artigo ou ID da revisión:',
+		'changeauthor-pagenameform-go' => 'Adiante',
+		'changeauthor-comment' => 'Comentario:',
+		'changeauthor-changeauthors-multi' => 'Mudar autor(es)',
+		'changeauthor-explanation-multi' => 'Con este formulario pode cambiar as revisións dos autores. Simplemente cambie un ou máis dos nomes dos usuarios na listaxe de embaixo, engada un comentario (opcional) e prema no botón de \'Mudar autor(es)\'',
+		'changeauthor-changeauthors-single' => 'Cambiar autor',
+		'changeauthor-explanation-single' => 'Con este formulario pode cambiar a revisión do autor. Simplemente mude o nome do usuario embaixo, engada un comentario (opcional) e prema o botón de \'Mudar autor\'',
+		'changeauthor-invalid-username' => 'Nome de usuario non válido "$1".',
+		'changeauthor-nosuchuser' => 'Non hai tal usuario "$1".',
+		'changeauthor-revview' => 'Revisión nº$1 de $2',
+		'changeauthor-nosuchtitle' => 'Non hai ningún artigo que se chame "$1".',
+		'changeauthor-success' => 'A súa petición foi procesada con éxito.',
+		'changeauthor-logentry' => 'Cambie autor de $2 de $1 a $3 de $4',
+		'changeauthor-logpagename' => 'Rexistro dos cambios do autor',
 	),
 	'hsb' => array(
 		'changeauthor' => 'Wersijoweho awtora změnić',

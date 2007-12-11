@@ -51,6 +51,10 @@ $messages ['fr'] = array(
 	'inspectcache-deleted' => 'Cache supprimé',
 );
 
+$messages['gl'] = array(
+	'inspectcache-ok' => 'De acordo',
+);
+
 $messages['hsb'] = array(
 	'inspectcache' => 'Pufrowak pruwować',
 	'inspectcache-ok' => 'W porjadku',

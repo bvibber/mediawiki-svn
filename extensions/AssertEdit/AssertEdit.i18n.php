@@ -57,6 +57,11 @@ $messages['sk'] = array(
 	'assert_edit_message' => 'Uvedený predpoklad ($1) zlyhal.',
 );
 
+$messages['stq'] = array(
+	'assert_edit_title'   => 'Anspruch failsloain',
+	'assert_edit_message' => 'Die ounroate Anspruch ($1) is failsloain.',
+);
+
 $messages['yue'] = array(
 	'assert_edit_title'   => '維護失敗',
 	'assert_edit_message' => '所指定嘅斷言 ($1) 失敗。',

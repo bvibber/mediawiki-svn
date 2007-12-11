@@ -52,6 +52,7 @@ $messages['de'] = array(
 );
 
 $messages['el'] = array(
+	'lookupuser_nonexistent' => 'Σφάλμα: Ο Χρήστης δεν υπάρχει',
 	'lookupuser_realname' => 'Πραγματικό όνομα: $1',
 	'lookupuser_useroptions' => 'Επιλογές χρήστη:',
 );
@@ -68,6 +69,10 @@ $messages['fr'] = array(
 	'lookupuser_registration' => 'Date d\'enregistrement : $1',
 	'lookupuser_touched' => 'Enregistrement de l\'utilisateur touché pour la dernière fois : $1',
 	'lookupuser_useroptions' => 'Options de l\'utilisateur :',
+);
+
+$messages['gl'] = array(
+	'lookupuser_realname' => 'Nome real: $1',
 );
 
 $messages['hsb'] = array(

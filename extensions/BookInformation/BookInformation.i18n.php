@@ -394,6 +394,20 @@ function efBookInformationMessages() {
 	'bookinfo-provider' => 'Poskytovateľ údajov: $1',
 ),
 
+'stq' => array(
+	'bookinfo-header' => 'Informatione uur Bouke',
+	'bookinfo-result-title' => 'Tittel:',
+	'bookinfo-result-author' => 'Autor:',
+	'bookinfo-result-publisher' => 'Ferlaach:',
+	'bookinfo-result-year' => 'Jier:',
+	'bookinfo-error-invalidisbn' => 'ISBN nit gultich.',
+	'bookinfo-error-nosuchitem' => 'Ju Siede is nit deer of wuude nit fuunen.',
+	'bookinfo-error-nodriver' => 'Dät waas nit muugelk, ju äntspreekende Boukinformations-Snitsteede tou initialisierjen.',
+	'bookinfo-error-noresponse' => 'Neen Oantwoud of ju Tied is foarbie.',
+	'bookinfo-purchase' => 'Dit Bouk kon fon $1 beleeken wäide.',
+	'bookinfo-provider' => 'Doaten-Lääwerant: $1',
+),
+
 'sv' => array(
 	'bookinfo-header' => 'Bokinformation',
 	'bookinfo-result-title' => 'Titel:',

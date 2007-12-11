@@ -179,6 +179,21 @@ $messages['fr'] = array(
 	'math_WrongFontEncodingWithHint'        => 'Le symbole « $1 » pourrait ne pas être affiché par l\'encodage de caractères « $2 » (essayez la commande « $3{...} »).',
 );
 
+$messages['gl'] = array(
+	'math_CannotChangeDirectory'            => 'Non se pode mudar o directorio de traballo',
+	'math_CannotCreateTexFile'              => 'Non se pode crear unha fila de texto',
+	'math_InvalidColour'                    => 'A cor "$1" non é válida.',
+	'math_TooManyTokens'                    => 'A entrada é demasiado longa',
+	'math_UnavailableSymbolFontCombination' => 'O símbolo "$1" non está permitido na fonte "$2"',
+	'math_UnexpectedNextCell'               => 'O comando "&" só pode aparecer dentro dun bloque "\begin ... \end"',
+	'math_UnexpectedNextRow'                => 'O comando "\\" só pode aparecer dentro dun bloque "\begin ... \end"',
+	'math_UnmatchedBegin'                   => 'Atopouse un "\begin" sen o "\end" correspondente',
+	'math_UnmatchedCloseBrace'              => 'Atopouse unha chave de pechar "}" sen a chave de abrir "{" correspondente',
+	'math_UnmatchedEnd'                     => 'Atopouse un "\end" sen o "\begin" correspondente',
+	'math_UnmatchedLeft'                    => 'Atopouse un "\left" sen o "\right" correspondente',
+	'math_UnrecognisedCommand'              => 'O comando "$1" non é recoñecido',
+);
+
 $messages['hsb'] = array(
 	'math_noblahtex'                        => 'Njeje móžno blahtex wuwjesć, kotryž měł pola $1 być',
 	'math_AmbiguousInfix'                   => 'Wjacezmyslne zaměstnjenje "$1" (spytaj přidatne zhibowane spinki wužiwać "{ ... }", zo by jednozmyslnosć wutworił)',
@@ -326,4 +341,8 @@ $messages['ro'] = array(
 	'math_UnrecognisedCommand'              => 'Comanda "$1" necunoscută',
 	'math_WrongFontEncoding'                => 'Simbolul "$1" nu poate apărea în fontul "$2"',
 	'math_WrongFontEncodingWithHint'        => 'Simbolul "$1" nu poate apărea în fontul "$2" (încercaţi să folosiţi comanda "$3{...}")',
+);
+
+$messages['stq'] = array(
+	'math_noblahtex'                        => 'Kon nit uutfiere blahtex, ju der ap $1 weese schuul',
 );

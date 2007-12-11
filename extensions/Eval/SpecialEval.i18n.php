@@ -30,6 +30,12 @@ $messages['fr'] = array(
 	'eval_out'    => 'Sortie',
 );
 
+$messages['gl'] = array(
+	'eval_submit' => 'Avaliar',
+	'eval_out'    => 'Saída',
+	'eval_code'   => 'Código',
+);
+
 $messages['hsb'] = array(
 	'eval'        => 'Wuhódnoćenje',
 	'eval_submit' => 'Wuhódnoćić',

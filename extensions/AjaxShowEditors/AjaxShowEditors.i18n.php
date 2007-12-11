@@ -171,6 +171,11 @@ $wgAjaxShowEditorsMessages['sk'] = array(
 	'ajax-se-pending' => 'čaká sa na obnovenie... (kliknite do tohto poľa alebo začnite upravovať)',
 	'ajax-se-idling' => '(pred $1 sek)',
 );
+$wgAjaxShowEditorsMessages['stq'] = array(
+	'ajax-se-title' => 'Wäd apstuuns beoarbaided fon:',
+	'ajax-se-pending' => 'befoarstoundende Aktualisierengen... (klik ap disse Kaste of fang oun mäd ju Beoarbaidenge)',
+	'ajax-se-idling' => '(foar $1 s)',
+);
 $wgAjaxShowEditorsMessages['su'] = array(
 	'ajax-se-title' => 'Keur ngédit:',
 	'ajax-se-pending' => 'muatkeun koropak deui ditunda... (klik kotak ieu atawa mimiti ngédit)',

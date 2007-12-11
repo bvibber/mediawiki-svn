@@ -395,6 +395,13 @@ function efBadImageMessages() {
 	'badimages-remove-btn' => 'Removere',
 ),
 
+'loz' => array(
+	'badimages-name' => 'Sebu:',
+	'badimages-remove' => '(afi kulobala)',
+	'badimages-remove-btn' => 'Afi kulobala',
+	'badimages-removed' => '$1 sa afi kulobala di mukoloko.',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 	'badimages' => 'Verwijderlijst afbeeldingen',
@@ -702,6 +709,28 @@ function efBadImageMessages() {
 	'badimages-log-add' => 'dodata [[$1]] u spisak loših slika',
 	'badimages-log-remove' => 'uklonjena [[$1]] sa spiska loših slika',
 	'badimages-page' => '{{ns:help}}:Spisak loših slika',
+),
+
+'stq' => array(
+	'badimages' => 'Lieste fon nit wonskede Bielden.',
+	'badimages-add-btn' => 'Föigje bietou',
+	'badimages-added' => '$1 wuude an ju Lieste bietouföiged',
+	'badimages-count' => 'Ju Lieste fon nit wonskede Bielden änthaalt \'\'\'$1\'\'\' Iendraage.',
+	'badimages-name' => 'Noome:',
+	'badimages-not-added' => 'Ju Bielde kuude nit bietouföiged wáide.',
+	'badimages-not-removed' => 'Ju Bielde kuude nit wächhoald wäide.',
+	'badimages-reason' => 'Gruund:',
+	'badimages-remove' => '(hoal wäch)',
+	'badimages-remove-btn' => 'Hoal wäch',
+	'badimages-remove-confirm' => 'Bestäätigje, dät du $1 fon ju Lieste wächhoalje moatest:',
+	'badimages-removed' => '$1 wuude uut ju Lieste wächhoald.',
+	'badimages-subheading' => 'Aktuelle Iendraage',
+	'badimages-unprivileged' => '(Du hääst neen Begjuchtigenge, ju Lieste tou annerjen)',
+	'badimages-log-name' => 'Lieste fon nit wonskede Bielden',
+	'badimages-log-header' => 'Dit is dät Logbouk fon Annerengen an ju Lieste fon nit wonskede Bielden.',
+	'badimages-log-add' => 'föigede [[$1]] an ju Lieste fon nit wonskede Bielden tou',
+	'badimages-log-remove' => '[[$1]] uut ju Lieste fon nit wonskede Bielden wächhoald',
+	'badimages-page' => '{{ns:help}}:Lieste fon nit wonskede Bielden',
 ),
 
 /* Sundanese (Kandar via BetaWiki) */
