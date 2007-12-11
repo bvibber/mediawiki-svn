@@ -130,6 +130,7 @@ Alternativ kannst du auch die externen Suchmöglichkeiten nutzen:\n",
 
 );
 $wgLuceneSearchMessages['el'] = array(
+	'lucene-searchscore'    => 'Σχετικότητα: $1%',
 	'lucene-resultsize'     => '$1 ($2 λέξεις)',
 	'lucenefallback'        => 'Υπήρξε κάποιο πρόβλημα με την αναζήτηση στο wiki. Αυτό είναι μάλλον προσωρινό. Προσπαθήστε ξανά αργότερα ή πραγματοποιήστε την αναζήτησή σας στο wiki μέσω μιας εξωτερικής υπηρεσίας αναζήτησης:',
 );
