@@ -22,6 +22,15 @@
  */
 if (defined('MEDIAWIKI')) {
 
+	$wgExtensionCredits['parserhook'][] = array(
+		'name'        => 'RDF',
+		'version'     => '1.1',
+		'author'      => 'Evan Prodromou',
+		'email'       => 'evan@wikitravel.org',
+		'url'         => 'http://www.mediawiki.org/wiki/Extension:RDF',
+		'description' => 'RDF framework for MediaWiki',
+	);
+
 	require_once('GlobalFunctions.php');
 	if (!defined('RDFAPI_INCLUDE_DIR')) {
 		wfDebugDieBacktrace("MwRdf: you must install RAP (RDF API for PHP) " .
@@ -1027,5 +1036,3 @@ if (defined('MEDIAWIKI')) {
 	}
 
 }
-
-

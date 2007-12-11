@@ -1,6 +1,14 @@
 <?php
 $wgExtensionFunctions[] = "wfInflectionExtension";
 
+$wgExtensionCredits['other'][] = array(
+	'name'        => 'Wiktionary Inflection',
+	'version'     => '1.1',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:Wiktionary_Inflection',
+	'author'      => 'rodasmith',
+	'description' => 'Wiktionary inflection',
+);
+
 function wfInflectionExtension() {
 	global $wgParser;
 	$wgParser->setHook("infl", "renderInflection");
@@ -104,4 +112,3 @@ function renderInflection($input, $argv) {
 		return "?<!-- " . $e->getMessage() . " -->";
 	}
 }
-

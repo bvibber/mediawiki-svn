@@ -11,10 +11,10 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionFunctions[] = 'wfSpecialResign';
 $wgExtensionCredits['specialpage'][] = array(
-	'author' => 'Rotem Liss',
-	'version' => '1.1',
 	'name' => 'Resign',
+	'version' => '1.1',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Resign',
+	'author' => 'Rotem Liss',
 	'description' => 'Gives users the ability to remove their permissions',
 );
 

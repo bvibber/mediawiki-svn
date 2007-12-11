@@ -4,6 +4,13 @@
 # Adds news from an RSS feed to your wiki
 # To use, include this file from your LocalSettings.php
 
+$wgExtensionCredits['other'][] = array(
+	'name' => 'RSSNews',
+	'version' => '1.1',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:RSSNews',
+	'author' => 'Jens Frank',
+	'description' => 'Adds news from an RSS feed with the tag <nowiki><rss></nowiki>',
+);
 
 $wgExtensionFunctions[] = "wfRSSFeedExtension";
 
@@ -54,5 +61,3 @@ function renderRSS( $paramstring )
         $text .= "</ul></div>\n";
 	return $text;
 }
-
-

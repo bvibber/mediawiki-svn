@@ -1,5 +1,13 @@
 <?php
 
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'RenderHash',
+	'version' => '1.1',
+	'author' => 'Brion Vibber',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:RenderHash',
+	'description' => 'Render Hash',
+);
+
 $wgHooks['PageRenderingHash'][] = 'renderHashAppend';
 $wgRenderHashAppend = '';
 
@@ -15,4 +23,3 @@ function renderHashAppend( &$hash ) {
 	$hash .= $wgRenderHashAppend;
 	return true;
 }
-
