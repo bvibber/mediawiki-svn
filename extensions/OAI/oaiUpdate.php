@@ -24,15 +24,18 @@ require_once( "$base/maintenance/commandLine.inc" );
  */
 $harvester = new OAIHarvester( $oaiSourceRepository );
 
-$dbr = wfGetDB( DB_SLAVE );
-$highest = $dbr->selectField( 'revision', 'MAX(rev_timestamp)' ); // FIXME!
-if( $highest ) {
-	$lastUpdate = wfTimestamp( TS_MW, $highest );
+if( isset( $options['from'] ) ) {
+	$lastUpdate = wfTimestamp( TS_MW, $options['from'] );
 } else {
-	# Starting from an empty database!
-	$lastUpdate = '19700101000000';
+	$dbr = wfGetDB( DB_SLAVE );
+	$highest = $dbr->selectField( 'revision', 'MAX(rev_timestamp)' ); // FIXME!
+	if( $highest ) {
+		$lastUpdate = wfTimestamp( TS_MW, $highest );
+	} else {
+		# Starting from an empty database!
+		$lastUpdate = '19700101000000';
+	}
 }
-
 
 if( isset( $options['debug'] ) ) {
 	$callback = 'debugUpdates';
