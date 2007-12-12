@@ -10,11 +10,11 @@ if (!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['specialpage'][] = array(
-	'name'=>'Password Reset',
-	'url'=>'http://www.mediawiki.org/wiki/Extension:Password_Reset',
-	'author'=>'Tim Laqua',
-	'description'=>"Resets Wiki user's passwords - requires 'passwordreset' privileges",
-	'version'=>'1.3',
+    'name'=>'Password Reset',
+    'url'=>'http://www.mediawiki.org/wiki/Extension:Password_Reset',
+    'author'=>'Tim Laqua',
+    'description'=>"Resets Wiki user's passwords - requires 'passwordreset' privileges",
+    'version'=>'1.4'
 );
 
 $wgAutoloadClasses['PasswordReset'] = dirname(__FILE__) . '/PasswordReset_body.php';
@@ -26,3 +26,5 @@ if ( version_compare( $wgVersion, '1.10.0', '<' ) ) {
 } else {
     $wgHooks['LoadAllMessages'][] = 'PasswordReset::loadMessages';
 }
+
+$wgHooks['GetBlockedStatus'][] = 'PasswordReset::GetBlockedStatus';

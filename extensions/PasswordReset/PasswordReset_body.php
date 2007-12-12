@@ -167,4 +167,41 @@ class PasswordReset extends SpecialPage
  
 				return true;
         }
+		
+		function GetBlockedStatus(&$user) {
+			global $wgTitle;
+			
+			if ($wgTitle->isSpecial('Userlogin')) {
+				global $wgRequest;
+				if ($wgRequest->wasPosted()) {
+					$name = $wgRequest->getText('wpName');
+					if ($name <> '') {
+						
+						$dbr = wfGetDB( DB_SLAVE );
+						$res = $dbr->select( 'user',
+							array( 'user_password' ),
+							array( 'user_name' => $name ),
+							__METHOD__ );
+							
+						while ( $row = $dbr->fetchObject( $res ) ) {
+							if ($row->user_password == 'DISABLED') {
+								$user->mBlockedby = 1;
+								$user->mBlockreason = wfMsg( 'passwordreset-accountdisabled' );
+							}
+						}
+					} 
+				} 
+			} elseif ( $user->isLoggedIn() ) {
+				if ($user->mPassword == 'DISABLED') {
+					global $wgOut;
+					//mean, I know.
+					$user->logout();
+					$wgOut->redirect( Title::newMainPage()->escapeFullURL());
+				}
+			} else {
+				echo "not logged in (" . $user->getID() . ")";
+			}
+			
+			return true;
+		}
 }

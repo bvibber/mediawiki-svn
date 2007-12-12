@@ -18,7 +18,8 @@ $allMessages = array(
 		'passwordreset-success' => 'Password has been reset for user_id: $1',
 		'passwordreset-disableuser' => 'Disable User Account?',
 		'passwordreset-disableuserexplain' => '(sets an invalid password hash - user can\'t login)',
-		'passwordreset-disablesuccess' => 'User account has been disabled (user_id: $1)'
+		'passwordreset-disablesuccess' => 'User account has been disabled (user_id: $1)',
+		'passwordreset-accountdisabled' => 'Account has been disabled'
 	),
 
 	'af' => array(
