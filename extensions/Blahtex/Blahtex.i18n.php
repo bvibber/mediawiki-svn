@@ -180,6 +180,7 @@ $messages['fr'] = array(
 );
 
 $messages['gl'] = array(
+	'math_AmbiguousInfix'                   => 'Colocación ambigua de "$1" (tente usar chaves adicionais "{ ... }" para que fique claro)',
 	'math_CannotChangeDirectory'            => 'Non se pode mudar o directorio de traballo',
 	'math_CannotCreateTexFile'              => 'Non se pode crear unha fila de texto',
 	'math_CannotRunDvipng'                  => 'Non se pode executar dvipng',
@@ -222,6 +223,8 @@ $messages['gl'] = array(
 	'math_UnmatchedCloseBrace'              => 'Atopouse unha chave de pechar "}" sen a chave de abrir "{" correspondente',
 	'math_UnmatchedEnd'                     => 'Atopouse un "\end" sen o "\begin" correspondente',
 	'math_UnmatchedLeft'                    => 'Atopouse un "\left" sen o "\right" correspondente',
+	'math_UnmatchedOpenBrace'               => 'Atopouse unha chave de apertura "{" sen a chave de peche "}" correspondente',
+	'math_UnmatchedOpenBracket'             => 'Atopouse un corchete de apertura "[" sen sen o corchete de peche "}" correspondente',
 	'math_UnmatchedRight'                   => 'Atopouse un "\right" sen o "\left" correspondente',
 	'math_UnrecognisedCommand'              => 'O comando "$1" non é recoñecido',
 	'math_WrongFontEncoding'                => 'O símbolo "$1" non pode aparecer na codificación de fonte "$2"',

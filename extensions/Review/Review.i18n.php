@@ -144,6 +144,22 @@ $messages['fr'] = array(
 	'review_comment' => 'Commentaire',
 );
 
+$messages['gl'] = array(
+	'review_sidebar_title' => 'Revisado',
+	'review_topic_page' => 'Revisados os temas',
+	'review_page_link' => 'revisar estatísticas',
+	'review_for_page' => 'Revisión para a páxina "$1"',
+	'review_for_user' => 'Revisión para o usuario "$1"',
+	'review_no_reviews_for_page' => 'Actualmente non hai revisións para "$1".',
+	'review_total_statistics' => 'Total',#identical but defined
+	'review_statistics_left_corner' => 'Revisión',
+	'review_version_link' => 'Revisión #$1',
+	'review_version_statistic_cell' => '$1 de $2',
+	'review_user_details_link' => '(detalles)',
+	'review_page_review' => 'Revisión da páxina "$1"',
+	'review_wrong_namespace' => 'As páxinas no espazo de nomes non poden ser revisadas!',
+);
+
 $messages['hsb'] = array(
 	'review_sidebar_title' => 'Přepruwować',
 	'review_topics' => '# Deleka je lisćina temow a wobwodow za rozšěrjenje Review.

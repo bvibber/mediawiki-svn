@@ -69,6 +69,7 @@ riddler|Riddler",
 ),
 
 'bg' => array(
+	'vote' => 'Гласуване',
 	'vote-submit' => 'Гласуване',
 ),
 

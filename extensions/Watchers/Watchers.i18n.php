@@ -64,6 +64,10 @@ $messages['fr'] = array(
 	'watchers_less_than_x'   => 'Moins de $1 utilisateurs suivent cette page.',
 );
 
+$messages['gl'] = array(
+	'watchers_error_article' => '<b>Erro:</b> O artigo non existe.',
+);
+
 $messages['hsb'] = array(
 	'watchers'               => 'Wobkedźbowarjo',
 	'watchers_link_title'    => 'Štó tutu stronu wobkedźbuje?',

@@ -104,6 +104,13 @@ $messages ['fr'] = array(
 	'spamregex-summary-log' => '(Commentaire)',
 );
 
+$messages['gl'] = array(
+	'spamregex_summary' => 'O texto foi atopado no resumo do artigo.',
+	'spamregex-log-2' => 'en $1',
+	'spamregex-text' => '(Texto)',
+	'spamregex-summary-log' => '(Resumo)',
+);
+
 $messages['hsb'] = array(
 	'spamregex_summary' => 'Tekst je so w zjeću nastawka namakał.',
 	'spamregex-intro' => 'Wužij tutón formular, zo by wurazy skutkownje přećiwo składowanju w teksće strony blokował. Jel tekst daty wuraz wobsahuje, změna njeby so składowała a wujasnjenje so wužiwarjej, kiž je spytał stronu składować, pokaza. Jewi so warnowanje, zo wurazy njesmědźa překrótke abo přepowšitkowne być.',

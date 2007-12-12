@@ -30,6 +30,13 @@ $messages['fr'] = array (
 	'intersection_noincludecats' => 'DynamicPageList : vous avez besoin d’inclure au moins une catégorie, ou préciser un nom d’espace !',
 );
 
+$messages['gl'] = array(
+	'intersection_toomanycats' => 'DynamicPageList: Demasiadas categorías!',
+	'intersection_toofewcats' => 'DynamicPageList: Demasiado poucas categorías!',
+	'intersection_noresults' => 'DynamicPageList: Ningún resultado!',
+	'intersection_noincludecats' => 'DynamicPageList: Ten que incluír unha categoría polo menos ou especificar un espazo de nomes!',
+);
+
 $messages['hsb'] = array(
 	'intersection_toomanycats' => 'DynamicPageList: Přewjele kategorijow!',
 	'intersection_toofewcats' => 'DynamicPageList: Přemało kategorijow!',

@@ -23,6 +23,11 @@ $messages['fr'] = array(
 	'icon-badwidth' => 'Largeur erronée',
 );
 
+$messages['gl'] = array(
+	'icon-badimage' => 'Imaxe mala',
+	'icon-badwidth' => 'Anchura mala',
+);
+
 $messages['hsb'] = array(
 	'icon-badimage' => 'Špatny wobraz',
 	'icon-badwidth' => 'Špatna šěrokosć',

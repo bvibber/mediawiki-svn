@@ -72,7 +72,17 @@ $messages['fr'] = array(
 );
 
 $messages['gl'] = array(
+	'lookupuser' => 'Consultar a información do usuario',
+	'lookupuser_intro' => 'Introduza un nome de usuario para ver as preferencias dese usuario.',
+	'lookupuser_nonexistent' => 'Erro: Non existe ese usuario',
+	'lookupuser_authenticated' => 'Autenticación por correo electrónico: $1',
+	'lookupuser_not_authenticated' => 'sen autenticar',
+	'lookupuser_id' => 'ID do usuario: <tt>nº$1</tt>',
+	'lookupuser_email' => 'Correo electrónico: [[Especial:Emailuser/$2|$1]]',
 	'lookupuser_realname' => 'Nome real: $1',
+	'lookupuser_registration' => 'Data de rexistro: $1',
+	'lookupuser_touched' => 'Rexistro do usuario tocado por última vez: $1',
+	'lookupuser_useroptions' => 'Opcións do usuario:',
 );
 
 $messages['hsb'] = array(

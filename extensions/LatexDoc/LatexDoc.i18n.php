@@ -56,6 +56,15 @@ $messages['gl'] = array(
 	'latexdoc_no_text' => 'O artigo non contén texto, non pode xenerar DVI',
 	'latexdoc_cant_create_dir' => 'Non se pode crear un directorio temporal $1',
 	'latexdoc_cant_write' => 'Non se pode escribir no ficheiro $1',
+	'latexdoc_error' => 'Erro de LaTeX
+
+Comando: $1
+
+Saída: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Obter DVI',
+	'latexdoc_get_pdf' => 'Obter PDF',
 );
 
 $messages['hsb'] = array(

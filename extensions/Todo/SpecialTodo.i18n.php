@@ -98,6 +98,37 @@ $messages['gl'] = array(
 	'todo-new-queue' => 'novo',
 	'todo-list-change' => 'Cambiar',
 	'todo-list-cancel' => 'Cancelar',
+	'todo-form-details' => 'Detalles:',
+);
+
+$messages['hsb'] = array(
+	'todo' => 'Lisćina nadawkow',
+	'todo-new-queue' => 'nowy',
+	'todo-mail-subject' => 'Sčinjeny nadawk na lisćinje nadawkow $1',
+	'todo-mail-body' => 'Ty sy wo e-mejlowe potwjerdźenje wo sčinjenju nadawka požadał, kotryž sy do lisćiny nadawkow $1 w syći pósłał.
+
+Nadawk: $2
+Pósłany: $3
+
+Tutón nadawk bu jako sčinjeny markěrowany, z tutym komentarom:
+$4',
+	'todo-invalid-item' => 'Falowacy abo njepłaćiwy nadawk',
+	'todo-update-else-item' => 'Pospyt nadawki někoho druheho aktualizować',
+	'todo-unrecognize-type' => 'Njespóznaty typ',
+	'todo-user-invalide' => 'Daty nadawk je njepłaćiwy, faluje, abo wužiwar, kiž njemóže nadawk sčinić.',
+	'todo-item-list' => 'Twoje nadawki',
+	'todo-no-item' => 'Žane nadawki.',
+	'todo-invalid-owner' => 'Njepłaćiwy swójstwownik na tutym nadawku',
+	'todo-add-queue' => 'Čakanski rynk přidać...',
+	'todo-move-queue' => 'Do čakanskeho rynka přesunyć...',
+	'todo-list-for' => 'Lisćina nadawkow za',
+	'todo-list-change' => 'Změnić',
+	'todo-list-cancel' => 'Přetorhnyć',
+	'todo-new-item' => 'Nowy nadawk',
+	'todo-issue-summary' => 'Zjeće wudać:',
+	'todo-form-details' => 'Podrobnosće',
+	'todo-form-email' => 'Zo by zdźělenje z e-mejlu dóstał, hdyž so nadawk kónči, zapodaj tu swoju adresu:',
+	'todo-form-submit' => 'Naprašowanje wotesłać',
 );
 
 $messages['nl'] = array(

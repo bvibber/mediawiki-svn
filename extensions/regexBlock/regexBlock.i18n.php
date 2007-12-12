@@ -152,6 +152,37 @@ $messages ['fr'] = array(
 	'regexblock-view-time' => 'le $1',
 );
 
+$messages['gl'] = array(
+	'regexblock-reason-ip' => 'A este enderezo IP estalle prohibido editar debido a vandalismo ou outras actividades negativas realizadas por vostede ou por alguén que comparte o seu enderezo IP. Se pensa que se trata dun erro, $1',
+	'regexblock-reason-name' => 'A este nome de usuario estalle prohibido editar debido a vandalismo ou outras actividades negativas. Se pensa que se trata dun erro, $1',
+	'regexblock-reason-regex' => 'A este nome de usuario prohíbeselle editar debido a vandalismo ou outras actividades negativas por parte dun usuario cun nome semellante. Cree un nome de usuario diferente ou $1 sobre o problema',
+	'regexblock-help' => 'Use o formulario seguinte para bloquear o acceso de escritura desde un determinado enderezo IP ou nome de usuario. Esto debería facerse só para previr vandalismo, e de conformidade coa política. "Esta páxina lle permitirá bloquear incluso os non usuarios existentes, e tamén cos nomes dos usuarios bloqueados similares aos dados, é dicir,«Test» se bloqueará xunto con « Test 2 », etc. Tamén pode bloquear enderezos IP completos, no sentido de que ninguén rexistrado nos mesmos será capaz de editar páxinas. Nota: os enderezos IP parciais serán tratados polos nomes de usuarios na determinación do bloqueo. Se non se especifica a razón, será usado por defecto un motivo xenérico.\'\'',
+	'regexblock-page-title-1' => 'Bloquear enderezos usando expresións regulares',
+	'regexblock-unblock-success' => 'O desbloqueo foi un éxito',
+	'regexblock-unblock-log' => 'O nome de Usuario ou o enderezo IP \'\'\'$1\'\'\' foi desbloqueado.',
+	'regexblock-unblock-error' => 'Erro desbloqueando $1. Probabelmente non existe tal usuario.',
+	'regexblock-form-username' => 'Enderezo IP ou nome de usuario:',
+	'regexblock-form-reason' => 'Razón:',
+	'regexblock-form-account-block' => 'Bloqueada a creación de novas contas',
+	'regexblock-form-submit' => 'Bloqueado&nbsp;este&nbsp;Usuario',
+	'regexblock-block-log' => 'O nome de usuario ou o enderezo IP \'\'\'$1\'\'\' foi bloqueado.',
+	'regexblock-block-success' => 'Bloqueo con éxito',
+	'regexblock-form-submit-empty' => 'Dar un nome de usuario ou un enderezo IP para bloquear.',
+	'regexblock-already-blocked' => '$1 está aínda bloqueado.',
+	'regexblock-stats-username' => 'Para $1',
+	'regexblock-stats-times' => 'foi bloqueado en',
+	'regexblock-view-all' => 'Todo',
+	'regexblock-view-go' => 'Adiante',
+	'regexblock-view-reason' => 'razón: $1',
+	'regexblock-view-reason-default' => 'razón xenérica',
+	'regexblock-view-block-infinite' => 'bloqueo permanente',
+	'regexblock-view-block-by' => 'bloqueado por',
+	'regexblock-view-block-unblock' => 'desbloquear',
+	'regexblock-view-stats' => '(estatísticas)',
+	'regexblock-view-empty' => 'A listaxe dos nomes e enderezos bloqueados está baleira.',
+	'regexblock-view-time' => 'en $1',
+);
+
 $messages['hsb'] = array(
 	'regexblock-page-title' => 'Blokowanje mjenow regularnych wurazow',
 	'regexblockstats' => 'Regex Block Statistika',

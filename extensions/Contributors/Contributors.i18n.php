@@ -108,6 +108,7 @@ function efContributorsMessages() {
 	'contributors' => 'Συνεισφέροντες',
 	'contributors-target' => 'Τίτλος:',
 	'contributors-badtitle' => 'Άκυρος τίτλος.',
+	'contributors-nosuchpage' => 'Το άρθρο $1 δεν υπάρχει.',
 ),
 
 'ext' => array(

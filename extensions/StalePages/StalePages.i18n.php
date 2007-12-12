@@ -32,6 +32,10 @@ $messages['fr'] = array(
 	'stalepages-summary' => 'Ceci est une liste de pages qui n\'ont pas été modifiées depuis {{plural:$1|$1 jour|$1 jours}}.',
 );
 
+$messages['gl'] = array(
+	'stalepages-summary' => 'Esta é unha listaxe das páxinas que non foron editadas nos últimos $1 días.',
+);
+
 $messages['hsb'] = array(
 	'stalepages' => 'spadnjene strony',
 	'stalepages-summary' => 'To je lisćina stronow, kotrež njebuchu za {{PLURAL:$1|posledni $1 dźeń|poslednjeju $1 dnjow|posdlednje $1 dny|poslednych $1 dnjow}} změnjene.',

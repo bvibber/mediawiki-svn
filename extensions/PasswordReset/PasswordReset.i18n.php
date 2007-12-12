@@ -95,6 +95,8 @@ $allMessages = array(
 		'passwordreset-confirmpass' => 'Confirme o Contrasinal',
 		'passwordreset-submit' => 'Limpar o Contrasinal',
 		'passwordreset-success' => 'Limpouse o contrasinal para o id de usuario: $1',
+		'passwordreset-disableuser' => 'Desactivar a Conta de Usuario?',
+		'passwordreset-disablesuccess' => 'Desactivouse a conta do usuario (user_id: $1)',
 	),
 
 	'hsb' => array(

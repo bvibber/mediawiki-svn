@@ -60,8 +60,16 @@ $messages['fr'] = array(
 
 $messages['gl'] = array(
 	'postcomment_discussionprotected' => 'A páxina de conversa foi protexida de novas publicacións.',
+	'postcomment_notloggedin' => 'Non está rexistrado.',
+	'postcomment_youareloggedinas' => 'Está rexistrado como $1',
 	'postcomment_addcommentdiscussionpage' => 'Engade o teu comentario na páxina de conversa',
 	'postcomment_leavemessagefor' => 'Deixar unha mensaxe para $1',
+	'postcomment_post' => 'Publicar',
+	'postcomment_on' => 'En',
+	'postcomment_said' => 'dixo',
+	'postcomment_invalidrequest' => 'Petición non válida.',
+	'postcomment_replyto' => 'Respostar a $1',
+	'postcomment_nopostingtoadd' => 'Non pongas a engadir.',
 );
 
 $messages['hsb'] = array(

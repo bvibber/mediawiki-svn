@@ -59,10 +59,14 @@ function efImportFreeImagesMessages() {
 
 		'gl' => array(
 			'importfreeimages'              => 'Importar Imaxes Libres',
+			'importfreeimages_description'  => 'Esta páxina permítelle procurar fotos de flickr con licenza correcta e importalos ao seu wiki.',
 			'importfreeimages_nophotosfound' => 'Ningunhas fotos foron atopadas cos criterios \'$1\' de procura, ténteo de novo.',
 			'importfreeimages_owner'        => 'Autor',
+			'importfreeimages_importthis'   => 'importar isto',
 			'importfreeimages_next'         => 'Seguinte $1',
 			'importfreeimages_filefromflickr' => '$1 polo usuario <b>[$2]</b> de flickr. Orixinal URL',
+			'importfreeimages_promptuserforfilename' => 'Introduza un nome de ficheiro de destino:',
+			'importfreeimages_returntoform' => 'Ou, prema <a href=\'$1\'>here</a> para voltar á súa procura de resultados',
 		),
 
 		'hsb' => array(

@@ -25,6 +25,10 @@ $messages['fr'] = array(
 	'purge' => 'purger',
 );
 
+$messages['gl'] = array(
+	'purge' => 'limpar',
+);
+
 $messages['hsb'] = array(
 	'purge' => 'rjedźić',
 );

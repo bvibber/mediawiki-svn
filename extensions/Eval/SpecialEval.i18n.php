@@ -31,7 +31,9 @@ $messages['fr'] = array(
 );
 
 $messages['gl'] = array(
+	'eval'        => 'Aval',
 	'eval_submit' => 'Avaliar',
+	'eval_escape' => 'Saída de Escape',
 	'eval_out'    => 'Saída',
 	'eval_code'   => 'Código',
 );

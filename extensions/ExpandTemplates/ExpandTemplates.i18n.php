@@ -82,6 +82,9 @@ $wgExpandTemplatesMessages['de'] = array(
 	'expand_templates_remove_comments' => 'Kommentare entfernen',
 	'expand_templates_preview'         => 'Vorschau',
 );
+$wgExpandTemplatesMessages['el'] = array(
+	'expand_templates_ok'              => 'ΟΚ',
+);
 $wgExpandTemplatesMessages['eo'] = array(
 	'expand_templates_remove_comments' => 'Forigu komentojn',
 	'expand_templates_preview'         => 'Antaŭrigardo',

@@ -1770,6 +1770,7 @@ Sledi rezultujuća šifrirana verzija. Biće javno predstavljena na [[Special:Bo
 $wgBoardVoteMessages['sr'] = $wgBoardVoteMessages['sr-ec'];
 
 $wgBoardVoteMessages['stq'] = array(
+	'boardvote'               => 'Woalen tou dät Wikimedia-Kuratorium',
 	'boardvote_intro_change'  => '<p>Du hääst al oustämd. Man du koast dien Stämme mäd dät foulgjende Formular annerje. Markier deertou do litje Kasten fon do Kandidoate, do du wääle moatest.</p>',
 	'boardvote_novotes'       => 'Tou nu tou häd noch neemens oustämd.',
 	'boardvote_time'          => 'Tied',

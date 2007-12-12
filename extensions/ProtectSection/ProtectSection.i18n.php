@@ -31,6 +31,12 @@ $messages['fr'] = array(
 	'protectsection_forbidden'  => 'Interdit',
 );
 
+$messages['gl'] = array(
+	'protectsection_add_remove' => 'Tentou engadir ou eliminar unha sección protexida',
+	'protectsection_modify'     => 'Tentou modificar un texto protexido',
+	'protectsection_forbidden'  => 'Prohibido',
+);
+
 $messages['hsb'] = array(
 	'protectsection_add_remove' => 'Sy spytał škitany wotrězk přidać abo wotstronić.',
 	'protectsection_modify'     => 'Sy spytał škitany tekst změnić.',

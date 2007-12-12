@@ -23,6 +23,10 @@ $messages['fr'] = array(
 	'tog-microid' => 'Publier un <a href="http://microid.org/">MicroID</a> en vue de confirmer votre identité auprès de services externes',
 );
 
+$messages['gl'] = array(
+	'tog-microid' => 'Publicar unha <a href="http://microid.org/">MicroID</a> para confirmar a conta con servizos externos',
+);
+
 $messages['hsb'] = array(
 	'tog-microid' => '<a href="http://microid.org/">MicroID</a> publikować, zo by so konto z wonkownymi słužbami potwjerdźiło',
 );

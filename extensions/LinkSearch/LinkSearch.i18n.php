@@ -107,6 +107,7 @@ $wgLinkSearchMessages['gl'] = array(
 	'linksearch-ok'    => 'Buscar',
 	'linksearch-text'  => 'Extensións como "*.wikipedia.org" poden ser usadas. <br />Protocolos soportados: <tt>$1</tt>',
 	'linksearch-line'  => '$1 vinculado a $2',
+	'linksearch-error' => 'Os comodíns só poden aparecer ao principio do nome do servidor.',
 );
 $wgLinkSearchMessages['grc'] = array(
 	'linksearch-ok'    => 'Ζητεῖν',

@@ -17,3 +17,8 @@ $messages ['fr'] = array(
 	'tidy' => 'Classer',
 	'untidy' => 'Déclasser',
 );
+
+$messages['hsb'] = array(
+	'tidy' => 'Porjadny',
+	'untidy' => 'Njeporjadny',
+);

@@ -52,7 +52,13 @@ $messages ['fr'] = array(
 );
 
 $messages['gl'] = array(
+	'inspectcache' => 'Inspeccionar a Caché',
 	'inspectcache-ok' => 'De acordo',
+	'inspectcache-general' => 'Caché xeral',
+	'inspectcache-message' => 'Caché de mensaxes',
+	'inspectcache-get' => 'Obter',
+	'inspectcache-delete' => 'Eliminar',
+	'inspectcache-deleted' => 'Caché eliminada',
 );
 
 $messages['hsb'] = array(

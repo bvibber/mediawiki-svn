@@ -144,6 +144,7 @@ function efBadImageMessages() {
 
 'el' => array(
 	'badimages' => 'Κατάλογος κακών εικόνων',
+	'badimages-added' => '$1 έχει προστεθεί στη λίστα.',
 	'badimages-count' => 'Υπάρχουν \'\'\'$1\'\'\' εικόνες στον κατάλογο των κακών εικόνων.',
 	'badimages-name' => 'Όνομα:',
 	'badimages-log-name' => 'Κατάλογος κακών εικόνων',
