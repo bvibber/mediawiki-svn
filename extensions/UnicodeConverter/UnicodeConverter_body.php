@@ -4,8 +4,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-global $wgMessageCache;
-$wgMessageCache->addMessage( "unicodeconverter", "Unicode Converter" );
+wfLoadExtensionMessages( 'UnicodeConverter' );
 
 class UnicodeConverter extends SpecialPage
 {
@@ -21,7 +20,7 @@ class UnicodeConverter extends SpecialPage
 		$q = $wgRequest->getText( 'q' );
 		$encQ = htmlspecialchars( $q );
 		$action = $wgTitle->escapeLocalUrl();
-		$ok = htmlspecialchars( wfMsg( "ok" ) );
+		$ok = htmlspecialchars( wfMsg( 'unicodeconverter-ok' ) );
 
 		$wgOut->addHTML( <<<END
 <form name="ucf" method="post" action="$action">
@@ -33,8 +32,8 @@ END
 
 		if ( !is_null( $q ) ) {
 			$html = wfUtf8ToHTML( htmlspecialchars( $q ) );
-			$wgOut->addHTML( "\n\n\n" . nl2br( $html ) . "\n<hr />\n" .
-			  nl2br( htmlspecialchars( $html ) ) . "\n\n" );
+			$wgOut->addHTML( "<br /><b>". wfMsg('unicodeconverter-oldtext'). "</b><br /><br />" . nl2br( $html ) . "<br/><br /><hr /><br /><b>" . wfMsg('unicodeconverter-newtext'). "</b><br /><br />".
+			  nl2br( htmlspecialchars( $html ) ) . "<br /><br />" );
 		}
 	}
 }
@@ -53,7 +52,7 @@ function wfUtf8Entity( $matches ) {
 	} else {
 		$length = 1;
 	}
-	
+
 	if ( $length != strlen( $char ) ) {
 		return '';
 	}
@@ -79,6 +78,3 @@ function wfUtf8Entity( $matches ) {
 function wfUtf8ToHTML($string) {
 	return preg_replace_callback( '/[\\xc0-\\xfd][\\x80-\\xbf]*/', 'wfUtf8Entity', $string );
 }
-
-
-
