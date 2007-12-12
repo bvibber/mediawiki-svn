@@ -155,6 +155,7 @@ $allMessages = array(
 		'changeauthor-nosuchuser' => 'Non hai tal usuario "$1".',
 		'changeauthor-revview' => 'Revisión nº$1 de $2',
 		'changeauthor-nosuchtitle' => 'Non hai ningún artigo que se chame "$1".',
+		'changeauthor-weirderror' => 'Produciuse un erro moi estraño. Realice outra vez a consulta. Se este erro sigue aparecendo, probabelmente a base de datos está mal.',
 		'changeauthor-success' => 'A súa petición foi procesada con éxito.',
 		'changeauthor-logentry' => 'Cambie autor de $2 de $1 a $3 de $4',
 		'changeauthor-logpagename' => 'Rexistro dos cambios do autor',
