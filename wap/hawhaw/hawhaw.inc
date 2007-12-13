@@ -3,7 +3,7 @@
 // HAWHAW: HTML and WML hybrid adapted webserver
 // PHP class library
 // Copyright (C) 2007 Norbert Huffschmid
-// Last modified: 7. November 2007
+// Last modified: 4. December 2007
 //
 // This library is free software; you can redistribute it and/or modify it under the
 // terms of the GNU Library General Public License as published by the Free Software
@@ -20,9 +20,6 @@
 //
 // For further information about this library and its license terms please visit:
 // http://www.hawhaw.de/
-//
-// changes against V5.15:
-// - optimization: consider HTTP_UA_OS header in browser detection
 
 ###################################
 #   BEGIN OF CONFIGURATION PART   #
@@ -43,7 +40,7 @@
 ###################################
 
 // miscellaneous constants
-define("HAW_HAW_VERSION", "HAWHAW V5.16B");
+define("HAW_HAW_VERSION", "HAWHAW V5.16");
 define("HAW_COPYRIGHT", "(C) Norbert Huffschmid");
 if (defined("HAW_TERA_WURFL_PATH"))
   define("HAW_VERSION", HAW_HAW_VERSION . "/Tera-WURFL");
@@ -572,6 +569,7 @@ class HAW_deck
   var $supportsVXMLBreakTag = true;     // false for PublicVoiceXML browser only
   var $MotorolaVoiceXML = false;        // for Motorola VoiceXML specifics
   var $css_enabled = false;             // support of cascading style sheets (HTML)
+  var $xhtmlmp_preferred_mime_type = "application/vnd.wap.xhtml+xml"; // default mime type for XHTML Mobile Profile
   var $debug = false;                   // HAWHAW debugger off
   var $hawoutput = "";                  // no forced output
 
@@ -1655,12 +1653,7 @@ class HAW_deck
       if (!$this->debug)
       {
         if ($this->xhtml)
-        {
-          if ($this->lynx)
-            $ct = "content-type: text/html";
-          else
-            $ct = "content-type: application/vnd.wap.xhtml+xml";
-        }
+          $ct = "content-type: " . $this->xhtmlmp_preferred_mime_type;
         else
           $ct = sprintf("content-type: text/html;charset=%s", $this->charset);
 
@@ -2376,7 +2369,8 @@ class HAW_deck
     if (strstr(strtolower($HTTP_ACCEPT), "vnd.wap.xhtml") ||
         strstr(strtolower($HTTP_USER_AGENT), "opera mini") ||
         strstr(strtolower($HTTP_USER_AGENT), "google wireless transcoder") ||
-        strstr($HTTP_USER_AGENT, "iPhone"))
+        strstr($HTTP_USER_AGENT, "(iPhone") ||
+        strstr($HTTP_USER_AGENT, "(iPod"))
     {
       // XHTML device detected
       $this->xhtml = true;
@@ -2421,6 +2415,7 @@ class HAW_deck
       $this->css_enabled = true; // enabled in the meaning of silently discarding it ...
       $this->pureHTML = true;
       $this->display_banners = false;
+      $this->xhtmlmp_preferred_mime_type = "text/html";
     }
 
     // determine if browser is CSS-enbled
@@ -2440,6 +2435,11 @@ class HAW_deck
     if (strstr(strtolower($HTTP_USER_AGENT), "ericsson") ||
         (strstr(strtolower($HTTP_USER_AGENT), "nokia")))
       $this->submitViaLink = true; // with some WAP devices it's quite difficult to submit WML forms
+
+    // set alternative mime-type for some XHTML Mobile Profile devices 
+    if (strstr($HTTP_USER_AGENT, "(iPhone") ||
+        strstr($HTTP_USER_AGENT, "(iPod"))
+      $this->xhtmlmp_preferred_mime_type = "text/html";
   }
   
   function determine_capabilities_terawurfl()
@@ -2470,6 +2470,9 @@ class HAW_deck
           $this->ml = HAW_HTML;
           $this->xhtml = true;
           $this->css_enabled = true;
+
+          if (isset($cap['xhtml_ui']['xhtmlmp_preferred_mime_type']))
+            $this->xhtmlmp_preferred_mime_type = $cap['xhtml_ui']['xhtmlmp_preferred_mime_type'];
         }
         else if ($cap['markup']['html_wi_imode_html_1'] ||
                  $cap['markup']['html_wi_imode_html_2'] ||
