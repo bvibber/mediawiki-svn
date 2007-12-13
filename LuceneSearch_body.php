@@ -161,7 +161,11 @@ class LuceneSearch extends SpecialPage
 					$wgOut->redirect($t->getFullURL('action=edit'));
 					return;
 				}
-                		$wgOut->addWikiText( wfMsg( 'noexactmatch', $t->getPrefixedText() ) );
+				if( $t->quickUserCan( 'create' ) && $t->quickUserCan( 'edit' ) ) {
+					$wgOut->addWikiText( wfMsg( 'noexactmatch', $t->getPrefixedText() ) );
+				} else {
+					$wgOut->addWikiText( wfMsg( 'noexactmatch-nocreate', $t->getPrefixedText() ) );
+				}
 			}
 
 			$case = 'ignore';
