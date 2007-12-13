@@ -27,4 +27,8 @@ if ( version_compare( $wgVersion, '1.10.0', '<' ) ) {
     $wgHooks['LoadAllMessages'][] = 'PasswordReset::loadMessages';
 }
 
-$wgHooks['GetBlockedStatus'][] = 'PasswordReset::GetBlockedStatus';
+$wgExtensionFunctions[] = 'efPasswordReset';
+function efPasswordReset() {
+	global $wgHooks;
+	$wgHooks['GetBlockedStatus'][] = 'PasswordReset::GetBlockedStatus';
+}
