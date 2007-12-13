@@ -32,7 +32,7 @@ class SpecialSmoothGallery extends SpecialPage {
                 $wopt = $wgUser->getOption( 'imagesize' );
 
                 if( !isset( $wgImageLimits[$wopt] ) ) {
-                        $wopt = User::getDefaultOption( $sizeDefault );
+                        $wopt = User::getDefaultOption( 'imagesize' );
                 }
 
                 list($width, $height) = $wgImageLimits[$wopt];
@@ -46,6 +46,7 @@ class SpecialSmoothGallery extends SpecialPage {
                 $this->mOptionArray['delay'] = $wgRequest->getVal( 'delay' );
                 $this->mOptionArray['showarrows'] = $wgRequest->getVal( 'showarrows', '1' );
                 $this->mOptionArray['showinfopane'] = $wgRequest->getVal( 'showinfopane', '1' );
+                $this->mOptionArray['fallback'] = $wgRequest->getVal( 'fallback', '1' );
 
                 //The extension expects true/false and not 1/0
                 $boollist = array("showcarousel", "timed", "delay", "showarrows", "showinfopane");
@@ -61,7 +62,7 @@ class SpecialSmoothGallery extends SpecialPage {
 
                 $this->mInput = str_replace( array('|', ':::'), $wgSmoothGalleryDelimiter, $this->mInput );
 
-		SmoothGallery::setHeaders( $wgOut );
+		SmoothGallery::setGalleryHeaders( $wgOut );
 
                 $wgOut->addHTML( renderSmoothGallery( $this->mInput, $this->mOptionArray, $wgParser, true ) );
         }

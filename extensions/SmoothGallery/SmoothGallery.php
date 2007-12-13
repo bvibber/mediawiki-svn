@@ -42,6 +42,8 @@ $wgSpecialPages['SmoothGallery'] = 'SpecialSmoothGallery';
 $wgSmoothGalleryDelimiter = "\n";
 $wgSmoothGalleryExtensionPath = $wgScriptPath . '/extensions/SmoothGallery';
 
+$wgSmoothGalleryArguments = array();
+
 function wfSmoothGallery() {
 	global $wgParser;
 
@@ -75,10 +77,10 @@ function smoothGalleryImagesByCat( $title ) {
 	return $images;
 }
 
-function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial ) {
+function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial=false ) {
 	global $wgContLang, $wgUser, $wgTitle;
 	global $wgSmoothGalleryDelimiter;
-	global $wgVersion;
+	global $wgSmoothGalleryArguments;
 
 	$skin = $wgUser->getSkin();
 
@@ -90,6 +92,8 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial ) {
 		return $output;
 	}
 
+	parseArguments( $argv );
+
 	//Give this gallery a random name so that we can have more than one gallery
 	//on a page. But don't do this on a special page, because it will cause
 	//us problems with javascript that uses the css classname
@@ -99,73 +103,12 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial ) {
 		$name = "myGallery" . mt_rand();
 	}
 
-	//Parse arguments, set defaults, and do sanity checks
-	if ( isset( $argv["height"] ) && is_numeric( $argv["height"] ) ) {
-		if ( isset( $argv["special"] ) ) {
-			//Creating a link instead, the special page is going to call this
-			//function again, so "px" will be appended.
-			$height = $argv["height"];
-		} else {
-			$height = $argv["height"] . "px";
-		}
-	} else {
-		$height = "300px";
-	}
-
-	if ( isset( $argv["width"] ) && is_numeric( $argv["width"] ) ) {
-		if ( isset( $argv["special"] ) ) {
-			//Creating a link instead, the special page is going to call this
-			//function again, so "px" will be appended.
-			$width = $argv["width"];
-		} else {
-			$width = $argv["width"] . "px";
-		}
-	} else {
-		$width = "400px";
-	}
-
-	if ( isset( $argv["showcarousel"] ) && $argv["showcarousel"] == "false" ) {
-		$carousel = false;
-	} else {
-		$carousel = true;
-	}
-
-	if ( isset( $argv["timed"] ) && $argv["timed"] == "true" ) {
-		$timed = true;
-	} else {
-		$timed = false;
-	}
-
-	if ( isset( $argv["delay"] ) && is_numeric($argv["delay"]) ) {
-		$delay = $argv["delay"];
-	} else {
-		$delay = "9000";
-	}
-
-	if ( isset( $argv["showarrows"] ) && $argv["showarrows"] == "false" ) {
-		$showarrows = false;
-	} else {
-		$showarrows = true;
-	}
-
-	if ( isset( $argv["showinfopane"] ) && $argv["showinfopane"] == "false" ) {
-		$showinfopane = false;
-	} else {
-		$showinfopane = true;
-	}
-
-	if ( isset( $argv["fallback"] ) ) {
-		$fallback = $argv["fallback"];
-	} else {
-		$fallback = "gallery";
-	}
-
-	if ( isset( $argv["special"] ) ) {
+	if ( $wgSmoothGalleryArguments["special"] ) {
 		//The user wants a link to a special page instead. Let's provide a link with
 		//the relevant info
 
 		//sanity check
-		$name = htmlspecialchars( $argv["special"] );
+		$name = htmlspecialchars( $wgSmoothGalleryArguments["special"] );
 
 		//This is a dirty, dirty hack that should be replaced. It works, and
 		//it is safe, but there *MUST* be a better way to do this...
@@ -173,8 +116,15 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial ) {
 
 		//Get a local link from the special page
 		$sp = Title::newFromText( "Special:SmoothGallery" );
-		$output = $sp->getLocalURL( "height=" . $height . "&width=" . $width . "&showcarousel=" . $carousel . "&timed=" .
-			$timed . "&delay=" . $delay . "&showarrows=" . $showarrows . "&showinfopane=" . $showinfopane . "&input=" . htmlspecialchars( $input ) );
+		$output = $sp->getLocalURL( "height=" . $wgSmoothGalleryArguments["height"]
+			. "&width=" . $wgSmoothGalleryArguments["width"]
+			. "&showcarousel=" . $wgSmoothGalleryArguments["carousel"]
+			. "&timed=" . $wgSmoothGalleryArguments["timed"]
+			. "&delay=" . $wgSmoothGalleryArguments["delay"]
+			. "&showarrows=" . $wgSmoothGalleryArguments["showarrows"]
+			. "&showinfopane=" . $wgSmoothGalleryArguments["showinfopane"]
+			. "&fallback=" . $wgSmoothGalleryArguments["fallback"]
+			. "&input=" . htmlspecialchars( $input ) );
 
 		//Provide the link
 		return '<a href="' . $output . '">' . $name . '</a>';
@@ -183,7 +133,7 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial ) {
 	$parser->mOutput->mSmoothGalleryTag = true; # flag for use by smoothGalleryParserOutput
 
 	//Open the outer div of the gallery
-	$output = '<div id="' . $name . '" class="myGallery" style="width: ' . $width . ';height: ' . $height . '; display:none;">';
+	$output = '<div id="' . $name . '" class="myGallery" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . '; display:none;">';
 
 	//We need a parser to pass to the render function, this
 	//seems kinda dirty, but it works on MediaWiki 1.6-1.9...
@@ -197,11 +147,25 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial ) {
 	$local_parser->replaceVariables( $input );
 
 	//The image array is a delimited list of images (strings)
-	$img_arr = preg_split( "/$wgSmoothGalleryDelimiter/", $input, -1, PREG_SPLIT_NO_EMPTY );
-	$img_count = count( $img_arr );
+	$line_arr = preg_split( "/$wgSmoothGalleryDelimiter/", $input, -1, PREG_SPLIT_NO_EMPTY );
+	$img_count = count( $line_arr );
 
-	$title_arr = array();
-	foreach ( $img_arr as $img ) {
+	//Initialize a string for images we can't find, so that we
+	//can report them later
+	$missing_img = '';
+
+	$plain_gallery = new ImageGallery();
+	$first_image = '';
+
+	foreach ( $line_arr as $line ) {
+		$img_arr = explode( "|", $line, 2 );
+		$img = $img_arr[0];
+		if ( count( $img_arr ) > 1 ) {
+			$img_desc = $img_arr[1];
+		} else {
+			$img_desc = '';
+		}
+
 		$title = Title::newFromText( $img, NS_IMAGE );
 
 		if ( is_null($title) ) {
@@ -210,117 +174,16 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial ) {
 
 		$ns = $title->getNamespace();
 
-		if ( $ns == NS_IMAGE ) $title_arr[] = $title;
-		else if ( $ns == NS_CATEGORY ) {
+		if ( $ns == NS_IMAGE ) {
+			$output .= outputImage ( $title, $img_count, $missing_img, $first_image, $plain_gallery, $skin, $local_parser, $img_desc );
+		} else if ( $ns == NS_CATEGORY ) {
 			//list images in category
 			$cat_images = smoothGalleryImagesByCat( $title );
 			if ( $cat_images ) {
-				$title_arr = array_merge( $title_arr, $cat_images );
+				foreach ( $cat_images as $title ) {
+					$output .= outputImage ( $title, $img_count, $missing_img, $first_image, $plain_gallery, $skin, $local_parser, $img_desc );
+				}
 			}
-		}
-	}
-
-	//Initialize a string for images we can't find, so that we
-	//can report them later
-	$missing_img = "";
-
-	$plain_gallery = new ImageGallery();
-	$first_image = '';
-
-	foreach ( $title_arr as $title ) {
-		//Get the image object from the database
-		$img_obj = Image::newFromTitle( $title );
-
-		if ( !$img_obj->exists() ) {
-			//The user asked for an image that doesn't exist, let's
-			//add this to the list of missing objects and not output
-			//any html
-			$img_count = $img_count - 1;
-			$missing_img .= " " . htmlspecialchars( $title->getDBkey() );
-
-			continue;
-		}
-
-		//check media type. Only images are supported
-		$mtype = $img_obj->getMediaType();
-		if ( $mtype != MEDIATYPE_DRAWING && $mtype != MEDIATYPE_BITMAP ) {
-			$img_count = $img_count - 1;
-			continue;
-		}
-
-		//Create a thumbnail the same size as our gallery so that
-		//full images fit correctly
-		$full_thumb_obj = $img_obj->getThumbnail( $width, $height );
-		if ( !is_null($full_thumb_obj) ) {
-			$full_thumb = $full_thumb_obj->getUrl();
-		} else {
-			$img_count = $img_count - 1;
-			continue;
-		}
-
-		if ( $full_thumb == '' ) {
-			//The thumbnail we requested was larger than the image;
-			//we need to just provide the image
-			$full_thumb = $img_obj->getUrl();
-		}
-
-		if ( $first_image == '' ) {
-			$first_image = '<img src="' . $full_thumb . '"  class="full" />';
-		}
-
-		if ( $carousel ) {
-			//We are going to show a carousel to the user; we need
-			//to make icon thumbnails
-			//$thumb_obj = $img_obj->getThumbnail( 120, 120 ); //would be nice to reuse images already loaded...
-			$thumb_obj = $img_obj->getThumbnail( 100, 75 );
-			if ( $thumb_obj ) {
-				$icon_thumb = $thumb_obj->getUrl();
-			}
-			else {
-				//The thumbnail we requested was larger than the image;
-				//we need to just provide the image
-				$icon_thumb = $img_obj->getUrl();
-			}
-		}
-
-		$fulldesc = '';
-
-		if ( $showinfopane ) {
-			//Load the image page from the database with the provided title from
-			//the image object
-			$db = wfGetDB( DB_SLAVE );
-			$img_rev = Revision::loadFromTitle( $db, $title );
-
-			//Get the text from the image page's description
-			$fulldesc = $img_rev->getText();
-
-			if ( $local_parser ) { //convert wikitext to HTML
-				$pout = $local_parser->parse( $fulldesc, $title, $local_parser_options, true );
-				$fulldesc =  strip_tags( $pout->getText() );
-			}
-			else { //fall back to HTML-escaping
-				$fulldesc = htmlspecialchars( $fulldesc );
-			}
-		}
-
-		//Add the html for the image
-		$output .= '<div class="imageElement">';
-		$output .= '<h3>' . $skin->makeKnownLinkObj($img_obj->getTitle(), $img_obj->getName()) . '</h3>';
-		$output .= '<p>' . $fulldesc . '</p>';
-		$output .=  '<a href="' . $title->getFullURL() . '" title="open image" class="open"></a>';
-		$output .=  '<a href="' . $img_obj->getViewURL() . '" title="open image" class="open"></a>';
-		$output .=  '<img src="' . $full_thumb . '"  class="full" />';
-
-		if ( $carousel ) {
-			$output .=  '<img src="' . $icon_thumb . '"  class="thumbnail" />';
-		}
-
-		$output .= '</div>';
-
-		if ( version_compare( $wgVersion, "1.11", '<' ) ) {
-			$plain_gallery->add( $img_obj ); //TODO: use text
-		} else {
-			$plain_gallery->add( $img_obj->getTitle() ); //TODO: use text
 		}
 	}
 
@@ -345,13 +208,13 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial ) {
 	//Close the outer div of the gallery
 	$output .= '</div>';
 
-	if ( $fallback == "image" ) {
-		$output .= '<div id="' . $name . '-fallback" class="myGallerySingleImage" style="width: ' . $width . ';height: ' . $height . ';">';
+	if ( $wgSmoothGalleryArguments["fallback"] == "image" ) {
+		$output .= '<div id="' . $name . '-fallback" class="myGallerySingleImage" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . ';">';
 		$output .= $first_image;
 		$output .= '</div>';
-	} elseif ( $fallback == "image-warn" ) {
+	} elseif ( $wgSmoothGalleryArguments["fallback"] == "image-warn" ) {
 		loadSmoothGalleryI18n();
-		$output .= '<div id="' . $name . '-fallback" class="myGalleryWarning" style="width: ' . $width . ';height: ' . $height . ';">';
+		$output .= '<div id="' . $name . '-fallback" class="myGalleryWarning" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . ';">';
 		$output .= wfMsg("smoothgallery-javascript-disabled");
 		$output .= '<div class="myGallerySingleImage">';
 		$output .= $first_image;
@@ -360,15 +223,191 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial ) {
 		$output .= outputPlainGallery ( $name, $plain_gallery );
 	}
 
-	$output .= outputJavascript( $name, $timed, $delay, $carousel, $showarrows, $showinfopane );
+	$output .= outputJavascript( $name );
 
 	//Finished, let's send it out
 	return $output;
 }
 
+function parseArguments( $argv ) {
+	global $wgSmoothGalleryArguments;
+
+	//Parse arguments, set defaults, and do sanity checks
+	if ( isset( $argv["height"] ) && is_numeric( $argv["height"] ) ) {
+		if ( isset( $argv["special"] ) ) {
+			//Creating a link instead, the special page is going to call this
+			//function again, so "px" will be appended.
+			$wgSmoothGalleryArguments["height"] = $argv["height"];
+		} else {
+			$wgSmoothGalleryArguments["height"] = $argv["height"] . "px";
+		}
+	} else {
+		$wgSmoothGalleryArguments["height"] = "300px";
+	}
+
+	if ( isset( $argv["width"] ) && is_numeric( $argv["width"] ) ) {
+		if ( isset( $argv["special"] ) ) {
+			//Creating a link instead, the special page is going to call this
+			//function again, so "px" will be appended.
+			$wgSmoothGalleryArguments["width"] = $argv["width"];
+		} else {
+			$wgSmoothGalleryArguments["width"] = $argv["width"] . "px";
+		}
+	} else {
+		$wgSmoothGalleryArguments["width"] = "400px";
+	}
+
+	if ( isset( $argv["showcarousel"] ) && $argv["showcarousel"] == "false" ) {
+		$wgSmoothGalleryArguments["carousel"] = false;
+	} else {
+		$wgSmoothGalleryArguments["carousel"] = true;
+	}
+
+	if ( isset( $argv["timed"] ) && $argv["timed"] == "true" ) {
+		$wgSmoothGalleryArguments["timed"] = true;
+	} else {
+		$wgSmoothGalleryArguments["timed"] = false;
+	}
+
+	if ( isset( $argv["delay"] ) && is_numeric($argv["delay"]) ) {
+		$wgSmoothGalleryArguments["delay"] = $argv["delay"];
+	} else {
+		$wgSmoothGalleryArguments["delay"] = "9000";
+	}
+
+	if ( isset( $argv["showarrows"] ) && $argv["showarrows"] == "false" ) {
+		$wgSmoothGalleryArguments["showarrows"] = false;
+	} else {
+		$wgSmoothGalleryArguments["showarrows"] = true;
+	}
+
+	if ( isset( $argv["showinfopane"] ) && $argv["showinfopane"] == "false" ) {
+		$wgSmoothGalleryArguments["showinfopane"] = false;
+	} else {
+		$wgSmoothGalleryArguments["showinfopane"] = true;
+	}
+
+	if ( isset( $argv["fallback"] ) ) {
+		$wgSmoothGalleryArguments["fallback"] = htmlspecialchars( $argv["fallback"] );
+	} else {
+		$wgSmoothGalleryArguments["fallback"] = "gallery";
+	}
+
+	if ( isset( $argv["special"] ) ) {
+		$wgSmoothGalleryArguments["special"] = $argv["special"];
+	} else {
+		$wgSmoothGalleryArguments["special"] = '';
+	}
+}
+
+function outputImage ( $title, &$img_count, &$missing_img, &$first_image, &$plain_gallery, $skin, $local_parser, $img_desc ) {
+	global $wgVersion;
+	global $wgSmoothGalleryArguments;
+
+	//Get the image object from the database
+	$img_obj = Image::newFromTitle( $title );
+
+	if ( !$img_obj->exists() ) {
+		//The user asked for an image that doesn't exist, let's
+		//add this to the list of missing objects and not output
+		//any html
+		$img_count = $img_count - 1;
+		$missing_img .= " " . htmlspecialchars( $title->getDBkey() );
+
+		return '';
+	}
+
+	//check media type. Only images are supported
+	$mtype = $img_obj->getMediaType();
+	if ( $mtype != MEDIATYPE_DRAWING && $mtype != MEDIATYPE_BITMAP ) {
+		$img_count = $img_count - 1;
+		return '';
+	}
+
+	//Create a thumbnail the same size as our gallery so that
+	//full images fit correctly
+	$full_thumb_obj = $img_obj->getThumbnail( $wgSmoothGalleryArguments["width"], $wgSmoothGalleryArguments["height"] );
+	if ( !is_null($full_thumb_obj) ) {
+		$full_thumb = $full_thumb_obj->getUrl();
+	} else {
+		$img_count = $img_count - 1;
+		return '';
+	}
+
+	if ( $full_thumb == '' ) {
+		//The thumbnail we requested was larger than the image;
+		//we need to just provide the image
+		$full_thumb = $img_obj->getUrl();
+	}
+
+	if ( $first_image == '' ) {
+		$first_image = '<img src="' . $full_thumb . '"  class="full" />';
+	}
+
+	if ( $wgSmoothGalleryArguments["carousel"] ) {
+		//We are going to show a carousel to the user; we need
+		//to make icon thumbnails
+		//$thumb_obj = $img_obj->getThumbnail( 120, 120 ); //would be nice to reuse images already loaded...
+		$thumb_obj = $img_obj->getThumbnail( 100, 75 );
+		if ( $thumb_obj ) {
+			$icon_thumb = $thumb_obj->getUrl();
+		}
+		else {
+			//The thumbnail we requested was larger than the image;
+			//we need to just provide the image
+			$icon_thumb = $img_obj->getUrl();
+		}
+	}
+
+	$fulldesc = '';
+
+	if ( $wgSmoothGalleryArguments["showinfopane"] ) {
+		if ( $img_desc == '' ) {
+			//Load the image page from the database with the provided title from
+			//the image object
+			$db = wfGetDB( DB_SLAVE );
+			$img_rev = Revision::loadFromTitle( $db, $title );
+
+			//Get the text from the image page's description
+			$fulldesc = $img_rev->getText();
+		} else {
+			$fulldesc = $img_desc;
+		}
+
+		if ( $local_parser ) { //convert wikitext to HTML
+			$pout = $local_parser->parse( $fulldesc, $title, $local_parser->mOptions, true );
+			$fulldesc =  strip_tags( $pout->getText() );
+		} else { //fall back to HTML-escaping
+			$fulldesc = htmlspecialchars( $fulldesc );
+		}
+	}
+
+	//Add the html for the image
+	$output = '<div class="imageElement">';
+	$output .= '<h3>' . $skin->makeKnownLinkObj($img_obj->getTitle(), $img_obj->getName()) . '</h3>';
+	$output .= '<p>' . $fulldesc . '</p>';
+	$output .=  '<a href="' . $title->getFullURL() . '" title="open image" class="open"></a>';
+	$output .=  '<a href="' . $img_obj->getViewURL() . '" title="open image" class="open"></a>';
+	$output .=  '<img src="' . $full_thumb . '"  class="full" />';
+
+	if ( $wgSmoothGalleryArguments["carousel"] ) {
+		$output .=  '<img src="' . $icon_thumb . '"  class="thumbnail" />';
+	}
+
+	$output .= '</div>';
+
+	if ( version_compare( $wgVersion, "1.11", '<' ) ) {
+		$plain_gallery->add( $img_obj, $fulldesc ); //TODO: use text
+	} else {
+		$plain_gallery->add( $img_obj->getTitle(), $fulldesc ); //TODO: use text
+	}
+
+	return $output;
+}
+
 function outputPlainGallery ( $name, $plain_gallery ) {
 	//Wrapper div for plain old gallery, to be shown per default, if JS is off.
-	$output .= '<div id="' . $name . '-fallback">';
+	$output = '<div id="' . $name . '-fallback">';
 
 	$output .= $plain_gallery->toHTML();
 
@@ -378,7 +417,9 @@ function outputPlainGallery ( $name, $plain_gallery ) {
 	return $output;
 }
 
-function outputJavascript ( $name, $timed, $delay, $carousel, $showarrows, $showinfopane ) {
+function outputJavascript ( $name ) {
+	global $wgSmoothGalleryArguments;
+
 	//Output the javascript needed for the gallery with any
 	//options the user requested
 	$output = '<script type="text/javascript">';
@@ -392,20 +433,20 @@ function outputJavascript ( $name, $timed, $delay, $carousel, $showarrows, $show
 	$output .= 'thumbWidth: 100, thumbHeight: 75'; //would be nice if we could change this to 120x120 to re-use thumbnails...
 
 	//Add user provided options
-	if ( $timed ) {
+	if ( $wgSmoothGalleryArguments["timed"] ) {
 		$output .= ', timed: true';
-		$output .= ', delay: ' . $delay;
+		$output .= ', delay: ' . $wgSmoothGalleryArguments["delay"];
 	}
 
-	if ( !$carousel ) {
+	if ( !$wgSmoothGalleryArguments["carousel"] ) {
 		$output .= ', showCarousel: false';
 	}
 
-	if ( !$showarrows ) {
+	if ( !$wgSmoothGalleryArguments["showarrows"] ) {
 		$output .= ', showArrows: false';
 	}
 
-	if ( !$showinfopane ) {
+	if ( !$wgSmoothGalleryArguments["showinfopane"] ) {
 		$output .= ', showInfopane: false';
 	}
 
