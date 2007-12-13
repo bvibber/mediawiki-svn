@@ -198,8 +198,6 @@ class PasswordReset extends SpecialPage
 					$user->logout();
 					$wgOut->redirect( Title::newMainPage()->escapeFullURL());
 				}
-			} else {
-				echo "not logged in (" . $user->getID() . ")";
 			}
 			
 			return true;
