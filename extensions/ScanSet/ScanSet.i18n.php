@@ -54,7 +54,31 @@ $messages['hsb'] = array(
 	'scanset_prev' => '&lt; Předchadny',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'scanset_opendir_error' => 'ScanSet: Erro, non se pode abrir o directorio $1',
+	'scanset_next'          => 'Seguinte &gt;',
+	'scanset_prev'          => '&lt; Anterior',
+
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ * @author SPQRobin
+ */
 $messages['nl'] = array(
-	'scanset_next' => 'Volgende &gt;',
-	'scanset_prev' => '&lt; Vorige',
+	'scanset_no_name'                   => 'ScanSet: u moet een naam voor de scanset opgeven, zoals bijvoorbeeld &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: ongeldige of missende scanset',
+	'scanset_unrecognised_index_format' => 'ScanSet: indexopmaak wordt niet herkend',
+	'scanset_opendir_error'             => 'ScanSet: fout, can map $1 niet openen',
+	'scanset_no_files'                  => 'ScanSet: geen bestanden aanwezig in de opgegeven map.',
+	'scanset_no_volumes'                => 'ScanSet: geen mappen voor volumen aangetroffen',
+	'scanset_missing_index_file'        => 'ScanSet: indexbestand $1 niet aangetroffen',
+	'scanset_index_file_error'          => 'ScanSet: fout in opmaak indexbestand in regel $1',
+	'scanset_invalid_volume'            => 'ScanSet: ongeldig volumen',
+	'scanset_next'                      => 'Volgende &gt;',
+	'scanset_prev'                      => '&lt; Vorige',
+
 );

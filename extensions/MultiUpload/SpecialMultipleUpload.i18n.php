@@ -108,18 +108,24 @@ Móžeš opcionalne \'\'\'mjeno za cilowu dataju\'\'\' zapodać a \'\'\'Zjeće\'
 Njepřihódne wobrazy budu so hnydom wušmórować, hlej [[{{MediaWiki:Multipleupload-page}}|prawidła za wušmórnjenje wobrazow]].',
 );
 
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'multipleupload'    => 'Bestanden uploaden',
-	'multipleupload-ignoreallwarnings' => '\'\'\'Alle waarschuwingen\'\'\' negeren en de bestanden sowieso uploaden.',
-	'multipleupload-saveallfiles' => 'Alle bestanden opslaan',
-	'multipleupload-page' => '{{ns:project}}:Verwijderingsbeleid van bestanden',
-	'multipleupload-text' => 'Hier kunt u verschillende bestanden uploaden.
+	'multipleupload'                   => 'Bestanden uploaden',
+	'multipleupload-ignoreallwarnings' => "'''Alle waarschuwingen''' negeren en de bestanden sowieso uploaden.",
+	'multipleupload-saveallfiles'      => 'Alle bestanden opslaan',
+	'multipleupload-addresswarnings'   => 'Los altublieft de waarschuwingen up voordat u het opnieuw probeert.',
+	'multipleupload-page'              => '{{ns:project}}:Verwijderingsbeleid van bestanden',
+	'multipleupload-text'              => "Hier kunt u verschillende bestanden uploaden.
 
-Kies \'Doorzoeken\' en selecteer elk bestand dat u wil uploaden. U kan van 1 tot $1 bestanden tegelijk uploaden.
+Kies 'Doorzoeken' en selecteer elk bestand dat u wil uploaden. U kan van 1 tot $1 bestanden tegelijk uploaden.
 
-U kunt een optionele \'\'\'Bestemming bestandsnaam\'\'\'  opgeven en een \'\'\'Samenvatting\'\'\' die uw bestand beschrijft opgeven.
+U kunt een optionele '''Bestemming bestandsnaam'''  opgeven en een '''Samenvatting''' die uw bestand beschrijft opgeven.
 
-Onrelevante afbeeldingen zullen onmiddelijk verwijderd worden, zie het [[{{MediaWiki:Multipleupload-page}}|verwijderingsbeleid van bestanden]].',
+Onrelevante afbeeldingen zullen onmiddelijk verwijderd worden, zie het [[{{MediaWiki:Multipleupload-page}}|verwijderingsbeleid van bestanden]].",
+
 );
 
 $messages['no'] = array(

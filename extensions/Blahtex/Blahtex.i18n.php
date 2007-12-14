@@ -179,7 +179,12 @@ $messages['fr'] = array(
 	'math_WrongFontEncodingWithHint'        => 'Le symbole « $1 » pourrait ne pas être affiché par l\'encodage de caractères « $2 » (essayez la commande « $3{...} »).',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Alma
+ */
 $messages['gl'] = array(
+	'math_noblahtex'                        => 'Non se pode executar blahtex, que debe estar en $1',
 	'math_AmbiguousInfix'                   => 'Colocación ambigua de "$1" (tente usar chaves adicionais "{ ... }" para que fique claro)',
 	'math_CannotChangeDirectory'            => 'Non se pode mudar o directorio de traballo',
 	'math_CannotCreateTexFile'              => 'Non se pode crear unha fila de texto',
@@ -188,6 +193,8 @@ $messages['gl'] = array(
 	'math_CannotWritePngDirectory'          => 'Non se pode escribir ao directorio de saída de PNG',
 	'math_CannotWriteTexFile'               => 'Non se puido escribir no ficheiro de tex',
 	'math_CasesRowTooBig'                   => 'Só pode haber dúas entradas en cada fila do bloque "cases"',
+	'math_DoubleSubscript'                  => 'Atopados dous subíndices adxuntos á mesma base (só a un se lle permite)',
+	'math_DoubleSuperscript'                => 'Atopados dous superíndoces adxuntos á mesma base (só a un se lle permite)',
 	'math_IllegalCharacter'                 => 'Carácter non válido na entrada',
 	'math_IllegalCommandInMathMode'         => 'O comando "$1" non é válido no modo math',
 	'math_IllegalCommandInMathModeWithHint' => 'O comando "$1" non é válido no modo math (tal vez pretendía usar "$2" no seu sitio?)',
@@ -203,6 +210,7 @@ $messages['gl'] = array(
 	'math_LatexPackageUnavailable'          => 'Imposíbel producir un PNG porque o paquete "$1" non está disponíbel',
 	'math_MismatchedBeginAndEnd'            => 'Os comandos "$1" e "$2" non coinciden',
 	'math_MisplacedLimits'                  => 'O comando "$1" só pode aparecer a continuación dun operador matemático (considere utilizar "\mathop")',
+	'math_MissingCommandAfterNewcommand'    => 'Novo nome de comando desaparecido ou ilegal despois de "\newcommand" (debe definirse un comando con precisión; este debe comezar cunha barra invertida "\" e conter só caracteres alfabéticos)',
 	'math_MissingDelimiter'                 => 'Falta un delimitador a continuación de "$1"',
 	'math_MissingOpenBraceAfter'            => 'Falta unha chave de apertura "{" a continuación de "$1"',
 	'math_MissingOpenBraceAtEnd'            => 'Falta unha chave de peche "{" no final da entrada',
@@ -229,6 +237,7 @@ $messages['gl'] = array(
 	'math_UnrecognisedCommand'              => 'O comando "$1" non é recoñecido',
 	'math_WrongFontEncoding'                => 'O símbolo "$1" non pode aparecer na codificación de fonte "$2"',
 	'math_WrongFontEncodingWithHint'        => 'O símbolo "$1" non pode aparecer na codificación de fonte "$2" (tente usando o comando "$3{...}")',
+
 );
 
 $messages['hsb'] = array(
@@ -287,15 +296,70 @@ $messages['hsb'] = array(
 	'math_WrongFontEncodingWithHint'        => 'Symbol "$1" njesmě so w pismowym kodowanju "$2" jewić (spytaj přikaz "$3{...}" wužiwać)',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ * @author SPQRobin
+ */
 $messages['nl'] = array(
+	'math_noblahtex'                        => 'Blahtex kan niet uitgevoerd worden. Het programma zou hier moeten staan: $1',
+	'math_AmbiguousInfix'                   => 'Ambigue plaatsing van "$1" (probeer het op te loseen met accolades "{ ... }" om te disambigueren)',
+	'math_CannotChangeDirectory'            => 'Kan de werkmap niet wijzigen',
 	'math_CannotCreateTexFile'              => 'Kan geen tex-bestand aanmaken',
+	'math_CannotRunDvipng'                  => 'Kan dvipng niet uitvoeren',
+	'math_CannotRunLatex'                   => 'Kan latex niet uitvoeren',
+	'math_CannotWritePngDirectory'          => 'Kan niet schrijven naar de uitvoermap voor PNG',
+	'math_CannotWriteTexFile'               => 'Kan niet schrijven naar het tex-bestand',
+	'math_CasesRowTooBig'                   => 'Er kunnen maar twee elementen staan in iedere rij van een blok "cases"',
+	'math_DoubleSubscript'                  => 'Er stonden twee subscripts die aan dezelfde basis waren gekoppeld (slechts één is toegestaan)',
+	'math_DoubleSuperscript'                => 'Er stonden twee superscripts die aan dezelfde basis waren gekoppeld (slechts één is toegestaan)',
 	'math_IllegalCharacter'                 => 'Ongeldig teken in de invoer',
+	'math_IllegalCommandInMathMode'         => 'Het commando "$1" is niet toegestaan in math-modus',
+	'math_IllegalCommandInMathModeWithHint' => 'Het commando "$1" is ongeldig in math-modus. Wellicht wilde u eigenlijk "$2" gebruiken?',
+	'math_IllegalCommandInTextMode'         => 'Het commando "$1" is ongeldig in tekstmodus',
+	'math_IllegalCommandInTextModeWithHint' => 'Het commando "$1" is ongeldig in tekstmodus. Wellicht wilde u eigenlijk "$2" gebruiken?',
+	'math_IllegalDelimiter'                 => 'Ongeldig scheidingsteken na "$1"',
+	'math_IllegalFinalBackslash'            => 'Ongeldige backslach "\" aan het einde van de invoer',
+	'math_IllegalNestedFontEncodings'       => "Commando's voor de codering van lettertypen kunnen niet genest worden",
 	'math_InvalidColour'                    => 'De kleur "$1" is ongeldig',
 	'math_InvalidUtf8Input'                 => 'De invoertekst was geen geldig UTF-8',
 	'math_MismatchedBeginAndEnd'            => 'Bevelen "$1" en "$1" komen niet overeen',
 	'math_ReservedCommand'                  => 'Het bevel "$1" is gereserveerd voor intern gebruik door blahtex',
 	'math_TooManyTokens'                    => 'De invoer is te lang',
 	'math_UnrecognisedCommand'              => 'Onherkend bevel "$1"',
+
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'math_noblahtex'                        => 'Pòt pas executar blahtex, que deuriá èsser a $1',
+	'math_AmbiguousInfix'                   => "La posicion de « $1 » es ambigua (ajustar de balisas adicionalas « { ... } » pòt levar l'ambigüitat)",
+	'math_CannotChangeDirectory'            => 'Pòt pas cambiar de dorsièr de trabalh',
+	'math_CannotCreateTexFile'              => 'Pòt pas crear un fichièr tex',
+	'math_CannotRunDvipng'                  => 'Pòt pas executar dvipng',
+	'math_CannotRunLatex'                   => 'Pòt pas executar LaTeX',
+	'math_CannotWritePngDirectory'          => 'Pòt pas escriure dins lo dorsièr dels fichièrs PNG',
+	'math_CannotWriteTexFile'               => 'Pòt pas escriure dins un fichièr tex',
+	'math_CasesRowTooBig'                   => "Pòt i aver pas que doas entradas dins cada rengada d'un blòt « casas ».",
+	'math_DoubleSubscript'                  => "Dos indicis son ligats a la meteissa basa, pas qu'un sol es permes.",
+	'math_DoubleSuperscript'                => "Dos expausants son ligams a la meteissa basa, pas qu'un sol es permes.",
+	'math_IllegalCharacter'                 => 'Caractèr interdich dins la donada picada',
+	'math_IllegalCommandInMathMode'         => 'La comanda « $1 » es interdicha en mòde math.',
+	'math_IllegalCommandInMathModeWithHint' => 'La comanda « $1 » es interdicha en mòde math (benlèu voliatz utilizar « $2 » a la plaça ?)',
+	'math_IllegalCommandInTextMode'         => 'La comanda « $1 » es interdicha en mòde tèxt.',
+	'math_IllegalCommandInTextModeWithHint' => 'La comanda « $1 » es interdicha en mòde tèxt (Benlèu voliatz utilizar « $2 » a la plaça ?)',
+	'math_IllegalDelimiter'                 => 'Delimitaire interdich aprèp « $1 »',
+	'math_IllegalFinalBackslash'            => 'Lo caractèr « \ » pòt pas aparéisser a la fin de la picada.',
+	'math_IllegalNestedFontEncodings'       => "Las comandas d'encodatge de caractèrs pòdon èsser imbricadas.",
+	'math_IllegalRedefinition'              => 'La comanda « $1 » es ja definida, podètz pas la tornar definir.',
+	'math_InvalidColour'                    => 'La color « $1 » es pas valida.',
+	'math_InvalidUtf8Input'                 => 'La cadena de caractèrs picada es pas al format UTF-8.',
+	'math_LatexFontNotSpecified'            => 'Cap de poliça de caractèrs LaTeX es pas estada precisada per « $1 ».',
+	'math_LatexPackageUnavailable'          => 'Pòt pas rendre lo fichièr PNG perque lo paquetatge LaTeX « $1 » es pas accessible.',
+	'math_MismatchedBeginAndEnd'            => 'Las comandas « $1 » e « $2 » correspondon pas.',
+	'math_MisplacedLimits'                  => 'La comanda « $1 » deu aparéisser aprèp un operator quand es en mòde math (suggestion : ensajatz « mathop »).',
+
 );
 
 $messages['pt'] = array(

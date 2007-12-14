@@ -86,14 +86,20 @@ $messages['fr'] = array(
 	'spamdifftool_submit_buttom' => 'Soumettre',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
 $messages['gl'] = array(
-	'spamdifftool' => 'Administrar a Listaxe Negra de Spam',
-	'spamdifftool_cantedit' => 'Sentímolo - vostede non ten permisos para editar na Listaxe Negra de Spam.',
-	'spamdifftool_notext' => 'Non hai texto para engadir a Listaxe negra de Spam. Prema <a href=\'$1\'>here</a> para continuar.',
-	'spamdifftool_summary' => 'Engadindo a Listaxe Negra de Spam',
-	'spamdifftool_spam_link_text' => 'engadir a spam',
-	'spamdifftool_option_none' => 'nada',
-	'spamdifftool_block' => 'Bloqueo:',
+	'spamdifftool'                  => 'Administrar a Listaxe Negra de Spam',
+	'spamdifftool_cantedit'         => 'Sentímolo - vostede non ten permisos para editar na Listaxe Negra de Spam.',
+	'spamdifftool_notext'           => "Non hai texto para engadir a Listaxe negra de Spam. Prema <a href='$1'>here</a> para continuar.",
+	'spamdifftool_summary'          => 'Engadindo a Listaxe Negra de Spam',
+	'spamdifftool_spam_link_text'   => 'engadir a spam',
+	'spamdifftool_option_domain'    => 'todo desde este dominio',
+	'spamdifftool_option_subdomain' => 'todo desde este subdominio',
+	'spamdifftool_option_none'      => 'nada',
+	'spamdifftool_block'            => 'Bloqueo:',
+
 );
 
 $messages['hsb'] = array(

@@ -37,6 +37,15 @@ $messages['frp'] = array(
 	'assert_edit_message' => 'L’entrebetâ endicâ ($1) at pas reussia.',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'assert_edit_title'   => 'Afirmación fracasada',
+	'assert_edit_message' => 'A afirmación especificada ($1) fracasou.',
+
+);
+
 $messages['hr'] = array(
 	'assert_edit_title'   => 'Neuspjelo potvrđivanje',
 	'assert_edit_message' => 'Specificirano potvrđivanje ($1) nije uspjelo.',
@@ -45,6 +54,24 @@ $messages['hr'] = array(
 $messages['hsb'] = array(
 	'assert_edit_title'   => 'Twjerdźenje njeporadźiło',
 	'assert_edit_message' => 'Podate twjerdźenje ($1) je so njeporadźiło.',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'assert_edit_title'   => 'Bevestiging gefaald',
+	'assert_edit_message' => 'De gevraagde bevestiging ($1) faalde.',
+
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'assert_edit_title'   => "L'insercion a pas capitat",
+	'assert_edit_message' => "L'insercion indicada ($1) a pas capitat.",
+
 );
 
 $messages['pt'] = array(

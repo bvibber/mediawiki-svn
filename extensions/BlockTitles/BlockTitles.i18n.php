@@ -141,9 +141,13 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'Prepáčte, články s týmto názvom nie je povolené ukladať.',
 ),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
 'stq' => array(
 	'block_title_error_page_title' => 'Speer Siedennoome',
-	'block_title_error' => 'Äntscheeldigenge, man ne Siede mäd dissen Tittel duur nit spiekerd wäide.',
+	'block_title_error'            => 'Äntscheeldigenge, man ne Siede mäd dissen Tittel duur nit spiekerd wäide.',
+
 ),
 
 'sv' => array(

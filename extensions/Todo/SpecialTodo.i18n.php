@@ -94,11 +94,17 @@ $4",
 	'todo-form-submit' => 'Soumettre la requête',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
 $messages['gl'] = array(
-	'todo-new-queue' => 'novo',
-	'todo-list-change' => 'Cambiar',
-	'todo-list-cancel' => 'Cancelar',
+	'todo-new-queue'    => 'novo',
+	'todo-list-change'  => 'Cambiar',
+	'todo-list-cancel'  => 'Cancelar',
 	'todo-form-details' => 'Detalles:',
+	'todo-form-email'   => 'Para recibir unha notificación por correo electrónico cando o artigo esté pechado, teclee o seu enderezo aquí:',
+	'todo-form-submit'  => 'Presentar Consulta',
+
 );
 
 $messages['hsb'] = array(
@@ -131,16 +137,37 @@ $4',
 	'todo-form-submit' => 'Naprašowanje wotesłać',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ * @author SPQRobin
+ */
 $messages['nl'] = array(
-	'todo' => 'Takenlijst',
-	'todo-new-queue' => 'nieuw',
-	'todo-invalid-item' => 'Missend of ongeldig item',
+	'todo'                  => 'Takenlijst',
+	'todo-new-queue'        => 'nieuw',
+	'todo-mail-subject'     => 'Afgerond actiepunt op actielijst $1',
+	'todo-mail-body'        => 'U heeft gevraagd om een waarschuwing bij het sluiten van een actiepunt op de actielijst van $1.
+
+Onderwerp: $2
+Geopend: $3
+
+Dit onderwerp is nu gemarkeerd als afgerond, met de volgende opmerking:
+$4',
+	'todo-invalid-item'     => 'Missend of ongeldig item',
+	'todo-update-else-item' => 'Bezig met het bijwerken van de punten van iemand anders',
 	'todo-unrecognize-type' => 'Onherkend type',
-	'todo-item-list' => 'Uw items',
-	'todo-no-item' => 'Geen tedoen-items.',
-	'todo-invalid-owner' => 'Ongeldige eigenaar voor dit item',
-	'todo-list-for' => 'Takenlijst voor',
-	'todo-list-change' => 'Wijzigen',
-	'todo-list-cancel' => 'Annuleren',
-	'todo-new-item' => 'Nieuw item',
+	'todo-user-invalide'    => 'Aan dit actiepunt hangt een gebruiker die een onjuiste naam heeft, niet bestaat, of geen gebruik kan maken van actiepunten.',
+	'todo-item-list'        => 'Uw items',
+	'todo-no-item'          => 'Geen tedoen-items.',
+	'todo-invalid-owner'    => 'Ongeldige eigenaar voor dit item',
+	'todo-add-queue'        => 'Wachtrij toevoegen…',
+	'todo-move-queue'       => 'Verplaats naar wachtrij…',
+	'todo-list-for'         => 'Takenlijst voor',
+	'todo-list-change'      => 'Wijzigen',
+	'todo-list-cancel'      => 'Annuleren',
+	'todo-new-item'         => 'Nieuw item',
+	'todo-issue-summary'    => 'Samenvatting onderwerp:',
+	'todo-form-details'     => 'Details:',
+	'todo-form-email'       => 'Voer hier uw e-mailadres in om een melding te krijgen als dit onderwerp wordt gesloten:',
+	'todo-form-submit'      => 'Zoekopdracht uitvoeren',
+
 );

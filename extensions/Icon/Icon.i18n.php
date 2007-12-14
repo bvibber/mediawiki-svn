@@ -37,3 +37,12 @@ $messages['la'] = array(
 	'icon-badimage' => 'Imago mala',
 	'icon-badwidth' => 'Latitudo mala',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'icon-badimage' => 'Onjuist bestand',
+	'icon-badwidth' => 'Onjuiste breedte',
+
+);

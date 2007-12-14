@@ -137,11 +137,17 @@ $wgFilepathMessages['hsb'] = array(
 
 Zapisaj datajowe mjeno bjez prefiksa "{{ns:image}}:".',
 );
+
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
 $wgFilepathMessages['hu'] = array(
-	'filepath'        => 'Fájl elérés',
+	'filepath'        => 'Fájlelérés',
 	'filepath_page'   => 'Fájl:',
 	'filepath_submit' => 'Elérés',
+
 );
+
 $wgFilepathMessages['id'] = array(
 	'filepath'        => 'Lokasi berkas',
 	'filepath_page'   => 'Berkas:',

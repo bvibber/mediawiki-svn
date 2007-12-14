@@ -1769,35 +1769,42 @@ Sledi rezultujuća šifrirana verzija. Biće javno predstavljena na [[Special:Bo
 
 $wgBoardVoteMessages['sr'] = $wgBoardVoteMessages['sr-ec'];
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ * @author Maartenvdbent
+ */
 $wgBoardVoteMessages['stq'] = array(
-	'boardvote'               => 'Woalen tou dät Wikimedia-Kuratorium',
-	'boardvote_intro_change'  => '<p>Du hääst al oustämd. Man du koast dien Stämme mäd dät foulgjende Formular annerje. Markier deertou do litje Kasten fon do Kandidoate, do du wääle moatest.</p>',
-	'boardvote_novotes'       => 'Tou nu tou häd noch neemens oustämd.',
-	'boardvote_time'          => 'Tied',
-	'boardvote_user'          => 'Benutser',
-	'boardvote_edits'         => 'Beoarbaidengen',
-	'boardvote_days'          => 'Deege',
-	'boardvote_ip'            => 'IP',#identical but defined
-	'boardvote_ua'            => 'User-Agent',
-	'boardvote_listintro'     => '<p>Dit is ne Lieste fon aal Stämme, do der tou nu tou ouroat wuuden. $1 foar do ferslöätelde Doaten.<p>',
-	'boardvote_dumplink'      => 'Klik hier',
-	'boardvote_submit'        => 'Oustimme',
-	'boardvote_strike'        => 'Stämmen straikje',
-	'boardvote_unstrike'      => 'Stämstriekenge tourääch nieme',
-	'boardvote_needadmin'     => 'Bloot Woaladministratore konnen disse Aktion truchfiere.',
-	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">Woale tou dät Wikimedia-Kuratorium</a>:',
-	'boardvote_notstarted'    => 'Ju Woal is noch nit ounfangd.',
-	'boardvote_closed'        => 'Ju Woal is be-eended. Dät Resultoat is [http://meta.wikimedia.org/wiki/Election_results_2006/De in Meta-Wiki] ientoukiekjen.',
-	'boardvote_edits_many'    => 'fuul',
-	'group-boardvote'         => 'Woal-Administratore',
-	'group-boardvote-member'  => 'Woal-Administrator',
-	'grouppage-boardvote'     => '{{ns:project}}:Woal-Administrator',
-	'boardvote_blocked'       => 'Äntscheeldigenge, man du wuudest in din Wiki speerd. Speerde Benutsere duuren nit an ju Woal deelnieme.',
-	'boardvote_welcome'       => 'Wäilkuumen \'\'\'$1\'\'\'!',
-	'go_to_board_vote'        => 'Woalen tou dät Wikimedia-Kuratorium 2007',
-	'boardvote_redirecting'   => 'Foar ne haagere Sicherhaid un Klooregaid, wäd ju Woal moaked ap n externen, uunouhongich kontrollierden Server.
+	'boardvote'              => 'Woalen tou dät Wikimedia-Kuratorium',
+	'boardvote_intro_change' => '<p>Du hääst al oustämd. Man du koast dien Stämme mäd dät foulgjende Formular annerje. Markier deertou do litje Kasten fon do Kandidoate, do du wääle moatest.</p>',
+	'boardvote_notloggedin'  => 'Du bäst nit ienlogged. Uum oustämme tou konnen, moast du ienlogged weese un n Benutserkonto ferweende, wiermäd al foar dän Täldai ($2) ap minste $1 Beoarbaidengen moaked wuuden.',
+	'boardvote_notqualified' => 'Du bäst nit begjuchtiged an dissen Woal deeltouniemen. Du moast $3 Beoarbaidengen foar dän $2 moaked hääbe un die eerste Beoarbaidenge mout foar dän $5 geböärd weese. Aal Bedingengengen mouten tou ju Woaldeelnoame ärfäld weese.',
+	'boardvote_novotes'      => 'Tou nu tou häd noch neemens oustämd.',
+	'boardvote_time'         => 'Tied',
+	'boardvote_user'         => 'Benutser',
+	'boardvote_edits'        => 'Beoarbaidengen',
+	'boardvote_days'         => 'Deege',
+	'boardvote_ip'           => 'IP',
+	'boardvote_ua'           => 'User-Agent',
+	'boardvote_listintro'    => '<p>Dit is ne Lieste fon aal Stämme, do der tou nu tou ouroat wuuden. $1 foar do ferslöätelde Doaten.<p>',
+	'boardvote_dumplink'     => 'Klik hier',
+	'boardvote_submit'       => 'Oustimme',
+	'boardvote_strike'       => 'Stämmen straikje',
+	'boardvote_unstrike'     => 'Stämstriekenge tourääch nieme',
+	'boardvote_needadmin'    => 'Bloot Woaladministratore konnen disse Aktion truchfiere.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Woale tou dät Wikimedia-Kuratorium</a>:',
+	'boardvote_notstarted'   => 'Ju Woal is noch nit ounfangd.',
+	'boardvote_closed'       => 'Ju Woal is be-eended. Dät Resultoat is [http://meta.wikimedia.org/wiki/Election_results_2006/De in Meta-Wiki] ientoukiekjen.',
+	'boardvote_edits_many'   => 'fuul',
+	'group-boardvote'        => 'Woal-Administratore',
+	'group-boardvote-member' => 'Woal-Administrator',
+	'grouppage-boardvote'    => '{{ns:project}}:Woal-Administrator',
+	'boardvote_blocked'      => 'Äntscheeldigenge, man du wuudest in din Wiki speerd. Speerde Benutsere duuren nit an ju Woal deelnieme.',
+	'boardvote_welcome'      => "Wäilkuumen '''$1'''!",
+	'go_to_board_vote'       => 'Woalen tou dät Wikimedia-Kuratorium 2007',
+	'boardvote_redirecting'  => 'Foar ne haagere Sicherhaid un Klooregaid, wäd ju Woal moaked ap n externen, uunouhongich kontrollierden Server.
 
 Du wädst in 20 Sekunden tou dissen externen Server fääre lat. [$1 klik hier], uum fluks deerwai tou kuumen.',
+
 );
 
 $wgBoardVoteMessages['su'] = array(

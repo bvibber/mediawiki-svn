@@ -86,16 +86,23 @@ $messages['hsb'] = array(
 	'postcomment_nopostingtoadd' => 'Njeje powěsć, kotraž hodźi so přidać.',
 );
 
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'postcomment_discussionprotected' => 'Deze overlegpagina is beveiligd tegen verdere antwoorden en opmerkingen.',
-	'postcomment_notloggedin' => 'U bent niet aangemeld.',
-	'postcomment_youareloggedinas' => 'U bent aangemeld als $1',
+	'postcomment_discussionprotected'      => 'Deze overlegpagina is beveiligd tegen verdere antwoorden en opmerkingen.',
+	'postcomment_notloggedin'              => 'U bent niet aangemeld.',
+	'postcomment_youareloggedinas'         => 'U bent aangemeld als $1',
 	'postcomment_addcommentdiscussionpage' => 'Uw opmerking toevoegen op deze overlegpagina',
-	'postcomment_leavemessagefor' => 'Een bericht achterlaten voor $1',
-	'postcomment_on' => 'Op',
-	'postcomment_said' => 'zei',
-	'postcomment_invalidrequest' => 'Ongeldige aanvraag.',
-	'postcomment_replyto' => 'Antwoorden aan $1',
+	'postcomment_leavemessagefor'          => 'Een bericht achterlaten voor $1',
+	'postcomment_post'                     => 'Opslaan',
+	'postcomment_on'                       => 'Op',
+	'postcomment_said'                     => 'zei',
+	'postcomment_invalidrequest'           => 'Ongeldige aanvraag.',
+	'postcomment_replyto'                  => 'Antwoorden aan $1',
+	'postcomment_nopostingtoadd'           => 'Niets toe te voegen.',
+
 );
 
 $messages['no'] = array(

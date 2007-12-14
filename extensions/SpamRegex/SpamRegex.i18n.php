@@ -104,11 +104,26 @@ $messages ['fr'] = array(
 	'spamregex-summary-log' => '(Commentaire)',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
 $messages['gl'] = array(
-	'spamregex_summary' => 'O texto foi atopado no resumo do artigo.',
-	'spamregex-log-2' => 'en $1',
-	'spamregex-text' => '(Texto)',
-	'spamregex-summary-log' => '(Resumo)',
+	'spamregex_summary'              => 'O texto foi atopado no resumo do artigo.',
+	'spamregex-log-2'                => 'en $1',
+	'spamregex-unblock-success'      => 'Desbloqueo con éxito',
+	'spamregex-unblock-message'      => "A frase '''$1''' foi desbloqueada para a edición.",
+	'spamregex-block-success'        => 'Bloqueo con éxito',
+	'spamregex-block-message'        => "A frase '''$1''' foi bloqueada.",
+	'spamregex-warning-1'            => 'Dar unha frase para bloquear.',
+	'spamregex-error-1'              => 'Expresión regular non válida.',
+	'spamregex-already-blocked'      => '"$1" está aínda bloqueado',
+	'spamregex-phrase-block'         => 'Frase para bloquear:',
+	'spamregex-phrase-block-text'    => 'bloquear unha frase no texto do artigo',
+	'spamregex-phrase-block-summary' => 'frase para bloquear no resumo',
+	'spamregex-block-submit'         => 'Bloquear&nbsp;esta&nbsp;frase',
+	'spamregex-text'                 => '(Texto)',
+	'spamregex-summary-log'          => '(Resumo)',
+
 );
 
 $messages['hsb'] = array(

@@ -144,20 +144,40 @@ $messages['fr'] = array(
 	'review_comment' => 'Commentaire',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
 $messages['gl'] = array(
-	'review_sidebar_title' => 'Revisado',
-	'review_topic_page' => 'Revisados os temas',
-	'review_page_link' => 'revisar estatísticas',
-	'review_for_page' => 'Revisión para a páxina "$1"',
-	'review_for_user' => 'Revisión para o usuario "$1"',
-	'review_no_reviews_for_page' => 'Actualmente non hai revisións para "$1".',
-	'review_total_statistics' => 'Total',#identical but defined
-	'review_statistics_left_corner' => 'Revisión',
-	'review_version_link' => 'Revisión #$1',
-	'review_version_statistic_cell' => '$1 de $2',
-	'review_user_details_link' => '(detalles)',
-	'review_page_review' => 'Revisión da páxina "$1"',
-	'review_wrong_namespace' => 'As páxinas no espazo de nomes non poden ser revisadas!',
+	'review_sidebar_title'                   => 'Revisado',
+	'review_topic_page'                      => 'Revisados os temas',
+	'review_your_review'                     => 'O seu examen desta páxina/revisión:',
+	'review_page_link'                       => 'revisar estatísticas',
+	'review_for_page'                        => 'Revisión para a páxina "$1"',
+	'review_for_user'                        => 'Revisión para o usuario "$1"',
+	'review_error'                           => 'Algo está fallando!',
+	'review_no_reviews_for_page'             => 'Actualmente non hai revisións para "$1".',
+	'review_total_statistics'                => 'Total',
+	'review_statistics_left_corner'          => 'Revisión',
+	'review_version_link'                    => 'Revisión #$1',
+	'review_statistic_cell'                  => 'Promedio: $1 de $2<br />($4 usuarios, $5 anónimos)',
+	'review_version_statistic_cell'          => '$1 de $2',
+	'review_version_reviews_link'            => '<small>(versión revisada)</small>',
+	'review_concerns_page'                   => 'Esta revisión é acerca da páxina "$1".',
+	'review_concerns_user'                   => 'Isto é acerca das revisións polo usuario "$1".',
+	'review_user_reviews'                    => '<small>(revisións por este usuario)</small>',
+	'review_user_page_list'                  => 'O usuario revisou as seguintes páxinas:',
+	'review_user_details_link'               => '(detalles)',
+	'review_do_merge'                        => 'Fusionar as miñas revisións coas outras revisións desta páxina dentro desta',
+	'review_has_been_stored'                 => "<font id='review_has_been_stored'>A súa revisión foi almacenada!</font>",
+	'revision_review_this_page_version_link' => 'Examinar esta versión desta páxina.',
+	'review_page_review'                     => 'Revisión da páxina "$1"',
+	'review_blocked'                         => 'Vostede está bloqueado, desaparecerá.',
+	'review_wrong_namespace'                 => 'As páxinas no espazo de nomes non poden ser revisadas!',
+	'review_topic'                           => 'Tema',
+	'review_no_opinion'                      => 'Sen opinión',
+	'review_rating'                          => 'Avaliación',
+	'review_comment'                         => 'Comentario',
+
 );
 
 $messages['hsb'] = array(

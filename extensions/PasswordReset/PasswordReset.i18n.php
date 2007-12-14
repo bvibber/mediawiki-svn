@@ -26,21 +26,26 @@ $allMessages = array(
 		'passwordreset-username' => 'Gebruikersnaam',
 	),
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 	'ar' => array(
-		'passwordreset' => 'تمت إعادة ضبط كلمة السر',
-		'passwordreset-invalidusername' => 'اسم مستخدم غير صحيح',
-		'passwordreset-emptyusername' => 'اسم مستخدم فارغ',
-		'passwordreset-nopassmatch' => 'كلمات السر لا تتطابق',
-		'passwordreset-badtoken' => 'نص تعديل غير صحيح',
-		'passwordreset-username' => 'اسم مستخدم',
-		'passwordreset-newpass' => 'كلمة سر جديدة',
-		'passwordreset-confirmpass' => 'أكد كلمة السر',
-		'passwordreset-submit' => 'أعد ضبط كلمة السر',
-		'passwordreset-success' => 'كلمة السر تم ضبطها ل user_id: $1',
-		'passwordreset-disableuser' => 'عطل حساب المستخدم؟',
+		'passwordreset'                    => 'تمت إعادة ضبط كلمة السر',
+		'passwordreset-invalidusername'    => 'اسم مستخدم غير صحيح',
+		'passwordreset-emptyusername'      => 'اسم مستخدم فارغ',
+		'passwordreset-nopassmatch'        => 'كلمات السر لا تتطابق',
+		'passwordreset-badtoken'           => 'نص تعديل غير صحيح',
+		'passwordreset-username'           => 'اسم مستخدم',
+		'passwordreset-newpass'            => 'كلمة سر جديدة',
+		'passwordreset-confirmpass'        => 'أكد كلمة السر',
+		'passwordreset-submit'             => 'أعد ضبط كلمة السر',
+		'passwordreset-success'            => 'كلمة السر تم ضبطها ل user_id: $1',
+		'passwordreset-disableuser'        => 'عطل حساب المستخدم؟',
 		'passwordreset-disableuserexplain' => '(يضبط هاش كلمة سر غير صحيح - المستخدم لا يمكنه الدخول)',
-		'passwordreset-disablesuccess' => 'حساب المستخدم تم تعطيله (رقم_المستخدم: $1)',
-	),
+		'passwordreset-disablesuccess'     => 'حساب المستخدم تم تعطيله (رقم_المستخدم: $1)',
+		'passwordreset-accountdisabled'    => 'الحساب تم تعطيله',
+
+),
 
 	'de' => array(
 		'passwordreset'                 => 'Passwort zurücksetzen',
@@ -70,50 +75,67 @@ $allMessages = array(
 		'passwordreset-success' => 'Ο κωδικός έχει επαναφερθεί για τον user_id: $1',
 	),
 
+/** French (Français)
+ * @author Sherbrooke
+ * @author Dereckson
+ */
 	'fr' => array(
-		'passwordreset' => 'Remise à zéro du mot de passe',
-		'passwordreset-invalidusername' => 'Nom d\'usager inconnu',
-		'passwordreset-emptyusername' => 'Nom d\'usager vide',
-		'passwordreset-nopassmatch' => 'Les mots de passe que vous avez saisis ne sont pas identiques.',
-		'passwordreset-badtoken' => 'Token de modification inconnu',
-		'passwordreset-username' => 'Nom d\'usager',
-		'passwordreset-newpass' => 'Nouveau mot de passe',
-		'passwordreset-confirmpass' => 'Confirmez le mot de passe',
-		'passwordreset-submit' => 'Remise à zéro du mot de passe',
-		'passwordreset-success' => 'Le mot de passe a été remis à zréo pour le \'\'user_id\'\' $1.',
-		'passwordreset-disableuser' => 'Désactiver le compte utilisateur ?',
-		'passwordreset-disablesuccess' => 'Compte utilisateur désactivé (user_id : $1)',
-	),
+		'passwordreset'                 => 'Remise à zéro du mot de passe',
+		'passwordreset-invalidusername' => "Nom d'usager inconnu",
+		'passwordreset-emptyusername'   => "Nom d'usager vide",
+		'passwordreset-nopassmatch'     => 'Les mots de passe que vous avez saisis ne sont pas identiques.',
+		'passwordreset-badtoken'        => 'Token de modification inconnu',
+		'passwordreset-username'        => "Nom d'usager",
+		'passwordreset-newpass'         => 'Nouveau mot de passe',
+		'passwordreset-confirmpass'     => 'Confirmez le mot de passe',
+		'passwordreset-submit'          => 'Remise à zéro du mot de passe',
+		'passwordreset-success'         => "Le mot de passe a été remis à zréo pour le ''user_id'' $1.",
+		'passwordreset-disableuser'     => 'Désactiver le compte utilisateur ?',
+		'passwordreset-disablesuccess'  => 'Compte utilisateur désactivé (user_id : $1)',
+		'passwordreset-accountdisabled' => 'Ce compte a été désactivé.',
 
+),
+
+/** Galician (Galego)
+ * @author Xosé
+ * @author Alma
+ */
 	'gl' => array(
-		'passwordreset' => 'Eliminar o contrasinal',
+		'passwordreset'                 => 'Eliminar o contrasinal',
 		'passwordreset-invalidusername' => 'Nome de usuario non válido',
-		'passwordreset-emptyusername' => 'Nome de usuario baleiro',
-		'passwordreset-nopassmatch' => 'Os contrasinais non coinciden',
-		'passwordreset-username' => 'Nome de usuario',
-		'passwordreset-newpass' => 'Contrasinal Novo',
-		'passwordreset-confirmpass' => 'Confirme o Contrasinal',
-		'passwordreset-submit' => 'Limpar o Contrasinal',
-		'passwordreset-success' => 'Limpouse o contrasinal para o id de usuario: $1',
-		'passwordreset-disableuser' => 'Desactivar a Conta de Usuario?',
-		'passwordreset-disablesuccess' => 'Desactivouse a conta do usuario (user_id: $1)',
-	),
+		'passwordreset-emptyusername'   => 'Nome de usuario baleiro',
+		'passwordreset-nopassmatch'     => 'Os contrasinais non coinciden',
+		'passwordreset-username'        => 'Nome de usuario',
+		'passwordreset-newpass'         => 'Contrasinal Novo',
+		'passwordreset-confirmpass'     => 'Confirme o Contrasinal',
+		'passwordreset-submit'          => 'Limpar o Contrasinal',
+		'passwordreset-success'         => 'Limpouse o contrasinal para o id de usuario: $1',
+		'passwordreset-disableuser'     => 'Desactivar a Conta de Usuario?',
+		'passwordreset-disablesuccess'  => 'Desactivouse a conta do usuario (user_id: $1)',
+		'passwordreset-accountdisabled' => 'A conta foi desabilitada',
 
+),
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 	'hsb' => array(
-		'passwordreset' => 'Hesło wróćo stajić',
-		'passwordreset-invalidusername' => 'Njepłaćiwe wužiwarske mjeno',
-		'passwordreset-emptyusername' => 'Žane wužiwarske mjeno',
-		'passwordreset-nopassmatch' => 'Hesle njerunatej so',
-		'passwordreset-badtoken' => 'Njepłaćiwe wobdźěłanske znamjo',
-		'passwordreset-username' => 'Wužiwarske mjeno',
-		'passwordreset-newpass' => 'Nowe hesło',
-		'passwordreset-confirmpass' => 'Hesło wobkrućić',
-		'passwordreset-submit' => 'Hesło wróćo stajić',
-		'passwordreset-success' => 'Hesło bu za wužiwarski ID $1 wróćo stajene.',
-		'passwordreset-disableuser' => 'Wužiwarske konto znjemóžnić?',
+		'passwordreset'                    => 'Hesło wróćo stajić',
+		'passwordreset-invalidusername'    => 'Njepłaćiwe wužiwarske mjeno',
+		'passwordreset-emptyusername'      => 'Žane wužiwarske mjeno',
+		'passwordreset-nopassmatch'        => 'Hesle njerunatej so',
+		'passwordreset-badtoken'           => 'Njepłaćiwe wobdźěłanske znamjo',
+		'passwordreset-username'           => 'Wužiwarske mjeno',
+		'passwordreset-newpass'            => 'Nowe hesło',
+		'passwordreset-confirmpass'        => 'Hesło wobkrućić',
+		'passwordreset-submit'             => 'Hesło wróćo stajić',
+		'passwordreset-success'            => 'Hesło bu za wužiwarski ID $1 wróćo stajene.',
+		'passwordreset-disableuser'        => 'Wužiwarske konto znjemóžnić?',
 		'passwordreset-disableuserexplain' => '(nastaja njepłaćiwy hesłowy šmjat - wužiwar njemóže so přizjewić)',
-		'passwordreset-disablesuccess' => 'Wužiwarske konto bu znjemóžnjene (wužiwarski_id: $1)',
-	),
+		'passwordreset-disablesuccess'     => 'Wužiwarske konto bu znjemóžnjene (wužiwarski_id: $1)',
+		'passwordreset-accountdisabled'    => 'Konto bu znjemóžnjene',
+
+),
 
 	'ie' => array(
 		'passwordreset-username' => 'Vor nómine usatori',
@@ -125,18 +147,26 @@ $allMessages = array(
 		'passwordreset-newpass' => 'Nova Kontrolajo',
 	),
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 	'nl' => array(
-		'passwordreset' => 'Wachtwoord opnieuw instellen',
-		'passwordreset-invalidusername' => 'Onjuiste gebruiker',
-		'passwordreset-emptyusername' => 'Gebruiker niet ingegeven',
-		'passwordreset-nopassmatch' => 'De wachtwoorden komen niet overeen',
-		'passwordreset-badtoken' => 'Ongeldig bewerkingstoken',
-		'passwordreset-username' => 'Gebruiker',
-		'passwordreset-newpass' => 'Nieuw wachtwoord',
-		'passwordreset-confirmpass' => 'Bevestig wachtwoord',
-		'passwordreset-submit' => 'Wachtwoord opnieuw instellen',
-		'passwordreset-success' => 'Wachtwoord voor gebruikers-ID $1 is opnieuw ingesteld',
-	),
+		'passwordreset'                    => 'Wachtwoord opnieuw instellen',
+		'passwordreset-invalidusername'    => 'Onjuiste gebruiker',
+		'passwordreset-emptyusername'      => 'Gebruiker niet ingegeven',
+		'passwordreset-nopassmatch'        => 'De wachtwoorden komen niet overeen',
+		'passwordreset-badtoken'           => 'Ongeldig bewerkingstoken',
+		'passwordreset-username'           => 'Gebruiker',
+		'passwordreset-newpass'            => 'Nieuw wachtwoord',
+		'passwordreset-confirmpass'        => 'Bevestig wachtwoord',
+		'passwordreset-submit'             => 'Wachtwoord opnieuw instellen',
+		'passwordreset-success'            => 'Wachtwoord voor gebruikers-ID $1 is opnieuw ingesteld',
+		'passwordreset-disableuser'        => 'Gebruiker deactiveren?',
+		'passwordreset-disableuserexplain' => '(stelt een onjuiste wachtwoordhash in - gebruik kan niet aanmelden)',
+		'passwordreset-disablesuccess'     => 'Gebruik is gedeactiveerd (gebruikers-ID: $1)',
+		'passwordreset-accountdisabled'    => 'Gebruiker is gedeactiveerd',
+
+),
 
 	'no' => array(
 		'passwordreset' => 'Passordresetting',

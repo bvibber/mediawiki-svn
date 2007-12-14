@@ -48,6 +48,15 @@ Ce courrier a vous a été envoyé grâce au systeme de messagerie de {{SITENAME
 $2',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'email_footer' => '----------------------------------------------------------------------------
+Esta mensaxe foille enviada a través do ((SITENAME)) sistema de email por $1.',
+
+);
+
 $messages['hsb'] = array(
 	'email_footer' => '----------------------------------------------------------------------------
 Tuta e-mejl bu ći wot $1 přez e-mejlowy system {{SITENAME}} pósłana.',

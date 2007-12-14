@@ -64,8 +64,17 @@ $messages['fr'] = array(
 	'watchers_less_than_x'   => 'Moins de $1 utilisateurs suivent cette page.',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
 $messages['gl'] = array(
+	'watchers'               => 'Vixiantes',
+	'watchers_link_title'    => 'Quen vixia esta páxina?',
 	'watchers_error_article' => '<b>Erro:</b> O artigo non existe.',
+	'watchers_noone_watches' => 'Ninguén vixia esta páxina',
+	'watchers_x_or_more'     => '$1 ou máis persoas están vixiando esta páxina.',
+	'watchers_less_than_x'   => 'Menos de $1 persoas vixian esta páxina.',
+
 );
 
 $messages['hsb'] = array(

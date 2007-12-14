@@ -50,16 +50,22 @@ function efProfileMonitorMessages() {
 	'profiling-no-data' => 'Aucune donnée correspondante trouvée',
 ),
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Xosé
+ */
 'gl' => array(
-	'profiling' => 'Perfís de datos',
-	'profiling-wildcard' => 'Empregar comodín',
-	'profiling-ok' => 'De acordo',
-	'profiling-data' => 'Perfís de datos para `$1`',
+	'profiling'              => 'Perfís de datos',
+	'profiling-process'      => 'Cadea do proceso:',
+	'profiling-wildcard'     => 'Empregar comodín',
+	'profiling-ok'           => 'De acordo',
+	'profiling-data'         => 'Perfís de datos para `$1`',
 	'profiling-data-process' => 'Procedemento',
-	'profiling-data-count' => 'Contar',
-	'profiling-data-time' => 'Tempo (todo)',
+	'profiling-data-count'   => 'Contar',
+	'profiling-data-time'    => 'Tempo (todo)',
 	'profiling-data-average' => 'Tempo (media)',
-	'profiling-no-data' => 'Non coinciden os datos atopados.',
+	'profiling-no-data'      => 'Non coinciden os datos atopados.',
+
 ),
 
 'hsb' => array(

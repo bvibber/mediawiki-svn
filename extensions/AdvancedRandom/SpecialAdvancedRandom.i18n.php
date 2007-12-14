@@ -50,6 +50,14 @@ $messages['no'] = array(
 	'advancedrandom' => 'Avansert tilfeldig side',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'advancedrandom' => 'Accès aleatòri avançat',
+
+);
+
 $messages['pt'] = array(
 	'advancedrandom' => 'Acesso aleatório avançado',
 );

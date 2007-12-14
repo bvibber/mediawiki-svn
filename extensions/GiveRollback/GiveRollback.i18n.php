@@ -142,25 +142,32 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-page' => '{{ns:help}}:Rollback',#identical but defined
 ),
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Siebrand
+ * @author Xosé
+ */
 'gl' => array(
-	'giverollback' => 'Conceder ou revocar dereitos de retroceso',
-	'giverollback-header' => '\'\'\'Un burócrata local pode usar esta páxina para conceder ou revocar [[{{MediaWiki:Giverollback-page}}|dereitos de retroceso]] a outra conta de usuario.\'\'\' <br /> Isto pode ser usado para permitir a non administradores revertir vandalismos rapidamente. Debe facerse de conformidade coas políticas aplicábeis.',
-	'giverollback-username' => 'Nome de usuario:',
-	'giverollback-search' => 'Ir',
-	'giverollback-hasrb' => '[[User:$1|$1]] ten dereitos de retroceso.',
-	'giverollback-norb' => '[[User:$1|$1]] non ten dereitos de retroceso.',
-	'giverollback-toonew' => '[[User:$1|$1]] é demasiado novo e non se lle poden dar dereitos de retroceso.',
-	'giverollback-sysop' => '[[User:$1|$1]] é un administrador, e sempre ten dereitos de retroceso.',
-	'giverollback-change' => 'Mudar status:',
-	'giverollback-grant' => 'Conceder',
-	'giverollback-revoke' => 'Revocar',
-	'giverollback-comment' => 'Comentario:',
-	'giverollback-granted' => '[[User:$1|$1]] agora ten dereitos de retroceso.',
-	'giverollback-revoked' => '[[User:$1|$1]] xa non ten dereitos de retroceso.',
-	'giverollback-logpage' => 'Rexistro de dereitos de retroceso',
-	'giverollback-logpagetext' => 'Este é un rexistro de cambios de dereitos de [[{{MediaWiki:Giverollback-page}}|retroceso]] para os non administradores.',
-	'giverollback-logentrygrant' => 'conceder dereitos de retroceso a [[$1]]',
+	'giverollback'                => 'Conceder ou revocar dereitos de retroceso',
+	'giverollback-header'         => "'''Un burócrata local pode usar esta páxina para conceder ou revocar [[{{MediaWiki:Giverollback-page}}|dereitos de retroceso]] a outra conta de usuario.''' <br /> Isto pode ser usado para permitir a non administradores revertir vandalismos rapidamente. Debe facerse de conformidade coas políticas aplicábeis.",
+	'giverollback-username'       => 'Nome de usuario:',
+	'giverollback-search'         => 'Ir',
+	'giverollback-hasrb'          => '[[User:$1|$1]] ten dereitos de retroceso.',
+	'giverollback-norb'           => '[[User:$1|$1]] non ten dereitos de retroceso.',
+	'giverollback-toonew'         => '[[User:$1|$1]] é demasiado novo e non se lle poden dar dereitos de retroceso.',
+	'giverollback-sysop'          => '[[User:$1|$1]] é un administrador, e sempre ten dereitos de retroceso.',
+	'giverollback-change'         => 'Mudar status:',
+	'giverollback-grant'          => 'Conceder',
+	'giverollback-revoke'         => 'Revocar',
+	'giverollback-comment'        => 'Comentario:',
+	'giverollback-granted'        => '[[User:$1|$1]] agora ten dereitos de retroceso.',
+	'giverollback-revoked'        => '[[User:$1|$1]] xa non ten dereitos de retroceso.',
+	'giverollback-logpage'        => 'Rexistro de dereitos de retroceso',
+	'giverollback-logpagetext'    => 'Este é un rexistro de cambios de dereitos de [[{{MediaWiki:Giverollback-page}}|retroceso]] para os non administradores.',
+	'giverollback-logentrygrant'  => 'conceder dereitos de retroceso a [[$1]]',
 	'giverollback-logentryrevoke' => 'eliminados dereitos de retroceso de [[$1]]',
+	'giverollback-page'           => '{{ns:help}}:Retroceso',
+
 ),
 
 'hsb' => array(

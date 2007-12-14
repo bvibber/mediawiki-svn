@@ -72,8 +72,20 @@ $messages['hsb'] = array(
 	'inspectcache-deleted' => 'Wuprózdnjeny pufrowak',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ * @author SPQRobin
+ */
 $messages['nl'] = array(
-	'inspectcache-delete' => 'Verwijderen',
+	'inspectcache'         => 'Cache inspecteren',
+	'inspectcache-ok'      => 'OK',
+	'inspectcache-general' => 'Algemene cache',
+	'inspectcache-parser'  => 'Parsercache',
+	'inspectcache-message' => 'Berichtencache',
+	'inspectcache-get'     => 'Ophalen',
+	'inspectcache-delete'  => 'Verwijderen',
+	'inspectcache-deleted' => 'Cache geleegd',
+
 );
 
 $messages['no'] = array(
