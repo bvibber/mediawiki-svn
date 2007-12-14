@@ -46,7 +46,7 @@ function tab(baseId, newIndex) {
 		}
 		if ( i == newIndex ) {
 			anchor.className = 'active';
-			anchor.href = '';
+			anchor.href = 'javascript:;';
 			pane.style.display = 'block';
 		} else {
 			anchor.className = '';
@@ -55,6 +55,7 @@ function tab(baseId, newIndex) {
 		}
 	}
 }
+
 
 
 
