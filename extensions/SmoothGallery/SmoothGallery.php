@@ -77,153 +77,38 @@ function smoothGalleryImagesByCat( $title ) {
 	return $images;
 }
 
-function renderSmoothGallery( $input, $argv, &$parser, $calledfromspecial=false ) {
-	global $wgContLang, $wgUser, $wgTitle;
-	global $wgSmoothGalleryDelimiter;
+function renderSmoothGallery( $input, $argv, &$parser, $calledFromSpecial=false, $calledAsSet=false ) {
 	global $wgSmoothGalleryArguments;
-
-	$skin = $wgUser->getSkin();
-
-	//Sanity check
-	if ( $input == "" ) {
-		loadSmoothGalleryI18n();
-		$output = wfMsg("smoothgallery-error");
-		$output .= wfMsg("smoothgallery-not-found");
-		return $output;
-	}
 
 	parseArguments( $argv );
 
-	//Give this gallery a random name so that we can have more than one gallery
-	//on a page. But don't do this on a special page, because it will cause
-	//us problems with javascript that uses the css classname
-	if ( $calledfromspecial ) {
-		$name = "myGallery";
-	} else {
+	$name = '';
+	$output = '';
+	$fallbackOutput = '';
+
+	if ( $calledAsSet ) {
 		$name = "myGallery" . mt_rand();
-	}
-
-	if ( $wgSmoothGalleryArguments["special"] ) {
-		//The user wants a link to a special page instead. Let's provide a link with
-		//the relevant info
-
-		//sanity check
-		$name = htmlspecialchars( $wgSmoothGalleryArguments["special"] );
-
-		//This is a dirty, dirty hack that should be replaced. It works, and
-		//it is safe, but there *MUST* be a better way to do this...
-		$input = str_replace( $wgSmoothGalleryDelimiter, '|', $input );
-
-		//Get a local link from the special page
-		$sp = Title::newFromText( "Special:SmoothGallery" );
-		$output = $sp->getLocalURL( "height=" . $wgSmoothGalleryArguments["height"]
-			. "&width=" . $wgSmoothGalleryArguments["width"]
-			. "&showcarousel=" . $wgSmoothGalleryArguments["carousel"]
-			. "&timed=" . $wgSmoothGalleryArguments["timed"]
-			. "&delay=" . $wgSmoothGalleryArguments["delay"]
-			. "&showarrows=" . $wgSmoothGalleryArguments["showarrows"]
-			. "&showinfopane=" . $wgSmoothGalleryArguments["showinfopane"]
-			. "&fallback=" . $wgSmoothGalleryArguments["fallback"]
-			. "&input=" . htmlspecialchars( $input ) );
-
-		//Provide the link
-		return '<a href="' . $output . '">' . $name . '</a>';
-	}
-
-	$parser->mOutput->mSmoothGalleryTag = true; # flag for use by smoothGalleryParserOutput
-
-	//Open the outer div of the gallery
-	$output = '<div id="' . $name . '" class="myGallery" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . '; display:none;">';
-
-	//We need a parser to pass to the render function, this
-	//seems kinda dirty, but it works on MediaWiki 1.6-1.9...
-	$local_parser = clone $parser;
-	$local_parser_options = new ParserOptions();
-	$local_parser->mOptions = $local_parser_options;
-	$local_parser->Title( $wgTitle );
-	$local_parser->mArgStack = array();
-
-	//Expand templates in the input
-	$local_parser->replaceVariables( $input );
-
-	//The image array is a delimited list of images (strings)
-	$line_arr = preg_split( "/$wgSmoothGalleryDelimiter/", $input, -1, PREG_SPLIT_NO_EMPTY );
-	$img_count = count( $line_arr );
-
-	//Initialize a string for images we can't find, so that we
-	//can report them later
-	$missing_img = '';
-
-	$plain_gallery = new ImageGallery();
-	$first_image = '';
-
-	foreach ( $line_arr as $line ) {
-		$img_arr = explode( "|", $line, 2 );
-		$img = $img_arr[0];
-		if ( count( $img_arr ) > 1 ) {
-			$img_desc = $img_arr[1];
-		} else {
-			$img_desc = '';
-		}
-
-		$title = Title::newFromText( $img, NS_IMAGE );
-
-		if ( is_null($title) ) {
-			continue;
-		}
-
-		$ns = $title->getNamespace();
-
-		if ( $ns == NS_IMAGE ) {
-			$output .= outputImage ( $title, $img_count, $missing_img, $first_image, $plain_gallery, $skin, $local_parser, $img_desc );
-		} else if ( $ns == NS_CATEGORY ) {
-			//list images in category
-			$cat_images = smoothGalleryImagesByCat( $title );
-			if ( $cat_images ) {
-				foreach ( $cat_images as $title ) {
-					$output .= outputImage ( $title, $img_count, $missing_img, $first_image, $plain_gallery, $skin, $local_parser, $img_desc );
-				}
-			}
-		}
-	}
-
-	//Make sure we have something to output
-	if ( $img_count <= 0 ) {
-		//The user requested images, but none of the ones requested
-		//actually exist, let's inform the user
-		loadSmoothGalleryI18n();
-
-		$output = wfMsg("smoothgallery-error");
-
-		//Sanity check
-		if ( $missing_img != "" ) {
-			$output .= wfMsg("smoothgallery-no-images", $missing_img);
-		} else {
-			$output .= wfMsg("smoothgallery-unexpected-error");
-		}
-
-		return $output;
-	}
-
-	//Close the outer div of the gallery
-	$output .= '</div>';
-
-	if ( $wgSmoothGalleryArguments["fallback"] == "image" ) {
-		$output .= '<div id="' . $name . '-fallback" class="myGallerySingleImage" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . ';">';
-		$output .= $first_image;
-		$output .= '</div>';
-	} elseif ( $wgSmoothGalleryArguments["fallback"] == "image-warn" ) {
-		loadSmoothGalleryI18n();
-		$output .= '<div id="' . $name . '-fallback" class="myGalleryWarning" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . ';">';
-		$output .= wfMsg("smoothgallery-javascript-disabled");
-		$output .= '<div class="myGallerySingleImage">';
-		$output .= $first_image;
-		$output .= '</div></div>';
+		//parse set into seperate galleries
+		//open galleryset div
+		//iterate through galleries, and call renderGallery on each
+		//add fallback to fallback output
+		//close galleryset div
 	} else {
-		$output .= outputPlainGallery ( $name, $plain_gallery );
+		//Give this gallery a random name so that we can have more than one gallery
+		//on a page. But don't do this on a special page, because it will cause
+		//us problems with javascript that uses the css classname
+		if ( $calledFromSpecial ) {
+			$name = "myGallery";
+		} else {
+			$name = "myGallery" . mt_rand();
+		}
+
+		$output = renderGallery( $name, $input, $parser, $calledFromSpecial, $calledAsSet, $fallbackArray );
+		$fallbackOutput .= renderFallback( $fallbackArray );
 	}
 
-	$output .= outputJavascript( $name );
+	$output .= $fallbackOutput;
+	$output .= renderJavascript( $name );
 
 	//Finished, let's send it out
 	return $output;
@@ -300,7 +185,155 @@ function parseArguments( $argv ) {
 	}
 }
 
-function outputImage ( $title, &$img_count, &$missing_img, &$first_image, &$plain_gallery, $skin, $local_parser, $img_desc ) {
+function renderGallery ( $name, $input, $parser, $calledFromSpecial, $calledAsSet, &$fallbackArray ) {
+	global $wgContLang, $wgUser, $wgTitle;
+	global $wgSmoothGalleryDelimiter;
+	global $wgSmoothGalleryArguments;
+
+	$skin = $wgUser->getSkin();
+
+	//Sanity check
+	if ( $input == "" ) {
+		loadSmoothGalleryI18n();
+		$output = wfMsg("smoothgallery-error");
+		$output .= wfMsg("smoothgallery-not-found");
+		return $output;
+	}
+
+	if ( $wgSmoothGalleryArguments["special"] ) {
+		//The user wants a link to a special page instead. Let's provide a link with
+		//the relevant info
+
+		//sanity check
+		$name = htmlspecialchars( $wgSmoothGalleryArguments["special"] );
+
+		//This is a dirty, dirty hack that should be replaced. It works, and
+		//it is safe, but there *MUST* be a better way to do this...
+		$input = str_replace( $wgSmoothGalleryDelimiter, '|', $input );
+
+		//Get a local link from the special page
+		$sp = Title::newFromText( "Special:SmoothGallery" );
+		$output = $sp->getLocalURL( "height=" . $wgSmoothGalleryArguments["height"]
+			. "&width=" . $wgSmoothGalleryArguments["width"]
+			. "&showcarousel=" . $wgSmoothGalleryArguments["carousel"]
+			. "&timed=" . $wgSmoothGalleryArguments["timed"]
+			. "&delay=" . $wgSmoothGalleryArguments["delay"]
+			. "&showarrows=" . $wgSmoothGalleryArguments["showarrows"]
+			. "&showinfopane=" . $wgSmoothGalleryArguments["showinfopane"]
+			. "&fallback=" . $wgSmoothGalleryArguments["fallback"]
+			. "&input=" . htmlspecialchars( $input ) );
+
+		//Provide the link
+		return '<a href="' . $output . '">' . $name . '</a>';
+	}
+
+	$parser->mOutput->mSmoothGalleryTag = true; # flag for use by smoothGalleryParserOutput
+
+	//Open the outer div of the gallery
+	$output = '<div id="' . $name . '" class="myGallery" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . '; display:none;">';
+
+	//We need a parser to pass to the render function, this
+	//seems kinda dirty, but it works on MediaWiki 1.6-1.9...
+	$local_parser = clone $parser;
+	$local_parser_options = new ParserOptions();
+	$local_parser->mOptions = $local_parser_options;
+	$local_parser->Title( $wgTitle );
+	$local_parser->mArgStack = array();
+
+	//Expand templates in the input
+	$local_parser->replaceVariables( $input );
+
+	//The image array is a delimited list of images (strings)
+	$line_arr = preg_split( "/$wgSmoothGalleryDelimiter/", $input, -1, PREG_SPLIT_NO_EMPTY );
+	$img_count = count( $line_arr );
+
+	//Initialize a string for images we can't find, so that we
+	//can report them later
+	$missing_img = '';
+
+	$plain_gallery = new ImageGallery();
+	$fallback_image = '';
+
+	foreach ( $line_arr as $line ) {
+		$img_arr = explode( "|", $line, 2 );
+		$img = $img_arr[0];
+		if ( count( $img_arr ) > 1 ) {
+			$img_desc = $img_arr[1];
+		} else {
+			$img_desc = '';
+		}
+
+		$title = Title::newFromText( $img, NS_IMAGE );
+
+		if ( is_null($title) ) {
+			continue;
+		}
+
+		$ns = $title->getNamespace();
+
+		if ( $ns == NS_IMAGE ) {
+			$output .= renderImage ( $title, $img_count, $missing_img, $fallback_image, $plain_gallery, $skin, $local_parser, $img_desc );
+		} else if ( $ns == NS_CATEGORY ) {
+			//list images in category
+			$cat_images = smoothGalleryImagesByCat( $title );
+			if ( $cat_images ) {
+				foreach ( $cat_images as $title ) {
+					$output .= renderImage ( $title, $img_count, $missing_img, $fallback_image, $plain_gallery, $skin, $local_parser, $img_desc );
+				}
+			}
+		}
+	}
+
+	//Make sure we have something to output
+	if ( $img_count <= 0 ) {
+		//The user requested images, but none of the ones requested
+		//actually exist, let's inform the user
+		loadSmoothGalleryI18n();
+
+		$output = wfMsg("smoothgallery-error");
+
+		//Sanity check
+		if ( $missing_img != "" ) {
+			$output .= wfMsg("smoothgallery-no-images", $missing_img);
+		} else {
+			$output .= wfMsg("smoothgallery-unexpected-error");
+		}
+
+		return $output;
+	}
+
+	//Close the outer div of the gallery
+	$output .= '</div>';
+
+	$fallbackArray = array( 'name'=>$name, 'fallback_image'=>$fallback_image, 'plain_gallery'=>$plain_gallery );
+
+	return $output;
+}
+
+function renderFallback ( $fallbackArray ) {
+	global $wgSmoothGalleryArguments;
+
+	$output = '';
+
+	if ( $wgSmoothGalleryArguments["fallback"] == "image" ) {
+		$output .= '<div id="' . $fallbackArray['name'] . '-fallback" class="myGallerySingleImage" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . ';">';
+		$output .= $fallbackArray['fallback_image'];
+		$output .= '</div>';
+	} elseif ( $wgSmoothGalleryArguments["fallback"] == "image-warn" ) {
+		loadSmoothGalleryI18n();
+		$output .= '<div id="' . $fallbackArray['name'] . '-fallback" class="myGalleryWarning" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . ';">';
+		$output .= wfMsg("smoothgallery-javascript-disabled");
+		$output .= '<div class="myGallerySingleImage">';
+		$output .= $fallbackArray['fallback_image'];
+		$output .= '</div></div>';
+	} else {
+		$output .= renderPlainGallery ( $fallbackArray['name'], $fallbackArray['plain_gallery'] );
+	}
+
+	return $output;
+}
+
+function renderImage ( $title, &$img_count, &$missing_img, &$fallback_image, &$plain_gallery, $skin, $local_parser, $img_desc ) {
 	global $wgVersion;
 	global $wgSmoothGalleryArguments;
 
@@ -340,8 +373,8 @@ function outputImage ( $title, &$img_count, &$missing_img, &$first_image, &$plai
 		$full_thumb = $img_obj->getUrl();
 	}
 
-	if ( $first_image == '' ) {
-		$first_image = '<img src="' . $full_thumb . '"  class="full" />';
+	if ( $fallback_image == '' ) {
+		$fallback_image = '<img src="' . $full_thumb . '"  class="full" />';
 	}
 
 	if ( $wgSmoothGalleryArguments["carousel"] ) {
@@ -375,8 +408,9 @@ function outputImage ( $title, &$img_count, &$missing_img, &$first_image, &$plai
 		}
 
 		if ( $local_parser ) { //convert wikitext to HTML
-			$pout = $local_parser->parse( $fulldesc, $title, $local_parser->mOptions, true );
-			$fulldesc =  strip_tags( $pout->getText() );
+			$pout = $local_parser->recursiveTagParse( $fulldesc, $title, $local_parser->mOptions, true );
+			$fulldesc =  strip_tags( $pout );
+			#$fulldesc =  strip_tags( $pout->getText() );
 		} else { //fall back to HTML-escaping
 			$fulldesc = htmlspecialchars( $fulldesc );
 		}
@@ -405,7 +439,7 @@ function outputImage ( $title, &$img_count, &$missing_img, &$first_image, &$plai
 	return $output;
 }
 
-function outputPlainGallery ( $name, $plain_gallery ) {
+function renderPlainGallery ( $name, $plain_gallery ) {
 	//Wrapper div for plain old gallery, to be shown per default, if JS is off.
 	$output = '<div id="' . $name . '-fallback">';
 
@@ -417,7 +451,7 @@ function outputPlainGallery ( $name, $plain_gallery ) {
 	return $output;
 }
 
-function outputJavascript ( $name ) {
+function renderJavascript ( $name ) {
 	global $wgSmoothGalleryArguments;
 
 	//Output the javascript needed for the gallery with any
@@ -467,18 +501,17 @@ function outputJavascript ( $name ) {
 	return $output;
 }
 
-function renderSmoothGallerySet( $text, $args, &$parser, $calledfromspecial ) {
+function renderSmoothGallerySet( $text, $args, &$parser, $calledFromSpecial ) {
 	//Give this gallery a random name so that we can have more than one gallery
 	//on a page. But don't do this on a special page, because it will cause
 	//us problems with javascript that uses the css classname
-	if ( $calledfromspecial ) {
+	if ( $calledFromSpecial ) {
 		$name = "myGallerySet";
 	} else {
 		$name = "myGallerySet" . mt_rand();
 	}
-	$parser->mOutput->mSmoothGallerySetTag = true; # flag for use by smoothGalleryParserOutput
 
-	$output = $parser->recursiveTagParse( $text );
+	$output = $parser->recursiveTagParse( $text, $args, $parser, $calledFromSpecial, true );
 	return '<div id="">' . $output . '</div>';
 }
 
