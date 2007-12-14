@@ -47,14 +47,15 @@ function efPhpbbData_LanguageGetMagic( &$magicWords, $langCode ) {
 }
 
 function efPhpbbData_Render( &$parser, $action = 'announcements', $name = '', 
-	$template = "* '''{topic_time}:''' {topic_title}\n") {
+	$template = "* '''TOPIC_TIME:''' TOPIC_TITLE",$options = 'none') {
 	$dateFields = array('topic_time','topic_last_post_time');
+	$opts = explode(',', $options);
 	
 	$parser->disableCache();
 	
 	switch ($action) {
 		case 'announcements':
-			global $wgPhpbbDataRootPath, $wgPhpbbData;
+			global $wgPhpbbDataRootPath, $wgPhpbbData, $wgContLang;
 			
 			if (!isset($wgPhpbbData))
 				$wgPhpbbData = new phpbbDataProvider($wgPhpbbDataRootPath);
@@ -64,16 +65,19 @@ function efPhpbbData_Render( &$parser, $action = 'announcements', $name = '',
 					$rowString = $template;
 					foreach($announcement as $key => $value) {
 						if (in_array($key,$dateFields)) {
-							$rowString = str_ireplace('{'.$key.'}',date("m/d/Y",$value),$rowString);
+							$rowString = str_replace(strtoupper($key),$wgContLang->timeanddate($value),$rowString);
 						} else {
-							$rowString = str_ireplace('{'.$key.'}',$value,$rowString);
+							$rowString = str_replace(strtoupper($key),$value,$rowString);
 						}
 					}
-					$returnString .= $rowString;
+					$returnString .= $rowString . "\n";
 				}
 				return $returnString;
 			} else {
-				return 'No Announcements';
+				if (in_array('hideempty',$opts)) 
+					return '<div style="display: none;"></div>';
+				else
+					return "No Announcements\n";
 			}
 			
 			break;
@@ -132,8 +136,8 @@ class phpbbDataProvider {
 		}
 		
 		$sql = 
-			"SELECT DISTINCT topic_time, topic_title, topic_first_poster_name, topic_replies, topic_last_post_time " .
-			"FROM $topicstable LEFT JOIN $forumstable USING (forum_id) " .
+			"SELECT DISTINCT topic_time, topic_title, topic_first_poster_name, topic_replies, topic_last_post_time, post_text " .
+			"FROM $topicstable LEFT JOIN $forumstable USING (forum_id) LEFT JOIN $poststable ON (topic_first_post_id=post_id) " .
 			"WHERE $forumclause " .
 			"AND topic_type IN (2,3)";
 			
