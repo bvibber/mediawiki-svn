@@ -9,7 +9,8 @@ if (!defined('MEDIAWIKI')) {
 	exit(1);
 }
 
-$wgPhpbbDataRootPath = '/var/www/forum/';
+$wgPhpbbDataRootPath = 'forum/';
+$wgPhpbbProtocol = 'https://';
 
 $wgExtensionCredits['other'][] = array(
 	'name'        => 'phpbbData',
@@ -32,7 +33,8 @@ function efPhpbbData_Setup() {
 		}
 		
         # Set a function hook associating the "example" magic word with our function
-        $wgParser->setFunctionHook( 'phpbb', 'efPhpbbData_Render' );
+        $wgParser->setFunctionHook( 'phpbb', 'efPhpbbData_RenderList' );
+        $wgParser->setFunctionHook( 'phpbblink', 'efPhpbbData_RenderLink' );
 		
 		return true;
 }
@@ -42,11 +44,56 @@ function efPhpbbData_LanguageGetMagic( &$magicWords, $langCode ) {
         # The first array element is case sensitive, in this case it is not case sensitive
         # All remaining elements are synonyms for our parser function
         $magicWords['phpbb'] = array( 0, 'phpbb' );
+        $magicWords['phpbblink'] = array( 0, 'phpbblink' );
         # unless we return true, other parser functions extensions won't get loaded.
         return true;
 }
 
-function efPhpbbData_Render( &$parser, $action = 'announcements', $name = '', 
+function efPhpbbData_makeTopicWikiLink($display_text, $forum_id, $topic_id) {
+	global $wgPhpbbDataRootPath;
+
+	$urlText = "https://" . $_SERVER['SERVER_ADDR'] . 
+		"/{$wgPhpbbDataRootPath}viewtopic.php?f={$forum_id}&t={$topic_id}";
+	
+	if ($display_text != '')
+		$display_text = ' ' . $display_text;
+	else
+		$display_text = ' ' . $urlText;
+	
+	return "<span class='plainlinks'>[{$urlText}{$display_text}]</span>";
+}
+
+function efPhpbbData_RenderLink( &$parser, $linktype, $options='none', $text='') {
+	$optsTemp = explode(',', $options);
+	$opts = array();
+	
+	foreach ($optsTemp as $opt) {
+		$optArr = explode('=',$opt);
+		if (isset($optArr[1])) {
+			$opts[$optArr[0]] = $optArr[1];
+		}
+	}
+	
+	switch ($linktype) {
+		case 'topic':
+			if ( isset($opts['forum']) && isset($opts['topic'] ) ) {
+				$fid = intval($opts['forum']);
+				$tid = intval($opts['topic']);
+				$text = htmlspecialchars($text);
+				
+				return efPhpbbData_makeTopicWikiLink($text, $fid, $tid);
+			} else {
+				return "Bad options";
+			}
+			break;
+		default:
+			return "Unknown link type: " .  $linktype;
+			break;
+	}
+	
+}
+
+function efPhpbbData_RenderList( &$parser, $action = 'announcements', $name = '', 
 	$template = "* '''TOPIC_TIME:''' TOPIC_TITLE",$options = 'none') {
 	$dateFields = array('topic_time','topic_last_post_time');
 	$opts = explode(',', $options);
@@ -58,16 +105,19 @@ function efPhpbbData_Render( &$parser, $action = 'announcements', $name = '',
 			global $wgPhpbbDataRootPath, $wgPhpbbData, $wgContLang;
 			
 			if (!isset($wgPhpbbData))
-				$wgPhpbbData = new phpbbDataProvider($wgPhpbbDataRootPath);
+				$wgPhpbbData = new phpbbDataProvider($_SERVER['DOCUMENT_ROOT'] . '/' . $wgPhpbbDataRootPath);
 			
 			if ($announcements = $wgPhpbbData->getAnnouncements($name)) {
 				foreach ($announcements as $announcement) {
 					$rowString = $template;
 					foreach($announcement as $key => $value) {
 						if (in_array($key,$dateFields)) {
-							$rowString = str_replace(strtoupper($key),$wgContLang->timeanddate($value),$rowString);
+							$rowString = str_replace(strtoupper($key),$wgContLang->timeanddate($value, true),$rowString);
 						} else {
-							$rowString = str_replace(strtoupper($key),$value,$rowString);
+							if (strtoupper($key) == 'TOPIC_TITLE' && !in_array('nolinks',$opts))
+								$rowString = str_replace(strtoupper($key),efPhpbbData_makeTopicWikiLink($value, $announcement['fid'],$announcement['tid']),$rowString);
+							else
+								$rowString = str_replace(strtoupper($key),$value,$rowString);
 						}
 					}
 					$returnString .= $rowString . "\n";
@@ -79,9 +129,9 @@ function efPhpbbData_Render( &$parser, $action = 'announcements', $name = '',
 				else
 					return "No Announcements\n";
 			}
-			
 			break;
 		default:
+			return "Unknown action: " . $action;
 			break;
 	}
 }
@@ -136,10 +186,11 @@ class phpbbDataProvider {
 		}
 		
 		$sql = 
-			"SELECT DISTINCT topic_time, topic_title, topic_first_poster_name, topic_replies, topic_last_post_time, post_text " .
+			"SELECT DISTINCT $topicstable.topic_id as tid, $topicstable.forum_id as fid, topic_time, topic_title, topic_first_poster_name, topic_replies, topic_last_post_time, post_text " .
 			"FROM $topicstable LEFT JOIN $forumstable USING (forum_id) LEFT JOIN $poststable ON (topic_first_post_id=post_id) " .
 			"WHERE $forumclause " .
-			"AND topic_type IN (2,3)";
+			"AND topic_type IN (2,3) " . 
+			"ORDER BY topic_time DESC";
 			
 		$result = $this->mDB->sql_query( $sql );
 		if ($result) {
