@@ -49,11 +49,19 @@ function efPhpbbData_LanguageGetMagic( &$magicWords, $langCode ) {
         return true;
 }
 
-function efPhpbbData_makeTopicWikiLink($display_text, $forum_id, $topic_id) {
+function efPhpbbData_makeTopicWikiLink($display_text='', $forum_id=null, $topic_id=null, $post_id=null) {
 	global $wgPhpbbDataRootPath;
 
-	$urlText = "https://" . $_SERVER['SERVER_ADDR'] . 
-		"/{$wgPhpbbDataRootPath}viewtopic.php?f={$forum_id}&t={$topic_id}";
+	if (!empty($post_id)) {
+		$urlText = "https://" . $_SERVER['SERVER_ADDR'] . 
+			"/{$wgPhpbbDataRootPath}viewpost.php?p={$post_id}";
+	} elseif (!empty($topic_id)) {
+		$urlText = "https://" . $_SERVER['SERVER_ADDR'] . 
+			"/{$wgPhpbbDataRootPath}viewtopic.php?t={$topic_id}";
+	} elseif (!empty($forum_id)) {
+		$urlText = "https://" . $_SERVER['SERVER_ADDR'] . 
+			"/{$wgPhpbbDataRootPath}viewforum.php?t={$forum_id}";
+	}
 	
 	if ($display_text != '')
 		$display_text = ' ' . $display_text;
@@ -63,27 +71,17 @@ function efPhpbbData_makeTopicWikiLink($display_text, $forum_id, $topic_id) {
 	return "<span class='plainlinks'>[{$urlText}{$display_text}]</span>";
 }
 
-function efPhpbbData_RenderLink( &$parser, $linktype, $options='none', $text='') {
-	$optsTemp = explode(',', $options);
-	$opts = array();
-	
-	foreach ($optsTemp as $opt) {
-		$optArr = explode('=',$opt);
-		if (isset($optArr[1])) {
-			$opts[$optArr[0]] = $optArr[1];
-		}
-	}
+function efPhpbbData_RenderLink( &$parser, $linktype, $id, $text='', $options = 'none') {
 	
 	switch ($linktype) {
 		case 'topic':
-			if ( isset($opts['forum']) && isset($opts['topic'] ) ) {
-				$fid = intval($opts['forum']);
-				$tid = intval($opts['topic']);
+			if ( isset($id) ) {
+				$id = intval($id);
 				$text = htmlspecialchars($text);
 				
-				return efPhpbbData_makeTopicWikiLink($text, $fid, $tid);
+				return efPhpbbData_makeTopicWikiLink($text, null, $id);
 			} else {
-				return "Bad options";
+				return "Bad ID";
 			}
 			break;
 		default:
