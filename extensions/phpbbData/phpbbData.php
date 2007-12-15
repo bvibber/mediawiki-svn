@@ -93,7 +93,7 @@ function efPhpbbData_RenderLink( &$parser, $linktype, $options='none', $text='')
 	
 }
 
-function efPhpbbData_RenderList( &$parser, $action = 'announcements', $name = '', 
+function efPhpbbData_RenderList( &$parser, $action = 'announcements', $forum_id = 0, 
 	$template = "* '''TOPIC_TIME:''' TOPIC_TITLE",$options = 'none') {
 	$dateFields = array('topic_time','topic_last_post_time');
 	$opts = explode(',', $options);
@@ -107,7 +107,7 @@ function efPhpbbData_RenderList( &$parser, $action = 'announcements', $name = ''
 			if (!isset($wgPhpbbData))
 				$wgPhpbbData = new phpbbDataProvider($_SERVER['DOCUMENT_ROOT'] . '/' . $wgPhpbbDataRootPath);
 			
-			if ($announcements = $wgPhpbbData->getAnnouncements($name)) {
+			if ($announcements = $wgPhpbbData->getAnnouncements($forum_id)) {
 				foreach ($announcements as $announcement) {
 					$rowString = $template;
 					foreach($announcement as $key => $value) {
@@ -168,7 +168,7 @@ class phpbbDataProvider {
 		return true;
 	}
 	
-	public function getAnnouncements($name) {
+	public function getAnnouncements($forum_id) {
 		$phpEx = $this->mPhpEx;
 		$phpbb_root_path = $this->mRootPath;
 		
@@ -177,13 +177,7 @@ class phpbbDataProvider {
 		$iconstable = $this->tableName('icons');
 		$poststable = $this->tableName('posts');
 		
-		if ($name != '') {
-			//sanitize input
-			$forumclause = "$forumstable.forum_name = '" . 
-				$this->mDB->sql_escape($name) . "'";
-		} else {
-			$forumclause = "$topicstable.forum_id=0";
-		}
+		$forumclause = "$topicstable.forum_id=" . intval($forum_id);
 		
 		$sql = 
 			"SELECT DISTINCT $topicstable.topic_id as tid, $topicstable.forum_id as fid, topic_time, topic_title, topic_first_poster_name, topic_replies, topic_last_post_time, post_text " .
@@ -191,7 +185,6 @@ class phpbbDataProvider {
 			"WHERE $forumclause " .
 			"AND topic_type IN (2,3) " . 
 			"ORDER BY topic_time DESC";
-			
 		$result = $this->mDB->sql_query( $sql );
 		if ($result) {
 			while ($row = $this->mDB->sql_fetchrow($result)) {
