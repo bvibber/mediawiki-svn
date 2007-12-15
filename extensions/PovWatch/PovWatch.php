@@ -43,3 +43,5 @@ if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 }
 extAddSpecialPage( dirname(__FILE__) . '/PovWatch_body.php', 'PovWatch', 'PovWatchPage' );
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['povwatch'] = $dir . 'PovWatch.i18n.php';

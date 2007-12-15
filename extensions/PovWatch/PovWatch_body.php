@@ -6,8 +6,8 @@ if ( !defined( 'MEDIAWIKI' ) ):
 <body>
 <h1>PovWatch Version 1.0</h1>
 <p>
-This is a MediaWiki extension for pushing articles on to the watchlists of other users. 
-To install it, add the following to the bottom of your <tt>LocalSettings.php</tt>, 
+This is a MediaWiki extension for pushing articles on to the watchlists of other users.
+To install it, add the following to the bottom of your <tt>LocalSettings.php</tt>,
 before the "?&gt;":</p>
 <pre>
 require_once( "$IP/extensions/PovWatch/PovWatch.php" );
@@ -18,45 +18,12 @@ require_once( "$IP/extensions/PovWatch/PovWatch.php" );
 	exit(1);
 endif;
 
-global $wgMessageCache;
-$wgMessageCache->addMessages( array(
-	'povwatch' => 'PovWatch',
-	'povwatch_no_session' => 'Error: Could not submit form due to a loss of session data.',
-	'povwatch_not_allowed_push' => 'You are not a PovWatch admin, you can\'t push articles to watchlists.',
-	'povwatch_already_subscribed' => 'You are already subscribed to PovWatch',
-	'povwatch_subscribed' => 'You are now subscribed to PovWatch',
-	'povwatch_not_subscribed' => 'You are not subscribed to PovWatch, so you can\'t unsubscribe.',
-	'povwatch_unsubscribed' => 'You have now unsubscribed from PovWatch',
-	'povwatch_invalid_title' => 'The title specified was invalid',
-	'povwatch_pushed' => '[[$1]] has successfully been pushed to $2 user watchlist(s)',
-	'povwatch_intro' => 'PovWatch is a service which allows contentious articles to be discreetly
-pushed on to the watchlists of subscribing administrators.
-
-A log of recent watchlist pushes is available at [[Special:PovWatch/log]].
-',
-	#'povwatch_subscriber_list' => 'A [[Special:PovWatch/subscribers|list of subscribers]] is available.',
-	#'povwatch_subscriber_list_intro' => '<strong>Subscriber list</strong>',
-	#'povwatch_not_allowed_subscribers' => 'You are not allowed to view the PovWatch subscriber list.',
-	'povwatch_unknown_subpage' => 'Unknown subpage.',
-	'povwatch_push' => 'Push',
-	'povwatch_push_intro' => 'Use the form below to push articles on to the watchlists of subscribing
-users. Please be careful typing the title: even non-existent titles can be added, and there is no way to 
-remove a title once it has been pushed out.',
-	'povwatch_title' => 'Title:',
-	'povwatch_comment' => 'Log comment:',
-	'povwatch_no_log' => 'There are no log entries.',
-	'povwatch_no_subscribers' => 'There are no subscribers.',
-	'povwatch_unsubscribe_intro' => 'You are subscribed to PovWatch. Click the button below to unsubscribe.',
-	'povwatch_unsubscribe' => 'Unsubscribe',
-	'povwatch_subscribe_intro' => 'You are not subscribed to PovWatch. Click the button below to subscribe.',
-	'povwatch_subscribe' => 'Subscribe',
-	'povwatch_added' => 'added',
-));
+	wfLoadExtensionMessages( 'povwatch' );
 
 class PovWatchPage extends SpecialPage {
 	public $mPosted, $mTitleText, $mSubscribe, $mUnsubscribe, $mPush;
 	public $mComment, $mToken, $mOut;
-	
+
 	function __construct() {
 		SpecialPage::SpecialPage( 'PovWatch', 'povwatch_user' );
 	}
@@ -64,7 +31,7 @@ class PovWatchPage extends SpecialPage {
 	#-----------------------------------------------------------------------
 	# UI functions
 	#-----------------------------------------------------------------------
-	
+
 	function execute( $subpage ) {
 		global $wgRequest, $wgUser, $wgOut;
 
@@ -96,7 +63,7 @@ class PovWatchPage extends SpecialPage {
 			$this->showLog();
 		} elseif ( $subpage != '' ) {
 			$this->error( 'unknown_subpage' );
-			$this->mOut->returnToMain( false, $this->getTitle() );			
+			$this->mOut->returnToMain( false, $this->getTitle() );
 		} else {
 			$done = false;
 			if ( $this->mPosted ) {
@@ -126,7 +93,7 @@ class PovWatchPage extends SpecialPage {
 	}
 
 	function success( $message, $arg1 = '', $arg2 = '' ) {
-		$this->mOut->addWikiText( '<strong>' . 
+		$this->mOut->addWikiText( '<strong>' .
 			$this->message( $message, $arg1, $arg2 )  . '</strong>' );
 	}
 
@@ -172,12 +139,12 @@ class PovWatchPage extends SpecialPage {
 		global $wgUser;
 
 		$this->mOut->addWikiText( $this->message( 'intro' ) );
-		
+
 		if ( $wgUser->isAllowed( 'povwatch_admin' ) ) {
 			$this->showPushForm();
 		}
 
-		
+
 		$this->showSubscribeForm();
 		/*
 		if ( $wgUser->isAllowed( 'povwatch_subscriber_list' ) ) {
@@ -226,9 +193,9 @@ EOT
 		$intro = $this->message( 'subscriber_list_intro' );
 
 		$dbr =& wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 
-			array( 'povwatch_subscribers', 'user' ), 
-			array( 'pws_user', 'user_name' ), 
+		$res = $dbr->select(
+			array( 'povwatch_subscribers', 'user' ),
+			array( 'pws_user', 'user_name' ),
 			array( 'pws_user=user_id' ),
 			__METHOD__ );
 		$s = '';
@@ -251,9 +218,9 @@ EOT
 		global $wgUser, $wgLang;
 
 		$dbr =& wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 
+		$res = $dbr->select(
 			array( 'povwatch_log', 'user' ),
-			array( 'povwatch_log.*', 'user_name' ),
+			array( 'pwl_user', 'user_name' ),
 			array( 'pwl_user=user_id' ),
 			__METHOD__
 		);
@@ -308,7 +275,7 @@ EOT
 			$submitName = 'subscribe';
 			$submitValue = htmlspecialchars( $this->message( 'subscribe' ) );
 		}
-		
+
 		$this->mOut->addHTML( <<<EOT
 <form name="subscribe" method="post" action="$encAction">
 <fieldset>
@@ -322,12 +289,10 @@ EOT
 		);
 	}
 
-
-
 	#-------------------------------------------------------------------------
 	# Utility functions
 	#-------------------------------------------------------------------------
-	
+
 	function message( $message, $arg1 = '', $arg2 = '' ) {
 		return wfMsg( 'povwatch_' . $message, $arg1, $arg2 );
 	}
@@ -335,9 +300,9 @@ EOT
 	function isSubscribed( User $user ) {
 		# Use dbw because a check is done shortly after form submission
 		$dbw =& wfGetDB( DB_SLAVE );
-		return (bool)$dbw->selectField( 
-			'povwatch_subscribers', '1', 
-			array( 'pws_user' => $user->getID() ), 
+		return (bool)$dbw->selectField(
+			'povwatch_subscribers', '1',
+			array( 'pws_user' => $user->getID() ),
 			__METHOD__
 		);
 	}
@@ -354,7 +319,7 @@ EOT
 		}
 
 		$dbw =& wfGetDB( DB_MASTER );
-		$dbw->insert( 'povwatch_subscribers', array( 'pws_user' => $id ), 
+		$dbw->insert( 'povwatch_subscribers', array( 'pws_user' => $id ),
 			__METHOD__, array( 'IGNORE' ) );
 		return (bool) $dbw->affectedRows();
 	}
@@ -397,7 +362,7 @@ EOT
 		$affected = $dbw->affectedRows();
 
 		# Add it to the log
-		$dbw->insert( 'povwatch_log', 
+		$dbw->insert( 'povwatch_log',
 			array(
 				'pwl_timestamp' => $dbw->timestamp(),
 				'pwl_namespace' => $ns,
@@ -418,5 +383,3 @@ EOT
 		return $this->mToken;
 	}
 }
-
-?>
