@@ -66,6 +66,16 @@ $wgLanguageManagerMessages['nl'] = array(
 	'langman_title' => 'Taalmanager',
 	'languages'=>'Wikidata: Taalmanager',
 );
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$wgLanguageManagerMessages['no'] = array(
+	'langman_title' => 'Språkbehandler',
+	'languages'     => 'Wikidata: Språkbehandler',
+
+);
+
 $wgLanguageManagerMessages['oc'] = array(
 	'langman_title' => 'Gestion de las lengas',
 	'languages' => 'Wikidata: Gestion de las lengas',

@@ -119,6 +119,26 @@ $allMessages = array(
 		'tasklistnoprojects'      => 'FOUT: het lijkt alsof u \'\'\'$wgUseProjects\'\'\' hebt ingeschakeld, maar [[MediaWiki:TodoTasksValidProjects]] niet heeft aangemaakt. Zie de  [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 installatie-instructies] voor meer details.',
 	),
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+	'no' => array(
+		'tasklist'               => 'Oppgaveliste',
+		'tasklistbyproject'      => 'Oppgaveliste etter prosjekt',
+		'tasklistunknownproject' => 'Ukjent prosjekt',
+		'tasklistunspecuser'     => 'Bruker ikke oppgitt',
+		'tasklistincorrectuser'  => 'Ukorrekt brukernavn',
+		'tasklistemail'          => 'Kjære %s',
+		'tasklistemailsubject'   => '[%s] Oppgavelisteendring',
+		'tasklistmytasks'        => 'Mine oppgaver',
+		'tasklistbyprojectbad'   => "'''%s''' er ikke et gyldig prosjekt. For en liste over gyldige prosjekter, se [[MediaWiki:TodoTasksValidProjects]].",
+		'tasklistbyprojname'     => "Tildelte oppgaver for '''%s'''",
+		'tasklistchooseproj'     => 'Velg prosjekt:',
+		'tasklistprojdisp'       => 'Vis',
+		'tasklistbyname'         => '== Oppgaveliste for %s ==',
+		'tasklistnoprojects'     => "FEIL: Det ser ut som om du har slått på '''\$wgUseProjects''' uten å opprette [[MediaWiki:TodoTasksValidProjects]]. Se [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 installasjonsintruksjonene] for flere detaljer.",
+	),
+
 	'pl' => array(
 		'tasklist'                => 'Lista zadań',
 		'tasklistbyproject'       => 'Listy zadań według projektu',

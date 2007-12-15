@@ -117,6 +117,17 @@ $wgAjaxShowEditorsMessages['li'] = array(
 	'ajax-se-pending' => 'Herfrisse aant äöbere... (klik op deze bóks of sjtart \'t bewèrke)',
 	'ajax-se-idling' => '($1s geleje)',
 );
+
+/** Lithuanian (Lietuvių)
+ * @author Vpovilaitis
+ */
+$wgAjaxShowEditorsMessages['lt'] = array(
+	'ajax-se-title'   => 'Dabar redaguojama:',
+	'ajax-se-pending' => 'laukiama peršvietimo ... (paspausk šią dėžutę arba pradėk redaguoti)',
+	'ajax-se-idling'  => '($1s prieš)',
+
+);
+
 $wgAjaxShowEditorsMessages['nl'] = array(
 	'ajax-se-title' => 'Bezig met het bewerken van:',
 	'ajax-se-pending' => 'moet nog bijgewerkt worden ... (klik op deze knop of begin met bewerken)',

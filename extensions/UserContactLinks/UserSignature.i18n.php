@@ -31,3 +31,11 @@ $messages['hsb'] = array(
 $messages['nl'] = array(
 	'usercontactlink-baduser' => 'onjuiste gebruikersnaam',
 );
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'usercontactlink-baduser' => 'ukorrekt brukernavn',
+
+);

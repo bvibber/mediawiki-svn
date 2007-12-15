@@ -76,14 +76,29 @@ $wgLuceneSearchMessages['br'] = array(
 	'searchnoresults'       => 'Siwazh deoc\'h, n\'eus ket bet kavet respont ebet o klotañ-rik gant ho koulenn.',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
 $wgLuceneSearchMessages['ca'] = array(
 	'searchnumber'          => '<strong>Resultats $1-$2 de $3</strong>',
-	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Anterior</span>',
-	'searchnext'            => '<span style=\'font-size: small\'>Següent</span> &#x00BB;',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Anterior</span>",
+	'searchnext'            => "<span style='font-size: small'>Següent</span> &#x00BB;",
 	'lucene-searchscore'    => 'Rellevància: $1%',
 	'lucene-resultsize'     => '$1 ($2 paraules)',
 	'searchdidyoumean'      => 'Potser volíeu dir «<a href="$1">$2</a>»?',
-	'searchnoresults'       => 'Malauradament no s\'ha trobat cap resultat per aquesta cerca.',
+	'searchnoresults'       => "Malauradament no s'ha trobat cap resultat per aquesta cerca.",
+	'searchnearmatches'     => '<b>Aquestes pàgines tenen títols similars al que cerqueu:</b>',
+	'lucenepowersearchtext' => 'Cerca als espais de noms:
+
+$1
+
+Cerca $3 $9 $10',
+	'lucenefallback'        => "Hi ha hagut un problema amb la cerca dins el wiki.
+Probablement és un problema temporal; torneu a intentar-ho d'aquí uns moments. També podeu cercar al wiki a través d'un cercador extern:",
+	'searchexactcase'       => 'Cerca exacta',
+	'searchall'             => 'tots',
+	'searchincategory'      => 'a categoria',
+
 );
 
 $wgLuceneSearchMessages['cdo'] = array(

@@ -36,6 +36,16 @@ $allMessages = array(
 		'specialwhoiswatchingthepage' => 'Wie volgt %s',
 		'specialwhoiswatchingusage'   => 'Deze speciale pagina kan niet alleen gebruikt worden. Gelieve de pagina [[MediaWiki:Number_of_watching_users_pageview]] te gebruiken om een \'\'entry point\'\' <!-- ? --> aan deze speciale pagina te bepalen.',
 	),
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+	'no' => array(
+		'whoiswatching'               => 'Hvem overvåker en wikiside',
+		'specialwhoiswatchingthepage' => 'Hvem overvåker %s',
+		'specialwhoiswatchingusage'   => 'Denne spesialsiden kan ikke brukes selvstendig. Bruk siden [[MediaWiki:Number of watching users pageview]] for å definere et inngangspunkt for denne spesialsiden.',
+	),
+
 	'pt' => array(
 		'whoiswatching'               => 'Quem Está a Vigiar uma página wiki',
 		'specialwhoiswatchingthepage' => 'Quem está a vigiar %s',

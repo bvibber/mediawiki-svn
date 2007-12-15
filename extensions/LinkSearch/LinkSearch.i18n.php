@@ -139,12 +139,21 @@ $wgLinkSearchMessages['hsb'] = array(
 	'linksearch-line'  => '$1 je z $2 wotkazany.',
 	'linksearch-error' => 'Zastupniske znamjenja dadźa so jenož na spočatku URL wužiwać.',
 );
+
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
 $wgLinkSearchMessages['hu'] = array(
 	'linksearch'       => 'Keresés külső hivatkozások szerint',
+	'linksearch-pat'   => 'Keresett minta:',
+	'linksearch-ns'    => 'Névtér:',
+	'linksearch-ok'    => 'keresés',
 	'linksearch-text'  => 'A helyettesítő karaktereket is lehet használni, például "*.wikipedia.org".',
 	'linksearch-line'  => '$1 hivatkozva innen: $2',
 	'linksearch-error' => 'Helyettesítő karakterek csak a cím elején szerepelhetnek.',
+
 );
+
 $wgLinkSearchMessages['id'] = array(
 	'linksearch'       => 'Pencarian pranala luar',
 	'linksearch-pat'   => 'Pola pencarian:',

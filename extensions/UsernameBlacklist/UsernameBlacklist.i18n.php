@@ -293,10 +293,22 @@ zwarte lijst van gebruikersnamen]]. Kies alstublieft een andere naam.',
 	'usernameblacklist-invalid-lines' => 'De volgende {{PLURAL:$1|regel|regels}} in de zwarte lijst met gebruikersnamen {{PLURAL:$1|is|zijn}} onjuist; corrigeer {{PLURAL:$1|hem|ze}} alstublieft voordat u de pagina opslaat:',
 ),
 
-/* Norwegian (Jon Harald Søby) */
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 'no' => array(
-	'blacklistedusername' => 'Svartelistet brukernavn',
-	'blacklistedusernametext' => 'Brukernavnet du har valgt tilsvarer et navn på [[MediaWiki:Usernameblacklist|listen over svartelistede brukernavn]]. Velg et annet navn.',
+	'blacklistedusername'             => 'Svartelistet brukernavn',
+	'blacklistedusernametext'         => 'Brukernavnet du har valgt tilsvarer et navn på [[MediaWiki:Usernameblacklist|listen over svartelistede brukernavn]]. Velg et annet navn.',
+	'usernameblacklist'               => '<pre>
+# Punkter på denne lista vil bruke som del av et regulært uttrykk
+# når man svartelister brukernavn fra registrering. Hvert punkt
+# burde være del av en punktliste, f.eks.
+#
+# * Arne
+# * [Bb]jarne
+</pre>',
+	'usernameblacklist-invalid-lines' => 'Følgende {{PLURAL:$1|linje|linjer}} i brukernavnsvartelista er {{PLURAL:$1|ugyldig|ugyldige}}; vennligst rett {{PLURAL:$1|den|dem}} før du lagrer:',
+
 ),
 
 /* Occitan (Cedric31) */

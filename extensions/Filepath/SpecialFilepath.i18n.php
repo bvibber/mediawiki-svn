@@ -63,6 +63,15 @@ $wgFilepathMessages['de'] = array(
 
 	Die Eingabe muss ohne den Zusatz „{{ns:image}}:“ erfolgen.',
 );
+
+/** Zazaki (Zazaki)
+ * @author SPQRobin
+ */
+$wgFilepathMessages['diq'] = array(
+	'filepath_page' => 'Dosya:',
+
+);
+
 $wgFilepathMessages['el'] = array(
 	'filepath'        => 'Διαδρομή αρχείου',
 	'filepath_page'   => 'Αρχείο:',

@@ -185,6 +185,14 @@ function efMakeBotMessages() {
 	'makebot-logentryrevoke' => 'entfernte den Botstatus von „[[$1]]“',
 ),
 
+/** Zazaki (Zazaki)
+ * @author SPQRobin
+ */
+'diq' => array(
+	'makebot-username' => 'Namey karberi:',
+
+),
+
 'el' => array(
 	'makebot-username'        => 'Όνομα χρήστη:',
 	'makebot-comment'         => 'Σχόλιο:',
@@ -404,9 +412,24 @@ function efMakeBotMessages() {
 	'makebot-logentryrevoke'  => 'Botowy status wužiwarjej [[$1]] zebrany.',
 ),
 
-/* Hungarian */
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
 'hu' => array(
-	'makebot-logpage' => 'Botstátusz-napló',
+	'makebot'                => 'Botstátusz megadása vagy visszavonása',
+	'makebot-username'       => 'Felhasználónév:',
+	'makebot-search'         => 'Menj',
+	'makebot-isbot'          => '[[User:$1|$1]] szerkesztőnek botstátusza van.',
+	'makebot-change'         => 'Állapot váltása:',
+	'makebot-grant'          => 'Megadás',
+	'makebot-revoke'         => 'Visszavonás',
+	'makebot-comment'        => 'Megjegyzés:',
+	'makebot-granted'        => '[[User:$1|$1]] botstátuszt kapott.',
+	'makebot-revoked'        => '[[User:$1|$1]] többé nem rendelkezik botstátusszal.',
+	'makebot-logpage'        => 'Botstátusz-napló',
+	'makebot-logentrygrant'  => '[[$1]] szerkesztőnek botstátuszt adott',
+	'makebot-logentryrevoke' => '[[$1]] botstátuszát elvette',
+
 ),
 
 /* Indonesian (Ivan Lanin) */

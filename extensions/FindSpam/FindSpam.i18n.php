@@ -67,6 +67,17 @@ $messages['no'] = array(
 	'findspam-notextfound' => 'Ingen bidrag funnet',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'findspam'             => 'Recèrca de spam',
+	'findspam-ip'          => 'Adreça IP:',
+	'findspam-ok'          => 'Recercar',
+	'findspam-notextfound' => 'Cap de contribucion trobada',
+
+);
+
 $messages['sk'] = array(
 	'findspam' => 'Nájsť spam',
 	'findspam-ip' => 'IP adresa:',

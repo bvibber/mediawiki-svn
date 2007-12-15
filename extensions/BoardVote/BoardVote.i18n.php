@@ -415,6 +415,15 @@ Du wirst in 20 Sekunden zu diesem externen Server weitergeleitet. [$1 klicke hie
 
 Eine Sicherheitswarnung über ein unsigniertes Zertifikat kann angezeigt werden.',
 );
+
+/** Zazaki (Zazaki)
+ * @author SPQRobin
+ */
+$wgBoardVoteMessages['diq'] = array(
+	'boardvote_user' => 'Karber',
+
+);
+
 $wgBoardVoteMessages['el'] = array(
 	'boardvote_novotes'       => 'Κανείς δεν έχει ψηφίσει ακόμη.',
 	'boardvote_user'          => 'Χρήστης',
@@ -1346,16 +1355,20 @@ Dette resulterer i den følgende krypterte versjonen. Den vil vises offentlig p�
 	'go_to_board_vote'        => 'Styrevalg i Wikimedia',
 	'boardvote_redirecting'   => 'Av sikkerhets- og transparensgrunner kjører vi valget på en ekstern, uavhengig kontrollert tjener. Du vil nå omdirigeres til denne tjeneren innen 20 sekunder. [$1 Klikk her] for å gå dit nå. Du vil muligens motta en sikkerhetsadvarsel om et usignert sertifikat.',
 );
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $wgBoardVoteMessages['oc'] = array(
-	'boardvote'               => 'Eleccions al conselh d’administracion de la Wikimedia Foundation',
-	'boardvote_entry'         => '* [[Special:Boardvote/vote|Vòte]]
+	'boardvote'              => 'Eleccions al conselh d’administracion de la Wikimedia Foundation',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vòte]]
 * [[Special:Boardvote/list|Lista dels vòtes enregistrats]]
 * [[Special:Boardvote/dump|Enregistraments criptats]]',
-	'boardvote_intro'         => '<p>Benvenguda a las tresenas eleccions del conselh d\'administracion de <i><a href="http://wikimediafoundation.org/wiki/Acuèlh" class="extiw" title="foundation:Acuèlh">Wikimedia Foundation Inc.</a></i>. Votam per una persona que representarà la comunautat dels utilizaires suls diferents projèctes Wikimedia. Aquesta persona e lo conselh d\'administracion contribuiràn a orientar la direccion d\'aquestes projèctes e representaràn <i>vòstres</i> interèsses e preocupacions alprèp del conselh d\'administracion. Decidiràn dels mejans de finançament e de l\'afectacion dels fonses.</p> <p>Legissètz atentivament las declaracions dels candidats e lors responsas a las questions abans de votar. Totes los candidats son d\'utilizaires respectats, qu\'an balhat fòrça de temps e d\'esfòrces per far d\'aquestes projèctes un endrech acuelhant dedicat al desvolopament de la liura difusion del saber uman.</p> <p>Podètz votar per autant de candidats qu\'o desiratz. Lo que remportarà mai de voses serà declarat elegit pel pòst alqual s\'es presentat. En cas de balotatge, i aurà un vòte de departatge.</p> <p>Per mai d\'informacion, vejatz :</p> <ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006/Oc" class="extiw" title="meta:Election_FAQ_2006/Oc">FAQ sus las eleccions</a></li> <li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Oc" class="extiw" title="meta:Election_candidates_2006/Oc">Candidat-a-s</a></li></ul>',
-	'boardvote_intro_change'  => '<p>Ja avètz votat. Podètz çaquelà modificar vòstre vòte en utilizant lo formulari çai jos. Mercé de marcar las casas en regard de cada candidat qu\'a vòtre supòrt.</p></p>',
-	'boardvote_entered'       => 'Mercé, vòstre vòte es estat enregistrat. 
+	'boardvote_intro'        => '<p>Benvenguda a las tresenas eleccions del conselh d\'administracion de <i><a href="http://wikimediafoundation.org/wiki/Acuèlh" class="extiw" title="foundation:Acuèlh">Wikimedia Foundation Inc.</a></i>. Votam per una persona que representarà la comunautat dels utilizaires suls diferents projèctes Wikimedia. Aquesta persona e lo conselh d\'administracion contribuiràn a orientar la direccion d\'aquestes projèctes e representaràn <i>vòstres</i> interèsses e preocupacions alprèp del conselh d\'administracion. Decidiràn dels mejans de finançament e de l\'afectacion dels fonses.</p> <p>Legissètz atentivament las declaracions dels candidats e lors responsas a las questions abans de votar. Totes los candidats son d\'utilizaires respectats, qu\'an balhat fòrça de temps e d\'esfòrces per far d\'aquestes projèctes un endrech acuelhant dedicat al desvolopament de la liura difusion del saber uman.</p> <p>Podètz votar per autant de candidats qu\'o desiratz. Lo que remportarà mai de voses serà declarat elegit pel pòst alqual s\'es presentat. En cas de balotatge, i aurà un vòte de departatge.</p> <p>Per mai d\'informacion, vejatz :</p> <ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006/Oc" class="extiw" title="meta:Election_FAQ_2006/Oc">FAQ sus las eleccions</a></li> <li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Oc" class="extiw" title="meta:Election_candidates_2006/Oc">Candidat-a-s</a></li></ul>',
+	'boardvote_intro_change' => "<p>Ja avètz votat. Podètz çaquelà modificar vòstre vòte en utilizant lo formulari çai jos. Mercé de marcar las casas en regard de cada candidat qu'a vòtre supòrt.</p></p>",
+	'boardvote_entered'      => "Mercé, vòstre vòte es estat enregistrat. 
 
-S\'o desiratz, podètz enregistrar los detalhs seguents. Vòstre istoric de vòte es :
+S'o desiratz, podètz enregistrar los detalhs seguents. Vòstre istoric de vòte es :
 
 <pre>$1</pre>
 
@@ -1367,32 +1380,35 @@ La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/
 
 <pre>$3</pre> 
 
-[[Special:Boardvote/entry|Retorn]]',
-	'boardvote_notloggedin'   => 'Actualament sètz pas autentificat. Per votar, devètz utilizar un compte comportant al mens $1 contribucions abans lo $2, e que la primièra remonte al $3.',
-	'boardvote_notqualified'  => 'Respondètz pas a una de las condicions requesidas per votar a aqueste escrutin. Es necessari d’aver $3 contribucions abans lo $2, e n\'avètz efectuadas $1. En mai, vòstra primièra modificacion data del $4, e deu aver estada facha abans lo $5.',
-	'boardvote_novotes'       => 'Degun a pas encara votat.',
-	'boardvote_time'          => 'Ora',
-	'boardvote_user'          => 'Utilizaire',
-	'boardvote_edits'         => 'Modificacions',
-	'boardvote_days'          => 'Jorns',
-	'boardvote_ua'            => 'Representant de l’utilizaire',
-	'boardvote_listintro'     => 'Lista de las personas qua ja an votat :<br /><br />',
-	'boardvote_dumplink'      => 'Clicatz aicí',
-	'boardvote_submit'        => 'D\'acòrdi',
-	'boardvote_strike'        => 'Raiar',
-	'boardvote_unstrike'      => 'Desraiar',
-	'boardvote_needadmin'     => 'Sols los administrators del vòte pòdon efectuar aquesta operacion.',
-	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">Eleccions al conselh d’administracion Wikimedia</a> : Vòte dobert fins al 12 de julhet',
-	'boardvote_notstarted'    => 'Lo vòte a pas encara començat',
-	'boardvote_closed'        => 'L’eleccion es d\'ara enlà clausa. Lo resultat es proclamat sus [[meta:Election results 2006/oc|la pagina de resultats]] (oc).',
-	'boardvote_edits_many'    => 'mantun',
-	'group-boardvote'         => 'Membres votants del conselh d’administracion',
-	'group-boardvote-member'  => 'Membre votant del conselh d’administracion',
-	'grouppage-boardvote'     => '{{ns:project}}:membre votant del conselh d’administracion',
-	'boardvote_blocked'       => 'O planhem, mas sètz estat(ada) blocat(ada) sus vòstra wiki d’origina. Los utilizaires blocats pòdon pas votar.',
-	'boardvote_welcome'       => 'Benvengut \'\'\'$1\'\'\'!',
-	'boardvote_redirecting'   => 'Per mai de transparéncia e de seguretat lo vòte se desenròtla sus un serveire extèrn e independent. Seretz redirigit vèrs aqueste serveire extèrn en 20 segondas. [$1 Clicatz aicí] per i anar ara. Un avertiment concernent un certificat non signat benlèu serà afichat.',
+[[Special:Boardvote/entry|Retorn]]",
+	'boardvote_nosession'    => 'Impossible de determinar vòstre identificant Wikimedia. Rendetz-vos sus vòstre wiki d’origina, enregistratz-vos, e rendetz-vos sus la pagina <nowiki>[[Special:Boardvote]]</nowiki>. Devètz possedir un compte amb al mens $1 contribucions efectuadas abans lo $2, e aver efectuat vòstra primièra edicion abans lo $3.',
+	'boardvote_notloggedin'  => 'Actualament sètz pas autentificat. Per votar, devètz utilizar un compte comportant al mens $1 contribucions abans lo $2, e que la primièra remonte al $3.',
+	'boardvote_notqualified' => "Respondètz pas a una de las condicions requesidas per votar a aqueste escrutin. Es necessari d’aver $3 contribucions abans lo $2, e n'avètz efectuadas $1. En mai, vòstra primièra modificacion data del $4, e deu aver estada facha abans lo $5.",
+	'boardvote_novotes'      => 'Degun a pas encara votat.',
+	'boardvote_time'         => 'Ora',
+	'boardvote_user'         => 'Utilizaire',
+	'boardvote_edits'        => 'Modificacions',
+	'boardvote_days'         => 'Jorns',
+	'boardvote_ua'           => 'Representant de l’utilizaire',
+	'boardvote_listintro'    => 'Lista de las personas qua ja an votat :<br /><br />',
+	'boardvote_dumplink'     => 'Clicatz aicí',
+	'boardvote_submit'       => "D'acòrdi",
+	'boardvote_strike'       => 'Raiar',
+	'boardvote_unstrike'     => 'Desraiar',
+	'boardvote_needadmin'    => 'Sols los administrators del vòte pòdon efectuar aquesta operacion.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Eleccions al conselh d’administracion Wikimedia</a> : Vòte dobert fins al 12 de julhet',
+	'boardvote_notstarted'   => 'Lo vòte a pas encara començat',
+	'boardvote_closed'       => "L’eleccion es d'ara enlà clausa. Lo resultat es proclamat sus [[meta:Election results 2006/oc|la pagina de resultats]] (oc).",
+	'boardvote_edits_many'   => 'mantun',
+	'group-boardvote'        => 'Membres votants del conselh d’administracion',
+	'group-boardvote-member' => 'Membre votant del conselh d’administracion',
+	'grouppage-boardvote'    => '{{ns:project}}:membre votant del conselh d’administracion',
+	'boardvote_blocked'      => 'O planhem, mas sètz estat(ada) blocat(ada) sus vòstra wiki d’origina. Los utilizaires blocats pòdon pas votar.',
+	'boardvote_welcome'      => "Benvengut '''$1'''!",
+	'boardvote_redirecting'  => 'Per mai de transparéncia e de seguretat lo vòte se desenròtla sus un serveire extèrn e independent. Seretz redirigit vèrs aqueste serveire extèrn en 20 segondas. [$1 Clicatz aicí] per i anar ara. Un avertiment concernent un certificat non signat benlèu serà afichat.',
+
 );
+
 $wgBoardVoteMessages['pl'] = array(
 	'boardvote'               => 'Wybory do Rady Powierniczej Fundacji Wikimedia',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Głosuj]]
@@ -1775,7 +1791,35 @@ $wgBoardVoteMessages['sr'] = $wgBoardVoteMessages['sr-ec'];
  */
 $wgBoardVoteMessages['stq'] = array(
 	'boardvote'              => 'Woalen tou dät Wikimedia-Kuratorium',
+	'boardvote_intro'        => '<blockquote>
+<p>
+Wäilkuumen tou ju fjoode Woal tou dät Wikimedia-Kuratorium, dät Ferwaltengsorgoan fon ju Wikimedia-Foundation. Der wäide träi Benutsere wääld, uum ju Community fon do Wikimediane in do ferscheedene Wikimedia-Projekte tou repräsentierjen. Disse träi Benutsere wäide foar n Tiedruum fon two Jiere wääld. Jo wollen deerbie hälpe, ju kuumende Gjuchte fon do Wikimedia-Projekte fäästtoulääsen, eenpeld un as Gruppe un jo repräsentierje <em>dien</em> Interessen un Belange. Jo wollen ieuwenske fuul uur Dingere uur do Iennoamen un Uutgoawen äntscheede.
+</p>
+
+<p>Foar dien Woal läs do Kandidoatenfoarstaalengen un hiere Oantwoude ap Froagen. Älke Kandidoat is n respektierden Benutser, die der al fuul Tied bruukt häd, uum do Projekte n positiv Uumfäild foar ju fräie Ferspreedenge fon moanskelk Wieten tou reeken.</p>
+
+<p>Du duurst foar so fuul Kandidoaten stämme as du moatest. Do träi Kandidoaten mäd do maaste Stämmen wollen do Siegere weese. Rakt et n Uunäntscheeden, wol et n Stichwoal reeke.</p>
+
+<p>Beoachte, dät du bloot uut aan Projekt hääruut wääle doarst. Uk wan du älkemoal moor as 400 Beoarbaidengen in moorere Projekten hääst, so begjuchtiget dit nit tou ne Dubbeloustämmenge. Wan du dien Stämougoawe annerje moatest, wääl fon näien fon dät Projekt, wieroun du al eer oustämd hääst.</p>
+
+<p>Wiedere Informatione:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2007/FAQ/de" class="external">Election FAQ</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2007/Candidates/de" class="external">Candidates</a></li></ul>
+</blockquote>',
 	'boardvote_intro_change' => '<p>Du hääst al oustämd. Man du koast dien Stämme mäd dät foulgjende Formular annerje. Markier deertou do litje Kasten fon do Kandidoate, do du wääle moatest.</p>',
+	'boardvote_entered'      => 'Tonk, dien Stämme wuude spiekerd.
+
+Wan du moatest, koast du foulgjende Eempeldhaide fäästhoolde. Dien Oustämmengsapteekenge is:
+
+<pre>$1</pre>
+
+Ju wuude mäd dän Public Key fon do Woaladministratore ferslöäteld: 
+
+<pre>$2</pre>',
+	'boardvote_nosession'    => 'Dien Wikimedia-Benutser-ID kon nit fääststoald wäide. Mäld die in dän Wiki an, in dän du tou ju Woal toulät bäst un gung deer ätter <nowiki>[[Special:Boardvote]]</nowiki>. Wäälen duur wäl, dän sien Benutserkonto nit minner as $1 Beoarbaidengen foar dän $2 apwiest, ju eerste Beoarbaidenge mout foar dän $3 geböärd weese. 
+
+Din Browser mout so konfigurierd weese, dät hie Cookies fon dän externe Woalcomputer
+<tt>wikimedia.spi-inc.org</tt> akzeptiert.',
 	'boardvote_notloggedin'  => 'Du bäst nit ienlogged. Uum oustämme tou konnen, moast du ienlogged weese un n Benutserkonto ferweende, wiermäd al foar dän Täldai ($2) ap minste $1 Beoarbaidengen moaked wuuden.',
 	'boardvote_notqualified' => 'Du bäst nit begjuchtiged an dissen Woal deeltouniemen. Du moast $3 Beoarbaidengen foar dän $2 moaked hääbe un die eerste Beoarbaidenge mout foar dän $5 geböärd weese. Aal Bedingengengen mouten tou ju Woaldeelnoame ärfäld weese.',
 	'boardvote_novotes'      => 'Tou nu tou häd noch neemens oustämd.',

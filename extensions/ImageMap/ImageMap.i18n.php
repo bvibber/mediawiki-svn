@@ -152,6 +152,14 @@ function efImageMapMessages() {
 	'imagemap_description'          => 'Wo tutym wobrazu',
 ),
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+'hu' => array(
+	'imagemap_description' => 'Kép leírása',
+
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: harus memberikan suatu gambar di baris pertama',

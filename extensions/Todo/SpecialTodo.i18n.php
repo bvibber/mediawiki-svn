@@ -171,3 +171,37 @@ $4',
 	'todo-form-submit'      => 'Zoekopdracht uitvoeren',
 
 );
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'todo'                  => 'Oppgaveliste',
+	'todo-new-queue'        => 'ny',
+	'todo-mail-subject'     => 'Fullførte oppgave på $1s oppgaveliste',
+	'todo-mail-body'        => 'Du ba om en e-postbekreftelse om fullføringen av en oppgave på $1s oppgaveliste.
+
+Oppgave: $2
+Fullført: $3
+
+Oppgaven er merket som fullført, med denne kommentaren:
+$4',
+	'todo-invalid-item'     => 'Manglende eller ugyldig oppgave',
+	'todo-update-else-item' => 'Prøver å oppdatere en annen persons oppgaver',
+	'todo-unrecognize-type' => 'Type ikke gjenkjent',
+	'todo-user-invalide'    => 'Oppgaven gitt til ugydlig, manglende eller upassende bruker.',
+	'todo-item-list'        => 'Dine oppgaver',
+	'todo-no-item'          => 'Ingen oppgaver.',
+	'todo-invalid-owner'    => 'Ugyldig oppgaveeier.',
+	'todo-add-queue'        => 'Legg til kø…',
+	'todo-move-queue'       => 'Flytt til kø…',
+	'todo-list-for'         => 'Oppgaveliste for',
+	'todo-list-change'      => 'Endre',
+	'todo-list-cancel'      => 'Avbryt',
+	'todo-new-item'         => 'Ny oppgave',
+	'todo-issue-summary'    => 'Sammendrag:',
+	'todo-form-details'     => 'Detaljer:',
+	'todo-form-email'       => 'For å motta beskjed på e-post når oppgaven er fullført, skriv inn e-postadressen din her:',
+	'todo-form-submit'      => 'Utfør',
+
+);

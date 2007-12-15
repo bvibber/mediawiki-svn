@@ -37,6 +37,40 @@ A log of recent watchlist pushes is available at [[Special:PovWatch/log]].',
 	'povwatch_added' => 'added',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'povwatch'                         => 'مراقبة بي أو في',
+	'povwatch_no_session'              => 'خطأ: لم يمكن تنفيذ الاستمارة نتيجة فقد في بيانات الجلسة.',
+	'povwatch_not_allowed_push'        => 'أنت لست إداري مراقبة بي أو في، لا يمكنك دفع المقالات إلى قوائم المراقبة.',
+	'povwatch_already_subscribed'      => 'أنت مشترك بالفعل في مراقبة بي أو في',
+	'povwatch_subscribed'              => 'أنت الآن مشترك في مراقبة بي أو في',
+	'povwatch_not_subscribed'          => 'أنت غير مشترك في مراقبة بي أو في، لذا فلا يمكنك إلغاء الاشتراك.',
+	'povwatch_unsubscribed'            => 'أنت الآن ألغيت الاشتراك في مراقبة بي أو في',
+	'povwatch_invalid_title'           => 'العنوان المحدد كان غير صحيح',
+	'povwatch_pushed'                  => '[[$1]] تم دفعها بنجاح إلى $2 قائمة مراقبة مستخدم',
+	'povwatch_intro'                   => 'مراقبة بي أو في هي خدمة تسمح بإضافة مقالات معينة إلى قوائم مراقبة الإداريين المشتركين.
+
+السجل بعمليات دفع قوائم المراقبة الحديثة متوفر في [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list'         => '[[Special:PovWatch/subscribers|قائمة المشتركين]] متوفرة.',
+	'povwatch_subscriber_list_intro'   => '<strong>قائمة المشتركين</strong>',
+	'povwatch_not_allowed_subscribers' => 'أنت غير مسموح لك برؤية قائمة المشتركين في مراقبة بي أو في.',
+	'povwatch_unknown_subpage'         => 'صفحة فرعية غير معروفة.',
+	'povwatch_push'                    => 'دفع',
+	'povwatch_push_intro'              => 'استخدم الاستمارة بالأسفل لدفع مقالات إلى قوائم مراقبة المستخدمين المشتركين. من فضلك كن حذرا عند كتابة العنوان: حتى العناوين غير الموجودة يمكن إضافتها، ولا توجد طريقة لإزالة عنوان ما متى تم دفعه.',
+	'povwatch_title'                   => 'العنوان:',
+	'povwatch_comment'                 => 'تعليق السجل',
+	'povwatch_no_log'                  => 'لا توجد مدخلات سجل.',
+	'povwatch_no_subscribers'          => 'لا يوجد مشتركون.',
+	'povwatch_unsubscribe_intro'       => 'أنت مشترك في مراقبة بي أو في. اضغط الزر بالأسفل لإلغاء الاشتراك.',
+	'povwatch_unsubscribe'             => 'إنهاء الاشتراك',
+	'povwatch_subscribe_intro'         => 'أنت غير مشترك في مراقبة بي أو في. اضغط الزر بالأسفل للاشتراك.',
+	'povwatch_subscribe'               => 'اشتراك',
+	'povwatch_added'                   => 'تمت الإضافة',
+
+);
+
 #French Translation by Bertrand GRONDIN
 $messages ['fr'] = array(
 	'povwatch' => 'Surveillance des guerres d’éditions',

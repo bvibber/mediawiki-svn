@@ -68,9 +68,17 @@ riddler|Riddler",
 	'vote-login-link' => 'maglaog',
 ),
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
 'bg' => array(
-	'vote' => 'Гласуване',
-	'vote-submit' => 'Гласуване',
+	'vote'              => 'Гласуване',
+	'vote-caption'      => 'Текущ избор:',
+	'vote-submit'       => 'Гласуване',
+	'vote-registered'   => 'Вашият глас беше отчетен.',
+	'vote-view-results' => 'Преглед на резултатите',
+	'vote-results-none' => 'Все още никой не е гласувал.',
+
 ),
 
 'br' => array(

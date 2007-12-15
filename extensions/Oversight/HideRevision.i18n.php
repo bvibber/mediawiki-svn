@@ -353,6 +353,14 @@ Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wuš
 	'oversight-header' => 'Slěduje lisćina wersijow na stajnje schowanych za zjawnosć. Wozjewjenje tutych informacijow móže k stajnemu zhubjenju prawow za Oversight wjesć.',
 ),
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+'hu' => array(
+	'hiderevision-error-missing' => 'Nem található az adatbázisban.',
+
+),
+
 /* Italian (BrokenArrow) */
 'it' => array(
 	'hiderevision' => 'Oscuramento permanente di una revisione',

@@ -299,6 +299,7 @@ $messages['hsb'] = array(
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin
+ * @author Annabel
  */
 $messages['nl'] = array(
 	'math_noblahtex'                        => 'Blahtex kan niet uitgevoerd worden. Het programma zou hier moeten staan: $1',
@@ -314,9 +315,9 @@ $messages['nl'] = array(
 	'math_DoubleSuperscript'                => 'Er stonden twee superscripts die aan dezelfde basis waren gekoppeld (slechts één is toegestaan)',
 	'math_IllegalCharacter'                 => 'Ongeldig teken in de invoer',
 	'math_IllegalCommandInMathMode'         => 'Het commando "$1" is niet toegestaan in math-modus',
-	'math_IllegalCommandInMathModeWithHint' => 'Het commando "$1" is ongeldig in math-modus. Wellicht wilde u eigenlijk "$2" gebruiken?',
+	'math_IllegalCommandInMathModeWithHint' => 'Het commando "$1" is ongeldig in math-modus. Wellicht wilde u "$2" gebruiken?',
 	'math_IllegalCommandInTextMode'         => 'Het commando "$1" is ongeldig in tekstmodus',
-	'math_IllegalCommandInTextModeWithHint' => 'Het commando "$1" is ongeldig in tekstmodus. Wellicht wilde u eigenlijk "$2" gebruiken?',
+	'math_IllegalCommandInTextModeWithHint' => 'Het commando "$1" is ongeldig in tekstmodus. Wellicht wilde u "$2" gebruiken?',
 	'math_IllegalDelimiter'                 => 'Ongeldig scheidingsteken na "$1"',
 	'math_IllegalFinalBackslash'            => 'Ongeldige backslach "\" aan het einde van de invoer',
 	'math_IllegalNestedFontEncodings'       => "Commando's voor de codering van lettertypen kunnen niet genest worden",
@@ -359,6 +360,33 @@ $messages['oc'] = array(
 	'math_LatexPackageUnavailable'          => 'Pòt pas rendre lo fichièr PNG perque lo paquetatge LaTeX « $1 » es pas accessible.',
 	'math_MismatchedBeginAndEnd'            => 'Las comandas « $1 » e « $2 » correspondon pas.',
 	'math_MisplacedLimits'                  => 'La comanda « $1 » deu aparéisser aprèp un operator quand es en mòde math (suggestion : ensajatz « mathop »).',
+	'math_MissingCommandAfterNewcommand'    => 'Un nom de comanda novèl es mancant o fautiu aprèp « \newcommand » (deu i aver precisament una comanda definida, deu començar per « \ » e conténer pas que de caractèrs alfabetics).',
+	'math_MissingDelimiter'                 => 'Un delimitaire manca aprèp « $1 ».',
+	'math_MissingOpenBraceAfter'            => 'La balisa « { » manca aprèp « $1 »',
+	'math_MissingOpenBraceAtEnd'            => 'La balisa « { » manca a la fin de la picada.',
+	'math_MissingOpenBraceBefore'           => 'La balisa « { » manca abans « $1 »',
+	'math_MissingOrIllegalParameterCount'   => "Descompte de paramètres mancants o fautius dins la definicion de « $1 » (deu èsser pas qu'una sola chifra compresa entre 1 e 9 inclusivament)",
+	'math_MissingOrIllegalParameterIndex'   => 'Indèx de paramètre mancant o fautiu dins la definicion de « $1 »',
+	'math_NonAsciiInMathMode'               => 'Los caractèrs en defòra de ASCII pòdon solament èsser utilizats en mòde tèxt (ensajatz de metre los caractèrs problematics dins « \text{...} »).',
+	'math_NotEnoughArguments'               => "Pas pro d'arguments picats per « $1 »",
+	'math_PngIncompatibleCharacter'         => 'Pòt pas generir lo fichièr PNG que conten lo caractèr $1.',
+	'math_ReservedCommand'                  => 'La comanda « $1 » es reservada a blahtex.',
+	'math_SubstackRowTooBig'                => "Pòt pas i aver qu'una sola entrada dins cada rengada d'un blt « sospilat ».",
+	'math_TooManyMathmlNodes'               => "I a tròp de noses dins l'arbre MathML.",
+	'math_TooManyTokens'                    => 'La donada picada es tròp longa.',
+	'math_UnavailableSymbolFontCombination' => 'Lo simbòl « $1 » es pas disponible per la poliça de caractèrs « $2 ».',
+	'math_UnexpectedNextCell'               => 'La comanda « & » pòt pas solament aparéisser dins un blòt « \begin ... \end ».',
+	'math_UnexpectedNextRow'                => 'La comanda « \\ » pòt pas solament aparéisser dins un blòt « \begin ... \end ».',
+	'math_UnmatchedBegin'                   => 'La balisa « \begin » es pas balançada per la balisa « \end ».',
+	'math_UnmatchedCloseBrace'              => 'La balisa « } » es pas precedida per la balisa « { ».',
+	'math_UnmatchedEnd'                     => 'La balisa « \end » es pas precedida per la balisa « \begin ».',
+	'math_UnmatchedLeft'                    => 'La balisa « \left » es pas balançada per la balisa « \right ».',
+	'math_UnmatchedOpenBrace'               => 'La balisa « { » es pas balançada per la balisa « } ».',
+	'math_UnmatchedOpenBracket'             => 'La balisa « [ » es pas balançada per la balisa « ] ».',
+	'math_UnmatchedRight'                   => 'La balisa « \right » es pas balançada per la balisa « \left ».',
+	'math_UnrecognisedCommand'              => 'Comanda desconeguda « $1 »',
+	'math_WrongFontEncoding'                => "Lo simbòl « $1 » pòt aparéisser pas dins l'encodatge de caractèrs « $2 ».",
+	'math_WrongFontEncodingWithHint'        => "Lo simbòl « $1 » poiriá èsser pas afichat per l'encodatge de caractèrs « $2 » (ensajatz la comanda « $3{...} »).",
 
 );
 

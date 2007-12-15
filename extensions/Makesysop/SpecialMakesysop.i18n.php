@@ -534,23 +534,28 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'grouppage-steward' => '{{ns:project}}:Stewardźa',
 ),
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
 'hu' => array(
-	'makesysoptitle' => 'Felhasználó adminisztrátorrá tétele',
-	'makesysoptext' => 'Ezt az űrlapot a bürokraták használják, hogy a felhasználókat adminisztrátorrá tegyék.
+	'makesysoptitle'       => 'Felhasználó adminisztrátorrá tétele',
+	'makesysoptext'        => 'Ezt az űrlapot a bürokraták használják, hogy a felhasználókat adminisztrátorrá tegyék.
 Írd be a felhasználó nevét a szövegmezőbe, és nyomd meg a gombot, hogy adminisztrátorrá tedd.',
-	'makesysopname' => 'A felhasználó neve:',
-	'makesysopsubmit' => 'A felhasználó adminisztrátorrá tétele',
-	'makesysopok' => '<b>„$1” mostantól adminisztrátor.</b>',
-	'makesysopfail' => '<b>„$1” nem tehető adminisztrátorrá. (Talán elgépelted a nevet?)</b>',
-	'setbureaucratflag' => 'Bürokrata jogosultság megadása',
-	'rights' => 'Jogosultságok:',
-	'set_user_rights' => 'Felhasználói jogosultságok megváltoztatása',
-	'set_rights_fail' => '<b>„$1” jogosultságait nem sikerült megváltoztatni. (Talán elírtad a nevét?)</b>',
-	'makesysop' => 'Felhasználó adminisztrátorrá tétele',
-	'already_sysop' => 'Ez a felhasználó már adminisztrátor.',
-	'already_bureaucrat' => 'Ez a felhasználó már bürokrata.',
-	'group-steward' => 'Helytartók',
+	'makesysopname'        => 'A felhasználó neve:',
+	'makesysopsubmit'      => 'A felhasználó adminisztrátorrá tétele',
+	'makesysopok'          => '<b>„$1” szerkesztő mostantól adminisztrátor</b>',
+	'makesysopfail'        => '<b>„$1” nem tehető adminisztrátorrá. (Talán elgépelted a nevet?)</b>',
+	'setbureaucratflag'    => 'Bürokrata jogosultság megadása',
+	'rights'               => 'Jogosultságok:',
+	'set_user_rights'      => 'Felhasználói jogosultságok megváltoztatása',
+	'set_rights_fail'      => '<b>„$1” jogosultságait nem sikerült megváltoztatni. (Talán elírtad a nevét?)</b>',
+	'makesysop'            => 'Felhasználó adminisztrátorrá tétele',
+	'already_sysop'        => 'Ez a felhasználó már adminisztrátor.',
+	'already_bureaucrat'   => 'Ez a felhasználó már bürokrata.',
+	'makesysop-nodatabase' => 'Helytelen nyelvközi felhasználónév: $1',
+	'group-steward'        => 'Helytartók',
 	'group-steward-member' => 'Helytartó',
+
 ),
 
 'hy' => array(

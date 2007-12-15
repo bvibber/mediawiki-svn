@@ -110,13 +110,12 @@ Njepřihódne wobrazy budu so hnydom wušmórować, hlej [[{{MediaWiki:Multipleu
 
 /** Dutch (Nederlands)
  * @author SPQRobin
- * @author Siebrand
  */
 $messages['nl'] = array(
 	'multipleupload'                   => 'Bestanden uploaden',
 	'multipleupload-ignoreallwarnings' => "'''Alle waarschuwingen''' negeren en de bestanden sowieso uploaden.",
 	'multipleupload-saveallfiles'      => 'Alle bestanden opslaan',
-	'multipleupload-addresswarnings'   => 'Los altublieft de waarschuwingen up voordat u het opnieuw probeert.',
+	'multipleupload-addresswarnings'   => 'Los alstublieft de waarschuwingen op voordat u het opnieuw probeert.',
 	'multipleupload-page'              => '{{ns:project}}:Verwijderingsbeleid van bestanden',
 	'multipleupload-text'              => "Hier kunt u verschillende bestanden uploaden.
 

@@ -102,27 +102,34 @@ $allMessages = array(
 		'changeauthor-invalid-username' => 'Άκυρο όνομα-χρήστη  "$1".',
 		'changeauthor-rev' => 'r$1',#identical but defined
 	),
+
+/** French (Français)
+ * @author Sherbrooke
+ * @author Dereckson
+ */
 	'fr' => array(
-		'changeauthor' => 'Changer l\'auteur des révisions',
-		'changeauthor-title' => 'Changer l\'auteur d\'une révision',
-		'changeauthor-search-box' => 'Rechercher des révisions',
-		'changeauthor-pagename-or-revid' => 'Titre de l\'article ou ID de révision :',
-		'changeauthor-pagenameform-go' => 'Aller',
-		'changeauthor-comment' => 'Commentaire :',
-		'changeauthor-changeauthors-multi' => 'Changer auteur(s)',
-		'changeauthor-explanation-multi' => 'Avec ce formulaire, vous pouvez changer les auteurs des révisions. Modifier un ou plusieurs noms d\'usager dans la liste, ajouter un commentaire (facultatif) et cliquer le bouton \'\'Changer auteur(s)\'\'.',
-		'changeauthor-changeauthors-single' => 'Changer l\'auteur',
-		'changeauthor-explanation-single' => 'Avec ce formulaire, vous pouvez changer l\'auteur d\'une révision. Changer le nom d\'auteur ci-dessous, ajouter un commentaire (facultatif) et cliquer sur le bouton \'\'Changer l\'auteur\'\'.',
-		'changeauthor-invalid-username' => 'Nom d\'utilisateur « $1 » invalide',
-		'changeauthor-nosuchuser' => 'Pas d\'utilisateur « $1 »',
-		'changeauthor-revview' => 'Révision #$1 de $2',
-		'changeauthor-nosuchtitle' => 'Pas d\'article intitulé « $1 »',
-		'changeauthor-weirderror' => 'Une erreur s\'est produite. Prière d\'essayer à nouveau. Si cette erreur est apparue à plusieurs reprises, la base de données est probablement corrompue.',
-		'changeauthor-invalidform' => 'Prière d\'utiliser le formulaire généré par Special:ChangeAuthor plutôt qu\'un formulaire personnel',
-		'changeauthor-success' => 'Votre requête a été traitée avec succès.',
-		'changeauthor-logpagename' => 'Journal des changements faits par l\'auteur',
-		'changeauthor-rev' => 'r$1',#identical but defined
+		'changeauthor'                      => "Changer l'auteur des révisions",
+		'changeauthor-title'                => "Changer l'auteur d'une révision",
+		'changeauthor-search-box'           => 'Rechercher des révisions',
+		'changeauthor-pagename-or-revid'    => "Titre de l'article ou ID de révision :",
+		'changeauthor-pagenameform-go'      => 'Aller',
+		'changeauthor-comment'              => 'Commentaire :',
+		'changeauthor-changeauthors-multi'  => 'Changer auteur(s)',
+		'changeauthor-explanation-multi'    => "Avec ce formulaire, vous pouvez changer les auteurs des révisions. Modifier un ou plusieurs noms d'usager dans la liste, ajouter un commentaire (facultatif) et cliquer le bouton ''Changer auteur(s)''.",
+		'changeauthor-changeauthors-single' => "Changer l'auteur",
+		'changeauthor-explanation-single'   => "Avec ce formulaire, vous pouvez changer l'auteur d'une révision. Changer le nom d'auteur ci-dessous, ajouter un commentaire (facultatif) et cliquer sur le bouton ''Changer l'auteur''.",
+		'changeauthor-invalid-username'     => "Nom d'utilisateur « $1 » invalide",
+		'changeauthor-nosuchuser'           => "Pas d'utilisateur « $1 »",
+		'changeauthor-revview'              => 'Révision #$1 de $2',
+		'changeauthor-nosuchtitle'          => "Pas d'article intitulé « $1 »",
+		'changeauthor-weirderror'           => "Une erreur s'est produite. Prière d'essayer à nouveau. Si cette erreur est apparue à plusieurs reprises, la base de données est probablement corrompue.",
+		'changeauthor-invalidform'          => "Prière d'utiliser le formulaire généré par Special:ChangeAuthor plutôt qu'un formulaire personnel",
+		'changeauthor-success'              => 'Votre requête a été traitée avec succès.',
+		'changeauthor-logentry'             => "Modification de l'auteur de $2 de $1 depuis $3 vers $4",
+		'changeauthor-logpagename'          => "Journal des changements faits par l'auteur",
+		'changeauthor-rev'                  => 'r$1',
 	),
+
 	'frp' => array(
 		'changeauthor' => 'Changiér l’ôtor de les vèrsions',
 		'changeauthor-title' => 'Changiér l’ôtor d’una vèrsion',
@@ -234,6 +241,31 @@ $allMessages = array(
 		'changeauthor-logpagename' => 'Logg for opphavspersonsendringer',
 		'changeauthor-rev' => 'r$1',#identical but defined
 	),
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+	'oc' => array(
+		'changeauthor'                      => "Cambiar l'autor de las revisions",
+		'changeauthor-title'                => "Cambiar l'autor d'una revision",
+		'changeauthor-search-box'           => 'Recercar de revisions',
+		'changeauthor-pagename-or-revid'    => "Títol de l'article o ID de revision :",
+		'changeauthor-pagenameform-go'      => 'Anar',
+		'changeauthor-comment'              => 'Comentari :',
+		'changeauthor-changeauthors-multi'  => 'Cambiar autor(s)',
+		'changeauthor-explanation-multi'    => "Amb aqueste formulari, podètz cambiar los autors de las revisions. Modificat un o mantun nom d'utilizaire dins la lista, ajustatz un comentari (facultatiu) e clicatz sul boton ''Cambiar autor(s)''.",
+		'changeauthor-changeauthors-single' => "Cambiar l'autor",
+		'changeauthor-explanation-single'   => "Amb aqueste formulari, podètz cambiar l'autor d'una revision. Cambiatz lo nom d'autor çaijós, ajustatz un comentari (facultatiu) e clicatz sul boton ''Cambiar l'autor''.",
+		'changeauthor-invalid-username'     => "Nom d'utilizaire « $1 » invalid.",
+		'changeauthor-nosuchuser'           => "Pas d'utilizaire « $1 »",
+		'changeauthor-revview'              => 'Revision #$1 de $2',
+		'changeauthor-nosuchtitle'          => "Pas d'article intitolat « $1 »",
+		'changeauthor-weirderror'           => "Una error s'es producha. Ensajatz tornamai. Se aquesta error es apareguda mantun còp, la banca de donadas es probablament corrompuda.",
+		'changeauthor-invalidform'          => "Utilizatz lo formulari generit per Special:ChangeAuthor puslèu qu'un formulari personal",
+		'changeauthor-success'              => 'Vòstra requèsta es estada tractada amb succès.',
+		'changeauthor-logpagename'          => "Jornal dels cambiaments faches per l'autor",
+	),
+
 	'pt' => array(
 		'changeauthor-pagenameform-go' => 'Ir',
 		'changeauthor-comment' => 'Comentário:',
@@ -242,5 +274,21 @@ $allMessages = array(
 		'changeauthor-nosuchuser' => 'Utilizador "$1" não existe.',
 		'changeauthor-revview' => 'Revisão #$1 de $2',
 		'changeauthor-nosuchtitle' => 'Não existe nenhum artigo chamado "$1".',
+	),
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+	'stq' => array(
+		'changeauthor-pagenameform-go'     => 'Säik',
+		'changeauthor-comment'             => 'Kommentoar:',
+		'changeauthor-changeauthors-multi' => 'Uur Autor(e)',
+		'changeauthor-explanation-multi'   => 'Mäd dit Formular koast du do Autore fon do Versione annerje. Annere eenfach aan of moor Autorennoomen in ju Lieste, moak n Kommentoar (optionoal) un klik ap dän „Autor annerje“-Knoop.',
+		'changeauthor-explanation-single'  => 'Mäd dit Formular koast du do Autoren fon ne Version annerje. Annere eenfach dän Autorennoome in ju Lieste, beoarbaide n Kommentoar (optionoal) un klik ap dän „Autor annerje“-Knoop.',
+		'changeauthor-invalidform'         => 'Benutsje dät Formular unner Special:ChangeAuthor.',
+		'changeauthor-success'             => 'Dian Annerenge wuude mäd Ärfoulch truchfierd.',
+		'changeauthor-logentry'            => 'annerde Autorennoome fon ju $2 fon $1 fon $3 ap $4',
+		'changeauthor-logpagename'         => 'Autorennoome-Annerengslogbouk',
+		'changeauthor-rev'                 => 'Version $1',
 	),
 );

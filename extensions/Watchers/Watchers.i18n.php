@@ -106,6 +106,20 @@ $messages['nl'] = array(
 	'watchers_less_than_x' => "Minder dan $1 gebruikers volgen deze pagina.",
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'watchers'               => 'Overvåkende',
+	'watchers_link_title'    => 'Hvem overvåker denne siden?',
+	'watchers_error_article' => '<b>Feil:</b> Artikkelen finnes ikke.',
+	'watchers_header'        => 'Personer som overvåker «$1»',
+	'watchers_noone_watches' => 'Ingen overvåker denne siden.',
+	'watchers_x_or_more'     => '$1 eller flere personer overvåker denne siden.',
+	'watchers_less_than_x'   => 'Mindre enn $1 personer overvåker denne siden.',
+
+);
+
 $messages['pt'] = array(
 	'watchers_link_title' => "Quem está vigiando esta página?",
 	'watchers_error_article' => "<b>Erro:</b> Página inexistente.",

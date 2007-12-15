@@ -51,6 +51,14 @@ $wgDataSearchMessages['nl'] = array(
 	'datasearch' => 'Wikidata: Gegevens zoeken',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$wgDataSearchMessages['no'] = array(
+	'datasearch' => 'Wikidata: Datasøk',
+
+);
+
 $wgDataSearchMessages['oc'] = array(
 	'datasearch' => 'Wikidata: Recèrca de donadas',
 );

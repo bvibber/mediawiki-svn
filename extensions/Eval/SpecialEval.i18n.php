@@ -50,6 +50,18 @@ $messages['nl'] = array(
 	'eval_out'    => 'Uitvoer',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'eval'        => 'Evaluar',
+	'eval_submit' => 'Evaluar',
+	'eval_escape' => 'Arrèstar la sortida',
+	'eval_out'    => 'Sortida',
+	'eval_code'   => 'Còde',
+
+);
+
 $messages['pt'] = array(
 	'eval_code'   => 'Código',
 );
