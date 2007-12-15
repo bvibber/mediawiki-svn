@@ -50,17 +50,17 @@ function efPhpbbData_LanguageGetMagic( &$magicWords, $langCode ) {
 }
 
 function efPhpbbData_makeTopicWikiLink($display_text='', $forum_id=null, $topic_id=null, $post_id=null) {
-	global $wgPhpbbDataRootPath;
+	global $wgPhpbbDataRootPath, $wgTitle;
 
 	if (!empty($post_id)) {
 		$urlText = "https://" . $_SERVER['SERVER_ADDR'] . 
-			"/{$wgPhpbbDataRootPath}viewpost.php?p={$post_id}";
+			"/{$wgPhpbbDataRootPath}viewpost.php?p={$post_id}&toWiki=" . urlencode($wgTitle->escapeLocalURL());
 	} elseif (!empty($topic_id)) {
 		$urlText = "https://" . $_SERVER['SERVER_ADDR'] . 
-			"/{$wgPhpbbDataRootPath}viewtopic.php?t={$topic_id}";
+			"/{$wgPhpbbDataRootPath}viewtopic.php?t={$topic_id}&toWiki=" . urlencode($wgTitle->escapeLocalURL());
 	} elseif (!empty($forum_id)) {
 		$urlText = "https://" . $_SERVER['SERVER_ADDR'] . 
-			"/{$wgPhpbbDataRootPath}viewforum.php?t={$forum_id}";
+			"/{$wgPhpbbDataRootPath}viewforum.php?t={$forum_id}&toWiki=" . urlencode($wgTitle->escapeLocalURL());
 	}
 	
 	if ($display_text != '')
