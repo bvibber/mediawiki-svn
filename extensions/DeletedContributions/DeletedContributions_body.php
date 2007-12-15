@@ -339,7 +339,7 @@ function deletedContributionsForm( $options ) {
 		Xml::element( 'legend', array(), wfMsg( 'sp-contributions-search' ) ) .
 		wfMsgExt( 'sp-contributions-username', array( 'parseinline' ) ) . ' ' .
 		Xml::input( 'target', 20, $options['target']) . ' '.
-		Xml::label( wfMsg( 'namespace' ), 'namespace' ) .
+		Xml::label( wfMsg( 'namespace' ), 'namespace' ) . ' ' .
 		Xml::namespaceSelector( $options['namespace'], '' ) .
 		Xml::submitButton( wfMsg( 'sp-contributions-submit' ) ) .
 		'</fieldset>' .
