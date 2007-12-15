@@ -215,7 +215,7 @@ function fundcore_meter_total() {
   $begin = variable_get('fundcore_meter_begin_date', NULL);
   $begin = strtotime($begin['year'] . '-' . $begin['month'] . '-' . $begin['day'] . ' 00:00:00 UTC');
 
-  $count = db_result(db_query('SELECT COUNT(*) FROM {fundcore_contribution} WHERE stored >= %d AND processed = 1', $begin));
+  $count = db_result(db_query('SELECT COUNT(*) FROM {fundcore_contribution} WHERE stored >= %d AND processed = 1 AND gross >= 1', $begin));
 
   return $count;
 }
