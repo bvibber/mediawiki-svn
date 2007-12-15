@@ -41,6 +41,15 @@ function efUsernameBlacklistMessages( $single = false ) {
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|السطر التالي|السطور التالية}} في قائمة اسم المستخدم السوداء {{PLURAL:$1|غير صحيح|غير صحيحة}} ؛ من فضلك {{PLURAL:$1|صححه|صححها}} قبل الحفظ:',
 ),
 
+/** Asturian (Asturianu)
+ * @author SPQRobin
+ */
+'ast' => array(
+	'blacklistedusername'     => "Nome d'usuariu na llista prieta",
+	'blacklistedusernametext' => "El nome d'usuariu qu'escoyisti ta na [[MediaWiki:Usernameblacklist|llista prieta de nomes d'usuariu]]. Por favor, escueyi otru nome.",
+
+),
+
 'bcl' => array(
 	'blacklistedusername' => 'Blacklisted na username',
 ),

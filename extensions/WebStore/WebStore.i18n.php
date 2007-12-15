@@ -328,6 +328,27 @@ $1',
 		'webstore_php_error' => 'PHP-feil ble funnet:',
 		'webstore_no_handler' => 'Ingen behandler for endring av denne MIME-typen',
 	),
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+	'oc' => array(
+		'inplace_access_disabled'          => "L'accès a aqueste servici es desactivat per totes los clients.",
+		'inplace_access_denied'            => 'Aqueste servici es restrenhut sus la basa del IP del client.',
+		'inplace_scaler_no_temp'           => "Pas cap de dorsièr temporari valid, \$wgLocalTmpDirectory deu conténer lo nom d'un dorsièr amb dreches d'escritura.",
+		'inplace_scaler_not_enough_params' => 'Pas pro de paramètres',
+		'inplace_scaler_invalid_image'     => 'Imatge incorrècte, pòt pas determinar sa talha',
+		'inplace_scaler_failed'            => "Una error es susvenguda pendent la dilatacion/contraccion (« scaling ») de l'imatge.",
+		'inplace_scaler_no_handler'        => 'Cap de foncion (« handler ») per transformar aqueste format MIME.',
+		'inplace_scaler_no_output'         => 'Cap de fichièr de transformacion generit',
+		'inplace_scaler_zero_size'         => 'La transformacion a creat un fichièr de talha zèro.',
+		'webstore_path_invalid'            => 'Lo nom de fichièr es pas corrècte.',
+		'webstore_404'                     => 'Fichièr pas trobat.',
+		'webstore_no_response'             => 'Lo serveire respondís pas',
+		'webstore_php_error'               => 'Las errors PHP seguentas son susvengudas',
+
+),
+
 	'pl' => array(
 		'inplace_access_disabled' => 'Dostęp do tej usługi został wyłączony dla wszystkich klientów.',
 		'inplace_access_denied' => 'Ta usługa jest ograniczona przez IP klienta.',

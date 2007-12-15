@@ -102,6 +102,17 @@ function efCommentSpammerMessages() {
 	'cspammer-log-page' => 'Rejestr spammerów',
 ),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+'stq' => array(
+	'commentspammer-save-blocked' => 'Dien IP-Adresse stamt fermoudelk fon n Kommentoar-Spammer. Ju Siede wuude nit spiekerd.
+[[Special:Userlogin|Mäldje die an of moak n Benutserkonto]], uum disse Woarschauenge tou ferhinnerjen.',
+	'commentspammer-log-msg'      => 'Beoarbaidenge fon [[Special:Contributions/$1|$1]] foar [[:$2]].',
+	'commentspammer-log-msg-info' => 'Lääste Spammenge foar $1 {{PLURAL:$1|Dai|Deege}}, die "threat level" is $2 un die "offence code" is $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Details ankiekje] of [[Special:Blockip/$4|speere]].',
+	'cspammerlogpagetext'         => 'Lieste fon Beoarbaidengen, do der ferlööwed of ouliend wuuden ap dän Gruund, of ju Wälle n bekoanden Kommentoar-Spammer waas.',
+	'cspammer-log-page'           => 'Kommentoar-Spammer Logbouk',
+),
         );
 
         return $messages;

@@ -60,6 +60,15 @@ $messages = array(
 	'grouppage-steward' => '{{ns:project}}:مضيفون',
 ),
 
+/** Asturian (Asturianu)
+ * @author SPQRobin
+ */
+'ast' => array(
+	'already_sysop'      => 'Esti usuariu yá ye un alministrador',
+	'already_bureaucrat' => 'Esti usuariu yá ye un burócrata',
+
+),
+
 'az' => array(
 	'already_sysop'        => 'Bu istifadəçi hazirdə idarəçidir',
 	'already_bureaucrat'   => 'Bu istifadəçi hazirdə bürokratdı',
@@ -436,6 +445,22 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'makesysop'		=> 'Déan oibreoir córais de húsáideoir',
 	'already_sysop'		=> 'Is oibreoir córais é an usáideoir seo cheana féin',
 	'already_bureaucrat'	=> 'Is maorlathach é an úsáideoir seo cheana féin',
+),
+
+/** Scottish Gaelic (Gàidhlig)
+ * @author SPQRobin
+ */
+'gd' => array(
+	'makesysoptitle'  => 'Dèan cleachdair na sysop',
+	'makesysopname'   => "Ainm a'chleachdair:",
+	'makesysopsubmit' => 'Dèan an cleachdair seo na sysop',
+	'makesysopok'     => '<b>Tha cleachdair "$1" na sysop nise</b>',
+	'rights'          => 'Còraichean:',
+	'set_user_rights' => 'Suidhich còraichean cleachdair',
+	'user_rights_set' => '<b>Còraichean cleachdair aig "$1" air an nua-dheasaicheadh</b>',
+	'set_rights_fail' => '<b>Cha do shuidheachadh còraichean cleachdair aig "$1". (An do sgrìobh sibh an t-ainm gu ceart?)</b>',
+	'makesysop'       => 'Dèan cleachdair na sysop',
+
 ),
 
 'gl' => array(

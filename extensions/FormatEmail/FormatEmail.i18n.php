@@ -76,6 +76,16 @@ $messages['no'] = array(
 Denne e-posten har blitt sendt deg fra $1 via {{SITENAME}}s e-postsystem.',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'email_footer' => '----------------------------------------------------------------------------
+
+Aqueste corrièr vos es estat mandat gràcia al sistèma de messajtariá de {{SITENAME}} per $1. $2',
+
+);
+
 $messages['sk'] = array(
 	'email_footer' => '
 

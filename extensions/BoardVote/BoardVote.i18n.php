@@ -174,6 +174,16 @@ $wgBoardVoteMessages['ar'] = array(
 
 قد يتم عرض تحذير للسرية حول شهادة غير موقعة.',
 );
+
+/** Asturian (Asturianu)
+ * @author SPQRobin
+ */
+$wgBoardVoteMessages['ast'] = array(
+	'boardvote'         => "Eleiciones pal Conseyu d'Alministración de Wikimedia (Board of Trustees)",
+	'boardvote_blocked' => 'Sentímoslo, fuisti bloquiáu na to wiki. Los usuarios bloquiaos nun puen votar',
+
+);
+
 $wgBoardVoteMessages['bcl'] = array(
 	'boardvote_novotes'       => 'Mayô pang naboto.',
 	'boardvote_time'          => 'Oras',
@@ -1791,6 +1801,10 @@ $wgBoardVoteMessages['sr'] = $wgBoardVoteMessages['sr-ec'];
  */
 $wgBoardVoteMessages['stq'] = array(
 	'boardvote'              => 'Woalen tou dät Wikimedia-Kuratorium',
+	'boardvote_entry'        => '* [[meta:Board elections/2007/Candidates/de|Kandidoatenfoarstaalengen]]
+* [[{{ns:special}}:Boardvote/vote|Oustämme]]
+* [[{{ns:special}}:Boardvote/list|Bit nu ouroate Stämmen]]
+* [[{{ns:special}}:Boardvote/dump|Ferslöätelde Woaliendraage]]',
 	'boardvote_intro'        => '<blockquote>
 <p>
 Wäilkuumen tou ju fjoode Woal tou dät Wikimedia-Kuratorium, dät Ferwaltengsorgoan fon ju Wikimedia-Foundation. Der wäide träi Benutsere wääld, uum ju Community fon do Wikimediane in do ferscheedene Wikimedia-Projekte tou repräsentierjen. Disse träi Benutsere wäide foar n Tiedruum fon two Jiere wääld. Jo wollen deerbie hälpe, ju kuumende Gjuchte fon do Wikimedia-Projekte fäästtoulääsen, eenpeld un as Gruppe un jo repräsentierje <em>dien</em> Interessen un Belange. Jo wollen ieuwenske fuul uur Dingere uur do Iennoamen un Uutgoawen äntscheede.

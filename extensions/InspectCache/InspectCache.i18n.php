@@ -99,6 +99,21 @@ $messages['no'] = array(
 	'inspectcache-deleted' => 'Slettet mellomlagring',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'inspectcache'         => "Inspeccion de l'Amagatal",
+	'inspectcache-ok'      => 'Amodar',
+	'inspectcache-general' => 'Amagatal general',
+	'inspectcache-parser'  => 'Amagatal dels parsers',
+	'inspectcache-message' => 'Amagatal dels messatges',
+	'inspectcache-get'     => 'Obténer',
+	'inspectcache-delete'  => 'Suprimir',
+	'inspectcache-deleted' => 'Amagatal suprimit',
+
+);
+
 $messages['sk'] = array(
 	'inspectcache' => 'Inšpekcia vyrovnávacej pamäte',
 	'inspectcache-ok' => 'OK',#identical but defined

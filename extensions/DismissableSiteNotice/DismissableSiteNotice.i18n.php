@@ -24,6 +24,14 @@ $wgDismissableSiteNoticeMessages['ar'] = array(
 	'sitenotice_close' => 'إغلاق',
 );
 
+/** Asturian (Asturianu)
+ * @author SPQRobin
+ */
+$wgDismissableSiteNoticeMessages['ast'] = array(
+	'sitenotice_close' => 'desaniciar',
+
+);
+
 $wgDismissableSiteNoticeMessages['bn'] = array(
 	'sitenotice_close' => 'নোটিশ বন্ধ করুন',
 );

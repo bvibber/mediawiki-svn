@@ -380,6 +380,14 @@ $wgChemFunctions_Messages['sr-el'] = array(
 
 $wgChemFunctions_Messages['sr'] = $wgChemFunctions_Messages['sr-ec'];
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$wgChemFunctions_Messages['stq'] = array(
+	'chemicalsources' => 'Chemiske Wällen',
+
+);
+
 $wgChemFunctions_Messages['vi'] = array(
 	'chemicalsources' => 'Nguồn hóa học',
 	'ChemFunctions_ListPage' => 'Nguồn hóa học',

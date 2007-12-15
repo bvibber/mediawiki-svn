@@ -29,6 +29,15 @@ $wgSiteMatrixMessages['ar'] = array(
 	'sitematrix-project' => 'اسم المشروع، وصلة المشروع الداخلية ووصلة الإنترويكي',
 	'sitematrix-others' => 'مشاريع ويكيميديا الأخرى',
 );
+
+/** Asturian (Asturianu)
+ * @author SPQRobin
+ */
+$wgSiteMatrixMessages['ast'] = array(
+	'sitematrix' => 'Llista de wikis de Wikimedia',
+
+);
+
 $wgSiteMatrixMessages['bcl'] = array(
 	'sitematrix' => 'Lista kan mga Wikimedia wiki',
 	'sitematrix-language' => 'Tataramon',

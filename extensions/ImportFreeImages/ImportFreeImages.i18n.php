@@ -106,6 +106,23 @@ function efImportFreeImagesMessages() {
 			'importfreeimages_promptuserforfilename' => 'Skriv inn et målnavn for filen:',
 			'importfreeimages_returntoform' => 'Elle rklikk <a href="$1">her</a> for å gå tilbake til søkeresultatene',
 		),
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+		'oc' => array(
+			'importfreeimages'                       => "Importar d'Imatges Liures",
+			'importfreeimages_description'           => "Aquesta pagina vos permet de recercar propriament d'imatges jos licéncias dempuèi flickr e de los importar dins vòstre wiki.",
+			'importfreeimages_noapikey'              => "Avètz pas configurat vòstra Clau API Flickr. Per o far, obtengatz una clau API a partir d' [http://www.flickr.com/services/api/misc.api_keys.html aqueste ligam] e configuratz wgFlickrAPIKey dins ImportFreeImages.php.",
+			'importfreeimages_nophotosfound'         => "Cap de fòto es pas estada trobada a partir de vòstres critèris de recèrcas '$1', ensajatz tornamai.",
+			'importfreeimages_owner'                 => 'Autor',
+			'importfreeimages_importthis'            => 'l’importar',
+			'importfreeimages_next'                  => '$1 seguents',
+			'importfreeimages_filefromflickr'        => '$1 per l’utilizaire <b>[$2]</b> dempuèi flickr. URL d’origina',
+			'importfreeimages_promptuserforfilename' => 'Indicatz lo nom del fichièr de destinacion',
+			'importfreeimages_returntoform'          => "o, clicatz <a href='$1'>aicí</a> per tornar a vòstra lista de resultats.",
+
+),
 	);
 	return $messages;
 }

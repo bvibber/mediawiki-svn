@@ -46,3 +46,12 @@ $messages['nl'] = array(
 	'icon-badwidth' => 'Onjuiste breedte',
 
 );
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'icon-badimage' => 'Imatge corromput',
+	'icon-badwidth' => 'Largor erronèa',
+
+);

@@ -305,6 +305,15 @@ function efMakeBotMessages() {
 	'makebot-logentryrevoke'  => 'poisti botti-merkinnän tunnukselta [[$1]]',
 ),
 
+/** Fijian (Na Vosa Vakaviti)
+ * @author SPQRobin
+ */
+'fj' => array(
+	'makebot-username' => 'Yaca vakayagataki:',
+	'makebot-search'   => 'Lako',
+
+),
+
 'fo' => array(
 	'makebot-username'        => 'Brúkaranavn:',
 	'makebot-search'          => 'Far',

@@ -46,6 +46,15 @@ $allMessages = array(
 		'specialwhoiswatchingusage'   => 'Denne spesialsiden kan ikke brukes selvstendig. Bruk siden [[MediaWiki:Number of watching users pageview]] for å definere et inngangspunkt for denne spesialsiden.',
 	),
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+	'oc' => array(
+		'whoiswatching'               => 'Utilizaires agachant una pagina del wiki',
+		'specialwhoiswatchingthepage' => 'Utilizaires agachant %s',
+		'specialwhoiswatchingusage'   => "Aquesta pagina especiala pòt pas èsser utilizada sola. Passatz per [[MediaWiki:Number_of_watching_users_pageview]] per definir un punt d'entrada vèrs aquesta pagina especiala.",
+),
+
 	'pt' => array(
 		'whoiswatching'               => 'Quem Está a Vigiar uma página wiki',
 		'specialwhoiswatchingthepage' => 'Quem está a vigiar %s',

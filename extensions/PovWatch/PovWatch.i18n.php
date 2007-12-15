@@ -101,3 +101,29 @@ Un journal de surveillance des articles inscrits est disponible sur [[Special:Po
 	'povwatch_subscribe' => 'Souscrire',
 	'povwatch_added' => 'ajouté',
 );
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'povwatch_no_session'              => 'Zmylk: Formular njeda so straty datow dla wotesłać.',
+	'povwatch_already_subscribed'      => 'Sy PovWatch hižo abonował',
+	'povwatch_subscribed'              => 'Sy nětko PovWatch abonował',
+	'povwatch_not_subscribed'          => 'Njejsy PovWatch abonował, tohodla njemóžeš jón wotskazać.',
+	'povwatch_unsubscribed'            => 'Sy nětko PovWatch wotskazał',
+	'povwatch_invalid_title'           => 'Podaty titul je njepłaćiwy',
+	'povwatch_subscriber_list'         => '[[Special:PovWatch/subscribers|Lisćina abonentow]] steji k dispoziciji.',
+	'povwatch_subscriber_list_intro'   => '<strong>Lisćina abonentow</strong>',
+	'povwatch_not_allowed_subscribers' => 'Nimaš dowolnosć sej lisćinu abonentow PovWatch wobhladać.',
+	'povwatch_unknown_subpage'         => 'Njeznata podstrona.',
+	'povwatch_title'                   => 'Titul:',
+	'povwatch_comment'                 => 'Komentar protokolować:',
+	'povwatch_no_log'                  => 'Protokolowe zapiski njejsu.',
+	'povwatch_no_subscribers'          => 'Abonenća njejsu.',
+	'povwatch_unsubscribe_intro'       => 'Sy PovWatch abonował. Klikń na tłóčatko deleka, zo by jón wotskazał.',
+	'povwatch_unsubscribe'             => 'Wotskazać',
+	'povwatch_subscribe_intro'         => 'Njejsy PovWatch abonował. Klikń na tłóčatko deleka, zo by jón abonował.',
+	'povwatch_subscribe'               => 'Abonować',
+	'povwatch_added'                   => 'přidaty',
+
+);

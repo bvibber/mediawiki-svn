@@ -65,6 +65,15 @@ $1
 	'searchincategory'      => 'في التصنيف',
 );
 
+/** Asturian (Asturianu)
+ * @author SPQRobin
+ */
+$wgLuceneSearchMessages['ast'] = array(
+	'searchnumber'    => '<strong>Resultaos $1-$2 de $3</strong>',
+	'searchnoresults' => 'Sentímoslo, nun hebo coincidencies exautes pa la to busca.',
+
+);
+
 $wgLuceneSearchMessages['bcl'] = array(
 	'lucene-resultsize'     => '$1 ($2 mga tataramon)',
 	'searchdidyoumean'      => 'An gusto mo: "<a href="$1">$2</a>"?',

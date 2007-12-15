@@ -82,6 +82,19 @@ $3',
 	'latexdoc_get_pdf' => 'PDF wzać',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'latexdoc_no_text'         => 'L’article conten pas de tèxt. Impossible de crear DVI',
+	'latexdoc_cant_create_dir' => 'Impossible de crear lo repertòri temporari $1',
+	'latexdoc_cant_write'      => 'Impossible d’escriure dins lo fichièr $1',
+	'latexdoc_error'           => 'Error LaTeX Comanda : $1 Sortida : $2 $3',
+	'latexdoc_get_dvi'         => 'Obténer DVI',
+	'latexdoc_get_pdf'         => 'Obténer PDF',
+
+);
+
 $messages['ro'] = array(
 	'latexdoc_no_text' => 'Articolul nu conţine text, nu se poate genera DVI',
 	'latexdoc_cant_create_dir' => 'Directorul temporar "$1" nu poate fi creat',
