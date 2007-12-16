@@ -1,4 +1,4 @@
-<?php
+<?PHP
 
 global $wgHooks;
 $wgHooks['EditPage::showEditForm:initial'][] = 'WikiwygAlternateEdit' ;
@@ -7,11 +7,11 @@ $wgHooks['EditForm::AfterEdit:Form'][] = 'WikiwygEditTagCloud' ;
 
 $wgExtensionFunctions[] = 'registerWikiwygEditing';
 $wgExtensionCredits['other'][] = array(
-	'name' => 'WikiwygEditing',
-	'author' => 'Bartek Lapinski',
-	'version' => '1.0',
-	'url' => 'http://www.wikia.com',
-	'description' => 'MediaWiki integration of the Wikiwyg WYSIWYG wiki editor - for full page editing',
+    'name' => 'WikiwygEditing' ,
+    'author' => 'Bartek Lapinski' ,
+    'version' => 1.0 ,
+    'url' => 'http://www.wikia.com' ,
+    'description' => 'Mediawiki integration of the Wikiwyg WYSIWYG wiki editor - for full page editing '
 );
 
 function registerWikiwygEditing () {
@@ -42,14 +42,14 @@ function WikiwygAlternateEdit ($epage) {
 			    'wikiwyg_editing_here' => 'here' ,
 			    'wikiwyg_editing_this' => 'this'
 			 )
-		    );
+		    ); 
 
     /* in-page disabled automatically disables this loading */
     if ( wfGetDependingOnSkin () == 0 ) {
 	return true ;
     }
     if (! isset($wgWikiwygPath)) {
-	$wgWikiwygPath = $wgScriptPath . "/extensions/wikiwyg";
+	$wgWikiwygPath = $wgScriptPath . "/extensions/wikiwyg";	
     }
     if (! isset($wgWikiwygJsPath)) {
         $wgWikiwygJsPath = "$wgWikiwygPath/share/MediaWiki";
@@ -87,7 +87,7 @@ function WikiwygAlternateEdit ($epage) {
 	$nocloud_link = "<a href=\"".$fixed_art_path.$epage->mArticle->mTitle->getPrefixedUrl()."?action=edit&categoryCloud=off\" >".wfMsg ('wikiwyg_editing_this')."</a>" ;
     } else {
 	$nocloud_link = "<a href=\"".$fixed_art_path.$epage->mArticle->mTitle->getPrefixedUrl()."?action=edit&categoryCloud=on\" >".wfMsg ('wikiwyg_editing_this')."</a>" ;
-	$subtitle_text .=  wfMsg('wikiwyg_use_cloud', $nocloud_link) ;
+	$subtitle_text .=  wfMsg('wikiwyg_use_cloud', $nocloud_link) ; 
     }
 
     $wgOut->addHTML ("<div id=\"wikiwyg_cancel_form\" style=\"display:none;\">
@@ -114,7 +114,7 @@ function WikiwygHideTextarea ($epage, $hidden) {
                 $wgOut->addHTML ("
 			<noscript>
 				<style type=\"text/css\">
-					#wpTextbox1 {
+					#wpTextbox1 {						
 						display: block !important ;
 					}
 					#WikiwygEditingLoadingMesg, #wikiwyg_lower_wrapper {
@@ -176,7 +176,9 @@ function WikiwygEditTagCloud ($epage) {
                 </table>
 		</div>
 		<input type=\"hidden\" name=\"wpCategoryTagCount\", id=\"category_tag_count\" value=\"$num\" />
-	    ") ;
+	    ") ;	    
     }
     return true ;
 }
+
+?>
