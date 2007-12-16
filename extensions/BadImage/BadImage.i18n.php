@@ -142,11 +142,15 @@ function efBadImageMessages() {
 	'badimages-log-remove' => 'entfernte [[$1]] von der Liste unerwünschter Bilder',
 ),
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
 'el' => array(
-	'badimages' => 'Κατάλογος κακών εικόνων',
-	'badimages-added' => '$1 έχει προστεθεί στη λίστα.',
-	'badimages-count' => 'Υπάρχουν \'\'\'$1\'\'\' εικόνες στον κατάλογο των κακών εικόνων.',
-	'badimages-name' => 'Όνομα:',
+	'badimages'          => 'Κατάλογος κακών εικόνων',
+	'badimages-added'    => '$1 έχει προστεθεί στη λίστα.',
+	'badimages-count'    => "Υπάρχουν '''$1''' εικόνες στον κατάλογο των κακών εικόνων.",
+	'badimages-name'     => 'Όνομα:',
+	'badimages-reason'   => 'Λόγος:',
 	'badimages-log-name' => 'Κατάλογος κακών εικόνων',
 ),
 
@@ -158,26 +162,29 @@ function efBadImageMessages() {
 	'badimages-remove-btn' => 'Esborral',
 ),
 
-/* Finnish (Niklas Laxström) */
+/** Finnish (Suomi)
+ * @author Nike
+ */
 'fi' => array(
-	'badimages' => 'Kiellettyjen kuvien luettelo',
-	'badimages-add-btn' => 'Lisää',
-	'badimages-added' => '”$1” lisättiin luetteloon.',
-	'badimages-count' => "Luettelossa on '''$1''' kuvaa.",
-	'badimages-name' => 'Nimi:',
-	'badimages-not-added' => 'Kuvan lisääminen epäonnistui.',
-	'badimages-not-removed' => 'Kuvan poistaminen epäonnistui.',
-	'badimages-reason' => 'Syy:',
-	'badimages-remove' => '(poista)',
-	'badimages-remove-btn' => 'Poista',
+	'badimages'                => 'Kiellettyjen kuvien luettelo',
+	'badimages-add-btn'        => 'Lisää',
+	'badimages-added'          => '”$1” lisättiin luetteloon.',
+	'badimages-count'          => "Luettelossa on '''$1''' kuvaa.",
+	'badimages-name'           => 'Nimi',
+	'badimages-not-added'      => 'Kuvan lisääminen epäonnistui.',
+	'badimages-not-removed'    => 'Kuvan poistaminen epäonnistui.',
+	'badimages-reason'         => 'Syy',
+	'badimages-remove'         => '(poista)',
+	'badimages-remove-btn'     => 'Poista',
 	'badimages-remove-confirm' => 'Varmista, että haluat poistaa kuvan ”$1” luettelosta:',
-	'badimages-removed' => '”$1” poistettiin luettelosta.',
-	'badimages-subheading' => 'Kielletyt kuvat',
-	'badimages-unprivileged' => '(Sinulla ei ole oikeuksia muuttaa luetteloa)',
-	'badimages-log-name' => 'Kielletyt kuvat',
-	'badimages-log-header' => 'Tämä on loki muutoksista kiellettyjen kuvien luetteloon.',
-	'badimages-log-add' => 'lisäsi kuvan [[$1]] kiellettyjen kuvien luetteloon',
-	'badimages-log-remove' => 'poisti kuvan [[$1]] kiellettyjen kuvien luettelosta',
+	'badimages-removed'        => '”$1” poistettiin luettelosta.',
+	'badimages-subheading'     => 'Kielletyt kuvat',
+	'badimages-unprivileged'   => '(Sinulla ei ole oikeuksia muuttaa luetteloa)',
+	'badimages-log-name'       => 'Kielletyt kuvat',
+	'badimages-log-header'     => 'Tämä on loki muutoksista kiellettyjen kuvien luetteloon.',
+	'badimages-log-add'        => 'lisäsi kuvan [[$1]] kiellettyjen kuvien luetteloon',
+	'badimages-log-remove'     => 'poisti kuvan [[$1]] kiellettyjen kuvien luettelosta',
+	'badimages-page'           => '{{ns:help}}:Kielletyt kuvat',
 ),
 
 /* French (Bertrand Grondin) */

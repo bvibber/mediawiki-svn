@@ -150,6 +150,13 @@ $wgDeletedContribsMessages['la'] = array(
 	'deletedcontributions' => 'Conlationes usoris deletae',
 );
 
+/** Lozi (Silozi)
+ * @author Ooswesthoesbes
+ */
+$wgDeletedContribsMessages['loz'] = array(
+	'deletedcontributions' => 'Afina di sebelu bye sa afi kulobala',
+);
+
 $wgDeletedContribsMessages['lt'] = array(
 	'deletedcontributions' => 'Ištrintas naudotojo indėlis',
 );

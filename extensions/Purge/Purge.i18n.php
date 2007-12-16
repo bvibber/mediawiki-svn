@@ -40,3 +40,10 @@ $messages['nl'] = array(
 $messages['no'] = array(
 	'purge' => 'gjenoppfrisk',
 );
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'purge' => 'purgar',
+);

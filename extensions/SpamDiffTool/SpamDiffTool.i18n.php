@@ -134,3 +134,23 @@ $messages['nl'] = array(
 	'spamdifftool_block' => 'Blokkeren:',
 	'spamdifftool_submit_buttom' => 'OK',
 );
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'spamdifftool'                  => 'Gestion de la Lista Negra dels Spams',
+	'spamdifftool_cantedit'         => 'O planhèm - Avètz pas la permission d’editar la Lista Negra dels Spams.',
+	'spamdifftool_notext'           => "I a pas de tèxt d'ajustar a la Lista Negra dels Spams. Clicatz <a href='$1'>aicí</a> per contunhar.",
+	'spamdifftool_confirm'          => "Confirmatz que volètz ajustar aquestas entradas dins la Lista Negra dels Spams. (Clicatz <a href='$1' target='new'>aicí</a> per senhalar tot problèma.)",
+	'spamdifftool_summary'          => 'Ajustat a la Lista Negra dels Spams',
+	'spamdifftool_urls_detected'    => "Las URLs seguentas son estadas detectadas dins aquestas edicions. Qualas son las que volètz ajustar a la Lista Negra dels Spams ? Aquestas opcions van de las mai restrictivas vèrs las mens restrictivas. Lo blocatge d’un nom de domeni entièr blocarà totes los ligams provenent d'aqueste.<br/><br/>Asseguratz-vos de blocar pas de domenis entièrs que detenon cèrts comptaires d'utilizaires tals coma blogpost.com, geocities.com, etc.",
+	'spamdifftool_no_urls_detected' => "Cap d'URL es pas estada detectada. Clicatz <a href='$1'>aicí</a> per tornar en rèire",
+	'spamdifftool_spam_link_text'   => 'ajustar als spams',
+	'spamdifftool_option_domain'    => 'tot dempuèi aqueste domeni',
+	'spamdifftool_option_subdomain' => 'tot dempuèi aqueste sosdomeni',
+	'spamdifftool_option_directory' => 'aqueste sosdomeni e aqueste repertòri',
+	'spamdifftool_option_none'      => 'Nonrés',
+	'spamdifftool_block'            => 'Blocar :',
+	'spamdifftool_submit_buttom'    => 'Sometre',
+);

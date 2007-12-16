@@ -187,16 +187,28 @@ $SpecialFormMessages =array(
 		'formsaveerrortext' => 'Er is een onbekende fout opgetreden bij het opslaan van pagina \'$1\'.',
 	),
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 	'no' => array(
-		'form' => 'Skjema',
-		'formnoname' => 'Intet skjemanavn',
-		'formnonametext' => 'Du må oppgi et skjemanavn, som «Special:Form/Skjemanavn».',
-		'formbadname' => 'Ugyldig skjemanavn',
-		'formbadnametext' => 'Det er ingen skjema ved det navnet.',
-		'formpattern' => '$1-skjema',
-		'formtitlepattern' => 'Legger til nytt $1',
-		'formsave' => 'Lagre',
-		'formindexmismatch' => 'Dette skjemaet har upassende navnemønstre og maler som starter på indeks $1.',
+		'form'                         => 'Skjema',
+		'formnoname'                   => 'Intet skjemanavn',
+		'formnonametext'               => 'Du må oppgi et skjemanavn, som «Special:Form/Skjemanavn».',
+		'formbadname'                  => 'Ugyldig skjemanavn',
+		'formbadnametext'              => 'Det er ingen skjema ved det navnet.',
+		'formpattern'                  => '$1-skjema',
+		'formtitlepattern'             => 'Legger til nytt $1',
+		'formsave'                     => 'Lagre',
+		'formindexmismatch'            => 'Dette skjemaet har upassende navnemønstre og maler som starter på indeks $1.',
+		'formarticleexists'            => 'Siden eksisterer',
+		'formarticleexiststext'        => 'Siden [[$1]] eksisterer allerede.',
+		'formbadpagename'              => 'Ugyldig sidenavn',
+		'formbadpagenametext'          => 'Skjemadataene du skrev inn utgjør et ugyldig sidenavn, «$1».',
+		'formrequiredfieldpluralerror' => 'Feltene $1 er påkrevde for dette skjemaet. Vennligst fyll dem inn.',
+		'formrequiredfielderror'       => 'Feltet $1 er påkrevd for dette skjemaet. Vennligst fyll det inn.',
+		'formsavesummary'              => 'Ny side vha. [[Special:Form/$1]]',
+		'formsaveerror'                => 'Feil under skjemalagring',
+		'formsaveerrortext'            => 'Det var en ukjent feil under lagring av siden ‘$1’.',
 	),
 
 	'oc' => array(

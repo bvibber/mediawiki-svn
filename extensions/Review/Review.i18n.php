@@ -261,3 +261,43 @@ $messages['nl'] = array(
 	'review_rating' => 'Waardering',
 	'review_comment' => 'Opmerking',
 );
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'review_sidebar_title'                                   => 'Revision',
+	'review_topics'                                          => "# Lista de subjèctes per l'extension « review » de MediaWiki. 
+# .... 
+# Cada subjècte es definit per una lista de donadas separadas per « : » (tota autra lista es ignorada).
+# ....
+# Las donadas dins l'òrdre son : ## identificant numeric (>0) ## nom ## espandida (>1) ## significacion de la valor mai pichona (ex. « marrit ») ## significacion de la valor mai granda (ex. « bon ») # .... # Per exemple, se cal solament causir « non » o « òc », l'espandida val 2. # Per exemple, se cal causir entre « mejancièr », « marrit », « de melhorar », « plan » o « fòrt plan », l'espandida val 5. # .... 1:Qualitat:5:marrit:bon 2:Prèst per 1.0:2:non:òc",
+	'review_topic_page'                                      => 'Subjèctes a revision',
+	'review_sidebar_explanation'                             => 'La boita de marcar a esquèrra tota significa totjorn « sens opinion ».',
+	'review_save'                                            => 'Salvagardar la revision',
+	'review_your_review'                                     => "Vòstra revision d'aquesta pagina o revision :",
+	'review_sidebar_you_have_other_reviews_for_this_article' => "Ja avètz revisat las autras versions d'aquesta pagina. Vòstras autras evaluacions seràn fusionadas amb aquesta se avètz seleccionat « sens opinion ».",
+	'review_page_link'                                       => 'Estatisticas de revisions',
+	'review_sidebar_final'                                   => "Per veire las donadas de revision de la vista d'aquesta pagina, anatz a $1",
+	'review_for_page'                                        => 'Revision per la pagina « $1 »',
+	'review_for_user'                                        => 'Revision per contributor « $1 »',
+	'review_error'                                           => 'Quicòm es copat!',
+	'review_no_reviews_for_page'                             => 'I a pas de revisions per « $1 ».',
+	'review_statistic_cell'                                  => 'Mejana : $1 de $2<br/>(contributors : $4 inscriches, $5 anonims)',
+	'review_version_statistic_cell'                          => '$1 de $2',
+	'review_version_reviews_link'                            => '<small>(revisions de version)</small>',
+	'review_concerns_page'                                   => 'Aquesta revision es a prepaus de la pagina « $1 ».',
+	'review_concerns_user'                                   => 'Es a prepaus de las revisions fachas pel contributor « $1 ».',
+	'review_user_reviews'                                    => '<small>(revisions per aqueste contributor)</small>',
+	'review_user_page_list'                                  => 'Lo contributor a revisat las paginas seguentas :',
+	'review_user_details_link'                               => '(detalhs)',
+	'review_has_been_stored'                                 => "<font id='review_has_been_stored'>Vòstra revision es estada salvagardada.</font>",
+	'revision_review_this_page_version_link'                 => 'Revisar aquesta version de la pagina',
+	'review_page_review'                                     => 'Revision de la pagina « $1 »',
+	'review_blocked'                                         => 'Sètz blocat(-ada).',
+	'review_wrong_namespace'                                 => 'Las paginas dins aqueste espaci de nom pòdon pas èsser revisadas.',
+	'review_topic'                                           => 'Subjècte',
+	'review_no_opinion'                                      => 'Sens opinion',
+	'review_rating'                                          => 'Evaluacion',
+	'review_comment'                                         => 'Comentari',
+);

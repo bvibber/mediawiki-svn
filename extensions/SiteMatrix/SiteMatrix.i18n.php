@@ -35,7 +35,6 @@ $wgSiteMatrixMessages['ar'] = array(
  */
 $wgSiteMatrixMessages['ast'] = array(
 	'sitematrix' => 'Llista de wikis de Wikimedia',
-
 );
 
 $wgSiteMatrixMessages['bcl'] = array(
@@ -204,6 +203,14 @@ $wgSiteMatrixMessages['li'] = array(
 $wgSiteMatrixMessages['lo'] = array(
 	"sitematrix" => "ລາຍການ wiki ໃນ Wikimedia",
 );
+
+/** Lozi (Silozi)
+ * @author Ooswesthoesbes
+ */
+$wgSiteMatrixMessages['loz'] = array(
+	'sitematrix' => 'Mukoloko di wiki di Wikimedia',
+);
+
 $wgSiteMatrixMessages['lt'] = array(
 	"sitematrix" => "Wikimedia projektų sąrašas",
 );
@@ -219,9 +226,18 @@ $wgSiteMatrixMessages['nl'] = array(
 	'sitematrix-project' => 'Naam van het project, interprojectlink en interwikilink',
 	'sitematrix-others' => 'Andere projecten van Wikimedia',
 );
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author לערי ריינהארט
+ */
 $wgSiteMatrixMessages['no'] = array(
-	'sitematrix' => 'Liste over Wikimedia-prosjekter',
+	'sitematrix'          => 'Liste over Wikimedia-prosjekter',
+	'sitematrix-language' => 'Språk',
+	'sitematrix-project'  => 'Prosjektets navn, interprosjektlenke og interwikilenke',
+	'sitematrix-others'   => 'Andre Wikimedia-prosjekter',
 );
+
 $wgSiteMatrixMessages['oc'] = array(
 	'sitematrix' => 'Lista dels wikis Wikimedia',
 	'sitematrix-language' => 'Lenga',

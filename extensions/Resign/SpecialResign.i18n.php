@@ -53,6 +53,13 @@ Wichtig: '''Dieser Schritt ist unwiderruflich!''' Du musst einen Bürokraten ode
 	'resign-logentry'  => 'gab die Berechtigung(en) $2 zurück',
 ),
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+'el' => array(
+	'resign-reason' => 'Λόγος:',
+),
+
 'ext' => array(
 	'resign-reason' => 'Razón:',
 ),

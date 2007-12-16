@@ -92,7 +92,6 @@ $messages['oc'] = array(
 	'latexdoc_error'           => 'Error LaTeX Comanda : $1 Sortida : $2 $3',
 	'latexdoc_get_dvi'         => 'Obténer DVI',
 	'latexdoc_get_pdf'         => 'Obténer PDF',
-
 );
 
 $messages['ro'] = array(

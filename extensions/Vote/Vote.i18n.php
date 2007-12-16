@@ -333,6 +333,13 @@ Gioanin|Gioanin',
 	'vote-invalid-choice' => 'Musíte vybrať jednu z dostupných možností.',
 ),
 
+/** Albanian (Shqip)
+ * @author Ergon
+ */
+'sq' => array(
+	'vote' => 'Voto',
+),
+
 /* Sundanese (Kandar via BetaWiki) */
 'su' => array(
 	'vote-header' => 'Anjeun bisa milih \'\'\'Supreme Overlord of the World\'\'\' di dieu!',

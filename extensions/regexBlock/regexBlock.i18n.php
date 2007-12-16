@@ -101,8 +101,12 @@ $messages['ar'] = array(
 	'regexblock-view-time' => 'في $1',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
 $messages['el'] = array(
 	'regexblock-stats-username' => 'Για $1',
+	'regexblock-view-reason'    => 'Λόγος: $1',
 );
 
 $messages ['fr'] = array(
@@ -293,4 +297,54 @@ $messages['nl'] = array(
 	'regexblock-view-empty'           => 'De lijst van geblokkeerde namen en IP-adressen is leeg.',
 	'regexblock-view-time'            => 'op $1',
 
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'regexblock'                      => 'Expressions regularas per blocar un utilizaire o una IP',
+	'regexblock-page-title'           => 'Blocatge d’un nom per una expression regulara',
+	'regexblockstats'                 => 'Estatisticas suls blocatges per expressions regularas',
+	'regexblock-reason-ip'            => 'Aquesta adreça IP es apartat de tota edicon per causa de vandalisme o autres faches analògs per vos o qualqu’un d’autre partejant vòstra adreça IP. Se sètz persuadit(-ida) que s’agís d’una error, $1',
+	'regexblock-reason-name'          => 'Aqueste utilizaire es apartat de tota edicion per causa de vandalisme o autres faches analògs. Se sètz persuadit(-ida) que s’agís d’una error, $1.',
+	'regexblock-reason-regex'         => "Aqueste utilizaire es apartat de tota edicion per causa de vandalisme o autres faches analògs per un utilizaire qu'a un nom similar. Creatz un autre compte o $1 per senhalar lo problèma.",
+	'regexblock-help'                 => "Utilizatz lo formulari çaijós per blocar l’accès en escritura una adreça IP o un nom d’utilizaire. Aquò deu èsser fach unicament per evitar tot vandalisme e conformadament a las règlas prescrichas sul projècte. ''Aquesta pagina vos autoriza quitament a blocar d'utilizaires pas enregistrats e permet tanben de blocar d'utilizaires que presentan de noms similars. Per exemple, « Tèst » serà blocada al meteis temps que « Tèst 2 » etc. Tanben podètz blocar d'adreças IP entièras, çò que significa que degun que trabalha pas dempuèi elas poirà pas editar de paginas. Nòta : d'adreças IP parcialas seràn consideradas coma de noms d’utilizaire al moment del blocatge. Se cap de motiu es pas indicat en comentari, un motiu per defaut serà indicat.''",
+	'regexblock-page-title-1'         => 'Blocatge d’una adreça utilizant una expression regulara',
+	'regexblock-unblock-success'      => 'Lo desblocatge a capitat',
+	'regexblock-unblock-log'          => "L’utilizaire o l’adreça IP '''$1''' es estat desblocat.",
+	'regexblock-unblock-error'        => 'Error de deblocatge de $1. L’utilizaire existís probablament pas.',
+	'regexblock-form-username'        => 'Adreça IP o Utilizaire :',
+	'regexblock-form-reason'          => 'Motiu :',
+	'regexblock-form-expiry'          => 'Expiracion :&#160;',
+	'regexblock-form-match'           => 'Tèrme exacte',
+	'regexblock-form-account-block'   => 'Interdire la creacion d’un compte novèl.',
+	'regexblock-form-submit'          => 'Blocar&nbsp;aqueste&nbsp;Utilizaire',
+	'regexblock-block-log'            => "L’Utilizaire o l’adreça IP '''$1''' es estat blocat.",
+	'regexblock-block-success'        => 'Lo blocatge a capitat',
+	'regexblock-form-submit-empty'    => 'Indicatz un nom d’utilizaire o una adreça IP de blocar.',
+	'regexblock-form-submit-regex'    => 'Expression regulara incorrècta.',
+	'regexblock-form-submit-expiry'   => 'Precisatz un periòde d’expiracion.',
+	'regexblock-already-blocked'      => '$1 ja es blocat.',
+	'regexblock-stats-title'          => 'Estatisticas dels blocatges per expressions regularas',
+	'regexblock-stats-username'       => 'Per $1',
+	'regexblock-stats-times'          => 'es estat blocat lo',
+	'regexblock-stats-logging'        => 'enregistrat dempuèi l’adreça',
+	'regexblock-currently-blocked'    => 'Adreças actualament blocadas :',
+	'regexblock-view-blocked'         => 'Veire los blocatges per :',
+	'regexblock-view-all'             => 'Totes',
+	'regexblock-view-go'              => 'Amodar',
+	'regexblock-view-match'           => '(tèrme exacte)',
+	'regexblock-view-regex'           => '(expression regulara)',
+	'regexblock-view-account'         => '(creacion dels comptes blocada)',
+	'regexblock-view-reason'          => 'motiu : $1',
+	'regexblock-view-reason-default'  => 'cap de motiu indicat',
+	'regexblock-view-block-infinite'  => 'blocatge permanent',
+	'regexblock-view-block-temporary' => 'expira lo',
+	'regexblock-view-block-expired'   => 'EXPIRAT lo',
+	'regexblock-view-block-by'        => 'blocat per',
+	'regexblock-view-block-unblock'   => 'desblocar',
+	'regexblock-view-stats'           => '(estatisticas)',
+	'regexblock-view-empty'           => 'La lista dels utilizaires e de las adreças IP blocats es voida.',
+	'regexblock-view-time'            => 'lo $1',
 );

@@ -123,6 +123,16 @@ $messages['br'] = array(
 	'math_noblahtex'                        => 'Dibosupl erounit Blahtex, a zlefe bezañ e $1',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'math_noblahtex'             => 'Blahtexin suorittaminen epäonnistui. Sen pitäisi sijaita kohteessa $1.',
+	'math_CannotChangeDirectory' => 'Työhakemiston vaihtaminen epäonnistui.',
+	'math_CannotCreateTexFile'   => 'Tex-tiedoston luominen epäonnistui.',
+	'math_UnrecognisedCommand'   => 'Tunnistamaton komento ”$1”',
+);
+
 $messages['fr'] = array(
 	'math_noblahtex'                        => 'Ne peut exécuter blahtex, qui devrait être à $1',
 	'math_AmbiguousInfix'                   => 'La position de « $1 » est ambigue (ajouter des balises additionnelles « { ... } » peut lever l\'ambiguité)',

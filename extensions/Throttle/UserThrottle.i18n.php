@@ -36,3 +36,11 @@ $messages['nl'] = array(
 	'acct_creation_global_soft_throttle_hit' => 'Het aanmaken van gebruikers is automatisch geblokkeerd voor enkele ogenblikken door een ongebruikelijk hoog aantal recente aanmeldingen. Gelieve even te wachten en probeer dan opnieuw.',
 	'acct_creation_global_hard_throttle_hit' => 'Het aanmaken van gebruikers is automatisch geblokkeerd voor enkele seconden om een overvoed aan registraties te verminderen. Gelieve even te wachten en klik dan op \'herladen\' in uw browser om u opnieuw proberen te registreren.',
 );
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Kontoopretting har blitt slått av automatisk for et øyeblikk på grunn av et uvanlig høyt antall innloggingsforsøk. Vent noen minutter for å prøve igjen.',
+	'acct_creation_global_hard_throttle_hit' => 'Kontoopretting har blitt slått av automatisk i noen sekunder for å redusere masseregistreringsangrep. Vent en liten stund og trykk «oppdater» i nettleseren din for å prøve igjen.',
+);

@@ -181,17 +181,23 @@ $allMessages = array(
 		'passwordreset-success' => 'Passordet for brukeren «$1» har blitt resatt.',
 	),
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 	'oc' => array(
-		'passwordreset' => 'Remesa a zèro del senhal',
-		'passwordreset-invalidusername' => 'Nom d\'utilizaire desconegut',
-		'passwordreset-emptyusername' => 'Nom d\'utilizaire void',
-		'passwordreset-nopassmatch' => 'Los senhals qu\'avètz picats son pas identics.',
-		'passwordreset-badtoken' => 'Token de modificacion desconegut',
-		'passwordreset-username' => 'Nom d\'utilizaire',
-		'passwordreset-newpass' => 'Senhal novèl',
-		'passwordreset-confirmpass' => 'Confirmatz lo senhal',
-		'passwordreset-submit' => 'Remesa a zèro del senhal',
-		'passwordreset-success' => 'Lo senhal es estat remés a zèro per lo \'\'user_id\'\' $1.',
+		'passwordreset'                 => 'Remesa a zèro del senhal',
+		'passwordreset-invalidusername' => "Nom d'utilizaire desconegut",
+		'passwordreset-emptyusername'   => "Nom d'utilizaire void",
+		'passwordreset-nopassmatch'     => "Los senhals qu'avètz picats son pas identics.",
+		'passwordreset-badtoken'        => 'Token de modificacion desconegut',
+		'passwordreset-username'        => "Nom d'utilizaire",
+		'passwordreset-newpass'         => 'Senhal novèl',
+		'passwordreset-confirmpass'     => 'Confirmatz lo senhal',
+		'passwordreset-submit'          => 'Remesa a zèro del senhal',
+		'passwordreset-success'         => "Lo senhal es estat remés a zèro per lo ''user_id'' $1.",
+		'passwordreset-disableuser'     => "Desactivar lo compte d'utilizaire ?",
+		'passwordreset-disablesuccess'  => "Compte d'utilizaire desactivat (user_id : $1)",
+		'passwordreset-accountdisabled' => 'Aqueste compte es estat desactivat.',
 	),
 
 	'pl' => array(

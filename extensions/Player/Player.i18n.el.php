@@ -10,14 +10,18 @@
  * @licence GNU General Public Licence 2.0 or later
  */
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
 $messages = array(
-	'player' => 'Παίκτης',
-	'player-title' => 'Παίκτης',
-	'player-playertitle' => 'Παίκτης: $1',
-	'player-file' => 'Όνομα αρχείου',
-	'player-imagepage-header' => '<h1>$1</h1>',#identical but defined
-	'player-not-found' => 'το αρχείο δεν βρέθηκε',
-	'player-goto-player' => 'Παίκτης',
-	'player-goto-page' => 'Σελίδα',
-	'player-goto-file' => 'Αρχείο',
+	'player'                  => 'Παίκτης',
+	'player-title'            => 'Παίκτης',
+	'player-playertitle'      => 'Παίκτης: $1',
+	'player-file'             => 'Όνομα αρχείου',
+	'player-imagepage-header' => '<h1>$1</h1>',
+	'player-not-found'        => 'το αρχείο δεν βρέθηκε',
+	'player-invalid-title'    => 'άκυρος τίτλος',
+	'player-goto-player'      => 'Παίκτης',
+	'player-goto-page'        => 'Σελίδα',
+	'player-goto-file'        => 'Αρχείο',
 );

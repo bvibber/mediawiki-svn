@@ -53,5 +53,4 @@ $messages['nl'] = array(
 $messages['oc'] = array(
 	'icon-badimage' => 'Imatge corromput',
 	'icon-badwidth' => 'Largor erronèa',
-
 );

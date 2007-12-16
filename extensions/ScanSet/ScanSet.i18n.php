@@ -82,3 +82,11 @@ $messages['nl'] = array(
 	'scanset_prev'                      => '&lt; Vorige',
 
 );
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'scanset_next' => 'Seguent &gt;',
+	'scanset_prev' => '&lt; Precedent',
+);

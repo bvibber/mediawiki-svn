@@ -66,7 +66,6 @@ $messages = array(
 'ast' => array(
 	'already_sysop'      => 'Esti usuariu yá ye un alministrador',
 	'already_bureaucrat' => 'Esti usuariu yá ye un burócrata',
-
 ),
 
 'az' => array(

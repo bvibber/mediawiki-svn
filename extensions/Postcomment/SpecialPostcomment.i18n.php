@@ -118,3 +118,17 @@ $messages['no'] = array(
 	'postcomment_replyto' => 'Svar på $1',
 	'postcomment_nopostingtoadd' => 'Ingen postinger å legge til.',
 );
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'postcomment_discussionprotected'      => 'La pagina de discussion es estada protegida en escritura.',
+	'postcomment_notloggedin'              => 'Sètz pas identificat(-ada).',
+	'postcomment_youareloggedinas'         => 'Sètz pas identificat(-ada) en tant que $1.',
+	'postcomment_addcommentdiscussionpage' => 'Ajustatz un comentari sus aquesta pagina de discussion',
+	'postcomment_leavemessagefor'          => 'Daissatz un messatge per $1',
+	'postcomment_said'                     => 'a dich',
+	'postcomment_invalidrequest'           => 'Requèsta invalida',
+	'postcomment_replyto'                  => 'Respondre a $1',
+);

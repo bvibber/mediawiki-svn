@@ -181,7 +181,6 @@ $wgBoardVoteMessages['ar'] = array(
 $wgBoardVoteMessages['ast'] = array(
 	'boardvote'         => "Eleiciones pal Conseyu d'Alministración de Wikimedia (Board of Trustees)",
 	'boardvote_blocked' => 'Sentímoslo, fuisti bloquiáu na to wiki. Los usuarios bloquiaos nun puen votar',
-
 );
 
 $wgBoardVoteMessages['bcl'] = array(

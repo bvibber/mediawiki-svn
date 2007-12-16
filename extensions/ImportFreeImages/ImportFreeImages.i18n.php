@@ -121,8 +121,7 @@ function efImportFreeImagesMessages() {
 			'importfreeimages_filefromflickr'        => '$1 per l’utilizaire <b>[$2]</b> dempuèi flickr. URL d’origina',
 			'importfreeimages_promptuserforfilename' => 'Indicatz lo nom del fichièr de destinacion',
 			'importfreeimages_returntoform'          => "o, clicatz <a href='$1'>aicí</a> per tornar a vòstra lista de resultats.",
-
-),
+		),
 	);
 	return $messages;
 }

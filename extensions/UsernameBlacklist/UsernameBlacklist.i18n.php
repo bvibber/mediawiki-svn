@@ -47,7 +47,6 @@ function efUsernameBlacklistMessages( $single = false ) {
 'ast' => array(
 	'blacklistedusername'     => "Nome d'usuariu na llista prieta",
 	'blacklistedusernametext' => "El nome d'usuariu qu'escoyisti ta na [[MediaWiki:Usernameblacklist|llista prieta de nomes d'usuariu]]. Por favor, escueyi otru nome.",
-
 ),
 
 'bcl' => array(

@@ -107,15 +107,22 @@ Un journal de surveillance des articles inscrits est disponible sur [[Special:Po
  */
 $messages['hsb'] = array(
 	'povwatch_no_session'              => 'Zmylk: Formular njeda so straty datow dla wotesłać.',
+	'povwatch_not_allowed_push'        => 'Njejsy administrator za PovWatch, njemóžeš nastawki do wobkedźbowankow sunyć.',
 	'povwatch_already_subscribed'      => 'Sy PovWatch hižo abonował',
 	'povwatch_subscribed'              => 'Sy nětko PovWatch abonował',
 	'povwatch_not_subscribed'          => 'Njejsy PovWatch abonował, tohodla njemóžeš jón wotskazać.',
 	'povwatch_unsubscribed'            => 'Sy nětko PovWatch wotskazał',
 	'povwatch_invalid_title'           => 'Podaty titul je njepłaćiwy',
+	'povwatch_pushed'                  => '[[$1]] bu wuspěšnje do wobkedźbowankow wužiwarja $2 sunjeny.',
+	'povwatch_intro'                   => 'PovWatch je słužba, kotraž dowola zwadne nastawki diskretnje do wobkedźbowankow abonowacych administratorow sunyć.
+
+Protokol aktualnych wobkedźbowankow steji na [[Special:PovWatch/log]] k dispoziciji.',
 	'povwatch_subscriber_list'         => '[[Special:PovWatch/subscribers|Lisćina abonentow]] steji k dispoziciji.',
 	'povwatch_subscriber_list_intro'   => '<strong>Lisćina abonentow</strong>',
 	'povwatch_not_allowed_subscribers' => 'Nimaš dowolnosć sej lisćinu abonentow PovWatch wobhladać.',
 	'povwatch_unknown_subpage'         => 'Njeznata podstrona.',
+	'povwatch_push'                    => 'Sunyć',
+	'povwatch_push_intro'              => 'Wužij formular deleka, zo by nastawki do wobkedźbowankow abonowacych wužiwarjow sunyli. Prošu bjer na kedźbu z pisanjom titula: samo njeksistowace titule hodźa so přidać a njeje žana móžnosć titul wotstronić, kotryž bu přesunjeny.',
 	'povwatch_title'                   => 'Titul:',
 	'povwatch_comment'                 => 'Komentar protokolować:',
 	'povwatch_no_log'                  => 'Protokolowe zapiski njejsu.',
@@ -125,5 +132,35 @@ $messages['hsb'] = array(
 	'povwatch_subscribe_intro'         => 'Njejsy PovWatch abonował. Klikń na tłóčatko deleka, zo by jón abonował.',
 	'povwatch_subscribe'               => 'Abonować',
 	'povwatch_added'                   => 'přidaty',
+);
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'povwatch'                         => 'Susvelhança de las guèrras d’edicions',
+	'povwatch_no_session'              => 'Error : Impossible de sometre lo formulari en seguida de la pèrda de las donadas de la session.',
+	'povwatch_not_allowed_push'        => 'Sètz pas un administrator per la susvelhança de las guèrras d’edicion. Podètz pas ajustar los articles dins la lista correspondenta.',
+	'povwatch_already_subscribed'      => 'Ja sètz inscrich per la susvelhança de las guèrras d’edicion.',
+	'povwatch_subscribed'              => 'Ara sètz inscrich per la susvelhança de las guèrras d’edicion.',
+	'povwatch_not_subscribed'          => 'Sètz pas inscrich per la susvelhança de las guèrras d’edicion. Atal doncas, podètz pas vos desincriure.',
+	'povwatch_unsubscribed'            => 'Vòstra inscripcion per la susvelhança de las guèrras d’edicion ara es resiliada.',
+	'povwatch_invalid_title'           => 'Lo títol indicat es invalid.',
+	'povwatch_pushed'                  => '[[$1]] es estada inscricha amb succès dins la lista de susvelhança de l’utilizaire $2.',
+	'povwatch_intro'                   => "La susvelhança de las guèrras d’edicion es un servici qu'autoriza la susvelhança discrèta dels articles conflictuals. Aquestes pòdon èsser inscriches dins la lista de susvelhança dels administrators enregistrats. Un jornal de susvelhança dels articles inscriches es disponible sus [[Special:PovWatch/log]].",
+	'povwatch_subscriber_list'         => 'Una [[Special:PovWatch/subscribers|lista dels abonats]] es disponibla.',
+	'povwatch_subscriber_list_intro'   => '<strong>Lista dels abonats</strong>',
+	'povwatch_not_allowed_subscribers' => 'Avètz pas la permission de visionar la lista de las personas inscrichas per la susvelhança de las guèrras d’edicions.',
+	'povwatch_unknown_subpage'         => 'Sospagina desconeguda.',
+	'povwatch_push'                    => 'Inscriure',
+	'povwatch_push_intro'              => "Utilizatz lo formulari çaijós per inscriure los articles dins la lista de susvelhança dels utilizaires abonats. Inscrivissetz escrupulosament lo títol : los articles pòdon quitament èsser ajustats, e existís pas cap d'eissida per o levar un còp inscrich.",
+	'povwatch_title'                   => 'Títol:',
+	'povwatch_comment'                 => 'Comentari del jornal :',
+	'povwatch_no_log'                  => "Existís pas cap d'entrada dins lo jornal.",
+	'povwatch_no_subscribers'          => 'Existís pas cap de persona abonada.',
+	'povwatch_unsubscribe_intro'       => 'Sètz inscrich(-a) a la lista de susvelhança de las guèrras d’edicion. Clicatz sul boton çaijós per vos desinscriure.',
+	'povwatch_unsubscribe'             => 'Resiliar',
+	'povwatch_subscribe_intro'         => 'Sètz pas inscrich(-a) sus la lista de susvelhança de las guèrras d’edicion. Clicatz sul boton çaijós per vos inscriure.',
+	'povwatch_subscribe'               => 'Soscriure',
+	'povwatch_added'                   => 'ajustat',
 );

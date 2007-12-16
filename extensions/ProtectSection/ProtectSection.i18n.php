@@ -54,3 +54,12 @@ $messages['no'] = array(
 	'protectsection_modify'     => 'Du prøvde å endre beskyttet tekst',
 	'protectsection_forbidden'  => 'Forbudt',
 );
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'protectsection_add_remove' => "Avètz ensajat d'ajustar o d'escafar una seccion protegida.",
+	'protectsection_modify'     => 'Avètz ensajat de modificar de tèxt protegit.',
+	'protectsection_forbidden'  => 'Interdich',
+);

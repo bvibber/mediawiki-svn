@@ -29,7 +29,6 @@ $wgDismissableSiteNoticeMessages['ar'] = array(
  */
 $wgDismissableSiteNoticeMessages['ast'] = array(
 	'sitenotice_close' => 'desaniciar',
-
 );
 
 $wgDismissableSiteNoticeMessages['bn'] = array(

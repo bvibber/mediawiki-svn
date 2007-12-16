@@ -66,5 +66,4 @@ $messages['oc'] = array(
 	'intersection_toofewcats'    => 'DynamicPageList : Pas pro de categorias !',
 	'intersection_noresults'     => 'DynamicPageList : Pas cap de resultat !',
 	'intersection_noincludecats' => 'DynamicPageList : avètz besonh d’inclòure al mens una categoria, o de precisar un nom d’espaci !',
-
 );

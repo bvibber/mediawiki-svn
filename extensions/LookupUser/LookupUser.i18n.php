@@ -131,3 +131,20 @@ $messages['no'] = array(
 	'lookupuser_touched' => 'Innstillinger sist endret: $1',
 	'lookupuser_useroptions' => 'Brukervalg:',
 );
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'lookupuser'                   => "Percórrer las informacions de l'utilizaire",
+	'lookupuser_intro'             => "Picar un nom d'utilizaire per veire sas preferéncias",
+	'lookupuser_nonexistent'       => "Error : l'utilizaire existís pas",
+	'lookupuser_authenticated'     => "Corrièr electronic d'identificacion : $1",
+	'lookupuser_not_authenticated' => 'pas identificat',
+	'lookupuser_id'                => "ID de l'utilizaire : <tt>#$1</tt>",
+	'lookupuser_email'             => 'Corrièr electronic : [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'          => 'Nom vertadièr : $1',
+	'lookupuser_registration'      => "Data d'enregistrament : $1",
+	'lookupuser_touched'           => "Enregistrament de l'utilizaire tocat pel darrièr còp : $1",
+	'lookupuser_useroptions'       => "Opcions de l'utilizaire :",
+);

@@ -111,7 +111,6 @@ $messages['oc'] = array(
 	'inspectcache-get'     => 'Obténer',
 	'inspectcache-delete'  => 'Suprimir',
 	'inspectcache-deleted' => 'Amagatal suprimit',
-
 );
 
 $messages['sk'] = array(

@@ -45,3 +45,11 @@ $messages['nl'] = array(
 	'stalepages' => 'Vergeten pagina\'s',
 	'stalepages-summary' => 'Dit is een lijst van pagina\'s die niet bewerkt zijn in de afgelopen $1 dagen.',
 );
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'stalepages'         => 'Paginas depassadas',
+	'stalepages-summary' => 'Aquò es una lista de paginas que son pas estadas modificadas dempuèi {{plural:$1|$1 jorn|$1 jorns}}.',
+);

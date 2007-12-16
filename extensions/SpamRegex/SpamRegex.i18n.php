@@ -178,3 +178,33 @@ $messages['nl'] = array(
 	'spamregex-text' => '(Tekst)',
 	'spamregex-summary-log' => '(Samenvatting)',
 );
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'spamregex'                      => 'Expressions regularas de Spams',
+	'spamregex_summary'              => 'Lo tèxt en question es estat detectat dins lo comentari de la pagina.',
+	'spamregex-intro'                => "Utilizatz aqueste formulari per blocar efièchament las expressions que pòdon èsser salvagardadas dins una pagina tèxt. Se lo tèxt conten las expressions definidas, los cambiaments poiràn pas èsser salvagardats e un motiu explicatiu serà afichat a l’utilizaire qu'a volgut salvagardar la pagina. Es important de prendre en consideracion que las expressions deuràn pas èsser ni tròp longas ni tròp correntas.",
+	'spamregex-page-title'           => 'Blocatge de las expressions regularas de spams',
+	'spamregex-currently-blocked'    => "'''Frasas actualament blocadas :'''",
+	'spamregex-no-currently-blocked' => "'''I a pas cap de frasa blocada.'''",
+	'spamregex-log-1'                => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 suprimir]) ajustat per",
+	'spamregex-log-2'                => 'lo $1',
+	'spamregex-page-title-1'         => "Blocatge d’una frasa utilizant d'expressions regularas",
+	'spamregex-unblock-success'      => 'Lo desblocatge a capitat',
+	'spamregex-unblock-message'      => "La frasa '''$1''' es estada desblocada a l’edicion.",
+	'spamregex-page-title-2'         => "Blocatge de las frasas en utilizant d'expression regularas",
+	'spamregex-block-success'        => 'Lo blocatge a capitat',
+	'spamregex-block-message'        => "La frasa '''$1''' a estada blocada.",
+	'spamregex-warning-1'            => 'Indicatz una frasa de blocar.',
+	'spamregex-error-1'              => 'Expression regulara invalida.',
+	'spamregex-warning-2'            => 'Causissètz al mens un mòde de blocatge.',
+	'spamregex-already-blocked'      => '« $1 » ja es blocat',
+	'spamregex-phrase-block'         => 'Frasa de blocar :',
+	'spamregex-phrase-block-text'    => 'blocar la frasa dins lo tèxt de l’article',
+	'spamregex-phrase-block-summary' => 'blocar la frasa dins lo comentari',
+	'spamregex-block-submit'         => 'Blocar&nbsp;aquesta&nbsp;frasa',
+	'spamregex-text'                 => '(Tèxt)',
+	'spamregex-summary-log'          => '(Comentari)',
+);

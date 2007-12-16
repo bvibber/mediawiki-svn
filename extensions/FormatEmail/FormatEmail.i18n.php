@@ -83,7 +83,6 @@ $messages['oc'] = array(
 	'email_footer' => '----------------------------------------------------------------------------
 
 Aqueste corrièr vos es estat mandat gràcia al sistèma de messajtariá de {{SITENAME}} per $1. $2',
-
 );
 
 $messages['sk'] = array(
