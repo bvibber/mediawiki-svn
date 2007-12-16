@@ -3,11 +3,12 @@
 class ShowProcesslistPage extends UnlistedSpecialPage {
 	function ShowProcesslistPage() {
 		UnlistedSpecialPage::UnlistedSpecialPage('ShowProcesslist');
+		wfLoadExtensionMessages( 'showprocesslist' );
 	}
 
 	function execute( $par ) {
 		global $wgOut, $wgUser;
-		
+
 		$this->setHeaders();
 		if ( !$wgUser->isAllowed( 'siteadmin' ) ) {
 			$wgOut->permissionRequired( 'siteadmin' );
@@ -18,7 +19,7 @@ class ShowProcesslistPage extends UnlistedSpecialPage {
 		$res = $dbr->query( 'SHOW FULL PROCESSLIST' );
 		$output = array();
 		$output = '<table border="1" cellspacing="0">'."\n";
-		$output .= '<tr><th>Id</th><th>User</th><th>Host</th><th>db</th><th>Command</th><th>Time</th><th>State</th><th>Info</th>'."\n";
+		$output .= '<tr><th>'.wfMsg('showprocesslist-id').'</th><th>'.wfMsg ('showprocesslist-user').'</th><th>'.wfMsg ('showprocesslist-host').'</th><th>'.wfMsg ('showprocesslist-db').'</th><th>'.wfMsg ('showprocesslist-command').'</th><th>'.wfMsg('showprocesslist-time').'</th><th>'.wfMsg('showprocesslist-state').'</th><th>'.wfMsg('showprocesslist-info').'</th>'."\n";
 		while ( $row = $dbr->fetchObject($res) ) {
 			$output .= '<tr>';
 			$fields = get_object_vars($row);
@@ -31,5 +32,3 @@ class ShowProcesslistPage extends UnlistedSpecialPage {
 		$wgOut->addHTML( $output );
 	}
 }
-
-

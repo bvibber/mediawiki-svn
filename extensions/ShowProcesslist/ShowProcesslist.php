@@ -6,13 +6,14 @@ if (!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['specialpage'][] = array(
-	'name' => 'ShowProcesslist',
-	'description' => 'display the output of SHOW FULL PROCESSLIST'
+	'name'        => 'ShowProcesslist',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:Show_Process_List',
+	'description' => 'Display the output of SHOW FULL PROCESSLIST',
 );
 
 if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 }
 extAddSpecialPage( dirname(__FILE__) . '/ShowProcesslist_body.php', 'ShowProcesslist', 'ShowProcesslistPage' );
-
-
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['showprocesslist'] = $dir . 'ShowProcesslist.i18n.php';
