@@ -33,3 +33,15 @@ function efPhpbbData_handleToWiki(&$hooks, $outputCache) {
 	}
 }
 $phpbb_hook->register('BeforePageDisplay', 'efPhpbbData_handleToWiki');
+	
+function efPhpbbData_doTokenReplacement(&$hooks, $outputCache) {
+	$tokens = array(
+		'{PAGE_URL_LOCAL_ESCAPED}' => urlencode('test') );
+	
+	foreach ($tokens as $key => $value) {
+		$outputCache = str_replace($key,$value,$outputCache);
+	}
+	
+	return $outputCache;
+}
+$phpbb_hook->register('BeforePageDisplay', 'efPhpbbData_doTokenReplacement');
