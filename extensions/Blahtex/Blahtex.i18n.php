@@ -119,8 +119,63 @@ $messages['ar'] = array(
 	'math_WrongFontEncodingWithHint'        => 'الرمز "$1" ربما لا يظهر في إنكودنج الخط "$2" (حاول استخدام أمر "$3{...}")',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
 $messages['br'] = array(
 	'math_noblahtex'                        => 'Dibosupl erounit Blahtex, a zlefe bezañ e $1',
+	'math_AmbiguousInfix'                   => 'Amjestr eo lec\'hiadur "$1" (klaskit ouzhpennañ balizennoù "{ ... }" evit sevel an amjestregezh)',
+	'math_CannotChangeDirectory'            => 'Dibosupl cheñch teuliad labour',
+	'math_CannotCreateTexFile'              => 'Dibosupl krouiñ ur restr tex',
+	'math_CannotRunDvipng'                  => 'Dibosupl erounit dvipng',
+	'math_CannotRunLatex'                   => 'Dibosupl erounit LateX',
+	'math_CannotWritePngDirectory'          => 'Dibosupl skrivañ e teuliad ar restroù PNG',
+	'math_CannotWriteTexFile'               => 'Dibosupl skrivañ en ur restr tex',
+	'math_CasesRowTooBig'                   => 'N\'hall bezañ nemet daou voned e pep renkennad ur bloc\'h "cases"',
+	'math_DoubleSubscript'                  => "Kavet ez eus bet daou isskript stag ouzh an hevelep diaz (n'haller degemer nemet unan)",
+	'math_DoubleSuperscript'                => "Kavet ez eus bet daou usskript stag ouzh an hevelep diaz (n'haller degemer nemet unan)",
+	'math_IllegalCharacter'                 => 'Arouezenn difennet er vaezienn skrivañ',
+	'math_IllegalCommandInMathMode'         => 'N\'haller ket ober gant an urzhiad  "$1" er mod jedoniezh.',
+	'math_IllegalCommandInMathModeWithHint' => 'N\'haller ket ober gant an urzhiad "$1" er mod jedoniezh (marteze e felle deoc\'h ober gant "$2" e plas?)',
+	'math_IllegalCommandInTextMode'         => 'N\'haller ket ober gant an urzhiad "$1" er mod testenn.',
+	'math_IllegalCommandInTextModeWithHint' => 'N\'haller ket ober gant an urzhiad "$1" er mod testenn (marteze e felle deoc\'h ober gant "$2" e plas)',
+	'math_IllegalDelimiter'                 => 'Bevenner difennet war-lerc\'h "$1"',
+	'math_IllegalFinalBackslash'            => 'N\'haller ket lakaat ur c\'hilveskell "\\" e dibenn ar skrivadenn',
+	'math_IllegalNestedFontEncodings'       => "N'haller ket rouestlañ urzhiadoù enkodañ ar fontoù",
+	'math_IllegalRedefinition'              => 'Termenet eo bet c\'hoazh an urzhiad "$1"; n\'hall ket bezañ adtermenet ganeoc\'h.',
+	'math_InvalidColour'                    => 'Kamm eo al liv "$1"',
+	'math_InvalidUtf8Input'                 => "N'eo ket ar steudad arouezennoù skrivet diouzh ar furmad reizh UTF8",
+	'math_LatexFontNotSpecified'            => 'N\'eus bet spisaet font LaTeX ebet evit "$1"',
+	'math_LatexPackageUnavailable'          => 'Dibosupl rentañ ar restr PNG rak n\'haller ket kavout ar pakad LaTeX "$1"',
+	'math_MismatchedBeginAndEnd'            => 'Ne glot ket an urzhiadoù "$1" ha "$2"',
+	'math_MisplacedLimits'                  => 'Er mod jedoniezh, n\'hall an urzhiad "$1" dont war-wel nemet war-lerc\'h un oberataer (klaskit gant "\\mathop")',
+	'math_MissingCommandAfterNewcommand'    => 'Un anv urzhiad nevez a vank pe a zo kamm war-lerc\'h "\\newcommand" (ret eo kaout rik un urzhiad termenet a rank kregiñ gant "\\" ha na vo enni nemet arouezennoù alfabetek).',
+	'math_MissingDelimiter'                 => 'Mankout a ra ur bevenner war-lerc\'h "$1"',
+	'math_MissingOpenBraceAfter'            => 'Mankout a ra ur valizenn "{" war-lerc\'h "$1"',
+	'math_MissingOpenBraceAtEnd'            => 'Mankout a ra ar valizenn "{" e fin ar skrivadenn',
+	'math_MissingOpenBraceBefore'           => 'Mankout a ra ar valizenn "{" dirak "$1"',
+	'math_MissingOrIllegalParameterCount'   => 'Mankout a ra ar gont arventennoù pe unan fall zo e termenadur "$1" (ret eo lakaat ur sifr hepken, etre 1 ha 9)',
+	'math_MissingOrIllegalParameterIndex'   => 'Mankout a ra ar veneger arventennoù pe unan fall zo e termenadur "$1"',
+	'math_NonAsciiInMathMode'               => 'N\'haller implijout arouezennoù an-ASCII nemet er mod testenn (klaskit enframmañ an arouezennoù kudennek e "\\text{...}")',
+	'math_NotEnoughArguments'               => 'N\'eus ket bet lakaet a-walc\'h a arguzennoù evit "$1"',
+	'math_PngIncompatibleCharacter'         => 'Dibosubl eo sevel ent reizh ar restr PNG enni an arouezenn $1',
+	'math_ReservedCommand'                  => 'Miret eo an urzhiad "$1" evit un implij diabarzh gant Blahtex',
+	'math_SubstackRowTooBig'                => 'N\'haller kaout nemet ur moned e pep renkennad ur bloc\'h "isberniet"',
+	'math_TooManyMathmlNodes'               => 'Re a skloulmoù zo er wezenn  MathML',
+	'math_TooManyTokens'                    => 'Re hir eo ar skrivad',
+	'math_UnavailableSymbolFontCombination' => 'N\'haller ket implijout an arouezenn "$1" gant ar font "$2"',
+	'math_UnexpectedNextCell'               => 'N\'hall an urzhiad "&" dont war wel nemet en ur bloc\'h "\\begin ... \\end"',
+	'math_UnexpectedNextRow'                => 'N\'hall an urzhiad "\\\\" dont war wel nemet en ur bloc\'h "\\begin ... \\end"',
+	'math_UnmatchedBegin'                   => 'Kavet ez eus bet ur valizenn "\begin" hep balizenn "\end" da glotañ ganti',
+	'math_UnmatchedCloseBrace'              => 'Kavet ez eus bet ur valizenn serr "}" hep balizenn digor "{" da glotañ ganti',
+	'math_UnmatchedEnd'                     => 'Kavet ez eus bet ur valizenn "\end" hep balizenn "\digor" da glotañ ganti',
+	'math_UnmatchedLeft'                    => 'Kavet ez eus bet ur valizenn "\left" hep balizenn "\right" da glotañ ganti',
+	'math_UnmatchedOpenBrace'               => 'Kavet ez eus bet ur valizenn digor "{" hep balizenn serr "}" da glotañ ganti',
+	'math_UnmatchedOpenBracket'             => 'Kavet ez eus bet ur sonell digor "[" hep sonnell serr "]" da glotañ ganti',
+	'math_UnmatchedRight'                   => 'Kavet ez eus bet ur valizenn "\right" hep balizenn "\left" da glotañ ganti',
+	'math_UnrecognisedCommand'              => 'Urzhiad "$1" dianav',
+	'math_WrongFontEncoding'                => 'Marteze ne zeuio ket war wel an arouezenn "$1" ma vez enkodet ar font "$2"',
+	'math_WrongFontEncodingWithHint'        => 'Marteze ne zeuio ket war wel an arouezenn "$1" ma vez enkodet ar font "$2" (klaskit kentoc\'h gant an urzhiad "$3{...}")',
 );
 
 /** Finnish (Suomi)
@@ -308,8 +363,8 @@ $messages['hsb'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
- * @author SPQRobin
  * @author Annabel
+ * @author SPQRobin
  */
 $messages['nl'] = array(
 	'math_noblahtex'                        => 'Blahtex kan niet uitgevoerd worden. Het programma zou hier moeten staan: $1',
@@ -331,13 +386,25 @@ $messages['nl'] = array(
 	'math_IllegalDelimiter'                 => 'Ongeldig scheidingsteken na "$1"',
 	'math_IllegalFinalBackslash'            => 'Ongeldige backslach "\" aan het einde van de invoer',
 	'math_IllegalNestedFontEncodings'       => "Commando's voor de codering van lettertypen kunnen niet genest worden",
+	'math_IllegalRedefinition'              => 'Het commando "$1" werd reeds gedefinieerd; u kan het niet herdefiniëren',
 	'math_InvalidColour'                    => 'De kleur "$1" is ongeldig',
 	'math_InvalidUtf8Input'                 => 'De invoertekst was geen geldig UTF-8',
+	'math_LatexFontNotSpecified'            => 'Er werd geen LaTeX lettertype opgegeven voor "$1"',
+	'math_LatexPackageUnavailable'          => 'Het is niet mogelijk om naar PNG te renderen, omdat het LaTeX pakket "$1" niet beschikbaar is',
 	'math_MismatchedBeginAndEnd'            => 'Bevelen "$1" en "$1" komen niet overeen',
+	'math_MisplacedLimits'                  => 'Het commando "$1" kan alleen verschijnen na een math operator (overweeg om "\mathop" te gebruiken)',
+	'math_MissingCommandAfterNewcommand'    => 'Niet aanwezig of niet toegestaan nieuw commando gebruikt na "\newcommand" (er mag maar één commando gedefinieerd worden; het moet voorafgegaan worden door een backslash "\" en mag enkel alfabetische karakters bevatten)',
+	'math_MissingDelimiter'                 => 'Ontbrekend scheidingsteken na "$1"',
+	'math_MissingOpenBraceAfter'            => 'Ontbrekende openende accolade "{" na "$1"',
+	'math_MissingOpenBraceAtEnd'            => 'Ontbrekende sluitende accolade "}" op het einde van de invoer',
+	'math_MissingOpenBraceBefore'           => 'Ontbrekende openende accolade "{" na "$1"',
+	'math_MissingOrIllegalParameterCount'   => 'Ontbrekende of een ongeldig aantal parameters in de definitie van "$1" (dit moet één cijfer zijn tussen 1 en 9)',
+	'math_MissingOrIllegalParameterIndex'   => 'Ontbrekende of ongeldige parameterindex in de definitie van "$1"',
+	'math_NonAsciiInMathMode'               => 'Niet-ASCII karakters mogen enkel in text-modus gebruikt worden (tracht de probleemkarakters te plaatsen tussen "\text{...}")',
+	'math_NotEnoughArguments'               => 'Er werden niet genoeg argumenten opgegeven voor "$1"',
 	'math_ReservedCommand'                  => 'Het bevel "$1" is gereserveerd voor intern gebruik door blahtex',
 	'math_TooManyTokens'                    => 'De invoer is te lang',
 	'math_UnrecognisedCommand'              => 'Onherkend bevel "$1"',
-
 );
 
 /** Occitan (Occitan)

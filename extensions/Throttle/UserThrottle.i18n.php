@@ -44,3 +44,11 @@ $messages['no'] = array(
 	'acct_creation_global_soft_throttle_hit' => 'Kontoopretting har blitt slått av automatisk for et øyeblikk på grunn av et uvanlig høyt antall innloggingsforsøk. Vent noen minutter for å prøve igjen.',
 	'acct_creation_global_hard_throttle_hit' => 'Kontoopretting har blitt slått av automatisk i noen sekunder for å redusere masseregistreringsangrep. Vent en liten stund og trykk «oppdater» i nettleseren din for å prøve igjen.',
 );
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'La creacion del compte es estada suspendida automaticament per un cèrt temps. Aquò es degut a un fòrt nombre de creacions de comptes. Pacientatz pendent qualques minutas puèi ensajatz tornamai.',
+	'acct_creation_global_hard_throttle_hit' => "La creacion es estada suspendida automaticament pendent qualques segondas per limitar los atacs informatics per l'enregistrament en massa de comptes novèls. Pacientatz un moment e clicatz sus « recargar » dins vòstre navigaire per sometre, un còp de mai, la demanda.",
+);

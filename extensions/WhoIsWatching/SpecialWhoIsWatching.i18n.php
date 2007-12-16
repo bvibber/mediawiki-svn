@@ -25,6 +25,16 @@ $allMessages = array(
 		'specialwhoiswatchingusage'   => 'Cette page spéciale ne peut être utilisée seule. Passez par [[MediaWiki:Number_of_watching_users_pageview]] pour définir un point d\'entrée vers cette page spéciale.',
 	),
 
+/** Galician (Galego)
+ * @author Alma
+ */
+	'gl' => array(
+		'whoiswatching'               => 'Quen está vixiando a páxina wiki',
+		'specialwhoiswatchingthepage' => 'Quen está vixiando %s',
+		'specialwhoiswatchingusage'   => 'Esta páxina especial non pode ser usada deste xeito. Use esta páxina
+[[MediaWiki:Number_of_watching_users_pageview]] para definir un punto de entrada a esta páxina especial.',
+	),
+
 	'hsb' => array(
 		'whoiswatching'               => 'Štó wobkedźbuje wiki-stronu',
 		'specialwhoiswatchingthepage' => 'Štó wobkedźbuje %s',

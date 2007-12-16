@@ -189,6 +189,7 @@ $messages['gl'] = array(
 	'regexblock-view-all'             => 'Todo',
 	'regexblock-view-go'              => 'Adiante',
 	'regexblock-view-match'           => '(procura exacta)',
+	'regexblock-view-account'         => '(bloqueo de creación de contas)',
 	'regexblock-view-reason'          => 'razón: $1',
 	'regexblock-view-reason-default'  => 'razón xenérica',
 	'regexblock-view-block-infinite'  => 'bloqueo permanente',
@@ -199,7 +200,6 @@ $messages['gl'] = array(
 	'regexblock-view-stats'           => '(estatísticas)',
 	'regexblock-view-empty'           => 'A listaxe dos nomes e enderezos bloqueados está baleira.',
 	'regexblock-view-time'            => 'en $1',
-
 );
 
 $messages['hsb'] = array(
@@ -291,12 +291,12 @@ $messages['nl'] = array(
 	'regexblock-view-reason-default'  => 'algemene reden',
 	'regexblock-view-block-infinite'  => 'permanente blokkade',
 	'regexblock-view-block-temporary' => 'verloopt op',
+	'regexblock-view-block-expired'   => 'VERLOPEN op',
 	'regexblock-view-block-by'        => 'geblokkeerd door',
 	'regexblock-view-block-unblock'   => 'deblokkeren',
 	'regexblock-view-stats'           => '(statistieken)',
 	'regexblock-view-empty'           => 'De lijst van geblokkeerde namen en IP-adressen is leeg.',
 	'regexblock-view-time'            => 'op $1',
-
 );
 
 /** Occitan (Occitan)

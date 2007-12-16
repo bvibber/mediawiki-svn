@@ -38,3 +38,10 @@ $messages['nl'] = array(
 $messages['no'] = array(
 	'tog-microid' => 'Publiser en <a href="http://microid.org/">MicroID</a> for å bekrefte kontoen for eksterne tjenester',
 );
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'tog-microid' => 'Publicar un <a href="http://microid.org/">MicroID</a> en vista de confirmar vòstra identitat alprèp de servicis extèrnes',
+);

@@ -71,10 +71,10 @@ $messages['gl'] = array(
 	'watchers'               => 'Vixiantes',
 	'watchers_link_title'    => 'Quen vixia esta páxina?',
 	'watchers_error_article' => '<b>Erro:</b> O artigo non existe.',
+	'watchers_header'        => 'Persoas que están vixiando a "$1"',
 	'watchers_noone_watches' => 'Ninguén vixia esta páxina',
 	'watchers_x_or_more'     => '$1 ou máis persoas están vixiando esta páxina.',
 	'watchers_less_than_x'   => 'Menos de $1 persoas vixian esta páxina.',
-
 );
 
 $messages['hsb'] = array(
@@ -117,7 +117,19 @@ $messages['no'] = array(
 	'watchers_noone_watches' => 'Ingen overvåker denne siden.',
 	'watchers_x_or_more'     => '$1 eller flere personer overvåker denne siden.',
 	'watchers_less_than_x'   => 'Mindre enn $1 personer overvåker denne siden.',
+);
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'watchers'               => 'Agachadors',
+	'watchers_link_title'    => 'Qui seguís aquesta pagina ?',
+	'watchers_error_article' => '<b>Error :</b> La pagina existís pas.',
+	'watchers_header'        => 'Personas que seguisson « $1 »',
+	'watchers_noone_watches' => 'Degun seguís pas aquesta pagina.',
+	'watchers_x_or_more'     => 'Al mens $1 utilizaire(s) seguís(-isson) aquesta pagina.',
+	'watchers_less_than_x'   => 'Mens de $1 utilizaires seguisson aquesta pagina.',
 );
 
 $messages['pt'] = array(

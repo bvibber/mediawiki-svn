@@ -45,6 +45,13 @@ $messages['fr'] = array(
 	'userrightsnotifybody'    => "Bonjour $1,\n\nJ’ai l'honneur de vous informer que votre appartenance aux groupes d'utilisateurs sur $2 a été modifiée par $3 le $4.\n\nAjouté : $5\nRetiré : $6\n\nCordialement,\n\n$2",
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'userrightsnotifysubject' => 'Os membros do grupo cambiaron a $1',
+);
+
 $messages['hsb'] = array(
 	'userrightsnotifysubject' => 'Změna skupinoweho čłonstwa na $1',
 	'userrightsnotifybody'    => 'Witaj $1
@@ -88,4 +95,12 @@ Fjernet: $6
 Hilsen
 $2',
 
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'userrightsnotifysubject' => 'Cambiament d’apartenéncia a de gropes d’utilizaires sus $1',
+	'userrightsnotifybody'    => "Bonjorn $1, Ai l'onor de vos informar que vòstra apartenéncia als gropes d'utilizaires sus $2 es estada modificada per $3 lo $4. Ajustat : $5 Levat : $6 Coralament, $2",
 );

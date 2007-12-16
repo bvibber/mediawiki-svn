@@ -30,3 +30,31 @@ $messages['fr'] = array(
 	'showprocesslist-state' => 'État',
 	'showprocesslist-info' => 'Informations',
 );
+
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'showprocesslist'         => 'Amosar a Listaxe do Proceso',
+	'showprocesslist-id'      => 'Id',
+	'showprocesslist-user'    => 'Usuario',
+	'showprocesslist-command' => 'Comando',
+	'showprocesslist-time'    => 'Tempo',
+	'showprocesslist-state'   => 'Estado',
+	'showprocesslist-info'    => 'Info',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'showprocesslist'         => 'Proceslijst bekijken',
+	'showprocesslist-id'      => 'ID',
+	'showprocesslist-user'    => 'Gebruiker',
+	'showprocesslist-host'    => 'Host',
+	'showprocesslist-db'      => 'database',
+	'showprocesslist-command' => 'Commando',
+	'showprocesslist-time'    => 'Tijd',
+	'showprocesslist-state'   => 'Status',
+	'showprocesslist-info'    => 'Informatie',
+);

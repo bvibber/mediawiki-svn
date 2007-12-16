@@ -156,6 +156,26 @@ $allMessages = array(
 		'tasklistnoprojects'     => "FEIL: Det ser ut som om du har slått på '''\$wgUseProjects''' uten å opprette [[MediaWiki:TodoTasksValidProjects]]. Se [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 installasjonsintruksjonene] for flere detaljer.",
 	),
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+	'oc' => array(
+		'tasklist'               => 'Lista de prètzfaches',
+		'tasklistbyproject'      => 'Lista de prètzfaches per projècte',
+		'tasklistunknownproject' => 'Projècte desconegut',
+		'tasklistunspecuser'     => 'Contributor desconegut',
+		'tasklistincorrectuser'  => 'Pseudonim incorrècte',
+		'tasklistemail'          => 'Car(-a) %s',
+		'tasklistemailsubject'   => '[%s] Cambiament a la lista de prètzfaches',
+		'tasklistmytasks'        => 'Mos prètzfaches',
+		'tasklistbyprojectbad'   => "Lo projècte '''%s''' es pas valid. Consultatz la [[MediaWiki:TodoTasksValidProjects|lista dels projèctes]].",
+		'tasklistbyprojname'     => "Prètzfaches assignats per '''%s'''.",
+		'tasklistchooseproj'     => 'Projècte seleccionat :',
+		'tasklistprojdisp'       => 'Afichar',
+		'tasklistbyname'         => '== Lista de prètzfaches de far per %s ==',
+		'tasklistnoprojects'     => "Error : sembla qu'avètz activat '''\$wgUseProjects''', mas sens aver creat [[MediaWiki:TodoTasksValidProjects]]. Legissètz las [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instruccions d'installacion] per mai de detalhs.",
+	),
+
 	'pl' => array(
 		'tasklist'                => 'Lista zadań',
 		'tasklistbyproject'       => 'Listy zadań według projektu',

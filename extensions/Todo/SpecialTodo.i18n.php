@@ -64,6 +64,15 @@ $4',
 	'todo-form-submit' => 'تنفيذ',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'todo-list-change' => 'Αλλαγή',
+	'todo-list-cancel' => 'Έξοδος',
+	'todo-new-item'    => 'Νέο αντικείμενο',
+);
+
 $messages['fr'] = array (
 	'todo' => 'Liste des tâches à exécuter',
 	'todo-new-queue' => 'Nouveau',
@@ -98,13 +107,16 @@ $4",
  * @author Alma
  */
 $messages['gl'] = array(
-	'todo-new-queue'    => 'novo',
-	'todo-list-change'  => 'Cambiar',
-	'todo-list-cancel'  => 'Cancelar',
-	'todo-form-details' => 'Detalles:',
-	'todo-form-email'   => 'Para recibir unha notificación por correo electrónico cando o artigo esté pechado, teclee o seu enderezo aquí:',
-	'todo-form-submit'  => 'Presentar Consulta',
-
+	'todo-new-queue'        => 'novo',
+	'todo-invalid-item'     => 'Artigo perdido ou non válido',
+	'todo-unrecognize-type' => 'Tipo non recoñecido',
+	'todo-item-list'        => 'Os seus artigos',
+	'todo-list-change'      => 'Cambiar',
+	'todo-list-cancel'      => 'Cancelar',
+	'todo-new-item'         => 'Novo artigo',
+	'todo-form-details'     => 'Detalles:',
+	'todo-form-email'       => 'Para recibir unha notificación por correo electrónico cando o artigo esté pechado, teclee o seu enderezo aquí:',
+	'todo-form-submit'      => 'Presentar Consulta',
 );
 
 $messages['hsb'] = array(
@@ -204,4 +216,31 @@ $4',
 	'todo-form-email'       => 'For å motta beskjed på e-post når oppgaven er fullført, skriv inn e-postadressen din her:',
 	'todo-form-submit'      => 'Utfør',
 
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'todo'                  => "Lista dels prètzfaches d'executar",
+	'todo-new-queue'        => 'Novèl',
+	'todo-mail-subject'     => 'Article acabat sus la lista dels prètzfaches de $1',
+	'todo-mail-body'        => "Avètz demandat la confirmacion per corrièr electronic per çò que concernís l'acabament d'un article qu'aviatz sus la lista dels preètzfaches de $1. Article : $2 Somes : $3 Aqueste article es estat marcat coma acabat amb lo comentari seguent : $4",
+	'todo-invalid-item'     => 'Article mancant o invalid',
+	'todo-update-else-item' => "Temptativa de metre a jorn los articles de qualqu'un d'autre",
+	'todo-unrecognize-type' => 'Tipe pas reconegut',
+	'todo-user-invalide'    => 'Prètzfach de far invalid, mancant, o utilizaire disposant pas dels dreches necessaris per aquò.',
+	'todo-item-list'        => 'Vòstres articles',
+	'todo-no-item'          => "Cap de prètzfach d'executar pas",
+	'todo-invalid-owner'    => "Proprietari d'aqueste article invalid",
+	'todo-add-queue'        => 'Ajustar a la coa…',
+	'todo-move-queue'       => 'Desplaçar vèrs la coa…',
+	'todo-list-for'         => "Lista dels prètzfaches d'executar per",
+	'todo-list-change'      => 'Modificar',
+	'todo-list-cancel'      => 'Anullar',
+	'todo-new-item'         => 'Article novèl',
+	'todo-issue-summary'    => 'Resumit brèu :',
+	'todo-form-details'     => 'Precisions :',
+	'todo-form-email'       => 'Per recebre las notificacions per corrièr electronic un còp l’article clausurat, inscrivissètz vòstra adreça dins lo quadre çaijós :',
+	'todo-form-submit'      => 'Sometre la requèsta',
 );

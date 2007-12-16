@@ -27,7 +27,23 @@ $messages ['fr'] = array(
 	'untidy' => 'Déclasser',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'tidy'   => 'Ordenado',
+	'untidy' => 'Desordenado',
+);
+
 $messages['hsb'] = array(
 	'tidy' => 'Porjadny',
 	'untidy' => 'Njeporjadny',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'tidy'   => 'Classar',
+	'untidy' => 'Declassar',
 );

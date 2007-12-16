@@ -32,7 +32,11 @@ $messages['fr'] = array(
 	'stalepages-summary' => 'Ceci est une liste de pages qui n\'ont pas été modifiées depuis {{plural:$1|$1 jour|$1 jours}}.',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
 $messages['gl'] = array(
+	'stalepages'         => 'páxinas caducadas',
 	'stalepages-summary' => 'Esta é unha listaxe das páxinas que non foron editadas nos últimos $1 días.',
 );
 

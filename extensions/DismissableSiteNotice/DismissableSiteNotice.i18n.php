@@ -31,6 +31,13 @@ $wgDismissableSiteNoticeMessages['ast'] = array(
 	'sitenotice_close' => 'desaniciar',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$wgDismissableSiteNoticeMessages['bg'] = array(
+	'sitenotice_close' => 'скриване',
+);
+
 $wgDismissableSiteNoticeMessages['bn'] = array(
 	'sitenotice_close' => 'নোটিশ বন্ধ করুন',
 );

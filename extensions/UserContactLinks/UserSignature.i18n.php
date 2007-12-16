@@ -39,3 +39,10 @@ $messages['no'] = array(
 	'usercontactlink-baduser' => 'ukorrekt brukernavn',
 
 );
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'usercontactlink-baduser' => 'nom d’utilizaire incorrècte',
+);

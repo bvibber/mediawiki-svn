@@ -68,6 +68,15 @@ function efPatrollerMessages() {
 	'patrol-resume' => 'Lagatik digdi tangarig magpadagos.',
 ),
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+'bg' => array(
+	'patrol-revert-reason'   => 'Причина:',
+	'patrol-endorsed-ok'     => 'Редакцията беше отбелязана като проверена.',
+	'patrol-endorsed-failed' => 'Редакцията не може да бъде отбелязана като проверена.',
+),
+
 /* German (Raymond) */
 'de' => array(
 	'patrol'                 => 'Kontrolle der Bearbeitungen',

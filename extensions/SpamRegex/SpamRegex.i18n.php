@@ -109,7 +109,10 @@ $messages ['fr'] = array(
  */
 $messages['gl'] = array(
 	'spamregex_summary'              => 'O texto foi atopado no resumo do artigo.',
+	'spamregex-currently-blocked'    => "'''Frases actualmente bloqueadas:'''",
+	'spamregex-no-currently-blocked' => "'''Non hai frases bloqueadas.'''",
 	'spamregex-log-2'                => 'en $1',
+	'spamregex-page-title-1'         => 'Bloquear frase usando expresións regulares',
 	'spamregex-unblock-success'      => 'Desbloqueo con éxito',
 	'spamregex-unblock-message'      => "A frase '''$1''' foi desbloqueada para a edición.",
 	'spamregex-block-success'        => 'Bloqueo con éxito',
@@ -123,7 +126,6 @@ $messages['gl'] = array(
 	'spamregex-block-submit'         => 'Bloquear&nbsp;esta&nbsp;frase',
 	'spamregex-text'                 => '(Texto)',
 	'spamregex-summary-log'          => '(Resumo)',
-
 );
 
 $messages['hsb'] = array(

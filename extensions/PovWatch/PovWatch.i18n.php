@@ -102,6 +102,15 @@ Un journal de surveillance des articles inscrits est disponible sur [[Special:Po
 	'povwatch_added' => 'ajouté',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'povwatch_title'   => 'Título:',
+	'povwatch_comment' => 'Rexistro de comentarios:',
+	'povwatch_no_log'  => 'Non hai entradas no rexistro.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -141,9 +150,9 @@ $messages['oc'] = array(
 	'povwatch'                         => 'Susvelhança de las guèrras d’edicions',
 	'povwatch_no_session'              => 'Error : Impossible de sometre lo formulari en seguida de la pèrda de las donadas de la session.',
 	'povwatch_not_allowed_push'        => 'Sètz pas un administrator per la susvelhança de las guèrras d’edicion. Podètz pas ajustar los articles dins la lista correspondenta.',
-	'povwatch_already_subscribed'      => 'Ja sètz inscrich per la susvelhança de las guèrras d’edicion.',
-	'povwatch_subscribed'              => 'Ara sètz inscrich per la susvelhança de las guèrras d’edicion.',
-	'povwatch_not_subscribed'          => 'Sètz pas inscrich per la susvelhança de las guèrras d’edicion. Atal doncas, podètz pas vos desincriure.',
+	'povwatch_already_subscribed'      => 'Ja sètz inscrich(-a) per la susvelhança de las guèrras d’edicion.',
+	'povwatch_subscribed'              => 'Ara sètz inscrich(-a) per la susvelhança de las guèrras d’edicion.',
+	'povwatch_not_subscribed'          => 'Sètz pas inscrich(-a) per la susvelhança de las guèrras d’edicion. Atal doncas, podètz pas vos desincriure.',
 	'povwatch_unsubscribed'            => 'Vòstra inscripcion per la susvelhança de las guèrras d’edicion ara es resiliada.',
 	'povwatch_invalid_title'           => 'Lo títol indicat es invalid.',
 	'povwatch_pushed'                  => '[[$1]] es estada inscricha amb succès dins la lista de susvelhança de l’utilizaire $2.',

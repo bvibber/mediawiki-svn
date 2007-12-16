@@ -69,6 +69,13 @@ $messages['de'] = array(
 	'spamdifftool_submit_buttom'    => 'Speichern',
 	);
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'spamdifftool_option_none' => 'τίποτα',
+);
+
 $messages['fr'] = array(
 	'spamdifftool' => 'Gestion de la Liste Noire des Spams',
 	'spamdifftool_cantedit' => 'Désolé - Vous n’avez pas la permission d’éditer la Liste Noire des Spams.',
@@ -97,9 +104,9 @@ $messages['gl'] = array(
 	'spamdifftool_spam_link_text'   => 'engadir a spam',
 	'spamdifftool_option_domain'    => 'todo desde este dominio',
 	'spamdifftool_option_subdomain' => 'todo desde este subdominio',
+	'spamdifftool_option_directory' => 'este subdominio e directorio',
 	'spamdifftool_option_none'      => 'nada',
 	'spamdifftool_block'            => 'Bloqueo:',
-
 );
 
 $messages['hsb'] = array(
@@ -119,20 +126,25 @@ $messages['hsb'] = array(
 	'spamdifftool_submit_buttom' => 'Wotesłać',
 );
 
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'spamdifftool' => 'Zwarte Lijst beheren',
-	'spamdifftool_cantedit' => 'Sorry - u heeft geen toelating om de Zwarte Lijst tegen Spam te bewerken.',
-	'spamdifftool_notext' => 'Er is geen tekst om toe te voegen aan de Zwarte Lijst tegen spam. Klik <a href=\'$1\'>hier</a> om door te gaan.',
-	'spamdifftool_confirm' => 'Bevestig dat u deze namen aan de Zwarte Lijst tegen spam  wil toevoegen. (Klik <a href=\'$1\' target=\'new\'>hier</a> om een probleem te melden.)',
-	'spamdifftool_summary' => 'Toevoegen aan de Zwarte Lijst tegen spam',
-	'spamdifftool_no_urls_detected' => 'Er werden geen URL\'s gevonden. Klik <a href=\'$1\'>hier</a> om terug te keren.',
-	'spamdifftool_spam_link_text' => 'toevoegen aan spam',
-	'spamdifftool_option_domain' => 'alles van dit domein',
+	'spamdifftool'                  => 'Zwarte Lijst beheren',
+	'spamdifftool_cantedit'         => 'Sorry - u heeft geen toelating om de Zwarte Lijst tegen Spam te bewerken.',
+	'spamdifftool_notext'           => "Er is geen tekst om toe te voegen aan de Zwarte Lijst tegen spam. Klik <a href='$1'>hier</a> om door te gaan.",
+	'spamdifftool_confirm'          => "Bevestig dat u deze namen aan de Zwarte Lijst tegen spam  wil toevoegen. (Klik <a href='$1' target='new'>hier</a> om een probleem te melden.)",
+	'spamdifftool_summary'          => 'Toevoegen aan de Zwarte Lijst tegen spam',
+	'spamdifftool_urls_detected'    => "In de bewerking(en) zijn de volgende URL's aangetroffen. Welke wilt u toevoegen aan de Zwarte Lijst voor Spam? Deze opties gaan van meer beperkend naar minder beperkend. Het blokkeren van een volledig domein betekent dat geen enkele verwijzing naar dat domein wordt toegelaten. <br /><br /> Zorg dat u niet zomaar volledige domeinen blokkeert waar gebruikers bestaan, zoals blogpost.com, geocities.com, enzovoort.",
+	'spamdifftool_no_urls_detected' => "Er werden geen URL's gevonden. Klik <a href='$1'>hier</a> om terug te keren.",
+	'spamdifftool_spam_link_text'   => 'toevoegen aan spam',
+	'spamdifftool_option_domain'    => 'alles van dit domein',
 	'spamdifftool_option_subdomain' => 'alles van dit subdomein',
 	'spamdifftool_option_directory' => 'dit subdomein en deze map',
-	'spamdifftool_option_none' => 'niets',
-	'spamdifftool_block' => 'Blokkeren:',
-	'spamdifftool_submit_buttom' => 'OK',
+	'spamdifftool_option_none'      => 'niets',
+	'spamdifftool_block'            => 'Blokkeren:',
+	'spamdifftool_submit_buttom'    => 'OK',
 );
 
 /** Occitan (Occitan)
