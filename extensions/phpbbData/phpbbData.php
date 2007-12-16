@@ -10,7 +10,6 @@ if (!defined('MEDIAWIKI')) {
 }
 
 $wgPhpbbDataRootPath = 'forum/';
-$wgPhpbbProtocol = 'https://';
 
 $wgExtensionCredits['other'][] = array(
 	'name'        => 'phpbbData',
@@ -50,13 +49,8 @@ function efPhpbbData_LanguageGetMagic( &$magicWords, $langCode ) {
 }
 
 function efPhpbbData_makeTopicWikiLink($display_text='', $forum_id=null, $topic_id=null, $post_id=null) {
-	global $wgPhpbbDataRootPath, $wgTitle, $wgPhpbbProtocol;
+	global $wgPhpbbDataRootPath, $wgTitle;
 
-	if (isset($wgPhpbbProtocol))
-		$proto = $wgPhpbbProtocol;
-	else
-		
-	
 	if (!empty($post_id)) {
 		$urlText = "{{SERVER}}/{$wgPhpbbDataRootPath}viewpost.php?p={$post_id}&toWiki=" . 
 			urlencode($wgTitle->escapeLocalURL());
