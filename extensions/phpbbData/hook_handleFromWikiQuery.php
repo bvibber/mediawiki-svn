@@ -35,8 +35,20 @@ function efPhpbbData_handleToWiki(&$hooks, $outputCache) {
 $phpbb_hook->register('BeforePageDisplay', 'efPhpbbData_handleToWiki');
 	
 function efPhpbbData_doTokenReplacement(&$hooks, $outputCache) {
+	$validQueryKeys = array('f','t');
+	$queryString = '';
+	
+	foreach ($_GET as $key => $value) {
+		if (in_array($key, $validQueryKeys)) {
+			if ($queryString == '')
+				$queryString .= "?{$key}={$value}";
+			else
+				$queryString .= "&{$key}={$value}";
+		}
+	}
+	
 	$tokens = array(
-		'{PAGE_URL_LOCAL_ESCAPED}' => urlencode('test') );
+		'{PAGE_URL_LOCAL_ESCAPED}' => urlencode( $_SERVER['PHP_SELF'] . $queryString ) );
 	
 	foreach ($tokens as $key => $value) {
 		$outputCache = str_replace($key,$value,$outputCache);
