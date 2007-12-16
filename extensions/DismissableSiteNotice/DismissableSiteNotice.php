@@ -2,18 +2,17 @@
 
 $wgExtensionCredits['other'][] = array(
         'name' => 'DismissableSiteNotice',
-        'version' => '1.1',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:DismissableSiteNotice',
         'author' => 'Brion Vibber',
         'description' => 'Allows users to close the sitenotice.'
 );
 
 function wfDismissableSiteNotice( &$notice ) {
 	global $wgMajorSiteNoticeID, $wgUser;
-
+	
 	if ( !$notice ) {
 		return true;
 	}
+
 
 	wfInitSiteNoticeMessage();
 	$encNotice = Xml::escapeJsString($notice);
@@ -97,3 +96,5 @@ $wgHooks['SiteNoticeAfter'][] = 'wfDismissableSiteNotice';
 $wgHooks['LoadAllMessages'][] = 'wfInitSiteNoticeMessage';
 
 $wgMajorSiteNoticeID = 1;
+
+

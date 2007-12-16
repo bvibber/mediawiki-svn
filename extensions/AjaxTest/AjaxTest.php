@@ -8,19 +8,11 @@
  * @copyright © 2006 Daniel Kinzler
  * @licence GNU General Public Licence 2.0 or later
  */
-
+ 
 if( !defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	die( 1 );
 }
-
-$wgExtensionCredits['specialpage'][] = array(
-	'name' => 'AjaxTest',
-	'version' => '1.1',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:AjaxTest',
-	'description' => 'Ajax Test',
-	'author' => 'Daniel Kinzler',
-);
 
 /**
 * Abort if AJAX is not enabled
@@ -56,19 +48,21 @@ function efAjaxTestSetup() {
  */
 function efAjaxTest( $text, $usestring, $httpcache, $lastmod, $error ) {
 	$text = htmlspecialchars($text) . "(".wfTimestampNow().")";
-
+	
 	if ($usestring) return $text;
 	else {
 		$response= new AjaxResponse($text);
-
+		
 		if ($error) throw new Exception( $text );
-
+		
 		if ($httpcache) $response->setCacheDuration( 24*60*60 ); #cache for a day
-
+		
 		if ($lastmod) {
 			$response->checkLastModified( '19700101000001' ); #never modified
 		}
-
+	
 		return $response;
 	}
 }
+
+

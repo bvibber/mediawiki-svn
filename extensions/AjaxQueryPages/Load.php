@@ -13,7 +13,6 @@ if( version_compare( $wgVersion, '1.11alpha', '<' ) ) {
 } else {
 	$wgExtensionCredits['other'][] = array(
 		'name' => 'Ajax Query Pages',
-		'version' => '1.1',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:AjaxQueryPages',
 		'author' => 'Ashar Voultoiz',
 		'description' => 'Add some AJAX to QueryPages such as [[Special:Shortpages]]',

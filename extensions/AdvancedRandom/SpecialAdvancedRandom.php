@@ -19,15 +19,13 @@ if ( ! defined( 'MEDIAWIKI' ) )
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'AdvancedRandom',
-	'version' => '1.1',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:AdvancedRandom',
 	'description' => 'Get a random page from whos talk or subjectpage ' .
 	                 'links to a given page, can be used like ' .
 			 '[[Special:AdvancedRandom/Template:Featured/Talk]] ' .
 			 'to get a random featured article or like ' .
 			 '[[Special:AdvancedRandom/Template:GFDL/Image]] to ' .
 			 'get a random GFDL file',
-	'author' => 'Ævar Arnfjörð Bjarmason',
+	'author' => 'Ævar Arnfjörð Bjarmason'
 );
 
 $dir = dirname(__FILE__) . '/';

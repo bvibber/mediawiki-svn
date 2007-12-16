@@ -12,26 +12,20 @@
 if( defined( 'MEDIAWIKI' ) ) {
 
 	global $wgAutoloadClasses, $wgSpecialPages;
-
+	
 	$wgAutoloadClasses['BadImageList'] = dirname( __FILE__ ). '/BadImage.class.php';
 	$wgAutoloadClasses['BadImageManipulator'] = dirname( __FILE__ ) . '/BadImage.page.php';
 
 	$wgSpecialPages['Badimages'] = 'BadImageManipulator';
-	$wgExtensionCredits['other'][] = array(
-		'name' => 'Bad Image List',
-		'version' => '1.1',
-		'author' => 'Rob Church',
-		'url' => 'http://www.mediawiki.org/wiki/Extension:Bad_Image_List',
-		'description' => 'Extends the bad image list capabilities',
-	);
+	$wgExtensionCredits['other'][] = array( 'name' => 'Bad Image List', 'author' => 'Rob Church', 'url' => 'http://www.mediawiki.org/wiki/Extension:Bad_Image_List' );
 	$wgExtensionFunctions[] = 'efBadImageSetup';
-
+	
 	$wgAvailableRights[] = 'badimages';
 	$wgGroupPermissions['sysop']['badimages'] = true;
-
+	
 	/** Set this to false to disable caching results with shared memory caching */
 	$wgBadImageCache = true;
-
+	
 	function efBadImageSetup() {
 		global $wgMessageCache;
 		require_once( dirname( __FILE__ ) . '/BadImage.i18n.php' );
@@ -45,7 +39,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgLogActions['badimage/add']  = 'badimages-log-add';
 		$wgLogActions['badimage/remove'] = 'badimages-log-remove';
 	}
-
+	
 	function efBadImage( $image, &$bad ) {
 		if( BadImageList::check( $image ) ) {
 			$bad = true;
@@ -54,8 +48,9 @@ if( defined( 'MEDIAWIKI' ) ) {
 			return true;
 		}
 	}
-
+	
 } else {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	die( 1 );
 }
+

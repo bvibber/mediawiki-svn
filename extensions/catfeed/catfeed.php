@@ -25,13 +25,6 @@
  * @todo Create in-page version, especially useful for wikinews
  */
 
-$wgExtensionCredits['other'][] = array(
-	'name' => 'Catfeed',
-	'version' => '1.1',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Catfeed',
-	'author' => 'Gabriel Wicke',
-	'description' => 'Category feed',
-);
 
 $wgExtensionFunctions[] = 'setupCatRSSExtension';
 if( $wgCategoryMagicGallery ) 
@@ -314,3 +307,4 @@ function getCatOption(&$value,&$input,$name) {
 		$input=preg_replace("/$name\s*=\s*\d+/mi","",$input);		
 	} 
 }
+

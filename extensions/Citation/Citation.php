@@ -3,13 +3,6 @@
 #
 # There is a <citation>author=Manske M ||title="The best paper ever" ||journal=''Biochemistry'' ||volume='''5''', 11</citation> citation here!
 
-$wgExtensionCredits['parserhook'][] = array(
-	'name' => 'Citation',
-	'version' => '1.1',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Citation',
-	'author' => 'Magnus Manske',
-	'description' => 'Add citations using the tag &lt;citation&gt;',
-);
 
 $wgHooks['ParserBeforeTidy'][] = 'citation_hooker';
 $wgHooks['ParserClearState'][] = 'citation_clear_state';
@@ -28,9 +21,9 @@ $wgCitationRunning = false ;
 
 function citation_hooker( &$parser, &$text ) {
 	global $wgCitationCache , $wgCitationCounter , $wgCitationRunning ;
-	if( $wgCitationRunning )
+	if( $wgCitationRunning ) 
 		return true;
-	if( count( $wgCitationCache ) == 0 )
+	if( count( $wgCitationCache ) == 0 ) 
 		return true;
 	if( !isset( $parser->isMainParser ) )
 		return true;
@@ -40,9 +33,9 @@ function citation_hooker( &$parser, &$text ) {
 		$ret .= $x ;
 	}
 	$ret = "<hr /><ol>" . $ret . "</ol>" ;
-
+	
 	$text .= $ret ;
-
+	
 	return true;
 }
 
@@ -51,7 +44,7 @@ function citation_clear_state() {
 	$wgCitationCache = array();
 	$wgCitationCounter = 1 ;
 	$wgCitationRunning = false;
-
+	
 	return true;
 }
 
@@ -64,15 +57,15 @@ function parse_citation( $text , $params , $parser ) {
 	$res2 = array() ;
 	$href = "" ;
 	$a = explode( "||" , $text ) ;
-
+	
 	foreach( $a AS $line ) {
 		$data = explode( "=" , $line , 2 ) ;
 		while( count( $data ) < 2 ) $data[] = "" ;
 		$key = urlencode( trim( strtolower( array_shift( $data ) ) ) ) ;
 		$value = array_shift( $data ) ;
-
+		
 		// Parsed now : "$key" = "$value"
-		if( substr( $value , 0 , 3 ) == "{{{" ) {} // Unset variable, ignore
+		if( substr( $value , 0 , 3 ) == "{{{" ) {} // Unset variable, ignore 
 		else if( $key == "attheend" ) $attheend = true ;
 		else if( $key == "href" ) $href = $value ;
 		else if( $value != "" ) {
@@ -81,7 +74,7 @@ function parse_citation( $text , $params , $parser ) {
 			$res2[$key] = $value ;
 		}
 	}
-
+	
 	// Creating output string
 	foreach( $res AS $item ) {
 		$key = $item["key"] ;
@@ -95,7 +88,7 @@ function parse_citation( $text , $params , $parser ) {
 	}
 
 	if( $href != "" ) $ret .= " [{$href}]" ;
-
+	
 	// Adding to footer list or showing inline
 	$localParser = new Parser ;
 	$wgCitationRunning = true ;
@@ -115,3 +108,7 @@ function parse_citation( $text , $params , $parser ) {
 
 	return $ret ;
 }
+
+
+
+

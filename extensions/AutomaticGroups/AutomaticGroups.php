@@ -12,7 +12,6 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionCredits['other'][] = array(
 		'name' => 'Automatic Groups',
-		'version' => '1.1',
 		'author' => 'Rob Church',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Automatic_Groups',
 		'description' => 'Convenient configuration of user rights and group
@@ -24,7 +23,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 */
 	$wgHooks['UserEffectiveGroups'][] = 'efAutomaticGroups';
 	$wgHooks['UserGetRights'][] = 'efAutomaticRights';
-
+	
 	/**
 	 * Automatic group configuration
 	 *
@@ -34,12 +33,12 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 * See README for more information and examples
 	 */
 	$wgAutomaticGroups = array();
-
+	
 	/**
 	 * Automatic rights configuration; same format as $wgAutomaticGroups
 	 */
 	$wgAutomaticRights = array();
-
+	
 	/**
 	 * Hook effective groups assignment
 	 *
@@ -71,7 +70,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		);
 		return true;
 	}
-
+	
 	/**
 	 * Calculate automatic rights or group membership
 	 * using the supplied criteria
@@ -93,7 +92,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		}
 		return $attributes;
 	}
-
+	
 } else {
 	echo( "This file is an extension to MediaWiki and cannot be used standalone.\n" );
 	exit( 1 );

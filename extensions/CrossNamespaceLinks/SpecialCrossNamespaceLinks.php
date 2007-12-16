@@ -13,10 +13,8 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Cross-namespace links',
-	'version' => '1.1',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:CrossNamespaceLinks',
 	'description' => 'lists links across namespaces that shouldn\'t exist on Wikimedia projects',
-	'author' => 'Ævar Arnfjörð Bjarmason',
+	'author' => 'Ævar Arnfjörð Bjarmason'
 );
 
 # Internationalisation file
@@ -35,13 +33,13 @@ function wfSpecialCrossNamespaceLinksHook( &$QueryPages ) {
 	foreach( $wgCrossNamespaceLinksMessages as $key => $value ) {
 		$wgMessageCache->addMessages( $wgCrossNamespaceLinksMessages[$key], $key );
 	}
-
+	
 	$QueryPages[] = array(
 		'CrossNamespaceLinksPage',
 		'CrossNamespaceLinks',
 		// Would probably be slow on large wikis -ævar
 		//false
 	);
-
+	
 	return true;
 }

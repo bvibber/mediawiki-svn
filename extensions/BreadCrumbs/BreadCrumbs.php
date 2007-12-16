@@ -13,7 +13,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
   echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
   die();
 }
-
+                
 ## Options:
 # $wgBreadCrumbsDelimiter - set the delimiter
 $wgBreadCrumbsDelimiter = ' &gt; ';
@@ -24,12 +24,11 @@ $wgBreadCrumbsCount = 5;
 $wgExtensionFunctions[] = 'fnBreadCrumbs';
 $wgExtensionCredits['parserhook'][] = array(
   'name'          => 'BreadCrumbs',
-  'version'       => '1.1',
   'author'        => 'Manuel Schneider',
   'url'           => 'http://www.mediawiki.org/wiki/Extension:BreadCrumbs',
-  'description'   => 'Shows a breadcrumb navigation.',
+  'description'   => 'Shows a breadcrumb navigation.'
 );
-
+                                
 ## Set Hook:
 function fnBreadCrumbs() {
   global $wgHooks;

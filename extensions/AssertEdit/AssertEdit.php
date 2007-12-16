@@ -19,7 +19,6 @@ if ( ! defined( 'MEDIAWIKI' ) )
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'AssertEdit',
-	'version' => '1.1',
 	'author' => 'Steve Sanbeg',
 	'description' => 'Adds edit assertions for use by bots',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Assert_Edit'

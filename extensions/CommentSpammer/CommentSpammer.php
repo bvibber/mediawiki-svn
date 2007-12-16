@@ -16,7 +16,6 @@ if ( ! defined( 'MEDIAWIKI' ) ) {
 $wgExtensionFunctions[] = 'efCommentSpammer';
 $wgExtensionCredits['other'][] = array(
         'name' => 'CommentSpammer',
-        'version' => '1.1',
         'author' => 'Nick Jenkins',
         'url' => 'http://www.mediawiki.org/wiki/Extension:CommentSpammer',
         'description' => 'Rejects edits from suspected comment spammers on a DNS blacklist.',
@@ -35,10 +34,10 @@ function efCommentSpammer() {
 $wgHooks['EditFilter'][]      = 'HoneyPotCommentSpammer::commentSpammerHook';
 
 /**
- * Another log type, 'cSpammer', is added, if logging has been enabled, and appropriate
+ * Another log type, 'cSpammer', is added, if logging has been enabled, and appropriate 
  * message arrays are updated so that the UI works as expected.
  */
-if( isset( $wgCommentSpammerLog )
+if( isset( $wgCommentSpammerLog ) 
    && ( isset( $wgCommentSpammerLog['allowed'] ) && $wgCommentSpammerLog['allowed'] ) ||
       ( isset( $wgCommentSpammerLog['denied']  ) && $wgCommentSpammerLog['denied']  ) ) {
 	$wgLogTypes[] = 'cSpammer';
@@ -50,7 +49,7 @@ if( isset( $wgCommentSpammerLog )
 /**
  * The reason I selected honeypot rather than another black list for this is that for the last 20 spam
  * comments that got through on my wiki, they were all listed as "comments spammers" on honeypot in
- * the first 10 Google hits for those IP addresses.
+ * the first 10 Google hits for those IP addresses. 
  */
 class HoneyPotCommentSpammer {
 
@@ -80,18 +79,18 @@ class HoneyPotCommentSpammer {
 		if( empty( $ip_addr ) ) $ip_addr = wfGetIp();
 
 		$results = self::getDnsResults( $ip_addr );
-
+		
 		$params = array( $ip_addr );
 		$is_spammer = self::resultsSaySpammer( $results, $params );
 		wfDebug( __METHOD__ . ": DNS says $ip_addr is " . ($is_spammer ? '' : 'NOT ' ) . "a spammer.\n" );
 
 		// We record a diagnostic log in here, that will appear in Special:Log
 		// For high-volume or mid-volume sites, this should be commented out.
-		self::addLogEntry( $is_spammer, $params );
+		self::addLogEntry( $is_spammer, $params );		
 
 		return $is_spammer;
 	}
-
+	
 	/**
 	 * Add a record of the DNSBL results to the Wiki's log. Only suitable for small sites that want debugging info.
 	 * @todo Ideally there might a way to add a hook so that an extension could specify how to display its own log
@@ -102,12 +101,12 @@ class HoneyPotCommentSpammer {
 	 */
 	private static function addLogEntry( $is_spammer, $params ) {
 		global $wgTitle, $wgCommentSpammerLog;
-
+		
 		$log_action = $is_spammer ? 'denied' : 'allowed';
-
+		
 		// don't log unless we were explicitly asked to.
 		if( !isset( $wgCommentSpammerLog[$log_action] ) || !$wgCommentSpammerLog[$log_action] ) return;
-
+		
 		$dbw = wfGetDB( DB_MASTER );
 		$data = array(
 	                'log_type'      => 'cSpammer' ,
@@ -120,7 +119,7 @@ class HoneyPotCommentSpammer {
                 );
 		$dbw->insert( 'logging', $data, __METHOD__ );
 	}
-
+	
 	/**
 	 * Helps displays a single CommentSpammer formatted line in Special:Log
 	 * @param string $type
@@ -136,10 +135,10 @@ class HoneyPotCommentSpammer {
 		$params = explode(", ", $paramArray[0] );
 
 		$page = $title->getPrefixedText();
-
+		
 		if( count( $params ) >= 4 ) {
 			list( $ip_addr, $last_spam, $threat_level, $offence_code) = $params;
-			$comment = wfMsgExt( 'commentspammer-log-msg'     , array( 'parseinline' ), $ip_addr, $page )
+			$comment = wfMsgExt( 'commentspammer-log-msg'     , array( 'parseinline' ), $ip_addr, $page ) 
 					 . wfMsgExt( 'commentspammer-log-msg-info', array( 'parseinline' ), $last_spam, $threat_level, $offence_code, $ip_addr );
 		} elseif( count( $params ) == 1 ) {
 			$ip_addr = $params[0];
@@ -147,10 +146,10 @@ class HoneyPotCommentSpammer {
 		} else {
 			return false;
 		}
-
+		
 		return true;
 	}
-
+	
 	/**
 	 * Determines whether the specified IP address corresponds to a known active comment spammer, and if
 	 * so denies the edit and outputs a message to this effect.
@@ -162,7 +161,7 @@ class HoneyPotCommentSpammer {
 	 */
 	public static function commentSpammerHook( /* $editPage = null, $textbox = '', $section = '', & $hookError = '' */ ) {
 		$spammer = self::isCommentSpammer( );
-		if( $spammer ) {
+		if( $spammer ) { 
 			global $wgOut;
 			$wgOut->addWikiText( wfMsg( 'commentspammer-save-blocked' ) );
 		}
@@ -223,24 +222,26 @@ class HoneyPotCommentSpammer {
 		// if we got an error response, assume they're not a spammer.
 		if( $first != self::HONEY_POT_NO_ERROR ) return false;
 		//wfDebug( __METHOD__ . ": Did not get an error response: $first\n" );
-
+		
 		// if they have mended or abstained from their wicked spammy ways, then forgive.
 		if( $second >= self::MAX_STALENESS ) return false;
 		//wfDebug( __METHOD__ . ": Have not abstained from their spammy ways: $second\n" );
-
+		
 		// if they are not really a threat, then forgive.
 		if( $third <= self::MIN_THREAT_LEVEL ) return false;
 		//wfDebug( __METHOD__ . ": Looks like a threat: $third. Offence code: $fourth\n" );
 		// if they are not a comment spammer, then forgive.
 		return $fourth & self::COMMENT_SPAMMER_CODE;
-
+		
 		// Q: If they are a spammer, should we sleep here for 10 seconds, to slow them down,
 		// like a tar pit? ... Or maybe we should just drop the connection, without notifying
 		// them ... must be something *legal* that we can do here that wastes their time and
 		// slows them down and generally increases their costs, like when a telemarketer calls,
-		// and you say "be right with you!" and then put them on indefinite hold and every few
+		// and you say "be right with you!" and then put them on indefinite hold and every few 
 		// minutes say "nearly there", **long pause** "almost done", **long pause** "don't go away",
 		// **long pause** "I really want to hear this" **long pause**, etc ...
 	}
-
+	
 }
+
+?>

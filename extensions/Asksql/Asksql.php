@@ -14,14 +14,6 @@
 if (!defined('MEDIAWIKI'))
 	exit;
 
-$wgExtensionCredits['specialpage'][] = array(
-	'name' => 'Asksql',
-	'version' => '1.1',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Asksql',
-	'author' => 'Brion Vibber',
-	'description' => 'Allow users with sysop right the possibility to make sql queries',
-);
-
 # Sysop SQL queries
 #   The sql user shouldn't have too many rights other the database, restrict
 #   it to SELECT only on 'page', 'revision' and 'text' tables for example
