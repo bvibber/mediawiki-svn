@@ -11,20 +11,30 @@ Set system message "seealso" to head text, e.g., "See also"
 Set system message "seealso_local" to use a localized version, e.g., to "sieheauch"
 */
 
+$wgExtensionCredits['parserhook'][] = array(
+	'name'        => 'Seealso',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:See_also',
+	'author'      => 'Magnus Manske',
+	'description' => 'Localised \'See also\' headings using the tag <nowiki><seealso></nowiki>',
+);
 
 $wgExtensionFunctions[] = "wfSeealso";
 
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['seealso'] = $dir . 'Seealso.i18n.php';
+
 function wfSeealso () {
+	wfLoadExtensionMessages( 'seealso' );
 	global $wgParser ;
-	$wgParser->setHook ( "seealso" , 'parse_seealso' ) ;
-	$l = trim ( wfMsg ( "seealso_local" , "" ) ) ;
+	$wgParser->setHook ('seealso', 'parse_seealso' ) ;
+	$l = trim ( 'seealso-local', "" ) ;
 	if ( $l != "" )
-		$wgParser->setHook ( $l , 'parse_seealso' ) ;
+	$wgParser->setHook ( $l , 'parse_seealso' ) ;
 }
 
 function parse_seealso ( $text, $params, &$parser ) {
 	$a = explode ( "\n" , $text ) ;
-	$ret = "== " . trim ( wfMsg ( "seealso" ) ) . " ==\n" ;
+	$ret = "== " . trim ( wfMsg('seealso')) . " ==\n" ;
 	foreach ( $a AS $x ) {
 		$x = trim ( $x ) ;
 		if ( $x == "" ) continue ;
@@ -35,5 +45,3 @@ function parse_seealso ( $text, $params, &$parser ) {
 	$ret = $ret->getText();
 	return $ret ;
 }
-
-
