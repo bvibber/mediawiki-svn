@@ -12,7 +12,6 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Parser i18n tags',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:I18nTags',
 	'description' => 'Access the i18n functions for number formatting, ' .
 		'grammar and plural in any available language',
 	'version' => '2.2',

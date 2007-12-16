@@ -8,16 +8,8 @@
  * @subpackage Extensions
  * @author Rob Church <robchur@gmail.com>
  */
-
+ 
 if( defined( 'MEDIAWIKI' ) ) {
-
-	$wgExtensionCredits['other'][] = array(
-		'name' => 'FileSearch',
-		'version' => '1.1',
-		'author' => 'Rob Church',
-		'url' => 'http://mediawiki.org/wiki/Extension:FileSearch',
-		'description' => 'Allows MediaWiki to index recognised uploaded files for more intelligent searching',
-	);
 
 	$wgExtensionFunctions[] = 'efFileSearchSetup';
 	$wgAutoloadClasses['FileSearchIndexer'] = dirname( __FILE__ ) . '/FileSearchIndexer.php';
@@ -35,3 +27,4 @@ if( defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	exit( 1 );
 }
+

@@ -15,10 +15,8 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionFunctions[] = 'wfContributionseditcount';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Contributionseditcount',
-	'version'=>'1.1',
-	'url'=>'http://www.mediawiki.org/wiki/Extension:Contribution_Scores',
 	'description' => 'displays an edit count on Special:Contributions',
-	'author' => 'Ævar Arnfjörð Bjarmason',
+	'author' => 'Ævar Arnfjörð Bjarmason'
 );
 
 function wfContributionseditcount() {
@@ -35,7 +33,7 @@ function wfContributionseditcount() {
 				$wgMessageCache->addMessages( $messages, $lang );
 			$wgHooks['SpecialContributionsBeforeMainOutput'][] = array( &$this, 'hook' );
 		}
-
+		
 		public function hook( $uid ) {
 			global $wgOut, $wgLang;
 			if ( $uid != 0 )

@@ -16,7 +16,6 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionCredits['specialpage'][] = array(
 		'name' => 'Duplicator',
-		'version' => '1.1',
 		'author' => 'Rob Church',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Duplicator',
 		'description' => 'Create independent copies of articles with full edit histories',
@@ -44,7 +43,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgHooks['SkinTemplateBuildNavUrlsNav_urlsAfterPermalink'][] = 'efDuplicatorNavigation';
 		$wgHooks['MonoBookTemplateToolboxEnd'][] = 'efDuplicatorToolbox';
 	}
-
+	
 	/**
 	 * Set up special page aliases
 	 *
@@ -96,3 +95,4 @@ if( defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software, and cannot be used standalone.\n" );
 	exit( 1 );
 }
+

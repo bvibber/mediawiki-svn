@@ -4,7 +4,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
 
 /**#@+
  *  Provides a way of importing properly licensed photos from flickr
- *
+ * 
  * @addtogroup Extensions
  *
  * @link http://www.mediawiki.org/wiki/Extension:ImportFreeImages Documentation
@@ -34,11 +34,10 @@ $wgIFI_ThumbType = "t"; // s for square t for thumbnail
 require_once("SpecialPage.php");
 
 $wgExtensionCredits['other'][] = array(
-	'name' => 'ImportFreeImages',
-	'version' => '1.1',
-	'author' => 'Travis Derouin',
-	'description' => 'Provides a way of importing properly licensed photos from Flickr',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ImportFreeImages',
+    'name' => 'ImportFreeImages',
+    'author' => 'Travis Derouin',
+    'description' => 'Provides a way of importing properly licensed photos from flickr.',
+    'url' => 'http://www.mediawiki.org/wiki/Extension:ImportFreeImages',
 );
 
 function wfImportFreeImages() {
@@ -51,7 +50,7 @@ function wfImportFreeImages() {
 	}
 }
 
-// I wish I didn't have to copy paste most of
+// I wish I didn't have to copy paste most of 
 
 function wfIIF_uploadWarning($u) {
         global $wgOut;
@@ -111,21 +110,21 @@ function wfSpecialImportFreeImages( $par )
 	global $wgIFI_ResultsPerPage, $wgIFI_FlickrSort, $wgIFI_FlickrLicense, $wgIFI_ResultsPerRow, $wgIFI_CreditsTemplate;
 	global $wgIFI_GetOriginal, $wgIFI_PromptForFilename, $wgIFI_AppendRandomNumber, $wgIFI_FlickrSearchBy, $wgIFI_ThumbType;
 	require_once("phpFlickr-2.0.0/phpFlickr.php");
-
+	
 	$fname = "wfSpecialImportFreeImages";
 	$importPage = Title::makeTitle(NS_SPECIAL, "ImportFreeImages");
 
     if( $wgUser->isAnon() ) {
         $wgOut->errorpage( 'uploadnologin', 'uploadnologintext' );
         return;
-     }
+     } 
 
 	if (empty($wgIFI_FlickrAPIKey)) {
 		// error - need to set $wgIFI_FlickrAPIKey to use this extension
 		$wgOut->errorpage('error', 'importfreeimages_noapikey');
 		return;
-	}
-	$q = '';
+	}	
+	$q = '';	
 	if (isset($_GET['q']) && !$wgRequest->wasPosted() ) {
 		$q = $_GET['q'];
 	}
@@ -135,15 +134,15 @@ function wfSpecialImportFreeImages( $par )
 	if ($wgRequest->wasPosted() && isset($_POST['url'])) {
 		$import = $_POST['url'];
         if (!preg_match('/^http:\/\/farm[0-9]+.static.flickr.com/', $import)) {
-            $wgOut->errorpage('error', 'importfreeimages_invalidurl');
+            $wgOut->errorpage('error', 'importfreeimages_invalidurl');           
 		 	return;
         }
-
+	
        	$f = new phpFlickr($wgIFI_FlickrAPIKey);
-
+		
 		if ($wgIFI_GetOriginal) {
 			// get URL of original :1
-
+	
 			$sizes = $f->photos_getSizes($_POST['id']);
 			$original = '';
 			foreach ($sizes as $size) {
@@ -155,19 +154,19 @@ function wfSpecialImportFreeImages( $par )
 				}
 			}
 			//somtimes Large is returned but no Original!
-			if ($original == '' && $large != '')
-				$import = $large;
+			if ($original == '' && $large != '') 
+				$import = $large; 
 		}
 
 		// store the contents of the file
-		$pageContents = file_get_contents($import);
+		$pageContents = file_get_contents($import); 	
 		$name =$wgTmpDirectory . "/flickr-" . rand(0,999999);
 		$r = fopen($name, "w");
-		$size = fwrite ( $r, $pageContents);
+		$size = fwrite ( $r, $pageContents);	
 		fclose($r);
 		chmod( $name, 0777 );
 		$info = $f->photos_getInfo($_POST['id']);
-
+	
 		if (!empty($wgIFI_CreditsTemplate)) {
 			$caption = "{{" . $wgIFI_CreditsTemplate . $info['license'] . "|{$_POST['id']}|" . urldecode($_POST['owner']) . "|" . urldecode($_POST['name']). "}}";
 		} else {
@@ -194,7 +193,7 @@ function wfSpecialImportFreeImages( $par )
 		$import = $fname;
 
 /*
-		$arr = array ( "size" => $size, "tempname" => $name,
+		$arr = array ( "size" => $size, "tempname" => $name, 
 				"caption" => $caption,
 				"url" => $import, "title" => $_POST['t'] );
 */
@@ -203,11 +202,11 @@ function wfSpecialImportFreeImages( $par )
 		$filename = str_replace(":", "", $filename);
 		$filename = preg_replace('/ [ ]*/', ' ', $filename);
 
-		if (!class_exists("UploadForm"))
+		if (!class_exists("UploadForm")) 
 			require_once('includes/SpecialUpload.php');
 		$u = new UploadForm($wgRequest);
         $u->mUploadTempName = $name;
-        $u->mUploadSize     = $size;
+        $u->mUploadSize     = $size; 
 		$u->mUploadDescription = $caption;
 		$u->mRemoveTempFile = true;
 		$u->mIgnoreWarning =  true;
@@ -217,7 +216,7 @@ function wfSpecialImportFreeImages( $par )
 			$sk = $wgUser->getSkin();
            	$dlink = $sk->makeKnownLinkObj( $t );
             $warning .= '<li>'.wfMsgHtml( 'fileexists', $dlink ).'</li>';
-
+			
 			// use our own upload warning as we dont have a 'reupload' feature
 			wfIIF_uploadWarning	($u);
 			return;
@@ -231,16 +230,16 @@ function wfSpecialImportFreeImages( $par )
 		<form method=GET action='" . $importPage->getFullURL() . "'>".wfMsg('search').
 		": <input type=text name=q value='" . htmlspecialchars($q) . "'><input type=submit value=".wfMsg('search')."></form>");
 
-	if ($q != '') {
+	if ($q != '') { 
 		$page = $_GET['p'];
 		if ($page == '') $page = 1;
         	$f = new phpFlickr($wgIFI_FlickrAPIKey);
         	$q = $_GET['q'];
 		// TODO: get the right licenses
         	$photos = $f->photos_search(array(
-				"$wgIFI_FlickrSearchBy"=>"$q", "tag_mode"=>"any",
-				"page" => $page,
-				"per_page" => $wgIFI_ResultsPerPage, "license" => $wgIFI_FlickrLicense,
+				"$wgIFI_FlickrSearchBy"=>"$q", "tag_mode"=>"any", 
+				"page" => $page, 
+				"per_page" => $wgIFI_ResultsPerPage, "license" => $wgIFI_FlickrLicense, 
 				"sort" => $wgIFI_FlickrSort  ));
 
 		$i = 0;
@@ -279,7 +278,7 @@ function wfSpecialImportFreeImages( $par )
 		}
 
 	</script>
-
+ 
 			");
         	foreach ($photos['photo'] as $photo) {
 			if ($i % $wgIFI_ResultsPerRow == 0) $wgOut->addHTML("<tr>");
@@ -292,10 +291,10 @@ function wfSpecialImportFreeImages( $par )
                 	$wgOut->addHTML( "</a><br/>" );
                 	//$wgOut->addHTML( "<img  src=http://static.flickr.com/" . $photo['server'] . "/" . $photo['id'] . "_" . $photo['secret'] . "." . "jpg>" );
 					$url="http://farm{$photo['farm']}.static.flickr.com/{$photo['server']}/{$photo['id']}_{$photo['secret']}.jpg";
-                    $wgOut->addHTML( "<img src=\"http://farm{$photo['farm']}.static.flickr.com/{$photo['server']}/{$photo['id']}_{$photo['secret']}_{$wgIFI_ThumbType}.jpg\">" );
+                    $wgOut->addHTML( "<img src=\"http://farm{$photo['farm']}.static.flickr.com/{$photo['server']}/{$photo['id']}_{$photo['secret']}_{$wgIFI_ThumbType}.jpg\">" );     
 
-			$wgOut->addHTML( "<br/>(<a href='#' onclick=\"s2('$url', '{$photo['id']}','{$photo['owner']}', '"
-						. urlencode($owner['username']  ) . "', '" . urlencode($photo['title']) . "');\">" .
+			$wgOut->addHTML( "<br/>(<a href='#' onclick=\"s2('$url', '{$photo['id']}','{$photo['owner']}', '" 
+						. urlencode($owner['username']  ) . "', '" . urlencode($photo['title']) . "');\">" . 
 								wfMsg('importfreeimages_importthis') . "</a>)\n" );
 			$wgOut->addHTML("</td>");
 			if ($i % $wgIFI_ResultsPerRow == ($wgIFI_ResultsPerRow - 1) ) $wgOut->addHTML("</tr>");

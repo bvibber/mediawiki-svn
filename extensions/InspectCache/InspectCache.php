@@ -13,7 +13,7 @@ if (!defined('MEDIAWIKI')) {
 $wgExtensionCredits['specialpage'][] = array(
 	'version'     => '0.2',
 	'name'        => 'InspectCache',
-	'author'      => array( 'Tim Starling', 'Brion Vibber' ),
+	'author'      => 'Tim Starling, Brion Vibber',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:InspectCache',
 	'description' => 'A simple debugging tool to inspect the contents of the shared cache',
 );

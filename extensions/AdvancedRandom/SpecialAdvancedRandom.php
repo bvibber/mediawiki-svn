@@ -22,7 +22,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '1.1',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AdvancedRandom',
 	'description' => 'Get a random page from whos talk or subjectpage ' .
-			 'links to a given page, can be used like ' .
+	                 'links to a given page, can be used like ' .
 			 '[[Special:AdvancedRandom/Template:Featured/Talk]] ' .
 			 'to get a random featured article or like ' .
 			 '[[Special:AdvancedRandom/Template:GFDL/Image]] to ' .

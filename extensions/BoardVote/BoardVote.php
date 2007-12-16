@@ -12,7 +12,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'BoardVote',
 	'version' => '1.1',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:BoardVote',
-	'author' => array( 'Tim Starling', 'Rob Church', 'Brion Vibber' ),
+	'author' => 'Tim Starling, Rob Church, Brion Vibber',
 	'description' => '[[meta:Board elections|Wikimedia Board of Trustees election]]',
 );
 

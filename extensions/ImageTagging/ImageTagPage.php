@@ -6,11 +6,11 @@ $wgHooks['UnknownAction'][] = 'tagSearch';
 
 $wgExtensionFunctions[] = 'wfImageTagPageSetup';
 $wgExtensionCredits['other'][] = array(
-	'name' => 'Image Tagging',
-	'author' => 'Wikia, Inc. (Tristan Harris, Tomasz Klim)',
-	'version' => '1.0',
-	'url' => 'http://www.wikia.com/wiki/Help:Image_tagging',
-	'description' => 'Wikia Image Tagging',
+    'name' => 'Image Tagging',
+    'author' => 'Wikia, Inc. (Tristan Harris, Tomasz Klim)',
+    //'version' => 1.0,
+    'url' => 'http://www.wikia.com/wiki/Help:Image_tagging',
+    'description' => 'Wikia Image Tagging',
 );
 
 // other hooks to try: 'ParserAfterTidy', ...
@@ -55,7 +55,7 @@ function wfCheckArticleImageTags($outputPage, $text)
              text-transform:none;
              white-space:nowrap;" id="coordinates" class="plainlinksneverexpand">
             ' . wfMsg('imagetag_seemoreimages', $titleText, $o->count) .
-             '</span></a>');
+             '</span></a>'); 
         }
     }
     return true;
@@ -63,7 +63,7 @@ function wfCheckArticleImageTags($outputPage, $text)
 
 
 // TKL 2006-03-07: it doesn't work in new MediaWiki, modification required in includes/Wiki.php (class name change only)
-// $wgNamespaceTemplates[NS_IMAGE] = 'ImageTagPage';
+// $wgNamespaceTemplates[NS_IMAGE] = 'ImageTagPage'; 
 
 function addTag($action, $article)
 {
@@ -92,7 +92,7 @@ function addTag($action, $article)
         wfPurgeTitle($imgTitle);
 
         $db =& wfGetDB(DB_MASTER);
-        $db->insert("`$wgDBname`.`imagetags`",
+        $db->insert("`$wgDBname`.`imagetags`", 
         array(  'img_page_id' => 0,//$img->getTitle()->getArticleID(),
 		'img_name' => $imgName,
 		'article_tag' => $tagName,
@@ -322,11 +322,11 @@ function wfGetImageTags($img, $imgName) {
 
     $sk = $wgUser->getSkin();
     $db =& wfGetDB(DB_SLAVE);
-    $db->selectDB($wgDBname);
+    $db->selectDB($wgDBname);	
     $res = $db->select(
-	array("imagetags"),
-	array("article_tag", "tag_rect", "unique_id"),
-	array("img_name" => $imgName),
+	array("imagetags"), 
+	array("article_tag", "tag_rect", "unique_id"), 
+	array("img_name" => $imgName), 
 	__METHOD__ );
 
     $html = '';
@@ -335,7 +335,7 @@ function wfGetImageTags($img, $imgName) {
         if ( strlen($html) > 0 )
             $html .= ', ';
 
-        $wgOut->addHTML("<!-- tag rect: " . $o->tag_rect . ", tag title: " . $o->article_tag . ", unique_id: " . $o->unique_id . "-->");
+        $wgOut->addHTML("<!-- tag rect: " . $o->tag_rect . ", tag title: " . $o->article_tag . ", unique_id: " . $o->unique_id . "-->"); 
 
         $span = '<span id="' . $o->article_tag . '-tag" onmouseout="hideTagBox()" onmouseover="tagBoxPercent(' . $o->tag_rect . ', false)">';
 
@@ -395,7 +395,7 @@ function wfImageTagPageSetup() {
   $wgMessageCache->addMessage('oneactionatatimemessage', "Sorry, only one tagging action at a time.  Please wait for the existing action to complete.");
   $wgMessageCache->addMessage('oneuniquetagmessage', "Sorry, this image already has a tag with this name.");
   $wgMessageCache->addMessage('imagetag_seemoreimages', 'See more images of &#8220;$1&#8221; ($2)');
-
+ 
   $wgLogTypes[] = 'tag';
 
 class ImageTagPage extends ImagePage
@@ -422,7 +422,7 @@ class ImageTagPage extends ImagePage
         if ( $wgUser->isLoggedIn() )
             $wgOut->addHTML("<input type='hidden' value='1' id='userLoggedIn'/>");
 
-        if ( $wgUser->isAllowed('edit') &&
+        if ( $wgUser->isAllowed('edit') && 
              $this->mTitle->userCanEdit() &&
              ( $this->mTitle->isProtected('edit') == false || in_array( 'sysop', $wgUser->getGroups() ) ) )
             $wgOut->addHTML("<input type='hidden' value='1' id='canEditPage'/>");
@@ -433,7 +433,7 @@ class ImageTagPage extends ImagePage
             $tagList = wfGetImageTags($this->img, $imgName);
 
             #if ( $tagList )
-            $wgOut->addHTML("<div id='tagListDiv'><span id='tagList'>$tagList</span></div>");
+            $wgOut->addHTML("<div id='tagListDiv'><span id='tagList'>$tagList</span></div>");     
         }
 
 	wfProfileOut( __METHOD__ );
@@ -518,7 +518,7 @@ class ImageTagPage extends ImagePage
 				//$anchoropen = '';
 				//$anchorclose = '';
 //				$width = 'auto'; //'100%';
-//				$height = 'auto'; //'100%';
+//				$height = 'auto'; //'100%'; 
 				$wgOut->addHTML( '<div class="fullImageLink" id="file">' .
 				     "<img border=\"0\" src=\"{$url}\" width=\"{$width}\" height=\"{$height}\" style=\"max-width: {$maxWidth}px;\" alt=\"" .
 				     htmlspecialchars( $wgRequest->getVal( 'image' ) ).'" />' .
@@ -596,7 +596,7 @@ END
 <li><a href="#filehistory">' . wfMsgHtml( 'imghistory' ) . '</a></li>
 <li><a href="#filelinks">' . wfMsgHtml( 'imagelinks' ) . '</a></li>' .
       ($metadata ? '<li><a href="#metadata">' . wfMsgHtml( 'metadata' ) . '</a></li>' : '') . '
-<li><a href="javascript:addImageTags()">' . wfMsgHtml( 'addimagetag' ) . '</a><sup><font color=red>New!</font></sup></li>'
+<li><a href="javascript:addImageTags()">' . wfMsgHtml( 'addimagetag' ) . '</a><sup><font color=red>New!</font></sup></li>' 
 . '</ul>';
 
     $r .= '<div id="tagStatusDiv" style="margin: 5px 5px 10px 5px; padding: 10px; border: solid 1px #ffe222; background: #fffbe2; display: none;"><table style="background-color: #fffbe2;"><tr><td width="450" height="30" align="center" style="padding-left: 20px;"><img src="/skins/common/progress-wheel.gif" id="progress_wheel" style="display:none;"><div id="tagging_message" style="background: #fffbe2;">' . wfMsgHtml('tagging_instructions') . '</td><td valign="middle"><input type="button" onclick="doneAddingTags();" id="done_tagging" name="done_tagging" value="' . wfMsgHtml('done_button') . '" /></div></td></tr></table></div>';
@@ -609,7 +609,7 @@ END
 <select name='tagType'>
 <option selected>Article</option>
 <option>Category</option>
-</select>
+</select> 
 -->";
 
     $r .= "<input style='position: absolute; left: 189px; top: 6px; width: 39px; height: 20px;' type='submit' name='Tag' value='" . wfMsgHtml('tag_button') . "' onclick='submitTag()'/>";

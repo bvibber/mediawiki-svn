@@ -21,10 +21,9 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
-$wgExtensionCredits['other'][] = array(
-	'name' => 'LanguageSelector',
-	'version'     => '1.1',
-	'author' => 'Daniel Kinzler',
+$wgExtensionCredits['other'][] = array( 
+	'name' => 'LanguageSelector', 
+	'author' => 'Daniel Kinzler', 
 	'url' => 'http://mediawiki.org/wiki/Extension:LanguageSelector',
 	'description' => 'language selector on every page, also for visitors',
 );
@@ -40,7 +39,7 @@ define( 'LANGUAGE_SELECTOR_PREFER_CLIENT_LANG',  2 ); #use language most preferr
 * * LANGUAGE_SELECTOR_PREFER_CONTENT_LANG - use the $wgLanguageCode setting, if accepted by the client
 * * LANGUAGE_SELECTOR_USE_CONTENT_LANG - use the client's preferred language, if in $wgLanguageSelectorLanguages
 */
-$wgLanguageSelectorDetectLanguage = LANGUAGE_SELECTOR_PREFER_CLIENT_LANG;
+$wgLanguageSelectorDetectLanguage = LANGUAGE_SELECTOR_PREFER_CLIENT_LANG; 
 
 /**
 * Languages to offer in the language selector. Per default, this includes all languages MediaWiki knows
@@ -79,7 +78,7 @@ function wfLanguageSelectorExtension() {
 	if ( $wgLanguageSelectorLanguages === NULL ) {
 		$wgLanguageSelectorLanguages = @$GLOBALS['wgPolyglotLanguages'];
 	}
-
+	
 	if ( $wgLanguageSelectorLanguages === NULL ) {
 		$wgLanguageSelectorLanguages = array_keys( $GLOBALS['wgLanguageNames'] );
 	}
@@ -108,7 +107,7 @@ function wfLanguageSelectorExtension() {
 		//      but something is still wrong with caching...
 		header('Vary: Cookie', false); //hrm, this is pretty BAD.
 		header('Vary: Accept-Language', false);
-
+		 
 		if ( $wgLanguageSelectorRequestedLanguage || $wgLanguageSelectorDetectLanguage != LANGUAGE_SELECTOR_USE_CONTENT_LANG ) {
 
 			if (!class_exists('StubAutoLang')) {
@@ -116,18 +115,18 @@ function wfLanguageSelectorExtension() {
 					function __construct() {
 						parent::__construct( 'wgLang' );
 					}
-
+				
 					function __call( $name, $args ) {
 						return $this->_call( $name, $args );
 					}
-
+				
 					//partially copied from StubObject.php. There should be a better way...
 					function _newObject() {
 						global $wgContLanguageCode, $wgContLang, $wgLanguageSelectorDetectLanguage, $wgLanguageSelectorRequestedLanguage;
-
+	
 						$code = $wgLanguageSelectorRequestedLanguage;
 						if (!$code) $code = wfLanguageSelectorDetectLanguage($wgLanguageSelectorDetectLanguage);
-
+				
 						if( $code == $wgContLanguageCode ) {
 							return $wgContLang;
 						} else {
@@ -137,7 +136,7 @@ function wfLanguageSelectorExtension() {
 					}
 				}
 			}
-
+	
 			$wgLang = new StubAutoLang;
 		}
 	}
@@ -152,7 +151,7 @@ function wfLanguageSelectorExtension() {
 	}
 
 	$wgOut->addScript('<script type="'.$wgJsMimeType.'">
-		addOnloadHook(function() {
+		addOnloadHook(function() { 
 			var i = 1;
 			while ( true ) {
 				var btn = document.getElementById("languageselector-commit-"+i);
@@ -212,7 +211,7 @@ function wfLanguageSelectorSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
 				'active' => ($ln == $code),
 			);
 		}
-
+		
 		$tpl->data['sidebar']['languageselector'] = $lines;
 		return true;
 	}
@@ -225,7 +224,7 @@ function wfLanguageSelectorSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
 		case LANGUAGE_SELECTOR_INTO_SUBTITLE: $key = 'subtitle'; break;
 		case LANGUAGE_SELECTOR_INTO_CATLINKS: $key = 'catlinks'; break;
 	}
-
+	
 	if ($key) {
 		$html = wfLanguageSelectorHTML();
 		$tpl->set( $key, $tpl->data[ $key ] . $html );
@@ -236,9 +235,9 @@ function wfLanguageSelectorSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
 
 function wfLanguageSelectorDetectLanguage($mode) {
 	global $wgContLang, $wgLanguageSelectorLanguages;
-
+	
 	$contLang = $wgContLang->getCode();
-
+	
 	if (!$mode || $mode == LANGUAGE_SELECTOR_USE_CONTENT_LANG) {
 		return $contLang;
 	}
@@ -248,18 +247,18 @@ function wfLanguageSelectorDetectLanguage($mode) {
 	* HTTP header.
 	*/
 	$l= @$_SERVER["HTTP_ACCEPT_LANGUAGE"];
-
+	
 	if (empty($l)) return $contLang;
-
+	
 	$l= split(',',$l);
-
+	
 	/**
 	* normalize accepted languages
 	*/
 	$languages= array();
 	foreach ($l as $lan) {
 		$lan= trim($lan);
-
+		
 		$idx= strpos($lan,';');
 		if ($idx !== false) {
 			#FIXME: qualifiers are ignored, order is relevant!
@@ -268,7 +267,7 @@ function wfLanguageSelectorDetectLanguage($mode) {
 		}
 
 		$languages[]= $lan;
-
+		
 		$idx= strpos($lan,'-');
 		if ($idx !== false) {
 			$lan= substr($lan,0,$idx);
@@ -277,14 +276,14 @@ function wfLanguageSelectorDetectLanguage($mode) {
 	}
 
 	/**
-	* see if the content language is accepted by the
+	* see if the content language is accepted by the 
 	* client.
 	*/
-	if ( ($mode == LANGUAGE_SELECTOR_PREFER_CONTENT_LANG)
+	if ( ($mode == LANGUAGE_SELECTOR_PREFER_CONTENT_LANG) 
 		&& in_array($contLang,$languages) ) {
 		return $contLang;
 	}
-
+	
 	/**
 	* look for a language that is acceptable to the client
 	* and known to the wiki.
@@ -302,12 +301,12 @@ function wfLanguageSelectorDetectLanguage($mode) {
 			continue;
 		}
 		*/
-
+		
 		if (in_array($code,$languages)) {
 			return $code;
 		}
 	}
-
+		
 	return $contLang;
 }
 
@@ -318,7 +317,7 @@ function wfLanguageSelectorAbortNewAccount( &$u ) { //FIXME: doesn't quite work 
 	//if $wgUser->isAnon, this means remembering what the user selected
 	//otherwise, it would mean inheriting the language from the user creating the account.
 	if ($wgUser->isAnon()) {
-		$u->setOption('language', $wgUser->getOption('language'));
+		$u->setOption('language', $wgUser->getOption('language')); 
 	}
 
 	return true;
@@ -349,3 +348,4 @@ function wfLanguageSelectorHTML( $style = NULL, $class = NULL, $selectorstyle = 
 
 	return $html;
 }
+

@@ -12,11 +12,10 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionFunctions[] = 'wfSpecialWikimaps';
 $wgExtensionCredits['specialpage'][] = array(
-	'name' => 'Wikimaps',
-	'version' => '1.1',
-	'author' => 'Jens Frank',
-	'url' => 'http://meta.wikimedia.org/wiki/Wikimaps',
-	'description' => 'Show maps',
+        'name' => 'Wikimaps',
+        'author' => 'Jens Frank',
+        'url' => 'http://meta.wikimedia.org/wiki/Wikimaps',
+        'description' => 'Show maps',
 );
 
 global $wgWikimapsMessages;
@@ -35,3 +34,5 @@ function wfSpecialWikimaps() {
         }
 #	print "<pre>"; print_r( $wgSpecialPages ); print "</pre>";
 }
+?>
+

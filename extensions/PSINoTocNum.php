@@ -27,12 +27,12 @@
  * This extension realizes a new MagicWord __NOTOCNUM__.
  * If an article contains this MagicWord numbering in the
  * table of contents (TOC) is disabled by extra CSS.
- *
+ * 
  * How to use:
- * * include this extension in LocalSettings.php:
+ * * include this extension in LocalSettings.php: 
  *   require_once("extensions/PSINoTocNum.php");
  * * Add "__NOTOCNUM__" to any article.
- *
+ * 
  * @author Benedikt Meuthrath
  * @version $Revision: 1.4 $
  */
@@ -45,8 +45,8 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'PSINoTocNum',
 	'version' => '$Revision: 1.4 $',
 	'author' => 'Benedikt Meuthrath',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:PSINoTocNum',
-	'description' => 'New MagicWord "<nowiki>__NOTOCNUM__</nowiki>"',
+        'url' => 'http://www.mediawiki.org/wiki/Extension:PSINoTocNum',
+        'description' => 'New MagicWord "<nowiki>__NOTOCNUM__</nowiki>".',
 );
 $wgHooks['MagicWordMagicWords'][] = 'PSINoTocNumMagicWordMagicWords';
 $wgHooks['MagicWordwgVariableIDs'][] = 'PSINoTocNumMagicWordwgVariableIDs';
@@ -55,13 +55,13 @@ $wgHooks['ParserBeforeInternalParse'][] = 'PSINoTocNumParserBeforeInternalParse'
 
 function PSINoTocNumMagicWordMagicWords(&$magicWords) {
 	$magicWords[] = 'MAG_NOTOCNUM';
-
+	
 	return true;
 }
 
 function PSINoTocNumMagicWordwgVariableIDs(&$wgVariableIDs) {
 	$wgVariableIDs[] = MAG_NOTOCNUM;
-
+	
 	return true;
 }
 
@@ -81,3 +81,5 @@ function PSINoTocNumParserBeforeInternalParse($parser, $text, $stripState) {
 
 	return true;
 }
+
+?>

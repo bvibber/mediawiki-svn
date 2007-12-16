@@ -14,10 +14,8 @@ if ( ! defined( 'MEDIAWIKI' ) ) die();
 $wgExtensionFunctions[] = 'wfSpecialEval';
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Eval',
-	'version' => '1.1',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Eval',
 	'author' => 'Ævar Arnfjörð Bjarmason',
-	'description' => 'Adds [[Special:Eval|an interface]] to the <code>eval()</code> function',
+	'description' => 'adds [[Special:Eval|an interface]] to the <code>eval()</code> function',
 );
 
 $dir = dirname(__FILE__) . '/';

@@ -6,13 +6,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 require_once( 'DYMNorm.php' );
 
-$wgExtensionCredits['other'][] = array(
-	'name' => 'DidYouMean',
-	'version' => '1.1',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:DidYouMean',
-	'author' => 'hippietrail (Andrew Dunbar)',
-	'description' => 'Did you mean',
-);
+$wgExtensionCredits['other'][] = array( 'name' => 'DidYouMean', 'author' => 'hippietrail (Andrew Dunbar)' );
 
 # do database lookup from these
 $wgHooks['ArticleNoArticleText'][] = 'wfDymArticleNoArticleText';
@@ -173,7 +167,7 @@ function wfDymLookup( $pageid, $title ) {
 					/* SELECT */ 'page_title',
 					/* WHERE  */ array( 'page_id = dp_pageid', 'dp_normid' => $normid )
 			);
-
+			
 			$nr = $dbr->numRows( $res );
 
 			if ($nr == 0) {
@@ -395,3 +389,5 @@ function wfDoUpdate( $pageid, $title ) {
 
 	}
 }
+
+

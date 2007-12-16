@@ -3,11 +3,9 @@ if (!defined('MEDIAWIKI')) die();
 
 /** Register the extension */
 $wgExtensionCredits['specialpage'][] = array(
-	'name'        => 'Interact',
-	'version' => '1.1',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Interact',
+	'name' => 'Interact',
 	'description' => 'Add Special:Interact that let you know who you talked with.',
-	'author'      => 'Ashar Voultoiz',
+	'author'	=> 'Ashar Voultoiz',
 );
 
 /** This is a querypage */
@@ -65,3 +63,4 @@ $wgQueryPages[] = array('InteractPage', 'Interact');
 
 require_once($IP.'/includes/SpecialPage.php');
 SpecialPage::addPage( new SpecialPage('Interact') );
+

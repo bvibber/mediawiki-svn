@@ -14,10 +14,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Tim Starling',
-	'version'     => '1.1',
 	'name' => 'Makesysop',
 	'description' => 'Gives bureaucrats/stewards the ability to modify user levels',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Makesysop',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Makesysop'
 );
 
 $dir = dirname( __FILE__ );

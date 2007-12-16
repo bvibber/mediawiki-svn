@@ -9,8 +9,6 @@
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'HTTP redirect',
-	'version' => '1.1',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:HTTPRedirect',
 	'description' => 'A hook to make the wiki issue HTTP redirects rather than wiki redirects',
 	'author' => 'Ævar Arnfjörð Bjarmason',
 );
@@ -20,7 +18,7 @@ $wgExtensionFunctions[] = 'wfHTTPRedirect';
 function wfHTTPRedirect() {
 	wfUsePHP( 5.0 );
 	wfUseMW( '1.6alpha' );
-
+	
 	class HTTPRedirect {
 		public function __construct() {
 			global $wgHooks;
@@ -28,7 +26,7 @@ function wfHTTPRedirect() {
 			$wgHooks['ArticleViewRedirect'][] = array( &$this, 'redirectHook' );
 		}
 
-
+		
 		public static function redirectHook( Article &$article ) {
 			global $wgOut;
 
