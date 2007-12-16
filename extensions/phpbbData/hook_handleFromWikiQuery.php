@@ -1,5 +1,11 @@
 <?php
-function efPhpbbData_handleToWiki(&$hooks, $outputCache) {
+
+function efPhpbbData_handleToWiki(&$hook, $outputCache) {
+	$result = $hook->previous_hook_result('BeforePageDisplay');
+	if (!empty($result['result'])) {
+		$outputCache = $result['result'];
+	}
+	
 	if ( isset( $_REQUEST['toWiki'] ) ) {
 	
 		$domDoc = new DOMDocument();
@@ -29,12 +35,17 @@ function efPhpbbData_handleToWiki(&$hooks, $outputCache) {
 
 		return $domDoc->saveHTML();
 	} else {
-		return false;
+		return $outputCache;
 	}
 }
 $phpbb_hook->register('BeforePageDisplay', 'efPhpbbData_handleToWiki');
 	
-function efPhpbbData_doTokenReplacement(&$hooks, $outputCache) {
+function efPhpbbData_doTokenReplacement(&$hook, $outputCache) {
+	$result = $hook->previous_hook_result('BeforePageDisplay');
+	if (!empty($result['result'])) {
+		$outputCache = $result['result'];
+	}
+	
 	$validQueryKeys = array('f','t');
 	$queryString = '';
 	
@@ -48,7 +59,9 @@ function efPhpbbData_doTokenReplacement(&$hooks, $outputCache) {
 	}
 	
 	$tokens = array(
-		'{PAGE_URL_LOCAL_ESCAPED}' => urlencode( $_SERVER['PHP_SELF'] . $queryString ) );
+		'{PAGE_URL_LOCAL_ESCAPED}' => urlencode( $_SERVER['PHP_SELF'] . $queryString ),
+		urlencode('{PAGE_URL_LOCAL_ESCAPED}') => urlencode( $_SERVER['PHP_SELF'] . $queryString ),
+		);
 	
 	foreach ($tokens as $key => $value) {
 		$outputCache = str_replace($key,$value,$outputCache);

@@ -1,25 +1,32 @@
 <?php
-
 class OutputBufferHook {
-	function hookTemplateDisplay(&$hooks, $handle, $include_once = true) {
+	function hookTemplateDisplay(&$hook, $handle, $include_once = true) {
+		$result = $hook->previous_hook_result(array('template', 'display'));
+
 		ob_start();
+		return $result['result'];
 	}
 
-	function hookExitHandler(&$hooks) {
+	function hookExitHandler(&$hook) {
 		$outputCache = ob_get_contents();
 		ob_end_clean();
 		
+		$result = $hook->previous_hook_result('exit_handler');
+
 		global $phpbb_hook;
-		if ( !empty($phpbb_hook) && $phpbb_hook->call_hook('BeforePageDisplay', $outputCache) ) {
-			if ($phpbb_hook->hook_return('BeforePageDisplay')) {
-				$hookReturn = $phpbb_hook->hook_return_result('BeforePageDisplay');
+		if ( !empty($hook) && $hook->call_hook('BeforePageDisplay', $outputCache) ) {
+			if ($hook->hook_return('BeforePageDisplay')) {
+				$hookReturn = $hook->hook_return_result('BeforePageDisplay');
 				if ($hookReturn) {
+					//return $hookReturn;
 					$outputCache =  $hookReturn;
 				}
 			}
 		}
 
 		eval(' ?>' . $outputCache . '<?php ');
+		
+		return $result['result'];
 	}
 }
 

@@ -20,7 +20,8 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $wgExtensionFunctions[] = 'efPhpbbData_Setup';
-$wgHooks['LanguageGetMagic'][]       = 'efPhpbbData_LanguageGetMagic';
+$wgHooks['LanguageGetMagic' ][] = 'efPhpbbData_LanguageGetMagic';
+$wgHooks['BeforePageDisplay'][] = 'efPhpbbData_BeforePageDisplay';
 
 function efPhpbbData_Setup() {
         global $wgParser, $wgMessageCache;
@@ -38,6 +39,32 @@ function efPhpbbData_Setup() {
 		return true;
 }
 
+function efPhpbbData_BeforePageDisplay(&$out) { 
+	global $wgRequest;
+	
+	# Check for toForum query string argument
+	if ($wgRequest->getText('toForum')) {
+		# Make a link that returns to the forum page the user
+		# just came from
+		$link = '<div style="float: right;"><a href="' . 
+			htmlspecialchars($wgRequest->getText('toForum')) . 
+			'">&rarr; Return to Forum</a></div>' . $text;
+		
+		# Add the Return to Forum link in to the page title
+		# Since we're making it render HTML in a second,
+		# encode special characters in the old page title
+		$out->mPagetitle = $link . htmlspecialchars($out->getPageTitle());
+		
+		# Content of mPageLinkTitle doesn't actually get displayed 
+		# When there is a value in mPageLinkTitle, the template 
+		# forces HTML rather than Text rendering of $out->mPagetitle
+		$out->mPageLinkTitle = $out->mPagetitle;
+	}
+	
+	# Be nice.
+	return true;
+}
+
 function efPhpbbData_LanguageGetMagic( &$magicWords, $langCode ) {
         # Add the magic word
         # The first array element is case sensitive, in this case it is not case sensitive
@@ -49,16 +76,16 @@ function efPhpbbData_LanguageGetMagic( &$magicWords, $langCode ) {
 }
 
 function efPhpbbData_makeTopicWikiLink($display_text='', $forum_id=null, $topic_id=null, $post_id=null) {
-	global $wgPhpbbDataRootPath, $wgTitle;
+	global $wgPhpbbDataRootPath, $wgTitle, $wgServer;
 
 	if (!empty($post_id)) {
-		$urlText = "{{SERVER}}/{$wgPhpbbDataRootPath}viewpost.php?p={$post_id}&toWiki=" . 
+		$urlText = "{$wgServer}/{$wgPhpbbDataRootPath}viewpost.php?p={$post_id}&toWiki=" . 
 			urlencode($wgTitle->escapeLocalURL());
 	} elseif (!empty($topic_id)) {
-		$urlText = "{{SERVER}}/{$wgPhpbbDataRootPath}viewtopic.php?t={$topic_id}&toWiki=" . 
+		$urlText = "{$wgServer}/{$wgPhpbbDataRootPath}viewtopic.php?t={$topic_id}&toWiki=" . 
 			urlencode($wgTitle->escapeLocalURL());
 	} elseif (!empty($forum_id)) {
-		$urlText = "{{SERVER}}/{$wgPhpbbDataRootPath}viewforum.php?t={$forum_id}&toWiki=" . 
+		$urlText = "{$wgServer}/{$wgPhpbbDataRootPath}viewforum.php?t={$forum_id}&toWiki=" . 
 			urlencode($wgTitle->escapeLocalURL());
 	}
 	
