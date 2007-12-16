@@ -13,11 +13,9 @@ $wgGroupPermissions['staff']['spamregex'] = true;
 
 $wgExtensionFunctions[] = 'wfSpamRegexSetup';
 $wgExtensionCredits['specialpage'][] = array(
-	'name'        => 'Regular Expression Spam Block',
-	'version'     => '1.1',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:Regular_Expression_Spam_Block',
-	'author'      => 'Bartek',
-	'description' => 'Filters out unwanted phrases in edited pages, based on regular expressions',
+	'name' => 'Regular Expression Spam Block',
+	'author' => 'Bartek',
+	'description' => 'filters out unwanted phrases in edited pages, based on regular expressions'
 );
 
 /* special page init */

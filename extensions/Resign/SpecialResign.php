@@ -12,10 +12,9 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionFunctions[] = 'wfSpecialResign';
 $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Rotem Liss',
-	'version' => '1.1',
 	'name' => 'Resign',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Resign',
-	'description' => 'Gives users the ability to remove their permissions',
+	'description' => 'Gives users the ability to remove their permissions'
 );
 
 # Add resign permission for every group set in the database
@@ -36,3 +35,5 @@ function wfSpecialResign() {
 	require_once( dirname(__FILE__) . '/SpecialResign.i18n.php' );
 	$wgMessageCache->addMessagesByLang( efResignMessages() );
 }
+
+

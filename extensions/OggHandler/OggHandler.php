@@ -11,7 +11,7 @@ $wgMediaHandlers['application/ogg'] = 'OggHandler';
 if ( !in_array( 'ogg', $wgFileExtensions ) ) {
 	$wgFileExtensions[] = 'ogg';
 }
-ini_set( 'include_path',
+ini_set( 'include_path', 
 	"$oggDir/PEAR/File_Ogg" .
 	PATH_SEPARATOR .
 	ini_get( 'include_path' ) );
@@ -24,10 +24,9 @@ $wgParserOutputHooks['OggHandler'] = array( 'OggHandler', 'outputHook' );
 $wgHooks['LanguageGetMagic'][] = 'OggHandler::registerMagicWords';
 $wgExtensionCredits['media'][] = array(
 	'name' => 'OggHandler',
-	'version' => '1.5',
 	'author' => 'Tim Starling',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:OggHandler',
-	'description' => 'Handler for Ogg Theora and Vorbis files, with JavaScript player',
+	'description' => 'Handler for Ogg Theora and Vorbis files, with JavaScript player.',
 );
 
 /******************* CONFIGURATION STARTS HERE **********************/
@@ -49,3 +48,5 @@ $wgFFmpegLocation = 'ffmpeg';
 //
 $wgCortadoJarFile = "cortado-ovt-stripped-0.2.2-patched.jar";
 #$wgCortadoJarFile = "cortado-ovt-stripped-0.2.2.jar";
+
+?>

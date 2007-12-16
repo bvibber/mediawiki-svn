@@ -36,10 +36,9 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'ProtectSection',
-	'version' => '1.1',
 	'author' => 'ThomasV',
 	'description' => 'Allows authorised users to protect parts of a text',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ProtectSection',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:ProtectSection'
 );
 
 $dir = dirname(__FILE__) . '/';

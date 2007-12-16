@@ -15,7 +15,6 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionFunctions[] = 'efSort';
 	$wgExtensionCredits['parserhook'][] = array(
 		'name' => 'Sort',
-		'version'     => '1.1',
 		'author' => 'Rob Church',
 		'description' => 'Create simple sorted lists using <tt>&lt;sort&gt;</tt>',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Sort',

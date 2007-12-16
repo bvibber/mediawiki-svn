@@ -13,10 +13,8 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionFunctions[] = array( 'CssHook', 'setup' );
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Page CSS',
-	'version' => '1.1',
-	'url' => 'http://mediawiki.org/wiki/Extension:PageCSS',
 	'description' => 'Parser hook to add per-page CSS using the <tt>&lt;css&gt;</tt> tag',
-	'author' => 'Ævar Arnfjörð Bjarmason',
+	'author' => 'Ævar Arnfjörð Bjarmason'
 );
 
 class CssHook {
@@ -25,7 +23,7 @@ class CssHook {
 		global $wgParser;
 		$wgParser->setHook( 'css', array( 'CssHook', 'parse' ) );
 	}
-
+	
 	public static function parse( $content, array $args, Parser $parser ) {
 		$css = htmlspecialchars( trim( Sanitizer::checkCss( $content ) ) );
 		$parser->mOutput->addHeadItem( <<<EOT

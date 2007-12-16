@@ -22,16 +22,15 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
-$wgExtensionCredits['other'][] = array(
-	'name' => 'Polyglot',
-	'version' => '1.1',
-	'author' => 'Daniel Kinzler',
+$wgExtensionCredits['other'][] = array( 
+	'name' => 'Polyglot', 
+	'author' => 'Daniel Kinzler', 
 	'url' => 'http://mediawiki.org/wiki/Extension:Polyglot',
-	'description' => 'Support for content in multiple languages in a single MediaWiki',
+	'description' => 'support for content in multiple languages in a single mediawiki.',
 );
 
 /**
-* Set languages with polyglot support; applies to negotiation of interface language,
+* Set languages with polyglot support; applies to negotiation of interface language, 
 * and to lookups for loclaized pages.
 * Set this to a small set of languages that are likely to be used on your site to
 * improve performance. Leave NULL to allow all languages known to MediaWiki via
@@ -74,7 +73,7 @@ function wfPolyglotExtension() {
 	if ( $wgPolyglotLanguages === NULL ) {
 		$wgPolyglotLanguages = @$GLOBALS['wgLanguageSelectorLanguages'];
 	}
-
+	
 	if ( $wgPolyglotLanguages === NULL ) {
 		$wgPolyglotLanguages = array_keys( $GLOBALS['wgLanguageNames'] );
 	}
@@ -90,8 +89,8 @@ function wfPolyglotArticleFromTitle( &$title, &$article ) {
 
 	$ns = $title->getNamespace();
 
-	if ( $ns < 0
-		|| in_array($ns,  $wfPolyglotExcemptNamespaces)
+	if ( $ns < 0 
+		|| in_array($ns,  $wfPolyglotExcemptNamespaces) 
 		|| ($wfPolyglotExcemptTalkPages && Namespace::isTalk($ns)) ) {
 		return true;
 	}
@@ -133,13 +132,13 @@ function wfPolyglotArticleFromTitle( &$title, &$article ) {
 	if (!class_exists('PolyglotRedirect')) {
 		class PolyglotRedirect extends Article {
 			var $mTarget;
-
+		
 			function __construct( $source, $target ) {
 				Article::__construct($source);
 				$this->mTarget = $target;
 				$this->mIsRedirect = true;
 			}
-
+		
 			function followRedirect() {
 				return $this->mTarget;
 			}
@@ -150,11 +149,11 @@ function wfPolyglotArticleFromTitle( &$title, &$article ) {
 			}
 		}
 	}
-
+	
 	//print $t->getFullText();
 
 	$article = new PolyglotRedirect( $title, $t ); //trigger redirect to lovcalized page
-
+	
 	return true;
 }
 
@@ -212,9 +211,9 @@ function wfPolyglotParserAfterTidy( &$parser, &$text ) {
 		}
 	}
 
-	//TODO: would be nice to handle "normal" interwiki-links here.
+	//TODO: would be nice to handle "normal" interwiki-links here. 
 	//      but we would have to hack into Title::getInterwikiLink, otherwise
-	//      the links are not recognized.
+	//      the links are not recognized. 
 	/*
 	foreach ($userlinks as $link) {
 		$m = explode(':', $link, 2);
@@ -266,3 +265,4 @@ function wfPolyglotSkinTemplateOutputPageBeforeExec($skin, $tpl) {
 
 	return true;
 }
+

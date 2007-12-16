@@ -35,11 +35,9 @@ $wgStableVersionCaching = false;
 $wgGroupPermissions['user']['stableversion'] = true;
 
 $wgExtensionCredits['StableVersion'][] = array(
-	'name' => 'Stable version',
-	'version'     => '1.1',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:Stable_version',
-	'description' => 'An extension to allow the marking of a stable version',
-	'author' => 'Magnus Manske',
+        'name' => 'Stable version',
+        'description' => 'An extension to allow the marking of a stable version.',
+        'author' => 'Magnus Manske'
 );
 
 $wgAvailableRights[] = 'stableversion';
@@ -88,14 +86,14 @@ function wfStableVersionAddCache() {
 		return;
 	}
 	$wgStableVersionAddCache = true;
-
+	
 	// Default language is english
 	require_once( 'language/en.php' );
 
 	global $wgLang;
 	$filename = 'language/' . addslashes( $wgLang->getCode() ) . '.php';
 	// inclusion might fail :p
-	if( file_exists($filename) )
+	if( file_exists($filename) ) 
 		include( $filename );
 }
 
@@ -134,9 +132,9 @@ function wfStableVersionArticlePageDataBeforeHook( &$article, &$fields ) {
  */
 function wfStableVersionArticlePageDataAfterHook( &$article, &$fields ) {
 	global $wgRequest;
-
+	
 	$fname = "wfStableVersionArticlePageDataAfterHook";
-
+	
 	# No stable versions of a non-existing article
 	if( !$article->exists() ) {
 		return true;
@@ -146,10 +144,10 @@ function wfStableVersionArticlePageDataAfterHook( &$article, &$fields ) {
 
 	# Trying to figure out the revision number
 	$rev = $wgRequest->getInt( 'oldid', $fields->page_latest );
-
+	
 	# Run the query
 	wfStableVersionSetArticleVersionStatusAndCache( $article, $rev );
-
+	
 	wfProfileOut( $fname );
 	return true;
 	}
@@ -158,11 +156,11 @@ function wfStableVersionArticlePageDataAfterHook( &$article, &$fields ) {
  * Adds new variables "mStable" and "mStableCache" to the article
  * @param $article The article
  * @param $rev The revision number
-*/
+*/ 
 function wfStableVersionSetArticleVersionStatusAndCache( &$article, $rev ) {
 	$fname = "wfStableVersionSetArticleVersionStatusAndCache";
 	wfProfileIn( $fname );
-
+	
 	$dbr =& wfGetDB( DB_SLAVE );
 	$res = $dbr->select(
 			/* FROM   */ 'stableversions',
@@ -172,7 +170,7 @@ function wfStableVersionSetArticleVersionStatusAndCache( &$article, $rev ) {
 			array( "ORDER BY" => "sv_page_rev DESC" )
 	);
 
-
+	
 	$article->mIsStable = false;
 	$article->mLastStable = 0;
 	while( $o = $dbr->fetchObject( $res ) ) {
@@ -218,12 +216,12 @@ function wfStableVersionHeaderHook( &$article ) {
 
 	wfStableVersionAddCache();
 	$st = ""; # Subtitle
-
+	
 	# Gah...these hooks are not consistant
 	# Load if not loaded to avoid errors - Aaron
-	if ( !isset($article->mIsStable) )
+	if ( !isset($article->mIsStable) ) 
 		wfStableVersionSetArticleVersionStatusAndCache( $article, $article->getRevIdFetched() );
-
+	
 	if( $article->mIsStable ) {
 		# This is the stable version
 		if( $article->mLatest == $article->mLastStable ) {
@@ -271,7 +269,7 @@ function wfStableVersionHeaderHook( &$article ) {
 		}
 
 	}
-
+	
 	if( wfStableVersionCanChange() && !$wgRequest->getCheck('direction') ) {
 		# This user may alter the stable version info
 		$st .= " ";
@@ -320,7 +318,7 @@ function wfStableVersionArticleAfterFetchContentHook( &$article, &$content ) {
 	if( !$article->mIsStable ) {
 		return true;
 	}
-
+	
 	# This is a stable version and has a cache, so use that
 	$content = $article->mStableCache;
 	return true;
@@ -345,8 +343,8 @@ function wfStableVersion() {
 			SpecialPage::SpecialPage( 'StableVersion' );
 			$this->includable( true );
 		}
-
-
+		
+		
 		function fixNoWiki( &$state ) {
 			if ( is_object( $state ) ) {
 				# MW 1.9 version
@@ -356,7 +354,7 @@ function wfStableVersion() {
 			} else {
 				return;
 			}
-
+			
 			# Surround nowiki content with <nowiki> again
 			for( $content = end( $array ); $content !== false; $content = prev( $array ) ) {
 				$key = key( $array );
@@ -377,7 +375,7 @@ function wfStableVersion() {
 			$title = $article->getTitle();
 			$article->loadContent( true ); # FIXME: Do we need the "true" here? For what? Safe redirects??
 			$text = $article->mContent;
-
+			
 			$p = new Parser();
 			$p->disableCache();
 			$wgStableVersionCaching = true;
@@ -386,26 +384,26 @@ function wfStableVersion() {
 			$text = $p->parse( $text, $title, $parserOptions );
 			// Forward compatibility for parser object output (bug 9393)
 			$text = is_object($text) ? $text->mText : $text;
-
+			
 			$stripState = $p->mStripState;
 			$wgStableVersionCaching = false;
 			$text = $p->replaceVariables( $text, $parserOptions );
-
+		
 			$this->fixNoWiki( $stripState );
 			$p->mStripState = $stripState;
 			$text = $p->unstrip( $text, $p->mStripState );
 			$text = $p->unstripNoWiki( $text, $p->mStripState );
-
+			
 			return $text;
 		}
-
+	
 		/**
 		 * execute()
 		 */
 		function execute( $par = null ) {
 			global $wgOut, $wgRequest, $wgArticle;
 			$fname = "SpecialStableVersion::execute";
-
+			
 			# Sanity checks
 			$mode = $wgRequest->getText( 'mode', "" );
 			if( $mode != 'set' && $mode != 'reset' ) {
@@ -441,7 +439,7 @@ function wfStableVersion() {
 				$url = $t->getLocalURL();
 				$act = wfMsg( 'stableversion_reset_log' );
 			}
-
+			
 			$article = new Article( $t );
 
 			# Old stable version
@@ -452,9 +450,9 @@ function wfStableVersion() {
 				$before = wfMsg( 'stableversion_before_yes', $oldstable );
 			}
 			$act .= " " . $before;
-
+			
 			$type = SV_TYPE_STABLE; # FIXME: This should become something else once there are several "types"
-
+			
 			# Get template-replaced cache
 			$cache = $this->getCacheText( $article );
 
@@ -486,17 +484,17 @@ function wfStableVersion() {
 
 			$fname = "SpecialStableVersion::updateDatabase";
 			wfProfileIn( $fname );
-
+			
 			$dbw =& wfGetDB( DB_MASTER );
 			$dbw->begin();
-
+			
 			# Delete this just in case it was already set
 			$conditions = array( 'sv_page_id' => $id );
 			if( !$wgStableVersionThereCanOnlyBeOne ) {
 				$conditions['sv_page_rev'] = $clearstable;
 			}
 			$dbw->delete( 'stableversions', $conditions, $fname );
-
+			
 			$values = array(
 				'sv_page_id'  => $id,
 				'sv_page_rev' => $newstable,
@@ -505,7 +503,7 @@ function wfStableVersion() {
 				'sv_date'     => wfTimestamp( TS_MW ) ,
 				'sv_cache'    => $cache,
 			);
-
+			
 			if( $newstable > 0 ) {
 				$dbw->insert( 'stableversions',
 					$values ,
@@ -520,3 +518,6 @@ function wfStableVersion() {
 
 	SpecialPage::addPage( new SpecialStableVersion );
 }
+
+
+

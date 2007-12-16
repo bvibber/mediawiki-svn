@@ -12,8 +12,6 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'NopurgeRC',
 	'description' => 'A hook that prevents old recentchanges entries from being deleted',
 	'author' => 'Ævar Arnfjörð Bjarmason',
-	'version'     => '1.1',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:NoPurgeRC',
 );
 
 function wfNopurgeRCHook() {

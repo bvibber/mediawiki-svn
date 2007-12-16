@@ -61,17 +61,16 @@ if( !isset( $wgSelectCategoryEnableSubpages ) ) $wgSelectCategoryEnableSubpages 
 ## Register extension setup hook and credits:
 $wgExtensionFunctions[]	= 'fnSelectCategory';
 $wgExtensionCredits['parserhook'][] = array(
-	'name'        => 'SelectCategory',
-	'version'     => '1.1',
-	'author'      => 'Leon Weber & Manuel Schneider',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:SelectCategory',
-	'description' => 'Allows the user to select from existing categories when editing a page',
+	'name'		=> 'SelectCategory',
+	'author'	=> 'Leon Weber & Manuel Schneider',
+	'url'		=> 'http://www.mediawiki.org/wiki/Extension:SelectCategory',
+	'description'	=> 'Allows the user to select from existing categories when editing a page'
 );
 
 ## Set Hook:
 function fnSelectCategory() {
 	global $wgHooks;
-
+	
 	## Showing the boxes
 	# Hook when starting editing:
 	$wgHooks['EditPage::showEditForm:initial'][] = array( 'fnSelectCategoryShowHook', false );

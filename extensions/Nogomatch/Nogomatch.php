@@ -11,10 +11,7 @@ if (!defined('MEDIAWIKI')) die();
 $wgHooks['SpecialSearchNogomatch'][] = 'wfNogomatchHook';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Nogomatch hook',
-	'version'     => '1.0',
 	'author' => 'Ævar Arnfjörð Bjarmason',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Nogomatch',
-	'description' => 'Nogomatch',
 );
 
 function wfNogomatchHook( &$title ) {

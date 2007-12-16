@@ -20,10 +20,8 @@ $wgGroupPermissions['staff']['regexblock'] = true;
 $wgExtensionFunctions[] = 'wfRegexBlockSetup';
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Regular Expression Name Block',
-	'version' => '1.1',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Regular_Expression_Name_Block',
 	'author' => 'Bartek',
-	'description' => 'Alternate user block (by given name, using regular expressions)'
+	'description' => 'alternate user block (by given name, using regular expressions)'
 );
 
 /* special page init */

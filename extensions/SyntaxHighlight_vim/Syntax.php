@@ -11,17 +11,15 @@ if ( ! defined( 'MEDIAWIKI' ) )
 
 $wgExtensionFunctions[] = 'wfSyntax';
 $wgExtensionCredits['other'][] = array(
-	'name'        => 'Syntax',
-	'version'     => '1.1',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:Syntax',
-	'author'      => 'Ævar Arnfjörð Bjarmason',
-	'description' => 'A syntax highlight library',
+	'name' => 'Syntax',
+	'author' => 'Ævar Arnfjörð Bjarmason',
+	'description' => 'A syntax highlight library'
 );
 
 function wfSyntax() {
 	wfUsePHP( 5.1 );
 	wfUseMW( '1.6alpha' );
-
+	
 	class Syntax {
 		private $mIn;
 		private $mInFile, $mOutFile;
@@ -35,7 +33,7 @@ function wfSyntax() {
 
 		public function getOut() {
 			$this->genTemp();
-
+			
 			if ( ! $handle = fopen( $this->mInFile, 'a' ) )
 				die( 'AAAAAAA' );
 			if ( fwrite( $handle, $this->mIn ) === false )
@@ -47,7 +45,7 @@ function wfSyntax() {
 			$html = preg_replace( '~</p>\s*</body>.*?$~s', '</style>', $html );
 
 			$this->rmTemp();
-
+			
 			return $html;
 		}
 
@@ -55,11 +53,11 @@ function wfSyntax() {
 			$this->mInFile = $this->mktemp();
 			$this->mOutFile = $this->mktemp();
 		}
-
+		
 		private static function mktemp() {
 			return rtrim( shell_exec( 'mktemp -u' ), "\n" );
 		}
-
+		
 		private function rmTemp() {
 			unlink( $this->mInFile );
 			unlink( $this->mOutFile );
@@ -67,7 +65,7 @@ function wfSyntax() {
 
 		private function run() {
 			shell_exec( "vim -u {$this->mVimrc} -e +'run! syntax/2html.vim' +':w {$this->mOutFile}' +':qa!' {$this->mInFile}" );
-
+			
 			return file_get_contents( $this->mOutFile );
 		}
 	}

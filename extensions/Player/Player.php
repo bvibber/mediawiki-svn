@@ -15,12 +15,11 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
-$wgExtensionCredits['specialpage'][] = array(
-	'name' => 'Player',
-	'version' => '1.1',
-	'author' => 'Daniel Kinzler, brightbyte.de',
+$wgExtensionCredits['specialpage'][] = array( 
+	'name' => 'Player', 
+	'author' => 'Daniel Kinzler, brightbyte.de', 
 	'url' => 'http://mediawiki.org/wiki/Extension:Player',
-	'description' => 'Embedded multimedia playback using common browser plugins',
+	'description' => 'embedded multimedia playback using common browser plugins',
 );
 
 $wgExtensionFunctions[] = "playerSetup";
@@ -106,7 +105,7 @@ function playerAjaxHandler( $file, $options ) {
 
 		$player = Player::newFromName( $file, $options, 'thumbsize' );
 		$html = $player->getPlayerHTML( );
-
+	
 		$response->addText( $html );
 	}
 	catch (PlayerException $ex) {
@@ -139,16 +138,16 @@ function loadPlayerI18n() {
 	if ( $initialized ) return true;
 
 	$messages= array();
-
+	
 	$f= dirname( __FILE__ ) . '/Player.i18n.php';
 	include( $f );
-
+	
 	$f= dirname( __FILE__ ) . '/Player.i18n.' . $wgContLang->getCode() . '.php';
 	if ( file_exists( $f ) ) include( $f );
-
+	
 	$initialized = true;
 	$wgMessageCache->addMessages( $messages );
-
+	
 	return true;
 }
 
@@ -156,17 +155,17 @@ function loadPlayerI18n() {
 if (!function_exists('urldecodeMap')) {
 	function urldecodeMap($s) {
 		if (!$s) return array();
-
+	
 		$entries = explode('&', $s);
 		$map = array();
-
+	
 		foreach ($entries as $e) {
 			$m = explode('=', $e, 2);
 			$k = urldecode($m[0]);
 			$v = sizeof($m) < 2 ? true : urldecode($m[1]);
 			$map[$k] = $v;
 		}
-
+	
 		return $map;
 	}
 }
@@ -174,15 +173,17 @@ if (!function_exists('urldecodeMap')) {
 if (!function_exists('urlencodeMap')) {
 	function urlencodeMap($map) {
 		$s = '';
-
+	
 		foreach ($map as $k => $v) {
 			if ($s!=='') $s.= '&';
 			$s.= urlencode($k);
-
+			
 			if ($v === false || $v === NULL) continue;
 			else if ($v !== true) $s.= '=' . urlencode($v);
 		}
-
+	
 		return $s;
 	}
 }
+
+
