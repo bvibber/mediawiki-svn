@@ -289,7 +289,7 @@ $allMessages = array(
 		'changeauthor-changeauthors-multi'  => 'Uur Autor(e)',
 		'changeauthor-explanation-multi'    => 'Mäd dit Formular koast du do Autore fon do Versione annerje. Annere eenfach aan of moor Autorennoomen in ju Lieste, moak n Kommentoar (optionoal) un klik ap dän „Autor annerje“-Knoop.',
 		'changeauthor-changeauthors-single' => 'Autor annerje',
-		'changeauthor-explanation-single'   => 'Mäd dit Formular koast du do Autoren fon ne Version annerje. Annere eenfach dän Autorennoome in ju Lieste, beoarbaide n Kommentoar (optionoal) un klik ap dän „Autor annerje“-Knoop.',
+		'changeauthor-explanation-single'   => 'Mäd dit Formular koast du do Autoren fon ne Version annerje. Annerje eenfach dän Autorennoome in ju Lieste, beoarbaidje n Kommentoar (optionoal) un klik ap dän „Autor annerje“-Knoop.',
 		'changeauthor-invalid-username'     => 'Uungultige Benutsernoome „$1“.',
 		'changeauthor-nosuchuser'           => 'Dät rakt naan Benutser „$1“.',
 		'changeauthor-revview'              => 'Version #$1 fon $2',
@@ -300,6 +300,5 @@ $allMessages = array(
 		'changeauthor-logentry'             => 'annerde Autorennoome fon ju $2 fon $1 fon $3 ap $4',
 		'changeauthor-logpagename'          => 'Autorennoome-Annerengslogbouk',
 		'changeauthor-rev'                  => 'Version $1',
-
-),
+	),
 );

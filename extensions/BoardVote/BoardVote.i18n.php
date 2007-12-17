@@ -179,8 +179,69 @@ $wgBoardVoteMessages['ar'] = array(
  * @author SPQRobin
  */
 $wgBoardVoteMessages['ast'] = array(
-	'boardvote'         => "Eleiciones pal Conseyu d'Alministración de Wikimedia (Board of Trustees)",
-	'boardvote_blocked' => 'Sentímoslo, fuisti bloquiáu na to wiki. Los usuarios bloquiaos nun puen votar',
+	'boardvote'              => "Eleiciones pal Conseyu d'Alministración de Wikimedia (Board of Trustees)",
+	'boardvote_entry'        => "* [[Special:Boardvote/vote|Votar]]
+* [[Special:Boardvote/list|Llista de votos hasta la fecha]]
+* [[Special:Boardvote/dump|Volcáu de datos encriptaos d'eleición]]",
+	'boardvote_intro'        => "<p>Bienveníu a la tercer eleición pal Conseyu d'Alministración de Wikimedia. 
+Tamos votando pa qu'una persona represente a la comunidá d'usuarios de 
+los distintos proyectos Wikimedia. Ellos aidarán a determinar la direición 
+futura que los proyectos Wikimedia van siguir, en forma individual y en grupu, 
+y representa los <em>tos</em> intereses y esmoliciones hacia'l Conseyu d'Alministración. 
+L'elixíu decidirá les formes de xenerar ingresos y la destinación d'ellos.</p>
+
+<p>Por favor, llei con procuru les declaraciones y rempuestes de los candidatos
+enantes de votar. Caún de los candidatos ye un usuariu respetáu que contribuyó 
+con munchu esfuerzu y tiempu pa facer d'estos proyectos un llugar afayadizu 
+col enfotu de distribuyir llibremente'l conocimientu humanu.</p>
+
+<p>Pues votar por tolos candidatos que quieras. El candidatu con más votos en cada 
+posición sedrá declaráu'l ganador d'esa posición. En casu d'empate, llevaráse a
+cabu una eleición de desempate.</p>
+
+<p>Pa más información, ver:</p>
+<ul><li><a href=\\\"http://meta.wikimedia.org/wiki/Election_FAQ_2006/Es\\\" class=\\\"external\\\">Entrugues frecuentes sobre la ellección (FAQ)</a></li>
+<li><a href=\\\"http://meta.wikimedia.org/wiki/Election_candidates_2006/Es\\\" class=\\\"external\\\">Candidatos</a></li></ul>",
+	'boardvote_intro_change' => "<p>Yá votasti. Sicasí, pues camudar el to votu usando'l formulariu d'embaxo. Por favor, rellena les casielles al llau de cada candidatu que quieras aprobar.</p>",
+	'boardvote_entered'      => 'Gracies, el to votu quedó grabáu. Si quies, pues guardar los siguientes detalles. El rexistru del to votu ye:
+
+<pre>$1</pre>
+
+Encriptóse cola clave pública de los Alministradores de la Eleición:
+
+<pre>$2</pre>
+
+A continuación amuésase la versión encriptada resultante. Va ser publicada en [[Special:Boardvote/dump]]. 
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Volver]]',
+	'boardvote_nosession'    => "Nun se pue determinar la to ID d'usuariu de Wikimedia. Por favor, identifícate na wiki onde tas rexistráu y vete a <nowiki>[[Special:Boardvote]]</nowiki>. Tienes qu'usar una cuenta con a lo menos $1 contribuciones enantes del $2, y con una primer edición enantes del $3.",
+	'boardvote_notloggedin'  => "Nun tas rexistráu. Pa votar tienes qu'usar una cuenta con a lo menos $1 contribuciones enantes del $2, y con una primer edición enantes del $3.",
+	'boardvote_notqualified' => 'Nun cumples criterios pa votar nesta eleición. Necesites tener feches $3 ediciones enantes del $2, y que la to primer edición seya enantes del $5.',
+	'boardvote_novotes'      => 'Naide votó tovía.',
+	'boardvote_time'         => 'Hora',
+	'boardvote_user'         => 'Usuariu',
+	'boardvote_edits'        => 'Ediciones',
+	'boardvote_days'         => 'Díes',
+	'boardvote_ua'           => 'Representante del usuariu',
+	'boardvote_listintro'    => '<p>Esta ye una llista de tolos votos rexistraos hasta la fecha. $1 pa los datos encriptaos.</p>',
+	'boardvote_dumplink'     => 'Calca equí',
+	'boardvote_submit'       => 'Aceutar',
+	'boardvote_strike'       => 'Tachar',
+	'boardvote_unstrike'     => 'Destachar',
+	'boardvote_needadmin'    => 'Esta operación namái la puen facer los alministradores de la eleición.',
+	'boardvote_sitenotice'   => "<a href={{localurle:Special:Boardvote/vote}}\\\">Eleiciones al Conseyu d'Alministración de Wikimedia</a>: Votación abierta hasta'l 12 de xunetu",
+	'boardvote_notstarted'   => 'La votación entá nun empecipió',
+	'boardvote_closed'       => 'La votación ta zarrada, mira en breve [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En la páxina de resultaos de les eleiciones].',
+	'boardvote_edits_many'   => 'munches',
+	'boardvote_blocked'      => 'Sentímoslo, fuisti bloquiáu na to wiki. Los usuarios bloquiaos nun puen votar',
+	'boardvote_welcome'      => "¡Bienveníu '''$1'''!",
+	'boardvote_redirecting'  => "P'ameyorar la seguridá y tresparencia, tamos faciendo les votaciones nun servidor esternu y controláu de forma independiente.
+
+Vas ser redirixíu a esti servidor esternu en 20 segundos. [$1 Calca equí] pa dir agora.
+
+Podría apaecer un avisu de seguridá tocante a un certificáu non firmáu.",
 );
 
 $wgBoardVoteMessages['bcl'] = array(
@@ -1883,13 +1944,17 @@ $wgBoardVoteMessages['su'] = array(
 	'grouppage-boardvote'     => '{{ns:project}}:Kuncén saémbara anggota dewan',
 );
 
+/** Swedish (Svenska)
+ * @author Sannab
+ * @author SPQRobin
+ */
 $wgBoardVoteMessages['sv'] = array(
-	'boardvote'               => 'Val till Wikimedias styrelse (Wikimedia Board of Trustees)',
-	'boardvote_entry'         => '* [[m:Election_candidates_2006/Sv|Kandidaternas presentationer]]
+	'boardvote'              => 'Val till Wikimedias styrelse (Wikimedia Board of Trustees)',
+	'boardvote_entry'        => '* [[m:Election_candidates_2006/Sv|Kandidaternas presentationer]]
 * [[Special:Boardvote/vote|Rösta]]
 * [[Special:Boardvote/list|Lista röster]]
 * [[Special:Boardvote/dump|Dumpa krypterad röstpost]]',
-	'boardvote_intro'         => '<p>Välkommen till det tredje valet till Wikimedia Foundations styrelse. Vi ska välja en person som ska representera wikigemenskapen, det vill säga användarna på de olika Wikimedia-projekten. Denna person ska, tillsammans med styrelsens andra användarrepresentant, hjälpa till att bestämma Wikimediaprojektens framtida inriktning vart för sig och som grupp, och i styrelsen representera <em>dina</em> intressen och bekymmer. Styrelsen ska besluta om sätt att få in pengar och hur dessa ska fördelas.</p>
+	'boardvote_intro'        => '<p>Välkommen till det tredje valet till Wikimedia Foundations styrelse. Vi ska välja en person som ska representera wikigemenskapen, det vill säga användarna på de olika Wikimedia-projekten. Denna person ska, tillsammans med styrelsens andra användarrepresentant, hjälpa till att bestämma Wikimediaprojektens framtida inriktning vart för sig och som grupp, och i styrelsen representera <em>dina</em> intressen och bekymmer. Styrelsen ska besluta om sätt att få in pengar och hur dessa ska fördelas.</p>
 
 <p>Innan du röstar, läs kandidaternas programförklaringar och deras svar på andra användares frågor. Alla kandidaterna är respekterade anvädnare som lagt ner åtskillig tid och möda för att göra projekten till en välkomnande miljö, ägnat åt inskaffande och fri spridning av mänsklig kunskap.</p>
 
@@ -1900,10 +1965,10 @@ $wgBoardVoteMessages['sv'] = array(
 <p>Mera information hittas på:</p>
 <ul><li><a href="http://meta.wikipedia.org/wiki/Election_FAQ_2006/Sv" class="external">Vanliga frågor</a></li>
 <li><a href="http://meta.wikipedia.org/wiki/Election_candidates_2006/Sv" class="external">Kandidaterna</a></li></ul>',
-	'boardvote_intro_change'  => '<p>Du har redan röstat. Emellertid kan du ändra din röst genom att använda nedanstående formulär. Var god markera rutorna invid de kandidater du röstar på.</p>
+	'boardvote_intro_change' => '<p>Du har redan röstat. Emellertid kan du ändra din röst genom att använda nedanstående formulär. Var god markera rutorna invid de kandidater du röstar på.</p>
 
 <ul><li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Sv" class="external">Kandidaternas presentationer</a></li>',
-	'boardvote_entered'       => 'Tack för det. Din röst är registrerad.
+	'boardvote_entered'      => 'Tack för det. Din röst är registrerad.
 
 Om du så önskar, kan du notera följande detaljer. Din röst är registrerad som :
 
@@ -1918,27 +1983,29 @@ Den resulterande krypterade versionen följer här. Den kommer att visas öppet 
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Tillbaka]]',
-	'boardvote_nosession'     => 'Jag kan inte fastställa din användaridentitet på Wikimedia. Var snäll och logga in på den wiki där du har rätt att rösta och gå till <nowiki>[[Special:Boardvote]]</nowiki>. Du måste använda dig av ett konto med åtminstone $1 bidrag innan $2 och där den första redigeringen utfördes innan $3.',
-	'boardvote_notloggedin'   => 'Du är inte inloggad. För att rösta måste du ha ett konto med minst $1 bidrag före $2.',
-	'boardvote_notqualified'  => 'Tyvärr har du enbart gjort $1 redigeringar före $2. Du måste ha minst $3 redigeringar för att få rösta.
+	'boardvote_nosession'    => 'Jag kan inte fastställa din användaridentitet på Wikimedia. Var snäll och logga in på den wiki där du har rätt att rösta och gå till <nowiki>[[Special:Boardvote]]</nowiki>. Du måste använda dig av ett konto med åtminstone $1 bidrag innan $2 och där den första redigeringen utfördes innan $3.',
+	'boardvote_notloggedin'  => 'Du är inte inloggad. För att rösta måste du ha ett konto med minst $1 bidrag före $2.',
+	'boardvote_notqualified' => "Tyvärr har du enbart gjort $1 redigeringar före $2. Du måste ha minst $3 redigeringar för att få rösta.
 
-Om du fick detta meddelande trots att du \'\'\'har gjort\'\'\' fler än $1 redigeringar i ett Wikimediaprojekt, v g försäkra dig om att du röstar från rätt projekt.',
-	'boardvote_novotes'       => 'Ingen har röstat ännu.',
-	'boardvote_time'          => 'Tid',
-	'boardvote_user'          => 'Användare',
-	'boardvote_edits'         => 'Redigeringar',
-	'boardvote_days'          => 'Dagar',
-	'boardvote_ip'            => 'IP',#identical but defined
-	'boardvote_listintro'     => '<p>Det här är en lista över alla röster som har registrerats hittills.
+Om du fick detta meddelande trots att du '''har gjort''' fler än $1 redigeringar i ett Wikimediaprojekt, v g försäkra dig om att du röstar från rätt projekt.",
+	'boardvote_novotes'      => 'Ingen har röstat ännu.',
+	'boardvote_time'         => 'Tid',
+	'boardvote_user'         => 'Användare',
+	'boardvote_edits'        => 'Redigeringar',
+	'boardvote_days'         => 'Dagar',
+	'boardvote_ip'           => 'IP',
+	'boardvote_listintro'    => '<p>Det här är en lista över alla röster som har registrerats hittills.
 $1 för de krypterade uppgifterna.</p>',
-	'boardvote_dumplink'      => 'Klicka här',
-	'boardvote_submit'        => 'OK',#identical but defined
-	'boardvote_strike'        => 'Stryk',
-	'boardvote_unstrike'      => 'Återställ efter strykning',
-	'boardvote_needadmin'     => 'Endast valadministratörer kan utföra denna operation.',
-	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">Styrelseval i Wikimediastiftelsen</a>:  Valet pågår till och med den 12 juli kl 02:00 (CEST)',
-	'boardvote_notstarted'    => 'Röstning har ej påbörjats än',
+	'boardvote_dumplink'     => 'Klicka här',
+	'boardvote_submit'       => 'OK',
+	'boardvote_strike'       => 'Stryk',
+	'boardvote_unstrike'     => 'Återställ efter strykning',
+	'boardvote_needadmin'    => 'Endast valadministratörer kan utföra denna operation.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Styrelseval i Wikimediastiftelsen</a>:  Valet pågår till och med den 12 juli kl 02:00 (CEST)',
+	'boardvote_notstarted'   => 'Röstning har ej påbörjats än',
+	'boardvote_welcome'      => "Välkommen '''$1'''!",
 );
+
 $wgBoardVoteMessages['wa'] = array(
 	'boardvote' => 'Vôtaedje po les manaedjeus del fondåcion Wikimedia',
 	'boardvote_entry' => '* [[Special:Boardvote/vote|Vôter]]

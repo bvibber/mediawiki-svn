@@ -64,6 +64,8 @@ $messages = array(
  * @author SPQRobin
  */
 'ast' => array(
+	'makesysopname'      => "Nome d'usuariu:",
+	'makesysop'          => "Convertir a un usuariu n'alministrador",
 	'already_sysop'      => 'Esti usuariu yá ye un alministrador',
 	'already_bureaucrat' => 'Esti usuariu yá ye un burócrata',
 ),

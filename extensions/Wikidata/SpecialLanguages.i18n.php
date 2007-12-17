@@ -92,6 +92,15 @@ $wgLanguageManagerMessages['sk'] = array(
 	'langman_title' => 'Správca jazykov',
 	'languages' => 'Wikidata: Správca jazykov',
 );
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$wgLanguageManagerMessages['stq'] = array(
+	'langman_title' => 'Sproakmanager',
+	'languages'     => 'Wikidata: Sproakmanager',
+);
+
 $wgLanguageManagerMessages['sv'] = array(
 	'langman_title' => 'Språkhanterare',
 	'languages' => 'Wikidata: Språkhanterare',
@@ -104,6 +113,7 @@ $wgLanguageManagerMessages['zh-hant'] = array(
 	'langman_title' => '語言管理員',
 	'languages'=>'Wikidata: 語言管理員',
 );
+
 $wgLanguageManagerMessages['yue'] = $wgLanguageManagerMessages['zh-hant'];
 $wgLanguageManagerMessages['zh'] = $wgLanguageManagerMessages['zh-hans'];
 $wgLanguageManagerMessages['zh-cn'] = $wgLanguageManagerMessages['zh-hans'];

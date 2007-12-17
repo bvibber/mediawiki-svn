@@ -64,6 +64,14 @@ function efMediaFunctionsMessages() {
 	'mediafunctions-not-exist'     => '„$1“ ist nicht vorhanden',
 ),
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+'el' => array(
+	'mediafunctions-invalid-title' => '"$1" δεν είναι έγκυρος τίτλος',
+	'mediafunctions-not-exist'     => '"$1" δεν υπάρχει',
+),
+
 'fr' => array(
 	'mediafunctions-invalid-title' => '« $1 » n\'est pas un titre valide.',
 	'mediafunctions-not-exist'     => '« $1 » n\'existe pas.',

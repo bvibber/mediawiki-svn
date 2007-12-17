@@ -46,12 +46,16 @@ $messages['de'] = array(
 	'watchers_less_than_x'   => 'Weniger als $1 Benutzer beobachten diese Seite.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
 $messages['el'] = array(
 	'watchers'               => 'Παρατηρητές',
 	'watchers_link_title'    => 'Ποιος παρατηρεί αυτήν τη σελίδα;',
 	'watchers_error_article' => '<b>Σφάλμα:</b> Το άρθρο δεν υπάρχει.',
 	'watchers_noone_watches' => 'Κανείς δεν παρατηρεί αυτήν την σελίδα.',
 	'watchers_x_or_more'     => '$1 ή περισσότεροι άνθρωποι παρατηρούν αυτήν τη σελίδα.',
+	'watchers_less_than_x'   => 'Λιγότεροι από $1 άνθρωποι παρακολουθούν αυτήν την σελίδα.',
 );
 
 $messages['fr'] = array(

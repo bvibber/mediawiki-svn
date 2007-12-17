@@ -92,13 +92,17 @@ riddler|Riddler",
 	'vote-login-link' => 'en em enrollañ',
 ),
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
 'el' => array(
-	'vote' => 'Ψηφοφορία',
-	'vote-caption' => 'Η επιλογή σας:',
-	'vote-submit' => 'Ψηφοφορία',
+	'vote'                => 'Ψηφοφορία',
+	'vote-caption'        => 'Η επιλογή σας:',
+	'vote-submit'         => 'Ψηφοφορία',
+	'vote-results'        => 'Αποτελέσματα ψηφοφορίας',
 	'vote-results-choice' => 'Επιλογή',
-	'vote-login' => 'Πρέπει $1 να ψηφίσετε.',
-	'vote-login-link' => 'Εγγραφή',
+	'vote-login'          => 'Πρέπει $1 να ψηφίσετε.',
+	'vote-login-link'     => 'Εγγραφή',
 	'vote-invalid-choice' => 'Πρέπει να επιλέξετε μια από της διαθέσιμες επιλογές.',
 ),
 

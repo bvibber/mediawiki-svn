@@ -453,6 +453,21 @@ function efCountEditsMessages( $single = false ) {
 	'countedits-nocontribs' => 'Ne postoje prilozi na ovoj viki.',
 ),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+'stq' => array(
+	'countedits'              => 'Biedraachställer',
+	'countedits-warning'      => 'Woarschauenge: Du beuurdeelst n Bouk nit bloot ätter sin Uumesleek, beuurdeel deeruum n Autor uk nit bloot ätter sin Biedraachtäller.',
+	'countedits-username'     => 'Benutsernoome:',
+	'countedits-ok'           => 'OK',
+	'countedits-nosuchuser'   => 'Dät rakt naan Benutser mäd dän Noome $1.',
+	'countedits-resultheader' => 'Resultoat foar $1',
+	'countedits-resulttext'   => '$1 häd $2 Beoarbaidengen',
+	'countedits-mostactive'   => 'Do aktivste Benutsere',
+	'countedits-nocontribs'   => 'In {{ns:project}} rakt et neen Beoarbaidengen.',
+),
+
 /* Sundanese (Kandar via BetaWiki) */
 'su' => array(
 	'countedits' => 'Itung éditan',

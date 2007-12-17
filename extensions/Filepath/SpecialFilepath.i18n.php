@@ -31,6 +31,16 @@ $wgFilepathMessages['arc'] = array(
 	'filepath'        => 'ܫܒܝܠܐ ܕܫܘܦܝܢܐ',
 	'filepath_submit' => 'ܫܒܝܠܐ',
 );
+
+/** Asturian (Asturianu)
+ * @author SPQRobin
+ */
+$wgFilepathMessages['ast'] = array(
+	'filepath'        => "Ruta d'archivu",
+	'filepath_page'   => 'Archivu:',
+	'filepath_submit' => 'Ruta',
+);
+
 $wgFilepathMessages['bg'] = array(
 	'filepath'        => 'Път до файла',
 	'filepath_page'   => 'Файл:',

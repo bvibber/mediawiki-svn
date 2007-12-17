@@ -46,8 +46,16 @@ $messages['hsb'] = array(
 	'eval_code'   => 'Kod',
 );
 
+/** Dutch (Nederlands)
+ * @author Annabel
+ * @author SPQRobin
+ */
 $messages['nl'] = array(
+	'eval'        => 'Evalueer',
+	'eval_submit' => 'Evalueer',
+	'eval_escape' => 'Stop uitvoer',
 	'eval_out'    => 'Uitvoer',
+	'eval_code'   => 'Code',
 );
 
 /** Occitan (Occitan)

@@ -88,15 +88,26 @@ $wgChemFunctions_Messages['en'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Input error!'
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $wgChemFunctions_Messages['ar'] = array(
-	'chemicalsources' => 'مصادر كيميائية',
-	'chemFunctions_ListPage' => 'مصادر كيميائية',
-	'chemFunctions_DataList' => 'بالأسفل قائمة بوصلات إلى مواقع قد تحتوي على معلومات عن المادة الكيميائية التي تبحث عنها.<br /><br /> * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br /> * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS في جامعة أكسفورد (UK) (غير قابل للبحث)</a><br />',
-	'chemFunctions_CAS' => 'رقم CAS',
-	'chemFunctions_DrugBank' => 'بنك المخدرات',
-	'chemFunctions_ECNumber' => 'رقم EC',
-	'chemFunctions_Formula' => 'الصيغة',
-	'chemFunctions_Name' => 'اسم IUPAC',
+	'chemicalsources'                  => 'مصادر كيميائية',
+	'chemFunctions_ListPage'           => 'مصادر كيميائية',
+	'chemFunctions_DataList'           => 'بالأسفل قائمة بوصلات إلى مواقع قد تحتوي على معلومات عن المادة الكيميائية التي تبحث عنها.<br /><br /> * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br /> * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS في جامعة أكسفورد (UK) (غير قابل للبحث)</a><br />',
+	'chemFunctions_CAS'                => 'رقم CAS',
+	'chemFunctions_EINECS'             => 'إينكس',
+	'chemFunctions_CHEBI'              => 'شيبي',
+	'chemFunctions_PubChem'            => 'ببكيم',
+	'chemFunctions_SMILES'             => 'سمايلز',
+	'chemFunctions_InChI'              => 'إنشل',
+	'chemFunctions_RTECS'              => 'رتكس',
+	'chemFunctions_KEGG'               => 'كيج',
+	'chemFunctions_ATCCode'            => 'كود ATC',
+	'chemFunctions_DrugBank'           => 'بنك المخدرات',
+	'chemFunctions_ECNumber'           => 'رقم EC',
+	'chemFunctions_Formula'            => 'الصيغة',
+	'chemFunctions_Name'               => 'اسم IUPAC',
 	'chemFunctions_ChemFormInputError' => 'Chemform: خطأ إدخال!',
 );
 

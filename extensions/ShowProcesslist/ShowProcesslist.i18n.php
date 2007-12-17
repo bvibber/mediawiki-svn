@@ -19,6 +19,21 @@ $messages['en'] = array(
 	'showprocesslist-info' => 'Info',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'showprocesslist'         => 'عرض قائمة العمل',
+	'showprocesslist-id'      => 'رقم',
+	'showprocesslist-user'    => 'مستخدم',
+	'showprocesslist-host'    => 'مضيف',
+	'showprocesslist-db'      => 'دي بي',
+	'showprocesslist-command' => 'أمر',
+	'showprocesslist-time'    => 'زمن',
+	'showprocesslist-state'   => 'حالة',
+	'showprocesslist-info'    => 'معلومات',
+);
+
 $messages['fr'] = array(
 	'showprocesslist' => 'Voir la liste des processus',
 	'showprocesslist-id' => 'n°',

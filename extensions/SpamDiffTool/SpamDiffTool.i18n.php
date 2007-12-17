@@ -101,6 +101,7 @@ $messages['gl'] = array(
 	'spamdifftool_cantedit'         => 'Sentímolo - vostede non ten permisos para editar na Listaxe Negra de Spam.',
 	'spamdifftool_notext'           => "Non hai texto para engadir a Listaxe negra de Spam. Prema <a href='$1'>here</a> para continuar.",
 	'spamdifftool_summary'          => 'Engadindo a Listaxe Negra de Spam',
+	'spamdifftool_no_urls_detected' => "Ningunhas urls foron detectadas. Prema <a href='$1'>aquí</a> para voltar.",
 	'spamdifftool_spam_link_text'   => 'engadir a spam',
 	'spamdifftool_option_domain'    => 'todo desde este dominio',
 	'spamdifftool_option_subdomain' => 'todo desde este subdominio',

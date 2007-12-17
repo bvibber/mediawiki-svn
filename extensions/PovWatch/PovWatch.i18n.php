@@ -71,6 +71,13 @@ $messages['ar'] = array(
 
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'povwatch_title' => 'Τίτλος:',
+);
+
 #French Translation by Bertrand GRONDIN
 $messages ['fr'] = array(
 	'povwatch' => 'Surveillance des guerres d’éditions',
@@ -106,9 +113,17 @@ Un journal de surveillance des articles inscrits est disponible sur [[Special:Po
  * @author Alma
  */
 $messages['gl'] = array(
-	'povwatch_title'   => 'Título:',
-	'povwatch_comment' => 'Rexistro de comentarios:',
-	'povwatch_no_log'  => 'Non hai entradas no rexistro.',
+	'povwatch_invalid_title'         => 'O título especificado foi non válido',
+	'povwatch_subscriber_list'       => 'Unha [[Special:PovWatch/subscribers|listaxe de subscritores]] está dispoñíbel.',
+	'povwatch_subscriber_list_intro' => '<strong>Listaxe dos subscritores</strong>',
+	'povwatch_unknown_subpage'       => 'Subpáxina descoñecida.',
+	'povwatch_push'                  => 'Empurrar',
+	'povwatch_title'                 => 'Título:',
+	'povwatch_comment'               => 'Rexistro de comentarios:',
+	'povwatch_no_log'                => 'Non hai entradas no rexistro.',
+	'povwatch_no_subscribers'        => 'Non hai subscritores.',
+	'povwatch_subscribe'             => 'Subscribir',
+	'povwatch_added'                 => 'engadido',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

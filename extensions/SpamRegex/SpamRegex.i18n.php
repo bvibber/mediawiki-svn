@@ -77,6 +77,14 @@ $messages['bg'] = array(
 	'spamregex-summary-log' => '(Резюме)',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'spamregex-text'        => '(κείμενο)',
+	'spamregex-summary-log' => '(περίληψη)',
+);
+
 $messages ['fr'] = array(
 	'spamregex' => 'Expressions régulières de Spams',
 	'spamregex_summary' => 'Le texte en question a été détecté dans le commentaire de la page.',

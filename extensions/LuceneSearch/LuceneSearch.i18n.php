@@ -69,8 +69,11 @@ $1
  * @author SPQRobin
  */
 $wgLuceneSearchMessages['ast'] = array(
-	'searchnumber'    => '<strong>Resultaos $1-$2 de $3</strong>',
-	'searchnoresults' => 'Sentímoslo, nun hebo coincidencies exautes pa la to busca.',
+	'searchnumber'          => '<strong>Resultaos $1-$2 de $3</strong>',
+	'searchnoresults'       => 'Sentímoslo, nun hebo coincidencies exautes pa la to busca.',
+	'lucenepowersearchtext' => 'Buscar sólo nos espacios de nomes marcaos:
+
+$1',
 );
 
 $wgLuceneSearchMessages['bcl'] = array(

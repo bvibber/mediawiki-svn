@@ -14,11 +14,25 @@ $messages['en'] = array(
 	'seealso' => 'See also',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'seealso' => 'انظر أيضا',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'seealso' => 'Siehe auch',
+);
+
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'seealso' => 'Δείτε επίσης',
 );
 
 /** French (Français)

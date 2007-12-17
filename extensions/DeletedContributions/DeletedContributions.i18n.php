@@ -13,7 +13,14 @@ $wgDeletedContribsMessages['af'] = array(
 $wgDeletedContribsMessages['ar'] = array(
 	'deletedcontributions' => 'مساهمات المستخدم المحذوفة',
 );
-	
+
+/** Asturian (Asturianu)
+ * @author SPQRobin
+ */
+$wgDeletedContribsMessages['ast'] = array(
+	'deletedcontributions' => "Contribuciones d'usuariu borraes",
+);
+
 $wgDeletedContribsMessages['ba'] = array(
 	'deletedcontributions' => 'Ҡулланыусыларҙың юйылған өлөшө',
 );

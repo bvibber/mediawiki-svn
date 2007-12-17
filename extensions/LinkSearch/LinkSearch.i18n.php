@@ -29,6 +29,14 @@ $wgLinkSearchMessages['ar'] = array(
 	'linksearch-line'  => '$1 موصولة من $2',
 	'linksearch-error' => 'الكروت الخاصة يمكن أن تظهر فقط في بداية اسم المضيف.',
 );
+
+/** Asturian (Asturianu)
+ * @author SPQRobin
+ */
+$wgLinkSearchMessages['ast'] = array(
+	'linksearch' => 'Buscar enllaces web',
+);
+
 $wgLinkSearchMessages['bcl'] = array(
 	'linksearch-ok'    => 'Hanápon',
 	'linksearch-line'  => '$1 an nakatakod sa $2',

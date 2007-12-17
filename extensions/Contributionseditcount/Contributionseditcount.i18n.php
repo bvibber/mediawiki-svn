@@ -88,6 +88,13 @@ function efContributionseditcountMessages()  {
 	'contributionseditcount' => 'Бу кыттааччы $1 көннөрүүлээх.',
 ),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+'stq' => array(
+	'contributionseditcount' => 'Dissen Benutser häd $1 Beoarbaidengen.',
+),
+
 'yue' => array(
 	'contributionseditcount'  =>  '呢個用戶有 $1 次編輯。',
 ),

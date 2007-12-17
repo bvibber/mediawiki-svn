@@ -150,8 +150,10 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'review_sidebar_title'                   => 'Revisado',
 	'review_topic_page'                      => 'Revisados os temas',
+	'review_sidebar_explanation'             => "O extremo esquerdo da caixiña sempre significa 'sen opinión'.",
 	'review_your_review'                     => 'O seu examen desta páxina/revisión:',
 	'review_page_link'                       => 'revisar estatísticas',
+	'review_sidebar_final'                   => 'Para revisar os datos desta páxina, véxase $1',
 	'review_for_page'                        => 'Revisión para a páxina "$1"',
 	'review_for_user'                        => 'Revisión para o usuario "$1"',
 	'review_error'                           => 'Algo está fallando!',
@@ -177,7 +179,6 @@ $messages['gl'] = array(
 	'review_no_opinion'                      => 'Sen opinión',
 	'review_rating'                          => 'Avaliación',
 	'review_comment'                         => 'Comentario',
-
 );
 
 $messages['hsb'] = array(

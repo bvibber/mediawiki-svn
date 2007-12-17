@@ -54,6 +54,18 @@ function efMakeBotMessages() {
 	'makebot-logentryrevoke'  => 'سحب صلاحية بوت من [[$1]]',
 ),
 
+/** Asturian (Asturianu)
+ * @author SPQRobin
+ */
+'ast' => array(
+	'makebot'             => 'Conceder o revocar estatus de bot',
+	'makebot-username'    => "Nome d'usuariu:",
+	'makebot-search'      => 'Dir',
+	'makebot-comment'     => 'Comentariu:',
+	'makebot-logpage'     => 'Rexistru de status de bot',
+	'makebot-logpagetext' => 'Esti ye un rexistru de los cambeos del status de [[{{MediaWiki:Grouppage-bot}}|bot]] de los usuarios.',
+),
+
 'bcl' => array(
 	'makebot-search'          => 'Dumanán',
 	'makebot-grant'           => 'Otobón',

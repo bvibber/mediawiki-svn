@@ -449,6 +449,17 @@ function efContributorsMessages() {
 	'contributors-nosuchpage' => 'Članak $1 ne postoji.',
 ),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+'stq' => array(
+	'contributors'             => 'Haudautore',
+	'contributors-others-long' => 'Deer ieuwenske rakt et noch $1 moor Autore fon disse Siede.',
+	'contributors-others'      => 'un $1 moor',
+	'contributors-badtitle'    => 'Uungultige Siede',
+	'contributors-nosuchpage'  => 'Disse Siede $1 bestoant nit.',
+),
+
 /* Sundanese (Kandar via BetaWiki) */
 'su' => array(
 	'contributors' => 'Kontributor',
