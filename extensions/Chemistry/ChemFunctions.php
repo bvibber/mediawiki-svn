@@ -85,7 +85,7 @@ function RenderChemForm( $input, $argv ) {
     $searchfor = htmlentities( Sanitizer::StripAllTags ( $searchfor ) );
 
     if (! ( $showthis . $searchfor ) ) 
-        return wfMsg('ChemFunctions_ChemFormInputError');
+        return wfMsg('chemFunctions_ChemFormInputError');
 
     if ( $link ) {
         $title = Title::makeTitleSafe( NS_SPECIAL, 'Chemicalsources' );
@@ -100,7 +100,7 @@ function RenderChemForm( $input, $argv ) {
                $output = "<a href=\"" . $title->getFullUrl() . "?action=edit\" class=\"new\">" . $showthis . "</a>";
             }
         } else {
-            $output = wfMsg('ChemFunctions_ChemFormInputError');
+            $output = wfMsg('chemFunctions_ChemFormInputError');
         }
     } else {
         $output = $showthis;
