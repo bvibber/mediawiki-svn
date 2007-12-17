@@ -40,6 +40,14 @@ $messages['hsb'] = array(
 	'untidy' => 'Njeporjadny',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'tidy'   => 'Opschonen',
+	'untidy' => 'Opschonen ongedaan maken',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

@@ -28,6 +28,13 @@ $messages['gl'] = array(
 	'seealso' => 'Véxase tamén',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'seealso' => 'Hlej tež',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

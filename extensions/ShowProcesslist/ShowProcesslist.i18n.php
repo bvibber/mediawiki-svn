@@ -44,6 +44,18 @@ $messages['gl'] = array(
 	'showprocesslist-info'    => 'Info',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'showprocesslist'         => 'Lisćinu procesow pokazać',
+	'showprocesslist-user'    => 'Wužiwar',
+	'showprocesslist-host'    => 'Serwer',
+	'showprocesslist-command' => 'Přikaz',
+	'showprocesslist-time'    => 'Čas',
+	'showprocesslist-state'   => 'Staw',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

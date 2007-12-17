@@ -143,6 +143,39 @@ Protokol aktualnych wobkedźbowankow steji na [[Special:PovWatch/log]] k dispozi
 	'povwatch_added'                   => 'přidaty',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'povwatch'                         => 'PovWatch',
+	'povwatch_no_session'              => 'Fout: het formulier kon niet verwerkt worden omdat de sessiegegevens verloren zijn gegaan.',
+	'povwatch_not_allowed_push'        => "U bent geen beheerder van PovWatch en kan geen pagina's op volglijsten zetten.",
+	'povwatch_already_subscribed'      => 'U bent al geabonneerd op PovWatch',
+	'povwatch_subscribed'              => 'U bent nu geabonneerd op PovWatch',
+	'povwatch_not_subscribed'          => 'U bent niet geabonneerd op PovWatch, dus u kan niet uitschrijven.',
+	'povwatch_unsubscribed'            => 'U bent uitgeschreven van PovWatch',
+	'povwatch_invalid_title'           => 'De opgegeven paginanaam is ongeldig',
+	'povwatch_pushed'                  => '[[$1]] is succesvol toegewezen aan $2 volglijsten van gebruikers.',
+	'povwatch_intro'                   => "PovWatch is een dienst die het mogelijk maakt gevoelige pagina's discreet op de volglijst van geabonneerde beheerders te zetten.
+
+Een logboek met recent toegewezen pagina's op volglijsten is te bekijken op [[Special:PovWatch/log]].",
+	'povwatch_subscriber_list'         => 'Er is een [[Special:PovWatch/subscribers|lijst met abonnees]] beschikbaar.',
+	'povwatch_subscriber_list_intro'   => '<strong>Abonnees</strong>',
+	'povwatch_not_allowed_subscribers' => 'U mag de lijst van abonnees op PovWatch niet bekijken.',
+	'povwatch_unknown_subpage'         => 'Onbekende subpagina.',
+	'povwatch_push'                    => 'Toewijzen',
+	'povwatch_push_intro'              => "Gebruik het onderstaande formulier om pagina's op de volglijst van abonnees te zetten. Wees voorzichtig bij het invoeren van de pagina: zelfs niet-bestaande pagina's kunnen toegevoegd worden en u kan de pagina niet verwijderen als die is toegewezen.",
+	'povwatch_title'                   => 'Pagina:',
+	'povwatch_comment'                 => 'Logboekopmerking:',
+	'povwatch_no_log'                  => 'Het logboek is leeg.',
+	'povwatch_no_subscribers'          => 'Er is niemand geabonneerd.',
+	'povwatch_unsubscribe_intro'       => 'U bent nu geabonneerd op PovWatch. Klik op de onderstaande knop om u uit te schrijven.',
+	'povwatch_unsubscribe'             => 'Uitschrijven',
+	'povwatch_subscribe_intro'         => 'U bent niet ingeschreven voor PovWatch. Klik op de onderstaande knop om u te abonneren.',
+	'povwatch_subscribe'               => 'Abonneren',
+	'povwatch_added'                   => 'toegevoegd',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

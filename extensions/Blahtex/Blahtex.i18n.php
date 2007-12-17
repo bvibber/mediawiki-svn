@@ -402,9 +402,22 @@ $messages['nl'] = array(
 	'math_MissingOrIllegalParameterIndex'   => 'Ontbrekende of ongeldige parameterindex in de definitie van "$1"',
 	'math_NonAsciiInMathMode'               => 'Niet-ASCII karakters mogen enkel in text-modus gebruikt worden (tracht de probleemkarakters te plaatsen tussen "\text{...}")',
 	'math_NotEnoughArguments'               => 'Er werden niet genoeg argumenten opgegeven voor "$1"',
+	'math_PngIncompatibleCharacter'         => 'Het is niet mogelijk om een correcte PNG te maken met het karakter $1',
 	'math_ReservedCommand'                  => 'Het bevel "$1" is gereserveerd voor intern gebruik door blahtex',
+	'math_SubstackRowTooBig'                => 'Er mag maar één ingave zijn in iedere rij van een "substack"-blok',
+	'math_TooManyMathmlNodes'               => 'Er zijn te veel nodes in de boomstructuur van MathML',
 	'math_TooManyTokens'                    => 'De invoer is te lang',
+	'math_UnavailableSymbolFontCombination' => 'Het symbool "$1" is niet beschikbaar in het lettertype "$2"',
+	'math_UnmatchedBegin'                   => 'Er is een "\begin" zonder bijbehorende "\end"',
+	'math_UnmatchedCloseBrace'              => 'Er is een accolade sluiten "}" zonder bijbehorende accolade openen "{"',
+	'math_UnmatchedEnd'                     => 'Er is een "\end" zonder bijbehorende "\begin"',
+	'math_UnmatchedLeft'                    => 'Er is een "\left" zonder bijbehorende "\right"',
+	'math_UnmatchedOpenBrace'               => 'Er is een accolade openen "{" zonder bijbehorende accolade sluiten "}"',
+	'math_UnmatchedOpenBracket'             => 'Er is een blokhaak openen "[" zonder bijbehorende blokhaak sluiten "]"',
+	'math_UnmatchedRight'                   => 'Er is een "\right" zonder bijbehorende "\left"',
 	'math_UnrecognisedCommand'              => 'Onherkend bevel "$1"',
+	'math_WrongFontEncoding'                => 'Het symbool "$1" mag niet voorkomen in lettertypecodering "$2"',
+	'math_WrongFontEncodingWithHint'        => 'Het symbool "$1" mag niet voorkomen in lettertypecodering "$2". Probeer het commando "$3{...}" te gebruiken.',
 );
 
 /** Occitan (Occitan)

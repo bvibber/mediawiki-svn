@@ -82,6 +82,24 @@ $3',
 	'latexdoc_get_pdf' => 'PDF wzać',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'latexdoc_no_text'         => 'De pagina bevat geen tekst. Kan geen DVI maken.',
+	'latexdoc_cant_create_dir' => 'De tijdelijke map $1 kan niet aangemaakt worden',
+	'latexdoc_cant_write'      => 'Kan niet schrijven naar bestand $1',
+	'latexdoc_error'           => 'LaTex fout
+
+Commando: $1
+
+Uitvoer: $2
+
+$3',
+	'latexdoc_get_dvi'         => 'DVI maken',
+	'latexdoc_get_pdf'         => 'PDF maken',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
