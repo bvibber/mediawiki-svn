@@ -656,8 +656,8 @@ else if (typeof window.attachEvent != \"undefined\") {
 
 		# This is assigned before we get a chance to intercept, so fix it now.
 
-		$wgLang =& $wgContLang;
-		$wgLanguageCode =& $wgContLanguageCode;
+		$wgLang = $wgContLang;
+		$wgLanguageCode = $wgContLanguageCode;
 		
 		# Special pages for static output
 
