@@ -61,6 +61,7 @@ $allMessages = array(
 		'passwordreset-disableuser'     => 'Benutzerkonto deaktivieren?',
 		'passwordreset-disableuserexplain' => '(setzen eines ungültigen Passwort-Hashs - Anmelden unmöglich)',
 		'passwordreset-disablesuccess'  => 'Benutzerkonto wurde deaktiviert (Benutzer-ID: $1)',
+		'passwordreset-accountdisabled' => 'Benutzerkonto ist deaktiviert',
 	),
 
 	'el' => array(

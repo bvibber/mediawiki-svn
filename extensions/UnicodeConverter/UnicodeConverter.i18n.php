@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'unicodeconverter-newtext' => 'Converted text:',
 );
 
+$messages['de'] = array(
+	'unicodeconverter' => 'Unicode-Konverter',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Original Text:',
+	'unicodeconverter-newtext' => 'Konvertierter Text:',
+);
+
 $messages ['fr'] = array(
 	'unicodeconverter' => 'Convertisseur Unicode',
 	'unicodeconverter-ok' => 'Convertir',

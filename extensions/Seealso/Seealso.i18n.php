@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'seealso' => 'See also',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'seealso' => 'Siehe auch',
+);
+
 /** French (Français)
  * @author Bertrand GRONDIN
  */
