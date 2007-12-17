@@ -1,4 +1,8 @@
 <?php
+/** \file
+* \brief Contains code for the MediaWiki phpbbData Extension - Creates BeforePageDisplay hook in phpBB3.
+*/
+
 class OutputBufferHook {
 	function hookTemplateDisplay(&$hook, $handle, $include_once = true) {
 		$result = $hook->previous_hook_result(array('template', 'display'));
