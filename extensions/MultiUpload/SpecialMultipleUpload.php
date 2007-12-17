@@ -186,7 +186,6 @@ class MultipleUploadForm extends UploadForm {
 	 */
 	function uploadWarning( $warning ) {
 		global $wgOut;
-		global $wgUseCopyrightUpload;
 
 		if (!$this->mHasWarning) {
 			$titleObj = Title::makeTitle( NS_SPECIAL, 'MultipleUpload' );
@@ -228,7 +227,7 @@ class MultipleUploadForm extends UploadForm {
 	}
 
 	function showWarningOptions() {
-		global $wgOut, $wgMaxUploadFiles;
+		global $wgOut, $wgMaxUploadFiles, $wgUseCopyrightUpload;
 		$save = wfMsgHtml( 'multipleupload-saveallfiles' );
 		$reupload = wfMsgHtml( 'reupload' );
 		$iw = wfMsgWikiHtml( 'multipleupload-ignoreallwarnings' );

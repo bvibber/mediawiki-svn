@@ -240,7 +240,7 @@ class DefinedMeaningModel {
 # 			$wgTitle, $wgUser, $wgRequest;
 
 		global
-			$wgUser;
+			$wgUser, $wgOut;
 
 		if(!$wgUser->isAllowed('wikidata-copy')) {
  			$wgOut->addWikiText(wfMsgSc("noedit",$dc->fetchName()));

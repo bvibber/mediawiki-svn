@@ -633,8 +633,8 @@ else if (typeof window.attachEvent != \"undefined\") {
 		global $wgUsePathInfo, $wgFilterCallback, $wgRequest, $wgUser, $wgOut, $_SERVER;
 		global $wgAllowUserJs, $wgAllowUserCss, $wgUseSiteCss, $wgUseSiteJs, $wgCachePages;
 		global $wgCache404SavedCallback;
-		global $wgLang, $wgContLang, $wgMessageCache, $messageMemc, $wgUseDatabaseMessages,
-		       $wgMsgCacheExpiry, $wgDBname;
+		global $wgLang, $wgLanguageCode, $wgContLang, $wgContLanguageCode, $wgMessageCache, 
+		       $messageMemc, $wgUseDatabaseMessages, $wgMsgCacheExpiry, $wgDBname;
 
 		# Prevent user options, user new talk
 

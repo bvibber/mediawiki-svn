@@ -199,6 +199,7 @@ function wfRegexBlockUpdateStats ($username, $user_ip, $blocker) {
   @param $user_ip String
 */
 function wfGetRegexBlocked ($blocker, $user, $user_ip) {
+	global $wgContactLink;
 	$names = wfGetRegexBlockedData ($blocker,$user,REGEXBLOCK_MODE_NAMES);
 	$ips = wfGetRegexBlockedData ($blocker,$user,REGEXBLOCK_MODE_IPS);
 	$username = $user->getName () ;
