@@ -39,7 +39,14 @@ Diese E-Mail wurde dir von $1 über das {{SITENAME}}-E-Mail-System zugesandt.
 $2',
 );
 
-$messages ['fr'] = array (
+$messages ['fa'] = array (
+	'email_footer' => '
+
+----------------------------------------------------------------------------
+این نامه از طریق سامانه پست الکترونیکی {{SITENAME}} توسط $1 برای شما ارسال شده‌است.
+
+$2',
+);$messages ['fr'] = array (
 	'email_footer' => '
 
 ----------------------------------------------------------------------------
