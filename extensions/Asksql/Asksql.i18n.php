@@ -205,6 +205,28 @@ prega quindi di usarla con molta parsimonia.",
 	'querysuccessful' => 'Query eseguita correttamente',
 ),
 
+/** Japanese (日本語)
+ * @author Kkkdc
+ */
+'ja' => array(
+	'asksql'          => 'SQLクエリの実行',
+	'asksqltext'      => "以下のフォームを使用して、データベースへ直接SQLクエリを送信できます。
+文字列リテラルの区切りにはシングルクォート（'～'）を用いてください。
+この機能の使用はサーバに相当の負荷をかけることがあります。使用は控えめにしてください。",
+	'sqlislogged'     => '実行した全てのクエリはログに記録されます。',
+	'sqlquery'        => 'SQL文:',
+	'querybtn'        => '送信',
+	'selectonly'      => '読み込み用のクエリのみが許可されています。',
+	'querysuccessful' => 'クエリは成功しました',
+),
+
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+'lt' => array(
+	'asksql' => 'SQL prieiga',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 	'asksql'           => 'SQL-zoekopdracht',

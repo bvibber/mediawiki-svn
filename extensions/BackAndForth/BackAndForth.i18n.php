@@ -128,6 +128,14 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'ಹಿಂದಿನ ($1)',
 ),
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+'lt' => array(
+	'backforth-next' => 'Kitas ($1)',
+	'backforth-prev' => 'Ankstesnis ($1)',
+),
+
 'nl' => array(
 	'backforth-next' => 'Volgende ($1)',
 	'backforth-prev' => 'Vorige ($1)',

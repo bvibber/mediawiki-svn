@@ -145,9 +145,13 @@ function efDuplicatorMessages() {
 	'duplicator-toomanyrevisions' => 'Die Seite [[$1]] hat $2 Versionen, um kann daher nicht dupliziert. Es können nur Seiten mit maximal $3 Versionen dupliziert werden.',
 ),
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
 'el' => array(
 	'duplicator-options' => 'Επιλογές',
-	'duplicator-source' => 'Πηγή:',
+	'duplicator-source'  => 'Πηγή:',
+	'duplicator-dest'    => 'Προορισμός:',
 ),
 
 'eo' => array(

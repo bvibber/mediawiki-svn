@@ -41,6 +41,15 @@ $allMessages = array(
 		'specialwhoiswatchingusage'   => 'Tuta specialna strona njeda so na so wužiwać. Prošu wužij stronu [[MediaWiki:Number_of_watching_users_pageview]], zo by přistupny dypk za tutu specialnu stronu definował.',
 	),
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+	'lt' => array(
+		'whoiswatching'               => 'Kas žiūri šį puslapį',
+		'specialwhoiswatchingthepage' => 'Kas žiūri %s',
+		'specialwhoiswatchingusage'   => 'Šis specialus puslapis negali būti naudojamas paprastai. Prašome naudoti [[MediaWiki:Number_of_watching_users_pageview]] puslapį, kad apibrėžtumėte įėjimo punktą į šį specialųjį puslapį.',
+	),
+
 	'nl' => array(
 		'whoiswatching'               => 'Wie volgt een pagina',
 		'specialwhoiswatchingthepage' => 'Wie volgt %s',

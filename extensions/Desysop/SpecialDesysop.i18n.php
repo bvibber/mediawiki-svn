@@ -179,6 +179,21 @@ $wgDesysopMessages['la'] = array(
 	'desysop'              => 'Statum magistratus usoris revocare',
 	'desysopnot_sysop'     => 'Hic usor not est magistratus',
 );
+
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$wgDesysopMessages['lt'] = array(
+	'desysoptitle'      => 'Panaikinti administratoriaus teises naudotojui',
+	'desysoptext'       => 'Ši forma yra naudojama biurokratams administratoriaus teisių naudotojui nuėmimui. Įveskite naudotoją laukelyje ir spauskite mygtuką, norėdami panaikinti administratoriaus teises.',
+	'desysopname'       => 'Naudotojo vardas:',
+	'desysopok'         => '<b>Naudotojui "$1" administratoriaus teisės buvo pašalintos</b>',
+	'desysopsetrights'  => 'Nustatyti naudotojo teises',
+	'desysoprightsfail' => '<b>Naudotojui "$1" teisės nustatytos nebuvo. (Ar gerai įvedėte naudotojo vardą?)</b>',
+	'desysop'           => 'Pašalinti administratoriaus teises',
+	'desysopnot_sysop'  => 'Šis naudotojas nėra administratorius',
+);
+
 $wgDesysopMessages['nds'] = array(
 	'desysoptitle'         => 'Bruker as Admin aflohnen',
 	'desysoptext'          => 'Dit Formular warrt vun Bürokraten bruukt, Admins aftolohnen. Musst den Brukernaam in dat Feld ingeven un den Knopp drücken, dat de Adminrechten wegnahmen warrt.',

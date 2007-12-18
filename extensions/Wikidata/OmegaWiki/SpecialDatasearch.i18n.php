@@ -47,6 +47,13 @@ $wgDataSearchMessages['id'] = array(
 	'datasearch' => 'Wikidata: Pencarian data',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$wgDataSearchMessages['lt'] = array(
+	'datasearch' => 'Wikidata: Duomenų paieška',
+);
+
 $wgDataSearchMessages['nl'] = array(
 	'datasearch' => 'Wikidata: Gegevens zoeken',
 );

@@ -173,8 +173,33 @@ $allMessages = array(
 		'changeauthor-logentry'             => 'Cambie autor de $2 de $1 a $3 de $4',
 		'changeauthor-logpagename'          => 'Rexistro dos cambios do autor',
 		'changeauthor-rev'                  => 'r$1',
+	),
 
-),
+/** Croatian (Hrvatski)
+ * @author Dnik
+ */
+	'hr' => array(
+		'changeauthor'                      => 'Promijenite autora inačice',
+		'changeauthor-title'                => 'Promijeni autora inačice',
+		'changeauthor-search-box'           => 'Pretraži inačice',
+		'changeauthor-pagename-or-revid'    => 'Ime članka ili oznaka inačice:',
+		'changeauthor-pagenameform-go'      => 'Kreni',
+		'changeauthor-comment'              => 'Napomena:',
+		'changeauthor-changeauthors-multi'  => 'Promijeni autora(e)',
+		'changeauthor-explanation-multi'    => "Ovaj obrazac omogućava promjenu autora inačica. Jednostavno promijenite jedno iii više korisničkih imena u donjem popisu, dodajte neobaveznu napomenu i pritisnite tipku 'Promijeni autora(e)'.",
+		'changeauthor-changeauthors-single' => 'Promijeni autora',
+		'changeauthor-explanation-single'   => "Ovaj obrazac omogućava promjenu autora inačice. Jednostavno korisničko ime, dodajte neobaveznu napomenu i pritisnite tipku 'Promijeni autora'.",
+		'changeauthor-invalid-username'     => 'Pogrešno ime suradnika "$1".',
+		'changeauthor-nosuchuser'           => 'Ne postoji suradnik "$1".',
+		'changeauthor-revview'              => 'Inačica $1 str. $2',
+		'changeauthor-nosuchtitle'          => 'Nema članka koji se zove "$1".',
+		'changeauthor-weirderror'           => 'Dogodila se vrlo čudna greška. Molimo, ponovite zahtjev. Ako se greška ponovi, baza podataka je vjerojatno oštećena.',
+		'changeauthor-invalidform'          => 'Molimo koristite obrazac na Special:ChangeAuthor umjesto vlastitog (custom) obrasca.',
+		'changeauthor-success'              => 'Vaš zahtjev je uspješno obrađen.',
+		'changeauthor-logentry'             => 'Promijenjen autor $2 stranice $1 iz $3 u $4',
+		'changeauthor-logpagename'          => 'Evidencija promijena autora',
+		'changeauthor-rev'                  => 'r$1',
+	),
 
 	'hsb' => array(
 		'changeauthor' => 'Wersijoweho awtora změnić',

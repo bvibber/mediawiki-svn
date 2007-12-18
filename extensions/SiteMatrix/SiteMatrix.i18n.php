@@ -211,9 +211,16 @@ $wgSiteMatrixMessages['loz'] = array(
 	'sitematrix' => 'Mukoloko di wiki di Wikimedia',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
 $wgSiteMatrixMessages['lt'] = array(
-	"sitematrix" => "Wikimedia projektų sąrašas",
+	'sitematrix'          => 'Wikimedia projektų sąrašas',
+	'sitematrix-language' => 'Kalba',
+	'sitematrix-project'  => 'Projekto pavadinimas, interprojektinė nuoroda ir interwiki nuoroda.',
+	'sitematrix-others'   => 'Kiti Vikimedijos projektai',
 );
+
 $wgSiteMatrixMessages['lv'] = array(
 	'sitematrix' => 'Visu Wikimedia wiki projektu uzskaitījums',
 );

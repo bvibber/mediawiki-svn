@@ -38,6 +38,14 @@ $messages['la'] = array(
 	'icon-badwidth' => 'Latitudo mala',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'icon-badimage' => 'Blogas paveikslėlis',
+	'icon-badwidth' => 'Blogas plotis',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

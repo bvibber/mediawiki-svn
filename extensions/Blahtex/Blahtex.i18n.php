@@ -417,7 +417,7 @@ $messages['nl'] = array(
 	'math_UnmatchedOpenBrace'               => 'Er is een accolade openen "{" zonder bijbehorende accolade sluiten "}"',
 	'math_UnmatchedOpenBracket'             => 'Er is een blokhaak openen "[" zonder bijbehorende blokhaak sluiten "]"',
 	'math_UnmatchedRight'                   => 'Er is een "\right" zonder bijbehorende "\left"',
-	'math_UnrecognisedCommand'              => 'Niet-herkend commando "$1"',
+	'math_UnrecognisedCommand'              => 'Commando "$1" niet herkend',
 	'math_WrongFontEncoding'                => 'Het symbool "$1" mag niet voorkomen in lettertypecodering "$2"',
 	'math_WrongFontEncodingWithHint'        => 'Het symbool "$1" mag niet voorkomen in lettertypecodering "$2". Probeer het commando "$3{...}" te gebruiken.',
 );

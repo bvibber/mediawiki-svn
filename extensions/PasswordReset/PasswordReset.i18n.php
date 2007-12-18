@@ -232,6 +232,20 @@ $allMessages = array(
 		'passwordreset-username' => 'Num d\'utilisader',
 	),
 
+/** Russian (Русский)
+ * @author Illusion
+ */
+	'ru' => array(
+		'passwordreset'                 => 'Сброс пароля',
+		'passwordreset-invalidusername' => 'Недопустимое имя участника',
+		'passwordreset-emptyusername'   => 'Пустое имя участника',
+		'passwordreset-nopassmatch'     => 'Пароли не совпадают',
+		'passwordreset-username'        => 'Имя участника',
+		'passwordreset-newpass'         => 'Новый пароль',
+		'passwordreset-confirmpass'     => 'Подтверждение пароля',
+		'passwordreset-submit'          => 'Сбросить пароль',
+		'passwordreset-success'         => 'Пароль сброшен для user_id: $1',
+	),
 
 	'yue' => array( 
 		'passwordreset' => '密碼重設',
