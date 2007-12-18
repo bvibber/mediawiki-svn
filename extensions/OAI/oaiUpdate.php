@@ -27,12 +27,24 @@ $harvester = new OAIHarvester( $oaiSourceRepository );
 if( isset( $options['from'] ) ) {
 	$lastUpdate = wfTimestamp( TS_MW, $options['from'] );
 } else {
-	$dbr = wfGetDB( DB_SLAVE );
-	$highest = $dbr->selectField( 'revision', 'MAX(rev_timestamp)' ); // FIXME!
-	if( $highest ) {
+	$dbr = wfGetDB( DB_MASTER );
+	
+	$checkpoint = $dbr->selectField( 'oaiharvest', 'oh_last_timestamp',
+	 	array( 'oh_repository' => $oaiSourceRepository ) );
+	
+	$highest = $dbr->selectField( 'revision', 'MAX(rev_timestamp)' );
+	
+	if( $checkpoint ) {
+		$lastUpdate = wfTimestamp( TS_MW, $checkpoint );
+		echo "Starting at last checkpoint: " .
+			wfTimestamp( TS_DB, $lastUpdate ) . "\n";
+	} elseif( $highest ) {
 		$lastUpdate = wfTimestamp( TS_MW, $highest );
+		echo "No local update checkpoint; starting at last-updated page: " .
+			wfTimestamp( TS_DB, $lastUpdate ) . "\n";
 	} else {
 		# Starting from an empty database!
+		echo "Empty database; starting at epoch: 1970-01-01 00:00:00\n";
 		$lastUpdate = '19700101000000';
 	}
 }

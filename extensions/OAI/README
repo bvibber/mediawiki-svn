@@ -5,7 +5,9 @@ to a mirror site.
 OAI-PMH protocol specs:
 http://www.openarchives.org/OAI/openarchivesprotocol.html
 
-A harvester script will come soon to form the client half.
+A harvester script forms the client half. Apply oaiharvest_table.sql to
+clients to allow saving a checkpointing record; this ensures consistent
+update ordering.
 
 
 At the moment this script is quite experimental; it may not implement the

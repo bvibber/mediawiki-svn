@@ -319,9 +319,37 @@ class OAIUpdateRecord {
 	function apply() {
 		if( $this->isDeleted() ) {
 			$this->doDelete();
-			return;
+		} else {
+			$this->doEdit();
 		}
+		$this->checkpoint();
+	}
+	
+	/**
+	 * Update our checkpoint timestamp with the date from the
+	 * OAI header; this allows us to pick up from the correct
+	 * spot in the update sequence.
+	 * @throws OAIError
+	 */
+	private function checkpoint() {
+		global $oaiSourceRepository;
+		$ts = $this->_page['oai_timestamp'];
 		
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->replace( 'oaiharvest',
+			array( 'oh_repository' ),
+			array(
+				'oh_repository' => $oaiSourceRepository,
+				'oh_last_timestamp' => $dbw->timestamp( $ts ),
+			),
+			__METHOD__ );
+	}
+	
+	/**
+	 * Perform an edit from the update data
+	 * @throws OAIError
+	 */
+	function doEdit() {
 		$title = $this->getTitle();
 		if( is_null( $title ) ) {
 			throw new OAIError( sprintf(
@@ -329,14 +357,14 @@ class OAIUpdateRecord {
 				$this->getArticleId(),
 				$this->_page['title'] ) );
 		}
-		
+	
 		$id = 0;
 		foreach( $this->_page['revisions'] as $revision ) {
 			$id = $this->applyRevision( $revision );
 		}
-		
+	
 		fixLinksFromArticle( $id );
-		
+	
 		if( isset( $this->_page['uploads'] ) ) {
 			foreach( $this->_page['uploads'] as $upload ) {
 				$this->applyUpload( $upload );
@@ -598,6 +626,8 @@ class OAIUpdateRecord {
 		/*
 		<record>
 		  <header>
+		    <identifier>
+		    <datestamp>
 		  <metadata>
 		    <mediawiki>
 		      <page>
@@ -618,13 +648,17 @@ class OAIUpdateRecord {
 		
 		if( $header->getAttribute( 'status' ) == 'deleted' ) {
 			$pagedata = OAIUpdateRecord::grabDeletedPage( $header );
-			return $pagedata;
+		} else {
+			$metadata = oaiNextSibling( $header, 'metadata' );
+			$mediawiki = oaiNextChild( $metadata, 'mediawiki' );
+			$page = oaiNextChild( $mediawiki, 'page' );
+			$pagedata = OAIUpdateRecord::grabPage( $page );
 		}
 		
-		$metadata = oaiNextSibling( $header, 'metadata' );
-		$mediawiki = oaiNextChild( $metadata, 'mediawiki' );
-		$page = oaiNextChild( $mediawiki, 'page' );
-		$pagedata = OAIUpdateRecord::grabPage( $page );
+		// We'll also need the OAI datestamp to ensure
+		// update stream continuity...
+		$datestamp = oaiNextChild( $header, 'datestamp' );
+		$pagedata['oai_timestamp'] = wfTimestamp( TS_MW, $datestamp->textContent );
 		
 		return $pagedata;
 	}
