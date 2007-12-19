@@ -517,7 +517,7 @@ unsigned long	 len;
 	pthread_mutex_unlock(&rst_mtx);
 
 	int4store(buf, (uint32_t) curpos);
-	int2store(buf + 4, (uint16_t) 2);
+	int2store(buf + 4, (uint16_t) 0);
 	int4store(buf + 6, (uint32_t) server_id);
 	len = strlen(curfile);
 	if (len > BINLOG_NAMELEN) {
