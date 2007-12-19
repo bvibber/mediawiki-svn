@@ -3,12 +3,16 @@ package org.wikimedia.lsearch.analyzers;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Set;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.wikimedia.lsearch.analyzers.ExtToken.Position;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.util.Buffer;
+import org.wikimedia.lsearch.util.Utf8Set;
 
 /**
  * Titles and redirects, serialization/deserialization 
@@ -95,11 +99,11 @@ public class Alttitles {
 		.replaceAll("<.*?>","");		
 	}
 	
-	public static Alttitles deserializeAltTitle(byte[] serialized){
+	public static Alttitles deserializeAltTitle(byte[] serialized, Utf8Set terms, HashMap<Integer,Position> posMap){
 		Buffer b = new Buffer(serialized);
 		Alttitles t = new Alttitles();
 		while(b.hasMore()){
-			Object[] ret = b.readAlttitleInfo();
+			Object[] ret = b.readAlttitleInfo(terms,posMap);
 			int type = (Integer)ret[0];
 			Info info = (Info)ret[1];
 			if(type == 0)

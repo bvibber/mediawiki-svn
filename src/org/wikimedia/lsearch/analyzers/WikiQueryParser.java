@@ -105,12 +105,17 @@ public class WikiQueryParser {
 	public static float KEYWORD_BOOST = 0.02f;
 	public static float CONTENTS_BOOST = 0.2f;
 	
+	// main phrase stuff:
 	public static int MAINPHRASE_SLOP = 50;
 	public static float MAINPHRASE_BOOST = 2f;
-	public static float TITLE_ADD_BOOST = 1f;
-	public static float RELATED_BOOST = 2f;	
+	public static float RELATED_BOOST = 4f;	
 	public static int RELATED_SLOP = 0;
-	public static float ALT_PHRASES_BOOST = 0.2f;
+	public static float ALT_PHRASES_BOOST = 0.4f;
+	// additional to main phrase:
+	public static float ADD_STEMTITLE_BOOST = 2;
+	public static float ADD_ALTTITLE_BOOST = 2;
+	public static int ADD_ALTTITLE_SLOP = 10;
+	public static float ADD_RELATED_BOOST = 2;
 	
 	public static float WHOLE_TITLE_BOOST = 8f;
 	public static float EXACT_CONTENTS_BOOST = 1f;
@@ -1712,6 +1717,33 @@ public class WikiQueryParser {
 		return sb.toString();
 	}
 	
+	/** Make a query to search grouped titles indexes */
+	public Query parseForTitles(String queryText, Wildcards wildcards){
+		this.wildcards = wildcards;
+		String oldDefaultField = this.defaultField;
+		NamespacePolicy oldPolicy = this.namespacePolicy;
+		FieldBuilder.BuilderSet oldBuilder = this.builder;
+		this.defaultField = "title";
+		this.namespacePolicy = NamespacePolicy.IGNORE;
+		
+		Query q = parseRaw(queryText);
+		
+		this.defaultField = "title_exact";
+		FieldBuilder fb = new FieldBuilder(builder.getFilters().getIndexId(),FieldBuilder.Case.EXACT_CASE);
+		this.builder = fb.getBuilder(FieldBuilder.Case.EXACT_CASE);
+		
+		Query qe = parseRaw(queryText); 
+		
+		this.builder = oldBuilder;		
+		this.defaultField = oldDefaultField;
+		this.namespacePolicy = oldPolicy;
+		
+		BooleanQuery whole = new BooleanQuery(true);
+		whole.add(q,Occur.SHOULD);
+		whole.add(qe,Occur.SHOULD);
+		return whole;
+	}
+	
 	/**
 	 * Main function for multi-pass parsing.
 	 * 
@@ -1746,38 +1778,44 @@ public class WikiQueryParser {
 			return bq;
 
 		HashSet<String> preStopWords = StopWords.getPredefinedSet(builder.getFilters().getIndexId());
-		Query wholeAlttitleQuery = null;		
-		Query alttitleQuery = null;
+		// queries: main phrase (main*) + additional queries (add*)
+		Query addAlttitleQuery = null;		
+		Query mainAlttitleQuery = null;
+		Query mainRelatedQuery = makePhrasesForRelated(words,RELATED_SLOP,RELATED_BOOST);
 		if(wildcards==null || !wildcards.hasWildcards()){
-			wholeAlttitleQuery = makeAlttitleWholePhrase(words,fields.alttitle(),10,1,preStopWords);
-			alttitleQuery = makeAlttitlePhrases(words,fields.alttitle(),ALT_PHRASES_BOOST);
+			addAlttitleQuery = makeAlttitleWholePhrase(words,fields.alttitle(),ADD_ALTTITLE_SLOP,ADD_ALTTITLE_BOOST,preStopWords);
+			mainAlttitleQuery = makeAlttitlePhrases(words,fields.alttitle(),ALT_PHRASES_BOOST);
 		}
-		Query stemTitleQuery = 
+		Query addStemtitleQuery = 
 			new LogTransformScore(makeStemtitle(words,fields.stemtitle(),1,0.1f));
-		stemTitleQuery.setBoost(TITLE_ADD_BOOST);
-		Query relatedQuery = makePhrasesForRelated(words,RELATED_SLOP,RELATED_BOOST);
+		addStemtitleQuery.setBoost(ADD_STEMTITLE_BOOST);		
+		Query addRelatedQuery = new LogTransformScore(mainRelatedQuery);
+		addRelatedQuery.setBoost(ADD_RELATED_BOOST);
 		
-		Query mainPhrase = makeMainPhrase(words,fields.contents(),MAINPHRASE_SLOP,MAINPHRASE_BOOST,alttitleQuery,relatedQuery,preStopWords);
+		Query mainPhrase = makeMainPhrase(words,fields.contents(),MAINPHRASE_SLOP,MAINPHRASE_BOOST,mainAlttitleQuery,mainRelatedQuery,preStopWords);
 		if(mainPhrase == null)
 			return bq;
 		// build the final query
 		BooleanQuery coreQuery = new BooleanQuery(true);		
 		BooleanQuery additional = new BooleanQuery(true);
+		BooleanQuery addTitleQuery = new BooleanQuery(true); 
 		
 		if(mainPhrase != null)
 			additional.add(mainPhrase,Occur.MUST);
-		if(wholeAlttitleQuery != null)
-			additional.add(wholeAlttitleQuery,Occur.SHOULD);
-		if(stemTitleQuery != null)
-			additional.add(stemTitleQuery,Occur.SHOULD);
-		if(relatedQuery != null)
-			additional.add(new LogTransformScore(relatedQuery),Occur.SHOULD);
+		if(mainRelatedQuery != null)
+			additional.add(addRelatedQuery,Occur.SHOULD);
+		if(addStemtitleQuery != null)
+			additional.add(addStemtitleQuery,Occur.SHOULD); 
+		if(addAlttitleQuery != null)
+			additional.add(addAlttitleQuery,Occur.SHOULD);		
+		
 		/* if(alttitle2Query != null)
 			additional.add(alttitle2Query,Occur.SHOULD); */
 		
 		coreQuery.add(bq,Occur.MUST);
 		coreQuery.add(additional,Occur.SHOULD);
-		
+		//coreQuery.add(addTitleQuery,Occur.SHOULD);
+			
 		return coreQuery;
 		
 	}

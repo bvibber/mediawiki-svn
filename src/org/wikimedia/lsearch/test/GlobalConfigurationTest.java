@@ -309,5 +309,18 @@ public class GlobalConfigurationTest extends TestCase {
 		assertEquals(hhl1,IndexId.get("hmwiki.nspart1.hl").getSubpart(1));
 		assertEquals("[192.168.0.1]",hhl1.getSearchHosts().toString());
 		
+		IndexId ent = IndexId.get("en-titles");
+		assertTrue(ent.isTitlesBySuffix());
+		assertEquals(2,ent.getSplitFactor());
+		assertEquals("[en-titles.tspart2, en-titles.tspart1]",ent.getPhysicalIndexes().toString());
+		
+		IndexId ents1 = IndexId.get("en-titles.tspart1");
+		assertTrue(ents1.isTitlesBySuffix());
+		assertEquals("w",ents1.getInterwikiBySuffix("wiki"));
+		assertEquals(ents1,IndexId.get("enwiki").getTitlesIndex());
+		assertEquals("en",testgc.getLanguage(ents1));
+		
+		assertEquals("en-titles.tspart2",IndexId.get("enwiktionary").getTitlesIndex().toString());
+		
 	}
 }

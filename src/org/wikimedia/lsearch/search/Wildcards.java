@@ -21,7 +21,7 @@ import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 import org.wikimedia.lsearch.util.StringUtils;
 
 /**
- * Wildcard-search related functions
+ * Wildcard-search related functions & cache
  * @author rainman
  *
  */

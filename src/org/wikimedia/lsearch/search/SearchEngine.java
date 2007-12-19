@@ -236,6 +236,27 @@ public class SearchEngine {
 		}
 		return res;
 	}
+	
+	/** Search a single titles index part */
+	public SearchResults searchTitles(IndexId iid, String searchterm, Query q, SuffixFilterWrapper filter, int offset, int limit, boolean explain){
+		if(!iid.isTitlesBySuffix())
+			return null;
+		try {			
+			SearcherCache cache = SearcherCache.getInstance();
+			IndexSearcherMul searcher;
+			long searchStart = System.currentTimeMillis();
+			searcher = cache.getLocalSearcher(iid);
+			TopDocs hits = searcher.search(q,filter,offset+limit);
+			SearchResults res = makeTitlesSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
+			return res;
+		} catch (IOException e) {
+			e.printStackTrace();
+			SearchResults res = new SearchResults();
+			res.setErrorMsg("Internal error in SearchEngine: "+e.getMessage());
+			log.error("I/O error in searchTitles(): "+e.getMessage());
+			return res;
+		}
+	}
 
 	/** Search mainpart or restpart of the split index */
 	public HighlightPack searchPart(IndexId iid, String searchterm, Query q, NamespaceFilterWrapper filter, int offset, int limit, boolean explain){
@@ -299,7 +320,7 @@ public class SearchEngine {
 		if(offset == 0){
 			try {
 				sug = new Suggest(iid);
-			} catch (IOException e1) {
+			} catch (Exception e1) {
 				log.warn("Cannot open spell-suggestion indexes for "+iid+" : "+e1);
 			}
 		}
@@ -315,7 +336,7 @@ public class SearchEngine {
 				if(f.cardinality()==1 || NamespaceCache.isComposable(f))
 					nsfw = new NamespaceFilterWrapper(f);
 			// use default filter if it's cached or composable of cached entries
-			}else if(cachedFilters.containsValue(nsDefault) || NamespaceCache.isComposable(nsDefault))
+			} else if(cachedFilters.containsValue(nsDefault) || NamespaceCache.isComposable(nsDefault))
 				nsfw = new NamespaceFilterWrapper(nsDefault);
 		}
 		
@@ -363,6 +384,7 @@ public class SearchEngine {
 							}
 						}
 						highlight(iid,q,parser.getWords(),pack.terms,pack.dfs,pack.maxDoc,res,exactCase);
+						fetchTitles(res,searchterm,iid,parser,wildcards);
 						return res;
 					}
 				} 
@@ -414,6 +436,7 @@ public class SearchEngine {
 					}
 				}
 				highlight(iid,q,parser.getWords(),searcher,res,exactCase);
+				fetchTitles(res,searchterm,iid,parser,wildcards);
 				return res;
 			} catch(Exception e){				
 				if(e.getMessage()!=null && e.getMessage().equals("time limit")){
@@ -466,6 +489,47 @@ public class SearchEngine {
 		return (float) score;
 	}
 	
+	
+	protected void fetchTitles(SearchResults res, String searchterm, IndexId iid, WikiQueryParser parser, Wildcards wildcards){
+		if(!iid.hasTitlesIndex())
+			return;
+		IndexId titles = iid.getTitlesIndex();
+		IndexId target = null;
+		IndexId main = titles.getDB();
+		SuffixFilter sf = null;
+		if(main.getSplitFactor() > 2) // TODO: ideally, should support multisearcher stuff over many indexes
+			throw new RuntimeException("(currently) unsupported: titles index split in more than two parts");
+		if(titles.getTitlesBySuffixCount()==1){			
+			if(main.getSplitFactor() == 1){
+				target = titles;
+				sf = new SuffixFilter(iid.getTitlesSuffix());
+			} else if(main.getSplitFactor()==2){
+				HashSet<String> names = main.getPhysicalIndexes();
+				names.remove(titles.toString());
+				target = IndexId.get(names.iterator().next());
+			}
+		} else{
+			target = titles;
+			sf = new SuffixFilter(iid.getTitlesSuffix());
+		}
+		
+		Query q = parser.parseForTitles(searchterm,wildcards); 
+		String host = cache.getRandomHost(target);
+		if(host != null){
+			RMIMessengerClient messenger = new RMIMessengerClient();
+			SuffixFilterWrapper wrap = null;
+			if(sf != null)
+				wrap = new SuffixFilterWrapper(sf);
+			SearchResults r = messenger.searchTitles(host,target.toString(),searchterm,q,wrap,0,10,false);
+			if(r.isSuccess()){
+				// OK! set the titles stuff
+				res.setTitles(r.getResults());				
+			} else{
+				log.error("Error getting grouped titles search results:"+r.getErrorMsg());
+			}
+		}
+	}
+	
 	protected SearchResults makeSearchResults(SearchableMul s, TopDocs hits, int offset, int limit, IndexId iid, String searchterm, Query q, long searchStart, boolean explain) throws IOException{
 		SearchResults res = new SearchResults();
 		int numhits = hits.totalHits;
@@ -500,41 +564,39 @@ public class SearchEngine {
 		return res;
 	}
 	
-	/** Make search results from Hits */
-	protected SearchResults makeSearchResults(SearchableMul s, Hits hits, int offset, int limit, IndexId iid, String searchterm, Query q, long searchStart, boolean explain) throws IOException{
+	protected SearchResults makeTitlesSearchResults(SearchableMul s, TopDocs hits, int offset, int limit, IndexId iid, String searchterm, Query q, long searchStart, boolean explain) throws IOException{
 		SearchResults res = new SearchResults();
-		int numhits = hits.length();
+		int numhits = hits.totalHits;
 		res.setSuccess(true);			
 		res.setNumHits(numhits);
 		logRequest(iid,"search",searchterm, q, numhits, searchStart, s);
 		
 		int size = min(limit+offset,maxoffset,numhits) - offset;
-		int[] docids = new int[size];
+		int[] docids = new int[size]; 
 		float[] scores = new float[size];
 		// fetch documents
 		for(int i=offset, j=0 ; i<limit+offset && i<maxoffset && i<numhits; i++, j++){
-			docids[j] = hits.id(i);
-			scores[j] = hits.score(i);
+			docids[j] = hits.scoreDocs[i].doc;
+			scores[j] = hits.scoreDocs[i].score;
 		}
 		// fetch documents
 		Document[] docs = s.docs(docids);
 		int j=0;
+		//float maxScore = hits.getMaxScore();
 		float maxScore = 1;
-		//if(numhits>0)
-		//	maxScore = hits.score(0);
 		for(Document doc : docs){
 			String namespace = doc.get("namespace");
 			String title = doc.get("title");
+			String interwiki = iid.getInterwikiBySuffix(doc.get("suffix"));
 			float score = transformScore(scores[j]/maxScore); 
-			ResultSet rs = new ResultSet(score,namespace,title);
+			ResultSet rs = new ResultSet(score,namespace,title,interwiki);
 			if(explain)
-				rs.setExplanation(((IndexSearcherMul)s).explain(q,docids[j]));
+				rs.setExplanation(((Searcher)s).explain(q,docids[j]));
 			res.addResult(rs);
 			j++;
 		}
 		
 		return res;
-
 	}
 	
 	protected Term[] getTerms(Query q){

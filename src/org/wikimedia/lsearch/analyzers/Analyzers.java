@@ -131,6 +131,12 @@ public class Analyzers {
 		analyzer.addAnalyzer(fields.keyword(), 
 				getReusableAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		
+		if(!exactCase){ // add exact-case analyzer, needed for titles indexes
+			FieldNameFactory fieldsExact = new FieldNameFactory(true);
+			analyzer.addAnalyzer(fieldsExact.title(),
+					getReusableAnalyzer(filters.getNoStemmerFilterFactory(),true));
+		}
+		
 		return analyzer;
 	}
 	

@@ -48,6 +48,7 @@ public class Importer {
 		boolean snapshotDb = false, useOldLinkAnalysis = false;
 		boolean useOldRelated = false;
 		boolean makeIndex = true; boolean makeHighlight = false;
+		boolean makeTitles = false; boolean newTitles = false;
 		
 		System.out.println("MediaWiki Lucene search indexer - index builder from xml database dumps.\n");
 		
@@ -62,7 +63,10 @@ public class Importer {
 			System.out.println("  -l              - use earlier link analysis index, don't recalculate");
 			System.out.println("  -r              - use earlier related index, don't recalculate");
 			System.out.println("  -h              - also make the highlight index");
+			System.out.println("  -t              - also make the titles index (if available)");			
 			System.out.println("  -ho             - make *only* the highlight index");
+			System.out.println("  -to             - make *only the titles index");
+			System.out.println("  -nt             - start a new titles index");
 			System.out.println("  -lm limit_num   - add at most limit_num articles");
 			System.out.println("  -o optimize     - true/false overrides optimization param from global settings");
 			System.out.println("  -m mergeFactor  - overrides param from global settings");
@@ -87,7 +91,14 @@ public class Importer {
 				useOldRelated = true;
 			else if(args[i].equals("-h"))
 				makeHighlight = true;
-			else if(args[i].equals("-ho")){
+			else if(args[i].equals("-t"))
+				makeTitles = true;
+			else if(args[i].equals("-nt"))
+				newTitles = true;
+			else if(args[i].equals("-to")){
+				makeIndex = false;
+				makeTitles = true;
+			} else if(args[i].equals("-ho")){
 				makeHighlight = true;
 				makeIndex = false;
 			} else if(args[i].equals("-s"))
@@ -148,20 +159,28 @@ public class Importer {
 			}			
 			long end = start;
 			try {
-				String add = "";
-				if(makeIndex && makeHighlight)
-					add = "(index+higlight)";
-				else if(makeIndex)
-					add = "(index)";
-				else if(makeHighlight)
-					add = "(highlight)";
-						
+				StringBuilder add = new StringBuilder("(");
+				
+				if(makeIndex)
+					add.append("index");
+				if(makeHighlight){
+					if(add.length()>1)
+						add.append("+");
+					add.append("highlight");
+				}
+				if(makeTitles){
+					if(add.length()>1)
+						add.append("+");
+					add.append("titles");
+				}
+				add.append(")");
+				
 				log.info("Indexing articles "+add+"...");
 				IndexId ll = iid.getLinks();
 				Links links = null;
 				links = Links.openForRead(ll,ll.getImportPath());
 				// read
-				DumpImporter dp = new DumpImporter(dbname,limit,optimize,mergeFactor,maxBufDocs,newIndex,links,langCode,makeIndex,makeHighlight);
+				DumpImporter dp = new DumpImporter(dbname,limit,optimize,mergeFactor,maxBufDocs,newIndex,links,langCode,makeIndex,makeHighlight,makeTitles,newTitles);
 				XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(dp, 1000));
 				reader.readDump();
 				end = System.currentTimeMillis();
@@ -191,6 +210,11 @@ public class Importer {
 			}
 			if(makeHighlight){
 				for(IndexId p : iid.getHighlight().getPhysicalIndexIds()){
+					IndexThread.makeIndexSnapshot(p,p.getImportPath());
+				}
+			}
+			if(makeTitles){
+				for(IndexId p : iid.getTitlesIndex().getPhysicalIndexIds()){
 					IndexThread.makeIndexSnapshot(p,p.getImportPath());
 				}
 			}

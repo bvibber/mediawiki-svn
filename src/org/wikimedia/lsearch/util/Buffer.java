@@ -4,12 +4,23 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
 
 import org.wikimedia.lsearch.analyzers.Aggregate;
 import org.wikimedia.lsearch.analyzers.Alttitles;
 import org.wikimedia.lsearch.analyzers.ExtToken;
 import org.wikimedia.lsearch.analyzers.LanguageAnalyzer;
+import org.wikimedia.lsearch.analyzers.ExtToken.Position;
 
+/**
+ * Raw byte-buffer. 
+ * All strings are converted to utf-8 and their utf-8 length written. 
+ * Whole content might not be a valid string. 
+ * 
+ * @author rainman
+ *
+ */
 public class Buffer {
 	public byte[] buf = new byte[256];
 	public int len=0;
@@ -38,7 +49,7 @@ public class Buffer {
 	}
 	
 	public String readStringWithLength(){
-		int strlen = read();
+		int strlen = read() & 0xff;
 		String s;
 		try {
 			s = new String(buf,len,strlen,"utf-8");
@@ -59,11 +70,11 @@ public class Buffer {
 	}
 	
 	/** @return Integer type, String title, Integer rank(boost), ArrayList<ExtToken> tokens */ 
-	public Object[] readAlttitleInfo(){
+	public Object[] readAlttitleInfo(Utf8Set terms, HashMap<Integer,Position> posMap){
 		Integer type = (int)read();
 		Integer boost = readInt();
 		String title = readStringWithLength();
-		ArrayList<ExtToken> tokens = ExtToken.deserialize(readBytesWithLength());
+		ArrayList<ExtToken> tokens = ExtToken.deserialize(readBytesWithLength(),terms,posMap);
 		return new Object[] { type, new Alttitles.Info(title,boost,tokens)};
 	}
 	

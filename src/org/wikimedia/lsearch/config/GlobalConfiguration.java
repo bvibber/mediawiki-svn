@@ -19,11 +19,13 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.Set;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -68,6 +70,8 @@ public class GlobalConfiguration {
 	protected Hashtable<String,String> wgServer = null;
 	/** wgNamespacesToBeSearchedDefault from InitialiseSettings, suffix -> lang code */
 	protected Hashtable<String,NamespaceFilter> wgDefaultSearch = null;
+	/** for each database suffix, it's interwiki (suffix -> iw), e.g. wiki -> w */
+	protected Hashtable<String,String> suffixIwMap = new Hashtable<String,String>();
 	
 	/** info about this host */
 	protected static InetAddress myHost;
@@ -135,6 +139,8 @@ public class GlobalConfiguration {
 	
 	/** Return true if host is the current host (IP or hostname) */
 	public boolean isLocalhost(String host){
+		if(host == null)
+			return false;
 		return host.equalsIgnoreCase(hostAddr) || host.equalsIgnoreCase(hostName);
 	}
 	
@@ -176,6 +182,8 @@ public class GlobalConfiguration {
 		// for each DB check if the corresponding parts are defined
 		// if not, put them in with default values
 		for(String dbname : database.keySet()){
+			if(dbname.startsWith("<"))
+				continue; // special keywords, like <all>
 			Set<String> types = database.get(dbname).keySet();
 			if(types.contains("mainsplit")){
 				if(!types.contains("mainpart"))
@@ -265,10 +273,10 @@ public class GlobalConfiguration {
 						String host = indexLocation.get(dbname);
 						indexLocation.put(dbrole,host);
 						index.get(host).add(dbrole);
-					} else{
+					} /*else{
 						System.out.println("ERROR in Global Configuration: index "+dbrole+" does not have an index host.");
 						return false;
-					}
+					} */
 					// add same index location for highlight .hl index
 					/* String host = indexLocation.get(dbrole); 
 					indexLocation.put(dbrole+".hl",host);
@@ -521,14 +529,68 @@ public class GlobalConfiguration {
 	 */
 	protected void makeIndexIdPool(){
 		// get local indexes
-		ArrayList<String> localIndexes = index.get(hostAddr);
+		/* ArrayList<String> localIndexes = index.get(hostAddr);
 		if(localIndexes == null)
 			localIndexes = new ArrayList<String>();
 		if(index.get(hostName)!=null)
-			localIndexes.addAll(index.get(hostName));
+			localIndexes.addAll(index.get(hostName)); */
+		
+		// dbname -> ts index, e.g. enwiki -> en.tspart1
+		HashMap<String,String> dbnameTitlesPart = new HashMap<String,String>();
+		// dbname -> matched suffix, e.f. enwiki -> wiki
+		HashMap<String,String> dbnameSuffix = new HashMap<String,String>();
+		// suffix -> part, e.g. wiki -> tspart1
+		HashMap<String,String> suffixPart = new HashMap<String,String>();
+		int splitFactor = 0;
+		// new db names to be created
+		HashSet<String> dbnames = new HashSet<String>();
+		// db -> language, e.g. en -> en
+		HashMap<String,String> dbLang = new HashMap<String,String>();
+		if(database.containsKey("<all>")){
+			Hashtable<String,Hashtable<String,String>> allKeyword = database.get("<all>");
+			splitFactor = Integer.parseInt(allKeyword.get("titles_by_suffix").get("number"));			
+			for(int i=1;i<=splitFactor;i++){
+				String part = "tspart"+i;
+				suffixIwMap.putAll(allKeyword.get(part));
+				for(String suffix : allKeyword.get(part).keySet()){
+					suffixPart.put(suffix,part);
+				}
+			}
+			// figure out parts for suffixes
+			Set<String> suffixes = suffixPart.keySet();
+			for(String dbname : database.keySet()){
+				if(dbname.startsWith("<"))
+					continue;
+				for(String s : suffixes){
+					if(dbname.endsWith(s)){
+						// e.g. en.tspart1
+						String db = dbname.substring(0,dbname.lastIndexOf(s));
+						String partName = db+"-titles."+suffixPart.get(s);
+						dbnameTitlesPart.put(dbname,partName);
+						dbnameSuffix.put(dbname,s);
+						dbnames.add(db);
+						if(!dbLang.containsKey(db))
+							dbLang.put(db,getLanguage(dbname));
+					}
+				}
+			}
+			// create the new databases
+			Hashtable<String,Hashtable<String,String>> params = database.get("<all>");
+			for(String db : dbnames){	
+				Hashtable<String,Hashtable<String,String>> p = (Hashtable<String, Hashtable<String, String>>) params.clone();
+				if(dbLang.containsKey(db)){
+					Hashtable<String,String> code = new Hashtable<String,String>();
+					code.put("code",dbLang.get(db));
+					p.put("language",code);
+				}
+				database.put(db+"-titles",p);				
+			}
+		}
 		
 		// iterate over all dbs and types
 		for(String dbname : database.keySet()){
+			if(dbname.startsWith("<"))
+				continue; // keyword special case
 			for(String typeid : database.get(dbname).keySet()){
 				String type = "";
 				String dbrole = "";				
@@ -550,6 +612,12 @@ public class GlobalConfiguration {
 				} else if(typeid.matches(".*?\\.sub[0-9]+")){
 					type = "subdivided";
 					dbrole = dbname + "." + typeid;
+				} else if(typeid.equals("titles_by_suffix")){
+					type = "titles_by_suffix";
+					dbrole = dbname;
+				} else if (typeid.matches("tspart[1-9][0-9]*")){
+					type = "titles_by_suffix";
+					dbrole = dbname + "." + typeid;
 				} else
 					continue; // uknown type, skip
 						
@@ -557,7 +625,11 @@ public class GlobalConfiguration {
 				HashSet<String> mySearchHosts = getMySearchHosts(dbname,dbrole);
 				boolean mySearch = searchHosts.contains(hostAddr) || searchHosts.contains(hostName);
 				String indexHost = indexLocation.get(dbrole);
-				boolean myIndex = localIndexes.contains(dbrole);
+				if(indexHost == null)
+					indexHost = indexLocation.get(dbname);
+				if(indexHost == null)
+					indexHost = indexLocation.get("<default>");
+				boolean myIndex = hostAddr.equals(indexHost) || hostName.equals(indexHost);
 				Hashtable<String,String> typeidParams = database.get(dbname).get(typeid);
 				boolean isSubdivided = false;
 				if(typeidParams != null && typeidParams.containsKey("subdivisions")){
@@ -592,7 +664,9 @@ public class GlobalConfiguration {
 						                    myIndex,
 						                    mySearch,
 						                    oairepo,
-						                    isSubdivided);
+						                    isSubdivided,
+						                    dbnameTitlesPart.get(dbname),
+						                    dbnameSuffix.get(dbname));
 				indexIdPool.put(dbrole,iid);
 				
 				if(type.equals("single") || type.equals("mainsplit") || type.equals("split") 
@@ -615,7 +689,9 @@ public class GlobalConfiguration {
 							            myIndex,
 							            mySearch,
 							            oairepo,
-							            isSubdivided);
+							            isSubdivided,
+							            dbnameTitlesPart.get(dbname),
+							            dbnameSuffix.get(dbname));
 					indexIdPool.put(dbrole,iid);
 				}
 				
@@ -624,8 +700,7 @@ public class GlobalConfiguration {
 				indexIdPool.get(dbname).rebuildNsMap(indexIdPool);
 				indexIdPool.get(dbname+".hl").rebuildNsMap(indexIdPool);
 			}
-		}
-		
+		}		
 	}
 
 	/** 
@@ -889,6 +964,29 @@ public class GlobalConfiguration {
 				System.out.println("Unrecognized prefix parameters in ("+role+")");
 			
 			dbroles.put(type,params);			
+		} else if(type.equals("titles_by_suffix")){
+			if(tokens.length>1) // number of segments
+				params.put("number",tokens[1]);
+			else{
+				params.put("number","1");
+			}
+			dbroles.put(type,params);
+		} else if(type.matches("tspart[1-9][0-9]*")){
+			// [0,1,2] syntax gets split up in first split, retokenize
+			String defPart = role.substring(role.indexOf("[")+1,role.lastIndexOf("]")).trim();
+			String[] defs = defPart.split(",");
+			// entries as expanded as params: wiki -> w
+			for(String def : defs){
+				String[] parts = def.split(":");
+				String suffix, iw;
+				suffix = parts[0].trim();
+				if(parts.length == 2)
+					iw = parts[1].trim();
+				else
+					iw = suffix;
+				params.put(suffix,iw);
+			}		
+			dbroles.put(type,params);		
 		} else if(verbose){
 			System.out.println("Warning: Unrecognized role \""+role+"\".Ignoring.");
 		}

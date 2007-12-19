@@ -25,6 +25,7 @@ import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.search.HighlightPack;
 import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
 import org.wikimedia.lsearch.search.SearcherCache;
+import org.wikimedia.lsearch.search.SuffixFilterWrapper;
 import org.wikimedia.lsearch.search.Wildcards;
 
 /**
@@ -241,7 +242,23 @@ public class RMIMessengerClient {
 		} catch(Exception e){
 			e.printStackTrace();
 			return new HashMap<String,HighlightResult>();
+		}		
+	}
+	
+	public SearchResults searchTitles(String host, String dbrole, String searchterm, Query query, SuffixFilterWrapper filter, int offset, int limit, boolean explain) {
+		try{
+			RMIMessenger r = messengerFromCache(host);
+			return r.searchTitles(dbrole,searchterm,query,filter,offset,limit,explain);
+		} catch(Exception e){
+			e.printStackTrace();
+			if(cache == null)
+				cache = SearcherCache.getInstance();
+			cache.invalidateSearchable(IndexId.get(dbrole),host);
+			SearchResults res = new SearchResults();
+			res.setErrorMsg("Error searching titles: "+e.getMessage());			
+			log.warn("Error invoking remote method searchTitles on host "+host+" : "+e.getMessage());
+			e.printStackTrace();
+			return res;
 		}
-		
 	}
 }

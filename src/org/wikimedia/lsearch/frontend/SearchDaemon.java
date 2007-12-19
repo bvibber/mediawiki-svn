@@ -86,6 +86,13 @@ public class SearchDaemon extends HttpHandler {
 					sendOutputLine("#suggest "+res.getSuggest());
 				else 
 					sendOutputLine("#no suggestion");
+				if(res.getTitles() != null){
+					sendOutputLine("#interwiki "+res.getTitles().size());
+					for(ResultSet rs : res.getTitles()){
+						sendOutputLine("#interwiki "+rs.getScore()+" "+encode(rs.getInterwiki())+" "+rs.getNamespace()+" "+encodeTitle(rs.getTitle()));
+					}
+				} else
+					sendOutputLine("#interwiki 0");
 				for(ResultSet rs : res.getResults()){
 					sendResultLine(rs.score, rs.namespace, rs.title);
 					if(rs.getContext() != null){
@@ -101,7 +108,7 @@ public class SearchDaemon extends HttpHandler {
 						sendHighlightWithTitle("redirect",hr.getFormattedRedirect(),hr.getRedirect());
 						sendHighlightWithFragment("section",hr.getFormattedSection(),hr.getSection());
 					}
-				}
+				}				
 			} else{
 				sendError(500, "Server error", res.getErrorMsg());
 			}	

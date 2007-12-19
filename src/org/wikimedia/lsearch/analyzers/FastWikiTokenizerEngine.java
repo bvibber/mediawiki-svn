@@ -355,7 +355,7 @@ public class FastWikiTokenizerEngine {
 			if(!addOriginal || original.equals(text))
 				original = null;
 			
-			return new ExtToken(text,start,end,type,pos,original,text);
+			return new ExtToken(text,start,end,type,pos,original);
 		}			
 	}
 	
@@ -402,6 +402,8 @@ public class FastWikiTokenizerEngine {
 					type = ExtToken.Type.SENTENCE_BREAK;
 				if(last == '\n' && (lc == ':' || lc == '*' || lc=='#' || lc=='\n'))
 					type = ExtToken.Type.SENTENCE_BREAK;
+				if(last == '\n' && lc =='|' && i+1<glueLength && glueBuffer[i+1]=='-')
+					type = ExtToken.Type.SENTENCE_BREAK;
 
 				if(lc == '{' || lc == '}' || lc == '[' || lc == ']' 
 					|| lc == '<' || lc == '>' || lc=='*' || lc=='#' 
@@ -438,7 +440,9 @@ public class FastWikiTokenizerEngine {
 		return new ExtToken(glue,glueStart,glueStart+glueLength,type,getPosition());
 	}
 	
-	/** Check if char is a small break in the sentence structure, but not end of sentence */
+	/** Check if char is a small break in the sentence structure, but not end of sentence 
+	 *  FIXME: these *need* to be ASCII chars 
+	 */
 	public static final boolean isMinorBreak(char ch){
 		return ch == '\"' || ch == ':' || ch == ';' || ch == ',' || ch == '(' || ch == ')';
 	}
@@ -681,6 +685,18 @@ public class FastWikiTokenizerEngine {
 		}
 		return true;
 	}
+	/** Check if it's a reference tag starting at cur */
+	protected boolean checkRefStart(){
+		if(matchesString("<ref")){
+			for(int tt=cur;tt<textLength-1;tt++){
+				if(text[tt]=='/' && text[tt+1]=='>') // single reference pointer <ref name="foo"/>
+					return false;
+				if(text[tt]=='>')
+					return true;
+			}
+		}
+		return false;
+	}
 	
 	/**
 	 * Parse Wiki text, and produce an arraylist of tokens.
@@ -752,10 +768,21 @@ public class FastWikiTokenizerEngine {
 							table_col : for( lookup = cur + 2 ; lookup < textLength ; lookup++ ){
 								switch(text[lookup]){
 								case '\n': break table_col;
-								case '|': cur = lookup; break table_col;
+								case '|': 
+									if(lookup+1<textLength && text[lookup+1]!='|')
+										cur = lookup; 
+								break table_col;
 								}
 							} 
-						} else if(text[cur+1] == '-'){
+						} else if(cur > 0 && text[cur-1]=='\n' && text[cur+1] == '-'){
+							// explicitely put '-' into the glue buffer
+							if(options.highlightParsing){		
+								if(glueLength == 0)
+									glueStart = cur+1;
+								if(glueLength < glueBuffer.length){
+									glueBuffer[glueLength++] = '-';  
+								}
+							}
 							// |- align="center" kind of syntax, ignore till end of line
 							for(lookup = cur+2 ; lookup < textLength ; lookup++){
 								if(text[lookup] == '\n'){
@@ -786,11 +813,10 @@ public class FastWikiTokenizerEngine {
 									switch(text[lookup]){
 									case '\n': break table_params;
 									case '|': 
-										if(seenNonPipe){
-											cur = lookup; 
-											break table_params;
+										if(seenNonPipe && lookup+1<textLength && text[lookup+1] != '|'){
+											cur = lookup; 											
 										} 
-										break;
+										break table_params;
 									default: 
 										if(!seenNonPipe) 
 											seenNonPipe = true;
@@ -828,7 +854,7 @@ public class FastWikiTokenizerEngine {
 					continue;
 				case '<':
 					addToken();
-					if(matchesString("<ref")){ // TODO: should probably be a regexp <ref.*?>
+					if(checkRefStart()){ 
 						inRef = true;
 						firstRef = true;
 					}					

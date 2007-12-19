@@ -53,6 +53,47 @@ def rewrite_query(query):
     
     return prefix_re.sub(rewrite_callback,query)
 
+def make_wiki_link(line,dbname):
+    parts = line.split(' ')
+    score = float(parts[0])
+    title = ''
+    if len(parts) == 3:
+        ns = canon_namespaces[int(parts[1])]
+        if ns != '':
+            ns = ns +":"
+        title = ns+parts[2]
+    else:
+        iw = parts[1]
+        ns = canon_namespaces[int(parts[2])]
+        if ns != '':
+            ns = ns +":"
+        title = iw+':'+ns+parts[3]
+    if dbname.endswith('wiktionary'):
+        link = 'http://%s.wiktionary.org/wiki/%s' % (dbname[0:2],title)
+    else:
+        link = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],title)
+    decoded = urllib.unquote(title.replace('_',' '))
+    return ['%1.2f -- <a href="%s">%s</a>' % (score,link,decoded),title]
+
+def make_title_link(line,dbname):
+    interwiki={'w':'wikipedia', 'wikt':'wiktionary', 's':'wikisource', 'b': 'wikibooks', 'n':'wikinews', 'v':'wikiversity', 'q':'wikiquote'}
+    parts = line.split(' ')
+    score = float(parts[0])
+    title = ''
+    iw = parts[1]
+    ns = canon_namespaces[int(parts[2])]
+    if ns != '':
+        ns = ns +":"
+    title = iw+':'+ns+parts[3]
+    caption = ns+parts[3]
+    
+    if dbname.endswith('wiktionary'):
+        link = 'http://%s.wiktionary.org/wiki/%s' % (dbname[0:2],title)
+    else:
+        link = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],title)
+    decoded = urllib.unquote(caption.replace('_',' '))
+    return ['%s : <a href="%s">%s</a> (%1.2f)' % (interwiki[iw],link,decoded,score),title]
+
 class MyHandler(BaseHTTPRequestHandler):        
     def do_GET(self):
         try:
@@ -102,11 +143,20 @@ class MyHandler(BaseHTTPRequestHandler):
                     results = urllib2.urlopen(search_url+"?"+search_params)
                     numhits = int(results.readline())
                     lasthit = min(offset+limit,numhits) 
+                    # suggestions
                     suggest = results.readline();
                     if suggest.startswith("#suggest "):                        
                         suggest = suggest[9:]
                     else:
                         suggest = ""
+                    # grouped titles
+                    interwiki_count = results.readline();
+                    interwiki_count = int(interwiki_count.split(' ')[1])
+                    i = 0
+                    interwiki = []
+                    while i < interwiki_count:
+                        interwiki.append(make_title_link(results.readline()[11:],dbname)[0])
+                        i+=1
                     # html headers
                     self.send_response(200)
                     self.send_header('Cache-Control','no-cache')
@@ -132,10 +182,14 @@ class MyHandler(BaseHTTPRequestHandler):
                     else:
                         next = "Next &gt;"
                     searchbar = '<a href="/">New search</a> | %s -- %s  | Total results: %d' % (prev, next, numhits)
+                                        
                     
                     # show upper search bar
                     self.wfile.write(searchbar)
                     self.wfile.write('<hr>Showing results %d - %d<br>' % (offset,lasthit))
+                    
+                    # begin the main results table
+                    self.wfile.write('<table><tr><td>')
                     
                     # show results
                     self.wfile.write('Score / Article<br>')
@@ -144,19 +198,8 @@ class MyHandler(BaseHTTPRequestHandler):
                         lines.append(line)
                     i = 0
                     while i < len(lines):
-                        line = lines[i]
-                        parts = line.split(' ')
-                        score = float(parts[0])
-                        ns = canon_namespaces[int(parts[1])]
-                        if ns != '':
-                            ns = ns +":"
-                        title = ns+parts[2]
-                        if dbname.endswith('wiktionary'):
-                            link = 'http://%s.wiktionary.org/wiki/%s' % (dbname[0:2],title)
-                        else:
-                            link = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],title)
-                        decoded = urllib.unquote(title.replace('_',' '))
-                        self.wfile.write('%1.2f -- <a href="%s">%s</a>' % (score,link,decoded))
+                        [link,title] = make_wiki_link(lines[i],dbname)
+                        self.wfile.write(link)
                         # decode highlight info
                         textHl = ''
                         redirectHl = ''
@@ -190,6 +233,14 @@ class MyHandler(BaseHTTPRequestHandler):
                             textHl = urllib.unquote_plus(textHl)
                             self.wfile.write('<div style="width:500px"><font size="-1">%s</font></div>' % textHl)
                         i += 1 
+                    
+                    # write the grouped titles stuff    
+                    self.wfile.write('</td><td width=35% valign=top>')
+                    self.wfile.write('From sister projects:<br/>')
+                    self.wfile.write('<font size="-1">')
+                    for iw in interwiki:
+                        self.wfile.write(iw+'<br/>')
+                    self.wfile.write('</font></td></tr></table>')
                     self.wfile.write('<hr>')
                     # show lower search bar
                     self.wfile.write(searchbar)

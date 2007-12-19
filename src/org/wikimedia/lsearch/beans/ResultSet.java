@@ -13,21 +13,27 @@ public class ResultSet implements Serializable {
 	public String namespace;
 	public String title;
 	public ArrayList<String> context;
-	public Explanation explanation;
+	public Explanation explanation = null;
 	public HighlightResult highlight;
+	public String interwiki = null;
 	
 	public ResultSet(String key) {
 		int colon = key.indexOf(':');
 		this.score = 0;
 		this.namespace = key.substring(0,colon);
 		this.title = key.substring(colon+1);
-		this.explanation = null;
 	}
 	public ResultSet(double score, String namespace, String title) {
 		this.score = score;
 		this.namespace = namespace;
 		this.title = title;
-		this.explanation = null;
+	}
+	
+	public ResultSet(double score, String namespace, String title, String interwiki) {
+		this.score = score;
+		this.namespace = namespace;
+		this.title = title;
+		this.interwiki = interwiki;
 	}
 	
 	public ResultSet(double score, String namespace, String title, Explanation explanation) {
@@ -98,4 +104,11 @@ public class ResultSet implements Serializable {
 	public void setHighlight(HighlightResult highlight) {
 		this.highlight = highlight;
 	}
+	public String getInterwiki() {
+		return interwiki;
+	}
+	public void setInterwiki(String interwiki) {
+		this.interwiki = interwiki;
+	}
+	
 }

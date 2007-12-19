@@ -60,7 +60,7 @@ public class IndexId {
 	/** If true, this machine is an indexer for this index */
 	protected boolean myIndex;
 	
-	protected enum IndexType { SINGLE, MAINSPLIT, SPLIT, NSSPLIT, SPELL, LINKS, RELATED, PREFIX, PREFIX_TITLES, SUBDIVIDED };
+	protected enum IndexType { SINGLE, MAINSPLIT, SPLIT, NSSPLIT, SPELL, LINKS, RELATED, PREFIX, PREFIX_TITLES, SUBDIVIDED, TITLES_BY_SUFFIX };
 	
 	/** the index of this subdivided part */
 	protected int subpartNum;
@@ -105,6 +105,15 @@ public class IndexId {
 	/** Path to temporary index (e.g. for rebuilding spell-check words) */
 	protected String tempPath;
 	
+	/** Index where titles for this index are */
+	protected String titlesIndex;
+	/** Suffix used to group titles by */
+	protected String titlesSuffix; 
+	/** For titles part (tspart) indexes, maps suffix -> iw */
+	protected Hashtable<String,String> suffixIwMap = null;
+	/** Dbname after suffix is deleted */
+	protected String reducedDbname = null;
+	
 	/** url of OAI repository */
 	protected String OAIRepository;
 	
@@ -147,7 +156,8 @@ public class IndexId {
 	public IndexId(String dbrole, String type, String indexHost, String indexRsyncPath, 
 			Hashtable<String, String> typeParams, Hashtable<String, String> params, 
 			HashSet<String> searchHosts, HashSet<String> mySearchHosts, String localIndexPath, 
-			boolean myIndex, boolean mySearch, String OAIRepository, boolean isSubdivided) {
+			boolean myIndex, boolean mySearch, String OAIRepository, boolean isSubdivided,
+			String titlesIndex, String titlesSuffix) {
 		final String sep = Configuration.PATH_SEP;
 		this.indexHost = indexHost;
 		if(!indexRsyncPath.endsWith("/"))
@@ -167,6 +177,8 @@ public class IndexId {
 		this.params = params;
 		this.OAIRepository = OAIRepository;
 		this.furtherSubdivided = isSubdivided;
+		this.titlesIndex = titlesIndex;
+		this.titlesSuffix = titlesSuffix;		
 		
 		// types
 		if(type.equals("single"))
@@ -189,6 +201,8 @@ public class IndexId {
 			this.type = IndexType.PREFIX_TITLES;
 		else if(type.equals("subdivided"))
 			this.type = IndexType.SUBDIVIDED;
+		else if(type.equals("titles_by_suffix"))
+			this.type = IndexType.TITLES_BY_SUFFIX;
 		
 		// highlight index
 		String suffix = "";
@@ -211,6 +225,9 @@ public class IndexId {
 			subpart = parts[2];
 			subpartNum = Integer.parseInt(subpart.substring(3));
 		}
+		
+		if(titlesSuffix != null)
+			reducedDbname = dbname.substring(0,dbname.indexOf(titlesSuffix));
 		
 		partNum = -1;
 		splitParts = null;
@@ -247,7 +264,18 @@ public class IndexId {
 					namespaceSet.add(ns.trim());	 
 			} else
 				partNum = 0;
-		} 
+		} else if(this.type == IndexType.TITLES_BY_SUFFIX){ // split by default
+			splitFactor = Integer.parseInt(typeParams.get("number"));
+			splitParts = new String[splitFactor];
+			for(int i=0;i<splitFactor;i++)
+				splitParts[i] = dbname+".tspart"+(i+1)+suffix;
+			// additional params
+			if(part!=null){				
+				partNum = Integer.parseInt(part.substring(6));
+				suffixIwMap = params;
+			} else
+				partNum = 0;
+		}
 		
 		// handle subdivided indexes
 		if(isSubdivided){
@@ -263,7 +291,7 @@ public class IndexId {
 		
 		// for split/mainsplit the main iid is logical, it doesn't have local path
 		if(myIndex 
-				&& !(part == null && (this.type==IndexType.SPLIT || this.type==IndexType.MAINSPLIT || this.type==IndexType.NSSPLIT))
+				&& !(part == null && (this.type==IndexType.SPLIT || this.type==IndexType.MAINSPLIT || this.type==IndexType.NSSPLIT || this.type==IndexType.TITLES_BY_SUFFIX))
 				&& !furtherSubdivided){
 			indexPath = localIndexPath + "index" + sep + this.dbrole;
 			importPath = localIndexPath + "import" + sep + this.dbrole;
@@ -332,6 +360,10 @@ public class IndexId {
 	/** If this is the index storing titles for the prefix index */
 	public boolean isSubdivided(){
 		return type == IndexType.SUBDIVIDED;
+	}
+	/** If this is grouping titles by suffix */
+	public boolean isTitlesBySuffix(){
+		return type == IndexType.TITLES_BY_SUFFIX;
 	}
 	
 	/** If this is a split index, returns the current part number, e.g. for entest.part4 will return 4 */
@@ -516,7 +548,7 @@ public class IndexId {
 	
 	/** get all hosts that search db this iid belongs to */
 	public HashSet<String> getDBSearchHosts(){
-		if(isSingle() || isSpell() || isLinks() || isRelated() || isPrefix() || isPrefixTitles())
+		if(isSingle() || isSpell() || isLinks() || isRelated() || isPrefix() || isPrefixTitles() || isTitlesBySuffix())
 			return searchHosts;
 		else{
 			// add all hosts that search: dbname and all parts
@@ -570,7 +602,14 @@ public class IndexId {
 		HashSet<String> ret = new HashSet<String>();
 		if(isSingle() || isSpell() || isLinks() || isRelated() || isPrefix() || isPrefixTitles())
 			ret.add(dbrole);
-		else if(isMainsplit() || isSplit() || isNssplit()){
+		else if(isTitlesBySuffix()){
+			if(part != null) // part
+				ret.add(dbrole);
+			else{ // main 
+				for(String p : splitParts)
+					ret.add(p);
+			}
+		} else if(isMainsplit() || isSplit() || isNssplit()){
 			String[] parts = furtherSubdivided? subParts : splitParts;
 			for(String p : parts){
 				IndexId ip = IndexId.get(p);
@@ -645,6 +684,11 @@ public class IndexId {
 		return get(dbname);
 	}
 
+	/** Return true if the spell-check index exists */
+	public boolean hasSpell(){
+		return GlobalConfiguration.getIndexId(dbname+".spell") != null;
+	}
+	
 	/** Get the coresponding spell words iid */
 	public IndexId getSpell() {
 		return get(dbname+".spell");
@@ -684,6 +728,31 @@ public class IndexId {
 			langCode = GlobalConfiguration.getInstance().getLanguage(dbname);
 		return langCode;
 	}
-	
+
+	/** If this is a titles_by_suffix index, gets mapping: suffix -> iw */
+	public String getInterwikiBySuffix(String suffix) {
+		return suffixIwMap.get(suffix);
+	}
+	/** If index containing only titles is defined */
+	public boolean hasTitlesIndex(){
+		return titlesIndex != null;
+	}
+	/** Get iid where the titles for this index are */
+	public IndexId getTitlesIndex() {
+		if(titlesIndex == null)
+			throw new RuntimeException(dbrole+" doesn't have titles index part");
+		return get(titlesIndex);
+	}
+	/** Get suffix used to group titles */
+	public String getTitlesSuffix() {
+		return titlesSuffix;
+	}
+	/** Number of different dbname in this titles by suffix index */
+	public int getTitlesBySuffixCount(){
+		if(suffixIwMap == null)
+			return 0;
+		else
+			return suffixIwMap.size();
+	}
 		
 }

@@ -105,6 +105,7 @@ public class AnalysisTest {
 		displayTokens(analyzer,text);
 		displayTokens(old,text);
 		displayTokens(Analyzers.getSearcherAnalyzer(IndexId.get("zhwiki")),"末朝以來藩鎮割據and some plain english 和宦官亂政的現象 as well");
+		displayTokens(analyzer,"Thomas Goode school");
 		displayTokens(analyzer,"Agreement reply readily Gödel;");
 		displayTokens(old,"Agreement reply readily compatibly compatible");
 		displayTokens(analyzer,"''' This is title ''' <i> italic</i>");

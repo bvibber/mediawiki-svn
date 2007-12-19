@@ -136,6 +136,10 @@ public class RankingTest {
 				"0:Balkan Brass Band"
 		});
 		
+		assertHits("clinton scandal",new String[]{
+				"0:Lewinsky scandal"
+		});
+		
 		
 	}
 	

@@ -17,6 +17,7 @@ import org.wikimedia.lsearch.highlight.HighlightResult;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.search.HighlightPack;
 import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
+import org.wikimedia.lsearch.search.SuffixFilterWrapper;
 
 /** Facilitates communication between both indexers and searcher */
 public interface RMIMessenger extends Remote {
@@ -129,4 +130,17 @@ public interface RMIMessenger extends Remote {
 	 * @return map: key -> highlighting result
 	 */
 	public HashMap<String,HighlightResult> highlight(ArrayList<String> hits, String dbrole, Term[] terms, int df[], int maxDoc, ArrayList<String> words, boolean exactCase) throws RemoteException;
+	
+	/**
+	 * Search grouped titles, similar logic to that of searchPart()
+	 * 
+	 * @param dbrole
+	 * @param searchterm
+	 * @param query
+	 * @param filter
+	 * @param offset
+	 * @param limit
+	 * @return
+	 */
+	public SearchResults searchTitles(String dbrole, String searchterm, Query query, SuffixFilterWrapper filter, int offset, int limit, boolean explain) throws RemoteException;
 }

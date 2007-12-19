@@ -20,6 +20,7 @@ public class SearchResults implements Serializable {
 	protected String errorMsg;
 	protected boolean retry;
 	protected String suggest;
+	protected ArrayList<ResultSet> titles;
 	
 	public SearchResults(){
 		success = false;
@@ -28,6 +29,7 @@ public class SearchResults implements Serializable {
 		errorMsg = "";
 		retry = false;
 		suggest = null;
+		titles = null;
 	}
 
 	/** Temporal error, retry the search query */
@@ -66,6 +68,16 @@ public class SearchResults implements Serializable {
 	public void addResult(ResultSet rs){
 		results.add(rs);
 	}
+	public ArrayList<ResultSet> getTitles() {
+		return titles;
+	}
+	public void setTitles(ArrayList<ResultSet> titles) {
+		this.titles = titles;
+	}
+	public void addTitlesResult(ResultSet rs){
+		titles.add(rs);
+	}
+
 	public String getSuggest() {
 		return suggest;
 	}

@@ -15,6 +15,11 @@ frtest : (split,3) (part1) (part2) (part3)
 srwiki : (single)
 njawiki : (nssplit,3) (nspart1,[0,1],false,5) (nspart2,[12,13,14,15]) (nspart3,[])
 hmwiki : (nssplit,3) (nspart1,[0,1],false,5,20,2) (nspart2,[12,13,14,15]) (nspart3,[])
+enwiki : (single)
+enwiktionary : (single)
+dewiktionary : (single)
+enwikisource : (single)
+<all> : (titles_by_suffix,2) (tspart1,[ wiki:w ]) (tspart2,[ test:test, wiktionary:wikt, wikisource:s ])
 
 # Search nodes
 # host : db1.role, db2.role
@@ -42,7 +47,8 @@ hmwiki : (nssplit,3) (nspart1,[0,1],false,5,20,2) (nspart2,[12,13,14,15]) (nspar
 192.168.0.2 : entest.ngram
 192.168.0.2 : frtest.part1, frtest.part2, frtest.part3
 192.168.0.10 : srwiki njawiki
-192.168.0.2 : hmwiki
+192.168.0.2 : hmwiki enwiktionary dewiktionary enwikisource
+192.168.0.2 : <default>
 
 # OAI repository info, for incremental updater
 # dbSuffix : base url (to index.php)

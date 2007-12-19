@@ -56,6 +56,7 @@ import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.related.RelatedTitle;
+import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.spell.api.SpellCheckIndexer;
 import org.wikimedia.lsearch.util.Buffer;
 import org.wikimedia.lsearch.util.Localization;
@@ -93,6 +94,7 @@ public class WikiIndexModifier {
 		protected boolean rewrite;		
 		protected String langCode;
 		protected boolean exactCase;
+		protected IndexId original;
 		
 		protected HashSet<IndexUpdateRecord> nonDeleteDocuments;
 		
@@ -107,12 +109,14 @@ public class WikiIndexModifier {
 		 * @param iid 
 		 * @param indexAnalyzer
 		 * @param rewrite - if true, will create new index
+		 * @param original - the source iid (for titles indexes, e.g. for en-titles.tspart1 it could be enwiki) 
 		 */
-		SimpleIndexModifier(IndexId iid, String langCode, boolean rewrite, boolean exactCase){
+		SimpleIndexModifier(IndexId iid, String langCode, boolean rewrite, boolean exactCase, IndexId original){
 			this.iid = iid;
 			this.rewrite = rewrite;
 			this.langCode = langCode;
 			this.exactCase = exactCase;
+			this.original = original;
 			reportQueue = new Hashtable<IndexUpdateRecord,IndexReportCard>();
 		}
 
@@ -146,7 +150,7 @@ public class WikiIndexModifier {
 						int count = 0;
 						if(iid.isHighlight())
 							count = reader.deleteDocuments(new Term("key", rec.getHighlightKey()));
-						else // normal index
+						else // normal or titles index
 							count = reader.deleteDocuments(new Term("key", rec.getKey()));
 						if(count == 0)
 							nonDeleteDocuments.add(rec);
@@ -199,7 +203,7 @@ public class WikiIndexModifier {
 				highlightContentAnalyzer = Analyzers.getReusableHighlightAnalyzer(builder.getBuilder(dCase).getFilters());
 				analyzer = Analyzers.getHighlightAnalyzer(iid); 			
 			} else
-				analyzer = Analyzers.getIndexerAnalyzer(builder);
+				analyzer = Analyzers.getIndexerAnalyzer(new FieldBuilder(iid,FieldBuilder.Case.EXACT_CASE));
 			
 			HashSet<String> stopWords = StopWords.getPredefinedSet(iid);
 			for(IndexUpdateRecord rec : records){								
@@ -213,6 +217,8 @@ public class WikiIndexModifier {
 					try {
 						if(iid.isHighlight())
 							doc = makeHighlightDocument(rec.getArticle(),analyzer,highlightContentAnalyzer,iid);
+						else if(iid.isTitlesBySuffix())
+							doc = makeTitleDocument(rec.getArticle(),analyzer,iid,original.getTitlesSuffix(),exactCase);
 						else // normal index
 							doc = makeDocument(rec.getArticle(),builder,iid,stopWords,analyzer);
 						
@@ -339,6 +345,14 @@ public class WikiIndexModifier {
 			return false;
 	}
 	
+	/** Check if atitle should be added to the titles index */
+	public static boolean checkTitlePreconditions(Article article, IndexId iid){
+		if(global == null)
+			global = GlobalConfiguration.getInstance();
+		NamespaceFilter defaultNamespaces = global.getDefaultNamespace(iid);
+		return defaultNamespaces.contains(article.getTitleObject().getNamespace());
+	}
+	
 	/**
 	 * Create necessary directories for index
 	 * @param dbname
@@ -392,9 +406,12 @@ public class WikiIndexModifier {
 	 * @param updateRecords
 	 */
 	public boolean updateDocuments(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
-		boolean index = updateDocumentsOn(iid,updateRecords);
-		boolean highlight = updateDocumentsOn(iid.getHighlight(),updateRecords);
-		return index && highlight;
+		boolean index = updateDocumentsOn(iid,updateRecords,iid);
+		boolean highlight = updateDocumentsOn(iid.getHighlight(),updateRecords,iid);
+		boolean titles = true;
+		if(iid.hasTitlesIndex())
+			titles = updateDocumentsOn(iid.getTitlesIndex(),updateRecords,iid);
+		return index && highlight && titles;
 	}
 	
 	/**
@@ -404,8 +421,9 @@ public class WikiIndexModifier {
 	 * 
 	 * @param iid
 	 * @param updateRecords
+	 * @param original
 	 */
-	protected boolean updateDocumentsOn(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
+	protected boolean updateDocumentsOn(IndexId iid, Collection<IndexUpdateRecord> updateRecords, IndexId original){
 		long now = System.currentTimeMillis();
 		log.info("Starting update of "+updateRecords.size()+" records on "+iid+", started at "+now);
 		boolean succ = true;
@@ -415,7 +433,7 @@ public class WikiIndexModifier {
 			HashMap<String,Transaction> trans = new HashMap<String,Transaction>();
 			// init
 			for(IndexId part : subs){
-				mod.put(part.toString(),new SimpleIndexModifier(part,part.getLangCode(),false,global.exactCaseIndex(part.getDBname())));
+				mod.put(part.toString(),new SimpleIndexModifier(part,part.getLangCode(),false,global.exactCaseIndex(part.getDBname()),original));
 				Transaction t = new Transaction(part);
 				t.begin();
 				trans.put(part.toString(),t);				
@@ -446,7 +464,7 @@ public class WikiIndexModifier {
 			
 		} else{
 			// normal index
-			SimpleIndexModifier modifier = new SimpleIndexModifier(iid,iid.getLangCode(),false,global.exactCaseIndex(iid.getDBname()));
+			SimpleIndexModifier modifier = new SimpleIndexModifier(iid,iid.getLangCode(),false,global.exactCaseIndex(original.getDBname()),original);
 			
 			Transaction trans = new Transaction(iid);
 			trans.begin();
@@ -563,6 +581,28 @@ public class WikiIndexModifier {
 		doc.add(new Field("text",ExtToken.serialize(contentAnalyzer.tokenStream("contents",article.getContents())),Store.COMPRESS));
 		ArrayList<String> sections = contentAnalyzer.getWikiTokenizer().getHeadingText();
 		doc.add(new Field("alttitle",Alttitles.serializeAltTitle(article,iid,sections,analyzer,"alttitle"),Store.COMPRESS));
+		return doc;
+	}
+	
+	/** Make the document that holds only title data */
+	public static Document makeTitleDocument(Article article, Analyzer analyzer, IndexId titles, String suffix, boolean exactCase) throws IOException{
+		String key = article.getKey();
+		float rankBoost = transformRank(article.getRank());
+		Document doc = new Document();
+		doc.add(new Field("key",suffix+key,Store.NO,Index.UN_TOKENIZED));
+		doc.add(new Field("suffix",suffix,Store.YES,Index.UN_TOKENIZED));
+		doc.add(new Field("namespace",article.getNamespace(),Store.YES,Index.UN_TOKENIZED));
+		if(exactCase){
+			// title will always hold the original stored title
+			doc.add(new Field("title",article.getTitle(),Store.YES, Index.NO));
+			Field title = new Field("title_exact",article.getTitle(),Store.NO, Index.TOKENIZED);
+			title.setBoost(rankBoost);
+			doc.add(title);
+		} else{
+			Field title = new Field("title",article.getTitle(),Store.YES, Index.TOKENIZED);
+			title.setBoost(rankBoost);
+			doc.add(title);
+		}
 		return doc;
 	}
 	

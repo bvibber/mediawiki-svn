@@ -26,6 +26,7 @@ import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
 import org.wikimedia.lsearch.search.NetworkStatusThread;
 import org.wikimedia.lsearch.search.SearchEngine;
 import org.wikimedia.lsearch.search.SearcherCache;
+import org.wikimedia.lsearch.search.SuffixFilterWrapper;
 import org.wikimedia.lsearch.search.Wildcards;
 
 /** Local implementation for {@link RMIMessenger} */
@@ -132,7 +133,16 @@ public class RMIMessengerImpl implements RMIMessenger {
 			throw new RemoteException("IOException on "+dbrole,e);
 		}
 	}
-
+	
+	public SearchResults searchTitles(String dbrole, String searchterm, Query query, SuffixFilterWrapper filter, int offset, int limit, boolean explain) throws RemoteException {
+		IndexId iid = IndexId.get(dbrole);
+		try{
+			return new SearchEngine().searchTitles(iid,searchterm,query,filter,offset,limit,explain); 
+		} catch(Exception e){
+			e.printStackTrace();
+			throw new RemoteException("Exception on "+dbrole,e);
+		}
+	}
 
 	protected RMIMessengerImpl(){
 		networkStatus = null;

@@ -104,7 +104,7 @@ public class StopWords {
 		else{
 			if(registry == null)
 				registry = IndexRegistry.getInstance();
-			if(registry.getCurrentSearch(iid.getSpell()) != null){
+			if(iid.hasSpell() && registry.getCurrentSearch(iid.getSpell()) != null){
 				synchronized(cache){
 					stopWords = new ArrayList<String>();
 					IndexSearcherMul searcher = SearcherCache.getInstance().getLocalSearcher(iid.getSpell());

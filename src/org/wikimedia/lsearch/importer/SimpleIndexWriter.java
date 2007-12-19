@@ -49,22 +49,29 @@ public class SimpleIndexWriter {
 	protected Analyzer highlightAnalyzer;	
 	protected ReusableLanguageAnalyzer highlightContentAnalyzer;
 	protected HashSet<String> stopWords;
+	protected String suffix = null;
+	protected IndexId original;
+	protected boolean exactCase;
 	
-	public SimpleIndexWriter(IndexId iid, Boolean optimize, Integer mergeFactor, Integer maxBufDocs, boolean newIndex){
+	public SimpleIndexWriter(IndexId iid, Boolean optimize, Integer mergeFactor, Integer maxBufDocs, boolean newIndex, IndexId original){
 		this.iid = iid;
 		this.optimize = optimize;
 		this.mergeFactor = mergeFactor;
 		this.maxBufDocs = maxBufDocs;
-		this.newIndex = newIndex;
+		this.newIndex = newIndex;		
+		this.original = original;
+		if(original != null)
+			this.suffix = original.getTitlesSuffix();
 		GlobalConfiguration global = GlobalConfiguration.getInstance(); 
 		langCode = global.getLanguage(iid.getDBname());
 		FieldBuilder.Case dCase = (global.exactCaseIndex(iid.getDBname()))? FieldBuilder.Case.EXACT_CASE : FieldBuilder.Case.IGNORE_CASE; 		
 		builder = new FieldBuilder(iid,dCase);
 		indexes = new HashMap<String,IndexWriter>();		
-		indexAnalyzer = Analyzers.getIndexerAnalyzer(builder);
+		indexAnalyzer = Analyzers.getIndexerAnalyzer(new FieldBuilder(iid,FieldBuilder.Case.EXACT_CASE));
 		highlightAnalyzer = Analyzers.getHighlightAnalyzer(iid);
 		highlightContentAnalyzer = Analyzers.getReusableHighlightAnalyzer(builder.getBuilder().getFilters());
 		stopWords = StopWords.getPredefinedSet(iid);
+		this.exactCase = global.exactCaseIndex(original.getDBname());
 		// open all relevant indexes
 		for(IndexId part : iid.getPhysicalIndexIds()){
 			indexes.put(part.toString(),openIndex(part));
@@ -124,10 +131,12 @@ public class SimpleIndexWriter {
 		IndexId target;
 		if(iid.isSingle())
 			target = iid;
+		else if(iid.isTitlesBySuffix())
+			target = iid;
 		else if(iid.isMainsplit() || iid.isNssplit()) // assign according to namespace
 			target = iid.getPartByNamespace(a.getNamespace());
 		else // split index, randomly assign to some index part
-			target = iid.getPart(1+(int)(Math.random()*iid.getSplitFactor()));
+			target = iid.getPart(1+(int)(Math.random()*iid.getSplitFactor()));		
 		
 		if(target.isFurtherSubdivided()){
 			target = target.getSubpart(1+(int)(Math.random()*target.getSubdivisionFactor()));
@@ -159,7 +168,24 @@ public class SimpleIndexWriter {
 			addDocument(writer,doc,a,target);
 		} catch (IOException e) {
 			e.printStackTrace();
-			log.error("Error adding document for key="+a.getTitleObject().getKey()+" : "+e.getMessage());
+			log.error("Error adding highlight document for key="+a.getTitleObject().getKey()+" : "+e.getMessage());
+		}
+	}
+	
+	/** Add to title to the titles index */
+	public void addArticleTitle(Article a){
+		if(!WikiIndexModifier.checkTitlePreconditions(a,original))
+			return;
+		IndexId target = getTarget(a);		
+		IndexWriter writer = indexes.get(target.toString());
+		if(writer == null)
+			return;		
+		try {
+			Document doc = WikiIndexModifier.makeTitleDocument(a,indexAnalyzer,target,suffix,exactCase);
+			addDocument(writer,doc,a,target);
+		} catch (IOException e) {
+			e.printStackTrace();
+			log.error("Error adding title document for key="+a.getTitleObject().getKey()+" : "+e.getMessage());
 		}
 	}
 	

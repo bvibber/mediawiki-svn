@@ -3,11 +3,13 @@ package org.wikimedia.lsearch.highlight;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.BitSet;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.document.Document;
@@ -23,6 +25,7 @@ import org.wikimedia.lsearch.analyzers.ExtToken.Position;
 import org.wikimedia.lsearch.analyzers.ExtToken.Type;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.search.SearcherCache;
+import org.wikimedia.lsearch.util.Utf8Set;
 
 public class Highlight {
 	protected static SearcherCache cache = null;
@@ -39,8 +42,6 @@ public class Highlight {
 	public static final double PROXIMITY = 2;
 	
 	public static final double FIRST_SENTENCE_BOOST = 10;
-	
-	
 	
 	public static final double PHRASE_BOOST = 1;
 	
@@ -73,8 +74,6 @@ public class Highlight {
 		if(cache == null)
 			cache = SearcherCache.getInstance();
 		
-		// System.out.println("Highlighting: "+Arrays.toString(terms));
-		
 		FieldNameFactory fields = new FieldNameFactory(exactCase);
 		
 		if(stopWords == null)
@@ -97,12 +96,14 @@ public class Highlight {
 		// process requested documents
 		IndexReader reader = cache.getLocalSearcher(iid.getHighlight()).getIndexReader();
 		HashMap<String,HighlightResult> res = new HashMap<String,HighlightResult>();
+		Set<String> allTerms = weightTerm.keySet();
 		for(String key : hits){
 			Object[] ret = null;
 			try{
-				ret = getTokens(reader,key);			
+				ret = getTokens(reader,key,allTerms);			
 			} catch(Exception e){
-				
+				log.error("Error geting tokens: "+e.getMessage());
+				e.printStackTrace();
 			}
 			if(ret == null)
 				continue;
@@ -111,7 +112,7 @@ public class Highlight {
 			Alttitles alttitles = (Alttitles) ret[1];
 			preprocessTemplates(tokens);
 			
-			HashMap<String,Double> notInTitle = getTermsNotInTitle(weightTerm,alttitles);
+			HashMap<String,Double> notInTitle = getTermsNotInTitle(weightTerm,alttitles,wordIndex);
 			ArrayList<RawSnippet> textSnippets = getBestTextSnippets(tokens, weightTerm, wordIndex, 2, false, stopWords);
 			ArrayList<RawSnippet> titleSnippets = getBestTextSnippets(alttitles.getTitle().getTokens(),weightTerm,wordIndex,1,true,stopWords);
 			RawSnippet redirectSnippets = getBestAltTitle(alttitles.getRedirects(),weightTerm,notInTitle,stopWords,wordIndex,1);
@@ -233,7 +234,7 @@ public class Highlight {
 		for(;i<tokens.size();i++){
 			ExtToken t = tokens.get(i);
 			if(t.getPosition() == Position.TEMPLATE){
-				len += t.getText().length(); 
+				len += t.getTextLength(); 
 			} else
 				break;
 		}
@@ -307,14 +308,14 @@ public class Highlight {
 	protected static RawSnippet nextSnippet(RawSnippet rs, Snippet s, ArrayList<ExtToken> tokens){
 		if(rs.next == null)
 			return null;
-		return new RawSnippet(tokens,rs.next,rs.highlight);
+		return new RawSnippet(tokens,rs.next,rs.highlight,new HashSet<String>());
 	}
 	
 	protected static RawSnippet sectionSnippet(RawSnippet rs, Snippet s, ArrayList<ExtToken> tokens){
 		if(rs.section == null)
 			return null;
 		if(s.length() < SHORT_SNIPPET)
-			return new RawSnippet(tokens,rs.section,rs.highlight);
+			return new RawSnippet(tokens,rs.section,rs.highlight,new HashSet<String>());
 		return null;
 	}
 	
@@ -324,10 +325,14 @@ public class Highlight {
 	}
 	
 	@SuppressWarnings("unchecked")
-	protected static HashMap<String,Double> getTermsNotInTitle(HashMap<String,Double> weightTerm, Alttitles alttitles){
+	protected static HashMap<String,Double> getTermsNotInTitle(HashMap<String,Double> weightTerm, Alttitles alttitles, HashMap<String,Integer> wordIndex){
 		Alttitles.Info info = alttitles.getTitle();
 		ArrayList<ExtToken> tokens = info.getTokens();
-		HashMap<String,Double> ret = (HashMap<String, Double>) weightTerm.clone();
+		HashMap<String,Double> ret = new HashMap<String, Double>();
+		for(Entry<String,Double> e : weightTerm.entrySet()){
+			if(wordIndex.containsKey(e.getKey()))
+					ret.put(e.getKey(),e.getValue());
+		}
 		// delete all terms from title
 		for(ExtToken t : tokens){
 			if(ret.containsKey(t.termText()))
@@ -416,7 +421,7 @@ public class Highlight {
 		}
 		
 		public String toString(){
-			return "start="+start+", end="+end+", score="+score+", bestStart="+bestStart+", bestEnd="+bestEnd;
+			return "start="+start+", end="+end+", score="+score+", bestStart="+bestStart+", bestEnd="+bestEnd+", found="+found;
 		}
 	}
 	
@@ -445,6 +450,8 @@ public class Highlight {
 		FragmentScore firstFragment = null;
 		// length of text since first sentence
 		int beginLen = 0;
+		HashSet<String> availableWeight = new HashSet<String>();
+		availableWeight.addAll(weightTerms.keySet());
 		for(int i=0;i<=tokens.size();i++){
 			ExtToken t = null;
 			if(i < tokens.size())
@@ -485,7 +492,7 @@ public class Highlight {
 				if(foundAllInFirst && beginLen > 2*MAX_CONTEXT && firstFragment!=null){
 					// made enough snippets, return the first one					
 					ArrayList<RawSnippet> res = new ArrayList<RawSnippet>();
-					res.add(new RawSnippet(tokens,firstFragment,weightTerms.keySet()));
+					res.add(new RawSnippet(tokens,firstFragment,weightTerms.keySet(),firstFragment.found));
 					return res;					
 				}
 				fs.next = new FragmentScore(fs.end, sequence++); // link into list			
@@ -494,9 +501,11 @@ public class Highlight {
 			if(t == null)
 				break;
 			if(foundAllInFirst)
-				beginLen += t.getText().length();
+				beginLen += t.getTextLength();
 
-			Double weight = weightTerms.get(t.termText());
+			Double weight = null;
+			if(!t.isStub() && t.getType() == Type.TEXT && availableWeight.contains(t.termText()))
+				weight = weightTerms.get(t.termText());
 			if(weight != null){
 				if(fs.found == null)
 					fs.found = new HashSet<String>();
@@ -569,7 +578,7 @@ public class Highlight {
 		ArrayList<FragmentScore> resNoNew = new ArrayList<FragmentScore>();
 		for(FragmentScore f : fragments){
 			if(f.score == 0)
-				continue;
+				break;
 			// check if the fragment has new terms
 			boolean hasNew = false;
 			HashSet<String> newTerms = new HashSet<String>();
@@ -585,7 +594,7 @@ public class Highlight {
 				if(f.found != null)
 					termsFound.addAll(f.found);
 				adjustBest(f,tokens,weightTerms,wordIndex,newTerms);
-				RawSnippet s = new RawSnippet(tokens,f,wordHighlight);
+				RawSnippet s = new RawSnippet(tokens,f,wordHighlight,newTerms);
 				res.add(s);
 			} else if(resNoNew.size() < maxSnippets)
 				resNoNew.add(f);
@@ -717,12 +726,17 @@ public class Highlight {
 	}
 	
 	/** @return ArrayList<ExtToken> tokens, Altitles alttitles */
-	protected static Object[] getTokens(IndexReader reader, String key) throws IOException{
+	protected static Object[] getTokens(IndexReader reader, String key, Set<String> termSet) throws IOException{
 		TermDocs td = reader.termDocs(new Term("key",key));
 		if(td.next()){
+			Utf8Set terms = new Utf8Set(termSet);
+			HashMap<Integer,Position> posMap = new HashMap<Integer,Position>();
+			for(Position p : Position.values())
+				posMap.put(p.ordinal(),p);
+			
 			Document doc = reader.document(td.doc());
-			ArrayList<ExtToken> tokens = ExtToken.deserialize(doc.getBinaryValue("text"));
-			Alttitles alttitles  = Alttitles.deserializeAltTitle(doc.getBinaryValue("alttitle"));
+			ArrayList<ExtToken> tokens = ExtToken.deserialize(doc.getBinaryValue("text"),terms,posMap);
+			Alttitles alttitles  = Alttitles.deserializeAltTitle(doc.getBinaryValue("alttitle"),terms,posMap);
 			return new Object[] {tokens, alttitles};
 		} else
 			return null;

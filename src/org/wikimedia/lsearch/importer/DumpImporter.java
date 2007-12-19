@@ -21,12 +21,14 @@ import org.wikimedia.lsearch.beans.ArticleLinks;
 import org.wikimedia.lsearch.beans.Redirect;
 import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.Configuration;
+import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.ranks.RankBuilder;
 import org.wikimedia.lsearch.related.CompactArticleLinks;
 import org.wikimedia.lsearch.related.CompactLinks;
 import org.wikimedia.lsearch.related.RelatedTitle;
+import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.storage.ArticleAnalytics;
 import org.wikimedia.lsearch.storage.LinkAnalysisStorage;
 import org.wikimedia.lsearch.storage.RelatedStorage;
@@ -36,28 +38,34 @@ public class DumpImporter implements DumpWriter {
 	static Logger log = Logger.getLogger(DumpImporter.class);
 	Page page;
 	Revision revision;
-	SimpleIndexWriter indexWriter = null, highlightWriter = null;
+	SimpleIndexWriter indexWriter = null, highlightWriter = null, titleWriter = null;
 	int count = 0, limit;
 	Links links;
 	String langCode;
 	RelatedStorage related;
-	boolean makeIndex, makeHighlight;
+	boolean makeIndex, makeHighlight, makeTitle;
+	GlobalConfiguration global;
 
 	public DumpImporter(String dbname, int limit, Boolean optimize, Integer mergeFactor, 
 			Integer maxBufDocs, boolean newIndex, Links links, String langCode,
-			boolean makeIndex, boolean makeHighlight){
+			boolean makeIndex, boolean makeHighlight, boolean makeTitle, boolean newTitlesIndex){
 		Configuration.open(); // make sure configuration is loaded
+		global = GlobalConfiguration.getInstance();
 		IndexId iid = IndexId.get(dbname);
 		if(makeIndex)
-			indexWriter = new SimpleIndexWriter(iid, optimize, mergeFactor, maxBufDocs, newIndex);
+			indexWriter = new SimpleIndexWriter(iid, optimize, mergeFactor, maxBufDocs, newIndex, iid);
 		if(makeHighlight)
-			highlightWriter = new SimpleIndexWriter(iid.getHighlight(), optimize, mergeFactor, maxBufDocs, newIndex);
+			highlightWriter = new SimpleIndexWriter(iid.getHighlight(), optimize, mergeFactor, maxBufDocs, newIndex, iid);
+		if(makeTitle && iid.hasTitlesIndex())
+			titleWriter = new SimpleIndexWriter(iid.getTitlesIndex(), optimize, mergeFactor, maxBufDocs, newTitlesIndex, iid);
 		this.limit = limit;
 		this.links = links;
 		this.makeIndex = makeIndex;
 		this.makeHighlight = makeHighlight;
+		this.makeTitle = makeTitle;
 		this.langCode = langCode;
 		this.related = new RelatedStorage(iid);
+		
 		if(!related.canRead())
 			related = null; // add only if available
 	}
@@ -99,6 +107,8 @@ public class DumpImporter implements DumpWriter {
 			indexWriter.addArticle(article);
 		if(highlightWriter != null)
 			highlightWriter.addArticleHighlight(article);
+		if(titleWriter != null)
+			titleWriter.addArticleTitle(article);
 		
 		count++;
 		if(limit >= 0 && count > limit)
@@ -123,6 +133,8 @@ public class DumpImporter implements DumpWriter {
 			indexWriter.close();
 		if(highlightWriter != null)
 			highlightWriter.close();
+		if(titleWriter != null)
+			titleWriter.close();
 	}
 	
 
