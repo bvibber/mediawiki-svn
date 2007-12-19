@@ -34,6 +34,21 @@ $messages['ar'] = array(
 	'showprocesslist-info'    => 'معلومات',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'showprocesslist'         => 'Zeige Prozessliste',
+	'showprocesslist-id'      => 'ID',
+	'showprocesslist-user'    => 'Benutzer',
+	'showprocesslist-host'    => 'Host',
+	'showprocesslist-db'      => 'db',
+	'showprocesslist-command' => 'Kommando',
+	'showprocesslist-time'    => 'Zeit',
+	'showprocesslist-state'   => 'Status',
+	'showprocesslist-info'    => 'Info',
+);
+
 $messages['fr'] = array(
 	'showprocesslist' => 'Voir la liste des processus',
 	'showprocesslist-id' => 'n°',

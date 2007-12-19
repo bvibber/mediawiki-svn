@@ -22,6 +22,15 @@ $messages['ar'] = array(
 
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'tidy'   => 'Ordnen',
+	'untidy' => 'Nicht ordnen',
+
+);
+
 $messages ['fr'] = array(
 	'tidy' => 'Classer',
 	'untidy' => 'Déclasser',

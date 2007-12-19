@@ -18,6 +18,14 @@ $messages['ar'] = array(
 	'icon-badwidth' => 'عرض سيىء',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'icon-badimage' => 'Defektes Bild',
+	'icon-badwidth' => 'Falsche Breite',
+);
+
 $messages['fr'] = array(
 	'icon-badimage' => 'Image corrompue',
 	'icon-badwidth' => 'Largeur erronée',
