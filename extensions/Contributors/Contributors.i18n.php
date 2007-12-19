@@ -454,6 +454,7 @@ function efContributorsMessages() {
  */
 'stq' => array(
 	'contributors'             => 'Haudautore',
+	'contributors-toolbox'     => 'Haudautore',
 	'contributors-others-long' => 'Deer ieuwenske rakt et noch $1 moor Autore fon disse Siede.',
 	'contributors-others'      => 'un $1 moor',
 	'contributors-badtitle'    => 'Uungultige Siede',

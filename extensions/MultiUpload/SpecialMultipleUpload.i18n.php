@@ -77,19 +77,23 @@ Podètz inscriure la '''destinacion del fichièr''' e emplenar lo '''Somari''' p
 Los imatges pas pertinents poiràn èsser escafadas immediatament. Vejatz la pagina [[{{MediaWiki:Multipleupload-page}}|image deletion policy]].",
 );
 
+/** French (Français)
+ * @author Grondin
+ * @author Dereckson
+ */
 $messages['fr'] = array(
-	'multipleupload'    => 'Télécharger des fichiers',
-	'multipleupload-ignoreallwarnings' => 'Ignorer \'\'\'tous les avertissements\'\'\' et sauvegarder les fichiers en question.',
-	'multipleupload-saveallfiles' => 'Sauvegarder tous les fichiers',
-	'multipleupload-addresswarnings' => 'Vérifiez les avertissements affichés avant de télécharger à nouveau les fichiers.',
-	'multipleupload-page' => '{{ns:project}}:Règles pour la suppression de fichier',
-	'multipleupload-text' => 'Télécharcher plusieurs fichiers ici.
+	'multipleupload'                   => 'Télécharger des fichiers',
+	'multipleupload-ignoreallwarnings' => "Ignorer '''tous les avertissements''' et sauvegarder les fichiers en question.",
+	'multipleupload-saveallfiles'      => 'Sauvegarder tous les fichiers',
+	'multipleupload-addresswarnings'   => 'Vérifiez les avertissements affichés avant de télécharger à nouveau les fichiers.',
+	'multipleupload-page'              => '{{ns:project}}:Règles pour la suppression de fichier',
+	'multipleupload-text'              => "Télécharger plusieurs fichiers ici.
 
 Choisissez « Rechercher » et sélectionner chaque fichier que vous voulez télécharger. Vous pouvez en télécharger actuellement de 1 jusqu’à  $1 fichiers.
 
-Vous pouver inscrire la \'\'\'destination du fichier\'\'\' et Remplir le \'\'\'Sommaire\'\'\' pour décrire votre image.
+Vous pouver inscrire la '''destination du fichier''' et Remplir le '''Sommaire''' pour décrire votre image.
 
-Les images non pertinentes pourront être effacées immédiatement. Voyez la page [[{{MediaWiki:Multipleupload-page}}|image deletion policy]].',
+Les images non pertinentes pourront être effacées immédiatement. Voyez la page [[{{MediaWiki:Multipleupload-page}}|image deletion policy]].",
 );
 
 $messages['gl'] = array(

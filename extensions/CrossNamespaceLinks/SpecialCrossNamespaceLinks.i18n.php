@@ -21,6 +21,16 @@ $wgCrossNamespaceLinksMessages['ar'] = array(
 	'crossnamespacelinks-summary' => 'تعرض هذه الصفحة قائمة بالصفحات التي تقع في نطاق المقالات و تحتوي على روابط من نطاقات أخرى (ماعدا {{ns:special}} و {{ns:talk}}و {{ns:project}} و{{ns:template}})، والتي لا ينصح باستعمالها.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|وصلة|وصلات}} ل $3',
 );
+
+/** Asturian (Asturianu)
+ * @author SPQRobin
+ */
+$wgCrossNamespaceLinksMessages['ast'] = array(
+	'crossnamespacelinks'         => 'Enllaces ente diferentes espacios de nomes',
+	'crossnamespacelinks-summary' => "Esta páxina amuesa una llista d'enllaces dende una páxina del espaciu de nomes principal haza una páxina d'otros espacios de nomes (sacantes los espacios de nomes {{ns:special}}, {{ns:talk}}, {{ns:project}} y {{ns:template}}), que nun son aconseyables d'usar.",
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|enllaz|enllaces}} a $3',
+);
+
 $wgCrossNamespaceLinksMessages['bg'] = array(
 	'crossnamespacelinks'         => 'Препратки между различни именни пространства',
 	'crossnamespacelinks-summary' => 'Тази страница съдържа списък от препратки от страница от основното именно пространство към страници в други именни пространства (с изключение на {{ns:special}}, {{ns:talk}}, {{ns:project}} и {{ns:template}}), които препратки не е препоръчително да се използват.',

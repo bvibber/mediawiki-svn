@@ -317,6 +317,20 @@ $wgDesysopMessages['sr-el'] = array(
 );
 $wgDesysopMessages['sr'] = $wgDesysopMessages['sr-ec'];
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$wgDesysopMessages['stq'] = array(
+	'desysoptitle'      => 'Administratoregjuchte äntluuke',
+	'desysoptext'       => 'Mäd dit Formular konnen Bürokrate Administratore wier tou normoale Benutsere moakje.',
+	'desysopname'       => 'Benutsernoome:',
+	'desysopok'         => '<b>„$1“ is nu naan Administrator moor.</b>',
+	'desysopsetrights'  => 'Administratorstoatus äntluuke',
+	'desysoprightsfail' => '<b>Benutsergjuchte foar „$1“ kuuden nit sät wäide. Hääst du dän Noome korrekt ienroat?</b>',
+	'desysop'           => 'Adminstratoregjuchte äntluuke',
+	'desysopnot_sysop'  => 'Dissen Benutser is naan Administrator',
+);
+
 $wgDesysopMessages['su'] = array(
 	'desysoptitle'         => 'Cabut status kuncén ti pamaké',
 	'desysoptext'          => 'Pormulir ieu dipaké ku birokrat pikeun nyabut kawenangan kuncén. Mangga ketikkeun landihan pamaké dina kotak, lajeng pencét tombolna pikeun nyabut status kuncénna.',

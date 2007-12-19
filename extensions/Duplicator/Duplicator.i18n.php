@@ -515,6 +515,30 @@ kopieën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzo
 	'duplicator-toomanyrevisions' => '[[$1]] má príliš veľa ($2) revízií a preto ho nie je možné skopírovať. Aktuálny limit je $3.',
 ),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+'stq' => array(
+	'duplicator'                       => 'Siede duplizierje',
+	'duplicator-header'                => 'Mäd disse Spezialsiede konnen Sieden komplett duplizierd wäide. Deerbie wäd ju ganse Versionsgeschichte uurnuumen. Dit kon biespilswiese nutselk weese, uum ne Siede in Unnersieden aptoudeelen.',
+	'duplicator-options'               => 'Optione',
+	'duplicator-source'                => 'Wälle:',
+	'duplicator-dest'                  => 'Siel:',
+	'duplicator-dotalk'                => 'Diskussionssiede mee kopierje (wan muugelk)',
+	'duplicator-submit'                => 'Siede duplizierje',
+	'duplicator-summary'               => '[[$1]] wuude duplizierd',
+	'duplicator-success'               => "<big>'''[[$1]] wuude ätter [[$2]] kopierd.'''</big>",
+	'duplicator-success-revisions'     => '{{PLURAL:$1|1 Version wuude|$1 Versione wuuden}} duplizierd.',
+	'duplicator-success-talkcopied'    => 'Ju Diskussionssiede wuude uk duplizierd.',
+	'duplicator-success-talknotcopied' => 'Ju Diskussionssiede kuude nit duplizierd wäide.',
+	'duplicator-failed'                => 'Ju Siede kuude nit duplizierd wäide, deer n uunbekoanden Failer aptried.',
+	'duplicator-source-invalid'        => 'Reek ne gultige Wälle-Siede an.',
+	'duplicator-source-notexist'       => 'Ju Siede [[$1]] bestoant nit. Reek ne bestoundende Siede an.',
+	'duplicator-dest-invalid'          => 'Reek ne gultige Siel-Siede an.',
+	'duplicator-dest-exists'           => 'Ju Siede [[$1]] bestoant al. Reek ne nit bestoundende Siede an.',
+	'duplicator-toomanyrevisions'      => 'Ju Siede [[$1]] häd $2 Versione, un kon deeruum nit duplizierd wäide. Der konnen bloot Sieden mäd maximoal $3 Versione duplizierd wäide.',
+),
+
 /* Cantonese (Shinjiman) */
 'yue' => array(
 	'duplicator' => '複製一篇文章',

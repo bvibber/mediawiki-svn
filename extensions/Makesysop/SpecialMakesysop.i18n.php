@@ -494,6 +494,16 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'already_bureaucrat' => 'Liá-vi yung-fu yí-kîn he yit-miàng hàng-chṳn-yèn',
 ),
 
+/** Hawaiian (Hawai`i)
+ * @author SPQRobin
+ */
+'haw' => array(
+	'already_sysop'        => '‘O ‘ē he kahu kēia mea ho‘ohana.',
+	'already_bureaucrat'   => '‘O ‘ē he kuhina kēia mea ho‘ohana.',
+	'group-steward'        => 'Nā kuene',
+	'group-steward-member' => 'Kuene',
+),
+
 'he' => array(
 	'makesysoptitle'       => 'הפיכת משתמש למפעיל מערכת',
 	'makesysoptext'        => 'דף זה משמש ביורוקרטים להפיכת משתמש רגיל למפעיל מערכת. אנא כתבו את שם המשתמש בתיבת הטקסט ולחצו על הכפתור על מנת להפוך את המשתמש למפעיל מערכת.',

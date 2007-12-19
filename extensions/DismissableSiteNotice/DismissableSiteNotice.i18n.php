@@ -180,6 +180,20 @@ $wgDismissableSiteNoticeMessages['ru'] = array(
 	'sitenotice_close' => 'спрятать',
 );
 
+/** Sassarese (Sassarese)
+ * @author Felis
+ */
+$wgDismissableSiteNoticeMessages['sdc'] = array(
+	'sitenotice_close' => 'cua',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$wgDismissableSiteNoticeMessages['stq'] = array(
+	'sitenotice_close' => 'Sluute',
+);
+
 $wgDismissableSiteNoticeMessages['sk'] = array(
 	'sitenotice_close' => 'nezobrazovať',
 );

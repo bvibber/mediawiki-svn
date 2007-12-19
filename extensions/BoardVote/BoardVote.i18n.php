@@ -859,19 +859,30 @@ $wgBoardVoteMessages['he'] = array(
 ייתכן שתוצג אזהרת אבטחה בגלל תעודת אישור בלתי חתומה.',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ * @author Dnik
+ */
 $wgBoardVoteMessages['hr'] = array(
-	'boardvote_novotes'       => 'Nitko još nije glasovao.',
-	'boardvote_time'          => 'Vrijeme',
-	'boardvote_user'          => 'Suradnik',
-	'boardvote_edits'         => 'Broj uređivanja',
-	'boardvote_days'          => 'Dana',
-	'boardvote_ip'            => 'IP adresa',
-	'boardvote_ua'            => 'Web klijent',
-	'boardvote_dumplink'      => 'Klikni ovdje',
-	'boardvote_submit'        => 'Glasuj',
-	'boardvote_strike'        => 'Poništi',
-	'boardvote_unstrike'      => 'Poništi poništenje',
-	'boardvote_welcome'       => 'Dobrodošli \'\'\'$1\'\'\'!',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Glas]]
+* [[Special:Boardvote/list|Pregled glasova do sada]]
+* [[Special:Boardvote/dump|Kreiraj šifrirani zapis o glasanju]]',
+	'boardvote_intro_change' => '<p>Već ste glasali. Ipak, možete promijeniti vaš glas koristeći donji obrazac. Molimo
+označite rubrike uz svakog kandidata kojeg podržavate.</p>',
+	'boardvote_notloggedin'  => 'Niste prijavljeni. Da glasate, trebate koristiti račun s bar $1 doprinosa prije $2, i s prvom izmjenom prije $3.',
+	'boardvote_novotes'      => 'Nitko još nije glasovao.',
+	'boardvote_time'         => 'Vrijeme',
+	'boardvote_user'         => 'Suradnik',
+	'boardvote_edits'        => 'Broj uređivanja',
+	'boardvote_days'         => 'Dana',
+	'boardvote_ip'           => 'IP adresa',
+	'boardvote_ua'           => 'Web klijent',
+	'boardvote_dumplink'     => 'Klikni ovdje',
+	'boardvote_submit'       => 'Glasuj',
+	'boardvote_strike'       => 'Poništi',
+	'boardvote_unstrike'     => 'Poništi poništenje',
+	'boardvote_notstarted'   => 'Glasanje još nije započelo',
+	'boardvote_welcome'      => "Dobrodošli '''$1'''!",
 );
 
 $wgBoardVoteMessages['hsb'] = array(

@@ -339,6 +339,35 @@ $messages = array(
 		'ogg-desc-link' => 'Wo tutej dataji',
 	),
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+	'hu' => array(
+		'ogg-short-audio'         => 'Ogg $1 hangfájl, $2',
+		'ogg-short-video'         => 'Ogg $1 videofájl, $2',
+		'ogg-short-general'       => 'Ogg $1 médiafájl, $2',
+		'ogg-long-audio'          => '(Ogg $1 hangfájl, hossza: $2, $3)',
+		'ogg-long-video'          => '(Ogg $1 videófájl, hossza $2, $4×$5 képpont, $3)',
+		'ogg-long-multiplexed'    => '(Ogg egyesített audió- és videófájl, $1, hossz: $2, $4×$5 képpont, $3 összesen)',
+		'ogg-long-general'        => '(Ogg médiafájl, hossza: $2, $3)',
+		'ogg-long-error'          => '(Érvénytelen ogg fájl: $1)',
+		'ogg-play'                => 'Lejátszás',
+		'ogg-pause'               => 'Szüneteltetés',
+		'ogg-play-video'          => 'Videó lejátszása',
+		'ogg-play-sound'          => 'Hang lejátszása',
+		'ogg-no-player'           => 'Sajnáljuk, de úgy tűnik, hogy nem rendelkezel a megfelelő lejátszóval. Amennyiben le szeretnéd játszani, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">tölts le egyet</a>.',
+		'ogg-no-xiphqt'           => 'Úgy tűnik, nem rendelkezel a QuickTime-hoz való XiphQT összetevővel. Enélkül a QuickTime nem tudja lejátszani az Ogg fájlokat. A lejátszáshoz tölts le egyet <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">innen</a>, vagy válassz másik lejátszót.',
+		'ogg-player-videoElement' => '<video> elem',
+		'ogg-player-oggPlugin'    => 'Ogg beépülő modul',
+		'ogg-player-thumbnail'    => 'Csak állókép',
+		'ogg-player-soundthumb'   => 'Nincs lejátszó',
+		'ogg-player-selected'     => '(kiválasztott)',
+		'ogg-more'                => 'Tovább...',
+		'ogg-dismiss'             => 'Bezárás',
+		'ogg-download'            => 'Fájl letöltése',
+		'ogg-desc-link'           => 'Fájlinformációk',
+	),
+
 	'is' => array(
 		'ogg-play' => 'Spila',
 		'ogg-pause' => 'gera hlé',

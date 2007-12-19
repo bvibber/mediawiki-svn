@@ -372,6 +372,13 @@ function efMakeBotMessages() {
 	'makebot-logentryrevoke'  => 'retirado status de bot a [[$1]]',
 ),
 
+/** Hawaiian (Hawai`i)
+ * @author SPQRobin
+ */
+'haw' => array(
+	'makebot-username' => "Inoa mea ho'ohana:",
+),
+
 /* Hebrew (Rotem Liss) */
 'he' => array(
 	'makebot'          => 'הענקת או ביטול הרשאת בוט',

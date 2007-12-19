@@ -30,6 +30,13 @@ function efInputBoxMessages() {
 	'createarticle'           => 'إنشاء مقالة',
 ),
 
+/** Asturian (Asturianu)
+ * @author SPQRobin
+ */
+'ast' => array(
+	'createarticle' => 'Crear artículu',
+),
+
 'az' => array(
 	'createarticle'  => 'Məqalə yarat',
 ),
