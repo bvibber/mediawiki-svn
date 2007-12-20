@@ -81,7 +81,7 @@ function efIcon_Render(&$parser, $img, $alt=null, $width=null, $page=null) {
 			$imageString = wfMsgForContent('icon-badwidth');
 		}
 	} else {
-		$imageString = "<img src='${iURL}' alt=\"{$alt}\" title=\"{$alt}\" />";
+		$imageString = "<img style=\"vertical-align: middle;\" src='${iURL}' alt=\"{$alt}\" title=\"{$alt}\" />";
 	}
 
 	if (!empty($page)) {
