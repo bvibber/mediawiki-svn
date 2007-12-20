@@ -450,15 +450,15 @@ $1
 İzlew sorawı: $3 $9 $10',
 );
 
-$wgLuceneSearchMessages['kk-kz'] = array(
+$wgLuceneSearchMessages['kk-cyrl'] = array(
 	'searchnumber'          => "<strong>$3 ішіндегі $1—$2 нәтиже</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Алдыңғыға</span>",
 	'searchnext'            => "<span style='font-size: small'>Келесіге</span> &#x00BB;",
 	'lucene-searchscore'    => "Сәйкестігі: $1%",
 	'lucene-resultsize'     => "$1 ($2 сөз)",
 	'searchdidyoumean'      => "Мынау деп есепке алдыңыз ба: «<a href=\"$1\">$2</a>»?",
-	'searchnoresults'       => "Ғафу етіңіз, сұранысынызға нақты сәйкесі бар еш нәтиже табылмады.",
-	'searchnearmatches'     => "<b>Мына бет атауларында сұранысыңызға ұқсастығы бар:</b>\n",
+	'searchnoresults'       => "Ғафу етіңіз, сұранымынызға нақты сәйкесі бар еш нәтиже табылмады.",
+	'searchnearmatches'     => "<b>Мына бет атауларында сұранымыңызға ұқсастығы бар:</b>\n",
 	'searchnearmatch'       => "<li>$1</li><br />",
 	'lucenepowersearchtext' => "
 Мына есім аяларда іздеу:<br />
@@ -472,15 +472,15 @@ $1<br />
 	'searchincategory'      => 'санатта',
 );
 
-$wgLuceneSearchMessages['kk-tr'] = array(
+$wgLuceneSearchMessages['kk-latn'] = array(
 	'searchnumber'          => "<strong>$3 işindegi $1—$2 nätïje</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Aldıñğığa</span>",
 	'searchnext'            => "<span style='font-size: small'>Kelesige</span> &#x00BB;",
 	'lucene-searchscore'    => "Säýkestigi: $1%",
 	'lucene-resultsize'     => "$1 ($2 söz)",
 	'searchdidyoumean'      => "Mınaw dep esepke aldıñız ba: «<a href=\"$1\">$2</a>»?",
-	'searchnoresults'       => "Ğafw etiñiz, suranısınızğa naqtı säýkesi bar eş nätïje tabılmadı.",
-	'searchnearmatches'     => "<b>Mına bet atawlarında suranısıñızğa uqsastığı bar:</b>\n",
+	'searchnoresults'       => "Ğafw etiñiz, suranımınızğa naqtı säýkesi bar eş nätïje tabılmadı.",
+	'searchnearmatches'     => "<b>Mına bet atawlarında suranımıñızğa uqsastığı bar:</b>\n",
 	'searchnearmatch'       => "<li>$1</li><br />",
 	'lucenepowersearchtext' => "
 Mına esim ayalarda izdew:<br />
@@ -494,15 +494,15 @@ nemese osı wïkïden izdew üşin sırtqı qızmetterin qoldanıñız:<br />",
 	'searchincategory'      => 'sanatta',
 );
 
-$wgLuceneSearchMessages['kk-cn'] = array(
+$wgLuceneSearchMessages['kk-arab'] = array(
 	'searchnumber'          => "<strong>$3 ٸشٸندەگٸ $1—$2 نٵتيجە</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>الدىڭعىعا</span>",
 	'searchnext'            => "<span style='font-size: small'>كەلەسٸگە</span> &#x00BB;",
 	'lucene-searchscore'    => "سٵيكەستٸگٸ: $1%",
 	'lucene-resultsize'     => "$1 ($2 سٶز)",
 	'searchdidyoumean'      => "مىناۋ دەپ ەسەپكە الدىڭىز با: «<a href=\"$1\">$2</a>»؟",
-	'searchnoresults'       => "عافۋ ەتٸڭٸز, سۇرانىسىنىزعا ناقتى سٵيكەسٸ بار ەش نٵتيجە تابىلمادى.",
-	'searchnearmatches'     => "<b>مىنا بەت اتاۋلارىندا سۇرانىسىڭىزعا ۇقساستىعى بار:</b>\n",
+	'searchnoresults'       => "عافۋ ەتٸڭٸز, سۇرانىمىنىزعا ناقتى سٵيكەسٸ بار ەش نٵتيجە تابىلمادى.",
+	'searchnearmatches'     => "<b>مىنا بەت اتاۋلارىندا سۇرانىمىڭىزعا ۇقساستىعى بار:</b>\n",
 	'searchnearmatch'       => "<li>$1</li><br />",
 	'lucenepowersearchtext' => "
 مىنا ەسٸم ايالاردا ٸزدەۋ:<br />
@@ -515,8 +515,6 @@ $1<br />
 	'searchall'             => 'بارلىعىندا',
 	'searchincategory'      => 'ساناتتا',
 );
-
-$wgLuceneSearchMessages['kk'] = $wgLuceneSearchMessages['kk-kz'];
 
 $wgLuceneSearchMessages['la'] = array(
 	'lucenepowersearchtext' => 'In spatiis nominalibus petere:
@@ -894,6 +892,13 @@ $1\n
 	'searchincategory'      => '在分類中'
 );
 
+# Fallback Kazakh
+$wgLuceneSearchMessages['kk-kz'] = $wgLuceneSearchMessages['kk-cyrl'];
+$wgLuceneSearchMessages['kk-tr'] = $wgLuceneSearchMessages['kk-latn'];
+$wgLuceneSearchMessages['kk-cn'] = $wgLuceneSearchMessages['kk-arab'];
+$wgLuceneSearchMessages['kk'] = $wgLuceneSearchMessages['kk-cyrl'];
+
+# Fallback Chinese
 $wgLuceneSearchMessages['zh'] = $wgLuceneSearchMessages['zh-hans'];
 $wgLuceneSearchMessages['zh-cn'] = $wgLuceneSearchMessages['zh-hans'];
 $wgLuceneSearchMessages['zh-hk'] = $wgLuceneSearchMessages['zh-hant'];
