@@ -860,16 +860,43 @@ $wgBoardVoteMessages['he'] = array(
 );
 
 /** Croatian (Hrvatski)
- * @author SpeedyGonsales
  * @author Dnik
+ * @author SpeedyGonsales
  */
 $wgBoardVoteMessages['hr'] = array(
+	'boardvote'              => 'Izbori za Odbor povjerenika Wikimedije',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Glas]]
 * [[Special:Boardvote/list|Pregled glasova do sada]]
 * [[Special:Boardvote/dump|Kreiraj šifrirani zapis o glasanju]]',
+	'boardvote_intro'        => '<p>Dobro došli na druge izbore za Wikimedijin Odbor povjerenika. Glasamo
+za dvije osobe koje će predstavljati zajednicu suradnika na različitim
+projektima Wikimedije. Oni će pomoći odrediti budući smjer kojim će krenuti
+projekti Wikimedije, pojedinačno i kao cjelina, i predstavljati
+<em>Vaše</em> interese i zahtjeve u Odboru povjerenika. Oni će
+odlučivati o načinima za stvaranje prihoda i dodjelu prikupljenog novca.</p>
+
+<p>Molimo pažljivo pročitajte izjave kandidata i odgovore na upite prije
+glasanja. Svaki od kandidata je cijenjeni suradnik, koji je dao zamjetno
+vrijeme i trud kako bi od tih projekata napravio pristupačnu okolinu
+posvećenu potrazi i slobodnom dijeljenju ljudskog znanja.</p>
+
+<p>Možete glasati za onoliko kandidata koliko želite. Kandidat s najviše
+glasova za svako mjesto će biti proglašen pobjednikom za to mjesto.
+U slučaju izjednačenog rezultata, održat će se drugi krug izbora.</p>',
 	'boardvote_intro_change' => '<p>Već ste glasali. Ipak, možete promijeniti vaš glas koristeći donji obrazac. Molimo
 označite rubrike uz svakog kandidata kojeg podržavate.</p>',
+	'boardvote_entered'      => 'Hvala, Vaš glas je zabilježen.
+
+Ako želite, možete zabilježiti sljedeće detalje. Zapis vašeg glasanja je:
+
+<pre>$1</pre>
+
+Šifriran je pomoću javnog ključa administratora Izbora:
+
+<pre>$2</pre>',
+	'boardvote_nosession'    => 'Ne mogu odrediti Vaš identifikator (ID) na Wikimediji. Molimo, prijavite se na wiki na kojoj ste kvalificirani, i idite na <nowiki>[[Special:Boardvote]]</nowiki>. Morate koristiti račun s barem $1 doprinosa prije $2, a s prvom izmjenom prije $3.',
 	'boardvote_notloggedin'  => 'Niste prijavljeni. Da glasate, trebate koristiti račun s bar $1 doprinosa prije $2, i s prvom izmjenom prije $3.',
+	'boardvote_notqualified' => 'Niste kvalificirani da glasate u ovim izborima. Trebali ste napraviti $3 izmjena prije $2, a Vaša prva izmjena je morala biti prije $5.',
 	'boardvote_novotes'      => 'Nitko još nije glasovao.',
 	'boardvote_time'         => 'Vrijeme',
 	'boardvote_user'         => 'Suradnik',
@@ -877,12 +904,28 @@ označite rubrike uz svakog kandidata kojeg podržavate.</p>',
 	'boardvote_days'         => 'Dana',
 	'boardvote_ip'           => 'IP adresa',
 	'boardvote_ua'           => 'Web klijent',
+	'boardvote_listintro'    => '<p>Ovo je popis svih glasova koji su zabilježeni do sada.
+$1 za šifrirane podatke.</p>',
 	'boardvote_dumplink'     => 'Klikni ovdje',
 	'boardvote_submit'       => 'Glasuj',
 	'boardvote_strike'       => 'Poništi',
 	'boardvote_unstrike'     => 'Poništi poništenje',
+	'boardvote_needadmin'    => 'Samo administratori izbora mogu obaviti ovaj postupak',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Izbori za Odbor Wikimedije</a>:  Glasanje otvoreno do 12 srpnja',
 	'boardvote_notstarted'   => 'Glasanje još nije započelo',
+	'boardvote_closed'       => 'Glasanje je završeno, pogledajte uskoro [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En stranicu s rezultatima izbora].',
+	'boardvote_edits_many'   => 'mnogi',
+	'group-boardvote'        => 'Administratori izbora za Odbor',
+	'group-boardvote-member' => 'Administrator izbora za Odbor',
+	'grouppage-boardvote'    => '{{ns:project}}:Administrator izbora za Odbor',
+	'boardvote_blocked'      => 'Nažalost, blokirani ste na Vašoj registriranoj wiki. Blokiranim suradnicima nije dozvoljeno glasanje.',
 	'boardvote_welcome'      => "Dobrodošli '''$1'''!",
+	'go_to_board_vote'       => 'Izbori za Odbor Wikimedije 2007.',
+	'boardvote_redirecting'  => 'Radi poboljšane sigurnosti i transparentnosti, glasanje se odvija na vanjskom, neovisno kontroliranom serveru.
+
+Bit ćete preusmjereni na taj vanjski server za 20 sekundi. [$1 Kliknite ovdje] da odete tamo odmah.
+
+Moguće je da ćete vidjeti sigurnosno upozorenje o nepotpisanom certifikatu.',
 );
 
 $wgBoardVoteMessages['hsb'] = array(

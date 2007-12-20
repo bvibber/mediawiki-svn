@@ -276,12 +276,30 @@ function efBadImageMessages() {
 	'badimages-page' => '{{ns:help}}:Listaxe de imaxes con fallas',
 ),
 
+/** Croatian (Hrvatski)
+ * @author Dnik
+ * @author SpeedyGonsales
+ */
 'hr' => array(
-	'badimages-add-btn' => 'Dodaj',
-	'badimages-name' => 'Ime:',
-	'badimages-reason' => 'Razlog:',
-	'badimages-remove' => '(ukloni)',
-	'badimages-remove-btn' => 'Ukloni',
+	'badimages'                => 'Popis loših slika',
+	'badimages-add-btn'        => 'Dodaj',
+	'badimages-added'          => '$1 je dodana na popis.',
+	'badimages-count'          => 'Na popisu loših slika se nalazi {{PLURAL:$1|$1 slika|$1 slike|$1 slika}}.',
+	'badimages-name'           => 'Ime:',
+	'badimages-not-added'      => 'Slika se nije mogla dodati.',
+	'badimages-not-removed'    => 'Slika se nije mogla izbaciti.',
+	'badimages-reason'         => 'Razlog:',
+	'badimages-remove'         => '(ukloni)',
+	'badimages-remove-btn'     => 'Ukloni',
+	'badimages-remove-confirm' => 'Molimo potvrdite da želite izbaciti $1 s popisa:',
+	'badimages-removed'        => '$1 je izbačena s popisa.',
+	'badimages-subheading'     => 'Tekuće stavke',
+	'badimages-unprivileged'   => '(Nemate dovoljna prava da promijenite popis)',
+	'badimages-log-name'       => 'Popis loših slika',
+	'badimages-log-header'     => 'Ovo je evidencija promjena [[{{MediaWiki:Badimages-page}}|popisa loših slika]].',
+	'badimages-log-add'        => 'dodana [[$1]] na popis loših slika',
+	'badimages-log-remove'     => 'izbačena [[$1]] s popisa loših slika',
+	'badimages-page'           => '{{ns:help}}:Popis loših slika',
 ),
 
 'hsb' => array(

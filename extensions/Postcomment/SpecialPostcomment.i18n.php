@@ -47,15 +47,22 @@ $messages['bg'] = array(
 	'postcomment_nopostingtoadd' => 'Няма коментар за добавяне.',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ * @author Dereckson
+ */
 $messages['fr'] = array(
-	'postcomment_discussionprotected' => 'La page de discussion a été protégée en écriture.',
-	'postcomment_notloggedin' => 'Vous n\'êtes pas identifié.',
-	'postcomment_youareloggedinas' => 'Vous n\'êtes pas identifié en tant que $1.',
+	'postcomment_discussionprotected'      => 'La page de discussion a été protégée en écriture.',
+	'postcomment_notloggedin'              => "Vous n'êtes pas identifié.",
+	'postcomment_youareloggedinas'         => "Vous n'êtes pas identifié en tant que $1.",
 	'postcomment_addcommentdiscussionpage' => 'Ajoutez un commentaire sur cette page de discussion',
-	'postcomment_leavemessagefor' => 'Laissez un message pour $1',
-	'postcomment_said' => 'a dit',
-	'postcomment_invalidrequest' => 'Requête invalide',
-	'postcomment_replyto' => 'Répondre à $1',
+	'postcomment_leavemessagefor'          => 'Laissez un message pour $1',
+	'postcomment_post'                     => 'Message',
+	'postcomment_on'                       => 'On',
+	'postcomment_said'                     => 'a dit',
+	'postcomment_invalidrequest'           => 'Requête invalide',
+	'postcomment_replyto'                  => 'Répondre à $1',
+	'postcomment_nopostingtoadd'           => 'Aucun message à ajouter',
 );
 
 $messages['gl'] = array(

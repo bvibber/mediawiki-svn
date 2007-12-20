@@ -37,6 +37,16 @@ $wgMathStatFunctionsMessages['gl'] = array(
 	'msfunc_inf' => 'O valor resultante é infinito',
 	'msfunc_div_zero' => 'División por cero',
 );
+
+/** Croatian (Hrvatski)
+ * @author Dnik
+ */
+$wgMathStatFunctionsMessages['hr'] = array(
+	'msfunc_nan'      => 'Vrijednost rezultata nije broj',
+	'msfunc_inf'      => 'Vrijednost rezultata je beskonačna',
+	'msfunc_div_zero' => 'Dijeljenje nulom',
+);
+
 $wgMathStatFunctionsMessages['hsb'] = array(
 	'msfunc_nan' => 'Wuslědk ličba njeje.',
 	'msfunc_inf' => 'Wuslědk je njekónčna hódnota.',

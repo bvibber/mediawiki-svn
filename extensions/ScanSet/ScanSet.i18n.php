@@ -35,9 +35,21 @@ $messages['ar'] = array(
 	'scanset_prev' => '&lt; السابق',
 );
 
+/** French (Français)
+ * @author Dereckson
+ */
 $messages['fr'] = array(
-	'scanset_next' => 'Suivant &gt;',
-	'scanset_prev' => '&lt; Précédent',
+	'scanset_no_name'                   => 'ScanSet : Vous devez spécifier un nom pour le scanset, par exemple &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet : set invalide ou manquant',
+	'scanset_unrecognised_index_format' => "ScanSet : Format d'index inconnu",
+	'scanset_opendir_error'             => "ScanSet : Erreur, impossible d'ouvrir le répertoire $1",
+	'scanset_no_files'                  => 'ScanSet : Le répertoire spécifié est vide.',
+	'scanset_no_volumes'                => 'ScanSet : Aucun répertoire trouvé sur ce disque',
+	'scanset_missing_index_file'        => "ScanSet : Fichier d'index $1 manquant",
+	'scanset_index_file_error'          => "ScanSet : Erreur à la ligne $1 du fichier d'index",
+	'scanset_invalid_volume'            => 'ScanSet : Volume non valide',
+	'scanset_next'                      => 'Suivant &gt;',
+	'scanset_prev'                      => '&lt; Précédent',
 );
 
 $messages['hsb'] = array(

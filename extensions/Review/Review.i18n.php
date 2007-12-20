@@ -93,55 +93,60 @@ $messages['el'] = array(
 	'review_comment' => 'Σχόλιο',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ * @author Dereckson
+ */
 $messages['fr'] = array(
-	'review_sidebar_title' => 'Révision',
-	'review_topics' => '# Liste de sujets pour l\'extension « review » de MediaWiki.
+	'review_sidebar_title'                                   => 'Révision',
+	'review_topics'                                          => "# Liste de sujets pour l'extension « review » de MediaWiki.
 # ....
 # Chaque sujet est défini par une liste de données séparées par « : » (toute autre liste est ignorée).
 # ....
-# Les données dans l\'ordre sont :
+# Les données dans l'ordre sont :
 ## identifiant numérique (>0)
 ## nom
 ## étendue (>1)
 ## signification de la plus petite valeur (ex. « mauvais »)
 ## signification de la plus grande valeur (ex. « bon »)
 # ....
-# Par exemple, s\'il faut seulement choisir « non » ou « oui », l\'étendue vaut 2.
-# Par exemple, s\'il faut choisir entre « médiocre », « mauvais », « à améliorer », « bien » ou « très bien », l\'étendue vaut 5.
+# Par exemple, s'il faut seulement choisir « non » ou « oui », l'étendue vaut 2.
+# Par exemple, s'il faut choisir entre « médiocre », « mauvais », « à améliorer », « bien » ou « très bien », l'étendue vaut 5.
 # ....
 1:Qualité:5:mauvais:bon
-2:Prêt pour 1.0:2:non:oui',
-	'review_topic_page' => 'Sujets à révision',
-	'review_sidebar_explanation' => 'La boîte à cocher à la gauche toute signifie toujours « sans opinion ».',
-	'review_save' => 'Sauvegarder la révision',
-	'review_your_review' => 'Votre révision de cette page ou révision :',
+2:Prêt pour 1.0:2:non:oui",
+	'review_topic_page'                                      => 'Sujets à révision',
+	'review_sidebar_explanation'                             => 'La boîte à cocher à la gauche toute signifie toujours « sans opinion ».',
+	'review_save'                                            => 'Sauvegarder la révision',
+	'review_your_review'                                     => 'Votre révision de cette page ou révision :',
 	'review_sidebar_you_have_other_reviews_for_this_article' => 'Vous avez déjà révisé les autres versions de cette page. Vos autres évaluations seront fusionnées avec celle-ci si vous avez sélectionné « sans opinion ».',
-	'review_page_link' => 'Statistiques de révisions',
-	'review_sidebar_final' => 'Pour voir les données de révision de la vue de cette page, aller à $1',
-	'review_for_page' => 'Révision pour la page « $1 »',
-	'review_for_user' => 'Révision pour contributeur « $1 »',
-	'review_error' => 'Quelque chose est brisé.',
-	'review_no_reviews_for_page' => 'Il n\'y a pas de révisions pour « $1 ».',
-	'review_total_statistics' => 'Total',#identical but defined
-	'review_statistics_left_corner' => 'Révision',
-	'review_version_link' => 'Révision #$1',
-	'review_statistic_cell' => 'Moyenne : $1 de $2<br/>(contributeurs : $4 inscrits, $5 anonymes)',
-	'review_version_statistic_cell' => '$1 de $2',
-	'review_version_reviews_link' => '<small>(révisions de version)</small>',
-	'review_concerns_page' => 'Cete révision est à propos de la page « $1 ».',
-	'review_concerns_user' => 'C\'est à propos des revisions faites par le contributeur « $1 ».',
-	'review_user_reviews' => '<small>(révisions par ce contributeur)</small>',
-	'review_user_page_list' => 'Le contributeur a révisé les pages suivantes :',
-	'review_user_details_link' => '(détails)',
-	'review_has_been_stored' => '<font id=\'review_has_been_stored\'>Votre révision a été sauvegardée.</font>',
-	'revision_review_this_page_version_link' => 'Réviser cette version de la page',
-	'review_page_review' => 'Révision de la page « $1 »',
-	'review_blocked' => 'Vous êtes bloqué.',
-	'review_wrong_namespace' => 'Les pages dans cet espace de nom ne peuvent être révisées.',
-	'review_topic' => 'Sujet',
-	'review_no_opinion' => 'Sans opinion',
-	'review_rating' => 'Évaluation',
-	'review_comment' => 'Commentaire',
+	'review_page_link'                                       => 'Statistiques de révisions',
+	'review_sidebar_final'                                   => 'Pour voir les données de révision de la vue de cette page, aller à $1',
+	'review_for_page'                                        => 'Révision pour la page « $1 »',
+	'review_for_user'                                        => 'Révision pour contributeur « $1 »',
+	'review_error'                                           => 'Quelque chose est brisé.',
+	'review_no_reviews_for_page'                             => "Il n'y a pas de révisions pour « $1 ».",
+	'review_total_statistics'                                => 'Total',
+	'review_statistics_left_corner'                          => 'Révision',
+	'review_version_link'                                    => 'Révision #$1',
+	'review_statistic_cell'                                  => 'Moyenne : $1 de $2<br/>(contributeurs : $4 inscrits, $5 anonymes)',
+	'review_version_statistic_cell'                          => '$1 de $2',
+	'review_version_reviews_link'                            => '<small>(révisions de version)</small>',
+	'review_concerns_page'                                   => 'Cete révision est à propos de la page « $1 ».',
+	'review_concerns_user'                                   => "C'est à propos des revisions faites par le contributeur « $1 ».",
+	'review_user_reviews'                                    => '<small>(révisions par ce contributeur)</small>',
+	'review_user_page_list'                                  => 'Le contributeur a révisé les pages suivantes :',
+	'review_user_details_link'                               => '(détails)',
+	'review_do_merge'                                        => 'Fusionner mes passages en revue des autres révisions de cette page avec celle-ci',
+	'review_has_been_stored'                                 => "<font id='review_has_been_stored'>Votre révision a été sauvegardée.</font>",
+	'revision_review_this_page_version_link'                 => 'Réviser cette version de la page',
+	'review_page_review'                                     => 'Révision de la page « $1 »',
+	'review_blocked'                                         => 'Vous êtes bloqué.',
+	'review_wrong_namespace'                                 => 'Les pages dans cet espace de nom ne peuvent être révisées.',
+	'review_topic'                                           => 'Sujet',
+	'review_no_opinion'                                      => 'Sans opinion',
+	'review_rating'                                          => 'Évaluation',
+	'review_comment'                                         => 'Commentaire',
 );
 
 /** Galician (Galego)

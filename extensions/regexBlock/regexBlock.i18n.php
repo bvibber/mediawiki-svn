@@ -202,6 +202,48 @@ $messages['gl'] = array(
 	'regexblock-view-time'            => 'en $1',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dnik
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'regexblock'                      => 'Blokiranje pomoću regularnih izraza',
+	'regexblockstats'                 => 'Statistika blokiranja regularnim izrazima',
+	'regexblock-page-title-1'         => 'Blokiraj adresu koristeći regularni izraz',
+	'regexblock-unblock-success'      => 'Deblokiranje uspjelo',
+	'regexblock-unblock-log'          => "Suradnik ili IP adresa '''$1''' je deblokiran.",
+	'regexblock-unblock-error'        => 'Greška prilikom deblokiranja $1. Taj suradnik vjerojatno ne postoji.',
+	'regexblock-form-username'        => 'IP-adresa ili ime suradnika:',
+	'regexblock-form-reason'          => 'Razlog:',
+	'regexblock-form-match'           => 'Točno podudaranje',
+	'regexblock-form-account-block'   => 'Blokiraj stvaranje novih računa',
+	'regexblock-form-submit'          => 'Blokiraj&nbsp;ovog&nbsp;suradnika',
+	'regexblock-block-log'            => "Suradnik ili IP-adresa '''$1''' su blokirani.",
+	'regexblock-block-success'        => 'Blokiranje uspjelo',
+	'regexblock-form-submit-empty'    => 'Unesite ime suradnika ili IP-adresu za blokiranje.',
+	'regexblock-form-submit-regex'    => 'Pogrešan regularni izraz.',
+	'regexblock-form-submit-expiry'   => 'Molimo odredite razdoblje isteka.',
+	'regexblock-already-blocked'      => '$1 je već blokiran.',
+	'regexblock-stats-title'          => 'Statistika blokiranja reg. izrazima',
+	'regexblock-stats-username'       => 'Za $1',
+	'regexblock-currently-blocked'    => 'Trenutno blokirane adrese:',
+	'regexblock-view-blocked'         => 'Pregled po onom tko je blokirao:',
+	'regexblock-view-all'             => 'Svi',
+	'regexblock-view-go'              => 'Kreni',
+	'regexblock-view-match'           => '(točno podudaranje)',
+	'regexblock-view-regex'           => '(podudaranje reg. izrazom)',
+	'regexblock-view-account'         => '(blokiranje otvaranja računa)',
+	'regexblock-view-reason'          => 'razlog: $1',
+	'regexblock-view-block-infinite'  => 'trajna blokada',
+	'regexblock-view-block-temporary' => 'ističe u',
+	'regexblock-view-block-expired'   => 'ISTEKLO u',
+	'regexblock-view-block-by'        => 'blokiran od',
+	'regexblock-view-block-unblock'   => 'deblokiraj',
+	'regexblock-view-stats'           => '(statistika)',
+	'regexblock-view-empty'           => 'Popis blokiranih imena i adresa je prazan.',
+	'regexblock-view-time'            => 'u $1',
+);
+
 $messages['hsb'] = array(
 	'regexblock-page-title' => 'Blokowanje mjenow regularnych wurazow',
 	'regexblockstats' => 'Regex Block Statistika',

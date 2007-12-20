@@ -120,21 +120,30 @@ $1',
 		'webstore_no_file' => 'Nu s´á empuntau dengún archivu.',
 		'webstore_404' => 'Archivu nu alcuentrau.',
 	),
+
+/** French (Français)
+ * @author Sherbrooke
+ * @author Dereckson
+ */
 	'fr' => array(
-		'inplace_access_disabled' => 'L\'accès à ce service est désactivé pour tous les clients.',
-		'inplace_access_denied' => 'Ce service est restreint sur la base du IP du client.',
-		'inplace_scaler_no_temp' => 'Aucun dossier temporaire valide, $wgLocalTmpDirectory doit contenir le nom d\'un dossier avec droits d\'écriture.',
+		'inplace_access_disabled'          => "L'accès à ce service est désactivé pour tous les clients.",
+		'inplace_access_denied'            => 'Ce service est restreint sur la base du IP du client.',
+		'inplace_scaler_no_temp'           => "Aucun dossier temporaire valide, \$wgLocalTmpDirectory doit contenir le nom d'un dossier avec droits d'écriture.",
 		'inplace_scaler_not_enough_params' => 'Pas suffisamment de paramètres',
-		'inplace_scaler_invalid_image' => 'Image incorrecte, ne peut déterminer sa taille',
-		'inplace_scaler_failed' => 'Une erreur est survenue pendant la dilatation/contraction (« scaling ») de l\'image.',
-		'inplace_scaler_no_handler' => 'Aucune fonction (« handler ») pour transformer ce format MIME.',
-		'inplace_scaler_no_output' => 'Aucun fichier de transformation généré',
-		'inplace_scaler_zero_size' => 'La transformation a créé un fichier de taille zéro.',
-		'webstore_path_invalid' => 'Le nom de fichier n\'est pas correct.',
-		'webstore_404' => 'Fichier non trouvé.',
-		'webstore_no_response' => 'Le serveur ne répond pas',
-		'webstore_php_error' => 'Les erreurs PHP suivantes sont survenues :',
+		'inplace_scaler_invalid_image'     => 'Image incorrecte, ne peut déterminer sa taille',
+		'inplace_scaler_failed'            => "Une erreur est survenue pendant la dilatation/contraction (« scaling ») de l'image.",
+		'inplace_scaler_no_handler'        => 'Aucune fonction (« handler ») pour transformer ce format MIME.',
+		'inplace_scaler_no_output'         => 'Aucun fichier de transformation généré',
+		'inplace_scaler_zero_size'         => 'La transformation a créé un fichier de taille zéro.',
+		'webstore_access'                  => 'Ce service est restreint par adresse IP.',
+		'webstore_path_invalid'            => "Le nom de fichier n'est pas correct.",
+		'webstore_404'                     => 'Fichier non trouvé.',
+		'webstore_php_warning'             => 'PHP Warning: $1',
+		'webstore_no_response'             => 'Le serveur ne répond pas',
+		'webstore_php_error'               => 'Les erreurs PHP suivantes sont survenues :',
+		'webstore_no_handler'              => 'Ce type MIME ne peut être transformé.',
 	),
+
 	'gl' => array(
 		'inplace_access_disabled' => 'Desactivouse o acceso a este servizo para todos os clientes.',
 		'inplace_access_denied' => 'Este servizo está restrinxido polo IP do cliente.',
