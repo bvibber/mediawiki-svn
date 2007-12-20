@@ -120,22 +120,30 @@ $wgLuceneSearchMessages['cdo'] = array(
 	'lucenefallback'        => "Cī-lùng wiki sìng-tō̤ gŭng-nèng ô nék-giāng ông-dà̤. Cuòi kō̤-nèng sê hàng-mò̤-siŏh-sì gì; chiāng nṳ̄ dīng nék-gū gái ché, hĕ̤k-ciā sāi-ê̤ṳng nguôi-buô gì sìng-tō̤ hŭk-ô:\n",
 );
 
+/** Czech (Česky)
+ * @author Li-sung
+ */
 $wgLuceneSearchMessages['cs'] = array(
 	'searchnumber'          => '<strong>Výsledky $1–$2 z $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Předchozí</span>",
 	'searchnext'            => "<span style='font-size: small'>Následující</span> &#x00BB;",
-	'lucene-searchscore'    => "Relevance: $1%",
-	'lucene-resultsize'     => "$1 ($2 slov)",
+	'lucene-resultsize'     => '$1 ($2 slov)',
 	'searchdidyoumean'      => 'Nehledáte „<a href="$1">$2</a>“?',
 	'searchnoresults'       => 'Je mi líto, ale vašemu dotazu žádné stránky přesně neodpovídají.',
-	'searchnearmatches'     => "<b>Následující stránky mají nadpis podobný vašemu dotazu:</b>\n",
-	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "
-Hledat ve jmenných prostorech:\n
-$1\n
-Hledat $3 $9 $10",
-	'lucenefallback'        => 'Při hledání došlo k chybě. Problém je pravděpodobně dočasný, zkuste hledání později, případně můžete vyzkoušet externí vyhledávač:\n'
+	'searchnearmatches'     => '<b>Následující stránky mají nadpis podobný vašemu dotazu:</b>
+',
+	'lucenepowersearchtext' => '
+Hledat ve jmenných prostorech:
+
+$1
+
+Hledat $3 $9 $10',
+	'lucenefallback'        => 'Při hledání došlo k chybě. Problém je pravděpodobně dočasný, zkuste hledání později, případně můžete vyzkoušet externí vyhledávač:\n',
+	'searchexactcase'       => 'Rozlišovat velikost',
+	'searchall'             => 'vše',
+	'searchincategory'      => 'v kategorii',
 );
+
 $wgLuceneSearchMessages['de'] = array(
 	'searchnumber'		=> "<strong>Ergebnisse $1–$2 von $3</strong>",
 	'searchprev'            => "&larr; <span style='font-size: smaller'>Vorherige</span>",
@@ -567,10 +575,14 @@ $wgLuceneSearchMessages['nds'] = array(
 	'searchall'             => 'all',#identical but defined
 	'searchincategory'      => 'inKategorie',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $wgLuceneSearchMessages['nl'] = array(
-	'searchnumber'          => '<strong>Resultaten $1-$2 van de $3</strong>',
-	'searchprev'            => '« <span style=\'font-size: small\'>Vorige</span>',
-	'searchnext'            => '<span style=\'font-size: small\'>Volgende</span> »',
+	'searchnumber'          => '<strong>Resultaten $1-$2 van $3</strong>',
+	'searchprev'            => "« <span style='font-size: small'>Vorige</span>",
+	'searchnext'            => "<span style='font-size: small'>Volgende</span> »",
 	'lucene-searchscore'    => 'Relevantie: $1%',
 	'lucene-resultsize'     => '$1 ($2 woorden)',
 	'searchdidyoumean'      => 'Bedoelde u: "<a href="$1">$2</a>"?',
@@ -589,6 +601,7 @@ of doorzoek de wiki via een externe zoekmachine:',
 	'searchall'             => 'alle',
 	'searchincategory'      => 'binnen categorie',
 );
+
 $wgLuceneSearchMessages['no'] = array(
 	'searchnumber'          => '<strong>Resultat $1–$2 av $3</strong>',
 	'searchprev'            => '« <span style="font-size:small;">Forrige</span>',
