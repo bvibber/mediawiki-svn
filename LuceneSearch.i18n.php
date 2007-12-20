@@ -45,6 +45,31 @@ $1
 <br />Soek vir $3 $9',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$wgLuceneSearchMessages['an'] = array(
+	'searchnumber'          => '<strong>Resultaus $1-$2 de $3</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Anterior</span>",
+	'searchnext'            => "<span style='font-size: small'>Siguient</span> &#x00BB;",
+	'lucene-searchscore'    => 'Relebanzia: $1%',
+	'lucene-resultsize'     => '$1 ($2 parabras)',
+	'searchdidyoumean'      => 'Querió dezir talment «<a href="$1">$2</a>»?',
+	'searchnoresults'       => 'Ya lo sentimos, pero no bi ha garra articlo con ixe testo.',
+	'searchnearmatches'     => '<b>Istas pachinas tienen títols parexius á la suya consulta:</b>',
+	'lucenepowersearchtext' => 'Mirar sólo en os espazios de nombres:
+
+$1
+
+Mirar $3 $9',
+	'lucenefallback'        => 'Bi ha abito uno problema fendo a busca en a wiki.
+Prebablement sía temporal. Prebe de fer-lo una atra begada dimpués de bels menutos, 
+u faiga serbir bel buscador esterno ta esplorar a wiki.',
+	'searchexactcase'       => 'Mirar esautament (mayusclas e minusclas)',
+	'searchall'             => 'toz',
+	'searchincategory'      => 'en a categoría',
+);
+
 $wgLuceneSearchMessages['ar'] = array(
 	'searchnumber'          => '<strong>النتائج $1-$2 ل$3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>السابق</span>',
@@ -81,6 +106,16 @@ $wgLuceneSearchMessages['bcl'] = array(
 	'searchdidyoumean'      => 'An gusto mo: "<a href="$1">$2</a>"?',
 	'searchall'             => 'gabos',
 	'searchincategory'      => 'sakategorya',
+);
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$wgLuceneSearchMessages['bg'] = array(
+	'searchnumber'      => '<strong>Резултати $1-$2 от $3</strong>',
+	'lucene-resultsize' => '$1 ($2 думи)',
+	'searchnearmatches' => '<b>Следните страници имат сходни с търсенето имена:</b>',
+	'searchall'         => 'всички',
 );
 
 $wgLuceneSearchMessages['br'] = array(
@@ -163,11 +198,18 @@ Alternativ kannst du auch die externen Suchmöglichkeiten nutzen:\n",
 	'searchincategory'      => 'in Kategorie',
 
 );
+
+/** Greek (Ελληνικά)
+ * @author Consta
+ * @author MF-Warburg
+ */
 $wgLuceneSearchMessages['el'] = array(
-	'lucene-searchscore'    => 'Σχετικότητα: $1%',
-	'lucene-resultsize'     => '$1 ($2 λέξεις)',
-	'lucenefallback'        => 'Υπήρξε κάποιο πρόβλημα με την αναζήτηση στο wiki. Αυτό είναι μάλλον προσωρινό. Προσπαθήστε ξανά αργότερα ή πραγματοποιήστε την αναζήτησή σας στο wiki μέσω μιας εξωτερικής υπηρεσίας αναζήτησης:',
+	'lucene-searchscore' => 'Σχετικότητα: $1%',
+	'lucene-resultsize'  => '$1 ($2 λέξεις)',
+	'searchdidyoumean'   => 'Μήπως εννοείτε: "<a href="$1">$2</a>";',
+	'lucenefallback'     => 'Υπήρξε κάποιο πρόβλημα με την αναζήτηση στο wiki. Αυτό είναι μάλλον προσωρινό. Προσπαθήστε ξανά αργότερα ή πραγματοποιήστε την αναζήτησή σας στο wiki μέσω μιας εξωτερικής υπηρεσίας αναζήτησης:',
 );
+
 $wgLuceneSearchMessages['eo'] = array(
 	'searchnumber'          => '<strong>Rezultoj $1-$2 el $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Antaŭa</span>',
@@ -528,6 +570,14 @@ $wgLuceneSearchMessages['lo'] = array(
 	'searchdidyoumean'      => "ຫຼື ທ່ານໝາຍຄວາມວ່າ",
 	'searchnoresults'       => "ຂໍໂທດຫຼາຍໆ, ບໍ່ມີ ບົດຄວາມ ທີ່ມີຊື່ກົງກັບສິ່ງທີ່ ທ່ານ ຊອກຫາແບບສົມບູນ.",
 );
+
+/** Lozi (Silozi)
+ * @author Ooswesthoesbes
+ */
+$wgLuceneSearchMessages['loz'] = array(
+	'searchall' => 'xete',
+);
+
 $wgLuceneSearchMessages['lt'] = array(
 	'searchnumber'          => "<strong>Rezultatai $1-$2 iš $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Atgal</span>",
