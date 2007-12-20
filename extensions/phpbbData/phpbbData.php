@@ -9,7 +9,8 @@ if (!defined('MEDIAWIKI')) {
 	exit(1);
 }
 
-$wgPhpbbDataRootPath = 'forum/';
+$wgPhpbbDataRootPath        = 'forum/';	
+$wgPhpbbDataUpdatedDuration = 24;		# hours
 
 $wgExtensionCredits['other'][] = array(
 	'name'        => 'phpbbData',
@@ -119,6 +120,9 @@ function efPhpbbData_RenderLink( &$parser, $linktype, $id, $text='', $options = 
 
 function efPhpbbData_RenderList( &$parser, $action = 'announcements', $forum_id = 0, 
 	$template = "* '''TOPIC_TIME:''' TOPIC_TITLE",$options = 'none') {
+	
+	global $wgPhpbbDataUpdatedDuration;
+	
 	$dateFields = array('topic_time','topic_last_post_time');
 	$opts = explode(',', $options);
 	
@@ -136,12 +140,16 @@ function efPhpbbData_RenderList( &$parser, $action = 'announcements', $forum_id 
 					$rowString = $template;
 					foreach($announcement as $key => $value) {
 						if (in_array($key,$dateFields)) {
-							$rowString = str_replace(strtoupper($key),$wgContLang->timeanddate($value, true),$rowString);
-						} else {
-							if (strtoupper($key) == 'TOPIC_TITLE' && !in_array('nolinks',$opts))
-								$rowString = str_replace(strtoupper($key),efPhpbbData_makeTopicWikiLink($value, $announcement['fid'],$announcement['tid']),$rowString);
+							if ( strtoupper($key) == 'TOPIC_LAST_POST_TIME' && $wgPhpbbDataUpdatedDuration > intval( (wfTimestamp( TS_UNIX, time() ) - wfTimestamp(TS_UNIX, $value)) / 60 / 60 ) )
+								$rowString = str_replace(strtoupper($key),'<span style="color: #ff0000; font-weight: bold; text-decoration: blink;">' . $wgContLang->timeanddate($value, true) . '</span>', $rowString );
 							else
+								$rowString = str_replace(strtoupper($key),$wgContLang->timeanddate($value, true),$rowString);
+							
+						} else {
+							if (strtoupper($key) == 'TOPIC_TITLE' && in_array('nolinks',$opts))
 								$rowString = str_replace(strtoupper($key),$value,$rowString);
+							else
+								$rowString = str_replace(strtoupper($key),efPhpbbData_makeTopicWikiLink($value, $announcement['fid'],$announcement['tid']),$rowString);
 						}
 					}
 					$returnString .= $rowString . "\n";
