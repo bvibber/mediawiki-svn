@@ -56,6 +56,19 @@ $messages['hsb'] = array(
 	'assert_edit_message' => 'Podate twjerdźenje ($1) je so njeporadźiło.',
 );
 
+$messages['kk-cyrl'] = array(
+	'assert_edit_title' => 'Мақұлдау сәтсіз',
+	'assert_edit_message' => 'Енгізілген мақұлдау ($1) сәтсіз.',
+);
+$messages['kk-latn'] = array(
+	'assert_edit_title' => 'Maquldaw sätsiz',
+	'assert_edit_message' => 'Engizilgen maquldaw ($1) sätsiz.',
+);
+$messages['kk-arab'] = array(
+	'assert_edit_title' => 'ماقۇلداۋ سٵتسٸز',
+	'assert_edit_message' => 'ەنگٸزٸلگەن ماقۇلداۋ ($1) سٵتسٸز.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -103,3 +116,9 @@ $messages['zh-hant'] = array(
 	'assert_edit_title'   => '維護失敗',
 	'assert_edit_message' => '所指定的斷言 ($1) 失敗。',
 );
+
+/* Kazakh fallbacks */
+$messages['kk-kz'] = $messages['kk-cyrl'];
+$messages['kk-tr'] = $messages['kk-latn'];
+$messages['kk-cn'] = $messages['kk-arab'];
+$messages['kk'] = $messages['kk-cyrl'];

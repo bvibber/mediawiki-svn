@@ -269,7 +269,7 @@ function efInputBoxMessages() {
 	'createarticle'  => 'Xleq amagrad',
 ),
 
-'kk-kz' => array(
+'kk-cyrl' => array(
 	'inputbox-error-no-type'  => 'Жасалатын енгізу жолағының түрін келтірмепсіз.',
 	'inputbox-error-bad-type' => 'Енгізу жолақтың «$1» түрі танылмады. Тек «create», «comment», «search» не «search2» деген түрлерді келтіріңіз.',
 	'tryexact'                => 'Дәл сәйкесін сынап көріңіз',
@@ -277,7 +277,7 @@ function efInputBoxMessages() {
 	'createarticle'           => 'Бетті бастау',
 ),
 
-'kk-tr' => array(
+'kk-latn' => array(
 	'inputbox-error-no-type'  => 'Jasalatın engizw jolağınıñ türin keltirmepsiz.',
 	'inputbox-error-bad-type' => 'Engizw jolaqtıñ «$1» türi tanılmadı. Tek «create», «comment», «search» ne «search2» degen türlerdi keltiriñiz.',
 	'tryexact'                => 'Däl säýkesin sınap köriñiz',
@@ -285,7 +285,7 @@ function efInputBoxMessages() {
 	'createarticle'           => 'Betti bastaw',
 ),
 
-'kk-cn' => array(
+'kk-arab' => array(
 	'inputbox-error-no-type'  => 'جاسالاتىن ەنگٸزۋ جولاعىنىڭ تٷرٸن كەلتٸرمەپسٸز.',
 	'inputbox-error-bad-type' => 'ەنگٸزۋ جولاقتىڭ «$1» تٷرٸ تانىلمادى. تەك «create», «comment», «search» نە «search2» دەگەن تٷرلەردٸ كەلتٸرٸڭٸز.',
 	'tryexact'                => 'دٵل سٵيكەسٸن سىناپ كٶرٸڭٸز',
@@ -571,8 +571,11 @@ function efInputBoxMessages() {
 
 );
 
-	/* Kazakh default, fallback to kk-kz */
-	$messages['kk'] = $messages['kk-kz'];
+	/* Kazakh fallbacks */
+	$messages['kk-kz'] = $messages['kk-cyrl'];
+	$messages['kk-tr'] = $messages['kk-latn'];
+	$messages['kk-cn'] = $messages['kk-arab'];
+	$messages['kk'] = $messages['kk-cyrl'];
 	/* Min nan default, fallback to nan */
 	$messages['zh-min-nan'] = $messages['nan'];
 	/* Chinese defaults, fallback to zh-hans or zh-hant */

@@ -185,7 +185,7 @@ $wgFilepathMessages['ja'] = array(
 $wgFilepathMessages['kaa'] = array(
 	'filepath'        => 'Fayl jolı',
 );
-$wgFilepathMessages['kk-kz'] = array(
+$wgFilepathMessages['kk-cyrl'] = array(
 	'filepath'        => 'Файл орналасуы ',
 	'filepath_page'   => 'Файл аты:',
 	'filepath_submit' => 'Орналасуын табу ',
@@ -193,7 +193,7 @@ $wgFilepathMessages['kk-kz'] = array(
 	
 	Файл атауын «{{ns:image}}:» деген бастауышсыз еңгізіңіз.',
 );
-$wgFilepathMessages['kk-tr'] = array(
+$wgFilepathMessages['kk-latn'] = array(
 	'filepath'        => 'Faýl ornalaswı ',
 	'filepath_page'   => 'Faýl atı:',
 	'filepath_submit' => 'Ornalaswın tabw ',
@@ -201,7 +201,7 @@ $wgFilepathMessages['kk-tr'] = array(
 	
 	Faýl atawın «{{ns:image}}:» degen bastawışsız eñgiziñiz.',
 );
-$wgFilepathMessages['kk-cn'] = array(
+$wgFilepathMessages['kk-arab'] = array(
 	'filepath'        => 'فايل ورنالاسۋى ',
 	'filepath_page'   => 'فايل اتى:',
 	'filepath_submit' => 'ورنالاسۋىن تابۋ ',
@@ -209,7 +209,7 @@ $wgFilepathMessages['kk-cn'] = array(
 	
 	فايل اتاۋىن «{{ns:image}}:» دەگەن باستاۋىشسىز ەڭگٸزٸڭٸز.',
 );
-$wgFilepathMessages['kk'] = $wgFilepathMessages['kk-kz'];
+
 $wgFilepathMessages['ksh'] = array(
 	'filepath'        => 'Bellder, Tööhn, uew. zëije, med ier URL',
 	'filepath_page'   => 'Dattëij_Name:',
@@ -356,6 +356,14 @@ $wgFilepathMessages['zh-hant'] = array(
 	
 	請輸入檔名，不要包含"{{ns:image}}:"開頭。',
 );
+
+# Kazakh fallbacks
+$wgFilepathMessages['kk-kz'] = $wgFilepathMessages['kk-cyrl'];
+$wgFilepathMessages['kk-tr'] = $wgFilepathMessages['kk-latn'];
+$wgFilepathMessages['kk-cn'] = $wgFilepathMessages['kk-arab'];
+$wgFilepathMessages['kk'] = $wgFilepathMessages['kk-cyrl'];
+
+# Chinese fallbacks
 $wgFilepathMessages['zh'] = $wgFilepathMessages['zh-hans'];
 $wgFilepathMessages['zh-cn'] = $wgFilepathMessages['zh-hans'];
 $wgFilepathMessages['zh-hk'] = $wgFilepathMessages['zh-hant'];

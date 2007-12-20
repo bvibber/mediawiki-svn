@@ -55,16 +55,15 @@ $wgMiniDonationMessages['it'] = array(
 $wgMiniDonationMessages['ja'] = array(
 	'donationform-submit' => 'PayPal を通じて寄付する',
 );
-$wgMiniDonationMessages['kk-kz'] = array(
+$wgMiniDonationMessages['kk-cyrl'] = array(
 	'donationform-submit' => 'Жәрдемді PayPal жүйесімен жіберу',
 );
-$wgMiniDonationMessages['kk-tr'] = array(
+$wgMiniDonationMessages['kk-latn'] = array(
 	'donationform-submit' => 'Järdemdi PayPal jüýesimen jiberw',
 );
-$wgMiniDonationMessages['kk-cn'] = array(
+$wgMiniDonationMessages['kk-arab'] = array(
 	'donationform-submit' => 'جٵردەمدٸ PayPal جٷيەسٸمەن جٸبەرۋ',
 );
-$wgMiniDonationMessages['kk'] = $wgMiniDonationMessages['kk-kz'];
 $wgMiniDonationMessages['lt'] = array(
 	'donationform-submit' => 'Aukoti per PayPal',
 );
@@ -106,12 +105,16 @@ $wgMiniDonationMessages['zh-hans'] = array(
 $wgMiniDonationMessages['zh-hant'] = array(
 	'donationform-submit' => '經PayPal捐款',
 );
+
+# Kazakh fallback
+$wgMiniDonationMessages['kk-kz'] = $wgMiniDonationMessages['kk-cyrl'];
+$wgMiniDonationMessages['kk-tr'] = $wgMiniDonationMessages['kk-latn'];
+$wgMiniDonationMessages['kk-cn'] = $wgMiniDonationMessages['kk-arab'];
+$wgMiniDonationMessages['kk'] = $wgMiniDonationMessages['kk-cyrl'];
+
+# Chinese fallback
 $wgMiniDonationMessages['zh'] = $wgMiniDonationMessages['zh-hans'];
 $wgMiniDonationMessages['zh-cn'] = $wgMiniDonationMessages['zh-hans'];
 $wgMiniDonationMessages['zh-hk'] = $wgMiniDonationMessages['zh-hant'];
 $wgMiniDonationMessages['zh-sg'] = $wgMiniDonationMessages['zh-hans'];
 $wgMiniDonationMessages['zh-tw'] = $wgMiniDonationMessages['zh-hant'];
-
-
-
-

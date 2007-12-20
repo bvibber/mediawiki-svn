@@ -683,7 +683,7 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'set_user_rights' => 'მომხმარებლის უფლებების განსაზღვრა',
 ),
 
-'kk-kz' => array(
+'kk-cyrl' => array(
 	'makesysoptitle'       => 'Қатысушыны әкімші қылу',
 	'makesysoptext'        => 'Бұл үлгітті қарапайым қатысушыны әкімші қылу үшін төрешілер қолданады. Жолаққа қатысушы атын енгізіңіз де, және бұл қатысушыны әкімші қылу үшін, түймені басыңыз.',
 	'makesysopname'        => 'Қатысушы аты:',
@@ -697,15 +697,15 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'user_rights_set'      => '<b>«$1» деген қатысушының құқықтары жаңартылды</b>',
 	'set_rights_fail'      => '<b>«$1» деген қатысушының құқықтары тағайындалмады. (Атын дұрыс енгіздіңіз бе?)</b>',
 	'makesysop'            => 'Қатысушыны әкімші қылу',
-	'already_sysop'        => 'Бұл қатысушы әкімші бопты түге',
-	'already_bureaucrat'   => 'Бұл қатысушы тореші бопты түге',
+	'already_sysop'        => 'Бұл қатысушыда алдақашан әкімші құқықтары бар',
+	'already_bureaucrat'   => 'Бұл қатысушыда алдақашан бітікші құқықтары бар',
 	'makesysop-nodatabase' => 'Қатысушы аты уики-аралығы жарамсыз: $1',
 	'group-steward'        => 'Жетекшілер',
 	'group-steward-member' => 'жетекші',
 	'grouppage-steward'    => '{{ns:project}}:Жетекшілер',
 ),
 
-'kk-tr' => array(
+'kk-latn' => array(
 	'makesysoptitle'       => 'Qatıswşını äkimşi qılw',
 	'makesysoptext'        => 'Bul ülgitti qarapaýım qatıswşını äkimşi qılw üşin töreşiler qoldanadı. Jolaqqa qatıswşı atın engiziñiz de, jäne bul qatıswşını äkimşi qılw üşin, tüýmeni basıñız.',
 	'makesysopname'        => 'Qatıswşı atı:',
@@ -719,15 +719,15 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'user_rights_set'      => '<b>«$1» degen qatıswşınıñ quqıqtarı jañartıldı</b>',
 	'set_rights_fail'      => '<b>«$1» degen qatıswşınıñ quqıqtarı tağaýındalmadı. (Atın durıs engizdiñiz be?)</b>',
 	'makesysop'            => 'Qatıswşını äkimşi qılw',
-	'already_sysop'        => 'Bul qatıswşı äkimşi boptı tüge',
-	'already_bureaucrat'   => 'Bul qatıswşı toreşi boptı tüge',
+	'already_sysop'        => 'Bul qatıswşıda aldaqaşan äkimşi quqıqtarı bar',
+	'already_bureaucrat'   => 'Bul qatıswşıda aldaqaşan bitikşi quqıqtarı bar',
 	'makesysop-nodatabase' => 'Qatıswşı atı wïkï-aralığı jaramsız: $1',
 	'group-steward'        => 'Jetekşiler',
 	'group-steward-member' => 'jetekşi',
 	'grouppage-steward'    => '{{ns:project}}:Jetekşiler',
 ),
 
-'kk-cn' => array(
+'kk-arab' => array(
 	'makesysoptitle'       => 'قاتىسۋشىنى ٵكٸمشٸ قىلۋ',
 	'makesysoptext'        => 'بۇل ٷلگٸتتٸ قاراپايىم قاتىسۋشىنى ٵكٸمشٸ قىلۋ ٷشٸن تٶرەشٸلەر قولدانادى. جولاققا قاتىسۋشى اتىن ەنگٸزٸڭٸز دە, جٵنە بۇل قاتىسۋشىنى ٵكٸمشٸ قىلۋ ٷشٸن, تٷيمەنٸ باسىڭىز.',
 	'makesysopname'        => 'قاتىسۋشى اتى:',
@@ -742,8 +742,8 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'set_rights_fail'      => '<b>«$1» دەگەن قاتىسۋشىنىڭ قۇقىقتارى تاعايىندالمادى. (اتىن دۇرىس ەنگٸزدٸڭٸز بە؟)</b>',
 	'makesysop'            => 'قاتىسۋشىنى ٵكٸمشٸ قىلۋ',
 	'already_sysop'        => 'بۇل قاتىسۋشى ٵكٸمشٸ بوپتى تٷگە',
-	'already_bureaucrat'   => 'بۇل قاتىسۋشى تورەشٸ بوپتى تٷگە',
-	'makesysop-nodatabase' => 'قاتىسۋشى اتى ۋيكي-ارالىعى جارامسىز: $1',
+	'already_sysop'        => 'بۇل قاتىسۋشىدا الداقاشان ٵكٸمشٸ قۇقىقتارى بار',
+	'already_bureaucrat'   => 'بۇل قاتىسۋشىدا الداقاشان بٸتٸكشٸ قۇقىقتارى بار',
 	'group-steward'        => 'جەتەكشٸلەر',
 	'group-steward-member' => 'جەتەكشٸ',
 	'grouppage-steward'    => '{{ns:project}}:جەتەكشٸلەر',
@@ -1478,12 +1478,17 @@ Scrivi el nome de l\'utente ne la caseła e struca el botón par far diventare a
 
 );
 
-$messages['kk'] = $messages['kk-kz'];
-$messages['sr'] = $messages['sr-ec'];
-$messages['zh-tw'] = $messages['zh-hant'];
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-min-nan'] = $messages['nan'];
-$messages['zh-sg'] = $messages['zh-hans'];
-$messages['zh-yue'] = $messages['yue'];
+	/* Kazakh fallbacks */
+	$messages['kk-kz'] = $messages['kk-cyrl'];
+	$messages['kk-tr'] = $messages['kk-latn'];
+	$messages['kk-cn'] = $messages['kk-arab'];
+	$messages['kk'] = $messages['kk-cyrl'];
+
+	/* Chinese defaults, fallback to zh-hans */
+	$messages['zh'] = $messages['zh-hans'];
+	$messages['zh-cn'] = $messages['zh-hans'];
+	$messages['zh-sg'] = $messages['zh-hans'];
+	$messages['zh-tw'] = $messages['zh-hant'];
+
+	/* Cantonese default, fallback to yue */
+	$messages['zh-yue'] = $messages['yue'];

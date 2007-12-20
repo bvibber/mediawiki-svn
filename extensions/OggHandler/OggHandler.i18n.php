@@ -415,7 +415,7 @@ $messages = array(
 		'ogg-desc-link' => 'ファイルの詳細',
 	),
 
-	'kk-kz' => array(
+	'kk-cyrl' => array(
 		'ogg-short-audio'      => 'Ogg $1 дыбыс файлы, $2',
 		'ogg-short-video'      => 'Ogg $1 бейне файлы, $2',
 		'ogg-short-general'    => 'Ogg $1 таспа файлы, $2',
@@ -444,7 +444,7 @@ $messages = array(
 		'ogg-desc-link'        => 'Бұл файл туралы',
 	),
 
-	'kk-tr' => array(
+	'kk-latn' => array(
 		'ogg-short-audio'      => 'Ogg $1 dıbıs faýlı, $2',
 		'ogg-short-video'      => 'Ogg $1 beýne faýlı, $2',
 		'ogg-short-general'    => 'Ogg $1 taspa faýlı, $2',
@@ -473,7 +473,7 @@ $messages = array(
 		'ogg-desc-link'        => 'Bul faýl twralı',
 	),
 
-	'kk-cn' => array(
+	'kk-arab' => array(
 		'ogg-short-audio'      => 'Ogg $1 دىبىس فايلى, $2',
 		'ogg-short-video'      => 'Ogg $1 بەينە فايلى, $2',
 		'ogg-short-general'    => 'Ogg $1 تاسپا فايلى, $2',
@@ -860,8 +860,11 @@ $messages = array(
 	),
 );
 
-/* Kazakh default, fallback to kk-kz */
-$messages['kk'] = $messages['kk-kz'];
+/* Kazakh fallbacks */
+$messages['kk-kz'] = $messages['kk-cyrl'];
+$messages['kk-tr'] = $messages['kk-latn'];
+$messages['kk-cn'] = $messages['kk-arab'];
+$messages['kk'] = $messages['kk-cyrl'];
 
 /* Chinese defaults, fallback to zh-hans */
 $messages['zh'] = $messages['zh-hans'];

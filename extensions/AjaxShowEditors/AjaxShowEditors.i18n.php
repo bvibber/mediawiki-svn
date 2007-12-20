@@ -107,10 +107,20 @@ $wgAjaxShowEditorsMessages['ja'] = array(
 	'ajax-se-pending' => '更新します（この枠内をクリックするか編集を始めてください）',
 	'ajax-se-idling' => '（$1秒前）',
 );
-$wgAjaxShowEditorsMessages['kk-kz'] = array(
+$wgAjaxShowEditorsMessages['kk-cyrl'] = array(
 	'ajax-se-title' => 'Ағымдағы өңделуде:',
 	'ajax-se-pending' => 'жаңарту күтілуде... (бұл қабышақты нұқыңыз, немесе өңдеуді бастаңыз)',
 	'ajax-se-idling' => '($1 s бұрын)',
+);
+$wgAjaxShowEditorsMessages['kk-latn'] = array(
+	'ajax-se-title' => 'Ağımdağı öñdelwde:',
+	'ajax-se-pending' => 'jañartw kütilwde... (bul qabışaqtı nuqıñız, nemese öñdewdi bastañız)',
+	'ajax-se-idling' => '($1 s burın)',
+);
+$wgAjaxShowEditorsMessages['kk-arab'] = array(
+	'ajax-se-title' => 'اعىمداعى ٶڭدەلۋدە:',
+	'ajax-se-pending' => 'جاڭارتۋ كٷتٸلۋدە... (بۇل قابىشاقتى نۇقىڭىز, نەمەسە ٶڭدەۋدٸ باستاڭىز)',
+	'ajax-se-idling' => '($1 s بۇرىن)',
 );
 $wgAjaxShowEditorsMessages['li'] = array(
 	'ajax-se-title' => 'Memènteel aant bewèrke:',
@@ -212,6 +222,14 @@ $wgAjaxShowEditorsMessages['zh-hant'] = array(
 	'ajax-se-pending' => '正在重新整理 ... (按一下這個框開始編輯)',
 	'ajax-se-idling' => '($1秒前)',
 );
+
+# Kazakh fallbacks
+$wgAjaxShowEditorsMessages['kk-kz'] = $wgAjaxShowEditorsMessages['kk-cyrl'];
+$wgAjaxShowEditorsMessages['kk-tr'] = $wgAjaxShowEditorsMessages['kk-latn'];
+$wgAjaxShowEditorsMessages['kk-cn'] = $wgAjaxShowEditorsMessages['kk-arab'];
+$wgAjaxShowEditorsMessages['kk'] = $wgAjaxShowEditorsMessages['kk-cyrl'];
+
+# Chinese fallbacks
 $wgAjaxShowEditorsMessages['zh'] = $wgAjaxShowEditorsMessages['zh-hans'];
 $wgAjaxShowEditorsMessages['zh-cn'] = $wgAjaxShowEditorsMessages['zh-hans'];
 $wgAjaxShowEditorsMessages['zh-hk'] = $wgAjaxShowEditorsMessages['zh-hant'];

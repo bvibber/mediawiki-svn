@@ -166,25 +166,24 @@ $wgSiteMatrixMessages['kaa'] = array(
 	'sitematrix-project' => 'Proyekt atı, proyekt aralıq sıltewi ha\'m til aralıq siltewi',
 	'sitematrix-others' => 'Basqa Wikimedia proektleri',
 );
-$wgSiteMatrixMessages['kk-kz'] = array(
-	"sitematrix"          => "Барлық Wikimedia уики тізімі",
+$wgSiteMatrixMessages['kk-cyrl'] = array(
+	"sitematrix"          => "Wikimedia уики тізімі",
 	'sitematrix-language' => 'Тілі',
 	'sitematrix-project'  => 'Жоба атауы, жоба аралық сілтемесі және уики аралық сілтемесі',
 	'sitematrix-others'   => 'Басқа Wikimedia жобалары',
 );
-$wgSiteMatrixMessages['kk-tr'] = array(
+$wgSiteMatrixMessages['kk-latn'] = array(
 	"sitematrix"          => "Barlıq Wikimedia wïkï tizimi",
 	'sitematrix-language' => 'Tili',
 	'sitematrix-project'  => 'Joba atawı, joba aralıq siltemesi jäne wïkï aralıq siltemesi',
 	'sitematrix-others'   => 'Basqa Wikimedia jobaları',
 );
-$wgSiteMatrixMessages['kk-cn'] = array(
+$wgSiteMatrixMessages['kk-arab'] = array(
 	"sitematrix"          => "بارلىق Wikimedia ۋيكي تٸزٸمٸ",
 	'sitematrix-language' => 'تٸلٸ',
 	'sitematrix-project'  => 'جوبا اتاۋى, جوبا ارالىق سٸلتەمەسٸ جٵنە ۋيكي ارالىق سٸلتەمەسٸ',
 	'sitematrix-others'   => 'باسقا Wikimedia جوبالارى',
 );
-$wgSiteMatrixMessages['kk'] = $wgSiteMatrixMessages['kk-kz'];
 $wgSiteMatrixMessages['ko'] = array(
 	'sitematrix' => '위키미디어 위키 목록',
 );
@@ -364,6 +363,14 @@ $wgSiteMatrixMessages['zh-tw'] = array(
 	'sitematrix-project'  => '計畫名稱、跨計畫連結以及跨維基連結',
 	'sitematrix-others'   => '維基媒體的其它計畫',
 );
+
+# Kazakh fallback
+$wgSiteMatrixMessages['kk-kz'] = $wgSiteMatrixMessages['kk-cyrl'];
+$wgSiteMatrixMessages['kk-tr'] = $wgSiteMatrixMessages['kk-latn'];
+$wgSiteMatrixMessages['kk-cn'] = $wgSiteMatrixMessages['kk-arab'];
+$wgSiteMatrixMessages['kk'] = $wgSiteMatrixMessages['kk-cyrl'];
+
+# Chinese fallback
 $wgSiteMatrixMessages['zh'] = $wgSiteMatrixMessages['zh-hans'];
 $wgSiteMatrixMessages['zh-cn'] = $wgSiteMatrixMessages['zh-hans'];
 $wgSiteMatrixMessages['zh-hk'] = $wgSiteMatrixMessages['zh-hant'];

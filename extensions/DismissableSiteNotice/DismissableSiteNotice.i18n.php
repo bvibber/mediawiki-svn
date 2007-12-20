@@ -118,17 +118,15 @@ $wgDismissableSiteNoticeMessages['ja'] = array(
 	'sitenotice_close' => '非表示',
 );
 
-$wgDismissableSiteNoticeMessages['kk-kz'] = array(
+$wgDismissableSiteNoticeMessages['kk-cyrl'] = array(
 	'sitenotice_close' => 'тасалау',
 );
-$wgDismissableSiteNoticeMessages['kk-tr'] = array(
+$wgDismissableSiteNoticeMessages['kk-latn'] = array(
 	'sitenotice_close' => 'tasalaw',
 );
-$wgDismissableSiteNoticeMessages['kk-cn'] = array(
+$wgDismissableSiteNoticeMessages['kk-arab'] = array(
 	'sitenotice_close' => 'تاسالاۋ',
 );
-
-$wgDismissableSiteNoticeMessages['kk']= $wgDismissableSiteNoticeMessages['kk-kz'];
 
 $wgDismissableSiteNoticeMessages['lb'] = array(
 	'sitenotice_close' => 'verstoppen',
@@ -227,6 +225,14 @@ $wgDismissableSiteNoticeMessages['zh-hans'] = array(
 $wgDismissableSiteNoticeMessages['zh-hant'] = array(
 	'sitenotice_close' => '關閉',
 );
+
+# Kazakh fallback
+$wgDismissableSiteNoticeMessages['kk-kz'] = $wgDismissableSiteNoticeMessages['kk-cyrl'];
+$wgDismissableSiteNoticeMessages['kk-tr'] = $wgDismissableSiteNoticeMessages['kk-latn'];
+$wgDismissableSiteNoticeMessages['kk-cn'] = $wgDismissableSiteNoticeMessages['kk-arab'];
+$wgDismissableSiteNoticeMessages['kk'] = $wgDismissableSiteNoticeMessages['kk-cyrl'];
+
+# Chinese fallback
 $wgDismissableSiteNoticeMessages['zh'] = $wgDismissableSiteNoticeMessages['zh-hans'];
 $wgDismissableSiteNoticeMessages['zh-cn'] = $wgDismissableSiteNoticeMessages['zh-hans'];
 $wgDismissableSiteNoticeMessages['zh-hk'] = $wgDismissableSiteNoticeMessages['zh-hant'];

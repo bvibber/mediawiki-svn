@@ -178,25 +178,24 @@ $wgNewuserlogMessages['ja'] = array(
 	'newuserlog-create-entry'  => '新規利用者',
 	'newuserlog-create2-entry' => 'アカウント $1 が作成されました',
 );
-$wgNewuserlogMessages['kk-kz'] = array(
+$wgNewuserlogMessages['kk-cyrl'] = array(
 	'newuserlogpage'           => 'Тіркелу журналы',
 	'newuserlogpagetext'       => 'Бұл қатысушы тіркелгі жасау журналы',
 	'newuserlog-create-entry'  => 'Жаңа қатысушы',
 	'newuserlog-create2-entry' => 'жаңа тіркелгі жасады — $1',
 );
-$wgNewuserlogMessages['kk-tr'] = array(
+$wgNewuserlogMessages['kk-latn'] = array(
 	'newuserlogpage'           => 'Tirkelw jwrnalı',
 	'newuserlogpagetext'       => 'Bul qatıswşı tirkelgi jasaw jwrnalı',
 	'newuserlog-create-entry'  => 'Jaña qatıswşı',
 	'newuserlog-create2-entry' => 'jaña tirkelgi jasadı — $1',
 );
-$wgNewuserlogMessages['kk-cn'] = array(
+$wgNewuserlogMessages['kk-arab'] = array(
 	'newuserlogpage'           => 'تٸركەلۋ جۋرنالى',
 	'newuserlogpagetext'       => 'بۇل قاتىسۋشى تٸركەلگٸ جاساۋ جۋرنالى',
 	'newuserlog-create-entry'  => 'جاڭا قاتىسۋشى',
 	'newuserlog-create2-entry' => 'جاڭا تٸركەلگٸ جاسادى — $1',
 );
-$wgNewuserlogMessages['kk'] = $wgNewuserlogMessages['kk-kz'];
 $wgNewuserlogMessages['ko'] = array(
 	'newuserlogpage'           => '사용자 등록 기록',
 	'newuserlogpagetext'       => '사용자 등록 기록입니다.',
@@ -380,6 +379,14 @@ $wgNewuserlogMessages['zh-hant'] = array(
 	'newuserlog-create-entry'  => '新用戶',
 	'newuserlog-create2-entry' => '已創建$1的帳戶',
 );
+
+# Kazakh fallbacks
+$wgNewuserlogMessages['kk-kz'] = $wgNewuserlogMessages['kk-cyrl'];
+$wgNewuserlogMessages['kk-tr'] = $wgNewuserlogMessages['kk-latn'];
+$wgNewuserlogMessages['kk-cn'] = $wgNewuserlogMessages['kk-arab'];
+$wgNewuserlogMessages['kk'] = $wgNewuserlogMessages['kk-cyrl'];
+
+# Chinese fallbacks
 $wgNewuserlogMessages['zh'] = $wgNewuserlogMessages['zh-hans'];
 $wgNewuserlogMessages['zh-cn'] = $wgNewuserlogMessages['zh-hans'];
 $wgNewuserlogMessages['zh-hk'] = $wgNewuserlogMessages['zh-hant'];

@@ -427,7 +427,7 @@ La divulgazione di tali informazioni può dar luogo alla rimozione permanente de
 ),
 
 /* Kazakh Cyrillic (AlefZet) */
-'kk-kz' => array('hiderevision' => 'Нұсқаларды тұрақты жасыру',
+'kk-cyrl' => array('hiderevision' => 'Нұсқаларды тұрақты жасыру',
 // Empty form
 'hiderevision-prompt' => 'Жойылатын нұсқа нөмірі:',
 'hiderevision-continue' => 'Жалғастыру',
@@ -471,7 +471,7 @@ La divulgazione di tali informazioni può dar luogo alla rimozione permanente de
 ),
 
 /* Kazakh Latin (AlefZet) */
-'kk-tr' => array('hiderevision' => 'Nusqalardı turaqtı jasırw',
+'kk-latn' => array('hiderevision' => 'Nusqalardı turaqtı jasırw',
 // Empty form
 'hiderevision-prompt' => 'Joýılatın nusqa nömiri:',
 'hiderevision-continue' => 'Jalğastırw',
@@ -515,7 +515,7 @@ Bul mälimetti barşağa aşqanda Nusqa jasırwşı quqıqtarıñız ärdaýım 
 ),
 
 /* Kazakh Arabic (AlefZet) */
-'kk-cn' => array('hiderevision' => 'نۇسقالاردى تۇراقتى جاسىرۋ',
+'kk-arab' => array('hiderevision' => 'نۇسقالاردى تۇراقتى جاسىرۋ',
 // Empty form
 'hiderevision-prompt' => 'جويىلاتىن نۇسقا نٶمٸرٸ:',
 'hiderevision-continue' => 'جالعاستىرۋ',
@@ -1061,8 +1061,12 @@ i administratori baze podataka ih mogu ručno vratiti ako napravite grešku.",
 
 	);
 
-	/* Kazakh default, fallback to kk-kz */
-	$messages['kk'] = $messages['kk-kz'];
+	/* Kazakh fallbacks */
+	$messages['kk-kz'] = $messages['kk-cyrl'];
+	$messages['kk-tr'] = $messages['kk-latn'];
+	$messages['kk-cn'] = $messages['kk-arab'];
+	$messages['kk'] = $messages['kk-cyrl'];
+
 	/* Chinese defaults, fallback to zh-hans or zh-hant */
 	$messages['zh'] = $messages['zh-hans'];
 	$messages['zh-cn'] = $messages['zh-hans'];

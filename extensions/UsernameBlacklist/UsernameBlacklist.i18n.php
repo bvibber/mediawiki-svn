@@ -214,7 +214,7 @@ daftar hitam nama pengguna]]. Harap pilih nama lain.',
 ),
 
 /* Kazakh Cyrillic (kk:AlefZet) */
-	'kk-kz' => array(
+'kk-cyrl' => array(
 	'blacklistedusername' => 'Қара тізімдегі қатысушы аты',
 	'blacklistedusernametext' => 'Тандаған қатысушы атыңыз [[{{ns:mediawiki}}:Usernameblacklist| қатысушы аты қара тізіміне]] кіреді.
 Басқа атау талғаңыз.',
@@ -228,9 +228,8 @@ daftar hitam nama pengguna]]. Harap pilih nama lain.',
 </pre>',
 	'usernameblacklist-invalid-lines' => 'Қатысушы аты қара тізіміндегі келесі {{PLURAL:$1|жол|жолдар}} жарамсыз {{PLURAL:$1|болды|болды}}; сақтаудың алдында {{PLURAL:$1|бұны|бұларды}} дұрыстап шығыңыз:',
 ),
-
 /* Kazakh Latin (kk:AlefZet) */
-'kk-tr' => array(
+'kk-latn' => array(
 	'blacklistedusername' => 'Qara tizimdegi qatıswşı atı',
 	'blacklistedusernametext' => 'Tandağan qatıswşı atıñız [[{{ns:mediawiki}}:Usernameblacklist| qatıswşı atı qara tizimine]] kiredi.
 Basqa ataw talğañız.',
@@ -244,9 +243,8 @@ Basqa ataw talğañız.',
 </pre>',
 	'usernameblacklist-invalid-lines' => 'Qatıswşı atı qara tizimindegi kelesi {{PLURAL:$1|jol|joldar}} jaramsız {{PLURAL:$1|boldı|boldı}}; saqtawdıñ aldında {{PLURAL:$1|bunı|bulardı}} durıstap şığıñız:',
 ),
-
 /* Kazakh Arabic (kk:AlefZet) */
-'kk-cn' => array(
+'kk-arab' => array(
 	'blacklistedusername' => 'قارا تٸزٸمدەگٸ قاتىسۋشى اتى',
 	'blacklistedusernametext' => 'تانداعان قاتىسۋشى اتىڭىز [[{{ns:mediawiki}}:Usernameblacklist| قاتىسۋشى اتى قارا تٸزٸمٸنە]] كٸرەدٸ.
 باسقا اتاۋ تالعاڭىز.',
@@ -452,8 +450,11 @@ lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
 
 	);
 
-	/* Kazakh default, fallback to kk-kz */
-	$messages['kk'] = $messages['kk-kz'];
+	/* Kazakh fallbacks */
+	$messages['kk-kz'] = $messages['kk-cyrl'];
+	$messages['kk-tr'] = $messages['kk-latn'];
+	$messages['kk-cn'] = $messages['kk-arab'];
+	$messages['kk'] = $messages['kk-cyrl'];
 
 	/* Chinese defaults, fallback to zh-hans or zh-hant */
 	$messages['zh'] = $messages['zh-hans'];
