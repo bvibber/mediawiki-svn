@@ -40,6 +40,13 @@ Remember: '''You cannot get your permissions back this way!''' You will have to 
 	'resign-reason' => 'Rason:',
 ),
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+'bg' => array(
+	'resign-reason' => 'Причина:',
+),
+
 'de' => array(
 	'resign'           => 'Rückgabe von Berechtigungen',
 	'resign-text'      => "Du kannst auf dieser Seite '''deine Berechtigungen zurückgeben''' (z.B. die Administrator-Berechtigung). Bitte prüfe die Berechtigungen, die du zurückgeben möchtest.

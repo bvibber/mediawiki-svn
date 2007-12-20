@@ -320,6 +320,14 @@ $wgSiteMatrixMessages['tet'] = array(
 	'sitematrix-project' => 'Naran projetu nian, ligasaun projetu no ligasaun interwiki',
 	'sitematrix-others' => 'Projetu seluk Wikimedia nian',
 );
+
+/** Tonga (faka-Tonga)
+ * @author SPQRobin
+ */
+$wgSiteMatrixMessages['to'] = array(
+	'sitematrix' => "Ko e hokohoko ʻo e ngaahi ''wiki''",
+);
+
 $wgSiteMatrixMessages['tr'] = array(
 	'sitematrix' => 'Tüm Wikimedia vikilerin listesi',
 );

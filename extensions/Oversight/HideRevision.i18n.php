@@ -358,7 +358,7 @@ Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wuš
  */
 'hu' => array(
 	'hiderevision-error-missing' => 'Nem található az adatbázisban.',
-
+	'oversight-view'             => 'részletek',
 ),
 
 /* Italian (BrokenArrow) */

@@ -220,6 +220,13 @@ $wgDeletedContribsMessages['sr-el'] = array(
 	'deletedcontributions' => 'Obrisane izmene',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$wgDeletedContribsMessages['stq'] = array(
+	'deletedcontributions' => 'Läskede Benutserbiedraage',
+);
+
 $wgDeletedContribsMessages['sv'] = array(
 	'deletedcontributions' => 'Raderade användarbidrag',
 );
@@ -230,6 +237,13 @@ $wgDeletedContribsMessages['sq'] = array(
 
 $wgDeletedContribsMessages['te'] = array(
 	'deletedcontributions' => 'తొలగించబడిన సభ్యుని రచనలు',
+);
+
+/** Tonga (faka-Tonga)
+ * @author SPQRobin
+ */
+$wgDeletedContribsMessages['to'] = array(
+	'deletedcontributions' => 'Ngaahi foaki ʻo ha ʻetita kuo tāmateʻi',
 );
 
 $wgDeletedContribsMessages['tr'] = array(

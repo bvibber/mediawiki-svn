@@ -2060,6 +2060,15 @@ $1 för de krypterade uppgifterna.</p>',
 	'boardvote_welcome'      => "Välkommen '''$1'''!",
 );
 
+/** Tonga (faka-Tonga)
+ * @author SPQRobin
+ */
+$wgBoardVoteMessages['to'] = array(
+	'boardvote'          => 'Ko e fili ʻo e kau talāsiti ki he Poate Wikimedia',
+	'boardvote_days'     => 'Ngaahi ʻaho',
+	'boardvote_dumplink' => 'Lomiʻi heni',
+);
+
 $wgBoardVoteMessages['wa'] = array(
 	'boardvote' => 'Vôtaedje po les manaedjeus del fondåcion Wikimedia',
 	'boardvote_entry' => '* [[Special:Boardvote/vote|Vôter]]

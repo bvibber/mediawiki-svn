@@ -245,6 +245,9 @@ $allMessages = array(
 		'passwordreset-confirmpass'     => 'Подтверждение пароля',
 		'passwordreset-submit'          => 'Сбросить пароль',
 		'passwordreset-success'         => 'Пароль сброшен для user_id: $1',
+		'passwordreset-disableuser'     => 'Отключить учётную запись?',
+		'passwordreset-disablesuccess'  => 'Учётная запись отключена (user_id: $1)',
+		'passwordreset-accountdisabled' => 'Учётная запись отключена',
 	),
 
 	'yue' => array( 

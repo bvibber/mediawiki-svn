@@ -98,17 +98,21 @@ function efImageMapMessages() {
 	'imagemap_description'          => 'À propos de cette image',
 ),
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Xosé
+ */
 'gl' => array(
-	'imagemap_no_image'             => '&lt;imagemap&gt;: debe especificar unha imaxe na primeira liña',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;: a imaxe non é válida ou non existe',
-	'imagemap_no_link'              => '&lt;imagemap&gt;: foi atopada unha ligazón non válida ao final da liña $1',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: título non válido na ligazón na liña $1',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: non abondan as coordenadas para crear un polígono, na liña $1',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: descoñecida forma na liña $1, cada liña debe comezar con un dos seguintes: por defecto, rectángulo, círculo ou polígono',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;: polo menos debe darse unha zona de especificación',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: coordinada non válida na liña $1, debe ser un número',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: especificación desc non válida, debe ser un de: <tt>$1</tt>',
-	'imagemap_description'          => 'Sobre esta imaxen',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: debe especificar unha imaxe na primeira liña',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: a imaxe non é válida ou non existe',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: foi atopada unha ligazón non válida ao final da liña $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: título non válido na ligazón na liña $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: non abondan as coordenadas para crear un polígono, na liña $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: descoñecida forma na liña $1, cada liña debe comezar con un dos seguintes: por defecto, rectángulo, círculo ou polígono',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: polo menos debe darse unha zona de especificación',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: coordinada non válida na liña $1, debe ser un número',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: especificación desc non válida, debe ser un de: <tt>$1</tt>',
+	'imagemap_description'        => 'Sobre esta imaxe',
 ),
 
 /* Hebrew (Rotem Liss) */

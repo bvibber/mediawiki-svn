@@ -49,6 +49,13 @@ $messages['de'] = array(
 	'showprocesslist-info'    => 'Info',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'showprocesslist-user' => 'Χρήστης',
+);
+
 $messages['fr'] = array(
 	'showprocesslist' => 'Voir la liste des processus',
 	'showprocesslist-id' => 'n°',

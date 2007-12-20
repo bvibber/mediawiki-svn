@@ -455,6 +455,10 @@ function efContributorsMessages() {
 'stq' => array(
 	'contributors'             => 'Haudautore',
 	'contributors-toolbox'     => 'Haudautore',
+	'contributors-legend'      => 'Wies do Haudautore fon ne Siede',
+	'contributors-target'      => 'Siede:',
+	'contributors-submit'      => 'Wies',
+	'contributors-subtitle'    => 'Haudautore fon $1',
 	'contributors-others-long' => 'Deer ieuwenske rakt et noch $1 moor Autore fon disse Siede.',
 	'contributors-others'      => 'un $1 moor',
 	'contributors-badtitle'    => 'Uungultige Siede',

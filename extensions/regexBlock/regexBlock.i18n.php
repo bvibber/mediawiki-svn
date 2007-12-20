@@ -101,6 +101,15 @@ $messages['ar'] = array(
 	'regexblock-view-time' => 'في $1',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'regexblock-form-username' => 'IP адрес или потребителско име:',
+	'regexblock-form-reason'   => 'Причина:',
+	'regexblock-view-all'      => 'Всички',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -208,13 +217,21 @@ $messages['gl'] = array(
  */
 $messages['hr'] = array(
 	'regexblock'                      => 'Blokiranje pomoću regularnih izraza',
+	'regexblock-page-title'           => 'Blokiranje pomoću regularnih izraza',
 	'regexblockstats'                 => 'Statistika blokiranja regularnim izrazima',
+	'regexblock-reason-ip'            => 'Ova IP adresa je blokirana (tj. nemoguće je uređivati stranice) zbog vandalizma ili nekog drugog vašeg prekršaja (ili nekog s kim dijelite IP adresu). Ukoliko mislite da je posrijedi greška, molimo $1',
+	'regexblock-reason-name'          => 'Ovo suradničko ime je blokirano (tj. spriječeno mu je uređivanje članaka) zbog vandalizma ili nekog drugog prekršaja. Ukoliko mislite da se radi o grešci, molimo $1',
+	'regexblock-reason-regex'         => 'Ovo suradničko ime je blokirano (tj. spriječeno mu je uređivanje članaka) zbog vandalizma ili nekog drugog prekršaja suradnika s istim (ili sličnem) imenom. Ukoliko mislite da se radi o grešci, molimo $1',
+	'regexblock-help'                 => "Rabite donju formu za blokiranje određenih IP adresa ili suradnika. TO treba činiti samo radi sprječavanja vandalizama, u skladu s pravilima.
+
+''Ova stranica omogućava vam blokiranje suradničkih imena prema uzorku (postojećih i novih), npr. ako blokirate « Test 2», blokirat ćete i « Test » itd. Možete također blokirati IP adrese, što znači da nitko tko se prijavi s njih neće moći uređivati. Napomena: djelomične IP adrese bit će analizirane prema suradničkim imenima u određivanju trajanja bloka. Ukoliko razlog nije dan, bit će navedeno generičko objašnjenje.''",
 	'regexblock-page-title-1'         => 'Blokiraj adresu koristeći regularni izraz',
 	'regexblock-unblock-success'      => 'Deblokiranje uspjelo',
 	'regexblock-unblock-log'          => "Suradnik ili IP adresa '''$1''' je deblokiran.",
 	'regexblock-unblock-error'        => 'Greška prilikom deblokiranja $1. Taj suradnik vjerojatno ne postoji.',
 	'regexblock-form-username'        => 'IP-adresa ili ime suradnika:',
 	'regexblock-form-reason'          => 'Razlog:',
+	'regexblock-form-expiry'          => 'Istek bloka:&#160;',
 	'regexblock-form-match'           => 'Točno podudaranje',
 	'regexblock-form-account-block'   => 'Blokiraj stvaranje novih računa',
 	'regexblock-form-submit'          => 'Blokiraj&nbsp;ovog&nbsp;suradnika',
@@ -226,6 +243,8 @@ $messages['hr'] = array(
 	'regexblock-already-blocked'      => '$1 je već blokiran.',
 	'regexblock-stats-title'          => 'Statistika blokiranja reg. izrazima',
 	'regexblock-stats-username'       => 'Za $1',
+	'regexblock-stats-times'          => 'je blokiran u',
+	'regexblock-stats-logging'        => 'prijava s adrese',
 	'regexblock-currently-blocked'    => 'Trenutno blokirane adrese:',
 	'regexblock-view-blocked'         => 'Pregled po onom tko je blokirao:',
 	'regexblock-view-all'             => 'Svi',
@@ -234,6 +253,7 @@ $messages['hr'] = array(
 	'regexblock-view-regex'           => '(podudaranje reg. izrazom)',
 	'regexblock-view-account'         => '(blokiranje otvaranja računa)',
 	'regexblock-view-reason'          => 'razlog: $1',
+	'regexblock-view-reason-default'  => 'uobičajeni razlog',
 	'regexblock-view-block-infinite'  => 'trajna blokada',
 	'regexblock-view-block-temporary' => 'ističe u',
 	'regexblock-view-block-expired'   => 'ISTEKLO u',

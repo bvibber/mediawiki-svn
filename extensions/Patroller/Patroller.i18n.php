@@ -100,6 +100,13 @@ function efPatrollerMessages() {
 	'grouppage-patroller'    => '{{ns:project}}:Kontrolleur',
 ),
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+'el' => array(
+	'patrol-revert-reason' => 'Λόγος:',
+),
+
 /* Spanish (Titoxd) */
 'es' => array(
 	'patrol' => 'Revisar ediciones',
@@ -386,6 +393,25 @@ function efPatrollerMessages() {
 	'group-patroller' => 'Strážcovia',
 	'group-patroller-member' => 'Strážca',
 	'grouppage-patroller' => '{{ns:project}}:Strážca',
+),
+
+/** Russian (Русский)
+ * @author Illusion
+ */
+'ru' => array(
+	'patrol'                 => 'Патрулирование',
+	'patrol-endorse'         => 'Подтвердить',
+	'patrol-revert'          => 'Откатить',
+	'patrol-revert-reason'   => 'Причина:',
+	'patrol-skip'            => 'Отложить',
+	'patrol-reverting'       => 'Откат: $1',
+	'patrol-endorsed-ok'     => 'Правка подтверждена.',
+	'patrol-reverted-ok'     => 'Правка откачена.',
+	'patrol-skipped-ok'      => 'Правка отложена.',
+	'patrol-another'         => 'Вывести ещё одну правку, если имеется.',
+	'group-patroller'        => 'Патрулирующие',
+	'group-patroller-member' => 'патрулирующий',
+	'grouppage-patroller'    => '{{ns:project}}:Патрулирующие',
 ),
 
 /* Sundanese (Kandar via BetaWiki) */

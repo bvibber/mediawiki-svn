@@ -425,6 +425,14 @@ $wgExpandTemplatesMessages['sv'] = array(
 	'expand_templates_remove_comments' => 'Ta bort kommentarer',
 	'expand_templates_preview'         => 'Förhandsvisning',
 );
+
+/** Tonga (faka-Tonga)
+ * @author SPQRobin
+ */
+$wgExpandTemplatesMessages['to'] = array(
+	'expandtemplates' => 'Fakalahiange ʻa e ngaahi sīpinga',
+);
+
 $wgExpandTemplatesMessages['yue'] = array(
 	'expandtemplates'                  => '展開模',
 	'expand_templates_intro'           => '呢個特別頁係用於將一啲文字中嘅模展開，包括響個模度引用嘅模。同時亦都展開解譯器函數好似<nowiki>{{</nowiki>#if:...}}，以及一啲變數好似<nowiki>{{</nowiki>CURRENTDAY}}&mdash;實際上，幾乎所有響雙括弧中嘅內容都會被展開。呢個特別頁係通過使用MediaWiki嘅相關解釋階段嘅功能完成嘅。',

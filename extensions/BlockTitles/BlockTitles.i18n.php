@@ -73,6 +73,14 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'Sentímolo, non se permite gardar o título deste artigo.',
 ),
 
+/** Croatian (Hrvatski)
+ * @author Dnik
+ */
+'hr' => array(
+	'block_title_error_page_title' => 'Blokirani naslov',
+	'block_title_error'            => 'Nažalost, naslov ovog članka nije dozvoljeno spremiti',
+),
+
 'hsb' => array(
 	'block_title_error_page_title' => 'Mjeno nastawka zablokowane',
 	'block_title_error' => 'Wodaj, ale njeje dowolene nastawk z tutym mjenom składować.',

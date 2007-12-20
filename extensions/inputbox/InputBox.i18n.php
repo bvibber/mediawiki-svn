@@ -499,6 +499,13 @@ function efInputBoxMessages() {
 	'createarticle' => 'Kwala mokwalo',
 ),
 
+/** Tonga (faka-Tonga)
+ * @author SPQRobin
+ */
+'to' => array(
+	'createarticle' => 'Fakatupu ʻa e kupu',
+),
+
 'tr' => array(
 	'createarticle' => 'Sayfayı oluştur',
 ),

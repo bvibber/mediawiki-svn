@@ -30,6 +30,14 @@ function efImportFreeImagesMessages() {
 			'importfreeimages_returntoform' => 'أو، اضغط <a href=\'$1\'>هنا</a> للعودة إلى نتائج بحثك',
 		),
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+		'bg' => array(
+			'importfreeimages_description' => 'Тази страница позволява търсенето на подходящо лицензирани картинки от flickr и качването им в уикито.',
+			'importfreeimages_owner'       => 'Автор',
+		),
+
 		'de' => array(
 			'importfreeimages'                => 'Import freier Bilder',
 			'importfreeimages_description'    => 'Diese Seite erlaubt dir, auf Flickr nach Bildern unter einer freien Lizenz zu suchen und diese in dein Wiki zu importieren.',

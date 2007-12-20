@@ -84,3 +84,13 @@ $messages['sk'] = array(
 	'findspam-ok' => 'OK',#identical but defined
 	'findspam-notextfound' => 'Neboli nájdené žiadne príspevky',
 );
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'findspam'             => 'Spam fiende',
+	'findspam-ip'          => 'IP-Adresse:',
+	'findspam-ok'          => 'OK',
+	'findspam-notextfound' => 'Neen Biedraage fuunen',
+);

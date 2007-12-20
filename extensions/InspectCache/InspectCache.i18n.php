@@ -29,6 +29,13 @@ $messages['ar'] = array(
 	'inspectcache-deleted' => 'الكاش المحذوف',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'inspectcache-delete' => 'Изтриване',
+);
+
 $messages['de'] = array(
 	'inspectcache'         => 'Cache ansehen',
 	'inspectcache-ok'      => 'OK',

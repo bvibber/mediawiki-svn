@@ -158,6 +158,14 @@ $wgCrossNamespaceLinksMessages['ku'] = array(
 $wgCrossNamespaceLinksMessages['la'] = array(
 	'crossnamespacelinks'         => 'Nexus trans praefixa',
 );
+
+/** Lozi (Silozi)
+ * @author Ooswesthoesbes
+ */
+$wgCrossNamespaceLinksMessages['loz'] = array(
+	'crossnamespacelinkstext' => "$1: $2 {{PLURAL:$2|ling'ki|ling'kina}} di $3",
+);
+
 $wgCrossNamespaceLinksMessages['nan'] = array(
 	'crossnamespacelinks'         => 'Ha̍ⁿh kòe miâ-khong-kan ê liân-kiat',
 	'crossnamespacelinkstext'     => '$1: $2 ê liân-kiat kàu $3',
@@ -224,9 +232,17 @@ $wgCrossNamespaceLinksMessages['sr-el'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|veza|veze|veza}} ka $3 imenskom prostoru'
 );
 $wgCrossNamespaceLinksMessages['sr'] = $wgCrossNamespaceLinksMessages['sr-ec'];
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ * @author Maartenvdbent
+ */
 $wgCrossNamespaceLinksMessages['stq'] = array(
 	'crossnamespacelinks'         => 'Sieden mäd Links ätter uur Noomensruume',
+	'crossnamespacelinks-summary' => 'Disse Lieste wiest Sieden, do der Ferbiendengen ap Sieden fon uur Noomensruume änthoolde. Uutgenuumen sunt deerbie do Noomensruume {{ns:special}}, {{ns:talk}}, {{ns:project}} un {{ns:template}}.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|Ferbiendenge wiest|Ferbiendengen wiese}} in dän $3-Noomensruum',
 );
+
 $wgCrossNamespaceLinksMessages['su'] = array(
 	'crossnamespacelinks'         => 'Tumbu antara-ngaranspasi',
 	'crossnamespacelinks-summary' => 'Kaca ieu mikeun daptar tumbu ti hiji kaca di ngaran spasi utama ka kaca séjén di ngaran spasi séjén (kajaba {{ns:special}}, {{ns:talk}}, {{ns:project}} sarta ngaran spasi {{ns:template}}), anu henteu dianjurkeun pikeun dipaké.',
@@ -238,6 +254,15 @@ $wgCrossNamespaceLinksMessages['sv'] = array(
 	'crossnamespacelinks-summary' => 'På den här sidan finns en lista över länkar från sidor i huvudnamnrymden till sidor i andra namnrymder (utom till namnrymderna {{ns:special}}, {{ns:talk}}, {{ns:project}} och {{ns:template}}). Det rekommenderas att sådana länkar inte används.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|länk|länkar}} till $3'
 );
+
+/** Tonga (faka-Tonga)
+ * @author SPQRobin
+ */
+$wgCrossNamespaceLinksMessages['to'] = array(
+	'crossnamespacelinks'     => 'Ngaahi fehokotaki vā fakalava',
+	'crossnamespacelinkstext' => '$1: {{PLURAL:$2||ngaahi}} fehokotaki ʻe $2 ki he $3',
+);
+
 $wgCrossNamespaceLinksMessages['vec'] = array(
 	'crossnamespacelinks'         => 'Collegamenti da un namespace a l\'altro',
 	'crossnamespacelinkstext'     => '$1: $2 cołegamento/i $3',

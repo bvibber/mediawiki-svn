@@ -56,9 +56,23 @@ $messages['hsb'] = array(
 	'seealso' => 'Hlej tež',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'seealso' => 'Lásd még',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'seealso' => 'Zie ook',
+);
+
+/** Swedish (Svenska)
+ * @author SPQRobin
+ */
+$messages['sv'] = array(
+	'seealso' => 'Se även',
 );

@@ -111,6 +111,13 @@ $wgChemFunctions_Messages['ar'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: خطأ إدخال!',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$wgChemFunctions_Messages['bg'] = array(
+	'chemFunctions_Formula' => 'Формула',
+);
+
 $wgChemFunctions_Messages['de'] = array(
 	'chemicalsources' => 'Chemische Quellen',
 	'chemFunctions_ListPage' => 'Chemische Quellen',
@@ -397,6 +404,15 @@ $wgChemFunctions_Messages['sr'] = $wgChemFunctions_Messages['sr-ec'];
 $wgChemFunctions_Messages['stq'] = array(
 	'chemicalsources' => 'Chemiske Wällen',
 
+);
+
+/** Croatian (Hrvatski)
+ * @author Dnik
+ */
+$wgChemFunctions_Messages['hr'] = array(
+	'chemicalsources'        => 'Kemijski izvori',
+	'chemFunctions_ListPage' => 'Kemijski izvori',
+	'chemFunctions_Formula'  => 'Formula',
 );
 
 $wgChemFunctions_Messages['vi'] = array(

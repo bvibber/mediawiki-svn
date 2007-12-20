@@ -995,6 +995,14 @@ function efMakeBotMessages() {
 	'makebot-username'        => 'Корбар:',
 ),
 
+/** Tonga (faka-Tonga)
+ * @author SPQRobin
+ */
+'to' => array(
+	'makebot-username' => 'Hingoa ʻo e ʻetita:',
+	'makebot-search'   => 'Fai ā',
+),
+
 'tr' => array(
 	'makebot'                 => 'Bot statüsü ver veya al',
 	'makebot-header'          => '\'\'\'Sitedeki bir bürokrat bu sayfadan bir kullanıcıya [[{{MediaWiki:Grouppage-bot}}|bot statüsü]] verebilir ya da statüyü geri alabilir.\'\'\'<br />Bot statüsü alan kullanıcının değişiklikleri [[Special:Recentchanges|son değişiklikler]] ve benzeri listelerde gizlenir. Otomatik değişiklik yapan normal kullanıcılara da statü vermek yararlı olabilir. Bot statüsü verme, kurallara uygun yapılmalıdır.',

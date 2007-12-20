@@ -333,6 +333,16 @@ $wgLinkSearchMessages['sv'] = array(
 	'linksearch-line'  => '$1 länkas från $2',
 	'linksearch-error' => 'Jokertecken kan bara användas i början av domännamnet.',
 );
+
+/** Tonga (faka-Tonga)
+ * @author SPQRobin
+ */
+$wgLinkSearchMessages['to'] = array(
+	'linksearch'       => 'Kumi ha ngaahi fehokotaki fakamatamatakupenga',
+	'linksearch-line'  => 'Kuo fehokotaki ʻa e $1 mei he $2',
+	'linksearch-error' => 'ʻOku ngofua pē ke ʻasi ha ngaahi lauʻifano ʻi he kamataʻanga ʻo e tauhia hono hingoa.',
+);
+
 $wgLinkSearchMessages['yue'] = array(
 	'linksearch'       => '搵網頁連結',
 	'linksearch-pat'   => '搵嘅形態:',

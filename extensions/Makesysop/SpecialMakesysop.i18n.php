@@ -1279,6 +1279,25 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'grouppage-steward' => '{{ns:project}}:Steward sira',
 ),
 
+/** Tonga (faka-Tonga)
+ * @author SPQRobin
+ */
+'to' => array(
+	'makesysoptitle'       => 'Fai ha ʻetita ki ha pule fakafounga',
+	'makesysopname'        => 'Hingoa ʻo e ʻetita:',
+	'makesysopsubmit'      => 'Fai ʻa e ʻetitá ni ki ha pule fakafounga',
+	'makesysopok'          => '<b>Ko e ʻetita ko "$1", ko e pule fakafounga ia he taimí ni</b>',
+	'makesysopfail'        => '<b>Naʻe ʻikai lava fai ko e ʻetita "$1" ki ha pule fakafounga. (Mahalo pe naʻa ke halaʻi he hingoa?)</b>',
+	'setbureaucratflag'    => 'Matohi pulelahi',
+	'rights'               => 'Maʻu mafai:',
+	'set_user_rights'      => 'Matohi maʻu mafai ʻo e ʻetita',
+	'makesysop'            => 'Fai ha ʻetita ki ha pule fakafounga',
+	'already_sysop'        => 'Ko e ʻetitá ni kuo ʻosi fai pule',
+	'already_bureaucrat'   => 'Ko e ʻetitá ni kuo ʻosi fai pulelahi',
+	'group-steward'        => 'Kau setuate',
+	'group-steward-member' => 'Setuate',
+),
+
 'tr' => array(
 	'already_bureaucrat'   => 'Bu kullanıcı zaten bürokrat',
 	'already_sysop'        => 'Bu kullanıcı zaten yönetici',

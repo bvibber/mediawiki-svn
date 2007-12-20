@@ -36,6 +36,14 @@ $messages['gl'] = array(
 	'icon-badwidth' => 'Anchura mala',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dnik
+ */
+$messages['hr'] = array(
+	'icon-badimage' => 'Loša slika',
+	'icon-badwidth' => 'Loša širina',
+);
+
 $messages['hsb'] = array(
 	'icon-badimage' => 'Špatny wobraz',
 	'icon-badwidth' => 'Špatna šěrokosć',

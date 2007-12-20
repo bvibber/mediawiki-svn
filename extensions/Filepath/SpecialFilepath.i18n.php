@@ -314,6 +314,16 @@ $wgFilepathMessages['sr-el'] = array(
 );
 $wgFilepathMessages['sr'] = $wgFilepathMessages['sr-ec'];
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$wgFilepathMessages['stq'] = array(
+	'filepath'         => 'Doatäipaad',
+	'filepath_page'    => 'Doatäi:',
+	'filepath_submit'  => 'Paad säike',
+	'filepath-summary' => 'Mäd disse Spezialsiede lät sik die komplette Paad fon ju aktuelle Version fon ne Doatäi sunner Uumwai oufräigje. Ju anfräigede Doatäi wäd fluks deerstoald blw. mäd ju ferknätte Anweendenge started.',
+);
+
 $wgFilepathMessages['su'] = array(
 	'filepath'        => 'Jalur koropak',
 	'filepath_page'   => 'Koropak:',
@@ -327,6 +337,16 @@ $wgFilepathMessages['sv'] = array(
 	
 	Ange filens namn utan prefixet "{{ns:image}}:".',
 );
+
+/** Tonga (faka-Tonga)
+ * @author SPQRobin
+ */
+$wgFilepathMessages['to'] = array(
+	'filepath'        => 'Hala ki he faile',
+	'filepath_page'   => 'Faile:',
+	'filepath_submit' => 'Ko e hala',
+);
+
 $wgFilepathMessages['wuu'] = array(
 	'filepath'        => '文件路径',
 	'filepath_page'   => '文件：',

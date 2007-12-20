@@ -114,6 +114,7 @@ $messages ['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Xosé
  */
 $messages['gl'] = array(
 	'spamregex_summary'              => 'O texto foi atopado no resumo do artigo.',
@@ -130,7 +131,7 @@ $messages['gl'] = array(
 	'spamregex-already-blocked'      => '"$1" está aínda bloqueado',
 	'spamregex-phrase-block'         => 'Frase para bloquear:',
 	'spamregex-phrase-block-text'    => 'bloquear unha frase no texto do artigo',
-	'spamregex-phrase-block-summary' => 'frase para bloquear no resumo',
+	'spamregex-phrase-block-summary' => 'bloquear frase no resumo',
 	'spamregex-block-submit'         => 'Bloquear&nbsp;esta&nbsp;frase',
 	'spamregex-text'                 => '(Texto)',
 	'spamregex-summary-log'          => '(Resumo)',

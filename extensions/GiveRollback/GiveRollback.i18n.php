@@ -63,6 +63,14 @@ function efGiveRollbackMessages() {
 	'giverollback-page' => '{{ns:help}}:استرجاع',
 ),
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+'bg' => array(
+	'giverollback-username' => 'Потребителско име:',
+	'giverollback-comment'  => 'Коментар:',
+),
+
 /* German (Raymond) */
 'de' => array(
 	'giverollback' => 'Zurücksetzen-Recht erteilen oder entziehen',
@@ -151,7 +159,7 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback'                => 'Conceder ou revocar dereitos de retroceso',
 	'giverollback-header'         => "'''Un burócrata local pode usar esta páxina para conceder ou revocar [[{{MediaWiki:Giverollback-page}}|dereitos de retroceso]] a outra conta de usuario.''' <br /> Isto pode ser usado para permitir a non administradores revertir vandalismos rapidamente. Debe facerse de conformidade coas políticas aplicábeis.",
 	'giverollback-username'       => 'Nome de usuario:',
-	'giverollback-search'         => 'Ir',
+	'giverollback-search'         => 'Adiante',
 	'giverollback-hasrb'          => '[[User:$1|$1]] ten dereitos de retroceso.',
 	'giverollback-norb'           => '[[User:$1|$1]] non ten dereitos de retroceso.',
 	'giverollback-toonew'         => '[[User:$1|$1]] é demasiado novo e non se lle poden dar dereitos de retroceso.',
@@ -167,7 +175,6 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logentrygrant'  => 'conceder dereitos de retroceso a [[$1]]',
 	'giverollback-logentryrevoke' => 'eliminados dereitos de retroceso de [[$1]]',
 	'giverollback-page'           => '{{ns:help}}:Retroceso',
-
 ),
 
 'hsb' => array(

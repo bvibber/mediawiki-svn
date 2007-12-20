@@ -105,11 +105,17 @@ $1',
 	'bcl' => array(
 		'webstore_no_response' => 'Mayong simbag hali sa server',
 	),
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
 	'bg' => array(
-		'webstore_404' => 'Файлът не беше намерен.',
-		'webstore_php_warning' => 'PHP Предупреждение: $1',
-		'webstore_no_response' => 'Няма отговор от сървъра',
+		'webstore_path_invalid' => 'Името на файла е невалидно.',
+		'webstore_404'          => 'Файлът не беше намерен.',
+		'webstore_php_warning'  => 'PHP Предупреждение: $1',
+		'webstore_no_response'  => 'Няма отговор от сървъра',
 	),
+
 	'el' => array(
 		'webstore_invalid_zone' => 'Άκυρη ζώνη "$1".',
 		'webstore_404' => 'Το αρχείο δεν βρέθηκε.',
