@@ -17,6 +17,9 @@ class DumpHTML {
 	# Destination directory
 	var $dest;
 
+	# Extension base directory
+	var $extdir;
+
 	# Skip existing files
 	var $noOverwrite = false;
 
@@ -31,6 +34,9 @@ class DumpHTML {
 
 	# Directory that the images are in, after copying
 	var $destUploadDirectory;
+
+	# Base URL for images, after copying
+	var $destUploadUrl;
 
 	# Relative path to image directory
 	var $imageRel = 'upload';
@@ -49,7 +55,7 @@ class DumpHTML {
 	var $alternateScriptPath = false;
 
 	# Original values of various globals
-	var $oldArticlePath = false, $oldCopyrightIcon = false;
+	var $oldArticlePath = false, $oldCopyrightIcon = false, $oldLogo, $oldRepoGroup, $oldScriptPath;
 
 	# Has setupGlobals been called?
 	var $setupDone = false;
@@ -61,7 +67,7 @@ class DumpHTML {
 	var $rawPages;
 
 	# Skin to use
-	var $skin = 'htmldump';
+	var $skin = 'offline';
 
 	# Checkpoint stuff
 	var $checkpointFile = false, $checkpoints = false;
@@ -76,10 +82,14 @@ class DumpHTML {
 	# UDP profiling
 	var $udpProfile, $udpProfileCounter = 0, $udpProfileInit = false;
 
+	# Extension version
+	const VERSION = '2.0';
+
 	function DumpHTML( $settings = array() ) {
 		foreach ( $settings as $var => $value ) {
 			$this->$var = $value;
 		}
+		$this->extdir = dirname( __FILE__ );
 	}
 
 	function loadCheckpoints() {
@@ -446,7 +456,7 @@ class DumpHTML {
 	/** Write an article specified by title */
 	function doArticle( $title ) {
 		if ( $this->noOverwrite ) {
-			$fileName = $this->dest.'/'.$this->getHashedFilename( $title );
+			$fileName = "{$this->dest}/" . $this->getHashedFilename( $title );
 			if ( file_exists( $fileName ) ) {
 				return;
 			}
@@ -533,16 +543,66 @@ class DumpHTML {
 		fclose( $file );
 	}
 
+	/** Copy a directory recursively, not including .svn */
+	function copyDirectory( $source, $dest ) {
+		if ( !is_dir( $dest ) ) {
+			if ( !mkdir( $dest ) ) {
+				echo "Warning: unable to create directory \"$dest\"\n";
+				return false;
+			}
+		}
+		$dir = opendir( $source );
+		if ( !$dir ) {
+			echo "Warning: unable to open directory \"$source\"\n";
+			return false;
+		}
+		while ( false !== ( $fileName = readdir( $dir ) ) ) {
+			if ( substr( $fileName, 0, 1 ) == '.' ) {
+				continue;
+			}
+			$currentSource = "$source/$fileName";
+			$currentDest = "$dest/$fileName";
+			if ( is_dir( $currentSource ) ) {
+				$this->copyDirectory( $currentSource, $currentDest );
+			} elseif ( is_file( $currentSource ) ) {
+				copy( $currentSource, $currentDest );
+			}
+		}
+		return true;
+	}
+
+	/** Set up the destination directory */
+	function setupDestDir() {
+		global $IP;
+
+		if ( is_dir( $this->dest ) ) {
+			echo "WARNING: destination directory already exists, skipping initialisation\n";
+			return;
+		}
+		echo "Initialising destination directory...\n";
+		if ( !wfMkdirParents( "{$this->dest}/skins" ) ) {
+			throw new MWException( "Unable to create destination directory." );
+		}
+
+		file_put_contents( "{$this->dest}/dumpHTML.version", self::VERSION );
+		$this->copyDirectory( "$IP/skins/monobook", "{$this->dest}/skins/monobook" );
+		$this->copyDirectory( "$IP/skins/common", "{$this->dest}/skins/common" );
+		$this->copyDirectory( "{$this->extdir}/skin", "{$this->dest}/skins/offline" );
+	}
+
+	/** Create a file repo group which is a proxy of an old one */
+	function newRepoGroup( $old ) {
+		return new DumpHTML_ProxyRepoGroup( $this, $old );
+	}
+
 	/** Set up globals required for parsing */
 	function setupGlobals( $currentDepth = NULL ) {
 		global $wgUser, $wgStylePath, $wgArticlePath, $wgMathPath;
-		global $wgUploadPath, $wgLogo, $wgMaxCredits, $wgSharedUploadPath;
+		global $wgUploadPath, $wgLogo, $wgMaxCredits, $wgScriptPath;
 		global $wgHideInterlanguageLinks, $wgUploadDirectory, $wgThumbnailScriptPath;
-		global $wgSharedThumbnailScriptPath, $wgEnableParserCache, $wgHooks, $wgServer;
+		global $wgEnableParserCache, $wgHooks, $wgServer;
 		global $wgRightsUrl, $wgRightsText, $wgCopyrightIcon, $wgEnableSidebarCache;
-		global $wgGenerateThumbnailOnParse;
-
-		static $oldLogo = NULL;
+		global $wgGenerateThumbnailOnParse, $wgValidSkinNames;
 
 		if ( !$this->setupDone ) {
 			$wgHooks['GetLocalURL'][] =& $this;
@@ -550,6 +610,11 @@ class DumpHTML {
 			$wgHooks['SiteNoticeBefore'][] =& $this;
 			$wgHooks['SiteNoticeAfter'][] =& $this;
 			$this->oldArticlePath = $wgServer . $wgArticlePath;
+			$this->oldLogo = $wgLogo;
+			$this->oldRepoGroup = RepoGroup::singleton();
+			$this->oldCopyrightIcon = $wgCopyrightIcon;
+			$this->oldScriptPath = $wgScriptPath;
+			$wgValidSkinNames['offline'] = 'Offline';
 		}
 
 		if ( is_null( $currentDepth ) ) {
@@ -560,44 +625,39 @@ class DumpHTML {
 			if ( $currentDepth == 0 ) {
 				$wgScriptPath = '.';
 			} else {
-				$wgScriptPath = '..' . str_repeat( '/..', $currentDepth - 1 );
+				$wgScriptPath = '../..' . str_repeat( '/..', $currentDepth - 1 );
 			}
 		} else {
-			$wgScriptPath = '..' . str_repeat( '/..', $currentDepth );
+			if ( $currentDepth == 0 ) {
+				$wgScriptPath = '..' . str_repeat( '/..', $currentDepth );
+			} else {
+				$wgScriptPath = '../..' . str_repeat( '/..', $currentDepth );
+			}
 		}
 
-		$wgArticlePath = str_repeat( '../', $currentDepth ) . '$1';
-
-		# Logo image
-		# Allow for repeated setup
-		if ( !is_null( $oldLogo ) ) {
-			$wgLogo = $oldLogo;
+		if ( $currentDepth == 0 ) {
+			$wgArticlePath = '$1';
+			$articleBaseUrl = '.';
 		} else {
-			$oldLogo = $wgLogo;
+			$articleBaseUrl = '..' . str_repeat( '/..', $currentDepth );
+			$wgArticlePath = str_repeat( '../', $currentDepth + 1 ) . '$1';
 		}
 
-		if ( strpos( $wgLogo, $wgUploadPath ) === 0 ) {
-			# If it's in the upload directory, rewrite it to the new upload directory
-			$wgLogo = "$wgScriptPath/{$this->imageRel}/" . substr( $wgLogo, strlen( $wgUploadPath ) + 1 );
-		} elseif ( $wgLogo{0} == '/' ) {
-			# This is basically heuristic
-			# Rewrite an absolute logo path to one relative to the the script path
-			$wgLogo = $wgScriptPath . $wgLogo;
-		}
-
-		# Another ugly hack
-		if ( !$this->setupDone ) {
-			$this->oldCopyrightIcon = $wgCopyrightIcon;
-		}
-		$wgCopyrightIcon = str_replace( 'src="/images',
-			'src="' . htmlspecialchars( $wgScriptPath ) . '/images', $this->oldCopyrightIcon );
+		$uploadBits = explode( '/', str_replace( '\\', '/', $wgUploadPath ) );
+		$this->imageRel = $uploadBits[count($uploadBits) - 1];
 
 		$wgStylePath = "$wgScriptPath/skins";
-		$wgUploadPath = "$wgScriptPath/{$this->imageRel}";
-		$wgSharedUploadPath = "$wgUploadPath/shared";
+
+
+		if ( $this->makeSnapshot ) {
+			$this->destUploadUrl = "$articleBaseUrl/{$this->imageRel}";
+		} else {
+			$this->destUploadUrl = "$wgScriptPath/{$this->imageRel}";
+		}
+		$wgUploadPath = $this->destUploadUrl; // For BC
 		$wgMaxCredits = -1;
 		$wgHideInterlanguageLinks = !$this->interwiki;
-		$wgThumbnailScriptPath = $wgSharedThumbnailScriptPath = false;
+		$wgThumbnailScriptPath = false;
 		$wgEnableParserCache = false;
 		$wgMathPath = "$wgScriptPath/math";
 		$wgEnableSidebarCache = false;
@@ -611,12 +671,49 @@ class DumpHTML {
 		$wgUser->setOption( 'skin', $this->skin );
 		$wgUser->setOption( 'editsection', 0 );
 
-		$this->destUploadDirectory = "{$this->dest}/{$this->imageRel}";
-		if ( realpath( $this->destUploadDirectory ) == realpath( $wgUploadDirectory ) ) {
-			print "Disabling image snapshot because the destination is the same as the source\n";
-			$this->makeSnapshot = false;
+		if ( $this->makeSnapshot ) {
+			$this->destUploadDirectory = "{$this->dest}/{$this->imageRel}";
+			if ( realpath( $this->destUploadDirectory ) == realpath( $wgUploadDirectory ) ) {
+				print "Disabling image snapshot because the destination is the same as the source\n";
+				$this->makeSnapshot = false;
+				$this->destUploadDirectory = false;
+			}
+		} else {
+			$this->destUploadDirectory = false;
 		}
-		$this->sharedStaticDirectory = "{$this->destUploadDirectory}/shared";
+
+		$newRepoGroup = $this->newRepoGroup( $this->oldRepoGroup );
+		RepoGroup::setSingleton( $newRepoGroup );
+
+		# Logo image
+		# Allow for repeated setup
+		$wgLogo = $this->oldLogo;
+
+		# Make a list of original repo URLs
+		$this->oldRepoGroup->initialiseRepos();
+		$repoPrefixes['local'] = array( $this->oldRepoGroup->getLocalRepo()->getZoneUrl('public') );
+		foreach ( $this->oldRepoGroup->foreignRepos as $name => $repo ) {
+			$repoPrefixes[$name] = $repo->getZoneUrl('public');
+		}
+
+		# If the logo is in one of the repos, rewrite its URL
+		foreach ( $repoPrefixes as $repoName => $prefix ) {
+			if ( strpos( $wgLogo, $prefix ) === 0 ) {
+				$repo = $newRepoGroup->getRepo( $repoName );
+				$newUrlBase = $repo->getZoneUrl('public');
+				$wgLogo = $newUrlBase . '/' . substr( $wgLogo, strlen( $prefix ) + 1 );
+				break;
+			}
+		}
+		if ( strpos( $wgLogo, $this->oldScriptPath ) === 0 ) {
+			# This is basically heuristic
+			# Rewrite an absolute logo path to one relative to the the script path
+			$wgLogo = $wgScriptPath . '/' . substr( $wgLogo, strlen ( $this->oldScriptPath ) + 1 );
+		}
+
+		# Another ugly hack
+		$wgCopyrightIcon = str_replace( 'src="/images',
+			'src="' . htmlspecialchars( $wgScriptPath ) . '/images', $this->oldCopyrightIcon );
 
 		$this->setupDone = true;
 	}
@@ -728,7 +825,6 @@ ENDTEXT;
 	 * Copy an image, and if it is a thumbnail, copy its parent image too
 	 */
 	function copyImage( $srcPath, $srcPathBase, $srcDirBase, $destDirBase ) {
-		global $wgUploadPath, $wgUploadDirectory, $wgSharedUploadPath;
 		$this->relativeCopy( $srcPath, $srcPathBase, $srcDirBase, $destDirBase );
 		if ( substr( $srcPath, strlen( $srcPathBase ) + 1, 6 ) == 'thumb/' ) {
 			# The image was a thumbnail
@@ -752,18 +848,14 @@ ENDTEXT;
 	 *
 	 */
 	function copyImages( $images ) {
-		global $wgUploadPath, $wgUploadDirectory, $wgSharedUploadPath, $wgSharedUploadDirectory, 
-			$wgMathPath, $wgMathDirectory;
+		global $wgUploadPath, $wgUploadDirectory, $wgMathPath, $wgMathDirectory;
 		# Find shared uploads and copy them into the static directory
-		$sharedPathLength = strlen( $wgSharedUploadPath );
 		$mathPathLength = strlen( $wgMathPath );
 		$uploadPathLength = strlen( $wgUploadPath );
 		foreach ( $images as $escapedImage => $dummy ) {
 			$image = urldecode( $escapedImage );
 
-			if ( substr( $image, 0, $sharedPathLength ) == $wgSharedUploadPath ) {
-				$this->copyImage( $image, $wgSharedUploadPath, $wgSharedUploadDirectory, $this->sharedStaticDirectory );
-			} elseif ( substr( $image, 0, $mathPathLength ) == $wgMathPath ) {
+			if ( substr( $image, 0, $mathPathLength ) == $wgMathPath ) {
 				$this->relativeCopy( $image, $wgMathPath, $wgMathDirectory, "{$this->dest}/math" );
 			} elseif ( $this->makeSnapshot && substr( $image, 0, $uploadPathLength ) == $wgUploadPath ) {
 				$this->copyImage( $image, $wgUploadPath, $wgUploadDirectory, $this->destUploadDirectory );
@@ -835,7 +927,7 @@ ENDTEXT;
 			return 'index.html';
 		}
 
-		return $this->getHashedDirectory( $title ) . '/' .
+		return 'articles/' . $this->getHashedDirectory( $title ) . '/' .
 			$this->getFriendlyName( $dbkey ) . '.html';
 	}
 
@@ -984,6 +1076,10 @@ ENDTEXT;
 		}
 		$this->udpProfileCounter = ( $this->udpProfileCounter + 1 ) % $this->udpProfile;
 	}
+
+	function debug( $text ) {
+		print "$text\n";
+	}
 }
 
 class DumpHTML_ProfilerStub {
@@ -993,6 +1089,211 @@ class DumpHTML_ProfilerStub {
 	function close() {}
 	function getFunctionReport() {}
 }
+
+class DumpHTML_ProxyRepoGroup extends RepoGroup {
+	var $dump, $backendRG;
+
+	function __construct( $dump, $backendRG ) {
+		$this->dump = $dump;
+		$this->backendRG = $backendRG;
+		$backendRG->initialiseRepos();
+
+		if ( count( $backendRG->foreignRepos ) ) {
+			$localDest = "{$this->dump->destUploadDirectory}/local";
+			$localUrl = "{$this->dump->destUploadUrl}/local";
+		} else {
+			$localDest = $this->dump->destUploadDirectory;
+			$localUrl = $this->dump->destUploadUrl;
+		}
+		if ( !$dump->makeSnapshot ) {
+			$localDest = false;
+		}
+		$this->reposInitialised = true;
+		$this->localRepo = new DumpHTML_ProxyRepo( $backendRG->getLocalRepo(), $dump, $localDest, $localUrl );
+		$this->foreignRepos = array();
+		foreach ( $backendRG->foreignRepos as $index => $repo ) {
+			$friendlyName = $dump->getFriendlyName( $repo->getName() );
+			if ( !$dump->makeSnapshot ) {
+				$foreignDest = false;
+			} else {
+				$foreignDest = "{$dump->destUploadDirectory}/$friendlyName";
+			}
+			$this->foreignRepos[] = new DumpHTML_ProxyRepo( $repo, $dump, $foreignDest, 
+				$dump->destUploadUrl . '/' . urlencode( $friendlyName ) );
+		}
+	}
+}
+
+class DumpHTML_ProxyRepo {
+	function __construct( $backend, $dump, $directory, $url ) {
+		$this->backend = $backend;
+		$this->dump = $dump;
+		$this->directory = $directory;
+		$this->url = $url;
+		$this->name = $backend->getName();
+		$this->backend->thumbScriptUrl = false;
+		$this->backend->transformVia404 = false;
+		$this->backendUrl = $backend->getZoneUrl( 'public' );
+	}
+
+	function __call( $name, $args ) {
+		return call_user_func_array( array( $this->backend, $name ), $args );
+	}
+
+	function newFile( $title, $time ) {
+		$file = $this->backend->newFile( $title, $time );
+		if ( $file ) {
+			$file = new DumpHTML_ProxyFile( $file, $this );
+			$file->copyToDump();
+		}
+		return $file;
+	}
+
+	function findFile( $title, $time = false ) {
+		$file = $this->backend->findFile( $title, $time );
+		if ( $file ) {
+			$file = new DumpHTML_ProxyFile( $file, $this );
+			$file->copyToDump();
+		}
+		return $file;
+	}
+
+	function copyToDump( $rel ) {
+		if ( !$this->dump->makeSnapshot ) {
+			return;
+		}
+
+		if ( is_callable( array( $this->backend, 'getZonePath' ) ) ) {
+			$sourceBase = $this->backend->getZonePath( 'public' );
+		} elseif ( is_callable( array( $this->backend, 'getZoneUrl' ) ) ) {
+			$sourceBase = false;
+			$sourceBaseUrl = $this->backend->getZoneUrl( 'public' );
+		} else {
+			$sourceBase = false;
+			$sourceBaseUrl = false;
+		}
+
+		$dest = "{$this->directory}/$rel";
+
+		if ( file_exists( $dest ) ) {
+			return;
+		}
+
+		if ( $sourceBase !== false ) {
+			$source = "$sourceBase/$rel";
+			if ( !file_exists( $source ) ) {
+				// Hopefully we'll get another go at it later
+				return;
+			}
+			if ( !is_dir( dirname( $dest ) ) ) {
+				wfMkdirParents( dirname( $dest ) );
+			}
+
+			$this->dump->debug( "Copying $source to $dest" );
+			if ( function_exists( 'symlink' ) && !$this->dump->forceCopy ) {
+				if ( !symlink( $source, $dest ) ) {
+					$this->dump->debug( "Warning: unable to create symlink at $dest" );
+				}
+			} else {
+				if ( !copy( $source, $dest ) ) {
+					$this->dump->debug( "Warning: unable to copy $source to $dest" );
+				}
+			}
+		} elseif ( $sourceBaseUrl !== false ) {
+			$urlRel = implode( '/', array_map( 'rawurlencode', explode( '/', $rel ) ) );
+			$sourceUrl = $sourceBaseUrl . '/' . $urlRel;
+			$contents = Http::get( $sourceUrl );
+			if ( $contents === false ) {
+				$this->dump->debug( "Unable to get contents of file from $sourceUrl" );
+			} else {
+				if ( !file_put_contents( $dest, $contents ) ) {
+					$this->debug( "Unable to write to $dest" );
+				}
+			}
+		} // else give up
+	}
+}
+
+class DumpHTML_ProxyFile {
+	function __construct( $backend, $repo ) {
+		$this->backend = $backend;
+		$this->repo = $repo;
+		$this->dump = $repo->dump;
+	}
+
+	function __call( $name, $args ) {
+		$result = call_user_func_array( array( $this->backend, $name ), $args );
+		if ( is_string( $result ) ) {
+			$result = $this->fixURL( $result );
+		} elseif ( $result instanceof MediaTransformOutput ) { 
+			$result = $this->fixMTO( $result );
+		}
+		return $result;
+	}
+
+	function getUrl() {
+		return $this->repo->url . '/' . $this->backend->getUrlRel();
+	}
+
+	public function getFullURL() {
+		return $this->getUrl();
+	}
+
+	function fixURL( $url ) {
+		if ( is_string( $url ) && substr( $url, 0, strlen( $this->repo->backendUrl ) ) == $this->repo->backendUrl ) {
+			$rel = substr( $url, strlen( $this->repo->backendUrl ) + 1 );
+			$this->repo->copyToDump( $rel );
+			$newUrl = $this->repo->url . '/' . $rel;
+			#$this->dump->debug( "$url -> $newUrl" );
+			$url = $newUrl;
+		}
+		return $url;
+	}
+
+	function fixMTO( $thumb ) {
+		// FIXME: accessing private members, needs MTO::setUrl()
+		if ( isset( $thumb->url ) ) {
+			$thumb->url = $this->fixURL( $thumb->url );
+		}
+		return $thumb;
+	}
+
+	function copyToDump() {
+		if ( !$this->dump->makeSnapshot ) {
+			return;
+		}
+
+		$source = $this->backend->getPath();
+		$dest = $this->repo->directory . '/' . $this->backend->getRel();
+
+		if ( $source === false ) {
+			$sourceUrl = $this->backend->getUrl();
+			$contents = Http::get( $sourceUrl );
+			if ( $contents === false ) {
+				$this->dump->debug( "Unable to get contents of file from $sourceUrl" );
+			} else {
+				if ( !file_put_contents( $dest, $contents ) ) {
+					$this->debug( "Unable to write to $dest" );
+				}
+			}
+		} else {
+			if ( !is_dir( dirname( $dest ) ) ) {
+				wfMkdirParents( dirname( $dest ) );
+			}
+
+			if ( function_exists( 'symlink' ) && !$this->dump->forceCopy ) {
+				if ( !symlink( $source, $dest ) ) {
+					$this->dump->debug( "Warning: unable to create symlink at $dest" );
+				}
+			} else {
+				if ( !copy( $source, $dest ) ) {
+					$this->dump->debug( "Warning: unable to copy $source to $dest" );
+				}
+			}
+		}
+	}
+}
+
 
 /** XML parser callback */
 function wfDumpStartTagHandler( $parser, $name, $attribs ) {

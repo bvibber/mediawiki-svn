@@ -5,21 +5,20 @@
  */
 
 if( !defined( 'MEDIAWIKI' ) )
-	die( -1 );
-
-/** */
-require_once( 'includes/SkinTemplate.php' );
+	die( 1 );
 
 /**
  * Inherit main code from SkinTemplate, set the CSS and template filter.
  * @todo document
  * @addtogroup Skins
  */
-class SkinHTMLDump extends SkinTemplate {
+class SkinOffline extends SkinTemplate {
 	/** Using monobook. */
 	function initPage( &$out ) {
+		global $wgStylePath;
 		SkinTemplate::initPage( $out );
-		$this->template  = 'HTMLDumpTemplate';
+		$this->template  = 'SkinOfflineTemplate';
+		$this->skinpath = "$wgStylePath/offline";
 	}
 
 	function buildSidebar() {
@@ -94,7 +93,7 @@ class SkinHTMLDump extends SkinTemplate {
  * @todo document
  * @addtogroup Skins
  */
-class HTMLDumpTemplate extends QuickTemplate {
+class SkinOfflineTemplate extends QuickTemplate {
 	/**
 	 * Template filter callback for MonoBook skin.
 	 * Takes an associative array of data set from a SkinTemplate-based
@@ -111,7 +110,7 @@ class HTMLDumpTemplate extends QuickTemplate {
     <meta http-equiv="Content-Type" content="<?php $this->text('mimetype') ?>; charset=<?php $this->text('charset') ?>" />
     <?php $this->html('headlinks') ?>
     <title><?php $this->text('pagetitle') ?></title>
-    <style type="text/css">/*<![CDATA[*/ @import "<?php $this->text('stylepath') ?>/htmldump/main.css"; /*]]>*/</style>
+    <style type="text/css">/*<![CDATA[*/ @import "<?php $this->text('skinpath') ?>/main.css"; /*]]>*/</style>
     <link rel="stylesheet" type="text/css" media="print" href="<?php $this->text('stylepath') ?>/common/commonPrint.css" />
     <!--[if lt IE 5.5000]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE50Fixes.css";</style><![endif]-->
     <!--[if IE 5.5000]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE55Fixes.css";</style><![endif]-->
@@ -119,9 +118,9 @@ class HTMLDumpTemplate extends QuickTemplate {
     <!--[if IE]><script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath') ?>/common/IEFixes.js"></script>
     <meta http-equiv="imagetoolbar" content="no" /><![endif]-->
     <script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath' ) ?>/common/wikibits.js"></script>
-    <script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath' ) ?>/htmldump/md5.js"></script>
-    <script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath' ) ?>/htmldump/utf8.js"></script>
-    <script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath' ) ?>/htmldump/lookup.js"></script>
+    <script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('skinpath' ) ?>/md5.js"></script>
+    <script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('skinpath' ) ?>/utf8.js"></script>
+    <script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('skinpath' ) ?>/lookup.js"></script>
     <?php if($this->data['jsvarurl'  ]) { ?><script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('jsvarurl'  ) ?>"></script><?php } ?>
     <?php if($this->data['pagecss'   ]) { ?><style type="text/css"><?php              $this->html('pagecss'   ) ?></style><?php    } ?>
     <?php if($this->data['usercss'   ]) { ?><style type="text/css"><?php              $this->html('usercss'   ) ?></style><?php    } ?>

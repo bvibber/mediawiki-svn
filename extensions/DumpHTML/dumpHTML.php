@@ -49,8 +49,14 @@ if ( in_array( '--udp-profile', $argv ) ) {
 	define( 'MW_FORCE_PROFILE', 1 );
 }
 
-require_once( "commandLine.inc" );
-require_once( "dumpHTML.inc" );
+require_once( dirname(__FILE__)."/../../maintenance/commandLine.inc" );
+require_once( dirname(__FILE__)."/dumpHTML.inc" );
+
+if ( version_compare( $wgVersion, '1.11.1', '<' ) ) {
+	echo "Error, the DumpHTML extension needs at least MediaWiki version 1.11.1 to work, you have version $wgVersion.\n";
+	echo "Try using maintenance/dumpHTML.php instead.\n";
+	exit;
+}
 
 error_reporting( E_ALL & (~E_NOTICE) );
 
@@ -110,6 +116,7 @@ $wgHTMLDump = new DumpHTML( array(
 	'udpProfile' => $options['udp-profile'],
 ));
 
+$wgHTMLDump->setupDestDir();
 
 if ( $options['special'] ) {
 	$wgHTMLDump->doSpecials();
