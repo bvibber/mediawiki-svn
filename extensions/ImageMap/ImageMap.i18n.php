@@ -190,7 +190,7 @@ function efImageMapMessages() {
 ),
 
 /* Kazakh Cyrillic (AlefZet) */
-'kk-kz' => array(
+'kk-cyrl' => array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: бірінші жолда суретті көрсету қажет',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: сурет жарамсыз немесе жоқ',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: $1 жол аяғында жарамды сілтеме табылмады',
@@ -204,7 +204,7 @@ function efImageMapMessages() {
 ),
 
 /* Kazakh Latin (AlefZet) */
-'kk-tr' => array(
+'kk-latn' => array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: birinşi jolda swretti körsetw qajet',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: swret jaramsız nemese joq',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: $1 jol ayağında jaramdı silteme tabılmadı',
@@ -218,7 +218,7 @@ function efImageMapMessages() {
 ),
 
 /* Kazakh Arabic (AlefZet) */
-'kk-cn' => array(
+'kk-arab' => array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: بٸرٸنشٸ جولدا سۋرەتتٸ كٶرسەتۋ قاجەت',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: سۋرەت جارامسىز نەمەسە جوق',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: $1 جول اياعىندا جارامدى سٸلتەمە تابىلمادى',
@@ -420,8 +420,11 @@ function efImageMapMessages() {
 
 	);
 
-	/* Kazakh default, fallback to kk-kz */
-	$messages['kk'] = $messages['kk-kz'];
+	/* Kazakh fallbacks */
+	$messages['kk-kz'] = $messages['kk-cyrl'];
+	$messages['kk-tr'] = $messages['kk-latn'];
+	$messages['kk-cn'] = $messages['kk-arab'];
+	$messages['kk'] = $messages['kk-cyrl'];
 	/* Chinese defaults, fallback to zh-hans or zh-hant */
 	$messages['zh'] = $messages['zh-hans'];
 	$messages['zh-cn'] = $messages['zh-hans'];
