@@ -88,10 +88,10 @@ function wfRegexBlockSpecial( $par ) {
 function wfRegexBlockUnsetKeys ($blocker, $username) {
 	global $wgMemc, $wgSharedDB ;
 	$wgMemc->delete ("$wgSharedDB:regexBlockSpecial:numResults") ;
-	$wgMemc->delete ("$wgSharedDB:regexBlockCore:".REGEXBLOCK_MODE_NAMES.":blocker:$blocker") ;
-	$wgMemc->delete ("$wgSharedDB:regexBlockCore:".REGEXBLOCK_MODE_IPS.":blocker:$blocker") ;
+	$wgMemc->delete ( str_replace( " ", "_", "$wgSharedDB:regexBlockCore:".REGEXBLOCK_MODE_NAMES.":blocker:$blocker") );
+	$wgMemc->delete ( str_replace( " ", "_", "$wgSharedDB:regexBlockCore:".REGEXBLOCK_MODE_IPS.":blocker:$blocker") );
 	$wgMemc->delete ("$wgSharedDB:regexBlockCore:blockers") ;
-	$wgMemc->delete ("$wgSharedDB:regexBlockCore:blocked:$username") ;
+	$wgMemc->delete ( str_replace( " ", "_", "$wgSharedDB:regexBlockCore:blocked:$username") );
 }
 
 /* the list of blocked names/addresses */

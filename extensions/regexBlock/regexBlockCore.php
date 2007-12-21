@@ -58,7 +58,7 @@ function wfGetRegexBlockedData ($blocker, $user, $mode) {
 	$first = true ;
 
 	/* first, check if regex string is already stored in memcache */
-	$key = "$wgSharedDB:regexBlockCore:$mode:blocker:$blocker" ;
+	$key = str_replace( " ", "_", "$wgSharedDB:regexBlockCore:$mode:blocker:$blocker" );
 	$cached = $wgMemc->get ($key) ;
 	if ( "" == $cached ) {
 		/* fetch data from db, concatenate into one string, then fill cache */
@@ -118,7 +118,7 @@ function wfRegexBlockExpireCheck ($user, $names = null, $ips = null) {
 	   moreover, expired blocks will be consequently deleted
 	*/
 	foreach ($array_match as $single) {
-		$key = "$wgSharedDB:regexBlockCore:blocked:$single" ;
+		$key = str_replace( " ", "_", "$wgSharedDB:regexBlockCore:blocked:$single" );
 		$cached = $wgMemc->get ($key) ;
 		if ( !is_object ($cached) ) {
 			/* get from database */
