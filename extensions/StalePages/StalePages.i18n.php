@@ -40,6 +40,14 @@ $messages['gl'] = array(
 	'stalepages-summary' => 'Esta é unha listaxe das páxinas que non foron editadas nos últimos $1 días.',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dnik
+ */
+$messages['hr'] = array(
+	'stalepages'         => 'Umrtvljene stranice',
+	'stalepages-summary' => 'Ovo je popis stranica koje nisu mijenjane {{PLURAL:$1|poslijednji $1 dan|poslijednja $1 dana|poslijednjih $1 dana}}.',
+);
+
 $messages['hsb'] = array(
 	'stalepages' => 'spadnjene strony',
 	'stalepages-summary' => 'To je lisćina stronow, kotrež njebuchu za {{PLURAL:$1|posledni $1 dźeń|poslednjeju $1 dnjow|posdlednje $1 dny|poslednych $1 dnjow}} změnjene.',

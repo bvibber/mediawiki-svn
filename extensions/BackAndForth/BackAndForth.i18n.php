@@ -166,6 +166,14 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Anterior ($1)',
 ),
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+'ru' => array(
+	'backforth-next' => 'След. ($1)',
+	'backforth-prev' => 'Пред. ($1)',
+),
+
 'sah' => array(
 	'backforth-next' => 'Аныгыскы ($1)',
 	'backforth-prev' => 'Иннинээҕи ($1)',

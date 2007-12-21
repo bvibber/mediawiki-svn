@@ -139,6 +139,14 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'Ne pare rău, titlul acestui articol nu poate fi salvat.',
 ),
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+'ru' => array(
+	'block_title_error_page_title' => 'Запрещённое название',
+	'block_title_error'            => 'Извините, страница с подобным названием не может быть сохранена.',
+),
+
 'scn' => array(
 	'block_title_error_page_title' => 'Tìtulu bluccatu',
 	'block_title_error' => 'Semu spiacenti, nun è cunzintitu sarvari na vuci cu chistu tìtulu.',

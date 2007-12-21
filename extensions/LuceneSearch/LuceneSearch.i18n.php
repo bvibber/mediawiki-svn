@@ -128,7 +128,7 @@ $wgLuceneSearchMessages['br'] = array(
 $wgLuceneSearchMessages['ca'] = array(
 	'searchnumber'          => '<strong>Resultats $1-$2 de $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Anterior</span>",
-	'searchnext'            => "<span style='font-size: small'>Següent</span> &#x00BB;",
+	'searchnext'            => "<span style='font-size: small'>Posterior</span> &#x00BB;",
 	'lucene-searchscore'    => 'Rellevància: $1%',
 	'lucene-resultsize'     => '$1 ($2 paraules)',
 	'searchdidyoumean'      => 'Potser volíeu dir «<a href="$1">$2</a>»?',
@@ -144,7 +144,6 @@ Probablement és un problema temporal; torneu a intentar-ho d'aquí uns moments.
 	'searchexactcase'       => 'Cerca exacta',
 	'searchall'             => 'tots',
 	'searchincategory'      => 'a categoria',
-
 );
 
 $wgLuceneSearchMessages['cdo'] = array(
@@ -162,6 +161,7 @@ $wgLuceneSearchMessages['cs'] = array(
 	'searchnumber'          => '<strong>Výsledky $1–$2 z $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Předchozí</span>",
 	'searchnext'            => "<span style='font-size: small'>Následující</span> &#x00BB;",
+	'lucene-searchscore'    => 'Relevantnost: $1&nbsp;%',
 	'lucene-resultsize'     => '$1 ($2 slov)',
 	'searchdidyoumean'      => 'Nehledáte „<a href="$1">$2</a>“?',
 	'searchnoresults'       => 'Je mi líto, ale vašemu dotazu žádné stránky přesně neodpovídají.',
@@ -750,23 +750,35 @@ ou procure por conteúdos neste wiki através de um mecanismo externo:
 	'searchall'             => 'tudo',
 	'searchincategory'      => 'na categoria',
 );
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
 $wgLuceneSearchMessages['ru'] = array(
-	'searchnumber'          => "<strong>Результаты $1—$2 из $3</strong>",
+	'searchnumber'          => '<strong>Результаты $1—$2 из $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Пред.</span>",
 	'searchnext'            => "<span style='font-size: small'>След.</span> &#x00BB;",
-	'lucene-searchscore'    => "Релевантность: $1%",
-	'lucene-resultsize'     => "$1 ($2 слов)",
-	'searchdidyoumean'      => "Возможно, вы имели в виду «<a href=\"1\">$2</a>»?",
-	'searchnoresults'       => "К сожалению, по вашему запросу не было найдено точных соответствий.",
-	'searchnearmatches'     => "<b>Следующие страницы имеют заголовок, похожий на ваш запрос:</b>\n",
-	'lucenepowersearchtext' => "
-Поиск в пространствах имён:\n
-$1\n
-Поисковый запрос $3 $9 $10",
-	'lucenefallback'        => "Возникла проблема с поиском по вики.
+	'lucene-searchscore'    => 'Релевантность: $1%',
+	'lucene-resultsize'     => '$1 ($2 слов)',
+	'searchdidyoumean'      => 'Возможно, вы имели в виду «<a href="1">$2</a>»?',
+	'searchnoresults'       => 'К сожалению, по вашему запросу не было найдено точных соответствий.',
+	'searchnearmatches'     => '<b>Следующие страницы имеют заголовок, похожий на ваш запрос:</b>
+',
+	'lucenepowersearchtext' => '
+Поиск в пространствах имён:
+
+$1
+
+Поисковый запрос $3 $9 $10',
+	'lucenefallback'        => 'Возникла проблема с поиском по вики.
 Вероятно, эта временная проблема, попробуйте ещё раз чуть позже,
-либо воспользуйтесь поиском во внешних поисковых системах.\n"
+либо воспользуйтесь поиском во внешних поисковых системах.
+',
+	'searchexactcase'       => 'Искать с учётом регистра',
+	'searchall'             => 'все',
+	'searchincategory'      => 'в категории',
 );
+
 $wgLuceneSearchMessages['sk'] = array(
 	'searchnumber'          => '<strong>Výsledky $1-$2 zo $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Späť</span>',

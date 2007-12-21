@@ -239,6 +239,13 @@ function efImageMapMessages() {
 	'imagemap_description'          => 'De hac imagine',
 ),
 
+/** Burmese (Myanmasa)
+ * @author SPQRobin
+ */
+'my' => array(
+	'imagemap_description' => 'આ ચિત્ર વિષે',
+),
+
 'nds' => array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: in de eerste Reeg mutt en Bild angeven wesen',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: Bild geiht nich oder dat gifft dat gornich',

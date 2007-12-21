@@ -62,6 +62,13 @@ $messages['pt'] = array(
 	'advancedrandom' => 'Acesso aleatório avançado',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'advancedrandom' => 'Продвинутая случайная',
+);
+
 $messages['sk'] = array(
 	'advancedrandom' => 'Rozšírený náhodný výber',
 );

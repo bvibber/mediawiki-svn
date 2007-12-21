@@ -301,6 +301,29 @@ $allMessages = array(
 		'changeauthor-nosuchtitle' => 'Não existe nenhum artigo chamado "$1".',
 	),
 
+/** Russian (Русский) */
+	'ru' => array(
+		'changeauthor'                      => 'Изменение автора правки',
+		'changeauthor-title'                => 'Изменение автора правки',
+		'changeauthor-search-box'           => 'Поиск правок',
+		'changeauthor-pagename-or-revid'    => 'Название статьи или идентификатор правки:',
+		'changeauthor-pagenameform-go'      => 'Поехали',
+		'changeauthor-comment'              => 'Примечание:',
+		'changeauthor-changeauthors-multi'  => 'Изменение автора(ов)',
+		'changeauthor-explanation-multi'    => 'С помощью данной формы можно изменить авторов правок. Просто измените ниже одно или несколько имён участников, укажите пояснение (необязательно) и нажмите кнопку «Изменить автора(ов)».',
+		'changeauthor-changeauthors-single' => 'Изменение автора',
+		'changeauthor-explanation-single'   => 'С помощью данной формы можно изменить автора правки. Просто измените ниже имя участника, укажите пояснение (необязательно) и нажмите кнопку «Изменить автора».',
+		'changeauthor-invalid-username'     => 'Недопустимое имя участника: $1',
+		'changeauthor-nosuchuser'           => 'Отсутствует участник $1.',
+		'changeauthor-revview'              => 'Версия #$1 из $2',
+		'changeauthor-nosuchtitle'          => 'Не существует статьи с названием «$1».',
+		'changeauthor-weirderror'           => 'Произошла очень странная ошибка. Пожалуйста, повторите ваш запрос. Если ошибка снова возникнет, то вероятно это означает, что база данных испорчена.',
+		'changeauthor-invalidform'          => 'Пожалуйста, используйте форму на странице Special:ChangeAuthor, а не какую-либо другую.',
+		'changeauthor-success'              => 'Запрос успешно обработан.',
+		'changeauthor-logentry'             => 'Изменён автор $2 $1 с $3 на $4',
+		'changeauthor-logpagename'          => 'Журнал изменения авторов',
+	),
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -363,11 +363,22 @@ lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|A seguinte linha|As seguintes linhas}} da lista negra de nomes de utilizadores {{PLURAL:$1|é inválida|são inválidas}}; por gentileza, {{PLURAL:$1|a|as}} corrija antes de salvar as alterações:',
 ),
 
-/* Russian */
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
 'ru' => array(
-	'blacklistedusername' => 'Запрещённое имя пользователя',
-	'blacklistedusernametext' => 'Имя пользователя, которое вы выбрали, находится в [[MediaWiki:Usernameblacklist|
+	'blacklistedusername'             => 'Запрещённое имя пользователя',
+	'blacklistedusernametext'         => 'Имя пользователя, которое вы выбрали, находится в [[MediaWiki:Usernameblacklist|
 списке запрещённых имён]]. Пожалуйста, выберите другое имя.',
+	'usernameblacklist'               => '<pre>
+# Записи этого списка будут использоваться как части регулярных выражений
+# для отсеивания нежелательных имён участников во время решистрации. Каждая запись должна быть частью
+# маркированного списка, например:
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Следующая строка чёрного списка имён участников ошибочна, пожалуйста, исправьте её|||Следующие строки чёрного списка имён участников ошибочны, пожалуйста, исправьте их}} перед сохранением:',
 ),
 
 /* Slovak (helix84) */

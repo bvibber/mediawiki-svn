@@ -232,6 +232,13 @@ function efInputBoxMessages() {
 	'createarticle'  => 'Buat artikel',
 ),
 
+/** Iloko (Ilokano)
+ * @author SPQRobin
+ */
+'ilo' => array(
+	'createarticle' => 'Mangaramid iti articulo',
+),
+
 'is' => array(
 	'createarticle'           => 'Búa til grein',
 ),
@@ -340,6 +347,13 @@ function efInputBoxMessages() {
 	'tryexact'       => 'Обиди се точно',
 	'searchfulltext' => 'Барај низ целиот текст',
 	'createarticle'  => 'Создади статија',
+),
+
+/** Burmese (Myanmasa)
+ * @author SPQRobin
+ */
+'my' => array(
+	'createarticle' => 'નવો લેખ શરૂ કરો',
 ),
 
 'nan' => array(

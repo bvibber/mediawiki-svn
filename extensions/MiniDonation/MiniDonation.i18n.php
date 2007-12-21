@@ -86,6 +86,14 @@ $wgMiniDonationMessages['pms'] = array(
 $wgMiniDonationMessages['pt'] = array(
 	'donationform-submit' => 'Doe pelo PayPal',
 );
+
+/** Sassarese (Sassarese)
+ * @author Felis
+ */
+$wgMiniDonationMessages['sdc'] = array(
+	'donationform-submit' => 'Dunazioni via PayPal',
+);
+
 $wgMiniDonationMessages['sk'] = array(
 	'donationform-submit' => 'Darujte pomocou PayPal',
 );

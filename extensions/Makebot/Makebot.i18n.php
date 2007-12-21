@@ -72,24 +72,27 @@ function efMakeBotMessages() {
 	'makebot-comment'         => 'Komento:',
 ),
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
 'bg' => array(
-	'makebot'                 => 'Даване или отнемане на бот статус',
-	'makebot-header'          => '\'\'\'Чрез тази страница бюрократите могат да дават или отнемат [[{{MediaWiki:Grouppage-bot}}|бот статуса]] на други потребителски сметки.\'\'\'<br /> Бот статусът скрива редакциите на потребителската сметка от списъка с [[Special:Recentchanges|последните промени]] и други подобни списъци, и е подходящо да се дава на потребители, които правят автоматизирани редакции. Даването на такъв статус трябва да се извършва в съответствие с действащите правила и политики.',
-	'makebot-username'        => 'Потребителско име:',
-	'makebot-search'          => 'Изпращане',
-	'makebot-isbot'           => '[[User:$1|$1]] има бот статус.',
-	'makebot-notbot'          => '[[User:$1|$1]] няма бот статус.',
-	'makebot-privileged'      => '[[User:$1|$1]] има [[Special:Listadmins|пълномощия на администратор или бюрократ]] и не може да получи бот статус.',
-	'makebot-change'          => 'Промяна на статуса:',
-	'makebot-grant'           => 'Даване',
-	'makebot-revoke'          => 'Отнемане',
-	'makebot-comment'         => 'Коментар:',
-	'makebot-granted'         => '[[User:$1|$1]] вече има бот статус.',
-	'makebot-revoked'         => '[[User:$1|$1]] вече няма бот статус.',
-	'makebot-logpage'         => 'Дневник на промените в бот статусите',
-	'makebot-logpagetext'     => 'Това е дневник на промените на [[{{MediaWiki:Grouppage-bot}}|бот статусите]] на потребители.',
-	'makebot-logentrygrant'   => 'даден бот статус на [[$1]]',
-	'makebot-logentryrevoke'  => 'отнет бот статус на [[$1]]',
+	'makebot'                => 'Даване или отнемане на бот статус',
+	'makebot-header'         => "'''Чрез тази страница бюрократите могат да дават или отнемат [[{{MediaWiki:Grouppage-bot}}|бот статуса]] на други потребителски сметки.'''<br /> Бот статусът скрива редакциите на потребителската сметка от списъка с [[Special:Recentchanges|последните промени]] и други подобни списъци, и е подходящо да се дава на потребители, които правят автоматизирани редакции. Даването на такъв статус трябва да се извършва в съответствие с действащите правила и политики.",
+	'makebot-username'       => 'Потребителско име:',
+	'makebot-search'         => 'Проверяване на статуса',
+	'makebot-isbot'          => '[[User:$1|$1]] има бот статус.',
+	'makebot-notbot'         => '[[User:$1|$1]] няма бот статус.',
+	'makebot-privileged'     => '[[User:$1|$1]] има [[Special:Listadmins|пълномощия на администратор или бюрократ]] и не може да получи бот статус.',
+	'makebot-change'         => 'Промяна на статуса:',
+	'makebot-grant'          => 'Даване',
+	'makebot-revoke'         => 'Отнемане',
+	'makebot-comment'        => 'Коментар:',
+	'makebot-granted'        => '[[User:$1|$1]] вече има бот статус.',
+	'makebot-revoked'        => '[[User:$1|$1]] вече няма бот статус.',
+	'makebot-logpage'        => 'Дневник на бот статусите',
+	'makebot-logpagetext'    => 'Тази страница съдържа дневник на промените на [[{{MediaWiki:Grouppage-bot}}|бот статусите]] на потребители.',
+	'makebot-logentrygrant'  => 'даде бот статус на [[$1]]',
+	'makebot-logentryrevoke' => 'отне бот статуса на [[$1]]',
 ),
 
 'ca' => array(
@@ -648,6 +651,11 @@ function efMakeBotMessages() {
 	'makebot-username' => 'ຊື່ຜູ້ໃຊ້:',
 	'makebot-search'   => 'ໄປ',
 	'makebot-comment'  => 'ຄຳເຫັນ:',
+),
+
+/** Burmese (Myanmasa) */
+'my' => array(
+	'makebot-search' => 'શોધો',
 ),
 
 /* nld . Dutch (Siebrand Mazeland) */

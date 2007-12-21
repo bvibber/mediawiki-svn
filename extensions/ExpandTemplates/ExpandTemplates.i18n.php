@@ -269,6 +269,13 @@ $wgExpandTemplatesMessages['la'] = array(
 $wgExpandTemplatesMessages['lo'] = array(
 	'expandtemplates'                  => 'ຂະຫຍາຍແມ່ແບບ',
 );
+
+/** Burmese (Myanmasa) */
+$wgExpandTemplatesMessages['my'] = array(
+	'expand_templates_output' => 'પરિણામ:',
+	'expand_templates_ok'     => 'મંજૂર',
+);
+
 $wgExpandTemplatesMessages['nan'] = array(
 	'expandtemplates'                  => 'Khok-chhiong pang-bô͘',
 	'expand_templates_input'           => 'Su-ji̍p bûn-jī:',
@@ -334,6 +341,10 @@ Sòn a lo fa ën ciamand l\'anterprete dal programa MediaWiki.',
 	'expand_templates_remove_comments' => 'Gava via ij coment',
 	'expand_templates_preview'         => 'Preuva',
 );
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
 $wgExpandTemplatesMessages['ru'] = array(
 	'expandtemplates'                  => 'Развёртка шаблонов',
 	'expand_templates_intro'           => 'Эта служебная страница преобразует текст, рекурсивно разворачивая все шаблоны в нём.
@@ -344,7 +355,9 @@ $wgExpandTemplatesMessages['ru'] = array(
 	'expand_templates_output'          => 'Результат',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Удалить комментарии',
+	'expand_templates_preview'         => 'Предпросмотр',
 );
+
 $wgExpandTemplatesMessages['sk'] = array(
 	'expandtemplates'                  => 'Substituovať šablóny',
 	'expand_templates_intro'           => 'Táto špeciálna stránka prijme na

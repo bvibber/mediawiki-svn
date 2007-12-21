@@ -37,6 +37,15 @@ $messages['gl'] = array(
 	'protectsection_forbidden'  => 'Prohibido',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dnik
+ */
+$messages['hr'] = array(
+	'protectsection_add_remove' => 'Pokušali ste dodati ili izbaciti zaštićeni dio',
+	'protectsection_modify'     => 'Pokušali ste izmijeniti zaštićeni tekst',
+	'protectsection_forbidden'  => 'Zabranjeno',
+);
+
 $messages['hsb'] = array(
 	'protectsection_add_remove' => 'Sy spytał škitany wotrězk přidać abo wotstronić.',
 	'protectsection_modify'     => 'Sy spytał škitany tekst změnić.',

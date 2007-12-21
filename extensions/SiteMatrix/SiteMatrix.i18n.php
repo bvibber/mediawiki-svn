@@ -46,10 +46,18 @@ $wgSiteMatrixMessages['bcl'] = array(
 $wgSiteMatrixMessages['be'] = array(
 	'sitematrix' => 'Сьпіс усіх праектаў фундацыі Wikimedia',
 );
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ * @author לערי ריינהארט
+ */
 $wgSiteMatrixMessages['bg'] = array(
-	'sitematrix' => 'Списък на уикитата на Уикимедия',
+	'sitematrix'          => 'Списък на уикитата на Уикимедия',
 	'sitematrix-language' => 'Език',
+	'sitematrix-project'  => 'Име на проекта, междупроектна препратка и интеруики',
+	'sitematrix-others'   => 'Други проекти на Уикимедия',
 );
+
 $wgSiteMatrixMessages['br'] = array(
 	'sitematrix' => 'Roll holl raktresoù Wikimedia',
 	'sitematrix-language' => 'Yezh',
@@ -277,9 +285,17 @@ $wgSiteMatrixMessages['rm'] = array(
 $wgSiteMatrixMessages['ro'] = array(
 	'sitematrix' => 'Lista proiectelor Wikimedia',
 );
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
 $wgSiteMatrixMessages['ru'] = array(
-	"sitematrix" => "Проекты Викимедиа",
+	'sitematrix'          => 'Проекты Викимедиа',
+	'sitematrix-language' => 'Язык',
+	'sitematrix-project'  => 'Имя проекта, межпроектная ссылка и интервики',
+	'sitematrix-others'   => 'Другие проекты «Фонда Викимедиа»',
 );
+
 $wgSiteMatrixMessages['sk'] = array(
 	'sitematrix' => 'Zoznam wiki projektov Nadácie Wikimedia',
 	'sitematrix-language' => 'Jazyk',

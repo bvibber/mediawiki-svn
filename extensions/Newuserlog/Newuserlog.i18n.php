@@ -39,10 +39,17 @@ $wgNewuserlogMessages['ar'] = array(
 $wgNewuserlogMessages['bcl'] = array(
 	'newuserlog-create-entry'  => 'Bâgong parágamit',
 );
+
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
 $wgNewuserlogMessages['bg'] = array(
+	'newuserlogpage'           => 'Дневник на регистрациите',
+	'newuserlogpagetext'       => 'Тази страница съдържа дневник на потребителските регистрации',
 	'newuserlog-create-entry'  => 'Нов потребител',
 	'newuserlog-create2-entry' => 'създаде сметка за $1',
 );
+
 $wgNewuserlogMessages['br'] = array(
 	'newuserlog-create-entry'  => 'Implijer nevez',
 );
