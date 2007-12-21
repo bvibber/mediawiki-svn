@@ -13,22 +13,24 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionFunctions[] = 'wfSpecialFilelist';
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'File list',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:SpecialFileList',
 	'description' => 'Special Page for listing uploaded files',
 	'author' => 'Magnus Manske'
 );
-	
+
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['Filelist'] = $dir . 'SpecialFilelist.i18n.php';
+
 require_once( 'ImageGallery.php' );
 
 function wfSpecialFilelist () {
+	wfLoadExtensionMessages( 'Filelist' );
 	global $IP, $wgMessageCache;
-
-	$wgMessageCache->addMessage( 'filelist', 'File list' );
-	
 	require_once "$IP/includes/SpecialPage.php";
 	class SpecialFilelist extends SpecialPage {
 
 		var $dbr , $sk ;
-	
+
 		/**
 		 * Constructor
 		 */
@@ -36,7 +38,7 @@ function wfSpecialFilelist () {
 			SpecialPage::SpecialPage( 'Filelist' );
 			$this->includable( false );
 		}
-		
+
 		/**
 		 * Get the SQL to hide bot-users
 		 @param hide Hide the bots? (boolean)
@@ -46,7 +48,7 @@ function wfSpecialFilelist () {
 				# Don't hide bots
 				return "" ;
 			}
-			
+
 			global $wgGroupPermissions ;
 			$botconds=array();
 			foreach ($wgGroupPermissions as $groupname=>$perms) {
@@ -66,7 +68,7 @@ function wfSpecialFilelist () {
 			  . $isbotmember.')';
 			return $joinsql ;
 		}
-		
+
 		/**
 		 * Returns the latest timestamp for an image in the image table
 		 @param params Parameters, not changed by this function (passed as refrence for speedup)
@@ -95,7 +97,7 @@ function wfSpecialFilelist () {
 			$latestTimestamp = wfTimestamp( TS_MW, $ts);
 			return $latestTimestamp ;
 		}
-		
+
 		/**
 		 * Returns an array of images from the database
 		 @param params Parameters, not changed by this function (passed as refrence for speedup)
@@ -128,12 +130,12 @@ function wfSpecialFilelist () {
 				$sql .= $params['botsql'] ;
 				$where[] = 'ug_group IS NULL' ;
 			}
-			
+
 			# Single user?
 			if ( isset ( $params['user'] ) ) {
 				$where[] = "img_user='" . $params['user']->getID() . "'" ;
 			}
-			
+
 			if(count($where)) {
 				$sql.=' WHERE '.$this->dbr->makeList($where, LIST_AND);
 			}
@@ -153,9 +155,9 @@ function wfSpecialFilelist () {
 				}
 			}
 			$this->dbr->freeResult( $res );
-			return $images ;		
+			return $images ;
 		}
-		
+
 		/**
 		 * Returns HTML for a gallery
 		*/
@@ -173,15 +175,15 @@ function wfSpecialFilelist () {
 					$params['therearemore'] = true ;
 					break;
 				}
-	
+
 				$name = $s->img_name;
 				$ut = $s->img_user_text;
-	
+
 				$nt = Title::newFromText( $name, NS_IMAGE );
 				$ul = $this->sk->makeLinkObj( Title::makeTitle( NS_USER, $ut ), $ut );
-		
+
 				$gallery->add( $nt, "$ul<br />\n<i>".$wgLang->timeanddate( $s->img_timestamp, true )."</i><br />\n" );
-	
+
 				$timestamp = wfTimestamp( TS_MW, $s->img_timestamp );
 				if( empty( $firstTimestamp ) ) {
 					$firstTimestamp = $timestamp;
@@ -210,7 +212,7 @@ function wfSpecialFilelist () {
 					$params['therearemore'] = true ;
 					break;
 				}
-				
+
 				$name = $s->img_name;
 				$ut = $s->img_user_text;
 				if ( 0 == $s->img_user ) {
@@ -218,17 +220,17 @@ function wfSpecialFilelist () {
 				} else {
 					$ul = $this->sk->makeLinkObj( Title::makeTitle( NS_USER, $ut ), $ut );
 				}
-	
+
 				$ilink = "<a href=\"" . htmlspecialchars( Image::imageUrl( $name ) ) .
 				  "\">" . strtr(htmlspecialchars( $name ), '_', ' ') . "</a>";
-	
+
 				$nb = wfMsg( "nbytes", $wgLang->formatNum( $s->img_size ) );
 				$l = "(" .
 				  $this->sk->makeKnownLinkObj( Title::makeTitle( NS_IMAGE, $name ),
 				  wfMsg( "imgdesc" ) ) .
 				  ") {$ilink} . . {$nb} . . {$ul} . . " .
 				  $wgLang->timeanddate( $s->img_timestamp, true );
-			
+
 				$l .= $this->sk->commentBlock( $s->img_description );
 				$out .= $l . "<br />\n" ;
 
@@ -251,7 +253,7 @@ function wfSpecialFilelist () {
 			if ( isset ( $p2['user'] ) ) {
 				$p2['user'] = urlencode ( $p2['user']->getName() ) ;
 			}
-			
+
 			if ( $params['gallery'] != true ) $p2['gallery'] = $params['gallery'] ? "1" : "0" ;
 			if ( $params['hidebots'] != true ) $p2['hidebots'] = $params['hidebots'] ? "1" : "0" ;
 			if ( $params['date'] != "" ) $p2['date'] = $params['date'] ;
@@ -261,7 +263,7 @@ function wfSpecialFilelist () {
 
 			return $p2 ;
 		}
-		
+
 		/**
 		 * Return URL parameters
 		*/
@@ -294,7 +296,7 @@ function wfSpecialFilelist () {
 			  "<input type='submit' name=\"domatch\" value=\"{$sub}\" /></form>" ;
 			return "<p>" . $ret . "</p>" ;
 		}
-		
+
 		/**
 		 * Returns the limits links
 		*/
@@ -302,7 +304,7 @@ function wfSpecialFilelist () {
 			global $wgLang ;
 			$titleObj = Title::makeTitle( NS_SPECIAL, 'Filelist' );
 			$ret = array () ;
-			
+
 			if ( $params['gallery'] ) {
 				$al = array ( 12 , 36 , 48 , 60 ) ;
 			} else {
@@ -310,7 +312,7 @@ function wfSpecialFilelist () {
 			}
 
 			$p2 = $this->convertURLparams ( $params ) ;
-			
+
 			foreach ( $al AS $l ) {
 				$p2['limit'] = $l ;
 				$p = $this->getURLparams ( $p2 ) ;
@@ -321,7 +323,7 @@ function wfSpecialFilelist () {
 			$text = wfMsg( "showlast", implode ( " | " , $ret ), wfMsg('bydate') );
 			return $text ;
 		}
-		
+
 		/**
 		 * Returns the option links
 		*/
@@ -333,15 +335,15 @@ function wfSpecialFilelist () {
 			$p2['hidebots'] = $params['hidebots'] ? "0" : "1" ;
 			$bots = wfMsg( 'showhidebots', ($params['hidebots'] ? wfMsg('show') : wfMsg('hide'))) ;
 			$ret[] = $this->sk->makeKnownLinkObj( $titleObj, $bots, $this->getURLparams ( $p2 ) );
-			
+
 			$p2 = $this->convertURLparams ( $params ) ;
 			$p2['gallery'] = $params['gallery'] ? "0" : "1" ;
-			$bots = $params['gallery'] ? wfMsg('show_list') : wfMsg('show_gallery') ;
+			$bots = $params['gallery'] ? wfMsg('filelist-show-list') : wfMsg('filelist-show-gallery') ;
 			$ret[] = $this->sk->makeKnownLinkObj( $titleObj, $bots, $this->getURLparams ( $p2 ) );
-			
+
 			return "<p>" . implode ( " | " , $ret ) . "</p>" ;
 		}
-		
+
 		/**
 		 * Returns the previous/next links
 		*/
@@ -349,7 +351,7 @@ function wfSpecialFilelist () {
 			global $wgLang ;
 			$out = "" ;
 			$titleObj = Title::makeTitle( NS_SPECIAL, 'Filelist' );
-				
+
 			$prevLink = wfMsg( 'prevn', $wgLang->formatNum( $params['limit'] ) );
 			if( $params['therearebefore'] ) {
 				$p2 = $this->convertURLparams ( $params ) ;
@@ -365,9 +367,9 @@ function wfSpecialFilelist () {
 				unset ( $p2['until'] ) ;
 				$nextLink = $this->sk->makeKnownLinkObj( $titleObj, $nextLink, $this->getURLparams ( $p2 ) );
 			}
-			
+
 			$out .= $prevLink . " | " . $nextLink ;
-			
+
 			return "<p>" . $out . "</p>" ;
 		}
 
@@ -378,7 +380,7 @@ function wfSpecialFilelist () {
 			global $wgOut, $wgRequest, $wgUser;
 			$this->dbr =& wfGetDB( DB_SLAVE );
 			$this->sk = $wgUser->getSkin();
-			
+
 			# Setting a bunch of parameters to passed or default values; also some variables which makes them easier to pass to functions
 			$params['gallery'] = $wgRequest->getBool ( 'gallery' , true ) ;
 			$params['hidebots'] = $wgRequest->getBool ( 'hidebots' , true ) ;
@@ -389,8 +391,8 @@ function wfSpecialFilelist () {
 			$params['user'] = urldecode ( $wgRequest->getVal ( 'user' , ($par==NULL?"":$par) ) ) ;
 			$params['botsql'] = $this->getHideBotSQL ( $params['hidebots'] ) ;
 			$params['imagetable'] = $this->dbr->tableName('image');
-			
-			# If "until" is set, "date" should be invalid; also, "latestfirst" should be true to force inverted 
+
+			# If "until" is set, "date" should be invalid; also, "latestfirst" should be true to force inverted
 			if ( $params['until'] != "" ) {
 				$params['date'] = "" ;
 				$params['latestfirst'] = true ;
@@ -400,7 +402,7 @@ function wfSpecialFilelist () {
 
 			# Preventing full DB scan for single user; remove this and the following line once the user field has an index
 			$params['user'] = "" ;
-			
+
 			# Set $user variable if there is a valid user requested
 			if ( $params['user'] != "" ) {
 				$user = User::newFromName ( $params['user'] ) ;
@@ -416,33 +418,33 @@ function wfSpecialFilelist () {
 
 			# Ths following depends on the user above, so don't move it upwards!
 			$params['timestamp'] = $this->getTimeStamp ( $params ) ;
-			
+
 			$images = $this->getImages ( $params ) ;
-			
+
 			if ( $params['gallery'] ) {
 				$between = $this->makeGallery ( $images , $params ) ;
 			} else {
 				$between = $this->makeList ( $images , $params ) ;
 			}
-			
+
 			# This is strange
 			$params['therearebefore'] = ( $params['firsttimestamp'] != $params['timestamp'] ) ;
-			
+
 			$noi = count ( $images ) > $params['limit'] ? $params['limit'] : count ( $images ) ;
-			
-			$out = '<p>' . wfMsgForContent ( "imagelisttext" , $noi , wfMsg('bydate') ) . '</p>' ;
+
+			$out = '<p>' . wfMsgForContent ( 'imagelisttext' , $noi , wfMsg('bydate') ) . '</p>' ;
 			$out .= $this->matchform ( $params ) ;
 			$out .= $this->options ( $params ) ;
 			$out .= $this->limits ( $params ) ;
 			$out .= $this->prevnext ( $params ) ;
 			$out .= $between ;
 			$out .= $this->prevnext ( $params ) ;
-			
-			
+
+
 			$this->setHeaders();
 			$wgOut->addHtml( $out );
 		}
 	}
-	
+
 	SpecialPage::addPage( new SpecialFilelist );
 }
