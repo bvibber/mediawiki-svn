@@ -6,6 +6,7 @@ $messages =array ();
 
 $messages['en'] = array (
 	'todo' => 'Todo list',
+	'todo-onglet' => 'todo',
 	'todo-new-queue' => 'new',
 	'todo-mail-subject' => "Completed item on $1's todo list",
 	'todo-mail-body' => "You requested e-mail confirmation about the completion of an item you submitted to $1's online todo list.
@@ -75,6 +76,7 @@ $messages['el'] = array(
 
 $messages['fr'] = array (
 	'todo' => 'Liste des tâches à exécuter',
+	'todo-onglet' => 'à faire',
 	'todo-new-queue' => 'Nouveau',
 	'todo-mail-subject' => "Article achevé sur la liste des tâches de $1",
 	'todo-mail-body' => "Vous avez demandé la confirmation par courriel en ce qui concerne l'achèvement d'un article que vous aviez sur la liste des tâches de $1.

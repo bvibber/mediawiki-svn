@@ -55,7 +55,7 @@ function todoAddTab( &$skin, &$actions ) {
 	if( $wgTitle->getNamespace() == NS_USER || $wgTitle->getNamespace() == NS_USER_TALK ) {
 		$title = Title::makeTitle( NS_SPECIAL, 'Todo/' . $wgTitle->getText() );
 		$actions['todo'] = array(
-			'text' => 'todo',
+			'text' => wfMsg('todo-onglet'),
 			'href' => $title->getLocalUrl() );
 	}
 	return true;
