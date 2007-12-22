@@ -49,12 +49,13 @@ $wgSiteMatrixMessages['be'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Spiritia
  * @author לערי ריינהארט
  */
 $wgSiteMatrixMessages['bg'] = array(
 	'sitematrix'          => 'Списък на уикитата на Уикимедия',
 	'sitematrix-language' => 'Език',
-	'sitematrix-project'  => 'Име на проекта, междупроектна препратка и интеруики',
+	'sitematrix-project'  => 'Име на проекта, междупроектна препратка и междууики',
 	'sitematrix-others'   => 'Други проекти на Уикимедия',
 );
 

@@ -349,13 +349,6 @@ function efInputBoxMessages() {
 	'createarticle'  => 'Создади статија',
 ),
 
-/** Burmese (Myanmasa)
- * @author SPQRobin
- */
-'my' => array(
-	'createarticle' => 'નવો લેખ શરૂ કરો',
-),
-
 'nan' => array(
 	'searchfulltext'          => 'Chhiau choan-bûn',
 ),

@@ -27,6 +27,13 @@ $messages['gl'] = array(
 	'tog-microid' => 'Publicar unha <a href="http://microid.org/">MicroID</a> para confirmar a conta con servizos externos',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dnik
+ */
+$messages['hr'] = array(
+	'tog-microid' => 'Objavite <a href="http://microid.org/">MicroID</a> za potvrdu računa pomoću vanjskih servisa',
+);
+
 $messages['hsb'] = array(
 	'tog-microid' => '<a href="http://microid.org/">MicroID</a> publikować, zo by so konto z wonkownymi słužbami potwjerdźiło',
 );

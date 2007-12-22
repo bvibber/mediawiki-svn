@@ -68,7 +68,13 @@ $messages['ar'] = array(
 	'povwatch_subscribe_intro'         => 'أنت غير مشترك في مراقبة بي أو في. اضغط الزر بالأسفل للاشتراك.',
 	'povwatch_subscribe'               => 'اشتراك',
 	'povwatch_added'                   => 'تمت الإضافة',
+);
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'povwatch_title' => 'Заглавие:',
 );
 
 /** Greek (Ελληνικά)

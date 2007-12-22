@@ -177,6 +177,31 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-page'           => '{{ns:help}}:Retroceso',
 ),
 
+/** Croatian (Hrvatski)
+ * @author Dnik
+ */
+'hr' => array(
+	'giverollback'                => 'Dodjelite ili oduzmite rollback prava',
+	'giverollback-header'         => "'''Lokalni birokrat može koristiti ovu stranicu da dodjeli ili oduzme [[{{MediaWiki:Giverollback-page}}|rollback prava]] drugom suradniku.'''<br />Ovo se može koristiti da se dopusti poništavanje vandalizama suradnicima koji nisu administratori, u skladu s primjenjivim pravilima.",
+	'giverollback-username'       => 'Ime suradnika:',
+	'giverollback-search'         => 'Kreni',
+	'giverollback-hasrb'          => '[[User:$1|$1]] ima rollback prava.',
+	'giverollback-norb'           => '[[User:$1|$1]] nema rollback prava.',
+	'giverollback-toonew'         => '[[User:$1|$1]] je previše nov, pa ne može dobiti rollback prava.',
+	'giverollback-sysop'          => '[[User:$1|$1]] je administrator, pa već ima rollback prava.',
+	'giverollback-change'         => 'Promjena statusa:',
+	'giverollback-grant'          => 'Dodjeli',
+	'giverollback-revoke'         => 'Oduzmi',
+	'giverollback-comment'        => 'Napomena:',
+	'giverollback-granted'        => '[[User:$1|$1]] sada ima rollback prava.',
+	'giverollback-revoked'        => '[[User:$1|$1]] više nema rollback prava.',
+	'giverollback-logpage'        => 'Evidencija rollback prava',
+	'giverollback-logpagetext'    => 'Ovo je evidencija promjena [[{{MediaWiki:Giverollback-page}}|rollback]] prava ne-administratora.',
+	'giverollback-logentrygrant'  => 'dodjeljena rollback prava suradniku [[$1]]',
+	'giverollback-logentryrevoke' => 'oduzeta rollback prava suradniku [[$1]]',
+	'giverollback-page'           => '{{ns:help}}:Rollback',
+),
+
 'hsb' => array(
 	'giverollback' => 'Prawa wróćostajenja dać abo zebrać',
 	'giverollback-header' => '\'\'\'Lokalny běrokrat móže stronu wužiwać, zo by druhim wužiwarjam prawo wróćostajenja \'\'(rollback)\'\' dał abo zebrał.\'\'\'<br /> Tak móža tež wužiwarjo bjez prawow administratora wandalizm spěšnje wróćo stajić. To měło so w přezjednosći z nałožujomnymi prawidłami stać.',

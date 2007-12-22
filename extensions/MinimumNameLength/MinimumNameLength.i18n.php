@@ -49,6 +49,13 @@ function efMinimumNameLengthMessages() {
 	'minnamelength-error' => 'O seu nome de usuario é curto de máis. O tamaño mínimo é $1.',
 ),
 
+/** Croatian (Hrvatski)
+ * @author Dnik
+ */
+'hr' => array(
+	'minnamelength-error' => 'Vaše suradničko ime je prekratko. Duljina mora biti bar $1.',
+),
+
 'hsb' => array(
 	'minnamelength-error' => 'Wužiwarske mjeno je překrótke. Minimalna dołhosć je $1 znamješkow.',
 ),

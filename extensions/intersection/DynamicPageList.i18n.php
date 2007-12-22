@@ -37,6 +37,16 @@ $messages['gl'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Ten que incluír unha categoría polo menos ou especificar un espazo de nomes!',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dnik
+ */
+$messages['hr'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: Previše kategorija!',
+	'intersection_toofewcats'    => 'DynamicPageList: Premalo kategorija!',
+	'intersection_noresults'     => 'DynamicPageList: Nema rezultata!',
+	'intersection_noincludecats' => 'DynamicPageList: Morate uključiti bar jednu kategoriju, ili odabrati imenski prostor!',
+);
+
 $messages['hsb'] = array(
 	'intersection_toomanycats' => 'DynamicPageList: Přewjele kategorijow!',
 	'intersection_toofewcats' => 'DynamicPageList: Přemało kategorijow!',

@@ -228,11 +228,6 @@ $wgLinkSearchMessages['lo'] = array(
 	'linksearch'       => 'ຄົ້ນຫາການເຊື່ອມຕໍ່ຫາເວັບ',
 );
 
-/** Burmese (Myanmasa) */
-$wgLinkSearchMessages['my'] = array(
-	'linksearch-ok' => 'શોધ',
-);
-
 $wgLinkSearchMessages['nan'] = array(
 	'linksearch'       => 'Chhiau-chhoē chām-goā liân-kiat',
 );

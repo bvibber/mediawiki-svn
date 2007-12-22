@@ -653,11 +653,6 @@ function efMakeBotMessages() {
 	'makebot-comment'  => 'ຄຳເຫັນ:',
 ),
 
-/** Burmese (Myanmasa) */
-'my' => array(
-	'makebot-search' => 'શોધો',
-),
-
 /* nld . Dutch (Siebrand Mazeland) */
 'nl' => array(
 	'makebot'                 => 'Botstatus beheren',

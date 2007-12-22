@@ -270,12 +270,6 @@ $wgExpandTemplatesMessages['lo'] = array(
 	'expandtemplates'                  => 'ຂະຫຍາຍແມ່ແບບ',
 );
 
-/** Burmese (Myanmasa) */
-$wgExpandTemplatesMessages['my'] = array(
-	'expand_templates_output' => 'પરિણામ:',
-	'expand_templates_ok'     => 'મંજૂર',
-);
-
 $wgExpandTemplatesMessages['nan'] = array(
 	'expandtemplates'                  => 'Khok-chhiong pang-bô͘',
 	'expand_templates_input'           => 'Su-ji̍p bûn-jī:',

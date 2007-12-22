@@ -16,6 +16,15 @@ $messages['en'] = array(
 	'filelist-show-gallery' => 'Show gallery',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'filelist'              => 'قائمة الملف',
+	'filelist-show-list'    => 'عرض القائمة',
+	'filelist-show-gallery' => 'عرض المعرض',
+);
+
 /** French
  * @author Bertrand Grondin
  */

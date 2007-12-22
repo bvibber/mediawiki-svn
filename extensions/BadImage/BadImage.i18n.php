@@ -76,26 +76,30 @@ function efBadImageMessages() {
 	'badimages-log-remove' => 'Pighalî an [[$1]] sa lista kan salang ladawan',
 ),
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ * @author Spiritia
+ */
 'bg' => array(
-	'badimages' => 'Списък с неприемливи файлове',
-	'badimages-add-btn' => 'Добавяне',
-	'badimages-added' => '$1 беше добавен към списъка.',
-	'badimages-count' => 'Списъкът съдържа \'\'\'$1\'\'\' неприемливи файла.',
-	'badimages-name' => 'Име:',
-	'badimages-not-added' => 'Файлът не може да бъде добавен.',
-	'badimages-not-removed' => 'Файлът не може да бъде премахнат.',
-	'badimages-reason' => 'Причина:',
-	'badimages-remove' => '(премахване)',
-	'badimages-remove-btn' => 'Премахване',
+	'badimages'                => 'Списък с неприемливи файлове',
+	'badimages-add-btn'        => 'Добавяне',
+	'badimages-added'          => 'Файлът $1 беше добавен към списъка.',
+	'badimages-count'          => "Списъкът съдържа '''$1''' неприемливи файла.",
+	'badimages-name'           => 'Име:',
+	'badimages-not-added'      => 'Файлът не може да бъде добавен.',
+	'badimages-not-removed'    => 'Файлът не може да бъде премахнат.',
+	'badimages-reason'         => 'Причина:',
+	'badimages-remove'         => '(премахване)',
+	'badimages-remove-btn'     => 'Премахване',
 	'badimages-remove-confirm' => 'Потвърждение за премахване на $1 от списъка:',
-	'badimages-removed' => '$1 беше премахнат от списъка.',
-	'badimages-subheading' => 'Текущи записи',
-	'badimages-unprivileged' => '(Нямате необходимите права, за да променяте списъка)',
-	'badimages-log-name' => 'Списък с неприемливи файлове',
-	'badimages-log-header' => 'Страницата съдържа дневник на промените в [[{{MediaWiki:Badimages-page}}|списъка с неприемливи файлове]].',
-	'badimages-log-add' => 'добави [[$1]] към списъка с неприемливи файлове',
-	'badimages-log-remove' => 'премахна [[$1]] от списъка с неприемливи файлове',
-	'badimages-page' => '{{ns:help}}:Неприемливи файлове',
+	'badimages-removed'        => 'Файлът $1 беше премахнат от списъка.',
+	'badimages-subheading'     => 'Текущи записи',
+	'badimages-unprivileged'   => '(Нямате необходимите права, за да променяте списъка)',
+	'badimages-log-name'       => 'Списък с неприемливи файлове',
+	'badimages-log-header'     => 'Страницата съдържа дневник на промените в [[{{MediaWiki:Badimages-page}}|списъка с неприемливи файлове]].',
+	'badimages-log-add'        => 'добави [[$1]] към списъка с неприемливи файлове',
+	'badimages-log-remove'     => 'премахна [[$1]] от списъка с неприемливи файлове',
+	'badimages-page'           => '{{ns:help}}:Неприемливи файлове',
 ),
 
 'br' => array(
