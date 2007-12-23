@@ -107,3 +107,11 @@ $messages['nl'] = array(
 	'showprocesslist-state'   => 'Status',
 	'showprocesslist-info'    => 'Informatie',
 );
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'showprocesslist-state' => 'Stoatus',
+	'showprocesslist-info'  => 'Info',
+);

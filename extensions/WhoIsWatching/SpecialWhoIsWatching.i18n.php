@@ -79,4 +79,13 @@ $allMessages = array(
 		'specialwhoiswatchingthepage' => 'Quem está a vigiar %s',
 		'specialwhoiswatchingusage'   => 'Esta página especial não pode ser usada por si só. Por favor, utilize a página [[MediaWiki:Number_of_watching_users_pageview]] para definir um ponto de entrada para esta página especial.',
 	),
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+	'stq' => array(
+		'whoiswatching'               => 'Wäl beooboachtet ne Siede',
+		'specialwhoiswatchingthepage' => 'Wäl beooboachtet %s',
+		'specialwhoiswatchingusage'   => 'Disse Spezioalsiede kon nit ap sik sälwen anwoand wäide. Definier uur ju Siede [[MediaWiki:Number of watching users pageview]] ne Ienstiegssiede foar disse Spezioalsiede.',
+	),
 );

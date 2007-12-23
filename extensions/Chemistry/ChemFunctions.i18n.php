@@ -247,6 +247,13 @@ $wgChemFunctions_Messages['it'] = array(
 
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$wgChemFunctions_Messages['lb'] = array(
+	'chemFunctions_CAS' => 'CAS Nummer',
+);
+
 $wgChemFunctions_Messages['nl'] = array(
 	'chemicalsources' => 'Scheikundige bronnen',
 	'chemFunctions_ListPage' => 'Scheikundige bronnen',

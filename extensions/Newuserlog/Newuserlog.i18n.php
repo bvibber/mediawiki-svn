@@ -120,6 +120,14 @@ $wgNewuserlogMessages['fr'] = array(
 	'newuserlog-create-entry'  => 'Nouvel utilisateur',
 	'newuserlog-create2-entry' => 'compte créé pour $1',
 );
+
+/** Irish (Gaeilge)
+ * @author SPQRobin
+ */
+$wgNewuserlogMessages['ga'] = array(
+	'newuserlog-create-entry' => 'Úsáideoir nua',
+);
+
 $wgNewuserlogMessages['gl'] = array(
 	'newuserlogpage'           => 'Rexistro de usuarios',
 	'newuserlogpagetext'       => 'Este é un rexistro de creación de usuarios',
@@ -313,10 +321,18 @@ $wgNewuserlogMessages['sr-el'] = array(
 	'newuserlog-create2-entry' => 'napravio nalog za $1',
 );
 $wgNewuserlogMessages['sr'] = $wgNewuserlogMessages['sr-ec'];
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ * @author Maartenvdbent
+ */
 $wgNewuserlogMessages['stq'] = array(
 	'newuserlogpage'           => 'Näianmäldengs-Logbouk',
 	'newuserlogpagetext'       => 'Dit is dät Logbouk fon näi anmäldede Benutsere.',
+	'newuserlog-create-entry'  => 'Benutser wuude näi registrierd',
+	'newuserlog-create2-entry' => 'moakede Benutserkonto foar $1',
 );
+
 $wgNewuserlogMessages['su'] = array(
 	'newuserlogpage'           => 'Log pamaké anyar',
 	'newuserlogpagetext'       => 'Di handap ieu béréndélan log pamaké anyar',

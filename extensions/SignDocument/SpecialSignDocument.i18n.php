@@ -820,5 +820,11 @@ Ch\'a varda che sò dat a sio giust, e che i peulo contatela për verifiché soa
 	'rm' => array(
 		'sign-viewfield-realname' => 'Num',
 	),
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+	'stq' => array(
+		'sign-realname' => 'Noome:',
+	),
 );
-?>

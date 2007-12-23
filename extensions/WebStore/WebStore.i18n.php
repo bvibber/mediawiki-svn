@@ -128,8 +128,8 @@ $1',
 	),
 
 /** French (Français)
- * @author Sherbrooke
  * @author Dereckson
+ * @author Sherbrooke
  */
 	'fr' => array(
 		'inplace_access_disabled'          => "L'accès à ce service est désactivé pour tous les clients.",
@@ -144,7 +144,9 @@ $1',
 		'webstore_access'                  => 'Ce service est restreint par adresse IP.',
 		'webstore_path_invalid'            => "Le nom de fichier n'est pas correct.",
 		'webstore_dest_open'               => 'Impossible d\'ouvrir le fichier de destination "$1".',
+		'webstore_dest_mkdir'              => 'Impossible de créer le répertoire "$1".',
 		'webstore_404'                     => 'Fichier non trouvé.',
+		'webstore_php_warning'             => 'PHP Warning: $1',
 		'webstore_no_response'             => 'Le serveur ne répond pas',
 		'webstore_php_error'               => 'Les erreurs PHP suivantes sont survenues :',
 		'webstore_no_handler'              => 'Ce type MIME ne peut être transformé.',

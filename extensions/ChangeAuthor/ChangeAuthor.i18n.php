@@ -222,6 +222,15 @@ $allMessages = array(
 		'changeauthor-logentry' => 'Změni so awtor wot $2 wot $1 z $3 do $4',
 		'changeauthor-logpagename' => 'Protokol wo změnach awtorow',
 	),
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+	'lb' => array(
+		'changeauthor-comment'          => 'Bemierkung:',
+		'changeauthor-invalid-username' => 'Benotzernumm „$1“ ass net gëlteg!',
+	),
+
 	'nl' => array(
 		'changeauthor' => 'Auteur versie wijzigen',
 		'changeauthor-title' => 'De auteur van een bewerkingsversie wijzigen',

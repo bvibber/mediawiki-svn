@@ -158,3 +158,17 @@ Du kan skrive inn et valgfritt \'\'\'målnavn\'\'\' og oppgi et \'\'\'sammendrag
 
 Upassende filer vil bli slettet umiddelbart, se [[{{MediaWiki:Multipleupload-page}}|retningslinjene for filsletting]].',
 );
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'multipleupload-addresswarnings' => 'Älke Woarschauenge anwiese foar dät fonnäien Hoochleeden fon Doatäie.',
+	'multipleupload-text'            => "Tou glieke Tied Hoochleeden fon moorere Doatäie.
+
+Wääl 'Browse' un wääl älke Doatäi uut, ju du hoochleede moatest. Du koast tou glieke Tied twiske 1 un $1 Doatäie hoochleede.
+
+Du koast woalwiese uk n '''Siel-Doatäinoome''' foarreeke un ne '''Beschrieuwenge''' foar dien Doatäie.
+
+Uunoainde Doatäie wäide fluks läsked, sjuch do [[{{MediaWiki:Multipleupload-page}}|Läskgjuchtlienjen]].",
+);

@@ -250,6 +250,26 @@ $allMessages = array(
 		'passwordreset-accountdisabled' => 'Учётная запись отключена',
 	),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+	'stq' => array(
+		'passwordreset'                    => 'Paaswoud touräächsätte',
+		'passwordreset-invalidusername'    => 'Uungultigen Benutsernoome',
+		'passwordreset-emptyusername'      => 'Loosen Benutsernoome',
+		'passwordreset-nopassmatch'        => 'Paaswoude stimme nit uureen',
+		'passwordreset-badtoken'           => 'Ungultigen „Edit Token“',
+		'passwordreset-username'           => 'Benutsernoome',
+		'passwordreset-newpass'            => 'Näi Paaswoud',
+		'passwordreset-confirmpass'        => 'Paaswoud bestäätigje',
+		'passwordreset-submit'             => 'Paaswoud touräächsätte',
+		'passwordreset-success'            => 'Paaswoud foar Benutser-ID $1 wuude touräächsät',
+		'passwordreset-disableuser'        => 'Benutserkonto deaktivierje?',
+		'passwordreset-disableuserexplain' => '(sät n uungultich Paaswoud-Hash - Anmäldjen uunmuugelk)',
+		'passwordreset-disablesuccess'     => 'Benutserkonto wuude deaktivierd (Benutser-ID: $1)',
+		'passwordreset-accountdisabled'    => 'Benutserkonto is deaktivierd',
+	),
+
 	'yue' => array( 
 		'passwordreset' => '密碼重設',
 		'passwordreset-invalidusername' => '無效嘅用戶名',

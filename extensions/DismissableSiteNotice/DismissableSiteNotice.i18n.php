@@ -86,6 +86,13 @@ $wgDismissableSiteNoticeMessages['fr'] = array(
 	'sitenotice_close' => 'cacher',
 );
 
+/** Irish (Gaeilge)
+ * @author SPQRobin
+ */
+$wgDismissableSiteNoticeMessages['ga'] = array(
+	'sitenotice_close' => 'díbh',
+);
+
 $wgDismissableSiteNoticeMessages['gl'] = array(
 	'sitenotice_close' => 'retirar',
 );

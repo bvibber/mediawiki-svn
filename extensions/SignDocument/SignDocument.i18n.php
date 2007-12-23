@@ -60,6 +60,13 @@ $allMessages = array(
 		'signaturelogentry' => 'a l\'é firmasse ël document $1',
 	),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+	'stq' => array(
+		'signaturelogpage' => 'Unnerschrifts-Logbouk',
+	),
+
 	'yue' => array(
 		'signaturelogpage'      => '簽名日誌',
 		'signaturelogpagetext'  => '呢個係全部經過[[Special:SignDocument]]簽過名嘅文件嘅日誌。',

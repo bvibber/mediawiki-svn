@@ -176,6 +176,13 @@ function efProfileMonitorMessages() {
 	'profiling-no-data' => 'Neboli nájdené vyhovujúce údaje.',
 ),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+'stq' => array(
+	'profiling-data-count' => 'täl',
+),
+
 /* Cantonese (Shinjiman) */
 'yue' => array(
 	'profiling' => '檢核資料',

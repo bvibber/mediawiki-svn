@@ -425,6 +425,14 @@ function efBadImageMessages() {
 	'badimages-remove-btn' => 'Removere',
 ),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+'lb' => array(
+	'badimages-name'   => 'Numm:',
+	'badimages-reason' => 'Grond:',
+),
+
 'loz' => array(
 	'badimages-name' => 'Sebu:',
 	'badimages-remove' => '(afi kulobala)',

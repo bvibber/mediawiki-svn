@@ -86,6 +86,13 @@ $wgDataSearchMessages['sk'] = array(
 	'datasearch' => 'Wikidata: Hľadanie údajov',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$wgDataSearchMessages['stq'] = array(
+	'datasearch' => 'Wikidata: Doatensäike',
+);
+
 $wgDataSearchMessages['sv'] = array(
 	'datasearch' => 'Wikidata: Datasökning',
 );

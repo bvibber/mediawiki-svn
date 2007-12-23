@@ -21,6 +21,13 @@ $messages['ar'] = array(
 	'seealso' => 'انظر أيضا',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'seealso' => 'Вижте също',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

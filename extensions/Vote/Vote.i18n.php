@@ -78,7 +78,8 @@ riddler|Riddler",
 	'vote-registered'   => 'Вашият глас беше отчетен.',
 	'vote-view-results' => 'Преглед на резултатите',
 	'vote-results-none' => 'Все още никой не е гласувал.',
-
+	'vote-login'        => 'За гласуване е необходимо $1 в системата.',
+	'vote-login-link'   => 'влизане',
 ),
 
 'br' => array(

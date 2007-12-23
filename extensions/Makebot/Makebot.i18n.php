@@ -355,6 +355,14 @@ function efMakeBotMessages() {
 	'makebot-logentryrevoke'  => 'a révoqué le statut de bot de [[$1]]',
 ),
 
+/** Irish (Gaeilge)
+ * @author SPQRobin
+ */
+'ga' => array(
+	'makebot-logentrygrant'  => 'tugtar stádas robait do [[$1]]',
+	'makebot-logentryrevoke' => 'baintear stádas robait de [[$1]]',
+),
+
 'gl' => array(
 	'makebot'                 => 'Outorgar ou retirar o status de bot',
 	'makebot-header'          => '\'\'\'Un burócrata local pode usar esta páxina para outorgar ou revocar [[{{MediaWiki:Grouppage-bot}}|status de bot]] a outras contas de usuarios.\'\'\'<br />O status de bot oculta as edicións dos usuarios dos [[Special:Recentchanges|cambios recentes]], e é útil para sinalar aos usuarios que fan edicións automatizadas. Debe ser feito de acordo coas políticas aplicábeis.',

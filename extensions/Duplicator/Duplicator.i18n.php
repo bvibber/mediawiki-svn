@@ -339,6 +339,13 @@ de todos os historiais. Resulta útil cando se subdivide un artigo, etc.',
 	'duplicator-toomanyrevisions' => '[[$1]] は版が多すぎるため（$2 版）複製できません。現在の上限は $3 版までです。',
 ),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+'lb' => array(
+	'duplicator-options' => 'Méiglechkeeten',
+),
+
 'nds' => array(
 	'duplicator-options' => 'Opschonen',
 ),

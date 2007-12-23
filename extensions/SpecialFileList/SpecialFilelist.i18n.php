@@ -42,3 +42,21 @@ $messages['hsb'] = array(
 	'filelist-show-list'    => 'Liscinu pokazac',
 	'filelist-show-gallery' => 'Galeriju pokazac',
 );
+
+/** Latin (Latina)
+ * @author UV
+ */
+$messages['la'] = array(
+	'filelist'              => 'Fasciculorum index',
+	'filelist-show-list'    => 'Indicem monstrare',
+	'filelist-show-gallery' => 'Pinacothecam monstrare',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'filelist'              => 'Bestandenlijst',
+	'filelist-show-list'    => 'Lijst bekijken',
+	'filelist-show-gallery' => 'Galerij bekijken',
+);

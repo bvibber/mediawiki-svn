@@ -15,6 +15,13 @@ $messages['ar'] = array(
 	'usercontactlink-baduser' => 'اسم مستخدم غير صحيح',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'usercontactlink-baduser' => 'Некоректно потребителско име',
+);
+
 $messages['de'] = array(
 	'usercontactlink-baduser' => 'falscher Benutzername',
 );

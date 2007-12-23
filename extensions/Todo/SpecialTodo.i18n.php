@@ -6,7 +6,7 @@ $messages =array ();
 
 $messages['en'] = array (
 	'todo' => 'Todo list',
-	'todo-onglet' => 'todo',
+	'todo-tab' => 'todo',
 	'todo-new-queue' => 'new',
 	'todo-mail-subject' => "Completed item on $1's todo list",
 	'todo-mail-body' => "You requested e-mail confirmation about the completion of an item you submitted to $1's online todo list.
@@ -35,34 +35,38 @@ $4",
 	'todo-form-submit' => 'Submit Query',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'todo' => 'قائمة للعمل',
-	'todo-new-queue' => 'جديد',
-	'todo-mail-subject' => 'المدخلة المكملة في قائمة $1 للعمل',
-	'todo-mail-body' => 'أنت طلبت تأكيدا بالبريد الإلكتروني حول إكمال مدخلة أنت أضفتها إلى قائمة $1 للعمل.
+	'todo'                  => 'قائمة للعمل',
+	'todo-tab'              => 'للعمل',
+	'todo-new-queue'        => 'جديد',
+	'todo-mail-subject'     => 'المدخلة المكملة في قائمة $1 للعمل',
+	'todo-mail-body'        => 'أنت طلبت تأكيدا بالبريد الإلكتروني حول إكمال مدخلة أنت أضفتها إلى قائمة $1 للعمل.
 
 المدخلة: $2
 المنفذة: $3
 
 هذه المدخلة تم التعليم عليها كمكملة، مع هذا التعليق:
 $4',
-	'todo-invalid-item' => 'مدخلة مفقودة أو غير صحيحة',
+	'todo-invalid-item'     => 'مدخلة مفقودة أو غير صحيحة',
 	'todo-update-else-item' => 'محاولة تحديث مدخلات شخص آخر',
 	'todo-unrecognize-type' => 'نوع غير متعرف عليه',
-	'todo-user-invalide' => 'للعمل معطاة مستخدم غير صحيح، مفقود، أو لا يمكن إضافته للعمل.',
-	'todo-item-list' => 'مدخلاتك',
-	'todo-no-item' => 'لا مدخلات للعمل.',
-	'todo-invalid-owner' => 'مالك غير صحيح لهذه المدخلة',
-	'todo-add-queue' => 'أضف الطابور...',
-	'todo-move-queue' => 'انقل إلى الطابور...',
-	'todo-list-for' => 'قائمة للعمل ل',
-	'todo-list-change' => 'تغيير',
-	'todo-list-cancel' => 'إلغاء',
-	'todo-new-item' => 'مدخلة جديدة',
-	'todo-issue-summary' => 'ملخص القضية:',
-	'todo-form-details' => 'التفاصيل:',
-	'todo-form-email' => 'لاستقبال إخطار بواسطة البريد الإلكتروني عندما يتم إغلاق المدخلة، اكتب عنوانك هنا:',
-	'todo-form-submit' => 'تنفيذ',
+	'todo-user-invalide'    => 'للعمل معطاة مستخدم غير صحيح، مفقود، أو لا يمكن إضافته للعمل.',
+	'todo-item-list'        => 'مدخلاتك',
+	'todo-no-item'          => 'لا مدخلات للعمل.',
+	'todo-invalid-owner'    => 'مالك غير صحيح لهذه المدخلة',
+	'todo-add-queue'        => 'أضف الطابور...',
+	'todo-move-queue'       => 'انقل إلى الطابور...',
+	'todo-list-for'         => 'قائمة للعمل ل',
+	'todo-list-change'      => 'تغيير',
+	'todo-list-cancel'      => 'إلغاء',
+	'todo-new-item'         => 'مدخلة جديدة',
+	'todo-issue-summary'    => 'ملخص القضية:',
+	'todo-form-details'     => 'التفاصيل:',
+	'todo-form-email'       => 'لاستقبال إخطار بواسطة البريد الإلكتروني عندما يتم إغلاق المدخلة، اكتب عنوانك هنا:',
+	'todo-form-submit'      => 'تنفيذ',
 );
 
 /** Greek (Ελληνικά)
@@ -75,11 +79,11 @@ $messages['el'] = array(
 );
 
 $messages['fr'] = array (
-	'todo' => 'Liste des tâches à exécuter',
-	'todo-onglet' => 'à faire',
-	'todo-new-queue' => 'Nouveau',
+	'todo'              => 'Liste des tâches à exécuter',
+	'todo-tab'          => 'à faire',
+	'todo-new-queue'    => 'Nouveau',
 	'todo-mail-subject' => "Article achevé sur la liste des tâches de $1",
-	'todo-mail-body' => "Vous avez demandé la confirmation par courriel en ce qui concerne l'achèvement d'un article que vous aviez sur la liste des tâches de $1.
+	'todo-mail-body'    => "Vous avez demandé la confirmation par courriel en ce qui concerne l'achèvement d'un article que vous aviez sur la liste des tâches de $1.
 
 Article : $2
 Soumis : $3
@@ -154,9 +158,11 @@ $4',
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin
+ * @author GerardM
  */
 $messages['nl'] = array(
 	'todo'                  => 'Takenlijst',
+	'todo-tab'              => 'taken',
 	'todo-new-queue'        => 'nieuw',
 	'todo-mail-subject'     => 'Afgerond actiepunt op actielijst $1',
 	'todo-mail-body'        => 'U heeft gevraagd om een waarschuwing bij het sluiten van een actiepunt op de actielijst van $1.
@@ -183,7 +189,6 @@ $4',
 	'todo-form-details'     => 'Details:',
 	'todo-form-email'       => 'Voer hier uw e-mailadres in om een melding te krijgen als dit onderwerp wordt gesloten:',
 	'todo-form-submit'      => 'Zoekopdracht uitvoeren',
-
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

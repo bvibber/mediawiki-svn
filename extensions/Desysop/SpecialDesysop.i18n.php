@@ -180,6 +180,13 @@ $wgDesysopMessages['la'] = array(
 	'desysopnot_sysop'     => 'Hic usor not est magistratus',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$wgDesysopMessages['lb'] = array(
+	'desysopname' => 'Benotzernumm:',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */

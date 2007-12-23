@@ -80,6 +80,13 @@ Er is een nieuwe gebruiker $2 aangemaakt om $3 op $4.',
 	'newusernotifbody' => 'Bondì $1, un neuv utent, $2, a l\'é stait creà ansima a $3 dël $4.',
 ),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+'stq' => array(
+	'newusernotifsubj' => 'Bescheedtällen foar $1 uur ju Iengjuchtenge fon n näi Benutserkonto',
+),
+
 'tet' => array(
 	'newusernotifsubj' => 'Mensajen kona-ba uza-na\'in foun ba $1',
 	'newusernotifbody' => 'Olá $1,\n\nuza-na\'in foun, $2, registrar tiha iha $3 iha loron $4.',

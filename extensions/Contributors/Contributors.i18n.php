@@ -268,6 +268,14 @@ function efContributorsMessages() {
 	'contributors-others' => 'et $1 alia',
 ),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+'lb' => array(
+	'contributors-target' => 'Titel:',
+	'contributors-submit' => 'Weisen',
+),
+
 'nds' => array(
 	'contributors' => 'Lüüd, de bidragen hebbt',
 	'contributors-toolbox' => 'Lüüd, de wichtige Delen bidragen hebbt',

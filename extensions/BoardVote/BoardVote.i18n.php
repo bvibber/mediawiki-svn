@@ -726,6 +726,14 @@ Vos seréd redirigiê vers cél sèrvior de defôr en 20 secondes. [$1 Clicâd i
 
 Un avèrtissement regardent un cèrtificat pas signê serat pôt-étre afichiê.',
 );
+
+/** Irish (Gaeilge)
+ * @author SPQRobin
+ */
+$wgBoardVoteMessages['ga'] = array(
+	'boardvote_dumplink' => 'Gliogáil anseo',
+);
+
 $wgBoardVoteMessages['gl'] = array(
 	'boardvote'               => 'Elección dos Membros do Consello de Administración de Wikimedia',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Votar]]
@@ -1336,6 +1344,25 @@ $wgBoardVoteMessages['la'] = array(
 	'boardvote_edits_many'    => 'plurimae',
 	'boardvote_welcome'       => 'Salve \'\'\'$1\'\'\'!',
 );
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$wgBoardVoteMessages['lb'] = array(
+	'boardvote_novotes'    => 'Et huet nach keen ofgestëmmt.',
+	'boardvote_time'       => 'Zäit',
+	'boardvote_user'       => 'Benotzer',
+	'boardvote_edits'      => 'Editen',
+	'boardvote_days'       => 'Deeg',
+	'boardvote_ip'         => 'IP',
+	'boardvote_dumplink'   => 'Hei klicken',
+	'boardvote_submit'     => 'Ofstëmmen',
+	'boardvote_strike'     => 'Stëmm läschen',
+	'boardvote_notstarted' => "D'Ofstëmmung huet nach net ugefaang",
+	'boardvote_edits_many' => 'vill',
+	'boardvote_welcome'    => "Wëllkomm '''$1'''!",
+);
+
 $wgBoardVoteMessages['loz'] = array(
 	'boardvote_user'          => 'Sebelu',
 	'boardvote_submit'        => 'Afi',

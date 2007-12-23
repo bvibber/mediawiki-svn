@@ -744,6 +744,15 @@ $messages = array(
 		'ogg-desc-link' => 'O tomto súbore',
 	),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+	'stq' => array(
+		'ogg-no-xiphqt' => 'Dien System schient nit uur ju XiphQT-Komponente foar QuickTime tou ferföigjen. QuickTime kon sunner disse Komponente neen Ogg-Doatäie ouspielje. 
+Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">leede XiphQT</a> of wääl ne uur Ouspielsoftware.',
+		'ogg-desc-link' => 'Uur disse Doatäi',
+	),
+
 	'sv' => array(
 		'ogg-short-audio'      => 'Ogg $1 ljudfil, $2',
 		'ogg-short-video'      => 'Ogg $1 videofil, $2',

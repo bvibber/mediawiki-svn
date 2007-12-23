@@ -19,6 +19,14 @@ $messages['ar'] = array(
 	'protectsection_forbidden'  => 'محظور',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'protectsection_add_remove' => 'Опитахте се да добавите или премахнете защитен раздел.',
+	'protectsection_modify'     => 'Опитахте се да промените защитен текст.',
+);
+
 $messages['de'] = array(
 	'protectsection_add_remove' => 'Du hast versucht, einen geschützten Abschnitt hinzuzufügen oder zu entfernen.',
 	'protectsection_modify'     => 'Du hast versucht, einen geschützten Text zu bearbeiten.',
@@ -71,4 +79,13 @@ $messages['oc'] = array(
 	'protectsection_add_remove' => "Avètz ensajat d'ajustar o d'escafar una seccion protegida.",
 	'protectsection_modify'     => 'Avètz ensajat de modificar de tèxt protegit.',
 	'protectsection_forbidden'  => 'Interdich',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'protectsection_add_remove' => 'Du hääst fersoacht, n schutseden Ousnit bietoutouföigjen of wächtouhoaljen.',
+	'protectsection_modify'     => 'Du hääst fersoacht, n schutseden Text tou beoarbaidjen.',
+	'protectsection_forbidden'  => 'Ferbeeden',
 );

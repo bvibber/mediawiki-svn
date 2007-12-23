@@ -245,6 +245,22 @@ Pamätajte: \'\'\'Týmto spôsobom už svoje privilégiá nedostanete naspäť!\
 	'resign-logentry' => 'odstránil svoje privilégiá $2',
 ),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+'stq' => array(
+	'resign'           => 'Touräächgoawe fon Begjuchtigengen',
+	'resign-text'      => "Du koast ap disse Siede '''dien Begjuchtigengen touräächreeke''' (t.B. ju Administrator-Begjuchtigenge). Wröigje do Begjuchtigengen, do du touräächreeke moatest.
+
+Wichtich: '''Dissen Stap kon nit tourääch annerd wäide!''' Du moast n Bürokroat of Steward kontaktierje, uum dien Gjuchte wiertoukriegen. Benutsje disse Siede deeruum bloot ätter suurgfooldige Uurlääsenge.",
+	'resign-reason'    => 'Gruund:',
+	'resign-confirm'   => 'Iek bestäätigje, dät iek aal markierde Begjuchtigengen touräächreeke moate.',
+	'resign-noconfirm' => 'Markier dät Bestäätigengsfäild, uum dien Begjuchtigengen touräächtoureeken.',
+	'resign-nogroups'  => 'Markier do Begjuchtigengen, do du touräächreeke moatest.',
+	'resign-success'   => "'''Ju Touräächgoawe fon do Begjuchtigengen hiede Ärfoulch.'''",
+	'resign-logentry'  => 'roate ju/do Begjuchtigenge(n) $2 tourääch',
+),
+
 'wa' => array(
 	'resign' => 'Si rsaetchî',
 	'resign-text' => 'Vos ploz \'\'\'rissaetchî vos permissions\'\'\' (eg d\' manaedjeu) e cisse pådje ci. S\' i vs plait verifyîz les permissions ki vos vs voloz rsaetchî.

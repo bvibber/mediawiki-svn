@@ -917,6 +917,35 @@ i administratori baze podataka ih mogu ručno vratiti ako napravite grešku.",
 'oversight-view' => 'detalji',
 ),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+'stq' => array(
+	'hiderevision-text'          => "Dit duur '''bloot''' in do foulgjende Falle geböäre:
+* Persöönelke Informatione:
+*: ''Realname, Adresse, Telefonnummer un äänelke privoate Details''
+
+'''Die Misbruuk fon dit System lukt dän Ferljus fon disse Gjuchte ätter sik!'''
+
+Wächhoalde Versione sunt truch neemens moor uur ju Website ientoukiekjen.
+Jo wäide oawers protokollierd un konnen bie n Failer truch n Doatenboankadministrator wier häärstoald wäide.",
+	'hiderevision-reason'        => 'Gruund (wäd uunsichtboar protokollierd):',
+	'hiderevision-norevisions'   => 'Der wuude neen Version ounroat toun Wächhoaljen.',
+	'hiderevision-noreason'      => 'Jie mouten n Gruund foar dät Wächhoaljen ounreeke.',
+	'hiderevision-status'        => 'Version $1: $2',
+	'hiderevision-success'       => 'Mäd Ärfoulch archivierd un wächhoald.',
+	'hiderevision-error-current' => 'Ju lääste Beoarbaidenge fon ne Siede kon nit wächhoald wäide. Sät ju Beoarbaidenge eerste tourääch.',
+	'oversight-nodiff'           => 'Der is neen Versionsfergliek muugelk, deer et apstuuns neen fröiere Version fon disse Siede rakt.
+Muugelke Gruunde:
+*Ju Siede wuude läsked
+*Ju wächhoalde Version waas ju eerste Version',
+	'oversight-log-hiderev'      => 'Hoalde ne Beoarbaidenge fon $1 wäch',
+	'oversight'                  => 'Fersjoon',
+	'oversight-view'             => 'Details',
+	'oversight-difference'       => '(Unnerscheed tou ju foarige ferblieuwene Version)',
+	'oversight-prev'             => 'Lääste foarige Version',
+),
+
 'tet' => array(
 	'hiderevision-prompt' => 'Sura versaun nian ne\'ebé hakarak halakon:',
 	'hiderevision-tab' => 'Subar versaun',

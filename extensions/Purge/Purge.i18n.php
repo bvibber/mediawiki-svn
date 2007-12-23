@@ -47,3 +47,17 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'purge' => 'purgar',
 );
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'purge' => 'Cache loosmoakje',
+);
+
+/** Tonga (faka-Tonga)
+ * @author Tauʻolunga
+ */
+$messages['to'] = array(
+	'purge' => 'fakamaʻa',
+);

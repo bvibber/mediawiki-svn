@@ -253,6 +253,17 @@ function efBookInformationMessages() {
 	'bookinfo-result-year' => 'Annus:',
 ),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+'lb' => array(
+	'bookinfo-header'            => 'Informatiounen iwwer Bicher',
+	'bookinfo-result-title'      => 'Titel:',
+	'bookinfo-result-author'     => 'Auteur:',
+	'bookinfo-result-year'       => 'Joer:',
+	'bookinfo-error-invalidisbn' => 'Dir hutt eng ISBN aginn déi et net gëtt.',
+),
+
 /* nld / Dutch (Dirk Beetstra) */
 'nl' => array(
 	'bookinfo-header' => 'Boekinformatie',
