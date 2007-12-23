@@ -72,7 +72,7 @@ $wgChemFunctions_Messages['en'] = array(
 	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />
 	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS at the Oxford University (UK) (not searchable)</a><br />',
 	'chemFunctions_CAS' => 'CAS number',
-	'chemFunctions_EINECS' => 'Einecs',
+	'chemFunctions_EINECS' => 'EINECS',
 	'chemFunctions_CHEBI' => 'CHEBI',
 	'chemFunctions_PubChem' => 'PubChem',
 	'chemFunctions_SMILES' => 'SMILES',
@@ -126,7 +126,7 @@ $wgChemFunctions_Messages['de'] = array(
 	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Verbindung $MIXCASNameFormula auf NIST</a><br />
 	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS an der Oxford University (UK) (nicht durchsuchbar)</a><br />',
 	'chemFunctions_CAS' => 'CAS Nummer',
-	'chemFunctions_EINECS' => 'Einecs',
+	'chemFunctions_EINECS' => 'EINECS',
 	'chemFunctions_CHEBI' => 'CHEBI',
 	'chemFunctions_PubChem' => 'PubChem',
 	'chemFunctions_SMILES' => 'SMILES',
@@ -207,7 +207,7 @@ $wgChemFunctions_Messages['id'] = array(
 	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Senyawa $MIXCASNameFormula di NIST</a><br />
 	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS di Oxford University (UK) (tanpa fasilitas pencarian)</a><br />',
 	'chemFunctions_CAS' => 'Nomor CAS',
-	'chemFunctions_EINECS' => 'Einecs',
+	'chemFunctions_EINECS' => 'EINECS',
 	'chemFunctions_CHEBI' => 'CHEBI',
 	'chemFunctions_PubChem' => 'PubChem',
 	'chemFunctions_SMILES' => 'SMILES',
@@ -230,7 +230,7 @@ $wgChemFunctions_Messages['it'] = array(
 	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Scheda del composto $MIXCASNameFormula presso il NIST</a><br />
 	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">Scheda di sicurezza MSDS presso la Oxford University (UK) (ricerca non attiva)</a><br />',
 	'chemFunctions_CAS' => 'Numero CAS',
-	'chemFunctions_EINECS' => 'Einecs',
+	'chemFunctions_EINECS' => 'EINECS',
 	'chemFunctions_CHEBI' => 'CHEBI',
 	'chemFunctions_PubChem' => 'PubChem',
 	'chemFunctions_SMILES' => 'SMILES',
@@ -315,7 +315,7 @@ $wgChemFunctions_Messages['ru'] = array(
 	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Соединение $MIXCASNameFormula на сайте NIST</a><br />
 	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS на сайте Оксфордского университета (Великобритания) (поиск отсутствует)</a><br />',
 	'chemFunctions_CAS' => 'CAS-число',
-	'chemFunctions_EINECS' => 'Einecs',
+	'chemFunctions_EINECS' => 'EINECS',
 	'chemFunctions_CHEBI' => 'CHEBI',
 	'chemFunctions_PubChem' => 'PubChem',
 	'chemFunctions_SMILES' => 'SMILES',
@@ -339,7 +339,7 @@ $wgChemFunctions_Messages['sk'] = array(
 	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Zlúčenina $MIXCASNameFormula na NIST</a><br />
 	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Oxford University (UK) (nedá sa vyhľadávať)</a><br />',
 	'chemFunctions_CAS' => 'CAS číslo',
-	'chemFunctions_EINECS' => 'Einecs',
+	'chemFunctions_EINECS' => 'EINECS',
 	'chemFunctions_CHEBI' => 'CHEBI',
 	'chemFunctions_PubChem' => 'PubChem',
 	'chemFunctions_SMILES' => 'SMILES',
@@ -363,7 +363,7 @@ $wgChemFunctions_Messages['sr-ec'] = array(
 	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Једињење $MIXCASNameFormula на NIST</a><br />
 	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS на Оксфордском универзитету (УК) (немогућа претрага)</a><br />',
 	'chemFunctions_CAS' => 'CAS број',
-	'chemFunctions_EINECS' => 'Einecs',
+	'chemFunctions_EINECS' => 'EINECS',
 	'chemFunctions_CHEBI' => 'CHEBI',
 	'chemFunctions_PubChem' => 'PubChem',
 	'chemFunctions_SMILES' => 'SMILES',
@@ -387,7 +387,7 @@ $wgChemFunctions_Messages['sr-el'] = array(
 	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Jedinjenje $MIXCASNameFormula na NIST</a><br />
 	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Oksfordskom univerzitetu (UK) (nemoguća pretraga)</a><br />',
 	'chemFunctions_CAS' => 'CAS broj',
-	'chemFunctions_EINECS' => 'Einecs',
+	'chemFunctions_EINECS' => 'EINECS',
 	'chemFunctions_CHEBI' => 'CHEBI',
 	'chemFunctions_PubChem' => 'PubChem',
 	'chemFunctions_SMILES' => 'SMILES',
@@ -430,7 +430,7 @@ $wgChemFunctions_Messages['vi'] = array(
 	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Chất $MIXCASNameFormula tại NIST</a><br />
 	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS tại Đại học Oxford (Anh)</a> (không có bộ tìm kiếm)<br />',
 	'chemFunctions_CAS' => 'Số CAS',
-	'chemFunctions_EINECS' => 'Einecs',
+	'chemFunctions_EINECS' => 'EINECS',
 	'chemFunctions_CHEBI' => 'CHEBI',
 	'chemFunctions_PubChem' => 'PubChem',
 	'chemFunctions_SMILES' => 'SMILES',
