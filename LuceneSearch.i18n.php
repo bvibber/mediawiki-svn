@@ -580,13 +580,16 @@ Petere $3 $9 $10',
  * @author Robby
  */
 $wgLuceneSearchMessages['lb'] = array(
+	'searchnumber'          => '<strong>Resultater $1–$2 vun $3</strong>',
 	'lucene-searchscore'    => 'Relevanz: $1 %',
 	'lucene-resultsize'     => '$1 ($2 Wierder)',
 	'searchdidyoumean'      => 'Méngt Dir "<a href="$1">$2</a>"?',
+	'searchnoresults'       => 'Pardon, et goufe keng Säiten fir är Ufro fontt.',
 	'lucenepowersearchtext' => 'Sich am Nummraum $1
 
 Sichen no $3 $9 $10',
 	'searchall'             => 'all',
+	'searchincategory'      => 'an der Kategorie',
 );
 
 $wgLuceneSearchMessages['lo'] = array(
