@@ -165,8 +165,7 @@ $wgLuceneSearchMessages['cs'] = array(
 	'lucene-resultsize'     => '$1 ($2 slov)',
 	'searchdidyoumean'      => 'Nehledáte „<a href="$1">$2</a>“?',
 	'searchnoresults'       => 'Je mi líto, ale vašemu dotazu žádné stránky přesně neodpovídají.',
-	'searchnearmatches'     => '<b>Následující stránky mají nadpis podobný vašemu dotazu:</b>
-',
+	'searchnearmatches'     => '<b>Následující stránky mají nadpis podobný vašemu dotazu:</b>',
 	'lucenepowersearchtext' => '
 Hledat ve jmenných prostorech:
 
@@ -218,8 +217,7 @@ $wgLuceneSearchMessages['eo'] = array(
 	'lucene-resultsize'     => '$1 ($2 vortoj)',
 	'searchdidyoumean'      => 'Ĉu vi celis : "<a href="$1">$2</a>"?',
 	'searchnoresults'       => 'Bedaŭrinde ne estas precize kongrua rezulto por via serĉo.',
-	'searchnearmatches'     => '<b>Ĉi tiuj paĝoj havas titolojn similajn al via serĉo:</b>
-',
+	'searchnearmatches'     => '<b>Ĉi tiuj paĝoj havas titolojn similajn al via serĉo:</b>',
 	'lucenepowersearchtext' => '
 Serĉo en nomspacoj:
 
@@ -228,8 +226,7 @@ $1
 Serĉo de $3 $9 $10',
 	'lucenefallback'        => 'Estis problemo kun la serĉilo de ĉi vikio.
 Estas verŝajne nur portempa; bonvolu provi denove post iom da tempo
-aŭ vi povas esplori la vikion per eksteraj serĉservoj.
-',
+aŭ vi povas esplori la vikion per eksteraj serĉservoj.',
 );
 $wgLuceneSearchMessages['es'] = array(
 	'searchnumber'          => '<strong>Resultados $1-$2 de $3</strong>',
@@ -313,6 +310,14 @@ Texte à rechercher : $3 $9 $10',
 	'searchall'             => 'Tous',
 	'searchincategory'      => 'Chercher dans les catégories',
 );
+
+/** Irish (Gaeilge)
+ * @author SPQRobin
+ */
+$wgLuceneSearchMessages['ga'] = array(
+	'searchdidyoumean' => 'An raibh tú ag lorg ar an bhfrása seo? "<a href="$1">$2</a>"',
+);
+
 $wgLuceneSearchMessages['gl'] = array(
 	'searchnumber'          => '<strong>Resultados $1-$2 de $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Anterior</span>',
@@ -445,23 +450,30 @@ $1
 Leita að $3 $9',
 );
 
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
 $wgLuceneSearchMessages['it'] = array(
-	'searchnumber'          => "<strong>Risultati da $1 a $2 su un totale di $3</strong>",
+	'searchnumber'          => '<strong>Risultati da $1 a $2 su un totale di $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Precedente</span>",
 	'searchnext'            => "<span style='font-size: small'>Successivo</span> &#x00BB;",
-	'lucene-searchscore'    => "Pertinenza: $1%",
-	'lucene-resultsize'     => "$1 ($2 parole)",
-	'searchdidyoumean'      => "Forse stavi cercando: \"<a href=\"$1\">$2</a>\"?",
-	'searchnoresults'       => "La funzione di ricerca non ha trovato corrispondenze esatte con il testo cercato.",
-	'searchnearmatches'     => "<b>Le pagine elencate di seguito hanno titoli simili al testo cercato:</b>\n",
-	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "
-Cerca nei namespace selezionati:\n
-$1\n
-Testo da ricercare $3 $9 $10",
-	'lucenefallback'        => "Il motore di ricerca interno ha un problema. 
+	'lucene-searchscore'    => 'Pertinenza: $1%',
+	'lucene-resultsize'     => '$1 ($2 parole)',
+	'searchdidyoumean'      => 'Forse stavi cercando: "<a href="$1">$2</a>"?',
+	'searchnoresults'       => 'La funzione di ricerca non ha trovato corrispondenze esatte con il testo cercato.',
+	'searchnearmatches'     => '<b>Le pagine elencate di seguito hanno titoli simili al testo cercato:</b>',
+	'lucenepowersearchtext' => '
+Cerca nei namespace selezionati:
+
+$1
+
+Testo da ricercare $3 $9 $10',
+	'lucenefallback'        => 'Il motore di ricerca interno ha un problema. 
 	Probabilmente si tratta di un errore temporaneo, destinato a risolversi in breve tempo. 
-	Nel frattempo, si consiglia di riprovare tra qualche istante o di utilizzare un motore di ricerca esterno:\n"
+	Nel frattempo, si consiglia di riprovare tra qualche istante o di utilizzare un motore di ricerca esterno:',
+	'searchexactcase'       => 'Rispetta maiuscole/minuscole',
+	'searchall'             => 'tutti',
+	'searchincategory'      => 'incategoria',
 );
 
 $wgLuceneSearchMessages['ja'] = array(
@@ -472,16 +484,14 @@ $wgLuceneSearchMessages['ja'] = array(
 	'lucene-resultsize'     => '$1 （$2語）',
 	'searchdidyoumean'      => 'もしかして: "<a href="$1">$2</a>"',
 	'searchnoresults'       => '該当するページが見つかりませんでした。',
-	'searchnearmatches'     => '<b>タイトルが検索語に近い項目:</b>
-',
+	'searchnearmatches'     => '<b>タイトルが検索語に近い項目:</b>',
 	'lucenepowersearchtext' => '
 検索する名前空間:
 
 $1
 
 検索語: $3 $9 $10',
-	'lucenefallback'        => '検索中に一時的な問題が発生しました。しばらく経ってから再度検索するか、外部の検索サービスを使用してください:
-',
+	'lucenefallback'        => '検索中に一時的な問題が発生しました。しばらく経ってから再度検索するか、外部の検索サービスを使用してください:',
 );
 
 $wgLuceneSearchMessages['kaa'] = array(
@@ -564,6 +574,19 @@ $wgLuceneSearchMessages['la'] = array(
 $1
 
 Petere $3 $9 $10',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$wgLuceneSearchMessages['lb'] = array(
+	'lucene-searchscore'    => 'Relevanz: $1 %',
+	'lucene-resultsize'     => '$1 ($2 Wierder)',
+	'searchdidyoumean'      => 'Méngt Dir "<a href="$1">$2</a>"?',
+	'lucenepowersearchtext' => 'Sich am Nummraum $1
+
+Sichen no $3 $9 $10',
+	'searchall'             => 'all',
 );
 
 $wgLuceneSearchMessages['lo'] = array(
@@ -689,8 +712,7 @@ $wgLuceneSearchMessages['pl'] = array(
 	'lucene-resultsize'     => '$1 ($2 słów)',
 	'searchdidyoumean'      => 'Może chodziło Ci o "<a href="1">$2</a>"?',
 	'searchnoresults'       => 'Niestety nie znaleziono stron pasujących do podanych kryteriów wyszukiwania.',
-	'searchnearmatches'     => '<b>Strony o podobnych nazwach:</b>
-',
+	'searchnearmatches'     => '<b>Strony o podobnych nazwach:</b>',
 	'lucenepowersearchtext' => '
 Szukaj w przestrzeniach nazw:
 
@@ -699,8 +721,7 @@ $1
 Szukana fraza $3 $9 $10',
 	'lucenefallback'        => 'Wystąpił błąd z wyszukiwaniem w wiki.
 Jest to tymczasowe; spróbuj ponownie za parę chwil
-lub przeszukaj wiki za pomocą zewnętrznych wyszukiwarek:
-',
+lub przeszukaj wiki za pomocą zewnętrznych wyszukiwarek:',
 	'searchexactcase'       => 'Szukanie czułe na wielkość znaków',
 	'searchall'             => 'wszystkie',
 	'searchincategory'      => 'w kategorii',
@@ -734,8 +755,7 @@ $wgLuceneSearchMessages['pt'] = array(
 	'lucene-searchscore'    => 'Relevância: $1%',
 	'searchdidyoumean'      => 'Você quis dizer: "<a href="$1">$2</a>"?',
 	'searchnoresults'       => 'Desculpe, mas não existem resultados exatos correspondentes à sua procura.',
-	'searchnearmatches'     => '<b>As páginas a seguir possuem títulos similares com o que você pesquisou:</b>
-',
+	'searchnearmatches'     => '<b>As páginas a seguir possuem títulos similares com o que você pesquisou:</b>',
 		'lucenepowersearchtext' => '
 Pesquisar nos espaços nominais:
 
@@ -744,8 +764,7 @@ $1
 Pesquisar por $3 $9 $10',
 	'lucenefallback'        => 'Há um problema com a busca neste wiki.
 Provavelmente seja apenas uma falha temporária; tente novamente mais tarde,
-ou procure por conteúdos neste wiki através de um mecanismo externo:
-',
+ou procure por conteúdos neste wiki através de um mecanismo externo:',
 	'searchexactcase'       => 'Pesquisar esta grafia exata',
 	'searchall'             => 'tudo',
 	'searchincategory'      => 'na categoria',
@@ -762,8 +781,7 @@ $wgLuceneSearchMessages['ru'] = array(
 	'lucene-resultsize'     => '$1 ($2 слов)',
 	'searchdidyoumean'      => 'Возможно, вы имели в виду «<a href="1">$2</a>»?',
 	'searchnoresults'       => 'К сожалению, по вашему запросу не было найдено точных соответствий.',
-	'searchnearmatches'     => '<b>Следующие страницы имеют заголовок, похожий на ваш запрос:</b>
-',
+	'searchnearmatches'     => '<b>Следующие страницы имеют заголовок, похожий на ваш запрос:</b>',
 	'lucenepowersearchtext' => '
 Поиск в пространствах имён:
 
@@ -772,8 +790,7 @@ $1
 Поисковый запрос $3 $9 $10',
 	'lucenefallback'        => 'Возникла проблема с поиском по вики.
 Вероятно, эта временная проблема, попробуйте ещё раз чуть позже,
-либо воспользуйтесь поиском во внешних поисковых системах.
-',
+либо воспользуйтесь поиском во внешних поисковых системах.',
 	'searchexactcase'       => 'Искать с учётом регистра',
 	'searchall'             => 'все',
 	'searchincategory'      => 'в категории',
