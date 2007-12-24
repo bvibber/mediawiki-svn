@@ -1,8 +1,9 @@
 body {
 	color: black;
-	background: #f0f0f0;
+	/* background: #f0f0f0; */
 	font-family: sans-serif;
 	font-size: smaller;
+	background: url('http://upload.wikimedia.org/wiktionary/is/9/91/grunnur.jpg') 0px 0px repeat ;
 }
 
 a img {
