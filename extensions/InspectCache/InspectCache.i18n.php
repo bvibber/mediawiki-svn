@@ -120,6 +120,19 @@ $messages['oc'] = array(
 	'inspectcache-deleted' => 'Amagatal suprimit',
 );
 
+/** Russian (Русский)
+ * @author VasilievVV
+ */
+$messages['ru'] = array(
+	'inspectcache'         => 'Просмотр кэша',
+	'inspectcache-general' => 'Общий кэш',
+	'inspectcache-parser'  => 'Кэш парсера',
+	'inspectcache-message' => 'Кэш сообщений',
+	'inspectcache-get'     => 'Получить',
+	'inspectcache-delete'  => 'Удалить',
+	'inspectcache-deleted' => 'Кэш удалён',
+);
+
 $messages['sk'] = array(
 	'inspectcache' => 'Inšpekcia vyrovnávacej pamäte',
 	'inspectcache-ok' => 'OK',#identical but defined

@@ -228,6 +228,13 @@ $wgLinkSearchMessages['lo'] = array(
 	'linksearch'       => 'ຄົ້ນຫາການເຊື່ອມຕໍ່ຫາເວັບ',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Pdxx
+ */
+$wgLinkSearchMessages['lt'] = array(
+	'linksearch' => 'Ieškoti interneto nuorodose',
+);
+
 $wgLinkSearchMessages['nan'] = array(
 	'linksearch'       => 'Chhiau-chhoē chām-goā liân-kiat',
 );

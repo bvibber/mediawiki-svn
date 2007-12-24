@@ -128,6 +128,7 @@ $1',
 	),
 
 /** French (Français)
+ * @author Grondin
  * @author Dereckson
  * @author Sherbrooke
  */
@@ -144,10 +145,39 @@ $1',
 		'webstore_access'                  => 'Ce service est restreint par adresse IP.',
 		'webstore_path_invalid'            => "Le nom de fichier n'est pas correct.",
 		'webstore_dest_open'               => 'Impossible d\'ouvrir le fichier de destination "$1".',
+		'webstore_dest_lock'               => 'Échec pour obtenir le verrouillage sur le fichier de destination « $1 ».',
 		'webstore_dest_mkdir'              => 'Impossible de créer le répertoire "$1".',
+		'webstore_archive_lock'            => 'Échec pour obtenir le verrouillage du fichier archivé « $1 ».',
+		'webstore_archive_mkdir'           => "Impossible de créer le répertoire d'archivage « $1 ».",
+		'webstore_src_open'                => 'Impossible d’ouvrir le fichier source « $1 ».',
+		'webstore_src_close'               => 'Erreur de fermeture du fichier source « $1 ».',
+		'webstore_src_delete'              => 'Erreur de suppression du fichier source « $1 ».',
+		'webstore_rename'                  => 'Erreur de renommage du fichier « $1 » en « $2 ».',
+		'webstore_lock_open'               => "Erreur d'ouverture du fichier verrouillé « $1 ».",
+		'webstore_lock_close'              => 'Erreur de fermeture du fichier verrouillé « $1 ».',
+		'webstore_dest_exists'             => 'Erreur, le fichier de destination « $1 » existe.',
+		'webstore_temp_open'               => "Erreur d'ouverture du fichier temporaire « $1 ».",
+		'webstore_temp_copy'               => 'Erreur de copie du fichier temporaire « $1 » vers le fichier de destination « $2 ».',
+		'webstore_temp_close'              => 'Erreur de fermeture du fichier temporaire « $1 ».',
+		'webstore_temp_lock'               => 'Erreur de verrouillage du fichier temporaire « $1 ».',
+		'webstore_no_archive'              => "Le fichier de destination existe et aucune archive n'a été donnée.",
+		'webstore_no_file'                 => "Aucun fichier n'a été téléchargé.",
+		'webstore_move_uploaded'           => 'Erreur de déplacement du fichier téléchargé « $1 » vers l’emplacement temporaire « $2 ».',
+		'webstore_invalid_zone'            => 'Zone « $1 » invalide.',
+		'webstore_no_deleted'              => "Aucun répertoire d’archive pour les fichiers supprimés n'a été défini.",
+		'webstore_curl'                    => 'Erreur depuis cURL : $1',
 		'webstore_404'                     => 'Fichier non trouvé.',
 		'webstore_php_warning'             => 'PHP Warning: $1',
+		'webstore_metadata_not_found'      => 'Fichier non trouvé : $1',
+		'webstore_postfile_not_found'      => 'Fichier à enregistrer non trouvé.',
+		'webstore_scaler_empty_response'   => "L’échantillonnage de l'image a donné une réponse nulle avec un code de 200 réponses. Ceci pourrait être du à une erreur de l'échantillonage.",
+		'webstore_invalid_response'        => 'Réponse invalide depuis le serveur : 
+
+$1',
 		'webstore_no_response'             => 'Le serveur ne répond pas',
+		'webstore_backend_error'           => 'Erreur depuis le serveur de stockage : 
+
+$1',
 		'webstore_php_error'               => 'Les erreurs PHP suivantes sont survenues :',
 		'webstore_no_handler'              => 'Ce type MIME ne peut être transformé.',
 	),

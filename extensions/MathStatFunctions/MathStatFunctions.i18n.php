@@ -92,6 +92,16 @@ $wgMathStatFunctionsMessages['pms'] = array(
 	'msfunc_inf' => 'Arzultà anfinì',
 	'msfunc_div_zero' => 'Division për zero',
 );
+
+/** Russian (Русский)
+ * @author VasilievVV
+ */
+$wgMathStatFunctionsMessages['ru'] = array(
+	'msfunc_nan'      => 'Результат не является числом',
+	'msfunc_inf'      => 'Результат является бесконечностью',
+	'msfunc_div_zero' => 'Деление на нуль',
+);
+
 $wgMathStatFunctionsMessages['sr-ec'] = array(
         'msfunc_nan' => "Резултат није број" ,
         'msfunc_inf' => "Резултат је бесконачан" ,

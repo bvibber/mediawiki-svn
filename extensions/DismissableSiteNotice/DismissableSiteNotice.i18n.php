@@ -101,6 +101,13 @@ $wgDismissableSiteNoticeMessages['he'] = array(
 	'sitenotice_close' => 'הסתרה',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$wgDismissableSiteNoticeMessages['hr'] = array(
+	'sitenotice_close' => 'sakrij',
+);
+
 $wgDismissableSiteNoticeMessages['hsb'] = array(
 	'sitenotice_close' => 'schować',
 );

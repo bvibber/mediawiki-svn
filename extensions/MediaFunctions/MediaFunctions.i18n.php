@@ -117,6 +117,14 @@ function efMediaFunctionsMessages() {
 	'mediafunctions-not-exist'     => '"$1" a-i é pa',
 ),
 
+/** Russian (Русский)
+ * @author VasilievVV
+ */
+'ru' => array(
+	'mediafunctions-invalid-title' => '«$1» не является корректным заголовком',
+	'mediafunctions-not-exist'     => '«$1» не существует',
+),
+
 'yue' => array(
 	'mediafunctions-invalid-title' => '"$1" 唔係一個有效嘅標題',
 	'mediafunctions-not-exist'     => '"$1" 唔存在',

@@ -76,6 +76,14 @@ $messages['gl'] = array(
 
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'scanset_next' => 'Slijedeći &gt;',
+	'scanset_prev' => '&lt; Prethodni',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin
@@ -101,4 +109,21 @@ $messages['nl'] = array(
 $messages['oc'] = array(
 	'scanset_next' => 'Seguent &gt;',
 	'scanset_prev' => '&lt; Precedent',
+);
+
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'scanset_no_name'                   => 'ScanSet: Du måste ange ett namn på ett scan-set, t.ex. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: Angivet scan-set är felaktigt eller finns inte.',
+	'scanset_unrecognised_index_format' => 'ScanSet: Okänt indexformat',
+	'scanset_opendir_error'             => 'ScanSet: Fel, kan inte öppna katalogen $1',
+	'scanset_no_files'                  => 'ScanSet: Det finns inga filer i den angivna katalogen.',
+	'scanset_no_volumes'                => 'ScanSet: Inga volymkataloger hittades',
+	'scanset_missing_index_file'        => 'ScanSet: Indexfilen $1 hittades inte',
+	'scanset_index_file_error'          => 'ScanSet: Fel i indexfilsformatet på rad $1',
+	'scanset_invalid_volume'            => 'ScanSet: Ogiltig volym',
+	'scanset_next'                      => 'Nästa &gt;',
+	'scanset_prev'                      => '&lt; Föregående',
 );
