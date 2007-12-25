@@ -82,21 +82,46 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledFromSpecial=false,
 
 	parseArguments( $argv );
 
-	$name = '';
 	$output = '';
 	$fallbackOutput = '';
 
 	if ( $calledAsSet ) {
-		$name = "myGallery" . mt_rand();
-		//parse set into seperate galleries
-		//open galleryset div
-		//iterate through galleries, and call renderGallery on each
-		//add fallback to fallback output
-		//close galleryset div
-	} else {
 		//Give this gallery a random name so that we can have more than one gallery
 		//on a page. But don't do this on a special page, because it will cause
 		//us problems with javascript that uses the css classname
+		if ( $calledFromSpecial ) {
+			$gallerySetName = "myGallerySet";
+		} else {
+			#$gallerySetName = "myGallerySet" . mt_rand();
+			$gallerySetName = "myGallerySet";
+		}
+
+		//Open the div, and initialize any needed variables
+		$output = '<div id="' . $gallerySetName . '" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . '; display: none;" >';
+		$fallbackOutput = '';
+
+		//parse set into seperate galleries
+		preg_match_all( "/<sgallery([\w]+)?[^>]*>(.*)<\/sgallery>/smU", $input, $galleries, PREG_SET_ORDER );
+
+		//iterate through galleries, call renderGallery on each, and
+		//collect the fallback output
+		$i = 1;
+		foreach ( $galleries as $galleryInput ) {
+			if ( $calledFromSpecial ) {
+				$galleryName = "myGallery";
+			} else {
+				$galleryName = "myGallery" . $i;
+			}
+
+			$output .= renderGallery( $galleryName, $galleryInput[2], $parser, $calledFromSpecial, $calledAsSet, $fallbackArray );
+			$fallbackOutput .= renderFallback( $fallbackArray );
+			$i++;
+		}
+
+		$output .= '</div>';
+		$output .= '<div id="' . $gallerySetName . '-fallback">' . $fallbackOutput . '</div>';
+		$output .= renderJavascript( $gallerySetName, true );
+	} else {
 		if ( $calledFromSpecial ) {
 			$name = "myGallery";
 		} else {
@@ -104,11 +129,9 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledFromSpecial=false,
 		}
 
 		$output = renderGallery( $name, $input, $parser, $calledFromSpecial, $calledAsSet, $fallbackArray );
-		$fallbackOutput .= renderFallback( $fallbackArray );
+		$output .= renderFallback( $fallbackArray );
+		$output .= renderJavascript( $name );
 	}
-
-	$output .= $fallbackOutput;
-	$output .= renderJavascript( $name );
 
 	//Finished, let's send it out
 	return $output;
@@ -230,7 +253,12 @@ function renderGallery ( $name, $input, $parser, $calledFromSpecial, $calledAsSe
 	$parser->mOutput->mSmoothGalleryTag = true; # flag for use by smoothGalleryParserOutput
 
 	//Open the outer div of the gallery
-	$output = '<div id="' . $name . '" class="myGallery" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . '; display:none;">';
+	if ( $calledAsSet ) {
+		$output = '<div id="' . $name . '" class="galleryElement">';
+		$output .= '<h2>' . $name . '<h2>';
+	} else {
+		$output = '<div id="' . $name . '" class="myGallery" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . '; display:none;">';
+	}
 
 	//We need a parser to pass to the render function, this
 	//seems kinda dirty, but it works on MediaWiki 1.6-1.9...
@@ -305,7 +333,7 @@ function renderGallery ( $name, $input, $parser, $calledFromSpecial, $calledAsSe
 	//Close the outer div of the gallery
 	$output .= '</div>';
 
-	$fallbackArray = array( 'name'=>$name, 'fallback_image'=>$fallback_image, 'plain_gallery'=>$plain_gallery );
+	$fallbackArray = array( 'name'=>$name, 'fallback_image'=>$fallback_image, 'plain_gallery'=>$plain_gallery, 'img_desc'=>$image_desc );
 
 	return $output;
 }
@@ -316,12 +344,12 @@ function renderFallback ( $fallbackArray ) {
 	$output = '';
 
 	if ( $wgSmoothGalleryArguments["fallback"] == "image" ) {
-		$output .= '<div id="' . $fallbackArray['name'] . '-fallback" class="myGallerySingleImage" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . ';">';
+		$output .= '<div id="' . $fallbackArray['name'] . '-fallback" class="myGallerySingleImage" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . ';" alt="' . $fallbackArray["img_desc"] . '">';
 		$output .= $fallbackArray['fallback_image'];
 		$output .= '</div>';
 	} elseif ( $wgSmoothGalleryArguments["fallback"] == "image-warn" ) {
 		loadSmoothGalleryI18n();
-		$output .= '<div id="' . $fallbackArray['name'] . '-fallback" class="myGalleryWarning" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . ';">';
+		$output .= '<div id="' . $fallbackArray['name'] . '-fallback" class="myGalleryWarning" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . ';" alt="' . $fallbackArray["img_desc"] . '">';
 		$output .= wfMsg("smoothgallery-javascript-disabled");
 		$output .= '<div class="myGallerySingleImage">';
 		$output .= $fallbackArray['fallback_image'];
@@ -422,10 +450,10 @@ function renderImage ( $title, &$img_count, &$missing_img, &$fallback_image, &$p
 	$output .= '<p>' . $fulldesc . '</p>';
 	$output .=  '<a href="' . $title->getFullURL() . '" title="open image" class="open"></a>';
 	$output .=  '<a href="' . $img_obj->getViewURL() . '" title="open image" class="open"></a>';
-	$output .=  '<img src="' . $full_thumb . '"  class="full" />';
+	$output .=  '<img src="' . $full_thumb . '"  class="full" alt="' . $fulldesc . '" />';
 
 	if ( $wgSmoothGalleryArguments["carousel"] ) {
-		$output .=  '<img src="' . $icon_thumb . '"  class="thumbnail" />';
+		$output .=  '<img src="' . $icon_thumb . '"  class="thumbnail" alt="' . $fulldesc . '" />';
 	}
 
 	$output .= '</div>';
@@ -451,7 +479,7 @@ function renderPlainGallery ( $name, $plain_gallery ) {
 	return $output;
 }
 
-function renderJavascript ( $name ) {
+function renderJavascript ( $name, $calledAsSet=false ) {
 	global $wgSmoothGalleryArguments;
 
 	//Output the javascript needed for the gallery with any
@@ -462,7 +490,11 @@ function renderJavascript ( $name ) {
 	$output .= 'document.getElementById("' . $name . '").style.display = "block";'; //show smooth gallery
 
 	$output .= 'function startGallery_' . $name . '() {';
-	$output .= "var myGallery = new gallery($('" . $name . "'), {";
+	if ( $calledAsSet ) {
+		$output .= "var myGallerySet = new gallerySet($('" . $name . "'), {";
+	} else {
+		$output .= "var myGallery = new gallery($('" . $name . "'), {";
+	}
 
 	$output .= 'thumbWidth: 100, thumbHeight: 75'; //would be nice if we could change this to 120x120 to re-use thumbnails...
 
@@ -501,18 +533,12 @@ function renderJavascript ( $name ) {
 	return $output;
 }
 
-function renderSmoothGallerySet( $text, $args, &$parser, $calledFromSpecial ) {
-	//Give this gallery a random name so that we can have more than one gallery
-	//on a page. But don't do this on a special page, because it will cause
-	//us problems with javascript that uses the css classname
-	if ( $calledFromSpecial ) {
-		$name = "myGallerySet";
-	} else {
-		$name = "myGallerySet" . mt_rand();
-	}
+function renderSmoothGallerySet( $input, $args, &$parser, $calledFromSpecial=false ) {
+	$parser->mOutput->mSmoothGallerySetTag = true; # flag for use by smoothGalleryParserOutput
 
-	$output = $parser->recursiveTagParse( $text, $args, $parser, $calledFromSpecial, true );
-	return '<div id="">' . $output . '</div>';
+	$output = renderSmoothGallery( $input, $args, $parser, $calledFromSpecial, true );
+
+	return $output;
 }
 
 /**
