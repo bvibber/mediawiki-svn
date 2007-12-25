@@ -31,6 +31,19 @@ $wgDesysopMessages['bcl'] = array(
 	'desysopname'          => 'Pangaran kan parágamit:',
 	'desysopnot_sysop'     => 'Bakong administrador an parágamit na ini.',
 );
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$wgDesysopMessages['bg'] = array(
+	'desysoptitle'     => 'Отнемане на администраторски права',
+	'desysoptext'      => 'Този формуляр се използва от бюрократите за отнемане на администраторски права. Въвежда се потребителското име в текстовата кутия и се натиска бутона, за да се отнемат администраторските права на потребителя.',
+	'desysopname'      => 'Потребителско име:',
+	'desysopok'        => '<b>Администраторските права на Потребител "$1" бяха отнети</b>',
+	'desysop'          => 'Отнемане на администраторски права',
+	'desysopnot_sysop' => 'Този потребител не е администратор',
+);
+
 $wgDesysopMessages['ca'] = array(
 	'desysopsetrights'     => 'Defineix els permisos d\'usuaris',
 );

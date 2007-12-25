@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Internationalisation file for the PageBy extension
+ * Internationalisation file for the Player extension
  *
  * @package MediaWiki
  * @subpackage Extensions
@@ -14,8 +14,5 @@
  * @author Pyt
  */
 $messages = array(
-	'pageby-first'        => 'Siede anlaid fon $1, $2',
-	'pageby-last'         => 'Toulääst <a href="$3">annerd</a> fon $1, $2',
-	'pageby-contributors' => 'Biedraage:',
-	'pageby-anon'         => '<i>anonym</i>',
+	'player' => 'Player',
 );

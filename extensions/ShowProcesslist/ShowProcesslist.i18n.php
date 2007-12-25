@@ -54,6 +54,7 @@ $messages['de'] = array(
  */
 $messages['el'] = array(
 	'showprocesslist-user' => 'Χρήστης',
+	'showprocesslist-info' => 'Πληροφορίες',
 );
 
 $messages['fr'] = array(

@@ -251,7 +251,8 @@ $wgChemFunctions_Messages['it'] = array(
  * @author Robby
  */
 $wgChemFunctions_Messages['lb'] = array(
-	'chemFunctions_CAS' => 'CAS Nummer',
+	'chemFunctions_CAS'     => 'CAS Nummer',
+	'chemFunctions_Formula' => 'Formel',
 );
 
 $wgChemFunctions_Messages['nl'] = array(

@@ -130,6 +130,22 @@ function efImportFreeImagesMessages() {
 			'importfreeimages_promptuserforfilename' => 'Indicatz lo nom del fichièr de destinacion',
 			'importfreeimages_returntoform'          => "o, clicatz <a href='$1'>aicí</a> per tornar a vòstra lista de resultats.",
 		),
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+		'stq' => array(
+			'importfreeimages'                       => 'Import fon fräie Bielden',
+			'importfreeimages_description'           => 'Disse Siede ferlööwet die, ap Flickr ätter Bielden unner ne fräie Lizenz tou säiken un do in dien Wiki tou importierjen.',
+			'importfreeimages_noapikey'              => 'Du hääst noch naan Flickr-API-Koai konfigurierd. Jädden beandraach him [http://www.flickr.com/services/api/misc.api_keys.html hier] un sät him in $wgFlickrAPIKey in ImportFreeImages.php ien.',
+			'importfreeimages_nophotosfound'         => 'Der wuuden neen Fotos mäd do Säikkriterien „$1“ fuunen.',
+			'importfreeimages_owner'                 => 'Autor',
+			'importfreeimages_importthis'            => 'importierje',
+			'importfreeimages_next'                  => 'Naiste $1',
+			'importfreeimages_filefromflickr'        => '$1 fon Benutser <b>[$2]</b> fon flickr. Originoal URL',
+			'importfreeimages_promptuserforfilename' => 'Reek n Siel-Doatäinoome ien:',
+			'importfreeimages_returntoform'          => "Of klik <a href='$1'>hier</a>, uum tou ju Siede mäd do Säikresultoate touräächtoukuumen.",
+		),
 	);
 	return $messages;
 }

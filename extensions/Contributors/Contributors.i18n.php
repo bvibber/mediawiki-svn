@@ -51,6 +51,14 @@ function efContributorsMessages() {
 	'contributors-nosuchpage' => 'An artikulong $1 mayò man.',
 ),
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+'bg' => array(
+	'contributors-target' => 'Заглавие:',
+	'contributors-submit' => 'Показване',
+),
+
 'bn' => array(
 	'contributors' => 'অবদানকারী',
 	'contributors-toolbox' => 'মূল অবদানকারী',

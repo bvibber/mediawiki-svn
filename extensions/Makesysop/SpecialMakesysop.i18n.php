@@ -807,6 +807,15 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'already_bureaucrat' => 'Hic usor etiam est [[{{MediaWiki:Grouppage-bureaucrat}}|grapheocrates]].',
 ),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+'lb' => array(
+	'makesysopname'        => 'Numm vum Benotzer:',
+	'group-steward'        => 'Stewarden',
+	'group-steward-member' => 'Steward',
+),
+
 'li' => array(
 	'already_sysop'        => 'Deze gebroeker is al systeemwèrker',
 	'already_bureaucrat'   => 'Deze gebroeker is al amtenaer',

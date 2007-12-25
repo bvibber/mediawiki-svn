@@ -266,6 +266,15 @@ sinn kriss wat erus kütt.',
 $wgExpandTemplatesMessages['la'] = array(
 	'expandtemplates'                  => 'Formulas resolvere',
 );
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$wgExpandTemplatesMessages['lb'] = array(
+	'expand_templates_output' => 'Resultat',
+	'expand_templates_ok'     => 'OK',
+);
+
 $wgExpandTemplatesMessages['lo'] = array(
 	'expandtemplates'                  => 'ຂະຫຍາຍແມ່ແບບ',
 );

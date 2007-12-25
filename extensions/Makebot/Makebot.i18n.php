@@ -644,6 +644,13 @@ function efMakeBotMessages() {
 	'makebot-logentryrevoke'  => 'removit statum bot usoris [[$1]]',
 ),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+'lb' => array(
+	'makebot-username' => 'Benotzernumm:',
+),
+
 'li' => array(
 	'makebot'                 => 'Gaef of nöm botsjtatus aaf',
 	'makebot-username'        => 'Gebroekersnaam:',

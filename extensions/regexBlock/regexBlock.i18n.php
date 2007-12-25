@@ -114,6 +114,7 @@ $messages['bg'] = array(
  * @author Consta
  */
 $messages['el'] = array(
+	'regexblock-form-reason'    => 'Λόγος:',
 	'regexblock-stats-username' => 'Για $1',
 	'regexblock-view-reason'    => 'Λόγος: $1',
 );

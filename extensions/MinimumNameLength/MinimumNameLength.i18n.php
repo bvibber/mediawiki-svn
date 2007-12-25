@@ -90,6 +90,13 @@ function efMinimumNameLengthMessages() {
 	'minnamelength-error' => 'قاتىسۋشى اتىڭىز تىم قىسقا.ەڭ كەمٴىندە ۇزىندىعى $1 بولۋى قاجەت.',
 ),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+'lb' => array(
+	'minnamelength-error' => "Äre Benotzernumm ass ze kuerz. D'Mindestlängt ass $1.",
+),
+
 'nl' => array(
 	'minnamelength-error' => 'Uw gebruikersnaam is te kort. De minimale lengte is $1.',
 ),

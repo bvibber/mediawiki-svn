@@ -143,3 +143,14 @@ $messages['sk'] = array(
 	'inspectcache-delete' => 'Zmazať',
 	'inspectcache-deleted' => 'Zmazaná vyrovnávacia pamäť',
 );
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'inspectcache'         => 'Cache bekiekje',
+	'inspectcache-ok'      => 'OK',
+	'inspectcache-general' => 'Algemeenen Cache',
+	'inspectcache-parser'  => 'Parser-Cache',
+	'inspectcache-deleted' => 'Läskeden Cache',
+);

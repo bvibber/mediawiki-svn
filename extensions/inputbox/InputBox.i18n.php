@@ -472,7 +472,13 @@ function efInputBoxMessages() {
 	'createarticle'           => 'Kúdála intfo',
 ),
 
+/** Seeltersk (Seeltersk)
+ * @author Maartenvdbent
+ * @author Pyt
+ */
 'stq' => array(
+	'inputbox-error-no-type'  => 'Du hääst naan Inputbox-Typ ounroat.',
+	'inputbox-error-bad-type' => 'Die Inputbox-Typ „$1“ is uunbekoand. Reek n gultigen Typ an: „create“, „comment“, „search“ of „search2“.',
 	'tryexact'                => 'Fersäik exakte Säike:',
 	'searchfulltext'          => 'Dän ganse Text truchsäike',
 	'createarticle'           => 'Artikkel anlääse',

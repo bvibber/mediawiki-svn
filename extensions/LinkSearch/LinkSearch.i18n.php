@@ -218,12 +218,23 @@ $wgLinkSearchMessages['kk-cn'] = array(
 	'linksearch-line'  => '$2 دەگەننەن $1 سٸلتەگەن',
 	'linksearch-error' => 'بٵدەل نىشاندار تەك سەرۆەر جايى اتاۋىنىڭ باستاۋىندا بولۋى مٷمكٸن.',
 );
+
 $wgLinkSearchMessages['kk'] = $wgLinkSearchMessages['kk-kz'];
+
 $wgLinkSearchMessages['la'] = array(
 	'linksearch'       => 'Quaerere nexus externos',
 	'linksearch-ns'    => 'Spatium nominale:',
 	'linksearch-ok'    => 'Quaerere',
 );
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$wgLinkSearchMessages['lb'] = array(
+	'linksearch-ns' => 'Nummraum:',
+	'linksearch-ok' => 'Sichen',
+);
+
 $wgLinkSearchMessages['lo'] = array(
 	'linksearch'       => 'ຄົ້ນຫາການເຊື່ອມຕໍ່ຫາເວັບ',
 );

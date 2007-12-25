@@ -35,6 +35,14 @@ $messages['ar'] = array(
 	'scanset_prev' => '&lt; السابق',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'scanset_next' => 'Следващи &gt;',
+	'scanset_prev' => '&lt; Предишни',
+);
+
 /** French (Français)
  * @author Dereckson
  */

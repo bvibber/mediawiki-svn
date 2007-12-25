@@ -506,6 +506,16 @@ $messages = array(
 		'ogg-more' => 'Plus...',
 	),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+	'lb' => array(
+		'ogg-pause'   => 'Paus',
+		'ogg-stop'    => 'Stopp',
+		'ogg-more'    => 'Méi ...',
+		'ogg-dismiss' => 'Zoumaachen',
+	),
+
 	'nds' => array(
 		'ogg-short-audio' => 'Ogg-$1-Toondatei, $2',
 		'ogg-short-video' => 'Ogg-$1-Videodatei, $2',
@@ -748,8 +758,11 @@ $messages = array(
  * @author Pyt
  */
 	'stq' => array(
+		'ogg-no-player' => 'Dien System schient uur neen Ouspielsoftware tou ferföigjen. Installier <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ne Ouspielsoftware</a>.',
 		'ogg-no-xiphqt' => 'Dien System schient nit uur ju XiphQT-Komponente foar QuickTime tou ferföigjen. QuickTime kon sunner disse Komponente neen Ogg-Doatäie ouspielje. 
 Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">leede XiphQT</a> of wääl ne uur Ouspielsoftware.',
+		'ogg-more'      => 'Optione …',
+		'ogg-download'  => 'Doatäi spiekerje',
 		'ogg-desc-link' => 'Uur disse Doatäi',
 	),
 

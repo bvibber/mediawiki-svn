@@ -202,6 +202,14 @@ $wgSiteMatrixMessages['la'] = array(
 	'sitematrix-project' => 'Inceptum, nexus ad inceptum, et nexus ad linguam',
 	'sitematrix-others' => 'Alii incepta Vicimediorum',
 );
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$wgSiteMatrixMessages['lb'] = array(
+	'sitematrix-language' => 'Sprooch',
+);
+
 $wgSiteMatrixMessages['li'] = array(
 	'sitematrix' => 'Lies van Wikimedia wiki\'s',
 	'sitematrix-language' => 'Taal',

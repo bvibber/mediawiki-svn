@@ -89,8 +89,21 @@ $messages['ar'] = array(
 	'review_comment' => 'تعليق',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'review_user_details_link' => '(детайли)',
+	'review_comment'           => 'Коментар',
+);
+
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
 $messages['el'] = array(
-	'review_comment' => 'Σχόλιο',
+	'review_no_opinion' => 'Καμία γνώμη',
+	'review_rating'     => 'Αξιολόγηση',
+	'review_comment'    => 'Σχόλιο',
 );
 
 /** French (Français)

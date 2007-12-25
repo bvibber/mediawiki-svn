@@ -78,15 +78,34 @@ on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|
 		'createsigndoc-create' => 'Maggibo',
 		'createsigndoc-error-generic' => 'Salâ: $1',
 	),
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+	'bg' => array(
+		'createsigndoc-pagename'          => 'Страница:',
+		'createsigndoc-phone'             => 'Телефонен номер:',
+		'createsigndoc-create'            => 'Създаване',
+		'createsigndoc-error-generic'     => 'Грешка: $1',
+		'createsigndoc-error-pagenoexist' => 'Грешка: Страницата [[$1]] не съществува.',
+	),
+
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
 	'el' => array(
-		'createsigndoc-pagename' => 'Σελίδα:',
-		'createsigndoc-email' => 'Διεύθυνση ηλεκτρονικού ταχυδρομείου:',
-		'createsigndoc-address' => 'Διεύθυνση Οικίας:',
-		'createsigndoc-phone' => 'Τηλεφωνικός αριθμός:',
-		'createsigndoc-bday' => 'Ημερομηνία Γέννησης:',
-		'createsigndoc-error-generic' => 'Σφάλμα: $1',
+		'createsigndoc-pagename'          => 'Σελίδα:',
+		'createsigndoc-allowedgroup'      => 'Ομάδα:',
+		'createsigndoc-email'             => 'Διεύθυνση ηλεκτρονικού ταχυδρομείου:',
+		'createsigndoc-address'           => 'Διεύθυνση Οικίας:',
+		'createsigndoc-extaddress'        => 'Πόλη, Περιοχή, Χώρα:',
+		'createsigndoc-phone'             => 'Τηλεφωνικός αριθμός:',
+		'createsigndoc-bday'              => 'Ημερομηνία Γέννησης:',
+		'createsigndoc-introtext'         => 'Εισαγωγή:',
+		'createsigndoc-error-generic'     => 'Σφάλμα: $1',
 		'createsigndoc-error-pagenoexist' => 'Σφάλμα: Η σελίδα [[$1]] δεν υπάρχει.',
 	),
+
 	'ext' => array(
 		'createsigndoc-pagename' => 'Páhina:',
 		'createsigndoc-allowedgroup' => 'Alabán premitiu:',
@@ -170,6 +189,22 @@ tamén de que especifica todos os campos exactamente como han de ser \'\'antes d
 		'createsigndoc-pagename' => 'Pagina:',
 		'createsigndoc-error-pagenoexist' => 'Error: Pagina [[$1]] non existit.',
 	),
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+	'lb' => array(
+		'createsigndoc-pagename'          => 'Säit:',
+		'createsigndoc-email'             => 'E-mail Adress:',
+		'createsigndoc-extaddress'        => 'Stad, Regioun/Bundesstaat, Land:',
+		'createsigndoc-phone'             => 'Telefonsnummer:',
+		'createsigndoc-bday'              => 'Geburtsdag:',
+		'createsigndoc-minage'            => 'Mindesalter:',
+		'createsigndoc-hidden'            => 'Verstoppt',
+		'createsigndoc-error-generic'     => 'Feeler: $1',
+		'createsigndoc-error-pagenoexist' => "Feeler: D'Säit [[$1]] gëtt et net.",
+	),
+
 	'nl' => array( 
 		'createsigndocument'         => 'Documentondertekening inschakelen',
 		'createsigndoc-head'         => 

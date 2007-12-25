@@ -9,13 +9,12 @@ function efHideRevisionMessages() {
 
 /* English (Brion Vibber) */
 'en' => array(
-'hiderevision' => 'Permanently hide revisions',
-// Empty form
-'hiderevision-prompt' => 'Revision number to remove:',
-'hiderevision-continue' => 'Continue',
-// Confirmation form
-'hiderevision-text' =>
-"This should '''only''' be used for the following cases:
+	'hiderevision' => 'Permanently hide revisions',
+	// Empty form
+	'hiderevision-prompt' => 'Revision number to remove:',
+	'hiderevision-continue' => 'Continue',
+	// Confirmation form
+	'hiderevision-text' => "This should '''only''' be used for the following cases:
 * Inappropriate personal information
 *: ''home addresses and telephone numbers, social security numbers, etc''
 
@@ -24,31 +23,31 @@ function efHideRevisionMessages() {
 Removed items will not be visible to anyone through the web site,
 but the deletions are logged and can be restored manually by a
 database administrator if you make a mistake.",
-'hiderevision-reason' => 'Reason (will be logged privately):',
-'hiderevision-submit' => 'Hide this data permanently',
-// Tab displayed to allowed users on old revision display
-'hiderevision-tab' => 'Hide revision',
-// Status & errors on action
-'hiderevision-norevisions' => 'No revisions specified to delete.',
-'hiderevision-noreason' => 'You must decribe the reason for this removal.',
-'hiderevision-status' => 'Revision $1: $2',
-'hiderevision-success' => 'Archived and deleted successfully.',
-'hiderevision-error-missing' => 'Not found in database.',
-'hiderevision-error-current' => 'Cannot delete the latest edit to a page. Revert this change first.',
-'hiderevision-error-delete' => 'Could not archive; was it previously deleted?',
-'hiderevision-archive-status' => 'Deleted revision from $1: $2',
-'oversight-nodiff' => 'Unable to track changes as there is currently no previous revision for the page. Either:
+	'hiderevision-reason' => 'Reason (will be logged privately):',
+	'hiderevision-submit' => 'Hide this data permanently',
+	// Tab displayed to allowed users on old revision display
+	'hiderevision-tab' => 'Hide revision',
+	// Status & errors on action
+	'hiderevision-norevisions' => 'No revisions specified to delete.',
+	'hiderevision-noreason' => 'You must decribe the reason for this removal.',
+	'hiderevision-status' => 'Revision $1: $2',
+	'hiderevision-success' => 'Archived and deleted successfully.',
+	'hiderevision-error-missing' => 'Not found in database.',
+	'hiderevision-error-current' => 'Cannot delete the latest edit to a page. Revert this change first.',
+	'hiderevision-error-delete' => 'Could not archive; was it previously deleted?',
+	'hiderevision-archive-status' => 'Deleted revision from $1: $2',
+	'oversight-nodiff' => 'Unable to track changes as there is currently no previous revision for the page. Either:
 *The page was deleted
 *This hidden revision was the first revision',
-// Logging
-'oversight-log-hiderev' => 'removed an edit from $1',
-// Oversight review page
-'oversight' => 'Oversight',
-'oversight-view' => 'details',
-'oversight-difference' => '(Difference from previous remaining revision)',
-'oversight-prev' => 'Last previous revision',
-'oversight-hidden' => 'Hidden revision',
-'oversight-header' => 'Below is a list of revisions recently permanently hidden from public view.
+	// Logging
+	'oversight-log-hiderev' => 'removed an edit from $1',
+	// Oversight review page
+	'oversight' => 'Oversight',
+	'oversight-view' => 'details',
+	'oversight-difference' => '(Difference from previous remaining revision)',
+	'oversight-prev' => 'Last previous revision',
+	'oversight-hidden' => 'Hidden revision',
+	'oversight-header' => 'Below is a list of revisions recently permanently hidden from public view.
 Releasing this information can result in permanent loss of Oversight privileges.',
 ),
 
@@ -96,13 +95,10 @@ Releasing this information can result in permanent loss of Oversight privileges.
 
 /* German (Raymond) */
 'de' => array(
-'hiderevision' => 'Versionen dauerhaft entfernen',
-// Empty form
-'hiderevision-prompt' => 'Zu entfernende Versionsnummer:',
-'hiderevision-continue' => 'Weiter',
-// Confirmation form
-'hiderevision-text' =>
-"Dies darf '''ausschließlich''' in den folgenden Fällen geschehen:
+	'hiderevision' => 'Versionen dauerhaft entfernen',
+	'hiderevision-prompt' => 'Zu entfernende Versionsnummer:',
+	'hiderevision-continue' => 'Weiter',
+	'hiderevision-text' => "Dies darf '''ausschließlich''' in den folgenden Fällen geschehen:
 * Persönliche Informationen:
 *: ''Realname, Adresse, Telefonnummer und ähnlicher privater Details''
 
@@ -110,35 +106,35 @@ Releasing this information can result in permanent loss of Oversight privileges.
 
 Entfernte Versionen sind durch Niemanden mehr über die Website einzusehen.
 Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbankadministrator wiederhergestellt werden",
-'hiderevision-reason' => 'Grund (wird unsichtbar protokolliert):',
-'hiderevision-submit' => 'Entferne diese Daten dauerhaft',
-// Tab displayed to allowed users on old revision display
-'hiderevision-tab' => 'Entferne Versionen',
-// Status & errors on action
-'hiderevision-norevisions' => 'Es wurde keine Version zum Entfernen angegeben.',
-'hiderevision-noreason' => 'Sie müssen einen Grund für die Entfernung angeben.',
-'hiderevision-status' => 'Version $1: $2',
-'hiderevision-success' => 'Erfolgreich archiviert und entfernt.',
-'hiderevision-error-missing' => 'In der Datenbank nicht gefunden.',
-'hiderevision-error-current' => 'Die letzte Bearbeitung einer Seite kann nicht entfernt werden. Setze die Bearbeitung erst zurück.',
-'hiderevision-error-delete' => 'Archivierung nicht möglich. Wurde sie zuvor gelöscht?',
-'hiderevision-archive-status' => 'Gelöschte Versionen von $1: $2',
-'oversight-nodiff' => 'Es ist kein Versionsvergleich möglich, da es gegenwärtig keine frühere Version dieser Seite gibt. Mögliche Gründe:
+	'hiderevision-reason' => 'Grund (wird unsichtbar protokolliert):',
+	'hiderevision-submit' => 'Entferne diese Daten dauerhaft',
+	'hiderevision-tab' => 'Entferne Versionen',
+	'hiderevision-norevisions' => 'Es wurde keine Version zum Entfernen angegeben.',
+	'hiderevision-noreason' => 'Sie müssen einen Grund für die Entfernung angeben.',
+	'hiderevision-status' => 'Version $1: $2',
+	'hiderevision-success' => 'Erfolgreich archiviert und entfernt.',
+	'hiderevision-error-missing' => 'In der Datenbank nicht gefunden.',
+	'hiderevision-error-current' => 'Die letzte Bearbeitung einer Seite kann nicht entfernt werden. Setze die Bearbeitung erst zurück.',
+	'hiderevision-error-delete' => 'Archivierung nicht möglich. Wurde sie zuvor gelöscht?',
+	'hiderevision-archive-status' => 'Gelöschte Versionen von $1: $2',
+	'oversight-nodiff' => 'Es ist kein Versionsvergleich möglich, da es gegenwärtig keine frühere Version dieser Seite gibt. Mögliche Gründe:
 *Die Seite wurde gelöscht
 *Die entfernte Version war die erste Version',
-// Logging
-'oversight-log-hiderev' => 'Entfernte eine Bearbeitung von $1',
-// Oversight review page
-'oversight' => 'Oversight',
-'oversight-view' => 'Details',
-'oversight-difference' => '(Unterschied zur vorhergehenden verbleibenden Version)',
-'oversight-prev' => 'Letzte vorhergehenden Version',
-'oversight-hidden' => 'Entfernte Version',
-'oversight-header' => 'Es folgt die Liste der dauerhaft für die öffentliche Einsicht entfernten Versionen. Die Veröffentlichung dieser Informationen kann den dauerhaften Entzug der Oversight-Rechte bedeuten.',
+	'oversight-log-hiderev' => 'Entfernte eine Bearbeitung von $1',
+	'oversight' => 'Oversight',
+	'oversight-view' => 'Details',
+	'oversight-difference' => '(Unterschied zur vorhergehenden verbleibenden Version)',
+	'oversight-prev' => 'Letzte vorhergehenden Version',
+	'oversight-hidden' => 'Entfernte Version',
+	'oversight-header' => 'Es folgt die Liste der dauerhaft für die öffentliche Einsicht entfernten Versionen. Die Veröffentlichung dieser Informationen kann den dauerhaften Entzug der Oversight-Rechte bedeuten.',
 ),
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
 'el' => array(
 	'hiderevision-continue' => 'Συνέχεια',
+	'oversight-view'        => 'λεπτομέρειες',
 ),
 
 'fi' => array(
@@ -241,44 +237,37 @@ administrador das bases de datos no caso de que vostede cometa un erro.',
 
 /* Hebrew (Rotem Liss) */
 'he' => array(
-'hiderevision' => 'מחיקת גרסאות לצמיתות',
-// Empty form
-'hiderevision-prompt' => 'מספר גרסה למחיקה:',
-'hiderevision-continue' => 'המשך',
-// Confirmation form
-'hiderevision-text' =>
-"יש להשתמש באפשרות זו '''אך ורק''' במקרים הבאים:
+	'hiderevision' => 'מחיקת גרסאות לצמיתות',
+	'hiderevision-prompt' => 'מספר גרסה למחיקה:',
+	'hiderevision-continue' => 'המשך',
+	'hiderevision-text' => "יש להשתמש באפשרות זו '''אך ורק''' במקרים הבאים:
 * פרסום מידע אישי
 *: '''כתובות, מספרי טלפון וכדומה'''
 
 '''שימוש לרעה במערכת יגרום לאובדן הסמכויות.'''
 
 הפריטים שהוסרו לא יהיו גלויים לאיש דרך האתר עצמו, אבל נשמר יומן של המחיקות ומנהל מסד הנתונים יכול לשחזר אותן ידנית אם תתבצע טעות.",
-'hiderevision-reason' => 'סיבה (תיכתב ביומן פרטי):',
-'hiderevision-submit' => 'מחיקת המידע הזה לצמיתות',
-// Tab displayed to allowed users on old revision display
-'hiderevision-tab' => 'הסתרת גרסאות',
-// Status & errors on action
-'hiderevision-norevisions' => 'לא נבחרו גרסאות למחיקה.',
-'hiderevision-noreason' => 'עליכם לכתוב את הסיבה להסרה זו.',
-'hiderevision-status' => 'גרסה $1: $2',
-'hiderevision-success' => 'נמחקה בהצלחה.',
-'hiderevision-error-missing' => 'לא נמצאה במסד הנתונים.',
-'hiderevision-error-current' => 'לא ניתן למחוק את הגרסה האחרונה בדף. ראשית יש לשחזר את השינוי.',
-'hiderevision-error-delete' => 'לא ניתן למחוק; אולי הגרסה כבר נמחקה.',
-'hiderevision-archive-status' => 'נמחקה גרסה של $1: $2',
-'oversight-nodiff' => 'לא ניתן לעקוב אחרי השינויים כיוון שאין כרגע שום גרסה קודמת לדף זה. ייתכן ש:
+	'hiderevision-reason' => 'סיבה (תיכתב ביומן פרטי):',
+	'hiderevision-submit' => 'מחיקת המידע הזה לצמיתות',
+	'hiderevision-tab' => 'הסתרת גרסאות',
+	'hiderevision-norevisions' => 'לא נבחרו גרסאות למחיקה.',
+	'hiderevision-noreason' => 'עליכם לכתוב את הסיבה להסרה זו.',
+	'hiderevision-status' => 'גרסה $1: $2',
+	'hiderevision-success' => 'נמחקה בהצלחה.',
+	'hiderevision-error-missing' => 'לא נמצאה במסד הנתונים.',
+	'hiderevision-error-current' => 'לא ניתן למחוק את הגרסה האחרונה בדף. ראשית יש לשחזר את השינוי.',
+	'hiderevision-error-delete' => 'לא ניתן למחוק; אולי הגרסה כבר נמחקה.',
+	'hiderevision-archive-status' => 'נמחקה גרסה של $1: $2',
+	'oversight-nodiff' => 'לא ניתן לעקוב אחרי השינויים כיוון שאין כרגע שום גרסה קודמת לדף זה. ייתכן ש:
 * הדף נמחק
 * הגרסה שהוסתרה הייתה הגרסה האחרונה',
-// Logging
-'oversight-log-hiderev' => 'הסיר עריכה מהדף $1',
-// Oversight review page
-'oversight' => 'אוברסייט',
-'oversight-view' => 'פרטים',
-'oversight-difference' => '(שינויים מהגרסה הקודמת שנשארה)',
-'oversight-prev' => 'הגרסה הקודמת',
-'oversight-hidden' => 'גרסה מוסתרת',
-'oversight-header' => 'להלן רשימת גרסאות שנמחקו לאחרונה לצמיתות מתצוגה ציבורית.
+	'oversight-log-hiderev' => 'הסיר עריכה מהדף $1',
+	'oversight' => 'אוברסייט',
+	'oversight-view' => 'פרטים',
+	'oversight-difference' => '(שינויים מהגרסה הקודמת שנשארה)',
+	'oversight-prev' => 'הגרסה הקודמת',
+	'oversight-hidden' => 'גרסה מוסתרת',
+	'oversight-header' => 'להלן רשימת גרסאות שנמחקו לאחרונה לצמיתות מתצוגה ציבורית.
 שחרור מידע זה לציבור עלול לגרום להסרה לצמיתות של ההרשאות.',
 ),
 
@@ -427,13 +416,11 @@ La divulgazione di tali informazioni può dar luogo alla rimozione permanente de
 ),
 
 /* Kazakh Cyrillic (AlefZet) */
-'kk-cyrl' => array('hiderevision' => 'Нұсқаларды тұрақты жасыру',
-// Empty form
-'hiderevision-prompt' => 'Жойылатын нұсқа нөмірі:',
-'hiderevision-continue' => 'Жалғастыру',
-// Confirmation form
-'hiderevision-text' =>
-"Бұл ''тек''' келесі жағдайларда қолданылу қажет:
+'kk-cyrl' => array(
+	'hiderevision' => 'Нұсқаларды тұрақты жасыру',
+	'hiderevision-prompt' => 'Жойылатын нұсқа нөмірі:',
+	'hiderevision-continue' => 'Жалғастыру',
+	'hiderevision-text' => "Бұл ''тек''' келесі жағдайларда қолданылу қажет:
 * Жеке деректер теріс болса
 *: ''үй мекен жайы және телефон нөмірі, әлеуметтік сақтандыру нөмірі, т.б.''
 
@@ -442,42 +429,36 @@ La divulgazione di tali informazioni può dar luogo alla rimozione permanente de
 Аластатылған даналар торап бойынша әркімгеде көрінбейді,
 дегенмен, жоюлар жазылып алынады және қате әрекет болса,
 дерекқор әкімшісі қолмен қайтадан келтіруге мүмкін.",
-'hiderevision-reason' => 'Себебі (жеке жазылып алынады):',
-'hiderevision-submit' => 'Деректерді тұрақты жасыру',
-// Tab displayed to allowed users on old revision display
-'hiderevision-tab' => 'Нұсқаны жасыр',
-// Status & errors on action
-'hiderevision-norevisions' => 'Жоюға ешқандай нусқа белгіленбеген.',
-'hiderevision-noreason' => 'Бұл жоюдың себебін жазып беріңіз.',
-'hiderevision-status' => '$1 нұсқасы: $2',
-'hiderevision-success' => 'Сәтті мұрағаталды және жойлды.',
-'hiderevision-error-missing' => 'Дерекқорда табылмады.',
-'hiderevision-error-current' => 'Беттің соңғы түзетуі жойылынбады. Алдынан бұл түзетуді қайтарыңыз.',
-'hiderevision-error-delete' => 'Мұрағатталынбады; алдынан жойылғанба?',
-'hiderevision-archive-status' => '$1 кезіндегі нұсқа жойылды: $2',
-'oversight-nodiff' => 'Өзгерістер байқалынбайды, өйткені ағымда бұл беттің алдыңғы нұсқасы жоқ. Қай-қайсысы болуы мүмкін:
+	'hiderevision-reason' => 'Себебі (жеке жазылып алынады):',
+	'hiderevision-submit' => 'Деректерді тұрақты жасыру',
+	'hiderevision-tab' => 'Нұсқаны жасыр',
+	'hiderevision-norevisions' => 'Жоюға ешқандай нусқа белгіленбеген.',
+	'hiderevision-noreason' => 'Бұл жоюдың себебін жазып беріңіз.',
+	'hiderevision-status' => '$1 нұсқасы: $2',
+	'hiderevision-success' => 'Сәтті мұрағаталды және жойлды.',
+	'hiderevision-error-missing' => 'Дерекқорда табылмады.',
+	'hiderevision-error-current' => 'Беттің соңғы түзетуі жойылынбады. Алдынан бұл түзетуді қайтарыңыз.',
+	'hiderevision-error-delete' => 'Мұрағатталынбады; алдынан жойылғанба?',
+	'hiderevision-archive-status' => '$1 кезіндегі нұсқа жойылды: $2',
+	'oversight-nodiff' => 'Өзгерістер байқалынбайды, өйткені ағымда бұл беттің алдыңғы нұсқасы жоқ. Қай-қайсысы болуы мүмкін:
 * Бет жойлған
 * Жасырылған нұсқа бірінші болған',
-// Logging
-'oversight-log-hiderev' => '$1 кезіндегі түзету жойылды',
-// Oversight review page
-'oversight' => 'Бет нұсқаларын жасыру',
-'oversight-view' => 'егжей-тегжейлері',
-'oversight-difference' => '(Алдынан қалған нұсқамен айырмашылық)',
-'oversight-prev' => 'Алдыңғы нұсқа',
-'oversight-hidden' => 'Жасырылған нұсқа',
-'oversight-header' => 'Төменде баршадан тұрақты жасырылған нұсқалар тізімі беріледі.
+	'oversight-log-hiderev' => '$1 кезіндегі түзету жойылды',
+	'oversight' => 'Бет нұсқаларын жасыру',
+	'oversight-view' => 'егжей-тегжейлері',
+	'oversight-difference' => '(Алдынан қалған нұсқамен айырмашылық)',
+	'oversight-prev' => 'Алдыңғы нұсқа',
+	'oversight-hidden' => 'Жасырылған нұсқа',
+	'oversight-header' => 'Төменде баршадан тұрақты жасырылған нұсқалар тізімі беріледі.
 Бұл мәліметті баршаға ашқанда Нұсқа жасырушы құқықтарыңыз әрдайым өшіріледі.',
 ),
 
 /* Kazakh Latin (AlefZet) */
-'kk-latn' => array('hiderevision' => 'Nusqalardı turaqtı jasırw',
-// Empty form
-'hiderevision-prompt' => 'Joýılatın nusqa nömiri:',
-'hiderevision-continue' => 'Jalğastırw',
-// Confirmation form
-'hiderevision-text' =>
-"Bul ''tek''' kelesi jağdaýlarda qoldanılw qajet:
+'kk-latn' => array(
+	'hiderevision' => 'Nusqalardı turaqtı jasırw',
+	'hiderevision-prompt' => 'Joýılatın nusqa nömiri:',
+	'hiderevision-continue' => 'Jalğastırw',
+	'hiderevision-text' => "Bul ''tek''' kelesi jağdaýlarda qoldanılw qajet:
 * Jeke derekter teris bolsa
 *: ''üý meken jaýı jäne telefon nömiri, älewmettik saqtandırw nömiri, t.b.''
 
@@ -486,42 +467,36 @@ La divulgazione di tali informazioni può dar luogo alla rimozione permanente de
 Alastatılğan danalar torap boýınşa ärkimgede körinbeýdi,
 degenmen, joywlar jazılıp alınadı jäne qate äreket bolsa,
 derekqor äkimşisi qolmen qaýtadan keltirwge mümkin.",
-'hiderevision-reason' => 'Sebebi (jeke jazılıp alınadı):',
-'hiderevision-submit' => 'Derekterdi turaqtı jasırw',
-// Tab displayed to allowed users on old revision display
-'hiderevision-tab' => 'Nusqanı jasır',
-// Status & errors on action
-'hiderevision-norevisions' => 'Joywğa eşqandaý nwsqa belgilenbegen.',
-'hiderevision-noreason' => 'Bul joywdıñ sebebin jazıp beriñiz.',
-'hiderevision-status' => '$1 nusqası: $2',
-'hiderevision-success' => 'Sätti murağataldı jäne joýldı.',
-'hiderevision-error-missing' => 'Derekqorda tabılmadı.',
-'hiderevision-error-current' => 'Bettiñ soñğı tüzetwi joýılınbadı. Aldınan bul tüzetwdi qaýtarıñız.',
-'hiderevision-error-delete' => 'Murağattalınbadı; aldınan joýılğanba?',
-'hiderevision-archive-status' => '$1 kezindegi nusqa joýıldı: $2',
-'oversight-nodiff' => 'Özgerister baýqalınbaýdı, öýtkeni ağımda bul bettiñ aldıñğı nusqası joq. Qaý-qaýsısı bolwı mümkin:
+	'hiderevision-reason' => 'Sebebi (jeke jazılıp alınadı):',
+	'hiderevision-submit' => 'Derekterdi turaqtı jasırw',
+	'hiderevision-tab' => 'Nusqanı jasır',
+	'hiderevision-norevisions' => 'Joywğa eşqandaý nwsqa belgilenbegen.',
+	'hiderevision-noreason' => 'Bul joywdıñ sebebin jazıp beriñiz.',
+	'hiderevision-status' => '$1 nusqası: $2',
+	'hiderevision-success' => 'Sätti murağataldı jäne joýldı.',
+	'hiderevision-error-missing' => 'Derekqorda tabılmadı.',
+	'hiderevision-error-current' => 'Bettiñ soñğı tüzetwi joýılınbadı. Aldınan bul tüzetwdi qaýtarıñız.',
+	'hiderevision-error-delete' => 'Murağattalınbadı; aldınan joýılğanba?',
+	'hiderevision-archive-status' => '$1 kezindegi nusqa joýıldı: $2',
+	'oversight-nodiff' => 'Özgerister baýqalınbaýdı, öýtkeni ağımda bul bettiñ aldıñğı nusqası joq. Qaý-qaýsısı bolwı mümkin:
 * Bet joýlğan
 * Jasırılğan nusqa birinşi bolğan',
-// Logging
-'oversight-log-hiderev' => '$1 kezindegi tüzetw joýıldı',
-// Oversight review page
-'oversight' => 'Bet nusqaların jasırw',
-'oversight-view' => 'egjeý-tegjeýleri',
-'oversight-difference' => '(Aldınan qalğan nusqamen aýırmaşılıq)',
-'oversight-prev' => 'Aldıñğı nusqa',
-'oversight-hidden' => 'Jasırılğan nusqa',
-'oversight-header' => 'Tömende barşadan turaqtı jasırılğan nusqalar tizimi beriledi.
+	'oversight-log-hiderev' => '$1 kezindegi tüzetw joýıldı',
+	'oversight' => 'Bet nusqaların jasırw',
+	'oversight-view' => 'egjeý-tegjeýleri',
+	'oversight-difference' => '(Aldınan qalğan nusqamen aýırmaşılıq)',
+	'oversight-prev' => 'Aldıñğı nusqa',
+	'oversight-hidden' => 'Jasırılğan nusqa',
+	'oversight-header' => 'Tömende barşadan turaqtı jasırılğan nusqalar tizimi beriledi.
 Bul mälimetti barşağa aşqanda Nusqa jasırwşı quqıqtarıñız ärdaýım öşiriledi.',
 ),
 
 /* Kazakh Arabic (AlefZet) */
-'kk-arab' => array('hiderevision' => 'نۇسقالاردى تۇراقتى جاسىرۋ',
-// Empty form
-'hiderevision-prompt' => 'جويىلاتىن نۇسقا نٶمٸرٸ:',
-'hiderevision-continue' => 'جالعاستىرۋ',
-// Confirmation form
-'hiderevision-text' =>
-"بۇل ''تەك''' كەلەسٸ جاعدايلاردا قولدانىلۋ قاجەت:
+'kk-arab' => array(
+	'hiderevision' => 'نۇسقالاردى تۇراقتى جاسىرۋ',
+	'hiderevision-prompt' => 'جويىلاتىن نۇسقا نٶمٸرٸ:',
+	'hiderevision-continue' => 'جالعاستىرۋ',
+	'hiderevision-text' => "بۇل ''تەك''' كەلەسٸ جاعدايلاردا قولدانىلۋ قاجەت:
 * جەكە دەرەكتەر تەرٸس بولسا
 *: ''ٷي مەكەن جايى جٵنە تەلەفون نٶمٸرٸ, ٵلەۋمەتتٸك ساقتاندىرۋ نٶمٸرٸ, ت.ب.''
 
@@ -530,31 +505,27 @@ Bul mälimetti barşağa aşqanda Nusqa jasırwşı quqıqtarıñız ärdaýım 
 الاستاتىلعان دانالار توراپ بويىنشا ٵركٸمگەدە كٶرٸنبەيدٸ,
 دەگەنمەن, جويۋلار جازىلىپ الىنادى جٵنە قاتە ٵرەكەت بولسا,
 دەرەكقور ٵكٸمشٸسٸ قولمەن قايتادان كەلتٸرۋگە مٷمكٸن.",
-'hiderevision-reason' => 'سەبەبٸ (جەكە جازىلىپ الىنادى):',
-'hiderevision-submit' => 'دەرەكتەردٸ تۇراقتى جاسىرۋ',
-// Tab displayed to allowed users on old revision display
-'hiderevision-tab' => 'نۇسقانى جاسىر',
-// Status & errors on action
-'hiderevision-norevisions' => 'جويۋعا ەشقانداي نۋسقا بەلگٸلەنبەگەن.',
-'hiderevision-noreason' => 'بۇل جويۋدىڭ سەبەبٸن جازىپ بەرٸڭٸز.',
-'hiderevision-status' => '$1 نۇسقاسى: $2',
-'hiderevision-success' => 'سٵتتٸ مۇراعاتالدى جٵنە جويلدى.',
-'hiderevision-error-missing' => 'دەرەكقوردا تابىلمادى.',
-'hiderevision-error-current' => 'بەتتٸڭ سوڭعى تٷزەتۋٸ جويىلىنبادى. الدىنان بۇل تٷزەتۋدٸ قايتارىڭىز.',
-'hiderevision-error-delete' => 'مۇراعاتتالىنبادى; الدىنان جويىلعانبا؟',
-'hiderevision-archive-status' => '$1 كەزٸندەگٸ نۇسقا جويىلدى: $2',
-'oversight-nodiff' => 'ٶزگەرٸستەر بايقالىنبايدى, ٶيتكەنٸ اعىمدا بۇل بەتتٸڭ الدىڭعى نۇسقاسى جوق. قاي-قايسىسى بولۋى مٷمكٸن:
+	'hiderevision-reason' => 'سەبەبٸ (جەكە جازىلىپ الىنادى):',
+	'hiderevision-submit' => 'دەرەكتەردٸ تۇراقتى جاسىرۋ',
+	'hiderevision-tab' => 'نۇسقانى جاسىر',
+	'hiderevision-norevisions' => 'جويۋعا ەشقانداي نۋسقا بەلگٸلەنبەگەن.',
+	'hiderevision-noreason' => 'بۇل جويۋدىڭ سەبەبٸن جازىپ بەرٸڭٸز.',
+	'hiderevision-status' => '$1 نۇسقاسى: $2',
+	'hiderevision-success' => 'سٵتتٸ مۇراعاتالدى جٵنە جويلدى.',
+	'hiderevision-error-missing' => 'دەرەكقوردا تابىلمادى.',
+	'hiderevision-error-current' => 'بەتتٸڭ سوڭعى تٷزەتۋٸ جويىلىنبادى. الدىنان بۇل تٷزەتۋدٸ قايتارىڭىز.',
+	'hiderevision-error-delete' => 'مۇراعاتتالىنبادى; الدىنان جويىلعانبا؟',
+	'hiderevision-archive-status' => '$1 كەزٸندەگٸ نۇسقا جويىلدى: $2',
+	'oversight-nodiff' => 'ٶزگەرٸستەر بايقالىنبايدى, ٶيتكەنٸ اعىمدا بۇل بەتتٸڭ الدىڭعى نۇسقاسى جوق. قاي-قايسىسى بولۋى مٷمكٸن:
 * بەت جويلعان
 * جاسىرىلعان نۇسقا بٸرٸنشٸ بولعان',
-// Logging
-'oversight-log-hiderev' => '$1 كەزٸندەگٸ تٷزەتۋ جويىلدى',
-// Oversight review page
-'oversight' => 'بەت نۇسقالارىن جاسىرۋ',
-'oversight-view' => 'ەگجەي-تەگجەيلەرٸ',
-'oversight-difference' => '(الدىنان قالعان نۇسقامەن ايىرماشىلىق)',
-'oversight-prev' => 'الدىڭعى نۇسقا',
-'oversight-hidden' => 'جاسىرىلعان نۇسقا',
-'oversight-header' => 'تٶمەندە بارشادان تۇراقتى جاسىرىلعان نۇسقالار تٸزٸمٸ بەرٸلەدٸ.
+	'oversight-log-hiderev' => '$1 كەزٸندەگٸ تٷزەتۋ جويىلدى',
+	'oversight' => 'بەت نۇسقالارىن جاسىرۋ',
+	'oversight-view' => 'ەگجەي-تەگجەيلەرٸ',
+	'oversight-difference' => '(الدىنان قالعان نۇسقامەن ايىرماشىلىق)',
+	'oversight-prev' => 'الدىڭعى نۇسقا',
+	'oversight-hidden' => 'جاسىرىلعان نۇسقا',
+	'oversight-header' => 'تٶمەندە بارشادان تۇراقتى جاسىرىلعان نۇسقالار تٸزٸمٸ بەرٸلەدٸ.
 بۇل مٵلٸمەتتٸ بارشاعا اشقاندا نۇسقا جاسىرۋشى قۇقىقتارىڭىز ٵردايىم ٶشٸرٸلەدٸ.',
 ),
 
@@ -562,41 +533,43 @@ Bul mälimetti barşağa aşqanda Nusqa jasırwşı quqıqtarıñız ärdaýım 
 	'hiderevision-submit' => 'Důnn_di Väsjohn foshtäshe',
 ),
 
-/* nld / Dutch (Siebrand Mazeland) */
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 'nl' => array(
-'hiderevision' => 'Versies permanent verbergen',
-'hiderevision-prompt' => 'Te verwijderen versienummer:',
-'hiderevision-continue' => 'Doorgaan',
-'hiderevision-text' => 'Dit dient \'\'\'alleen\'\'\' gebruikt te worden in de volgende gevallen:
+	'hiderevision'                => 'Versies permanent verbergen',
+	'hiderevision-prompt'         => 'Te verwijderen versienummer:',
+	'hiderevision-continue'       => 'Doorgaan',
+	'hiderevision-text'           => "Dit dient '''alleen''' gebruikt te worden in de volgende gevallen:
 * Ontoelaatbare persoonlijke informatie
-*: \'\'woonadressen en telefoonnummers, sofinummers, enzovoort\'\'
+*: ''woonadressen en telefoonnummers, sofinummers, enzovoort''
 
-\'\'\'Misbruik van dit systeem wordt betreft met het intrekken van rechten.\'\'\'
+'''Misbruik van dit systeem wordt betreft met het intrekken van rechten.'''
 
 Verwijderde versies zijn niet voor iedereen zichtbaar via de website,
 maar verwijderde objecten worden in logboeken bijgehouden en kunnen handmatig
-teruggeet worden door databasebeheerders als u een fout maakt.',
-'hiderevision-reason' => 'Reden (wordt discreet opgeslaten):',
-'hiderevision-submit' => 'Deze gegevens permanent verbergen',
-'hiderevision-tab' => 'Verberg versie',
-'hiderevision-norevisions' => 'Er zijn geen te verwijderen versies opgegeven.',
-'hiderevision-noreason' => 'U moet een reden opgeven voor het verwijderen.',
-'hiderevision-status' => 'Versie $1: $2',
-'hiderevision-success' => 'Archiveren en verwijderen geslaagd.',
-'hiderevision-error-missing' => 'Niet gevonden in database.',
-'hiderevision-error-current' => 'De laatste bewerkin van een pagina kan niet verwijderd worden. Draai de bewerking eerst terug.',
-'hiderevision-error-delete' => 'Archiveren mislukt; waren de gegevens al verwijderd?',
-'hiderevision-archive-status' => 'Verwijder versie van $1: $2',
-'oversight-nodiff' => 'Niet in staat om de wijzigingen weer te geven omdat er geen eerdere versie van de pagina aanwezig is, omdat::
+teruggeet worden door databasebeheerders als u een fout maakt.",
+	'hiderevision-reason'         => 'Reden (wordt discreet opgeslaten):',
+	'hiderevision-submit'         => 'Deze gegevens permanent verbergen',
+	'hiderevision-tab'            => 'Verberg versie',
+	'hiderevision-norevisions'    => 'Er zijn geen te verwijderen versies opgegeven.',
+	'hiderevision-noreason'       => 'U moet een reden opgeven voor het verwijderen.',
+	'hiderevision-status'         => 'Versie $1: $2',
+	'hiderevision-success'        => 'Archiveren en verwijderen geslaagd.',
+	'hiderevision-error-missing'  => 'Niet gevonden in database.',
+	'hiderevision-error-current'  => 'De laatste bewerkin van een pagina kan niet verwijderd worden. Draai de bewerking eerst terug.',
+	'hiderevision-error-delete'   => 'Archiveren mislukt; waren de gegevens al verwijderd?',
+	'hiderevision-archive-status' => 'Verwijder versie van $1: $2',
+	'oversight-nodiff'            => 'Niet in staat om de wijzigingen weer te geven omdat er geen eerdere versie van de pagina aanwezig is, omdat::
 *De pagina was verwijderd
 *Deze verborgen versie de eerste versie was',
-'oversight-log-hiderev' => 'verwijderde een bewerking uit $1',
-'oversight' => 'Oversight',#identical but defined
-'oversight-view' => 'details',#identical but defined
-'oversight-difference' => '(Verschillen met vorige zichtbare versie)',
-'oversight-prev' => 'Laatste vorige versie',
-'oversight-hidden' => 'Verborgen versie',
-'oversight-header' => 'Hieronder staat een lijst met versies die permanent verborgen zijn voor iedereen.
+	'oversight-log-hiderev'       => 'verwijderde een bewerking uit $1',
+	'oversight'                   => 'Oversight',
+	'oversight-view'              => 'details',
+	'oversight-difference'        => '(Verschillen met vorige zichtbare versie)',
+	'oversight-prev'              => 'Laatste vorige versie',
+	'oversight-hidden'            => 'Verborgen versie',
+	'oversight-header'            => 'Hieronder staat een lijst met versies die permanent verborgen zijn voor iedereen.
 Het vrijgeven van deze informatie kan tot gevolg hebben dat Oversightrechten worden ingenomen.',
 ),
 
@@ -629,61 +602,67 @@ Het vrijgeven van deze informatie kan tot gevolg hebben dat Oversightrechten wor
 	'oversight-header'            => "Çaijós, figura la lista de las revisions amagadas de biais permanent al public. La divulgacion d'aquesta informacion pòt aver coma consequéncia la descasença dels privilègis d’Oversight.",
 ),
 
+/** Polish (Polski)
+ * @author Derbeth
+ */
 'pl' => array(
-'hiderevision' => 'Trwałe usuwanie wersji',
-'hiderevision-prompt' => 'Numer wersji do usunięcia:',
-'hiderevision-continue' => 'Kontynuuj',
-'hiderevision-text' => 'Ta funkcja powinna być \'\'\'jedynie\'\'\' użyta w następujących przypadkach: * Niewłaściwe informacje osobiste *: \'\'adresy domowe i numery telefoniczne, numery ubezpieczenia zdrowotnego tip.\'\' \'\'\'Nadużywanie tej funkcji będzie skutkowało utratą uprawnień.\'\'\' Usunięte elementy nie będą widoczne dla nikogo na tej stronie, lecz usunięcia są rejestrowane i skasowane dane mogą być ręcznie przywrócone przez administratorów bazy danych w wypadku twojej pomyłki.',
-'hiderevision-reason' => 'Powód (będzie zarejestrowany prywatnie):',
-'hiderevision-submit' => 'Na stałe ukryj te dane',
-'hiderevision-tab' => 'Ukryj wersje',
-'hiderevision-norevisions' => 'Nie określono wersji do usunięcia',
-'hiderevision-noreason' => 'Musisz wpisać powód usunięcia.',
-'hiderevision-status' => 'Wersje $1: $2',
-'hiderevision-success' => 'Pomyślnie zarchiwizowane i usunięte.',
-'hiderevision-error-missing' => 'Nie znaleziono w bazie danych.',
-'hiderevision-error-current' => 'Nie można usunąć najnowszej edycji strony. Najpierw cofnij tę edycję.',
-'hiderevision-error-delete' => 'Nie można zarchiwizować; czy wcześniej była skasowana?',
-'hiderevision-archive-status' => 'Usunięto wersje z $1: $2',
-'oversight-nodiff' => 'Nie można śledzić zmian, ponieważ nie ma wcześniejszych wersji tej strony. Możliwości: *Strona została usunięta *Ta ukryta wersja była pierwszą wersją',
-'oversight-log-hiderev' => 'usunięto edycję z $1',
-'oversight' => 'Oversight',#identical but defined
-'oversight-view' => 'szczegóły',
-'oversight-difference' => '(Różnica z poprzednią pozostałą wersją)',
-'oversight-prev' => 'Ostatnia z poprzednich wersji',
-'oversight-hidden' => 'Ukryta wersja',
-'oversight-header' => 'Poniżej znajduje się lista wersji w ostatnim czasie na stałe ukrytych przed dostępem publicznym. Ujawnianie tych informacji może skutkować stałą utratą uprawnień Oversight.',
+	'hiderevision'                => 'Trwałe usuwanie wersji',
+	'hiderevision-prompt'         => 'Numer wersji do usunięcia:',
+	'hiderevision-continue'       => 'Kontynuuj',
+	'hiderevision-text'           => "Ta funkcja powinna być '''jedynie''' użyta w następujących przypadkach: * Niewłaściwe informacje osobiste *: ''adresy domowe i numery telefoniczne, numery ubezpieczenia zdrowotnego tip.'' '''Nadużywanie tej funkcji będzie skutkowało utratą uprawnień.''' Usunięte elementy nie będą widoczne dla nikogo na tej stronie, lecz usunięcia są rejestrowane i skasowane dane mogą być ręcznie przywrócone przez administratorów bazy danych w wypadku twojej pomyłki.",
+	'hiderevision-reason'         => 'Powód (będzie zarejestrowany prywatnie):',
+	'hiderevision-submit'         => 'Na stałe ukryj te dane',
+	'hiderevision-tab'            => 'Ukryj wersje',
+	'hiderevision-norevisions'    => 'Nie określono wersji do usunięcia',
+	'hiderevision-noreason'       => 'Musisz wpisać powód usunięcia.',
+	'hiderevision-status'         => 'Wersje $1: $2',
+	'hiderevision-success'        => 'Pomyślnie zarchiwizowane i usunięte.',
+	'hiderevision-error-missing'  => 'Nie znaleziono w bazie danych.',
+	'hiderevision-error-current'  => 'Nie można usunąć najnowszej edycji strony. Najpierw cofnij tę edycję.',
+	'hiderevision-error-delete'   => 'Nie można zarchiwizować; czy wcześniej była skasowana?',
+	'hiderevision-archive-status' => 'Usunięto wersje z $1: $2',
+	'oversight-nodiff'            => 'Nie można śledzić zmian, ponieważ nie ma wcześniejszych wersji tej strony. Możliwości: *Strona została usunięta *Ta ukryta wersja była pierwszą wersją',
+	'oversight-log-hiderev'       => 'usunięto edycję z $1',
+	'oversight'                   => 'Oversight',
+	'oversight-view'              => 'szczegóły',
+	'oversight-difference'        => '(Różnica z poprzednią pozostałą wersją)',
+	'oversight-prev'              => 'Ostatnia z poprzednich wersji',
+	'oversight-hidden'            => 'Ukryta wersja',
+	'oversight-header'            => 'Poniżej znajduje się lista wersji w ostatnim czasie na stałe ukrytych przed dostępem publicznym. Ujawnianie tych informacji może skutkować stałą utratą uprawnień Oversight.',
 ),
 
+/** Piemontèis (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 'pms' => array(
-'hiderevision' => 'Stërmé le revision na vira për tute',
-'hiderevision-prompt' => 'Nùmer ëd revision da gavé:',
-'hiderevision-continue' => 'Tiré anans',
-'hiderevision-text' => 'Sòn a dovéia dovresse \'\'\'mach\'\'\' an cas che a-i sia: 
-* dj\'anformassion personaj nen aproprià 
-*: \'\'adrësse ëd ca e nùmer ëd teléfono, còdes fiscaj e via fòrt\'\' 
-\'\'\'A dovré sta fonsion-sì fòra via un a va ancontra a dle consegoense aministrative.\'\'\' Lòn ch\'as gava via a resta gava da tut ël sit, ma jë scancelament a resto ant ij registr e a peulo esse pijait andré a man da n\'aministratore dla base dat, s\'a-i fusso dj\'eror.',
-'hiderevision-reason' => 'Rason (a resta ant ij registr an forma privà):',
-'hiderevision-submit' => 'Stërmé sti dat-sì na vira për tute',
-'hiderevision-tab' => 'Stërmé la revision',
-'hiderevision-norevisions' => 'A l\'é pa sërnusse gnun-a revision da scancelé.',
-'hiderevision-noreason' => 'A venta buté la rason ch\'as ëscancela sossì.',
-'hiderevision-status' => 'Revision $1: $2',#identical but defined
-'hiderevision-success' => 'Archiviassion e scancelament andait a bonfin.',
-'hiderevision-error-missing' => 'Pa trovà ant la base dat.',
-'hiderevision-error-current' => 'As peul pa scancelesse la version corenta. Anans che fe sòn ch\'a buta corenta n\'àotra version.',
-'hiderevision-error-delete' => 'A l\'é pa podusse archivié; ch\'a sia stait scancelà anans d\'ës moment-sì?',
-'hiderevision-archive-status' => 'Scancelà le revision da $1: $2',
-'oversight-nodiff' => 'As peulo pa trové ij cambiament për via che al moment a-i é gnun-a revision pì veja dë sta pàgina. Dle doe l\'un-a: 
-*la pàgina a l\'é staita scancelà 
-*sta revision stërmà a l\'era la prima',
-'oversight-log-hiderev' => 'gavà e modificà da $1',
-'oversight' => 'Gafada',
-'oversight-view' => 'detaj',
-'oversight-difference' => '(Diferense da \'nt le revision veje ch\'a resto)',
-'oversight-prev' => 'Ùltima revision veja',
-'oversight-hidden' => 'Revision stërmà',
-'oversight-header' => 'Ambelessì sota a-i é na lista dle revision stërmà ch\'a l\'é nen vàire. Publiché st\'anformassion-sì a peul ëmné a perde ël drit ëd dovré ël sistema ëd coression dle gafade.',
+	'hiderevision'                => 'Stërmé le revision na vira për tute',
+	'hiderevision-prompt'         => 'Nùmer ëd revision da gavé:',
+	'hiderevision-continue'       => 'Tiré anans',
+	'hiderevision-text'           => "Sòn a dovéia dovresse '''mach''' an cas che a-i sia: 
+* dj'anformassion personaj nen aproprià 
+*: ''adrësse ëd ca e nùmer ëd teléfono, còdes fiscaj e via fòrt'' 
+'''A dovré sta fonsion-sì fòra via un a va ancontra a dle consegoense aministrative.''' Lòn ch'as gava via a resta gava da tut ël sit, ma jë scancelament a resto ant ij registr e a peulo esse pijait andré a man da n'aministratore dla base dat, s'a-i fusso dj'eror.",
+	'hiderevision-reason'         => 'Rason (a resta ant ij registr an forma privà):',
+	'hiderevision-submit'         => 'Stërmé sti dat-sì na vira për tute',
+	'hiderevision-tab'            => 'Stërmé la revision',
+	'hiderevision-norevisions'    => "A l'é pa sërnusse gnun-a revision da scancelé.",
+	'hiderevision-noreason'       => "A venta buté la rason ch'as ëscancela sossì.",
+	'hiderevision-status'         => 'Revision $1: $2',
+	'hiderevision-success'        => 'Archiviassion e scancelament andait a bonfin.',
+	'hiderevision-error-missing'  => 'Pa trovà ant la base dat.',
+	'hiderevision-error-current'  => "As peul pa scancelesse la version corenta. Anans che fe sòn ch'a buta corenta n'àotra version.",
+	'hiderevision-error-delete'   => "A l'é pa podusse archivié; ch'a sia stait scancelà anans d'ës moment-sì?",
+	'hiderevision-archive-status' => 'Scancelà le revision da $1: $2',
+	'oversight-nodiff'            => "As peulo pa trové ij cambiament për via che al moment a-i é gnun-a revision pì veja dë sta pàgina. Dle doe l'un-a: 
+*la pàgina a l'é staita scancelà 
+*sta revision stërmà a l'era la prima",
+	'oversight-log-hiderev'       => 'gavà e modificà da $1',
+	'oversight'                   => 'Gafada',
+	'oversight-view'              => 'detaj',
+	'oversight-difference'        => "(Diferense da 'nt le revision veje ch'a resto)",
+	'oversight-prev'              => 'Ùltima revision veja',
+	'oversight-hidden'            => 'Revision stërmà',
+	'oversight-header'            => "Ambelessì sota a-i é na lista dle revision stërmà ch'a l'é nen vàire. Publiché st'anformassion-sì a peul ëmné a perde ël drit ëd dovré ël sistema ëd coression dle gafade.",
 ),
 
 /* Portuguese (Lugusto) */
@@ -727,94 +706,86 @@ Liberar tais dados poderá resultar na perda em definitivo dos privilégios de o
 	'hiderevision-submit' => 'Garav o paruvipen',
 ),
 
-/* Russian */
+/** Russian (Русский) */
 'ru' => array(
-'hiderevision' => 'Скрыть версию страницы',
-// Empty form
-'hiderevision-prompt' => 'Номер версии, которую требуется скрыть:',
-'hiderevision-continue' => 'Продолжить',
-// Confirmation form
-'hiderevision-text' =>
-"Данная страница должна использоваться '''только''' в случае разглашения личной информации —''реальные имя и фамилия, домашние адреса и номера телефонов, паспортов, и тому подобное''.
+	'hiderevision'                => 'Скрыть версию страницы',
+	'hiderevision-prompt'         => 'Номер версии, которую требуется скрыть:',
+	'hiderevision-continue'       => 'Продолжить',
+	'hiderevision-text'           => "Данная страница должна использоваться '''только''' в случае разглашения личной информации —''реальные имя и фамилия, домашние адреса и номера телефонов, паспортов, и тому подобное''.
 
 '''Злоупотребление данной системой повлечёт за собой лишение прав.'''
 
 Скрытые версии страниц не будут видны через интерфейс MediaWiki,
 но они записываются в журнал и могут быть восстановлены
 администратором базы данных, если вы случайно сделаете ошибку.",
-'hiderevision-reason' => 'Причина (будет записана в закрытый журнал):',
-'hiderevision-submit' => 'Скрыть данные',
-// Tab displayed to allowed users on old revision display
-'hiderevision-tab' => 'Скрыть версию',
-// Status & errors on action
-'hiderevision-norevisions' => 'Не были указаны версии, которые следует скрыть.',
-'hiderevision-noreason' => 'Вы должны написать причину сокрытия.',
-'hiderevision-status' => 'Версия №$1: $2',
-'hiderevision-success' => 'Успешно заархивирована и скрыта.',
-'hiderevision-error-missing' => 'Не найдена в базе данных.',
-'hiderevision-error-current' => 'Невозможно удалить текущую версию страницы. Сначала откатите изменения',
-'hiderevision-error-delete' => 'Невзможно заархивировать. Проверьте, не была-ли версия удалена ранее?',
-'hiderevision-archive-status' => 'Удалена версия со страницы $1: $2',
-'oversight-nodiff' => 'Невозможно опрдеделить изменения из-за недоступности предыдущей версии страницы. Возможно:
+	'hiderevision-reason'         => 'Причина (будет записана в закрытый журнал):',
+	'hiderevision-submit'         => 'Скрыть данные',
+	'hiderevision-tab'            => 'Скрыть версию',
+	'hiderevision-norevisions'    => 'Не были указаны версии, которые следует скрыть.',
+	'hiderevision-noreason'       => 'Вы должны написать причину сокрытия.',
+	'hiderevision-status'         => 'Версия №$1: $2',
+	'hiderevision-success'        => 'Успешно заархивирована и скрыта.',
+	'hiderevision-error-missing'  => 'Не найдена в базе данных.',
+	'hiderevision-error-current'  => 'Невозможно удалить текущую версию страницы. Сначала откатите изменения',
+	'hiderevision-error-delete'   => 'Невзможно заархивировать. Проверьте, не была-ли версия удалена ранее?',
+	'hiderevision-archive-status' => 'Удалена версия со страницы $1: $2',
+	'oversight-nodiff'            => 'Невозможно опрдеделить изменения из-за недоступности предыдущей версии страницы. Возможно:
 *Данная страница была удалена
 *Скрытая версия была первой',
-// Logging
-'oversight-log-hiderev' => 'скрыта правка со страницы $1',
-// Oversight review page
-'oversight' => 'Журнал скрытия версий',
-'oversight-view' => 'детали',
-'oversight-difference' => '(Разница с предыдущей неудалённой версией)',
-'oversight-prev' => 'Предыдущая версия',
-'oversight-hidden' => 'Скрытая версия',
-'oversight-header' => 'Ниже приведены версии, которые недавно были скрыты.
+	'oversight-log-hiderev'       => 'скрыта правка со страницы $1',
+	'oversight'                   => 'Журнал скрытия версий',
+	'oversight-view'              => 'детали',
+	'oversight-difference'        => '(Разница с предыдущей неудалённой версией)',
+	'oversight-prev'              => 'Предыдущая версия',
+	'oversight-hidden'            => 'Скрытая версия',
+	'oversight-header'            => 'Ниже приведены версии, которые недавно были скрыты.
 Распространение данной информации может повлечь лишение прав ревизора.',
 ),
 
-/* Slovak (helix84) */
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 'sk' => array(
-'hiderevision' => 'Natrvalo skryť revízie',
-'hiderevision-prompt' => 'Číslo revízie, ktorá sa má odstrániť:',
-'hiderevision-continue' => 'Pokračovať',
-'hiderevision-text' => 'Táto funkcia by sa mala využívať \'\'\'výlučne\'\'\' v nasledovných prípadoch:
+	'hiderevision'                => 'Natrvalo skryť revízie',
+	'hiderevision-prompt'         => 'Číslo revízie, ktorá sa má odstrániť:',
+	'hiderevision-continue'       => 'Pokračovať',
+	'hiderevision-text'           => "Táto funkcia by sa mala využívať '''výlučne''' v nasledovných prípadoch:
 * Nevhodné osobné informácie
-*: \'\'domáce adresy a telefónne čísla, čísla sociálneho poistenia atď.\'\'
+*: ''domáce adresy a telefónne čísla, čísla sociálneho poistenia atď.''
 
-\'\'\'Zneužitie tohto systému bude potrestané odňatím privilégií.\'\'\'
+'''Zneužitie tohto systému bude potrestané odňatím privilégií.'''
 
 Odstránené položky nebudú viditeľné nikomu prostredníctvom webstránky,
 ale o mazaniach sa vedie záznam a je možné ich obnoviť ručne
-administrátorom databázy v prípade, že spravíte chybu.',
-'hiderevision-reason' => 'Dôvod (bude privátne zaznamenaný):',
-'hiderevision-submit' => 'Natrvalo skryť tieto údaje',
-'hiderevision-tab' => 'Skryť revíziu',
-'hiderevision-norevisions' => 'Neboli uvedené revízie, ktoré majú byť skryté.',
-'hiderevision-noreason' => 'Musíte uviesť dôvod odstránenia.',
-'hiderevision-status' => 'Revízia $1: $2',
-'hiderevision-success' => 'Úspešne archivované a zmazané.',
-'hiderevision-error-missing' => 'Nenájdené v databáze.',
-'hiderevision-error-current' => 'Nebolo možné zmazať poslednú úpravu stránky. Najprv túto zmenu vráťte.',
-'hiderevision-error-delete' => 'Nebolo možné archivovať; bolo už predtým zmazané?',
-'hiderevision-archive-status' => 'Zmazané revízie počínajúc $1: $2',
-'oversight-nodiff' => 'Nie je možné sledovať zmeny, lebo momentálne neexistuje predošlá revízia stránky. Buď
+administrátorom databázy v prípade, že spravíte chybu.",
+	'hiderevision-reason'         => 'Dôvod (bude privátne zaznamenaný):',
+	'hiderevision-submit'         => 'Natrvalo skryť tieto údaje',
+	'hiderevision-tab'            => 'Skryť revíziu',
+	'hiderevision-norevisions'    => 'Neboli uvedené revízie, ktoré majú byť skryté.',
+	'hiderevision-noreason'       => 'Musíte uviesť dôvod odstránenia.',
+	'hiderevision-status'         => 'Revízia $1: $2',
+	'hiderevision-success'        => 'Úspešne archivované a zmazané.',
+	'hiderevision-error-missing'  => 'Nenájdené v databáze.',
+	'hiderevision-error-current'  => 'Nebolo možné zmazať poslednú úpravu stránky. Najprv túto zmenu vráťte.',
+	'hiderevision-error-delete'   => 'Nebolo možné archivovať; bolo už predtým zmazané?',
+	'hiderevision-archive-status' => 'Zmazané revízie počínajúc $1: $2',
+	'oversight-nodiff'            => 'Nie je možné sledovať zmeny, lebo momentálne neexistuje predošlá revízia stránky. Buď
 * stránka bola zmazaná, alebo
 * táto skrytá revízia bola prvá revízia',
-'oversight-log-hiderev' => 'Odstránená úprava z $1',
-'oversight-view' => 'podrobnosti',
-'oversight-difference' => '(Rozdiel s predchádzajúcou zostávajúcou revíziou)',
-'oversight-prev' => 'Posledná predošlá revízia',
-'oversight-hidden' => 'Skrytá revízia',
-'oversight-header' => 'Dolu je zoznam revízií, ktoré boli nedávno permanentne skryté pohľadu verejnosti. Šírenie týchto informácií môže mať za dôsledok premanentnú stratu práv Oversight.',
+	'oversight-log-hiderev'       => 'Odstránená úprava z $1',
+	'oversight-view'              => 'podrobnosti',
+	'oversight-difference'        => '(Rozdiel s predchádzajúcou zostávajúcou revíziou)',
+	'oversight-prev'              => 'Posledná predošlá revízia',
+	'oversight-hidden'            => 'Skrytá revízia',
+	'oversight-header'            => 'Dolu je zoznam revízií, ktoré boli nedávno permanentne skryté pohľadu verejnosti. Šírenie týchto informácií môže mať za dôsledok premanentnú stratu práv Oversight.',
 ),
 
 /* Serbian default (Sasa Stefanovic) */
 'sr' => array(
-'hiderevision' => 'Трајно сакриј ревизије',
-// Empty form
-'hiderevision-prompt' => 'Број ревизије за уклањање:',
-'hiderevision-continue' => 'Настави',
-// Confirmation form
-'hiderevision-text' =>
-"Ова опција треба да се користи '''само''' у следећим случајевима:
+	'hiderevision'                => 'Трајно сакриј ревизије',
+	'hiderevision-prompt'         => 'Број ревизије за уклањање:',
+	'hiderevision-continue'       => 'Настави',
+	'hiderevision-text'           => "Ова опција треба да се користи '''само''' у следећим случајевима:
 
 * Неумесне личне информације
 *: ''кућне адресе, бројеви телефона, матични бројеви и сл.''
@@ -823,35 +794,28 @@ administrátorom databázy v prípade, že spravíte chybu.',
 
 Уклоњене ставке неће бити видљиве никоме преко сајта, али се брисања записују
 и администратори базе података их могу ручно вратити ако направите грешку.",
-'hiderevision-reason' => 'Разлог (биће записан приватно)::',
-'hiderevision-submit' => 'Сакриј ове податке заувек',
-// Tab displayed to allowed users on old revision display
-'hiderevision-tab' => 'Сакриј ревизију',
-// Status & errors on action
-'hiderevision-norevisions' => 'Није назначена ниједна ревизија за брисање.',
-'hiderevision-noreason' => 'Морате дати разлог за ово уклањање.',
-'hiderevision-status' => 'Ревизија $1: $2',
-'hiderevision-success' => 'Успешно архивирање и брисање.',
-'hiderevision-error-missing' => 'Није пронађено у бази података.',
-'hiderevision-error-current' => 'Не могу да обришем најскорију измену на страници. Прво вратите измену.',
-'hiderevision-error-delete' => 'Не могу да архивирам; да ли је претходно обрисана?',
-'hiderevision-archive-status' => 'Обрисана ревизија из $1: $2',
-// Logging
-'oversight-log-hiderev' => 'уклоњена измена из $1',
-// Oversight review page
-'oversight' => 'Пропуст',
-'oversight-view' => 'детаљи',
+	'hiderevision-reason'         => 'Разлог (биће записан приватно)::',
+	'hiderevision-submit'         => 'Сакриј ове податке заувек',
+	'hiderevision-tab'            => 'Сакриј ревизију',
+	'hiderevision-norevisions'    => 'Није назначена ниједна ревизија за брисање.',
+	'hiderevision-noreason'       => 'Морате дати разлог за ово уклањање.',
+	'hiderevision-status'         => 'Ревизија $1: $2',
+	'hiderevision-success'        => 'Успешно архивирање и брисање.',
+	'hiderevision-error-missing'  => 'Није пронађено у бази података.',
+	'hiderevision-error-current'  => 'Не могу да обришем најскорију измену на страници. Прво вратите измену.',
+	'hiderevision-error-delete'   => 'Не могу да архивирам; да ли је претходно обрисана?',
+	'hiderevision-archive-status' => 'Обрисана ревизија из $1: $2',
+	'oversight-log-hiderev'       => 'уклоњена измена из $1',
+	'oversight'                   => 'Пропуст',
+	'oversight-view'              => 'детаљи',
 ),
 
 /* Serbian cyrillic (Sasa Stefanovic) */
 'sr-ec' => array(
-'hiderevision' => 'Трајно сакриј ревизије',
-// Empty form
-'hiderevision-prompt' => 'Број ревизије за уклањање:',
-'hiderevision-continue' => 'Настави',
-// Confirmation form
-'hiderevision-text' =>
-"Ова опција треба да се користи '''само''' у следећим случајевима:
+	'hiderevision'                => 'Трајно сакриј ревизије',
+	'hiderevision-prompt'         => 'Број ревизије за уклањање:',
+	'hiderevision-continue'       => 'Настави',
+	'hiderevision-text'           => "Ова опција треба да се користи '''само''' у следећим случајевима:
 
 * Неумесне личне информације
 *: ''кућне адресе, бројеви телефона, матични бројеви и сл.''
@@ -860,35 +824,28 @@ administrátorom databázy v prípade, že spravíte chybu.',
 
 Уклоњене ставке неће бити видљиве никоме преко сајта, али се брисања записују
 и администратори базе података их могу ручно вратити ако направите грешку.",
-'hiderevision-reason' => 'Разлог (биће записан приватно)::',
-'hiderevision-submit' => 'Сакриј ове податке заувек',
-// Tab displayed to allowed users on old revision display
-'hiderevision-tab' => 'Сакриј ревизију',
-// Status & errors on action
-'hiderevision-norevisions' => 'Није назначена ниједна ревизија за брисање.',
-'hiderevision-noreason' => 'Морате дати разлог за ово уклањање.',
-'hiderevision-status' => 'Ревизија $1: $2',
-'hiderevision-success' => 'Успешно архивирање и брисање.',
-'hiderevision-error-missing' => 'Није пронађено у бази података.',
-'hiderevision-error-current' => 'Не могу да обришем најскорију измену на страници. Прво вратите измену.',
-'hiderevision-error-delete' => 'Не могу да архивирам; да ли је претходно обрисана?',
-'hiderevision-archive-status' => 'Обрисана ревизија из $1: $2',
-// Logging
-'oversight-log-hiderev' => 'уклоњена измена из $1',
-// Oversight review page
-'oversight' => 'Пропуст',
-'oversight-view' => 'детаљи',
+	'hiderevision-reason'         => 'Разлог (биће записан приватно)::',
+	'hiderevision-submit'         => 'Сакриј ове податке заувек',
+	'hiderevision-tab'            => 'Сакриј ревизију',
+	'hiderevision-norevisions'    => 'Није назначена ниједна ревизија за брисање.',
+	'hiderevision-noreason'       => 'Морате дати разлог за ово уклањање.',
+	'hiderevision-status'         => 'Ревизија $1: $2',
+	'hiderevision-success'        => 'Успешно архивирање и брисање.',
+	'hiderevision-error-missing'  => 'Није пронађено у бази података.',
+	'hiderevision-error-current'  => 'Не могу да обришем најскорију измену на страници. Прво вратите измену.',
+	'hiderevision-error-delete'   => 'Не могу да архивирам; да ли је претходно обрисана?',
+	'hiderevision-archive-status' => 'Обрисана ревизија из $1: $2',
+	'oversight-log-hiderev'       => 'уклоњена измена из $1',
+	'oversight'                   => 'Пропуст',
+	'oversight-view'              => 'детаљи',
 ),
 
 /* Serbian latin (Sasa Stefanovic) */
 'sr-el' => array(
-'hiderevision' => 'Trajno sakrij revizije',
-// Empty form
-'hiderevision-prompt' => 'Broj revizije za uklanjanje:',
-'hiderevision-continue' => 'Nastavi',
-// Confirmation form
-'hiderevision-text' =>
-"Ova opcija treba da se koristi '''samo''' u sledećim slučajevima:
+	'hiderevision'                => 'Trajno sakrij revizije',
+	'hiderevision-prompt'         => 'Broj revizije za uklanjanje:',
+	'hiderevision-continue'       => 'Nastavi',
+	'hiderevision-text'           => "Ova opcija treba da se koristi '''samo''' u sledećim slučajevima:
 
 * Neumesne lične informacije
 *: ''kućne adrese, brojevi telefona, matični brojevi i sl.''
@@ -897,31 +854,30 @@ administrátorom databázy v prípade, že spravíte chybu.',
 
 Uklonjene stavke neće biti vidljive nikome preko sajta, ali se brisanja zapisuju
 i administratori baze podataka ih mogu ručno vratiti ako napravite grešku.",
-'hiderevision-reason' => 'Razlog (biće zapisan privatno)::',
-'hiderevision-submit' => 'Sakrij ove podatke zauvek',
-// Tab displayed to allowed users on old revision display
-'hiderevision-tab' => 'Sakrij reviziju',
-// Status & errors on action
-'hiderevision-norevisions' => 'Nije naznačena nijedna revizija za brisanje.',
-'hiderevision-noreason' => 'Morate dati razlog za ovo uklanjanje.',
-'hiderevision-status' => 'Revizija $1: $2',
-'hiderevision-success' => 'Uspešno arhiviranje i brisanje.',
-'hiderevision-error-missing' => 'Nije pronađeno u bazi podataka.',
-'hiderevision-error-current' => 'Ne mogu da obrišem najskoriju izmenu na stranici. Prvo vratite izmenu.',
-'hiderevision-error-delete' => 'Ne mogu da arhiviram; da li je prethodno obrisana?',
-'hiderevision-archive-status' => 'Obrisana revizija iz $1: $2',
-// Logging
-'oversight-log-hiderev' => 'uklonjena izmena iz $1',
-// Oversight review page
-'oversight' => 'Propust',
-'oversight-view' => 'detalji',
+	'hiderevision-reason'         => 'Razlog (biće zapisan privatno)::',
+	'hiderevision-submit'         => 'Sakrij ove podatke zauvek',
+	'hiderevision-tab'            => 'Sakrij reviziju',
+	'hiderevision-norevisions'    => 'Nije naznačena nijedna revizija za brisanje.',
+	'hiderevision-noreason'       => 'Morate dati razlog za ovo uklanjanje.',
+	'hiderevision-status'         => 'Revizija $1: $2',
+	'hiderevision-success'        => 'Uspešno arhiviranje i brisanje.',
+	'hiderevision-error-missing'  => 'Nije pronađeno u bazi podataka.',
+	'hiderevision-error-current'  => 'Ne mogu da obrišem najskoriju izmenu na stranici. Prvo vratite izmenu.',
+	'hiderevision-error-delete'   => 'Ne mogu da arhiviram; da li je prethodno obrisana?',
+	'hiderevision-archive-status' => 'Obrisana revizija iz $1: $2',
+	'oversight-log-hiderev'       => 'uklonjena izmena iz $1',
+	'oversight'                   => 'Propust',
+	'oversight-view'              => 'detalji',
 ),
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
 'stq' => array(
-	'hiderevision-text'          => "Dit duur '''bloot''' in do foulgjende Falle geböäre:
+	'hiderevision'                => 'Versione duurhaft wächhoalje',
+	'hiderevision-prompt'         => 'Wäch tou hoaljende Versionsnummer:',
+	'hiderevision-continue'       => 'Fääre',
+	'hiderevision-text'           => "Dit duur '''bloot''' in do foulgjende Falle geböäre:
 * Persöönelke Informatione:
 *: ''Realname, Adresse, Telefonnummer un äänelke privoate Details''
 
@@ -929,21 +885,28 @@ i administratori baze podataka ih mogu ručno vratiti ako napravite grešku.",
 
 Wächhoalde Versione sunt truch neemens moor uur ju Website ientoukiekjen.
 Jo wäide oawers protokollierd un konnen bie n Failer truch n Doatenboankadministrator wier häärstoald wäide.",
-	'hiderevision-reason'        => 'Gruund (wäd uunsichtboar protokollierd):',
-	'hiderevision-norevisions'   => 'Der wuude neen Version ounroat toun Wächhoaljen.',
-	'hiderevision-noreason'      => 'Jie mouten n Gruund foar dät Wächhoaljen ounreeke.',
-	'hiderevision-status'        => 'Version $1: $2',
-	'hiderevision-success'       => 'Mäd Ärfoulch archivierd un wächhoald.',
-	'hiderevision-error-current' => 'Ju lääste Beoarbaidenge fon ne Siede kon nit wächhoald wäide. Sät ju Beoarbaidenge eerste tourääch.',
-	'oversight-nodiff'           => 'Der is neen Versionsfergliek muugelk, deer et apstuuns neen fröiere Version fon disse Siede rakt.
+	'hiderevision-reason'         => 'Gruund (wäd uunsichtboar protokollierd):',
+	'hiderevision-submit'         => 'Hoal disse Texte duurhaft wäch',
+	'hiderevision-tab'            => 'Hoal Versione wäch',
+	'hiderevision-norevisions'    => 'Der wuude neen Version ounroat toun Wächhoaljen.',
+	'hiderevision-noreason'       => 'Jie mouten n Gruund foar dät Wächhoaljen ounreeke.',
+	'hiderevision-status'         => 'Version $1: $2',
+	'hiderevision-success'        => 'Mäd Ärfoulch archivierd un wächhoald.',
+	'hiderevision-error-missing'  => 'In ju Doatenboank nit fuunen.',
+	'hiderevision-error-current'  => 'Ju lääste Beoarbaidenge fon ne Siede kon nit wächhoald wäide. Sät ju Beoarbaidenge eerste tourääch.',
+	'hiderevision-error-delete'   => 'Archivierenge nit muugelk. Wuude ju al eer löösd?',
+	'hiderevision-archive-status' => 'Läskede Versione fon $1: $2',
+	'oversight-nodiff'            => 'Der is neen Versionsfergliek muugelk, deer et apstuuns neen fröiere Version fon disse Siede rakt.
 Muugelke Gruunde:
 *Ju Siede wuude läsked
 *Ju wächhoalde Version waas ju eerste Version',
-	'oversight-log-hiderev'      => 'Hoalde ne Beoarbaidenge fon $1 wäch',
-	'oversight'                  => 'Fersjoon',
-	'oversight-view'             => 'Details',
-	'oversight-difference'       => '(Unnerscheed tou ju foarige ferblieuwene Version)',
-	'oversight-prev'             => 'Lääste foarige Version',
+	'oversight-log-hiderev'       => 'Hoalde ne Beoarbaidenge fon $1 wäch',
+	'oversight'                   => 'Fersjoon',
+	'oversight-view'              => 'Details',
+	'oversight-difference'        => '(Unnerscheed tou ju foarige ferblieuwene Version)',
+	'oversight-prev'              => 'Lääste foarige Version',
+	'oversight-hidden'            => 'Wächhoalde Version',
+	'oversight-header'            => 'Hierunner foulget ne Lieste fon do duurhaft wächhoalde Versione. Ju Bekoandmoakenge fon disse Informatione kon dän duurhafte Ferljus fon do Oversight-Gjuchte betjuude.',
 ),
 
 'tet' => array(
@@ -959,13 +922,10 @@ Muugelke Gruunde:
 
 /* Cantonese (Shinjiman) */
 'yue' => array(
-'hiderevision' => '永久收埋修訂',
-// Empty form
-'hiderevision-prompt' => '要拎走嘅修訂號:',
-'hiderevision-continue' => '繼續',
-// Confirmation form
-'hiderevision-text' =>
-"呢樣嘢'''只係'''應該可幾響下面嘅情況之下去用:
+	'hiderevision'                => '永久收埋修訂',
+	'hiderevision-prompt'         => '要拎走嘅修訂號:',
+	'hiderevision-continue'       => '繼續',
+	'hiderevision-text'           => "呢樣嘢'''只係'''應該可幾響下面嘅情況之下去用:
 * 唔合適嘅個人資料
 *: ''屋企嘅地址同電話號碼、社區保安號等''
 
@@ -974,43 +934,36 @@ Muugelke Gruunde:
 任何人都唔會響個網站度見到拎走咗嘅項目，
 但係嗰啲刪除都會記錄落來，如果你先前做錯咗嘅話，
 係可以由數據庫管理員做手動回復，攞番之前啲資料。",
-'hiderevision-reason' => '原因 (會私人噉記低):',
-'hiderevision-submit' => '永久收埋呢樣資料',
-// Tab displayed to allowed users on old revision display
-'hiderevision-tab' => '收埋修訂',
-// Status & errors on action
-'hiderevision-norevisions' => '無指定一個修訂去刪除。',
-'hiderevision-noreason' => '你一定要講出一個原因去刪除。',
-'hiderevision-status' => '修訂 $1: $2',
-'hiderevision-success' => '已經成功歸檔同刪除咗。',
-'hiderevision-error-missing' => '響數據庫度搵唔到。',
-'hiderevision-error-current' => '唔可以響嗰版度刪除最新嘅編輯。請先將呢個修改打回頭。',
-'hiderevision-error-delete' => '唔可以歸檔；係咪之前已經刪除咗？',
-'hiderevision-archive-status' => '已經由$1度刪除咗修訂: $2',
-'oversight-nodiff' => '唔能夠追蹤更改，因為響嗰版而家無先前嘅修訂。一係:
+	'hiderevision-reason'         => '原因 (會私人噉記低):',
+	'hiderevision-submit'         => '永久收埋呢樣資料',
+	'hiderevision-tab'            => '收埋修訂',
+	'hiderevision-norevisions'    => '無指定一個修訂去刪除。',
+	'hiderevision-noreason'       => '你一定要講出一個原因去刪除。',
+	'hiderevision-status'         => '修訂 $1: $2',
+	'hiderevision-success'        => '已經成功歸檔同刪除咗。',
+	'hiderevision-error-missing'  => '響數據庫度搵唔到。',
+	'hiderevision-error-current'  => '唔可以響嗰版度刪除最新嘅編輯。請先將呢個修改打回頭。',
+	'hiderevision-error-delete'   => '唔可以歸檔；係咪之前已經刪除咗？',
+	'hiderevision-archive-status' => '已經由$1度刪除咗修訂: $2',
+	'oversight-nodiff'            => '唔能夠追蹤更改，因為響嗰版而家無先前嘅修訂。一係:
 *嗰一版已經刪除咗，又或者
 *呢個收埋咗嘅版本係第一個修訂',
-// Logging
-'oversight-log-hiderev' => '已經響$1度拎走咗一個編輯',
-// Oversight review page
-'oversight' => '監督',
-'oversight-view' => '細節',
-'oversight-difference' => '(由之前剩底修訂嘅差異)',
-'oversight-prev' => '上一個之前嘅修訂',
-'oversight-hidden' => '收埋修訂',
-'oversight-header' => '下面係一個之前永久收埋，唔畀公眾睇嘅修訂清單。
+	'oversight-log-hiderev'       => '已經響$1度拎走咗一個編輯',
+	'oversight'                   => '監督',
+	'oversight-view'              => '細節',
+	'oversight-difference'        => '(由之前剩底修訂嘅差異)',
+	'oversight-prev'              => '上一個之前嘅修訂',
+	'oversight-hidden'            => '收埋修訂',
+	'oversight-header'            => '下面係一個之前永久收埋，唔畀公眾睇嘅修訂清單。
 發放呢啲資料可以導致永久損失監督嘅權限。',
 ),
 
 /* Chinese (Simplified) (Alex S.H. Lin) */
 'zh-hans' => array(
-'hiderevision' => '永久隐藏修订版本',
-// Empty form
-'hiderevision-prompt' => '要隐藏的修订版本号码:',
-'hiderevision-continue' => '继续',
-// Confirmation form
-'hiderevision-text' =>
-"'''注意！'''本工具'''只能'''在以下情况才能使用：
+	'hiderevision'                => '永久隐藏修订版本',
+	'hiderevision-prompt'         => '要隐藏的修订版本号码:',
+	'hiderevision-continue'       => '继续',
+	'hiderevision-text'           => "'''注意！'''本工具'''只能'''在以下情况才能使用：
 * 这个修订版本含有不适当的个人隐私资讯。
 *: ''例如一个人的住处地址、电话号码、身分证号码等等…''
 
@@ -1018,42 +971,34 @@ Muugelke Gruunde:
 
 删除这个项目，将会使这个网站上何任人都无法看到此项目,
 如果您误删了修订版本，必须请管理员从资料库中手动恢复。",
-'hiderevision-reason' => '理由 (这个记录将不会公开):',
-'hiderevision-submit' => '永久隐藏这项资料',
-// Tab displayed to allowed users on old revision display
-'hiderevision-tab' => '隐藏此修订',
-// Status & errors on action
-'hiderevision-norevisions' => '没有指定的修订版本被删除',
-'hiderevision-noreason' => '您必须说明隐藏这个修订版本的理由。',
-'hiderevision-status' => '修订版本 $1: $2',
-'hiderevision-success' => '已经完成隐藏与记录此操作',
-'hiderevision-error-missing' => '资料库找不到这个修订版本。',
-'hiderevision-error-current' => '本页为该页面的最新版本，无法隐藏。请先恢复这个页面之前的编辑。',
-'hiderevision-error-delete' => '无法记录此操作。可能之前已经被删除。',
-'hiderevision-archive-status' => '已删除的修订版本。从 $1: $2',
-'oversight-nodiff' => '无法与过去之前的版本做差异比较，可能是因为：
+	'hiderevision-reason'         => '理由 (这个记录将不会公开):',
+	'hiderevision-submit'         => '永久隐藏这项资料',
+	'hiderevision-tab'            => '隐藏此修订',
+	'hiderevision-norevisions'    => '没有指定的修订版本被删除',
+	'hiderevision-noreason'       => '您必须说明隐藏这个修订版本的理由。',
+	'hiderevision-status'         => '修订版本 $1: $2',
+	'hiderevision-success'        => '已经完成隐藏与记录此操作',
+	'hiderevision-error-missing'  => '资料库找不到这个修订版本。',
+	'hiderevision-error-current'  => '本页为该页面的最新版本，无法隐藏。请先恢复这个页面之前的编辑。',
+	'hiderevision-error-delete'   => '无法记录此操作。可能之前已经被删除。',
+	'hiderevision-archive-status' => '已删除的修订版本。从 $1: $2',
+	'oversight-nodiff'            => '无法与过去之前的版本做差异比较，可能是因为：
 *这个页面已经被删除。
 *隐藏的页面为最先建立的版本。',
-// Logging
-'oversight-log-hiderev' => '隐藏 $1 中的一个修订版本',
-// Oversight review page
-'oversight' => 'Oversight',
-'oversight-view' => '内容',
-'oversight-difference' => '(与之前存在之修订版本的差异)',
-'oversight-prev' => '最后一个之前的修订版本',
-'oversight-hidden' => '隐藏修订',
-'oversight-header' => '以下列示的是已经永久隐藏的修订版本。请注意！泄漏这些讯息将会永远丧失{{int:Oversight}}权限！',
+	'oversight-log-hiderev'       => '隐藏 $1 中的一个修订版本',
+	'oversight-view'              => '内容',
+	'oversight-difference'        => '(与之前存在之修订版本的差异)',
+	'oversight-prev'              => '最后一个之前的修订版本',
+	'oversight-hidden'            => '隐藏修订',
+	'oversight-header'            => '以下列示的是已经永久隐藏的修订版本。请注意！泄漏这些讯息将会永远丧失{{int:Oversight}}权限！',
 ),
 
 /* Chinese (Traditional) (Alex S.H. Lin) */
 'zh-hant' => array(
-'hiderevision' => '永久隱藏修訂版本',
-// Empty form
-'hiderevision-prompt' => '要隱藏的修訂版本號碼:',
-'hiderevision-continue' => '繼續',
-// Confirmation form
-'hiderevision-text' =>
-"'''注意！'''本工具'''只能'''在以下情況才能使用：
+	'hiderevision'                => '永久隱藏修訂版本',
+	'hiderevision-prompt'         => '要隱藏的修訂版本號碼:',
+	'hiderevision-continue'       => '繼續',
+	'hiderevision-text'           => "'''注意！'''本工具'''只能'''在以下情況才能使用：
 * 這個修訂版本含有不適當的個人隱私資訊。
 *: ''例如一個人的住處地址、電話號碼、身分證號碼等等…''
 
@@ -1061,31 +1006,26 @@ Muugelke Gruunde:
 
 刪除這個項目，將會使這個網站上何任人都無法看到此項目,
 如果您誤刪了修訂版本，必須請管理員從資料庫中手動恢復。",
-'hiderevision-reason' => '理由 (這個記錄將不會公開):',
-'hiderevision-submit' => '永久隱藏這項資料',
-// Tab displayed to allowed users on old revision display
-'hiderevision-tab' => '隱藏此修訂',
-// Status & errors on action
-'hiderevision-norevisions' => '沒有指定的修訂版本被刪除',
-'hiderevision-noreason' => '您必須說明隱藏這個修訂版本的理由。',
-'hiderevision-status' => '修訂版本 $1: $2',
-'hiderevision-success' => '已經完成隱藏與記錄此操作',
-'hiderevision-error-missing' => '資料庫找不到這個修訂版本。',
-'hiderevision-error-current' => '本頁為該頁面的最新版本，無法隱藏。請先恢復這個頁面之前的編輯。',
-'hiderevision-error-delete' => '無法記錄此操作。可能之前已經被刪除。',
-'hiderevision-archive-status' => '已刪除的修訂版本。從 $1: $2',
-'oversight-nodiff' => '無法與過去之前的版本做差異比較，可能是因為：
+	'hiderevision-reason'         => '理由 (這個記錄將不會公開):',
+	'hiderevision-submit'         => '永久隱藏這項資料',
+	'hiderevision-tab'            => '隱藏此修訂',
+	'hiderevision-norevisions'    => '沒有指定的修訂版本被刪除',
+	'hiderevision-noreason'       => '您必須說明隱藏這個修訂版本的理由。',
+	'hiderevision-status'         => '修訂版本 $1: $2',
+	'hiderevision-success'        => '已經完成隱藏與記錄此操作',
+	'hiderevision-error-missing'  => '資料庫找不到這個修訂版本。',
+	'hiderevision-error-current'  => '本頁為該頁面的最新版本，無法隱藏。請先恢復這個頁面之前的編輯。',
+	'hiderevision-error-delete'   => '無法記錄此操作。可能之前已經被刪除。',
+	'hiderevision-archive-status' => '已刪除的修訂版本。從 $1: $2',
+	'oversight-nodiff'            => '無法與過去之前的版本做差異比較，可能是因為：
 *此頁面已經被刪除。
 *隱藏的頁面為最先建立的版本。',
-// Logging
-'oversight-log-hiderev' => '隱藏 $1 中的一個修訂版本',
-// Oversight review page
-'oversight' => 'Oversight',
-'oversight-view' => '內容',
-'oversight-difference' => '(與之前存在之修訂版本的差異)',
-'oversight-prev' => '最後一個之前的修訂版本',
-'oversight-hidden' => '隱藏修訂',
-'oversight-header' => '以下列示的是已經永久隱藏的修訂版本。請注意！洩漏這些訊息將會永遠喪失{{int:Oversight}}權限！',
+	'oversight-log-hiderev'       => '隱藏 $1 中的一個修訂版本',
+	'oversight-view'              => '內容',
+	'oversight-difference'        => '(與之前存在之修訂版本的差異)',
+	'oversight-prev'              => '最後一個之前的修訂版本',
+	'oversight-hidden'            => '隱藏修訂',
+	'oversight-header'            => '以下列示的是已經永久隱藏的修訂版本。請注意！洩漏這些訊息將會永遠喪失{{int:Oversight}}權限！',
 ),
 
 	);
@@ -1106,5 +1046,4 @@ Muugelke Gruunde:
 	$messages['zh-yue'] = $messages['yue'];
 
 	return $messages;
-
 }

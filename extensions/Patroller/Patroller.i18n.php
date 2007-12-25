@@ -435,6 +435,33 @@ function efPatrollerMessages() {
 	'grouppage-patroller'    => '{{ns:project}}:Патрулирующие',
 ),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+'stq' => array(
+	'patrol'                 => 'Kontrolle fon do Beoarbaidengen',
+	'patrol-endorse'         => 'Bestäätigje',
+	'patrol-revert'          => 'Touräächsätte',
+	'patrol-revert-reason'   => 'Gruund:',
+	'patrol-skip'            => 'Uurspringe',
+	'patrol-reverting'       => 'Touräächsätte: $1',
+	'patrol-nonefound'       => 'Der wuuden neen paasjende Beoarbaidengen toun Kontrollierjen fuunen.',
+	'patrol-endorsed-ok'     => 'Disse Beoarbaidenge wuude al as kontrollierd markierd.',
+	'patrol-endorsed-failed' => 'Disse Beoarbaidenge kon nit as kontrollierd markierd wäide.',
+	'patrol-reverted-ok'     => 'Ju Beoarbaidenge wuude touräächsät.',
+	'patrol-reverted-failed' => 'Ju Beoarbaidenge kon nit touräächsät wäide.',
+	'patrol-skipped-ok'      => 'Beoarbaidenge wäd ignorierd.',
+	'patrol-reasons'         => '* Eenfacher Vandalismus
+* Test fon n Näiling
+* Sjuch Diskussionssiede',
+	'patrol-another'         => 'Wies ne wiedere Beoarbaidenge, sofier ferföichboar.',
+	'patrol-stopped'         => 'Jie hääbe äntscheeden, neen wiedere Beoarbaidenge tou kontrollierjen. $1',
+	'patrol-resume'          => 'Klik hier toun Foutsätten.',
+	'group-patroller'        => 'Kontrolleure',
+	'group-patroller-member' => 'Kontrolleur',
+	'grouppage-patroller'    => '{{ns:project}}:Kontrolleur',
+),
+
 /* Sundanese (Kandar via BetaWiki) */
 'su' => array(
 	'patrol' => 'Ronda éditan',

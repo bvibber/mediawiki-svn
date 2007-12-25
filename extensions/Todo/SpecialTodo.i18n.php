@@ -69,13 +69,21 @@ $4',
 	'todo-form-submit'      => 'تنفيذ',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'todo-form-details' => 'Детайли:',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
 $messages['el'] = array(
-	'todo-list-change' => 'Αλλαγή',
-	'todo-list-cancel' => 'Έξοδος',
-	'todo-new-item'    => 'Νέο αντικείμενο',
+	'todo-list-change'  => 'Αλλαγή',
+	'todo-list-cancel'  => 'Έξοδος',
+	'todo-new-item'     => 'Νέο αντικείμενο',
+	'todo-form-details' => 'Λεπτομέρειες:',
 );
 
 $messages['fr'] = array (
@@ -153,6 +161,13 @@ $4',
 	'todo-form-details' => 'Podrobnosće',
 	'todo-form-email' => 'Zo by zdźělenje z e-mejlu dóstał, hdyž so nadawk kónči, zapodaj tu swoju adresu:',
 	'todo-form-submit' => 'Naprašowanje wotesłać',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'todo-new-queue' => 'nei',
 );
 
 /** Dutch (Nederlands)

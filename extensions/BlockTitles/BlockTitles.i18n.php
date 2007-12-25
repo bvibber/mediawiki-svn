@@ -105,6 +105,14 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'Paginam huius tituli servare non licet.',
 ),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+'lb' => array(
+	'block_title_error_page_title' => 'Gespaarte Säitenumm',
+	'block_title_error'            => 'Pardon, eng Säit mat dësem Numm däerf net gespäichert ginn.',
+),
+
 'nl' => array(
 	'block_title_error_page_title' => 'Geblokkeerde paginanaam',
 	'block_title_error' => 'Sorry, het is niet toegestaan een pagina met deze naam op te slaan.',

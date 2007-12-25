@@ -77,3 +77,13 @@ $messages['oc'] = array(
 	'intersection_noresults'     => 'DynamicPageList : Pas cap de resultat !',
 	'intersection_noincludecats' => 'DynamicPageList : avètz besonh d’inclòure al mens una categoria, o de precisar un nom d’espaci !',
 );
+
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: För många kategorier!',
+	'intersection_toofewcats'    => 'DynamicPageList: För få kategorier!',
+	'intersection_noresults'     => 'DynamicPageList: Inga resultat!',
+	'intersection_noincludecats' => 'DynamicPageList: Du måste inkludera minst en kategori eller ange en namnrymd!',
+);

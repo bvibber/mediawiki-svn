@@ -57,21 +57,34 @@ $wgMathStatFunctionsMessages['id'] = array(
         'msfunc_inf' => "Nilai hasil tak hingga" ,
         'msfunc_div_zero' => "Pembagian dengan nol",
 );
+
 $wgMathStatFunctionsMessages['it'] = array(
         'msfunc_nan' => "Il risultato non è un numero" ,
         'msfunc_inf' => "Il risultato è infinito" ,
         'msfunc_div_zero' => "Divisione per zero",
 );
+
 $wgMathStatFunctionsMessages['ja'] = array(
         'msfunc_nan' => "返り値が数値ではありませんResulting value is not a number" ,
         'msfunc_inf' => "返り値が無限大です" ,
         'msfunc_div_zero' => "0で割り算しました",
 );
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$wgMathStatFunctionsMessages['lb'] = array(
+	'msfunc_nan'      => "D'Resultat ass keng Zuel",
+	'msfunc_inf'      => "D'Resultat ass onendlech",
+	'msfunc_div_zero' => 'Divisioun duerch null',
+);
+
 $wgMathStatFunctionsMessages['nl'] = array(
         'msfunc_nan' => "Resulterende waarde is geen getal" ,
         'msfunc_inf' => "Resulterende waarde is oneindig" ,
         'msfunc_div_zero' => "Deling door nul",
 );
+
 $wgMathStatFunctionsMessages['no'] = array(
 	'msfunc_nan' => 'Resultatverdien er ikke et tall',
 	'msfunc_inf' => 'Resultatverdien er uendelig',

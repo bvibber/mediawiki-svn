@@ -127,6 +127,16 @@ $messages['hsb'] = array(
 	'spamdifftool_submit_buttom' => 'Wotesłać',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'spamdifftool_option_domain'    => 'all vun dësem Domain',
+	'spamdifftool_option_subdomain' => 'all vun dësem Subdomain',
+	'spamdifftool_option_none'      => 'näischt',
+	'spamdifftool_block'            => 'Spär:',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
