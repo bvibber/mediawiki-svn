@@ -508,7 +508,7 @@ S'ha creat el vostre compte. No oblideu de canviar les vostres preferències.",
 'uid'                        => "Identificador d'usuari:",
 'yourrealname'               => 'Nom real *',
 'yourlanguage'               => 'Llengua:',
-'yourvariant'                => 'Variant lingüística',
+'yourvariant'                => 'Variant lingüística:',
 'yournick'                   => 'Àlies (nom que es mostrarà):',
 'badsig'                     => 'La signatura que heu inserit no és vàlida; verifiqueu les etiquetes HTML que heu emprat.',
 'badsiglength'               => 'Nom massa llarg; el màxim són $1 caràcters.',
@@ -1081,7 +1081,6 @@ A continuació teniu el registre d'esborrament per a que pugeu comprovar els mot
 'filehist-current'          => 'actual',
 'filehist-datetime'         => 'Data/hora',
 'filehist-user'             => 'Usuari',
-'filehist-dimensions'       => 'Dimensions',
 'filehist-filesize'         => 'Mida del fitxer',
 'filehist-comment'          => 'Comentari',
 'imagelinks'                => 'Enllaços a la imatge',
@@ -1230,6 +1229,7 @@ segon redireccionament, la qual cosa dóna normalment l\'article "real", al que 
 'unusedcategoriestext'    => 'Les pàgines de categoria següents existeixen encara que cap altre article o categoria les utilitza.',
 'notargettitle'           => 'No hi ha pàgina en blanc',
 'notargettext'            => 'No heu especificat a quina pàgina dur a terme aquesta funció.',
+'pager-newer-n'           => '{{PLURAL:$1|1 más rezient|$1 más rezients}}',
 
 # Book sources
 'booksources'               => 'Obres de referència',
@@ -1454,7 +1454,6 @@ Ací es troben els paràmetres actuals de la pàgina <strong>$1</strong>:',
 'restriction-level'           => 'Nivell de restricció:',
 'minimum-size'                => 'Mida mínima',
 'maximum-size'                => 'Mida màxima',
-'pagesize'                    => '(bytes)',
 
 # Restrictions (nouns)
 'restriction-edit'   => 'Edita',
@@ -1575,7 +1574,7 @@ quines pàgines en concret estan sent vandalitzades).",
 'ipbenableautoblock'          => "Bloca l'adreça IP d'aquest usuari, i totes les subseqüents adreces des de les quals intenti registrar-se",
 'ipbsubmit'                   => 'Bloqueja aquesta adreça',
 'ipbother'                    => 'Un altre termini',
-'ipboptions'                  => '2 hores:2 hours,1 dia:1 day,3 dies:3 days,1 setmana:1 week,2 setmanes:2 weeks,1 mes:1 month,3 mesos:3 months,6 mesos:6 months,1 any:1 year,infinit:infinite',
+'ipboptions'                  => '2 hores:2 hours,1 dia:1 day,3 dies:3 days,1 setmana:1 week,2 setmanes:2 weeks,1 mes:1 month,3 mesos:3 months,6 mesos:6 months,1 any:1 year,infinit:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'un altre',
 'ipbotherreason'              => 'Altres motius o addicionals:',
 'ipbhidename'                 => "Amaga el nom d'usuari / IP del registre de bloquejos, activa la llista de bloqueig i d'usuaris",
@@ -1960,7 +1959,7 @@ La resta d'enllaços d'aquella línia són les excepcions, és a dir, les pàgin
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength',
+* focallength', # Do not translate list items
 
 # EXIF tags
 'exif-imagewidth'                  => 'Amplada',
@@ -2101,7 +2100,6 @@ La resta d'enllaços d'aquella línia són les excepcions, és a dir, les pàgin
 'exif-componentsconfiguration-0' => 'no existeix',
 
 'exif-exposureprogram-0' => 'No definit',
-'exif-exposureprogram-1' => 'Manual',
 'exif-exposureprogram-2' => 'Programa normal',
 'exif-exposureprogram-3' => "amb prioritat d'obertura",
 'exif-exposureprogram-4' => "amb prioritat de velocitat d'obturació",

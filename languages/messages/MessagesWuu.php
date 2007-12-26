@@ -6,14 +6,32 @@
  * @author O
  */
 
+$fallback = 'zh-hans';
+
 $messages = array(
 # User preference toggles
-'tog-hideminor'         => '勒拉近段辰光个改动里向囥脱小改动',
-'tog-extendwatchlist'   => '扩展监控列表来显示亨白浪当个好应用个改动',
-'tog-usenewrc'          => '强化版近段辰光个改动 (JavaScript)',
-'tog-rememberpassword'  => '登该台电脑浪记牢我个登录',
-'tog-watchlisthideown'  => '勒拉监控列表里向囥脱我个编辑',
-'tog-watchlisthidebots' => '勒拉监控列表里向囥脱机器人个编辑',
+'tog-highlightbroken'         => '呒效链接格式<a href="" class="new">像该样</a>（或者像该个<a href="" class="internal">？</a>）',
+'tog-hideminor'               => '勒拉近段辰光个改动里向囥脱小改动',
+'tog-extendwatchlist'         => '扩展监控列表来显示亨白浪当个好应用个改动',
+'tog-usenewrc'                => '强化版近段辰光个改动（JavaScript）',
+'tog-showtoolbar'             => '显示编辑工具条（JavaScript）',
+'tog-editondblclick'          => '双击时编辑页面（JavaScript）',
+'tog-editsectiononrightclick' => '允许右击标题编辑段落（JavaScript）',
+'tog-showtoc'                 => '显示目录（针对一页超过三个标题个页面）',
+'tog-rememberpassword'        => '登该台电脑浪记牢我个登录',
+'tog-watchcreations'          => '将我创建个页面添加到我个监控列表',
+'tog-watchdefault'            => '将我编辑个页面添加到我个监控列表',
+'tog-watchmoves'              => '将我移动个页面添加到我个监控列表',
+'tog-watchdeletion'           => '将我删除个页面添加到我个监控列表',
+'tog-enotifusertalkpages'     => '在我个讲张更改时发邮件通知我',
+'tog-enotifrevealaddr'        => '在通邮件知列表中显示我个邮件地址',
+'tog-shownumberswatching'     => '显示监控此页个用户数',
+'tog-fancysig'                => '原始签名（没有自动链接）',
+'tog-showjumplinks'           => '启用“转到”访问链接',
+'tog-uselivepreview'          => '使用实时预览（Javascript）（试验中）',
+'tog-watchlisthideown'        => '勒拉监控列表里向囥脱我个编辑',
+'tog-watchlisthidebots'       => '勒拉监控列表里向囥脱机器人个编辑',
+'tog-watchlisthideminor'      => '在监控列表中隐藏微小更改',
 
 'underline-always'  => '总归',
 'underline-never'   => '从来弗',
@@ -76,7 +94,7 @@ $messages = array(
 # Bits of text used by many pages
 'categories'            => '页面分类',
 'pagecategories'        => '$1个分类',
-'category_header'       => '"$1"分类中个文章',
+'category_header'       => '“$1”分类中个页面',
 'subcategories'         => '亚类',
 'category-media-header' => '"$1"分类中个媒体',
 'category-empty'        => "''该个分类中尚未包含任何文章或媒体。''",
@@ -96,6 +114,7 @@ $messages = array(
 'qbfind'         => '查找',
 'qbedit'         => '编辑',
 'qbpageoptions'  => '页面选项',
+'qbmyoptions'    => '我个选项',
 'qbspecialpages' => '特殊页面',
 'moredotdotdot'  => '还有...',
 'mypage'         => '我个页面',
@@ -146,6 +165,7 @@ $messages = array(
 'categorypage'      => '查看分类页面',
 'viewtalkpage'      => '查看讨论页',
 'otherlanguages'    => '别样闲话版本',
+'redirectedfrom'    => '（重定向自$1）',
 'redirectpagesub'   => '重定向页面',
 'protectedpage'     => '拨保护个页面',
 'jumpto'            => '跳到：',
@@ -172,6 +192,7 @@ $messages = array(
 'sitesupport'       => '捐款',
 'sitesupport-url'   => 'Project:捐款',
 
+'ok'                      => '确定',
 'retrievedfrom'           => '取自“$1”',
 'youhavenewmessages'      => '侬有$1（$2）。',
 'newmessageslink'         => '新信息',
@@ -207,9 +228,11 @@ $messages = array(
 
 # General errors
 'error'           => '错误',
+'filedeleteerror' => '呒能删除文物“$1”。',
 'filenotfound'    => '寻弗着文件 "$1"。',
 'badtitle'        => '该只标题弗来三',
 'viewsource'      => '源码',
+'viewsourcefor'   => '$1个源码',
 'actionthrottled' => '动作已压制',
 
 # Login and logout pages
@@ -248,9 +271,10 @@ $messages = array(
 'prefs-help-email'           => '电子邮箱是备选的，让别人家好通过倷个用户页或者用户讲张页面联系着倷，用弗着暴露倷个身份。',
 'loginsuccesstitle'          => '登录成功',
 'loginsuccess'               => "'''倷现在以 \"\$1\" 个身份登录到{{SITENAME}}。 '''",
+'nouserspecified'            => '侬必须选个用户名。',
 'wrongpassword'              => '密码弗对嗄。请倷再试试看。',
 'mailmypassword'             => '电子邮件发送密码',
-'acct_creation_throttle_hit' => '对覅起，侬经建了$1个账号。侬覅能再建了。',
+'acct_creation_throttle_hit' => '对覅起，侬经建了$1个账号。侬呒能再建了。',
 'emailauthenticated'         => '倷个电子邮箱地址勒拉 $1 验证过哉。',
 'accountcreated'             => '户头开好哉',
 'accountcreatedtext'         => '$1 个户头已经建立哉。',
@@ -265,6 +289,7 @@ $messages = array(
 'link_tip'       => '内部链接',
 'extlink_sample' => 'http://www.example.com 链接标题',
 'headline_tip'   => '2级标题文字',
+'math_sample'    => '往该里加数学公式',
 'image_tip'      => '嵌入图片',
 'sig_tip'        => '倷个签名搭仔辰光记录',
 
@@ -278,6 +303,7 @@ $messages = array(
 'showdiff'           => '显示改动',
 'anoneditwarning'    => "'''警告：''' 倷朆登录。倷个IP地址会拨记录勒该页面个编辑历史里向。",
 'blockednoreason'    => '无给出原因',
+'whitelistedittext'  => '侬必须$1才能编辑。',
 'loginreqtitle'      => '必须登录',
 'loginreqlink'       => '登录',
 'accmailtitle'       => '密码已发送哉。',
@@ -368,15 +394,18 @@ $messages = array(
 'userrights-user-editname' => '输入用户名:',
 
 # Groups
-'group-bot'   => '机器人',
-'group-sysop' => '管理员',
-'group-all'   => '（全）',
+'group-bot'        => '机器人',
+'group-sysop'      => '管理员',
+'group-bureaucrat' => '行政员',
+'group-all'        => '（全）',
 
-'group-bot-member'   => '机器人',
-'group-sysop-member' => '管理员',
+'group-bot-member'        => '机器人',
+'group-sysop-member'      => '管理员',
+'group-bureaucrat-member' => '行政员',
 
-'grouppage-bot'   => '{{ns:project}}:机器人',
-'grouppage-sysop' => '{{ns:project}}:管理员',
+'grouppage-bot'        => '{{ns:project}}:机器人',
+'grouppage-sysop'      => '{{ns:project}}:管理员',
+'grouppage-bureaucrat' => '{{ns:project}}:行政员',
 
 # User rights log
 'rightsnone' => '（呒）',
@@ -502,6 +531,8 @@ $messages = array(
 'allpages'             => '全部页面',
 'shortpages'           => '短页面',
 'longpages'            => '长页面',
+'protectedpages'       => '已保护页面',
+'protectedtitles'      => '已保护个标题',
 'listusers'            => '用户列表',
 'specialpages'         => '特殊页面',
 'newpages'             => '新页面',
@@ -524,6 +555,7 @@ $messages = array(
 
 # Special:Allpages
 'nextpage'          => '下页 ($1)',
+'prevpage'          => '上一页（$1）',
 'allpagesfrom'      => '显示个页面开始于:',
 'allarticles'       => '所有页面',
 'allinnamespace'    => '所有页面 ($1 名字空间)',
@@ -538,8 +570,10 @@ $messages = array(
 
 # E-mail user
 'emailuser'     => '发E-mail拨该个用户',
+'emailfrom'     => '从',
 'emailto'       => '发拨',
 'emailsubject'  => '主题',
+'emailmessage'  => '信息',
 'emailsend'     => '发罢',
 'emailsent'     => '电子邮件发出去哉',
 'emailsenttext' => '倷个电子邮件讯息已经拨发送哉。',
@@ -580,6 +614,7 @@ $messages = array(
 'deletepage'      => '删脱页面',
 'confirm'         => '确认',
 'confirmdelete'   => '确认删除',
+'deletesub'       => '（正在删除“$1”）',
 'historywarning'  => '警告：倷要删脱个该只页面有历史：',
 'actioncomplete'  => '操作完成哉',
 'deletedarticle'  => '"[[$1]]" 已经删脱哉',
@@ -737,7 +772,8 @@ $messages = array(
 'deletedrevision' => '拨删脱个旧修订 $1',
 
 # Special:Newimages
-'newimages' => '新文件陈列室',
+'newimages'    => '新文件陈列室',
+'showhidebots' => '（$1机器人）',
 
 /*
 Short names for language variants used for language conversion links.
@@ -779,6 +815,9 @@ Variants for Chinese language
 'confirmemail_loggedin' => '倷个电子邮件地址已经拨确认哉。',
 'confirmemail_subject'  => '{{SITENAME}}电子邮件地址确认',
 
+# Scary transclusion
+'scarytranscludetoolong' => '[对呒起，URL太长了]',
+
 # Delete conflict
 'confirmrecreate' => "用户[[User:$1|$1]] ([[User talk:$1|讲张]])勒拉倷开始编辑该页面之后拿俚删脱，理由是： : ''$2'' 请拿定章程，倷阿是真个要重建该页面。",
 
@@ -789,6 +828,10 @@ Variants for Chinese language
 'searchcontaining' => "搜寻里向有 ''$1'' 个页面。",
 'articletitles'    => "以 ''$1'' 开头个页面",
 'hideresults'      => '囥脱结果',
+
+# Multipage image navigation
+'imgmultipageprev' => '← 上一页',
+'imgmultipagenext' => '下一页 →',
 
 # Table pager
 'ascending_abbrev'  => '升序',

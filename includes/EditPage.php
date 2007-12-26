@@ -1056,9 +1056,9 @@ class EditPage {
 		}
 
 		if( wfReadOnly() ) {
-			$wgOut->addWikiText( wfMsg( 'readonlywarning' ) );
+			$wgOut->addHTML( '<div id="mw-read-only-warning">'.wfMsgWikiHTML( 'readonlywarning' ).'</div>' );
 		} elseif( $wgUser->isAnon() && $this->formtype != 'preview' ) {
-			$wgOut->addWikiText( wfMsg( 'anoneditwarning' ) );
+			$wgOut->addHTML( '<div id="mw-anon-edit-warning">'.wfMsgWikiHTML( 'anoneditwarning' ).'</div>' );
 		} else {
 			if( $this->isCssJsSubpage && $this->formtype != 'preview' ) {
 				# Check the skin exists
@@ -1592,9 +1592,11 @@ END
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 
+		$wgOut->addHtml( '<div id="spamprotected">' );
 		$wgOut->addWikiText( wfMsg( 'spamprotectiontext' ) );
 		if ( $match )
-			$wgOut->addWikiText( wfMsg( 'spamprotectionmatch', "<nowiki>{$match}</nowiki>" ) );
+			$wgOut->addWikiText( wfMsg( 'spamprotectionmatch',wfEscapeWikiText( $match ) ) );
+		$wgOut->addHtml( '</div>' );
 
 		$wgOut->returnToMain( false, $wgTitle );
 	}

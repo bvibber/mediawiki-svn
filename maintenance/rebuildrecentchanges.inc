@@ -6,6 +6,13 @@
  * @addtogroup Maintenance
  */
 
+/** Public entry; more passes might come in! :) */
+function rebuildRecentChangesTable() {
+	rebuildRecentChangesTablePass1();
+	rebuildRecentChangesTablePass2();
+	rebuildRecentChangesTablePass3();
+}
+
 /** */
 function rebuildRecentChangesTablePass1()
 {
@@ -107,10 +114,10 @@ function rebuildRecentChangesTablePass3()
 	$botgroups = $autopatrolgroups = array();
 	foreach( $wgGroupPermissions as $group => $rights ) {
 		if( isset( $rights['bot'] ) && $rights['bot'] == true ) {
-			$botgroups[] = "'" . $dbw->strencode( $group ) . "'";
+			$botgroups[] = $dbw->addQuotes( $group );
 		}
 		if( $wgUseRCPatrol && isset( $rights['autopatrol'] ) && $rights['autopatrol'] == true ) {
-			$autopatrolgroups[] = "'" . $dbw->strencode( $group ) . "'";
+			$autopatrolgroups[] = $dbw->addQuotes( $group );
 		}
 	}
 	# Flag our recent bot edits
@@ -126,7 +133,7 @@ function rebuildRecentChangesTablePass3()
 		$res = $dbw->query( $sql, DB_MASTER );
 
 		while( $obj = $dbw->fetchObject( $res ) ) {
-			$botusers[] = $dbw->strencode( $obj->user_name );
+			$botusers[] = $dbw->addQuotes( $obj->user_name );
 		}
 		# Fill in the rc_bot field
 		if( !empty($botusers) ) {
@@ -149,7 +156,7 @@ function rebuildRecentChangesTablePass3()
 		$res = $dbw->query( $sql, DB_MASTER );
 
 		while( $obj = $dbw->fetchObject( $res ) ) {
-			$patrolusers[] = $dbw->strencode( $obj->user_name );
+			$patrolusers[] = $dbw->addQuotes( $obj->user_name );
 		}
 		
 		# Fill in the rc_patrolled field

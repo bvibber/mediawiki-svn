@@ -7,6 +7,7 @@
  * @author Nike
  * @author Cimon Avaro
  * @author לערי ריינהארט
+ * @author Siebrand
  */
 
 $separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
@@ -125,11 +126,12 @@ $specialPageAliases = array(
 	'Deadendpages'              => array( 'Linkittömät_sivut' ),
 	'Protectedpages'            => array( 'Suojatut_sivut' ),
 	'Allpages'                  => array( 'Kaikki_sivut' ),
-	'Prefixindex'               => array( 'Etuliiteluettelo' ) ,
+	'Prefixindex'               => array( 'Etuliiteluettelo' ),
 	'Ipblocklist'               => array( 'Muokkausestot' ),
 	'Specialpages'              => array( 'Toimintosivut' ),
 	'Contributions'             => array( 'Muokkaukset' ),
 	'Emailuser'                 => array( 'Lähetä_sähköpostia' ),
+	'Confirmemail'              => array( 'Varmista_sähköpostiosoite' ),
 	'Whatlinkshere'             => array( 'Tänne_viittaavat_sivut' ),
 	'Recentchangeslinked'       => array( 'Linkitetyt_muutokset' ),
 	'Movepage'                  => array( 'Siirrä_sivu' ),
@@ -156,10 +158,12 @@ $specialPageAliases = array(
 	'Mytalk'                    => array( 'Oma_keskustelu' ),
 	'Mycontributions'           => array( 'Omat_muokkaukset' ),
 	'Listadmins'                => array( 'Ylläpitäjät' ),
+	'Listbots'                  => array( 'Botit' ),
 	'Popularpages'              => array( 'Suositut_sivut' ),
 	'Search'                    => array( 'Haku' ),
 	'Resetpass'                 => array( 'Alusta_salasana' ),
 	'Withoutinterwiki'          => array( 'Kielilinkittömät_sivut' ),
+	'MergeHistory'              => array( 'Liitä_muutoshistoria' ),
 );
 
 $linkTrail = '/^([a-zäö]+)(.*)$/sDu';
@@ -355,8 +359,8 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'categorypage'      => 'Näytä luokkasivu',
 'viewtalkpage'      => 'Näytä keskustelusivu',
 'otherlanguages'    => 'Muilla kielillä',
-'redirectedfrom'    => 'Uudelleenohjattu sivulta $1',
-'redirectpagesub'   => 'Uudelleenohjaussivu',
+'redirectedfrom'    => 'Ohjattu sivulta $1',
+'redirectpagesub'   => 'Ohjaussivu',
 'lastmodifiedat'    => 'Sivua on viimeksi muutettu $1 kello $2.', # $1 date, $2 time
 'viewcount'         => 'Tämä sivu on näytetty {{PLURAL:$1|yhden kerran|$1 kertaa}}.',
 'protectedpage'     => 'Suojattu sivu',
@@ -397,7 +401,7 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'badaccess-groups' => 'Pyytämäsi toiminto on rajoitettu ryhmien $1 henkilöille.',
 
 'versionrequired'     => 'MediaWikistä tarvitaan vähintään versio $1',
-'versionrequiredtext' => 'MediaWikistä tarvitaan vähintään versio $1 tämän sivun käyttämiseen. Katso [[Special:Version|versio]]',
+'versionrequiredtext' => 'MediaWikistä tarvitaan vähintään versio $1 tämän sivun käyttämiseen. Katso [[Special:Version|versio]].',
 
 'ok'                      => 'OK',
 'pagetitle'               => '$1 – {{SITENAME}}',
@@ -846,7 +850,7 @@ $1 | $2',
 'showingresultsnum'     => "Alla on {{PLURAL:$3|'''Yksi''' hakutulos|'''$3''' hakutulosta}} alkaen '''$2.''' tuloksesta.",
 'nonefound'             => "'''Huomautus''': Epäonnistuneet haut johtuvat usein hyvin yleisten sanojen, kuten ''on'' ja ''ei'', etsimisestä tai useamman kuin yhden hakutermin määrittelemisestä. Vain sivut, joilla on kaikki hakutermin sanat, näkyvät tuloksissa.",
 'powersearch'           => 'Etsi',
-'powersearchtext'       => 'Hae nimiavaruuksista: $1<br /><br />$2 Luettele uudelleenohjaukset<br /><br />$3 $9',
+'powersearchtext'       => 'Hae nimiavaruuksista: $1<br /><br />$2 Luettele ohjaukset<br /><br />$3 $9',
 'searchdisabled'        => 'Tekstihaku on poistettu toistaiseksi käytöstä suuren kuorman vuoksi. Voit käyttää alla olevaa Googlen hakukenttää sivujen etsimiseen, kunnes haku tulee taas käyttöön. <small>Huomaa, että ulkopuoliset kopiot {{GRAMMAR:genitive|{{SITENAME}}}} sisällöstä eivät välttämättä ole ajan tasalla.</small>',
 
 # Preferences page
@@ -923,6 +927,8 @@ $1 | $2',
 'userrights-available-none'   => 'Et voi muuttaa ryhmäjäsenyyksiä.',
 'userrights-available-add'    => 'Voit lisätä käyttäjiä ryhmiin $1.',
 'userrights-available-remove' => 'Voit poistaa käyttäjiä ryhmistä $1.',
+'userrights-no-interwiki'     => 'Sinulla ei ole lupaa muokata käyttöoikeuksia muissa wikeissä.',
+'userrights-nodatabase'       => 'Tietokantaa $1 ei ole tai se ei ole paikallinen.',
 
 # Groups
 'group'               => 'Ryhmä',
@@ -1142,7 +1148,7 @@ Harkitse, onko asianmukaista jatkaa tämän tiedoston tallentamista. Kyseisen ti
 'unwatchedpages' => 'Tarkkailemattomat sivut',
 
 # List redirects
-'listredirects' => 'Uudelleenohjaukset',
+'listredirects' => 'Ohjaussivut',
 
 # Unused templates
 'unusedtemplates'     => 'Käyttämättömät mallineet',
@@ -1154,14 +1160,14 @@ Harkitse, onko asianmukaista jatkaa tämän tiedoston tallentamista. Kyseisen ti
 'randompage-nopages' => 'Tässä nimiavaruudessa ei ole sivuja.',
 
 # Random redirect
-'randomredirect'         => 'Satunnainen uudelleenohjaus',
-'randomredirect-nopages' => 'Tässä nimiavaruudessa ei ole uudelleenohjauksia.',
+'randomredirect'         => 'Satunnainen ohjaussivu',
+'randomredirect-nopages' => 'Tässä nimiavaruudessa ei ole ohjaussivuja.',
 
 # Statistics
 'statistics'             => 'Tilastot',
 'sitestats'              => 'Sivuston tilastot',
 'userstats'              => 'Käyttäjätilastot',
-'sitestatstext'          => "Tietokannassa on {{PLURAL:$1|yksi sivu|yhteensä $1 sivua}}. Tähän on laskettu mukaan keskustelusivut, {{GRAMMAR:genitive|{{SITENAME}}}} projektisivut, hyvin lyhyet sivut, uudelleenohjaukset sekä muita sivuja, joita ei voi pitää kunnollisina sivuina. Nämä pois lukien tietokannassa on '''$2''' {{PLURAL:$2|sivu|sivua}}.
+'sitestatstext'          => "Tietokannassa on {{PLURAL:$1|yksi sivu|yhteensä $1 sivua}}. Tähän on laskettu mukaan keskustelusivut, {{GRAMMAR:genitive|{{SITENAME}}}} projektisivut, hyvin lyhyet sivut, ohjaussivut sekä muita sivuja, joita ei voi pitää kunnollisina sivuina. Nämä pois lukien tietokannassa on '''$2''' {{PLURAL:$2|sivu|sivua}}.
 
 {{GRAMMAR:illative|{{SITENAME}}}} on tallennettu '''$8''' {{PLURAL:$8|tiedosto|tiedostoa}}.
 
@@ -1173,13 +1179,13 @@ Ohjelmiston suorittamia ylläpitotöitä on jonossa '''$7''' {{PLURAL:$7|kappale
 
 'disambiguations'      => 'Linkit täsmennyssivuihin',
 'disambiguationspage'  => 'Project:Linkkejä täsmennyssivuihin',
-'disambiguations-text' => 'Seuraavat artikkelit linkittävät <i>täsmennyssivuun</i>. Täsmennyssivun sijaan niiden pitäisi linkittää asianomaiseen aiheeseen.<br />Sivua kohdellaan täsmennyssivuna jos se käyttää mallinetta, johon on linkki sivulta [[MediaWiki:disambiguationspage]].',
+'disambiguations-text' => "Seuraavat artikkelit linkittävät ''täsmennyssivuun''. Täsmennyssivun sijaan niiden pitäisi linkittää asianomaiseen aiheeseen.<br />Sivua kohdellaan täsmennyssivuna jos se käyttää mallinetta, johon on linkki sivulta [[MediaWiki:Disambiguationspage]].",
 
-'doubleredirects'     => 'Kaksinkertaiset uudelleenohjaukset',
-'doubleredirectstext' => '<b>Huomio:</b> Tässä listassa saattaa olla virheitä. Yleensä kyseessä on sivu, jossa ensimmäisen #REDIRECTin jälkeen on tekstiä.<br />Jokaisella rivillä on linkit ensimmäiseen ja toiseen uudelleenohjaukseen sekä toisen uudelleenohjauksen kohteen ensimmäiseen riviin, eli yleensä ”oikeaan” kohteeseen, johon ensimmäisen uudelleenohjauksen pitäisi osoittaa.',
+'doubleredirects'     => 'Kaksinkertaiset ohjaukset',
+'doubleredirectstext' => '<b>Huomio:</b> Tässä listassa saattaa olla virheitä. Yleensä kyseessä on sivu, jossa ensimmäisen #REDIRECT- tai #OHJAUS-komennon jälkeen on tekstiä.<br />Jokaisella rivillä on linkit ensimmäiseen ja toiseen ohjaukseen sekä toisen ohjauksen kohteen ensimmäiseen riviin, eli yleensä ”oikeaan” kohteeseen, johon ensimmäisen ohjauksen pitäisi osoittaa.',
 
-'brokenredirects'        => 'Virheelliset uudelleenohjaukset',
-'brokenredirectstext'    => 'Seuraavat uudelleenohjaukset on linkitetty artikkeleihin, joita ei ole olemassa.',
+'brokenredirects'        => 'Virheelliset ohjaukset',
+'brokenredirectstext'    => 'Seuraavat ohjaukset on osoittavat sivuihin, joita ei ole olemassa.',
 'brokenredirects-edit'   => '(muokkaa)',
 'brokenredirects-delete' => '(poista)',
 
@@ -1270,7 +1276,7 @@ Ohjelmiston suorittamia ylläpitotöitä on jonossa '''$7''' {{PLURAL:$7|kappale
 # Special:Allpages
 'nextpage'          => 'Seuraava sivu ($1)',
 'prevpage'          => 'Edellinen sivu ($1)',
-'allpagesfrom'      => 'Katkaisuhaku',
+'allpagesfrom'      => 'Sivunimi',
 'allarticles'       => 'Kaikki sivut',
 'allinnamespace'    => 'Kaikki sivut nimiavaruudessa $1',
 'allnotinnamespace' => 'Kaikki sivut, jotka eivät ole nimiavaruudessa $1',
@@ -1525,7 +1531,7 @@ $1',
 'linkshere'           => 'Seuraavilta sivuilta on linkki sivulle <strong>[[:$1]]</strong>:',
 'nolinkshere'         => 'Sivulle <strong>[[:$1]]</strong> ei ole linkkejä.',
 'nolinkshere-ns'      => 'Sivulle <strong>[[:$1]]</strong> ei ole linkkejä valitussa nimiavaruudessa.',
-'isredirect'          => 'uudelleenohjaussivu',
+'isredirect'          => 'ohjaussivu',
 'istemplate'          => 'sisällytetty mallineeseen',
 'whatlinkshere-prev'  => '← {{PLURAL:$1|edellinen sivu|$1 edellistä sivua}}',
 'whatlinkshere-next'  => '{{PLURAL:$1|seuraava sivu|$1 seuraavaa sivua}} →',
@@ -1554,7 +1560,7 @@ $1',
 'ipbenableautoblock'          => 'Estä viimeisin IP-osoite, josta käyttäjä on muokannut, sekä ne osoitteet, joista hän jatkossa yrittää muokata.',
 'ipbsubmit'                   => 'Estä',
 'ipbother'                    => 'Vapaamuotoinen kesto',
-'ipboptions'                  => '2 tuntia:2 hours,1 päivä:1 day,3 päivää:3 days,1 viikko:1 week,2 viikkoa:2 weeks,1 kuukausi:1 month,3 kuukautta:3 months,6 kuukautta:6 months,1 vuosi:1 year,ikuinen:infinite',
+'ipboptions'                  => '2 tuntia:2 hours,1 päivä:1 day,3 päivää:3 days,1 viikko:1 week,2 viikkoa:2 weeks,1 kuukausi:1 month,3 kuukautta:3 months,6 kuukautta:6 months,1 vuosi:1 year,ikuinen:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'Muu kesto',
 'ipbotherreason'              => 'Muu syy',
 'ipbhidename'                 => 'Piilota IP-osoite tai tunnus estolokista, muokkausestolistasta ja käyttäjälistasta',
@@ -1629,7 +1635,7 @@ $1',
 
 # Move page
 'movepage'                => 'Siirrä sivu',
-'movepagetext'            => "Alla olevalla lomakkeella voit nimetä uudelleen sivuja, jolloin niiden koko historia siirtyy uuden nimen alle. Vanhasta sivusta tulee uudelleenohjaussivu, joka osoittaa uuteen sivuun. Vanhaan sivuun suunnattuja linkkejä ei muuteta, joten muista tehdä tarkistukset kaksinkertaisten tai rikkinäisten uudelleenohjausten varalta. '''Olet vastuussa siitä, että linkit osoittavat sinne, mihin niiden on tarkoituskin osoittaa.'''<br />Huomaa, että sivua '''ei''' siirretä mikäli uusi otsikko on olemassa olevan sivun käytössä, paitsi milloin kyseessä on tyhjä sivu tai uudelleenohjaus, jolla ei ole muokkaushistoriaa. Tämä tarkoittaa sitä, että voit siirtää sivun takaisin vanhalle nimelleen mikäli teit virheen, mutta et voi kirjoittaa olemassa olevan sivun päälle. Jos sivu tarvitsee siirtää olemassa olevan sivun päälle, ota yhteyttä [[Special:Listusers/sysop|ylläpitäjään]].",
+'movepagetext'            => "Alla olevalla lomakkeella voit nimetä uudelleen sivuja, jolloin niiden koko historia siirtyy uuden nimen alle. Vanhasta sivusta tulee ohjaussivu, joka osoittaa uuteen sivuun. Vanhaan sivuun suunnattuja linkkejä ei muuteta, joten muista tehdä tarkistukset kaksinkertaisten tai rikkinäisten ohjausten varalta. '''Olet vastuussa siitä, että linkit osoittavat sinne, mihin niiden on tarkoituskin osoittaa.'''<br />Huomaa, että sivua '''ei''' siirretä mikäli uusi otsikko on olemassa olevan sivun käytössä, paitsi milloin kyseessä on tyhjä sivu tai ohjaus, jolla ei ole muokkaushistoriaa. Tämä tarkoittaa sitä, että voit siirtää sivun takaisin vanhalle nimelleen mikäli teit virheen, mutta et voi kirjoittaa olemassa olevan sivun päälle. Jos sivu tarvitsee siirtää olemassa olevan sivun päälle, ota yhteyttä [[Special:Listusers/sysop|ylläpitäjään]].",
 'movepagetalktext'        => "Sivuun mahdollisesti kytketty keskustelusivu siirretään automaattisesti, '''paitsi jos''':
 *Siirrät sivua nimiavaruudesta toiseen
 *Kohdesivulla on olemassa keskustelusivu, joka ei ole tyhjä, tai
@@ -1653,7 +1659,7 @@ Näissä tapauksissa sivut täytyy siirtää tai yhdistää käsin.",
 'talkpagemoved'           => 'Myös sivun keskustelusivu siirrettiin.',
 'talkpagenotmoved'        => "Sivun keskustelusivua '''ei''' siirretty.",
 '1movedto2'               => 'siirsi sivun ”$1” uudelle nimelle ”$2”',
-'1movedto2_redir'         => 'siirsi sivun ”$1” uudelleenohjauksen ”$2” päälle',
+'1movedto2_redir'         => 'siirsi sivun ”$1” ohjauksen ”$2” päälle',
 'movelogpage'             => 'Siirtoloki',
 'movelogpagetext'         => 'Tämä on loki siirretyistä sivuista.',
 'movereason'              => 'Syy',
@@ -1904,7 +1910,7 @@ Vain *-merkillä alkavat rivit otetaan huomioon. Ensimmäisen linkin on osoitett
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength',
+* focallength', # Do not translate list items
 
 # EXIF tags
 'exif-imagewidth'                  => 'Leveys',
@@ -2214,7 +2220,7 @@ Ole hyvä ja varmista, että haluat luoda sivun uudelleen.",
 'unit-pixel' => ' px',
 
 # HTML dump
-'redirectingto' => 'Uudelleenohjataan sivulle [[$1]]...',
+'redirectingto' => 'Ohjataan sivulle [[$1]]...',
 
 # action=purge
 'confirm_purge'        => 'Poistetaanko tämän sivun välimuistikopiot?
@@ -2227,6 +2233,7 @@ $1',
 'searchnamed'      => 'Etsi artikkeleita, joiden nimi on ”$1”.',
 'articletitles'    => 'Artikkelit, jotka alkavat merkkijonolla ”$1”',
 'hideresults'      => 'Piilota tulokset',
+'useajaxsearch'    => 'Käytä AJAX-hakua',
 
 # Multipage image navigation
 'imgmultipageprev'   => '← edellinen sivu',
@@ -2249,7 +2256,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'Ak: Sivu tyhjennettiin',
 'autosumm-replace' => 'Ak: Sivun sisältö korvattiin sisällöllä ”$1”',
-'autoredircomment' => 'Ak: Uudelleenohjaus sivulle [[$1]]',
+'autoredircomment' => 'Ak: Ohjaus sivulle [[$1]]',
 'autosumm-new'     => 'Ak: Uusi sivu: $1',
 
 # Size units

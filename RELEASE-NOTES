@@ -25,9 +25,16 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * MediaWiki now checks if serialized files are out of date. New configuration
   variable $wgCheckSerialized can be set to false to enable old behavior (i.e.
   to not check and assume they are always up to date)
-* The rollback permission is now assigned by default to all logged-in users. It
-  can also now be rate-limited using the normal mechanism.
+* The rollback permission can now be rate-limited using the normal mechanism.
 * New configuration variable $wgExtraLanguageNames
+* Behaviour of $wgAddGroups and $wgRemoveGroups changed. New behaviour:
+* * Granting the userrights privilege allows arbitrary changing of rights.
+* * Without the userrights privilege, a user will be able to add and/or
+     remove the groups specified in $wgAddGroups and $wgRemoveGroups for
+     any groups they are in.
+* New permission userrights-interwiki for changing user rights on foreign wikis.
+* $wgImplictGroups for groups that are hidden from Special:Listusers, etc.
+* $wgAutopromote: automatically promote users who match specified criteria
 
 === New features in 1.12 ===
 * (bug 10735) Add a warning for non-descriptive filenames at Special:Upload
@@ -100,6 +107,10 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   filetype-unwanted-type and filetype-banned-type.
 * Added link to the old title in Special:Movepage
 * On Special:Movepage, errors are now more noticeable.
+* It is now possible to change rights on other local wikis without the MakeSysop
+  extension
+* Add HTML ID's mw-read-only-warning and mw-anon-edit-warning to warnings when
+  editing to allow CSS styling.
 
 === Bug fixes in 1.12 ===
 
@@ -248,8 +259,13 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   user-customized ones (like Common.css, Common.js)
 * (bug 12283) Special:Newpages forgets parameters
 * (bug 12031) All namespaces doesn't work in Special:Newpages
-* Email addresses are now not considered case-sensitive in detecting if
-  a user has changed their email address.
+* (bug 585) Only create searchindex replica table for parser tests if db is MySQL
+* Allow --record option if parserTests.php to work when using Postgres
+* (bug 12296) Simplify cache epoch in default LocalSettings.php
+* (bug 12346) XML fix when body double-click and click handlers are present
+* Fix regression -- missing feed links in sidebar on Special:Recentchanges
+* (bug 12371) Handle more namespace case variants in namespaceDupes.php
+* (bug 12380) Bot-friendly EditPage::spamPage
 
 == Parser changes in 1.12 ==
 
@@ -383,6 +399,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Samogitian (bat-smg)
 * Boarisch (bar)
 * Bikol Central (bcl)
+* Belarusian (be)
 * Belarusian Taraskievica orthography (be-tarask)
 * Bulgarian (bg)
 * Bislama (bi) (new)
@@ -432,17 +449,23 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Scottish Gaelic (gd) (new)
 * Galician (gl)
 * Gilaki (glk) (new)
+* Gothic (got) (new)
 * Ancient Greek (grc) (new)
 * Swiss German (gsw)
 * Hakka (hak)
+* Hawaiian (haw) (new)
 * Hebrew (he)
 * Croatian (hr)
 * Upper Sorbian (hsb)
+* Haitian Creole French (ht)
 * Hungarian (hu)
 * Armenian (hy)
 * Interlingua (ia)
 * Indonesian (id)
 * Interlingue (ie) (new)
+* Igbo (ig) (new)
+* Eastern Canadian (Unified Canadian Aboriginal Syllabics) (ike-cans) (new)
+* Eastern Canadian (Latin) (ike-latn) (new)
 * Ingush (inh) (new)
 * Ido (io) (new)
 * Icelandic (is)
@@ -458,9 +481,11 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Kazakh (Kazakhstan) (kk-kz)
 * Kazakh Latin (kk-latn) (new)
 * Kazakh (Turkey) (kk-tr)
+* Kalaallisut (kl) (new)
 * Kannada (kn)
 * Korean (ko)
 * Kölsch (ksh)
+* Kurdish (Arabic) (ku-arab)
 * Kurdish (Latin) (ku-latn)
 * Cornish (kw) (new)
 * Latin (la)
@@ -503,17 +528,20 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Seri (sei) (new)
 * Tachelhit (shi)
 * Slovak (sk)
+* Southern Sami (sma) (new)
 * Serbian (Cyrillic) (sr-ec)
 * Swati (ss) (new)
 * Saterland Frisian (stq) (new)
 * Sundanese (su)
 * Swedish (sv)
+* Swahili (sw) (new)
 * Tamil (ta)
 * Teluga (te)
 * Tetun (tet) (new)
 * Tajik (tg)
 * Thai (th)
 * Tagalog (tl) (new)
+* Tonga (to) (new)
 * Turkish (tr)
 * Tuvinian (tyv)
 * Uyghur (ug)

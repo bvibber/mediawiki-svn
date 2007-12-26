@@ -15,6 +15,7 @@
  * @author Siebrand
  * @author לערי ריינהארט
  * @author SPQRobin
+ * @author OsamaK
  */
 
 $linkPrefixExtension = true;
@@ -91,24 +92,29 @@ $dateFormats = array(
 );
 
 $namespaceNames = array(
-	NS_MEDIA            => 'ملف',
-	NS_SPECIAL          => 'خاص',
-	NS_MAIN             => '',
-	NS_TALK             => 'نقاش',
-	NS_USER             => 'مستخدم',
-	NS_USER_TALK        => 'نقاش_المستخدم',
-	# NS_PROJECT set by $wgMetaNamespace
-	NS_PROJECT_TALK     => 'نقاش' . '_$1',
-	NS_IMAGE            => 'صورة',
-	NS_IMAGE_TALK       => 'نقاش_الصورة',
-	NS_MEDIAWIKI        => 'ميدياويكي',
-	NS_MEDIAWIKI_TALK   => 'نقاش_ميدياويكي',
-	NS_TEMPLATE         => 'قالب',
-	NS_TEMPLATE_TALK    => 'نقاش_قالب',
-	NS_HELP             => 'مساعدة',
-	NS_HELP_TALK        => 'نقاش_المساعدة',
-	NS_CATEGORY         => 'تصنيف',
-	NS_CATEGORY_TALK    => 'نقاش_التصنيف'
+	NS_MEDIA          => 'ميديا',
+	NS_SPECIAL        => 'خاص',
+	NS_MAIN           => '',
+	NS_TALK           => 'نقاش',
+	NS_USER           => 'مستخدم',
+	NS_USER_TALK      => 'نقاش_المستخدم',
+	# NS_PROJECT set by \$wgMetaNamespace
+	NS_PROJECT_TALK   => 'نقاش_$1',
+	NS_IMAGE          => 'صورة',
+	NS_IMAGE_TALK     => 'نقاش_الصورة',
+	NS_MEDIAWIKI      => 'ميدياويكي',
+	NS_MEDIAWIKI_TALK => 'نقاش_ميدياويكي',
+	NS_TEMPLATE       => 'قالب',
+	NS_TEMPLATE_TALK  => 'نقاش_القالب',
+	NS_HELP           => 'مساعدة',
+	NS_HELP_TALK      => 'نقاش_المساعدة',
+	NS_CATEGORY       => 'تصنيف',
+	NS_CATEGORY_TALK  => 'نقاش_التصنيف',
+);
+
+$namespaceAliases = array(
+	'ملف'             => NS_MEDIA,
+	'نقاش_قالب'       => NS_TEMPLATE_TALK,
 );
 
 $magicWords = array(
@@ -205,13 +211,13 @@ $magicWords = array(
 );
 
 $skinNames = array(
-	'standard'    => "كلاسيك",
-	'nostalgia'   => "نوستالجيا",
-	'cologneblue' => "كولون بلو",
-	'monobook'    => "مونوبوك",
-	'myskin'      => "واجهتي",
-	'chick'       => "تشيك",
-	'simple'      => "سيمبل",
+	'standard'    => 'كلاسيك',
+	'nostalgia'   => 'نوستالجيا',
+	'cologneblue' => 'كولون بلو',
+	'monobook'    => 'مونوبوك',
+	'myskin'      => 'واجهتي',
+	'chick'       => 'تشيك',
+	'simple'      => 'سيمبل',
 );
 
 $digitTransformTable = array(
@@ -230,78 +236,82 @@ $digitTransformTable = array(
 );
 
 $specialPageAliases = array(
-	'DoubleRedirects'           => array( "تحويلات_مزدوجة" ),
-	'BrokenRedirects'           => array( "تحويلات_مكسورة" ),
-	'Disambiguations'           => array( "توضيحات" ),
-	'Userlogin'                 => array( "دخول_المستخدم" ),
-	'Userlogout'                => array( "خروج_المستخدم" ),
-	'Preferences'               => array( "تفضيلات" ),
-	'Watchlist'                 => array( "قائمة_المراقبة" ),
-	'Recentchanges'             => array( "أحدث_التغييرات" ),
-	'Upload'                    => array( "رفع" ),
-	'Imagelist'                 => array( "قائمة_الصور" ),
-	'Newimages'                 => array( "صور_جديدة" ),
-	'Listusers'                 => array( "قائمة_المستخدمين" ),
-	'Statistics'                => array( "إحصاءات" ),
-	'Randompage'                => array( "عشوائي", "صفحة_عشوائية" ),
-	'Lonelypages'               => array( "صفحات_يتيمة" ),
-	'Uncategorizedpages'        => array( "صفحات_غير_مصنفة" ),
-	'Uncategorizedcategories'   => array( "تصنيفات_غير_مصنفة" ),
-	'Uncategorizedimages'       => array( "صور_غير_مصنفة" ),
-	'Uncategorizedtemplates'    => array( "قوالب_غير_مصنفة" ),
-	'Unusedcategories'          => array( "تصنيفات_غير_مستخدمة" ),
-	'Unusedimages'              => array( "صور_غير_مستخدمة" ),
-	'Wantedpages'               => array( "صفحات_مطلوبة" ),
-	'Wantedcategories'          => array( "تصنيفات_مطلوبة" ),
-	'Mostlinked'                => array( "الأكثر_وصلا" ),
-	'Mostlinkedcategories'      => array( "أكثر_التصنيفات_وصلا" ),
-	'Mostlinkedtemplates'       => array( "أكثر_القوالب_وصلا" ),
-	'Mostcategories'            => array( "أكثر_الصفحات_تصنيفا" ),
-	'Mostimages'                => array( "أكثر_الصور_وصلا" ),
-	'Mostrevisions'             => array( "الأكثر_تعديلا" ),
-	'Fewestrevisions'           => array( "الأقل_تعديلا" ),
-	'Shortpages'                => array( "صفحات_قصيرة" ),
-	'Longpages'                 => array( "صفحات_طويلة" ),
-	'Newpages'                  => array( "صفحات_جديدة" ),
-	'Ancientpages'              => array( "صفحات_قديمة" ),
-	'Deadendpages'              => array( "صفحات_مسدودة" ),
-	'Protectedpages'            => array( "صفحات_محمية" ),
-	'Allpages'                  => array( "كل_الصفحات" ),
-	'Prefixindex'               => array( "فهرس" ),
-	'Ipblocklist'               => array( "قائمة_منع_أيبي" ),
-	'Specialpages'              => array( "صفحات_خاصة" ),
-	'Contributions'             => array( "مساهمات" ),
-	'Emailuser'                 => array( "راسل_المستخدم" ),
-	'Whatlinkshere'             => array( "ماذا_يصل" ),
-	'Recentchangeslinked'       => array( "تغييرات_مرتبطة" ),
-	'Movepage'                  => array( "نقل_صفحة" ),
-	'Blockme'                   => array( "منعي" ),
-	'Booksources'               => array( "مصدر_كتاب" ),
-	'Categories'                => array( "تصنيفات" ),
-	'Export'                    => array( "تصدير" ),
-	'Version'                   => array( "إصدار" ),
-	'Allmessages'               => array( "كل_الرسائل" ),
-	'Log'                       => array( "سجل" ),
-	'Blockip'                   => array( "منع_أيبي" ),
-	'Undelete'                  => array( "استرجاع" ),
-	'Import'                    => array( "استيراد" ),
-	'Lockdb'                    => array( "غلق_قاعدة" ),
-	'Unlockdb'                  => array( "فتح_قاعدة" ),
-	'Userrights'                => array( "صلاحيات" ),
-	'MIMEsearch'                => array( "بحث_MIME" ),
-	'Unwatchedpages'            => array( "صفحات_غيرمراقبة" ),
-	'Listredirects'             => array( "عرض_التحويلات" ),
-	'Revisiondelete'            => array( "حذف_تعديل" ),
-	'Unusedtemplates'           => array( "قوالب_غير_مستخدمة" ),
-	'Randomredirect'            => array( "تحويلة_عشوائية" ),
-	'Mypage'                    => array( "صفحتي" ),
-	'Mytalk'                    => array( "نقاشي" ),
-	'Mycontributions'           => array( "مساهماتي" ),
-	'Listadmins'                => array( "عرض_الإداريين" ),
-	'Popularpages'              => array( "صفحات_مشهورة" ),
-	'Search'                    => array( "بحث" ),
-	'Resetpass'                 => array( "ضبط_كلمة_السر" ),
-	'Withoutinterwiki'          => array( "بدون_إنترويكي" ),
+	'DoubleRedirects'           => array( 'تحويلات_مزدوجة' ),
+	'BrokenRedirects'           => array( 'تحويلات_مكسورة' ),
+	'Disambiguations'           => array( 'توضيحات' ),
+	'Userlogin'                 => array( 'دخول_المستخدم' ),
+	'Userlogout'                => array( 'خروج_المستخدم' ),
+	'Preferences'               => array( 'تفضيلات' ),
+	'Watchlist'                 => array( 'قائمة_المراقبة' ),
+	'Recentchanges'             => array( 'أحدث_التغييرات' ),
+	'Upload'                    => array( 'رفع' ),
+	'Imagelist'                 => array( 'قائمة_الصور' ),
+	'Newimages'                 => array( 'صور_جديدة' ),
+	'Listusers'                 => array( 'عرض_المستخدمين', 'قائمة_المستخدمين' ),
+	'Statistics'                => array( 'إحصاءات' ),
+	'Randompage'                => array( 'عشوائي', 'صفحة_عشوائية' ),
+	'Lonelypages'               => array( 'صفحات_وحيدة', 'صفحات_يتيمة' ),
+	'Uncategorizedpages'        => array( 'صفحات_غير_مصنفة' ),
+	'Uncategorizedcategories'   => array( 'تصنيفات_غير_مصنفة' ),
+	'Uncategorizedimages'       => array( 'صور_غير_مصنفة' ),
+	'Uncategorizedtemplates'    => array( 'قوالب_غير_مصنفة' ),
+	'Unusedcategories'          => array( 'تصنيفات_غير_مستخدمة' ),
+	'Unusedimages'              => array( 'صور_غير_مستخدمة' ),
+	'Wantedpages'               => array( 'صفحات_مطلوبة', 'وصلات_مكسورة' ),
+	'Wantedcategories'          => array( 'تصنيفات_مطلوبة' ),
+	'Mostlinked'                => array( 'الأكثر_وصلا' ),
+	'Mostlinkedcategories'      => array( 'أكثر_التصنيفات_وصلا' ),
+	'Mostlinkedtemplates'       => array( 'أكثر_القوالب_وصلا' ),
+	'Mostcategories'            => array( 'أكثر_الصفحات_تصنيفا' ),
+	'Mostimages'                => array( 'أكثر_الصور_وصلا' ),
+	'Mostrevisions'             => array( 'الأكثر_تعديلا' ),
+	'Fewestrevisions'           => array( 'الأقل_تعديلا' ),
+	'Shortpages'                => array( 'صفحات_قصيرة' ),
+	'Longpages'                 => array( 'صفحات_طويلة' ),
+	'Newpages'                  => array( 'صفحات_جديدة' ),
+	'Ancientpages'              => array( 'صفحات_قديمة' ),
+	'Deadendpages'              => array( 'صفحات_نهاية_مسدودة' ),
+	'Protectedpages'            => array( 'صفحات_محمية' ),
+	'Protectedtitles'           => array( 'عناوين_محمية' ),
+	'Allpages'                  => array( 'كل_الصفحات' ),
+	'Prefixindex'               => array( 'فهرس_بادئة' ),
+	'Ipblocklist'               => array( 'قائمة_منع_أيبي' ),
+	'Specialpages'              => array( 'صفحات_خاصة' ),
+	'Contributions'             => array( 'مساهمات' ),
+	'Emailuser'                 => array( 'مراسلة_المستخدم' ),
+	'Confirmemail'              => array( 'تأكيد_البريد' ),
+	'Whatlinkshere'             => array( 'ماذا_يصل_هنا' ),
+	'Recentchangeslinked'       => array( 'أحدث_التغييرات_الموصولة' ),
+	'Movepage'                  => array( 'نقل_صفحة' ),
+	'Blockme'                   => array( 'منعي' ),
+	'Booksources'               => array( 'مصادر_كتاب' ),
+	'Categories'                => array( 'تصنيفات' ),
+	'Export'                    => array( 'تصدير' ),
+	'Version'                   => array( 'إصدار' ),
+	'Allmessages'               => array( 'كل_الرسائل' ),
+	'Log'                       => array( 'سجل', 'سجلات' ),
+	'Blockip'                   => array( 'منع_أيبي' ),
+	'Undelete'                  => array( 'استرجاع' ),
+	'Import'                    => array( 'استيراد' ),
+	'Lockdb'                    => array( 'غلق_قب' ),
+	'Unlockdb'                  => array( 'فتح_قب' ),
+	'Userrights'                => array( 'صلاحيات_المستخدم' ),
+	'MIMEsearch'                => array( 'بحث_ميم' ),
+	'Unwatchedpages'            => array( 'صفحات_غير_مراقبة' ),
+	'Listredirects'             => array( 'عرض_التحويلات' ),
+	'Revisiondelete'            => array( 'حذف_نسخة' ),
+	'Unusedtemplates'           => array( 'قوالب_غير_مستخدمة' ),
+	'Randomredirect'            => array( 'تحويلة_عشوائية' ),
+	'Mypage'                    => array( 'صفحتي' ),
+	'Mytalk'                    => array( 'نقاشي' ),
+	'Mycontributions'           => array( 'مساهماتي' ),
+	'Listadmins'                => array( 'عرض_الإداريين' ),
+	'Listbots'                  => array( 'عرض_البوتات' ),
+	'Popularpages'              => array( 'صفحات_مشهورة' ),
+	'Search'                    => array( 'بحث' ),
+	'Resetpass'                 => array( 'ضبط_كلمة_السر' ),
+	'Withoutinterwiki'          => array( 'بدون_إنترويكي' ),
+	'MergeHistory'              => array( 'دمج_التاريخ' ),
 );
 
 $messages = array(
@@ -675,7 +685,7 @@ $2',
 'uid'                        => 'رقم المستخدم:',
 'yourrealname'               => 'الاسم الحقيقي:',
 'yourlanguage'               => 'اللغة:',
-'yourvariant'                => 'اللهجة',
+'yourvariant'                => 'اللهجة:',
 'yournick'                   => 'اللقب:',
 'badsig'                     => 'توقيع خام غير صحيح؛ تحقق من وسوم الHTML.',
 'badsiglength'               => 'التوقيع طويل جدا؛ يجب أن يكون أقل من $1 حرف.',
@@ -825,7 +835,7 @@ $1 ساعة.',
 (انظر في [[{{MediaWiki:Helppage}}|صفحة المساعدة]] للمزيد من المعلومات)
 إذا كانت زيارتك لهذه الصفحة بالخطأ، اضغط على زر ''رجوع'' في متصفح الإنترنت لديك.",
 'anontalkpagetext'          => "----''هذه صفحة نقاش لمستخدم مجهول لم يقم بإنشاء حساب بعد أو لا يستعمل ذلك الحساب. لذا فيجب علينا استعمال رقم الأيبي للتعرف عليه/عليها. مثل هذا العنوان يمكن أن يشترك فيه عدة مستخدمين. لو كنت مستخدما مجهولا وتشعر بأن تعليقات لا تخصك تم توجيهها إليك، من فضلك [[Special:Userlogin|أنشيء حسابا أو سجل الدخول]] لتجنب الارتباك المستقبلي مع مستخدمين مجهولين آخرين.''",
-'noarticletext'             => 'لا يوجد حاليا أي نص في هذه الصفحة، يمكنك [[Special:Search/{{PAGENAME}}|البحث عن عنوان هذه الصفحة]] في الصفحات الأخرى or [{{fullurl:{{FULLPAGENAME}}|action=edit}} تعديل هذه الصفحة].',
+'noarticletext'             => 'لا يوجد حاليا أي نص في هذه الصفحة، يمكنك [[Special:Search/{{PAGENAME}}|البحث عن عنوان هذه الصفحة]] في الصفحات الأخرى أو [{{fullurl:{{FULLPAGENAME}}|action=edit}} تعديل هذه الصفحة].',
 'userpage-userdoesnotexist' => 'حساب المستخدم "$1" غير مسجل. من فضلك تأكد أنك تريد إنشاء/تعديل هذه الصفحة.',
 'clearyourcache'            => "ملاحظة: قم بإعادة تحميل الصفحة لرؤية التغييرات. إذا لم تظهر التغييرات بعد إعادة التحميل، قد يكون متصفح الإنترنت الذي تستخدمه يقوم بعرض نسخة مخزنة سابقا. لتجنب عرض هذه النسخة، قد يلزم أن تقوم بأحد هذه الخطوات:
 * في متصفح '''موزيلا''' أو '''فايرفوكس''' أو '''سفاري''' اضغظ على ''مفتاح Shift'' أثناء قيامك بضغط زر إعادة التحميل (''Refresh'') أو اضغط ''Ctrl-Shift-R'' (''Cmd-Shift-R'' في حاسب أبل).
@@ -1117,6 +1127,8 @@ $1 ساعة.',
 'userrights-available-none'   => 'لا يمكنك تعديل مجموعات المستخدم.',
 'userrights-available-add'    => 'يمكنك إضافة المستخدمين ل $1.',
 'userrights-available-remove' => 'يمكنك إزالة المستخدمين من $1.',
+'userrights-no-interwiki'     => 'أنت لا تمتلك الصلاحية لتعديل صلاحيات المستخدمين على الويكيات الأخرى.',
+'userrights-nodatabase'       => 'قاعدة البيانات $1 غير موجودة أو ليست محلية.',
 
 # Groups
 'group'               => 'المجموعة:',
@@ -1375,7 +1387,7 @@ PICT # misc.
 'sitestatstext'          => "توجد {{PLURAL:\$1|'''1''' صفحة|'''\$1''' صفحة كلية}} في قاعدة البيانات.
 هذا يشمل \"النقاش\" صفحات، الصفحات حول {{SITENAME}}، الصغرى \"البذور\"
 صفحات، التحويلات، و غيرها التي غالبا لا تتأهل كصفحات محتوى.
-باستثناء هؤلاء، توجد {{PLURAL:\$2|'''1''' صفحة|are '''\$2''' صفحة}} تعتبر على الأرجح
+باستثناء هؤلاء، توجد {{PLURAL:\$2|'''1''' صفحة| '''\$2''' صفحة}} تعتبر على الأرجح
 {{PLURAL:\$2|صفحة|صفحة}} محتوى معتبرة.
 
 '''\$8''' {{PLURAL:\$8|ملف|ملف}} تم رفعه.
@@ -1791,7 +1803,7 @@ $1',
 'ipbenableautoblock'          => 'تلقائيا امنع آخر عنوان أيبي تم استعماله بواسطة هذا المستخدم، وأي عناوين أيبي أخرى يحاول التحرير من خلالها',
 'ipbsubmit'                   => 'امنع هذا المستخدم',
 'ipbother'                    => 'وقت آخر:',
-'ipboptions'                  => 'ربع ساعة:15 minutes,ساعة واحدة:1 hour,ساعتين:2 hours,يوم:1 day,ثلاثة أيام:3 days,أسبوع:1 week,أسبوعان:2 weeks,شهر:1 month,ثلاثة شهور:3 months,ستة شهور:6 months,عام واحد:1 year,دائم:infinite',
+'ipboptions'                  => 'ربع ساعة:15 minutes,ساعة واحدة:1 hour,ساعتين:2 hours,يوم:1 day,ثلاثة أيام:3 days,أسبوع:1 week,أسبوعان:2 weeks,شهر:1 month,ثلاثة شهور:3 months,ستة شهور:6 months,عام واحد:1 year,دائم:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'غير ذلك',
 'ipbotherreason'              => 'سبب إضافي:',
 'ipbhidename'                 => 'إخفاء اسم/عنوان المستخدم من سجل المنع وقائمة المنع الحالي وقائمة المستخدمين',
@@ -2175,7 +2187,7 @@ $1',
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength',
+* focallength', # Do not translate list items
 
 # EXIF tags
 'exif-imagewidth'                  => 'العرض',
@@ -2518,10 +2530,11 @@ $1',
 'searchnamed'      => "ابحث عن الصفحات المعنونة ''$1''.",
 'articletitles'    => "الصفحات التي تبدأ ب''$1''",
 'hideresults'      => 'إخفاء النتائج',
+'useajaxsearch'    => 'استخدم بحث أجاكس',
 
 # Separators for various lists
 'semicolon-separator' => '؛',
-'filetype-separator'  => '،',
+'comma-separator'     => '،',
 
 # Multipage image navigation
 'imgmultipageprev'   => '← الصفحة السابقة',
@@ -2571,8 +2584,8 @@ $1',
 'watchlistedit-noitems'        => 'قائمة مراقبتك لا تحتوي على أية عناوين.',
 'watchlistedit-normal-title'   => 'تعديل قائمة المراقبة',
 'watchlistedit-normal-legend'  => 'أزل عناوين من قائمة المراقبة',
-'watchlistedit-normal-explain' => 'العناوين في قائمة مراقبتك معروضة بالأسفل. لإزالة عنوان، علم على الصندوق بجانبه، و اضغط إزالة العناوين. يمكنك أيضا [[Special:Watchlist/raw|تعديل القائمة مباشرة]]،
-	أو [[Special:Watchlist/clear|إزالة كل العناوين]].',
+'watchlistedit-normal-explain' => 'العناوين في قائمة مراقبتك معروضة بالأسفل. لإزالة عنوان، اضغط على
+	الصندوق بجواره، واضغط إزالة العناوين. يمكنك أيضا [[Special:Watchlist/raw|تعديل القائمة الخام]].',
 'watchlistedit-normal-submit'  => 'إزالة العناوين',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|عنوان واحد|$1 عنوان}} تمت إزالته من قائمة مراقبتك:',
 'watchlistedit-raw-title'      => 'عدل قائمة المراقبة الخام',

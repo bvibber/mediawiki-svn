@@ -493,7 +493,7 @@ XHTML id names.
 'tog-watchlisthideown'        => 'Hide my edits from the watchlist',
 'tog-watchlisthidebots'       => 'Hide bot edits from the watchlist',
 'tog-watchlisthideminor'      => 'Hide minor edits from the watchlist',
-'tog-nolangconversion'        => 'Disable variants conversion',
+'tog-nolangconversion'        => 'Disable variants conversion', # only translate this message to other languages if you have to change it
 'tog-ccmeonemails'            => 'Send me copies of emails I send to other users',
 'tog-diffonly'                => "Don't show page content below diffs",
 
@@ -792,7 +792,7 @@ Function: $1<br />
 Query: $2',
 'viewsource'           => 'View source',
 'viewsourcefor'        => 'for $1',
-'actionthrottled'      => 'Action Throttled',
+'actionthrottled'      => 'Action throttled',
 'actionthrottledtext'  => 'As an anti-spam measure, you are limited from performing this action too many times in a short space of time, and you have exceeded this limit. Please try again in a few minutes.',
 'protectedpagetext'    => 'This page has been locked to prevent editing.',
 'viewsourcetext'       => 'You can view and copy the source of this page:',
@@ -843,7 +843,7 @@ Your account has been created. Don't forget to change your {{SITENAME}} preferen
 'uid'                        => 'User ID:',
 'yourrealname'               => 'Real name:',
 'yourlanguage'               => 'Language:',
-'yourvariant'                => 'Variant',
+'yourvariant'                => 'Variant:', # only translate this message to other languages if you have to change it
 'yournick'                   => 'Nickname:',
 'badsig'                     => 'Invalid raw signature; check HTML tags.',
 'badsiglength'               => 'Nickname too long; must be under $1 characters.',
@@ -1338,6 +1338,8 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 'userrights-available-none'   => 'You may not alter group membership.',
 'userrights-available-add'    => 'You can add users to $1.',
 'userrights-available-remove' => 'You can remove users from $1.',
+'userrights-no-interwiki'     => 'You do not have permission to edit user rights on other wikis.',
+'userrights-nodatabase'       => 'Database $1 does not exist or is not local.',
 
 # Groups
 'group'               => 'Group:',
@@ -1626,7 +1628,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'disambiguations'         => 'Disambiguation pages',
 'disambiguations-summary' => '', # only translate this message to other languages if you have to change it
 'disambiguationspage'     => 'Template:disambig',
-'disambiguations-text'    => "The following pages link to a '''disambiguation page'''. They should link to the appropriate topic instead.<br />A page is treated as disambiguation page if it uses a template which is linked from [[MediaWiki:disambiguationspage]]",
+'disambiguations-text'    => "The following pages link to a '''disambiguation page'''. They should link to the appropriate topic instead.<br />A page is treated as disambiguation page if it uses a template which is linked from [[MediaWiki:Disambiguationspage]]",
 
 'doubleredirects'         => 'Double redirects',
 'doubleredirects-summary' => '', # only translate this message to other languages if you have to change it
@@ -1699,10 +1701,10 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'protectedpages-summary'          => '', # only translate this message to other languages if you have to change it
 'protectedpagestext'              => 'The following pages are protected from moving or editing',
 'protectedpagesempty'             => 'No pages are currently protected with these parameters.',
-'protectedtitles'                  => 'Protected titles',
-'protectedtitles-summary'          => '', # only translate this message to other languages if you have to change it
-'protectedtitlestext'              => 'The following titles are protected from creation',
-'protectedtitlesempty'             => 'No titles are currently protected with these parameters.',
+'protectedtitles'                 => 'Protected titles',
+'protectedtitles-summary'         => '', # only translate this message to other languages if you have to change it
+'protectedtitlestext'             => 'The following titles are protected from creation',
+'protectedtitlesempty'            => 'No titles are currently protected with these parameters.',
 'listusers'                       => 'User list',
 'listusers-summary'               => '', # only translate this message to other languages if you have to change it
 'specialpages'                    => 'Special pages',
@@ -2093,7 +2095,7 @@ pages that were vandalized).',
 'ipbenableautoblock'          => 'Automatically block the last IP address used by this user, and any subsequent IPs they try to edit from',
 'ipbsubmit'                   => 'Block this user',
 'ipbother'                    => 'Other time:',
-'ipboptions'                  => '2 hours:2 hours,1 day:1 day,3 days:3 days,1 week:1 week,2 weeks:2 weeks,1 month:1 month,3 months:3 months,6 months:6 months,1 year:1 year,infinite:infinite',
+'ipboptions'                  => '2 hours:2 hours,1 day:1 day,3 days:3 days,1 week:1 week,2 weeks:2 weeks,1 month:1 month,3 months:3 months,6 months:6 months,1 year:1 year,infinite:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'other',
 'ipbotherreason'              => 'Other/additional reason:',
 'ipbhidename'                 => 'Hide username/IP from the block log, active block list and user list',
@@ -2432,12 +2434,12 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'tooltip-upload'                  => 'Start upload',
 
 # Stylesheets
-'common.css'   => '/** CSS placed here will be applied to all skins */',
-'monobook.css' => '/* CSS placed here will affect users of the Monobook skin */',
+'common.css'   => '/* CSS placed here will be applied to all skins */', # only translate this message to other languages if you have to change it
+'monobook.css' => '/* CSS placed here will affect users of the Monobook skin */', # only translate this message to other languages if you have to change it
 
 # Scripts
-'common.js'   => '/* Any JavaScript here will be loaded for all users on every page load. */',
-'monobook.js' => '/* Deprecated; use [[MediaWiki:common.js]] */',
+'common.js'   => '/* Any JavaScript here will be loaded for all users on every page load. */', # only translate this message to other languages if you have to change it
+'monobook.js' => '/* Deprecated; use [[MediaWiki:common.js]] */', # only translate this message to other languages if you have to change it
 
 # Metadata
 'nodublincore'      => 'Dublin Core RDF metadata disabled for this server.',
@@ -2968,9 +2970,9 @@ $1',
 'useajaxsearch'    => 'Use AJAX search',
 
 # Separators for various lists
-'catseparator'          => '|', # don't translate or duplicate this message to other languages
-'semicolon-separator'   => ';', # only translate this message to other languages if you have to change it
-'filetype-separator'    => ', ', # only translate this message to other languages if you have to change it 
+'catseparator'        => '|', # don't translate or duplicate this message to other languages
+'semicolon-separator' => ';', # only translate this message to other languages if you have to change it
+'comma-separator'     => ',&#32;', # only translate this message to other languages if you have to change it
 
 # Multipage image navigation
 'imgmultipageprev'   => '← previous page',

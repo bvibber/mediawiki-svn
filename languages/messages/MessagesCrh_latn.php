@@ -423,7 +423,7 @@ Funktsiya: $1<br />
 İstintaq: $2',
 'viewsource'           => 'HTML kodunı köster',
 'viewsourcefor'        => '$1 içün',
-'actionthrottled'      => 'Areket Toqtaldı',
+'actionthrottled'      => 'Areket toqtaldı',
 'actionthrottledtext'  => 'Spamğa qarşı küreş sebebinden bu areketni az vaqıt içinde çoq kere tekrarlap olamaysıñız. Mümkün olğan qarardan ziyade areket yaptıñız. Bir qaç daqqadan soñ tekrarlap baqıñız.',
 'protectedpagetext'    => 'Bu saifeni kimse deñiştirmesin dep o blok etildi.',
 'viewsourcetext'       => 'Saifeniñ kodunı közden keçirip kopirley bilesiñiz:',
@@ -472,7 +472,7 @@ Bu saytnıñ ayarlarını (nastroykalarını) şahsıñızğa köre [[{{ns:speci
 'uid'                        => 'Qayd nomeri:',
 'yourrealname'               => 'Kerçek adıñız:',
 'yourlanguage'               => 'İnterfeys tili:',
-'yourvariant'                => 'Til saylavı',
+'yourvariant'                => 'Til saylavı:',
 'yournick'                   => 'Siziñ lağabıñız (imzalarda kösterilecektir):',
 'badsig'                     => 'Yañlış imza. HTML tegleriniñ doğrulığını baqıñız.',
 'badsiglength'               => 'Qarardan ziyade uzun lağaptır, $1-den ziyade simvoldan ibaret olması mümkün degil.',
@@ -610,11 +610,7 @@ Siziñ blok identifikatorıñız — #$5. Lütfen, administratorlarğa mektüple
 'accmailtext'               => '$1 içün parol mında yollandı: $2.',
 'newarticle'                => '(Yañı)',
 'newarticletext'            => "Siz bu bağlantınen şimdilik yoq olğan saifege avuştıñız. Yañı bir saife yaratmaq içün aşağıda bulunğan pencerege metin yazıñız (tafsilâtlı malümat almaq içün [[{{MediaWiki:Helppage}}|yardım saifesine]] baqıñız). Bu saifege tesadüfen avuşqan olsañız, brauzeriñizdeki '''keri''' dögmesine basıñız.",
-'anontalkpagetext'          => "----'' Bu muzakere saifesi şimdilik qayd olunmağan ya da oturımını
-açmağan anonim qullanıcığa mensüptir. İdentefikatsiya içün IP adres işletile. Eger siz anonim
-qullanıcı olsañız ve sizge kelgen beyanlarnı yañlıştan kelgenini belleseñiz (bir IP adresten
-bir qaç qullanıcı faydalanabileler), lütfen artıq bunıñ kibi qarışıqlıq olmasın
-dep [[Slujebnaya:Userlogin|oturım açıñız]].''",
+'anontalkpagetext'          => "----''Bu muzakere saifesi şimdilik qayd olunmağan ya da oturımını açmağan anonim qullanıcığa mensüptir. İdentefikatsiya içün IP adres işletile. Eger siz anonim qullanıcı olsañız ve sizge kelgen beyanlarnı yañlıştan kelgenini belleseñiz (bir IP adresinden bir qaç qullanıcı faydalana bileler), lütfen artıq bunıñ kibi qarışıqlıq olmasın dep [[Special:Userlogin|oturım açıñız]].''",
 'noarticletext'             => 'Bu saife boştır. Bu serlevanı başqa saifelerde [[{{ns:special}}:Search/{{PAGENAME}}|qıdıra bilesiñiz]] ya da bu saifeni özüñiz [{{fullurl:{{FULLPAGENAME}}|action=edit}} yaza bilesiñiz].',
 'userpage-userdoesnotexist' => '"$1" adlı qullanıcı yoqtır. Tamam bu saifeni deñiştirmege istegeniñizni teşkeriñiz.',
 'clearyourcache'            => "'''İhtar:''' Ayarlarıñıznı (nastroykalarıñıznı) saqlağandan soñ, brauzeriñizniñ keşini de temizlemek kereksiñiz: '''Mozilla / Firefox / Safari:''' ''Shift'' basılı ekende saifeni yañıdan yükleyerek ya da ''Ctrl-Shift-R'' yaparaq (Apple Mac içün ''Cmd-Shift-R'');, '''Internet Explorer:''' ''Ctrl-F5'', '''Konqueror:''' Tek saifeni yañıdan yükle dögmesine basaraq.",
@@ -1351,7 +1347,7 @@ Daa fazla malümat içün [[Project:Qorçalav altına alınğan saife]] saifesin
 'ipbreason'               => 'Sebep',
 'ipbsubmit'               => 'Bu qullanıcını ban et',
 'ipbother'                => 'Farqlı zaman',
-'ipboptions'              => '2 saat:2 hours,1 kün:1 day,3 kün:3 days,1 afta:1 week,2 afta:2 weeks,1 ay:1 month,3 ay:3 months,6 ay:6 months,1 yıl:1 year,müddetsiz:infinite',
+'ipboptions'              => '2 saat:2 hours,1 kün:1 day,3 kün:3 days,1 afta:1 week,2 afta:2 weeks,1 ay:1 month,3 ay:3 months,6 ay:6 months,1 yıl:1 year,müddetsiz:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'          => 'farqlı',
 'ipbotherreason'          => 'Diger/ilâveli sebep:',
 'badipaddress'            => 'Keçersiz IP adresi',
@@ -1614,7 +1610,7 @@ Er satır * simvolınen başlamalı. Satırnıñ birinci bağlantısı eklemege 
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength',
+* focallength', # Do not translate list items
 
 # EXIF tags
 'exif-make'                => 'Kamera markası',

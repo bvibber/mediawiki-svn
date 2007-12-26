@@ -5,9 +5,10 @@
  *
  * @author Derbeth
  * @author Wpedzich
- * @author G - ג
  * @author Stv
  * @author Siebrand
+ * @author לערי ריינהארט
+ * @author Nike
  */
 
 $namespaceNames = array(
@@ -330,7 +331,6 @@ $messages = array(
 'edithelp'          => 'Pomoc w edycji',
 'edithelppage'      => 'Help:Jak edytować stronę',
 'faq'               => 'FAQ',
-'faqpage'           => 'Project:FAQ',
 'helppage'          => 'Help:Pomoc',
 'mainpage'          => 'Strona główna',
 'policy-url'        => 'Project:Zasady',
@@ -615,7 +615,7 @@ Identyfikator Twojej blokady to $5. Należy go dołączyć do wysyłanych zapyta
 'whitelistedittitle'        => 'Przed edycją musisz się zalogować',
 'whitelistedittext'         => 'Musisz $1 żeby móc edytować artykuły.',
 'whitelistreadtitle'        => 'Przed przeczytaniem musisz się zalogować',
-'whitelistreadtext'         => 'Musisz się [[{{ns:special}}:Userlogin|zalogować]], żeby czytać strony.',
+'whitelistreadtext'         => 'Musisz się [[{{ns:Special}}:Userlogin|zalogować]], żeby czytać strony.',
 'whitelistacctitle'         => 'Nie wolno ci zakładać konta',
 'whitelistacctext'          => 'Aby móc zakładać konta na tej Wiki musisz [[{{ns:special}}:Userlogin|zalogować się]] i mieć przyznane specjalne prawa.',
 'confirmedittitle'          => 'Wymagane potwierdzenie e-maila by móc edytować',
@@ -702,7 +702,6 @@ Dla wygody użytkowników, poniżej przedstawiony jest rejestr usunięć niniejs
 Podany przez $3 powód to ''$2''",
 
 # History pages
-'revhistory'          => 'Historia modyfikacji',
 'viewpagelogs'        => 'Zobacz rejestry operacji dla tej strony',
 'nohistory'           => 'Ta strona nie ma swojej historii edycji.',
 'revnotfound'         => 'Wersja nie została odnaleziona',
@@ -774,16 +773,12 @@ Inni administratorzy tej wiki nadal mają dostęp do ukrytych wersji i mogą je 
 'overlogpagetext' => 'Poniżej znajduje się lista najnowszych usunięć i blokad dotyczących zawartości ukrytej przed sysopami. Wejdź na stronę [[Special:Ipblocklist|IP block list]], by zobaczyć listę aktywnych banów i blokad.',
 
 # Diffs
-'history-title'             => 'Historia edycji "$1"',
-'difference'                => '(Różnice między wersjami)',
-'loadingrev'                => 'pobieranie wersji w celu porównania',
-'lineno'                    => 'Linia $1:',
-'editcurrent'               => 'Edytuj bieżącą wersję tej strony',
-'selectnewerversionfordiff' => 'Wybierz nowszą wersję do porównania',
-'selectolderversionfordiff' => 'Wybierz starszą wersję do porównania',
-'compareselectedversions'   => 'porównaj wybrane wersje',
-'editundo'                  => 'anuluj zmianę',
-'diff-multi'                => '(Nie pokazano {{plural:$1|jednej wersji pośredniej|$1 wersji pośrednich}}.)',
+'history-title'           => 'Historia edycji "$1"',
+'difference'              => '(Różnice między wersjami)',
+'lineno'                  => 'Linia $1:',
+'compareselectedversions' => 'porównaj wybrane wersje',
+'editundo'                => 'anuluj zmianę',
+'diff-multi'              => '(Nie pokazano {{plural:$1|jednej wersji pośredniej|$1 wersji pośrednich}}.)',
 
 # Search results
 'searchresults'         => 'Wyniki wyszukiwania',
@@ -1183,7 +1178,6 @@ Długość [http://meta.wikimedia.org/wiki/Help:Job_queue kolejki zadań] to '''
 'specialpages'                    => 'Strony specjalne',
 'spheading'                       => 'Strony specjalne dla wszystkich użytkowników',
 'restrictedpheading'              => 'Strony specjalne z ograniczonym dostępem',
-'rclsub'                          => '(dla stron dolinkowanych do "$1")',
 'newpages'                        => 'Nowe strony',
 'newpages-username'               => 'Nazwa użytkownika:',
 'ancientpages'                    => 'Najstarsze strony',
@@ -1353,7 +1347,7 @@ Pomoc:
 'rollbacklink'                => 'cofnij',
 'rollbackfailed'              => 'Nie udało się cofnąć zmiany',
 'cantrollback'                => 'Nie można cofnąć edycji; jest tylko jedna wersja tej strony.',
-'alreadyrolled'               => 'Nie można cofnąć ostatniej zmiany strony [[:$1|$1]], której autorem jest [[User:$2|$2]] ([[User_talk:$2|Dyskusja]]). Ktoś inny zdążył już to zrobić lub wprowadził własne poprawki do treści strony. Autorem ostatniej zmiany jest teraz [[User:$3|$3]] ([[User_talk:$3|Dyskusja]]).',
+'alreadyrolled'               => 'Nie można cofnąć ostatniej zmiany strony [[:$1|$1]], której autorem jest [[{{ns:user}}:$2|$2]] ([[{{ns:user_talk}}:$2|Dyskusja]]). Ktoś inny zdążył już to zrobić lub wprowadził własne poprawki do treści strony. Autorem ostatniej zmiany jest teraz [[{{ns:user}}:$3|$3]] ([[{{ns:user_talk}}:$3|Dyskusja]]).',
 'editcomment'                 => 'Opisano ją następująco: "<i>$1</i>".', # only shown if there is an edit comment
 'revertpage'                  => 'Wycofano edycję użytkownika [[{{ns:special}}:Contributions/$2|$2]] ([[User_talk:$2|dyskusja]]). Autor przywróconej wersji to [[User:$1|$1]].',
 'rollback-success'            => 'Wycofano edycje użytkownika $1; powrócono do ostatniej wersji autorstwa $2.',
@@ -1454,10 +1448,6 @@ $1',
 'month'         => 'Od miesiąca (i wcześniejsze):',
 'year'          => 'Od roku (i wcześniejsze):',
 
-'sp-contributions-newest'      => 'Najnowsze',
-'sp-contributions-oldest'      => 'Najstarsze',
-'sp-contributions-newer'       => 'nowsze $1',
-'sp-contributions-older'       => 'starsze $1',
 'sp-contributions-newbies'     => 'Pokaż wkład nowych użytkowników',
 'sp-contributions-newbies-sub' => 'Dla nowych użytkowników',
 'sp-contributions-blocklog'    => 'blokady',
@@ -1505,7 +1495,7 @@ $1',
 'ipbenableautoblock'          => 'Automatycznie blokuj adresy IP, spod których łączył się ten użytkownik.',
 'ipbsubmit'                   => 'Zablokuj użytkownika',
 'ipbother'                    => 'Inny czas',
-'ipboptions'                  => '2 godziny:2 hours,1 dzień:1 day,3 dni:3 days,1 tydzień:1 week,2 tygodnie:2 weeks,1 miesiąc:1 month,3 miesiące:3 months,6 miesięcy:6 months,1 rok:1 year,nieskończony:infinite',
+'ipboptions'                  => '2 godziny:2 hours,1 dzień:1 day,3 dni:3 days,1 tydzień:1 week,2 tygodnie:2 weeks,1 miesiąc:1 month,3 miesiące:3 months,6 miesięcy:6 months,1 rok:1 year,nieskończony:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'inny',
 'ipbotherreason'              => 'Inne uzasadnienie',
 'ipbhidename'                 => 'Ukryj nazwę użytkownika/adres IP w rejestrze blokad, na liście bieżących blokad i liście użytkowników',
@@ -1538,7 +1528,7 @@ $1',
 'blocklink'                   => 'zablokuj',
 'unblocklink'                 => 'odblokuj',
 'contribslink'                => 'wkład',
-'autoblocker'                 => 'Zablokowano Cię automatycznie, ponieważ używasz tego samego adresu IP, co użytkownik "[[User:$1|$1]]". Powód blokady założonej na konto $1: "$2"',
+'autoblocker'                 => 'Zablokowano Cię automatycznie, ponieważ używasz tego samego adresu IP, co użytkownik "[[{{ns:user}}:$1|$1]]". Powód blokady założonej na konto $1: "$2"',
 'blocklogpage'                => 'Zablokowani',
 'blocklogentry'               => 'zablokowano "[[$1]]", czas blokady: $2 $3',
 'blocklogtext'                => 'Poniżej znajduje się lista blokad założonych i zdjętych z poszczególnych adresów IP. Na liście nie znajdą się adresy IP, które zablokowano w sposób automatyczny. By przejrzeć listę obecnie aktywnych blokad, przejdź na stronę [[Special:Ipblocklist|zablokowanych adresów i użytkowników]].',
@@ -1862,12 +1852,12 @@ Jedynie elementy listy (linijki zaczynające się od znaku *) są brane pod uwag
 'metadata-expand'   => 'Pokaż szczegóły',
 'metadata-collapse' => 'Ukryj szczegóły',
 'metadata-fields'   => 'Wymienione poniżej pola EXIF zostaną wymienione na stronie grafiki. Pozostałe pola zostaną domyślnie ukryte.
-* producent aparatu
-* model aparatu
-* data i czas utworzenia
-* czas ekspozycji
-* wartość przesłony
-* długość ogniskowej',
+* make
+* model
+* datetimeoriginal
+* exposuretime
+* fnumber
+* focallength', # Do not translate list items
 
 # EXIF tags
 'exif-imagewidth'                  => 'Szerokość',
@@ -2145,7 +2135,7 @@ $1
 
 # Delete conflict
 'deletedwhileediting' => 'Uwaga: Ta strona została usunięta po tym, jak rozpoczęłeś jej edycję!',
-'confirmrecreate'     => 'Użytkownik [[User:$1|$1]] ([[User_talk:$1|Dyskusja]]) usunął ten artykuł po tym jak rozpocząłeś jego edycję, podając jako powód usunięcia: : <b>$2</b> Potwierdź chęć odtworzenia tego artykułu.',
+'confirmrecreate'     => 'Użytkownik [[{{ns:user}}:$1|$1]] ([[{{ns:user_talk}}:$1|Dyskusja]]) usunął ten artykuł po tym jak rozpocząłeś jego edycję, podając jako powód usunięcia: : <b>$2</b> Potwierdź chęć odtworzenia tego artykułu.',
 'recreate'            => 'Odtwórz',
 
 # HTML dump
@@ -2202,9 +2192,7 @@ $1',
 'watchlistedit-noitems'        => 'Twoja lista obserwowanych nie zawiera żadnych tytułów.',
 'watchlistedit-normal-title'   => 'Edytuj listę obserwowanych stron',
 'watchlistedit-normal-legend'  => 'Usuń tytuły z listy obserwowanych',
-'watchlistedit-normal-explain' => 'Tytułu na twojej liście obserwowanych są pokazane poniżej. Aby usunąć tytuł, wybierz
-	pole obok niego i kliknij Usuń tytuły. Możesz też [[Special:Watchlist/raw|edytować surową listę]],
-	lub [[Special:Watchlist/clear|usunąć wszystkie tytuły]].',
+'watchlistedit-normal-explain' => 'Tytułu na twojej liście obserwowanych są pokazane poniżej. Aby usunąć tytuł, wybierz pole obok niego i kliknij Usuń tytuły. Możesz też [[Special:Watchlist/raw|edytować surową listę]].',
 'watchlistedit-normal-submit'  => 'Usuń tytuły',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|1 tytuł został|$1 tytułów zostało}} usuniętych z twojej listy obserwowanych:',
 'watchlistedit-raw-title'      => 'Edycja surowej listy obserwowanych',

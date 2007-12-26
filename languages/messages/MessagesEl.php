@@ -285,7 +285,7 @@ $messages = array(
 'wed'           => 'Τε',
 'thu'           => 'Πε',
 'fri'           => 'Πα',
-'sat'           => 'Σα',
+'sat'           => 'Σαβ',
 'january'       => 'Ιανουάριος',
 'february'      => 'Φεβρουάριος',
 'march'         => 'Μάρτιος',
@@ -445,7 +445,7 @@ $messages = array(
 'ok'                      => 'Εντάξει',
 'retrievedfrom'           => 'Ανακτήθηκε από το "$1".',
 'youhavenewmessages'      => 'Έχετε $1 ($2).',
-'newmessageslink'         => 'νέο μήνυμα',
+'newmessageslink'         => 'νέα μηνύματα',
 'newmessagesdifflink'     => 'τελευταία αλλαγή',
 'youhavenewmessagesmulti' => 'Έχετε νέα μηνύματα στο $1',
 'editsection'             => 'επεξεργασία',
@@ -555,7 +555,7 @@ $2',
 'logout'                     => 'Έξοδος',
 'userlogout'                 => 'Έξοδος χρήστη',
 'notloggedin'                => 'Δεν έχετε συνδεθεί.',
-'nologin'                    => 'Δεν είστε εγγεγραμμένος χρήστης; $1.',
+'nologin'                    => 'Δεν έχετε λογαριασμό; $1.',
 'nologinlink'                => 'Δημιουργήστε έναν λογαριασμό',
 'createaccount'              => 'Δημιουργία νέου λογαριασμού',
 'gotaccount'                 => 'Έχετε ήδη έναν λογαριασμό; $1.',
@@ -1000,18 +1000,15 @@ $2 Εμφάνιση ανακατευθύνσεων &nbsp; Κριτήρια αν�
 # Groups
 'group'               => 'Ομάδα:',
 'group-autoconfirmed' => 'Αυτοεπιβεβαιωμένοι χρήστες',
-'group-bot'           => 'Bots',
 'group-sysop'         => 'Διαχειριστές',
 'group-bureaucrat'    => 'Γραφειοκράτες',
 'group-all'           => '(όλοι)',
 
 'group-autoconfirmed-member' => 'Αυτοεπιβεβαιωμένος χρήστης',
-'group-bot-member'           => 'Bot',
 'group-sysop-member'         => 'Διαχειριστής συστήματος (Sysop)',
 'group-bureaucrat-member'    => 'Γραφειοκράτης',
 
 'grouppage-autoconfirmed' => '{{ns:project}}:Αυτοεπιβεβαιωμένοι χρήστες',
-'grouppage-bot'           => '{{ns:project}}:Bots',
 'grouppage-sysop'         => '{{ns:project}}:Διαχειριστές',
 'grouppage-bureaucrat'    => '{{ns:project}}:Γραφειοκράτες',
 
@@ -1030,7 +1027,6 @@ $2 Εμφάνιση ανακατευθύνσεων &nbsp; Κριτήρια αν�
 'rcnotefrom'                        => 'Ακολουθούν οι αλλαγές από <b>$2</b> (εμφάνιση <b>$1</b> αλλαγών max).',
 'rclistfrom'                        => 'Εμφάνιση νέων αλλαγών αρχίζοντας από $1',
 'rcshowhideminor'                   => '$1 μικρής σημασίας επεξεργασιών',
-'rcshowhidebots'                    => '$1 bots',
 'rcshowhideliu'                     => '$1 συνδεδεμένων χρηστών',
 'rcshowhideanons'                   => '$1 ανωνύμων χρηστών',
 'rcshowhidepatr'                    => '$1 επεξεργασιών υπό περιπολία',
@@ -1042,7 +1038,6 @@ $2 Εμφάνιση ανακατευθύνσεων &nbsp; Κριτήρια αν�
 'show'                              => 'εμφάνιση',
 'minoreditletter'                   => 'μ',
 'newpageletter'                     => 'Ν',
-'boteditletter'                     => 'b',
 'number_of_watching_users_pageview' => '[$1 χρήστης (-ες) που παρακολουθούν]',
 'rc_categories'                     => 'Περιόρισε στις κατηγορίες (διαχωρίστε τις με "|")',
 'rc_categories_any'                 => 'Οποιαδήποτε',
@@ -1275,7 +1270,7 @@ $2 Εμφάνιση ανακατευθύνσεων &nbsp; Κριτήρια αν�
 'fewestrevisions' => 'Άρθρα με τις λιγότερες αναθεωρήσεις',
 
 # Miscellaneous special pages
-'nbytes'                  => '$1 bytes',
+'nbytes'                  => '$1 {{PLURAL:$1|μπάιτ|μπάιτς}}',
 'ncategories'             => '$1 {{PLURAL:$1|κατηγορία|κατηγορίες}}',
 'nlinks'                  => '$1 {{PLURAL:$1|σύνδεσμος|σύνδεσμοι}}',
 'nmembers'                => '$1 {{PLURAL:$1|μέλος|μέλη}}',
@@ -1658,7 +1653,7 @@ $1',
 'ipbenableautoblock'          => 'Φράξε αυτόματατα την τελευταία διεύθυνση IP που χρησιμοποιήθηκε από αυτό τον χρήστη, και όποιες ακόλουθες IP από τις οποίες δοκιμάζει να επεξεργαστεί',
 'ipbsubmit'                   => 'Φραγή σε αυτό το χρήστη',
 'ipbother'                    => 'Άλλη ώρα',
-'ipboptions'                  => '2 ώρες:2 hours,1 ημέρα:1 day,3 ημέρες:3 days,1 εβδομάδα:1 week,2 εβδομάδες:2 weeks,1 μήνα:1 month,3 μήνες:3 months,6 μήνες:6 months,1 χρόνο:1 year,αόριστα:infinite',
+'ipboptions'                  => '2 ώρες:2 hours,1 ημέρα:1 day,3 ημέρες:3 days,1 εβδομάδα:1 week,2 εβδομάδες:2 weeks,1 μήνα:1 month,3 μήνες:3 months,6 μήνες:6 months,1 χρόνο:1 year,αόριστα:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'άλλη',
 'ipbotherreason'              => 'Άλλος/επιπλέον λόγος:',
 'ipbhidename'                 => 'Κρύψες το όνομα χρήστη/την IP από το αρχείο καταγραφής φραγών, την ενεργή λίστα φραγών και τη λίστα χρηστών.',
@@ -2005,9 +2000,8 @@ $1',
 'show-big-image-thumb' => '<small>Μέγεθος αυτής της προεπισκόπησης: $1 × $2 εικονοστοιχεία</small>',
 
 # Special:Newimages
-'newimages'    => 'Πινακοθήκη νέων εικόνων',
-'showhidebots' => '($1 bots)',
-'noimages'     => 'Δεν υπάρχουν εικόνες.',
+'newimages' => 'Πινακοθήκη νέων εικόνων',
+'noimages'  => 'Δεν υπάρχουν εικόνες.',
 
 # Bad image list
 'bad_image_list' => 'Η σύνταξη είναι ως εξής:
@@ -2028,7 +2022,7 @@ $1',
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength',
+* focallength', # Do not translate list items
 
 # EXIF tags
 'exif-imagewidth'                  => 'Πλάτος',
@@ -2254,7 +2248,6 @@ $1',
 'exif-sharpness-2' => 'Σκληρή',
 
 'exif-subjectdistancerange-0' => 'Άγνωστη',
-'exif-subjectdistancerange-1' => 'Macro',
 'exif-subjectdistancerange-2' => 'Κοντινή λήψη',
 'exif-subjectdistancerange-3' => 'Μακρίνή λήψη',
 
@@ -2359,9 +2352,6 @@ $1',
 'articletitles'    => "Άρθρα που αρχίζουν από ''$1''",
 'hideresults'      => 'Απόκρυψη αποτελεσμάτων',
 
-# Separators for various lists
-'filetype-separator' => ',',
-
 # Multipage image navigation
 'imgmultipageprev'   => '← προηγούμενη σελίδα',
 'imgmultipagenext'   => 'επόμενη σελίδα →',
@@ -2404,9 +2394,7 @@ $1',
 'watchlistedit-noitems'        => 'Η λίστα παρακολούθησης σας δεν περιέχει καμιά εγγραφή.',
 'watchlistedit-normal-title'   => 'Επεξεργασία λίστας παρακολούθησης',
 'watchlistedit-normal-legend'  => 'Αφαίρεση σελίδων από τη λίστα παρακολούθησης',
-'watchlistedit-normal-explain' => 'Οι σελίδες στη λίστα παρακολούθησής σας φαίνονται παρακάτω. Για να αφαιρέσετε μια σελίδα σημειώστε 
-	το κουτάκι δίπλα από τον τίτλο και κάντε κλικ στο Αφαίρεση Σελίδων. Μπορείτε επίσης να [[Special:Watchlist/raw|επεξεργαστείτε την πηγαία λίστα]],
-	ή [[Special:Watchlist/clear|να αφαιρέσετε όλες τις σελίδες]].',
+'watchlistedit-normal-explain' => 'Οι σελίδες στη λίστα παρακολούθησής σας φαίνονται παρακάτω. Για να αφαιρέσετε μια σελίδα σημειώστε το κουτάκι δίπλα από τον τίτλο και κάντε κλικ στο Αφαίρεση Σελίδων. Μπορείτε επίσης να [[Special:Watchlist/raw|επεξεργαστείτε την πηγαία λίστα]].',
 'watchlistedit-normal-submit'  => 'Αφαίρεση Σελίδων',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|1 τίτλος|$1 τίτλοι}} αφαιρέθηκαν από τη λίστα παρακολούθησής σας:',
 'watchlistedit-raw-title'      => 'Επεξεργασία πηγαίας λίστας παρακολούθησης',

@@ -6,5 +6,3 @@
   */
 
 $fallback = 'ku-latn';
-
-

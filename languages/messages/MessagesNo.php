@@ -271,9 +271,6 @@ $messages = array(
 'anontalk'       => 'Brukerdiskusjon for denne IP-adressa',
 'navigation'     => 'Navigasjon',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Feil',
 'returnto'          => 'Tilbake til $1.',
 'tagline'           => 'Fra {{SITENAME}}',
@@ -362,7 +359,6 @@ $messages = array(
 'versionrequired'     => 'Versjon $1 av MediaWiki påtrengt',
 'versionrequiredtext' => 'Versjon $1 av MediaWiki er nødvendig for å bruke denne siden. Se [[Special:Version]]',
 
-'ok'                      => 'OK',
 'retrievedfrom'           => 'Hentet fra «$1»',
 'youhavenewmessages'      => 'Du har $1 ($2).',
 'newmessageslink'         => 'nye meldinger',
@@ -448,7 +444,6 @@ til siden.',
 Funksjon: $1<br />
 Spørring: $2',
 'viewsource'           => 'Vis kildekode',
-'viewsourcefor'        => 'for $1',
 'actionthrottled'      => 'Handlingsgrense overskredet',
 'actionthrottledtext'  => 'For å beskytte mot spam, kan du ikke utføre denne handlingen for mange ganger i løpet av et kort tidssrom, og du har overskredet denne grensen. Prøv igjen om noen minutter.',
 'protectedpagetext'    => 'Denne siden har blitt låst for redigeringer.',
@@ -499,7 +494,6 @@ Brukerkontoen din har blitt opprettet. Ikke glem å endre [[Special:Preferences|
 'uid'                        => 'Bruker-ID:',
 'yourrealname'               => 'Virkelig navn *',
 'yourlanguage'               => 'Språk:',
-'yourvariant'                => 'Variant',
 'yournick'                   => 'Signatur',
 'badsig'                     => 'Ugyldig råsignatur; sjekk HTML-tagger.',
 'badsiglength'               => 'Brukernavn for langt; må være kortere enn $1 tegn.',
@@ -598,7 +592,9 @@ Du kan ignorere denne beskjeden dersom kontoen feilaktig ble opprettet.',
 
 Blokkeringen ble utført av $1. Grunnen som ble oppgitt var ''$2''.
 
-Blokkeringen utgår: $6
+* Blokkeringen begynte: $8
+* Blokkeringen utgår: $6
+* Blokkering ment på: $7
 
 Du kan kontakte $1 eller en annen [[{{MediaWiki:Grouppage-sysop}}|administrator]] for å diskutere blokkeringen. Du kan ikke bruke «E-post til denne brukeren-funksjonen med mindre du har oppgitt en gyldig e-postadresse i [[Special:Preferences|innstillingene dine]]. Din nåværende IP-adresse er $3, og blokkerings-ID-en er #$5. Vennligst inkluder begge disse ved henvendelser.",
 'autoblockedtext'           => "Din IP-adresse har blitt automatisk blokkert fordi den ble brukt av en annen bruker som ble blokkert av $1.
@@ -606,7 +602,8 @@ Den oppgitte grunnen var:
 
 :'''$2'''
 
-Blokken utgår: $6
+* Blokkeringen begynte: $8
+* Blokkringen utgår: $6
 
 Du kan kontakte $1 eller en av de andre [[{{MediaWiki:Grouppage-sysop}}|administratorene]] for å diskutere blokkeringen.
 
@@ -825,8 +822,8 @@ Andre administratorer på denne wikien vil fortsatt kunne se det skjulte innhold
 'prevn'                 => 'forrige $1',
 'nextn'                 => 'neste $1',
 'viewprevnext'          => 'Vis ($1) ($2) ($3).',
-'showingresults'        => 'Nedenfor vises opptil <b>$1</b> resultater som starter med nummer <b>$2</b>.',
-'showingresultsnum'     => "Nedenfor vises '''$3''' resultater som starter med nummer '''$2'''.",
+'showingresults'        => "Nedenfor vises opptil {{PLURAL:$1|'''ett''' resultat|'''$1''' resultater}} fra og med nummer <b>$2</b>.",
+'showingresultsnum'     => "Nedenfor vises {{PLURAL:$3|'''ett''' resultat|'''$3''' resultater}} fra og med nummer '''$2'''.",
 'nonefound'             => "'''Merk:''' Søk uten resultat skyldes ofte at man søker etter alminnelige ord som «i» eller «på», som ikke er indeksert, eller ved å spesifisere mer enn et søkeord (da kun sider som inneholder alle søkeordene blir funnet).",
 'powersearch'           => 'Søk',
 'powersearchtext'       => 'Søk i navnerom:<br />$1<br />$2 List opp omdirigeringer<br />Søk etter $3 $9',
@@ -906,6 +903,8 @@ Andre administratorer på denne wikien vil fortsatt kunne se det skjulte innhold
 'userrights-available-none'   => 'Du kan ikke endre gruppemedlemsskaper.',
 'userrights-available-add'    => 'Du kan legge til brukere i $1.',
 'userrights-available-remove' => 'Du kan fjerne brukere fra $1.',
+'userrights-no-interwiki'     => 'Du har ikke tillatelse til å endre brukerrettigheter på andre wikier.',
+'userrights-nodatabase'       => 'Databasen $1 finnes ikke, eller er ikke lokal.',
 
 # Groups
 'group'               => 'Gruppe:',
@@ -936,7 +935,7 @@ Andre administratorer på denne wikien vil fortsatt kunne se det skjulte innhold
 'recentchanges'                     => 'Siste endringer',
 'recentchangestext'                 => 'Vis de siste endringene til denne siden',
 'recentchanges-feed-description'    => 'Følg med på siste endringer i denne wikien med denne feed-en.',
-'rcnote'                            => 'Nedenfor vises de siste <strong>$1</strong> endringene de siste <strong>$2</strong> dagene, fra $3.',
+'rcnote'                            => "Nedenfor vises {{PLURAL:$1|én endring|de siste '''$1''' endringene}} fra de siste <strong>$2</strong> dagene, per $3.",
 'rcnotefrom'                        => 'Nedenfor er endringene fra <strong>$2</strong> til <strong>$1</strong> vist.',
 'rclistfrom'                        => 'Vis nye endringer med start fra $1',
 'rcshowhideminor'                   => '$1 mindre endringer',
@@ -946,13 +945,8 @@ Andre administratorer på denne wikien vil fortsatt kunne se det skjulte innhold
 'rcshowhidepatr'                    => '$1 godkjente endringer',
 'rcshowhidemine'                    => '$1 mine endringer',
 'rclinks'                           => 'Vis siste $1 endringer i de siste $2 dagene<br />$3',
-'diff'                              => 'diff',
-'hist'                              => 'hist',
 'hide'                              => 'skjul',
 'show'                              => 'vis',
-'minoreditletter'                   => 'm',
-'newpageletter'                     => 'N',
-'boteditletter'                     => 'b',
 'number_of_watching_users_pageview' => '[$1 overvåkende {{PLURAL:$1|bruker|brukere}}]',
 'rc_categories'                     => 'Begrens til kategorier (skilletegn: «|»)',
 'rc_categories_any'                 => 'Alle',
@@ -980,6 +974,9 @@ For å inkludere et bilde på en side, bruk ei slik lenke:
 *'''<nowiki>[[</nowiki>{{ns:image}}:Filnavn.png|Alternativ tekst<nowiki>]]</nowiki>'''
 For å lenke direkte til bildet, skriv:
 *'''<nowiki>[[</nowiki>{{ns:media}}:Filnavn.ogg<nowiki>]]</nowiki>'''",
+'upload-permitted'            => 'Tillatte filtyper: $1.',
+'upload-preferred'            => 'Foretrukne filtyper: $1',
+'upload-prohibited'           => 'Forbudte filtyper: $1.',
 'uploadlog'                   => 'opplastingslogg',
 'uploadlogpage'               => 'Opplastingslogg',
 'uploadlogpagetext'           => 'Her er en liste over de siste opplastede filene.',
@@ -995,6 +992,8 @@ For å lenke direkte til bildet, skriv:
 'illegalfilename'             => 'Filnavnet «$1» inneholder ugyldige tegn; gi fila et nytt navn og prøv igjen.',
 'badfilename'                 => 'Navnet på filen er blitt endret til «$1».',
 'filetype-badmime'            => 'Filer av typen «$1» kan ikke lastes opp.',
+'filetype-unwanted-type'      => "'''«.$1»''' er en uønsket filtype. Foretrukne filtyper er $2.",
+'filetype-banned-type'        => "'''«$1»''' er ikke en tillatt filtype. Foretrukne filtyper er $2.",
 'filetype-missing'            => 'Filen har ingen endelsen (som «.jpg»).',
 'large-file'                  => 'Det er anbefalt at filen ikke er større enn $1; denne filen er $2.',
 'largefileserver'             => 'Denne fila er større enn det tjeneren er konfigurert til å tillate.',
@@ -1064,7 +1063,7 @@ PICT # div.
 
 # Image list
 'imagelist'                 => 'Bildeliste',
-'imagelisttext'             => 'Her er ei liste med <strong>$1</strong> filer sortert <strong>$2</strong>.',
+'imagelisttext'             => "Dete er en liste med '''$1''' {{PLURAL:$1|fil|filer}} sortert $2.",
 'getimagelist'              => 'henter filliste',
 'ilsubmit'                  => 'Søk',
 'showlast'                  => 'Vis de siste $1 filene sortert $2.',
@@ -1153,11 +1152,11 @@ PICT # div.
 'statistics'             => 'Statistikk',
 'sitestats'              => '{{SITENAME}}-statistikk',
 'userstats'              => 'Brukerstatistikk',
-'sitestatstext'          => "Det er til sammen '''$1''' sider i databasen. Dette inkluderer diskusjonssider, sider om {{SITENAME}}, små stubbsider, omdirigeringer, og annet som antagligvis ikke gjelder som ordentlig innhold. Om man ikke regner med disse, er det '''$2''' sider som sannsynligvis er ordentlige innholdssider.
+'sitestatstext'          => "Det er til sammen {{PLURAL:$1|'''én''' side|'''$1''' sider}} i databasen. Dette inkluderer diskusjonssider, sider om {{SITENAME}}, små stubbsider, omdirigeringer, og annet som antagligvis ikke gjelder som ordentlig innhold. Om man ikke regner med disse, er det {{PLURAL:$2|'''én''' side|'''$2''' sider}} som sannsynligvis er ordentlige innholdssider.
 
 '''$8''' filer har blitt lastet opp.
 
-Det har vært totalt '''$3''' sidevisninger, og '''$4''' redigeringer siden wikien ble satt opp. Det blir i snitt '''$5''' redigeringer per side, og '''$6''' visninger per redigering.
+Det har vært totalt {{PLURAL:$3|'''én''' sidevisning|'''$3''' sidevisninger}}, og {{PLURAL:$4|'''én''' redigering|'''$4''' redigeringer}} siden wikien ble satt opp. Det blir i snitt '''$5''' redigeringer per side, og '''$6''' visninger per redigering.
 
 [http://meta.wikimedia.org/wiki/Help:Job_queue Arbeidskøen] er på '''$7'''.",
 'userstatstext'          => "Det er {{PLURAL:$1|'''én''' registrert bruker|'''$1''' registrerte brukere}}, hvorav '''$2''' (eller '''$4&nbsp;%''') har $5rettigheter.",
@@ -1291,7 +1290,6 @@ Det har vært totalt '''$3''' sidevisninger, og '''$4''' redigeringer siden wiki
 'emailto'         => 'Til',
 'emailsubject'    => 'Emne',
 'emailmessage'    => 'Beskjed',
-'emailsend'       => 'Send',
 'emailccme'       => 'Send meg en kopi av beskjeden min.',
 'emailccsubject'  => 'Kopi av din beskjed til $1: $2',
 'emailsent'       => 'E-post sendt',
@@ -1300,7 +1298,6 @@ Det har vært totalt '''$3''' sidevisninger, og '''$4''' redigeringer siden wiki
 # Watchlist
 'watchlist'            => 'Overvåkningsliste',
 'mywatchlist'          => 'Overvåkningsliste',
-'watchlistfor'         => "(for '''$1''')",
 'nowatchlist'          => 'Du har ingenting i overvåkningslista.',
 'watchlistanontext'    => 'Vennligst $1 for å vise eller redigere sider på overvåkningslista di.',
 'watchnologin'         => 'Ikke logget inn',
@@ -1461,7 +1458,7 @@ dukke opp i den tidligere historikken, og den nyeste revisjonen vil forbli
 på siden.',
 'undeleterevdel'               => 'Gjenoppretting kan ikke utføres dersom det resulterer i at den øverste revisjonen blir delvis slettet. I slike tilfeller må du fjerne merkingen av den nyeste slettede revisjonen. Revisjoner av filer som du ikke har tilgang til vil ikke gjenopprettes.',
 'undeletehistorynoadmin'       => 'Denne artikkelen har blitt slettet. Grunnen for slettingen vises i oppsummeringen nedenfor, sammen med detaljer om brukerne som redigerte siden før den ble slettet. Teksten i disse slettede revisjonene er kun tilgjengelig for administratorer.',
-'undelete-revision'            => 'Slettet revisjon av $1 fra $2:',
+'undelete-revision'            => 'Slettet revisjon av $1 av $3 (fra $2):',
 'undeleterevision-missing'     => 'Ugyldig eller manglende revisjon. Du kan ha en ødelagt lenke, eller revisjonen har blitt fjernet fra arkivet.',
 'undelete-nodiff'              => 'Ingen tidligere revisjoner funnet.',
 'undeletebtn'                  => 'Gjenopprett',
@@ -1497,7 +1494,6 @@ $1',
 # Contributions
 'contributions' => 'Bidrag',
 'mycontris'     => 'Mine bidrag',
-'contribsub2'   => 'For $1 ($2)',
 'nocontribs'    => 'Ingen endringer er funnet som passer disse kriteriene.',
 'ucnote'        => 'Her er denne brukerens siste <b>$1</b> endringer i de siste <b>$2</b> dagene.',
 'uclinks'       => 'Vis de siste $1 endringene; vis de siste $2 dagene.',
@@ -1550,7 +1546,7 @@ $1',
 'ipbenableautoblock'          => 'Blokker forrige IP-adresse brukt av denne brukeren automatisk, samt alle IP-adresser brukeren forsøker å redigere med i framtiden',
 'ipbsubmit'                   => 'Blokker denne adressa',
 'ipbother'                    => 'Annen tid',
-'ipboptions'                  => '2 timer:2 hours,1 dag:1 day,3 dager:3 days,1 uke:1 week,2 uker:2 weeks,1 måned:1 month,3 måneder:3 months,6 måneder:6 months,1 år:1 year,uendelig:infinite',
+'ipboptions'                  => '2 timer:2 hours,1 dag:1 day,3 dager:3 days,1 uke:1 week,2 uker:2 weeks,1 måned:1 month,3 måneder:3 months,6 måneder:6 months,1 år:1 year,uendelig:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'annet',
 'ipbotherreason'              => 'Annen grunn:',
 'ipbhidename'                 => 'Skjul brukernavn/IP i blokkeringsloggen, blokkeringslista og brukerlista',
@@ -1664,6 +1660,7 @@ I disse tilfellene er du nødt til å flytte eller flette sammen siden manuelt."
 'pagemovedsub'            => 'Flytting gjennomført',
 'movepage-moved'          => "<big>'''«$1» har blitt flyttet til «$2»'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'En side med det navnet eksisterer allerede, eller valgte navn er ugyldig. Velg et annet navn.',
+'cantmove-titleprotected' => 'Du kan ikke flytte en side til dette navnet, fordi den nye tittelen er beskyttet fra opprettelse.',
 'talkexists'              => "'''Siden ble flyttet korrekt, men den tilhørende diskusjonssiden kunne ikke flyttes, fordi det allerede eksisterer en med den nye tittelen. Du er nødt til å flette dem sammen manuelt.'''",
 'movedto'                 => 'flyttet til',
 'movetalk'                => 'Flytt også diskusjonssiden, hvis den eksisterer.',
@@ -1914,7 +1911,6 @@ $1',
 Kun listeelementer (linjer som starter med *) tas med. Den første lenka på en linje må være en lenke til et dårlig bilde. Alle andre linker på samme linje anses å være unntak, altså artikler hvor bildet er tillat brukt.',
 
 # Metadata
-'metadata'          => 'Metadata',
 'metadata-help'     => 'Denne fila inneholder tilleggsinformasjon, antagligvis fra digitalkameraet eller skanneren brukt til å lage eller digitalisere det. Hvis fila har blitt forandret fra utgangspunktet, kan enkelte detaljer kanskje være unøyaktige.',
 'metadata-expand'   => 'Vis detaljer',
 'metadata-collapse' => 'Skjul detaljer',
@@ -1924,7 +1920,7 @@ Kun listeelementer (linjer som starter med *) tas med. Den første lenka på en 
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength',
+* focallength', # Do not translate list items
 
 # EXIF tags
 'exif-imagewidth'                  => 'Bredde',
@@ -1935,13 +1931,21 @@ Kun listeelementer (linjer som starter med *) tas med. Den første lenka på en 
 'exif-orientation'                 => 'Retning',
 'exif-samplesperpixel'             => 'Antall komponenter',
 'exif-planarconfiguration'         => 'Dataarrangement',
+'exif-ycbcrsubsampling'            => 'Subsamplingsforhold mellom Y og C',
 'exif-ycbcrpositioning'            => 'Y- og C-posisjonering',
 'exif-xresolution'                 => 'Horisontal oppløsning',
 'exif-yresolution'                 => 'Vertikal oppløsning',
 'exif-resolutionunit'              => 'Enhet for X- og Y-oppløsning',
+'exif-stripoffsets'                => 'Lokasjon for bildedata',
 'exif-rowsperstrip'                => 'Antall rader per stripe',
+'exif-stripbytecounts'             => 'Antall byte per kompresserte stripe',
+'exif-jpeginterchangeformat'       => 'Offset til JPEG SOI',
 'exif-jpeginterchangeformatlength' => 'Byte med JPEG-data',
 'exif-transferfunction'            => 'Overføringsfunksjon',
+'exif-whitepoint'                  => 'Hvitpunktkromatisitet',
+'exif-primarychromaticities'       => 'Primærfargenes renhet',
+'exif-ycbcrcoefficients'           => 'Koeffisienter fr fargeromstransformasjonsmatrise',
+'exif-referenceblackwhite'         => 'Par av svarte og hvite referanseverdier',
 'exif-datetime'                    => 'Dato og tid for filendring',
 'exif-imagedescription'            => 'Bildetittel',
 'exif-make'                        => 'Kameraprodusent',
@@ -1961,26 +1965,52 @@ Kun listeelementer (linjer som starter med *) tas med. Den første lenka på en 
 'exif-relatedsoundfile'            => 'Relatert lydfil',
 'exif-datetimeoriginal'            => 'Dato og tid for datagenerering',
 'exif-datetimedigitized'           => 'Dato og tid for digitalisering',
+'exif-subsectime'                  => 'Endringstidspunkt, sekunddeler',
+'exif-subsectimeoriginal'          => 'Eksponeringstidspunkt, sekunddeler',
+'exif-subsectimedigitized'         => 'Digitaliseringstidspunkt, sekunddeler',
 'exif-exposuretime'                => 'Eksponeringstid',
 'exif-exposuretime-format'         => '$1 sek ($2)',
 'exif-fnumber'                     => 'F-nummer',
 'exif-exposureprogram'             => 'Eksponeringsprogram',
 'exif-spectralsensitivity'         => 'Spektralsensitivitet',
+'exif-isospeedratings'             => 'Filmhastighet (ISO)',
+'exif-oecf'                        => 'Optoelektronisk konversjonsfaktor',
 'exif-shutterspeedvalue'           => 'Lukkerhastighet',
+'exif-aperturevalue'               => 'Apertur',
+'exif-brightnessvalue'             => 'Lysstyrke',
+'exif-exposurebiasvalue'           => 'Eksponeringsbias',
+'exif-maxaperturevalue'            => 'Maksimal blender',
 'exif-subjectdistance'             => 'Avstand til subjekt',
+'exif-meteringmode'                => 'Målingsmodus',
 'exif-lightsource'                 => 'Lyskilde',
 'exif-flash'                       => 'Blits',
+'exif-focallength'                 => 'Linsens brennvidde',
+'exif-subjectarea'                 => 'Motivområde',
 'exif-flashenergy'                 => 'Blitsenergi',
+'exif-spatialfrequencyresponse'    => 'Romslig frekvensrespons',
+'exif-focalplanexresolution'       => 'Oppløsning i fokalplan X',
+'exif-focalplaneyresolution'       => 'Oppløsning i fokalplan Y',
+'exif-focalplaneresolutionunit'    => 'Enhet for oppløsning i fokalplan',
+'exif-subjectlocation'             => 'Motivets beliggenhet',
 'exif-exposureindex'               => 'Eksponeringsindeks',
+'exif-sensingmethod'               => 'Avkjenningsmetode',
 'exif-filesource'                  => 'Filkilde',
 'exif-scenetype'                   => 'Scenetype',
 'exif-cfapattern'                  => 'CFA-mønster',
+'exif-customrendered'              => 'Tilpasset bildebehandling',
 'exif-exposuremode'                => 'Eksponeringsmodus',
 'exif-whitebalance'                => 'Hvit balanse',
+'exif-digitalzoomratio'            => 'Digitalt zoomomfang',
+'exif-focallengthin35mmfilm'       => 'Brennvidde på 35 mm-film',
+'exif-scenecapturetype'            => 'Motivprogram',
 'exif-gaincontrol'                 => 'Scenekontroll',
 'exif-contrast'                    => 'Kontrast',
+'exif-saturation'                  => 'Metning',
 'exif-sharpness'                   => 'Skarphet',
+'exif-devicesettingdescription'    => 'Beskrivelse av apparatets innstilling',
+'exif-subjectdistancerange'        => 'Avstandsintervall til motiv',
 'exif-imageuniqueid'               => 'Unikk bilde-ID',
+'exif-gpsversionid'                => 'Versjon for GPS-tagger',
 'exif-gpslatituderef'              => 'nordlig eller sørlig breddegrad',
 'exif-gpslatitude'                 => 'Breddegrad',
 'exif-gpslongituderef'             => 'Østlig eller vestlig breddegrad',
@@ -1993,26 +2023,30 @@ Kun listeelementer (linjer som starter med *) tas med. Den første lenka på en 
 'exif-gpsmeasuremode'              => 'Målingsmodus',
 'exif-gpsdop'                      => 'Målingspresisjon',
 'exif-gpsspeedref'                 => 'Fartsenhet',
+'exif-gpsspeed'                    => 'GPS-mottakerens hastighet',
 'exif-gpstrackref'                 => 'Referanse for bevegelsesretning',
 'exif-gpstrack'                    => 'Bevegelsesretning',
 'exif-gpsimgdirectionref'          => 'Referanse for bilderetning',
 'exif-gpsimgdirection'             => 'Bilderetning',
+'exif-gpsmapdatum'                 => 'Brukt geodetisk data',
 'exif-gpsdestlatituderef'          => 'Referanse for målbreddegrad',
 'exif-gpsdestlatitude'             => 'Målbreddegrad',
 'exif-gpsdestlongituderef'         => 'Referanse for mållengdegrad',
 'exif-gpsdestlongitude'            => 'Mållengdegrad',
+'exif-gpsdestbearingref'           => 'Referanse for retning mot målet',
+'exif-gpsdestbearing'              => 'Retning mot målet',
 'exif-gpsdestdistanceref'          => 'Referanse for lengde til mål',
 'exif-gpsdestdistance'             => 'Lengde til mål',
 'exif-gpsprocessingmethod'         => 'Navn på GPS-prosesseringsmetode',
 'exif-gpsareainformation'          => 'Navn på GPS-område',
 'exif-gpsdatestamp'                => 'GPS-dato',
+'exif-gpsdifferential'             => 'Differentiell GPS-korreksjon',
 
 # EXIF attributes
 'exif-compression-1' => 'Ukomprimert',
 
 'exif-unknowndate' => 'Ukjent dato',
 
-'exif-orientation-1' => 'Normal', # 0th row: top; 0th column: left
 'exif-orientation-2' => 'Snudd horisontalt', # 0th row: top; 0th column: right
 'exif-orientation-3' => 'Rotert 180°', # 0th row: bottom; 0th column: right
 'exif-orientation-4' => 'Snudd vertikalt', # 0th row: bottom; 0th column: left
@@ -2023,11 +2057,18 @@ Rotert 90° mot klokka og vridd vertikalt', # 0th row: left; 0th column: top
 'exif-orientation-7' => 'Rotert 90° med klokka og vridd vertikalt', # 0th row: right; 0th column: bottom
 'exif-orientation-8' => 'Rotert 90° mot klokka', # 0th row: left; 0th column: bottom
 
+'exif-planarconfiguration-1' => 'chunkformat',
+'exif-planarconfiguration-2' => 'planærformat',
+
 'exif-componentsconfiguration-0' => 'finnes ikke',
 
 'exif-exposureprogram-0' => 'Ikke definert',
 'exif-exposureprogram-1' => 'Manuell',
 'exif-exposureprogram-2' => 'Normalt program',
+'exif-exposureprogram-3' => 'Blenderprioritet',
+'exif-exposureprogram-4' => 'Slutterprioritet',
+'exif-exposureprogram-5' => 'Kunstnerlig program (prioriterer skarphetsdyp)',
+'exif-exposureprogram-6' => 'Bevegelsesprogram (prioriterer kortere sluttertid)',
 'exif-exposureprogram-7' => 'Portrettmodus (for nærbilder med ufokusert bakgrunn)',
 'exif-exposureprogram-8' => 'Landskapsmodus (for landskapsbilder med fokusert bakgrunn)',
 
@@ -2035,54 +2076,73 @@ Rotert 90° mot klokka og vridd vertikalt', # 0th row: left; 0th column: top
 
 'exif-meteringmode-0'   => 'Ukjent',
 'exif-meteringmode-1'   => 'Gjennomsnitt',
+'exif-meteringmode-2'   => 'Sentrumsveid gjennomsnitt',
+'exif-meteringmode-4'   => 'Multispot',
 'exif-meteringmode-5'   => 'Mønster',
 'exif-meteringmode-6'   => 'Delvis',
 'exif-meteringmode-255' => 'Annet',
 
 'exif-lightsource-0'   => 'Ukjent',
 'exif-lightsource-1'   => 'Dagslys',
+'exif-lightsource-2'   => 'Lysrør',
+'exif-lightsource-3'   => 'Glødelampe',
 'exif-lightsource-4'   => 'Blits',
 'exif-lightsource-9'   => 'Fint vær',
 'exif-lightsource-10'  => 'Overskyet',
 'exif-lightsource-11'  => 'Skygge',
+'exif-lightsource-12'  => 'Dagslyslysrør (D 5700 – 7100K)',
+'exif-lightsource-13'  => 'Dagshvitt lysrør (N 4600 – 5400K)',
+'exif-lightsource-14'  => 'Kaldhvitt lysrør (W 3900 – 4500K)',
+'exif-lightsource-15'  => 'Hvitt lysrør (WW 3200 – 3700K)',
 'exif-lightsource-17'  => 'Standardlys A',
 'exif-lightsource-18'  => 'Standardlys B',
 'exif-lightsource-19'  => 'Standardlys C',
+'exif-lightsource-24'  => 'ISO studiobelysning',
 'exif-lightsource-255' => 'Annen lyskilde',
 
 'exif-focalplaneresolutionunit-2' => 'tommer',
 
 'exif-sensingmethod-1' => 'Udefinert',
+'exif-sensingmethod-2' => 'Énchipsfargesensor',
+'exif-sensingmethod-3' => 'Tochipsfargesensor',
+'exif-sensingmethod-4' => 'Trechipsfargesensor',
+'exif-sensingmethod-5' => 'Fargesekvensiell områdesensor',
 'exif-sensingmethod-7' => 'Trilineær sensor',
+'exif-sensingmethod-8' => 'Fargesekvensiell linær sensor',
+
+'exif-scenetype-1' => 'Direktefotografert bilde',
 
 'exif-customrendered-0' => 'Normal prosess',
 'exif-customrendered-1' => 'Tilpasset prosess',
 
 'exif-exposuremode-0' => 'Automatisk eksponering',
 'exif-exposuremode-1' => 'Manuell eksponering',
+'exif-exposuremode-2' => 'Automatisk alternativeksponering',
 
 'exif-whitebalance-0' => 'Automatisk hvitbalanse',
 'exif-whitebalance-1' => 'Manuell hvitbalanse',
 
-'exif-scenecapturetype-0' => 'Standard',
 'exif-scenecapturetype-1' => 'Landskap',
 'exif-scenecapturetype-2' => 'Portrett',
 'exif-scenecapturetype-3' => 'Nattscene',
 
 'exif-gaincontrol-0' => 'Ingen',
+'exif-gaincontrol-1' => 'Økning av lavnivåforsterkning',
+'exif-gaincontrol-2' => 'Økning av høynivåforsterkning',
+'exif-gaincontrol-3' => 'Senkning av lavnivåforsterkning',
+'exif-gaincontrol-4' => 'Senkning av høynivåforsterkning',
 
-'exif-contrast-0' => 'Normal',
 'exif-contrast-1' => 'Myk',
-'exif-contrast-2' => 'Hard',
 
-'exif-saturation-0' => 'Normal',
+'exif-saturation-1' => 'Lav metningsgrad',
+'exif-saturation-2' => 'Høy metningsgrad',
 
-'exif-sharpness-0' => 'Normal',
 'exif-sharpness-1' => 'Myk',
-'exif-sharpness-2' => 'Hard',
 
 'exif-subjectdistancerange-0' => 'Ukjent',
 'exif-subjectdistancerange-1' => 'Makro',
+'exif-subjectdistancerange-2' => 'Nærbilde',
+'exif-subjectdistancerange-3' => 'Fjernbilde',
 
 # Pseudotags used for GPSLatitudeRef and GPSDestLatitudeRef
 'exif-gpslatitude-n' => 'Nordlig breddegrad',
@@ -2164,14 +2224,14 @@ $1
 'redirectingto' => 'Omdirigerer til [[$1]]…',
 
 # action=purge
-'confirm_purge'        => "Vil du slette tjenerens mellomlagrede versjon (''cache'') av denne siden? $1",
-'confirm_purge_button' => 'OK',
+'confirm_purge' => "Vil du slette tjenerens mellomlagrede versjon (''cache'') av denne siden? $1",
 
 # AJAX search
 'searchcontaining' => "Søk etter artikler som inneholder ''$1''.",
 'searchnamed'      => "Søk for artikler ved navn ''$1''.",
 'articletitles'    => "Artikler som begynner med ''$1''",
 'hideresults'      => 'Skjul resultater',
+'useajaxsearch'    => 'Bruk AJAX-søk',
 
 # Multipage image navigation
 'imgmultipageprev'   => '&larr; forrige side',
@@ -2213,7 +2273,7 @@ Prøv vanlig forhåndsvisning.',
 'watchlistedit-noitems'        => 'Overvåkningslista di inneholder ingen titler.',
 'watchlistedit-normal-title'   => 'Rediger overvåkningsliste',
 'watchlistedit-normal-legend'  => 'Fjern titler fra overvåkninglista',
-'watchlistedit-normal-explain' => 'Titler på overvåkningslista di vises nedenunder. For å fjerne en tittel, merk av boksen ved siden av den og klikk Fjern titler. Du kan også [[Special:Watchlist/raw|redigere den rå overvåkningslista]] eller [[Special:Watchlist/clear|fjerne alle titler]].',
+'watchlistedit-normal-explain' => 'Titler på overvåkningslista di vises nedenunder. For å fjerne en tittel, merk av boksen ved siden av den og klikk Fjern titler. Du kan også [[Special:Watchlist/raw|redigere den rå overvåkningslista]].',
 'watchlistedit-normal-submit'  => 'Fjern titler',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|Én tittel|$1 titler}} ble fjernet fra overvåkningslisten din:',
 'watchlistedit-raw-title'      => 'Rediger rå overvåkningsliste',

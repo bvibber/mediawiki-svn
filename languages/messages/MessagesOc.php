@@ -426,7 +426,7 @@ Doblidetz pas de personalizar vòstre {{SITENAME}} en consultant la pagina Prefe
 'uid'                        => 'Numèro d’utilizaire :',
 'yourrealname'               => 'Nom vertadièr *',
 'yourlanguage'               => 'Lenga:',
-'yourvariant'                => 'Varianta',
+'yourvariant'                => 'Varianta:',
 'yournick'                   => 'Mon escais (per las signaturas)',
 'badsig'                     => 'Signatura bruta incorrècta ; Verificatz vòstras balisas HTML.',
 'badsiglength'               => 'Vòstra signatura es tròp longa : la talha maximala es de $1 caractèrs.',
@@ -1451,7 +1451,7 @@ Donatz çai jos una rason precisa (per exemple en indicant las paginas que son e
 'ipbenableautoblock'          => 'Blocar automaticament las adreças IP utilizadas per aqueste utilizaire',
 'ipbsubmit'                   => 'Blocar aquesta adreça',
 'ipbother'                    => 'Autra durada',
-'ipboptions'                  => '2 oras:2 hours,1 jorn:1 day,3 jorns:3 days,1 setmana:1 week,2 setmanas:2 weeks,1 mes:1 month,3 meses:3 months,6 meses:6 months,1 an:1 year,indefinidament:infinite',
+'ipboptions'                  => '2 oras:2 hours,1 jorn:1 day,3 jorns:3 days,1 setmana:1 week,2 setmanas:2 weeks,1 mes:1 month,3 meses:3 months,6 meses:6 months,1 an:1 year,indefinidament:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'autre',
 'ipbotherreason'              => 'Motiu diferent o suplementari',
 'ipbhidename'                 => "Amagar lo nom d’utilizaire o l’IP de l'istoric de blocatge, de la lista dels blocatges actius e de la lista dels utilizaires",
@@ -1473,6 +1473,7 @@ a partir d'una adreça IP precedentament blocada.",
 'ipblocklist'                 => 'Lista de las adreças IP blocadas',
 'ipblocklist-legend'          => 'Cercar un utilizaire blocat',
 'ipblocklist-username'        => 'Nom de l’utilizaire o adreça IP :',
+'ipblocklist-summary'         => 'La lista çaijós mòstra totes los utilizaires e adreças IP blocats, per òrdre anticronologic. Consultatz lo [[Special:Log/block|jornal de blocatge]] per veire las darrièras accions de blocatge e desblocatge efectuadas.',
 'ipblocklist-submit'          => 'Recèrca',
 'blocklistline'               => '$1, $2 a blocat $3 ($4)',
 'infiniteblock'               => 'permanent',
@@ -1822,7 +1823,7 @@ Solament las linhas començant per * son presas en compte. Lo primièr ligam de 
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength',
+* focallength', # Do not translate list items
 
 # EXIF tags
 'exif-imagewidth'                  => 'Largor',
@@ -1905,6 +1906,7 @@ Solament las linhas començant per * son presas en compte. Lo primièr ligam de 
 'exif-focallengthin35mmfilm'       => 'Longor de focala per un filme 35 mm',
 'exif-scenecapturetype'            => 'Tipe de captura de la scèna',
 'exif-gaincontrol'                 => 'Contraròtle de luminositat',
+'exif-contrast'                    => 'Contraste',
 'exif-saturation'                  => 'Saturacion',
 'exif-sharpness'                   => 'Netetat',
 'exif-devicesettingdescription'    => 'Descripcion de la configuracion del dispositiu',
@@ -2140,6 +2142,7 @@ $1",
 'searchnamed'      => 'Cercar los articles nomenats « $1 ».',
 'articletitles'    => 'Articles començant per « $1 »',
 'hideresults'      => 'Amagar los resultats',
+'useajaxsearch'    => 'Uilizar la recèrca AJAX',
 
 # Multipage image navigation
 'imgmultipageprev'   => '&larr; pagina precedenta',
@@ -2186,7 +2189,7 @@ Ensajatz la previsualizacion normala.',
 'watchlistedit-noitems'        => 'Vòstra lista de seguit conten pas cap de pagina.',
 'watchlistedit-normal-title'   => 'Modificacion de la lista de seguit',
 'watchlistedit-normal-legend'  => 'Levar de paginas de la lista de seguit',
-'watchlistedit-normal-explain' => 'Las paginas de vòstra lista de seguit son visiblas çaijos, classadas per espaci de noms. Per levar una pagina (e sa pagina de discussion) de la lista, seleccionatz la casa al costat puèi clicatz sul boton en bas. Tanben podètz [[Special:Watchlist/raw|la modificar en mòde brut]] o [[Special:Watchlist/clear|la voidar entièrament]].',
+'watchlistedit-normal-explain' => 'Las paginas de vòstra lista de seguit son visiblas çaijos, classadas per espaci de noms. Per levar una pagina (e sa pagina de discussion) de la lista, seleccionatz la casa al costat puèi clicatz sul boton en bas. Tanben podètz [[Special:Watchlist/raw|la modificar en mòde brut]].',
 'watchlistedit-normal-submit'  => 'Levar las paginas seleccionadas',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|Una pagina es estada levada|$1 paginas son estadas levadas}} de vòstra lista de seguit :',
 'watchlistedit-raw-title'      => 'Modificacion de la lista de seguit (mòde brut)',

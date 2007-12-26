@@ -13,6 +13,8 @@
  * @author Lejonel
  * @author Habj
  * @author לערי ריינהארט
+ * @author SPQRobin
+ * @author Max sonnelid
  */
 
 $skinNames = array(
@@ -396,6 +398,7 @@ $messages = array(
 'nstab-main'      => 'Sida',
 'nstab-user'      => 'Användarsida',
 'nstab-media'     => 'Media',
+'nstab-special'   => 'Special',
 'nstab-project'   => 'Projektsida',
 'nstab-image'     => 'Bild',
 'nstab-mediawiki' => 'Systemmeddelande',
@@ -473,7 +476,9 @@ $2',
 # Login and logout pages
 'logouttitle'                => 'Användarutloggning',
 'logouttext'                 => 'Du är nu utloggad från ditt användarkonto.',
-'welcomecreation'            => '<h2>Välkommen, $1!</h2><p>Ditt konto har skapats. Glöm inte att justera dina inställningar.',
+'welcomecreation'            => '== Välkommen, $1! ==
+
+Ditt konto har skapats. Glöm inte att justera dina inställningar.',
 'loginpagetitle'             => 'Användarinloggning',
 'yourname'                   => 'Ditt användarnamn',
 'yourpassword'               => 'Ditt lösenord',
@@ -501,7 +506,6 @@ $2',
 'uid'                        => 'Användar-ID:',
 'yourrealname'               => 'Ditt riktiga namn',
 'yourlanguage'               => 'Språk',
-'yourvariant'                => 'Variant',
 'yournick'                   => 'Ditt smeknamn (till signaturer)',
 'badsig'                     => 'Det är något fel med råsignaturen, kontrollera HTML-koden.',
 'badsiglength'               => 'Signaturen är för lång; den får innehålla högst $1 tecken.',
@@ -924,6 +928,8 @@ $2 Lista omdirigeringar &nbsp; Sök efter $3 $9',
 'userrights-available-none'   => 'Du kan inte ändra några grupptillhörigheter.',
 'userrights-available-add'    => 'Du kan lägga till användare i $1.',
 'userrights-available-remove' => 'Du kan ta bort användare från $1.',
+'userrights-no-interwiki'     => 'Du har inte behörighet att ändra användarrättigheter på andra wikis.',
+'userrights-nodatabase'       => 'Databasen $1 finns inte eller så är den inte lokal.',
 
 # Groups
 'group'               => 'Grupp:',
@@ -1205,7 +1211,7 @@ Sedan denna wiki startades har sidor visats totalt <b>$3</b> {{PLURAL:$3|gång|g
 'fewestrevisions' => 'Sidor med minst antal ändringar',
 
 # Miscellaneous special pages
-'nbytes'                  => '$1 {{PLURAL:$1|byte|bytes}}',
+'nbytes'                  => '$1 byte',
 'ncategories'             => '$1 {{PLURAL:$1|kategori|kategorier}}',
 'nlinks'                  => '$1 {{PLURAL:$1|länk|länkar}}',
 'nmembers'                => '$1 {{PLURAL:$1|medlem|medlemmar}}',
@@ -1239,6 +1245,7 @@ Sedan denna wiki startades har sidor visats totalt <b>$3</b> {{PLURAL:$3|gång|g
 'protectedpagestext'      => 'Följande sidor är skyddade mot redigering eller flyttning.',
 'protectedpagesempty'     => 'Inga sidor är skyddade under de villkoren.',
 'protectedtitles'         => 'Skyddade titlar',
+'protectedtitlestext'     => 'Följande sidtitlar är skyddade från att skapas',
 'protectedtitlesempty'    => 'Just nu finns inga skyddade sidtitlar med de parametrarna.',
 'listusers'               => 'Användarlista',
 'specialpages'            => 'Specialsidor',
@@ -1584,7 +1591,7 @@ I  [[Special:Log/delete|borttagningsloggen]] kan du hitta information om nyligen
 'ipbenableautoblock'          => 'Blockera automatiskt IP-adresser som användaren försöker redigera ifrån',
 'ipbsubmit'                   => 'Blockera IP-adressen/användaren',
 'ipbother'                    => 'Annan tidsperiod',
-'ipboptions'                  => '2 timmar:2 hours,1 dag:1 day,3 dagar:3 days,1 vecka:1 week,2 veckor:2 weeks,1 månad:1 month,3 månader:3 months,6 månader:6 months,1 år:1 year,oändlig:infinite',
+'ipboptions'                  => '2 timmar:2 hours,1 dag:1 day,3 dagar:3 days,1 vecka:1 week,2 veckor:2 weeks,1 månad:1 month,3 månader:3 months,6 månader:6 months,1 år:1 year,oändlig:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'annan tidsperiod',
 'ipbotherreason'              => 'Annan/ytterligare anledning',
 'ipbhidename'                 => 'Dölj användarnamnet/IP-adressen från blockeringsloggen och listorna över blockerade användare och användare',
@@ -1947,7 +1954,7 @@ Listan tar enbart hänsyn till rader som börjar med asterisk (*). Den första l
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength',
+* focallength', # Do not translate list items
 
 # EXIF tags
 'exif-imagewidth'                  => 'Bredd',
@@ -2264,6 +2271,7 @@ $1',
 'searchnamed'      => "Leta efter sidor som heter ''$1''.",
 'articletitles'    => "Sidor som börjar med ''$1''",
 'hideresults'      => 'Göm resultat',
+'useajaxsearch'    => 'Använd AJAX-sökning',
 
 # Multipage image navigation
 'imgmultipageprev'   => '&larr; föregående sida',
@@ -2312,9 +2320,7 @@ Pröva vanlig förhandsgranskning istället.',
 'watchlistedit-noitems'        => 'Din övervakningslista innehåller inga titlar.',
 'watchlistedit-normal-title'   => 'Redigera övervakningslistan',
 'watchlistedit-normal-legend'  => 'Ta bort titlar från övervakningslistan',
-'watchlistedit-normal-explain' => 'Titlarna i din övervakningslista visas i listan här nedanför. För att
-ta bort en titel, kryssa i rutan intill den och tryck på "Ta bort titlar". Du kan även
-[[Special:Watchlist/raw|redigera listan i textformat]].',
+'watchlistedit-normal-explain' => 'Titlarna i din övervakningslista visas i listan här nedanför. För att ta bort en titel, kryssa i rutan intill den och tryck på "Ta bort titlar". Du kan även [[Special:Watchlist/raw|redigera listan i textformat]].',
 'watchlistedit-normal-submit'  => 'Ta bort titlar',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|1 titel|$1 titlar}} togs bort från övervakningslistan:',
 'watchlistedit-raw-title'      => 'Redigera övervakningslistan som text',

@@ -159,6 +159,8 @@ $wgOptionalMessages = array(
 	'unusedtemplates-summary',
 	'fewestrevisions-summary',
 	'withoutinterwiki-summary',
+	'tog-nolangconversion',
+	'yourvariant',
 	'variantname-zh-hans',
 	'variantname-zh-hant',
 	'variantname-zh-cn',
@@ -185,6 +187,10 @@ $wgOptionalMessages = array(
 	'resetpass_text',
 	'image_sample',
 	'media_sample',
+	'common.css',
+	'monobook.css',
+	'common.js',
+	'monobook.js',
 	'widthheight',
 	'exif-fnumber-format',
 	'exif-focallength-format',
@@ -265,7 +271,7 @@ $wgOptionalMessages = array(
 	'hebrew-calendar-m11-gen',
 	'hebrew-calendar-m12-gen',
 	'semicolon-separator',
-	'filetype-separator',
+	'comma-separator',
 );
 
 /** EXIF messages, which may be set as optional in several checks, but are generally mandatory */

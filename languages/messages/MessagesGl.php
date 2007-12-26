@@ -351,7 +351,7 @@ Función: $1<br />
 Procura: $2',
 'viewsource'           => 'Ver código fonte',
 'viewsourcefor'        => 'de $1',
-'actionthrottled'      => 'Acción Ocasional',
+'actionthrottled'      => 'Acción ocasional',
 'actionthrottledtext'  => 'Como unha medida de loita contra o spam, limítase a realización desta acción moitas veces nun corto espazo de tempo, e que superaron este límite. Ténteo de novo nuns minutos.',
 'protectedpagetext'    => 'Esta páxina foi protexida para evitar a edición.',
 'viewsourcetext'       => 'Pode ver e copiar o código fonte desta páxina:',
@@ -398,7 +398,7 @@ Creouse a súa conta. Non esqueza [[Special:Preferences|personalizar]] as súas 
 'uid'                        => 'ID do usuario:',
 'yourrealname'               => 'O seu nome real* :',
 'yourlanguage'               => 'Lingua da interface:',
-'yourvariant'                => 'Variante de idioma',
+'yourvariant'                => 'Variante de idioma:',
 'yournick'                   => 'O seu alcume (para as sinaturas)',
 'badsig'                     => 'Sinatura non válida; comprobe o código HTML utilizado.',
 'badsiglength'               => 'O alcume é demasiado longo; ha de ter menos de $1 caracteres.',
@@ -1520,7 +1520,7 @@ $1',
 'ipbenableautoblock'          => 'Bloquear automaticamente o último enderezo IP utilizado por este usuario, e calquera outro enderezo desde o que intente editar',
 'ipbsubmit'                   => 'Bloquear este usuario',
 'ipbother'                    => 'Outro período de tempo',
-'ipboptions'                  => '2 horas:2 hours,1 día:1 day,3 días:3 days,1 semana:1 week,2 semanas:2 weeks,1 mes:1 month,3 meses:3 months,6 meses:6 months,1 ano:1 year,para sempre:infinite',
+'ipboptions'                  => '2 horas:2 hours,1 día:1 day,3 días:3 days,1 semana:1 week,2 semanas:2 weeks,1 mes:1 month,3 meses:3 months,6 meses:6 months,1 ano:1 year,para sempre:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'outra',
 'ipbotherreason'              => 'Outros motivos adicionais:',
 'ipbhidename'                 => 'Agochar nome de usuario/IP no rexistro de bloqueos, na listaxe de bloqueos activos e na listaxe de usuarios',
@@ -1905,7 +1905,7 @@ Só se consideran os elementos dunha listaxe (liñas que comezan por *). A prime
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength',
+* focallength', # Do not translate list items
 
 # EXIF tags
 'exif-imagewidth'                  => 'Ancho',
@@ -2274,7 +2274,7 @@ Tente a vista previa normal.',
 'watchlistedit-noitems'        => 'A súa listaxe de vixilancia non contén ningún título.',
 'watchlistedit-normal-title'   => 'Editar a listaxe de vixilancia',
 'watchlistedit-normal-legend'  => 'Eliminar títulos da listaxe de vixilancia',
-'watchlistedit-normal-explain' => 'Os títulos da súa listaxe de vixilancia aparecen embaixo. Para eliminar un título, escóllao na súa caixa de selección e prema en Eliminar Títulos. Tamén pode [[Special:Watchlist/raw|editar a listaxe simple]] ou [[Special:Watchlist/clear|eliminar todos os títulos]].',
+'watchlistedit-normal-explain' => 'Os títulos da súa listaxe de vixilancia aparecen embaixo. Para eliminar un título, escóllao na súa caixa de selección e prema en Eliminar Títulos. Tamén pode [[Special:Watchlist/raw|editar a listaxe simple]].',
 'watchlistedit-normal-submit'  => 'Eliminar Títulos',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|Eliminouse un título|Elimináronse $1 títulos}} da súa listaxe de vixilancia:',
 'watchlistedit-raw-title'      => 'Editar a listaxe de vixilancia simple',

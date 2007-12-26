@@ -1127,6 +1127,12 @@ $wgGroupPermissions['bureaucrat']['userrights'] = true;
  */
 # $wgGroupPermissions['developer']['siteadmin'] = true;
 
+
+/**
+ * Implicit groups, aren't shown on Special:Listusers or somewhere else
+ */
+$wgImplicitGroups = array( '*', 'user', 'autoconfirmed', 'emailconfirmed' );
+
 /**
  * Set of available actions that can be restricted via action=protect
  * You probably shouldn't change this.
@@ -1181,6 +1187,28 @@ $wgAutoConfirmAge = 0;
 # Passing both this AND the time requirement is needed
 $wgAutoConfirmCount = 0;
 //$wgAutoConfirmCount = 50;
+
+/**
+ * Automatically add a usergroup to any user who matches certain conditions.
+ * The format is
+ *   array( '&' or '|' or '^', cond1, cond2, ... )
+ * where cond1, cond2, ... are themselves conditions; *OR*
+ *   APCOND_EMAILCONFIRMED, *OR*
+ *   array( APCOND_EMAILCONFIRMED ), *OR*
+ *   array( APCOND_EDITCOUNT, number of edits ), *OR*
+ *   array( APCOND_AGE, seconds since registration ), *OR*
+ *   similar constructs defined by extensions.
+ *
+ * If $wgEmailAuthentication is off, APCOND_EMAILCONFIRMED will be true for any
+ * user who has provided an e-mail address.
+ */
+$wgAutopromote = array(
+	'autoconfirmed' => array( '&',
+		array( APCOND_EDITCOUNT, &$wgAutoConfirmCount ),
+		array( APCOND_AGE, &$wgAutoConfirmAge ),
+	),
+	'emailconfirmed' => APCOND_EMAILCONFIRMED,
+);
 
 /**
  * These settings can be used to give finer control over who can assign which

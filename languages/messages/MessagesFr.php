@@ -465,7 +465,7 @@ Si vous n’êtes pas l’auteur de cette demande, ou si vous vous souvenez à p
 Avant qu’un autre courriel ne soit envoyé à ce compte, vous devrez suivre les instructions du courriel et confirmer que le compte est bien le vôtre.',
 'throttled-mailpassword'     => 'Un courriel de rappel de votre mot de passe a déjà été envoyé durant les $1 dernières heures. Afin d’éviter les abus, un seul courriel de rappel sera envoyé en $1 heures.',
 'mailerror'                  => 'Erreur en envoyant le courriel : $1',
-'acct_creation_throttle_hit' => 'Désolé, vous avez déjà créé $1 comptes. Vous ne pouvez pas en créer de nouveaux.',
+'acct_creation_throttle_hit' => 'Désolé, vous avez déjà créé {{PLURAL:$1|$1 compte|$1 comptes}}. Vous ne pouvez pas en créer de nouveaux.',
 'emailauthenticated'         => 'Votre adresse de courriel a été authentifiée le $1.',
 'emailnotauthenticated'      => 'Votre adresse de courriel n’est <strong>pas encore authentifiée</strong>. Aucun courriel ne sera envoyé pour chacune des fonctions suivantes.',
 'noemailprefs'               => '<strong>Aucune adresse électronique n’a été indiquée,</strong> les fonctions suivantes ne seront pas disponibles.',
@@ -589,7 +589,7 @@ Votre adresse IP est $3 et votre identifiant de blocage est #$5. Veuillez les pr
 ''L’HTML brut étant activé sur ce wiki, la prévisualisation a été masquée afin de prévenir une attaque par JavaScript.''
 
 <strong>Si la tentative de modification était légitime, veuillez réessayer. Si cela échoue à nouveau, veuillez vous déconnecter, puis vous reconnecter.</strong>",
-'token_suffix_mismatch'     => '<strong>Votre édition n’a été acceptée car votre navigateur a mélangé les caractères de ponctuation dans l’identifiant d’édition. L’édition a été rejetée afin d’empêcher la corruption du texte de l’article. Ce problème se produit lorsque vous utilisez un mandataire anonyme problématique.</strong>',
+'token_suffix_mismatch'     => '<strong>Votre modification n’a pas été acceptée car votre navigateur Web a mélangé les caractères de ponctuation dans l’identifiant d’édition. La modification a été rejetée afin d’empêcher la corruption du texte de l’article. Ce problème se produit lorsque vous utilisez un mandataire anonyme problématique.</strong>',
 'editing'                   => 'Modification de $1',
 'editinguser'               => 'Modification de $1',
 'editingsection'            => 'Modification de $1 (section)',
@@ -606,10 +606,9 @@ Vous nous promettez aussi que vous avez écrit ceci vous-même, ou que vous l’
 'copyrightwarning2'         => "Toutes les contributions à {{SITENAME}} peuvent être modifiées ou supprimées par d’autres utilisateurs. Si vous ne désirez pas que vos écrits soient modifiés et distribués à volonté, merci de ne pas les soumettre ici.<br />
 Vous nous promettez aussi que vous avez écrit ceci vous-même, ou que vous l’avez copié d’une source provenant du domaine public, ou d’une ressource libre. (voir $1 pour plus de détails).
 <strong>N’UTILISEZ PAS DE TRAVAUX SOUS DROIT D'AUTEUR SANS AUTORISATION EXPRESSE !</strong>",
-'longpagewarning'           => "'''AVERTISSEMENT : cette page a une longueur de $1 Kio ;
-certains navigateurs gèrent mal la modification des pages approchant ou dépassant 32 Kio.
-Peut-être devriez-vous diviser la page en sections plus petites.'''",
-'longpageerror'             => '<strong>ERREUR : Le texte que vous avez soumis fait $1 Kio, ce qui dépasse la limite fixée à $2 Kio. Le texte ne peut pas être sauvé.</strong>',
+'longpagewarning'           => "'''AVERTISSEMENT : cette page a une longueur de $1 kio ;
+certains navigateurs Web gèrent mal la modification des pages approchant ou dépassant 32 kio. Peut-être devriez-vous diviser la page en sections plus petites.'''",
+'longpageerror'             => '<strong>ERREUR : Le texte que vous avez soumis fait $1 kio, ce qui dépasse la limite fixée à $2 kio. Le texte ne peut pas être sauvegardé.</strong>',
 'readonlywarning'           => "'''AVERTISSEMENT : La base de données a été verrouillée pour maintenance,
 vous ne pourrez donc pas sauvegarder vos modifications maintenant. Vous pouvez copier le texte dans un fichier texte et le sauver pour plus tard.'''",
 'protectedpagewarning'      => "'''AVERTISSEMENT : cette page est protégée.
@@ -843,6 +842,8 @@ $2 Inclure les pages de redirection<br /> Rechercher $3 $9',
 'userrights-available-none'   => 'Vous ne pouvez pas changer l’appartenance aux différents groupes.',
 'userrights-available-add'    => 'Vous pouvez ajouter des utilisateurs à $1.',
 'userrights-available-remove' => 'Vous pouvez enlever des utilisateurs de $1.',
+'userrights-no-interwiki'     => "Vous n'êtes pas habilité pour modifier les droits des utilisateurs sur d'autres wikis.",
+'userrights-nodatabase'       => "La base de donnée « $1 » n'existe pas ou n'est pas en local.",
 
 # Groups
 'group'               => 'Groupe :',
@@ -993,7 +994,7 @@ Vous devriez considérer s'il est opportun de continuer l'import de ce fichier. 
 
 # Image list
 'imagelist'                 => 'Liste des images',
-'imagelisttext'             => "Voici une liste de '''$1''' {{plural:$1|fichier|fichiers}} classées $2.",
+'imagelisttext'             => "Voici une liste de '''$1''' {{PLURAL:$1|fichier|fichiers}} classée $2.",
 'getimagelist'              => 'Récupération de la liste des images',
 'ilsubmit'                  => 'Chercher',
 'showlast'                  => 'Afficher les $1 dernières images classées $2.',
@@ -1261,7 +1262,7 @@ Les prochaines modifications de cette page et de la page de discussion associée
 'watchmethod-recent'   => 'vérification des modifications récentes des pages suivies',
 'watchmethod-list'     => 'vérification des pages suivies pour des modifications récentes',
 'watchlistcontains'    => "Votre liste de suivi contient '''$1''' {{PLURAL:$1|page|pages}}.",
-'iteminvalidname'      => 'Problème avec l’article « $1 » : le nom est invalide...',
+'iteminvalidname'      => 'Problème avec l’article « $1 » : le nom est invalide.',
 'wlnote'               => 'Ci-dessous se {{PLURAL:$1|trouve la dernière modification|trouvent les $1 dernières modifications}} depuis {{PLURAL:$2|la dernière heure|les <b>$2</b> dernières heures}}.',
 'wlshowlast'           => 'Montrer les dernières $1 heures, les derniers $2 jours, ou $3.',
 'watchlist-show-bots'  => 'Afficher les contributions de bots',
@@ -1498,7 +1499,7 @@ Donnez ci-dessous une raison précise (par exemple en indiquant les pages qui on
 'ipbenableautoblock'          => 'Bloquer automatiquement les adresses IP utilisées par cet utilisateur',
 'ipbsubmit'                   => 'Bloquer cet utilisateur',
 'ipbother'                    => 'Autre durée',
-'ipboptions'                  => '2 heures:2 hours,1 jour:1 day,3 jours:3 days,1 semaine:1 week,2 semaines:2 weeks,1 mois:1 month,3 mois:3 months,6 mois:6 months,1 an:1 year,indéfiniment:infinite',
+'ipboptions'                  => '2 heures:2 hours,1 jour:1 day,3 jours:3 days,1 semaine:1 week,2 semaines:2 weeks,1 mois:1 month,3 mois:3 months,6 mois:6 months,1 an:1 year,indéfiniment:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'autre',
 'ipbotherreason'              => 'Motif différent ou supplémentaire',
 'ipbhidename'                 => 'Masquer le nom d’utilisateur ou l’IP du log de blocage, de la liste des blocages actifs et de la liste des utilisateurs',
@@ -1872,7 +1873,7 @@ Les autres liens sur la même ligne sont considérés comme des exceptions, par 
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength',
+* focallength', # Do not translate list items
 
 # EXIF tags
 'exif-imagewidth'                  => 'Largeur',
