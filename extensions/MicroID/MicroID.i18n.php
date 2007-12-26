@@ -52,3 +52,10 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'tog-microid' => 'Publicar un <a href="http://microid.org/">MicroID</a> en vista de confirmar vòstra identitat alprèp de servicis extèrnes',
 );
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'tog-microid' => 'Fereepentelkje ne <a href="http://microid.org/">MicroID</a>, uum dät Benutserkonto truch n externen Service tou bestäätigjen.',
+);

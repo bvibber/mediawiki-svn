@@ -108,11 +108,12 @@ $wgMathStatFunctionsMessages['pms'] = array(
 
 /** Russian (Русский)
  * @author VasilievVV
+ * @author .:Ajvol:.
  */
 $wgMathStatFunctionsMessages['ru'] = array(
 	'msfunc_nan'      => 'Результат не является числом',
 	'msfunc_inf'      => 'Результат является бесконечностью',
-	'msfunc_div_zero' => 'Деление на нуль',
+	'msfunc_div_zero' => 'Деление на ноль',
 );
 
 $wgMathStatFunctionsMessages['sr-ec'] = array(
@@ -120,33 +121,49 @@ $wgMathStatFunctionsMessages['sr-ec'] = array(
         'msfunc_inf' => "Резултат је бесконачан" ,
         'msfunc_div_zero' => "Дељиво са нулом",
 );
+
 $wgMathStatFunctionsMessages['sr-el'] = array(
         'msfunc_nan' => "Rezultat nije broj" ,
         'msfunc_inf' => "Rezultat je beskonačan" ,
         'msfunc_div_zero' => "Deljivo sa nulom",
 );
+
 $wgMathStatFunctionsMessages['sr'] = $wgMathStatFunctionsMessages['sr-ec'];
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$wgMathStatFunctionsMessages['stq'] = array(
+	'msfunc_nan'      => 'Resultoat is neen Taal',
+	'msfunc_inf'      => 'Resultoatwäid is uuneendelk',
+	'msfunc_div_zero' => 'Division truch Nul',
+);
+
 $wgMathStatFunctionsMessages['yue'] = array(
         'msfunc_nan' => "結果唔係個數" ,
         'msfunc_inf' => "結果數值係無限" ,
         'msfunc_div_zero' => "除以零",
 );
+
 $wgMathStatFunctionsMessages['zh-hans'] = array(
         'msfunc_nan' => "结果数值不是一个数字" ,
         'msfunc_inf' => "结果数值是无限" ,
         'msfunc_div_zero' => "除以零",
 );
+
 $wgMathStatFunctionsMessages['zh-hant'] = array(
         'msfunc_nan' => "結果數值不是一個數字" ,
         'msfunc_inf' => "結果數值是無限" ,
         'msfunc_div_zero' => "除以零",
 );
+
 $wgMathStatFunctionsMessages['zh'] = $wgMathStatFunctionsMessages['zh-hans'];
 $wgMathStatFunctionsMessages['zh-cn'] = $wgMathStatFunctionsMessages['zh-hans'];
 $wgMathStatFunctionsMessages['zh-hk'] = $wgMathStatFunctionsMessages['zh-hant'];
 $wgMathStatFunctionsMessages['zh-sg'] = $wgMathStatFunctionsMessages['zh-hans'];
 $wgMathStatFunctionsMessages['zh-tw'] = $wgMathStatFunctionsMessages['zh-hant'];
 $wgMathStatFunctionsMessages['zh-yue'] = $wgMathStatFunctionsMessages['yue'];
+
 $wgMathStatFunctionsMagic['en'] = array(
         'const'         => array( 0, 'const' ),
         'median'        => array( 0, 'median' ),

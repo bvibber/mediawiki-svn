@@ -1200,19 +1200,30 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'grouppage-steward' => '{{ns:project}}:stjuardi',
 ),
 
+/** Seeltersk (Seeltersk)
+ * @author Maartenvdbent
+ * @author Pyt
+ */
 'stq' => array(
-	'makesysoptitle' => 'Moake n Benutser tou n Administrator',
-	'makesysoptext' => 'Disse Maske wäd fon Bürokraten benutsed, uum normoale Benutsere tou Administratore tou moakjen.',
-	'makesysopname' => 'Noome fon dän Benutser:',
-	'makesysopsubmit' => 'Moake dissen Benutser tou n Administrator',
-	'makesysopok' => '<b>Benutser "$1" is nu n Administrator.</b>',
-	'makesysopfail' => '<b>Benutser "$1" kuude nit tou n Administrator moaked wäide. (Hääbe Jie dän Noome gjucht schrieuwen?)</b>',
-	'setbureaucratflag' => 'Moak Benutser uk toun Bürokrat',
-	'rights' => 'Gjuchte:',
-	'set_user_rights' => 'Benutsergjuchte sätte',
-	'user_rights_set' => '<b>Benutsergjuchte foar "$1" aktualisierd</b>',
-	'set_rights_fail' => '<b>Do Benutsergjuchte foar "$1" kuuden nit sät  wäide. (Hääst du dän Noome gjucht ienroat?)</b>',
-	'makesysop' => 'Moak n Benutser tou Administrator',
+	'makesysoptitle'       => 'Moake n Benutser tou n Administrator',
+	'makesysoptext'        => 'Disse Maske wäd fon Bürokraten benutsed, uum normoale Benutsere tou Administratore tou moakjen.',
+	'makesysopname'        => 'Noome fon dän Benutser:',
+	'makesysopsubmit'      => 'Moake dissen Benutser tou n Administrator',
+	'makesysopok'          => '<b>Benutser "$1" is nu n Administrator.</b>',
+	'makebureaucratok'     => '<b>Benutser „$1“ is nu n Bürokroat.</b>',
+	'makesysopfail'        => '<b>Benutser "$1" kuude nit tou n Administrator moaked wäide. (Hääbe Jie dän Noome gjucht schrieuwen?)</b>',
+	'setbureaucratflag'    => 'Moak Benutser uk toun Bürokrat',
+	'rights'               => 'Gjuchte:',
+	'set_user_rights'      => 'Benutsergjuchte sätte',
+	'user_rights_set'      => '<b>Benutsergjuchte foar "$1" aktualisierd</b>',
+	'set_rights_fail'      => '<b>Do Benutsergjuchte foar "$1" kuuden nit sät  wäide. (Hääst du dän Noome gjucht ienroat?)</b>',
+	'makesysop'            => 'Moak n Benutser tou Administrator',
+	'already_sysop'        => 'Dissen Benutser is al n Administrator.',
+	'already_bureaucrat'   => 'Dissen Benutser is al n Bürokroat.',
+	'makesysop-nodatabase' => 'Falsken Interwiki-Benutsernoome: $1',
+	'group-steward'        => 'Stewards',
+	'group-steward-member' => 'Steward',
+	'grouppage-steward'    => '{{ns:project}}:Stewards',
 ),
 
 'su' => array(

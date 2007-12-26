@@ -948,6 +948,29 @@ function efMakeBotMessages() {
 	'makebot-search'          => 'Kúhámba',
 ),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+'stq' => array(
+	'makebot'                => 'Botstoatus reeke of ounieme',
+	'makebot-header'         => "'''N Bürokroat fon dit Projekt kon uur Benutsere - in Uureenstimmenenge mäd do lokoale Gjuchtlienjen - [[Help:Bot|Botstoatus]] reeke of ounieme.'''<br /> Mät Botstoatus wäide do Beoarbaidengen fon n Bot-Benuserkonto in do [[Special:Recentchanges|Lääste Annerengen]] un äänelke Liesten ferstat. Ju Botmarkierenge is buutendät nutselk tou ju Fääststaalenge fon automatiske Beoarbaidengen.",
+	'makebot-username'       => 'Benutsernoome:',
+	'makebot-search'         => 'Stoatus oufräigje',
+	'makebot-isbot'          => '„[[User:$1|$1]]“ häd Botstoatus.',
+	'makebot-notbot'         => '„[[User:$1|$1]]“ häd naan Botstoatus.',
+	'makebot-privileged'     => '„[[User:$1|$1]]“ häd [[Special:Listusers/sysop|Administrator- of Bürokratengjuchte]], Botstoatus kon nit roat wäide.',
+	'makebot-change'         => 'Stoatus annerje:',
+	'makebot-grant'          => 'Reeke',
+	'makebot-revoke'         => 'Touräächnieme',
+	'makebot-comment'        => 'Kommentoar:',
+	'makebot-granted'        => '„[[User:$1|$1]]“ häd nu Botstoatus.',
+	'makebot-revoked'        => '„[[User:$1|$1]]“ häd naan Botstoatus moor.',
+	'makebot-logpage'        => 'Botstoatus-Logbouk',
+	'makebot-logpagetext'    => 'Dit Logbouk protokolliert aal [[Help:Bot|Botstoatus]]-Annerengen.',
+	'makebot-logentrygrant'  => 'roate Botstoatus foar „[[$1]]“',
+	'makebot-logentryrevoke' => 'hoalde dän Botstoatus fon „[[$1]]“ wäch',
+),
+
 /* Sundanese (Kandar via BetaWiki) */
 'su' => array(
 	'makebot'                 => 'Leler atawa cabut status bot',

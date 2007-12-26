@@ -125,6 +125,14 @@ function efMediaFunctionsMessages() {
 	'mediafunctions-not-exist'     => '«$1» не существует',
 ),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+'stq' => array(
+	'mediafunctions-invalid-title' => '„$1“ is naan gultigen Noome',
+	'mediafunctions-not-exist'     => '„$1“ bestoant nit',
+),
+
 'yue' => array(
 	'mediafunctions-invalid-title' => '"$1" 唔係一個有效嘅標題',
 	'mediafunctions-not-exist'     => '"$1" 唔存在',

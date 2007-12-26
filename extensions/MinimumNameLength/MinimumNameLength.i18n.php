@@ -123,6 +123,13 @@ function efMinimumNameLengthMessages() {
 	'minnamelength-error' => 'Vaše používateľské meno je príliš krátke. Minimálna dĺžka je $1.',
 ),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+'stq' => array(
+	'minnamelength-error' => 'Die Benutsernoome is tou kuut. Ju minimoale Loangte is $1 Teekene.',
+),
+
 'su' => array(
 	'minnamelength-error' => 'Landihan anjeun pondok teuing. Paling henteu kudu $1.',
 ),

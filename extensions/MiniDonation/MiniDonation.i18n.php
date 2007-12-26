@@ -103,13 +103,24 @@ $wgMiniDonationMessages['sr-ec'] = array(
 $wgMiniDonationMessages['sr-el'] = array(
 	'donationform-submit' => 'Donirajte PayPal',
 );
+
 $wgMiniDonationMessages['sr'] = $wgMiniDonationMessages['sr-ec'];
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$wgMiniDonationMessages['stq'] = array(
+	'donationform-submit' => 'Spändje uur PayPal',
+);
+
 $wgMiniDonationMessages['yue'] = array(
 	'donationform-submit' => '透過PayPal捐款',
 );
+
 $wgMiniDonationMessages['zh-hans'] = array(
 	'donationform-submit' => '经PayPal捐款',
 );
+
 $wgMiniDonationMessages['zh-hant'] = array(
 	'donationform-submit' => '經PayPal捐款',
 );

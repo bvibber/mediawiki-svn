@@ -428,10 +428,15 @@ function efInputBoxMessages() {
 	'createarticle' => 'Adrats articlu',
 ),
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
 'ru' => array(
-	'tryexact'       => 'Строгий поиск',
-	'searchfulltext' => 'Полнотекстовый поиск',
-	'createarticle'  => 'Создать статью',
+	'inputbox-error-no-type'  => 'Вы не указали тип создаваемого поля ввода.',
+	'inputbox-error-bad-type' => 'Неизвестный тип поля ввода «$1». Пожалуйста, укажите один из допустимых типов: «create», «comment», «search» или «search2».',
+	'tryexact'                => 'Строгий поиск',
+	'searchfulltext'          => 'Полнотекстовый поиск',
+	'createarticle'           => 'Создать статью',
 ),
 
 'sd' => array(

@@ -338,6 +338,22 @@ function efImageMapMessages() {
 	'imagemap_description'          => 'Sobre esta imagem',
 ),
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+'ru' => array(
+	'imagemap_no_image'           => '&lt;imagemap&gt;: в первой строке должно быть задано изображение',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: неверное или отсутствующее изображение',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: неверная ссылка в конце строки $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: неверный заголовок ссылки в строке $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: недостаточно координат для фигуры в строке $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: неопознанная фигура в строке $1, каждая строка должна начинаться одним из ключевых слов: default, rect, circle или poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: должна быть указана хотя бы одна область',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: ошибочная координата в строке $1, ожидается число',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: ошибочное значение desc, ожидается одно из следующих значений: <tt>$1</tt>',
+	'imagemap_description'        => 'Описание изображения',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: musí mať na prvom riadku uvedený obrázok',

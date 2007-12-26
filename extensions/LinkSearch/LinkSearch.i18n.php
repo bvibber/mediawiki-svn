@@ -343,6 +343,20 @@ $wgLinkSearchMessages['sr'] = array(
 $wgLinkSearchMessages['ss'] = array(
 	'linksearch-ok'    => 'Kucálata',
 );
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$wgLinkSearchMessages['stq'] = array(
+	'linksearch'       => 'Webferbiendenge-Säike',
+	'linksearch-pat'   => 'Säikmuster:',
+	'linksearch-ns'    => 'Noomensruum:',
+	'linksearch-ok'    => 'Säike',
+	'linksearch-text'  => 'Disse Spezialsiede moaket ju Säike muugelke ätter Sieden, in do bestimde Webferbiendengen äntheelden sunt. Deerbie konne Wildcards as biespilswiese <tt>*.example.com</tt> benutsed wäide.<br />Unnerstutsede Protokolle: <tt>$1</tt>',
+	'linksearch-line'  => '$1 is ferlinked fon $2',
+	'linksearch-error' => 'Wildcards konnen bloot an dän Ounfang fon ju URL ferwoand wäide.',
+);
+
 $wgLinkSearchMessages['sv'] = array(
 	'linksearch'       => 'Sök webblänkar',
 	'linksearch-pat'   => 'Sökmönster:',

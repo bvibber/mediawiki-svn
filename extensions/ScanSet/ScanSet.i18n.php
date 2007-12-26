@@ -60,6 +60,24 @@ $messages['fr'] = array(
 	'scanset_prev'                      => '&lt; Précédent',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dnik
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'scanset_no_name'                   => 'SkeniranaKnjiga: Morate zadati naziv skenirane knjige, npr. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'SkeniranaKnjiga: Nevažeća ili nepostojeća skenirana knjiga.',
+	'scanset_unrecognised_index_format' => 'SkeniranaKnjiga: Nepoznat format indeksa',
+	'scanset_opendir_error'             => 'SkeniranaKnjiga: Greška, ne mogu otvoriti direktorij $1',
+	'scanset_no_files'                  => 'SkeniranaKnjiga: Nema datoteka u zadanom direktoriju.',
+	'scanset_no_volumes'                => 'SkeniranaKnjiga: Nisu nađeni direktoriji sa svescima (volumenima)',
+	'scanset_missing_index_file'        => 'SkeniranaKnjiga: Indeksna datoteka $1 nije pronađena',
+	'scanset_index_file_error'          => 'SkeniranaKnjiga: Greška u formatu indeksne datoteke, u retku $1',
+	'scanset_invalid_volume'            => 'Skenirana knjiga: Loš svezak (volumen)',
+	'scanset_next'                      => 'Slijedeći &gt;',
+	'scanset_prev'                      => '&lt; Prethodni',
+);
+
 $messages['hsb'] = array(
 	'scanset_no_name' => 'ScanSet: Dyrbiš mjeno za skanowansku sadźbu podać, na př. &lt;mjeno skanowanskeje sadźby="EB1911" /&gt;',
 	'scanset_invalid_name' => 'ScanSet: Njepłaćiwa abo falowaca skanowanska sadźba.',

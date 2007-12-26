@@ -148,3 +148,20 @@ $messages['oc'] = array(
 	'lookupuser_touched'           => "Enregistrament de l'utilizaire tocat pel darrièr còp : $1",
 	'lookupuser_useroptions'       => "Opcions de l'utilizaire :",
 );
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'lookupuser'                   => 'Benutserinformatione ienkiekje',
+	'lookupuser_intro'             => 'Reek n Benutsernoome ien, uum die do persöönelke Ienstaalengen fon n Benutser antoukiekjen.',
+	'lookupuser_nonexistent'       => 'Failer: Benutser bestoant nit',
+	'lookupuser_authenticated'     => 'E-Mail-Bestäätigenge: $1',
+	'lookupuser_not_authenticated' => 'nit bestäätiged',
+	'lookupuser_id'                => 'Benutser-ID: <tt>#$1</tt>',
+	'lookupuser_email'             => 'E-Mail: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'          => 'Wuddelken Noome: $1',
+	'lookupuser_registration'      => 'Doatum fon ju Registrierenge: $1',
+	'lookupuser_touched'           => 'Benutserkonto toulääst rööged: $1',
+	'lookupuser_useroptions'       => 'Ienstaalengen fon dät Benutserkonto:',
+);

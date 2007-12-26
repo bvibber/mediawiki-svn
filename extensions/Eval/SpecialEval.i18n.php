@@ -80,3 +80,10 @@ $messages['sk'] = array(
 	'eval_out'    => 'Výstup',
 	'eval_code'   => 'Kód',
 );
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'eval_submit' => 'wäidierje',
+);

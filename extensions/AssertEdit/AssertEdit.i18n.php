@@ -92,6 +92,14 @@ $messages['pt'] = array(
 	'assert_edit_message' => 'A asserção especificada ($1) falhou.',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'assert_edit_title'   => 'Утверждение не выполняется',
+	'assert_edit_message' => 'Указанное утверждение ($1) не выполняется.',
+);
+
 $messages['sk'] = array(
 	'assert_edit_title'   => 'Predpoklad zlyhal',
 	'assert_edit_message' => 'Uvedený predpoklad ($1) zlyhal.',
