@@ -11,9 +11,14 @@ class RandomPageInCategory extends SpecialPage {
 	function __construct() {
 		SpecialPage::SpecialPage( 'Randomincategory' );
 	}
-	
+
+	function getDescription() {
+		return wfMsg( 'randomincategory' );
+	}
+
 	function execute( $par ) {
 		global $wgOut, $wgRequest;
+		wfLoadExtensionMessages( 'RandomInCategory' );
 
 		$this->setHeaders();
 		if( is_null( $par ) ) {
@@ -56,7 +61,7 @@ class RandomPageInCategory extends SpecialPage {
 		$this->category = $category->getDBKey();
 		return true;
 	}
-	
+
 	/**
 	 * Choose a random title. Based on Special:Random
 	 * @return Title object (or null if nothing to choose from)
@@ -98,7 +103,7 @@ class RandomPageInCategory extends SpecialPage {
 		$res = $dbr->query( $sql, $fname );
 		return $dbr->fetchObject( $res );
 	}
-	
+
 	public static function getForm( $par = null ) {
 		global $wgScript, $wgTitle, $wgRequest;
 

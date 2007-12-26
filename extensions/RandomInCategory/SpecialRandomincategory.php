@@ -18,9 +18,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'description' => 'Special page to get a random page in category',
 );
 
+$wgExtensionMessagesFiles['RandomInCategory'] = dirname(__FILE__) . '/SpecialRandomincategory.i18n.php';
+
 $wgSpecialPages['Randomincategory'] = 'RandomPageInCategory';
 $wgAutoloadClasses['RandomPageInCategory'] = dirname( __FILE__ ) . '/SpecialRandomincategory.body.php';
-
-$wgExtensionFunctions[] = 'efInitRandomincategoryMessages';
-require_once( dirname( __FILE__ ) . '/SpecialRandomincategory.i18n.php' );
-
