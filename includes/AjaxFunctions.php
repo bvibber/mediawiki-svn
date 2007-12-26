@@ -74,58 +74,78 @@ function code2utf($num){
 }
 
 function wfSajaxSearch( $term ) {
-	global $wgContLang, $wgOut;
+	global $wgContLang, $wgOut, $wgUser;
 	$limit = 16;
+	$sk = $wgUser->getSkin();
 
-	$l = new Linker;
-
+	$term = trim( $term );
 	$term = str_replace( ' ', '_', $wgContLang->ucfirst( 
 			$wgContLang->checkTitleEncoding( $wgContLang->recodeInput( js_unescape( $term ) ) )
 		) );
+	$term_title = Title::newFromText( $term );
 
-	if ( strlen( str_replace( '_', '', $term ) )<3 )
-		return;
+	$r = $more = '';
+	$canSearch = true;
+	if( $term_title && $term_title->getNamespace() != NS_SPECIAL ) {
+		$db = wfGetDB( DB_SLAVE );
+		$res = $db->select( 'page', array( 'page_title', 'page_namespace' ),
+				array(  'page_namespace' => $term_title->getNamespace(),
+					"page_title LIKE '". $db->strencode( $term_title->getDBKey() ) ."%'" ),
+					"wfSajaxSearch",
+					array( 'LIMIT' => $limit+1 )
+				);
 
-	$db = wfGetDB( DB_SLAVE );
-	$res = $db->select( 'page', 'page_title',
-			array(  'page_namespace' => 0,
-				"page_title LIKE '". $db->strencode( $term) ."%'" ),
-				"wfSajaxSearch",
-				array( 'LIMIT' => $limit+1 )
-			);
+		$i = 0;
+		while ( ( $row = $db->fetchObject( $res ) ) && ( ++$i <= $limit ) ) {
+			$nt = Title::newFromText( $row->page_title, $row->page_namespace );
+			$r .= '<li>' . $sk->makeKnownLinkObj( $nt ) . "</li>\n";
+		}
+		if ( $i > $limit ) {
+			$more = '<i>' .  $sk->makeKnownLink( $wgContLang->specialPage( "Allpages" ),
+											wfMsg('moredotdotdot'),
+											"namespace=0&from=" . wfUrlEncode ( $term ) ) .
+				'</i>';
+		}
+	} else if( $term_title && $term_title->getNamespace() == NS_SPECIAL ) {
+		SpecialPage::initList();
+		SpecialPage::initAliasList();
+		$specialPages = array_merge(
+			array_keys( SpecialPage::$mList ),
+			array_keys( SpecialPage::$mAliases )
+		);
 
-	$r = "";
+		foreach( $specialPages as $page ) {
+			if( $wgContLang->uc( $page ) != $page && strpos( $page, $term_title->getText() ) === 0 ) {
+				$r .= '<li>' . $sk->makeKnownLinkObj( Title::newFromText( $page, NS_SPECIAL ) ) . '</li>';
+			}
+		}
 
-	$i=0;
-	while ( ( $row = $db->fetchObject( $res ) ) && ( ++$i <= $limit ) ) {
-		$nt = Title::newFromDBkey( $row->page_title );
-		$r .= '<li>' . $l->makeKnownLinkObj( $nt ) . "</li>\n";
+		$canSearch = false;
 	}
-	if ( $i > $limit ) {
-		$more = '<i>' .  $l->makeKnownLink( $wgContLang->specialPage( "Allpages" ),
-		                                wfMsg('moredotdotdot'),
-		                                "namespace=0&from=" . wfUrlEncode ( $term ) ) .
-			'</i>';
-	} else {
-		$more = '';
+
+	$valid = (bool) $term_title;
+	$term_url = urlencode( $term );
+	$term_diplay = htmlspecialchars( $valid ? $term_title->getFullText() : str_replace( '_', ' ', $term ) );
+	$subtitlemsg = ( $valid ? 'searchsubtitle' : 'searchsubtitleinvalid' );
+	$subtitle = wfMsgWikiHtml( $subtitlemsg, $term_diplay );
+	$html = '<div id="searchTargetHide"><a onclick="Searching_Hide_Results();">'
+		. wfMsgHtml( 'hideresults' ) . '</a></div>'
+		. '<h1 class="firstHeading">'.wfMsgHtml('search')
+		. '</h1><div id="contentSub">'. $subtitle . '</div>';
+	if( $canSearch ) {
+		$html .= '<ul><li>'
+			. $sk->makeKnownLink( $wgContLang->specialPage( 'Search' ),
+						wfMsgHtml( 'searchcontaining', $term_diplay ),
+						"search={$term_url}&fulltext=Search" )
+			. '</li><li>' . $sk->makeKnownLink( $wgContLang->specialPage( 'Search' ),
+						wfMsgHtml( 'searchnamed', $term_diplay ) ,
+						"search={$term_url}&go=Go" )
+			. "</li></ul>";
 	}
-
-	$subtitlemsg = ( Title::newFromText($term) ? 'searchsubtitle' : 'searchsubtitleinvalid' );
-	$subtitle = $wgOut->parse( wfMsg( $subtitlemsg, wfEscapeWikiText($term) ) ); #FIXME: parser is missing mTitle !
-
-	$term = urlencode( $term );
-	$html = '<div style="float:right; border:solid 1px black;background:gainsboro;padding:2px;"><a onclick="Searching_Hide_Results();">'
-		. wfMsg( 'hideresults' ) . '</a></div>'
-		. '<h1 class="firstHeading">'.wfMsg('search')
-		. '</h1><div id="contentSub">'. $subtitle . '</div><ul><li>'
-		. $l->makeKnownLink( $wgContLang->specialPage( 'Search' ),
-					wfMsg( 'searchcontaining', $term ),
-					"search=$term&fulltext=Search" )
-		. '</li><li>' . $l->makeKnownLink( $wgContLang->specialPage( 'Search' ),
-					wfMsg( 'searchnamed', $term ) ,
-					"search=$term&go=Go" )
-		. "</li></ul><h2>" . wfMsg( 'articletitles', $term ) . "</h2>"
-		. '<ul>' .$r .'</ul>'.$more;
+	if( $r ) {
+		$html .= "<h2>" . wfMsgHtml( 'articletitles', $term_diplay ) . "</h2>"
+			. '<ul>' .$r .'</ul>' . $more;
+	}
 
 	$response = new AjaxResponse( $html );
 

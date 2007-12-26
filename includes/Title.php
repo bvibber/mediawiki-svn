@@ -1206,7 +1206,7 @@ class Title {
 					$pt_create_perm = 'protect';
 
 				if ($pt_create_perm == '' || !$user->isAllowed($pt_create_perm)) {
-					$errors[] = array ( 'titleprotected', User::whoIs($pt_by), $pt_reason );
+					$errors[] = array ( 'titleprotected', User::whoIs($pt_user), $pt_reason );
 				}
 			}
 		}
@@ -1253,7 +1253,8 @@ class Title {
 
 	/**
 	 * Is this title subject to title protection?
-	 * @return array An associative array representing any existent title protection.
+	 * @return mixed An associative array representing any existent title
+	 *   protection, or false if there's none.
 	 */
 	public function getTitleProtection() {
 		$dbr = wfGetDB( DB_SLAVE );
@@ -1295,7 +1296,7 @@ class Title {
 					, 'pt_create_perm' => $create_perm
 					, 'pt_timestamp' => Block::encodeExpiry(wfTimestampNow(), $dbw)
 					, 'pt_expiry' => $encodedExpiry
-					, 'pt_by' => $wgUser->getId(), 'pt_reason' => $reason ), __METHOD__  );
+					, 'pt_user' => $wgUser->getId(), 'pt_reason' => $reason ), __METHOD__  );
 		} else {
 			$dbw->delete( 'protected_titles', array( 'pt_namespace' => $namespace,
 				'pt_title' => $title ), __METHOD__ );
@@ -2302,6 +2303,11 @@ class Title {
 		if ( 0 != $newid ) { # Target exists; check for validity
 			if ( ! $this->isValidMoveTarget( $nt ) ) {
 				return 'articleexists';
+			}
+		} else {
+			$tp = $nt->getTitleProtection();
+			if ( $tp and !$wgUser->isAllowed( $tp['pt_create_perm'] ) ) {
+				return 'cantmove-titleprotected';
 			}
 		}
 		return true;

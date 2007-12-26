@@ -227,7 +227,7 @@ a'r [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide Canllaw Defnyddwyr]
 'toolbox'           => 'Blwch offer',
 'userpage'          => 'Gwyliwch tudalen defnyddiwr',
 'projectpage'       => 'Gwyliwch tudalen meta',
-'imagepage'         => 'Gwyliwch tudalen llun',
+'imagepage'         => 'Gweld tudalen y llun',
 'viewhelppage'      => 'Dangos y dudalen gymorth',
 'categorypage'      => 'Dangos tudalen gategori',
 'viewtalkpage'      => 'Gwyliwch sgwrs',
@@ -263,7 +263,7 @@ a'r [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide Canllaw Defnyddwyr]
 'portal'            => 'Porth y Gymuned',
 'portal-url'        => 'Project:Porth y Gymuned',
 'privacy'           => 'Polisi preifatrwydd',
-'sitesupport'       => 'Rhoddion',
+'sitesupport'       => 'Rhoi',
 
 'badaccess'        => 'Gwall caniatâd',
 'badaccess-group0' => 'Ni chaniateir i chi wneud y weithred y ceisiasoch amdani.',
@@ -457,6 +457,7 @@ Rhydd ichi anwybyddu\'r neges hon os mai camgymeriad oedd creu\'r cyfrif.',
 'math_tip'        => 'Fformwla mathemategol (LaTeX)',
 'nowiki_sample'   => 'Mewnosodwch testun di-fformatedig yma',
 'nowiki_tip'      => 'Anwybyddwch fformatiaeth wiki',
+'image_sample'    => 'Enghraifft.jpg',
 'image_tip'       => 'Delwedd mewnosodol',
 'media_sample'    => 'Example.mp3',
 'media_tip'       => 'Cyswllt ffeil media',
@@ -769,8 +770,6 @@ Pob amser sy'n dangos yw amser y gwasanaethwr (UTC).",
 'illegalfilename'             => 'Mae\'r enw ffeil "$1" yn cynnwys nodau sydd wedi\'u gwahardd mewn teitlau tudalennau. Ail-enwch y ffeil ac uwchlwythwch hi eto os gwelwch yn dda.',
 'badfilename'                 => 'Mae enw\'r ffeil wedi\'i newid i "$1".',
 'filetype-badmime'            => "Ni chaniateir uwchlwytho ffeiliau o'r math MIME '$1'.",
-'filetype-badtype'            => "Ni ellir defnyddio'r math '''\".\$1\"''' o ffeil
-: Rhestr o'r mathau o ffeiliau a ganiateir: \$2",
 'filetype-missing'            => "Nid oes gan y ffeil hon estyniad (megis '.jpg').",
 'large-file'                  => "Argymhellir na ddylai ffeil fod yn fwy na $1. Mae'r ffeil hwn yn $2 o faint.",
 'largefileserver'             => "Mae'r ffeil yn fwy na'r hyn mae'r gweinydd yn ei ganiatau.",
@@ -816,15 +815,15 @@ Os yw'r ddelwedd ar ei lawn faint gallwch barhau i'w uwchlwytho. Os na, newidiwc
 
 # Image list
 'imagelist'                 => "Rhestr o'r holl ffeiliau",
-'imagelisttext'             => 'Isod mae rhestr o $1 delweddau wedi trefnu $2.',
+'imagelisttext'             => "Isod mae rhestr o $1 o ddelweddau wedi'u trefnu $2.",
 'getimagelist'              => "wrthi'n cywain y rhestr ffeiliau",
 'ilsubmit'                  => 'Chwilio',
 'showlast'                  => 'Dangos y $1 delweddau olaf wedi trefnu $2.',
 'byname'                    => 'yn ôl enw',
 'bydate'                    => 'yn ôl dyddiad',
 'bysize'                    => 'yn ôl maint',
-'imgdelete'                 => 'difl',
-'imgdesc'                   => 'disg',
+'imgdelete'                 => 'dileu',
+'imgdesc'                   => 'disg.',
 'imgfile'                   => 'ffeil',
 'filehist'                  => 'Hanes y ffeil',
 'filehist-help'             => 'Cliciwch ar ddyddiad/amser i weld y ffeil fel ag yr oedd bryd hynny.',
@@ -953,7 +952,6 @@ Mae gan '''$2''' (neu '''$4%''') ohonynt alluoedd $5.",
 'specialpages'            => 'Erthyglau arbennig',
 'spheading'               => 'Erthyglau arbennig',
 'restrictedpheading'      => 'Tudalennau arbennig cyfyngedig',
-'rclsub'                  => '(i erthyglau cysyllt oddiwrth "$1")',
 'newpages'                => 'Erthyglau newydd',
 'newpages-username'       => 'Enw defnyddiwr:',
 'ancientpages'            => 'Erthyglau hynaf',
@@ -1316,7 +1314,7 @@ Mae'r erthygl \"[[\$1]]\" yn bodoli'n barod. Ydych chi am ddileu'r erthygl er mw
 'delete_and_move_confirm' => "Ie, dileu'r dudalen",
 'delete_and_move_reason'  => "Wedi'i dileu er mwyn symud tudalen arall yn ei lle.",
 'selfmove'                => "Rydych chi'n ceisio symud tudalen dros ben ei hunan, sy'n amhosib.",
-'immobile_namespace'      => "Mae teitl y cyrchfan yn arbennig; ni ellir symud tudalennau i'r parth hwnnw.",
+'immobile_namespace'      => "Mae teitl y dudalen gwreiddiol neu'r cyrchfan yn arbennig; ni ellir symud tudalennau i'r parth hwnnw nag oddi wrtho.",
 
 # Export
 'export'            => 'Allforio tudalennau',
@@ -1344,9 +1342,11 @@ Yn achos yr ail ddewis, mae modd defnyddio cyswllt, e.e. [[{{ns:special}}:Export
 'allmessagesmodified'       => 'Dangos y rhai a ddiwygiwyd yn unig',
 
 # Thumbnails
-'thumbnail-more' => 'Helaethwch',
-'missingimage'   => '<b>Delwedd ar goll</b><br /><i>$1</i>',
-'filemissing'    => 'Ffeil yn eisiau',
+'thumbnail-more'  => 'Helaethwch',
+'missingimage'    => '<b>Delwedd ar goll</b><br /><i>$1</i>',
+'filemissing'     => 'Ffeil yn eisiau',
+'djvu_page_error' => 'Y dudalen DjVu allan o amrediad',
+'djvu_no_xml'     => 'Ddim yn gallu mofyn XML ar gyfer ffeil DjVu',
 
 # Special:Import
 'import'                => 'Mewnforio tudalennau',
@@ -1538,6 +1538,9 @@ $1",
 
 # AJAX search
 'articletitles' => "Erthyglau'n dechrau gyda: ''$1''",
+
+# Multipage image navigation
+'imgmultiparseerror' => "Mae'n ymddangos bod y ffeil delwedd wedi'i lygru neu ei fod yn anghywir, felly nid yw {{SITENAME}} yn gallu mofyn rhestr tudalennau.",
 
 # Table pager
 'ascending_abbrev'  => 'esgynnol',

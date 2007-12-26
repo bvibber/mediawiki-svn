@@ -538,6 +538,7 @@ $1 または他の[[{{int:grouppage-sysop}}|{{int:group-sysop}}]]にこの件に
 'anontalkpagetext'          => "----
 ''これはアカウントをまだ作成していないか、あるいは使っていない匿名利用者のための会話ページです。{{SITENAME}}では匿名利用者の識別は利用者名のかわりにIPアドレスを用います。IPアドレスは何人かで共有されることがあります。もしも、あなたが匿名利用者で無関係なコメントがここに寄せられる場合は、[[Special:Userlogin|アカウントを作成するかログインして]]他の匿名利用者と間違えられないようにしてくださるようお願いします。",
 'noarticletext'             => '現在このページには内容がありません。他のページから[[{{ns:special}}:Search/{{PAGENAME}}|このページタイトルを検索する]]か、[{{fullurl:{{FULLPAGENAME}}|action=edit}} このページを編集]できます。',
+'userpage-userdoesnotexist' => '"$1" という名前のアカウントは登録されていません。このページを編集することが適切かどうか確認してください。',
 'clearyourcache'            => "'''お知らせ:''' 保存した後、ブラウザのキャッシュをクリアする必要があります。
 * '''Mozilla / Firefox / Safari:''' [Shift] を押しながら [再読み込み] をクリック、または [Shift]-[Ctrl]-[R] （Macでは [Cmd]-[Shift]-[R]）
 * '''IE:''' [Ctrl] を押しながら [更新] をクリック、または [Ctrl]-[F5]
@@ -893,8 +894,6 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'illegalfilename'             => 'ファイル名 "$1" にページ・タイトルとして使えない文字が含まれています。ファイル名を変更してからもう一度アップロードしてください。',
 'badfilename'                 => 'ファイル名は "$1" へ変更されました。',
 'filetype-badmime'            => 'MIME タイプ "$1" のファイルのアップロードは許可されていません。',
-'filetype-badtype'            => "'''\".\$1\"''' は非推奨の拡張子です。
-: 推奨されている拡張子の一覧: \$2",
 'filetype-missing'            => 'ファイルに拡張子 (".jpg" など）がありません。',
 'large-file'                  => 'ファイルサイズは $1 バイト以下に抑えることが推奨されています。このファイルは $2 バイトです。',
 'largefileserver'             => 'ファイルが大きすぎます。サーバー設定で許されている最大値を超過しました。',
@@ -1105,7 +1104,6 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'specialpages'            => '特別ページ',
 'spheading'               => '特別ページ',
 'restrictedpheading'      => '制限のある特別ページ',
-'rclsub'                  => '"$1" からリンクされているページ',
 'newpages'                => '新しいページ',
 'newpages-username'       => '利用者名:',
 'ancientpages'            => '更新されていないページ',
@@ -1643,7 +1641,7 @@ $NEWPAGE
 'tooltip-ca-unwatch'              => 'このページをウォッチリストから外す',
 'tooltip-search'                  => 'ウィキ内を検索',
 'tooltip-search-go'               => '入力された文字列と一致する項目がある場合そのページへ移動します',
-'tooltip-search-fulltext'         => '入力されたテキストでページの全文検索を行います',
+'tooltip-search-fulltext'         => '入力された文字列が含まれるページを検索します',
 'tooltip-p-logo'                  => 'メインページ',
 'tooltip-n-mainpage'              => 'メインページに移動',
 'tooltip-n-portal'                => 'このプロジェクトについて、あなたのできることを探す場所です',

@@ -400,7 +400,7 @@ $messages = array(
 'nstab-image'     => 'Bild',
 'nstab-mediawiki' => 'Systemmeddelande',
 'nstab-template'  => 'Mall',
-'nstab-help'      => 'Hjälp',
+'nstab-help'      => 'Hjälpsida',
 'nstab-category'  => 'Kategori',
 
 # Main script and global functions
@@ -468,6 +468,7 @@ $2',
 'namespaceprotected'   => "Du har inte behörighet att redigera sidor i namrymden '''$1'''.",
 'customcssjsprotected' => 'Du har inte behörighet att redigera den här sidan eftersom den innehåller en annan användares personliga inställningar.',
 'ns-specialprotected'  => 'Sidor i namnrymden {{ns:special}} kan inte redigeras.',
+'titleprotected'       => 'Den här sidtiteln har skyddats från att skapas. [[User:$1|$1]] skyddade sidan med motiveringen <i>$2</i>.',
 
 # Login and logout pages
 'logouttitle'                => 'Användarutloggning',
@@ -832,6 +833,7 @@ Andra administratörer på denna wiki kommer fortfarande att kunna läsa det dol
 'searchsubtitle'        => 'Du sökte efter [[:$1]]',
 'searchsubtitleinvalid' => 'För sökbegreppet $1',
 'noexactmatch'          => "'''Det finns ingen sida med titeln \"\$1\".''' Du kan  [[:\$1|skapa denna sida]].",
+'noexactmatch-nocreate' => "'''Det finns ingen sida med titeln \"\$1\".'''",
 'titlematches'          => 'Träffar i sidtitlar',
 'notitlematches'        => 'Det finns ingen sida vars titel överensstämmer med sökordet.',
 'textmatches'           => 'Sidor som innehåller sökordet:',
@@ -994,6 +996,9 @@ $3',
 * '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki>''',
 * '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|alt text]]</nowiki>''' eller
 * '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki>''' om du vill länka direkt till filen.",
+'upload-permitted'            => 'Tillåtna filtyper: $1.',
+'upload-preferred'            => 'Föredragna filtyper: $1.',
+'upload-prohibited'           => 'Förbjudna filtyper: $1.',
 'uploadlog'                   => 'Uppladdningar',
 'uploadlogpage'               => 'Uppladdningslogg',
 'uploadlogpagetext'           => 'Nedan följer en lista med de senaste uppladdade filerna.',
@@ -1009,8 +1014,8 @@ $3',
 'illegalfilename'             => 'Filnamnet "$1" innehåller tecken som inte är tillåtna i sidtitlar. Byt namn på filen och försök ladda upp igen.',
 'badfilename'                 => 'Filens namn har blivit ändrat till "$1".',
 'filetype-badmime'            => 'Uppladdning av filer med MIME-typen "$1" är inte tillåten.',
-'filetype-badtype'            => "'''\".\$1\"''' är en icke önskvärd filtyp
-: Följande filtyper är tillåtna: \$2",
+'filetype-unwanted-type'      => "'''\".\$1\"''' är en oönskad filtyp. Föredragna filtyper är \$2.",
+'filetype-banned-type'        => "'''\".\$1\"''' är inte en tillåten filtyp. Tillåtna filtyper är \$2.",
 'filetype-missing'            => 'Filen saknar ett filnamnsändelse (som ".jpg").',
 'large-file'                  => 'Filer bör inte vara större än $1 bytes, denna är $2 bytes',
 'largefileserver'             => 'Denna fil är större än vad servern ställts in att tillåta.',
@@ -1233,11 +1238,12 @@ Sedan denna wiki startades har sidor visats totalt <b>$3</b> {{PLURAL:$3|gång|g
 'protectedpages'          => 'Skyddade sidor',
 'protectedpagestext'      => 'Följande sidor är skyddade mot redigering eller flyttning.',
 'protectedpagesempty'     => 'Inga sidor är skyddade under de villkoren.',
+'protectedtitles'         => 'Skyddade titlar',
+'protectedtitlesempty'    => 'Just nu finns inga skyddade sidtitlar med de parametrarna.',
 'listusers'               => 'Användarlista',
 'specialpages'            => 'Specialsidor',
 'spheading'               => 'Specialsidor för alla användare',
 'restrictedpheading'      => 'Specialsidor med begränsad åtkomst',
-'rclsub'                  => '(som "$1" länkar till)',
 'newpages'                => 'Nya sidor',
 'newpages-username'       => 'Användare:',
 'ancientpages'            => 'Äldsta sidorna',
@@ -1249,6 +1255,8 @@ med en direkt URL, och kan därför bli listade här trots att de används konti
 'unusedcategoriestext'    => 'Följande kategorier finns men innehåller inga sidor eller underkategorier.',
 'notargettitle'           => 'Inget mål',
 'notargettext'            => 'Du har inte angivit någon sida eller användare att utföra denna funktion på.',
+'pager-newer-n'           => '$1 nyare',
+'pager-older-n'           => '$1 äldre',
 
 # Book sources
 'booksources'               => 'Bokkällor',
@@ -1466,8 +1474,9 @@ Nuvarande skrivskyddsinställning för sidan <strong>$1</strong> är:',
 'pagesize'                    => '(byte)',
 
 # Restrictions (nouns)
-'restriction-edit' => 'Redigering av sidan',
-'restriction-move' => 'Flytt av sidan',
+'restriction-edit'   => 'Redigering av sidan',
+'restriction-move'   => 'Flytt av sidan',
+'restriction-create' => 'Skapande av sidan',
 
 # Restriction levels
 'restriction-level-sysop'         => 'helt låst',
@@ -1530,10 +1539,6 @@ I  [[Special:Log/delete|borttagningsloggen]] kan du hitta information om nyligen
 'month'         => 'Månad:',
 'year'          => 'År:',
 
-'sp-contributions-newest'      => 'Nyaste',
-'sp-contributions-oldest'      => 'Äldsta',
-'sp-contributions-newer'       => '$1 nyare',
-'sp-contributions-older'       => '$1 äldre',
 'sp-contributions-newbies'     => 'Visa endast bidrag från nya konton',
 'sp-contributions-newbies-sub' => 'För nybörjare',
 'sp-contributions-blocklog'    => 'Blockeringslogg',
@@ -1676,6 +1681,7 @@ Notera att sidan '''inte''' kan flyttas om det redan finns en sida under den nya
 'movepage-moved'          => '<big>"$1" har flyttats till "$2"</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'Antingen existerar redan en sida med det namnet, eller så har du valt ett namn som inte är tillåtet. 
 Välj något annat namn istället.',
+'cantmove-titleprotected' => 'Du kan inte flytta sidan till den titeln, eftersom den nya titeln har skyddats från att skapas.',
 'talkexists'              => 'Sidan flyttades, men eftersom en annan diskussionssida redan fanns på destinationen kunde diskussionssidan inte flyttas med. Försök att manuellt sammanfoga de bägge diskusionssidornas innehåll till en sida.',
 'movedto'                 => 'flyttad till',
 'movetalk'                => 'Flytta även diskussionssidan ifall det går.',
@@ -2308,7 +2314,7 @@ Pröva vanlig förhandsgranskning istället.',
 'watchlistedit-normal-legend'  => 'Ta bort titlar från övervakningslistan',
 'watchlistedit-normal-explain' => 'Titlarna i din övervakningslista visas i listan här nedanför. För att
 ta bort en titel, kryssa i rutan intill den och tryck på "Ta bort titlar". Du kan även
-[[Special:Watchlist/raw|redigera listan i textformat]] eller [[Special:Watchlist/clear|tömma listan helt]].',
+[[Special:Watchlist/raw|redigera listan i textformat]].',
 'watchlistedit-normal-submit'  => 'Ta bort titlar',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|1 titel|$1 titlar}} togs bort från övervakningslistan:',
 'watchlistedit-raw-title'      => 'Redigera övervakningslistan som text',

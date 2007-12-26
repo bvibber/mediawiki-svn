@@ -93,6 +93,7 @@ $messages = array(
 'article'        => '文章',
 'newwindow'      => '(在新窗口中打开)',
 'cancel'         => '取消',
+'qbfind'         => '查找',
 'qbedit'         => '编辑',
 'qbpageoptions'  => '页面选项',
 'qbspecialpages' => '特殊页面',
@@ -108,6 +109,7 @@ $messages = array(
 'help'              => '帮助',
 'search'            => '搜寻',
 'searchbutton'      => '搜寻',
+'go'                => '进入',
 'searcharticle'     => '进入',
 'history'           => '页面历史',
 'history_short'     => '历史',
@@ -127,7 +129,7 @@ $messages = array(
 'unprotectthispage' => '解除此页保护',
 'newpage'           => '新建页面',
 'talkpage'          => '讨论此页',
-'talkpagelinktext'  => '对话',
+'talkpagelinktext'  => '讲张',
 'specialpage'       => '特殊页面',
 'personaltools'     => '个人工具',
 'postcomment'       => '发表评论',
@@ -136,6 +138,10 @@ $messages = array(
 'views'             => '查看',
 'toolbox'           => '家生',
 'userpage'          => '查看用户页面',
+'projectpage'       => '查看计划页面',
+'imagepage'         => '查看文物页面',
+'mediawikipage'     => '查看信息页面',
+'templatepage'      => '查看模板页面',
 'viewhelppage'      => '查看帮忙页',
 'categorypage'      => '查看分类页面',
 'viewtalkpage'      => '查看讨论页',
@@ -167,10 +173,10 @@ $messages = array(
 'sitesupport-url'   => 'Project:捐款',
 
 'retrievedfrom'           => '取自“$1”',
-'youhavenewmessages'      => '你有$1（$2）。',
+'youhavenewmessages'      => '侬有$1（$2）。',
 'newmessageslink'         => '新信息',
 'newmessagesdifflink'     => '上次更改',
-'youhavenewmessagesmulti' => '你有新信息在$1',
+'youhavenewmessagesmulti' => '侬有新信息在$1',
 'editsection'             => '编辑',
 'editold'                 => '编辑',
 'editsectionhint'         => '编辑段落: $1',
@@ -232,7 +238,7 @@ $messages = array(
 'userexists'                 => '输入个用户名已经拨人注脱哉。请再选个两样个用户名。',
 'youremail'                  => '电子邮件:',
 'username'                   => '用户名:',
-'uid'                        => '用户名:',
+'uid'                        => '用户号：',
 'yourrealname'               => '真实姓名:',
 'yourlanguage'               => '语言:',
 'yournick'                   => '绰号:',
@@ -244,20 +250,23 @@ $messages = array(
 'loginsuccess'               => "'''倷现在以 \"\$1\" 个身份登录到{{SITENAME}}。 '''",
 'wrongpassword'              => '密码弗对嗄。请倷再试试看。',
 'mailmypassword'             => '电子邮件发送密码',
-'acct_creation_throttle_hit' => '对勿起，你已经建了$1个账号。你不能再建了。',
+'acct_creation_throttle_hit' => '对覅起，侬经建了$1个账号。侬覅能再建了。',
 'emailauthenticated'         => '倷个电子邮箱地址勒拉 $1 验证过哉。',
 'accountcreated'             => '户头开好哉',
 'accountcreatedtext'         => '$1 个户头已经建立哉。',
+'loginlanguagelabel'         => '语言：$1',
 
 # Edit page toolbar
-'bold_sample'   => '黑体文本',
-'bold_tip'      => '黑体文本',
-'italic_sample' => '斜体文字',
-'italic_tip'    => '斜体文字',
-'link_tip'      => '内部链接',
-'headline_tip'  => '2级标题文字',
-'image_tip'     => '嵌入图片',
-'sig_tip'       => '倷个签名搭仔辰光记录',
+'bold_sample'    => '黑体文本',
+'bold_tip'       => '黑体文本',
+'italic_sample'  => '斜体文字',
+'italic_tip'     => '斜体文字',
+'link_sample'    => '链接标题',
+'link_tip'       => '内部链接',
+'extlink_sample' => 'http://www.example.com 链接标题',
+'headline_tip'   => '2级标题文字',
+'image_tip'      => '嵌入图片',
+'sig_tip'        => '倷个签名搭仔辰光记录',
 
 # Edit pages
 'summary'            => '总结',
@@ -268,6 +277,7 @@ $messages = array(
 'showpreview'        => '显示预览',
 'showdiff'           => '显示改动',
 'anoneditwarning'    => "'''警告：''' 倷朆登录。倷个IP地址会拨记录勒该页面个编辑历史里向。",
+'blockednoreason'    => '无给出原因',
 'loginreqtitle'      => '必须登录',
 'loginreqlink'       => '登录',
 'accmailtitle'       => '密码已发送哉。',
@@ -280,7 +290,10 @@ $messages = array(
 'note'               => '<strong>注意：</strong>',
 'previewnote'        => '<strong>该个还只是预览；改动还朆保存！</strong>',
 'editing'            => '正在编辑$1',
+'editingsection'     => '正在编辑$1（段落）',
+'editingcomment'     => '正在编辑$1（评论）',
 'editconflict'       => '编辑冲突: $1',
+'yourtext'           => '侬个文字',
 'editingold'         => '<strong> 注意：倷勒里改动一只已经过期个页面修改。 如果倷保存俚个说话，勒拉该个修改之后个亨白浪当个修改侪会呒拨个。</strong>',
 'template-protected' => '(保护)',
 
@@ -298,6 +311,7 @@ $messages = array(
 'deletedrev'   => '[已删]',
 'histfirst'    => '顶早',
 'histlast'     => '顶晏',
+'historyempty' => '（空）',
 
 # Revision feed
 'history-feed-title' => '校订历史',
@@ -324,8 +338,10 @@ $messages = array(
 'preferences'           => '偏好',
 'mypreferences'         => '我个所欢喜',
 'prefsnologin'          => '朆登录',
+'qbsettings-none'       => '呒',
 'changepassword'        => '改密码',
 'skin'                  => '皮肤',
+'math'                  => '数学公式',
 'datedefault'           => '呒拨偏好',
 'datetime'              => '日脚搭仔辰光',
 'prefs-personal'        => '用户档案',
@@ -351,7 +367,19 @@ $messages = array(
 # User rights
 'userrights-user-editname' => '输入用户名:',
 
+# Groups
+'group-bot'   => '机器人',
+'group-sysop' => '管理员',
+'group-all'   => '（全）',
+
+'group-bot-member'   => '机器人',
+'group-sysop-member' => '管理员',
+
+'grouppage-bot'   => '{{ns:project}}:机器人',
 'grouppage-sysop' => '{{ns:project}}:管理员',
+
+# User rights log
+'rightsnone' => '（呒）',
 
 # Recent changes
 'recentchanges'     => '近段辰光个改动',
@@ -371,6 +399,7 @@ $messages = array(
 'minoreditletter'   => '小',
 'newpageletter'     => '新',
 'boteditletter'     => '机',
+'newsectionsummary' => '/* $1 */ 新段落',
 
 # Recent changes linked
 'recentchangeslinked' => '搭界个改动',
@@ -414,6 +443,10 @@ $messages = array(
 'imgdesc'                   => '描述页',
 'imgfile'                   => '源文件',
 'filehist'                  => '文物历史',
+'filehist-deleteall'        => '全删',
+'filehist-deleteone'        => '删',
+'filehist-revert'           => '恢复',
+'filehist-user'             => '用户',
 'imagelinks'                => '链接',
 'nolinkstoimage'            => '呒拨页面链接到该只文件。',
 'shareduploadwiki-linktext' => '文件描述页面',
@@ -426,6 +459,16 @@ $messages = array(
 'imagelist_size'            => '尺寸 (bytes)',
 'imagelist_description'     => '描述',
 'imagelist_search_for'      => '寻图片名字:',
+
+# File reversion
+'filerevert'        => '恢复$1',
+'filerevert-legend' => '恢复文物',
+'filerevert-submit' => '恢复',
+
+# File deletion
+'filedelete'        => '删除$1',
+'filedelete-legend' => '删除文物',
+'filedelete-submit' => '删除',
 
 # MIME search
 'download' => '下载',
@@ -443,8 +486,10 @@ $messages = array(
 'sitestatstext' => "数据库里向亨白浪当有'''{{PLURAL:$1|一|$1}}'''只页面。 个包括'''讲张页'''，'''{{SITENAME}}'''个说明页，顶少个'''stub'''页，重定向页搭仔别个作兴还弗好算合格内容页面个页面。 弗包括该星个说话，有'''{{PLURAL:$2|一|$2}}'''只作兴是合格个内容页。 亨白浪当上载着 '''$8''' 只文件。",
 'userstatstext' => "亨白浪当有 '''{{PLURAL:$1|1|$1}}''' 个登记户头，搿里向 '''$2''' (或 '''$4%''') 个是 $5。",
 
-'brokenredirects'     => '坏脱个重定向',
-'brokenredirectstext' => '下底个重定向链到弗存在个页面:',
+'brokenredirects'        => '坏脱个重定向',
+'brokenredirectstext'    => '下底个重定向链到弗存在个页面:',
+'brokenredirects-edit'   => '（编辑）',
+'brokenredirects-delete' => '（删除）',
 
 # Miscellaneous special pages
 'unusedimages'         => '弗勒浪使用个文件',
@@ -465,6 +510,9 @@ $messages = array(
 'move'                 => '捅荡',
 'movethispage'         => '捅该只页面',
 
+# Book sources
+'booksources-go' => '转到',
+
 'groups'         => '用户组',
 'alphaindexline' => '$1到$2',
 'version'        => '版本',
@@ -483,6 +531,10 @@ $messages = array(
 'allpagesprev'      => '前头',
 'allpagesnext'      => '下底',
 'allpagesprefix'    => '显示个页面有下底个前缀:',
+'allpages-bad-ns'   => '{{SITENAME}}没有叫做"$1"个名字空间.',
+
+# Special:Listusers
+'listusers-submit' => '显示',
 
 # E-mail user
 'emailuser'     => '发E-mail拨该个用户',
@@ -493,20 +545,32 @@ $messages = array(
 'emailsenttext' => '倷个电子邮件讯息已经拨发送哉。',
 
 # Watchlist
-'watchlist'         => '监控列表',
-'mywatchlist'       => '我个监控列表',
-'nowatchlist'       => '倷个监控列表是空个。',
-'watchnologin'      => '朆登录',
-'addedwatch'        => '加到监控列表哉',
-'addedwatchtext'    => "该个页面 \"[[:\$1]]\" 已经加到侬个[[Special:Watchlist|监控列表]]哉。
+'watchlist'            => '监控列表',
+'mywatchlist'          => '我个监控列表',
+'watchlistfor'         => "（'''$1'''个监控列表）",
+'nowatchlist'          => '倷个监控列表是空个。',
+'watchnologin'         => '朆登录',
+'addedwatch'           => '加到监控列表哉',
+'addedwatchtext'       => "该个页面 \"[[:\$1]]\" 已经加到侬个[[Special:Watchlist|监控列表]]哉。
 将来对该页面个改动搭仔搭界个讲张页个改动会列表垃该面，并且页面会垃拉[[Special:Recentchanges|近段辰光个改变列表]]里向显示成功'''黑体'''，实梗好外加便当拿渠拣出来。假使侬歇仔两日又想拿箇个页面登侬个监控列表里向拿脱个说法，垃侧条里向点击“弗要监控。",
-'removedwatch'      => '登监控列表里向拿脱哉',
-'watch'             => '监控',
-'watchthispage'     => '监控该只页面',
-'unwatch'           => '覅监控',
-'unwatchthispage'   => '停止监控',
-'watchlistcontains' => '倷个监控列表包括{{PLURAL:$1|1|$1}}只页面。',
-'wlshowlast'        => '显示上个 $1 个钟头 $2 日 $3',
+'removedwatch'         => '登监控列表里向拿脱哉',
+'removedwatchtext'     => '"[[:$1]]"已经从侬个监控列表移除。',
+'watch'                => '监控',
+'watchthispage'        => '监控该只页面',
+'unwatch'              => '覅监控',
+'unwatchthispage'      => '停止监控',
+'watchlistcontains'    => '倷个监控列表包括{{PLURAL:$1|1|$1}}只页面。',
+'wlshowlast'           => '显示上个 $1 个钟头 $2 日 $3',
+'watchlist-show-bots'  => '显示机器人个编辑',
+'watchlist-hide-bots'  => '隐藏机器人个编辑',
+'watchlist-show-own'   => '显示我个编辑',
+'watchlist-hide-own'   => '隐藏我个编辑',
+'watchlist-show-minor' => '显示小编辑',
+'watchlist-hide-minor' => '隐藏小编辑',
+
+# Displayed when you click the "watch" button and it's in the process of watching
+'watching'   => '监控……',
+'unwatching' => '解除监控……',
 
 'enotif_newpagetext' => '该个是一只新页面。',
 'changed'            => '改变哉',
@@ -548,7 +612,11 @@ $messages = array(
 # Contributions
 'contributions' => '用户贡献',
 'mycontris'     => '我个贡献',
+'contribsub2'   => '$1个贡献（$2）',
 'uctop'         => '(顶浪)',
+
+'sp-contributions-blocklog' => '查封记录',
+'sp-contributions-username' => 'IP地址或用户名：',
 
 # What links here
 'whatlinkshere' => '链进来点啥',
@@ -556,15 +624,20 @@ $messages = array(
 'isredirect'    => '重定向页面',
 
 # Block/unblock
-'ipaddress'         => 'IP 地址:',
-'ipbreason'         => '理由:',
-'ipbsubmit'         => '封杀该个用户',
-'badipaddress'      => '无效 IP 地址',
-'blocklink'         => '封禁',
-'contribslink'      => '贡献',
-'blocklogpage'      => '封禁日志',
-'blocklogtext'      => '该个是用户封禁搭仔解禁操作个记录。自动封禁个IP地址弗会列勒该答。到[[Special:Ipblocklist|IP 封禁列表]]去看当前生效个封禁列表。',
-'proxyblocksuccess' => '好哉。',
+'blockip'            => '查封用户',
+'ipaddress'          => 'IP 地址:',
+'ipadressorusername' => 'IP地址或用户名：',
+'ipbreason'          => '理由:',
+'ipbreasonotherlist' => '其它原因',
+'ipbsubmit'          => '封杀该个用户',
+'ipbother'           => '其它时间：',
+'badipaddress'       => '无效 IP 地址',
+'infiniteblock'      => '永远',
+'blocklink'          => '封禁',
+'contribslink'       => '贡献',
+'blocklogpage'       => '封禁日志',
+'blocklogtext'       => '该个是用户封禁搭仔解禁操作个记录。自动封禁个IP地址弗会列勒该答。到[[Special:Ipblocklist|IP 封禁列表]]去看当前生效个封禁列表。',
+'proxyblocksuccess'  => '好哉。',
 
 # Move page
 'movepage'                => '页面捅荡',
@@ -586,7 +659,7 @@ $messages = array(
 'pagemovedsub'            => '捅荡成功哉',
 'articleexists'           => '叫该个名字个页面已经勒浪哉，要么倷拣个名字是无效个。请重新拣个名字。',
 'movedto'                 => '捅到',
-'movetalk'                => '捅搭界个对话页面',
+'movetalk'                => '捅搭界个讲张页面',
 '1movedto2'               => '[[$1]]捅到[[$2]]',
 '1movedto2_redir'         => '[[$1]]通过重定向捅到[[$2]]',
 'movelogpage'             => '捅荡记录',
@@ -657,6 +730,9 @@ $messages = array(
 'anonymous' => '{{SITENAME}}浪个匿名用户',
 'and'       => '搭仔',
 
+# Patrol log
+'patrol-log-auto' => '（自动）',
+
 # Image deletion
 'deletedrevision' => '拨删脱个旧修订 $1',
 
@@ -676,6 +752,14 @@ Variants for Chinese language
 
 'exif-componentsconfiguration-0' => '弗存在',
 
+'exif-subjectdistance-value' => '$1米',
+
+'exif-contrast-2' => '高',
+
+# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+'exif-gpsspeed-k' => '公里每小时',
+'exif-gpsspeed-m' => '英里每小时',
+
 # External editor support
 'edit-externally' => '用外部应用程序来编辑该只文件',
 
@@ -684,6 +768,7 @@ Variants for Chinese language
 'imagelistall'     => '所有',
 'watchlistall2'    => '全部',
 'namespacesall'    => '全部',
+'monthsall'        => '全',
 
 # E-mail address confirmation
 'confirmemail'          => '确认电子邮件地址',
@@ -696,6 +781,9 @@ Variants for Chinese language
 
 # Delete conflict
 'confirmrecreate' => "用户[[User:$1|$1]] ([[User talk:$1|讲张]])勒拉倷开始编辑该页面之后拿俚删脱，理由是： : ''$2'' 请拿定章程，倷阿是真个要重建该页面。",
+
+# action=purge
+'confirm_purge_button' => '确定',
 
 # AJAX search
 'searchcontaining' => "搜寻里向有 ''$1'' 个页面。",
@@ -714,5 +802,8 @@ Variants for Chinese language
 # Auto-summaries
 'autoredircomment' => '重定向到 [[$1]]',
 'autosumm-new'     => '新页面：$1',
+
+# Watchlist editor
+'watchlistedit-normal-title' => '编辑监控列表',
 
 );

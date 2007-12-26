@@ -65,10 +65,10 @@ $dateFormats = array(
 
 $messages = array(
 # User preference toggles
-'tog-underline'               => 'Links ongersjtreipe',
-'tog-highlightbroken'         => 'Formatteer gebraoke links <a href="" class="new">op dees meneer</a> (angesj: zoe<a href="" class="internal">?</a>).',
-'tog-justify'                 => 'Paragrafe oetvulle',
-'tog-hideminor'               => 'Verbèrg klein bewirking bie recènte verangeringe',
+'tog-underline'               => 'Links óngersjtriepe',
+'tog-highlightbroken'         => 'Formatteer gebraoke links <a href="" class="new">op dees meneer</a> (angers: zoe<a href="" class="internal">?</a>).',
+'tog-justify'                 => 'Paragrafe oetvölle',
+'tog-hideminor'               => 'Versjtaek klein bewirkinge bie lètste verangeringe',
 'tog-extendwatchlist'         => 'Oetgebreide volglies',
 'tog-usenewrc'                => 'Oetgebreide recènte vervangeringe (neet vuur alle browsers)',
 'tog-numberheadings'          => 'Köpkes automatisch nummere',
@@ -82,7 +82,7 @@ $messages = array(
 'tog-watchcreations'          => "Pazjena's die ich aanmaak automatisch volge",
 'tog-watchdefault'            => "Voog pazjena's die se bewirks toe aan dien volglies",
 'tog-watchmoves'              => "Pazjena's die ich verplaats automatisch volge",
-'tog-watchdeletion'           => "Pazjena's die ich verwieder automatisch volge",
+'tog-watchdeletion'           => "Pazjena's die ich ewegsjaf automatisch volge",
 'tog-minordefault'            => 'Merkeer sjtandaard alle bewirke as klein',
 'tog-previewontop'            => 'Veurvertuun baove bewèrkingsveld tune',
 'tog-previewonfirst'          => 'Preview laote zien bie de iesjte bewirking',
@@ -438,7 +438,7 @@ e-mail óntvange veur alle volgende toepassinge.',
 'summary-preview'           => 'Naokieke samevatting',
 'subject-preview'           => 'Naokieke ongerwerp/kop',
 'blockedtitle'              => 'Gebroeker is geblokkeerd',
-'blockedtext'               => 'Diene gebroekersnaam of IP-adres is geblokkeerd door $1. De opgegaeve raeje:<br />$2<br />De kins veur euverlik kontak opnumme mit de [[Project:Systeemwèrkers|systeemwèrkers]].
+'blockedtext'               => 'Diene gebroekersnaam of IP-adres is geblokkeerd door $1. De opgegaeve raeje:<br />$2<br />De kins veur euverlik kontak opnumme mit de [[{{MediaWiki:Grouppage-sysop}}|systeemwèrkers]].
 
 Your IP address is $3. Please include this address in any queries you make.',
 'autoblockedtext'           => "Dien IP-adres is automatisch geblokkeerd omdet 't gebroek is door 'ne gebroeker, dae is geblokkeerd door $1.
@@ -792,8 +792,6 @@ of veur mediabesjtande:
 'illegalfilename'             => 'De bestandjsnaam "$1" bevat ongeldige karakters. Gaef \'t bestandj \'ne angere naam, en probeer \'t dan opnuuj te uploade.',
 'badfilename'                 => 'De naom van \'t besjtand is verangerd in "$1".',
 'filetype-badmime'            => '\'t Is neet toegestaon om bestenj van MIME type "$1" te uploade.',
-'filetype-badtype'            => "'''\".\$1\"''' is 'n ongewins bestandjsformaat
-:'ne Lies mit toegestaone bestandjsformate: \$2",
 'filetype-missing'            => 'Dit bestandj haet gein extensie (wie ".jpg").',
 'large-file'                  => 'Aanbeveling: maak bestenj neet groter dan $1, dit bestand is $2.',
 'largefileserver'             => "'t Bestandj is groter dan de instelling van de server toestuit.",
@@ -1001,7 +999,6 @@ Op eder raegel vings te de ierste redirectpazjena, de twiede redirectpazjena en 
 'specialpages'            => "Speciaal pazjena's",
 'spheading'               => "Speciaal pazjena's",
 'restrictedpheading'      => "Speciale pagina's met bepèrkte toegank",
-'rclsub'                  => '(van pazjena\'s woe "$1" heen verwiest)',
 'newpages'                => "Nuuj pazjena's",
 'newpages-username'       => 'Gebroekersnaam:',
 'ancientpages'            => 'Artikele die lank neet bewèrk zeen',
@@ -1382,7 +1379,6 @@ Zuug de [[Special:Ipblocklist|lies van geblokkeerde IP-adresse]].',
 'movepage'                => 'Verplaats pazjena',
 'movepagetext'            => "Mit 't óngersjtaond formuleer kans te 'n pazjena verplaatse. De historie van de ouw pazjena zal nao de nuuj mitgaon. De ouwe titel zal automatisch 'ne redirect nao de nuuj pazjena waere. Doe kans 'n pazjena allein verplaatse, es gein pazjena besjteit mit de nuje naam, of es op die pazjena allein 'ne redirect zónger historie sjteit.",
 'movepagetalktext'        => "De biebehurende euverlikpazjena weurt ouch verplaats, mer '''neet''' in de volgende gevalle:
-* es de pazjena nao 'n anger [[Project:Naamruumde|naamruumde]] verplaats weurt
 * es al 'n euverlikpazjena besjteit ónger de angere naam
 * es doe 't óngersjtaond vekske neet aanvinks",
 'movearticle'             => 'Verplaats pazjena',
@@ -1649,13 +1645,13 @@ Alle volgende links die op dezelfde regel staon, waere behanjeld es oetzönjerin
 gebroeks. Klik op de knop hieónger óm e bevèstegingsberich nao dien adres te
 sjikke. D'n e-mail zal 'ne link mèt 'n code bevatte; eupen de link in diene
 browser óm te bevestege dat dien e-mailadres werk.",
-'confirmemail_pending'    => "<div class=\"error\">d'r Is al 'n bevestigingsberich aan dich verzönje. Esse recèntelik diene gebroeker aangemaak höbs, wach dan 'n paar minuut totdet dae aankömp veurdetse opnuuj 'ne e-mail läöts sjture.</div>",
+'confirmemail_pending'    => "<div class=\"error\">Dao is al 'n bevestigingsberich aan dich versjik. Wens te zjus diene gebroeker aangemaak höbs, wach dan e paar minute pès 't aankump veurdets te opnuuj 'n e-mail leuts sjikke.</div>",
 'confirmemail_send'       => "Sjik 'n bevèstegingcode",
 'confirmemail_sent'       => 'Bevèstegingsberich versjik.',
-'confirmemail_oncreate'   => "d'r Is 'ne bevestigingscode nao dien e-mailadres verzönje. Deze code is neet neudig om aan te melde, mèr doe deens deze waal te bevestige veurdetse de e-mailmeugelikhede van deze wiki kins nutte.",
+'confirmemail_oncreate'   => "D'r is 'n bevestigingscode nao dien e-mailadres versjik. Dees code is neet nudig óm aan te melje, meh doe mós dees waal bevestige veurdets te de e-mailmäögelikheite van deze wiki kèns nótse.",
 'confirmemail_sendfailed' => "Kós 't bevèstegingsberich neet versjikke. Zuug dien e-mailadres nao op óngeljige karakters.",
 'confirmemail_invalid'    => 'Óngeljige bevèstigingscode. De code is meugelik verloupe.',
-'confirmemail_needlogin'  => 'Doe deens $1 om dien e-mailadres te bevestige.',
+'confirmemail_needlogin'  => 'Doe mós $1 óm dien e-mailadres te bevestige.',
 'confirmemail_success'    => 'Dien e-mailadres is bevesteg. De kins noe inlogke en van de wiki genete.',
 'confirmemail_loggedin'   => 'Dien e-mailadres is noe vasgelag.',
 'confirmemail_error'      => "Bie 't opsjlaon van eur bevèstiging is get fout gegange.",
@@ -1678,11 +1674,11 @@ blief geljig tot $4",
 
 # Trackbacks
 'trackbackbox'      => "<div id='mw_trackbacks'>
-Trackbacks veur dees pazjena:<br />
+Trackbacks veur deze pazjena:<br />
 $1
 </div>",
-'trackbackremove'   => '([$1 Wisse])',
-'trackbackdeleteok' => 'De trackback is gewis.',
+'trackbackremove'   => ' ([$1 Wusje])',
+'trackbackdeleteok' => 'De trackback is gewusj.',
 
 # Delete conflict
 'deletedwhileediting' => 'Waorsjoewing: dees pazjena is gewis naodats doe bis begós mit bewirke.',
@@ -1703,56 +1699,56 @@ $1',
 'searchcontaining' => "Zeuk nao pazjena's die ''$1'' bevatte.",
 'searchnamed'      => "Zeuk nao pazjena's mit de naam ''$1''.",
 'articletitles'    => "Pazjena's die mit ''$1'' beginne",
-'hideresults'      => 'Verberg resultate',
+'hideresults'      => 'Versjtaek resultate',
 
 # Multipage image navigation
-'imgmultipageprev'   => '← vörge pazjena',
+'imgmultipageprev'   => '← veurige pazjena',
 'imgmultipagenext'   => 'volgende pazjena →',
-'imgmultigo'         => 'Gao!',
-'imgmultigotopre'    => 'Gao nao paasj',
-'imgmultiparseerror' => "'t Aafbeildingsbestandj sjient onzjus te zeen, zodet {{SITENAME}} geine lies van pazjena's kos trökvinje.",
+'imgmultigo'         => 'Gank!',
+'imgmultigotopre'    => 'Gank nao pazjena',
+'imgmultiparseerror' => "'t Aafbeeldingsbesjtandj sjint neet richtig te zeen, zoedet {{SITENAME}} gein lies van pazjena's kós trökvènje.",
 
 # Table pager
 'table_pager_next'  => 'Volgende pazjena',
-'table_pager_prev'  => 'Vörge pazjena',
-'table_pager_first' => 'Irste pazjena',
-'table_pager_last'  => 'Letste pazjena',
-'table_pager_limit' => 'Tuun $1 resultate per pazjena',
+'table_pager_prev'  => 'Veurige pazjena',
+'table_pager_first' => 'Ierste pazjena',
+'table_pager_last'  => 'Lètste pazjena',
+'table_pager_limit' => 'Tuin $1 resultate per pazjena',
 'table_pager_empty' => 'Gein resultate',
 
 # Auto-summaries
 'autosumm-blank'   => 'Pazjena laeggehaold',
 'autosumm-replace' => "Teks vervange mit '$1'",
 'autoredircomment' => 'Verwies door nao [[$1]]',
-'autosumm-new'     => 'Nuuje pazjena: $1',
+'autosumm-new'     => 'Nuje pazjena: $1',
 
 # Live preview
-'livepreview-loading' => 'Läöje…',
-'livepreview-ready'   => 'Läöje… Klaor!',
-'livepreview-failed'  => 'Live veurvertuun misluk!
-Probeer normaal veurvertuun.',
-'livepreview-error'   => 'Verbinje misluk: $1 "$2"
-Probeer normaal veurvertuun.',
+'livepreview-loading' => 'Laje…',
+'livepreview-ready'   => 'Laje… Vaerdig!',
+'livepreview-failed'  => 'Live veurvertuun mislök!
+Probeer normaal veurvertuin.',
+'livepreview-error'   => 'Verbènje mislök: $1 "$2"
+Probeer normaal veurvertuin.',
 
 # Friendlier slave lag warnings
-'lag-warn-normal' => 'Verangeringe die nuujer zeen dan $1 second waere mesjien neet getuund in deze lies.',
-'lag-warn-high'   => "Door 'ne hoge database-servertoeveur zeen wieziginge nuujer dan $1 second meugelik neet besjikbaar in de lies.",
+'lag-warn-normal' => 'Verangeringe die nujer zeen es $1 seconde waere mesjiens neet getuind in dees lies.',
+'lag-warn-high'   => "Door 'ne hoege database-servertoeveur zeen verangeringe nujer es $1 seconde mäögelik neet besjikbaar in de lies.",
 
 # Watchlist editor
-'watchlistedit-numitems'       => "Diene volglies bevat {{PLURAL:$1|1 pazjena|$1 pazjena's}}, exclusief euverlèkpazjena's.",
-'watchlistedit-noitems'        => "Diene volglies bevat gein pazjena's.",
-'watchlistedit-normal-title'   => 'Volglies bewèrke',
-'watchlistedit-normal-legend'  => "Pazjena's verwiedere van diene volglies",
-'watchlistedit-normal-explain' => "Pazjena's op diene volglies waere hiej onger getuund. Klik op 't veerkentje d'rnaeve om 'ne pazjena te verwiedere. Klik dao nao op 'Pazjena's verwiedere'. Doe kins ouch [[{{ns:special}}:Watchlist/raw|de ruwe lies bewèrke]], of [[{{ns:special}}:Watchlist/clear|alle pazjena's verwiedere]].",
-'watchlistedit-normal-submit'  => "Pazjena's verwiedere",
-'watchlistedit-normal-done'    => "{{PLURAL:$1|1 pazjena is|$1 pazjena's zeen}} verwiederd van diene volglies:",
-'watchlistedit-raw-title'      => 'Ruwe volglies bewèrke',
-'watchlistedit-raw-legend'     => 'Ruwe volglies bewèrke',
-'watchlistedit-raw-explain'    => "Hiej onger staon pazjena's op diene volglies. Doe kins de lies bewèrke door pazjena's te verwiedere en toe te voege. Eine pazjena per regel. Esse klaor bös, klik dan op 'Volglies biewerke'. Doe kins ouch [[{{ns:special}}:Watchlist/edit|'t standaard bewerkingssjerm gebroeke]].",
+'watchlistedit-numitems'       => "Op dien volglies sjtaon {{PLURAL:$1|1 pazjena|$1 pazjena's}}, exclusief euverlèkpazjena's.",
+'watchlistedit-noitems'        => "Dao sjtaon gein pazjena's op dien volglies.",
+'watchlistedit-normal-title'   => 'Volglies bewirke',
+'watchlistedit-normal-legend'  => "Pazjena's ewegsjaffe van dien volglies",
+'watchlistedit-normal-explain' => "Pazjena's op dien volglies waere hiejónger getuind. Klik op 't veerkentje d'rnaeve óm 'ne pazjena eweg te sjaffe. Klik daonao op 'Pazjena's ewegsjaffe'. Doe kins ouch [[{{ns:special}}:Watchlist/raw|de roew lies bewirke]], of [[{{ns:special}}:Watchlist/clear|alle pazjena's ewegsjaffe]].",
+'watchlistedit-normal-submit'  => "Pazjena's ewegsjaffe",
+'watchlistedit-normal-done'    => "{{PLURAL:$1|1 pazjena is|$1 pazjena's zeen}} eweggesjaf van dien volglies:",
+'watchlistedit-raw-title'      => 'Roew volglies bewirke',
+'watchlistedit-raw-legend'     => 'Roew volglies bewirke',
+'watchlistedit-raw-explain'    => "Hiejónger sjtaon pazjena's op dien volglies. Doe kins de lies bewirke door pazjena's eweg te sjaffe en toe te voge. Eine pazjena per regel. Wens te vaerdig bis, klik dan op 'Volglies biewirke'. Doe kins ouch [[{{ns:special}}:Watchlist/edit|'t sjtanderd bewirkingssjirm gebroeke]].",
 'watchlistedit-raw-titles'     => "Pazjena's:",
 'watchlistedit-raw-submit'     => 'Volglies biewirke',
 'watchlistedit-raw-done'       => 'Dien volglies is biegewirk.',
-'watchlistedit-raw-added'      => "{{PLURAL:$1|1 pazjena is|$1 pazjena's zeen}} toegevoeg:",
+'watchlistedit-raw-added'      => "{{PLURAL:$1|1 pazjena is|$1 pazjena's zeen}} toegevoog:",
 'watchlistedit-raw-removed'    => "{{PLURAL:$1|1 pazjena is|$1 pazjena's zeen}} eweggesjaf:",
 
 # Watchlist editing tools

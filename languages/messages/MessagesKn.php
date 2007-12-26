@@ -55,6 +55,7 @@ $messages = array(
 'tog-rememberpassword'     => 'ಈ ಗಣಕಯಂತ್ರದಲ್ಲಿ ನನ್ನ ಲಾಗಿನ್ ನೆನಪಿನಲ್ಲಿಟ್ಟುಕೊ',
 'tog-watchcreations'       => 'ನಾನು ಪ್ರಾರಂಭಿಸುವ ಲೇಖನಗಳನ್ನು ನನ್ನ ವೀಕ್ಷಣಾಪಟ್ಟಿಗೆ ಸೇರಿಸು',
 'tog-watchdefault'         => 'ನಾನು ಸಂಪಾದಿಸುವ ಪುಟಗಳನ್ನು ವೀಕ್ಷಣಾಪಟ್ಟಿಗೆ ಸೇರಿಸು',
+'tog-watchmoves'           => 'ನಾನು ಸ್ಥಳಾಂತರಿಸುವ ಪುಟಗಳನ್ನು ನನ್ನ ವೀಕ್ಷಣಾಪಟ್ಟಿಗೆ ಸೇರಿಸು',
 'tog-watchdeletion'        => 'ನಾನು ಅಳಿಸುವ ಪುಟಗಳನ್ನು ನನ್ನ ವೀಕ್ಷಣಾ ಪಟ್ಟಿಗೆ ಸೇರಿಸು',
 'tog-previewonfirst'       => 'ಮೊದಲ ಬದಲಾವಣೆಯ ನಂತರ ಮುನ್ನೋಟವನ್ನು ತೋರಿಸು',
 'tog-enotifwatchlistpages' => 'ನನ್ನ ವೀಕ್ಷಣೆಯಲ್ಲಿರುವ ಪುಟವು ಬದಲಾದಾಗ ನನಗೆ ಇ-ಅಂಚೆ ಕಳುಹಿಸು',
@@ -68,6 +69,8 @@ $messages = array(
 
 'underline-always' => 'ಯಾವಾಗಲೂ',
 'underline-never'  => 'ಎಂದಿಗೂ ಇಲ್ಲ',
+
+'skinpreview' => '(ಮುನ್ನೋಟ)',
 
 # Dates
 'sunday'        => 'ಭಾನುವಾರ',
@@ -262,9 +265,13 @@ $1',
 'badtitle'           => 'ಸರಿಯಿಲ್ಲದ ಹೆಸರು',
 'viewsource'         => 'ಆಕರ ವೀಕ್ಷಿಸು',
 'protectedpagetext'  => 'ಈ ಪುಟವನ್ನು ಸಂಪಾದನೆ ಮಾಡಲಾಗದಂತೆ ಸಂರಕ್ಷಿಸಲಾಗಿದೆ.',
+'titleprotected'     => 'ಈ ಹೆಸರಿನ ಪುಟವನ್ನು ಸೃಷ್ಟಿಸಲಾಗದಂತೆ [[User:$1|$1]] ಅವರು ಸಂರಕ್ಷಿಸಿದ್ದಾರೆ. ಸಂರಕ್ಷಣೆಗೆ ನೀಡಿರುವ ಕಾರಣ: <i>$2</i>.',
 
 # Login and logout pages
 'logouttitle'                => 'ಸದಸ್ಯ ಲಾಗೌಟ್',
+'welcomecreation'            => '== ಸುಸ್ವಾಗತ, $1! ==
+
+ನಿಮ್ಮ ಅಕೌಂಟನ್ನು ಸೃಷ್ಟಿಸಲಾಗಿದೆ. ನಿಮ್ಮ {{SITENAME}} ಇಚ್ಛೆಗಳನ್ನು ಬದಲಾಯಿಸುವುದನ್ನು ಮರೆಯಬೇಡಿ.',
 'yourname'                   => 'ನಿಮ್ಮ ಬಳಕೆಯ ಹೆಸರು',
 'yourpassword'               => 'ನಿಮ್ಮ ಪ್ರವೇಶಪದ',
 'yourpasswordagain'          => 'ಪ್ರವೇಶ ಪದ ಮತ್ತೊಮ್ಮೆ ಟೈಪ್ ಮಾಡಿ',
@@ -280,11 +287,15 @@ $1',
 'createaccountmail'          => 'ಇ-ಅಂಚೆಯ ಮೂಲಕ',
 'badretype'                  => 'ನೀವು ಕೊಟ್ಟ ಪ್ರವೇಶಪದಗಳು ಬೇರೆಬೇರೆಯಾಗಿವೆ.',
 'userexists'                 => 'ನೀವು ನೀಡಿದ ಸದಸ್ಯರ ಹೆಸರು ಆಗಲೆ ಬಳಕೆಯಲ್ಲಿದೆ. ದಯವಿಟ್ಟು ಬೇರೊಂದು ಹೆಸರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.',
+'yourrealname'               => 'ನಿಜ ಹೆಸರು:',
+'yourlanguage'               => 'ಭಾಷೆ:',
 'loginerror'                 => 'ಲಾಗಿನ್ ದೋಷ',
 'loginsuccesstitle'          => 'ಲಾಗಿನ್ ಯಶಸ್ವಿ',
 'loginsuccess'               => 'ನೀವು ಈಗ "$1" ಆಗಿ ವಿಕಿಪೀಡಿಯಕ್ಕೆ ಲಾಗಿನ್ ಆಗಿದ್ದೀರಿ.',
 'nosuchuser'                 => '"$1" ಹೆಸರಿನ ಯಾವ ಸದಸ್ಯರೂ ಇಲ್ಲ.
 ಕಾಗುಣಿತವನ್ನು ಪರೀಕ್ಷಿಸಿ, ಅಥವಾ ಕೆಳಗಿನ ಫಾರ್ಮ್ ಅನ್ನು ಉಪಯೋಗಿಸಿ ಹೊಸ ಸದಸ್ಯತ್ವವನ್ನು ಸೃಷ್ಟಿಸಿ.',
+'wrongpassword'              => 'ತಪ್ಪು ಪ್ರವೇಶ ಪದ ನೀಡಿರುವಿರಿ. ಮತ್ತೊಮ್ಮೆ ಪ್ರಯತ್ನಿಸಿ.',
+'wrongpasswordempty'         => 'ಖಾಲಿ ಪ್ರವೇಶ ಪದವನ್ನು ನೀಡಿರುವಿರಿ. ಮತ್ತೊಮ್ಮೆ ಪ್ರಯತ್ನಿಸಿ.',
 'mailmypassword'             => 'ಹೊಸ ಪ್ರವೇಶ ಪದವನ್ನು ಇ-ಅಂಚೆ ಮೂಲಕ ಕಳುಹಿಸಿ',
 'noemail'                    => 'ಸದಸ್ಯ "$1" ಅವರ ಹೆಸರಿನಲ್ಲಿ ಯಾವ ಇ-ಅಂಚೆ ವಿಳಾಸವೂ ದಾಖಲಾಗಿಲ್ಲ.',
 'passwordsent'               => '"$1" ಅವರ ಹೆಸರಿನಲ್ಲಿ ನೋಂದಾಯಿತವಾದ ಇ-ಅಂಚೆ ವಿಳಾಸಕ್ಕೆ ಹೊಸ ಪ್ರವೇಶಪದವನ್ನು ಕಳುಹಿಸಲಾಗಿದೆ. 
@@ -292,9 +303,13 @@ $1',
 'acct_creation_throttle_hit' => 'ಕ್ಷಮಿಸಿ, ನೀವಾಗಲೇ $1 ಖಾತೆಗಳನ್ನು ತೆರೆದಿದ್ದೀರಿ. ಇನ್ನು ಖಾತೆಗಳನ್ನು ತೆರೆಯಲಾಗುವುದಿಲ್ಲ.',
 'loginlanguagelabel'         => 'ಭಾಷೆ: $1',
 
+# Password reset dialog
+'resetpass_forbidden' => 'ಈ ವಿಕಿಯಲ್ಲಿ ಪ್ರವೇಶಪದಗಳನ್ನು ಬದಲಾಯಿಸುವಂತಿಲ್ಲ.',
+
 # Edit page toolbar
 'bold_sample'     => 'ದಪ್ಪಗಿನ ಅಚ್ಚು',
 'bold_tip'        => 'ದಪ್ಪಗಿನ ಅಚ್ಚು',
+'italic_sample'   => 'ಓರೆ ಅಕ್ಷರಗಳು',
 'link_sample'     => 'ಸಂಪರ್ಕದ ಹೆಸರು',
 'link_tip'        => 'ಆಂತರಿಕ ಸಂಪರ್ಕ',
 'headline_sample' => 'ಶಿರೋಲೇಖ',
@@ -311,6 +326,7 @@ $1',
 'showdiff'                 => 'ಬದಲಾವಣೆಗಳನ್ನು ತೋರಿಸಿ',
 'anoneditwarning'          => "'''ಎಚ್ಚರ:''' ನೀವು ಲಾಗ್ ಇನ್ ಆಗಿಲ್ಲ. ನಿಮ್ಮ ಐಪಿ ವಿಳಾಸವು ಪುಟದ ಸಂಪಾದನೆಗಳ ಇತಿಹಾಸದಲ್ಲಿ ದಾಖಲಾಗುತ್ತದೆ.",
 'blockedtitle'             => 'ಈ ಸದಸ್ಯರನ್ನು ತಡೆ ಹಿಡಿಯಲಾಗಿದೆ.',
+'blockednoreason'          => 'ಯಾವ ಕಾರಣವೂ ನೀಡಲಾಗಿಲ್ಲ',
 'loginreqtitle'            => 'ಲಾಗಿನ್ ಆಗಬೇಕು',
 'accmailtitle'             => 'ಪ್ರವೇಶ ಪದ ಕಳುಹಿಸಲಾಯಿತು.',
 'accmailtext'              => "'$1'ನ ಪ್ರವೇಶ ಪದ $2 ಗೆ ಕಳುಹಿಸಲಾಗಿದೆ",
@@ -350,6 +366,9 @@ $1',
 ಈ ಪುಟವನ್ನು ಸಂಪಾದಿಸಲು ಸಮರ್ಪಕ ಕಾರಣವಿದೆಯೆ ಎಂದು ದಯವಿಟ್ಟು ಆಲೋಚಿಸಿ.
 ಪುಟದ ಅಳಿಸುವಿಕೆ ದಿನಚರಿಯನ್ನು ಈ ಕೆಳಗೆ ನೀಡಲಾಗಿದೆ:",
 
+# Account creation failure
+'cantcreateaccounttitle' => 'ಖಾತೆಯನ್ನು ಸೃಷ್ಟಿಸಲಾಗುತ್ತಿಲ್ಲ',
+
 # History pages
 'nohistory'           => 'ಈ ಪುಟಕ್ಕೆ ಬದಲಾವಣೆಗಳ ಇತಿಹಾಸ ಇಲ್ಲ.',
 'currentrev'          => 'ಈಗಿನ ತಿದ್ದುಪಡಿ',
@@ -369,6 +388,9 @@ $1',
 # Revision feed
 'history-feed-title'       => 'ಬದಲಾವಣೆಗಳ ಇತಿಹಾಸ',
 'history-feed-description' => 'ವಿಕಿಯ ಈ ಪುಟದ ಬದಲಾವಣೆಗಳ ಇತಿಹಾಸ',
+'history-feed-empty'       => 'ನೀವು ಕೋರಿರುವ ಪುಟ ಅಸ್ಥಿತ್ವದಲ್ಲಿ ಇಲ್ಲ.
+ಅದು ವಿಕಿಯಿಂದ ಅಳಿಸಲ್ಪಟ್ಟಿರಬಹುದು ಅಥವ ಪುನರ್ನಾಮಕಾರಣಗೊಂಡಿರಬಹುದು.
+ಸಂಬಂಧಿತ ಹೊಸ ಪುಟಗಳನ್ನು [[Special:Search|ಹುಡುಕಲು ಪ್ರಯತ್ನಿಸಿ]].',
 
 # Revision deletion
 'rev-delundel' => 'ತೋರಿಸು/ಅಡಗಿಸು',
@@ -392,20 +414,23 @@ $1',
 'powersearch'           => 'ಹುಡುಕಿ',
 
 # Preferences page
-'preferences'        => 'ಇಚ್ಛೆಗಳು',
-'mypreferences'      => 'ನನ್ನ ಆಯ್ಕೆಗಳು',
-'prefs-edits'        => 'ಸಂಪಾದನೆಗಳ ಸಂಖ್ಯೆ:',
-'prefsnologin'       => 'ಲಾಗಿನ್ ಆಗಿಲ್ಲ',
-'changepassword'     => 'ಪ್ರವೇಶ ಪದ ಬದಲಾಯಿಸಿ',
-'dateformat'         => 'ದಿನಾಂಕದ ಫಾರ್ಮ್ಯಾಟ್',
-'prefs-rc'           => 'ಇತ್ತೀಚಿನ ಬದಲಾವಣೆಗಳು',
-'saveprefs'          => 'ಉಳಿಸಿ',
-'oldpassword'        => 'ಹಳೆಯ ಪ್ರವೇಶ ಪದ',
-'newpassword'        => 'ಹೊಸ ಪ್ರವೇಶ ಪದ',
-'recentchangescount' => 'ಇತ್ತೀಚೆಗಿನ ಬದಲಾವಣೆಗಳಲ್ಲಿರುವ ವಿಷಯಗಳ ಸಂಖ್ಯೆ',
-'timezonelegend'     => 'ಟೈಮ್ ಝೋನ್',
-'localtime'          => 'ಸ್ಥಳೀಯ ಸಮಯ',
-'allowemail'         => 'ಬೇರೆ ಸದಸ್ಯರಿಂದ ಈ-ಮೈಲ್‍ಗಳನ್ನು ಸ್ವೀಕರಿಸು',
+'preferences'          => 'ಇಚ್ಛೆಗಳು',
+'mypreferences'        => 'ನನ್ನ ಆಯ್ಕೆಗಳು',
+'prefs-edits'          => 'ಸಂಪಾದನೆಗಳ ಸಂಖ್ಯೆ:',
+'prefsnologin'         => 'ಲಾಗಿನ್ ಆಗಿಲ್ಲ',
+'changepassword'       => 'ಪ್ರವೇಶ ಪದ ಬದಲಾಯಿಸಿ',
+'dateformat'           => 'ದಿನಾಂಕದ ಫಾರ್ಮ್ಯಾಟ್',
+'prefs-rc'             => 'ಇತ್ತೀಚಿನ ಬದಲಾವಣೆಗಳು',
+'prefs-watchlist'      => 'ವೀಕ್ಷಣಾಪಟ್ಟಿ',
+'prefs-watchlist-days' => 'ವೀಕ್ಷಣಾಪಟ್ಟಿಯಲ್ಲಿ ತೋರಿಸಲಾಗುವ ಅತ್ಯಂತ ಹೆಚ್ಚು ದಿನಗಳು:',
+'prefs-misc'           => 'ಇತರೆ',
+'saveprefs'            => 'ಉಳಿಸಿ',
+'oldpassword'          => 'ಹಳೆಯ ಪ್ರವೇಶ ಪದ',
+'newpassword'          => 'ಹೊಸ ಪ್ರವೇಶ ಪದ',
+'recentchangescount'   => 'ಇತ್ತೀಚೆಗಿನ ಬದಲಾವಣೆಗಳಲ್ಲಿರುವ ವಿಷಯಗಳ ಸಂಖ್ಯೆ',
+'timezonelegend'       => 'ಟೈಮ್ ಝೋನ್',
+'localtime'            => 'ಸ್ಥಳೀಯ ಸಮಯ',
+'allowemail'           => 'ಬೇರೆ ಸದಸ್ಯರಿಂದ ಈ-ಮೈಲ್‍ಗಳನ್ನು ಸ್ವೀಕರಿಸು',
 
 # User rights
 'userrights-reason' => 'ಬದಲಾವಣೆಗೆ ಕಾರಣ:',
@@ -422,6 +447,7 @@ $1',
 'recentchanges'                     => 'ಇತ್ತೀಚೆಗಿನ ಬದಲಾವಣೆಗಳು',
 'recentchangestext'                 => 'ವಿಕಿಗೆ ಮಾಡಲ್ಪಟ್ಟ ಇತ್ತೀಚಿನ ಬದಲಾವಣೆಗಳನ್ನು ಈ ಪುಟದಲ್ಲಿ ನೀವು ಕಾಣಬಹುದು.',
 'rcnote'                            => 'ಕೊನೆಯ <strong>$2</strong> ದಿನಗಳಲ್ಲಿ ಮಾಡಿದ <strong>$1</strong> ಬದಲಾವಣೆಗಳು ಕೆಳಗಿನಂತಿವೆ.',
+'rcnotefrom'                        => '<b>$2</b> ಇಂದ ಆಗಿರುವ ಬದಲಾವಣೆಗಳು ಕೆಳಗಿವೆ (ಕೊನೆಯ <b>$1</b>ರವರೆಗೆ ತೋರಿಸಲಾಗಿದೆ).',
 'rclistfrom'                        => '$1 ಇಂದ ಪ್ರಾರಂಭಿಸಿ ಮಾಡಲಾದ ಬದಲಾವಣೆಗಳನ್ನು ನೋಡಿ',
 'rcshowhideminor'                   => 'ಚಿಕ್ಕಪುಟ್ಟ ಬದಲಾವಣೆಗಳನ್ನು $1',
 'rcshowhidebots'                    => 'ಬಾಟ್‍ಗಳನ್ನು $1',
@@ -437,7 +463,8 @@ $1',
 'number_of_watching_users_pageview' => '[$1 ವೀಕ್ಷಿಸುತ್ತಿರುವ {{PLURAL:$1|ಸದಸ್ಯ|ಸದಸ್ಯರು}}]',
 
 # Recent changes linked
-'recentchangeslinked' => 'ಸಂಬಂಧಪಟ್ಟ ಬದಲಾವಣೆಗಳು',
+'recentchangeslinked'          => 'ಸಂಬಂಧಪಟ್ಟ ಬದಲಾವಣೆಗಳು',
+'recentchangeslinked-noresult' => 'ಸೂಚಿತ ಕಾಲದಲ್ಲಿ ಸಂಪರ್ಕ ಹೊಂದಿರುವ ಪುಟಗಳಲ್ಲಿ ಯಾವ ಬದಲಾವಣೆಗಳೂ ಇಲ್ಲ.',
 
 # Upload
 'upload'          => 'ಫೈಲ್ ಅಪ್ಲೋಡ್',
@@ -612,22 +639,27 @@ $1',
 'enotif_anon_editor' => 'ಅನಾಮಧೇಯ ಸದಸ್ಯ $1',
 
 # Delete/protect/revert
-'deletepage'        => 'ಪುಟವನ್ನು ಅಳಿಸಿ',
-'confirm'           => 'ಧೃಡಪಡಿಸು',
-'exblank'           => 'ಪುಟ ಖಾಲಿ ಇತ್ತು',
-'confirmdelete'     => 'ಅಳಿಸುವಿಕೆ ಧೃಡಪಡಿಸು',
-'deletesub'         => '("$1" ಅನ್ನು ಅಳಿಸಲಾಗುತ್ತಿದೆ)',
-'confirmdeletetext' => 'ಪುಟ ಅಥವಾ ಚಿತ್ರ ಮತ್ತು ಅದರ ಸಂಪೂರ್ಣ ಇತಿಹಾಸವನ್ನು ನೀವು ಶಾಶ್ವತವಾಗಿ ಅಳಿಸಿಹಾಕುತ್ತಿದ್ದೀರಿ. ಇದನ್ನು ನೀವು ಮಾಡಬಯಸುವಿರಿ, ಇದರ ಪರಿಣಾಮಗಳನ್ನು ಬಲ್ಲಿರಿ, ಮತ್ತು [[{{MediaWiki:Policy-url}}]] ಅನುಸಾರ ಇದನ್ನು ಮಾಡುತ್ತಿದ್ದೀರಿ ಎಂದು ದೃಢಪಡಿಸಿ.',
-'actioncomplete'    => 'ಕಾರ್ಯ ಸಂಪೂರ್ಣ',
-'deletedtext'       => '"$1" ಅನ್ನು ಅಳಿಸಲಾಯಿತು.
+'deletepage'            => 'ಪುಟವನ್ನು ಅಳಿಸಿ',
+'confirm'               => 'ಧೃಡಪಡಿಸು',
+'exblank'               => 'ಪುಟ ಖಾಲಿ ಇತ್ತು',
+'confirmdelete'         => 'ಅಳಿಸುವಿಕೆ ಧೃಡಪಡಿಸು',
+'deletesub'             => '("$1" ಅನ್ನು ಅಳಿಸಲಾಗುತ್ತಿದೆ)',
+'confirmdeletetext'     => 'ಪುಟ ಅಥವಾ ಚಿತ್ರ ಮತ್ತು ಅದರ ಸಂಪೂರ್ಣ ಇತಿಹಾಸವನ್ನು ನೀವು ಶಾಶ್ವತವಾಗಿ ಅಳಿಸಿಹಾಕುತ್ತಿದ್ದೀರಿ. ಇದನ್ನು ನೀವು ಮಾಡಬಯಸುವಿರಿ, ಇದರ ಪರಿಣಾಮಗಳನ್ನು ಬಲ್ಲಿರಿ, ಮತ್ತು [[{{MediaWiki:Policy-url}}]] ಅನುಸಾರ ಇದನ್ನು ಮಾಡುತ್ತಿದ್ದೀರಿ ಎಂದು ದೃಢಪಡಿಸಿ.',
+'actioncomplete'        => 'ಕಾರ್ಯ ಸಂಪೂರ್ಣ',
+'deletedtext'           => '"$1" ಅನ್ನು ಅಳಿಸಲಾಯಿತು.
 ಇತ್ತೀಚೆಗಿನ ಅಳಿಸುವಿಕೆಗಳ ಪಟ್ಟಿಗಾಗಿ $2 ಅನ್ನು ನೋಡಿ.',
-'deletedarticle'    => '"$1" ಅಳಿಸಲಾಯಿತು',
-'deletionlog'       => 'ಅಳಿಸುವಿಕೆ ದಿನಚರಿ',
-'deletecomment'     => 'ಅಳಿಸುವುದರ ಕಾರಣ',
-'protectlogpage'    => 'ಸಂರಕ್ಷಣೆ ದಿನಚರಿ',
-'protectedarticle'  => '"[[$1]]" ಸಂರಕ್ಷಿಸಲಾಗಿದೆ',
-'confirmprotect'    => 'ಸಂರಕ್ಷಣೆ ಧೃಡಪಡಿಸಿ',
-'protectcomment'    => 'ಸಂರಕ್ಷಿಸಲು ಕಾರಣ:',
+'deletedarticle'        => '"$1" ಅಳಿಸಲಾಯಿತು',
+'deletionlog'           => 'ಅಳಿಸುವಿಕೆ ದಿನಚರಿ',
+'deletecomment'         => 'ಅಳಿಸುವುದರ ಕಾರಣ',
+'deletereasonotherlist' => 'ಇತರ ಕಾರಣ',
+'deletereason-dropdown' => '*ಸಾಮಾನ್ಯ ಅಳಿಸುವಿಕೆಯ ಕಾರಣಗಳು
+** ಸಂಪಾದಕರ ಕೋರಿಕೆ
+** ಕೃತಿಸ್ವಾಮ್ಯತೆಯ ಉಲ್ಲಂಘನೆ
+** Vandalism',
+'protectlogpage'        => 'ಸಂರಕ್ಷಣೆ ದಿನಚರಿ',
+'protectedarticle'      => '"[[$1]]" ಸಂರಕ್ಷಿಸಲಾಗಿದೆ',
+'confirmprotect'        => 'ಸಂರಕ್ಷಣೆ ಧೃಡಪಡಿಸಿ',
+'protectcomment'        => 'ಸಂರಕ್ಷಿಸಲು ಕಾರಣ:',
 
 # Restriction levels
 'restriction-level-sysop'         => 'ಪೂರ್ಣವಾಗಿ ಸಂರಕ್ಷಿತ',
@@ -642,13 +674,15 @@ $1',
 'contribsub2'   => '$1 ($2) ಗೆ',
 'uctop'         => ' (ಮೇಲಕ್ಕೆ)',
 
-'sp-contributions-search' => 'ಸಂಪಾದನೆಗಳನ್ನು ಹುಡುಕು',
-'sp-contributions-submit' => 'ಹುಡುಕು',
+'sp-contributions-newbies'     => 'ಹೊಸ ಖಾತೆಗಳ ಕಾಣಿಕೆಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸು',
+'sp-contributions-newbies-sub' => 'ಹೊಸ ಖಾತೆಗಳಿಗೆ',
+'sp-contributions-search'      => 'ಸಂಪಾದನೆಗಳನ್ನು ಹುಡುಕು',
+'sp-contributions-submit'      => 'ಹುಡುಕು',
 
 # What links here
 'whatlinkshere'       => 'ಇಲ್ಲಿಗೆ ಯಾವ ಸಂಪರ್ಕ ಕೂಡುತ್ತದೆ',
 'whatlinkshere-title' => '"$1" ಪುಟಕ್ಕೆ ಸಂಪರ್ಕ ಹೊಂದಿರುವ ಪುಟಗಳು',
-'linklistsub'         => '(ಸ೦ಪರ್ಕಗಳ ಪಟ್ಟಿ)',
+'linklistsub'         => '(ಸಂಪರ್ಕಗಳ ಪಟ್ಟಿ)',
 'linkshere'           => "'''[[:$1]]'''ಗೆ ಈ ಪುಟಗಳು ಸಂಪರ್ಕ ಹೊಂದಿವೆ:",
 'nolinkshere'         => "'''[[:$1]]''' ಗೆ ಯಾವ ಪುಟಗಳೂ ಸಂಪರ್ಕ ಹೊಂದಿಲ್ಲ.",
 'istemplate'          => 'ಸೇರ್ಪಡೆ',
@@ -658,10 +692,13 @@ $1',
 # Block/unblock
 'blockip'            => 'ಈ ಸದಸ್ಯನನ್ನು ತಡೆ ಹಿಡಿಯಿರಿ',
 'ipbreason'          => 'ಕಾರಣ',
+'ipbreasonotherlist' => 'ಇತರ ಕಾರಣ',
 'ipbsubmit'          => 'ಈ ಸದಸ್ಯರನ್ನು ತಡೆಹಿಡಿಯಿರಿ',
+'ipbotheroption'     => 'ಇತರ',
 'blockipsuccesssub'  => 'ತಡೆಹಿಡಿಯುವಿಕೆ ಯಶಸ್ವಿಯಾಯಿತು.',
 'blockipsuccesstext' => '"$1" ಐಪಿ ಸಂಖ್ಯೆಯನ್ನು ತಡೆ ಹಿಡಿಯಲಾಗಿದೆ. <br /> ತಡೆಗಳನ್ನು ಪರಿಶೀಲಿಸಲು [[Special:Ipblocklist|ತಡೆ ಹಿಡಿಯಲಾಗಿರುವ ಐಪಿ ಸಂಖ್ಯೆಗಳ ಪಟ್ಟಿ]] ನೋಡಿ.',
 'ipblocklist'        => 'ಬ್ಲಾಕ್ ಮಾಡಲಾದ ಐಪಿ ವಿಳಾಸಗಳ ಹಾಗೂ ಬಳಕೆಯ ಹೆಸರುಗಳ ಪಟ್ಟಿ',
+'ipblocklist-submit' => 'ಹುಡುಕು',
 'infiniteblock'      => 'ಅನಂತ',
 'blocklink'          => 'ತಡೆ ಹಿಡಿಯಿರಿ',
 'contribslink'       => 'ಕಾಣಿಕೆಗಳು',
@@ -673,8 +710,10 @@ $1',
 'movearticle'     => 'ಪುಟವನ್ನು ಸ್ಥಳಾಂತರಿಸಿ',
 'movenologin'     => 'ಲಾಗಿನ್ ಆಗಿಲ್ಲ',
 'movenologintext' => 'ಪುಟವನ್ನು ಸ್ಥಳಾಂತರಿಸಲು ನೀವು ನೋಂದಾಯಿತ ಸದಸ್ಯರಾಗಿದ್ದು [[Special:Userlogin|ಲಾಗಿನ್]] ಆಗಿರಬೇಕು.',
+'newtitle'        => 'ಈ ಹೊಸ ಶೀರ್ಷಿಕೆಗೆ:',
+'move-watch'      => 'ಈ ಪುಟವನ್ನು ವೀಕ್ಷಿಸು',
 'movepagebtn'     => 'ಪುಟವನ್ನು ಸ್ಥಳಾಂತರಿಸಿ',
-'pagemovedsub'    => 'ಸ್ಥಳಾ೦ತರಿಸುವಿಕೆ ಯಶಸ್ವಿಯಾಯಿತು',
+'pagemovedsub'    => 'ಸ್ಥಳಾಂತರಿಸುವಿಕೆ ಯಶಸ್ವಿಯಾಯಿತು',
 '1movedto2'       => '[[$1]] - [[$2]] ಪುಟಕ್ಕೆ ಸ್ಥಳಾಂತರಿಸಲಾಗಿದೆ',
 '1movedto2_redir' => '[[$1]] - [[$2]] ಪುಟ ರಿಡೈರೆಕ್ಟ್ ಮೂಲಕ ಸ್ಥಳಾಂತರಿಸಲಾಗಿದೆ',
 'movereason'      => 'ಕಾರಣ',
@@ -685,6 +724,9 @@ $1',
 # Namespace 8 related
 'allmessages'         => 'ಸಂಪರ್ಕ ಸಾಧನದ ಎಲ್ಲ ಸಂದೇಶಗಳು',
 'allmessagesmodified' => 'ಬದಲಾವಣೆ ಮಾಡಿದ್ದನ್ನು ಮಾತ್ರ ತೋರಿಸು',
+
+# Thumbnails
+'thumbnail-more' => 'ದೊಡ್ಡದಾಗಿಸು',
 
 # Special:Import
 'import'             => 'ಪುಟಗಳನ್ನು ಅಮದು ಮಾಡಿ',
@@ -712,6 +754,7 @@ $1',
 'anonymous'     => '{{SITENAME}} : ಅನಾಮಧೇಯ ಬಳಕೆದಾರ(ರು)',
 'and'           => 'ಮತ್ತು',
 'othercontribs' => '$1 ರ ಕೆಲಸವನ್ನು ಆಧರಿಸಿ.',
+'siteusers'     => '{{SITENAME}} ಸದಸ್ಯ(ರು) $1',
 'creditspage'   => 'ಪುಟದ ಗೌರವಗಳು',
 
 # Spam protection
@@ -726,6 +769,13 @@ $1',
 'previousdiff' => '← ಹಿಂದಿನ ವ್ಯತ್ಯಾಸ',
 'nextdiff'     => 'ಮುಂದಿನ ವ್ಯತ್ಯಾಸ',
 
+# Special:Newimages
+'noimages' => 'ನೋಡಲು ಏನೂ ಇಲ್ಲ.',
+
+# EXIF tags
+'exif-imagedescription' => 'ಚಿತ್ರದ ಶೀರ್ಷಿಕೆ',
+'exif-copyright'        => 'ಕೃತಿಸ್ವಾಮ್ಯತೆಯನ್ನು ಹೊಂದಿರುವವರು',
+
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'ಎಲ್ಲಾ',
 'imagelistall'     => 'ಎಲ್ಲಾ',
@@ -734,7 +784,9 @@ $1',
 'monthsall'        => 'ಎಲ್ಲಾ',
 
 # E-mail address confirmation
-'confirmemail' => 'ಇ-ಅಂಚೆ ವಿಳಾಸವನ್ನು ಖಾತ್ರಿ ಮಾಡಿ',
+'confirmemail'          => 'ಇ-ಅಂಚೆ ವಿಳಾಸವನ್ನು ಖಾತ್ರಿ ಮಾಡಿ',
+'confirmemail_success'  => 'ನಿಮ್ಮ ಇ-ಅಂಚೆ ವಿಳಾಸ ಖಾತ್ರಿಗೊಂಡಿದೆ. ಈಗ ನೀವು ಲಾಗಿನ್ ಆಗಿ ವಿಕಿಯನ್ನು ಉಪಯೋಗಿಸಬಹುದು.',
+'confirmemail_loggedin' => 'ನಿಮ್ಮ ಇ-ಅಂಚೆ ವಿಳಾಸ ಈಗ ಖಾತ್ರಿಗೊಂಡಿದೆ.',
 
 # Delete conflict
 'deletedwhileediting' => 'ಸೂಚನೆ: ನೀವು ಸಂಪಾದನೆ ಪ್ರಾರಂಭಿಸಿದ ನಂತರ ಈ ಪುಟವನ್ನು ಅಳಿಸಲಾಗಿದೆ!',

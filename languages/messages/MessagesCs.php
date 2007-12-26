@@ -525,6 +525,7 @@ $2',
 'namespaceprotected'   => "Nemáte povoleno editovat stránky ve jmenném prostoru '''$1'''.",
 'customcssjsprotected' => 'Nemáte povoleno editovat tuto stránku, protože obsahuje osobní nastavení jiného uživatele.',
 'ns-specialprotected'  => 'Stránky ve jmenném prostoru {{ns:special}} nelze editovat.',
+'titleprotected'       => 'Stránku s tímto názvem nelze založit, protože název zamknul uživatel [[User:$1|$1]] s odůvodněním: <i>$2</i>.',
 
 # Login and logout pages
 'logouttitle'                => 'Na shledanou!',
@@ -770,7 +771,7 @@ Ujistěte se, že je vhodné pokračovat v editaci stránky.
 Níže vidíte výpis z knihy smazaných stránek pro tuto stránku:",
 
 # "Undo" feature
-'undo-success' => 'Editace byla zrušena. Zkontrolujte a pak potvrďte změny zobrazené níže.',
+'undo-success' => 'Editace může být zrušena. Zkontrolujte a pak potvrďte změny zobrazené níže.',
 'undo-failure' => 'Editace nemohla být zrušena kvůli konfliktu mezilehlých editací.',
 'undo-summary' => 'Zrušena verze $1 od uživatele [[Special:Contributions/$2|$2]] ([[User talk:$2|diskuse]])',
 
@@ -896,6 +897,7 @@ Ujistěte se, že tato změna udrží souvislost a posloupnost verzí v historii
 'searchsubtitle'        => 'Hledáno „[[:$1]]“',
 'searchsubtitleinvalid' => 'Hledáno „$1“',
 'noexactmatch'          => "'''Neexistuje žádná stránka s názvem \"\$1\".''' Můžete ji však [[:\$1|vytvořit]].",
+'noexactmatch-nocreate' => "'''Neexistuje žádná stránka s názvem „$1“.'''",
 'titlematches'          => 'Stránky s odpovídajícím názvem',
 'notitlematches'        => 'Žádné stránky názvem neodpovídají.',
 'textmatches'           => 'Stránky s odpovídajícím textem',
@@ -1077,6 +1079,9 @@ Uvědomte si laskavě, že stejně jako u ostatních wikistránek mohou
 ostatní uživatelé vámi nahraný soubor smazat či upravit, pokud to
 uznají za vhodné; pokud budete tuto funkci zneužívat, může být
 váš uživatelský účet zablokován.',
+'upload-permitted'            => 'Povolené formáty souborů: $1.',
+'upload-preferred'            => 'Upřednostňované formáty souborů: $1.',
+'upload-prohibited'           => 'Zakázané formáty souborů: $1.',
 'uploadlog'                   => 'kniha nahrávek',
 'uploadlogpage'               => 'Kniha nahrávek',
 'uploadlogpagetext'           => 'Níže najdete seznam nejnovějších souborů.',
@@ -1092,8 +1097,8 @@ váš uživatelský účet zablokován.',
 'illegalfilename'             => 'Název souboru "$1" obsahuje znaky, které nejsou povoleny v názvech stránek. Prosím přejmenujte soubor a zkuste jej nahrát znovu.',
 'badfilename'                 => 'Jméno souboru bylo změněno na „$1“.',
 'filetype-badmime'            => 'Není povoleno načítat soubory MIME typu „$1“.',
-'filetype-badtype'            => "'''\".\$1\"''' je nedovolený typ
-: Seznam povolených typů soborů: \$2",
+'filetype-unwanted-type'      => "'''„.$1“''' je nežádoucí formát souborů. Upřednostňované formáty souborů jsou $2.",
+'filetype-banned-type'        => "'''„.$1“''' je nedovolený formát souborů. Povolené formáty souborů jsou $2.",
 'filetype-missing'            => 'Soubor nemá příponu (např. ".jpg").',
 'large-file'                  => 'Doporučuje se, aby délka souboru nepřesahovala $1, tento soubor má $2.',
 'largefileserver'             => 'Velikost tohoto souboru překračuje limit nastavený na serveru.',
@@ -1302,11 +1307,13 @@ Aktuální délka fronty údržby je '''$7'''.",
 'protectedpages'          => 'Zamčené stránky',
 'protectedpagestext'      => 'Následující stránky jsou zamčeny nebo polozamčeny pro editaci nebo přesun:',
 'protectedpagesempty'     => 'Žádná stránka není zamčena s těmito parametry.',
+'protectedtitles'         => 'Zamčené názvy stránek',
+'protectedtitlestext'     => 'Následující názvy jsou zamčeny a nelze na nich zakládat stránky',
+'protectedtitlesempty'    => 'S těmito parametry nejsou zamčeny žádné názvy.',
 'listusers'               => 'Uživatelé',
 'specialpages'            => 'Speciální stránky',
 'spheading'               => 'Speciální stránky pro všechny uživatele',
 'restrictedpheading'      => 'Speciální stránky s omezeným přístupem',
-'rclsub'                  => '(stránek odkazovaných z „$1“)',
 'newpages'                => 'Nejnovější stránky',
 'newpages-username'       => 'Uživatelské jméno:',
 'ancientpages'            => 'Nejdéle needitované stránky',
@@ -1527,8 +1534,9 @@ Současné nastavení pro tuto stránku je: <strong>$1</strong>:',
 'pagesize'                    => '(bajtů)',
 
 # Restrictions (nouns)
-'restriction-edit' => 'editace',
-'restriction-move' => 'přesun',
+'restriction-edit'   => 'editace',
+'restriction-move'   => 'přesun',
+'restriction-create' => 'vytvoření',
 
 # Restriction levels
 'restriction-level-sysop'         => 'zamčeno',
@@ -1724,6 +1732,7 @@ V těchto případech musíte přesunout nebo sloučit stránky manuálně, jest
 'pagemovedsub'            => 'Úspěšně přesunuto',
 'movepage-moved'          => "<big>'''Stránka „$1“ byla přesunuta na „$2“.'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'Takto nazvaná stránka již existuje, nebo Vámi zvolený název je neplatný. Zvolte jiný název.',
+'cantmove-titleprotected' => 'Stránku nelze přesunout na zadané místo, protože název je uzamčen proti vytváření',
 'talkexists'              => 'Stránka byla přesunuta úspěšně, ale diskusní stránka přesunuta být nemohla, neboť pod novým názvem již nějaká stránka existuje. Proveďte prosím ruční sloučení.',
 'movedto'                 => 'přesunuto na',
 'movetalk'                => 'Přesunout také diskusní stránku, existuje-li.',

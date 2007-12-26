@@ -599,7 +599,7 @@ class OutputPage {
 
 			wfRunHooks( 'AjaxAddScript', array( &$this ) );
 
-			if( $wgAjaxSearch ) {
+			if( $wgAjaxSearch && $wgUser->getBoolOption( 'ajaxsearch' ) ) {
 				$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajaxsearch.js?$wgStyleVersion\"></script>\n" );
 				$this->addScript( "<script type=\"{$wgJsMimeType}\">hookEvent(\"load\", sajax_onload);</script>\n" );
 			}
@@ -1345,7 +1345,7 @@ class OutputPage {
 	 * for when rate limiting has triggered.
 	 */
 	public function rateLimited() {
-		global $wgOut;
+		global $wgOut, $wgTitle;
 
 		$this->setPageTitle(wfMsg('actionthrottled'));
 		$this->setRobotPolicy( 'noindex,follow' );

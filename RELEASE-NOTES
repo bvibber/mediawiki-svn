@@ -95,6 +95,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 943) RSS feed for Recentchangeslinked
 * Introduced AbortMove hook
 * (bug 2919) Protection of nonexistent pages with regular protection interface.
+* Special:Upload now lists permitted/prohibited file extensions.
+* Split ambiguous filetype-badtype message into two new messages,
+  filetype-unwanted-type and filetype-banned-type.
+* Added link to the old title in Special:Movepage
+* On Special:Movepage, errors are now more noticeable.
 
 === Bug fixes in 1.12 ===
 
@@ -229,7 +234,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 12148) Text highlight wasn't applied to cleanly deleted and added
   lines in diff output
 * (bug 10166) Fix a PHP warning in Language::getMagic
-* Only mark rollback edits as minor if the user can normally mark edits as minor.
+* Only mark rollback edits as minor if the user can normally mark edits minor
 * Escape page names in the move successful page (e.g. for pages with two
   apostrophes).
 * (bug 12145) Add localized names of kk-variants
@@ -237,6 +242,14 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Set proper page title for successful file deletion
 * (bug 11221) Do not show 'Compare selected versions' button for a history page
   with one revision only
+* (bug 12267) Set the default date format to Thai solar calender for the Thai
+  language
+* (bug 10184) Extensions' stylesheets and scripts should be loaded before
+  user-customized ones (like Common.css, Common.js)
+* (bug 12283) Special:Newpages forgets parameters
+* (bug 12031) All namespaces doesn't work in Special:Newpages
+* Email addresses are now not considered case-sensitive in detecting if
+  a user has changed their email address.
 
 == Parser changes in 1.12 ==
 
@@ -351,6 +364,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Standardized limits. Revisions and Deletedrevisions formerly using 200 / 10000, 
   now 500 / 5000, in line with other modules.
 * Added list=allcategories module
+* (bug 12321) API list=blocks reveals private data
+* Fix output of wfSajaxSearch
 
 === Languages updated in 1.12 ===
 
@@ -381,6 +396,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Min Dong (cdo) (new)
 * Chechen (ce)
 * Cebuano (ceb) (new)
+* Cherokee (chr) (new)
 * Corsican (co) (new)
 * Crimean Tatar (Cyrillic) (crh-cyrl) (new)
 * Crimean Tatar (Latin) (crh-latn) (new)
@@ -390,6 +406,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Welsh (cy)
 * Danish (da)
 * German (de)
+* Zazaki (diq) (new)
 * Lower Sorbian (dsb) (new)
 * Middle Dutch (dum) (new)
 * Divehi (dv)
@@ -404,6 +421,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Persian (fa)
 * Fulah (ff)
 * Võro (fiu-vro)
+* Fijian (fj) (new)
 * Faroese (fo)
 * French (fr)
 * Cajun French (frc)
@@ -411,6 +429,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Frisian (fy)
 * Irish (ga)
 * Gön-gnŷ (gan) (new)
+* Scottish Gaelic (gd) (new)
 * Galician (gl)
 * Gilaki (glk) (new)
 * Ancient Greek (grc) (new)
@@ -493,6 +512,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Teluga (te)
 * Tetun (tet) (new)
 * Tajik (tg)
+* Thai (th)
 * Tagalog (tl) (new)
 * Turkish (tr)
 * Tuvinian (tyv)

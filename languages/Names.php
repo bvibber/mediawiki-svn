@@ -38,10 +38,11 @@
 	'bpy' => 'ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী',	# Bishnupriya Manipuri
 	'br' => 'Brezhoneg',	# Breton
 	'bs' => 'Bosanski',		# Bosnian
+	'bto' => 'Iriga Bicolano',		# Iriga Bicolano/Rinconada Bikol
 	'bug' => 'ᨅᨔ ᨕᨘᨁᨗ',	# Buginese
 	'bxr' => 'Буряад',	# Buryat (Russia)
 	'ca' => 'Català',	# Catalan
-	'cbk-zam' => 'Zamboangueño',	# Zamboanga Chavacano
+	'cbk-zam' => 'Chavacano de Zamboanga',	# Zamboanga Chavacano
 	'cdo' => 'Mìng-dĕ̤ng-ngṳ̄',	# Min Dong
 	'ce' => 'Нохчийн',	# Chechen
 	'ceb' => 'Cebuano',     # Cebuano
@@ -155,8 +156,9 @@
 	'ky' => 'Кыргызча',	# Kirghiz
 	'la' => 'Latina',		# Latin
 	'lad' => 'Ladino',	# Ladino
-	'lbe' => 'Лакку',	# Lak
 	'lb' => 'Lëtzebuergesch',	# Luxemburguish
+	'lbe' => 'Лакку',	# Lak
+	'lez' => 'Лезги',	# Lezgi
 	'lg' => 'Luganda',		# Ganda
 	'li' => 'Limburgs',	# Limburgian
 	'lij' => 'Líguru',	# Ligurian
@@ -169,10 +171,10 @@
 	'lv' => 'Latviešu',	# Latvian
 	'lzz' => 'Lazuri Nena',	#Laz
 	'map-bms' => 'Basa Banyumasan', # Banyumasan 
+	'mdf' => 'мокшень кяль',		# Moksha
 	'mg' => 'Malagasy',		# Malagasy
 	'mh' => 'Ebon',			# Marshallese
 	'mi' => 'Māori',	# Maori
-	'minnan' => 'Bân-lâm-gú', # Min-nan (also zh-min-nan)
 	'mk' => 'Македонски',	# Macedonian
 	'ml' => 'മലയാളം',	# Malayalam
 	'mn' => 'Монгол',	# Mongoloian
@@ -180,7 +182,7 @@
 	'mr' => 'मराठी',	# Marathi
 	'ms' => 'Bahasa Melayu',	# Malay
 	'mt' => 'Malti',	# Maltese
-	'mus' => 'Muscogee',	# Creek, should possibly be Muskogee
+	'mus' => 'Mvskoke',	# Creek/Muscogee
 	'my' => 'Myanmasa',		# Burmese
 	'myv' => 'эрзянь кель',         # Erzya
 	'mzn' => 'مَزِروني',		# Mazandarin
@@ -194,12 +196,14 @@
 	'ne' => 'नेपाली',	# Nepali
 	'new' => 'नेपाल भाषा',		# Newar / Nepal Bhasa
 	'ng' => 'Oshiwambo',		# Ndonga
+	'niu' => 'Niuē',	# Niuean
 	'nl' => 'Nederlands',	# Dutch
 	'nn' => "\xE2\x80\xAANorsk (nynorsk)\xE2\x80\xAC"	,	# Norwegian (Nynorsk)
 	'no' => "\xE2\x80\xAANorsk (bokmål)\xE2\x80\xAC",		# Norwegian
 	'non' => 'Norrǿna',		# Old Norse
 	'nov' => 'Novial',		# Novial
 	'nrm' => 'Nouormand',	# Norman
+	'nso' => 'Sesotho sa Leboa',	# Northern Sotho
 	'nv' => 'Diné bizaad',	# Navajo
 	'ny' => 'Chi-Chewa',	# Chichewa
 	'oc' => 'Occitan',		# Occitan
@@ -211,9 +215,12 @@
 	'pam' => 'Kapampangan',   # Pampanga
 	'pap' => 'Papiamentu',	# Papiamentu
 	'pdc' => 'Deitsch', 	# Pennsylvania German
+	'pdt' => 'Plautdietsch', 	# Plautdietsch/Mennonite Low German
+	'pfl' => 'Pfälzisch', 	# Palatinate German
 	'pi' => 'पािऴ',	# Pali
 	'pih' => 'Norfuk / Pitkern', # Norfuk/Pitcairn/Norfolk
 	'pl' => 'Polski',		# Polish
+	'plm' => 'Palembang',		# Palembang
 	'pms' => 'Piemontèis', 	# Piedmontese
 	'pnt' => 'Ποντιακά', 	# Pontic, aka Pontic Greek
 	'ps' => 'پښتو',	# Pashto
@@ -237,7 +244,7 @@
 	'sdc' => 'Sassarese',	# Sassarese
 	'se' => 'Sámegiella',	# Northern Sami
 	'sei' => 'Cmique Itom',	# Seri
-	'sg' => 'Sängö',		# Sango, possible alternative is Sangho
+	'sg' => 'Sängö',		# Sango/Sangho
 	'sh' => 'Srpskohrvatski / Српскохрватски', # Serbocroatian
 	'shi' => 'Tašlḥiyt',    # Tachelhit
 	'si' => 'සිංහල',	# Sinhalese
@@ -245,6 +252,7 @@
 	'sk' => 'Slovenčina',	# Slovak
 	'sl' => 'Slovenščina',	# Slovenian
 	'sm' => 'Gagana Samoa',	# Samoan
+	'sma' => 'Lullisámegiella',	# Southern Sami
 	'sn' => 'chiShona',		# Shona
 	'so' => 'Soomaaliga',	# Somali
 	'sq' => 'Shqip',		# Albanian
@@ -280,6 +288,7 @@
 	'tw' => 'Twi',			# Twi, (FIXME!)
 	'ty' => 'Reo Mā`ohi',	# Tahitian
 	'tyv' => 'Тыва дыл',	# Tyvan
+	'tzm' => 'ⵜⴰⵎⴰⵣⵉⵖⵜ',	# (Central Morocco) Tamazight
 	'udm' => 'Удмурт',	# Udmurt
 	'ug' => 'Uyghurche‎ / ئۇيغۇرچە',	# Uyghur
 	'uk' => 'Українська',	# Ukrainian
@@ -296,13 +305,13 @@
 	'wuu' => '吴语',		# Wu
 	'xal' => 'Хальмг',		# Kalmyk
 	'xh' => 'isiXhosa',		# Xhosan
+	'ydd' => 'מיזרח־ייִדיש', # Eastern Yiddish
 	'yi' => 'ייִדיש',	# Yiddish
 	'yo' => 'Yorùbá',	# Yoruba
 	'yue' => '粵語', 	# Cantonese -- (bug 8217) yue instead of zh-yue, http://www.sil.org/iso639-3/codes.asp?order=639_3&letter=y
 	'za' => '(Cuengh)',		# Zhuang
 	'zea' => 'Zeêuws',	# Zealandic
 	'zh' => '中文',						# (Zhōng Wén) - Chinese
-	'zh-cfr' => '閩南語', 					# Min-nan alias (site is at minnan)
 	'zh-classical' => '古文 / 文言文',			# Classical Chinese/Literary Chinese
 	'zh-cn' => "\xE2\x80\xAA中文(中国大陆)\xE2\x80\xAC",	# Chinese (PRC)
 	'zh-hans' => "\xE2\x80\xAA中文(简体)\xE2\x80\xAC",	# Chinese written using the Simplified Chinese script

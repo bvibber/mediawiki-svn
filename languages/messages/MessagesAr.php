@@ -14,6 +14,7 @@
  * @author Chaos
  * @author Siebrand
  * @author לערי ריינהארט
+ * @author SPQRobin
  */
 
 $linkPrefixExtension = true;
@@ -638,6 +639,7 @@ $2',
 'namespaceprotected'   => "لا تمتلك الصلاحية لتعديل الصفحات في نطاق '''$1'''.",
 'customcssjsprotected' => 'لا تمتلك الصلاحية لتعديل هذه الصفحة، لأنها تحتوي على الإعدادات الشخصية لمستخدم آخر.',
 'ns-specialprotected'  => 'الصفحات في النطاق {{ns:special}} لا يمكن تعديلها.',
+'titleprotected'       => 'هذا العنوان تمت حمايته من الإنشاء بواسطة [[User:$1|$1]]. السبب المعطى هو <i>$2</i>.',
 
 # Login and logout pages
 'logouttitle'                => 'خروج المستخدم',
@@ -752,9 +754,7 @@ $1 ساعة.',
 'math_tip'        => 'صيغة رياضية (لا تك)',
 'nowiki_sample'   => 'أدخل النص غير المنسق هنا',
 'nowiki_tip'      => 'أهمل تهيئة الويكي',
-'image_sample'    => 'Example.jpg',
 'image_tip'       => 'صورة مدرجة',
-'media_sample'    => 'Example.ogg',
 'media_tip'       => 'وصلة ملف وسائط',
 'sig_tip'         => 'توقيعك مع الساعة والتاريخ',
 'hr_tip'          => 'خط أفقي (تجنب الاستخدام بكثرة)',
@@ -1027,6 +1027,7 @@ $1 ساعة.',
 'searchsubtitle'        => "لصيغة البحث '''[[:$1]]'''",
 'searchsubtitleinvalid' => "لصيغة البحث '''$1'''",
 'noexactmatch'          => "'''لا توجد صفحة بالاسم \"\$1\"'''. يمكنك [[:\$1|إنشاء هذه الصفحة]].",
+'noexactmatch-nocreate' => "'''لا توجد صفحة بالاسم \"\$1\".'''",
 'titlematches'          => 'عنوان الصفحة يطابق',
 'notitlematches'        => 'لم يتم إيجاد أي عنوان مطابق',
 'textmatches'           => 'نص الصفحة يطابق',
@@ -1190,6 +1191,9 @@ $1 ساعة.',
 *'''<nowiki>[[{{ns:image}}:ملف.jpg]]</nowiki>'''،
 *'''<nowiki>[[{{ns:image}}:ملف.png|alt text]]</nowiki>''' أو
 *'''<nowiki>[[{{ns:media}}:ملف.ogg]]</nowiki>''' للوصل للملف مباشرة.",
+'upload-permitted'            => 'أنواع الملفات المسموحة: $1.',
+'upload-preferred'            => 'أنواع الملفات المفضلة: $1.',
+'upload-prohibited'           => 'أنواع الملفات الممنوعة: $1.',
 'uploadlog'                   => 'سجل الرفع',
 'uploadlogpage'               => 'سجل الرفع',
 'uploadlogpagetext'           => 'في الأسفل قائمة بأحدث عمليات رفع الملفات.',
@@ -1205,8 +1209,8 @@ $1 ساعة.',
 'illegalfilename'             => 'يحتوي اسم الملف $1 على رموز غير مقبولة. أعد تسمية الملف من فضلك و قم برفعه مرة أخرى.',
 'badfilename'                 => 'تم تغيير اسم الملف إلى "$1".',
 'filetype-badmime'            => 'من غير المسموح به رفع ملفات من النوع "$1".',
-'filetype-badtype'            => "يعتبر '''\".\$1\"''' من أنواع الملفات المرفوضة
-: قائمة بالأنواع المسموح بها: \$2",
+'filetype-unwanted-type'      => "'''\".\$1\"''' نوع ملف غير مرغوب فيه.  أنواع الملفات المفضلة هي \$2.",
+'filetype-banned-type'        => "'''\".\$1\"''' ليس نوع ملف مسموحا به.  أنواع الملفات المسموح بها هي \$2.",
 'filetype-missing'            => 'الملف بدون امتداد (مثل ".jpg").',
 'large-file'                  => 'ينصح ألا تكون الملفات أكبر من $1؛ هذا الملف حجمه $2.',
 'largefileserver'             => 'حجم هذا الملف أكبر من المسموح به على هذا الخادم.',
@@ -1436,11 +1440,13 @@ PICT # misc.
 'protectedpages'          => 'صفحات محمية',
 'protectedpagestext'      => 'الصفحات التالية محمية من النقل أو التعديل',
 'protectedpagesempty'     => 'لا توجد صفحات محمية حاليا بهذه المحددات.',
+'protectedtitles'         => 'العناوين المحمية',
+'protectedtitlestext'     => 'العناوين التالية محمية ضد الإنشاء',
+'protectedtitlesempty'    => 'لا توجد عناوين محمية حاليا بهذه المحددات.',
 'listusers'               => 'قائمة الأعضاء',
 'specialpages'            => 'الصفحات الخاصة',
 'spheading'               => 'الصفحات الخاصة لكل المستخدمين',
 'restrictedpheading'      => 'صفحات خاصة للمخولين فقط',
-'rclsub'                  => '(لصفحات تصل بها الصفحة "$1")',
 'newpages'                => 'صفحات جديدة',
 'newpages-username'       => 'اسم المستخدم:',
 'ancientpages'            => 'أقدم الصفحات',
@@ -1671,8 +1677,9 @@ $NEWPAGE
 'pagesize'                    => '(بايت)',
 
 # Restrictions (nouns)
-'restriction-edit' => 'تعديل',
-'restriction-move' => 'نقل',
+'restriction-edit'   => 'تعديل',
+'restriction-move'   => 'نقل',
+'restriction-create' => 'إنشاء',
 
 # Restriction levels
 'restriction-level-sysop'         => 'حماية كاملة',
@@ -1890,6 +1897,7 @@ $1',
 'articleexists'           => 'توجد صفحة بهذا الاسم،
 أو أن الاسم الذي تم اختياره غير صالح.
 يرجى اختيار اسم آخر.',
+'cantmove-titleprotected' => 'أنت لا يمكنك نقل صفحة إلى هذا الموقع، لأن العنوان الجديد تمت حمايته ضد الإنشاء',
 'talkexists'              => "'''تم نقل الصفحة بنجاح، لكن لم
 يتم نقل صفحة النقاش المرافقة، بسبب وجود صفحة نقاش
 مسبقا تحت العنوان الجديد.
@@ -2513,6 +2521,7 @@ $1',
 
 # Separators for various lists
 'semicolon-separator' => '؛',
+'filetype-separator'  => '،',
 
 # Multipage image navigation
 'imgmultipageprev'   => '← الصفحة السابقة',

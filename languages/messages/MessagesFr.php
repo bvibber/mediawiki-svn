@@ -16,6 +16,7 @@
  * @author Grondin
  * @author Nike
  * @author לערי ריינהארט
+ * @author Dereckson
  */
 
 $skinNames = array(
@@ -196,7 +197,7 @@ $messages = array(
 'qbpageinfo'     => 'Page d’information',
 'qbmyoptions'    => 'Mes options',
 'qbspecialpages' => 'Pages spéciales',
-'moredotdotdot'  => 'Et plus...',
+'moredotdotdot'  => 'Et plus …',
 'mypage'         => 'Page perso',
 'mytalk'         => 'Page de discussion',
 'anontalk'       => 'Discussion avec cette adresse IP',
@@ -386,13 +387,14 @@ Requête : $2',
 'protectedpagetext'    => 'Cette page a été protégée pour empêcher sa modification.',
 'viewsourcetext'       => 'Vous pouvez voir et copier le contenu de l’article pour pouvoir travailler dessus :',
 'protectedinterface'   => 'Cette page fournit du texte d’interface pour le logiciel et est protégée pour éviter les abus.',
-'editinginterface'     => "'''Attention :''' vous éditez une page utilisée pour créer le texte de l’interface du logiciel. Les changements se répercuteront, selon le contexte, sur toutes ou certaines pages visibles par les autres utilisateurs.",
+'editinginterface'     => "'''Attention :''' vous êtes en train d’éditer une page utilisée pour créer le texte de l’interface du logiciel. Les changements se répercuteront, selon le contexte, sur toutes ou certaines pages visibles par les autres utilisateurs. Pour les traductions, nous vous invitons à utiliser le projet Mediawiki d'internationalisation des messages [http://translatewiki.net/wiki/Translating:Intro Betawiki].",
 'sqlhidden'            => '(Requête SQL cachée)',
 'cascadeprotected'     => 'Cette page est actuellement protégée car incluse dans {{PLURAL:$1|la page suivante|les pages suivantes}}, ayant été protégée{{PLURAL:$1||s}} avec l’option « protection en cascade » activée :
 $2',
 'namespaceprotected'   => "Vous n’avez pas la permission de modifier les pages de l’espace de noms « '''$1''' ».",
 'customcssjsprotected' => "Vous n’avez pas la permission d'éditer cette page parce qu’elle contient des préférences d’autres utilisateurs.",
 'ns-specialprotected'  => 'Les pages dans l’espace de noms « {{ns:special}} » ne peuvent pas être modifiées.',
+'titleprotected'       => 'Ce titre a été protégé à la création par [[User:$1|$1]]. Le motif avancé est <i>« $2 »</i>.',
 
 # Login and logout pages
 'logouttitle'                => 'Déconnexion',
@@ -750,6 +752,7 @@ Assurez vous que ce changement puisse conserver la continuité de l'historique.
 'searchsubtitle'        => 'Vous avez recherché « [[:$1]] »',
 'searchsubtitleinvalid' => 'Vous avez recherché « $1 »',
 'noexactmatch'          => "'''Aucune page intitulée « $1 » n’existe.''' Vous pouvez [[:$1|créer cet article]].",
+'noexactmatch-nocreate' => "'''Il n'existe aucune page intitulée « $1 ».'''",
 'titlematches'          => 'Correspondances dans les titres d’articles',
 'notitlematches'        => 'Aucun titre d’article ne correspond à la recherche.',
 'textmatches'           => 'Correspondances dans le texte d’articles',
@@ -913,6 +916,9 @@ Pour inclure une image dans une page, utilisez un lien de la forme
 <b><nowiki>[[</nowiki>{{ns:image}}<nowiki>:fichier.jpg]]</nowiki></b>,
 <b><nowiki>[[</nowiki>{{ns:image}}<nowiki>:fichier.png|texte alternatif]]</nowiki></b> or
 <b><nowiki>[[</nowiki>{{ns:media}}<nowiki>:fichier.ogg]]</nowiki></b> pour lier directement vers le fichier.',
+'upload-permitted'            => 'Formats de fichiers autorisés : $1.',
+'upload-preferred'            => 'Formats de fichiers préférés : $1.',
+'upload-prohibited'           => 'Formats de fichiers interdits : $1.',
 'uploadlog'                   => 'Historique des importations',
 'uploadlogpage'               => 'Historique des importations de fichiers multimédia',
 'uploadlogpagetext'           => 'Voici la liste des derniers fichiers copiés sur le serveur.',
@@ -928,8 +934,8 @@ Pour inclure une image dans une page, utilisez un lien de la forme
 'illegalfilename'             => 'Le nom de fichier « $1 » contient des caractères interdits dans les titres de pages. Merci de le renommer et de le copier à nouveau.',
 'badfilename'                 => 'L’image a été renommée « $1 ».',
 'filetype-badmime'            => 'Les fichiers du type MIME « $1 » ne peuvent pas être importés.',
-'filetype-badtype'            => "'''« .$1 »''' est un type de fichier non désiré
-: Liste des types de fichiers autorisés : $2",
+'filetype-unwanted-type'      => "'''\".\$1\"''' est d'un format non désiré.  Ceux qui sont préférés sont \$2.",
+'filetype-banned-type'        => "'''\".\$1\"''' est dans un format non admis.  Ceux qui sont acceptés sont \$2.",
 'filetype-missing'            => 'Le fichier n’a aucune extension (comme « .jpg » par exemple).',
 'large-file'                  => 'Les fichiers importés ne devraient pas être plus gros que $1 ; ce fichier fait $2.',
 'largefileserver'             => 'La taille de ce fichier est supérieure au maximum autorisé.',
@@ -1142,11 +1148,13 @@ Il y a {{PLURAL:$7|'''$7''' article|'''$7''' articles}} dans [[meta:Help:Job_que
 'protectedpages'          => 'Pages protégées',
 'protectedpagestext'      => 'Les pages suivantes sont protégées contre les modifications et/ou le renommage :',
 'protectedpagesempty'     => 'Aucune page n’est protégée actuellement.',
+'protectedtitles'         => 'Titres protégés',
+'protectedtitlestext'     => 'Les titres suivants sont protégés à la création',
+'protectedtitlesempty'    => "Aucun titre n'est actuellement protégé avec ces paramètres.",
 'listusers'               => 'Liste des participants',
 'specialpages'            => 'Pages spéciales',
 'spheading'               => 'Pages spéciales',
 'restrictedpheading'      => 'Pages spéciales réservées',
-'rclsub'                  => '(des pages liées à « $1 »)',
 'newpages'                => 'Nouvelles pages',
 'newpages-username'       => 'Utilisateur :',
 'ancientpages'            => 'Articles les moins récemment modifiés',
@@ -1157,8 +1165,8 @@ Il y a {{PLURAL:$7|'''$7''' article|'''$7''' articles}} dans [[meta:Help:Job_que
 'unusedcategoriestext'    => 'Les catégories suivantes existent mais aucun article ou catégorie ne les utilisent.',
 'notargettitle'           => 'Pas de cible',
 'notargettext'            => 'Indiquez une page cible ou un utilisateur cible.',
-'pager-newer-n'           => '{{PLURAL:$1|1 plus récent|$1 plus récents}}',
-'pager-older-n'           => '{{PLURAL:$1|1 plus ancien|$1 plus anciens}}',
+'pager-newer-n'           => '{{PLURAL:$1|1 plus récente|$1 plus récentes}}',
+'pager-older-n'           => '{{PLURAL:$1|1 plus ancienne|$1 plus anciennes}}',
 
 # Book sources
 'booksources'               => 'Ouvrages de référence',
@@ -1374,8 +1382,9 @@ Voici les réglages actuels de la page <strong>$1</strong> :',
 'pagesize'                    => '(octets)',
 
 # Restrictions (nouns)
-'restriction-edit' => 'Modification',
-'restriction-move' => 'Renommage',
+'restriction-edit'   => 'Modification',
+'restriction-move'   => 'Renommage',
+'restriction-create' => 'Créer',
 
 # Restriction levels
 'restriction-level-sysop'         => 'Protection complète',
@@ -1596,6 +1605,7 @@ Dans ce cas, vous devrez renommer ou fusionner la page manuellement si vous le d
 
 Veuillez vérifier qu’il n’existe aucune double redirection, et corrigez celles-ci si nécessaire.', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'Il existe déjà un article portant ce titre, ou le titre que vous avez choisi n’est pas valide. Veuillez en choisir un autre.',
+'cantmove-titleprotected' => "Vous n'avez pas la possibilité de déplacer une page vers cet emplacement car le nouveau titre a été protégé à la création.",
 'talkexists'              => 'La page elle-même a été déplacée avec succès, mais la page de discussion n’a pas pu être déplacée car il en existait déjà une sous le nouveau nom. Veuillez les fusionner manuellement.',
 'movedto'                 => 'renommé en',
 'movetalk'                => 'Renommer aussi la page de discussion associée',
@@ -2185,6 +2195,7 @@ Veuillez confirmer que vous désirez recréer cet article.",
 'searchnamed'      => 'Chercher les articles nommés « $1 ».',
 'articletitles'    => 'Articles commençant par « $1 »',
 'hideresults'      => 'Cacher les résultats',
+'useajaxsearch'    => 'Utiliser la recherche AJAX',
 
 # Multipage image navigation
 'imgmultipageprev'   => '← page précédente',
@@ -2217,8 +2228,8 @@ Veuillez confirmer que vous désirez recréer cet article.",
 'size-gigabytes' => '$1 Go',
 
 # Live preview
-'livepreview-loading' => 'Chargement…',
-'livepreview-ready'   => 'Chargement… terminé !',
+'livepreview-loading' => 'Chargement …',
+'livepreview-ready'   => 'Chargement … terminé !',
 'livepreview-failed'  => 'L’aperçu rapide a échoué !
 Essayez la prévisualisation normale.',
 'livepreview-error'   => 'Impossible de se connecter : $1 "$2"

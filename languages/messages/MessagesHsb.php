@@ -437,6 +437,7 @@ $2',
 'namespaceprotected'   => "Nimaš dowolnosć, zo by stronu w mjenowym rumje '''$1''' wobdźěłał.",
 'customcssjsprotected' => 'Nimaš prawo, zo by tutu stronu wobdźěłał, dokelž wosobinske nastajenja druheho wužiwarja wobsahuje.',
 'ns-specialprotected'  => 'Strony w mjenowym rumje {{ns:special}} njedadźa so wobdźěłać.',
+'titleprotected'       => 'Tutón titul bu přećiwo wutworjenju přez [[User:$1|$1]] škitany. Podata přičina je <i>$2</i>.',
 
 # Login and logout pages
 'logouttitle'                => 'Wotzjewjenje',
@@ -822,6 +823,7 @@ Zawěsć, zo tuta změna stawiznisku kontinuitu strony wobchowuje.
 'noexactmatch'          => '<b>Strona „$1” njeeksistuje.</b>
 
 Móžeš [[{{ns:special}}:Allpages|alfabetiski indeks přepytować]] abo [[:$1|stronu wutworić]].',
+'noexactmatch-nocreate' => "'''Njeje strona z titulom \"\$1\".'''",
 'titlematches'          => 'Strony z wotpowědowacym titulom',
 'notitlematches'        => 'Žane strony z wotpowědowacym titulom',
 'textmatches'           => 'Strony z wotpowědowacym tekstom',
@@ -984,6 +986,9 @@ Zo by so wobraz do strony zapřijał, wužij wotkaz we formje
 
 abo zo by so direktnje z dataju zwjazało
 * <b><nowiki>[[{{ns:media}}:Dataja.ogg]]</nowiki></b>',
+'upload-permitted'            => 'Dowolene datajowe typy: $1.',
+'upload-preferred'            => 'Preferowane datajowe typy: $1.',
+'upload-prohibited'           => 'Zakazane datajowe typy: $1.',
 'uploadlog'                   => 'Protokol nahraćow',
 'uploadlogpage'               => 'Protokol nahraćow',
 'uploadlogpagetext'           => 'Deleka je lisćina naposledk nahratych datajow.',
@@ -999,8 +1004,8 @@ abo zo by so direktnje z dataju zwjazało
 'illegalfilename'             => 'Mjeno dataje „$1” wobsahuje znamješka, kotrež w titlach stronow dowolene njejsu. Prošu přemjenuj dataju a spytaj ju znowa nahrać.',
 'badfilename'                 => 'Mjeno dataje bu do „$1” změnjene.',
 'filetype-badmime'            => 'Dataje družiny MIME „$1” njesmědźa so składować.',
-'filetype-badtype'            => "'''„.$1“''' njeje dowoleny datajowy format.
-: Dowolene su: $2",
+'filetype-unwanted-type'      => "'''\".\$1\"''' je njepožadany datajowy typ. Preferowane datajowe sypy su \$2.",
+'filetype-banned-type'        => "'''\".\$1\"''' njeje dowoleny datajowy typ. Dowolene datajowe typy su \$2.",
 'filetype-missing'            => 'Dataja nima kóncowku (na přikład „.jpg“).',
 'large-file'                  => 'Doporuča so, zo dataje wjetše hač $1 njejsu; tuta dataja ma $2.',
 'largefileserver'             => 'Dataja je wjetša hač serwer dowoluje.',
@@ -1253,13 +1258,15 @@ Dołhosć [http://meta.wikimedia.org/wiki/Help:Job_queue rynka nadawkow] je '''$
 'protectedpages-summary'          => 'Tuta specialna strona naliči wšě strony, kotrež su přećiwo přesunjenju abo wobdźěłowanju škitane.',
 'protectedpagestext'              => 'Tuta specialna strona naliči wšě strony, kotrež su přećiwo přesunjenju abo wobdźěłowanju škitane.',
 'protectedpagesempty'             => 'Tuchwilu žane.',
+'protectedtitles'                 => 'Škitane titule',
+'protectedtitlestext'             => 'Slědowace titule su přećiwo wutworjenju škitane',
+'protectedtitlesempty'            => 'Žane titule njejsu tuchwilu z tutymi parametrami škitane.',
 'listusers'                       => 'Lisćina wužiwarjow',
 'listusers-summary'               => "Tuta specialna strona naliči wšěch zregistrowanych wužiwarjow. Jich dospołnu ličbu móžeš [[{{ns:special}}:Statistics|tu]] zhonić. Přez wuběrowanske polo ''Skupina'' hodźi so wuběr na jednotliwe skupiny wužiwarjow wobmjezować.",
 'specialpages'                    => 'Specialne strony',
 'specialpages-summary'            => 'Tuta strona naliči wšě specialne strony. Specialne strony so awtomatisce wutworjeja a njehodźa so wobdźěłać.',
 'spheading'                       => 'Specialne strony za wšěch wužiwarjow',
 'restrictedpheading'              => 'Specialne strony za administratorow',
-'rclsub'                          => '(k stronam, na kotrež strona „$1” pokazuje)',
 'newpages'                        => 'Nowe strony',
 'newpages-summary'                => 'Tuta specialna strona naliči wšě nowe strony poslednich 30 dnjow. Wuslědki móža so na mjenowe rumy, wužiwarske mjena abo woboje wobmjezować.',
 'newpages-username'               => 'Wužiwarske mjeno:',
@@ -1484,8 +1491,9 @@ Poslednja změna běše wot wužiwarja [[User:$3|$3]] ([[User_talk:$3|diskusija]
 'pagesize'                    => '(bajtow)',
 
 # Restrictions (nouns)
-'restriction-edit' => 'wobdźěłać',
-'restriction-move' => 'přesunyć',
+'restriction-edit'   => 'wobdźěłać',
+'restriction-move'   => 'přesunyć',
+'restriction-create' => 'Wutworić',
 
 # Restriction levels
 'restriction-level-sysop'         => 'dospołnje škitany',
@@ -1692,6 +1700,7 @@ W tutych padach dyrbiš stronu manuelnje přesunyć abo zaměšeć, jeli sej to 
 'pagemovedsub'            => 'Přesunjenje wuspěšne',
 'movepage-moved'          => "<big>'''Strona „$1“ bu k nowemu titlej „$2“ přesunjena.'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'Strona z tutym mjenom hižo eksistuje abo mjeno, kotrež sy wuzwolił, płaćiwe njeje. Prošu wuzwol druhe mjeno.',
+'cantmove-titleprotected' => 'Njemóžeš stronu do tutoho městna přesunyć, dokelž nowy titul bu přećiwo wutworjenju škitany',
 'talkexists'              => 'Strona sama bu z wuspěchom přesunjena, diskusijna strona pak njeda so přesunyć, dokelž pod nowym titulom hižo eksistuje. Prošu změš jeju manuelnje.',
 'movedto'                 => 'přesunjena do hesła',
 'movetalk'                => 'Přisłušnu diskusijnu stronu tohorunja přesunyć',
@@ -2275,6 +2284,7 @@ Prošu wobkruć, zo chceš ju woprawdźe znowa wutworić.',
 'searchnamed'      => 'Strony pytać, w kotrychž titlach so <i>$1</i> jewi.',
 'articletitles'    => 'Strony pytać, kotrež so z <i>$1</i> započinaja',
 'hideresults'      => 'Wuslědki schować',
+'useajaxsearch'    => 'Pytanje AJAX wužiwać',
 
 # Multipage image navigation
 'imgmultipageprev'   => '← předchadna strona',

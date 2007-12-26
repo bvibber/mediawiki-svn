@@ -4,8 +4,9 @@
  * @addtogroup Language
  *
  * @author Dori
- * @author G - ג
  * @author Siebrand
+ * @author לערי ריינהארט
+ * @author Ergon
  */
 
 $skinNames = array(
@@ -101,37 +102,56 @@ $messages = array(
 'skinpreview' => '(Parapamje)',
 
 # Dates
-'sunday'    => 'E diel',
-'monday'    => 'E hënë',
-'tuesday'   => 'E martë',
-'wednesday' => 'E mërkurë',
-'thursday'  => 'E enjte',
-'friday'    => 'E premte',
-'saturday'  => 'E shtunë',
-'january'   => 'Janar',
-'february'  => 'Shkurt',
-'march'     => 'Mars',
-'april'     => 'Prill',
-'may_long'  => 'Maj',
-'june'      => 'Qershor',
-'july'      => 'Korrik',
-'august'    => 'Gusht',
-'september' => 'Shtator',
-'october'   => 'Tetor',
-'november'  => 'Nëntor',
-'december'  => 'Dhjetor',
-'jan'       => 'Jan',
-'feb'       => 'Shk',
-'mar'       => 'Mar',
-'apr'       => 'Pri',
-'may'       => 'Maj',
-'jun'       => 'Qer',
-'jul'       => 'Kor',
-'aug'       => 'Gus',
-'sep'       => 'Sht',
-'oct'       => 'Tet',
-'nov'       => 'Nën',
-'dec'       => 'Dhj',
+'sunday'        => 'E diel',
+'monday'        => 'E hënë',
+'tuesday'       => 'E martë',
+'wednesday'     => 'E mërkurë',
+'thursday'      => 'E enjte',
+'friday'        => 'E premte',
+'saturday'      => 'E shtunë',
+'sun'           => 'Hën',
+'mon'           => 'Hën',
+'tue'           => 'Mar',
+'wed'           => 'Mër',
+'thu'           => 'Enj',
+'fri'           => 'Pre',
+'sat'           => 'Sht',
+'january'       => 'Janar',
+'february'      => 'Shkurt',
+'march'         => 'Mars',
+'april'         => 'Prill',
+'may_long'      => 'Maj',
+'june'          => 'Qershor',
+'july'          => 'Korrik',
+'august'        => 'Gusht',
+'september'     => 'Shtator',
+'october'       => 'Tetor',
+'november'      => 'Nëntor',
+'december'      => 'Dhjetor',
+'january-gen'   => 'Janar',
+'february-gen'  => 'Shkurt',
+'march-gen'     => 'Mars',
+'april-gen'     => 'Prill',
+'may-gen'       => 'Maj',
+'june-gen'      => 'Qershor',
+'july-gen'      => 'Korrik',
+'august-gen'    => 'Gusht',
+'september-gen' => 'Shtator',
+'october-gen'   => 'Tetor',
+'november-gen'  => 'Nëntor',
+'december-gen'  => 'Dhjetor',
+'jan'           => 'Jan',
+'feb'           => 'Shk',
+'mar'           => 'Mar',
+'apr'           => 'Pri',
+'may'           => 'Maj',
+'jun'           => 'Qer',
+'jul'           => 'Kor',
+'aug'           => 'Gus',
+'sep'           => 'Sht',
+'oct'           => 'Tet',
+'nov'           => 'Nën',
+'dec'           => 'Dhj',
 
 # Bits of text used by many pages
 'categories'            => 'Kategori',
@@ -139,6 +159,7 @@ $messages = array(
 'category_header'       => 'Artikuj në kategorinë "$1"',
 'subcategories'         => 'Nën-kategori',
 'category-media-header' => 'Skeda në kategori "$1"',
+'category-empty'        => "''Kjo kategori aktualisht nuk përmban asnjë faqe apo media.''",
 
 'mainpagetext'      => 'Wiki software u instalua me sukses.',
 'mainpagedocfooter' => 'Ju lutem shikoni [http://meta.wikimedia.org/wiki/Help:Contents dokumentacionin përkatës].
@@ -168,7 +189,7 @@ $messages = array(
 'navigation'     => 'Shfleto',
 
 # Metadata in edit box
-'metadata_help' => 'Metadata (shikoni [[Project:Metadata]] për sqarimin):',
+'metadata_help' => 'Metadata:',
 
 'errorpagetitle'    => 'Gabim',
 'returnto'          => 'Kthehu tek $1.',
@@ -269,7 +290,7 @@ Edit section: $1',
 'feedlinks'               => 'Ushqyes:',
 'feed-invalid'            => 'Lloji i burimit të pajtimit është i pavlefshëm.',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Artikulli',
 'nstab-user'      => 'Përdoruesi',
 'nstab-media'     => 'Media-faqe',
@@ -454,7 +475,7 @@ You are not logged in. Your IP address will be recorded in this page's edit hist
 'missingcommenttext'       => 'Ju lutemi shtoni një koment në vazhdim.',
 'summary-preview'          => 'Parapamja e përmbledhjes',
 'blockedtitle'             => 'Përdoruesi është bllokuar',
-'blockedtext'              => 'Emri juaj ose adresa e IP-së është bllokuar nga $1. Arsyeja e dhënë është kjo:<br />\'\'$2\'\'<br />Mund të kontaktoni $1 ose një nga [[Project:Administruesit|administruesit]] e tjerë për të diskutuar bllokimin.
+'blockedtext'              => 'Emri juaj ose adresa e IP-së është bllokuar nga $1. Arsyeja e dhënë është kjo:<br />\'\'$2\'\'<br />Mund të kontaktoni $1 ose një nga [[{{MediaWiki:Grouppage-sysop}}|administruesit]] e tjerë për të diskutuar bllokimin.
 
 Vini re se nuk mund të përdorni "dërgoji email këtij përdoruesi" n.q.s. nuk keni një adresë të saktë të rregjistruar në [[Special:Preferences|parapëlqimet e përdoruesit]].
 
@@ -524,7 +545,6 @@ kështuqë nuk do keni mundësi të ruani redaktimet e tuaja tani. Mund të kopj
 'undo-summary' => 'U kthye versioni $1 i bërë nga [[Special:Contributions/$2]] ([[User talk:$2]])',
 
 # History pages
-'revhistory'          => 'Historia e redaktimeve',
 'viewpagelogs'        => 'Shiko regjistrat për këtë faqe',
 'nohistory'           => 'Nuk ka histori redaktimesh për këtë faqe.',
 'revnotfound'         => 'Versioni nuk u gjet',
@@ -580,15 +600,11 @@ Shiko tek [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} regjistri i gri
 'revdelete-logentry'          => 'Pamja e versionit u ndryshua për [[$1]]',
 
 # Diffs
-'difference'                => '(Ndryshime midis versioneve)',
-'loadingrev'                => 'duke ngarkuar versionin për ndryshimin',
-'lineno'                    => 'Rreshti $1:',
-'editcurrent'               => 'Redaktoni versionin e tanishëm të kësaj faqeje',
-'selectnewerversionfordiff' => 'Zgjidhni një version më të ri për krahasim',
-'selectolderversionfordiff' => 'Zgjidhni një version më të vjetër për krahasim',
-'compareselectedversions'   => 'Krahasoni versionet e zgjedhura',
-'editundo'                  => 'ktheje',
-'diff-multi'                => '({{plural:$1|Një redaktim ndërmjet nuk është|$1 redaktime ndërmjet nuk janë}} treguar.)',
+'difference'              => '(Ndryshime midis versioneve)',
+'lineno'                  => 'Rreshti $1:',
+'compareselectedversions' => 'Krahasoni versionet e zgjedhura',
+'editundo'                => 'ktheje',
+'diff-multi'              => '({{plural:$1|Një redaktim ndërmjet nuk është|$1 redaktime ndërmjet nuk janë}} treguar.)',
 
 # Search results
 'searchresults'         => 'Rezultatet e kërkimit',
@@ -733,7 +749,8 @@ $2 Lidhje përcjellëse &nbsp; Kërko për $3 $9',
 'rc_categories_any'                 => 'Të gjitha',
 
 # Recent changes linked
-'recentchangeslinked' => 'Ndryshimet fqinje',
+'recentchangeslinked'       => 'Ndryshimet fqinje',
+'recentchangeslinked-title' => 'Ndryshimet në lidhje me $1',
 
 # Upload
 'upload'                      => 'Ngarkoni skeda',
@@ -744,7 +761,7 @@ $2 Lidhje përcjellëse &nbsp; Kërko për $3 $9',
 'uploadnologintext'           => 'Duhet të keni [[Special:Userlogin|hyrë brenda]] për të dhënë skeda.',
 'upload_directory_read_only'  => 'Skedari i ngarkimit ($1) nuk mund të shkruhet nga shërbyesi.',
 'uploaderror'                 => 'Gabim dhënie',
-'uploadtext'                  => "'''NDALO!''' Përpara se të jepni këtu skedë, lexoni dhe ndiqni [[Project:Rregullat e përdorimit të figurave|Rregullat e përdorimit të figurave]] të {{SITENAME}}-s. Mos jepni skeda për të cilat autori (ose ju) nuk ka dhënë të drejtë për përdorim nën licencat e përdorura nga {{SITENAME}}.
+'uploadtext'                  => " '''NDALO!''' Përpara se të jepni këtu skedë, lexoni dhe ndiqni [[Project:Rregullat e përdorimit të figurave|Rregullat e përdorimit të figurave]] të {{SITENAME}}-s. Mos jepni skeda për të cilat autori (ose ju) nuk ka dhënë të drejtë për përdorim nën licencat e përdorura nga {{SITENAME}}.
 
 Për të parë ose për të kërkuar figurat e dhëna më parë,
 shkoni tek [[Special:Imagelist|lista e figurave të dhëna]].
@@ -807,6 +824,8 @@ Të gjithë orët janë me orën e shërbyesit (UTC).',
 'imgdelete'                 => 'gris',
 'imgdesc'                   => 'për',
 'imgfile'                   => 'skeda',
+'filehist-datetime'         => 'Data/Ora',
+'filehist-dimensions'       => 'Dimensionet',
 'imagelinks'                => 'Lidhje skedash',
 'linkstoimage'              => 'Këto faqe lidhen tek kjo skedë:',
 'nolinkstoimage'            => 'Asnjë faqe nuk lidhet tek kjo skedë.',
@@ -839,6 +858,9 @@ Të gjithë orët janë me orën e shërbyesit (UTC).',
 'unusedtemplates'     => 'Stampa të papërdorura',
 'unusedtemplatestext' => "Kjo faqe jep listën e të gjitha faqeve nën hapësirën Stampa të cilat nuk janë përdorur në faqe të tjera. Kujtohu të kontrollosh edhe për lidhje tek stampat përpara se t'i grisësh si të papërdorura.",
 'unusedtemplateswlh'  => 'lidhje',
+
+# Random page
+'randompage' => 'Artikull i rastit',
 
 # Random redirect
 'randomredirect' => 'Përcjellim i rastit',
@@ -902,7 +924,6 @@ Gjatësia e [http://meta.wikimedia.org/wiki/Help:Job_queue radhës së punëve] 
 'mostrevisions'           => 'Artikuj më të redaktuar',
 'allpages'                => 'Të gjitha faqet',
 'prefixindex'             => 'Treguesi i parashtesave',
-'randompage'              => 'Artikull i rastit',
 'shortpages'              => 'Artikuj të shkurtër',
 'longpages'               => 'Artikuj të gjatë',
 'deadendpages'            => 'Artikuj pa rrugëdalje',
@@ -913,7 +934,6 @@ Gjatësia e [http://meta.wikimedia.org/wiki/Help:Job_queue radhës së punëve] 
 'specialpages'            => 'Faqet speciale',
 'spheading'               => 'Faqe speciale për të gjithë përdoruesit',
 'restrictedpheading'      => 'Faqe speciale të kufizuara',
-'rclsub'                  => '(për faqet e lidhura nga "$1")',
 'newpages'                => 'Artikuj të rinj',
 'newpages-username'       => 'Përdoruesi:',
 'ancientpages'            => 'Artikuj më të vjetër',
@@ -1085,7 +1105,7 @@ Redaktimi i fundit është bërë nga [[User:$3|$3]] ([[User talk:$3|Diskutim]])
 'protectexpiry'               => 'Afati',
 'unprotectsub'                => '(Duke liruar "$1")',
 'protect-unchain'             => 'Ndrysho lejen e zhvendosjeve',
-'protect-text'                => 'Këtu mund të shikoni dhe ndryshoni nivelin e mbrojtjes për faqen [[$1]]. Ju lutem ndiqni rregullat e dhëna tek [[Project:Faqe e mbrojtur|faqet e mbrojtura]].',
+'protect-text'                => 'Këtu mund të shikoni dhe ndryshoni nivelin e mbrojtjes për faqen <strong>$1</strong>.',
 'protect-locked-blocked'      => 'Nuk mund të ndryshoni nivelet e mbrojtjes duke qenë i bllokuar. Kufizimet e kësaj faqeje janë <strong>$1</strong>:',
 'protect-locked-dblock'       => 'Nivelet e mbrojtjes nuk mund të ndryshohen pasi regjistri është i bllokuar. Kufizimet e kësaj faqeje janë <strong>$1</strong>:',
 'protect-locked-access'       => 'Llogaria juaj nuk ka privilegjet e nevojitura për të ndryshuar nivelin e mbrojtjes. Kufizimet e kësaj faqeje janë <strong>$1</strong>:',
@@ -1148,10 +1168,6 @@ Shikoni [[Special:Log/delete|regjistrin e grisjeve]] për grisjet dhe restaurime
 'uclinks'       => 'Shikoni $1 redaktimet e fundit; shikoni $2 ditët e fundit.',
 'uctop'         => ' (sipër)',
 
-'sp-contributions-newest'      => 'Më të rejat',
-'sp-contributions-oldest'      => 'Më të vjetrat',
-'sp-contributions-newer'       => '$1 më para',
-'sp-contributions-older'       => '$1 më pas',
 'sp-contributions-newbies'     => 'Trego vetëm redaktimet e llogarive të reja',
 'sp-contributions-newbies-sub' => 'Për newbies',
 'sp-contributions-blocklog'    => 'Regjistri i bllokimeve',
@@ -1163,6 +1179,7 @@ Shikoni [[Special:Log/delete|regjistrin e grisjeve]] për grisjet dhe restaurime
 
 # What links here
 'whatlinkshere'       => 'Lidhjet këtu',
+'whatlinkshere-title' => 'Faqe që lidhin me $1',
 'linklistsub'         => '(Listë lidhjesh)',
 'linkshere'           => 'Faqet e mëposhtme lidhen këtu:',
 'nolinkshere'         => 'Asnjë faqe nuk lidhet këtu.',
@@ -1308,13 +1325,13 @@ Për të eksportuar faqe, thjesht shtypni një emër për çdo rresht, ose krijo
 'export-addcat'     => 'Shto',
 
 # Namespace 8 related
-'allmessages'               => 'Mesazhet e sistemit',
-'allmessagesname'           => 'Emri',
-'allmessagesdefault'        => 'Teksti i parazgjedhur',
-'allmessagescurrent'        => 'Teksti i tanishëshm',
-'allmessagestext'           => 'Kjo është një listë e të gjitha faqeve në hapësirën MediaWiki:',
-'allmessagesfilter'         => 'Veço me shprehje të rregullta:',
-'allmessagesmodified'       => 'Trego vetëm të ndryshuarat',
+'allmessages'         => 'Mesazhet e sistemit',
+'allmessagesname'     => 'Emri',
+'allmessagesdefault'  => 'Teksti i parazgjedhur',
+'allmessagescurrent'  => 'Teksti i tanishëshm',
+'allmessagestext'     => 'Kjo është një listë e të gjitha faqeve në hapësirën MediaWiki:',
+'allmessagesfilter'   => 'Veço me shprehje të rregullta:',
+'allmessagesmodified' => 'Trego vetëm të ndryshuarat',
 
 # Thumbnails
 'thumbnail-more'  => 'Zmadho',
@@ -1389,6 +1406,7 @@ Për të eksportuar faqe, thjesht shtypni një emër për çdo rresht, ose krijo
 'tooltip-minoredit'               => 'Shënoje këtë redaktim të vogël',
 'tooltip-save'                    => 'Kryej ndryshimet',
 'tooltip-preview'                 => 'Shiko parapamjen e ndryshimeve, përdoreni këtë para se të kryeni ndryshimet!',
+'tooltip-diff'                    => 'Trego ndryshimet që Ju i keni bërë tekstit.',
 'tooltip-compareselectedversions' => 'Shikoni krahasimin midis dy versioneve të zgjedhura të kësaj faqeje.',
 'tooltip-watch'                   => 'Mbikqyre këtë faqe',
 
@@ -1456,9 +1474,10 @@ Për të eksportuar faqe, thjesht shtypni një emër për çdo rresht, ose krijo
 'nextdiff'     => 'Ndryshimi më pas →',
 
 # Media information
-'mediawarning' => "'''Kujdes''': Kjo skedë mund të ketë përmbajtje të dëmshme, duke e përdorur sistemi juaj mund të rrezikohet.<hr />",
-'imagemaxsize' => 'Kufizo pamjen e figurave në faqet përshkruese në rezolucionin:',
-'thumbsize'    => 'Madhësia fotove përmbledhëse:',
+'mediawarning'   => "'''Kujdes''': Kjo skedë mund të ketë përmbajtje të dëmshme, duke e përdorur sistemi juaj mund të rrezikohet.<hr />",
+'imagemaxsize'   => 'Kufizo pamjen e figurave në faqet përshkruese në rezolucionin:',
+'thumbsize'      => 'Madhësia fotove përmbledhëse:',
+'show-big-image' => 'Rezolucion i plotë',
 
 # Special:Newimages
 'newimages'    => 'Galeria e figurave të reja',
@@ -1607,6 +1626,7 @@ Për të eksportuar faqe, thjesht shtypni një emër për çdo rresht, ose krijo
 'imagelistall'     => 'të gjitha',
 'watchlistall2'    => 'të gjitha',
 'namespacesall'    => 'të gjitha',
+'monthsall'        => 'të gjitha',
 
 # E-mail address confirmation
 'confirmemail'            => 'Vërtetoni adresën tuaj',

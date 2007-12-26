@@ -382,6 +382,7 @@ $specialPageAliases = array(
 	'Ancientpages'              => array( 'Ancientpages' ),
 	'Deadendpages'              => array( 'Deadendpages' ),
 	'Protectedpages'            => array( 'Protectedpages' ),
+	'Protectedtitles'           => array( 'Protectedtitles' ),
 	'Allpages'                  => array( 'Allpages' ),
 	'Prefixindex'               => array( 'Prefixindex' ) ,
 	'Ipblocklist'               => array( 'Ipblocklist' ),
@@ -939,9 +940,9 @@ You may ignore this message, if this account was created in error.',
 'math_tip'        => 'Mathematical formula (LaTeX)',
 'nowiki_sample'   => 'Insert non-formatted text here',
 'nowiki_tip'      => 'Ignore wiki formatting',
-'image_sample'    => 'Example.jpg',
+'image_sample'    => 'Example.jpg', # only translate this message to other languages if you have to change it
 'image_tip'       => 'Embedded image',
-'media_sample'    => 'Example.ogg',
+'media_sample'    => 'Example.ogg', # only translate this message to other languages if you have to change it
 'media_tip'       => 'Media file link',
 'sig_tip'         => 'Your signature with timestamp',
 'hr_tip'          => 'Horizontal line (use sparingly)',
@@ -1229,6 +1230,7 @@ Make sure that this change will maintain historical page continuity.
 'searchsubtitle'        => "You searched for '''[[:$1]]'''",
 'searchsubtitleinvalid' => "You searched for '''$1'''",
 'noexactmatch'          => "'''There is no page titled \"\$1\".''' You can [[:\$1|create this page]].",
+'noexactmatch-nocreate' => "'''There is no page titled \"\$1\".'''",
 'titlematches'          => 'Page title matches',
 'notitlematches'        => 'No page title matches',
 'textmatches'           => 'Page text matches',
@@ -1414,6 +1416,9 @@ To include the image in a page, use a link in the form
 '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki>''',
 '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|alt text]]</nowiki>''' or
 '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki>''' for directly linking to the file.",
+'upload-permitted'            => 'Permitted file types: $1.',
+'upload-preferred'            => 'Preferred file types: $1.',
+'upload-prohibited'           => 'Prohibited file types: $1.',
 'uploadlog'                   => 'upload log',
 'uploadlogpage'               => 'Upload log',
 'uploadlogpagetext'           => 'Below is a list of the most recent file uploads.',
@@ -1429,8 +1434,8 @@ To include the image in a page, use a link in the form
 'illegalfilename'             => 'The filename "$1" contains characters that are not allowed in page titles. Please rename the file and try uploading it again.',
 'badfilename'                 => 'File name has been changed to "$1".',
 'filetype-badmime'            => 'Files of the MIME type "$1" are not allowed to be uploaded.',
-'filetype-badtype'            => "'''\".\$1\"''' is an unwanted file type
-: List of allowed file types: \$2",
+'filetype-unwanted-type'      => "'''\".\$1\"''' is an unwanted file type.  Preferred file types are \$2.",
+'filetype-banned-type'        => "'''\".\$1\"''' is not a permitted file type.  Permitted file types are \$2.",
 'filetype-missing'            => 'The file has no extension (like ".jpg").',
 'large-file'                  => 'It is recommended that files are no larger than $1; this file is $2.',
 'largefileserver'             => 'This file is bigger than the server is configured to allow.',
@@ -1694,13 +1699,16 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'protectedpages-summary'          => '', # only translate this message to other languages if you have to change it
 'protectedpagestext'              => 'The following pages are protected from moving or editing',
 'protectedpagesempty'             => 'No pages are currently protected with these parameters.',
+'protectedtitles'                  => 'Protected titles',
+'protectedtitles-summary'          => '', # only translate this message to other languages if you have to change it
+'protectedtitlestext'              => 'The following titles are protected from creation',
+'protectedtitlesempty'             => 'No titles are currently protected with these parameters.',
 'listusers'                       => 'User list',
 'listusers-summary'               => '', # only translate this message to other languages if you have to change it
 'specialpages'                    => 'Special pages',
 'specialpages-summary'            => '', # only translate this message to other languages if you have to change it
 'spheading'                       => 'Special pages for all users',
 'restrictedpheading'              => 'Restricted special pages',
-'rclsub'                          => '(to pages linked from "$1")',
 'newpages'                        => 'New pages',
 'newpages-summary'                => '', # only translate this message to other languages if you have to change it
 'newpages-username'               => 'Username:',
@@ -2046,7 +2054,7 @@ $1',
 'whatlinkshere-title'   => 'Pages that link to $1',
 'whatlinkshere-summary' => '', # only translate this message to other languages if you have to change it
 'whatlinkshere-page'    => 'Page:',
-'whatlinkshere-barrow'  => '&lt;', # only translate this message to other languages if you have to change it
+'whatlinkshere-barrow'  => '>', # only translate this message to other languages if you have to change it
 'linklistsub'           => '(List of links)',
 'linkshere'             => "The following pages link to '''[[:$1]]''':",
 'nolinkshere'           => "No pages link to '''[[:$1]]'''.",
@@ -2208,6 +2216,7 @@ In those cases, you will have to move or merge the page manually if desired.",
 'articleexists'           => 'A page of that name already exists, or the
 name you have chosen is not valid.
 Please choose another name.',
+'cantmove-titleprotected' => 'You cannot move a page to this location, because the new title has been protected from creation',
 'talkexists'              => "'''The page itself was moved successfully, but the talk page could not be moved because one already exists at the new title. Please merge them manually.'''",
 'movedto'                 => 'moved to',
 'movetalk'                => 'Move associated talk page',
@@ -2956,10 +2965,12 @@ $1',
 'searchnamed'      => "Search for pages named ''$1''.",
 'articletitles'    => "Pages starting with ''$1''",
 'hideresults'      => 'Hide results',
+'useajaxsearch'    => 'Use AJAX search',
 
 # Separators for various lists
-'catseparator'        => '|', # don't translate or duplicate this message to other languages
-'semicolon-separator' => ';', # only translate this message to other languages if you have to change it
+'catseparator'          => '|', # don't translate or duplicate this message to other languages
+'semicolon-separator'   => ';', # only translate this message to other languages if you have to change it
+'filetype-separator'    => ', ', # only translate this message to other languages if you have to change it 
 
 # Multipage image navigation
 'imgmultipageprev'   => '← previous page',
@@ -3032,8 +3043,7 @@ $1',
 'watchlistedit-normal-title'   => 'Edit watchlist',
 'watchlistedit-normal-legend'  => 'Remove titles from watchlist',
 'watchlistedit-normal-explain' => 'Titles on your watchlist are shown below. To remove a title, check
-	the box next to it, and click Remove Titles. You can also [[Special:Watchlist/raw|edit the raw list]],
-	or [[Special:Watchlist/clear|remove all titles]].',
+	the box next to it, and click Remove Titles. You can also [[Special:Watchlist/raw|edit the raw list]].',
 'watchlistedit-normal-submit'  => 'Remove Titles',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|1 title was|$1 titles were}} removed from your watchlist:',
 'watchlistedit-raw-title'      => 'Edit raw watchlist',
