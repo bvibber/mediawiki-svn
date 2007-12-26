@@ -127,7 +127,7 @@ class LinkSearchPage extends QueryPage {
 		$encSQL = '';
 		if ( isset ($this->mNs) && !$wgMiserMode ) $encSQL = 'AND page_namespace=' . $this->mNs;
 
-
+		$use_index = $dbr->useIndexClause( 'el_index' );
 		return
 			"SELECT
 				page_namespace AS namespace,
@@ -136,7 +136,7 @@ class LinkSearchPage extends QueryPage {
 				el_to AS url
 			FROM
 				$page,
-				$externallinks FORCE INDEX (el_index)
+				$externallinks $use_index
 			WHERE
 				page_id=el_from
 				AND el_index LIKE $encSearch
