@@ -799,6 +799,31 @@ $1
 	'searchincategory'      => 'в категории',
 );
 
+/** Scots (Scots)
+ * @author OchAyeTheNoo
+ */
+$wgLuceneSearchMessages['sco'] = array(
+	'searchnumber'          => '<strong>Results $1-$2 o $3</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Hind</span>",
+	'searchnext'            => "<span style='font-size: small'>Next</span> &#x00BB;",
+	'lucene-searchscore'    => 'Relevance: $1%',
+	'lucene-resultsize'     => '$1 ($2 wairds)',
+	'searchdidyoumean'      => 'Did ye mean: "<a href="$1">$2</a>"?',
+	'searchnoresults'       => 'Sairy, there wisnae ony richt marrie tae yer term.',
+	'searchnearmatches'     => '<b>These pages hae teetles that are sib tae yer term:</b>',
+	'lucenepowersearchtext' => 'Rake in namespaces:
+
+$1
+
+Rake for $3 $9 $10',
+	'lucenefallback'        => 'There wis a problem wi the wiki rake.
+This is probably short term; try again in a few meenits.
+Ye can rake the wiki wi an ootside rake service:',
+	'searchexactcase'       => 'Exact-case rake',
+	'searchall'             => 'aw',
+	'searchincategory'      => 'incategory',
+);
+
 $wgLuceneSearchMessages['sk'] = array(
 	'searchnumber'          => '<strong>Výsledky $1-$2 zo $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Späť</span>',
@@ -865,17 +890,31 @@ ili pretražite viki preko nekog od spoljnih pretraživačkih servisa:\n",
 	'searchall'             => "све\nsve",
 	'searchincategory'      => "укатегорији\nukategoriji"
 );
+
 $wgLuceneSearchMessages['sr'] = $wgLuceneSearchMessages['sr-ec'];
+
+/** Seeltersk (Seeltersk)
+ * @author Maartenvdbent
+ * @author Pyt
+ */
 $wgLuceneSearchMessages['stq'] = array(
 	'searchnumber'          => '<strong>Resultoate $1-$2 fon $3</strong>',
-	'searchprev'            => '&larr; <span style=\'font-size: smaller\'>Foarige</span>',
-	'searchnext'            => '<span style=\'font-size: smaller\'>Naiste</span> &rarr;',
+	'searchprev'            => "&larr; <span style='font-size: smaller'>Foarige</span>",
+	'searchnext'            => "<span style='font-size: smaller'>Naiste</span> &rarr;",
 	'lucene-searchscore'    => 'Relevanz: $1%',
 	'lucene-resultsize'     => '$1 ($2 Woude)',
 	'searchdidyoumean'      => 'Ätter "<a href="$1">$2</a>" säike?',
 	'searchnoresults'       => 'Deer wuuden neen paasende Sieden fuunen.',
 	'searchnearmatches'     => '<b>Disse Sieden hääbe tou ju Säikanfroage äänelke Tittel:</b>',
+	'lucenepowersearchtext' => 'Säik in do Noomensruume $1<br />Säikbegriep: $3 $9 $10',
+	'lucenefallback'        => 'Bie ju {{SITENAME}}-interne Säike is n Problem aptreeden.
+Dit is normoalerwiese n foarbiegungend Problem. Fersäik et nochmoal.
+Uurs koast du uk do externe Säikmuugelkhaide nutsje:',
+	'searchexactcase'       => 'Exakte Groot-/Littekschrieuwengssäike',
+	'searchall'             => 'aal',
+	'searchincategory'      => 'in Kategorie',
 );
+
 $wgLuceneSearchMessages['sv'] = array(
 	'searchnumber'          => "<strong>Resultat $1-$2 av $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Föregående</span>",
@@ -893,6 +932,7 @@ Sök efter $3 $9 $10",
 Det var troligen bara något tillfälligt; försök igen om en liten stund,
 eller sök på wikin med någon extern söktjänst:\n"
 );
+
 $wgLuceneSearchMessages['ur'] = array(
 	'searchnumber'          => '<strong><font face="times new roman, urdu naskh asiatype">نـتـائـج : $3 کے $1 تـا $2 </strong></font>',
 	'searchprev'            => 'پیچھے',
@@ -902,6 +942,7 @@ $wgLuceneSearchMessages['ur'] = array(
 	'searchnoresults'       => 'بہ تاسف، کوئی ایسا صفحہ نہیں مـلا جو آپکی مطلوبہ تلاش کے عین مطابق ہو۔',
 	'lucenepowersearchtext' => 'تلاش کریں، فضاۓ نام : $1 میں براۓ $3 $9 $10',
 );
+
 $wgLuceneSearchMessages['wa'] = array(
 	'searchnumber'          => '<strong>Rizultats: $1-$2 di $3</strong>',
 	'searchprev'            => '← <span style=\'font-size: small\'>Div.</span>',
