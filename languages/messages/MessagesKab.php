@@ -7,6 +7,7 @@
  * @author Nike
  * @author Teak
  * @author SPQRobin
+ * @author Siebrand
  */
 
 $namespaceNames = array(
@@ -215,16 +216,16 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Awal ɣef {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:Awal ɣef...',
+'aboutpage'         => 'Project:Awal ɣef...',
 'bugreports'        => "In'aɣ ibugiyen (bug)",
-'bugreportspage'    => "{{ns:project}}:In'aɣ ibugiyen",
+'bugreportspage'    => "Project:In'aɣ ibugiyen",
 'copyright'         => 'Tzemreḍ ad twaliḍ ayen yella deg $1.',
 'copyrightpagename' => 'Copyright n {{SITENAME}}',
 'copyrightpage'     => 'Asenfar:Copyrights',
 'currentevents'     => 'Isallen',
 'currentevents-url' => 'Isallen',
 'disclaimers'       => 'Iɣtalen',
-'disclaimerpage'    => '{{ns:project}}:Iɣtalen',
+'disclaimerpage'    => 'Project:Iɣtalen',
 'edithelp'          => 'Tallat deg ubeddel',
 'edithelppage'      => '{{ns:help}}:Abeddel',
 'faq'               => 'Isteqsiyen',
@@ -232,7 +233,7 @@ $messages = array(
 'helppage'          => '{{ns:help}}:Agbur',
 'mainpage'          => 'Asebter amenzawi',
 'portal'            => 'Awwur n timetti',
-'portal-url'        => '{{ns:project}}:Awwur n timetti',
+'portal-url'        => 'Project:Awwur n timetti',
 'privacy'           => 'Tudert tusligt',
 'privacypage'       => '{{ns:project}}:Tudert tusligt',
 'sitesupport'       => 'Efk-aɣ idrimen',
@@ -264,7 +265,7 @@ $messages = array(
 'feedlinks'               => 'Asuddem:',
 'feed-invalid'            => 'Anaw n usuddem mačči ṣaḥiḥ.',
 
-# Short words for each namespace, by default used in the 'page' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Amagrad',
 'nstab-user'      => 'Asebter n wemseqdac',
 'nstab-media'     => 'Asebter n media',
@@ -473,7 +474,7 @@ iwakken ad tbeyyneḍ belli tansa n email inek.',
 
 $1 iɛekkel-it u yenna-d ''$2''.
 
-Tzemreḍ ad tmeslayeḍ akk d $1 neɣ [[{{MediaWiki:grouppage-sysop}}|anedbal]] nniḍen iwakken ad tsmelayem ɣef uɛekkil-nni.
+Tzemreḍ ad tmeslayeḍ akk d $1 neɣ [[{{MediaWiki:Grouppage-sysop}}|anedbal]] nniḍen iwakken ad tsmelayem ɣef uɛekkil-nni.
 Lukan ur tefkiḍ ara email saḥih deg [[Special:Preferences|isemyifiyen n wemseqdac]], ur tezmireḍ ara ad tazneḍ email. Tansa n IP inek n tura d $3, ID n uɛekkil d #$5. Smekti-ten u fka-ten i unedbal-nni.",
 'blockedoriginalsource'     => "Aɣablu n '''$1''' hat deg ukessar:",
 'blockededitsource'         => "Aḍris n '''ubeddel inek''' i '''$1''' hat deg ukessar:",
@@ -495,7 +496,7 @@ Lukan ur tefkiḍ ara email saḥih deg [[Special:Preferences|isemyifiyen n wems
 'newarticle'                => '(Amaynut)',
 'newarticletext'            => 'Tḍefreḍ azday ɣer usebter mazal ur yettwaxleq ara.
 Akken ad txelqeḍ asebter-nni, aru deg tenkult i tella deg ukessar
-(ẓer [[{{MediaWiki:helppage}}|asebter n tallat]] akken ad tessneḍ kter).
+(ẓer [[{{MediaWiki:Helppage}}|asebter n tallat]] akken ad tessneḍ kter).
 Ma tɣelṭeḍ, wekki kan ɣef tqeffalt "Back/Précédent" n browser/explorateur inek.',
 'anontalkpagetext'          => "----''Wagi d asebter n umyennan n wemseqdac adrig. Ihi, yessef ad as nefk ID, nesseqdac tansa IP ines akken a t-neɛqel. Tansa IP nni ahat tettuseqdac sɣur aṭṭas n yimdanen. Lukan ula d kečč aqla-k amseqdac adrig u ur tebɣiḍ ara ad tettwabcreḍ izen am wigini, ihi [[Special:Userlogin|xleq isem n wemseqdac neɣ kcem]].''",
 'noarticletext'             => 'Ulac aḍris deg usebter-agi, tzemreḍ ad [[Special:Search/{{PAGENAME}}|tnadiḍ ɣef wezwel n usebter-agi]] deg isebtar wiyaḍ neɣ [{{fullurl:{{FULLPAGENAME}}|action=edit}} tettbeddileḍ asebter-agi].',
@@ -659,7 +660,7 @@ Inedbalen wiyaḍ deg wiki-yagi zemren ad ẓren imuren i yettwafren u zemren a 
 
 # Search results
 'searchresults'         => 'Igmad n unadi',
-'searchresulttext'      => 'Akken ad tessneḍ amek ara tnadiḍ deg {{SITENAME}}, ẓer [[{{MediaWiki:helppage}}|{{int:help}}]].',
+'searchresulttext'      => 'Akken ad tessneḍ amek ara tnadiḍ deg {{SITENAME}}, ẓer [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "Tnadiḍ ɣef '''[[:$1]]'''",
 'searchsubtitleinvalid' => "Tnadiḍ ɣef '''$1'''",
 'noexactmatch'          => "'''Asebter s yisem \"\$1\" ulac-it.''' Tzemreḍ ad [[:\$1|txelqeḍ asebter-agi]].",
@@ -919,7 +920,7 @@ Ma tesɛiḍ tugna-nni s resolution tameqqrant, azen-it, ma ulac beddel isem-is.
 'unusedtemplatestext' => 'Asebter-agi yesɛa umuɣ n akk isebtar n isem n taɣult s yisem "talɣa" iwumi ulac-iten deg ḥedd asebter. Ur tettuḍ ara ad tessenqdeḍ isebtar n talɣa wiyaḍ qbel ad temḥuḍ.',
 'unusedtemplateswlh'  => 'izdayen wiyaḍ',
 
-# Random pages
+# Random page
 'randompage'         => 'Asebter menwala',
 'randompage-nopages' => 'Ulac isebtar deg isem n taɣult agi.',
 
@@ -1148,7 +1149,7 @@ Akken ad tbeddleḍ n wumuɣ n uɛessi inek settings, ruḥ ɣer
 {{fullurl:{{ns:special}}:Watchlist/edit}}
 
 Tadhelt:
-{{fullurl:{{MediaWiki:helppage}}}}',
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'              => 'Mḥu asebter',

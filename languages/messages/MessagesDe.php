@@ -414,7 +414,7 @@ $messages = array(
 'page-rss-feed'           => 'RSS-Feed für „$1“',
 'page-atom-feed'          => 'Atom-Feed für „$1“',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Seite',
 'nstab-user'      => 'Benutzerseite',
 'nstab-media'     => 'Media',
@@ -456,7 +456,7 @@ Grund der Sperrung: $1',
 
 Die Seite ist möglicherweise gelöscht oder verschoben worden.
 
-Falls dies nicht der Fall ist, hast du eventuell einen Fehler in der Software gefunden. Bitte melde  dies einem [[{{MediaWiki:grouppage-sysop}}|Administrator]] unter Nennung der URL.',
+Falls dies nicht der Fall ist, hast du eventuell einen Fehler in der Software gefunden. Bitte melde  dies einem [[{{MediaWiki:Grouppage-sysop}}|Administrator]] unter Nennung der URL.',
 'readonly_lag'         => 'Die Datenbank wurde automatisch für Schreibzugriffe gesperrt, damit sich die verteilten Datenbankserver (slaves) mit dem Hauptdatenbankserver (master) abgleichen können.',
 'internalerror'        => 'Interner Fehler',
 'internalerror_info'   => 'Interner Fehler: $1',
@@ -638,7 +638,7 @@ Du kannst diese Nachricht ignorieren, falls das Benutzerkonto durch einen Fehler
 nur die Bearbeitung und Erstellung von Seiten in {{SITENAME}} wurde gesperrt.
 Sollte diese Nachricht angezeigt werden, obwohl nur lesend zugriffen wurde, bist du einem (roten) Link auf eine noch nicht existente Seite gefolgt.</p>
 
-Du kannst $1 oder einen der anderen [[{{MediaWiki:grouppage-sysop}}|Administratoren]] kontaktieren, um über die Sperre zu diskutieren.
+Du kannst $1 oder einen der anderen [[{{MediaWiki:Grouppage-sysop}}|Administratoren]] kontaktieren, um über die Sperre zu diskutieren.
 
 <div style="border-style: solid; border-color: red; border-width: 1px; padding:5px;">
 \'\'\'Bitte gib folgende Daten in jeder Anfrage an:\'\'\'
@@ -659,7 +659,7 @@ Als Grund wurde angegeben:
 nur die Bearbeitung und Erstellung von Seiten in {{SITENAME}} wurde gesperrt.
 Sollte diese Nachricht angezeigt werden, obwohl nur lesend zugriffen wurde, bist du einem (roten) Link auf eine noch nicht existente Seite gefolgt.</p>
 
-Du kannst $1 oder einen der anderen [[{{MediaWiki:grouppage-sysop}}|Administratoren]] kontaktieren, um über die Sperre zu diskutieren.
+Du kannst $1 oder einen der anderen [[{{MediaWiki:Grouppage-sysop}}|Administratoren]] kontaktieren, um über die Sperre zu diskutieren.
 
 <div style="border-style: solid; border-color: red; border-width: 1px; padding:5px;">
 \'\'\'Bitte gib folgende Daten in jeder Anfrage an:\'\'\'
@@ -692,6 +692,7 @@ Du kannst $1 oder einen der anderen [[{{MediaWiki:grouppage-sysop}}|Administrato
 'newarticletext'            => 'Hier den Text der neuen Seite eintragen. Bitte nur in ganzen Sätzen schreiben und keine urheberrechtsgeschützten Texte anderer kopieren.',
 'anontalkpagetext'          => "---- ''Diese Seite dient dazu, einem nicht angemeldeten Benutzer Nachrichten zu hinterlassen. Wenn du mit den Kommentaren auf dieser Seite nichts anfangen kannst, richten sie sich vermutlich an einen früheren Inhaber deiner IP-Adresse und du kannst sie ignorieren.''",
 'noarticletext'             => '(Diese Seite enthält momentan noch keinen Text)',
+'userpage-userdoesnotexist' => 'Das Benutzerkonto „$1“ ist nicht vorhanden. Bitte prüfe, ob du diese Seite wirklich erstellen/bearbeiten willst.',
 'clearyourcache'            => "'''Hinweis:''' Leere nach dem Speichern den Browser-Cache, um die Änderungen zu sehen: '''Mozilla/Firefox:''' ''Shift-Strg-R'', '''Internet Explorer:''' ''Strg-F5'', '''Opera:''' ''F5'', '''Safari:''' ''⌘-R'', '''Konqueror:''' ''Strg-R''.",
 'usercssjsyoucanpreview'    => '<strong>Tipp:</strong> Benutze den Vorschau-Button, um dein neues css/js vor dem Speichern zu testen.',
 'usercsspreview'            => "== Vorschau Ihres Benutzer-CSS ==
@@ -845,6 +846,29 @@ Administratoren können den entfernten Inhalt oder andere entfernte Bestandteile
 'oversightlog'    => 'Oversight-Logbuch',
 'overlogpagetext' => 'Das ist das Logbuch der Löschungen und Sperren, die vor Administratoren versteckt sind.',
 
+# History merging
+'mergehistory'         => 'Versionsgeschichten vereinen',
+'mergehistory-header'  => "Mit dieser Spezialseite kannst du die Versionsgeschichte einer Ursprungsseite mit der Versionsgeschichte einer Zieleite vereinen.
+Stelle dadurch sicher, dass die Versionsgeschichte eines Artikel historisch korrekt ist.
+
+'''Als Minumum muss die aktuelle Version der Ursprungsseite erhalten bleiben.'''",
+'mergehistory-box'     => 'Versionsgeschichten zweier Seiten vereinen',
+'mergehistory-from'    => 'Ursprungsseite:',
+'mergehistory-into'    => 'Zielseite:',
+'mergehistory-list'    => 'Versionen, die vereinigt werden können',
+'mergehistory-merge'   => 'Die folgenden Versionen von „[[:$1]]“ können nach „[[:$2]]“ übertragen werden. Markiere die Version, bis zu der (einschließlich) die Versionen werden sollen. Bitte beachte, dass die Nutzung der Navigationslinks die Auswahl zurücksetzt.',
+'mergehistory-go'      => 'Zeige Versionen, die vereinigt werden können',
+'mergehistory-submit'  => 'Vereinige Versionen',
+'mergehistory-empty'   => 'Es können keine Versionen vereinigt werden',
+'mergehistory-success' => '{{PLURAL:$3|1 Version|$3 Versionen}} von „[[:$1]]“ erfolgreich nach „[[:$2]]“ vereinigt.',
+'mergehistory-fail'    => 'Versionsvereinigung nicht möglich, bitte prüfe die Seite und die Zeitangaben.',
+
+# Merge log
+'mergelog'           => 'Vereinigungs-Logbuch',
+'pagemerge-logentry' => 'vereinigte [[$1]] in [[$2]] (Versionen bis $3)',
+'revertmerge'        => 'rückgängig Vereinigung',
+'mergelogpagetext'   => 'Dies ist das Logbuch der vereinigten Versionsgeschichten.',
+
 # Diffs
 'history-title'             => 'Versionsgeschichte von „$1“',
 'difference'                => '(Unterschied zwischen Versionen)',
@@ -859,7 +883,7 @@ Administratoren können den entfernten Inhalt oder andere entfernte Bestandteile
 
 # Search results
 'searchresults'         => 'Suchergebnisse',
-'searchresulttext'      => 'Für mehr Informationen zur Suche siehe die [[{{MediaWiki:helppage}}|Hilfeseite]].',
+'searchresulttext'      => 'Für mehr Informationen zur Suche siehe die [[{{MediaWiki:Helppage}}|Hilfeseite]].',
 'searchsubtitle'        => 'Für deine Suchanfrage „[[:$1|$1]]“.',
 'searchsubtitleinvalid' => 'Für deine Suchanfrage „$1“.',
 'noexactmatch'          => "'''Es existiert keine Seite mit dem Titel „$1“.'''
@@ -1198,6 +1222,10 @@ Bitte gebe der Datei einen Namen, der den Inhalt besser beschreibt.',
 'unusedtemplatestext'     => '',
 'unusedtemplateswlh'      => 'Andere Links',
 
+# Random page
+'randompage'         => 'Zufällige Seite',
+'randompage-nopages' => 'In diesem Namensraum sind keine Seiten vorhanden.',
+
 # Random redirect
 'randomredirect'         => 'Zufällige Weiterleitung',
 'randomredirect-nopages' => 'In diesem Namensraum sind keine Weiterleitungen vorhanden.',
@@ -1286,8 +1314,6 @@ auf die bereits die erste Weiterleitung zeigen sollte.',
 'allpages-summary'                => "Diese Spezialseite listet den Seitenbestand von {{SITENAME}} von A bis Z auf. Sortiert wird alphabetisch, erst Zahlen, dann Großbuchstaben, Kleinbuchstaben und schließlich Sonderzeichen. ''A&nbsp;10'' findet sich vor ''AZ'', der ''Aal'' ist jedoch noch dahinter eingeordnet.",
 'prefixindex'                     => 'Alle Seiten (mit Präfix)',
 'prefixindex-summary'             => 'Diese Spezialseite zeigt alle Seiten, die mit der eingegebenen Zeichenfolge („Präfix“) beginnen. Die Ausgabe kann auf einen Namensraum eingeschränkt werden.',
-'randompage'                      => 'Zufällige Seite',
-'randompage-nopages'              => 'In diesem Namensraum sind keine Seiten vorhanden.',
 'shortpages'                      => 'Kurze Seiten',
 'shortpages-summary'              => 'Diese Liste zeigt die kürzesten Seiten im Hauptnamensraum an. Gezählt werden die Zeichen des Textes wie er im Bearbeitungsfenster dargestellt wird, also in Wiki-Syntax und ohne die Inhalte eingebundener Vorlagen. Grundlage der Zählung ist der UTF-8-kodierte Text, nach dem beispielsweise deutsche Umlaute als zwei Zeichen gelten.',
 'longpages'                       => 'Lange Seiten',
@@ -1467,7 +1493,7 @@ Um die Einstellungen deiner Beobachtungsliste anzupassen, besuche: {{fullurl:Spe
 'confirmdelete'               => 'Löschen bestätigen',
 'deletesub'                   => '(Lösche „$1“)',
 'historywarning'              => 'Achtung, die Seite, die du löschen möchtest, hat eine Versionsgeschichte:',
-'confirmdeletetext'           => 'Du bist dabei, eine Seite oder eine Datei und alle zugehörigen älteren Versionen zu löschen. Bitte bestätige dazu, dass du dir der Konsequenzen bewusst bist, und dass Du in Übereinstimmung mit den [[{{MediaWiki:policy-url}}|Richtlinien]] handelst.',
+'confirmdeletetext'           => 'Du bist dabei, eine Seite oder eine Datei und alle zugehörigen älteren Versionen zu löschen. Bitte bestätige dazu, dass du dir der Konsequenzen bewusst bist, und dass Du in Übereinstimmung mit den [[{{MediaWiki:Policy-url}}|Richtlinien]] handelst.',
 'actioncomplete'              => 'Aktion beendet',
 'deletedtext'                 => '„$1“ wurde gelöscht. Im $2 findest du eine Liste der letzten Löschungen.',
 'deletedarticle'              => 'hat „[[$1]]“ gelöscht',
@@ -1476,6 +1502,13 @@ Um die Einstellungen deiner Beobachtungsliste anzupassen, besuche: {{fullurl:Spe
 'deletionlog'                 => 'Lösch-Logbuch',
 'reverted'                    => 'Auf eine alte Version zurückgesetzt',
 'deletecomment'               => 'Grund der Löschung',
+'deleteotherreason'           => 'Anderer/ergänzender Grund:',
+'deletereasonotherlist'       => 'Anderer Grund',
+'deletereason-dropdown'       => '
+* Allgemeine Löschgründe
+** Wunsch des Autors
+** Urheberrechtsverletzung
+** Vandalismus',
 'rollback'                    => 'Zurücksetzen der Änderungen',
 'rollback_short'              => 'Zurücksetzen',
 'rollbacklink'                => 'Zurücksetzen',
@@ -1624,7 +1657,7 @@ $1',
 # Block/unblock
 'blockip'                     => 'IP-Adresse/Benutzer sperren',
 'blockiptext'                 => 'Mit diesem Formular sperrst du eine IP-Adresse oder einen Benutzernamen, so dass von dort keine Änderungen mehr vorgenommen werden können.
-Dies sollte nur erfolgen, um Vandalismus zu verhindern und in Übereinstimmung mit den [[{{MediaWiki:policy-url}}|Richtlinien]].
+Dies sollte nur erfolgen, um Vandalismus zu verhindern und in Übereinstimmung mit den [[{{MediaWiki:Policy-url}}|Richtlinien]].
 Bitte gib den Grund für die Sperre an.',
 'ipaddress'                   => 'IP-Adresse oder Benutzername:',
 'ipadressorusername'          => 'IP-Adresse oder Benutzername:',
@@ -2404,8 +2437,8 @@ Bitte bestätige, dass du diese Seite wirklich neu erstellen möchten.",
 'watchlistedit-raw-removed'    => '{{PLURAL:$1|1 Eintrag wurde|$1 Einträge wurden}} entfernt:',
 
 # Watchlist editing tools
-'watchlisttools-view'  => 'Beobachtungsliste: Änderungen',
-'watchlisttools-edit'  => 'normal bearbeiten',
-'watchlisttools-raw'   => 'Listenformat bearbeiten (Import/Export)',
+'watchlisttools-view' => 'Beobachtungsliste: Änderungen',
+'watchlisttools-edit' => 'normal bearbeiten',
+'watchlisttools-raw'  => 'Listenformat bearbeiten (Import/Export)',
 
 );

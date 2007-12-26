@@ -9,6 +9,7 @@
  * @author Горан Анђелковић
  * @author Spacebirdy
  * @author SPQRobin
+ * @author Siebrand
  */
 
 $skinNames = array(
@@ -260,22 +261,22 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'A prepaus de {{SITENAME}}',
-'aboutpage'         => '{{ns:4}}:A prepaus',
+'aboutpage'         => 'Project:A prepaus',
 'bugreports'        => "Rapòrt d'errors",
-'bugreportspage'    => "{{ns:project}}:Rapòrt d'errors",
+'bugreportspage'    => "Project:Rapòrt d'errors",
 'copyright'         => 'Lo contengut es disponible segon los tèrmes de la licéncia $1.',
 'copyrightpagename' => 'licéncia {{SITENAME}}',
 'copyrightpage'     => '{{ns:project}}:Copyright',
 'currentevents'     => 'Actualitats',
 'currentevents-url' => 'Project:Actualitats',
 'disclaimers'       => 'Avertiments',
-'disclaimerpage'    => '{{ns:4}}:Avertiments generals',
+'disclaimerpage'    => 'Project:Avertiments generals',
 'edithelp'          => 'Ajuda',
 'edithelppage'      => '{{ns:project}}:Cossí editar una pagina',
 'helppage'          => '{{ns:project}}:Ajuda',
 'mainpage'          => 'Acuèlh',
 'portal'            => 'Comunautat',
-'portal-url'        => '{{ns:4}}:Acuèlh',
+'portal-url'        => 'Project:Acuèlh',
 'privacy'           => 'Politica de confidencialitat',
 'privacypage'       => 'meta:Confidencialitat',
 'sitesupport'       => 'Participar en fasent un don',
@@ -312,7 +313,7 @@ $messages = array(
 'page-rss-feed'           => 'Flus RSS de "$1"',
 'page-atom-feed'          => 'Flus Atom de "$1"',
 
-# Short words for each namespace, by default used in the 'page' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Article',
 'nstab-user'      => "Pagina d'utilizaire",
 'nstab-media'     => 'Pagina de mèdia',
@@ -515,9 +516,9 @@ Abans qu’un autre corrièr sià mandat a aqueste compte, devretz seguir las in
 'summary-preview'           => 'Previsualizacion del resumit',
 'subject-preview'           => 'Previsualizacion del subjècte/títol',
 'blockedtitle'              => 'Utilizaire blocat',
-'blockedtext'               => "<big>'''Vòstre compte d'utilizaire o vòstra adreça IP son estadas blocadas'''</big> per $1 per la rason seguenta :<br />$2<p> Podètz contactar $1 o un autre [[{{MediaWiki:grouppage-sysop}}|administrator]] per ne discutir.
+'blockedtext'               => "<big>'''Vòstre compte d'utilizaire o vòstra adreça IP son estadas blocadas'''</big> per $1 per la rason seguenta :<br />$2<p> Podètz contactar $1 o un autre [[{{MediaWiki:Grouppage-sysop}}|administrator]] per ne discutir.
 Vòstra adreça IP actuala es $3, e lo blocatge d'adreça IP es #$5. Inclusissètz caduna d'aquestas entre-senha dins vòstra requèsta.",
-'autoblockedtext'           => 'Vòstra adreça IP es estada blocada automaticament perque es estada utilizada per un autre utilizaire, ele-meteis blocat per $1. La rason balhada es : :\'\'$2\'\' Expiracion del blocatge : $6 Podètz contactar $1 o un dels autres [[{{MediaWiki:grouppage-sysop}}|administrators]] per discutir d\'aqueste blocatge. Notatz que podètz pas utilizar la foncion "Mandar un messatge a aqueste utilizaire" a mens qu’aguessetz balhat una adreça e-mail valida dins vòstras [[Special:Preferences|preferéncias]]. Vòstre identificant de blocatge es $5. Precizatz-lo dins tota requèsta.',
+'autoblockedtext'           => 'Vòstra adreça IP es estada blocada automaticament perque es estada utilizada per un autre utilizaire, ele-meteis blocat per $1. La rason balhada es : :\'\'$2\'\' Expiracion del blocatge : $6 Podètz contactar $1 o un dels autres [[{{MediaWiki:Grouppage-sysop}}|administrators]] per discutir d\'aqueste blocatge. Notatz que podètz pas utilizar la foncion "Mandar un messatge a aqueste utilizaire" a mens qu’aguessetz balhat una adreça e-mail valida dins vòstras [[Special:Preferences|preferéncias]]. Vòstre identificant de blocatge es $5. Precizatz-lo dins tota requèsta.',
 'blockedoriginalsource'     => "Lo còde font de '''$1''' es indicat çai jos :",
 'blockededitsource'         => "Lo tèxt de '''vòstras edicions''' sus '''$1''' es afichat çai jos :",
 'whitelistedittitle'        => 'Enregistrament necessari per modificar lo contengut',
@@ -992,7 +993,7 @@ L'ora indicada es la del serveire (UTC).",
 'unusedtemplatestext' => 'Aquesta pagina lista totas las paginas de l’espaci de noms « Modèl » que son incluses dins cap autra pagina. Doblidetz pas de verificar se i a pas d’autre ligam vèrs los modèls abans de los suprimir.',
 'unusedtemplateswlh'  => 'autres ligams',
 
-# Random pages
+# Random page
 'randompage'         => "Una pagina a l'azard",
 'randompage-nopages' => 'I a pas cap de pagina dins aqueste espaci de nom.',
 
@@ -1219,7 +1220,7 @@ Per modificar los paramètres de vòstra lista de seguit, visitatz
 {{fullurl:Special:Watchlist/edit}}
 
 Retorn e assisténcia :
-{{fullurl:{{MediaWiki:helppage}}}}',
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'                  => 'Suprimir una pagina',
@@ -1233,7 +1234,7 @@ Retorn e assisténcia :
 'historywarning'              => 'Atencion: La pagina que sètz a mand de suprimir a un istoric:',
 'confirmdeletetext'           => "Sètz a mand de suprimir definitivament de la banca de donadas una pagina
 o un imatge, e mai totas sas versions anterioras.
-Confirmatz qu'es plan çò que volètz far, que ne comprenètz las consequéncias e que fasètz aquò en acòrdi amb las [[{{MediaWiki:policy-url}}]].",
+Confirmatz qu'es plan çò que volètz far, que ne comprenètz las consequéncias e que fasètz aquò en acòrdi amb las [[{{MediaWiki:Policy-url}}]].",
 'actioncomplete'              => 'Supression efectuada',
 'deletedtext'                 => '"$1" es estat suprimit.
 Vejatz $2 per una lista de las supressions recentas.',
@@ -1385,7 +1386,7 @@ $1",
 # Block/unblock
 'blockip'                     => 'Blocar una adreça IP',
 'blockiptext'                 => "Utilizatz lo formulari çai jos per blocar l'accès en escritura a partir d'una adreça IP donada.
-Una tala mesura deu pas èsser presa pas que per empachar lo vandalisme e en acòrdi amb [[{{MediaWiki:policy-url}}]].
+Una tala mesura deu pas èsser presa pas que per empachar lo vandalisme e en acòrdi amb [[{{MediaWiki:Policy-url}}]].
 Donatz çai jos una rason precisa (per exemple en indicant las paginas que son estadas vandalizadas).",
 'ipaddress'                   => 'Adreça IP',
 'ipadressorusername'          => 'Adreça IP o nom d’utilizaire',

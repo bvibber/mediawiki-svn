@@ -285,16 +285,16 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Üvver de {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:Üvver de {{SITENAME}}',
+'aboutpage'         => 'Project:Üvver de {{SITENAME}}',
 'bugreports'        => 'Fähler melde',
-'bugreportspage'    => '{{ns:project}}:Kontak',
+'bugreportspage'    => 'Project:Kontak',
 'copyright'         => 'Dä Enhald steiht unger de $1.',
 'copyrightpagename' => 'Lizenz',
 'copyrightpage'     => '{{ns:project}}:Lizenz',
 'currentevents'     => 'Et Neuste',
 'currentevents-url' => '{{ns:project}}:Et Neuste',
 'disclaimers'       => 'Hinwies',
-'disclaimerpage'    => '{{ns:project}}:Impressum',
+'disclaimerpage'    => 'Project:Impressum',
 'edithelp'          => 'Hölp för et Bearbeide',
 'edithelppage'      => '{{ns:project}}:Hölp',
 'faq'               => 'FAQ',
@@ -302,7 +302,7 @@ $messages = array(
 'helppage'          => '{{ns:project}}:Hölp',
 'mainpage'          => 'Haupsigg',
 'portal'            => 'Üvver {{SITENAME}}',
-'portal-url'        => '{{ns:project}}:Metmaacher Pooz',
+'portal-url'        => 'Project:Metmaacher Pooz',
 'privacy'           => 'Daateschotz un Jeheimhaldung',
 'privacypage'       => '{{ns:project}}:Daateschotz un Jeheimhaldung',
 'sitesupport'       => 'Spende',
@@ -784,7 +784,7 @@ dem Wiki singe Installation dat anders fassjelaht woode es.',
 
 # Search results
 'searchresults'         => 'Wat beim Söke eruskom',
-'searchresulttext'      => 'Luur op de Sigg üvver et [[{{MediaWiki:helppage}}|{{int:help}}]] noh, wann de mieh drüvver wesse wells, wie mer en de {{SITENAME}} jet fingk.',
+'searchresulttext'      => 'Luur op de Sigg üvver et [[{{MediaWiki:Helppage}}|{{int:help}}]] noh, wann de mieh drüvver wesse wells, wie mer en de {{SITENAME}} jet fingk.',
 'searchsubtitle'        => 'För Ding Froch noh „[[:$1]]“.',
 'searchsubtitleinvalid' => 'För Ding Froch noh „$1“.',
 'badquery'              => 'Verkihrte Aanfroch för et Söke',
@@ -1318,7 +1318,7 @@ Do kanns hee noh Hölp luure:
 'deletesub'                   => '(De Sigg „$1“ soll fottjeschmesse wääde)',
 'historywarning'              => '<strong>Opjepass:</strong> Die Sigg hät ene janze Püngel Versione',
 'confirmdeletetext'           => 'Do bes koot dovör, en Sigg för iwich fottzeschmieße. Dobei verschwind och de janze Verjangenheit vun dä Sigg us de Daatebank, met all ehr Änderunge un Metmaacher Name, un all dä Opwand, dä do dren stich. Do muss hee jetz bestätije, dat de versteihs, wat dat bedügg, un dat De weiß, wat Do do mähs.
-<strong>Dun et nor, wann De met de [[{{MediaWiki:policy-url}}]] wirklich zosamme jeihs!</strong>',
+<strong>Dun et nor, wann De met de [[{{MediaWiki:Policy-url}}]] wirklich zosamme jeihs!</strong>',
 'actioncomplete'              => 'Erledich',
 'deletedtext'                 => 'De Sigg „$1“ es jetz fottjeschmesse woode. Luur Der „$2“ aan, do häs De en Liss met de Neuste fottjeschmesse Sigge.',
 'deletedarticle'              => 'hät fottjeschmesse: „[[$1]]“',
@@ -1422,7 +1422,7 @@ un widder herjehollte Sigge.',
 IP-Adresse sperre, su dat se hee em Wiki nit mieh 
 schrieve und Sigge ändere künne. Dat sollt nor jedon wääde om sujenannte 
 Vandaale ze bremse. Un mer müsse uns dobei natörlich aan uns 
-[[{{MediaWiki:policy-url}}|Rejele]] för sun Fäll halde.
+[[{{MediaWiki:Policy-url}}|Rejele]] för sun Fäll halde.
 Drag bei „Aanlass“ ene möchlichs jenaue Jrund en, wöröm dat Sperre passeet. Nenn un Link op de Sigge wo Einer kapott jemaat hät, zem Beispill.
 Luur op [[Special:Ipblocklist|de Liss met jesperrte IP_Adresse]] wann de ne Üvverbleck üvver de Sperrunge han wells, un och wann De se ändere wells.',
 'ipaddress'                   => 'IP-Adress',

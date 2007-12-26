@@ -80,6 +80,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   cleanly if database connections fail unpleasantly.
 * (bug 12028) Add Special:Listbots as shortcut for Special:Listusers/bot
 * (bug 9633) Add a predefined list of delete reasons to the deletion form
+* Show a warning message when creating/editing a user (talk) page but the user
+  does not exists
 
 === Bug fixes in 1.12 ===
 
@@ -193,7 +195,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Make sure that the correct log entries are shown on Special:Userrights even
   for users with special characters in their names
 * The number of watching users in watchlists was always reported as 1
-  
+* namespaceDupes.php no longer dies when coming across an illegal title
+* Make API check for restrictions in the old format too.
+
 == Parser changes in 1.12 ==
 
 The parser pass order has changed from
@@ -295,6 +299,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Outputting list of all user preferences rather than having to request them by 
   name
 * (bug 11206) api.php should honor maxlag
+* Added diff generation to prop=revisions
+* Added support for traditional, unified and array diffs to prop=revisions
 
 === Languages updated in 1.12 ===
 
@@ -322,8 +328,11 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Buginese (bug) (new)
 * Catalan (ca)
 * Zamboangueño (cbk-zam) (new)
+* Min Dong (cdo) (new)
 * Chechen (ce)
 * Cebuano (ceb) (new)
+* Crimean Tatar (Cyrillic) (crh-cyrl) (new)
+* Crimean Tatar (Latin) (crh-latn) (new)
 * Czech (cs)
 * Cassubian (csb)
 * Old Church Slavonic (cu)
@@ -336,6 +345,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Greek (el)
 * English (en)
 * Spanish (es)
+* Estonian (et)
 * Euskara (eu)
 * Extremaduran (ext)
 * Finnish (fi)
@@ -389,6 +399,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Erzya (myv) (new)
 * Nahuatl (nah)
 * Min-nan (nan)
+* Napolitan (nap)
 * Low Saxon (nds)
 * Dutch Low Saxon (nds-nl)
 * Newari (new) (new)

@@ -1,11 +1,13 @@
 <?php
-/** Bishnupriya Manipuri (বিষ্ণুপ্রিয়া মণিপুরী)
+/** Bishnupriya (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
  *
  * @addtogroup Language
  *
  * @author Uttam Singha, Dec 2006
+ * @author Usingha
+ * @author Siebrand
  */
- 
+
 $digitTransformTable = array(
 	'0' => '০',
 	'1' => '১',
@@ -241,14 +243,14 @@ $messages = array(
 'currentevents'     => 'হাদি এহানর ঘটনা',
 'currentevents-url' => 'হাদি এহানর ঘটনাহানি',
 'disclaimers'       => 'দাবি বেলানি',
-'disclaimerpage'    => '{{ns:project}}:ইজ্জু দাবি বেলানি',
+'disclaimerpage'    => 'Project:ইজ্জু দাবি বেলানি',
 'edithelp'          => 'পতানি পাংলাক',
 'edithelppage'      => '{{ns:project}}:কিসাদে_পাতা_আহান_পতানি',
 'faq'               => 'আঙলাক',
 'faqpage'           => '{{ns:project}}:আঙলাক',
 'helppage'          => '{{ns:project}}:পাংলাক',
 'mainpage'          => 'পয়লা পাতা',
-'policy-url'        => '{{ns:project}}:নীতিহান',
+'policy-url'        => 'Project:নীতিহান',
 'portal'            => 'শিংলুপ',
 'portal-url'        => '{{ns:project}}:শিংলুপ',
 'privacy'           => 'লুকরানির নীতিহান',
@@ -271,7 +273,7 @@ $messages = array(
 'showtoc'         => 'ফংকর',
 'hidetoc'         => 'মেথেল আরুম কর',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'নিবন্ধ',
 'nstab-user'      => 'আতাকুরার পাতা',
 'nstab-special'   => 'বিশেষ',
@@ -323,7 +325,7 @@ $messages = array(
 'blockedtitle'     => 'আতাকুরাগরে থেপ করানি অসে',
 'blockedtext'      => "তর আতাকুরা নাঙহান নাইলেউ আইপি ঠিকানাহানরে $1 থেপকরানি অসে। এহানর কারণহান অসেতাইঃ:<br />''$2''
 
-তি $1 নাইলেউ [[{{MediaWiki:grouppage-sysop}}|প্রশাসকর]] মা যে কোন আগর লগে বিষয় এহান্ন য়্যারি পরি দে পারর। বিশেষ মাতিলতাঃ তর ই-মেইল ঠিকানাহান যদি [[Special:Preferences|তর পছন তালিকাত]] বরিয়া নাথার, অতা ইলে তি উইকিপিডিয়াত হের আতাকুরারে ই-মেইল করানি নুৱারবে। তর আইপি ঠিকানাহান ইলতাই $3। কৃপা করিয়া যে কোন যোগাযোগর সময়ত এরে ঠিকানা এহান যেসাদেউ বরিস।",
+তি $1 নাইলেউ [[{{MediaWiki:Grouppage-sysop}}|প্রশাসকর]] মা যে কোন আগর লগে বিষয় এহান্ন য়্যারি পরি দে পারর। বিশেষ মাতিলতাঃ তর ই-মেইল ঠিকানাহান যদি [[Special:Preferences|তর পছন তালিকাত]] বরিয়া নাথার, অতা ইলে তি উইকিপিডিয়াত হের আতাকুরারে ই-মেইল করানি নুৱারবে। তর আইপি ঠিকানাহান ইলতাই $3। কৃপা করিয়া যে কোন যোগাযোগর সময়ত এরে ঠিকানা এহান যেসাদেউ বরিস।",
 'confirmedittitle' => 'সম্পাদনা করানির কা ই-মেইল লেপকানি থকিতই',
 'confirmedittext'  => 'যেহানউ সম্পাদনা করানির আগে তর ই-মেইল ঠিকানাহন যেসাদেউ লেপকরানি লাগতই। কৃপাকরিয়া তর ই-মেইল ঠিকানাহান [[Special:Preferences|আতাকুরার পছনতালিকা]]ত চুমকরে বরা।',
 'loginreqtitle'    => 'লগইন দরকার ইসে',
@@ -379,13 +381,15 @@ $messages = array(
 'bysize'     => 'আকারহানর সিজিলন',
 'imagelinks' => 'জুরিসিতা',
 
+# Random page
+'randompage' => 'খাংদা পাতা',
+
 'brokenredirects' => 'বারো-নির্দেশ কামনাকরের',
 
 # Miscellaneous special pages
 'nbytes'       => '$1 বাইট',
 'ncategories'  => '$1 {{PLURAL:$1|থাক|থাকহানি}}',
 'allpages'     => 'হাবি পাতাহানি',
-'randompage'   => 'খাংদা পাতা',
 'specialpages' => 'বিশেষ পাতাহানি',
 'ancientpages' => 'পুরানা পাতাহানি',
 'move'         => 'থেইকরানি',

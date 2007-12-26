@@ -12,6 +12,8 @@
  * @author Nike
  * @author Vriullop
  * @author Pérez
+ * @author Juanpabl
+ * @author SPQRobin
  */
 
 $skinNames = array(
@@ -613,7 +615,7 @@ El bloqueig l'ha dut a terme l'usuari $1, amb el següent motiu: ''$2''
 * Final del blocatge: $6
 * Compte blocat: $7
 
-Podeu contactar $1 o un dels [[{{MediaWiki:grouppage-sysop}}|administradors]] per a discutir el blocatge.
+Podeu contactar $1 o un dels [[{{MediaWiki:Grouppage-sysop}}|administradors]] per a discutir el blocatge.
 
 Tingueu en compte que no podeu fer servir el formulari d'enviament de missatges de correu electrònic a cap usuari, fins que no tingueu una adreça de correu vàlida registrada a les vostres [[Special:Preferences|preferències d'usuari]].
 
@@ -625,7 +627,7 @@ La vostra adreça IP és $3, i el núm. ID del blocatge és #$5. Si us plau, inc
 * Inici del blocatge: $8
 * Final del blocatge: $6 
 
-Podeu contactar l'usuari $1 o algun altre dels [[{{MediaWiki:grouppage-sysop}}|administradors]] per a discutir el blocatge.
+Podeu contactar l'usuari $1 o algun altre dels [[{{MediaWiki:Grouppage-sysop}}|administradors]] per a discutir el blocatge.
 
 Recordeu que per a poder usar l'opció «Envia un missatge de correu electrònic a aquest usuari» haureu d'haver validat una adreça de correu electrònic a les vostres [[Special:Preferences|preferències]].
 
@@ -651,7 +653,7 @@ La vostra adreça IP és $3, i el núm. ID del blocatge és #$5. Si us plau, inc
 'newarticle'                => '(Nou)',
 'newarticletext'            => "Heu seguit un enllaç a una pàgina que encara no existeix.
 Per a crear-la començeu a escriure en l'espai d'abaix
-(vegeu l'[[{{MediaWiki:helppage}}|ajuda]] per a més informació).
+(vegeu l'[[{{MediaWiki:Helppage}}|ajuda]] per a més informació).
 Si sou ací per error simplement cliqueu el botó \"enrere\" del vostre navegador.",
 'anontalkpagetext'          => "----''Aquesta és la pàgina de discussió d'un usuari anònim que encara no ha creat un compte o que no usa el seu nom registrat. Per tant hem de usar la seva adreça IP numèrica per identificar-lo. Una adreça IP pot ser compartida per molts usuaris. Si sou un usuari anònim i trobau que us han adreçat comentaris inoportuns, si us plau, [[Special:Userlogin|creeu-vos un compte]] per evitar futures confusions amb altres usuaris anònims.''",
 'noarticletext'             => 'En aquest moment no hi ha text en aquesta pàgina. Podeu [[Special:Search/{{PAGENAME}}|cercar-ne el títol]] en altres pàgines o [{{fullurl:{{FULLPAGENAME}}|action=edit}} començar a escriure-hi].',
@@ -672,6 +674,7 @@ Si us plau, intenteu-lo una altra vegada. Si continua havent-hi problemes, eixiu
 ''Com que aquest web basat en wiki té habilitat l'ús de codi planer d'HTML, s'ha amagat la previsualització com a prevenció contra atacs mitjançant codis JavaScript.''
 
 <strong>Si es tracta d'una contribució legítima, si us plau, intenteu-ho una altra vegada. Si continua havent-hi problemes, eixiu la sessió del vostre compte i torneu per autenticar-vos-hi.</strong>",
+'token_suffix_mismatch'     => "<strong>S'ha refusato a suya edizión porque o suyo client ha esbarafundiato os caráuters de puntuazión en o editor. A edizión s'ha refusata ta pribar a corrompizión d'a pachina de testo. Isto gosa escaizer cuan se fa serbir un serbizio de proxy defeutuoso alazetato en a web.</strong>",
 'editing'                   => "S'està editant $1",
 'editinguser'               => "S'està editant $1",
 'editingsection'            => "S'està editant $1 (secció)",
@@ -697,7 +700,7 @@ A més a més, en enviar el vostre text, doneu fe què tot és sota la vostra au
 'readonlywarning'           => '<strong>ADVERTÈNCIA: La base de dades està tancada per manteniment
 i no podeu desar les vostres contribucions en aquests moments. podeu retallar i enganxar el codi
 en un fitxer de text i desar-lo més tard.</strong>',
-'protectedpagewarning'      => '<strong>ATENCIÓ: Aquesta pàgina està bloquejada i només pot ser editada per usuaris [[{{MediaWiki:grouppage-sysop}}|administradors]].</strong>',
+'protectedpagewarning'      => '<strong>ATENCIÓ: Aquesta pàgina està bloquejada i només pot ser editada per usuaris [[{{MediaWiki:Grouppage-sysop}}|administradors]].</strong>',
 'semiprotectedpagewarning'  => "'''Atenció:''' Aquesta pàgina està bloquejada i només pot ser editada per usuaris registrats.",
 'cascadeprotectedwarning'   => "'''Atenció:''' Aquesta pàgina està protegida de forma que només la poden editar els administradors, ja que està inclosa a {{PLURAL:$1|la següent pàgina|les següents pàgines}} amb l'opció de «protecció en cascada» activada:",
 'templatesused'             => 'Aquesta pàgina fa servir les següents plantilles:',
@@ -810,7 +813,7 @@ Altres administradors d'aquest web basat en wiki encara podrien accedir al conti
 
 # Search results
 'searchresults'         => 'Resultats de la cerca',
-'searchresulttext'      => 'Per a més informació de les cerques del projecte {{SITENAME}}, aneu a [[{{MediaWiki:helppage}}|{{int:help}}]].',
+'searchresulttext'      => 'Per a més informació de les cerques del projecte {{SITENAME}}, aneu a [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "Heu cercat '''[[:$1]]'''",
 'searchsubtitleinvalid' => 'Per consulta "$1"',
 'noexactmatch'          => "'''No hi ha cap pàgina anomenada «$1».''' Si voleu, podeu ajudar [[:$1|creant-la]].",
@@ -1334,7 +1337,7 @@ Per a canviar les opcions de la vostra llista de seguiment aneu a:
 {{fullurl:Special:Watchlist/edit}}
 
 Suggeriments i ajuda:
-{{fullurl:{{MediaWiki:helppage}}}}',
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'                  => 'Esborra aquesta pàgina',
@@ -1348,7 +1351,7 @@ Suggeriments i ajuda:
 'historywarning'              => 'Avís: La pàgina que eliminareu té un historial:',
 'confirmdeletetext'           => "Esteu a punt d'esborrar de forma permanent una pàgina o imatge i tot el seu historial de la base de dades.
 Confirmeu que realment ho voleu fer, que enteneu les
-conseqüències, i que el que esteu fent està d'acord amb la [[{{MediaWiki:policy-url}}|política]] del projecte.",
+conseqüències, i que el que esteu fent està d'acord amb la [[{{MediaWiki:Policy-url}}|política]] del projecte.",
 'actioncomplete'              => "S'ha realitzat l'acció de manera satisfactòria.",
 'deletedtext'                 => '"$1" ha estat esborrat.
 Mostra $2 per a un registre dels esborrats més recents.',
@@ -1503,7 +1506,7 @@ $1",
 'blockiptext'                 => "Empreu el següent formulari per blocar l'accés
 d'escriptura des d'una adreça IP específica o des d'un usuari determinat.
 això només s'hauria de fer per prevenir el vandalisme, i
-d'acord amb la [[{{MediaWiki:policy-url}}|política del projecte]].
+d'acord amb la [[{{MediaWiki:Policy-url}}|política del projecte]].
 Empleneu el diàleg de sota amb un motiu específic (per exemple, citant
 quines pàgines en concret estan sent vandalitzades).",
 'ipaddress'                   => 'Adreça IP',

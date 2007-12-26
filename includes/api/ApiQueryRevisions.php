@@ -45,14 +45,14 @@ class ApiQueryRevisions extends ApiQueryBase {
 			$fld_comment = false, $fld_user = false, $fld_content = false;
 
 	public function execute() {
-		$limit = $startid = $endid = $start = $end = $dir = $prop = $user = $excludeuser = null;
+		$limit = $startid = $endid = $start = $end = $dir = $prop = $user = $excludeuser = $diffto = $difftoprev = $diffformat = null;
 		extract($this->extractRequestParams());
 
 		// If any of those parameters are used, work in 'enumeration' mode.
 		// Enum mode can only be used when exactly one page is provided.
-		// Enumerating revisions on multiple pages make it extremelly 
-		// difficult to manage continuations and require additional sql indexes  
-		$enumRevMode = (!is_null($user) || !is_null($excludeuser) || !is_null($limit) || !is_null($startid) || !is_null($endid) || $dir === 'newer' || !is_null($start) || !is_null($end));
+		// Enumerating revisions on multiple pages make it extremely 
+		// difficult to manage continuations and require additional SQL indexes  
+		$enumRevMode = (!is_null($user) || !is_null($excludeuser) || !is_null($limit) || !is_null($startid) || !is_null($endid) || $dir === 'newer' || !is_null($start) || !is_null($end) | !$difftoprev);
 		
 
 		$pageSet = $this->getPageSet();
@@ -67,7 +67,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 			$this->dieUsage('The revids= parameter may not be used with the list options (limit, startid, endid, dirNewer, start, end).', 'revids');
 
 		if ($pageCount > 1 && $enumRevMode)
-			$this->dieUsage('titles, pageids or a generator was used to supply multiple pages, but the limit, startid, endid, dirNewer, user, excludeuser, start, and end parameters may only be used on a single page.', 'multpages');
+			$this->dieUsage('titles, pageids or a generator was used to supply multiple pages, but the limit, startid, endid, dirNewer, user, excludeuser, start, end and difftoprev parameters may only be used on a single page.', 'multpages');
 
 		$this->addTables('revision');
 		$this->addWhere('rev_deleted=0');
@@ -86,12 +86,46 @@ class ApiQueryRevisions extends ApiQueryBase {
 		$this->fld_comment = $this->addFieldsIf('rev_comment', isset ($prop['comment']));
 		$this->fld_size = $this->addFieldsIf('rev_len', isset ($prop['size']));
 
+		if($diffto || $difftoprev)
+			switch($diffformat)
+			{
+				case 'traditional':
+					$this->formatter = new DiffFormatter;
+					break;
+				case 'unified':
+					$this->formatter = new UnifiedDiffFormatter;
+					break;
+				case 'array':
+					$this->formatter = new ArrayDiffFormatter; 
+			}
+		if($diffto)
+		{
+			global $wgContLang;
+			$difftoRev = Revision::newFromID($diffto);
+			if(!($difftoRev instanceof Revision))
+				$this->dieUsage("There is no revision with ID $diffto", 'nosuchrev');
+			$this->diffOldText = $difftoRev->revText();
+			if($this->diffOldText == '') // deleted revision
+				$this->dieUsage("There is no revision with ID $diffto", 'nosuchrev'); // fake non-existence
+			$this->diffOldText = explode("\n", $wgContLang->segmentForDiff($this->diffOldText));
+			$this->diffto = $diffto;
+		}
+		else
+			$this->diffto = false;
+		if($difftoprev)
+		{
+			$this->revCache = array();
+			$this->difftoprev = true;
+		}
+		else
+			$this->difftoprev = false;
+
 		if (isset ($prop['user'])) {
 			$this->addFields('rev_user');
 			$this->addFields('rev_user_text');
 			$this->fld_user = true;
 		}
-		if (isset ($prop['content'])) {
+		if (isset ($prop['content']) || !is_null($diffto) || $difftoprev) {
 
 			// For each page we will request, the user must have read rights for that page
 			foreach ($pageSet->getGoodTitles() as $title) {
@@ -107,17 +141,17 @@ class ApiQueryRevisions extends ApiQueryBase {
 			$this->addFields('old_text');
 			$this->addFields('old_flags');
 
-			$this->fld_content = true;
+			$this->fld_content = isset($prop['content']);
 			
 			$this->expandTemplates = $expandtemplates;
 		}
 
-		$userMax = ($this->fld_content ? 50 : 500);
-		$botMax = ($this->fld_content ? 200 : 10000);
+		$userMax = ($this->fld_content || $diffto || $difftoprev ? 50 : 500);
+		$botMax = ($this->fld_content || $diffto || $difftoprev ? 200 : 10000);
 
 		if ($enumRevMode) {
 
-			// This is mostly to prevent parameter errors (and optimize sql?)
+			// This is mostly to prevent parameter errors (and optimize SQL?)
 			if (!is_null($startid) && !is_null($start))
 				$this->dieUsage('start and startid cannot be used together', 'badparams');
 
@@ -205,7 +239,55 @@ class ApiQueryRevisions extends ApiQueryBase {
 				$this->extractRowInfo($row));
 		}
 		$db->freeResult($res);
+		
+		if($this->difftoprev)
+		{
+			global $wgContLang;
+			ksort($this->revCache, SORT_NUMERIC);
+			$previousRevID = null;
+			$oldText = null;
+			$data =& $this->getResult()->getData();
+			$pageID = current(array_keys($pageSet->getGoodTitles()));
+			$this->diffArr = array();
+			foreach($this->revCache as $revid => $revtext)
+			{
+				$r = array();
+				if(is_null($previousRevID))
+				{
+					// First run
+					$previousRevID = $revid;
+					$oldText = explode("\n", $wgContLang->segmentForDiff($revtext));					
+					continue;
+				}
+				$newText = explode("\n", $wgContLang->segmentForDiff($revtext));
+				$diff = new Diff($oldText, $newText);
+				$r['from'] = $previousRevID;
+				$formatted = $this->formatter->format($diff);
+				if(!is_array($formatted))
+					ApiResult::setContent($r, $wgContLang->unsegmentForDiff($this->formatter->format($diff)));
+				else
+				{
+					$r['differences'] = $formatted;
+					$this->getResult()->setIndexedTagName($r['differences'], 'diff');
+				} 
+				$this->diffArr[$revid] = $r;
+								
+				$previousRevID = $revid;
+				$oldText = $newText;
+			}
 
+			if ( $this->diffArr ) {
+				# Populate the query result with the contents of $this->diffArr.
+				$knownrevs = array_keys($this->diffArr);
+				$i = count($knownrevs) - 1;
+				foreach($data['query']['pages'][$pageID]['revisions'] as &$rev) {
+					if ( $i >= 0 && isset ( $this->diffArr[$knownrevs[$i]] ) )
+						$rev['difftoprev'] = $this->diffArr[$knownrevs[$i]];
+					$i --;
+				}
+			}
+		}
+		
 		// Ensure that all revisions are shown as '<rev>' elements
 		$result = $this->getResult();
 		if ($result->getIsRawMode()) {
@@ -248,14 +330,27 @@ class ApiQueryRevisions extends ApiQueryBase {
 			$vals['comment'] = $row->rev_comment;
 		}
 		
-		if ($this->fld_content) {
+		if ($this->fld_content || $this->diffto || $this->difftoprev)
 			$text = Revision :: getRevisionText($row);
+		if ($this->fld_content) {
 			if ($this->expandTemplates) {
 				global $wgParser;
 				$text = $wgParser->preprocess( $text, Title::newFromID($row->rev_page), new ParserOptions() );
 			}
 			ApiResult :: setContent($vals, $text);
 		}
+		
+		if($this->diffto)
+		{
+			global $wgContLang;
+			$newText = explode("\n", $wgContLang->segmentForDiff($text));
+			$diff = new Diff($this->diffOldText, $newText);
+			$vals['diffto']['from'] = $this->diffto;
+			ApiResult::setContent($vals['diffto'], $wgContLang->unsegmentForDiff($this->formatter->format($diff)));
+		}
+		if($this->difftoprev)
+			// Cache the revision's content for later use
+			$this->revCache[$row->rev_id] = $text;
 		
 		return $vals;
 	}
@@ -308,6 +403,18 @@ class ApiQueryRevisions extends ApiQueryBase {
 			),
 			
 			'expandtemplates' => false,
+			'diffto' => array(
+				ApiBase :: PARAM_TYPE => 'integer'
+			),
+			'difftoprev' => false,
+			'diffformat' => array(
+				ApiBase :: PARAM_TYPE => array(
+					'traditional',
+					'unified',
+					'array',
+				),
+				ApiBase ::PARAM_DFLT => 'unified'
+			)
 		);
 	}
 
@@ -322,7 +429,10 @@ class ApiQueryRevisions extends ApiQueryBase {
 			'dir' => 'direction of enumeration - towards "newer" or "older" revisions (enum)',
 			'user' => 'only include revisions made by user',
 			'excludeuser' => 'exclude revisions made by user',
-			'expandtemplates' => 'expand templates in revision content'
+			'expandtemplates' => 'expand templates in revision content',
+			'diffto' => 'Revision number to compare all revisions with',
+			'difftoprev' => 'Diff each revision to the previous one (enum)',
+			'diffformat' => 'Format to use for diffs',
 		);
 	}
 

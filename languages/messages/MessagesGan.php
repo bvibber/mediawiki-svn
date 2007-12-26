@@ -5,6 +5,7 @@
  *
  * @author Symane
  * @author Nike
+ * @author Siebrand
  */
 
 $messages = array(
@@ -199,24 +200,24 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => '關於 {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:關於',
+'aboutpage'         => 'Project:關於',
 'bugreports'        => '報告錯誤',
-'bugreportspage'    => '{{ns:project}}:錯報報告',
+'bugreportspage'    => 'Project:錯報報告',
 'copyright'         => '箇版嗰內容係根據$1嗰條款發佈。',
 'copyrightpagename' => '{{SITENAME}} 版權',
 'copyrightpage'     => '{{ns:project}}:版權資訊',
 'currentevents'     => '新出嗰事',
 'currentevents-url' => '{{ns:project}}:新出嗰事',
 'disclaimers'       => '免責聲明',
-'disclaimerpage'    => '{{ns:project}}:免責聲明',
+'disclaimerpage'    => 'Project:免責聲明',
 'edithelp'          => '編寫幫助',
 'edithelppage'      => '{{ns:help}}:啷編寫文章',
 'faq'               => 'FAQ',
 'helppage'          => '{{ns:help}}:説明',
 'mainpage'          => '封面',
-'policy-url'        => '{{ns:project}}:政策',
+'policy-url'        => 'Project:政策',
 'portal'            => '社區',
-'portal-url'        => '{{ns:project}}:社區',
+'portal-url'        => 'Project:社區',
 'privacy'           => '隱私政策',
 'privacypage'       => '{{ns:project}}:隱私政策',
 'sitesupport'       => '贊助',
@@ -248,7 +249,7 @@ $messages = array(
 'feedlinks'               => '鎖定:',
 'feed-invalid'            => '冇用嗰鎖定類型。',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => '文章',
 'nstab-user'      => '用戶頁',
 'nstab-media'     => '媒體頁',
@@ -451,7 +452,7 @@ $2',
 * 箇回封鎖嗰到期時間係：$6 
 * 對於拕查封嗰人：$7 
 
-倷聯繫得正$1或別嗰[[{{MediaWiki:grouppage-sysop}}|管理員]]，討論箇回封鎖。除非倷到倷嗰[[Special:Preferences|帳號參數設置]]裡度設正嘞有效嗰email，伓然嗰話倷係用伓正「email到箇隻用戶」嗰功能。設正嘞有效嗰email後，箇隻功能係伓會拕封到嗰。倷嗰IP地址係$3，許拕封到嗰ID係 #$5。請倷到全部嗰查詢裡度注明箇隻地址同／或查封ID。",
+倷聯繫得正$1或別嗰[[{{MediaWiki:Grouppage-sysop}}|管理員]]，討論箇回封鎖。除非倷到倷嗰[[Special:Preferences|帳號參數設置]]裡度設正嘞有效嗰email，伓然嗰話倷係用伓正「email到箇隻用戶」嗰功能。設正嘞有效嗰email後，箇隻功能係伓會拕封到嗰。倷嗰IP地址係$3，許拕封到嗰ID係 #$5。請倷到全部嗰查詢裡度注明箇隻地址同／或查封ID。",
 'autoblockedtext'           => '因為別嗰人用過倷嗰IP地址，佢拕自動鎖到嘞。封佢嗰人係$1.
 下首係封鎖嗰理由:
 
@@ -460,7 +461,7 @@ $2',
 * 封鎖開始: $8
 * 封鎖過期: $6
 
-倷聯繫得正$1或別嗰[[{{MediaWiki:grouppage-sysop}}|管理員]]去談下箇回封鎖。
+倷聯繫得正$1或別嗰[[{{MediaWiki:Grouppage-sysop}}|管理員]]去談下箇回封鎖。
 
 注意嗰係話伓定倷冇"e-mail箇隻用戶"功能，因為倷還冇到[[Special:Preferences|用戶設置]]有隻註冊email地址，更加倷冇因為用佢拕封過。
 
@@ -573,7 +574,7 @@ $2',
 'orig'                => '起先',
 'page_first'          => '最早',
 'page_last'           => '最晏',
-'histlegend'          => '差異選擇: 標到伓同版本嗰單選鍵，接到按⽴上嗰按鈕做比較。<br /> 
+'histlegend'          => '差異選擇: 標到伓同版本嗰單選鍵，接到按𢽴上嗰按鈕做比較。<br /> 
 說明: (眼下) 指同目前版本嗰比較，(之前) 指同之前修改版本嗰比較，細 = 細修改。',
 'deletedrev'          => '[拕刪除]',
 'histfirst'           => '最早版本',
@@ -638,7 +639,7 @@ $2',
 
 # Search results
 'searchresults'         => '尋到嗰結果',
-'searchresulttext'      => '有關嗰{{SITENAME}}嗰更多資料,請參看[[{{MediaWiki:helppage}}|{{int:help}}]]。',
+'searchresulttext'      => '有關嗰{{SITENAME}}嗰更多資料,請參看[[{{MediaWiki:Helppage}}|{{int:help}}]]。',
 'searchsubtitle'        => "用'''[[:$1]]'''",
 'searchsubtitleinvalid' => "用'''$1'''尋",
 'noexactmatch'          => "'''冇找到係標題\"\$1\"嗰頁面。''' 倷可以[[:\$1|新開箇隻頁面]]。",
@@ -945,6 +946,10 @@ $2',
 'unusedtemplatestext' => '箇隻頁面列出模板空間名下底冇拕別嗰頁面使用嗰頁面。刪掉箇兮模板前請檢查別嗰連到箇隻模板嗰頁面。',
 'unusedtemplateswlh'  => '別嗰連結',
 
+# Random page
+'randompage'         => '隨機文章',
+'randompage-nopages' => '箇隻名字空間冇嗰頁面。',
+
 # Random redirect
 'randomredirect'         => '隨機重定向頁面',
 'randomredirect-nopages' => '箇隻名字空間冇重定向頁面。',
@@ -1009,8 +1014,6 @@ $2',
 'mostrevisions'           => '最常改動嗰文章',
 'allpages'                => '所有嗰頁面',
 'prefixindex'             => '首碼索引',
-'randompage'              => '隨機文章',
-'randompage-nopages'      => '箇隻名字空間冇嗰頁面。',
 'shortpages'              => '短文章',
 'longpages'               => '長文章',
 'deadendpages'            => '脫接頁面',
@@ -1157,7 +1160,7 @@ $NEWPAGE
 
 {{SITENAME}}通知系統 – 會改卟倷嗰監視列表設置，請去 {{fullurl:{{ns:special}}:Watchlist/edit}} 
 
-回饋同到別嗰説明: {{fullurl:{{MediaWiki:helppage}}}}',
+回饋同到別嗰説明: {{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'                  => '刪卟頁面',
@@ -1169,7 +1172,7 @@ $NEWPAGE
 'confirmdelete'               => '確認刪除',
 'deletesub'                   => '("$1"刪除中)',
 'historywarning'              => '警告: 倷要刪卟嗰頁面含到歷史版',
-'confirmdeletetext'           => '仰上倷就要永久刪卟資料庫嗰一隻頁面或圖像同佢嗰歷史。請確定倷要噉做，還曉得佢嗰後果，更加不能違反[[{{MediaWiki:policy-url}}]]。',
+'confirmdeletetext'           => '仰上倷就要永久刪卟資料庫嗰一隻頁面或圖像同佢嗰歷史。請確定倷要噉做，還曉得佢嗰後果，更加不能違反[[{{MediaWiki:Policy-url}}]]。',
 'actioncomplete'              => '扤正嘞',
 'deletedtext'                 => '"$1"刪卟嘞。最晏嗰刪除記錄請望$2。',
 'deletedarticle'              => '"[[$1]]"刪卟嘞',
@@ -1313,7 +1316,7 @@ $NEWPAGE
 
 # Block/unblock
 'blockip'                     => '封到IP地址',
-'blockiptext'                 => '用下底嗰表格去阻止某一IP嗰修改許可權。除非倷係為到怕佢亂扤，接到非要符合[[{{MediaWiki:policy-url}}|守則]]嗰條件下才能噉做。請到下底話隻確切原因（比如引用一隻拕破壞嗰頁面）。',
+'blockiptext'                 => '用下底嗰表格去阻止某一IP嗰修改許可權。除非倷係為到怕佢亂扤，接到非要符合[[{{MediaWiki:Policy-url}}|守則]]嗰條件下才能噉做。請到下底話隻確切原因（比如引用一隻拕破壞嗰頁面）。',
 'ipaddress'                   => 'IP地址:',
 'ipadressorusername'          => 'IP地址或用戶名:',
 'ipbexpiry'                   => '期限:',
@@ -1378,9 +1381,9 @@ $NEWPAGE
 'range_block_disabled'        => '就管理員建得正禁止封鎖嗰範圍。',
 'ipb_expiry_invalid'          => '冇用嗰結束時間。',
 'ipb_already_blocked'         => '鎖到嘞"$1"',
+'ipb_cant_unblock'            => '錯誤: 冇發現Block ID $1。箇隻IP話伓定拕解封嘍。',
 'ip_range_invalid'            => '冇用嗰IP範圍。',
 'proxyblocker'                => '代理封鎖器',
-'ipb_cant_unblock'            => '錯誤: 冇發現Block ID $1。箇隻IP話伓定拕解封嘍。',
 'proxyblockreason'            => '倷嗰IP係一隻公開嗰代理，佢拕封到嘞。請聯絡倷嗰Internet服務提供商或技術幫助再告誦佢俚箇隻嚴重嗰安全問題。',
 'proxyblocksuccess'           => '抚正囉。',
 'sorbsreason'                 => '倷嗰IP拕 DNSBL 歸到公開代理服務器。',

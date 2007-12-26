@@ -966,7 +966,7 @@ The block was made by $1. The reason given is ''$2''.
 * Expiry of block: $6
 * Intended blockee: $7
 
-You can contact $1 or another [[{{MediaWiki:grouppage-sysop}}|administrator]] to discuss the block.
+You can contact $1 or another [[{{MediaWiki:Grouppage-sysop}}|administrator]] to discuss the block.
 You cannot use the 'email this user' feature unless a valid email address is specified in your
 [[Special:Preferences|account preferences]] and you have not been blocked from using it.
 Your current IP address is $3, and the block ID is #$5. Please include either or both of these in any queries.",
@@ -979,7 +979,7 @@ The reason given is this:
 * Expiry of block: $6
 
 You may contact $1 or one of the other
-[[{{MediaWiki:grouppage-sysop}}|administrators]] to discuss the block.
+[[{{MediaWiki:Grouppage-sysop}}|administrators]] to discuss the block.
 
 Note that you may not use the "e-mail this user" feature unless you have a valid e-mail address
 registered in your [[Special:Preferences|user preferences]] and you have not been blocked from using it.
@@ -1007,13 +1007,14 @@ shown below:",
 'newarticle'                => '(New)',
 'newarticletext'            => "You've followed a link to a page that doesn't exist yet.
 To create the page, start typing in the box below
-(see the [[{{MediaWiki:helppage}}|help page]] for more info).
+(see the [[{{MediaWiki:Helppage}}|help page]] for more info).
 If you are here by mistake, just click your browser's '''back''' button.",
 'newarticletextanon'        => '{{int:newarticletext}}', # don't translate or duplicate this message to other languages
 'talkpagetext'              => '<!-- MediaWiki:talkpagetext -->', # don't translate or duplicate this message to other languages
 'anontalkpagetext'          => "----''This is the discussion page for an anonymous user who has not created an account yet or who does not use it. We therefore have to use the numerical IP address to identify him/her. Such an IP address can be shared by several users. If you are an anonymous user and feel that irrelevant comments have been directed at you, please [[Special:Userlogin|create an account or log in]] to avoid future confusion with other anonymous users.''",
 'noarticletext'             => 'There is currently no text in this page, you can [[Special:Search/{{PAGENAME}}|search for this page title]] in other pages or [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit this page].',
 'noarticletextanon'         => '{{int:noarticletext}}', # don't translate or duplicate this message to other languages
+'userpage-userdoesnotexist' => 'User account "$1" is not registered. Please check if you want to create/edit this page.',
 'clearyourcache'            => "'''Note:''' After saving, you may have to bypass your browser's cache to see the changes. '''Mozilla / Firefox / Safari:''' hold down ''Shift'' while clicking ''Reload'', or press ''Ctrl-Shift-R'' (''Cmd-Shift-R'' on Apple Mac); '''IE:''' hold ''Ctrl'' while clicking ''Refresh'', or press ''Ctrl-F5''; '''Konqueror:''': simply click the ''Reload'' button, or press ''F5''; '''Opera''' users may need to completely clear their cache in ''Tools→Preferences''.",
 'usercssjsyoucanpreview'    => "<strong>Tip:</strong> Use the 'Show preview' button to test your new CSS/JS before saving.",
 'usercsspreview'            => "'''Remember that you are only previewing your user CSS, it has not yet been saved!'''",
@@ -1220,7 +1221,7 @@ Make sure that this change will maintain historical page continuity.
 
 # Search results
 'searchresults'         => 'Search results',
-'searchresulttext'      => 'For more information about searching {{SITENAME}}, see [[{{MediaWiki:helppage}}|{{int:help}}]].',
+'searchresulttext'      => 'For more information about searching {{SITENAME}}, see [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "You searched for '''[[:$1]]'''",
 'searchsubtitleinvalid' => "You searched for '''$1'''",
 'noexactmatch'          => "'''There is no page titled \"\$1\".''' You can [[:\$1|create this page]].",
@@ -1864,7 +1865,7 @@ To change your watchlist settings, visit
 {{fullurl:{{ns:special}}:Watchlist/edit}}
 
 Feedback and further assistance:
-{{fullurl:{{MediaWiki:helppage}}}}',
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'                  => 'Delete page',
@@ -1880,7 +1881,7 @@ Feedback and further assistance:
 or image along with all of its history from the database.
 Please confirm that you intend to do this, that you understand the
 consequences, and that you are doing this in accordance with
-[[{{MediaWiki:policy-url}}]].',
+[[{{MediaWiki:Policy-url}}]].',
 'actioncomplete'              => 'Action complete',
 'deletedtext'                 => '"$1" has been deleted.
 See $2 for a record of recent deletions.',
@@ -2056,7 +2057,7 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 'blockiptext'                 => 'Use the form below to block write access
 from a specific IP address or username.
 This should be done only to prevent vandalism, and in
-accordance with [[{{MediaWiki:policy-url}}|policy]].
+accordance with [[{{MediaWiki:Policy-url}}|policy]].
 Fill in a specific reason below (for example, citing particular
 pages that were vandalized).',
 'ipaddress'                   => 'IP Address:',
@@ -2232,7 +2233,7 @@ To export pages, enter the titles in the text box below, one title per line, and
 select whether you want the current version as well as all old versions, with the page
 history lines, or just the current version with the info about the last edit.
 
-In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{MediaWiki:mainpage}}]] for the page "[[{{MediaWiki:mainpage}}]]".',
+In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{MediaWiki:Mainpage}}]] for the page "[[{{MediaWiki:Mainpage}}]]".',
 'exportcuronly'     => 'Include only the current revision, not the full history',
 'exportnohistory'   => "----
 '''Note:''' Exporting the full history of pages through this form has been disabled due to performance reasons.",

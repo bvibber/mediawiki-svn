@@ -245,16 +245,16 @@ a'r [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide Canllaw Defnyddwyr]
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Ynglŷn â {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:Ynglŷn â {{SITENAME}}',
+'aboutpage'         => 'Project:Ynglŷn â {{SITENAME}}',
 'bugreports'        => 'Adroddiadau diffygion',
-'bugreportspage'    => '{{ns:project}}:Adroddiadau diffygion',
+'bugreportspage'    => 'Project:Adroddiadau diffygion',
 'copyright'         => "Mae'r cynnwys ar gael o dan $1.",
 'copyrightpagename' => 'Hawlfraint {{SITENAME}}',
 'copyrightpage'     => '{{ns:project}}:Hawlfraint',
 'currentevents'     => 'Digwyddiadau presennol',
 'currentevents-url' => 'Materion cyfoes',
 'disclaimers'       => 'Gwadiadau',
-'disclaimerpage'    => '{{ns:project}}:Gwadiad Cyffredinol',
+'disclaimerpage'    => 'Project:Gwadiad Cyffredinol',
 'edithelp'          => 'Help gyda golygu',
 'edithelppage'      => '{{ns:project}}:Golygu',
 'faq'               => 'Cwestiynau cyffredin',
@@ -291,7 +291,7 @@ a'r [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide Canllaw Defnyddwyr]
 'restorelink'             => '$1 golygiadau wedi eu dileuo',
 'feedlinks'               => 'Porthiant:',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Erthygl',
 'nstab-user'      => 'Tudalen defnyddiwr',
 'nstab-media'     => 'Tudalen cyfrwng',
@@ -477,7 +477,7 @@ Y rheswm a roddwyd dros y blocio yw:<br />''$2''
 Daw'r bloc i ben ymhen: $<br />
 Bwriadwyd y bloc ar gyfer: $7
 
-Gallwch gysylltu â $1 neu ag un o'r [[{{MediaWiki:grouppage-sysop}}|gweinyddwyr]] eraill i drafod y bloc. Ni fyddwch yn gallu defnyddio'r nodwedd 'anfon e-bost at y defnyddiwr hwn' heblaw eich bod wedi cofnodi cyfeiriad e-bost yn eich [[Special:Preferences|dewisiadau]], ac nad ydych wedi eich atal rhag ei ddefnyddio. 
+Gallwch gysylltu â $1 neu ag un o'r [[{{MediaWiki:Grouppage-sysop}}|gweinyddwyr]] eraill i drafod y bloc. Ni fyddwch yn gallu defnyddio'r nodwedd 'anfon e-bost at y defnyddiwr hwn' heblaw eich bod wedi cofnodi cyfeiriad e-bost yn eich [[Special:Preferences|dewisiadau]], ac nad ydych wedi eich atal rhag ei ddefnyddio. 
 $3 yw eich cyfeiriad IP. Cyfeirnod y bloc yw #$5. Pan yn ysgrifennu at weinyddwr, cofiwch gynnwys naill ai eich cyfeiriad neu gyfeirnod y bloc, neu'r ddau, os gwelwch yn dda.",
 'autoblockedtext'         => "Rhoddwyd bloc yn awtomatig ar eich cyfeiriad IP oherwydd iddo gael ei ddefnyddio gan ddefnyddiwr arall, a bod bloc wedi ei roi ar hwnnw gan $1.
 Y rheswm a roddwyd dros y bloc oedd:
@@ -487,7 +487,7 @@ Y rheswm a roddwyd dros y bloc oedd:
 *Dechreuodd y bloc am: $8
 *Bydd y bloc yn dod i ben am: $6
 
-Gallwch gysylltu â $1 neu un arall o'r [[{{MediaWiki:grouppage-sysop}}|gweinyddwyr]] i drafod y bloc.
+Gallwch gysylltu â $1 neu un arall o'r [[{{MediaWiki:Grouppage-sysop}}|gweinyddwyr]] i drafod y bloc.
 
 Sylwch mai dim ond y rhai sydd wedi gosod cyfeiriad e-bost yn eu [[Special:Preferences|dewisiadau defnyddiwr]], a hwnnw heb ei flocio, sydd yn gallu 'anfon e-bost at ddefnyddiwr' trwy'r wici.
 
@@ -506,7 +506,7 @@ Cyfeirnod y bloc yw $5. Nodwch hwn wrth drafod y bloc.",
 'newarticle'              => '(Newydd)',
 'newarticletext'          => "Yr ydych wedi dilyn cysylltiad i tudalen sydd ddim wedi gael eu creu eto.
 I creuo'r tudalen, dechreuwch teipio yn y bocs isaf
-(gwelwch y [[{{MediaWiki:helppage}}|tudalen help]] am mwy o hysbys).
+(gwelwch y [[{{MediaWiki:Helppage}}|tudalen help]] am mwy o hysbys).
 Os ydych yma trwy camgymeriad, cliciwch eich botwm '''nol'''.",
 'anontalkpagetext'        => "---- ''Dyma dudalen sgwrs defnyddiwr sydd heb greu cyfrif, neu nad yw'n defnyddio'i gyfrif. Mae'n rhaid i ni ddefnyddio'r cyfeiriad IP i'w (h)adnabod. Mae'n bosib fod sawl defnyddiwr yn rhannu'r un cyfeiriad IP. Os ydych chi'n ddefnyddiwr anhysbys ac yn teimlo'ch bod wedi derbyn sylwadau amherthnasol, [[Special:Userlogin|crëwch gyfrif neu mewngofnodwch]] i osgoi dryswch gyda defnyddwyr anhysbys yn y dyfodol.''",
 'noarticletext'           => '(Does dim testun yn y tudalen hon eto)',
@@ -602,7 +602,7 @@ Eglurhad: (cyf.) = gwahaniaethau rhyngddo a'r fersiwn cyfredol,
 
 # Search results
 'searchresults'         => 'Canlyniadau chwiliad',
-'searchresulttext'      => 'Am mwy o hysbys amdano chwilio {{SITENAME}}, gwelwch [[{{MediaWiki:helppage}}|{{int:help}}]].',
+'searchresulttext'      => 'Am mwy o hysbys amdano chwilio {{SITENAME}}, gwelwch [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => 'Am gofyniad "[[:$1]]"',
 'searchsubtitleinvalid' => "Chwiliwyd am '''$1'''",
 'noexactmatch'          => "'''Nid oes tudalen o'r enw \"\$1\" yn bod.''' Gallwch [[:\$1|greu'r dudalen]].",
@@ -880,6 +880,9 @@ Os yw'r ddelwedd ar ei lawn faint gallwch barhau i'w uwchlwytho. Os na, newidiwc
 # List redirects
 'listredirects' => "Rhestru'r ail-gyfeiriadau",
 
+# Random page
+'randompage' => 'Erthygl hapgyrch',
+
 # Random redirect
 'randomredirect' => 'Tudalen ailgyfeirio ar hap',
 
@@ -939,7 +942,6 @@ Mae gan '''$2''' (neu '''$4%''') ohonynt alluoedd $5.",
 'mostrevisions'           => "Erthyglau gyda'r nifer mwyaf o ddiwygiadau",
 'allpages'                => 'Pob tudalen',
 'prefixindex'             => 'Mynegai rhagddodiad',
-'randompage'              => 'Erthygl hapgyrch',
 'shortpages'              => 'Erthyglau byr',
 'longpages'               => 'Erthyglau hir',
 'deadendpages'            => 'Tudalennau heb gysylltiadau ynddynt',
@@ -1087,7 +1089,7 @@ I newid eich gosodiadau gwylio, ymwelwch â
 {{fullurl:Special:Watchlist/edit}}
 
 Am fwy o gymorth:
-{{fullurl:{{MediaWiki:helppage}}}}',
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'                  => 'Dilëer y dudalen',
@@ -1100,7 +1102,7 @@ Am fwy o gymorth:
 'deletesub'                   => '(Wrthi\'n dileu "$1")',
 'historywarning'              => "Rhybudd: mae hanes i'r dudalen rydych ar fin ei dileu.",
 'confirmdeletetext'           => "Rydych chi ar fin dileu tudalen neu ddelwedd, ynghŷd â'i hanes, o'r data-bas, a hynny'n barhaol.
-Os gwelwch yn dda, cadarnhewch eich bod chi wir yn bwriadu gwneud hyn, eich bod yn deall y canlyniadau, ac yn ei wneud yn ôl [[{{MediaWiki:policy-url}}|polisïau {{SITENAME}}]].",
+Os gwelwch yn dda, cadarnhewch eich bod chi wir yn bwriadu gwneud hyn, eich bod yn deall y canlyniadau, ac yn ei wneud yn ôl [[{{MediaWiki:Policy-url}}|polisïau {{SITENAME}}]].",
 'actioncomplete'              => "Wedi cwblhau'r weithred",
 'deletedtext'                 => 'Mae "$1" wedi\'i ddileu. 
 Gwelwch y $2 am gofnod o\'r dileuon diweddar.',
@@ -1317,7 +1319,7 @@ Mae'r erthygl \"[[\$1]]\" yn bodoli'n barod. Ydych chi am ddileu'r erthygl er mw
 
 I allforio tudalennau, teipiwch y teitlau yn y bocs testun isod, bobi linell i'r teitlau; a dewis p'un ai ydych chi eisiau'r diwygiad presennol a'r holl fersiynnau blaenorol, gyda hanes y dudalen; ynteu a ydych am y diwygiad presennol a'r wybodaeth am y golygiad diweddaraf yn unig.
 
-Yn achos yr ail ddewis, mae modd defnyddio cyswllt, e.e. [[{{ns:special}}:Export/{{MediaWiki:mainpage}}]] ar gyfer y dudalen \"[[{{MediaWiki:mainpage}}]]\".",
+Yn achos yr ail ddewis, mae modd defnyddio cyswllt, e.e. [[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]] ar gyfer y dudalen \"[[{{MediaWiki:Mainpage}}]]\".",
 'exportcuronly'     => 'Cynnwys y diwygiad diweddaraf yn unig, nid yr hanes llawn',
 'exportnohistory'   => "----
 '''Sylwer:''' er mwyn peidio â gor-lwytho'r gweinydd, analluogwyd allforio hanes llawn y tudalennau.",

@@ -244,7 +244,7 @@ dj'artìcol ancó pa scrit",
 'faqpage'           => 'Project:FAQ',
 'helppage'          => 'Project:Agiut',
 'mainpage'          => 'Intrada',
-'policy-url'        => '{{ns:Project}}:Deuit',
+'policy-url'        => 'Project:Deuit',
 'portal'            => 'Piòla',
 'portal-url'        => 'Project:Piòla',
 'privacy'           => 'Polìtica ëd confindensialità',
@@ -283,7 +283,7 @@ dj'artìcol ancó pa scrit",
 'page-rss-feed'           => 'Emission RSS "$1"',
 'page-atom-feed'          => 'Emission Atom "$1"',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Artìcol',
 'nstab-user'      => "Pàgina dl'utent",
 'nstab-media'     => 'Pàgina multimedial',
@@ -325,7 +325,7 @@ L'aministrator che a l'ha blocala a l'ha lassà sto messagi-sì:
 <p>:$1",
 'missingarticle'       => "La base dat a l'ha pa trovà ël test ëd la pàgina \"\$1\", che però a l'avrìa pro dovù trové.<br />
 Sòn a l'é pa n'eror dla base dat, ma a l'ha l'ària dë esse na gran-a dël programa.<br />
-Për piasì, che a-j segnala sossì a n'[[{{MediaWiki:policy-url}}|aministrator]] dël sistema, specificand tìtol dla pàgina e ora dl'assident.",
+Për piasì, che a-j segnala sossì a n'[[{{MediaWiki:Policy-url}}|aministrator]] dël sistema, specificand tìtol dla pàgina e ora dl'assident.",
 'readonly_lag'         => "La base dat a l'é staita blocà n'automàtich antramentr che che le màchine dël circuito secondari (slave) as buto an pari con cole dël prinsipal (master)",
 'internalerror'        => 'Eror intern',
 'internalerror_info'   => 'Eror antern: $1',
@@ -498,7 +498,7 @@ Për piasì che a buta n'adrëssa scrita giusta ò che a lassa ël camp veujd.",
 * Blocà a parte dal: \$8
 * Fin al: \$6<br />
 * As veul blochesse: \$7
-A peul butesse an contact con \$1 ò pura n'àotr [[{{MediaWiki:grouppage-sysop}}|aministrator]] për discute ëd sò blocagi.
+A peul butesse an contact con \$1 ò pura n'àotr [[{{MediaWiki:Grouppage-sysop}}|aministrator]] për discute ëd sò blocagi.
 Ch'a ten-a present ch'a podrà dovré la fonsion \"mandeje un messagi ëd pòsta a l'utent\" mach s'a l'ha specificà n'adrëssa ëd pòsta vàlida ant 
 [[Special:Preferences|sò gust]] e se sta fonsion a l'é nen ëstàita blocà 'cò chila. 
 Soa adrëssa IP corenta a l'é \$3, e l'identificativ dël blocagi a l'é #\$5. Për piasì, ch'a-j buta tut e doj ant soe comunicassion ant sta question-sì.",
@@ -508,7 +508,7 @@ La rason butà për ël blòch a l'é:''\$2''
 * A va a la fin dël: \$6
 
 A peul contaté \$1 ò pura n'àotr dj'
-[[{{MediaWiki:grouppage-sysop}}|aministrator]] për discute d'ës blòch.
+[[{{MediaWiki:Grouppage-sysop}}|aministrator]] për discute d'ës blòch.
 
 Ch'a varda mach ch'a peul nen dovré l'opsion ëd \"mandeje un messagi a l'utent\" se a l'ha nen n'adrëssa ëd pòsta eletrònica registra e verificà ant [[Special:Preferences|sò gust]].
 Sò nùmer ëd blòch a l'é \$5. Për piasì, ës nùmer-sì ch'a lo buta sempe an tute le comunicassion andova ch'as parla ëd sò blòch.",
@@ -717,7 +717,7 @@ na restrission adissional da j'operator dël sit.",
 
 # Search results
 'searchresults'         => "Arsultà dl'arserca",
-'searchresulttext'      => "Per avej pì d'anformassion ant sl'arserca interna ëd {{SITENAME}}, che a varda [[{{MediaWiki:helppage}}|Arserca ant la {{SITENAME}}]].",
+'searchresulttext'      => "Per avej pì d'anformassion ant sl'arserca interna ëd {{SITENAME}}, che a varda [[{{MediaWiki:Helppage}}|Arserca ant la {{SITENAME}}]].",
 'searchsubtitle'        => 'Domanda "[[:$1]]"',
 'searchsubtitleinvalid' => 'Domanda "$1"',
 'noexactmatch'          => "'''La pàgina \"\$1\" a-i é pa.''' As peul [[:\$1|creéla d'amblé]].",
@@ -882,7 +882,7 @@ për podej carié dj'archivi.",
 'upload_directory_read_only'  => 'Ël programa webserver a-i la fa nen a scrive ansima a la diretriss ëd càrich ($1).',
 'uploaderror'                 => 'Eror dëmentré che as cariava',
 'uploadtext'                  => "'''DOSMAN!''' Anans che carié dla ròba ansima a {{SITENAME}}, che a sia motobin sigur d'avej bin lesù e capì 
-[[{{MediaWiki:policy-url}}|ël regolament ëd {{SITENAME}} ansima al dovré dle figure]].
+[[{{MediaWiki:Policy-url}}|ël regolament ëd {{SITENAME}} ansima al dovré dle figure]].
 
 Për vardé ò pura sërché figure già carià ant sla {{SITENAME}}, che a vada ant sla [[Special:Imagelist|lista dle figure]].
 Lòn che as caria e së scancela a resta marcà ant ël [[Special:Log/upload|registr dij càrich]].
@@ -1075,6 +1075,10 @@ PICT # vàire marche diferente
 'unusedtemplatestext' => "Sta pàgina-sì a la smon tuti jë stamp (pàgine dlë spassi nominal Stamp) che a son pa dovrà andrinta a gnun-a pàgina. Mej verifiché che në stamp a-j serva nen a dj'àutri stamp (che dle vire në stamp gròss a l'é fait ëd vàire cit sotastamp), anans che fé che ranchelo via.",
 'unusedtemplateswlh'  => 'àutre anliure',
 
+# Random page
+'randompage'         => 'Na pàgina qualsëssìa',
+'randompage-nopages' => 'A-i é pa gnun-a pàgina an stë spassi nominal-sì.',
+
 # Random redirect
 'randomredirect'         => 'Na ridiression qualsëssìa',
 'randomredirect-nopages' => 'A-i é pa gnun-a ridiression ant stë spassi nominal-sì.',
@@ -1142,8 +1146,6 @@ Vira riga a l'ha andrinta j'anliure a la prima e a la sconda rediression, ant s�
 'mostrevisions'           => 'Artìcoj pì modificà',
 'allpages'                => 'Tute le pàgine',
 'prefixindex'             => 'Ìndess për inissiaj',
-'randompage'              => 'Na pàgina qualsëssìa',
-'randompage-nopages'      => 'A-i é pa gnun-a pàgina an stë spassi nominal-sì.',
 'shortpages'              => 'Pàgine curte',
 'longpages'               => 'Pàgine longhe',
 'deadendpages'            => 'Pàgine che a men-o da gnun-a part',
@@ -1307,7 +1309,7 @@ Për cangé ij setagi ëd lòn che as ten sot euj che a vada ansima a
 {{fullurl:Special:Watchlist/edit}}
 
 Për fé dle comunicassion ëd servissi e avej pì d\'agiut:
-{{fullurl:{{MediaWiki:helppage}}}}',
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'                  => 'Scancela pàgina',
@@ -1320,7 +1322,7 @@ Për fé dle comunicassion ëd servissi e avej pì d\'agiut:
 'deletesub'                   => '(Scancelament ëd "$1")',
 'historywarning'              => "Avis: la pàgina che a l'é antramentr che a scancela a l'ha na stòria:",
 'confirmdeletetext'           => "A sta për scancelé d'autut da 'nt la base dat na pàgina ò pura na figura, ansema a tuta soa cronologìa.<p>
-Për piasì, che an conferma che sòn a l'é da bon sò but, che a as rend cont ëd le conseguense ëd lòn che a fa, e che sòn a resta an pien an régola con lòn che a l'é stabilì ant la [[{{MediaWiki:policy-url}}]].",
+Për piasì, che an conferma che sòn a l'é da bon sò but, che a as rend cont ëd le conseguense ëd lòn che a fa, e che sòn a resta an pien an régola con lòn che a l'é stabilì ant la [[{{MediaWiki:Policy-url}}]].",
 'actioncomplete'              => 'Travaj fait e finì',
 'deletedtext'                 => 'La pàgina "$1" a l\'é staita scancelà.
 Che a varda $2 për na lista dle pàgine scancelà ant j\'ùltim temp.',
@@ -1475,7 +1477,7 @@ $1",
 # Block/unblock
 'blockip'                     => "Blochè n'adrëssa IP",
 'blockiptext'                 => "Che a dòvra ël mòdulo ëd domanda 'd blocagi ambelessì sota për bloché l'acess con drit dë scritura da na chèich adrëssa IP.<br />
-Ës blocagi-sì as dev dovresse MACH për evité dij comportament vandàlich, ën strèita osservansa ëd tùit ij prinsipi dla [[{{MediaWiki:policy-url}}|polìtica ëd {{SITENAME}}]].<br />
+Ës blocagi-sì as dev dovresse MACH për evité dij comportament vandàlich, ën strèita osservansa ëd tùit ij prinsipi dla [[{{MediaWiki:Policy-url}}|polìtica ëd {{SITENAME}}]].<br />
 Ël blocagi a peul nen ën gnun-a manera esse dovrà për dle question d'ideologìa.
 
 Che a scriva codì che st'adrëssa IP-sì a dev second chiel (chila) esse blocà (pr'esempi, che a buta ij tìtoj ëd pàgine che a l'abio già patì dj'at vandàlich da cost'adrëssa IP-sì).",
@@ -1547,9 +1549,9 @@ coj che sio ij blocagi ativ al dì d'ancheuj.",
 'range_block_disabled'        => "La possibilità che n'aministrator a fasa dij blocagi a ragg a l'é disabilità.",
 'ipb_expiry_invalid'          => 'Temp dë scadensa nen bon.',
 'ipb_already_blocked'         => 'L\'utent "$1" a l\'è già blocà',
+'ipb_cant_unblock'            => 'Eror: As treuva nen ël blòch con identificativ $1. A peul esse che a sia un blòch già gavà via.',
 'ip_range_invalid'            => 'Nùmer IP nen bon.',
 'proxyblocker'                => "Bloché j'arpetitor (Proxy) doèrt",
-'ipb_cant_unblock'            => 'Eror: As treuva nen ël blòch con identificativ $1. A peul esse che a sia un blòch già gavà via.',
 'proxyblockreason'            => "Soa adrëssa IP a l'é staita bloca përchè a l'é cola ëd n'arpetitor (proxy) doèrt. Për piasì che a contata al sò fornitor ëd conession e che a lo anforma. As trata d'un problema ëd siguressa motobin serio.",
 'proxyblocksuccess'           => 'Bele fait.',
 'sorbsreason'                 => "Soa adrëssa IP a l'é listà coma arpetitor doèrt (open proxy) ansima a DNSBL.",
@@ -2293,11 +2295,8 @@ a podrìo ëdcò nen ess-ie ant sta lista -sì.",
 'watchlisttools-edit' => "Vardé e modifiché la lista ëd lòn ch'as ten sot euj",
 'watchlisttools-raw'  => "Modifiché ampressa la lista ëd lòn ch'as ten sot euj",
 
-# Unknown messages
+# Iranian month names
 'iranian-calendar-m1'  => 'Prim mèis Jalāli',
-'iranian-calendar-m10' => "Mèis Jalāli ch'a fa des",
-'iranian-calendar-m11' => "Mèis Jalāli ch'a fa óndes",
-'iranian-calendar-m12' => "Meis Jalāli ch'a fa dódes",
 'iranian-calendar-m2'  => 'Scond mèis Jalāli',
 'iranian-calendar-m3'  => 'Tèrs mèis Jalāli',
 'iranian-calendar-m4'  => 'Quart mèis Jalāli',
@@ -2306,5 +2305,8 @@ a podrìo ëdcò nen ess-ie ant sta lista -sì.",
 'iranian-calendar-m7'  => "Mèis Jalāli ch'a fa set",
 'iranian-calendar-m8'  => "Mèis Jalāli ch'a fa eut",
 'iranian-calendar-m9'  => "Mèis Jalāli ch'a fa neuv",
+'iranian-calendar-m10' => "Mèis Jalāli ch'a fa des",
+'iranian-calendar-m11' => "Mèis Jalāli ch'a fa óndes",
+'iranian-calendar-m12' => "Meis Jalāli ch'a fa dódes",
 
 );

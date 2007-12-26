@@ -201,14 +201,14 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'       => 'Ò {{SITENAME}}',
-'aboutpage'       => '{{ns:project}}:Ò_{{SITENAME}}',
+'aboutpage'       => 'Project:Ò_{{SITENAME}}',
 'copyright'       => 'Zamkłosc hewòtny starnë je ùżëczónô wedle reglów $1.',
 'disclaimers'     => 'Prawné zastrzedżi',
-'disclaimerpage'  => '{{ns:project}}:General_disclaimer',
+'disclaimerpage'  => 'Project:General_disclaimer',
 'edithelp'        => 'Pòmòc do edicëji',
 'mainpage'        => 'Przédnô starna',
 'portal'          => 'Pòrtal wëcmaniznë',
-'portal-url'      => '{{ns:project}}:Pòrtal wëcmaniznë',
+'portal-url'      => 'Project:Pòrtal wëcmaniznë',
 'sitesupport-url' => '{{ns:project}}:Wspiarcé dlô starnë',
 
 'badaccess' => 'Procëmprawne ùdowierzenie',
@@ -227,7 +227,7 @@ $messages = array(
 'hidetoc'                 => 'zatacë',
 'viewdeleted'             => 'Òbaczë $1',
 
-# Short words for each namespace, by default used in the 'page' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Artikel',
 'nstab-user'      => 'Starna brëkòwnika',
 'nstab-special'   => 'Specjalnô',
@@ -333,7 +333,7 @@ Twòjô adresa IP to $3. Proszã dodôj nã adresã we wszëtczich pëtaniach.",
 'accmailtitle'          => 'Parola wësłónô.',
 'accmailtext'           => 'Parola dlô "$1" je wësłónô do $2.',
 'newarticletext'        => "Môsz przëszłi z lënkù do starnë jaka jesz nie òbstoji.
-Bë ùsôdzëc artikel, naczni pisac w kastce niżi (òb. [[{{MediaWiki:helppage}}|starnã pòmòcë]]
+Bë ùsôdzëc artikel, naczni pisac w kastce niżi (òb. [[{{MediaWiki:Helppage}}|starnã pòmòcë]]
 dlô wicy wëdowiédzë).
 Jeżlë jes të tuwò bez zmiłkã, le klëkni w swòjim przezérnikù knąpã '''nazôd'''.",
 'anontalkpagetext'      => "----''To je starna dyskùsëji anonimòwiégò brëkòwnika, chtëren nie zrobił jesz kònta dlô se, abò gò nie brëkùje. Takô adresa IP, mòże bëc brëkòwónô òb wiele lëdzy. Eżlë klëczi na ti starnie nie są sczérowóne do ce, tedë [[{{ns:Special}}:Userlogin|zrobi sobie nowé kònto]] abò zalogùje sã, bë niechac zmiłczi z jinëma anonimòwima brëkòwnikama.''",
@@ -472,7 +472,7 @@ Jeżlë jes të tuwò bez zmiłkã, le klëkni w swòjim przezérnikù knąpã '
 'nolinkstoimage' => 'Niżódnô starna nie òdwòłëje sã do negò lopka.',
 'imagelist_user' => 'Brëkòwnik',
 
-# Random pages
+# Random page
 'randompage' => 'Kawlowô starna',
 
 # Statistics

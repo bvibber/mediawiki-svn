@@ -207,9 +207,9 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Euver {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:Info',
+'aboutpage'         => 'Project:Info',
 'bugreports'        => 'Fouterapportaasj',
-'bugreportspage'    => '{{ns:project}}:Fouterapportaasj',
+'bugreportspage'    => 'Project:Fouterapportaasj',
 'copyright'         => 'De inhawd is besjikbaar ónger de $1.',
 'copyrightpagename' => '{{SITENAME}} auteursrechte',
 'copyrightpage'     => '{{ns:project}}:Auteursrechte',
@@ -223,7 +223,7 @@ $messages = array(
 'helppage'          => '{{ns:project}}:Help',
 'mainpage'          => 'Veurblaad',
 'portal'            => 'Gebroekersportaol',
-'portal-url'        => '{{ns:project}}:Gebroekersportaol',
+'portal-url'        => 'Project:Gebroekersportaol',
 'privacypage'       => '{{ns:project}}:Privacy_policy',
 'sitesupport'       => 'Donaties',
 'sitesupport-url'   => '{{ns:project}}:Gifte',
@@ -253,7 +253,7 @@ $messages = array(
 'restorelink'             => '$1 verwiederde versies',
 'feed-invalid'            => 'Feedtype wörd neet ongersteund.',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Artikel',
 'nstab-user'      => 'Gebroeker',
 'nstab-media'     => 'Mediapazjena',
@@ -448,7 +448,7 @@ De opgegaeve reje is:
 * Aanvang blokkade: $8
 * Einde blokkade: $6
 
-Doe kins deze blokkaasj bespraeke mèt $1 of 'ne angere [[{{MediaWiki:grouppage-sysop}}|beheerder]]. Doe kins gén gebroek make van de functie 'e-mail deze gebroeker', tenzijse 'n geldig e-mailadres opgegaeve höbs in dien [[{{ns:special}}:Preferences|veurkeure]] en 't gebroek van deze functie neet is geblokkeerd. Dien hujig IP-adres is $3 en ' nömmer vanne blokkaasj is #$5. Vermeld beide gegaeves esse örges euver deze blokkaasj reageers.",
+Doe kins deze blokkaasj bespraeke mèt $1 of 'ne angere [[{{MediaWiki:Grouppage-sysop}}|beheerder]]. Doe kins gén gebroek make van de functie 'e-mail deze gebroeker', tenzijse 'n geldig e-mailadres opgegaeve höbs in dien [[{{ns:special}}:Preferences|veurkeure]] en 't gebroek van deze functie neet is geblokkeerd. Dien hujig IP-adres is $3 en ' nömmer vanne blokkaasj is #$5. Vermeld beide gegaeves esse örges euver deze blokkaasj reageers.",
 'blockedoriginalsource'     => "Hiej onger stuit de bronteks van '''$1''':",
 'blockededitsource'         => "Hiej onger stuit de teks van '''dien bewèrkinge''' aan '''$1''':",
 'whitelistedittitle'        => 'Geer mót óch inlogke óm te bewirke',
@@ -624,7 +624,7 @@ Anger beheerders van deze wiki kinne de verborge inhoud benäöjere en de verwie
 
 # Search results
 'searchresults'         => 'Zeukresultate',
-'searchresulttext'      => 'Veur mier informatie euver zeuke op {{SITENAME}}, zuug [[{{MediaWiki:helppage}}|{{int:help}}]].',
+'searchresulttext'      => 'Veur mier informatie euver zeuke op {{SITENAME}}, zuug [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "Doe zòchs veur '''[[:$1]]'''",
 'searchsubtitleinvalid' => 'Voor zoekopdracht "$1"',
 'noexactmatch'          => "'''d'r Bestuit geine pazjena mit ongerwerp  $1.''' Doe kins 'm [[:$1|aanmake]].",
@@ -927,6 +927,10 @@ Lèver zeker te zeen detse gesjik bös om door te gaon met 't uploade van dit be
 'unusedtemplatestext' => 'Deze pagina guf alle pagina\'s weer in de naamruumde sjabloon die op gein inkele pagina gebroek waere. Vergaet neet de "Links nao deze pagina" te controlere veures dit sjabloon te wösse.',
 'unusedtemplateswlh'  => 'anger links',
 
+# Random page
+'randompage'         => 'Willekäörige pazjena',
+'randompage-nopages' => "d'r zeen gein pagina's in deze naamruumde.",
+
 # Random redirect
 'randomredirect'         => 'Willekäörige redirect',
 'randomredirect-nopages' => "d'r zeen gein redirects in deze naamruumde.",
@@ -991,8 +995,6 @@ Op eder raegel vings te de ierste redirectpazjena, de twiede redirectpazjena en 
 'mostrevisions'           => 'Artikele mit de meiste bewirkinge',
 'allpages'                => "Alle pazjena's",
 'prefixindex'             => 'Indèks dèr veurveugsele',
-'randompage'              => 'Willekäörige pazjena',
-'randompage-nopages'      => "d'r zeen gein pagina's in deze naamruumde.",
 'shortpages'              => 'Korte artikele',
 'longpages'               => 'Lang artikele',
 'deadendpages'            => "Doedloupende pazjena's",
@@ -1365,8 +1367,8 @@ Zuug de [[Special:Ipblocklist|lies van geblokkeerde IP-adresse]].',
 'block-log-flags-noautoblock' => 'autoblok ongedaon gemaak',
 'range_block_disabled'        => "De meugelikheid veur beheerders om 'ne groep IP-adresse te blokkere is oetgesjakeld.",
 'ipb_expiry_invalid'          => 'Ongeldig verloup.',
-'proxyblocker'                => 'Proxyblokker',
 'ipb_cant_unblock'            => 'Fout: Blokkadenummer $1 neet gevonje. Mesjiens is de blokkade al opgeheve.',
+'proxyblocker'                => 'Proxyblokker',
 'proxyblockreason'            => "Dien IP-adres is geblokkeerd ómdat 't 'n aope proxy is. Contacteer estebleef diene internet service provider of technische óngersjteuning en informeer ze euver dit serjeus veiligheidsprebleem.",
 'proxyblocksuccess'           => 'Klaor.',
 'sorbsreason'                 => 'Dien IP-adres is opgenaome in de DNS-blacklist es open proxyserver.',

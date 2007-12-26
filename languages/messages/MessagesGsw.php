@@ -6,6 +6,7 @@
  * @author 80686
  * @author G - ג
  * @author Helix84
+ * @author Siebrand
  */
 
 $fallback = 'de';
@@ -153,7 +154,7 @@ $messages = array(
 'currentevents'     => 'Aktuelli Mäldige',
 'currentevents-url' => 'Aktuelli Termin',
 'disclaimers'       => 'Impressum',
-'disclaimerpage'    => '{{ns:project}}:Impressum',
+'disclaimerpage'    => 'Project:Impressum',
 'edithelp'          => 'Ratschläg fiers Bearbeite',
 'edithelppage'      => 'Project:Ändere',
 'faqpage'           => 'Project:FAQ',
@@ -185,7 +186,7 @@ $messages = array(
 'viewdeleted'             => '$1 onluege?',
 'restorelink'             => '{{PLURAL:$1|glöschti Änderig|$1 glöschti Ändrige}}',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-user'      => 'Benutzersyte',
 'nstab-project'   => 'Projektsyte',
 'nstab-image'     => 'Bildli',
@@ -417,7 +418,7 @@ Erklärig: (aktuell) = Underschid zu jetz,
 
 # Search results
 'searchresults'         => 'Suech-Ergäbnis',
-'searchresulttext'      => 'Für wiiteri Informatione zuem Sueche uff {{SITENAME}} chönne Si mol uff [[{{MediaWiki:helppage}}|{{int:help}}]] luege.',
+'searchresulttext'      => 'Für wiiteri Informatione zuem Sueche uff {{SITENAME}} chönne Si mol uff [[{{MediaWiki:Helppage}}|{{int:help}}]] luege.',
 'searchsubtitle'        => 'Für d Suechaafrag «[[:$1]]»',
 'searchsubtitleinvalid' => 'Für d Suechaafrag «$1»',
 'prevn'                 => 'vorderi $1',
@@ -528,6 +529,9 @@ go direkt e Gleich uff d Datei z'mache.",
 # List redirects
 'listredirects' => 'Lischte vo Wyterleitige (Redirects)',
 
+# Random page
+'randompage' => 'Zuefalls-Artikel',
+
 # Statistics
 'sitestats'     => 'Statistik',
 'userstats'     => 'Benützer-Statistik',
@@ -567,7 +571,6 @@ Zuer Ziit stöhn '''$7''' Arbete zuem mache aa.",
 'mostlinked'              => 'Meistverlinke Seiten',
 'allpages'                => 'alli Sytene',
 'prefixindex'             => 'Alli Artikle (mit Präfix)',
-'randompage'              => 'Zuefalls-Artikel',
 'shortpages'              => 'Churzi Artikel',
 'longpages'               => 'Langi Artikel',
 'deadendpages'            => 'Artikel ohni Links («Sackgasse»)',
@@ -656,7 +659,7 @@ Es wird chei wiiteri Benochrichtigungsbost gschickt bis Si selli Syte wiedr bsue
 
 ---
 Ihri Beobachtigslischte {{fullurl:Special:Watchlist/edit}}
-Hilf zue de Benutzig gits uff {{fullurl:{{MediaWiki:helppage}}}}',
+Hilf zue de Benutzig gits uff {{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'        => 'Syte lösche',
@@ -666,7 +669,7 @@ Hilf zue de Benutzig gits uff {{fullurl:{{MediaWiki:helppage}}}}',
 'deletesub'         => '(«$1» lösche)',
 'historywarning'    => '<span style="color:#ff0000">WARNUNG:</span> Die Seite die Sie zu löschen gedenken hat eine Versionsgeschichte:',
 'confirmdeletetext' => 'Du bisch drann, en Artikel oder es Bild mitsamt Versionsgschicht permanänt us der Datebank z lösche.
-Bitte bis dir über d Konsequänze bewusst, u bis sicher, das du di a üsi [[{{MediaWiki:policy-url}}|Leitlinien]] haltisch.',
+Bitte bis dir über d Konsequänze bewusst, u bis sicher, das du di a üsi [[{{MediaWiki:Policy-url}}|Leitlinien]] haltisch.',
 'actioncomplete'    => 'Uftrag usgfuehrt.',
 'deletedtext'       => '«$1» isch glösche worde.
 Im $2 het’s e Lischte vo de letschte Löschige.',

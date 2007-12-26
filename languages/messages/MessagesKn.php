@@ -10,6 +10,7 @@
  * @author Nike
  * @author Hari Prasad Nadig <hpnadig@gmail.com> http://en.wikipedia.org/wiki/User:Hpnadig
  * @author Ashwath Mattur <ashwatham@gmail.com> http://en.wikipedia.org/wiki/User:Ashwatham
+ * @author Siebrand
  */
 
 $namespaceNames = array(
@@ -188,7 +189,7 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'ಕನ್ನಡ {{SITENAME}} ಬಗ್ಗೆ',
-'aboutpage'         => '{{ns:project}}:ನಮ್ಮ ಬಗ್ಗೆ',
+'aboutpage'         => 'Project:ನಮ್ಮ ಬಗ್ಗೆ',
 'copyright'         => 'ಇದು ಈ ಕಾಪಿರೈಟ್‌ನಲ್ಲಿ ಲಭ್ಯವಿದೆ $1.',
 'copyrightpagename' => '{{SITENAME}} ಕಾಪಿರೈಟ್',
 'copyrightpage'     => 'ವಿಕಿಪೀಡಿಯ: ಕೃತಿಸ್ವಾಮ್ಯತೆಗಳು',
@@ -302,7 +303,7 @@ $1',
 'newarticle'               => '(ಹೊಸತು)',
 'newarticletext'           => "ಇನ್ನೂ ಅಸ್ಥಿತ್ವದಲ್ಲಿ ಇರದ ಪುಟದ ಲಿಂಕ್ ಅನ್ನು ನೀವು ಒತ್ತಿರುವಿರಿ.
 ಈ ಪುಟವನ್ನು ಸೃಷ್ಟಿಸಲು ಕೆಳಗಿನ ಚೌಕದಲ್ಲಿ ಬರೆಯಲು ಆರಂಭಿಸಿರಿ. 
-(ಹೆಚ್ಚು ಮಾಹಿತಿಗೆ [[{{MediaWiki:helppage}}|ಸಹಾಯ ಪುಟ]] ನೋಡಿ).
+(ಹೆಚ್ಚು ಮಾಹಿತಿಗೆ [[{{MediaWiki:Helppage}}|ಸಹಾಯ ಪುಟ]] ನೋಡಿ).
 ಈ ಪುಟಕ್ಕೆ ನೀವು ತಪ್ಪಾಗಿ ಬಂದಿದ್ದಲ್ಲಿ ನಿಮ್ಮ ಬ್ರೌಸರ್‍ನ '''back''' ಬಟನ್ ಅನ್ನು ಒತ್ತಿ.",
 'noarticletext'            => '(ಈ ಪುಟದಲ್ಲಿ ಸದ್ಯಕ್ಕೆ ಏನೂ ಇಲ್ಲ)',
 'note'                     => '<strong>ಸೂಚನೆ:</strong>',
@@ -564,7 +565,7 @@ $1',
 'exblank'           => 'ಪುಟ ಖಾಲಿ ಇತ್ತು',
 'confirmdelete'     => 'ಅಳಿಸುವಿಕೆ ಧೃಡಪಡಿಸು',
 'deletesub'         => '("$1" ಅನ್ನು ಅಳಿಸಲಾಗುತ್ತಿದೆ)',
-'confirmdeletetext' => 'ಪುಟ ಅಥವಾ ಚಿತ್ರ ಮತ್ತು ಅದರ ಸಂಪೂರ್ಣ ಇತಿಹಾಸವನ್ನು ನೀವು ಶಾಶ್ವತವಾಗಿ ಅಳಿಸಿಹಾಕುತ್ತಿದ್ದೀರಿ. ಇದನ್ನು ನೀವು ಮಾಡಬಯಸುವಿರಿ, ಇದರ ಪರಿಣಾಮಗಳನ್ನು ಬಲ್ಲಿರಿ, ಮತ್ತು [[{{MediaWiki:policy-url}}]] ನ ಅನುಸಾರ ಇದನ್ನು ಮಾಡುತ್ತಿದ್ದೀರಿ ಎಂದು ದೃಢಪಡಿಸಿ.',
+'confirmdeletetext' => 'ಪುಟ ಅಥವಾ ಚಿತ್ರ ಮತ್ತು ಅದರ ಸಂಪೂರ್ಣ ಇತಿಹಾಸವನ್ನು ನೀವು ಶಾಶ್ವತವಾಗಿ ಅಳಿಸಿಹಾಕುತ್ತಿದ್ದೀರಿ. ಇದನ್ನು ನೀವು ಮಾಡಬಯಸುವಿರಿ, ಇದರ ಪರಿಣಾಮಗಳನ್ನು ಬಲ್ಲಿರಿ, ಮತ್ತು [[{{MediaWiki:Policy-url}}]] ನ ಅನುಸಾರ ಇದನ್ನು ಮಾಡುತ್ತಿದ್ದೀರಿ ಎಂದು ದೃಢಪಡಿಸಿ.',
 'actioncomplete'    => 'ಕಾರ್ಯ ಸಂಪೂರ್ಣ',
 'deletedtext'       => '"$1" ಅನ್ನು ಅಳಿಸಲಾಯಿತು.
 ಇತ್ತೀಚೆಗಿನ ಅಳಿಸುವಿಕೆಗಳ ಪಟ್ಟಿಗಾಗಿ $2 ಅನ್ನು ನೋಡಿ.',

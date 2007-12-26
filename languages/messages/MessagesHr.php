@@ -264,7 +264,7 @@ i [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Vodič za suradnike] 
 'mainpage'          => 'Glavna stranica',
 'policy-url'        => 'Project:Pravila',
 'portal'            => 'Portal zajednice',
-'portal-url'        => '{{ns:project}}:Portal zajednice',
+'portal-url'        => 'Project:Portal zajednice',
 'privacy'           => 'Zaštita privatnosti',
 'privacypage'       => '{{ns:project}}:Zaštita privatnosti',
 'sitesupport'       => 'Novčani prilozi',
@@ -536,7 +536,7 @@ Razlog je:<br />\'\'$2\'\'
 * Ime blokiranog suradnika: $7
 
 Ako želite raspraviti blokiranje
-javite se administratoru $1 ili nekom drugom [[{{MediaWiki:grouppage-sysop}}|administratoru]].
+javite se administratoru $1 ili nekom drugom [[{{MediaWiki:Grouppage-sysop}}|administratoru]].
 
 Ne možete se koristiti naredbom "piši suradniku" ako niste
 registrirali valjanu e-mail adresu u svojim [[Special:Preferences|postavkama]].
@@ -550,7 +550,7 @@ Razlog blokiranja je sljedeći:
 * Početak blokade: $8
 * Blokada istječe: $6
 
-Možete kontaktirati $1 ili jednog od [[{{MediaWiki:grouppage-sysop}}|administratora]] kako bi vam pojasnili razlog blokiranja.
+Možete kontaktirati $1 ili jednog od [[{{MediaWiki:Grouppage-sysop}}|administratora]] kako bi vam pojasnili razlog blokiranja.
 
 Primjetite da nemožete koristiti opciju "Pošalji mu e-mail" ukoliko niste unijeli valjanu e-mail adresu u vašim [[Special:Preferences|suradničkim postavkama]] i ako niste u tome onemogućeni prilikom blokiranja.
 
@@ -576,10 +576,11 @@ Vaš broj pod kojim se vodi vaša blokirana IP adresa je $5. Molimo navedite ova
 'newarticle'                => '(Novo)',
 'newarticletext'            => 'Došli ste na stranicu koja još nema sadržaja.<br />
 *Ako želite unijeti sadržaj, počnite tipkati u prozor ispod ovog teksta.
-*Ako vam treba pomoć, idite na [[{{MediaWiki:helppage}}|stranicu za pomoć]].
+*Ako vam treba pomoć, idite na [[{{MediaWiki:Helppage}}|stranicu za pomoć]].
 *Ako ste ovamo dospjeli slučajno, kliknite "Natrag" (Back) u svom programu.',
 'anontalkpagetext'          => "----''Ovo je stranica za razgovor s anonimnim suradnikom koji nije otvorio suradnički račun ili se njime ne koristi. Zbog toga se moramo služiti brojčanom IP adresom kako bismo ga identificirali. Takvu adresu često koristi više ljudi. Ako ste anonimni suradnik i smatrate da su vam upućeni irelevantni komentari, molimo vas da [[Special:Userlogin|otvorite suradnički račun ili se prijavite]] te tako u budućnosti izbjegnete zamjenu s drugim anonimnim suradnicima.''",
 'noarticletext'             => '(Trenutno na ovoj stranici nema teksta)',
+'userpage-userdoesnotexist' => 'Suradničko ime "$1" nije prijavljeno. Jeste li sigurni da želite stvoriti/uređivati ovu stranicu?',
 'clearyourcache'            => "'''Napomena:''' Nakon snimanja trebate očistiti međuspremnik svog preglednika kako biste vidjeli promjene.
 '''Mozilla / Firefox / Safari:''' držite ''Shift'' i pritisnite ''Reload'', ili pritisnite ''Ctrl-Shift-R'' (''Cmd-Shift-R'' na Apple Macu);
 '''IE:''' držite ''Ctrl'' i pritisnite ''Refresh'', ili pritisnite ''Ctrl-F5''; '''Konqueror:''': samo pritisnite dugme ''Reload'' ili pritisnite ''F5''; korisnici '''Opere''' možda će morati u potpunosti isprazniti međuspremnik u ''Tools&rarr;Preferences''.",
@@ -740,6 +741,31 @@ postavili dodatna ograničenja.',
 'overlogpagetext' => 'Slijedi popis posljednjih brisanja stranica i blokiranja koja uključuju sadržaj sakriven od Administratora.
 Vidi [[Special:Ipblocklist|IP popis blokiranja]] za popis trenutno blokiranih IP adresa.',
 
+# History merging
+'mergehistory'         => 'Spoji povijesti starih izmjena stranice',
+'mergehistory-header'  => "Na ovoj stranici spajate povijest jedne stranice u drugu (noviju) stranicu.
+Budite sigurni da ta promjena čuva kontinuitet stranice.
+
+'''Najmanje posljednja promjena početne stranice mora biti zadržana.'''",
+'mergehistory-box'     => 'Spoji povijesti starih izmjena dvije stranice:',
+'mergehistory-from'    => 'Izvorna stranica:',
+'mergehistory-into'    => 'Ciljna stranica:',
+'mergehistory-list'    => 'Spojiva povijest uređivanja',
+'mergehistory-merge'   => 'Slijedeće promjene stranice [[:$1|$1]] mogu biti spojene u [[:$2|$2]].
+Rabite kolonu s radio gumbima za spajanje samo određenih promjena.
+Primijetite da uporaba navigacijskih poveznica resetira vaše izbore u koloni.',
+'mergehistory-go'      => 'Pokaži spojivu povijest uređivanja',
+'mergehistory-submit'  => 'Spoji povijesti uređivanja stranica',
+'mergehistory-empty'   => 'Nema spojivih promjena (spajanje nije moguće)',
+'mergehistory-success' => '$3 promjene stranice [[:$1|$1]] uspješno spojene u povijest stranice [[:$2|$2]].',
+'mergehistory-fail'    => 'Nemoguće spojiti povijest stranica, molimo provjerite stranice i vremenske parametre.',
+
+# Merge log
+'mergelog'           => 'Evidencija spajanja povijesti stranica',
+'pagemerge-logentry' => 'spojeno [[$1]] u [[$2]] (promjene do $3)',
+'revertmerge'        => 'Razdvoji',
+'mergelogpagetext'   => 'Slijedi popis posljednjih spajanja povijesti stranica.',
+
 # Diffs
 'history-title'             => 'Povijest izmjena stranice "$1"',
 'difference'                => '(Usporedba među inačicama)',
@@ -754,7 +780,7 @@ Vidi [[Special:Ipblocklist|IP popis blokiranja]] za popis trenutno blokiranih IP
 
 # Search results
 'searchresults'         => 'Rezultati pretrage',
-'searchresulttext'      => 'Za više obavijesti o pretraživanju projekta {{SITENAME}} vidi [[{{MediaWiki:helppage}}|{{int:help}}]].',
+'searchresulttext'      => 'Za više obavijesti o pretraživanju projekta {{SITENAME}} vidi [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "Za upit '''[[:$1]]'''",
 'searchsubtitleinvalid' => 'Za upit "$1"',
 'noexactmatch'          => "'''Ne postoji stranica naziva \"\$1\".''' Možete [[:\$1|kreirati tu stranicu]].",
@@ -1112,7 +1138,7 @@ Duljina [http://meta.wikimedia.org/wiki/Help:Job_queue zadataka za izvršavanje]
 'disambiguationspage'  => 'Predložak:Razdvojba',
 'disambiguations-text' => "Sljedeće stranice povezuju na '''razdvojbenu stranicu'''. Umjesto toga bi trebale povezivati na prikladnu temu. <br />Stranica se tretira kao razdvojbena stranica ako koristi predložak na kojega vodi [[MediaWiki:disambiguationspage]]",
 
-'doubleredirects'     => 'Dvostruko preusmjeravanje',
+'doubleredirects'     => 'Dvostruka preusmjeravanja',
 'doubleredirectstext' => '<b>Pozor:</b>ovaj popis može sadržavati nepravilne članove. To obično znači
 da postoji dodatan tekst u poveznici prve naredbe \#REDIRECT.<br />
 Svaki red sadrži poveznice na prvo i drugo preusmjeravanje, te te prvu liniju teksta drugog preusmjeravanja
@@ -1323,7 +1349,7 @@ Za promjene svog popisa praćenja posjetite
 {{fullurl:Special:Watchlist|edit=yes}}
 
 Za pomoć posjetite:
-{{fullurl:{{MediaWiki:helppage}}}}',
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'                  => 'Izbriši stranicu',
@@ -1336,7 +1362,7 @@ Za pomoć posjetite:
 'deletesub'                   => '(Brišem "$1")',
 'historywarning'              => 'UPOZORENJE: Stranica koju želite obrisati ima prijašnje inačice:',
 'confirmdeletetext'           => 'Zauvijek ćete izbrisati stranicu ili sliku zajedno s prijašnjim inačicama.
-Molim potvrdite svoju namjeru, da razumijete posljedice i da ovo radite u skladu s [[{{MediaWiki:policy-url}}|pravilima]].',
+Molim potvrdite svoju namjeru, da razumijete posljedice i da ovo radite u skladu s [[{{MediaWiki:Policy-url}}|pravilima]].',
 'actioncomplete'              => 'Zahvat završen',
 'deletedtext'                 => '"$1" je izbrisana.
 Vidi $2 za evidenciju nedavnih brisanja.',
@@ -1347,6 +1373,12 @@ Sva vremena su prema poslužiteljevom vremenu (UTC).',
 'deletionlog'                 => 'evidencija brisanja',
 'reverted'                    => 'Vraćeno na prijašnju inačicu',
 'deletecomment'               => 'Razlog za brisanje',
+'deleteotherreason'           => 'Drugi/dodatni razlog:',
+'deletereasonotherlist'       => 'Drugi razlog',
+'deletereason-dropdown'       => '*Razlozi brisanja stranica
+** Zahtjev autora
+** Kršenje autorskih prava
+** Vandalizam',
 'rollback'                    => 'Ukloni posljednju promjenu',
 'rollback_short'              => 'Ukloni',
 'rollbacklink'                => 'ukloni',
@@ -1377,7 +1409,7 @@ Pogledajte [[Special:Protectedpages|zaštićene stranice]] za popis trenutno za�
 'unprotectsub'                => '(Uklanjam zaštitu stranice "$1")',
 'protect-unchain'             => 'Otključaj ovlaštenja za premještanje',
 'protect-text'                => 'Ovdje možete pregledati i promijeniti razinu zaštite za stranicu <strong>$1</strong>.
-Molim pripazite da ovo radite u skladu s [[{{MediaWiki:policy-url}}|pravilima]].',
+Molim pripazite da ovo radite u skladu s [[{{MediaWiki:Policy-url}}|pravilima]].',
 'protect-locked-blocked'      => 'Ne možete mijenjati nivo zaštite dok ste blokirani.
 Slijede postavke stranice <strong>$1</strong>:',
 'protect-locked-dblock'       => 'Razina zaštite ne može biti promijenjena jer je baza zaključana.
@@ -1497,7 +1529,7 @@ $1',
 'blockip'                     => 'Blokiraj suradnika',
 'blockiptext'                 => 'Koristite donji obrazac za blokiranje pisanja pojedinih suradnika ili IP adresa .
 To biste trebali raditi samo zbog sprječavanja vandalizma i u skladu
-sa [[{{MediaWiki:policy-url}}|smjernicama]].
+sa [[{{MediaWiki:Policy-url}}|smjernicama]].
 Upišite i razlog za ovo blokiranje (npr. stranice koje su
 vandalizirane).',
 'ipaddress'                   => 'IP adresa',
@@ -1660,7 +1692,7 @@ Odredišni članak "[[$1]]" već postoji. Želite li ga obrisati da biste naprav
 
 Za izvoz stranica unesite njihove naslove u polje ispod, jedan naslov po retku, i označite želite li trenutnu inačicu zajedno sa svim prijašnjima, ili samo trenutnu inačicu s informacijom o zadnjoj promjeni.
 
-U potonjem slučaju možete koristiti i poveznicu, npr. [[{{ns:Special}}:Export/{{MediaWiki:mainpage}}]] za članak [[{{MediaWiki:mainpage}}]].',
+U potonjem slučaju možete koristiti i poveznicu, npr. [[{{ns:Special}}:Export/{{MediaWiki:Mainpage}}]] za članak [[{{MediaWiki:Mainpage}}]].',
 'exportcuronly'     => 'Uključi samo trenutnu inačicu, ne i sve prijašnje',
 'exportnohistory'   => "----
 '''Napomena:''' izvoz cjelokupne stranice sa svim prethodnim izmjenama onemogućen je zbog opterećenja poslužitelja.",

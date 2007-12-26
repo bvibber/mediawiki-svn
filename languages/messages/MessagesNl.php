@@ -497,25 +497,25 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Over {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:Info',
+'aboutpage'         => 'Project:Info',
 'bugreports'        => 'Foutrapporten',
-'bugreportspage'    => '{{ns:project}}:Foutrapporten',
+'bugreportspage'    => 'Project:Foutrapporten',
 'copyright'         => 'Inhoud is beschikbaar onder de $1.',
 'copyrightpagename' => '{{SITENAME}} auteursrechten',
 'copyrightpage'     => '{{ns:project}}:Auteursrechten',
 'currentevents'     => 'In het nieuws',
 'currentevents-url' => '{{ns:project}}:In het nieuws',
 'disclaimers'       => 'Voorbehoud',
-'disclaimerpage'    => '{{ns:project}}:Algemeen voorbehoud',
+'disclaimerpage'    => 'Project:Algemeen voorbehoud',
 'edithelp'          => 'Hulp bij bewerken',
 'edithelppage'      => '{{ns:help}}:Bewerken',
 'faq'               => 'FAQ (veelgestelde vragen)',
 'faqpage'           => '{{ns:project}}:Veelgestelde vragen',
 'helppage'          => '{{ns:help}}:Inhoud',
 'mainpage'          => 'Hoofdpagina',
-'policy-url'        => '{{ns:project}}:Beleid',
+'policy-url'        => 'Project:Beleid',
 'portal'            => 'Gebruikersportaal',
-'portal-url'        => '{{ns:project}}:Gebruikersportaal',
+'portal-url'        => 'Project:Gebruikersportaal',
 'privacy'           => 'Privacybeleid',
 'privacypage'       => '{{ns:project}}:Privacybeleid',
 'sitesupport'       => 'Financieel bijdragen',
@@ -781,7 +781,7 @@ De blokkade is uitgevoerd door $1. De opgegeven reden is ''$2''.
 * Einde blokkade: $6
 * Bedoeld te blokkeren: $7
 
-U kunt contact opnemen met $1 of een andere [[{{MediaWiki:grouppage-sysop}}|beheerder]] om te blokkade te bespreken.
+U kunt contact opnemen met $1 of een andere [[{{MediaWiki:Grouppage-sysop}}|beheerder]] om te blokkade te bespreken.
 U kunt geen gebruik maken van de functie 'e-mail deze gebruiker', tenzij u een geldig e-mailadres heeft opgegeven in uw 
 [[{{ns:special}}:Preferences|voorkeuren]] en het gebruik van deze functie niet is geblokkeerd.
 Uw huidige IP-adres is $3 en het blokkadenummer is #$5. Vermeld beide gegevens als u ergens over deze blokkade reageert.",
@@ -793,7 +793,7 @@ De opgegeven reden is:
 * Aanvang blokkade: $8
 * Einde blokkade: $6
 
-U kunt deze blokkade bespreken met $1 of een andere [[{{MediaWiki:grouppage-sysop}}|beheerder]]. U kunt geen gebruik maken van de functie 'e-mail deze gebruiker', tenzij u een geldig e-mailadres heeft opgegeven in uw [[{{ns:special}}:Preferences|voorkeuren]] en het gebruik van deze functie niet is geblokkeerd. Uw huidige IP-adres is $3 en het blokkadenummer is #$5. Vermeld beide gegevens als u ergens over deze blokkade reageert.",
+U kunt deze blokkade bespreken met $1 of een andere [[{{MediaWiki:Grouppage-sysop}}|beheerder]]. U kunt geen gebruik maken van de functie 'e-mail deze gebruiker', tenzij u een geldig e-mailadres heeft opgegeven in uw [[{{ns:special}}:Preferences|voorkeuren]] en het gebruik van deze functie niet is geblokkeerd. Uw huidige IP-adres is $3 en het blokkadenummer is #$5. Vermeld beide gegevens als u ergens over deze blokkade reageert.",
 'blockednoreason'           => 'geen reden opgegeven',
 'blockedoriginalsource'     => "Hieronder staat de brontekst van '''$1''':",
 'blockededitsource'         => "Hieronder staat de tekst van '''uw bewerkingen''' aan '''$1''':",
@@ -817,6 +817,7 @@ U kunt deze blokkade bespreken met $1 of een andere [[{{MediaWiki:grouppage-syso
 Gebruik te knop '''vorige''' in uw browser als u hier per ongeluk terecht bent gekomen.",
 'anontalkpagetext'          => "----''Deze overlegpagina hoort bij een anonieme gebruiker die hetzij geen loginnaam heeft, hetzij deze niet gebruikt. We gebruiken daarom het IP-adres ter identificatie. Het is mogelijk dat meerdere personen hetzelfde IP-adres gebruiken. Mogelijk ontvangt u hier berichten die niet voor u bedoeld zijn. Als u dat wilt voorkomen, [[{{ns:special}}:Userlogin|maak dan een gebruikersnaam aan of meld u aan]].''",
 'noarticletext'             => 'Deze pagina bevat geen tekst. U kunt [[{{ns:special}}:Search/{{FULLPAGENAME}}|naar deze term zoeken]] in andere pagina\'s of <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} deze pagina bewerken]</span>.',
+'userpage-userdoesnotexist' => 'U bewerkt een gebruikerspagina van een gebruiker die niet bestaat (gebruiker "$1"). Gelieve te controleren of u deze pagina wel wil aanmaken/bewerken.',
 'clearyourcache'            => '\'\'\'Let op!\'\'\' Leeg uw cache nadat u de wijzigingen heeft opgeslagen.
 
 {| border="1" cellpadding="3" class=toccolours style="border: 1px #AAAAAA solid; border-collapse: collapse;"
@@ -980,6 +981,28 @@ Andere beheerders van deze wiki kunnen de verborgen inhoud benaderen en de verwi
 'oversightlog'    => 'Oversightlogboek',
 'overlogpagetext' => 'Hier onder is een lijst met de meest recente verwijderingen en blokkeringen met betrekking tot informatie die niet zichtbaar is voor admins. Zie de [[Special:Ipblocklist|Lijst van geblokkeerde gebruikers en IP-adressen]] voor een lijst van de blokkades en verbanningen die nu gelden.',
 
+# History merging
+'mergehistory'         => "Geschiedenis van pagina's samenvoegen",
+'mergehistory-header'  => "Deze pagina laat u toe om versies van de geschiedenis van een bronpagina naar een nieuwere pagina samen te voegen.
+Wees zeker dat deze wijziging de geschiedenisdoorlopendheid van de pagina zal behouden.
+
+'''Tenminste de huidige versie van de bronpagina moet overblijven.'''",
+'mergehistory-box'     => "Versies van twee pagina's samenvoegen:",
+'mergehistory-from'    => 'Bronpagina:',
+'mergehistory-into'    => 'Bestemmingspagina:',
+'mergehistory-list'    => 'Samenvoegbare bewerkingsgeschiedenis',
+'mergehistory-go'      => 'Samenvoegbare bewerkingen tonen',
+'mergehistory-submit'  => 'Versies samevoegen',
+'mergehistory-empty'   => 'Geen enkele versies kunnen samengevoegd worden',
+'mergehistory-success' => '$3 versies van [[:$1|$1]] succesvol samengevoegd naar [[:$2|$2]].',
+'mergehistory-fail'    => 'Kan geen geschiedenis samenvoegen, gelieve opnieuw de pagina- en tijdparameters te controleren.',
+
+# Merge log
+'mergelog'           => 'Samenvoegingslogboek',
+'pagemerge-logentry' => 'voegde [[$1]] naar [[$2]] samen (versies tot en met $3)',
+'revertmerge'        => 'Samenvoeging ongedaan maken',
+'mergelogpagetext'   => 'Hieronder ziet u een lijst van recente samenvoegingen van een paginageschiedenis naar een andere.',
+
 # Diffs
 'history-title'             => 'Geschiedenis van "$1"',
 'difference'                => '(Verschil tussen bewerkingen)',
@@ -994,7 +1017,7 @@ Andere beheerders van deze wiki kunnen de verborgen inhoud benaderen en de verwi
 
 # Search results
 'searchresults'         => 'Zoekresultaten',
-'searchresulttext'      => 'Voor meer informatie over zoeken op {{SITENAME}}, zie [[{{MediaWiki:helppage}}|Zoeken op {{SITENAME}}]].',
+'searchresulttext'      => 'Voor meer informatie over zoeken op {{SITENAME}}, zie [[{{MediaWiki:Helppage}}|Zoeken op {{SITENAME}}]].',
 'searchsubtitle'        => "U zocht naar '''[[:$1]]'''",
 'searchsubtitleinvalid' => 'Voor zoekopdracht "$1"',
 'noexactmatch'          => "'''Er bestaat geen pagina met onderwerp  $1.''' U kunt deze [[:$1|aanmaken]].",
@@ -1556,7 +1579,7 @@ U kunt uw volglijstinstellingen wijzigen op:
 {{fullurl:Special:Watchlist/edit}}
 
 Feedback en andere assistentie:
-{{fullurl:{{MediaWiki:helppage}}}}',
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'                  => 'Deze pagina verwijderen',
@@ -1577,6 +1600,12 @@ Feedback en andere assistentie:
 'deletionlog'                 => "Logboek verwijderde pagina's",
 'reverted'                    => 'Eerdere versie hersteld',
 'deletecomment'               => 'Reden voor verwijderen',
+'deleteotherreason'           => 'Andere/eventuele reden:',
+'deletereasonotherlist'       => 'Andere reden',
+'deletereason-dropdown'       => '*Veelvoorkomende verwijderingsredenen
+** Op aanvraag van auteur
+** Schending van auteursrechten
+** Vandalisme',
 'rollback'                    => 'Wijzigingen ongedaan maken',
 'rollback_short'              => 'Terugdraaien',
 'rollbacklink'                => 'terugdraaien',
@@ -1715,7 +1744,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => 'Gebruiker blokkeren',
-'blockiptext'                 => "Gebruik het onderstaande formulier om schrijftoegang voor een gebruiker of IP-adres in te trekken. Doe dit alleen als bescherming tegen vandalisme en in overeenstemming met het [[{{MediaWiki:policy-url}}|beleid]].
+'blockiptext'                 => "Gebruik het onderstaande formulier om schrijftoegang voor een gebruiker of IP-adres in te trekken. Doe dit alleen als bescherming tegen vandalisme en in overeenstemming met het [[{{MediaWiki:Policy-url}}|beleid]].
 Geef hieronder een reden op (bijvoorbeeld welke pagina's gevandaliseerd zijn).",
 'ipaddress'                   => 'IP-adres',
 'ipadressorusername'          => 'IP-adres of gebruikersnaam',
