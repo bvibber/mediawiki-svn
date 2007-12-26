@@ -369,7 +369,7 @@ $1',
 'viewsource'           => '覽源',
 'viewsourcefor'        => '$1',
 'protectedinterface'   => '此頁司版，緘之以遠濫。',
-'editinginterface'     => "'''警示：'''此頁司版，一髮牽身，惠慎之。",
+'editinginterface'     => "'''警示：'''此頁司版，一髮牽身，惠慎之。如譯之，可慮[http://translatewiki.net/wiki/Translating:Intro Betawiki]也，為MediaWiki軟件本地化之計劃也。",
 'sqlhidden'            => '(SQL隱然)',
 'cascadeprotected'     => '此頁"迭緘"矣。$1頁牽連如下：
 $2',
@@ -959,6 +959,8 @@ $2',
 'unusedcategoriestext'    => '以下空門，無依可活。',
 'notargettitle'           => '落靶',
 'notargettext'            => '簿、頁未定，無可為之。',
+'pager-newer-n'           => '新$1次',
+'pager-older-n'           => '陳$1次',
 
 # Book sources
 'booksources'               => '書海',
@@ -1229,10 +1231,6 @@ $NEWPAGE
 'month'         => '且不越',
 'year'          => '年不越',
 
-'sp-contributions-newest'      => '末',
-'sp-contributions-oldest'      => '初',
-'sp-contributions-newer'       => '後$1',
-'sp-contributions-older'       => '前$1',
 'sp-contributions-newbies'     => '惟列新進',
 'sp-contributions-newbies-sub' => '予新進',
 'sp-contributions-blocklog'    => '誌禁',

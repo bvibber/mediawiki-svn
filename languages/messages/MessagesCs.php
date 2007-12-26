@@ -1317,6 +1317,8 @@ Aktuální délka fronty údržby je '''$7'''.",
 'unusedcategoriestext'    => 'Následující stránky kategorií existují, avšak žádná stránka ani jiná kategorie je nepoužívá.',
 'notargettitle'           => 'Bez cílové stránky',
 'notargettext'            => 'Této funkci musíte určit cílovou stránku nebo uživatele.',
+'pager-newer-n'           => '{{PLURAL:$1|1 novější|$1 novější|$1 novějších}}',
+'pager-older-n'           => '{{PLURAL:$1|1 starší|$1 starší|$1 starších}}',
 
 # Book sources
 'booksources'               => 'Zdroje knih',
@@ -1586,10 +1588,6 @@ $1',
 'month'         => 'Do měsíce:',
 'year'          => 'Do roku:',
 
-'sp-contributions-newest'      => 'Nejnovější',
-'sp-contributions-oldest'      => 'Nejstarší',
-'sp-contributions-newer'       => '$1 novějších',
-'sp-contributions-older'       => '$1 starších',
 'sp-contributions-newbies'     => 'Zobrazit příspěvky nově založených účtů',
 'sp-contributions-newbies-sub' => 'Noví uživatelé',
 'sp-contributions-blocklog'    => 'Kniha zablokování',
@@ -1601,7 +1599,7 @@ $1',
 
 # What links here
 'whatlinkshere'       => 'Odkazuje sem',
-'whatlinkshere-title' => 'Stránky, které odkazují na $1',
+'whatlinkshere-title' => 'Stránky odkazující na $1',
 'whatlinkshere-page'  => 'Strana:',
 'linklistsub'         => '(Seznam odkazů)',
 'linkshere'           => "Na '''[[:$1]]''' odkazují tyto stránky:",

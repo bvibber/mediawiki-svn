@@ -646,6 +646,7 @@ $2',
 'namespaceprotected'   => "אינכם מורשים לערוך דפים במרחב השם '''$1'''.",
 'customcssjsprotected' => 'אינכם מורשים לערוך דף זה, כיוון שהוא כולל את ההגדרות האישיות של משתמש אחר.',
 'ns-specialprotected'  => 'לא ניתן לערוך דפים מיוחדים.',
+'titleprotected'       => 'לא ניתן ליצור דף זה, כיוון שהמשתמש [[User:$1|$1]] הגן עליו מפני יצירה בנימוק "$2".',
 
 # Login and logout pages
 'logouttitle'                => 'יציאה מהחשבון',
@@ -1411,6 +1412,8 @@ $2',
 'unusedcategoriestext'    => 'למרות שהקטגוריות הבאות קיימות, אין שום דף בו נעשה בהן שימוש.',
 'notargettitle'           => 'אין דף מטרה',
 'notargettext'            => 'לא ציינתם דף מטרה או משתמש לגביו תבוצע פעולה זו.',
+'pager-newer-n'           => '{{plural:$1|הבאה|$1 הבאות}}',
+'pager-older-n'           => '{{plural:$1|הקודמת|$1 הקודמות}}',
 
 # Book sources
 'booksources'               => 'משאבי ספרות חיצוניים',
@@ -1627,8 +1630,9 @@ $NEWPAGE
 'pagesize'                    => '(בבתים)',
 
 # Restrictions (nouns)
-'restriction-edit' => 'עריכה',
-'restriction-move' => 'העברה',
+'restriction-edit'   => 'עריכה',
+'restriction-move'   => 'העברה',
+'restriction-create' => 'יצירה',
 
 # Restriction levels
 'restriction-level-sysop'         => 'הגנה מלאה',
@@ -1689,10 +1693,6 @@ $1',
 'month'         => 'עד החודש:',
 'year'          => 'עד השנה:',
 
-'sp-contributions-newest'      => 'חדשות ביותר',
-'sp-contributions-oldest'      => 'ישנות ביותר',
-'sp-contributions-newer'       => '$1 הבאות',
-'sp-contributions-older'       => '$1 הקודמות',
 'sp-contributions-newbies'     => 'הצגת תרומות של משתמשים חדשים בלבד',
 'sp-contributions-newbies-sub' => 'עבור משתמשים חדשים',
 'sp-contributions-blocklog'    => 'יומן חסימות',

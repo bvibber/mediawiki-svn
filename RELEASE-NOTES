@@ -27,6 +27,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   to not check and assume they are always up to date)
 * The rollback permission is now assigned by default to all logged-in users. It
   can also now be rate-limited using the normal mechanism.
+* New configuration variable $wgExtraLanguageNames
 
 === New features in 1.12 ===
 * (bug 10735) Add a warning for non-descriptive filenames at Special:Upload
@@ -90,6 +91,10 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 8396) Ignore out-of-date serialised message caches
 * (bug 12195) Undeleting pages now requires 'undelete' permission
 * (bug 11810) Localize displayed semicolons
+* (bug 11657) Support for Thai solar calendar
+* (bug 943) RSS feed for Recentchangeslinked
+* Introduced AbortMove hook
+* (bug 2919) Protection of nonexistent pages with regular protection interface.
 
 === Bug fixes in 1.12 ===
 
@@ -215,6 +220,23 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   in the page_restrictions matching its old page_restrictions field.
   May help with odd upgrade issues or race condition.
 * (bug 11993) Remove contentsub "revision history"
+* (bug 11952) Ensure we quote_ident() all schema names as needed
+   inside of the DatabasePostgres.php file.
+* (bug 12184) Exceptions now sent to stderr instead of stdout for command-line
+  scripts, making for cleaner reporting during batch jobs. PHP errors will also
+  be redirected in most cases on PHP 5.2.4 and later, switching 'display_errors'
+  to 'stderr' at runtime.
+* (bug 12148) Text highlight wasn't applied to cleanly deleted and added
+  lines in diff output
+* (bug 10166) Fix a PHP warning in Language::getMagic
+* Only mark rollback edits as minor if the user can normally mark edits as minor.
+* Escape page names in the move successful page (e.g. for pages with two
+  apostrophes).
+* (bug 12145) Add localized names of kk-variants
+* (bug 12259) Localize the numbers in deleted pages on the sysop view
+* Set proper page title for successful file deletion
+* (bug 11221) Do not show 'Compare selected versions' button for a history page
+  with one revision only
 
 == Parser changes in 1.12 ==
 
@@ -328,6 +350,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Fixed sessionid attribute in action=login
 * Standardized limits. Revisions and Deletedrevisions formerly using 200 / 10000, 
   now 500 / 5000, in line with other modules.
+* Added list=allcategories module
 
 === Languages updated in 1.12 ===
 
@@ -358,6 +381,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Min Dong (cdo) (new)
 * Chechen (ce)
 * Cebuano (ceb) (new)
+* Corsican (co) (new)
 * Crimean Tatar (Cyrillic) (crh-cyrl) (new)
 * Crimean Tatar (Latin) (crh-latn) (new)
 * Czech (cs)
@@ -409,6 +433,12 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Kara-Kalpak (kaa)
 * Kabyle (kab)
 * Kazakh (kk)
+* Kazakh Arabic (kk-arab) (new)
+* Kazakh (China) (kk-cn)
+* Kazakh Cyrillic (kk-cyrl) (new)
+* Kazakh (Kazakhstan) (kk-kz)
+* Kazakh Latin (kk-latn) (new)
+* Kazakh (Turkey) (kk-tr)
 * Kannada (kn)
 * Korean (ko)
 * Kölsch (ksh)

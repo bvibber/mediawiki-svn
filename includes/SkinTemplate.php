@@ -226,9 +226,14 @@ class SkinTemplate extends Skin {
 				} else if ( $format == "rss" ) {
 					$linktext = wfMsg( 'feed-rss' );
 				}
+				if( is_string( $wgOut->getFeedAppendQuery() ) ) {
+					$appendQuery = "&" . $wgOut->getFeedAppendQuery();
+				} else {
+					$appendQuery = "";
+				}
 				$feeds[$format] = array(
 					'text' => $linktext,
-					'href' => $wgRequest->appendQuery( "feed=$format" )
+					'href' => $wgRequest->appendQuery( "feed={$format}{$appendQuery}" )
 				);
 			}
 			$tpl->setRef( 'feeds', $feeds );
@@ -648,7 +653,7 @@ class SkinTemplate extends Skin {
 	 * @private
 	 */
 	function buildContentActionUrls () {
-		global $wgContLang, $wgOut;
+		global $wgContLang, $wgLang, $wgOut;
 		$fname = 'SkinTemplate::buildContentActionUrls';
 		wfProfileIn( $fname );
 
@@ -713,6 +718,22 @@ class SkinTemplate extends Skin {
 					'href' => $this->mTitle->getLocalUrl( 'action=history')
 				);
 
+				if($wgUser->isAllowed('delete')){
+					$content_actions['delete'] = array(
+						'class' => ($action == 'delete') ? 'selected' : false,
+						'text' => wfMsg('delete'),
+						'href' => $this->mTitle->getLocalUrl( 'action=delete' )
+					);
+				}
+				if ( $this->mTitle->quickUserCan( 'move' ) ) {
+					$moveTitle = SpecialPage::getTitleFor( 'Movepage', $this->thispage );
+					$content_actions['move'] = array(
+						'class' => $this->mTitle->isSpecial( 'Movepage' ) ? 'selected' : false,
+						'text' => wfMsg('move'),
+						'href' => $moveTitle->getLocalUrl()
+					);
+				}
+
 				if ( $this->mTitle->getNamespace() !== NS_MEDIAWIKI && $wgUser->isAllowed( 'protect' ) ) {
 					if(!$this->mTitle->isProtected()){
 						$content_actions['protect'] = array(
@@ -729,21 +750,6 @@ class SkinTemplate extends Skin {
 						);
 					}
 				}
-				if($wgUser->isAllowed('delete')){
-					$content_actions['delete'] = array(
-						'class' => ($action == 'delete') ? 'selected' : false,
-						'text' => wfMsg('delete'),
-						'href' => $this->mTitle->getLocalUrl( 'action=delete' )
-					);
-				}
-				if ( $this->mTitle->quickUserCan( 'move' ) ) {
-					$moveTitle = SpecialPage::getTitleFor( 'Movepage', $this->thispage );
-					$content_actions['move'] = array(
-						'class' => $this->mTitle->isSpecial( 'Movepage' ) ? 'selected' : false,
-						'text' => wfMsg('move'),
-						'href' => $moveTitle->getLocalUrl()
-					);
-				}
 			} else {
 				//article doesn't exist or is deleted
 				if( $wgUser->isAllowed( 'delete' ) ) {
@@ -751,13 +757,31 @@ class SkinTemplate extends Skin {
 						$undelTitle = SpecialPage::getTitleFor( 'Undelete' );
 						$content_actions['undelete'] = array(
 							'class' => false,
-							'text' => wfMsgExt( 'undelete_short', array( 'parsemag' ), $n ),
+							'text' => wfMsgExt( 'undelete_short', array( 'parsemag' ), $wgLang->formatNum($n) ),
 							'href' => $undelTitle->getLocalUrl( 'target=' . urlencode( $this->thispage ) )
 							#'href' => self::makeSpecialUrl( "Undelete/$this->thispage" )
 						);
 					}
 				}
+
+				if ( $this->mTitle->getNamespace() !== NS_MEDIAWIKI && $wgUser->isAllowed( 'protect' ) ) {
+					if(!is_array($this->mTitle->getTitleProtection())){
+						$content_actions['protect'] = array(
+							'class' => ($action == 'protect') ? 'selected' : false,
+							'text' => wfMsg('protect'),
+							'href' => $this->mTitle->getLocalUrl( 'action=protect' )
+						);
+
+					} else {
+						$content_actions['unprotect'] = array(
+							'class' => ($action == 'unprotect') ? 'selected' : false,
+							'text' => wfMsg('unprotect'),
+							'href' => $this->mTitle->getLocalUrl( 'action=unprotect' )
+						);
+					}
+				}
 			}
+
 			wfProfileOut( "$fname-live" );
 
 			if( $this->loggedin ) {
@@ -1195,6 +1219,7 @@ class QuickTemplate {
 		return ($msg != '-') && ($msg != ''); # ????
 	}
 }
+
 
 
 

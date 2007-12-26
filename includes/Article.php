@@ -2093,7 +2093,7 @@ class Article {
 				$delcom:
 			</td>
 			<td align='left'>
-				<select tabindex='2' id='wpDeleteReasonList' name=\"wpDeleteReasonList\">
+				<select tabindex='1' id='wpDeleteReasonList' name=\"wpDeleteReasonList\">
 					$deleteReasonList
 				</select>
 			</td>
@@ -2103,7 +2103,7 @@ class Article {
 				$mDeletereasonother
 			</td>
 			<td align='left'>
-				<input type='text' maxlength='255' size='60' name='wpReason' id='wpReason' value=\"" . htmlspecialchars( $reason ) . "\" tabindex=\"1\" />
+				<input type='text' maxlength='255' size='60' name='wpReason' id='wpReason' value=\"" . htmlspecialchars( $reason ) . "\" tabindex=\"2\" />
 			</td>
 		</tr>
 		<tr>
@@ -2364,7 +2364,11 @@ class Article {
 			$summary = wfMsgForContent( 'revertpage', $target->getUserText(), $from );
 
 		# Save
-		$flags = EDIT_UPDATE | EDIT_MINOR;
+		$flags = EDIT_UPDATE;
+
+		if ($wgUser->isAllowed('minoredit'))
+			$flags |= EDIT_MINOR;
+
 		if( $bot )
 			$flags |= EDIT_FORCE_BOT;
 		$this->doEdit( $target->getText(), $summary, $flags );
@@ -2894,6 +2898,7 @@ class Article {
 
 		$title->touchLinks();
 		$title->purgeSquid();
+		$title->deleteTitleProtection();
 	}
 
 	static function onArticleDelete( $title ) {

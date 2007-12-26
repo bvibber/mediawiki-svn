@@ -1,5 +1,5 @@
 <?php
-/** ‪Qırımtatarca (Latin)‬ (‪Qırımtatarca (Latin)‬)
+/** Crimean Turkish (Latin) (Qırımtatarca (Latin))
  *
  * @addtogroup Language
  *
@@ -325,7 +325,7 @@ $messages = array(
 'editsection'             => 'deñiştir',
 'editold'                 => 'deñiştir',
 'editsectionhint'         => 'Deñiştirilgen bölüm: $1',
-'toc'                     => 'Bölüm serlevaları',
+'toc'                     => 'Münderice',
 'showtoc'                 => 'köster',
 'hidetoc'                 => 'gizle',
 'thisisdeleted'           => '$1 körmege ya da keri ketirmege isteysiñizmi?',
@@ -416,7 +416,7 @@ Bu saytnıñ ayarlarını (nastroykalarını) şahsıñızğa köre [[{{ns:speci
 'loginprompt'                => 'Oturım açmaq içün "cookies"ge izin bermelisiñiz.',
 'userlogin'                  => 'Sistemağa kir / Yañı esap aç',
 'logout'                     => 'Sistemadan çıq',
-'userlogout'                 => 'Sistemadan çıq',
+'userlogout'                 => 'Çıqış',
 'notloggedin'                => 'Özüñizni sistemağa tanıtmadıñız.',
 'nologin'                    => 'Daa esap açmadıñızmı? $1.',
 'nologinlink'                => 'Qayd ol',
@@ -546,7 +546,7 @@ dep [[Slujebnaya:Userlogin|oturım açıñız]].''",
 'noarticletext'             => 'Bu saife boştır. Bu serlevanı başqa saifelerde [[{{ns:special}}:Search/{{PAGENAME}}|qıdıra bilesiñiz]] ya da bu saifeni özüñiz [{{fullurl:{{FULLPAGENAME}}|action=edit}} yaza bilesiñiz].',
 'userpage-userdoesnotexist' => '"$1" adlı qullanıcı yoqtır. Tamam bu saifeni deñiştirmege istegeniñizni teşkeriñiz.',
 'clearyourcache'            => "'''İhtar:''' Ayarlarıñıznı (nastroykalarıñıznı) saqlağandan soñ, brauzeriñizniñ keşini de temizlemek kereksiñiz: '''Mozilla / Firefox / Safari:''' ''Shift'' basılı ekende saifeni yañıdan yükleyerek ya da ''Ctrl-Shift-R'' yaparaq (Apple Mac içün ''Cmd-Shift-R'');, '''Internet Explorer:''' ''Ctrl-F5'', '''Konqueror:''' Tek saifeni yañıdan yükle dögmesine basaraq.",
-'usercssjsyoucanpreview'    => "<strong>Tevsiye:</strong> Saifeni saqlamazdan evel <font style=\"border: 1px solid #0; background: #EEEEEE; padding : 2px\">'''ög baquvnı köster'''</font>'ge basaraq yapqan yañı saifeñizni közden keçiriñiz.",
+'usercssjsyoucanpreview'    => "<strong>Tevsiye:</strong> Saifeni saqlamazdan evel '''ög baquvnı köster''' dögmesine basaraq yapqan yañı saifeñizni közden keçiriñiz.",
 'usercsspreview'            => "'''Tek test etesiñiz ya da ög baquv köresiñiz - qullanıcı CSS faylı şimdilik saqlanmadı.'''",
 'userjspreview'             => "'''Tek test etesiñiz ya da ög baquv köresiñiz - qullanıcı JavaScript'i şimdilik saqlanmadı.'''",
 'userinvalidcssjstitle'     => "''İhtar:''' \"\$1\" adınen bir tema yoqtır. tema-adı.css ve .js fayllarınıñ adları kiçik afir ile yazmaq kerek, yani {{ns:user}}:Temel/'''M'''onobook.css degil, {{ns:user}}:Temel/'''m'''onobook.css.",
@@ -572,13 +572,13 @@ Siziñ deñişiklikleriñiz altqa kösterildi. Soñki deñişikleriñizni yazın
 'editingold'                => '<strong>DİQQAT: Saifeniñ eski bir versiyasında deñişiklik yapmaqtasıñız.
 Saqlağanıñızda bu tarihlı versiyadan künümizge qadar olğan deñişiklikler yoq olacaqtır.</strong>',
 'yourdiff'                  => 'Qarşılaştırma',
-'copyrightwarning'          => "<strong>Lütfen diqqat:</strong> {{SITENAME}} saytına qoşulğan bütün isseler <i>$2</i>
-muqavelesi dairesindedir (tafsilât içün $1'ğa baqıñız).
+'copyrightwarning'          => '<strong>Lütfen diqqat:</strong> {{SITENAME}} saytına qoşulğan bütün isseler <i>$2</i>
+muqavelesi dairesindedir (tafsilât içün $1 saifesine baqıñız).
 Qoşqan isseñizniñ başqa insanlar tarafından acımasızca deñiştirilmesini ya da azat tarzda ve sıñırsızca başqa yerlerge dağıtılmasını istemeseñiz, isse qoşmañız.<br />
-Ayrıca, mında isse qoşaraq, bu isseniñ özüñiz tarafından yazılğanına, ya da cemaatqa açıq bir menbadan ya da başqa bir azat menbadan köpirlengenine garantiya bergen olasıñız.<br />
-<strong><center>MÜELLİF AQQI İLE QORÇALANĞAN İÇ BİR METİNNİ MINDA EKLEMEÑİZ!</center></strong>",
+Ayrıca, mında isse qoşaraq, bu isseniñ özüñiz tarafından yazılğanına, ya da cemaatqa açıq bir menbadan ya da başqa bir azat menbadan kopirlengenine garantiya bergen olasıñız.<br />
+<strong><center>MÜELLİF AQQI İLE QORÇALANĞAN İÇ BİR METİNNİ MINDA EKLEMEÑİZ!</center></strong>',
 'copyrightwarning2'         => '<strong>Lütfen diqqat:</strong> {{SITENAME}} saytına siz qoşqan bütün isseler başqa bir qullanıcı tarafından deñiştirile ya da yoq etile bilir. Qoşqan isseñizniñ başqa insanlar tarafından acımasızca deñiştirilmesini ya da azat tarzda ve sıñırsızca başqa yerlerge dağıtılmasını istemeseñiz, isse qoşmañız.<br />
-Ayrıca, mında isse qoşaraq, bu isseniñ özüñiz tarafından yazılğanına, ya da cemaatqa açıq bir menbadan ya da başqa bir azat menbadan köpirlengenine garantiya bergen olasıñız ($1 baqıñız).
+Ayrıca, mında isse qoşaraq, bu isseniñ özüñiz tarafından yazılğanına, ya da cemaatqa açıq bir menbadan ya da başqa bir azat menbadan kopirlengenine garantiya bergen olasıñız ($1 baqıñız).
 <strong>MÜELLİF AQQI İLE QORÇALANĞAN İÇ BİR METİNNİ MINDA EKLEMEÑİZ!</strong>',
 'longpagewarning'           => '<strong>TENBİ: Bu saife $1 kilobayt büyükligindedir; bazı brauzerler deñişiklik yapqan vaqıtta 32kb ve üstü büyükliklerde problemalar yaşay bilir. Saifeni bölümlerge ayırmağa tırışıñız.</strong>',
 'longpageerror'             => '<strong>TENBİ: Bu saife $1 kilobayt büyükligindedir. Maksimum izinli büyüklik ise $2 kilobayt. Bu saife saqlanıp olamaz.</strong>',
@@ -814,8 +814,11 @@ Er alda bu faylnı yüklemege devam etmege isteysiñizmi? Bu fayl içün yoq et�
 'bysize'                    => 'büyüklik sırasınen',
 'imgdelete'                 => 'yoq et',
 'imgdesc'                   => 'tanıtuv',
+'imgfile'                   => 'fayl',
 'filehist'                  => 'Faylnıñ keçmişi',
 'filehist-help'             => 'Faylnıñ kerekli anki alını körmek içün tarihqa/saatqa basıñız.',
+'filehist-deleteall'        => 'episini yoq et',
+'filehist-deleteone'        => 'bunı yoq et',
 'filehist-current'          => 'ağımdaki',
 'filehist-datetime'         => 'Tarih/Saat',
 'filehist-user'             => 'Qullanıcı',
@@ -960,7 +963,7 @@ Toplam saife kösterilme sayısı '''\$3''', deñişiklik başına kösterme say
 'allnotinnamespace' => 'Bütün saifeler ($1 isim fezasında olmağanlar)',
 'allpagesprev'      => 'Evelki',
 'allpagesnext'      => 'Soñraki',
-'allpagessubmit'    => 'Ketir',
+'allpagessubmit'    => 'Köster',
 'allpagesprefix'    => 'Yazğan ariflernen başlağan saifelerni köster:',
 
 # E-mail user
@@ -1134,10 +1137,6 @@ Daa fazla malümat içün [[Project:Qorçalav altına alınğan saife]] saifesin
 'month'         => 'Bu ay (ve ondan erte):',
 'year'          => 'Bu sene (ve ondan erte):',
 
-'sp-contributions-newest'      => 'Eñ yañı',
-'sp-contributions-oldest'      => 'Eñ eski',
-'sp-contributions-newer'       => 'Soñraki $1',
-'sp-contributions-older'       => 'Evelki $1',
 'sp-contributions-newbies'     => 'Tek yañı qullanıcılarnıñ isselerini köster',
 'sp-contributions-newbies-sub' => 'Yañı qullanıcılar içün',
 'sp-contributions-blocklog'    => 'Blok etüv jurnalı',

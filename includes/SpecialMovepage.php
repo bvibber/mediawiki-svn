@@ -65,7 +65,7 @@ class MovePageForm {
 		$this->watch = $wgRequest->getCheck( 'wpWatch' );
 	}
 
-	function showForm( $err ) {
+	function showForm( $err, $hookErr = '' ) {
 		global $wgOut, $wgUser, $wgContLang;
 		
 		$start = $wgContLang->isRTL() ? 'right' : 'left';
@@ -135,7 +135,13 @@ class MovePageForm {
 
 		if ( $err != '' ) {
 			$wgOut->setSubtitle( wfMsg( 'formerror' ) );
-			$wgOut->addWikiText( '<p class="error">' . wfMsg($err) . "</p>\n" );
+			$errMsg = "";
+			if( $err == 'hookaborted' ) {
+				$errMsg = $hookErr;
+			} else {
+				$errMsg = '<p class="error">' . wfMsgWikiHtml( $err ) . "</p>\n";
+			}
+			$wgOut->addHTML( $errMsg );
 		}
 
 		$moveTalkChecked = $this->moveTalk ? ' checked="checked"' : '';
@@ -216,6 +222,12 @@ class MovePageForm {
 			return;
 		}
 
+		$hookErr = null;
+		if( !wfRunHooks( 'AbortMove', array( $ot, $nt, $wgUser, &$hookErr ) ) ) {
+			$this->showForm( 'hookaborted', $hookErr );
+			return;
+		}
+
 		$error = $ot->moveTo( $nt, true, $this->reason );
 		if ( $error !== true ) {
 			$this->showForm( $error );
@@ -281,8 +293,8 @@ class MovePageForm {
 		$talkmoved = $wgRequest->getVal( 'talkmoved' );
 		$oldUrl = $old->getFullUrl( 'redirect=no' );
 		$newUrl = $new->getFullURl();
-		$oldText = $old->getPrefixedText();
-		$newText = $new->getPrefixedText();
+		$oldText = wfEscapeWikiText( $old->getPrefixedText() );
+		$newText = wfEscapeWikiText( $new->getPrefixedText() );
 		$oldLink = "<span class='plainlinks'>[$oldUrl $oldText]</span>";
 		$newLink = "<span class='plainlinks'>[$newUrl $newText]</span>";
 

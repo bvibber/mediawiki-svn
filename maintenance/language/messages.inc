@@ -336,6 +336,7 @@ $wgMessageStructure = array(
 		'namespaceprotected',
 		'customcssjsprotected',
 		'ns-specialprotected',
+		'titleprotected',
 	),
 	'login' => array(
 		'logouttitle',
@@ -1087,6 +1088,8 @@ $wgMessageStructure = array(
 		'unusedcategoriestext',
 		'notargettitle',
 		'notargettext',
+		'pager-newer-n',
+		'pager-older-n',
 	),
 	'booksources' => array(
 		'booksources',
@@ -1276,6 +1279,7 @@ $wgMessageStructure = array(
 	'restrictions' => array(
 		'restriction-edit',
 		'restriction-move',
+		'restriction-create',
 	),
 	'restriction-levels' => array(
 		'restriction-level-sysop',
@@ -1333,10 +1337,6 @@ $wgMessageStructure = array(
 		'year',
 	),
 	'sp-contributions' => array(
-		'sp-contributions-newest',
-		'sp-contributions-oldest',
-		'sp-contributions-newer',
-		'sp-contributions-older',
 		'sp-contributions-newbies',
 		'sp-contributions-newbies-sub',
 		'sp-contributions-blocklog',
@@ -1802,9 +1802,12 @@ $wgMessageStructure = array(
 		'variantname-sr',
 	),
 	'variantname-kk' => array(
-		'variantname-kk-tr',
 		'variantname-kk-kz',
+		'variantname-kk-tr',
 		'variantname-kk-cn',
+		'variantname-kk-cyrl',
+		'variantname-kk-latn',
+		'variantname-kk-arab',
 		'variantname-kk',
 	),
 	'variantname-ku' => array(

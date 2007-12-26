@@ -2985,8 +2985,16 @@ class Parser
 		wfProfileOut( __METHOD__.'-makexml' );
 		wfProfileIn( __METHOD__.'-loadXML' );
 		$dom = new DOMDocument;
-		if ( !$dom->loadXML( $topAccum ) ) {
-			throw new MWException( __METHOD__.' generated invalid XML' );
+		wfSuppressWarnings();
+		$result = $dom->loadXML( $topAccum );
+		wfRestoreWarnings();
+		if ( !$result ) {
+			// Try running the XML through UtfNormal to get rid of invalid characters
+			$topAccum = UtfNormal::cleanUp( $topAccum );
+			$result = $dom->loadXML( $topAccum );
+			if ( !$result ) {
+				throw new MWException( __METHOD__.' generated invalid XML' );
+			}
 		}
 		wfProfileOut( __METHOD__.'-loadXML' );
 		wfProfileOut( __METHOD__ );
@@ -5240,6 +5248,7 @@ class StripState {
  */
 class PPFrame {
 	var $parser, $title;
+	var $titleCache;
 
 	const NO_ARGS = 1;
 	const NO_TEMPLATES = 2;
@@ -5253,6 +5262,7 @@ class PPFrame {
 	function __construct( $parser ) {
 		$this->parser = $parser;
 		$this->title = $parser->mTitle;
+		$this->titleCache = array( $this->title ? $this->title->getPrefixedDBkey() : false );
 	}
 
 	/**
@@ -5423,7 +5433,7 @@ class PPFrame {
 	 *    DOMNode name, string index and DOMNode value
 	 */
 	function splitBraceNode( $node ) {
-		$xpath = new DOMXPath( $arg->ownerDocument );
+		$xpath = new DOMXPath( $node->ownerDocument );
 		$names = $xpath->query( 'name', $node );
 		$values = $xpath->query( 'value', $node );
 		if ( !$names->length || !$values->length ) {
@@ -5437,19 +5447,30 @@ class PPFrame {
 	function __toString() {
 		return 'frame{}';
 	}
+
+	function getPDBK( $level = false ) {
+		if ( $level === false ) {
+			return $this->title->getPrefixedDBkey();
+		} else {
+			return isset( $this->titleCache[$level] ) ? $this->titleCache[$level] : false;
+		}
+	}
 }
 
 /**
  * Expansion frame with template arguments
  */
 class PPTemplateFrame extends PPFrame {
-	public $parser, $args, $parent, $serial;
+	var $parser, $args, $parent;
+	var $titleCache;
 
 	function __construct( $parser, $parent = false, $args = array(), $title = false ) {
 		$this->parser = $parser;
 		$this->parent = $parent;
 		$this->args = $args;
 		$this->title = $title;
+		$this->titleCache = $parent->titleCache;
+		$this->titleCache[] = $title ? $title->getPrefixedDBkey() : false;
 	}
 
 	function __toString() {

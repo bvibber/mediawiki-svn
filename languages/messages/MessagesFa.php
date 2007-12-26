@@ -540,6 +540,7 @@ $2',
 'namespaceprotected'   => "شما اجازهٔ ویرایش صفحه‌های فضای نام '''$1''' را ندارید.",
 'customcssjsprotected' => 'شما اجازهٔ ویرایش این صفحه را ندارید، چرا که حاوی تنظیم‌های شخصی یک کاربر دیگر است.',
 'ns-specialprotected'  => 'صفحه‌های فضای نام {{ns:special}} غیر قابل ویرایش هستند.',
+'titleprotected'       => 'از ایجاد صفحه‌ای با این عنوان توسط [[User:$1|$1]] جلوگیری شده‌است. دلیل ذکر شده از این قرار است: <i>$2</i>.',
 
 # Login and logout pages
 'logouttitle'                => 'خروج کاربر از سیستم',
@@ -576,6 +577,7 @@ $2',
 'uid'                        => 'شمارهٔ کاربری:',
 'yourrealname'               => '*نام واقعی شما',
 'yourlanguage'               => 'زبان شما',
+'yourvariant'                => 'گویش',
 'yournick'                   => 'لقب شما (برای امضاها)',
 'badsig'                     => 'امضای خام غیرمجاز؛ لطفاً برچسب‌های HTML را بررسی کنید.',
 'badsiglength'               => 'امضای شما بیش از اندازه طولانی است؛ امضاها باید کمتر از $1 نویسه طول داشته باشند.',
@@ -929,6 +931,7 @@ your old password.
 
 # Diffs
 'history-title'           => 'تاریخچه ویرایش‌های «$1»',
+'difference'              => '(تفاوت بین نسخه‌ها)',
 'lineno'                  => 'سطر $1:',
 'compareselectedversions' => 'مقایسهٔ نسخه‌های انتخاب‌شده',
 'editundo'                => 'خنثی‌سازی',
@@ -1084,7 +1087,6 @@ $2 تغییرمسیرها فهرست شوند &nbsp; جستجو برای $3 $9',
 'rc_categories'                     => 'محدود به رده‌ها بشود (بین رده‌ها نویسهٔ | را قرار دهید)',
 'rc_categories_any'                 => 'هر کدام',
 'newsectionsummary'                 => '/* $1 */ بخش تازه',
-'difference'                        => '(تفاوت بین نسخه‌ها)',
 
 # Recent changes linked
 'recentchangeslinked'          => 'تغییرات مرتبط',
@@ -1361,6 +1363,8 @@ $2 تغییرمسیرها فهرست شوند &nbsp; جستجو برای $3 $9',
 'unusedcategoriestext'    => 'این رده‌ها وجود دارند ولی هیچ مقاله یا ردهٔ دیگری از آنها استفاده نمی‌کند.',
 'notargettitle'           => 'مقصدی نیست',
 'notargettext'            => 'شما صفحهٔ یا کاربر مقصدی برای انجام این عمل روی آن مشخص نکرده‌اید.',
+'pager-newer-n'           => '{{PLURAL:$1|یک مورد جدیدتر|$1 مورد جدیدتر}}',
+'pager-older-n'           => '{{PLURAL:$1|یک مورد قدیمی‌تر|$1 مورد قدیمی‌تر}}',
 
 # Book sources
 'booksources'               => 'منابع کتاب',
@@ -1585,8 +1589,9 @@ $NEWPAGE
 'pagesize'                    => '(بایت)',
 
 # Restrictions (nouns)
-'restriction-edit' => 'ویرایش',
-'restriction-move' => 'انتقال',
+'restriction-edit'   => 'ویرایش',
+'restriction-move'   => 'انتقال',
+'restriction-create' => 'ایجاد',
 
 # Restriction levels
 'restriction-level-sysop'         => 'کامل‌حفاظت‌شده',
@@ -1651,10 +1656,6 @@ $1',
 'month'         => 'در این ماه (و قبل از آن)',
 'year'          => 'در این سال (و قبل از آن)',
 
-'sp-contributions-newest'      => 'جدیدترین',
-'sp-contributions-oldest'      => 'قدیمی‌ترین',
-'sp-contributions-newer'       => '$1‌تای جدیدتر',
-'sp-contributions-older'       => '$1‌تای قدیمی‌تر',
 'sp-contributions-newbies'     => 'فقط مشارکت‌های تازه‌واردان نمایش داده شود',
 'sp-contributions-newbies-sub' => 'برای تازه‌کاران',
 'sp-contributions-blocklog'    => 'سیاههٔ بسته‌شدن‌ها',

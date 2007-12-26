@@ -729,6 +729,8 @@ $wgInterwikiMagic = true;
 /** Hide interlanguage links from the sidebar */
 $wgHideInterlanguageLinks = false;
 
+/** List of language names or overrides for default names in Names.php */
+$wgExtraLanguageNames = array();
 
 /** We speak UTF-8 all the time now, unless some oddities happen */
 $wgInputEncoding  = 'UTF-8';
@@ -1063,7 +1065,6 @@ $wgGroupPermissions['user' ]['reupload']        = true;
 $wgGroupPermissions['user' ]['reupload-shared'] = true;
 $wgGroupPermissions['user' ]['minoredit']       = true;
 $wgGroupPermissions['user' ]['purge']           = true; // can use ?action=purge without clicking "ok"
-$wgGroupPermissions['user' ]['rollback']        = true;
 
 // Implicit group for accounts that pass $wgAutoConfirmAge
 $wgGroupPermissions['autoconfirmed']['autoconfirmed'] = true;
@@ -1096,6 +1097,7 @@ $wgGroupPermissions['sysop']['patrol']          = true;
 $wgGroupPermissions['sysop']['autopatrol']      = true;
 $wgGroupPermissions['sysop']['protect']         = true;
 $wgGroupPermissions['sysop']['proxyunbannable'] = true;
+$wgGroupPermissions['sysop']['rollback']        = true;
 $wgGroupPermissions['sysop']['trackback']       = true;
 $wgGroupPermissions['sysop']['upload']          = true;
 $wgGroupPermissions['sysop']['reupload']        = true;

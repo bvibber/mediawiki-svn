@@ -384,7 +384,7 @@ MySQL返回錯誤「$3: $4」。',
 'protectedpagetext'    => '該頁面已被鎖定以防止編輯。',
 'viewsourcetext'       => '你可以檢視並複製本頁面的原始碼。',
 'protectedinterface'   => '該頁提供了軟體的介面文字，它已被鎖定以防止隨意的修改。',
-'editinginterface'     => "'''警告:''' 您正在編輯的頁面是用於提供軟體的介面文字。改變此頁將影響其他用戶的介面外觀。",
+'editinginterface'     => "'''警告:''' 您正在編輯的頁面是用於提供軟體的介面文字。改變此頁將影響其他用戶的介面外觀。如要翻譯，請考慮使用[http://translatewiki.net/wiki/Translating:Intro Betawiki]，一個用來為MediaWiki軟件本地化的計劃。",
 'sqlhidden'            => '(隱藏SQL查詢)',
 'cascadeprotected'     => '這個頁面已經被保護，因為這個頁面被以下已標註"聯鎖保護"的{{PLURAL:$1|一個|多個}}被保護頁面包含:
 $2',
@@ -1170,6 +1170,8 @@ Template:消除歧義',
 'unusedcategoriestext'    => '雖然沒有被其它頁面或者分類所採用，但列表中的分類頁依然存在。',
 'notargettitle'           => '無目標',
 'notargettext'            => '您還沒有指定一個目標頁面或用戶以進行此項操作。',
+'pager-newer-n'           => '新$1次',
+'pager-older-n'           => '舊$1次',
 
 # Book sources
 'booksources'               => '網路書源',
@@ -1439,11 +1441,6 @@ $NEWPAGE
 'undelete-error-long'          => '當進行反刪除檔案時遇到錯誤:
 
 $1',
-'undelete-more-revs'           => '\'\'\'<span style="color: red;">警告！</span>這個頁面有比在此顯示更多已刪除的修訂版本。\'\'\'<br />
-$1次修訂版本在下面顯示。您可以在這個列表中選取所需要的修訂版本，又或者不作選擇去恢復所有的修訂版本（同時包括沒有在此顯示的）。<br />
-($2) ($3)',
-'undelete-next-revs'           => '檢視後$1次的修訂',
-'undelete-show-all'            => '檢視所有的修訂',
 
 # Namespace form on various pages
 'namespace'      => '名字空間:',
@@ -1461,10 +1458,6 @@ $1次修訂版本在下面顯示。您可以在這個列表中選取所需要的
 'month'         => '從該月份 (或更早):',
 'year'          => '從該年份 (或更早):',
 
-'sp-contributions-newest'      => '最新',
-'sp-contributions-oldest'      => '最舊',
-'sp-contributions-newer'       => '前$1次',
-'sp-contributions-older'       => '後$1次',
 'sp-contributions-newbies'     => '只顯示新建立之用戶的貢獻',
 'sp-contributions-newbies-sub' => '新手',
 'sp-contributions-blocklog'    => '封禁記錄',
@@ -1659,7 +1652,7 @@ $1次修訂版本在下面顯示。您可以在這個列表中選取所需要的
 'export-submit'     => '匯出',
 'export-addcattext' => '由分類中加入頁面:',
 'export-addcat'     => '加入',
-'export-download'   => '提供一個檔案以供另存',
+'export-download'   => '另存為檔案',
 
 # Namespace 8 related
 'allmessages'               => '系統介面',

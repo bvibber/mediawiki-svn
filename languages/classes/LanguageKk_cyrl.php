@@ -6,7 +6,7 @@
   */
 
 
-class LanguageKk_kz extends Language {
+class LanguageKk_cyrl extends Language {
 
 	# Convert from the nominative form of a noun to some other case
 	# Invoked with {{GRAMMAR:case|word}}
@@ -16,16 +16,19 @@ class LanguageKk_kz extends Language {
 	function convertGrammar( $word, $case, $variant ) {
 		global $wgGrammarForms;
 
-		if ($variant='kk-kz') { $word = LanguageKk_kz::convertGrammarKk_kz( $word, $case ); }
-		if ($variant='kk-tr') { $word = LanguageKk_kz::convertGrammarKk_tr( $word, $case ); }
-		if ($variant='kk-cn') { $word = LanguageKk_kz::convertGrammarKk_cn( $word, $case ); }
+		if ($variant='kk-cyrl') { $word = self::convertGrammarKk_cyrl( $word, $case ); }
+		if ($variant='kk-latn') { $word = self::convertGrammarKk_latn( $word, $case ); }
+		if ($variant='kk-arab') { $word = self::convertGrammarKk_arab( $word, $case ); }
 		return $word;
 	}
 
-	function convertGrammarKk_kz( $word, $case ) {
+	function convertGrammarKk_cyrl( $word, $case ) {
 
 		if ( isset( $wgGrammarForms['kk-kz'][$case][$word] ) ) {
 			return $wgGrammarForms['kk-kz'][$case][$word];
+		}
+		if ( isset( $wgGrammarForms['kk-cyrl'][$case][$word] ) ) {
+			return $wgGrammarForms['kk-cyrl'][$case][$word];
 		}
 		// Set up some constants...
 		// Vowels in last syllable
@@ -52,7 +55,7 @@ class LanguageKk_kz extends Language {
 		$wordEnding = $ar[count( $ar ) - 1]; //Here's the last letter in the word
 		$wordReversed = array_reverse( $ar ); //Here's an array with the order of the letters in the word reversed so we can find a match quicker *shrug*
 
-		$wordLastVowel = LanguageKk_kz::lastVowel( $wordReversed, $allVowels );
+		$wordLastVowel = self::lastVowel( $wordReversed, $allVowels );
 		// Now convert the word
 		switch ( $case ) {
 			case "dc1":
@@ -244,10 +247,13 @@ class LanguageKk_kz extends Language {
 		return $word;
 	}
 
-	function convertGrammarKk_tr( $word, $case ) {
+	function convertGrammarKk_latn( $word, $case ) {
 		global $wgGrammarForms;
 		if ( isset( $wgGrammarForms['kk-tr'][$case][$word] ) ) {
 			return $wgGrammarForms['kk-tr'][$case][$word];
+		}
+		if ( isset( $wgGrammarForms['kk-latn'][$case][$word] ) ) {
+			return $wgGrammarForms['kk-latn'][$case][$word];
 		}
 		// Set up some constants...
 		// Vowels in last syllable
@@ -274,7 +280,7 @@ class LanguageKk_kz extends Language {
 		$wordEnding = $ar[count( $ar ) - 1]; //Here's the last letter in the word
 		$wordReversed = array_reverse( $ar ); //Here's an array with the order of the letters in the word reversed so we can find a match quicker *shrug*
 
-		$wordLastVowel = LanguageKk_kz::lastVowel( $wordReversed, $allVowels );
+		$wordLastVowel = self::lastVowel( $wordReversed, $allVowels );
 		// Now convert the word
 		switch ( $case ) {
 			case "dc1":
@@ -466,10 +472,13 @@ class LanguageKk_kz extends Language {
 		return $word;
 	}
 
-	function convertGrammarKk_cn( $word, $case ) {
+	function convertGrammarKk_arab( $word, $case ) {
 		global $wgGrammarForms;
 		if ( isset( $wgGrammarForms['kk-cn'][$case][$word] ) ) {
 			return $wgGrammarForms['kk-cn'][$case][$word];
+		}
+		if ( isset( $wgGrammarForms['kk-arab'][$case][$word] ) ) {
+			return $wgGrammarForms['kk-arab'][$case][$word];
 		}
 		// Set up some constants...
 		// Vowels in last syllable
@@ -495,7 +504,7 @@ class LanguageKk_kz extends Language {
 		$ar = preg_split('//u', $word, -1, PREG_SPLIT_NO_EMPTY);
 		$wordEnding = $ar[count( $ar ) - 1]; //Here's the last letter in the word
 		$wordReversed = array_reverse( $ar ); //Here's an array with the order of the letters in the word reversed so we can find a match quicker *shrug*
-		$wordLastVowel = LanguageKk_kz::lastVowel( $wordReversed, $allVowels );
+		$wordLastVowel = self::lastVowel( $wordReversed, $allVowels );
 		// Now convert the word
 		switch ( $case ) {
 			case "dc1":
@@ -721,4 +730,5 @@ class LanguageKk_kz extends Language {
 		}
 	}
 }
+
 

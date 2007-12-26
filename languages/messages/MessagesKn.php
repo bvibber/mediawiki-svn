@@ -52,6 +52,7 @@ $messages = array(
 'tog-underline'            => 'ಲಿಂಕುಗಳ ಕೆಳಗೆ ಗೆರೆ ತೋರಿಸಿ',
 'tog-hideminor'            => 'ಚಿಕ್ಕಪುಟ್ಟ ಬದಲಾವಣೆಗಳನ್ನು ಅಡಗಿಸಿ',
 'tog-extendwatchlist'      => 'ಸಂಬಂಧಿತ ಎಲ್ಲಾ ಬದಲಾವಣೆಗಳನ್ನು ತೋರುವಂತೆ ಪಟ್ಟಿಯನ್ನು ವಿಸ್ತರಿಸಿ',
+'tog-rememberpassword'     => 'ಈ ಗಣಕಯಂತ್ರದಲ್ಲಿ ನನ್ನ ಲಾಗಿನ್ ನೆನಪಿನಲ್ಲಿಟ್ಟುಕೊ',
 'tog-watchcreations'       => 'ನಾನು ಪ್ರಾರಂಭಿಸುವ ಲೇಖನಗಳನ್ನು ನನ್ನ ವೀಕ್ಷಣಾಪಟ್ಟಿಗೆ ಸೇರಿಸು',
 'tog-watchdefault'         => 'ನಾನು ಸಂಪಾದಿಸುವ ಪುಟಗಳನ್ನು ವೀಕ್ಷಣಾಪಟ್ಟಿಗೆ ಸೇರಿಸು',
 'tog-watchdeletion'        => 'ನಾನು ಅಳಿಸುವ ಪುಟಗಳನ್ನು ನನ್ನ ವೀಕ್ಷಣಾ ಪಟ್ಟಿಗೆ ಸೇರಿಸು',
@@ -124,10 +125,17 @@ $messages = array(
 'categories'      => '{{PLURAL:$1|ವರ್ಗ|ವರ್ಗಗಳು}}',
 'pagecategories'  => '{{PLURAL:$1|ವರ್ಗ|ವರ್ಗಗಳು}}',
 'category_header' => '"$1" ವರ್ಗದಲ್ಲಿರುವ ಲೇಖನಗಳು',
-'subcategories'   => 'ಉಪವಿಭಾಗಗಳು',
+'subcategories'   => 'ಉಪವರ್ಗಗಳು',
 'category-empty'  => "''ಈ ವರ್ಗದಲ್ಲಿ ಸದ್ಯದಲ್ಲಿ ಯಾವುದೇ ಪುಟಗಳಾಗಲಿ ಅಥವ ಚಿತ್ರಗಳಾಗಲಿ ಇಲ್ಲ.''",
 
-'mainpagetext' => 'ವಿಕಿ ತಂತ್ರಾಂಶವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಅನುಸ್ಥಾಪಿಸಲಾಯಿತು.',
+'mainpagetext'      => 'ವಿಕಿ ತಂತ್ರಾಂಶವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಅನುಸ್ಥಾಪಿಸಲಾಯಿತು.',
+'mainpagedocfooter' => 'ವಿಕಿ ತಂತ್ರಾಂಶವನ್ನು ಬಳಸುವ ಬಗ್ಗೆ ಮಾಹಿತಿಗೆ [http://meta.wikimedia.org/wiki/Help:Contents ಬಳಕೆದಾರರಿಗೆ ನಿರ್ದೇಶನ ಪುಟ] ನೋಡಿ.
+
+== ಪ್ರಾರಂಭಿಸುವುದು ==
+
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
+* [http://www.mediawiki.org/wiki/Manual:FAQ ಮೀಡಿಯವಿಕಿ FAQ]
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]',
 
 'about'          => 'ನಮ್ಮ ಬಗ್ಗೆ',
 'article'        => 'ಲೇಖನ ಪುಟ',
@@ -154,6 +162,7 @@ $messages = array(
 'searcharticle'     => 'ಹೋಗು',
 'history'           => 'ಪುಟದ ಚರಿತ್ರೆ',
 'history_short'     => 'ಇತಿಹಾಸ',
+'updatedmarker'     => 'ನನ್ನ ಕೊನೆಯ ವೀಕ್ಷಣೆಯ ನಂತರ ಬದಲಾಗಿರುವವು',
 'info_short'        => 'ಮಾಹಿತಿ',
 'printableversion'  => 'ಪ್ರಿಂಟ್ ಆವೃತ್ತಿ',
 'permalink'         => 'ಸ್ಥಿರ ಸಂಪರ್ಕ',
@@ -162,6 +171,7 @@ $messages = array(
 'delete'            => 'ಅಳಿಸಿ',
 'deletethispage'    => 'ಈ ಪುಟವನ್ನು ಅಳಿಸಿ',
 'protect'           => 'ಸಂರಕ್ಷಿಸು',
+'protect_change'    => 'ಸಂರಕ್ಷಣೆಯನ್ನು ಬದಲಾಯಿಸಿ',
 'protectthispage'   => 'ಈ ಪುಟವನ್ನು ಸಂರಕ್ಷಿಸಿ',
 'unprotect'         => 'ಸಂರಕ್ಷಣೆ ತೆಗೆ',
 'unprotectthispage' => 'ಈ ಪುಟದ ಸಂರಕ್ಷಣೆಯನ್ನು ತಗೆಯಿರಿ',
@@ -315,6 +325,11 @@ $1',
 'editing'                  => "'$1' ಲೇಖನ ಬದಲಾಯಿಸಲಾಗುತ್ತಿದೆ",
 'editinguser'              => "'$1' ಲೇಖನ ಬದಲಾಯಿಸಲಾಗುತ್ತಿದೆ",
 'editingsection'           => '$1 (ವಿಭಾಗ) ಅನ್ನು ಸಂಪಾದಿಸುತ್ತಿರುವಿರಿ',
+'explainconflict'          => 'ನೀವು ಈ ಪುಟವನ್ನು ಸಂಪಾದಿಸಲು ಪ್ರಾರಂಭ ಮಾಡಿದ ಮೇಲೆ ಬೇರೊಬ್ಬರು ಯಾರೊ ಪುಟವನ್ನು ಬದಲಾಯಿಸಿದ್ದಾರೆ.
+ಮೇಲಿನ ಬರವಣಗೆ ಚೌಕದಲ್ಲಿ ಪುಟದ ಪ್ರಸಕ್ತ ಸ್ವರೂಪ ತೋರಿಸಲಾಗಿದೆ.
+ನೀವು ಮಾಡಿದ ಸಂಪಾದನೆಗಳನ್ನು ಕೆಳಗಿನ ಬರವಣಗೆ ಚೌಕದಲ್ಲಿ ತೋರಿಸಲಾಗಿದೆ.
+ನಿಮ್ಮ ಸಂಪಾದನೆಗಳನ್ನು ಪ್ರಸಕ್ತ ಸ್ವರೂಪದ ಲೇಖನದಲ್ಲಿ ನೀವು ಸೇರಿಸಬೇಕಾಗುತ್ತದೆ.
+ನೀವು ಪುಟವನ್ನು ಉಳಿಸಿದಾಗ <b>ಮೇಲಿನ ಚೌಕದಲ್ಲಿ ನೀವು ಮಾಡುವ ಬದಲಾವಣೆಗಳನ್ನು ಮಾತ್ರ</b> ಉಳಿಸಲಾಗುತ್ತದೆ.<br />',
 'storedversion'            => 'ಈಗಾಗಲೇ ಉಳಿಸಲಾಗಿರುವ ಆವೃತ್ತಿ',
 'editingold'               => '<strong>ಎಚ್ಚರಿಕೆ: ಈ ಪುಟದ ಹಳೆಯ ಆವೃತ್ತಿಯನ್ನು ಬದಲಾಯಿಸುತ್ತಿದ್ದೀರಿ. ಈ ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಿದಲ್ಲಿ, ನ೦ತರದ ಆವೃತ್ತಿಗಳೆಲ್ಲವೂ ಕಳೆದುಹೋಗುತ್ತವೆ.</strong>',
 'yourdiff'                 => 'ವ್ಯತ್ಯಾಸಗಳು',
@@ -329,9 +344,13 @@ $1',
 'templatesusedsection'     => 'ಈ ವಿಭಾಗದಲ್ಲಿ ಉಪಯೋಗಿಸಲ್ಪಟ್ಟಿರುವ ಟೆಂಪ್ಲೇಟುಗಳು:',
 'template-protected'       => '(ಸಂರಕ್ಷಿತ)',
 'template-semiprotected'   => '(ಅರೆ-ಸಂರಕ್ಷಿತ)',
+'nocreatetitle'            => 'ಪುಟವನ್ನು ಸೃಷ್ಟಿಸುವುದನ್ನು ನಿಯಮಿಸಲಾಗಿದೆ',
+'recreate-deleted-warn'    => "'''ಎಚ್ಚರಿಕೆ: ಹಿಂದೆ ಅಳಿಸಲಾದ ಪುಟವನ್ನು ನೀವು ಮತ್ತೆ ಸೃಷ್ಟಿಸುತ್ತಿರುವಿರಿ.'''
+
+ಈ ಪುಟವನ್ನು ಸಂಪಾದಿಸಲು ಸಮರ್ಪಕ ಕಾರಣವಿದೆಯೆ ಎಂದು ದಯವಿಟ್ಟು ಆಲೋಚಿಸಿ.
+ಪುಟದ ಅಳಿಸುವಿಕೆ ದಿನಚರಿಯನ್ನು ಈ ಕೆಳಗೆ ನೀಡಲಾಗಿದೆ:",
 
 # History pages
-'revhistory'          => 'ಬದಲಾವಣೆಗಳ ಇತಿಹಾಸ',
 'nohistory'           => 'ಈ ಪುಟಕ್ಕೆ ಬದಲಾವಣೆಗಳ ಇತಿಹಾಸ ಇಲ್ಲ.',
 'currentrev'          => 'ಈಗಿನ ತಿದ್ದುಪಡಿ',
 'revisionasof'        => '$1 ದಿನದ ಆವೃತ್ತಿ',
@@ -343,23 +362,34 @@ $1',
 'last'                => 'ಕೊನೆಯ',
 'page_first'          => 'ಮೊದಲ',
 'page_last'           => 'ಕೊನೆಯ',
+'histfirst'           => 'ಅತ್ಯಂತ ಮುಂಚಿನ',
+'histlast'            => 'ಅತ್ಯಂತ ಇತ್ತೀಚಿನ',
+'historyempty'        => '(ಖಾಲಿ)',
 
 # Revision feed
 'history-feed-title'       => 'ಬದಲಾವಣೆಗಳ ಇತಿಹಾಸ',
 'history-feed-description' => 'ವಿಕಿಯ ಈ ಪುಟದ ಬದಲಾವಣೆಗಳ ಇತಿಹಾಸ',
 
+# Revision deletion
+'rev-delundel' => 'ತೋರಿಸು/ಅಡಗಿಸು',
+
+# History merging
+'mergehistory' => 'ಪುಟ ಇತಿಹಾಸಗಳನ್ನು ವಿಲೀನಗೊಳಿಸು',
+
 # Diffs
 'history-title'           => '"$1" ಪುಟದ ಬದಲಾವಣೆಗಳ ಇತಿಹಾಸ',
 'difference'              => '(ಆವೃತ್ತಿಗಳ ನಡುವಿನ ವ್ಯತ್ಯಾಸ)',
 'lineno'                  => '$1 ನೇ ಸಾಲು:',
-'editcurrent'             => 'ಈ ಪುಟದ ಪ್ರಸಕ್ತ ಆವೃತ್ತಿಯನ್ನು ಸ೦ಪಾದಿಸಿ',
 'compareselectedversions' => 'ಆಯ್ಕೆ ಮಾಡಿದ ಆವೃತ್ತಿಗಳನ್ನು ಹೊಂದಾಣಿಕೆ ಮಾಡಿ ನೋಡಿ',
 
 # Search results
-'searchresults' => 'ಶೋಧನೆಯ ಫಲಿತಾಂಶಗಳು',
-'prevn'         => 'ಹಿಂದಿನ $1',
-'nextn'         => 'ಮುಂದಿನ $1',
-'powersearch'   => 'ಹುಡುಕಿ',
+'searchresults'         => 'ಶೋಧನೆಯ ಫಲಿತಾಂಶಗಳು',
+'searchsubtitle'        => "'''[[:$1]]''' ಅನ್ನು ಹುಡುಕಿದಿರಿ",
+'searchsubtitleinvalid' => "'''$1''' ಅನ್ನು ಹುಡುಕಿದಿರಿ",
+'noexactmatch'          => "'''\"\$1\" ಹೆಸರಿನ ಯಾವ ಪುಟವೂ ಇಲ್ಲ.''' ನೀವು ಅದನ್ನು [[:\$1|ಸೃಷ್ಟಿಸಬಹುದು]].",
+'prevn'                 => 'ಹಿಂದಿನ $1',
+'nextn'                 => 'ಮುಂದಿನ $1',
+'powersearch'           => 'ಹುಡುಕಿ',
 
 # Preferences page
 'preferences'        => 'ಇಚ್ಛೆಗಳು',

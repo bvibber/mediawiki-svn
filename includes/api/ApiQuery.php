@@ -61,6 +61,7 @@ class ApiQuery extends ApiBase {
 	private $mQueryListModules = array (
 		'allpages' => 'ApiQueryAllpages',
 		'alllinks' => 'ApiQueryAllLinks',
+		'allcategories' => 'ApiQueryAllCategories',
 		'allusers' => 'ApiQueryAllUsers',
 		'backlinks' => 'ApiQueryBacklinks',
 		'blocks' => 'ApiQueryBlocks',

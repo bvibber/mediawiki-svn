@@ -459,7 +459,7 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'protectedpagetext'    => '呢一頁已經鎖咗唔畀改。',
 'viewsourcetext'       => '你可以睇吓或者複製呢一頁嘅原始碼：',
 'protectedinterface'   => '呢一頁提供軟件嘅介面文字，呢一頁已經鎖上以預防濫用。',
-'editinginterface'     => "'''警告：'''你而家編輯緊嘅呢一個用嚟提供介面文字嘅頁面。響呢一頁嘅更改會影響到其他用戶使用中嘅介面外觀。",
+'editinginterface'     => "'''警告：'''你而家編輯緊嘅呢一個用嚟提供介面文字嘅頁面。響呢一頁嘅更改會影響到其他用戶使用中嘅介面外觀。要翻譯，請考慮利用[http://translatewiki.net/wiki/Translating:Intro Betawiki]，一個用來為MediaWiki軟件本地化嘅計劃。",
 'sqlhidden'            => '(SQL 查詢隱藏)',
 'cascadeprotected'     => '呢一版已經保護咗唔能夠編輯，因為佢係響以下嘅{{PLURAL:$1|一|幾}}頁度包含咗，當中啟用咗"連串"保護選項來保護嗰一版：
 $2',
@@ -1263,6 +1263,8 @@ Template:搞清楚',
 'unusedcategoriestext'    => '呢啲類存在，但入面冇嘢亦都冇分類。',
 'notargettitle'           => '冇目標',
 'notargettext'            => '你冇指定到呢個功能要用喺嘅對象頁面或用戶。',
+'pager-newer-n'           => '新$1次',
+'pager-older-n'           => '舊$1次',
 
 # Book sources
 'booksources'               => '書籍來源',
@@ -1539,11 +1541,6 @@ wiki: $PAGEEDITOR_WIKI
 'undelete-error-long'          => '當反刪除緊個檔案嗰陣遇到錯誤:
 
 $1',
-'undelete-more-revs'           => '\'\'\'<span style="color: red;">警告！</span>呢一版有比響呢度顯示更多刪除咗嘅修訂。\'\'\'<br />
-$1次修訂響下面顯示。你可以響呢個表度揀所需要嘅修訂，又或者唔揀去恢復全部嘅修訂（包括埋無響度顯示嘅）。<br />
-($2) ($3)',
-'undelete-next-revs'           => '睇吓後$1次嘅修訂',
-'undelete-show-all'            => '睇吓全部嘅修訂',
 
 # Namespace form on various pages
 'namespace'      => '空間名：',
@@ -1561,10 +1558,6 @@ $1次修訂響下面顯示。你可以響呢個表度揀所需要嘅修訂，又
 'month'         => '由呢個月 (同更早):',
 'year'          => '由呢一年 (同更早):',
 
-'sp-contributions-newest'      => '最新',
-'sp-contributions-oldest'      => '最舊',
-'sp-contributions-newer'       => '較新嘅$1次',
-'sp-contributions-older'       => '較舊嘅$1次',
 'sp-contributions-newbies'     => '只顯示新戶口嘅貢獻',
 'sp-contributions-newbies-sub' => '新戶口嘅貢獻',
 'sp-contributions-blocklog'    => '封鎖日誌',
@@ -1755,7 +1748,7 @@ $1次修訂響下面顯示。你可以響呢個表度揀所需要嘅修訂，又
 'export-submit'     => '倒出/導出/匯出',
 'export-addcattext' => '由分類度加入頁面：',
 'export-addcat'     => '加入',
-'export-download'   => '提供一個檔案去另存',
+'export-download'   => '另存做檔案',
 
 # Namespace 8 related
 'allmessages'               => '系統信息',
@@ -1999,10 +1992,9 @@ Variants for Chinese language
 'variantname-sr'    => '無變換',
 
 # Variants for Kazakh language
-'variantname-kk-tr' => '哈薩克拉丁文',
-'variantname-kk-kz' => '哈薩克西里爾字',
-'variantname-kk-cn' => '哈薩克阿剌伯文',
-'variantname-kk'    => 'disable',
+'variantname-kk-latn' => '哈薩克拉丁文',
+'variantname-kk-cyrl' => '哈薩克西里爾字',
+'variantname-kk-arab' => '哈薩克阿剌伯文',
 
 # Variants for Kurdish language
 'variantname-ku-arab' => '庫爾德阿剌伯文',
