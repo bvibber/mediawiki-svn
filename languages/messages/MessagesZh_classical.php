@@ -714,14 +714,20 @@ $2',
 'files'                 => '檔',
 
 # User rights
-'userrights-lookup-user'     => '司社',
-'userrights-user-editname'   => '簿名：',
-'editusergroup'              => '治社',
-'userrights-editusergroup'   => '治社',
-'saveusergroups'             => '定之',
-'userrights-groupsmember'    => '有員：',
-'userrights-groupsavailable' => '社可治有：',
-'userrights-groupshelp'      => '揀社以增員、減員，未揀者不變也。欲略之，押Ctrl並左擊。',
+'userrights-lookup-user'      => '司社',
+'userrights-user-editname'    => '簿名：',
+'editusergroup'               => '治社',
+'userrights-editusergroup'    => '治社',
+'saveusergroups'              => '定之',
+'userrights-groupsmember'     => '有員：',
+'userrights-groupsavailable'  => '社可治有：',
+'userrights-groupshelp'       => '揀社以增員、減員，未揀者不變也。欲略之，押Ctrl並左擊。',
+'userrights-reason'           => '因：',
+'userrights-available-none'   => '爾非改組員也。',
+'userrights-available-add'    => '爾可加簿至$1也。',
+'userrights-available-remove' => '爾可自$1減簿也。',
+'userrights-no-interwiki'     => '爾無權改他山wiki之簿權也。',
+'userrights-nodatabase'       => '資料庫$1無存或卝本地也。',
 
 # Groups
 'group'               => '社:',
@@ -913,6 +919,9 @@ $2',
 'statistics-mostpopular' => '燴炙',
 'disambiguations' => '釋義',
 'disambiguations-text' => "頁下引MediaWiki:disambiguationspage模，求釋義，宜正題之。",
+
+'disambiguations'      => '釋義',
+'disambiguations-text' => '頁下引[[MediaWiki:Disambiguationspage]]模，求釋義，宜正題之。',
 
 'doubleredirects'     => '窮渡',
 'doubleredirectstext' => '頁下窮渡，迭列以示。首尾宿合，宜正渡之。',
@@ -1692,6 +1701,9 @@ $1',
 'articletitles'    => "文首為''$1''",
 'hideresults'      => '藏',
 'useajaxsearch'    => '用AJAX尋之',
+
+# Separators for various lists
+'comma-separator'       => '、',
 
 # Multipage image navigation
 'imgmultipageprev'   => '←前頁',
