@@ -85,6 +85,9 @@ Er is een nieuwe gebruiker $2 aangemaakt om $3 op $4.',
  */
 'stq' => array(
 	'newusernotifsubj' => 'Bescheedtällen foar $1 uur ju Iengjuchtenge fon n näi Benutserkonto',
+	'newusernotifbody' => 'Hallo $1,
+
+N näi Benutserkonto, $2, wuude ap n $4 ap $3 anlaid.',
 ),
 
 'tet' => array(
