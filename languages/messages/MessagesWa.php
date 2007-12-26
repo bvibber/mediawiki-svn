@@ -245,22 +245,22 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Åd fwait di {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:Åd fwait',
+'aboutpage'         => 'Project:Åd fwait',
 'bugreports'        => 'Rapoirts di bugs',
-'bugreportspage'    => '{{ns:project}}:Rapoirts di bugs',
+'bugreportspage'    => 'Project:Rapoirts di bugs',
 'copyright'         => "Li contnou est dizo l' $1.",
 'copyrightpagename' => 'Abondroets {{SITENAME}}',
 'copyrightpage'     => '{{ns:project}}:Abondroets',
 'currentevents'     => 'Actouwålités',
-'currentevents-url' => 'Actouwålités',
+'currentevents-url' => 'Project:Actouwålités',
 'edithelp'          => 'Aidance',
-'edithelppage'      => '{{ns:help}}:Kimint candjî ene pådje',
-'helppage'          => '{{ns:help}}:Aidance',
+'edithelppage'      => 'Help:Kimint candjî ene pådje',
+'helppage'          => 'Help:Aidance',
 'mainpage'          => 'Mwaisse pådje',
 'portal'            => 'Inte di nozôtes',
-'portal-url'        => '{{ns:project}}:Inte di nozôtes',
+'portal-url'        => 'Project:Inte di nozôtes',
 'sitesupport'       => 'Ecwårlaedje',
-'sitesupport-url'   => '{{ns:project}}:Ecwårlaedje',
+'sitesupport-url'   => 'Project:Ecwårlaedje',
 
 'badaccess' => "Åk n' a nén stî avou les permissions",
 
@@ -285,7 +285,7 @@ $messages = array(
 'feedlinks'               => 'Sindicåcion:',
 'feed-invalid'            => 'Sôre di sindicåcion nén valide.',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Årtike',
 'nstab-user'      => "Pådje di l' uzeu",
 'nstab-media'     => 'Media',
@@ -734,9 +734,9 @@ Les groupes nén tchoezis èn seront nén candjîs. Vos ploz distchoezi on group
 'group-sysop-member'      => 'manaedjeu',
 'group-bureaucrat-member' => 'mwaisse-manaedjeu',
 
-'grouppage-bot'        => 'Project:Robots',
-'grouppage-sysop'      => 'Project:Manaedjeus',
-'grouppage-bureaucrat' => 'Project:Mwaisse-manaedjeus',
+'grouppage-bot'        => '{{ns:project}}:Robots',
+'grouppage-sysop'      => '{{ns:project}}:Manaedjeus',
+'grouppage-bureaucrat' => '{{ns:project}}:Mwaisse-manaedjeus',
 
 # User rights log
 'rightslog'      => 'Djournå des droets des uzeus',
@@ -883,6 +883,9 @@ ou co po les sons
 'unusedtemplatestext' => "Cisse pådje ci mostere totes les pådjes di modele (espåce di lomaedje «{{ns:template}}») ki n' sont nén eployîs dins ene ôte pådje. Rimimbrez vs di verifyî s' i n' a nén des ôtes loyéns divant delzès disfacer.",
 'unusedtemplateswlh'  => 'ôtes loyéns',
 
+# Random page
+'randompage' => "Årtike a l' astcheyance",
+
 # Random redirect
 'randomredirect' => "Redjiblaedje a l' astcheyance",
 
@@ -941,7 +944,6 @@ Li longueur del [http://meta.wikimedia.org/wiki/Help:Job_queue cawêye des bouye
 'mostrevisions'           => "Årtikes avou l' pus di candjmints",
 'allpages'                => 'Totes les pådjes',
 'prefixindex'             => 'Indecse pa betchete',
-'randompage'              => "Årtike a l' astcheyance",
 'shortpages'              => 'Coûtès pådjes',
 'longpages'               => 'Longowès pådjes',
 'deadendpages'            => 'Pådjes sins nou loyén wiki',
@@ -1311,7 +1313,7 @@ Dins ç' dierin cas, vos ploz eto eployî ene hårdêye, eg: [[Special:Export/{{
 'allmessagesdefault'        => 'Tecse prémetou',
 'allmessagescurrent'        => 'Tecse pol moumint',
 'allmessagestext'           => "Çouchal est ene djivêye di tos les messaedjes k' i gn a dins l' espåce di lomaedje ''MediaWiki:''",
-'allmessagesnotsupportedDB' => "'''Special:AllMessages''' n' est nén sopoirté paski '''\$wgUseDatabaseMessages''' est dismetou.",
+'allmessagesnotsupportedDB' => "'''{{ns:special}}:AllMessages''' n' est nén sopoirté paski '''\$wgUseDatabaseMessages''' est dismetou.",
 'allmessagesfilter'         => 'Erîlêye ratourneure pol passete:',
 'allmessagesmodified'       => 'Seulmint les cis candjîs',
 

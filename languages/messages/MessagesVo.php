@@ -7,6 +7,7 @@
  * @author Smeira
  * @author Nike
  * @author Malafaya
+ * @author Siebrand
  */
 
 $namespaceNames = array(
@@ -183,20 +184,20 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Tefü {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:Tefü',
+'aboutpage'         => 'Project:Tefü',
 'copyright'         => 'Ninäd gebidon ma el $1.',
 'copyrightpagename' => 'Kopiedagität {{SITENAME}}a',
 'currentevents'     => 'Jenots nuik',
-'currentevents-url' => 'Jenots nuik',
+'currentevents-url' => 'Project:Jenots nuik',
 'disclaimers'       => 'Nuneds',
 'edithelp'          => 'Redakamayuf',
 'faq'               => 'Säks suvo pasäköls',
-'helppage'          => '{{ns:help}}:Ninäd',
+'helppage'          => 'Help:Ninäd',
 'mainpage'          => 'Cifapad',
 'portal'            => 'Komotanefaleyan',
-'portal-url'        => '{{ns:project}}:Komotanefaleyan',
+'portal-url'        => 'Project:Komotanefaleyan',
 'privacy'           => 'Dunamod demü soelöf',
-'privacypage'       => '{{ns:project}}:Dunamod_demü_soelöf',
+'privacypage'       => 'Project:Dunamod_demü_soelöf',
 'sitesupport'       => 'Födagivots',
 
 'badaccess-group0' => 'No pedälol ad ledunön atosi, kelosi ebegol.',
@@ -889,7 +890,7 @@ Yeged nulik "[[$1]]" ya dabinon. Vilol-li moükön oni ad jafön spadi pro topä
 
 Ad seveigön padis, penolös tiädis in penamaspad dono, tiädi bal a kedet, e välolös, va vilol fomami anuik kobü fomams büik valik, ko kedets padajenotema, u te fomami anuik kobü nüns dö redakam lätikün.
 
-Ön jenet lätik, kanol i gebön yümi, a.s.: [[{{ns:Special}}:Export/{{int:mainpage}}]] pro pad {{int:mainpage}}.',
+Ön jenet lätik, kanol i gebön yümi, a.s.: [[{{ns:special}}:Export/{{int:mainpage}}]] pro pad {{int:mainpage}}.',
 'exportcuronly' => 'Ninükolöd te revidi anuik, no jenotemi valik',
 'export-submit' => 'Seveigolöd',
 

@@ -228,12 +228,12 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Pri {{SITENAME}}',
-'aboutpage'         => '{{SITENAME}}:Enkonduko',
+'aboutpage'         => 'Project:Enkonduko',
 'bugreports'        => 'Raportu cimojn',
 'bugreportspage'    => 'Project:Raportu cimojn',
 'copyright'         => 'La enhavo estas havebla sub $1.',
-'copyrightpagename' => 'permesilo **** GFDL **** uzata por la {{SITENAME}}',
-'copyrightpage'     => 'Project:Kopirajto',
+'copyrightpagename' => 'permesilo uzata por la {{SITENAME}}',
+'copyrightpage'     => '{{ns:project}}:Kopirajto',
 'currentevents'     => 'Aktualaĵoj',
 'currentevents-url' => 'Project:Aktualaĵoj',
 'disclaimers'       => 'Malgarantio',
@@ -278,7 +278,7 @@ $messages = array(
 'restorelink'             => '{{PLURAL:$1|unu forigitan version|$1 forigitajn versiojn}}',
 'feedlinks'               => 'Nutro:',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Artikolo',
 'nstab-user'      => 'Paĝo de uzanto',
 'nstab-media'     => 'Media paĝo',
@@ -712,9 +712,9 @@ Ekzemple, por la Centra Eŭropa Horzono, indiku "1" vintre aŭ "2" dum somertemp
 'group-sysop-member'      => 'Sisopo',
 'group-bureaucrat-member' => 'Burokrato',
 
-'grouppage-bot'        => 'Project:Robotoj',
-'grouppage-sysop'      => 'Project:Administrantoj',
-'grouppage-bureaucrat' => 'Project:Burokratoj',
+'grouppage-bot'        => '{{ns:project}}:Robotoj',
+'grouppage-sysop'      => '{{ns:project}}:Administrantoj',
+'grouppage-bureaucrat' => '{{ns:project}}:Burokratoj',
 
 # User rights log
 'rightslogtext'  => 'Ĉi tio estas loglibro pri la ŝanĝoj de uzantorajtoj.',
@@ -763,10 +763,10 @@ Ekzemple, por la Centra Eŭropa Horzono, indiku "1" vintre aŭ "2" dum somertemp
 
 <p>La dosiertipoj preferataj ĉe {{SITENAME}} estas JPEG por fotografaĵoj, PNG por grafikaĵoj, diagramoj, ktp; kaj OGG por sonregistraĵoj. Bonvolu doni al via dosiero nomon informan, por eviti konfuzon. Por enmeti la dosieron en artikolon, skribu ligilon laŭ la formoj</p>
 
-* <nowiki>[[</nowiki>{{ns:Image}}<nowiki>:Dosiero.jpg]]</nowiki>
-* <nowiki>[[</nowiki>{{ns:Image}}<nowiki>:Bildo.png|teksto por retumiloj negrafikaj]]</nowiki>
+* <nowiki>[[</nowiki>{{ns:image}}<nowiki>:Dosiero.jpg]]</nowiki>
+* <nowiki>[[</nowiki>{{ns:image}}<nowiki>:Bildo.png|teksto por retumiloj negrafikaj]]</nowiki>
 aŭ por sono
-* <nowiki>[[</nowiki>{{ns:Media}}<nowiki>:Dosiero.ogg]]</nowiki>
+* <nowiki>[[</nowiki>{{ns:media}}<nowiki>:Dosiero.ogg]]</nowiki>
 
 <p>Bonvolu rimarki, ke same kiel artikoloj en la {{SITENAME}}, aliaj uzantoj rajtas redakti, anstataŭigi, aŭ forigi viajn alŝutaĵojn se ili pensas, ke tio servus la vikion. Se vi aĉe misuzas la sistemon, eblas ke vi estos forbarita.</p>',
 'uploadlog'                   => 'loglibro de alŝutaĵoj',
@@ -847,6 +847,10 @@ aŭ por sono
 'unusedtemplatestext' => 'Ĉi paĝo listigas ĉiujn paĝojn en la nomspaco "Ŝablono" kiuj ne estas enmetitaj en alia paĝo. Bonvolu kontroli aliajn ligilojn al la ŝablonoj antaŭ ol forigi ilin.',
 'unusedtemplateswlh'  => 'aliaj ligiloj',
 
+# Random page
+'randompage'         => 'Hazarda paĝo',
+'randompage-nopages' => 'Ne ekzistas paĝoj en ĉi tiu nomspaco.',
+
 # Random redirect
 'randomredirect' => 'Hazarda alidirekto',
 
@@ -903,8 +907,6 @@ La nuna longeco de la [http://meta.wikimedia.org/wiki/Help:Job_queue laborenda v
 'mostrevisions'           => 'Artikoloj kun la plej multaj revizioj',
 'allpages'                => 'Ĉiuj paĝoj',
 'prefixindex'             => 'Indeksa prefikso',
-'randompage'              => 'Hazarda paĝo',
-'randompage-nopages'      => 'Ne ekzistas paĝoj en ĉi tiu nomspaco.',
 'shortpages'              => 'Paĝetoj',
 'longpages'               => 'Paĝegoj',
 'deadendpages'            => 'Seneliraj paĝoj',
@@ -1288,7 +1290,7 @@ La celartikolo "[[$1]]" jam ekzistas. Ĉu vi volas forigi ĝin por krei spacon p
 'allmessagesdefault'        => 'Defaŭlta teksto',
 'allmessagescurrent'        => 'Nuna teksto',
 'allmessagestext'           => 'Ĉi tio estas listo de ĉiuj mesaĝoj haveblaj en la MediaWiki: nomspaco',
-'allmessagesnotsupportedDB' => 'Speciala:Allmessages ne subtenata ĉar la variablo wgUseDatabaseMessages estas malkonektita.',
+'allmessagesnotsupportedDB' => '{{ns:special}}:Allmessages ne subtenata ĉar la variablo wgUseDatabaseMessages estas malkonektita.',
 'allmessagesfilter'         => 'Filtrilo laŭ racia esprimo :',
 'allmessagesmodified'       => 'Montru nur ŝanĝitajn',
 

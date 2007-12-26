@@ -404,22 +404,22 @@ $messages = array(
 'copyrightpagename' => 'Höfundarréttarreglum {{SITENAME}}',
 'copyrightpage'     => '{{ns:project}}:Höfundarréttur',
 'currentevents'     => 'Potturinn',
-'currentevents-url' => '{{ns:project}}:Potturinn',
+'currentevents-url' => 'Project:Potturinn',
 'disclaimers'       => 'Fyrirvarar',
 'disclaimerpage'    => 'Project:Almennur fyrirvari',
 'edithelp'          => 'Breytingarhjálp',
-'edithelppage'      => 'Hjálp:Breyta',
+'edithelppage'      => 'Help:Breyta',
 'faq'               => 'Algengar spurningar',
-'faqpage'           => '{{ns:project}}:Algengar spurningar',
-'helppage'          => 'Hjálp:Efnisyfirlit',
+'faqpage'           => 'Project:Algengar spurningar',
+'helppage'          => 'Help:Efnisyfirlit',
 'mainpage'          => 'Forsíða',
 'policy-url'        => 'Project:Stjórnarstefnur',
 'portal'            => 'Samfélagsgátt',
 'portal-url'        => 'Project:Samfélagsgátt',
 'privacy'           => 'Meðferð persónuupplýsinga',
-'privacypage'       => '{{ns:project}}:Stefnumál_um_friðhelgi',
+'privacypage'       => 'Project:Stefnumál_um_friðhelgi',
 'sitesupport'       => 'Fjárframlög',
-'sitesupport-url'   => '{{ns:project}}:Fjárframlög',
+'sitesupport-url'   => 'Project:Fjárframlög',
 
 'badaccess'        => 'Aðgangsvilla',
 'badaccess-group0' => 'Þú hefur ekki leyfi til að framkvæma þá aðgerð sem þú baðst um.',
@@ -971,8 +971,10 @@ Til að bæta skrá inn á síðu, notið eina af eftirfarandi aðferðum
 'filename'          => 'Skráarnafn',
 'filedesc'          => 'Lýsing',
 'fileuploadsummary' => 'Ágrip:',
+'uploadedfiles'     => 'Hlóð inn skráunum',
 'ignorewarning'     => 'Hunsa viðvaranir og vista þessa skrá.',
 'ignorewarnings'    => 'Hunsa allar viðvaranir',
+'minlength1'        => 'Skráarnöfn þurfa að vera að minnsta kosti einn stafur að lengd',
 'badfilename'       => 'Skáarnafninu hefur verið breytt í „$1“.',
 'filetype-missing'  => 'Skráin hefur engan viðauka (dæmi ".jpg").',
 'large-file'        => 'Það er mælt með að skrár séu ekki stærri en $1; þessi skrá er $2.',
@@ -1018,6 +1020,7 @@ Til að bæta skrá inn á síðu, notið eina af eftirfarandi aðferðum
 'filehist'                  => 'Breytingaskrá skjals',
 'filehist-deleteall'        => 'eyða öllu',
 'filehist-deleteone'        => 'eyða þessu',
+'filehist-revert'           => 'taka aftur',
 'filehist-current'          => 'núverandi',
 'filehist-datetime'         => 'Dagsetning/Tími',
 'filehist-user'             => 'Notandi',
@@ -1039,6 +1042,7 @@ Til að bæta skrá inn á síðu, notið eina af eftirfarandi aðferðum
 
 # File reversion
 'filerevert-comment' => 'Athugasemdir:',
+'filerevert-submit'  => 'Taka aftur',
 
 # File deletion
 'filedelete'         => 'Eyði „$1“',
@@ -1046,6 +1050,7 @@ Til að bæta skrá inn á síðu, notið eina af eftirfarandi aðferðum
 'filedelete-intro'   => "Þú ert að eyða '''[[Media:$1|$1]]'''.",
 'filedelete-comment' => 'Ástæða:',
 'filedelete-submit'  => 'Eyða',
+'filedelete-success' => "'''$1''' hefur verið eytt.",
 
 # MIME search
 'mimesearch' => 'MIME leit',
@@ -1092,7 +1097,7 @@ Lengdin á [http://meta.wikimedia.org/wiki/Help:Job_queue vinnsluröðinni] er '
 'statistics-mostpopular' => 'Mest skoðuðu síður',
 
 'disambiguations'      => 'Tenglar í aðgreiningarsíður',
-'disambiguationspage'  => '{{ns:template}}:Aðgreining',
+'disambiguationspage'  => 'Template:Aðgreining',
 'disambiguations-text' => "Þessar síður innihalda tengla á svokallaðar „'''aðgreiningarsíður'''“. Laga ætti tenglanna og láta þá vísa á rétta síðu.<br />Farið er með síðu sem aðgreiningarsíðu ef að hún inniheldur snið sem vísað er í frá [[MediaWiki:disambiguationspage]]",
 
 'doubleredirects' => 'Tvöfaldar tilvísanir',
@@ -1289,6 +1294,7 @@ sé í samræmi við [[{{MediaWiki:Policy-url}}]].',
 'deletionlog'                 => 'eyðingaskrá',
 'reverted'                    => 'Breytt aftur til fyrri útgáfu',
 'deletecomment'               => 'Ástæða',
+'deletereasonotherlist'       => 'Önnur ástæða',
 'rollback'                    => 'Taka aftur breytingar',
 'rollback_short'              => 'Taka aftur',
 'rollbacklink'                => 'taka aftur',
@@ -1462,6 +1468,7 @@ Gefðu ástæðu fyrir banninu (meðal annars að nefna síðu sem var skemmd).'
 'ipb_already_blocked'         => '„$1“ er nú þegar í banni',
 'ipb_cant_unblock'            => 'Villa: Bann-tala $1 fannst ekki. Hún gæti nú þegar hafa verið afbönnuð.',
 'ip_range_invalid'            => 'Ógilt vistfangasvið.',
+'blockme'                     => 'Banna mig',
 'proxyblocksuccess'           => 'Búinn.',
 
 # Developer tools
@@ -1634,6 +1641,7 @@ Allir innflutningar eru skráð í [[{{ns:special}}:Log/import|innflutningsskrá
 'tooltip-compareselectedversions' => 'Sjá breytingarnar á þessari grein á milli útgáfanna sem þú valdir.',
 'tooltip-watch'                   => 'Bæta þessari síðu á vaktlistann þinn',
 'tooltip-recreate'                => 'Endurvekja síðuna þó henni hafi verið eytt',
+'tooltip-upload'                  => 'Hefja innhleðslu',
 
 # Stylesheets
 'common.css'   => '/* Allt CSS sem sett er hér mun virka á öllum þemum. */',
@@ -1715,6 +1723,9 @@ Allir innflutningar eru skráð í [[{{ns:special}}:Log/import|innflutningsskrá
 'exif-pixelydimension'  => 'Leyfð myndalengd',
 'exif-pixelxdimension'  => 'Leyfð myndahæð',
 'exif-usercomment'      => 'Athugunarsemdir notanda',
+'exif-gpslatitude'      => 'Breiddargráða',
+'exif-gpslongitude'     => 'Lengdargráða',
+'exif-gpsaltitude'      => 'Stjörnuhæð',
 
 # EXIF attributes
 'exif-compression-1' => 'Ósamþjappað',

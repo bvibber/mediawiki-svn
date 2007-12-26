@@ -805,6 +805,8 @@ $wgMessageStructure = array(
 		'recentchangeslinked-title',
 		'recentchangeslinked-noresult',
 		'recentchangeslinked-summary',
+		'recentchangeslinked-feed-entry',
+		'recentchangeslinked-feed-entry-comment',
 	),
 	'upload' => array(
 		'upload',
@@ -1267,6 +1269,7 @@ $wgMessageStructure = array(
 		'protect-summary-cascade',
 		'protect-expiring',
 		'protect-cascade',
+		'protect-cantedit',
 		'restriction-type',
 		'restriction-level',
 		'minimum-size',
@@ -1786,6 +1789,8 @@ $wgMessageStructure = array(
 		'bad_image_list',
 	),
 	'variantname-zh' => array(
+		'variantname-zh-hans',
+		'variantname-zh-hant',
 		'variantname-zh-cn',
 		'variantname-zh-tw',
 		'variantname-zh-hk',

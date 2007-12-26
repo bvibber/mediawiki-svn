@@ -223,29 +223,29 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'เกี่ยวกับ {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:เกี่ยวกับเว็บไซต์',
+'aboutpage'         => 'Project:เกี่ยวกับเว็บไซต์',
 'bugreports'        => 'รายงานบั๊ก',
-'bugreportspage'    => '{{ns:project}}:รายงานบั๊ก',
+'bugreportspage'    => 'Project:รายงานบั๊ก',
 'copyright'         => 'เนื้อหาในหน้านี้อยู่ภายใต้ลิขสิทธิ์แบบ $1',
 'copyrightpagename' => 'สงวนลิขสิทธิ์ {{SITENAME}}',
 'copyrightpage'     => '{{ns:project}}:ลิขสิทธิ์',
 'currentevents'     => 'เหตุการณ์ปัจจุบัน',
-'currentevents-url' => 'เหตุการณ์ปัจจุบัน',
+'currentevents-url' => 'Project:เหตุการณ์ปัจจุบัน',
 'disclaimers'       => '{{SITENAME}} ไม่รับผิดชอบต่อ...',
-'disclaimerpage'    => '{{ns:project}}:ข้อความไม่รับผิดชอบ',
+'disclaimerpage'    => 'Project:ข้อความไม่รับผิดชอบ',
 'edithelp'          => 'คำอธิบายการแก้ไข',
-'edithelppage'      => '{{ns:help}}:การแก้ไข',
+'edithelppage'      => 'Help:การแก้ไข',
 'faq'               => 'คำถามที่ถูกถามบ่อย',
-'faqpage'           => '{{ns:project}}:คำถามที่ถูกถามบ่อย',
-'helppage'          => '{{ns:help}}:วิธีการใช้งาน',
+'faqpage'           => 'Project:คำถามที่ถูกถามบ่อย',
+'helppage'          => 'Help:วิธีการใช้งาน',
 'mainpage'          => 'หน้าหลัก',
-'policy-url'        => '{{ns:project}}:นโยบาย',
+'policy-url'        => 'Project:นโยบาย',
 'portal'            => 'ศูนย์รวมชุมชน',
-'portal-url'        => '{{ns:project}}:ศูนย์รวมชุมชน',
+'portal-url'        => 'Project:ศูนย์รวมชุมชน',
 'privacy'           => 'นโยบายสิทธิส่วนบุคคล',
-'privacypage'       => '{{ns:project}}:นโยบายสิทธิส่วนบุคคล',
+'privacypage'       => 'Project:นโยบายสิทธิส่วนบุคคล',
 'sitesupport'       => 'สนับสนุน',
-'sitesupport-url'   => '{{ns:project}}:สนับสนุนเว็บไซต์',
+'sitesupport-url'   => 'Project:สนับสนุนเว็บไซต์',
 
 'badaccess'        => 'ความผิดพลาดการอนุญาต',
 'badaccess-group0' => 'ไม่อนุญาตให้ใช้คำสั่งตามคำขอ',
@@ -1007,7 +1007,7 @@ $1',
 'statistics-mostpopular' => 'หน้าที่มีการเข้าชมมากที่สุด',
 
 'disambiguations'      => 'หน้าคำกำกวม',
-'disambiguationspage'  => 'แม่แบบ:คำกำกวม',
+'disambiguationspage'  => 'Template:คำกำกวม',
 'disambiguations-text' => "หน้าต่อไปนี้ลิงก์ต่อไปที่ '''หน้าคำกำกวม''' ซึ่งควรแก้ไขให้ลิงก์ไปที่หน้าอื่นที่เหมาะสมแทนที่<br />
 ถ้ามีการใช้งานแม่แบบจาก [[มีเดียวิกิ:หน้าคำกำกวม]] หน้าเหล่านั้นจะถือเป็นหน้าคำกำกวม",
 
@@ -1510,7 +1510,7 @@ $1',
 
 ถ้าต้องการส่งข้ามหน้า ให้ใส่ชื่อหัวข้อที่ต้องการใสกล่องข้อความด้านล่าง หนึ่งหัวข้อต่อหนึ่งบรรทัด และให้เลือกว่าต้องการรุ่นปัจจุบัน หรือทุกรุ่นการแก้ไข
 
-นอกจากนี้สามารถใช้ลิงก์ เช่น [[{{ns:Special}}:Export/{{MediaWiki:Mainpage}}]] สำหรับหน้า {{MediaWiki:Mainpage}}',
+นอกจากนี้สามารถใช้ลิงก์ เช่น [[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]] สำหรับหน้า {{MediaWiki:Mainpage}}',
 'exportcuronly'     => 'ส่งข้ามหน้าเฉพาะรุ่นปัจจุบันเท่านั้น ไม่รวมประวัติหน้า',
 'exportnohistory'   => "----
 '''แนะนำ:''' การส่งข้ามหน้าของประวัติหน้าทั้งหมดไม่สามารถใช้งานได้ เนื่องจากปัญหาทางเทคนิคในด้านประสิทธิภาพ",

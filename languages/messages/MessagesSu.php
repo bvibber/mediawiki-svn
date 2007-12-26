@@ -188,23 +188,23 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Ngeunaan {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:Ngeunaan',
+'aboutpage'         => 'Project:Ngeunaan',
 'bugreports'        => 'Laporan kutu',
 'bugreportspage'    => 'Project:Laporan_kutu',
 'copyright'         => 'Sadaya kandungan ieu loka ditangtayungan ku $1',
 'currentevents'     => 'Keur lumangsung',
 'currentevents-url' => 'Project:Keur lumangsung',
 'disclaimers'       => 'Bantahan',
-'disclaimerpage'    => '{{ns:project}}:Bantahan_umum',
+'disclaimerpage'    => 'Project:Bantahan_umum',
 'edithelp'          => 'Pitulung ngédit',
-'edithelppage'      => 'Pitulung:Ngédit',
+'edithelppage'      => 'Help:Ngédit',
 'faq'               => 'NLD',
-'faqpage'           => '{{ns:project}}:NLD',
-'helppage'          => '{{ns:project}}:Pitulung',
+'faqpage'           => 'Project:NLD',
+'helppage'          => 'Help:Pitulung',
 'mainpage'          => 'Tepas',
-'policy-url'        => '{{ns:project}}:Kawijakan',
+'policy-url'        => 'Project:Kawijakan',
 'portal'            => 'Panglawungan',
-'portal-url'        => '{{ns:project}}: Panglawungan',
+'portal-url'        => 'Project:Panglawungan',
 'privacy'           => 'Kawijakan privasi',
 'privacypage'       => 'Project:Kawijakan privasi',
 'sitesupport'       => 'Sumbangan',
@@ -236,7 +236,7 @@ $messages = array(
 'restorelink'             => '$1 éditan dihapus',
 'feed-invalid'            => 'Tipe paménta asupan henteu pas.',
 
-# Short words for each namespace, by default used in the 'page' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-user'      => 'Kaca pamaké',
 'nstab-media'     => 'Média',
 'nstab-special'   => 'Husus',
@@ -310,7 +310,7 @@ Mun lain kitu masalahna, jigana anjeun geus manggihan kutu na ''software''na. Ma
 'cascadeprotected'     => 'Kaca ieu geus dikonci ti éditan alatan disartakeun di {{PLURAL:$1|kaca|kaca-kaca}} katut anu geus dikonci kalawan pilihan "runtun": $2',
 'namespaceprotected'   => "Anjeun teu ngabogaan hak pikeun ngédit kaca di ngaranspasi '''$1'''.",
 'customcssjsprotected' => 'Anjeun teu ngabogaan hak ngédit kaca ieu, alatan ngandung pangaturan pribadi pamaké séjén.',
-'ns-specialprotected'  => 'Kaca dina ngaranspasi husus teu bisa di édit.',
+'ns-specialprotected'  => 'Kaca dina ngaranspasi {{ns:special}} teu bisa di édit.',
 
 # Login and logout pages
 'logouttitle'                => 'Kaluar log pamaké',
@@ -840,7 +840,7 @@ Catet yén salaku kaca wiki, nu séjén bisa ngarobah atawa ngahapus muatan anje
 'unusedtemplates'    => 'Citakan nu teu kapaké',
 'unusedtemplateswlh' => 'tumbu lianna',
 
-# Random pages
+# Random page
 'randompage' => 'Kaca acak',
 
 # Random redirect
@@ -1283,7 +1283,7 @@ Artikel nu dituju "[[$1]]" geus aya. Badé dihapus baé sangkan bisa mindahkeun?
 'allmessagesdefault'        => 'Téks ti dituna',
 'allmessagescurrent'        => 'Téks kiwari',
 'allmessagestext'           => 'Ieu mangrupa daptar talatah sistim nu aya na spasi ngaran MediaWiki:.',
-'allmessagesnotsupportedDB' => 'Special:AllMessages teu dirojong sabab wgUseDatabaseMessages pareum.',
+'allmessagesnotsupportedDB' => '{{ns:special}}:AllMessages teu dirojong sabab wgUseDatabaseMessages pareum.',
 'allmessagesfilter'         => 'Saringan ngaran talatah:',
 'allmessagesmodified'       => 'Témbongkeun ukur nu robah',
 

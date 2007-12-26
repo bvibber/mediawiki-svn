@@ -343,7 +343,6 @@ $messages = array(
 'bugreportspage'    => "Project:Informes d'errors",
 'copyright'         => "El contingut és disponible sota els termes d'una llicència $1",
 'copyrightpagename' => '{{SITENAME}}, tots els drets reservats',
-'copyrightpage'     => 'Project:Copyrights',
 'currentevents'     => 'Actualitat',
 'currentevents-url' => 'Project:Actualitat',
 'disclaimers'       => 'Avís general',
@@ -555,6 +554,11 @@ Inicieu una sessió després que la rebeu.',
 Introduïu una adreça amb un format adequat o bé buideu el camp.",
 'accountcreated'             => "S'ha creat el compte",
 'accountcreatedtext'         => "S'ha creat el compte d'usuari de $1.",
+'createaccount-title'        => "Creació d'un compte a {{SITENAME}}",
+'createaccount-text'         => 'Algú ($1) ha creat un compte d\'usuari anomenat $2 al projecte {{SITENAME}}
+($4). La contrasenya per a l\'usuari "$2" és "$3". Hauríeu d\'accedir al compte i canviar-vos aquesta contrasenya quan abans millor.
+
+Si no hi teniu cap relació i aquest compte ha estat creat per error, simplement ignoreu el missatge.',
 'loginlanguagelabel'         => 'Idioma: $1',
 
 # Password reset dialog
@@ -661,7 +665,7 @@ Si sou ací per error simplement cliqueu el botó \"enrere\" del vostre navegado
 'usercssjsyoucanpreview'    => '<strong>Consell:</strong> Utilitzeu el botó «Mostra previsualització» per probar el vostre nou CSS/JS abans de desar-lo.',
 'usercsspreview'            => "'''Recordeu que esteu previsualitzant el vostre CSS d'usuari i que encara no s'ha desat!'''",
 'userjspreview'             => "'''Recordeu que només estau provant/previsualitzant el vostre JavaScript, encara no ho heu desat!'''",
-'userinvalidcssjstitle'     => "'''Atenció:''' No existeix l'aparença «$1». Recordeu que les subpàgines personalitzades amb extensions .css i .js utilitzen el títol en minúscules, per exemple, Usuari:NOM/monobook.css no és el mateix que Usuari:NOM/Monobook.css.",
+'userinvalidcssjstitle'     => "'''Atenció:''' No existeix l'aparença «$1». Recordeu que les subpàgines personalitzades amb extensions .css i .js utilitzen el títol en minúscules, per exemple, {{ns:user}}:NOM/monobook.css no és el mateix que {{ns:user}}:NOM/Monobook.css.",
 'updated'                   => '(Actualitzat)',
 'note'                      => '<strong>Nota:</strong>',
 'previewnote'               => "<strong>Adoneu-vos que això només és una vista prèvia, els canvis dels quals encara no s'han alçat!</strong>",
@@ -712,6 +716,8 @@ en un fitxer de text i desar-lo més tard.</strong>',
 'nocreatetitle'             => "S'ha limitat la creació de pàgines",
 'nocreatetext'              => "Està restringida la possibilitat de crear noves pàgines.
 Podeu editar les planes ja existents o bé [[Special:Userlogin|entrar en un compte d'usuari]].",
+'permissionserrors'         => 'Errors de premisos',
+'permissionserrorstext'     => 'No teniu permisos per a fer-ho, {{PLURAL:$1|pel següent motiu|pels següents motius}}:',
 'recreate-deleted-warn'     => "'''Avís: Esteu desant una pàgina que ha estat prèviament esborrada.'''
 
 Hauríeu de considerar si és realment necessari continuar editant aquesta pàgina.
@@ -926,9 +932,8 @@ Els grups no seleccionats no es canviaran. Podeu treure la selecció d'un grup a
 'group-bureaucrat-member'    => 'buròcrata',
 
 'grouppage-autoconfirmed' => '{{ns:project}}:Usuaris autoconfirmats',
-'grouppage-bot'           => 'Project:Bots',
-'grouppage-sysop'         => 'Project:Administradors',
-'grouppage-bureaucrat'    => 'Project:Buròcrates',
+'grouppage-sysop'         => '{{ns:project}}:Administradors',
+'grouppage-bureaucrat'    => '{{ns:project}}:Buròcrates',
 
 # User rights log
 'rightslog'      => "Registre dels permisos d'usuari",
@@ -1012,6 +1017,10 @@ Totes les hores són les del servidor (UTC).",
 'destfilename'                => 'Nom del fitxer de destinació',
 'watchthisupload'             => 'Vigila aquesta pàgina',
 'filewasdeleted'              => "Prèviament es va carregar un fitxer d'aquest nom i després va ser esborrat. Hauríeu de verificar $1 abans de procedir a carregar-lo una altra vegada.",
+'upload-wasdeleted'           => "'''Atenció: Esteu carregant un fitxer que ha estat prèviament esborrat.'''
+
+Hauríeu de considerar si és realment adequat continuar carregant aquest fitxer, perquè potser també acaba eliminat.
+A continuació teniu el registre d'esborrament per a que pugeu comprovar els motius que van portar a la seva eliminació:",
 
 'upload-proto-error'      => 'El protocol és incorrecte',
 'upload-proto-error-text' => 'Per a les càrregues remotes cal que els URL comencin amb <code>http://</code> o <code>ftp://</code>.',
@@ -1361,6 +1370,13 @@ Mostra $2 per a un registre dels esborrats més recents.',
 'deletionlog'                 => "Registre d'esborrats",
 'reverted'                    => 'Invertit amb una revisió anterior',
 'deletecomment'               => 'Motiu per a ser esborrat',
+'deletereason-dropdown'       => "*Motius freqüents d'esborrat
+** Demanada per l'autor
+** Violació del copyright
+** Vandalisme
+** Proves
+** Error en el nom
+** Fer lloc a un trasllat",
 'rollback'                    => 'Reverteix edicions',
 'rollback_short'              => 'Revoca',
 'rollbacklink'                => 'Reverteix',
@@ -1536,6 +1552,7 @@ quines pàgines en concret estan sent vandalitzades).",
 'blockipsuccesssub'           => "S'ha blocat amb èxit",
 'blockipsuccesstext'          => 'L\'usuari "[[Special:Contributions/$1|$1]]" ha estat blocat.
 <br />Vegeu la [[Special:Ipblocklist|llista d\'IP blocades]] per revisar els bloquejos.',
+'ipb-edit-dropdown'           => 'Edita les raons per a blocar',
 'ipb-unblock-addr'            => 'Desbloca $1',
 'ipb-unblock'                 => 'Desbloca un usuari o una adreça IP',
 'ipb-blocklist-addr'          => 'Llista els bloquejos existents per $1',
@@ -1576,7 +1593,7 @@ l'accés a l'escriptura a una adreça IP o un usuari prèviament bloquejat.",
 'ipb_already_blocked'         => '«$1» ja és blocat',
 'ipb_cant_unblock'            => "Errada: No s'ha trobat el núm. ID de bloqueig $1. És possible que ja se'n haguera desblocat.",
 'ip_range_invalid'            => 'Rang de IP no vàlid.',
-'blockme'                     => "Bloqueja'm",
+'blockme'                     => "Bloca'm",
 'proxyblocker'                => 'Blocatge de proxy',
 'proxyblocker-disabled'       => "S'ha inhabilitat la funció.",
 'proxyblockreason'            => "La vostra adreça IP ha estat bloquejada perquè és un proxy obert. Si us plau contactau el vostre proveïdor d'Internet o servei tècnic i informau-los d'aquest seriós problema de seguretat.",
@@ -1676,7 +1693,7 @@ L\'article de destí, "[[$1]]", ja existeix. Voleu esborrar-lo per fer lloc per 
 
 Per a exportar pàgines, escrigueu els títols que dessitgeu a la caixa de text de davall, un títol per línia, i seleccioneu si desitgeu o no la versió actual amb totes les versions prèvies, amb la pàgina d'historial, o tan sols la pàgina actual amb la informació de la darrera modificació.
 
-En el darrer cas podeu fer servir un enllaç, com ara [[{{ns:Special}}:Export/{{Mediawiki:mainpage}}]] per a la pàgina {{Mediawiki:mainpage}}.",
+En el darrer cas podeu fer servir un enllaç, com ara [[{{ns:special}}:Export/{{Mediawiki:mainpage}}]] per a la pàgina {{Mediawiki:mainpage}}.",
 'exportcuronly'     => "Exporta únicament la versió actual en voltes de l'historial sencer",
 'exportnohistory'   => "----
 '''Nota:''' s'ha deshabilitat l'exportació sencera d'historial de pàgines mitjançant aquest formulari a causa de problemes de rendiment del servidor.",

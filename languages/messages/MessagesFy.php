@@ -159,15 +159,15 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Oer de {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:Ynfo',
+'aboutpage'         => 'Project:Ynfo',
 'bugreports'        => 'Brekmelding',
-'bugreportspage'    => '{{ns:project}}:Brekmelding',
+'bugreportspage'    => 'Project:Brekmelding',
 'copyrightpagename' => '{{SITENAME}} auteursrjocht',
 'copyrightpage'     => '{{ns:project}}:Auteursrjocht',
 'currentevents'     => 'Hjoeddeis',
 'edithelp'          => 'Siden bewurkje',
-'edithelppage'      => '{{ns:project}}:Bewurk-rie',
-'helppage'          => '{{ns:project}}:Help',
+'edithelppage'      => 'Help:Bewurk-rie',
+'helppage'          => 'Help:Help',
 'mainpage'          => 'Haadside',
 
 'ok'            => 'Goed',
@@ -514,7 +514,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 It tal fan behearders dêrfan is: <b>$2</b>.',
 
 'disambiguations'      => 'Trochverwizings',
-'disambiguationspage'  => '{{ns:project}}:trochferwizing',
+'disambiguationspage'  => 'Project:trochferwizing',
 'disambiguations-text' => 'Dizze siden binne keppele fia in
 [[MediaWiki:disambiguationspage]].
 Se soenen mei de side sels keppele wurde moatte.<br />

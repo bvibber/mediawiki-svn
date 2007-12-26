@@ -231,22 +231,22 @@ $messages = array(
 'copyrightpagename' => 'Dereitos de autor (copyright) de {{SITENAME}}',
 'copyrightpage'     => '{{ns:project}}: Dereitos de autor (Copyrights)',
 'currentevents'     => 'Actualidade',
-'currentevents-url' => '{{ns:project}}:Actualidade',
+'currentevents-url' => 'Project:Actualidade',
 'disclaimers'       => 'Advertencias',
 'disclaimerpage'    => 'Project:Advertencia xeral',
 'edithelp'          => 'Axuda de edición',
-'edithelppage'      => '{{ns:project}}:Como editar unha páxina',
+'edithelppage'      => 'Help:Como editar unha páxina',
 'faq'               => 'PMF',
-'faqpage'           => '{{ns:project}}:PMF',
-'helppage'          => '{{ns:project}}:Axuda',
+'faqpage'           => 'Project:PMF',
+'helppage'          => 'Help:Axuda',
 'mainpage'          => 'Portada',
 'policy-url'        => 'Project:Política e normas',
 'portal'            => 'Portal da comunidade',
 'portal-url'        => 'Project:Portal da comunidade',
 'privacy'           => 'Política de Privacidade',
-'privacypage'       => '{{ns:project}}:Política de Privacidade',
+'privacypage'       => 'Project:Política de Privacidade',
 'sitesupport'       => 'Doazóns',
-'sitesupport-url'   => '{{ns:project}}:Axuda do sitio',
+'sitesupport-url'   => 'Project:Axuda do sitio',
 
 'badaccess'        => 'Erro de permisos',
 'badaccess-group0' => 'Non ten autorización para executar a acción que solicitou.',
@@ -1611,7 +1611,7 @@ O artigo de destino "[[$1]]" xa existe. Quéreo eliminar para facer sitio para m
 
 Para exportar páxinas, insira os títulos na caixa de texto que está máis abaixo, poñendo un título por liña, e se quere seleccione a versión actual e todas as versións vellas, coas liñas do historial da páxina, ou só a versión actual con información sobre a última edición.
 
-No último caso, pode usar tamén unha ligazón, por exemplo [[{{ns:Special}}:Export/{{MediaWiki:Mainpage}}]], para a páxina "[[{{MediaWiki:Mainpage}}]]".',
+No último caso, pode usar tamén unha ligazón, por exemplo [[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]], para a páxina "[[{{MediaWiki:Mainpage}}]]".',
 'exportcuronly'     => 'Incluír só a revisión actual, non o historial completo',
 'exportnohistory'   => "---- 
 '''Aviso:''' Foi desactivada a exportación do historial completo das páxinas con este formulario debido a razóns relacionadas co rendemento do servidor.",

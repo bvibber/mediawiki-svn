@@ -56,6 +56,7 @@ class ApiMain extends ApiBase {
 		'query' => 'ApiQuery',
 		'expandtemplates' => 'ApiExpandTemplates',
 		'render' => 'ApiRender',
+		'parse' => 'ApiParse',
 		'opensearch' => 'ApiOpenSearch',
 		'feedwatchlist' => 'ApiFeedWatchlist',
 		'help' => 'ApiHelp',
@@ -321,6 +322,9 @@ class ApiMain extends ApiBase {
 
 			if ($this->mPrinter->getNeedsRawData())
 				$this->getResult()->setRawMode();
+
+			if( $this->mAction == 'help' )
+				$this->mPrinter->setHelp();
 		}
 
 		// Execute
@@ -472,11 +476,12 @@ class ApiMain extends ApiBase {
 	} 
 
 	private $mIsBot = null;
-	
 	private $mIsSysop = null;
+	private $mCanApiHighLimits = null;
 	
 	/**
 	 * Returns true if the currently logged in user is a bot, false otherwise
+	 * OBSOLETE, use canApiHighLimits() instead
 	 */
 	public function isBot() {
 		if (!isset ($this->mIsBot)) {
@@ -489,6 +494,7 @@ class ApiMain extends ApiBase {
 	/**
 	 * Similar to isBot(), this method returns true if the logged in user is
 	 * a sysop, and false if not.
+	 * OBSOLETE, use canApiHighLimits() instead
 	 */
 	public function isSysop() {
 		if (!isset ($this->mIsSysop)) {
@@ -497,6 +503,15 @@ class ApiMain extends ApiBase {
 		}
 
 		return $this->mIsSysop;
+	}
+	
+	public function canApiHighLimits() {
+		if (!isset($this->mCanApiHighLimits)) {
+			global $wgUser;
+			$this->mCanApiHighLimits = $wgUser->isAllowed('apihighlimits');
+		}
+
+		return $this->mCanApiHighLimits;
 	}
 
 	public function getShowVersions() {

@@ -7,6 +7,7 @@
  * @author Adriaan
  * @author Siebrand
  * @author Spacebirdy
+ * @author Manie
  */
 
 $skinNames = array(
@@ -213,27 +214,26 @@ $messages = array(
 'aboutsite'         => 'Inligting oor {{SITENAME}}',
 'aboutpage'         => 'Project:Omtrent',
 'bugreports'        => 'Foutrapporte',
-'bugreportspage'    => '{{ns:4}}:FoutRapporte',
+'bugreportspage'    => 'Project:FoutRapporte',
 'copyright'         => 'Teks is beskikbaar onderhewig aan $1.',
 'copyrightpagename' => '{{SITENAME}} kopiereg',
-'copyrightpage'     => '{{ns:4}}:kopiereg',
+'copyrightpage'     => '{{ns:project}}:kopiereg',
 'currentevents'     => 'Huidige gebeure',
-'currentevents-url' => '{{ns:project}}:Huidige gebeure',
+'currentevents-url' => 'Project:Huidige gebeure',
 'disclaimers'       => 'Voorbehoud',
 'disclaimerpage'    => 'Project:Voorwaarden',
 'edithelp'          => 'Wysighulp',
-'edithelppage'      => '{{ns:4}}:Redigeer',
+'edithelppage'      => 'Help:Redigeer',
 'faq'               => 'Gewilde vrae',
-'faqpage'           => '{{ns:4}}:GewildeVrae',
-'helppage'          => '{{ns:help}}:Hulp',
+'faqpage'           => 'Project:GewildeVrae',
+'helppage'          => 'Help:Hulp',
 'mainpage'          => 'Tuisblad',
-'policy-url'        => 'Project:Policy',
 'portal'            => 'Gebruikersportaal',
 'portal-url'        => 'Project:Gebruikersportaal',
 'privacy'           => 'Privaatheidsbeleid',
 'privacypage'       => 'Project:Privaatheidsbeleid',
 'sitesupport'       => 'Skenkings',
-'sitesupport-url'   => '{{ns:project}}:Skenkings',
+'sitesupport-url'   => 'Project:Skenkings',
 
 'ok'                  => 'Aanvaar',
 'retrievedfrom'       => 'Ontsluit van "$1"',
@@ -268,45 +268,46 @@ $messages = array(
 'nospecialpagetext' => 'Ongeldige spesiale bladsy gespesifeer.',
 
 # General errors
-'error'           => 'Fout',
-'databaseerror'   => 'Databasisfout',
-'dberrortext'     => 'Sintaksisfout in databasisnavraag.
+'error'            => 'Fout',
+'databaseerror'    => 'Databasisfout',
+'dberrortext'      => 'Sintaksisfout in databasisnavraag.
 Die laaste navraag was:
 <blockquote><tt>$1</tt></blockquote>
 van funksie "<tt>$2</tt>".
 MySQL foutboodskap "<tt>$3: $4</tt>".',
-'noconnect'       => 'Kon nie met databasis op $1 konnekteer nie',
-'nodb'            => 'Kon nie databasis $1 selekteer nie',
-'cachederror'     => "Die volgende is 'n gekaste kopie van die aangevraagde blad, en is dalk nie op datum nie.",
-'readonly'        => 'Databasis gesluit',
-'enterlockreason' => 'Rede vir die sluiting,
+'noconnect'        => 'Kon nie met databasis op $1 konnekteer nie',
+'nodb'             => 'Kon nie databasis $1 selekteer nie',
+'cachederror'      => "Die volgende is 'n gekaste kopie van die aangevraagde blad, en is dalk nie op datum nie.",
+'readonly'         => 'Databasis gesluit',
+'enterlockreason'  => 'Rede vir die sluiting,
 en beraming van wanneer ontsluiting sal plaas vind',
-'readonlytext'    => 'Die {{SITENAME}} databasis is tans gesluit vir nuwe
+'readonlytext'     => 'Die {{SITENAME}} databasis is tans gesluit vir nuwe
 artikelwysigings, waarskynlik vir roetine databasisonderhoud,
 waarna dit terug sal wees na normaal.
 Die administreerder wat dit gesluit het se verduideliking:
 
 $1',
-'missingarticle'  => 'Die databasis het nie die teks van die veronderstelde bladsy "$1" gekry nie.
+'missingarticle'   => 'Die databasis het nie die teks van die veronderstelde bladsy "$1" gekry nie.
 Nie databasisfout nie, moontlik sagtewarefout.
 Raporteer die adres asseblief aan enige administrateur.',
-'readonly_lag'    => 'Die databasis is outomaties gesluit terwyl die slaafdatabasisse sinchroniseer met die meester',
-'internalerror'   => 'Interne fout',
-'filecopyerror'   => 'Kon nie lêer van "$1" na "$2" kopieer nie.',
-'filerenameerror' => 'Kon nie lêernaam van "$1" na "$2" wysig nie.',
-'filedeleteerror' => 'Kon nie lêer "$1" skrap nie.',
-'filenotfound'    => 'Kon nie lêer "$1" vind nie.',
-'unexpected'      => 'Onverwagte waarde: "$1"="$2".',
-'formerror'       => 'Fout: kon vorm nie stuur nie',
-'badarticleerror' => 'Die aksie kon nie op hierdie bladsy uitgevoer word nie.',
-'cannotdelete'    => 'Kon nie die bladsy of prent skrap nie, iemand anders het dit miskien reeds geskrap.',
-'badtitle'        => 'Ongeldige titel',
-'badtitletext'    => "Die bladsytitel waarvoor gevra is, is ongeldig, leeg, of
+'readonly_lag'     => 'Die databasis is outomaties gesluit terwyl die slaafdatabasisse sinchroniseer met die meester',
+'internalerror'    => 'Interne fout',
+'filecopyerror'    => 'Kon nie lêer van "$1" na "$2" kopieer nie.',
+'filerenameerror'  => 'Kon nie lêernaam van "$1" na "$2" wysig nie.',
+'filedeleteerror'  => 'Kon nie lêer "$1" skrap nie.',
+'filenotfound'     => 'Kon nie lêer "$1" vind nie.',
+'unexpected'       => 'Onverwagte waarde: "$1"="$2".',
+'formerror'        => 'Fout: kon vorm nie stuur nie',
+'badarticleerror'  => 'Die aksie kon nie op hierdie bladsy uitgevoer word nie.',
+'cannotdelete'     => 'Kon nie die bladsy of prent skrap nie, iemand anders het dit miskien reeds geskrap.',
+'badtitle'         => 'Ongeldige titel',
+'badtitletext'     => "Die bladsytitel waarvoor gevra is, is ongeldig, leeg, of
 'n verkeerd geskakelde tussen-taal of tussen-wiki titel.",
-'perfdisabled'    => 'Jammer, hierdie funksie is tydelik afgeskakel omdat dit die databasis soveel verstadig dat dit onbruikbaar vir andere raak.',
-'perfcached'      => "ie volgende inligting is 'n gekaste kopie en mag dalk nie volledig op datum wees nie.",
-'perfcachedts'    => 'Die volgende data is gekas. Laaste opdatering: $1',
-'viewsource'      => 'Bekyk bronteks',
+'perfdisabled'     => 'Jammer, hierdie funksie is tydelik afgeskakel omdat dit die databasis soveel verstadig dat dit onbruikbaar vir andere raak.',
+'perfcached'       => "ie volgende inligting is 'n gekaste kopie en mag dalk nie volledig op datum wees nie.",
+'perfcachedts'     => 'Die volgende data is gekas. Laaste opdatering: $1',
+'viewsource'       => 'Bekyk bronteks',
+'editinginterface' => "'''Waarskuwing:''' Jy is besig om 'n bladsy te redigeer wat koppelvlakinligting aan die programmatuur voorsien. Wysigings aan hierdie bladsy sal die voorkoms van die gebruikerskoppelvlak vir ander gebruikers beïnvloed.",
 
 # Login and logout pages
 'logouttitle'                => 'Teken uit',
@@ -331,6 +332,7 @@ moenie vergeet om jou persoonlike voorkeure te stel nie.',
 'createaccount'              => 'Skep nuwe rekening',
 'gotaccount'                 => "Het u reeds 'n rekening? $1.",
 'gotaccountlink'             => 'Teken gerus aan',
+'createaccountmail'          => 'deur e-pos',
 'badretype'                  => 'Die ingetikte wagwoorde is nie dieselfde nie.',
 'userexists'                 => "Die gebruikersnaam wat jy gebruik het, is alreeds gebruik. Kies asseblief 'n ander gebruikersnaam.",
 'youremail'                  => 'E-pos',
@@ -576,9 +578,23 @@ om voorkeure te spesifiseer.',
 'default'                  => 'verstek',
 'files'                    => 'Lêers',
 
+# User rights
+'editusergroup' => 'Wysig gebruikersgroepe',
+
 # Groups
-'group'     => 'Groep:',
-'group-all' => '(alle)',
+'group'            => 'Groep:',
+'group-bot'        => 'Robotte',
+'group-sysop'      => 'Administrateurs',
+'group-bureaucrat' => 'Burokrate',
+'group-all'        => '(alle)',
+
+'group-bot-member'        => 'Robot',
+'group-sysop-member'      => 'Administrateur',
+'group-bureaucrat-member' => 'Burokraat',
+
+'grouppage-bot'        => '{{ns:project}}:Robotte',
+'grouppage-sysop'      => '{{ns:project}}:Administrateurs',
+'grouppage-bureaucrat' => '{{ns:project}}:Burokrate',
 
 # Recent changes
 'nchanges'          => '$1 {{PLURAL:$1|wysiging|wysigings}}',
@@ -686,6 +702,7 @@ Let asseblief op dat, soos met {{SITENAME}} bladsye, mag ander jou gelaaide lêe
 
 # MIME search
 'mimesearch' => 'MIME-soek',
+'download'   => 'laai af',
 
 # List redirects
 'listredirects' => 'Lys aansture',
@@ -715,7 +732,7 @@ Dit werk uit op gemiddeld <b>$5</b> veranderings per bladsy, en bladsye word <b>
 <b>$2</b> van hulle is administrateurs (sien $3).',
 
 'disambiguations'     => 'Bladsye wat onduidelikhede opklaar',
-'disambiguationspage' => '{{ns:4}}:Links_to_disambiguating_pages',
+'disambiguationspage' => 'Template:Dubbelsinnig',
 
 'doubleredirects'     => 'Dubbele aansture',
 'doubleredirectstext' => '<b>Let op:</b> Hierdie lys bevat moontlik false positiewe. Dit beteken gewoonlik dat daar nog teks met skakels onder die eerste #REDIRECT is.<br />
@@ -773,6 +790,7 @@ Elke ry bevat skakels na die eerste en die tweede aanstuur, asook die eerste re�
 'booksources-search-legend' => 'Soek vir boekbronne',
 
 'categoriespagetext' => 'Die volgende kategorieë bestaan op die wiki.',
+'groups'             => 'Gebruikersgroepe',
 'alphaindexline'     => '$1 tot $2',
 'version'            => 'Weergawe',
 
@@ -842,6 +860,9 @@ As u die bladsy later van u dophoulys wil verwyder, kliek "verwyder van dophouly
 'wlnote'            => 'Hier volg die laaste $1 veranderings binne die laaste <b>$2</b> ure.',
 'wlshowlast'        => 'Wys afgelope $1 ure, $2 dae of $3',
 
+'enotif_newpagetext' => "Dis 'n nuwe bladsy.",
+'changed'            => 'verander',
+
 # Delete/protect/revert
 'deletepage'                  => 'Skrap bladsy',
 'confirm'                     => 'Bevestig',
@@ -892,6 +913,7 @@ Kyk na $2 vir \'n rekord van onlangse skrappings.',
 As 'n nuwe bladsy met dieselfde naam sedert die skrapping geskep is, sal die herstelde weergawes in die nuwe bladsy se voorgeskiedenis verskyn en die huidige weergawe van die lewendige bladsy sal nie outomaties vervang word nie.",
 'undeletebtn'       => 'Herstel',
 'undeletedarticle'  => 'het "$1" herstel',
+'cannotundelete'    => 'Skrapping onsuksesvol; miskien het iemand anders dié bladsy al geskrap.',
 
 # Namespace form on various pages
 'namespace'      => 'Naamruimte:',
@@ -1029,19 +1051,21 @@ Die teikenartikel "[[$1]]" bestaan reeds. Wil u dit skrap om plek te maak vir di
 'export' => 'Eksporteer bladsye',
 
 # Namespace 8 related
-'allmessages'         => 'Stelselboodskappe',
-'allmessagesname'     => 'Naam',
-'allmessagesdefault'  => 'Verstekteks',
-'allmessagescurrent'  => 'Huidige teks',
-'allmessagestext'     => "Hierdie is 'n lys boodskappe wat beskikbaar is in die ''MediaWiki''-naamspasie.",
-'allmessagesfilter'   => 'Boodskapnaamfilter:',
-'allmessagesmodified' => 'Wys slegs gewysigdes',
+'allmessages'               => 'Stelselboodskappe',
+'allmessagesname'           => 'Naam',
+'allmessagesdefault'        => 'Verstekteks',
+'allmessagescurrent'        => 'Huidige teks',
+'allmessagestext'           => "Hierdie is 'n lys boodskappe wat beskikbaar is in die ''MediaWiki''-naamspasie.",
+'allmessagesnotsupportedDB' => "Daar is geen ondersteuning vir '''{{ns:special}}:Allmessages''' omdat '''\$wgUseDatabaseMessages''' uitgeskakel is.",
+'allmessagesfilter'         => 'Boodskapnaamfilter:',
+'allmessagesmodified'       => 'Wys slegs gewysigdes',
 
 # Thumbnails
 'thumbnail-more' => 'Vergroot',
 
 # Special:Import
-'import' => 'Voer bladsye in',
+'import'       => 'Voer bladsye in',
+'importfailed' => 'Intrek onsuksesvol: $1',
 
 # Tooltip help for the actions
 'tooltip-pt-userpage'             => 'My gebruikerbladsy',
@@ -1139,7 +1163,54 @@ Die teikenartikel "[[$1]]" bestaan reeds. Wil u dit skrap om plek te maak vir di
 'newimages' => 'Gallery van nuwe beelde',
 'noimages'  => 'Niks te sien nie.',
 
+# EXIF tags
+'exif-imagewidth'          => 'Breedte',
+'exif-imagelength'         => 'Hoogte',
+'exif-artist'              => 'Bewerker',
+'exif-colorspace'          => 'Kleurruimte',
+'exif-exposuretime'        => 'Beligtingstyd',
+'exif-exposuretime-format' => '$1 sek ($2)',
+'exif-fnumber'             => 'F-getal',
+'exif-filesource'          => 'Lêerbron',
+'exif-gpsversionid'        => 'GPS-merkerweergawe',
+'exif-gpslatituderef'      => 'Noorder- of suiderbreedte',
+'exif-gpslatitude'         => 'Breedtegraad',
+'exif-gpslongituderef'     => 'Ooster- of westerlengte',
+'exif-gpslongitude'        => 'Lengtegraad',
+'exif-gpsaltitude'         => 'Hoogte',
+'exif-gpstimestamp'        => 'GPS-tyd (atoomhorlosie)',
+'exif-gpsspeed'            => 'Snelheid van GPS-ontvanger',
+
+'exif-componentsconfiguration-0' => 'bestaan nie',
+
+'exif-subjectdistance-value' => '$1 meter',
+
+'exif-meteringmode-0' => 'Onbekend',
+
+'exif-lightsource-0'  => 'Onbekend',
+'exif-lightsource-1'  => 'Sonlig',
+'exif-lightsource-2'  => 'Fluoresserend',
+'exif-lightsource-4'  => 'Flits',
 'exif-lightsource-10' => 'Bewolkte weer',
+'exif-lightsource-11' => 'Skaduwee',
+
+'exif-focalplaneresolutionunit-2' => 'duim',
+
+'exif-scenecapturetype-1' => 'Landskap',
+'exif-scenecapturetype-2' => 'Portret',
+
+# Pseudotags used for GPSLatitudeRef and GPSDestLatitudeRef
+'exif-gpslatitude-n' => 'Noorderbreedte',
+'exif-gpslatitude-s' => 'Suiderbreedte',
+
+# Pseudotags used for GPSLongitudeRef and GPSDestLongitudeRef
+'exif-gpslongitude-e' => 'Oosterlengte',
+'exif-gpslongitude-w' => 'Westerlengte',
+
+# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+'exif-gpsspeed-k' => 'Kilometer per huur',
+'exif-gpsspeed-m' => 'Myl per huur',
+'exif-gpsspeed-n' => 'Knope',
 
 # External editor support
 'edit-externally'      => "Wysig hierdie lêer met 'n eksterne program",

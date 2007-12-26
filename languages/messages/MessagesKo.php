@@ -236,13 +236,13 @@ $messages = array(
 'bugreportspage'    => 'Project:버그 신고',
 'copyright'         => '문서는 $1 저작권 하에 있습니다.',
 'copyrightpagename' => '{{SITENAME}} 저작권',
-'copyrightpage'     => 'Project:저작권',
+'copyrightpage'     => '{{ns:project}}:저작권',
 'currentevents'     => '요즘 화제',
-'currentevents-url' => '요즘 화제',
+'currentevents-url' => 'Project:요즘 화제',
 'disclaimers'       => '면책 조항',
 'disclaimerpage'    => 'Project:면책 조항',
 'edithelp'          => '편집 도움말',
-'edithelppage'      => 'Project:문서 편집 도움말',
+'edithelppage'      => 'Help:문서 편집 도움말',
 'helppage'          => 'Help:목차',
 'mainpage'          => '대문',
 'policy-url'        => 'Project:정책',
@@ -713,9 +713,9 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'group-sysop-member'      => '관리자',
 'group-bureaucrat-member' => '뷰로크랫',
 
-'grouppage-bot'        => 'Project:봇',
-'grouppage-sysop'      => 'Project:관리자',
-'grouppage-bureaucrat' => 'Project:뷰로크랫',
+'grouppage-bot'        => '{{ns:project}}:봇',
+'grouppage-sysop'      => '{{ns:project}}:관리자',
+'grouppage-bureaucrat' => '{{ns:project}}:뷰로크랫',
 
 # User rights log
 'rightslog'      => '사용자 권한 기록',
@@ -1328,7 +1328,7 @@ $NEWPAGE
 'allmessagesdefault'        => '기본 내용',
 'allmessagescurrent'        => '현재 내용',
 'allmessagestext'           => 'MediaWiki 네임스페이스에 있는 모든 시스템 메시지의 목록입니다.',
-'allmessagesnotsupportedDB' => "'''\$wgUseDatabaseMessages'''가 해제되어 있어서 '''Special:Allmessages'''를 사용할 수 없습니다.",
+'allmessagesnotsupportedDB' => "'''\$wgUseDatabaseMessages'''가 해제되어 있어서 '''{{ns:special}}:Allmessages'''를 사용할 수 없습니다.",
 'allmessagesfilter'         => '다음 메시지만 보이기:',
 'allmessagesmodified'       => '변경된 것만 보여주기',
 

@@ -4,6 +4,7 @@
  * @addtogroup Language
  *
  * @author MF-Warburg
+ * @author Siebrand
  */
 
 $skinNames = array(
@@ -166,15 +167,15 @@ $messages = array(
 'aboutpage'         => 'Project:Kona-ba',
 'copyright'         => 'Testu pájina nian iha $1 okos.',
 'currentevents'     => 'Mamosuk atuál sira',
-'currentevents-url' => '{{ns:project}}:Mamosuk atuál sira',
+'currentevents-url' => 'Project:Mamosuk atuál sira',
 'disclaimers'       => 'Avisu legál',
-'disclaimerpage'    => '{{ns:project}}:Avisu legál',
-'edithelppage'      => '{{ns:help}}:Edita',
+'disclaimerpage'    => 'Project:Avisu legál',
+'edithelppage'      => 'Help:Edita',
 'mainpage'          => 'Pájina Mahuluk',
 'portal'            => 'Portál komunidade nian',
-'portal-url'        => '{{ns:project}}:Portál komunidade nian',
+'portal-url'        => 'Project:Portál komunidade nian',
 'privacy'           => 'Polítika privasidade nian',
-'privacypage'       => '{{ns:project}}:Polítika privasidade nian',
+'privacypage'       => 'Project:Polítika privasidade nian',
 'sitesupport'       => 'Fó donativu ida',
 
 'badaccess-group0' => "Ó lalika halo ne'e.",

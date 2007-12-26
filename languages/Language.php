@@ -1956,7 +1956,7 @@ class Language {
 	 */
 	static function loadLocalisation( $code, $disableCache = false ) {
 		static $recursionGuard = array();
-		global $wgMemc;
+		global $wgMemc, $wgCheckSerialized;
 
 		if ( !$code ) {
 			throw new MWException( "Invalid language code requested" );
@@ -1973,26 +1973,25 @@ class Language {
 			# Try the serialized directory
 			$cache = wfGetPrecompiledData( self::getFileName( "Messages", $code, '.ser' ) );
 			if ( $cache ) {
-				self::$mLocalisationCache[$code] = $cache;
-				wfDebug( "Language::loadLocalisation(): got localisation for $code from precompiled data file\n" );
-				wfProfileOut( __METHOD__ );
-				return self::$mLocalisationCache[$code]['deps'];
+				if ( $wgCheckSerialized && self::isLocalisationOutOfDate( $cache ) ) {
+					$cache = false;
+					wfDebug( "Language::loadLocalisation(): precompiled data file for $code is out of date\n" );
+				} else {
+					self::$mLocalisationCache[$code] = $cache;
+					wfDebug( "Language::loadLocalisation(): got localisation for $code from precompiled data file\n" );
+					wfProfileOut( __METHOD__ );
+					return self::$mLocalisationCache[$code]['deps'];
+				}
 			}
 
 			# Try the global cache
 			$memcKey = wfMemcKey('localisation', $code );
 			$cache = $wgMemc->get( $memcKey );
 			if ( $cache ) {
-				# Check file modification times
-				foreach ( $cache['deps'] as $file => $mtime ) {
-					if ( !file_exists( $file ) || filemtime( $file ) > $mtime ) {
-						break;
-					}
-				}
 				if ( self::isLocalisationOutOfDate( $cache ) ) {
 					$wgMemc->delete( $memcKey );
 					$cache = false;
-					wfDebug( "Language::loadLocalisation(): localisation cache for $code had expired due to update of $file\n" );
+					wfDebug( "Language::loadLocalisation(): localisation cache for $code had expired\n" );
 				} else {
 					self::$mLocalisationCache[$code] = $cache;
 					wfDebug( "Language::loadLocalisation(): got localisation for $code from cache\n" );

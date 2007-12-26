@@ -650,9 +650,9 @@ XHTML id names.
 'bugreportspage'    => 'Project:Bug reports',
 'copyright'         => 'Content is available under $1.',
 'copyrightpagename' => '{{SITENAME}} copyright',
-'copyrightpage'     => 'Project:Copyrights',
+'copyrightpage'     => '{{ns:project}}:Copyrights',
 'currentevents'     => 'Current events',
-'currentevents-url' => 'Current events',
+'currentevents-url' => 'Project:Current events',
 'disclaimers'       => 'Disclaimers',
 'disclaimerpage'    => 'Project:General disclaimer',
 'edithelp'          => 'Editing help',
@@ -858,7 +858,7 @@ Your account has been created. Don't forget to change your {{SITENAME}} preferen
 'wrongpasswordempty'         => 'Password entered was blank. Please try again.',
 'passwordtooshort'           => 'Your password is invalid or too short. It must have at least $1 characters and be different from your username.',
 'mailmypassword'             => 'E-mail password',
-'passwordremindertitle'      => 'Password reminder from {{SITENAME}}',
+'passwordremindertitle'      => 'New temporary password for {{SITENAME}}',
 'passwordremindertext'       => 'Someone (probably you, from IP address $1)
 requested that we send you a new password for {{SITENAME}} ($4).
 The password for user "$2" is now "$3".
@@ -1393,6 +1393,8 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 'recentchangeslinked-title' => 'Changes related to $1',
 'recentchangeslinked-noresult' => 'No changes on linked pages during the given period.',
 'recentchangeslinked-summary'  => "This special page lists the last changes on pages who are linked. Pages on your watchlist are '''bold'''.",
+'recentchangeslinked-feed-entry' => 'User $1 edited $2',
+'recentchangeslinked-feed-entry-comment' => 'User $1 edited $2 ($3)',
 
 # Upload
 'upload'                      => 'Upload file',
@@ -1941,6 +1943,7 @@ Here are the current settings for the page <strong>$1</strong>:',
 'protect-summary-cascade'     => 'cascading',
 'protect-expiring'            => 'expires $1 (UTC)',
 'protect-cascade'             => 'Protect pages included in this page (cascading protection)',
+'protect-cantedit'	      => 'You cannot change the protection levels of this page, because you do not have permission to edit it.',
 'restriction-type'            => 'Permission:',
 'restriction-level'           => 'Restriction level:',
 'minimum-size'                => 'Min size',
@@ -2233,7 +2236,7 @@ To export pages, enter the titles in the text box below, one title per line, and
 select whether you want the current version as well as all old versions, with the page
 history lines, or just the current version with the info about the last edit.
 
-In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{MediaWiki:Mainpage}}]] for the page "[[{{MediaWiki:Mainpage}}]]".',
+In the latter case you can also use a link, e.g. [[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]] for the page "[[{{MediaWiki:Mainpage}}]]".',
 'exportcuronly'     => 'Include only the current revision, not the full history',
 'exportnohistory'   => "----
 '''Note:''' Exporting the full history of pages through this form has been disabled due to performance reasons.",
@@ -2538,11 +2541,13 @@ To disable showing a particular link, set it to 'disable', e.g.
 'variantname-zh-sg' => 'disable',
 Variants for Chinese language
 */
-'variantname-zh-cn' => 'cn', # only translate this message to other languages if you have to change it
-'variantname-zh-tw' => 'tw', # only translate this message to other languages if you have to change it
-'variantname-zh-hk' => 'hk', # only translate this message to other languages if you have to change it
-'variantname-zh-sg' => 'sg', # only translate this message to other languages if you have to change it
-'variantname-zh'    => 'zh', # only translate this message to other languages if you have to change it
+'variantname-zh-hans' => 'hans', # only translate this message to other languages if you have to change it
+'variantname-zh-hant' => 'hant', # only translate this message to other languages if you have to change it
+'variantname-zh-cn'   => 'cn', # only translate this message to other languages if you have to change it
+'variantname-zh-tw'   => 'tw', # only translate this message to other languages if you have to change it
+'variantname-zh-hk'   => 'hk', # only translate this message to other languages if you have to change it
+'variantname-zh-sg'   => 'sg', # only translate this message to other languages if you have to change it
+'variantname-zh'      => 'zh', # only translate this message to other languages if you have to change it
 
 # Variants for Serbian language
 'variantname-sr-ec' => 'sr-ec', # only translate this message to other languages if you have to change it

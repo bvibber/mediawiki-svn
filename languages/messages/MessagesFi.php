@@ -365,29 +365,29 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Tietoja {{GRAMMAR:elative|{{SITENAME}}}}',
-'aboutpage'         => '{{ns:project}}:Tietoja',
+'aboutpage'         => 'Project:Tietoja',
 'bugreports'        => 'Ongelmat ja parannusehdotukset',
-'bugreportspage'    => '{{ns:project}}:Ongelmat ja parannusehdotukset',
+'bugreportspage'    => 'Project:Ongelmat ja parannusehdotukset',
 'copyright'         => 'Sisältö on käytettävissä lisenssillä $1.',
 'copyrightpagename' => '{{SITENAME}} ja tekijänoikeudet',
 'copyrightpage'     => '{{ns:project}}:Tekijänoikeudet',
 'currentevents'     => 'Ajankohtaista',
-'currentevents-url' => '{{ns:project}}:Ajankohtaista',
+'currentevents-url' => 'Project:Ajankohtaista',
 'disclaimers'       => 'Vastuuvapaus',
-'disclaimerpage'    => '{{ns:project}}:Vastuuvapaus',
+'disclaimerpage'    => 'Project:Vastuuvapaus',
 'edithelp'          => 'Muokkausohjeet',
-'edithelppage'      => '{{ns:help}}:Kuinka sivuja muokataan',
+'edithelppage'      => 'Help:Kuinka sivuja muokataan',
 'faq'               => 'Usein kysytyt kysymykset',
-'faqpage'           => '{{ns:project}}:Usein kysytyt kysymykset',
-'helppage'          => '{{ns:help}}:Sisällys',
+'faqpage'           => 'Project:Usein kysytyt kysymykset',
+'helppage'          => 'Help:Sisällys',
 'mainpage'          => 'Etusivu',
-'policy-url'        => '{{ns:project}}:Käytännöt',
+'policy-url'        => 'Project:Käytännöt',
 'portal'            => 'Kahvihuone',
-'portal-url'        => '{{ns:project}}:Kahvihuone',
+'portal-url'        => 'Project:Kahvihuone',
 'privacy'           => 'Tietosuojakäytäntö',
-'privacypage'       => '{{ns:project}}:Tietosuojakäytäntö',
+'privacypage'       => 'Project:Tietosuojakäytäntö',
 'sitesupport'       => 'Lahjoitukset',
-'sitesupport-url'   => '{{ns:project}}:Lahjoitukset',
+'sitesupport-url'   => 'Project:Lahjoitukset',
 
 'badaccess'        => 'Lupa evätty',
 'badaccess-group0' => 'Sinulla ei ole lupaa suorittaa pyydettyä toimintoa.',
@@ -485,7 +485,7 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 $2',
 'namespaceprotected'   => "Et voi muokata sivuja nimiavaruudessa '''$1'''.",
 'customcssjsprotected' => 'Sinulla ei ole oikeuksia muuttaa toisten käyttäjien henkilökohtaisia asetuksia.',
-'ns-specialprotected'  => 'Toimintosivuja ei voi muokata.',
+'ns-specialprotected'  => '{{ns:special}} ei voi muokata.',
 
 # Login and logout pages
 'logouttitle'                => 'Uloskirjautuminen',
@@ -1154,7 +1154,7 @@ Ohjelmiston suorittamia ylläpitotöitä on jonossa '''$7''' {{PLURAL:$7|kappale
 'statistics-mostpopular' => 'Katsotuimmat sivut',
 
 'disambiguations'      => 'Linkit täsmennyssivuihin',
-'disambiguationspage'  => '{{ns:project}}:Linkkejä täsmennyssivuihin',
+'disambiguationspage'  => 'Project:Linkkejä täsmennyssivuihin',
 'disambiguations-text' => 'Seuraavat artikkelit linkittävät <i>täsmennyssivuun</i>. Täsmennyssivun sijaan niiden pitäisi linkittää asianomaiseen aiheeseen.<br />Sivua kohdellaan täsmennyssivuna jos se käyttää mallinetta, johon on linkki sivulta [[MediaWiki:disambiguationspage]].',
 
 'doubleredirects'     => 'Kaksinkertaiset uudelleenohjaukset',
@@ -1646,7 +1646,7 @@ Näissä tapauksissa sivut täytyy siirtää tai yhdistää käsin.",
 
 # Export
 'export'            => 'Sivujen vienti',
-'exporttext'        => 'Voit viedä sivun tai sivujen tekstiä ja muokkaushistoriaa XML-muodossa. Tämä tieto voidaan tuoda johonkin toiseen wikiin, jossa käytetään MediaWiki-ohjelmistoa.<br />Syötä sivujen otsikoita riveittäin alla olevaan laatikkoon. Valitse myös, haluatko kaikki versiot sivuista, vai ainoastaan nykyisen version.<br />Jälkimmäisessä tapauksessa voit myös käyttää linkkiä. Esimerkiksi sivun {{Mediawiki:mainpage}} saa vietyä linkistä [[{{ns:Special}}:Export/{{Mediawiki:mainpage}}]].',
+'exporttext'        => 'Voit viedä sivun tai sivujen tekstiä ja muokkaushistoriaa XML-muodossa. Tämä tieto voidaan tuoda johonkin toiseen wikiin, jossa käytetään MediaWiki-ohjelmistoa.<br />Syötä sivujen otsikoita riveittäin alla olevaan laatikkoon. Valitse myös, haluatko kaikki versiot sivuista, vai ainoastaan nykyisen version.<br />Jälkimmäisessä tapauksessa voit myös käyttää linkkiä. Esimerkiksi sivun {{Mediawiki:mainpage}} saa vietyä linkistä [[{{ns:special}}:Export/{{Mediawiki:mainpage}}]].',
 'exportcuronly'     => 'Liitä mukaan ainoastaan uusin versio – ei koko historiaa.',
 'exportnohistory'   => '----
 Sivujen koko historian vienti on estetty suorituskykysyistä.',

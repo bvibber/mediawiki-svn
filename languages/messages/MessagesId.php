@@ -468,14 +468,14 @@ $messages = array(
 'copyrightpagename' => 'Hak cipta {{SITENAME}}',
 'copyrightpage'     => '{{ns:project}}:Hak cipta',
 'currentevents'     => 'Peristiwa terkini',
-'currentevents-url' => 'Peristiwa terkini',
+'currentevents-url' => 'Project:Peristiwa terkini',
 'disclaimers'       => 'Penyangkalan',
 'disclaimerpage'    => 'Project:Penyangkalan umum',
 'edithelp'          => 'Bantuan penyuntingan',
-'edithelppage'      => '{{ns:help}}:Penyuntingan',
+'edithelppage'      => 'Help:Penyuntingan',
 'faq'               => 'FAQ',
 'faqpage'           => 'Project:FAQ',
-'helppage'          => '{{ns:help}}:Isi',
+'helppage'          => 'Help:Isi',
 'mainpage'          => 'Halaman Utama',
 'policy-url'        => 'Project:Kebijakan',
 'portal'            => 'Portal komunitas',
@@ -583,7 +583,7 @@ Jika ini bukan sebabnya, Anda mungkin menemukan bug dalam perangkat lunak. Silak
 $2',
 'namespaceprotected'   => "Anda tak memiliki hak untuk menyunting halaman di ruang nama '''$1'''.",
 'customcssjsprotected' => 'Anda tak memiliki hak menyunting halaman ini karena mengandung pengaturan pribadi pengguna lain.',
-'ns-specialprotected'  => 'Halaman pada ruang nama istimewa tidak dapat disunting.',
+'ns-specialprotected'  => 'Halaman pada ruang nama {{ns:special}} tidak dapat disunting.',
 
 # Login and logout pages
 'logouttitle'                => 'Keluar log pengguna',
@@ -1231,7 +1231,7 @@ Telah dimuat sejumlah '''$8''' berkas dan sedang terjadi '''$7''' [http://meta.w
 'statistics-mostpopular' => 'Halaman yang paling banyak ditampilkan',
 
 'disambiguations'      => 'Halaman disambiguasi',
-'disambiguationspage'  => '{{ns:template}}:Disambig',
+'disambiguationspage'  => 'Template:Disambig',
 'disambiguations-text' => "Halaman-halaman berikut memiliki pranala ke suatu ''halaman disambiguasi''. Halaman-halaman tersebut seharusnya berpaut ke topik-topik yang sesuai.<br />Suatu halaman dianggap sebagai halaman disambiguasi apabila halaman tersebut menggunakan templat yang terhubung ke [[MediaWiki:disambiguationspage]].",
 
 'doubleredirects'     => 'Pengalihan ganda',

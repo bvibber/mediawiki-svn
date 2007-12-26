@@ -393,9 +393,9 @@ $messages = array(
 'bugreportspage'    => 'Project:Chyby',
 'copyright'         => 'Obsah je dostupný pod $1.',
 'copyrightpagename' => 'podmínek {{grammar:2sg|{{SITENAME}}}}',
-'copyrightpage'     => '{{ns:4}}:Autorské právo',
+'copyrightpage'     => '{{ns:project}}:Autorské právo',
 'currentevents'     => 'Aktuality',
-'currentevents-url' => 'Aktuality',
+'currentevents-url' => 'Project:Aktuality',
 'disclaimers'       => 'Vyloučení odpovědnosti',
 'disclaimerpage'    => 'Project:Vyloučení odpovědnosti',
 'edithelp'          => 'Pomoc při editování',
@@ -419,7 +419,7 @@ $messages = array(
 'badaccess-groups' => 'Požadovanou činnost smějí provádět jen uživatelé ve skupinách $1.',
 
 'versionrequired'     => 'Vyžadováno MediaWiki verze $1',
-'versionrequiredtext' => 'Pro použití této stránky je vyžadováno MediaWiki verze $1. Vizte [[{{ns:-1}}:Version]].',
+'versionrequiredtext' => 'Pro použití této stránky je vyžadováno MediaWiki verze $1. Vizte [[{{ns:special}}:Version]].',
 
 'retrievedfrom'           => 'Citováno z „$1“',
 'youhavenewmessages'      => 'Máte $1 ($2).',
@@ -580,7 +580,7 @@ Zkuste to znovu!',
 'wrongpasswordempty'         => 'Zadané heslo bylo prázdné. Zkuste to znovu.',
 'passwordtooshort'           => 'Vaše heslo je příliš krátké. Musí obsahovat nejméně $1 {{plural:$1|znak|znaky|znaků}} a nesmí být stejné jako uživatelské jméno.',
 'mailmypassword'             => 'Poslat e-mailem dočasné heslo',
-'passwordremindertitle'      => 'Připomenutí ztraceného hesla z {{grammar:2sg|{{SITENAME}}}}',
+'passwordremindertitle'      => 'Nové dočasné heslo na {{grammar:4sg|{{SITENAME}}}}',
 'passwordremindertext'       => 'Někdo (patrně Vy, z IP adresy $1) žádal, abychom Vám poslali nové heslo pro přihlášení do {{SITENAME}} ($4).
 
  Heslo pro uživatele "$2" je nyní "$3". Doporučujeme přihlásit se nyní a změnit heslo.
@@ -713,11 +713,12 @@ Pokud ji chcete vytvořit, napište text do rámečku níže a stiskněte tlač�
 Pokud jste zde omylem, stiskněte ve svém prohlížeči tlačítko ''Zpět''.",
 'anontalkpagetext'          => "---- ''Toto je diskusní stránka anonymního uživatele, který si dosud nevytvořil účet nebo ho nepoužívá. Musíme proto použít číselnou IP adresu k jeho identifikaci. Taková IP adresa může být sdílena několika uživateli. Pokud jste anonymní uživatel a cítíte, že jsou Vám adresovány irrelevantní komentáře, prosím [[Special:Userlogin|vytvořte si účet nebo se přihlaste]] a tím se vyhnete budoucí záměně s jinými anonymními uživateli.''",
 'noarticletext'             => 'Tato stránka zatím neobsahuje žádný text, můžete [[Special:Search/{{PAGENAME}}|zkusit tento název vyhledat]] na jiných stránkách, nebo [{{fullurl:{{FULLPAGENAME}}|action=edit}} tuto stránku založit].',
+'userpage-userdoesnotexist' => 'Uživatelský účet „$1“ není zaregistrován. Zkontrolujte zda skutečně chcete vytvořit či editovat tuto stránku.',
 'clearyourcache'            => "'''Poznámka:''' Po uložení musíte smazat cache vašeho prohlížeče, jinak změny neuvidíte: '''Mozilla / Firefox:''' ''Ctrl-Shift-R'', '''IE:''' ''Ctrl-F5'', '''Safari:''' ''Cmd-Shift-R'', '''Konqueror''': ''F5''.",
 'usercssjsyoucanpreview'    => '<strong>Tip:</strong> Použijte tlačítko „Ukázat náhled“ k testování vašeho nového css/js před uložením.',
 'usercsspreview'            => "'''Pamatujte, že si prohlížíte jen náhled vašeho uživatelského css, neboť ještě nebylo uloženo!'''",
 'userjspreview'             => "'''Pamatujte, že testujete a prohlížíte pouze náhled vašeho uživatelského javascriptu, dosud nebyl uložen!'''",
-'userinvalidcssjstitle'     => "'''Varování:''' Vzhled „$1“ neexistuje. Nezapomeňte, že uživatelské .css a .js soubory používají malá písmena, např. {{ns:User}}:{{BASEPAGENAME}}/monobook.css, nikoli {{ns:User}}:{{BASEPAGENAME}}/Monobook.css.",
+'userinvalidcssjstitle'     => "'''Varování:''' Vzhled „$1“ neexistuje. Nezapomeňte, že uživatelské .css a .js soubory používají malá písmena, např. {{ns:user}}:{{BASEPAGENAME}}/monobook.css, nikoli {{ns:user}}:{{BASEPAGENAME}}/Monobook.css.",
 'updated'                   => '(Změna uložena)',
 'note'                      => '<strong>Poznámka:</strong>&nbsp;',
 'previewnote'               => 'Pamatujte, že toto je pouze náhled, ne uložení!',
@@ -1000,9 +1001,9 @@ Nezvolené skupiny nebudou změněny. Skupinu můžete vyřadit z vybraných pom
 'group-bureaucrat-member'    => 'Byrokrat',
 
 'grouppage-autoconfirmed' => '{{ns:project}}:Schválení uživatelé',
-'grouppage-bot'           => '{{ns:Project}}:Boti',
-'grouppage-sysop'         => '{{ns:Project}}:Správci',
-'grouppage-bureaucrat'    => '{{ns:Project}}:Byrokraté',
+'grouppage-bot'           => '{{ns:project}}:Boti',
+'grouppage-sysop'         => '{{ns:project}}:Správci',
+'grouppage-bureaucrat'    => '{{ns:project}}:Byrokraté',
 
 # User rights log
 'rightslog'      => 'Kniha práv uživatelů',
@@ -1067,9 +1068,9 @@ a OGG pro zvuky. Používejte laskavě smysluplná jména souborů,
 soubor po načtení nelze přejmenovat.
 
 Pro vložení obrázku do stránky použijte syntaxi
-<code><nowiki>[[</nowiki>{{ns:6}}<nowiki>:soubor.jpg]]</nowiki></code> nebo
-<code><nowiki>[[</nowiki>{{ns:6}}<nowiki>:soubor.png|popisek]]</nowiki></code>, popř.
-<code><nowiki>[[</nowiki>{{ns:-2}}<nowiki>:soubor.ogg]]</nowiki></code> pro zvuky.
+<code><nowiki>[[</nowiki>{{ns:image}}<nowiki>:soubor.jpg]]</nowiki></code> nebo
+<code><nowiki>[[</nowiki>{{ns:image}}<nowiki>:soubor.png|popisek]]</nowiki></code>, popř.
+<code><nowiki>[[</nowiki>{{ns:media}}<nowiki>:soubor.ogg]]</nowiki></code> pro zvuky.
 
 Uvědomte si laskavě, že stejně jako u ostatních wikistránek mohou
 ostatní uživatelé vámi nahraný soubor smazat či upravit, pokud to
@@ -1224,7 +1225,7 @@ Vstup: <code>typ obsahu/podtyp</code>, např. <code>image/jpeg</code>.',
 
 # Unused templates
 'unusedtemplates'     => 'Nepoužívané šablony',
-'unusedtemplatestext' => 'Tato stránka obsahuje seznam všech stran ve jmenném prostoru {{ns:-1}}, které nejsou vloženy do žádné jiné strany. Před jejich smazáním nezapomeňte zkontrolovat ostatní odkazy.',
+'unusedtemplatestext' => 'Tato stránka obsahuje seznam všech stran ve jmenném prostoru {{ns:special}}, které nejsou vloženy do žádné jiné strany. Před jejich smazáním nezapomeňte zkontrolovat ostatní odkazy.',
 'unusedtemplateswlh'  => 'ostatní odkazy',
 
 # Random page
@@ -1250,7 +1251,7 @@ Aktuální délka fronty údržby je '''$7'''.",
 'statistics-mostpopular' => 'Nejčtenější stránky',
 
 'disambiguations'      => 'Stránky odkazující na rozcestníky',
-'disambiguationspage'  => '{{ns:10}}:Rozcestník',
+'disambiguationspage'  => 'Template:Rozcestník',
 'disambiguations-text' => 'Odkazy na následujících stránkách vedou na rozcestníky (stránky obsahující některou ze šablon uvedených na [[MediaWiki:Disambiguationspage|seznamu rozcestníkových šablon]]).',
 
 'doubleredirects'     => 'Dvojitá přesměrování',
@@ -1272,7 +1273,7 @@ Aktuální délka fronty údržby je '''$7'''.",
 'nlinks'                  => '$1 {{plural:$1|odkaz|odkazy|odkazů}}',
 'nmembers'                => '$1 {{plural:$1|stránka|stránky|stránek}}',
 'nrevisions'              => '$1 {{plural:$1|revize|revize|revizí}}',
-'nviews'                  => '$1 {{PLURAL:$1|zobrazení|zobrazení|zobrazení}}',
+'nviews'                  => '$1 zobrazení',
 'specialpage-empty'       => 'Tomuto požadavku neodpovídají žádné záznamy.',
 'lonelypages'             => 'Sirotčí stránky',
 'lonelypagestext'         => 'Na následující stránky na této wiki neodkazuje žádná jiná stránka.',
@@ -1470,6 +1471,12 @@ $2 zaznamenává poslední smazání.',
 'deletionlog'                 => 'Kniha smazaných stránek',
 'reverted'                    => 'Obnovení předchozí verze',
 'deletecomment'               => 'Důvod smazání',
+'deleteotherreason'           => 'Zadejte níže důvod mazání nebo vyberte z tohoto seznamu',
+'deletereasonotherlist'       => 'Jiný důvod',
+'deletereason-dropdown'       => '*Obvyklé důvody smazání
+** Na žádost autora
+** Porušení autorských práv
+** Vandalismus',
 'rollback'                    => 'Vrátit zpět editace',
 'rollback_short'              => 'Vrátit zpět',
 'rollbacklink'                => 'vrácení zpět',
@@ -1739,7 +1746,7 @@ Cílová stránka „[[$1]]“ již existuje. Přejete si ji smazat pro uvolněn
 
 # Export
 'export'            => 'Exportovat stránky',
-'exporttext'        => 'Můžete exportovat text a historii editací některé stránky nebo sady stránek zabalené v XML. Výsledný soubor lze naimportovat do jiné wiki, která běží na software MediaWiki, pomocí stránky [[{{ns:Special}}:Import]].
+'exporttext'        => 'Můžete exportovat text a historii editací některé stránky nebo sady stránek zabalené v XML. Výsledný soubor lze naimportovat do jiné wiki, která běží na software MediaWiki, pomocí stránky [[{{ns:special}}:Import]].
 
 Do níže uvedeného editačního pole zadejte názvy stránek, které chcete exportovat; každý řádek jeden název. Zvolte také, zda se mají exportovat i starší verze stránky včetně informací v historii editací, nebo jen aktuální verze s informací o poslední editaci.',
 'exportcuronly'     => 'Zahrnout jen současnou verzi, ne plnou historii',
@@ -1756,7 +1763,7 @@ Do níže uvedeného editačního pole zadejte názvy stránek, které chcete ex
 'allmessagesdefault'        => 'Původní text',
 'allmessagescurrent'        => 'Aktuální text',
 'allmessagestext'           => 'Toto je seznam všech hlášení dostupných ve jmenném prostoru MediaWiki.',
-'allmessagesnotsupportedDB' => '{{ns:-1}}:AllMessages není podporováno, neboť wgUseDatabaseMessages je vypnuto.',
+'allmessagesnotsupportedDB' => '{{ns:special}}:AllMessages není podporováno, neboť wgUseDatabaseMessages je vypnuto.',
 'allmessagesfilter'         => 'Filtr názvů hlášení:',
 'allmessagesmodified'       => 'Zobrazit pouze upravená hlášení',
 
@@ -1777,7 +1784,7 @@ Do níže uvedeného editačního pole zadejte názvy stránek, které chcete ex
 'import-interwiki-history'   => 'Zkopírovat všechny historické verze této stránky',
 'import-interwiki-submit'    => 'Importovat',
 'import-interwiki-namespace' => 'Stránky přenést do jmenného prostoru:',
-'importtext'                 => 'Prosím exportujte soubor ze zdrojové wiki pomocí nástroje {{ns:-1}}:Export, uložte ji na svůj disk a nahrajte ji sem.',
+'importtext'                 => 'Prosím exportujte soubor ze zdrojové wiki pomocí nástroje {{ns:special}}:Export, uložte ji na svůj disk a nahrajte ji sem.',
 'importstart'                => 'Stránky se importují…',
 'import-revision-count'      => '$1 {{PLURAL:$1|revize|revize|revizí}}',
 'importnopages'              => 'Není co importovat.',

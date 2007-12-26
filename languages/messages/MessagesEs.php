@@ -245,15 +245,13 @@ $messages = array(
 'bugreportspage'    => 'Project:Informes de error',
 'copyright'         => 'El contenido está disponible bajo los términos de la <i>$1</i>',
 'copyrightpagename' => 'Copyright de {{SITENAME}}',
-'copyrightpage'     => 'Project:Copyrights',
 'currentevents'     => 'Actualidad',
-'currentevents-url' => 'Actualidad',
+'currentevents-url' => 'Project:Actualidad',
 'disclaimers'       => 'Aviso legal',
 'disclaimerpage'    => 'Project:Limitación general de responsabilidad',
 'edithelp'          => 'Ayuda de edición',
 'edithelppage'      => 'Help:Cómo se edita una página',
-'faqpage'           => 'Project:FAQ',
-'helppage'          => 'Project:Ayuda',
+'helppage'          => 'Help:Ayuda',
 'mainpage'          => 'Portada',
 'policy-url'        => 'Project:Políticas',
 'portal'            => 'Portal de la comunidad',
@@ -539,7 +537,7 @@ Tu identificador de bloqueo es $5. Por favor, incluye este identificador en cual
 'usercssjsyoucanpreview'    => '<strong>Consejo:</strong> Use el botón «Mostrar previsualización» para probar su nuevo css/js antes de grabarlo.',
 'usercsspreview'            => "'''¡Recuerde que sólo está previsualizando su css de usuario y aún no se ha grabado!'''",
 'userjspreview'             => "'''¡Recuerde que sólo está previsualizando su javascript de usuario y aún no se ha grabado!'''",
-'userinvalidcssjstitle'     => "'''Aviso:''' No existe la piel \"\$1\". Recuerda que las páginas personalizadas .css y .js tienen un título en minúsculas, p.e. Usuario:Foo/monobook.css en vez de  Usuario:Foo/Monobook.css.",
+'userinvalidcssjstitle'     => "'''Aviso:''' No existe la piel \"\$1\". Recuerda que las páginas personalizadas .css y .js tienen un título en minúsculas, p.e. {{ns:user}}:Foo/monobook.css en vez de  {{ns:user}}:Foo/Monobook.css.",
 'updated'                   => '(Actualizado)',
 'note'                      => '<strong>Nota:</strong>',
 'previewnote'               => '¡Recuerde que esto es sólo una previsualización y aún no se ha grabado!',
@@ -789,9 +787,9 @@ Los grupos no seleccionados no cambiarán. Puede deseleccionar pulsando la tecla
 'group-sysop-member'      => 'Administrador',
 'group-bureaucrat-member' => 'Burócrata',
 
-'grouppage-bot'        => 'Project:Bot',
+'grouppage-bot'        => '{{ns:project}}:Bot',
 'grouppage-sysop'      => '{{ns:project}}:Administradores',
-'grouppage-bureaucrat' => 'Project:Burócratas',
+'grouppage-bureaucrat' => '{{ns:project}}:Burócratas',
 
 # User rights log
 'rightslog'      => 'Cambios de perfil de usuario',
@@ -944,7 +942,9 @@ Si tienes esta imagen a toda resolución súbela, si no, por favor cambia el nom
 
 # File deletion
 'filedelete'            => 'Borrar $1',
+'filedelete-legend'     => 'Borrar archivo',
 'filedelete-intro'      => "Estás borrando '''[[Media:$1|$1]]'''.",
+'filedelete-comment'    => 'Motivo:',
 'filedelete-submit'     => 'Borrar',
 'filedelete-success'    => "'''$1''' ha sido borrado.",
 'filedelete-nofile-old' => "No existe una versión guardada de '''$1''' con los atributos especificados.",
@@ -1219,6 +1219,11 @@ Véase $2 para un registro de los borrados recientes.',
 'deletionlog'                 => 'registro de borrados',
 'reverted'                    => 'Recuperar una revisión anterior',
 'deletecomment'               => 'Motivo del borrado',
+'deletereasonotherlist'       => 'Otra razón',
+'deletereason-dropdown'       => '*Razones comunes de borrado
+** A petición del mismo autor
+** Violación de copyright
+** Vandalismo',
 'rollback'                    => 'Revertir ediciones',
 'rollback_short'              => 'Revertir',
 'rollbacklink'                => 'Revertir',
@@ -1515,7 +1520,7 @@ En el último caso también puedes usar un enlace, por ejemplo [[Special:Export/
 'allmessagesdefault'        => 'Texto predeterminado',
 'allmessagescurrent'        => 'Texto actual',
 'allmessagestext'           => 'Esta es una lista de mensajes del sistema disponibles en el espacio de nombres MediaWiki:',
-'allmessagesnotsupportedDB' => 'Special:AllMessages no está disponible porque wgUseDatabaseMessages está deshabilitado.',
+'allmessagesnotsupportedDB' => '{{ns:special}}:AllMessages no está disponible porque wgUseDatabaseMessages está deshabilitado.',
 'allmessagesfilter'         => 'Filtrar por nombre del mensaje:',
 'allmessagesmodified'       => 'Mostrar sólo los modificados',
 

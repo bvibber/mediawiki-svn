@@ -347,9 +347,9 @@ $messages = array(
 'bugreportspage'    => 'Project:Felrapporter',
 'copyright'         => 'All text tillgänglig under $1.',
 'copyrightpagename' => '{{SITENAME}} upphovsrätt',
-'copyrightpage'     => 'Project:Upphovsrätt',
+'copyrightpage'     => '{{ns:project}}:Upphovsrätt',
 'currentevents'     => 'Aktuella händelser',
-'currentevents-url' => 'Aktuella händelser',
+'currentevents-url' => 'Project:Aktuella händelser',
 'disclaimers'       => 'Förbehåll',
 'disclaimerpage'    => 'Project:Allmänt förbehåll',
 'edithelp'          => 'Redigeringshjälp',
@@ -911,9 +911,9 @@ $2 Lista omdirigeringar &nbsp; Sök efter $3 $9',
 'group-bureaucrat-member'    => 'Byråkrat',
 
 'grouppage-autoconfirmed' => '{{ns:project}}:Bekräftade användare',
-'grouppage-bot'           => 'Project:Robotar',
-'grouppage-sysop'         => 'Project:Administratörer',
-'grouppage-bureaucrat'    => 'Project:Byråkrater',
+'grouppage-bot'           => '{{ns:project}}:Robotar',
+'grouppage-sysop'         => '{{ns:project}}:Administratörer',
+'grouppage-bureaucrat'    => '{{ns:project}}:Byråkrater',
 
 # User rights log
 'rightslog'      => 'Användarrättighetslogg',
@@ -965,9 +965,9 @@ $3',
 'upload_directory_read_only'  => 'Webbservern kan inte skriva till uppladdningskatalogen ($1).',
 'uploaderror'                 => 'Fel vid uppladdningen',
 'uploadtext'                  => "Använd formuläret nedan för att ladda upp filer. För att titta på eller leta efter bilder som redan har laddats upp, se [[Special:Imagelist|listan över uppladdade filer]]. Uppladdningar och borttagningar loggförs också i [[Special:Log/upload|uppladdningsloggen]]. För att infoga en bild på en sida, använd en länk i följande format:
-* '''<nowiki>[[</nowiki>{{ns:Image}}<nowiki>:File.jpg]]</nowiki>''',
-* '''<nowiki>[[</nowiki>{{ns:Image}}<nowiki>:File.png|alt text]]</nowiki>''' eller
-* '''<nowiki>[[</nowiki>{{ns:Media}}<nowiki>:File.ogg]]</nowiki>''' om du vill länka direkt till filen.",
+* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki>''',
+* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|alt text]]</nowiki>''' eller
+* '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki>''' om du vill länka direkt till filen.",
 'uploadlog'                   => 'Uppladdningar',
 'uploadlogpage'               => 'Uppladdningslogg',
 'uploadlogpagetext'           => 'Nedan följer en lista med de senaste uppladdade filerna.',
@@ -1683,7 +1683,7 @@ I det senare fallet kan du även använda en länk, exempel [[{{ns:special}}:Exp
 'allmessagesdefault'        => 'Standardtext',
 'allmessagescurrent'        => 'Nuvarande text',
 'allmessagestext'           => 'Detta är en lista över alla meddelanden i namnrymden MediaWiki',
-'allmessagesnotsupportedDB' => "Det finns inte stöd för ''Special:Allmessages'', eftersom '''\$wgUseDatabaseMessages''' är avstängd.",
+'allmessagesnotsupportedDB' => "Det finns inte stöd för ''{{ns:special}}:Allmessages'', eftersom '''\$wgUseDatabaseMessages''' är avstängd.",
 'allmessagesfilter'         => 'Filter för meddelandenamn:',
 'allmessagesmodified'       => 'Visa bara ändrade',
 

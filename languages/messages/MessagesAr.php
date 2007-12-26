@@ -502,22 +502,22 @@ $messages = array(
 'copyrightpagename' => 'حقوق النسخ في {{SITENAME}}',
 'copyrightpage'     => '{{ns:project}}:حقوق النسخ',
 'currentevents'     => 'الأحداث الجارية',
-'currentevents-url' => 'الأحداث الجارية',
+'currentevents-url' => 'Project:الأحداث الجارية',
 'disclaimers'       => 'عدم مسؤولية',
 'disclaimerpage'    => 'Project:عدم مسؤولية عام',
 'edithelp'          => 'مساعدة التحرير',
-'edithelppage'      => '{{ns:help}}:تحرير',
+'edithelppage'      => 'Help:تحرير',
 'faq'               => 'الأسئلة الأكثر تكرارا',
-'faqpage'           => '{{ns:project}}:أسئلة متكررة',
-'helppage'          => '{{ns:help}}:محتويات',
+'faqpage'           => 'Project:أسئلة متكررة',
+'helppage'          => 'Help:محتويات',
 'mainpage'          => 'الصفحة الرئيسية',
 'policy-url'        => 'Project:سياسة',
 'portal'            => 'بوابة المجتمع',
 'portal-url'        => 'Project:بوابة المجتمع',
 'privacy'           => 'سياسة الخصوصية',
-'privacypage'       => '{{ns:project}}:سياسة الخصوصية',
+'privacypage'       => 'Project:سياسة الخصوصية',
 'sitesupport'       => 'التبرعات',
-'sitesupport-url'   => '{{ns:project}}:دعم الموقع',
+'sitesupport-url'   => 'Project:دعم الموقع',
 
 'badaccess'        => 'خطأ في السماح',
 'badaccess-group0' => 'ليس من المسموح لك تنفيذ الفعل الذي طلبته.',
@@ -695,7 +695,7 @@ $2',
 'wrongpasswordempty'         => 'كلمة السر المدخلة كانت فارغة. من فضلك حاول مرة أخرى.',
 'passwordtooshort'           => 'كلمة السر التي اخترتها غير صحيحة أو قصيرة جدا. يجب ألا يقل طول الكلمة عن $1 حرف وأن تكون مختلفة عن اسم المستخدم الخاص بك.',
 'mailmypassword'             => 'أرسل لي كلمة السر عبر البريد الإلكتروني.',
-'passwordremindertitle'      => 'تذكير بكلمة السر من {{SITENAME}}',
+'passwordremindertitle'      => 'كلمة سر مؤقتة جديدة ل {{SITENAME}}',
 'passwordremindertext'       => 'لقد طلب شخص ما (غالبا أنت، من عنوان الأيبي $1) أن نرسل لك كلمة سر جديدة لـ{{SITENAME}} ($4).
 
 كلمة السر للمستخدم "$2" الآن هي "$3". 
@@ -1387,7 +1387,7 @@ PICT # misc.
 'statistics-mostpopular' => 'أكثر الصفحات مشاهدة',
 
 'disambiguations'      => 'صفحات التوضيح',
-'disambiguationspage'  => '{{ns:template}}:توضيح',
+'disambiguationspage'  => 'Template:توضيح',
 'disambiguations-text' => "الصفحات التالية تصل إلى '''صفحة توضيح'''. ينبغي في المقابل أن تصل إلى الضفحة الملائمة. <br />تعامل الصفحة كصفحة توضيح إذا كان بها قالب موجود في [[MediaWiki:disambiguationspage|صفحة الميدياويكي هذه]]",
 
 'doubleredirects'     => 'تحويلات مزدوجة',
@@ -1922,7 +1922,7 @@ $1',
 
 لتصدير صفحات، اكتب العناوين في الصندوق أسفله، عنوان واحد في كل السطر، مع اختيار ما إذا كنت ترغب في النسخة الحالية بالإضافة إلى النسخ القديمة كاملة أو مع معلومات تاريخ الصفحة عنها أو فقط النسخة الحالية مع معلومات عن التعديل الأخير.
 
-في الحالة الأخيرة يمكنك استخدام وصلة مباشرة، كمثال [[{{ns:Special}}:Export/{{Mediawiki:mainpage}}]] للصفحة {{Mediawiki:mainpage}}.',
+في الحالة الأخيرة يمكنك استخدام وصلة مباشرة، كمثال [[{{ns:special}}:Export/{{Mediawiki:mainpage}}]] للصفحة {{Mediawiki:mainpage}}.',
 'exportcuronly'     => 'ضمن النسخة الحالية فقط، وليس تاريخ الصفحة بأكمله',
 'exportnohistory'   => "----
 ملاحظة:''' تم توقيف التصدير الكامل لتاريخ الصفحة بهذه الترسيمة لأسباب تحسينية'''",

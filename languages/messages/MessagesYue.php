@@ -264,7 +264,7 @@ $messages = array(
 'qbspecialpages' => '特別頁',
 'moredotdotdot'  => '更多...',
 'mypage'         => '我嘅頁',
-'mytalk'         => '我嘅對話',
+'mytalk'         => '我嘅討論',
 'anontalk'       => '同呢個 IP 傾偈',
 'navigation'     => '導航',
 
@@ -331,9 +331,9 @@ $messages = array(
 'bugreportspage'    => 'Project:臭蟲回報',
 'copyright'         => '響版度嘅內容係根據$1嘅條款發佈。',
 'copyrightpagename' => '{{SITENAME}}版權',
-'copyrightpage'     => 'Project:版權',
+'copyrightpage'     => '{{ns:project}}:版權',
 'currentevents'     => '最近發生嘅事',
-'currentevents-url' => '最近發生嘅事',
+'currentevents-url' => 'Project:最近發生嘅事',
 'disclaimers'       => '免責聲明',
 'disclaimerpage'    => 'Project:一般免責聲明',
 'edithelp'          => '編輯協助',
@@ -523,7 +523,7 @@ $2',
 'wrongpasswordempty'         => '你都未入密碼，唔該再試多次啦。',
 'passwordtooshort'           => '你嘅密碼唔啱或者太短。佢最少要有$1個半形字元，同埋要唔同你嘅用戶名。',
 'mailmypassword'             => '寄返個密碼畀我',
-'passwordremindertitle'      => '{{SITENAME}}嘅密碼提醒',
+'passwordremindertitle'      => '{{SITENAME}}嘅新臨時密碼',
 'passwordremindertext'       => '有人（可能係你，IP 位置 $1）
 請求我哋傳送個$4嘅 {{SITENAME}} 新登入密碼畀你。
 而家用戶 "$2" 嘅新密碼係 "$3"。
@@ -657,6 +657,7 @@ $2',
 如果你係唔覺意嚟到呢度，撳一次你個瀏覽器'''返轉頭'''個掣。",
 'anontalkpagetext'          => "----''呢度係匿名用戶嘅討論頁，佢可能係重未開戶口，或者佢重唔識開戶口。我哋會用數字表示嘅IP地址嚟代表佢。一個IP地址係可以由幾個用戶夾來用。如果你係匿名用戶，同覺得呢啲留言係同你冇關係嘅話，唔該去[[Special:Userlogin|開一個新戶口或登入]]，避免喺以後嘅留言會同埋其它用戶混淆。''",
 'noarticletext'             => '喺呢一頁而家並冇任何嘅文字，你可以喺其它嘅頁面中[[Special:Search/{{PAGENAME}}|搵呢一頁嘅標題]]或者[{{fullurl:{{FULLPAGENAME}}|action=edit}} 編輯呢一頁]。',
+'userpage-userdoesnotexist' => '用戶戶口"$1"重未開。請響䦒／編輯呢版之前先檢查一下。',
 'clearyourcache'            => "'''注意：'''喺儲存之後，你可能要先略過你嘅瀏覽器快取去睇到更改。'''Mozilla / Firefox / Safari:''' 㩒住''Shift''掣再撳''重新載入''，又或者㩒''Ctrl-Shift-R''（喺蘋果Mac中㩒''Cmd-Shift-R''掣）； '''IE:''' 㩒住''Ctrl''掣再撳''重新整理''，又或者㩒''Ctrl-F5''掣； '''Konqueror:''' 就咁以撳個''重載''掣，又或者㩒''F5''； '''Opera'''嘅用戶可能需要先喺''工具→喜好設定''之中清佢哋嘅快取。",
 'usercssjsyoucanpreview'    => '<strong>提示：</strong>響儲存前，用「顯示預覽」個掣嚟測試你嘅新CSS/JS。',
 'usercsspreview'            => "'''請注意你而家只係預覽緊你嘅用戶CSS樣式表，內容仍未儲存！'''",
@@ -999,10 +1000,12 @@ $2',
 'newsectionsummary'                 => '/* $1 */ 新小節',
 
 # Recent changes linked
-'recentchangeslinked'          => '連結頁嘅更改',
-'recentchangeslinked-title'    => '對$1有關嘅更改',
-'recentchangeslinked-noresult' => '響呢一段時間內連結頁並無更改。',
-'recentchangeslinked-summary'  => "呢一個特別頁列示咗呢一版連出去嘅頁面嘅最近更改。響你嘅監視清單度嘅頁面會以'''粗體'''表示。",
+'recentchangeslinked'                    => '連結頁嘅更改',
+'recentchangeslinked-title'              => '對$1有關嘅更改',
+'recentchangeslinked-noresult'           => '響呢一段時間內連結頁並無更改。',
+'recentchangeslinked-summary'            => "呢一個特別頁列示咗呢一版連出去嘅頁面嘅最近更改。響你嘅監視清單度嘅頁面會以'''粗體'''表示。",
+'recentchangeslinked-feed-entry'         => '用戶$1編輯咗$2',
+'recentchangeslinked-feed-entry-comment' => '用戶$1編輯咗$2 ($3)',
 
 # Upload
 'upload'                      => '上載檔案',
@@ -1613,8 +1616,8 @@ $1',
 'ipbhidename'                 => '響個封鎖日誌、現時嘅封鎖名單以用戶名單度隱藏用戶名／IP',
 'badipaddress'                => '無效嘅IP地址',
 'blockipsuccesssub'           => '封鎖成功',
-'blockipsuccesstext'          => '[[{{ns:Special}}:Contributions/$1|$1]]已經封鎖。
-<br />去[[{{ns:Special}}:Ipblocklist|IP封鎖清單]]睇返封鎖名單。',
+'blockipsuccesstext'          => '[[{{ns:special}}:Contributions/$1|$1]]已經封鎖。
+<br />去[[{{ns:special}}:Ipblocklist|IP封鎖清單]]睇返封鎖名單。',
 'ipb-edit-dropdown'           => '改封鎖原因',
 'ipb-unblock-addr'            => '解封$1',
 'ipb-unblock'                 => '解封一個用戶名或IP地址',
@@ -1742,7 +1745,7 @@ $1',
 要倒出頁面嘅話，就喺下面嘅文字框度打標題名，一行一個標題，
 然後揀你係要現時版本加上所有嘅舊版本同歷史，定係淨係要現時版本同最後編輯嘅相關資訊。
 
-喺後面嗰種情況下，你亦都可以用一個連結，例如[[{{ns:Special}}:Export/{{MediaWiki:Mainpage}}]]對頁面"[[{{MediaWiki:Mainpage}}]]"。',
+喺後面嗰種情況下，你亦都可以用一個連結，例如[[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]]對頁面"[[{{MediaWiki:Mainpage}}]]"。',
 'exportcuronly'     => '淨係包括而家嘅修訂版本，唔包括完整歷史',
 'exportnohistory'   => "----
 '''注意：'''因為性能嘅原因，已經停用禁止咗使用呢個表格倒出頁面嘅完整歷史",
@@ -1977,11 +1980,13 @@ To disable showing a particular link, set it to 'disable', e.g.
 'variantname-zh-sg' => 'disable',
 Variants for Chinese language
 */
-'variantname-zh-cn' => '簡體（中國大陸）',
-'variantname-zh-tw' => '正體（台灣）',
-'variantname-zh-hk' => '繁體（香港）',
-'variantname-zh-sg' => '簡體（新加坡）',
-'variantname-zh'    => '無變換',
+'variantname-zh-hans' => '簡體',
+'variantname-zh-hant' => '繁體',
+'variantname-zh-cn'   => '簡體（中國大陸）',
+'variantname-zh-tw'   => '正體（台灣）',
+'variantname-zh-hk'   => '繁體（香港）',
+'variantname-zh-sg'   => '簡體（新加坡）',
+'variantname-zh'      => '無變換',
 
 # Variants for Serbian language
 'variantname-sr-ec' => '斯拉夫易卡語',
@@ -2389,7 +2394,7 @@ $1',
 'watchlistedit-noitems'        => '你嘅監視清單並無標題。',
 'watchlistedit-normal-title'   => '編輯監視清單',
 'watchlistedit-normal-legend'  => '響監視清單度拎走',
-'watchlistedit-normal-explain' => '響你張監視清單度嘅標題響下面度顯示。要拎走一個標題，響佢前面剔一剔，跟住要撳拎走標題。你亦都可以[[Special:Watchlist/raw|編輯原始清單]]或者[[Special:Watchlist/clear|拎走所有標題]]。',
+'watchlistedit-normal-explain' => '響你張監視清單度嘅標題響下面度顯示。要拎走一個標題，響佢前面剔一剔，跟住要撳拎走標題。你亦都可以[[Special:Watchlist/raw|編輯原始清單]]。',
 'watchlistedit-normal-submit'  => '拎走標題',
 'watchlistedit-normal-done'    => '$1個標題已經響你嘅監視清單度拎走咗:',
 'watchlistedit-raw-title'      => '編輯原始監視清單',

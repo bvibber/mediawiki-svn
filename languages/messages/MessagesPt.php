@@ -261,27 +261,27 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Sobre',
-'aboutpage'         => '{{ns:project}}:Sobre',
+'aboutpage'         => 'Project:Sobre',
 'bugreports'        => 'Relatar bugs',
-'bugreportspage'    => '{{ns:project}}:Relatos_de_bugs',
+'bugreportspage'    => 'Project:Relatos_de_bugs',
 'copyright'         => 'Conteúdo disponível sob $1.',
 'copyrightpagename' => 'Direitos de autor de {{SITENAME}}',
 'copyrightpage'     => '{{ns:project}}:Direitos_de_autor',
 'currentevents'     => 'Eventos actuais',
-'currentevents-url' => 'Eventos actuais',
+'currentevents-url' => 'Project:Eventos actuais',
 'disclaimers'       => 'Alerta de Conteúdo',
-'disclaimerpage'    => '{{ns:project}}:Aviso_geral',
+'disclaimerpage'    => 'Project:Aviso_geral',
 'edithelp'          => 'Ajuda de edição',
-'edithelppage'      => 'Ajuda:Editar',
-'helppage'          => 'Ajuda:Conteúdos',
+'edithelppage'      => 'Help:Editar',
+'helppage'          => 'Help:Conteúdos',
 'mainpage'          => 'Página principal',
 'policy-url'        => 'Project:Políticas',
 'portal'            => 'Portal comunitário',
-'portal-url'        => '{{ns:project}}:Portal comunitário',
+'portal-url'        => 'Project:Portal comunitário',
 'privacy'           => 'Política de privacidade',
-'privacypage'       => '{{ns:project}}:Política_de_privacidade',
+'privacypage'       => 'Project:Política_de_privacidade',
 'sitesupport'       => 'Doações',
-'sitesupport-url'   => '{{ns:project}}:Apoio',
+'sitesupport-url'   => 'Project:Apoio',
 
 'badaccess'        => 'Erro de permissão',
 'badaccess-group0' => 'Você não está autorizado a executar a acção requisitada.',
@@ -307,6 +307,8 @@ $messages = array(
 'viewdeleted'             => 'Ver $1?',
 'restorelink'             => '{{PLURAL:$1|uma edição eliminada|$1 edições eliminadas}}',
 'feed-invalid'            => 'Tipo de subscrição feed inválido.',
+'site-rss-feed'           => 'Feed RSS $1',
+'site-atom-feed'          => 'Feed Atom $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Artigo',
@@ -1052,7 +1054,7 @@ Por gentileza, se você tem acesso à imagem de tamanho completo, prefira envia-
 
 # Unused templates
 'unusedtemplates'     => 'Predefinições não utilizadas',
-'unusedtemplatestext' => 'Esta página lista todas as páginas no espaço nominal {{ns:10}} que não estão incluídas numa outra página. Lembre-se de verificar por outras ligações para as predefinições antes de as apagar.',
+'unusedtemplatestext' => 'Esta página lista todas as páginas no espaço nominal {{ns:template}} que não estão incluídas numa outra página. Lembre-se de verificar por outras ligações para as predefinições antes de as apagar.',
 'unusedtemplateswlh'  => 'outras ligações',
 
 # Random page
@@ -1476,7 +1478,7 @@ Isto só deve ser feito para prevenir vandalismo, e de acordo com a [[{{MediaWik
 'ipbhidename'                 => 'Ocultar utilizador/IP do registo de bloqueios, lista de bloqueios e lista de utilizadores',
 'badipaddress'                => 'Endereço de IP inválido',
 'blockipsuccesssub'           => 'Bloqueio bem sucedido',
-'blockipsuccesstext'          => '[[{{ns:Special}}:Contributions/$1|$1]] foi bloqueado.<br />Consulte a [[Special:Ipblocklist|lista de IPs bloqueados]] para rever os bloqueios.',
+'blockipsuccesstext'          => '[[{{ns:special}}:Contributions/$1|$1]] foi bloqueado.<br />Consulte a [[Special:Ipblocklist|lista de IPs bloqueados]] para rever os bloqueios.',
 'ipb-edit-dropdown'           => 'Editar motivos de bloqueio',
 'ipb-unblock-addr'            => 'Desbloquear $1',
 'ipb-unblock'                 => 'Desbloquear um utilizador ou endereço de IP',
@@ -1502,6 +1504,7 @@ Isto só deve ser feito para prevenir vandalismo, e de acordo com a [[{{MediaWik
 'ipblocklist-no-results'      => 'O endereço de IP ou nome de utilizador procurado não se encontra bloqueado.',
 'blocklink'                   => 'bloquear',
 'unblocklink'                 => 'desbloquear',
+'contribslink'                => 'contribs',
 'autoblocker'                 => 'Você foi automaticamente bloqueado, pois partilha um endereço de IP com "$1". O motivo apresentado foi: "$2".',
 'blocklogpage'                => 'Registo de bloqueio',
 'blocklogentry'               => '"[[$1]]" foi bloqueado com um tempo de expiração de $2 $3',
@@ -1594,7 +1597,7 @@ A página de destino ("[[$1]]") já existe. Deseja eliminá-la de modo a poder m
 
 Para exportar páginas, introduza os títulos na caixa de texto abaixo, um título por linha, e seleccione se deseja todas as versões, com as linhas de histórico de edições, ou apenas a edição atual e informações apenas sobre a mais recente das edições.
 
-Se desejar, pode utilizar uma ligação, por exemplo [[{{ns:Special}}:Export/{{Mediawiki:mainpage}}]] para a [[{{Mediawiki:mainpage}}]].',
+Se desejar, pode utilizar uma ligação, por exemplo [[{{ns:special}}:Export/{{Mediawiki:mainpage}}]] para a [[{{Mediawiki:mainpage}}]].',
 'exportcuronly'     => 'Incluir apenas a revisão actual, não o histórico inteiro',
 'exportnohistory'   => "----
 '''Nota:''' a exportação do histórico completo das páginas através deste formulário foi desactivada devido a motivos de performance.",
@@ -1608,7 +1611,7 @@ Se desejar, pode utilizar uma ligação, por exemplo [[{{ns:Special}}:Export/{{M
 'allmessagesname'           => 'Nome',
 'allmessagesdefault'        => 'Texto padrão',
 'allmessagescurrent'        => 'Texto actual',
-'allmessagestext'           => 'Esta é uma lista de todas mensagens de sistema disponíveis no espaço nominal {{ns:8}}:.',
+'allmessagestext'           => 'Esta é uma lista de todas mensagens de sistema disponíveis no espaço nominal {{ns:mediawiki}}:.',
 'allmessagesnotsupportedDB' => '{{ns:special}}:Allmessages não pode ser utilizado devido ao wgUseDatabaseMessages estar desligado.',
 'allmessagesfilter'         => 'Filtro de nome de mensagem:',
 'allmessagesmodified'       => 'Mostrar apenas modificados',

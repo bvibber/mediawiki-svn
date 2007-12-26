@@ -234,29 +234,29 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => '{{SITENAME}} tutvustus',
-'aboutpage'         => '{{ns:Special}}:Pääteedüs',
+'aboutpage'         => 'Project:Pääteedüs',
 'bugreports'        => 'Viateedüseq',
-'bugreportspage'    => '{{ns:Special}}:Viateedüseq',
+'bugreportspage'    => 'Project:Viateedüseq',
 'copyright'         => "Teksti või vabalt pruukiq $1'i perrä.",
 'copyrightpagename' => '{{SITENAME}} ja tegijäõigusõq',
-'copyrightpage'     => '{{ns:Special}}:Tegijäõigusõq',
+'copyrightpage'     => '{{ns:project}}:Tegijäõigusõq',
 'currentevents'     => 'Miä sünnüs',
-'currentevents-url' => 'Miä sünnüs',
+'currentevents-url' => 'Project:Miä sünnüs',
 'disclaimers'       => 'Hoiatuisi',
-'disclaimerpage'    => '{{ns:Special}}:Üledseq hoiatusõq',
+'disclaimerpage'    => 'Project:Üledseq hoiatusõq',
 'edithelp'          => 'Toimõndamisoppus',
-'edithelppage'      => '{{ns:Help}}:Kuis_artiklit_toimõndaq',
+'edithelppage'      => 'Help:Kuis_artiklit_toimõndaq',
 'faq'               => 'Sagõhõhe küsüdüq küsümiseq',
-'faqpage'           => '{{ns:Special}}:KKK',
-'helppage'          => '{{ns:Help}}:Oppus',
+'faqpage'           => 'Project:KKK',
+'helppage'          => 'Help:Oppus',
 'mainpage'          => 'Pääleht',
 'policy-url'        => 'Project:Säädüseq',
 'portal'            => 'Arotusõtarõ',
-'portal-url'        => '{{ns:Special}}:Arotusõtarõ',
+'portal-url'        => 'Project:Arotusõtarõ',
 'privacy'           => 'Eräteedüse kaitsminõ',
-'privacypage'       => '{{ns:project}}:Eräteedüse kaitsminõ',
+'privacypage'       => 'Project:Eräteedüse kaitsminõ',
 'sitesupport'       => 'Tugõminõ',
-'sitesupport-url'   => '{{ns:Special}}:Tugõminõ',
+'sitesupport-url'   => 'Project:Tugõminõ',
 
 'badaccess'        => 'Lubamalda tallitus',
 'badaccess-group0' => 'Sul olõ-i õigust seod tallitust tetäq.',
@@ -1211,7 +1211,7 @@ As\'a kotsilõ mano kaiaq ja küssü saat lehe päält: {{fullurl:{{MediaWiki:He
 'confirmdelete'               => 'Kinnüdäq kistutamist',
 'deletesub'                   => '(Kistuda ärq leheküle "$1")',
 'historywarning'              => 'Hoiatus: Lehel, midä tahat ärq kistutaq, om olõman aolugu:',
-'confirmdeletetext'           => 'Sa kistutat teedüskogost periselt ärq lehe vai pildi üten kõgõ timä aoluuga. Kinnüdäq, et sa tahat tuud tõtõstõ tetäq, et sa saat arvo, miä tuust tullaq või ja et tuu, miä sa tiit, klapis [[{{ns:Special}}:Policy|sisekõrraga]].',
+'confirmdeletetext'           => 'Sa kistutat teedüskogost periselt ärq lehe vai pildi üten kõgõ timä aoluuga. Kinnüdäq, et sa tahat tuud tõtõstõ tetäq, et sa saat arvo, miä tuust tullaq või ja et tuu, miä sa tiit, klapis [[{{ns:special}}:Policy|sisekõrraga]].',
 'actioncomplete'              => 'Tallitus valmis',
 'deletedtext'                 => '"$1" om ärq kistutõt.
 Perämäidsi kistutuisi nimekirjä näet siist: $2.',
@@ -1481,7 +1481,7 @@ Kui om nii, sis panõq vana arotuskülg eräle vai panõq taa kokko vahtsõ arot
 Kirodaq taaha kasti lehti päälkiräq, kost tahat sissu üle viiäq, egä ria pääle üts, ja valiq, kas tahat viiäq lehe kõiki kujjõ vai õnnõ kõgõ vahtsõmbat.
 
 Viimädse johtumisõ kõrral võit ka pruukiq linki, nt leht {{MediaWiki:Mainpage}} saa viidüs lingiga 
-[[{{ns:Special}}:Export/{{MediaWiki:Mainpage}}]].',
+[[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]].',
 'exportcuronly'     => 'Võtku-i kõiki kujjõ, a õnnõ kõgõ vahtsõmb',
 'exportnohistory'   => "----
 '''Viga:''' Tulõ-i lehti terve aoluu viimisega toimõ.",

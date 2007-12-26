@@ -201,7 +201,7 @@ $magicWords = array(
 	'filepath'               => array( 0,    'FILEPATH:', 'ПУТЬ_К_ФАЙЛУ:'),
 );
 
-$linkTrail = '/^([a-zабвгдеёжзийклмнопрстуфхцчшщъыьэюя“»]+)(.*)$/sDu';
+$linkTrail = '/^([a-zабвгдеёжзийклмнопрстуфхцчшщъыьэюя]+)(.*)$/sDu';
 
 $messages = array(
 # User preference toggles
@@ -311,7 +311,6 @@ $messages = array(
 'category-media-header' => 'Файлы в категории «$1»',
 'category-empty'        => "''Эта категория в данный момент пуста.''",
 
-'linkprefix'        => '/^(.*?)(„|«)$/sD',
 'mainpagetext'      => '<big>Вики-движок «MediaWiki» успешно установлен.</big>',
 'mainpagedocfooter' => 'Информацию по работе с этой вики можно найти в [http://meta.wikimedia.org/wiki/%D0%9F%D0%BE%D0%BC%D0%BE%D1%89%D1%8C:%D0%A1%D0%BE%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D0%BD%D0%B8%D0%B5 руководстве пользователя].
 
@@ -395,29 +394,29 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Описание {{grammar:genitive|{{SITENAME}}}}',
-'aboutpage'         => '{{ns:project}}:Описание',
+'aboutpage'         => 'Project:Описание',
 'bugreports'        => 'Отчёт об ошибке',
-'bugreportspage'    => '{{ns:project}}:Отчёт об ошибке',
+'bugreportspage'    => 'Project:Отчёт об ошибке',
 'copyright'         => 'Содержимое доступно в соответствии с $1.',
 'copyrightpagename' => 'Авторские права проекта {{SITENAME}}',
 'copyrightpage'     => '{{ns:project}}:Авторское право',
 'currentevents'     => 'Текущие события',
-'currentevents-url' => 'Текущие события',
+'currentevents-url' => 'Project:Текущие события',
 'disclaimers'       => 'Отказ от ответственности',
-'disclaimerpage'    => '{{ns:project}}:Отказ от ответственности',
+'disclaimerpage'    => 'Project:Отказ от ответственности',
 'edithelp'          => 'Справка по редактированию',
-'edithelppage'      => '{{ns:project}}:Справка по редактированию',
+'edithelppage'      => 'Help:Справка по редактированию',
 'faq'               => 'ЧаВО',
-'faqpage'           => '{{ns:project}}:ЧаВО',
-'helppage'          => '{{ns:project}}:Справка',
+'faqpage'           => 'Project:ЧаВО',
+'helppage'          => 'Help:Справка',
 'mainpage'          => 'Заглавная страница',
 'policy-url'        => 'Project:Правила',
 'portal'            => 'Сообщество',
-'portal-url'        => '{{ns:project}}:Портал сообщества',
+'portal-url'        => 'Project:Портал сообщества',
 'privacy'           => 'Политика конфиденциальности',
-'privacypage'       => '{{ns:project}}:Политика конфиденциальности',
+'privacypage'       => 'Project:Политика конфиденциальности',
 'sitesupport'       => 'Пожертвования',
-'sitesupport-url'   => '{{ns:project}}:Пожертвования',
+'sitesupport-url'   => 'Project:Пожертвования',
 
 'badaccess'        => 'Ошибка доступа',
 'badaccess-group0' => 'Вы не можете выполнять запрошенное действие.',
@@ -1233,7 +1232,7 @@ $3 указал следующую причину: ''$2''",
 'statistics-mostpopular' => 'Наиболее часто просматриваемые страницы',
 
 'disambiguations'      => 'Страницы, описывающие многозначные термины',
-'disambiguationspage'  => '{{ns:template}}:Неоднозначность',
+'disambiguationspage'  => 'Template:Неоднозначность',
 'disambiguations-text' => "Следующие статьи ссылаются на '''многозначные страницы'''. Вместо этого они, вероятно, должны указывать на соответствующую конкретную статью.<br />Страница считается многозначной, если на ней размещён шаблон, имя которого указано на странице [[MediaWiki:disambiguationspage]].",
 
 'doubleredirects'     => 'Двойные перенаправления',
@@ -1629,7 +1628,7 @@ $NEWPAGE
 'ipbhidename'                 => 'Скрыть имя участника или IP-адрес из журнала блокировок, списка заблокированных и общего списка участников.',
 'badipaddress'                => 'IP-адрес записан в неправильном формате, или участника с таким именем не существует.',
 'blockipsuccesssub'           => 'Блокировка произведена',
-'blockipsuccesstext'          => '[[{{ns:Special}}:Contributions/$1|«$1»]] заблокирован.
+'blockipsuccesstext'          => '[[{{ns:special}}:Contributions/$1|«$1»]] заблокирован.
 <br />См. [[{{ns:special}}:Ipblocklist|список заблокированных IP-адресов]].',
 'ipb-edit-dropdown'           => 'Редактировать список причин блокировки',
 'ipb-unblock-addr'            => 'Разблокировать $1',
@@ -1763,7 +1762,7 @@ IP-адреса.',
 
 Чтобы экспортировать статьи, введите их наименования в поле редактирования, одно название на строку, и выберите хотите ли вы экспортировать всю историю изменений статей или только последние версии статей.
 
-Вы также можете использовать специальный адрес для экспорта только последней версии. Например для страницы [[{{MediaWiki:Mainpage}}]] это будет адрес [[{{ns:Special}}:Export/{{MediaWiki:Mainpage}}]].',
+Вы также можете использовать специальный адрес для экспорта только последней версии. Например для страницы [[{{MediaWiki:Mainpage}}]] это будет адрес [[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]].',
 'exportcuronly'     => 'Включать только текущую версию, без полной предыстории',
 'exportnohistory'   => "----
 '''Замечание:''' экспорт полной истории изменений страниц отключен из-за проблем с производительностью.",

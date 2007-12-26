@@ -325,9 +325,9 @@ $messages = array(
 'bugreportspage'    => 'Project:Laporan pepijat',
 'copyright'         => 'Semua kandungan dikeluarkan di bawah $1.',
 'copyrightpagename' => 'Hak cipta {{SITENAME}}',
-'copyrightpage'     => 'Project:Hak cipta',
+'copyrightpage'     => '{{ns:project}}:Hak cipta',
 'currentevents'     => 'Peristiwa semasa',
-'currentevents-url' => 'Peristiwa semasa',
+'currentevents-url' => 'Project:Peristiwa semasa',
 'disclaimers'       => 'Penolak tuntutan',
 'disclaimerpage'    => 'Project:Penolak tuntutan',
 'edithelp'          => 'Bantuan menyunting',
@@ -1736,7 +1736,7 @@ Untuk mengeksport laman, masukkan tajuk dalam kotak teks di bawah (satu tajuk
 bagi setiap baris) dan pilih sama ada anda mahukan semua versi dan catatan
 sejarah atau hanya versi semasa berserta maklumat mengenai suntingan terakhir.
 
-Dalam pilihan kedua tadi, anda juga boleh menggunakan pautan, umpamanya [[{{ns:Special}}:Eksport/{{MediaWiki:Mainpage}}]] untuk laman "[[{{MediaWiki:Mainpage}}]]".',
+Dalam pilihan kedua tadi, anda juga boleh menggunakan pautan, umpamanya [[{{ns:special}}:Eksport/{{MediaWiki:Mainpage}}]] untuk laman "[[{{MediaWiki:Mainpage}}]]".',
 'exportcuronly'     => 'Hanya eksport semakan semasa, bukan keseluruhan sejarah.',
 'exportnohistory'   => "----
 '''Catatan:''' Ciri eksport sejarah penuh laman melalui borang ini telah dimatikan atas sebab-sebab prestasi.",

@@ -1,4 +1,8 @@
 <?php
+/**
+ *
+ * @addtogroup Language
+ */
 
 $namespaceNames = array(
 	NS_MEDIA            => 'Medija',
@@ -210,24 +214,24 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'O projektu {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:O',
+'aboutpage'         => 'Project:O',
 'bugreports'        => 'Prijavite grešku',
-'bugreportspage'    => '{{ns:project}}:Prijave_grešaka',
+'bugreportspage'    => 'Project:Prijave_grešaka',
 'copyright'         => 'Svi sadržaji podliježu "$1" licenci.',
 'copyrightpagename' => '{{SITENAME}} autorska prava',
 'copyrightpage'     => '{{ns:project}}:Autorska_prava',
 'currentevents'     => 'Trenutni događaji',
 'disclaimers'       => 'Odricanje odgovornosti',
-'disclaimerpage'    => '{{ns:project}}:Uslovi korišćenja, pravne napomene i odricanje odgovornosti',
+'disclaimerpage'    => 'Project:Uslovi korišćenja, pravne napomene i odricanje odgovornosti',
 'edithelp'          => 'Pomoć pri uređivanju stranice',
-'edithelppage'      => '{{ns:project}}:Uređivanje',
-'faqpage'           => '{{ns:project}}:NPP',
-'helppage'          => '{{ns:help}}:Sadržaj',
+'edithelppage'      => 'Help:Uređivanje',
+'faqpage'           => 'Project:NPP',
+'helppage'          => 'Help:Sadržaj',
 'mainpage'          => 'Glavna stranica',
 'portal'            => 'Portal zajednice',
-'portal-url'        => '{{ns:project}}:Portal_zajednice',
+'portal-url'        => 'Project:Portal_zajednice',
 'sitesupport'       => 'Donacije',
-'sitesupport-url'   => '{{ns:project}}:Donacije',
+'sitesupport-url'   => 'Project:Donacije',
 
 'versionrequired'     => 'Verzija $1 MedijaVikija je potrebna',
 'versionrequiredtext' => 'Verzija $1 MedijaVikija je potrebna da bi se koristila ova strana. Pogledajte [[Special:Version|verziju]]',
@@ -982,8 +986,8 @@ ili grupe stranice u XML formatu.  Ovo onda može biti uvezeno u drugi viki koji
 
 # Namespace 8 related
 'allmessages'               => 'Sistemske poruke',
-'allmessagestext'           => 'Ovo je spisak svih sistemskih poruka u {{ns:8}} imenskom prostoru.',
-'allmessagesnotsupportedDB' => '[[Special:Allmessages|sistemske poruke]] nisu podržane zato što je <i>wgUseDatabaseMessages</i> isključen.',
+'allmessagestext'           => 'Ovo je spisak svih sistemskih poruka u {{ns:mediawiki}} imenskom prostoru.',
+'allmessagesnotsupportedDB' => '[[{{ns:special}}:Allmessages|sistemske poruke]] nisu podržane zato što je <i>wgUseDatabaseMessages</i> isključen.',
 
 # Thumbnails
 'thumbnail-more' => 'uvećajte',

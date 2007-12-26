@@ -870,7 +870,7 @@ class Article {
 
 		# If we have been passed an &rcid= parameter, we want to give the user a
 		# chance to mark this new article as patrolled.
-		if (!is_null( $rcid ) && $rcid != 0 && $wgUser->isAllowed( 'patrol' ) ) {
+		if( !is_null( $rcid ) && $rcid != 0 && $wgUser->isAllowed( 'patrol' ) && $this->mTitle->exists() ) {
 			$wgOut->addHTML(
 				"<div class='patrollink'>" .
 					wfMsgHtml( 'markaspatrolledlink',
@@ -1709,7 +1709,7 @@ class Article {
 		global $wgUser, $wgRestrictionTypes, $wgContLang;
 
 		$id = $this->mTitle->getArticleID();
-		if( !$wgUser->isAllowed( 'protect' ) || wfReadOnly() || $id == 0 ) {
+		if( array() != $this->mTitle->getUserPermissionsErrors( 'protect', $wgUser ) || wfReadOnly() || $id == 0 ) {
 			return false;
 		}
 
@@ -2098,7 +2098,7 @@ class Article {
 			<td>
 				$mDeletereasonother
 			</td>
-			<td align='right'>
+			<td align='left'>
 				<input type='text' maxlength='255' size='60' name='wpReason' id='wpReason' value=\"" . htmlspecialchars( $reason ) . "\" tabindex=\"1\" />
 			</td>
 		</tr>
@@ -2496,6 +2496,7 @@ class Article {
 		$edit->pst = $this->preSaveTransform( $text );
 		$options = new ParserOptions;
 		$options->setTidy( true );
+		$options->enableLimitReport();
 		$edit->output = $wgParser->parse( $edit->pst, $this->mTitle, $options, true, true, $revid );
 		$edit->oldText = $this->getContent();
 		$this->mPreparedEdit = $edit;
@@ -3146,9 +3147,11 @@ class Article {
 
 		$popts = $wgOut->parserOptions();
 		$popts->setTidy(true);
+		$popts->enableLimitReport();
 		$parserOutput = $wgParser->parse( $text, $this->mTitle,
 			$popts, true, true, $this->getRevIdFetched() );
 		$popts->setTidy(false);
+		$popts->enableLimitReport( false );
 		if ( $cache && $this && $parserOutput->getCacheTime() != -1 ) {
 			$parserCache =& ParserCache::singleton();
 			$parserCache->save( $parserOutput, $this, $wgUser );

@@ -272,13 +272,13 @@ $messages = array(
 'disclaimers'       => 'Avertiments',
 'disclaimerpage'    => 'Project:Avertiments generals',
 'edithelp'          => 'Ajuda',
-'edithelppage'      => '{{ns:project}}:Cossí editar una pagina',
-'helppage'          => '{{ns:project}}:Ajuda',
+'edithelppage'      => 'Help:Cossí editar una pagina',
+'helppage'          => 'Help:Ajuda',
 'mainpage'          => 'Acuèlh',
 'portal'            => 'Comunautat',
 'portal-url'        => 'Project:Acuèlh',
 'privacy'           => 'Politica de confidencialitat',
-'privacypage'       => 'meta:Confidencialitat',
+'privacypage'       => 'Project:Confidencialitat',
 'sitesupport'       => 'Participar en fasent un don',
 'sitesupport-url'   => 'Project:Fasètz un don',
 
@@ -387,7 +387,7 @@ Requèsta : $2',
 'cascadeprotected'     => 'Aquesta pagina es actualament protegida perque es inclusa dins las paginas seguentas, que son estadas protegidas amb l’opcion « proteccion en cascada » activada :',
 'namespaceprotected'   => "Avètz pas la permission de modificar las paginas de l’espaci de noms « '''$1''' ».",
 'customcssjsprotected' => "Avètz pas la permission d'editar aquesta pagina perque conten de preferéncias d’autres utilizaires.",
-'ns-specialprotected'  => 'Las paginas dins l’espaci de noms « Special » pòdon pas èsser modificadas',
+'ns-specialprotected'  => 'Las paginas dins l’espaci de noms « {{ns:special}} » pòdon pas èsser modificadas',
 
 # Login and logout pages
 'logouttitle'                => 'Desconnexion',
@@ -544,7 +544,7 @@ Vòstra adreça IP actuala es $3, e lo blocatge d'adreça IP es #$5. Inclusissè
 'usercssjsyoucanpreview'    => "'''Astúcia :''' utilisatz lo boton '''Previsualisacion''' per testar vòstra fuèlha novèla css/js abans de l'enregistrar.<br />Per importar vòstra fuèlha monobook dempuèi una URL, utilisatz ''@import url (VÒSTRA_URL_AICÍ&action=raw&ctype=text/css)''",
 'usercsspreview'            => "'''Remembratz-vos que sètz a previsualizar vòstra pròpria fuèlha CSS e qu’es pas encara estada enregistrada !'''",
 'userjspreview'             => "'''Remembrat-vos que sètz a visualizar o testar vòstre còde JavaScript e qu’es pas encara estat enregistrat !'''",
-'userinvalidcssjstitle'     => "'''Atencion :''' existís pas d'estil « $1 ». Remembratz-vos que las paginas personalas amb extensions .css e .js utilizan de títols en minusculas aprèp lo nom d'utilizaire e la barra de fraccion /.<br />Atal, Utilizaire:Foo/monobook.css es valid, alara que Utilizaire:Foo/Monobook.css serà una fuèlha d'estil invalida.",
+'userinvalidcssjstitle'     => "'''Atencion :''' existís pas d'estil « $1 ». Remembratz-vos que las paginas personalas amb extensions .css e .js utilizan de títols en minusculas aprèp lo nom d'utilizaire e la barra de fraccion /.<br />Atal, {{ns:user}}:Foo/monobook.css es valid, alara que {{ns:user}}:Foo/Monobook.css serà una fuèlha d'estil invalida.",
 'updated'                   => '(Mes a jorn)',
 'note'                      => '<strong>Nòta :</strong>',
 'previewnote'               => "Atencion, aqueste tèxt es pas qu'una previsualizacion e es pas encara estat salvagardat !",
@@ -571,7 +571,7 @@ La zòna d'edicion superiora conten lo tèxt tal coma es enregistrat actualament
 'readonlywarning'           => "<strong>AVERTIMENT : '''aquesta pagina es <span style=\"color:red\">protegida</span> <u>temporàriament</u> e <u>automaticament</u> per mantenença.'''<br />Doncas poiretz pas i salvagardar vòstras modificacions ara. Podètz copiar lo tèxt dins un fichièr e lo salvagardar per mai tard.</strong>",
 'protectedpagewarning'      => "<strong>ATENCION : Aquesta pagina es protegida. Sols los utilizaires amb l'estatut d'administrator la pòdon modificar. Asseguratz-vos que seguissètz las directivas concernent las paginas protegidas.</strong>",
 'semiprotectedpagewarning'  => "'''Nòta:''' Aquesta pagina es estada blocada, pòt èsser editada pas que pels utiliaires enregistats.",
-'cascadeprotectedwarning'   => '<strong>ATENCION : Aquesta pagina es estada protegida de biais que sols los [[{{MediaWiki:grouppage-sysop}}|administrators]] pòscan l’editar. Aquesta proteccion es estada facha perque aquesta pagina es inclusa dins una pagina protegida amb la « proteccion en cascada » activada.</strong>',
+'cascadeprotectedwarning'   => '<strong>ATENCION : Aquesta pagina es estada protegida de biais que sols los [[{{MediaWiki:Grouppage-sysop}}|administrators]] pòscan l’editar. Aquesta proteccion es estada facha perque aquesta pagina es inclusa dins una pagina protegida amb la « proteccion en cascada » activada.</strong>',
 'templatesused'             => 'Modèls utilizats sus aquesta pagina :',
 'templatesusedpreview'      => 'Modèls utilizats dins aquesta previsualizacion :',
 'templatesusedsection'      => 'Modèls utilizats dins aquesta seccion :',
@@ -1539,7 +1539,7 @@ L’article de destinacion « [[$1]] » existís ja. Volètz lo suprimir per per
 
 Per exportar de paginas, entratz lors títols dins la boita de tèxt çai jos, un títol per linha, e seleccionatz se o desiratz o pas la version actuala amb totas las versions ancianas, amb la pagina d’istoric, o simplament la pagina actuala amb d'informacions sus la darrièra modificacion.
 
-Dins aqueste darrièr cas, podètz tanben utilizar un ligam, coma [[{{ns:Special}}:Export/{{Mediawiki:mainpage}}]] per la pagina {{Mediawiki:mainpage}}.",
+Dins aqueste darrièr cas, podètz tanben utilizar un ligam, coma [[{{ns:special}}:Export/{{Mediawiki:mainpage}}]] per la pagina {{Mediawiki:mainpage}}.",
 'exportcuronly'     => 'Exportar unicament la version correnta sens l’istoric complet',
 'exportnohistory'   => "---- 
 '''Nòta :''' l’exportacion complèta de l’istoric de las paginas amb l’ajuda d'aqueste formulari es estada desactivada per de rasons de performàncias.",
@@ -1554,7 +1554,7 @@ Dins aqueste darrièr cas, podètz tanben utilizar un ligam, coma [[{{ns:Special
 'allmessagesdefault'        => 'Messatge per defaut',
 'allmessagescurrent'        => 'Messatge actual',
 'allmessagestext'           => 'Aquò es la lista de totes los messatges disponibles dins l’espaci MediaWiki',
-'allmessagesnotsupportedDB' => '<b>Special:Allmessages</b> es pas disponible perque <b>$wgUseDatabaseMessages</b> es desactivat.',
+'allmessagesnotsupportedDB' => '\'\'\'{{ns:special}}:Allmessages\'\'\' es pas disponible perque \'\'\'$wgUseDatabaseMessages\'\'\' es desactivat.',
 'allmessagesfilter'         => 'Filtre d’expression racionala :',
 'allmessagesmodified'       => 'Afichar pas que las modificacions',
 

@@ -348,16 +348,16 @@ $messages = array(
 'bugreportspage'    => 'Project:Oznámenia o chybách',
 'copyright'         => 'Obsah je k dispozícii za licenčných podmienok $1.',
 'copyrightpagename' => 'autorské práva {{GRAMMAR:genitív|{{SITENAME}}}}',
-'copyrightpage'     => 'Project:Autorské práva',
+'copyrightpage'     => '{{ns:project}}:Autorské práva',
 'currentevents'     => 'Aktuality',
-'currentevents-url' => 'Aktuality',
+'currentevents-url' => 'Project:Aktuality',
 'disclaimers'       => 'Vylúčenie zodpovednosti',
 'disclaimerpage'    => 'Project:Vylúčenie zodpovednosti',
 'edithelp'          => 'Ako upravovať stránku',
-'edithelppage'      => '{{ns:help}}:Ako upravovať stránku',
+'edithelppage'      => 'Help:Ako upravovať stránku',
 'faq'               => 'Často kladené otázky',
 'faqpage'           => 'Project:Často_kladené_otázky',
-'helppage'          => '{{ns:help}}:Obsah',
+'helppage'          => 'Help:Obsah',
 'mainpage'          => 'Hlavná stránka',
 'policy-url'        => 'Project:Zásady a smernice',
 'portal'            => 'Portál komunity',
@@ -965,9 +965,9 @@ odobrať používateľa. Neoznačené skupiny nebudú zmenené. Odobrať skupinu
 'group-bureaucrat-member'    => 'Byrokrat',
 
 'grouppage-autoconfirmed' => '{{ns:project}}:Zaregistrovaní používatelia',
-'grouppage-bot'           => 'Project:Boti',
-'grouppage-sysop'         => 'Project:Správcovia',
-'grouppage-bureaucrat'    => 'Project:Byrokrati',
+'grouppage-bot'           => '{{ns:project}}:Boti',
+'grouppage-sysop'         => '{{ns:project}}:Správcovia',
+'grouppage-bureaucrat'    => '{{ns:project}}:Byrokrati',
 
 # User rights log
 'rightslog'      => 'Záznam užívateľských práv',
@@ -1025,10 +1025,10 @@ Právne záväzky môžu projekt vážne poškodiť, takže Vás prosíme, aby s
 
 Na začlenenie obrázku do stránky použite odkaz v tvare
 
-* '''<nowiki>[[</nowiki>{{ns:Image}}<nowiki>:Súbor.jpg]]</nowiki>'''
-* '''<nowiki>[[</nowiki>{{ns:Image}}<nowiki>:Súbor.png|alternatívny text]]</nowiki>'''
+* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Súbor.jpg]]</nowiki>'''
+* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Súbor.png|alternatívny text]]</nowiki>'''
 alebo pre priamy odkaz na súbor
-* '''<nowiki>[[</nowiki>{{ns:Media}}<nowiki>:Súbor.ogg]]</nowiki>'''",
+* '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:Súbor.ogg]]</nowiki>'''",
 'uploadlog'                   => 'Záznam nahrávaní',
 'uploadlogpage'               => 'Záznam nahrávaní',
 'uploadlogpagetext'           => 'Nižšie je zoznam nedávno nahraných súborov.
@@ -1786,7 +1786,7 @@ V druhom prípade môžete tiež použiť odkaz, napr. [[Special:Export/{{Mediaw
 'allmessagesdefault'        => 'štandardný text',
 'allmessagescurrent'        => 'aktuálny text',
 'allmessagestext'           => 'Toto je zoznam všetkých správ dostupných v mennom priestore MediaWiki.',
-'allmessagesnotsupportedDB' => 'Special:AllMessages nie je podporované, pretože je vypnuté wgUseDatabaseMessages.',
+'allmessagesnotsupportedDB' => '{{ns:special}}:AllMessages nie je podporované, pretože je vypnuté wgUseDatabaseMessages.',
 'allmessagesfilter'         => 'Filter názvov správ:',
 'allmessagesmodified'       => 'Zobraz iba zmenené',
 

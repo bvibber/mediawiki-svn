@@ -1188,6 +1188,13 @@ class Title {
 			}
 		}
 
+		if ($action == 'protect')
+		{
+			if ($this->getUserPermissionsErrors('edit', $user) != array()) {
+				$errors[] = array( 'protect-cantedit' ); // If they can't edit, they shouldn't protect.
+			}
+		}
+
 		if( $action == 'create' ) {
 			if( (  $this->isTalkPage() && !$user->isAllowed( 'createtalk' ) ) ||
 				( !$this->isTalkPage() && !$user->isAllowed( 'createpage' ) ) ) {
@@ -1195,9 +1202,9 @@ class Title {
 			}
 		} elseif( $action == 'move' && !( $this->isMovable() && $user->isAllowed( 'move' ) ) ) {
 			$errors[] = $user->isAnon() ? array ( 'movenologintext' ) : array ('movenotallowed');
-        } else if ( !$user->isAllowed( $action ) ) {
+       		} else if ( !$user->isAllowed( $action ) ) {
 			$return = null;
-		    $groups = array();
+			$groups = array();
 			global $wgGroupPermissions;
 		        foreach( $wgGroupPermissions as $key => $value ) {
 		            if( isset( $value[$action] ) && $value[$action] == true ) {
@@ -2635,9 +2642,15 @@ class Title {
 	 * @return bool
 	 */
 	public function isAlwaysKnown() {
+		// If the page is form Mediawiki:message/lang, calling wfMsgWeirdKey causes
+		// the full l10n of that language to be loaded. That takes much memory and
+		// isn't needed. So we strip the language part away.
+		// Also, extension messages which are not loaded, are shown as red, because
+		// we don't call MessageCache::loadAllMessages.
+		list( $basename, /* rest */ ) = explode( '/', $this->mDbkeyform, 2 );
 		return $this->isExternal()
 			|| ( $this->mNamespace == NS_MAIN && $this->mDbkeyform == '' )
-			|| ( $this->mNamespace == NS_MEDIAWIKI && wfMsgWeirdKey( $this->mDbkeyform ) );
+			|| ( $this->mNamespace == NS_MEDIAWIKI && wfMsgWeirdKey( $basename ) );
 	}
 
 	/**

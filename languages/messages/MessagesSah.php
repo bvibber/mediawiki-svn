@@ -202,27 +202,27 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => '{{SITENAME}} туһунан',
-'aboutpage'         => '{{ns:project}} туһунан',
+'aboutpage'         => 'Project туһунан',
 'bugreports'        => 'Сыыһалар тустарынан хобо',
-'bugreportspage'    => '{{ns:project}}:сыыһаларын туһунан хобо',
+'bugreportspage'    => 'Project:сыыһаларын туһунан хобо',
 'copyright'         => 'Маны туһанары $1 көҥүллүүр.',
 'copyrightpagename' => '{{SITENAME}} бас билиитэ',
 'copyrightpage'     => '{{ns:project}}:бас билиитэ',
 'currentevents'     => 'Оҥоһулла турар дьайыылар',
-'currentevents-url' => 'Оҥоһулла турааччылар',
+'currentevents-url' => 'Project:Оҥоһулла турааччылар',
 'disclaimers'       => 'Бүк охсунуу',
-'disclaimerpage'    => '{{ns:project}}:Бүк охсунуу',
+'disclaimerpage'    => 'Project:Бүк охсунуу',
 'edithelp'          => 'Уларытааччыларга көмө',
-'edithelppage'      => '{{ns:help}}:Уларытарга көмө',
-'helppage'          => '{{ns:project}}:Көмө',
+'edithelppage'      => 'Help:Уларытарга көмө',
+'helppage'          => 'Help:Көмө',
 'mainpage'          => 'Сүрүн сирэй',
-'policy-url'        => '{{ns:project}}:Сиэрэ',
+'policy-url'        => 'Project:Сиэрэ',
 'portal'            => 'Түмсүү сирэ',
-'portal-url'        => '{{ns:project}}:Кистээһин сиэрэ',
+'portal-url'        => 'Project:Кистээһин сиэрэ',
 'privacy'           => 'Кистээһин сиэрэ',
-'privacypage'       => '{{ns:project}}:Кистээһин сиэрэ',
+'privacypage'       => 'Project:Кистээһин сиэрэ',
 'sitesupport'       => 'Бу сири өйөө',
-'sitesupport-url'   => '{{ns:project}}:бырайыагы өйөөһүн',
+'sitesupport-url'   => 'Project:бырайыагы өйөөһүн',
 
 'badaccess'        => 'Сатаан киирбэтэ',
 'badaccess-group0' => 'Эн бу дьайыыны оҥорор кыаҕыҥ суох.',
@@ -254,7 +254,7 @@ $messages = array(
 'page-rss-feed'           => '"$1" RSS биэрии',
 'page-atom-feed'          => '"$1" Atom биэрии',
 
-# Short words for each namespace, by default used in the 'page' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Ыстатыйа',
 'nstab-user'      => 'Кыттааччы',
 'nstab-media'     => 'Мэлдьимиэдийэ',
@@ -834,9 +834,9 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 'upload_directory_read_only'  => '($1) директорияҕа сиэрбэр билэни суруйар кыаҕа суох.',
 'uploaderror'                 => 'Билэ суруллубата',
 'uploadtext'                  => "Бу форманы туһанан сиэрбэргэ билэлэри суруйуоххун сөп. Урут суруллубут билэлэри көрөргө манна тиий: [[Special:Imagelist|ойуулар испииһэктэрэ]].<br /> Билэлэри суруйуу уонна сотуу устуоруйата [[Special:Log|манна]] көстөр. Ойууну ыстатыйаҕа киллэрэргэ маннык суруйуллар:
-*'''<nowiki>[[</nowiki>{{ns:Image}}<nowiki>:File.jpg]]</nowiki>''' 
-*'''<nowiki>[[</nowiki>{{ns:Image}}<nowiki>:File.png|thumb|хос быһаарыы]]</nowiki>'''
-*'''<nowiki>[[</nowiki>{{ns:Media}}<nowiki>:File.ogg]]</nowiki>''' - миэдьийэ билэтигэр ыйынньык холобура",
+*'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki>''' 
+*'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|thumb|хос быһаарыы]]</nowiki>'''
+*'''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki>''' - миэдьийэ билэтигэр ыйынньык холобура",
 'uploadlog'                   => 'уларытыы устуоруйата',
 'uploadlogpage'               => 'Уларытыы устуоруйата',
 'uploadlogpagetext'           => 'Манна бүтэһик уларытыылар исппиһэктэрэ көстөр (UTC).',
@@ -992,7 +992,7 @@ PICT # misc.
 'unusedtemplatestext' => 'Манна атын сирэйдэр ахсааннарыгар киирбэтэтх "Халыыптарга" сыһыаннаах сирэйдэр көстөллөр. Соторгор атын билэлэртэн сигэммэтэхтэрин көр.',
 'unusedtemplateswlh'  => 'атын ыйынньыктар',
 
-# Random pages
+# Random page
 'randompage'         => 'Үлүбээй сирэй',
 'randompage-nopages' => 'Майгынныыр ааттаах сирэйдэр суохтар.',
 
@@ -1422,7 +1422,7 @@ $1',
 'ipbhidename'                 => 'Кыттааччы аатын/IP-тын бобуу сурунаалыгар, бобуллубуттар уонна кытааччылар уопсай испииһэктэригэр көрдөрүмэ',
 'badipaddress'                => 'IP аадырыһа сыыһа',
 'blockipsuccesssub'           => 'Тохтотулунна',
-'blockipsuccesstext'          => '[[{{ns:Special}}:Contributions/$1|«$1»]] бобуллубут/тохтотуллубут. 
+'blockipsuccesstext'          => '[[{{ns:special}}:Contributions/$1|«$1»]] бобуллубут/тохтотуллубут. 
 <br />[[{{ns:special}}:Ipblocklist|Бобуллубут IP-лар испииһэктэрин]] көр.',
 'ipb-edit-dropdown'           => 'Бобуу биричиинэтин уларыт',
 'ipb-unblock-addr'            => '$1 бобуутун суох гын',
@@ -1560,7 +1560,7 @@ $1',
 Онтон тал: ыстатыйалар историяларын барытын көһөрөҕүн дуу, кэлиҥҥи торумнарын эрэ дуу. 
 
 Экспорт анал аадырыһын туһанан сирэй бүтэһик торумун көһөрүөххэ эмиэ сөп. 
-Холобур, [[{{MediaWiki:Mainpage}}]] сирэйи маннык: [[{{ns:Special}}:Export/{{MediaWiki:Mainpage}}]].',
+Холобур, [[{{MediaWiki:Mainpage}}]] сирэйи маннык: [[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]].',
 'exportcuronly'     => 'Бүтэһик торуму эрэ киллэр, уларытыы толору историята наадата суох',
 'exportnohistory'   => "----
 '''Биллэрии:''' Сирэй толору историятын таһаары кыах тиийбэтинэн араарыллыбыт.",

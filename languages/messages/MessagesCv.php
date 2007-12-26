@@ -1,7 +1,9 @@
 <?php
-/**
- * Chuvash stub localization; default to Russian instead of English.
+/** Chuvash
+ *
+ * @addtogroup Language
  */
+
 $fallback = 'ru';
 $linkPrefixExtension = true;
 
@@ -66,16 +68,16 @@ $messages = array(
 'mainpage'   => 'Тĕп страницă',
 
 'aboutsite'      => '{{SITENAME}} çинчен',
-'aboutpage'      => '{{ns:project}}:çинчен',
+'aboutpage'      => 'Project:çинчен',
 'help'           => 'Пулăшу',
-'helppage'       => '{{ns:project}}:Пулăшу',
+'helppage'       => 'Help:Пулăшу',
 'sitesupport'    => 'Пожертвованисем',
 'edithelp'       => 'Улшăнусене кĕртме пулăшакан пулăшу',
-'edithelppage'   => '{{ns:project}}:Улшăнусене кĕртме пулăшакан пулăшу',
+'edithelppage'   => 'Help:Улшăнусене кĕртме пулăшакан пулăшу',
 'qbspecialpages' => 'Ятарлӑ страницӑсем',
 
 'currentevents'     => 'Хыпарсем',
-'currentevents-url' => 'Хыпарсем',
+'currentevents-url' => 'Project:Хыпарсем',
 
 'search'           => 'Шырасси',
 'searchbutton'     => 'Шырасси',

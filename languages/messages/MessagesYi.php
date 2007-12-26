@@ -1,8 +1,15 @@
 <?php
 /** Yiddish (ייִדיש)
-  *
-  * @addtogroup Language
-  */
+ *
+ * @addtogroup Language
+ *
+ * @author Yidel
+ * @author Siebrand
+ * @author G - ג
+ * @author Teak
+ * @author Nike
+ */
+
 $fallback = 'he';
 
 $namespaceNames = array(
@@ -238,29 +245,29 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'איבער {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:איבער',
+'aboutpage'         => 'Project:איבער',
 'bugreports'        => 'באג באריכטען',
-'bugreportspage'    => '{{ns:project}}:באג באריכטן',
+'bugreportspage'    => 'Project:באג באריכטן',
 'copyright'         => 'אינהאַלט איז עוועיליבל אונטער $1.',
 'copyrightpagename' => 'קאפירעכטן פון {{SITENAME}}',
 'copyrightpage'     => '{{ns:project}}:קאפירעכטן',
 'currentevents'     => 'אקטועלע געשענישען',
-'currentevents-url' => '{{ns:project}}:אקטועלע געשענישען',
+'currentevents-url' => 'Project:אקטועלע געשענישען',
 'disclaimers'       => 'געזעצליכע אויפקלערונג',
-'disclaimerpage'    => '{{ns:project}}:געזעצליכע אויפקלערונג',
+'disclaimerpage'    => 'Project:געזעצליכע אויפקלערונג',
 'edithelp'          => 'הילף וויאזוי צו ענדערן',
-'edithelppage'      => '{{ns:help}}:ענדערן',
+'edithelppage'      => 'Help:ענדערן',
 'faq'               => 'מערסטע געפרעגטע פראגעס',
-'faqpage'           => '{{ns:project}}:מערסטע געפרעגט פראגעס',
+'faqpage'           => 'Project:מערסטע געפרעגט פראגעס',
 'helppage'          => 'Help:אינהאַלט',
 'mainpage'          => 'הויפט זייט',
-'policy-url'        => '{{ns:project}}:פאליסי',
+'policy-url'        => 'Project:פאליסי',
 'portal'            => 'קהילה פארטל',
-'portal-url'        => '{{ns:project}}:בית מדרש',
+'portal-url'        => 'Project:בית מדרש',
 'privacy'           => 'פריוואטקייט פאליסי',
-'privacypage'       => '{{ns:project}}:פריוואטקייט פאליסי',
+'privacypage'       => 'Project:פריוואטקייט פאליסי',
 'sitesupport'       => 'ביישטייערונגן',
-'sitesupport-url'   => '{{ns:project}}:סייט שטיצע',
+'sitesupport-url'   => 'Project:סייט שטיצע',
 
 'badaccess'        => 'רשות טעות',
 'badaccess-group0' => 'איר זענט נישט בארעכטיגט צו טאן די אקציע וואס איר ווילט.',
@@ -291,7 +298,7 @@ $messages = array(
 'feed-atom'               => 'אטאם',
 'feed-rss'                => 'אר.עס.עס.',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'אַרטיקל',
 'nstab-user'      => 'באַנוצער בלאט',
 'nstab-media'     => 'מעדיע בלאט',
@@ -677,7 +684,7 @@ Legend: (cur) = difference with current version,
 
 # Search results
 'searchresults'         => 'זוכן רעזולטאטן',
-'searchresulttext'      => 'לערנען מער ווי צו זוכן אינעם {{SITENAME}} [[{{ns:Help}}:זוכן|קוועטשט אַהער]]',
+'searchresulttext'      => 'לערנען מער ווי צו זוכן אינעם {{SITENAME}} [[{{ns:help}}:זוכן|קוועטשט אַהער]]',
 'searchsubtitle'        => '[[:$1]]',
 'searchsubtitleinvalid' => '$1דו האסט געזוכט פאר',
 'noexactmatch'          => 'דערווייל איז נאָך נישטאָ א בלאט מיט דעם טיטל.<br /> איר זײַט געלאדנט [[:$1|אויפשרייבן א נייעם בלאט]], אדער [[Project:בעטן ווערטן|בעטן פון פריינד]] זאלן זיי שרייבן.',
@@ -762,7 +769,7 @@ Legend: (cur) = difference with current version,
 'hide'              => 'באַהאַלטן',
 'show'              => 'ווייז',
 'newpageletter'     => 'נ',
-'newsectionsummary' => '/* $1 */ נייער אפטיילונג',
+'newsectionsummary' => 'נייער אפטיילונג:',
 
 # Recent changes linked
 'recentchangeslinked' => 'פֿאַרבונדענע ענדערונגען',
@@ -789,6 +796,9 @@ Legend: (cur) = difference with current version,
 # MIME search
 'download' => 'אראפלאדירן',
 
+# Random page
+'randompage' => 'צופֿעליגער אַרטיקל',
+
 # Statistics
 'statistics'    => 'סטאַטיסטיק',
 'sitestatstext' => "יעצט איז דא '''\$2''' אַרטיקלען אינעם [[{{SITENAME}}]].
@@ -801,7 +811,7 @@ Legend: (cur) = difference with current version,
 דורכשניטלעך '''\$5''' באַאַרבעטונגען פאַר יעדן בלאַט.",
 
 'disambiguations'      => 'באדייטען בלעטער',
-'disambiguationspage'  => '{{ns:template}}:באדייטן',
+'disambiguationspage'  => 'Template:באדייטן',
 'disambiguations-text' => "די קומענדיגע בלעטער פארבינדען צו '''באדייטען בלעטער'''. זיי ברויכן ווען צו פארבינדען צום רעלאווענטן טעמע בלאט אנשטאט.<br />די בלאט ווערט פארעכענט ווי א בלאט באדייטען אויב ער באנוצט זיך מיטן מוסטער וואס איז פארבינדען פון [[{{ns:mediawiki}}:Disambiguationspage|disambiguationspage]].",
 
 'doubleredirects'     => 'געדאפלטע רידיירעקטס',
@@ -820,7 +830,6 @@ Legend: (cur) = difference with current version,
 'mostcategories'    => 'אַרטיקלען מיט די מערקסטע קאַטעגאָריעס',
 'mostrevisions'     => 'אַרטיקלען מיט די מערקסטע באַאַרבעטונגען',
 'allpages'          => 'אלע בלעטער',
-'randompage'        => 'צופֿעליגער אַרטיקל',
 'deadendpages'      => 'דעד-ענד בלעטער',
 'deadendpagestext'  => 'די פאלגענדע בלעטער לינקן נישט צו אנדערע בלעטער אין דעם וויקי.',
 'specialpages'      => 'ספּעציעלע זײטן',
@@ -880,10 +889,10 @@ Legend: (cur) = difference with current version,
 'watchnologin'         => 'איר זענט נישט אריינגעסיינט',
 'watchnologintext'     => 'איר מוזט זיין אריינגעסיינט [[Special:Userlogin|אריינגעסיינט]] צו מאדיפיצירן אייער אויפפַּאסונג ליסטע.',
 'addedwatch'           => 'צוגעלייגט געוואָרן צום אויפפַּאסונג ליסטע',
-'addedwatchtext'       => "דער אַרטיקל \"[[:\$1]]\" איז צוגעלײגט געוואָרן צו דײַן [[{{ns:Special}}:Watchlist|אויפפַּאסונג ליסטע]].
+'addedwatchtext'       => "דער אַרטיקל \"[[:\$1]]\" איז צוגעלײגט געוואָרן צו דײַן [[{{ns:special}}:Watchlist|אויפפַּאסונג ליסטע]].
 
 ענדערונגן צו דעם בלאט און צו אירע פארבינדענע רעדן בלאט וועט זיין דא אויסגערעכענט.
-און די בלאט וועט זיין '''דיק''' [[{{ns:Special}}:לעצטע ענדערונגן|ליסטע פון לעצטע ענדערונגן]] צו גרינגער מאכן דאס ארויסנעמען.
+און די בלאט וועט זיין '''דיק''' [[{{ns:special}}:לעצטע ענדערונגן|ליסטע פון לעצטע ענדערונגן]] צו גרינגער מאכן דאס ארויסנעמען.
 
 <p>אויב איר ווילט פטור ווערן דערפון פון אייער אויפפאסען ליסטע שפעטער קליקט, \"שטעלט אפ באוואכן\" אין די סיידבאר.</p>",
 'removedwatch'         => 'אַראָפּגענומען געווארן פונעם אויפפַּאסונג ליסטע',
@@ -1024,9 +1033,9 @@ $NEWPAGE
 'range_block_disabled'     => 'די סיסאפ מעגליכקייט צו בלאקירן רענזש בלאקס איז אומ-ערמעגליכט.',
 'ipb_expiry_invalid'       => 'אפלויפונג צייט אומ-געזעליך.',
 'ipb_already_blocked'      => '"$1" איז שוין בלאקירט',
+'ipb_cant_unblock'         => "פעילער: בלאק איי.די. $1 געפינט זיך נישט. ס'מעגליך שוין באפרייט געווארן.",
 'ip_range_invalid'         => 'רעינזש IP אומ-ריכטיגע.',
 'proxyblocker'             => 'פראקסי בלאקער',
-'ipb_cant_unblock'         => "פעילער: בלאק איי.די. $1 געפינט זיך נישט. ס'מעגליך שוין באפרייט געווארן.",
 'proxyblockreason'         => 'אייער איי.פי. אדרעס איז געווארן געבלאקט צוליב דעם ווייל דאס איז א אפענער פראקסי. ביטע פארבינדט זיך מיט אייער אינטערנעט סערוויס פראוויידער אדער טעקס סאפארט צו אינפארמירן זיי איבער דעם ערענסטן זיכערהייט פראבלעם.',
 
 # Developer tools
@@ -1067,7 +1076,7 @@ $NEWPAGE
 
 צו עקספארטירן בלעטער, לייגט אריין די טיטול'ען אין די טעקסט באקס פון אונטן, איין טיטול פער ליין, און סעלעקטיר אויב דו דארפסט דעם ווערסיע, ווי אויך די אלטע ווערסיעס, מיט די בלאט היסטאריע ליין'ס, אדער בלויז די איצטיגע ווערסיע מיט די קורץ ווארט אינפארמאציע פונעם לעצטן ענדערונג.
 
-אין די לעצטער פאל קענט איר אויך נוצן א לינק, e.g. [[{{ns:Special}}:Export/{{MediaWiki:Mainpage}}]] פאר די בלאט {{MediaWiki:Mainpage}}.",
+אין די לעצטער פאל קענט איר אויך נוצן א לינק, e.g. [[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]] פאר די בלאט {{MediaWiki:Mainpage}}.",
 'exportcuronly'   => 'רעכן אריין בלויז די איצטיגע רע-ווערסיע, נישט די פולער היסטאריע',
 'exportnohistory' => "----
 '''באמערקונג:''' עקספארטירן די פולער היסטאריע פון בלעטער דורך די פארעם איז געווארן אומ-ערמעגליכט צוליב פערפארמענס סיבות.",
@@ -1138,15 +1147,13 @@ $NEWPAGE
 'tooltip-ca-nstab-template'     => 'זעהט די מוסטער',
 'tooltip-ca-nstab-help'         => 'זעהט די הילף בלעטער',
 'tooltip-ca-nstab-category'     => 'זעהט די קאטעגאריע בלאט',
-'tooltip-diff'                  => 'Show which changes you made to the text.',
 
 # Stylesheets
 'common.css'   => '/* CSS געשריבן דא וועט אפילירן און באיינפלוסן אלע סקינס */',
 'monobook.css' => '/* סטייל דא געלייגט וועט באיינפלוסן די בעקגראונד Monobook בלויז */',
 
 # Scripts
-'common.js'   => '/* אלע סקריפטן פון JavaScript דא געשריבן וועט לויפן פאר אלע באנוצער ווען זיי וועלן לאדירן דעם בלאט */',
-'monobook.js' => '/* Deprecated; use [[MediaWiki:common.js]] */',
+'common.js' => '/* אלע סקריפטן פון JavaScript דא געשריבן וועט לויפן פאר אלע באנוצער ווען זיי וועלן לאדירן דעם בלאט */',
 
 # Attribution
 'anonymous'        => 'אנינאנימעס באנוצער(ס) פון {{SITENAME}}',
@@ -1191,6 +1198,7 @@ $NEWPAGE
 'exif-exposurebiasvalue'        => 'עקספאוזשער בייעס',
 'exif-flash'                    => 'פלעש',
 'exif-focallength'              => 'לענס פאוקאל לענג',
+'exif-focallength-format'       => '$1 מ"מ',
 'exif-flashenergy'              => 'פלעש ענערגיע',
 'exif-focalplanexresolution'    => 'פאקאל פלעין עקס רעזאלוציע',
 'exif-focalplaneresolutionunit' => 'פאקאל פלעין רעזאלוציע מאס',

@@ -398,29 +398,29 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'دربارهٔ {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:درباره',
+'aboutpage'         => 'Project:درباره',
 'bugreports'        => 'گزارش ایرادها',
-'bugreportspage'    => '{{ns:project}}:گزارش ایرادها',
+'bugreportspage'    => 'Project:گزارش ایرادها',
 'copyright'         => 'محتوا تحت اجازه‌نامهٔ $1 در دسترس است.',
 'copyrightpagename' => 'حق تکثیر {{SITENAME}}',
 'copyrightpage'     => '{{ns:project}}:حق_تکثیر',
 'currentevents'     => 'وقایع کنونی',
-'currentevents-url' => 'وقایع کنونی',
+'currentevents-url' => 'Project:وقایع کنونی',
 'disclaimers'       => 'تکذیب‌نامه‌ها',
-'disclaimerpage'    => '{{ns:project}}:تکذیب‌نامهٔ عمومی',
+'disclaimerpage'    => 'Project:تکذیب‌نامهٔ عمومی',
 'edithelp'          => 'راهنمای ویرایش کردن',
-'edithelppage'      => '{{ns:project}}:چگونه صفحه‌ها را ویرایش کنیم',
+'edithelppage'      => 'Help:چگونه صفحه‌ها را ویرایش کنیم',
 'faq'               => 'سوال‌های متداول',
-'faqpage'           => '{{ns:project}}:سوال‌های متداول',
-'helppage'          => '{{ns:project}}:راهنما',
+'faqpage'           => 'Project:سوال‌های متداول',
+'helppage'          => 'Help:راهنما',
 'mainpage'          => 'صفحهٔ اصلی',
-'policy-url'        => '{{ns:project}}:سیاست‌ها',
+'policy-url'        => 'Project:سیاست‌ها',
 'portal'            => 'ورودی کاربران',
-'portal-url'        => '{{ns:project}}:ورودی کاربران',
+'portal-url'        => 'Project:ورودی کاربران',
 'privacy'           => 'سیاست حفظ اسرار',
 'privacypage'       => 'Project:سیاست_حفظ_اسرار',
 'sitesupport'       => 'کمک مالی',
-'sitesupport-url'   => '{{ns:project}}:کمک به این سایت',
+'sitesupport-url'   => 'Project:کمک به این سایت',
 
 'badaccess'        => 'خطای دسترسی',
 'badaccess-group0' => 'شما اجازهٔ اجرای عمل درخواسته را ندارید.',
@@ -675,7 +675,7 @@ your old password.
 'summary'                   => 'خلاصه',
 'subject'                   => 'موضوع/عنوان',
 'minoredit'                 => 'این ویرایش جزئی است',
-'watchthis'                 => 'پی‌گیری این مقاله',
+'watchthis'                 => 'پی‌گیری این صفحه',
 'savearticle'               => 'صفحه ذخیره شود',
 'preview'                   => 'پیش‌نمایش',
 'showpreview'               => 'پیش‌نمایش',
@@ -757,6 +757,7 @@ your old password.
 ----
 '''اگر این صفحه را لحظاتی پیش ایجاد کرده‌اید و کماکان ظاهر نشده‌است، ممکن است به دلیل تأخیر در به‌روز رسانی پایگاه داده باشد.''' [{{fullurl:{{FULLPAGENAME}}|action=purge}} پاکسازی] را امتحان کنید، در غیراینصورت لطفاً قبل از ایجاد دوبارهٔ صفحه کمی منتظر شوید.
 * اگر در گذشته در زیر این عنوان مقاله‌ای نوشته‌ بودید، ممکن است حذف شده باشد. در [{{fullurl:Special:Log|type=delete&page={{FULLPAGENAMEE}}}} سیاههٔ حذف] به دنبال آن بگردید.",
+'userpage-userdoesnotexist' => 'حساب کاربر «$1» ثبت نشده است. اطمینان حاصلی کنید که می‌خواهید این صفحه را ایجاد یا ویرایش کنید.',
 'clearyourcache'            => "'''نکته:''' پس از ذخیره‌سازی ممکن است برای دیدن تغییرات نیاز باشد که حافظهٔ نهانی مرورگر خود را خالی کنید. '''موزیلا / فایرفاکس / Safari:'''  کلید '''Shift''' را نگه‌دارید و روی دکمهٔ '''Reload''' کلیک کنید، یا کلید‌های '''Ctrl-Shift-R''' را با هم فشار دهید (در رایانه‌های اپل مکینتاش کلید‌های '''Cmd-Shift-R''')؛ '''اینترنت اکسپلورر:''' کلید '''Ctrl''' نگه‌دارید و روی دکمهٔ '''Refresh''' کلیک‌ کنید، یا کلید‌های '''Ctrl-F5''' را با هم فشار دهید؛ '''Konqueror:''' روی دکمهٔ '''Reload''' کلیک کنید و یا کلید '''F5''' را فشار دهید؛ '''اُپرا:''' کاربران اُپرا ممکن است لازم باشد که بطور کامل حافظهٔ نهانی مرورگر را در منوی ''Tools&rarr;Preferences'' خالی کنند.",
 'usercssjsyoucanpreview'    => "<strong>نکته:</strong> قبل از این که فایل CSS یا JS خود را ذخیره کنید، با استفاده از دکمه '''پیش‌نمایش''' می‌توان آن را آزمایش کنید.",
 'usercsspreview'            => "'''فراموش مکنید که CSS کاربریتان فقط پیش‌نمایش یافته و هنوز ذخیره نشده‌است.'''",
@@ -1577,6 +1578,7 @@ $NEWPAGE
 'protect-summary-cascade'     => 'آبشاری',
 'protect-expiring'            => 'زمان سرآمدن $1 (UTC)',
 'protect-cascade'             => 'محافظت آبشاری - از همهٔ صفحه‌هایی که در این صفحه آمده‌اند نیز محافظت می‌شود.',
+'protect-cantedit'            => 'شما نمی‌تواند وضعیت حفاظت این صفحه را تغییر دهید، چون اجازه ویرایش آن را ندارید.',
 'restriction-type'            => 'دسترسی',
 'restriction-level'           => 'سطح محدودیت',
 'minimum-size'                => 'حداقل اندازه',
@@ -2363,7 +2365,13 @@ $3
 'scarytranscludetoolong'  => 'نشانی اینترنتی مورد نظر (URL) بیش از اندازه بلند بود',
 
 # Trackbacks
-'trackbackremove' => ' ([$1 حذف])',
+'trackbackbox'      => '<div id="mw_trackbacks">
+بازتاب این صفحه در وب‌نوشت‌ها:<br />
+$1
+</div>',
+'trackbackremove'   => ' ([$1 حذف])',
+'trackbacklink'     => 'بازتاب',
+'trackbackdeleteok' => 'بازتاب صفحه با موفقیت حذف شد.',
 
 # Delete conflict
 'deletedwhileediting' => 'هشدار: این صفحه پس از اینکه شما آغاز به ویرایش‌اش کرده‌اید، حذف شده است.',

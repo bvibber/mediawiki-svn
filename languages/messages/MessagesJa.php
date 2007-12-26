@@ -246,9 +246,9 @@ $messages = array(
 'bugreportspage'    => 'Project:バグの報告',
 'copyright'         => 'コンテンツは$1のライセンスで利用することができます。',
 'copyrightpagename' => '{{SITENAME}}の著作権',
-'copyrightpage'     => 'Project:著作権',
+'copyrightpage'     => '{{ns:project}}:著作権',
 'currentevents'     => '最近の出来事',
-'currentevents-url' => '最近の出来事',
+'currentevents-url' => 'Project:最近の出来事',
 'disclaimers'       => '免責事項',
 'disclaimerpage'    => 'Project:免責事項',
 'edithelp'          => '編集の仕方',
@@ -256,7 +256,7 @@ $messages = array(
 'faqpage'           => 'Project:FAQ',
 'helppage'          => 'Help:目次',
 'mainpage'          => 'メインページ',
-'policy-url'        => '{{ns:project}}:方針',
+'policy-url'        => 'Project:方針',
 'portal'            => 'コミュニティ・ポータル',
 'portal-url'        => 'Project:コミュニティ・ポータル',
 'privacy'           => 'プライバシー・ポリシー',
@@ -802,9 +802,9 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'group-sysop-member'      => '{{int:group-sysop}}',
 'group-bureaucrat-member' => '{{int:group-bureaucrat}}',
 
-'grouppage-bot'        => 'Project:{{int:group-bot}}',
-'grouppage-sysop'      => 'Project:{{int:group-sysop}}',
-'grouppage-bureaucrat' => 'Project:{{int:group-bureaucrat}}',
+'grouppage-bot'        => '{{ns:project}}:{{int:group-bot}}',
+'grouppage-sysop'      => '{{ns:project}}:{{int:group-sysop}}',
+'grouppage-bureaucrat' => '{{ns:project}}:{{int:group-bureaucrat}}',
 
 # User rights log
 'rightslog'      => '利用者権限変更記録',
@@ -1559,7 +1559,7 @@ $NEWPAGE
 'allmessagesdefault'        => '既定の文章',
 'allmessagescurrent'        => '現在の文章',
 'allmessagestext'           => 'これは{{ns:mediawiki}}名前空間にある全てのシステムメッセージの一覧です。',
-'allmessagesnotsupportedDB' => 'wgUseDatabaseMessages が無効のため、[[Special:Allmessages]] はサポートされません。',
+'allmessagesnotsupportedDB' => 'wgUseDatabaseMessages が無効のため、[[{{ns:special}}:Allmessages]] はサポートされません。',
 'allmessagesfilter'         => 'メッセージ名フィルタ:',
 'allmessagesmodified'       => '条件に当てはまるものを表示',
 
@@ -1769,11 +1769,13 @@ To disable showing a particular link, set it to 'disable', e.g.
 'variantname-zh-sg' => 'disable',
 Variants for Chinese language
 */
-'variantname-zh-cn' => '簡体（中国）',
-'variantname-zh-tw' => '正字（台湾）',
-'variantname-zh-hk' => '正字（香港）',
-'variantname-zh-sg' => '簡体（シンガポール）',
-'variantname-zh'    => '無変換',
+'variantname-zh-hans' => '簡体',
+'variantname-zh-hant' => '正字',
+'variantname-zh-cn'   => '簡体（中国）',
+'variantname-zh-tw'   => '正字（台湾）',
+'variantname-zh-hk'   => '正字（香港）',
+'variantname-zh-sg'   => '簡体（シンガポール）',
+'variantname-zh'      => '無変換',
 
 # Metadata
 'metadata'          => 'メタデータ',

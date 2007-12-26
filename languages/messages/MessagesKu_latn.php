@@ -229,22 +229,22 @@ $messages = array(
 'copyrightpagename' => 'Mafên nivîsanê',
 'copyrightpage'     => '{{ns:project}}:Mafên nivîsanê',
 'currentevents'     => 'Bûyerên rojane',
-'currentevents-url' => 'Bûyerên rojane',
+'currentevents-url' => 'Project:Bûyerên rojane',
 'disclaimers'       => 'Ferexetname',
 'disclaimerpage'    => 'Project:Ferexetname',
 'edithelp'          => 'Alîkarî ji bo guherandin',
-'edithelppage'      => '{{ns:help}}:Rûpeleke çawa biguherînim',
+'edithelppage'      => 'Help:Rûpeleke çawa biguherînim',
 'faq'               => 'Pirs û Bersîv (FAQ)',
-'faqpage'           => '{{ns:project}}:Pirs û Bersîv',
-'helppage'          => '{{ns:help}}:Alîkarî',
+'faqpage'           => 'Project:Pirs û Bersîv',
+'helppage'          => 'Help:Alîkarî',
 'mainpage'          => 'Destpêk',
 'policy-url'        => 'Project:Qebûlkirin',
 'portal'            => 'Portala komê',
 'portal-url'        => 'Project:Portala komê',
 'privacy'           => "Parastinê data'yan",
-'privacypage'       => "{{ns:project}}:Parastinê data'yan",
+'privacypage'       => "Project:Parastinê data'yan",
 'sitesupport'       => 'Ji bo Weqfa Wikimedia Beş',
-'sitesupport-url'   => '{{ns:project}}:Alîkarîya diravî',
+'sitesupport-url'   => 'Project:Alîkarîya diravî',
 
 'badaccess'        => 'Eror li bi dest Hînan',
 'badaccess-group0' => 'Tu nikanî vê tiştî bikê.',
@@ -685,10 +685,10 @@ $2 Ragihandinan nîşan bide &amp;nbsp; Lêbigere: $3 $9',
 
 Yek ji lînkên jêr ji bo bikarhînana wêne an faylê di gotarê de bikar bihîne:
 
-* '''<nowiki>[[{{ns:Image}}:File.jpg]]</nowiki>'''
-* '''<nowiki>[[{{ns:Image}}:File.png|alt text]]</nowiki>'''
+* '''<nowiki>[[{{ns:image}}:File.jpg]]</nowiki>'''
+* '''<nowiki>[[{{ns:image}}:File.png|alt text]]</nowiki>'''
 anjî ji bo faylên dengî
-* '''<nowiki>[[{{ns:Media}}:File.ogg]]</nowiki>'''",
+* '''<nowiki>[[{{ns:media}}:File.ogg]]</nowiki>'''",
 'uploadlogpage'        => 'Înformasyon li ser barkirinê',
 'filename'             => 'Navê dosyayê',
 'filedesc'             => 'Kurte',
@@ -1106,7 +1106,7 @@ da bikarî navê wê rûpelê biguherînî.',
 'allmessagesname'           => 'Nav',
 'allmessagescurrent'        => 'Texta niha',
 'allmessagestext'           => 'Ev lîsteya hemû mesajên di namespace a MediaWiki: de ye.',
-'allmessagesnotsupportedDB' => "'''Special:Allmessages''' cannot be used because '''\$wgUseDatabaseMessages''' is switched off.",
+'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' cannot be used because '''\$wgUseDatabaseMessages''' is switched off.",
 
 # Thumbnails
 'thumbnail-more' => 'Mezin bike',

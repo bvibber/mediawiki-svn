@@ -22,6 +22,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Marking edits as bot edits with Special:Contributions?bot=1 now requires the
   markbotedit permission, rather than the rollback permission previously used.
   This permission is assigned by default to the sysop group.
+* MediaWiki now checks if serialized files are out of date. New configuration
+  variable $wgCheckSerialized can be set to false to enable old behavior (i.e.
+  to not check and assume they are always up to date)
 
 === New features in 1.12 ===
 * (bug 10735) Add a warning for non-descriptive filenames at Special:Upload
@@ -82,6 +85,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 9633) Add a predefined list of delete reasons to the deletion form
 * Show a warning message when creating/editing a user (talk) page but the user
   does not exists
+* (bug 8396) Ignore out-of-date serialised message caches
 
 === Bug fixes in 1.12 ===
 
@@ -196,7 +200,12 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   for users with special characters in their names
 * The number of watching users in watchlists was always reported as 1
 * namespaceDupes.php no longer dies when coming across an illegal title
-* Make API check for restrictions in the old format too.
+* (bug 12143) Do not show a link to patrol new pages for non existent pages
+* (bug 12166) Fix XHTML validity for Special:Emailuser
+* (bug 11346) Users who cannot edit a page can now no longer unprotect it.
+* (bug 451) Add a generic Traditional / Simplified Chinese conversion table, 
+  instead of a Traditional conversion with Taiwan variant, and a Simplified 
+  conversion with China variant.
 
 == Parser changes in 1.12 ==
 
@@ -299,8 +308,13 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Outputting list of all user preferences rather than having to request them by 
   name
 * (bug 11206) api.php should honor maxlag
-* Added diff generation to prop=revisions
-* Added support for traditional, unified and array diffs to prop=revisions
+* Make prop=info check for restrictions in the old format too.
+* Add apihighlimits permission, default for sysops and bots
+* Add limit=max to use maximal limit
+* Add action=parse to render parser output. Use it instead of action=render which is deprecated.
+* Add rvtoken=rollback to prop=revisions
+* Add meta=allmessages to get messages from site's messages cache.
+* Use bold and italics highlighting only in API help
 
 === Languages updated in 1.12 ===
 

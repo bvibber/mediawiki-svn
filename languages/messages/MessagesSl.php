@@ -3,18 +3,9 @@
  *
  * @addtogroup Language
  *
+ * @author XJamRastafire
+ * @author romanm
  */
-
-#
-# Revision/
-# Inačica 1.00.00 XJamRastafire 2003-07-08 |NOT COMPLETE
-#         1.00.10 XJamRastafire 2003-11-03 |NOT COMPLETE
-# ______________________________________________________
-#         1.00.20 XJamRastafire 2003-11-05 |    COMPLETE
-#         1.00.30 romanm        2003-11-07 |    minor changes
-#         1.00.31 romanm        2003-11-11 |    merged incorrectly broken lines
-#         1.00.32 romanm        2003-11-19 |    merged incorrectly broken lines
-#         1.00.40 romanm        2003-11-21 |    fixed Google search
 
 $namespaceNames = array(
 	NS_MEDIA          => 'Media',
@@ -237,7 +228,7 @@ in [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Uporabniški priroč
 'bugreportspage'    => 'Project:Poročila o hroščih',
 'copyright'         => 'Besedilo je na razpolago pod pogoji $1.',
 'copyrightpagename' => 'Avtorske pravice {{GRAMMAR:rodilnik|{{SITENAME}}}}',
-'copyrightpage'     => 'Project:Avtorske pravice {{GRAMMAR:rodilnik|{{SITENAME}}}}',
+'copyrightpage'     => '{{ns:project}}:Avtorske pravice {{GRAMMAR:rodilnik|{{SITENAME}}}}',
 'currentevents'     => 'Trenutni dogodki',
 'currentevents-url' => 'Project:Trenutni dogodki',
 'disclaimers'       => 'Zanikanja odgovornosti',
@@ -486,7 +477,7 @@ Da bi stran ustvarili, vnesite v spodnji obrazec besedilo
 'usercssjsyoucanpreview'    => "<strong>Nasvet:</strong> Za preizkušanje svojega novega CSS/JS pred shranjevanjem uporabite gumb ''Prikaži predogled''.",
 'usercsspreview'            => "'''OPOZORILO: svoj uporabniški CSS le predogledujete in ga še niste shranili!'''",
 'userjspreview'             => "'''Svoj uporabniški Javascript le predogledujete in še ni shranjen!'''",
-'userinvalidcssjstitle'     => "'''Opozorilo:''' koža »$1« ne obstaja. Vedite, da .css in .js strani po meri uporabljajo naslov z malo začetnico, npr. User:Blabla/monobook.css namesto User:Blabla/Monobook.css.",
+'userinvalidcssjstitle'     => "'''Opozorilo:''' koža »$1« ne obstaja. Vedite, da .css in .js strani po meri uporabljajo naslov z malo začetnico, npr. {{ns:user}}:Blabla/monobook.css namesto {{ns:user}}:Blabla/Monobook.css.",
 'updated'                   => '(Posodobljeno)',
 'note'                      => '<strong>Opomba:</strong>',
 'previewnote'               => '<strong>Stran le predogledujete in še ni shranjena!</strong>',
@@ -696,9 +687,9 @@ Neoznačene skupine ne bodo spremenjene. Skupino lahko odznačite z levim klikom
 'group-sysop-member'      => 'Administrator',
 'group-bureaucrat-member' => 'Birokrat',
 
-'grouppage-bot'        => 'Project:Boti',
-'grouppage-sysop'      => 'Project:Administratorji',
-'grouppage-bureaucrat' => 'Project:Birokrati',
+'grouppage-bot'        => '{{ns:project}}:Boti',
+'grouppage-sysop'      => '{{ns:project}}:Administratorji',
+'grouppage-bureaucrat' => '{{ns:project}}:Birokrati',
 
 # User rights log
 'rightslog'      => 'Dnevnik_uporabniških_pravic',
@@ -1230,7 +1221,7 @@ Ciljna stran »[[$1]]« že obstaja. Ali jo želite, da bi pripravili prostor za
 'allmessagescurrent'        => 'Trenutno besedilo',
 'allmessagestext'           => 'Navedena so v imenskem prostoru MediaWiki dostopna sistemska sporočila. Urejajo jih lahko [[{{MediaWiki:Grouppage-sysop}}|administratorji]] in drugi sodelavci z vzdrževalnimi pravicami.',
 'allmessagesnotsupportedUI' => "Vašega trenutnega jezika vmesnika ('''$1''') [[Special:Allmessages]] spletišča ne podpirajo.",
-'allmessagesnotsupportedDB' => 'Ker je wgUseDatabaseMessages izključeno, Special:Allmessages ni podprto.',
+'allmessagesnotsupportedDB' => 'Ker je wgUseDatabaseMessages izključeno, {{ns:special}}:Allmessages ni podprto.',
 'allmessagesfilter'         => 'Filter pogostih izrazov:',
 'allmessagesmodified'       => 'Prikaži le spremenjeno',
 

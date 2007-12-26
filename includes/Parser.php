@@ -380,14 +380,14 @@ class Parser
 		wfRunHooks( 'ParserAfterTidy', array( &$this, &$text ) );
 
 		# Information on include size limits, for the benefit of users who try to skirt them
-		if ( max( $this->mIncludeSizes ) > 1000 ) {
+		if ( $this->mOptions->getEnableLimitReport() ) {
 			$max = $this->mOptions->getMaxIncludeSize();
-			$text .= "<!-- \n" .
-				"Preprocessor node count: {$this->mPPNodeCount}\n" .
-				"Post-expand include size: {$this->mIncludeSizes['post-expand']} bytes\n" .
-				"Template argument size: {$this->mIncludeSizes['arg']} bytes\n" .
-				"Maximum: $max bytes\n" .
-				"-->\n";
+			$limitReport = 
+				"Preprocessor node count: {$this->mPPNodeCount}/{$this->mOptions->mMaxPPNodeCount}\n" .
+				"Post-expand include size: {$this->mIncludeSizes['post-expand']}/$max bytes\n" .
+				"Template argument size: {$this->mIncludeSizes['arg']}/$max bytes\n";
+			wfRunHooks( 'ParserLimitReport', array( $this, &$limitReport ) );
+			$text .= "\n<!-- \n$limitReport-->\n";
 		}
 		$this->mOutput->setText( $text );
 		$this->mRevisionId = $oldRevisionId;
@@ -593,6 +593,7 @@ class Parser
 	function insertStripItem( $text ) {
 		static $n = 0;
 		$rnd = "{$this->mUniqPrefix}-item-$n-{$this->mMarkerSuffix}";
+		++$n;
 		$this->mStripState->general->setPair( $rnd, $text );
 		return $rnd;
 	}
@@ -685,7 +686,7 @@ class Parser
 	 * @static
 	 */
 	function internalTidy( $text ) {
-		global $wgTidyConf, $IP;
+		global $wgTidyConf, $IP, $wgDebugTidy;
 		$fname = 'Parser::internalTidy';
 		wfProfileIn( $fname );
 
@@ -699,6 +700,12 @@ class Parser
 		} else {
 			$cleansource = tidy_get_output( $tidy );
 		}
+		if ( $wgDebugTidy && $tidy->getStatus() > 0 ) {
+			$cleansource .= "<!--\nTidy reports:\n" . 
+				str_replace( '-->', '--&gt;', $tidy->errorBuffer ) . 
+				"\n-->";
+		}
+
 		wfProfileOut( $fname );
 		return $cleansource;
 	}
@@ -3025,7 +3032,7 @@ class Parser
 
 		$dom = $this->preprocessToDom( $text );
 		$flags = $argsOnly ? PPFrame::NO_TEMPLATES : 0;
-		$text = $frame->expand( $dom, 0, $flags );
+		$text = $frame->expand( $dom, $flags );
 
 		wfProfileOut( $fname );
 		return $text;
@@ -3329,7 +3336,7 @@ class Parser
 				# Just replace the arguments, not any double-brace items
 				# This is used for rendered interwiki transclusion
 				if ( $isDOM ) {
-					$text = $newFrame->expand( $text, 0, PPFrame::NO_TEMPLATES );
+					$text = $newFrame->expand( $text, PPFrame::NO_TEMPLATES );
 				} else {
 					$text = $this->replaceVariables( $text, $newFrame, true );
 				}
@@ -3337,7 +3344,7 @@ class Parser
 				$text = $frame->expand( $text );
 			}
 		} elseif ( $isDOM ) {
-			$text = $frame->expand( $text, 0, PPFrame::NO_TEMPLATES | PPFrame::NO_ARGS );
+			$text = $frame->expand( $text, PPFrame::NO_TEMPLATES | PPFrame::NO_ARGS );
 		}
 
 		# Prune lower levels off the recursion check path
@@ -4141,18 +4148,27 @@ class Parser
 	 * @return string Signature text
 	 */
 	function cleanSig( $text, $parsing = false ) {
-		global $wgTitle;
-		$this->startExternalParse( $wgTitle, new ParserOptions(), $parsing ? OT_WIKI : OT_MSG );
+		if ( !$parsing ) {
+			global $wgTitle;
+			$this->startExternalParse( $wgTitle, new ParserOptions(), OT_MSG );
+		}
 
+		# FIXME: regex doesn't respect extension tags or nowiki
+		#  => Move this logic to braceSubstitution()
 		$substWord = MagicWord::get( 'subst' );
 		$substRegex = '/\{\{(?!(?:' . $substWord->getBaseRegex() . '))/x' . $substWord->getRegexCase();
 		$substText = '{{' . $substWord->getSynonym( 0 );
 
 		$text = preg_replace( $substRegex, $substText, $text );
 		$text = $this->cleanSigInSig( $text );
-		$text = $this->replaceVariables( $text );
+		$dom = $this->preprocessToDom( $text );
+		$frame = new PPFrame( $this );
+		$text = $frame->expand( $dom->documentElement );
 
-		$this->clearState();
+		if ( !$parsing ) {
+			$text = $this->mStripState->unstripBoth( $text );
+		}
+
 		return $text;
 	}
 
@@ -4956,7 +4972,7 @@ class Parser
 					$curIndex++;
 				}
 				if ( $mode == 'replace' ) {
-					$outText .= $frame->expand( $node );
+					$outText .= $frame->expand( $node, PPFrame::RECOVER_ORIG );
 				}
 				$node = $node->nextSibling;
 			}
@@ -4984,7 +5000,7 @@ class Parser
 				}
 			}
 			if ( $mode == 'get' ) {
-				$outText .= $frame->expand( $node );
+				$outText .= $frame->expand( $node, PPFrame::RECOVER_ORIG );
 			}
 			$node = $node->nextSibling;
 		} while ( $node );
@@ -4996,7 +5012,7 @@ class Parser
 			// stripped by the editor, so we need both newlines to restore the paragraph gap
 			$outText .= $newText . "\n\n";
 			while ( $node ) {
-				$outText .= $frame->expand( $node );
+				$outText .= $frame->expand( $node, PPFrame::RECOVER_ORIG );
 				$node = $node->nextSibling;
 			}
 		}
@@ -5218,6 +5234,7 @@ class PPFrame {
 
 	const NO_ARGS = 1;
 	const NO_TEMPLATES = 2;
+	const RECOVER_ORIG = 3;
 
 	/**
 	 * Construct a new preprocessor frame.
@@ -5266,7 +5283,7 @@ class PPFrame {
 	 * using the current context
 	 * @param $root the node
 	 */
-	function expand( $root, $shallowFlags = 0, $deepFlags = 0 ) {
+	function expand( $root, $flags = 0 ) {
 		if ( is_string( $root ) ) {
 			return $root;
 		}
@@ -5276,17 +5293,16 @@ class PPFrame {
 		{
 			return $this->parser->insertStripItem( '<!-- node-count limit exceeded -->' );
 		}
-		$flags = $shallowFlags | $deepFlags;
 
 		if ( is_array( $root ) ) {
 			$s = '';
 			foreach ( $root as $node ) {
-				$s .= $this->expand( $node, 0, $deepFlags );
+				$s .= $this->expand( $node, $flags );
 			}
 		} elseif ( $root instanceof DOMNodeList ) {
 			$s = '';
 			foreach ( $root as $node ) {
-				$s .= $this->expand( $node, 0, $deepFlags );
+				$s .= $this->expand( $node, $flags );
 			}
 		} elseif ( $root instanceof DOMNode ) {
 			if ( $root->nodeType == XML_TEXT_NODE ) {
@@ -5298,7 +5314,7 @@ class PPFrame {
 				$title = $titles->item( 0 );
 				$parts = $xpath->query( 'part', $root );
 				if ( $flags & self::NO_TEMPLATES ) {
-					$s = '{{' . $this->implodeWithFlags( '|', 0, $deepFlags, $title, $parts ) . '}}';
+					$s = '{{' . $this->implodeWithFlags( '|', $flags, $title, $parts ) . '}}';
 				} else {
 					$lineStart = $root->getAttribute( 'lineStart' );
 					$params = array( 
@@ -5315,7 +5331,7 @@ class PPFrame {
 				$title = $titles->item( 0 );
 				$parts = $xpath->query( 'part', $root );
 				if ( $flags & self::NO_ARGS || $this->parser->ot['msg'] ) {
-					$s = '{{{' . $this->implode( '|', 0, $deepFlags, $title, $parts ) . '}}}';
+					$s = '{{{' . $this->implodeWithFlags( '|', $flags, $title, $parts ) . '}}}';
 				} else {
 					$params = array( 'title' => $title, 'parts' => $parts, 'text' => 'FIXME' );
 					$s = $this->parser->argSubstitution( $params, $this );
@@ -5336,7 +5352,7 @@ class PPFrame {
 				$s = $this->parser->extensionSubstitution( $params, $this );
 			} elseif ( $root->nodeName == 'h' ) {
 				# Heading
-				$s = $this->expand( $root->childNodes, 0, $deepFlags );
+				$s = $this->expand( $root->childNodes, $flags );
 
 				if ( $this->parser->ot['html'] ) {
 					# Insert heading index marker
@@ -5346,21 +5362,7 @@ class PPFrame {
 					$serial = count( $this->parser->mHeadings ) - 1;
 					$marker = "{$this->parser->mUniqPrefix}-h-$serial-{$this->parser->mMarkerSuffix}";
 					$count = $root->getAttribute( 'level' );
-
-					// FIXME: bug-for-bug with old parser
-					// Lose whitespace for no apparent reason
-					// Remove this after differential testing is done
-					if ( true ) {
-						// Good version
-						$s = substr( $s, 0, $count ) . $marker . substr( $s, $count );
-					} else {
-						// Bad version
-						if ( preg_match( '/^(={1,6})(.*?)(={1,6})\s*?$/', $s, $m ) ) {
-							if ( $m[2] != '' ) {
-								$s = $m[1] . $marker . $m[2] . $m[3];
-							}
-						}
-					}
+					$s = substr( $s, 0, $count ) . $marker . substr( $s, $count );
 					$this->parser->mStripState->general->setPair( $marker, '' );
 				}
 			} else {
@@ -5370,7 +5372,7 @@ class PPFrame {
 					if ( $node->nodeType == XML_TEXT_NODE ) {
 						$s .= $node->nodeValue;
 					} elseif ( $node->nodeType == XML_ELEMENT_NODE ) {
-						$s .= $this->expand( $node, 0, $deepFlags );
+						$s .= $this->expand( $node, $flags );
 					}
 				}
 			}
@@ -5380,8 +5382,8 @@ class PPFrame {
 		return $s;
 	}
 
-	function implodeWithFlags( $sep, $shallowFlags, $deepFlags /*, ... */ ) {
-		$args = array_slice( func_get_args(), 3 );
+	function implodeWithFlags( $sep, $flags /*, ... */ ) {
+		$args = array_slice( func_get_args(), 2 );
 
 		$first = true;
 		$s = '';
@@ -5395,7 +5397,7 @@ class PPFrame {
 				} else {
 					$s .= $sep;
 				}
-				$s .= $this->expand( $node, $shallowFlags, $deepFlags );
+				$s .= $this->expand( $node, $flags );
 			}
 		}
 		return $s;
@@ -5403,8 +5405,24 @@ class PPFrame {
 
 	function implode( $sep /*, ... */ ) {
 		$args = func_get_args();
-		$args = array_merge( array_slice( $args, 0, 1 ), array( 0, 0 ), array_slice( $args, 1 ) );
+		$args = array_merge( array_slice( $args, 0, 1 ), array( 0 ), array_slice( $args, 1 ) );
 		return call_user_func_array( array( $this, 'implodeWithFlags' ), $args );
+	}
+
+	/**
+	 * Split an <arg> or <template> node into a three-element array: 
+	 *    DOMNode name, string index and DOMNode value
+	 */
+	function splitBraceNode( $node ) {
+		$xpath = new DOMXPath( $arg->ownerDocument );
+		$names = $xpath->query( 'name', $node );
+		$values = $xpath->query( 'value', $node );
+		if ( !$names->length || !$values->length ) {
+			throw new MWException( 'Invalid brace node passed to ' . __METHOD__ );
+		}
+		$name = $names->item( 0 );
+		$index = $name->getAttribute( 'index' );
+		return array( $name, $index, $values->item( 0 ) );
 	}
 
 	function __toString() {

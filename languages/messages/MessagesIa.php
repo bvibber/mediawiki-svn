@@ -3,6 +3,7 @@
  *
  * @addtogroup Language
  */
+
 $skinNames = array(
 	'cologneblue' => 'Blau Colonia',
 );
@@ -28,7 +29,6 @@ $namespaceNames = array(
 	NS_CATEGORY_TALK  => 'Discussion_Categoria'
 );
 $linkTrail = "/^([a-z]+)(.*)\$/sD";
-
 
 $messages = array(
 # User preference toggles
@@ -118,17 +118,17 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'A proposito de {{SITENAME}}',
-'aboutpage'         => '{{ns:project}}:A_proposito',
+'aboutpage'         => 'Project:A_proposito',
 'bugreports'        => 'Reportos de disfunctiones',
-'bugreportspage'    => '{{ns:project}}:Reportos_de_disfunctiones',
+'bugreportspage'    => 'Project:Reportos_de_disfunctiones',
 'copyrightpagename' => '{{SITENAME}} e derectos de autor (copyright)',
 'copyrightpage'     => '{{ns:project}}:Copyright',
 'currentevents'     => 'Actualitates',
 'edithelp'          => 'Adjuta al edition',
-'edithelppage'      => '{{ns:project}}:Como_editar_un_pagina',
+'edithelppage'      => 'Help:Como_editar_un_pagina',
 'faq'               => 'Questiones frequente',
-'faqpage'           => '{{ns:project}}:Questiones_frequente',
-'helppage'          => '{{ns:project}}:Adjuta',
+'faqpage'           => 'Project:Questiones_frequente',
+'helppage'          => 'Help:Adjuta',
 'mainpage'          => 'Frontispicio',
 
 'ok'              => 'OK',
@@ -718,5 +718,3 @@ nove titulo. Per favor fusiona los manualmente.',
 'mw_math_mathml' => 'MathML',
 
 );
-
-

@@ -806,6 +806,12 @@ $wgMsgCacheExpiry	= 86400;
  */
 $wgMaxMsgCacheEntrySize = 10000;
 
+/**
+ * Set to false if you are thorough system admin who always remembers to keep
+ * serialized files up to date to save few mtime calls.
+ */
+$wgCheckSerialized = true;
+
 # Whether to enable language variant conversion.
 $wgDisableLangConversion = false;
 
@@ -1072,6 +1078,7 @@ $wgGroupPermissions['bot'  ]['autoconfirmed']   = true;
 $wgGroupPermissions['bot'  ]['nominornewtalk']  = true;
 $wgGroupPermissions['bot'  ]['autopatrol']      = true;
 $wgGroupPermissions['bot'  ]['suppressredirect'] = true;
+$wgGroupPermissions['bot'  ]['apihighlimits']   = true;
 
 // Most extra permission abilities go to this group
 $wgGroupPermissions['sysop']['block']           = true;
@@ -1099,6 +1106,7 @@ $wgGroupPermissions['sysop']['ipblock-exempt']	= true;
 $wgGroupPermissions['sysop']['blockemail']      = true;
 $wgGroupPermissions['sysop']['markbotedits']	= true;
 $wgGroupPermissions['sysop']['suppressredirect'] = true;
+$wgGroupPermissions['sysop']['apihighlimits']   = true;
 #$wgGroupPermissions['sysop']['mergehistory']    = true;
 
 // Permission to change users' group assignments
@@ -1881,6 +1889,12 @@ $wgTidyBin = 'tidy';
 $wgTidyConf = $IP.'/includes/tidy.conf';
 $wgTidyOpts = '';
 $wgTidyInternal = extension_loaded( 'tidy' );
+
+/**
+ * Put tidy warnings in HTML comments
+ * Only works for internal tidy.
+ */
+$wgDebugTidy = false;
 
 /** See list of skins and their symbolic names in languages/Language.php */
 $wgDefaultSkin = 'monobook';

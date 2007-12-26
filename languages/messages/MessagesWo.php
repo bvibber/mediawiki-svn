@@ -6,6 +6,7 @@
  * @author Ibou
  * @author SF-Language
  * @author Siebrand
+ * @author SPQRobin
  */
 
 $fallback = 'fr';
@@ -192,23 +193,23 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Maanaam ci {{SITENAME}}',
-'aboutpage'         => '{{ns:4}}:Maanaam ci',
+'aboutpage'         => 'Project:Maanaam ci',
 'bugreports'        => 'Ngértey njuumte yi',
-'bugreportspage'    => '{{ns:4}}:Ngértey njuumte',
+'bugreportspage'    => 'Project:Ngértey njuumte',
 'copyright'         => 'Ndef gi jàppandi na ci $1.',
 'currentevents'     => 'Luy xew',
-'currentevents-url' => 'Luy xew',
+'currentevents-url' => 'Project:Luy xew',
 'disclaimers'       => 'Ay aartu',
-'disclaimerpage'    => 'Sémb:Aartu yu daj',
+'disclaimerpage'    => 'Project:Aartu yu daj',
 'edithelp'          => 'Ndimbal',
-'edithelppage'      => '{{ns:help}}:Nooy soppee aw xët',
-'helppage'          => '{{ns:help}}:Ndimbal',
+'edithelppage'      => 'Help:Nooy soppee aw xët',
+'helppage'          => 'Help:Ndimbal',
 'mainpage'          => 'Xët wu njëkk',
-'policy-url'        => 'Sémb:policy',
+'policy-url'        => 'Project:Policy',
 'portal'            => 'Askan',
-'portal-url'        => '{{ns:4}}:Xët wu njëkk',
+'portal-url'        => 'Project:Xët wu njëkk',
 'sitesupport'       => 'Joxe ag ndimbal',
-'sitesupport-url'   => '{{ns:project}}:Joxe ag ndimbal',
+'sitesupport-url'   => 'Project:Joxe ag ndimbal',
 
 'badaccess'        => 'Njuumte ci ndigël gi',
 'badaccess-group0' => 'Amoo ay sañ-sañ yu doy ngir man a def li nga bëgg a def.',

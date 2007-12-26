@@ -237,7 +237,7 @@ $messages = array(
 'bugreportspage'    => 'Project:ანგარიში შეცდომის შესახებ',
 'copyright'         => 'შინაარსი წარმოდგენილია <a class=\'internal\' href="/wiki/GFDL">GFDL</a> ლიცენზიის თანახმად.<br />ვიკიპედია<sup>®</sup> კორპ. ფონდი ვიკიმედიის რეგისტრირებული საფირმო ნიშანია.<br />',
 'copyrightpagename' => 'ვიკიპედია საავტორო უფლებები',
-'copyrightpage'     => 'ვიკიპედია:საავტორო უფლებები',
+'copyrightpage'     => '{{ns:project}}:საავტორო უფლებები',
 'currentevents'     => 'მიმდინარე მოვლენები',
 'currentevents-url' => 'Project:მიმდინარე მოვლენები',
 'disclaimers'       => 'პასუხისმგებლობის მოხსნა',
@@ -248,7 +248,6 @@ $messages = array(
 'faqpage'           => 'Project:ხშირი შეკითხვები',
 'helppage'          => 'Help:დახმარება',
 'mainpage'          => 'მთავარი გვერდი',
-'policy-url'        => 'Project:Policy',
 'portal'            => 'საზოგადოების გვერდები',
 'portal-url'        => 'Project:საზოგადოების გვერდები',
 'privacy'           => 'ანონიმურობის პოლიტიკა',
@@ -568,7 +567,7 @@ $1 საათში.',
 'nonunicodebrowser'         => '<strong>გაფრთხილება: თქვენი ბრაუზერი უნიკოდთან თავსებადი არ არის. ჩვენ ვცდილობთ ამ პრობლემის გადაჭრას, რათა თქვენ შეძლოთ უსაფრთხოდ შეიტანოთ ცვლილებები გვერდებზე: არა-ASCII ნიშნები რედაქტირების ფანჯარაში გამოჩნდება როგორც ჰექსადეციმალური კოდები.</strong>',
 'editingold'                => '<strong>ყურადღება: თქვენ ამუშავებთ ამ გვერდის მოძველებულ ვერსიას. გვერდის შენახვის შემდეგ მომდევნო ვერსიებში გაკეთებული ცვლილებები დაიკარგება.</strong>',
 'yourdiff'                  => 'განსხვავებები',
-'copyrightwarning'          => 'ყურადღება მიაქციეთ, რომ ნებისმიერი წვლილი გვერდზე {{SITENAME}} ითვლება გაცემულად $2 ლიცენზიის თანახმად (იხ. $1 დეტალებისთვის). თუ არ გსურთ თქვენი ნამუშევარი თავისუფლად გავრცელდეს და მისი დაუნდობელი რედაქტირება მოხდეს, მაშინ ნუ შეიყვანთ მას აქ.<br/>
+'copyrightwarning'          => 'ყურადღება მიაქციეთ, რომ ნებისმიერი წვლილი გვერდზე {{SITENAME}} ითვლება გაცემულად $2 ლიცენზიის თანახმად (იხ. $1 დეტალებისთვის). თუ არ გსურთ თქვენი ნამუშევარი თავისუფლად გავრცელდეს და მისი დაუნდობელი რედაქტირება მოხდეს, მაშინ ნუ შეიყვანთ მას აქ.<br />
 თქვენ ასევე პირობას დებთ, რომ ეს თქვენი საკუთარი დაწერილია, ან გადმოღებულია საზოგადოებრივი დომენიდან, ან მსგავსი თავისუფალი წყაროდან.
 <strong>ნუ შეიტანთ საავტორო უფლებებით დაცულ ნაშრომს ავტორის თანხმობის გარეშე!</strong>',
 'copyrightwarning2'         => '*ნებისმიერი წვლილი {{SITENAME}}-ში შეიძლება ჩასწორდეს, შეიცვალოს და წაიშალოს სხვა რედაქტორების მიერ. 
@@ -767,9 +766,9 @@ $1 საათში.',
 'group-sysop-member'         => 'ადმინისტრატორი',
 'group-bureaucrat-member'    => 'ბიუროკრატი',
 
-'grouppage-bot'        => 'ვიკიპედია:რობოტები',
-'grouppage-sysop'      => 'ვიკიპედია:ადმინისტრატორები',
-'grouppage-bureaucrat' => 'ვიკიპედია:ბიუროკრატები',
+'grouppage-bot'        => '{{ns:project}}:რობოტები',
+'grouppage-sysop'      => '{{ns:project}}:ადმინისტრატორები',
+'grouppage-bureaucrat' => '{{ns:project}}:ბიუროკრატები',
 
 # User rights log
 'rightsnone' => '(არცერთი)',
@@ -908,13 +907,6 @@ $1 საათში.',
 'imagelinks'                => 'ბმულები',
 'linkstoimage'              => 'მომდევნო გვერდები ებმის ამ ფაილს:',
 'nolinkstoimage'            => 'არ არსებობს ამ ფაილთან დაკავშირებული გვერდები.',
-'sharedupload'              => "<br clear=both>
-{| align=center border=0 cellpadding=3 cellspacing=3 style=\"border: solid #aaa 1px; background: #f9f9f9; font-size: 100%;\"
-|- 
-| [[Image:Commons-logo.svg|20px|Wikimedia Commons Logo]]
-|align=center |ეს ფაილი მდებარეობს [[Commons:Main Page|Wikimedia Commons]] სერვერზე.<br>იხილეთ მისი '''[[Commons:Image:{{PAGENAME}}|აღწერის გვერდი]]''' <!--on the Commons-->იქვე ლიცენზიაზე ინფორმაციისთვის. 
-|}
-<br>",
 'shareduploadwiki'          => 'გთხოვთ, იხილოთ $1 შემდგომი ინფორმაციის მისაღებად.',
 'shareduploadwiki-linktext' => 'ფაილის აღწერის გვერდი',
 'noimage'                   => 'ამ სახელის მქონე ფაილი არ არსებობს, თქვენ შეგიძლიათ $1.',
@@ -1325,8 +1317,8 @@ $NEWPAGE
 'ipbotherreason'           => 'სხვა/დამატებითი მიზეზი:',
 'badipaddress'             => 'არასწორი IP მისამართი',
 'blockipsuccesssub'        => 'ბლოკირება შესრულებულია',
-'blockipsuccesstext'       => '[[{{ns:Special}}:Contributions/$1|$1]] ბლოკირებულ იქნა.
-<br />იხილეთ [[{{ns:Special}}:Ipblocklist|ბლოკირებული IP მისამართების სია]].',
+'blockipsuccesstext'       => '[[{{ns:special}}:Contributions/$1|$1]] ბლოკირებულ იქნა.
+<br />იხილეთ [[{{ns:special}}:Ipblocklist|ბლოკირებული IP მისამართების სია]].',
 'ipb-edit-dropdown'        => 'დაბლოკვის მიზეზების რედაქტირება',
 'ipb-unblock-addr'         => 'ბლოკის მოხსნა $1',
 'ipb-unblock'              => 'მომხმარებლის სახელზე ან IP მისამართზე ბლოკის მოხსნა',
@@ -1424,7 +1416,7 @@ $NEWPAGE
 'allmessagesdefault'        => 'სტანდარტული ტექსტი',
 'allmessagescurrent'        => 'მიმდინარე ტექსტი',
 'allmessagestext'           => 'ეს არის სახელთა სივრცე მედიავიკიში არსებული სისტემური შეტყობინებების ჩამონათვალი.',
-'allmessagesnotsupportedDB' => 'სპეციალური:AllMessages-ის უზრუნველყოფა არ ხდება, ვინაიდან wgUseDatabaseMessages გამორთულია.',
+'allmessagesnotsupportedDB' => '{{ns:special}}:AllMessages-ის უზრუნველყოფა არ ხდება, ვინაიდან wgUseDatabaseMessages გამორთულია.',
 'allmessagesfilter'         => 'შეტყობინების სახელის გაფილტვრა:',
 'allmessagesmodified'       => 'აჩვენე მხოლოდ შეცვლილი',
 
