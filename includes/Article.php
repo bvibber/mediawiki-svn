@@ -1923,11 +1923,15 @@ class Article {
 	 */
 	function delete() {
 		global $wgUser, $wgOut, $wgRequest;
+
 		$confirm = $wgRequest->wasPosted() &&
-			$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) );
-		$this->DeleteReasonList = $wgRequest->getText( 'wpDeleteReasonList' );
+				$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) );
+		
+		$this->DeleteReasonList = $wgRequest->getText( 'wpDeleteReasonList', 'other' );
 		$this->DeleteReason = $wgRequest->getText( 'wpReason' );
+		
 		$reason = $this->DeleteReasonList;
+		
 		if ( $reason != 'other' && $this->DeleteReason != '') {
 			// Entry from drop down menu + additional comment
 			$reason .= ': ' . $this->DeleteReason;
@@ -2084,7 +2088,7 @@ class Article {
 		$wgOut->addHTML( "
 <form id='deleteconfirm' method='post' action=\"{$formaction}\">
 	<table border='0'>
-		<tr>
+		<tr id=\"wpDeleteReasonListRow\" name=\"wpDeleteReasonListRow\">
 			<td align='right'>
 				$delcom:
 			</td>
@@ -2094,7 +2098,7 @@ class Article {
 				</select>
 			</td>
 		</tr>
-		<tr>
+		<tr id=\"wpDeleteReasonRow\" name=\"wpDeleteReasonRow\">
 			<td>
 				$mDeletereasonother
 			</td>

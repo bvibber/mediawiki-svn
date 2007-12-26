@@ -4,13 +4,13 @@
  * @addtogroup Language
  *
  * @author Mana
- * @author G - ג
  * @author Shushruth
  * @author HPN
  * @author Nike
  * @author Hari Prasad Nadig <hpnadig@gmail.com> http://en.wikipedia.org/wiki/User:Hpnadig
  * @author Ashwath Mattur <ashwatham@gmail.com> http://en.wikipedia.org/wiki/User:Ashwatham
  * @author Siebrand
+ * @author לערי ריינהארט
  */
 
 $namespaceNames = array(
@@ -251,6 +251,7 @@ $1',
 'cannotdelete'       => 'ಈ ಪುಟ ಅಥವಾ ಚಿತ್ರವನ್ನು ಅಳಿಸಲಾಗಲಿಲ್ಲ. (ಬೇರೊಬ್ಬ ಸದಸ್ಯರಿಂದ ಆಗಲೇ ಅಳಿಸಲ್ಪಟ್ಟಿರಬಹುದು.)',
 'badtitle'           => 'ಸರಿಯಿಲ್ಲದ ಹೆಸರು',
 'viewsource'         => 'ಆಕರ ವೀಕ್ಷಿಸು',
+'protectedpagetext'  => 'ಈ ಪುಟವನ್ನು ಸಂಪಾದನೆ ಮಾಡಲಾಗದಂತೆ ಸಂರಕ್ಷಿಸಲಾಗಿದೆ.',
 
 # Login and logout pages
 'logouttitle'                => 'ಸದಸ್ಯ ಲಾಗೌಟ್',
@@ -275,6 +276,9 @@ $1',
 'nosuchuser'                 => '"$1" ಹೆಸರಿನ ಯಾವ ಸದಸ್ಯರೂ ಇಲ್ಲ.
 ಕಾಗುಣಿತವನ್ನು ಪರೀಕ್ಷಿಸಿ, ಅಥವಾ ಕೆಳಗಿನ ಫಾರ್ಮ್ ಅನ್ನು ಉಪಯೋಗಿಸಿ ಹೊಸ ಸದಸ್ಯತ್ವವನ್ನು ಸೃಷ್ಟಿಸಿ.',
 'mailmypassword'             => 'ಹೊಸ ಪ್ರವೇಶ ಪದವನ್ನು ಇ-ಅಂಚೆ ಮೂಲಕ ಕಳುಹಿಸಿ',
+'noemail'                    => 'ಸದಸ್ಯ "$1" ಅವರ ಹೆಸರಿನಲ್ಲಿ ಯಾವ ಇ-ಅಂಚೆ ವಿಳಾಸವೂ ದಾಖಲಾಗಿಲ್ಲ.',
+'passwordsent'               => '"$1" ಅವರ ಹೆಸರಿನಲ್ಲಿ ನೋಂದಾಯಿತವಾದ ಇ-ಅಂಚೆ ವಿಳಾಸಕ್ಕೆ ಹೊಸ ಪ್ರವೇಶಪದವನ್ನು ಕಳುಹಿಸಲಾಗಿದೆ. 
+ಅದನ್ನು ಪಡೆದ ಮೇಲೆ ಮತ್ತೆ ಲಾಗಿನ್ ಆಗಿ.',
 'acct_creation_throttle_hit' => 'ಕ್ಷಮಿಸಿ, ನೀವಾಗಲೇ $1 ಖಾತೆಗಳನ್ನು ತೆರೆದಿದ್ದೀರಿ. ಇನ್ನು ಖಾತೆಗಳನ್ನು ತೆರೆಯಲಾಗುವುದಿಲ್ಲ.',
 'loginlanguagelabel'         => 'ಭಾಷೆ: $1',
 
@@ -307,7 +311,7 @@ $1',
 ಈ ಪುಟಕ್ಕೆ ನೀವು ತಪ್ಪಾಗಿ ಬಂದಿದ್ದಲ್ಲಿ ನಿಮ್ಮ ಬ್ರೌಸರ್‍ನ '''back''' ಬಟನ್ ಅನ್ನು ಒತ್ತಿ.",
 'noarticletext'            => '(ಈ ಪುಟದಲ್ಲಿ ಸದ್ಯಕ್ಕೆ ಏನೂ ಇಲ್ಲ)',
 'note'                     => '<strong>ಸೂಚನೆ:</strong>',
-'previewnote'              => 'ಇದು ಕೇವಲ ಮುನ್ನೋಟ, ಪುಟವನ್ನು ಇನ್ನೂ ಉಳಿಸಲಾಗಿಲ್ಲ ಎ೦ಬುದನ್ನು ಮರೆಯದಿರಿ!',
+'previewnote'              => '<strong>ಇದು ಕೇವಲ ಮುನ್ನೋಟ; ಪುಟವನ್ನು ಇನ್ನೂ ಉಳಿಸಲಾಗಿಲ್ಲ ಎಂಬುದನ್ನು ಮರೆಯದಿರಿ!</strong>',
 'editing'                  => "'$1' ಲೇಖನ ಬದಲಾಯಿಸಲಾಗುತ್ತಿದೆ",
 'editinguser'              => "'$1' ಲೇಖನ ಬದಲಾಯಿಸಲಾಗುತ್ತಿದೆ",
 'editingsection'           => '$1 (ವಿಭಾಗ) ಅನ್ನು ಸಂಪಾದಿಸುತ್ತಿರುವಿರಿ',
@@ -524,19 +528,25 @@ $1',
 'nextpage'       => 'ಮುಂದಿನ ಪುಟ ($1)',
 'prevpage'       => 'ಹಿಂದಿನ ಪುಟ ($1)',
 'allarticles'    => 'ಎಲ್ಲ ಲೇಖನಗಳು',
+'allpagesprev'   => 'ಹಿಂದಕ್ಕೆ',
+'allpagesnext'   => 'ಮುಂದಕ್ಕೆ',
 'allpagessubmit' => 'ಹೋಗು',
 
 # E-mail user
 'emailuser'       => 'ಈ ಸದಸ್ಯರಿಗೆ ಇ-ಅಂಚೆ ಕಳಿಸಿ',
 'emailpage'       => 'ಸದಸ್ಯರಿಗೆ ವಿ-ಅ೦ಚೆ ಕಳಿಸಿ',
 'defemailsubject' => 'ವಿಕಿಪೀಡಿಯ ವಿ-ಅ೦ಚೆ',
+'noemailtitle'    => 'ಯಾವುದೇ ಇ-ಅಂಚೆ ವಿಳಾಸ ಇಲ್ಲ',
+'noemailtext'     => 'ಈ ಸದಸ್ಯ ಯಾವುದೇ ಇ-ಅಂಚೆ ವಿಳಾಸ ನೀಡಿಲ್ಲ, 
+ಅಥವ ಬೇರೆ ಸದಸ್ಯರಿಂದ ಇ-ಅಂಚೆ ಪಡೆಯಲು ಒಪ್ಪಿಕೊಂಡಿಲ್ಲ.',
 'emailfrom'       => 'ಇಂದ',
 'emailto'         => 'ಗೆ',
 'emailsubject'    => 'ವಿಷಯ',
 'emailmessage'    => 'ಸಂದೇಶ',
 'emailsend'       => 'ಕಳುಹಿಸಿ',
+'emailccme'       => 'ನನ್ನ ಸಂದೇಶದ ಪ್ರತಿಯೊಂದನ್ನು ನನಗೆ ಇ-ಅಂಚೆ ಮೂಲಕ ಕಳಿಸು.',
 'emailsent'       => 'ಇ-ಅಂಚೆ ಕಳುಹಿಸಲಾಯಿತು',
-'emailsenttext'   => 'ನಿಮಗೆ ವಿ-ಅಂಚೆ ಕಳಿಸಲಾಗಿದೆ.',
+'emailsenttext'   => 'ನಿಮ್ಮ ಇ-ಅಂಚೆ ಕಳುಹಿಸಲಾಗಿದೆ.',
 
 # Watchlist
 'watchlist'            => 'ವೀಕ್ಷಣಾ ಪಟ್ಟಿ',
@@ -547,17 +557,29 @@ $1',
 'addedwatchtext'       => '"$1" ಪುಟವನ್ನು ನಿಮ್ಮ [[Special:Watchlist|ವೀಕ್ಷಣಾಪಟ್ಟಿಗೆ]] ಸೇರಿಸಲಾಗಿದೆ. ಈ ಪುಟದ ಮತ್ತು ಇದರ ಚರ್ಚಾ ಪುಟದ ಮುಂದಿನ ಬದಲಾವಣೆಗಳು ವೀಕ್ಷಣಾ ಪಟ್ಟಿಯಲ್ಲಿ ಕಾಣಸಿಗುತ್ತವೆ, ಮತ್ತು [[Special:Recentchanges|ಇತ್ತೀಚೆಗಿನ ಬದಲಾವಣೆಗಳ]] ಪಟ್ಟಿಯಲ್ಲಿ ಈ ಪುಟಗಳನ್ನು ದಪ್ಪಕ್ಷರಗಳಲ್ಲಿ ಕಾಣಿಸಲಾಗುವುದು.
 
 <p>ಈ ಪುಟವನ್ನು ವೀಕ್ಷಣಾ ಪಟ್ಟಿಯಿಂದ ತೆಗೆಯಬಯಸಿದಲ್ಲಿ, ಮೇಲ್ಪಟ್ಟಿಯಲ್ಲಿ ಕಾಣಿಸಿರುವ "ವೀಕ್ಷಣಾ ಪುಟದಿಂದ ತೆಗೆ" ಅನ್ನು ಕ್ಲಿಕ್ಕಿಸಿ.',
+'removedwatch'         => 'ವೀಕ್ಷಣಾಪಟ್ಟಿಯಿಂದ ತೆಗೆಯಲಾಗಿದೆ',
+'removedwatchtext'     => '"[[:$1]]" ಪುಟವನ್ನು ನಿಮ್ಮ ವೀಕ್ಷಣಾಪಟ್ಟಿಯಿಂದ ತೆಗೆಯಲಾಗಿದೆ.',
 'watch'                => 'ವೀಕ್ಷಿಸಿ',
 'watchthispage'        => 'ಈ ಪುಟವನ್ನು ವೀಕ್ಷಿಸಿ',
 'unwatch'              => 'ವೀಕ್ಷಣಾ ಪಟ್ಟಿಯಿಂದ ತೆಗೆ',
+'watchlistcontains'    => 'ನಿಮ್ಮ ವೀಕ್ಷಣಾಪಟ್ಟಿಯಲ್ಲಿ $1 {{PLURAL:$1|ಪುಟ|ಪುಟಗಳು}} ಇವೆ.',
+'wlshowlast'           => 'ಕೊನೆಯ $1 ಗಂಟೆ $2 ದಿನಗಳು $3 ಅನ್ನು ತೋರಿಸು',
 'watchlist-hide-bots'  => 'ಬಾಟ್ ಸಂಪಾದನೆಗಳನ್ನು ಅಡಗಿಸು',
+'watchlist-show-own'   => 'ನನ್ನ ಸಂಪಾದನೆಗಳನ್ನು ತೋರಿಸು',
 'watchlist-hide-own'   => 'ನನ್ನ ಸಂಪಾದನೆಗಳನ್ನು ಅಡಗಿಸು',
+'watchlist-show-minor' => 'ಚಿಕ್ಕಪುಟ್ಟ ಬದಲಾವಣೆಗಳನ್ನು ತೋರಿಸು',
 'watchlist-hide-minor' => 'ಚಿಕ್ಕಪುಟ್ಟ ಬದಲಾವಣೆಗಳನ್ನು ಅಡಗಿಸು',
+
+# Displayed when you click the "watch" button and it's in the process of watching
+'watching'   => 'ವೀಕ್ಷಣೆಗೆ ಸೇರಿಸಲಾಗುತ್ತಿದೆ...',
+'unwatching' => 'ವೀಕ್ಷಣೆಯಿಂದ ತೆಗೆಯಲಾಗುತ್ತಿದೆ...',
 
 'enotif_reset'       => 'ಭೇಟಿಯಿತ್ತ ಎಲ್ಲಾ ಪುಟಗಳನ್ನು ಗುರುತು ಮಾಡಿ',
 'enotif_newpagetext' => 'ಇದೊಂದು ಹೊಸ ಪುಟ.',
 'changed'            => 'ಬದಲಾಯಿಸಲಾಗಿದೆ',
+'created'            => 'ಸೃಷ್ಟಿಸಲ್ಪಟ್ಟಿದೆ',
 'enotif_lastvisited' => 'ನಿಮ್ಮ ಕಳೆದ ಭೇಟಿಯ ನಂತರದ ಎಲ್ಲಾ ಬದಲಾವಣೆಗಳಿಗೆ $1 ನೋಡಿ.',
+'enotif_anon_editor' => 'ಅನಾಮಧೇಯ ಸದಸ್ಯ $1',
 
 # Delete/protect/revert
 'deletepage'        => 'ಪುಟವನ್ನು ಅಳಿಸಿ',
@@ -565,7 +587,7 @@ $1',
 'exblank'           => 'ಪುಟ ಖಾಲಿ ಇತ್ತು',
 'confirmdelete'     => 'ಅಳಿಸುವಿಕೆ ಧೃಡಪಡಿಸು',
 'deletesub'         => '("$1" ಅನ್ನು ಅಳಿಸಲಾಗುತ್ತಿದೆ)',
-'confirmdeletetext' => 'ಪುಟ ಅಥವಾ ಚಿತ್ರ ಮತ್ತು ಅದರ ಸಂಪೂರ್ಣ ಇತಿಹಾಸವನ್ನು ನೀವು ಶಾಶ್ವತವಾಗಿ ಅಳಿಸಿಹಾಕುತ್ತಿದ್ದೀರಿ. ಇದನ್ನು ನೀವು ಮಾಡಬಯಸುವಿರಿ, ಇದರ ಪರಿಣಾಮಗಳನ್ನು ಬಲ್ಲಿರಿ, ಮತ್ತು [[{{MediaWiki:Policy-url}}]] ನ ಅನುಸಾರ ಇದನ್ನು ಮಾಡುತ್ತಿದ್ದೀರಿ ಎಂದು ದೃಢಪಡಿಸಿ.',
+'confirmdeletetext' => 'ಪುಟ ಅಥವಾ ಚಿತ್ರ ಮತ್ತು ಅದರ ಸಂಪೂರ್ಣ ಇತಿಹಾಸವನ್ನು ನೀವು ಶಾಶ್ವತವಾಗಿ ಅಳಿಸಿಹಾಕುತ್ತಿದ್ದೀರಿ. ಇದನ್ನು ನೀವು ಮಾಡಬಯಸುವಿರಿ, ಇದರ ಪರಿಣಾಮಗಳನ್ನು ಬಲ್ಲಿರಿ, ಮತ್ತು [[{{MediaWiki:Policy-url}}]] ಅನುಸಾರ ಇದನ್ನು ಮಾಡುತ್ತಿದ್ದೀರಿ ಎಂದು ದೃಢಪಡಿಸಿ.',
 'actioncomplete'    => 'ಕಾರ್ಯ ಸಂಪೂರ್ಣ',
 'deletedtext'       => '"$1" ಅನ್ನು ಅಳಿಸಲಾಯಿತು.
 ಇತ್ತೀಚೆಗಿನ ಅಳಿಸುವಿಕೆಗಳ ಪಟ್ಟಿಗಾಗಿ $2 ಅನ್ನು ನೋಡಿ.',
@@ -573,8 +595,13 @@ $1',
 'deletionlog'       => 'ಅಳಿಸುವಿಕೆ ದಿನಚರಿ',
 'deletecomment'     => 'ಅಳಿಸುವುದರ ಕಾರಣ',
 'protectlogpage'    => 'ಸಂರಕ್ಷಣೆ ದಿನಚರಿ',
+'protectedarticle'  => '"[[$1]]" ಸಂರಕ್ಷಿಸಲಾಗಿದೆ',
 'confirmprotect'    => 'ಸಂರಕ್ಷಣೆ ಧೃಡಪಡಿಸಿ',
-'protectcomment'    => 'ಸ೦ರಕ್ಷಿಸಲು ಕಾರಣ',
+'protectcomment'    => 'ಸಂರಕ್ಷಿಸಲು ಕಾರಣ:',
+
+# Restriction levels
+'restriction-level-sysop'         => 'ಪೂರ್ಣವಾಗಿ ಸಂರಕ್ಷಿತ',
+'restriction-level-autoconfirmed' => 'ಅರೆ ಸಂರಕ್ಷಿತ',
 
 # Namespace form on various pages
 'blanknamespace' => '(ಮುಖ್ಯ)',
@@ -661,6 +688,9 @@ $1',
 'subcategorycount'     => 'ಒಟ್ಟು $1 ಉಪವಿಭಾಗಗಳು ಈ ವರ್ಗದಡಿ ಇವೆ.',
 'categoryarticlecount' => 'ಈ ವರ್ಗದಲ್ಲಿ {{PLURAL:$1|ಒಂದು ಲೇಖನ| $1 ಲೇಖನಗಳು}} ಇವೆ.',
 'category-media-count' => 'ಈ ವರ್ಗದಲ್ಲಿ {{PLURAL:$1|ಒಂದು ಫೈಲು|$1 ಫೈಲುಗಳು}} ಇವೆ.',
+
+# Info page
+'infosubtitle' => 'ಪುಟದ ಬಗ್ಗೆ ಮಾಹಿತಿ',
 
 # Browsing diffs
 'previousdiff' => '← ಹಿಂದಿನ ವ್ಯತ್ಯಾಸ',

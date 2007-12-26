@@ -388,6 +388,7 @@ $specialPageAliases = array(
 	'Specialpages'              => array( 'Specialpages' ),
 	'Contributions'             => array( 'Contributions' ),
 	'Emailuser'                 => array( 'Emailuser' ),
+	'Confirmemail'              => array( 'Confirmemail' ),
 	'Whatlinkshere'             => array( 'Whatlinkshere' ),
 	'Recentchangeslinked'       => array( 'Recentchangeslinked' ),
 	'Movepage'                  => array( 'Movepage' ),
@@ -414,10 +415,12 @@ $specialPageAliases = array(
 	'Mytalk'                    => array( 'Mytalk' ),
 	'Mycontributions'           => array( 'Mycontributions' ),
 	'Listadmins'                => array( 'Listadmins' ),
+	'Listbots'                  => array( 'Listbots' ),
 	'Popularpages'              => array( 'Popularpages' ),
 	'Search'                    => array( 'Search' ),
 	'Resetpass'                 => array( 'Resetpass' ),
 	'Withoutinterwiki'          => array( 'Withoutinterwiki' ),
+	'MergeHistory'              => array( 'MergeHistory' ),
 );
 
 /**
@@ -1099,7 +1102,6 @@ The deletion log for this page is provided here for convenience:",
 The reason given by $3 is ''$2''",
 
 # History pages
-'revhistory'            => 'Revision history',
 'viewpagelogs'          => 'View logs for this page',
 'nohistory'             => 'There is no edit history for this page.',
 'revnotfound'           => 'Revision not found',
@@ -1200,6 +1202,10 @@ Make sure that this change will maintain historical page continuity.
 'mergehistory-empty'    => 'No revisions can be merged',
 'mergehistory-success'  => '$3 revisions of [[:$1]] successfully merged into [[:$2]].',
 'mergehistory-fail'     => 'Unable to perform history merge, please recheck the page and time parameters.',
+'mergehistory-no-source' => 'Source page $1 does not exist.',
+'mergehistory-no-destination' => 'Destination page $1 does not exist.',
+'mergehistory-invalid-source' => 'Source page must be a valid title.',
+'mergehistory-invalid-destination' => 'Destination page must be a valid title.',
 
 # Merge log
 'mergelog'              => 'Merge log',
@@ -1210,11 +1216,7 @@ Make sure that this change will maintain historical page continuity.
 # Diffs
 'history-title'             => 'Revision history of "$1"',
 'difference'                => '(Difference between revisions)',
-'loadingrev'                => 'loading revision for diff',
 'lineno'                    => 'Line $1:',
-'editcurrent'               => 'Edit the current version of this page',
-'selectnewerversionfordiff' => 'Select a newer version for comparison',
-'selectolderversionfordiff' => 'Select an older version for comparison',
 'compareselectedversions'   => 'Compare selected versions',
 'editundo'                  => 'undo',
 'diff-multi'                => '({{PLURAL:$1|One intermediate revision|$1 intermediate revisions}} not shown.)',
@@ -1393,8 +1395,6 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 'recentchangeslinked-title' => 'Changes related to $1',
 'recentchangeslinked-noresult' => 'No changes on linked pages during the given period.',
 'recentchangeslinked-summary'  => "This special page lists the last changes on pages who are linked. Pages on your watchlist are '''bold'''.",
-'recentchangeslinked-feed-entry' => 'User $1 edited $2',
-'recentchangeslinked-feed-entry-comment' => 'User $1 edited $2 ($3)',
 
 # Upload
 'upload'                      => 'Upload file',
@@ -2950,8 +2950,9 @@ $1',
 'articletitles'    => "Pages starting with ''$1''",
 'hideresults'      => 'Hide results',
 
-# Separator for categories in page lists
-'catseparator' => '|', # don't translate or duplicate this message to other languages
+# Separators for various lists
+'catseparator'        => '|', # don't translate or duplicate this message to other languages
+'semicolon-separator' => ';', # only translate this message to other languages if you have to change it
 
 # Multipage image navigation
 'imgmultipageprev'   => '← previous page',

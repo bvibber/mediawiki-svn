@@ -66,6 +66,17 @@ class ApiMain extends ApiBase {
 		'edit' => 'ApiEditPage',
 		'talk'	=> 'ApiTalk'
 	);
+	
+	private static $WriteModules = array (
+		'rollback' => 'ApiRollback',
+		'delete' => 'ApiDelete',
+		'undelete' => 'ApiUndelete',
+		'protect' => 'ApiProtect',
+		'block' => 'ApiBlock',
+		'unblock' => 'ApiUnblock',
+		'changerights' => 'ApiChangeRights',
+		'move' => 'ApiMove'
+	);
 
 	/**
 	 * List of available formats: format name => format class
@@ -114,8 +125,10 @@ class ApiMain extends ApiBase {
 			}
 		}
 
-		global $wgAPIModules; // extension modules
+		global $wgAPIModules, $wgEnableWriteAPI; // extension modules
 		$this->mModules = $wgAPIModules + self :: $Modules;
+		if($wgEnableWriteAPI)
+			$this->mModules += self::$WriteModules;
 
 		$this->mModuleNames = array_keys($this->mModules); // todo: optimize
 		$this->mFormats = self :: $Formats;
@@ -157,7 +170,7 @@ class ApiMain extends ApiBase {
 	public function requestWriteMode() {
 		if (!$this->mEnableWrite)
 			$this->dieUsage('Editing of this site is disabled. Make sure the $wgEnableWriteAPI=true; ' .
-			'statement is included in the site\'s LocalSettings.php file', 'readonly');
+			'statement is included in the site\'s LocalSettings.php file', 'noapiwrite');
 	}
 
 	/**
@@ -322,9 +335,6 @@ class ApiMain extends ApiBase {
 
 			if ($this->mPrinter->getNeedsRawData())
 				$this->getResult()->setRawMode();
-
-			if( $this->mAction == 'help' )
-				$this->mPrinter->setHelp();
 		}
 
 		// Execute
@@ -436,6 +446,8 @@ class ApiMain extends ApiBase {
 	 * Override the parent to generate help messages for all available modules.
 	 */
 	public function makeHelpMsg() {
+		
+		$this->mPrinter->setHelp();
 
 		// Use parent to make default message for the main module
 		$msg = parent :: makeHelpMsg();

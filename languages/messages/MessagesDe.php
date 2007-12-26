@@ -103,6 +103,7 @@ $specialPageAliases = array(
         'Specialpages'              => array( 'Spezialseiten' ),
         'Contributions'             => array( 'Beiträge' ),
         'Emailuser'                 => array( 'E-Mail' ),
+	'Confirmemail'              => array( 'E-Mail_bestätigen' ),
         'Whatlinkshere'             => array( 'Linkliste', 'Verweisliste' ),
         'Recentchangeslinked'       => array( 'Änderungen_an_verlinkten_Seiten' ),
         'Movepage'                  => array( 'Verschieben' ),
@@ -129,8 +130,10 @@ $specialPageAliases = array(
         'Mytalk'                    => array( 'Meine_Diskussionsseite' ),
         'Mycontributions'           => array( 'Meine_Beiträge' ),
         'Listadmins'                => array( 'Administratoren' ),
+        'Listbots'                  => array( 'Bots' ),
         'Search'                    => array( 'Suche' ),
         'Withoutinterwiki'          => array( 'Fehlende_Interwikis' ),
+        'MergeHistory'              => array( 'Versionsgeschichte_vereinen' ),
 );
 
 $datePreferences = array(
@@ -169,7 +172,7 @@ $dateFormats = array(
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'Links unterstreichen:',
-'tog-highlightbroken'         => 'Links auf leere Seiten hervorheben',
+'tog-highlightbroken'         => 'Links auf leere Seiten hervorheben <a href="" class="new">Beispiel</a> (Alternative: wie dieser<a href="" class="internal">?</a>).',
 'tog-justify'                 => 'Text als Blocksatz',
 'tog-hideminor'               => 'Kleine Änderungen ausblenden',
 'tog-extendwatchlist'         => 'Erweiterte Beobachtungsliste',
@@ -575,10 +578,9 @@ Bevor eine E-Mail von anderen Benutzern über die E-Mail-Funktion empfangen werd
 'accountcreated'             => 'Benutzerkonto erstellt',
 'accountcreatedtext'         => 'Das Benutzerkonto $1 wurde eingerichtet.',
 'createaccount-title'        => 'Erstellung eines Benutzerkontos für {{SITENAME}}',
-'createaccount-text'         => 'Jemand ($1) hat ein Benutzerkonto "$2" auf {{SITENAME}}.
-($4) erstellt. Das Passwort for "$2" ist "$3". Du solltest dich nun anmelden und dein Passwort ändern.
+'createaccount-text'         => 'Jemand ($1) hat für dich ein Benutzerkonto "$2" auf {{SITENAME}} ($4) erstellt. Das automatisch generierte Passwort für "$2" ist "$3". Du solltest dich nun anmelden und das Passwort ändern.
 
-Du kannst diese Nachricht ignorieren, falls das Benutzerkonto durch einen Fehler angelegt wurde.',
+Falls das Benutzerkonto irrtümlich angelegt wurde, kannst du diese Nachricht ignorieren.',
 'loginlanguagelabel'         => 'Sprache: $1',
 
 # Password reset dialog
@@ -687,7 +689,7 @@ Du kannst $1 oder einen der anderen [[{{MediaWiki:Grouppage-sysop}}|Administrato
 'loginreqlink'              => 'anmelden',
 'loginreqpagetext'          => 'Du musst dich $1, um Seiten lesen zu können.',
 'accmailtitle'              => 'Passwort wurde verschickt',
-'accmailtext'               => 'Das Passwort für den [[{{ns:user}}:$1]] wurde an $2 geschickt.',
+'accmailtext'               => 'Das Passwort für den [[User:$1]] wurde an $2 geschickt.',
 'newarticle'                => '(Neu)',
 'newarticletext'            => 'Hier den Text der neuen Seite eintragen. Bitte nur in ganzen Sätzen schreiben und keine urheberrechtsgeschützten Texte anderer kopieren.',
 'anontalkpagetext'          => "---- ''Diese Seite dient dazu, einem nicht angemeldeten Benutzer Nachrichten zu hinterlassen. Wenn du mit den Kommentaren auf dieser Seite nichts anfangen kannst, richten sie sich vermutlich an einen früheren Inhaber deiner IP-Adresse und du kannst sie ignorieren.''",
@@ -764,7 +766,7 @@ Zu Deiner Information folgt das Lösch-Logbuch mit der Begründung für die vorh
 # "Undo" feature
 'undo-success' => 'Die Änderung konnte erfolgreich rückgängig gemacht werden. Bitte die Bearbeitung in der Vergleichsansicht kontrollieren und dann auf „Seite speichern“ klicken, um sie zu speichern.',
 'undo-failure' => '<span class="error">Die Änderung konnte nicht rückgängig gemacht werden, da der betroffene Abschnitt zwischenzeitlich verändert wurde.</span>',
-'undo-summary' => 'Änderung $1 von [[{{ns:special}}:Contributions/$2|$2]] ([[{{ns:user_talk}}:$2|Diskussion]]) wurde rückgängig gemacht.',
+'undo-summary' => 'Änderung $1 von [[{{ns:special}}:Contributions/$2|$2]] ([[User_talk:$2|Diskussion]]) wurde rückgängig gemacht.',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Benutzerkonto kann nicht erstellt werden',
@@ -773,7 +775,6 @@ Zu Deiner Information folgt das Lösch-Logbuch mit der Begründung für die vorh
 Grund der Sperre: ''$2''",
 
 # History pages
-'revhistory'          => 'Frühere Versionen',
 'viewpagelogs'        => 'Logbücher für diese Seite anzeigen',
 'nohistory'           => 'Es gibt keine früheren Versionen dieser Seite.',
 'revnotfound'         => 'Diese Version wurde nicht gefunden.',
@@ -847,21 +848,25 @@ Administratoren können den entfernten Inhalt oder andere entfernte Bestandteile
 'overlogpagetext' => 'Das ist das Logbuch der Löschungen und Sperren, die vor Administratoren versteckt sind.',
 
 # History merging
-'mergehistory'         => 'Versionsgeschichten vereinen',
-'mergehistory-header'  => "Mit dieser Spezialseite kannst du die Versionsgeschichte einer Ursprungsseite mit der Versionsgeschichte einer Zieleite vereinen.
+'mergehistory'                     => 'Versionsgeschichten vereinen',
+'mergehistory-header'              => "Mit dieser Spezialseite kannst du die Versionsgeschichte einer Ursprungsseite mit der Versionsgeschichte einer Zieleite vereinen.
 Stelle dadurch sicher, dass die Versionsgeschichte eines Artikel historisch korrekt ist.
 
 '''Als Minumum muss die aktuelle Version der Ursprungsseite erhalten bleiben.'''",
-'mergehistory-box'     => 'Versionsgeschichten zweier Seiten vereinen',
-'mergehistory-from'    => 'Ursprungsseite:',
-'mergehistory-into'    => 'Zielseite:',
-'mergehistory-list'    => 'Versionen, die vereinigt werden können',
-'mergehistory-merge'   => 'Die folgenden Versionen von „[[:$1]]“ können nach „[[:$2]]“ übertragen werden. Markiere die Version, bis zu der (einschließlich) die Versionen werden sollen. Bitte beachte, dass die Nutzung der Navigationslinks die Auswahl zurücksetzt.',
-'mergehistory-go'      => 'Zeige Versionen, die vereinigt werden können',
-'mergehistory-submit'  => 'Vereinige Versionen',
-'mergehistory-empty'   => 'Es können keine Versionen vereinigt werden',
-'mergehistory-success' => '{{PLURAL:$3|1 Version|$3 Versionen}} von „[[:$1]]“ erfolgreich nach „[[:$2]]“ vereinigt.',
-'mergehistory-fail'    => 'Versionsvereinigung nicht möglich, bitte prüfe die Seite und die Zeitangaben.',
+'mergehistory-box'                 => 'Versionsgeschichten zweier Seiten vereinen',
+'mergehistory-from'                => 'Ursprungsseite:',
+'mergehistory-into'                => 'Zielseite:',
+'mergehistory-list'                => 'Versionen, die vereinigt werden können',
+'mergehistory-merge'               => 'Die folgenden Versionen von „[[:$1]]“ können nach „[[:$2]]“ übertragen werden. Markiere die Version, bis zu der (einschließlich) die Versionen werden sollen. Bitte beachte, dass die Nutzung der Navigationslinks die Auswahl zurücksetzt.',
+'mergehistory-go'                  => 'Zeige Versionen, die vereinigt werden können',
+'mergehistory-submit'              => 'Vereinige Versionen',
+'mergehistory-empty'               => 'Es können keine Versionen vereinigt werden',
+'mergehistory-success'             => '{{PLURAL:$3|1 Version|$3 Versionen}} von „[[:$1]]“ erfolgreich nach „[[:$2]]“ vereinigt.',
+'mergehistory-fail'                => 'Versionsvereinigung nicht möglich, bitte prüfe die Seite und die Zeitangaben.',
+'mergehistory-no-source'           => 'Ursprungsseite „$1“ ist nicht vorhanden.',
+'mergehistory-no-destination'      => 'Zielseite „$1“ ist nicht vorhanden.',
+'mergehistory-invalid-source'      => 'Ursprungsseite muss ein gültiger Seitenname sein.',
+'mergehistory-invalid-destination' => 'Zielseite muss ein gültiger Seitenname sein.',
 
 # Merge log
 'mergelog'           => 'Vereinigungs-Logbuch',
@@ -872,11 +877,7 @@ Stelle dadurch sicher, dass die Versionsgeschichte eines Artikel historisch korr
 # Diffs
 'history-title'             => 'Versionsgeschichte von „$1“',
 'difference'                => '(Unterschied zwischen Versionen)',
-'loadingrev'                => 'Lade Versionen zur Unterscheidung',
 'lineno'                    => 'Zeile $1:',
-'editcurrent'               => 'Die aktuelle Version dieser Seite bearbeiten',
-'selectnewerversionfordiff' => 'Eine neuere Version zum Vergleich auswählen',
-'selectolderversionfordiff' => 'Eine ältere Version zum Vergleich auswählen',
 'compareselectedversions'   => 'Gewählte Versionen vergleichen',
 'editundo'                  => 'rückgängig',
 'diff-multi'                => "<span style='font-size: smaller'>(Der Versionsvergleich bezieht {{plural:$1|eine dazwischen liegende Version|$1 dazwischen liegende Versionen}} mit ein.)</span>",
@@ -1487,7 +1488,7 @@ Um die Einstellungen deiner Beobachtungsliste anzupassen, besuche: {{fullurl:Spe
 'deletepage'                  => 'Seite löschen',
 'confirm'                     => 'Bestätigen',
 'excontent'                   => "Alter Inhalt: '$1'",
-'excontentauthor'             => "Inhalt war: '$1' (einziger Bearbeiter: [[{{ns:user}}:$2|$2]] - [[{{ns:user_talk}}:$2|Diskussion]])",
+'excontentauthor'             => "Inhalt war: '$1' (einziger Bearbeiter: [[User:$2|$2]] - [[User_talk:$2|Diskussion]])",
 'exbeforeblank'               => "Inhalt vor dem Leeren der Seite: '$1'",
 'exblank'                     => 'Seite war leer',
 'confirmdelete'               => 'Löschen bestätigen',
@@ -1514,11 +1515,11 @@ Um die Einstellungen deiner Beobachtungsliste anzupassen, besuche: {{fullurl:Spe
 'rollbacklink'                => 'Zurücksetzen',
 'rollbackfailed'              => 'Zurücksetzen gescheitert',
 'cantrollback'                => 'Die Änderung kann nicht zurückgesetzt werden, da es keine früheren Autoren gibt.',
-'alreadyrolled'               => "Das Zurücksetzen der Änderungen von [[{{ns:user}}:$2|$2]] <span style='font-size: smaller'>([[{{ns:user_talk}}:$2|Diskussion]], 
+'alreadyrolled'               => "Das Zurücksetzen der Änderungen von [[User:$2|$2]] <span style='font-size: smaller'>([[User_talk:$2|Diskussion]], 
 [[{{ns:special}}:Contributions/$2|Beiträge]])</span> an Seite [[:$1]] war nicht erfolgreich, da in der Zwischenzeit bereits ein anderer Benutzer 
-Änderungen an dieser Seite vorgenommen hat.<br />Die letzte Änderung stammt von [[{{ns:user}}:$3|$3]] <span style='font-size: smaller'>([[{{ns:user_talk}}:$3|Diskussion]])</span>.",
+Änderungen an dieser Seite vorgenommen hat.<br />Die letzte Änderung stammt von [[User:$3|$3]] <span style='font-size: smaller'>([[User_talk:$3|Diskussion]])</span>.",
 'editcomment'                 => 'Der Änderungskommentar lautet: „<i>$1</i>“.', # only shown if there is an edit comment
-'revertpage'                  => 'Änderungen von [[{{ns:user}}:$2|$2]] ([[{{ns:special}}:Contributions/$2|Beiträge]]) rückgängig gemacht und letzte Version von $1 wiederhergestellt',
+'revertpage'                  => 'Änderungen von [[User:$2|$2]] ([[{{ns:special}}:Contributions/$2|Beiträge]]) rückgängig gemacht und letzte Version von $1 wiederhergestellt',
 'rollback-success'            => 'Die Änderungen von $1 wurden rückgängig gemacht und die letzte Version von $2 wurde wiederhergestellt.',
 'sessionfailure'              => 'Es gab ein Problem mit deiner Benutzersitzung.
 Diese Aktion wurde aus Sicherheitsgründen abgebrochen, um eine falsche Zuordnung deiner Änderungen zu einem anderen Benutzer zu verhindern.
@@ -1548,6 +1549,7 @@ Bitte gehe zurück und versuche den Vorgang erneut auszuführen.',
 'protect-summary-cascade'     => 'kaskadierend',
 'protect-expiring'            => 'bis $1 (UTC)',
 'protect-cascade'             => 'Kaskadierende Sperre – alle in diese Seite eingebundenen Vorlagen werden ebenfalls gesperrt.',
+'protect-cantedit'            => 'Du kannst die Sperre dieser Seite nicht ändern, da du keine Berechtigung zum Bearbeiten der Seite hast.',
 'restriction-type'            => 'Schutzstatus',
 'restriction-level'           => 'Schutzhöhe',
 'minimum-size'                => 'Mindestgröße:',
@@ -1922,7 +1924,7 @@ Alle Transwiki-Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] p
 'tooltip-save'                    => 'Änderungen speichern',
 'tooltip-preview'                 => 'Vorschau der Änderungen an dieser Seite. Bitte vor dem Speichern benutzen!',
 'tooltip-diff'                    => 'Zeigt Änderungen am Text tabellarisch an',
-'tooltip-compareselectedversions' => 'Unterschiede zwischen zwei ausgewählten Versionen dieser Seite vergleichen.',
+'tooltip-compareselectedversions' => 'Unterschied zwischen zwei ausgewählten Versionen dieser Seite anzeigen.',
 'tooltip-watch'                   => 'Füge diese Seite deiner Beobachtungsliste hinzu',
 'tooltip-recreate'                => 'Seite neu erstellen, obwohl sie gelöscht wurde.',
 'tooltip-upload'                  => 'Hochladen starten',
@@ -2363,7 +2365,7 @@ $1
 'deletedwhileediting' => '<span class="error">Achtung: Diese Seite wurde gelöscht, nachdem du angefangen hast, sie zu bearbeiten! 
 Siehe im [{{fullurl:Special:Log|type=delete&page=}}{{FULLPAGENAMEE}} Lösch-Logbuch] nach, 
 warum die Seite gelöscht wurde. Wenn du die Seite speicherst, wird sie neu angelegt.</span>',
-'confirmrecreate'     => "Benutzer [[{{ns:user}}:$1|$1]] ([[{{ns:user_talk}}:$1|Diskussion]]) hat diese Seite gelöscht, nachdem du angefangen hast, sie zu bearbeiten. Die Begründung lautete:
+'confirmrecreate'     => "Benutzer [[User:$1|$1]] ([[User_talk:$1|Diskussion]]) hat diese Seite gelöscht, nachdem du angefangen hast, sie zu bearbeiten. Die Begründung lautete:
 ''$2''
 Bitte bestätige, dass du diese Seite wirklich neu erstellen möchten.",
 'recreate'            => 'Erneut anlegen',

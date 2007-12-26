@@ -91,6 +91,11 @@ class ApiLogin extends ApiBase {
 			'wpRemember' => ''
 		));
 
+		// Init session if necessary
+		if( session_id() == '' ) {
+			wfSetupSession();
+		}
+
 		$loginForm = new LoginForm($params);
 		switch ($loginForm->authenticateUserData()) {
 			case LoginForm :: SUCCESS :
@@ -104,7 +109,7 @@ class ApiLogin extends ApiBase {
 				$result['lgusername'] = $_SESSION['wsUserName'];
 				$result['lgtoken'] = $_SESSION['wsToken'];
 				$result['cookieprefix'] = $wgCookiePrefix;
-				$result['sessionid'] = $_COOKIE["{$wgCookiePrefix}_session"];
+				$result['sessionid'] = session_id();
 				break;
 
 			case LoginForm :: NO_NAME :

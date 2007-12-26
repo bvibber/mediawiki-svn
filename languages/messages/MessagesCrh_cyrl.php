@@ -1,5 +1,5 @@
 <?php
-/** ‪Къырымтатарджа (Кирилл) (‪Къырымтатарджа (Кирилл))
+/** ‪Къырымтатарджа (Кирилл)‬ (‪Къырымтатарджа (Кирилл)‬)
  *
  * @addtogroup Language
  *
@@ -594,7 +594,6 @@ $2 къулланыджысы ичюн пароль <code>$3</code> оларак
 'template-semiprotected'    => '(къысмен къорчалав алтында)',
 
 # History pages
-'revhistory'          => 'Кечмиш версиялар',
 'viewpagelogs'        => 'Бу саифенинъ журналларыны косьтер',
 'nohistory'           => 'Бу саифенинъ кечмиш версиясы ёкъ.',
 'revnotfound'         => 'Версия тапылмады',
@@ -630,9 +629,9 @@ $2 къулланыджысы ичюн пароль <code>$3</code> оларак
 'revdelete-submit'          => 'Сайлангъан версиягъа ишлет',
 
 # Diffs
+'history-title'           => '$1 саифесининъ денъишиклик тарихы',
 'difference'              => '(Версиялар арасы фаркълар)',
 'lineno'                  => '$1 сатыр:',
-'editcurrent'             => 'Саифенинъ шу аньки версиясыны денъиштир',
 'compareselectedversions' => 'Сайлангъан версияларны къаршылаштыр',
 'editundo'                => 'лягъу эт',
 
@@ -877,8 +876,7 @@ $1<br />$2 ёлланмаларны джедвелле<br />Къыдырылад
 'userstatstext'          => "Шу аньде '''{{PLURAL:$1|1|$1}}''' регистрирленген къулланыджымыз бар. Бунлардан '''{{PLURAL:$2|1|$2}}''' (я да '''$4%''') данеси - $5.",
 'statistics-mostpopular' => 'Энъ сыкъ бакъылгъан саифелер',
 
-'disambiguations'     => 'Чокъ маналы терминлер саифелери',
-'disambiguationspage' => 'Template:disambig',
+'disambiguations' => 'Чокъ маналы терминлер саифелери',
 
 'doubleredirects'     => 'Ёлламагъа олгъан ёлламалар',
 'doubleredirectstext' => 'Эр сатырда, экинджи ёллама метнининъ ильк сатырынынъ (умумен экинджи ёлламанынъ да ишарет этмек керек олгъаны "асыл" макъсатнынъ) янында ильк ве экинджи ёлламагъа багълантылар бар.',
@@ -1135,14 +1133,19 @@ e-mail: $PAGEEDITOR_EMAIL
 'contribsub2'   => '$1 ($2)',
 'nocontribs'    => 'Бу критерийлерге уйгъан денъишиклик тапыламады',
 'uctop'         => '(сонъки)',
+'month'         => 'Бу ай (ве ондан эрте):',
+'year'          => 'Бу сене (ве ондан эрте):',
 
 'sp-contributions-newest'      => 'Энъ янъы',
 'sp-contributions-oldest'      => 'Энъ эски',
 'sp-contributions-newer'       => 'Сонъраки $1',
 'sp-contributions-older'       => 'Эвельки $1',
+'sp-contributions-newbies'     => 'Тек янъы къулланыджыларнынъ исселерини косьтер',
 'sp-contributions-newbies-sub' => 'Янъы къулланыджылар ичюн',
 'sp-contributions-blocklog'    => 'Блок этюв журналы',
+'sp-contributions-search'      => 'Исселер къыдырув',
 'sp-contributions-username'    => 'IP адреси я да къулланыджы ады:',
+'sp-contributions-submit'      => 'Къыдыр',
 
 # What links here
 'whatlinkshere'       => 'Саифеге багълантылар',
@@ -1390,7 +1393,7 @@ e-mail: $PAGEEDITOR_EMAIL
 'exif-model'               => 'Камера модели',
 'exif-artist'              => 'Яратыджысы',
 'exif-colorspace'          => 'Ренк аралыгъы',
-'exif-datetimeoriginal'    => 'Оригинал саат ве тарих',
+'exif-datetimeoriginal'    => 'Оригиналь саат ве тарих',
 'exif-exposuretime'        => 'Экспозиция муддети',
 'exif-exposuretime-format' => '$1 сание ($2)',
 'exif-fnumber'             => 'Диафрагма номерасы',

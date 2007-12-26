@@ -4,9 +4,10 @@
  * @addtogroup Language
  *
  * @author Jon Harald Søby
- * @author G - ג
  * @author Nike
  * @author Teak
+ * @author לערי ריינהארט
+ * @author Siebrand
  */
 
 $skinNames = array(
@@ -447,6 +448,8 @@ Funksjon: $1<br />
 Spørring: $2',
 'viewsource'           => 'Vis kildekode',
 'viewsourcefor'        => 'for $1',
+'actionthrottled'      => 'Handlingsgrense overskredet',
+'actionthrottledtext'  => 'For å beskytte mot spam, kan du ikke utføre denne handlingen for mange ganger i løpet av et kort tidssrom, og du har overskredet denne grensen. Prøv igjen om noen minutter.',
 'protectedpagetext'    => 'Denne siden har blitt låst for redigeringer.',
 'viewsourcetext'       => 'Du kan se og kopiere kilden til denne siden:',
 'protectedinterface'   => 'Denne siden viser brukergrensesnittet for programvaren, og er låst for å hindre misbruk.',
@@ -699,7 +702,6 @@ Du burde vurdere hvorvidt det er passende å fortsette å redigere denne siden. 
 Grunnen som ble oppgitt av $3 er ''$2''",
 
 # History pages
-'revhistory'          => 'Historikk',
 'viewpagelogs'        => 'Vis logger for denne siden',
 'nohistory'           => 'Denne siden har ingen historikk.',
 'revnotfound'         => 'Versjonen er ikke funnet',
@@ -794,16 +796,12 @@ Andre administratorer på denne wikien vil fortsatt kunne se det skjulte innhold
 'mergelogpagetext'   => 'Nedenfor er en liste over de nyligste flettingene av sidehistorikker.',
 
 # Diffs
-'history-title'             => 'Revisjonshistorikk for «$1»',
-'difference'                => '(Forskjeller mellom versjoner)',
-'loadingrev'                => 'laster revisjon for å se forskjeller',
-'lineno'                    => 'Linje $1:',
-'editcurrent'               => 'Rediger nåværende versjon av denne siden',
-'selectnewerversionfordiff' => 'Velg en nyere versjon for sammenligning',
-'selectolderversionfordiff' => 'Velg en eldre versjon for sammenligning',
-'compareselectedversions'   => 'Sammenlign valgte versjoner',
-'editundo'                  => 'omgjør',
-'diff-multi'                => '({{PLURAL:$1|Én mellomrevisjon|$1 mellomrevisjoner}} ikke vist.)',
+'history-title'           => 'Revisjonshistorikk for «$1»',
+'difference'              => '(Forskjeller mellom versjoner)',
+'lineno'                  => 'Linje $1:',
+'compareselectedversions' => 'Sammenlign valgte versjoner',
+'editundo'                => 'omgjør',
+'diff-multi'              => '({{PLURAL:$1|Én mellomrevisjon|$1 mellomrevisjoner}} ikke vist.)',
 
 # Search results
 'searchresults'         => 'Søkeresultater',
@@ -1385,7 +1383,7 @@ Tilbakemeldinger og videre assistanse:
 'deleteotherreason'           => 'Annen grunn:',
 'deletereasonotherlist'       => 'Annen grunn',
 'deletereason-dropdown'       => '* Vanlige grunner for sletting
-** På forfatters etterspørsel
+** På forfatters forespørsel
 ** Opphavsrettsbrudd
 ** Hærverk',
 'rollback'                    => 'Fjern redigeringer',
@@ -1423,6 +1421,7 @@ Tilbakemeldinger og videre assistanse:
 'protect-summary-cascade'     => 'dypbeskyttelse',
 'protect-expiring'            => 'utgår $1 (UTC)',
 'protect-cascade'             => 'Dypbeskyttelse – beskytter alle sider som er inkludert på denne siden.',
+'protect-cantedit'            => 'Du kan ikke endre beskyttelsesnivået til denne siden fordi du ikke har tillatelse til å redigere den.',
 'restriction-type'            => 'Tillatelse',
 'restriction-level'           => 'Restriksjonsnivå',
 'minimum-size'                => 'Minimumstørrelse (byte)',
@@ -1591,6 +1590,7 @@ $1',
 'ipb_expiry_invalid'          => 'Ugyldig utløpstid.',
 'ipb_already_blocked'         => '«$1» er allerede blokkert',
 'ipb_cant_unblock'            => 'Feil: Blokk-ID $1 ikke funnet. Kan ha blitt avblokkert allerede.',
+'ipb_blocked_as_range'        => 'Feil: IP-en $1 er ikke blokkert direkte, og kan ikke avblokkeres. Den er imidlertid blokkert som del av blokkeringa av IP-rangen $2, som kan avblokkeres.',
 'ip_range_invalid'            => 'Ugyldig IP-rad.',
 'blockme'                     => 'Blokkert meg',
 'proxyblocker'                => 'Proxyblokker',
@@ -2091,6 +2091,7 @@ Rotert 90° mot klokka og vridd vertikalt', # 0th row: left; 0th column: top
 'exif-gpslongitude-w' => 'Vestlig lengdegrad',
 
 'exif-gpsstatus-a' => 'Måling pågår',
+'exif-gpsstatus-v' => 'Målingsinteroperabilitet',
 
 'exif-gpsmeasuremode-2' => 'todimensjonell måling',
 'exif-gpsmeasuremode-3' => 'tredimensjonell måling',

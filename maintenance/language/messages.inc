@@ -545,7 +545,6 @@ $wgMessageStructure = array(
 		'cantcreateaccount-text',
 	),
 	'history' => array(
-		'revhistory',
 		'viewpagelogs',
 		'nohistory',
 		'revnotfound',
@@ -627,6 +626,10 @@ $wgMessageStructure = array(
 		'mergehistory-empty',
 		'mergehistory-success',
 		'mergehistory-fail',
+		'mergehistory-no-source',
+		'mergehistory-no-destination',
+		'mergehistory-invalid-source',
+		'mergehistory-invalid-destination',
 	),
 	'mergelog' => array(
 		'mergelog',
@@ -637,11 +640,7 @@ $wgMessageStructure = array(
 	'diffs' => array(
 		'history-title',
 		'difference',
-		'loadingrev',
 		'lineno',
-		'editcurrent',
-		'selectnewerversionfordiff',
-		'selectolderversionfordiff',
 		'compareselectedversions',
 		'editundo',
 		'diff-multi',
@@ -805,8 +804,6 @@ $wgMessageStructure = array(
 		'recentchangeslinked-title',
 		'recentchangeslinked-noresult',
 		'recentchangeslinked-summary',
-		'recentchangeslinked-feed-entry',
-		'recentchangeslinked-feed-entry-comment',
 	),
 	'upload' => array(
 		'upload',
@@ -2190,8 +2187,9 @@ $wgMessageStructure = array(
 		'articletitles',
 		'hideresults',
 	),
-	'catseparator' => array(
+	'separators' => array(
 		'catseparator',
+		'semicolon-separator',
 	),
 	'imgmulti' => array(
 		'imgmultipageprev',
@@ -2468,7 +2466,7 @@ Variants for Chinese language",
 	'htmldump'            => 'HTML dump',
 	'purge'               => 'action=purge',
 	'search2'             => 'AJAX search',
-	'catseparator'        => 'Separator for categories in page lists',
+	'separators'          => 'Separators for various lists',
 	'imgmulti'            => 'Multipage image navigation',
 	'tablepager'          => 'Table pager',
 	'autosumm'            => 'Auto-summaries',

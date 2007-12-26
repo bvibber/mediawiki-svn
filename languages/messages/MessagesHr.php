@@ -8,9 +8,9 @@
  * @author SpeedyGonsales
  * @author Treecko
  * @author Luka Krstulovic
- * @author G - ג
  * @author Nike
  * @author Siebrand
+ * @author לערי ריינהארט
  */
 
 $skinNames = array(
@@ -318,7 +318,9 @@ i [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Vodič za suradnike] 
 'nosuchactiontext'  => 'Navedeni URL označava
 nepostojeću naredbu',
 'nosuchspecialpage' => 'Posebna stranica ne postoji',
-'nospecialpagetext' => 'Takva posebna stranica ne postoji.',
+'nospecialpagetext' => "<big>'''Takva posebna stranica ne postoji.'''</big>
+
+Za popis svih posebnih stranica posjetite [[Special:Specialpages|ovdje]].",
 
 # General errors
 'error'                => 'Greška',
@@ -569,7 +571,7 @@ Vaš broj pod kojim se vodi vaša blokirana IP adresa je $5. Molimo navedite ova
 'nosuchsectiontitle'        => 'Odlomak ne postoji',
 'nosuchsectiontext'         => 'Pokušali ste uređivati odlomak koji ne postoji (moguće je nedavno obrisan). Pošto odlomak $1 ne postoji, nije moguće snimiti vaše promjene.',
 'loginreqtitle'             => 'Nužna prijava',
-'loginreqlink'              => 'prijava',
+'loginreqlink'              => 'prijavite se',
 'loginreqpagetext'          => 'Morate se $1 da biste vidjeli ostale stranice.',
 'accmailtitle'              => 'Lozinka poslana.',
 'accmailtext'               => "Lozinka za suradnika '$1' poslana je na adresu $2.",
@@ -658,7 +660,6 @@ Za vašu informaciju slijedi evidencija brisanja s obrazloženjem za prethodno b
 Razlog koji je dao/la $3 je ''$2''",
 
 # History pages
-'revhistory'          => 'Stare izmjene',
 'viewpagelogs'        => 'Vidi evidencije za ovu stranicu',
 'nohistory'           => 'Ova stranica nema starijih izmjena.',
 'revnotfound'         => 'Stara izmjena nije nađena.',
@@ -742,23 +743,27 @@ postavili dodatna ograničenja.',
 Vidi [[Special:Ipblocklist|IP popis blokiranja]] za popis trenutno blokiranih IP adresa.',
 
 # History merging
-'mergehistory'         => 'Spoji povijesti starih izmjena stranice',
-'mergehistory-header'  => "Na ovoj stranici spajate povijest jedne stranice u drugu (noviju) stranicu.
+'mergehistory'                     => 'Spoji povijesti starih izmjena stranice',
+'mergehistory-header'              => "Na ovoj stranici spajate povijest jedne stranice u drugu (noviju) stranicu.
 Budite sigurni da ta promjena čuva kontinuitet stranice.
 
 '''Najmanje posljednja promjena početne stranice mora biti zadržana.'''",
-'mergehistory-box'     => 'Spoji povijesti starih izmjena dvije stranice:',
-'mergehistory-from'    => 'Izvorna stranica:',
-'mergehistory-into'    => 'Ciljna stranica:',
-'mergehistory-list'    => 'Spojiva povijest uređivanja',
-'mergehistory-merge'   => 'Slijedeće promjene stranice [[:$1|$1]] mogu biti spojene u [[:$2|$2]].
+'mergehistory-box'                 => 'Spoji povijesti starih izmjena dvije stranice:',
+'mergehistory-from'                => 'Izvorna stranica:',
+'mergehistory-into'                => 'Ciljna stranica:',
+'mergehistory-list'                => 'Spojiva povijest uređivanja',
+'mergehistory-merge'               => 'Slijedeće promjene stranice [[:$1|$1]] mogu biti spojene u [[:$2|$2]].
 Rabite kolonu s radio gumbima za spajanje samo određenih promjena.
 Primijetite da uporaba navigacijskih poveznica resetira vaše izbore u koloni.',
-'mergehistory-go'      => 'Pokaži spojivu povijest uređivanja',
-'mergehistory-submit'  => 'Spoji povijesti uređivanja stranica',
-'mergehistory-empty'   => 'Nema spojivih promjena (spajanje nije moguće)',
-'mergehistory-success' => '$3 promjene stranice [[:$1|$1]] uspješno spojene u povijest stranice [[:$2|$2]].',
-'mergehistory-fail'    => 'Nemoguće spojiti povijest stranica, molimo provjerite stranice i vremenske parametre.',
+'mergehistory-go'                  => 'Pokaži spojivu povijest uređivanja',
+'mergehistory-submit'              => 'Spoji povijesti uređivanja stranica',
+'mergehistory-empty'               => 'Nema spojivih promjena (spajanje nije moguće)',
+'mergehistory-success'             => '$3 promjene stranice [[:$1|$1]] uspješno spojene u povijest stranice [[:$2|$2]].',
+'mergehistory-fail'                => 'Nemoguće spojiti povijest stranica, molimo provjerite stranice i vremenske parametre.',
+'mergehistory-no-source'           => 'Izvorna stranica $1 ne postoji.',
+'mergehistory-no-destination'      => 'Ciljna stranica $1 ne postoji.',
+'mergehistory-invalid-source'      => 'Izvorna stranica mora imati valjani naziv.',
+'mergehistory-invalid-destination' => 'Ciljna stranica mora imati valjani naziv.',
 
 # Merge log
 'mergelog'           => 'Evidencija spajanja povijesti stranica',
@@ -767,16 +772,12 @@ Primijetite da uporaba navigacijskih poveznica resetira vaše izbore u koloni.',
 'mergelogpagetext'   => 'Slijedi popis posljednjih spajanja povijesti stranica.',
 
 # Diffs
-'history-title'             => 'Povijest izmjena stranice "$1"',
-'difference'                => '(Usporedba među inačicama)',
-'loadingrev'                => 'učitavam inačicu za usporedbu',
-'lineno'                    => 'Redak $1:',
-'editcurrent'               => 'Uredi trenutnu inačicu ove stranice',
-'selectnewerversionfordiff' => 'Izaberi noviju inačicu za usporedbu',
-'selectolderversionfordiff' => 'Izaberi stariju inačicu za usporedbu',
-'compareselectedversions'   => 'Usporedi odabrane inačice',
-'editundo'                  => 'ukloni ovu izmjenu',
-'diff-multi'                => '({{plural:$1|Nije prikazana jedna međuinačica|Nisu prikazane $1 međuinačice|Nije prikazano $1 međuinačica}})',
+'history-title'           => 'Povijest izmjena stranice "$1"',
+'difference'              => '(Usporedba među inačicama)',
+'lineno'                  => 'Redak $1:',
+'compareselectedversions' => 'Usporedi odabrane inačice',
+'editundo'                => 'ukloni ovu izmjenu',
+'diff-multi'              => '({{plural:$1|Nije prikazana jedna međuinačica|Nisu prikazane $1 međuinačice|Nije prikazano $1 međuinačica}})',
 
 # Search results
 'searchresults'         => 'Rezultati pretrage',
@@ -1279,7 +1280,7 @@ E-mail adresa iz vaših postavki nalazit će se u "From" polju poruke i primatel
 'mywatchlist'          => 'Moj popis praćenja',
 'watchlistfor'         => "(suradnika '''$1''')",
 'nowatchlist'          => 'Na vašem popisu praćenja nema nijednog članka.',
-'watchlistanontext'    => 'Molimo Vas $1 da bi vidjeli ili uređivali vaš popis praćenih stranica.',
+'watchlistanontext'    => 'Molimo Vas $1 kako bi mogli vidjeti ili uređivati vaš popis praćenih stranica.',
 'watchnologin'         => 'Niste prijavljeni',
 'watchnologintext'     => 'Morate biti [[Special:Userlogin|prijavljeni]]
 za promjene u popisu praćenja.',
@@ -1424,6 +1425,7 @@ Slijede trenutne postavke stranice <strong>$1</strong>:',
 'protect-summary-cascade'     => 'prenosiva zaštita',
 'protect-expiring'            => 'istječe $1 (UTC)',
 'protect-cascade'             => 'Prenosiva zaštita - zaštiti sve stranice koje su uključene u ovu.',
+'protect-cantedit'            => 'Ne možete mijenjati razinu zaštite ove stranice, jer nemate prava uređivati ju.',
 'restriction-type'            => 'Dozvola:',
 'restriction-level'           => 'Nivo ograničenja:',
 'minimum-size'                => 'Najmanja veličina',

@@ -25,6 +25,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * MediaWiki now checks if serialized files are out of date. New configuration
   variable $wgCheckSerialized can be set to false to enable old behavior (i.e.
   to not check and assume they are always up to date)
+* The rollback permission is now assigned by default to all logged-in users. It
+  can also now be rate-limited using the normal mechanism.
 
 === New features in 1.12 ===
 * (bug 10735) Add a warning for non-descriptive filenames at Special:Upload
@@ -86,6 +88,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Show a warning message when creating/editing a user (talk) page but the user
   does not exists
 * (bug 8396) Ignore out-of-date serialised message caches
+* (bug 12195) Undeleting pages now requires 'undelete' permission
+* (bug 11810) Localize displayed semicolons
 
 === Bug fixes in 1.12 ===
 
@@ -206,6 +210,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 451) Add a generic Traditional / Simplified Chinese conversion table, 
   instead of a Traditional conversion with Taiwan variant, and a Simplified 
   conversion with China variant.
+* (bug 12178) Fix wpReason parameter to action=delete, again.
+* Graceful behavior for updateRestrictions.php if a page already has records
+  in the page_restrictions matching its old page_restrictions field.
+  May help with odd upgrade issues or race condition.
+* (bug 11993) Remove contentsub "revision history"
 
 == Parser changes in 1.12 ==
 
@@ -315,6 +324,10 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Add rvtoken=rollback to prop=revisions
 * Add meta=allmessages to get messages from site's messages cache.
 * Use bold and italics highlighting only in API help
+* Added action={block,changerights,delete,move,protect,rollback,unblock,undelete} and list={blocks,deletedrevs}
+* Fixed sessionid attribute in action=login
+* Standardized limits. Revisions and Deletedrevisions formerly using 200 / 10000, 
+  now 500 / 5000, in line with other modules.
 
 === Languages updated in 1.12 ===
 
@@ -354,6 +367,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Danish (da)
 * German (de)
 * Lower Sorbian (dsb) (new)
+* Middle Dutch (dum) (new)
 * Divehi (dv)
 * Ewe (ee) (new)
 * Greek (el)
@@ -465,9 +479,11 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Cantonese (yue)
 * Zhuang (za)
 * Zealandic (zea)
+* Chinese (zh)
 * Old Chinese/Late Time Chinese (zh-classical)
 * Chinese (Simplified) (zh-hans)
 * Chinese (Traditional) (zh-hant)
+* Chinese (Taiwan) (zh-tw)
 
 == Compatibility ==
 

@@ -11,8 +11,8 @@
  * @author Troefkaart
  * @author Galwaygirl
  * @author Effeietsanders
- * @author G - ג
  * @author Nike
+ * @author לערי ריינהארט
  */
 
 /**
@@ -234,7 +234,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Volglijst' ),
 	'Recentchanges'             => array( 'RecenteWijzigingen' ),
 	'Upload'                    => array( 'Uploaden', 'Upload' ),
-	'Imagelist'                 => array( 'Afbeeldingenlijst' ),
+	'Imagelist'                 => array( 'Afbeeldingenlijst', 'Bestandenlijst' ),
 	'Newimages'                 => array( 'NieuweAfbeeldingen' ),
 	'Listusers'                 => array( 'Gebruikerslijst', 'Gebruikerlijst' ),
 	'Statistics'                => array( 'Statistieken' ),
@@ -262,23 +262,24 @@ $specialPageAliases = array(
 	'Deadendpages'              => array( 'VerwijslozePaginas', 'VerwijslozePagina’s', 'VerwijslozePagina\'s' ),
 	'Protectedpages'            => array( 'BeveiligdePaginas', 'BeveiligdePagina\'s', 'BeschermdePaginas', 'BeschermdePagina’s', 'BeschermdePagina\'s' ),
 	'Allpages'                  => array( 'AllePaginas', 'AllePagina’s', 'AllePagina\'s' ),
-	'Prefixindex'               => array( 'Prefixindex', 'Voorvoegselindex' ),
+	'Prefixindex'               => array( 'Voorvoegselindex', 'Prefixindex' ),
 	'Ipblocklist'               => array( 'IP-blokkeerlijst', 'IPblokkeerlijst', 'IpBlokkeerlijst' ),
 	'Specialpages'              => array( 'SpecialePaginas', 'SpecialePagina’s', 'SpecialePagina\'s' ),
 	'Contributions'             => array( 'Bijdragen' ),
-	'Emailuser'                 => array( 'E-mailGebruiker' ),
+	'Emailuser'                 => array( 'GebruikerE-mailen', 'E-mailGebruiker' ),
+	'Confirmemail'              => array( 'Emailbevestigen', 'E-mailbevestigen' ),
 	'Whatlinkshere'             => array( 'VerwijzingenNaarHier', 'Verwijzingen', 'LinksNaarHier' ),
 	'Recentchangeslinked'       => array( 'RecenteWijzigingenGelinkt', 'VerwanteWijzigingen' ),
 	'Movepage'                  => array( 'PaginaHernoemen', 'PaginaVerplaatsen', 'TitelWijzigen', 'VerplaatsPagina' ),
 	'Blockme'                   => array( 'BlokkeerMij', 'MijBlokkeren' ),
-	'Booksources'               => array( 'BoekBronnen' ),
+	'Booksources'               => array( 'Boekbronnen', 'Boekinformatie' ),
 	'Categories'                => array( 'Categorieën' ),
 	'Export'                    => array( 'Exporteren' ),
 	'Version'                   => array( 'Softwareversie', 'Versie' ),
-	'Allmessages'               => array( 'AlleBerichten' ),
+	'Allmessages'               => array( 'AlleBerichten', 'Systeemberichten' ),
 	'Log'                       => array( 'Logboeken', 'Logboek', 'Log', 'Logs' ),
 	'Blockip'                   => array( 'IPblokkeren', 'BlokkeerIP', 'BlokkeerIp' ),
-	'Undelete'                  => array( 'Herstellen', 'VerwijderenOngedaanMaken' ),
+	'Undelete'                  => array( 'Terugplaatsen', 'Herstellen', 'VerwijderenOngedaanMaken' ),
 	'Import'                    => array( 'Importeren' ),
 	'Lockdb'                    => array( 'DBblokkeren', 'DbBlokkeren', 'BlokkeerDB' ),
 	'Unlockdb'                  => array( 'DBvrijgeven', 'DbVrijgeven', 'GeefDbVrij' ),
@@ -292,11 +293,13 @@ $specialPageAliases = array(
 	'Mypage'                    => array( 'MijnPagina' ),
 	'Mytalk'                    => array( 'MijnOverleg' ),
 	'Mycontributions'           => array( 'MijnBijdragen' ),
-	'Listadmins'                => array( 'Administratorlijst', 'Adminlijst', 'Beheerderslijst', 'Beheerderlijst' ),
+	'Listadmins'                => array( 'Beheerderlijst', 'Administratorlijst', 'Adminlijst', 'Beheerderslijst' ),
+	'Listbots'                  => array( 'Botlijst', 'Lijstbots' ),
 	'Popularpages'              => array( 'PopulairePaginas', 'PopulairePagina’s', 'PopulairePagina\'s' ),
 	'Search'                    => array( 'Zoeken' ),
 	'Resetpass'                 => array( 'WachtwoordHerinitialiseren' ),
 	'Withoutinterwiki'          => array( 'ZonderInterwiki' ),
+	'MergeHistory'              => array( 'GeschiedenisSamenvoegen' ),
 );
 
 /**
@@ -903,7 +906,6 @@ Overweeg of het terecht is dat u verder werkt aan deze pagina. Voor uw gemak sta
 De door $3 opgegeven reden is ''$2''",
 
 # History pages
-'revhistory'          => 'Bewerkingsgeschiedenis',
 'viewpagelogs'        => 'Logboek voor deze pagina tonen',
 'nohistory'           => 'Deze pagina is niet bewerkt.',
 'revnotfound'         => 'Bewerking niet gevonden',
@@ -982,21 +984,25 @@ Andere beheerders van deze wiki kunnen de verborgen inhoud benaderen en de verwi
 'overlogpagetext' => 'Hier onder is een lijst met de meest recente verwijderingen en blokkeringen met betrekking tot informatie die niet zichtbaar is voor admins. Zie de [[Special:Ipblocklist|Lijst van geblokkeerde gebruikers en IP-adressen]] voor een lijst van de blokkades en verbanningen die nu gelden.',
 
 # History merging
-'mergehistory'         => "Geschiedenis van pagina's samenvoegen",
-'mergehistory-header'  => "Deze pagina laat u toe om versies van de geschiedenis van een bronpagina naar een nieuwere pagina samen te voegen.
+'mergehistory'                     => "Geschiedenis van pagina's samenvoegen",
+'mergehistory-header'              => "Deze pagina laat u toe om versies van de geschiedenis van een bronpagina naar een nieuwere pagina samen te voegen.
 Wees zeker dat deze wijziging de geschiedenisdoorlopendheid van de pagina zal behouden.
 
 '''Tenminste de huidige versie van de bronpagina moet overblijven.'''",
-'mergehistory-box'     => "Versies van twee pagina's samenvoegen:",
-'mergehistory-from'    => 'Bronpagina:',
-'mergehistory-into'    => 'Bestemmingspagina:',
-'mergehistory-list'    => 'Samenvoegbare bewerkingsgeschiedenis',
-'mergehistory-merge'   => 'De volgende versies van [[:$1]] kunnen samengevoegd worden naar [[:$2]]. Gebruik de kolom met keuzerondjes om alleen de versies gemaakt op en voor de aangegeven tijd samen te voegen. Let op dat het gebruiken van de navigatielinks deze kolom zal herinstellen.',
-'mergehistory-go'      => 'Samenvoegbare bewerkingen tonen',
-'mergehistory-submit'  => 'Versies samenvoegen',
-'mergehistory-empty'   => 'Geen enkele versies kunnen samengevoegd worden',
-'mergehistory-success' => '$3 versies van [[:$1|$1]] succesvol samengevoegd naar [[:$2|$2]].',
-'mergehistory-fail'    => 'Kan geen geschiedenis samenvoegen, gelieve opnieuw de pagina- en tijdparameters te controleren.',
+'mergehistory-box'                 => "Versies van twee pagina's samenvoegen:",
+'mergehistory-from'                => 'Bronpagina:',
+'mergehistory-into'                => 'Bestemmingspagina:',
+'mergehistory-list'                => 'Samenvoegbare bewerkingsgeschiedenis',
+'mergehistory-merge'               => 'De volgende versies van [[:$1]] kunnen samengevoegd worden naar [[:$2]]. Gebruik de kolom met keuzerondjes om alleen de versies gemaakt op en voor de aangegeven tijd samen te voegen. Let op dat het gebruiken van de navigatielinks deze kolom zal herinstellen.',
+'mergehistory-go'                  => 'Samenvoegbare bewerkingen tonen',
+'mergehistory-submit'              => 'Versies samenvoegen',
+'mergehistory-empty'               => 'Geen enkele versies kunnen samengevoegd worden',
+'mergehistory-success'             => '$3 versies van [[:$1|$1]] succesvol samengevoegd naar [[:$2|$2]].',
+'mergehistory-fail'                => 'Kan geen geschiedenis samenvoegen, gelieve opnieuw de pagina- en tijdparameters te controleren.',
+'mergehistory-no-source'           => 'Bronpagina $1 bestaat niet.',
+'mergehistory-no-destination'      => 'Bestemmingspagina $1 bestaat niet.',
+'mergehistory-invalid-source'      => 'De bronpagina moet een geldige titel zijn.',
+'mergehistory-invalid-destination' => 'De bestemmingspagina moet een geldige titel zijn.',
 
 # Merge log
 'mergelog'           => 'Samenvoegingslogboek',
@@ -1005,16 +1011,12 @@ Wees zeker dat deze wijziging de geschiedenisdoorlopendheid van de pagina zal be
 'mergelogpagetext'   => 'Hieronder ziet u een lijst van recente samenvoegingen van een paginageschiedenis naar een andere.',
 
 # Diffs
-'history-title'             => 'Geschiedenis van "$1"',
-'difference'                => '(Verschil tussen bewerkingen)',
-'loadingrev'                => 'bezig met versie voor verschillen te laden',
-'lineno'                    => 'Regel $1:',
-'editcurrent'               => 'Bewerk de huidige versie van deze pagina',
-'selectnewerversionfordiff' => 'Selecteer een nieuwere versie voor de vergelijking',
-'selectolderversionfordiff' => 'Selecteer een oudere versie voor de vergelijking.',
-'compareselectedversions'   => 'Aangevinkte versies vergelijken',
-'editundo'                  => 'ongedaan maken',
-'diff-multi'                => '({{plural:$1|Eén tussenliggende versie wordt|$1 tussenliggende versies worden}} niet getoond)',
+'history-title'           => 'Geschiedenis van "$1"',
+'difference'              => '(Verschil tussen bewerkingen)',
+'lineno'                  => 'Regel $1:',
+'compareselectedversions' => 'Aangevinkte versies vergelijken',
+'editundo'                => 'ongedaan maken',
+'diff-multi'              => '({{plural:$1|Eén tussenliggende versie wordt|$1 tussenliggende versies worden}} niet getoond)',
 
 # Search results
 'searchresults'         => 'Zoekresultaten',
@@ -1359,7 +1361,7 @@ PICT # overig
 
 # Random redirect
 'randomredirect'         => 'Willekeurige doorverwijzing',
-'randomredirect-nopages' => 'Er zijn geen redirects in deze naamruimte.',
+'randomredirect-nopages' => 'Er zijn geen doorverwijzingen in deze naamruimte.',
 
 # Statistics
 'statistics'             => 'Statistieken',
@@ -1631,9 +1633,9 @@ De meest recente bewerking is gemaakt door [[User:$3|$3]] ([[User talk:$3|overle
 'protect_expiry_invalid'      => 'De aangegeven duur is ongeldig.',
 'protect_expiry_old'          => 'Verloopsdatum is in het verleden.',
 'unprotectsub'                => '(Beveiliging "$1" opgeheven)',
-'protect-unchain'             => 'Maak hernoemen mogelijk',
+'protect-unchain'             => 'Hernoemen mogelijk maken',
 'protect-text'                => 'Hier kunt u het beveiligingsniveau voor de pagina <strong>$1</strong> bekijken en wijzigen.',
-'protect-locked-blocked'      => 'U kan het beveiligingsniveau niet wijzigen terwijl u geblokkeerd bent.
+'protect-locked-blocked'      => 'U kunt het beveiligingsniveau niet wijzigen terwijl u geblokkeerd bent.
 Hier zijn de huidige instellingen voor de pagina <strong>[[$1]]</strong>:',
 'protect-locked-dblock'       => 'Het beveiligingsniveau kan niet worden gewijzigd omdat de database gesloten is.
 Hier zijn de huidige instellingen voor de pagina <strong>[[$1]]</strong>:',
@@ -1647,7 +1649,7 @@ Dit zijn de huidige instellingen voor de pagina <strong>[[$1]]</strong>:",
 'protect-summary-cascade'     => 'cascade',
 'protect-expiring'            => 'verloopt op $1',
 'protect-cascade'             => "Cascadebeveiliging - beveilig alle pagina's en sjablonen die in deze pagina opgenomen zijn (let op; dit kan grote gevolgen hebben).",
-'protect-cantedit'            => 'U kan het beveiligingsniveau van deze pagina niet wijzigen, omdat u geen rechten hebt om het te bewerken.',
+'protect-cantedit'            => 'U kunt het beveiligingsniveau van deze pagina niet wijzigen, omdat u geen rechten hebt om het te bewerken.',
 'restriction-type'            => 'Rechten:',
 'restriction-level'           => 'Beperkingsniveau:',
 'minimum-size'                => 'Min. grootte',
@@ -1664,9 +1666,9 @@ Dit zijn de huidige instellingen voor de pagina <strong>[[$1]]</strong>:",
 'restriction-level-all'           => 'elk niveau',
 
 # Undelete
-'undelete'                     => "Toon verwijderde pagina's",
+'undelete'                     => "Verwijderde pagina's bekijken",
 'undeletepage'                 => "Verwijderde pagina's tonen en terugplaatsen",
-'viewdeletedpage'              => "Toon verwijderde pagina's",
+'viewdeletedpage'              => "Verwijderde pagina's bekijken",
 'undeletepagetext'             => "Hieronder staan pagina's die zijn verwijderd en vanuit het archief teruggeplaatst kunnen worden.",
 'undeleteextrahelp'            => "Om de hele pagina inclusief alle eerdere versies terug te plaatsen: laat alle hokjes onafgevinkt en klik op '''''Terugplaatsen'''''. Om slechts bepaalde versies terug te zetten: vink de terug te plaatsen versies aan en klik op '''''Terugplaatsen'''''. Als u op '''''Herinstellen''''' klikt wordt het toelichtingsveld leeggemaakt en worden alle versies gedeselecteerd.",
 'undeleterevisions'            => '$1 versi{{PLURAL:$1|e|es}} gearchiveerd',
@@ -1688,9 +1690,9 @@ Dit zijn de huidige instellingen voor de pagina <strong>[[$1]]</strong>:",
 
 In het [[{{ns:special}}:Log/delete|logboek verwijderde pagina's]] staan recente verwijderingen en herstelhandelingen.",
 'undelete-header'              => "Zie [[{{ns:special}}:Log/delete|het logboek verwijderde pagina's]] voor recent verwijderde pagina's.",
-'undelete-search-box'          => "Doorzoek verwijderde pagina's",
-'undelete-search-prefix'       => "Toon pagina's die beginnen met:",
-'undelete-search-submit'       => 'Zoek',
+'undelete-search-box'          => "Verwijderde pagina's doorzoeken",
+'undelete-search-prefix'       => "Pagina's tonen die beginnen met:",
+'undelete-search-submit'       => 'Zoeken',
 'undelete-no-results'          => "Geen pagina's gevonden in het archief met verwijderde pagina's.",
 'undelete-filename-mismatch'   => 'Bestandsversie van tijdstip $1 kon niet hersteld worden: bestandsnaam klopte niet',
 'undelete-bad-store-key'       => 'Bestandsversie van tijdstip $1 kon niet hersteld worden: het bestand miste al voordat het werd verwijderd.',
@@ -1738,7 +1740,7 @@ $1',
 'linkshere'           => "De volgende pagina's verwijzen naar '''[[:$1]]''':",
 'nolinkshere'         => "Geen enkele pagina verwijst naar '''[[:$1]]'''.",
 'nolinkshere-ns'      => "Geen enkele pagina linkt naar '''[[:$1]]''' in de gekozen naamruimte.",
-'isredirect'          => 'redirectpagina',
+'isredirect'          => 'doorverwijspagina',
 'istemplate'          => 'ingevoegd als sjabloon',
 'whatlinkshere-prev'  => '{{PLURAL:$1|vorige|vorige $1}}',
 'whatlinkshere-next'  => '{{PLURAL:$1|volgende|volgende $1}}',
@@ -1793,7 +1795,7 @@ Zie de [[{{ns:special}}:Ipblocklist|Lijst van geblokkeerde IP-adressen]].',
 'infiniteblock'               => 'onbeperkt',
 'expiringblock'               => 'verloopt op $1',
 'anononlyblock'               => 'alleen anoniemen',
-'noautoblockblock'            => 'autoblok niet actief',
+'noautoblockblock'            => 'autoblok uitgeschakeld',
 'createaccountblock'          => 'aanmaken gebruikers geblokkeerd',
 'emailblock'                  => 'e-mail geblokkeerd',
 'ipblocklist-empty'           => 'De blokkeerlijst is leeg.',
@@ -1804,7 +1806,7 @@ Zie de [[{{ns:special}}:Ipblocklist|Lijst van geblokkeerde IP-adressen]].',
 'autoblocker'                 => "Automatisch geblokkeerd omdat het IP-adres overeenkomt met dat van [[User:\$1|\$1]], die geblokkeerd is om de volgende reden: \"'''\$2'''\"",
 'blocklogpage'                => 'Blokkeerlogboek',
 'blocklogentry'               => 'blokkeerde "[[$1]]" voor de duur van $2 $3',
-'blocklogtext'                => 'Hier ziet u een lijst van de recente blokkeringen en deblokkeringen. Automatische blokkeringen en deblokkeringen komen niet in het logboek. Zie de [[{{ns:special}}:Ipblocklist|Ipblocklist]] voor geblokkeerde adressen.',
+'blocklogtext'                => 'Hier ziet u een lijst van de recente blokkeringen en deblokkeringen. Automatische blokkeringen en deblokkeringen komen niet in het logboek. Zie de [[Special:Ipblocklist|Ipblocklist]] voor geblokkeerde adressen.',
 'unblocklogentry'             => 'blokkade van $1 opgeheven',
 'block-log-flags-anononly'    => 'alleen anoniemen',
 'block-log-flags-nocreate'    => 'aanmaken gebruikers geblokkeerd',
@@ -1825,7 +1827,7 @@ Zie de [[{{ns:special}}:Ipblocklist|Lijst van geblokkeerde IP-adressen]].',
 'sorbs_create_account_reason' => 'Uw IP-adres is opgenomen in de DNS-blacklist als open proxyserver. U kunt geen gebruiker aanmaken.',
 
 # Developer tools
-'lockdb'              => 'Blokkeer de database',
+'lockdb'              => 'Database blokkeren',
 'unlockdb'            => 'Blokkering van de database opheffen',
 'lockdbtext'          => "Waarschuwing: De database blokkeren heeft tot gevolg dat geen enkele gebruiker meer in staat is pagina's te bewerken, voorkeuren te wijzigen of iets anders te doen waarvoor wijzigingen in de database nodig zijn.
 
@@ -1835,8 +1837,8 @@ Bevestig dat u deze handeling wilt uitvoeren en dat u de database vrijgeeft nada
 Bevestig dat u deze handeling wilt uitvoeren.",
 'lockconfirm'         => 'Ja, ik wil de database blokkeren.',
 'unlockconfirm'       => 'Ja, ik wil de database vrijgeven.',
-'lockbtn'             => 'Blokkeer de database',
-'unlockbtn'           => 'Geef de database vrij',
+'lockbtn'             => 'Database blokkeren',
+'unlockbtn'           => 'Database vrijgeven',
 'locknoconfirm'       => 'U heeft uw keuze niet bevestigd via het vinkvakje.',
 'lockdbsuccesssub'    => 'Blokkeren database geslaagd',
 'unlockdbsuccesssub'  => 'Database vrijgegeven.',
@@ -1848,14 +1850,14 @@ Bevestig dat u deze handeling wilt uitvoeren.",
 
 # Move page
 'movepage'                => 'Pagina hernoemen',
-'movepagetext'            => "Door middel van het onderstaande formulier kunt u een pagina hernoemen. De geschiedenis gaat mee naar de nieuwe pagina. De oude naam wordt automatisch een doorverwijzing naar de nieuwe pagina. Verwijzingen naar de oude pagina worden niet aangepast. Controleer na het hernoemen of er geen dubbele of onjuiste doorverwijzingen zijn onstaan. U bent verantwoordelijk voor de continuiteït van de verwijzingen.
+'movepagetext'            => "Door middel van het onderstaande formulier kunt u een pagina hernoemen. De geschiedenis gaat mee naar de nieuwe pagina. De oude naam wordt automatisch een doorverwijzing naar de nieuwe pagina. Verwijzingen naar de oude pagina worden niet aangepast. Controleer na het hernoemen of er geen dubbele of onjuiste doorverwijzingen zijn onstaan. U bent verantwoordelijk voor de doorverwijzingen.
 
-Een wijziging van de paginanaam kan '''alleen''' worden uitgevoerd als de nieuwe paginanaam:
-*niet bestaat, of
-*een doorverwijspagina zonder verdere geschiedenis is.
+Een pagina kan '''alleen''' hernoemd worden als de nieuwe paginanaam:
+* niet bestaat, of
+* een doorverwijspagina zonder verdere geschiedenis is.
 
 <b>WAARSCHUWING!</b>
-Voor populaire pagina's kan het hernoemen drastische en onvoorziene gevolgen hebben. Zorg ervoor dat u de consequenties overziet voordat u deze handeling uitvoert.",
+Voor populaire pagina's kan het hernoemen drastische en onvoorziene gevolgen hebben. Zorg ervoor dat u die gevolgen overziet voordat u deze handeling uitvoert.",
 'movepagetalktext'        => "De bijbehorende overlegpagina krijgt automatisch een andere naam, '''tenzij''':
 * De overlegpagina onder de nieuwe naam al bestaat;
 * U het onderstaande vinkje deselecteert.",
@@ -1928,11 +1930,11 @@ In het laatste geval kunt u ook een link gebruiken, bijvoorbeeld [[{{ns:special}
 'import'                     => "Pagina's importeren",
 'importinterwiki'            => 'Transwiki-import',
 'import-interwiki-text'      => 'Selecteer een wiki en paginanaam om te importeren.
-Versie- en auteursgegevens blijven hierbij in tact.
-Alle transwiki-importhandelingen worden opgeslagen in het [[{{ns:special}}:Log/import|importlogboek]].',
-'import-interwiki-history'   => 'Kopieer de volledige geschiedenis van deze pagina',
+Versie- en auteursgegevens blijven hierbij bewaard.
+Alle transwiki-importhandelingen worden opgeslagen in het [[Special:Log/import|importlogboek]].',
+'import-interwiki-history'   => 'Volledige geschiedenis van deze pagina ook kopiëren',
 'import-interwiki-submit'    => 'Importeren',
-'import-interwiki-namespace' => "Plaats pagina's in de volgende naamruimte:",
+'import-interwiki-namespace' => 'Pagina in de volgende naamruimte plaatsen:',
 'importtext'                 => 'Gebruik de functie Special:Export in de wiki waar de informatie vandaan komt, sla de uitvoer op uw eigen systeem op, en voeg die daarna hier toe.',
 'importstart'                => "Pagina's aan het importeren...",
 'import-revision-count'      => '$1 {{PLURAL:$1|versie|versies}}',

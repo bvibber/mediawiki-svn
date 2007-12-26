@@ -381,7 +381,7 @@ $messages = array(
 'page-rss-feed'           => '"$1"嘅RSS Feed',
 'page-atom-feed'          => '"$1"嘅Atom Feed',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => '版',
 'nstab-user'      => '用戶頁',
 'nstab-media'     => '媒體頁',
@@ -455,7 +455,7 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'viewsource'           => '睇吓原始碼',
 'viewsourcefor'        => '$1嘅原始碼',
 'actionthrottled'      => '動作已壓制',
-'actionthrottledtext'  => "基於反垃圾嘢嘅考量，你而家響呢段短時間之內限制咗去做呢一個動作，而你已經超過咗個上限。請響幾分鐘之後再試過。",
+'actionthrottledtext'  => '基於反垃圾嘢嘅考量，你而家響呢段短時間之內限制咗去做呢一個動作，而你已經超過咗個上限。請響幾分鐘之後再試過。',
 'protectedpagetext'    => '呢一頁已經鎖咗唔畀改。',
 'viewsourcetext'       => '你可以睇吓或者複製呢一頁嘅原始碼：',
 'protectedinterface'   => '呢一頁提供軟件嘅介面文字，呢一頁已經鎖上以預防濫用。',
@@ -735,7 +735,6 @@ $2',
 當中俾$3封鎖嘅原因係''$2''",
 
 # History pages
-'revhistory'          => '修改歷程',
 'viewpagelogs'        => '睇呢頁嘅日誌',
 'nohistory'           => '呢版冇歷史。',
 'revnotfound'         => '搵唔到歷史',
@@ -817,36 +816,36 @@ $2',
 'overlogpagetext' => '下面係一個最近刪除以及由操作員封鎖牽涉到嘅內容清單。睇睇下面嘅[[Special:Ipblocklist|IP封鎖名單]]去睇現時進行緊嘅封鎖。',
 
 # History merging
-'mergehistory'          => '合併頁歷史',
-'mergehistory-header'   => "呢一版可以畀你去合併一個來源頁嘅修訂記錄到另一個新頁。
+'mergehistory'                     => '合併頁歷史',
+'mergehistory-header'              => "呢一版可以畀你去合併一個來源頁嘅修訂記錄到另一個新頁。
 請確認呢次更改會繼續保留嗰版之前嘅歷史版。
 
 '''最少個來源頁嘅現時修訂一定會保持。'''",
-'mergehistory-box'      => '合併兩版嘅修訂:',
-'mergehistory-from'     => '來源頁:',
-'mergehistory-into'     => '目的頁:',
-'mergehistory-list'     => '可以合併嘅編輯記錄',
-'mergehistory-merge'    => '下面[[:$1]]嘅修訂可以合併到[[:$2]]。用個選項掣欄去合併只有響指定時間之前所開嘅修訂。要留意嘅係用個導航連結就會重設呢一欄。',
-'mergehistory-go'       => '顯示可以合併嘅編輯',
-'mergehistory-submit'   => '合併修訂',
-'mergehistory-empty'    => '無修訂可以合併',
-'mergehistory-success'  => '[[:$1]]嘅$3次修訂已經成功噉合併到[[:$2]]。',
-'mergehistory-fail'     => '唔可以進行歷史合併，請重新檢查嗰一版同埋時間參數。',
+'mergehistory-box'                 => '合併兩版嘅修訂:',
+'mergehistory-from'                => '來源頁:',
+'mergehistory-into'                => '目的頁:',
+'mergehistory-list'                => '可以合併嘅編輯記錄',
+'mergehistory-merge'               => '下面[[:$1]]嘅修訂可以合併到[[:$2]]。用個選項掣欄去合併只有響指定時間之前所開嘅修訂。要留意嘅係用個導航連結就會重設呢一欄。',
+'mergehistory-go'                  => '顯示可以合併嘅編輯',
+'mergehistory-submit'              => '合併修訂',
+'mergehistory-empty'               => '無修訂可以合併',
+'mergehistory-success'             => '[[:$1]]嘅$3次修訂已經成功噉合併到[[:$2]]。',
+'mergehistory-fail'                => '唔可以進行歷史合併，請重新檢查嗰一版同埋時間參數。',
+'mergehistory-no-source'           => '來源頁$1唔存在。',
+'mergehistory-no-destination'      => '目的頁$1唔存在。',
+'mergehistory-invalid-source'      => '來源頁一定要係一個有效嘅標題。',
+'mergehistory-invalid-destination' => '目的頁一定要係一個有效嘅標題。',
 
 # Merge log
-'mergelog'              => '合併日誌',
-'pagemerge-logentry'    => '合併咗[[$1]]去到[[$2]] (修訂截到$3)',
-'revertmerge'           => '反合併',
-'mergelogpagetext'      => '下面係一個最近由一版嘅修訂記錄合併到另一個嘅一覽。',
+'mergelog'           => '合併日誌',
+'pagemerge-logentry' => '合併咗[[$1]]去到[[$2]] (修訂截到$3)',
+'revertmerge'        => '反合併',
+'mergelogpagetext'   => '下面係一個最近由一版嘅修訂記錄合併到另一個嘅一覽。',
 
 # Diffs
 'history-title'             => '"$1"嘅修訂歷史',
 'difference'                => '（修訂之間嘅差異）',
-'loadingrev'                => '載入緊修訂嘅差異',
 'lineno'                    => '第$1行：',
-'editcurrent'               => '編輯呢一頁嘅現時版本',
-'selectnewerversionfordiff' => '選擇一個新啲嘅版本做個比較',
-'selectolderversionfordiff' => '選擇一個舊啲嘅版本做個比較',
 'compareselectedversions'   => '比較被選嘅版本',
 'editundo'                  => '復原',
 'diff-multi'                => '(當中有$1次嘅修訂唔會顯示。)',
@@ -1004,8 +1003,6 @@ $2',
 'recentchangeslinked-title'              => '對$1有關嘅更改',
 'recentchangeslinked-noresult'           => '響呢一段時間內連結頁並無更改。',
 'recentchangeslinked-summary'            => "呢一個特別頁列示咗呢一版連出去嘅頁面嘅最近更改。響你嘅監視清單度嘅頁面會以'''粗體'''表示。",
-'recentchangeslinked-feed-entry'         => '用戶$1編輯咗$2',
-'recentchangeslinked-feed-entry-comment' => '用戶$1編輯咗$2 ($3)',
 
 # Upload
 'upload'                      => '上載檔案',
@@ -1147,11 +1144,11 @@ $2',
 'filedelete'             => '刪除$1',
 'filedelete-legend'      => '刪除檔案',
 'filedelete-intro'       => "你而家刪除緊'''[[Media:$1|$1]]'''。",
-'filedelete-intro-old'   => "<span class=\"plainlinks\">你而家刪除緊'''[[Media:$1|$1]]'''響[$4 $2 $3]嘅版本。</span>",
+'filedelete-intro-old'   => '<span class="plainlinks">你而家刪除緊\'\'\'[[Media:$1|$1]]\'\'\'響[$4 $2 $3]嘅版本。</span>',
 'filedelete-comment'     => '註解:',
 'filedelete-submit'      => '刪除',
 'filedelete-success'     => "'''$1'''已經刪除咗。",
-'filedelete-success-old' => "<span class=\"plainlinks\">'''[[Media:$1|$1]]'''響 $2 $3 嘅版本已經刪除咗。</span>",
+'filedelete-success-old' => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\'響 $2 $3 嘅版本已經刪除咗。</span>',
 'filedelete-nofile'      => "'''$1'''響呢個網站度唔存在。",
 'filedelete-nofile-old'  => "用指定嘅屬性，呢度係無'''$1'''響 $2 $3 嘅歸檔版本。",
 'filedelete-iscurrent'   => '你而家嘗試刪除呢個檔案嘅最近版本。請先將個檔打回頭做舊啲嘅版本先。',
@@ -1483,6 +1480,7 @@ wiki: $PAGEEDITOR_WIKI
 'protect-summary-cascade'     => '連串保護',
 'protect-expiring'            => '響 $1 (UTC) 到期',
 'protect-cascade'             => '保護包含響呢一版嘅頁面 (連串保護)',
+'protect-cantedit'            => '你唔可以改呢版嘅保護等級，因為你無權限去編輯佢。',
 'restriction-type'            => '許可:',
 'restriction-level'           => '限制等級:',
 'minimum-size'                => '最小大細',
@@ -1541,6 +1539,11 @@ wiki: $PAGEEDITOR_WIKI
 'undelete-error-long'          => '當反刪除緊個檔案嗰陣遇到錯誤:
 
 $1',
+'undelete-more-revs'           => '\'\'\'<span style="color: red;">警告！</span>呢一版有比響呢度顯示更多刪除咗嘅修訂。\'\'\'<br />
+$1次修訂響下面顯示。你可以響呢個表度揀所需要嘅修訂，又或者唔揀去恢復全部嘅修訂（包括埋無響度顯示嘅）。<br />
+($2) ($3)',
+'undelete-next-revs'           => '睇吓後$1次嘅修訂',
+'undelete-show-all'            => '睇吓全部嘅修訂',
 
 # Namespace form on various pages
 'namespace'      => '空間名：',
@@ -2407,8 +2410,8 @@ $1',
 'watchlistedit-raw-removed'    => '已經拎走咗$1個標題:',
 
 # Watchlist editing tools
-'watchlisttools-view'  => '睇吓有關嘅更改',
-'watchlisttools-edit'  => '睇吓同埋編輯監視清單',
-'watchlisttools-raw'   => '編輯原始監視清單',
+'watchlisttools-view' => '睇吓有關嘅更改',
+'watchlisttools-edit' => '睇吓同埋編輯監視清單',
+'watchlisttools-raw'  => '編輯原始監視清單',
 
 );

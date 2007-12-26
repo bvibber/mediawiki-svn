@@ -12,7 +12,7 @@ class ZhConverter extends LanguageConverter {
 			'zh-hans' => new ReplacementArray( $zh2Hans ),
 			'zh-hant' => new ReplacementArray( $zh2Hant ),
 			'zh-cn'   => new ReplacementArray( array_merge($zh2Hans, $zh2CN) ),
-			'zh-tw'   => new ReplacementArray( array_merge($zh2Hans, $zh2TW) ),
+			'zh-tw'   => new ReplacementArray( array_merge($zh2Hant, $zh2TW) ),
 			'zh-sg'   => new ReplacementArray( array_merge($zh2Hans, $zh2SG) ),
 			'zh-hk'   => new ReplacementArray( array_merge($zh2Hant, $zh2HK) ),
 			'zh'      => new ReplacementArray
@@ -52,12 +52,12 @@ class LanguageZh extends LanguageZh_hans {
 		$variants = array('zh', 'zh-hans', 'zh-hant', 'zh-cn', 'zh-tw', 'zh-sg', 'zh-hk');
 		$variantfallbacks = array(
 			'zh'      => 'zh-hans',
-			'zh-hans' => 'zh-cn',
-			'zh-hant' => 'zh-tw',
+			'zh-hans' => 'zh',
+			'zh-hant' => 'zh',
 			'zh-cn'   => 'zh-hans',
 			'zh-sg'   => 'zh-hans',
 			'zh-tw'   => 'zh-hant',
-			'zh-hk'   => 'zh-hant'
+			'zh-hk'   => 'zh-hant',
 		);
 
 		$this->mConverter = new ZhConverter( $this, 'zh', $variants, $variantfallbacks );

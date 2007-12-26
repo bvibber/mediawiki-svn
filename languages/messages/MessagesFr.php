@@ -8,7 +8,6 @@
  * @author Korg
  * @author JeanVoisin
  * @author Cedric31
- * @author G - ג
  * @author Urhixidur
  * @author Sherbrooke
  * @author Siebrand
@@ -16,6 +15,7 @@
  * @author Горан Анђелковић
  * @author Grondin
  * @author Nike
+ * @author לערי ריינהארט
  */
 
 $skinNames = array(
@@ -711,21 +711,25 @@ D’autres administrateurs sur ce wiki pourront toujours accéder au contenu cac
 Consulter la [[Special:Ipblocklist|liste des comptes bloqués]] pour la liste des blocages en cours.',
 
 # History merging
-'mergehistory'         => "Fusion des historiques d'une page",
-'mergehistory-header'  => "Cette page vous permet de fusionner les révisions de l'historique d'une page d'origine vers une nouvelle.
+'mergehistory'                     => "Fusion des historiques d'une page",
+'mergehistory-header'              => "Cette page vous permet de fusionner les révisions de l'historique d'une page d'origine vers une nouvelle.
 Assurez vous que ce changement puisse conserver la continuité de l'historique.
 
 '''Enfin, la version en cours doit être conservée.'''",
-'mergehistory-box'     => 'Fusionner les versions de deux pages :',
-'mergehistory-from'    => "Page d'origine :",
-'mergehistory-into'    => 'Page de destination :',
-'mergehistory-list'    => 'Édition des historiques fusionnables',
-'mergehistory-merge'   => "Les versions suivantes de [[:$1]] peuvent être fusionnées avec [[:$2]]. Utilisez le bouton radio  de la colonne pour fusionner uniquement les versions créées du début jusqu'à la date indiquée. Notez bien que l'utilisation des liens de navigation réinitialisera la colonne.",
-'mergehistory-go'      => 'Voir les éditions fusionnables',
-'mergehistory-submit'  => 'Fusionner les révisions',
-'mergehistory-empty'   => 'Aucune révision ne peut être fusionnée',
-'mergehistory-success' => '$3 {{PLURAL:$3|revision|révisions}} de [[:$1]] {{PLURAL:$3|fusionnée|fusionnées}} avec succès avec [[:$2]].',
-'mergehistory-fail'    => 'Impossible de procéder à la fusion des historiques. Resélectionner la page ainsi que les paramètres de date.',
+'mergehistory-box'                 => 'Fusionner les versions de deux pages :',
+'mergehistory-from'                => "Page d'origine :",
+'mergehistory-into'                => 'Page de destination :',
+'mergehistory-list'                => 'Édition des historiques fusionnables',
+'mergehistory-merge'               => "Les versions suivantes de [[:$1]] peuvent être fusionnées avec [[:$2]]. Utilisez le bouton radio  de la colonne pour fusionner uniquement les versions créées du début jusqu'à la date indiquée. Notez bien que l'utilisation des liens de navigation réinitialisera la colonne.",
+'mergehistory-go'                  => 'Voir les éditions fusionnables',
+'mergehistory-submit'              => 'Fusionner les révisions',
+'mergehistory-empty'               => 'Aucune révision ne peut être fusionnée',
+'mergehistory-success'             => '$3 {{PLURAL:$3|revision|révisions}} de [[:$1]] {{PLURAL:$3|fusionnée|fusionnées}} avec succès avec [[:$2]].',
+'mergehistory-fail'                => 'Impossible de procéder à la fusion des historiques. Resélectionner la page ainsi que les paramètres de date.',
+'mergehistory-no-source'           => "La page d'origine $1 n’existe pas.",
+'mergehistory-no-destination'      => 'La page de destination $1 n’existe pas.',
+'mergehistory-invalid-source'      => 'La page d’origine doit avoir un titre valide.',
+'mergehistory-invalid-destination' => 'La page de destination doit avoir un titre valide.',
 
 # Merge log
 'mergelog'           => 'Journal des fusions',
@@ -894,10 +898,12 @@ $2 Inclure les pages de redirection<br /> Rechercher $3 $9',
 'newsectionsummary'                 => '/* $1 */ nouvelle section',
 
 # Recent changes linked
-'recentchangeslinked'          => 'Suivi des liens',
-'recentchangeslinked-title'    => 'Suivi des liens associés à $1',
-'recentchangeslinked-noresult' => 'Aucun changement sur les pages liées pendant la période choisie.',
-'recentchangeslinked-summary'  => "Cette page spéciale montre les modifications récentes sur les pages qui sont liées. Les pages de votre liste de suivi sont '''en gras'''.",
+'recentchangeslinked'                    => 'Suivi des liens',
+'recentchangeslinked-title'              => 'Suivi des liens associés à $1',
+'recentchangeslinked-noresult'           => 'Aucun changement sur les pages liées pendant la période choisie.',
+'recentchangeslinked-summary'            => "Cette page spéciale montre les modifications récentes sur les pages qui sont liées. Les pages de votre liste de suivi sont '''en gras'''.",
+'recentchangeslinked-feed-entry'         => "L'utilisateur $1 a édité $2",
+'recentchangeslinked-feed-entry-comment' => "L'Utilisateur $1 a édité $2 ($3)",
 
 # Upload
 'upload'                      => 'Importer le fichier',
@@ -1640,7 +1646,7 @@ Dans ce dernier cas, vous pouvez aussi utiliser un lien, comme [[{{ns:special}}:
 'allmessagesdefault'        => 'Message par défaut',
 'allmessagescurrent'        => 'Message actuel',
 'allmessagestext'           => 'Ceci est la liste de tous les messages disponibles dans l’espace MediaWiki',
-'allmessagesnotsupportedDB' => '\'\'\'{{ns:special}}:Allmessages\'\'\' n’est pas disponible car \'\'\'$wgUseDatabaseMessages\'\'\' est désactivé.',
+'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' n’est pas disponible car '''\$wgUseDatabaseMessages''' est désactivé.",
 'allmessagesfilter'         => 'Filtre d’expression rationnelle :',
 'allmessagesmodified'       => 'N’afficher que les modifications',
 
