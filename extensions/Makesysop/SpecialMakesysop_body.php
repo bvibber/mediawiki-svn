@@ -29,16 +29,11 @@ class MakeSysopPage extends SpecialPage {
 
 		$this->setHeaders();
 
-		if( $wgUser->isAllowed( 'userrights' ) ) {
-			$f = new MakesysopStewardForm( $wgRequest );
-			$f->execute();
+		$f = new MakesysopForm( $wgRequest );
+		if ( $f->mSubmit ) {
+			$f->doSubmit();
 		} else {
-			$f = new MakesysopForm( $wgRequest );
-			if ( $f->mSubmit ) {
-				$f->doSubmit();
-			} else {
-				$f->showForm( '' );
-			}
+			$f->showForm( '' );
 		}
 	}
 }
@@ -71,6 +66,10 @@ class MakesysopForm {
 
 		$titleObj = Title::makeTitle( NS_SPECIAL, "Makesysop" );
 		$action = $titleObj->escapeLocalURL( "action=submit" );
+
+		if( $wgUser->isAllowed( 'userrights' ) ) {
+			$wgOut->addWikiText( wfMsg( 'makesysop-see-userrights' ) );
+		}
 
 		if ( "" != $err ) {
 			$wgOut->setSubtitle( wfMsg( "formerror" ) );
@@ -213,193 +212,3 @@ class MakesysopForm {
 	}
 
 }
-
-/**
- *
- * @addtogroup SpecialPage
- */
-class MakesysopStewardForm extends UserrightsForm {
-	function MakesysopStewardForm( $request ) {
-		$this->mPosted = $request->wasPosted();
-		$this->mRequest =& $request;
-		$this->mName = 'userrights';
-		$this->mReason = $request->getText( 'user-reason' );
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'Makesysop' );
-		$this->action = $titleObj->escapeLocalURL();
-
-		$this->db = null;
-	}
-
-	/** @see UserrightsForm::saveUserGroups in MediaWiki */
-	function saveUserGroups( $username, $removegroup, $addgroup, $reason = '') {
-		global $wgOut;
-		$split = $this->splitUsername( $username );
-		if( WikiError::isError( $split ) ) {
-			$wgOut->addWikiText( wfMsg( 'makesysop-nodatabase', $split->getMessage() ) );
-			return;
-		}
-
-		list( $database, $name ) = $split;
-		$this->db =& $this->getDB( $database );
-		$userid = $this->getUserId( $database, $name );
-
-		if( $userid == 0) {
-			$wgOut->addWikiText( wfMsg( 'nosuchusershort', wfEscapeWikiText( $username ) ) );
-			return;
-		}
-
-		$oldGroups = $this->getUserGroups( $database, $userid );
-		$newGroups = $oldGroups;
-		// remove then add groups		
-		if(isset($removegroup)) {
-			$newGroups = array_diff($newGroups, $removegroup);
-			foreach( $removegroup as $group ) {
-				$this->removeUserGroup( $database, $userid, $group );
-			}
-		}
-		if(isset($addgroup)) {
-			$newGroups = array_merge($newGroups, $addgroup);
-			foreach( $addgroup as $group ) {
-				$this->addUserGroup( $database, $userid, $group );
-			}
-		}
-		$newGroups = array_unique( $newGroups );
-
-		// Ensure that caches are cleared
-		$this->touchUser( $database, $userid );
-
-		wfDebug( 'oldGroups: ' . print_r( $oldGroups, true ) );
-		wfDebug( 'newGroups: ' . print_r( $newGroups, true ) );
-
-		$log = new LogPage( 'rights' );
-		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $username ), $this->mReason, array( $this->makeGroupNameList( $oldGroups ),
-			$this->makeGroupNameList( $newGroups ) ) );
-	}
-
-	/**
-	 * Edit user groups membership
-	 * @param string $username Name of the user.
-	 */
-	function editUserGroupsForm($username) {
-		global $wgOut, $wgUser;
-		
-		$split = $this->splitUsername( $username );
-		if( WikiError::isError( $split ) ) {
-			$wgOut->addWikiText( wfMsg( 'makesysop-nodatabase', $split->getMessage() ) );
-			return;
-		}
-
-		list( $database, $name ) = $split;
-		$this->db =& $this->getDB( $database );
-		$userid = $this->getUserId( $database, $name );
-
-		if( $userid == 0) {
-			$wgOut->addWikiText( wfMsg( 'nosuchusershort', wfEscapeWikiText( $username ) ) );
-			return;
-		}
-
-		$groups = $this->getUserGroups( $database, $userid );
-		
-		$this->showEditUserGroupsForm( $username, $groups );
-	}
-
-	function splitUsername( $username ) {
-		$parts = explode( '@', $username );
-		if( count( $parts ) < 2 ) {
-			return array( '', $username );
-		}
-		list( $name, $database ) = $parts;
-
-		global $wgLocalDatabases;
-		return array_search( $database, $wgLocalDatabases ) !== false
-			? array( $database, $name )
-			: new WikiError( 'Bogus database suffix "' . wfEscapeWikiText( $database ) . '"' );
-	}
-
-	/**
-	 * Open a database connection to work on for the requested user.
-	 * This may be a new connection to another database for remote users.
-	 * @param string $database
-	 * @return Database
-	 */
-	function &getDB( $database ) {
-		if( $database == '' ) {
-			$db =& wfGetDB( DB_MASTER );
-		} else {
-			global $wgDBuser, $wgDBpassword;
-			$server = $this->getMaster( $database );
-			$db = new Database( $server, $wgDBuser, $wgDBpassword, $database );
-		}
-		return $db;
-	}
-	
-	/**
-	 * Return the master server to connect to for the requested database.
-	 */
-	function getMaster( $database ) {
-		global $wgDBserver, $wgAlternateMaster;
-		if( isset( $wgAlternateMaster[$database] ) ) {
-			return $wgAlternateMaster[$database];
-		}
-		return $wgDBserver;
-	}
-
-	function getUserId( $database, $name ) {
-		if( $name === '' )
-			return 0;
-		return ( $name{0} == "#" )
-			? IntVal( substr( $name, 1 ) )
-			: IntVal( $this->db->selectField( 'user',
-				'user_id',
-				array( 'user_name' => $name ),
-				'MakesysopStewardForm::getUserId' ) );
-	}
-
-	function getUserGroups( $database, $userid ) {
-		$res = $this->db->select( 'user_groups',
-			array( 'ug_group' ),
-			array( 'ug_user' => $userid ),
-			'MakesysopStewardForm::getUserGroups' );
-		$groups = array();
-		while( $row = $this->db->fetchObject( $res ) ) {
-			$groups[] = $row->ug_group;
-		}
-		return $groups;
-	}
-
-	function addUserGroup( $database, $userid, $group ) {
-		$this->db->insert( 'user_groups',
-			array(
-				'ug_user' => $userid,
-				'ug_group' => $group,
-			),
-			'MakesysopStewardForm::addUserGroup',
-			array( 'IGNORE' ) );
-	}
-
-	function removeUserGroup( $database, $userid, $group ) {
-		$this->db->delete( 'user_groups',
-			array(
-				'ug_user' => $userid,
-				'ug_group' => $group,
-			),
-			'MakesysopStewardForm::addUserGroup' );
-	}
-
-	function touchUser( $database, $userid ) {
-		$this->db->update( 'user',
-			array( 'user_touched' => $this->db->timestamp() ),
-			array( 'user_id' => $userid ),
-			'MakesysopStewardForm::touchUser' );
-		
-		global $wgMemc;
-		if ( function_exists( 'wfForeignMemcKey' ) ) {
-			$key = wfForeignMemcKey( $database, false, 'user', 'id', $userid );
-		} else {
-			$key = "$database:user:id:$userid";
-		}
-		$wgMemc->delete( $key );
-	}
-}
-
-
