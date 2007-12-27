@@ -66,6 +66,21 @@ Postrowy,
 $2',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'userrightsnotifysubject' => 'Ännerung vun de Memberen vun de Gruppen vum $1',
+	'userrightsnotifybody'    => 'Salut $1
+
+Heimat gitt Dir informéiert, datt äer Meberschaft am Grupp vun $2 vum $3 den $4 geännert gouf.
+
+Derbäigesat: $5
+Erausgeholl: $6\
+
+Mat beschte Gréiss,',
+);
+
 $messages['nl'] = array(
 	'userrightsnotifysubject' => 'Groepslidmaatschap is gewijzigd op $1',
 	'userrightsnotifybody'    => 'Hallo $1

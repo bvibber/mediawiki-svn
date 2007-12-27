@@ -192,6 +192,27 @@ $allMessages = array(
 		'tasklistbyname'          => '== Lista do zrobienia dla %s ==',
 	),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+	'stq' => array(
+		'tasklist'               => 'Apgoawenlieste',
+		'tasklistbyproject'      => 'Apgoawenlieste pro  Projekt',
+		'tasklistunknownproject' => 'Uunbekoand Projekt',
+		'tasklistunspecuser'     => 'Uunbestimde Benutsernoome',
+		'tasklistincorrectuser'  => 'Falsken Benutsernoome',
+		'tasklistemail'          => 'Moin %s',
+		'tasklistemailsubject'   => '[%s]-Apgoawenlieste Annerengen',
+		'tasklistmytasks'        => 'Mien Apgoawen',
+		'tasklistbyprojectbad'   => "Projekt '''%s''' is nit deer. Foar ne Lieste fon gultige Projekte sjuch [[MediaWiki:TodoTasksValidProjects]].",
+		'tasklistbyprojname'     => "Touwiesde Apgoawen foar '''%s'''",
+		'tasklistchooseproj'     => 'Projekt uutwääle:',
+		'tasklistprojdisp'       => 'Anwiese',
+		'tasklistbyname'         => '== Apgoawenlieste foar %s ==',
+		'tasklistnoprojects'     => "Failer: Dät sjucht so uut, as wan '''\$wgUseProjects''' aktivierd waas, man der wuuden neen Sieden [[MediaWiki:TodoTasksValidProjects]] moaked. Sjuch do 
+[http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installationsanwiesengen] foar wiedere Details.",
+	),
+
 	'zh-tw' => array(            //Taiwanese Chinese
 		'tasklist'                => '任務清單',  //Task List
 		'tasklistbyproject'       => '依專案列出任務', //Task List By Project

@@ -533,6 +533,14 @@ Bul mälimetti barşağa aşqanda Nusqa jasırwşı quqıqtarıñız ärdaýım 
 	'hiderevision-submit' => 'Důnn_di Väsjohn foshtäshe',
 ),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+'lb' => array(
+	'hiderevision-tab'    => 'Verstopp Versiounen',
+	'hiderevision-status' => 'Versioun $1: $2',
+),
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

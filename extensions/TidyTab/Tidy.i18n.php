@@ -64,3 +64,11 @@ $messages['oc'] = array(
 	'tidy'   => 'Classar',
 	'untidy' => 'Declassar',
 );
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'tidy'   => 'Oardenje',
+	'untidy' => 'Nit oardenje',
+);

@@ -70,6 +70,13 @@ $messages['hu'] = array(
 	'seealso' => 'Lásd még',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'seealso' => 'Kuckt och',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

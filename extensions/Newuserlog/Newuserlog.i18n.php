@@ -211,37 +211,53 @@ $wgNewuserlogMessages['kk-arab'] = array(
 	'newuserlog-create-entry'  => 'جاڭا قاتىسۋشى',
 	'newuserlog-create2-entry' => 'جاڭا تٸركەلگٸ جاسادى — $1',
 );
+
 $wgNewuserlogMessages['ko'] = array(
 	'newuserlogpage'           => '사용자 등록 기록',
 	'newuserlogpagetext'       => '사용자 등록 기록입니다.',
 	'newuserlog-create-entry'  => '새 사용자',
 );
+
 $wgNewuserlogMessages['ksh'] = array(
 	'newuserlogpage'           => 'Logbooch för nöü Users',
 	'newuserlogpagetext'       => 'He sin de Users opjelėßß, di sesh nöü aanjemäldt han.',
 	'newuserlog-create-entry'  => 'eß enne nöüje User',
 	'newuserlog-create2-entry' => 'Nöüje Zojang enjerėshdt för „$1“',
 );
+
 $wgNewuserlogMessages['ku'] = array(
 	'newuserlogpage'           => 'Reşahiya çêkirina hesabên nû',
 	'newuserlog-create-entry'  => 'Bikarhênerekî nuh',
 );
+
 $wgNewuserlogMessages['la'] = array(
 	'newuserlogpage'           => 'Index rationum novarum creatarum',
 	'newuserlogpagetext'       => 'Hic est index rationum novarum creatarum',
 	'newuserlog-create-entry'  => 'Usor novus',
 	'newuserlog-create2-entry' => 'creavit rationem pro $1',
 );
+
 $wgNewuserlogMessages['lb'] = array(
 	'newuserlogpagetext'       => 'Dëst ass d\'Lescht vun de Benotzernimm déi ugeluecht goufen',
 	'newuserlog-create-entry'  => 'Neie Benotzer',
 );
+
 $wgNewuserlogMessages['lo'] = array(
 	'newuserlogpage'           => 'ບັນທຶກການສ້າງບັນຊີຜູ້ໃຊ້',
 	'newuserlogpagetext'       => 'ນີ້ແມ່ນ ບັນທຶກການສ້າງ ບັນຊີຜູ້ໃຊ້ໃໝ່',
 	'newuserlog-create-entry'  => 'ຜູ້ໃຊ້ໃໝ່',
 	'newuserlog-create2-entry' => 'ໄດ້ສ້າງບັນຊີ ໃຫ້ $1',
 );
+
+/** Latvian (Latviešu)
+ * @author SPQRobin
+ */
+$wgNewuserlogMessages['lv'] = array(
+	'newuserlogpage'          => 'Jauno lietotāju reģistrs',
+	'newuserlogpagetext'      => 'Jauno lietotājvārdu reģistrs',
+	'newuserlog-create-entry' => 'Reģistrēts lietotājvārds',
+);
+
 $wgNewuserlogMessages['mk'] = array(
 	'newuserlogpage'           => 'Листа на нови корисници',
 	'newuserlogpagetext'       => 'Ова е листа на скоро регистрирани корисници',

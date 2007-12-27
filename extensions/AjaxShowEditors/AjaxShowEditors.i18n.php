@@ -107,21 +107,34 @@ $wgAjaxShowEditorsMessages['ja'] = array(
 	'ajax-se-pending' => '更新します（この枠内をクリックするか編集を始めてください）',
 	'ajax-se-idling' => '（$1秒前）',
 );
+
 $wgAjaxShowEditorsMessages['kk-cyrl'] = array(
 	'ajax-se-title' => 'Ағымдағы өңделуде:',
 	'ajax-se-pending' => 'жаңарту күтілуде... (бұл қабышақты нұқыңыз, немесе өңдеуді бастаңыз)',
 	'ajax-se-idling' => '($1 s бұрын)',
 );
+
 $wgAjaxShowEditorsMessages['kk-latn'] = array(
 	'ajax-se-title' => 'Ağımdağı öñdelwde:',
 	'ajax-se-pending' => 'jañartw kütilwde... (bul qabışaqtı nuqıñız, nemese öñdewdi bastañız)',
 	'ajax-se-idling' => '($1 s burın)',
 );
+
 $wgAjaxShowEditorsMessages['kk-arab'] = array(
 	'ajax-se-title' => 'اعىمداعى ٶڭدەلۋدە:',
 	'ajax-se-pending' => 'جاڭارتۋ كٷتٸلۋدە... (بۇل قابىشاقتى نۇقىڭىز, نەمەسە ٶڭدەۋدٸ باستاڭىز)',
 	'ajax-se-idling' => '($1 s بۇرىن)',
 );
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$wgAjaxShowEditorsMessages['lb'] = array(
+	'ajax-se-title'   => 'Elo geännert vum:',
+	'ajax-se-pending' => 'soll geännert ginn ... (klickt op dës Këscht oder fénkt u mat änneren)',
+	'ajax-se-idling'  => '(viru(n) $1 Sekonnen)',
+);
+
 $wgAjaxShowEditorsMessages['li'] = array(
 	'ajax-se-title' => 'Memènteel aant bewèrke:',
 	'ajax-se-pending' => 'Herfrisse aant äöbere... (klik op deze bóks of sjtart \'t bewèrke)',

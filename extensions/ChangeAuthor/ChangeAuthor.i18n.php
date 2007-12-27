@@ -227,8 +227,17 @@ $allMessages = array(
  * @author Robby
  */
 	'lb' => array(
-		'changeauthor-comment'          => 'Bemierkung:',
-		'changeauthor-invalid-username' => 'Benotzernumm „$1“ ass net gëlteg!',
+		'changeauthor-title'                => 'Auteur vun enger Versioun änneren',
+		'changeauthor-search-box'           => 'Versioune sichen',
+		'changeauthor-pagename-or-revid'    => 'Säitenumm oder Versiounsnummer:',
+		'changeauthor-comment'              => 'Bemierkung:',
+		'changeauthor-changeauthors-multi'  => 'Auteur(en) änneren',
+		'changeauthor-changeauthors-single' => 'Autor änneren',
+		'changeauthor-invalid-username'     => 'Benotzernumm „$1“ ass net gëlteg!',
+		'changeauthor-nosuchuser'           => 'Et gëtt kee Benotzer "$1".',
+		'changeauthor-revview'              => 'Versioun #$1 vun $2',
+		'changeauthor-nosuchtitle'          => 'Et gëtt keen Artikel "$1".',
+		'changeauthor-rev'                  => 'Versioun $1',
 	),
 
 	'nl' => array(

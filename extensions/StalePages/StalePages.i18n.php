@@ -53,6 +53,14 @@ $messages['hsb'] = array(
 	'stalepages-summary' => 'To je lisćina stronow, kotrež njebuchu za {{PLURAL:$1|posledni $1 dźeń|poslednjeju $1 dnjow|posdlednje $1 dny|poslednych $1 dnjow}} změnjene.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'stalepages'         => 'Al Säiten',
+	'stalepages-summary' => 'Dëst ass eng Lëscht vu Säiten, déi an de läschte(n) $1 Deeg net verännert goufen.',
+);
+
 $messages['nl'] = array(
 	'stalepages' => 'Vergeten pagina\'s',
 	'stalepages-summary' => 'Dit is een lijst van pagina\'s die niet bewerkt zijn in de afgelopen $1 dagen.',
@@ -64,4 +72,12 @@ $messages['nl'] = array(
 $messages['oc'] = array(
 	'stalepages'         => 'Paginas depassadas',
 	'stalepages-summary' => 'Aquò es una lista de paginas que son pas estadas modificadas dempuèi {{plural:$1|$1 jorn|$1 jorns}}.',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'stalepages'         => 'Oolde Sieden',
+	'stalepages-summary' => 'Dit is ne Lieste fon Sieden, do der in do lääste $1 Deege nit beoarbaided wuuden.',
 );

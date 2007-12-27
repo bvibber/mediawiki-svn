@@ -34,16 +34,28 @@ $allMessages = array(
 		'templatelink_empty' => 'Vous devez saisir un paramètre.',
 		'templatelink_newtitle' => '$1 (tranclus)',
 	),
+
 	'gl' => array(
 		'templatelink' => 'Ligazón do modelo',
 		'templatelink_empty' => 'Vostede ten que proporcionar un parámetro.',
 		'templatelink_newtitle' => '$1 (transcluído)',
 	),
+
 	'hsb' => array(
 		'templatelink' => 'Předłohowy wotkaz',
 		'templatelink_empty' => 'Dyrbiš parameter podać.',
 		'templatelink_newtitle' => '$1 (narunany)',
 	),
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+	'lb' => array(
+		'templatelink'          => 'Schabloune-Link',
+		'templatelink_empty'    => 'Dir musst e Parameter uginn.',
+		'templatelink_newtitle' => '$1 (ersat)',
+	),
+
         'nl' => array(
                 'templatelink' => 'Sjabloonverwijzing',
                 'templatelink_empty' => 'Geef een parameter op.',
@@ -69,5 +81,14 @@ $allMessages = array(
 		'templatelink' => 'Anliura dlë stamp',
 		'templatelink_empty' => 'A venta ch\'a buta un paràmetr.',
 		'templatelink_newtitle' => '$1 (an transclusion)',
+	),
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+	'stq' => array(
+		'templatelink'          => 'Foarloagen-Ferbiendenge',
+		'templatelink_empty'    => 'Aan Parameter mout anroat wäide.',
+		'templatelink_newtitle' => '$1 (ärsät)',
 	),
 );

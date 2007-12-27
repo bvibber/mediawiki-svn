@@ -78,6 +78,16 @@ $messages['oc'] = array(
 	'intersection_noincludecats' => 'DynamicPageList : avètz besonh d’inclòure al mens una categoria, o de precisar un nom d’espaci !',
 );
 
+/** Portuguese (Português)
+ * @author 555
+ */
+$messages['pt'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: Categorias em excesso!',
+	'intersection_toofewcats'    => 'DynamicPageList: Poucas categorias!',
+	'intersection_noresults'     => 'DynamicPageList: Sem resultados!',
+	'intersection_noincludecats' => 'DynamicPageList: É necessário incluir no mínimo uma categoria ou especificar um espaço nominal!',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

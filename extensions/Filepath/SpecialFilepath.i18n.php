@@ -215,6 +215,7 @@ $wgFilepathMessages['ksh'] = array(
 	'filepath_page'   => 'Dattëij_Name:',
 	'filepath_submit' => 'Zëĳsh dä Pahdt',
 );
+
 $wgFilepathMessages['la'] = array(
 	'filepath'        => 'Fasciculorum inscriptio',
 	'filepath_page'   => 'Fasciculus:',
@@ -223,9 +224,20 @@ $wgFilepathMessages['la'] = array(
 $wgFilepathMessages['lo'] = array(
 	'filepath'         => 'ທາງໄປຫາໄຟລ໌',
 );
+
+/** Latvian (Latviešu)
+ * @author SPQRobin
+ */
+$wgFilepathMessages['lv'] = array(
+	'filepath'        => 'Failu adreses',
+	'filepath_page'   => 'Fails:',
+	'filepath_submit' => 'Atrast adresi',
+);
+
 $wgFilepathMessages['nan'] = array(
 	'filepath'         => 'Tóng-àn ê soàⁿ-lō·',
 );
+
 $wgFilepathMessages['nl'] = array(
 	'filepath'        => 'Bestandslocatie',
 	'filepath_page'   => 'Bestand:',
@@ -234,6 +246,7 @@ $wgFilepathMessages['nl'] = array(
 
 	Voer de bestandsnaam in zonder het voorvoegsel "{{ns:image}}:".',
 );
+
 $wgFilepathMessages['no'] = array(
 	'filepath'        => 'Filsti',
 	'filepath_page'   => 'Fil:',

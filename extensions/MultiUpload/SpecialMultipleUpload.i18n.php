@@ -163,8 +163,12 @@ Upassende filer vil bli slettet umiddelbart, se [[{{MediaWiki:Multipleupload-pag
  * @author Pyt
  */
 $messages['stq'] = array(
-	'multipleupload-addresswarnings' => 'Älke Woarschauenge anwiese foar dät fonnäien Hoochleeden fon Doatäie.',
-	'multipleupload-text'            => "Tou glieke Tied Hoochleeden fon moorere Doatäie.
+	'multipleupload'                   => 'Doatäie hoochleede',
+	'multipleupload-ignoreallwarnings' => "Ignorier '''aal Woarschauengen''' un spiekerje do Doatäie",
+	'multipleupload-saveallfiles'      => 'Aal Doatäie spiekerje',
+	'multipleupload-addresswarnings'   => 'Älke Woarschauenge anwiese foar dät fonnäien Hoochleeden fon Doatäie.',
+	'multipleupload-page'              => '{{ns:project}}:Läskgjuchtlienjen',
+	'multipleupload-text'              => "Tou glieke Tied Hoochleeden fon moorere Doatäie.
 
 Wääl 'Browse' un wääl älke Doatäi uut, ju du hoochleede moatest. Du koast tou glieke Tied twiske 1 un $1 Doatäie hoochleede.
 

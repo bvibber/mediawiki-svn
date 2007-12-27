@@ -42,6 +42,13 @@ $messages['hsb'] = array(
 	'advancedrandom' => 'Rozšěrjena připadna strona',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'advancedrandom' => 'Zoufälleg Säit (erweidert)',
+);
+
 $messages['nl'] = array(
 	'advancedrandom' => 'Willekeurige pagina (geavanceerd)',
 );

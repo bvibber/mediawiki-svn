@@ -264,6 +264,23 @@ Basqa ataw talğañız.',
 	'blacklistedusernametext' => 'Wê navî yê te hilbijart li ser [[MediaWiki:Usernameblacklist|lîstêya navên nebaş]] e. Xêra xwe navekî din hilbijêre.',
 ),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+'lb' => array(
+	'blacklistedusername'             => 'Verbuede Benotzernimm',
+	'blacklistedusernametext'         => 'De gewielte Benotzernumm steet op der [[MediaWiki:Usernameblacklist|Lëscht vun de verbuedene Benotzernimm]]. Sicht iech w.e.g en anere Benotzernumm.',
+	'usernameblacklist'               => "<pre>
+# D'Elementer an dëser Lëscht sinn Deel vun engem regulären Ausdrock,
+# dee bei der Iwwerpréifung von neien Umeldungen op ''verbuede Benotzernimm'' applizéiert gëtt.
+# All Zeil muss matt engem * ufénken, z.Bsp.
+#
+# * Foo
+# * [Bb]ar
+</pre>",
+	'usernameblacklist-invalid-lines' => 'Déi folgend {{PLURAL:$1|Linn|Linnen}} an der Lëscht vun de verbuedene Benotzernimm {{PLURAL:$1|ass|sinn}} ongültig; w.e.g virum Ofspäichere verbesseren:',
+),
+
 /* Lao */
 'lo' => array(
 	'blacklistedusername' => 'ຊື່ຜູ້ໃຊ້ ໃນ ບັນຊີດຳ',

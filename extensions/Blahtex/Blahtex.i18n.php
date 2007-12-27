@@ -623,6 +623,49 @@ $messages['ro'] = array(
 	'math_WrongFontEncodingWithHint'        => 'Simbolul "$1" nu poate apărea în fontul "$2" (încercaţi să folosiţi comanda "$3{...}")',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'math_noblahtex'                        => 'Невозможно запустить blahtex, его ожидаемое расположение: $1',
+	'math_AmbiguousInfix'                   => 'Неоднозначное расположение «$1» (попробуйте использовать дополнительные скобки «{ ... }» для разрешения неоднозначности)',
+	'math_CannotChangeDirectory'            => 'Невозможно изменить рабочую директорию',
+	'math_CannotCreateTexFile'              => 'Невозможно создать tex-файл',
+	'math_CannotRunDvipng'                  => 'Невозможно запустить dvipng',
+	'math_CannotRunLatex'                   => 'Невозможно запустить latex',
+	'math_CannotWritePngDirectory'          => 'Невозможно записать результат в выходную директорию PNG',
+	'math_CannotWriteTexFile'               => 'Невозможно записать в tex-файл',
+	'math_CasesRowTooBig'                   => 'Могут быть только две записи в каждой строке блока «cases».',
+	'math_DoubleSubscript'                  => 'Обнаружено два подстрочных элемента, присоединённых к одному основанию (может быть только один)',
+	'math_DoubleSuperscript'                => 'Обнаружено два надстрочных элемента, присоединённых к одному основанию (может быть только один)',
+	'math_IllegalCharacter'                 => 'Запрещённый символ в исходных данных',
+	'math_IllegalCommandInMathMode'         => 'Команда «$1» запрещена в math-режиме',
+	'math_IllegalCommandInMathModeWithHint' => 'Команда «$1» запрещена в math-режиме (возможно, следует использовать «$2» вместо неё)',
+	'math_IllegalCommandInTextMode'         => 'Команда «$1» запрещена в text-режиме',
+	'math_IllegalCommandInTextModeWithHint' => 'Команда «$1» запрещена в text-режиме (возможно, следует использовать «$2» вместо неё)',
+	'math_IllegalDelimiter'                 => 'Ошибочный разделитель после «$1»',
+	'math_IllegalFinalBackslash'            => 'Ошибочная обратная косая черта «\» в конце входных данных',
+	'math_IllegalNestedFontEncodings'       => 'Команды установок шрифта не могут быть вложенными',
+	'math_IllegalRedefinition'              => 'Команда «$1» уже была определена, вы не можете переопределить её',
+	'math_InvalidColour'                    => 'Цвет «$1» не является допустимым',
+	'math_InvalidUtf8Input'                 => 'Входная строка не допустима по UTF-8',
+	'math_LatexFontNotSpecified'            => 'Не указан шрифт LaTeX для «$1»',
+	'math_LatexPackageUnavailable'          => 'Невозможно создать изображение PNG, так как недоступен LaTeX-пакет «$1»',
+	'math_MismatchedBeginAndEnd'            => 'Команды «$1» и «$2» не соответствуют',
+	'math_MissingCommandAfterNewcommand'    => 'Команда «$1» может использоваться только после math-оператора (вероятно, следует использовать «\mathop»)',
+	'math_MissingDelimiter'                 => 'Отсутствует разделитель после «$1»',
+	'math_MissingOpenBraceAfter'            => 'Отсутствует открывающая скобка «{» после «$1»',
+	'math_MissingOpenBraceAtEnd'            => 'Отсутствует открывающая скобка «{» в конце входных данных',
+	'math_MissingOpenBraceBefore'           => 'Отсутствует открывающая скобка «{» перед «$1»',
+	'math_MissingOrIllegalParameterCount'   => 'Не указано или указано ошибочно число параметров в определении «$1» (должна быть отдна цифра от 1 до 9)',
+	'math_MissingOrIllegalParameterIndex'   => 'Не указан или указан ошибочно индекс параметра в определении «$1»',
+	'math_NonAsciiInMathMode'               => 'Не-ASCII символы могут использоваться только в text-режиме (попробуйте заключить такие символы в «\text{...}»)',
+	'math_NotEnoughArguments'               => 'Не все аргументы были указаны для «$1»',
+	'math_PngIncompatibleCharacter'         => 'Невозможно правильно создать PNG, содержащий символ «$1»',
+	'math_ReservedCommand'                  => 'Команда «$1» зарезервирована blahtex для внутреннего использования',
+	'math_SubstackRowTooBig'                => 'В каждой строке блока «substack» может быть только одна запись',
+);
+
 $messages['stq'] = array(
 	'math_noblahtex'                        => 'Kon nit uutfiere blahtex, ju der ap $1 weese schuul',
 );

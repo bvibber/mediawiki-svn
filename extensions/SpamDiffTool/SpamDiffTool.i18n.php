@@ -177,3 +177,22 @@ $messages['oc'] = array(
 	'spamdifftool_block'            => 'Blocar :',
 	'spamdifftool_submit_buttom'    => 'Sometre',
 );
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'spamdifftool'                  => 'Spam-Blacklist beoarbaidje',
+	'spamdifftool_cantedit'         => 'Du hääst neen Begjuchtigenge tou ju Beoarbaidenge fon ju Spam-Blacklist.',
+	'spamdifftool_notext'           => "Dät rakt naan Text, die der an ju Spam-Blacklist bietouföiged wäide kuude. Klik <a href='$1'>hier</a> toun Fääregungen.",
+	'spamdifftool_confirm'          => "Bestäätigje, dät du disse Iendraage an ju Spam-Blacklist bietouföigje moatest. (Klik <a href='http://www.mediawiki.org/w/index.php?title=Talk:SpamDiffTool_Extension&action=edit&section=new' target='new'>hier</a>, uum n Problem tou mäldjen.)",
+	'spamdifftool_summary'          => 'Tou ju Spam-Blacklist bietouföigje',
+	'spamdifftool_urls_detected'    => 'Do foulgjende URLs wuuden in ju Beoarbaidenge fuunen; wäkke deerfon moatest du ju Spam-Blacklist bietouföigje?
+Ju Riegenfoulge gungt fon gjucht ienäängjend bit minner ienäängjend; dät Iendreegen fon n gans Domain blokkiert aal Ferbiendengen, do der fon dissen Domain kuume.<br /><br />
+Staal sicher, dät du nit komplette Domains blokkierst, do der separate Benutserinhoolde kloorstaale, as t.B. blogpost.com, geocities.com usw.',
+	'spamdifftool_no_urls_detected' => "Der wuuden neen URLs fuunen. Klik <a href='$1'>hier</a>, uum touräächtougungen.",
+	'spamdifftool_spam_link_text'   => 'tou Spam bietouföigje',
+	'spamdifftool_option_domain'    => 'aal fon dissen Domain',
+	'spamdifftool_option_subdomain' => 'aal fon dissen Subdomain',
+	'spamdifftool_submit_buttom'    => 'Spiekerje',
+);

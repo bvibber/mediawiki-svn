@@ -271,4 +271,28 @@ $SpecialFormMessages =array(
 		'formsaveerror' => 'Eror ën salvand ël mòdulo ëd domanda',
 		'formsaveerrortext' => 'A-i é sta-ie n\'eror amprevist ën salvand la pàgina \'$1\'.',
 	),
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+	'stq' => array(
+		'form'                         => 'Formular',
+		'formnoname'                   => 'Naan Formularnoome',
+		'formnonametext'               => 'Du moast n Formularnoome ounreeke, t.B. „{{ns:Special}}:Form/Formularnoome“.',
+		'formbadname'                  => 'Falsken Formularnoome',
+		'formbadnametext'              => 'Dät rakt neen Formular mäd dissen Noome',
+		'formpattern'                  => '$1-Formular',
+		'formtitlepattern'             => 'Föigje näie $1 bietou',
+		'formsave'                     => 'Spiekerje',
+		'formindexmismatch'            => 'Dit Formular häd n Uungliekgewicht twiske Noomensmustere un Foarloagen, ounfangend bie Index $1.',
+		'formarticleexists'            => 'Siede is al deer',
+		'formarticleexiststext'        => 'Ju Siede „[[$1]]“ is al deer.',
+		'formbadpagename'              => 'Ferkierde Siedennoome',
+		'formbadpagenametext'          => 'Do ienroate Formulardoaten moakje n ferkierden Siedennoome: „$1“.',
+		'formrequiredfieldpluralerror' => 'Do Fäildere $1 sunt Plichtfäildere. Jädden uutfälle.',
+		'formrequiredfielderror'       => 'Dät Fäild $1 is n Plichtfäild. Jädden uutfälle.',
+		'formsavesummary'              => 'Näie Siede, ju der ap [[{{ns:Special}}:Form/$1]] basiert',
+		'formsaveerror'                => 'Failer bie dät Spiekerjen fon dät Formular',
+		'formsaveerrortext'            => 'Dät roate n uunbekoanden Failer bie dät Spiekerjen fon ju Siede „$1“.',
+	),
 );
