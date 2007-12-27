@@ -448,22 +448,40 @@ class MessageCache {
 	 */
 	function get( $key, $useDB = true, $forContent = true, $isFullKey = false ) {
 		global $wgContLanguageCode, $wgContLang, $wgLang;
+		global $wgLanguageCode;
+		global $wgTitle;
+		global $wgLanguageTag, $wgContLangs;
 
-		global $wgLanguageCode; // $forContent=0;
-		global $wgTitle; global $wgLanguageTag;
+		if($wgLanguageTag) {
+		global $wgUser;
+		if( $wgUser->getOption( 'language' ) ) { // FIXME: Move somewhere else
+			if(0) $wgLanguageCode = $wgUser->getOption( 'language' );
+		}
+		if( !$forContent ) if(!method_exists($wgLang,'getCode')) if(!$wgTitle->mLanguage) $forContent = true; // $wgLang = $wgContLang;
+		if( !$forContent && array_key_exists($wgContLang->getCode3(), $wgContLangs)
+			&& $wgContLangs[$wgContLang->getCode3()] ) $forContent = true;
+		$forContent = false;
 
-		if( !$forContent ) if(!method_exists($wgLang,'getCode')) if(!$wgTitle->mLanguage) $wgLang=$wgContLang;
+		# Try to return a message in a prefered language
+		$wgUserLangs = array_filter ( split("[\r\n\t ,]+", $wgUser->getOption( 'languages' ) ) );
+		if ( !$forContent && $wgUserLangs && in_array($wgContLang->getCode3(),
+			split("[\r\n\t ,]+", $wgUser->getOption( 'languages' ) ) ) ) {
+			$forContent = true;
+		} else if ( in_array($wgTitle->mLanguageCode, split("[\r\n\t ,]+", $wgUser->getOption( 'languages' ) ) ) ) {
+			$wgContLang = Language::factory($wgTitle->mLanguageCode);
+			$forContent = true;
+		}
+		}
 
+		# Poor negotiation of message language
 		if( $forContent ) {
 			$lang = &$wgContLang;
 			$clang = $wgContLanguageCode;
 		} else {
 			$lang = &$wgLang;
                         $clang = &$wgLanguageCode;
-		} // $clang=$wgLanguageCode;
-		$langcode = $lang->getCode();
-                // if(!$lang->mCodeId)
-
+		}
+		$langcode = $lang->getCode(); $langid = $lang->getCodeId();
 		if($lang->getCode3() == 'und') $lang->setCode($lang->getCode3());
 		else $lang->setCode($lang->getCode());
 
@@ -482,12 +500,16 @@ class MessageCache {
 		$lckey = $wgContLang->lcfirst( $key );
 		$lckey = str_replace( ' ', '_', $lckey );
 
+$useDB = 1;
+// if($key == 'languagedefaults' || $key == 'Languagedefaults')
+//  die("Test".$this->mDisable."-".$useDB."-".$isFullKey."--$key");
+
 		# Try the MediaWiki namespace
 		if( !$this->mDisable && $useDB ) {
-		if($wgLanguageTag) {
+		if($wgLanguageTag && !$isFullKey) {
 			$title = $lang->ucfirst( $key );
 			if(!$isFullKey && ($langcode != $clang) ) {
-		 	       global $wgLanguageTag; if($wgLanguageTag) $title .= '/' . $langcode;
+		 	       $message = $this->getMsgFromNamespace( $title , $langid );
 			}
 			$message = $this->getMsgFromNamespace( $title , $lang->getCodeId() );
 		}

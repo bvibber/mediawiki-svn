@@ -90,29 +90,33 @@ function wgLanguageTagFromConds($conds) {
 		array('language_id','tag_name','wikimedia_key','rfc4646','preferred_id'),
 		$conds,'wgLanguageTag::fromConds',
 		array('ORDER BY'=>'preferred_id asc'));
-	$found=false;
+	$found = false;
 	while( $row = $dbr->fetchObject( $result ) ) {
-		if(!$found) $found=true;
-		$wgLanguageIds[$row->language_id]=$row->tag_name;
-		if($row->rfc4646) {
+		if(!$found) $found = true;
+		$wgLanguageIds[$row->language_id] = $row->tag_name;
+		if($row->preferred_id) {
+			$wgLanguageProper[$row->language_id] = wgLanguageCode($row->preferred_id);
+		}
+		else if($row->rfc4646) {
 			$wgLanguageProper[$row->language_id] = $row->rfc4646;
 		}
 		else if($row->wikimedia_key) {
 			$wgLanguageProper[$row->language_id] = $row->wikimedia_key;
 		}
-		if($row->preferred_id) {
-			$wgLanguageProper[$row->language_id] = wgLanguageCode($row->preferred_id);
-		}
                 if($row->wikimedia_key) {
-                        $wgLanguageWikimedia[$row->wikimedia_key] = $row->tag_name; //WRONG WRONG WRONG
-                        $wgLanguageWikimedia[$row->tag_name] = $row->wikimedia_key; //RIGHT RIGHT RIGHT
+                        $wgLanguageWikimedia[$row->wikimedia_key] = $row->tag_name; //FIXME: Poorly tested
+                        $wgLanguageWikimedia[$row->tag_name] = $row->wikimedia_key;
                 }
         }
 	$dbr->freeResult( $result );
+
+	if(0 && $wgMainCacheType!==CACHE_NONE) {
+		$cache = wfGetMessageCacheStorage();
+		$vars=array('wgLanguageIds','wgLanguageWikimedia','wgLanguageProper');
+		foreach($vars as $v) $cache->set($v,$$v);
+	}
+
 	return $found;
-	$vars=array('wgLanguageNames','wgLanguageIds','wgLanguageWikimedia','wgLanguageProper');
-	$cache = wfGetMessageCacheStorage();
-	if($wgMainCacheType!==CACHE_NONE) foreach($vars as $v) $cache->set($v,$$v);
 }
 
 /**
@@ -122,7 +126,8 @@ function wgLanguageCode($lid=null,$legacy=false) {
 	global $wgLanguageIds, $wgLanguageWikimedia, $wgLanguageNames, $wgMainCacheType;
 	$vars=array('wgLanguageNames','wgLanguageIds','wgLanguageWikimedia');
 	$cache = wfGetMessageCacheStorage();
-        
+       
+	if($lid === false) return 'und'; 
 	if($lid === null) return 'und';
 	if(!strlen(trim($lid))) return 'und';
 	if($lid === 0 ) return 'mul';
@@ -131,7 +136,7 @@ function wgLanguageCode($lid=null,$legacy=false) {
 		return $wgLanguageIds[$lid];
 	}
         
-	$wgLanguageIds[$lid]=null;
+	$wgLanguageIds[$lid] = null;
 	wgLanguageTagFromConds(array('language_id'=>$lid,'is_enabled'=>'1'));
 	return $wgLanguageIds[$lid];
 }
@@ -144,9 +149,12 @@ function wgLanguageId($code='en',$strict=false) {
 ## First run of update.php
 # $wgLanguageIds[1]='eng';
 
-	if(!strlen(trim($code)) || $code===null) return null;
+	if($code === false) return false;
+	if($code === null) return null;
+	if(!strlen(trim($code))) return null;
 	if($code == 'mul') return 0;
 
+	// FIXME: Unused and untested
 	if($strict) {
 		if(strlen($code)>42 || strlen($code)<2) return false;
 		if(strpos($code,'-')>5) return false;
@@ -167,13 +175,14 @@ function wgLanguageId($code='en',$strict=false) {
 		if(false !== $lid=array_search($code,$wgLanguageIds,1)) return $lid;
 	}
 
-	wgLanguageTagFromConds(array('tag_name'=>$code,'is_enabled'=>'1'));
+	$lid = wgLanguageTagFromConds(array('tag_name'=>$code,'is_enabled'=>'1'))
+		? array_search($code,$wgLanguageIds,1) : false;
 
-        $lid=array_search($code,$wgLanguageIds,1);
  	if(false === $lid) {
-		$lid = null;	
-#		$wgLanguageWikimedia[$code]=null;
+		$wgLanguageIds[$code] = null;
+		return null;
 	}
+
 	return $lid;
 }
 

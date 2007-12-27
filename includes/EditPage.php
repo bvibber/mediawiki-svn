@@ -1537,8 +1537,8 @@ END
 
 			if($GLOBALS['wgLanguageTag']) // FIXME
                         foreach ( $parserOutput->getTemplates() as $ns => $template)
-                                foreach ( $template as $dbk)
-                                        $this->mPreviewTemplates[] = Title::newFromId($dbk);
+                                foreach ( $template as $dbk => $dbv )
+                                        $this->mPreviewTemplates[] = $dbv ? Title::newFromId($dbv) : Title::makeTitle($ns, $dbk);
 			else
 			foreach ( $parserOutput->getTemplates() as $ns => $template)
 				foreach ( array_keys( $template ) as $dbk)

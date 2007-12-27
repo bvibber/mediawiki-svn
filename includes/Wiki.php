@@ -163,7 +163,6 @@ class MediaWiki {
 			global $wgContLang;
 		}
 
-
 		$action = $this->getVal('Action');
 		if( !$title or $title->getDBkey() == '' ) {
 			$title = SpecialPage::getTitleFor( 'Badtitle' );
