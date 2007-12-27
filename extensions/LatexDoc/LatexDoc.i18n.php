@@ -37,6 +37,24 @@ $3',
 	'latexdoc_get_pdf' => 'احصل على PDF',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'latexdoc_no_text'         => 'Страницата не съдържа текст, не може да се генерира DVI',
+	'latexdoc_cant_create_dir' => 'Не може да се създаде временна директория $1',
+	'latexdoc_cant_write'      => 'Не може да се пише във файл $1',
+	'latexdoc_error'           => 'Грешка в LaTeX
+
+Команда: $1
+
+Резултат: $2
+
+$3',
+	'latexdoc_get_dvi'         => 'Генериране на DVI',
+	'latexdoc_get_pdf'         => 'Генериране на PDF',
+);
+
 $messages['fr'] = array(
 	'latexdoc_no_text' => 'L’article ne contient pas de texte. Impossible de créer DVI',
 	'latexdoc_cant_create_dir' => 'Impossible de créer le répertoire temporaire $1',

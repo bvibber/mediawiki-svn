@@ -18,6 +18,14 @@ $messages['ar'] = array(
 	'icon-badwidth' => 'عرض سيىء',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'icon-badimage' => 'Неприемливо изображение',
+	'icon-badwidth' => 'Неприемлива ширина',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

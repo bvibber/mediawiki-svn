@@ -15,14 +15,14 @@ $messages['en'] = array(
 	'randomincategory-submit'         => 'Go',
 );
 
-/** French (Français)
+/** French (FranÃ§ais)
  * @author Grondin
  */
 $messages['fr'] = array(
-	'randomincategory'            => 'Page au hasard dans la catégorie',
+	'randomincategory'            => 'Page au hasard dans la catÃ©gorie',
 	'randomincategory-toolbox'    => 'Page au hasard',
-	'randomincategory-nocategory' => 'La catégorie « $1 » n’existe pas ou est vide',
-	'randomincategory-label'      => 'Catégorie :',
+	'randomincategory-nocategory' => 'La catÃ©gorie Â« $1 Â» nâ€™existe pas ou est vide',
+	'randomincategory-label'      => 'CatÃ©gorie :',
 	'randomincategory-submit'     => 'Lancer',
 );
 
@@ -47,4 +47,3 @@ $messages['nl'] = array(
 	'randomincategory-label'          => 'Categorie:',
 	'randomincategory-submit'         => 'OK',
 );
-

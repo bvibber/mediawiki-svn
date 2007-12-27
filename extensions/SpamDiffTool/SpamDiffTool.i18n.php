@@ -194,5 +194,6 @@ Staal sicher, dät du nit komplette Domains blokkierst, do der separate Benutser
 	'spamdifftool_spam_link_text'   => 'tou Spam bietouföigje',
 	'spamdifftool_option_domain'    => 'aal fon dissen Domain',
 	'spamdifftool_option_subdomain' => 'aal fon dissen Subdomain',
+	'spamdifftool_option_directory' => 'disse Subdomain un dit Ferteeknis',
 	'spamdifftool_submit_buttom'    => 'Spiekerje',
 );

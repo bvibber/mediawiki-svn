@@ -31,11 +31,15 @@ function efImportFreeImagesMessages() {
 		),
 
 /** Bulgarian (Български)
+ * @author Spiritia
  * @author DCLXVI
  */
 		'bg' => array(
-			'importfreeimages_description' => 'Тази страница позволява търсенето на подходящо лицензирани картинки от flickr и качването им в уикито.',
-			'importfreeimages_owner'       => 'Автор',
+			'importfreeimages_description'           => 'Тази страница позволява търсенето на подходящо лицензирани картинки от flickr и качването им в уикито.',
+			'importfreeimages_nophotosfound'         => "Не бяха открити резултати за търсенето ви по критерия '$1'. Моля, опитайте отново.",
+			'importfreeimages_owner'                 => 'Автор',
+			'importfreeimages_promptuserforfilename' => 'Моля, въведете целево име на файла:',
+			'importfreeimages_returntoform'          => "Или щракнете <a href='$1'>тук</a> за да се върнете към резултати от търсенето си",
 		),
 
 		'de' => array(

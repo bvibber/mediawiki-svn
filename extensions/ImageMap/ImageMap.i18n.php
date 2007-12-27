@@ -41,6 +41,20 @@ function efImageMapMessages() {
 	'imagemap_description'          => 'Manónongod sa retratong ini',
 ),
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+'bg' => array(
+	'imagemap_no_image'           => '&lt;imagemap&gt;: трябва да се укаже изображение на първия ред',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: невалидно или липсващо изображение',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: липсва валидна препратка в края на ред $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: невалидно заглавие в препратка на ред $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: недостатъчно координати за фигура на ред $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: неразпозната фигура на ред $1; всеки ред трябва да са започва с някое от следните: default (по подразбиране), rect (правоъгълник), circle (кръг) или poly (многоъгълник)',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: невалидна координата на ред $1, трябва да бъде число',
+	'imagemap_description'        => 'Информация за изображението',
+),
+
 /* Danish (Wegge) */
 'da' => array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: Der skal angives et billednavn i første linje',
