@@ -622,6 +622,14 @@ Ieškoma $3 $9 $10",
 Tai turbūt laikina; pamėginkite šiek tiek vėliau,
 arba galite mėginti ieškoti projekte per išorines paieškos paslaugas:\n"
 );
+
+/** Latvian (Latviešu)
+ * @author SPQRobin
+ */
+$wgLuceneSearchMessages['lv'] = array(
+	'searchnoresults' => 'Šeit, diemžēl, nav lapas ar tieši tādu nosaukumu.',
+);
+
 $wgLuceneSearchMessages['nan'] = array(
 	'searchnumber'          => "<strong>$3 hāng kiat-kó ê tē $1-$2 hāng</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Thâu-chêng</span>",
@@ -634,6 +642,7 @@ $1\n
 Chhōe $3 $9 $10",
 	'lucenefallback'        => "Wiki ê chhiau-chhoē kong-lêng chhut būn-tê, chiām-sî bē iōng tit; chhiáⁿ liâm-mī koh chhì. Mā thang ēng goā-chām ê kiám-sek ho̍k-bū chhiau-chhoē khoàⁿ-māi:\n",
 );
+
 $wgLuceneSearchMessages['nds'] = array(
 	'searchnumber'          => '<strong>Resultaten $1-$2 vun $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Vörig</span>',
@@ -751,15 +760,20 @@ A l\'é belfé ch\'a sia già butasse a pòst daspërchiel; ch\'a lassa passé n
 	'searchall'             => 'tuti',
 	'searchincategory'      => 'ant la categorìa',
 );
+
+/** Portuguese (Português)
+ * @author 555
+ */
 $wgLuceneSearchMessages['pt'] = array(
 	'searchnumber'          => '<strong>Resultados $1-$2 de $3</strong>',
-	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Anterior</span>',
-	'searchnext'            => '<span style=\'font-size: small\'>Posterior</span> &#x00BB;',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Anterior</span>",
+	'searchnext'            => "<span style='font-size: small'>Posterior</span> &#x00BB;",
 	'lucene-searchscore'    => 'Relevância: $1%',
+	'lucene-resultsize'     => '$1 ($2 palavras)',
 	'searchdidyoumean'      => 'Você quis dizer: "<a href="$1">$2</a>"?',
 	'searchnoresults'       => 'Desculpe, mas não existem resultados exatos correspondentes à sua procura.',
 	'searchnearmatches'     => '<b>As páginas a seguir possuem títulos similares com o que você pesquisou:</b>',
-		'lucenepowersearchtext' => '
+	'lucenepowersearchtext' => '
 Pesquisar nos espaços nominais:
 
 $1
