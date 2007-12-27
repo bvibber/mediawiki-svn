@@ -581,13 +581,20 @@ Petere $3 $9 $10',
  */
 $wgLuceneSearchMessages['lb'] = array(
 	'searchnumber'          => '<strong>Resultater $1–$2 vun $3</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Virescht</span>",
+	'searchnext'            => "<span style='font-size: smaller'>Nächst</span> &#x00BB;",
 	'lucene-searchscore'    => 'Relevanz: $1 %',
 	'lucene-resultsize'     => '$1 ($2 Wierder)',
 	'searchdidyoumean'      => 'Méngt Dir "<a href="$1">$2</a>"?',
 	'searchnoresults'       => 'Pardon, et goufe keng Säiten fir är Ufro fontt.',
+	'searchnearmatches'     => '<b>Dës Säiten hunn ähnlech Titele wéi är Ufro :</b>',
 	'lucenepowersearchtext' => 'Sich am Nummraum $1
 
 Sichen no $3 $9 $10',
+	'lucenefallback'        => 'Bäi der {{SITENAME}}-interner Sich ass e Problem opgetratt.
+Et ass normalerweis just een temporäre Problem. Versicht et w.e.g. nach eng Kéier.
+Dir kënnt awer och déi extern Sichméiglichkeete benotzen:',
+	'searchexactcase'       => 'Siche mat exakter Gouss- a Klengschreifweis',
 	'searchall'             => 'all',
 	'searchincategory'      => 'an der Kategorie',
 );

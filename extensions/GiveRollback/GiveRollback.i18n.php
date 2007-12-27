@@ -460,6 +460,21 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-search' => 'Kúhámba',
 ),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+'stq' => array(
+	'giverollback'                => 'Touräächsät-Gjucht reeke of äntluuke',
+	'giverollback-toonew'         => '[[User:$1|$1]] is tou näi, him/hier kon dät Touräächsät-Gjucht nit roat wäide.',
+	'giverollback-sysop'          => '[[User:$1|$1]] is n Administrator un häd dät Touräächsät-Gjucht al.',
+	'giverollback-change'         => 'Annerje dän Stoatus:',
+	'giverollback-grant'          => 'Reek',
+	'giverollback-revoke'         => 'Äntluuk',
+	'giverollback-logpage'        => 'Touräächsätten-Gjuchte Logbouk',
+	'giverollback-logentrygrant'  => 'roate dät Touräächsätgjucht an [[$1]]',
+	'giverollback-logentryrevoke' => 'äntlook dät Touräächsätgjucht fon [[$1]]',
+),
+
 /* Cantonese (Shinjiman) */
 'yue' => array(
 	'giverollback' => '畀或收番一撳還原權限',

@@ -113,6 +113,13 @@ $messages['nl'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'showprocesslist-state' => 'Stoatus',
-	'showprocesslist-info'  => 'Info',
+	'showprocesslist'         => 'Wies Prozesslieste',
+	'showprocesslist-id'      => 'ID',
+	'showprocesslist-user'    => 'Benutser',
+	'showprocesslist-host'    => 'Host',
+	'showprocesslist-db'      => 'db',
+	'showprocesslist-command' => 'Kommando',
+	'showprocesslist-time'    => 'Tied',
+	'showprocesslist-state'   => 'Stoatus',
+	'showprocesslist-info'    => 'Info',
 );

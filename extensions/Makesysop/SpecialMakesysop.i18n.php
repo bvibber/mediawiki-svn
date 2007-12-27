@@ -37,26 +37,30 @@ $messages = array(
 	'grouppage-steward' => '{{ns:project}}:Waarde',
 ),
 
-/* Arabic (Meno25) */
+/** Arabic (العربية)
+ * @author Meno25
+ * @author Mido
+ */
 'ar' => array(
-	'makesysoptitle' => 'ترقية مستخدم لمدير نظام',
-	'makesysoptext' => 'هذه الاستمارة يتم استخدامها بواسطة البيروقراطيين لتحويل المستخدمين العاديين إلى إداريين. اكتب اسم المستخدم في الصندوق واضغط الزر لتجعل المستخدم إداريا.',
-	'makesysopname' => 'اسم المستخدم:',
-	'makesysopsubmit' => 'اجعل هذا المستخدم مدير نظام',
-	'makesysopok' => '<b>مستخدم "$1" الآن مدير نظام</b>',
-	'makebureaucratok' => '<b>مستخدم "$1" الآن بيروقراط</b>',
-	'makesysopfail' => '<b>المستخدم "$1" لم يمكن ترقيته لمدير نظام. (هل أدخلت الاسم بشكل صحيح؟)</b>',
-	'setbureaucratflag' => 'ضع علم بيروقراط',
-	'rights' => 'صلاحيات:',
-	'set_user_rights' => 'اضبط صلاحيات مستخدم',
-	'user_rights_set' => '<b>صلاحيات المستخدم ل "$1" تم تحديثها</b>',
-	'set_rights_fail' => '<b>لم يتم ضبط الصلاحيات للمستخدم "$1". (هل أدخلت الاسم بصورة صحيحة?)</b>',
-	'makesysop' => 'منح مستخدم صلاحيات إدارية',
-	'already_sysop' => 'هذا المستخدم إداري بالفعل',
-	'already_bureaucrat' => 'هذا المستخدم بيروقراط بالفعل',
-	'group-steward' => 'مضيفون',
-	'group-steward-member' => 'مضيف',
-	'grouppage-steward' => '{{ns:project}}:مضيفون',
+	'makesysoptitle'           => 'ترقية مستخدم لمدير نظام',
+	'makesysoptext'            => 'هذه الاستمارة يتم استخدامها بواسطة البيروقراطيين لتحويل المستخدمين العاديين إلى إداريين. اكتب اسم المستخدم في الصندوق واضغط الزر لتجعل المستخدم إداريا.',
+	'makesysopname'            => 'اسم المستخدم:',
+	'makesysopsubmit'          => 'اجعل هذا المستخدم مدير نظام',
+	'makesysopok'              => '<b>مستخدم "$1" الآن مدير نظام</b>',
+	'makebureaucratok'         => '<b>مستخدم "$1" الآن بيروقراط</b>',
+	'makesysopfail'            => '<b>المستخدم "$1" لم يمكن ترقيته لمدير نظام. (هل أدخلت الاسم بشكل صحيح؟)</b>',
+	'makesysop-see-userrights' => 'انظر [[Special:Userrights]] للمزيد من الخيارات.',
+	'setbureaucratflag'        => 'ضع علم بيروقراط',
+	'rights'                   => 'صلاحيات:',
+	'set_user_rights'          => 'اضبط صلاحيات مستخدم',
+	'user_rights_set'          => '<b>صلاحيات المستخدم ل "$1" تم تحديثها</b>',
+	'set_rights_fail'          => '<b>لم يتم ضبط الصلاحيات للمستخدم "$1". (هل أدخلت الاسم بصورة صحيحة?)</b>',
+	'makesysop'                => 'منح مستخدم صلاحيات إدارية',
+	'already_sysop'            => 'هذا المستخدم إداري بالفعل',
+	'already_bureaucrat'       => 'هذا المستخدم بيروقراط بالفعل',
+	'group-steward'            => 'مضيفون',
+	'group-steward-member'     => 'مضيف',
+	'grouppage-steward'        => '{{ns:project}}:مضيفون',
 ),
 
 /** Asturian (Asturianu)
@@ -876,25 +880,31 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'already_bureaucrat' => 'De Bruker is al en Bürokrat.',
 ),
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ * @author SPQRobin
+ * @author Annabel
+ */
 'nl' => array(
-	'makesysoptitle' => 'Een gebruiker beheerder maken',
-	'makesysoptext' => 'Dit formulier wordt door bureaucraten gebruikt om een gebruiker [[{{MediaWiki:Grouppage-sysop}}|beheerder]] te maken. Geef de naam van een gebruiker in het veld in en klik op de knop om de gebruiker beheerder te maken.',
-	'makesysopname' => 'Gebruikersnaam:',
-	'makesysopsubmit' => 'Gebruikersrechten wijzigen',
-	'makesysopok' => '<b>Gebruiker "$1" is nu beheerder</b>',
-	'makebureaucratok' => '<b>Gebruiker "$1" is nu bureaucraat</b>',
-	'makesysopfail' => '<b>Gebruiker "$1" kon geen beheerder gemaakt worden. Heeft u de juiste naam opgegeven?</b>',
-	'setbureaucratflag' => 'Deze gebruiker ook bureaucraat maken',
-	'rights' => 'Rechten:',
-	'set_user_rights' => 'Gebruikersrechten aanpassen',
-	'user_rights_set' => '<b>Rechten van gebruiker "$1" bijgewerkt</b>',
-	'set_rights_fail' => '<b>Gebruikersrechten voor "$1" konden niet worden aangepast. Heeft u de naam juist ingevoerd?</b>',
-	'makesysop' => 'Een gebruiker beheerder maken',
-	'already_sysop' => 'Deze gebruiker is al beheerder',
-	'already_bureaucrat' => 'Deze gebruiker is al bureaucraat',
-	'group-steward' => 'Stewards',#identical but defined
-	'group-steward-member' => 'Steward',#identical but defined
-	'grouppage-steward' => '{{ns:project}}:Stewards',#identical but defined
+	'makesysoptitle'           => 'Een gebruiker beheerder maken',
+	'makesysoptext'            => 'Dit formulier wordt door bureaucraten gebruikt om een gebruiker [[{{MediaWiki:Grouppage-sysop}}|beheerder]] te maken. Geef de naam van een gebruiker in het veld in en klik op de knop om de gebruiker beheerder te maken.',
+	'makesysopname'            => 'Gebruikersnaam:',
+	'makesysopsubmit'          => 'Gebruikersrechten wijzigen',
+	'makesysopok'              => '<b>Gebruiker "$1" is nu beheerder</b>',
+	'makebureaucratok'         => '<b>Gebruiker "$1" is nu bureaucraat</b>',
+	'makesysopfail'            => '<b>Gebruiker "$1" kon geen beheerder gemaakt worden. Heeft u de juiste naam opgegeven?</b>',
+	'makesysop-see-userrights' => 'Zie [[Speciaal:Gebruikerrechten]] voor meer opties.',
+	'setbureaucratflag'        => 'Deze gebruiker ook bureaucraat maken',
+	'rights'                   => 'Rechten:',
+	'set_user_rights'          => 'Gebruikersrechten aanpassen',
+	'user_rights_set'          => '<b>Rechten van gebruiker "$1" bijgewerkt</b>',
+	'set_rights_fail'          => '<b>Gebruikersrechten voor "$1" konden niet worden aangepast. Heeft u de naam juist ingevoerd?</b>',
+	'makesysop'                => 'Een gebruiker beheerder maken',
+	'already_sysop'            => 'Deze gebruiker is al beheerder',
+	'already_bureaucrat'       => 'Deze gebruiker is al bureaucraat',
+	'group-steward'            => 'Stewards',
+	'group-steward-member'     => 'Steward',
+	'grouppage-steward'        => '{{ns:project}}:Stewards',
 ),
 
 'nn' => array(

@@ -264,6 +264,19 @@ function efBookInformationMessages() {
 	'bookinfo-error-invalidisbn' => 'Dir hutt eng ISBN aginn déi et net gëtt.',
 ),
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+'lt' => array(
+	'bookinfo-header'            => 'Knygos informacija',
+	'bookinfo-result-title'      => 'Pavadinimas:',
+	'bookinfo-result-author'     => 'Autorius:',
+	'bookinfo-result-publisher'  => 'Leidėjas:',
+	'bookinfo-result-year'       => 'Metai:',
+	'bookinfo-error-invalidisbn' => 'Įvestas blogas ISBN',
+	'bookinfo-purchase'          => 'Pirkti šią knygą iš $1',
+),
+
 /* nld / Dutch (Dirk Beetstra) */
 'nl' => array(
 	'bookinfo-header' => 'Boekinformatie',

@@ -119,6 +119,43 @@ $messages['ar'] = array(
 	'math_WrongFontEncodingWithHint'        => 'الرمز "$1" ربما لا يظهر في إنكودنج الخط "$2" (حاول استخدام أمر "$3{...}")',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'math_DoubleSubscript'                  => 'Срещнати два долни индекса към една и съща основа (разрешен е само един)',
+	'math_DoubleSuperscript'                => 'Срещнати два горни индекса към една и съща основа (разрешен е само един)',
+	'math_IllegalCharacter'                 => 'Въведен е непозволен символ',
+	'math_IllegalCommandInMathMode'         => 'Командата "$1" е невалидна във формулен режим',
+	'math_IllegalCommandInMathModeWithHint' => 'Командата "$1" е невалидна във формулен режим (може би имахте предвид "$2"?)',
+	'math_IllegalCommandInTextMode'         => 'Командата "$1" е невалидна в текстов режим',
+	'math_IllegalCommandInTextModeWithHint' => 'Командата "$1" е невалидна в текстов режим (може би имахте предвид "$2"?)',
+	'math_IllegalDelimiter'                 => 'Непозволен разделител след "$1"',
+	'math_IllegalFinalBackslash'            => 'Непозволена обратна наклонена черта "\" в края на входа',
+	'math_IllegalRedefinition'              => 'Командата "$1" вече е била дефинирана и не може да се предефинира',
+	'math_LatexFontNotSpecified'            => 'Не е указан LaTeX шрифт за "$1"',
+	'math_MismatchedBeginAndEnd'            => 'Командите "$1" и "$2" не си съответстват',
+	'math_MisplacedLimits'                  => 'Командата "$1" може да стои единствено след математически оператор (опитайте с "\mathop")',
+	'math_MissingDelimiter'                 => 'Липсващ разделител след "$1"',
+	'math_MissingOpenBraceAfter'            => 'Липсваща отваряща скоба "{" след "$1"',
+	'math_MissingOpenBraceAtEnd'            => 'Липсваща отваряща скоба "{" в края на входа',
+	'math_MissingOpenBraceBefore'           => 'Липсваща отваряща скоба "{" пред "$1"',
+	'math_TooManyMathmlNodes'               => 'Има твърде много възли в MathML-дървото',
+	'math_UnavailableSymbolFontCombination' => 'В шрифта "$2" няма на разположение символ "$1"',
+	'math_UnexpectedNextCell'               => 'Командата "&" може да се среща единствено в команден блок "\begin ... \end"',
+	'math_UnexpectedNextRow'                => 'Командата "\\" може да се среща единствено в команден блок "\begin ... \end"',
+	'math_UnmatchedBegin'                   => 'Срещната команда "\begin" без съответната команда "\end"',
+	'math_UnmatchedCloseBrace'              => 'Срещната затваряща скоба "}" без съответната отваряща "{"',
+	'math_UnmatchedEnd'                     => 'Срещната командата "\end" без съответната команда "\begin"',
+	'math_UnmatchedLeft'                    => 'Срещната командата "\left" без съответната команда "\right"',
+	'math_UnmatchedOpenBrace'               => 'Срещната отваряща скоба "{" без съответната затваряща "}"',
+	'math_UnmatchedOpenBracket'             => 'Срещната отваряща скоба "[" без съответната затваряща "]"',
+	'math_UnmatchedRight'                   => 'Срещната команда "\right" без съответната команда "\left"',
+	'math_UnrecognisedCommand'              => 'Неразпозната команда "$1"',
+	'math_WrongFontEncoding'                => 'Възможно е символът "$1" да не се визуализира правилно при "$2" кодиране',
+	'math_WrongFontEncodingWithHint'        => 'Възможно е символът "$1" да не се визуализира правилно при "$2" кодиране (опитайте с командата "$3{...}")',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -652,7 +689,8 @@ $messages['ru'] = array(
 	'math_LatexFontNotSpecified'            => 'Не указан шрифт LaTeX для «$1»',
 	'math_LatexPackageUnavailable'          => 'Невозможно создать изображение PNG, так как недоступен LaTeX-пакет «$1»',
 	'math_MismatchedBeginAndEnd'            => 'Команды «$1» и «$2» не соответствуют',
-	'math_MissingCommandAfterNewcommand'    => 'Команда «$1» может использоваться только после math-оператора (вероятно, следует использовать «\mathop»)',
+	'math_MisplacedLimits'                  => 'Команда «$1» может использоваться только после оператора math (вероятно, следует использовать «\mathop»)',
+	'math_MissingCommandAfterNewcommand'    => 'Команда «$1» может использоваться только после оператора math (вероятно, следует использовать «\mathop»)',
 	'math_MissingDelimiter'                 => 'Отсутствует разделитель после «$1»',
 	'math_MissingOpenBraceAfter'            => 'Отсутствует открывающая скобка «{» после «$1»',
 	'math_MissingOpenBraceAtEnd'            => 'Отсутствует открывающая скобка «{» в конце входных данных',
@@ -664,6 +702,20 @@ $messages['ru'] = array(
 	'math_PngIncompatibleCharacter'         => 'Невозможно правильно создать PNG, содержащий символ «$1»',
 	'math_ReservedCommand'                  => 'Команда «$1» зарезервирована blahtex для внутреннего использования',
 	'math_SubstackRowTooBig'                => 'В каждой строке блока «substack» может быть только одна запись',
+	'math_TooManyMathmlNodes'               => 'Слишком много узлов в дереве MathML',
+	'math_TooManyTokens'                    => 'Слишком большие входные данные',
+	'math_UnavailableSymbolFontCombination' => 'В шрифте «$2» отсутствует символ «$1»',
+	'math_UnexpectedNextCell'               => 'Команда «&» может использоваться только внутри блока «\begin ... \end»',
+	'math_UnexpectedNextRow'                => 'Команда «\\» может использоваться только внутри блока «\begin ... \end»',
+	'math_UnmatchedBegin'                   => 'Использование «\begin» без соответствующего «\end»',
+	'math_UnmatchedCloseBrace'              => 'Использование закрывающей фигурной скобки «}» без соответствующей открывающей «{»',
+	'math_UnmatchedEnd'                     => 'Использование «\end» без соответствующего «\begin»',
+	'math_UnmatchedLeft'                    => 'Использование «\left» без соответствующего «\right»',
+	'math_UnmatchedOpenBrace'               => 'Использование открывающей фигурной скобки «{» без соответствующей закрывающей «}»',
+	'math_UnmatchedOpenBracket'             => 'Использование открывающей квадратной скобки «[» без соответствующей закрывающей «]»',
+	'math_UnmatchedRight'                   => 'Использование «\right» без соответствующего «\left»',
+	'math_WrongFontEncoding'                => 'Символ «$1» не может использоваться в кодировке шрифта «$2»',
+	'math_WrongFontEncodingWithHint'        => 'Символ «$1» не может использоваться в кодировке шрифта «$2» (попробуйте использовать команду «$3{...}»)',
 );
 
 $messages['stq'] = array(

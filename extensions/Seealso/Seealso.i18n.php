@@ -84,6 +84,13 @@ $messages['nl'] = array(
 	'seealso' => 'Zie ook',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'seealso' => 'Sjuch uk',
+);
+
 /** Swedish (Svenska)
  * @author SPQRobin
  */

@@ -9,11 +9,16 @@ $allMessages = array(
                 'specialwhoiswatchingaddbtn'  => 'Add Selected Users',
         ),
 
-        'ar' => array(
-                'whoiswatching'               => 'من يراقب صفحة ويكي',
-                'specialwhoiswatchingthepage' => 'من يراقب %s',
-                'specialwhoiswatchingusage'   => 'هذه الصفحة الخاصة لا يمكن استخدامها بمفردها. من فضلك استخدم الصفحة [[MediaWiki:Number_of_watching_users_pageview]] لتعريف نقطة مدخل إلى هذه الصفحة الخاصة.',
-        ),
+/** Arabic (العربية)
+ * @author Meno25
+ */
+	'ar' => array(
+		'whoiswatching'                => 'من يراقب صفحة ويكي',
+		'specialwhoiswatchingthepage'  => 'من يراقب %s',
+		'specialwhoiswatchingusage'    => 'هذه الصفحة الخاصة لا يمكن استخدامها بمفردها. من فضلك استخدم الصفحة [[MediaWiki:Number_of_watching_users_pageview]] لتعريف نقطة مدخل إلى هذه الصفحة الخاصة.',
+		'specialwhoiswatchingaddusers' => 'أضف مستخدمين لمراقبة الصفحة',
+		'specialwhoiswatchingaddbtn'   => 'أضف مستخدمين مختارين',
+	),
 
         'de' => array(
                 'whoiswatching'               => 'Wer beobachtet eine Seite',
@@ -52,11 +57,17 @@ $allMessages = array(
                 'specialwhoiswatchingusage'   => 'Šis specialus puslapis negali būti naudojamas paprastai. Prašome naudoti [[MediaWiki:Number_of_watching_users_pageview]] puslapį, kad apibrėžtumėte įėjimo punktą į šį specialųjį puslapį.',
         ),
 
-        'nl' => array(
-                'whoiswatching'               => 'Wie volgt een pagina',
-                'specialwhoiswatchingthepage' => 'Wie volgt %s',
-                'specialwhoiswatchingusage'   => 'Deze speciale pagina kan niet alleen gebruikt worden. Gelieve de pagina [[MediaWiki:Number_of_watching_users_pageview]] te gebruiken om een \'\'entry point\'\' <!-- ? --> aan deze speciale pagina te bepalen.',
-        ),
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Siebrand
+ */
+	'nl' => array(
+		'whoiswatching'                => 'Wie volgt een pagina',
+		'specialwhoiswatchingthepage'  => 'Wie volgt %s',
+		'specialwhoiswatchingusage'    => "Deze speciale pagina kan niet alleen gebruikt worden. Gelieve de pagina [[MediaWiki:Number_of_watching_users_pageview]] te gebruiken om een ''entry point'' <!-- ? --> aan deze speciale pagina te bepalen.",
+		'specialwhoiswatchingaddusers' => 'Deze pagina op de volglijst van gebruikers toevoegen',
+		'specialwhoiswatchingaddbtn'   => 'Geselecteerde gebruikers toevoegen',
+	),
 
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby

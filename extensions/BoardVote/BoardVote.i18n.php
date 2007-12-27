@@ -1367,6 +1367,16 @@ $wgBoardVoteMessages['loz'] = array(
 	'boardvote_user'          => 'Sebelu',
 	'boardvote_submit'        => 'Afi',
 );
+
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$wgBoardVoteMessages['lt'] = array(
+	'boardvote_novotes' => 'Niekas dar nebalsavo.',
+	'boardvote_time'    => 'Laikas',
+	'boardvote_user'    => 'Naudotojas',
+);
+
 $wgBoardVoteMessages['nan'] = array(
 	'boardvote'               => "Wikimedia Táng-sū-hōe soán-kí",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Tâu-phiò]]
@@ -1374,6 +1384,7 @@ $wgBoardVoteMessages['nan'] = array(
 * [[Special:Boardvote/dump|Dump encrypted soán-kí kì-lo̍k]]",
 	'boardvote_dumplink'      => "Chhi̍h chia",
 );
+
 $wgBoardVoteMessages['nl'] = array(
 	'boardvote'               => 'Wikimedia Board of Trustees-verkiezing',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Stemmen]]
