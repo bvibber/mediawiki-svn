@@ -137,6 +137,49 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 	'oversight-view'        => 'λεπτομέρειες',
 ),
 
+'fa' => array(
+	'hiderevision' => 'پنهان کردن همیشگی نسخه‌ها',
+	// Empty form
+	'hiderevision-prompt' => 'شماره نسخه‌ای که حذف می‌شود:',
+	'hiderevision-continue' => 'ادامه',
+	// Confirmation form
+	'hiderevision-text' => "این قابلیت '''فقط''' در موارد زیر باید استفاده شود:
+* اطلاعات شخصی نامناسب
+*: ''نشانی منزل و شماره تلفن، غیره''
+
+'''سوء استفاده از این امکانات ممکن است به از دست دادن اختیارات منجر شود.'''
+
+مواردی که حذف می‌شوند توسط هیچ کاربر در وبگاه قابل دیدن نخواهند بود،
+اما این موارد در سیاهه مربوط به آن ثبت می‌شوند و اگر اشتباهی صورت بگیرد
+توسط مدیر پایگاه داده قابل برگشت خواهد بود.",
+	'hiderevision-reason' => 'دلیل (به طور خصوصی ثبت می‌شود):',
+	'hiderevision-submit' => 'پنهان کردن همیشگی این اطلاعات',
+	// Tab displayed to allowed users on old revision display
+	'hiderevision-tab' => 'پنهان کردن نسخه',
+	// Status & errors on action
+	'hiderevision-norevisions' => 'نسخه‌ای برای حذف مشخص نشده بود.',
+	'hiderevision-noreason' => 'باید دلیل این حذف را توضیح دهید.',
+	'hiderevision-status' => 'نسخه $1: $2',
+	'hiderevision-success' => 'با موفقیت بایگانی و حذف شد.',
+	'hiderevision-error-missing' => 'در پایگاه داده پیدا نشد.',
+	'hiderevision-error-current' => 'آخرین ویرایش یک صفحه را نمی‌توان حذف کرد. ابتدا آخرین تغییر را واگردانی کنید.',
+	'hiderevision-error-delete' => 'امکان بایگانی کردن وجود نداشت؛ آیا قبلاً حذف شده‌است؟',
+	'hiderevision-archive-status' => 'نسخه‌ای از $1 را حذف کرد: $2',
+	'oversight-nodiff' => 'امکان ردیابی تغییرات وجود ندارد چرا که این صفحه در حال حاضر نسخه قدیمی‌تری ندارد. احتمالاً:
+*صفحه حذف شده‌است
+*نسخه پنهان شده اولین نسخه صفحه بوده‌است',
+	// Logging
+	'oversight-log-hiderev' => 'نسخه‌ای از $1 را حذف کرد',
+	// Oversight review page
+	'oversight' => 'ناظر',
+	'oversight-view' => 'بیشتر',
+	'oversight-difference' => '(تفاوت از آخرین نسخه باقی مانده قبلی)',
+	'oversight-prev' => 'آخرین نسخه قبلی',
+	'oversight-hidden' => 'نسخه پنهان شده',
+	'oversight-header' => 'در زیر فهرستی از نسخه‌هایی که به تازگی از دید عموم برای همیشه حذف شده‌اند را می‌بینید.
+منتشر کردن این اطلاعات می‌تواند به از دست دادن همیشگی اختیارات شما بینجامد.',
+),
+
 'fi' => array(
 	'hiderevision' => 'Pysyvä versioiden piilottaminen',
 	'hiderevision-prompt' => 'Poistettava versionumero:',
