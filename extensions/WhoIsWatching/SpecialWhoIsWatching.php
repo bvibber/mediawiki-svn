@@ -10,7 +10,7 @@ EOT;
 }
 
 $wgExtensionCredits['specialpage'][] = array(
-    'version'     => '0.3',
+    'version'     => '0.4',
     'name'        => 'WhoIsWatching',
     'author'      => 'Paul Grinberg, Siebrand Mazeland',
     'email'       => 'gri6507 at yahoo dot com',
@@ -21,11 +21,11 @@ $wgExtensionCredits['specialpage'][] = array(
 $wgAutoloadClasses['WhoIsWatching'] = dirname(__FILE__) . '/SpecialWhoIsWatching_body.php';
 $wgSpecialPages['WhoIsWatching'] = 'WhoIsWatching';
 $wgHooks['LoadAllMessages'][] = 'WhoIsWatching::loadMessages';
-$wgHooks['LanguageGetSpecialPageAliases'][] = 'myExtensionLocalizedPageName';
+$wgHooks['LanguageGetSpecialPageAliases'][] = 'whoiswatching';
 
-function myExtensionLocalizedPageName(&$specialPageArray, $code) {
+function whoiswatching(&$specialPageArray, $code) {
   # The localized title of the special page is among the messages of the extension:
-  MyExtension::loadMessages();
+  WhoIsWatching::loadMessages();
   $text = wfMsg('whoiswatching');
 
   # Convert from title in text form to DBKey and put it into the alias array:
@@ -34,3 +34,4 @@ function myExtensionLocalizedPageName(&$specialPageArray, $code) {
 
   return true;
 }
+
