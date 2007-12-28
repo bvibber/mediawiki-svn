@@ -24,31 +24,38 @@ function efContributorsMessages() {
 	'contributors-nosuchpage' => 'The page $1 doesn\'t exist.',
 ),
 
-/* Arabic */
+/** Arabic (العربية)
+ * @author Mido
+ * @author Meno25
+ * @author Mimouni
+ */
 'ar' => array(
-	'contributors' => 'المساهمون',
-	'contributors-toolbox' => 'المساهمون الأساسيون',
-	'contributors-legend' => 'اعرض المساهمون الأساسيون لمقالة',
-	'contributors-target' => 'العنوان:',
-	'contributors-submit' => 'اعرض',
-	'contributors-subtitle' => 'المساهمون الأساسيون للمقالة $1',
+	'contributors'             => 'المساهمون',
+	'contributors-toolbox'     => 'المساهمون الأساسيون',
+	'contributors-legend'      => 'اعرض المساهمين الأساسيين لصفحة',
+	'contributors-target'      => 'العنوان:',
+	'contributors-submit'      => 'اعرض',
+	'contributors-subtitle'    => 'المساهمون الأساسيون للمقالة $1',
 	'contributors-others-long' => 'هناك $1 مساهم آخر لهذه الصفحة.',
-	'contributors-others' => 'و $1 آخرين',
-	'contributors-badtitle' => 'عنوان خاطئ.',
-	'contributors-nosuchpage' => 'لا توجد مقالة بعنوان $1.',
+	'contributors-others'      => 'و $1 آخرين',
+	'contributors-badtitle'    => 'عنوان خاطئ.',
+	'contributors-nosuchpage'  => 'الصفحة $1 غير موجودة.',
 ),
 
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 'bcl' => array(
-	'contributors' => 'Mga kontributor',
-	'contributors-toolbox' => 'Pangenot na mga kontributor',
-	'contributors-legend' => 'Ilista an mga pangenot na kontributor sa artikulo',
-	'contributors-target' => 'Titulo:',
-	'contributors-submit' => 'Hilingón',
-	'contributors-subtitle' => 'Mga pangenot na kontributor sa $1',
+	'contributors'             => 'Mga kontributor',
+	'contributors-toolbox'     => 'Pangenot na mga kontributor',
+	'contributors-legend'      => 'Ilista an mga pangenot na kontributor sa artikulo',
+	'contributors-target'      => 'Titulo:',
+	'contributors-submit'      => 'Hilingón',
+	'contributors-subtitle'    => 'Mga pangenot na kontributor sa $1',
 	'contributors-others-long' => 'Igwang $1 pang mga kontributor sa páhinang ini.',
-	'contributors-others' => 'asin $1 iba pa',
-	'contributors-badtitle' => 'Salang titulo.',
-	'contributors-nosuchpage' => 'An artikulong $1 mayò man.',
+	'contributors-others'      => 'asin $1 iba pa',
+	'contributors-badtitle'    => 'Salang titulo.',
+	'contributors-nosuchpage'  => 'An artikulong $1 mayò man.',
 ),
 
 /** Bulgarian (Български)
@@ -59,43 +66,53 @@ function efContributorsMessages() {
 	'contributors-submit' => 'Показване',
 ),
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
 'bn' => array(
-	'contributors' => 'অবদানকারী',
-	'contributors-toolbox' => 'মূল অবদানকারী',
-	'contributors-legend' => 'একটি নিবন্ধে মূল অবদানকারীগণের তালিকা',
-	'contributors-target' => 'শিরোনাম:',
-	'contributors-submit' => 'দেখাও',
-	'contributors-subtitle' => 'মূল অবদানকারী $1',
+	'contributors'             => 'অবদানকারী',
+	'contributors-toolbox'     => 'মূল অবদানকারী',
+	'contributors-legend'      => 'একটি নিবন্ধে মূল অবদানকারীগণের তালিকা',
+	'contributors-target'      => 'শিরোনাম:',
+	'contributors-submit'      => 'দেখাও',
+	'contributors-subtitle'    => 'মূল অবদানকারী $1',
 	'contributors-others-long' => 'এ পাতায় আরও $1 অবদানকারী রয়েছে।',
-	'contributors-others' => 'এবং আরও $1',
-	'contributors-badtitle' => 'অসিদ্ধ শিরোনাম।',
-	'contributors-nosuchpage' => '$1 শিরোনামের কোন নিবন্ধ নাই।',
+	'contributors-others'      => 'এবং আরও $1',
+	'contributors-badtitle'    => 'অসিদ্ধ শিরোনাম।',
+	'contributors-nosuchpage'  => '$1 শিরোনামের কোন নিবন্ধ নাই।',
 ),
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
 'br' => array(
-	'contributors' => 'Aozerien',
-	'contributors-toolbox' => 'Aozerien bennañ',
-	'contributors-legend' => 'Roll an aozerien bennañ evit ur pennad',
-	'contributors-target' => 'Titl :',
-	'contributors-submit' => 'Diskouez',
-	'contributors-subtitle' => 'Aozerien bennañ evit $1',
+	'contributors'             => 'Aozerien',
+	'contributors-toolbox'     => 'Aozerien bennañ',
+	'contributors-legend'      => 'Roll an aozerien bennañ evit ur pennad',
+	'contributors-target'      => 'Titl :',
+	'contributors-submit'      => 'Diskouez',
+	'contributors-subtitle'    => 'Aozerien bennañ evit $1',
 	'contributors-others-long' => '$ aozer all o deus kemeret perzh e savidigezh ar bajenn-mañ.',
-	'contributors-others' => 'ha $1 all',
-	'contributors-badtitle' => 'Titl fall.',
-	'contributors-nosuchpage' => 'N\'eus ket eus ar pennad $',
+	'contributors-others'      => 'ha $1 all',
+	'contributors-badtitle'    => 'Titl fall.',
+	'contributors-nosuchpage'  => "N'eus ket eus ar pennad $",
 ),
 
+/** Catalan (Català)
+ * @author SMP
+ * @author Toniher
+ */
 'ca' => array(
-	'contributors'=> 'Contribuïdors',
-	'contributors-toolbox'=> 'Principals contribuïdors',
-	'contributors-legend'=> 'Llista dels principals contribuïdors en un article',
-	'contributors-target'=> 'Títol:',
-	'contributors-submit'=> 'Mostra',
-	'contributors-subtitle'=> 'Principals contribuïdors a $1',
-	'contributors-others-long'=> 'Hi ha $1 contribuïdors més en aquesta pàgina.',
-	'contributors-others'=> 'i $1 més',
-	'contributors-badtitle'=> 'El títol no és vàlid.',
-	'contributors-nosuchpage'=> 'L\'article $1 no existeix.',
+	'contributors'             => 'Contribuïdors',
+	'contributors-toolbox'     => 'Principals contribuïdors',
+	'contributors-legend'      => 'Llista dels principals contribuïdors en un article',
+	'contributors-target'      => 'Títol:',
+	'contributors-submit'      => 'Mostra',
+	'contributors-subtitle'    => 'Principals contribuïdors a $1',
+	'contributors-others-long' => 'Hi ha $1 contribuïdors més en aquesta pàgina.',
+	'contributors-others'      => 'i $1 més',
+	'contributors-badtitle'    => 'El títol no és vàlid.',
+	'contributors-nosuchpage'  => "L'article $1 no existeix.",
 ),
 
 /* German (Raymond) */
@@ -112,10 +129,13 @@ function efContributorsMessages() {
 	'contributors-nosuchpage' => 'Die Seite $1 ist nicht vorhanden.',
 ),
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
 'el' => array(
-	'contributors' => 'Συνεισφέροντες',
-	'contributors-target' => 'Τίτλος:',
-	'contributors-badtitle' => 'Άκυρος τίτλος.',
+	'contributors'            => 'Συνεισφέροντες',
+	'contributors-target'     => 'Τίτλος:',
+	'contributors-badtitle'   => 'Άκυρος τίτλος.',
 	'contributors-nosuchpage' => 'Το άρθρο $1 δεν υπάρχει.',
 ),
 
@@ -141,17 +161,20 @@ function efContributorsMessages() {
 	'contributors-nosuchpage' => 'L’article $1 n’existe pas.',
 ),
 
+/** Galician (Galego)
+ * @author Xosé
+ */
 'gl' => array(
-	'contributors' => 'Colaboradores',
-	'contributors-toolbox' => 'Principais colaboradores',
-	'contributors-legend' => 'Listaxe cos principais colaboradores dun artigo',
-	'contributors-target' => 'Título:',
-	'contributors-submit' => 'Amosar',
-	'contributors-subtitle' => 'Principais colaboradores en $1',
+	'contributors'             => 'Colaboradores',
+	'contributors-toolbox'     => 'Principais colaboradores',
+	'contributors-legend'      => 'Listaxe cos principais colaboradores dun artigo',
+	'contributors-target'      => 'Título:',
+	'contributors-submit'      => 'Amosar',
+	'contributors-subtitle'    => 'Principais colaboradores en $1',
 	'contributors-others-long' => 'Existen outros $1 colaboradores nesta páxina.',
-	'contributors-others' => 'e outros $1',
-	'contributors-badtitle' => 'Título non válido.',
-	'contributors-nosuchpage' => 'Non existe o artigo $1.',
+	'contributors-others'      => 'e outros $1',
+	'contributors-badtitle'    => 'Título non válido.',
+	'contributors-nosuchpage'  => 'Non existe o artigo $1.',
 ),
 
 'hsb' => array(
@@ -209,9 +232,12 @@ function efContributorsMessages() {
 	'contributors-nosuchpage' => 'ページ $1 は存在しません。',
 ),
 
+/** Kabyle (Taqbaylit)
+ * @author Agurzil
+ */
 'kab' => array(
-	'contributors-target' => 'Azwel:',
-	'contributors-submit' => 'Ssken',
+	'contributors-target'     => 'Azwel:',
+	'contributors-submit'     => 'Ssken',
 	'contributors-nosuchpage' => 'Amagrad $1 ulac-it.',
 ),
 
@@ -257,17 +283,20 @@ function efContributorsMessages() {
 	'contributors-nosuchpage' => '$1 دەگەن ماقالا بٸزدە جوق.',
 ),
 
+/** Kurdish (Latin) (Kurdî / كوردی (Latin))
+ * @author Bangin
+ */
 'ku-latn' => array(
-	'contributors' => 'Bikarhêner',
-	'contributors-toolbox' => 'Bikarhênerên serekî',
-	'contributors-legend' => 'Lîsteya bikarhênerên serekî yê gotarekê',
-	'contributors-target' => 'Sernav:',
-	'contributors-submit' => 'Pêşêkê',
-	'contributors-subtitle' => 'Bikarhênerên serekî yê $1',
+	'contributors'             => 'Bikarhêner',
+	'contributors-toolbox'     => 'Bikarhênerên serekî',
+	'contributors-legend'      => 'Lîsteya bikarhênerên serekî yê gotarekê',
+	'contributors-target'      => 'Sernav:',
+	'contributors-submit'      => 'Pêşêkê',
+	'contributors-subtitle'    => 'Bikarhênerên serekî yê $1',
 	'contributors-others-long' => 'Li vê derê hên $1 bikarhênerên din yê vê rûpelê hene.',
-	'contributors-others' => 'û $1 yên din',
-	'contributors-badtitle' => 'Sernavekî şaş.',
-	'contributors-nosuchpage' => 'Gotarê $2 tune ye.',
+	'contributors-others'      => 'û $1 yên din',
+	'contributors-badtitle'    => 'Sernavekî şaş.',
+	'contributors-nosuchpage'  => 'Gotarê $2 tune ye.',
 ),
 
 'la' => array(
@@ -284,84 +313,100 @@ function efContributorsMessages() {
 	'contributors-submit' => 'Weisen',
 ),
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
 'nds' => array(
-	'contributors' => 'Lüüd, de bidragen hebbt',
-	'contributors-toolbox' => 'Lüüd, de wichtige Delen bidragen hebbt',
-	'contributors-legend' => 'Lüüd, de to en Artikel bidragen hebbt, oplisten',
-	'contributors-target' => 'Titel:',
-	'contributors-submit' => 'Wiesen',
-	'contributors-subtitle' => 'Lüüd, de wichtige Delen to $1 bidragen hebbt',
+	'contributors'             => 'Lüüd, de bidragen hebbt',
+	'contributors-toolbox'     => 'Lüüd, de wichtige Delen bidragen hebbt',
+	'contributors-legend'      => 'Lüüd, de to en Artikel bidragen hebbt, oplisten',
+	'contributors-target'      => 'Titel:',
+	'contributors-submit'      => 'Wiesen',
+	'contributors-subtitle'    => 'Lüüd, de wichtige Delen to $1 bidragen hebbt',
 	'contributors-others-long' => 'Gifft $1 annere Lüüd, de to disse Siet bidragen hebbt.',
-	'contributors-others' => 'un $1 annere',
-	'contributors-badtitle' => 'Titel ungüllig.',
-	'contributors-nosuchpage' => 'Artikel $1 gifft dat nich.',
+	'contributors-others'      => 'un $1 annere',
+	'contributors-badtitle'    => 'Titel ungüllig.',
+	'contributors-nosuchpage'  => 'Artikel $1 gifft dat nich.',
 ),
 
-/* nld / Dutch (Siebrand Mazeland) */
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Siebrand
+ */
 'nl' => array(
-	'contributors' => 'Bijdragers',
-	'contributors-toolbox' => 'Belangrijkste bijdragers',
-	'contributors-legend' => 'Belangrijkste bijdragers van een pagina tonen',
-	'contributors-target' => 'Titel:',
-	'contributors-submit' => 'Tonen',
-	'contributors-subtitle' => 'Belangrijkste bijdragers aan $1',
+	'contributors'             => 'Bijdragers',
+	'contributors-toolbox'     => 'Belangrijkste bijdragers',
+	'contributors-legend'      => 'Belangrijkste bijdragers van een pagina tonen',
+	'contributors-target'      => 'Titel:',
+	'contributors-submit'      => 'Tonen',
+	'contributors-subtitle'    => 'Belangrijkste bijdragers aan $1',
 	'contributors-others-long' => 'Er zijn $1 andere bijdragers aan deze pagina.',
-	'contributors-others' => 'en $1 anderen',
-	'contributors-badtitle' => 'Onjuiste titel.',
-	'contributors-nosuchpage' => 'De pagina $1 bestaat niet.',
+	'contributors-others'      => 'en $1 anderen',
+	'contributors-badtitle'    => 'Onjuiste titel.',
+	'contributors-nosuchpage'  => 'De pagina $1 bestaat niet.',
 ),
 
-/* Norwegian (Jon Harald Søby) */
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 'no' => array(
-	'contributors' => 'Bidragsytere',
-	'contributors-toolbox' => 'Hovedbidragsytere',
-	'contributors-legend' => 'Liste over hovedbidragsytere til en artikkel',
-	'contributors-target' => 'Tittel:',
-	'contributors-submit' => 'Vis',
-	'contributors-subtitle' => 'Hovedbidragsytere på $1',
+	'contributors'             => 'Bidragsytere',
+	'contributors-toolbox'     => 'Hovedbidragsytere',
+	'contributors-legend'      => 'Liste over hovedbidragsytere til en artikkel',
+	'contributors-target'      => 'Tittel:',
+	'contributors-submit'      => 'Vis',
+	'contributors-subtitle'    => 'Hovedbidragsytere på $1',
 	'contributors-others-long' => 'Det er $1 andre bidragsytere på denne siden.',
-	'contributors-others' => 'og $1 andre',
-	'contributors-badtitle' => 'Ugyldig tittel.',
-	'contributors-nosuchpage' => 'Artikkelen $1 eksisterer ikke.',
+	'contributors-others'      => 'og $1 andre',
+	'contributors-badtitle'    => 'Ugyldig tittel.',
+	'contributors-nosuchpage'  => 'Artikkelen $1 eksisterer ikke.',
 ),
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 'oc' => array(
-	'contributors-toolbox' => 'Contributors principals',
-	'contributors-legend' => 'Listar los contributors principals de l’article',
-	'contributors-target' => 'Títol:',
-	'contributors-submit' => 'Mostrar',
-	'contributors-subtitle' => 'Contributors principals de $1',
+	'contributors-toolbox'     => 'Contributors principals',
+	'contributors-legend'      => 'Listar los contributors principals de l’article',
+	'contributors-target'      => 'Títol:',
+	'contributors-submit'      => 'Mostrar',
+	'contributors-subtitle'    => 'Contributors principals de $1',
 	'contributors-others-long' => 'I a $1 autres contributors per aquesta pagina.',
-	'contributors-others' => 'e $1 autres',
-	'contributors-badtitle' => 'Títol incorrècte.',
-	'contributors-nosuchpage' => 'L’article $1 existís pas.',
+	'contributors-others'      => 'e $1 autres',
+	'contributors-badtitle'    => 'Títol incorrècte.',
+	'contributors-nosuchpage'  => 'L’article $1 existís pas.',
 ),
 
+/** Polish (Polski)
+ * @author Derbeth
+ */
 'pl' => array(
-	'contributors' => 'Autorzy',
-	'contributors-toolbox' => 'Główni autorzy',
-	'contributors-legend' => 'Lista głównych autorów artykułu',
-	'contributors-target' => 'Tytuł:',
-	'contributors-submit' => 'Pokaż',
-	'contributors-subtitle' => 'Główni autorzy $1',
+	'contributors'             => 'Autorzy',
+	'contributors-toolbox'     => 'Główni autorzy',
+	'contributors-legend'      => 'Lista głównych autorów artykułu',
+	'contributors-target'      => 'Tytuł:',
+	'contributors-submit'      => 'Pokaż',
+	'contributors-subtitle'    => 'Główni autorzy $1',
 	'contributors-others-long' => 'Jest $1 {{PLURAL:$1|inny autor|innych autorów}} tej strony.',
-	'contributors-others' => 'i $1 {{PLURAL:$1|inny|innych}}',
-	'contributors-badtitle' => 'Niepoprawny tytuł.',
-	'contributors-nosuchpage' => 'Artykuł $1 nie istnieje.',
+	'contributors-others'      => 'i $1 {{PLURAL:$1|inny|innych}}',
+	'contributors-badtitle'    => 'Niepoprawny tytuł.',
+	'contributors-nosuchpage'  => 'Artykuł $1 nie istnieje.',
 ),
 
-/* Piedmontese (Bèrto 'd Sèra) */
+/** Piemontèis (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 'pms' => array(
-	'contributors' => 'A l\'han contribuì',
-	'contributors-toolbox' => 'Contributor prinsipaj',
-	'contributors-legend' => 'Lista dij contributor prinsipaj a n\'artìcol',
-	'contributors-target' => 'Tìtol:',
-	'contributors-submit' => 'Smon',
-	'contributors-subtitle' => 'Contributor prinsipaj ëd $1',
-	'contributors-others-long' => 'J\'àotri contributor dë sta pàgina-sì a son antra $1.',
-	'contributors-others' => 'e antra $1 dj\'àotri',
-	'contributors-badtitle' => 'Tìtol nen bon',
-	'contributors-nosuchpage' => 'L\'artìcol $1 a-i é pa.',
+	'contributors'             => "A l'han contribuì",
+	'contributors-toolbox'     => 'Contributor prinsipaj',
+	'contributors-legend'      => "Lista dij contributor prinsipaj a n'artìcol",
+	'contributors-target'      => 'Tìtol:',
+	'contributors-submit'      => 'Smon',
+	'contributors-subtitle'    => 'Contributor prinsipaj ëd $1',
+	'contributors-others-long' => "J'àotri contributor dë sta pàgina-sì a son antra $1.",
+	'contributors-others'      => "e antra $1 dj'àotri",
+	'contributors-badtitle'    => 'Tìtol nen bon',
+	'contributors-nosuchpage'  => "L'artìcol $1 a-i é pa.",
 ),
 
 /* Portuguese (Lugusto) */
@@ -382,17 +427,20 @@ function efContributorsMessages() {
 	'contributors-target' => 'Titel:',
 ),
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
 'ro' => array(
-	'contributors' => 'Contribuitori',
-	'contributors-toolbox' => 'Contribuitori principali',
-	'contributors-legend' => 'Afişează contribuitorii principali la un articol',
-	'contributors-target' => 'Titlu:',
-	'contributors-submit' => 'Arată',
-	'contributors-subtitle' => 'Contribuitori principali la $1',
+	'contributors'             => 'Contribuitori',
+	'contributors-toolbox'     => 'Contribuitori principali',
+	'contributors-legend'      => 'Afişează contribuitorii principali la un articol',
+	'contributors-target'      => 'Titlu:',
+	'contributors-submit'      => 'Arată',
+	'contributors-subtitle'    => 'Contribuitori principali la $1',
 	'contributors-others-long' => 'Mai sunt $1 alţi contribuitori la această pagină.',
-	'contributors-others' => 'şi alţii $1',
-	'contributors-badtitle' => 'Titlu nevalid.',
-	'contributors-nosuchpage' => 'Articolul $1 nu există.',
+	'contributors-others'      => 'şi alţii $1',
+	'contributors-badtitle'    => 'Titlu nevalid.',
+	'contributors-nosuchpage'  => 'Articolul $1 nu există.',
 ),
 
 /* Russian */
@@ -481,18 +529,20 @@ function efContributorsMessages() {
 	'contributors-nosuchpage'  => 'Disse Siede $1 bestoant nit.',
 ),
 
-/* Sundanese (Kandar via BetaWiki) */
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
 'su' => array(
-	'contributors' => 'Kontributor',
-	'contributors-toolbox' => 'Kontributor utama',
-	'contributors-legend' => 'Béréndélkeun kontributor utama artikel',
-	'contributors-target' => 'Judul:',
-	'contributors-submit' => 'Témbongkeun',
-	'contributors-subtitle' => 'Kontributor utama $1',
+	'contributors'             => 'Kontributor',
+	'contributors-toolbox'     => 'Kontributor utama',
+	'contributors-legend'      => 'Béréndélkeun kontributor utama artikel',
+	'contributors-target'      => 'Judul:',
+	'contributors-submit'      => 'Témbongkeun',
+	'contributors-subtitle'    => 'Kontributor utama $1',
 	'contributors-others-long' => 'Aya $1 kontributor séjénna pikeun kaca ieu.',
-	'contributors-others' => 'sarta $1 lianna',
-	'contributors-badtitle' => 'Judulna teu sah.',
-	'contributors-nosuchpage' => 'Teu aya artikel $1.',
+	'contributors-others'      => 'sarta $1 lianna',
+	'contributors-badtitle'    => 'Judulna teu sah.',
+	'contributors-nosuchpage'  => 'Teu aya artikel $1.',
 ),
 
 /* Cantonese (Shinjiman) */

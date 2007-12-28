@@ -22,12 +22,15 @@ function efInputBoxMessages() {
 	'createarticle'           => 'Create page',
 ),
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 'ar' => array(
 	'inputbox-error-no-type'  => 'لم تقم بتحديد نوع صندوق الإدخال للإنشاء.',
 	'inputbox-error-bad-type' => 'نوع صندوق الإدخال "$1" لم يتم التعرف عليه. من فضلك حدد "create"، "comment"، "search" أو "search2".',
 	'tryexact'                => 'ابحث عن عنوان مطابق',
 	'searchfulltext'          => 'ابحث في النص الكامل',
-	'createarticle'           => 'إنشاء مقالة',
+	'createarticle'           => 'إنشاء صفحة',
 ),
 
 /** Asturian (Asturianu)
@@ -58,6 +61,9 @@ function efInputBoxMessages() {
 	'createarticle' => 'Mekem atikel',
 ),
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
 'bn' => array(
 	'inputbox-error-no-type'  => 'আপনি ইনপুট বক্স তৈরির জন্য ইনপুট বক্সের ধরণ নির্ধারণ করেননি।',
 	'inputbox-error-bad-type' => '"$1" ধরণের ইনপুট বক্স নেই। দয়া করে "create", "comment", "search" অথবা "search2" নির্ধারণ করুন।',
@@ -66,12 +72,18 @@ function efInputBoxMessages() {
 	'createarticle'           => 'নিবন্ধ শুরু করুন',
 ),
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
 'br' => array(
 	'tryexact'       => 'Klask ma klotfe rik',
 	'searchfulltext' => 'Klask an destenn a-bezh',
 	'createarticle'  => 'Krouiñ pennad',
 ),
 
+/** Catalan (Català)
+ * @author Toniher
+ */
 'ca' => array(
 	'tryexact'       => 'Prova una coincidència exacta',
 	'searchfulltext' => 'Cerca un text sencer',
@@ -82,9 +94,12 @@ function efInputBoxMessages() {
 	'createarticle' => 'Kŭi hiĕk',
 ),
 
+/** Corsican (Corsu)
+ * @author SPQRobin
+ */
 'co' => array(
-	'searchfulltext'          => 'Ricerca testu cumplettu',
-	'createarticle'           => 'Creà l\'articulu',
+	'searchfulltext' => 'Ricerca testu cumplettu',
+	'createarticle'  => "Creà l'articulu",
 ),
 
 'cs' => array(
@@ -111,10 +126,13 @@ function efInputBoxMessages() {
 	'createarticle'           => 'Seite anlegen',
 ),
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Pe7er
+ */
 'dsb' => array(
-	'tryexact'                => 'Nawłos pytaś:',
-	'searchfulltext'          => 'Ceły tekst pytaś',
-	'createarticle'           => 'Nastawk natworiś',
+	'tryexact'       => 'Nawłos pytaś:',
+	'searchfulltext' => 'Ceły tekst pytaś',
+	'createarticle'  => 'Nastawk natworiś',
 ),
 
 'el' => array(
@@ -156,14 +174,18 @@ function efInputBoxMessages() {
 	'createarticle'  => 'Luo sivu',
 ),
 
+/** Võro (Võro)
+ * @author Võrok
+ */
 'fiu-vro' => array(
 	'tryexact'       => 'Täpsä otsminõ',
 	'searchfulltext' => 'Otsiq terveq tekst',
 	'createarticle'  => 'Luuq leht',
 ),
 
+/** Faroese (Føroyskt) */
 'fo' => array(
-	'createarticle'           => 'Stovna grein',
+	'createarticle' => 'Stovna grein',
 ),
 
 'fr' => array(
@@ -184,6 +206,9 @@ function efInputBoxMessages() {
 	'createarticle'  => 'Cruthaigh alt',
 ),
 
+/** Galician (Galego)
+ * @author Alma
+ */
 'gl' => array(
 	'inputbox-error-no-type'  => 'Non se especificou o tipo de caixa de entrada para crear.',
 	'inputbox-error-bad-type' => 'A caixa de entrada de tipo "$1" non se recoñece. Especifique "crear", "comentario", "procurar" ou "procurar2".',
@@ -192,8 +217,9 @@ function efInputBoxMessages() {
 	'createarticle'           => 'Crear artigo',
 ),
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ) */
 'grc' => array(
-	'createarticle'           => 'Δέλτον ποιῆσαι',
+	'createarticle' => 'Δέλτον ποιῆσαι',
 ),
 
 /** Gujarati (ગુજરાતી) */
@@ -201,6 +227,9 @@ function efInputBoxMessages() {
 	'createarticle' => 'નવો લેખ શરૂ કરો',
 ),
 
+/** Hakka (Hak-kâ-fa)
+ * @author Hakka
+ */
 'hak' => array(
 	'tryexact'       => 'Sòng-chhṳ chîn-khok phit-phi',
 	'searchfulltext' => 'Chhiòn vùn-kiám chhìm-cháu',
@@ -234,8 +263,9 @@ function efInputBoxMessages() {
 	'createarticle'           => 'Szócikk létrehozása',
 ),
 
+/** Armenian (Հայերեն) */
 'hy' => array(
-	'createarticle'           => 'Հոդված ստեղծել',
+	'createarticle' => 'Հոդված ստեղծել',
 ),
 
 'id' => array(
@@ -251,8 +281,9 @@ function efInputBoxMessages() {
 	'createarticle' => 'Mangaramid iti articulo',
 ),
 
+/** Icelandic (Íslenska) */
 'is' => array(
-	'createarticle'           => 'Búa til grein',
+	'createarticle' => 'Búa til grein',
 ),
 
 'it' => array(
@@ -278,10 +309,14 @@ function efInputBoxMessages() {
 	'createarticle'           => 'სტატიის შექმნა',
 ),
 
+/** Kara-Kalpak (Qaraqalpaqsha) */
 'kaa' => array(
-	'createarticle'           => 'Bet jaratıw',
+	'createarticle' => 'Bet jaratıw',
 ),
 
+/** Kabyle (Taqbaylit)
+ * @author Agurzil
+ */
 'kab' => array(
 	'tryexact'       => 'Nadi ɣef uzwel kif-kif',
 	'searchfulltext' => 'Nadi aḍris ettmam',
@@ -312,6 +347,9 @@ function efInputBoxMessages() {
 	'createarticle'           => 'بەتتٸ باستاۋ',
 ),
 
+/** Korean (한국어)
+ * @author Klutzy
+ */
 'ko' => array(
 	'searchfulltext' => '전체 글 검색',
 	'createarticle'  => '문서 만들기',
@@ -335,10 +373,13 @@ function efInputBoxMessages() {
 	'createarticle' => 'Wandika omuko',
 ),
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
 'li' => array(
-	'tryexact'                => 'Perbeer exacte euvereinkoms',
-	'searchfulltext'          => 'Zeuk dèr volledige tèks',
-	'createarticle'           => 'Maak \'n artikel aan',
+	'tryexact'       => 'Perbeer exacte euvereinkoms',
+	'searchfulltext' => 'Zeuk dèr volledige tèks',
+	'createarticle'  => "Maak 'n artikel aan",
 ),
 
 'lo' => array(
@@ -351,10 +392,14 @@ function efInputBoxMessages() {
 	'createarticle'  => 'Kurti straipsnį',
 ),
 
+/** Latvian (Latviešu) */
 'lv' => array(
 	'createarticle' => 'Izveidot rakstu',
 ),
 
+/** Macedonian (Македонски)
+ * @author Misos
+ */
 'mk' => array(
 	'tryexact'       => 'Обиди се точно',
 	'searchfulltext' => 'Барај низ целиот текст',
@@ -365,17 +410,27 @@ function efInputBoxMessages() {
 	'searchfulltext'          => 'Chhiau choan-bûn',
 ),
 
+/** Neapolitan (Nnapulitano)
+ * @author SabineCretella
+ */
 'nap' => array(
-	'searchfulltext'          => 'Ascià dint&#39;&#39;o testo',
-	'createarticle'           => 'Cria voce',
+	'searchfulltext' => 'Ascià dint&#39;&#39;o testo',
+	'createarticle'  => 'Cria voce',
 ),
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
 'nds' => array(
 	'tryexact'       => 'exakte Söök versöken',
 	'searchfulltext' => 'in’n Vulltext söken',
 	'createarticle'  => 'Artikel anleggen',
 ),
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ * @author SPQRobin
+ */
 'nl' => array(
 	'inputbox-error-no-type'  => 'U heeft het type inputbox niet aangegeven. Zie [http://www.mediawiki.org/wiki/Extension:Inputbox MediaWiki.org] voor meer informatie.',
 	'inputbox-error-bad-type' => 'Inputbox-type "$1" niet herkend. Gebruik "create", "comment", "search" of "search2".',
@@ -390,6 +445,9 @@ function efInputBoxMessages() {
 	'createarticle'  => 'Lag side',
 ),
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 'no' => array(
 	'inputbox-error-no-type'  => 'Du har ikke oppgitt hva slags inputboks du vil lage.',
 	'inputbox-error-bad-type' => 'Inputboks av typen «$1» gjenkjennes ikke. Vennligst velg «create», «comment», «search» eller «search2».',
@@ -398,9 +456,12 @@ function efInputBoxMessages() {
 	'createarticle'           => 'Opprett artikkel',
 ),
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 'oc' => array(
 	'inputbox-error-no-type'  => 'Avètz pas precisat lo tipe de la boita de dintrada de crear.',
-	'inputbox-error-bad-type' => 'Tipe de boita dintradad $1 pas reconeguda. Indicatz l\'opcion \'\'create\'\', \'\'comment\'\', \'\'search\'\' o \'\'searche2\'\'.',
+	'inputbox-error-bad-type' => "Tipe de boita dintradad $1 pas reconeguda. Indicatz l'opcion ''create'', ''comment'', ''search'' o ''searche2''.",
 	'tryexact'                => 'Ensajatz la correspondéncia exacta',
 	'searchfulltext'          => 'Recèrca en tèxt integral',
 	'createarticle'           => 'Crear l’article',
@@ -430,12 +491,16 @@ function efInputBoxMessages() {
 	'createarticle'  => 'Criar página',
 ),
 
+/** Romanian (Română)
+ * @author Emily
+ */
 'ro' => array(
 	'tryexact'       => 'Încearcă varianta exactă',
 	'searchfulltext' => 'Caută textul întreg',
 	'createarticle'  => 'Crează articol',
 ),
 
+/** Armãneashce (Armãneashce) */
 'roa-rup' => array(
 	'createarticle' => 'Adrats articlu',
 ),
@@ -451,10 +516,14 @@ function efInputBoxMessages() {
 	'createarticle'           => 'Создать статью',
 ),
 
+/** Sindhi (سنڌي) */
 'sd' => array(
-	'createarticle'           => 'نئون مضمون لکو',
+	'createarticle' => 'نئون مضمون لکو',
 ),
 
+/** Slovak (Slovenčina)
+ * @author Robbot
+ */
 'sk' => array(
 	'tryexact'       => 'Skúste presné vyhľadávanie',
 	'searchfulltext' => 'Fulltextové vyhľadávanie',
@@ -485,13 +554,14 @@ function efInputBoxMessages() {
 	'createarticle'  => 'Napravi članak',
 ),
 
+/** Swati (SiSwati) */
 'ss' => array(
-	'createarticle'           => 'Kúdála intfo',
+	'createarticle' => 'Kúdála intfo',
 ),
 
 /** Seeltersk (Seeltersk)
- * @author Maartenvdbent
  * @author Pyt
+ * @author Maartenvdbent
  */
 'stq' => array(
 	'inputbox-error-no-type'  => 'Du hääst naan Inputbox-Typ ounroat.',
@@ -506,12 +576,15 @@ function efInputBoxMessages() {
 	'createarticle'           => 'Jieun artikel',
 ),
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
 'sv' => array(
 	'inputbox-error-no-type'  => 'Du har inte angivit vilken typ av inputbox som ska skapas..',
 	'inputbox-error-bad-type' => '"$1" är inte en känd typ av inputbox. Giltiga typer är "create", "comment", "search" och "search2".',
-	'tryexact'       => 'Försök hitta exakt matchning',
-	'searchfulltext' => 'Fulltextsökning',
-	'createarticle'  => 'Skapa artikel',
+	'tryexact'                => 'Försök hitta exakt matchning',
+	'searchfulltext'          => 'Fulltextsökning',
+	'createarticle'           => 'Skapa sida',
 ),
 
 'te' => array(
@@ -525,6 +598,7 @@ function efInputBoxMessages() {
 	'createarticle'  => 'สร้างเนื้อหา',
 ),
 
+/** Tswana (Setswana) */
 'tn' => array(
 	'createarticle' => 'Kwala mokwalo',
 ),
@@ -536,6 +610,7 @@ function efInputBoxMessages() {
 	'createarticle' => 'Fakatupu ʻa e kupu',
 ),
 
+/** Turkish (Türkçe) */
 'tr' => array(
 	'createarticle' => 'Sayfayı oluştur',
 ),
@@ -555,6 +630,7 @@ function efInputBoxMessages() {
 	'createarticle' => 'Maqola kiritish',
 ),
 
+/** Vèneto (Vèneto) */
 'vec' => array(
 	'createarticle' => 'Crea voçe',
 ),
