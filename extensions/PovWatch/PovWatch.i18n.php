@@ -43,14 +43,14 @@ A log of recent watchlist pushes is available at [[Special:PovWatch/log]].',
 $messages['ar'] = array(
 	'povwatch'                         => 'مراقبة بي أو في',
 	'povwatch_no_session'              => 'خطأ: لم يمكن تنفيذ الاستمارة نتيجة فقد في بيانات الجلسة.',
-	'povwatch_not_allowed_push'        => 'أنت لست إداري مراقبة بي أو في، لا يمكنك دفع المقالات إلى قوائم المراقبة.',
+	'povwatch_not_allowed_push'        => 'أنت لست إداري مراقبة بي أو في، لا يمكنك دفع صفحات إلى قوائم مراقبة.',
 	'povwatch_already_subscribed'      => 'أنت مشترك بالفعل في مراقبة بي أو في',
 	'povwatch_subscribed'              => 'أنت الآن مشترك في مراقبة بي أو في',
 	'povwatch_not_subscribed'          => 'أنت غير مشترك في مراقبة بي أو في، لذا فلا يمكنك إلغاء الاشتراك.',
 	'povwatch_unsubscribed'            => 'أنت الآن ألغيت الاشتراك في مراقبة بي أو في',
 	'povwatch_invalid_title'           => 'العنوان المحدد كان غير صحيح',
 	'povwatch_pushed'                  => '[[$1]] تم دفعها بنجاح إلى $2 قائمة مراقبة مستخدم',
-	'povwatch_intro'                   => 'مراقبة بي أو في هي خدمة تسمح بإضافة مقالات معينة إلى قوائم مراقبة الإداريين المشتركين.
+	'povwatch_intro'                   => 'مراقبة بي أو في هي خدمة تسمح بإضافة صفحات معينة إلى قوائم مراقبة الإداريين المشتركين.
 
 السجل بعمليات دفع قوائم المراقبة الحديثة متوفر في [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list'         => '[[Special:PovWatch/subscribers|قائمة المشتركين]] متوفرة.',
@@ -58,7 +58,7 @@ $messages['ar'] = array(
 	'povwatch_not_allowed_subscribers' => 'أنت غير مسموح لك برؤية قائمة المشتركين في مراقبة بي أو في.',
 	'povwatch_unknown_subpage'         => 'صفحة فرعية غير معروفة.',
 	'povwatch_push'                    => 'دفع',
-	'povwatch_push_intro'              => 'استخدم الاستمارة بالأسفل لدفع مقالات إلى قوائم مراقبة المستخدمين المشتركين. من فضلك كن حذرا عند كتابة العنوان: حتى العناوين غير الموجودة يمكن إضافتها، ولا توجد طريقة لإزالة عنوان ما متى تم دفعه.',
+	'povwatch_push_intro'              => 'استخدم الاستمارة بالأسفل لدفع صفحات إلى قوائم مراقبة المستخدمين المشتركين. من فضلك كن حذرا عند كتابة العنوان: حتى العناوين غير الموجودة يمكن إضافتها، ولا توجد طريقة لإزالة عنوان ما متى تم دفعه.',
 	'povwatch_title'                   => 'العنوان:',
 	'povwatch_comment'                 => 'تعليق السجل',
 	'povwatch_no_log'                  => 'لا توجد مدخلات سجل.',
@@ -105,7 +105,7 @@ Un journal de surveillance des articles inscrits est disponible sur [[Special:Po
 	'povwatch_not_allowed_subscribers' => 'Vous n’avez pas la permission de visionner la liste des personnes inscrite pour la surveillance des guerre d’édition.',
 	'povwatch_unknown_subpage'         => 'Sous-pages inconnue.',
 	'povwatch_push'                    => 'Inscrire',
-	'povwatch_push_intro'              => 'Utilisez le formulaire ci-dessous pour inscrire les articles dans la liste de surveillance des utilisateurs abonnés. Inscrivez scrupuleusement le titre : les articles peuvent même être ajoutés, et il n’existe aucune issue pour les retirer une fois inscrits.',
+	'povwatch_push_intro'              => 'Utilisez le formulaire ci-dessous pour inscrire les articles dans la liste de suivi affectée aux utilisateurs abonnés. Inscrivez scrupuleusement le titre : les articles peuvent même être ajoutés, et il n’existe aucune issue pour les retirer une fois inscrits.',
 	'povwatch_title'                   => 'Titre :',
 	'povwatch_comment'                 => 'Commentaire du journal :',
 	'povwatch_no_log'                  => 'Il n’existe aucune entrée dans le journal.',
@@ -229,3 +229,4 @@ $messages['oc'] = array(
 	'povwatch_subscribe'               => 'Soscriure',
 	'povwatch_added'                   => 'ajustat',
 );
+

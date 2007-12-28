@@ -26,6 +26,13 @@ $messages['ar'] = array(
 $2',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'userrightsnotifysubject' => 'Промяна на груповата принадлежност в $1',
+);
+
 $messages['de'] = array(
 	'userrightsnotifysubject' => 'Änderung der Gruppenzugehörigkeit vom $1',
 	'userrightsnotifybody'    => "Hallo $1

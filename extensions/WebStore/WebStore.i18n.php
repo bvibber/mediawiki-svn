@@ -112,6 +112,7 @@ $1',
 	'bg' => array(
 		'inplace_scaler_not_enough_params' => 'Няма достатъчно параметри',
 		'webstore_path_invalid'            => 'Името на файла е невалидно.',
+		'webstore_no_file'                 => 'Не беше качен файл.',
 		'webstore_404'                     => 'Файлът не беше намерен.',
 		'webstore_php_warning'             => 'PHP Предупреждение: $1',
 		'webstore_no_response'             => 'Няма отговор от сървъра',

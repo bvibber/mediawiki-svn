@@ -17,23 +17,6 @@ $allMessages = array(
 		'tasklistnoprojects'      => "ERROR: It looks like you enabled '''\$wgUseProjects''', but did not create [[MediaWiki:TodoTasksValidProjects]]. See [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] for more details.",
 	),
 
-	'he' => array(
-		'tasklist'                => 'רשימת מטלות',
-		'tasklistbyproject'       => 'רשימת מטלות לפי פרוייקטים',
-		'tasklistunknownproject'  => 'פרוייקט לא ידוע',
-		'tasklistunspecuser'      => 'משתמש לא מוגדר',
-		'tasklistincorrectuser'   => 'משתמש לא נכון',
-		'tasklistemail'           => '%s היקר והחביב',
-		'tasklistemailsubject'    => '[%s] שיוני ברשימת המטלות',
-		'tasklistmytasks'         => 'המטלות שלי',
-		'tasklistbyprojectbad'    => "פרוייקט '''%s''' איננו קיים. לקבלת רשימת הפרוייקטים, צפה כאן [[MediaWiki:TodoTasksValidProjects]].",
-		'tasklistbyprojname'      => "מטלה הוגדרה ל'''%s'''",
-		'tasklistchooseproj'      => 'בחר פרוייקט: ',
-		'tasklistprojdisp'        => 'תצוגה',
-		'tasklistbyname'          => '== רשימת מטלות עבור %s ==',
-		'tasklistnoprojects'      => "שגיאה: נראה שאפשרת את '''\$wgUseProjects''', אבל לא יצרת [[MediaWiki:TodoTasksValidProjects]]. ראה [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] for more details.",
-	),
-
 	'ar' => array(
 		'tasklist'                => 'قائمة المهام',
 		'tasklistbyproject'       => 'قائمة المهام حسب المشروع',
@@ -49,6 +32,13 @@ $allMessages = array(
 		'tasklistprojdisp'        => 'عرض',
 		'tasklistbyname'          => '== قائمة العمل ل%s ==',
 		'tasklistnoprojects'      => 'خطأ: يبدو أنك فعلت \'\'\'$wgUseProjects\'\'\'، لكن لم تنشيء [[MediaWiki:TodoTasksValidProjects]]. انظر [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 تعليمات التنصيب] لمزيد من التفاصيل.',
+	),
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+	'bg' => array(
+		'tasklistprojdisp' => 'Показване',
 	),
 
 	'de' => array(
@@ -100,6 +90,23 @@ $allMessages = array(
 		'tasklistchooseproj'      => 'Seleccionar Proxecto:',
 		'tasklistprojdisp'        => 'Pantalla',
 		'tasklistbyname'          => '== Lista de cousas por facer de %s ==',
+	),
+
+	'he' => array(
+		'tasklist'                => 'רשימת מטלות',
+		'tasklistbyproject'       => 'רשימת מטלות לפי פרוייקטים',
+		'tasklistunknownproject'  => 'פרוייקט לא ידוע',
+		'tasklistunspecuser'      => 'משתמש לא מוגדר',
+		'tasklistincorrectuser'   => 'משתמש לא נכון',
+		'tasklistemail'           => '%s היקר והחביב',
+		'tasklistemailsubject'    => '[%s] שיוני ברשימת המטלות',
+		'tasklistmytasks'         => 'המטלות שלי',
+		'tasklistbyprojectbad'    => "פרוייקט '''%s''' איננו קיים. לקבלת רשימת הפרוייקטים, צפה כאן [[MediaWiki:TodoTasksValidProjects]].",
+		'tasklistbyprojname'      => "מטלה הוגדרה ל'''%s'''",
+		'tasklistchooseproj'      => 'בחר פרוייקט: ',
+		'tasklistprojdisp'        => 'תצוגה',
+		'tasklistbyname'          => '== רשימת מטלות עבור %s ==',
+		'tasklistnoprojects'      => "שגיאה: נראה שאפשרת את '''\$wgUseProjects''', אבל לא יצרת [[MediaWiki:TodoTasksValidProjects]]. ראה [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] for more details.",
 	),
 
 	'hsb' => array(
@@ -209,7 +216,7 @@ $allMessages = array(
 		'tasklistchooseproj'     => 'Projekt uutwääle:',
 		'tasklistprojdisp'       => 'Anwiese',
 		'tasklistbyname'         => '== Apgoawenlieste foar %s ==',
-		'tasklistnoprojects'     => "Failer: Dät sjucht so uut, as wan '''\$wgUseProjects''' aktivierd waas, man der wuuden neen Sieden [[MediaWiki:TodoTasksValidProjects]] moaked. Sjuch do 
+		'tasklistnoprojects'     => "Failer: Dät sjucht so uut, as wan '''\$wgUseProjects''' aktivierd waas, man der wuuden neen Sieden [[MediaWiki:TodoTasksValidProjects]] moaked. Sjuch do
 [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installationsanwiesengen] foar wiedere Details.",
 	),
 

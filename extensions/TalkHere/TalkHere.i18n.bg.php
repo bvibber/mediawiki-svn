@@ -10,8 +10,12 @@
  * @licence GNU General Public Licence 2.0 or later
  */
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
 $messages = array(
-	'talkhere-notalk' => '\'\'(все още няма коментари)\'\'',
+	'talkhere-notalk'     => "''(все още няма коментари)''",
 	'talkhere-addcomment' => 'добавяне на коментар',
-	'talkhere-loading' => 'зареждане на редактора...',
+	'talkhere-loading'    => 'зареждане на редактора...',
+	'talkhere-collapse'   => 'скриване на редактора',
 );

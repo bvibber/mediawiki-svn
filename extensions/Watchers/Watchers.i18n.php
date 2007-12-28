@@ -17,16 +17,23 @@ $messages['en'] = array(
 	'watchers_less_than_x' => "Less than $1 people watch this page.",
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
 	'watchers'               => 'المراقبون',
 	'watchers_link_title'    => 'من يراقب هذه الصفحة؟',
-	'watchers_error_article' => '<b>خطأ:</b> المقالة غير موجودة.',
+	'watchers_error_article' => '<b>خطأ:</b> الصفحة غير موجودة.',
 	'watchers_header'        => 'الناس الذين يراقبون "$1"',
 	'watchers_noone_watches' => 'لا أحد يراقب هذه الصفحة.',
 	'watchers_x_or_more'     => '$1 أو أكثر يراقبون هذه الصفحة.',
 	'watchers_less_than_x'   => 'أقل من $1 يراقبون هذه الصفحة.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ * @author Spiritia
+ */
 $messages['bg'] = array(
 	'watchers'               => 'Наблюдаващи',
 	'watchers_link_title'    => 'Кой наблюдава тази страница?',
@@ -81,10 +88,13 @@ $messages['gl'] = array(
 	'watchers_less_than_x'   => 'Menos de $1 persoas vixian esta páxina.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'watchers'               => 'Wobkedźbowarjo',
 	'watchers_link_title'    => 'Štó tutu stronu wobkedźbuje?',
-	'watchers_error_article' => '\'\'\'Zmylk:\'\'\' Nastawk njeeksistuje.',
+	'watchers_error_article' => "'''Zmylk:''' Nastawk njeeksistuje.",
 	'watchers_header'        => 'Wužiwarjo, kotřiž "$1" wobkedźbuja',
 	'watchers_noone_watches' => 'Nichtó tutu stronu njewobkedźbuje.',
 	'watchers_x_or_more'     => '$1 abo wjace ludźi tutu stronu wobkedźbuje.',

@@ -34,6 +34,13 @@ $messages['ar'] = array(
 	'showprocesslist-info'    => 'معلومات',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'showprocesslist-user' => 'Потребител',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

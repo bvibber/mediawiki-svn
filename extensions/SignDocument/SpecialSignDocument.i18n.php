@@ -202,6 +202,7 @@ $allMessages = array(
 		'sign-viewfield-reviewcomment' => 'Komento',
 		'sign-review-comment' => 'Komento',
 	),
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -210,11 +211,13 @@ $allMessages = array(
 		'sign-realname'                => 'Име:',
 		'sign-address'                 => 'Адрес:',
 		'sign-city'                    => 'Град:',
+		'sign-country'                 => 'Държава:',
 		'sign-phone'                   => 'Телефонен номер:',
 		'sign-bday'                    => 'Възраст:',
 		'sign-viewfield-realname'      => 'Име',
 		'sign-viewfield-address'       => 'Адрес',
 		'sign-viewfield-city'          => 'Град',
+		'sign-viewfield-country'       => 'Държава',
 		'sign-viewfield-ip'            => 'IP адрес',
 		'sign-viewfield-phone'         => 'Телефон',
 		'sign-viewfield-age'           => 'Възраст',
