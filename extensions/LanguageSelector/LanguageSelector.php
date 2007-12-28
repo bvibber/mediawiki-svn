@@ -66,14 +66,16 @@ $wgExtensionFunctions[] = "wfLanguageSelectorExtension";
 
 $wgLanguageSelectorRequestedLanguage = NULL;
 
+
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['LanguageSelector'] = $dir . 'LanguageSelector.i18n.php';
+
 function wfLanguageSelectorExtension() {
+	wfLoadExtensionMessages( 'LanguageSelector' );
 	global $wgLanguageSelectorLanguages, $wgLanguageSelectorDetectLanguage, $wgLanguageSelectorRequestedLanguage, $wgLanguageSelectorLocation;
 	global $wgUser, $wgLang, $wgRequest, $wgCookiePrefix, $wgCookiePath, $wgMessageCache, $wgOut, $wgJsMimeType, $wgHooks, $wgParser;
 
 	$wgParser->setHook('languageselector', 'wfLanguageSelectorTag' );
-
-	$wgMessageCache->addMessage('languageselector-setlang', 'set');
-	$wgMessageCache->addMessage('languageselector', 'Language');
 
 	if ( $wgLanguageSelectorLanguages === NULL ) {
 		$wgLanguageSelectorLanguages = @$GLOBALS['wgPolyglotLanguages'];
