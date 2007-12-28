@@ -19,7 +19,7 @@ function efInputBoxMessages() {
 	'inputbox-error-bad-type' => 'Input box type "$1" not recognised. Please specify "create", "comment", "search" or "search2".',
 	'tryexact'                => 'Try exact match',
 	'searchfulltext'          => 'Search full text',
-	'createarticle'           => 'Create article',
+	'createarticle'           => 'Create page',
 ),
 
 'ar' => array(
