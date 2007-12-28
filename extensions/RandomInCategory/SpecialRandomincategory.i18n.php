@@ -15,6 +15,17 @@ $messages['en'] = array(
 	'randomincategory-submit'         => 'Go',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'randomincategory'            => 'صفحة عشوائية في التصنيف',
+	'randomincategory-toolbox'    => 'صفحة عشوائية',
+	'randomincategory-nocategory' => 'التصنيف $1 غير موجود أو فارغ',
+	'randomincategory-label'      => 'التصنيف:',
+	'randomincategory-submit'     => 'اذهب',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -24,6 +35,15 @@ $messages['fr'] = array(
 	'randomincategory-nocategory' => 'La catégorie « $1 » n’existe pas ou est vide',
 	'randomincategory-label'      => 'Catégorie :',
 	'randomincategory-submit'     => 'Lancer',
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$messages['hsb'] = array(
+	'randomincategory'            => 'Připadna strona w kategoriji',
+	'randomincategory-toolbox'    => 'Připadna strona',
+	'randomincategory-nocategory' => 'Kategorija $1 njeeksistuje abo je prózdna',
+	'randomincategory-label'      => 'Kategorija:',
+	'randomincategory-submit'     => 'W porjadku',
 );
 
 /** Latin (Latina)

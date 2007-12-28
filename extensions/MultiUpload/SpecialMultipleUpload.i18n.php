@@ -59,22 +59,12 @@ Du kannst wahlweise auch einen '''Ziel-Dateinamen''' vorgeben und eine '''Beschr
 Ungeeignete Dateien werden sofort gelöscht, siehe die [[{{MediaWiki:Multipleupload-page}}|Löschrichtlinien]].",
 );
 
-/** Occitan (Occitan)
- * @author Cedric31
+/** Greek (Ελληνικά)
+ * @author Consta
  */
-$messages['oc'] = array(
-	'multipleupload'                   => 'Telecargar de fichièrs',
-	'multipleupload-ignoreallwarnings' => "Ignorar '''totes los avertiments''' e salvagardar los fichièrs en question.",
-	'multipleupload-saveallfiles'      => 'Salvagardar totes los fichièrs',
-	'multipleupload-addresswarnings'   => 'Verificatz los avertiments afichats abans de telecargar los fichièrs tornamai.',
-	'multipleupload-page'              => '{{ns:project}}:Règlas per la supression de fichièr',
-	'multipleupload-text'              => "Telecargar mantun fichièr aicí.
-
-Causissetz « Recercar » e seleccionatz cada fichièr que volètz telecargar. Ne podètz telecargar actualament de 1 fins a $1. 
-
-Podètz inscriure la '''destinacion del fichièr''' e emplenar lo '''Somari''' per descriure vòstre imatge.
-
-Los imatges pas pertinents poiràn èsser escafadas immediatament. Vejatz la pagina [[{{MediaWiki:Multipleupload-page}}|image deletion policy]].",
+$messages['el'] = array(
+	'multipleupload'              => 'Επιφόρτιση αρχείων',
+	'multipleupload-saveallfiles' => 'Αποθηκεύστε όλα τα αρχεία',
 );
 
 /** French (Français)
@@ -157,6 +147,24 @@ Velg «Naviger» og velg de filene du ønsker å laste opp. Du kan laste opp mel
 Du kan skrive inn et valgfritt \'\'\'målnavn\'\'\' og oppgi et \'\'\'sammendrag\'\'\' for å beskrive filen.
 
 Upassende filer vil bli slettet umiddelbart, se [[{{MediaWiki:Multipleupload-page}}|retningslinjene for filsletting]].',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'multipleupload'                   => 'Telecargar de fichièrs',
+	'multipleupload-ignoreallwarnings' => "Ignorar '''totes los avertiments''' e salvagardar los fichièrs en question.",
+	'multipleupload-saveallfiles'      => 'Salvagardar totes los fichièrs',
+	'multipleupload-addresswarnings'   => 'Verificatz los avertiments afichats abans de telecargar los fichièrs tornamai.',
+	'multipleupload-page'              => '{{ns:project}}:Règlas per la supression de fichièr',
+	'multipleupload-text'              => "Telecargar mantun fichièr aicí.
+
+Causissetz « Recercar » e seleccionatz cada fichièr que volètz telecargar. Ne podètz telecargar actualament de 1 fins a $1. 
+
+Podètz inscriure la '''destinacion del fichièr''' e emplenar lo '''Somari''' per descriure vòstre imatge.
+
+Los imatges pas pertinents poiràn èsser escafadas immediatament. Vejatz la pagina [[{{MediaWiki:Multipleupload-page}}|image deletion policy]].",
 );
 
 /** Seeltersk (Seeltersk)

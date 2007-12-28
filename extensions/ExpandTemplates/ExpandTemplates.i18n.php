@@ -127,6 +127,7 @@ telles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}} sont 
 	'expand_templates_remove_comments' => 'Supprimer les commentaires.',
 	'expand_templates_preview'         => 'Prévisualisation',
 );
+
 $wgExpandTemplatesMessages['gl'] = array(
 	'expandtemplates'                  => 'Ampliar modelos',
 	'expand_templates_title'           => 'Título do contexto, para {{PAGENAME}} etc.:',
@@ -136,6 +137,13 @@ $wgExpandTemplatesMessages['gl'] = array(
 	'expand_templates_remove_comments' => 'Eliminar os comentarios',
 	'expand_templates_preview'         => 'Vista previa',
 );
+
+/** Gujarati (ગુજરાતી) */
+$wgExpandTemplatesMessages['gu'] = array(
+	'expand_templates_output' => 'પરિણામ:',
+	'expand_templates_ok'     => 'મંજૂર',
+);
+
 $wgExpandTemplatesMessages['he'] = array(
 	'expandtemplates'                  => 'פריסת תבניות',
 	'expand_templates_intro'           => 'דף זה מקבל כמות מסוימת של טקסט ופורס ומפרש את כל התבניות שבתוכו באופן רקורסיבי. בנוסף, הוא פורס הוראות פירוש כגון <nowiki>{{</nowiki>#תנאי:...}}, ומשתנים כגון <nowiki>{{</nowiki>יום נוכחי}}, ולמעשה בערך כל דבר בסוגריים מסולסלות כפולות. הוא עושה זאת באמצעות קריאה לפונקציות הפענוח המתאימות מתוך תוכנת מדיה־ויקי עצמה.',
@@ -146,6 +154,7 @@ $wgExpandTemplatesMessages['he'] = array(
 	'expand_templates_remove_comments' => 'הסר הערות',
 	'expand_templates_preview'         => 'תצוגה מקדימה',
 );
+
 $wgExpandTemplatesMessages['hr'] = array(
 	'expandtemplates'                  => 'Prikaz sadržaja predložaka',
 	'expand_templates_intro'           => 'Posebna stranica zauzima tekst i širi se na sve predloške unutar te stranice. Također proširuje funkcije kao <nowiki>{{</nowiki>#if:...}} i varijable kao <nowiki>{{</nowiki>CURRENTDAY}}. Funkcionira na način da se umeće na sve relevantne stranice potekavši iz samoga MediaWikija.',
@@ -156,6 +165,7 @@ $wgExpandTemplatesMessages['hr'] = array(
 	'expand_templates_remove_comments' => 'Ukloni komentare',
 	'expand_templates_preview'         => 'Vidi kako će izgledati',
 );
+
 $wgExpandTemplatesMessages['hsb'] = array(
 	'expandtemplates'                  => 'Předłohi ekspandować',
 	'expand_templates_intro'           => 'Na tutej specialnej stronje móžeš tekst zapodać a wšitke do njeje zapřijate předłohi so rekursiwnje ekspanduja. Tež funkcije parsera kaž <nowiki>{{</nowiki>#if:...}} a wariable kaž <nowiki>{{</nowiki>CURRENTDAY}} so wuhódnočeja – faktisce wšo, štož steji mjezy dwójnymaj wopušatymaj spinkomaj. To so přez zawołanje jednotliwych fazow parsera software MediaWiki stawa.',
@@ -166,6 +176,7 @@ $wgExpandTemplatesMessages['hsb'] = array(
 	'expand_templates_remove_comments' => 'Komentary wotstronić',
 	'expand_templates_preview'         => 'Přehlad',
 );
+
 $wgExpandTemplatesMessages['hu'] = array(
 	'expandtemplates'                  => 'Sablonok kibontása',
 	'expand_templates_intro'           => 'Ez a speciális lap a bevitt szövegekben megkeresi a sablonokat és rekurzívan kibontja őket.
@@ -175,9 +186,11 @@ Kibontja az elemző függvényeket (pl. <nowiki>{{</nowiki>#if:...}}), és a vá
 	'expand_templates_output'          => 'Eredmény',
 	'expand_templates_remove_comments' => 'Megjegyzések eltávolítása',
 );
+
 $wgExpandTemplatesMessages['hy'] = array(
 	'expandtemplates'                  => 'Կաղապարների ընդարձակում',
 );
+
 $wgExpandTemplatesMessages['id'] = array(
 	'expandtemplates'                  => 'Pengembangan templat',
 	'expand_templates_intro'           => 'Halaman istimewa ini menerima teks dan mengembangkan semua templat di dalamnya secara rekursif. Halaman ini juga menerjemahkan semua fungsi parser seperti <nowiki>{{</nowiki>#if:...}}, dan variabel seperti <nowiki>{{</nowiki>CURRENTDAY}}&mdash;bahkan bisa dibilang segala sesuatu yang berada di antara dua tanda kurung. Ini dilakukan dengan memanggil tahapan parser yang sesuai dari MediaWiki.',

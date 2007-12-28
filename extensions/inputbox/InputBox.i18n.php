@@ -51,6 +51,13 @@ function efInputBoxMessages() {
 	'createarticle'  => 'Създаване на статия',
 ),
 
+/** Bislama (Bislama)
+ * @author Ushanka
+ */
+'bi' => array(
+	'createarticle' => 'Mekem atikel',
+),
+
 'bn' => array(
 	'inputbox-error-no-type'  => 'আপনি ইনপুট বক্স তৈরির জন্য ইনপুট বক্সের ধরণ নির্ধারণ করেননি।',
 	'inputbox-error-bad-type' => '"$1" ধরণের ইনপুট বক্স নেই। দয়া করে "create", "comment", "search" অথবা "search2" নির্ধারণ করুন।',
@@ -187,6 +194,11 @@ function efInputBoxMessages() {
 
 'grc' => array(
 	'createarticle'           => 'Δέλτον ποιῆσαι',
+),
+
+/** Gujarati (ગુજરાતી) */
+'gu' => array(
+	'createarticle' => 'નવો લેખ શરૂ કરો',
 ),
 
 'hak' => array(

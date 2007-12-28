@@ -108,6 +108,7 @@ $wgLinkSearchMessages['fr'] = array(
 	'linksearch-line'  => '$1 avec un lien à partir de $2',
 	'linksearch-error' => 'Les caractères « joker » ne peuvent être utilisés qu’au début du nom de domaine.',
 );
+
 $wgLinkSearchMessages['gl'] = array(
 	'linksearch'       => 'Buscar ligazóns web',
 	'linksearch-pat'   => 'Patrón de procura:',
@@ -117,9 +118,16 @@ $wgLinkSearchMessages['gl'] = array(
 	'linksearch-line'  => '$1 vinculado a $2',
 	'linksearch-error' => 'Os comodíns só poden aparecer ao principio do nome do servidor.',
 );
+
 $wgLinkSearchMessages['grc'] = array(
 	'linksearch-ok'    => 'Ζητεῖν',
 );
+
+/** Gujarati (ગુજરાતી) */
+$wgLinkSearchMessages['gu'] = array(
+	'linksearch-ok' => 'શોધ',
+);
+
 $wgLinkSearchMessages['he'] = array(
 	'linksearch'       => 'חיפוש קישורים חיצוניים',
 	'linksearch-pat'   => 'קישור לחיפוש:',
@@ -129,6 +137,7 @@ $wgLinkSearchMessages['he'] = array(
 	'linksearch-line'  => '$1 מקושר מהדף $2',
 	'linksearch-error' => 'תווים כלליים יכולים להופיע רק בתחילת שם השרת.',
 );
+
 $wgLinkSearchMessages['hr'] = array(
 	'linksearch'       => 'Pretraživanje poveznica (s članaka na wikiju)',
 	'linksearch-pat'   => 'Uzorak traženja:',

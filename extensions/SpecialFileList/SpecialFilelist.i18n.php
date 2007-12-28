@@ -38,9 +38,9 @@ $messages['fr'] = array(
  * @author Dundak
  */
 $messages['hsb'] = array(
-	'filelist'              => 'Liscina datajow',
-	'filelist-show-list'    => 'Liscinu pokazac',
-	'filelist-show-gallery' => 'Galeriju pokazac',
+	'filelist'              => 'Lisćina datajow',
+	'filelist-show-list'    => 'Lisćinu pokazać',
+	'filelist-show-gallery' => 'Galeriju pokazać',
 );
 
 /** Latin (Latina)

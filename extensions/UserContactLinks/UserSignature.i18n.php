@@ -31,6 +31,13 @@ $messages ['fr'] = array(
 	'usercontactlink-baduser' => 'nom d’utilisateur incorrect',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'usercontactlink-baduser' => 'nome de usuario non correcto',
+);
+
 $messages['hsb'] = array(
 	'usercontactlink-baduser' => 'njekorektne wužiwarske mjeno',
 );

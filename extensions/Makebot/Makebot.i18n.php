@@ -383,6 +383,11 @@ function efMakeBotMessages() {
 	'makebot-logentryrevoke'  => 'retirado status de bot a [[$1]]',
 ),
 
+/** Gujarati (ગુજરાતી) */
+'gu' => array(
+	'makebot-search' => 'શોધો',
+),
+
 /** Hawaiian (Hawai`i)
  * @author SPQRobin
  */

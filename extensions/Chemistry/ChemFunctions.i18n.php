@@ -147,21 +147,25 @@ $wgChemFunctions_Messages['el'] = array(
 	'chemFunctions_ListPage' => 'Χημικές πηγές',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ */
 $wgChemFunctions_Messages['fr'] = array(
-	'chemicalsources' => 'Sources pour la chimie',
-	'chemFunctions_ListPage' => 'Sources pour la chimie',
-	'chemFunctions_DataList' => 'Suit une liste de liens vers des sites qui peuvent apporter des informations à propos des substances chimiques que vous recherchez.
+	'chemicalsources'                  => 'Sources pour la chimie',
+	'chemFunctions_ListPage'           => 'Sources pour la chimie',
+	'chemFunctions_DataList'           => 'Suit une liste de liens vers des sites qui peuvent apporter des informations à propos des substances chimiques que vous recherchez.
 
 * [http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI Composé $MIXCASNameFormula], NIST
 * [http://ptcl.chem.ox.ac.uk/MSDS/ MSDS], Université d\'Oxford',
-	'chemFunctions_CAS' => 'Numéro CAS',
-	'chemFunctions_EINECS' => 'Numéro EINECS',
-	'chemFunctions_CHEBI' => 'ChEBI',
-	'chemFunctions_SMILES' => 'SMILE',
-	'chemFunctions_InChI' => 'InChl',
-	'chemFunctions_ATCCode' => 'Code ATC',
-	'chemFunctions_Formula' => 'Formule',
-	'chemFunctions_Name' => 'Nom UICPA',
+	'chemFunctions_CAS'                => 'Numéro CAS',
+	'chemFunctions_EINECS'             => 'Numéro EINECS',
+	'chemFunctions_CHEBI'              => 'ChEBI',
+	'chemFunctions_SMILES'             => 'SMILE',
+	'chemFunctions_InChI'              => 'InChl',
+	'chemFunctions_ATCCode'            => 'Code ATC',
+	'chemFunctions_ECNumber'           => 'Nomenclature EC',
+	'chemFunctions_Formula'            => 'Formule',
+	'chemFunctions_Name'               => 'Nom UICPA',
 	'chemFunctions_ChemFormInputError' => 'Chemform, intrant erroné!',
 );
 
@@ -181,12 +185,17 @@ $wgChemFunctions_Messages['frp'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform, entrent fôtif !',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Xosé
+ */
 $wgChemFunctions_Messages['gl'] = array(
-	'chemicalsources' => 'Fontes químicas',
+	'chemicalsources'        => 'Fontes químicas',
 	'chemFunctions_ListPage' => 'Fontes químicas',
 	'chemFunctions_DataList' => 'Embaixo hai unha listaxe das ligazóns aos sitios que poden proporcionar información acerca da sustancia química que procura.<br /><br /> * <a 
 href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Composto $MIXCASNameFormula en NIST</a><br /> * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Universidade de Oxford (UK) (non consultábel)</a><br />',
-	'chemFunctions_CAS' => 'número CAS',
+	'chemFunctions_CAS'      => 'número CAS',
+	'chemFunctions_Formula'  => 'Fórmula',
 );
 
 $wgChemFunctions_Messages['hsb'] = array(

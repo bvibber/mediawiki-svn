@@ -129,6 +129,11 @@ function efImageMapMessages() {
 	'imagemap_description'        => 'Sobre esta imaxe',
 ),
 
+/** Gujarati (ગુજરાતી) */
+'gu' => array(
+	'imagemap_description' => 'આ ચિત્ર વિષે',
+),
+
 /* Hebrew (Rotem Liss) */
 'he' => array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: יש לציין תמונה בשורה הראשונה',
