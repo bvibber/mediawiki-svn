@@ -266,10 +266,13 @@ $wgLuceneSearchMessages['ext'] = array(
 	'searchall'             => 'tó',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
 $wgLuceneSearchMessages['fi'] = array(
 	'searchnumber'          => '<strong>Tulokset $1–$2 (yhteensä $3)</strong>',
-	'searchprev'            => '← <span style=\'font-size: small\'>edelliset</span>',
-	'searchnext'            => '<span style=\'font-size: small\'>seuraavat</span> →',
+	'searchprev'            => "← <span style='font-size: small'>edelliset</span>",
+	'searchnext'            => "<span style='font-size: small'>seuraavat</span> →",
 	'lucene-searchscore'    => 'Asiaankuuluvuus: $1%',
 	'lucene-resultsize'     => '$1 ($2 sanaa)',
 	'searchdidyoumean'      => 'Tarkoititko: <a href="$1">$2</a>',
@@ -281,9 +284,11 @@ $1
 
 Hakulauseke $3 $9 $10',
 	'lucenefallback'        => 'Haku epäonnistui. Yritä hetken päästä uudelleen tai käytä ulkoisia hakukoneita:',
+	'searchexactcase'       => 'Aakkoslajeja erottamaton',
 	'searchall'             => 'kaikki',
 	'searchincategory'      => 'luokassa',
 );
+
 $wgLuceneSearchMessages['fo'] = array(
 	'searchnumber'          => '<strong>Úrslit $1-$2 av $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Undanfarnu</span>',
