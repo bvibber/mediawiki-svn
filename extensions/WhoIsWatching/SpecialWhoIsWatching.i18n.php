@@ -26,11 +26,18 @@ $allMessages = array(
                 'specialwhoiswatchingusage'   => 'Diese Spezialseite kann nicht auf sich selber angewendet werden. Bitte definiere über die Seite [[MediaWiki:Number of watching users pageview]] eine Einstiegsseite für diese Spezialseite.',
         ),
 
-        'fr' => array(
-                'whoiswatching'               => 'Utilisateurs regardant une page du wiki',
-                'specialwhoiswatchingthepage' => 'Utilisateurs regardant %s',
-                'specialwhoiswatchingusage'   => 'Cette page spéciale ne peut être utilisée seule. Passez par [[MediaWiki:Number_of_watching_users_pageview]] pour définir un point d\'entrée vers cette page spéciale.',
-        ),
+/** French (Français)
+ * @author Dereckson
+ * @author Grondin
+ * @author Sherbrooke
+ */
+	'fr' => array(
+		'whoiswatching'                => 'Utilisateurs regardant une page du wiki',
+		'specialwhoiswatchingthepage'  => 'Utilisateurs regardant %s',
+		'specialwhoiswatchingusage'    => "Cette page spéciale ne peut être utilisée seule. Passez par [[MediaWiki:Number_of_watching_users_pageview]] pour définir un point d'entrée vers cette page spéciale.",
+		'specialwhoiswatchingaddusers' => 'Ajouter les utilisateurs pour voir la page',
+		'specialwhoiswatchingaddbtn'   => 'Ajouter les utilisateurs sélectionnés',
+	),
 
 /** Galician (Galego)
  * @author Alma

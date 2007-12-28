@@ -247,6 +247,16 @@ function efBookInformationMessages() {
 	'bookinfo-provider' => 'データ提供元: $1',
 ),
 
+/** Georgian (ქართული)
+ * @author Alsandro
+ */
+'ka' => array(
+	'bookinfo-result-title'     => 'სათაური:',
+	'bookinfo-result-author'    => 'ავტორი:',
+	'bookinfo-result-publisher' => 'გამომცემელი:',
+	'bookinfo-result-year'      => 'წელი:',
+),
+
 'la' => array(
 	'bookinfo-result-title' => 'Titulus:',
 	'bookinfo-result-author' => 'Auctor:',

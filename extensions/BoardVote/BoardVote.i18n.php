@@ -1128,6 +1128,7 @@ Il voto espresso in forma cifrata è riportato di seguito. È inoltre visibile a
 	'go_to_board_vote'        => 'Elezioni 2007 del Board di Wikimedia',
 	'boardvote_redirecting'   => 'Per una migliore sicurezza e trasparenza, il voto si tiene su un server esterno, a controllo indipendente. Sarai reindirizzato a questo server esterno in 20 secondi. [$1 Clicca qui] per raggiungerlo direttamente. Potrebbe apparire un avviso di sicurezza riguardante un certificato di protezione non verificato.',
 );
+
 $wgBoardVoteMessages['ja'] = array(
 	'boardvote'               => 'ウィキメディア財団理事選挙',
 	'boardvote_novotes'       => 'まだ誰も投票していません。',
@@ -1145,6 +1146,21 @@ $wgBoardVoteMessages['ja'] = array(
 
 サーバ証明書のセキュリティに関する警告が表示される場合があります。',
 );
+
+/** Georgian (ქართული)
+ * @author Alsandro
+ */
+$wgBoardVoteMessages['ka'] = array(
+	'boardvote'            => 'ვიკიმედიის რწმუნებულთა საბჭოს არჩევნები',
+	'boardvote_entry'      => '* [[Special:Boardvote/vote|კენჭისყრა]]
+* [[Special:Boardvote/list|დღემდე მიცემული ხმების სია]]
+* [[Special:Boardvote/dump|წაშალე კრიპტირებული არჩევნების მონაცემები]]',
+	'boardvote_time'       => 'დრო',
+	'boardvote_dumplink'   => 'აქ დააწკაპუნეთ',
+	'boardvote_notstarted' => 'კენჭისყრა ჯერ არ დაწყებულა',
+	'boardvote_welcome'    => "მოგესალმებით '''$1'''!",
+);
+
 $wgBoardVoteMessages['kk-kz'] = array(
 	'boardvote'               => "Wikimedia қорының Уәкілдер еңесінің сайлауы ",
 	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|Дауыс беру]]

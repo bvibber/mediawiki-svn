@@ -883,7 +883,6 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin
- * @author Annabel
  */
 'nl' => array(
 	'makesysoptitle'           => 'Een gebruiker beheerder maken',
@@ -893,7 +892,7 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'makesysopok'              => '<b>Gebruiker "$1" is nu beheerder</b>',
 	'makebureaucratok'         => '<b>Gebruiker "$1" is nu bureaucraat</b>',
 	'makesysopfail'            => '<b>Gebruiker "$1" kon geen beheerder gemaakt worden. Heeft u de juiste naam opgegeven?</b>',
-	'makesysop-see-userrights' => 'Zie [[Speciaal:Gebruikerrechten]] voor meer opties.',
+	'makesysop-see-userrights' => 'Zie [[Special:Userrights]] voor meer opties.',
 	'setbureaucratflag'        => 'Deze gebruiker ook bureaucraat maken',
 	'rights'                   => 'Rechten:',
 	'set_user_rights'          => 'Gebruikersrechten aanpassen',
