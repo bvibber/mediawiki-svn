@@ -9,7 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'spamregex' => 'SpamRegex',
-	'spamregex_summary' => 'The text was found in the article\'s summary.',
+	'spamregex_summary' => 'The text was found in the page\'s summary.',
 	'spamregex-intro' => 'Use this form to effectively block expressions from saving into a page\'s text. If the text contains the given expression, change would not be saved and an explanation will be displayed to user that tried to save the page. Caution advised, expressions should not be too short or too common.',
 	'spamregex-page-title' => 'Spam Regex Unwanted Expressions Block',
 	'spamregex-currently-blocked' => "'''Currently blocked phrases:'''",
@@ -27,7 +27,7 @@ $messages['en'] = array(
 	'spamregex-warning-2' => 'Please check at least one blocking mode.',
 	'spamregex-already-blocked' => '"$1" is already blocked',
 	'spamregex-phrase-block' => 'Phrase to block:',
-	'spamregex-phrase-block-text' => 'block phrase in article text',
+	'spamregex-phrase-block-text' => 'block phrase in page text',
 	'spamregex-phrase-block-summary' => 'block phrase in summary',
 	'spamregex-block-submit' => 'Block&nbsp;this&nbsp;phrase',
 	'spamregex-text' => '(Text)',

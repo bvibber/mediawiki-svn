@@ -17,7 +17,7 @@ function efBlockTitlesMessages() {
  */
 'en' => array(
 	'block_title_error_page_title' => 'Blocked Title',
-	'block_title_error' => 'Sorry, the title of this article is not allowed to be saved.',
+	'block_title_error' => 'Sorry, the title of this page is not allowed to be saved.',
 ),
  
 'ar' => array(

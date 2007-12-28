@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'latexdoc_no_text' => 'Article contains no text, cannot generate DVI',
+	'latexdoc_no_text' => 'Page contains no text, cannot generate DVI',
 	'latexdoc_cant_create_dir' => 'Cannot create temporary directory $1',
 	'latexdoc_cant_write' => 'Cannot write to file $1',
 	'latexdoc_error' => "LaTeX error

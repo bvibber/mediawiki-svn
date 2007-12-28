@@ -10,14 +10,14 @@ $messages = array();
 $messages['en'] = array(
 	'povwatch' => 'PovWatch',
 	'povwatch_no_session' => 'Error: Could not submit form due to a loss of session data.',
-	'povwatch_not_allowed_push' => 'You are not a PovWatch admin, you can\'t push articles to watchlists.',
+	'povwatch_not_allowed_push' => 'You are not a PovWatch admin, you can\'t push pages to watchlists.',
 	'povwatch_already_subscribed' => 'You are already subscribed to PovWatch',
 	'povwatch_subscribed' => 'You are now subscribed to PovWatch',
 	'povwatch_not_subscribed' => 'You are not subscribed to PovWatch, so you can\'t unsubscribe.',
 	'povwatch_unsubscribed' => 'You have now unsubscribed from PovWatch',
 	'povwatch_invalid_title' => 'The title specified was invalid',
 	'povwatch_pushed' => '[[$1]] has successfully been pushed to $2 user watchlist(s)',
-	'povwatch_intro' => 'PovWatch is a service which allows contentious articles to be discreetly pushed on to the watchlists of subscribing administrators.
+	'povwatch_intro' => 'PovWatch is a service which allows contentious pages to be discreetly pushed on to the watchlists of subscribing administrators.
 
 A log of recent watchlist pushes is available at [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list' => 'A [[Special:PovWatch/subscribers|list of subscribers]] is available.',
@@ -25,7 +25,7 @@ A log of recent watchlist pushes is available at [[Special:PovWatch/log]].',
 	'povwatch_not_allowed_subscribers' => 'You are not allowed to view the PovWatch subscriber list.',
 	'povwatch_unknown_subpage' => 'Unknown subpage.',
 	'povwatch_push' => 'Push',
-	'povwatch_push_intro' => 'Use the form below to push articles on to the watchlists of subscribing users. Please be careful typing the title: even non-existent titles can be added, and there is no way to remove a title once it has been pushed out.',
+	'povwatch_push_intro' => 'Use the form below to push pages on to the watchlists of subscribing users. Please be careful typing the title: even non-existent titles can be added, and there is no way to remove a title once it has been pushed out.',
 	'povwatch_title' => 'Title:',
 	'povwatch_comment' => 'Log comment:',
 	'povwatch_no_log' => 'There are no log entries.',
