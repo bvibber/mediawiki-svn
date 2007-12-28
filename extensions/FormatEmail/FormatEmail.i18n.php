@@ -100,3 +100,12 @@ Tento email vám poslal $1 pomocou emailového systému {{GRAMMAR:genitív|{{SIT
 
 $2',
 );
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'email_footer' => '
+----------------------------------------------------------------------------
+Disse E-Mail wuude die fon $1 uur dät {{SITENAME}}-E-Mail-System tousoand.',
+);
