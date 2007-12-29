@@ -26,6 +26,14 @@ $messages['ar'] = array(
 	'randomincategory-submit'     => 'اذهب',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'randomincategory-toolbox' => 'Случайна страница',
+	'randomincategory-label'   => 'Категория:',
+);
+
 /** French (Français)
  * @author Grondin
  */
