@@ -1,0 +1,13 @@
+Invitations Extension
+(C) 2007 Andrew Garrett
+Some rights are granted under the GNU General Public License (GPL).
+&nbsp;See LICENSE for further details.
+
+The Invitations extension allows certain software features to be enabled
+&nbsp;only by an invitation, similar to the way in which the use of Google's
+ Gmail was propagated.
+
+This extension is not yet complete. While the main code has been completed,
+ an interface still needs to be created, and the code needs to be tested.
+ The maximum guarantee is that this code is valid PHP.
+
