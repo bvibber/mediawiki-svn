@@ -102,6 +102,18 @@ function efCommentSpammerMessages() {
 	'cspammer-log-page' => 'Rejestr spammerów',
 ),
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+'ru' => array(
+	'commentspammer-save-blocked' => 'Подозревается, что ваш IP-адрес использовался для размещения спам-комментариев. Странице не может быть сохранена. [[Special:Userlogin|Представьтесь системе]], чтобы продолжить работу.',
+	'commentspammer-log-msg'      => 'правка с [[Special:Contributions/$1|$1]] [[:$2]].',
+	'commentspammer-log-msg-info' => 'Последний случай спама $1 {{PLURAL:$1|день|дня|дней}} назад, уровень угрозы — $2, код нарушения — $3.
+[http://www.projecthoneypot.org/search_ip.php?ip=$4 Подробности], [[Special:Blockip/$4|заблокировать]].',
+	'cspammerlogpagetext'         => 'Рекорд правок, которые были разрешены или отклонены на основе того, был ли источник известен как спаммер комментариев.',
+	'cspammer-log-page'           => 'Журнал спам-комментариев',
+),
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

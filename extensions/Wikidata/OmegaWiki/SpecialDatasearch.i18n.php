@@ -47,6 +47,13 @@ $wgDataSearchMessages['id'] = array(
 	'datasearch' => 'Wikidata: Pencarian data',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$wgDataSearchMessages['lb'] = array(
+	'datasearch' => 'Wikidata: Date sichen',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */

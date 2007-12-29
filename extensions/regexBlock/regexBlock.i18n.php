@@ -105,9 +105,15 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'regexblock-form-username' => 'IP адрес или потребителско име:',
-	'regexblock-form-reason'   => 'Причина:',
-	'regexblock-view-all'      => 'Всички',
+	'regexblock-form-username'        => 'IP адрес или потребителско име:',
+	'regexblock-form-reason'          => 'Причина:',
+	'regexblock-form-match'           => 'Пълно съвпадение',
+	'regexblock-stats-username'       => 'За $1',
+	'regexblock-view-all'             => 'Всички',
+	'regexblock-view-reason'          => 'причина: $1',
+	'regexblock-view-block-temporary' => 'изтича на',
+	'regexblock-view-block-by'        => 'блокиран от',
+	'regexblock-view-stats'           => '(статистика)',
 );
 
 /** Greek (Ελληνικά)

@@ -465,14 +465,24 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
  */
 'stq' => array(
 	'giverollback'                => 'Touräächsät-Gjucht reeke of äntluuke',
+	'giverollback-header'         => "'''N lokoalen Bürokroat kon ap disse Siede uur Benutsere dät Gjucht toun Touräächsätten ''(Rollback)'' reeke of äntluuke.<br />Deertruch konnen uk Benutsere sunner Administratore-Stoatus Vandalismus gau tourääch traale. Dit schuul in Uureenstimmenge mäd do anweendboare Gjuchtlienjen geböäre.",
+	'giverollback-username'       => 'Benutsernoome:',
+	'giverollback-search'         => 'Ok',
+	'giverollback-hasrb'          => '[[User:$1|$1]] häd dät Touräächtraal-Gjucht.',
+	'giverollback-norb'           => '[[User:$1|$1]] häd dät Touräächtraal-Gjucht nit.',
 	'giverollback-toonew'         => '[[User:$1|$1]] is tou näi, him/hier kon dät Touräächsät-Gjucht nit roat wäide.',
 	'giverollback-sysop'          => '[[User:$1|$1]] is n Administrator un häd dät Touräächsät-Gjucht al.',
 	'giverollback-change'         => 'Annerje dän Stoatus:',
 	'giverollback-grant'          => 'Reek',
 	'giverollback-revoke'         => 'Äntluuk',
+	'giverollback-comment'        => 'Kommentoar:',
+	'giverollback-granted'        => '[[User:$1|$1]] wuude dät Touräächtraal-Gjucht roat.',
+	'giverollback-revoked'        => '[[User:$1|$1]] wuude dät Touräächsät-Gjucht äntleeken.',
 	'giverollback-logpage'        => 'Touräächsätten-Gjuchte Logbouk',
+	'giverollback-logpagetext'    => 'Dit is dät Logbouk fon ju Touräächtraal-Gjuchtegoawe foar Nit-Administratore.',
 	'giverollback-logentrygrant'  => 'roate dät Touräächsätgjucht an [[$1]]',
 	'giverollback-logentryrevoke' => 'äntlook dät Touräächsätgjucht fon [[$1]]',
+	'giverollback-page'           => '{{ns:help}}:Touräächtraalen',
 ),
 
 /* Cantonese (Shinjiman) */

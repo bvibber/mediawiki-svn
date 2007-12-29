@@ -211,6 +211,7 @@ $allMessages = array(
 		'sign-realname'                => 'Име:',
 		'sign-address'                 => 'Адрес:',
 		'sign-city'                    => 'Град:',
+		'sign-zip'                     => 'Пощенски код:',
 		'sign-country'                 => 'Държава:',
 		'sign-phone'                   => 'Телефонен номер:',
 		'sign-bday'                    => 'Възраст:',
@@ -221,6 +222,16 @@ $allMessages = array(
 		'sign-viewfield-ip'            => 'IP адрес',
 		'sign-viewfield-phone'         => 'Телефон',
 		'sign-viewfield-age'           => 'Възраст',
+		'sign-iptools'                 => '<span class="plainlinksneverexpand"><!--
+		-->[[User:$1|$1]] ([[User talk:$1|беседа]] • <!--
+		-->[[Special:Contributions/$1|приноси]] • <!--
+		-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+		-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+		-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+		-->[[Special:Blockip/$1|блокиране]] • <!--
+		-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} дневник на блокиранията] • <!--
+		-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} проверка])<!--
+		--></span>',
 		'sign-viewfield-reviewcomment' => 'Коментар',
 		'sign-review-comment'          => 'Коментар',
 	),

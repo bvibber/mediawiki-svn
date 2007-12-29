@@ -108,7 +108,7 @@ function efDuplicatorMessages() {
  */
 'ca' => array(
 	'duplicator'                       => 'Duplica un article',
-	'duplicator-toolbox'               => 'Duplica aquest article',
+	'duplicator-toolbox'               => 'Duplica aquesta pàgina',
 	'duplicator-header'                => "Aquesta pàgina permet la duplicació completa d'un article, creant còpies independents de totes les històries. Això és útil per a l'edició de nous articles a partir d'altres, etc.",
 	'duplicator-options'               => 'Opcions',
 	'duplicator-source'                => 'Origen:',
@@ -560,7 +560,7 @@ kopieën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzo
  * @author Pyt
  */
 'stq' => array(
-	'duplicator'                       => 'Siede duplizierje',
+	'duplicator'                       => 'Ne Siede duplizierje',
 	'duplicator-toolbox'               => 'Duplizierje disse Siede',
 	'duplicator-header'                => 'Mäd disse Spezialsiede konnen Sieden komplett duplizierd wäide. Deerbie wäd ju ganse Versionsgeschichte uurnuumen. Dit kon biespilswiese nutselk weese, uum ne Siede in Unnersieden aptoudeelen.',
 	'duplicator-options'               => 'Optione',

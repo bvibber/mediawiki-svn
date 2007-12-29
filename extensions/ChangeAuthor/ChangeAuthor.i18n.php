@@ -145,7 +145,7 @@ $allMessages = array(
 		'changeauthor'                      => 'Changiér l’ôtor de les vèrsions',
 		'changeauthor-title'                => 'Changiér l’ôtor d’una vèrsion',
 		'changeauthor-search-box'           => 'Rechèrchiér des vèrsions',
-		'changeauthor-pagename-or-revid'    => 'Titro de l’articllo ou ID de vèrsion :',
+		'changeauthor-pagename-or-revid'    => 'Titro de la pâge ou numerô de la vèrsion :',
 		'changeauthor-pagenameform-go'      => 'Alar',
 		'changeauthor-comment'              => 'Comentèro :',
 		'changeauthor-changeauthors-multi'  => 'Changiér ôtor(s)',
@@ -250,7 +250,7 @@ $allMessages = array(
 		'changeauthor-invalid-username'     => 'Benotzernumm „$1“ ass net gëlteg!',
 		'changeauthor-nosuchuser'           => 'Et gëtt kee Benotzer "$1".',
 		'changeauthor-revview'              => 'Versioun #$1 vun $2',
-		'changeauthor-nosuchtitle'          => 'Et gëtt keen Artikel "$1".',
+		'changeauthor-nosuchtitle'          => 'Et gëtt keng Säit mam Numm "$1".',
 		'changeauthor-rev'                  => 'Versioun $1',
 	),
 
@@ -367,6 +367,7 @@ $allMessages = array(
 		'changeauthor-success'              => 'Запрос успешно обработан.',
 		'changeauthor-logentry'             => 'Изменён автор $2 $1 с $3 на $4',
 		'changeauthor-logpagename'          => 'Журнал изменения авторов',
+		'changeauthor-rev'                  => 'r$1',
 	),
 
 /** Seeltersk (Seeltersk)

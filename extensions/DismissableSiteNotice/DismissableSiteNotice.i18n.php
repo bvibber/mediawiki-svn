@@ -124,6 +124,13 @@ $wgDismissableSiteNoticeMessages['id'] = array(
 	'sitenotice_close' => 'tutup',
 );
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+$wgDismissableSiteNoticeMessages['is'] = array(
+	'sitenotice_close' => 'fela',
+);
+
 $wgDismissableSiteNoticeMessages['it'] = array(
 	'sitenotice_close' => 'nascondi',
 );

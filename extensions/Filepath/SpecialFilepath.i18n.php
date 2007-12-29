@@ -15,11 +15,13 @@ $wgFilepathMessages['en'] = array(
 	
 	Enter the file name without the "{{ns:image}}:" prefix.',
 );
+
 $wgFilepathMessages['af'] = array(
 	'filepath'        => 'Lêerpad',
 	'filepath_page'   => 'Lêer:',
 	'filepath_submit' => 'Pad',
 );
+
 /* Arabic (Meno25) */
 $wgFilepathMessages['ar'] = array(
 	'filepath'        => 'مسار ملف',
@@ -27,6 +29,7 @@ $wgFilepathMessages['ar'] = array(
 	'filepath_submit' => 'المسار',
 	'filepath-summary' => 'هذه الصفحة الخاصة تعرض المسار الكامل لملف. ستعرض الصور بأقصى دقة، ستعمل أنواع الملفات الأخرى بالبرنامج المخصص لهم مباشرة؛ أدخل اسم الملف بدون البادئة "{{ns:image}}:"',
 );
+
 $wgFilepathMessages['arc'] = array(
 	'filepath'        => 'ܫܒܝܠܐ ܕܫܘܦܝܢܐ',
 	'filepath_submit' => 'ܫܒܝܠܐ',
@@ -49,22 +52,34 @@ $wgFilepathMessages['bg'] = array(
 	
 	Напишете името на файла без префикса "{{ns:image}}:"',
 );
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$wgFilepathMessages['br'] = array(
+	'filepath_page' => 'Restr :',
+);
+
 $wgFilepathMessages['ca'] = array(
 	'filepath'        => 'Camí d\'arxiu',
 	'filepath_page'   => 'Arxiu:',
 	'filepath_submit' => 'Camí',
 );
+
 $wgFilepathMessages['cdo'] = array(
 	'filepath_page'    => 'Ùng-giông:',
 );
+
 $wgFilepathMessages['co'] = array(
 	'filepath_page'   => 'Schedariu:',
 );
+
 $wgFilepathMessages['cs'] = array(
 	'filepath'        => 'Cesta k souboru',
 	'filepath_page'   => 'Soubor:',
 	'filepath_submit' => 'Cesta',
 );
+
 $wgFilepathMessages['de'] = array(
 	'filepath'         => 'Dateipfad',
 	'filepath_page'    => 'Datei:',
@@ -87,35 +102,41 @@ $wgFilepathMessages['el'] = array(
 	'filepath_page'   => 'Αρχείο:',
 	'filepath_submit' => 'Διαδρομή',
 );
+
 $wgFilepathMessages['eo'] = array(
 	'filepath'        => 'Dosiera pado',
 	'filepath_page'   => 'Dosiero:',
 	'filepath_submit' => 'Pado',
 	'filepath-summary' => 'Ĉi tiu speciala paĝo redonas la kompletan padon por dosiero. Bildoj estas montrataj en alta distingivo, aliaj dosieraj tipoj estas rekte startataj per ties asociita programo.',
 );
+
 $wgFilepathMessages['es'] = array(
 	'filepath'        => 'Ruta de archivo',
 	'filepath_page'   => 'Archivo:',
 	'filepath_submit' => 'Ruta',
 );
+
 $wgFilepathMessages['ext'] = array(
 	'filepath_page'   => 'Archivu:',
 );
+
 $wgFilepathMessages['fi'] = array(
 	'filepath'         => 'Tiedoston osoite',
 	'filepath_page'    => 'Tiedosto',
 	'filepath_submit'  => 'Selvitä osoite',
 	'filepath-summary' => 'Tämä toimintosivu palauttaa tiedoston URL-osoitteen. Anna tiedoston nimi ilman {{ns:image}}-nimiavaruusliitettä.',
-
 );
+
 $wgFilepathMessages['fiu-vro'] = array(
 	'filepath'        => 'Teedüstü aadrõs',
 	'filepath_page'   => 'Teedüstü:',
 	'filepath_submit' => 'Aadrõs',
 );
+
 $wgFilepathMessages['fo'] = array(
 	'filepath_page'   => 'Fíla:',
 );
+
 $wgFilepathMessages['fr'] = array(
 	'filepath'        => 'Chemin d\'accès d’un fichier',
 	'filepath_page'   => 'Fichier :',
@@ -124,6 +145,7 @@ $wgFilepathMessages['fr'] = array(
 
 Entrez le nom du fichier sans le préfixe « {{ns:image}}: »',
 );
+
 $wgFilepathMessages['gl'] = array(
 	'filepath'        => 'Ruta do arquivo',
 	'filepath_page'   => 'Arquivo:',
@@ -132,6 +154,7 @@ $wgFilepathMessages['gl'] = array(
 	
 	Introduza o nome do ficheiro sen o prefixo "{{ns:image}}:"',
 );
+
 $wgFilepathMessages['he'] = array(
 	'filepath'         => 'נתיב לקובץ',
 	'filepath_page'    => 'הקובץ:',
@@ -140,6 +163,7 @@ $wgFilepathMessages['he'] = array(
 	
 	יש להקליד את שם הקובץ ללא הקידומת "{{ns:image}}:".',
 );
+
 $wgFilepathMessages['hr'] = array(
 	'filepath'        => 'Putanja datoteke',
 	'filepath_page'   => 'Datoteka:',
@@ -148,6 +172,7 @@ $wgFilepathMessages['hr'] = array(
 	
 	Unesite ime datoteke bez predmetka (\'\'prefiksa\'\') imenskog prostora "{{ns:image}}:".',
 );
+
 $wgFilepathMessages['hsb'] = array(
 	'filepath'        => 'Puć k dataji',
 	'filepath_page'   => 'Dataja:',
@@ -172,19 +197,30 @@ $wgFilepathMessages['id'] = array(
 	'filepath_page'   => 'Berkas:',
 	'filepath_submit' => 'Lokasi',
 );
+
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+$wgFilepathMessages['is'] = array(
+	'filepath_page' => 'Skrá:',
+);
+
 $wgFilepathMessages['it'] = array(
 	'filepath'        => 'Percorso di un file',
 	'filepath_page'   => 'File:',
 	'filepath_submit' => 'Percorso',
 );
+
 $wgFilepathMessages['ja'] = array(
 	'filepath'        => 'パスの取得',
 	'filepath_page'   => 'ファイル名:',
 	'filepath_submit' => 'パスを取得',
 );
+
 $wgFilepathMessages['kaa'] = array(
 	'filepath'        => 'Fayl jolı',
 );
+
 $wgFilepathMessages['kk-cyrl'] = array(
 	'filepath'        => 'Файл орналасуы ',
 	'filepath_page'   => 'Файл аты:',
@@ -360,11 +396,19 @@ $wgFilepathMessages['to'] = array(
 	'filepath_submit' => 'Ko e hala',
 );
 
+/** Tahitian (Reo Mā`ohi)
+ * @author SPQRobin
+ */
+$wgFilepathMessages['ty'] = array(
+	'filepath_page' => 'Putu’ite:',
+);
+
 $wgFilepathMessages['wuu'] = array(
 	'filepath'        => '文件路径',
 	'filepath_page'   => '文件：',
 	'filepath_submit' => '路径',
 );
+
 $wgFilepathMessages['yue'] = array(
 	'filepath'        => '檔案路徑',
 	'filepath_page'   => '檔名：',
@@ -373,6 +417,7 @@ $wgFilepathMessages['yue'] = array(
 	
 	請輸入檔名，唔好連埋個"{{ns:image}}:"開頭。',
 );
+
 $wgFilepathMessages['zh-hans'] = array(
 	'filepath'        => '文件路径',
 	'filepath_page'   => '文件名：',
@@ -381,6 +426,7 @@ $wgFilepathMessages['zh-hans'] = array(
 	
 	请输入档名，不要包含"{{ns:image}}:"开头。',
 );
+
 $wgFilepathMessages['zh-hant'] = array(
 	'filepath'        => '檔案路徑',
 	'filepath_page'   => '檔案名：',

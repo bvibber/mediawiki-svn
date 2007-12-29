@@ -245,6 +245,19 @@ function efPatrollerMessages() {
 	'patrol-revert-reason' => 'Causa:',
 ),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+'lb' => array(
+	'patrol'               => 'Kontroll vun den Ännerungen',
+	'patrol-endorse'       => 'Bestätegen',
+	'patrol-revert'        => 'Zrécksetzen',
+	'patrol-revert-reason' => 'Grond:',
+	'patrol-skip'          => 'Iwwersrangen',
+	'patrol-reverting'     => 'Zrécksetzen: $1',
+	'patrol-reverted-ok'   => "D'Ännerung gouf zréckgesat.",
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 	'patrol' => 'Wijzigingen controleren',

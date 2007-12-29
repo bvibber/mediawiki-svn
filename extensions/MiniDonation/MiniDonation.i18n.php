@@ -55,24 +55,38 @@ $wgMiniDonationMessages['it'] = array(
 $wgMiniDonationMessages['ja'] = array(
 	'donationform-submit' => 'PayPal を通じて寄付する',
 );
+
 $wgMiniDonationMessages['kk-cyrl'] = array(
 	'donationform-submit' => 'Жәрдемді PayPal жүйесімен жіберу',
 );
+
 $wgMiniDonationMessages['kk-latn'] = array(
 	'donationform-submit' => 'Järdemdi PayPal jüýesimen jiberw',
 );
+
 $wgMiniDonationMessages['kk-arab'] = array(
 	'donationform-submit' => 'جٵردەمدٸ PayPal جٷيەسٸمەن جٸبەرۋ',
 );
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$wgMiniDonationMessages['lb'] = array(
+	'donationform-submit' => 'Donatiounen iwwer PayPal',
+);
+
 $wgMiniDonationMessages['lt'] = array(
 	'donationform-submit' => 'Aukoti per PayPal',
 );
+
 $wgMiniDonationMessages['nl'] = array(
 	'donationform-submit' => 'Doneer via PayPal',
 );
+
 $wgMiniDonationMessages['no'] = array(
 	'donationform-submit' => 'Doner med PayPal',
 );
+
 $wgMiniDonationMessages['oc'] = array(
 	'donationform-submit' => 'Far un don amb PayPal',
 );

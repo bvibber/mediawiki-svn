@@ -298,6 +298,7 @@ $wgLuceneSearchMessages['fo'] = array(
 	'searchnoresults'       => 'Tíverri vóru ongar síður, ið luku tíni leitikrøv.',
 	'lucenepowersearchtext' => 'Leita í navnaøki: $1 Leita eftur $3 $9',
 );
+
 $wgLuceneSearchMessages['fr'] = array(
 	'searchnumber'          => '<strong>Résultats $1 – $2 sur $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Préc.</span>',
@@ -344,6 +345,7 @@ ou vostede pode buscar o wiki a través dun servizo de procura externa:',
 	'searchall'             => 'todo',
 	'searchincategory'      => 'na categoría',
 );
+
 $wgLuceneSearchMessages['hak'] = array(
 	'searchnumber'          => '<strong>Khiung-yû $3 hong chhìm-chhut ke kiet-kó, yî-ha he thi $1-$2 hong ke kiet-kó</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Song yit-hong</span>',
@@ -354,6 +356,7 @@ $wgLuceneSearchMessages['hak'] = array(
 	'searchnoresults'       => 'Tui-put-hí, vù-nèn chhìm-cháu-to khi̍p ngì phit-phi ke chhà-chhìm.',
 	'searchnearmatches'     => '<b>Yî-ha hong-mien lâu ngì chhà-chhìm ke nui-yùng yû siong-sṳ ke phêu-thì:</b>',
 );
+
 $wgLuceneSearchMessages['he'] = array(
 	'searchnumber'          => "<strong>תוצאות $1-$2 מתוך $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>הקודם</span>",
@@ -430,6 +433,7 @@ $3 $9 $10",
 	'lucenefallback'        => "Hiba adódott a wiki keresés során.
 A hiba átmeneti; próbáld újra néhány másodperc múlva vagy kereshetsz a wikin egy külső keresőszolgáltatáson keresztül is:"
 );
+
 $wgLuceneSearchMessages['id'] = array(
 	'searchnumber'          => "<strong>Hasil pencarian $1-$2 dari $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Sebelumnya</span>",
@@ -448,7 +452,14 @@ Masalah ini mungkin hanya sementara; silakan coba lagi dalam beberapa saat,
 atau gunakan layanan pencari eksternal:\n"
 );
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ * @author Spacebirdy
+ * @author Jóna Þórunn
+ */
 $wgLuceneSearchMessages['is'] = array(
+	'searchnumber'          => '<strong>Niðurstöður $1–$2 af $3</strong>',
+	'searchnext'            => "<span style='font-size: small'>Næsta</span> &#x00BB;",
 	'searchdidyoumean'      => 'Áttirðu við: "<a href="$1">$2</a>"?',
 	'lucenepowersearchtext' => 'Leita í eftirfarandi nafnrýmum:
 $1
@@ -590,7 +601,7 @@ $wgLuceneSearchMessages['lb'] = array(
 	'searchnext'            => "<span style='font-size: smaller'>Nächst</span> &#x00BB;",
 	'lucene-searchscore'    => 'Relevanz: $1 %',
 	'lucene-resultsize'     => '$1 ($2 Wierder)',
-	'searchdidyoumean'      => 'Méngt Dir "<a href="$1">$2</a>"?',
+	'searchdidyoumean'      => 'Mengt Dir "<a href="$1">$2</a>"?',
 	'searchnoresults'       => 'Pardon, et goufe keng Säiten fir är Ufro fontt.',
 	'searchnearmatches'     => '<b>Dës Säiten hunn ähnlech Titele wéi är Ufro :</b>',
 	'lucenepowersearchtext' => 'Sich am Nummraum $1

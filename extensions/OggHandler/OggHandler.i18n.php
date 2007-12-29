@@ -80,21 +80,39 @@ $messages = array(
 		'ogg-dismiss' => 'Isara',
 	),
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+	'br' => array(
+		'ogg-more'    => "Muioc'h...",
+		'ogg-dismiss' => 'Serriñ',
+	),
+
+/** Catalan (Català)
+ * @author SMP
+ */
 	'ca' => array(
-		'ogg-long-audio' => '(Ogg $1 arxiu de so, llargada $2, $3)',
-		'ogg-long-general' => '(Arxiu multimèdia OGG, llargada $2, $3)',
-		'ogg-long-error' => '(Arxiu OGG invàlid: $1)',
-		'ogg-pause' => 'Pausa',
-		'ogg-no-player' => 'No teniu instal·lat cap reproductor acceptat. Podeu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarregar-ne</a> un.',
-		'ogg-no-xiphqt' => 'No disposeu del component XiphQT al vostre QuickTime. Aquest component és imprescindible per a que el QuickTime pugui reproduir fitxers OGG. Podeu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarregar-lo</a> o escollir un altre reproductor.',
-		'ogg-player-thumbnail' => 'Només un fotograma',
+		'ogg-short-audio'       => "Arxiu OGG d'àudio $1, $2",
+		'ogg-short-video'       => 'Arxiu OGG de vídeo $1, $2',
+		'ogg-short-general'     => 'Arxiu multimèdia OGG $1, $2',
+		'ogg-long-audio'        => '(Ogg $1 arxiu de so, llargada $2, $3)',
+		'ogg-long-video'        => '(Arxiu OGG de vídeo $1, llargada $2, $4×$5 píxels, $3)',
+		'ogg-long-multiplexed'  => '(Arxiu àudio/vídeo multiplex, $1, llargada $2, $4×$5 píxels, $3 de mitjana)',
+		'ogg-long-general'      => '(Arxiu multimèdia OGG, llargada $2, $3)',
+		'ogg-long-error'        => '(Arxiu OGG invàlid: $1)',
+		'ogg-pause'             => 'Pausa',
+		'ogg-play-video'        => 'Reprodueix vídeo',
+		'ogg-play-sound'        => 'Reprodueix so',
+		'ogg-no-player'         => 'No teniu instal·lat cap reproductor acceptat. Podeu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarregar-ne</a> un.',
+		'ogg-no-xiphqt'         => 'No disposeu del component XiphQT al vostre QuickTime. Aquest component és imprescindible per a que el QuickTime pugui reproduir fitxers OGG. Podeu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarregar-lo</a> o escollir un altre reproductor.',
+		'ogg-player-thumbnail'  => 'Només un fotograma',
 		'ogg-player-soundthumb' => 'Cap reproductor',
-		'ogg-player-selected' => '(seleccionat)',
-		'ogg-use-player' => 'Usa el reproductor:',
-		'ogg-more' => 'Més...',
-		'ogg-dismiss' => 'Tanca',
-		'ogg-download' => 'Descarrega l\'arxiu',
-		'ogg-desc-link' => 'Informació de l\'arxiu',
+		'ogg-player-selected'   => '(seleccionat)',
+		'ogg-use-player'        => 'Usa el reproductor:',
+		'ogg-more'              => 'Més...',
+		'ogg-dismiss'           => 'Tanca',
+		'ogg-download'          => "Descarrega l'arxiu",
+		'ogg-desc-link'         => "Informació de l'arxiu",
 	),
 
 	'cs' => array(
@@ -341,6 +359,7 @@ $messages = array(
 
 /** Hungarian (Magyar)
  * @author Bdanee
+ * @author Tgr
  */
 	'hu' => array(
 		'ogg-short-audio'         => 'Ogg $1 hangfájl, $2',
@@ -353,6 +372,7 @@ $messages = array(
 		'ogg-long-error'          => '(Érvénytelen ogg fájl: $1)',
 		'ogg-play'                => 'Lejátszás',
 		'ogg-pause'               => 'Szüneteltetés',
+		'ogg-stop'                => 'Állj',
 		'ogg-play-video'          => 'Videó lejátszása',
 		'ogg-play-sound'          => 'Hang lejátszása',
 		'ogg-no-player'           => 'Sajnáljuk, de úgy tűnik, hogy nem rendelkezel a megfelelő lejátszóval. Amennyiben le szeretnéd játszani, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">tölts le egyet</a>.',
@@ -362,6 +382,7 @@ $messages = array(
 		'ogg-player-thumbnail'    => 'Csak állókép',
 		'ogg-player-soundthumb'   => 'Nincs lejátszó',
 		'ogg-player-selected'     => '(kiválasztott)',
+		'ogg-use-player'          => 'Lejátszó:',
 		'ogg-more'                => 'Tovább...',
 		'ogg-dismiss'             => 'Bezárás',
 		'ogg-download'            => 'Fájl letöltése',
@@ -781,26 +802,30 @@ $messages = array(
  * @author Pyt
  */
 	'stq' => array(
-		'ogg-short-audio'      => 'Ogg-$1-Audiodoatäi, $2',
-		'ogg-short-video'      => 'Ogg-$1-Videodoatäi, $2',
-		'ogg-short-general'    => 'Ogg-$1-Mediadoatäi, $2',
-		'ogg-long-audio'       => '(Ogg-$1-Audiodoatäi, Loangte: $2, $3)',
-		'ogg-long-video'       => '(Ogg-$1-Videodoatäi, Loangte: $2, $4×$5 Pixel, $3)',
-		'ogg-long-multiplexed' => '(Ogg-Audio-/Video-Doatäi, $1, Loangte: $2, $4×$5 Pixel, $3)',
-		'ogg-long-general'     => '(Ogg-Mediadoatäi, Loangte: $2, $3)',
-		'ogg-long-error'       => '(Uungultige Ogg-Doatäi: $1)',
-		'ogg-play'             => 'Start',
-		'ogg-pause'            => 'Pause',
-		'ogg-stop'             => 'Stop',
-		'ogg-play-video'       => 'Video ouspielje',
-		'ogg-play-sound'       => 'Audio ouspielje',
-		'ogg-no-player'        => 'Dien System schient uur neen Ouspielsoftware tou ferföigjen. Installier <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ne Ouspielsoftware</a>.',
-		'ogg-no-xiphqt'        => 'Dien System schient nit uur ju XiphQT-Komponente foar QuickTime tou ferföigjen. QuickTime kon sunner disse Komponente neen Ogg-Doatäie ouspielje. 
+		'ogg-short-audio'       => 'Ogg-$1-Audiodoatäi, $2',
+		'ogg-short-video'       => 'Ogg-$1-Videodoatäi, $2',
+		'ogg-short-general'     => 'Ogg-$1-Mediadoatäi, $2',
+		'ogg-long-audio'        => '(Ogg-$1-Audiodoatäi, Loangte: $2, $3)',
+		'ogg-long-video'        => '(Ogg-$1-Videodoatäi, Loangte: $2, $4×$5 Pixel, $3)',
+		'ogg-long-multiplexed'  => '(Ogg-Audio-/Video-Doatäi, $1, Loangte: $2, $4×$5 Pixel, $3)',
+		'ogg-long-general'      => '(Ogg-Mediadoatäi, Loangte: $2, $3)',
+		'ogg-long-error'        => '(Uungultige Ogg-Doatäi: $1)',
+		'ogg-play'              => 'Start',
+		'ogg-pause'             => 'Pause',
+		'ogg-stop'              => 'Stop',
+		'ogg-play-video'        => 'Video ouspielje',
+		'ogg-play-sound'        => 'Audio ouspielje',
+		'ogg-no-player'         => 'Dien System schient uur neen Ouspielsoftware tou ferföigjen. Installier <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ne Ouspielsoftware</a>.',
+		'ogg-no-xiphqt'         => 'Dien System schient nit uur ju XiphQT-Komponente foar QuickTime tou ferföigjen. QuickTime kon sunner disse Komponente neen Ogg-Doatäie ouspielje. 
 Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">leede XiphQT</a> of wääl ne uur Ouspielsoftware.',
-		'ogg-use-player'       => 'Ouspielsoftware:',
-		'ogg-more'             => 'Optione …',
-		'ogg-download'         => 'Doatäi spiekerje',
-		'ogg-desc-link'        => 'Uur disse Doatäi',
+		'ogg-player-thumbnail'  => 'Wies Foarschaubielde',
+		'ogg-player-soundthumb' => 'Naan Player',
+		'ogg-player-selected'   => '(uutwääld)',
+		'ogg-use-player'        => 'Ouspielsoftware:',
+		'ogg-more'              => 'Optione …',
+		'ogg-dismiss'           => 'Sluute',
+		'ogg-download'          => 'Doatäi spiekerje',
+		'ogg-desc-link'         => 'Uur disse Doatäi',
 	),
 
 	'sv' => array(

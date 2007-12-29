@@ -148,6 +148,17 @@ $allMessages = array(
 		'passwordreset-newpass' => 'Nova Kontrolajo',
 	),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+	'lb' => array(
+		'passwordreset-emptyusername' => 'Eidele Benotzernumm',
+		'passwordreset-username'      => 'Benotzernumm',
+		'passwordreset-newpass'       => 'Neit Passwuert',
+		'passwordreset-confirmpass'   => 'Passwuert confirméieren',
+		'passwordreset-submit'        => 'Passwuert zrécksetzen',
+	),
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

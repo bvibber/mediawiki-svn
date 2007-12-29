@@ -22,46 +22,67 @@ $wgLanguageManagerMessages['bn'] = array(
 	'langman_title' => 'ভাষা ব্যবস্থাপক',
 	'languages' => 'Wikidata: ভাষা ব্যবস্থাপক',
 );
+
 $wgLanguageManagerMessages['br'] = array(
 	'langman_title' => 'Merer yezhoù',
 	'languages' => 'Wikidata: Merer yezhoù',
 );
+
 $wgLanguageManagerMessages['de'] = array(
 	'langman_title' => 'Sprachmanager',
 );
+
 $wgLanguageManagerMessages['el'] = array(
 	'langman_title' => 'Διαχειριστής γλώσσας',
 	'languages' => 'Wikidata: Διαχειριστής γλώσσας',
 );
+
 $wgLanguageManagerMessages['fr'] = array(
 	'langman_title' => 'Gestion des langues',
 	'languages' => 'Wikidata: Gestion des langues',
 );
+
 $wgLanguageManagerMessages['gl'] = array(
 	'langman_title' => 'Xestor de linguas',
 	'languages' => 'Wikidata: Xestor de linguas',
 );
+
 $wgLanguageManagerMessages['he'] = array(
 	'langman_title' => 'מנהל שפות',
 );
+
 $wgLanguageManagerMessages['hsb'] = array(
 	'langman_title' => 'Zrjadowak rěčow',
 	'languages' => 'Wikidata: Zrjadowak rěčow',
 );
+
 $wgLanguageManagerMessages['id'] = array(
 	'langman_title' => 'Pengelola bahasa',
 	'languages'=>'Wikidata: Pengelola bahasa',
 );
+
 $wgLanguageManagerMessages['kk-kz'] = array(
 	'langman_title' => 'Тілдерді меңгеру',
 );
+
 $wgLanguageManagerMessages['kk-tr'] = array(
 	'langman_title' => 'Tilderdi meñgerw',
 );
+
 $wgLanguageManagerMessages['kk-cn'] = array(
 	'langman_title' => 'تٴىلدەردٴى مەڭگەرۋ',
 );
+
 $wgLanguageManagerMessages['kk'] = $wgLanguageManagerMessages['kk-kz'];
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$wgLanguageManagerMessages['lb'] = array(
+	'langman_title' => 'Sproochmanager',
+	'languages'     => 'Wikidata: Sproochmanager',
+);
+
 $wgLanguageManagerMessages['nl'] = array(
 	'langman_title' => 'Taalmanager',
 	'languages'=>'Wikidata: Taalmanager',

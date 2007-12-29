@@ -17,9 +17,11 @@ $wgLinkSearchMessages['en'] = array(
 	'linksearch-line'  => '$1 linked from $2',
 	'linksearch-error' => 'Wildcards may appear only at the start of the hostname.',
 );
+
 $wgLinkSearchMessages['af'] = array(
 	'linksearch'       => 'Soek webskakels',
 );
+
 $wgLinkSearchMessages['ar'] = array(
 	'linksearch'       => 'بحث وصلات الويب',
 	'linksearch-pat'   => 'نمط البحث:',
@@ -41,6 +43,7 @@ $wgLinkSearchMessages['bcl'] = array(
 	'linksearch-ok'    => 'Hanápon',
 	'linksearch-line'  => '$1 an nakatakod sa $2',
 );
+
 $wgLinkSearchMessages['bg'] = array(
 	'linksearch'       => 'Търсене на външни препратки',
 	'linksearch-pat'   => 'Търсене по:',
@@ -50,19 +53,30 @@ $wgLinkSearchMessages['bg'] = array(
 	'linksearch-line'  => '$1 с препратка от $2',
 	'linksearch-error' => 'Заместващите знаци могат да стоят само в началото на името на хоста.',
 );
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$wgLinkSearchMessages['br'] = array(
+	'linksearch-ok' => 'Klask',
+);
+
 $wgLinkSearchMessages['cdo'] = array(
 	'linksearch-ok'    => 'Sìng-tō̤',
 );
+
 $wgLinkSearchMessages['co'] = array(
 	'linksearch-ns'    => 'Spaziu:',
 	'linksearch-ok'    => 'Ricerca',
 );
+
 $wgLinkSearchMessages['cs'] = array(
 	'linksearch'       => 'Hledání externích odkazů',
 	'linksearch-text'  => 'Lze používat zástupné znaky, např. „*.wikipedia.org“.',
 	'linksearch-line'  => '$2 odkazuje na $1',
 	'linksearch-error' => 'Zástupné znaky lze použít jen na začátku doménového jména.',
 );
+
 $wgLinkSearchMessages['de'] = array(
 	'linksearch'       => 'Weblink-Suche',
 	'linksearch-pat'   => 'Suchmuster:',
@@ -72,9 +86,11 @@ $wgLinkSearchMessages['de'] = array(
 	'linksearch-line'  => '$1 ist verlinkt von $2',
 	'linksearch-error' => 'Wildcards können nur am Anfang der URL verwendet werden.',
 );
+
 $wgLinkSearchMessages['el'] = array(
 	'linksearch-ok'    => 'Αναζήτηση',
 );
+
 $wgLinkSearchMessages['es'] = array(
 	'linksearch'       => 'Buscar enlaces a páginas web',
 	'linksearch-pat'   => 'Patrón de búsqueda:',
@@ -180,9 +196,16 @@ $wgLinkSearchMessages['id'] = array(
 	'linksearch-line'  => '$1 terpaut dari $2',
 	'linksearch-error' => '\'\'Wildcards\'\' hanya dapat digunakan di bagian awal dari nama host.'
 );
+
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ * @author Spacebirdy
+ */
 $wgLinkSearchMessages['is'] = array(
-	'linksearch'       => 'Leita að vefföngum',
+	'linksearch'    => 'Leita að vefföngum',
+	'linksearch-ok' => 'Leita',
 );
+
 $wgLinkSearchMessages['it'] = array(
 	'linksearch'       => 'Ricerca collegamenti esterni',
 	'linksearch-pat'   => 'Pattern di ricerca:',
@@ -191,6 +214,7 @@ $wgLinkSearchMessages['it'] = array(
 	'linksearch-line'  => '$1 presente nella pagina $2',
 	'linksearch-error' => 'I metacaratteri possono essere usati solo all\'inizio del nome dell\'host.',
 );
+
 $wgLinkSearchMessages['ja'] = array(
 	'linksearch'       => '外部リンクの検索',
 	'linksearch-pat'   => '検索パターン:',
@@ -200,6 +224,7 @@ $wgLinkSearchMessages['ja'] = array(
 	'linksearch-line'  => '$1 が $2 からリンクされています',
 	'linksearch-error' => 'ワイルドカードはホスト名の先頭でのみ使用できます。',
 );
+
 $wgLinkSearchMessages['kk-kz'] = array(
 	'linksearch'       => 'Еренсілтемелерін іздеу',
 	'linksearch-pat'   => 'Іздеу шарты:',
@@ -240,8 +265,9 @@ $wgLinkSearchMessages['la'] = array(
  * @author Robby
  */
 $wgLinkSearchMessages['lb'] = array(
-	'linksearch-ns' => 'Nummraum:',
-	'linksearch-ok' => 'Sichen',
+	'linksearch-ns'   => 'Nummraum:',
+	'linksearch-ok'   => 'Sichen',
+	'linksearch-line' => '$1 verlinkt vun $2',
 );
 
 $wgLinkSearchMessages['lo'] = array(

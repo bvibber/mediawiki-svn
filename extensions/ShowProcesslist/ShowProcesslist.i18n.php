@@ -38,7 +38,9 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'showprocesslist-user' => 'Потребител',
+	'showprocesslist-user'    => 'Потребител',
+	'showprocesslist-db'      => 'бд',
+	'showprocesslist-command' => 'Команда',
 );
 
 /** German (Deutsch)

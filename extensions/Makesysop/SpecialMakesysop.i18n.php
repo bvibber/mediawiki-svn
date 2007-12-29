@@ -617,16 +617,24 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'grouppage-steward'    => 'Project:Steward',
 ),
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ * @author Friðrik Bragi Dýrfjörð
+ * @author Jóna Þórunn
+ */
 'is' => array(
-	'makesysoptext' => 'Kerfissíða þessi er notuð af möppudýrum til að veita venjulegum notendum stjórnendaréttindi.',
-	'makesysopname' => 'Notandi:',
-	'makesysopsubmit' => 'Gera að stjórnanda',
-	'makesysopok' => '<strong>Notandanum „$1“ hefur verið veitt stjórnandastaða</strong>',
-	'setbureaucratflag' => 'Einnig möppudýr',
-	'rights' => 'Réttindi:',
-	'set_user_rights' => 'Breyta réttindum notanda',
-	'makesysop' => 'Veita stjórnandaréttindi',
-	'already_sysop' => 'Þessi notandi hefur þegar verið gerður að stjórnanda.',
+	'makesysoptitle'     => 'Gera notanda að möppudýri',
+	'makesysoptext'      => 'Kerfissíða þessi er notuð af möppudýrum til að veita venjulegum notendum stjórnendaréttindi.',
+	'makesysopname'      => 'Notandi:',
+	'makesysopsubmit'    => 'Gera að stjórnanda',
+	'makesysopok'        => '<strong>Notandanum „$1“ hefur verið veitt stjórnandastaða</strong>',
+	'makebureaucratok'   => '<b>Notandi "$1" er nú möppudýr</b>',
+	'makesysopfail'      => '<b>Notanda "$1" er ekki hægt að gera að stjórnanda. (Sláðirðu rétt nafn inn?)</b>',
+	'setbureaucratflag'  => 'Einnig möppudýr',
+	'rights'             => 'Réttindi:',
+	'set_user_rights'    => 'Breyta réttindum notanda',
+	'makesysop'          => 'Veita stjórnandaréttindi',
+	'already_sysop'      => 'Þessi notandi hefur þegar verið gerður að stjórnanda.',
 	'already_bureaucrat' => 'Þessi notandi hefur þegar verið gerður möppudýr',
 ),
 

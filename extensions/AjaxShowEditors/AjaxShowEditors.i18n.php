@@ -1,6 +1,7 @@
 <?php
 
 global $wgAjaxShowEditorsMessages;
+
 $wgAjaxShowEditorsMessages = array();
 
 $wgAjaxShowEditorsMessages['en'] = array(
@@ -8,31 +9,44 @@ $wgAjaxShowEditorsMessages['en'] = array(
 	'ajax-se-pending' => 'pending refresh ... (click this box or start editing)',
 	'ajax-se-idling' => '($1s ago)',
 );
+
 $wgAjaxShowEditorsMessages['ar'] = array(
 	'ajax-se-title' => 'يقوم الآن بالتحرير:',
 	'ajax-se-pending' => 'انتظار التحديث ... (اضغط على هذا الصندوق أو ابدأ في التحرير)',
 	'ajax-se-idling' => '(منذ $1ث)',
 );
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$wgAjaxShowEditorsMessages['bg'] = array(
+	'ajax-se-idling' => '(преди $1 секунди)',
+);
+
 $wgAjaxShowEditorsMessages['bn'] = array(
 	'ajax-se-title' => 'বর্তমানে সম্পাদনা করছেন:',
 	'ajax-se-pending' => 'সতেজ(refresh) করা বাকী আছে... (এই বাক্সে ক্লিক করুন অথবা সম্পাদনা শুরু করুন)',
 	'ajax-se-idling' => '($1সেকেন্ড পূর্বে)',
 );
+
 $wgAjaxShowEditorsMessages['br'] = array(
 	'ajax-se-title' => 'Oc\'h adaozañ :',
 	'ajax-se-pending' => 'trevell war ar stern ... (klikit war ar voest-mañ pe krogit da zegas kemmoù)',
 	'ajax-se-idling' => '($1 zo)',
 );
+
 $wgAjaxShowEditorsMessages['cs'] = array(
 	'ajax-se-title' => 'Právě edituje:',
 	'ajax-se-pending' => 'očekává se změna... (klikněte do tohoto pole nebo začněte editovat)',
 	'ajax-se-idling' => '(před $1 s)',
 );
+
 $wgAjaxShowEditorsMessages['de'] = array(
 	'ajax-se-title'   => 'Wird zur Zeit bearbeitet von:',
 	'ajax-se-pending' => 'bevorstehende Aktualisierungen… (klicke auf diesen Kasten oder beginne mit der Bearbeitung)',
 	'ajax-se-idling'  => '(vor $1 s)',
 );
+
 $wgAjaxShowEditorsMessages['el'] = array(
 	'ajax-se-title'   => 'Τρέχουσα επεξεργασία:',
 	'ajax-se-pending' => 'εκκρεμή ανανέωση ... (κάντε κλικ σε αυτό το κουτί ή ξεκινήστε την επεξεργασία)',

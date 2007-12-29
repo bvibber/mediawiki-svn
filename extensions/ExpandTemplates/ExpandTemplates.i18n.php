@@ -36,22 +36,30 @@ $wgExpandTemplatesMessages['ar'] = array(
 	'expand_templates_remove_comments' => 'إزالة التعليقات',
 	'expand_templates_preview'         => 'عرض',
 );
+
 $wgExpandTemplatesMessages['bcl'] = array(
 	'expand_templates_output'          => 'Resulta',
 	'expand_templates_remove_comments' => 'Tanggalon an mga komento',
 	'expand_templates_preview'         => 'Patânaw',
 );
+
 $wgExpandTemplatesMessages['bg'] = array(
 	'expand_templates_output'          => 'Резултат',
 	'expand_templates_ok'              => 'ОК',
 	'expand_templates_remove_comments' => 'Премахване на коментари',
 	'expand_templates_preview'         => 'Преглед',
 );
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
 $wgExpandTemplatesMessages['br'] = array(
-	'expand_templates_output'          => 'Disoc\'h :',
+	'expand_templates_output'          => "Disoc'h :",
 	'expand_templates_ok'              => 'Mat eo',
 	'expand_templates_remove_comments' => 'Lemel an notennoù kuit',
+	'expand_templates_preview'         => 'Rakwelet',
 );
+
 $wgExpandTemplatesMessages['ca'] = array(
 	'expandtemplates'                  => 'Expansió de plantilles',
 	'expand_templates_intro'           => 'Aquesta pàgina especial permet provar plantilles, amb expansions recursives. Les funcions i les variables predefinides, com ara <nowiki>{{</nowiki>#if:...}} o <nowiki>{{</nowiki>CURRENTDAY}}, també són substituïdes.',
@@ -60,9 +68,11 @@ $wgExpandTemplatesMessages['ca'] = array(
 	'expand_templates_output'          => 'Resultat:',
 	'expand_templates_remove_comments' => 'Elimina els comentaris',
 );
+
 $wgExpandTemplatesMessages['co'] = array(
 	'expand_templates_output'          => 'Risultatu',
 );
+
 $wgExpandTemplatesMessages['cs'] = array(
 	'expandtemplates'                  => 'Substituce šablon',
 	'expand_templates_intro'           => 'Pomocí této speciální stránky můžete nechat v textu substituovat všechny šablony a funkce parseru jako <code><nowiki>{{</nowiki>#if:…...}}</code> či proměnné jako <code><nowiki>{{</nowiki>CURRENTDAY}} – tzn. prakticky všechno v dvojitých složených závorkách. K tomu se používají přímo odpovídající funkce parseru MediaWiki.',
@@ -72,6 +82,7 @@ $wgExpandTemplatesMessages['cs'] = array(
 	'expand_templates_remove_comments' => 'Odstranit komentáře',
 	'expand_templates_preview'         => 'Náhled',
 );
+
 $wgExpandTemplatesMessages['de'] = array(
 	'expandtemplates'                  => 'Vorlagen expandieren',
 	'expand_templates_intro'           => 'In diese Spezialseite kann Text eingegeben werden und alle Vorlagen in ihr werden rekursiv expandiert. Auch Parserfunkionen wie <nowiki>{{</nowiki>#if:...}} und Variablen wie <nowiki>{{</nowiki>CURRENTDAY}} werden ausgewertet - faktisch alles was in doppelten geschweiften Klammern enthalten ist. Dies geschieht durch den Aufruf der jeweiligen Parser-Phasen in MediaWiki.',
@@ -82,13 +93,16 @@ $wgExpandTemplatesMessages['de'] = array(
 	'expand_templates_remove_comments' => 'Kommentare entfernen',
 	'expand_templates_preview'         => 'Vorschau',
 );
+
 $wgExpandTemplatesMessages['el'] = array(
 	'expand_templates_ok'              => 'ΟΚ',
 );
+
 $wgExpandTemplatesMessages['eo'] = array(
 	'expand_templates_remove_comments' => 'Forigu komentojn',
 	'expand_templates_preview'         => 'Antaŭrigardo',
 );
+
 $wgExpandTemplatesMessages['es'] = array(
 	'expandtemplates'                  => 'Sustituidor de plantillas',
 	'expand_templates_input'           => 'Texto a expandir:',
@@ -96,9 +110,11 @@ $wgExpandTemplatesMessages['es'] = array(
 	'expand_templates_remove_comments' => 'Eliminar comentarios',
 	'expand_templates_preview'         => 'Previsualización',
 );
+
 $wgExpandTemplatesMessages['ext'] = array(
 	'expand_templates_preview'         => 'Previsoreal',
 );
+
 $wgExpandTemplatesMessages['fi'] = array(
 	'expandtemplates'                  => 'Mallineiden laajennus',
 	'expand_templates_intro'           => 'Tämä toimintosivu ottaa syötteekseen tekstiä ja laajentaa kaikki mallineet rekursiivisesti sekä jäsenninfunktiot, kuten <nowiki>{{</nowiki>#if:...}}, ja -muuttujat, kuten
@@ -110,11 +126,13 @@ $wgExpandTemplatesMessages['fi'] = array(
 	'expand_templates_remove_comments' => 'Poista kommentit',
 	'expand_templates_preview'         => 'Esikatselu',
 );
+
 $wgExpandTemplatesMessages['fo'] = array(
 	'expand_templates_output'          => 'Úrslit',
 	'expand_templates_ok'              => 'Í lagi',
 	'expand_templates_preview'         => 'Forskoðan',
 );
+
 $wgExpandTemplatesMessages['fr'] = array(
 	'expandtemplates'                  => 'Expansion des modèles',
 	'expand_templates_intro'           => 'Cette page permet de tester l’expansion de modèles,
@@ -200,6 +218,7 @@ $wgExpandTemplatesMessages['id'] = array(
 	'expand_templates_ok'              => 'Jalankan',
 	'expand_templates_remove_comments' => 'Buang komentar',
 );
+
 $wgExpandTemplatesMessages['it'] = array(
 	'expandtemplates'                  => 'Espansione dei template',
 	'expand_templates_intro'           => 'Questa pagina speciale elabora un testo espandendo tutti i template presenti. Calcola inoltre il risultato delle funzioni supportate dal parser come <nowiki>{{</nowiki>#if:...}} e delle variabili di sistema quali <nowiki>{{</nowiki>CURRENTDAY}}, ovvero praticamente tutto ciò che si trova tra doppie parentesi graffe. Funziona richiamando le opportune funzioni del parser di MediaWiki.',
@@ -209,6 +228,7 @@ $wgExpandTemplatesMessages['it'] = array(
 	'expand_templates_remove_comments' => 'Ignora i commenti',
 	'expand_templates_preview'         => 'Anteprima',
 );
+
 $wgExpandTemplatesMessages['ja'] = array(
 	'expandtemplates'                  => 'テンプレートを展開',
 	'expand_templates_intro'           => '入力したウィキ構文に含まれている全てのテンプレートを再帰的に展開します。
@@ -220,6 +240,7 @@ $wgExpandTemplatesMessages['ja'] = array(
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'コメントを除去',
 );
+
 $wgExpandTemplatesMessages['kk-kz'] = array(
 	'expandtemplates'                  => 'Үлгілерді ұлғайту',
 	'expand_templates_intro'           => 'Осы құрал арнайы беті әлдебір мәтінді алады да,
@@ -233,6 +254,7 @@ $wgExpandTemplatesMessages['kk-kz'] = array(
 	'expand_templates_ok'              => 'Жарайды',
 	'expand_templates_remove_comments' => 'Мәндемелерін аластатып?',
 );
+
 $wgExpandTemplatesMessages['kk-tr'] = array(
 	'expandtemplates'                  => 'Ülgilerdi ulğaýtw',
 	'expand_templates_intro'           => 'Osı qural arnaýı beti äldebir mätindi aladı da,
@@ -246,6 +268,7 @@ Bunı öz MediaWiki bağdarlamasınan qatıstı jöñdetw satın şaqırıp iste
 	'expand_templates_ok'              => 'Jaraýdı',
 	'expand_templates_remove_comments' => 'Mändemelerin alastatıp?',
 );
+
 $wgExpandTemplatesMessages['kk-cn'] = array(
 	'expandtemplates'                  => 'ٷلگٸلەردٸ ۇلعايتۋ',
 	'expand_templates_intro'           => 'وسى قۇرال ارنايى بەتٸ ٵلدەبٸر مٵتٸندٸ الادى دا,
@@ -259,10 +282,13 @@ $wgExpandTemplatesMessages['kk-cn'] = array(
 	'expand_templates_ok'              => 'جارايدى',
 	'expand_templates_remove_comments' => 'مٵندەمەلەرٸن الاستاتىپ؟',
 );
+
 $wgExpandTemplatesMessages['kk'] = $wgExpandTemplatesMessages['kk-kz'];
+
 $wgExpandTemplatesMessages['ko'] = array(
 	'expandtemplates'                  => '틀 확장',
 );
+
 $wgExpandTemplatesMessages['ksh'] = array(
 	'expandtemplates'                  => 'Schablone üvverpröfe',
 	'expand_templates_intro'           => 'Hee kanns de en Schablon usprobeere. Do jiss ene Oprof en, un dann kriss De dä
@@ -276,6 +302,7 @@ sinn kriss wat erus kütt.',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'De ennere Kommentare fottlooße',
 );
+
 $wgExpandTemplatesMessages['la'] = array(
 	'expandtemplates'                  => 'Formulas resolvere',
 );
@@ -284,6 +311,7 @@ $wgExpandTemplatesMessages['la'] = array(
  * @author Robby
  */
 $wgExpandTemplatesMessages['lb'] = array(
+	'expandtemplates'         => 'Schablounen expandéieren',
 	'expand_templates_output' => 'Resultat',
 	'expand_templates_ok'     => 'OK',
 );

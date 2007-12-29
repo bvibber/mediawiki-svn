@@ -23,6 +23,13 @@ $messages['ar'] = array(
 	'eval_code'   => 'كود',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'eval_code' => 'Код',
+);
+
 $messages['fr'] = array(
 	'eval'        => 'Évaluer',
 	'eval_submit' => 'Évaluer',

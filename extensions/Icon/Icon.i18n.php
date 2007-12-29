@@ -86,3 +86,11 @@ $messages['oc'] = array(
 	'icon-badimage' => 'Imatge corromput',
 	'icon-badwidth' => 'Largor erronèa',
 );
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'icon-badimage' => 'Defekte Bielde',
+	'icon-badwidth' => 'Falske Bratte',
+);

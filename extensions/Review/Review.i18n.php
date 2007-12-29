@@ -96,9 +96,12 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'review_total_statistics'  => 'Общо',
-	'review_user_details_link' => '(детайли)',
-	'review_comment'           => 'Коментар',
+	'review_total_statistics'       => 'Общо',
+	'review_statistics_left_corner' => 'Редакция',
+	'review_version_link'           => 'Редакция #$1',
+	'review_version_statistic_cell' => '$1 от $2',
+	'review_user_details_link'      => '(детайли)',
+	'review_comment'                => 'Коментар',
 );
 
 /** Greek (Ελληνικά)

@@ -86,7 +86,7 @@ function efBlockTitlesMessages() {
  */
 'frp' => array(
 	'block_title_error_page_title' => 'Titro envalido',
-	'block_title_error'            => 'Dèsolâ, lo titro de cél articllo est pas ôtorisâ a étre sôvâ.',
+	'block_title_error'            => 'Dèsolâ, lo titro de cela pâge est pas ôtorisâ a étre sôvâ.',
 ),
 
 /** Galician (Galego)

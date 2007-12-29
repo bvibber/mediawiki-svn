@@ -41,13 +41,19 @@ $messages['ar'] = array(
 	'spamdifftool_submit_buttom' => 'تنفيذ',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ * @author DCLXVI
+ */
 $messages['bg'] = array(
-	'spamdifftool_summary' => 'Добавяне към черния списък със спам',
-	'spamdifftool_option_domain' => 'всичко от този домейн',
+	'spamdifftool_summary'          => 'Добавяне към черния списък със спам',
+	'spamdifftool_spam_link_text'   => 'добавяне в спам',
+	'spamdifftool_option_domain'    => 'всичко от този домейн',
 	'spamdifftool_option_subdomain' => 'всичко от този поддомейн',
-	'spamdifftool_option_none' => 'нищо',
-	'spamdifftool_block' => 'Блокиране:',
-	'spamdifftool_submit_buttom' => 'Съхранение',
+	'spamdifftool_option_directory' => 'този поддомейн и директория',
+	'spamdifftool_option_none'      => 'нищо',
+	'spamdifftool_block'            => 'Блокиране:',
+	'spamdifftool_submit_buttom'    => 'Съхранение',
 );
 
 $messages['de'] = array(

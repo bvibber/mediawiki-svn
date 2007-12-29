@@ -2143,6 +2143,13 @@ $wgBoardVoteMessages['to'] = array(
 	'boardvote_dumplink' => 'Lomiʻi heni',
 );
 
+/** Tahitian (Reo Mā`ohi)
+ * @author SPQRobin
+ */
+$wgBoardVoteMessages['ty'] = array(
+	'boardvote_user' => 'Ta’ata fa’a’ohipa',
+);
+
 $wgBoardVoteMessages['wa'] = array(
 	'boardvote' => 'Vôtaedje po les manaedjeus del fondåcion Wikimedia',
 	'boardvote_entry' => '* [[Special:Boardvote/vote|Vôter]]

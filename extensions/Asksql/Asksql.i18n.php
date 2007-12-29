@@ -220,6 +220,13 @@ prega quindi di usarla con molta parsimonia.",
 	'querysuccessful' => 'クエリは成功しました',
 ),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+'lb' => array(
+	'asksql' => 'SQL Offro',
+),
+
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */

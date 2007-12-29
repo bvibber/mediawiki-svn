@@ -78,16 +78,17 @@ function efInputBoxMessages() {
 'br' => array(
 	'tryexact'       => 'Klask ma klotfe rik',
 	'searchfulltext' => 'Klask an destenn a-bezh',
-	'createarticle'  => 'Krouiñ pennad',
+	'createarticle'  => 'Krouiñ ar pennad',
 ),
 
 /** Catalan (Català)
  * @author Toniher
+ * @author SMP
  */
 'ca' => array(
 	'tryexact'       => 'Prova una coincidència exacta',
 	'searchfulltext' => 'Cerca un text sencer',
-	'createarticle'  => 'Crea un article',
+	'createarticle'  => 'Crea una pàgina',
 ),
 
 'cdo' => array(
@@ -568,7 +569,7 @@ function efInputBoxMessages() {
 	'inputbox-error-bad-type' => 'Die Inputbox-Typ „$1“ is uunbekoand. Reek n gultigen Typ an: „create“, „comment“, „search“ of „search2“.',
 	'tryexact'                => 'Fersäik exakte Säike:',
 	'searchfulltext'          => 'Dän ganse Text truchsäike',
-	'createarticle'           => 'Artikkel anlääse',
+	'createarticle'           => 'Siede anlääse',
 ),
 
 'su' => array(

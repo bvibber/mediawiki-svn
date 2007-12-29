@@ -95,6 +95,13 @@ function efMakeBotMessages() {
 	'makebot-logentryrevoke' => 'отне бот статуса на [[$1]]',
 ),
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+'br' => array(
+	'makebot-search' => 'Mont',
+),
+
 'ca' => array(
 	'makebot'                 => 'Donar o treure la marca de bot',
 	'makebot-header'          => '\'\'\'Un buròcrata local pot fer servir aquesta pàgina per a concedir o retirar l\'estatus de [[{{MediaWiki:Grouppage-bot}}|bot]] a qualsevol compte d\'usuari.\'\'\'<br />L\'estatus de bot oculta les edicions d\'un usuari a la pàgina de [[Special:Recentchanges|canvis recents]] i llistes semblants, i és útil per a usuaris que realitzen edicions automàticament. Això s\'ha de fer segons les polítiques aplicables.',
@@ -502,10 +509,29 @@ function efMakeBotMessages() {
 	'makebot-search'          => 'Irar',
 ),
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ * @author S.Örvarr.S
+ * @author Spacebirdy
+ */
 'is' => array(
-	'makebot-username'        => 'Notandanafn:',
-	'makebot-search'          => 'Áfram',
-	'makebot-comment'         => 'Upplýsingar:',
+	'makebot'                => 'Veita eða afturkalla vélmennisskráningu',
+	'makebot-header'         => "'''Möppudýr geta notað þessa síðu til að merkja eða afmerkja notenda sem [[{{MediaWiki:Grouppage-bot}}|vélmenni (bot)]].'''<br />Breytingar notanda sem er merktur sem vélmenni sjást ekki á [[Special:Recentchanges|síðunni yfir nýlegar breytingar]] og samskonar síðum, og er gagnlegt fyrir notendur sem gera sjálfvirkar breytingar. Þetta ætti að gera í samræmi við viðeigandi reglur.",
+	'makebot-username'       => 'Notandanafn:',
+	'makebot-search'         => 'Áfram',
+	'makebot-isbot'          => '[[User:$1|$1]] er merktur sem vélmenni.',
+	'makebot-notbot'         => '[[User:$1|$1]] er ekki merktur sem vélmenni.',
+	'makebot-privileged'     => '[[User:$1|$1]] er annaðhvort [[Special:Listadmins|stjórnandi eða möppudýr]], og því er ekki hægt að merkja hann sem vélmenni.',
+	'makebot-change'         => 'Breyta merkingu:',
+	'makebot-grant'          => 'Merkja',
+	'makebot-revoke'         => 'Afmerkja',
+	'makebot-comment'        => 'Upplýsingar:',
+	'makebot-granted'        => '[[User:$1|$1]] er nú skráður sem vélmenni.',
+	'makebot-revoked'        => '[[User:$1|$1]] er ekki merktur sem vélmenni lengur.',
+	'makebot-logpage'        => 'Vélmennaskrá',
+	'makebot-logpagetext'    => 'Þetta er skrá yfir merkingar [[{{MediaWiki:Grouppage-bot}}|vélmenna]].',
+	'makebot-logentrygrant'  => 'merkti [[$1]] sem vélmenni',
+	'makebot-logentryrevoke' => 'afmerkti [[$1]] sem vélmenni',
 ),
 
 /* Italian (BrokenArrow) */
@@ -653,7 +679,17 @@ function efMakeBotMessages() {
  * @author Robby
  */
 'lb' => array(
-	'makebot-username' => 'Benotzernumm:',
+	'makebot'               => 'Botstatus autoriséieren oder ofhuelen',
+	'makebot-username'      => 'Benotzernumm:',
+	'makebot-search'        => 'Status offroen',
+	'makebot-isbot'         => 'De [[User:$1|$1]] huet Botstatus.',
+	'makebot-change'        => 'Status änneren:',
+	'makebot-grant'         => 'Autoriséieren',
+	'makebot-revoke'        => 'Ofhuelen',
+	'makebot-comment'       => 'Bemierkung:',
+	'makebot-granted'       => '[[User:$1|$1]] huet elo Botstatus.',
+	'makebot-logpage'       => 'Logbuch vum Botstatus',
+	'makebot-logentrygrant' => 'huet dem [[$1]] de Botstatus autoriséiert',
 ),
 
 'li' => array(

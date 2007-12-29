@@ -393,6 +393,14 @@ Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wuš
 	'oversight-view'             => 'részletek',
 ),
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+'is' => array(
+	'hiderevision-noreason'      => 'Þú verður að skilgreina ástæðu fyrir eyðingu.',
+	'hiderevision-error-missing' => 'Ekki fundið í skráasafni.',
+),
+
 /* Italian (BrokenArrow) */
 'it' => array(
 	'hiderevision' => 'Oscuramento permanente di una revisione',
@@ -580,8 +588,11 @@ Bul mälimetti barşağa aşqanda Nusqa jasırwşı quqıqtarıñız ärdaýım 
  * @author Robby
  */
 'lb' => array(
-	'hiderevision-tab'    => 'Verstopp Versiounen',
-	'hiderevision-status' => 'Versioun $1: $2',
+	'hiderevision-continue'      => 'Weider',
+	'hiderevision-tab'           => 'Verstopp Versiounen',
+	'hiderevision-status'        => 'Versioun $1: $2',
+	'hiderevision-error-missing' => 'Net an der Datebank fonnt.',
+	'oversight-hidden'           => 'Verstoppte Versioun',
 ),
 
 /** Dutch (Nederlands)

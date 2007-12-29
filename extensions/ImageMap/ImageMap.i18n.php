@@ -198,6 +198,13 @@ function efImageMapMessages() {
 	'imagemap_description'          => 'Tentang gambar ini',
 ),
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+'is' => array(
+	'imagemap_description' => 'Um þessa mynd',
+),
+
 /* Italian (AnyFile, fixed typos by BrokenArrow) */
 'it' => array(
 	'imagemap_no_image'             => "&lt;imagemap&gt;: si deve specificare un'immagine nella prima riga",
@@ -256,6 +263,13 @@ function efImageMapMessages() {
 
 'la' => array(
 	'imagemap_description'          => 'De hac imagine',
+),
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+'lb' => array(
+	'imagemap_description' => 'Iwwert dëst Bild',
 ),
 
 'nds' => array(

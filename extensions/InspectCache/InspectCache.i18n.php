@@ -152,5 +152,6 @@ $messages['stq'] = array(
 	'inspectcache-ok'      => 'OK',
 	'inspectcache-general' => 'Algemeenen Cache',
 	'inspectcache-parser'  => 'Parser-Cache',
+	'inspectcache-message' => 'Ättergjuchte-Cache',
 	'inspectcache-deleted' => 'Läskeden Cache',
 );
