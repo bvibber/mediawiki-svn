@@ -5,17 +5,14 @@ if (!defined('MEDIAWIKI')) {
 }
 
 /** Load up the internationalization stuff */
-global $wgMessageCache;
-require_once( 'Asksql.i18n.php' );
-foreach( efAsksqlMessages() as $lang => $messages ) {
-	$wgMessageCache->addMessages( $messages, $lang );
-}
+wfLoadExtensionMessages( 'Asksql' );
 
 /** Main class that define a new special page*/
 class SpecialAsksql extends SpecialPage {
 
 	function SpecialAsksql() {
 		SpecialPage::SpecialPage( 'Asksql', 'asksql' );
+
 	}
 
 	function execute( $par ) {
