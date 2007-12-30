@@ -495,11 +495,12 @@ kopieën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzo
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author 555
  */
 'pt' => array(
-	'duplicator'         => 'Duplicar um artigo',
-	'duplicator-toolbox' => 'Duplicar este artigo',
-	'duplicator-header'  => 'Esta página permite a duplicação completa de uma artigo, criando cópias independentes de todo o histórico. Isto é útil para separar versões de artigos, etc.',
+	'duplicator'         => 'Duplicar uma página',
+	'duplicator-toolbox' => 'Duplicar esta página',
+	'duplicator-header'  => 'Esta página permite a duplicação completa de uma página de conteúdo, criando cópias independentes de todo o seu histórico. Isto é útil para separar versões de páginas, etc.',
 	'duplicator-options' => 'Opções',
 	'duplicator-source'  => 'Fonte:',
 	'duplicator-dest'    => 'Destino:',
