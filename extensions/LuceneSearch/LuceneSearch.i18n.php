@@ -604,7 +604,7 @@ $wgLuceneSearchMessages['lb'] = array(
 	'searchdidyoumean'      => 'Mengt Dir "<a href="$1">$2</a>"?',
 	'searchnoresults'       => 'Pardon, et goufe keng Säiten fir är Ufro fontt.',
 	'searchnearmatches'     => '<b>Dës Säiten hunn ähnlech Titele wéi är Ufro :</b>',
-	'lucenepowersearchtext' => 'Sich am Nummraum $1
+	'lucenepowersearchtext' => 'Sich an den Nimmraim $1
 
 Sichen no $3 $9 $10',
 	'lucenefallback'        => 'Bäi der {{SITENAME}}-interner Sich ass e Problem opgetratt.
