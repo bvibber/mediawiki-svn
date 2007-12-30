@@ -4,11 +4,10 @@
  * Internationalisation file for the Oversight extension
  */
 
-function efHideRevisionMessages() {
-	$messages = array(
+$messages = array();
 
 /* English (Brion Vibber) */
-'en' => array(
+$messages['en'] = array(
 	'hiderevision' => 'Permanently hide revisions',
 	// Empty form
 	'hiderevision-prompt' => 'Revision number to remove:',
@@ -49,9 +48,9 @@ database administrator if you make a mistake.",
 	'oversight-hidden' => 'Hidden revision',
 	'oversight-header' => 'Below is a list of revisions recently permanently hidden from public view.
 Releasing this information can result in permanent loss of Oversight privileges.',
-),
+);
 
-'ar' => array(
+$messages['ar'] = array(
 	'hiderevision' => 'أخف النسخ بشكل دائم',
 	'hiderevision-prompt' => 'رقم النسخة للإزالة:',
 	'hiderevision-continue' => 'استمر',
@@ -85,16 +84,16 @@ Releasing this information can result in permanent loss of Oversight privileges.
 	'oversight-hidden' => 'نسخة مخفية',
 	'oversight-header' => 'بالأسفل قائمة بالنسخ التي تم إخفاؤها بشكل دائم حديثا عن العامة.
 إفشاء هذه المعلومات يمكن أن ينتج عنه فقد دائم لصلاحيات الأوفرسايت.',
-),
+);
 
-'co' => array(
+$messages['co'] = array(
 	'hiderevision' => 'Piattà e revisione di manera permanente',
 	'hiderevision-continue' => 'Cuntinuà',
 	'hiderevision-status' => 'Revisione $1: $2',
-),
+);
 
 /* German (Raymond) */
-'de' => array(
+$messages['de'] = array(
 	'hiderevision' => 'Versionen dauerhaft entfernen',
 	'hiderevision-prompt' => 'Zu entfernende Versionsnummer:',
 	'hiderevision-continue' => 'Weiter',
@@ -127,17 +126,17 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 	'oversight-prev' => 'Letzte vorhergehenden Version',
 	'oversight-hidden' => 'Entfernte Version',
 	'oversight-header' => 'Es folgt die Liste der dauerhaft für die öffentliche Einsicht entfernten Versionen. Die Veröffentlichung dieser Informationen kann den dauerhaften Entzug der Oversight-Rechte bedeuten.',
-),
+);
 
 /** Greek (Ελληνικά)
  * @author Consta
  */
-'el' => array(
+$messages['el'] = array(
 	'hiderevision-continue' => 'Συνέχεια',
 	'oversight-view'        => 'λεπτομέρειες',
-),
+);
 
-'fa' => array(
+$messages['fa'] = array(
 	'hiderevision' => 'پنهان کردن همیشگی نسخه‌ها',
 	// Empty form
 	'hiderevision-prompt' => 'شماره نسخه‌ای که حذف می‌شود:',
@@ -178,9 +177,9 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 	'oversight-hidden' => 'نسخه پنهان شده',
 	'oversight-header' => 'در زیر فهرستی از نسخه‌هایی که به تازگی از دید عموم برای همیشه حذف شده‌اند را می‌بینید.
 منتشر کردن این اطلاعات می‌تواند به از دست دادن همیشگی اختیارات شما بینجامد.',
-),
+);
 
-'fi' => array(
+$messages['fi'] = array(
 	'hiderevision' => 'Pysyvä versioiden piilottaminen',
 	'hiderevision-prompt' => 'Poistettava versionumero:',
 	'hiderevision-continue' => 'Jatka',
@@ -200,14 +199,14 @@ Poistetut kohteet eivät näy kenellekään web-sivuston kautta, mutta kaikki po
 	'hiderevision-error-missing' => 'Ei löydy tietokannasta.',
 	'hiderevision-error-current' => 'Uusinta muokkausta ei voi poistaa. Palauta muutos ensin.',
 	'oversight-log-hiderev' => 'poisti muokkauksen sivulta $1',
-),
+);
 
-'fo' => array(
+$messages['fo'] = array(
 	'oversight' => 'Yvirlit',
-),
+);
 
 /* French (Bertrand Grondin) */
-'fr' => array(
+$messages['fr'] = array(
 	'hiderevision' => 'Cacher définitivement les révisions',
 	'hiderevision-prompt' => 'Numéro d’édition à supprimer :',
 	'hiderevision-continue' => 'Continuer',
@@ -239,9 +238,9 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 	'oversight-prev' => 'Dernière révision précédente',
 	'oversight-hidden' => 'Révision cachée',
 	'oversight-header' => 'Ci-dessous, figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges d’Oversight.',
-),
+);
 
-'gl' => array(
+$messages['gl'] = array(
 	'hiderevision' => 'Agochar revisións permanentemente',
 	'hiderevision-prompt' => 'Número de revisión a eliminar:',
 	'hiderevision-continue' => 'Continuar',
@@ -276,10 +275,10 @@ administrador das bases de datos no caso de que vostede cometa un erro.',
 	'oversight-hidden' => 'Revisión agochada',
 	'oversight-header' => 'Embaixo amósase unha listaxe recente das revisións ocultas permanentemente á opinión pública.
 Á liberación desta información pode resultar na perda permanente dos privilexios de Supervisión.',
-),
+);
 
 /* Hebrew (Rotem Liss) */
-'he' => array(
+$messages['he'] = array(
 	'hiderevision' => 'מחיקת גרסאות לצמיתות',
 	'hiderevision-prompt' => 'מספר גרסה למחיקה:',
 	'hiderevision-continue' => 'המשך',
@@ -312,9 +311,9 @@ administrador das bases de datos no caso de que vostede cometa un erro.',
 	'oversight-hidden' => 'גרסה מוסתרת',
 	'oversight-header' => 'להלן רשימת גרסאות שנמחקו לאחרונה לצמיתות מתצוגה ציבורית.
 שחרור מידע זה לציבור עלול לגרום להסרה לצמיתות של ההרשאות.',
-),
+);
 
-'hr' => array(
+$messages['hr'] = array(
 	'hiderevision' => 'Trajno sakrij uređivanja',
 	'hiderevision-prompt' => 'Oznaka (broj) uređivanja koju sakrivate:',
 	'hiderevision-continue' => 'Nastavi',
@@ -349,9 +348,9 @@ učinite pogrešku.',
 	'oversight-hidden' => 'Skriveno uređivanje',
 	'oversight-header' => 'Slijedi popis uređivanja nedavno trajno skrivenih od javnosti.
 Objavljivanje ove informacije može prouzročiti trajan gubitak prava nadzora.',
-),
+);
 
-'hsb' => array(
+$messages['hsb'] = array(
 	'hiderevision' => 'Wersije na přeco schować',
 	'hiderevision-prompt' => 'Wersijowe čisło, kotrež ma so wotstronić:',
 	'hiderevision-continue' => 'Dale',
@@ -383,26 +382,26 @@ Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wuš
 	'oversight-prev' => 'Poslednja předchadna wersija',
 	'oversight-hidden' => 'Schowana wersija',
 	'oversight-header' => 'Slěduje lisćina wersijow na stajnje schowanych za zjawnosć. Wozjewjenje tutych informacijow móže k stajnemu zhubjenju prawow za Oversight wjesć.',
-),
+);
 
 /** Hungarian (Magyar)
  * @author Bdanee
  */
-'hu' => array(
+$messages['hu'] = array(
 	'hiderevision-error-missing' => 'Nem található az adatbázisban.',
 	'oversight-view'             => 'részletek',
-),
+);
 
 /** Icelandic (Íslenska)
  * @author SPQRobin
  */
-'is' => array(
+$messages['is'] = array(
 	'hiderevision-noreason'      => 'Þú verður að skilgreina ástæðu fyrir eyðingu.',
 	'hiderevision-error-missing' => 'Ekki fundið í skráasafni.',
-),
+);
 
 /* Italian (BrokenArrow) */
-'it' => array(
+$messages['it'] = array(
 	'hiderevision' => 'Oscuramento permanente di una revisione',
 	'hiderevision-prompt' => 'Numero della revisione da oscurare:',
 	'hiderevision-continue' => 'Continua',
@@ -437,9 +436,9 @@ in caso di errori.',
 	'oversight-hidden' => 'Revisione oscurata',
 	'oversight-header' => 'Qui di seguito viene presentata una lista delle revisioni oscurate in modo permanente ai visitatori del sito.
 La divulgazione di tali informazioni può dar luogo alla rimozione permanente dei diritti di oversight.',
-),
+);
 
-'ja' => array(
+$messages['ja'] = array(
 	'hiderevision' => '永久的な版の秘匿',
 	'hiderevision-prompt' => '消去する版の番号(oldid):',
 	'hiderevision-continue' => '続ける',
@@ -464,10 +463,10 @@ La divulgazione di tali informazioni può dar luogo alla rimozione permanente de
 	'oversight-view' => '詳細',
 	'oversight-hidden' => '秘匿された版',
 	'oversight-header' => '下記は、最近永久に秘匿され、非公開となった版の一覧です。この情報を公開する事は、Oversight権限を永久に失う事になるかも知れません。',
-),
+);
 
 /* Kazakh Cyrillic (AlefZet) */
-'kk-cyrl' => array(
+$messages['kk-cyrl'] = array(
 	'hiderevision' => 'Нұсқаларды тұрақты жасыру',
 	'hiderevision-prompt' => 'Жойылатын нұсқа нөмірі:',
 	'hiderevision-continue' => 'Жалғастыру',
@@ -502,10 +501,10 @@ La divulgazione di tali informazioni può dar luogo alla rimozione permanente de
 	'oversight-hidden' => 'Жасырылған нұсқа',
 	'oversight-header' => 'Төменде баршадан тұрақты жасырылған нұсқалар тізімі беріледі.
 Бұл мәліметті баршаға ашқанда Нұсқа жасырушы құқықтарыңыз әрдайым өшіріледі.',
-),
+);
 
 /* Kazakh Latin (AlefZet) */
-'kk-latn' => array(
+$messages['kk-latn'] = array(
 	'hiderevision' => 'Nusqalardı turaqtı jasırw',
 	'hiderevision-prompt' => 'Joýılatın nusqa nömiri:',
 	'hiderevision-continue' => 'Jalğastırw',
@@ -540,10 +539,10 @@ derekqor äkimşisi qolmen qaýtadan keltirwge mümkin.",
 	'oversight-hidden' => 'Jasırılğan nusqa',
 	'oversight-header' => 'Tömende barşadan turaqtı jasırılğan nusqalar tizimi beriledi.
 Bul mälimetti barşağa aşqanda Nusqa jasırwşı quqıqtarıñız ärdaýım öşiriledi.',
-),
+);
 
 /* Kazakh Arabic (AlefZet) */
-'kk-arab' => array(
+$messages['kk-arab'] = array(
 	'hiderevision' => 'نۇسقالاردى تۇراقتى جاسىرۋ',
 	'hiderevision-prompt' => 'جويىلاتىن نۇسقا نٶمٸرٸ:',
 	'hiderevision-continue' => 'جالعاستىرۋ',
@@ -578,27 +577,27 @@ Bul mälimetti barşağa aşqanda Nusqa jasırwşı quqıqtarıñız ärdaýım 
 	'oversight-hidden' => 'جاسىرىلعان نۇسقا',
 	'oversight-header' => 'تٶمەندە بارشادان تۇراقتى جاسىرىلعان نۇسقالار تٸزٸمٸ بەرٸلەدٸ.
 بۇل مٵلٸمەتتٸ بارشاعا اشقاندا نۇسقا جاسىرۋشى قۇقىقتارىڭىز ٵردايىم ٶشٸرٸلەدٸ.',
-),
+);
 
-'ksh' => array(
+$messages['ksh'] = array(
 	'hiderevision-submit' => 'Důnn_di Väsjohn foshtäshe',
-),
+);
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-'lb' => array(
+$messages['lb'] = array(
 	'hiderevision-continue'      => 'Weider',
 	'hiderevision-tab'           => 'Verstopp Versiounen',
 	'hiderevision-status'        => 'Versioun $1: $2',
 	'hiderevision-error-missing' => 'Net an der Datebank fonnt.',
 	'oversight-hidden'           => 'Verstoppte Versioun',
-),
+);
 
 /** Dutch (Nederlands)
  * @author Siebrand
  */
-'nl' => array(
+$messages['nl'] = array(
 	'hiderevision'                => 'Versies permanent verbergen',
 	'hiderevision-prompt'         => 'Te verwijderen versienummer:',
 	'hiderevision-continue'       => 'Doorgaan',
@@ -633,12 +632,12 @@ teruggeet worden door databasebeheerders als u een fout maakt.",
 	'oversight-hidden'            => 'Verborgen versie',
 	'oversight-header'            => 'Hieronder staat een lijst met versies die permanent verborgen zijn voor iedereen.
 Het vrijgeven van deze informatie kan tot gevolg hebben dat Oversightrechten worden ingenomen.',
-),
+);
 
 /** Occitan (Occitan)
  * @author Cedric31
  */
-'oc' => array(
+$messages['oc'] = array(
 	'hiderevision'                => 'Amagar definitivament las revisions',
 	'hiderevision-prompt'         => 'Numèro d’edicion de suprimir :',
 	'hiderevision-continue'       => 'Contunhar',
@@ -662,12 +661,12 @@ Het vrijgeven van deze informatie kan tot gevolg hebben dat Oversightrechten wor
 	'oversight-prev'              => 'Darrièra revision precedenta',
 	'oversight-hidden'            => 'Revision amagada',
 	'oversight-header'            => "Çaijós, figura la lista de las revisions amagadas de biais permanent al public. La divulgacion d'aquesta informacion pòt aver coma consequéncia la descasença dels privilègis d’Oversight.",
-),
+);
 
 /** Polish (Polski)
  * @author Derbeth
  */
-'pl' => array(
+$messages['pl'] = array(
 	'hiderevision'                => 'Trwałe usuwanie wersji',
 	'hiderevision-prompt'         => 'Numer wersji do usunięcia:',
 	'hiderevision-continue'       => 'Kontynuuj',
@@ -691,12 +690,12 @@ Het vrijgeven van deze informatie kan tot gevolg hebben dat Oversightrechten wor
 	'oversight-prev'              => 'Ostatnia z poprzednich wersji',
 	'oversight-hidden'            => 'Ukryta wersja',
 	'oversight-header'            => 'Poniżej znajduje się lista wersji w ostatnim czasie na stałe ukrytych przed dostępem publicznym. Ujawnianie tych informacji może skutkować stałą utratą uprawnień Oversight.',
-),
+);
 
 /** Piemontèis (Piemontèis)
  * @author Bèrto 'd Sèra
  */
-'pms' => array(
+$messages['pms'] = array(
 	'hiderevision'                => 'Stërmé le revision na vira për tute',
 	'hiderevision-prompt'         => 'Nùmer ëd revision da gavé:',
 	'hiderevision-continue'       => 'Tiré anans',
@@ -725,10 +724,10 @@ Het vrijgeven van deze informatie kan tot gevolg hebben dat Oversightrechten wor
 	'oversight-prev'              => 'Ùltima revision veja',
 	'oversight-hidden'            => 'Revision stërmà',
 	'oversight-header'            => "Ambelessì sota a-i é na lista dle revision stërmà ch'a l'é nen vàire. Publiché st'anformassion-sì a peul ëmné a perde ël drit ëd dovré ël sistema ëd coression dle gafade.",
-),
+);
 
 /* Portuguese (Lugusto) */
-'pt' => array(
+$messages['pt'] = array(
 	'hiderevision' => 'Ocultar revisões permanentemente',
 	'hiderevision-prompt' => 'Número da revisão (edição) a ser removida:',
 	'hiderevision-continue' => 'Avançar',
@@ -762,14 +761,14 @@ por administrador da base de dados, caso você tenha cometido um engano.',
 	'oversight-hidden' => 'Edição oculta',
 	'oversight-header' => 'Listagem de edições permanentemente ocultas de serem vistas publicamente.
 Liberar tais dados poderá resultar na perda em definitivo dos privilégios de oversight.',
-),
+);
 
-'rmy' => array(
+$messages['rmy'] = array(
 	'hiderevision-submit' => 'Garav o paruvipen',
-),
+);
 
 /** Russian (Русский) */
-'ru' => array(
+$messages['ru'] = array(
 	'hiderevision'                => 'Скрыть версию страницы',
 	'hiderevision-prompt'         => 'Номер версии, которую требуется скрыть:',
 	'hiderevision-continue'       => 'Продолжить',
@@ -802,12 +801,12 @@ Liberar tais dados poderá resultar na perda em definitivo dos privilégios de o
 	'oversight-hidden'            => 'Скрытая версия',
 	'oversight-header'            => 'Ниже приведены версии, которые недавно были скрыты.
 Распространение данной информации может повлечь лишение прав ревизора.',
-),
+);
 
 /** Slovak (Slovenčina)
  * @author Helix84
  */
-'sk' => array(
+$messages['sk'] = array(
 	'hiderevision'                => 'Natrvalo skryť revízie',
 	'hiderevision-prompt'         => 'Číslo revízie, ktorá sa má odstrániť:',
 	'hiderevision-continue'       => 'Pokračovať',
@@ -840,10 +839,10 @@ administrátorom databázy v prípade, že spravíte chybu.",
 	'oversight-prev'              => 'Posledná predošlá revízia',
 	'oversight-hidden'            => 'Skrytá revízia',
 	'oversight-header'            => 'Dolu je zoznam revízií, ktoré boli nedávno permanentne skryté pohľadu verejnosti. Šírenie týchto informácií môže mať za dôsledok premanentnú stratu práv Oversight.',
-),
+);
 
 /* Serbian default (Sasa Stefanovic) */
-'sr' => array(
+$messages['sr'] = array(
 	'hiderevision'                => 'Трајно сакриј ревизије',
 	'hiderevision-prompt'         => 'Број ревизије за уклањање:',
 	'hiderevision-continue'       => 'Настави',
@@ -870,10 +869,10 @@ administrátorom databázy v prípade, že spravíte chybu.",
 	'oversight-log-hiderev'       => 'уклоњена измена из $1',
 	'oversight'                   => 'Пропуст',
 	'oversight-view'              => 'детаљи',
-),
+);
 
 /* Serbian cyrillic (Sasa Stefanovic) */
-'sr-ec' => array(
+$messages['sr-ec'] = array(
 	'hiderevision'                => 'Трајно сакриј ревизије',
 	'hiderevision-prompt'         => 'Број ревизије за уклањање:',
 	'hiderevision-continue'       => 'Настави',
@@ -900,10 +899,10 @@ administrátorom databázy v prípade, že spravíte chybu.",
 	'oversight-log-hiderev'       => 'уклоњена измена из $1',
 	'oversight'                   => 'Пропуст',
 	'oversight-view'              => 'детаљи',
-),
+);
 
 /* Serbian latin (Sasa Stefanovic) */
-'sr-el' => array(
+$messages['sr-el'] = array(
 	'hiderevision'                => 'Trajno sakrij revizije',
 	'hiderevision-prompt'         => 'Broj revizije za uklanjanje:',
 	'hiderevision-continue'       => 'Nastavi',
@@ -930,12 +929,12 @@ i administratori baze podataka ih mogu ručno vratiti ako napravite grešku.",
 	'oversight-log-hiderev'       => 'uklonjena izmena iz $1',
 	'oversight'                   => 'Propust',
 	'oversight-view'              => 'detalji',
-),
+);
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-'stq' => array(
+$messages['stq'] = array(
 	'hiderevision'                => 'Versione duurhaft wächhoalje',
 	'hiderevision-prompt'         => 'Wäch tou hoaljende Versionsnummer:',
 	'hiderevision-continue'       => 'Fääre',
@@ -969,9 +968,9 @@ Muugelke Gruunde:
 	'oversight-prev'              => 'Lääste foarige Version',
 	'oversight-hidden'            => 'Wächhoalde Version',
 	'oversight-header'            => 'Hierunner foulget ne Lieste fon do duurhaft wächhoalde Versione. Ju Bekoandmoakenge fon disse Informatione kon dän duurhafte Ferljus fon do Oversight-Gjuchte betjuude.',
-),
+);
 
-'tet' => array(
+$messages['tet'] = array(
 	'hiderevision-prompt' => 'Sura versaun nian ne\'ebé hakarak halakon:',
 	'hiderevision-tab' => 'Subar versaun',
 	'hiderevision-norevisions' => 'Versaun lá\'os ba halakon',
@@ -980,10 +979,10 @@ Muugelke Gruunde:
 	'oversight-log-hiderev' => 'subar edita husi $1',
 	'oversight-view' => 'barak liu',
 	'oversight-hidden' => 'Versaun nasubar tiha ona',
-),
+);
 
 /* Cantonese (Shinjiman) */
-'yue' => array(
+$messages['yue'] = array(
 	'hiderevision'                => '永久收埋修訂',
 	'hiderevision-prompt'         => '要拎走嘅修訂號:',
 	'hiderevision-continue'       => '繼續',
@@ -1018,10 +1017,10 @@ Muugelke Gruunde:
 	'oversight-hidden'            => '收埋修訂',
 	'oversight-header'            => '下面係一個之前永久收埋，唔畀公眾睇嘅修訂清單。
 發放呢啲資料可以導致永久損失監督嘅權限。',
-),
+);
 
 /* Chinese (Simplified) (Alex S.H. Lin) */
-'zh-hans' => array(
+$messages['zh-hans'] = array(
 	'hiderevision'                => '永久隐藏修订版本',
 	'hiderevision-prompt'         => '要隐藏的修订版本号码:',
 	'hiderevision-continue'       => '继续',
@@ -1053,10 +1052,10 @@ Muugelke Gruunde:
 	'oversight-prev'              => '最后一个之前的修订版本',
 	'oversight-hidden'            => '隐藏修订',
 	'oversight-header'            => '以下列示的是已经永久隐藏的修订版本。请注意！泄漏这些讯息将会永远丧失{{int:Oversight}}权限！',
-),
+);
 
 /* Chinese (Traditional) (Alex S.H. Lin) */
-'zh-hant' => array(
+$messages['zh-hant'] = array(
 	'hiderevision'                => '永久隱藏修訂版本',
 	'hiderevision-prompt'         => '要隱藏的修訂版本號碼:',
 	'hiderevision-continue'       => '繼續',
@@ -1088,9 +1087,8 @@ Muugelke Gruunde:
 	'oversight-prev'              => '最後一個之前的修訂版本',
 	'oversight-hidden'            => '隱藏修訂',
 	'oversight-header'            => '以下列示的是已經永久隱藏的修訂版本。請注意！洩漏這些訊息將會永遠喪失{{int:Oversight}}權限！',
-),
+);
 
-	);
 
 	/* Kazakh fallbacks */
 	$messages['kk-kz'] = $messages['kk-cyrl'];
@@ -1106,6 +1104,3 @@ Muugelke Gruunde:
 	$messages['zh-tw'] = $messages['zh-hant'];
 	/* Cantonese default, fallback to yue */
 	$messages['zh-yue'] = $messages['yue'];
-
-	return $messages;
-}

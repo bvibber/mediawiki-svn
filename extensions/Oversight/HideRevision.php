@@ -45,6 +45,9 @@ $wgExtensionCredits['specialpage'][] = array(
 	'description' => 'Hide individual revisions from all users for legal reasons, etc.',
 );
 
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['HideRevision'] = $dir . 'HideRevision.i18n.php';
+
 $wgSpecialPages['HideRevision'] = array( 'SpecialPage', 'HideRevision', 'hiderevision',
 		/*listed*/ true, /*function*/ false, /*file*/ false );
 $wgSpecialPages['Oversight'] = array( 'SpecialPage', 'Oversight', 'oversight',
@@ -58,10 +61,7 @@ function hrSetup() {
 	$GLOBALS['wgHooks']['ArticleViewHeader'][] = 'hrArticleViewHeaderHook';
 	$GLOBALS['wgHooks']['DiffViewHeader'][] = 'hrDiffViewHeaderHook';
 	$GLOBALS['wgHooks']['UndeleteShowRevision'][] = 'hrUndeleteShowRevisionHook';
-
-	require_once( dirname( __FILE__ ) . '/HideRevision.i18n.php' );
-	foreach( efHideRevisionMessages() as $lang => $messages )
-		$GLOBALS['wgMessageCache']->addMessages( $messages, $lang );
+	wfLoadExtensionMessages('HideRevision');
 }
 
 /**
