@@ -21,6 +21,8 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:BlockTitles',
 );
 
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['BlockTitles'] = $dir . 'BlockTitles.i18n.php';
 // CONFIGURE - place any regular expressions you want here.  
 $wgBlockTitlePatterns = array (
 		#"/^http/i",  // if you want to block titles of articles that are URLs
@@ -29,10 +31,7 @@ $wgBlockTitlePatterns = array (
 $wgHooks['ArticleSave'][] = 'wfCheckBlockTitles';
 
 function wfBlockTitles() {
-	global $wgMessageCache;
-	require_once( dirname( __FILE__ ) . '/BlockTitles.i18n.php' );
-	foreach( efBlockTitlesMessages() as $lang => $messages )
-		$wgMessageCache->addMessages( $messages, $lang );
+	wfLoadExtensionMessages( 'BlockTitles' );
 }
 
 function wfCheckBlockTitles (&$article ) {
