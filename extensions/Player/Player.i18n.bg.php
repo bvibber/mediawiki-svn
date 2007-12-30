@@ -10,7 +10,9 @@
  * @licence GNU General Public Licence 2.0 or later
  */
 
-/** Bulgarian (Български) */
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
 $messages = array(
 	'player-file'      => 'Име на файл',
 	'player-goto-page' => 'Страница',

@@ -15,6 +15,14 @@ $messages['en'] = array(
 	'languageselector-setlang' => 'set',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'languageselector'         => 'اللغة',
+	'languageselector-setlang' => 'ضبط',
+);
+
 /** French (Français)
  * @author Bertrand GRONDIN
 */

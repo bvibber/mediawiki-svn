@@ -60,3 +60,12 @@ $messages['nl'] = array(
 	'filelist-show-list'    => 'Lijst bekijken',
 	'filelist-show-gallery' => 'Galerij bekijken',
 );
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'filelist'              => 'Filliste',
+	'filelist-show-list'    => 'Vis liste',
+	'filelist-show-gallery' => 'Vis gallery',
+);

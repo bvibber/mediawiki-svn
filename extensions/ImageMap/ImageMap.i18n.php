@@ -402,6 +402,13 @@ function efImageMapMessages() {
 	'imagemap_description'          => 'O tomto obrázku',
 ),
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+'stq' => array(
+	'imagemap_no_image' => '&lt;imagemap&gt;-Failer: In ju eerste Riege mout ne Bielde ounroat wäide',
+),
+
 /* Swedish */
 'sv' => array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: en bild måste anges på första raden',

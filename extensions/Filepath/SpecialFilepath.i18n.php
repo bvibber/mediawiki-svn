@@ -44,6 +44,10 @@ $wgFilepathMessages['ast'] = array(
 	'filepath_submit' => 'Ruta',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ * @author DCLXVI
+ */
 $wgFilepathMessages['bg'] = array(
 	'filepath'         => 'Път до файла',
 	'filepath_page'    => 'Файл:',
