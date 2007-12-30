@@ -38,6 +38,7 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'showprocesslist'         => 'Показване на списъка с процеси',
 	'showprocesslist-user'    => 'Потребител',
 	'showprocesslist-db'      => 'бд',
 	'showprocesslist-command' => 'Команда',

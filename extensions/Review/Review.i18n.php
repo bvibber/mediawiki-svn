@@ -101,6 +101,7 @@ $messages['bg'] = array(
 	'review_version_link'           => 'Редакция #$1',
 	'review_version_statistic_cell' => '$1 от $2',
 	'review_user_details_link'      => '(детайли)',
+	'review_topic'                  => 'Тема',
 	'review_comment'                => 'Коментар',
 );
 

@@ -30,6 +30,7 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'randomincategory'         => 'Случайна страница в категорията',
 	'randomincategory-toolbox' => 'Случайна страница',
 	'randomincategory-label'   => 'Категория:',
 );

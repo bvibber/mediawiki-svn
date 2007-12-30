@@ -64,13 +64,29 @@ $messages = array(
 ),
 
 /** Asturian (Asturianu)
+ * @author Esbardu
  * @author SPQRobin
  */
 'ast' => array(
-	'makesysopname'      => "Nome d'usuariu:",
-	'makesysop'          => "Convertir a un usuariu n'alministrador",
-	'already_sysop'      => 'Esti usuariu yá ye un alministrador',
-	'already_bureaucrat' => 'Esti usuariu yá ye un burócrata',
+	'makesysoptitle'           => "Convertir a un usuariu n'alministrador",
+	'makesysoptext'            => "Esti formulariu ye usáu polos burócrates pa convertir a usuarios ordinarios n'alministradores. Pon el nome del usuariu na caxa y calca nel botón pa convertir al usuariu n'alministrador.",
+	'makesysopname'            => 'Nome del usuariu:',
+	'makesysopsubmit'          => "Convertir a esti usuariu n'alministrador",
+	'makesysopok'              => '<b>L\'usuariu "$1" agora yá ye alministrador</b>',
+	'makebureaucratok'         => '<b>L\'usuariu "$1" agora yá ye burócrata</b>',
+	'makesysopfail'            => '<b>L\'usuariu "$1" nun se pudo convertir n\'alministrador. (¿Pondríes bien el nome?)</b>',
+	'makesysop-see-userrights' => 'Vete a [[Special:Userrights]] pa más opciones.',
+	'setbureaucratflag'        => 'Activar marcador de burócrata',
+	'rights'                   => 'Derechos:',
+	'set_user_rights'          => "Establecer derechos d'usuariu",
+	'user_rights_set'          => '<b>Derechos d\'usuariu de "$1" actualizaos</b>',
+	'set_rights_fail'          => '<b>Los derechos d\'usuariu de "$1" nun se pudieron establecer. (¿Pondríes bien el nome?)</b>',
+	'makesysop'                => "Convertir a un usuariu n'alministrador",
+	'already_sysop'            => 'Esti usuariu yá ye un alministrador',
+	'already_bureaucrat'       => 'Esti usuariu yá ye un burócrata',
+	'group-steward'            => 'Stewards',
+	'group-steward-member'     => 'Steward',
+	'grouppage-steward'        => '{{ns:project}}:Stewards',
 ),
 
 'az' => array(

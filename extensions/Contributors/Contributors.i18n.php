@@ -64,6 +64,7 @@ function efContributorsMessages() {
 'bg' => array(
 	'contributors-target' => 'Заглавие:',
 	'contributors-submit' => 'Показване',
+	'contributors-others' => 'и $1 други',
 ),
 
 /** Bengali (বাংলা)

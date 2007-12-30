@@ -76,8 +76,9 @@ $allMessages = array(
 	),
 
 	'bg' => array(
-		'changeauthor-comment' => 'Коментар:',
-		'changeauthor-revview' => 'Редакция #$1 от $2',
+		'changeauthor-pagename-or-revid' => 'Име на страница или номер на редакция:',
+		'changeauthor-comment'           => 'Коментар:',
+		'changeauthor-revview'           => 'Редакция #$1 от $2',
 	),
 
 	'de' => array( 
