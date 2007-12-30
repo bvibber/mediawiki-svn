@@ -53,13 +53,7 @@ class ApiQueryRandomPage extends ApiQueryGeneratorBase {
 		$params = $this->extractRequestParams();
 
 		$MyRandom = new RandomPage();
-
-		if(!is_null( $params['namespace'] )){
-			$MyRandom->setNamespace( $params['namespace'] );
-		}else{
-			$MyRandom->setNamespace( $wgContLang->getNsIndex( $par ) );
-		}
-
+		$MyRandom->setNamespace( $params['namespace'] );
 		$MyRandom->setRedirect( false );
 	
 		$title = $MyRandom->getRandomTitle();
