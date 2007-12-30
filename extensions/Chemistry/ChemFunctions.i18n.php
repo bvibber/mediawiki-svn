@@ -317,6 +317,13 @@ $wgChemFunctions_Messages['pt'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Erro nos dados introduzidos!',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$wgChemFunctions_Messages['ro'] = array(
+	'chemFunctions_Formula' => 'Formulă',
+);
+
 $wgChemFunctions_Messages['ru'] = array(
 	'chemicalsources' => 'Источники по химии',
 	'chemFunctions_ListPage' => 'Источники по химии',

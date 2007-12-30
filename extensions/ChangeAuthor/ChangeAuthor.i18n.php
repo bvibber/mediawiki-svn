@@ -334,6 +334,7 @@ $allMessages = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author 555
  */
 	'pt' => array(
 		'changeauthor-pagenameform-go'     => 'Ir',
@@ -342,7 +343,7 @@ $allMessages = array(
 		'changeauthor-invalid-username'    => 'Nome de utilizador "$1" inválido.',
 		'changeauthor-nosuchuser'          => 'Utilizador "$1" não existe.',
 		'changeauthor-revview'             => 'Revisão #$1 de $2',
-		'changeauthor-nosuchtitle'         => 'Não existe nenhum artigo chamado "$1".',
+		'changeauthor-nosuchtitle'         => 'Não existe nenhuma página chamada "$1".',
 	),
 
 /** Russian (Русский)
