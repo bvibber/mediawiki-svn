@@ -72,6 +72,10 @@ function efDuplicatorMessages() {
 	'duplicator-summary' => 'Kinopya sa [[$1]]',
 ),
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ * @author Spiritia
+ */
 'bg' => array(
 	'duplicator-source'                => 'Източник:',
 	'duplicator-dest'                  => 'Цел:',

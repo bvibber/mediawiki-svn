@@ -1365,6 +1365,21 @@ $wgBoardVoteMessages['la'] = array(
  * @author Robby
  */
 $wgBoardVoteMessages['lb'] = array(
+	'boardvote_entered'    => "Merci, är Stëmm gouf gespäichert.
+
+Wann der wëllt, kënnt der déi folgend Detailer festhalen. Är Ofstëmmungsfiche ass:
+
+<pre>$1</pre>
+
+Dës Fiche gouf mam Public Key vun de Waladministrateure verschlësselt:
+
+<pre>$2</pre>
+
+D'verschlësselt Versioun dovunner fannt der ënnen. Si gëtt ëffentlech op [[Special:Boardvote/dump]] ugewisen.
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Zréck]]",
 	'boardvote_novotes'    => 'Et huet nach keen ofgestëmmt.',
 	'boardvote_time'       => 'Zäit',
 	'boardvote_user'       => 'Benotzer',

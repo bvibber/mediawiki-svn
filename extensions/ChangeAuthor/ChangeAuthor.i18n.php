@@ -75,6 +75,9 @@ $allMessages = array(
 		'changeauthor-rev'                  => 'ن$1',
 	),
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
 	'bg' => array(
 		'changeauthor-pagename-or-revid' => 'Име на страница или номер на редакция:',
 		'changeauthor-comment'           => 'Коментар:',
