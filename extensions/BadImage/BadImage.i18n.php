@@ -9,11 +9,10 @@
  * @licence Copyright holder allows use of the code for any purpose
  */
 
-function efBadImageMessages() {
-	$messages = array(
+$messages = array();
 
 /* English (Rob Church) */
-'en' => array(
+$messages['en'] = array(
 	'badimages' => 'Bad image list',
 	'badimages-add-btn' => 'Add',
 	'badimages-added' => '$1 was added to the list.',
@@ -33,15 +32,15 @@ function efBadImageMessages() {
 	'badimages-log-add' => 'added [[$1]] to the bad image list',
 	'badimages-log-remove' => 'removed [[$1]] from the bad image list',
 	'badimages-page' => '{{ns:help}}:Bad image list',
-),
+);
 
-'ang' => array(
+$messages['ang'] = array(
 	'badimages-name' => 'Nama:',
 	'badimages-reason' => 'Racu:',
-),
+);
 
 /* Arabic (Meno25) */
-'ar' => array(
+$messages['ar'] = array(
 	'badimages' => 'قائمة الصور السيئة',
 	'badimages-add-btn' => 'إضافة',
 	'badimages-added' => '$1 تمت إضافتها للقائمة.',
@@ -61,9 +60,9 @@ function efBadImageMessages() {
 	'badimages-log-add' => 'أضاف [[$1]] إلى قائمة الصور السيئة',
 	'badimages-log-remove' => 'أزال [[$1]] من قائمة الصور السيئة',
 	'badimages-page' => '{{ns:help}}:قائمة الصور السيئة',
-),
+);
 
-'bcl' => array(
+$messages['bcl'] = array(
 	'badimages-add-btn' => 'Magdugang',
 	'badimages-name' => 'Pangaran:',
 	'badimages-not-added' => 'Dai maikakaag an retrato.',
@@ -74,13 +73,13 @@ function efBadImageMessages() {
 	'badimages-removed' => 'Pighalî sa lista an $1.',
 	'badimages-log-add' => 'Idinugang an [[$1]] sa lista kan salang ladawan',
 	'badimages-log-remove' => 'Pighalî an [[$1]] sa lista kan salang ladawan',
-),
+);
 
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
  */
-'bg' => array(
+$messages['bg'] = array(
 	'badimages'                => 'Списък с неприемливи файлове',
 	'badimages-add-btn'        => 'Добавяне',
 	'badimages-added'          => 'Файлът $1 беше добавен към списъка.',
@@ -100,9 +99,9 @@ function efBadImageMessages() {
 	'badimages-log-add'        => 'добави [[$1]] към списъка с неприемливи файлове',
 	'badimages-log-remove'     => 'премахна [[$1]] от списъка с неприемливи файлове',
 	'badimages-page'           => '{{ns:help}}:Неприемливи файлове',
-),
+);
 
-'br' => array(
+$messages['br'] = array(
 	'badimages' => 'Roll ar skeudennoù fall',
 	'badimages-add-btn' => 'Ouzhpennañ',
 	'badimages-added' => 'Ouzhpennet eo bet $1 d\'ar roll.',
@@ -122,10 +121,10 @@ function efBadImageMessages() {
 	'badimages-log-add' => 'ouzhpennet eo bet [[$1]] d\'ar roll skeudennoù fall',
 	'badimages-log-remove' => 'tennet eo bet [[$1]] a-ziwar ar roll skeudennoù fall',
 	'badimages-page' => '{{ns:help}}:Roll ar skeudennoù didalvoud',
-),
+);
 
 /* German (Raymond) */
-'de' => array(
+$messages['de'] = array(
 	'badimages' => 'Liste unerwünschter Bilder',
 	'badimages-add-btn' => 'Füge hinzu',
 	'badimages-added' => '$1 wurde der Liste hinzugefügt',
@@ -144,32 +143,32 @@ function efBadImageMessages() {
 	'badimages-log-header' => 'Dies ist das Logbuch der Änderungen an der Liste unerwünschter Bilder.',
 	'badimages-log-add' => 'fügte [[$1]] zu der Liste unerwünschter Bilder hinzu',
 	'badimages-log-remove' => 'entfernte [[$1]] von der Liste unerwünschter Bilder',
-),
+);
 
 /** Greek (Ελληνικά)
  * @author Consta
  */
-'el' => array(
+$messages['el'] = array(
 	'badimages'          => 'Κατάλογος κακών εικόνων',
 	'badimages-added'    => '$1 έχει προστεθεί στη λίστα.',
 	'badimages-count'    => "Υπάρχουν '''$1''' εικόνες στον κατάλογο των κακών εικόνων.",
 	'badimages-name'     => 'Όνομα:',
 	'badimages-reason'   => 'Λόγος:',
 	'badimages-log-name' => 'Κατάλογος κακών εικόνων',
-),
+);
 
-'ext' => array(
+$messages['ext'] = array(
 	'badimages-add-btn' => 'Añiil',
 	'badimages-name' => 'Nombri:',
 	'badimages-reason' => 'Razón:',
 	'badimages-remove' => '(esborral)',
 	'badimages-remove-btn' => 'Esborral',
-),
+);
 
 /** Finnish (Suomi)
  * @author Nike
  */
-'fi' => array(
+$messages['fi'] = array(
 	'badimages'                => 'Kiellettyjen kuvien luettelo',
 	'badimages-add-btn'        => 'Lisää',
 	'badimages-added'          => '”$1” lisättiin luetteloon.',
@@ -189,10 +188,10 @@ function efBadImageMessages() {
 	'badimages-log-add'        => 'lisäsi kuvan [[$1]] kiellettyjen kuvien luetteloon',
 	'badimages-log-remove'     => 'poisti kuvan [[$1]] kiellettyjen kuvien luettelosta',
 	'badimages-page'           => '{{ns:help}}:Kielletyt kuvat',
-),
+);
 
 /* French (Bertrand Grondin) */
-'fr' => array(
+$messages['fr'] = array(
 	'badimages' => 'Liste des images indésirables',
 	'badimages-add-btn' => 'Ajouter',
 	'badimages-added' => '$1 a été ajoutée à la liste.',
@@ -212,9 +211,9 @@ function efBadImageMessages() {
 	'badimages-log-add' => 'a ajouté [[$1]] à la liste des images indésirables',
 	'badimages-log-remove' => 'a retiré [[$1]] de la liste des images indésirables',
 	'badimages-page' => '{{ns:help}}:Liste des images indésirables',
-),
+);
 
-'frc' => array(
+$messages['frc'] = array(
 	'badimages' => 'Liste des mauvaises images',
 	'badimages-add-btn' => 'Additionner',
 	'badimages-added' => '$1 a été additionné à la liste.',
@@ -234,9 +233,9 @@ function efBadImageMessages() {
 	'badimages-log-add' => 'a additionné [[$1]] à la liste des mauvaises images',
 	'badimages-log-remove' => 'a ôté [[$1]] de la liste des mauvaises images',
 	'badimages-page' => '{{ns:help}}:Liste des mauvaises images',
-),
+);
 
-'frp' => array(
+$messages['frp'] = array(
 	'badimages' => 'Lista de les émâges endèsirâbles',
 	'badimages-add-btn' => 'Apondre',
 	'badimages-added' => '$1 at étâ apondua a la lista.',
@@ -256,9 +255,9 @@ function efBadImageMessages() {
 	'badimages-log-add' => 'at apondu [[$1]] a la lista de les émâges endèsirâbles',
 	'badimages-log-remove' => 'at reteriê [[$1]] de la lista de les émâges endèsirâbles',
 	'badimages-page' => '{{ns:help}}:Lista de les émâges endèsirâbles',
-),
+);
 
-'gl' => array(
+$messages['gl'] = array(
 	'badimages' => 'Listaxe de imaxes con fallas',
 	'badimages-add-btn' => 'Engadir',
 	'badimages-added' => '$1 foi engadida á listaxe.',
@@ -278,13 +277,13 @@ function efBadImageMessages() {
 	'badimages-log-add' => 'engadiuse [[$1]] á listaxe de imaxes con fallas',
 	'badimages-log-remove' => 'eliminouse [[$1]] da listaxe de imaxes con fallas',
 	'badimages-page' => '{{ns:help}}:Listaxe de imaxes con fallas',
-),
+);
 
 /** Croatian (Hrvatski)
  * @author Dnik
  * @author SpeedyGonsales
  */
-'hr' => array(
+$messages['hr'] = array(
 	'badimages'                => 'Popis loših slika',
 	'badimages-add-btn'        => 'Dodaj',
 	'badimages-added'          => '$1 je dodana na popis.',
@@ -304,9 +303,9 @@ function efBadImageMessages() {
 	'badimages-log-add'        => 'dodana [[$1]] na popis loših slika',
 	'badimages-log-remove'     => 'izbačena [[$1]] s popisa loših slika',
 	'badimages-page'           => '{{ns:help}}:Popis loših slika',
-),
+);
 
-'hsb' => array(
+$messages['hsb'] = array(
 	'badimages' => 'Lisćina njewitanych wobrazow',
 	'badimages-add-btn' => 'Přidać',
 	'badimages-added' => '$1 bu k lisćinje přidaty.',
@@ -326,10 +325,10 @@ function efBadImageMessages() {
 	'badimages-log-add' => 'přida [[$1]] k lisćinje njewitanych wobrazow',
 	'badimages-log-remove' => 'wotstroni [[$1]] z lisćiny njewitanych wobrazow',
 	'badimages-page' => '{{ns:help}}:Lisćina njewitanych wobrazow',
-),
+);
 
 /* Indonesian (Ivan Lanin) */
-'id' => array(
+$messages['id'] = array(
 	'badimages' => 'Daftar berkas tidak sah',
 	'badimages-add-btn' => 'Tambahkan',
 	'badimages-added' => '$1 ditambahkan dalam daftar.',
@@ -349,9 +348,9 @@ function efBadImageMessages() {
 	'badimages-log-add' => 'menambahkan [[$1]] ke daftar berkas tidak sah',
 	'badimages-log-remove' => 'menghapus [[$1]] dari daftar berkas tidak sah',
 	'badimages-page' => '{{ns:help}}:Daftar berkas tidak sah',
-),
+);
 
-'is' => array(
+$messages['is'] = array(
 	'badimages' => 'Slæmur myndalisti',
 	'badimages-add-btn' => 'Bæta við',
 	'badimages-added' => '$1 var bætt við listann.',
@@ -371,10 +370,10 @@ function efBadImageMessages() {
 	'badimages-log-add' => 'bæta [[$1]] við slæma myndalistann',
 	'badimages-log-remove' => 'fjarlægja [[$1]] af slæma myndalistanum',
 	'badimages-page' => '{{ns:help}}:Slæmi myndalistinn',
-),
+);
 
 /* Italian (BrokenArrow) */
-'it' => array(
+$messages['it'] = array(
 	'badimages' => 'Elenco dei file discutibili',
 	'badimages-add-btn' => 'Aggiungi',
 	'badimages-added' => 'Il file $1 è stato aggiunto all\'elenco.',
@@ -393,10 +392,10 @@ function efBadImageMessages() {
 	'badimages-log-header' => 'Qui di seguito viene riportata la lista delle modifiche all\'elenco dei file discutibili',
 	'badimages-log-add' => 'ha aggiunto [[$1]] all\'elenco dei file discutibili',
 	'badimages-log-remove' => 'ha rimosso [[$1]] dall\'elenco dei file discutibili',
-),
+);
 
 /* Japanese (nihongo) */
-'ja' => array(
+$messages['ja'] = array(
 	'badimages' => 'ひどい画像の一覧',
 	'badimages-add-btn' => '追加',
 	'badimages-added' => '$1 を一覧に追加しました。',
@@ -415,33 +414,33 @@ function efBadImageMessages() {
 	'badimages-log-header' => 'これは [[{{MediaWiki:Badimages-page}}|{{int:badimages}}]]への変更の記録です。',
 	'badimages-log-add' => '[[$1]] を一覧に追加しました。',
 	'badimages-log-remove' => '[[$1]] を一覧から削除しました。',
-),
+);
 
-'la' => array(
+$messages['la'] = array(
 	'badimages-add-btn' => 'Addere',
 	'badimages-name' => 'Nomen:',
 	'badimages-reason' => 'Causa:',
 	'badimages-remove' => '(removere)',
 	'badimages-remove-btn' => 'Removere',
-),
+);
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-'lb' => array(
+$messages['lb'] = array(
 	'badimages-name'   => 'Numm:',
 	'badimages-reason' => 'Grond:',
-),
+);
 
-'loz' => array(
+$messages['loz'] = array(
 	'badimages-name' => 'Sebu:',
 	'badimages-remove' => '(afi kulobala)',
 	'badimages-remove-btn' => 'Afi kulobala',
 	'badimages-removed' => '$1 sa afi kulobala di mukoloko.',
-),
+);
 
 /* nld / Dutch (Siebrand Mazeland) */
-'nl' => array(
+$messages['nl'] = array(
 	'badimages' => 'Verwijderlijst afbeeldingen',
 	'badimages-add-btn' => 'Toevoegen',
 	'badimages-added' => '$1 is toegevoegd.',
@@ -461,10 +460,10 @@ function efBadImageMessages() {
 	'badimages-log-add' => '[[$1]] is toegevoegd aan de verwijderlijst afbeeldingen',
 	'badimages-log-remove' => '[[$1]] is verwijderd uit de verwijderlijst afbeeldingen',
 	'badimages-page' => '{{ns:help}}:Verwijderlijst afbeeldingen',
-),
+);
 
 /* Norwegian (Jon Harald Søby) */
-'no' => array(
+$messages['no'] = array(
 	'badimages' => 'Liste over blokkerte bilder',
 	'badimages-add-btn' => 'Legg til',
 	'badimages-added' => '$1 ble lagt til i listen.',
@@ -483,9 +482,9 @@ function efBadImageMessages() {
 	'badimages-log-header' => 'Dette er en logg over endringer i [[{{MediaWiki:Badimages-page}}|lista over blokkerte bilder]].',
 	'badimages-log-add' => 'la til [[$1]] på lista over blokkerte bilder',
 	'badimages-log-remove' => 'fjernet [[$1]] fra lista over blokkerte bilder',
-),
+);
 
-'oc' => array(
+$messages['oc'] = array(
 	'badimages' => 'Lista dels imatges indesirables',
 	'badimages-add-btn' => 'Ajustar',
 	'badimages-added' => '$1 es estat ajustat a la lista.',
@@ -505,9 +504,9 @@ function efBadImageMessages() {
 	'badimages-log-add' => 'a ajustat [[$1]] a la lista dels imatges indesirables',
 	'badimages-log-remove' => 'a levat [[$1]] de la lista dels imatges indesirables',
 	'badimages-page' => '{{ns:help}}:Lista dels imatges indesirables',
-),
+);
 
-'pl' => array(
+$messages['pl'] = array(
 	'badimages' => 'Zła lista grafik',
 	'badimages-add-btn' => 'Dodaj',
 	'badimages-added' => 'dodano $1 do listy.',
@@ -526,10 +525,10 @@ function efBadImageMessages() {
 	'badimages-log-header' => 'Lista zmian w [[{{MediaWiki:Badimages-page}}|liście złych grafik]].',
 	'badimages-log-add' => 'dodano [[$1]] do listy złych grafik',
 	'badimages-log-remove' => 'usunięto [[$1]] z listy złych grafik',
-),
+);
 
 /* Piedmontese (Bèrto 'd Sèra) */
-'pms' => array(
+$messages['pms'] = array(
 	'badimages' => 'Lista dle figure da deje deuit',
 	'badimages-add-btn' => 'Gionta',
 	'badimages-added' => '$1 a l\'é stait giontà a la lista.',
@@ -548,10 +547,10 @@ function efBadImageMessages() {
 	'badimages-log-header' => 'Sossì a l\'é lòn ch\'a l\'é riva-ie a la [[{{MediaWiki:Badimages-page}}|lista dle figure ch\'a venta deje deuit]].',
 	'badimages-log-add' => '[[$1]] a l\'é stait marcà ch\'a venta deje deuit.',
 	'badimages-log-remove' => '[[$1]] a l\'é stait gavà da lòn ch\'a venta deje deuit.',
-),
+);
 
 /* Portuguese (Lugusto) */
-'pt' => array(
+$messages['pt'] = array(
 	'badimages' => 'Imagens com problemas',
 	'badimages-add-btn' => 'Adicionar',
 	'badimages-added' => '$1 foi adicionado à lista.',
@@ -571,14 +570,14 @@ function efBadImageMessages() {
 	'badimages-log-add' => 'adicionada [[$1]] na lista de imagens com problemas',
 	'badimages-log-remove' => 'removida [[$1]] da lista de imagens com problemas',
 	'badimages-page' => 'Lista de imagens com problemas',
-),
+);
 
-'rm' => array(
+$messages['rm'] = array(
 	'badimages-name' => 'Num:',
 	'badimages-reason' => 'Motiv:',
-),
+);
 
-'ro' => array(
+$messages['ro'] = array(
 	'badimages-add-btn' => 'Adaugă',
 	'badimages-added' => '$1 a fost adăugat în listă.',
 	'badimages-name' => 'Nume:',
@@ -591,10 +590,10 @@ function efBadImageMessages() {
 	'badimages-removed' => '$1 a fost şters din listă.',
 	'badimages-subheading' => 'Elemente curente',
 	'badimages-unprivileged' => '(Nu aveţi drepturi suficiente pentru modificarea listei)',
-),
+);
 
 /* Russian (Alexander Sigachov) */
-'ru' => array(
+$messages['ru'] = array(
 	'badimages' => 'Список нежелательных изображений',
 	'badimages-add-btn' => 'Добавить',
 	'badimages-added' => '$1 добавлено в список.',
@@ -614,9 +613,9 @@ function efBadImageMessages() {
 	'badimages-log-add' => ' [[$1]] добавлено в список нежелательных изображений',
 	'badimages-log-remove' => '[[$1]] удалено из списка нежелательных изображений',
 	'badimages-page' => '{{ns:help}}:Список нежелательных изображени',
-),
+);
 
-'sah' => array(
+$messages['sah'] = array(
 	'badimages' => 'Көҥүллэммэт ойуулар испииһэктэрэ',
 	'badimages-add-btn' => 'Эбэн биэр',
 	'badimages-added' => 'Испииһэккэ $1 эбилиннэ.',
@@ -634,9 +633,9 @@ function efBadImageMessages() {
 	'badimages-log-header' => 'Бу билэ [[{{MediaWiki:Badimages-page}}|көҥүллэммэт ойуулар испииһэктэрин]] уларыйыытын көрдөрөр.',
 	'badimages-log-add' => '[[$1]] көҥүллэммэт ойуулар испииһэктэригэр киирдэ',
 	'badimages-log-remove' => '[[$1]] көҥүллэммэт ойуулар испииһэктэриттэн сотулунна',
-),
+);
 
-'scn' => array(
+$messages['scn'] = array(
 	'badimages' => 'Alencu file discutibbili',
 	'badimages-add-btn' => 'Agghiunci',
 	'badimages-added' => 'Lu file $1 hà statu agghiunciutu â lista.',
@@ -655,10 +654,10 @@ function efBadImageMessages() {
 	'badimages-log-header' => 'Chistu è nu riggistru dî canciamenti fatti â [[{{MediaWiki:Badimages-page}}|lista dê file discutibbili]].',
 	'badimages-log-add' => 'agghiuncìu [[$1]] â lista dê file discutibbili',
 	'badimages-log-remove' => 'rimovìu [[$1]] dâ lista dê file discutibbili',
-),
+);
 
 /* Slovak (helix84) */
-'sk' => array(
+$messages['sk'] = array(
 	'badimages' => 'Zoznam zlých obrázkov',
 	'badimages-add-btn' => 'Pridať',
 	'badimages-added' => '$1 bol pridaný do zoznamu.',
@@ -678,10 +677,10 @@ function efBadImageMessages() {
 	'badimages-log-add' => '[[$1]] pridaný do zoznamu zlých obrázkov',
 	'badimages-log-remove' => '[[$1]] odstránený zo zoznamu zlých obrázkov',
 	'badimages-page' => '{{ns:help}}:Zoznam zlých obrázkov',
-),
+);
 
 /* Serbian default (Sasa Stefanovic) */
-'sr' => array(
+$messages['sr'] = array(
 	'badimages' => 'Списак лоших слика',
 	'badimages-add-btn' => 'додај',
 	'badimages-added' => '$1 је додата у списак.',
@@ -701,10 +700,10 @@ function efBadImageMessages() {
 	'badimages-log-add' => 'додата [[$1]] у списак лоших слика',
 	'badimages-log-remove' => 'уклоњена [[$1]] са списка лоших слика',
 	'badimages-page' => '{{ns:help}}:Списак лоших слика',
-),
+);
 
 /* Serbian cyrillic (Sasa Stefanovic) */
-'sr-ec' => array(
+$messages['sr-ec'] = array(
 	'badimages' => 'Списак лоших слика',
 	'badimages-add-btn' => 'додај',
 	'badimages-added' => '$1 је додата у списак.',
@@ -724,10 +723,10 @@ function efBadImageMessages() {
 	'badimages-log-add' => 'додата [[$1]] у списак лоших слика',
 	'badimages-log-remove' => 'уклоњена [[$1]] са списка лоших слика',
 	'badimages-page' => '{{ns:help}}:Списак лоших слика',
-),
+);
 
 /* Serbian latin (Sasa Stefanovic) */
-'sr-el' => array(
+$messages['sr-el'] = array(
 	'badimages' => 'Spisak loših slika',
 	'badimages-add-btn' => 'dodaj',
 	'badimages-added' => '$1 je dodata u spisak.',
@@ -747,9 +746,9 @@ function efBadImageMessages() {
 	'badimages-log-add' => 'dodata [[$1]] u spisak loših slika',
 	'badimages-log-remove' => 'uklonjena [[$1]] sa spiska loših slika',
 	'badimages-page' => '{{ns:help}}:Spisak loših slika',
-),
+);
 
-'stq' => array(
+$messages['stq'] = array(
 	'badimages' => 'Lieste fon nit wonskede Bielden.',
 	'badimages-add-btn' => 'Föigje bietou',
 	'badimages-added' => '$1 wuude an ju Lieste bietouföiged',
@@ -769,10 +768,10 @@ function efBadImageMessages() {
 	'badimages-log-add' => 'föigede [[$1]] an ju Lieste fon nit wonskede Bielden tou',
 	'badimages-log-remove' => '[[$1]] uut ju Lieste fon nit wonskede Bielden wächhoald',
 	'badimages-page' => '{{ns:help}}:Lieste fon nit wonskede Bielden',
-),
+);
 
 /* Sundanese (Kandar via BetaWiki) */
-'su' => array(
+$messages['su'] = array(
 	'badimages' => 'Daptar gambar rusak',
 	'badimages-add-btn' => 'Tambahkeun',
 	'badimages-added' => '$1 ditambahkeun ka daptar.',
@@ -792,9 +791,9 @@ function efBadImageMessages() {
 	'badimages-log-add' => 'nambahkeun [[$1]] ka daptar gambar rusak',
 	'badimages-log-remove' => 'ngahapus [[$1]] ti daptar gambar rusak',
 	'badimages-page' => '{{ns:help}}:Daptar gambar rusak',
-),
+);
 
-'sv' => array(
+$messages['sv'] = array(
 	'badimages' => 'Lista över dåliga bilder',
 	'badimages-add-btn' => 'Lägg till',
 	'badimages-added' => '$1 las till på listan.',
@@ -813,10 +812,10 @@ function efBadImageMessages() {
 	'badimages-log-header' => 'Detta är en logg över ändringar i [[{{MediaWiki:Badimages-page}}|listan över dåliga bilder]].',
 	'badimages-log-add' => 'la till [[$1]] till listan över dåliga bilder',
 	'badimages-log-remove' => 'strök [[$1]] från listan över dåliga bilder',
-),
+);
 
 /* Cantonese (Hillgentleman, Shinjiman) */
-'yue' => array(
+$messages['yue'] = array(
 	'badimages' => '壞圖清單',
 	'badimages-add-btn' => '加',
 	'badimages-added' => '加咗$1入壞圖列表度。',
@@ -836,10 +835,10 @@ function efBadImageMessages() {
 	'badimages-log-add' => '加[[$1]]入壞圖清單',
 	'badimages-log-remove' => '由壞圖清單度減[[$1]]',
 	'badimages-page' => '{{ns:help}}:壞圖清單',
-),
+);
 
 /* Chinese (Simplified) (Shinjiman) */
-'zh-hans' => array(
+$messages['zh-hans'] = array(
 	'badimages' => '坏图像列表',
 	'badimages-add-btn' => '加入',
 	'badimages-added' => '已经加入 $1 到列表中。',
@@ -859,10 +858,10 @@ function efBadImageMessages() {
 	'badimages-log-add' => '已经加入 [[$1]] 到坏图像列表',
 	'badimages-log-remove' => '已经由坏图像列表中移除 [[$1]]',
 	'badimages-page' => '{{ns:help}}:坏图像列表',
-),
+);
 
 /* Chinese (Traditional) (Shinjiman) */
-'zh-hant' => array(
+$messages['zh-hant'] = array(
 	'badimages' => '壞圖像列表',
 	'badimages-add-btn' => '加入',
 	'badimages-added' => '已經加入 $1 到列表中。',
@@ -882,9 +881,7 @@ function efBadImageMessages() {
 	'badimages-log-add' => '已經加入 [[$1]] 到壞圖像列表',
 	'badimages-log-remove' => '已經由壞圖像列表中移除 [[$1]]',
 	'badimages-page' => '{{ns:help}}:壞圖像列表',
-),
-
-	);
+);
 
 	/* Chinese defaults, fallback to zh-hans or zh-hant */
 	$messages['zh'] = $messages['zh-hans'];
@@ -894,6 +891,3 @@ function efBadImageMessages() {
 	$messages['zh-sg'] = $messages['zh-hant'];
 	/* Cantonese default, fallback to yue */
 	$messages['zh-yue'] = $messages['yue'];
-
-	return $messages;
-}

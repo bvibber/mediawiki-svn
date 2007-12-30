@@ -15,6 +15,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 	
 	$wgAutoloadClasses['BadImageList'] = dirname( __FILE__ ). '/BadImage.class.php';
 	$wgAutoloadClasses['BadImageManipulator'] = dirname( __FILE__ ) . '/BadImage.page.php';
+	$dir = dirname(__FILE__) . '/';
+	$wgExtensionMessagesFiles['BadImages'] = $dir . 'BadImage.i18n.php';
 
 	$wgSpecialPages['Badimages'] = 'BadImageManipulator';
 	$wgExtensionCredits['other'][] = array( 'name' => 'Bad Image List', 'author' => 'Rob Church', 'url' => 'http://www.mediawiki.org/wiki/Extension:Bad_Image_List' );
@@ -27,10 +29,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgBadImageCache = true;
 	
 	function efBadImageSetup() {
-		global $wgMessageCache;
-		require_once( dirname( __FILE__ ) . '/BadImage.i18n.php' );
-		foreach( efBadImageMessages() as $lang => $messages )
-			$wgMessageCache->addMessages( $messages, $lang );
+		wfLoadExtensionMessages( 'BadImages' );
 		global $wgHooks, $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
 		$wgHooks['BadImage'][] = 'efBadImage';
 		$wgLogTypes[] = 'badimage';
