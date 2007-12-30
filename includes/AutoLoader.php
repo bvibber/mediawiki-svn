@@ -357,7 +357,7 @@ function __autoload($className) {
 		'ApiQueryDeletedrevs' => 'includes/api/ApiQueryDeletedrevs.php',
 		'ApiRollback' => 'includes/api/ApiRollback.php',
 		'ApiUnblock' => 'includes/api/ApiUnblock.php',
-		'ApiUndelete' => 'includes/api/ApiUndelete.php'
+		'ApiUndelete' => 'includes/api/ApiUndelete.php',
 		'ApiResult' => 'includes/api/ApiResult.php',		
 
 		# Added by VF - Api Edit branch
