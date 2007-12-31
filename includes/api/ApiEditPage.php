@@ -44,9 +44,9 @@ class ApiEditPage extends ApiBase {
 	const WRONG_REQUEST						= -1;
 	//----------------------------------------
 
-    public function __construct($query, $moduleName) {
-        parent :: __construct($query, $moduleName, 'ep');
-    }
+	public function __construct($query, $moduleName) {
+		parent :: __construct($query, $moduleName, 'ep');
+	}
 
 	/**
 	* Return the link to the captcha generated
@@ -74,102 +74,96 @@ class ApiEditPage extends ApiBase {
 		return $value;
 	}
 
-    public function execute() {
-        global $wgUser, $wgRequest, $wgParser;
-				$title = $text = $summary = $edittime = $lgtoken = $userid = $tokenid = $value = null;
+	public function execute() {
+		global $wgUser, $wgRequest, $wgParser;
+		$title = $text = $summary = $edittime = $lgtoken = $userid = $tokenid = $value = null;
 
 		if( session_id() == '' ) {
 			wfSetupSession();
-    	}
+    		}
 
 		extract($this->extractRequestParams());
 		if ($title == null){
-			$value = WRONG_REQUEST;
-		}
-		else{
+			$value = self::WRONG_REQUEST;
+		} else {
 			// Ensure the correct timestamp format
 			$edittime =eregi_replace("[-,a-z,:]","",$edittime);
-			if ($watch == 'yes'){
+			if ($watch == 'yes') {
 				$params = new FauxRequest(array (
-		       		'wpTitle' 		=> $title,
-		       		'wpTextbox1' 	=> $text,
-		       		'wpSummary'		=> $summary,
-		       		'wpEdittime'	=> $edittime,
-		       		'wplgToken' 	=> $lgtoken,
-		       		'wpUserID'		=> $userid,
-		       		'wpEditToken'	=> $tokenid,
-		       		'wpCaptchaWord' => $captchaword,
+			       		'wpTitle' 	=> $title,
+			       		'wpTextbox1' 	=> $text,
+			       		'wpSummary'	=> $summary,
+		       			'wpEdittime'	=> $edittime,
+		       			'wplgToken' 	=> $lgtoken,
+			       		'wpUserID'	=> $userid,
+			       		'wpEditToken'	=> $tokenid,
+			       		'wpCaptchaWord' => $captchaword,
 					'wpCaptchaId' 	=> $captchaid,
 					'wpWatchthis'	=> $watch
-		    	));
-			}
-		    else{
-		    	$params = new FauxRequest(array (
-		       		'wpTitle' 		=> $title,
-		       		'wpTextbox1' 	=> $text,
-		       		'wpSummary'		=> $summary,
-		       		'wpEdittime'	=> $edittime,
-		       		'wplgToken' 	=> $lgtoken,
-		       		'wpUserID'		=> $userid,
-		       		'wpEditToken'	=> $tokenid,
-		       		'wpCaptchaWord' => $captchaword,
+		    		));
+			} else {
+				$params = new FauxRequest(array (
+		       			'wpTitle' 	=> $title,
+			       		'wpTextbox1' 	=> $text,
+			       		'wpSummary'	=> $summary,
+			       		'wpEdittime'	=> $edittime,
+		       			'wplgToken' 	=> $lgtoken,
+		       			'wpUserID'	=> $userid,
+			       		'wpEditToken'	=> $tokenid,
+			       		'wpCaptchaWord' => $captchaword,
 					'wpCaptchaId' 	=> $captchaid
 				));
-		    }
+			}
 		  	$wgRequest = $params;
 
 		  	if ((strlen($title) == 0) && ($this->checkCaptcha()) ) {
-				$value = GET_CAPTCHA;
+				$value = self::GET_CAPTCHA;
 			} elseif ($this->checkCaptcha() && ($captchaid == 0)) {
-				$value = MISSING_CAPTCHA;
-			}
-			else{
+				$value = self::MISSING_CAPTCHA;
+			} else {
 				
-	    		$object_title = Title::newFromDBkey($title);
+		    		$object_title = Title::newFromDBkey($title);
 				$myArticle = new Article($object_title);
 
-	        	// User creation since UserID number
-				if ($userid != 0){
-	        		$myUser = new User();
+		        	// User creation since UserID number
+				if ($userid != 0) {
+	        			$myUser = new User();
 					$myUser->setID($userid);
 					$myUser->loadFromId();
 					$myUser->setCookies();
-			 		$wgUser = $myUser;
+					$wgUser = $myUser;
 
-			 		if ($lgtoken != $_SESSION['wsToken']){
-						$value = BAD_LGTOKEN;
+					if ($lgtoken != $_SESSION['wsToken']){
+						$value = self::BAD_LGTOKEN;
 					}
 				}
 
-				if ($value != BAD_LGTOKEN){
-	    			$md5 = $wgUser->editToken();
-	      			// This is only to fast testing. So must be cleanned before a Release
-	      			$tokenid = $md5;
+				if ($value != self::BAD_LGTOKEN) {
+	    				$md5 = $wgUser->editToken();
+	      				// This is only to fast testing. So must be cleanned before a Release
+	      				$tokenid = $md5;
 
-	      			// APiEditPage only accepts POST requests
+		      			// APiEditPage only accepts POST requests
 					if (!$_SERVER['REQUEST_METHOD']){
-	      				$value = NO_POST_REQUEST;
-	      			}
-
-	      			else{
-	      				$params->wasPosted = true;
-	     				if ($md5 != $tokenid){
+	      					$value = self::NO_POST_REQUEST;
+	      				} else {
+	      					$params->wasPosted = true;
+	     					if ($md5 != $tokenid){
 							$value = BAD_EDITTOKEN;
-	      				}
-				      	else {
+		      				} else {
 							$editForm = new EditPage($myArticle);
 							$editForm->mTitle = $object_title;
 							$editForm->importFormData($params);
 
 							$resultDetails = false;
-							$value=$editForm->internalAttemptSave( &$resultDetails );
+							$value = $editForm->internalAttemptSave( $resultDetails );
 						}
-	    			}
+		    			}
 				}
 			}
 		}
-		switch ($value){
-			case WRONG_REQUEST:
+		switch ($value) {
+			case self::WRONG_REQUEST:
 				$result['result'] = 'Error. Wrong request';
 				break;
 
@@ -179,15 +173,15 @@ class ApiEditPage extends ApiBase {
 
 			case EditPage::AS_SUCCESS_UPDATE:
 				$result['result'] 		= 'Success';
-		       	$result['title']		= $editForm->mTitle;
-		       	$result['id']			= $myArticle->getID();
-		       	$result['revid']		= $myArticle->getRevIdFetched();
-		       	$rtext['content']		= $editForm->textbox1;
-		       	break;
+			       	$result['title']		= $editForm->mTitle;
+			       	$result['id']			= $myArticle->getID();
+			       	$result['revid']		= $myArticle->getRevIdFetched();
+		       		$rtext['content']		= $editForm->textbox1;
+		       		break;
 
 			case EditPage::AS_MAX_ARTICLE_SIZE_EXCEDED:
 				$result['result'] = 'Article too long';
-		          break;
+		          	break;
 
 			case EditPage::AS_TEXTBOX_EMPTY:
 				$result['result'] = 'Blank edition';
@@ -203,11 +197,11 @@ class ApiEditPage extends ApiBase {
 
 			case EditPage::AS_SUCCESS_NEW_ARTICLE:
 				$result['result'] 		= 'Success';
-		       	$result['title']		= $editForm->mTitle;
-		       	$result['id']			= $myArticle->getID();
-		       	$result['revid']		= $myArticle->getRevIdFetched();
-		       	$rtext['content']		= $editForm->textbox1;
-		       	break;
+			       	$result['title']		= $editForm->mTitle;
+			       	$result['id']			= $myArticle->getID();
+			       	$result['revid']		= $myArticle->getRevIdFetched();
+		       		$rtext['content']		= $editForm->textbox1;
+		       		break;
 
 	 		case EditPage::AS_BLANK_ARTICLE:
 			 	$result['result'] = 'Blank article';
@@ -254,7 +248,6 @@ class ApiEditPage extends ApiBase {
 				break;
 
 			case EditPage::AS_FILTERING:
-
 				// Code extracted from SpamBlacklist extension
 				$spam = new SpamBlacklist();
 				$blacklists = $spam->getBlacklists();
@@ -302,22 +295,22 @@ class ApiEditPage extends ApiBase {
 				$result['result'] = 'Error.Only POST requests are allowed';
 				break;
 
-			case BAD_LGTOKEN:
+			case self::BAD_LGTOKEN:
 				$result['result'] = "Error.Login token is wrong";
 				break;
 
-			case BAD_EDITTOKEN:
+			case self::BAD_EDITTOKEN:
 				$result['result'] = "Error.Edit token is wrong";
 				break;
 
-			case GET_CAPTCHA :
+			case self::GET_CAPTCHA:
 				$myCaptcha = new FancyCaptcha();
 				$myCaptcha->storage->clearAll();
 				$result['result'] = 'CaptchaIdGenerated';
 				$this->captchaSupport($myCaptcha, $result);
 				break;
 
-			case MISSING_CAPTCHA :
+			case self::MISSING_CAPTCHA:
 				$myCaptcha = new FancyCaptcha();
 				$myCaptcha->storage->clearAll();
 				$result['result'] = 'MissingCaptcha';
@@ -325,78 +318,63 @@ class ApiEditPage extends ApiBase {
 				$result['result'] = 'Error-EditFilter';
 				break;
 
-			default :
-                $result['result'] = 'Invalid';
-                break;
+			default:
+	                $result['result'] = 'Invalid';
+        	        break;
 		}
 
 		$this->getResult()->addValue(null, 'editpage', $result);
-    	if (isset ($rtext['content'])) $this->getResult()->addValue('text', 'content', $rtext);
+    		if (isset ($rtext['content']))
+			$this->getResult()->addValue('text', 'content', $rtext);
+	}
 
-    }
-
-    protected function getDescription() {
+	protected function getDescription() {
 		return 'Create and edit articles.';
 	}
 
-    protected function getAllowedParams() {
-        return array (
-			'title' => array(
-                ApiBase :: PARAM_TYPE => 'string'
-            ),
-		    'text' => array(
-                ApiBase :: PARAM_TYPE => 'string'
-            ),
-            'summary' => array(
-                ApiBase :: PARAM_TYPE => 'string'
-            ),
-            'userid' => array(
-                ApiBase :: PARAM_TYPE => 'string'
-            ),
-            'edittime' => array(
-                ApiBase :: PARAM_TYPE => 'string'
-            ),
-            'lgtoken' => array(
-                ApiBase :: PARAM_TYPE => 'string'
-            ),
-            'tokenid' => array(
-                ApiBase :: PARAM_TYPE => 'string'
-            ),
-			'captchaword' => array(
-				ApiBase :: PARAM_TYPE => 'string'
+	protected function getAllowedParams() {
+		return array (
+			'title' => null,
+			'text' => null,
+			'summary' => null,
+			'userid' => array(
+				ApiBase :: PARAM_TYPE => 'integer'
 			),
-			'captchaid' => array(
-				ApiBase :: PARAM_TYPE => 'string'
+			'edittime' => array(
+				ApiBase :: PARAM_TYPE => 'timestamp'
 			),
-			'watch' => array(
-				ApiBase :: PARAM_TYPE => 'string'
+			'lgtoken' => null,
+			'tokenid' => array(
+				ApiBase :: PARAM_TYPE => 'integer'
 			),
-       );
-    }
+			'captchaword' => null,
+			'captchaid' => null,
+			'watch' => false
+		);
+	}
 
-    protected function getParamDescription() {
-   		return array (
-            'title'			=> 'Title of article',
-            'text' 			=> 'text of article',
-            'summary'		=> 'Summary of article',
+	protected function getParamDescription() {
+		return array (
+			'title'			=> 'Title of article',
+			'text'			=> 'text of article',
+			'summary'		=> 'Summary of article',
 			'userid'		=> 'ID of the user',
 			'edittime'		=> 'Timestamp of base revision edited',
 			'lgtoken'		=> 'Login token of the user',
-			'captchaid' 	=> 'question',
-			'captchaword' 	=> 'answer',
-			'watch'			=> 'Put article in watchlist [epwatch=yes]'
-        );
-    }
+			'captchaid'		=> 'question',
+			'captchaword'		=> 'answer',
+			'watch'			=> 'Put article in watchlist'
+		);
+	}
 
-    protected function getExamples() {
-        return array (
-                "Edit a page (anonimous user):",
-                "    api.php?action=edit&eptitle=Test&epsummary=test%20summary&eptext=article%20content&epedittime=20070824123454&eptokenid=+%5C"
-            );
-    }
+	protected function getExamples() {
+		return array (
+			"Edit a page (anonymous user):",
+			"    api.php?action=edit&eptitle=Test&epsummary=test%20summary&eptext=article%20content&epedittime=20070824123454&eptokenid=+%5C"
+		);
+	}
 
-    public function getVersion() {
-        return __CLASS__ . ': $Id: ApiEditPage.php 22289 2007-08-16 13:27:44Z ilabarg1 $';
-    }
+	public function getVersion() {
+		return __CLASS__ . ': $Id: ApiEditPage.php 22289 2007-08-16 13:27:44Z ilabarg1 $';
+	}
 }
-?>
