@@ -36,6 +36,17 @@ $messages['ar'] = array(
 	'lookupuser_useroptions' => 'خيارات المستخدم:',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'lookupuser_id'           => 'Потребителски номер: <tt>#$1</tt>',
+	'lookupuser_email'        => 'Е-поща: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'     => 'Име и фамилия: $1',
+	'lookupuser_registration' => 'Дата на регистрация: $1',
+	'lookupuser_useroptions'  => 'Потребителски настройки:',
+);
+
 $messages['de'] = array(
 	'lookupuser'                   => 'Benutzerinformationen einsehen',
 	'lookupuser_intro'             => 'Gib einen Benutzernamen ein, um dir die persönlichen Einstellungen eines Benutzers anzusehen.',

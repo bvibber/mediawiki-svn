@@ -114,6 +114,8 @@ $wgLuceneSearchMessages['bcl'] = array(
  */
 $wgLuceneSearchMessages['bg'] = array(
 	'searchnumber'          => '<strong>Резултати $1-$2 от $3</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Предишни</span>",
+	'searchnext'            => "<span style='font-size: small'>Следващи</span> &#x00BB;",
 	'lucene-resultsize'     => '$1 ($2 думи)',
 	'searchnearmatches'     => '<b>Следните страници имат сходни с търсенето имена:</b>',
 	'lucenepowersearchtext' => 'Търсене в именни пространства:
@@ -998,6 +1000,14 @@ $wgLuceneSearchMessages['ur'] = array(
 	'lucenepowersearchtext' => 'تلاش کریں، فضاۓ نام : $1 میں براۓ $3 $9 $10',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$wgLuceneSearchMessages['vo'] = array(
+	'lucene-resultsize' => '$1 (vöds $2)',
+	'searchall'         => 'valik',
+);
+
 $wgLuceneSearchMessages['wa'] = array(
 	'searchnumber'          => '<strong>Rizultats: $1-$2 di $3</strong>',
 	'searchprev'            => '← <span style=\'font-size: small\'>Div.</span>',
@@ -1007,6 +1017,7 @@ $wgLuceneSearchMessages['wa'] = array(
 	'lucenepowersearchtext' => 'Cweraedje dins les espåces di lomaedje: $1 <br />
 Cweraedje di: $3 $9 $10',
 );
+
 $wgLuceneSearchMessages['wuu'] = array(
 	'searchnoresults'       => "对弗起，寻弗着搭倷个要求完全匹配个结果。",
 	'searchnearmatch'       => "<li>$1</li>\n",
@@ -1015,6 +1026,7 @@ $wgLuceneSearchMessages['wuu'] = array(
 $1\n
 寻：$3 $9 $10",
 );
+
 $wgLuceneSearchMessages['yue'] = array(
 	'searchnumber'          => "<strong>一共有$3項搜尋結果，以下係第$1-$2項結果</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>上一版</span>",
@@ -1033,6 +1045,7 @@ $1\n
 	'searchall'             => '全部',
 	'searchincategory'      => '響分類度'
 );
+
 $wgLuceneSearchMessages['zh-hans'] = array(
 	'searchnumber'          => "<strong>共有$3项搜索结果，以下是第$1-$2项结果</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>上一页</span>",
@@ -1051,6 +1064,7 @@ $1\n
 	'searchall'             => '所有',
 	'searchincategory'      => '在分类中'
 );
+
 $wgLuceneSearchMessages['zh-hant'] = array(
 	'searchnumber'          => "<strong>共有$3項搜尋結果，以下是第$1-$2項結果</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>上一頁</span>",

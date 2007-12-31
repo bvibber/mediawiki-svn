@@ -167,3 +167,11 @@ $messages['sv'] = array(
 	'scanset_next'                      => 'Nästa &gt;',
 	'scanset_prev'                      => '&lt; Föregående',
 );
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'scanset_next' => 'Sököl &gt;',
+	'scanset_prev' => '&lt; Büik',
+);

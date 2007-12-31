@@ -53,6 +53,7 @@ $messages = array(
 		'webstore_php_error' => 'PHP errors were encountered:',
 		'webstore_no_handler' => 'No handler for transforming this MIME type',
 	),
+
 	'ar' => array(
 		'inplace_access_disabled' => 'الدخول إلى هذه الخدمة تم تعطيله لكل العملاء.',
 		'inplace_access_denied' => 'هذه الخدمة مقيدة بواسطة أيبي عميل.',
@@ -102,6 +103,7 @@ $1',
 		'webstore_php_error' => 'حدثت أخطاء PHP:',
 		'webstore_no_handler' => 'لا وسيلة لتحويل نوع MIME هذا',
 	),
+
 	'bcl' => array(
 		'webstore_no_response' => 'Mayong simbag hali sa server',
 	),
@@ -113,8 +115,12 @@ $1',
 		'inplace_scaler_not_enough_params' => 'Няма достатъчно параметри',
 		'webstore_path_invalid'            => 'Името на файла е невалидно.',
 		'webstore_no_file'                 => 'Не беше качен файл.',
+		'webstore_invalid_zone'            => 'Невалидна зона "$1".',
 		'webstore_404'                     => 'Файлът не беше намерен.',
 		'webstore_php_warning'             => 'PHP Предупреждение: $1',
+		'webstore_invalid_response'        => 'Невалиден отговор от сървъра:
+
+$1',
 		'webstore_no_response'             => 'Няма отговор от сървъра',
 	),
 

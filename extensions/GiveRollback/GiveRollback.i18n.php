@@ -68,6 +68,8 @@ function efGiveRollbackMessages() {
  */
 'bg' => array(
 	'giverollback-username' => 'Потребителско име:',
+	'giverollback-grant'    => 'Предоставяне',
+	'giverollback-revoke'   => 'Отнемане',
 	'giverollback-comment'  => 'Коментар:',
 ),
 

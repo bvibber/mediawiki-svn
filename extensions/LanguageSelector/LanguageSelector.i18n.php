@@ -23,6 +23,13 @@ $messages['ar'] = array(
 	'languageselector-setlang' => 'ضبط',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'languageselector' => 'Език',
+);
+
 /** French (Français)
  * @author Bertrand GRONDIN
 */

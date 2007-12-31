@@ -2165,6 +2165,18 @@ $wgBoardVoteMessages['ty'] = array(
 	'boardvote_user' => 'Ta’ata fa’a’ohipa',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$wgBoardVoteMessages['vo'] = array(
+	'boardvote_time'       => 'Tim',
+	'boardvote_user'       => 'Geban',
+	'boardvote_edits'      => 'Redakams',
+	'boardvote_days'       => 'Dels',
+	'boardvote_edits_many' => 'mödik',
+	'boardvote_welcome'    => "Benokömö, o '''$1'''!",
+);
+
 $wgBoardVoteMessages['wa'] = array(
 	'boardvote' => 'Vôtaedje po les manaedjeus del fondåcion Wikimedia',
 	'boardvote_entry' => '* [[Special:Boardvote/vote|Vôter]]
@@ -2236,6 +2248,7 @@ k\' ont ddja vote disk\' asteure.
 $1 po les dnêyes sourdant des bultins.</p>',
 	'boardvote_dumplink' => 'Clitchîz chal',
 );
+
 $wgBoardVoteMessages['yue'] = array(
 	'boardvote'               => "Wikimedia理事委員會選舉",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|投票]]
@@ -2302,11 +2315,13 @@ $1去睇加密嘅資料。</p>",
 
 你有可能會收到一個安全警告，話個憑證冇簽到。',
 );
+
 $wgBoardVoteMessages['zh-classical'] = array(
 	'boardvote_time'          => "時辰",
 	'boardvote_user'          => "編者",
 	'boardvote_submit'        => '確定',
 );
+
 $wgBoardVoteMessages['zh-hans'] = array(
 	'boardvote'               => "维基媒体基金会理事会选举",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|参与投票]]
@@ -2371,8 +2386,8 @@ $wgBoardVoteMessages['zh-hans'] = array(
 20秒后浏览器将会自动转到这个站外服务器。您也可以马上[$1 点击这里]直接到那里。
 
 稍后，您的浏览器可能会弹出未验证安全凭证的警告。',
-
 );
+
 $wgBoardVoteMessages['zh-hant'] = array(
 	'boardvote'               => "維基媒體基金會理事會選舉",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|參與投票]]
@@ -2438,6 +2453,7 @@ $wgBoardVoteMessages['zh-hant'] = array(
 
 稍後，您的瀏覽器可能會彈出未驗證安全憑證的警告。',
 );
+
 $wgBoardVoteMessages['zh'] = $wgBoardVoteMessages['zh-hans'];
 $wgBoardVoteMessages['zh-cn'] = $wgBoardVoteMessages['zh-hans'];
 $wgBoardVoteMessages['zh-hk'] = $wgBoardVoteMessages['zh-hant'];

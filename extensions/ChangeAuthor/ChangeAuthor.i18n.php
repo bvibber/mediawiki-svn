@@ -80,13 +80,22 @@ $allMessages = array(
  * @author Spiritia
  */
 	'bg' => array(
-		'changeauthor-pagename-or-revid' => 'Име на страница или номер на редакция:',
-		'changeauthor-comment'           => 'Коментар:',
-		'changeauthor-invalid-username'  => 'Невалидно потребителско име "$1".',
-		'changeauthor-nosuchuser'        => 'Не съществува потребител "$1".',
-		'changeauthor-revview'           => 'Редакция #$1 от $2',
-		'changeauthor-nosuchtitle'       => 'Не съществува страница "$1".',
-		'changeauthor-success'           => 'Заявката беше изпълнена успешно.',
+		'changeauthor'                      => 'Промяна на автора на редакция',
+		'changeauthor-title'                => 'Промяна на автора на редакция',
+		'changeauthor-search-box'           => 'Търсене на редакция',
+		'changeauthor-pagename-or-revid'    => 'Име на страница или номер на редакция:',
+		'changeauthor-comment'              => 'Коментар:',
+		'changeauthor-changeauthors-multi'  => 'Промяна на автор(ите)',
+		'changeauthor-explanation-multi'    => "Формулярът по-долу служи за промяна на авторите на отделни редакции. Необходимо е да се промени едно или повече потребителско име от списъка по-долу, да се въведе коментар (незадължително) и натисне бутона 'Промяна на автор(ите)'.",
+		'changeauthor-changeauthors-single' => 'Промяна на автора',
+		'changeauthor-explanation-single'   => "Формулярът по-долу се използва за промяна на автора на редакция. Необходимо е да се промени потребителското име, да се въведе коментар (незадължително) и да се натисне бутона 'Промяна на автор(ите)'.",
+		'changeauthor-invalid-username'     => 'Невалидно потребителско име "$1".',
+		'changeauthor-nosuchuser'           => 'Не съществува потребител "$1".',
+		'changeauthor-revview'              => 'Редакция #$1 от $2',
+		'changeauthor-nosuchtitle'          => 'Не съществува страница "$1".',
+		'changeauthor-weirderror'           => 'Възникна странна грешка. Опитайте отново; ако грешката се повтори, вероятно базата данни е повредена.',
+		'changeauthor-success'              => 'Заявката беше изпълнена успешно.',
+		'changeauthor-rev'                  => 'р$1',
 	),
 
 	'de' => array( 

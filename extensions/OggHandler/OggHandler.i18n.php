@@ -864,6 +864,15 @@ Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"
 		'ogg-desc-link'        => 'Om filen',
 	),
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+	'vo' => array(
+		'ogg-player-videoElement' => 'Dilet: <video>',
+		'ogg-dismiss'             => 'Färmükön',
+		'ogg-desc-link'           => 'Tefü ragiv at',
+	),
+
 	'yue' => array(
 		'ogg-short-audio'      => 'Ogg $1 聲檔，$2',
 		'ogg-short-video'      => 'Ogg $1 畫檔，$2',

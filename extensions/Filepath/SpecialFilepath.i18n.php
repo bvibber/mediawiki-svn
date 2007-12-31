@@ -414,6 +414,13 @@ $wgFilepathMessages['ty'] = array(
 	'filepath_page' => 'Putu’ite:',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$wgFilepathMessages['vo'] = array(
+	'filepath_page' => 'Ragiv:',
+);
+
 $wgFilepathMessages['wuu'] = array(
 	'filepath'        => '文件路径',
 	'filepath_page'   => '文件：',

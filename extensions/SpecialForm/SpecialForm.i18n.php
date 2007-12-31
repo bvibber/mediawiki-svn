@@ -74,8 +74,12 @@ $SpecialFormMessages =array(
 		'formsave' => 'Itagama',
 	),
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
 	'bg' => array(
-		'formsave' => 'Съхранение',
+		'formsave'          => 'Съхранение',
+		'formarticleexists' => 'Страницата съществува',
 	),
 
 	'de' => array(

@@ -77,6 +77,7 @@ function efDuplicatorMessages() {
  * @author Spiritia
  */
 'bg' => array(
+	'duplicator-options'               => 'Настройки',
 	'duplicator-source'                => 'Източник:',
 	'duplicator-dest'                  => 'Цел:',
 	'duplicator-summary'               => 'Копирано от [[$1]]',

@@ -20,6 +20,14 @@ $allMessages = array(
 		'specialwhoiswatchingaddbtn'   => 'أضف مستخدمين مختارين',
 	),
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+	'bg' => array(
+		'specialwhoiswatchingaddusers' => 'Добавяне на потребители да наблюдават страницата',
+		'specialwhoiswatchingaddbtn'   => 'Добавяне на избраните потребители',
+	),
+
         'de' => array(
                 'whoiswatching'               => 'Wer beobachtet eine Seite',
                 'specialwhoiswatchingthepage' => 'Wer beobachtet %s',

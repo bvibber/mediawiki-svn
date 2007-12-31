@@ -62,9 +62,11 @@ function efContributorsMessages() {
  * @author DCLXVI
  */
 'bg' => array(
-	'contributors-target' => 'Заглавие:',
-	'contributors-submit' => 'Показване',
-	'contributors-others' => 'и $1 други',
+	'contributors-target'     => 'Заглавие:',
+	'contributors-submit'     => 'Показване',
+	'contributors-others'     => 'и $1 други',
+	'contributors-badtitle'   => 'Невалидно заглавие.',
+	'contributors-nosuchpage' => 'Страницата $1 не съществува.',
 ),
 
 /** Bengali (বাংলা)

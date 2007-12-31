@@ -649,6 +649,13 @@ function efInputBoxMessages() {
 	'createarticle'  => 'Viết bài mới',
 ),
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+'vo' => array(
+	'createarticle' => 'Jafön padi',
+),
+
 'wa' => array(
 	'createarticle' => 'Ahiver årtike',
 ),

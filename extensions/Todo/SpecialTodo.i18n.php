@@ -73,6 +73,7 @@ $4',
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'todo-list-change'  => 'Промяна',
 	'todo-form-details' => 'Детайли:',
 );
 

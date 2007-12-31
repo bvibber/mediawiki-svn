@@ -461,6 +461,17 @@ function efBookInformationMessages() {
 	'bookinfo-provider' => 'Data hämtat från: $1',
 ),
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+'vo' => array(
+	'bookinfo-result-title'     => 'Tiäd:',
+	'bookinfo-result-author'    => 'Lautan:',
+	'bookinfo-result-publisher' => 'Dabükan:',
+	'bookinfo-result-year'      => 'Yel:',
+	'bookinfo-purchase'         => 'Remolös buki at se $1',
+),
+
 /* Cantonese (Shinjiman) */
 'yue' => array(
 	'bookinfo-header' => '書籍資料',

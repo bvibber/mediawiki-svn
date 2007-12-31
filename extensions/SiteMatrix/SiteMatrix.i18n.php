@@ -418,6 +418,13 @@ $wgSiteMatrixMessages['vec'] = array(
 	'sitematrix' => 'Ełenco de tuti i projeti Wikimedia ne le varie lengoe',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$wgSiteMatrixMessages['vo'] = array(
+	'sitematrix-language' => 'Pük',
+);
+
 $wgSiteMatrixMessages['wa'] = array(
 	'sitematrix' => 'Djivêye des wikis Wikimedia',
 	'sitematrix-language' => 'Lingaedje',

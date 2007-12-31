@@ -1420,6 +1420,14 @@ Scrivi el nome de l\'utente ne la caseła e struca el botón par far diventare a
 	'already_bureaucrat'   => 'Người này đã là tổng quản lý',
 ),
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+'vo' => array(
+	'makesysopname' => 'Gebananem:',
+	'already_sysop' => 'Geban at ya binon guvan.',
+),
+
 'wa' => array(
 	'makesysoptitle' => 'Diner a èn uzeu on livea di manaedjeu',
 	'makesysoptext' => 'Cisse pådje ci c\'&nbsp;est po les mwaisses-manaedjeus («burocrates») poleur hôssî l\'&nbsp;livea d\'&nbsp;èn uzeu do livea d\'&nbsp;simpe uzeu eredjîstré, å ci d\'&nbsp;manaedjeu. Tapez l\'&nbsp;no d\'&nbsp;l\'&nbsp;uzeu dins l\'&nbsp;boesse di tecse poy clitchîz sol boton po ndè fé on manaedjeu.',

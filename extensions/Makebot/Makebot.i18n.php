@@ -1101,6 +1101,15 @@ function efMakeBotMessages() {
 	'makebot' => 'بخشیں یا منسوخ کریں درجہ خودکارصارف',
 ),
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+'vo' => array(
+	'makebot-username' => 'Gebananem:',
+	'makebot-grant'    => 'Gevön',
+	'makebot-comment'  => 'Küpet:',
+),
+
 /* Walloon (language file) */
 'wa' => array(
 	'makebot'                 => 'Diner ou rsaetchî l\' livea d\' robot',

@@ -457,6 +457,13 @@ $wgNewuserlogMessages['vls'] = array(
 	'newuserlog-create-entry'  => 'Nieuwe gebruker',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$wgNewuserlogMessages['vo'] = array(
+	'newuserlog-create-entry' => 'Geban nulik',
+);
+
 $wgNewuserlogMessages['wa'] = array(
 	'newuserlogpage'           => 'Djournå des noveas uzeus',
 	'newuserlogpagetext'       => 'Chal pa dzo c\' est ene djivêye des uzeus novelmint eredjîstrés.',
@@ -473,18 +480,21 @@ $wgNewuserlogMessages['yue'] = array(
 $wgNewuserlogMessages['zea'] = array(
 	'newuserlog-create-entry'  => 'Nieuwe gebruker',
 );
+
 $wgNewuserlogMessages['zh-classical'] = array(
 	'newuserlogpage'           => '誌簿',
 	'newuserlogpagetext'       => '此為誌簿之記也',
 	'newuserlog-create-entry'  => '新簿',
 	'newuserlog-create2-entry' => '已註$1之簿',
 );
+
 $wgNewuserlogMessages['zh-hans'] = array(
 	'newuserlogpage'           => '新进用户名册',
 	'newuserlogpagetext'       => '本日志是显示新注册用户的日志',
 	'newuserlog-create-entry'  => '新用户',
 	'newuserlog-create2-entry' => '已创建$1的账户',
 );
+
 $wgNewuserlogMessages['zh-hant'] = array(
 	'newuserlogpage'           => '新進用戶名冊',
 	'newuserlogpagetext'       => '這是一個最近被創建用戶的日誌',

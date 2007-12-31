@@ -411,6 +411,14 @@ $wgLinkSearchMessages['to'] = array(
 	'linksearch-error' => 'ʻOku ngofua pē ke ʻasi ha ngaahi lauʻifano ʻi he kamataʻanga ʻo e tauhia hono hingoa.',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$wgLinkSearchMessages['vo'] = array(
+	'linksearch-ns' => 'Nemaspad:',
+	'linksearch-ok' => 'Suk',
+);
+
 $wgLinkSearchMessages['yue'] = array(
 	'linksearch'       => '搵網頁連結',
 	'linksearch-pat'   => '搵嘅形態:',
@@ -420,6 +428,7 @@ $wgLinkSearchMessages['yue'] = array(
 	'linksearch-line'  => '$1 連自 $2',
 	'linksearch-error' => '萬用字元只可以響主機名嘅開頭度用。',
 );
+
 $wgLinkSearchMessages['zh-hans'] = array(
 	'linksearch'       => '搜索网页链接',
 	'linksearch-pat'   => '搜索网址:',
@@ -429,6 +438,7 @@ $wgLinkSearchMessages['zh-hans'] = array(
 	'linksearch-line'  => '$1 链自 $2',
 	'linksearch-error' => '通配符仅可在主机名称的开头使用。',
 );
+
 $wgLinkSearchMessages['zh-hant'] = array(
 	'linksearch'       => '搜尋網頁連結',
 	'linksearch-pat'   => '搜尋網址:',
@@ -438,6 +448,7 @@ $wgLinkSearchMessages['zh-hant'] = array(
 	'linksearch-line'  => '$1 連自 $2',
 	'linksearch-error' => '萬用字元僅可在主機名稱的開頭使用。',
 );
+
 $wgLinkSearchMessages['zh'] = $wgLinkSearchMessages['zh-hans'];
 $wgLinkSearchMessages['zh-cn'] = $wgLinkSearchMessages['zh-hans'];
 $wgLinkSearchMessages['zh-hk'] = $wgLinkSearchMessages['zh-hant'];
