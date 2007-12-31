@@ -77,11 +77,16 @@ $allMessages = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Spiritia
  */
 	'bg' => array(
 		'changeauthor-pagename-or-revid' => 'Име на страница или номер на редакция:',
 		'changeauthor-comment'           => 'Коментар:',
+		'changeauthor-invalid-username'  => 'Невалидно потребителско име "$1".',
+		'changeauthor-nosuchuser'        => 'Не съществува потребител "$1".',
 		'changeauthor-revview'           => 'Редакция #$1 от $2',
+		'changeauthor-nosuchtitle'       => 'Не съществува страница "$1".',
+		'changeauthor-success'           => 'Заявката беше изпълнена успешно.',
 	),
 
 	'de' => array( 

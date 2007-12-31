@@ -21,6 +21,17 @@ $messages['ar'] = array(
 	'findspam-notextfound' => 'لم يتم العثور على مساهمات',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'findspam'             => 'Откриване на спам',
+	'findspam-ip'          => 'IP адрес:',
+	'findspam-ok'          => 'Търсене',
+	'findspam-notextfound' => 'Няма намерени приноси',
+);
+
 $messages['de'] = array(
 	'findspam'             => 'Spam finden',
 	'findspam-ip'          => 'IP-Adresse:',

@@ -34,10 +34,10 @@ function efInputBoxMessages() {
 ),
 
 /** Asturian (Asturianu)
- * @author SPQRobin
+ * @author Esbardu
  */
 'ast' => array(
-	'createarticle' => 'Crear artículu',
+	'createarticle' => 'Crear páxina',
 ),
 
 'az' => array(
@@ -370,6 +370,13 @@ function efInputBoxMessages() {
 	'createarticle'           => 'Paginam creare',
 ),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+'lb' => array(
+	'createarticle' => 'Säit uleeën',
+),
+
 'lg' => array(
 	'createarticle' => 'Wandika omuko',
 ),
@@ -454,7 +461,7 @@ function efInputBoxMessages() {
 	'inputbox-error-bad-type' => 'Inputboks av typen «$1» gjenkjennes ikke. Vennligst velg «create», «comment», «search» eller «search2».',
 	'tryexact'                => 'Prøv nøyaktig treff',
 	'searchfulltext'          => 'Søk full tekst',
-	'createarticle'           => 'Opprett artikkel',
+	'createarticle'           => 'Opprett side',
 ),
 
 /** Occitan (Occitan)

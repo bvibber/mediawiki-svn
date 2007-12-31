@@ -110,12 +110,18 @@ $wgLuceneSearchMessages['bcl'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Borislav
  */
 $wgLuceneSearchMessages['bg'] = array(
-	'searchnumber'      => '<strong>Резултати $1-$2 от $3</strong>',
-	'lucene-resultsize' => '$1 ($2 думи)',
-	'searchnearmatches' => '<b>Следните страници имат сходни с търсенето имена:</b>',
-	'searchall'         => 'всички',
+	'searchnumber'          => '<strong>Резултати $1-$2 от $3</strong>',
+	'lucene-resultsize'     => '$1 ($2 думи)',
+	'searchnearmatches'     => '<b>Следните страници имат сходни с търсенето имена:</b>',
+	'lucenepowersearchtext' => 'Търсене в именни пространства:
+
+$1
+
+Търсене на $3 $9 $10',
+	'searchall'             => 'всички',
 );
 
 $wgLuceneSearchMessages['br'] = array(
@@ -708,6 +714,9 @@ of doorzoek de wiki via een externe zoekmachine:',
 	'searchincategory'      => 'binnen categorie',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $wgLuceneSearchMessages['no'] = array(
 	'searchnumber'          => '<strong>Resultat $1–$2 av $3</strong>',
 	'searchprev'            => '« <span style="font-size:small;">Forrige</span>',
@@ -723,7 +732,11 @@ $1
 
 Søk etter $3 $9 $10',
 	'lucenefallback'        => 'Det var et problem med søket. Dette er sannsynligvis midlertidig; prøv igjen om et øyeblikk, eller søk ved hjelp av en ekstern søketjeneste:',
+	'searchexactcase'       => 'Søk med hensyn til store og små bokstaver',
+	'searchall'             => 'alle',
+	'searchincategory'      => 'i kategori',
 );
+
 $wgLuceneSearchMessages['oc'] = array(
 	'searchnumber'          => '<strong>Resultats $1-$2 sus $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Prec.</span>',
@@ -739,6 +752,7 @@ $wgLuceneSearchMessages['oc'] = array(
 	'searchall'             => 'Totes',
 	'searchincategory'      => 'Cercar dins las categorias',
 );
+
 $wgLuceneSearchMessages['pl'] = array(
 	'searchnumber'          => '<strong>Wyniki $1-$2 z $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Poprzednia</span>',
@@ -761,6 +775,7 @@ lub przeszukaj wiki za pomocą zewnętrznych wyszukiwarek:',
 	'searchall'             => 'wszystkie',
 	'searchincategory'      => 'w kategorii',
 );
+
 /* Piedmontese (Bèrto 'd Sèra) */
 $wgLuceneSearchMessages['pms'] = array(
 	'searchnumber'          => '<strong>Arzultà $1-$2 ëd $3</strong>',
@@ -876,6 +891,7 @@ $wgLuceneSearchMessages['sk'] = array(
 	'searchall'             => 'všetko',
 	'searchincategory'      => 'v kategórii',
 );
+
 $wgLuceneSearchMessages['sq'] = array(
 	'lucenepowersearchtext' => 'Kërko në hapësirat: $1 për $3 $9',
 	'searchnext'            => "<span style='font-size: small'>Më pas</span> &#x00BB;",
@@ -885,6 +901,7 @@ $wgLuceneSearchMessages['sq'] = array(
 	'lucene-searchscore'    => 'Përkatësia: $1',
 	'lucene-resultsize'     => '$1 ($2 fjalë)',
 );
+
 $wgLuceneSearchMessages['sr-ec'] = array(
 	'searchnumber'          => "<strong>Резултати $1-$2 од $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Претходна</span>",
@@ -906,6 +923,7 @@ $1\n
 	'searchall'             => "све\nsve",
 	'searchincategory'      => "укатегорији\nukategoriji"
 );
+
 $wgLuceneSearchMessages['sr-el'] = array(
 	'searchnumber'          => "<strong>Rezultati $1-$2 od $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prethodna</span>",

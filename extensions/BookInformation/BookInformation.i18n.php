@@ -270,6 +270,7 @@ function efBookInformationMessages() {
 	'bookinfo-header'            => 'Informatiounen iwwer Bicher',
 	'bookinfo-result-title'      => 'Titel:',
 	'bookinfo-result-author'     => 'Auteur:',
+	'bookinfo-result-publisher'  => 'Editeur:',
 	'bookinfo-result-year'       => 'Joer:',
 	'bookinfo-error-invalidisbn' => 'Dir hutt eng ISBN aginn déi et net gëtt.',
 ),

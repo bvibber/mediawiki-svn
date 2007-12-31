@@ -25,6 +25,15 @@ $messages['ar'] = array(
 	'filelist-show-gallery' => 'عرض المعرض',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'filelist'              => 'Списък на файловете',
+	'filelist-show-list'    => 'Показване на списъка',
+	'filelist-show-gallery' => 'Показване на галерията',
+);
+
 /** French
  * @author Bertrand Grondin
  */

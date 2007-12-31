@@ -311,9 +311,10 @@ $wgExpandTemplatesMessages['la'] = array(
  * @author Robby
  */
 $wgExpandTemplatesMessages['lb'] = array(
-	'expandtemplates'         => 'Schablounen expandéieren',
-	'expand_templates_output' => 'Resultat',
-	'expand_templates_ok'     => 'OK',
+	'expandtemplates'          => 'Schablounen expandéieren',
+	'expand_templates_output'  => 'Resultat',
+	'expand_templates_ok'      => 'OK',
+	'expand_templates_preview' => 'Preview',
 );
 
 $wgExpandTemplatesMessages['lo'] = array(

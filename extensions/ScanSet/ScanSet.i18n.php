@@ -126,7 +126,21 @@ $messages['nl'] = array(
 	'scanset_invalid_volume'            => 'ScanSet: ongeldig volumen',
 	'scanset_next'                      => 'Volgende &gt;',
 	'scanset_prev'                      => '&lt; Vorige',
+);
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'scanset_unrecognised_index_format' => 'ScanSet: Ukjent indeksformat',
+	'scanset_opendir_error'             => 'ScanSet: Feil, kan ikke åpne mappen $1',
+	'scanset_no_files'                  => 'ScanSet: Ingen filer i mappen som ble oppgitt.',
+	'scanset_no_volumes'                => 'ScanSet: Ingen volummapper funnet',
+	'scanset_missing_index_file'        => 'ScanSet: Indeksfil $1 ikke funnet',
+	'scanset_index_file_error'          => 'ScanSet: Feil i indeksfilformat på linje $1',
+	'scanset_invalid_volume'            => 'ScanSet: Ugyldig volum',
+	'scanset_next'                      => 'Neste &gt;',
+	'scanset_prev'                      => '&lt; Forrige',
 );
 
 /** Occitan (Occitan)

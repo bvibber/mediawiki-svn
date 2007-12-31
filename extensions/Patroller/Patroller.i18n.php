@@ -69,12 +69,21 @@ function efPatrollerMessages() {
 ),
 
 /** Bulgarian (Български)
+ * @author Spiritia
  * @author DCLXVI
  */
 'bg' => array(
+	'patrol-revert'          => 'Възвръщане',
 	'patrol-revert-reason'   => 'Причина:',
+	'patrol-reverting'       => 'Възвръщане: $1',
 	'patrol-endorsed-ok'     => 'Редакцията беше отбелязана като проверена.',
 	'patrol-endorsed-failed' => 'Редакцията не може да бъде отбелязана като проверена.',
+	'patrol-reverted-ok'     => 'Редакцията е възвърната',
+	'patrol-reverted-failed' => 'Редакцията не може да бъде възвърната.',
+	'patrol-reasons'         => '* Обикновен вандализъм
+* Упражнения извън пясъчника
+* Виж беседата',
+	'patrol-another'         => 'Показване на други евентуални редакции.',
 ),
 
 /* German (Raymond) */

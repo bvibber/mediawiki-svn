@@ -245,6 +245,7 @@ $wgSiteMatrixMessages['la'] = array(
  * @author Robby
  */
 $wgSiteMatrixMessages['lb'] = array(
+	'sitematrix'          => 'Lëscht vun de Wikimedia-Wikiën',
 	'sitematrix-language' => 'Sprooch',
 );
 

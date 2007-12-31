@@ -947,25 +947,29 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'already_bureaucrat'    => 'Denne brukaren har allereie byråkrat-tilgang',
 ),
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 'no' => array(
-	'makesysoptitle' => 'Gjør en bruker til administrator',
-	'makesysoptext' => 'Dette skjemaet blir brukt av byråkrater for å gjøre vanlige brukere til administratorer. Skriv brukernavnet i boksen og trykk på knappen for å gjøre en bruker til administrator.',
-	'makesysopname' => 'Brukernavn:',
-	'makesysopsubmit' => 'Gjør denne brukeren til administrator',
-	'makesysopok' => '<b>«$1» er nå administrator</b>',
-	'makebureaucratok' => '<b>Brukeren «$1» er nå en byråkrat</b>',
-	'makesysopfail' => '<b>«$1» kunne ikke bli administrator. (Er brukernavnet skrevet riktig?)</b>',
-	'setbureaucratflag' => 'Gjør til byråkrat',
-	'rights' => 'Rettigheter:',
-	'set_user_rights' => 'Sett brukerrettigheter',
-	'user_rights_set' => '<b>Brukerrettigheter for «$1» er oppdatert</b>',
-	'set_rights_fail' => '<b>Brukerrettigheter for «$1» kunne ikke settes. (Skrev du navnet riktig?)</b>',
-	'makesysop' => 'Gjør en bruker til administrator',
-	'already_sysop' => 'Den brukeren er allerede administrator',
-	'already_bureaucrat' => 'Denne brukeren er allerede byråkrat',
-	'group-steward' => 'Stewards',#identical but defined
-	'group-steward-member' => 'Steward',#identical but defined
-	'grouppage-steward' => 'Project:Stewards',
+	'makesysoptitle'           => 'Gjør en bruker til administrator',
+	'makesysoptext'            => 'Dette skjemaet blir brukt av byråkrater for å gjøre vanlige brukere til administratorer. Skriv brukernavnet i boksen og trykk på knappen for å gjøre en bruker til administrator.',
+	'makesysopname'            => 'Brukernavn:',
+	'makesysopsubmit'          => 'Gjør denne brukeren til administrator',
+	'makesysopok'              => '<b>«$1» er nå administrator</b>',
+	'makebureaucratok'         => '<b>Brukeren «$1» er nå en byråkrat</b>',
+	'makesysopfail'            => '<b>«$1» kunne ikke bli administrator. (Er brukernavnet skrevet riktig?)</b>',
+	'makesysop-see-userrights' => 'Se [[Special:Userrights]] for flere valg.',
+	'setbureaucratflag'        => 'Gjør til byråkrat',
+	'rights'                   => 'Rettigheter:',
+	'set_user_rights'          => 'Sett brukerrettigheter',
+	'user_rights_set'          => '<b>Brukerrettigheter for «$1» er oppdatert</b>',
+	'set_rights_fail'          => '<b>Brukerrettigheter for «$1» kunne ikke settes. (Skrev du navnet riktig?)</b>',
+	'makesysop'                => 'Gjør en bruker til administrator',
+	'already_sysop'            => 'Den brukeren er allerede administrator',
+	'already_bureaucrat'       => 'Denne brukeren er allerede byråkrat',
+	'group-steward'            => 'Stewards',
+	'group-steward-member'     => 'Steward',
+	'grouppage-steward'        => 'Project:Stewards',
 ),
 
 'oc' => array(

@@ -261,6 +261,13 @@ $wgFilepathMessages['la'] = array(
 	'filepath_page'   => 'Fasciculus:',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$wgFilepathMessages['lb'] = array(
+	'filepath_page' => 'Fichier:',
+);
+
 $wgFilepathMessages['lo'] = array(
 	'filepath'         => 'ທາງໄປຫາໄຟລ໌',
 );

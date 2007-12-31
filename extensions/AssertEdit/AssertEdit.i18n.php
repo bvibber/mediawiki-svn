@@ -78,6 +78,14 @@ $messages['nl'] = array(
 
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'assert_edit_title'   => 'Redigeringsforsikring mislyktes.',
+	'assert_edit_message' => 'Den spesifiserte redigeringsforsikringen ($1) mislyktes.',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

@@ -591,6 +591,7 @@ $messages['lb'] = array(
 	'hiderevision-tab'           => 'Verstopp Versiounen',
 	'hiderevision-status'        => 'Versioun $1: $2',
 	'hiderevision-error-missing' => 'Net an der Datebank fonnt.',
+	'oversight-view'             => 'Detailer',
 	'oversight-hidden'           => 'Verstoppte Versioun',
 );
 
@@ -632,6 +633,43 @@ teruggeet worden door databasebeheerders als u een fout maakt.",
 	'oversight-hidden'            => 'Verborgen versie',
 	'oversight-header'            => 'Hieronder staat een lijst met versies die permanent verborgen zijn voor iedereen.
 Het vrijgeven van deze informatie kan tot gevolg hebben dat Oversightrechten worden ingenomen.',
+);
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'hiderevision'                => 'Fjern revisjoner permanent',
+	'hiderevision-prompt'         => 'Nummer på revisjonen som skal fjernes:',
+	'hiderevision-continue'       => 'Fortsett',
+	'hiderevision-text'           => "Dette burde '''kun''' brukes i følgende saker:
+* Upassende personlig informasjon
+*: ''hjemmeadresser og telefonnumre, personnumre o.l.''
+
+'''Misbruk av dette systemet vil føre til at du mister rettighetene.'''
+
+Revisjoner som fjernes vil ikke være tilgjengelige for noen via nettsiden, men slettingene logges og kan gjenopprettes manuelt av en databaseadministrator dersom du gjør en feil.",
+	'hiderevision-reason'         => 'Grunn (logges privat):',
+	'hiderevision-submit'         => 'Skjul denne informasjonen permanent',
+	'hiderevision-tab'            => 'Skjul revisjon',
+	'hiderevision-norevisions'    => 'Ingen revisjoner merket for sletting.',
+	'hiderevision-noreason'       => 'Du må oppgi en grunn for denne slettingen.',
+	'hiderevision-status'         => 'Revisjon $1: $2',
+	'hiderevision-success'        => 'Arkivert og slettet.',
+	'hiderevision-error-missing'  => 'Ikke funnet i databasen.',
+	'hiderevision-error-current'  => 'Kan ikke slette siste redigering på en side. Tilbakestill endringen først.',
+	'hiderevision-error-delete'   => 'Kunne ikke arkivere; har den blitt slettet tidligere?',
+	'hiderevision-archive-status' => 'Slettet revisjon fra $1: $2',
+	'oversight-nodiff'            => 'Kunne ikke spore endringer siden det ikke er noen foregående revisjon av siden. Enten:
+*Ble siden slettet
+*Eller så var den skjulte revisjonen den første',
+	'oversight-log-hiderev'       => 'fjernet en redigering fra $1',
+	'oversight'                   => 'Revisjonssletting',
+	'oversight-view'              => 'detaljer',
+	'oversight-difference'        => '(Forskjell fra forrige gjenværende revisjon)',
+	'oversight-prev'              => 'Siste forrige revisjon',
+	'oversight-hidden'            => 'Skjult revisjon',
+	'oversight-header'            => 'Nedenfor er en liste over revisjoner som nylig er blitt skjult fra offentligheten. Å frigi denne informasjonen kan føre til permanent tap av revisjonsslettingsrettigheter.',
 );
 
 /** Occitan (Occitan)

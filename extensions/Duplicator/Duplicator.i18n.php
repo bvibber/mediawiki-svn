@@ -80,9 +80,13 @@ function efDuplicatorMessages() {
 	'duplicator-source'                => 'Източник:',
 	'duplicator-dest'                  => 'Цел:',
 	'duplicator-summary'               => 'Копирано от [[$1]]',
+	'duplicator-success'               => "<big>'''Страницата [[$1]] беше копирана като [[$2]].'''</big>",
 	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|редакция беше копирана|редакции бяха копирани}}.',
 	'duplicator-success-talkcopied'    => 'Дискусионната страница също беше копирана.',
 	'duplicator-success-talknotcopied' => 'Дискусионната страница не можа да бъде копирана.',
+	'duplicator-source-notexist'       => 'Не съществува страница [[$1]]. Необходимо е да се посочи заглавие, което съществува.',
+	'duplicator-dest-invalid'          => 'Необходимо е валидно целево заглавие.',
+	'duplicator-dest-exists'           => 'Вече съществува страница [[$1]]. Необходимо е да се посочи целево заглавие, което не съществува.',
 ),
 
 /** Breton (Brezhoneg)
