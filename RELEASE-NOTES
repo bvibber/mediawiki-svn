@@ -111,6 +111,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   extension
 * Add HTML ID's mw-read-only-warning and mw-anon-edit-warning to warnings when
   editing to allow CSS styling.
+* Parser now returns list of sections
+* Support images-redirects
 
 === Bug fixes in 1.12 ===
 
@@ -267,6 +269,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 12371) Handle more namespace case variants in namespaceDupes.php
 * (bug 12380) Bot-friendly EditPage::spamPage
 * (bug 8066) Spaces can't be entered in special page aliases
+* Hide undo link if user can't edit article
+* (bug 12416) Fix password setting for createAndPromote.php
+* (bug 3097) Inconsistently usable titles containing HTML character entities
+  are now forbidden. A run of cleanupTitles.php will fix up existing pages.
+
 
 == Parser changes in 1.12 ==
 
@@ -383,6 +390,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Added list=allcategories module
 * (bug 12321) API list=blocks reveals private data
 * Fix output of wfSajaxSearch
+* (bug 12413) meta=userinfo missing <query> tag
+* Add list of sections to action=parse output
 
 === Languages updated in 1.12 ===
 
@@ -496,6 +505,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Lozi (loz) (new)
 * Lingala (ln)
 * Lithuanian (lt)
+* Moksha (mdf) (new)
+* Malagasy (mg) (new)
 * Malayalam (ml)
 * Macedonian (mk)
 * Malay (ms)
@@ -509,6 +520,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Dutch (nl)
 * Norwegian (no)
 * Novial (nov) (new)
+* Northern Sotho (nso) (new)
 * Occitan (oc)
 * Deitsch (pdc) (new)
 * Polish (pl)
@@ -583,6 +595,10 @@ updates.
 
 If upgrading from before 1.7, you may want to run refreshLinks.php to ensure
 new database fields are filled with data.
+
+If upgrading from before 1.11, and you are using a wiki as a commons repository, 
+make sure that it is updated as well. Otherwise, errors may arise due to 
+database schema changes.
 
 If you are upgrading from MediaWiki 1.4.x or earlier, some major database
 changes are made, and there is a slightly higher chance that things could

@@ -76,19 +76,35 @@ abstract class FileRepo {
 	 *
 	 * @param mixed $time 14-character timestamp, or false for the current version
 	 */
-	function findFile( $title, $time = false ) {
+	function findFile( $title, $time = false, $redirected = false ) {
+		if ( !($title instanceof Title) ) {
+			$title = Title::makeTitleSafe( NS_IMAGE, $title );
+			if ( !is_object( $title ) ) {
+				return null;
+			}
+		}
+	
 		# First try the current version of the file to see if it precedes the timestamp
 		$img = $this->newFile( $title );
 		if ( !$img ) {
 			return false;
 		}
 		if ( $img->exists() && ( !$time || $img->getTimestamp() <= $time ) ) {
+			$img->setRedirectedFrom( $redirected );
 			return $img;
 		}
 		# Now try an old version of the file
 		$img = $this->newFile( $title, $time );
 		if ( $img->exists() ) {
+			$img->setRedirectedFrom( $redirected );
 			return $img;
+		}
+
+		#Try redirects
+		if( !$redirected ) {	// Prevent redirect loops
+			$redir = $this->checkRedirects( $title->getDBkey() );
+			if( $redir )
+				return $this->findFile( $redir, $time, $title );
 		}
 	}
 
@@ -400,5 +416,20 @@ abstract class FileRepo {
 	 * STUB
 	 */
 	function cleanupDeletedBatch( $storageKeys ) {}
+	
+	/**
+	 * Check for redirects.
+	 */
+	function checkRedirects( $filename ) {
+		$dbr = $this->getSlaveDB();
+		$res = $dbr->selectRow(
+			'imageredirects',
+			array( 'ir_from', 'ir_to' ),
+			array( 'ir_from' => $filename ),
+			__METHOD__
+		);
+		if( !$res ) return false;
+		return $res->ir_to;
+	}
 }
 

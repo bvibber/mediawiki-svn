@@ -57,7 +57,7 @@ class ApiOpenSearch extends ApiBase {
 			'action' => 'query',
 			'list' => 'allpages',
 			'apnamespace' => $title->getNamespace(),
-			'aplimit' => 10,
+			'aplimit' => $params['limit'],
 			'apprefix' => $title->getDBkey()
 		));
 
@@ -84,13 +84,21 @@ class ApiOpenSearch extends ApiBase {
 
 	protected function getAllowedParams() {
 		return array (
-			'search' => null
+			'search' => null,
+			'limit' => array (
+				ApiBase :: PARAM_DFLT => 10,
+				ApiBase :: PARAM_TYPE => 'limit',
+				ApiBase :: PARAM_MIN => 1,
+				ApiBase :: PARAM_MAX => 100,
+				ApiBase :: PARAM_MAX2 => 100
+			)
 		);
 	}
 
 	protected function getParamDescription() {
 		return array (
-			'search' => 'Search string'
+			'search' => 'Search string',
+			'limit' => 'Maximum amount of results to return'
 		);
 	}
 

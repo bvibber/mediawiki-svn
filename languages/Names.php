@@ -255,7 +255,7 @@
 	'sk' => 'Slovenčina',	# Slovak
 	'sl' => 'Slovenščina',	# Slovenian
 	'sm' => 'Gagana Samoa',	# Samoan
-	'sma' => 'Lullisámegiella',	# Southern Sami
+	'sma' => 'Åarjelsaemien gïele',	# Southern Sami
 	'sn' => 'chiShona',		# Shona
 	'so' => 'Soomaaliga',	# Somali
 	'sq' => 'Shqip',		# Albanian
@@ -264,6 +264,7 @@
 	'sr-jc' => 'ијекавица',	# Serbian cyrillic iyekvian
 	'sr-el' => 'latinica',	# Serbian latin ekavian
 	'sr-jl' => 'ijekavica',	# Serbian latin iyekavian
+	'srn' => 'Sranan Tongo',		# Sranan Tongo
 	'ss' => 'SiSwati',		# Swati
 	'st' => 'Sesotho',		# Southern Sotho
 	'stq' => 'Seeltersk',		# Saterland Frisian

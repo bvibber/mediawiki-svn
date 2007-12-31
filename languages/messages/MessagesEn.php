@@ -922,7 +922,7 @@ You may ignore this message, if this account was created in error.',
 'resetpass_submit'        => 'Set password and log in',
 'resetpass_success'       => 'Your password has been changed successfully! Now logging you in...',
 'resetpass_bad_temporary' => 'Invalid temporary password. You may have already successfully changed your password or requested a new temporary password.',
-'resetpass_forbidden'     => 'Passwords cannot be changed on this wiki',
+'resetpass_forbidden'     => 'Passwords cannot be changed on {{SITENAME}}',
 'resetpass_missing'       => 'No form data.',
 
 # Edit page toolbar
@@ -1000,7 +1000,7 @@ shown below:",
 'whitelistreadtitle'        => 'Login required to read',
 'whitelistreadtext'         => 'You have to [[Special:Userlogin|login]] to read pages.',
 'whitelistacctitle'         => 'You are not allowed to create an account',
-'whitelistacctext'          => 'To be allowed to create accounts in this wiki you have to [[Special:Userlogin|log]] in and have the appropriate permissions.',
+'whitelistacctext'          => 'To be allowed to create accounts in {{SITENAME}} you have to [[Special:Userlogin|log]] in and have the appropriate permissions.',
 'confirmedittitle'          => 'E-mail confirmation required to edit',
 'confirmedittext'           => 'You must confirm your e-mail address before editing pages. Please set and validate your e-mail address through your [[Special:Preferences|user preferences]].',
 'nosuchsectiontitle'        => 'No such section',
@@ -1034,7 +1034,7 @@ If you are here by mistake, just click your browser's '''back''' button.",
 Please try again. If it still doesn't work, try logging out and logging back in.</strong>",
 'session_fail_preview_html' => "<strong>Sorry! We could not process your edit due to a loss of session data.</strong>
 
-''Because this wiki has raw HTML enabled, the preview is hidden as a precaution against JavaScript attacks.''
+''Because {{SITENAME}} has raw HTML enabled, the preview is hidden as a precaution against JavaScript attacks.''
 
 <strong>If this is a legitimate edit attempt, please try again. If it still doesn't work, try logging out and logging back in.</strong>",
 'token_suffix_mismatch'     => '<strong>Your edit has been rejected because your client mangled the punctuation characters
@@ -1085,7 +1085,7 @@ the text into a text file and save it for later.</strong>',
 'nocreatetitle'             => 'Page creation limited',
 'nocreatetext'              => 'This site has restricted the ability to create new pages.
 You can go back and edit an existing page, or [[Special:Userlogin|log in or create an account]].',
-'nocreate-loggedin'         => 'You do not have permission to create new pages on this wiki.',
+'nocreate-loggedin'         => 'You do not have permission to create new pages on {{SITENAME}}.',
 'permissionserrors'         => 'Permissions Errors',
 'permissionserrorstext'     => 'You do not have permission to do that, for the following {{PLURAL:$1|reason|reasons}}:',
 'recreate-deleted-warn'     => "'''Warning: You are recreating a page that was previously deleted.'''
@@ -1164,7 +1164,7 @@ there may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}
 'revdelete-text'              => 'Deleted revisions and events will still appear in the page history and logs,
 but parts of their content will be inaccessible to the public.
 
-Other admins on this wiki will still be able to access the hidden content and can
+Other admins on {{SITENAME}} will still be able to access the hidden content and can
 undelete it again through this same interface, unless additional restrictions are set.',
 'revdelete-legend'            => 'Set restrictions:',
 'revdelete-hide-text'         => 'Hide revision text',
@@ -1331,6 +1331,7 @@ containing all of the search terms will appear in the result).",
 'userrights-editusergroup'    => 'Edit user groups',
 'saveusergroups'              => 'Save User Groups',
 'userrights-groupsmember'     => 'Member of:',
+'userrights-groupsremovable'  => 'Removable groups:',
 'userrights-groupsavailable'  => 'Available groups:',
 'userrights-groupshelp'       => 'Select groups you want the user to be removed from or added to.
 Unselected groups will not be changed. You can deselect a group with CTRL + Left Click',
@@ -1340,6 +1341,8 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 'userrights-available-remove' => 'You can remove users from $1.',
 'userrights-no-interwiki'     => 'You do not have permission to edit user rights on other wikis.',
 'userrights-nodatabase'       => 'Database $1 does not exist or is not local.',
+'userrights-nologin'          => 'You must [[Special:Userlogin|log in]] with an administrator account to assign user rights.',
+'userrights-notallowed'       => 'Your account does not have permission to assign user rights.',
 
 # Groups
 'group'               => 'Group:',
@@ -1460,7 +1463,7 @@ If you have this image in full resolution upload this one, otherwise change the 
 'uploadedimage'               => 'uploaded "[[$1]]"',
 'overwroteimage'              => 'uploaded a new version of "[[$1]]"',
 'uploaddisabled'              => 'Uploads disabled',
-'uploaddisabledtext'          => 'File uploads are disabled on this wiki.',
+'uploaddisabledtext'          => 'File uploads are disabled on {{SITENAME}}.',
 'uploadscripted'              => 'This file contains HTML or script code that may be erroneously be interpreted by a web browser.',
 'uploadcorrupt'               => 'The file is corrupt or has an incorrect extension. Please check the file and upload again.',
 'uploadvirus'                 => 'The file contains a virus! Details: $1',
@@ -1657,7 +1660,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'specialpage-empty'               => 'There are no results for this report.',
 'lonelypages'                     => 'Orphaned pages',
 'lonelypages-summary'             => '', # only translate this message to other languages if you have to change it
-'lonelypagestext'                 => 'The following pages are not linked from other pages in this wiki.',
+'lonelypagestext'                 => 'The following pages are not linked from other pages in {{SITENAME}}.',
 'uncategorizedpages'              => 'Uncategorized pages',
 'uncategorizedpages-summary'      => '', # only translate this message to other languages if you have to change it
 'uncategorizedcategories'         => 'Uncategorized categories',
@@ -1696,7 +1699,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'longpages-summary'               => '', # only translate this message to other languages if you have to change it
 'deadendpages'                    => 'Dead-end pages',
 'deadendpages-summary'            => '', # only translate this message to other languages if you have to change it
-'deadendpagestext'                => 'The following pages do not link to other pages in this wiki.',
+'deadendpagestext'                => 'The following pages do not link to other pages in {{SITENAME}}.',
 'protectedpages'                  => 'Protected pages',
 'protectedpages-summary'          => '', # only translate this message to other languages if you have to change it
 'protectedpagestext'              => 'The following pages are protected from moving or editing',
@@ -1893,11 +1896,8 @@ Feedback and further assistance:
 'confirmdelete'               => 'Confirm delete',
 'deletesub'                   => '(Deleting "$1")',
 'historywarning'              => 'Warning: The page you are about to delete has a history:',
-'confirmdeletetext'           => 'You are about to permanently delete a page
-or image along with all of its history from the database.
-Please confirm that you intend to do this, that you understand the
-consequences, and that you are doing this in accordance with
-[[{{MediaWiki:Policy-url}}]].',
+'confirmdeletetext'           => 'You are about to delete a page along with all of its history from the database.
+Please confirm that you intend to do this, that you understand the consequences, and that you are doing this in accordance with [[{{MediaWiki:Policy-url}}|the policy]].',
 'actioncomplete'              => 'Action complete',
 'deletedtext'                 => '"$1" has been deleted.
 See $2 for a record of recent deletions.',
@@ -2209,7 +2209,7 @@ In those cases, you will have to move or merge the page manually if desired.",
 'movearticle'             => 'Move page:',
 'movenologin'             => 'Not logged in',
 'movenologintext'         => 'You must be a registered user and [[Special:Userlogin|logged in]] to move a page.',
-'movenotallowed'          => 'You do not have permission to move pages on this wiki.',
+'movenotallowed'          => 'You do not have permission to move pages on {{SITENAME}}.',
 'newtitle'                => 'To new title:',
 'move-watch'              => 'Watch this page',
 'movepagebtn'             => 'Move page',
@@ -2598,7 +2598,7 @@ is collapsed. Others will be hidden by default.
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength',
+* focallength', # Do not translate list items
 
 # EXIF tags
 'exif-imagewidth'                  => 'Width',
@@ -2894,7 +2894,7 @@ is collapsed. Others will be hidden by default.
 # E-mail address confirmation
 'confirmemail'            => 'Confirm E-mail address',
 'confirmemail_noemail'    => 'You do not have a valid email address set in your [[Special:Preferences|user preferences]].',
-'confirmemail_text'       => 'This wiki requires that you validate your e-mail address
+'confirmemail_text'       => '{{SITENAME}} requires that you validate your e-mail address
 before using e-mail features. Activate the button below to send a confirmation
 mail to your address. The mail will include a link containing a code; load the
 link in your browser to confirm that your e-mail address is valid.',

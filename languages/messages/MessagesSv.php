@@ -356,6 +356,7 @@ $messages = array(
 'faq'               => 'FAQ',
 'helppage'          => 'Help:Innehåll',
 'mainpage'          => 'Huvudsida',
+'policy-url'        => 'Project:Riktlinjer',
 'portal'            => 'Deltagarportalen',
 'portal-url'        => 'Project:Deltagarportalen',
 'privacy'           => 'Integritetspolicy',
@@ -636,7 +637,7 @@ Blockeringens ID är $5. Vänligen ange blockerings-ID i alla förfrågningar so
 'whitelistreadtitle'        => 'Läsning kräver inloggning',
 'whitelistreadtext'         => 'För att kunna läsa sidor, måste du [[Special:Userlogin|logga in]].',
 'whitelistacctitle'         => 'Du kan inte skapa konton',
-'whitelistacctext'          => 'För att kunna skapa konton på denna wiki måste du vara [[Special:Userlogin|inloggad]] och ha rätt behörighet.',
+'whitelistacctext'          => 'För att kunna skapa konton på {{SITENAME}} måste du vara [[Special:Userlogin|inloggad]] och ha rätt behörighet.',
 'confirmedittitle'          => 'E-postbekräftelse krävs för redigering',
 'confirmedittext'           => 'Du måste bekräfta din e-postadress innan du kan redigera sidor. Var vänlig ställ in och validera din e-postadress genom dina [[Special:Preferences|användarinställningar]].',
 'nosuchsectiontitle'        => 'Avsnittet finns inte',
@@ -670,7 +671,9 @@ så som det kommer att se ut om du väljer att spara.',
 'session_fail_preview'      => '<strong>Databasen kunde inte bearbeta redigeringen på grund av ett bortfall av sessionsdata. Försök igen; om det fortfarande inte fungerar, prova att öppna om redigeringssidan, logga ut och logga in igen eller vänta ett tag på att felet fixas.</strong>',
 'session_fail_preview_html' => "<strong>Beklagar! Vi kunde inte databehandla din redigering på grund av att sessionens data gått förlorad.</strong>
 
-''Eftersom denna wiki har aktiverat rå HTML, så döljs förhandsvisningen som en förebyggande säkerhetsåtgärd med syfte att förhindra JavaScript-attacker.''",
+''Eftersom {{SITENAME}} har aktiverat rå HTML, så döljs förhandsvisningen som en förebyggande säkerhetsåtgärd med syfte att förhindra JavaScript-attacker.''
+
+<strong>Om det är ett försök att göra en rättmätig redigering, så pröva igen. Om det fortfarande inte fungerar, pröva att logga ut och logga in igen.</strong>",
 'token_suffix_mismatch'     => '<strong>Din redigering har stoppats eftersom din klient har ändrat tecknen
 i redigeringens "edit token". Redigeringen stoppades för att förhindra att sidtexten skadas.
 Detta händer ibland om du använder buggiga webbaserade anonyma proxytjänster.</strong>',
@@ -708,7 +711,7 @@ Försäkra dig om att du följer riktlinjerna för redigering av skyddade sidor.
 'edittools'                 => '<!-- Denna text kommer att visas nedanför redigeringsrutor och uppladdningsformulär. -->',
 'nocreatetitle'             => 'Skapande av sidor begränsat',
 'nocreatetext'              => 'Denna wiki har begränsat möjligheterna att skapa nya sidor. Du kan redigera existerande sidor, eller [[Special:Userlogin|logga in eller skapa ett användarkonto]].',
-'nocreate-loggedin'         => 'Du har inte behörighet att skapa nya sidor på den här wikin.',
+'nocreate-loggedin'         => 'Du har inte behörighet att skapa nya sidor på {{SITENAME}}.',
 'permissionserrors'         => 'Behörighetsfel',
 'permissionserrorstext'     => 'Du har inte behörighet att göra det du försöker göra, av följande {{PLURAL:$1|anledning|anledningar}}:',
 'recreate-deleted-warn'     => "'''Varning: Den sida du skapar har tidigare raderats.'''
@@ -772,9 +775,9 @@ Prova att [[Special:Search|söka på wikin]] för relevanta nya sidor.',
 'revdelete-nooldid-text'      => 'Du angav inte vilken eller vilka versioner du vill utföra funktionen på.',
 'revdelete-selected'          => "{{PLURAL:$2|Vald version|Valda versioner}} av '''$1:'''",
 'logdelete-selected'          => "{{PLURAL:$2|Vald loggåtgärd|valda loggåtgärder}} för '''$1:'''",
-'revdelete-text'              => 'Borttagna versioner kommer fortfarande att synas i historiken, men deras innehåll kommer ej att vara tillgängligt för allmänheten.
+'revdelete-text'              => 'Borttagna versioner och åtgärder kommer fortfarande att synas i historiken och i loggar, men deras innehåll kommer ej att vara tillgängligt för allmänheten.
 
-Andra administratörer på denna wiki kommer fortfarande att kunna läsa det dolda innehållet och kan återställa sidan genom samma gränssnitt, om inte en ytterligare begränsningar finns.',
+Andra administratörer på {{SITENAME}} kommer fortfarande att kunna läsa det dolda innehållet och kan återställa sidan genom samma gränssnitt, om inte en ytterligare begränsningar finns.',
 'revdelete-legend'            => 'Ange begränsningar för version:',
 'revdelete-hide-text'         => 'Dölj versionstext',
 'revdelete-hide-name'         => 'Dölj åtgärd och sidnamn',
@@ -930,6 +933,8 @@ $2 Lista omdirigeringar &nbsp; Sök efter $3 $9',
 'userrights-available-remove' => 'Du kan ta bort användare från $1.',
 'userrights-no-interwiki'     => 'Du har inte behörighet att ändra användarrättigheter på andra wikis.',
 'userrights-nodatabase'       => 'Databasen $1 finns inte eller så är den inte lokal.',
+'userrights-nologin'          => 'Du måste [[Special:Userlogin|logga in]] med ett administratörskonto för att ändra användarrättigheter.',
+'userrights-notallowed'       => 'Ditt konto har inte behörighet till att ändra användarrättigheter.',
 
 # Groups
 'group'               => 'Grupp:',
@@ -1414,10 +1419,8 @@ Feedback och hjälp:
 'confirmdelete'               => 'Bekräfta borttagning',
 'deletesub'                   => '(Tar bort "$1")',
 'historywarning'              => 'Varning: Sidan du håller på att radera har en historik:',
-'confirmdeletetext'           => 'Du håller på att permanent ta bort en sida
-eller bild med all dess historik från databasen.
-Bekräfta att du förstår vad du håller på med och vilka konsekvenser
-detta leder till, och att det följer [[{{MediaWiki:Policy-url}}|riktlinjerna]].',
+'confirmdeletetext'           => 'Du håller på att permanent ta bort en sida med all dess historik från databasen.
+Bekräfta att du förstår vad du håller på med och vilka konsekvenser detta leder till, och att du följer [[{{MediaWiki:Policy-url}}|riktlinjerna]].',
 'actioncomplete'              => 'Genomfört',
 'deletedtext'                 => '"$1" har tagits bort. 
 Se $2 för noteringar om de senaste raderingarna.',
@@ -2110,6 +2113,7 @@ Listan tar enbart hänsyn till rader som börjar med asterisk (*). Den första l
 'exif-meteringmode-0'   => 'Okänd',
 'exif-meteringmode-1'   => 'Medelvärde',
 'exif-meteringmode-2'   => 'Centrumviktat medelvärde',
+'exif-meteringmode-3'   => 'Spotmätning',
 'exif-meteringmode-4'   => 'Multispot',
 'exif-meteringmode-5'   => 'Mönster',
 'exif-meteringmode-6'   => 'Partiell',

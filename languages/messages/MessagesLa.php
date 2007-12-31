@@ -918,7 +918,7 @@ Hoc aequat fere '''$5''' mutationes per paginam, et '''$6''' visae per mutatione
 'shortpages'              => 'Paginae breves',
 'longpages'               => 'Paginae longae',
 'deadendpages'            => 'Paginae sine nexu',
-'deadendpagestext'        => 'Paginae hae sequentes non nectunt ad alias paginas ullas.',
+'deadendpagestext'        => 'Paginae hae sequentes non nectunt ad alias paginas ullas in {{grammar:ablative|{{SITENAME}}}}.',
 'protectedpages'          => 'Paginae protectae',
 'protectedpagestext'      => 'Paginae sequentes protectae sunt a movendo ac recensendo',
 'protectedtitles'         => 'Tituli protecti',
@@ -1045,8 +1045,8 @@ Si paginam ex indice paginarum custoditarum removere vis, imprime \"decustodire\
 'confirmdelete'             => 'Adfirmare deletionem',
 'deletesub'                 => '(Deletio de "$1")',
 'historywarning'            => 'Monitio: Pagina quam delere vis historiam habet:',
-'confirmdeletetext'         => 'Paginam vel fasciculum cum tota historia eius perpetuo delebis ex base datorum.
-Adfirma quaesumus te paginam vel fasciculum re vera delere velle, te consequentias intellere, et actionem tuam [[{{MediaWiki:Policy-url}}]] congruere.',
+'confirmdeletetext'         => 'Paginam cum tota historia eius delebis ex base datorum.
+Adfirma quaesumus te paginam re vera delere velle, te consequentias intellere, et actionem tuam [[{{MediaWiki:Policy-url}}|consilio]] congruere.',
 'actioncomplete'            => 'Actum perfectum',
 'deletedtext'               => '"$1" deletum est.
 Vide $2 pro indice deletionum recentum.',
@@ -1384,7 +1384,7 @@ Quaesitum "[[$1]]" etiam existit. Vin tu eam delere ut moveas?',
 # E-mail address confirmation
 'confirmemail'            => 'Inscriptionem electronicam adfirmare',
 'confirmemail_noemail'    => 'Non est tibi inscriptio electronica valida in [[Special:Preferences|tuis praeferentiis]] posita.',
-'confirmemail_text'       => 'Hoc vici te postulat inscriptionem tuam electronicam adfirmare priusquam proprietatibus litterarum electronicarum fruaris. Imprime botonem subter ut nuntium adfirmationis tibi mittatur. Nuntio nexus inerit quod est scribendus in tuo navigatro interretiali ut validum adfirmes tuam inscriptionem electronicam.',
+'confirmemail_text'       => '{{SITENAME}} te postulat inscriptionem tuam electronicam adfirmare priusquam proprietatibus litterarum electronicarum fruaris. Imprime botonem subter ut nuntium adfirmationis tibi mittatur. Nuntio nexus inerit quod est scribendus in tuo navigatro interretiali ut validum adfirmes tuam inscriptionem electronicam.',
 'confirmemail_send'       => 'Mittere codicem adfirmationis',
 'confirmemail_sent'       => 'Missae sunt litterae electronicae adfirmationis.',
 'confirmemail_sendfailed' => 'Litteras electronicas adfirmationis non potuimus mittere. Inspice inscriptionem tuam electronicam ut errores invenias.

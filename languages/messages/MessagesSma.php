@@ -1,12 +1,19 @@
 <?php
-/** Southern Sami (Lullisámegiella)
+/** Southern Sami (Åarjelsaemien gïele)
  *
  * @addtogroup Language
  *
  * @author Max sonnelid
+ * @author Siebrand
+ * @author Nike
  */
 
+
+
 $messages = array(
+'underline-always' => 'Iktesth',
+'underline-never'  => 'Aaltere',
+
 # Dates
 'sunday'        => 'Aejlege',
 'monday'        => 'Måanta',
@@ -40,19 +47,29 @@ $messages = array(
 'november-gen'  => 'Rahka',
 'december-gen'  => 'Goeve',
 
-'about'  => 'Bïjre',
-'qbedit' => 'Värrhtoedimmie',
+'about'         => 'Bïjre',
+'qbedit'        => 'Värrhtoedimmie',
+'qbpageoptions' => 'Dïhte bielie',
 
 'errorpagetitle'   => 'Båajhtode',
 'tagline'          => 'Raejeste {{SITENAME}}',
 'help'             => 'Viehkie',
 'search'           => 'Ohtsedh',
 'searchbutton'     => 'Ohtsedh',
+'go'               => 'Vaadtsa',
 'searcharticle'    => 'Vaadtsa',
+'history'          => 'Bielie historije',
+'history_short'    => 'Historije',
+'info_short'       => 'Bïevnesh',
+'printableversion' => 'Tjaelije bielie',
+'print'            => 'Tjaeledh olkese',
 'edit'             => 'Värrhtoedimmie',
+'editthispage'     => 'Värrhtoedimmie dïhte bielie',
 'newpage'          => 'Orre bielie',
 'talkpagelinktext' => 'Dïerhkestidh',
 'talk'             => 'Dïerhkestidh',
+'toolbox'          => 'Dïrregeborhtje',
+'otherlanguages'   => 'jeatjebh gïele',
 'jumptosearch'     => 'ohtsedh',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
@@ -61,19 +78,28 @@ $messages = array(
 
 'editsection' => 'värrhtoedimmie',
 'editold'     => 'värrhtoedimmie',
+'showtoc'     => 'vuesehte',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
-'nstab-main'  => 'Bielie',
-'nstab-media' => 'Guvvie',
-'nstab-image' => 'Guvvie',
+'nstab-main'      => 'Bielie',
+'nstab-user'      => 'Nuhtjien bielie',
+'nstab-media'     => 'Guvvie',
+'nstab-project'   => 'Wikipedije bielie',
+'nstab-image'     => 'Guvvie',
+'nstab-mediawiki' => 'Mediawiki-dïjre',
+'nstab-help'      => 'Viehke bielie',
 
 # General errors
-'error' => 'Båajhtode',
+'error'              => 'Båajhtode',
+'internalerror'      => 'Sjisjnjie båajhtede',
+'internalerror_info' => 'Sjisjnjie båajhtede: $1',
+'viewsource'         => 'Vuesehte tjaalege',
 
 # Login and logout pages
 'yourname'           => 'Nuhtjiennomme:',
 'yourpassword'       => 'Loevesbaakoe:',
 'youremail'          => 'E-påaste:',
+'username'           => 'Nuhtjiennomme:',
 'yourlanguage'       => 'Gïele:',
 'email'              => 'E-påaste',
 'mailmypassword'     => 'E-påaste loevesbaakoe',
@@ -82,6 +108,7 @@ $messages = array(
 # Edit pages
 'savearticle' => 'Spååredh bielie',
 'newarticle'  => '(Orre)',
+'editinguser' => 'Värrhtoedimmie nuhtjien <b>$1</b>',
 
 # History pages
 'page_first' => 'voestegh',
@@ -91,31 +118,89 @@ $messages = array(
 'nextn'       => 'minngeben $1',
 'powersearch' => 'Ohtsedh',
 
+# Preferences page
+'searchresultshead' => 'Ohtsedh',
+
+# Groups
+'group-bot' => 'Jïjtjesvïhtjije',
+
+'group-bot-member'   => 'Jïjtjesvïhtjije',
 'group-sysop-member' => 'Reerien',
 
 # Image list
-'imagelist'     => 'Guvvie lästoe',
-'imgfile'       => 'guvvie',
-'filehist-user' => 'Nuhtjien',
+'imagelist'      => 'Guvvie lästoe',
+'ilsubmit'       => 'Ohtsedh',
+'imgfile'        => 'guvvie',
+'filehist-user'  => 'Nuhtjien',
+'imagelist_name' => 'Nomme',
+'imagelist_user' => 'Nuhtjien',
 
 'brokenredirects-edit' => '(värrhtoedimmie)',
 
 # Miscellaneous special pages
-'listusers' => 'Nuhtjien lästoe',
+'listusers'    => 'Nuhtjien lästoe',
+'specialpages' => 'Joekoenlaakan bielie',
+'move'         => 'Jåhta',
+
+# Book sources
+'booksources-go' => 'Vaadtsa',
 
 # Special:Log
 'specialloguserlabel' => 'Nuhtjien:',
+'log-search-submit'   => 'Vaadtsa',
 
 # Special:Allpages
-'nextpage' => 'Minngebe bielie ($1)',
+'nextpage'       => 'Minngebe bielie ($1)',
+'allpagessubmit' => 'Vaadtsa',
 
 # E-mail user
-'emailuser' => 'E-påaste dïhte nuhtjien',
+'emailuser'       => 'E-påaste dïhte nuhtjien',
+'defemailsubject' => '{{SITENAME}} e-påaste',
+'emailsubject'    => 'Ïebne',
+'emailmessage'    => 'Dïjre',
+'emailsend'       => 'Seedtie',
+
+'created' => 'skaepede',
+
+# Restrictions (nouns)
+'restriction-edit'   => 'Värrhtoedimmie',
+'restriction-move'   => 'Jåhta',
+'restriction-create' => 'Skaepiedidh',
+
+# Undelete
+'undelete-search-submit' => 'Ohtsedh',
+
+'sp-contributions-submit' => 'Ohtsedh',
+
+# What links here
+'whatlinkshere-page' => 'Bielie:',
+
+# Block/unblock
+'ipaddress'            => 'IP Tjaalesijjie:',
+'ipadressorusername'   => 'IP Tjaalesijjie jallh nuhtjiennomme:',
+'ipblocklist-username' => 'Nuhtjiennomme jallh IP tjaalesijjie:',
+'ipblocklist-submit'   => 'Ohtsedh',
+
+# Move page
+'movepage'    => 'Jåhta bielie',
+'movearticle' => 'Jåhta bielie:',
+'movepagebtn' => 'Jåhta bielie',
+
+# Namespace 8 related
+'allmessagesname' => 'Nomme',
 
 # Tooltip help for the actions
 'tooltip-search' => 'Ohtsedh {{SITENAME}}',
+'tooltip-p-logo' => 'Åejjiebielie',
+
+# Attribution
+'and' => 'jih',
+
+# AJAX search
+'useajaxsearch' => 'Nuhtjie AJAX ohtsedh',
 
 # Auto-summaries
 'autosumm-new' => 'Orre bielie: $1',
 
 );
+

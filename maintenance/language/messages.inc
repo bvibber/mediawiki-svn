@@ -737,6 +737,7 @@ $wgMessageStructure = array(
 		'userrights-editusergroup',
 		'saveusergroups',
 		'userrights-groupsmember',
+		'userrights-groupsremovable',
 		'userrights-groupsavailable',
 		'userrights-groupshelp',
 		'userrights-reason',
@@ -745,6 +746,8 @@ $wgMessageStructure = array(
 		'userrights-available-remove',
 		'userrights-no-interwiki',
 		'userrights-nodatabase',
+		'userrights-nologin',
+		'userrights-notallowed',
 	),
 	'group' => array(
 		'group',

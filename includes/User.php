@@ -1731,10 +1731,6 @@ class User {
 	 * @return bool
 	 */
 	function isLoggedIn() {
-		if( $this->mId === null and $this->mName !== null ) {
-			// Special-case optimization
-			return !self::isIP( $this->mName );
-		}
 		return $this->getID() != 0;
 	}
 

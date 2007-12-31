@@ -9,6 +9,8 @@
  * @author לערי ריינהארט
  */
 
+
+
 $messages = array(
 # User preference toggles
 'tog-underline'           => 'Salungguhitan ang mga kawing:',
@@ -96,6 +98,7 @@ $messages = array(
 'mainpagetext' => "<big>'''Matagumpay na ininstala ang MediaWiki.'''</big>",
 
 'article'        => 'Pahina ng nilalaman',
+'newwindow'      => '(magbubukas sa bagong bintana)',
 'cancel'         => 'Ikansela',
 'qbfind'         => 'Hanapin',
 'qbbrowse'       => 'Basa-basahin',
@@ -170,6 +173,7 @@ $messages = array(
 'versionrequired'     => 'Kinakailangan ang bersyong $1 ng MediaWiki',
 'versionrequiredtext' => 'Kinakailangan ang bersyong $1 ng MediaWiki upang magamit ang pahinang ito. Tingnan ang [[Special:Version|pahina ng bersyon]].',
 
+'retrievedfrom'           => 'Ikinuha mula sa "$1"',
 'youhavenewmessages'      => 'Mayroon kang $1 ($2).',
 'newmessageslink'         => 'mga bagong mensahe',
 'newmessagesdifflink'     => 'huling pagbabago',
@@ -194,6 +198,7 @@ $messages = array(
 
 # General errors
 'error'                => 'Kamalian',
+'cachederror'          => 'Ang sumusunod ay isang ibinaong kopya ng hinihiling na pahina, at maaaring hindi ito bago.',
 'internalerror'        => 'Kamaliang panloob',
 'internalerror_info'   => 'Kamaliang panloob: $1',
 'filecopyerror'        => 'Hindi makopya ang talaksang "$1" sa "$2".',
@@ -214,8 +219,8 @@ $messages = array(
 
 Nilikha na ang iyong kuwenta. Huwag kalimutang baguhin ang iyong mga kagustuhan sa {{SITENAME}}.',
 'loginpagetitle'            => 'Paglagda ng manggagamit',
-'yourname'                  => 'Bansag (username):',
-'yourpassword'              => 'Hudyat (password):',
+'yourname'                  => 'Bansag:',
+'yourpassword'              => 'Hudyat:',
 'remembermypassword'        => 'Tandaan ang hudyat sa kompyuter na ito',
 'yourdomainname'            => 'Iyong dominyo:',
 'loginproblem'              => '<b>Nagkaroon ng problema sa iyong paglagda.</b><br />Subukan po muli!',
@@ -235,6 +240,7 @@ Nilikha na ang iyong kuwenta. Huwag kalimutang baguhin ang iyong mga kagustuhan 
 'yourrealname'              => 'Tunay na pangalan:',
 'yourlanguage'              => 'Wika:',
 'yournick'                  => 'Palayaw:',
+'badsiglength'              => 'Masyadong mahaba ang bansag; kailangan ito ay hindi hihigit sa $1 karakter.',
 'loginerror'                => 'Kamalian sa paglagda',
 'prefs-help-email-required' => 'Kinakailangan ang direksyong e-liham.',
 'loginsuccesstitle'         => 'Matagumpay ang paglagda',
@@ -323,10 +329,17 @@ upang makapagkarga ng talaksan.',
 'watch'         => 'Bantayan',
 'watchthispage' => 'Bantayan itong pahina',
 
+# Namespace form on various pages
+'namespace' => 'Ngalan-espasyo:',
+
 # Contributions
 'contributions' => 'Mga ambag ng manggagamit',
 'mycontris'     => 'Aking mga ginawa',
 'contribsub2'   => 'Para kay $1 ($2)',
+
+'sp-contributions-newbies'     => 'Ipakita ang mga ambag ng mga bagong kuwenta lamang',
+'sp-contributions-newbies-sub' => 'Para sa mga bagong kuwenta',
+'sp-contributions-blocklog'    => 'Tala sa paglipat',
 
 # What links here
 'whatlinkshere'       => 'Mga nakaturo dito',
@@ -353,14 +366,18 @@ upang makapagkarga ng talaksan.',
 'ipboptions'         => '2 oras:2 hours,1 araw:1 day,3 araw:3 days,1 linggo:1 week,2 linggo:2 weeks,1 buwan:1 month,3 buwan:3 months,6 buwan:6 months,1 taon:1 year,walang hanggan:infinite', # display1:time1,display2:time2,...
 
 # Move page
+'movenologin'             => 'Hindi nakalagda',
 'movenologintext'         => 'Kailangang ikaw ay isang naka-rehistrong manggagamit at ay [[Special:Userlogin|nakalagda]] upang makapaglipat ng pahina.',
-'movenotallowed'          => 'Wala kang permisong maglipat ng pahina sa wiking ito.',
+'movenotallowed'          => 'Wala kang permisong maglipat ng pahina sa {{SITENAME}}.',
 'newtitle'                => 'Sa bagong pamagat:',
 'move-watch'              => 'Bantayan itong pahina',
+'movepagebtn'             => 'Ilipat ang pahina',
+'pagemovedsub'            => 'Matagumpay ang paglipat',
 'movepage-moved'          => '<big>\'\'\'Ang "$1" ay inilipat sa "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'May umiiral nang pahinang may ganitong pangalan, o ang
 pangalang pinili mo ay hindi mabisa.
 Pumili muli ng ibang pangalan.',
+'cantmove-titleprotected' => 'Hindi mo malilipatan ang isang pahina sa lokasyong ito, dahil nakasanggalang sa paglikha ang baong pamagat',
 'movedto'                 => 'inilipat sa',
 'movetalk'                => 'Ilipat ang kaugnay na pahinang usapan',
 'talkpagemoved'           => 'Inilipat rin ang kaugnay na pahinang usapan.',
@@ -371,39 +388,70 @@ Pumili muli ng ibang pangalan.',
 'delete_and_move_confirm' => 'Oo, burahin ang pahina',
 
 # Export
-'export'        => 'Magluwas ng pahina',
-'export-submit' => 'Magluwas',
+'export'          => 'Magluwas ng pahina',
+'exportcuronly'   => 'Isama lamang ang kasalukuyang rebisyon, hindi ang buong kasaysayan',
+'export-submit'   => 'Magluwas',
+'export-download' => 'Itala bilang talaksan',
 
 # Namespace 8 related
-'allmessages'        => 'Mga mensaheng pansistema',
-'allmessagesname'    => 'Pangalan',
-'allmessagesdefault' => 'Tinakdang teksto',
-'allmessagescurrent' => 'Kasalukuyang teksto',
+'allmessages'               => 'Mga mensaheng pansistema',
+'allmessagesname'           => 'Pangalan',
+'allmessagesdefault'        => 'Tinakdang teksto',
+'allmessagescurrent'        => 'Kasalukuyang teksto',
+'allmessagestext'           => 'Ito ay isang tala ng mga mensaheng pansistema na matatagpuan sa ngalan-espasyong MediaWiki.',
+'allmessagesnotsupportedDB' => "Hindi magamit ang '''{{ns:special}}:Allmessages''' dahil nakapatay ang '''\$wgUseDatabaseMessages'''.",
 
 # Thumbnails
 'thumbnail-more' => 'Palakihin',
+'missingimage'   => '<b>Nawawalang larawan</b><br /><i>$1</i>',
 'filemissing'    => 'Nawawala ang talaksan',
 
 # Special:Import
 'import'                  => 'Mag-angkat ng pahina',
 'import-interwiki-submit' => 'Mag-angkat',
 'importstart'             => 'Inaangkat ang mga pahina...',
+'importsuccess'           => 'Matagumpay ang pag-angkat!',
 
 # Tooltip help for the actions
 'tooltip-pt-userpage'    => 'Aking pahina ng manggagamit',
 'tooltip-pt-mytalk'      => 'Aking pahinang usapan',
 'tooltip-pt-preferences' => 'Aking mga kagustuhan',
+'tooltip-pt-mycontris'   => 'Tala ng aking mga ambag',
+'tooltip-pt-logout'      => 'Umalis sa pagkalagda',
+
+# Spam protection
+'subcategorycount'     => 'Mayroong {{PLURAL:$1|isang subkategorya|$1 subkategorya}} sa kategoryang ito.',
+'category-media-count' => 'Mayroong {{PLURAL:$1|isang talaksan|$1 talaksan}} sa kategoryang ito.',
 
 # Media information
 'file-nohires'         => '<small>Walang makuhang mas mataas na resolusyon.</small>',
 'show-big-image'       => 'Buong resolusyon',
 'show-big-image-thumb' => '<small>Laki ng itong pribyu: $1 × $2 piksel</small>',
 
+# External editor support
+'edit-externally' => 'Baguhin ang talaksang ito sa pamamagitan ng panlabas na aplikasyon',
+
 # Delete conflict
 'deletedwhileediting' => 'Babala: Nabura na ang pahinang ito pagkatapos mong magsimulang magbago!',
 
+# HTML dump
+'redirectingto' => 'Nagkakarga sa [[$1]]...',
+
+# action=purge
+'confirm_purge' => 'Linisin ang baunan ng pahinang ito?
+
+$1',
+
 # Auto-summaries
+'autosumm-blank'   => 'Itinatanggal ang lahat ng nilalaman mula sa pahina',
+'autosumm-replace' => "Ipinapalit ang pahina ng may nilalamang '$1'",
 'autoredircomment' => 'Ikinakarga sa [[$1]]',
 'autosumm-new'     => 'Bagong pahina: $1',
+
+# Live preview
+'livepreview-failed' => 'Nabigo ang buhay na pribyu! Subukan ang normal na pribyu.',
+
+# Friendlier slave lag warnings
+'lag-warn-normal' => 'Maaaring hindi mapakita sa talang ito ang mga pagbabagong mas bago sa $1 segundo.',
 
 );
