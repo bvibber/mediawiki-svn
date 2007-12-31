@@ -65,7 +65,7 @@ class MakesysopForm {
 		$wgOut->addWikiText( wfMsg( "makesysoptext" ) );
 
 		$titleObj = Title::makeTitle( NS_SPECIAL, "Makesysop" );
-		$action = $titleObj->escapeLocalURL( "action=submit" );
+		$action = $titleObj->getLocalUrl( "action=submit" );
 
 		if( $wgUser->isAllowed( 'userrights' ) ) {
 			$wgOut->addWikiText( wfMsg( 'makesysop-see-userrights' ) );
