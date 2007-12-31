@@ -110,6 +110,15 @@ $messages['hsb'] = array(
 	'lookupuser_useroptions' => 'Wužiwarske opcije:',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'lookupuser_id'       => 'Benotzer-Nummer: <tt>#$1</tt>',
+	'lookupuser_email'    => 'E-mail: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname' => 'Richtege Numm: $1',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

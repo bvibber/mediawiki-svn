@@ -38,6 +38,13 @@ $messages['fr'] = array(
 	'languageselector-setlang' => 'Définir',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'languageselector' => 'Sprooch',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
 */

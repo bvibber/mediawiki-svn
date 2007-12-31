@@ -113,7 +113,7 @@ $wgLuceneSearchMessages['bcl'] = array(
  * @author Borislav
  */
 $wgLuceneSearchMessages['bg'] = array(
-	'searchnumber'          => '<strong>Резултати $1-$2 от $3</strong>',
+	'searchnumber'          => '<strong>Резултати $1–$2 от $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Предишни</span>",
 	'searchnext'            => "<span style='font-size: small'>Следващи</span> &#x00BB;",
 	'lucene-resultsize'     => '$1 ($2 думи)',

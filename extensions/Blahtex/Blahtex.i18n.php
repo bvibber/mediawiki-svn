@@ -478,6 +478,13 @@ $messages['hsb'] = array(
 	'math_WrongFontEncodingWithHint'        => 'Symbol "$1" njesmě so w pismowym kodowanju "$2" jewić (spytaj přikaz "$3{...}" wužiwać)',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'math_InvalidColour' => 'D\'Faarw "$1" gëtt et net',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author Annabel

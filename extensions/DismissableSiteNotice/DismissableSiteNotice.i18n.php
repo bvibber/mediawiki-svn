@@ -195,8 +195,11 @@ $wgDismissableSiteNoticeMessages['ro'] = array(
 	'sitenotice_close' => 'ascunde',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
 $wgDismissableSiteNoticeMessages['ru'] = array(
-	'sitenotice_close' => 'спрятать',
+	'sitenotice_close' => 'скрыть',
 );
 
 /** Sassarese (Sassarese)

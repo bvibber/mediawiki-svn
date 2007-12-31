@@ -257,6 +257,15 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-granted' => '[[User:$1|$1]] nunc habet iures \'\'rollback\'\'.',
 ),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+'lb' => array(
+	'giverollback-username' => 'Benotzernumm:',
+	'giverollback-change'   => 'Statut änneren:',
+	'giverollback-comment'  => 'Bemierkung:',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 	'giverollback' => 'Terugdraairechten beheren',

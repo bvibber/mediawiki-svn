@@ -60,6 +60,13 @@ function efContributionseditcountMessages()  {
 	'contributionseditcount' => 'Questo utente ha $1 edit',
 ),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+'lb' => array(
+	'contributionseditcount' => 'Dëse Benotzer huet $1 Kontributiounen.',
+),
+
 'nl' => array(
 	'contributionseditcount'  =>  'Deze gebruiker heeft $1 bewerkingen.',
 ),

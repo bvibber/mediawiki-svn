@@ -18,6 +18,14 @@ $messages['ar'] = array(
 	'icon-badwidth' => 'عرض سيىء',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'icon-badimage' => 'Ewavaja',
+	'icon-badwidth' => 'Lumaj',
+);
+
 /** Bulgarian (Български)
  * @author Spiritia
  */

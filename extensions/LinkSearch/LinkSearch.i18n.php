@@ -265,6 +265,7 @@ $wgLinkSearchMessages['la'] = array(
  * @author Robby
  */
 $wgLinkSearchMessages['lb'] = array(
+	'linksearch'      => 'Weblink-Sich',
 	'linksearch-ns'   => 'Nummraum:',
 	'linksearch-ok'   => 'Sichen',
 	'linksearch-line' => '$1 verlinkt vun $2',

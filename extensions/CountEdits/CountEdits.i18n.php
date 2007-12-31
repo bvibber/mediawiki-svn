@@ -36,6 +36,19 @@ function efCountEditsMessages( $single = false ) {
 	'countedits-nocontribs' => 'لا يوجد مساهمون في هذه الويكي.',
 ),
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+'avk' => array(
+	'countedits'              => 'Betarota',
+	'countedits-username'     => 'Favesikyolt :',
+	'countedits-ok'           => 'Enkalí !',
+	'countedits-nosuchuser'   => 'Mek favesik dem $1 yolt.',
+	'countedits-resultheader' => 'Trasikseem va $1',
+	'countedits-resulttext'   => '$1 $2 -on al betar',
+	'countedits-mostactive'   => 'Tel lowebesikeem',
+),
+
 'bcl' => array(
 	'countedits-resultheader' => 'Mga resulta kan $1',
 	'countedits-mostactive' => 'Pinaka mahigos na mga kontributor',

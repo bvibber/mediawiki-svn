@@ -273,6 +273,7 @@ function efBookInformationMessages() {
 	'bookinfo-result-publisher'  => 'Editeur:',
 	'bookinfo-result-year'       => 'Joer:',
 	'bookinfo-error-invalidisbn' => 'Dir hutt eng ISBN aginn déi et net gëtt.',
+	'bookinfo-error-nosuchitem'  => "D'Säit gëtt et net oder si gouf net fonnt.",
 ),
 
 /** Lithuanian (Lietuvių)

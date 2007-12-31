@@ -43,7 +43,13 @@ $wgExpandTemplatesMessages['bcl'] = array(
 	'expand_templates_preview'         => 'Patânaw',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ * @author Borislav
+ */
 $wgExpandTemplatesMessages['bg'] = array(
+	'expandtemplates'                  => 'Разгръщане на шаблони',
+	'expand_templates_input'           => 'Входящ текст:',
 	'expand_templates_output'          => 'Резултат',
 	'expand_templates_ok'              => 'ОК',
 	'expand_templates_remove_comments' => 'Премахване на коментари',

@@ -95,6 +95,13 @@ function efImportFreeImagesMessages() {
 			'importfreeimages_returntoform' => 'Abo klikń <a href=\'$1\'>sem</a>, zo by k stronje z pytanskimi wuslědkami wróćił.',
 		),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+		'lb' => array(
+			'importfreeimages_owner' => 'Auteur:',
+		),
+
 		'nl' => array(
 			'importfreeimages'              => 'Vrije afbeeldingen importeren',
 			'importfreeimages_description'  => 'Deze pagina laat u toe om juist gelicenseerde foto\'s van flickr te zoeken and die te importeren naar uw wiki.',

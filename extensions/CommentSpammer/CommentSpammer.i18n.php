@@ -70,6 +70,13 @@ function efCommentSpammerMessages() {
 	'cspammer-log-page' => 'Protokol komentarnych spamowarjow',
 ),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+'lb' => array(
+	'cspammer-log-page' => 'Bemierkung Spammer Logbuch',
+),
+
 'nl' => array(
 	'commentspammer-save-blocked' => 'Uw IP-adres wordt verdacht van spammen - opslaan is geweigerd. Maak een gebruiker aan om dit te voorkomen.',
 	'commentspammer-log-msg' => 'bewerking van [[Special:Contributions/$1|$1]] aan [[:$2]].',

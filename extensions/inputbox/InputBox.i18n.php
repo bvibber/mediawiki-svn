@@ -374,7 +374,8 @@ function efInputBoxMessages() {
  * @author Robby
  */
 'lb' => array(
-	'createarticle' => 'Säit uleeën',
+	'searchfulltext' => 'Am ganzen Text sichen',
+	'createarticle'  => 'Säit uleeën',
 ),
 
 'lg' => array(

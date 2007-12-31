@@ -69,6 +69,18 @@ $messages['hsb'] = array(
 Tuta e-mejl bu ći wot $1 přez e-mejlowy system {{SITENAME}} pósłana.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'email_footer' => '
+
+------------------------------------------------------------------------------
+Dës E-Mail gouf iech vun $1 iwwer den E-Mail-System vun {{SITENAME}}geschéckt.
+
+$2',
+);
+
 $messages['nl'] = array(
 	'email_footer' => '
 ----------------------------------------------------------------------------

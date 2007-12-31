@@ -120,9 +120,9 @@ function efDuplicatorMessages() {
  * @author SMP
  */
 'ca' => array(
-	'duplicator'                       => 'Duplica un article',
+	'duplicator'                       => 'Duplica una pàgina',
 	'duplicator-toolbox'               => 'Duplica aquesta pàgina',
-	'duplicator-header'                => "Aquesta pàgina permet la duplicació completa d'un article, creant còpies independents de totes les històries. Això és útil per a l'edició de nous articles a partir d'altres, etc.",
+	'duplicator-header'                => "Aquesta pàgina permet la duplicació completa d'una pàgina, creant còpies independents de tots els historials. Això és útil per a l'edició de nous articles a partir d'altres, etc.",
 	'duplicator-options'               => 'Opcions',
 	'duplicator-source'                => 'Origen:',
 	'duplicator-dest'                  => 'Destinació',
