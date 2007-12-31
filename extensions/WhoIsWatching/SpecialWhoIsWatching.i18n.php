@@ -69,9 +69,9 @@ $allMessages = array(
  * @author Siebrand
  */
 	'nl' => array(
-		'whoiswatching'                => 'Wie volgt een pagina',
-		'specialwhoiswatchingthepage'  => 'Wie volgt %s',
-		'specialwhoiswatchingusage'    => "Deze speciale pagina kan niet alleen gebruikt worden. Gelieve de pagina [[MediaWiki:Number_of_watching_users_pageview]] te gebruiken om een ''entry point'' <!-- ? --> aan deze speciale pagina te bepalen.",
+		'whoiswatching'                => 'Wie volgen een pagina',
+		'specialwhoiswatchingthepage'  => 'Wie volgen %s',
+		'specialwhoiswatchingusage'    => 'Deze speciale pagina kan niet alleenstaand gebruikt worden. Gebruik de pagina [[MediaWiki:Number_of_watching_users_pageview]] om een ingangspunt voor deze speciale pagina te bepalen.',
 		'specialwhoiswatchingaddusers' => 'Deze pagina op de volglijst van gebruikers toevoegen',
 		'specialwhoiswatchingaddbtn'   => 'Geselecteerde gebruikers toevoegen',
 	),

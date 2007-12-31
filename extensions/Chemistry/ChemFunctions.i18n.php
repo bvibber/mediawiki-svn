@@ -264,17 +264,22 @@ $wgChemFunctions_Messages['lb'] = array(
 	'chemFunctions_Formula' => 'Formel',
 );
 
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Siebrand
+ */
 $wgChemFunctions_Messages['nl'] = array(
-	'chemicalsources' => 'Scheikundige bronnen',
-	'chemFunctions_ListPage' => 'Scheikundige bronnen',
-	'chemFunctions_DataList' => 'Hieronder staat een lijst van pagina\'s die meer informatie over de scheikundige verbinding kunnen verschaffen.
+	'chemicalsources'                  => 'Scheikundige bronnen',
+	'chemFunctions_ListPage'           => 'Scheikundige bronnen',
+	'chemFunctions_DataList'           => 'Hieronder staat een lijst van pagina\'s die meer informatie over de scheikundige verbinding kunnen verschaffen.
 
 * [http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI Verbinding $MIXCASNameFormula op de pagina van het NIST]
 * [http://ptcl.chem.ox.ac.uk/MSDS/ MSDS op de pagina van de Oxford University (UK) (geen zoekresultaten)]',
-	'chemFunctions_CAS' => 'CAS-nummer',
-	'chemFunctions_ATCCode' => 'ATC-code',
-	'chemFunctions_ECNumber' => 'EC-nummer',
-	'chemFunctions_Name' => 'IUPAC-naam',
+	'chemFunctions_CAS'                => 'CAS-nummer',
+	'chemFunctions_ATCCode'            => 'ATC-code',
+	'chemFunctions_ECNumber'           => 'EC-nummer',
+	'chemFunctions_Formula'            => 'Formule',
+	'chemFunctions_Name'               => 'IUPAC-naam',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Invoerfout!',
 );
 

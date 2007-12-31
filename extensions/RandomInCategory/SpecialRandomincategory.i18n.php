@@ -68,11 +68,12 @@ $messages['la'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
-	'randomincategory'                => 'Willekeurige pagina in categorie',
-	'randomincategory-toolbox'        => 'Willekeurige pagina',
-	'randomincategory-nocategory'     => 'Categorie $1 bestaat niet of is leeg',
-	'randomincategory-label'          => 'Categorie:',
-	'randomincategory-submit'         => 'OK',
+	'randomincategory'            => 'Willekeurige pagina in een categorie',
+	'randomincategory-toolbox'    => 'Willekeurige pagina',
+	'randomincategory-nocategory' => 'Categorie $1 bestaat niet of is leeg',
+	'randomincategory-label'      => 'Categorie:',
+	'randomincategory-submit'     => 'OK',
 );
