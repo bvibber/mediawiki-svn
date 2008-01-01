@@ -642,9 +642,11 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'hiderevision-continue'       => 'Weider',
 	'hiderevision-tab'            => 'Verstopp Versiounen',
+	'hiderevision-noreason'       => 'Dir musst de Grond fir dës Läschung uginn.',
 	'hiderevision-status'         => 'Versioun $1: $2',
 	'hiderevision-error-missing'  => 'Net an der Datebank fonnt.',
 	'hiderevision-archive-status' => 'Geläschte Versioune vun $1: $2',
+	'oversight-log-hiderev'       => 'En Ännerung vum $1 geläscht.',
 	'oversight-view'              => 'Detailer',
 	'oversight-hidden'            => 'Verstoppte Versioun',
 );

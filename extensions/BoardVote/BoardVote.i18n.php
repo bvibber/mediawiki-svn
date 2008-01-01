@@ -562,29 +562,36 @@ $wgBoardVoteMessages['ext'] = array(
 $wgBoardVoteMessages['fa'] = array(
 	'boardvote'               => 'انتخابات هیئت امنای ویکی‌مدیا',
 );
+
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Str4nd
+ */
 $wgBoardVoteMessages['fi'] = array(
-	'boardvote_entry'         => '* [[Special:Boardvote/vote|Äänestä]]
+	'boardvote'              => 'Wikimedian johtokunnan valtuutettujen vaalit',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Äänestä]]
 * [[Special:Boardvote/list|Listaa tähänastiset äänet]]
 * [[Special:Boardvote/dump|Salattu äänestystallenne]]',
-	'boardvote_intro_change'  => '<p>Olet jo äänestänyt. Voit kuitenkin muuttaa ääntäsi käyttämällä alla olevaa lomaketta. Napsauta kunkin hyväksymäsi ehdokkaan vieressä olevaa ruutua.</p>',
-	'boardvote_notloggedin'   => 'Et ole kirjautunut sisään. Äänestääksesi sinulla täytyy olla käyttäjätunnus, vähintään $1 muokkausta ennen $2 ja ensimmäisen muokkauksen pitää olla ennen $3.',
-	'boardvote_notqualified'  => 'Et ole äänioikeutettu näissä vaaleissa. Sinulla täytyy olla $3 muokkausta ennen $2, ja ensimmäinen muokkauksesi pitää olla tehty ennen $5.',
-	'boardvote_novotes'       => 'Kukaan ei ole vielä äänestänyt.',
-	'boardvote_time'          => 'Aika',
-	'boardvote_user'          => 'Käyttäjä',
-	'boardvote_edits'         => 'Muokkausta',
-	'boardvote_days'          => 'Päivää',
-	'boardvote_ua'            => 'Käyttäjäagentti',
-	'boardvote_listintro'     => '<p>Tämä on lista kaikista äänistä, jotka on kirjattu tähän mennessä. $1 nähdäksesi tiedot salattuna.</p>',
-	'boardvote_dumplink'      => 'Napsauta tästä',
-	'boardvote_strike'        => 'Älä tue',
-	'boardvote_unstrike'      => 'Palauta tuetuksi',
-	'boardvote_needadmin'     => 'Vain vaalitarkastajat voivat suorittaa tämän toiminnon.',
-	'boardvote_notstarted'    => 'Äänestys ei ole vielä alkanut',
-	'boardvote_edits_many'    => 'monta',
-	'boardvote_blocked'       => 'Valitettavasti muokkausestosi projektissa johon olet kirjautunut estää sinua äänestämästä.',
-	'boardvote_welcome'       => 'Tervetuloa \'\'\'$1\'\'\'!',
+	'boardvote_intro_change' => '<p>Olet jo äänestänyt. Voit kuitenkin muuttaa ääntäsi käyttämällä alla olevaa lomaketta. Napsauta kunkin hyväksymäsi ehdokkaan vieressä olevaa ruutua.</p>',
+	'boardvote_notloggedin'  => 'Et ole kirjautunut sisään. Äänestääksesi sinulla täytyy olla käyttäjätunnus, vähintään $1 muokkausta ennen $2 ja ensimmäisen muokkauksen pitää olla ennen $3.',
+	'boardvote_notqualified' => 'Et ole äänioikeutettu näissä vaaleissa. Sinulla täytyy olla $3 muokkausta ennen $2, ja ensimmäinen muokkauksesi pitää olla tehty ennen $5.',
+	'boardvote_novotes'      => 'Kukaan ei ole vielä äänestänyt.',
+	'boardvote_time'         => 'Aika',
+	'boardvote_user'         => 'Käyttäjä',
+	'boardvote_edits'        => 'Muokkausta',
+	'boardvote_days'         => 'Päivää',
+	'boardvote_ua'           => 'Käyttäjäagentti',
+	'boardvote_listintro'    => '<p>Tämä on lista kaikista äänistä, jotka on kirjattu tähän mennessä. $1 nähdäksesi tiedot salattuna.</p>',
+	'boardvote_dumplink'     => 'Napsauta tästä',
+	'boardvote_strike'       => 'Älä tue',
+	'boardvote_unstrike'     => 'Palauta tuetuksi',
+	'boardvote_needadmin'    => 'Vain vaalitarkastajat voivat suorittaa tämän toiminnon.',
+	'boardvote_notstarted'   => 'Äänestys ei ole vielä alkanut',
+	'boardvote_edits_many'   => 'monta',
+	'boardvote_blocked'      => 'Valitettavasti muokkausestosi projektissa johon olet kirjautunut estää sinua äänestämästä.',
+	'boardvote_welcome'      => "Tervetuloa '''$1'''!",
 );
+
 $wgBoardVoteMessages['fo'] = array(
 	'boardvote_user'          => 'Brúkari',
 	'boardvote_edits'         => 'Rættingar',
@@ -660,12 +667,16 @@ Vous serez redirigé à ce serveur externe en 20 secondes. [$1 Cliquez ici] pour
 
 Un avertissement concernant un certificat non signé sera peut-être affiché.',
 );
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
 $wgBoardVoteMessages['frp'] = array(
-	'boardvote'               => 'Èlèccions u Consèly d’administracion de la Wikimedia Foundation',
-	'boardvote_entry'         => '* [[Special:Boardvote/vote|Voto/votacion]]
+	'boardvote'              => 'Èlèccions u Consèly d’administracion de la Wikimedia Foundation',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Voto/votacion]]
 * [[Special:Boardvote/list|Lista des votos/de les votacions enregistrâs]]
 * [[Special:Boardvote/dump|Enregistraments criptâs]]',
-	'boardvote_intro'         => '<p>Benvegnua a les trêsiémes èlèccions du Consèly d’administracion de la <i><a href="http://wikimediafoundation.org/wiki/Accueil" class="extiw" title="Pâge de reçua en francês">Wikimedia Foundation Inc.</a></i>.
+	'boardvote_intro'        => '<p>Benvegnua a les trêsiémes èlèccions du Consèly d’administracion de la <i><a href="http://wikimediafoundation.org/wiki/Accueil" class="extiw" title="Pâge de reçua en francês">Wikimedia Foundation Inc.</a></i>.
 Nos votens por una pèrsona que reprèsenterat la comunôtât des utilisators sur los difèrents projèts Wikimedia.
 Cela pèrsona et los ôtros membros votants du Consèly d’administracion contribueront a oriantar la dirèccion de celos projèts et reprèsenteront <i>voutros</i> entèrèts et soucis vers lo Consèly d’administracion.
 Dècideront des moyens de financement et de l’afèctacion des fonds.</p>
@@ -676,11 +687,11 @@ Tôs los candidats sont des utilisators rèspèctâs, qu’ont balyê tot plen d
 <p>Vos pouede votar por atant de candidats que vos lo souhètâd. Celi que remporterat lo més de vouèx serat dècllarâ èlu por lo pôsto uquint s’est presentâ. En câs de balotâjo, y arat un voto/una votacion de dèpartâjo.</p>
 
 <p>Por més d’enformacion, vêde :</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="extiw" title="« meta:Election FAQ 2006 » : pâge multilinga">FAQ sur les èlèccions</a></li>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="extiw" title="« meta:Election FAQ 2006 » : pâge multilinga">FdeQ sur les èlèccions</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Fr" class="extiw" title="« meta:Election candidates 2006/Fr » : pâge en francês">Candidat(e)s</a></li></ul>',
-	'boardvote_intro_change'  => '<p>Vos éd ja votâ. Portant vos pouede modifiar
+	'boardvote_intro_change' => '<p>Vos éd ja votâ. Portant vos pouede modifiar
 voutron voto/voutra votacion en utilisent lo formulèro ce-desot. Marci de marcar les câses en regârd de châque candidat qu’at voutron supôrt.</p>',
-	'boardvote_entered'       => 'Marci, voutron voto/voutra votacion at étâ enregistrâ.
+	'boardvote_entered'      => 'Marci, voutron voto/voutra votacion at étâ enregistrâ.
 
 Se vos lo souhètâd, vos pouede enregistrar los dètalys siuvents. Voutron historico de voto/votacion est :
 
@@ -695,32 +706,32 @@ La vèrsion criptâ siut. Serat afichiê publicament dessus [[Special:Boardvote/
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Retôrn]]',
-	'boardvote_nosession'     => 'Empossiblo de dètèrmenar voutron identifiant Wikimedia. Volyéd tornar a voutron vouiqui d’origina, vos enregistrar, et pués alar a la pâge <nowiki>[[Special:Boardvote]]</nowiki>. Vos dête avêr un compto avouéc u muens $1 contribucions fêtes devant lo $2, et avêr fêt voutra premiére èdicion devant lo $3.',
-	'boardvote_notloggedin'   => 'Orendrêt, vos éte pas ôtentifiâ. Por votar, vos dête utilisar un compto èyent u muens $1 contribucions devant lo $2, et que la premiére remonte u $3.',
-	'boardvote_notqualified'  => 'Vos rèpondéd pas a yona de les condicions requises por votar pendent ceta èlèccion. Fôt avêr $3 contribucions devant lo $2, et vos en éd fêtes $1. Et pués, voutra premiére modificacion dâte du $4, et dêt avêr étâ fêta devant lo $5.',
-	'boardvote_novotes'       => 'Nion at adés votâ.',
-	'boardvote_time'          => 'Hora',
-	'boardvote_user'          => 'Utilisator',
-	'boardvote_edits'         => 'Modificacions',
-	'boardvote_days'          => 'Jorns',
-	'boardvote_ua'            => 'Reprèsentent de l’utilisator',
-	'boardvote_listintro'     => 'Lista de les gens èyent votâ :<br /><br />',
-	'boardvote_dumplink'      => 'Clicâd ique',
-	'boardvote_submit'        => 'D’acôrd',
-	'boardvote_strike'        => 'Traciér',
-	'boardvote_unstrike'      => 'Dètraciér',
-	'boardvote_needadmin'     => 'Solèts los administrators du voto/de la votacion pôvont fâre cela opèracion.',
-	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">Èlèccions u Consèly d’administracion de la Wikimedia Foundation</a> : voto uvèrt/votacion uvèrta tant qu’u 12 de julyèt 2005.',
-	'boardvote_notstarted'    => 'Lo voto/la votacion est p’oncor comenciê.',
-	'boardvote_closed'        => 'L’èlèccion est dês ora cllôsa. Lo rèsultat est procllamâ sur la [[:meta:Board elections/2006/Results/fr|<span title="« Board elections/2006/Results/fr » : pâge en francês" style="text-decoration:none">pâge des rèsultats</span>]].',
-	'boardvote_edits_many'    => 'plusiors',
-	'group-boardvote'         => 'Membros votants du Consèly d’administracion',
-	'group-boardvote-member'  => 'Membro votant du Consèly d’administracion',
-	'grouppage-boardvote'     => '{{ns:project}}:Membros votants du Consèly d’administracion',
-	'boardvote_blocked'       => 'Dèsolâ, mas vos avéd étâ blocâ sur voutron vouiqui d’origina. Los utilisators blocâs pôvont pas votar.',
-	'boardvote_welcome'       => 'Benvegnua \'\'\'$1\'\'\' !',
-	'go_to_board_vote'        => 'Èlèccions u Consèly d’administracion de la Wikimedia Foundation 2007',
-	'boardvote_redirecting'   => 'Por més de transparence et de sècuritât lo voto/la votacion sè pâsse sur un sèrvior de defôr et endèpendent.
+	'boardvote_nosession'    => 'Empossiblo de dètèrmenar voutron identifiant Wikimedia. Volyéd tornar a voutron vouiqui d’origina, vos enregistrar, et pués alar a la pâge <nowiki>[[Special:Boardvote]]</nowiki>. Vos dête avêr un compto avouéc u muens $1 contribucions fêtes devant lo $2, et avêr fêt voutra premiére èdicion devant lo $3.',
+	'boardvote_notloggedin'  => 'Orendrêt, vos éte pas ôtentifiâ. Por votar, vos dête utilisar un compto èyent u muens $1 contribucions devant lo $2, et que la premiére remonte u $3.',
+	'boardvote_notqualified' => 'Vos rèpondéd pas a yona de les condicions requises por votar pendent ceta èlèccion. Fôt avêr $3 contribucions devant lo $2, et vos en éd fêtes $1. Et pués, voutra premiére modificacion dâte du $4, et dêt avêr étâ fêta devant lo $5.',
+	'boardvote_novotes'      => 'Nion at adés votâ.',
+	'boardvote_time'         => 'Hora',
+	'boardvote_user'         => 'Utilisator',
+	'boardvote_edits'        => 'Modificacions',
+	'boardvote_days'         => 'Jorns',
+	'boardvote_ua'           => 'Reprèsentent de l’utilisator',
+	'boardvote_listintro'    => 'Lista de les gens èyent votâ :<br /><br />',
+	'boardvote_dumplink'     => 'Clicâd ique',
+	'boardvote_submit'       => 'D’acôrd',
+	'boardvote_strike'       => 'Barrar',
+	'boardvote_unstrike'     => 'Dèbarrar',
+	'boardvote_needadmin'    => 'Solèts los administrators du voto/de la votacion pôvont fâre cela opèracion.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Èlèccions u Consèly d’administracion de la Wikimedia Foundation</a> : voto uvèrt/votacion uvèrta tant qu’u 12 de julyèt 2005.',
+	'boardvote_notstarted'   => 'Lo voto/la votacion est p’oncor comenciê.',
+	'boardvote_closed'       => 'L’èlèccion est dês ora cllôsa. Lo rèsultat est procllamâ sur la [[:meta:Board elections/2006/Results/fr|<span title="« Board elections/2006/Results/fr » : pâge en francês" style="text-decoration:none">pâge des rèsultats</span>]].',
+	'boardvote_edits_many'   => 'plusiors',
+	'group-boardvote'        => 'Membros votants du Consèly d’administracion',
+	'group-boardvote-member' => 'Membro votant du Consèly d’administracion',
+	'grouppage-boardvote'    => '{{ns:project}}:Membros votants du Consèly d’administracion',
+	'boardvote_blocked'      => 'Dèsolâ, mas vos avéd étâ blocâ sur voutron vouiqui d’origina. Los utilisators blocâs pôvont pas votar.',
+	'boardvote_welcome'      => "Benvegnua '''$1''' !",
+	'go_to_board_vote'       => 'Èlèccions u Consèly d’administracion de la Wikimedia Foundation 2007',
+	'boardvote_redirecting'  => 'Por més de transparence et de sècuritât lo voto/la votacion sè pâsse sur un sèrvior de defôr et endèpendent.
 
 Vos seréd redirigiê vers cél sèrvior de defôr en 20 secondes. [$1 Clicâd ique] por y alar orendrêt.
 

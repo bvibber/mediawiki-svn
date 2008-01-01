@@ -428,8 +428,9 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'badimages-name'   => 'Numm:',
-	'badimages-reason' => 'Grond:',
+	'badimages-name'       => 'Numm:',
+	'badimages-reason'     => 'Grond:',
+	'badimages-subheading' => 'Aktuell Lëscht',
 );
 
 $messages['loz'] = array(

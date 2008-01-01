@@ -679,17 +679,21 @@ function efMakeBotMessages() {
  * @author Robby
  */
 'lb' => array(
-	'makebot'               => 'Botstatus autoriséieren oder ofhuelen',
-	'makebot-username'      => 'Benotzernumm:',
-	'makebot-search'        => 'Status offroen',
-	'makebot-isbot'         => 'De [[User:$1|$1]] huet Botstatus.',
-	'makebot-change'        => 'Status änneren:',
-	'makebot-grant'         => 'Autoriséieren',
-	'makebot-revoke'        => 'Ofhuelen',
-	'makebot-comment'       => 'Bemierkung:',
-	'makebot-granted'       => '[[User:$1|$1]] huet elo Botstatus.',
-	'makebot-logpage'       => 'Logbuch vum Botstatus',
-	'makebot-logentrygrant' => 'huet dem [[$1]] de Botstatus autoriséiert',
+	'makebot'                => 'Botstatus autoriséieren oder ofhuelen',
+	'makebot-header'         => "'''E Bürokrat vun dëser Wiki kann anere Benotzer - no de lokale Riichtlinnen - de [[{{MediaWiki:Grouppage-bot}}|Botstatus]] erdeelen oder entzéien.<br/> Mat dem Botstatus ass et méiglech, d'Kontributiounen vu Bot-Benotzerkonten an der Lëscht vun de '''[[Special:Recentchanges|rezenten Ännerungen]]''' an an änleche Lëschten ze verstoppen. D'Botmarkéierung ass doriwwer eraus nëtzlech fir automatesch Verännerunge vun Artikelen z'erkennen.",
+	'makebot-username'       => 'Benotzernumm:',
+	'makebot-search'         => 'Status offroen',
+	'makebot-isbot'          => 'De [[User:$1|$1]] huet Botstatus.',
+	'makebot-notbot'         => '[[User:$1|$1]] huet de Botstatus net.',
+	'makebot-change'         => 'Status änneren:',
+	'makebot-grant'          => 'Autoriséieren',
+	'makebot-revoke'         => 'Ofhuelen',
+	'makebot-comment'        => 'Bemierkung:',
+	'makebot-granted'        => '[[User:$1|$1]] huet elo Botstatus.',
+	'makebot-revoked'        => '[[User:$1|$1]] huet de Botstatus net méi.',
+	'makebot-logpage'        => 'Logbuch vum Botstatus',
+	'makebot-logentrygrant'  => 'huet dem [[$1]] de Botstatus autoriséiert',
+	'makebot-logentryrevoke' => '[[$1]] krut de Botstatus ofgeholl',
 ),
 
 'li' => array(

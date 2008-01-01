@@ -95,6 +95,14 @@ $messages['oc'] = array(
 
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'assert_edit_title'   => 'Brak wystąpień',
+	'assert_edit_message' => 'Określone żądanie ($1) nie wystąpiło.',
+);
+
 $messages['pt'] = array(
 	'assert_edit_title'   => 'A asserção falhou',
 	'assert_edit_message' => 'A asserção especificada ($1) falhou.',

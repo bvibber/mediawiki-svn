@@ -316,13 +316,16 @@ Basqa ataw talğañız.',
 	'usernameblacklist-invalid-lines' => 'Disse {{PLURAL:$1|Reeg|Regen}} in de swarte List för Brukernaams {{PLURAL:$1|is|sünd}} nich bi de Reeg; korrigeer dat doch bevör du spiekerst:',
 ),
 
-/* nld / Dutch (Siebrand Mazeland) */
+/** Dutch (Nederlands)
+ * @author Siebrand
+ * @author SPQRobin
+ */
 'nl' => array(
-	'blacklistedusername' => 'Gebruikersnaam op zwarte lijst',
-	'blacklistedusernametext' => 'De gebruikersnaam die u heeft gekozen staat op de [[MediaWiki:Usernameblacklist|
+	'blacklistedusername'             => 'Gebruikersnaam op zwarte lijst',
+	'blacklistedusernametext'         => 'De gebruikersnaam die u heeft gekozen staat op de [[MediaWiki:Usernameblacklist|
 zwarte lijst van gebruikersnamen]]. Kies alstublieft een andere naam.',
-	'usernameblacklist' => '<pre>
-# Regels in deze lijst worden gebruikt als reguliere expressie voor
+	'usernameblacklist'               => '<pre>
+# Regels in deze lijst worden gebruikt als reguliere uitdrukking voor
 # gebruikersnamen op de zwarte lijst bij inschrijving. Iedere regel moet
 # onderdeel zijn van een ongenummerde lijst, bijvoorbeeld:
 #
@@ -358,10 +361,14 @@ zwarte lijst van gebruikersnamen]]. Kies alstublieft een andere naam.',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|La linha seguenta|Las linhas seguentas}} de la lista negra dels noms d\'utilizaires {{PLURAL:$1|es invalida|son invalidas}} ; corregissetz-{{PLURAL:$1|la|las}} abans d\'enregistrar :',
 ),
 
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Sp5uhe
+ */
 'pl' => array(
-	'blacklistedusername' => 'Nazwa użytkownika na czarnej liście',
-	'blacklistedusernametext' => 'Wybrana przez ciebie nazwa użytkownika pasuje do [[MediaWiki:Usernameblacklist|czarnej listy]]. Prosimy o wybranie innej nazwy.',
-	'usernameblacklist' => '<pre>
+	'blacklistedusername'             => 'Nazwa użytkownika na czarnej liście',
+	'blacklistedusernametext'         => 'Wybrana przez ciebie nazwa użytkownika pasuje do [[MediaWiki:Usernameblacklist|czarnej listy]]. Prosimy o wybranie innej nazwy.',
+	'usernameblacklist'               => '<pre>
 # Wpisy na tej liście będą użyte jako części wyrażenia regularnego stanowiącego czarną listę
 # nazw użytkowników zakazanych przy rejestracji. Każdy element powinien być częścią
 # listy wypunktowanej, np.
@@ -369,7 +376,7 @@ zwarte lijst van gebruikersnamen]]. Kies alstublieft een andere naam.',
 # * Foo
 # * [Bb]ar
 </pre>',
-	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Następująca linia|Następujące linie}} na czarnej liście użytkowników {{PLURAL:$1|jest|są}} niepoprawne; popraw {{PLURAL:$1|ją|je}} przed zapisaniem:',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Następująca linia|Następujące linie}} na czarnej liście użytkowników {{PLURAL:$1|jest niepoprawna|są niepoprawne}} ; popraw {{PLURAL:$1|ją|je}} przed zapisaniem:',
 ),
 
 /* Piedmontese (Bèrto 'd Sèra) */

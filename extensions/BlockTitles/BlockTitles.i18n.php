@@ -187,10 +187,12 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author 555
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'block_title_error_page_title' => 'Título Bloqueado',
+	'block_title_error'            => 'Desculpe-nos, não é permitido salvar dados neste título de página.',
 );
 
 /** Romanian (Română)
