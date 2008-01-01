@@ -458,11 +458,12 @@ kopieën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzo
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Sp5uhe
  */
 'pl' => array(
-	'duplicator'                       => 'Duplikowanie artykułu',
-	'duplicator-toolbox'               => 'Zduplikuj ten artykuł',
-	'duplicator-header'                => 'Ta strona pozwala na stworzenie kompletnego duplikatu artykułu, tworząc niezależne kopie wszystkich historii. Jest to przydatne przy forkowaniu artykułów itp.',
+	'duplicator'                       => 'Duplikowanie strony',
+	'duplicator-toolbox'               => 'Duplikuj tą stronę',
+	'duplicator-header'                => 'Ta strona pozwala na stworzenie kompletnego duplikatu artykułu, tworząc niezależne kopie aktualnej treści wraz z pełną historią zmian. Jest to przydatne przy rozwidlaniu (klonowaniu) artykułów itp.',
 	'duplicator-options'               => 'Opcje',
 	'duplicator-source'                => 'Źródło:',
 	'duplicator-dest'                  => 'Cel:',

@@ -319,8 +319,16 @@ function efContributorsMessages() {
  * @author Robby
  */
 'lb' => array(
-	'contributors-target' => 'Titel:',
-	'contributors-submit' => 'Weisen',
+	'contributors'             => 'Auteuren',
+	'contributors-toolbox'     => 'Haaptauteuren',
+	'contributors-legend'      => "Weist d'Haaptauteure vun enger Säit",
+	'contributors-target'      => 'Titel:',
+	'contributors-submit'      => 'Weisen',
+	'contributors-subtitle'    => 'Haaptauteure vun $1',
+	'contributors-others-long' => 'Daniewt gëtt et nach $1 aner Auteuren déi un dëser Säit matgeschafft hunn.',
+	'contributors-others'      => 'a(n) $1 anerer',
+	'contributors-badtitle'    => 'Dës Säit gëtt et net.',
+	'contributors-nosuchpage'  => "D'Säit $1 gëtt et net.",
 ),
 
 /** Low German (Plattdüütsch)
@@ -389,6 +397,7 @@ function efContributorsMessages() {
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Sp5uhe
  */
 'pl' => array(
 	'contributors'             => 'Autorzy',
@@ -400,7 +409,7 @@ function efContributorsMessages() {
 	'contributors-others-long' => 'Jest $1 {{PLURAL:$1|inny autor|innych autorów}} tej strony.',
 	'contributors-others'      => 'i $1 {{PLURAL:$1|inny|innych}}',
 	'contributors-badtitle'    => 'Niepoprawny tytuł.',
-	'contributors-nosuchpage'  => 'Artykuł $1 nie istnieje.',
+	'contributors-nosuchpage'  => 'Strona $1 nie istnieje.',
 ),
 
 /** Piemontèis (Piemontèis)

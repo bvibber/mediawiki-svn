@@ -450,19 +450,36 @@ $messages = array(
 		'ogg-more' => 'Meira...',
 	),
 
+/** Italian (Italiano)
+ * @author BrokenArrow
+ * @author .anaconda
+ */
 	'it' => array(
-		'ogg-long-error' => '(File ogg non valido: $1)',
-		'ogg-play' => 'Riproduci',
-		'ogg-pause' => 'Pausa',
-		'ogg-stop' => 'Ferma',
-		'ogg-play-video' => 'Riproduci il filmato',
-		'ogg-player-oggPlugin' => 'Plugin ogg',
-		'ogg-player-soundthumb' => 'Nessun player',
-		'ogg-player-selected' => '(selezionato)',
-		'ogg-more' => 'Altro...',
-		'ogg-dismiss' => 'Chiudi',
-		'ogg-download' => 'Scarica il file',
-		'ogg-desc-link' => 'Informazioni su questo file',
+		'ogg-short-audio'         => 'File audio Ogg $1, $2',
+		'ogg-short-video'         => 'File video Ogg $1, $2',
+		'ogg-short-general'       => 'File multimediale Ogg $1, $2',
+		'ogg-long-audio'          => '(File audio Ogg $1, durata $2, $3)',
+		'ogg-long-video'          => '(File video Ogg $1, durata $2, dimensioni $4×$5 pixel, $3)',
+		'ogg-long-multiplexed'    => '(File audio/video multiplexed Ogg $1, durata $2, dimensioni $4×$5 pixel, complessivamente $3)',
+		'ogg-long-general'        => '(File multimediale Ogg, durata $2, $3)',
+		'ogg-long-error'          => '(File ogg non valido: $1)',
+		'ogg-play'                => 'Riproduci',
+		'ogg-pause'               => 'Pausa',
+		'ogg-stop'                => 'Ferma',
+		'ogg-play-video'          => 'Riproduci il filmato',
+		'ogg-play-sound'          => 'Riproduci il file sonoro',
+		'ogg-no-player'           => 'Siamo spiacenti, ma non risulta installato alcun software di riproduzione compatibile. Si prega di <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">scaricare un lettore</a> adatto.',
+		'ogg-no-xiphqt'           => 'Non risulta installato il componente XiphQT di QuickTime. Senza tale componente non è possibile la riproduzione di file Ogg con QuickTime. Si prega di <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">scaricare XiphQT</a> o scegliere un altro lettore.',
+		'ogg-player-videoElement' => 'elemento <video>',
+		'ogg-player-oggPlugin'    => 'Plugin ogg',
+		'ogg-player-thumbnail'    => 'Solo immagini fisse',
+		'ogg-player-soundthumb'   => 'Nessun lettore',
+		'ogg-player-selected'     => '(selezionato)',
+		'ogg-use-player'          => 'Usa il lettore:',
+		'ogg-more'                => 'Altro...',
+		'ogg-dismiss'             => 'Chiudi',
+		'ogg-download'            => 'Scarica il file',
+		'ogg-desc-link'           => 'Informazioni su questo file',
 	),
 
 	'ja' => array(

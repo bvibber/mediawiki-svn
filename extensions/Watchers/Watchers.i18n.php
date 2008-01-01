@@ -110,6 +110,19 @@ $messages['it'] = array(
 	'watchers_less_than_x' => "La pagina è osservata da meno di $1 utenti.",
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'watchers'               => 'Benotzer déi iwwerwaachen',
+	'watchers_link_title'    => 'Wien iwwerwaacht dës Säit?',
+	'watchers_error_article' => '<b>Feeler:</b> Dës Säit gëtt et net.',
+	'watchers_header'        => 'Benotzer, déi "$1" iwwerwaachen',
+	'watchers_noone_watches' => 'Keen iwwerwaacht dës Säit.',
+	'watchers_x_or_more'     => '$1 oder méi Benotzer iwwerwaachen dës Säit.',
+	'watchers_less_than_x'   => 'Manner wéi $1 Benotzer iwwerwaachen dës Säit.',
+);
+
 $messages['nl'] = array(
 	'watchers' => 'Volgers',
 	'watchers_link_title' => "Wie volgen deze pagina?",

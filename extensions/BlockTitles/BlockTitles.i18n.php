@@ -118,11 +118,12 @@ $messages['hy'] = array(
 );
 
 /** Italian (Italiano)
+ * @author BrokenArrow
  * @author Gianfranco
  */
 $messages['it'] = array(
 	'block_title_error_page_title' => 'Titolo bloccato',
-	'block_title_error'            => 'Siamo spiacenti, non è consentito salvare una voce con questo titolo.',
+	'block_title_error'            => 'Siamo spiacenti, non è consentito salvare una pagina con questo titolo.',
 );
 
 /** Japanese (日本語) */
@@ -171,11 +172,12 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author Derbeth
  */
 $messages['pl'] = array(
 	'block_title_error_page_title' => 'Zablokowany tytuł',
-	'block_title_error'            => 'Przepraszamy, zapisywanie tytułu tego artykułu jest niedozwolone.',
+	'block_title_error'            => 'Przepraszamy, zapisanie artykułu o tym tytule jest niedozwolone.',
 );
 
 /** Piemontèis (Piemontèis)
