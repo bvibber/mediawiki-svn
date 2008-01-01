@@ -183,6 +183,37 @@ $messages = array(
 		'ogg-download' => 'Bajar archivo',
 	),
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+	'fa' => array(
+		'ogg-short-audio'         => 'پرونده صوتی Ogg $1، $2',
+		'ogg-short-video'         => 'پرونده تصویری Ogg $1، $2',
+		'ogg-short-general'       => 'پرونده Ogg $1، $2',
+		'ogg-long-audio'          => '(پرونده صوتی Ogg $1، مدت $2، $3)',
+		'ogg-long-video'          => '(پرونده تصویری Ogg $1، مدت $2 ، $4×$5 پیکسل، $3)',
+		'ogg-long-multiplexed'    => '(پرونده صوتی/تصویری پیچیده Ogg، $1، مدت $2، $4×$5 پیکسل، $3 در مجموع)',
+		'ogg-long-general'        => '(پرونده Ogg، مدت $2، $3)',
+		'ogg-long-error'          => '(پرونده Ogg غیرمجاز: $1)',
+		'ogg-play'                => 'پخش',
+		'ogg-pause'               => 'توقف',
+		'ogg-stop'                => 'قطع',
+		'ogg-play-video'          => 'پخش تصویر',
+		'ogg-play-sound'          => 'پخش صوت',
+		'ogg-no-player'           => 'متاسفانه دستگاه شما نرم‌افزار پخش‌کنندهٔ مناسب ندارد. لطفاً <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">یک برنامهٔ پخش‌کننده بارگیری کنید</a>.',
+		'ogg-no-xiphqt'           => 'به نظر نمی‌سرد که شما جزء XiphQT از برنامهٔ QuickTime را داشته باشید. برنامهٔ QuickTime بدون این جزء توان پخش پرونده‌های Ogg را ندارد. لطفاً <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT را بارگیری کنید</a> یا از یک پخش‌کنندهٔ دیگر استفاده کنید.',
+		'ogg-player-videoElement' => 'عنصر <تصویری>',
+		'ogg-player-oggPlugin'    => 'افزونهٔ Ogg',
+		'ogg-player-thumbnail'    => 'فقط تصاویر ثابت',
+		'ogg-player-soundthumb'   => 'فاقد پخش‌کننده',
+		'ogg-player-selected'     => '(انتخاب شده)',
+		'ogg-use-player'          => 'استفاده از پخش‌کننده:',
+		'ogg-more'                => 'بیشتر...',
+		'ogg-dismiss'             => 'بستن',
+		'ogg-download'            => 'بارگیری پرونده',
+		'ogg-desc-link'           => 'دربارهٔ این پرونده',
+	),
+
 	'fi' => array(
 		'ogg-short-audio' => 'Ogg $1 -äänitiedosto, $2',
 		'ogg-short-video' => 'Ogg $1 -videotiedosto, $2',
