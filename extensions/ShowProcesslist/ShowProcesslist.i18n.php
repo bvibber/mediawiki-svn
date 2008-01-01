@@ -42,6 +42,7 @@ $messages['bg'] = array(
 	'showprocesslist-user'    => 'Потребител',
 	'showprocesslist-db'      => 'бд',
 	'showprocesslist-command' => 'Команда',
+	'showprocesslist-info'    => 'Информация',
 );
 
 /** German (Deutsch)

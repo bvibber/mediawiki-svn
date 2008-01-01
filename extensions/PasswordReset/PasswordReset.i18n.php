@@ -47,6 +47,18 @@ $allMessages = array(
 
 ),
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+	'bg' => array(
+		'passwordreset-invalidusername' => 'Невалидно потребителско име',
+		'passwordreset-emptyusername'   => 'Празно потребителско име',
+		'passwordreset-nopassmatch'     => 'Паролите не съвпадат',
+		'passwordreset-username'        => 'Потребителско име',
+		'passwordreset-newpass'         => 'Нова парола',
+		'passwordreset-confirmpass'     => 'Парола (повторно)',
+	),
+
 	'de' => array(
 		'passwordreset'                 => 'Passwort zurücksetzen',
 		'passwordreset-invalidusername' => 'Ungültiger Benutzername',

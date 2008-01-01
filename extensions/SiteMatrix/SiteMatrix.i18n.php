@@ -119,10 +119,15 @@ $wgSiteMatrixMessages['ext'] = array(
 	'sitematrix-language' => 'Palra',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Nike
+ */
 $wgSiteMatrixMessages['fi'] = array(
-	'sitematrix' => 'Luettelo Wikimedian wikeistä',
+	'sitematrix'          => 'Luettelo Wikimedian wikeistä',
 	'sitematrix-language' => 'Kieli',
-	'sitematrix-others' => 'Muut Wikimedian projektit',
+	'sitematrix-project'  => 'Projektin nimi, projektienvälinen linkki ja interwiki-linkki',
+	'sitematrix-others'   => 'Muut Wikimedian projektit',
 );
 
 $wgSiteMatrixMessages['fr'] = array(
@@ -247,6 +252,7 @@ $wgSiteMatrixMessages['la'] = array(
 $wgSiteMatrixMessages['lb'] = array(
 	'sitematrix'          => 'Lëscht vun de Wikimedia-Wikiën',
 	'sitematrix-language' => 'Sprooch',
+	'sitematrix-others'   => 'Aner Wikimedia-Projetën',
 );
 
 $wgSiteMatrixMessages['li'] = array(

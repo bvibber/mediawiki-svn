@@ -74,7 +74,9 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'povwatch_title' => 'Заглавие:',
+	'povwatch_invalid_title'   => 'Посоченото заглавие е невалидно',
+	'povwatch_unknown_subpage' => 'Непозната подстраница.',
+	'povwatch_title'           => 'Заглавие:',
 );
 
 /** Greek (Ελληνικά)

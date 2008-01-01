@@ -42,42 +42,56 @@ $messages = array(
 		'ogg-more' => 'Meer...',
 	),
 
+/** Arabic (العربية)
+ * @author Meno25
+ * @author Alnokta
+ */
 	'ar' => array(
-		'ogg-short-audio' => 'Ogg $1 ملف صوت، $2',
-		'ogg-short-video' => 'Ogg $1 ملف فيديو، $2',
-		'ogg-short-general' => 'Ogg $1 ملف ميديا، $2',
-		'ogg-long-audio' => '(Ogg $1 ملف صوت، الطول $2، $3)',
-		'ogg-long-video' => '(Ogg $1 ملف فيديو، الطول $2، $4×$5 بكسل، $3)',
-		'ogg-long-multiplexed' => '(ملف Ogg مالتي بليكسد أوديو/فيديو، $1، الطول $2، $4×$5 بكسل، $3 إجمالي)',
-		'ogg-long-general' => '(ملف ميديا Ogg، الطول $2، $3)',
-		'ogg-long-error' => '(ملف Ogg غير صحيح: $1)',
-		'ogg-play' => 'عرض',
-		'ogg-pause' => 'إيقاف مؤقت',
-		'ogg-stop' => 'إيقاف',
-		'ogg-play-video' => 'عرض الفيديو',
-		'ogg-play-sound' => 'عرض الصوت',
-		'ogg-no-player' => 'عذرا، نظامك يبدو أنه لا يمتلك أي برنامج مدعوم للعرض. من فضلك نصب <a href="http://www.java.com/en/download/manual.jsp">جافا</a>.',
-		'ogg-no-xiphqt' => 'لا يبدو أنك تملك مكون XiphQT لكويك تايم. كويك تايم لا يمكنه عرض ملفات Ogg بدون هذا المكون. من فضلك <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">حمل XiphQT</a> أو اختر برنامجا آخر.',
-		'ogg-player-videoElement' => '<video> عنصر',
-		'ogg-player-oggPlugin' => 'إضافة Ogg',
-		'ogg-player-cortado' => 'كور تادو (جافا)',
-		'ogg-player-vlc-mozilla' => 'في إل سي',
-		'ogg-player-vlc-activex' => 'في إل سي (أكتيف إكس)',
+		'ogg-short-audio'              => 'Ogg $1 ملف صوت، $2',
+		'ogg-short-video'              => 'Ogg $1 ملف فيديو، $2',
+		'ogg-short-general'            => 'Ogg $1 ملف ميديا، $2',
+		'ogg-long-audio'               => '(Ogg $1 ملف صوت، الطول $2، $3)',
+		'ogg-long-video'               => '(Ogg $1 ملف فيديو، الطول $2، $4×$5 بكسل، $3)',
+		'ogg-long-multiplexed'         => '(ملف Ogg مالتي بليكسد أوديو/فيديو، $1، الطول $2، $4×$5 بكسل، $3 إجمالي)',
+		'ogg-long-general'             => '(ملف ميديا Ogg، الطول $2، $3)',
+		'ogg-long-error'               => '(ملف Ogg غير صحيح: $1)',
+		'ogg-play'                     => 'عرض',
+		'ogg-pause'                    => 'إيقاف مؤقت',
+		'ogg-stop'                     => 'إيقاف',
+		'ogg-play-video'               => 'عرض الفيديو',
+		'ogg-play-sound'               => 'عرض الصوت',
+		'ogg-no-player'                => 'معذرة ولكن يبدو أنه لا يوجد لديك برنامج عرض مدعوم. من فضلك ثبت <a href="http://www.java.com/en/download/manual.jsp">الجافا</a>.',
+		'ogg-no-xiphqt'                => 'لا يبدو أنك تملك مكون XiphQT لكويك تايم. كويك تايم لا يمكنه عرض ملفات Ogg بدون هذا المكون. من فضلك <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">حمل XiphQT</a> أو اختر برنامجا آخر.',
+		'ogg-player-videoElement'      => '<video> عنصر',
+		'ogg-player-oggPlugin'         => 'إضافة Ogg',
+		'ogg-player-cortado'           => 'كور تادو (جافا)',
+		'ogg-player-vlc-mozilla'       => 'في إل سي',
+		'ogg-player-vlc-activex'       => 'في إل سي (أكتيف إكس)',
 		'ogg-player-quicktime-mozilla' => 'كويك تايم',
 		'ogg-player-quicktime-activex' => 'كويك تايم (أكتيف إكس)',
-		'ogg-player-thumbnail' => 'مازال صورة فقط',
-		'ogg-player-soundthumb' => 'لا برنامج',
-		'ogg-player-selected' => '(مختار)',
-		'ogg-use-player' => 'استخدم البرنامج:',
-		'ogg-more' => 'المزيد...',
-		'ogg-dismiss' => 'غلق',
-		'ogg-download' => 'تحميل الملف',
-		'ogg-desc-link' => 'حول هذا الملف',
+		'ogg-player-thumbnail'         => 'مازال صورة فقط',
+		'ogg-player-soundthumb'        => 'لا برنامج',
+		'ogg-player-selected'          => '(مختار)',
+		'ogg-use-player'               => 'استخدم البرنامج:',
+		'ogg-more'                     => 'المزيد...',
+		'ogg-dismiss'                  => 'غلق',
+		'ogg-download'                 => 'نزل الملف',
+		'ogg-desc-link'                => 'حول هذا الملف',
 	),
 
+/** Bikol Central*/
 	'bcl' => array(
 		'ogg-more' => 'Dakol pa..',
 		'ogg-dismiss' => 'Isara',
+	),
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+	'bg' => array(
+		'ogg-more'     => 'Повече...',
+		'ogg-dismiss'  => 'Затваряне',
+		'ogg-download' => 'Изтеглене на файла',
 	),
 
 /** Breton (Brezhoneg)
@@ -386,6 +400,15 @@ $messages = array(
 		'ogg-dismiss' => 'Začinić',
 		'ogg-download' => 'Dataju sćahnyć',
 		'ogg-desc-link' => 'Wo tutej dataji',
+	),
+
+/** Haitian (Kreyòl ayisyen)
+ * @author Masterches
+ */
+	'ht' => array(
+		'ogg-play'  => 'Jwe',
+		'ogg-pause' => 'Poz',
+		'ogg-stop'  => 'Stope',
 	),
 
 /** Hungarian (Magyar)

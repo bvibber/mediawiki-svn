@@ -113,6 +113,22 @@ function efUsernameBlacklistMessages( $single = false ) {
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|سطر|سطرهای}} زیر از فهرست سیاه نام کاربری غیر مجاز {{PLURAL:$1|است|هستند}}؛ لطفاً {{PLURAL:$1|آن|آن‌ها}} را قبل از ذخیره کردن صفحه اصلاح کنید:',
 ),
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+'fi' => array(
+	'blacklistedusername'             => 'Kielletty tunnus',
+	'blacklistedusernametext'         => 'Haluamasi tunnus on [[MediaWiki:Usernameblacklist|kiellettyjen tunnusten listalla]]. Valitse toinen nimi.',
+	'usernameblacklist'               => '<pre>
+# Listan rivit ovat säännöllisiä lausekkeita, jotka estävät niihin sopivien tunnusten luomisen.
+# Jokaisen rivin pitää olla järjestelemättömän listan jäseniä. Esimerkikki:
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Seuraava listan rivi ei ole kelvollinen|Seuraavat listan rivit eivät ole kelvollisia}}. Korjaa {{PLURAL:$1|se|ne}} ennen tallentamista.',
+),
+
 /* French */
 'fr' => array(
 	'blacklistedusername' => 'Noms d’utilisateurs en liste noire',

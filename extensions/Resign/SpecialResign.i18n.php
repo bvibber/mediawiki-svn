@@ -44,7 +44,8 @@ Remember: '''You cannot get your permissions back this way!''' You will have to 
  * @author DCLXVI
  */
 'bg' => array(
-	'resign-reason' => 'Причина:',
+	'resign-reason'  => 'Причина:',
+	'resign-success' => "'''Правата бяха премахнати успешно.'''",
 ),
 
 'de' => array(

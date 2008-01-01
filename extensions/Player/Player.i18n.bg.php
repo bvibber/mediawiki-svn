@@ -14,7 +14,9 @@
  * @author DCLXVI
  */
 $messages = array(
-	'player-file'      => 'Име на файл',
-	'player-goto-page' => 'Страница',
-	'player-goto-file' => 'файл',
+	'player-file'          => 'Име на файл',
+	'player-not-found'     => 'файлът не беше намерен',
+	'player-invalid-title' => 'невалидно заглавие',
+	'player-goto-page'     => 'Страница',
+	'player-goto-file'     => 'файл',
 );

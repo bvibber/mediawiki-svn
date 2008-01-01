@@ -1784,6 +1784,13 @@ Será redireccionado para este servidor externo dentro de 20 segundos. [$1 Cliqu
 Um aviso de segurança sobre um certificado não assinado poderá eventualmente ser apresentado.',
 );
 
+/** Message documentation (Message documentation)
+ * @author Meno25
+ */
+$wgBoardVoteMessages['qqq'] = array(
+	'boardvote_submit' => 'Button name',
+);
+
 $wgBoardVoteMessages['rm'] = array(
 	'boardvote_user'          => 'Utilisader',
 	'boardvote_welcome'       => 'Chau \'\'\'$1\'\'\'!',

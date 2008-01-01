@@ -85,7 +85,16 @@ $messages['ar'] = array(
 	'oversight-header' => 'بالأسفل قائمة بالنسخ التي تم إخفاؤها بشكل دائم حديثا عن العامة.
 إفشاء هذه المعلومات يمكن أن ينتج عنه فقد دائم لصلاحيات الأوفرسايت.',
 );
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'hiderevision-continue' => 'Продължаване',
+	'oversight-view'        => 'детайли',
+	'oversight-hidden'      => 'Скрита редакция',
+);
 
+/* Corse (Corsu)*/
 $messages['co'] = array(
 	'hiderevision' => 'Piattà e revisione di manera permanente',
 	'hiderevision-continue' => 'Cuntinuà',
@@ -587,12 +596,13 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'hiderevision-continue'      => 'Weider',
-	'hiderevision-tab'           => 'Verstopp Versiounen',
-	'hiderevision-status'        => 'Versioun $1: $2',
-	'hiderevision-error-missing' => 'Net an der Datebank fonnt.',
-	'oversight-view'             => 'Detailer',
-	'oversight-hidden'           => 'Verstoppte Versioun',
+	'hiderevision-continue'       => 'Weider',
+	'hiderevision-tab'            => 'Verstopp Versiounen',
+	'hiderevision-status'         => 'Versioun $1: $2',
+	'hiderevision-error-missing'  => 'Net an der Datebank fonnt.',
+	'hiderevision-archive-status' => 'Geläschte Versioune vun $1: $2',
+	'oversight-view'              => 'Detailer',
+	'oversight-hidden'            => 'Verstoppte Versioun',
 );
 
 /** Dutch (Nederlands)

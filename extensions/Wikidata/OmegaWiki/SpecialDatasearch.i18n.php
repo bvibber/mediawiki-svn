@@ -15,6 +15,13 @@ $wgDataSearchMessages['ar'] = array(
 	'datasearch' => 'Wikidata: بحث البيانات',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$wgDataSearchMessages['avk'] = array(
+	'datasearch' => 'Wikidata : Origaneyara',
+);
+
 $wgDataSearchMessages['bcl'] = array(
 	'datasearch' => 'Wikidata: Data search',#identical but defined
 );

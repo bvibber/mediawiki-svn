@@ -84,6 +84,8 @@ function efPatrollerMessages() {
 * Упражнения извън пясъчника
 * Виж беседата',
 	'patrol-another'         => 'Показване на други евентуални редакции.',
+	'group-patroller'        => 'Патрулиращи',
+	'group-patroller-member' => 'Патрулиращ',
 ),
 
 /* German (Raymond) */

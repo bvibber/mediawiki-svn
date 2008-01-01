@@ -43,6 +43,14 @@ $messages['bg'] = array(
 	'scanset_prev' => '&lt; Предишни',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'scanset_next' => 'Seuraava →',
+	'scanset_prev' => '← Edellinen',
+);
+
 /** French (Français)
  * @author Dereckson
  */
@@ -151,6 +159,31 @@ $messages['oc'] = array(
 	'scanset_prev' => '&lt; Precedent',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'scanset_next' => 'Nast. &gt;',
+	'scanset_prev' => '&lt; Poprz.',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'scanset_no_name'                   => 'ScanSet: вы должны указать название коллекции снимков, например &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: ошибка в названии набора снимков, или указанный набор отсутствует',
+	'scanset_unrecognised_index_format' => 'ScanSet: неизвестный формат индекса',
+	'scanset_opendir_error'             => 'ScanSet: ошибка, невозможно открыть директорию $1',
+	'scanset_no_files'                  => 'ScanSet: не найдено файлов в указанной директории.',
+	'scanset_no_volumes'                => 'ScanSet: не найдено директорий для томов',
+	'scanset_missing_index_file'        => 'ScanSet: файл индекса $1 не найден',
+	'scanset_index_file_error'          => 'ScanSet: ошибка в файле индекса в строке $1',
+	'scanset_invalid_volume'            => 'ScanSet: ошибочный том',
+	'scanset_next'                      => 'Следующая &gt;',
+	'scanset_prev'                      => '&lt; Предыдущая',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */
@@ -175,3 +208,4 @@ $messages['vo'] = array(
 	'scanset_next' => 'Sököl &gt;',
 	'scanset_prev' => '&lt; Büik',
 );
+

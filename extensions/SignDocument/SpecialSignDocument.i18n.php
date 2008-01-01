@@ -223,7 +223,9 @@ $allMessages = array(
 		'sign-viewfield-zip'           => 'Пощенски код',
 		'sign-viewfield-ip'            => 'IP адрес',
 		'sign-viewfield-phone'         => 'Телефон',
+		'sign-viewfield-email'         => 'Е-поща',
 		'sign-viewfield-age'           => 'Възраст',
+		'sign-viewfield-options'       => 'Настройки',
 		'sign-iptools'                 => '<span class="plainlinksneverexpand"><!--
 		-->[[User:$1|$1]] ([[User talk:$1|беседа]] • <!--
 		-->[[Special:Contributions/$1|приноси]] • <!--

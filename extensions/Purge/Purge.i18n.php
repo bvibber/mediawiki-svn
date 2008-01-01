@@ -48,6 +48,13 @@ $messages['oc'] = array(
 	'purge' => 'purgar',
 );
 
+/** Portuguese (Português)
+ * @author 555
+ */
+$messages['pt'] = array(
+	'purge' => 'purgar',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
