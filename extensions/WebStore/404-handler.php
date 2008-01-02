@@ -84,7 +84,7 @@ class WebStore404Handler extends WebStoreCommon {
 		$tmpPath = "$dstPath.temp.MW_WebStore";
 		$tmpFile = @fopen( $tmpPath, 'a+' );
 		if ( !$tmpFile ) {
-			$this->htmlError( 500, 'webstore_temp_open' );
+			$this->htmlError( 500, 'webstore_temp_open', $tmpPath );
 			return false;
 		}
 

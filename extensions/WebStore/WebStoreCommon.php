@@ -79,19 +79,19 @@ EOT;
 	}
 
     function htmlError( $code, $msgName /*, ... */ ) {
-		$params = array_slice( func_get_args(), 1 );
+		$params = array_slice( func_get_args(), 2 );
 		$this->htmlErrorReal( $code, $msgName, $params );
 	}
 
 	function htmlErrorReal( $code, $msgName, $msgParams = array(), $extra = '' ) {
 		global $wgLogo;
-        $msgText = htmlspecialchars( wfMsgReal( $msgName, $msgParams ) );
+		$msgText = htmlspecialchars( wfMsgReal( $msgName, $msgParams ) );
 		$encMsgName = htmlspecialchars( $msgName );
 		$info = self::$httpErrors[$code];
 		$logo = htmlspecialchars( $wgLogo );
-        header( "HTTP/1.1 $code $info" );
-        echo $this->dtd();
-        echo <<<EOT
+		header( "HTTP/1.1 $code $info" );
+		echo $this->dtd();
+		echo <<<EOT
 <html>
 <head>
 <title>$info</title></head>
