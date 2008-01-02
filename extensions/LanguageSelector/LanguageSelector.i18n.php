@@ -33,7 +33,7 @@ $messages['bg'] = array(
 /** German (Deutsch)
  * @author Raimond Spekking
 */
-$messages['en'] = array(
+$messages['de'] = array(
 	'languageselector'         => 'Sprache',
 	'languageselector-setlang' => 'setzen',
 );
