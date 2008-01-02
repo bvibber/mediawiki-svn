@@ -35,6 +35,17 @@ $messages['bg'] = array(
 	'randomincategory-label'   => 'Категория:',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'randomincategory'                => 'Zufällige Seite in einer Kategorie',
+	'randomincategory-toolbox'        => 'Zufällige Seite',
+	'randomincategory-nocategory'     => 'Kategorie $1 ist nicht vorhanden oder leer',
+	'randomincategory-label'          => 'Kategorie:',
+	'randomincategory-submit'         => 'OK',
+);
+
 /** French (Français)
  * @author Grondin
  */

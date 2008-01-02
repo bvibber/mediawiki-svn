@@ -119,9 +119,12 @@ function efInputBoxMessages() {
 	'createarticle'  => 'Oprette side',
 ),
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 'de' => array(
-	'inputbox-error-no-type'  => 'Du hast keinen Inputbox-Typ angegeben.',
-	'inputbox-error-bad-type' => 'Der Inputbox-Typ „$1“ ist unbekannt. Bitte gib einen gültigen Typ an: „create“, „comment“, „search“ oder „search2“.',
+	'inputbox-error-no-type'  => 'Du hast keinen Eingabefeld-Typ angegeben.',
+	'inputbox-error-bad-type' => 'Der Eingabefeld-Typ „$1“ ist unbekannt. Bitte gib einen gültigen Typ an: „create“, „comment“, „search“ oder „search2“.',
 	'tryexact'                => 'Versuche exakte Suche:',
 	'searchfulltext'          => 'Gesamten Text durchsuchen',
 	'createarticle'           => 'Seite anlegen',

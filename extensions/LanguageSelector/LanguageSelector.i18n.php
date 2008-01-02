@@ -30,6 +30,14 @@ $messages['bg'] = array(
 	'languageselector' => 'Език',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+*/
+$messages['en'] = array(
+	'languageselector'         => 'Sprache',
+	'languageselector-setlang' => 'setzen',
+);
+
 /** French (Français)
  * @author Bertrand GRONDIN
 */

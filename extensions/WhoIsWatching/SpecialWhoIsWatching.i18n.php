@@ -6,7 +6,7 @@ $allMessages = array(
                 'specialwhoiswatchingthepage' => 'Who is watching %s',
                 'specialwhoiswatchingusage'   => 'This special page cannot be used on its own. Please use the page [[MediaWiki:Number_of_watching_users_pageview]] to define an entry point to this special page.',
                 'specialwhoiswatchingaddusers'=> 'Add users to watch the page',
-                'specialwhoiswatchingaddbtn'  => 'Add Selected Users',
+                'specialwhoiswatchingaddbtn'  => 'Add selected Users',
         ),
 
 /** Arabic (العربية)
@@ -28,10 +28,15 @@ $allMessages = array(
 		'specialwhoiswatchingaddbtn'   => 'Добавяне на избраните потребители',
 	),
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
         'de' => array(
                 'whoiswatching'               => 'Wer beobachtet eine Seite',
                 'specialwhoiswatchingthepage' => 'Wer beobachtet %s',
                 'specialwhoiswatchingusage'   => 'Diese Spezialseite kann nicht auf sich selber angewendet werden. Bitte definiere über die Seite [[MediaWiki:Number of watching users pageview]] eine Einstiegsseite für diese Spezialseite.',
+                'specialwhoiswatchingaddusers'=> 'Füge Benutzer zum Beobachten der Seite hinzu',
+                'specialwhoiswatchingaddbtn'  => 'Füge Benutzer hinzu',
         ),
 
 /** French (Français)
