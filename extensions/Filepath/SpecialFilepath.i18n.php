@@ -159,6 +159,18 @@ $wgFilepathMessages['fr'] = array(
 Entrez le nom du fichier sans le préfixe « {{ns:image}}: »',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$wgFilepathMessages['frp'] = array(
+	'filepath'         => 'Chemin d’accès d’un fichiér',
+	'filepath_page'    => 'Fichiér :',
+	'filepath_submit'  => 'Chemin d’accès',
+	'filepath-summary' => 'Ceta pâge afiche lo chemin d’accès complèt d’un fichiér ; les émâges sont montrâs en rèsolucion hôta, los fichiérs ôdiô et vidèô s’ègzécutont avouéc lor programe associyê.
+
+Entrâd lo nom du fichiér sen lo prèfixe « {{ns:image}}: ».',
+);
+
 $wgFilepathMessages['gl'] = array(
 	'filepath'        => 'Ruta do arquivo',
 	'filepath_page'   => 'Arquivo:',

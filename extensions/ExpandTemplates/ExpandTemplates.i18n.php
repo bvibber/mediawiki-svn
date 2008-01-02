@@ -152,6 +152,22 @@ telles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}} sont 
 	'expand_templates_preview'         => 'Prévisualisation',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$wgExpandTemplatesMessages['frp'] = array(
+	'expandtemplates'                  => 'Èxpension des modèlos',
+	'expand_templates_intro'           => 'Ceta pâge pèrmèt d’èprovar l’èxpension de modèlos,
+que sont dèvelopâs rècursivament. Les fonccions et les variâbles prèdèfenies,
+tâles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}}, sont asse-ben dèvelopâs.',
+	'expand_templates_title'           => 'Titro de l’articllo, utilo per ègzemplo se lo modèlo utilise {{PAGENAME}} :',
+	'expand_templates_input'           => 'Entrâd voutron tèxte ique :',
+	'expand_templates_output'          => 'Rèsultat',
+	'expand_templates_ok'              => 'D’acôrd',
+	'expand_templates_remove_comments' => 'Suprimar los comentèros.',
+	'expand_templates_preview'         => 'Prèvisualisacion',
+);
+
 $wgExpandTemplatesMessages['gl'] = array(
 	'expandtemplates'                  => 'Ampliar modelos',
 	'expand_templates_title'           => 'Título do contexto, para {{PAGENAME}} etc.:',

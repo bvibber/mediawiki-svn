@@ -86,6 +86,13 @@ $wgDismissableSiteNoticeMessages['fr'] = array(
 	'sitenotice_close' => 'cacher',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$wgDismissableSiteNoticeMessages['frp'] = array(
+	'sitenotice_close' => 'cachiér',
+);
+
 /** Irish (Gaeilge)
  * @author SPQRobin
  */

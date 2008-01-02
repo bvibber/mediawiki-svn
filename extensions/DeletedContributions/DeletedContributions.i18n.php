@@ -89,6 +89,13 @@ $wgDeletedContribsMessages['fr'] = array(
 	'deletedcontributions' => 'Contributions supprimées d’un utilisateur',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$wgDeletedContribsMessages['frp'] = array(
+	'deletedcontributions' => 'Contribucions suprimâs d’un utilisator',
+);
+
 $wgDeletedContribsMessages['ga'] = array(
 	'deletedcontributions' => 'Dréachtaí úsáideora scriosta',
 );

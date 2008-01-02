@@ -680,7 +680,7 @@ function efMakeBotMessages() {
  */
 'lb' => array(
 	'makebot'                => 'Botstatus autoriséieren oder ofhuelen',
-	'makebot-header'         => "'''E Bürokrat vun dëser Wiki kann anere Benotzer - no de lokale Riichtlinnen - de [[{{MediaWiki:Grouppage-bot}}|Botstatus]] erdeelen oder entzéien.<br/> Mat dem Botstatus ass et méiglech, d'Kontributiounen vu Bot-Benotzerkonten an der Lëscht vun de '''[[Special:Recentchanges|rezenten Ännerungen]]''' an an änleche Lëschten ze verstoppen. D'Botmarkéierung ass doriwwer eraus nëtzlech fir automatesch Verännerunge vun Artikelen z'erkennen.",
+	'makebot-header'         => "'''E Bürokrat vun dëser Wiki kann anere Benotzer - no de lokale Riichtlinnen - de [[{{MediaWiki:Grouppage-bot}}|Botstatus]] erdeelen oder entzéien.<br/> Mat dem Botstatus ass et méiglech, d'Kontributiounen vu Bot-Benotzerkonten an der Lëscht vun de '''[[Special:Recentchanges|rezenten Ännerungen]]''' an an änleche Lëschten ze verstoppen. D'Botmarkéierung ass doriwwer eraus nëtzlech fir automatesch Verännerunge vun Säiten z'erkennen.",
 	'makebot-username'       => 'Benotzernumm:',
 	'makebot-search'         => 'Status offroen',
 	'makebot-isbot'          => 'De [[User:$1|$1]] huet Botstatus.',

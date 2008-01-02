@@ -65,6 +65,13 @@ $messages['oc'] = array(
 
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'advancedrandom' => 'Bardzo losowo',
+);
+
 $messages['pt'] = array(
 	'advancedrandom' => 'Acesso aleatório avançado',
 );

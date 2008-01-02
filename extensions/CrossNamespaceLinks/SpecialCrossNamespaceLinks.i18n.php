@@ -85,6 +85,15 @@ $wgCrossNamespaceLinksMessages['fr'] = array(
 	'crossnamespacelinkstext'     => '$1 : possède $2 {{PLURAL:$2|lien|liens}} vers l’espace « $3 »'
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$wgCrossNamespaceLinksMessages['frp'] = array(
+	'crossnamespacelinks'         => 'Pâges contegnent des lims vers un ôtro èspâço de nom',
+	'crossnamespacelinks-summary' => 'Ceta pâge fornét una lista de les pâges de l’èspâço de nom principâl qu’ont un lim vers un ôtro èspâço de nom (èxcèptâ por los èspâços de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} et {{ns:template}}), cen qu’est pas recomandâ.',
+	'crossnamespacelinkstext'     => '$1 : at $2 {{PLURAL:$2|lim|lims}} vers l’èspâço de nom « $3 »',
+);
+
 $wgCrossNamespaceLinksMessages['gl'] = array(
 	'crossnamespacelinks'         => 'Ligazóns a través de espazos de nomes',
 	'crossnamespacelinks-summary' => 'Esta páxina fornece unha listaxe con ligazóns desde unha páxina no espazo de nomes principal cara a unha páxina noutro espazo de nomes (excepto os espazos de nomes {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}} namespaces), que se recomenda non empregar.',
