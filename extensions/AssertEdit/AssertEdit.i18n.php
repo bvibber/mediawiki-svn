@@ -43,7 +43,6 @@ $messages['frp'] = array(
 $messages['gl'] = array(
 	'assert_edit_title'   => 'Afirmación fracasada',
 	'assert_edit_message' => 'A afirmación especificada ($1) fracasou.',
-
 );
 
 $messages['hr'] = array(
@@ -54,6 +53,14 @@ $messages['hr'] = array(
 $messages['hsb'] = array(
 	'assert_edit_title'   => 'Twjerdźenje njeporadźiło',
 	'assert_edit_message' => 'Podate twjerdźenje ($1) je so njeporadźiło.',
+);
+
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
+$messages['it'] = array(
+	'assert_edit_title'   => 'Asserzione non riuscita',
+	'assert_edit_message' => "L'asserzione indicata ($1) non è riuscita.",
 );
 
 $messages['kk-cyrl'] = array(

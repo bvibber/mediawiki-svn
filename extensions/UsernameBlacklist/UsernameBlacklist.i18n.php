@@ -230,10 +230,21 @@ daftar hitam nama pengguna]]. Harap pilih nama lain.',
 	'blacklistedusernametext' => 'Þetta notendanafn sem þú hefur valið passar við [[MediaWiki:Usernameblacklist|listann með bönnuðum notendanöfnum]]. Vinsamlegast veldu annað nafn.',
 ),
 
-/* Italian (BrokenArrow) */
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
 'it' => array(
-	'blacklistedusername' => 'Nome utente non consentito',
-	'blacklistedusernametext' => 'Il nome utente scelto è inserito nella [[MediaWiki:Usernameblacklist|lista dei nomi non consentiti]]. Si prega di scegliere un altro nome.',
+	'blacklistedusername'             => 'Nome utente non consentito',
+	'blacklistedusernametext'         => 'Il nome utente scelto è inserito nella [[MediaWiki:Usernameblacklist|lista dei nomi non consentiti]]. Si prega di scegliere un altro nome.',
+	'usernameblacklist'               => '<pre>
+# Le voci contenute in questa lista verranno utilizzate per costruire una
+# espressione regolare dei nomi utente ai quali non è consentita la registrazione.
+# Ciascun elemento deve essere nella forma di un elenco puntato, ad es.
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|La seguente riga|Le seguenti righe}} dell'elenco dei nomi utente non consentiti {{PLURAL:$1|non è valida|non sono valide}}; si prega di correggere {{PLURAL:$1|l'errore|gli errori}} prima di salvare la pagina.",
 ),
 
 /* Kazakh Cyrillic (kk:AlefZet) */

@@ -114,10 +114,12 @@ $1',
 	'bg' => array(
 		'inplace_scaler_not_enough_params' => 'Няма достатъчно параметри',
 		'webstore_path_invalid'            => 'Името на файла е невалидно.',
+		'webstore_dest_exists'             => 'Грешка, целевият файл „$1“ съществува.',
 		'webstore_no_file'                 => 'Не беше качен файл.',
 		'webstore_invalid_zone'            => 'Невалидна зона "$1".',
 		'webstore_404'                     => 'Файлът не беше намерен.',
 		'webstore_php_warning'             => 'PHP Предупреждение: $1',
+		'webstore_metadata_not_found'      => 'Файлът не беше намерен: $1',
 		'webstore_invalid_response'        => 'Невалиден отговор от сървъра:
 
 $1',

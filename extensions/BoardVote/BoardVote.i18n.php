@@ -1073,16 +1073,22 @@ Versi terenkripsi tercantum di bawah ini. Hasil tersebut akan ditampilkan untuk 
 	'boardvote_welcome'       => "Selamat datang '''$1'''!",
 	'go_to_board_vote'        => 'Pemilihan Dewan Wikimedia 2007',
 );
+
 $wgBoardVoteMessages['is'] = array(
 	'boardvote_user'          => 'Notandi',
 	'boardvote_welcome'       => 'Velkominn \'\'\'$1\'\'\'!',
 );
+
+/** Italian (Italiano)
+ * @author BrokenArrow
+ * @author Gianfranco
+ */
 $wgBoardVoteMessages['it'] = array(
-	'boardvote'               => 'Elezioni del Consiglio direttivo della Wikimedia Foundation',
-	'boardvote_entry'         => '* [[Special:Boardvote/vote|Vota]]
+	'boardvote'              => 'Elezioni del Consiglio direttivo della Wikimedia Foundation',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vota]]
 * [[Special:Boardvote/list|Visualizza i voti espressi sinora]]
 * [[Special:Boardvote/dump|Scarica i voti in forma cifrata]]',
-	'boardvote_intro'         => '<blockquote>
+	'boardvote_intro'        => '<blockquote>
 <p>
 Benvenuto/a alla quarta elezione per il consiglio direttivo Wikimedia, l\'autorità a capo della Wikimedia Foundation. Si vota per le tre persone che rappresenteranno la comunità di utenti dei vari progetti Wikimedia. Gli eletti rimarranno in carica per due anni nel consiglio direttivo ed aiuteranno a determinare il futuro orientamento dei progetti Wikimedia, individualmente e come gruppo, rappresentando i <em>tuoi</em> interessi e le tue idee. Decideranno in merito a vari temi, tra cui, in particolare, le modalità di raccolta e investimento dei fondi.</p>
 
@@ -1096,8 +1102,8 @@ Benvenuto/a alla quarta elezione per il consiglio direttivo Wikimedia, l\'autori
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2007/FAQ" class="external">FAQ sulle elezioni (in inglese)</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2007/Candidates/it" class="external">Candidati</a></li></ul>
 </blockquote>',
-	'boardvote_intro_change'  => '<p>Il voto è già stato espresso. Per cambiarlo, usare il modulo sottostante. Spuntare la casella a fianco di ciascuno dei candidati che si desidera sostenere.</p>',
-	'boardvote_entered'       => 'Il voto è stato registrato. Grazie.
+	'boardvote_intro_change' => '<p>Il voto è già stato espresso. Per cambiarlo, usare il modulo sottostante. Spuntare la casella a fianco di ciascuno dei candidati che si desidera sostenere.</p>',
+	'boardvote_entered'      => "Il voto è stato registrato. Grazie.
 
 Se lo si desidera, è possibile registrare i dettagli del proprio voto, riportati di seguito:
 
@@ -1107,37 +1113,40 @@ Il voto è stato cifrato con la chiave pubblica della commissione elettorale:
 
 <pre>$2</pre>
 
-Il voto espresso in forma cifrata è riportato di seguito. È inoltre visibile al pubblico all\'indirizzo [[Special:Boardvote/dump]].
+Il voto espresso in forma cifrata è riportato di seguito. È inoltre visibile al pubblico all'indirizzo [[Special:Boardvote/dump]].
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Indietro]]',
-	'boardvote_nosession'     => 'Non siamo in grado di determinare il tuo ID utente Wikimedia. Per favore, esegui il login nel progetto in cui hai i requisiti per votare, e vai alla pagina <nowiki>[[Speciale:Boardvote]]</nowiki>. Devi usare un account con almeno $1 contributi prima di $2 e con il primo contributo precedente a $3.
+[[Special:Boardvote/entry|Indietro]]",
+	'boardvote_nosession'    => "Non siamo in grado di determinare il tuo ID utente Wikimedia. Per favore, esegui il login nel progetto in cui hai i requisiti per votare, e vai alla pagina <nowiki>[[Speciale:Boardvote]]</nowiki>. Devi usare un account con almeno $1 contributi prima di $2 e con il primo contributo precedente a $3.
 
-È necessario impostare il proprio browser affinché accetti i cookie dal nostro server di voto esterno: \'\'\'wikimedia.spi-inc.org\'\'\'.',
-	'boardvote_notloggedin'   => 'Accesso non effettuato. Per esprimere un voto è necessario disporre di un\'utenza che abbia effettuato almeno $1 contributi prima del $2; la prima modifica registrata deve essere precedente al $3.',
-	'boardvote_notqualified'  => 'Non hai i requisiti necessari per votare in questa elezione. Devi necessariamente avere $3 contributi prima di $2, e il tuo primo contributo deve essere stato compiuto prima di $5.',
-	'boardvote_novotes'       => 'Non ha ancora votato nessuno.',
-	'boardvote_time'          => 'Data e ora',
-	'boardvote_user'          => 'Utente',
-	'boardvote_edits'         => 'Modifiche',
-	'boardvote_days'          => 'Giorni',
-	'boardvote_listintro'     => '<p>Di seguito viene riportato l\'elenco dei voti registrati sinora. $1 per scaricare i dati in forma cifrata.</p>',
-	'boardvote_dumplink'      => 'Fare clic qui',
-	'boardvote_strike'        => 'Annulla questo voto',
-	'boardvote_unstrike'      => 'Elimina annullamento',
-	'boardvote_needadmin'     => 'Operazione riservata ai componenti della commissione elettorale.',
-	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">Elezioni del Consiglio direttivo Wikimedia</a>: è possibile votare fino al 12 luglio',
-	'boardvote_notstarted'    => 'La votazione non è ancora iniziata',
-	'boardvote_closed'        => 'La votazione è conclusa, si invita a consultare  [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/It la pagina dei risultati].',
-	'boardvote_edits_many'    => 'molti',
-	'group-boardvote'         => 'Commissione elettorale',
-	'group-boardvote-member'  => 'Commissario elettorale',
-	'grouppage-boardvote'     => '{{ns:project}}:Commissario elettorale',
-	'boardvote_blocked'       => 'Siamo spiacenti, sei stato bloccato nel progetto in cui sei registrato. Gli utenti bloccati non hanno diritto di voto.',
-	'boardvote_welcome'       => 'Benvenuto/a \'\'\'$1\'\'\'!',
-	'go_to_board_vote'        => 'Elezioni 2007 del Board di Wikimedia',
-	'boardvote_redirecting'   => 'Per una migliore sicurezza e trasparenza, il voto si tiene su un server esterno, a controllo indipendente. Sarai reindirizzato a questo server esterno in 20 secondi. [$1 Clicca qui] per raggiungerlo direttamente. Potrebbe apparire un avviso di sicurezza riguardante un certificato di protezione non verificato.',
+È necessario impostare il proprio browser affinché accetti i cookie dal nostro server di voto esterno: '''wikimedia.spi-inc.org'''.",
+	'boardvote_notloggedin'  => "Accesso non effettuato. Per esprimere un voto è necessario disporre di un'utenza che abbia effettuato almeno $1 contributi prima del $2; la prima modifica registrata deve essere precedente al $3.",
+	'boardvote_notqualified' => 'Non hai i requisiti necessari per votare in questa elezione. Devi necessariamente avere $3 contributi prima di $2, e il tuo primo contributo deve essere stato compiuto prima di $5.',
+	'boardvote_novotes'      => 'Non ha ancora votato nessuno.',
+	'boardvote_time'         => 'Data e ora',
+	'boardvote_user'         => 'Utente',
+	'boardvote_edits'        => 'Modifiche',
+	'boardvote_days'         => 'Giorni',
+	'boardvote_ip'           => 'IP',
+	'boardvote_ua'           => 'User agent',
+	'boardvote_listintro'    => "<p>Di seguito viene riportato l'elenco dei voti registrati sinora. $1 per scaricare i dati in forma cifrata.</p>",
+	'boardvote_dumplink'     => 'Fare clic qui',
+	'boardvote_submit'       => 'OK',
+	'boardvote_strike'       => 'Annulla questo voto',
+	'boardvote_unstrike'     => 'Elimina annullamento',
+	'boardvote_needadmin'    => 'Operazione riservata ai componenti della commissione elettorale.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Elezioni del Consiglio direttivo Wikimedia</a>: è possibile votare fino al 12 luglio',
+	'boardvote_notstarted'   => 'La votazione non è ancora iniziata',
+	'boardvote_closed'       => 'La votazione è conclusa, si invita a consultare  [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/It la pagina dei risultati].',
+	'boardvote_edits_many'   => 'molti',
+	'group-boardvote'        => 'Commissione elettorale',
+	'group-boardvote-member' => 'Commissario elettorale',
+	'grouppage-boardvote'    => '{{ns:project}}:Commissario elettorale',
+	'boardvote_blocked'      => 'Siamo spiacenti, sei stato bloccato nel progetto in cui sei registrato. Gli utenti bloccati non hanno diritto di voto.',
+	'boardvote_welcome'      => "Benvenuto/a '''$1'''!",
+	'go_to_board_vote'       => 'Elezioni 2007 del Board di Wikimedia',
+	'boardvote_redirecting'  => 'Per una migliore sicurezza e trasparenza, il voto si tiene su un server esterno, a controllo indipendente. Sarai reindirizzato a questo server esterno in 20 secondi. [$1 Clicca qui] per raggiungerlo direttamente. Potrebbe apparire un avviso di sicurezza riguardante un certificato di protezione non verificato.',
 );
 
 $wgBoardVoteMessages['ja'] = array(

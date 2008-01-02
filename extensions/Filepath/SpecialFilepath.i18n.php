@@ -230,10 +230,15 @@ $wgFilepathMessages['is'] = array(
 	'filepath_page' => 'Skrá:',
 );
 
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
 $wgFilepathMessages['it'] = array(
-	'filepath'        => 'Percorso di un file',
-	'filepath_page'   => 'File:',
-	'filepath_submit' => 'Percorso',
+	'filepath'         => 'Percorso di un file',
+	'filepath_submit'  => 'Percorso',
+	'filepath-summary' => 'Questa pagina speciale restituisce il percorso completo di un file. Le immagini vengono mostrate alla massima risoluzione disponibile, per gli altri tipi di file viene avviato direttamente il programma associato.
+
+Inserire il nome del file senza il prefisso "{{ns:image}}:"',
 );
 
 $wgFilepathMessages['ja'] = array(

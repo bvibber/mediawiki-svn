@@ -22,6 +22,13 @@ function efInputBoxMessages() {
 	'createarticle'           => 'Create page',
 ),
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+'am' => array(
+	'createarticle' => 'አዲስ አርዕስት ለመፍጠር',
+),
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -290,7 +297,12 @@ function efInputBoxMessages() {
 	'createarticle' => 'Búa til grein',
 ),
 
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
 'it' => array(
+	'inputbox-error-no-type'  => 'Non è stato specificato il tipo di inputbox da creare.',
+	'inputbox-error-bad-type' => '"$1" non è un tipo di inputbox riconosciuto. Scegliere il tipo tra "create", "comment", "search" e "search2".',
 	'tryexact'                => 'Cerca corrispondenza esatta',
 	'searchfulltext'          => 'Ricerca nel testo',
 	'createarticle'           => 'Crea voce',

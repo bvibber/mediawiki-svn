@@ -655,24 +655,31 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'already_bureaucrat' => 'Þessi notandi hefur þegar verið gerður möppudýr',
 ),
 
+/** Italian (Italiano)
+ * @author BrokenArrow
+ * @author Cryptex
+ * @author .anaconda
+ */
 'it' => array(
-	'makesysoptitle' => 'Trasforma un utente in amministratore',
-	'makesysoptext' => 'Questo modulo consente ai burocrati di assegnare i privilegi di amministratore a un utente normale. Inserire il nome utente nella casella di testo e premere il pulsante per consentirne l\'accesso come amministratore.',
-	'makesysopname' => 'Nome utente:',
-	'makesysopsubmit' => 'Assegna all\'utente i privilegi di amministratore',
-	'makesysopok' => '<b>L\'utente "$1" è ora un amministratore</b>',
-	'makebureaucratok' => '<b>L\'utente "$1" è ora un burocrate</b>',
-	'makesysopfail' => '<b>Impossibile rendere amministratore l\'utente "$1". Assicurarsi che il nome sia stato digitato correttamente.</b>',
-	'setbureaucratflag' => 'Imposta il flag di burocrate',
-	'rights' => 'Diritti:',
-	'set_user_rights' => 'Imposta permessi utente',
-	'user_rights_set' => '<b>I permessi per l\'utente "$1" sono stati aggiornati</b>',
-	'set_rights_fail' => '<b>Impossibile impostare i permessi per l\'utente "$1". Assicurarsi che il nome sia stato digitato correttamente.</b>',
-	'makesysop' => 'Assegnazione dei privilegi di amministratore',
-	'already_sysop' => 'Questo utente è già amministratore',
-	'already_bureaucrat' => 'L\'utente è già burocrate',
-	'group-steward' => 'Steward',
-	'grouppage-steward' => '{{ns:project}}:Steward',
+	'makesysoptitle'           => 'Trasforma un utente in amministratore',
+	'makesysoptext'            => "Questo modulo consente ai burocrati di assegnare i privilegi di amministratore a un utente normale. Inserire il nome utente nella casella di testo e premere il pulsante per consentirne l'accesso come amministratore.",
+	'makesysopname'            => 'Nome utente:',
+	'makesysopsubmit'          => "Assegna all'utente i privilegi di amministratore",
+	'makesysopok'              => '<b>L\'utente "$1" è ora un amministratore</b>',
+	'makebureaucratok'         => '<b>L\'utente "$1" è ora un burocrate</b>',
+	'makesysopfail'            => '<b>Impossibile rendere amministratore l\'utente "$1". Assicurarsi che il nome sia stato digitato correttamente.</b>',
+	'makesysop-see-userrights' => 'Fare riferimento alla pagina [[Special:Userrights]] per maggiori dettagli.',
+	'setbureaucratflag'        => 'Imposta il flag di burocrate',
+	'rights'                   => 'Diritti:',
+	'set_user_rights'          => 'Imposta permessi utente',
+	'user_rights_set'          => '<b>I permessi per l\'utente "$1" sono stati aggiornati</b>',
+	'set_rights_fail'          => '<b>Impossibile impostare i permessi per l\'utente "$1". Assicurarsi che il nome sia stato digitato correttamente.</b>',
+	'makesysop'                => 'Assegnazione dei privilegi di amministratore',
+	'already_sysop'            => 'Questo utente è già amministratore',
+	'already_bureaucrat'       => "L'utente è già burocrate",
+	'group-steward'            => 'Steward',
+	'group-steward-member'     => 'Steward',
+	'grouppage-steward'        => '{{ns:project}}:Steward',
 ),
 
 'ja' => array(
