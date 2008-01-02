@@ -713,25 +713,27 @@ function efMakeBotMessages() {
 	'makebot-comment'  => 'ຄຳເຫັນ:',
 ),
 
-/* nld . Dutch (Siebrand Mazeland) */
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 'nl' => array(
-	'makebot'                 => 'Botstatus beheren',
-	'makebot-header'          => '\'\'\'Een lokale bureaucraat kan via deze pagina een [[{{MediaWiki:Grouppage-bot}}|botstatus]] aan een andere gebruiker verlenen of die status intrekken.\'\'\'<br />De botstatus verbergt de bewerkingen van een gebruiker in de [[Special:Recentchanges|recente wijzigingen]] en gelijksoortige lijsten. Het is handig voor gebruikers die automatisch bewerkingen maken. Dit hoort aan de hand van het geldende beleid te gebeuren.',
-	'makebot-username'        => 'Gebruiker:',
-	'makebot-search'          => 'OK',
-	'makebot-isbot'           => '[[User:$1|$1]] heef de botstatus.',
-	'makebot-notbot'          => '[[User:$1|$1]] heeft geen botstatus.',
-	'makebot-privileged'      => '[[User:$1|$1]] heeft de rol [[Special:Listadmins|beheerder of bureaucraat]] en kan geen botstatus krijgen.',
-	'makebot-change'          => 'Status wijzigen:',
-	'makebot-grant'           => 'Verlenen',
-	'makebot-revoke'          => 'Intrekken',
-	'makebot-comment'         => 'Opmerking:',
-	'makebot-granted'         => '[[User:$1|$1]] heeft nu de botstatus.',
-	'makebot-revoked'         => '[[User:$1|$1]] heeft niet langer de botstatus.',
-	'makebot-logpage'         => 'Botstatuslogboek',
-	'makebot-logpagetext'     => 'Dit is een logboek waarin wijzigingen ten aanzien van de [[{{MediaWiki:Grouppage-bot}}|botstatus]] van gebruikers te zien zijn.',
-	'makebot-logentrygrant'   => 'heeft de botstatus gegeven aan [[$1]]',
-	'makebot-logentryrevoke'  => 'heeft de botstatus van [[$1]] ingetrokken',
+	'makebot'                => 'Botstatus beheren',
+	'makebot-header'         => "'''Een bureaucraat kan via deze pagina een [[{{MediaWiki:Grouppage-bot}}|botstatus]] aan een andere gebruiker verlenen of die status intrekken.'''<br />De botstatus verbergt de bewerkingen van een gebruiker in de [[Special:Recentchanges|recente wijzigingen]] en gelijksoortige lijsten. Het is handig voor gebruikers die automatisch bewerkingen maken. Dit hoort aan de hand van het geldende beleid te gebeuren.",
+	'makebot-username'       => 'Gebruiker:',
+	'makebot-search'         => 'OK',
+	'makebot-isbot'          => '[[User:$1|$1]] heef de botstatus.',
+	'makebot-notbot'         => '[[User:$1|$1]] heeft geen botstatus.',
+	'makebot-privileged'     => '[[User:$1|$1]] heeft de rol [[Special:Listadmins|beheerder of bureaucraat]] en kan geen botstatus krijgen.',
+	'makebot-change'         => 'Status wijzigen:',
+	'makebot-grant'          => 'Verlenen',
+	'makebot-revoke'         => 'Intrekken',
+	'makebot-comment'        => 'Opmerking:',
+	'makebot-granted'        => '[[User:$1|$1]] heeft nu de botstatus.',
+	'makebot-revoked'        => '[[User:$1|$1]] heeft niet langer de botstatus.',
+	'makebot-logpage'        => 'Botstatuslogboek',
+	'makebot-logpagetext'    => 'Dit is een logboek waarin wijzigingen ten aanzien van de [[{{MediaWiki:Grouppage-bot}}|botstatus]] van gebruikers te zien zijn.',
+	'makebot-logentrygrant'  => 'heeft de botstatus gegeven aan [[$1]]',
+	'makebot-logentryrevoke' => 'heeft de botstatus van [[$1]] ingetrokken',
 ),
 
 /* Norwegian (Jon Harald Søby) */

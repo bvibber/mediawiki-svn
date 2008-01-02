@@ -53,6 +53,13 @@ function efUsernameBlacklistMessages( $single = false ) {
 	'blacklistedusername' => 'Blacklisted na username',
 ),
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+'bg' => array(
+	'blacklistedusernametext' => 'Избраното потребителско име съвпада със запис от [[MediaWiki:Usernameblacklist|списъка с непозволени имена]]. Изберете друго.',
+),
+
 'bn' => array(
 	'blacklistedusername' => 'নিষিদ্ধ ঘোষিত ব্যবহারকারী নাম',
 	'blacklistedusernametext' => 'ব্যবহারকারীর নাম [[MediaWiki:Usernameblacklist|কালতালিকাভুক্ত ব্যবহারকারীর নাম সমূহের]] সাথে মিলেছে। দয়াকরে অন্য নাম পছন্দ করুন।',

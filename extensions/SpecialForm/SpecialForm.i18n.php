@@ -78,8 +78,9 @@ $SpecialFormMessages =array(
  * @author DCLXVI
  */
 	'bg' => array(
-		'formsave'          => 'Съхранение',
-		'formarticleexists' => 'Страницата съществува',
+		'formsave'              => 'Съхранение',
+		'formarticleexists'     => 'Страницата съществува',
+		'formarticleexiststext' => 'Страницата [[$1]] вече съществува.',
 	),
 
 	'de' => array(

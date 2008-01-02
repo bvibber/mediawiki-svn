@@ -88,9 +88,15 @@ on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|
  */
 	'bg' => array(
 		'createsigndoc-pagename'          => 'Страница:',
+		'createsigndoc-allowedgroup'      => 'Позволена група:',
 		'createsigndoc-email'             => 'Електронна поща:',
+		'createsigndoc-address'           => 'Домашен адрес:',
+		'createsigndoc-extaddress'        => 'Град, щат, държава:',
 		'createsigndoc-phone'             => 'Телефонен номер:',
 		'createsigndoc-bday'              => 'Дата на раждане:',
+		'createsigndoc-introtext'         => 'Въведение:',
+		'createsigndoc-hidden'            => 'Скрито',
+		'createsigndoc-optional'          => 'Незадължително',
 		'createsigndoc-create'            => 'Създаване',
 		'createsigndoc-error-generic'     => 'Грешка: $1',
 		'createsigndoc-error-pagenoexist' => 'Грешка: Страницата [[$1]] не съществува.',
