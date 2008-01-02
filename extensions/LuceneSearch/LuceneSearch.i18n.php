@@ -45,6 +45,14 @@ $1
 <br />Soek vir $3 $9',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$wgLuceneSearchMessages['am'] = array(
+	'searchnumber'    => '<strong><big>ውጤቶች #$1 እስከ $2 (ከ$3):</big></strong>',
+	'searchnoresults' => 'ውጤት፦ ለጥያቄዎ ምንም ተመሳሳይ ጽሕፈት በማናቸውም ጽሁፍ አይገኝም።',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

@@ -199,9 +199,16 @@ $wgSiteMatrixMessages['is'] = array(
 	'sitematrix' => 'Listi yfir Wikimedia verkefni',
 );
 
+/** Italian (Italiano)
+ * @author BrokenArrow
+ * @author .anaconda
+ * @author לערי ריינהארט
+ */
 $wgSiteMatrixMessages['it'] = array(
-	'sitematrix' => 'Elenco di tutti i progetti Wikimedia nelle varie lingue',
+	'sitematrix'          => 'Elenco di tutti i progetti Wikimedia nelle varie lingue',
 	'sitematrix-language' => 'Lingua',
+	'sitematrix-project'  => 'Nome del progetto, collegamento interprogetto e collegamento inter-wiki',
+	'sitematrix-others'   => 'Altri progetti Wikimedia',
 );
 
 $wgSiteMatrixMessages['ja'] = array(

@@ -565,6 +565,7 @@ $wgBoardVoteMessages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Nike
  * @author Str4nd
  */
 $wgBoardVoteMessages['fi'] = array(
@@ -587,6 +588,7 @@ $wgBoardVoteMessages['fi'] = array(
 	'boardvote_unstrike'     => 'Palauta tuetuksi',
 	'boardvote_needadmin'    => 'Vain vaalitarkastajat voivat suorittaa tämän toiminnon.',
 	'boardvote_notstarted'   => 'Äänestys ei ole vielä alkanut',
+	'boardvote_closed'       => 'Äänestys on päättynyt. Tulokset ovat [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En äänestyssivulla].',
 	'boardvote_edits_many'   => 'monta',
 	'boardvote_blocked'      => 'Valitettavasti muokkausestosi projektissa johon olet kirjautunut estää sinua äänestämästä.',
 	'boardvote_welcome'      => "Tervetuloa '''$1'''!",

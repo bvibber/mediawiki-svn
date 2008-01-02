@@ -235,6 +235,7 @@ $wgFilepathMessages['is'] = array(
  */
 $wgFilepathMessages['it'] = array(
 	'filepath'         => 'Percorso di un file',
+	'filepath_page'    => 'Nome del file:',
 	'filepath_submit'  => 'Percorso',
 	'filepath-summary' => 'Questa pagina speciale restituisce il percorso completo di un file. Le immagini vengono mostrate alla massima risoluzione disponibile, per gli altri tipi di file viene avviato direttamente il programma associato.
 
