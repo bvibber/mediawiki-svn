@@ -12,6 +12,14 @@ $messages['en'] = array(
 	'assert_edit_message' => 'The specified assertion ($1) failed.',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'assert_edit_title'   => "L'aserzión ha fallato",
+	'assert_edit_message' => "L'aserzión espezificata ($1) ha fallato.",
+);
+
 $messages['ar'] = array(
 	'assert_edit_title'   => 'التأكيد فشل',
 	'assert_edit_message' => 'التأكيد المحدد ($1) فشل.',

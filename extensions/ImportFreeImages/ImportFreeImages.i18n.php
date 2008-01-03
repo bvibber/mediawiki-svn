@@ -174,6 +174,15 @@ function efImportFreeImagesMessages() {
 			'importfreeimages_promptuserforfilename' => 'Reek n Siel-Doatäinoome ien:',
 			'importfreeimages_returntoform'          => "Of klik <a href='$1'>hier</a>, uum tou ju Siede mäd do Säikresultoate touräächtoukuumen.",
 		),
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+		'vo' => array(
+			'importfreeimages_owner'          => 'Lautan',
+			'importfreeimages_next'           => 'Sököl $1',
+			'importfreeimages_filefromflickr' => "$1 fa geban: <b>[$2]</b> de 'flickr'. 'URL' rigik",
+		),
 	);
 	return $messages;
 }

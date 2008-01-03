@@ -81,6 +81,15 @@ $messages['oc'] = array(
 	'protectsection_forbidden'  => 'Interdich',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'protectsection_add_remove' => 'Pokúsili ste sa pridať alebo odstrániť zamknutú sekciu',
+	'protectsection_modify'     => 'Pokúsili ste sa upravovať zamknutý text',
+	'protectsection_forbidden'  => 'Zakázané',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

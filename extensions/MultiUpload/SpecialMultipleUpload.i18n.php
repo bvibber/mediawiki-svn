@@ -167,6 +167,24 @@ Podètz inscriure la '''destinacion del fichièr''' e emplenar lo '''Somari''' p
 Los imatges pas pertinents poiràn èsser escafadas immediatament. Vejatz la pagina [[{{MediaWiki:Multipleupload-page}}|image deletion policy]].",
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'multipleupload'                   => 'Nahrať súbory',
+	'multipleupload-ignoreallwarnings' => "Ignorovať '''všetky upozornenia''' a napriek nim súbor uložiť.",
+	'multipleupload-saveallfiles'      => 'Uložiť všetky súbory',
+	'multipleupload-addresswarnings'   => 'Prosím, predtým než znovu nahráte súbory, napravte všetky upozornenia.',
+	'multipleupload-page'              => '{{ns:project}}:Pravidlá mazania súborov',
+	'multipleupload-text'              => "Tu môžete nahrať viacero súborov.
+
+Tlačidlom „Prehliadať“ vyberte každý súbor, ktorý chcete nahrať. Môžete nahrať od 1 do $1 súborov naraz.
+
+Môžete zadať voliteľný '''Cieľový názov súboru''' a poskytnúť '''Zhrnutie''' popisujúce váš súbor.
+
+Nevhodné súbory budú okamžite zmazané, pozri [[{{MediaWiki:Multipleupload-page}}|pravidlá mazania súborov]].",
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

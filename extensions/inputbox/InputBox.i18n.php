@@ -207,6 +207,17 @@ function efInputBoxMessages() {
 	'createarticle'           => 'Créer l’article',
 ),
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+'frp' => array(
+	'inputbox-error-no-type'  => 'Vos éd pas spècefiâ lo tipo de la bouèta d’entrâ a crèar.',
+	'inputbox-error-bad-type' => "Tipo de bouèta d’entrâ « $1 » pas recognu. Endicâd lo chouèx ''create'', ''comment'', ''search'' ou ben ''searche2''.",
+	'tryexact'                => 'Èprovâd la corrèspondance ègzacta.',
+	'searchfulltext'          => 'Rechèrche en tèxte complèt',
+	'createarticle'           => 'Crèar l’articllo',
+),
+
 'fur' => array(
 	'createarticle' => 'Cree vôs',
 ),

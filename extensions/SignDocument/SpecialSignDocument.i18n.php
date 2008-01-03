@@ -216,6 +216,7 @@ $allMessages = array(
 		'sign-phone'                   => 'Телефонен номер:',
 		'sign-bday'                    => 'Възраст:',
 		'sign-email'                   => 'Адрес за е-поща:',
+		'sign-indicates-req'           => '<small><i><font color="red">*</font> задължително поле</i></small>',
 		'sign-viewfield-realname'      => 'Име',
 		'sign-viewfield-address'       => 'Адрес',
 		'sign-viewfield-city'          => 'Град',
@@ -226,6 +227,7 @@ $allMessages = array(
 		'sign-viewfield-email'         => 'Е-поща',
 		'sign-viewfield-age'           => 'Възраст',
 		'sign-viewfield-options'       => 'Настройки',
+		'sign-emailto'                 => '<a href="mailto:$1">$1</a>',
 		'sign-iptools'                 => '<span class="plainlinksneverexpand"><!--
 		-->[[User:$1|$1]] ([[User talk:$1|беседа]] • <!--
 		-->[[Special:Contributions/$1|приноси]] • <!--

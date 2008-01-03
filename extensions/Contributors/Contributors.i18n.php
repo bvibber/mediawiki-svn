@@ -564,6 +564,17 @@ function efContributorsMessages() {
 	'contributors-nosuchpage'  => 'Teu aya artikel $1.',
 ),
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+'vo' => array(
+	'contributors'         => 'Keblünans',
+	'contributors-toolbox' => 'Keblünans cifik',
+	'contributors-target'  => 'Tiäd:',
+	'contributors-submit'  => 'Jonolöd',
+	'contributors-others'  => 'e votik $1',
+),
+
 /* Cantonese (Shinjiman) */
 'yue' => array(
 	'contributors' => '貢獻者',

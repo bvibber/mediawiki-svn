@@ -80,6 +80,16 @@ Er is een nieuwe gebruiker $2 aangemaakt om $3 op $4.',
 	'newusernotifbody' => 'Bondì $1, un neuv utent, $2, a l\'é stait creà ansima a $3 dël $4.',
 ),
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+'sk' => array(
+	'newusernotifsubj' => 'Upozornenie na nových používateľov pre $1',
+	'newusernotifbody' => 'Ahoj $1,
+
+$3 na $4 bol vytvorený nový používateľský účet $2.',
+),
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

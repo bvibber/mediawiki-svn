@@ -30,6 +30,16 @@ $messages['fr'] = array (
 	'intersection_noincludecats' => 'DynamicPageList : vous avez besoin d’inclure au moins une catégorie, ou préciser un nom d’espace !',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList : trop de catègories !',
+	'intersection_toofewcats'    => 'DynamicPageList : pas prod de catègories !',
+	'intersection_noresults'     => 'DynamicPageList : nion rèsultat !',
+	'intersection_noincludecats' => 'DynamicPageList : vos avéd fôta d’encllure u muens yona catègorie, ou ben de spècefiar un èspâço de nom !',
+);
+
 $messages['gl'] = array(
 	'intersection_toomanycats' => 'DynamicPageList: Demasiadas categorías!',
 	'intersection_toofewcats' => 'DynamicPageList: Demasiado poucas categorías!',

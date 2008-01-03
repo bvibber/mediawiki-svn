@@ -109,6 +109,7 @@ $messages['bg'] = array(
 	'regexblock-form-reason'          => 'Причина:',
 	'regexblock-form-match'           => 'Пълно съвпадение',
 	'regexblock-stats-username'       => 'За $1',
+	'regexblock-currently-blocked'    => 'Текущо блокирани адреси:',
 	'regexblock-view-all'             => 'Всички',
 	'regexblock-view-reason'          => 'причина: $1',
 	'regexblock-view-block-temporary' => 'изтича на',

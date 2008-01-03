@@ -256,20 +256,28 @@ $wgBoardVoteMessages['bcl'] = array(
 	'boardvote_blocked'       => 'Despensa, pigbágat ka sa pagrehistrohan mong wiki. An mga pigbágat na parágamit dai pigtotogotan na makaboto.',
 	'boardvote_welcome'       => 'Dagos \'\'\'$1\'\'\'!',
 );
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ * @author Spiritia
+ */
 $wgBoardVoteMessages['bg'] = array(
-	'boardvote'               => 'Избори за борда на Фондация Уикимедия',
-	'boardvote_intro_change'  => '<p>Вие вече сте гласували. Ако желаете, обаче, можете да промените вота си, като използвате формата по-долу. Отбележете кутийките срещу имената на всички кандидати, които одобрявате.</p>',
-	'boardvote_notloggedin'   => 'Не сте влезли в системата. За да гласувате, трябва да използвате сметка с най-малко $1 приноса към $2, като първата ви редакция е отпреди $3.',
-	'boardvote_notqualified'  => 'Не отговаряте на условията за гласуване в тези избори. Трябвало е да имате $3 редакции към $2, като първата ви редакция е отпреди $5.',
-	'boardvote_novotes'       => 'Все още никой не е гласувал.',
-	'boardvote_user'          => 'Потребител',
-	'boardvote_edits'         => 'Редакции',
-	'boardvote_days'          => 'Дни',
-	'boardvote_dumplink'      => 'Тук',
-	'boardvote_notstarted'    => 'Гласуването все още не е започнало',
-	'boardvote_closed'        => 'Гласуването е приключено, вижте [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En страницата с резултатите].',
-	'boardvote_edits_many'    => 'много',
+	'boardvote'              => 'Избори за борда на Фондация Уикимедия',
+	'boardvote_intro_change' => '<p>Вие вече сте гласували. Ако желаете, обаче, можете да промените вота си, като използвате формата по-долу. Отбележете кутийките срещу имената на всички кандидати, които одобрявате.</p>',
+	'boardvote_notloggedin'  => 'Не сте влезли в системата. За да гласувате, трябва да използвате сметка с най-малко $1 приноса към $2, като първата ви редакция е отпреди $3.',
+	'boardvote_notqualified' => 'Не отговаряте на условията за гласуване в тези избори. Трябвало е да имате $3 редакции към $2, като първата ви редакция е отпреди $5.',
+	'boardvote_novotes'      => 'Все още никой не е гласувал.',
+	'boardvote_user'         => 'Потребител',
+	'boardvote_edits'        => 'Редакции',
+	'boardvote_days'         => 'Дни',
+	'boardvote_ip'           => 'IP',
+	'boardvote_dumplink'     => 'Тук',
+	'boardvote_notstarted'   => 'Гласуването все още не е започнало',
+	'boardvote_closed'       => 'Гласуването е приключено, вижте [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En страницата с резултатите].',
+	'boardvote_edits_many'   => 'много',
+	'boardvote_welcome'      => "Здравейте, '''$1'''!",
 );
+
 $wgBoardVoteMessages['br'] = array(
 	'boardvote'               => 'Dilennadeg Kuzul-merañ Diazezadur Wikimedia',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Vot]]
@@ -322,6 +330,7 @@ Adkaset e viot war-du ar servijer diavaez-se a-benn 20 eilenn. [$1 Klikañ amañ
 
 Ur c\'hemenn surentez diwall a-zivout un testeni disin a c\'hallo dont war wel marteze.',
 );
+
 $wgBoardVoteMessages['ca'] = array(
 	'boardvote'               => 'Eleccions al Consell d\'Administració de la Fundació Wikimedia',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Voteu]]
@@ -342,6 +351,7 @@ D\'aquí 20 segons sereu redirigit a aquesta pàgina. [$1 Cliqueu aquí] per ana
 
 Tingueu en compte que us pot aparèixer un avís de certificat de seguretat.',
 );
+
 $wgBoardVoteMessages['cdo'] = array(
 	'boardvote_time'          => "Sì-găng",
 	'boardvote_user'          => "Ê̤ṳng-hô",
@@ -349,11 +359,13 @@ $wgBoardVoteMessages['cdo'] = array(
 	'boardvote_dumplink'      => "Áik cŭ-uái",
 	'boardvote_submit'        => 'Hō̤',
 );
+
 $wgBoardVoteMessages['co'] = array(
 	'group-boardvote'         => 'Cummissione eletturale',
 	'group-boardvote-member'  => 'Cummissariu eletturale',
 	'grouppage-boardvote'     => '{{ns:project}}:Cummissarii eletturali',
 );
+
 $wgBoardVoteMessages['cs'] = array(
 	'boardvote'               => "Volby do Správní rady nadace Wikimedia",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Hlasovat]]

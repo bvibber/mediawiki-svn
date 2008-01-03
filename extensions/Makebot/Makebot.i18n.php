@@ -1060,23 +1060,26 @@ function efMakeBotMessages() {
 	'makebot-logentryrevoke'  => 'Återkallade robotstatus från [[$1]]',
 ),
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
 'tet' => array(
-	'makebot'                 => 'Fó ka hasai kuana "bot"',
-	'makebot-header'          => '\'\'\'Burokrata bele uza pájina ne\'e ba fó ka hasai [[{{MediaWiki:Grouppage-bot}}|kuana bot]] ba uza-na\'in seluk.\'\'\'<br />Kuana bot hamsumik edita uza-na\'in nian iha [[Special:Recentchanges|mudansa foufoun sira]] no lista hanesan; di\'ak ba uza-na\'in, ne\'ebé edita automátiku. Tenke halo ne\'e de\'it karik ukun fó lisensa ba halo ne\'e.',
-	'makebot-username'        => 'Naran uza-na\'in',
-	'makebot-search'          => 'Halo',
-	'makebot-isbot'           => '[[User:$1|$1]] iha kuana bot.',
-	'makebot-notbot'          => '[[User:$1|$1]] la iha kuana bot.',
-	'makebot-privileged'      => '[[User:$1|$1]] iha [[Special:Listadmins|kuana administradór ka burokrata]]; ó la bele fó kuana bot.',
-	'makebot-change'          => 'Filak kuana bot:',
-	'makebot-grant'           => 'Fó',
-	'makebot-revoke'          => 'Hasai',
-	'makebot-comment'         => 'Komentáriu:',
-	'makebot-granted'         => '[[User:$1|$1]] agora iha kuana bot.',
-	'makebot-revoked'         => '[[User:$1|$1]] agora la iha kuana bot.',
-	'makebot-logpage'         => 'Log fó ka hasai kuana bot',
-	'makebot-logentrygrant'   => 'fó kuana bot ba [[User:$1|$1]]',
-	'makebot-logentryrevoke'  => 'hasai kuana bot [[User:$1|$1]] nian',
+	'makebot'                => 'Fó ka hasai kuana "bot"',
+	'makebot-header'         => "'''Burokrata bele uza pájina ne'e ba fó ka hasai [[{{MediaWiki:Grouppage-bot}}|kuana bot]] ba uza-na'in seluk.'''<br />Kuana bot hamsumik edita uza-na'in nian iha [[Special:Recentchanges|mudansa foufoun sira]] no lista hanesan; di'ak ba uza-na'in, ne'ebé edita automátiku. Tenke halo ne'e de'it karik ukun fó lisensa ba halo ne'e.",
+	'makebot-username'       => "Naran uza-na'in",
+	'makebot-search'         => 'Halo',
+	'makebot-isbot'          => '[[User:$1|$1]] iha kuana bot.',
+	'makebot-notbot'         => '[[User:$1|$1]] la iha kuana bot.',
+	'makebot-privileged'     => '[[User:$1|$1]] iha [[Special:Listadmins|kuana administradór ka burokrata]]; ó la bele fó kuana bot.',
+	'makebot-change'         => 'Filak kuana bot:',
+	'makebot-grant'          => 'Fó',
+	'makebot-revoke'         => 'Hasai',
+	'makebot-comment'        => 'Komentáriu:',
+	'makebot-granted'        => '[[User:$1|$1]] agora iha kuana bot.',
+	'makebot-revoked'        => '[[User:$1|$1]] agora la iha kuana bot.',
+	'makebot-logpage'        => 'Lista fó ka hasai kuana bot',
+	'makebot-logentrygrant'  => 'fó kuana bot ba [[User:$1|$1]]',
+	'makebot-logentryrevoke' => 'hasai kuana bot [[User:$1|$1]] nian',
 ),
 
 'tg' => array(

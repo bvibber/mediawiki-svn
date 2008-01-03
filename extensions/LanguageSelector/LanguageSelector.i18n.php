@@ -60,3 +60,18 @@ $messages['nl'] = array(
 	'languageselector' => 'Taal',
 	'languageselector-setlang' => 'instellen',
 );
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'languageselector'         => 'Jazyk',
+	'languageselector-setlang' => 'nastaviť',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'languageselector' => 'Pük',
+);

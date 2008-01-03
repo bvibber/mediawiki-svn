@@ -112,6 +112,22 @@ function efImageMapMessages() {
 	'imagemap_description'          => 'À propos de cette image',
 ),
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+'frp' => array(
+	'imagemap_no_image'           => '&lt;imagemap&gt; : vos dête spècefiar una émâge dens la premiére legne',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt; : l’émâge est envalida ou ègziste pas',
+	'imagemap_no_link'            => '&lt;imagemap&gt; : nion lim valido at étâ trovâ a la fin de la legne $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt; : titro envalido dens lo lim a la legne $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt; : pas prod de coordonâs por la fôrma a la legne $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt; : fôrma pas recognua a la legne $1, châque legne dêt comenciér avouéc yon des mots siuvents : default, rect, circle ou ben poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt; : u muens yona spèceficacion de surface dêt étre balyê',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt; : coordonâ envalida a la legne $1, dêt étre un nombro',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt; : paramètre « dèsc » envalido, los paramètres possiblos sont : <tt>$1</tt>',
+	'imagemap_description'        => 'A propôs de ceta émâge',
+),
+
 /** Galician (Galego)
  * @author Alma
  * @author Xosé

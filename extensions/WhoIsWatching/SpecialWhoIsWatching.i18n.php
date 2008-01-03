@@ -105,13 +105,24 @@ $allMessages = array(
                 'whoiswatching'               => 'Utilizaires agachant una pagina del wiki',
                 'specialwhoiswatchingthepage' => 'Utilizaires agachant %s',
                 'specialwhoiswatchingusage'   => "Aquesta pagina especiala pòt pas èsser utilizada sola. Passatz per [[MediaWiki:Number_of_watching_users_pageview]] per definir un punt d'entrada vèrs aquesta pagina especiala.",
-),
+	),
 
         'pt' => array(
                 'whoiswatching'               => 'Quem Está a Vigiar uma página wiki',
                 'specialwhoiswatchingthepage' => 'Quem está a vigiar %s',
                 'specialwhoiswatchingusage'   => 'Esta página especial não pode ser usada por si só. Por favor, utilize a página [[MediaWiki:Number_of_watching_users_pageview]] para definir um ponto de entrada para esta página especial.',
         ),
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+	'sk' => array(
+		'whoiswatching'                => 'Kto sleduje wiki stránku',
+		'specialwhoiswatchingthepage'  => 'Kto sleduje %s',
+		'specialwhoiswatchingusage'    => 'Túto špeciálnu stránku nie je možné používať samostatne. Prosím, použite [[MediaWiki:Number_of_watching_users_pageview]] na definovanie vstupného bodu na túto stránku.',
+		'specialwhoiswatchingaddusers' => 'Pridať používateľov sledujúcich stránku',
+		'specialwhoiswatchingaddbtn'   => 'Pridať zvolených používateľov',
+	),
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
