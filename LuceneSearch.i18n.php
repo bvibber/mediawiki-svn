@@ -432,22 +432,26 @@ Je nachwilny problem z nutřkownej pytawu. Spytaj za někotre wokomiki hišće r
 	'searchincategory'      => 'w kategoriji',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
 $wgLuceneSearchMessages['hu'] = array(
-	'searchnumber'          => "<strong>$1-$2, összesen: $3 találat</strong>",
+	'searchnumber'          => '<strong>$1-$2, összesen: $3 találat</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>előző</span>",
 	'searchnext'            => "<span style='font-size: small'>következő</span> &#x00BB;",
-	'lucene-searchscore'    => "Relevancia: $1%",
-	'lucene-resultsize'     => "$1 ($2 szó)",
-	'searchdidyoumean'      => "Erre gondoltál: \"<a href=\"$1\">$2</a>\"?",
-	'searchnearmatches'     => "<b>Ezeknek a lapoknak hasonlít a címe a keresett kifejezésre:</b>",
-	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "Keresés a névterekben:
+	'lucene-searchscore'    => 'Relevancia: $1%',
+	'lucene-resultsize'     => '$1 ($2 szó)',
+	'searchdidyoumean'      => 'Erre gondoltál: "<a href="$1">$2</a>"?',
+	'searchnoresults'       => 'Sajnos nincs a keresési feltételeknek megfelelő találat.',
+	'searchnearmatches'     => '<b>Ezeknek a lapoknak hasonlít a címe a keresett kifejezésre:</b>',
+	'lucenepowersearchtext' => 'Keresés a névterekben:
 
 $1
 
-$3 $9 $10",
-	'lucenefallback'        => "Hiba adódott a wiki keresés során.
-A hiba átmeneti; próbáld újra néhány másodperc múlva vagy kereshetsz a wikin egy külső keresőszolgáltatáson keresztül is:"
+$3 $9 $10',
+	'lucenefallback'        => 'Hiba adódott a wiki keresés során.
+A hiba átmeneti; próbáld újra néhány másodperc múlva vagy kereshetsz a wikin egy külső keresőszolgáltatáson keresztül is:',
+	'searchall'             => 'mind',
 );
 
 $wgLuceneSearchMessages['id'] = array(
