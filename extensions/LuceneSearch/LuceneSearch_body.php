@@ -140,7 +140,10 @@ class LuceneSearch extends SpecialPage
 		$wgOut->addWikiText(wfMsg('searchresulttext'));
 		$wgOut->addHTML($this->showShortDialog($q));
 
-		if ($q !== false && strlen($q) > 0) {
+		if ($q === false || strlen($q) == 0) {
+			// No search active. Put input focus in the search box.
+			$wgOut->addHTML( $this->makeFocusJS() );
+		} else {
 			if (!($wgRequest->getText('fulltext'))) {
 				$t = SearchEngine::getNearMatch($q);
 				if(!is_null($t)) {
@@ -609,6 +612,12 @@ class LuceneSearch extends SpecialPage
 		$action = $title->escapeLocalURL();
 		return "<br /><br />\n<form id=\"powersearch\" method=\"get\" " .
 		"action=\"$action\">\n{$ret}\n</form>\n";
+	}
+	
+	function makeFocusJS() {
+		return "<script type='text/javascript'>" .
+			"document.getElementById('lsearchbox').focus();" .
+			"</script>";
 	}
 
 	function makeSuggestJS() {
