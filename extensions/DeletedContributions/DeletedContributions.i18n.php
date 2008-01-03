@@ -140,17 +140,15 @@ $wgDeletedContribsMessages['ja'] = array(
 	'deletedcontributions' => '利用者の削除された投稿履歴',
 );
 
-$wgDeletedContribsMessages['kk-kz'] = array(
-	'deletedcontributions' => 'Пайдаланушының жойлған үлестері',
+$wgDeletedContribsMessages['kk-cyrl'] = array(
+	'deletedcontributions' => 'Пайдаланушының жойылған үлесі',
 );
-$wgDeletedContribsMessages['kk-tr'] = array(
-	'deletedcontributions' => 'Paýdalanwşınıñ joýlğan ülesteri',
+$wgDeletedContribsMessages['kk-latn'] = array(
+	'deletedcontributions' => 'Paýdalanwşınıñ joýılğan ülesi',
 );
-$wgDeletedContribsMessages['kk-cn'] = array(
-	'deletedcontributions' => 'پايدالانۋشىنىڭ جويلعان ٷلەستەرٸ',
+$wgDeletedContribsMessages['kk-arab'] = array(
+	'deletedcontributions' => 'پايدالانۋشىنىڭ جويىلعان ٷلەسٸ',
 );
-
-$wgDeletedContribsMessages['kk'] = $wgDeletedContribsMessages['kk-kz'];
 
 $wgDeletedContribsMessages['ku-latn'] = array(
 	'deletedcontributions' => 'Guherandinên bikarhênerekî yê jêbirî',
@@ -288,6 +286,13 @@ $wgDeletedContribsMessages['zh-hant'] = array(
 	'deletedcontributions' => '已刪除的用戶貢獻',
 );
 
+# Kazakh fallbacks
+$wgDeletedContribsMessages['kk-kz'] = $wgDeletedContribsMessages['kk-cyrl'];
+$wgDeletedContribsMessages['kk-tr'] = $wgDeletedContribsMessages['kk-latn'];
+$wgDeletedContribsMessages['kk-cn'] = $wgDeletedContribsMessages['kk-arab'];
+$wgDeletedContribsMessages['kk'] = $wgDeletedContribsMessages['kk-cyrl'];
+
+# Chinese fallbacks
 $wgDeletedContribsMessages['zh'] = $wgDeletedContribsMessages['zh-hans'];
 $wgDeletedContribsMessages['zh-cn'] = $wgDeletedContribsMessages['zh-hans'];
 $wgDeletedContribsMessages['zh-hk'] = $wgDeletedContribsMessages['zh-hant'];

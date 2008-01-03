@@ -1183,7 +1183,7 @@ $wgBoardVoteMessages['ka'] = array(
 	'boardvote_welcome'    => "მოგესალმებით '''$1'''!",
 );
 
-$wgBoardVoteMessages['kk-kz'] = array(
+$wgBoardVoteMessages['kk-cyrl'] = array(
 	'boardvote'               => "Wikimedia қорының Уәкілдер еңесінің сайлауы ",
 	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|Дауыс беру]]
 * [[{{ns:Special}}:Boardvote/list|Күн бойынша дауыс беру тізімі]]
@@ -1230,7 +1230,7 @@ $wgBoardVoteMessages['kk-kz'] = array(
 	'group-boardvote-member'  => 'Кеңес сайлау әкімші',
 	'grouppage-boardvote'     => '{{ns:project}}:Кеңес сайлау әкімшілері',
 );
-$wgBoardVoteMessages['kk-tr'] = array(
+$wgBoardVoteMessages['kk-latn'] = array(
 	'boardvote'               => "Wikimedia qorınıñ Wäkilder eñesiniñ saýlawı ",
 	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|Dawıs berw]]
 * [[{{ns:Special}}:Boardvote/list|Kün boýınşa dawıs berw tizimi]]
@@ -1277,54 +1277,54 @@ Muqamdalğan derekter üşin $1.</p>",
 	'group-boardvote-member'  => 'Keñes saýlaw äkimşi',
 	'grouppage-boardvote'     => '{{ns:project}}:Keñes saýlaw äkimşileri',
 );
-$wgBoardVoteMessages['kk-cn'] = array(
-	'boardvote'               => "Wikimedia قورىنىڭ ۋٴاكٴىلدەر ەڭەسٴىنٴىڭ سايلاۋى ",
+$wgBoardVoteMessages['kk-arab'] = array(
+	'boardvote'               => "Wikimedia قورىنىڭ ۋٵكٸلدەر ەڭەسٸنٸڭ سايلاۋى ",
 	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|داۋىس بەرۋ]]
-* [[{{ns:Special}}:Boardvote/list|كٴۇن بويىنشا داۋىس بەرۋ تٴىزٴىمٴى]]
+* [[{{ns:Special}}:Boardvote/list|كٷن بويىنشا داۋىس بەرۋ تٸزٸمٸ]]
 * [[{{ns:Special}}:Boardvote/dump|مۇقامدالعان سايلاۋ جازبالارىنىڭ ارقاۋى]]",
 
-	'boardvote_intro_change'  => "<p>داۋسىڭىزدى ٴاۋەلدە بەرٴىپسٴىز.
-  دەگەنمەن, تٴومەندەگٴى ٴۇلگٴىتتٴى پايدالانىپ داۋسىڭىزدى ٴوزگەرتەي الاسىز.
-  سٴىز تاڭداعان ٴاربٴىر ۇسىنىلعان تۇلعالار قاسىنا بەلگٴى قويڭىز.</p>",
+	'boardvote_intro_change'  => "<p>داۋسىڭىزدى ٵۋەلدە بەرٸپسٸز.
+  دەگەنمەن, تٶمەندەگٸ ٷلگٸتتٸ پايدالانىپ داۋسىڭىزدى ٶزگەرتەي الاسىز.
+  سٸز تاڭداعان ٵربٸر ۇسىنىلعان تۇلعالار قاسىنا بەلگٸ قويڭىز.</p>",
 
 	'boardvote_entered'       => "راحمەت, داۋىسىڭىز جازىلىپپ الىندى.
 
-ەگەر دٴىتتە بولساڭىز, كەلەسٴى ەگجەي-تەگجەيلەرٴىن جازۋىڭىزعا بولادى. داۋىس بەرۋٴىڭٴىزدٴىڭ جازباسى:
+ەگەر دٸتتە بولساڭىز, كەلەسٸ ەگجەي-تەگجەيلەرٸن جازۋىڭىزعا بولادى. داۋىس بەرۋٸڭٸزدٸڭ جازباسى:
 
 <pre>$1</pre>
 
-بۇل سايلاۋ ٴاكٴىمشٴىلەرٴىنٴىڭ جارييالى ەلەكتروندى كٴىلتٴىمەن مۇقامدالعان:
+بۇل سايلاۋ ٵكٸمشٸلەرٸنٸڭ جارييالى ەلەكتروندى كٸلتٸمەن مۇقامدالعان:
 
 <pre>$2</pre>
 
-نٴاتيجەلٴى مۇقامدالعان نۇسقاسى كەلەسٴىدە كٴورسەتٴىلەدٴى. بۇل [[{{ns:special}}:Boardvote/dump]] بەتٴىندە بارشاعا جارييالانادى.
+نٵتيجەلٸ مۇقامدالعان نۇسقاسى كەلەسٸدە كٶرسەتٸلەدٸ. بۇل [[{{ns:special}}:Boardvote/dump]] بەتٸندە بارشاعا جارييالانادى.
 
 <pre>$3</pre>
 
-[[{{ns:special}}:Boardvote/entry|كەرٴى قايتۋ]]",
-	'boardvote_notloggedin'   => "وسى جوباعا كٴىرمەپسٴىز. داۋىس بەرۋ ٴۇشٴىن $2 كەزٴىنە دەيٴىن ەڭ كەمٴىندە $1 ٴۇلەس بەرگەن تٴىركەلگٴىنٴىز بولۋ قاجەت, جٴانە دە بٴىرٴىنشٴى تٴۇزەتۋٴىڭٴىز $3 كەزٴىنە دەيٴىن بولۋ قاجەت.",
-	'boardvote_notqualified'  => "وسى سايلاۋدا داۋىس بەرۋگە جۋىتىلمايسىز. $2 كەزٴىنە دەيٴىن $3 تٴۇزەتٴىڭٴىز بولۋ قاجەت; سٴىزدە تەك $1 بولىپتى. تاعى دا, بٴىرٴىنشٴى تٴۇزەتۋٴىڭٴىز $4 كەزٴىندە وسى ۋيكيدە ٴىستەلٴىپتٴى; بۇل $5 كەزٴىنە دەيٴىن بولۋ قاجەت.",
-	'boardvote_novotes'       => "ەشكٴىم داۋىسىن بەرگەن جوق.",
+[[{{ns:special}}:Boardvote/entry|كەرٸ قايتۋ]]",
+	'boardvote_notloggedin'   => "وسى جوباعا كٸرمەپسٸز. داۋىس بەرۋ ٷشٸن $2 كەزٸنە دەيٸن ەڭ كەمٸندە $1 ٷلەس بەرگەن تٸركەلگٸنٸز بولۋ قاجەت, جٵنە دە بٸرٸنشٸ تٷزەتۋٸڭٸز $3 كەزٸنە دەيٸن بولۋ قاجەت.",
+	'boardvote_notqualified'  => "وسى سايلاۋدا داۋىس بەرۋگە جۋىتىلمايسىز. $2 كەزٸنە دەيٸن $3 تٷزەتٸڭٸز بولۋ قاجەت; سٸزدە تەك $1 بولىپتى. تاعى دا, بٸرٸنشٸ تٷزەتۋٸڭٸز $4 كەزٸندە وسى ۋيكيدە ٸستەلٸپتٸ; بۇل $5 كەزٸنە دەيٸن بولۋ قاجەت.",
+	'boardvote_novotes'       => "ەشكٸم داۋىسىن بەرگەن جوق.",
 	'boardvote_time'          => "ۋاقىت",
 	'boardvote_user'          => "قاتىسۋشى",
-	'boardvote_edits'         => "تٴۇزەتۋ",
-	'boardvote_days'          => "كٴۇن",
+	'boardvote_edits'         => "تٷزەتۋ",
+	'boardvote_days'          => "كٷن",
 	'boardvote_ip'            => "IP جاي",
-	'boardvote_ua'            => "پايدالانۋشى ٴارەكەتكٴىشٴى",
-	'boardvote_listintro'     => "<p>وسىندا جازىلىپ الىنعان بارلىق داۋىس بەرۋشٴىلەردٴىڭ كٴۇن-ايى بويىنشا تٴىزٴىمٴى بەرٴىلٴىپ تۇر.
-مۇقامدالعان دەرەكتەر ٴۇشٴىن $1.</p>",
+	'boardvote_ua'            => "پايدالانۋشى ٵرەكەتكٸشٸ",
+	'boardvote_listintro'     => "<p>وسىندا جازىلىپ الىنعان بارلىق داۋىس بەرۋشٸلەردٸڭ كٷن-ايى بويىنشا تٸزٸمٸ بەرٸلٸپ تۇر.
+مۇقامدالعان دەرەكتەر ٷشٸن $1.</p>",
 	'boardvote_dumplink'      => "مىنانى نۇقىڭىز",
 	'boardvote_submit'        => 'جارايدى',
 	'boardvote_strike'        => "سىزىپ تاستاۋ",
-	'boardvote_unstrike'      => "سىزۋدى ٴوشٴىرۋ",
-	'boardvote_needadmin'     => "بۇل ٴارەكەتتٴى تەك سايلاۋ ٴاكٴىمشٴىلەر ورىنداي الادى.",
-	'boardvote_notstarted'    => 'داۋىس بەرۋ ٴالٴى باستالماعان',
-	'boardvote_edits_many'    => 'كٴوپ',
-	'group-boardvote'         => 'كەڭەس سايلاۋ ٴاكٴىمشٴىلەرٴى',
-	'group-boardvote-member'  => 'كەڭەس سايلاۋ ٴاكٴىمشٴى',
-	'grouppage-boardvote'     => '{{ns:project}}:كەڭەس سايلاۋ ٴاكٴىمشٴىلەرٴى',
+	'boardvote_unstrike'      => "سىزۋدى ٶشٸرۋ",
+	'boardvote_needadmin'     => "بۇل ٵرەكەتتٸ تەك سايلاۋ ٵكٸمشٸلەر ورىنداي الادى.",
+	'boardvote_notstarted'    => 'داۋىس بەرۋ ٵلٸ باستالماعان',
+	'boardvote_edits_many'    => 'كٶپ',
+	'group-boardvote'         => 'كەڭەس سايلاۋ ٵكٸمشٸلەرٸ',
+	'group-boardvote-member'  => 'كەڭەس سايلاۋ ٵكٸمشٸ',
+	'grouppage-boardvote'     => '{{ns:project}}:كەڭەس سايلاۋ ٵكٸمشٸلەرٸ',
 );
-$wgBoardVoteMessages['kk'] = $wgBoardVoteMessages['kk-kz'];
+
 $wgBoardVoteMessages['ksh'] = array(
 	'boardvote'               => 'Waahle för_t „Wikimedia Board of Trustees“ (De forantwochtlijje Füürshtändt bëij Wikkimedija)',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Affshtemme]]
@@ -2491,6 +2491,13 @@ $wgBoardVoteMessages['zh-hant'] = array(
 稍後，您的瀏覽器可能會彈出未驗證安全憑證的警告。',
 );
 
+# Kazakh fallbacks
+$wgBoardVoteMessages['kk-kz'] = $wgBoardVoteMessages['kk-cyrl'];
+$wgBoardVoteMessages['kk-tr'] = $wgBoardVoteMessages['kk-latn'];
+$wgBoardVoteMessages['kk-cn'] = $wgBoardVoteMessages['kk-arab'];
+$wgBoardVoteMessages['kk'] = $wgBoardVoteMessages['kk-cyrl'];
+
+# Chinese fallbacks
 $wgBoardVoteMessages['zh'] = $wgBoardVoteMessages['zh-hans'];
 $wgBoardVoteMessages['zh-cn'] = $wgBoardVoteMessages['zh-hans'];
 $wgBoardVoteMessages['zh-hk'] = $wgBoardVoteMessages['zh-hant'];

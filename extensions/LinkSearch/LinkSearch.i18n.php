@@ -229,9 +229,8 @@ $wgLinkSearchMessages['ja'] = array(
 	'linksearch-line'  => '$1 が $2 からリンクされています',
 	'linksearch-error' => 'ワイルドカードはホスト名の先頭でのみ使用できます。',
 );
-
-$wgLinkSearchMessages['kk-kz'] = array(
-	'linksearch'       => 'Еренсілтемелерін іздеу',
+$wgLinkSearchMessages['kk-cyrl'] = array(
+	'linksearch'       => 'Сыртқы сілтемелерді іздеу',
 	'linksearch-pat'   => 'Іздеу шарты:',
 	'linksearch-ns'    => 'Есім аясы:',
 	'linksearch-ok'    => 'Іздеу',
@@ -239,8 +238,8 @@ $wgLinkSearchMessages['kk-kz'] = array(
 	'linksearch-line'  => '$2 дегеннен $1 сілтеген',
 	'linksearch-error' => 'Бәдел нышандар тек сервер жайы атауының бастауында болуы мүмкін.',
 );
-$wgLinkSearchMessages['kk-tr'] = array(
-	'linksearch'       => 'Erensiltemelerin izdew',
+$wgLinkSearchMessages['kk-latn'] = array(
+	'linksearch'       => 'Sırtqı siltemelerdi izdew',
 	'linksearch-pat'   => 'İzdew şartı:',
 	'linksearch-ns'    => 'Esim ayası:',
 	'linksearch-ok'    => 'İzdew',
@@ -248,8 +247,8 @@ $wgLinkSearchMessages['kk-tr'] = array(
 	'linksearch-line'  => '$2 degennen $1 siltegen',
 	'linksearch-error' => 'Bädel nışandar tek server jaýı atawınıñ bastawında bolwı mümkin.',
 );
-$wgLinkSearchMessages['kk-cn'] = array(
-	'linksearch'       => 'ەرەنسٸلتەمەلەرٸن ٸزدەۋ',
+$wgLinkSearchMessages['kk-arab'] = array(
+	'linksearch'       => 'سىرتقى سٸلتەمەلەردٸ ٸزدەۋ',
 	'linksearch-pat'   => 'ٸزدەۋ شارتى:',
 	'linksearch-ns'    => 'ەسٸم اياسى:',
 	'linksearch-ok'    => 'ٸزدەۋ',
@@ -257,8 +256,6 @@ $wgLinkSearchMessages['kk-cn'] = array(
 	'linksearch-line'  => '$2 دەگەننەن $1 سٸلتەگەن',
 	'linksearch-error' => 'بٵدەل نىشاندار تەك سەرۆەر جايى اتاۋىنىڭ باستاۋىندا بولۋى مٷمكٸن.',
 );
-
-$wgLinkSearchMessages['kk'] = $wgLinkSearchMessages['kk-kz'];
 
 $wgLinkSearchMessages['la'] = array(
 	'linksearch'       => 'Quaerere nexus externos',
@@ -466,6 +463,13 @@ $wgLinkSearchMessages['zh-hant'] = array(
 	'linksearch-error' => '萬用字元僅可在主機名稱的開頭使用。',
 );
 
+# Kazakh fallbacks
+$wgLinkSearchMessages['kk-kz'] = $wgLinkSearchMessages['kk-cyrl'];
+$wgLinkSearchMessages['kk-tr'] = $wgLinkSearchMessages['kk-latn'];
+$wgLinkSearchMessages['kk-cn'] = $wgLinkSearchMessages['kk-arab'];
+$wgLinkSearchMessages['kk'] = $wgLinkSearchMessages['kk-cyrl'];
+
+# Chinese fallbacks
 $wgLinkSearchMessages['zh'] = $wgLinkSearchMessages['zh-hans'];
 $wgLinkSearchMessages['zh-cn'] = $wgLinkSearchMessages['zh-hans'];
 $wgLinkSearchMessages['zh-hk'] = $wgLinkSearchMessages['zh-hant'];

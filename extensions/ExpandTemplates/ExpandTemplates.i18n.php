@@ -268,49 +268,50 @@ $wgExpandTemplatesMessages['ja'] = array(
 	'expand_templates_remove_comments' => 'コメントを除去',
 );
 
-$wgExpandTemplatesMessages['kk-kz'] = array(
+$wgExpandTemplatesMessages['kk-cyrl'] = array(
 	'expandtemplates'                  => 'Үлгілерді ұлғайту',
 	'expand_templates_intro'           => 'Осы құрал арнайы беті әлдебір мәтінді алады да,
 бұның ішіндегі барлық кіріктелген үлгілерді мейлінше ұлғайтады.
 Мына <nowiki>{{</nowiki>#if:...}} сияқты жөңдету функцияларын да, және <nowiki>{{</nowiki>CURRENTDAY}}
 сияқты айнамалыларын да ұлғайтады (нақты айтқанда, қос қабат садақ жақшалар арасындағы барлығын).
 Бұны өз MediaWiki бағдарламасынан қатысты жөңдету сатын шақырып істелінеді.',
-	'expand_templates_title'           => '{{PAGENAME}} т.б. беттер үшін мәтін аралық атауы:',
+	'expand_templates_title'           => 'Мәтін аралық атауы ({{PAGENAME}} т.б. беттер үшін):',
 	'expand_templates_input'           => 'Кіріс мәтіні:',
 	'expand_templates_output'          => 'Нәтижесі',
 	'expand_templates_ok'              => 'Жарайды',
 	'expand_templates_remove_comments' => 'Мәндемелерін аластатып?',
+	'expand_templates_preview'         => 'Қарап шығу',
 );
 
-$wgExpandTemplatesMessages['kk-tr'] = array(
+$wgExpandTemplatesMessages['kk-latn'] = array(
 	'expandtemplates'                  => 'Ülgilerdi ulğaýtw',
 	'expand_templates_intro'           => 'Osı qural arnaýı beti äldebir mätindi aladı da,
 bunıñ işindegi barlıq kiriktelgen ülgilerdi meýlinşe ulğaýtadı.
 Mına <nowiki>{{</nowiki>#if:...}} sïyaqtı jöñdetw fwnkcïyaların da, jäne <nowiki>{{</nowiki>CURRENTDAY}}
 sïyaqtı aýnamalıların da ulğaýtadı (naqtı aýtqanda, qos qabat sadaq jaqşalar arasındağı barlığın).
 Bunı öz MediaWiki bağdarlamasınan qatıstı jöñdetw satın şaqırıp istelinedi.',
-	'expand_templates_title'           => '{{PAGENAME}} t.b. better üşin mätin aralıq atawı:',
+	'expand_templates_title'           => 'Mätin aralıq atawı ({{PAGENAME}} t.b. better üşin):',
 	'expand_templates_input'           => 'Kiris mätini:',
 	'expand_templates_output'          => 'Nätïjesi',
 	'expand_templates_ok'              => 'Jaraýdı',
 	'expand_templates_remove_comments' => 'Mändemelerin alastatıp?',
+	'expand_templates_preview'         => 'Qarap şığw',
 );
 
-$wgExpandTemplatesMessages['kk-cn'] = array(
+$wgExpandTemplatesMessages['kk-arab'] = array(
 	'expandtemplates'                  => 'ٷلگٸلەردٸ ۇلعايتۋ',
 	'expand_templates_intro'           => 'وسى قۇرال ارنايى بەتٸ ٵلدەبٸر مٵتٸندٸ الادى دا,
 بۇنىڭ ٸشٸندەگٸ بارلىق كٸرٸكتەلگەن ٷلگٸلەردٸ مەيلٸنشە ۇلعايتادى.
 مىنا <nowiki>{{</nowiki>#if:...}} سيياقتى جٶڭدەتۋ فۋنكتسييالارىن دا, جٵنە <nowiki>{{</nowiki>CURRENTDAY}}
 سيياقتى اينامالىلارىن دا ۇلعايتادى (ناقتى ايتقاندا, قوس قابات ساداق جاقشالار اراسىنداعى بارلىعىن).
 بۇنى ٶز MediaWiki باعدارلاماسىنان قاتىستى جٶڭدەتۋ ساتىن شاقىرىپ ٸستەلٸنەدٸ.',
-	'expand_templates_title'           => '{{PAGENAME}} ت.ب. بەتتەر ٷشٸن مٵتٸن ارالىق اتاۋى:',
+	'expand_templates_title'           => 'مٵتٸن ارالىق اتاۋى ({{PAGENAME}} ت.ب. بەتتەر ٷشٸن):',
 	'expand_templates_input'           => 'كٸرٸس مٵتٸنٸ:',
 	'expand_templates_output'          => 'نٵتيجەسٸ',
 	'expand_templates_ok'              => 'جارايدى',
 	'expand_templates_remove_comments' => 'مٵندەمەلەرٸن الاستاتىپ؟',
+	'expand_templates_preview'         => 'قاراپ شىعۋ',
 );
-
-$wgExpandTemplatesMessages['kk'] = $wgExpandTemplatesMessages['kk-kz'];
 
 $wgExpandTemplatesMessages['ko'] = array(
 	'expandtemplates'                  => '틀 확장',
@@ -548,6 +549,14 @@ $wgExpandTemplatesMessages['zh-hant'] = array(
 	'expand_templates_remove_comments' => '移除注釋',
 	'expand_templates_preview'         => '預覽',
 );
+
+# Kazakh fallbacks
+$wgExpandTemplatesMessages['kk-kz'] = $wgExpandTemplatesMessages['kk-cyrl'];
+$wgExpandTemplatesMessages['kk-tr'] = $wgExpandTemplatesMessages['kk-latn'];
+$wgExpandTemplatesMessages['kk-cn'] = $wgExpandTemplatesMessages['kk-arab'];
+$wgExpandTemplatesMessages['kk'] = $wgExpandTemplatesMessages['kk-cyrl'];
+
+# Chinese fallbacks
 $wgExpandTemplatesMessages['zh'] = $wgExpandTemplatesMessages['zh-hans'];
 $wgExpandTemplatesMessages['zh-cn'] = $wgExpandTemplatesMessages['zh-hans'];
 $wgExpandTemplatesMessages['zh-hk'] = $wgExpandTemplatesMessages['zh-hant'];
