@@ -434,6 +434,9 @@ class LuceneSearch extends SpecialPage
 		if( strlen( $query ) < 1 ) {
 			return;
 		}
+		
+		/// @fixme -- this is totally missing atm
+		return;
 
 		$results = $this->doTitlePrefixSearch( $query, $limit );
 		if( $results && count( $results ) > 0 ) {
