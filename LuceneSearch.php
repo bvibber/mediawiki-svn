@@ -39,7 +39,7 @@
 # - it's in the 'mwsearch' module in CVS.
 ##########
 
-$wgLuceneDisableSuggestions = false;
+$wgLuceneDisableSuggestions = true;
 $wgLuceneDisableTitleMatches = false;
 
 /** Number of seconds to cache query results */
