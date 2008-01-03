@@ -104,9 +104,11 @@ $messages['oc'] = array(
 Aqueste corrièr vos es estat mandat gràcia al sistèma de messajtariá de {{SITENAME}} per $1. $2',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
 	'email_footer' => '
-
 ----------------------------------------------------------------------------
 Tento email vám poslal $1 pomocou emailového systému {{GRAMMAR:genitív|{{SITENAME}}}}.
 

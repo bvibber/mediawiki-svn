@@ -45,14 +45,19 @@ function efBookInformationMessages() {
 	'bookinfo-result-year' => 'Taon:',
 ),
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
 'bg' => array(
-	'bookinfo-header' => 'Информация за книга',
-	'bookinfo-result-title' => 'Заглавие:',
-	'bookinfo-result-author' => 'Автор:',
-	'bookinfo-result-publisher' => 'Издател:',
-	'bookinfo-result-year' => 'Година:',
+	'bookinfo-header'            => 'Информация за книга',
+	'bookinfo-result-title'      => 'Заглавие:',
+	'bookinfo-result-author'     => 'Автор:',
+	'bookinfo-result-publisher'  => 'Издател:',
+	'bookinfo-result-year'       => 'Година:',
 	'bookinfo-error-invalidisbn' => 'Въведеният ISBN е грешен.',
-	'bookinfo-purchase' => 'Купуване на тази книга от $1',
+	'bookinfo-error-noresponse'  => 'Няма отговор или заявката отне твърде много време.',
+	'bookinfo-purchase'          => 'Купуване на тази книга от $1',
+	'bookinfo-provider'          => 'Източник на информация: $1',
 ),
 
 'br' => array(

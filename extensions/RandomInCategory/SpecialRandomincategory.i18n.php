@@ -88,3 +88,14 @@ $messages['nl'] = array(
 	'randomincategory-label'      => 'Categorie:',
 	'randomincategory-submit'     => 'OK',
 );
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'randomincategory'            => 'Náhodná stránka v kategórii',
+	'randomincategory-toolbox'    => 'Náhodná stránka',
+	'randomincategory-nocategory' => 'Kategória $1 neexistuje alebo je prázdna',
+	'randomincategory-label'      => 'Kategória:',
+	'randomincategory-submit'     => 'Choď',
+);

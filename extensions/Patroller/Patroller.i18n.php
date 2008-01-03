@@ -440,25 +440,6 @@ function efPatrollerMessages() {
 	'grouppage-patroller' => '{{ns:project}}:Strážca',
 ),
 
-/** Russian (Русский)
- * @author Illusion
- */
-'ru' => array(
-	'patrol'                 => 'Патрулирование',
-	'patrol-endorse'         => 'Подтвердить',
-	'patrol-revert'          => 'Откатить',
-	'patrol-revert-reason'   => 'Причина:',
-	'patrol-skip'            => 'Отложить',
-	'patrol-reverting'       => 'Откат: $1',
-	'patrol-endorsed-ok'     => 'Правка подтверждена.',
-	'patrol-reverted-ok'     => 'Правка откачена.',
-	'patrol-skipped-ok'      => 'Правка отложена.',
-	'patrol-another'         => 'Вывести ещё одну правку, если имеется.',
-	'group-patroller'        => 'Патрулирующие',
-	'group-patroller-member' => 'патрулирующий',
-	'grouppage-patroller'    => '{{ns:project}}:Патрулирующие',
-),
-
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

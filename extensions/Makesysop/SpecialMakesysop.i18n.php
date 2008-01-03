@@ -833,12 +833,22 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
  */
 'lb' => array(
 	'makesysoptitle'       => "Engem Benotzer d'Administrateursrechter ginn",
+	'makesysoptext'        => "Dëse Formulaire gëtt vu Bürokrate benotzt fir aus normale Benotzer Administrateuren ze maachen. Tippt dësem Benotzer säin Numm an d'Këschtchen a klickt op de Knäppchen fir aus dem Benotzer en Administrateur ze maachen.",
 	'makesysopname'        => 'Numm vum Benotzer:',
 	'makesysopsubmit'      => "Dësem Benotzer d'Administrateursrechter ginn",
 	'makesysopok'          => '<b>De Benotzer "$1" ass elo Administrateur.</b>',
 	'makebureaucratok'     => '<b>De Benutzer "$1" ass elo Bürokrat.</b>',
+	'makesysopfail'        => '<b>De Benotzer "$1" konnt den Administrateur-Status net kréien. (Hutt Dir den Numm richteg geschriwwen?)</b>',
+	'setbureaucratflag'    => 'Bürokratefändel ginn',
+	'rights'               => 'Rechter:',
+	'set_user_rights'      => 'Benotzerrechter festleeën',
+	'user_rights_set'      => '<b>Benotzerrechter fir "$1" aktualiséiert</b>',
+	'makesysop'            => 'Aus engem Benotzer een Administrateur maachen',
+	'already_sysop'        => 'Dëse Benotzer ass schonn en Administrateur',
+	'already_bureaucrat'   => 'Dëse Benotzer ass scho Bürokrat',
 	'group-steward'        => 'Stewarden',
 	'group-steward-member' => 'Steward',
+	'grouppage-steward'    => '{{ns:project}}:Stewarden',
 ),
 
 'li' => array(
@@ -1297,16 +1307,20 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'grouppage-steward'    => '{{ns:project}}:Stewarder',
 ),
 
+/** Telugu (తెలుగు)
+ * @author Sunil Mohan
+ */
 'te' => array(
-	'already_bureaucrat'   => 'ఈ సభ్యుడు ఇప్పటికే అధికారి',
-	'already_sysop'        => 'ఈ సభ్యుడు ఇప్పటికే నిర్వాహకుడు',
-	'makesysop'            => 'సభ్యుడిని నిర్వాహకుడిగా మార్చు',
-	'makesysopfail'        => '<b>సభ్యుడు "$1"ని నిర్వాహకుడిగా మార్చలేక పోయాం. (పేరు సరిగానే రాసారా?)</b>',
-	'makesysopname'        => 'సభ్యుని పేరు:',
-	'makesysopok'          => '<b>సభ్యుడు "$1" ఇప్పుడు నిర్వాహకుడు</b>',
-	'makesysopsubmit'      => 'ఈ సభ్యుని నిర్వాహకుడిని చెయ్యి',
-	'makesysoptext'        => 'మామూలు సభ్యులను నిర్వాహకులు చెయ్యడానికి అధికారులు ఈ ఫారంను వాడతారు. దీని కొరకు సభ్యుని పేరు పెట్టెలో టైపు చేసి, మీట నొక్కండి.',
-	'rights'               => 'హక్కులు:',
+	'makesysoptitle'     => 'సభ్యుడిని నిర్వాహకునిగా మార్చు',
+	'makesysoptext'      => 'మామూలు సభ్యులను నిర్వాహకులు చెయ్యడానికి అధికారులు ఈ ఫారంను వాడతారు. దీని కొరకు సభ్యుని పేరు పెట్టెలో టైపు చేసి, మీట నొక్కండి.',
+	'makesysopname'      => 'సభ్యుని పేరు:',
+	'makesysopsubmit'    => 'ఈ సభ్యుని నిర్వాహకుడిని చెయ్యి',
+	'makesysopok'        => '<b>సభ్యుడు "$1" ఇప్పుడు నిర్వాహకుడు</b>',
+	'makesysopfail'      => '<b>సభ్యుడు "$1"ని నిర్వాహకుడిగా మార్చలేక పోయాం. (పేరు సరిగానే రాసారా?)</b>',
+	'rights'             => 'హక్కులు:',
+	'makesysop'          => 'సభ్యుడిని నిర్వాహకుడిగా మార్చు',
+	'already_sysop'      => 'ఈ సభ్యుడు ఇప్పటికే నిర్వాహకుడు',
+	'already_bureaucrat' => 'ఈ సభ్యుడు ఇప్పటికే అధికారి',
 ),
 
 'tet' => array(

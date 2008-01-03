@@ -425,6 +425,13 @@ $wgSiteMatrixMessages['sv'] = array(
 	'sitematrix-others' => 'Andra Wikimediaprojekt',
 );
 
+/** Telugu (తెలుగు)
+ * @author לערי ריינהארט
+ */
+$wgSiteMatrixMessages['te'] = array(
+	'sitematrix' => 'వికీమీడియా వికీల జాబితా',
+);
+
 $wgSiteMatrixMessages['tet'] = array(
 	'sitematrix' => 'Lista wiki sira Wikimedia nian',
 	'sitematrix-language' => 'Lian',

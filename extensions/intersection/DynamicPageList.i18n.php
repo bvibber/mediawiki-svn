@@ -54,6 +54,16 @@ $messages['hsb'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Dyrbiš znajmjeńša kednu kategoriju zapřijeć abo mjenowy rum podać!',
 );
 
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
+$messages['it'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: Numero di categorie eccessivo.',
+	'intersection_toofewcats'    => 'DynamicPageList: Numero di categorie insufficiente.',
+	'intersection_noresults'     => 'DynamicPageList: Nessun risultato.',
+	'intersection_noincludecats' => 'DynamicPageList: È necessario includere almeno una categoria oppure specificare un namespace.',
+);
+
 $messages['nl'] = array(
 	'intersection_toomanycats' => 'DynamicPageList: Te veel categorieën!',
 	'intersection_toofewcats' => 'DynamicPageList: Te weinig categorieën!',

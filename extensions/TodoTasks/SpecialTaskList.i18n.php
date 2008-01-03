@@ -216,7 +216,7 @@ $allMessages = array(
 		'tasklistchooseproj'     => 'Projekt uutwääle:',
 		'tasklistprojdisp'       => 'Anwiese',
 		'tasklistbyname'         => '== Apgoawenlieste foar %s ==',
-		'tasklistnoprojects'     => "Failer: Dät sjucht so uut, as wan '''\$wgUseProjects''' aktivierd waas, man der wuuden neen Sieden [[MediaWiki:TodoTasksValidProjects]] moaked. Sjuch do
+		'tasklistnoprojects'     => "Failer: Dät sjucht so uut, as wan '''\$wgUseProjects''' aktivierd waas, man der wuuden neen Sieden [[MediaWiki:TodoTasksValidProjects]] moaked. Sjuch do 
 [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installationsanwiesengen] foar wiedere Details.",
 	),
 

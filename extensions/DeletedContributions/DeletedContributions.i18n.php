@@ -164,6 +164,13 @@ $wgDeletedContribsMessages['la'] = array(
 	'deletedcontributions' => 'Conlationes usoris deletae',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$wgDeletedContribsMessages['lb'] = array(
+	'deletedcontributions' => 'Geläschte Kontributiounen',
+);
+
 /** Lozi (Silozi)
  * @author Ooswesthoesbes
  */

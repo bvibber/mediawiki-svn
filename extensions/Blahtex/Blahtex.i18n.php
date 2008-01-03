@@ -124,6 +124,7 @@ $messages['ar'] = array(
 
 /** Bulgarian (Български)
  * @author Spiritia
+ * @author DCLXVI
  */
 $messages['bg'] = array(
 	'math_CannotChangeDirectory'            => 'Не може да се смени работната директория',
@@ -142,6 +143,7 @@ $messages['bg'] = array(
 	'math_IllegalDelimiter'                 => 'Непозволен разделител след "$1"',
 	'math_IllegalFinalBackslash'            => 'Непозволена обратна наклонена черта "\\" в края на входа',
 	'math_IllegalRedefinition'              => 'Командата "$1" вече е била дефинирана и не може да се предефинира',
+	'math_InvalidColour'                    => '"$1" е невалиден цвят',
 	'math_InvalidUtf8Input'                 => 'Въведеният низ не е валиден UTF-8',
 	'math_LatexFontNotSpecified'            => 'Не е указан LaTeX шрифт за "$1"',
 	'math_LatexPackageUnavailable'          => 'Тъй като не е наличен пакетът "$1" на LaTeX, PNG не може да се визуализира',

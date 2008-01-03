@@ -110,14 +110,6 @@ $messages['gl'] = array(
 
 );
 
-/** Croatian (Hrvatski)
- * @author SpeedyGonsales
- */
-$messages['hr'] = array(
-	'scanset_next' => 'Slijedeći &gt;',
-	'scanset_prev' => '&lt; Prethodni',
-);
-
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin
