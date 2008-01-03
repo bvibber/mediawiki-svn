@@ -8,10 +8,10 @@ CXX?=g++
 CFLAGS?=-O2 -fPIC
 
 # For Linux
-#SHARED = -shared
+SHARED = -shared
 
 # For Mac OS X
-SHARED = -bundle -flat_namespace -undefined suppress
+#SHARED = -bundle -flat_namespace -undefined suppress
 
 DEBFILES=\
 debian/changelog\
