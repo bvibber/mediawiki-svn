@@ -173,8 +173,14 @@ $wgSiteMatrixMessages['hsb'] = array(
 	'sitematrix-others' => 'Dalše projekty we Wikimediji',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
 $wgSiteMatrixMessages['hu'] = array(
-	"sitematrix" => "Az összes Wikimedia wiki listája",
+	'sitematrix'          => 'Az összes Wikimedia wiki listája',
+	'sitematrix-language' => 'Nyelv',
+	'sitematrix-project'  => 'A projekt neve, projekt- és nyelvközi link',
+	'sitematrix-others'   => 'Más Wikimedia projektek',
 );
 
 $wgSiteMatrixMessages['hy'] = array(
@@ -225,27 +231,32 @@ $wgSiteMatrixMessages['kaa'] = array(
 	'sitematrix-project' => 'Proyekt atı, proyekt aralıq sıltewi ha\'m til aralıq siltewi',
 	'sitematrix-others' => 'Basqa Wikimedia proektleri',
 );
+
 $wgSiteMatrixMessages['kk-cyrl'] = array(
 	"sitematrix"          => "Wikimedia уики тізімі",
 	'sitematrix-language' => 'Тілі',
 	'sitematrix-project'  => 'Жоба атауы, жоба аралық сілтемесі және уики аралық сілтемесі',
 	'sitematrix-others'   => 'Басқа Wikimedia жобалары',
 );
+
 $wgSiteMatrixMessages['kk-latn'] = array(
 	"sitematrix"          => "Barlıq Wikimedia wïkï tizimi",
 	'sitematrix-language' => 'Tili',
 	'sitematrix-project'  => 'Joba atawı, joba aralıq siltemesi jäne wïkï aralıq siltemesi',
 	'sitematrix-others'   => 'Basqa Wikimedia jobaları',
 );
+
 $wgSiteMatrixMessages['kk-arab'] = array(
 	"sitematrix"          => "بارلىق Wikimedia ۋيكي تٸزٸمٸ",
 	'sitematrix-language' => 'تٸلٸ',
 	'sitematrix-project'  => 'جوبا اتاۋى, جوبا ارالىق سٸلتەمەسٸ جٵنە ۋيكي ارالىق سٸلتەمەسٸ',
 	'sitematrix-others'   => 'باسقا Wikimedia جوبالارى',
 );
+
 $wgSiteMatrixMessages['ko'] = array(
 	'sitematrix' => '위키미디어 위키 목록',
 );
+
 $wgSiteMatrixMessages['la'] = array(
 	'sitematrix' => 'Wikimediae wiki omnia',
 	'sitematrix-language' => 'Lingua',
@@ -292,9 +303,11 @@ $wgSiteMatrixMessages['lt'] = array(
 $wgSiteMatrixMessages['lv'] = array(
 	'sitematrix' => 'Visu Wikimedia wiki projektu uzskaitījums',
 );
+
 $wgSiteMatrixMessages['nan'] = array(
 	'sitematrix' => 'Wikimedia wiki lia̍t-toaⁿ',
 );
+
 $wgSiteMatrixMessages['nl'] = array(
 	'sitematrix' => 'Lijst met Wikimedia-wiki\'s',
 	'sitematrix-language' => 'Taal',
@@ -319,30 +332,36 @@ $wgSiteMatrixMessages['oc'] = array(
 	'sitematrix-project' => 'Nom del projècte, ligam interprojècte e ligam interwiki',
 	'sitematrix-others' => 'Autres projèctes de Wikimedia Foundation',
 );
+
 $wgSiteMatrixMessages['pl'] = array(
 	'sitematrix' => 'Lista projektów Wikimedia',
 	'sitematrix-language' => 'Język',
 	'sitematrix-project' => 'Nazwa projektu, link do projektu i link interwiki',
 	'sitematrix-others' => 'Inne projekty Wikimedia',
 );
+
 $wgSiteMatrixMessages['pms'] = array(
 	'sitematrix' => 'Lista ëd le wiki gestìe da Wikimedia',
 	'sitematrix-language' => 'Lenga',
 	'sitematrix-project' => 'Nòm dël proget, anliura antra proget e anliura antrawiki',
 	'sitematrix-others' => 'Àutri proget ëd Wikimedia',
 );
+
 $wgSiteMatrixMessages['pt'] = array(
 	'sitematrix' => 'Lista de sítios Wikimedia',
 	'sitematrix-language' => 'Idioma',
 	'sitematrix-project' => 'Nome do projecto, link interprojecto e link interwiki',
 	'sitematrix-others' => 'Outros projectos da Wikimedia',
 );
+
 $wgSiteMatrixMessages['pt-br'] = array(
 	"sitematrix" => "Lista de wikis da Wikimedia",
 );
+
 $wgSiteMatrixMessages['rm'] = array(
 	'sitematrix-language' => 'Linguatg',
 );
+
 $wgSiteMatrixMessages['ro'] = array(
 	'sitematrix' => 'Lista proiectelor Wikimedia',
 );
@@ -377,6 +396,7 @@ $wgSiteMatrixMessages['sr-el'] = array(
 );
 
 $wgSiteMatrixMessages['sr'] = $wgSiteMatrixMessages['sr-ec'];
+
 $wgSiteMatrixMessages['ss'] = array(
 	'sitematrix-language' => 'Lúlwîmi',
 );
