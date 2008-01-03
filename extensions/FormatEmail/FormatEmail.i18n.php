@@ -108,8 +108,7 @@ Aqueste corrièr vos es estat mandat gràcia al sistèma de messajtariá de {{SI
  * @author Helix84
  */
 $messages['sk'] = array(
-	'email_footer' => '
-----------------------------------------------------------------------------
+	'email_footer' => '----------------------------------------------------------------------------
 Tento email vám poslal $1 pomocou emailového systému {{GRAMMAR:genitív|{{SITENAME}}}}.
 
 $2',

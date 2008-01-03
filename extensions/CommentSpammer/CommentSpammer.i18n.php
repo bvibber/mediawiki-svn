@@ -121,6 +121,17 @@ function efCommentSpammerMessages() {
 	'cspammer-log-page'           => 'Журнал спам-комментариев',
 ),
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+'sk' => array(
+	'commentspammer-save-blocked' => 'Existuje podozrenie, že vaša IP adresa je adresa podozrivého spammera obsahu, preto stránka nebola uložená. Vyhnete sa tomu tým, že [[Special:Userlogin|sa prihlásite alebo si vytvoríte učet]].',
+	'commentspammer-log-msg'      => 'Úprava [[:$2]] od [[Special:Contributions/$1|$1]].',
+	'commentspammer-log-msg-info' => 'Naposledy spamoval pred $1 {{PLURAL:$1|dňom|dňami}}, úroveň ohrozenia je $2 a kód prehrešku je $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Zobraziť podrobnosti] alebo [[Special:Blockip/$4|zablokovať]].',
+	'cspammerlogpagetext'         => 'Záznam úprav, ktoré boli povolené alebo zamietnuté na základe toho, že zdroj bol známy spammer obsahu.',
+	'cspammer-log-page'           => 'Záznam spammerov obsahu',
+),
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

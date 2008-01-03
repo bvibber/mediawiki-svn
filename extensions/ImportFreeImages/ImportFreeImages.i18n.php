@@ -143,6 +143,22 @@ function efImportFreeImagesMessages() {
 			'importfreeimages_returntoform'          => "o, clicatz <a href='$1'>aicí</a> per tornar a vòstra lista de resultats.",
 		),
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+		'sk' => array(
+			'importfreeimages'                       => 'Importovať slobodné obrázky',
+			'importfreeimages_description'           => 'Táto stránka vám umožní importovať správne licencované obrázky z flickr a importovať ich na vašu wiki.',
+			'importfreeimages_noapikey'              => 'Nenakonfigurovali ste kľúč API Flickr. Urobíte tak po získaní kľúča API [http://www.flickr.com/services/api/misc.api_keys.html odtiaľto] a nastavení premennej wgFlickrAPIKey v ImportFreeImages.php.',
+			'importfreeimages_nophotosfound'         => 'Neboli nájdené žiadne obrázky zodpovedajúce vašim kritériám vyhľadávania „$1“. Prosím, skúste to znova.',
+			'importfreeimages_owner'                 => 'Autor',
+			'importfreeimages_importthis'            => 'importovať toto',
+			'importfreeimages_next'                  => 'Ďalších $1',
+			'importfreeimages_filefromflickr'        => '$1 od používateľa <b>[$2]</b> z flickr. Pôvodný URL',
+			'importfreeimages_promptuserforfilename' => 'prosím, zadajte cieľový názov súboru:',
+			'importfreeimages_returntoform'          => "Alebo sa vráťte na <a href='$1'>výsledky vášho vyhľadávania</a>",
+		),
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

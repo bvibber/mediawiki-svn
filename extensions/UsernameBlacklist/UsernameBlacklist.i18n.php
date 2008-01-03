@@ -439,12 +439,14 @@ lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Следующая строка чёрного списка имён участников ошибочна, пожалуйста, исправьте её|||Следующие строки чёрного списка имён участников ошибочны, пожалуйста, исправьте их}} перед сохранением:',
 ),
 
-/* Slovak (helix84) */
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 'sk' => array(
-	'blacklistedusername' => 'Používateľské meno na čiernej listine',
-	'blacklistedusernametext' => 'Používateľské meno, ktoré ste si zvolili sa nachádza na [[MediaWiki:Usernameblacklist|
+	'blacklistedusername'             => 'Používateľské meno na čiernej listine',
+	'blacklistedusernametext'         => 'Používateľské meno, ktoré ste si zvolili sa nachádza na [[MediaWiki:Usernameblacklist|
 čiernej listine používateľských mien]]. Prosím, zvoľte si iné.',
-	'usernameblacklist' => '<pre>
+	'usernameblacklist'               => '<pre>
 # Položky z tohto zoznamu sa použijú ako časť regulárneho výrazu pre
 # zamedzenie vytvorenia účtu s daným používateľským menom. Každá položka 
 # musí byť ako odrážka v zozname, napr.:
@@ -452,6 +454,7 @@ lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
 # * Foo
 # * [Bb]ar
 </pre>',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Nasledovný riadok|Nasledovné riadky}} čiernej listiny používateľských mien {{PLURAL:$1|je neplatný|sú neplatné}} a je potrebné {{PLURAL:$1|ho|ich}} opraviť pred uložením stránky:',
 ),
 
 /* Sundanese (Irwangatot via BetaWiki) */

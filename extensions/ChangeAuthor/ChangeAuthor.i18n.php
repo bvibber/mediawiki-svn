@@ -389,6 +389,32 @@ $allMessages = array(
 		'changeauthor-rev'                  => 'r$1',
 	),
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+	'sk' => array(
+		'changeauthor'                      => 'Zmeniť autora revízie',
+		'changeauthor-title'                => 'Zmeniť autora revízie',
+		'changeauthor-search-box'           => 'Hľadať revízie',
+		'changeauthor-pagename-or-revid'    => 'Názov stránky alebo ID revízie:',
+		'changeauthor-pagenameform-go'      => 'Vykonať',
+		'changeauthor-comment'              => 'Komentár:',
+		'changeauthor-changeauthors-multi'  => 'Zmeniť autora (autorov)',
+		'changeauthor-explanation-multi'    => 'Pomocou tohto formulára môžete zmeniť autora revízie stránky. Jednoducho zmeňte jedno alebo viac mien používateľov v zozname nižšie, pridajte komentár (nepovinné) a kliknite na tlačidlo „Zmeniť autora“.',
+		'changeauthor-changeauthors-single' => 'Zmeniť autora',
+		'changeauthor-explanation-single'   => 'Pomocou tohto formulára môžete zmeniť autora revízie stránky. Jednoducho zmeňte meno používateľa v zozname nižšie, pridajte komentár (nepovinné) a kliknite na tlačidlo „Zmeniť autora“.',
+		'changeauthor-invalid-username'     => 'Neplatné meno používateľa: „$1“.',
+		'changeauthor-nosuchuser'           => 'Taký používateľ neexistuje: „$1“.',
+		'changeauthor-revview'              => 'Revízia #$1 z $2',
+		'changeauthor-nosuchtitle'          => 'Stránka s názvom „$1“ neexistuje.',
+		'changeauthor-weirderror'           => 'Vyskytla sa veľmi zvláštna chyba. Prosím, skúste vašu požiadavku znova. Ak sa táto chyba bude vyskytovať opakovane, databáza je zrejme poškodená.',
+		'changeauthor-invalidform'          => 'Prosím, použite formulár Special:ChangeAuthor radšej ako vlastný formulár.',
+		'changeauthor-success'              => 'Vaša požiadavka bola úspešne spracovaná.',
+		'changeauthor-logentry'             => 'Autor $2 z $1 bol zmenený z $3 na $4',
+		'changeauthor-logpagename'          => 'Záznam zmien autorov',
+		'changeauthor-rev'                  => 'r$1',
+	),
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

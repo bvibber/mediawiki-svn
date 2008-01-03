@@ -1140,25 +1140,30 @@ Tastează numele utilizatorului în cutie şi apasă butonul pentru a face din u
 	'already_bureaucrat' => 'ھي يوزر اڳي ئي ڪامورو آھي.',
 ),
 
+/** Slovak (Slovenčina)
+ * @author Robbot
+ * @author Helix84
+ */
 'sk' => array(
-	'makesysoptitle' => 'Urob z používateľa správcu',
-	'makesysoptext' => 'Tento formulár je používaný byrokratmi na udelenie stavu správca používateľom. 
+	'makesysoptitle'           => 'Urob z používateľa správcu',
+	'makesysoptext'            => 'Tento formulár je používaný byrokratmi na udelenie stavu správca používateľom. 
 Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na správcu.',
-	'makesysopname' => 'Meno používateľa:',
-	'makesysopsubmit' => 'Urob z tohto redaktora správcu',
-	'makesysopok' => '<b>Redaktor "$1" je teraz správcom(sysop)</b>',
-	'makebureaucratok' => '<b>Používateľ "$1" je teraz byrokrat</b>',
-	'makesysopfail' => '<b>Redaktor "$1" nemôže byť správcom. (Zadali ste meno správne?)</b>',
-	'setbureaucratflag' => 'Nastav príznak byrokrat',
-	'rights' => 'Práva:',
-	'set_user_rights' => 'Nastav redaktorove práva',
-	'user_rights_set' => '<b>Práva používateľa „$1“ aktualizované</b>',
-	'set_rights_fail' => '<b>Redaktorove práva pre "$1" nemohli byť nastavené. (zadali ste meno správne?)</b>',
-	'makesysop' => 'Urob z používateľa správcu',
-	'already_sysop' => 'Tento používateľ už je správca',
-	'already_bureaucrat' => 'Tento používateľ už je byrokrat',
-	'group-steward' => 'Stewardi',
-	'grouppage-steward' => '{{ns:project}}:Stewardi',
+	'makesysopname'            => 'Meno používateľa:',
+	'makesysopsubmit'          => 'Urob z tohto redaktora správcu',
+	'makesysopok'              => '<b>Redaktor "$1" je teraz správcom(sysop)</b>',
+	'makebureaucratok'         => '<b>Používateľ "$1" je teraz byrokrat</b>',
+	'makesysopfail'            => '<b>Redaktor "$1" nemôže byť správcom. (Zadali ste meno správne?)</b>',
+	'makesysop-see-userrights' => 'Pozri viac volieb na stránke [[Special:Userrights]].',
+	'setbureaucratflag'        => 'Nastav príznak byrokrat',
+	'rights'                   => 'Práva:',
+	'set_user_rights'          => 'Nastav redaktorove práva',
+	'user_rights_set'          => '<b>Práva používateľa „$1“ aktualizované</b>',
+	'set_rights_fail'          => '<b>Redaktorove práva pre "$1" nemohli byť nastavené. (zadali ste meno správne?)</b>',
+	'makesysop'                => 'Urob z používateľa správcu',
+	'already_sysop'            => 'Tento používateľ už je správca',
+	'already_bureaucrat'       => 'Tento používateľ už je byrokrat',
+	'group-steward'            => 'Stewardi',
+	'grouppage-steward'        => '{{ns:project}}:Stewardi',
 ),
 
 'sl' => array(

@@ -108,6 +108,16 @@ $messages['ru'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: вы должны включить хотя бы одну категорию или указать пространство имён!',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: Príliš veľa kategórií!',
+	'intersection_toofewcats'    => 'DynamicPageList: Príliš málo kategórií!',
+	'intersection_noresults'     => 'DynamicPageList: Žiadne výsledky!',
+	'intersection_noincludecats' => 'DynamicPageList: Musíte uviesť aspoň jednu kategóriu alebo menný priestor!',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */

@@ -223,7 +223,10 @@ $messages['ja'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'asksql' => 'SQL Offro',
+	'asksql'      => 'SQL Offro',
+	'sqlislogged' => 'Zu ärer Informatioun: All Ufroen ginn an e Logbuch agedro',
+	'sqlquery'    => 'Ufro aginn',
+	'querybtn'    => 'Ufro schécken',
 );
 
 /** Lithuanian (Lietuvių)

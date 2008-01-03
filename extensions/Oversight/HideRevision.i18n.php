@@ -931,6 +931,7 @@ administrátorom databázy v prípade, že spravíte chybu.",
 * stránka bola zmazaná, alebo
 * táto skrytá revízia bola prvá revízia',
 	'oversight-log-hiderev'       => 'Odstránená úprava z $1',
+	'oversight'                   => 'Oversight',
 	'oversight-view'              => 'podrobnosti',
 	'oversight-difference'        => '(Rozdiel s predchádzajúcou zostávajúcou revíziou)',
 	'oversight-prev'              => 'Posledná predošlá revízia',

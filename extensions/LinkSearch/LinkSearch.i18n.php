@@ -353,6 +353,7 @@ $wgLinkSearchMessages['pt-br'] = $wgLinkSearchMessages['pt'];
 $wgLinkSearchMessages['rm'] = array(
 	'linksearch-ok'    => 'Tschertgar',
 );
+
 $wgLinkSearchMessages['ru'] = array(
 	'linksearch'       => 'Поиск внешних ссылок',
 	'linksearch-pat'   => 'Шаблон для поиска:',
@@ -362,12 +363,20 @@ $wgLinkSearchMessages['ru'] = array(
 	'linksearch-line'  => 'Ссылка на $1 из $2',
 	'linksearch-error' => 'Подстановочные символы могут использоваться только в начале адресов.',
 );
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $wgLinkSearchMessages['sk'] = array(
 	'linksearch'       => 'Hľadať webové odkazy',
+	'linksearch-pat'   => 'Vyhľadávací vzor:',
+	'linksearch-ns'    => 'Menný priestor:',
+	'linksearch-ok'    => 'Hľadať',
 	'linksearch-text'  => 'Je možné použiť zástupné znaky ako "*.wikipedia.org".',
 	'linksearch-line'  => 'Na $1 odkazuje $2',
 	'linksearch-error' => 'Zástupné znaky je možné použiť iba na začiatku názvu domény.',
 );
+
 $wgLinkSearchMessages['sq'] = array(
 	'linksearch'       => 'Kërkoni lidhje të jashtme',
 	'linksearch-error' => 'Ylli mund të përdoret vetëm në fillim të emrit',
@@ -375,12 +384,14 @@ $wgLinkSearchMessages['sq'] = array(
 	'linksearch-pat'   => 'Motivi kërkimor:',
 	'linksearch-text'  => 'Ylli zëvëndësues mund të përdoret si p.sh. "*.wikipedia.org".',
 );
+
 $wgLinkSearchMessages['sr'] = array(
 	'linksearch'	   => 'Претрага интернет веза',
 	'linksearch-text'  => 'Џокери као што су "*.wikipedia.org" могу да се користе.',
 	'linksearch-line'  => '$1 повезана са $2',
 	'linksearch-error' => 'Џокери могу да се појављују само на почетку домена.'
 );
+
 $wgLinkSearchMessages['ss'] = array(
 	'linksearch-ok'    => 'Kucálata',
 );

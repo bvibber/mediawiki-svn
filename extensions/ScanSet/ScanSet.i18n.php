@@ -176,6 +176,23 @@ $messages['ru'] = array(
 	'scanset_prev'                      => '&lt; Предыдущая',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'scanset_no_name'                   => 'ScanSet: Musíte uviesť názov skenovanej množiny, napr. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: neplatná alebo chýbajúca skenovaná množina.',
+	'scanset_unrecognised_index_format' => 'ScanSet: Neznámy formát indexu',
+	'scanset_opendir_error'             => 'ScanSet: Chyba, nie je možné otvoriť adresár $1',
+	'scanset_no_files'                  => 'ScanSet: V uvedenom adresári sa nenachádzajú žiadne súbory.',
+	'scanset_no_volumes'                => 'ScanSet: Neboli nájdené žiadne adresáre zväzkov',
+	'scanset_missing_index_file'        => 'ScanSet: Indexový súbor $1 nebol nájdený',
+	'scanset_index_file_error'          => 'ScanSet: Chyba vo formáte indexového súboru na riadku $1',
+	'scanset_invalid_volume'            => 'ScanSet: Neplatný zväzok',
+	'scanset_next'                      => 'Ďalej &gt;',
+	'scanset_prev'                      => '&lt; Späť',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */

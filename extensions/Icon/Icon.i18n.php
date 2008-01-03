@@ -84,7 +84,6 @@ $messages['lt'] = array(
 $messages['nl'] = array(
 	'icon-badimage' => 'Onjuist bestand',
 	'icon-badwidth' => 'Onjuiste breedte',
-
 );
 
 /** Occitan (Occitan)
@@ -93,6 +92,14 @@ $messages['nl'] = array(
 $messages['oc'] = array(
 	'icon-badimage' => 'Imatge corromput',
 	'icon-badwidth' => 'Largor erronèa',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'icon-badimage' => 'Zlý obrázok',
+	'icon-badwidth' => 'Zlá šírka',
 );
 
 /** Seeltersk (Seeltersk)

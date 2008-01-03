@@ -546,12 +546,15 @@ function efInputBoxMessages() {
 ),
 
 /** Slovak (Slovenčina)
+ * @author Helix84
  * @author Robbot
  */
 'sk' => array(
-	'tryexact'       => 'Skúste presné vyhľadávanie',
-	'searchfulltext' => 'Fulltextové vyhľadávanie',
-	'createarticle'  => 'Vytvoriť stránku',
+	'inputbox-error-no-type'  => 'Neuviedli ste typ vstupného poľa, ktoré sa má vytvoriť.',
+	'inputbox-error-bad-type' => 'Vstupné pole typu „$1“ nie je podporované. Prosím, použite „create“, „comment“, „search“ alebo „search2“.',
+	'tryexact'                => 'Skúste presné vyhľadávanie',
+	'searchfulltext'          => 'Fulltextové vyhľadávanie',
+	'createarticle'           => 'Vytvoriť stránku',
 ),
 
 'sl' => array(

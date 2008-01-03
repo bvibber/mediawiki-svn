@@ -550,9 +550,9 @@ kopieën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzo
  * @author Helix84
  */
 'sk' => array(
-	'duplicator'                       => 'Duplikácia článku',
-	'duplicator-toolbox'               => 'Duplikovať tento článok',
-	'duplicator-header'                => 'Táto stránka umožňuje kompletnú duplikáciu článku, čím sa vytvorí nazávislá kópia všetkých histórií. Je to užitočné napríklad pri vetvení a pod.',
+	'duplicator'                       => 'Duplikovať stránku',
+	'duplicator-toolbox'               => 'Duplikovať túto stránku',
+	'duplicator-header'                => 'Táto stránka umožňuje kompletnú duplikáciu stránky, čím sa vytvorí nazávislá kópia všetkých histórií. Je to užitočné napríklad pri vetvení a pod.',
 	'duplicator-options'               => 'Možnosti',
 	'duplicator-source'                => 'Zdroj:',
 	'duplicator-dest'                  => 'Cieľ:',
