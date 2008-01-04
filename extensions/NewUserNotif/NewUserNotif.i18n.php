@@ -90,6 +90,15 @@ Er is een nieuwe gebruiker $2 aangemaakt om $3 op $4.',
 $3 na $4 bol vytvorený nový používateľský účet $2.',
 ),
 
+/** ћирилица (ћирилица)
+ * @author Sasa Stefanovic
+ */
+'sr-ec' => array(
+	'newusernotifsubj' => 'Нови корисник за $1',
+	'newusernotifbody' => 'Здраво $1
+Нови кориснички налог, $2, је направљен на $3 у $4.',
+),
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

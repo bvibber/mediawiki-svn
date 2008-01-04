@@ -395,8 +395,13 @@ $wgSiteMatrixMessages['sq'] = array(
 	'sitematrix' => 'Lista e wiki-ve të Wikimedia-s',
 );
 
+/** ћирилица (ћирилица)
+ * @author Sasa Stefanovic
+ * @author לערי ריינהארט
+ */
 $wgSiteMatrixMessages['sr-ec'] = array(
-	"sitematrix" => "Табела свих викија",
+	'sitematrix'          => 'Табела свих викија',
+	'sitematrix-language' => 'Језик',
 );
 
 $wgSiteMatrixMessages['sr-el'] = array(

@@ -121,11 +121,14 @@ $wgExpandTemplatesMessages['ext'] = array(
 	'expand_templates_preview'         => 'Previsoreal',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ * @author Crt
+ */
 $wgExpandTemplatesMessages['fi'] = array(
 	'expandtemplates'                  => 'Mallineiden laajennus',
-	'expand_templates_intro'           => 'Tämä toimintosivu ottaa syötteekseen tekstiä ja laajentaa kaikki mallineet rekursiivisesti sekä jäsenninfunktiot, kuten <nowiki>{{</nowiki>#if:...}}, ja -muuttujat, kuten
-<nowiki>{{</nowiki>CURRENTDAY}} &mdash  toisin sanoen melkein kaiken, joka on kaksoisaaltosulkeiden sisällä.',
-	'expand_templates_title'           => 'Otsikko (esimerkiksi {{PAGENAME}})',
+	'expand_templates_intro'           => 'Tämä toimintosivu ottaa syötteekseen tekstiä ja laajentaa kaikki mallineet rekursiivisesti sekä jäsenninfunktiot, kuten <nowiki>{{</nowiki>#if:...}}, ja -muuttujat, kuten <nowiki>{{</nowiki>CURRENTDAY}} &mdash; toisin sanoen melkein kaiken, joka on kaksoisaaltosulkeiden sisällä.',
+	'expand_templates_title'           => 'Otsikko (esimerkiksi muuttujaa {{PAGENAME}} varten)',
 	'expand_templates_input'           => 'Teksti',
 	'expand_templates_output'          => 'Tulos',
 	'expand_templates_ok'              => 'Laajenna',
@@ -470,6 +473,9 @@ $wgExpandTemplatesMessages['sq'] = array(
 	'expandtemplates'                  => 'Parapamje stampash',
 );
 
+/** ћирилица (ћирилица)
+ * @author Sasa Stefanovic
+ */
 $wgExpandTemplatesMessages['sr-ec'] = array(
 	'expandtemplates'                  => 'Замена шаблона',
 	'expand_templates_intro'           => 'Ова посебна страница узима неки текст и мења све шаблоне у њему рекурзивно.
@@ -481,6 +487,7 @@ $wgExpandTemplatesMessages['sr-ec'] = array(
 	'expand_templates_output'          => 'Резултат',
 	'expand_templates_ok'              => 'У реду',
 	'expand_templates_remove_comments' => 'Уклони коментаре',
+	'expand_templates_preview'         => 'Приказ',
 );
 
 $wgExpandTemplatesMessages['sr-el'] = array(

@@ -1928,12 +1928,15 @@ $wgBoardVoteMessages['ru'] = array(
 Может возникнуть сообщение о неподписанном сертификате.',
 );
 
+/** ћирилица (ћирилица)
+ * @author Sasa Stefanovic
+ */
 $wgBoardVoteMessages['sr-ec'] = array(
-	'boardvote'               => "Избор за Одбор повереника Викимедија Фондације",
-	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vote]]
+	'boardvote'              => 'Избор за Одбор повереника Викимедија Фондације',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vote]]
 * [[Special:Boardvote/list|Списак гласова до датума]]
-* [[Special:Boardvote/dump|Енкриптован запис гласања]]",
-	'boardvote_intro'         => "
+* [[Special:Boardvote/dump|Енкриптован запис гласања]]',
+	'boardvote_intro'        => '
 <p>Добро дошли на треће изборе за Викимедијин Одбор повереника.
 Гласамо за једну особу која би представљала заједницу корисника разних Викимедијиних пројеката.
 Она ће помоћи да се утврди будући смер којим ће Викимедијини пројекти да се крећу,
@@ -1948,13 +1951,12 @@ $wgBoardVoteMessages['sr-ec'] = array(
 ће бити проглашени победником тог положаја. У случају нерешеног, ново гласање ће бити одржано.</p>
 
 <p>За више информација, погледајте:</p>
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2006\" class=\"external\">Најчешће постављена питања избора</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2006\" class=\"external\">Кандидати</a></li></ul>
-",
-	'boardvote_intro_change'  => "<p>Гласали сте раније. Међутим, можете променити ваш глас користећи формулар испод.
-Молимо одаберите кандидате за које гласате.</p>",
-	'boardvote_footer'        => "&nbsp;", # Don't translate this
-	'boardvote_entered'       => "Хвала вам, ваш глас је снимљен.
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">Најчешће постављена питања избора</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006" class="external">Кандидати</a></li></ul>
+',
+	'boardvote_intro_change' => '<p>Гласали сте раније. Међутим, можете променити ваш глас користећи формулар испод.
+Молимо одаберите кандидате за које гласате.</p>',
+	'boardvote_entered'      => 'Хвала вам, ваш глас је снимљен.
 
 Уколико желите, можете сачувати следеће детаље. Ваше гласачки снимак је:
 
@@ -1968,30 +1970,34 @@ $wgBoardVoteMessages['sr-ec'] = array(
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Назад]]",
-	'boardvote_notloggedin'   => "Нисте пријављени. Да бисте гласали, морате да имате налог са бар $1 измена пре $2, где је прва измена пре $3.",
-	'boardvote_notqualified'  => "Жао нам је, нисте квалификовани да гласате на овом избору. Морате да имате овде бар $3 измена пре $2, а ви имате $1. Такође, ваша прва измена на овом викију је била у $4, а треба да буде пре $5.",
-	'boardvote_novotes'       => "Још нико није гласао.",
-	'boardvote_time'          => "Време",
-	'boardvote_user'          => "Корисник",
-	'boardvote_edits'         => "Измена",
-	'boardvote_days'          => "Дана",
-	'boardvote_ip'            => "ИП",
-	'boardvote_ua'            => "Кориснички агент",
-	'boardvote_listintro'     => "<p>Ово је списак свих гласова који су снимљени до сада. $1 за шифриране податке.</p>",
-	'boardvote_dumplink'      => "Кликните овде",
-	'boardvote_submit'        => 'У реду',
-	'boardvote_strike'        => "Прецртано",
-	'boardvote_unstrike'      => "Непрецртано",
-	'boardvote_needadmin'     => "Само администратори гласања могу да изводе ову операцију.",
-	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Избори за Викимедијин Одбор</a>:  Гласање отворено до 21. септембра",
-	'boardvote_notstarted'    => 'Гласање још није почело',
-	'boardvote_closed'        => 'Гласање је завршено, погледајте [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En страницу за гласање за резултате] ускоро.',
-	'boardvote_edits_many'    => 'много',
-	'group-boardvote'         => 'изборна комисија',
-	'group-boardvote-member'  => 'изборна комисија',
-	'grouppage-boardvote'     => '{{ns:project}}:Администратор гласања за Одбор',
+[[Special:Boardvote/entry|Назад]]',
+	'boardvote_notloggedin'  => 'Нисте пријављени. Да бисте гласали, морате да имате налог са бар $1 измена пре $2, где је прва измена пре $3.',
+	'boardvote_notqualified' => 'Жао нам је, нисте квалификовани да гласате на овом избору. Морате да имате овде бар $3 измена пре $2, а ви имате $1. Такође, ваша прва измена на овом викију је била у $4, а треба да буде пре $5.',
+	'boardvote_novotes'      => 'Још нико није гласао.',
+	'boardvote_time'         => 'Време',
+	'boardvote_user'         => 'Корисник',
+	'boardvote_edits'        => 'Измена',
+	'boardvote_days'         => 'Дана',
+	'boardvote_ip'           => 'ИП',
+	'boardvote_ua'           => 'Кориснички агент',
+	'boardvote_listintro'    => '<p>Ово је списак свих гласова који су снимљени до сада. $1 за шифриране податке.</p>',
+	'boardvote_dumplink'     => 'Кликните овде',
+	'boardvote_submit'       => 'У реду',
+	'boardvote_strike'       => 'Прецртано',
+	'boardvote_unstrike'     => 'Непрецртано',
+	'boardvote_needadmin'    => 'Само администратори гласања могу да изводе ову операцију.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Избори за Викимедијин Одбор</a>:  Гласање отворено до 21. септембра',
+	'boardvote_notstarted'   => 'Гласање још није почело',
+	'boardvote_closed'       => 'Гласање је завршено, погледајте [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En страницу за гласање за резултате] ускоро.',
+	'boardvote_edits_many'   => 'много',
+	'group-boardvote'        => 'изборна комисија',
+	'group-boardvote-member' => 'изборна комисија',
+	'grouppage-boardvote'    => '{{ns:project}}:Администратор гласања за Одбор',
+	'boardvote_welcome'      => "Добро дошли '''$1'''!",
 );
+
+$wgBoardVoteMessages['sr'] = $wgBoardVoteMessages['sr-ec'];
+
 $wgBoardVoteMessages['sr-el'] = array(
 	'boardvote'               => "Izbor za Odbor poverenika Vikimedija Fondacije",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vote]]
@@ -2056,8 +2062,6 @@ Sledi rezultujuća šifrirana verzija. Biće javno predstavljena na [[Special:Bo
 	'group-boardvote-member'  => 'izborna komisija',
 	'grouppage-boardvote'     => '{{ns:project}}:Administrator glasanja za Odbor',
 );
-
-$wgBoardVoteMessages['sr'] = $wgBoardVoteMessages['sr-ec'];
 
 /** Seeltersk (Seeltersk)
  * @author Pyt

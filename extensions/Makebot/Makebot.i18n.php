@@ -362,6 +362,29 @@ function efMakeBotMessages() {
 	'makebot-logentryrevoke'  => 'a révoqué le statut de bot de [[$1]]',
 ),
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+'frp' => array(
+	'makebot'                => 'Balyér ou rèvocar los drêts de bot',
+	'makebot-header'         => "'''Un burôcrate local pôt utilisar ceta pâge por balyér ou rèvocar lo [[{{MediaWiki:Grouppage-bot}}|statut de bot]] a un ôtro compto utilisator.'''<br />Lo statut de bot at por èxcèpcion de mâscar les èdicions des utilisators dens la pâge des [[Special:Recentchanges|dèrriérs changements]] et de totes les ôtres listes semblâbles. Cen est rudo utilo por marcar los utilisators que vôlont fâre des èdicions ôtomatiques. Cen dêt étre fêt ren que d’aprés les règlles publeyês u méten de châque projèt.",
+	'makebot-username'       => 'Nom d’utilisator :',
+	'makebot-search'         => 'Validar',
+	'makebot-isbot'          => '[[User:$1|$1]] at lo statut de bot.',
+	'makebot-notbot'         => '[[User:$1|$1]] at pas lo statut de bot.',
+	'makebot-privileged'     => '[[User:$1|$1]] est ja [[Special:Listadmins|un administrator]] et pôt pas avêr lo statut de « bot ».',
+	'makebot-change'         => 'Changiér los drêts :',
+	'makebot-grant'          => 'Balyér',
+	'makebot-revoke'         => 'Rèvocar',
+	'makebot-comment'        => 'Comentèro :',
+	'makebot-granted'        => 'Dês ora, [[User:$1|$1]] at lo statut de bot.',
+	'makebot-revoked'        => '[[User:$1|$1]] at pas més lo statut de bot.',
+	'makebot-logpage'        => 'Historico des changements de statut des bots',
+	'makebot-logpagetext'    => 'Ceta pâge liste los changements (aquis et pèrtes) de statut des [[{{MediaWiki:Grouppage-bot}}|bots]].',
+	'makebot-logentrygrant'  => 'at balyê lo statut de bot a [[$1]]',
+	'makebot-logentryrevoke' => 'at rèvocâ lo statut de bot de [[$1]]',
+),
+
 /** Irish (Gaeilge)
  * @author SPQRobin
  */

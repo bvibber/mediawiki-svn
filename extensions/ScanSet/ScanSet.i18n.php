@@ -193,6 +193,14 @@ $messages['sk'] = array(
 	'scanset_prev'                      => '&lt; Späť',
 );
 
+/** ћирилица (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'scanset_next' => 'След. &gt;',
+	'scanset_prev' => '&lt; Прет.',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */

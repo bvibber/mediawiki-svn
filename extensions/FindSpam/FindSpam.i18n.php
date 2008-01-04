@@ -96,6 +96,16 @@ $messages['sk'] = array(
 	'findspam-notextfound' => 'Neboli nájdené žiadne príspevky',
 );
 
+/** ћирилица (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'findspam'             => 'Пронађи спам',
+	'findspam-ip'          => 'ИП адреса:',
+	'findspam-ok'          => 'У реду',
+	'findspam-notextfound' => 'Нису пронађени прилози',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

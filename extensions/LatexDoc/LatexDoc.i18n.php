@@ -158,3 +158,11 @@ $3',
 	'latexdoc_get_dvi'         => 'Obţine DVI',
 	'latexdoc_get_pdf'         => 'Obţine PDF',
 );
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'latexdoc_get_dvi' => 'Dagetön DVI-i',
+	'latexdoc_get_pdf' => 'Dagetön PDF-i',
+);

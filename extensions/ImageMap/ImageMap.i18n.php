@@ -55,6 +55,22 @@ function efImageMapMessages() {
 	'imagemap_description'        => 'Информация за изображението',
 ),
 
+/** Czech (Česky)
+ * @author Li-sung
+ */
+'cs' => array(
+	'imagemap_no_image'           => '&lt;imagemap&gt;: na první řádce musí být určen obrázek',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: soubor není platný nebo neexistuje',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: nebyl nalezen žádný platný odkaz na konci řádku $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: neplatný název v odkazu na řádku $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: chybějící souřadnice tvaru na řádku $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: nerozpoznaný tvar na řádku $1, každá řádka musí začínat definicí tvaru: default, rect, circle nebo poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: musí být určena alespoň jedna oblast',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: neplatné souřadnice na řádku $1, je očekáváno číslo',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: neplatné určení oblasti desc, je očekávána jedna z možností: <tt>$1</tt>',
+	'imagemap_description'        => 'O tomto obrázku',
+),
+
 /* Danish (Wegge) */
 'da' => array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: Der skal angives et billednavn i første linje',
@@ -418,6 +434,13 @@ function efImageMapMessages() {
 	'imagemap_description'          => 'O tomto obrázku',
 ),
 
+/** ћирилица (ћирилица)
+ * @author Sasa Stefanovic
+ */
+'sr-ec' => array(
+	'imagemap_description' => 'О овој слици',
+),
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -444,6 +467,13 @@ function efImageMapMessages() {
 
 'tet' => array(
 	'imagemap_description'          => 'Kona-ba imajen ne\'e',
+),
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+'vo' => array(
+	'imagemap_description' => 'Tefü magod at',
 ),
 
 /* Cantonese (Shinjiman) */

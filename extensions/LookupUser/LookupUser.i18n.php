@@ -185,3 +185,10 @@ $messages['stq'] = array(
 	'lookupuser_touched'           => 'Benutserkonto toulääst rööged: $1',
 	'lookupuser_useroptions'       => 'Ienstaalengen fon dät Benutserkonto:',
 );
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'lookupuser_realname' => 'Nem jenöfik: $1',
+);

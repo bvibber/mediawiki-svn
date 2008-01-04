@@ -815,6 +815,19 @@ $messages['sv'] = array(
 	'badimages-log-remove' => 'strök [[$1]] från listan över dåliga bilder',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'badimages'          => 'Lised magodas badik',
+	'badimages-add-btn'  => 'Läükön',
+	'badimages-count'    => "Dabinons magods '''$1''' in lised magodas badik.",
+	'badimages-name'     => 'Nem:',
+	'badimages-reason'   => 'Kod:',
+	'badimages-log-name' => 'Lised magodas badik',
+	'badimages-page'     => '{{ns:help}}:Lised magodas badik',
+);
+
 /* Cantonese (Hillgentleman, Shinjiman) */
 $messages['yue'] = array(
 	'badimages' => '壞圖清單',

@@ -451,6 +451,17 @@ function efBookInformationMessages() {
 	'bookinfo-provider' => 'Poskytovateľ údajov: $1',
 ),
 
+/** ћирилица (ћирилица)
+ * @author Sasa Stefanovic
+ */
+'sr-ec' => array(
+	'bookinfo-header'           => 'Информације за књигу',
+	'bookinfo-result-title'     => 'Наслов:',
+	'bookinfo-result-author'    => 'Аутор:',
+	'bookinfo-result-publisher' => 'Издавач:',
+	'bookinfo-result-year'      => 'Година:',
+),
+
 'stq' => array(
 	'bookinfo-header' => 'Informatione uur Bouke',
 	'bookinfo-result-title' => 'Tittel:',

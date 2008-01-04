@@ -133,6 +133,14 @@ function efMediaFunctionsMessages() {
 	'mediafunctions-not-exist'     => '„$1“ bestoant nit',
 ),
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+'vo' => array(
+	'mediafunctions-invalid-title' => '"$1" no binon tiäd lonöfik',
+	'mediafunctions-not-exist'     => '"$1" no dabinon',
+),
+
 'yue' => array(
 	'mediafunctions-invalid-title' => '"$1" 唔係一個有效嘅標題',
 	'mediafunctions-not-exist'     => '"$1" 唔存在',

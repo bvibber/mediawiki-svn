@@ -78,3 +78,12 @@ $messages['no'] = array(
 	'filelist-show-list'    => 'Vis liste',
 	'filelist-show-gallery' => 'Vis gallery',
 );
+
+/** ћирилица (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'filelist'              => 'Списак фајлова',
+	'filelist-show-list'    => 'Прикажи списак',
+	'filelist-show-gallery' => 'Прикажи галерију',
+);

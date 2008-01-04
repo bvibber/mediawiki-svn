@@ -875,6 +875,21 @@ $messages = array(
 		'ogg-desc-link' => 'O tomto súbore',
 	),
 
+/** ћирилица (ћирилица)
+ * @author Sasa Stefanovic
+ */
+	'sr-ec' => array(
+		'ogg-play'       => 'Пусти',
+		'ogg-pause'      => 'Пауза',
+		'ogg-stop'       => 'Стоп',
+		'ogg-play-video' => 'Пусти видео',
+		'ogg-play-sound' => 'Пусти звук',
+		'ogg-more'       => 'Више...',
+		'ogg-dismiss'    => 'Затвори',
+		'ogg-download'   => 'Преузми фајл',
+		'ogg-desc-link'  => 'О овом фајлу',
+	),
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
