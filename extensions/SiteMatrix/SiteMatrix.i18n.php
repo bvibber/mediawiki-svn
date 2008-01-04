@@ -308,6 +308,14 @@ $wgSiteMatrixMessages['nan'] = array(
 	'sitematrix' => 'Wikimedia wiki lia̍t-toaⁿ',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$wgSiteMatrixMessages['nds'] = array(
+	'sitematrix'          => 'List vun de Wikimedia-Wikis',
+	'sitematrix-language' => 'Spraak',
+);
+
 $wgSiteMatrixMessages['nl'] = array(
 	'sitematrix' => 'Lijst met Wikimedia-wiki\'s',
 	'sitematrix-language' => 'Taal',
