@@ -931,12 +931,12 @@ administrátorom databázy v prípade, že spravíte chybu.",
 * stránka bola zmazaná, alebo
 * táto skrytá revízia bola prvá revízia',
 	'oversight-log-hiderev'       => 'Odstránená úprava z $1',
-	'oversight'                   => 'Oversight',
+	'oversight'                   => 'Dozor',
 	'oversight-view'              => 'podrobnosti',
 	'oversight-difference'        => '(Rozdiel s predchádzajúcou zostávajúcou revíziou)',
 	'oversight-prev'              => 'Posledná predošlá revízia',
 	'oversight-hidden'            => 'Skrytá revízia',
-	'oversight-header'            => 'Dolu je zoznam revízií, ktoré boli nedávno permanentne skryté pohľadu verejnosti. Šírenie týchto informácií môže mať za dôsledok premanentnú stratu práv Oversight.',
+	'oversight-header'            => 'Dolu je zoznam revízií, ktoré boli nedávno permanentne skryté pohľadu verejnosti. Šírenie týchto informácií môže mať za dôsledok permanentnú stratu práv Dozrcu (oversight).',
 );
 
 /* Serbian default (Sasa Stefanovic) */

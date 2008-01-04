@@ -355,6 +355,14 @@ $wgExpandTemplatesMessages['nan'] = array(
 	'expand_templates_output'          => 'Kiat-kó:',
 	'expand_templates_remove_comments' => 'Comments the̍h tiāu',
 );
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$wgExpandTemplatesMessages['nds'] = array(
+	'expand_templates_preview' => 'Vörschau',
+);
+
 $wgExpandTemplatesMessages['nl'] = array(
 	'expandtemplates'                  => 'Sjablonen substitueren',
 	'expand_templates_intro'           => 'Deze speciale pagina leest de ingegeven tekst in en
@@ -369,6 +377,7 @@ Hiervoor worden de relevante functies van de MediaWiki-parser gebruikt.',
 	'expand_templates_remove_comments' => 'Verwijder opmerkingen',
 	'expand_templates_preview'         => 'Voorvertoning',
 );
+
 $wgExpandTemplatesMessages['no'] = array(
 	'expandtemplates'                  => 'Utvid maler',
 	'expand_templates_intro'           => 'Denne siden tar en tekst og utvider alle maler brukt i teksten. Den utvider også alle funksjoner som <nowiki>{{</nowiki>#if:…}}, og variabler som <nowiki>{{</nowiki>CURRENTDAY}}. <!--It does this by calling the relevant parser stage from MediaWiki itself.-->',
@@ -379,6 +388,7 @@ $wgExpandTemplatesMessages['no'] = array(
 	'expand_templates_remove_comments' => 'Fjern kommentarer',
 	'expand_templates_preview'         => 'Forhåndsvisning',
 );
+
 $wgExpandTemplatesMessages['oc'] = array(
 	'expandtemplates'                  => 'Espandiment dels modèls',
 	'expand_templates_intro'           => 'Aquesta pagina permet de testar l’espandiment de modèls, que son desvolopats recursivament. Las foncions e las variablas predefinidas, coma <nowiki>{{</nowiki>#if:...}} e <nowiki>{{</nowiki>CURRENTDAY}} tanben son desvolopadas.',
@@ -389,6 +399,7 @@ $wgExpandTemplatesMessages['oc'] = array(
 	'expand_templates_remove_comments' => 'Suprimir los comentaris.',
 	'expand_templates_preview'         => 'Previsualizacion',
 );
+
 $wgExpandTemplatesMessages['pl'] = array(
 	'expandtemplates'                  => 'Rozwijanie szablonów',
 	'expand_templates_intro'           => 'Ta strona specjalna pobiera tekst i rozwija w nim rekursywnie wszystkie szablony. Rozwija także [[Wikipedia:Funkcje parsera|funkcje parsera]] takie jak <nowiki>{{</nowiki>#if...}} i zmienne jak <nowiki>{{</nowiki>CURRENTDAY}} &ndash; w zasadzie prawie wszystko w podwójnych nawiasach klamrowych. Robi się to przez wezwanie odpowiedniego przebiegu (etapu) parsera z samego MediaWiki.',
@@ -399,6 +410,7 @@ $wgExpandTemplatesMessages['pl'] = array(
 	'expand_templates_remove_comments' => 'Usuń komentarze',
 	'expand_templates_preview'         => 'Podgląd',
 );
+
 /* Piedmontese (Bèrto 'd Sèra) */
 $wgExpandTemplatesMessages['pms'] = array(
 	'expandtemplates'                  => 'Anàlisi djë stamp',
@@ -447,6 +459,7 @@ volania relevantnej fázy parsera samotného MediaWiki.',
 	'expand_templates_remove_comments' => 'Odstrániť komentáre',
 	'expand_templates_preview'         => 'Náhľad',
 );
+
 $wgExpandTemplatesMessages['sq'] = array(
 	'expand_templates_input'           => 'Teksti me stampa:',
 	'expand_templates_intro'           => 'Kjo faqe speciale merr tekstin me stampa dhe të tregon se si do të duket teksti pasi të jenë stamposur të tëra. Kjo faqe gjithashtu tregon parapamjen e funksioneve dhe fjalëve magjike si p.sh. <nowiki>{{</nowiki>#if:...}} dhe <nowiki>{{</nowiki>CURRENTDAY}}.',
@@ -456,6 +469,7 @@ $wgExpandTemplatesMessages['sq'] = array(
 	'expand_templates_title'           => 'Titulli i faqes për rrethanën, si <nowiki>{{</nowiki>PAGENAME}} etj.:',
 	'expandtemplates'                  => 'Parapamje stampash',
 );
+
 $wgExpandTemplatesMessages['sr-ec'] = array(
 	'expandtemplates'                  => 'Замена шаблона',
 	'expand_templates_intro'           => 'Ова посебна страница узима неки текст и мења све шаблоне у њему рекурзивно.
@@ -468,6 +482,7 @@ $wgExpandTemplatesMessages['sr-ec'] = array(
 	'expand_templates_ok'              => 'У реду',
 	'expand_templates_remove_comments' => 'Уклони коментаре',
 );
+
 $wgExpandTemplatesMessages['sr-el'] = array(
 	'expandtemplates'                  => 'Zamena šablona',
 	'expand_templates_intro'           => 'Ova posebna stranica uzima neki tekst i menja sve šablone u njemu rekurzivno.
@@ -480,6 +495,7 @@ Do ovoga dolazi tako što se zove odgovarajuće stanje parsera iz samog MedijaVi
 	'expand_templates_ok'              => 'U redu',
 	'expand_templates_remove_comments' => 'Ukloni komentare',
 );
+
 $wgExpandTemplatesMessages['sr'] = $wgExpandTemplatesMessages['sr-ec'];
 
 /** Seeltersk (Seeltersk)
@@ -501,6 +517,7 @@ $wgExpandTemplatesMessages['su'] = array(
 	'expand_templates_output'          => 'Hasil:',
 	'expand_templates_ok'              => 'Heug',
 );
+
 $wgExpandTemplatesMessages['sv'] = array(
 	'expandtemplates'                  => 'Expandera mallar',
 	'expand_templates_intro'           => 'Den här specialsidan tar en text och expanderar rekursivt alla mallar som används. Även parserfunktioner (som <nowiki>{{</nowiki>#if:...}}), variabler som <nowiki>{{</nowiki>CURRENTDAY}} och annan kod med dubbla klammerparenteser expanderas.',
@@ -529,6 +546,7 @@ $wgExpandTemplatesMessages['yue'] = array(
 	'expand_templates_remove_comments' => '拎走注釋',
 	'expand_templates_preview'         => '預覽',
 );
+
 $wgExpandTemplatesMessages['zh-hans'] = array(
 	'expandtemplates'                  => '展开模板',
 	'expand_templates_intro'           => '本特殊页面用于将一些文字中的模板展开，包括模板中引用的模板。同时也展开解释器函数如<nowiki>{{</nowiki>#if:...}}，以及变量如<nowiki>{{</nowiki>CURRENTDAY}}&mdash;实际上，几乎所有在双括号中的内容都被展开。本特殊页面是通过调用MediaWiki的相关解释阶段的功能完成的。',
@@ -539,6 +557,7 @@ $wgExpandTemplatesMessages['zh-hans'] = array(
 	'expand_templates_remove_comments' => '移除注释',
 	'expand_templates_preview'         => '预览',
 );
+
 $wgExpandTemplatesMessages['zh-hant'] = array(
 	'expandtemplates'                  => '展開模板',
 	'expand_templates_intro'           => '本特殊頁面用於將一些文字中的模版展開，包括模版中引用的模版。同時也展開解譯器函數如<nowiki>{{</nowiki>#if:...}}，以及變數如<nowiki>{{</nowiki>CURRENTDAY}}&mdash;實際上，幾乎所有在雙括弧中的內容都被展開。本特殊頁面是通過使用MediaWiki的相關解釋階段的功能完成的。',

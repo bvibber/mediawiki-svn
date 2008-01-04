@@ -713,6 +713,13 @@ function efMakeBotMessages() {
 	'makebot-comment'  => 'ຄຳເຫັນ:',
 ),
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+'nds' => array(
+	'makebot-username' => 'Brukernaam:',
+),
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -97,11 +97,12 @@ $messages['gl'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author SpeedyGonsales
  * @author Dnik
  */
 $messages['hr'] = array(
 	'block_title_error_page_title' => 'Blokirani naslov',
-	'block_title_error'            => 'Nažalost, naslov ovog članka nije dozvoljeno spremiti',
+	'block_title_error'            => 'Nažalost, naslov ovog članka nije dozvoljeno spremiti.',
 );
 
 $messages['hsb'] = array(

@@ -312,6 +312,13 @@ $wgFilepathMessages['nan'] = array(
 	'filepath'         => 'Tóng-àn ê soàⁿ-lō·',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$wgFilepathMessages['nds'] = array(
+	'filepath_page' => 'Datei:',
+);
+
 $wgFilepathMessages['nl'] = array(
 	'filepath'        => 'Bestandslocatie',
 	'filepath_page'   => 'Bestand:',

@@ -1450,6 +1450,18 @@ $wgBoardVoteMessages['nan'] = array(
 	'boardvote_dumplink'      => "Chhi̍h chia",
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$wgBoardVoteMessages['nds'] = array(
+	'boardvote_novotes'  => 'Noch hett nüms afstimmt.',
+	'boardvote_time'     => 'Tiet',
+	'boardvote_user'     => 'Bruker',
+	'boardvote_days'     => 'Daag',
+	'boardvote_dumplink' => 'Hier klicken',
+	'boardvote_welcome'  => "Moin '''$1'''.",
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

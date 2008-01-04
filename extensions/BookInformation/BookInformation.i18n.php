@@ -297,6 +297,15 @@ function efBookInformationMessages() {
 	'bookinfo-purchase'          => 'Pirkti šią knygą iš $1',
 ),
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+'nds' => array(
+	'bookinfo-result-title'  => 'Titel:',
+	'bookinfo-result-author' => 'Schriever:',
+	'bookinfo-result-year'   => 'Johr:',
+),
+
 /* nld / Dutch (Dirk Beetstra) */
 'nl' => array(
 	'bookinfo-header' => 'Boekinformatie',

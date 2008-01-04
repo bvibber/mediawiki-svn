@@ -333,6 +333,31 @@ Texte à rechercher : $3 $9 $10',
 	'searchincategory'      => 'Chercher dans les catégories',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$wgLuceneSearchMessages['frp'] = array(
+	'searchnumber'          => '<strong>Rèsultats $1 – $2 dessus $3</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prèc.</span>",
+	'searchnext'            => "<span style='font-size: small'>Siuv.</span> &#x00BB;",
+	'lucene-searchscore'    => 'Rapôrt : $1%',
+	'lucene-resultsize'     => '$1 ($2 mots)',
+	'searchdidyoumean'      => 'Pensâvâd-vos a : « <a href="$1">$2</a> » ?',
+	'searchnoresults'       => 'Dèsolâ, ègziste gins de corrèspondance ègzacta a voutra requéta.',
+	'searchnearmatches'     => '<strong>Cetes pâges ont un titro semblâblo a voutra requéta.</strong>',
+	'lucenepowersearchtext' => 'Rechèrchiér dens los èspâços de nom :
+
+$1
+
+Tèxte a rechèrchiér : $3 $9 $10',
+	'lucenefallback'        => 'Un problèmo est arrevâ avouéc la rechèrche vouiqui.
+Cél souci est probâblament temporèro ; marci de tornar èprovar d’abôrd
+ou ben d’utilisar un sèrviço de rechèrche de defôr.',
+	'searchexactcase'       => 'Rechèrchiér (sensiblo a la câssa)',
+	'searchall'             => 'Tôs',
+	'searchincategory'      => 'Chèrchiér dens les catègories',
+);
+
 /** Irish (Gaeilge)
  * @author SPQRobin
  */

@@ -125,6 +125,19 @@ $wgLinkSearchMessages['fr'] = array(
 	'linksearch-error' => 'Les caractères « joker » ne peuvent être utilisés qu’au début du nom de domaine.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$wgLinkSearchMessages['frp'] = array(
+	'linksearch'       => 'Rechèrchiér des lims Malyâjo',
+	'linksearch-pat'   => 'Rechèrchiér l’èxprèssion :',
+	'linksearch-ns'    => 'Èspâço de nom :',
+	'linksearch-ok'    => 'Rechèrchiér',
+	'linksearch-text'  => 'Ceta pâge spèciâla pèrmèt de rechèrchiér les pâges dens lesquintes un lim de defôr aparêt.<br />Des caractèros « j·oquèr » pôvont étre utilisâs, per ègzemplo <code>*.wikipedia.org</code>.<br />Protocolos sotegnus : <tt>$1</tt>',
+	'linksearch-line'  => '$1 avouéc un lim dês $2',
+	'linksearch-error' => 'Los caractèros « j·oquèr » pôvont étre utilisâs ren qu’u comencement du nom de domêno.',
+);
+
 $wgLinkSearchMessages['gl'] = array(
 	'linksearch'       => 'Buscar ligazóns web',
 	'linksearch-pat'   => 'Patrón de procura:',
@@ -287,9 +300,19 @@ $wgLinkSearchMessages['lt'] = array(
 $wgLinkSearchMessages['nan'] = array(
 	'linksearch'       => 'Chhiau-chhoē chām-goā liân-kiat',
 );
+
 $wgLinkSearchMessages['nap'] = array(
 	'linksearch-ok'    => 'Truova',
 );
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$wgLinkSearchMessages['nds'] = array(
+	'linksearch-ns' => 'Naamruum:',
+	'linksearch-ok' => 'Söken',
+);
+
 $wgLinkSearchMessages['nl'] = array(
 	'linksearch'       => 'Externe links zoeken',
 	'linksearch-pat'   => 'Zoekpatroon:',
@@ -299,6 +322,7 @@ $wgLinkSearchMessages['nl'] = array(
 	'linksearch-line'  => '$1 gelinkt vanaf $2',
 	'linksearch-error' => 'Wildcards zijn alleen toegestaan aan het begin van een hostnaam.',
 );
+
 $wgLinkSearchMessages['no'] = array(
 	'linksearch'       => 'Søk i eksterne lenker',
 	'linksearch-pat'   => 'Søkemønster:',
@@ -308,6 +332,7 @@ $wgLinkSearchMessages['no'] = array(
 	'linksearch-line'  => '$1 lenkes fra $2',
 	'linksearch-error' => 'Jokertegn kan kun brukes foran tjenernavnet.',
 );
+
 $wgLinkSearchMessages['oc'] = array(
 	'linksearch'       => 'Recercar de ligams Internet',
 	'linksearch-pat'   => 'Recercar l’expression :',
@@ -317,6 +342,7 @@ $wgLinkSearchMessages['oc'] = array(
 	'linksearch-line'  => '$1 amb un ligam a partir de $2',
 	'linksearch-error' => 'Los caractèrs « joker » pòdon pas èsser utilizats qu’al començament del nom de domeni.',
 );
+
 $wgLinkSearchMessages['pl'] = array(
 	'linksearch'       => 'Szukanie linków zewnętrznych',
 	'linksearch-pat'   => 'Wzorzec wyszukiwania:',
@@ -326,6 +352,7 @@ $wgLinkSearchMessages['pl'] = array(
 	'linksearch-line'  => '$1 linkuje z $2',
 	'linksearch-error' => 'Maski można użyć tylko na początku nazwy hosta.',
 );
+
 $wgLinkSearchMessages['pms'] = array(
 	'linksearch'       => 'Sërchè antra j\'anliure dla Ragnà',
 	'linksearch-pat'   => 'Schema d\'arsërca:',
@@ -335,6 +362,7 @@ $wgLinkSearchMessages['pms'] = array(
 	'linksearch-line'  => '$1 a l\'ha n\'anliura ch\'a-i riva dzora da $2',
 	'linksearch-error' => 'Ij ciapatut as peulo butesse mach an prinsipi dël nòm dël servent.',
 );
+
 $wgLinkSearchMessages['pt'] = array(
 	'linksearch'       => 'Procurar por links da web',
 	'linksearch-pat'   => 'Padrão de procura:',

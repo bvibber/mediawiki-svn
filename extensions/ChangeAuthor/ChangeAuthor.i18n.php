@@ -206,12 +206,13 @@ $allMessages = array(
 
 /** Croatian (Hrvatski)
  * @author Dnik
+ * @author SpeedyGonsales
  */
 	'hr' => array(
 		'changeauthor'                      => 'Promijenite autora inačice',
 		'changeauthor-title'                => 'Promijeni autora inačice',
 		'changeauthor-search-box'           => 'Pretraži inačice',
-		'changeauthor-pagename-or-revid'    => 'Ime članka ili oznaka inačice:',
+		'changeauthor-pagename-or-revid'    => 'Ime članka ili oznaka (ID) inačice:',
 		'changeauthor-pagenameform-go'      => 'Kreni',
 		'changeauthor-comment'              => 'Napomena:',
 		'changeauthor-changeauthors-multi'  => 'Promijeni autora(e)',
