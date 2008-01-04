@@ -14,7 +14,7 @@
  * @author Cedric31
  */
 $messages = array(
-	'talkhere-foottext'    => "Los comentaris çai sús son estats daissats per de vesitaires. <br/>  Lo gestionari del site es pas responsable de lor contengut. This site's operators can not take responsibility for the content of such comments.",
+	'talkhere-foottext'    => "Los comentaris çai sús son estats daissats per de vesitaires. <br/>  Lo gestionari del site es pas responsable de lor contengut.",
 	'talkhere-talkpage'    => 'pagina de dscussion',
 	'talkhere-notalk'      => "''(cap de comentari actualament)''",
 	'talkhere-addcomment'  => 'ajustar un comentari',
