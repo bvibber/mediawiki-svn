@@ -13,8 +13,7 @@
 $messages['talkhere-title']= '$1';
 $messages['talkhere-headtext']= '';
 $messages['talkhere-foottext']= 'Les commentaires ci-dessus ont été laissés par des visiteurs. <br/>
-	Le gestionnaire du site n’est pas responsable de leur contenu.
-	This site\'s operators can not take responsibility for the content of such comments.';
+	Le gestionnaire du site n’est pas responsable de leur contenu.';
 $messages['talkhere-talkpage']= 'page de dscussion';
 $messages['talkhere-notalk']= '\'\'(aucun commentaire actuellement)\'\'';
 $messages['talkhere-addcomment']= 'ajouter un commentaire';
