@@ -67,7 +67,7 @@ if (defined('MEDIAWIKI')) {
 										   'openiderror' => 'Verification error',
 										   'openiderrortext' => 'An error occured during verification of the OpenID URL.',
 										   'openidconfigerror' => 'OpenID Configuration Error',
-										   'openidconfigerrortext' => 'The OpenID storage configuration for this wiki is invalid.  Please consult this site\'s administrator.',
+										   'openidconfigerrortext' => 'The OpenID storage configuration for this wiki is invalid.  Please consult {{SITENAME}}\'s administrator.',
 										   'openidpermission' => 'OpenID permissions error',
 										   'openidpermissiontext' => 'The OpenID you provided is not allowed to login to this server.',
 										   'openidcancel' => 'Verification cancelled',
