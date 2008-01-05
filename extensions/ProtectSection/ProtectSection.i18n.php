@@ -19,6 +19,15 @@ $messages['ar'] = array(
 	'protectsection_forbidden'  => 'محظور',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'protectsection_add_remove' => 'Rin yawal da va nendan gabot loplekul oke dimplekul',
+	'protectsection_modify'     => 'Rin yawal da va nendan krent betal',
+	'protectsection_forbidden'  => 'Poun',
+);
+
 /** Bulgarian (Български)
  * @author Spiritia
  */

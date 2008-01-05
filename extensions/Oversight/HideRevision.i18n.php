@@ -432,8 +432,8 @@ adatbázis-adminisztrátor, ha hibát vétesz.",
 	'oversight-difference'        => '(Különbség az előző verziótól)',
 	'oversight-prev'              => 'Legfrissebb előző átdolgozás',
 	'oversight-hidden'            => 'Rejtett változat',
-	'oversight-header'            => 'Alább találhatóak meg a nyílvánosság elől legutóbb elrejtett változatok.
-Ezen információk kiadása az oversight jog végleges elvesztését is jelentheti.',
+	'oversight-header'            => 'Alább találhatóak meg a nyilvánosság elől legutóbb elrejtett változatok.
+Ezen információk kiadása az adatvédelmi biztosi jogosultség végleges elvesztését is jelentheti.',
 );
 
 /* Indonesian (borgx) */

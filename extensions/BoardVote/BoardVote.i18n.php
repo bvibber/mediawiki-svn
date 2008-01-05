@@ -1037,8 +1037,7 @@ $wgBoardVoteMessages['hu'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Szavazz!]]
 * [[Special:Boardvote/list|Szavazatok listája]]
 * [[Special:Boardvote/dump|Választási jegyzőkönyv titkosított dump-ja]]',
-	'boardvote_intro'        => '
-<p>Üdvözlünk a Wikimedia alapítvány második kuratórium választásán!
+	'boardvote_intro'        => '<p>Üdvözlünk a Wikimedia Alapítvány második kuratórium választásán!
 Ezúttal egy embert választunk, hogy képviselje a különböző Wikimedia
 projektek közösségeit. A kuratórium tagjai meghatározó szerepet kapnak
 annak eldöntésében, hogy a Wikimedia projektek milyen irányban fejlődjenek
@@ -1092,7 +1091,7 @@ A titkosított adatokhoz $1.</p>',
 	'boardvote_needadmin'    => 'Csak a választás vezetői tudják végrehajtani ezt a műveletet.',
 	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Wikimedia Kuratórium választás</a>:  július 12-ig lehet szavazni',
 	'boardvote_notstarted'   => 'A szavazás még nem indult el.',
-	'boardvote_closed'       => 'A szavazás már lezárult, az eredmények hamarosan [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En the elections page for itt].',
+	'boardvote_closed'       => 'A szavazás már lezárult, az eredmények hamarosan [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En itt].',
 	'boardvote_edits_many'   => 'Sok',
 	'group-boardvote'        => 'Választási adminisztrátorok',
 	'group-boardvote-member' => 'Választási adminisztrátor',

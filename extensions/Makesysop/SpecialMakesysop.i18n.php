@@ -187,18 +187,26 @@ Lakait anv an implijer(ez) er voest ha pouezit war ar bouton evit reiñ ar gwiri
 	'makesysop'            => 'Dodijeli administratorska prava korisniku',
 ),
 
+/** Catalan (Català)
+ * @author SMP
+ * @author Toniher
+ */
 'ca' => array(
-	'makesysoptitle' => 'Converteix en administrador',
-	'makesysoptext' => 'Aquest formulari serveix per a que els buròcrates puguin convertir un usuari en administrador.
-Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
-	'makesysopname' => 'Nom de l\'usuari:',
-	'makesysopsubmit' => 'Converteix aquest usuari en administrador',
-	'makesysopok' => '<b>L\'usuari "$1" és un administrador a partir d\'ara</b>',
-	'rights' => 'Permisos:',
-	'set_user_rights' => 'Defineix els permisos d\'usuaris',
-	'user_rights_set' => '<strong>S\'han actualitzat els permisos de l\'usuari «$1»</strong>',
-	'already_sysop' => 'Aquest usuari ja és un administrador',
-	'already_bureaucrat' => 'Aquest usuari ja és buròcrata',
+	'makesysoptitle'           => 'Converteix en administrador',
+	'makesysoptext'            => "Aquest formulari serveix per a que els buròcrates puguin convertir un usuari en administrador.
+Escrigueu el nom de l'usuari i premeu el botó per acceptar-ho.",
+	'makesysopname'            => "Nom de l'usuari:",
+	'makesysopsubmit'          => 'Converteix aquest usuari en administrador',
+	'makesysopok'              => '<b>L\'usuari "$1" és un administrador a partir d\'ara</b>',
+	'makebureaucratok'         => "<b>L'usuari «$1» ha rebut el nivell de buròcrata</b>",
+	'makesysopfail'            => "<b>No s'ha pogut convertit en sysop l'usuari «$1». (És correcte el nom introduït?)</b>",
+	'makesysop-see-userrights' => 'Vegeu [[Special:Userrights]] per a més opcions.',
+	'setbureaucratflag'        => 'Dóna nivell de buròcrata',
+	'rights'                   => 'Permisos:',
+	'set_user_rights'          => "Defineix els permisos d'usuaris",
+	'user_rights_set'          => "<strong>S'han actualitzat els permisos de l'usuari «$1»</strong>",
+	'already_sysop'            => 'Aquest usuari ja és un administrador',
+	'already_bureaucrat'       => 'Aquest usuari ja és buròcrata',
 ),
 
 'cdo' => array(
