@@ -288,6 +288,37 @@ $messages = array(
 		'ogg-desc-link' => 'À propos de ce fichier',
 	),
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+	'frp' => array(
+		'ogg-short-audio'         => 'Fichiér son Ogg $1, $2',
+		'ogg-short-video'         => 'Fichiér vidèô Ogg $1, $2',
+		'ogg-short-general'       => 'Fichiér multimèdia Ogg $1, $2',
+		'ogg-long-audio'          => '(Fichiér son Ogg $1, durâ $2, $3)',
+		'ogg-long-video'          => '(Fichiér vidèô Ogg $1, durâ $2, $4×$5 pixèles, $3)',
+		'ogg-long-multiplexed'    => '(Fichiér multiplèxo ôdiô/vidèô Ogg, $1, durâ $2, $4×$5 pixèles, $3)',
+		'ogg-long-general'        => '(Fichiér multimèdia Ogg, durâ $2, $3)',
+		'ogg-long-error'          => '(Fichiér Ogg envalido : $1)',
+		'ogg-play'                => 'Liére',
+		'ogg-pause'               => 'Pousa',
+		'ogg-stop'                => 'Arrét',
+		'ogg-play-video'          => 'Liére lo vidèô',
+		'ogg-play-sound'          => 'Liére lo son',
+		'ogg-no-player'           => 'Dèsolâ, voutron sistèmo at aparament pas yon des liésors sotegnus. Volyéd enstalar <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">yon des liésors sotegnus</a>.',
+		'ogg-no-xiphqt'           => 'Aparament vos avéd pas lo composent XiphQT por QuickTime. QuickTime pôt pas liére los fichiérs Ogg sen cél composent. Volyéd <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">tèlèchargiér XiphQT</a> ou ben chouèsir/cièrdre un ôtro liésor.',
+		'ogg-player-videoElement' => 'Èlèment <video>',
+		'ogg-player-oggPlugin'    => 'Plugin Ogg',
+		'ogg-player-thumbnail'    => 'Émâge statica solament',
+		'ogg-player-soundthumb'   => 'Nion liésor',
+		'ogg-player-selected'     => '(sèlèccionâ)',
+		'ogg-use-player'          => 'Utilisar lo liésor :',
+		'ogg-more'                => 'De ples...',
+		'ogg-dismiss'             => 'Cllôre',
+		'ogg-download'            => 'Tèlèchargiér lo fichiér',
+		'ogg-desc-link'           => 'A propôs de ceti fichiér',
+	),
+
 	'gl' => array(
 		'ogg-short-audio' => 'Ficheiro de son Ogg $1, $2',
 		'ogg-short-video' => 'Ficheiro de vídeo Ogg $1, $2',

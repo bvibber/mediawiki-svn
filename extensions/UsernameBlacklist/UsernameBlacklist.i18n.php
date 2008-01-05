@@ -199,9 +199,21 @@ function efUsernameBlacklistMessages( $single = false ) {
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|slědowaca linka|slědowacej lince|slědowace linki|slědowacych linkow}} {{PLURAL:$1|je|stej|su|je}}w lisćinje njewitanych wužiwarskich mjenow je {{PLURAL:$1|njepłaćiwa|njepłaćiwje|njepłaćiwe|njepłaćiwe}}; prošu skoriguj {{PLURAL:$1|ju|jej|je|je}} před składowanjom:',
 ),
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
 'hu' => array(
-	'blacklistedusername' => 'Feketelistás felhasználónév',
-	'blacklistedusernametext' => 'Az általad választott felhasználónév megegyezik a egyik [[MediaWiki:Usernameblacklist|feketelistán lévővel]]. Válassz másikat.',
+	'blacklistedusername'             => 'Feketelistás felhasználónév',
+	'blacklistedusernametext'         => 'Az általad választott felhasználónév megegyezik a egyik [[MediaWiki:Usernameblacklist|feketelistán lévővel]]. Válassz másikat.',
+	'usernameblacklist'               => '<pre>
+# Az ebben a listában található bejegyzések egy reguláris kifejezés részei lesznek
+# adott felhasználónevek tiltására regisztrációkor. Mindegyik elemnek felsorolásban kell
+# lennie, pl.
+#
+# * Polgár Jenő
+# * Kovács [Jj]ános
+</pre>',
+	'usernameblacklist-invalid-lines' => 'Az alábbi {{PLURAL:$1|sor hibás|sorok hibásak}} a felhasználói nevek feketelistájában; {{PLURAL:$1|javítsd|javítsd őket}} mentés előtt:',
 ),
 
 'hy' => array(
