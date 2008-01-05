@@ -19,6 +19,9 @@ if( defined( 'MEDIAWIKI' ) ) {
 		'description' => 'Restrict the creation of user accounts matching one or more regular expressions',
 		);
 
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.php';
+
 	$wgAvailableRights[] = 'uboverride';
 	$wgGroupPermissions['sysop']['uboverride'] = true;
 
@@ -31,13 +34,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgHooks['AbortNewAccount'][] = 'efUsernameBlacklist';
 		$wgHooks['ArticleSaveComplete'][] = 'efUsernameBlacklistInvalidate';
 		$wgHooks['EditFilter'][] = 'efUsernameBlacklistValidate';
-
-		if( version_compare( $wgVersion, '1.9alpha', '>=' ) ) {
-			foreach( efUsernameBlacklistMessages() as $lang => $messages )
-				$wgMessageCache->addMessages( $messages, $lang );
-		} else {
-			$wgMessageCache->addMessages( efUsernameBlacklistMessages( true ) );
-		}
+		wfLoadExtensionMessages('UsernameBlacklist');
 	}
 
 	/**
