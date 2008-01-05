@@ -478,6 +478,7 @@ $3 $9 $10',
 A hiba átmeneti; próbáld újra néhány másodperc múlva vagy kereshetsz a wikin egy külső keresőszolgáltatáson keresztül is:',
 	'searchexactcase'       => 'Kis- és nagybetűk megkülönböztetése',
 	'searchall'             => 'mind',
+	'searchincategory'      => 'kategóriában',
 );
 
 $wgLuceneSearchMessages['id'] = array(
@@ -673,23 +674,31 @@ $wgLuceneSearchMessages['loz'] = array(
 	'searchall' => 'xete',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Garas
+ */
 $wgLuceneSearchMessages['lt'] = array(
-	'searchnumber'          => "<strong>Rezultatai $1-$2 iš $3</strong>",
+	'searchnumber'          => '<strong>Rezultatai $1-$2 iš $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Atgal</span>",
 	'searchnext'            => "<span style='font-size: small'>Pirmyn</span> &#x00BB;",
-	'lucene-searchscore'    => "Panašumas: $1%",
-	'lucene-resultsize'     => "$1 ($2 žodžiai)",
-	'searchdidyoumean'      => "Galbūt norėjote: \"<a href=\"$1\">$2</a>\"?",
-	'searchnoresults'       => "Atsiprašome, jūsų užklausai nėra jokių tikslių atitikmenų.",
-	'searchnearmatches'     => "<b>Šie puslapiai turi panašius pavadinimus į jūsų užklausą:</b>\n",
-	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "
-Ieškoti vardų srityse:\n
-$1\n
-Ieškoma $3 $9 $10",
-	'lucenefallback'        => "Buvo problemų su projekto paieška.
+	'lucene-searchscore'    => 'Panašumas: $1%',
+	'lucene-resultsize'     => '$1 ($2 žodžiai)',
+	'searchdidyoumean'      => 'Galbūt norėjote: "<a href="$1">$2</a>"?',
+	'searchnoresults'       => 'Atsiprašome, jūsų užklausai nėra jokių tikslių atitikmenų.',
+	'searchnearmatches'     => '<b>Šie puslapiai turi panašius pavadinimus į jūsų užklausą:</b>
+',
+	'lucenepowersearchtext' => '
+Ieškoti vardų srityse:
+
+$1
+
+Ieškoma $3 $9 $10',
+	'lucenefallback'        => 'Buvo problemų su projekto paieška.
 Tai turbūt laikina; pamėginkite šiek tiek vėliau,
-arba galite mėginti ieškoti projekte per išorines paieškos paslaugas:\n"
+arba galite mėginti ieškoti projekte per išorines paieškos paslaugas:
+',
+	'searchexactcase'       => 'Tikslaus raidžių dydžio paieška',
+	'searchall'             => 'visi',
 );
 
 /** Latvian (Latviešu)
