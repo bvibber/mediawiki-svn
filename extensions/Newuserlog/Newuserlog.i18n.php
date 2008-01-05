@@ -137,27 +137,6 @@ $wgNewuserlogMessages['fr'] = array(
 	'newuserlog-create2-entry' => 'compte créé pour $1',
 );
 
-/** Franco-Provençal (Arpetan)
- * @author ChrisPtDe
- */
-$wgNewuserlogMessages['frp'] = array(
-	'newuserlogpage'           => 'Historico de les crèacions de comptos',
-	'newuserlogpagetext'       => 'Cen est un jornal de les crèacions de comptos utilisators.',
-	'newuserlog-create-entry'  => 'Novél utilisator',
-	'newuserlog-create2-entry' => 'compto crèâ por $1',
-);
-
-/** Luxembourgish (Lëtzebuergesch)
- * @author SPQRobin
- * @author Robby
- */
-$wgNewuserlogMessages['lb'] = array(
-	'newuserlogpage'           => 'Logbuch vun den neien Umeldungen',
-	'newuserlogpagetext'       => "Dëst ass d'Lescht vun de Benotzernimm déi ugeluecht goufen",
-	'newuserlog-create-entry'  => 'Neie Benotzer',
-	'newuserlog-create2-entry' => "Benotzerkonto fir den/d' $1 gemaach",
-);
-
 /** Irish (Gaeilge)
  * @author SPQRobin
  */

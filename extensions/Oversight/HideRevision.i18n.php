@@ -395,31 +395,10 @@ Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wuš
 
 /** Hungarian (Magyar)
  * @author Bdanee
- * @author KossuthRad
  */
 $messages['hu'] = array(
-	'hiderevision'                => 'Állandó rejtett átdolgozások',
-	'hiderevision-prompt'         => 'Eltávolítandó változat:',
-	'hiderevision-continue'       => 'Folytatódik',
-	'hiderevision-reason'         => 'Ok (titkosan lesz naplózva):',
-	'hiderevision-submit'         => 'Adat eltávolítása véglegesen',
-	'hiderevision-tab'            => 'Rejtett átdolgozás',
-	'hiderevision-norevisions'    => 'Nincsenek megadva az eltávolítandó változatok.',
-	'hiderevision-noreason'       => 'Indokolnod kell a törléshez/ eltávolításhoz.',
-	'hiderevision-status'         => 'Átdolgozott kiadás $1: $2',
-	'hiderevision-success'        => 'Sikeresen archiválva és törölve.',
-	'hiderevision-error-missing'  => 'Nem található az adatbázisban.',
-	'hiderevision-error-current'  => 'A lap utolsó szerkesztése nem törölhető. Vond vissza először.',
-	'hiderevision-error-delete'   => 'Nem archiválható; korábban törölve volt?',
-	'hiderevision-archive-status' => '$1 $2 változatának eltávolítása',
-	'oversight-nodiff'            => 'Nem lehet nyomon követni a változásokat, mivel jelenleg nincs korábbi változata a lapnak.
-*Az oldalt törölték, vagy
-*ez a rejtett változat volt az első változat',
-	'oversight-log-hiderev'       => '$1 egyik változatának eltávolítása',
-	'oversight-view'              => 'részletek',
-	'oversight-hidden'            => 'Rejtett változat',
-	'oversight-header'            => 'Alább találhatóak meg a nyílvánosság elől legutóbb elrejtett változatok.
-Ezen információk kiadása az oversight jog végleges elvesztését is jelentheti.',
+	'hiderevision-error-missing' => 'Nem található az adatbázisban.',
+	'oversight-view'             => 'részletek',
 );
 
 /* Indonesian (borgx) */

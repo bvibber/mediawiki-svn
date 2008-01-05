@@ -77,17 +77,6 @@ $messages['la'] = array(
 	'randomincategory-submit'     => 'Ire',
 );
 
-/** Luxembourgish (Lëtzebuergesch)
- * @author Robby
- */
-$messages['lb'] = array(
-	'randomincategory'            => 'Zoufälleg Säit an däer Kategorie',
-	'randomincategory-toolbox'    => 'Zoufälleg Säit',
-	'randomincategory-nocategory' => "D'Kategorie $1 gëtt et net oder si ass eidel",
-	'randomincategory-label'      => 'Kategorie:',
-	'randomincategory-submit'     => 'Lass',
-);
-
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

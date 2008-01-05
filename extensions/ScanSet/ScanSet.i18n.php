@@ -100,15 +100,6 @@ $messages['hsb'] = array(
 	'scanset_prev' => '&lt; Předchadny',
 );
 
-/** Hungarian (Magyar)
- * @author Bdanee
- * @author KossuthRad
- */
-$messages['hu'] = array(
-	'scanset_next' => 'Következő &gt;',
-	'scanset_prev' => '← Előző',
-);
-
 /** Galician (Galego)
  * @author Alma
  */
