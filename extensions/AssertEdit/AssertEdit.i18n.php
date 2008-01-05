@@ -63,6 +63,14 @@ $messages['hsb'] = array(
 	'assert_edit_message' => 'Podate twjerdźenje ($1) je so njeporadźiło.',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'assert_edit_title'   => 'Az előfeltételezés hamis',
+	'assert_edit_message' => 'Az előfeltételezés ($1) hamis értéket adott vissza.',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  */

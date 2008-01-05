@@ -105,8 +105,17 @@ $messages['hsb'] = array(
  * @author KossuthRad
  */
 $messages['hu'] = array(
-	'scanset_next' => 'Következő &gt;',
-	'scanset_prev' => '← Előző',
+	'scanset_no_name'                   => 'ScanSet: meg kell adnod a sorozat nevét, pl. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: érvénytelen vagy hiányzó sorozat.',
+	'scanset_unrecognised_index_format' => 'ScanSet: ismeretlen indexformátum',
+	'scanset_opendir_error'             => 'ScanSet: hiba, a(z) $1 könyvtár nem nyitható meg',
+	'scanset_no_files'                  => 'ScanSet: nincsenek fájlok a megadott könyvtárban.',
+	'scanset_no_volumes'                => 'ScanSet: nem található egyetlen kötetkönyvtár sem',
+	'scanset_missing_index_file'        => 'ScanSet: a(z) $1 indexfájl nem található',
+	'scanset_index_file_error'          => 'ScanSet: hiba az indexfájl $1. sorában',
+	'scanset_invalid_volume'            => 'ScanSet: érvénytelen kötet',
+	'scanset_next'                      => 'Következő &gt;',
+	'scanset_prev'                      => '← Előző',
 );
 
 /** Galician (Galego)

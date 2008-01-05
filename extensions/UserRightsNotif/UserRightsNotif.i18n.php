@@ -33,6 +33,23 @@ $messages['bg'] = array(
 	'userrightsnotifysubject' => 'Промяна на груповата принадлежност в $1',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'userrightsnotifysubject' => "Canvi del grup d'usuari a $1",
+	'userrightsnotifybody'    => "Hola $1.
+
+Us voldríem informar que els vostre grup d'usuari de $2 ha estat canviat per $3 a $4.
+
+Heu estat afegit a: $5
+Ja no formeu part de: $6
+
+Atentament,
+
+$2",
+);
+
 $messages['de'] = array(
 	'userrightsnotifysubject' => 'Änderung der Gruppenzugehörigkeit vom $1',
 	'userrightsnotifybody'    => "Hallo $1

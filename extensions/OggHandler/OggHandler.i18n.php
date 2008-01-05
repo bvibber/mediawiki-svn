@@ -89,9 +89,10 @@ $messages = array(
  * @author DCLXVI
  */
 	'bg' => array(
-		'ogg-more'     => 'Повече...',
-		'ogg-dismiss'  => 'Затваряне',
-		'ogg-download' => 'Изтеглене на файла',
+		'ogg-more'      => 'Повече...',
+		'ogg-dismiss'   => 'Затваряне',
+		'ogg-download'  => 'Изтеглене на файла',
+		'ogg-desc-link' => 'Информация за файла',
 	),
 
 /** Breton (Brezhoneg)

@@ -90,6 +90,8 @@ $messages['ar'] = array(
  */
 $messages['bg'] = array(
 	'hiderevision-continue' => 'Продължаване',
+	'hiderevision-tab'      => 'Скриване на редакцията',
+	'hiderevision-status'   => 'Редакция $1: $2',
 	'oversight-view'        => 'детайли',
 	'oversight-hidden'      => 'Скрита редакция',
 );
@@ -401,6 +403,15 @@ $messages['hu'] = array(
 	'hiderevision'                => 'Állandó rejtett átdolgozások',
 	'hiderevision-prompt'         => 'Eltávolítandó változat:',
 	'hiderevision-continue'       => 'Folytatódik',
+	'hiderevision-text'           => "Ez az eszköz '''csak''' az alábbi esetekben használható:
+* nem ide illő személyi információk
+*: ''otthoni címek, telefonszámok és társadalombiztosítási számok stb.''
+
+'''A helytelen használat a jogosultság elvesztését jelentheti.'''
+
+Az eltávolított elemek nem lesznek láthatóak a weboldalon keresztül,
+de a törlések naplózva lesznek, és helyreállíthatja őket egy
+adatbázis-adminisztrátor, ha hibát vétesz.",
 	'hiderevision-reason'         => 'Ok (titkosan lesz naplózva):',
 	'hiderevision-submit'         => 'Adat eltávolítása véglegesen',
 	'hiderevision-tab'            => 'Rejtett átdolgozás',
@@ -416,7 +427,10 @@ $messages['hu'] = array(
 *Az oldalt törölték, vagy
 *ez a rejtett változat volt az első változat',
 	'oversight-log-hiderev'       => '$1 egyik változatának eltávolítása',
+	'oversight'                   => 'Felügyelet',
 	'oversight-view'              => 'részletek',
+	'oversight-difference'        => '(Különbség az előző verziótól)',
+	'oversight-prev'              => 'Legfrissebb előző átdolgozás',
 	'oversight-hidden'            => 'Rejtett változat',
 	'oversight-header'            => 'Alább találhatóak meg a nyílvánosság elől legutóbb elrejtett változatok.
 Ezen információk kiadása az oversight jog végleges elvesztését is jelentheti.',

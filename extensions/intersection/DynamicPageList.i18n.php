@@ -22,6 +22,15 @@ $messages['ar'] = array(
 	'intersection_noincludecats' => 'قائمة صفحة ديناميكية: ينبغي أن تضمن تصنيفا واحدا على الأقل، أو تحدد نطاقا!',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'intersection_toomanycats' => 'DynamicPageList: Liian monta luokkaa.',
+	'intersection_toofewcats'  => 'DynamicPageList: Liian vähän luokkia.',
+	'intersection_noresults'   => 'DynamicPageList: Ei tuloksia.',
+);
+
 # French translation by Bertrand GRONDIN
 $messages['fr'] = array (
 	'intersection_toomanycats' => 'DynamicPageList : Trop de catégories !',
@@ -82,6 +91,23 @@ $messages['it'] = array(
 	'intersection_toofewcats'    => 'DynamicPageList: Numero di categorie insufficiente.',
 	'intersection_noresults'     => 'DynamicPageList: Nessun risultato.',
 	'intersection_noincludecats' => 'DynamicPageList: È necessario includere almeno una categoria oppure specificare un namespace.',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'intersection_noresults' => 'Dynamesch Säite-Lëscht: Kee Resultat!',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: Per daug kategorijų!',
+	'intersection_toofewcats'    => 'DynamicPageList: Per mažai kategorijų!',
+	'intersection_noresults'     => 'DynamicPageList: Nėra rezultatų!',
+	'intersection_noincludecats' => 'DynamicPageList: Jums reikia įtraukti bent vieną kategoriją, arba nurodyti vardų sritį!',
 );
 
 $messages['nl'] = array(

@@ -226,7 +226,8 @@ $messages['scn'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'block_title_error'            => 'Prepáčte, články s týmto názvom nie je povolené ukladať.',
+	'block_title_error_page_title' => 'Zablokovaný názov',
+	'block_title_error'            => 'Prepáčte, stránky s týmto názvom nie je povolené ukladať.',
 );
 
 /** Seeltersk (Seeltersk)

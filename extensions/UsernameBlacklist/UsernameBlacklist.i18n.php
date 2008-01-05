@@ -56,7 +56,8 @@ $messages['bcl'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'blacklistedusernametext' => 'Избраното потребителско име съвпада със запис от [[MediaWiki:Usernameblacklist|списъка с непозволени имена]]. Изберете друго.',
+	'blacklistedusernametext'         => 'Избраното потребителско име съвпада със запис от [[MediaWiki:Usernameblacklist|списъка с непозволени имена]]. Изберете друго.',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Следният ред|Следните редове}} в черния списък за потребителски имена {{PLURAL:$1|е невалиден|са невалидни}}; Необходимо е да {{PLURAL:$1|бъде поправен|бъдат поправени}} преди да {{PLURAL:$1|бъде съхранен|бъдат съхранени}}:',
 );
 
 $messages['bn'] = array(

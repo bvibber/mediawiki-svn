@@ -72,15 +72,16 @@ riddler|Riddler",
  * @author DCLXVI
  */
 'bg' => array(
-	'vote'              => 'Гласуване',
-	'vote-caption'      => 'Текущ избор:',
-	'vote-submit'       => 'Гласуване',
-	'vote-registered'   => 'Вашият глас беше отчетен.',
-	'vote-view-results' => 'Преглед на резултатите',
-	'vote-results'      => 'Резултати от гласуването',
-	'vote-results-none' => 'Все още никой не е гласувал.',
-	'vote-login'        => 'За гласуване е необходимо $1 в системата.',
-	'vote-login-link'   => 'влизане',
+	'vote'                => 'Гласуване',
+	'vote-caption'        => 'Текущ избор:',
+	'vote-submit'         => 'Гласуване',
+	'vote-registered'     => 'Вашият глас беше отчетен.',
+	'vote-view-results'   => 'Преглед на резултатите',
+	'vote-results'        => 'Резултати от гласуването',
+	'vote-results-none'   => 'Все още никой не е гласувал.',
+	'vote-login'          => 'За гласуване е необходимо $1 в системата.',
+	'vote-login-link'     => 'влизане',
+	'vote-invalid-choice' => 'Необходимо е да бъде избрана една от наличните възможности.',
 ),
 
 'br' => array(

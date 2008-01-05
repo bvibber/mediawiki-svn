@@ -211,10 +211,12 @@ Zapisaj datajowe mjeno bjez prefiksa "{{ns:image}}:".',
  * @author Bdanee
  */
 $wgFilepathMessages['hu'] = array(
-	'filepath'        => 'Fájlelérés',
-	'filepath_page'   => 'Fájl:',
-	'filepath_submit' => 'Elérés',
+	'filepath'         => 'Fájlelérés',
+	'filepath_page'    => 'Fájl:',
+	'filepath_submit'  => 'Elérés',
+	'filepath-summary' => 'Ezen lap segítségével lekérheted egy adott fájl pontos útvonalát. A képek teljes méretben jelennek meg, más fájltípusok közvetlenül a hozzájuk rendelt programmal indulnak el.
 
+Add meg a fájlnevet a „{{ns:image}}:” prefixum nélkül.',
 );
 
 $wgFilepathMessages['id'] = array(

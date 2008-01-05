@@ -69,8 +69,15 @@ $wgSiteMatrixMessages['br'] = array(
 	'sitematrix-language' => 'Yezh',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ * @author לערי ריינהארט
+ */
 $wgSiteMatrixMessages['ca'] = array(
-	'sitematrix' => 'Llista de tots els projectes en els diferents idiomes.',
+	'sitematrix'          => 'Llista de tots els projectes en els diferents idiomes.',
+	'sitematrix-language' => 'Idioma',
+	'sitematrix-project'  => 'Nom del projecte, enllaç interwiki entre projectes',
+	'sitematrix-others'   => 'Altres projectes de Wikimedia',
 );
 
 $wgSiteMatrixMessages['cdo'] = array(

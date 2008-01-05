@@ -16,6 +16,13 @@ $messages['ar'] = array(
 	'purge' => 'إفراغ الكاش',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'purge' => 'purga',
+);
+
 $messages['de'] = array(
 	'purge' => 'Cache leeren',
 );

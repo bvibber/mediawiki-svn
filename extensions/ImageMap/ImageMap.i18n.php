@@ -326,6 +326,16 @@ function efImageMapMessages() {
 	'imagemap_description'          => 'Över dit Bild',
 ),
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ * @author Garas
+ */
+'lt' => array(
+	'imagemap_no_image'      => '&lt;imagemap&gt;: privalote nurodyti paveikslėlį pirmoje linijoje',
+	'imagemap_invalid_image' => '&lt;imagemap&gt;: blogas arba neegzistuojantis paveikslėlis',
+	'imagemap_description'   => 'Apie šį paveikslėlį',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: geef een afbeelding op in de eerste regel',

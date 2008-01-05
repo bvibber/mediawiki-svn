@@ -78,9 +78,13 @@ $SpecialFormMessages =array(
  * @author DCLXVI
  */
 	'bg' => array(
-		'formsave'              => 'Съхранение',
-		'formarticleexists'     => 'Страницата съществува',
-		'formarticleexiststext' => 'Страницата [[$1]] вече съществува.',
+		'form'                         => 'Формуляр',
+		'formsave'                     => 'Съхранение',
+		'formarticleexists'            => 'Страницата съществува',
+		'formarticleexiststext'        => 'Страницата [[$1]] вече съществува.',
+		'formrequiredfieldpluralerror' => 'Този формуляр изисква полетата $1 да бъдат попълнени.',
+		'formrequiredfielderror'       => 'Този формуляр изисква полето $1 да бъде попълнено.',
+		'formsaveerror'                => 'Грешка при съхранение на формуляра',
 	),
 
 	'de' => array(

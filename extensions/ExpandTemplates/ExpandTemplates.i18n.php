@@ -347,14 +347,25 @@ $wgExpandTemplatesMessages['la'] = array(
  * @author Robby
  */
 $wgExpandTemplatesMessages['lb'] = array(
-	'expandtemplates'          => 'Schablounen expandéieren',
-	'expand_templates_output'  => 'Resultat',
-	'expand_templates_ok'      => 'OK',
-	'expand_templates_preview' => 'Preview',
+	'expandtemplates'                  => 'Schablounen expandéieren',
+	'expand_templates_title'           => 'Titel vun der Säit, dëst kann nëtzlech si wa(nn) {{PAGENAME}} benotzt gëtt:',
+	'expand_templates_input'           => 'Gitt ären Text hei an:',
+	'expand_templates_output'          => 'Resultat',
+	'expand_templates_ok'              => 'OK',
+	'expand_templates_remove_comments' => 'Bemierkunge läschen',
+	'expand_templates_preview'         => 'Preview',
 );
 
 $wgExpandTemplatesMessages['lo'] = array(
 	'expandtemplates'                  => 'ຂະຫຍາຍແມ່ແບບ',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$wgExpandTemplatesMessages['lt'] = array(
+	'expand_templates_ok'              => 'Gerai',
+	'expand_templates_remove_comments' => 'Pašalinti komentarus',
 );
 
 $wgExpandTemplatesMessages['nan'] = array(

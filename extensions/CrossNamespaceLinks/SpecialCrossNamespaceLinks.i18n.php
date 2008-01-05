@@ -123,9 +123,13 @@ $wgCrossNamespaceLinksMessages['hsb'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|wotkaz|wotkazaj|wotkazy|wotkazow}} do mjenoweho ruma „$3”',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
 $wgCrossNamespaceLinksMessages['hu'] = array(
 	'crossnamespacelinks'         => 'Névtérközi linkek',
-	'crossnamespacelinkstext'     => '$1: $2 link a $3 névtérbe.'
+	'crossnamespacelinks-summary' => 'Ez az oldal hivatkozásokat tartalmaz egy fő névtérbeli oldalról más névterekbe (kivéve a {{ns:special}}, {{ns:talk}}, {{ns:project}} és {{ns:template}} névtereket), amelyeket nem tanácsolt használni.',
+	'crossnamespacelinkstext'     => '$1: $2 link a $3 névtérbe.',
 );
 
 $wgCrossNamespaceLinksMessages['hy'] = array(
@@ -193,6 +197,14 @@ $wgCrossNamespaceLinksMessages['ku'] = array(
 
 $wgCrossNamespaceLinksMessages['la'] = array(
 	'crossnamespacelinks'         => 'Nexus trans praefixa',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$wgCrossNamespaceLinksMessages['lb'] = array(
+	'crossnamespacelinks-summary' => "Dës Säit weist eng Lëscht vun de Linke vun enger Säit aus dem Haaptnummraum op Säiten an anere Nimmräim (ausser fir d'Nimmräim {{ns:special}}, {{ns:talk}}, {{ns:project}} and {{ns:template}}), déi net solle benotzt ginn.",
+	'crossnamespacelinkstext'     => '$1 : huet $2 {{PLURAL:$2|Link|Linken}} an den Nummraum « $3 »',
 );
 
 /** Lozi (Silozi)

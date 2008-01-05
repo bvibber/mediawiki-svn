@@ -50,7 +50,8 @@ $messages['fr'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'languageselector' => 'Sprooch',
+	'languageselector'         => 'Sprooch',
+	'languageselector-setlang' => 'Wielt',
 );
 
 /** Dutch (Nederlands)

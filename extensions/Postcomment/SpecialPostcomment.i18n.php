@@ -93,6 +93,16 @@ $messages['hsb'] = array(
 	'postcomment_nopostingtoadd' => 'Njeje powěsć, kotraž hodźi so přidać.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'postcomment_discussionprotected'      => 'Dës Diskussiounssäit gouf fir weider Ännerunge gespaart.',
+	'postcomment_notloggedin'              => 'Dir sidd net ugemeld.',
+	'postcomment_youareloggedinas'         => 'Dir sidd als $1 ugemelt',
+	'postcomment_addcommentdiscussionpage' => "Schreiwt är Bmierkung op d'Diskussiounssäit",
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

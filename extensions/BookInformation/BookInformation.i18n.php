@@ -213,6 +213,7 @@ function efBookInformationMessages() {
 
 /** Hungarian (Magyar)
  * @author KossuthRad
+ * @author Bdanee
  */
 'hu' => array(
 	'bookinfo-header'            => 'Könyv információ',
@@ -222,6 +223,7 @@ function efBookInformationMessages() {
 	'bookinfo-result-year'       => 'Év:',
 	'bookinfo-error-invalidisbn' => 'Érvénytelen ISBN.',
 	'bookinfo-error-nosuchitem'  => 'A cikk/hír nem létezik vagy nem található.',
+	'bookinfo-error-nodriver'    => 'Nem sikerült a megfelelő könyvinformációs meghajtó inicializálása.',
 	'bookinfo-error-noresponse'  => 'Nincs válasz vagy a kért idő letelt.',
 	'bookinfo-purchase'          => 'Ez a könyv megszerezve a $1-ből',
 	'bookinfo-provider'          => 'Adat ellátó: $1',

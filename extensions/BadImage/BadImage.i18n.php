@@ -372,26 +372,29 @@ $messages['is'] = array(
 	'badimages-page' => '{{ns:help}}:Slæmi myndalistinn',
 );
 
-/* Italian (BrokenArrow) */
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
 $messages['it'] = array(
-	'badimages' => 'Elenco dei file discutibili',
-	'badimages-add-btn' => 'Aggiungi',
-	'badimages-added' => 'Il file $1 è stato aggiunto all\'elenco.',
-	'badimages-count' => "L'elenco dei file discutibili contiene '''$1''' file.",
-	'badimages-name' => 'Nome:',
-	'badimages-not-added' => 'Impossibile aggiungere il file.',
-	'badimages-not-removed' => 'Impossibile rimuovere il file.',
-	'badimages-reason' => 'Motivo:',
-	'badimages-remove' => '(rimuovi)',
-	'badimages-remove-btn' => 'Rimuovi',
-	'badimages-remove-confirm' => 'Confermare la rimozione del file $1 dall\'elenco:',
-	'badimages-removed' => 'Il file $1 è stato rimosso dall\'elenco.',
-	'badimages-subheading' => 'Elementi attualmente presenti',
-	'badimages-unprivileged' => '(Non si dispone delle autorizzazioni sufficienti a modificare l\'elenco)',
-	'badimages-log-name' => 'File discutibili',
-	'badimages-log-header' => 'Qui di seguito viene riportata la lista delle modifiche all\'elenco dei file discutibili',
-	'badimages-log-add' => 'ha aggiunto [[$1]] all\'elenco dei file discutibili',
-	'badimages-log-remove' => 'ha rimosso [[$1]] dall\'elenco dei file discutibili',
+	'badimages'                => 'Elenco dei file discutibili',
+	'badimages-add-btn'        => 'Aggiungi',
+	'badimages-added'          => "Il file $1 è stato aggiunto all'elenco.",
+	'badimages-count'          => "L'elenco dei file discutibili contiene '''$1''' file.",
+	'badimages-name'           => 'Nome:',
+	'badimages-not-added'      => 'Impossibile aggiungere il file.',
+	'badimages-not-removed'    => 'Impossibile rimuovere il file.',
+	'badimages-reason'         => 'Motivo:',
+	'badimages-remove'         => '(rimuovi)',
+	'badimages-remove-btn'     => 'Rimuovi',
+	'badimages-remove-confirm' => "Confermare la rimozione del file $1 dall'elenco:",
+	'badimages-removed'        => "Il file $1 è stato rimosso dall'elenco.",
+	'badimages-subheading'     => 'Elementi attualmente presenti',
+	'badimages-unprivileged'   => "(Non si dispone delle autorizzazioni sufficienti a modificare l'elenco)",
+	'badimages-log-name'       => 'File discutibili',
+	'badimages-log-header'     => "Qui di seguito viene riportata la lista delle modifiche all'elenco dei file discutibili",
+	'badimages-log-add'        => "ha aggiunto [[$1]] all'elenco dei file discutibili",
+	'badimages-log-remove'     => "ha rimosso [[$1]] dall'elenco dei file discutibili",
+	'badimages-page'           => '{{ns:help}}:Elenco dei file discutibili',
 );
 
 /* Japanese (nihongo) */

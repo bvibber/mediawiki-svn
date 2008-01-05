@@ -291,10 +291,13 @@ $wgLinkSearchMessages['lo'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Garas
  * @author Pdxx
  */
 $wgLinkSearchMessages['lt'] = array(
-	'linksearch' => 'Ieškoti interneto nuorodose',
+	'linksearch'    => 'Ieškoti interneto nuorodose',
+	'linksearch-ns' => 'Vardų sritis:',
+	'linksearch-ok' => 'Ieškoti',
 );
 
 $wgLinkSearchMessages['nan'] = array(

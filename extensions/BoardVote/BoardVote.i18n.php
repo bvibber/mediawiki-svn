@@ -272,6 +272,7 @@ $wgBoardVoteMessages['bg'] = array(
 	'boardvote_days'         => 'Дни',
 	'boardvote_ip'           => 'IP',
 	'boardvote_dumplink'     => 'Тук',
+	'boardvote_submit'       => 'Гласуване',
 	'boardvote_notstarted'   => 'Гласуването все още не е започнало',
 	'boardvote_closed'       => 'Гласуването е приключено, вижте [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En страницата с резултатите].',
 	'boardvote_edits_many'   => 'много',
@@ -604,6 +605,7 @@ $wgBoardVoteMessages['fi'] = array(
 	'boardvote_edits_many'   => 'monta',
 	'boardvote_blocked'      => 'Valitettavasti muokkausestosi projektissa johon olet kirjautunut estää sinua äänestämästä.',
 	'boardvote_welcome'      => "Tervetuloa '''$1'''!",
+	'go_to_board_vote'       => 'Wikimedian johtokunnan valtuutettujen vaalit 2007',
 );
 
 $wgBoardVoteMessages['fo'] = array(
@@ -1088,6 +1090,7 @@ A titkosított adatokhoz $1.</p>',
 	'boardvote_dumplink'     => 'Klikkelj ide',
 	'boardvote_submit'       => 'OK',
 	'boardvote_needadmin'    => 'Csak a választás vezetői tudják végrehajtani ezt a műveletet.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Wikimedia Kuratórium választás</a>:  július 12-ig lehet szavazni',
 	'boardvote_notstarted'   => 'A szavazás még nem indult el.',
 	'boardvote_closed'       => 'A szavazás már lezárult, az eredmények hamarosan [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En the elections page for itt].',
 	'boardvote_edits_many'   => 'Sok',
@@ -1478,7 +1481,7 @@ $wgBoardVoteMessages['la'] = array(
  * @author Robby
  */
 $wgBoardVoteMessages['lb'] = array(
-	'boardvote_entered'    => "Merci, är Stëmm gouf gespäichert.
+	'boardvote_entered'      => "Merci, är Stëmm gouf gespäichert.
 
 Wann der wëllt, kënnt der déi folgend Detailer festhalen. Är Ofstëmmungsfiche ass:
 
@@ -1493,18 +1496,22 @@ D'verschlësselt Versioun dovunner fannt der ënnen. Si gëtt ëffentlech op [[S
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Zréck]]",
-	'boardvote_novotes'    => 'Et huet nach keen ofgestëmmt.',
-	'boardvote_time'       => 'Zäit',
-	'boardvote_user'       => 'Benotzer',
-	'boardvote_edits'      => 'Editen',
-	'boardvote_days'       => 'Deeg',
-	'boardvote_ip'         => 'IP',
-	'boardvote_dumplink'   => 'Hei klicken',
-	'boardvote_submit'     => 'Ofstëmmen',
-	'boardvote_strike'     => 'Stëmm läschen',
-	'boardvote_notstarted' => "D'Ofstëmmung huet nach net ugefaang",
-	'boardvote_edits_many' => 'vill',
-	'boardvote_welcome'    => "Wëllkomm '''$1'''!",
+	'boardvote_notqualified' => 'Dir sidd net berechtegt fir un dëser Wal deelzehuelen. Dir musst $3 Ännerunge virum $3 gemaacht hunn (Dir hutt der $1). !Ar éischt Ännerung muss virum $5 gemaach gi sinn (Är éischt Ännerung ass vum $4).',
+	'boardvote_novotes'      => 'Et huet nach keen ofgestëmmt.',
+	'boardvote_time'         => 'Zäit',
+	'boardvote_user'         => 'Benotzer',
+	'boardvote_edits'        => 'Editen',
+	'boardvote_days'         => 'Deeg',
+	'boardvote_ip'           => 'IP',
+	'boardvote_ua'           => 'Vertrieder vum Benotzer',
+	'boardvote_dumplink'     => 'Hei klicken',
+	'boardvote_submit'       => 'Ofstëmmen',
+	'boardvote_strike'       => 'Stëmm läschen',
+	'boardvote_notstarted'   => "D'Ofstëmmung huet nach net ugefaang",
+	'boardvote_edits_many'   => 'vill',
+	'boardvote_blocked'      => 'Pardon, dir gouft op ärer Wiki gespaart. Gespaarte Benotzer däerfen net wielen.',
+	'boardvote_welcome'      => "Wëllkomm '''$1'''!",
+	'go_to_board_vote'       => '"Wikimedia Board" Walen 2007',
 );
 
 $wgBoardVoteMessages['loz'] = array(
@@ -1516,9 +1523,22 @@ $wgBoardVoteMessages['loz'] = array(
  * @author Matasg
  */
 $wgBoardVoteMessages['lt'] = array(
-	'boardvote_novotes' => 'Niekas dar nebalsavo.',
-	'boardvote_time'    => 'Laikas',
-	'boardvote_user'    => 'Naudotojas',
+	'boardvote'            => 'Vikimedijos kontrolės tarybos rinkimai',
+	'boardvote_entry'      => '* [[Special:Boardvote/vote|Balsuoti]]
+* [[Special:Boardvote/list|Balsavimų sąrašas]]
+* [[Special:Boardvote/dump|Koduoti rinkimų rezultatai]]',
+	'boardvote_novotes'    => 'Niekas dar nebalsavo.',
+	'boardvote_time'       => 'Laikas',
+	'boardvote_user'       => 'Naudotojas',
+	'boardvote_edits'      => 'Redagavimai',
+	'boardvote_days'       => 'Dienos',
+	'boardvote_ip'         => 'IP',
+	'boardvote_dumplink'   => 'Spauskite čia',
+	'boardvote_submit'     => 'Gerai',
+	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Vikimedijos tarybos rinkimai</a>:  Balsavimas vyksta iki liepos 12-os',
+	'boardvote_notstarted' => 'Balsavimas dar neprasidėjo',
+	'boardvote_welcome'    => "Sveiki '''$1'''!",
+	'go_to_board_vote'     => 'Vikimedijos tarybos rinkimai 2007',
 );
 
 $wgBoardVoteMessages['nan'] = array(

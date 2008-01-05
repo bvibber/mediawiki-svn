@@ -20,6 +20,7 @@ $wgAjaxShowEditorsMessages['ar'] = array(
  * @author DCLXVI
  */
 $wgAjaxShowEditorsMessages['bg'] = array(
+	'ajax-se-title'  => 'Редактиращ потребител:',
 	'ajax-se-idling' => '(преди $1 секунди)',
 );
 
