@@ -23,7 +23,11 @@ if( defined( 'MEDIAWIKI' ) ) {
 		'url' => 'http://www.mediawiki.org/wiki/Extension:MakeBot',
 		'description' => 'Special page allows local bureaucrats to grant and revoke bot permissions',
 	 );
-	
+	/**
+	 * Load internationalization file
+	 */
+	$dir = dirname(__FILE__) . '/';
+	$wgExtensionMessagesFiles['Makebot'] = $dir . 'Makebot.i18n.php';	
 	/**
 	 * Determines who can use the extension; as a default, bureaucrats are permitted
 	 */
@@ -44,10 +48,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 * Populate the message cache and set up the auditing
 	 */
 	function efMakeBot() {
-		global $wgMessageCache, $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
-		require_once( dirname( __FILE__ ) . '/Makebot.i18n.php' );
-		foreach( efMakeBotMessages() as $lang => $messages )
-			$wgMessageCache->addMessages( $messages, $lang );
+		global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
+		wfLoadExtensionMessages('Makebot');
 		$wgLogTypes[] = 'makebot';
 		$wgLogNames['makebot'] = 'makebot-logpage';
 		$wgLogHeaders['makebot'] = 'makebot-logpagetext';
