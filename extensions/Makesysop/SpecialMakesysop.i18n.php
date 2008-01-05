@@ -453,6 +453,31 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'grouppage-steward'        => '{{ns:project}}:Steward',
 ),
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+'frp' => array(
+	'makesysoptitle'           => 'Balyér los drêts d’administrator a un utilisator',
+	'makesysoptext'            => 'Ceti formulèro est utilisâ per los burôcrates por balyér los drêts d’administrator a un utilisator ordinèro. Enscrîde lo nom de l’utilisator dens la bouèta et pués clicâd sur lo boton por balyér los drêts en quèstion.',
+	'makesysopname'            => 'Nom de l’utilisator :',
+	'makesysopsubmit'          => 'Balyér los drêts d’administrator a ceti utilisator',
+	'makesysopok'              => '<b>Dês ora, l’utilisator « $1 » est administrator.</b>',
+	'makebureaucratok'         => '<b>Dês ora, l’utilisator « $1 » est burôcrate.</b>',
+	'makesysopfail'            => '<b>L’utilisator « $1 » pôt pas étre nomâ administrator. (Éd-vos entrâ corrèctament lo nom ?)</b>',
+	'makesysop-see-userrights' => 'Vêde [[Special:Userrights]] por més de chouèx.',
+	'setbureaucratflag'        => 'Apondre lo statut de burôcrate',
+	'rights'                   => 'Drêts :',
+	'set_user_rights'          => 'Aplicar los drêts a l’utilisator',
+	'user_rights_set'          => '<b>Los drêts de l’utilisator « $1 » ont étâ betâs a jorn.</b>',
+	'set_rights_fail'          => '<b>Los drêts de l’utilisator « $1 » ont pas possu étre betâs a jorn. (Éd-vos entrâ corrèctament lo nom ?)</b>',
+	'makesysop'                => 'Balyér los drêts d’administrator a un utilisator',
+	'already_sysop'            => 'Ceti utilisator est ja administrator.',
+	'already_bureaucrat'       => 'Ceti utilisator est ja burôcrate.',
+	'group-steward'            => 'Stevârds',
+	'group-steward-member'     => 'Stevârd',
+	'grouppage-steward'        => '{{ns:project}}:Stevârds',
+),
+
 'ga' => array(
 	'makesysoptitle'	=> 'Déan oibreoir córais de húsáideoir',
 	'makesysoptext'		=> 'Úsáideann maorlathaigh an fhoirm seo chun riarthóirí a dhéanamh de ghnáthúsáideoirí. Iontráil ainm an úsáideora sa bosca seo agus brúigh an cnaipe chun riarthóir a dhéanamh den úsáideoir',
@@ -595,25 +620,29 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 
 /** Hungarian (Magyar)
  * @author Bdanee
+ * @author KossuthRad
  */
 'hu' => array(
-	'makesysoptitle'       => 'Felhasználó adminisztrátorrá tétele',
-	'makesysoptext'        => 'Ezt az űrlapot a bürokraták használják, hogy a felhasználókat adminisztrátorrá tegyék.
+	'makesysoptitle'           => 'Felhasználó adminisztrátorrá tétele',
+	'makesysoptext'            => 'Ezt az űrlapot a bürokraták használják, hogy a felhasználókat adminisztrátorrá tegyék.
 Írd be a felhasználó nevét a szövegmezőbe, és nyomd meg a gombot, hogy adminisztrátorrá tedd.',
-	'makesysopname'        => 'A felhasználó neve:',
-	'makesysopsubmit'      => 'A felhasználó adminisztrátorrá tétele',
-	'makesysopok'          => '<b>„$1” szerkesztő mostantól adminisztrátor</b>',
-	'makesysopfail'        => '<b>„$1” nem tehető adminisztrátorrá. (Talán elgépelted a nevet?)</b>',
-	'setbureaucratflag'    => 'Bürokrata jogosultság megadása',
-	'rights'               => 'Jogosultságok:',
-	'set_user_rights'      => 'Felhasználói jogosultságok megváltoztatása',
-	'set_rights_fail'      => '<b>„$1” jogosultságait nem sikerült megváltoztatni. (Talán elírtad a nevét?)</b>',
-	'makesysop'            => 'Felhasználó adminisztrátorrá tétele',
-	'already_sysop'        => 'Ez a felhasználó már adminisztrátor.',
-	'already_bureaucrat'   => 'Ez a felhasználó már bürokrata.',
-	'group-steward'        => 'Helytartók',
-	'group-steward-member' => 'Helytartó',
-
+	'makesysopname'            => 'A felhasználó neve:',
+	'makesysopsubmit'          => 'A felhasználó adminisztrátorrá tétele',
+	'makesysopok'              => '<b>„$1” szerkesztő mostantól adminisztrátor</b>',
+	'makebureaucratok'         => '<b>„$1” mostantól bürokrata</b>',
+	'makesysopfail'            => '<b>„$1” nem tehető adminisztrátorrá. (Talán elgépelted a nevet?)</b>',
+	'makesysop-see-userrights' => 'Lásd a [[Special:Userrights]] lapon a további lehetőségeket.',
+	'setbureaucratflag'        => 'Bürokrata jogosultság megadása',
+	'rights'                   => 'Jogosultságok:',
+	'set_user_rights'          => 'Felhasználói jogosultságok megváltoztatása',
+	'user_rights_set'          => '<b>„$1” felhasználói jogai mentve lettek</b>',
+	'set_rights_fail'          => '<b>„$1” jogosultságait nem sikerült megváltoztatni. (Talán elírtad a nevét?)</b>',
+	'makesysop'                => 'Felhasználó adminisztrátorrá tétele',
+	'already_sysop'            => 'Ez a felhasználó már adminisztrátor.',
+	'already_bureaucrat'       => 'Ez a felhasználó már bürokrata.',
+	'group-steward'            => 'Helytartók',
+	'group-steward-member'     => 'Helytartó',
+	'grouppage-steward'        => '{{ns:project}}:Gondnokság',
 ),
 
 'hy' => array(
