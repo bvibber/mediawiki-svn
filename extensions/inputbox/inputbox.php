@@ -27,14 +27,15 @@ $wgExtensionCredits['parserhook'][] = array(
 	'description' => 'Allow inclusion of predefined HTML forms.',
 );
 
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['Inputbox'] = $dir . 'InputBox.i18n.php';
+
 /**
  * Extension setup function
  */
 function efInputBoxSetup() {
-	global $wgMessageCache, $wgParser;
-	require_once( dirname( __FILE__ ) . '/InputBox.i18n.php' );
-	foreach( efInputBoxMessages() as $lang => $messages )
-		$wgMessageCache->addMessages( $messages, $lang );
+	global $wgParser;
+	wfLoadExtensionMessages('Inputbox');
 	$wgParser->setHook( 'inputbox', 'efInputBoxRender' );
 }
 
@@ -186,7 +187,7 @@ ENDFORM;
 		} else {
 			$comment='';
 			if(!$this->buttonlabel) {			
-				$this->buttonlabel = wfMsgHtml( "createarticle" );
+				$this->buttonlabel = wfMsgHtml( 'createarticle' );
 			}
 		}
 
