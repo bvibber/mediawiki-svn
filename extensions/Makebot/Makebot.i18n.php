@@ -494,6 +494,8 @@ function efMakeBotMessages() {
 	'makebot-username'       => 'Felhasználónév:',
 	'makebot-search'         => 'Menj',
 	'makebot-isbot'          => '[[User:$1|$1]] szerkesztőnek botstátusza van.',
+	'makebot-notbot'         => '[[User:$1|$1]] nem rendelkezik botstátusszal.',
+	'makebot-privileged'     => '[[User:$1|$1]] [[Special:Listadmins|adminisztrátori vagy bürokrata jogokkal rendelkezik]], így nem kaphat botstátuszt.',
 	'makebot-change'         => 'Állapot váltása:',
 	'makebot-grant'          => 'Megadás',
 	'makebot-revoke'         => 'Visszavonás',
@@ -501,9 +503,9 @@ function efMakeBotMessages() {
 	'makebot-granted'        => '[[User:$1|$1]] botstátuszt kapott.',
 	'makebot-revoked'        => '[[User:$1|$1]] többé nem rendelkezik botstátusszal.',
 	'makebot-logpage'        => 'Botstátusz-napló',
+	'makebot-logpagetext'    => 'Ez a felhasználók [[{{MediaWiki:Grouppage-bot}}|bot]]státusz-változásainak naplója.',
 	'makebot-logentrygrant'  => '[[$1]] szerkesztőnek botstátuszt adott',
 	'makebot-logentryrevoke' => '[[$1]] botstátuszát elvette',
-
 ),
 
 /* Indonesian (Ivan Lanin) */

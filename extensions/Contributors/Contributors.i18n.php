@@ -337,14 +337,14 @@ function efContributorsMessages() {
 'nds' => array(
 	'contributors'             => 'Lüüd, de bidragen hebbt',
 	'contributors-toolbox'     => 'Lüüd, de wichtige Delen bidragen hebbt',
-	'contributors-legend'      => 'Lüüd, de to en Artikel bidragen hebbt, oplisten',
+	'contributors-legend'      => 'Lüüd oplisten, de to en Artikel bidragen hebbt',
 	'contributors-target'      => 'Titel:',
 	'contributors-submit'      => 'Wiesen',
 	'contributors-subtitle'    => 'Lüüd, de wichtige Delen to $1 bidragen hebbt',
 	'contributors-others-long' => 'Gifft $1 annere Lüüd, de to disse Siet bidragen hebbt.',
 	'contributors-others'      => 'un $1 annere',
 	'contributors-badtitle'    => 'Titel ungüllig.',
-	'contributors-nosuchpage'  => 'Artikel $1 gifft dat nich.',
+	'contributors-nosuchpage'  => 'Siet $1 gifft dat nich.',
 ),
 
 /** Dutch (Nederlands)

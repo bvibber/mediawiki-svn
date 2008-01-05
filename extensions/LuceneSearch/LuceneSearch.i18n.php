@@ -476,6 +476,7 @@ $1
 $3 $9 $10',
 	'lucenefallback'        => 'Hiba adódott a wiki keresés során.
 A hiba átmeneti; próbáld újra néhány másodperc múlva vagy kereshetsz a wikin egy külső keresőszolgáltatáson keresztül is:',
+	'searchexactcase'       => 'Kis- és nagybetűk megkülönböztetése',
 	'searchall'             => 'mind',
 );
 

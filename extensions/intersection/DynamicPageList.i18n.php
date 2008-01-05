@@ -64,6 +64,16 @@ $messages['hsb'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Dyrbiš znajmjeńša kednu kategoriju zapřijeć abo mjenowy rum podać!',
 );
 
+/** Hungarian (Magyar)
+ * @author KossuthRad
+ */
+$messages['hu'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: Túl sok kategória!',
+	'intersection_toofewcats'    => 'DynamicPageList: Túl kevés kategória!',
+	'intersection_noresults'     => 'DynamicPageList: Nincs eredmény!',
+	'intersection_noincludecats' => 'DynamicPageList: Tartalmaznod kell legalább egy kategóriát különösképpen a névtérre!',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  */

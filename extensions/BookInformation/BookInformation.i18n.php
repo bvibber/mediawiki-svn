@@ -211,6 +211,22 @@ function efBookInformationMessages() {
 	'bookinfo-provider' => 'Dodawar datow: $1',
 ),
 
+/** Hungarian (Magyar)
+ * @author KossuthRad
+ */
+'hu' => array(
+	'bookinfo-header'            => 'Könyv információ',
+	'bookinfo-result-title'      => 'Cím:',
+	'bookinfo-result-author'     => 'Szerző',
+	'bookinfo-result-publisher'  => 'Kiadó:',
+	'bookinfo-result-year'       => 'Év:',
+	'bookinfo-error-invalidisbn' => 'Érvénytelen ISBN.',
+	'bookinfo-error-nosuchitem'  => 'A cikk/hír nem létezik vagy nem található.',
+	'bookinfo-error-noresponse'  => 'Nincs válasz vagy a kért idő letelt.',
+	'bookinfo-purchase'          => 'Ez a könyv megszerezve a $1-ből',
+	'bookinfo-provider'          => 'Adat ellátó: $1',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 	'bookinfo-header' => 'Informasi buku',

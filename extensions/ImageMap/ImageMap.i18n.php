@@ -208,11 +208,20 @@ function efImageMapMessages() {
 ),
 
 /** Hungarian (Magyar)
+ * @author KossuthRad
  * @author Bdanee
  */
 'hu' => array(
-	'imagemap_description' => 'Kép leírása',
-
+	'imagemap_no_image'           => '&lt;imagemap&gt;: kell egy előírt kép az első sorban',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: érvénytelen vagy nem létező kép',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: nincs érvényes link a(z) $1. sor végén',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: érvénytelen cím a linkben a $1 vonalban',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: nincs elég koordináta az alakításhoz a $1 sorban',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: ismeretlen alakzat a(z) $1. sorban, mindegyiknek ezek valamelyikével kell kezdődnie: default, rect, circle vagy poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: Legalább egy terület előírást hozzá kell adni',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: érvénytelen koordináta a $1 vonalban, számnak kell lennie',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: hibás desc leírás, ezek egyike kell: <tt>$1</tt>',
+	'imagemap_description'        => 'Kép leírása',
 ),
 
 /* Indonesian (Ivan Lanin) */

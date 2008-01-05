@@ -220,6 +220,9 @@ $wgExpandTemplatesMessages['hsb'] = array(
 	'expand_templates_preview'         => 'Přehlad',
 );
 
+/** Hungarian (Magyar)
+ * @author KossuthRad
+ */
 $wgExpandTemplatesMessages['hu'] = array(
 	'expandtemplates'                  => 'Sablonok kibontása',
 	'expand_templates_intro'           => 'Ez a speciális lap a bevitt szövegekben megkeresi a sablonokat és rekurzívan kibontja őket.
@@ -227,7 +230,9 @@ Kibontja az elemző függvényeket (pl. <nowiki>{{</nowiki>#if:...}}), és a vá
 	'expand_templates_title'           => 'Szöveg címe, például &#123;&#123;PAGENAME}} sablonhoz:',
 	'expand_templates_input'           => 'Vizsgálandó szöveg',
 	'expand_templates_output'          => 'Eredmény',
+	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Megjegyzések eltávolítása',
+	'expand_templates_preview'         => 'Előnézet',
 );
 
 $wgExpandTemplatesMessages['hy'] = array(

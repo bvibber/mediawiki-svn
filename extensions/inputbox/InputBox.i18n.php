@@ -280,7 +280,14 @@ function efInputBoxMessages() {
 	'createarticle'           => 'Nastawk wutworić',
 ),
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ * @author KossuthRad
+ */
 'hu' => array(
+	'inputbox-error-no-type'  => 'Nem adtad meg, hogy milyen típusú beviteli mezőt akarsz készíteni.',
+	'inputbox-error-bad-type' => '„$1” típusú beviteli mező nem ismert. „create”, „comment”, „search” vagy „search2” egyikét add meg.',
+	'tryexact'                => 'Pontos párosítást igényel',
 	'searchfulltext'          => 'Keresés a teljes szövegben',
 	'createarticle'           => 'Szócikk létrehozása',
 ),
@@ -459,7 +466,7 @@ function efInputBoxMessages() {
 'nds' => array(
 	'tryexact'       => 'exakte Söök versöken',
 	'searchfulltext' => 'in’n Vulltext söken',
-	'createarticle'  => 'Artikel anleggen',
+	'createarticle'  => 'Siet anleggen',
 ),
 
 /** Dutch (Nederlands)

@@ -737,7 +737,7 @@ La vèrsion criptâ siut. Serat afichiê publicament dessus [[Special:Boardvote/
 	'boardvote_needadmin'    => 'Solèts los administrators du voto/de la votacion pôvont fâre cela opèracion.',
 	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Èlèccions u Consèly d’administracion de la Wikimedia Foundation</a> : voto uvèrt/votacion uvèrta tant qu’u 12 de julyèt 2005.',
 	'boardvote_notstarted'   => 'Lo voto/la votacion est p’oncor comenciê.',
-	'boardvote_closed'       => 'L’èlèccion est dês ora cllôsa. Lo rèsultat est procllamâ sur la [[:meta:Board elections/2006/Results/fr|<span title="« Board elections/2006/Results/fr » : pâge en francês" style="text-decoration:none">pâge des rèsultats</span>]].',
+	'boardvote_closed'       => 'Dês ora, l’èlèccion est cllôsa. Lo rèsultat est procllamâ sur la [[:meta:Board elections/2006/Results/fr|<span title="« Board elections/2006/Results/fr » : pâge en francês" style="text-decoration:none">pâge des rèsultats</span>]].',
 	'boardvote_edits_many'   => 'plusiors',
 	'group-boardvote'        => 'Membros votants du Consèly d’administracion',
 	'group-boardvote-member' => 'Membro votant du Consèly d’administracion',
@@ -1024,6 +1024,85 @@ Slěduje nastata zaklučowana wersija. Budźe so na [[{{ns:special}}:Boardvote/d
 	'boardvote_welcome'       => 'Witaj \'\'\'$1\'\'\'!',
 	'go_to_board_vote'        => 'Wólby k Wikimedija-kuratorijej 2007',
 	'boardvote_redirecting'   => 'Zo bychmy wěstosć a transparencu zaručili, přewjedźemy wólby na eksternym, njewotwisnje kontrolowanym serwerje. Sposrědkujemy tam w běhu 20 sekundow. [$1 Klikń tu] zo by so bjesporědnje tam dóstał. Je móžno, zo widźiš naprjedy wěstotne warnowanje wo njesignowanym certifikaće.',
+);
+
+/** Hungarian (Magyar)
+ * @author Bdanee
+ * @author KossuthRad
+ */
+$wgBoardVoteMessages['hu'] = array(
+	'boardvote'              => 'Wikimedia Kuratórium választás',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Szavazz!]]
+* [[Special:Boardvote/list|Szavazatok listája]]
+* [[Special:Boardvote/dump|Választási jegyzőkönyv titkosított dump-ja]]',
+	'boardvote_intro'        => '
+<p>Üdvözlünk a Wikimedia alapítvány második kuratórium választásán!
+Ezúttal egy embert választunk, hogy képviselje a különböző Wikimedia
+projektek közösségeit. A kuratórium tagjai meghatározó szerepet kapnak
+annak eldöntésében, hogy a Wikimedia projektek milyen irányban fejlődjenek
+tovább (egyenként, illetve összességükben), illetve hogy képviseljék a
+<em>Te</em> érdekeidet, és továbbítsák véleményed a kuratórium felé.
+Feladatuk dönteni a bevételi források felkutatásáról és igénybevételéről,
+és a befolyt összegek felhasználásáról.</p>
+
+<p>Kérjük, szavazás előtt alaposan olvasd át a jelentkezők bemutatkozó lapjait,
+és a kérdéseitekre adott válaszait. A jelöltek a legmegbecsültebb szerkesztőink
+közül kerülnek ki, akik idejük jelentős részének feláldozásával és nagyfokú
+erőfeszítéssekkel tették a Wikimedia projekteket az emberiség tudásának minden
+eddiginél szabadabb, gazdagabb tárházává.</p>
+
+<p>Tetszőleges számú jelöltre szavazhatsz, minden betöltendő pozíciót az arra
+jelentkezők közül a legtöbb szavazatot birtokló jelölt fog kapni. Holtverseny
+esetén rendkívüli választást írunk ki.</p>
+
+<p>További részleteket a következő helyeken tudhatsz meg:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">gyakran ismételt kérdések (FAQ)</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006" class="external">a jelöltek bemutatkozó lapjai</a></li></ul>',
+	'boardvote_intro_change' => '<p>Már szavaztál. A szavazatodat módosíthatod a lenti űrlap kitöltésével. Válaszd ki azokat a jelölteket, akikre szavazni szeretnél.</p>',
+	'boardvote_entered'      => 'Köszönjük, a szavazatodat rögzítettük.
+
+Ha szeretnéd, rögzítheted a következő részleteket. A letárolt szavazatod:
+
+<pre>$1</pre>
+
+A szavazat titkosításra került a Választási Adminisztrátorok nyilvános kulcsával:
+
+<pre>$2</pre>
+
+A titkosított változat (nyilvánosan elérhető [[Special:Boardvote/dump|itt]]):
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Vissza]]',
+	'boardvote_nosession'    => 'Nem sikerült meghatározni a Wikimédiás felhasználói azonosítódat. Jelentkezz be abba a wikibe, ahonnan szavazhatsz, majd menj a <nowiki>[[Special:Boardvote]]</nowiki> lapra. Csak akkor szavazhatsz, ha már volt $1 szerkesztésed $2 előtt, és az első szerkesztésed $3 előtt történt meg.',
+	'boardvote_notloggedin'  => 'Nem vagy bejelentkezve. Hogy a magyar Wikipédián szavazni tudj, $2 előttig minimum $1 szerkesztéssel kell rendelkezned, az első szerkesztésednek pedig $3 előttinek kell lennie.',
+	'boardvote_notqualified' => '<p>Sajnáljuk, de még nincs jogosultságod szavazni a kuratórium jelöltjeire. Csak az szavazhat, aki $2-ig legalább $3 szerkesztést végzett, valamint a legelső szerkesztése $5 előtt volt.',
+	'boardvote_novotes'      => 'Még senki sem szavazott.',
+	'boardvote_time'         => 'Idő',
+	'boardvote_user'         => 'User',
+	'boardvote_edits'        => 'Szerkesztések',
+	'boardvote_days'         => 'Napok',
+	'boardvote_ip'           => 'IP',
+	'boardvote_listintro'    => '<p>Itt olvasható az összes, mostanáig leadott szavazat.
+A titkosított adatokhoz $1.</p>',
+	'boardvote_dumplink'     => 'Klikkelj ide',
+	'boardvote_submit'       => 'OK',
+	'boardvote_needadmin'    => 'Csak a választás vezetői tudják végrehajtani ezt a műveletet.',
+	'boardvote_notstarted'   => 'A szavazás még nem indult el.',
+	'boardvote_closed'       => 'A szavazás már lezárult, az eredmények hamarosan [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En the elections page for itt].',
+	'boardvote_edits_many'   => 'Sok',
+	'group-boardvote'        => 'Választási adminisztrátorok',
+	'group-boardvote-member' => 'Választási adminisztrátor',
+	'grouppage-boardvote'    => '{{ns:project}}:Választási adminisztrátor',
+	'boardvote_blocked'      => 'Elnézést, a te regisztrációd blokkolva van wikin. A blokkolt usereknek nem megengedett a szavazás.',
+	'boardvote_welcome'      => "Üdvözöllek '''$1'''!",
+	'go_to_board_vote'       => 'Wikimedia Kuratórium választás 2007',
+	'boardvote_redirecting'  => 'A nagyobb biztonságért és jobb átláthatóságért egy külső, független
+szerveren bonyolítjuk a szavazást.
+
+20 másodpercen belül át leszel irányítva a külső szerverre. [$1 Kattints ide], ha nem szeretnél várni.
+
+Az aláíratlan tanúsítványú oldallal kapcsolatban egy biztonsági figyelmezetés jelenhet meg.',
 );
 
 $wgBoardVoteMessages['id'] = array(
