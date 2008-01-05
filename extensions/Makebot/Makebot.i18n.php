@@ -490,6 +490,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'makebot'                => 'Botstátusz megadása vagy visszavonása',
+	'makebot-header'         => "'''Ezen lap segítségével egy helyi bürokrata [[{{MediaWiki:Grouppage-bot}}|botstátuszt]] adhat vagy vehet el egy másik felhasználótól.'''<br />A botstátusz jelentősége, hogy elrejti az adott szerkesztő szerkesztéseit a [[Special:Recentchanges|friss változások]] oldalról és a hasonló listákról, plusz hasznos jelölés az automatikus szerkesztést végző felhasználók számára.  Az eszközt a szabályoknak megfelelően használd.",
 	'makebot-username'       => 'Felhasználónév:',
 	'makebot-search'         => 'Menj',
 	'makebot-isbot'          => '[[User:$1|$1]] szerkesztőnek botstátusza van.',
