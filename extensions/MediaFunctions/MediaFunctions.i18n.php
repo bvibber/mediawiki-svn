@@ -59,6 +59,14 @@ function efMediaFunctionsMessages() {
 	'mediafunctions-not-exist'     => '"$1" не съществува',
 ),
 
+/** Catalan (Català)
+ * @author SMP
+ */
+'ca' => array(
+	'mediafunctions-invalid-title' => '«$1» no és un títol vàlid',
+	'mediafunctions-not-exist'     => '«$1» no existeix',
+),
+
 'de' => array(
 	'mediafunctions-invalid-title' => '„$1“ ist kein gültiger Name',
 	'mediafunctions-not-exist'     => '„$1“ ist nicht vorhanden',

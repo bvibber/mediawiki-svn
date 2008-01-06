@@ -12,26 +12,40 @@ $wgMathStatFunctionsMessages['en'] = array(
         'msfunc_inf'      => 'Resulting value is infinity',
         'msfunc_div_zero' => 'Division by zero',
 );
+
 $wgMathStatFunctionsMessages['ar'] = array(
 	'msfunc_nan' => 'القيمة الناتجة ليست رقما',
 	'msfunc_inf' => 'القيمة الناتجة هي المالانهاية',
 	'msfunc_div_zero' => 'القسمة على صفر',
 );
+
 $wgMathStatFunctionsMessages['bg'] = array(
 	'msfunc_nan' => 'Стойността на резултата не е число',
 	'msfunc_inf' => 'Стойността на резултата е безкрайност',
 	'msfunc_div_zero' => 'Деление на нула',
 );
+
+/** Catalan (Català)
+ * @author SMP
+ */
+$wgMathStatFunctionsMessages['ca'] = array(
+	'msfunc_nan'      => 'El resultat no és un nombre',
+	'msfunc_inf'      => 'El resultat té valor infinit',
+	'msfunc_div_zero' => 'Divisió entre zero',
+);
+
 $wgMathStatFunctionsMessages['de'] = array(
         'msfunc_nan'      => 'Ergebniswert ist keine Zahl',
         'msfunc_inf'      => 'Ergebniswert ist unendlich',
         'msfunc_div_zero' => 'Division durch Null',
 );
+
 $wgMathStatFunctionsMessages['fr'] = array(
 	'msfunc_nan' => 'Le résultat n’est pas un nombre.',
 	'msfunc_inf' => 'Le résultat est l’infini.',
 	'msfunc_div_zero' => 'Division par zéro',
 );
+
 $wgMathStatFunctionsMessages['gl'] = array(
 	'msfunc_nan' => 'O valor resultante non é un número',
 	'msfunc_inf' => 'O valor resultante é infinito',

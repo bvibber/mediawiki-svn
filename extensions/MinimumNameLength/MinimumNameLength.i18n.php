@@ -27,6 +27,13 @@ function efMinimumNameLengthMessages() {
 	'minnamelength-error' => 'Потребителското ви име е твърде кратко. Минималната му дължина е $1.',
 ),
 
+/** Catalan (Català)
+ * @author SMP
+ */
+'ca' => array(
+	'minnamelength-error' => "El vostre nom d'usuari és massa curt. La longitud mínima és de $1.",
+),
+
 /* German */
 'de' => array(
 	'minnamelength-error' => 'Der Benutzername ist zu kurz. Die Mindestlänge beträgt $1 Zeichen.',

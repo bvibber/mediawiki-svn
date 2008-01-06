@@ -640,6 +640,17 @@ $messages = array(
 		'ogg-dismiss' => 'Zoumaachen',
 	),
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+	'li' => array(
+		'ogg-play'       => 'Aafspele',
+		'ogg-pause'      => 'Óngerbraeke',
+		'ogg-stop'       => 'Oetsjeije',
+		'ogg-play-video' => 'Video aafspele',
+		'ogg-play-sound' => 'Geluid aafspele',
+	),
+
 	'nds' => array(
 		'ogg-short-audio' => 'Ogg-$1-Toondatei, $2',
 		'ogg-short-video' => 'Ogg-$1-Videodatei, $2',
