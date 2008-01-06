@@ -420,7 +420,7 @@ $messages['lg'] = array(
 $messages['li'] = array(
 	'tryexact'       => 'Perbeer exacte euvereinkoms',
 	'searchfulltext' => 'Zeuk dèr volledige tèks',
-	'createarticle'  => "Maak 'n artikel aan",
+	'createarticle'  => "Maak 'ne pazjena aan",
 );
 
 $messages['lo'] = array(

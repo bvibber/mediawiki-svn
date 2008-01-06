@@ -721,14 +721,19 @@ $messages['lb'] = array(
 	'makebot-logentryrevoke' => '[[$1]] krut de Botstatus ofgeholl',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
 $messages['li'] = array(
-	'makebot'                 => 'Gaef of nöm botsjtatus aaf',
-	'makebot-username'        => 'Gebroekersnaam:',
-	'makebot-search'          => 'OK',
-	'makebot-change'          => 'Veranger de sjtatus:',
-	'makebot-grant'           => 'Gaeve',
-	'makebot-revoke'          => 'Innömme',
-	'makebot-comment'         => 'Opmèrking:',
+	'makebot'          => 'Gaef of nöm botsjtatus aaf',
+	'makebot-header'   => "''''ne Bureaucraat kin via dees pazjena 'ne [[{{MediaWiki:Grouppage-bot}}|botstatus]] aan 'ne angere gebroeker gaeve of dae status tröknömme.'''<br />De botstatus verberg de bewèrkinge van 'ne gebroeker in de [[Special:Recentchanges|Recènte Verangeringe]] en gelieksaortige lieste. 't Is henjig veur gebroekers die automatische bewèrkinge make. Dit heurt aan de handj van 't geljendje beleid te gebeure.",
+	'makebot-username' => 'Gebroekersnaam:',
+	'makebot-search'   => 'OK',
+	'makebot-isbot'    => '[[User:$1|$1]] haet botstatus.',
+	'makebot-change'   => 'Veranger de sjtatus:',
+	'makebot-grant'    => 'Gaeve',
+	'makebot-revoke'   => 'Innömme',
+	'makebot-comment'  => 'Opmèrking:',
 );
 
 /* Lao */

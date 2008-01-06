@@ -92,6 +92,14 @@ $messages['kk-arab'] = array(
 	'assert_edit_message' => 'ەنگٸزٸلگەن ماقۇلداۋ ($1) سٵتسٸز.',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'assert_edit_title'   => 'Bevestiging mislukdj.',
+	'assert_edit_message' => 'De gevraogdje bevestiging ($1) mislukdje.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

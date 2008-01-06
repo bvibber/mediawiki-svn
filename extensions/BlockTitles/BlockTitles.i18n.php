@@ -110,6 +110,14 @@ $messages['hsb'] = array(
 	'block_title_error' => 'Wodaj, ale njeje dowolene nastawk z tutym mjenom składować.',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'block_title_error_page_title' => 'Blokkolt cím',
+	'block_title_error'            => 'Sajnáljuk, a megadott címmel nem lehet elmenteni az oldalt.',
+);
+
 /** Armenian (Հայերեն)
  * @author Teak
  */

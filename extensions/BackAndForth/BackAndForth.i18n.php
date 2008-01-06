@@ -98,6 +98,14 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Předchadne ($1)',
 ),
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+'hu' => array(
+	'backforth-next' => 'Következő ($1)',
+	'backforth-prev' => 'Előző ($1)',
+),
+
 'hy' => array(
 	'backforth-next' => 'Հաջորդ ($1)',
 	'backforth-prev' => 'Նախորդ ($1)',

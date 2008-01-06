@@ -169,6 +169,23 @@ To móže husto serwer sylnišo wobćežić, prošu wužij tuž tutu funkciju zr
 	'querysuccessful'  => 'Wotprašenje wuspěšne',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'asksql'          => 'SQL lekérdezés',
+	'asksqltext'      => "Az alábbi űrlap segítségével közvetlen lekérdezéseket végezhetsz az
+adatbázisból.
+Az aposztrófok ('mint ez') sztring literálokat határolnak.
+A folyamat gyakran leterhelheti a szervert, ezért ritkán használd ezt
+az eszközt.",
+	'sqlislogged'     => 'Az összes lekérdezés naplózva van.',
+	'sqlquery'        => 'Lekérdezés beírása',
+	'querybtn'        => 'Lekérdezés elküldése',
+	'selectonly'      => 'Csak az olvasást végző lekérdezések engedélyezettek.',
+	'querysuccessful' => 'Lekérdezés sikeresen megtörtént',
+);
+
 /* Indonesian (Ivan Lanin) */
 $messages['id'] = array(
 	'asksql' => 'Kueri SQL',

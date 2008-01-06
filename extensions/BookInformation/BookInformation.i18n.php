@@ -302,6 +302,23 @@ function efBookInformationMessages() {
 	'bookinfo-error-nosuchitem'  => "D'Säit gëtt et net oder si gouf net fonnt.",
 ),
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+'li' => array(
+	'bookinfo-header'            => 'Boke informatie',
+	'bookinfo-result-title'      => 'Titel:',
+	'bookinfo-result-author'     => 'Auteur:',
+	'bookinfo-result-publisher'  => 'Oetgaever:',
+	'bookinfo-result-year'       => 'Jaor:',
+	'bookinfo-error-invalidisbn' => 'Ónkrèk ISBN-nómmer gegaeve.',
+	'bookinfo-error-nosuchitem'  => 'Besteit neet of kós neet gevónje waere.',
+	'bookinfo-error-nodriver'    => 'Kós de zjuuste Boke Informatie Driver neet initialisere.',
+	'bookinfo-error-noresponse'  => "Gein antjwaord of 'ne tied-oet.",
+	'bookinfo-purchase'          => 'Koup dit book bie $1.',
+	'bookinfo-provider'          => 'Gegaeves geleverdj door: #1',
+),
+
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */
@@ -319,9 +336,10 @@ function efBookInformationMessages() {
  * @author Slomox
  */
 'nds' => array(
-	'bookinfo-result-title'  => 'Titel:',
-	'bookinfo-result-author' => 'Schriever:',
-	'bookinfo-result-year'   => 'Johr:',
+	'bookinfo-result-title'     => 'Titel:',
+	'bookinfo-result-author'    => 'Schriever:',
+	'bookinfo-result-publisher' => 'Verlag:',
+	'bookinfo-result-year'      => 'Johr:',
 ),
 
 /* nld / Dutch (Dirk Beetstra) */

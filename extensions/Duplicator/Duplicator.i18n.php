@@ -377,8 +377,12 @@ de todos os historiais. Resulta útil cando se subdivide un artigo, etc.',
 	'duplicator-options' => 'Méiglechkeeten',
 ),
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
 'nds' => array(
 	'duplicator-options' => 'Opschonen',
+	'duplicator-source'  => 'Born:',
 ),
 
 /** Dutch (Nederlands)

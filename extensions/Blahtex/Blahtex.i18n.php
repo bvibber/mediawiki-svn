@@ -480,6 +480,63 @@ $messages['hsb'] = array(
 	'math_WrongFontEncodingWithHint'        => 'Symbol "$1" njesmě so w pismowym kodowanju "$2" jewić (spytaj přikaz "$3{...}" wužiwać)',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'math_AmbiguousInfix'                   => '„$1” kétértelműen van elhelyezve (próbálj meg egyértelműsíteni újabb „{ ... }” zárójelek használatával)',
+	'math_CannotChangeDirectory'            => 'Nem sikerült megváltoztatni a munkakönyvtárat',
+	'math_CannotCreateTexFile'              => 'Nem sikerült elkészíteni a tex fájlt',
+	'math_CannotRunDvipng'                  => 'Nem sikerült futtatni a dvipng-t',
+	'math_CannotRunLatex'                   => 'Nem sikerült futtatni a latexet',
+	'math_CannotWritePngDirectory'          => 'Nem sikerült írni a PNG kimeneti könyvtárba',
+	'math_CannotWriteTexFile'               => 'Nem sikerült írni a tex fájlba',
+	'math_CasesRowTooBig'                   => 'Csak két bejegyzés szerepelhet a „cases” blokk minden sorában',
+	'math_DoubleSubscript'                  => 'Két alsó index van csatolva ugyanahhoz az alaphoz (csak egy engedélyezett)',
+	'math_DoubleSuperscript'                => 'Két felső index van csatolva ugyanahhoz az alaphoz (csak egy engedélyezett)',
+	'math_IllegalCharacter'                 => 'Hibás karakter található a bemenetben',
+	'math_IllegalCommandInMathMode'         => 'A(z) „$1” parancs nem érvényes math módban',
+	'math_IllegalCommandInMathModeWithHint' => 'A(z) „$1” parancs nem érvényes math módban (nem „$2”-t akartál használni helyette?)',
+	'math_IllegalCommandInTextMode'         => 'A(z) „$1” parancs nem érvényes szöveg módban',
+	'math_IllegalCommandInTextModeWithHint' => 'A(z) „$1” parancs nem érvényes szöveg módban (nem „$2”-t akartál használni helyette?)',
+	'math_IllegalDelimiter'                 => 'Érvénytelen határolójel „$1” után',
+	'math_IllegalFinalBackslash'            => 'Érvénytelen visszaper-jel „\\” a bemenet végén',
+	'math_IllegalRedefinition'              => 'A(z) „$1” parancs már definiálva van; nem definiálhatod újra',
+	'math_InvalidColour'                    => 'A szín „$1” érvénytelen',
+	'math_InvalidUtf8Input'                 => 'A bemenet során megadott szöveg nem megfelelően kódolt UTF-8 sztring',
+	'math_LatexFontNotSpecified'            => 'Nincs megadva LaTeX betűtípus „$1” számára',
+	'math_LatexPackageUnavailable'          => 'A PNG-t nem lehet elkészíteni, mert a „$1” LaTeX csomag nem elérhető',
+	'math_MismatchedBeginAndEnd'            => '„$1” és „$2” parancsok nem illeszkednek',
+	'math_MisplacedLimits'                  => 'A(z) „$1” parancs csak a math operátor után állhat (használd a „\\mathop”-ot)',
+	'math_MissingCommandAfterNewcommand'    => 'Hibás vagy érvénytelen új parancs név a „\\newcommand” után (pontosan egy parancsot kell megadni; visszaperjellel „\\” kell kezdődnie, és csak alfanumerikus karaktereket tartalmazhat)',
+	'math_MissingDelimiter'                 => 'Hiányzó határolókarakter „$1” után',
+	'math_MissingOpenBraceAfter'            => 'Hiányzó nyitó „{” zárójel  „$1” után',
+	'math_MissingOpenBraceAtEnd'            => 'Hiányzó nyitó „{” zárójel a bemenet végén',
+	'math_MissingOpenBraceBefore'           => 'Hiányzó nyitó „{” zárójel „$1” előtt',
+	'math_MissingOrIllegalParameterCount'   => 'Hiányzó vagy érvénytelen paraméterindex a(z) „$1” definíciójában (egyjegyű számnak kell lennie 1 és 9 között)',
+	'math_MissingOrIllegalParameterIndex'   => 'Hiányzó vagy érvénytelen paraméterindex a(z) „$1” definíciójában',
+	'math_NonAsciiInMathMode'               => 'Nem-ASCII karakterek csak szövegmódban használhatóak (zárd a problémás karaktert „\\text{...}” közé)',
+	'math_NotEnoughArguments'               => 'Nem lett elég argumentum megadva „$1” számára',
+	'math_PngIncompatibleCharacter'         => 'A(z) $1 karaktert tartalmazó PNG-t nem lehet helyesen elkészíteni',
+	'math_ReservedCommand'                  => 'A(z) „$1” parancs fenn van tartva a blahtex számára',
+	'math_SubstackRowTooBig'                => 'Csak egyetlen bejegyzés lehet minden sorban a „substack” blokkon belül',
+	'math_TooManyMathmlNodes'               => 'Túl sok csomópont van a MathML fában',
+	'math_TooManyTokens'                    => 'A bemenet túl hosszú',
+	'math_UnavailableSymbolFontCombination' => 'A „$1” szimbólum csak a „$2” betűtípusban található meg',
+	'math_UnexpectedNextCell'               => 'Az „&” parancs csak egy „\\begin ... \\end” blokkon belül állhat',
+	'math_UnexpectedNextRow'                => 'A „\\\\” parancs csak egy „\\begin ... \\end” blokkon belül állhat',
+	'math_UnmatchedBegin'                   => 'A „\\begin”-hez nincs illeszkedő „\\end” pár',
+	'math_UnmatchedCloseBrace'              => 'A záró „}” zárójelhez nincs illeszkedő nyitó „{” zárójel',
+	'math_UnmatchedEnd'                     => 'Az „\\end”-hez nincs illeszkedő „\\begin” pár',
+	'math_UnmatchedLeft'                    => 'A „\\left”-hez nincs illeszkedő „\\right” pár',
+	'math_UnmatchedOpenBrace'               => 'A nyitó „{” zárójelhez nincs illeszkedő záró „}” zárójel',
+	'math_UnmatchedOpenBracket'             => 'A nyitó „[” zárójelhez nincs illeszkedő záró „]” zárójel',
+	'math_UnmatchedRight'                   => 'A „\\right”-hoz nincs illeszkedő „\\left” pár',
+	'math_UnrecognisedCommand'              => 'Ismeretlen parancs: „$1”',
+	'math_WrongFontEncoding'                => 'A „$1” szimbólum nem jelenhet meg a „$2” betűtípus-kódolásban',
+	'math_WrongFontEncodingWithHint'        => 'A „$1” szimbólum nem jelenhet meg a „$2” betűtípus-kódolásban (próbáld meg használni a „$3{...}” parancsot)',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  */
@@ -544,6 +601,14 @@ $messages['it'] = array(
  */
 $messages['lb'] = array(
 	'math_InvalidColour' => 'D\'Faarw "$1" gëtt et net',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'math_CannotCreateTexFile' => 'Kann kene Tex-Datei anleggen',
+	'math_CannotWriteTexFile'  => 'Kann Tex-Datei nich schrieven',
 );
 
 /** Dutch (Nederlands)

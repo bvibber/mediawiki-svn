@@ -1513,6 +1513,29 @@ D'verschlësselt Versioun dovunner fannt der ënnen. Si gëtt ëffentlech op [[S
 	'go_to_board_vote'       => '"Wikimedia Board" Walen 2007',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$wgBoardVoteMessages['li'] = array(
+	'boardvote'            => 'Wikimedia Board of Trustees-verkezing',
+	'boardvote_entry'      => '* [[Special:Boardvote/vote|Stöm]]
+* [[Special:Boardvote/list|Oetgebrachdje stömme toeane]]
+* [[Special:Boardvote/dump|Dump geëncrypdje verkezingsopname]]',
+	'boardvote_time'       => 'Tied',
+	'boardvote_user'       => 'Gebroeker',
+	'boardvote_edits'      => 'Bewerkinge',
+	'boardvote_days'       => 'Daag',
+	'boardvote_ip'         => 'IP-adres',
+	'boardvote_ua'         => 'User-agent',
+	'boardvote_dumplink'   => 'Klik hiej',
+	'boardvote_submit'     => 'ok',
+	'boardvote_strike'     => 'Óngeljig',
+	'boardvote_unstrike'   => 'Geljig',
+	'boardvote_edits_many' => 'väöl',
+	'boardvote_welcome'    => "Wèlkom, '''$1'''!",
+	'go_to_board_vote'     => 'Wikimedia Bestuursverkezing 2007',
+);
+
 $wgBoardVoteMessages['loz'] = array(
 	'boardvote_user'          => 'Sebelu',
 	'boardvote_submit'        => 'Afi',
@@ -1552,12 +1575,16 @@ $wgBoardVoteMessages['nan'] = array(
  * @author Slomox
  */
 $wgBoardVoteMessages['nds'] = array(
-	'boardvote_novotes'  => 'Noch hett nüms afstimmt.',
-	'boardvote_time'     => 'Tiet',
-	'boardvote_user'     => 'Bruker',
-	'boardvote_days'     => 'Daag',
-	'boardvote_dumplink' => 'Hier klicken',
-	'boardvote_welcome'  => "Moin '''$1'''.",
+	'boardvote_novotes'    => 'Noch hett nüms afstimmt.',
+	'boardvote_time'       => 'Tiet',
+	'boardvote_user'       => 'Bruker',
+	'boardvote_edits'      => 'Ännern',
+	'boardvote_days'       => 'Daag',
+	'boardvote_dumplink'   => 'Hier klicken',
+	'boardvote_strike'     => 'Strieken',
+	'boardvote_unstrike'   => 'Strieken trüchnehmen',
+	'boardvote_edits_many' => 'veel',
+	'boardvote_welcome'    => "Moin '''$1'''.",
 );
 
 /** Dutch (Nederlands)

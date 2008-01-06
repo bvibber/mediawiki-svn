@@ -318,7 +318,12 @@ $wgFilepathMessages['nan'] = array(
  * @author Slomox
  */
 $wgFilepathMessages['nds'] = array(
-	'filepath_page' => 'Datei:',
+	'filepath'         => 'Dateipadd',
+	'filepath_page'    => 'Datei:',
+	'filepath_submit'  => 'Padd',
+	'filepath-summary' => 'Disse Spezialsiet gifft den kumpletten Padd för ene Datei trüch. Biller warrt in vull Oplösen wiest, annere Datein warrt glieks mit dat Programm opropen, dat för de Soort Datein instellt is.
+
+Geev den Dateinaam ahn den Tosatz „{{ns:image}}:“ an.',
 );
 
 $wgFilepathMessages['nl'] = array(

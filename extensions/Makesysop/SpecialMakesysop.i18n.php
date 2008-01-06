@@ -903,9 +903,15 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'grouppage-steward'        => '{{ns:project}}:Stewarden',
 ),
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
 'li' => array(
 	'already_sysop'        => 'Deze gebroeker is al systeemwèrker',
 	'already_bureaucrat'   => 'Deze gebroeker is al amtenaer',
+	'group-steward'        => 'Stewards',
+	'group-steward-member' => 'Steward',
+	'grouppage-steward'    => '{{ns:project}}:Stewards',
 ),
 
 'lo' => array(

@@ -268,6 +268,13 @@ $wgChemFunctions_Messages['lb'] = array(
 	'chemFunctions_Name'     => 'IUPAC Numm',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$wgChemFunctions_Messages['nds'] = array(
+	'chemFunctions_Formula' => 'Formel',
+	'chemFunctions_Name'    => 'IUPAC-Naam',
+);
 
 /** Dutch (Nederlands)
  * @author SPQRobin

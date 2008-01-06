@@ -327,6 +327,31 @@ $messages['hsb'] = array(
 	'badimages-page' => '{{ns:help}}:Lisćina njewitanych wobrazow',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'badimages'                => 'Hibás képek listája',
+	'badimages-add-btn'        => 'Hozzáadás',
+	'badimages-added'          => '$1 hozzá lett adva a listához',
+	'badimages-count'          => "'''$1''' kép található a hibás képek listáján.",
+	'badimages-name'           => 'Név:',
+	'badimages-not-added'      => 'A képet nem lehet hozzáadni.',
+	'badimages-not-removed'    => 'A képet nem lehet eltávolítani.',
+	'badimages-reason'         => 'Ok:',
+	'badimages-remove'         => '(eltávolítás)',
+	'badimages-remove-btn'     => 'Eltávolítás',
+	'badimages-remove-confirm' => 'Biztosan el szeretnéd távolítani $1-t a listáról:',
+	'badimages-removed'        => '$1 el lett távolítva a listáról.',
+	'badimages-subheading'     => 'Jelenlegi elemek',
+	'badimages-unprivileged'   => '(Nincs meg a megfelelő jogosultságod a lista megváltoztatásához)',
+	'badimages-log-name'       => 'Hibás képek listája',
+	'badimages-log-header'     => 'Ez a [[{{MediaWiki:Badimages-page}}|hibás képek listáján]] történt változások naplója.',
+	'badimages-log-add'        => '[[$1]] hozzáadva a hibás képek listájához',
+	'badimages-log-remove'     => '[[$1]] eltávolítva a hibás képek listájáról',
+	'badimages-page'           => '{{ns:help}}:Hibás képek listája',
+);
+
 /* Indonesian (Ivan Lanin) */
 $messages['id'] = array(
 	'badimages' => 'Daftar berkas tidak sah',

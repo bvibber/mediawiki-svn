@@ -30,6 +30,14 @@ $messages['bg'] = array(
 	'languageselector' => 'Език',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'languageselector'         => 'Idioma',
+	'languageselector-setlang' => 'selecciona',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
 */
@@ -44,6 +52,14 @@ $messages['de'] = array(
 $messages['fr'] = array(
 	'languageselector' => 'Langue',
 	'languageselector-setlang' => 'Définir',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'languageselector'         => 'Rěč',
+	'languageselector-setlang' => 'stajić',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
