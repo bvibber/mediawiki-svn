@@ -70,6 +70,12 @@ $wgDismissableSiteNoticeMessages['es'] = array(
 	'sitenotice_close' => 'ocultar',
 );
 
+# فارسی (Huji)
+$wgDismissableSiteNoticeMessages['fa'] = array(
+	'sitenotice_close' => 'بستن',
+
+);
+
 $wgDismissableSiteNoticeMessages['fi'] = array(
 	'sitenotice_close' => 'piilota',
 );

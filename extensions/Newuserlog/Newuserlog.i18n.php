@@ -118,6 +118,16 @@ $wgNewuserlogMessages['eu'] = array(
 	'newuserlog-create2-entry' => '$1(r)entzako kontua sortu da',
 );
 
+# فارسی (Huji)
+$wgNewuserlogMessages['fa'] = array(
+	'newuserlogpage'           => 'سیاههٔ ایجاد کاربر',
+	'newuserlogpagetext'       => 'این سیاهه‌ای از نامهای کاربریِ تازه‌ساخته‌شده است',
+	'newuserlog-create-entry'  => 'کاربر جدید',
+	'newuserlog-create2-entry' => 'برای $1 حساب کاربری ایجاد کرد',
+
+);
+
+
 $wgNewuserlogMessages['fi'] = array(
 	'newuserlogpage'           => 'Uudet käyttäjät',
 	'newuserlogpagetext'       => 'Tämä on loki luoduista käyttäjätunnuksista.',

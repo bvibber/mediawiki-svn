@@ -22,6 +22,15 @@ $messages['ar'] = array(
 	'intersection_noincludecats' => 'قائمة صفحة ديناميكية: ينبغي أن تضمن تصنيفا واحدا على الأقل، أو تحدد نطاقا!',
 );
 
+# فارسی (Huji - 4)
+$messages['fa'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: تعداد رده‌ها زیاد است!',
+	'intersection_toofewcats'    => 'DynamicPageList: تعداد رده‌ها کم است!',
+	'intersection_noresults'     => 'DynamicPageList: نتیجه‌ای وجود ندارد!',
+	'intersection_noincludecats' => 'DynamicPageList: شما حداقل باید یک رده را وارد کنید، یا یک فضای نام را مشخص کنید!',
+
+);
+
 /** Finnish (Suomi)
  * @author Nike
  */

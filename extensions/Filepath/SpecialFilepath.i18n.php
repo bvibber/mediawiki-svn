@@ -124,6 +124,17 @@ $wgFilepathMessages['ext'] = array(
 	'filepath_page'   => 'Archivu:',
 );
 
+# فارسی (Huji)
+$wgFilepathMessages['fa'] = array(
+	'filepath'         => 'مسیر پرونده',
+	'filepath_page'    => 'پرونده:',
+	'filepath_submit'  => 'مسیر',
+	'filepath-summary' => 'این صفحهٔ ویژه نشانی کامل برای یک پرونده را نشان می‌دهد. تصاویر با کیفیت وضوح کامل نشان داده می‌شوند، سایر انواع پرونده با برنامه مخصوص به خودشان باز می‌شوند.
+
+نشانی پرونده را بدون پیشوند «{{ns:image}}:» وارد کنید.',
+
+);
+
 $wgFilepathMessages['fi'] = array(
 	'filepath'         => 'Tiedoston osoite',
 	'filepath_page'    => 'Tiedosto',

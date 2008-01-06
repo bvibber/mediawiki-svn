@@ -99,9 +99,23 @@ $wgLinkSearchMessages['es'] = array(
 	'linksearch-line'  => '$1 enlazado desde $2',
 	'linksearch-error' => 'Los comodines sólo pueden aparecer al principio del nombre de sitio.',
 );
+
 $wgLinkSearchMessages['ext'] = array(
 	'linksearch-ok'    => 'Landeal',
 );
+
+# فارسی (Huji)
+$wgLinkSearchMessages['fa'] = array(
+	'linksearch'       => 'جستجوی پیوندهای وب',
+	'linksearch-pat'   => 'جستجوی الگو:',
+	'linksearch-ns'    => 'فضای نام:',
+	'linksearch-ok'    => 'جستجو',
+	'linksearch-text'  => 'نشانه‌هایی مانند "*.wikipedia.org" را می‌توان استفاده کرد.<br />پروتکل‌های پشتیبانی‌شده: <tt>$1</tt>',
+	'linksearch-line'  => '$1 از $2 پیوند دارد',
+	'linksearch-error' => 'نشانه‌ها فقط در ابتدای نام میزبان اینترنتی می‌توانند استفاده شوند.',
+
+);
+
 $wgLinkSearchMessages['fi'] = array(
 	'linksearch'       => 'Etsi ulkoisia linkkejä',
 	'linksearch-pat'   => 'Osoite',

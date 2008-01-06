@@ -43,6 +43,22 @@ $messages['bg'] = array(
 	'scanset_prev' => '&lt; Предишни',
 );
 
+# فارسی (Huji)
+$messages['fa'] = array(
+	'scanset_no_name'                   => 'ScanSet: شما باید نام مجموعه را وارد کنید، مثلاً <scanset name="EB1911" />.',
+	'scanset_invalid_name'              => 'ScanSet: مجموعهٔ غیرمجاز یا گمشده',
+	'scanset_unrecognised_index_format' => 'ScanSet: بافت نامشخص اندیس',
+	'scanset_opendir_error'             => 'ScanSet: خطا، شاخهٔ $1 را نمی‌توان باز کرد.',
+	'scanset_no_files'                  => 'ScanSet: هیچ پرونده‌ای در شاخه مشخص‌شده وجود ندارد.',
+	'scanset_no_volumes'                => 'ScanSet: فهرست جلدها پیدا نشد',
+	'scanset_missing_index_file'        => 'ScanSet: پرونده اندیس $1 پیدا نشد',
+	'scanset_index_file_error'          => 'ScanSet: خطا در بافت پرونده اندیس در سطر $1',
+	'scanset_invalid_volume'            => 'ScanSet: مجلد غیرمجاز',
+	'scanset_next'                      => 'بعدی >',
+	'scanset_prev'                      => '< قبلی',
+
+);
+
 /** Finnish (Suomi)
  * @author Nike
  */

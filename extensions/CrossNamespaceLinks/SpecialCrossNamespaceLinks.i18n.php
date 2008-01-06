@@ -69,6 +69,14 @@ $wgCrossNamespaceLinksMessages['et'] = array(
 	'crossnamespacelinks'         => 'Lingid teise nimeruumi',
 );
 
+# فارسی (Huji)
+$wgCrossNamespaceLinksMessages['fa'] = array(
+	'crossnamespacelinks'         => 'پیوندهای از یک فضای نام به فضای نام دیگر',
+	'crossnamespacelinks-summary' => 'این صفحه فهرستی از پیوندهایی که از یک صفحه در فضای نام اصلی به یک صفحه در دیگر فضاهای نام (به جز  {{ns:special}}، {{ns:talk}}، {{ns:project}} و {{ns:template}}) وجود دارد ارائه می‌کند، که استفاده از آن‌ها توصیه نمی‌شود.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|پیوند|پیوند}} به $3',
+
+);
+
 $wgCrossNamespaceLinksMessages['fi'] = array(
 	'crossnamespacelinks'         => 'Nimiavaruuksienväliset linkit',
 	'crossnamespacelinks-summary' => 'Alla on lista linkeistä, jotka osoittavat päänimiavaruudesta toiseen nimiavaruuteen — pois lukien linkit {{ns:special}}-, {{ns:talk}}-, {{ns:project}}- ja {{ns:template}}nimiavaruuksiin. Linkkejä muihin nimiavaruuksiin tulisi välttää.',

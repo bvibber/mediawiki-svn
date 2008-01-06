@@ -282,6 +282,29 @@ $wgLuceneSearchMessages['ext'] = array(
 	'searchall'             => 'tó',
 );
 
+# فارسی (Huji)
+$wgLuceneSearchMessages['fa'] = array(
+	'searchnumber'          => '<strong>نتایج $1-$2 از $3</strong>',
+	'searchprev'            => "« <span style='font-size: small'>قبلی</span>",
+	'searchnext'            => "<span style='font-size: small'>بعدی</span> »",
+	'lucene-searchscore'    => 'ارتباط: $1٪',
+	'lucene-resultsize'     => '$1 ($2 واژه)',
+	'searchdidyoumean'      => 'آیا منظور شما «<a href="$1">$2</a>» بود؟',
+	'searchnoresults'       => 'شرمنده، موردی مطابق با درخواست شما پیدا نشد.',
+	'searchnearmatches'     => '<b>این صفحه‌ها عنوانی شبیه درخواست شما دارند:</b>',
+	'lucenepowersearchtext' => 'جستجو در فضاهای نام:
+
+$1
+
+جستجو برای $3 $9 $10',
+	'lucenefallback'        => 'جستجوی ویکی مشکلی دارد. به احتمال این مشکل موقتی است.
+لطفاً چند لحظهٔ دیگر دوباره سعی کنید یا از خدمات جستجوی خارجی استفاده نمایید:',
+	'searchexactcase'       => 'جستجوی حساس به حروف بزرگ و کوچک',
+	'searchall'             => 'همه',
+	'searchincategory'      => 'دررده',
+
+);
+
 /** Finnish (Suomi)
  * @author Nike
  */

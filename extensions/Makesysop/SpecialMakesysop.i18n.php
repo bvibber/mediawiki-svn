@@ -400,6 +400,30 @@ Escrigueu el nom de l'usuari i premeu el botó per acceptar-ho.",
 	'already_bureaucrat' => 'Esti usuáriu ya es un alministraol',
 ),
 
+# فارسی (Huji)
+'fa' => array(
+	'makesysoptitle'           => 'مدیر کردن کاربران',
+	'makesysoptext'            => 'این فرم توسط دیوان‌سالارها برای تبدیل یک کاربر معمولی به مدیر استفاده می‌شود. نام کاربر را در جعبه وارد کنید و دکمه را بفشارید تا کاربر به مدیر تبدیل شود.',
+	'makesysopname'            => 'نام کاربر:',
+	'makesysopsubmit'          => 'این کاربر را مدیر کن',
+	'makesysopok'              => '<b>کاربر «$1» همینک مدیر است.</b>',
+	'makebureaucratok'         => '<b>کاربر «$1» همینک دیوان‌سالار است.</b>',
+	'makesysopfail'            => '<b>کاربر «$1» را نمی‌توان مدیر کرد. (آیا نام را درست وارد کردید؟)</b>',
+	'makesysop-see-userrights' => 'برای گزینه‌های بیشتر [[Special:Userrights]] را ببینید.',
+	'setbureaucratflag'        => 'تنظیم پرچم دیوان‌سالار',
+	'rights'                   => 'اختیارات:',
+	'set_user_rights'          => 'تنظیم اختیارات کاربر',
+	'user_rights_set'          => '<b>اختیارات «$1» به روز شد</b>',
+	'set_rights_fail'          => '<b>اختیارات «$1» را نمی توان تنظیم کرد. (آیا نام را درست وارد کردید؟)</b>',
+	'makesysop'                => 'مدیر کردن کاربران',
+	'already_sysop'            => 'این کاربر پیش از این هم مدیر بوده‌است',
+	'already_bureaucrat'       => 'این کاربر پیش از این هم دیوان‌سالار بوده‌است',
+	'group-steward'            => 'ویکیبدان',
+	'group-steward-member'     => 'ویکیبد',
+	'grouppage-steward'        => '{{ns:project}}:ویکیبدان',
+
+),
+
 /** Finnish (Suomi)
  * @author Nike
  */

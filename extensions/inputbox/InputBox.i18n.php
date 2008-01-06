@@ -172,10 +172,14 @@ $messages['ext'] = array(
 	'createarticle'           => 'Creal artículu',
 );
 
+# فارسی (Huji)
 $messages['fa'] = array(
-	'tryexact'       => 'مطابقت نظیر به نظیر را بیازما',
-	'searchfulltext' => 'جستجوی کل متن',
-	'createarticle'  => 'ایجاد مقاله',
+	'inputbox-error-no-type'  => 'نوع جعبهٔ ورودی  ایجادشونده را مشخص نکرده‌اید.',
+	'inputbox-error-bad-type' => 'نوع \\\'\\\'$1\\\'\\\' برای جعبهٔ ورودی شناخته نیست. لطفاً یکی از موارد "create", "comment", "search" or "search2" را مشخص کنید.',
+	'tryexact'                => 'مطابقت نظیر به نظیر را بیازما',
+	'searchfulltext'          => 'جستجوی کل متن',
+	'createarticle'           => 'ایجاد مقاله',
+
 );
 
 $messages['fi'] = array(

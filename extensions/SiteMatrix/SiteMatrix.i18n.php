@@ -126,6 +126,15 @@ $wgSiteMatrixMessages['ext'] = array(
 	'sitematrix-language' => 'Palra',
 );
 
+# فارسی (Huji)
+$wgSiteMatrixMessages['fa'] = array(
+	'sitematrix'          => 'فهرست ویکی‌های ویکی‌مدیا',
+	'sitematrix-language' => 'زبان',
+	'sitematrix-project'  => 'نام پروژه، پیوند میان‌پروژه و پیوند میان‌ویکی',
+	'sitematrix-others'   => 'دیگر پروژه‌های ویکی‌مدیا',
+
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike

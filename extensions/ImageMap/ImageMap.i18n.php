@@ -113,6 +113,21 @@ function efImageMapMessages() {
 	'imagemap_description'          => 'Al tentu esta imahin',
 ),
 
+# فارسی (Huji)
+'fa' => array(
+	'imagemap_no_image'           => '<imagemap>: باید در اولین سطر یک تصویر را مشخص کنید',
+	'imagemap_invalid_image'      => '<imagemap>: تصویر غیرمجاز است یا وجود ندارد',
+	'imagemap_no_link'            => '<imagemap>: هیچ پیوند مجازی تا انتهای سطر $1 پیدا نشد',
+	'imagemap_invalid_title'      => '<imagemap>: عنوان غیرمجاز در پیوند سطر $1',
+	'imagemap_missing_coord'      => '<imagemap>: تعداد مختصات در سطر $1 برای شکل کافی نیست',
+	'imagemap_unrecognised_shape' => '<imagemap>: شکل ناشناخته در سطر $1، هر سطر باید با یکی از این دستورات آغاز شود: default، rect، circle یا poly',
+	'imagemap_no_areas'           => '<imagemap>: دست کم یک تخصیص فضا باید وجود داشته باشد',
+	'imagemap_invalid_coord'      => '<imagemap>: مختصات غیرمجاز در سطر $1، مختصات باید عدد باشد',
+	'imagemap_invalid_desc'       => '<imagemap>: توضیحات غیرمجاز، باید یکی از این موارد باشد: <tt>$1</tt>',
+	'imagemap_description'        => 'دربارهٔ این تصویر',
+
+),
+
 /* French */
 'fr' => array(
 	'imagemap_no_image'             => '&lt;imagemap&gt; : vous devez spécifier une image dans la première ligne',
