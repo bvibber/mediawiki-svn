@@ -288,6 +288,18 @@ $wgFilepathMessages['lb'] = array(
 	'filepath_page' => 'Fichier:',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$wgFilepathMessages['li'] = array(
+	'filepath'         => 'Bestandjspaad',
+	'filepath_page'    => 'Bestandj:',
+	'filepath_submit'  => 'Zeuk',
+	'filepath-summary' => "Dees speciaal pazjena guf 't vollejig paad veur 'n bestandj. Aafbeildinge waere in häör vollejige resolutie getoeandj. Anger bestandjstypes waere drèk in 't mit 't MIME-type verbónje programma geäöpendj.
+
+Veur de bestandjsnaam in zónger 't veurvoegsel \"{{ns:image}}:\".",
+);
+
 $wgFilepathMessages['lo'] = array(
 	'filepath'         => 'ທາງໄປຫາໄຟລ໌',
 );

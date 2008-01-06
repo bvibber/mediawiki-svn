@@ -169,6 +169,13 @@ $wgDeletedContribsMessages['lb'] = array(
 	'deletedcontributions' => 'Geläschte Kontributiounen',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$wgDeletedContribsMessages['li'] = array(
+	'deletedcontributions' => 'Gewisdje gebroekersbiedraag',
+);
+
 /** Lozi (Silozi)
  * @author Ooswesthoesbes
  */

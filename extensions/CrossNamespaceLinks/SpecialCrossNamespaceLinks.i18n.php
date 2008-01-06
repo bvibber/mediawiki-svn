@@ -207,6 +207,15 @@ $wgCrossNamespaceLinksMessages['lb'] = array(
 	'crossnamespacelinkstext'     => '$1 : huet $2 {{PLURAL:$2|Link|Linken}} an den Nummraum « $3 »',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$wgCrossNamespaceLinksMessages['li'] = array(
+	'crossnamespacelinks'         => 'Kruutsverwiezinge tösse naamruumdjes',
+	'crossnamespacelinks-summary' => "Dees pazjena veurzuut in 'n euverzich van links vanoet 'ne pazjena in de huidnaamruumdje nao anger naamruumdjes (mit oetzönjering van de naamruumdjes {{ns:special}}, {{ns:talk}}, {{ns:project}} en {{ns:template}}, wovan 't gebroek wuuertj aafgeraoje.",
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|link|links}} nao $3',
+);
+
 /** Lozi (Silozi)
  * @author Ooswesthoesbes
  */

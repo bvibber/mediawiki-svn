@@ -1517,23 +1517,27 @@ D'verschlësselt Versioun dovunner fannt der ënnen. Si gëtt ëffentlech op [[S
  * @author Ooswesthoesbes
  */
 $wgBoardVoteMessages['li'] = array(
-	'boardvote'            => 'Wikimedia Board of Trustees-verkezing',
-	'boardvote_entry'      => '* [[Special:Boardvote/vote|Stöm]]
+	'boardvote'              => 'Wikimedia Board of Trustees-verkezing',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Stöm]]
 * [[Special:Boardvote/list|Oetgebrachdje stömme toeane]]
 * [[Special:Boardvote/dump|Dump geëncrypdje verkezingsopname]]',
-	'boardvote_time'       => 'Tied',
-	'boardvote_user'       => 'Gebroeker',
-	'boardvote_edits'      => 'Bewerkinge',
-	'boardvote_days'       => 'Daag',
-	'boardvote_ip'         => 'IP-adres',
-	'boardvote_ua'         => 'User-agent',
-	'boardvote_dumplink'   => 'Klik hiej',
-	'boardvote_submit'     => 'ok',
-	'boardvote_strike'     => 'Óngeljig',
-	'boardvote_unstrike'   => 'Geljig',
-	'boardvote_edits_many' => 'väöl',
-	'boardvote_welcome'    => "Wèlkom, '''$1'''!",
-	'go_to_board_vote'     => 'Wikimedia Bestuursverkezing 2007',
+	'boardvote_time'         => 'Tied',
+	'boardvote_user'         => 'Gebroeker',
+	'boardvote_edits'        => 'Bewerkinge',
+	'boardvote_days'         => 'Daag',
+	'boardvote_ip'           => 'IP-adres',
+	'boardvote_ua'           => 'User-agent',
+	'boardvote_dumplink'     => 'Klik hiej',
+	'boardvote_submit'       => 'ok',
+	'boardvote_strike'       => 'Óngeljig',
+	'boardvote_unstrike'     => 'Geljig',
+	'boardvote_notstarted'   => "'t Stömme is nag neet begós",
+	'boardvote_edits_many'   => 'väöl',
+	'group-boardvote'        => 'Boardvote-administrators',
+	'group-boardvote-member' => 'Boardvote-administrator',
+	'grouppage-boardvote'    => '{{ns:project}}:Boardvote-administrator',
+	'boardvote_welcome'      => "Wèlkom, '''$1'''!",
+	'go_to_board_vote'       => 'Wikimedia Bestuursverkezing 2007',
 );
 
 $wgBoardVoteMessages['loz'] = array(
@@ -1545,22 +1549,49 @@ $wgBoardVoteMessages['loz'] = array(
  * @author Matasg
  */
 $wgBoardVoteMessages['lt'] = array(
-	'boardvote'            => 'Vikimedijos kontrolės tarybos rinkimai',
-	'boardvote_entry'      => '* [[Special:Boardvote/vote|Balsuoti]]
+	'boardvote'              => 'Vikimedijos išlaikymo tarybos rinkimai',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Balsuoti]]
 * [[Special:Boardvote/list|Balsavimų sąrašas]]
 * [[Special:Boardvote/dump|Koduoti rinkimų rezultatai]]',
-	'boardvote_novotes'    => 'Niekas dar nebalsavo.',
-	'boardvote_time'       => 'Laikas',
-	'boardvote_user'       => 'Naudotojas',
-	'boardvote_edits'      => 'Redagavimai',
-	'boardvote_days'       => 'Dienos',
-	'boardvote_ip'         => 'IP',
-	'boardvote_dumplink'   => 'Spauskite čia',
-	'boardvote_submit'     => 'Gerai',
-	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Vikimedijos tarybos rinkimai</a>:  Balsavimas vyksta iki liepos 12-os',
-	'boardvote_notstarted' => 'Balsavimas dar neprasidėjo',
-	'boardvote_welcome'    => "Sveiki '''$1'''!",
-	'go_to_board_vote'     => 'Vikimedijos tarybos rinkimai 2007',
+	'boardvote_intro_change' => '<p>Jūs jau balsavote. Tačiau galite pakeisti savo balsą naudodami žemiau pateiktą formą. Prašome patikrinti laukelius šalia kiekvieno kandidato, kuriam pritariate.</p>',
+	'boardvote_entered'      => 'Ačiū, Jūsų balsavimas įrašytas.
+
+Jei norite, jūs galite įrašyti kitas detales. Jūsų balsavimo įrašas yra:
+
+<pre>$1</pre>
+
+Jis buvo užkoduotas viešu raktu rinkimų administratorių:
+
+<pre>$2</pre>
+
+Paskutinė koduota versija žemiau. Ji bus viešai rodoma [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Atgal]]',
+	'boardvote_notloggedin'  => 'Jūs esate neprisijungęs. Norėdamas balsuoti, privalote naudoti sąskaitą su mažiausiai $1 redagavimų prieš $2, ir pirmuoju redagavimų prieš $3.',
+	'boardvote_novotes'      => 'Niekas dar nebalsavo.',
+	'boardvote_time'         => 'Laikas',
+	'boardvote_user'         => 'Naudotojas',
+	'boardvote_edits'        => 'Redagavimai',
+	'boardvote_days'         => 'Dienos',
+	'boardvote_ip'           => 'IP',
+	'boardvote_ua'           => 'Naudotojo agentas',
+	'boardvote_dumplink'     => 'Spauskite čia',
+	'boardvote_submit'       => 'Gerai',
+	'boardvote_needadmin'    => 'Tik rinkimų administratoriai gali vykdyti šią operaciją.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Vikimedijos tarybos rinkimai</a>:  Balsavimas vyksta iki liepos 12-os',
+	'boardvote_notstarted'   => 'Balsavimas dar neprasidėjo',
+	'boardvote_closed'       => 'Balsavimas uždarytas, žiūrėkite [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En rinkimų puslapį rezultatams].',
+	'boardvote_edits_many'   => 'daug',
+	'boardvote_blocked'      => 'Atsiprašome, jūs buvote užblokuotas wiki, kurioje užsiregistravote. Užblokuotiems naudotojams nėra leidžiama balsuoti.',
+	'boardvote_welcome'      => "Sveiki '''$1'''!",
+	'go_to_board_vote'       => 'Vikimedijos tarybos rinkimai 2007',
+	'boardvote_redirecting'  => 'Pagerintam saugumui ir aiškumui, mes balsavimą leidžiame išoriniame, nepriklausomai kontroliuojamame serveryje.
+
+Jūs būsite peradresuotas į šį išorinį serverį po 20 sekundžių. [1$ Spauskite čia], jei norite patekti dabar.
+
+Gali būti rodomas saugumo įspėjimas apie nepasirašytą sertifikatą.',
 );
 
 $wgBoardVoteMessages['nan'] = array(

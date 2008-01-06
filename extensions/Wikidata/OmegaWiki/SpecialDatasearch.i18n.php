@@ -11,6 +11,13 @@ $wgDataSearchMessages['en'] = array(
 	'datasearch' => 'Wikidata: Data search',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$wgDataSearchMessages['an'] = array(
+	'datasearch' => 'Wikidata: Mirar datos',
+);
+
 $wgDataSearchMessages['ar'] = array(
 	'datasearch' => 'Wikidata: بحث البيانات',
 );

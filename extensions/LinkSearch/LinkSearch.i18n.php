@@ -286,6 +286,14 @@ $wgLinkSearchMessages['lb'] = array(
 	'linksearch-line' => '$1 verlinkt vun $2',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$wgLinkSearchMessages['li'] = array(
+	'linksearch-ns' => 'Naamruumdje:',
+	'linksearch-ok' => 'Zeuk',
+);
+
 $wgLinkSearchMessages['lo'] = array(
 	'linksearch'       => 'ຄົ້ນຫາການເຊື່ອມຕໍ່ຫາເວັບ',
 );

@@ -356,6 +356,21 @@ $wgExpandTemplatesMessages['lb'] = array(
 	'expand_templates_preview'         => 'Preview',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$wgExpandTemplatesMessages['li'] = array(
+	'expandtemplates'                  => 'Sjablone plekke',
+	'expand_templates_intro'           => "Dees speciaal pazjena laes de ingegaeve teks in en plektj (mitte functie subst) recursief alle sjablone in de teks. 't Plek ouch alle parserfuncties wie <nowiki>{{</nowiki>#if:...}} en variabele wie <nowiki>{{</nowiki>CURRENTDAY}} - vriejwaal al tösse dóbbel accolades.
+Hiej veur waere de relevante functies van de MediaWiki-parser gebroek.",
+	'expand_templates_title'           => 'Contekstitel, veur {{PAGENAME}}, etc:',
+	'expand_templates_input'           => 'Inlaajteks:',
+	'expand_templates_output'          => 'Rezultaot',
+	'expand_templates_ok'              => 'ok',
+	'expand_templates_remove_comments' => 'Wis opmerkinge',
+	'expand_templates_preview'         => 'Veurvertoeaning',
+);
+
 $wgExpandTemplatesMessages['lo'] = array(
 	'expandtemplates'                  => 'ຂະຫຍາຍແມ່ແບບ',
 );

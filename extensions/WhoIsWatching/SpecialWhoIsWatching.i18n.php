@@ -62,11 +62,16 @@ $allMessages = array(
 [[MediaWiki:Number_of_watching_users_pageview]] para definir un punto de entrada a esta páxina especial.',
         ),
 
-        'hsb' => array(
-                'whoiswatching'               => 'Štó wobkedźbuje wiki-stronu',
-                'specialwhoiswatchingthepage' => 'Štó wobkedźbuje %s',
-                'specialwhoiswatchingusage'   => 'Tuta specialna strona njeda so na so wužiwać. Prošu wužij stronu [[MediaWiki:Number_of_watching_users_pageview]], zo by přistupny dypk za tutu specialnu stronu definował.',
-        ),
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+	'hsb' => array(
+		'whoiswatching'                => 'Štó wobkedźbuje wiki-stronu',
+		'specialwhoiswatchingthepage'  => 'Štó wobkedźbuje %s',
+		'specialwhoiswatchingusage'    => 'Tuta specialna strona njeda so na so wužiwać. Prošu wužij stronu [[MediaWiki:Number_of_watching_users_pageview]], zo by přistupny dypk za tutu specialnu stronu definował.',
+		'specialwhoiswatchingaddusers' => 'Přidaj wužiwarjow za wobkedźbowanje strony',
+		'specialwhoiswatchingaddbtn'   => 'Přidaj wubranych wužiwarjow',
+	),
 
 /** Lithuanian (Lietuvių)
  * @author Matasg

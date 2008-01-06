@@ -49,6 +49,31 @@ $allMessages = array(
 		'changeauthor-rev' => 'r$1',
 	),
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+	'an' => array(
+		'changeauthor'                      => "Cambiar l'autor d'a edizión",
+		'changeauthor-title'                => "Cambiar l'autor d'una edizión",
+		'changeauthor-search-box'           => 'Mirar edizions',
+		'changeauthor-pagename-or-revid'    => "Nombre d'a pachina u ID d'a bersión:",
+		'changeauthor-pagenameform-go'      => 'Ir-ie',
+		'changeauthor-comment'              => 'Comentario:',
+		'changeauthor-changeauthors-multi'  => 'Cambiar autor(s)',
+		'changeauthor-explanation-multi'    => "Con iste formulario puede cambiar os autors d'a edizión. Nomás ha de cambiar uno u más nombres d'usuarios en lista que s'amuestra contino, adibir-ie un comentario (opzional) y punchar en o botón de 'Cambiar autor(s)'",
+		'changeauthor-changeauthors-single' => 'Cambiar autor',
+		'changeauthor-explanation-single'   => "Con iste formulario puede cambiar l'autor una edizión. Nomás ha de cambiar o nombre d'usuario que s'amuestra contino, adibir-ie un comentario (opzional) y punchar en o botón 'Cambiar autor'.",
+		'changeauthor-invalid-username'     => 'Nombre d\'usuario "$1" no conforme.',
+		'changeauthor-nosuchuser'           => 'No esiste l\'usuario "$1"',
+		'changeauthor-revview'              => 'Edizión #$1 de $2',
+		'changeauthor-nosuchtitle'          => 'No bi ha garra pachina tetulata "$1".',
+		'changeauthor-weirderror'           => 'Ha escaizito una error á saber que estrania. Por fabor, torne á fer a demanda. Si ista error contina amaneixendo, talment a base de datos sía estricallata.',
+		'changeauthor-invalidform'          => 'Por fabor, faiga serbir o formulario furnito en Special:ChangeAuthor millor que no atro presonalizato.',
+		'changeauthor-success'              => "A suya demanda s'ha prozesato correutament.",
+		'changeauthor-logentry'             => "S'ha cambiato l'autor d'a edizión $2 de $1 de $3 á $4",
+		'changeauthor-logpagename'          => "Rechistro de cambeos d'autor",
+	),
+
 /** Arabic (العربية)
  * @author Meno25
  */

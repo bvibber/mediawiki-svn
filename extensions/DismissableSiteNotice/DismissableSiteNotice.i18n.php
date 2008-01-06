@@ -160,6 +160,13 @@ $wgDismissableSiteNoticeMessages['lb'] = array(
 	'sitenotice_close' => 'verstoppen',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$wgDismissableSiteNoticeMessages['li'] = array(
+	'sitenotice_close' => 'sloet',
+);
+
 $wgDismissableSiteNoticeMessages['lt'] = array(
 	'sitenotice_close' => 'paslėpti',
 );

@@ -156,7 +156,7 @@ Protokol aktualnych wobkedźbowankow steji na [[Special:PovWatch/log]] k dispozi
 	'povwatch_not_allowed_subscribers' => 'Nimaš dowolnosć sej lisćinu abonentow PovWatch wobhladać.',
 	'povwatch_unknown_subpage'         => 'Njeznata podstrona.',
 	'povwatch_push'                    => 'Sunyć',
-	'povwatch_push_intro'              => 'Wužij formular deleka, zo by nastawki do wobkedźbowankow abonowacych wužiwarjow sunyli. Prošu bjer na kedźbu z pisanjom titula: samo njeksistowace titule hodźa so přidać a njeje žana móžnosć titul wotstronić, kotryž bu přesunjeny.',
+	'povwatch_push_intro'              => 'Wužij formular deleka, zo by nastawki do wobkedźbowankow abonowacych wužiwarjow sunył. Prošu bjer na kedźbu z pisanjom titula: samo njeeksistowace titule hodźa so přidać a njeje žana móžnosć titul wotstronić, kotryž bu přesunjeny.',
 	'povwatch_title'                   => 'Titul:',
 	'povwatch_comment'                 => 'Komentar protokolować:',
 	'povwatch_no_log'                  => 'Protokolowe zapiski njejsu.',

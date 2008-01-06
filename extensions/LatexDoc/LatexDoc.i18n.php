@@ -97,7 +97,7 @@ $3',
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'latexdoc_no_text'         => 'Nastawk žadyn tekst njewobsahuje, njeje móžno DVI wupłodźić',
+	'latexdoc_no_text'         => 'Strona žadyn tekst njewobsahuje, DVI njehodźi so wutworić',
 	'latexdoc_cant_create_dir' => 'Nachwily zapis $1 njeda so wutworjeć',
 	'latexdoc_cant_write'      => 'Njeje móžno do dataje $1 pisać',
 	'latexdoc_error'           => 'LaTeX zmylk

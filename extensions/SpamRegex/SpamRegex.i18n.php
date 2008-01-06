@@ -148,7 +148,7 @@ $messages['gl'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'spamregex_summary'              => 'Tekst je so w zjeću nastawka namakał.',
+	'spamregex_summary'              => 'Tekst je so w zjeću strony namakał.',
 	'spamregex-intro'                => 'Wužij tutón formular, zo by wurazy skutkownje přećiwo składowanju w teksće strony blokował. Jel tekst daty wuraz wobsahuje, změna njeby so składowała a wujasnjenje so wužiwarjej, kiž je spytał stronu składować, pokaza. Jewi so warnowanje, zo wurazy njesmědźa překrótke abo přepowšitkowne być.',
 	'spamregex-page-title'           => 'Spam Regex Blokowanje njepožadanych wurazow',
 	'spamregex-currently-blocked'    => "'''Tuchwilu zablokowane frazy:'''",
@@ -166,7 +166,7 @@ $messages['hsb'] = array(
 	'spamregex-warning-2'            => 'Prošu přepruwuj znajmjeńša jedyn blokowanski modus.',
 	'spamregex-already-blocked'      => '"$1" je hižo zablokowany',
 	'spamregex-phrase-block'         => 'Fraza, kotraž ma so blokować:',
-	'spamregex-phrase-block-text'    => 'frazu w teksće nastawka blokować',
+	'spamregex-phrase-block-text'    => 'frazu w teksće stronya blokować',
 	'spamregex-phrase-block-summary' => 'frazu w zjeću blokować',
 	'spamregex-block-submit'         => 'Tutu&nbsp;frazu&nbsp;blokować',
 	'spamregex-text'                 => '(Tekst)',
