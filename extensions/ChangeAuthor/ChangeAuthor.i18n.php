@@ -466,7 +466,6 @@ $allMessages = array(
 		'changeauthor-logpagename'          => 'Autorennoome-Annerengslogbouk',
 		'changeauthor-rev'                  => 'Version $1',
 	),
-);
 
 /** Volapük (Volapük)
  * @author Malafaya
@@ -476,4 +475,4 @@ $allMessages = array(
 		'changeauthor-changeauthors-multi'  => 'Votükön lautani(s)',
 		'changeauthor-changeauthors-single' => 'Votükön lautani',
 	),
-
+);
