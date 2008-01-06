@@ -67,6 +67,15 @@ $allMessages = array(
 		'signaturelogpage' => 'Unnerschrifts-Logbouk',
 	),
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+	'vo' => array(
+		'sign-realname'                => 'Nem:',
+		'sign-viewfield-realname'      => 'Nem',
+		'sign-viewfield-reviewcomment' => 'Küpet',
+	),
+
 	'yue' => array(
 		'signaturelogpage'      => '簽名日誌',
 		'signaturelogpagetext'  => '呢個係全部經過[[Special:SignDocument]]簽過名嘅文件嘅日誌。',

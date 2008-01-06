@@ -271,6 +271,13 @@ $wgAjaxShowEditorsMessages['sv'] = array(
 	'ajax-se-idling' => '($1s sedan)',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$wgAjaxShowEditorsMessages['vo'] = array(
+	'ajax-se-idling' => '(bü $1s)',
+);
+
 $wgAjaxShowEditorsMessages['yue'] = array(
 	'ajax-se-title' => '而家編輯緊:',
 	'ajax-se-pending' => '而家重新整理緊 ... (撳一下呢個盒或者開始編輯)',

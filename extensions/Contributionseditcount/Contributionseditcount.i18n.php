@@ -102,6 +102,13 @@ function efContributionseditcountMessages()  {
 	'contributionseditcount' => 'Dissen Benutser häd $1 Beoarbaidengen.',
 ),
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+'vo' => array(
+	'contributionseditcount' => 'Geban at labon redakamis $1.',
+),
+
 'yue' => array(
 	'contributionseditcount'  =>  '呢個用戶有 $1 次編輯。',
 ),

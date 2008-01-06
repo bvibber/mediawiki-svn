@@ -94,3 +94,10 @@ $messages['sk'] = array(
 $messages['stq'] = array(
 	'eval_submit' => 'wäidierje',
 );
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'eval_code' => 'Kot',
+);

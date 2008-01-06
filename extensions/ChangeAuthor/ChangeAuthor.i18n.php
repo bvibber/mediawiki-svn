@@ -467,3 +467,13 @@ $allMessages = array(
 		'changeauthor-rev'                  => 'Version $1',
 	),
 );
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+	'vo' => array(
+		'changeauthor-comment'              => 'Küpet:',
+		'changeauthor-changeauthors-multi'  => 'Votükön lautani(s)',
+		'changeauthor-changeauthors-single' => 'Votükön lautani',
+	),
+

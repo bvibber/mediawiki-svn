@@ -207,6 +207,14 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Föregående ($1)',
 ),
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+'vo' => array(
+	'backforth-next' => 'Sököl ($1)',
+	'backforth-prev' => 'Büik ($1)',
+),
+
 'yue' => array(
 	'backforth-next' => '下一篇 ($1)',
 	'backforth-prev' => '上一篇 ($1)',

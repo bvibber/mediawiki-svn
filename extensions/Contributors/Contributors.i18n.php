@@ -561,11 +561,12 @@ function efContributorsMessages() {
  * @author Malafaya
  */
 'vo' => array(
-	'contributors'         => 'Keblünans',
-	'contributors-toolbox' => 'Keblünans cifik',
-	'contributors-target'  => 'Tiäd:',
-	'contributors-submit'  => 'Jonolöd',
-	'contributors-others'  => 'e votik $1',
+	'contributors'            => 'Keblünans',
+	'contributors-toolbox'    => 'Keblünans cifik',
+	'contributors-target'     => 'Tiäd:',
+	'contributors-submit'     => 'Jonolöd',
+	'contributors-others'     => 'e votik $1',
+	'contributors-nosuchpage' => 'Pad: $1 no dabinon.',
 ),
 
 /* Cantonese (Shinjiman) */

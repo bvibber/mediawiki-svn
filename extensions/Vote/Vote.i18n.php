@@ -361,6 +361,13 @@ Gioanin|Gioanin',
 	'vote-invalid-choice' => 'Anjeun kudu milih salah sahiji ti nu aya.',
 ),
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+'vo' => array(
+	'vote-submit' => 'Vögodön',
+),
+
 /* Cantonese (Shinjiman) */
 'yue' => array(
 	'vote' => '投票',

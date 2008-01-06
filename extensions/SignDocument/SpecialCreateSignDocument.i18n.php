@@ -363,5 +363,12 @@ Për piasì, ch'a varda d'avej controlà sò test coma ch'as dev anans che mande
 		'createsigndoc-phone' => 'Inombolo yelucingo:',
 		'createsigndoc-create' => 'Kúdála',
 	),
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+	'vo' => array(
+		'createsigndoc-pagename'      => 'Pad:',
+		'createsigndoc-error-generic' => 'Pöl: $1',
+	),
 );
-?>

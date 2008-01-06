@@ -220,6 +220,13 @@ $allMessages = array(
 [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installationsanwiesengen] foar wiedere Details.",
 	),
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+	'vo' => array(
+		'tasklistemail' => 'O %s löfik',
+	),
+
 	'zh-tw' => array(            //Taiwanese Chinese
 		'tasklist'                => '任務清單',  //Task List
 		'tasklistbyproject'       => '依專案列出任務', //Task List By Project

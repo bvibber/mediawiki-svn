@@ -134,3 +134,10 @@ $messages['stq'] = array(
 	'showprocesslist-state'   => 'Stoatus',
 	'showprocesslist-info'    => 'Info',
 );
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'showprocesslist-user' => 'Geban',
+);

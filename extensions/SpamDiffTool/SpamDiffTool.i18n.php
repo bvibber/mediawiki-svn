@@ -204,3 +204,11 @@ Staal sicher, dät du nit komplette Domains blokkierst, do der separate Benutser
 	'spamdifftool_block'            => 'Speere:',
 	'spamdifftool_submit_buttom'    => 'Spiekerje',
 );
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'spamdifftool_option_none' => 'nos',
+);
+

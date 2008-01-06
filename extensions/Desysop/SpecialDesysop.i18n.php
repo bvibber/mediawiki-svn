@@ -361,6 +361,14 @@ $wgDesysopMessages['su'] = array(
 	'desysop'              => 'Cabut status kuncén pamaké',
 	'desysopnot_sysop'     => 'Pamaké ieu lain administrator',
 );
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$wgDesysopMessages['vo'] = array(
+	'desysopname' => 'Nem gebana:',
+);
+
 $wgDesysopMessages['tet'] = array(
 	'desysoptitle'         => 'Hasai kuana administradór ba uza-na\'in ida',
 	'desysoptext'          => 'Burokrata bele uza pájina ne\'e ba hasai kuana administradór.',

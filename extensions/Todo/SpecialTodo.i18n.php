@@ -271,3 +271,13 @@ $messages['oc'] = array(
 	'todo-form-email'       => 'Per recebre las notificacions per corrièr electronic un còp l’article clausurat, inscrivissètz vòstra adreça dins lo quadre çaijós :',
 	'todo-form-submit'      => 'Sometre la requèsta',
 );
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'todo-new-queue'    => 'nulik',
+	'todo-list-change'  => 'Votükön',
+	'todo-form-details' => 'Notets:',
+);
+
