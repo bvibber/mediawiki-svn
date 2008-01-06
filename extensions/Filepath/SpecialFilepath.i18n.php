@@ -44,15 +44,6 @@ $wgFilepathMessages['ast'] = array(
 	'filepath_submit' => 'Ruta',
 );
 
-/** Kotava (Kotava)
- * @author Wikimistusik
- */
-$wgFilepathMessages['avk'] = array(
-	'filepath'        => 'Iyeltakkelda',
-	'filepath_page'   => 'Iyeltak :',
-	'filepath_submit' => 'Kelda',
-);
-
 /** Bulgarian (Български)
  * @author Spiritia
  * @author DCLXVI

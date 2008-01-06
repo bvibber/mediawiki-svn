@@ -42,13 +42,6 @@ function efContributorsMessages() {
 	'contributors-nosuchpage'  => 'الصفحة $1 غير موجودة.',
 ),
 
-/** Kotava (Kotava)
- * @author Wikimistusik
- */
-'avk' => array(
-	'contributors' => 'Webesikeem',
-),
-
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

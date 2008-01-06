@@ -25,15 +25,6 @@ $messages['ar'] = array(
 	'filelist-show-gallery' => 'عرض المعرض',
 );
 
-/** Kotava (Kotava)
- * @author Wikimistusik
- */
-$messages['avk'] = array(
-	'filelist'              => 'Iyeltakeem',
-	'filelist-show-list'    => 'Nedira va iyeltakeem',
-	'filelist-show-gallery' => 'Nedira va ginsa',
-);
-
 /** Bulgarian (Български)
  * @author Spiritia
  */
