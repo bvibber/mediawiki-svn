@@ -155,6 +155,10 @@ $wgDismissableSiteNoticeMessages['kk-latn'] = array(
 $wgDismissableSiteNoticeMessages['kk-arab'] = array(
 	'sitenotice_close' => 'تاسالاۋ',
 );
+$wgDismissableSiteNoticeMessages['kk-kz'] = $wgDismissableSiteNoticeMessages['kk-cyrl'];
+$wgDismissableSiteNoticeMessages['kk-tr'] = $wgDismissableSiteNoticeMessages['kk-latn'];
+$wgDismissableSiteNoticeMessages['kk-cn'] = $wgDismissableSiteNoticeMessages['kk-arab'];
+$wgDismissableSiteNoticeMessages['kk'] = $wgDismissableSiteNoticeMessages['kk-cyrl'];
 
 $wgDismissableSiteNoticeMessages['lb'] = array(
 	'sitenotice_close' => 'verstoppen',

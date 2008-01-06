@@ -149,6 +149,10 @@ $wgDeletedContribsMessages['kk-latn'] = array(
 $wgDeletedContribsMessages['kk-arab'] = array(
 	'deletedcontributions' => 'پايدالانۋشىنىڭ جويىلعان ٷلەسٸ',
 );
+$wgDeletedContribsMessages['kk-kz'] = $wgDeletedContribsMessages['kk-cyrl'];
+$wgDeletedContribsMessages['kk-tr'] = $wgDeletedContribsMessages['kk-latn'];
+$wgDeletedContribsMessages['kk-cn'] = $wgDeletedContribsMessages['kk-arab'];
+$wgDeletedContribsMessages['kk'] = $wgDeletedContribsMessages['kk-cyrl'];
 
 $wgDeletedContribsMessages['ku-latn'] = array(
 	'deletedcontributions' => 'Guherandinên bikarhênerekî yê jêbirî',

@@ -212,21 +212,8 @@ function efCountEditsMessages( $single = false ) {
 	'countedits-nocontribs' => 'Il sito non ha subito alcuna modifica.',
 ),
 
-/* Kazakh default (AlefZet) */
-'kk' => array(
-	'countedits' => 'Түзету санау',
-	'countedits-warning' => "'''Назар салыңыз:''' Кітапті мұқабасынан жорамалдамаңыз. Үлескерді түзету санынан жорамалдамаңыз.",
-	'countedits-username' => 'Қатысуша аты:',
-	'countedits-ok' => 'Жарайды',
-	'countedits-nosuchuser' => 'Мынадай атауы бар қатысушы жоқ: $1.',
-	'countedits-resultheader' => '$1 деген үшін табылған натижелері',
-	'countedits-resulttext' => '$1 деген $2 түзету істеген',
-	'countedits-mostactive' => 'Ең белсенді үлескерлер',
-	'countedits-nocontribs' => 'Бұл уикиде еш үлес болған жоқ.',
-),
-
 /* Kazakh Cyrillic (AlefZet) */
-'kk-kz' => array(
+'kk-cyrl' => array(
 	'countedits' => 'Түзету санау',
 	'countedits-warning' => "'''Назар салыңыз:''' Кітапті мұқабасынан жорамалдамаңыз. Үлескерді түзету санынан жорамалдамаңыз.",
 	'countedits-username' => 'Қатысуша аты:',
@@ -239,7 +226,7 @@ function efCountEditsMessages( $single = false ) {
 ),
 
 /* Kazakh Latin (AlefZet) */
-'kk-tr' => array(
+'kk-latn' => array(
 	'countedits' => 'Tüzetw sanaw',
 	'countedits-warning' => "'''Nazar salıñız:''' Kitapti muqabasınan joramaldamañız. Üleskerdi tüzetw sanınan joramaldamañız.",
 	'countedits-username' => 'Qatıswşa atı:',
@@ -252,7 +239,7 @@ function efCountEditsMessages( $single = false ) {
 ),
 
 /* Kazakh Arabic (AlefZet) */
-'kk-cn' => array(
+'kk-arab' => array(
 	'countedits' => 'تٷزەتۋ ساناۋ',
 	'countedits-warning' => "'''نازار سالىڭىز:''' كٸتاپتٸ مۇقاباسىنان جورامالداماڭىز. ٷلەسكەردٸ تٷزەتۋ سانىنان جورامالداماڭىز.",
 	'countedits-username' => 'قاتىسۋشا اتى:',
@@ -530,6 +517,12 @@ function efCountEditsMessages( $single = false ) {
 ),
 
 	);
+
+	/* Kazakh fallbacks */
+	$messages['kk'] = $messages['kk-cyrl'];
+	$messages['kk-kz'] = $messages['kk-cyrl'];
+	$messages['kk-tr'] = $messages['kk-latn'];
+	$messages['kk-cn'] = $messages['kk-arab'];
 
 	/* Chinese defaults, fallback to zh-hans or zh-hant */
 	$messages['zh'] = $messages['zh-hans'];

@@ -663,6 +663,11 @@ $messages['kk-arab'] = array(
 	'makebot-logentrygrant'   => '[[$1]] دەگەنگە بوت كٷيٸ بەرٸلدٸ',
 	'makebot-logentryrevoke'  => '[[$1]] دەگەننەن بوت كٷيٸ الاستاتىلدى',
 );
+	/* Kazakh fallbacks */
+	$messages['kk-kz'] = $messages['kk-cyrl'];
+	$messages['kk-tr'] = $messages['kk-latn'];
+	$messages['kk-cn'] = $messages['kk-arab'];
+	$messages['kk'] = $messages['kk-cyrl'];
 
 $messages['ksh'] = array(
 	'makebot'                 => '{{NS:User}} zom Bot maache un ömmjekiijot',
@@ -1266,12 +1271,6 @@ $messages['zh-hk'] = array(
 	'makebot-logentrygrant'   => '授予[[$1]]機械人身份',
 	'makebot-logentryrevoke'  => ' 終止[[$1]]機械人身份',
 );
-	/* Kazakh fallbacks */
-	$messages['kk-kz'] = $messages['kk-cyrl'];
-	$messages['kk-tr'] = $messages['kk-latn'];
-	$messages['kk-cn'] = $messages['kk-arab'];
-	$messages['kk'] = $messages['kk-cyrl'];
-
 	/* Chinese defaults, fallback to zh-hans */
 	$messages['zh'] = $messages['zh-hans'];
 	$messages['zh-cn'] = $messages['zh-hans'];

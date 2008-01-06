@@ -269,6 +269,11 @@ $wgFilepathMessages['kk-arab'] = array(
 	
 	فايل اتاۋىن «{{ns:image}}:» دەگەن باستاۋىشسىز ەڭگٸزٸڭٸز.',
 );
+# Kazakh fallbacks
+$wgFilepathMessages['kk-kz'] = $wgFilepathMessages['kk-cyrl'];
+$wgFilepathMessages['kk-tr'] = $wgFilepathMessages['kk-latn'];
+$wgFilepathMessages['kk-cn'] = $wgFilepathMessages['kk-arab'];
+$wgFilepathMessages['kk'] = $wgFilepathMessages['kk-cyrl'];
 
 $wgFilepathMessages['ksh'] = array(
 	'filepath'        => 'Bellder, Tööhn, uew. zëije, med ier URL',
@@ -497,12 +502,6 @@ $wgFilepathMessages['zh-hant'] = array(
 	
 	請輸入檔名，不要包含"{{ns:image}}:"開頭。',
 );
-
-# Kazakh fallbacks
-$wgFilepathMessages['kk-kz'] = $wgFilepathMessages['kk-cyrl'];
-$wgFilepathMessages['kk-tr'] = $wgFilepathMessages['kk-latn'];
-$wgFilepathMessages['kk-cn'] = $wgFilepathMessages['kk-arab'];
-$wgFilepathMessages['kk'] = $wgFilepathMessages['kk-cyrl'];
 
 # Chinese fallbacks
 $wgFilepathMessages['zh'] = $wgFilepathMessages['zh-hans'];

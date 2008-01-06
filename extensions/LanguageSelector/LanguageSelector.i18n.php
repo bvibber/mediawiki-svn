@@ -62,6 +62,26 @@ $messages['hsb'] = array(
 	'languageselector-setlang' => 'stajić',
 );
 
+/** Kazakh
+ * @author AlefZet
+*/
+$messages['kk-cyrl'] = array(
+	'languageselector' => 'Тіл',
+	'languageselector-setlang' => 'анықтау',
+);
+$messages['kk-latn'] = array(
+	'languageselector' => 'Til',
+	'languageselector-setlang' => 'anıqtaw',
+);
+$messages['kk-arab'] = array(
+	'languageselector' => 'تٸل',
+	'languageselector-setlang' => 'انىقتاۋ',
+);
+$messages['kk-kz'] = $messages['kk-cyrl'];
+$messages['kk-tr'] = $messages['kk-latn'];
+$messages['kk-cn'] = $messages['kk-arab'];
+$messages['kk'] = $messages['kk-cyrl'];
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
