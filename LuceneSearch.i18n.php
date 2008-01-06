@@ -569,7 +569,7 @@ $wgLuceneSearchMessages['kk-cyrl'] = array(
 	'searchnumber'          => "<strong>$3 ішіндегі $1—$2 нәтиже</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Алдыңғыға</span>",
 	'searchnext'            => "<span style='font-size: small'>Келесіге</span> &#x00BB;",
-	'lucene-searchscore'    => "Сәйкестігі: $1%",
+	'lucene-searchscore'    => "Сәйкестігі: $1 %",
 	'lucene-resultsize'     => "$1 ($2 сөз)",
 	'searchdidyoumean'      => "Мынау деп есепке алдыңыз ба: «<a href=\"$1\">$2</a>»?",
 	'searchnoresults'       => "Ғафу етіңіз, сұранымынызға нақты сәйкесі бар еш нәтиже табылмады.",
@@ -591,7 +591,7 @@ $wgLuceneSearchMessages['kk-latn'] = array(
 	'searchnumber'          => "<strong>$3 işindegi $1—$2 nätïje</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Aldıñğığa</span>",
 	'searchnext'            => "<span style='font-size: small'>Kelesige</span> &#x00BB;",
-	'lucene-searchscore'    => "Säýkestigi: $1%",
+	'lucene-searchscore'    => "Säýkestigi: $1 %",
 	'lucene-resultsize'     => "$1 ($2 söz)",
 	'searchdidyoumean'      => "Mınaw dep esepke aldıñız ba: «<a href=\"$1\">$2</a>»?",
 	'searchnoresults'       => "Ğafw etiñiz, suranımınızğa naqtı säýkesi bar eş nätïje tabılmadı.",
@@ -613,7 +613,7 @@ $wgLuceneSearchMessages['kk-arab'] = array(
 	'searchnumber'          => "<strong>$3 ٸشٸندەگٸ $1—$2 نٵتيجە</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>الدىڭعىعا</span>",
 	'searchnext'            => "<span style='font-size: small'>كەلەسٸگە</span> &#x00BB;",
-	'lucene-searchscore'    => "سٵيكەستٸگٸ: $1%",
+	'lucene-searchscore'    => "سٵيكەستٸگٸ: $1 ٪",
 	'lucene-resultsize'     => "$1 ($2 سٶز)",
 	'searchdidyoumean'      => "مىناۋ دەپ ەسەپكە الدىڭىز با: «<a href=\"$1\">$2</a>»؟",
 	'searchnoresults'       => "عافۋ ەتٸڭٸز, سۇرانىمىنىزعا ناقتى سٵيكەسٸ بار ەش نٵتيجە تابىلمادى.",
@@ -630,6 +630,11 @@ $1<br />
 	'searchall'             => 'بارلىعىندا',
 	'searchincategory'      => 'ساناتتا',
 );
+# Fallback Kazakh
+$wgLuceneSearchMessages['kk-kz'] = $wgLuceneSearchMessages['kk-cyrl'];
+$wgLuceneSearchMessages['kk-tr'] = $wgLuceneSearchMessages['kk-latn'];
+$wgLuceneSearchMessages['kk-cn'] = $wgLuceneSearchMessages['kk-arab'];
+$wgLuceneSearchMessages['kk'] = $wgLuceneSearchMessages['kk-cyrl'];
 
 $wgLuceneSearchMessages['la'] = array(
 	'lucenepowersearchtext' => 'In spatiis nominalibus petere:
@@ -1137,12 +1142,6 @@ $1\n
 	'searchall'             => '所有',
 	'searchincategory'      => '在分類中'
 );
-
-# Fallback Kazakh
-$wgLuceneSearchMessages['kk-kz'] = $wgLuceneSearchMessages['kk-cyrl'];
-$wgLuceneSearchMessages['kk-tr'] = $wgLuceneSearchMessages['kk-latn'];
-$wgLuceneSearchMessages['kk-cn'] = $wgLuceneSearchMessages['kk-arab'];
-$wgLuceneSearchMessages['kk'] = $wgLuceneSearchMessages['kk-cyrl'];
 
 # Fallback Chinese
 $wgLuceneSearchMessages['zh'] = $wgLuceneSearchMessages['zh-hans'];
