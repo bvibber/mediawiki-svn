@@ -23,8 +23,9 @@ EOT;
 		exit(1);
 }
 
-$allMessages = array(
-	'en' => array( 
+$messages = array();
+
+$messages['en'] = array( 
 		'changeauthor' => 'Change revision author',
 		'changeauthor-short' => 'ChangeAuthor', # don't translate or duplicate this message to other languages
 		'changeauthor-title' => 'Change the author of a revision',
@@ -47,12 +48,12 @@ $allMessages = array(
 		'changeauthor-logpagename' => 'Author change log',
 		'changeauthor-logpagetext' => '',
 		'changeauthor-rev' => 'r$1',
-	),
+	);
 
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
-	'an' => array(
+$messages['an'] = array(
 		'changeauthor'                      => "Cambiar l'autor d'a edizión",
 		'changeauthor-title'                => "Cambiar l'autor d'una edizión",
 		'changeauthor-search-box'           => 'Mirar edizions',
@@ -72,12 +73,12 @@ $allMessages = array(
 		'changeauthor-success'              => "A suya demanda s'ha prozesato correutament.",
 		'changeauthor-logentry'             => "S'ha cambiato l'autor d'a edizión $2 de $1 de $3 á $4",
 		'changeauthor-logpagename'          => "Rechistro de cambeos d'autor",
-	),
+	);
 
 /** Arabic (العربية)
  * @author Meno25
  */
-	'ar' => array(
+$messages['ar'] = array(
 		'changeauthor'                      => 'غير مؤلف النسخة',
 		'changeauthor-title'                => 'غير مؤلف نسخة',
 		'changeauthor-search-box'           => 'ابحث في النسخ',
@@ -98,13 +99,13 @@ $allMessages = array(
 		'changeauthor-logentry'             => 'غير مؤلف $2 ل$1 من $3 إلى $4',
 		'changeauthor-logpagename'          => 'سجل تغيير المؤلفين',
 		'changeauthor-rev'                  => 'ن$1',
-	),
+	);
 
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
  */
-	'bg' => array(
+$messages['bg'] = array(
 		'changeauthor'                      => 'Промяна на автора на редакция',
 		'changeauthor-title'                => 'Промяна на автора на редакция',
 		'changeauthor-search-box'           => 'Търсене на редакция',
@@ -121,9 +122,9 @@ $allMessages = array(
 		'changeauthor-weirderror'           => 'Възникна странна грешка. Опитайте отново; ако грешката се повтори, вероятно базата данни е повредена.',
 		'changeauthor-success'              => 'Заявката беше изпълнена успешно.',
 		'changeauthor-rev'                  => 'р$1',
-	),
+	);
 
-	'de' => array( 
+$messages['de'] = array( 
 		'changeauthor' => 'Autor einer Version ändern',
 		'changeauthor-title' => 'Autor einer Version ändern',
 		'changeauthor-search-box' => 'Version suchen',
@@ -145,20 +146,20 @@ $allMessages = array(
 		'changeauthor-logpagename' => 'Autorenname-Änderungslogbuch',
 		'changeauthor-logpagetext' => '',
 		'changeauthor-rev' => 'Version $1',
-	),
+	);
 
-	'el' => array(
+$messages['el'] = array(
 		'changeauthor-comment' => 'Σχόλιο:',
 		'changeauthor-invalid-username' => 'Άκυρο όνομα-χρήστη  "$1".',
 		'changeauthor-rev' => 'r$1',#identical but defined
-	),
+	);
 
 /** French (Français)
  * @author Sherbrooke
  * @author Dereckson
  * @author Grondin
  */
-	'fr' => array(
+$messages['fr'] = array(
 		'changeauthor'                      => "Changer l'auteur des révisions",
 		'changeauthor-title'                => "Changer l'auteur d'une révision",
 		'changeauthor-search-box'           => 'Rechercher des révisions',
@@ -179,12 +180,12 @@ $allMessages = array(
 		'changeauthor-logentry'             => "Modification de l'auteur de $2 de $1 depuis $3 vers $4",
 		'changeauthor-logpagename'          => "Journal des changements faits par l'auteur",
 		'changeauthor-rev'                  => 'r$1',
-	),
+	);
 
 /** Franco-Provençal (Arpetan)
  * @author ChrisPtDe
  */
-	'frp' => array(
+$messages['frp'] = array(
 		'changeauthor'                      => 'Changiér l’ôtor de les vèrsions',
 		'changeauthor-title'                => 'Changiér l’ôtor d’una vèrsion',
 		'changeauthor-search-box'           => 'Rechèrchiér des vèrsions',
@@ -200,13 +201,13 @@ $allMessages = array(
 		'changeauthor-success'              => 'Voutra requéta at étâ trètâ avouéc reusséta.',
 		'changeauthor-logpagename'          => 'Jornal des changements fêts per l’ôtor',
 		'changeauthor-rev'                  => 'v$1',
-	),
+	);
 
 /** Galician (Galego)
  * @author Alma
  * @author Xosé
  */
-	'gl' => array(
+$messages['gl'] = array(
 		'changeauthor'                      => 'Mudar a revisión do autor',
 		'changeauthor-title'                => 'Cambiar ao autor da revisión',
 		'changeauthor-search-box'           => 'Procurar revisións',
@@ -227,13 +228,13 @@ $allMessages = array(
 		'changeauthor-logentry'             => 'Cambie autor de $2 de $1 a $3 de $4',
 		'changeauthor-logpagename'          => 'Rexistro dos cambios do autor',
 		'changeauthor-rev'                  => 'r$1',
-	),
+	);
 
 /** Croatian (Hrvatski)
  * @author Dnik
  * @author SpeedyGonsales
  */
-	'hr' => array(
+$messages['hr'] = array(
 		'changeauthor'                      => 'Promijenite autora inačice',
 		'changeauthor-title'                => 'Promijeni autora inačice',
 		'changeauthor-search-box'           => 'Pretraži inačice',
@@ -254,12 +255,12 @@ $allMessages = array(
 		'changeauthor-logentry'             => 'Promijenjen autor $2 stranice $1 iz $3 u $4',
 		'changeauthor-logpagename'          => 'Evidencija promijena autora',
 		'changeauthor-rev'                  => 'r$1',
-	),
+	);
 
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
-	'hsb' => array(
+$messages['hsb'] = array(
 		'changeauthor'                      => 'Wersijoweho awtora změnić',
 		'changeauthor-title'                => 'Awtora wersije změnić',
 		'changeauthor-search-box'           => 'Wersije pytać',
@@ -279,12 +280,12 @@ $allMessages = array(
 		'changeauthor-success'              => 'Waše požadanje je so wuspěšnje wobdźěłało.',
 		'changeauthor-logentry'             => 'Změni so awtor wot $2 wot $1 z $3 do $4',
 		'changeauthor-logpagename'          => 'Protokol wo změnach awtorow',
-	),
+	);
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-	'lb' => array(
+$messages['lb'] = array(
 		'changeauthor-title'                => 'Auteur vun enger Versioun änneren',
 		'changeauthor-search-box'           => 'Versioune sichen',
 		'changeauthor-pagename-or-revid'    => 'Säitenumm oder Versiounsnummer:',
@@ -296,13 +297,13 @@ $allMessages = array(
 		'changeauthor-revview'              => 'Versioun #$1 vun $2',
 		'changeauthor-nosuchtitle'          => 'Et gëtt keng Säit mam Numm "$1".',
 		'changeauthor-rev'                  => 'Versioun $1',
-	),
+	);
 
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
  */
-	'nl' => array(
+$messages['nl'] = array(
 		'changeauthor'                      => 'Auteur versie wijzigen',
 		'changeauthor-title'                => 'De auteur van een bewerkingsversie wijzigen',
 		'changeauthor-search-box'           => 'Versies zoeken',
@@ -323,12 +324,12 @@ $allMessages = array(
 		'changeauthor-logentry'             => 'Auteur van $2 van $1 gewijzigd van $3 naar $4',
 		'changeauthor-logpagename'          => 'Auteurswijzigingenlogboek',
 		'changeauthor-rev'                  => 'r$1',
-	),
+	);
 
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-	'no' => array(
+$messages['no'] = array(
 		'changeauthor'                      => 'Endre revisjonens opphavsperson',
 		'changeauthor-title'                => 'Endre en revisjons opphavsmann',
 		'changeauthor-search-box'           => 'Søk i revisjoner',
@@ -349,12 +350,12 @@ $allMessages = array(
 		'changeauthor-logentry'             => 'Endret opphavsperson til $2 av $1 fra $3 til $4',
 		'changeauthor-logpagename'          => 'Logg for opphavspersonsendringer',
 		'changeauthor-rev'                  => 'r$1',
-	),
+	);
 
 /** Occitan (Occitan)
  * @author Cedric31
  */
-	'oc' => array(
+$messages['oc'] = array(
 		'changeauthor'                      => "Cambiar l'autor de las revisions",
 		'changeauthor-title'                => "Cambiar l'autor d'una revision",
 		'changeauthor-search-box'           => 'Recercar de revisions',
@@ -373,13 +374,13 @@ $allMessages = array(
 		'changeauthor-invalidform'          => "Utilizatz lo formulari generit per Special:ChangeAuthor puslèu qu'un formulari personal",
 		'changeauthor-success'              => 'Vòstra requèsta es estada tractada amb succès.',
 		'changeauthor-logpagename'          => "Jornal dels cambiaments faches per l'autor",
-	),
+	);
 
 /** Portuguese (Português)
  * @author Malafaya
  * @author 555
  */
-	'pt' => array(
+$messages['pt'] = array(
 		'changeauthor-pagenameform-go'     => 'Ir',
 		'changeauthor-comment'             => 'Comentário:',
 		'changeauthor-changeauthors-multi' => 'Alterar autor(es)',
@@ -387,12 +388,12 @@ $allMessages = array(
 		'changeauthor-nosuchuser'          => 'Utilizador "$1" não existe.',
 		'changeauthor-revview'             => 'Revisão #$1 de $2',
 		'changeauthor-nosuchtitle'         => 'Não existe nenhuma página chamada "$1".',
-	),
+	);
 
 /** Russian (Русский)
  * @author .:Ajvol:.
  */
-	'ru' => array(
+$messages['ru'] = array(
 		'changeauthor'                      => 'Изменение автора правки',
 		'changeauthor-title'                => 'Изменение автора правки',
 		'changeauthor-search-box'           => 'Поиск правок',
@@ -413,12 +414,12 @@ $allMessages = array(
 		'changeauthor-logentry'             => 'Изменён автор $2 $1 с $3 на $4',
 		'changeauthor-logpagename'          => 'Журнал изменения авторов',
 		'changeauthor-rev'                  => 'r$1',
-	),
+	);
 
 /** Slovak (Slovenčina)
  * @author Helix84
  */
-	'sk' => array(
+$messages['sk'] = array(
 		'changeauthor'                      => 'Zmeniť autora revízie',
 		'changeauthor-title'                => 'Zmeniť autora revízie',
 		'changeauthor-search-box'           => 'Hľadať revízie',
@@ -439,12 +440,12 @@ $allMessages = array(
 		'changeauthor-logentry'             => 'Autor $2 z $1 bol zmenený z $3 na $4',
 		'changeauthor-logpagename'          => 'Záznam zmien autorov',
 		'changeauthor-rev'                  => 'r$1',
-	),
+	);
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-	'stq' => array(
+$messages['stq'] = array(
 		'changeauthor'                      => 'Autor fon ne Version annerje',
 		'changeauthor-title'                => 'Autor fon ne Revision annerje',
 		'changeauthor-search-box'           => 'Version säike',
@@ -465,14 +466,13 @@ $allMessages = array(
 		'changeauthor-logentry'             => 'annerde Autorennoome fon ju $2 fon $1 fon $3 ap $4',
 		'changeauthor-logpagename'          => 'Autorennoome-Annerengslogbouk',
 		'changeauthor-rev'                  => 'Version $1',
-	),
+	);
 
 /** Volapük (Volapük)
  * @author Malafaya
  */
-	'vo' => array(
+$messages['vo'] = array(
 		'changeauthor-comment'              => 'Küpet:',
 		'changeauthor-changeauthors-multi'  => 'Votükön lautani(s)',
 		'changeauthor-changeauthors-single' => 'Votükön lautani',
-	),
-);
+	);

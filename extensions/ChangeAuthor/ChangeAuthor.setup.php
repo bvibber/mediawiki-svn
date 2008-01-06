@@ -31,7 +31,10 @@ $wgExtensionCredits['specialpage'][] = array(
 		'description' => 'Allows changing a revision\'s author'
 );
 
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['ChangeAuthor'] = $dir . 'ChangeAuthor.i18n.php';
 $wgAutoloadClasses['ChangeAuthor'] = dirname(__FILE__) . '/ChangeAuthor.body.php';
+
 $wgSpecialPages['ChangeAuthor'] = 'ChangeAuthor';
 $wgHooks['LoadAllMessages'][] = 'ChangeAuthor::loadMessages';
 $wgHooks['LanguageGetSpecialPageAliases'][] = 'ChangeAuthorLocalizedPageName';

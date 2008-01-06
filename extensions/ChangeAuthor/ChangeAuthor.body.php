@@ -359,9 +359,7 @@ class ChangeAuthor extends SpecialPage
 				if (!$messagesLoaded)
 				{
 						$messagesLoaded = true;
-						require(dirname( __FILE__ ) . '/ChangeAuthor.i18n.php');
-						foreach ($allMessages as $lang => $langMessages)
-								$wgMessageCache->addMessages( $langMessages, $lang );
+				wfLoadExtensionMessages('ChangeAuthor');
 				}
 				return true;
 		}
