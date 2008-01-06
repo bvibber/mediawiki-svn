@@ -122,6 +122,22 @@ function efBookInformationMessages() {
 	'bookinfo-purchase' => 'Mercal esti libru e $1',
 ),
 
+# فارسی (Huji)
+'fa' => array(
+	'bookinfo-header'            => 'اطلاعات کتاب',
+	'bookinfo-result-title'      => 'عنوان:',
+	'bookinfo-result-author'     => 'نویسنده:',
+	'bookinfo-result-publisher'  => 'ناشر:',
+	'bookinfo-result-year'       => 'سال انتشار:',
+	'bookinfo-error-invalidisbn' => 'شابک غیرمجاز وارد شده‌است.',
+	'bookinfo-error-nosuchitem'  => 'این مورد وجود ندارد یا پیدا نشد.',
+	'bookinfo-error-nodriver'    => 'راه‌انداز مناسب اطلاعات کتاب قابل به کارگیری نیست.',
+	'bookinfo-error-noresponse'  => 'پاسخی وجود نداشت یا مهلت درخواست سپری شد.',
+	'bookinfo-purchase'          => 'خرید این کتاب از $1',
+	'bookinfo-provider'          => 'مهیاکنندهٔ اطلاعات:',
+
+),
+
 /* Finnish (Niklas Laxström) */
 'fi' => array(
 	'bookinfo-header' => 'Kirjan tiedot',
