@@ -35,6 +35,13 @@ $messages['de'] = array(
 	'assert_edit_message' => 'Der angegebene Anspruch ($1) ist fehlgeschlagen.',
 );
 
+# فارسی (Huji)
+$messages['fa'] = array(
+	'assert_edit_title'   => 'تایید ناموفق',
+	'assert_edit_message' => 'تایید مورد نظر ($1) ناموفق بود.',
+
+);
+
 $messages['fr'] = array(
 	'assert_edit_title'   => 'Échec de l\'insertion',
 	'assert_edit_message' => 'L\'insertion indiquée ($1) a échoué.',
