@@ -662,6 +662,13 @@ Dir kënnt awer och déi extern Sichméiglichkeete benotzen:',
 	'searchincategory'      => 'an der Kategorie',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$wgLuceneSearchMessages['li'] = array(
+	'searchall' => 'alle',
+);
+
 $wgLuceneSearchMessages['lo'] = array(
 	'searchdidyoumean'      => "ຫຼື ທ່ານໝາຍຄວາມວ່າ",
 	'searchnoresults'       => "ຂໍໂທດຫຼາຍໆ, ບໍ່ມີ ບົດຄວາມ ທີ່ມີຊື່ກົງກັບສິ່ງທີ່ ທ່ານ ຊອກຫາແບບສົມບູນ.",
