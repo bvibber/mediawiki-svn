@@ -20,14 +20,20 @@ $messages['an'] = array(
 	'assert_edit_message' => "L'aserzión espezificata ($1) ha fallato.",
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
 	'assert_edit_title'   => 'التأكيد فشل',
 	'assert_edit_message' => 'التأكيد المحدد ($1) فشل.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
 $messages['br'] = array(
-	'assert_edit_title'   => 'C\'hwitet eo an enframmañ',
-	'assert_edit_message' => 'C\'hwitet eo an enframmadenn goulennet.',
+	'assert_edit_title'   => "C'hwitet eo an enframmañ",
+	'assert_edit_message' => "C'hwitet eo an enframmadenn goulennet.",
 );
 
 $messages['de'] = array(
@@ -42,11 +48,17 @@ $messages['fa'] = array(
 
 );
 
+/** French (Français)
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'assert_edit_title'   => 'Échec de l\'insertion',
-	'assert_edit_message' => 'L\'insertion indiquée ($1) a échoué.',
+	'assert_edit_title'   => "Échec de l'insertion",
+	'assert_edit_message' => "L'insertion indiquée ($1) a échoué.",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
 $messages['frp'] = array(
 	'assert_edit_title'   => 'Falyita de l’entrebetâ',
 	'assert_edit_message' => 'L’entrebetâ endicâ ($1) at pas reussia.',
@@ -60,11 +72,17 @@ $messages['gl'] = array(
 	'assert_edit_message' => 'A afirmación especificada ($1) fracasou.',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
 $messages['hr'] = array(
 	'assert_edit_title'   => 'Neuspjelo potvrđivanje',
 	'assert_edit_message' => 'Specificirano potvrđivanje ($1) nije uspjelo.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'assert_edit_title'   => 'Twjerdźenje njeporadźiło',
 	'assert_edit_message' => 'Podate twjerdźenje ($1) je so njeporadźiło.',
@@ -86,6 +104,11 @@ $messages['it'] = array(
 	'assert_edit_message' => "L'asserzione indicata ($1) non è riuscita.",
 );
 
+$messages['kk-arab'] = array(
+	'assert_edit_title' => 'ماقۇلداۋ سٵتسٸز',
+	'assert_edit_message' => 'ەنگٸزٸلگەن ماقۇلداۋ ($1) سٵتسٸز.',
+);
+
 $messages['kk-cyrl'] = array(
 	'assert_edit_title' => 'Мақұлдау сәтсіз',
 	'assert_edit_message' => 'Енгізілген мақұлдау ($1) сәтсіз.',
@@ -94,11 +117,6 @@ $messages['kk-latn'] = array(
 	'assert_edit_title' => 'Maquldaw sätsiz',
 	'assert_edit_message' => 'Engizilgen maquldaw ($1) sätsiz.',
 );
-$messages['kk-arab'] = array(
-	'assert_edit_title' => 'ماقۇلداۋ سٵتسٸز',
-	'assert_edit_message' => 'ەنگٸزٸلگەن ماقۇلداۋ ($1) سٵتسٸز.',
-);
-
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  */
@@ -113,7 +131,6 @@ $messages['li'] = array(
 $messages['nl'] = array(
 	'assert_edit_title'   => 'Bevestiging gefaald',
 	'assert_edit_message' => 'De gevraagde bevestiging ($1) faalde.',
-
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)
@@ -130,7 +147,6 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'assert_edit_title'   => "L'insercion a pas capitat",
 	'assert_edit_message' => "L'insercion indicada ($1) a pas capitat.",
-
 );
 
 /** Polish (Polski)
@@ -141,6 +157,9 @@ $messages['pl'] = array(
 	'assert_edit_message' => 'Określone żądanie ($1) nie wystąpiło.',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
 $messages['pt'] = array(
 	'assert_edit_title'   => 'A asserção falhou',
 	'assert_edit_message' => 'A asserção especificada ($1) falhou.',
@@ -154,33 +173,48 @@ $messages['ru'] = array(
 	'assert_edit_message' => 'Указанное утверждение ($1) не выполняется.',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
 	'assert_edit_title'   => 'Predpoklad zlyhal',
 	'assert_edit_message' => 'Uvedený predpoklad ($1) zlyhal.',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
 $messages['stq'] = array(
 	'assert_edit_title'   => 'Anspruch failsloain',
 	'assert_edit_message' => 'Die ounroate Anspruch ($1) is failsloain.',
 );
 
+/** 粵語 (粵語)
+ * @author Shinjiman
+ */
 $messages['yue'] = array(
 	'assert_edit_title'   => '維護失敗',
 	'assert_edit_message' => '所指定嘅斷言 ($1) 失敗。',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Shinjiman
+ */
 $messages['zh-hans'] = array(
 	'assert_edit_title'   => '维护失败',
 	'assert_edit_message' => '所指定的断言 ($1) 失败。',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Shinjiman
+ */
 $messages['zh-hant'] = array(
 	'assert_edit_title'   => '維護失敗',
 	'assert_edit_message' => '所指定的斷言 ($1) 失敗。',
 );
 
 /* Kazakh fallbacks */
+$messages['kk'] = $messages['kk-cyrl'];
+$messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
 $messages['kk-tr'] = $messages['kk-latn'];
-$messages['kk-cn'] = $messages['kk-arab'];
-$messages['kk'] = $messages['kk-cyrl'];
