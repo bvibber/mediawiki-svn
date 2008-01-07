@@ -21,6 +21,14 @@ class SkinOffline extends SkinTemplate {
 		$this->skinpath = "$wgStylePath/offline";
 	}
 
+	function setupTemplate( $className, $repository = false, $cache_dir = false ) {
+		global $wgFavicon;
+		$tpl = parent::setupTemplate( $className, $repository, $cache_dir );
+		$tpl->set( 'skinpath', $this->skinpath );
+		$tpl->set( 'favicon', $wgFavicon );
+		return $tpl;
+	}
+
 	function buildSidebar() {
 		$sections = parent::buildSidebar();
 		$badMessages = array( 'recentchanges-url', 'randompage-url' );
@@ -87,6 +95,10 @@ class SkinOffline extends SkinTemplate {
 		}
 		return $prefix . $text . $trail;
 	}
+
+	function printSource() {
+		return '';
+	}
 }
 
 /**
@@ -108,7 +120,8 @@ class SkinOfflineTemplate extends QuickTemplate {
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php $this->text('lang') ?>" lang="<?php $this->text('lang') ?>" dir="<?php $this->text('dir') ?>">
   <head>
     <meta http-equiv="Content-Type" content="<?php $this->text('mimetype') ?>; charset=<?php $this->text('charset') ?>" />
-    <?php $this->html('headlinks') ?>
+	<!-- headlinks removed -->
+	<link rel="shortcut icon" href="<?php $this->text('favicon'); ?>"/>
     <title><?php $this->text('pagetitle') ?></title>
     <style type="text/css">/*<![CDATA[*/ @import "<?php $this->text('skinpath') ?>/main.css"; /*]]>*/</style>
     <link rel="stylesheet" type="text/css" media="print" href="<?php $this->text('stylepath') ?>/common/commonPrint.css" />

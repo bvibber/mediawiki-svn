@@ -38,6 +38,9 @@ class DumpHTML {
 	# Base URL for images, after copying
 	var $destUploadUrl;
 
+	# Base URL for the destination directory
+	var $articleBaseUrl;
+
 	# Relative path to image directory
 	var $imageRel = 'upload';
 
@@ -528,19 +531,46 @@ class DumpHTML {
 			$text = gzencode( $text, 9 );				
 		}
 
-		wfMkdirParents( $fullDir, 0755 );
+		if ( preg_match( '/[\x80-\xFF]/', $fullName ) && wfIsWindows() ) {
+			# Work around PHP unicode bug
+			$rand = mt_rand( 0, 99999999 );
+			$fullDir = str_replace( '/', '\\', $fullDir );
+			$fullName = str_replace( '/', '\\', $fullName );
+			$tempName = "{$this->dest}\\temp\\TEMP-$rand";
 
-		wfSuppressWarnings();
-		$file = fopen( $fullName, 'w' );
-		wfRestoreWarnings();
+			$success = file_put_contents( $tempName, $text );
+			if ( $success ) {
+				wfShellExec( "cscript /nologo " . wfEscapeShellArg( 
+					dirname( __FILE__ ) . "\\rename-hack.vbs",
+					$this->escapeForVBScript( $tempName ),
+					$this->escapeForVBScript( $fullName ) ) );
+			}
+		} else {
+			wfMkdirParents( $fullDir, 0755 );
+			wfSuppressWarnings();
+			$success = file_put_contents( $fullName, $text );
+			wfRestoreWarnings();
+		}
 
-		if ( !$file ) {
+		if ( !$success ) {
 			die("Can't open file '$fullName' for writing.\nCheck permissions or use another destination (-d).\n");
 			return;
 		}
+	}
 
-		fwrite( $file, $text );
-		fclose( $file );
+	/** Escape a UTF-8 string for VBScript's Unescape() */
+	function escapeForVBScript( $in ) {
+		$utf16 = iconv( 'UTF-8', 'UTF-16BE', $in );
+		$out = '';
+		for ( $i = 0; $i < strlen( $utf16 ); $i += 2 ) {
+			$codepoint = ord( $utf16[$i] ) * 256 + ord( $utf16[$i+1] );
+			if ( $codepoint < 128 && $codepoint >= 32 ) {
+				$out .= chr( $codepoint );
+			} else {
+				$out .= sprintf( "%%u%04X", $codepoint );
+			}
+		}
+		return $out;
 	}
 
 	/** Copy a directory recursively, not including .svn */
@@ -602,7 +632,7 @@ class DumpHTML {
 		global $wgHideInterlanguageLinks, $wgUploadDirectory, $wgThumbnailScriptPath;
 		global $wgEnableParserCache, $wgHooks, $wgServer;
 		global $wgRightsUrl, $wgRightsText, $wgCopyrightIcon, $wgEnableSidebarCache;
-		global $wgGenerateThumbnailOnParse, $wgValidSkinNames;
+		global $wgGenerateThumbnailOnParse, $wgValidSkinNames, $wgFavicon;
 
 		if ( !$this->setupDone ) {
 			$wgHooks['GetLocalURL'][] =& $this;
@@ -614,6 +644,7 @@ class DumpHTML {
 			$this->oldRepoGroup = RepoGroup::singleton();
 			$this->oldCopyrightIcon = $wgCopyrightIcon;
 			$this->oldScriptPath = $wgScriptPath;
+			$this->oldFavicon = $wgFavicon;
 			$wgValidSkinNames['offline'] = 'Offline';
 		}
 
@@ -637,20 +668,20 @@ class DumpHTML {
 
 		if ( $currentDepth == 0 ) {
 			$wgArticlePath = '$1';
-			$articleBaseUrl = '.';
+			$this->articleBaseUrl = '.';
 		} else {
-			$articleBaseUrl = '..' . str_repeat( '/..', $currentDepth );
+			$this->articleBaseUrl = '..' . str_repeat( '/..', $currentDepth );
 			$wgArticlePath = str_repeat( '../', $currentDepth + 1 ) . '$1';
 		}
 
 		$uploadBits = explode( '/', str_replace( '\\', '/', $wgUploadPath ) );
 		$this->imageRel = $uploadBits[count($uploadBits) - 1];
 
-		$wgStylePath = "$wgScriptPath/skins";
+		$wgStylePath = "{$this->articleBaseUrl}/skins";
 
 
 		if ( $this->makeSnapshot ) {
-			$this->destUploadUrl = "$articleBaseUrl/{$this->imageRel}";
+			$this->destUploadUrl = "{$this->articleBaseUrl}/{$this->imageRel}";
 		} else {
 			$this->destUploadUrl = "$wgScriptPath/{$this->imageRel}";
 		}
@@ -685,9 +716,6 @@ class DumpHTML {
 		$newRepoGroup = $this->newRepoGroup( $this->oldRepoGroup );
 		RepoGroup::setSingleton( $newRepoGroup );
 
-		# Logo image
-		# Allow for repeated setup
-		$wgLogo = $this->oldLogo;
 
 		# Make a list of original repo URLs
 		$this->oldRepoGroup->initialiseRepos();
@@ -696,26 +724,37 @@ class DumpHTML {
 			$repoPrefixes[$name] = $repo->getZoneUrl('public');
 		}
 
-		# If the logo is in one of the repos, rewrite its URL
-		foreach ( $repoPrefixes as $repoName => $prefix ) {
-			if ( strpos( $wgLogo, $prefix ) === 0 ) {
-				$repo = $newRepoGroup->getRepo( $repoName );
-				$newUrlBase = $repo->getZoneUrl('public');
-				$wgLogo = $newUrlBase . '/' . substr( $wgLogo, strlen( $prefix ) + 1 );
-				break;
-			}
-		}
-		if ( strpos( $wgLogo, $this->oldScriptPath ) === 0 ) {
-			# This is basically heuristic
-			# Rewrite an absolute logo path to one relative to the the script path
-			$wgLogo = $wgScriptPath . '/' . substr( $wgLogo, strlen ( $this->oldScriptPath ) + 1 );
+		# Make a snapshot of the logo image and copyright icon
+		$wgLogo = $this->makeUrlSnapshot( $this->oldLogo );
+		if ( preg_match( '/<img [^>]*src="([^"]*)"/', $this->oldCopyrightIcon, $m ) ) {
+			$urlText = $m[1];
+			$url = Sanitizer::decodeCharReferences( $urlText );
+			$url = $this->makeUrlSnapshot( $url );
+			$wgCopyrightIcon = str_replace( $urlText, htmlspecialchars( $url ));
 		}
 
-		# Another ugly hack
-		$wgCopyrightIcon = str_replace( 'src="/images',
-			'src="' . htmlspecialchars( $wgScriptPath ) . '/images', $this->oldCopyrightIcon );
+		# Make a snapshot of the favicon
+		$wgFavicon = $this->makeUrlSnapshot( $this->oldFavicon );
 
 		$this->setupDone = true;
+	}
+
+	/**
+	 * Make a copy of a URL in the destination directory, and return the new relative URL
+	 */
+	function makeUrlSnapshot( $url ) {
+		global $wgServer;
+		wfMkdirParents( "{$this->dest}/misc" );
+		$destName = urldecode( basename( $url ) );
+		$destPath = "{$this->dest}/misc/$destName";
+		if ( !file_exists( $destPath ) ) {
+			if ( !preg_match( '/^https?:/', $url ) ) {
+				$url = $wgServer . $url;
+			}
+			$contents = Http::get( $url );
+			file_put_contents( $destPath, $contents );
+		}
+		return "{$this->articleBaseUrl}/misc/" . urlencode( $destName );
 	}
 
 	/** Reads the content of a title object, executes the skin and captures the result */
@@ -1028,7 +1067,7 @@ ENDTEXT;
 	 * @param integer $base The true start of the range; the minimum start
 	 */
 	function modSliceStart( $start, $base = 1 ) {
-		return $start - ( $start % $this->sliceDenominator ) + $this->sliceNumerator - 1 + $base;
+		return ( $start - $base ) - ( ( $start - $base ) % $this->sliceDenominator ) + $this->sliceNumerator - 1 + $base;
 	}
 
 	/**
@@ -1140,7 +1179,7 @@ class DumpHTML_ProxyRepo {
 		return call_user_func_array( array( $this->backend, $name ), $args );
 	}
 
-	function newFile( $title, $time ) {
+	function newFile( $title, $time = false) {
 		$file = $this->backend->newFile( $title, $time );
 		if ( $file ) {
 			$file = new DumpHTML_ProxyFile( $file, $this );

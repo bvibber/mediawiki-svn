@@ -51,6 +51,7 @@ if ( in_array( '--udp-profile', $argv ) ) {
 
 require_once( dirname(__FILE__)."/../../maintenance/commandLine.inc" );
 require_once( dirname(__FILE__)."/dumpHTML.inc" );
+require_once( dirname(__FILE__)."/SkinOffline.php" );
 
 if ( version_compare( $wgVersion, '1.11.1', '<' ) ) {
 	echo "Error, the DumpHTML extension needs at least MediaWiki version 1.11.1 to work, you have version $wgVersion.\n";
@@ -84,7 +85,7 @@ if ( !empty( $options['d'] ) ) {
 	$dest = "$IP/static";
 }
 
-$skin = isset( $options['k'] ) ? $options['k'] : 'htmldump';
+$skin = isset( $options['k'] ) ? $options['k'] : 'offline';
 
 if ( $options['slice'] ) {
 	$bits = explode( '/', $options['slice'] );

@@ -24,6 +24,8 @@ function getStaticURL(text, depth) {
 			for (i = 0; i < depth; i++) {
 				path = "../" + path;
 			}
+		} else {
+			path = "articles/" + path;
 		}
 		return path;
 	}
