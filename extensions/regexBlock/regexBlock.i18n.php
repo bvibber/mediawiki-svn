@@ -126,7 +126,7 @@ $messages['el'] = array(
 	'regexblock-view-reason'    => 'Λόγος: $1',
 );
 
-$messages ['fr'] = array(
+$messages['fr'] = array(
 	'regexblock' => 'Expressions régulières pour bloquer un utilisateur ou une IP',
 	'regexblock-page-title' => 'Blocage d’un nom par une expression régulière',
 	'regexblockstats' => 'Statistiques sur les blocages par expressions régulières',
