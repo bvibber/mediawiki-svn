@@ -374,7 +374,8 @@ de todos os historiais. Resulta útil cando se subdivide un artigo, etc.',
  * @author Robby
  */
 'lb' => array(
-	'duplicator-options' => 'Méiglechkeeten',
+	'duplicator-options'           => 'Méiglechkeeten',
+	'duplicator-success-revisions' => '$1 {{PLURAL:$1|Versioun gouf|Versioune goufe}} kopéiert.',
 ),
 
 /** Low German (Plattdüütsch)

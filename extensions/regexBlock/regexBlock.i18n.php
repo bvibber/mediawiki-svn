@@ -114,6 +114,7 @@ $messages['bg'] = array(
 	'regexblock-view-reason'          => 'причина: $1',
 	'regexblock-view-block-temporary' => 'изтича на',
 	'regexblock-view-block-by'        => 'блокиран от',
+	'regexblock-view-block-unblock'   => 'отблокиране',
 	'regexblock-view-stats'           => '(статистика)',
 );
 

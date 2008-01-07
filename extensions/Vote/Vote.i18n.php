@@ -219,6 +219,15 @@ riddler|Riddler",
 	'vote-invalid-choice' => 'Anda harus memilih salah satu pilihan yang tersedia.',
 ),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+'lb' => array(
+	'vote'              => 'Ofstëmmen',
+	'vote-view-results' => "Kuckt d'Resultater",
+	'vote-results'      => 'Resultater vun der Ofstëmmung',
+),
+
 'nl' => array(
 	'vote' => 'Stemmen',
 	'vote-header' => 'U kunt hier stemmen voor \'\'\'Alleenheerser over de Wereld\'\'\'!',

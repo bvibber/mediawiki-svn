@@ -264,6 +264,14 @@ function efCountEditsMessages( $single = false ) {
 	'countedits-username' => 'Nomen usoris:',
 ),
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+'lb' => array(
+	'countedits-username'   => 'Benotzernumm:',
+	'countedits-nosuchuser' => 'Et gëtt kee Benotzer mam Numm $1.',
+),
+
 'nds' => array(
 	'countedits' => 'Tellen, wo faken de Bruker Sieden ännert hett',
 	'countedits-warning' => '\'\'\'Wohrschau:\'\'\' Schasst de Deern nich na ehr Schört reken. Wo faken en Bruker Sieden ännert hett, seggt nix över sien Arbeit ut.',
