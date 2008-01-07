@@ -1124,6 +1124,7 @@ $wgLuceneSearchMessages['yue'] = array(
 $1\n
 搜尋：$3 $9 $10",
 	'lucenefallback'        => "Wiki搜尋出咗問題。呢個可能係暫時性嘅，請稍後再試。你亦都可以通過利用外部搜尋服務來去搵呢個wiki：\n",
+	'searchexactcase'       => '完全大細楷配合搵嘢',
 	'searchall'             => '全部',
 	'searchincategory'      => '響分類度'
 );
@@ -1143,6 +1144,7 @@ $wgLuceneSearchMessages['zh-hans'] = array(
 $1\n
 搜索：$3 $9 $10",
 	'lucenefallback'        => "系统搜索发生错误。这可能是暂时性的，请稍后重试。你也可以通过使用外部搜索服务搜索本站：\n",
+	'searchexactcase'       => '完全大小写匹配搜寻',
 	'searchall'             => '所有',
 	'searchincategory'      => '在分类中'
 );
@@ -1162,6 +1164,7 @@ $wgLuceneSearchMessages['zh-hant'] = array(
 $1\n
 搜尋：$3 $9 $10",
 	'lucenefallback'        => "系統搜尋發生錯誤。這可能是暫時性的，請稍後重試。你也可以通過使用外部搜尋服務搜尋本站：\n",
+	'searchexactcase'       => '完全大小寫配合搜尋',
 	'searchall'             => '所有',
 	'searchincategory'      => '在分類中'
 );
