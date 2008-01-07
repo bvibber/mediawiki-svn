@@ -1,8 +1,9 @@
-CC		= cc
-CFLAGS		= -g -mt -m64 -xc99=none
+CC		= gcc
+#CFLAGS		= -g -mt -m64 -xc99=none
+CFLAGS		= -g -D_REENTRANT -m64
 LDFLAGS		=
-MYSQL_INCLUDES	= -I/usr/local/mysql/include
-MYSQL_LIBS	= -L/usr/local/mysql/lib -R/usr/local/mysql/lib -lmysqlclient_r 
+MYSQL_CFLAGS:sh	= mysql_config --include
+MYSQL_LIBS:sh	= mysql_config --libs_r
 INCLUDES	=
 LIBS		= -lrt -ldoor
 PROG		= trainwreck
@@ -21,10 +22,10 @@ twctl: twctl.o
 	$(CC) $(CFLAGS) $(CPPFLAGS) twctl.o -o twctl -ldoor
 
 .c.o:
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(MYSQL_INCLUDES) -c $<
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(MYSQL_CFLAGS) -c $<
 
 lint:
-	lint $(INCLUDES) -axsm -u -errtags=yes -s -Xc99=%none -Xarch=amd64 -errsecurity=core -erroff=E_INCONS_ARG_DECL2 $(SRCS)
+	lint $(INCLUDES) $(MYSQL_CFLAGS) -axsm -u -errtags=yes -s -Xc99=%none -Xarch=amd64 -errsecurity=core -erroff=E_INCONS_ARG_DECL2 -erroff=E_CONSTANT_CONDITION $(SRCS)
 
 clean:
 	rm -f trainwreck $(OBJS)

@@ -73,7 +73,6 @@ static void read_configuration(void);
 static void *read_master_logs(void *);
 static void *slave_write_thread(void *);
 static int process_master_logs_once(void);
-static int find_event_type(char const *);
 static int start_slave_write_thread(void);
 static int start_master_read_thread(void);
 static void stop_slave_write_thread(void);
@@ -116,7 +115,6 @@ typedef struct logentry {
 } logentry_t;
 
 static logentry_t *parse_binlog(char unsigned const *, uint32_t len);
-static void print_log_entry(logentry_t const *);
 static void free_log_entry(logentry_t *);
 
 typedef struct lq_entry {
@@ -169,7 +167,6 @@ static status_t reader_st = ST_STOPPED;
 static int autostart;
 static int master_thread_stop;
 
-static writer_t the_writer;
 static void executed_up_to(writer_t *, char const *, logpos_t);
 static void sync_ack(writer_t *);
 static int nsyncs;
@@ -197,7 +194,7 @@ main(argc, argv)
 int		c, i;
 port_event_t	pe;
 
-	pthread_key_create(&threadname, NULL);
+	(void) pthread_key_create(&threadname, NULL);
 	set_thread_name("main");
 
 	setup_status_door();
@@ -250,8 +247,8 @@ port_event_t	pe;
 	}
 
 	if (autostart) {
-		start_slave_write_thread();
-		start_master_read_thread();
+		(void) start_slave_write_thread();
+		(void) start_master_read_thread();
 	}
 
 	while (port_get(ctl_port, &pe, NULL) == 0) {
@@ -404,7 +401,7 @@ stop_slave_write_thread()
 {
 int	i;
 	for (i = 0; i < nwriters; ++i) {
-		pthread_cancel(writers[i].wr_thread);
+		(void) pthread_cancel(writers[i].wr_thread);
 		if (pthread_join(writers[i].wr_thread, NULL) == -1) {
 			logmsg("cannot join slave thread: %s",
 					strerror(errno));
@@ -440,19 +437,22 @@ master_connect(void)
 static int
 start_master_read_thread()
 {
-	pthread_mutex_lock(&rst_mtx);
+	(void) pthread_mutex_lock(&rst_mtx);
 	if (reader_st != ST_STOPPED)
 		return -1;
 	
 	reader_st = ST_INITIALISING;
-	pthread_mutex_unlock(&rst_mtx);
+	(void) pthread_mutex_unlock(&rst_mtx);
 
 	if (master_connect() == -1)
-		return 0;
+		return -1;
 
-	pthread_create(&master_thread, NULL, read_master_logs, NULL);
+	(void) pthread_create(&master_thread, NULL, read_master_logs, NULL);
+
+	return 0;
 }
 
+/*ARGSUSED*/
 static void *
 read_master_logs(p)
 	void *p;
@@ -461,10 +461,10 @@ read_master_logs(p)
 
 	logmsg("waiting for writers to become ready...");
 
-	pthread_mutex_lock(&wi_mtx);
+	(void) pthread_mutex_lock(&wi_mtx);
 	while (writers_initialising > 0)
-		pthread_cond_wait(&wi_cond, &wi_mtx);
-	pthread_mutex_unlock(&wi_mtx);
+		(void) pthread_cond_wait(&wi_cond, &wi_mtx);
+	(void) pthread_mutex_unlock(&wi_mtx);
 
 	logmsg("all writers ready");
 
@@ -479,7 +479,7 @@ read_master_logs(p)
 			break;
 
 	reconnect:
-		sleep(30);
+		(void) sleep(30);
 		logmsg("reconnecting to master...");
 		mysql_close(master_conn);
 		if (master_connect() == -1)
@@ -493,9 +493,6 @@ read_master_logs(p)
 static int
 process_master_logs_once()
 {
-MYSQL_RES	*res;
-MYSQL_ROW	 row;
-char		*logsquery;
 char		 lastdb[128];
 
 	/*
@@ -513,10 +510,10 @@ char		*curfile;
 logpos_t	 curpos;
 unsigned long	 len;
 
-	pthread_mutex_lock(&rst_mtx);
+	(void) pthread_mutex_lock(&rst_mtx);
 	curfile = strdup(binlog_file);
 	curpos = binlog_pos;
-	pthread_mutex_unlock(&rst_mtx);
+	(void) pthread_mutex_unlock(&rst_mtx);
 
 	int4store(buf, (uint32_t) curpos);
 	int2store(buf + 4, (uint16_t) 0);
@@ -528,39 +525,39 @@ unsigned long	 len;
 		exit(1);
 	}
 
-	memcpy(buf + 10, curfile, len);
+	(void) memcpy(buf + 10, curfile, len);
 
 	if (simple_command(master_conn, COM_BINLOG_DUMP, buf, len + 10, 1) != 0) {
 		logmsg("%s,%lu: error retrieving binlogs from server: (%d) %s",
 				curfile, (unsigned long) curpos,
 				mysql_errno(master_conn), mysql_error(master_conn));
-		pthread_mutex_unlock(&rst_mtx);
+		(void) pthread_mutex_unlock(&rst_mtx);
 		return -1;
 	}
 
 	for (;;) {
 	logentry_t	*ent;
-		pthread_mutex_lock(&rst_mtx);
+		(void) pthread_mutex_lock(&rst_mtx);
 		reader_st = ST_WAIT_FOR_MASTER;
-		pthread_mutex_unlock(&rst_mtx);
+		(void) pthread_mutex_unlock(&rst_mtx);
 
 		len = cli_safe_read(master_conn);
 
-		pthread_mutex_lock(&rst_mtx);
+		(void) pthread_mutex_lock(&rst_mtx);
 		reader_st = ST_QUEUEING;
 
 		if (master_thread_stop) {
 			logmsg("shutting down");
-			pthread_mutex_unlock(&rst_mtx);
+			(void) pthread_mutex_unlock(&rst_mtx);
 			mysql_close(master_conn);
 
-			pthread_mutex_lock(&rst_mtx);
+			(void) pthread_mutex_lock(&rst_mtx);
 			reader_st = ST_STOPPED;
 			master_thread_stop = 0;
 			free(curfile);
 			free(binlog_file);
 			binlog_file = NULL;
-			pthread_mutex_unlock(&rst_mtx);
+			(void) pthread_mutex_unlock(&rst_mtx);
 
 			return 0;
 		}
@@ -573,7 +570,7 @@ unsigned long	 len;
 			return -1;
 		}
 
-		pthread_mutex_unlock(&rst_mtx);
+		(void) pthread_mutex_unlock(&rst_mtx);
 
 		if ((ent = parse_binlog(master_conn->net.read_pos + 1, len - 1)) == NULL) {
 			logmsg("failed parsing binlog");
@@ -587,9 +584,9 @@ unsigned long	 len;
 		curpos = ent->le_pos;
 
 		if (ent->le_database[0])
-			strlcpy(lastdb, ent->le_database, sizeof(lastdb));
+			(void) strlcpy(lastdb, ent->le_database, sizeof(lastdb));
 		else
-			strlcpy(ent->le_database, lastdb, sizeof(ent->le_database));
+			(void) strlcpy(ent->le_database, lastdb, sizeof(ent->le_database));
 
 		if (ent->le_type == ET_ROTATE && ent->le_time != 0) {
 		int	i;
@@ -606,10 +603,10 @@ unsigned long	 len;
 				lq_put(&writers[i].wr_log_queue, ent);
 			}
 
-			pthread_mutex_lock(&sync_mtx);
+			(void) pthread_mutex_lock(&sync_mtx);
 			while (nsyncs)
-				pthread_cond_wait(&sync_cond, &sync_mtx);
-			pthread_mutex_unlock(&sync_mtx);
+				(void) pthread_cond_wait(&sync_cond, &sync_mtx);
+			(void) pthread_mutex_unlock(&sync_mtx);
 
 			/*
 			 * Set the saved position for all writers to the new 
@@ -627,14 +624,14 @@ unsigned long	 len;
 			logmsg("rotating to %s,4", curfile);
 			free_log_entry(ent);
 
-			pthread_mutex_lock(&rst_mtx);
+			(void) pthread_mutex_lock(&rst_mtx);
 			strdup_free(&binlog_file, curfile);
 			binlog_pos = 4;
-			pthread_mutex_unlock(&rst_mtx);
+			(void) pthread_mutex_unlock(&rst_mtx);
 		} else {
-			pthread_mutex_lock(&rst_mtx);
+			(void) pthread_mutex_lock(&rst_mtx);
 			binlog_pos = curpos;
-			pthread_mutex_unlock(&rst_mtx);
+			(void) pthread_mutex_unlock(&rst_mtx);
 
 			if ((db_regex == NULL || regexec(db_regex, ent->le_database, 0, NULL, 0) == 0) &&
 			    (ignore_regex == NULL || regexec(ignore_regex, ent->le_database, 0, NULL, 0) != 0) &&
@@ -655,7 +652,6 @@ parse_binlog(buf, len)
 	char unsigned const *buf;
 	uint32_t len;
 {
-uint32_t	 timestamp;
 uchar		 type;
 logentry_t	*ent;
 
@@ -710,13 +706,12 @@ logentry_t	*ent;
 
 		ADVANCE(8);
 		ent->le_info = malloc(len + 1);
-		memcpy(ent->le_info, buf, len);
+		(void) memcpy(ent->le_info, buf, len);
 		ent->le_info[len] = '\0';
 		return ent;
 
 	case ET_QUERY: {
 	int	namelen;
-	int	error;
 		/*
 		 * 4 bytes: thread id
 		 * 4 bytes: execution time
@@ -735,17 +730,16 @@ logentry_t	*ent;
 		namelen = *buf;
 		ADVANCE(1);
 
-		error = uint2korr(buf);
 		ADVANCE(2);
 		if (len <= namelen + 2) {
 			logmsg("binlog is truncated");
 			goto err;
 		}
 
-		strlcpy(ent->le_database, (char const *) buf, sizeof(ent->le_database));
+		(void) strlcpy(ent->le_database, (char const *) buf, sizeof(ent->le_database));
 		ADVANCE(namelen + 1);
 		ent->le_info = calloc(1, len + 1);
-		memcpy(ent->le_info, buf, len);
+		(void) memcpy(ent->le_info, buf, len);
 		return ent;
 	}
 
@@ -763,7 +757,7 @@ logentry_t	*ent;
 		 ent->le_insert_id = uint8korr(buf);
 
 		 if (debug)
-			 printf("got intvar: %llu (%llx)\n", (unsigned long long) ent->le_insert_id,
+			 (void) printf("got intvar: %llu (%llx)\n", (unsigned long long) ent->le_insert_id,
 						 (unsigned long long) ent->le_insert_id);
 		 return ent;
 
@@ -784,25 +778,13 @@ logmsg(char const *msg, ...)
 va_list	ap;
 static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
-	pthread_mutex_lock(&lock);
+	(void) pthread_mutex_lock(&lock);
 	(void) fprintf(stderr, "[%s] ", get_thread_name());
 	va_start(ap, msg);
 	(void) vfprintf(stderr, msg, ap);
 	va_end(ap);
-	fputs("\n", stderr);
-	pthread_mutex_unlock(&lock);
-}
-
-static void
-print_log_entry(e)
-	logentry_t const *e;
-{
-	logmsg("%s,%llu : %d : %s : %s\n",
-	      e->le_file, (unsigned long long) e->le_pos,
-	      e->le_type,
-	      e->le_database[0] ? e->le_database : "<none>",
-	      (e->le_type == ET_QUERY) ? e->le_info /*"<query>"*/ : 
-		(e->le_info ? e->le_info : "<null>"));
+	(void) fputs("\n", stderr);
+	(void) pthread_mutex_unlock(&lock);
 }
 
 static void
@@ -830,30 +812,29 @@ lq_put(q, e)
 	logentry_t *e;
 {
 lq_entry_t	*entry;
-	pthread_mutex_lock(&q->lq_mtx);
+	(void) pthread_mutex_lock(&q->lq_mtx);
 	while (q->lq_entries >= max_buffer) {
 		if (debug)
 			logmsg("queue is full, sleeping...");
-		pthread_mutex_unlock(&q->lq_mtx);
-		sleep(5);
-		pthread_mutex_lock(&q->lq_mtx);
+		(void) pthread_mutex_unlock(&q->lq_mtx);
+		(void) sleep(5);
+		(void) pthread_mutex_lock(&q->lq_mtx);
 	}
 
 	entry = calloc(1, sizeof(lq_entry_t));
 	entry->lqe_item = e;
 	TAILQ_INSERT_TAIL(&q->lq_head, entry, lqe_q);
 	q->lq_entries++;
-	pthread_cond_signal(&q->lq_cond);
-	pthread_mutex_unlock(&q->lq_mtx);
+	(void) pthread_cond_signal(&q->lq_cond);
+	(void) pthread_mutex_unlock(&q->lq_mtx);
 }
 
 static void
 lq_get_cleanup(mtx)
 	void *mtx;
 {
-int	i;
 	logmsg("shutting down");
-	pthread_mutex_unlock((pthread_mutex_t *) mtx);
+	(void) pthread_mutex_unlock((pthread_mutex_t *) mtx);
 }
 
 static logentry_t *
@@ -866,23 +847,23 @@ logentry_t	*ent;
 	 * This function is a cancellation point.  Read the comment in 
 	 * slave_write_thread for details.
 	 */
-	pthread_mutex_lock(&q->lq_mtx);
+	(void) pthread_mutex_lock(&q->lq_mtx);
 
 	pthread_cleanup_push(lq_get_cleanup, &q->lq_mtx);
-	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
+	(void) pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 
 	while (TAILQ_EMPTY(&q->lq_head)) {
-		pthread_cond_wait(&q->lq_cond, &q->lq_mtx);
+		(void) pthread_cond_wait(&q->lq_cond, &q->lq_mtx);
 	}
 
-	pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, NULL);
+	(void) pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, NULL);
 	pthread_cleanup_pop(0);
 
 	qe = TAILQ_FIRST(&q->lq_head);
 	TAILQ_REMOVE(&q->lq_head, qe, lqe_q);
 	q->lq_entries--;
 
-	pthread_mutex_unlock(&q->lq_mtx);
+	(void) pthread_mutex_unlock(&q->lq_mtx);
 
 	ent = qe->lqe_item;
 	free(qe);
@@ -893,17 +874,17 @@ static int
 start_slave_write_thread()
 {
 int	i;
-	pthread_mutex_lock(&wst_mtx);
+	(void) pthread_mutex_lock(&wst_mtx);
 	for (i = 0; i < nwriters; i++)
 		if (writers[i].wr_status != ST_STOPPED)
 			return -1;
 
 	writers_initialising = nwriters;
-	pthread_mutex_unlock(&wst_mtx);
+	(void) pthread_mutex_unlock(&wst_mtx);
 	
 
 	for (i = 0; i < nwriters; ++i) {
-		pthread_create(&writers[i].wr_thread, NULL, slave_write_thread, &writers[i]);
+		(void) pthread_create(&writers[i].wr_thread, NULL, slave_write_thread, &writers[i]);
 	}
 	return 0;
 }
@@ -923,9 +904,9 @@ char		 namebuf[16];
 	 * fairly short; lq_get is the only one that blocks.  lq_get enables 
 	 * cancellation while it's running and will do proper cleanup for us.
 	 */
-	pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, NULL);
+	(void) pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, NULL);
 
-	snprintf(namebuf, sizeof(namebuf), "writer-%d", self->wr_num);
+	(void) snprintf(namebuf, sizeof(namebuf), "writer-%d", self->wr_num);
 	set_thread_name(namebuf);
 
 	self->wr_status = ST_INITIALISING;
@@ -944,12 +925,15 @@ char		 namebuf[16];
 		return 0;
 	}
 
-	retrieve_binlog_position(self);
+	if (retrieve_binlog_position(self) != 0) {
+		logmsg("could not retrieve binlog position");
+		return 0;
+	}
 
-	pthread_mutex_lock(&wi_mtx);
+	(void) pthread_mutex_lock(&wi_mtx);
 	writers_initialising--;
-	pthread_cond_signal(&wi_cond);
-	pthread_mutex_unlock(&wi_mtx);
+	(void) pthread_cond_signal(&wi_cond);
+	(void) pthread_mutex_unlock(&wi_mtx);
 	
 	self->wr_status = ST_WAIT_FOR_ENTRY;
 	while ((e = lq_get(&self->wr_log_queue)) != NULL) {
@@ -976,7 +960,7 @@ char		 namebuf[16];
 
 		case ET_INTVAR: {
 		char	query[128];
-			snprintf(query, sizeof(query), "SET INSERT_ID=%llu",
+			(void) snprintf(query, sizeof(query), "SET INSERT_ID=%llu",
 					(unsigned long long) e->le_insert_id);
 			if (execute_query(self->wr_conn, query) != 0) {
 				logmsg("%s,%lu: %s: query failed (%u: %s): \"%s\"",
@@ -1012,14 +996,15 @@ char		 namebuf[16];
 	return NULL;
 }
 
+/*ARGSUSED*/
 static void
 sync_ack(wr)
 	writer_t *wr;
 {
-	pthread_mutex_lock(&sync_mtx);
+	(void) pthread_mutex_lock(&sync_mtx);
 	--nsyncs;
-	pthread_cond_signal(&sync_cond);
-	pthread_mutex_unlock(&sync_mtx);
+	(void) pthread_cond_signal(&sync_cond);
+	(void) pthread_mutex_unlock(&sync_mtx);
 }
 
 static int
@@ -1070,7 +1055,7 @@ set_thread_name(name)
 char	*s;
 	if ((s = pthread_getspecific(threadname)) != NULL)
 		free(s);
-	pthread_setspecific(threadname, strdup(name));
+	(void) pthread_setspecific(threadname, strdup(name));
 }
 
 static char const *
@@ -1090,20 +1075,26 @@ executed_up_to(writer, log, pos)
 {
 char	buf[BINLOG_NAMELEN + 4];
 
-	pthread_mutex_lock(&wst_mtx);
+	(void) pthread_mutex_lock(&wst_mtx);
 	if (writer->wr_last_executed_file && !strcmp(log, writer->wr_last_executed_file)) {
 		if (pos == writer->wr_last_executed_pos) {
-			pthread_mutex_unlock(&wst_mtx);
+			(void) pthread_mutex_unlock(&wst_mtx);
 			return;
 		}
 	} else
 		strdup_free(&writer->wr_last_executed_file, log);
 	writer->wr_last_executed_pos = pos;
-	pthread_mutex_unlock(&wst_mtx);
+	(void) pthread_mutex_unlock(&wst_mtx);
 
 	if (writer->wr_rstat == 0) {
 		(void) snprintf(buf, sizeof(buf), "%d.logpos", writer->wr_num);
-		if ((writer->wr_rstat = open(buf, O_WRONLY | O_CREAT, 0600)) == -1) {
+		if (unlink(buf) == -1 && errno != ENOENT) {
+			logmsg("cannot remove old state file \"%s\": %s",
+					buf, strerror(errno));
+			exit(1);
+		}
+
+		if ((writer->wr_rstat = open(buf, O_WRONLY | O_CREAT | O_EXCL, 0600)) == -1) {
 			logmsg("cannot open state file \"%s\": %s",
 					buf, strerror(errno));
 			exit(1);
@@ -1127,7 +1118,7 @@ int		 rstat;
 struct stat	 st;
 char		*buf;
 char		 sname[128];
-	snprintf(sname, sizeof(sname), "%d.logpos", writer->wr_num);
+	(void) snprintf(sname, sizeof(sname), "%d.logpos", writer->wr_num);
 	if ((rstat = open(sname, O_RDONLY)) == -1) {
 		logmsg("cannot open state file \"%s\": %s",
 				sname, strerror(errno));
@@ -1136,10 +1127,10 @@ char		 sname[128];
 		 */
 		writer->wr_last_executed_pos = binlog_pos;
 		strdup_free(&writer->wr_last_executed_file, binlog_file);
-		pthread_mutex_lock(&rst_mtx);
+		(void) pthread_mutex_lock(&rst_mtx);
 		if (lowest_log_pos == 0 || writer->wr_last_executed_pos < lowest_log_pos)
 			lowest_log_pos = writer->wr_last_executed_pos;
-		pthread_mutex_unlock(&rst_mtx);
+		(void) pthread_mutex_unlock(&rst_mtx);
 		if (errno == ENOENT)
 			return 1;
 		exit(1);
@@ -1161,12 +1152,12 @@ char		 sname[128];
 	writer->wr_last_executed_pos = uint4korr(buf);
 	strdup_free(&writer->wr_last_executed_file, buf + 4);
 
-	pthread_mutex_lock(&rst_mtx);
+	(void) pthread_mutex_lock(&rst_mtx);
 	if (lowest_log_pos == 0 || writer->wr_last_executed_pos < lowest_log_pos)
 		lowest_log_pos = writer->wr_last_executed_pos;
 	if (binlog_file == NULL)
 		binlog_file = strdup(buf + 4);
-	pthread_mutex_unlock(&rst_mtx);
+	(void) pthread_mutex_unlock(&rst_mtx);
 
 	return 0;
 }
@@ -1185,7 +1176,7 @@ int	i;
 	}
 
 	(void) unlink(STATUS_DOOR);
-	if ((i = creat(STATUS_DOOR, 0600)) == -1) {
+	if ((i = open(STATUS_DOOR, O_EXCL | O_CREAT | O_RDWR, 0600)) == -1) {
 		logmsg("creating status door \"%s\": %s",
 				STATUS_DOOR, strerror(errno));
 		exit(1);
@@ -1200,6 +1191,7 @@ int	i;
 	}
 }
 
+/*ARGSUSED*/
 static void
 service_status_request(cookie, args, arglen, desc, ndesc)
 	void *cookie;
@@ -1227,22 +1219,22 @@ int	 i;
 	case RQ_STATUS:
 		st = malloc(2 + nwriters);
 		st[0] = RR_OK;
-		pthread_mutex_lock(&rst_mtx);
+		(void) pthread_mutex_lock(&rst_mtx);
 		st[1] = reader_st;
-		pthread_mutex_unlock(&rst_mtx);
+		(void) pthread_mutex_unlock(&rst_mtx);
 
-		pthread_mutex_lock(&wst_mtx);
+		(void) pthread_mutex_lock(&wst_mtx);
 		for (i = 0; i < nwriters; i++)
 			st[2 + i] = writers[i].wr_status;
-		pthread_mutex_unlock(&wst_mtx);
+		(void) pthread_mutex_unlock(&wst_mtx);
 
 		door_return((char *) st, 2 + nwriters, NULL, 0);
 		return;
 
 	case RQ_READER_POSITION:
-		pthread_mutex_lock(&rst_mtx);
+		(void) pthread_mutex_lock(&rst_mtx);
 		if (!binlog_file) {
-			pthread_mutex_unlock(&rst_mtx);
+			(void) pthread_mutex_unlock(&rst_mtx);
 			door_return(NULL, 0, NULL, 0);
 			return;
 		}
@@ -1251,14 +1243,14 @@ int	 i;
 		st = malloc(5 + blen);
 		st[0] = RR_OK;
 		int4store(st + 1, binlog_pos);
-		memcpy(st + 5, binlog_file, blen);
-		pthread_mutex_unlock(&rst_mtx);
+		(void) memcpy(st + 5, binlog_file, blen);
+		(void) pthread_mutex_unlock(&rst_mtx);
 
 		door_return((char *) st, 5 + blen, NULL, 0);
 		return;
 
 	case RQ_WRITER_POSITION:
-		pthread_mutex_lock(&wst_mtx);
+		(void) pthread_mutex_lock(&wst_mtx);
 		offs = 2;
 		st = alloca(1 + (10 + BINLOG_NAMELEN) * nwriters);
 		st[0] = RR_OK;
@@ -1275,28 +1267,28 @@ int	 i;
 			int4store(st + offs, writers[i].wr_last_executed_pos);
 			int4store(st + offs + 4, (uint32_t) writers[i].wr_last_executed_time);
 			int2store(st + offs + 8, (uint16_t) blen);
-			memcpy(st + offs + 10, writers[i].wr_last_executed_file, blen);
+			(void) memcpy(st + offs + 10, writers[i].wr_last_executed_file, blen);
 			offs += 10 + blen;
 		}
 
-		pthread_mutex_unlock(&wst_mtx);
+		(void) pthread_mutex_unlock(&wst_mtx);
 		door_return((char *) st, offs, NULL, 0);
 		return;
 
 	case RQ_START:
-		port_send(ctl_port, CTL_START, NULL);
+		(void) port_send(ctl_port, CTL_START, NULL);
 		c[0] = RR_OK;
 		door_return(c, 1, NULL, 0);
 		return;
 
 	case RQ_STOP:
-		port_send(ctl_port, CTL_STOP, NULL);
+		(void) port_send(ctl_port, CTL_STOP, NULL);
 		c[0] = RR_OK;
 		door_return(c, 1, NULL, 0);
 		return;
 
 	case RQ_SHUTDOWN:
-		port_send(ctl_port, CTL_SHUTDOWN, NULL);
+		(void) port_send(ctl_port, CTL_SHUTDOWN, NULL);
 		c[0] = RR_OK;
 		door_return(c, 1, NULL, 0);
 		return;
@@ -1320,7 +1312,7 @@ static void
 writer_init(wr)
 	writer_t *wr;
 {
-	memset(wr, 0, sizeof(*wr));
+	(void) memset(wr, 0, sizeof(*wr));
 	lq_init(&wr->wr_log_queue);
 	wr->wr_status = ST_STOPPED;
 }
