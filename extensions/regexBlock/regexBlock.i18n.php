@@ -7,7 +7,7 @@
 
 $messages = array();
 
-$messages ['en'] = array(
+$messages['en'] = array(
 	'regexblock' => 'RegexBlock',
 	'regexblock-page-title' => 'Regular Expression Name Block',
 	'regexblockstats' => 'Regex Block Statistics',
