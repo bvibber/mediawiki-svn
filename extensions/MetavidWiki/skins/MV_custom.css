@@ -1,0 +1,169 @@
+/* metavid.css Created on June 29, 2007
+ *
+ * All Metavid Wiki code is Released under the GPL2
+ * for more info visit http:/metavid.ucsc.edu/code
+ * 
+ * @author Michael Dale
+ * @email dale@ucsc.edu
+ * @url http://metavid.ucsc.edu
+ *
+ * extended styles for metavid extension
+ */
+ .tail_color{
+	position:absolute;
+	width:10px;
+	border-bottom-color:#2F6FAB
+ }
+.hl_term{
+	font-weight:bold;
+	background:white;
+}
+.mv_fd_mvd{
+	float:left;
+	margin:4px;
+	width:90%;
+}
+.mv_video_time_hr{
+ 	position:absolute;
+ 	top:10px;
+ 	right:30px;
+ 	z-index:5;
+	font-weight: 100; 
+	background:black;
+	color:white;
+}
+.mv_fd_im_cont{
+	 display: block;
+	 margin-left: auto;
+	 margin-right: auto;
+} 
+
+label.mv_css_form,input.mv_css_form {
+	display: block;
+	width: 150px;
+	float: left;
+	margin-bottom: 10px;
+}
+label.mv_css_form {
+	text-align: right;
+	width: 75px;
+	padding-right: 20px;
+}
+br.mv_css_form {
+	clear: left;
+}
+
+.pl_desc{
+	font-family:sans-serif;
+	font-style:normal;
+	font-size:small;
+	font-variant:normal;	
+}
+
+textarea.mv_ajax_textarea{
+	font-family:sans-serif;
+	font-style:normal;
+	font-size:small;
+	font-variant:normal;
+	font-weight:normal;
+}
+   div.autocomplete {   
+      position:absolute;
+      min-width:250px;
+      overflow:hidden;
+      z-index:99;
+      background-color:white;
+      border:1px solid #888;
+      margin:0px;
+      padding:0px;
+    }
+    div.autocomplete ul {
+      list-style-type:none;       
+      margin:0px;
+      padding:0px;
+    }
+    div.autocomplete ul li.selected { background-color: #ffb;}
+    div.autocomplete ul li {
+      list-style-type:none;
+      display:block;
+      margin:0;      
+      padding:2px;
+      height:52px;
+      cursor:pointer;
+    }
+
+#resizable css:    
+.ui-resizable-handle { position: absolute; background: #ddd; display: none; }
+.ui-resizable .ui-resizable-handle { display: block }
+.ui-resizable-e { z-index:5; position:absolute; cursor: e-resize; width: 15px;height:19px; top: 0px; bottom: 0px; right: 0px;}
+.ui-resizable-w { z-index:5; position:absolute; cursor: w-resize; width: 15px;height:19px; top: 0px; bottom: 0px; left: 0px;}
+.ui-dragSpan {filter: alpha(opacity=70); -moz-opacity: .7; background-color:#AAF; position:absolute; left: 10px; right:10px;height:19px;  } 
+    
+#auto complete css: 
+.ac_results {
+	padding: 0px;
+	border: 1px solid WindowFrame;
+	background-color: Window;
+	overflow: hidden;
+}
+
+.ac_results ul {
+	width: 100%;
+	list-style-position: outside;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.ac_results iframe {
+	display:none;/*sorry for IE5*/
+	display/**/:block;/*sorry for IE5*/
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:-1;
+	filter:mask();
+	width:3000px;
+	height:3000px;
+}
+
+.ac_results li {
+	margin: 0px;
+	padding: 2px 5px;
+	cursor: pointer;
+	display: block;
+	width: 100%;
+	font: menu;
+	font-size: 12px;
+	overflow: hidden;
+}
+
+.ac_loading {
+	background : Window url('./indicator.gif') right center no-repeat;
+}
+
+.ac_over {
+	background-color: Highlight;
+	color: HighlightText;
+}
+
+.mv_search_select{
+	margin-top:17px;
+}
+.mv_search_text{
+	margin-top:17px;
+}
+    
+.mv_result_bar {
+	background-color:#FFCC66;
+	border-bottom:thin dashed #000000;
+	border-top:thin dashed #000000;
+	margin-top:5px;
+	margin-right:5px;
+	padding-left:5px;
+	padding-top:2px;
+}
+.set_ogg_player_pref{
+	text-align:left;
+}
+    
