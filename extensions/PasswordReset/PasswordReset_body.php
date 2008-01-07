@@ -159,13 +159,8 @@ class PasswordReset extends SpecialPage
                 global $wgMessageCache;
                 if ( $messagesLoaded ) return true;
                 $messagesLoaded = true;
- 
-                require( dirname( __FILE__ ) . '/PasswordReset.i18n.php' );
-                foreach ( $allMessages as $lang => $langMessages ) {
-                        $wgMessageCache->addMessages( $langMessages, $lang );
-                }
- 
-				return true;
+                 wfLoadExtensionMessages('PasswordReset');
+		return true;
         }
 		
 		function GetBlockedStatus(&$user) {
