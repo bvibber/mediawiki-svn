@@ -332,9 +332,9 @@ $messages = array();
 		'passwordreset-success' => 'User_id: $1 的密碼已經重設'
 	);
 
-$allMessages['zh'] = $allMessages['zh-hans'];
-$allMessages['zh-cn'] = $allMessages['zh-hans'];
-$allMessages['zh-hk'] = $allMessages['zh-hant'];
-$allMessages['zh-sg'] = $allMessages['zh-hans'];
-$allMessages['zh-tw'] = $allMessages['zh-hant'];
-$allMessages['zh-yue'] = $allMessages['yue'];
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-tw'] = $messages['zh-hant'];
+$messages['zh-yue'] = $messages['yue'];
