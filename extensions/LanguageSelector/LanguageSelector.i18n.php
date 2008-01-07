@@ -112,3 +112,34 @@ $messages['sk'] = array(
 $messages['vo'] = array(
 	'languageselector' => 'Pük',
 );
+
+/** Cantonese (粵語)
+ * @author Shinjiman
+*/
+$messages['yue'] = array(
+	'languageselector' => '語言',
+	'languageselector-setlang' => '設',
+);
+
+/** Chinese (Simplified) (中文(简化字))
+ * @author Shinjiman
+*/
+$messages['zh-hans'] = array(
+	'languageselector' => '语言',
+	'languageselector-setlang' => '設置',
+);
+
+/** Chinese (Traditional) (中文(傳統字))
+ * @author Shinjiman
+*/
+$messages['zh-hant'] = array(
+	'languageselector' => '語言',
+	'languageselector-setlang' => '設定',
+);
+
+$messages['zh']      = $messages['zh-hans'];
+$messages['zh-cn']   = $messages['zh-hans'];
+$messages['zh-hk']   = $messages['zh-hant'];
+$messages['zh-sg']   = $messages['zh-hans'];
+$messages['zh-tw']   = $messages['zh-hant'];
+$messages['zh-yue']  = $messages['yue'];

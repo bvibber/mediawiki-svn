@@ -1019,6 +1019,10 @@ Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"
 		'ogg-play-sound'       => '去聲',
 		'ogg-no-player'        => '對唔住，你嘅系統並無任何可以支援得到嘅播放器。' . 
 			'請安裝<a href="http://www.java.com/zh_TW/download/manual.jsp">Java</a>。',
+		'ogg-no-xiphqt'        => '你似乎無畀QuickTime用嘅XiphQT組件。' .
+			'響未有呢個組件嗰陣，QuickTime係唔可以播放Ogg檔案。' . 
+			'請<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">下載XiphQT</a>或者揀過另外一個播放器。',
+
 		'ogg-player-videoElement' => '<video>元素',
 		'ogg-player-oggPlugin' => 'Ogg插件',
 		'ogg-player-thumbnail' => '只有靜止圖像',
@@ -1047,6 +1051,10 @@ Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"
 		'ogg-play-sound'       => '播放声音',
 		'ogg-no-player'        => '抱歉，您的系统并无任何可以支持播放的播放器。' . 
 			'请安装<a href="http://www.java.com/zh_CN/download/manual.jsp">Java</a>。',
+		'ogg-no-xiphqt'        => '您似乎没有给QuickTime用的XiphQT组件。' .
+			'在未有这个组件的情况下，QuickTime是不能播放Ogg文件的。' . 
+			'请<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">下载XiphQT</a>或者选取另一个播放器。',
+
 		'ogg-player-videoElement' => '<video>元素',
 		'ogg-player-oggPlugin' => 'Ogg插件',
 		'ogg-player-thumbnail' => '只有静止图像',
@@ -1075,6 +1083,10 @@ Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"
 		'ogg-play-sound'       => '播放聲音',
 		'ogg-no-player'        => '抱歉，您的系統並無任何可以支援播放的播放器。' . 
 			'請安裝<a href="http://www.java.com/zh_TW/download/manual.jsp">Java</a>。',
+		'ogg-no-xiphqt'        => '您似乎沒有給QuickTime用的XiphQT組件。' .
+			'在未有這個組件的情況下，QuickTime是不能播放Ogg檔案的。' . 
+			'請<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">下載XiphQT</a>或者選取另一個播放器。',
+
 		'ogg-player-videoElement' => '<video>元素',
 		'ogg-player-oggPlugin' => 'Ogg插件',
 		'ogg-player-thumbnail' => '只有靜止圖像',
@@ -1093,7 +1105,7 @@ $messages['kk-tr'] = $messages['kk-latn'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk'] = $messages['kk-cyrl'];
 
-/* Chinese defaults, fallback to zh-hans */
+/* Chinese fallbacks */
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];
 $messages['zh-hk'] = $messages['zh-hant'];
