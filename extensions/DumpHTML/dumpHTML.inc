@@ -676,6 +676,9 @@ class DumpHTML {
 
 		$uploadBits = explode( '/', str_replace( '\\', '/', $wgUploadPath ) );
 		$this->imageRel = $uploadBits[count($uploadBits) - 1];
+		if ( !in_array( $this->imageRel, array( 'images', 'upload' ) ) ) {
+			$this->imageRel = 'images';
+		}
 
 		$wgStylePath = "{$this->articleBaseUrl}/skins";
 
@@ -730,7 +733,7 @@ class DumpHTML {
 			$urlText = $m[1];
 			$url = Sanitizer::decodeCharReferences( $urlText );
 			$url = $this->makeUrlSnapshot( $url );
-			$wgCopyrightIcon = str_replace( $urlText, htmlspecialchars( $url ));
+			$wgCopyrightIcon = str_replace( $urlText, htmlspecialchars( $url ), $this->oldCopyrightIcon);
 		}
 
 		# Make a snapshot of the favicon
@@ -834,6 +837,17 @@ ENDTEXT;
 	}
 
 	/**
+	 * Returns true if the path exists, false otherwise
+	 * PHP's file_exists() returns false for broken symlinks, this returns true.
+	 */
+	function pathExists( $path ) {
+		wfSuppressWarnings();
+		$exists = (bool)lstat( $path );
+		wfRestoreWarnings();
+		return $exists;
+	}
+
+	/**
 	 * Copy a file specified by a URL to a given directory
 	 * 
 	 * @param string $srcPath The source URL
@@ -846,7 +860,7 @@ ENDTEXT;
 		$sourceLoc = "$srcDirBase/$rel";
 		$destLoc = "$destDirBase/$rel";
 		#print "Copying $sourceLoc to $destLoc\n";
-		if ( !file_exists( $destLoc ) ) {
+		if ( !$this->pathExists( $destLoc ) ) {
 			wfMkdirParents( dirname( $destLoc ), 0755 );
 			if ( function_exists( 'symlink' ) && !$this->forceCopy ) {
 				if ( !symlink( $sourceLoc, $destLoc ) ) {
@@ -1151,7 +1165,7 @@ class DumpHTML_ProxyRepoGroup extends RepoGroup {
 		$this->localRepo = new DumpHTML_ProxyRepo( $backendRG->getLocalRepo(), $dump, $localDest, $localUrl );
 		$this->foreignRepos = array();
 		foreach ( $backendRG->foreignRepos as $index => $repo ) {
-			$friendlyName = $dump->getFriendlyName( $repo->getName() );
+			$friendlyName = strtr( $repo->getName(), array( '/. ', '___' ) );
 			if ( !$dump->makeSnapshot ) {
 				$foreignDest = false;
 			} else {
@@ -1214,7 +1228,7 @@ class DumpHTML_ProxyRepo {
 
 		$dest = "{$this->directory}/$rel";
 
-		if ( file_exists( $dest ) ) {
+		if ( $this->dump->pathExists( $dest ) ) {
 			return;
 		}
 
@@ -1304,6 +1318,10 @@ class DumpHTML_ProxyFile {
 
 		$source = $this->backend->getPath();
 		$dest = $this->repo->directory . '/' . $this->backend->getRel();
+
+		if ( $this->dump->pathExists( $dest ) ) {
+			return;
+		}
 
 		if ( $source === false ) {
 			$sourceUrl = $this->backend->getUrl();
