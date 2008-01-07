@@ -433,6 +433,8 @@ master_connect(void)
 		reader_st = ST_STOPPED;
 		return -1;
 	}
+
+	return 0;
 }
 
 static int
@@ -532,6 +534,7 @@ unsigned long	 len;
 		logmsg("%s,%lu: error retrieving binlogs from server: (%d) %s",
 				curfile, (unsigned long) curpos,
 				mysql_errno(master_conn), mysql_error(master_conn));
+		pthread_mutex_unlock(&rst_mtx);
 		return -1;
 	}
 
