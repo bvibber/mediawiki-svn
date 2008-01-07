@@ -529,6 +529,7 @@ $1',
 		'sign-uniquequery-similaremail' => 'Podobna e-mejlowa adresa',
 		'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] je [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2] podpisał.',
 	),
+
 	'la' => array(
 		'sign-realname' => 'Nomen:',
 		'sign-city' => 'Urbs:',
@@ -537,6 +538,22 @@ $1',
 		'sign-viewfield-reviewcomment' => 'Sententia',
 		'sign-review-comment' => 'Sententia',
 	),
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+	'lb' => array(
+		'sign-realname'                => 'Numm:',
+		'sign-country'                 => 'Land:',
+		'sign-bday'                    => 'Alter:',
+		'sign-email'                   => 'E-Mail-Adress:',
+		'sign-viewfield-realname'      => 'Numm',
+		'sign-viewfield-address'       => 'Adress',
+		'sign-viewfield-age'           => 'Alter',
+		'sign-viewfield-reviewcomment' => 'Bemierkung',
+		'sign-review-comment'          => 'Bemierkung',
+	),
+
 	'nl' => array(
 		'signdocument' => 'Document ondertekenen',
 		'sign-nodocselected' => 'Selecteer alstublieft het document dat u wilt ondertekenen.',

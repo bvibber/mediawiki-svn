@@ -105,6 +105,13 @@ $messages['hsb'] = array(
 	'showprocesslist-state'   => 'Staw',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'showprocesslist-user' => 'Benotzer',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

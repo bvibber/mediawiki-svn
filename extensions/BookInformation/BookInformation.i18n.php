@@ -180,7 +180,7 @@ function efBookInformationMessages() {
 	'bookinfo-error-invalidisbn' => 'ISBN envalido.',
 	'bookinfo-error-nosuchitem'  => 'Cél èlèment ègziste pas ou il at pas possu étre trovâ.',
 	'bookinfo-error-nodriver'    => 'Empossiblo d’inicialisar un motor d’enformacion sur les ôvres.',
-	'bookinfo-error-noresponse'  => 'Niona rèponsa ou ben nion dèpassement du dèlê.',
+	'bookinfo-error-noresponse'  => 'Gins de rèponsa ou de dèpassement du dèlê.',
 	'bookinfo-purchase'          => 'Achetar cél lévro dessus $1',
 	'bookinfo-provider'          => 'Fornissor de les balyês : $1',
 ),

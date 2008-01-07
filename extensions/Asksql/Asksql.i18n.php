@@ -36,6 +36,17 @@ $messages['ar'] = array(
 	'querysuccessful'  => 'الاستعلام ناجح',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'asksql'          => 'Consulta SQL',
+	'sqlislogged'     => 'Por favor fíxate en que toles consultes queden rexistraes.',
+	'sqlquery'        => 'Introducir consulta',
+	'querybtn'        => 'Unviar consulta',
+	'querysuccessful' => 'Consulta efeutuada correutamente',
+);
+
 $messages['bcl'] = array(
 	'asksql'           => 'Hapot na SQL',
 	'sqlislogged'      => 'Giromdomon na an gabos na hapot nakalaog.',

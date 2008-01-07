@@ -100,13 +100,16 @@ $1
 
 /** Asturian (Asturianu)
  * @author SPQRobin
+ * @author Esbardu
  */
 $wgLuceneSearchMessages['ast'] = array(
 	'searchnumber'          => '<strong>Resultaos $1-$2 de $3</strong>',
 	'searchnoresults'       => 'Sentímoslo, nun hebo coincidencies exautes pa la to busca.',
-	'lucenepowersearchtext' => 'Buscar sólo nos espacios de nomes marcaos:
+	'lucenepowersearchtext' => 'Buscar nos espacios de nomes:
 
-$1',
+$1
+
+Buscar $3 $9 $10',
 );
 
 $wgLuceneSearchMessages['bcl'] = array(

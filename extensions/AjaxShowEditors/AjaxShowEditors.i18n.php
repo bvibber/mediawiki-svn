@@ -16,6 +16,15 @@ $wgAjaxShowEditorsMessages['ar'] = array(
 	'ajax-se-idling' => '(منذ $1ث)',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$wgAjaxShowEditorsMessages['ast'] = array(
+	'ajax-se-title'   => 'Editando actualmente:',
+	'ajax-se-pending' => 'refrescu pendiente ... (calca nesti caxellu o empecipia a editar)',
+	'ajax-se-idling'  => '(hai $1s)',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

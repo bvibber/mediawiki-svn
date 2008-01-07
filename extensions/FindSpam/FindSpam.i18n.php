@@ -64,6 +64,14 @@ $messages['hsb'] = array(
 	'findspam-notextfound' => 'Žane přinoški namakane',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'findspam-ip' => 'IP-Adress:',
+	'findspam-ok' => 'OK',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

@@ -177,18 +177,19 @@ $wgBoardVoteMessages['ar'] = array(
 
 /** Asturian (Asturianu)
  * @author SPQRobin
+ * @author Esbardu
  */
 $wgBoardVoteMessages['ast'] = array(
 	'boardvote'              => "Eleiciones pal Conseyu d'Alministración de Wikimedia (Board of Trustees)",
 	'boardvote_entry'        => "* [[Special:Boardvote/vote|Votar]]
 * [[Special:Boardvote/list|Llista de votos hasta la fecha]]
 * [[Special:Boardvote/dump|Volcáu de datos encriptaos d'eleición]]",
-	'boardvote_intro'        => "<p>Bienveníu a la tercer eleición pal Conseyu d'Alministración de Wikimedia. 
-Tamos votando pa qu'una persona represente a la comunidá d'usuarios de 
+	'boardvote_intro'        => "<p>Bienveníu a la segunda eleición pal Conseyu d'Alministración de Wikimedia. 
+Tamos votando pa que dos persones representen a la comunidá d'usuarios de 
 los distintos proyectos Wikimedia. Ellos aidarán a determinar la direición 
 futura que los proyectos Wikimedia van siguir, en forma individual y en grupu, 
-y representa los <em>tos</em> intereses y esmoliciones hacia'l Conseyu d'Alministración. 
-L'elixíu decidirá les formes de xenerar ingresos y la destinación d'ellos.</p>
+y representen los <em>tos</em> intereses y esmoliciones hacia'l Conseyu d'Alministración. 
+Ellos decidirán les formes de xenerar ingresos y la destinación de los mesmos.</p>
 
 <p>Por favor, llei con procuru les declaraciones y rempuestes de los candidatos
 enantes de votar. Caún de los candidatos ye un usuariu respetáu que contribuyó 
@@ -200,10 +201,14 @@ posición sedrá declaráu'l ganador d'esa posición. En casu d'empate, llevará
 cabu una eleición de desempate.</p>
 
 <p>Pa más información, ver:</p>
-<ul><li><a href=\\\"http://meta.wikimedia.org/wiki/Election_FAQ_2006/Es\\\" class=\\\"external\\\">Entrugues frecuentes sobre la ellección (FAQ)</a></li>
+<ul><li><a href=\\\"http://meta.wikimedia.org/wiki/Election_FAQ_2006/Es\\\" class=\\\"external\\\">Entrugues frecuentes sobre la eleición (FAQ)</a></li>
 <li><a href=\\\"http://meta.wikimedia.org/wiki/Election_candidates_2006/Es\\\" class=\\\"external\\\">Candidatos</a></li></ul>",
-	'boardvote_intro_change' => "<p>Yá votasti. Sicasí, pues camudar el to votu usando'l formulariu d'embaxo. Por favor, rellena les casielles al llau de cada candidatu que quieras aprobar.</p>",
-	'boardvote_entered'      => 'Gracies, el to votu quedó grabáu. Si quies, pues guardar los siguientes detalles. El rexistru del to votu ye:
+	'boardvote_intro_change' => "<p>Yá votasti. Sicasí, pues camudar el to votu usando'l
+formulariu d'embaxo. Por favor rellena les casielles d'al llau de cada candidatu
+que quieras aprobar.</p>",
+	'boardvote_entered'      => 'Gracies, el to votu quedó grabáu.
+
+Si quies, pues guardar los siguientes detalles. El rexistru del to votu ye:
 
 <pre>$1</pre>
 
@@ -216,8 +221,8 @@ A continuación amuésase la versión encriptada resultante. Va ser publicada en
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Volver]]',
-	'boardvote_nosession'    => "Nun se pue determinar la to ID d'usuariu de Wikimedia. Por favor, identifícate na wiki onde tas rexistráu y vete a <nowiki>[[Special:Boardvote]]</nowiki>. Tienes qu'usar una cuenta con a lo menos $1 contribuciones enantes del $2, y con una primer edición enantes del $3.",
-	'boardvote_notloggedin'  => "Nun tas rexistráu. Pa votar tienes qu'usar una cuenta con a lo menos $1 contribuciones enantes del $2, y con una primer edición enantes del $3.",
+	'boardvote_nosession'    => "Nun se pue determinar el to númeru d'identificación d'usuariu de Wikimedia. Por favor, identifícate na wiki onde tas rexistráu y vete a <nowiki>[[Special:Boardvote]]</nowiki>. Tienes qu'usar una cuenta con a lo menos $1 contribuciones enantes del $2, y con una primer edición enantes del $3.",
+	'boardvote_notloggedin'  => "Nun tas identificáu. Pa votar tienes qu'usar una cuenta con a lo menos $1 contribuciones enantes del $2, y con una primer edición enantes del $3.",
 	'boardvote_notqualified' => 'Nun cumples criterios pa votar nesta eleición. Necesites tener feches $3 ediciones enantes del $2, y que la to primer edición seya enantes del $5.',
 	'boardvote_novotes'      => 'Naide votó tovía.',
 	'boardvote_time'         => 'Hora',
@@ -225,7 +230,8 @@ A continuación amuésase la versión encriptada resultante. Va ser publicada en
 	'boardvote_edits'        => 'Ediciones',
 	'boardvote_days'         => 'Díes',
 	'boardvote_ua'           => 'Representante del usuariu',
-	'boardvote_listintro'    => '<p>Esta ye una llista de tolos votos rexistraos hasta la fecha. $1 pa los datos encriptaos.</p>',
+	'boardvote_listintro'    => '<p>Esta ye una llista de tolos votos rexistraos
+hasta la fecha. $1 pa los datos encriptaos.</p>',
 	'boardvote_dumplink'     => 'Calca equí',
 	'boardvote_submit'       => 'Aceutar',
 	'boardvote_strike'       => 'Tachar',
@@ -235,9 +241,10 @@ A continuación amuésase la versión encriptada resultante. Va ser publicada en
 	'boardvote_notstarted'   => 'La votación entá nun empecipió',
 	'boardvote_closed'       => 'La votación ta zarrada, mira en breve [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En la páxina de resultaos de les eleiciones].',
 	'boardvote_edits_many'   => 'munches',
-	'boardvote_blocked'      => 'Sentímoslo, fuisti bloquiáu na to wiki. Los usuarios bloquiaos nun puen votar',
+	'boardvote_blocked'      => 'Sentímoslo, fuisti bloquiáu na to wiki. Los usuarios bloquiaos nun puen votar.',
 	'boardvote_welcome'      => "¡Bienveníu '''$1'''!",
-	'boardvote_redirecting'  => "P'ameyorar la seguridá y tresparencia, tamos faciendo les votaciones nun servidor esternu y controláu de forma independiente.
+	'boardvote_redirecting'  => "P'ameyorar la seguridá y tresparencia, tamos faciendo les votaciones nun
+servidor esternu y controláu de forma independiente.
 
 Vas ser redirixíu a esti servidor esternu en 20 segundos. [$1 Calca equí] pa dir agora.
 

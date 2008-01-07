@@ -69,7 +69,7 @@ $messages['ar'] = array(
  */
 $messages['ast'] = array(
 	'makesysoptitle'           => "Convertir a un usuariu n'alministrador",
-	'makesysoptext'            => "Esti formulariu ye usáu polos burócrates pa convertir a usuarios ordinarios n'alministradores. Pon el nome del usuariu na caxa y calca nel botón pa convertir al usuariu n'alministrador.",
+	'makesysoptext'            => "Esti formulariu ye usáu polos burócrates pa convertir a usuarios ordinarios n'alministradores. Pon el nome del usuariu nel caxellu y calca nel botón pa convertir al usuariu n'alministrador.",
 	'makesysopname'            => 'Nome del usuariu:',
 	'makesysopsubmit'          => "Convertir a esti usuariu n'alministrador",
 	'makesysopok'              => '<b>L\'usuariu "$1" agora yá ye alministrador</b>',
@@ -787,6 +787,28 @@ $messages['ka'] = array(
 	'set_user_rights' => 'მომხმარებლის უფლებების განსაზღვრა',
 );
 
+$messages['kk-arab'] = array(
+	'makesysoptitle'       => 'قاتىسۋشىنى ٵكٸمشٸ قىلۋ',
+	'makesysoptext'        => 'بۇل ٷلگٸتتٸ قاراپايىم قاتىسۋشىنى ٵكٸمشٸ قىلۋ ٷشٸن تٶرەشٸلەر قولدانادى. جولاققا قاتىسۋشى اتىن ەنگٸزٸڭٸز دە, جٵنە بۇل قاتىسۋشىنى ٵكٸمشٸ قىلۋ ٷشٸن, تٷيمەنٸ باسىڭىز.',
+	'makesysopname'        => 'قاتىسۋشى اتى:',
+	'makesysopsubmit'      => 'بۇل قاتىسۋشىنى ٵكٸمشٸ قىل',
+	'makesysopok'          => '<b>«$1» دەگەن قاتىسۋشى ەندٸ ٵكٸمشٸ بوپ تاعايىندالدى</b>',
+	'makebureaucratok'     => '<b>«$1» دەگەن قاتىسۋشى ەندٸ تٶرەشٸٸ بوپ تاعايىندالدى</b>',
+	'makesysopfail'        => '<b>«$1» دەگەن قاتىسۋشى ٵكٸمشٸ بوپ تاعايىندالمادى. (اتىن دۇرىس ەنگٸزدٸڭٸز بە؟)</b>',
+	'setbureaucratflag'    => 'قاتىسۋشىنى تٶرەشٸ قىلۋ ٷشٸن بەلگٸلەۋ',
+	'rights'               => 'قۇقىقتارى:',
+	'set_user_rights'      => 'قاتىسۋشى قۇقىقتارىن تاعايىنداۋ',
+	'user_rights_set'      => '<b>«$1» دەگەن قاتىسۋشىنىڭ قۇقىقتارى جاڭارتىلدى</b>',
+	'set_rights_fail'      => '<b>«$1» دەگەن قاتىسۋشىنىڭ قۇقىقتارى تاعايىندالمادى. (اتىن دۇرىس ەنگٸزدٸڭٸز بە؟)</b>',
+	'makesysop'            => 'قاتىسۋشىنى ٵكٸمشٸ قىلۋ',
+	'already_sysop'        => 'بۇل قاتىسۋشى ٵكٸمشٸ بوپتى تٷگە',
+	'already_sysop'        => 'بۇل قاتىسۋشىدا الداقاشان ٵكٸمشٸ قۇقىقتارى بار',
+	'already_bureaucrat'   => 'بۇل قاتىسۋشىدا الداقاشان بٸتٸكشٸ قۇقىقتارى بار',
+	'group-steward'        => 'جەتەكشٸلەر',
+	'group-steward-member' => 'جەتەكشٸ',
+	'grouppage-steward'    => '{{ns:project}}:جەتەكشٸلەر',
+);
+
 $messages['kk-cyrl'] = array(
 	'makesysoptitle'       => 'Қатысушыны әкімші қылу',
 	'makesysoptext'        => 'Бұл үлгітті қарапайым қатысушыны әкімші қылу үшін төрешілер қолданады. Жолаққа қатысушы атын енгізіңіз де, және бұл қатысушыны әкімші қылу үшін, түймені басыңыз.',
@@ -827,28 +849,6 @@ $messages['kk-latn'] = array(
 	'group-steward'        => 'Jetekşiler',
 	'group-steward-member' => 'jetekşi',
 	'grouppage-steward'    => '{{ns:project}}:Jetekşiler',
-);
-
-$messages['kk-arab'] = array(
-	'makesysoptitle'       => 'قاتىسۋشىنى ٵكٸمشٸ قىلۋ',
-	'makesysoptext'        => 'بۇل ٷلگٸتتٸ قاراپايىم قاتىسۋشىنى ٵكٸمشٸ قىلۋ ٷشٸن تٶرەشٸلەر قولدانادى. جولاققا قاتىسۋشى اتىن ەنگٸزٸڭٸز دە, جٵنە بۇل قاتىسۋشىنى ٵكٸمشٸ قىلۋ ٷشٸن, تٷيمەنٸ باسىڭىز.',
-	'makesysopname'        => 'قاتىسۋشى اتى:',
-	'makesysopsubmit'      => 'بۇل قاتىسۋشىنى ٵكٸمشٸ قىل',
-	'makesysopok'          => '<b>«$1» دەگەن قاتىسۋشى ەندٸ ٵكٸمشٸ بوپ تاعايىندالدى</b>',
-	'makebureaucratok'     => '<b>«$1» دەگەن قاتىسۋشى ەندٸ تٶرەشٸٸ بوپ تاعايىندالدى</b>',
-	'makesysopfail'        => '<b>«$1» دەگەن قاتىسۋشى ٵكٸمشٸ بوپ تاعايىندالمادى. (اتىن دۇرىس ەنگٸزدٸڭٸز بە؟)</b>',
-	'setbureaucratflag'    => 'قاتىسۋشىنى تٶرەشٸ قىلۋ ٷشٸن بەلگٸلەۋ',
-	'rights'               => 'قۇقىقتارى:',
-	'set_user_rights'      => 'قاتىسۋشى قۇقىقتارىن تاعايىنداۋ',
-	'user_rights_set'      => '<b>«$1» دەگەن قاتىسۋشىنىڭ قۇقىقتارى جاڭارتىلدى</b>',
-	'set_rights_fail'      => '<b>«$1» دەگەن قاتىسۋشىنىڭ قۇقىقتارى تاعايىندالمادى. (اتىن دۇرىس ەنگٸزدٸڭٸز بە؟)</b>',
-	'makesysop'            => 'قاتىسۋشىنى ٵكٸمشٸ قىلۋ',
-	'already_sysop'        => 'بۇل قاتىسۋشى ٵكٸمشٸ بوپتى تٷگە',
-	'already_sysop'        => 'بۇل قاتىسۋشىدا الداقاشان ٵكٸمشٸ قۇقىقتارى بار',
-	'already_bureaucrat'   => 'بۇل قاتىسۋشىدا الداقاشان بٸتٸكشٸ قۇقىقتارى بار',
-	'group-steward'        => 'جەتەكشٸلەر',
-	'group-steward-member' => 'جەتەكشٸ',
-	'grouppage-steward'    => '{{ns:project}}:جەتەكشٸلەر',
 );
 
 $messages['kn'] = array(
@@ -1178,7 +1178,7 @@ $messages['rmy'] = array(
 
 $messages['ro'] = array(
 	'makesysoptitle' => 'Acordarea permisiunilor de administrator',
-	'makesysoptext' => 'Acest formular este utilizat de birocraţi pentru a transforma utilizatori în administratori. 
+	'makesysoptext' => 'Acest formular este utilizat de birocraţi pentru a transforma utilizatori în administratori.
 Tastează numele utilizatorului în cutie şi apasă butonul pentru a face din utilizator un administrator',
 	'makesysopname' => 'Numele utilizatorului:',
 	'makesysopsubmit' => 'Fă din acest utilizator un administrator',
@@ -1233,7 +1233,7 @@ $messages['sd'] = array(
  */
 $messages['sk'] = array(
 	'makesysoptitle'           => 'Urob z používateľa správcu',
-	'makesysoptext'            => 'Tento formulár je používaný byrokratmi na udelenie stavu správca používateľom. 
+	'makesysoptext'            => 'Tento formulár je používaný byrokratmi na udelenie stavu správca používateľom.
 Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na správcu.',
 	'makesysopname'            => 'Meno používateľa:',
 	'makesysopsubmit'          => 'Urob z tohto redaktora správcu',
@@ -1508,7 +1508,7 @@ $messages['ur'] = array(
 
 $messages['vec'] = array(
 	'makesysoptitle' => 'Rendi aministradore un utente',
-	'makesysoptext' => 'Sto form xè usà dai burocrati par far diventare amistradori i utenti normali. 
+	'makesysoptext' => 'Sto form xè usà dai burocrati par far diventare amistradori i utenti normali.
 Scrivi el nome de l\'utente ne la caseła e struca el botón par far diventare aministradore un utente.',
 	'makesysopname' => 'Nome dell\'utente:',
 	'makesysopsubmit' => 'Fa diventar sto utente un aministrador',
@@ -1648,23 +1648,17 @@ $messages['zh-hant'] = array(
 	'grouppage-steward'    => '{{ns:project}}:監管員',
 );
 
-$messages['zh-tw'] = array(
-	'rights'               => '許可權：',
-	'set_user_rights'      => '設定用戶許可權',
-	'user_rights_set'      => "<b>用戶\"$1\"的許可權已經更新</b>",
-	'set_rights_fail'      => "<b>無法設定用戶\"$1\"的許可權。（您是否輸入了正確的用戶名？）</b>",
-);
-	/* Kazakh fallbacks */
-	$messages['kk-kz'] = $messages['kk-cyrl'];
-	$messages['kk-tr'] = $messages['kk-latn'];
-	$messages['kk-cn'] = $messages['kk-arab'];
-	$messages['kk'] = $messages['kk-cyrl'];
+/* Kazakh fallbacks */
+$messages['kk'] = $messages['kk-cyrl'];
+$messages['kk-cn'] = $messages['kk-arab'];
+$messages['kk-kz'] = $messages['kk-cyrl'];
+$messages['kk-tr'] = $messages['kk-latn'];
 
-	/* Chinese defaults, fallback to zh-hans */
-	$messages['zh'] = $messages['zh-hans'];
-	$messages['zh-cn'] = $messages['zh-hans'];
-	$messages['zh-sg'] = $messages['zh-hans'];
-	$messages['zh-tw'] = $messages['zh-hant'];
+/* Chinese defaults, fallback to zh-hans */
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-tw'] = $messages['zh-hant'];
 
-	/* Cantonese default, fallback to yue */
-	$messages['zh-yue'] = $messages['yue'];
+/* Cantonese default, fallback to yue */
+$messages['zh-yue'] = $messages['yue'];

@@ -50,6 +50,7 @@ $messages['en'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author Siebrand
  */
 $messages['ar'] = array(
 	'review_sidebar_title'                                   => 'مراجعة',
@@ -157,6 +158,13 @@ $messages['fa'] = array(
 
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'review_has_been_stored' => "<span id='review_has_been_stored'>Arvostelusi tallennettiin.</span>",
+);
+
 /** French (Français)
  * @author Sherbrooke
  * @author Dereckson
@@ -203,7 +211,7 @@ $messages['fr'] = array(
 	'review_user_page_list'                                  => 'Le contributeur a révisé les pages suivantes :',
 	'review_user_details_link'                               => '(détails)',
 	'review_do_merge'                                        => 'Fusionner mes passages en revue des autres révisions de cette page avec celle-ci',
-	'review_has_been_stored'                                 => "<span id='review_has_been_stored'>Votre révision a été sauvegardée.</span>",
+	'review_has_been_stored'                                 => "<span id='review_has_been_stored'>Votre révision a été enregistrée.</span>",
 	'revision_review_this_page_version_link'                 => 'Réviser cette version de la page',
 	'review_page_review'                                     => 'Révision de la page « $1 »',
 	'review_blocked'                                         => 'Vous êtes bloqué.',
@@ -216,6 +224,7 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Siebrand
  */
 $messages['gl'] = array(
 	'review_sidebar_title'                   => 'Revisado',
@@ -253,6 +262,7 @@ $messages['gl'] = array(
 
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
+ * @author Siebrand
  */
 $messages['hsb'] = array(
 	'review_sidebar_title'                                   => 'Přepruwować',
@@ -293,6 +303,14 @@ $messages['hsb'] = array(
 	'review_no_opinion'                                      => 'Žane měnjenje',
 	'review_rating'                                          => 'Pohódnoćenje',
 	'review_comment'                                         => 'Komentar',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'review_version_statistic_cell' => '$1 vu(n) $2',
+	'review_comment'                => 'Bemierkung',
 );
 
 /** Dutch (Nederlands)
@@ -379,4 +397,3 @@ $messages['oc'] = array(
 	'review_rating'                                          => 'Evaluacion',
 	'review_comment'                                         => 'Comentari',
 );
-

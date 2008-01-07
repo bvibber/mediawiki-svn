@@ -319,6 +319,14 @@ $messages['hsb'] = array(
 	'regexblock-view-time' => '$1',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'regexblock-form-reason' => 'Grond:',
+	'regexblock-view-all'    => 'Alleguer',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

@@ -41,11 +41,11 @@ $messages['ar'] = array(
 );
 
 /** Asturian (Asturianu)
- * @author SPQRobin
+ * @author Esbardu
  */
 $messages['ast'] = array(
-	'blacklistedusername'     => "Nome d'usuariu na llista prieta",
-	'blacklistedusernametext' => "El nome d'usuariu qu'escoyisti ta na [[MediaWiki:Usernameblacklist|llista prieta de nomes d'usuariu]]. Por favor, escueyi otru nome.",
+	'blacklistedusername'     => "Nome d'usuariu na llista negra",
+	'blacklistedusernametext' => "El nome d'usuariu qu'escoyisti ta na [[MediaWiki:Usernameblacklist|llista negra de nomes d'usuariu]]. Por favor, escueyi otru nome.",
 );
 
 $messages['bcl'] = array(
@@ -259,6 +259,22 @@ $messages['it'] = array(
 	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|La seguente riga|Le seguenti righe}} dell'elenco dei nomi utente non consentiti {{PLURAL:$1|non è valida|non sono valide}}; si prega di correggere {{PLURAL:$1|l'errore|gli errori}} prima di salvare la pagina.",
 );
 
+/* Kazakh Arabic (kk:AlefZet) */
+$messages['kk-arab'] = array(
+	'blacklistedusername' => 'قارا تٸزٸمدەگٸ قاتىسۋشى اتى',
+	'blacklistedusernametext' => 'تانداعان قاتىسۋشى اتىڭىز [[{{ns:mediawiki}}:Usernameblacklist| قاتىسۋشى اتى قارا تٸزٸمٸنە]] كٸرەدٸ.
+باسقا اتاۋ تالعاڭىز.',
+	'usernameblacklist' => '<pre>
+# قارا تٸزٸمدەگٸ قاتىسۋشى اتىن تٸركەلگٸ جاساۋدان ساقتاپ قالۋ ٷشٸن بۇل تٸزٸمدەگٸ دانالار
+# قايتالاۋلى كٵلام (regular expression) بٶلٸگٸ بوپ پايدالانىلادى. ٵرقايسى دانا بايراقشامەن
+# پٸشٸمدەلگەن تٸزٸمدٸڭ بٶلٸگٸ بولۋى قاجەت, مىسالى:
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => 'قاتىسۋشى اتى قارا تٸزٸمٸندەگٸ كەلەسٸ {{PLURAL:$1|جول|جولدار}} جارامسىز {{PLURAL:$1|بولدى|بولدى}}; ساقتاۋدىڭ الدىندا {{PLURAL:$1|بۇنى|بۇلاردى}} دۇرىستاپ شىعىڭىز:',
+);
+
 /* Kazakh Cyrillic (kk:AlefZet) */
 $messages['kk-cyrl'] = array(
 	'blacklistedusername' => 'Қара тізімдегі қатысушы аты',
@@ -289,22 +305,6 @@ Basqa ataw talğañız.',
 </pre>',
 	'usernameblacklist-invalid-lines' => 'Qatıswşı atı qara tizimindegi kelesi {{PLURAL:$1|jol|joldar}} jaramsız {{PLURAL:$1|boldı|boldı}}; saqtawdıñ aldında {{PLURAL:$1|bunı|bulardı}} durıstap şığıñız:',
 );
-/* Kazakh Arabic (kk:AlefZet) */
-$messages['kk-arab'] = array(
-	'blacklistedusername' => 'قارا تٸزٸمدەگٸ قاتىسۋشى اتى',
-	'blacklistedusernametext' => 'تانداعان قاتىسۋشى اتىڭىز [[{{ns:mediawiki}}:Usernameblacklist| قاتىسۋشى اتى قارا تٸزٸمٸنە]] كٸرەدٸ.
-باسقا اتاۋ تالعاڭىز.',
-	'usernameblacklist' => '<pre>
-# قارا تٸزٸمدەگٸ قاتىسۋشى اتىن تٸركەلگٸ جاساۋدان ساقتاپ قالۋ ٷشٸن بۇل تٸزٸمدەگٸ دانالار
-# قايتالاۋلى كٵلام (regular expression) بٶلٸگٸ بوپ پايدالانىلادى. ٵرقايسى دانا بايراقشامەن
-# پٸشٸمدەلگەن تٸزٸمدٸڭ بٶلٸگٸ بولۋى قاجەت, مىسالى:
-#
-# * Foo
-# * [Bb]ar
-</pre>',
-	'usernameblacklist-invalid-lines' => 'قاتىسۋشى اتى قارا تٸزٸمٸندەگٸ كەلەسٸ {{PLURAL:$1|جول|جولدار}} جارامسىز {{PLURAL:$1|بولدى|بولدى}}; ساقتاۋدىڭ الدىندا {{PLURAL:$1|بۇنى|بۇلاردى}} دۇرىستاپ شىعىڭىز:',
-);
-
 /* Kurdi */
 $messages['ku'] = array(
 	'blacklistedusernametext' => 'Wê navî yê te hilbijart li ser [[MediaWiki:Usernameblacklist|lîstêya navên nebaş]] e. Xêra xwe navekî din hilbijêre.',
@@ -531,18 +531,19 @@ $messages['zh-hant'] = array(
 </pre>',
 	'usernameblacklist-invalid-lines' => '以下在用戶名黑名單中{{PLURAL:$1|一行|多行}}不正確；請於保存之前改正{{PLURAL:$1|它|它們}}:',
 );
-	/* Kazakh fallbacks */
-	$messages['kk-kz'] = $messages['kk-cyrl'];
-	$messages['kk-tr'] = $messages['kk-latn'];
-	$messages['kk-cn'] = $messages['kk-arab'];
-	$messages['kk'] = $messages['kk-cyrl'];
 
-	/* Chinese defaults, fallback to zh-hans or zh-hant */
-	$messages['zh'] = $messages['zh-hans'];
-	$messages['zh-cn'] = $messages['zh-hans'];
-	$messages['zh-hk'] = $messages['zh-hant'];
-	$messages['zh-sg'] = $messages['zh-hans'];
-	$messages['zh-tw'] = $messages['zh-hant'];
+/* Kazakh fallbacks */
+$messages['kk'] = $messages['kk-cyrl'];
+$messages['kk-cn'] = $messages['kk-arab'];
+$messages['kk-kz'] = $messages['kk-cyrl'];
+$messages['kk-tr'] = $messages['kk-latn'];
 
-	/* Cantonese default, fallback to yue */
-	$messages['zh-yue'] = $messages['yue'];
+/* Chinese defaults, fallback to zh-hans or zh-hant */
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-tw'] = $messages['zh-hant'];
+
+/* Cantonese default, fallback to yue */
+$messages['zh-yue'] = $messages['yue'];

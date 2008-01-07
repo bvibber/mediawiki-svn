@@ -79,6 +79,13 @@ $messages['hsb'] = array(
 	'specialwhoiswatchingaddbtn'   => 'Přidaj wubranych wužiwarjow',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'specialwhoiswatchingthepage' => 'Wien iwwerwaacht %s',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */

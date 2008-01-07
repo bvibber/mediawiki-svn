@@ -60,6 +60,13 @@ $messages['hsb'] = array(
 	'protectsection_forbidden'  => 'Zakazany',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'protectsection_forbidden' => 'Verbueden',
+);
+
 $messages['nl'] = array(
 	'protectsection_add_remove' => 'U probeerde een beveiligde sectie toe te voegen of te verwijderen',
 	'protectsection_modify'     => 'U probeerde beveiligde tekst te bewerken',
