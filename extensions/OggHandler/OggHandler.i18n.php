@@ -1,7 +1,7 @@
 <?php
 
-$messages = array( 
-	'en' => array(
+$messages = array(); 
+	$messages['en'] = array(
 		'ogg-short-audio'      => 'Ogg $1 sound file, $2',
 		'ogg-short-video'      => 'Ogg $1 video file, $2',
 		'ogg-short-general'    => 'Ogg $1 media file, $2',
@@ -36,17 +36,17 @@ $messages = array(
 		'ogg-dismiss'          => 'Close',
 		'ogg-download'         => 'Download file',
 		'ogg-desc-link'        => 'About this file',
-	),
+	);
 
-	'af' => array(
+	$messages['af'] = array(
 		'ogg-more' => 'Meer...',
-	),
+	);
 
 /** Arabic (العربية)
  * @author Meno25
  * @author Alnokta
  */
-	'ar' => array(
+	$messages['ar'] = array(
 		'ogg-short-audio'              => 'Ogg $1 ملف صوت، $2',
 		'ogg-short-video'              => 'Ogg $1 ملف فيديو، $2',
 		'ogg-short-general'            => 'Ogg $1 ملف ميديا، $2',
@@ -77,36 +77,36 @@ $messages = array(
 		'ogg-dismiss'                  => 'غلق',
 		'ogg-download'                 => 'نزل الملف',
 		'ogg-desc-link'                => 'حول هذا الملف',
-	),
+	);
 
 /** Bikol Central*/
-	'bcl' => array(
+	$messages['bcl'] = array(
 		'ogg-more' => 'Dakol pa..',
 		'ogg-dismiss' => 'Isara',
-	),
+	);
 
 /** Bulgarian (Български)
  * @author DCLXVI
  */
-	'bg' => array(
+	$messages['bg'] = array(
 		'ogg-more'      => 'Повече...',
 		'ogg-dismiss'   => 'Затваряне',
 		'ogg-download'  => 'Изтеглене на файла',
 		'ogg-desc-link' => 'Информация за файла',
-	),
+	);
 
 /** Breton (Brezhoneg)
  * @author Fulup
  */
-	'br' => array(
+	$messages['br'] = array(
 		'ogg-more'    => "Muioc'h...",
 		'ogg-dismiss' => 'Serriñ',
-	),
+	);
 
 /** Catalan (Català)
  * @author SMP
  */
-	'ca' => array(
+	$messages['ca'] = array(
 		'ogg-short-audio'       => "Arxiu OGG d'àudio $1, $2",
 		'ogg-short-video'       => 'Arxiu OGG de vídeo $1, $2',
 		'ogg-short-general'     => 'Arxiu multimèdia OGG $1, $2',
@@ -128,9 +128,9 @@ $messages = array(
 		'ogg-dismiss'           => 'Tanca',
 		'ogg-download'          => "Descarrega l'arxiu",
 		'ogg-desc-link'         => "Informació de l'arxiu",
-	),
+	);
 
-	'cs' => array(
+	$messages['cs'] = array(
 		'ogg-short-audio' => 'Zvukový soubor ogg $1, $2',
 		'ogg-short-video' => 'Videosoubor ogg $1, $2',
 		'ogg-short-general' => 'Soubor média ogg $1, $2',
@@ -154,9 +154,9 @@ $messages = array(
 		'ogg-dismiss' => 'Zavřít',
 		'ogg-download' => 'Stáhnout soubor',
 		'ogg-desc-link' => 'O tomto souboru',
-	),
+	);
 
-	'de' => array(
+	$messages['de'] = array(
 		'ogg-short-audio'         => 'Ogg-$1-Audiodatei, $2',
 		'ogg-short-video'         => 'Ogg-$1-Videodatei, $2',
 		'ogg-short-general'       => 'Ogg-$1-Mediadatei, $2',
@@ -183,25 +183,25 @@ $messages = array(
 		'ogg-dismiss'             => 'Schließen',
 		'ogg-download'            => 'Datei speichern',
 		'ogg-desc-link'           => 'Über diese Datei',
-	),
+	);
 
-	'el' => array(
+	$messages['el'] = array(
 		'ogg-pause' => 'Παύση',
 		'ogg-more' => 'Περισσότερα...',
 		'ogg-download' => 'Κατεβάστε το αρχείο',
 		'ogg-desc-link' => 'Σχετικά με αυτό τα αρχείο',
-	),
+	);
 
-	'es' => array(
+	$messages['es'] = array(
 		'ogg-more' => 'Opciones...',
 		'ogg-dismiss' => 'Cerrar',
 		'ogg-download' => 'Bajar archivo',
-	),
+	);
 
 /** Persian (فارسی)
  * @author Huji
  */
-	'fa' => array(
+	$messages['fa'] = array(
 		'ogg-short-audio'         => 'پرونده صوتی Ogg $1، $2',
 		'ogg-short-video'         => 'پرونده تصویری Ogg $1، $2',
 		'ogg-short-general'       => 'پرونده Ogg $1، $2',
@@ -227,15 +227,15 @@ $messages = array(
 		'ogg-dismiss'             => 'بستن',
 		'ogg-download'            => 'بارگیری پرونده',
 		'ogg-desc-link'           => 'دربارهٔ این پرونده',
-	),
+	);
 
-	'fi' => array(
+	$messages['fi'] = array(
 		'ogg-short-audio' => 'Ogg $1 -äänitiedosto, $2',
 		'ogg-short-video' => 'Ogg $1 -videotiedosto, $2',
 		'ogg-short-general' => 'Ogg $1 -mediatiedosto, $2',
 		'ogg-long-audio' => '(Ogg $1 -äänitiedosto, $2, $3)',
 		'ogg-long-video' => '(Ogg $1 -videotiedosto, $2, $4×$5, $3)',
-		'ogg-long-multiplexed' => '(Ogg-tiedosto (limitetty kuva ja ääni), $1, $2, $4×$5, $3)',
+		'ogg-long-multiplexed' => '(Ogg-tiedosto (limitetty kuva ja ääni); $1, $2, $4×$5, $3)',
 		'ogg-long-general' => '(Ogg-tiedosto, $2, $3)',
 		'ogg-long-error' => '(Kelvoton ogg-tiedosto: $1)',
 		'ogg-play' => 'Soita',
@@ -255,13 +255,13 @@ $messages = array(
 		'ogg-dismiss' => 'Sulje',
 		'ogg-download' => 'Lataa',
 		'ogg-desc-link' => 'Tiedoston tiedot',
-	),
+	);
 
-	'fo' => array(
+	$messages['fo'] = array(
 		'ogg-more' => 'Meira...',
-	),
+	);
 
-	'fr' => array(
+	$messages['fr'] = array(
 		'ogg-short-audio' => 'Fichier son Ogg $1, $2',
 		'ogg-short-video' => 'Fichier vidéo Ogg $1, $2',
 		'ogg-short-general' => 'Fichier média Ogg $1, $2',
@@ -287,12 +287,12 @@ $messages = array(
 		'ogg-dismiss' => 'Fermer',
 		'ogg-download' => 'Télécharger le fichier',
 		'ogg-desc-link' => 'À propos de ce fichier',
-	),
+	);
 
 /** Franco-Provençal (Arpetan)
  * @author ChrisPtDe
  */
-	'frp' => array(
+	$messages['frp'] = array(
 		'ogg-short-audio'         => 'Fichiér son Ogg $1, $2',
 		'ogg-short-video'         => 'Fichiér vidèô Ogg $1, $2',
 		'ogg-short-general'       => 'Fichiér multimèdia Ogg $1, $2',
@@ -318,9 +318,9 @@ $messages = array(
 		'ogg-dismiss'             => 'Cllôre',
 		'ogg-download'            => 'Tèlèchargiér lo fichiér',
 		'ogg-desc-link'           => 'A propôs de ceti fichiér',
-	),
+	);
 
-	'gl' => array(
+	$messages['gl'] = array(
 		'ogg-short-audio' => 'Ficheiro de son Ogg $1, $2',
 		'ogg-short-video' => 'Ficheiro de vídeo Ogg $1, $2',
 		'ogg-short-general' => 'Ficheiro multimedia Ogg $1, $2',
@@ -346,9 +346,9 @@ $messages = array(
 		'ogg-dismiss' => 'Fechar',
 		'ogg-download' => 'Baixar ficheiro',
 		'ogg-desc-link' => 'Acerca deste ficheiro',
-	),
+	);
 
-	'he' => array(
+	$messages['he'] = array(
 		'ogg-short-audio'         => 'קובץ שמע $1 של Ogg, $2',
 		'ogg-short-video'         => 'קובץ וידאו $1 של Ogg, $2',
 		'ogg-short-general'       => 'קובץ מדיה $1 של Ogg, $2',
@@ -375,9 +375,9 @@ $messages = array(
 		'ogg-dismiss'             => 'סגירה',
 		'ogg-download'            => 'הורדת הקובץ',
 		'ogg-desc-link'           => 'אודות הקובץ',
-	),
+	);
 
-	'hr' => array(
+	$messages['hr'] = array(
 		'ogg-short-audio' => 'Ogg $1 zvučna datoteka, $2',
 		'ogg-short-video' => 'Ogg $1 video datoteka, $2',
 		'ogg-short-general' => 'Ogg $1 medijska datoteka, $2',
@@ -404,9 +404,9 @@ $messages = array(
 		'ogg-dismiss' => 'Zatvori',
 		'ogg-download' => 'Snimi datoteku',
 		'ogg-desc-link' => 'O ovoj datoteci',
-	),
+	);
 
-	'hsb' => array(
+	$messages['hsb'] = array(
 		'ogg-short-audio' => 'Awdiodataja Ogg $1, $2',
 		'ogg-short-video' => 'Widejodataja Ogg $1, $2',
 		'ogg-short-general' => 'Ogg medijowa dataja $1, $2',
@@ -432,22 +432,22 @@ $messages = array(
 		'ogg-dismiss' => 'Začinić',
 		'ogg-download' => 'Dataju sćahnyć',
 		'ogg-desc-link' => 'Wo tutej dataji',
-	),
+	);
 
 /** Haitian (Kreyòl ayisyen)
  * @author Masterches
  */
-	'ht' => array(
+	$messages['ht'] = array(
 		'ogg-play'  => 'Jwe',
 		'ogg-pause' => 'Poz',
 		'ogg-stop'  => 'Stope',
-	),
+	);
 
 /** Hungarian (Magyar)
  * @author Bdanee
  * @author Tgr
  */
-	'hu' => array(
+	$messages['hu'] = array(
 		'ogg-short-audio'         => 'Ogg $1 hangfájl, $2',
 		'ogg-short-video'         => 'Ogg $1 videofájl, $2',
 		'ogg-short-general'       => 'Ogg $1 médiafájl, $2',
@@ -473,20 +473,20 @@ $messages = array(
 		'ogg-dismiss'             => 'Bezárás',
 		'ogg-download'            => 'Fájl letöltése',
 		'ogg-desc-link'           => 'Fájlinformációk',
-	),
+	);
 
-	'is' => array(
+	$messages['is'] = array(
 		'ogg-play' => 'Spila',
 		'ogg-pause' => 'gera hlé',
 		'ogg-play-sound' => 'Spila hljóð',
 		'ogg-more' => 'Meira...',
-	),
+	);
 
 /** Italian (Italiano)
  * @author BrokenArrow
  * @author .anaconda
  */
-	'it' => array(
+	$messages['it'] = array(
 		'ogg-short-audio'         => 'File audio Ogg $1, $2',
 		'ogg-short-video'         => 'File video Ogg $1, $2',
 		'ogg-short-general'       => 'File multimediale Ogg $1, $2',
@@ -512,9 +512,9 @@ $messages = array(
 		'ogg-dismiss'             => 'Chiudi',
 		'ogg-download'            => 'Scarica il file',
 		'ogg-desc-link'           => 'Informazioni su questo file',
-	),
+	);
 
-	'ja' => array(
+	$messages['ja'] = array(
 		'ogg-short-audio' => 'Ogg $1 音声ファイル、$2',
 		'ogg-short-video' => 'Ogg $1 動画ファイル、$2',
 		'ogg-short-general' => 'Ogg $1 メディアファイル、$2',
@@ -537,9 +537,9 @@ $messages = array(
 		'ogg-dismiss' => '閉じる',
 		'ogg-download' => 'ファイルをダウンロード',
 		'ogg-desc-link' => 'ファイルの詳細',
-	),
+	);
 
-	'kk-cyrl' => array(
+	$messages['kk-cyrl'] = array(
 		'ogg-short-audio'      => 'Ogg $1 дыбыс файлы, $2',
 		'ogg-short-video'      => 'Ogg $1 бейне файлы, $2',
 		'ogg-short-general'    => 'Ogg $1 таспа файлы, $2',
@@ -566,9 +566,9 @@ $messages = array(
 		'ogg-dismiss'          => 'Жабу',
 		'ogg-download'         => 'Файлды жүктеу',
 		'ogg-desc-link'        => 'Бұл файл туралы',
-	),
+	);
 
-	'kk-latn' => array(
+	$messages['kk-latn'] = array(
 		'ogg-short-audio'      => 'Ogg $1 dıbıs faýlı, $2',
 		'ogg-short-video'      => 'Ogg $1 beýne faýlı, $2',
 		'ogg-short-general'    => 'Ogg $1 taspa faýlı, $2',
@@ -595,9 +595,9 @@ $messages = array(
 		'ogg-dismiss'          => 'Jabw',
 		'ogg-download'         => 'Faýldı jüktew',
 		'ogg-desc-link'        => 'Bul faýl twralı',
-	),
+	);
 
-	'kk-arab' => array(
+	$messages['kk-arab'] = array(
 		'ogg-short-audio'      => 'Ogg $1 دىبىس فايلى, $2',
 		'ogg-short-video'      => 'Ogg $1 بەينە فايلى, $2',
 		'ogg-short-general'    => 'Ogg $1 تاسپا فايلى, $2',
@@ -624,34 +624,34 @@ $messages = array(
 		'ogg-dismiss'          => 'جابۋ',
 		'ogg-download'         => 'فايلدى جٷكتەۋ',
 		'ogg-desc-link'        => 'بۇل فايل تۋرالى',
-	),
+	);
 
-	'la' => array(
+	$messages['la'] = array(
 		'ogg-more' => 'Plus...',
-	),
+	);
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-	'lb' => array(
+	$messages['lb'] = array(
 		'ogg-pause'   => 'Paus',
 		'ogg-stop'    => 'Stopp',
 		'ogg-more'    => 'Méi ...',
 		'ogg-dismiss' => 'Zoumaachen',
-	),
+	);
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  */
-	'li' => array(
+	$messages['li'] = array(
 		'ogg-play'       => 'Aafspele',
 		'ogg-pause'      => 'Óngerbraeke',
 		'ogg-stop'       => 'Oetsjeije',
 		'ogg-play-video' => 'Video aafspele',
 		'ogg-play-sound' => 'Geluid aafspele',
-	),
+	);
 
-	'nds' => array(
+	$messages['nds'] = array(
 		'ogg-short-audio' => 'Ogg-$1-Toondatei, $2',
 		'ogg-short-video' => 'Ogg-$1-Videodatei, $2',
 		'ogg-short-general' => 'Ogg-$1-Mediendatei, $2',
@@ -677,13 +677,13 @@ $messages = array(
 		'ogg-dismiss' => 'Dichtmaken',
 		'ogg-download' => 'Datei dalladen',
 		'ogg-desc-link' => 'Över disse Datei',
-	),
+	);
 
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin
  */
-	'nl' => array(
+	$messages['nl'] = array(
 		'ogg-short-audio'         => 'Ogg $1 geluidsbestand, $2',
 		'ogg-short-video'         => 'Ogg $1 videobestand, $2',
 		'ogg-short-general'       => 'Ogg $1 mediabestand, $2',
@@ -709,9 +709,9 @@ $messages = array(
 		'ogg-dismiss'             => 'Sluiten',
 		'ogg-download'            => 'Bestand downloaden',
 		'ogg-desc-link'           => 'Over dit bestand',
-	),
+	);
 
-	'no' => array(
+	$messages['no'] = array(
 		'ogg-short-audio' => 'Ogg $1 lydfil, $2',
 		'ogg-short-video' => 'Ogg $1 videofil, $2',
 		'ogg-short-general' => 'Ogg $1 mediefil, $2',
@@ -737,12 +737,12 @@ $messages = array(
 		'ogg-dismiss' => 'Lukk',
 		'ogg-download' => 'Last ned fil',
 		'ogg-desc-link' => 'Om denne filen',
-	),
+	);
 
 /** Occitan (Occitan)
  * @author Cedric31
  */
-	'oc' => array(
+	$messages['oc'] = array(
 		'ogg-short-audio'         => 'Fichièr son Ogg $1, $2',
 		'ogg-short-video'         => 'Fichièr vidèo Ogg $1, $2',
 		'ogg-short-general'       => 'Fichièr mèdia Ogg $1, $2',
@@ -768,9 +768,9 @@ $messages = array(
 		'ogg-dismiss'             => 'Tampar',
 		'ogg-download'            => 'Telecargar lo fichièr',
 		'ogg-desc-link'           => "A prepaus d'aqueste fichièr",
-	),
+	);
 
-	'pl' => array(
+	$messages['pl'] = array(
 		'ogg-short-audio' => 'Plik dźwiękowy Ogg $1, $2',
 		'ogg-short-video' => 'Plik wideo Ogg $1, $2',
 		'ogg-short-general' => 'Plik multimedialny Ogg $1, $2',
@@ -796,9 +796,9 @@ $messages = array(
 		'ogg-dismiss' => 'Zamknij',
 		'ogg-download' => 'Ściągnij plik',
 		'ogg-desc-link' => 'O tym pliku',
-	),
+	);
 
-	'pms' => array(
+	$messages['pms'] = array(
 		'ogg-short-audio' => 'Registrassion Ogg $1, $2',
 		'ogg-short-video' => 'Film Ogg $1, $2',
 		'ogg-short-general' => 'Archivi Multimojen Ogg $1, $2',
@@ -824,13 +824,13 @@ $messages = array(
 		'ogg-dismiss' => 'sëré',
 		'ogg-download' => 'Dëscarié l\'archivi',
 		'ogg-desc-link' => 'Rësgoard a st\'archivi',
-	),
+	);
 
 /** Portuguese (Português)
  * @author 555
  * @author Malafaya
  */
-	'pt' => array(
+	$messages['pt'] = array(
 		'ogg-short-audio'         => 'Áudio Ogg $1, $2',
 		'ogg-short-video'         => 'Vídeo Ogg $1, $2',
 		'ogg-short-general'       => 'Multimédia Ogg $1, $2',
@@ -856,9 +856,9 @@ $messages = array(
 		'ogg-dismiss'             => 'Fechar',
 		'ogg-download'            => 'Fazer download do ficheiro',
 		'ogg-desc-link'           => 'Sobre este ficheiro',
-	),
+	);
 
-	'ru' => array(
+	$messages['ru'] = array(
 		'ogg-short-audio'      => 'Звуковой файл Ogg $1, $2',
 		'ogg-short-video'      => 'Видео-файл Ogg $1, $2',
 		'ogg-short-general'    => 'Медиа-файл Ogg $1, $2',
@@ -888,9 +888,9 @@ $messages = array(
 		'ogg-dismiss'          => 'Скрыть',
 		'ogg-download'         => 'Загрузить файл',
 		'ogg-desc-link'        => 'Информация об этом файле',
-	),
+	);
 
-	'sk' => array(
+	$messages['sk'] = array(
 		'ogg-short-audio' => 'Zvukový súbor ogg $1, $2',
 		'ogg-short-video' => 'Video súbor ogg $1, $2',
 		'ogg-short-general' => 'Multimediálny súbor ogg $1, $2',
@@ -916,12 +916,12 @@ $messages = array(
 		'ogg-dismiss' => 'Zatvoriť',
 		'ogg-download' => 'Stiahnuť súbor',
 		'ogg-desc-link' => 'O tomto súbore',
-	),
+	);
 
 /** ћирилица (ћирилица)
  * @author Sasa Stefanovic
  */
-	'sr-ec' => array(
+	$messages['sr-ec'] = array(
 		'ogg-play'       => 'Пусти',
 		'ogg-pause'      => 'Пауза',
 		'ogg-stop'       => 'Стоп',
@@ -931,12 +931,12 @@ $messages = array(
 		'ogg-dismiss'    => 'Затвори',
 		'ogg-download'   => 'Преузми фајл',
 		'ogg-desc-link'  => 'О овом фајлу',
-	),
+	);
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-	'stq' => array(
+	$messages['stq'] = array(
 		'ogg-short-audio'       => 'Ogg-$1-Audiodoatäi, $2',
 		'ogg-short-video'       => 'Ogg-$1-Videodoatäi, $2',
 		'ogg-short-general'     => 'Ogg-$1-Mediadoatäi, $2',
@@ -961,9 +961,9 @@ Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"
 		'ogg-dismiss'           => 'Sluute',
 		'ogg-download'          => 'Doatäi spiekerje',
 		'ogg-desc-link'         => 'Uur disse Doatäi',
-	),
+	);
 
-	'sv' => array(
+	$messages['sv'] = array(
 		'ogg-short-audio'      => 'Ogg $1 ljudfil, $2',
 		'ogg-short-video'      => 'Ogg $1 videofil, $2',
 		'ogg-short-general'    => 'Ogg $1 mediafil, $2',
@@ -992,18 +992,18 @@ Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"
 		'ogg-dismiss'          => 'Stäng',
 		'ogg-download'         => 'Ladda ner filen',
 		'ogg-desc-link'        => 'Om filen',
-	),
+	);
 
 /** Volapük (Volapük)
  * @author Malafaya
  */
-	'vo' => array(
+	$messages['vo'] = array(
 		'ogg-player-videoElement' => 'Dilet: <video>',
 		'ogg-dismiss'             => 'Färmükön',
 		'ogg-desc-link'           => 'Tefü ragiv at',
-	),
+	);
 
-	'yue' => array(
+	$messages['yue'] = array(
 		'ogg-short-audio'      => 'Ogg $1 聲檔，$2',
 		'ogg-short-video'      => 'Ogg $1 畫檔，$2',
 		'ogg-short-general'    => 'Ogg $1 媒檔，$2',
@@ -1029,9 +1029,9 @@ Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"
 		'ogg-dismiss'          => '閂',
 		'ogg-download'         => '下載檔案',
 		'ogg-desc-link'        => '關於呢個檔案',
-	),
+	);
 
-	'zh-hans' => array(
+	$messages['zh-hans'] = array(
 		'ogg-short-audio'      => 'Ogg $1 声音文件，$2',
 		'ogg-short-video'      => 'Ogg $1 视频文件，$2',
 		'ogg-short-general'    => 'Ogg $1 媒体文件，$2',
@@ -1057,9 +1057,9 @@ Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"
 		'ogg-dismiss'          => '关闭',
 		'ogg-download'         => '下载文件',
 		'ogg-desc-link'        => '关于这个文件',
-	),
+	);
 
-	'zh-hant' => array(
+	$messages['zh-hant'] = array(
 		'ogg-short-audio'      => 'Ogg $1 聲音檔案，$2',
 		'ogg-short-video'      => 'Ogg $1 影片檔案，$2',
 		'ogg-short-general'    => 'Ogg $1 媒體檔案，$2',
@@ -1085,8 +1085,7 @@ Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"
 		'ogg-dismiss'          => '關閉',
 		'ogg-download'         => '下載檔案',
 		'ogg-desc-link'        => '關於這個檔案',
-	),
-);
+	);
 
 /* Kazakh fallbacks */
 $messages['kk-kz'] = $messages['kk-cyrl'];
