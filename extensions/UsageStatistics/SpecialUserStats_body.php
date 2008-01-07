@@ -45,7 +45,7 @@ class SpecialUserStats extends SpecialPage
         $messagesLoaded = true;
  
         require( dirname( __FILE__ ) . '/SpecialUserStats.i18n.php' );
-        foreach ( $allMessages as $lang => $langMessages ) {
+        foreach ( $messages as $lang => $langMessages ) {
             $wgMessageCache->addMessages( $langMessages, $lang );
         }
         return true;
