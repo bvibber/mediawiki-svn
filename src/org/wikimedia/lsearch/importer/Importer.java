@@ -18,7 +18,7 @@ import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexThread;
 import org.wikimedia.lsearch.ranks.LinkReader;
 import org.wikimedia.lsearch.ranks.Links;
-import org.wikimedia.lsearch.ranks.RankBuilder;
+import org.wikimedia.lsearch.ranks.LinksBuilder;
 import org.wikimedia.lsearch.related.CompactLinks;
 import org.wikimedia.lsearch.related.RelatedBuilder;
 import org.wikimedia.lsearch.storage.LinkAnalysisStorage;
@@ -129,16 +129,17 @@ public class Importer {
 
 			long start = System.currentTimeMillis();
 			
-			if(makeIndex){
-				if(!useOldLinkAnalysis){
-					// regenerate link and redirect information				
-					try {
-						RankBuilder.processLinks(inputfile,Links.createNew(iid),iid,langCode);
-					} catch (IOException e) {
-						log.fatal("Cannot store link analytics: "+e.getMessage());
-						return;
-					}
+			if(!useOldLinkAnalysis){
+				// regenerate link and redirect information				
+				try {
+					LinksBuilder.processLinks(inputfile,Links.createNew(iid),iid,langCode);
+				} catch (IOException e) {
+					log.fatal("Cannot store link analytics: "+e.getMessage());
+					return;
 				}
+			}
+			
+			if(makeIndex){
 				if(!useOldRelated){
 					try {
 						RelatedBuilder.rebuildFromLinksNew(iid);

@@ -9,13 +9,14 @@ import org.wikimedia.lsearch.highlight.HighlightResult;
 
 /** A single search result */
 public class ResultSet implements Serializable {
-	public double score;
+	public double score;	
 	public String namespace;
 	public String title;
 	public ArrayList<String> context;
 	public Explanation explanation = null;
 	public HighlightResult highlight;
 	public String interwiki = null;
+	public String namespaceTextual = ""; // e.g. "User" or "" for main
 	
 	public ResultSet(String key) {
 		int colon = key.indexOf(':');
@@ -109,6 +110,12 @@ public class ResultSet implements Serializable {
 	}
 	public void setInterwiki(String interwiki) {
 		this.interwiki = interwiki;
+	}
+	public String getNamespaceTextual() {
+		return namespaceTextual;
+	}
+	public void setNamespaceTextual(String namespaceTextual) {
+		this.namespaceTextual = namespaceTextual;
 	}
 	
 }

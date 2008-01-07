@@ -9,10 +9,12 @@ import java.io.UnsupportedEncodingException;
 import java.net.Socket;
 import java.net.URLEncoder;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.wikimedia.lsearch.beans.ResultSet;
 import org.wikimedia.lsearch.beans.SearchResults;
+import org.wikimedia.lsearch.beans.SearchResults.Format;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.highlight.HighlightResult;
@@ -67,48 +69,86 @@ public class SearchDaemon extends HttpHandler {
 			HashMap query = new QueryStringMap(uri);
 			SearchResults res = engine.search(IndexId.get(dbname),what,searchterm,query);
 			contentType = "text/plain";
-			// format: 
-			// <namespace> <title> (resNum-times)
-			if(what.equals("prefix")){
-				sendHeaders(200, "OK");
-				for(ResultSet rs : res.getResults()){
-					sendResultLine(rs.namespace, rs.title);
-				}
-			}
 			// format:
 			// <num of hits>
 			// #suggest <query> or #no suggestion
 			// <score> <ns> <title> (resNum-times)
-			else if(res!=null && res.isSuccess()){
-				sendHeaders(200, "OK");
-				sendOutputLine(Integer.toString(res.getNumHits()));
-				if(res.getSuggest() != null)
-					sendOutputLine("#suggest "+res.getSuggest());
-				else 
-					sendOutputLine("#no suggestion");
-				if(res.getTitles() != null){
-					sendOutputLine("#interwiki "+res.getTitles().size());
-					for(ResultSet rs : res.getTitles()){
-						sendOutputLine("#interwiki "+rs.getScore()+" "+encode(rs.getInterwiki())+" "+rs.getNamespace()+" "+encodeTitle(rs.getTitle()));
+			if(res!=null && res.isSuccess()){				
+				if(res.getFormat() == Format.STANDARD){
+					sendHeaders(200, "OK");
+					// format: 
+					// <namespace> <title> (resNum-times)
+					if(what.equals("prefix")){
+						for(ResultSet rs : res.getResults()){
+							sendResultLine(rs.namespace, rs.title);
+						}
+					} else{
+						sendOutputLine(Integer.toString(res.getNumHits()));
+						if(res.getSuggest() != null)
+							sendOutputLine("#suggest "+encode(res.getSuggest()));
+						else 
+							sendOutputLine("#no suggestion");
+						if(res.getTitles() != null){
+							sendOutputLine("#interwiki "+res.getTitles().size());
+							for(ResultSet rs : res.getTitles()){
+								sendOutputLine(rs.getScore()+" "+encode(rs.getInterwiki())+" "+rs.getNamespace()+" "+encodeTitle(rs.getTitle()));
+							}
+						} else
+							sendOutputLine("#interwiki 0");
+						sendOutputLine("#results");
+						for(ResultSet rs : res.getResults()){
+							sendResultLine(rs.score, rs.namespace, rs.title);
+							if(rs.getContext() != null){
+								for(String c : rs.getContext())
+									sendOutputLine("#context "+c);
+							}
+							if(rs.getExplanation() != null)
+								sendOutputLine(rs.getExplanation().toString());
+							if(rs.getHighlight() != null){
+								HighlightResult hr = rs.getHighlight();
+								sendHighlight("title",hr.getTitle());
+								for(Snippet sn : hr.getText())
+									sendHighlight("text",sn);
+								sendHighlightWithTitle("redirect",hr.getRedirect());
+								sendHighlightWithFragment("section",hr.getSection());
+							}
+						}
 					}
-				} else
-					sendOutputLine("#interwiki 0");
-				for(ResultSet rs : res.getResults()){
-					sendResultLine(rs.score, rs.namespace, rs.title);
-					if(rs.getContext() != null){
-						for(String c : rs.getContext())
-							sendOutputLine("#context "+c);
+				} else if(res.getFormat() == Format.JSON){
+					contentType = "application/json";
+					sendHeaders(200, "OK");
+					// json format, currently only support limited syntax for prefix queries
+					// but could in principle be used for everything
+					sendOutputLine("{ \"results\":[");
+					ArrayList<ResultSet> results = res.getResults();
+					for(int i=0;i<results.size();i++){
+						ResultSet rs = results.get(i);
+						String title = encode(rs.getNamespaceTextual());
+						if(!title.equals(""))
+							title += ":";
+						title += encode(rs.getTitle());
+						String comma = (i != results.size()-1)? "," : "";
+						sendOutputLine("\""+title+"\""+comma);
 					}
-					if(rs.getExplanation() != null)
-						sendOutputLine(rs.getExplanation().toString());
-					if(rs.getHighlight() != null){
-						HighlightResult hr = rs.getHighlight();
-						sendHighlight("title",hr.getFormattedTitle());
-						sendHighlight("text",hr.getFormattedText());
-						sendHighlightWithTitle("redirect",hr.getFormattedRedirect(),hr.getRedirect());
-						sendHighlightWithFragment("section",hr.getFormattedSection(),hr.getSection());
+					sendOutputLine("]}");
+				} else if(res.getFormat() == Format.OPENSEARCH){
+					contentType = "application/json";
+					charset = "utf-8";
+					sendHeaders(200, "OK");
+					// opensearch for firefox suggestion engine ... 
+					sendOutputLine("[\""+searchterm+"\",[");
+					ArrayList<ResultSet> results = res.getResults();
+					for(int i=0;i<results.size();i++){
+						ResultSet rs = results.get(i);
+						String title = rs.getNamespaceTextual();
+						if(!title.equals(""))
+							title += ":";
+						title += rs.getTitle();
+						String comma = (i != results.size()-1)? "," : "";
+						sendOutputLine("\""+title+"\""+comma);
 					}
-				}				
+					sendOutputLine("]]");
+				}
 			} else{
 				sendError(500, "Server error", res.getErrorMsg());
 			}	
@@ -118,22 +158,49 @@ public class SearchDaemon extends HttpHandler {
 		}
 	}
 	
-	private void sendHighlight(String type, String text){
-		if(text != null)
-			sendOutputLine("#h."+type+" "+encode(text));
+	
+	private String makeHighlight(String type, Snippet snippet){
+		if(snippet == null)
+			return null;
+		String s = snippet.getSplitPointsSerialized();
+		String r = snippet.getRangesSerialized();
+		String sx = snippet.getSuffixSerialized();
+		String t = snippet.getText();
+		if(s!=null && r!=null && t!=null && t.length()>0 && sx!=null)
+			return "#h."+type+" ["+s+"] ["+r+"] ["+encodePlus(sx)+"] "+encodePlus(t);
+		return null;
 	}
 	
-	private void sendHighlightWithTitle(String type, String text, Snippet snippet){
-		if(text != null && snippet != null)
-			sendOutputLine("#h."+type+" "+encodeTitle(snippet.getOriginalText())+" "+encode(text));
+	private void sendHighlight(String type, Snippet snippet){
+		String s = makeHighlight(type,snippet);
+		if(s != null)
+			sendOutputLine(s);
 	}
 	
-	private void sendHighlightWithFragment(String type, String text, Snippet snippet){
-		if(text != null && snippet != null)
-			sendOutputLine("#h."+type+" "+encodeFragment(snippet.getOriginalText())+" "+encode(text));
+	private void sendHighlightWithTitle(String type, Snippet snippet){
+		String s = makeHighlight(type,snippet);
+		if(s != null)
+			sendOutputLine(s+" "+encodeTitle(snippet.getOriginalText()));
 	}
 	
+	private void sendHighlightWithFragment(String type, Snippet snippet){
+		String s = makeHighlight(type,snippet);
+		if(s != null)
+			sendOutputLine(s+" "+encodeFragment(snippet.getOriginalText()));
+	}
+	
+	/** URL-encoding */
 	private String encode(String text){
+		try {
+			String s = URLEncoder.encode(text, "UTF-8");
+			return s.replaceAll("\\+","%20");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return "";
+		}
+	}
+	/** form encoding, space -> plus sign */
+	private String encodePlus(String text){
 		try {
 			return URLEncoder.encode(text, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
@@ -141,24 +208,17 @@ public class SearchDaemon extends HttpHandler {
 			return "";
 		}
 	}
-	
+	/** encode titles, convert spaces into underscores */
 	private String encodeTitle(String title){
-		try {
-			return URLEncoder.encode(title.replaceAll(" ", "_"), "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+		if(title.equals(""))
 			return "";
-		}
+		return encode(title.replaceAll(" ", "_"));
 	}
 	
+	/** encode url fragments, i.e. stuff after # */
 	private String encodeFragment(String fragment){
-		try {
-			String enc = URLEncoder.encode(fragment.replaceAll(" ", "_"), "UTF-8");
-			return enc.replaceAll("%3A",":").replaceAll("%",".");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-			return "";
-		}
+		String enc = encodeTitle(fragment);
+		return enc.replaceAll("%3A",":").replaceAll("%",".");
 	}
 
 	

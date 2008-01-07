@@ -74,6 +74,7 @@ public class Utf8Set {
 		str.data = data;
 	}
 
+	/** Check set contains the string at postiions [start,end] in the buffer */
 	public boolean contains(int start, int end){
 		str.start = start;
 		str.end = end;

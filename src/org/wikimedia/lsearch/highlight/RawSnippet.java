@@ -29,6 +29,7 @@ public class RawSnippet {
 	protected Position pos;
 	protected HashSet<String> found;
 	protected int sequenceNum;
+	protected Set<String> stopWords;
 	
 	/** number of chars in [start,end) in tokens */
 	protected int charLen(int start, int end){
@@ -236,14 +237,16 @@ public class RawSnippet {
 		}
 		for(int i=showBegin;i<showEnd;i++){			
 			int inext = toGapEnd(gaps,i);
+			// split points 
 			if(i != inext){
-				sb.append(HighlightResult.SEPARATOR);
+				s.addSplitPoint(getLength(sb));
+				sb.append(" ");
 				i = inext-1;
 				continue;
 			}
 			ExtToken t = tokens.get(i);
 			if(i == showBegin && t.getType() != ExtToken.Type.TEXT){
-				// catch only specific nontext beginnings
+				// catch only specific nontext beginings
 				if(t.getText().endsWith("\""))
 					sb.append("\""); // hack to include initial " 
 				else if(t.getText().endsWith("("))
@@ -251,21 +254,60 @@ public class RawSnippet {
 				continue;
 			}
 			if(t.getPositionIncrement() != 0){
-				start = sb.length();
+				start = getLength(sb);
 				sb.append(t.getText());
-				end = sb.length();
+				end = getLength(sb);
 			}
-			if(highlight.contains(t.termText())){
+			if(highlight.contains(t.termText()) && !isolatedStopWords(t.termText(),i)){
 				s.addRange(new Snippet.Range(start,end));
 			}
 		}
 		s.setText(sb.toString());
 		if(alttitle != null)
 			s.setOriginalText(alttitle.getTitle());
+		
 		return s;
 	}
 	
-	public RawSnippet(ArrayList<ExtToken> tokens, FragmentScore f, Set<String> highlight, Set<String> newTerms){
+	/** If this is a stop words without any highlighted words before or after */
+	final private boolean isolatedStopWords(String text, int index) {
+		if(stopWords == null || stopWords.size()==0 || !stopWords.contains(text))
+			return false;
+		// look before the word
+		for(int prev=index-1;prev>=0;prev--){
+			ExtToken t = tokens.get(prev);
+			if(highlight.contains(t.termText()))
+				return false;
+			if(t.getPositionIncrement() != 0)
+				break;
+		}
+		// look after
+		boolean firstfull = false;
+		for(int next=index+1;next<tokens.size();next++){
+			ExtToken t = tokens.get(next);
+			if(highlight.contains(t.termText()))
+				return false;
+			if(t.getPositionIncrement() != 0){
+				if(!firstfull)
+					firstfull = true;
+				else
+					break;
+			}
+		}
+		return true;
+	}
+	/** Current length of the stringbuilder (in utf-8 bytes) */
+	protected int getLength(StringBuilder sb){
+		try{
+			// would be nice if this would be more efficient 
+			return sb.toString().getBytes("utf-8").length;
+		} catch(Exception e){
+			e.printStackTrace();
+			return sb.length();
+		}
+	}
+	
+	public RawSnippet(ArrayList<ExtToken> tokens, FragmentScore f, Set<String> highlight, Set<String> newTerms, Set<String> stopWords){
 		this.tokens = new ArrayList<ExtToken>();
 		for(int i=f.start;i<f.end;i++)
 			this.tokens.add(tokens.get(i));
@@ -284,6 +326,7 @@ public class RawSnippet {
 		this.section = f.section;
 		this.cur = f;
 		this.sequenceNum = f.sequenceNum;
+		this.stopWords = stopWords;
 	}
 
 	public int getBestEnd() {

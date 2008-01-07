@@ -41,14 +41,13 @@ import org.wikimedia.lsearch.util.Localization;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
 
 /**
- * Main class, builds index from a database dump.
- * Syntax: java Importer inputfile dbname 
+ * Build links index frontend
  * 
  * @author rainman
  *
  */
-public class RankBuilder {
-	static Logger log = Logger.getLogger(RankBuilder.class);  
+public class LinksBuilder {
+	static Logger log = Logger.getLogger(LinksBuilder.class);  
 	/**
 	 * @param args
 	 * @throws IOException 
@@ -57,13 +56,13 @@ public class RankBuilder {
 		String inputfile = null;
 		String dbname = null;
 		
-		System.out.println("MediaWiki Lucene search indexer - build rank info from xml dumps.\n");
+		System.out.println("MediaWiki Lucene search indexer - build links rank info from xml dumps.\n");
 		
 		Configuration.open();
-		log = Logger.getLogger(RankBuilder.class);
+		log = Logger.getLogger(LinksBuilder.class);
 		
 		if(args.length < 2){
-			System.out.println("Syntax: java RankBuilder <inputfile> <dbname>");
+			System.out.println("Syntax: java LinksBuilder <inputfile> <dbname>");
 			return;
 		}
 		for(int i=0;i<args.length;i++){

@@ -38,6 +38,7 @@ import org.apache.lucene.search.PhraseQuery;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.RAMDirectory;
+import org.wikimedia.lsearch.analyzers.PrefixAnalyzer;
 import org.wikimedia.lsearch.analyzers.SplitAnalyzer;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.Title;
@@ -241,10 +242,11 @@ public class Links {
 		Matcher matcher = linkPat.matcher(text);
 		int ns; String title;
 		boolean escaped;
+		//PrefixAnalyzer prefixAnalyzer = new PrefixAnalyzer();
 
 		ArrayList<String> pagelinks = new ArrayList<String>();
 		// article link -> contexts
-		HashMap<String,ArrayList<String>> contextMap = new HashMap<String,ArrayList<String>>();
+		//HashMap<String,ArrayList<String>> contextMap = new HashMap<String,ArrayList<String>>();
 		
 		// use context only for namespace in default search
 		boolean useContext = nsf.contains(t.getNamespace());
@@ -271,16 +273,6 @@ public class Links {
 					if(curContext == null)
 						curContext = context;
 					else if(curContext!=context){
-						/*if(contextLinks.size() == 1){
-							pagelinks.add(contextLinks.iterator().next());
-						} else{
-							// add link pairs that are in this context
-							for(String l1 : contextLinks){
-								for(String l2 : contextLinks)
-									if(l1 != l2) // if equal will be same string because they are from same collection
-										pagelinks.add(l1+"|"+l2);
-							}
-						}	 */
 						pagelinks.add("");
 						contextLinks.clear();
 						curContext = context;
@@ -335,26 +327,17 @@ public class Links {
 		StringList lk = new StringList(pagelinks);
 		Analyzer an = new SplitAnalyzer(1,true);
 		Document doc = new Document();
+		// ns:title
 		doc.add(new Field("article_key",t.getKey(),Field.Store.YES,Field.Index.UN_TOKENIZED));
 		if(redirectsTo != null)
+			// redirect_ns:title|target_ns:title
 			doc.add(new Field("redirect",redirectsTo+"|"+t.getKey(),Field.Store.YES,Field.Index.UN_TOKENIZED));
 		else{
+			// a list of all links
 			doc.add(new Field("links",lk.toString(),Field.Store.NO,Field.Index.TOKENIZED));
 		}
-		if(contextMap.size() != 0){
-			/*for(Entry<String,ArrayList<String>> e : contextMap.entrySet()){
-				Document con = new Document();
-				con.add(new Field("context_key",e.getKey()+"|"+t.getKey(),Field.Store.NO,Field.Index.UN_TOKENIZED));
-				con.add(new Field("context",new StringList(e.getValue()).toString(),Field.Store.COMPRESS,Field.Index.NO));
-				writer.addDocument(con,an);
-			}*/
-			// serialize the java object (contextMap) into context field
-			//ByteArrayOutputStream ba = new ByteArrayOutputStream();
-			//ObjectOutputStream ob = new ObjectOutputStream(ba);
-			//ob.writeObject(contextMap);
-			//doc.add(new Field("context",ba.toByteArray(),Field.Store.COMPRESS)); 
-			//doc.add(new Field("context",new StringMap(contextMap).serialize(),Field.Store.COMPRESS));
-		}
+		// key split up into prefixes (for prefix index)
+		// doc.add(new Field("prefix",prefixAnalyzer.tokenStream("prefix",t.getKey())));		
 		
 		writer.addDocument(doc,an);
 		state = State.MODIFIED;
@@ -422,7 +405,7 @@ public class Links {
 		ArrayList<String> ret = new ArrayList<String>();
 		String prefix = key+"|";
 		TermEnum te = reader.terms(new Term("redirect",prefix));
-		while(te.next()){
+		for(;te.term()!=null;te.next()){
 			String t = te.term().text();
 			if(t.startsWith(prefix)){
 				ret.add(t.substring(t.indexOf('|')+1));
@@ -461,6 +444,8 @@ public class Links {
 		TermDocs td = reader.termDocs(new Term("article_key",key));
 		if(td.next()){
 			String t = reader.document(td.doc(),redirectOnly).get("redirect");
+			if(t == null)
+				return null;
 			return t.substring(t.indexOf('|')+1);
 		}
 		return null;
@@ -633,7 +618,7 @@ public class Links {
 	}
 	
 	/** Get a dictionary of all article keys (ns:title) in this index */
-	public Dictionary getKeys() throws IOException{
+	public LuceneDictionary getKeys() throws IOException{
 		ensureRead();
 		return new LuceneDictionary(reader,"article_key");
 	}

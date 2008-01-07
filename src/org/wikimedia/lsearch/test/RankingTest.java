@@ -140,6 +140,18 @@ public class RankingTest {
 				"0:Lewinsky scandal"
 		});
 		
+		assertHits("french revolution timeline", new String[]{
+				"0:Timeline of the French Revolution"
+		});		
+		
+		assertHits("singapore fruit", new String[]{
+				"0:Durian"
+		});
+		
+		assertHits("List of female porn stars", new String[]{
+				"0:List of female porn stars"
+		});
+		
 		
 	}
 	

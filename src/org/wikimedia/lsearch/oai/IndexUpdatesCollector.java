@@ -16,7 +16,7 @@ import org.wikimedia.lsearch.beans.Redirect;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
-import org.wikimedia.lsearch.ranks.RankBuilder;
+import org.wikimedia.lsearch.ranks.LinksBuilder;
 import org.wikimedia.lsearch.related.Related;
 import org.wikimedia.lsearch.related.RelatedTitle;
 import org.wikimedia.lsearch.util.Localization;

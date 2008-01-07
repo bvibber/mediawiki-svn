@@ -15,6 +15,8 @@ canon_namespaces = { 0 : '', 1: 'Talk', 2: 'User', 3: 'User_talk',
                     100: 'Portal', 101: 'Portal_talk' }
 prefix_aliases = { 'm': 0, 'mt' : 1, 'u' : 2, 'ut' : 3, 'p': 4, 'pt':5, 'i':6, 'it':7,
                    'mw':8, 'mwt':9, 't':10, 'tt':11, 'h':12, 'ht':13, 'c':14, 'ct': 15}
+
+snippet_separator = " <b>...</b> ";
  
 def make_link(params,offset):
     ''' Duplicate existing query (denoted by params), but with a different offset '''
@@ -94,6 +96,48 @@ def make_title_link(line,dbname):
     decoded = urllib.unquote(caption.replace('_',' '))
     return ['%s : <a href="%s">%s</a> (%1.2f)' % (interwiki[iw],link,decoded,score),title]
 
+def extract_snippet(line,final_separator=True):
+    parts = line.split(' ')
+    type = parts[0]
+    splits = de_bracket_split(parts[1])
+    highlight = de_bracket_split(parts[2])
+    suffix = urllib.unquote_plus(de_bracket(parts[3]))
+    text = urllib.unquote_plus(parts[4].strip())
+    original = None
+    if len(parts) > 5:
+        original = urllib.unquote_plus(parts[5].strip())
+    
+    splits.append(len(text))
+    start = 0
+    snippet = ""
+    hi = 0
+    for sp in splits:
+        sp = int(sp)
+        while hi < len(highlight) and int(highlight[hi]) < sp:
+            s = int(highlight[hi])
+            e = int(highlight[hi+1])
+            snippet += text[start:s] + "<b>" + text[s:e] + "</b>"
+            start = e
+            hi += 2
+        snippet += text[start:sp]   
+        if sp == len(text) and suffix != '':
+            snippet += suffix
+        elif final_separator:
+            snippet += snippet_separator
+        start = sp;
+    
+    return [snippet,original]
+    
+
+def de_bracket(s):
+    return s[1:len(s)-1]
+
+def de_bracket_split(s):
+    if s == '[]':
+        return []
+    else:
+        return de_bracket(s).split(',')
+
 class MyHandler(BaseHTTPRequestHandler):        
     def do_GET(self):
         try:
@@ -146,7 +190,7 @@ class MyHandler(BaseHTTPRequestHandler):
                     # suggestions
                     suggest = results.readline();
                     if suggest.startswith("#suggest "):                        
-                        suggest = suggest[9:]
+                        suggest = urllib.unquote_plus(suggest[9:])
                     else:
                         suggest = ""
                     # grouped titles
@@ -155,8 +199,10 @@ class MyHandler(BaseHTTPRequestHandler):
                     i = 0
                     interwiki = []
                     while i < interwiki_count:
-                        interwiki.append(make_title_link(results.readline()[11:],dbname)[0])
+                        interwiki.append(make_title_link(results.readline(),dbname)[0])
                         i+=1
+                    # read "#results" 
+                    results.readline();
                     # html headers
                     self.send_response(200)
                     self.send_header('Cache-Control','no-cache')
@@ -203,44 +249,49 @@ class MyHandler(BaseHTTPRequestHandler):
                         # decode highlight info
                         textHl = ''
                         redirectHl = ''
-                        redirectLink = ''
+                        redirectLink = None
                         sectionHl = ''
-                        sectionLink = ''
+                        sectionLink = None
                         titleHl = ''
-                        while i+1 < len(lines):
+                        while i+1 < len(lines):                            
                             extra = lines[i+1]
                             if extra.startswith('#h.text'):
-                                textHl = extra[extra.find(' '):]
+                                [newtext, orig] = extract_snippet(extra)
+                                textHl += newtext
                             elif extra.startswith('#h.title'):
-                                titleHl = extra[extra.find(' '):]
+                                [titleHl, orig] = extract_snippet(extra)
                             elif extra.startswith('#h.redirect'):
-                                [htype, redirectLink, redirectHl] = extra.split(' ',2)
-                                redirectLink = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],redirectLink)                                
+                                [redirectHl, redirectLink] = extract_snippet(extra,False);
+                                if redirectLink != None:
+                                    redirectLink = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],redirectLink)
                             elif extra.startswith('#h.section'):
-                                [htype, sectionLink, sectionHl] = extra.split(' ',2)
-                                sectionLink = 'http://%s.wikipedia.org/wiki/%s#%s' % (dbname[0:2],title,sectionLink)
+                                [sectionHl, sectionLink] = extract_snippet(extra,False);
+                                if sectionLink != None:
+                                    sectionLink = 'http://%s.wikipedia.org/wiki/%s#%s' % (dbname[0:2],title,sectionLink)
                             else:
                                 break
                             i+=1
-                        if redirectLink != '':
-                            redirectHl = urllib.unquote_plus(redirectHl)
+                        if redirectLink != None:
+                            redirectHl = redirectHl
                             self.wfile.write('<small> (redirect <a href="%s">%s</a>)</small>' % (redirectLink.strip(), redirectHl))
-                        if sectionLink != '':
-                            sectionHl = urllib.unquote_plus(sectionHl)
+                        if sectionLink != None:
+                            sectionHl = sectionHl
                             self.wfile.write('<small> (section <a href="%s">%s</a></small>)' % (sectionLink.strip(), sectionHl))
                         self.wfile.write('<br>');
                         if textHl != '':
-                            textHl = urllib.unquote_plus(textHl)
+                            textHl = textHl
                             self.wfile.write('<div style="width:500px"><font size="-1">%s</font></div>' % textHl)
                         i += 1 
                     
                     # write the grouped titles stuff    
                     self.wfile.write('</td><td width=35% valign=top>')
-                    self.wfile.write('From sister projects:<br/>')
-                    self.wfile.write('<font size="-1">')
-                    for iw in interwiki:
-                        self.wfile.write(iw+'<br/>')
-                    self.wfile.write('</font></td></tr></table>')
+                    if interwiki != []:
+                        self.wfile.write('From sister projects:<br/>')
+                        self.wfile.write('<font size="-1">')
+                        for iw in interwiki:
+                            self.wfile.write(iw+'<br/>')
+                        self.wfile.write('</font>')
+                    self.wfile.write('</td></tr></table>')
                     self.wfile.write('<hr>')
                     # show lower search bar
                     self.wfile.write(searchbar)
@@ -250,10 +301,10 @@ class MyHandler(BaseHTTPRequestHandler):
                     self.wfile.write("Error in query")
                 except URLError:
                     self.send_error(500,'Internal Server Error')
-                    self.wfile.write("Cannot connect to lucene search 2.0 daemon")
+                    self.wfile.write("Cannot connect to lucene search 2 daemon")
                 delta_time = time.time() - start_time
                 print '[%s] Processed query %s in %d ms' %(time.strftime("%Y-%m-%d %H:%M:%S"),self.path,int(delta_time*1000))
-            else:
+            elif s[2] == '/':
                 # show the search form
                 f = open(curdir + sep + "searchForm.html")
                 search_form = f.read()
@@ -263,6 +314,51 @@ class MyHandler(BaseHTTPRequestHandler):
                 self.send_header('Content-type','text/html')
                 self.end_headers()
                 self.wfile.write(search_form)
+            elif s[2] == '/prefixQuery':
+                # prefix search wrapper
+                params = {}
+                # parse key1=val1&key2=val2 syntax
+                params = cgi.parse_qs(s[4])
+                query = ''
+                dbname = ''
+                for key,val in params.iteritems():
+                    if key == 'dbname':
+                        dbname = val[0]
+                    elif key == 'query':
+                        query = val[0]
+                        
+                if search_host.has_key(dbname):
+                    host = search_host[dbname]
+                else:
+                    host = search_host['<default>']
+                    
+                search_url = 'http://%s/prefix/%s/%s?format=json' % (host,dbname,urllib.quote(query.encode('utf-8')))
+                
+                # forward json text
+                try:
+                    results = urllib2.urlopen(search_url)
+                    self.send_response(200)
+                    self.send_header('Cache-Control','no-cache')
+                    self.send_header('Content-type','text/html')
+                    self.end_headers()
+                    for line in results:
+                        self.wfile.write(line)                        
+                except HTTPError:
+                    self.send_error(400,'Bad request')
+                    self.wfile.write("Error in query")
+                except URLError:
+                    self.send_error(500,'Internal Server Error')
+                    self.wfile.write("Cannot connect to lucene search 2 daemon")                
+            else:
+                # showfile
+                f = open(curdir + s[2])
+                file = f.read()
+                f.close()
+                self.send_response(200)
+                self.send_header('Cache-Control','no-cache')
+                self.send_header('Content-type','text/html')
+                self.end_headers()
+                self.wfile.write(file)
             return                
         except IOError:
             self.send_error(500,'Internal Server Error')

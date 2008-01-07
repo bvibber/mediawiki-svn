@@ -24,7 +24,7 @@ import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.ranks.Links;
-import org.wikimedia.lsearch.ranks.RankBuilder;
+import org.wikimedia.lsearch.ranks.LinksBuilder;
 import org.wikimedia.lsearch.related.CompactArticleLinks;
 import org.wikimedia.lsearch.related.CompactLinks;
 import org.wikimedia.lsearch.related.RelatedTitle;

@@ -3,14 +3,14 @@ package org.wikimedia.lsearch.spell;
 /** Result of suggestion for a query */
 public class SuggestQuery {
 	protected String searchterm;
-	protected String formated;
+	protected String ranges;
 	protected boolean needsCheck;
-	public SuggestQuery(String searchterm, String formated){
-		this(searchterm,formated,false);
+	public SuggestQuery(String searchterm, String ranges){
+		this(searchterm,ranges,false);
 	}
-	public SuggestQuery(String searchterm, String formated, boolean needsCheck) {
+	public SuggestQuery(String searchterm, String ranges, boolean needsCheck) {
 		this.searchterm = searchterm;
-		this.formated = formated;
+		this.ranges = ranges;
 		this.needsCheck = needsCheck;
 	}
 	/** Wether suggestion needs further checking (in case of individual word spell-check) */
@@ -27,15 +27,20 @@ public class SuggestQuery {
 	public void setSearchterm(String searchterm) {
 		this.searchterm = searchterm;
 	}
-	public String getFormated() {
-		return formated;
+	
+	public String getRanges() {
+		return ranges;
 	}
-	public void setFormated(String formated) {
-		this.formated = formated;
+	public void setRanges(String ranges) {
+		this.ranges = ranges;
+	}
+	
+	public String getSerialized(){
+		return ranges+" "+searchterm;
 	}
 	@Override
 	public String toString() {
-		return needsCheck? formated+" [needs check]" : formated;
+		return needsCheck? getSerialized()+" [needs check]" : getSerialized();
 	}
 	
 	

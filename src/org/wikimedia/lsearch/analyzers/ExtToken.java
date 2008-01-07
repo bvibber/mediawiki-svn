@@ -432,6 +432,9 @@ public class ExtToken extends Token implements Serializable {
 				case 2: // alias
 					{ int len = serialized[cur++]&0xff;
 					ExtToken tt = new ExtToken(serialized,cur,cur+len,t.startOffset(),t.endOffset(),t.type,t.pos);
+					if(terms.contains(cur,cur+len)){
+						tt.unstub();
+					}
 					tt.setPositionIncrement(0);
 					tokens.add(tt);
 					if(t.type != Type.TEXT)						

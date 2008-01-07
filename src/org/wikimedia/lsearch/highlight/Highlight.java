@@ -136,7 +136,7 @@ public class Highlight {
 				boolean addSection = true, added = true;
 				while(added && more(hr.textLength())){
 					// add more snippets if there is still space					
-					added = extendSnippet(raw,hr,raw.size()-1,tokens,addSection);
+					added = extendSnippet(raw,hr,raw.size()-1,tokens,addSection,stopWords);
 					addSection = false;					
 				}				
 			} else if(textSnippets.size() >= 2){
@@ -157,13 +157,13 @@ public class Highlight {
 				if(more(hr.textLength())){
 					// first pass of snippet extension, extend shortest first
 					if(s1.length() < s2.length()){
-						extendSnippet(raw,hr,0,tokens,true);
+						extendSnippet(raw,hr,0,tokens,true,stopWords);
 						if(more(hr.textLength()))
-							extendSnippet(raw,hr,raw.size()-1,tokens,true);
+							extendSnippet(raw,hr,raw.size()-1,tokens,true,stopWords);
 					} else {
-						extendSnippet(raw,hr,1,tokens,true);
+						extendSnippet(raw,hr,1,tokens,true,stopWords);
 						if(more(hr.textLength()))
-							extendSnippet(raw,hr,0,tokens,true);
+							extendSnippet(raw,hr,0,tokens,true,stopWords);
 					}
 				}
 				boolean added = true;
@@ -173,7 +173,7 @@ public class Highlight {
 					for(int i=0;i<hr.getText().size() && more(hr.textLength());i++){
 						boolean addedNow = false;
 						if(hr.getText().get(i).isExtendable()){
-							addedNow = extendSnippet(raw,hr,i,tokens,false);
+							addedNow = extendSnippet(raw,hr,i,tokens,false,stopWords);
 							if(addedNow)
 								i++;
 						}
@@ -249,7 +249,8 @@ public class Highlight {
 			s.setSuffix(" ");
 		else if(rs.pos == Position.HEADING)
 			s.setSuffix(": ");
-		else if(text.indexOf('.')==-1 && text.indexOf('|')==-1)
+		else if(s.isShowsEnd() && text.indexOf('.')==-1 && text.indexOf('|')==-1 
+				&& Character.isLetter(text.charAt(text.length()-1)))
 			s.setSuffix(". ");
 		else
 			s.setSuffix(" ");
@@ -264,14 +265,14 @@ public class Highlight {
 	}
 	
 	private static boolean extendSnippet(ArrayList<RawSnippet> raw, HighlightResult hr, int index, 
-			ArrayList<ExtToken> tokens, boolean addSection){
+			ArrayList<ExtToken> tokens, boolean addSection, HashSet<String> stopWords){
 		Snippet curS = hr.getText().get(index);
 		RawSnippet curRs = raw.get(index);
 		int len = hr.textLength();
 		boolean added = false;
 		// add section
 		if(addSection && more(len)){
-			RawSnippet rs = sectionSnippet(curRs,curS,tokens);
+			RawSnippet rs = sectionSnippet(curRs,curS,tokens,stopWords);
 			if(rs != null && !raw.contains(rs)){
 				Snippet s = rs.makeSnippet(diff(len));
 				setSuffix(s,rs);
@@ -291,7 +292,7 @@ public class Highlight {
 		}
 		// add next snippet
 		if(more(len)){										
-			RawSnippet rs = nextSnippet(curRs,curS,tokens);
+			RawSnippet rs = nextSnippet(curRs,curS,tokens,stopWords);
 			if(rs != null && !raw.contains(rs)){
 				Snippet s = rs.makeSnippet(diff(len));
 				setSuffix(curS,curRs);
@@ -305,17 +306,17 @@ public class Highlight {
 		return added;
 	}
 	
-	protected static RawSnippet nextSnippet(RawSnippet rs, Snippet s, ArrayList<ExtToken> tokens){
+	protected static RawSnippet nextSnippet(RawSnippet rs, Snippet s, ArrayList<ExtToken> tokens, HashSet<String> stopWords){
 		if(rs.next == null)
 			return null;
-		return new RawSnippet(tokens,rs.next,rs.highlight,new HashSet<String>());
+		return new RawSnippet(tokens,rs.next,rs.highlight,new HashSet<String>(),stopWords);
 	}
 	
-	protected static RawSnippet sectionSnippet(RawSnippet rs, Snippet s, ArrayList<ExtToken> tokens){
+	protected static RawSnippet sectionSnippet(RawSnippet rs, Snippet s, ArrayList<ExtToken> tokens, HashSet<String> stopWords){
 		if(rs.section == null)
 			return null;
 		if(s.length() < SHORT_SNIPPET)
-			return new RawSnippet(tokens,rs.section,rs.highlight,new HashSet<String>());
+			return new RawSnippet(tokens,rs.section,rs.highlight,new HashSet<String>(),stopWords);
 		return null;
 	}
 	
@@ -492,7 +493,7 @@ public class Highlight {
 				if(foundAllInFirst && beginLen > 2*MAX_CONTEXT && firstFragment!=null){
 					// made enough snippets, return the first one					
 					ArrayList<RawSnippet> res = new ArrayList<RawSnippet>();
-					res.add(new RawSnippet(tokens,firstFragment,weightTerms.keySet(),firstFragment.found));
+					res.add(new RawSnippet(tokens,firstFragment,weightTerms.keySet(),firstFragment.found,stopWords));
 					return res;					
 				}
 				fs.next = new FragmentScore(fs.end, sequence++); // link into list			
@@ -515,7 +516,7 @@ public class Highlight {
 				
 				Integer inx = wordIndex.get(t.termText());
 				Integer lastInx = (lastText != null)? wordIndex.get(lastText.termText()) : null;
-				if(t.getPositionIncrement() == 0); // FIXME: should do something
+				if(t.getPositionIncrement() == 0); // FIXME: ignores phrases on stemmed words
 				else if((inx != null && lastInx == null) || phraseStart == -1){
 					// begin of phrase
 					phraseScore = weight;
@@ -543,7 +544,7 @@ public class Highlight {
 				
 				lastIndex = i;
 				lastWeight = weight;
-			} else if(t.getType() == Type.TEXT && t.getPositionIncrement() != 0){
+			} else if(t.getType() == Type.TEXT && t.getPositionIncrement() != 0 && phraseStart != -1 && phraseScore != 0){
 				// end of phrase, unrecognized text token 
 				addToScore(fs,boostPhrase(phraseScore,phraseCount),phraseStart,i);
 				phraseScore = 0;
@@ -594,7 +595,7 @@ public class Highlight {
 				if(f.found != null)
 					termsFound.addAll(f.found);
 				adjustBest(f,tokens,weightTerms,wordIndex,newTerms);
-				RawSnippet s = new RawSnippet(tokens,f,wordHighlight,newTerms);
+				RawSnippet s = new RawSnippet(tokens,f,wordHighlight,newTerms,stopWords);
 				res.add(s);
 			} else if(resNoNew.size() < maxSnippets)
 				resNoNew.add(f);

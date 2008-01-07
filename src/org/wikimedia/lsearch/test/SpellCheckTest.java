@@ -99,6 +99,7 @@ public class SpellCheckTest {
    	{"Good Thomas fft","Good Thomas fft"},
    	{"Sanitazer","Sanitizer"},
    	{"Sanitizer",""},
+   	{"[2]:brion",""},
    	
    };
 

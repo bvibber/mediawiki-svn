@@ -711,6 +711,7 @@ public class FastWikiTokenizerEngine {
 		int pipeInx = 0;
 		int fetchStart = -1; // start index if link fetching
 		ParserState returnToState = null; // for nested states
+		int lastCur = 0; // temp variable for categories
 		
 		if(tokens == null)
 			tokens = new ArrayList<Token>();
@@ -963,6 +964,7 @@ public class FastWikiTokenizerEngine {
 						inImageCategoryInterwiki = true;
 						continue;
 					} else if(isCategory(prefix)){
+						lastCur = cur;
 						cur = semicolonInx;
 						fetch = FetchState.CATEGORY;
 						state = ParserState.LINK_FETCH;
@@ -1078,7 +1080,11 @@ public class FastWikiTokenizerEngine {
 						fetch = FetchState.WORD;
 						// index category words
 						if(fetchStart != -1){
-							cur = fetchStart;
+							inImageCategoryInterwiki = true;
+							if(options.highlightParsing)
+								cur = lastCur-1;
+							else
+								cur = fetchStart;
 							state = ParserState.CATEGORY_WORDS;
 						} else
 							System.err.print("ERROR: Inconsistent parser state, attepmted category backtrace for uninitalized fetchStart.");
@@ -1105,6 +1111,8 @@ public class FastWikiTokenizerEngine {
 				continue;
 			case CATEGORY_WORDS:
 				if(c == ']'){
+					addLetter();
+					inImageCategoryInterwiki = false;
 					state = ParserState.WORD; // end of category
 					continue;
 				} else if(c == '|'){ // ignore everything up to ]

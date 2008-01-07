@@ -52,8 +52,9 @@ public class Snippet implements Serializable {
 	}
 	protected String text = null;
 	protected ArrayList<Range> highlighted = new ArrayList<Range>();
+	protected ArrayList<Integer> splitPoints = new ArrayList<Integer>();
 	protected String suffix = null;
-	protected boolean extendable = true;
+	protected boolean extendable = true;	
 	
 	protected String originalText = null;
 	/** if this snippet goes to the end of sentence */
@@ -62,6 +63,10 @@ public class Snippet implements Serializable {
 	protected boolean showsAll = false;
 	
 	public Snippet(){
+	}
+	
+	public Snippet(String text){
+		this.text = text;
 	}
 	
 	public void addRange(Range r){
@@ -87,6 +92,10 @@ public class Snippet implements Serializable {
 		return text.length();
 	}
 	
+	public void addSplitPoint(int index){
+		splitPoints.add(index);
+	}
+	
 	public String toString(){
 		return getFormatted();
 	}
@@ -110,6 +119,41 @@ public class Snippet implements Serializable {
 		if(last != text.length())
 			sb.append(text.substring(last));
 		return sb.toString();
+	}
+	
+	/** Get ranges serialized like: 1,3,22,25] */
+	public String getRangesSerialized(){
+		StringBuilder sb = new StringBuilder();
+		boolean first = true;
+		for(Range r : highlighted){
+			if(!first)
+				sb.append(",");
+			sb.append(r.start);
+			sb.append(",");
+			sb.append(r.end);
+			first = false;
+		}
+		return sb.toString();
+	}
+	/** Get the points where the continuity of the snippet breaks */
+	public String getSplitPointsSerialized(){
+		StringBuilder sb = new StringBuilder();
+		boolean first = true;
+		for(Integer i : splitPoints){
+			if(!first)
+				sb.append(",");
+			sb.append(i);
+			first=false;
+		}
+		return sb.toString();
+	}
+	
+	/** Get string representation of suffix, "" for null */
+	public String getSuffixSerialized(){
+		if(suffix == null)
+			return "";
+		else 
+			return suffix; 
 	}
 	
 	public void setHighlighted(ArrayList<Range> highlighted) {

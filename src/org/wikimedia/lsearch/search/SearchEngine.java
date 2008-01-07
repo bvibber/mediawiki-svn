@@ -61,8 +61,8 @@ import org.wikimedia.lsearch.util.QueryStringMap;
 public class SearchEngine {
 	static org.apache.log4j.Logger log = Logger.getLogger(SearchEngine.class);
 
-	protected final int maxlines = 1000;
-	protected final int maxoffset = 10000;
+	protected final int MAXLINES = 1000;
+	protected final int MAXOFFSET = 10000;
 	protected static GlobalConfiguration global = null;
 	protected static Configuration config = null;
 	protected static SearcherCache cache = null;
@@ -85,14 +85,17 @@ public class SearchEngine {
 		
 		if (what.equals("search") || what.equals("explain")) {
 			int offset = 0, limit = 100; boolean exactCase = false;
+			int iwlimit = 10;
 			if (query.containsKey("offset"))
 				offset = Math.max(Integer.parseInt((String)query.get("offset")), 0);
 			if (query.containsKey("limit"))
-				limit = Math.min(Integer.parseInt((String)query.get("limit")), maxlines);
+				limit = Math.min(Integer.parseInt((String)query.get("limit")), MAXLINES);
+			if (query.containsKey("iwlimit"))
+				iwlimit = Math.min(Integer.parseInt((String)query.get("iwlimit")), MAXLINES);
 			if (query.containsKey("case") && global.exactCaseIndex(iid.getDBname()) && ((String)query.get("case")).equalsIgnoreCase("exact"))
 				exactCase = true;
 			NamespaceFilter namespaces = new NamespaceFilter((String)query.get("namespaces"));
-			SearchResults res = search(iid, searchterm, offset, limit, namespaces, what.equals("explain"), exactCase, false);
+			SearchResults res = search(iid, searchterm, offset, limit, iwlimit, namespaces, what.equals("explain"), exactCase, false);
 			if(res!=null && res.isRetry()){
 				int retries = 0;
 				if(iid.isSplit() || iid.isNssplit()){
@@ -101,7 +104,7 @@ public class SearchEngine {
 					retries = 1;
 				
 				while(retries > 0 && res.isRetry()){
-					res = search(iid, searchterm, offset, limit, namespaces, what.equals("explain"), exactCase, false);
+					res = search(iid, searchterm, offset, limit, iwlimit, namespaces, what.equals("explain"), exactCase, false);
 					retries--;
 				}
 				if(res.isRetry())
@@ -110,24 +113,38 @@ public class SearchEngine {
 			return res;
 		} else if (what.equals("raw") || what.equals("rawexplain")) {
 			int offset = 0, limit = 100; boolean exactCase = false;
+			int iwlimit = 10;
 			if (query.containsKey("offset"))
 				offset = Math.max(Integer.parseInt((String)query.get("offset")), 0);
 			if (query.containsKey("limit"))
-				limit = Math.min(Integer.parseInt((String)query.get("limit")), maxlines);
+				limit = Math.min(Integer.parseInt((String)query.get("limit")), MAXLINES);
+			if (query.containsKey("iwlimit"))
+				iwlimit = Math.min(Integer.parseInt((String)query.get("iwlimit")), MAXLINES);
 			if (query.containsKey("case") && global.exactCaseIndex(iid.getDBname()) && ((String)query.get("case")).equalsIgnoreCase("exact"))
 				exactCase = true;
 			NamespaceFilter namespaces = new NamespaceFilter((String)query.get("namespaces"));
-			return search(iid, searchterm, offset, limit, namespaces, what.equals("rawexplain"), exactCase, true);
+			return search(iid, searchterm, offset, limit, iwlimit, namespaces, what.equals("rawexplain"), exactCase, true);
 		} else if (what.equals("titlematch")) {
 				// TODO: return searchTitles(searchterm);
 		} else if (what.equals("prefix")){
-			return prefixSearch(iid, searchterm);
+			int limit = MAXLINES;
+			if (query.containsKey("limit"))
+				limit = Math.min(Integer.parseInt((String)query.get("limit")), MAXLINES);
+			SearchResults res = prefixSearch(iid, searchterm, limit);
+			if(query.containsKey("format")){
+				String format = (String)query.get("format");
+				if(format.equalsIgnoreCase("json"))
+					res.setFormat(SearchResults.Format.JSON);
+				else if(format.equalsIgnoreCase("opensearch"))
+					res.setFormat(SearchResults.Format.OPENSEARCH);
+			}
+			return res;
 		} else if (what.equals("related")){
 			int offset = 0, limit = 100; 
 			if (query.containsKey("offset"))
 				offset = Math.max(Integer.parseInt((String)query.get("offset")), 0);
 			if (query.containsKey("limit"))
-				limit = Math.min(Integer.parseInt((String)query.get("limit")), maxlines);
+				limit = Math.min(Integer.parseInt((String)query.get("limit")), MAXLINES);
 			return relatedSearch(iid, searchterm, offset, limit);
 		} else {
 			SearchResults res = new SearchResults();
@@ -152,6 +169,18 @@ public class SearchEngine {
 		}
 		
 		return "0:" + title;		
+	}
+	/** Get a valid namespace prefix, e.g. User from User:Moin */ 
+	protected String getNamespace(String title, IndexId iid){
+		title = title.replace('_',' ');
+		int colon = title.indexOf(':');
+		if(colon > 0 && colon != title.length()-1){
+			String ns = title.substring(0,colon);
+			Integer inx = dbNamespaces.get(iid.getDBname()).get(ns.toLowerCase());
+			if(inx != null)
+				return ns;
+		}
+		return "";
 	}
 	
 	protected SearchResults relatedSearch(IndexId iid, String searchterm, int offset, int limit) {
@@ -199,42 +228,63 @@ public class SearchEngine {
 		}
 	}
 	
-	protected SearchResults prefixSearch(IndexId iid, String searchterm) {
+	protected SearchResults prefixSearch(IndexId iid, String searchterm, int limit) {
 		readLocalization(iid);
 		IndexId pre = iid.getPrefix();
 		SearcherCache cache = SearcherCache.getInstance();
 		SearchResults res = new SearchResults();
 		try {
 			long start = System.currentTimeMillis();
-			searchterm = searchterm.toLowerCase();
+			String key = getKey(searchterm.toLowerCase(),iid);
+			String namespace = getNamespace(searchterm,iid);
 			IndexSearcherMul searcher = cache.getLocalSearcher(pre);
 			IndexReader reader = searcher.getIndexReader();
-			TermDocs td = reader.termDocs(new Term("prefix",searchterm));
+			TermDocs td = reader.termDocs(new Term("prefix",key));
 			if(td.next()){
 				// found entry with a prefix, return				
 				StringList sl = new StringList(reader.document(td.doc()).get("articles"));
+				int limitCount = 0;
 				Iterator<String> it = sl.iterator();
-				while(it.hasNext())
-					res.addResult(new ResultSet(it.next()));
+				while(it.hasNext()){
+					if(limitCount >= limit)
+						break;
+					ResultSet rs = new ResultSet(it.next());
+					rs.setNamespaceTextual(capitalizeFirst(namespace));
+					res.addResult(rs);
+					limitCount++;
+				}
 				//logRequest(pre,"prefix",searchterm,null,res.getNumHits(),start,searcher);
 				return res;
 			}
 			// check if it's an unique prefix
-			TermEnum te = reader.terms(new Term("key",searchterm));
-			String r = te.term().text();
-			if(r.startsWith(searchterm)){
-				TermDocs td1 = reader.termDocs(new Term("key",r));
-				if(td1.next()){
-					res.addResult(new ResultSet(reader.document(td1.doc()).get("key")));
-					//logRequest(pre,"prefix",searchterm,null,res.getNumHits(),start,searcher);
-					return res;
+			TermEnum te = reader.terms(new Term("key",key));
+			if(te.term() != null){
+				String r = te.term().text();
+				if(r.startsWith(key)){
+					TermDocs td1 = reader.termDocs(new Term("key",r));
+					if(td1.next()){
+						ResultSet rs = new ResultSet(reader.document(td1.doc()).get("key"));
+						rs.setNamespaceTextual(capitalizeFirst(namespace));
+						res.addResult(rs);
+						//logRequest(pre,"prefix",searchterm,null,res.getNumHits(),start,searcher);
+						return res;
+					}
 				}
-			}			
+			}
 		} catch (IOException e) {
 			log.error("Internal error in prefixSearch on "+pre+" : "+e.getMessage());
 			res.setErrorMsg("I/O error on index "+pre);
 		}
 		return res;
+	}
+	
+	private String capitalizeFirst(String str){
+		if(str == null || str.equals(""))
+			return str;
+		if(str.length()==1)
+			return str.toUpperCase();
+		else
+			return Character.toUpperCase(str.charAt(0))+str.substring(1);
 	}
 	
 	/** Search a single titles index part */
@@ -296,7 +346,7 @@ public class SearchEngine {
 	 * Search on iid, with query searchterm. View results from offset to offset+limit, using
 	 * the default namespaces filter
 	 */
-	public SearchResults search(IndexId iid, String searchterm, int offset, int limit, NamespaceFilter nsDefault, boolean explain, boolean exactCase, boolean raw){
+	public SearchResults search(IndexId iid, String searchterm, int offset, int limit, int iwlimit, NamespaceFilter nsDefault, boolean explain, boolean exactCase, boolean raw){
 		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid,exactCase);
 		if(nsDefault == null || nsDefault.cardinality() == 0)
 			nsDefault = new NamespaceFilter("0"); // default to main namespace
@@ -380,11 +430,11 @@ public class SearchEngine {
 							if(sq == null)
 								res.setSuggest(null);
 							else{
-								res.setSuggest(sq.getFormated());
+								res.setSuggest(sq.getSerialized());
 							}
 						}
 						highlight(iid,q,parser.getWords(),pack.terms,pack.dfs,pack.maxDoc,res,exactCase);
-						fetchTitles(res,searchterm,iid,parser,wildcards);
+						fetchTitles(res,searchterm,iid,parser,wildcards,offset,iwlimit);
 						return res;
 					}
 				} 
@@ -418,7 +468,7 @@ public class SearchEngine {
 					if(sq == null)
 						res.setSuggest(null);
 					else{
-						res.setSuggest(sq.getFormated());
+						res.setSuggest(sq.getSerialized());
 						/*if(res.getNumHits() == 0){
 							// no hits: show the spell-checked results
 							hits = searcher.search(q,nsfw,offset+limit);
@@ -436,7 +486,7 @@ public class SearchEngine {
 					}
 				}
 				highlight(iid,q,parser.getWords(),searcher,res,exactCase);
-				fetchTitles(res,searchterm,iid,parser,wildcards);
+				fetchTitles(res,searchterm,iid,parser,wildcards,offset,iwlimit);
 				return res;
 			} catch(Exception e){				
 				if(e.getMessage()!=null && e.getMessage().equals("time limit")){
@@ -490,9 +540,12 @@ public class SearchEngine {
 	}
 	
 	
-	protected void fetchTitles(SearchResults res, String searchterm, IndexId iid, WikiQueryParser parser, Wildcards wildcards){
+	/** Fetch related interwiki titles */
+	protected void fetchTitles(SearchResults res, String searchterm, IndexId iid, WikiQueryParser parser, Wildcards wildcards, int offset, int iwlimit){
 		if(!iid.hasTitlesIndex())
 			return;
+		if(offset != 0)
+			return; // for now don't allow paging
 		IndexId titles = iid.getTitlesIndex();
 		IndexId target = null;
 		IndexId main = titles.getDB();
@@ -520,7 +573,7 @@ public class SearchEngine {
 			SuffixFilterWrapper wrap = null;
 			if(sf != null)
 				wrap = new SuffixFilterWrapper(sf);
-			SearchResults r = messenger.searchTitles(host,target.toString(),searchterm,q,wrap,0,10,false);
+			SearchResults r = messenger.searchTitles(host,target.toString(),searchterm,q,wrap,0,iwlimit,false);
 			if(r.isSuccess()){
 				// OK! set the titles stuff
 				res.setTitles(r.getResults());				
@@ -537,11 +590,11 @@ public class SearchEngine {
 		res.setNumHits(numhits);
 		logRequest(iid,"search",searchterm, q, numhits, searchStart, s);
 		
-		int size = min(limit+offset,maxoffset,numhits) - offset;
+		int size = min(limit+offset,MAXOFFSET,numhits) - offset;
 		int[] docids = new int[size]; 
 		float[] scores = new float[size];
 		// fetch documents
-		for(int i=offset, j=0 ; i<limit+offset && i<maxoffset && i<numhits; i++, j++){
+		for(int i=offset, j=0 ; i<limit+offset && i<MAXOFFSET && i<numhits; i++, j++){
 			docids[j] = hits.scoreDocs[i].doc;
 			scores[j] = hits.scoreDocs[i].score;
 		}
@@ -571,11 +624,11 @@ public class SearchEngine {
 		res.setNumHits(numhits);
 		logRequest(iid,"search",searchterm, q, numhits, searchStart, s);
 		
-		int size = min(limit+offset,maxoffset,numhits) - offset;
+		int size = min(limit+offset,MAXOFFSET,numhits) - offset;
 		int[] docids = new int[size]; 
 		float[] scores = new float[size];
 		// fetch documents
-		for(int i=offset, j=0 ; i<limit+offset && i<maxoffset && i<numhits; i++, j++){
+		for(int i=offset, j=0 ; i<limit+offset && i<MAXOFFSET && i<numhits; i++, j++){
 			docids[j] = hits.scoreDocs[i].doc;
 			scores[j] = hits.scoreDocs[i].score;
 		}

@@ -5,8 +5,10 @@
 package org.wikimedia.lsearch.frontend;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.URI;
@@ -47,6 +49,7 @@ abstract public class HttpHandler extends Thread {
 	protected int minorVersion; // the x in HTTP 1.x
 
 	protected String contentType = "text/html";	
+	protected String charset = "none";
 	boolean headersSent;
 
 	protected HashMap headers;
@@ -54,7 +57,7 @@ abstract public class HttpHandler extends Thread {
 	public HttpHandler(Socket s) {
 		try {
 			istrm = new DataInputStream(new BufferedInputStream(s.getInputStream()));
-			ostrm = new PrintWriter(s.getOutputStream());			
+			ostrm = new PrintWriter(new BufferedWriter(new OutputStreamWriter(s.getOutputStream(),"utf-8")));			
 		} catch (IOException e) {
 			log.error("I/O in opening http socket.");
 		}
@@ -113,7 +116,7 @@ abstract public class HttpHandler extends Thread {
 			log.error(e.getMessage());
 		} finally {
 			if (!headersSent) {
-				sendError(500, "Internal server error", "An internal error occurred.");
+				sendError(500, "Internal server error", "An internal error occurred: no header sent.");
 			}
 			flushOutput();
 			// Make sure the client is closed out.
@@ -199,7 +202,7 @@ abstract public class HttpHandler extends Thread {
 			return;
 		}
 		sendOutputLine("HTTP/1.1 "+code+" "+message);
-		sendOutputLine("Content-Type: " + contentType);
+		sendOutputLine("Content-Type: " + contentType+((!charset.equals("none"))? "; charset="+charset : ""));
 		if(contentLen!=-1)
 			sendOutputLine("Content-Length: "+contentLen);
 		if(version=="HTTP/1.0" && isKeepAlive())

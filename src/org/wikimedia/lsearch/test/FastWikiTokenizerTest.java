@@ -72,6 +72,8 @@ public class FastWikiTokenizerTest {
 			Configuration.open();
 			String text = "(ant) and some. it's stupid it's something and 5\"6' or more";
 			showTokens(text);
+			text = "after this blank: [[Category:states in India]]";
+			showTokens(text);
 			text = "|N/A\n|[[William Franklyn]]\n|[[Stephen Fry]]\n| colspan=\"2\" | [[:de:Rolf Boysen|Rolf Boysen]]\n|-\n|[[Arthur Dent]]\n|[[Simon Jones (actor)|Simon Jones]]\n|[[Chris Langham]]</br>\nScience Fiction Theatre of Liverpool production<ref name=\"SFTL\"/>\n| colspan=\"2\" | Simon Jones\n|[[Jonathan Lermit]]\n|Simon Jones\n|[[Martin Freeman]]\n| colspan=\"2\" | [[Felix von Manteuffel]]\n|-\n|[[Minor characters from The Hitchhiker's Guide to the Galaxy#Mr. Prosser|Prosser]]\n|[[Bill Wallis]]\n|";
 			showTokens(text);
 			text = "|-\n{{Canadian elections/Liberals}}\n|GOODE, Tom ||align=right|12,848\n|-| something || param | something2 || something3 || something4\n";

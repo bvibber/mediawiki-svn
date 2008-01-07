@@ -977,7 +977,7 @@ public class GlobalConfiguration {
 			String[] defs = defPart.split(",");
 			// entries as expanded as params: wiki -> w
 			for(String def : defs){
-				String[] parts = def.split(":");
+				String[] parts = def.split("\\|");
 				String suffix, iw;
 				suffix = parts[0].trim();
 				if(parts.length == 2)

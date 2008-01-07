@@ -305,7 +305,7 @@ public class Suggest {
 			// if w1 is spellchecked right
 			boolean good1 = sug1.get(0).getDist() == 0;
 			int i2 = i;
-			boolean maybeStopWord = false; // the currecnt i2 might be a stop word, try to find phrases with it as stop word
+			boolean maybeStopWord = false; // i2 might be a stop word, try to find phrases with it as stop word
 			int distOffset = 0; // if we spellcheked to stop word, all phrases should have this initial dist
 			do{
 				if(maybeStopWord){
@@ -471,34 +471,68 @@ public class Suggest {
 		if(wordChanges.size() != 0)
 			proposedChanges.addAll(wordChanges.entrySet());
 		
-		// sort in reverse order from that in query, i.e. first change in the last term
+		// sort in ascending order
 		Collections.sort(proposedChanges,new Comparator<Entry<Integer,String>>() {
 			public int compare(Entry<Integer,String> o1, Entry<Integer,String> o2){
-				return o2.getKey() - o1.getKey();
+				return o1.getKey() - o2.getKey();
 			}
 		});
 		// substitute
 		if(proposedChanges.size() > 0){
 			boolean madeChanges = false;
-			String formated = searchterm;
+			StringBuilder sb = new StringBuilder();
+			ArrayList<Integer> ranges = new ArrayList<Integer>();
+			int start = 0;
 			for(Entry<Integer,String> e : proposedChanges){
 				Token t = tokens.get(e.getKey());
 				String nt = e.getValue();
 				// incorrect words, or doesn't stem to same
 				boolean stemNotSame = stemNotSameOrInSet(t.termText(),nt,parser.getBuilder().getFilters(),stemmedCorrectWords); 
 				if(stemNotSame || (!stemNotSame && reader.docFreq(new Term("word",t.termText())) == 0)){
-					formated = markSuggestion(formated,t,nt);
-					searchterm = applySuggestion(searchterm,t,nt);
+					int so = t.startOffset();
+					int eo = t.endOffset();
+					if(so != start)
+						sb.append(searchterm.substring(start,so));
+					ranges.add(getLength(sb));
+					sb.append(nt);
+					ranges.add(getLength(sb));
+					start = eo;					
 					madeChanges = true;
 				}
 			}
+			if(start != searchterm.length())
+			sb.append(searchterm.substring(start));
 			if(madeChanges)
-				return new SuggestQuery(tidy(searchterm),tidy(formated));
+				return new SuggestQuery(sb.toString(),serializeIntList(ranges));
 		}
 
 		return null;
 	}
+	
+	private String serializeIntList(ArrayList<Integer> list){
+		StringBuilder sb = new StringBuilder();
+		boolean first = true;
+		for(Integer i : list){
+			if(!first)
+				sb.append(",");
+			else
+				first = false;
+			sb.append(i);
+		}
+		return sb.toString();
+	}
 
+	/** Current length of the stringbuilder (in utf-8 bytes) */
+	protected int getLength(StringBuilder sb){
+		try{
+			// would be nice if this would be more efficient 
+			return sb.toString().getBytes("utf-8").length;
+		} catch(Exception e){
+			e.printStackTrace();
+			return sb.length();
+		}
+	}
+	
 	/** try to figure out the case of original spell-checked word, and output the new word in that case */
 	protected String simulateCase(String formated, Token t, String newWord) {
 		String old = formated.substring(t.startOffset(),t.endOffset());
@@ -511,13 +545,13 @@ public class Suggest {
 		return newWord;
 	}
 
-	protected String markSuggestion(String formated, Token t, String newWord){
+	private String markSuggestion(String formated, Token t, String newWord){
 		return formated.substring(0,t.startOffset()) 
 		+ "<i>" + simulateCase(formated,t,newWord) + "</i>"
 		+ formated.substring(t.endOffset());
 	}
 	
-	protected String applySuggestion(String searchterm, Token t, String newWord){
+	private String applySuggestion(String searchterm, Token t, String newWord){
 		return searchterm.substring(0,t.startOffset())  
 		+ simulateCase(searchterm,t,newWord)
 		+ searchterm.substring(t.endOffset());

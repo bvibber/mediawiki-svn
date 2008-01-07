@@ -21,6 +21,8 @@ public class SearchResults implements Serializable {
 	protected boolean retry;
 	protected String suggest;
 	protected ArrayList<ResultSet> titles;
+	public enum Format { STANDARD, JSON, OPENSEARCH };
+	protected Format format = Format.STANDARD;
 	
 	public SearchResults(){
 		success = false;
@@ -66,6 +68,7 @@ public class SearchResults implements Serializable {
 		return results;
 	}
 	public void addResult(ResultSet rs){
+		success = true;
 		results.add(rs);
 	}
 	public ArrayList<ResultSet> getTitles() {
@@ -83,6 +86,13 @@ public class SearchResults implements Serializable {
 	}
 	public void setSuggest(String suggest) {
 		this.suggest = suggest;
+	}
+	
+	public Format getFormat() {
+		return format;
+	}
+	public void setFormat(Format format) {
+		this.format = format;
 	}
 
 	@Override

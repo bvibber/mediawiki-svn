@@ -21,11 +21,10 @@ import org.wikimedia.lsearch.analyzers.PrefixAnalyzer;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexThread;
+import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.ranks.StringList;
 import org.wikimedia.lsearch.spell.api.LuceneDictionary;
 import org.wikimedia.lsearch.spell.api.Dictionary.Word;
-import org.wikimedia.lsearch.storage.ArticleAnalytics;
-import org.wikimedia.lsearch.storage.LinkAnalysisStorage;
 
 /**
  * Build an index of all title prefixes
@@ -37,7 +36,7 @@ public class PrefixIndexBuilder {
 	static Logger log = Logger.getLogger(PrefixIndexBuilder.class);
 	
 	public static void main(String[] args) throws IOException{
-		final int PER_PREFIX = 10;
+		final int PER_PREFIX = 15;
 		boolean usetemp = false;
 		String dbname = null;
 		
@@ -65,20 +64,22 @@ public class PrefixIndexBuilder {
 			IndexWriter writer = new IndexWriter(pre.getTempPath(),new PrefixAnalyzer(),true);
 			writer.setMergeFactor(20);
 			writer.setMaxBufferedDocs(500);
-			LinkAnalysisStorage st = new LinkAnalysisStorage(iid);
+			// FIXME: shouldn't be using import path
+			Links links = Links.openForRead(iid,iid.getLinks().getImportPath());
 			log.info("Writing temp index");
 			int count = 0;
-			Iterator<ArticleAnalytics> it =  st.iterator();
-			while(it.hasNext()){
+			LuceneDictionary dict = links.getKeys();
+			dict.setNoProgressReport();
+			Word w;
+			// iterate over all documents in the index
+			while((w = dict.next()) != null){
+				String key = w.getWord();
 				if(++count % 1000 == 0)
 					System.out.println("Processed "+count);
-				ArticleAnalytics aa = it.next();
-				String key = aa.getKey();
-				//String title = key.substring(key.indexOf(":")+1).toLowerCase();
-				String redirect = aa.getRedirectTarget();
+				String redirect = links.getRedirectTarget(key);
 				if(redirect == null)
 					redirect = "";
-				int ref = aa.getReferences();
+				int ref = links.getNumInLinks(key);
 				Document d = new Document();
 				d.add(new Field("key",key,Field.Store.YES,Field.Index.TOKENIZED));
 				d.add(new Field("redirect",redirect,Field.Store.YES,Field.Index.NO));
