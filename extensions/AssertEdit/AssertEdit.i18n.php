@@ -28,6 +28,14 @@ $messages['ar'] = array(
 	'assert_edit_message' => 'التأكيد المحدد ($1) فشل.',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'assert_edit_title'   => 'অ্যাসার্ট ব্যর্থ',
+	'assert_edit_message' => 'নির্দেশিত অ্যাসার্শনটি ($1) ব্যর্থ হয়েছে।',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

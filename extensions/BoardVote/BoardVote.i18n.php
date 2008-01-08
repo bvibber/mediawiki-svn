@@ -1582,7 +1582,7 @@ D'verschlësselt Versioun dovunner fannt der ënnen. Si gëtt ëffentlech op [[S
 	'boardvote_novotes'      => 'Et huet nach keen ofgestëmmt.',
 	'boardvote_time'         => 'Zäit',
 	'boardvote_user'         => 'Benotzer',
-	'boardvote_edits'        => 'Editen',
+	'boardvote_edits'        => 'Ännerungen',
 	'boardvote_days'         => 'Deeg',
 	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Vertrieder vum Benotzer',
@@ -1770,7 +1770,7 @@ uitgebracht. $1 voor de versleutelde gegevens.</p>',
 	'boardvote_needadmin'    => 'Alleen leden van de Verkiezingscommissie kunnen deze handeling uitvoeren.',
 	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Wikimedia Bestuursverkiezingen</a>:<!--  Vote open until July 12 -->',
 	'boardvote_notstarted'   => 'Het stemmen is nog niet gestart',
-	'boardvote_closed'       => 'Stemming is nu gesloten, zie binnenkort [http://meta.wikimedia.org/wiki/Board_elections de verkiezingspagina voor de resultaten].',
+	'boardvote_closed'       => 'De stemming is nu gesloten, zie binnenkort [http://meta.wikimedia.org/wiki/Board_elections de verkiezingspagina voor de resultaten].',
 	'boardvote_edits_many'   => 'veel',
 	'group-boardvote'        => 'Boardvote-beheerders',
 	'group-boardvote-member' => 'Boardvote-beheerder',
@@ -2077,13 +2077,6 @@ Será redireccionado para este servidor externo dentro de 20 segundos. [$1 Cliqu
 Um aviso de segurança sobre um certificado não assinado poderá eventualmente ser apresentado.',
 );
 
-/** Message documentation (Message documentation)
- * @author Meno25
- */
-$messages['qqq'] = array(
-	'boardvote_submit' => 'Button name',
-);
-
 $messages['rm'] = array(
 	'boardvote_user'          => 'Utilisader',
 	'boardvote_welcome'       => 'Chau \'\'\'$1\'\'\'!',
@@ -2167,12 +2160,69 @@ $messages['ru'] = array(
 Может возникнуть сообщение о неподписанном сертификате.',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'boardvote'              => 'Voľby do Správnej rady Wikimedia',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Hlasovať]]
+* [[Special:Boardvote/list|Zobraziť doterajšie hlasy]]
+* [[Special:Boardvote/dump|Vypísať kryptovaný záznam volieb]]',
+	'boardvote_intro_change' => '<p>Už ste hasovali. Môžete však zmeniť svoj hlas vo formulári dolu. Prosím, označte pole pri každom kandidátovi, ktorého schvaľujete.</p>',
+	'boardvote_entered'      => 'Ďakujeme, váš hlas bol zaznamenaný.
+
+Ak si želáte, môžete si uchovať nasledovné podrobnosti. Váš záznam o hlasovaní je:
+
+<pre>$1</pre>
+
+Bol zakryptovaný verejným kľúčom Správcov volieb:
+
+<pre>$2</pre>
+
+Nasleduje výsledná zakryptovaná verzia. Zobrazí sa verejne na [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Späť]]',
+	'boardvote_nosession'    => 'Nedá sa určiť váš používateľský ID na projekte Wikimedia. Prosím, prihláste sa na wiki, na ktorej ste oprávnení a choďte na <nowiki>[[Special:Boardvote]]</nowiki>. Musíte použiť účet s aspoň $1 príspevkami pred $2, ktorý má prvú úpravu pred $3.',
+	'boardvote_notloggedin'  => 'Nie ste prihlásený. Aby ste mohli hlasovať, musíte použiť účet s aspoň $1 príspevkami pred $2, ktorý má prvú úpravu pred $3.',
+	'boardvote_notqualified' => 'Nemáte oprávnenie hlasovať v týchto voľbách. Museli by ste urobiť $3 úprav pred $2 a vaša prvá úprava by musela byť pred $5.',
+	'boardvote_novotes'      => 'Nikto ešte nevolil.',
+	'boardvote_time'         => 'Čas',
+	'boardvote_user'         => 'Používateľ',
+	'boardvote_edits'        => 'Úpravy',
+	'boardvote_days'         => 'Dni',
+	'boardvote_ip'           => 'IP',
+	'boardvote_ua'           => 'Prehliadač',
+	'boardvote_listintro'    => '<p>Toto je zoznam všetkých doteraz zaznamenaných hlasov. Kliknutím sem získate $1.</p>',
+	'boardvote_dumplink'     => 'kryptované údaje',
+	'boardvote_submit'       => 'OK',
+	'boardvote_strike'       => 'Začiarknuť',
+	'boardvote_unstrike'     => 'Zrušiť začiarknutie',
+	'boardvote_needadmin'    => 'Túto operáciu môžu vykonávať iba správcovia hlasovania.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Voľby do Rady Wikimedia</a>:  Hlasovanie je otvorené do 12. júla',
+	'boardvote_notstarted'   => 'Hlasovanie sa ešte nezačalo.',
+	'boardvote_closed'       => 'Hlasovanie je teraz zatvorené, čoskoro budú dostupné [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En výsledky na stránke hlasovania].',
+	'boardvote_edits_many'   => 'mnoho',
+	'group-boardvote'        => 'Správcovia volieb do Rady',
+	'group-boardvote-member' => 'Správca volieb do Rady',
+	'grouppage-boardvote'    => '{{ns:project}}:Správca volieb do Rady',
+	'boardvote_blocked'      => 'Je nám ľúto, boli ste zablokovaní na wiki na ktorej ste zaregistrovaný. Zablokovaní používatelia nemôžu hlasovať.',
+	'boardvote_welcome'      => "Vitaj '''$1'''!",
+	'go_to_board_vote'       => 'Voľby do Správnej rady Wikimedia 2007',
+	'boardvote_redirecting'  => 'Pre lepšiu bezpečnosť a transparentnosť prevádzkujeme voľby na externom, nezávisle riadenom serveri.
+
+Budete presmerovaní na túto externú stránku o 20 sekúnd. Okamžite tam prejdete [$1 kliknutím sem].
+
+Môže sa zobraziť bezpečnostné varovanie o nepodpísanom certifikáte.',
+);
+
 /** ћирилица (ћирилица)
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
 	'boardvote'              => 'Избор за Одбор повереника Викимедија Фондације',
-	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vote]]
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Гласај]]
 * [[Special:Boardvote/list|Списак гласова до датума]]
 * [[Special:Boardvote/dump|Енкриптован запис гласања]]',
 	'boardvote_intro'        => '
@@ -2232,10 +2282,10 @@ $messages['sr-ec'] = array(
 	'group-boardvote'        => 'изборна комисија',
 	'group-boardvote-member' => 'изборна комисија',
 	'grouppage-boardvote'    => '{{ns:project}}:Администратор гласања за Одбор',
+	'boardvote_blocked'      => 'Жао нам је, блокирани сте на вашој Вики. Блокираним корисницима је забрањено да гласају.',
 	'boardvote_welcome'      => "Добро дошли '''$1'''!",
 );
 
-$messages['sr'] = $messages['sr-ec'];
 
 $messages['sr-el'] = array(
 	'boardvote'               => "Izbor za Odbor poverenika Vikimedija Fondacije",
@@ -2758,13 +2808,11 @@ $messages['zh-hant'] = array(
 稍後，您的瀏覽器可能會彈出未驗證安全憑證的警告。',
 );
 
-# Kazakh fallbacks
+$messages['kk'] = $messages['kk-cyrl'];
+$messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
 $messages['kk-tr'] = $messages['kk-latn'];
-$messages['kk-cn'] = $messages['kk-arab'];
-$messages['kk'] = $messages['kk-cyrl'];
-
-# Chinese fallbacks
+$messages['sr'] = $messages['sr-ec'];
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];
 $messages['zh-hk'] = $messages['zh-hant'];

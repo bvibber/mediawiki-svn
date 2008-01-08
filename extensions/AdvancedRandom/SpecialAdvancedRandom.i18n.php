@@ -18,6 +18,13 @@ $messages['ar'] = array(
 	'advancedrandom' => 'عشوائي متقدم',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'advancedrandom' => 'উন্নততর অনির্ধারিত',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

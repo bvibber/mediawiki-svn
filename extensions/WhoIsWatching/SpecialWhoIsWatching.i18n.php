@@ -34,6 +34,17 @@ $messages['bg'] = array(
 	'specialwhoiswatchingaddbtn'   => 'Добавяне на избраните потребители',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'whoiswatching'                => 'কে একটি উইকি পাতার উপর নজর রাখছেন',
+	'specialwhoiswatchingthepage'  => 'কে নজর রাখছেন %s-এর উপর',
+	'specialwhoiswatchingusage'    => 'এই বিশেষ পাতাটি এককভাবে ব্যবহার করা যাবে না। অনুগ্রহ করে [[MediaWiki:Number_of_watching_users_pageview]] পাতাটি ব্যবহার করে এই পাতাটিতে প্রবেশস্থল সংজ্ঞায়িত করুন।',
+	'specialwhoiswatchingaddusers' => 'নজরতালিকায় ব্যবহারকারীদের যোগ করুন',
+	'specialwhoiswatchingaddbtn'   => 'নির্বাচিত ব্যবহারকারীদের যোগ করুন',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -150,3 +161,4 @@ $messages['stq'] = array(
 	'specialwhoiswatchingthepage' => 'Wäl beooboachtet %s',
 	'specialwhoiswatchingusage'   => 'Disse Spezioalsiede kon nit ap sik sälwen anwoand wäide. Definier uur ju Siede [[MediaWiki:Number of watching users pageview]] ne Ienstiegssiede foar disse Spezioalsiede.',
 );
+

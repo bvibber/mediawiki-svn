@@ -27,6 +27,13 @@ $messages['de'] = array(
 	'stalepages-summary' => 'Dies ist eine Liste von Seiten, die in den letzten $1 Tagen nicht bearbeitet wurden.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'stalepages-summary' => 'Αυτός είναι ένας κατάλογος από σελίδες που δεν έχουν υποστεί επεξεργασίες τις τελευταίες $1 ημέρες.',
+);
+
 $messages['fr'] = array(
 	'stalepages' => 'Pages dépassées',
 	'stalepages-summary' => 'Ceci est une liste de pages qui n\'ont pas été modifiées depuis {{plural:$1|$1 jour|$1 jours}}.',
@@ -81,3 +88,4 @@ $messages['stq'] = array(
 	'stalepages'         => 'Oolde Sieden',
 	'stalepages-summary' => 'Dit is ne Lieste fon Sieden, do der in do lääste $1 Deege nit beoarbaided wuuden.',
 );
+

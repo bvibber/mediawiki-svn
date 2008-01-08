@@ -174,6 +174,37 @@ $messages['bg'] = array(
 	'math_WrongFontEncodingWithHint'        => 'Възможно е символът "$1" да не се визуализира правилно при "$2" кодиране (опитайте с командата "$3{...}")',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'math_noblahtex'                        => 'blahtex চালানো গেল না, যেটি $1-এ থাকার কথা',
+	'math_AmbiguousInfix'                   => '"$1"-এর অবস্থান দ্ব্যর্থবোধক (অতিরিক্ত দ্বিতীয় বন্ধনী "{ ... }" ব্যবহার করে দ্ব্যর্থতা নিরসনের চেষ্টা করুন)',
+	'math_CannotChangeDirectory'            => 'সক্রিয় ডিরেক্টরি পরিবর্তন করা যাচ্ছে না',
+	'math_CannotCreateTexFile'              => 'টেক ফাইল সৃষ্টি করা যাচ্ছে না',
+	'math_CannotRunDvipng'                  => 'dvipng নির্বাহ করা যাচ্ছে না',
+	'math_CannotRunLatex'                   => 'লেটেক চালানো যাচ্ছে না',
+	'math_CannotWritePngDirectory'          => 'আউটপুট PNG ডিরেক্টরিতে লেখা যাচ্ছে না',
+	'math_CannotWriteTexFile'               => 'টেক ফাইলে লেখা যাচ্ছে না',
+	'math_CasesRowTooBig'                   => 'একটি "ক্ষেত্রগুলি" ব্লকের প্রতি সারিতে কেবল দুইটি ভুক্তি থাকতে পারবে',
+	'math_DoubleSubscript'                  => 'একই ভিত্তির সাথে দুইটি সাবস্ক্রিপ্ট সংযুক্ত (কেবল একটি অনুমোদিত)',
+	'math_DoubleSuperscript'                => 'একই ভিত্তির সাথে দুইটি সুপারস্ক্রিপ্ট সংযুক্ত (কেবল একটি অনুমোদিত)',
+	'math_IllegalCharacter'                 => 'ইনপুটে অবৈধ ক্যারেক্টার',
+	'math_IllegalCommandInMathMode'         => 'গণিত মোডে "$1" নির্দেশটি অবৈধ',
+	'math_IllegalCommandInMathModeWithHint' => 'গণিত মোডে "$1" নির্দেশটি অবৈধ (হয়ত আপনি এর পরিবর্তে "$2" ব্যবহার করতে চেয়েছিলেন?)',
+	'math_IllegalCommandInTextMode'         => '"$1" নির্দেশটি টেক্সট মোডে অবৈধ',
+	'math_IllegalCommandInTextModeWithHint' => '"$1" নির্দেশটি টেক্সট মোডে অবৈধ (হয়ত আপনি এর পরিবর্তে "$2" ব্যবহার করতে চেয়েছিলেন?)',
+	'math_IllegalDelimiter'                 => '"$1"-কে অনুসরণকারী সীমায়কটি অবৈধ',
+	'math_IllegalFinalBackslash'            => 'ইনপুটের শেষে অবৈধ ব্যাকস্ল্যাশ "\\"',
+	'math_IllegalNestedFontEncodings'       => 'ফন্ট এনকোডিং নির্দেশগুলি হয়ত নেস্টেড আকারে নেই',
+	'math_IllegalRedefinition'              => '"$1" নির্দেশটি ইতিমধ্যেই সংজ্ঞায়িত; আপনি এটিকে পুনরায় সংজ্ঞায়িত করতে পারবেন না',
+	'math_InvalidColour'                    => '"$1" রঙটি অবৈধ',
+	'math_InvalidUtf8Input'                 => 'ইনপুট স্ট্রিংটি বৈধ UTF-8 ছিল না',
+	'math_LatexFontNotSpecified'            => '"$1"-এর জন্য কোন লেটেক ফন্ট নির্দিষ্ট করে দেওয়া হয়নি',
+	'math_LatexPackageUnavailable'          => 'PNG রেন্ডার করা যাচ্ছে না, কারণ "$1" লেটেক প্যাকেজটি লভ্য নয়',
+	'math_MismatchedBeginAndEnd'            => '"$1" এবং "$2" নির্দেশ দুইটি মিলছে না',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -231,6 +262,13 @@ $messages['br'] = array(
 	'math_UnrecognisedCommand'              => 'Urzhiad "$1" dianav',
 	'math_WrongFontEncoding'                => 'Marteze ne zeuio ket war wel an arouezenn "$1" ma vez enkodet ar font "$2"',
 	'math_WrongFontEncodingWithHint'        => 'Marteze ne zeuio ket war wel an arouezenn "$1" ma vez enkodet ar font "$2" (klaskit kentoc\'h gant an urzhiad "$3{...}")',
+);
+
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'math_InvalidColour' => 'Το χρώμα "$1" είναι άκυρο',
 );
 
 /** Finnish (Suomi)
@@ -937,9 +975,17 @@ $messages['sk'] = array(
 	'math_WrongFontEncodingWithHint'        => 'Symbol „$1“ sa nemôže nachádzať v kódovaní písma „$2“ (skúste použiť príkaz „$3{...}“)',
 );
 
+/** ћирилица (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'math_TooManyTokens' => 'Унос је превише дугачак',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
 $messages['stq'] = array(
 	'math_noblahtex' => 'Kon nit uutfiere blahtex, ju der ap $1 weese schuul',
 );
+

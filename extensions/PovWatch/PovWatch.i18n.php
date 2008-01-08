@@ -168,6 +168,14 @@ Protokol aktualnych wobkedźbowankow steji na [[Special:PovWatch/log]] k dispozi
 	'povwatch_added'                   => 'přidaty',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'povwatch'       => 'Iwwerwaachung vun Ännerungskonflikter',
+	'povwatch_added' => 'derbäigesat',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

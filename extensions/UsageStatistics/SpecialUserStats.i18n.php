@@ -22,6 +22,31 @@ $messages['en'] = array(
 	'usagestatisticsbadstartend' => '<b>Bad <i>Start</i> and/or <i>End</i> date!</b>',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'specialuserstats'           => 'إحصاءات الاستخدام',
+	'usagestatistics'            => 'إحصاءات الاستخدام',
+	'usagestatisticsfor'         => '<h2>إحصاءات الاستخدام ل[[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'    => 'كل المستخدمين',
+	'usagestatisticsinterval'    => 'مدة',
+	'usagestatisticstype'        => 'نوع',
+	'usagestatisticsstart'       => 'تاريخ البدء',
+	'usagestatisticsend'         => 'تاريخ الانتهاء',
+	'usagestatisticssubmit'      => 'توليد الإحصاءات',
+	'usagestatisticsnostart'     => '* <font color=red>من فضلك حدد تاريخا للبدء</font>',
+	'usagestatisticsnoend'       => '* <font color=red>من فضلك حدد تاريخا للانتهاء</font>',
+	'usagestatisticsbadstartend' => '<b>تاريخ <i>بدء</i> و/أو <i>انتهاء</i> سيء!</b>',
+);
+
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'usagestatisticstype' => 'Τύπος',
+);
+
 /** Finnish (Suomi)
  * @author Japsu
  */
@@ -70,5 +95,49 @@ $messages['nl'] = array(
 	'usagestatisticsnostart'     => '* <font color=red>Gelieve een begindatum op te geven</font>',
 	'usagestatisticsnoend'       => '* <font color=red>Gelieve een einddatum op te geven</font>',
 	'usagestatisticsbadstartend' => '<b>Slechte <i>begindatum</i> en/of <i>einddatum</i>!</b>',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'specialuserstats'           => 'Wužiwanska statistika',
+	'usagestatistics'            => 'Wužiwanska statistika',
+	'usagestatisticsfor'         => '<h2>Wužiwanska statistika za [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'    => 'Wšitcy wužiwarjo',
+	'usagestatisticsinterval'    => 'Interwal',
+	'usagestatisticstype'        => 'Typ',
+	'usagestatisticsstart'       => 'Spočatny datum',
+	'usagestatisticsend'         => 'Kónčny datum',
+	'usagestatisticssubmit'      => 'Statistiku wutworić',
+	'usagestatisticsnostart'     => '* <font color=red>Podaj prošu spočatny datum</font>',
+	'usagestatisticsnoend'       => '* <font color=red>Podaj prošu kónčny datum</font>',
+	'usagestatisticsbadstartend' => '<b>Njepłaćiwy <i>spočatny</i> a/abo <i>kónčny</i> datum!</b>',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'specialuserstats'           => 'Benotzungs-Statistiken',
+	'usagestatistics'            => 'Benotzungs-Statistiken',
+	'usagestatisticsfor'         => '<h2>Benotzungs-Statistik fir [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'    => 'All Benotzer',
+	'usagestatisticsinterval'    => 'Intervall',
+	'usagestatisticstype'        => 'Typ',
+	'usagestatisticsstart'       => 'Ufanksdatum',
+	'usagestatisticsend'         => 'Schlussdatum',
+	'usagestatisticssubmit'      => 'Statistik opstellen',
+	'usagestatisticsnostart'     => '* <font color=red>Gitt w.e.g een Ufanksdatum un</font>',
+	'usagestatisticsnoend'       => '* <font color=red>Gitt w.e.g. ee Schlussdatum un</font>',
+	'usagestatisticsbadstartend' => '<b>Falsche Format vum <i>Ufanks-</i> oder vum <i>Schluss</i> Datum!</b>',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'usagestatisticsallusers' => 'Gebans Valik',
+	'usagestatisticssubmit'   => 'Jafön Statitis',
 );
 

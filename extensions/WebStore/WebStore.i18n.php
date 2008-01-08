@@ -137,6 +137,26 @@ $1',
 		'webstore_no_response'             => 'Няма отговор от сървъра',
 	),
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+	'bn' => array(
+		'webstore_php_warning'           => 'পিএইচপি সতর্কীকরণ: $1',
+		'webstore_metadata_not_found'    => 'ফাইল খুঁজে পাওয়া যায়নি: $1',
+		'webstore_postfile_not_found'    => 'পোস্ট করার জন্য ফাইল খুঁজে পাওয়া যায়নি।',
+		'webstore_scaler_empty_response' => 'ছবি মাপবর্ধকটি ২০০নং উত্তর কোডসহ একটি খালি উত্তর পাঠিয়েছে। মাপবর্ধকে পিএইচপি অসমাধানযোগ্য ত্রুটির কারণে এটি হতে পারে।',
+		'webstore_invalid_response'      => 'সার্ভার থেকে অবৈধ উত্তর এসেছে:
+
+
+$1',
+		'webstore_no_response'           => 'সার্ভার কোন উত্তর দিচ্ছে না',
+		'webstore_backend_error'         => 'স্টোরেজ সার্ভার থেকে প্রাপ্ত ত্রুটি:
+
+$1',
+		'webstore_php_error'             => 'পিএইচপি ত্রুটি ঘটেছে:',
+		'webstore_no_handler'            => 'এই MIME ধরনটি রূপান্তরের জন্য কোন হ্যান্ডলার নেই',
+	),
+
 	'el' => array(
 		'webstore_invalid_zone' => 'Άκυρη ζώνη "$1".',
 		'webstore_404' => 'Το αρχείο δεν βρέθηκε.',

@@ -101,6 +101,31 @@ $messages['bg'] = array(
 	'badimages-page'           => '{{ns:help}}:Неприемливи файлове',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'badimages'                => 'অচল ছবির তালিকা',
+	'badimages-add-btn'        => 'যোগ করা হোক',
+	'badimages-added'          => '$1-কে তালিকাতে যোগ করা হয়েছে।',
+	'badimages-count'          => "অচল ছবির তালিকায় '''$1'''টি ছবি আছে।",
+	'badimages-name'           => 'নাম:',
+	'badimages-not-added'      => 'ছবিটি যোগ করা সম্ভব হয়নি।',
+	'badimages-not-removed'    => 'ছবিটা মুছে ফেলা সম্ভব হয়নি।',
+	'badimages-reason'         => 'কারণ:',
+	'badimages-remove'         => '(মুছে ফেলা হোক)',
+	'badimages-remove-btn'     => 'মুছে ফেলা হোক',
+	'badimages-remove-confirm' => 'অনুগ্রহ করে নিশ্চিত করুন আপনি তালিকাটি থেকে $1 মুছে ফেলতে চান:',
+	'badimages-removed'        => '$1-কে তালিকা থেকে মুছে ফেলা হয়েছে।',
+	'badimages-subheading'     => 'বর্তমান আইটেমগুলি',
+	'badimages-unprivileged'   => '(তালিকাটি পরিবর্তন করার মত যথেষ্ট অনুমতি আপনার নেই)',
+	'badimages-log-name'       => 'অচল ছবির তালিকা',
+	'badimages-log-header'     => 'এটি [[{{MediaWiki:Badimages-page}}|অচল ছবির তালিকাতে]] পরিবর্তনগুলির লগ।',
+	'badimages-log-add'        => '[[$1]]-কে অচল ছবির তালিকায় যোগ করা হয়েছে',
+	'badimages-log-remove'     => '[[$1]]-কে অচল ছবির তালিকা থেকে সরিয়ে ফেলা হয়েছে',
+	'badimages-page'           => '{{ns:help}}:অচল ছবির তালিকা',
+);
+
 $messages['br'] = array(
 	'badimages' => 'Roll ar skeudennoù fall',
 	'badimages-add-btn' => 'Ouzhpennañ',
@@ -925,11 +950,9 @@ $messages['zh-hant'] = array(
 	'badimages-page' => '{{ns:help}}:壞圖像列表',
 );
 
-	/* Chinese defaults, fallback to zh-hans or zh-hant */
 	$messages['zh'] = $messages['zh-hans'];
 	$messages['zh-cn'] = $messages['zh-hans'];
 	$messages['zh-hk'] = $messages['zh-hant'];
-	$messages['zh-tw'] = $messages['zh-hans'];
 	$messages['zh-sg'] = $messages['zh-hant'];
-	/* Cantonese default, fallback to yue */
+	$messages['zh-tw'] = $messages['zh-hans'];
 	$messages['zh-yue'] = $messages['yue'];

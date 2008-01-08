@@ -146,8 +146,10 @@ $wgExpandTemplatesMessages['fi'] = array(
 	'expand_templates_title'           => 'Otsikko (esimerkiksi muuttujaa {{PAGENAME}} varten)',
 	'expand_templates_input'           => 'Teksti',
 	'expand_templates_output'          => 'Tulos',
+	'expand_templates_xml_output'      => 'XML-tuloste',
 	'expand_templates_ok'              => 'Laajenna',
 	'expand_templates_remove_comments' => 'Poista kommentit',
+	'expand_templates_generate_xml'    => 'Näytä XML-jäsennyspuu',
 	'expand_templates_preview'         => 'Esikatselu',
 );
 
@@ -157,6 +159,10 @@ $wgExpandTemplatesMessages['fo'] = array(
 	'expand_templates_preview'         => 'Forskoðan',
 );
 
+/** French (Français)
+ * @author Grondin
+ * @author Sherbrooke
+ */
 $wgExpandTemplatesMessages['fr'] = array(
 	'expandtemplates'                  => 'Expansion des modèles',
 	'expand_templates_intro'           => 'Cette page permet de tester l’expansion de modèles,
@@ -165,8 +171,10 @@ telles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}} sont 
 	'expand_templates_title'           => 'Titre de l’article, utile par exemple si le modèle utilise {{PAGENAME}} :',
 	'expand_templates_input'           => 'Entrez votre texte ici :',
 	'expand_templates_output'          => 'Résultat',
+	'expand_templates_xml_output'      => 'Sortie XML',
 	'expand_templates_ok'              => 'Accepter',
 	'expand_templates_remove_comments' => 'Supprimer les commentaires.',
+	'expand_templates_generate_xml'    => "Voir l'arborescence XML",
 	'expand_templates_preview'         => 'Prévisualisation',
 );
 
@@ -226,14 +234,19 @@ $wgExpandTemplatesMessages['hr'] = array(
 	'expand_templates_preview'         => 'Vidi kako će izgledati',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $wgExpandTemplatesMessages['hsb'] = array(
 	'expandtemplates'                  => 'Předłohi ekspandować',
 	'expand_templates_intro'           => 'Na tutej specialnej stronje móžeš tekst zapodać a wšitke do njeje zapřijate předłohi so rekursiwnje ekspanduja. Tež funkcije parsera kaž <nowiki>{{</nowiki>#if:...}} a wariable kaž <nowiki>{{</nowiki>CURRENTDAY}} so wuhódnočeja – faktisce wšo, štož steji mjezy dwójnymaj wopušatymaj spinkomaj. To so přez zawołanje jednotliwych fazow parsera software MediaWiki stawa.',
 	'expand_templates_title'           => 'Kontekstowy titul, za {{PAGENAME}} atd.:',
 	'expand_templates_input'           => 'Tekst zapodać:',
 	'expand_templates_output'          => 'Wuslědk',
+	'expand_templates_xml_output'      => 'Wudaće XML',
 	'expand_templates_ok'              => 'Wuwjesć',
 	'expand_templates_remove_comments' => 'Komentary wotstronić',
+	'expand_templates_generate_xml'    => 'Analyzowy štom XML pokazać',
 	'expand_templates_preview'         => 'Přehlad',
 );
 
@@ -370,7 +383,7 @@ $wgExpandTemplatesMessages['lb'] = array(
 	'expand_templates_output'          => 'Resultat',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Bemierkunge läschen',
-	'expand_templates_preview'         => 'Preview',
+	'expand_templates_preview'         => 'Kucken ouni ofzespäicheren',
 );
 
 /** Limburgish (Limburgs)
@@ -494,6 +507,9 @@ $wgExpandTemplatesMessages['ru'] = array(
 	'expand_templates_preview'         => 'Предпросмотр',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $wgExpandTemplatesMessages['sk'] = array(
 	'expandtemplates'                  => 'Substituovať šablóny',
 	'expand_templates_intro'           => 'Táto špeciálna stránka prijme na
@@ -506,8 +522,10 @@ volania relevantnej fázy parsera samotného MediaWiki.',
 	'expand_templates_title'           => 'Názov kontextu pre {{PAGENAME}} atď.:',
 	'expand_templates_input'           => 'Vstupný text:',
 	'expand_templates_output'          => 'Výsledok',
-	'expand_templates_ok'              => 'OK',#identical but defined
+	'expand_templates_xml_output'      => 'XML výstup',
+	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Odstrániť komentáre',
+	'expand_templates_generate_xml'    => 'Zobraziť strom XML',
 	'expand_templates_preview'         => 'Náhľad',
 );
 

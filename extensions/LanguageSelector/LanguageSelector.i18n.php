@@ -46,6 +46,13 @@ $messages['de'] = array(
 	'languageselector-setlang' => 'setzen',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'languageselector' => 'Γλώσσα',
+);
+
 /** French (Français)
  * @author Bertrand GRONDIN
 */
@@ -65,22 +72,20 @@ $messages['hsb'] = array(
 /** Kazakh
  * @author AlefZet
 */
-$messages['kk-cyrl'] = array(
-	'languageselector' => 'Тіл',
-	'languageselector-setlang' => 'анықтау',
-);
-$messages['kk-latn'] = array(
-	'languageselector' => 'Til',
-	'languageselector-setlang' => 'anıqtaw',
-);
 $messages['kk-arab'] = array(
 	'languageselector' => 'تٸل',
 	'languageselector-setlang' => 'انىقتاۋ',
 );
-$messages['kk-kz'] = $messages['kk-cyrl'];
-$messages['kk-tr'] = $messages['kk-latn'];
-$messages['kk-cn'] = $messages['kk-arab'];
-$messages['kk'] = $messages['kk-cyrl'];
+
+$messages['kk-cyrl'] = array(
+	'languageselector' => 'Тіл',
+	'languageselector-setlang' => 'анықтау',
+);
+
+$messages['kk-latn'] = array(
+	'languageselector' => 'Til',
+	'languageselector-setlang' => 'anıqtaw',
+);
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
@@ -137,6 +142,10 @@ $messages['zh-hant'] = array(
 	'languageselector-setlang' => '設定',
 );
 
+$messages['kk-kz'] = $messages['kk-cyrl'];
+$messages['kk-tr'] = $messages['kk-latn'];
+$messages['kk-cn'] = $messages['kk-arab'];
+$messages['kk'] = $messages['kk-cyrl'];
 $messages['zh']      = $messages['zh-hans'];
 $messages['zh-cn']   = $messages['zh-hans'];
 $messages['zh-hk']   = $messages['zh-hant'];

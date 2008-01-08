@@ -509,6 +509,8 @@ $messages['sr-ec'] = array(
 	'bookinfo-result-author'    => 'Аутор:',
 	'bookinfo-result-publisher' => 'Издавач:',
 	'bookinfo-result-year'      => 'Година:',
+	'bookinfo-purchase'         => 'Купите ову књигу од $1',
+	'bookinfo-provider'         => 'Подаци из: $1',
 );
 
 $messages['stq'] = array(
@@ -595,12 +597,9 @@ $messages['zh-hant'] = array(
 	'bookinfo-provider' => '資料提供者: $1',
 );
 
-/* Chinese defaults, fallback to zh-hans or zh-hant */
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];
 $messages['zh-hk'] = $messages['zh-hant'];
 $messages['zh-sg'] = $messages['zh-hans'];
 $messages['zh-tw'] = $messages['zh-hant'];
-
-/* Cantonese default, fallback to yue */
 $messages['zh-yue'] = $messages['yue'];

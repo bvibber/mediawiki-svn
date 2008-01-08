@@ -44,6 +44,14 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Предишни ($1)',
 ),
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+'bn' => array(
+	'backforth-next' => 'পরবর্তী ($1)',
+	'backforth-prev' => 'পূর্ববর্তী ($1)',
+),
+
 'br' => array(
 	'backforth-next' => 'War-lerc\'h ($1)',
 	'backforth-prev' => 'Kent ($1)',
@@ -195,6 +203,14 @@ function efBackAndForthMessages() {
 'sk' => array(
 	'backforth-next' => 'Ďalšie ($1)',
 	'backforth-prev' => 'Predošlé ($1)',
+),
+
+/** ћирилица (ћирилица)
+ * @author Sasa Stefanovic
+ */
+'sr-ec' => array(
+	'backforth-next' => 'Следеће ($1)',
+	'backforth-prev' => 'Претходно ($1)',
 ),
 
 'stq' => array(

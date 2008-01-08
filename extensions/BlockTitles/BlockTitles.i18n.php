@@ -1,24 +1,21 @@
 <?php
+/**
+ * Internationalisation file for extension BlockTitles.
+ *
+ * @addtogroup Extensions
+ */
+
+$messages = array();
 
 /**
- * Messages file for the BlockTitles extension
- */
- 
-/**
- * Fetch extension messages
- *
- * @return array
- */
-$messages = array();
-	
-/**
- * English (Travis Derouin)
+ * English
+ * @author Travis Derouin
  */
 $messages['en'] = array(
 	'block_title_error_page_title' => 'Blocked Title',
 	'block_title_error' => 'Sorry, the title of this page is not allowed to be saved.',
 );
- 
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -61,7 +58,7 @@ $messages['de'] = array(
  */
 $messages['el'] = array(
 	'block_title_error_page_title' => 'Παρεμποδισμένος τίτλος',
-	'block_title_error'            => 'Συγγνώμη, ο τίτλος αυτού του άρθρου δεν επιτρέπεται να αποθηκευτεί.',
+	'block_title_error'            => 'Συγγνώμη, ο τίτλος αυτής της σελίδας δεν επιτρέπεται να αποθηκευτεί.',
 );
 
 /** Finnish (Suomi)
@@ -238,6 +235,14 @@ $messages['sk'] = array(
 	'block_title_error'            => 'Prepáčte, stránky s týmto názvom nie je povolené ukladať.',
 );
 
+/** ћирилица (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'block_title_error_page_title' => 'Блокиран наслов',
+	'block_title_error'            => 'Жао нам је, наслов ове странице није могуће снимити.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -256,7 +261,7 @@ $messages['sv'] = array(
 );
 
 /**
- * 
+ *
  * Cantonese (Shinjiman)
  */
 $messages['yue'] = array(
@@ -279,12 +284,10 @@ $messages['zh-hant'] = array(
 	'block_title_error_page_title' => '已封鎖的標題',		
 	'block_title_error' => '抱歉，這篇文章的標題不允許保存。',
 );
-	
-	/* Chinese defaults, fallback to zh-hans or zh-hant */
-	$messages['zh'] = $messages['zh-hans'];
-	$messages['zh-cn'] = $messages['zh-hans'];
-	$messages['zh-hk'] = $messages['zh-hant'];
-	$messages['zh-tw'] = $messages['zh-hans'];
-	$messages['zh-sg'] = $messages['zh-hant'];
-	/* Cantonese default, fallback to yue */
-	$messages['zh-yue'] = $messages['yue'];
+
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-sg'] = $messages['zh-hant'];
+$messages['zh-tw'] = $messages['zh-hans'];
+$messages['zh-yue'] = $messages['yue'];

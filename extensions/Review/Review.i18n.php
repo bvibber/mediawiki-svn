@@ -397,3 +397,11 @@ $messages['oc'] = array(
 	'review_rating'                                          => 'Evaluacion',
 	'review_comment'                                         => 'Comentari',
 );
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'review_sidebar_title' => 'Ocenianie',
+);
+

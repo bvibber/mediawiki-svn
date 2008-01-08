@@ -286,6 +286,7 @@ $wgSiteMatrixMessages['la'] = array(
 $wgSiteMatrixMessages['lb'] = array(
 	'sitematrix'          => 'Lëscht vun de Wikimedia-Wikiën',
 	'sitematrix-language' => 'Sprooch',
+	'sitematrix-project'  => 'Numm vum Projet, Interprojet-Link an Interwiki-Link',
 	'sitematrix-others'   => 'Aner Wikimedia-Projetën',
 );
 

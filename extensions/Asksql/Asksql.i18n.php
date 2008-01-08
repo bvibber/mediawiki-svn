@@ -73,6 +73,21 @@ $messages['bg'] = array(
 
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'asksql'          => 'এসকিউএল কোয়েরি',
+	'asksqltext'      => "ডাটাবেজে সরাসরি কোয়েরি করার জন্য নিচের ফর্মটি ব্যবহার করুন।
+স্ট্রিং লিটেরাল সীমায়িত করার জন্য একক উদ্ধৃতিচিহ্ন ('এ ভাবে') ব্যবহার করুন।
+এতে সার্ভারের উপর যথেষ্ট চাপ পড়তে পারে, তাই অনুগ্রহ করে কৃচ্ছ্রতার সাথে এই ফাংশনটি ব্যবহার করুন।",
+	'sqlislogged'     => 'অনুগ্রহ করে লক্ষ্য করুন যে সমস্ত কোয়েরি লগ করা হবে।',
+	'sqlquery'        => 'কোয়েরি প্রবেশ করান',
+	'querybtn'        => 'কোয়েরি জমা দিন',
+	'selectonly'      => 'শুধু-পঠনযোগ্য কোয়েরিগুলিই কেবল অনুমোদিত।',
+	'querysuccessful' => 'কোয়েরি সফল',
+);
+
 $messages['br'] = array(
 	'asksql'           => 'Reked SQL',
 	'asksqltext'       => 'Ober gant ar furmskrid a-is evit sevel ur reked war-eeun ouzh ar bank titouroù.
@@ -398,6 +413,15 @@ používajte túto funkciu s rozmyslom.",
 	'querybtn' => 'Poslať požiadavku',
 	'selectonly' => 'Sú povolené požiadavky iba na čítanie.',
 	'querysuccessful' => 'Požiadavka úspešne vykonaná',
+);
+
+/** ћирилица (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'sqlquery'        => 'Унеси упит',
+	'querybtn'        => 'Постави упит',
+	'querysuccessful' => 'Упит успешан',
 );
 
 $messages['stq'] = array(
