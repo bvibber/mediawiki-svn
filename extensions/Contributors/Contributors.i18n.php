@@ -1,17 +1,15 @@
 <?php
-
 /**
- * Internationalisation file for the Contributors extension
+ * Internationalisation file for the extension Contributors.
  *
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 
-function efContributorsMessages() {
-	$messages = array(
+$messages = array();
 
 /* English (Rob Church) */
-'en' => array(
+$messages['en'] = array(
 	'contributors' => 'Contributors',
 	'contributors-toolbox' => 'Main contributors',
 	'contributors-legend' => 'List main contributors to a page',
@@ -22,14 +20,14 @@ function efContributorsMessages() {
 	'contributors-others' => 'and $1 others',
 	'contributors-badtitle' => 'Invalid title.',
 	'contributors-nosuchpage' => 'The page $1 doesn\'t exist.',
-),
+);
 
 /** Arabic (العربية)
  * @author Mido
  * @author Meno25
  * @author Mimouni
  */
-'ar' => array(
+$messages['ar'] = array(
 	'contributors'             => 'المساهمون',
 	'contributors-toolbox'     => 'المساهمون الأساسيون',
 	'contributors-legend'      => 'اعرض المساهمين الأساسيين لصفحة',
@@ -40,12 +38,12 @@ function efContributorsMessages() {
 	'contributors-others'      => 'و $1 آخرين',
 	'contributors-badtitle'    => 'عنوان خاطئ.',
 	'contributors-nosuchpage'  => 'الصفحة $1 غير موجودة.',
-),
+);
 
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
-'bcl' => array(
+$messages['bcl'] = array(
 	'contributors'             => 'Mga kontributor',
 	'contributors-toolbox'     => 'Pangenot na mga kontributor',
 	'contributors-legend'      => 'Ilista an mga pangenot na kontributor sa artikulo',
@@ -56,23 +54,23 @@ function efContributorsMessages() {
 	'contributors-others'      => 'asin $1 iba pa',
 	'contributors-badtitle'    => 'Salang titulo.',
 	'contributors-nosuchpage'  => 'An artikulong $1 mayò man.',
-),
+);
 
 /** Bulgarian (Български)
  * @author DCLXVI
  */
-'bg' => array(
+$messages['bg'] = array(
 	'contributors-target'     => 'Заглавие:',
 	'contributors-submit'     => 'Показване',
 	'contributors-others'     => 'и $1 други',
 	'contributors-badtitle'   => 'Невалидно заглавие.',
 	'contributors-nosuchpage' => 'Страницата $1 не съществува.',
-),
+);
 
 /** Bengali (বাংলা)
  * @author Bellayet
  */
-'bn' => array(
+$messages['bn'] = array(
 	'contributors'             => 'অবদানকারী',
 	'contributors-toolbox'     => 'মূল অবদানকারী',
 	'contributors-legend'      => 'একটি নিবন্ধে মূল অবদানকারীগণের তালিকা',
@@ -83,12 +81,12 @@ function efContributorsMessages() {
 	'contributors-others'      => 'এবং আরও $1',
 	'contributors-badtitle'    => 'অসিদ্ধ শিরোনাম।',
 	'contributors-nosuchpage'  => '$1 শিরোনামের কোন নিবন্ধ নাই।',
-),
+);
 
 /** Breton (Brezhoneg)
  * @author Fulup
  */
-'br' => array(
+$messages['br'] = array(
 	'contributors'             => 'Aozerien',
 	'contributors-toolbox'     => 'Aozerien bennañ',
 	'contributors-legend'      => 'Roll an aozerien bennañ evit ur pennad',
@@ -99,13 +97,13 @@ function efContributorsMessages() {
 	'contributors-others'      => 'ha $1 all',
 	'contributors-badtitle'    => 'Titl fall.',
 	'contributors-nosuchpage'  => "N'eus ket eus ar pennad $",
-),
+);
 
 /** Catalan (Català)
  * @author SMP
  * @author Toniher
  */
-'ca' => array(
+$messages['ca'] = array(
 	'contributors'             => 'Contribuïdors',
 	'contributors-toolbox'     => 'Principals contribuïdors',
 	'contributors-legend'      => 'Llista dels principals contribuïdors en una pàgina',
@@ -116,10 +114,10 @@ function efContributorsMessages() {
 	'contributors-others'      => 'i $1 més',
 	'contributors-badtitle'    => 'El títol no és vàlid.',
 	'contributors-nosuchpage'  => 'La pàgina «$1» no existeix.',
-),
+);
 
 /* German (Raymond) */
-'de' => array(
+$messages['de'] = array(
 	'contributors' => 'Hauptautoren',
 	'contributors-toolbox' => 'Hauptautoren',
 	'contributors-legend' => 'Zeige die Hauptautoren einer Seite',
@@ -130,28 +128,28 @@ function efContributorsMessages() {
 	'contributors-others' => 'und $1 weitere',
 	'contributors-badtitle' => 'Ungültige Seite',
 	'contributors-nosuchpage' => 'Die Seite $1 ist nicht vorhanden.',
-),
+);
 
 /** Greek (Ελληνικά)
  * @author Consta
  */
-'el' => array(
+$messages['el'] = array(
 	'contributors'            => 'Συνεισφέροντες',
 	'contributors-target'     => 'Τίτλος:',
 	'contributors-badtitle'   => 'Άκυρος τίτλος.',
 	'contributors-nosuchpage' => 'Η σελίδα $1 δεν υπάρχει.',
-),
+);
 
-'ext' => array(
+$messages['ext'] = array(
 	'contributors-toolbox' => 'Prencipalis colabutaoris',
 	'contributors-target' => 'Entítulu:',
 	'contributors-submit' => 'Muestral',
 	'contributors-others-long' => 'Ai otrus $1 colabutaoris nesti artículu.',
 	'contributors-others' => 'i otrus $1',
-),
+);
 
 /* French */
-'fr' => array(
+$messages['fr'] = array(
 	'contributors' => 'Contributeurs',
 	'contributors-toolbox' => 'Principaux contributeurs',
 	'contributors-legend' => 'Lister les principaux contributeurs de l’article',
@@ -162,12 +160,12 @@ function efContributorsMessages() {
 	'contributors-others' => 'et {{PLURAL:$1|$1 autre|$1 autres}}',
 	'contributors-badtitle' => 'Titre incorrect.',
 	'contributors-nosuchpage' => 'L’article $1 n’existe pas.',
-),
+);
 
 /** Galician (Galego)
  * @author Xosé
  */
-'gl' => array(
+$messages['gl'] = array(
 	'contributors'             => 'Colaboradores',
 	'contributors-toolbox'     => 'Principais colaboradores',
 	'contributors-legend'      => 'Listaxe cos principais colaboradores dun artigo',
@@ -178,9 +176,9 @@ function efContributorsMessages() {
 	'contributors-others'      => 'e outros $1',
 	'contributors-badtitle'    => 'Título non válido.',
 	'contributors-nosuchpage'  => 'Non existe o artigo $1.',
-),
+);
 
-'hsb' => array(
+$messages['hsb'] = array(
 	'contributors' => 'Přinošowarjo',
 	'contributors-toolbox' => 'Hłowni přinošowarjo',
 	'contributors-legend' => 'Pokazaj hłownych přinošowarjow strony',
@@ -191,10 +189,10 @@ function efContributorsMessages() {
 	'contributors-others' => 'a $1 {{PLURAL:$1|druhi|druhej|druzy|druhich}}',
 	'contributors-badtitle' => 'Njepłaćiwy titl.',
 	'contributors-nosuchpage' => 'Strona $1 njeeksistuje.',
-),
+);
 
 /* Indonesian (Ivan Lanin) */
-'id' => array(
+$messages['id'] = array(
 	'contributors' => 'Kontributor utama',
 	'contributors-toolbox' => 'Kontributor utama',
 	'contributors-legend' => 'Daftar kontributor utama untuk suatu artikel',
@@ -205,10 +203,10 @@ function efContributorsMessages() {
 	'contributors-others' => 'dan $1 lainnya',
 	'contributors-badtitle' => 'Judul tidak sah.',
 	'contributors-nosuchpage' => 'Artikel $1 tidak ditemukan.',
-),
+);
 
 /* Italian (BrokenArrow) */
-'it' => array(
+$messages['it'] = array(
 	'contributors' => 'Autori',
 	'contributors-toolbox' => 'Autori principali',
 	'contributors-legend' => 'Elenca gli autori principali di una pagina',
@@ -219,10 +217,10 @@ function efContributorsMessages() {
 	'contributors-others' => 'e $1 altri',
 	'contributors-badtitle' => 'Titolo non corretto.',
 	'contributors-nosuchpage' => 'La pagina $1 non esiste.',
-),
+);
 
 /* Japanese */
-'ja' => array(
+$messages['ja'] = array(
 	'contributors' => '投稿者',
 	'contributors-toolbox' => '主な投稿者',
 	'contributors-legend' => '投稿者一覧の作成',
@@ -233,19 +231,19 @@ function efContributorsMessages() {
 	'contributors-others' => '及びその他 $1 名',
 	'contributors-badtitle' => '不正なページ名です。',
 	'contributors-nosuchpage' => 'ページ $1 は存在しません。',
-),
+);
 
 /** Kabyle (Taqbaylit)
  * @author Agurzil
  */
-'kab' => array(
+$messages['kab'] = array(
 	'contributors-target'     => 'Azwel:',
 	'contributors-submit'     => 'Ssken',
 	'contributors-nosuchpage' => 'Amagrad $1 ulac-it.',
-),
+);
 
 /* Kazakh Cyrillic (AlefZet) */
-'kk-kz' => array(
+$messages['kk-kz'] = array(
 	'contributors' => 'Үлескерлер',
 	'contributors-toolbox' => 'Басты үлескерлер',
 	'contributors-legend' => 'Мақала басты үлескерлері тізімі',
@@ -256,10 +254,10 @@ function efContributorsMessages() {
 	'contributors-others' => 'және $1 басқалар',
 	'contributors-badtitle' => 'Жарамсыз атау.',
 	'contributors-nosuchpage' => '$1 деген мақала бізде жоқ.',
-),
+);
 
 /* Kazakh Latin (AlefZet) */
-'kk-tr' => array(
+$messages['kk-tr'] = array(
 	'contributors' => 'Üleskerler',
 	'contributors-toolbox' => 'Bastı üleskerler',
 	'contributors-legend' => 'Maqala bastı üleskerleri tizimi',
@@ -270,10 +268,10 @@ function efContributorsMessages() {
 	'contributors-others' => 'jäne $1 basqalar',
 	'contributors-badtitle' => 'Jaramsız ataw.',
 	'contributors-nosuchpage' => '$1 degen maqala bizde joq.',
-),
+);
 
 /* Kazakh Arabic (AlefZet) */
-'kk-cn' => array(
+$messages['kk-cn'] = array(
 	'contributors' => 'ٷلەسكەرلەر',
 	'contributors-toolbox' => 'باستى ٷلەسكەرلەر',
 	'contributors-legend' => 'ماقالا باستى ٷلەسكەرلەرٸ تٸزٸمٸ',
@@ -284,12 +282,12 @@ function efContributorsMessages() {
 	'contributors-others' => 'جٵنە $1 باسقالار',
 	'contributors-badtitle' => 'جارامسىز اتاۋ.',
 	'contributors-nosuchpage' => '$1 دەگەن ماقالا بٸزدە جوق.',
-),
+);
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
  * @author Bangin
  */
-'ku-latn' => array(
+$messages['ku-latn'] = array(
 	'contributors'             => 'Bikarhêner',
 	'contributors-toolbox'     => 'Bikarhênerên serekî',
 	'contributors-legend'      => 'Lîsteya bikarhênerên serekî yê gotarekê',
@@ -300,18 +298,18 @@ function efContributorsMessages() {
 	'contributors-others'      => 'û $1 yên din',
 	'contributors-badtitle'    => 'Sernavekî şaş.',
 	'contributors-nosuchpage'  => 'Gotarê $2 tune ye.',
-),
+);
 
-'la' => array(
+$messages['la'] = array(
 	'contributors-target' => 'Titulus:',
 	'contributors-submit' => 'Monstrare',
 	'contributors-others' => 'et $1 alia',
-),
+);
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-'lb' => array(
+$messages['lb'] = array(
 	'contributors'             => 'Auteuren',
 	'contributors-toolbox'     => 'Haaptauteuren',
 	'contributors-legend'      => "Weist d'Haaptauteure vun enger Säit",
@@ -322,12 +320,12 @@ function efContributorsMessages() {
 	'contributors-others'      => 'a(n) $1 anerer',
 	'contributors-badtitle'    => 'Dës Säit gëtt et net.',
 	'contributors-nosuchpage'  => "D'Säit $1 gëtt et net.",
-),
+);
 
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
-'nds' => array(
+$messages['nds'] = array(
 	'contributors'             => 'Lüüd, de bidragen hebbt',
 	'contributors-toolbox'     => 'Lüüd, de wichtige Delen bidragen hebbt',
 	'contributors-legend'      => 'Lüüd oplisten, de to en Artikel bidragen hebbt',
@@ -338,13 +336,13 @@ function efContributorsMessages() {
 	'contributors-others'      => 'un $1 annere',
 	'contributors-badtitle'    => 'Titel ungüllig.',
 	'contributors-nosuchpage'  => 'Siet $1 gifft dat nich.',
-),
+);
 
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
  */
-'nl' => array(
+$messages['nl'] = array(
 	'contributors'             => 'Bijdragers',
 	'contributors-toolbox'     => 'Belangrijkste bijdragers',
 	'contributors-legend'      => 'Belangrijkste bijdragers van een pagina tonen',
@@ -355,12 +353,12 @@ function efContributorsMessages() {
 	'contributors-others'      => 'en $1 anderen',
 	'contributors-badtitle'    => 'Onjuiste titel.',
 	'contributors-nosuchpage'  => 'De pagina $1 bestaat niet.',
-),
+);
 
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-'no' => array(
+$messages['no'] = array(
 	'contributors'             => 'Bidragsytere',
 	'contributors-toolbox'     => 'Hovedbidragsytere',
 	'contributors-legend'      => 'Liste over hovedbidragsytere til en artikkel',
@@ -371,12 +369,12 @@ function efContributorsMessages() {
 	'contributors-others'      => 'og $1 andre',
 	'contributors-badtitle'    => 'Ugyldig tittel.',
 	'contributors-nosuchpage'  => 'Artikkelen $1 eksisterer ikke.',
-),
+);
 
 /** Occitan (Occitan)
  * @author Cedric31
  */
-'oc' => array(
+$messages['oc'] = array(
 	'contributors-toolbox'     => 'Contributors principals',
 	'contributors-legend'      => 'Listar los contributors principals de l’article',
 	'contributors-target'      => 'Títol:',
@@ -386,13 +384,13 @@ function efContributorsMessages() {
 	'contributors-others'      => 'e $1 autres',
 	'contributors-badtitle'    => 'Títol incorrècte.',
 	'contributors-nosuchpage'  => 'L’article $1 existís pas.',
-),
+);
 
 /** Polish (Polski)
  * @author Derbeth
  * @author Sp5uhe
  */
-'pl' => array(
+$messages['pl'] = array(
 	'contributors'             => 'Autorzy',
 	'contributors-toolbox'     => 'Główni autorzy',
 	'contributors-legend'      => 'Lista głównych autorów artykułu',
@@ -403,12 +401,12 @@ function efContributorsMessages() {
 	'contributors-others'      => 'i $1 {{PLURAL:$1|inny|innych}}',
 	'contributors-badtitle'    => 'Niepoprawny tytuł.',
 	'contributors-nosuchpage'  => 'Strona $1 nie istnieje.',
-),
+);
 
 /** Piemontèis (Piemontèis)
  * @author Bèrto 'd Sèra
  */
-'pms' => array(
+$messages['pms'] = array(
 	'contributors'             => "A l'han contribuì",
 	'contributors-toolbox'     => 'Contributor prinsipaj',
 	'contributors-legend'      => "Lista dij contributor prinsipaj a n'artìcol",
@@ -419,10 +417,10 @@ function efContributorsMessages() {
 	'contributors-others'      => "e antra $1 dj'àotri",
 	'contributors-badtitle'    => 'Tìtol nen bon',
 	'contributors-nosuchpage'  => "L'artìcol $1 a-i é pa.",
-),
+);
 
 /* Portuguese (Lugusto) */
-'pt' => array(
+$messages['pt'] = array(
 	'contributors' => 'Contribuidores',
 	'contributors-toolbox' => 'Principais contribuidores',
 	'contributors-legend' => 'Listagem dos principais contribuidores de um artigo',
@@ -433,16 +431,16 @@ function efContributorsMessages() {
 	'contributors-others' => 'e $1 outros',
 	'contributors-badtitle' => 'Título inválido.',
 	'contributors-nosuchpage' => 'O artigo $1 não existe.',
-),
+);
 
-'rm' => array(
+$messages['rm'] = array(
 	'contributors-target' => 'Titel:',
-),
+);
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */
-'ro' => array(
+$messages['ro'] = array(
 	'contributors'             => 'Contribuitori',
 	'contributors-toolbox'     => 'Contribuitori principali',
 	'contributors-legend'      => 'Afişează contribuitorii principali la un articol',
@@ -453,10 +451,10 @@ function efContributorsMessages() {
 	'contributors-others'      => 'şi alţii $1',
 	'contributors-badtitle'    => 'Titlu nevalid.',
 	'contributors-nosuchpage'  => 'Articolul $1 nu există.',
-),
+);
 
 /* Russian */
-'ru' => array(
+$messages['ru'] = array(
 	'contributors' => 'Авторы',
 	'contributors-toolbox' => 'Основные авторы',
 	'contributors-legend' => 'Формирует список основных авторов статьи',
@@ -467,10 +465,10 @@ function efContributorsMessages() {
 	'contributors-others' => 'и ещё $1 других',
 	'contributors-badtitle' => 'Ошибочное название.',
 	'contributors-nosuchpage' => 'Статья «$1» не существует.',
-),
+);
 
 /* Slovak (helix84) */
-'sk' => array(
+$messages['sk'] = array(
 	'contributors' => 'Prispievatelia',
 	'contributors-toolbox' => 'Hlavní prispievatelia',
 	'contributors-legend' => 'Zobraziť zoznam hlavných prispievateľov článku',
@@ -481,10 +479,10 @@ function efContributorsMessages() {
 	'contributors-others' => 'a $1 ďalších',
 	'contributors-badtitle' => 'Neplatný názov.',
 	'contributors-nosuchpage' => 'Článok $1 neexistuje.',
-),
+);
 
 /* Serbian default (Sasa Stefanovic) */
-'sr' => array(
+$messages['sr'] = array(
 	'contributors' => 'Доприносиоци',
 	'contributors-toolbox' => 'Главни доприносиоци',
 	'contributors-legend' => 'Списак главних доприносиоца у чланку',
@@ -495,10 +493,10 @@ function efContributorsMessages() {
 	'contributors-others' => 'и $1 других',
 	'contributors-badtitle' => 'Грешка у наслову.',
 	'contributors-nosuchpage' => 'Чланак $1 не постоји.',
-),
+);
 
 /* Serbian cyrillyc (Sasa Stefanovic) */
-'sr-ec' => array(
+$messages['sr-ec'] = array(
 	'contributors' => 'Доприносиоци',
 	'contributors-toolbox' => 'Главни доприносиоци',
 	'contributors-legend' => 'Списак главних доприносиоца у чланку',
@@ -509,10 +507,10 @@ function efContributorsMessages() {
 	'contributors-others' => 'и $1 других',
 	'contributors-badtitle' => 'Грешка у наслову.',
 	'contributors-nosuchpage' => 'Чланак $1 не постоји.',
-),
+);
 
 /* Serbian latin (Sasa Stefanovic) */
-'sr-el' => array(
+$messages['sr-el'] = array(
 	'contributors' => 'Doprinosioci',
 	'contributors-toolbox' => 'Glavni doprinosioci',
 	'contributors-legend' => 'Spisak glavnih doprinosioca u članku',
@@ -523,12 +521,12 @@ function efContributorsMessages() {
 	'contributors-others' => 'i $1 drugih',
 	'contributors-badtitle' => 'Greška u naslovu.',
 	'contributors-nosuchpage' => 'Članak $1 ne postoji.',
-),
+);
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-'stq' => array(
+$messages['stq'] = array(
 	'contributors'             => 'Haudautore',
 	'contributors-toolbox'     => 'Haudautore',
 	'contributors-legend'      => 'Wies do Haudautore fon ne Siede',
@@ -539,12 +537,12 @@ function efContributorsMessages() {
 	'contributors-others'      => 'un $1 moor',
 	'contributors-badtitle'    => 'Uungultige Siede',
 	'contributors-nosuchpage'  => 'Disse Siede $1 bestoant nit.',
-),
+);
 
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */
-'su' => array(
+$messages['su'] = array(
 	'contributors'             => 'Kontributor',
 	'contributors-toolbox'     => 'Kontributor utama',
 	'contributors-legend'      => 'Béréndélkeun kontributor utama artikel',
@@ -555,22 +553,22 @@ function efContributorsMessages() {
 	'contributors-others'      => 'sarta $1 lianna',
 	'contributors-badtitle'    => 'Judulna teu sah.',
 	'contributors-nosuchpage'  => 'Teu aya artikel $1.',
-),
+);
 
 /** Volapük (Volapük)
  * @author Malafaya
  */
-'vo' => array(
+$messages['vo'] = array(
 	'contributors'            => 'Keblünans',
 	'contributors-toolbox'    => 'Keblünans cifik',
 	'contributors-target'     => 'Tiäd:',
 	'contributors-submit'     => 'Jonolöd',
 	'contributors-others'     => 'e votik $1',
 	'contributors-nosuchpage' => 'Pad: $1 no dabinon.',
-),
+);
 
 /* Cantonese (Shinjiman) */
-'yue' => array(
+$messages['yue'] = array(
 	'contributors' => '貢獻者',
 	'contributors-toolbox' => '主要貢獻者',
 	'contributors-legend' => '列示呢篇文章嘅主要貢獻者',
@@ -581,10 +579,10 @@ function efContributorsMessages() {
 	'contributors-others' => '以及另外$1位',
 	'contributors-badtitle' => '唔正確嘅標題。',
 	'contributors-nosuchpage' => '文章$1唔存在。',
-),
+);
 
 /* Chinese (Simplified) (Shinjiman) */
-'zh-hans' => array(
+$messages['zh-hans'] = array(
 	'contributors' => '贡献者',
 	'contributors-toolbox' => '主要贡献者',
 	'contributors-legend' => '列示这篇条目的主要贡献者',
@@ -595,10 +593,10 @@ function efContributorsMessages() {
 	'contributors-others' => '以及另外$1位',
 	'contributors-badtitle' => '不正确的标题。',
 	'contributors-nosuchpage' => '条目$1不存在。',
-),
+);
 
 /* Chinese (Traditional) (Shinjiman) */
-'zh-hant' => array(
+$messages['zh-hant'] = array(
 	'contributors' => '貢獻者',
 	'contributors-toolbox' => '主要貢獻者',
 	'contributors-legend' => '列示這篇條目的主要貢獻者',
@@ -609,20 +607,12 @@ function efContributorsMessages() {
 	'contributors-others' => '以及另外$1位',
 	'contributors-badtitle' => '不正確的標題。',
 	'contributors-nosuchpage' => '條目$1不存在。',
-),
+);
 
-	);
-
-	/* Kazakh default, fallback to kk-kz */
-	$messages['kk'] = $messages['kk-kz'];
-	/* Chinese defaults, fallback to zh-hans or zh-hant */
-	$messages['zh'] = $messages['zh-hans'];
-	$messages['zh-cn'] = $messages['zh-hans'];
-	$messages['zh-hk'] = $messages['zh-hant'];
-	$messages['zh-tw'] = $messages['zh-hans'];
-	$messages['zh-sg'] = $messages['zh-hant'];
-	/* Cantonese default, fallback to yue */
-	$messages['zh-yue'] = $messages['yue'];
-
-	return $messages;
-}
+$messages['kk'] = $messages['kk-kz'];
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-sg'] = $messages['zh-hant'];
+$messages['zh-tw'] = $messages['zh-hans'];
+$messages['zh-yue'] = $messages['yue'];

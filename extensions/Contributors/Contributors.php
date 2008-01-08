@@ -6,46 +6,47 @@
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
- 
+
 if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'efContributors';
 	$wgExtensionCredits['specialpage'][] = array(
 		'name' => 'Contributors',
+		'version' => '1.0.1beta',
 		'author' => 'Rob Church',
 		'description' => 'Summarises the main contributors to an article',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Contributors',
 	);
-	
+
+	$wgExtensionMessagesFiles['Contributors'] = dirname(__FILE__) . '/Contributors.i18n.php';
 	$wgAutoloadClasses['SpecialContributors'] = dirname( __FILE__ ) . '/Contributors.page.php';
 	$wgSpecialPages['Contributors'] = 'SpecialContributors';
-	
+
 	/**
 	 * Intelligent cut-off limit; see below
 	 */
 	$wgContributorsLimit = 10;
-	
+
 	/**
 	 * After $wgContributorsLimit is reach, contributors with less than this
 	 * number of edits to a page won't be listed in normal or inclusion lists
 	 */
 	$wgContributorsThreshold = 2;
-	
+
 	/**
 	 * Extension initialisation function
 	 */
 	function efContributors() {
-		global $wgMessageCache, $wgHooks;
-		require_once( dirname( __FILE__ ) . '/Contributors.i18n.php' );
-		foreach( efContributorsMessages() as $lang => $messages )
-			$wgMessageCache->addMessages( $messages, $lang );
+		global $wgHooks;
+
+		wfLoadExtensionMessages( 'Contributors' );
 		$wgHooks['ArticleDeleteComplete'][] = 'efContributorsInvalidateCache';
 		$wgHooks['ArticleSaveComplete'][] = 'efContributorsInvalidateCache';
 		# Good god, this is ludicrous!
 		$wgHooks['SkinTemplateBuildNavUrlsNav_urlsAfterPermalink'][] = 'efContributorsNavigation';
 		$wgHooks['MonoBookTemplateToolboxEnd'][] = 'efContributorsToolbox';
 	}
-	
+
 	/**
 	 * Invalidate the cache we saved for a given title
 	 *
@@ -54,10 +55,10 @@ if( defined( 'MEDIAWIKI' ) ) {
 	function efContributorsInvalidateCache( &$article ) {
 		global $wgMemc;
 		$wgMemc->delete( wfMemcKey( 'contributors', $article->getId() ) );
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * Prepare the toolbox link
 	 */
