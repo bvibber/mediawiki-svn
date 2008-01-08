@@ -211,6 +211,14 @@ function wfSpecialImportFreeImages( $par )
 		$u->mRemoveTempFile = true;
 		$u->mIgnoreWarning =  true;
         $u->mOname = $filename;
+
+		// 1.11+ comptabibility
+		$u->mTempPath = $name;
+		$u->mFileSize = $size;
+		$u->mSrcName = $filename;
+		$u->mRemoveTempFile = true;
+		$u->mIgnoreWarning = true;
+
 		$t = Title::newFromText($filename, NS_IMAGE);
 		if ($t->getArticleID() > 0) {
 			$sk = $wgUser->getSkin();
