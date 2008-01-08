@@ -45,7 +45,13 @@ class MV_StreamImage{
 	 * 		(to support javascript applications that adjust the time parameter for retrieving thumbnails)
 	 */
 	function getStreamImageURL($stream_id, $req_time=null, $req_size=null, $directLink=false){
-		global $wgScript,  $mvWebImgLoc, $mvLocalImgLoc;
+		global $wgScript,  $mvWebImgLoc, $mvLocalImgLoc,$mvExternalImages;
+		//check global external image prefrence: 
+		if($mvExternalImages){
+			global $mvExternalImgServerPath;		
+			return $mvExternalImgServerPath . '?action=ajax&rs=mv_frame_server&stream_id='.$stream_id.'&t='.$req_time.'&size='.$req_size;
+		}
+		
 		//by default return a non-direct link so that javascript can modify the url to get new images
 		if(!$directLink){
 			return $wgScript.'?action=ajax&rs=mv_frame_server&stream_id='.$stream_id.'&t='.$req_time.'&size='.$req_size;

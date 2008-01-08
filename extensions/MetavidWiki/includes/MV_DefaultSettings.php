@@ -25,6 +25,12 @@ include_once('MV_GlobalFunctions.php');
 
 //define the image location:
 //$mvImageWebLoc ='http://metavid.ucsc.edu/image_media/';
+
+//if we should load images from an external server:  
+$mvExternalImages = false;
+//path to metavidWiki install that is serving images: 
+$mvExternalImgServerPath = 'http://mvprime.cse.ucsc.edu/wiki/index.php';
+
 $mvWebImgLoc = $mvgScriptPath . '/stream_images';
 //full local path for images (if hosted locally) 
 $mvLocalImgLoc = $mvgIP . '/stream_images'; 
