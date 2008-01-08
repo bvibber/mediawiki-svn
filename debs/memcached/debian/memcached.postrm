@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ "$1" = "purge" ] 
+	then
+		rm -f /etc/memcached.conf
+fi
+
+	rm -f /var/run/memcached.pid
+
+#DEBHELPER#

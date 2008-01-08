@@ -1,0 +1,3 @@
+version=2
+http://www.danga.com/memcached/dist/memcached-([0-9].*)\.tar.gz \
+ debian uupdate

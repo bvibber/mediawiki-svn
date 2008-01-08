@@ -1,0 +1,13 @@
+This package was debianized by Jay Bonci <jaybonci@debian.org> on
+Wed, 15 Oct 2003 15:53:51 -0400.
+
+It was downloaded from http://www.danga.com/memcached
+
+Upstream Author: Brad Fitzpatrick and Danga Interactive <brad@danga.com>
+
+Copyright:
+
+The server is licensed under the BSD-style license. The full text of which
+may be found on a Debian GNU/Linux system in:
+
+/usr/share/common-licenses/BSD
