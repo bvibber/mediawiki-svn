@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Internationalisation file for Asksql extension
  *
@@ -9,7 +8,9 @@
 
 $messages = array();
 
-/* English (Rob Church) */
+/* English
+ * @author Rob Church
+ */
 $messages['en'] = array(
 	'asksql' => 'SQL query',
 	'asksqltext' => "Use the form below to make a direct query of the
@@ -123,7 +124,9 @@ $messages['fi'] = array(
 	'querysuccessful'  => 'Kysely onnistui',
 );
 
-/*French (Bertrand Grondin) */
+/* French
+ * @author Bertrand Grondin
+ */
 $messages['fr'] = array(
 	'asksql' => 'Requête SQL',
 	'asksqltext' => "Utilisez ce formulaire pour faire une requête directe dans la base de donnée.
@@ -212,7 +215,9 @@ az eszközt.",
 	'querysuccessful' => 'Lekérdezés sikeresen megtörtént',
 );
 
-/* Indonesian (Ivan Lanin) */
+/* Indonesian
+ * @author Ivan Lanin
+ */
 $messages['id'] = array(
 	'asksql' => 'Kueri SQL',
 	'asksqltext' => "Gunakan isian berikut untuk melakukan kueri langsung ke basis data. Gunakan kutip tunggal ('seperti ini') untuk membatasi literal string. Hal ini cukup membebani server, jadi gunakanlah fungsi ini secukupnya.",
@@ -233,7 +238,9 @@ $messages['is'] = array(
 	'querysuccessful'  => 'Fyrirspurn heppnaðist',
 );
 
-/* Italian (BrokenArrow) */
+/* Italian
+ * @author BrokenArrow
+ */
 $messages['it'] = array(
 	'asksql' => 'Query SQL',
 	'asksqltext' => "Il modulo riportato di seguito consente di eseguire interrogazioni dirette sul database.
@@ -295,7 +302,9 @@ Dit kan zorgen voor zware belasting van de server, gebruik deze functie dus spaa
 	'querysuccessful'  => 'Zoekopdracht uitgevoerd',
 );
 
-/* Norwegian (Jon Harald Søby) */
+/* Norwegian
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
 	'asksql'           => 'SQL-spørring',
 	'asksqltext'       => 'Bruk skjemaet under for å foreta en direkte spørring av databasen. Bruk enkle anførselstegn (\'som dette\') for å merke strenger. Dette kan putte press på tjenerytelsen, så bruk funksjonen med varsomhet.',
@@ -327,7 +336,9 @@ $messages['pl'] = array(
 	'querysuccessful'  => 'Zapytanie zakończone powodzeniem',
 );
 
-/* Piedmontese (Bèrto 'd Sèra) */
+/* Piedmontese
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
 	'asksql'           => 'Operassion SQL',
 	'asksqltext'       => 'Ch\'a dòvra ël quàder ëd domanda ambelessì sota për fé dj\'operassion bele drita ant sla base dat.
@@ -352,7 +363,9 @@ Esta função frequentemente adiciona uma carga considerável ao servidor, por i
 	'querysuccessful'  => 'Consulta com sucesso',
 );
 
-/* Romanian (KlaudiuMihăilă) */
+/* Romanian
+ * @author KlaudiuMihăilă
+ */
 $messages['ro'] = array(
 	'asksql'           => 'Interogare SQL',
 	'asksqltext'       => 'Folosiţi formularul de mai jos pentru a face o interogare în mod direct asupra bazei de date.
@@ -365,7 +378,9 @@ Această opţiune încarcă de obicei serverul, deci vă rugăm să o folosiţi 
 	'querysuccessful'  => 'Interogare terminată cu succes',
 );
 
-/* Russian (Alexander Sigachov) */
+/* Russian
+ * @author Alexander Sigachov
+ */
 $messages['ru'] = array(
 	'asksql' => 'SQL-запрос',
 	'asksqltext' => "Данную форму можно использовать для прямых запросов к базе данных.
@@ -392,7 +407,7 @@ $messages['scn'] = array(
 	'asksql'           => 'Query SQL',
 	'asksqltext'       => 'Lu mòdulu riportatu ccà sutta cunzenti di esequiri query diretti supra lu databbasi.
 Usari apici singuli (\'comu chisti\') pi nnicari li stringhi costanti.
-Chista funzioni pò èssiri moltu pisanti pô server, pirciò 
+Chista funzioni pò èssiri moltu pisanti pô server, pirciò
 si prega di usàrila cu giudizziu.',
 	'sqlislogged'      => 'Accura: tutti li query vennu arriggistrati.',
 	'sqlquery'         => 'Nzeriri la query',
@@ -401,7 +416,9 @@ si prega di usàrila cu giudizziu.',
 	'querysuccessful'  => 'Query esequita currittamenti',
 );
 
-/* Slovak (helix84) */
+/* Slovak
+ * @author helix84
+ */
 $messages['sk'] = array(
 	'asksql' => 'SQL požiadavka',
 	'asksqltext' => "Použite tento formulár na zadanie priamej požiadavky do databázy.
@@ -436,7 +453,9 @@ Dit kon oafte dän Server oarich beläästigje, bruuk dät deeruum spoarsoam.',
 	'querysuccessful'  => 'Oufroage glukked',
 );
 
-/* Sundanese (Kandar via BetaWiki) */
+/* Sundanese
+ * @author Kandar
+ */
 $messages['su'] = array(
 	'asksql'           => 'Pamundut SQL',
 	'asksqltext'       => 'Paké pormulir di handap ieu pikeun mundut langsung ti pangkalan data. Paké curek tunggal (\'kawas kieu\') pikeun ngawatesan string nu dimaksud. Hal ieu bisa ngabeungbeuratan ka server, ku kituna mangga anggo saperluna.',
@@ -449,7 +468,7 @@ $messages['su'] = array(
 
 $messages['sv'] = array(
 	'asksql'           => 'SQL-fråga',
-	'asksqltext'       => 'Använd nedanstående formulär för att ställa en direkt fråga till databasen. 
+	'asksqltext'       => 'Använd nedanstående formulär för att ställa en direkt fråga till databasen.
 Använd enkla citationstecken (\'så här\') för att avgränsa textsträngar.
 Detta kan leda till väsentlig belastning av servern, så använd denna funktion med måtta.',
 	'sqlislogged'      => 'Observera att alla frågor loggförs.',
@@ -459,7 +478,9 @@ Detta kan leda till väsentlig belastning av servern, så använd denna funktion
 	'querysuccessful'  => 'Frågan lyckades',
 );
 
-/* Cantonese (Shinjiman) */
+/* Cantonese
+ * @author Shinjiman
+ */
 $messages['yue'] = array(
 	'asksql' => 'SQL查詢',
 	'asksqltext' => "使用下面嘅表可以直接查詢數據庫。
@@ -472,7 +493,10 @@ $messages['yue'] = array(
 	'querysuccessful' => '查詢完成',
 );
 
-/* Chinese (Simplified) (Formulax, Shizhao) */
+/* Chinese (Simplified)
+ * @author Formulax
+ * @author Shizhao
+ */
 $messages['zh-hans'] = array(
 	'asksql' => 'SQL查询',
 	'asksqltext' => "使用下面的表单可以直接查询数据库。
@@ -485,7 +509,10 @@ $messages['zh-hans'] = array(
 	'querysuccessful' => '查询完成',
 );
 
-/* Chinese (Traditional) (Shinjiman, Vipuser) */
+/* Chinese (Traditional)
+ * @author Shinjiman
+ * @author Vipuser
+ */
 $messages['zh-hant'] = array(
 	'asksql' => 'SQL查詢',
 	'asksqltext' => "使用下面的表單可以直接查詢數據庫。
@@ -498,12 +525,9 @@ $messages['zh-hant'] = array(
 	'querysuccessful' => '查詢完成',
 );
 
-
-	/* Chinese defaults, fallback to zh-hans or zh-hant */
-	$messages['zh'] = $messages['zh-hans'];
-	$messages['zh-cn'] = $messages['zh-hans'];
-	$messages['zh-hk'] = $messages['zh-hant'];
-	$messages['zh-tw'] = $messages['zh-hans'];
-	$messages['zh-sg'] = $messages['zh-hant'];
-	/* Cantonese default, fallback to yue */
-	$messages['zh-yue'] = $messages['yue'];
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-tw'] = $messages['zh-hans'];
+$messages['zh-sg'] = $messages['zh-hant'];
+$messages['zh-yue'] = $messages['yue'];
