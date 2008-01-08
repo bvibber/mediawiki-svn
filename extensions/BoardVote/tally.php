@@ -21,7 +21,7 @@ $outfile = tempnam( "/tmp", "gpg" );
 
 foreach ( $entries as $entry ) {
 	$entry = trim( $entry.$end );
-	
+
 	if ( $entry == $end ) {
 		continue;
 	}
@@ -48,7 +48,7 @@ arsort( $tally );
 foreach ( $tally as $candidate => $count ) {
 	printf( "%-30s%d\n", $candidate, $count );
 }
-	
+
 
 #-----------------------------------------------------------
 
@@ -61,5 +61,3 @@ function process_line( $line )
 	}
 	return $set;
 }
-
-

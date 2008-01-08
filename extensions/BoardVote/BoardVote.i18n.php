@@ -5,9 +5,9 @@
  * @addtogroup Extensions
 */
 
-$wgBoardVoteMessages = array();
+$messages = array();
 
-$wgBoardVoteMessages['en'] = array(
+$messages['en'] = array(
 	'boardvote'               => "Wikimedia Board of Trustees election",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vote]]
 * [[Special:Boardvote/list|List votes to date]]
@@ -87,7 +87,7 @@ You will be redirected to this external server in 20 seconds. [$1 Click here] to
 A security warning about an unsigned certificate may be displayed.',
 );
 
-$wgBoardVoteMessages['af'] = array(
+$messages['af'] = array(
 	'boardvote'               => 'Wikimedia-Trusteeraadverkiesing',
 	'boardvote_time'          => 'Tyd',
 	'boardvote_user'          => 'Gebruiker',
@@ -98,12 +98,12 @@ $wgBoardVoteMessages['af'] = array(
 	'boardvote_welcome'       => 'Welkom \'\'\'$1\'\'\'!',
 );
 
-$wgBoardVoteMessages['ang'] = array(
+$messages['ang'] = array(
 	'boardvote_user'          => 'Brūcend',
 );
 
 /* Arabic (Meno25) */
-$wgBoardVoteMessages['ar'] = array(
+$messages['ar'] = array(
 	'boardvote'               => 'انتخابات مجلس أمناء ويكيميديا',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|صوت]]
 * [[Special:Boardvote/list|عرض الأصوات لغاية اليوم]]
@@ -126,7 +126,7 @@ $wgBoardVoteMessages['ar'] = array(
 <li><a href="http://meta.wikipedia.org/wiki/Election_FAQ_2006" class="external">أسئلة متكررة حول الانتخابات</a></li>
 <li><a href="http://meta.wikipedia.org/wiki/Election_Candidates_2006" class="external">المرشحين</a></li>
 </ul>',
-	'boardvote_intro_change'  => '<p>لقد قمت بالتصويت من قبل. إذا أردت تغيير صوتك، من الممكن عمل ذلك باستخدام الاستمارة التالية. 
+	'boardvote_intro_change'  => '<p>لقد قمت بالتصويت من قبل. إذا أردت تغيير صوتك، من الممكن عمل ذلك باستخدام الاستمارة التالية.
 يرجى وضع إشارة في الصندوق بجانب المرشح الذي تود التصويت له.</p>',
 	'boardvote_entered'       => 'شكرا لك، لقد تم اعتماد صوتك.
 
@@ -179,24 +179,24 @@ $wgBoardVoteMessages['ar'] = array(
  * @author SPQRobin
  * @author Esbardu
  */
-$wgBoardVoteMessages['ast'] = array(
+$messages['ast'] = array(
 	'boardvote'              => "Eleiciones pal Conseyu d'Alministración de Wikimedia (Board of Trustees)",
 	'boardvote_entry'        => "* [[Special:Boardvote/vote|Votar]]
 * [[Special:Boardvote/list|Llista de votos hasta la fecha]]
 * [[Special:Boardvote/dump|Volcáu de datos encriptaos d'eleición]]",
-	'boardvote_intro'        => "<p>Bienveníu a la segunda eleición pal Conseyu d'Alministración de Wikimedia. 
-Tamos votando pa que dos persones representen a la comunidá d'usuarios de 
-los distintos proyectos Wikimedia. Ellos aidarán a determinar la direición 
-futura que los proyectos Wikimedia van siguir, en forma individual y en grupu, 
-y representen los <em>tos</em> intereses y esmoliciones hacia'l Conseyu d'Alministración. 
+	'boardvote_intro'        => "<p>Bienveníu a la segunda eleición pal Conseyu d'Alministración de Wikimedia.
+Tamos votando pa que dos persones representen a la comunidá d'usuarios de
+los distintos proyectos Wikimedia. Ellos aidarán a determinar la direición
+futura que los proyectos Wikimedia van siguir, en forma individual y en grupu,
+y representen los <em>tos</em> intereses y esmoliciones hacia'l Conseyu d'Alministración.
 Ellos decidirán les formes de xenerar ingresos y la destinación de los mesmos.</p>
 
 <p>Por favor, llei con procuru les declaraciones y rempuestes de los candidatos
-enantes de votar. Caún de los candidatos ye un usuariu respetáu que contribuyó 
-con munchu esfuerzu y tiempu pa facer d'estos proyectos un llugar afayadizu 
+enantes de votar. Caún de los candidatos ye un usuariu respetáu que contribuyó
+con munchu esfuerzu y tiempu pa facer d'estos proyectos un llugar afayadizu
 col enfotu de distribuyir llibremente'l conocimientu humanu.</p>
 
-<p>Pues votar por tolos candidatos que quieras. El candidatu con más votos en cada 
+<p>Pues votar por tolos candidatos que quieras. El candidatu con más votos en cada
 posición sedrá declaráu'l ganador d'esa posición. En casu d'empate, llevaráse a
 cabu una eleición de desempate.</p>
 
@@ -216,7 +216,7 @@ Encriptóse cola clave pública de los Alministradores de la Eleición:
 
 <pre>$2</pre>
 
-A continuación amuésase la versión encriptada resultante. Va ser publicada en [[Special:Boardvote/dump]]. 
+A continuación amuésase la versión encriptada resultante. Va ser publicada en [[Special:Boardvote/dump]].
 
 <pre>$3</pre>
 
@@ -251,7 +251,7 @@ Vas ser redirixíu a esti servidor esternu en 20 segundos. [$1 Calca equí] pa d
 Podría apaecer un avisu de seguridá tocante a un certificáu non firmáu.",
 );
 
-$wgBoardVoteMessages['bcl'] = array(
+$messages['bcl'] = array(
 	'boardvote_novotes'       => 'Mayô pang naboto.',
 	'boardvote_time'          => 'Oras',
 	'boardvote_user'          => 'Parágamit',
@@ -268,7 +268,7 @@ $wgBoardVoteMessages['bcl'] = array(
  * @author DCLXVI
  * @author Spiritia
  */
-$wgBoardVoteMessages['bg'] = array(
+$messages['bg'] = array(
 	'boardvote'              => 'Избори за борда на Фондация Уикимедия',
 	'boardvote_intro_change' => '<p>Вие вече сте гласували. Ако желаете, обаче, можете да промените вота си, като използвате формата по-долу. Отбележете кутийките срещу имената на всички кандидати, които одобрявате.</p>',
 	'boardvote_notloggedin'  => 'Не сте влезли в системата. За да гласувате, трябва да използвате сметка с най-малко $1 приноса към $2, като първата ви редакция е отпреди $3.',
@@ -286,7 +286,7 @@ $wgBoardVoteMessages['bg'] = array(
 	'boardvote_welcome'      => "Здравейте, '''$1'''!",
 );
 
-$wgBoardVoteMessages['br'] = array(
+$messages['br'] = array(
 	'boardvote'               => 'Dilennadeg Kuzul-merañ Diazezadur Wikimedia',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Vot]]
 * [[Special:Boardvote/list|Roll ar mouezhioù evit poent]]
@@ -339,7 +339,7 @@ Adkaset e viot war-du ar servijer diavaez-se a-benn 20 eilenn. [$1 Klikañ amañ
 Ur c\'hemenn surentez diwall a-zivout un testeni disin a c\'hallo dont war wel marteze.',
 );
 
-$wgBoardVoteMessages['ca'] = array(
+$messages['ca'] = array(
 	'boardvote'               => 'Eleccions al Consell d\'Administració de la Fundació Wikimedia',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Voteu]]
 * [[Special:Boardvote/list|Llista de vots emesos]]
@@ -360,7 +360,7 @@ D\'aquí 20 segons sereu redirigit a aquesta pàgina. [$1 Cliqueu aquí] per ana
 Tingueu en compte que us pot aparèixer un avís de certificat de seguretat.',
 );
 
-$wgBoardVoteMessages['cdo'] = array(
+$messages['cdo'] = array(
 	'boardvote_time'          => "Sì-găng",
 	'boardvote_user'          => "Ê̤ṳng-hô",
 	'boardvote_edits'         => "Siŭ-gāi",
@@ -368,13 +368,13 @@ $wgBoardVoteMessages['cdo'] = array(
 	'boardvote_submit'        => 'Hō̤',
 );
 
-$wgBoardVoteMessages['co'] = array(
+$messages['co'] = array(
 	'group-boardvote'         => 'Cummissione eletturale',
 	'group-boardvote-member'  => 'Cummissariu eletturale',
 	'grouppage-boardvote'     => '{{ns:project}}:Cummissarii eletturali',
 );
 
-$wgBoardVoteMessages['cs'] = array(
+$messages['cs'] = array(
 	'boardvote'               => "Volby do Správní rady nadace Wikimedia",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Hlasovat]]
 * [[Special:Boardvote/list|Seznam již hlasujících]]
@@ -387,7 +387,7 @@ $wgBoardVoteMessages['cs'] = array(
 
 <p>Můžete hlasovat pro libovolně mnoho kandidátů. Tři kandidáti, kteří bude mít nejvíce hlasů, bude do této pozice zvoleni. V případě shody bude pořádáno druhé kolo hlasování.</p>
 
-<p>Pamatujte, že můžete hlasovat jen jednou. I pokud máte více než 400 editací na více projektech, tak to neznamená, že máte právo volit dvakrát. Pokud se později rozhodnete změnit své hlasy, učiňte tak na projektu, kde jste hlasování provedl(a) předtím.</p> 
+<p>Pamatujte, že můžete hlasovat jen jednou. I pokud máte více než 400 editací na více projektech, tak to neznamená, že máte právo volit dvakrát. Pokud se později rozhodnete změnit své hlasy, učiňte tak na projektu, kde jste hlasování provedl(a) předtím.</p>
 
 <p>Další informace (anglicky a v dalších jazycích) najdete na následujících stránkách:</p> <ul><li><a href="http://meta.wikipedia.org/wiki/Board_elections/2007/FAQ" class="external">Často kladené otázky o hlasování</a></li> <li><a href="http://meta.wikipedia.org/wiki/Board_elections/2007/Candidates/cs" class="external">Kandidáti</a></li></ul>
 </blockquote>',
@@ -434,7 +434,7 @@ Výsledná šifrovaná podoba následuje. Bude veřejně dostupná na stránce [
 	'boardvote_blocked'       => 'Je nám líto, ale na své wiki jste zablokován. Zablokovaní uživatelé nemohou hlasovat.',
 	'boardvote_welcome'       => "Vítáme uživatele '''$1'''!",
 );
-$wgBoardVoteMessages['de'] = array(
+$messages['de'] = array(
 	'boardvote'               => "Wahlen zum Wikimedia-Kuratorium",
 	'boardvote_entry'         => "* [[meta:Board elections/2007/Candidates/de|Kandidatenvorstellungen]]
 * [[{{ns:special}}:Boardvote/vote|Abstimmen]]
@@ -509,12 +509,12 @@ Eine Sicherheitswarnung über ein unsigniertes Zertifikat kann angezeigt werden.
 /** Zazaki (Zazaki)
  * @author SPQRobin
  */
-$wgBoardVoteMessages['diq'] = array(
+$messages['diq'] = array(
 	'boardvote_user' => 'Karber',
 
 );
 
-$wgBoardVoteMessages['el'] = array(
+$messages['el'] = array(
 	'boardvote_novotes'       => 'Κανείς δεν έχει ψηφίσει ακόμη.',
 	'boardvote_user'          => 'Χρήστης',
 	'boardvote_edits'         => 'Επεξεργασίες',
@@ -530,14 +530,14 @@ $wgBoardVoteMessages['el'] = array(
 
 Μπορεί να εμφανιστεί μια προειδοποίηση ασφάλειας για ένα μη επικυρωμένο πιστοποιητικό.',
 );
-$wgBoardVoteMessages['es'] = array(
+$messages['es'] = array(
 	'boardvote_redirecting'   => 'Para mejorar la seguridad y la transparencia, la votación se está realizando en un servidor externo y controlado independientemente.
 
 Serás redireccionado a este servidor externo en 20 segundos. [$1 Haz click aquí] para ir ahora.
 
 Un aviso de seguridad sobre un certificado no cifrado podría aparacer.',
 );
-$wgBoardVoteMessages['eu'] = array(
+$messages['eu'] = array(
 	'boardvote'               => 'Wikimediaren Administrazio Kontseiluaren aukeraketa',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Bozkatu]]
 * [[Special:Boardvote/list|Orain arteko botuen zerrenda]]
@@ -570,7 +570,7 @@ Publikoki erakutsiko da [[Special:Boardvote/dump]] orrialdean.
 	'boardvote_edits_many'    => 'hainbat',
 	'boardvote_welcome'       => 'Ongi etorri \'\'\'$1\'\'\'!',
 );
-$wgBoardVoteMessages['ext'] = array(
+$messages['ext'] = array(
 	'boardvote_novotes'       => 'Naidi á votau entovia.',
 	'boardvote_time'          => 'Ora',
 	'boardvote_user'          => 'Usuáriu',
@@ -581,25 +581,25 @@ $wgBoardVoteMessages['ext'] = array(
 );
 
 # فارسی (Huji)
-$wgBoardVoteMessages['fa'] = array(
+$messages['fa'] = array(
 	'boardvote'              => 'انتخابات هیئت امنای ویکی‌مدیا',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|رای دادن]]
 * [[Special:Boardvote/list|فهرست آرا تا کنون]]
 * [[Special:Boardvote/dump|فهرست رمزنگاری‌شده آرا]]',
 	'boardvote_intro'        => '<p>به دومین انتخابات هیئت امنای ویکی‌مدیا خوش آمدید.
-ما برای انتخاب دو نفر به عنوان نماینده جامعه کاربران 
+ما برای انتخاب دو نفر به عنوان نماینده جامعه کاربران
 پروژه‌های مختلف ویکی‌مدیا رای می‌دهیم. آن‌ها در تعیین جهت‌گیری‌های
-بعدی پروژه‌های ویکی مدیا، به تنهایی و به عنوان یک گروه، کمک می‌کنند 
+بعدی پروژه‌های ویکی مدیا، به تنهایی و به عنوان یک گروه، کمک می‌کنند
 و نمایندهٔ علایق و نگرانی‌های <em>شما</em> هستند. آن‌ها در مورد راه‌های کسب
 درآمد و صرف آن برای ویکی‌مدیا تصمیم می‌گیرند.</p>
 
-<p>لطفاً قبل از رای‌دادن اظهارات هر نماینده و پاسخ‌هایش به پرسش‌ها را 
-با دقت بخوانید. هر یک از نماینده‌ها یک فرد محترم است، که زمان و انرژی 
+<p>لطفاً قبل از رای‌دادن اظهارات هر نماینده و پاسخ‌هایش به پرسش‌ها را
+با دقت بخوانید. هر یک از نماینده‌ها یک فرد محترم است، که زمان و انرژی
 زیادی را صرف تبدیل این پروژه‌ها به محیطی گرم که متعهد به جمع‌آوری و عرضه
 آزاد دانش بشری هستند، کرده‌است.</p>
 
-<p>شما می‌توانید به هر تعداد نامزد که می‌خواهید رای بدهید. نامزدی که 
-بیشترین آرا را برای هر مقام کسب کند برندهٔ آن مقام محسوب می‌شود. اگر 
+<p>شما می‌توانید به هر تعداد نامزد که می‌خواهید رای بدهید. نامزدی که
+بیشترین آرا را برای هر مقام کسب کند برندهٔ آن مقام محسوب می‌شود. اگر
 تعداد آرای چند نامزد برابر شد، رای‌گیری دیگری برای آن‌ها انجام خواهد شد.</p>
 
 <p>برای اطلاع بیشتر، به نشانی‌های زیر مراجعه کنید:</p>
@@ -650,7 +650,7 @@ $wgBoardVoteMessages['fa'] = array(
 	'boardvote_blocked'      => 'متاسفانه دسترسی شما در ویکی مورد نظر قطع شده‌است. کاربرانی که دسترسی‌شان قطع شده اجازه رای دادن ندارند.',
 	'boardvote_welcome'      => "'''$1''' خوش‌آمدید!",
 	'go_to_board_vote'       => 'انتخابات سال ۲۰۰۷ هیئت امنای ویکی‌مدیا',
-	'boardvote_redirecting'  => 'برای افزایش امینت و شفافیت، ما رای‌گیری را روی یک کارگزار 
+	'boardvote_redirecting'  => 'برای افزایش امینت و شفافیت، ما رای‌گیری را روی یک کارگزار
 خارجی که به طور مستقل اداره می‌شود انجام می‌دهیم.
 
 شما ظرف ۲۰ ثانیه به کارگزار خارجی هدایت می‌شود. برای این که الآن به آن‌جا بروید [$1 این‌جا کلیک کنید].
@@ -664,7 +664,7 @@ $wgBoardVoteMessages['fa'] = array(
  * @author Nike
  * @author Str4nd
  */
-$wgBoardVoteMessages['fi'] = array(
+$messages['fi'] = array(
 	'boardvote'              => 'Wikimedian johtokunnan valtuutettujen vaalit',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Äänestä]]
 * [[Special:Boardvote/list|Listaa tähänastiset äänet]]
@@ -691,14 +691,14 @@ $wgBoardVoteMessages['fi'] = array(
 	'go_to_board_vote'       => 'Wikimedian johtokunnan valtuutettujen vaalit 2007',
 );
 
-$wgBoardVoteMessages['fo'] = array(
+$messages['fo'] = array(
 	'boardvote_user'          => 'Brúkari',
 	'boardvote_edits'         => 'Rættingar',
 	'boardvote_days'          => 'Dagar',
 	'boardvote_dumplink'      => 'Trýst her',
 	'boardvote_welcome'       => 'Vælkomin \'\'\'$1\'\'\'!',
 );
-$wgBoardVoteMessages['fr'] = array(
+$messages['fr'] = array(
 	'boardvote'               => "Élections au conseil d’administration de la Wikimedia Foundation",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vote]]
 * [[Special:Boardvote/list|Liste des votes enregistrés]]
@@ -770,7 +770,7 @@ Un avertissement concernant un certificat non signé sera peut-être affiché.',
 /** Franco-Provençal (Arpetan)
  * @author ChrisPtDe
  */
-$wgBoardVoteMessages['frp'] = array(
+$messages['frp'] = array(
 	'boardvote'              => 'Èlèccions u Consèly d’administracion de la Wikimedia Foundation',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Voto/votacion]]
 * [[Special:Boardvote/list|Lista des votos/de les votacions enregistrâs]]
@@ -840,11 +840,11 @@ Un avèrtissement regardent un cèrtificat pas signê serat pôt-étre afichiê.
 /** Irish (Gaeilge)
  * @author SPQRobin
  */
-$wgBoardVoteMessages['ga'] = array(
+$messages['ga'] = array(
 	'boardvote_dumplink' => 'Gliogáil anseo',
 );
 
-$wgBoardVoteMessages['gl'] = array(
+$messages['gl'] = array(
 	'boardvote'               => 'Elección dos Membros do Consello de Administración de Wikimedia',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Votar]]
 * [[Special:Boardvote/list|Listaxe de votos ata a data]]
@@ -912,7 +912,7 @@ Vai ser redirixido cara este servidor externo en 20 segundos. [$1 Prema aquí] p
 
 Pode que lle apareza unha advertencia de seguranza acerca dun certificado sen asinar.',
 );
-$wgBoardVoteMessages['he'] = array(
+$messages['he'] = array(
 	'boardvote'               => "בחירות לחבר הנאמנים של ויקימדיה",
 	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|הצבעה]]
 * [[{{ns:special}}:Boardvote/list|רשימת ההצבעות נכון לעכשיו]]
@@ -981,7 +981,7 @@ $wgBoardVoteMessages['he'] = array(
  * @author Dnik
  * @author SpeedyGonsales
  */
-$wgBoardVoteMessages['hr'] = array(
+$messages['hr'] = array(
 	'boardvote'              => 'Izbori za Odbor povjerenika Wikimedije',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Glas]]
 * [[Special:Boardvote/list|Pregled glasova do sada]]
@@ -1046,7 +1046,7 @@ Bit ćete preusmjereni na taj vanjski server za 20 sekundi. [$1 Kliknite ovdje] 
 Moguće je da ćete vidjeti sigurnosno upozorenje o nepotpisanom certifikatu.',
 );
 
-$wgBoardVoteMessages['hsb'] = array(
+$messages['hsb'] = array(
 	'boardvote'               => 'Wólby za kuratorij Wikimedia',
 	'boardvote_entry'         => '* [[{{ns:special}}:Boardvote/vote|Wothłosować]]
 * [[{{ns:special}}:Boardvote/list|Dotal wotedate hłosy]]
@@ -1115,7 +1115,7 @@ Slěduje nastata zaklučowana wersija. Budźe so na [[{{ns:special}}:Boardvote/d
  * @author Bdanee
  * @author KossuthRad
  */
-$wgBoardVoteMessages['hu'] = array(
+$messages['hu'] = array(
 	'boardvote'              => 'Wikimedia Kuratórium választás',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Szavazz!]]
 * [[Special:Boardvote/list|Szavazatok listája]]
@@ -1190,7 +1190,7 @@ szerveren bonyolítjuk a szavazást.
 Az aláíratlan tanúsítványú oldallal kapcsolatban egy biztonsági figyelmezetés jelenhet meg.',
 );
 
-$wgBoardVoteMessages['id'] = array(
+$messages['id'] = array(
 	'boardvote'               => "Pemilihan Anggota Dewan Kepercayaan Yayasan Wikimedia",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Berikan suara]]
 * [[Special:Boardvote/list|Daftar suara hingga saat ini]]
@@ -1252,7 +1252,7 @@ Versi terenkripsi tercantum di bawah ini. Hasil tersebut akan ditampilkan untuk 
 	'go_to_board_vote'        => 'Pemilihan Dewan Wikimedia 2007',
 );
 
-$wgBoardVoteMessages['is'] = array(
+$messages['is'] = array(
 	'boardvote_user'          => 'Notandi',
 	'boardvote_welcome'       => 'Velkominn \'\'\'$1\'\'\'!',
 );
@@ -1261,7 +1261,7 @@ $wgBoardVoteMessages['is'] = array(
  * @author BrokenArrow
  * @author Gianfranco
  */
-$wgBoardVoteMessages['it'] = array(
+$messages['it'] = array(
 	'boardvote'              => 'Elezioni del Consiglio direttivo della Wikimedia Foundation',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vota]]
 * [[Special:Boardvote/list|Visualizza i voti espressi sinora]]
@@ -1270,7 +1270,7 @@ $wgBoardVoteMessages['it'] = array(
 <p>
 Benvenuto/a alla quarta elezione per il consiglio direttivo Wikimedia, l\'autorità a capo della Wikimedia Foundation. Si vota per le tre persone che rappresenteranno la comunità di utenti dei vari progetti Wikimedia. Gli eletti rimarranno in carica per due anni nel consiglio direttivo ed aiuteranno a determinare il futuro orientamento dei progetti Wikimedia, individualmente e come gruppo, rappresentando i <em>tuoi</em> interessi e le tue idee. Decideranno in merito a vari temi, tra cui, in particolare, le modalità di raccolta e investimento dei fondi.</p>
 
-<p>Per favore, prima di votare, leggi attentamente le presentazioni dei candidati e le risposte alle domande che sono state loro poste. Ognuno dei candidati è un utente rispettato, che ha contribuito con molto del proprio tempo e con notevoli sforzi a rendere questi progetti un ambiente accogliente e dedicato alla libera raccolta, organizzazione e distribuzione della conoscenza umana.</p>  
+<p>Per favore, prima di votare, leggi attentamente le presentazioni dei candidati e le risposte alle domande che sono state loro poste. Ognuno dei candidati è un utente rispettato, che ha contribuito con molto del proprio tempo e con notevoli sforzi a rendere questi progetti un ambiente accogliente e dedicato alla libera raccolta, organizzazione e distribuzione della conoscenza umana.</p>
 
 <p>Puoi votare per più candidati a tua scelta: i tre con il maggior numero di voti saranno dichiarati eletti. Nel caso di pareggio, sarà tenuta una votazione di ballottaggio.</p>
 
@@ -1327,7 +1327,7 @@ Il voto espresso in forma cifrata è riportato di seguito. È inoltre visibile a
 	'boardvote_redirecting'  => 'Per una migliore sicurezza e trasparenza, il voto si tiene su un server esterno, a controllo indipendente. Sarai reindirizzato a questo server esterno in 20 secondi. [$1 Clicca qui] per raggiungerlo direttamente. Potrebbe apparire un avviso di sicurezza riguardante un certificato di protezione non verificato.',
 );
 
-$wgBoardVoteMessages['ja'] = array(
+$messages['ja'] = array(
 	'boardvote'               => 'ウィキメディア財団理事選挙',
 	'boardvote_novotes'       => 'まだ誰も投票していません。',
 	'boardvote_user'          => '利用者',
@@ -1348,7 +1348,7 @@ $wgBoardVoteMessages['ja'] = array(
 /** Georgian (ქართული)
  * @author Alsandro
  */
-$wgBoardVoteMessages['ka'] = array(
+$messages['ka'] = array(
 	'boardvote'            => 'ვიკიმედიის რწმუნებულთა საბჭოს არჩევნები',
 	'boardvote_entry'      => '* [[Special:Boardvote/vote|კენჭისყრა]]
 * [[Special:Boardvote/list|დღემდე მიცემული ხმების სია]]
@@ -1359,7 +1359,7 @@ $wgBoardVoteMessages['ka'] = array(
 	'boardvote_welcome'    => "მოგესალმებით '''$1'''!",
 );
 
-$wgBoardVoteMessages['kk-cyrl'] = array(
+$messages['kk-cyrl'] = array(
 	'boardvote'               => "Wikimedia қорының Уәкілдер еңесінің сайлауы ",
 	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|Дауыс беру]]
 * [[{{ns:Special}}:Boardvote/list|Күн бойынша дауыс беру тізімі]]
@@ -1406,7 +1406,7 @@ $wgBoardVoteMessages['kk-cyrl'] = array(
 	'group-boardvote-member'  => 'Кеңес сайлау әкімші',
 	'grouppage-boardvote'     => '{{ns:project}}:Кеңес сайлау әкімшілері',
 );
-$wgBoardVoteMessages['kk-latn'] = array(
+$messages['kk-latn'] = array(
 	'boardvote'               => "Wikimedia qorınıñ Wäkilder eñesiniñ saýlawı ",
 	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|Dawıs berw]]
 * [[{{ns:Special}}:Boardvote/list|Kün boýınşa dawıs berw tizimi]]
@@ -1453,7 +1453,7 @@ Muqamdalğan derekter üşin $1.</p>",
 	'group-boardvote-member'  => 'Keñes saýlaw äkimşi',
 	'grouppage-boardvote'     => '{{ns:project}}:Keñes saýlaw äkimşileri',
 );
-$wgBoardVoteMessages['kk-arab'] = array(
+$messages['kk-arab'] = array(
 	'boardvote'               => "Wikimedia قورىنىڭ ۋٵكٸلدەر ەڭەسٸنٸڭ سايلاۋى ",
 	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|داۋىس بەرۋ]]
 * [[{{ns:Special}}:Boardvote/list|كٷن بويىنشا داۋىس بەرۋ تٸزٸمٸ]]
@@ -1501,7 +1501,7 @@ $wgBoardVoteMessages['kk-arab'] = array(
 	'grouppage-boardvote'     => '{{ns:project}}:كەڭەس سايلاۋ ٵكٸمشٸلەرٸ',
 );
 
-$wgBoardVoteMessages['ksh'] = array(
+$messages['ksh'] = array(
 	'boardvote'               => 'Waahle för_t „Wikimedia Board of Trustees“ (De forantwochtlijje Füürshtändt bëij Wikkimedija)',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Affshtemme]]
 * [[Special:Boardvote/list|Zëĳsh de affjejovvene Shtemme beß jäz]]
@@ -1549,7 +1549,7 @@ noh_m Allfabet zotteet.</p>
 	'boardvote_closed'        => 'De Waahl ess_eröm, luuer dann op de [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation Sigk medt_te Waal_Äjeepnißße], wadd_errußß_koohm.',
 	'boardvote_edits_many'    => '— janz fill —',
 );
-$wgBoardVoteMessages['la'] = array(
+$messages['la'] = array(
 	'boardvote_time'          => 'Tempus',
 	'boardvote_user'          => 'Usor',
 	'boardvote_edits'         => 'Recensiones',
@@ -1562,7 +1562,7 @@ $wgBoardVoteMessages['la'] = array(
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-$wgBoardVoteMessages['lb'] = array(
+$messages['lb'] = array(
 	'boardvote_entered'      => "Merci, är Stëmm gouf gespäichert.
 
 Wann der wëllt, kënnt der déi folgend Detailer festhalen. Är Ofstëmmungsfiche ass:
@@ -1599,7 +1599,7 @@ D'verschlësselt Versioun dovunner fannt der ënnen. Si gëtt ëffentlech op [[S
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  */
-$wgBoardVoteMessages['li'] = array(
+$messages['li'] = array(
 	'boardvote'              => 'Wikimedia Board of Trustees-verkezing',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Stöm]]
 * [[Special:Boardvote/list|Oetgebrachdje stömme toeane]]
@@ -1623,7 +1623,7 @@ $wgBoardVoteMessages['li'] = array(
 	'go_to_board_vote'       => 'Wikimedia Bestuursverkezing 2007',
 );
 
-$wgBoardVoteMessages['loz'] = array(
+$messages['loz'] = array(
 	'boardvote_user'          => 'Sebelu',
 	'boardvote_submit'        => 'Afi',
 );
@@ -1631,7 +1631,7 @@ $wgBoardVoteMessages['loz'] = array(
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */
-$wgBoardVoteMessages['lt'] = array(
+$messages['lt'] = array(
 	'boardvote'              => 'Vikimedijos išlaikymo tarybos rinkimai',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Balsuoti]]
 * [[Special:Boardvote/list|Balsavimų sąrašas]]
@@ -1677,7 +1677,7 @@ Jūs būsite peradresuotas į šį išorinį serverį po 20 sekundžių. [1$ Spa
 Gali būti rodomas saugumo įspėjimas apie nepasirašytą sertifikatą.',
 );
 
-$wgBoardVoteMessages['nan'] = array(
+$messages['nan'] = array(
 	'boardvote'               => "Wikimedia Táng-sū-hōe soán-kí",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Tâu-phiò]]
 * [[Special:Boardvote/list|Lia̍t kàu taⁿ ê tâu-phiò]]
@@ -1688,7 +1688,7 @@ $wgBoardVoteMessages['nan'] = array(
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
-$wgBoardVoteMessages['nds'] = array(
+$messages['nds'] = array(
 	'boardvote_novotes'    => 'Noch hett nüms afstimmt.',
 	'boardvote_time'       => 'Tiet',
 	'boardvote_user'       => 'Bruker',
@@ -1705,7 +1705,7 @@ $wgBoardVoteMessages['nds'] = array(
  * @author SPQRobin
  * @author Siebrand
  */
-$wgBoardVoteMessages['nl'] = array(
+$messages['nl'] = array(
 	'boardvote'              => 'Wikimedia Board of Trustees-verkiezing',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Stemmen]]
 * [[Special:Boardvote/list|Uitgebrachte stemmen tonen]]
@@ -1785,7 +1785,7 @@ U wordt over 20 seconden omgeleid naar deze externe server. [$1 Klik hier] om er
 Het is mogelijk dat u een waarschuwing krijgt vanwege een niet ondertekend certificaat.',
 );
 
-$wgBoardVoteMessages['no'] = array(
+$messages['no'] = array(
 	'boardvote'               => 'Valg til Wikimedia-styret',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Stem]]
 * [[Special:Boardvote/list|Liste over stemmer]]
@@ -1839,26 +1839,26 @@ Dette resulterer i den følgende krypterte versjonen. Den vil vises offentlig p�
 /** Occitan (Occitan)
  * @author Cedric31
  */
-$wgBoardVoteMessages['oc'] = array(
+$messages['oc'] = array(
 	'boardvote'              => 'Eleccions al conselh d’administracion de la Wikimedia Foundation',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vòte]]
 * [[Special:Boardvote/list|Lista dels vòtes enregistrats]]
 * [[Special:Boardvote/dump|Enregistraments criptats]]',
 	'boardvote_intro'        => '<p>Benvenguda a las tresenas eleccions del conselh d\'administracion de <i><a href="http://wikimediafoundation.org/wiki/Acuèlh" class="extiw" title="foundation:Acuèlh">Wikimedia Foundation Inc.</a></i>. Votam per una persona que representarà la comunautat dels utilizaires suls diferents projèctes Wikimedia. Aquesta persona e lo conselh d\'administracion contribuiràn a orientar la direccion d\'aquestes projèctes e representaràn <i>vòstres</i> interèsses e preocupacions alprèp del conselh d\'administracion. Decidiràn dels mejans de finançament e de l\'afectacion dels fonses.</p> <p>Legissètz atentivament las declaracions dels candidats e lors responsas a las questions abans de votar. Totes los candidats son d\'utilizaires respectats, qu\'an balhat fòrça de temps e d\'esfòrces per far d\'aquestes projèctes un endrech acuelhant dedicat al desvolopament de la liura difusion del saber uman.</p> <p>Podètz votar per autant de candidats qu\'o desiratz. Lo que remportarà mai de voses serà declarat elegit pel pòst alqual s\'es presentat. En cas de balotatge, i aurà un vòte de departatge.</p> <p>Per mai d\'informacion, vejatz :</p> <ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006/Oc" class="extiw" title="meta:Election_FAQ_2006/Oc">FAQ sus las eleccions</a></li> <li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Oc" class="extiw" title="meta:Election_candidates_2006/Oc">Candidat-a-s</a></li></ul>',
 	'boardvote_intro_change' => "<p>Ja avètz votat. Podètz çaquelà modificar vòstre vòte en utilizant lo formulari çai jos. Mercé de marcar las casas en regard de cada candidat qu'a vòtre supòrt.</p></p>",
-	'boardvote_entered'      => "Mercé, vòstre vòte es estat enregistrat. 
+	'boardvote_entered'      => "Mercé, vòstre vòte es estat enregistrat.
 
 S'o desiratz, podètz enregistrar los detalhs seguents. Vòstre istoric de vòte es :
 
 <pre>$1</pre>
 
-Es estat criptat amb la clau publica dels escrutators oficials per l’eleccion : 
+Es estat criptat amb la clau publica dels escrutators oficials per l’eleccion :
 
-<pre>$2</pre> 
+<pre>$2</pre>
 
 La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/dump]].
 
-<pre>$3</pre> 
+<pre>$3</pre>
 
 [[Special:Boardvote/entry|Retorn]]",
 	'boardvote_nosession'    => 'Impossible de determinar vòstre identificant Wikimedia. Rendetz-vos sus vòstre wiki d’origina, enregistratz-vos, e rendetz-vos sus la pagina <nowiki>[[Special:Boardvote]]</nowiki>. Devètz possedir un compte amb al mens $1 contribucions efectuadas abans lo $2, e aver efectuat vòstra primièra edicion abans lo $3.',
@@ -1893,7 +1893,7 @@ La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/
  * @author Derbeth
  * @author Sp5uhe
  */
-$wgBoardVoteMessages['pl'] = array(
+$messages['pl'] = array(
 	'boardvote'              => 'Wybory do Rady Powierniczej Fundacji Wikimedia',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Głosuj]]
 * [[Special:Boardvote/list|Pokaż listę głosów]]
@@ -1942,7 +1942,7 @@ Oto zakodowana wersja. Będzie ona publicznie wyświetlona w [[Special:Boardvote
 	'boardvote_redirecting'  => 'Ze względu na bezpieczeństwo i przejrzystość, głosowanie odbywa się na zewnętrznym, niezależnie kontrolowanym serwerze. Zostaniesz przekierowany (-a) na ten serwer za 20 sekund. [$1 Kliknij tu] aby przejść tam już teraz. Może pojawić się ostrzeżenie o niepodpisanym certyfikacie.',
 );
 
-$wgBoardVoteMessages['pms'] = array(
+$messages['pms'] = array(
 	'boardvote'               => 'Elession dël Consej ëd Gestion dla Fondassion Wikimedia',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Voté]]
 * [[Special:Boardvote/list|Vardé ij vot ch\'a-i son al dì d\'ancheuj]]
@@ -2015,7 +2015,7 @@ Ch\'a ten-a da ment che ën bogiandse a peul arsèive n\'avis dla sigurëssa ëd
  * @author Malafaya
  * @author 555
  */
-$wgBoardVoteMessages['pt'] = array(
+$messages['pt'] = array(
 	'boardvote'              => 'Eleições para o Board of Trustees da Wikimedia Foundation',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Votar]]
 * [[Special:Boardvote/list|Listar votos por data]]
@@ -2080,15 +2080,15 @@ Um aviso de segurança sobre um certificado não assinado poderá eventualmente 
 /** Message documentation (Message documentation)
  * @author Meno25
  */
-$wgBoardVoteMessages['qqq'] = array(
+$messages['qqq'] = array(
 	'boardvote_submit' => 'Button name',
 );
 
-$wgBoardVoteMessages['rm'] = array(
+$messages['rm'] = array(
 	'boardvote_user'          => 'Utilisader',
 	'boardvote_welcome'       => 'Chau \'\'\'$1\'\'\'!',
 );
-$wgBoardVoteMessages['ro'] = array(
+$messages['ro'] = array(
 	'boardvote_novotes'       => 'Nimeni nu a votat încă.',
 	'boardvote_time'          => 'Timp',
 	'boardvote_user'          => 'Utilizator',
@@ -2103,7 +2103,7 @@ $wgBoardVoteMessages['ro'] = array(
 /** Russian (Русский)
  * @author .:Ajvol:.
  */
-$wgBoardVoteMessages['ru'] = array(
+$messages['ru'] = array(
 	'boardvote'              => 'Выборы в Совет поверенных фонда «Викимедиа»',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Проголосовать]]
 * [[Special:Boardvote/list|Посмотреть список уже проголосовавших]]
@@ -2170,7 +2170,7 @@ $wgBoardVoteMessages['ru'] = array(
 /** ћирилица (ћирилица)
  * @author Sasa Stefanovic
  */
-$wgBoardVoteMessages['sr-ec'] = array(
+$messages['sr-ec'] = array(
 	'boardvote'              => 'Избор за Одбор повереника Викимедија Фондације',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vote]]
 * [[Special:Boardvote/list|Списак гласова до датума]]
@@ -2235,9 +2235,9 @@ $wgBoardVoteMessages['sr-ec'] = array(
 	'boardvote_welcome'      => "Добро дошли '''$1'''!",
 );
 
-$wgBoardVoteMessages['sr'] = $wgBoardVoteMessages['sr-ec'];
+$messages['sr'] = $messages['sr-ec'];
 
-$wgBoardVoteMessages['sr-el'] = array(
+$messages['sr-el'] = array(
 	'boardvote'               => "Izbor za Odbor poverenika Vikimedija Fondacije",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vote]]
 * [[Special:Boardvote/list|Spisak glasova do datuma]]
@@ -2306,7 +2306,7 @@ Sledi rezultujuća šifrirana verzija. Biće javno predstavljena na [[Special:Bo
  * @author Pyt
  * @author Maartenvdbent
  */
-$wgBoardVoteMessages['stq'] = array(
+$messages['stq'] = array(
 	'boardvote'              => 'Woalen tou dät Wikimedia-Kuratorium',
 	'boardvote_entry'        => '* [[meta:Board elections/2007/Candidates/de|Kandidoatenfoarstaalengen]]
 * [[{{ns:special}}:Boardvote/vote|Oustämme]]
@@ -2334,10 +2334,10 @@ Wan du moatest, koast du foulgjende Eempeldhaide fäästhoolde. Dien Oustämmeng
 
 <pre>$1</pre>
 
-Ju wuude mäd dän Public Key fon do Woaladministratore ferslöäteld: 
+Ju wuude mäd dän Public Key fon do Woaladministratore ferslöäteld:
 
 <pre>$2</pre>',
-	'boardvote_nosession'    => 'Dien Wikimedia-Benutser-ID kon nit fääststoald wäide. Mäld die in dän Wiki an, in dän du tou ju Woal toulät bäst un gung deer ätter <nowiki>[[Special:Boardvote]]</nowiki>. Wäälen duur wäl, dän sien Benutserkonto nit minner as $1 Beoarbaidengen foar dän $2 apwiest, ju eerste Beoarbaidenge mout foar dän $3 geböärd weese. 
+	'boardvote_nosession'    => 'Dien Wikimedia-Benutser-ID kon nit fääststoald wäide. Mäld die in dän Wiki an, in dän du tou ju Woal toulät bäst un gung deer ätter <nowiki>[[Special:Boardvote]]</nowiki>. Wäälen duur wäl, dän sien Benutserkonto nit minner as $1 Beoarbaidengen foar dän $2 apwiest, ju eerste Beoarbaidenge mout foar dän $3 geböärd weese.
 
 Din Browser mout so konfigurierd weese, dät hie Cookies fon dän externe Woalcomputer
 <tt>wikimedia.spi-inc.org</tt> akzeptiert.',
@@ -2372,7 +2372,7 @@ Du wädst in 20 Sekunden tou dissen externen Server fääre lat. [$1 klik hier],
 
 );
 
-$wgBoardVoteMessages['su'] = array(
+$messages['su'] = array(
 	'boardvote'               => 'Saémbara Anggota Déwan Kapercayaan Yayasan Wikimedia',
 	'boardvote_novotes'       => 'Acan aya pamilih.',
 	'boardvote_time'          => 'Wanci',
@@ -2395,7 +2395,7 @@ $wgBoardVoteMessages['su'] = array(
  * @author Sannab
  * @author SPQRobin
  */
-$wgBoardVoteMessages['sv'] = array(
+$messages['sv'] = array(
 	'boardvote'              => 'Val till Wikimedias styrelse (Wikimedia Board of Trustees)',
 	'boardvote_entry'        => '* [[m:Election_candidates_2006/Sv|Kandidaternas presentationer]]
 * [[Special:Boardvote/vote|Rösta]]
@@ -2456,7 +2456,7 @@ $1 för de krypterade uppgifterna.</p>',
 /** Tonga (faka-Tonga)
  * @author SPQRobin
  */
-$wgBoardVoteMessages['to'] = array(
+$messages['to'] = array(
 	'boardvote'          => 'Ko e fili ʻo e kau talāsiti ki he Poate Wikimedia',
 	'boardvote_days'     => 'Ngaahi ʻaho',
 	'boardvote_dumplink' => 'Lomiʻi heni',
@@ -2465,14 +2465,14 @@ $wgBoardVoteMessages['to'] = array(
 /** Tahitian (Reo Mā`ohi)
  * @author SPQRobin
  */
-$wgBoardVoteMessages['ty'] = array(
+$messages['ty'] = array(
 	'boardvote_user' => 'Ta’ata fa’a’ohipa',
 );
 
 /** Volapük (Volapük)
  * @author Malafaya
  */
-$wgBoardVoteMessages['vo'] = array(
+$messages['vo'] = array(
 	'boardvote_time'       => 'Tim',
 	'boardvote_user'       => 'Geban',
 	'boardvote_edits'      => 'Redakams',
@@ -2481,7 +2481,7 @@ $wgBoardVoteMessages['vo'] = array(
 	'boardvote_welcome'    => "Benokömö, o '''$1'''!",
 );
 
-$wgBoardVoteMessages['wa'] = array(
+$messages['wa'] = array(
 	'boardvote' => 'Vôtaedje po les manaedjeus del fondåcion Wikimedia',
 	'boardvote_entry' => '* [[Special:Boardvote/vote|Vôter]]
 * [[Special:Boardvote/list|Djivêye des vôtaedjes dedja fwaits]]
@@ -2553,7 +2553,7 @@ $1 po les dnêyes sourdant des bultins.</p>',
 	'boardvote_dumplink' => 'Clitchîz chal',
 );
 
-$wgBoardVoteMessages['yue'] = array(
+$messages['yue'] = array(
 	'boardvote'               => "Wikimedia理事委員會選舉",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|投票]]
 * [[Special:Boardvote/list|列示至今已經投咗票嘅投票]]
@@ -2620,13 +2620,13 @@ $1去睇加密嘅資料。</p>",
 你有可能會收到一個安全警告，話個憑證冇簽到。',
 );
 
-$wgBoardVoteMessages['zh-classical'] = array(
+$messages['zh-classical'] = array(
 	'boardvote_time'          => "時辰",
 	'boardvote_user'          => "編者",
 	'boardvote_submit'        => '確定',
 );
 
-$wgBoardVoteMessages['zh-hans'] = array(
+$messages['zh-hans'] = array(
 	'boardvote'               => "维基媒体基金会理事会选举",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|参与投票]]
 * [[Special:Boardvote/list|至今已投票列表]]
@@ -2692,7 +2692,7 @@ $wgBoardVoteMessages['zh-hans'] = array(
 稍后，您的浏览器可能会弹出未验证安全凭证的警告。',
 );
 
-$wgBoardVoteMessages['zh-hant'] = array(
+$messages['zh-hant'] = array(
 	'boardvote'               => "維基媒體基金會理事會選舉",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|參與投票]]
 * [[Special:Boardvote/list|至今已投票列表]]
@@ -2759,16 +2759,16 @@ $wgBoardVoteMessages['zh-hant'] = array(
 );
 
 # Kazakh fallbacks
-$wgBoardVoteMessages['kk-kz'] = $wgBoardVoteMessages['kk-cyrl'];
-$wgBoardVoteMessages['kk-tr'] = $wgBoardVoteMessages['kk-latn'];
-$wgBoardVoteMessages['kk-cn'] = $wgBoardVoteMessages['kk-arab'];
-$wgBoardVoteMessages['kk'] = $wgBoardVoteMessages['kk-cyrl'];
+$messages['kk-kz'] = $messages['kk-cyrl'];
+$messages['kk-tr'] = $messages['kk-latn'];
+$messages['kk-cn'] = $messages['kk-arab'];
+$messages['kk'] = $messages['kk-cyrl'];
 
 # Chinese fallbacks
-$wgBoardVoteMessages['zh'] = $wgBoardVoteMessages['zh-hans'];
-$wgBoardVoteMessages['zh-cn'] = $wgBoardVoteMessages['zh-hans'];
-$wgBoardVoteMessages['zh-hk'] = $wgBoardVoteMessages['zh-hant'];
-$wgBoardVoteMessages['zh-min-nan'] = $wgBoardVoteMessages['nan'];
-$wgBoardVoteMessages['zh-sg'] = $wgBoardVoteMessages['zh-hans'];
-$wgBoardVoteMessages['zh-tw'] = $wgBoardVoteMessages['zh-hant'];
-$wgBoardVoteMessages['zh-yue'] = $wgBoardVoteMessages['yue'];
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-min-nan'] = $messages['nan'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-tw'] = $messages['zh-hant'];
+$messages['zh-yue'] = $messages['yue'];

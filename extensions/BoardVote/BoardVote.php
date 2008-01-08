@@ -10,6 +10,7 @@ if (!defined('MEDIAWIKI')) {
 # Extension credits
 $wgExtensionCredits['other'][] = array(
 	'name' => 'BoardVote',
+	'version' => '2008-01-08',
 	'description' => '[[meta:Board elections|Wikimedia Board of Trustees election]]'
 );
 
@@ -30,7 +31,7 @@ $wgBoardVoteDBServer = $wgDBserver;
 # Vote admins
 $wgGroupPermissions['boardvote']['boardvote'] = true;
 
-$wgHooks['LoadAllMessages'][] = 'wfBoardVoteInitMessages';
+$wgExtensionMessagesFiles['BoardVote'] = dirname(__FILE__) . '/BoardVote.i18n.php';
 
 # Register special page
 if ( !function_exists( 'extAddSpecialPage' ) ) {
@@ -51,20 +52,13 @@ function wfSetupBoardVote() {
 		$_REQUEST['uselang'] = $_SESSION['bvLang'];
 	}
 }
+
 function wfBoardVoteInitMessages() {
 	static $done = false;
 	if ( $done ) return true;
-	$done = true;
-	require_once( dirname(__FILE__ ) . '/BoardVote.i18n.php' );
 
-	# Add messages
-	global $wgMessageCache;
-	foreach( $wgBoardVoteMessages as $lang => $messages ) {
-		$wgMessageCache->addMessages( $messages, $lang );
-	}
+	$done = true;
+	wfLoadExtensionMessages( 'BoardVote' );
 
 	return true;
 }
-
-
-
