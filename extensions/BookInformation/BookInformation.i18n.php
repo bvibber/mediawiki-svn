@@ -1,17 +1,15 @@
 <?php
-
 /**
- * Internationalisation file for the Book Information extension
+ * Internationalisation file for the extension Book Information.
  *
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 
-function efBookInformationMessages() {
-	$messages = array(
+$messages = array();
 
 /* English (Rob Church) */
-'en' => array(
+$messages['en'] = array(
 	'bookinfo-header' => 'Book information',
 	'bookinfo-result-title' => 'Title:',
 	'bookinfo-result-author' => 'Author:',
@@ -23,10 +21,10 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'No response or request timed out.',
 	'bookinfo-purchase' => 'Purchase this book from $1',
 	'bookinfo-provider' => 'Data provider: $1',
-),
+);
 
 /* Arabic (Meno25) */
-'ar' => array(
+$messages['ar'] = array(
 	'bookinfo-header' => 'معلومات كتاب',
 	'bookinfo-result-title' => 'العنوان:',
 	'bookinfo-result-author' => 'المؤلف:',
@@ -38,17 +36,17 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'لا رد أو الطلب انتهت فترته.',
 	'bookinfo-purchase' => 'اشتر هذا الكتاب من $1',
 	'bookinfo-provider' => 'مزود البيانات: $1',
-),
+);
 
-'bcl' => array(
+$messages['bcl'] = array(
 	'bookinfo-result-title' => 'Titulo:',
 	'bookinfo-result-year' => 'Taon:',
-),
+);
 
 /** Bulgarian (Български)
  * @author DCLXVI
  */
-'bg' => array(
+$messages['bg'] = array(
 	'bookinfo-header'            => 'Информация за книга',
 	'bookinfo-result-title'      => 'Заглавие:',
 	'bookinfo-result-author'     => 'Автор:',
@@ -58,9 +56,9 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse'  => 'Няма отговор или заявката отне твърде много време.',
 	'bookinfo-purchase'          => 'Купуване на тази книга от $1',
 	'bookinfo-provider'          => 'Източник на информация: $1',
-),
+);
 
-'br' => array(
+$messages['br'] = array(
 	'bookinfo-header' => 'Titouroù war al levr',
 	'bookinfo-result-title' => 'Titl :',
 	'bookinfo-result-author' => 'Aozer :',
@@ -72,9 +70,9 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Respont ebet pe amzer glask re hir.',
 	'bookinfo-purchase' => 'Prenañ al levr-mañ adal $1',
 	'bookinfo-provider' => 'Pourvezer roadennoù : $1',
-),
+);
 
-'ca' => array(
+$messages['ca'] = array(
 	'bookinfo-header'=> 'Informació del llibre',
 	'bookinfo-result-title'=> 'Títol:',
 	'bookinfo-result-author'=> 'Autor:',
@@ -86,10 +84,10 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse'=> 'No hi ha cap resposta o el temps de sol·licitud s\'ha esgotat.',
 	'bookinfo-purchase'=> 'Compra aquest llibre de $1',
 	'bookinfo-provider'=> 'Proveïdor de dades: $1',
-),
+);
 
 /* German (Raymond) */
-'de' => array(
+$messages['de'] = array(
 	'bookinfo-header' => 'Informationen über Bücher',
 	'bookinfo-result-title' => 'Titel:',
 	'bookinfo-result-author' => 'Autor:',
@@ -101,18 +99,18 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Keine Antwort oder Zeitüberschreitung.',
 	'bookinfo-purchase' => 'Dieses Buch kann von $1 bezogen werden.',
 	'bookinfo-provider' => 'Daten-Lieferant: $1',
-),
+);
 
-'el' => array(
+$messages['el'] = array(
 	'bookinfo-header' => 'Βιβλίο πληροφοριών',
 	'bookinfo-result-title' => 'Τίτλος:',
 	'bookinfo-result-author' => 'Συντάκτης:',
 	'bookinfo-result-publisher' => 'Εκδότης:',
 	'bookinfo-result-year' => 'Χρόνος:',
 	'bookinfo-purchase' => 'Αγοράστε αυτό το βιβλίο από $1',
-),
+);
 
-'ext' => array(
+$messages['ext'] = array(
 	'bookinfo-header' => 'Enhormación el libru',
 	'bookinfo-result-title' => 'Entítulu:',
 	'bookinfo-result-author' => 'Autol:',
@@ -120,10 +118,10 @@ function efBookInformationMessages() {
 	'bookinfo-result-year' => 'Añu:',
 	'bookinfo-error-nosuchitem' => 'El artículu nu desisti u nu puei sel alcuentrau.',
 	'bookinfo-purchase' => 'Mercal esti libru e $1',
-),
+);
 
 # فارسی (Huji)
-'fa' => array(
+$messages['fa'] = array(
 	'bookinfo-header'            => 'اطلاعات کتاب',
 	'bookinfo-result-title'      => 'عنوان:',
 	'bookinfo-result-author'     => 'نویسنده:',
@@ -136,10 +134,10 @@ function efBookInformationMessages() {
 	'bookinfo-purchase'          => 'خرید این کتاب از $1',
 	'bookinfo-provider'          => 'مهیاکنندهٔ اطلاعات:',
 
-),
+);
 
 /* Finnish (Niklas Laxström) */
-'fi' => array(
+$messages['fi'] = array(
 	'bookinfo-header' => 'Kirjan tiedot',
 	'bookinfo-result-title' => 'Nimi:',
 	'bookinfo-result-author' => 'Tekijä:',
@@ -151,10 +149,10 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Ei vastausta tai pyyntö aikakatkaistiin.',
 	'bookinfo-purchase' => 'Osta tämä kirja: $1',
 	'bookinfo-provider' => 'Tietolähde: $1',
-),
+);
 
 /* French */
-'fr' => array(
+$messages['fr'] = array(
 	'bookinfo-header' => 'Informations sur les ouvrages',
 	'bookinfo-result-title' => 'Titre :',
 	'bookinfo-result-author' => 'Auteur :',
@@ -166,12 +164,12 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Aucune réponse ou dépassement du délai.',
 	'bookinfo-purchase' => 'Acheter ce livre sur $1',
 	'bookinfo-provider' => 'Fournisseur des données : $1',
-),
+);
 
 /** Franco-Provençal (Arpetan)
  * @author ChrisPtDe
  */
-'frp' => array(
+$messages['frp'] = array(
 	'bookinfo-header'            => 'Enformacions sur les ôvres',
 	'bookinfo-result-title'      => 'Titro :',
 	'bookinfo-result-author'     => 'Ôtor :',
@@ -183,9 +181,9 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse'  => 'Gins de rèponsa ou de dèpassement du dèlê.',
 	'bookinfo-purchase'          => 'Achetar cél lévro dessus $1',
 	'bookinfo-provider'          => 'Fornissor de les balyês : $1',
-),
+);
 
-'gl' => array(
+$messages['gl'] = array(
 	'bookinfo-header' => 'Información do libro',
 	'bookinfo-result-title' => 'Título:',
 	'bookinfo-result-author' => 'Autor:',
@@ -197,9 +195,9 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Non se recibiu resposta ou a solicitude caducou.',
 	'bookinfo-purchase' => 'Compre este libro de $1',
 	'bookinfo-provider' => 'Fornecedor de datos: $1',
-),
+);
 
-'hr' => array(
+$messages['hr'] = array(
 	'bookinfo-header' => 'Informacije o knjizi',
 	'bookinfo-result-title' => 'Naslov:',
 	'bookinfo-result-author' => 'Autor:',
@@ -211,9 +209,9 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Nema odgovora ili istek vremena za upit (\'\'timeout\'\').',
 	'bookinfo-purchase' => 'Kupi ovu knjigu od $1',
 	'bookinfo-provider' => 'Dobavljač podataka: $1',
-),
+);
 
-'hsb' => array(
+$messages['hsb'] = array(
 	'bookinfo-header' => 'Informacije wo knihach',
 	'bookinfo-result-title' => 'Titul:',
 	'bookinfo-result-author' => 'Awtor:',
@@ -225,13 +223,13 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Žana wotmołwa abo překročenje časa.',
 	'bookinfo-purchase' => 'Tuta kniha hodźi so wot $1 kupić.',
 	'bookinfo-provider' => 'Dodawar datow: $1',
-),
+);
 
 /** Hungarian (Magyar)
  * @author KossuthRad
  * @author Bdanee
  */
-'hu' => array(
+$messages['hu'] = array(
 	'bookinfo-header'            => 'Könyv információ',
 	'bookinfo-result-title'      => 'Cím:',
 	'bookinfo-result-author'     => 'Szerző',
@@ -243,10 +241,10 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse'  => 'Nincs válasz vagy a kért idő letelt.',
 	'bookinfo-purchase'          => 'Ez a könyv megszerezve a $1-ből',
 	'bookinfo-provider'          => 'Adat ellátó: $1',
-),
+);
 
 /* Indonesian (Ivan Lanin) */
-'id' => array(
+$messages['id'] = array(
 	'bookinfo-header' => 'Informasi buku',
 	'bookinfo-result-title' => 'Judul:',
 	'bookinfo-result-author' => 'Pengarang:',
@@ -258,10 +256,10 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Tak ada respons atau respons terlalu lama.',
 	'bookinfo-purchase' => 'Beli buku ini dari $1',
 	'bookinfo-provider' => 'Penyedia data: $1',
-),
+);
 
 /* Italian (BrokenArrow) */
-'it' => array(
+$messages['it'] = array(
 	'bookinfo-header' => 'Informazioni sui libri',
 	'bookinfo-result-title' => 'Titolo:',
 	'bookinfo-result-author' => 'Autore:',
@@ -273,9 +271,9 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Mancata risposta o risposta assente.',
 	'bookinfo-purchase' => 'Acquista il libro presso: $1',
 	'bookinfo-provider' => 'Dati estratti da: $1',
-),
+);
 
-'ja' => array(
+$messages['ja'] = array(
 	'bookinfo-header' => '書籍情報',
 	'bookinfo-result-title' => 'タイトル:',
 	'bookinfo-result-author' => '著者:',
@@ -287,28 +285,28 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'リクエストを送信しましたが、応答がないかタイムアウトしました。',
 	'bookinfo-purchase' => 'この本を $1 から購入する',
 	'bookinfo-provider' => 'データ提供元: $1',
-),
+);
 
 /** Georgian (ქართული)
  * @author Alsandro
  */
-'ka' => array(
+$messages['ka'] = array(
 	'bookinfo-result-title'     => 'სათაური:',
 	'bookinfo-result-author'    => 'ავტორი:',
 	'bookinfo-result-publisher' => 'გამომცემელი:',
 	'bookinfo-result-year'      => 'წელი:',
-),
+);
 
-'la' => array(
+$messages['la'] = array(
 	'bookinfo-result-title' => 'Titulus:',
 	'bookinfo-result-author' => 'Auctor:',
 	'bookinfo-result-year' => 'Annus:',
-),
+);
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-'lb' => array(
+$messages['lb'] = array(
 	'bookinfo-header'            => 'Informatiounen iwwer Bicher',
 	'bookinfo-result-title'      => 'Titel:',
 	'bookinfo-result-author'     => 'Auteur:',
@@ -316,12 +314,12 @@ function efBookInformationMessages() {
 	'bookinfo-result-year'       => 'Joer:',
 	'bookinfo-error-invalidisbn' => 'Dir hutt eng ISBN aginn déi et net gëtt.',
 	'bookinfo-error-nosuchitem'  => "D'Säit gëtt et net oder si gouf net fonnt.",
-),
+);
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  */
-'li' => array(
+$messages['li'] = array(
 	'bookinfo-header'            => 'Boke informatie',
 	'bookinfo-result-title'      => 'Titel:',
 	'bookinfo-result-author'     => 'Auteur:',
@@ -333,12 +331,12 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse'  => "Gein antjwaord of 'ne tied-oet.",
 	'bookinfo-purchase'          => 'Koup dit book bie $1.',
 	'bookinfo-provider'          => 'Gegaeves geleverdj door: #1',
-),
+);
 
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */
-'lt' => array(
+$messages['lt'] = array(
 	'bookinfo-header'            => 'Knygos informacija',
 	'bookinfo-result-title'      => 'Pavadinimas:',
 	'bookinfo-result-author'     => 'Autorius:',
@@ -346,20 +344,20 @@ function efBookInformationMessages() {
 	'bookinfo-result-year'       => 'Metai:',
 	'bookinfo-error-invalidisbn' => 'Įvestas blogas ISBN',
 	'bookinfo-purchase'          => 'Pirkti šią knygą iš $1',
-),
+);
 
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
-'nds' => array(
+$messages['nds'] = array(
 	'bookinfo-result-title'     => 'Titel:',
 	'bookinfo-result-author'    => 'Schriever:',
 	'bookinfo-result-publisher' => 'Verlag:',
 	'bookinfo-result-year'      => 'Johr:',
-),
+);
 
 /* nld / Dutch (Dirk Beetstra) */
-'nl' => array(
+$messages['nl'] = array(
 	'bookinfo-header' => 'Boekinformatie',
 	'bookinfo-result-title' => 'Titel:',
 	'bookinfo-result-author' => 'Auteur:',
@@ -371,11 +369,10 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Geen antwoord of een time-out.',
 	'bookinfo-purchase' => 'Koop dit boek bij $1',
 	'bookinfo-provider' => 'Gegevens geleverd door: $1',
-),
-
+);
 
 /* Norwegian (Jon Harald Søby) */
-'no' => array(
+$messages['no'] = array(
 	'bookinfo-header' => 'Bokinformasjon',
 	'bookinfo-result-title' => 'Tittel:',
 	'bookinfo-result-author' => 'Forfatter:',
@@ -387,9 +384,9 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Ingen respons eller tidsavbrudd.',
 	'bookinfo-purchase' => 'Kjøp denne boken fra $1',
 	'bookinfo-provider' => 'Dataleverandør: $1',
-),
+);
 
-'oc' => array(
+$messages['oc'] = array(
 	'bookinfo-header' => 'Informacions suls obratges',
 	'bookinfo-result-title' => 'Títol:',
 	'bookinfo-result-author' => 'Autor:',
@@ -401,9 +398,9 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Cap de responsa o depassament de la sosta.',
 	'bookinfo-purchase' => 'Comprar aqueste libre sus $1',
 	'bookinfo-provider' => 'Fornidor de donadas : $1',
-),
+);
 
-'pl' => array(
+$messages['pl'] = array(
 	'bookinfo-header' => 'Informacja o książce',
 	'bookinfo-result-title' => 'Tytuł:',
 	'bookinfo-result-author' => 'Autor:',
@@ -415,10 +412,10 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Brak odpowiedzi lub przekroczony czas odpowiedzi',
 	'bookinfo-purchase' => 'Zakup tę książkę w $1',
 	'bookinfo-provider' => 'Dostawca danych: $1',
-),
+);
 
 /* Piedmontese (Bèrto 'd Sèra) */
-'pms' => array(
+$messages['pms'] = array(
 	'bookinfo-header' => 'Anformassion ant sëj lìber',
 	'bookinfo-result-title' => 'Tìtol:',
 	'bookinfo-result-author' => 'Aotor:',
@@ -430,13 +427,13 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Pa d\'arspòsta, ò miraco a la riva mach tròp tard',
 	'bookinfo-purchase' => 'Caté ël lìber da: $1',
 	'bookinfo-provider' => 'Sorgiss dij dat: $1',
-),
+);
 
 /** Portuguese (Português)
  * @author Malafaya
  * @author 555
  */
-'pt' => array(
+$messages['pt'] = array(
 	'bookinfo-header'            => 'Informação de livro',
 	'bookinfo-result-title'      => 'Título:',
 	'bookinfo-result-author'     => 'Autor:',
@@ -448,9 +445,9 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse'  => 'Sem resposta ou tempo de pedido expirado.',
 	'bookinfo-purchase'          => 'Comprar este livro a $1',
 	'bookinfo-provider'          => 'Provedor de dados: $1',
-),
+);
 
-'ro' => array(
+$messages['ro'] = array(
 	'bookinfo-result-title' => 'Titlu:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editură:',
@@ -458,10 +455,10 @@ function efBookInformationMessages() {
 	'bookinfo-error-invalidisbn' => 'ISBN nevalid.',
 	'bookinfo-error-nosuchitem' => 'Elementul nu există sau nu a putut fi găsit.',
 	'bookinfo-purchase' => 'Cumpăraţi această carte de la $1',
-),
+);
 
 /* Russian (Alexander Sigaachov) */
-'ru' => array(
+$messages['ru'] = array(
 	'bookinfo-header' => 'Информация о книге',
 	'bookinfo-result-title' => 'Название:',
 	'bookinfo-result-author' => 'Автор:',
@@ -473,9 +470,9 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Нет ответа или превышение времени ожидания ответа.',
 	'bookinfo-purchase' => 'Купить эту книгу на $1',
 	'bookinfo-provider' => 'Поставщик информации: $1',
-),
+);
 
-'sah' => array(
+$messages['sah'] = array(
 	'bookinfo-header' => 'Кинигэ туһунан',
 	'bookinfo-result-title' => 'Аата:',
 	'bookinfo-result-author' => 'Суруйааччы:',
@@ -487,9 +484,9 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Хоруй суох эбэтэр болдьоҕо ааста.',
 	'bookinfo-purchase' => 'Бу кинигэни мантан атыылаһарга: $1',
 	'bookinfo-provider' => 'Информацияны ким биэрбитэ: $1',
-),
+);
 
-'sk' => array(
+$messages['sk'] = array(
 	'bookinfo-header' => 'Informácie o knihách',
 	'bookinfo-result-title' => 'Názov:',
 	'bookinfo-result-author' => 'Autor:',
@@ -501,20 +498,20 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Bez odpovede alebo čas vyhradený na odpoveď vypršal.',
 	'bookinfo-purchase' => 'Kúpiť túto knihu z $1',
 	'bookinfo-provider' => 'Poskytovateľ údajov: $1',
-),
+);
 
 /** ћирилица (ћирилица)
  * @author Sasa Stefanovic
  */
-'sr-ec' => array(
+$messages['sr-ec'] = array(
 	'bookinfo-header'           => 'Информације за књигу',
 	'bookinfo-result-title'     => 'Наслов:',
 	'bookinfo-result-author'    => 'Аутор:',
 	'bookinfo-result-publisher' => 'Издавач:',
 	'bookinfo-result-year'      => 'Година:',
-),
+);
 
-'stq' => array(
+$messages['stq'] = array(
 	'bookinfo-header' => 'Informatione uur Bouke',
 	'bookinfo-result-title' => 'Tittel:',
 	'bookinfo-result-author' => 'Autor:',
@@ -526,9 +523,9 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Neen Oantwoud of ju Tied is foarbie.',
 	'bookinfo-purchase' => 'Dit Bouk kon fon $1 beleeken wäide.',
 	'bookinfo-provider' => 'Doaten-Lääwerant: $1',
-),
+);
 
-'sv' => array(
+$messages['sv'] = array(
 	'bookinfo-header' => 'Bokinformation',
 	'bookinfo-result-title' => 'Titel:',
 	'bookinfo-result-author' => 'Författare:',
@@ -540,21 +537,21 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => 'Fick inget svar eller det tog för lång tid att få svar.',
 	'bookinfo-purchase' => 'Köp denna bok från $1',
 	'bookinfo-provider' => 'Data hämtat från: $1',
-),
+);
 
 /** Volapük (Volapük)
  * @author Malafaya
  */
-'vo' => array(
+$messages['vo'] = array(
 	'bookinfo-result-title'     => 'Tiäd:',
 	'bookinfo-result-author'    => 'Lautan:',
 	'bookinfo-result-publisher' => 'Dabükan:',
 	'bookinfo-result-year'      => 'Yel:',
 	'bookinfo-purchase'         => 'Remolös buki at se $1',
-),
+);
 
 /* Cantonese (Shinjiman) */
-'yue' => array(
+$messages['yue'] = array(
 	'bookinfo-header' => '書籍資料',
 	'bookinfo-result-title' => '標題:',
 	'bookinfo-result-author' => '作者:',
@@ -566,10 +563,10 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => '無回應或要求過時。',
 	'bookinfo-purchase' => '響$1買呢本書',
 	'bookinfo-provider' => '資料提供者: $1',
-),
+);
 
 /* Chinese (Simplified) (Shinjiman) */
-'zh-hans' => array(
+$messages['zh-hans'] = array(
 	'bookinfo-header' => '书籍资料',
 	'bookinfo-result-title' => '标题:',
 	'bookinfo-result-author' => '作者:',
@@ -581,10 +578,10 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => '无反应或要求过时。',
 	'bookinfo-purchase' => '在$1买这本书',
 	'bookinfo-provider' => '资料提供者: $1',
-),
+);
 
 /* Chinese (Traditional) (Shinjiman) */
-'zh-hant' => array(
+$messages['zh-hant'] = array(
 	'bookinfo-header' => '書籍資料',
 	'bookinfo-result-title' => '標題:',
 	'bookinfo-result-author' => '作者:',
@@ -596,18 +593,14 @@ function efBookInformationMessages() {
 	'bookinfo-error-noresponse' => '無回應或要求過時。',
 	'bookinfo-purchase' => '在$1買這本書',
 	'bookinfo-provider' => '資料提供者: $1',
-),
+);
 
-	);
+/* Chinese defaults, fallback to zh-hans or zh-hant */
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-tw'] = $messages['zh-hant'];
 
-	/* Chinese defaults, fallback to zh-hans or zh-hant */
-	$messages['zh'] = $messages['zh-hans'];
-	$messages['zh-cn'] = $messages['zh-hans'];
-	$messages['zh-hk'] = $messages['zh-hant'];
-	$messages['zh-sg'] = $messages['zh-hans'];
-	$messages['zh-tw'] = $messages['zh-hant'];
-	/* Cantonese default, fallback to yue */
-	$messages['zh-yue'] = $messages['yue'];
-
-	return $messages;
-}
+/* Cantonese default, fallback to yue */
+$messages['zh-yue'] = $messages['yue'];
