@@ -11,19 +11,17 @@ ExtensionFunctions.php</a></tt>.</p>
 	exit(1);
 }
 
-# Internationalisation file
-require_once( 'ExpandTemplates.i18n.php' );
-
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'ExpandTemplates',
+	'version' => '2008-01-09',
 	'author' => 'Tim Starling',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ExpandTemplates',
 	'description' => 'Expands templates, parser functions and variables to show expanded wikitext and preview rendered page'
 );
 
+$wgExtensionMessagesFiles['ExpandTemplates'] = dirname(__FILE__) . '/ExpandTemplates.i18n.php';
+
 if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 }
 extAddSpecialPage( dirname(__FILE__) . '/ExpandTemplates_body.php', 'ExpandTemplates', 'ExpandTemplates' );
-
-?>

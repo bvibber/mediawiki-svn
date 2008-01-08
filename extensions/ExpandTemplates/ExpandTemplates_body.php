@@ -1,10 +1,7 @@
 <?php
 
 # Add messages
-global $wgMessageCache, $wgExpandTemplatesMessages;
-foreach( $wgExpandTemplatesMessages as $lang => $messages ) {
-	$wgMessageCache->addMessages( $messages, $lang );
-}
+wfLoadExtensionMessages( 'ExpandTemplates' );
 
 class ExpandTemplates extends SpecialPage {
 
@@ -19,7 +16,7 @@ class ExpandTemplates extends SpecialPage {
 		global $wgRequest, $wgParser, $wgOut;
 
 		$this->setHeaders();
-		
+
 		$titleStr = $wgRequest->getText( 'contexttitle' );
 		$title = Title::newFromText( $titleStr );
 		$selfTitle = $this->getTitle();
@@ -46,7 +43,7 @@ class ExpandTemplates extends SpecialPage {
 
 		$wgOut->addWikiText( wfMsg( 'expand_templates_intro' ) );
 		$wgOut->addHtml( $this->makeForm( $titleStr, $removeComments, $input, $generateXML ) );
-		
+
 		if( $output !== false ) {
 			if ( $generateXML ) {
 				$wgOut->addHtml( $this->makeOutput( $xml, 'expand_templates_xml_output' ) );
@@ -54,9 +51,9 @@ class ExpandTemplates extends SpecialPage {
 			$wgOut->addHtml( $this->makeOutput( $output ) );
 			$this->showHtmlPreview( $title, $output, $wgOut );
 		}
-		
+
 	}
-	
+
 	/**
 	 * Generate a form allowing users to enter information
 	 *
@@ -81,7 +78,7 @@ class ExpandTemplates extends SpecialPage {
 		$form .= Xml::closeElement( 'form' );
 		return $form;
 	}
-	
+
 	/**
 	 * Generate a nice little box with a heading for output
 	 *
@@ -95,7 +92,7 @@ class ExpandTemplates extends SpecialPage {
 		$out .= Xml::closeElement( 'textarea' );
 		return $out;
 	}
-	
+
 	/**
 	 * Render the supplied wiki text and append to the page as a preview
 	 *
@@ -109,7 +106,5 @@ class ExpandTemplates extends SpecialPage {
 		$out->addHtml( "<h2>" . wfMsgHtml( 'expand_templates_preview' ) . "</h2>\n" );
 		$out->addHtml( $pout->getText() );
 	}
-	
+
 }
-
-
