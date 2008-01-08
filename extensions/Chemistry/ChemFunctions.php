@@ -15,11 +15,12 @@
 
 if (!defined('MEDIAWIKI')) die();
 
-$wgExtensionCredits['Extension'][] = array(
-    'name' => 'ChemFunctions',
-    'description' => 'Adds the <chemform> tag, for chemical formulae',
-    'author' => 'Dirk Beetstra',
-    'url' => 'http://meta.wikimedia.org/wiki/Chemistry/ChemFunctions.php'
+$wgExtensionCredits['other'][] = array(
+	'name'        => 'ChemFunctions',
+	'version'     => '2008-01-08',
+	'description' => 'Adds the tag <nowiki><chemform></nowiki>, for chemical formulae',
+	'author'      => 'Dirk Beetstra',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:Chemistry',
 );
 
 /** Chemform wikipedia extension.
@@ -41,73 +42,68 @@ $wgExtensionCredits['Extension'][] = array(
  * Written by Dirk Beetstra, Oct. 2, 2006.
  */
 
+$wgExtensionMessagesFiles['ChemFunctions'] = dirname(__FILE__) . '/ChemFunctions.i18n.php';
+
 $wgExtensionFunctions[] = "wfChemFormExtension";
 
 function wfChemFormExtension() {
-    global $wgParser;
-    $wgParser->setHook( "chemform", "RenderChemForm" );
+	global $wgParser;
+	$wgParser->setHook( "chemform", "RenderChemForm" );
 }
 
 function RenderChemForm( $input, $argv ) {
-    global $wgChemFunctions_Messages, $wgMessageCache;
 
-    require_once( dirname(__FILE__) . '/ChemFunctions.i18n.php' );
+	# add messages
+	wfLoadExtensionMessages( 'ChemFunctions' );
 
-    # add messages
-    global $wgMessageCache, $wgChemFunctions_Messages;
-    foreach( array_keys($wgChemFunctions_Messages) as $key ) {
-        $wgMessageCache->addMessages( $wgChemFunctions_Messages[$key], $key );
-    }
+	$link = false;
+	$wikilink = false;
+	$showthis = $input;
+	$searchfor = $input;
 
-    $link = false;
-    $wikilink = false;
-    $showthis = $input;
-    $searchfor = $input;
+	if ( isset( $argv["link"] ) )
+		$link =  $argv["link"];
 
-    if ( isset( $argv["link"] ) )
-        $link =  $argv["link"];
+	if ( isset($argv["wikilink"] ) )
+		$wikilink = $argv["wikilink"];
 
-    if ( isset($argv["wikilink"] ) )
-       $wikilink = $argv["wikilink"];
+	if ( isset( $argv["query"] ) )
+		$searchfor = $argv["query"];
 
-    if ( isset( $argv["query"] ) )
-        $searchfor = $argv["query"];
+	if (!$showthis)
+		$showthis = $searchfor;
 
-    if (!$showthis) 
-        $showthis = $searchfor;
+	$showthis = htmlentities( Sanitizer::StripAllTags ( $showthis ) );                   # tagstripping
+	$showthis = preg_replace("/[0-9]+/", "<sub>$0</sub>", $showthis);                    # All numbers down
+	$showthis = preg_replace("/[\+\-]/", "<sup>$0</sup>", $showthis);                    # + and - up
+	$showthis = preg_replace("/<\/sub><sup>/", "", $showthis);                           # </sub><sup> should not occur
+	$showthis = preg_replace("/<sub>([0-9\+\-]+)<\/sup>/", "<sup>$1</sup>", $showthis);  # and <sub>whatever</sup> to <sup>..</sup>
 
-    $showthis = htmlentities( Sanitizer::StripAllTags ( $showthis ) );                   # tagstripping
-    $showthis = preg_replace("/[0-9]+/", "<sub>$0</sub>", $showthis);                    # All numbers down
-    $showthis = preg_replace("/[\+\-]/", "<sup>$0</sup>", $showthis);                    # + and - up
-    $showthis = preg_replace("/<\/sub><sup>/", "", $showthis);                           # </sub><sup> should not occur
-    $showthis = preg_replace("/<sub>([0-9\+\-]+)<\/sup>/", "<sup>$1</sup>", $showthis);  # and <sub>whatever</sup> to <sup>..</sup>
+	$searchfor = htmlentities( Sanitizer::StripAllTags ( $searchfor ) );
 
-    $searchfor = htmlentities( Sanitizer::StripAllTags ( $searchfor ) );
+	if (! ( $showthis . $searchfor ) )
+		return wfMsg('chemFunctions_ChemFormInputError');
 
-    if (! ( $showthis . $searchfor ) ) 
-        return wfMsg('chemFunctions_ChemFormInputError');
+	if ( $link ) {
+		$title = Title::makeTitleSafe( NS_SPECIAL, 'Chemicalsources' );
+		$output = "<a href=\"" . $title->getFullUrl() . "?Formula=" . $searchfor .  "\">" . $showthis . "</a>";
+	} elseif ( $wikilink) {
+		$title = Title::makeTitleSafe( NS_MAIN, $searchfor );
 
-    if ( $link ) {
-        $title = Title::makeTitleSafe( NS_SPECIAL, 'Chemicalsources' );
-        $output = "<a href=\"" . $title->getFullUrl() . "?Formula=" . $searchfor .  "\">" . $showthis . "</a>";
-    } elseif ( $wikilink) {
-        $title = Title::makeTitleSafe( NS_MAIN, $searchfor );
-        if ($title) {
-            $revision = Revision::newFromTitle( $title );
-            if ($revision ) {
-               $output = "<a href=\"" . $title->getFullUrl() . "\">" . $showthis . "</a>";
-            } else {
-               $output = "<a href=\"" . $title->getFullUrl() . "?action=edit\" class=\"new\">" . $showthis . "</a>";
-            }
-        } else {
-            $output = wfMsg('chemFunctions_ChemFormInputError');
-        }
-    } else {
-        $output = $showthis;
-    }
+		if ($title) {
+			$revision = Revision::newFromTitle( $title );
 
-    return $output;
+			if ($revision ) {
+				$output = "<a href=\"" . $title->getFullUrl() . "\">" . $showthis . "</a>";
+			} else {
+				$output = "<a href=\"" . $title->getFullUrl() . "?action=edit\" class=\"new\">" . $showthis . "</a>";
+			}
+		} else {
+			$output = wfMsg('chemFunctions_ChemFormInputError');
+		}
+	} else {
+		$output = $showthis;
+	}
+
+	return $output;
 }
-
-#End of php.
-
