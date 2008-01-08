@@ -70,12 +70,7 @@ class SpecialForm extends SpecialPage
 		global $wgMessageCache;
 
 		if ( $messagesLoaded ) return true;
-
-		require( dirname( __FILE__ ) . '/SpecialForm.i18n.php' );
-		foreach ( $SpecialFormMessages as $lang => $langMessages ) {
-			$wgMessageCache->addMessages( $langMessages, $lang );
-		}
-
+		wfLoadExtensionMessages('SpecialForm');
 		$messagesLoaded = true;
 
 		return true;

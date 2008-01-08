@@ -27,7 +27,9 @@ if (!defined('MEDIAWIKI')) {
 
 define('SPECIALFORM_VERSION', '0.2');
 
-$wgAutoloadClasses['SpecialForm'] = dirname(__FILE__) . '/SpecialForm.body.php'; # Tell MediaWiki to load the extension body.
+$dir = dirname(__FILE__) . '/';
+$wgAutoloadClasses['SpecialForm'] = $dir . '/SpecialForm.body.php'; # Tell MediaWiki to load the extension body.
+$wgExtensionMessagesFiles['SpecialForm'] = $dir . 'SpecialForm.i18n.php'; #Load internationalization file
 $wgSpecialPages['Form'] = 'SpecialForm'; # Let MediaWiki know about your new special page.
 $wgHooks['LoadAllMessages'][] = 'SpecialForm::loadMessages'; # Load the internationalization messages for your special page.
 $wgHooks['LanguageGetSpecialPageAliases'][] = 'formLocalizedPageName'; # Add any aliases for the special page.
