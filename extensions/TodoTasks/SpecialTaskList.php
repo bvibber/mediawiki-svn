@@ -38,17 +38,18 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 $wgUseProjects = true;
-
-$wgAutoloadClasses['TaskList'] = dirname(__FILE__) . '/SpecialTaskList_body.php';
+$dir = dirname(__FILE__) . '/';
+$wgAutoloadClasses['TaskList'] = $dir . 'SpecialTaskList_body.php';
+$wgExtensionMessagesFiles['TaskList'] = $dir . 'SpecialTaskList.i18n.php';
 $wgSpecialPages['TaskList'] = 'TaskList';
 if ($wgUseProjects) {
-    $wgAutoloadClasses['TaskListByProject'] = dirname(__FILE__) . '/SpecialTaskList_body.php';
+    $wgAutoloadClasses['TaskListByProject'] = $dir . 'SpecialTaskList_body.php';
     $wgSpecialPages['TaskListByProject']   = 'TaskListByProject';
 }
 $wgHooks['LoadAllMessages'][] = 'TaskList::loadMessages';
 $wgHooks['LoadAllMessages'][] = 'TaskListByProject::loadMessages';
 
-require_once(dirname(__FILE__) . '/SpecialTaskList_body.php');
+require_once($dir . 'SpecialTaskList_body.php');
 
 $wgHooks['PersonalUrls'][]             = 'addPersonalUrl';
 $wgHooks['AlternateEdit'][]            = 'todoPreviewAction';

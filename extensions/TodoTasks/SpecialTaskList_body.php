@@ -5,11 +5,7 @@ function TaskListLoadMessages() {
     global $wgMessageCache;
     if ($messagesLoaded) return;
         $messagesLoaded = true;
-
-    require(dirname(__FILE__) . '/SpecialTaskList.i18n.php' );
-    foreach ( $allMessages as $lang => $langMessages ) {
-        $wgMessageCache->addMessages( $langMessages, $lang );
-    }
+	wfLoadExtensionMessages('TaskList');    
 }
 
 function wfMsgTL($key) {
