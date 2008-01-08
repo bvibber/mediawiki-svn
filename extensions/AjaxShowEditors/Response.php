@@ -98,9 +98,8 @@ function wfAjaxShowEditors( $articleId, $username ) {
 				$editor->editings_user
 			);
 
-		wfAjaxShowEditorsLoadI18n();
+		wfLoadExtensionMessages( 'AjaxShowEditors' );
 		$wikitext .= ' ' . wfMsg( 'ajax-se-idling', '<span>'.$idle.'</span>' );
 	}
 	return $wikitext ;
 }
-

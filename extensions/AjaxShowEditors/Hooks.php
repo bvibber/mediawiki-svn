@@ -63,7 +63,7 @@ function wfAjaxShowEditorsAddJS( $out ) {
 function wfAjaxShowEditorsShowBox( ) {
 	global $wgOut;
 
-	wfAjaxShowEditorsLoadI18n();
+	wfLoadExtensionMessages( 'AjaxShowEditors' );
 
 	$wgOut->addWikiText(
 		'<div id="ajax-se"><p id="ajax-se-title">'.wfMsg('ajax-se-title').'</p>'
@@ -72,4 +72,3 @@ function wfAjaxShowEditorsShowBox( ) {
 		);
 	return true;
 }
-
