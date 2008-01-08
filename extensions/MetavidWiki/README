@@ -1,88 +1,52 @@
-Early version of the metavid wiki extension. More documentation to follow
+Early version of the metavid wiki extension. More documentation to follow.
+
+==Short technical Description==
+Metavid builds off of semantic mediaWiki but is not dependent on it. Its
+just a matter of how structured you want your metadata ;) Also needs
+the parserFunctions extension as well as ExtensionFunctions.php
+
+Metavid Wiki adds the following namespaces:
+MV_NS_STREAM : The base namespace for media with temporal meta data.
+    It manages stream file sets, and top level metadata for the stream.
+MV_NS_MVD : The namespace for temporal metadata. Nodes in this namespace
+    follow the following format Stream_Name:mvd_type:time_start/time_end
+MV_NS_SEQUENCE : The namespace for view/editing sequences/playlists.
+
+The Search functionality is extended to do basic metadata queries and
+return media results. (ie a category query can return all mvd chunks
+in a given category range.
+
+Categories are extended to include streams, video segments and sequences.
+Categories are also extended to support rss video feed export.
+
+Mv_Embed is a more or less stand alone javascript library for playing back
+video in the browser. It extends oggHanndlers  It also supports basic sequces
+via rss, xspf or m3u formats
+
 
 ==add to local settings.php ==
-ParserFunctions are nessesary 
+ParserFunctions are necessary
 require_once( "$IP/extensions/ParserFunctions/ParserFunctions.php" );
 
 //set up namespace:
 $smwgNamespaceIndex=100;
 //set metavid namespace to smw namespace + 6
-$mvNamespaceIndex=$smwgNamespaceIndex + 6; 
+$mvNamespaceIndex=$smwgNamespaceIndex + 6;
 include_once("$IP/extensions/MetavidWiki/includes/MV_Settings.php");
 
 //include SemanticMediaWiki settings
 include_once("$IP/extensions/SemanticMediaWiki/includes/SMW_Settings.php");
 enableSemantics('localhost');
 
-//include affter enableSemantics to enable metavid Extention semantic wiki overides
+//include after enableSemantics to enable metavid Extension semantic wiki overrides
 enableMetavid();
 
 
-
-
-== base templates == 
-These base Templates should be added as well: 
-~make sure to run the parser hook extension ~
-
-~~Template:Ht_en~~
-<noinclude>
-This is the default Template for the display of transcript text. 
-</noinclude><includeonly>{{ #if:  {{{PersonName|}}} | {{ #ifexist: Image:{{{PersonName}}}.jpg | [[Image:{{{PersonName}}}.jpg|44px|left]]|[[Image:Missing person.jpg|44px|left]]}}[[{{{PersonName}}}]]: |}}{{{BodyText}}}
-</includeonly>
-
+== base templates ==
+These base Templates (for structuring output of metadata) can be added by running the
+maintenance/metavid2mvWiki.php with the "update_templates" option.
 
 
 ==sql that must be run on install==
-
-(will eventually be installed via the admin) 
-
-DROP TABLE IF EXISTS `mv_mvd_index`;
-CREATE TABLE `mv_mvd_index` (
-  `id` int(10) unsigned NOT NULL auto_increment,
-  `wiki_title` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `mvd_type` varchar(32) collate utf8_unicode_ci NOT NULL,
-  `stream_id` int(11) NOT NULL,
-  `start_time` int(7) unsigned NOT NULL,
-  `end_time` int(7) unsigned default NULL,
-  `text` text collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`id`),
-  UNIQUE KEY `wiki_title` (`wiki_title`),
-  KEY `mvd_type` (`mvd_type`),
-  KEY `stream_id` (`stream_id`),
-  KEY `stream_time_start` (`start_time`,`end_time`),
-  FULLTEXT KEY `text` (`text`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='metavid data index';
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `mv_streams`
--- 
-DROP TABLE IF EXISTS `mv_streams`;
-CREATE TABLE `mv_streams` (
-`id` int( 10 ) unsigned NOT NULL AUTO_INCREMENT ,
-`name` varchar( 48 ) COLLATE utf8_unicode_ci NOT NULL ,
-`formats` varchar( 255 ) COLLATE utf8_unicode_ci default NULL ,
-`state` enum( 'available', 'available_more_otw', 'live', 'otw', 'failed' ) COLLATE utf8_unicode_ci default NULL ,
-`date_start_time` int( 10 ) default NULL ,
-`duration` int( 7 ) default NULL ,
-UNIQUE KEY `id` ( `id` ) ,
-UNIQUE KEY `name` ( `name` ) ,
-KEY `adj_start_time` ( `date_start_time` ) ,
-KEY `state` ( `state` )
-) ENGINE = InnoDB AUTO_INCREMENT =1 DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci;
-
---
--- Table structure for table `mv_stream_files`
---
-DROP TABLE IF EXISTS `mv_stream_files`;
-CREATE TABLE IF NOT EXISTS `mv_stream_files` (
-  `id` int(10) unsigned NOT NULL auto_increment,
-  `stream_id` int(10) unsigned NOT NULL,
-  `path_type_desc_msg` varchar(255) character set utf8 collate utf8_unicode_ci NOT NULL,
-  `path_type` enum('local_mvprime','local_cap1','ext_cspan','ext_archive_org','ext_url') character set utf8 collate utf8_unicode_ci NOT NULL,
-  `path` text character set utf8 collate utf8_unicode_ci NOT NULL,
-  UNIQUE KEY `id` (`id`),
-  KEY `stream_id` (`stream_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='base urls for path types are hard coded' AUTO_INCREMENT=1 ;
-
+Have to update some tables: maintenance/updateTables.sql
+ (will eventually be just one "update" script and integrated into the web based metavid admin)
