@@ -17,7 +17,11 @@ if( !defined( 'MEDIAWIKI' ) ) {
 if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 }
-extAddSpecialPage( dirname(__FILE__) . '/PurgeCache_body.php', 'PurgeCache', 'PurgeCache' );
+
+$dir = dirname(__FILE__) . '/';
+extAddSpecialPage( $dir . 'PurgeCache_body.php', 'PurgeCache', 'PurgeCache' );
+$wgExtensionMessagesFiles['PurgeCache'] = $dir . 'PurgeCache.i18n.php';
+
 
 $wgAvailableRights[] = 'purgecache';
 $wgGroupPermissions['developer']['purgecache'] = true;
