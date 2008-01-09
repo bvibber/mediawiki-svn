@@ -13,13 +13,13 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Cross-namespace links',
+	'version' => '2008-01-09',
 	'description' => 'lists links across namespaces that shouldn\'t exist on Wikimedia projects',
-	'author' => 'Ævar Arnfjörð Bjarmason'
+	'author' => 'Ævar Arnfjörð Bjarmason',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:CrossNamespaceLinks',
 );
 
-# Internationalisation file
-require_once( 'SpecialCrossNamespaceLinks.i18n.php' );
-
+$wgExtensionMessagesFiles['CrossNamespaceLinks'] = dirname(__FILE__) . '/SpecialCrossNamespaceLinks.i18n.php';
 $wgHooks['wgQueryPages'][] = 'wfSpecialCrossNamespaceLinksHook';
 
 if ( !function_exists( 'extAddSpecialPage' ) ) {
@@ -28,18 +28,14 @@ if ( !function_exists( 'extAddSpecialPage' ) ) {
 extAddSpecialPage( dirname(__FILE__) . '/SpecialCrossNamespaceLinks_body.php', 'CrossNamespaceLinks', 'CrossNamespaceLinks' );
 
 function wfSpecialCrossNamespaceLinksHook( &$QueryPages ) {
-	# Add messages
-	global $wgMessageCache, $wgCrossNamespaceLinksMessages;
-	foreach( $wgCrossNamespaceLinksMessages as $key => $value ) {
-		$wgMessageCache->addMessages( $wgCrossNamespaceLinksMessages[$key], $key );
-	}
-	
+	wfLoadExtensionMessages( 'CrossNamespaceLinks' );
+
 	$QueryPages[] = array(
 		'CrossNamespaceLinksPage',
 		'CrossNamespaceLinks',
 		// Would probably be slow on large wikis -ævar
 		//false
 	);
-	
+
 	return true;
 }
