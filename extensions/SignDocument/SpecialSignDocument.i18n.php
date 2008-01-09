@@ -881,6 +881,91 @@ Ch\'a varda che sò dat a sio giust, e che i peulo contatela për verifiché soa
 		'sign-viewfield-realname' => 'Num',
 	),
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+	'sk' => array(
+		'signdocument'                    => 'Podpísať dokument',
+		'sign-nodocselected'              => 'Prosím, zvoľte dokument, ktorý chcete podpísať.',
+		'sign-selectdoc'                  => 'Dokument:',
+		'sign-docheader'                  => '<div class="noarticletext">Prosím, použite tento formulár na podpísanie dolu zobrazeného dokumentu „[[$1]]“. Prosím, prečítajte si celý dokument a ak chcete vyjadriť jeho podporu, vyplňte prosím požadované polia, aby mohol byť podpísaný.</div>',
+		'sign-error-nosuchdoc'            => 'Dokument, ktorý ste vyžiadali ($1) neexistuje.',
+		'sign-realname'                   => 'Meno:',
+		'sign-address'                    => 'Adresa:',
+		'sign-city'                       => 'Mesto:',
+		'sign-state'                      => 'Štát:',
+		'sign-zip'                        => 'PSČ:',
+		'sign-country'                    => 'Krajina:',
+		'sign-phone'                      => 'Telefónne číslo:',
+		'sign-bday'                       => 'Vek:',
+		'sign-email'                      => 'Emailová adresa:',
+		'sign-indicates-req'              => '<small><i><font color="red">*</font> označuje povinné polia.</i></small>',
+		'sign-hide-note'                  => '<small><i><font color="red">**</font> Pozn.: Informácie, ktoré sa nezobrazujú budú aj tak viditeľné moderátorom.</i></small>',
+		'sign-list-anonymous'             => 'Uviesť anonymne',
+		'sign-list-hideaddress'           => 'Neuvádzať adresu',
+		'sign-list-hideextaddress'        => 'Neuvádzať mesto, štát, PSČ a krajinu',
+		'sign-list-hidephone'             => 'Neuvádzať telefón',
+		'sign-list-hidebday'              => 'Neuvádzať vek',
+		'sign-list-hideemail'             => 'Neuvádzať email',
+		'sign-submit'                     => 'Podpísať dokument',
+		'sign-information'                => '<div class="noarticletext">Ďakujeme, že ste si našli čas prečítať tento dokument. Ak s jeho obsahom súhlasíte, prosím vyjadrite svoju podporu tým, že nižšie vyplníte požadované polia a kliknete na „Podpísať dokument“. Prosím, uistite sa, že vaše osobné údaje sú správne uvedené a že ste nám poskytli spôsob, ako vás kontaktovať pre overenie vašej identity. Majte na pamäti, že vaša [[wikipedia:sk:IP adresa|IP adresa]] a iné identifikačné informáce budú zaznamenané s týmto formulárom a moderátori ich použijú na elimináciu dvojitých podpisov a potvrdenie správnosti vašich osobných údajov. Keďže používanie otvorených a anonymných proxy serverov bráni našej schopnosti vykonávať túto úlohu, podpisy z takýcto proxy pravdepodobne nebudú započítané. Ak ste momentálne pripojený prostredníctvom proxy, odpojte sa prosím a použite pri podpisovaní priame pripojenie.. <br /><br /> $1',
+		'sig-success'                     => 'Úspešne ste podpísali dokument',
+		'sign-view-selectfields'          => '<b>Zobrazované polia:</b>',
+		'sign-viewfield-entryid'          => 'ID záznamu',
+		'sign-viewfield-timestamp'        => 'Časová známka',
+		'sign-viewfield-realname'         => 'Meno',
+		'sign-viewfield-address'          => 'Adresa',
+		'sign-viewfield-city'             => 'Mesto',
+		'sign-viewfield-state'            => 'Štát',
+		'sign-viewfield-country'          => 'Krajina',
+		'sign-viewfield-zip'              => 'PSČ',
+		'sign-viewfield-ip'               => 'IP adresa',
+		'sign-viewfield-agent'            => 'Prehliadač',
+		'sign-viewfield-phone'            => 'Telefón',
+		'sign-viewfield-email'            => 'Email',
+		'sign-viewfield-age'              => 'Vek',
+		'sign-viewfield-options'          => 'Voľby',
+		'sign-viewsigs-intro'             => 'Dolu zobrazené sú zaznamenané podpisy <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
+		'sign-sigadmin-currentlyopen'     => 'Pre tento dokument je momentálne pospisovanie zapnuté.',
+		'sign-sigadmin-close'             => 'Vypnúť podpisovanie',
+		'sign-sigadmin-currentlyclosed'   => 'Podpisovanie pre tento dokument je momentálne vypnuté.',
+		'sign-sigadmin-open'              => 'Zapnúť podpisovanie',
+		'sign-signatures'                 => 'Podpisy',
+		'sign-sigadmin-closesuccess'      => 'Podpisovanie je úspešne vypnuté.',
+		'sign-sigadmin-opensuccess'       => 'Podpisovanie je úspešne zapnuté.°',
+		'sign-viewsignatures'             => 'zobraziť podpisy',
+		'sign-closed'                     => 'zatvorené',
+		'sign-error-closed'               => 'Podpisovanie pre tento dokument je momentálne vypnuté.',
+		'sig-anonymous'                   => '<i>anonym</i>',
+		'sig-private'                     => '<i>súkromné</i>',
+		'sign-sigdetails'                 => 'Podrobnosti podpisu',
+		'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
+		'sign-iptools'                    => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|diskusia]] • <!--
+-->[[Special:Contributions/$1|príspevky]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:Blockip/$1|zablokovať používateľa]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} záznam blokovaní] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} kontrola ip])<!--
+--></span>',
+		'sign-viewfield-stricken'         => 'Vyčiarknuté',
+		'sign-viewfield-reviewedby'       => 'Kontrolór',
+		'sign-viewfield-reviewcomment'    => 'Komentár',
+		'sign-detail-uniquequery'         => 'Podobné entity',
+		'sign-detail-uniquequery-run'     => 'Spustiť požiadavku',
+		'sign-detail-strike'              => 'Vyčiarknuť podpis',
+		'sign-reviewsig'                  => 'Skontrolovať podpis',
+		'sign-review-comment'             => 'Komentár',
+		'sign-submitreview'               => 'Odoslať kontrolu',
+		'sign-uniquequery-similarname'    => 'Podobné meno',
+		'sign-uniquequery-similaraddress' => 'Podobná adresa',
+		'sign-uniquequery-similarphone'   => 'Podobný telefón',
+		'sign-uniquequery-similaremail'   => 'Podobný email',
+		'sign-uniquequery-1signed2'       => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] podpísal [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
+	),
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

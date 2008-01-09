@@ -149,6 +149,23 @@ $messages['bg'] = array(
 	'grouppage-steward' => '{{ns:project}}:Стюарди',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'setbureaucratflag'    => 'আমলা চিহ্নিত করা হোক',
+	'rights'               => 'অধিকারগুলি:',
+	'set_user_rights'      => 'ব্যবহারকারীর অধিকার সেট করা হোক',
+	'user_rights_set'      => '<b>"$1"-এর জন্য ব্যবহারকারীর অধিকারগুলি হালনাগাদ করা হয়েছে</b>',
+	'set_rights_fail'      => '<b>"$1"-এর জন্য ব্যবহারকারী অধিকারগুলি সেট করা যায়নি। (আপনি কি নামটি ঠিকমত প্রবেশ করিয়েছিলেন?)</b>',
+	'makesysop'            => 'একজন ব্যবহারকারীকে প্রশাসক বানানো হোক',
+	'already_sysop'        => 'এই ব্যবহারকারী ইতিমধ্যেই একজন প্রশাসক',
+	'already_bureaucrat'   => 'এই ব্যবহারকারী ইতিমধ্যেই একজন আমলা',
+	'group-steward'        => 'স্টিউয়ার্ডগণ',
+	'group-steward-member' => 'স্টিউয়ার্ড',
+	'grouppage-steward'    => '{{ns:project}}:স্টিউয়ার্ডগণ',
+);
+
 $messages['bpy'] = array(
 	'already_sysop'         => 'আতাকুরা এগ এচুদিনে ডান্ডি(প্রশাসক)গ ইয়াপরিলগাহে',
 	'already_bureaucrat'    => 'আতাকুরা এগ এচুদিনে ব্যুরোক্র্যাটগ ইয়াপরিলগাহে',
@@ -1228,24 +1245,24 @@ $messages['sd'] = array(
 );
 
 /** Slovak (Slovenčina)
- * @author Robbot
  * @author Helix84
+ * @author Robbot
  */
 $messages['sk'] = array(
 	'makesysoptitle'           => 'Urob z používateľa správcu',
-	'makesysoptext'            => 'Tento formulár je používaný byrokratmi na udelenie stavu správca používateľom.
+	'makesysoptext'            => 'Tento formulár je používaný byrokratmi na udelenie stavu správca používateľom. 
 Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na správcu.',
 	'makesysopname'            => 'Meno používateľa:',
 	'makesysopsubmit'          => 'Urob z tohto redaktora správcu',
-	'makesysopok'              => '<b>Redaktor "$1" je teraz správcom(sysop)</b>',
-	'makebureaucratok'         => '<b>Používateľ "$1" je teraz byrokrat</b>',
-	'makesysopfail'            => '<b>Redaktor "$1" nemôže byť správcom. (Zadali ste meno správne?)</b>',
+	'makesysopok'              => '<b>Redaktor „$1“ je teraz správcom(sysop)</b>',
+	'makebureaucratok'         => '<b>Používateľ „$1“ je teraz byrokrat</b>',
+	'makesysopfail'            => '<b>Redaktor „$1“ nemôže byť správcom. (Zadali ste meno správne?)</b>',
 	'makesysop-see-userrights' => 'Pozri viac volieb na stránke [[Special:Userrights]].',
 	'setbureaucratflag'        => 'Nastav príznak byrokrat',
 	'rights'                   => 'Práva:',
 	'set_user_rights'          => 'Nastav redaktorove práva',
 	'user_rights_set'          => '<b>Práva používateľa „$1“ aktualizované</b>',
-	'set_rights_fail'          => '<b>Redaktorove práva pre "$1" nemohli byť nastavené. (zadali ste meno správne?)</b>',
+	'set_rights_fail'          => '<b>Práva používateľa „$1“ nemohli byť nastavené. (Zadali ste meno správne?)</b>',
 	'makesysop'                => 'Urob z používateľa správcu',
 	'already_sysop'            => 'Tento používateľ už je správca',
 	'already_bureaucrat'       => 'Tento používateľ už je byrokrat',
@@ -1648,17 +1665,12 @@ $messages['zh-hant'] = array(
 	'grouppage-steward'    => '{{ns:project}}:監管員',
 );
 
-/* Kazakh fallbacks */
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
 $messages['kk-tr'] = $messages['kk-latn'];
-
-/* Chinese defaults, fallback to zh-hans */
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];
 $messages['zh-sg'] = $messages['zh-hans'];
 $messages['zh-tw'] = $messages['zh-hant'];
-
-/* Cantonese default, fallback to yue */
 $messages['zh-yue'] = $messages['yue'];

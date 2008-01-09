@@ -396,11 +396,13 @@ $wgFilepathMessages['pt'] = array(
 
 	Entre com o nome do ficheiro sem utilizar o prefixo "{{ns:image}}:".',
 );
+
 $wgFilepathMessages['pt-br'] = array(
 	'filepath'        => 'Diretório do arquivo',
 	'filepath_page'   => 'Arquivo:',
 	'filepath_submit' => 'Diretório',
 );
+
 $wgFilepathMessages['ru'] = array(
 	'filepath'        => 'Путь к файлу',
 	'filepath_page'   => 'Файл:',
@@ -409,29 +411,38 @@ $wgFilepathMessages['ru'] = array(
 
 	Введите имя файла без префикса <code>{{ns:image}}:</code>.',
 );
+
+/** Slovak (Slovenčina)
+ * @author Robbot
+ * @author Helix84
+ */
 $wgFilepathMessages['sk'] = array(
-	'filepath'        => 'Cesta k súboru',
-	'filepath_page'   => 'Súbor:',
-	'filepath_submit' => 'Cesta',
+	'filepath'         => 'Cesta k súboru',
+	'filepath_page'    => 'Súbor:',
+	'filepath_submit'  => 'Cesta',
 	'filepath-summary' => 'Táto špeciálna stránka vráti úplnú cestu k súboru. Obrázky sa zobrazia v plnom rozlíšení, ostatné typy súborov sa spustia v príslušnom priradenom programe.
 	
-	Zadajte názov súboru bez predpony "{{ns:image}}:".',
+	Zadajte názov súboru bez predpony „{{ns:image}}:“.',
 );
+
 $wgFilepathMessages['sq'] = array(
 	'filepath'        => 'Vendndodhja e skedave',
 	'filepath_page'   => 'Skeda:',
 	'filepath_submit' => 'Shko',
 );
+
 $wgFilepathMessages['sr-ec'] = array(
 	'filepath'        => 'Путања фајла',
 	'filepath_page'   => 'Фајл:',
 	'filepath_submit' => 'Путања',
 );
+
 $wgFilepathMessages['sr-el'] = array(
 	'filepath'        => 'Putanja fajla',
 	'filepath_page'   => 'Fajl:',
 	'filepath_submit' => 'Putanja',
 );
+
 $wgFilepathMessages['sr'] = $wgFilepathMessages['sr-ec'];
 
 /** Seeltersk (Seeltersk)
@@ -449,6 +460,7 @@ $wgFilepathMessages['su'] = array(
 	'filepath_page'   => 'Koropak:',
 	'filepath_submit' => 'Jalur',
 );
+
 $wgFilepathMessages['sv'] = array(
 	'filepath'         => 'Sökväg till fil',
 	'filepath_page'    => 'Fil:',

@@ -359,6 +359,37 @@ Për piasì, ch'a varda d'avej controlà sò test coma ch'as dev anans che mande
 		'createsigndoc-success'           => "La procedura për buté an firma [[$1]] a l'é andaita a bonfin. Për provela, për piasì ch'a varda [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} ambelessì].",
 	),
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+	'sk' => array(
+		'createsigndocument'              => 'Zapnúť podpisovanie dokumentov',
+		'createsigndoc-head'              => "Tento formulár slúži na vytvorenie stránky „Podpísať dokument“ pre uvedenú stránku, aby
+ju používatelia mohli podpisovať pomocou [[Special:SignDocument]]. Prosím, uveďte názov
+stránky, na ktorej chcete zapnúť digitálne podpisovanie, členovia ktorých skupín ju budú
+môcť podpisovať a, ktoré polia budú viditeľné používateľom a ktoré by mali byť voliteľné,
+minimálny vek, ktorý je požadovaný na podpísanie dokumentu (ak údaj vynecháte, nebude
+vyžiadovaný žiadny minimálny vek) a stručný úvodný text popisujúci dokument a poskytujúci
+používateľom inštrukcie.
+
+<b>Momentálne neexistuje spôsob ako zmazať alebo zmeniť podpisované dokumenty potom, ako boli vytvorené</b> bez použitia priameho prístupu do databázy. Naviac text stránky zobrazený na stránke podpisov bude ''aktuálny'' text stránky, nezávisle na zmenách, ktoré v ňom od dnes nastanú. Prosím, buďte si absolútne istý, že uvádzate všetky polia presne ako by mali byť ''predtým než odošlete formulár''.",
+		'createsigndoc-pagename'          => 'Stránka:',
+		'createsigndoc-allowedgroup'      => 'Povolená skupina:',
+		'createsigndoc-email'             => 'Emailová adresa:',
+		'createsigndoc-address'           => 'Domáca adresa:',
+		'createsigndoc-extaddress'        => 'Mesto, štát, krajina:',
+		'createsigndoc-phone'             => 'Telefónne číslo:',
+		'createsigndoc-bday'              => 'Dátum narodenia:',
+		'createsigndoc-minage'            => 'Minimálny vek:',
+		'createsigndoc-introtext'         => 'Úvodný text:',
+		'createsigndoc-hidden'            => 'Skryté',
+		'createsigndoc-optional'          => 'Voliteľné',
+		'createsigndoc-create'            => 'Vytvoriť',
+		'createsigndoc-error-generic'     => 'Chyba: $1',
+		'createsigndoc-error-pagenoexist' => 'Chyba: Stránka [[$1]] neexistuje.',
+		'createsigndoc-success'           => 'Podpisovanie dokumentov bolo úspešne zapnuté pre stránku  [[$1]]. Otestovať ho môžete na [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} tejto stránke].',
+	),
+
 	'ss' => array(
 		'createsigndoc-phone' => 'Inombolo yelucingo:',
 		'createsigndoc-create' => 'Kúdála',

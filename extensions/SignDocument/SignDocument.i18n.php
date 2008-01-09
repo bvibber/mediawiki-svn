@@ -60,6 +60,15 @@ $allMessages = array(
 		'signaturelogentry' => 'a l\'é firmasse ël document $1',
 	),
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+	'sk' => array(
+		'signaturelogpage'     => 'Záznam podpisov',
+		'signaturelogpagetext' => 'Toto je záznam všetkých podpisov, ktoré boli pridané do dokumentov prostredníctvom [[Special:SignDocument]].',
+		'signaturelogentry'    => 'podpísal dokument $1',
+	),
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

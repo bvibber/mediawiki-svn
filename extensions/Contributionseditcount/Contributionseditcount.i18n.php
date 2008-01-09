@@ -95,6 +95,13 @@ function efContributionseditcountMessages()  {
 	'contributionseditcount' => 'Бу кыттааччы $1 көннөрүүлээх.',
 ),
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+'sk' => array(
+	'contributionseditcount' => 'Tento používateľ má $1 úprav.',
+),
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -54,6 +54,16 @@ $wgNewuserlogMessages['bg'] = array(
 	'newuserlog-create2-entry' => 'създаде сметка за $1',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$wgNewuserlogMessages['bn'] = array(
+	'newuserlogpage'           => 'ব্যবহারকারী সৃষ্টি লগ',
+	'newuserlogpagetext'       => 'এটি নতুন ব্যবহারকারী সৃষ্টির লগ',
+	'newuserlog-create-entry'  => 'নতুন ব্যবহারকারী',
+	'newuserlog-create2-entry' => '$1-এর জন্য অ্যাকাউন্ট সৃষ্টি করা হয়েছে',
+);
+
 $wgNewuserlogMessages['br'] = array(
 	'newuserlog-create-entry'  => 'Implijer nevez',
 );

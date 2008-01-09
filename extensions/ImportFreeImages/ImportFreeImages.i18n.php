@@ -31,11 +31,13 @@ function efImportFreeImagesMessages() {
 		),
 
 /** Bulgarian (Български)
- * @author Spiritia
  * @author DCLXVI
+ * @author Spiritia
  */
 		'bg' => array(
+			'importfreeimages'                       => 'Внасяне на свободни картинки',
 			'importfreeimages_description'           => 'Тази страница позволява търсенето на подходящо лицензирани картинки от flickr и качването им в уикито.',
+			'importfreeimages_noapikey'              => 'Не е конфигуриран Flickr API ключ. Такъв API ключ може да се получи [http://www.flickr.com/services/api/misc.api_keys.html оттук], след което е необходимо да се настрои wgFlickrAPIKey в ImportFreeImages.php.',
 			'importfreeimages_nophotosfound'         => "Не бяха открити резултати за търсенето ви по критерия '$1'. Моля, опитайте отново.",
 			'importfreeimages_owner'                 => 'Автор',
 			'importfreeimages_next'                  => 'Следващи $1',

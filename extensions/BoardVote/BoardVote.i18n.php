@@ -286,6 +286,19 @@ $messages['bg'] = array(
 	'boardvote_welcome'      => "Здравейте, '''$1'''!",
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'boardvote'              => 'উইকিমিডিয়া বোর্ড অফ ট্রাটিজ-এর নির্বাচন',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|ভোট দিন]]
+* [[Special:Boardvote/list|এ পর্যন্ত দেওয়া ভোটের তালিকা]]
+* [[Special:Boardvote/dump|গুপ্তায়িত নির্বাচন রেকর্ড ডাম্প করা হোক]]',
+	'group-boardvote'        => 'বোর্ড নির্বাচন প্রশাসকগণ',
+	'group-boardvote-member' => 'বোর্ড নির্বাচন প্রশাসক',
+	'grouppage-boardvote'    => '{{ns:project}}:বোর্ড নির্বাচন প্রশাসকগণ',
+);
+
 $messages['br'] = array(
 	'boardvote'               => 'Dilennadeg Kuzul-merañ Diazezadur Wikimedia',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Vot]]
@@ -2168,6 +2181,25 @@ $messages['sk'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Hlasovať]]
 * [[Special:Boardvote/list|Zobraziť doterajšie hlasy]]
 * [[Special:Boardvote/dump|Vypísať kryptovaný záznam volieb]]',
+	'boardvote_intro'        => '<p>Vitajte v druhých voľbách do Rady správcov Wikimedia. Hlasujeme za
+dvoch ľudí, ktorí budú reprezentovať komunitu používateľov rozličných
+projektov Wikimedia. Pomôžu určiť budúce smerovanie projektov Wikimedia,
+ako jednotlivci a ako skupina, a budú reprezentovať <em>vaše</em>
+záujmy v Rade správcov. Budú rozhodovať o spôsoboch tvorby zisku
+a rozdelení získaných peňazí.</p>
+
+<p>Prosím, prečítajte si pozorne vyhlásenia kandidátov a ich odpovede predtým,
+než zahlasujete. Každý z kandidátov je rešpektovaný používateľ, ktorý prispel
+nezanedbateľným časom a snahou urobiť z týchto projektov príjemné prostredie
+oddané zbieraniu a šíreniu ľudského poznania.</p>
+
+<p>Môžete hlasovať za toľko kandidátov, koľko chcete. Kandidát s najväčším
+počtom hlasov hlasov na každej pozícii bude vyhlásený za víťaza danej
+pozície. V prípade remízy sa bude konať ďalšia voľba medzi nimi.</p>
+
+<p>Viac informácií nájdete na:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">Často kladené otázky o voľbách</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006" class="external">Kandidáti</a></li></ul>',
 	'boardvote_intro_change' => '<p>Už ste hasovali. Môžete však zmeniť svoj hlas vo formulári dolu. Prosím, označte pole pri každom kandidátovi, ktorého schvaľujete.</p>',
 	'boardvote_entered'      => 'Ďakujeme, váš hlas bol zaznamenaný.
 

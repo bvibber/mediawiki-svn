@@ -28,14 +28,20 @@ $messages['af'] = array(
 	'expandtemplates'                  => 'Brei sjablone uit',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ * @author Mido
+ */
 $messages['ar'] = array(
 	'expandtemplates'                  => 'فرد القوالب',
 	'expand_templates_intro'           => 'تتعامل هذه الصفحة الخاصة مع نصوص الويكي وتقوم بفرد كل القوالب الموجودة به. وتقوم أيضا بفرد دوال القوالب مثل <nowiki>{{</nowiki>#if:...}}, و المتغيرات مثل <nowiki>{{</nowiki>يوم}}-- و تقوم التعامل مع كل ما بين الأقواس المزدوجة. و تقوم بفعل هذا عن طريق استدعاء المعالج المناسب من الميدياويكي.',
 	'expand_templates_title'           => 'عنوان صفحة هذا النص، لأجل معالجة {{PAGENAME}} إلخ.:',
 	'expand_templates_input'           => 'النص المدخل (الأصلي)',
 	'expand_templates_output'          => 'النتيجة',
+	'expand_templates_xml_output'      => 'خرج XML',
 	'expand_templates_ok'              => 'موافق',
 	'expand_templates_remove_comments' => 'إزالة التعليقات',
+	'expand_templates_generate_xml'    => 'اعرض شجرة XML parse',
 	'expand_templates_preview'         => 'عرض',
 );
 
@@ -189,8 +195,10 @@ tâles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}}, sont
 	'expand_templates_title'           => 'Titro de l’articllo, utilo per ègzemplo se lo modèlo utilise {{PAGENAME}} :',
 	'expand_templates_input'           => 'Entrâd voutron tèxte ique :',
 	'expand_templates_output'          => 'Rèsultat',
+	'expand_templates_xml_output'      => 'Sortia XML',
 	'expand_templates_ok'              => 'D’acôrd',
 	'expand_templates_remove_comments' => 'Suprimar los comentèros.',
+	'expand_templates_generate_xml'    => 'Afichiér l’arborèscence XML.',
 	'expand_templates_preview'         => 'Prèvisualisacion',
 );
 
@@ -223,14 +231,19 @@ $messages['he'] = array(
 	'expand_templates_preview'         => 'תצוגה מקדימה',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
 $messages['hr'] = array(
 	'expandtemplates'                  => 'Prikaz sadržaja predložaka',
 	'expand_templates_intro'           => 'Posebna stranica zauzima tekst i širi se na sve predloške unutar te stranice. Također proširuje funkcije kao <nowiki>{{</nowiki>#if:...}} i varijable kao <nowiki>{{</nowiki>CURRENTDAY}}. Funkcionira na način da se umeće na sve relevantne stranice potekavši iz samoga MediaWikija.',
 	'expand_templates_title'           => 'Kontekstni naslov, za {{PAGENAME}} itd.:',
 	'expand_templates_input'           => 'Ulazni tekst:',
 	'expand_templates_output'          => 'Rezultat',
+	'expand_templates_xml_output'      => 'XML kod',
 	'expand_templates_ok'              => 'Prikaži',
 	'expand_templates_remove_comments' => 'Ukloni komentare',
+	'expand_templates_generate_xml'    => 'Prikaži XML stablo',
 	'expand_templates_preview'         => 'Vidi kako će izgledati',
 );
 
@@ -280,8 +293,8 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
- * @author .anaconda
  * @author BrokenArrow
+ * @author .anaconda
  */
 $messages['it'] = array(
 	'expandtemplates'                  => 'Espansione dei template',
@@ -289,8 +302,10 @@ $messages['it'] = array(
 	'expand_templates_title'           => 'Contesto (per {{PAGENAME}} ecc.):',
 	'expand_templates_input'           => 'Testo da espandere:',
 	'expand_templates_output'          => 'Risultato',
+	'expand_templates_xml_output'      => 'Output in formato XML',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Ignora i commenti',
+	'expand_templates_generate_xml'    => 'Mostra albero sintattico XML',
 	'expand_templates_preview'         => 'Anteprima',
 );
 
@@ -304,6 +319,21 @@ $messages['ja'] = array(
 	'expand_templates_output'          => '展開結果',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'コメントを除去',
+);
+
+$messages['kk-arab'] = array(
+	'expandtemplates'                  => 'ٷلگٸلەردٸ ۇلعايتۋ',
+	'expand_templates_intro'           => 'وسى قۇرال ارنايى بەتٸ ٵلدەبٸر مٵتٸندٸ الادى دا,
+بۇنىڭ ٸشٸندەگٸ بارلىق كٸرٸكتەلگەن ٷلگٸلەردٸ مەيلٸنشە ۇلعايتادى.
+مىنا <nowiki>{{</nowiki>#if:...}} سيياقتى جٶڭدەتۋ فۋنكتسييالارىن دا, جٵنە <nowiki>{{</nowiki>CURRENTDAY}}
+سيياقتى اينامالىلارىن دا ۇلعايتادى (ناقتى ايتقاندا, قوس قابات ساداق جاقشالار اراسىنداعى بارلىعىن).
+بۇنى ٶز MediaWiki باعدارلاماسىنان قاتىستى جٶڭدەتۋ ساتىن شاقىرىپ ٸستەلٸنەدٸ.',
+	'expand_templates_title'           => 'مٵتٸن ارالىق اتاۋى ({{PAGENAME}} ت.ب. بەتتەر ٷشٸن):',
+	'expand_templates_input'           => 'كٸرٸس مٵتٸنٸ:',
+	'expand_templates_output'          => 'نٵتيجەسٸ',
+	'expand_templates_ok'              => 'جارايدى',
+	'expand_templates_remove_comments' => 'مٵندەمەلەرٸن الاستاتىپ؟',
+	'expand_templates_preview'         => 'قاراپ شىعۋ',
 );
 
 $messages['kk-cyrl'] = array(
@@ -334,21 +364,6 @@ Bunı öz MediaWiki bağdarlamasınan qatıstı jöñdetw satın şaqırıp iste
 	'expand_templates_ok'              => 'Jaraýdı',
 	'expand_templates_remove_comments' => 'Mändemelerin alastatıp?',
 	'expand_templates_preview'         => 'Qarap şığw',
-);
-
-$messages['kk-arab'] = array(
-	'expandtemplates'                  => 'ٷلگٸلەردٸ ۇلعايتۋ',
-	'expand_templates_intro'           => 'وسى قۇرال ارنايى بەتٸ ٵلدەبٸر مٵتٸندٸ الادى دا,
-بۇنىڭ ٸشٸندەگٸ بارلىق كٸرٸكتەلگەن ٷلگٸلەردٸ مەيلٸنشە ۇلعايتادى.
-مىنا <nowiki>{{</nowiki>#if:...}} سيياقتى جٶڭدەتۋ فۋنكتسييالارىن دا, جٵنە <nowiki>{{</nowiki>CURRENTDAY}}
-سيياقتى اينامالىلارىن دا ۇلعايتادى (ناقتى ايتقاندا, قوس قابات ساداق جاقشالار اراسىنداعى بارلىعىن).
-بۇنى ٶز MediaWiki باعدارلاماسىنان قاتىستى جٶڭدەتۋ ساتىن شاقىرىپ ٸستەلٸنەدٸ.',
-	'expand_templates_title'           => 'مٵتٸن ارالىق اتاۋى ({{PAGENAME}} ت.ب. بەتتەر ٷشٸن):',
-	'expand_templates_input'           => 'كٸرٸس مٵتٸنٸ:',
-	'expand_templates_output'          => 'نٵتيجەسٸ',
-	'expand_templates_ok'              => 'جارايدى',
-	'expand_templates_remove_comments' => 'مٵندەمەلەرٸن الاستاتىپ؟',
-	'expand_templates_preview'         => 'قاراپ شىعۋ',
 );
 
 $messages['ko'] = array(
@@ -427,6 +442,10 @@ $messages['nds'] = array(
 	'expand_templates_preview' => 'Vörschau',
 );
 
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Siebrand
+ */
 $messages['nl'] = array(
 	'expandtemplates'                  => 'Sjablonen substitueren',
 	'expand_templates_intro'           => 'Deze speciale pagina leest de ingegeven tekst in en
@@ -435,10 +454,12 @@ Het substitueert ook alle parserfuncties zoals <nowiki>{{</nowiki>#if:...}} en
 variabelen als <nowiki>{{</nowiki>CURRENTDAY}} — vrijwel alles tussen dubbele accolades.
 Hiervoor worden de relevante functies van de MediaWiki-parser gebruikt.',
 	'expand_templates_title'           => 'Contexttitel, voor {{PAGENAME}}, enzovoort:',
-	'expand_templates_input'           => 'Inputtekst:',
+	'expand_templates_input'           => 'Invoertekst:',
 	'expand_templates_output'          => 'Resultaat',
-	'expand_templates_ok'              => 'OK',#identical but defined
+	'expand_templates_xml_output'      => 'XML-uitvoer',
+	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Verwijder opmerkingen',
+	'expand_templates_generate_xml'    => 'XML-parserboom bekijken',
 	'expand_templates_preview'         => 'Voorvertoning',
 );
 
@@ -502,8 +523,9 @@ $messages['ru'] = array(
 	'expand_templates_title'           => 'Заголовок страницы для {{PAGENAME}} и т.&nbsp;п.:',
 	'expand_templates_input'           => 'Входной текст:',
 	'expand_templates_output'          => 'Результат',
-	'expand_templates_ok'              => 'OK',
+	'expand_templates_xml_output'      => 'XML вывод',
 	'expand_templates_remove_comments' => 'Удалить комментарии',
+	'expand_templates_generate_xml'    => 'Показать дерево разбора XML',
 	'expand_templates_preview'         => 'Предпросмотр',
 );
 
@@ -569,7 +591,6 @@ Do ovoga dolazi tako što se zove odgovarajuće stanje parsera iz samog MedijaVi
 	'expand_templates_remove_comments' => 'Ukloni komentare',
 );
 
-$messages['sr'] = $messages['sr-ec'];
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
@@ -646,6 +667,7 @@ $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
 $messages['kk-tr'] = $messages['kk-latn'];
+$messages['sr'] = $messages['sr-ec'];
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];
 $messages['zh-hk'] = $messages['zh-hant'];

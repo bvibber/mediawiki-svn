@@ -56,6 +56,14 @@ $messages['fa'] = array(
 
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'assert_edit_title'   => 'Vahvistus epäonnistui',
+	'assert_edit_message' => 'Määritelty vahvistus ($1) epäonnistui.',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -221,7 +229,6 @@ $messages['zh-hant'] = array(
 	'assert_edit_message' => '所指定的斷言 ($1) 失敗。',
 );
 
-/* Kazakh fallbacks */
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];

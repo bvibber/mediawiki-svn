@@ -64,6 +64,16 @@ $wgSiteMatrixMessages['bg'] = array(
 	'sitematrix-others'   => 'Други проекти на Уикимедия',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$wgSiteMatrixMessages['bn'] = array(
+	'sitematrix'          => 'উইকিমিডিয়া উইকিগুলির তালিকা',
+	'sitematrix-language' => 'ভাষা',
+	'sitematrix-project'  => 'প্রকল্পের নাম, আন্তঃপ্রকল্প সংযোগ এবং আন্তঃউইকি সংযোগ',
+	'sitematrix-others'   => 'উইকিমিডিয়ার অন্যান্য প্রকল্প',
+);
+
 $wgSiteMatrixMessages['br'] = array(
 	'sitematrix' => 'Roll holl raktresoù Wikimedia',
 	'sitematrix-language' => 'Yezh',

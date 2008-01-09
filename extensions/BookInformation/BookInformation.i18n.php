@@ -58,6 +58,23 @@ $messages['bg'] = array(
 	'bookinfo-provider'          => 'Източник на информация: $1',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'bookinfo-header'            => 'বই বিষয়ক তথ্য',
+	'bookinfo-result-title'      => 'শিরোনাম:',
+	'bookinfo-result-author'     => 'লেখক:',
+	'bookinfo-result-publisher'  => 'প্রকাশক:',
+	'bookinfo-result-year'       => 'বছর:',
+	'bookinfo-error-invalidisbn' => 'অবৈধ ISBN প্রবেশ করানো হয়েছে।',
+	'bookinfo-error-nosuchitem'  => 'আইটেমটির অস্তিত্ব নেই বা খুঁজে পাওয়া যায়নি।',
+	'bookinfo-error-nodriver'    => 'একটি উপযুক্ত বই তথ্য ড্রাইভার প্রারম্ভিকীকরণ করা যায়নি।',
+	'bookinfo-error-noresponse'  => 'কোন উত্তর নেই বা অনুরোধটির মেয়াদ উত্তীর্ণ হয়ে গেছে।',
+	'bookinfo-purchase'          => '$1 থেকে এই বইটি কিনুন',
+	'bookinfo-provider'          => 'তথ্য সরবরাহকারী: $1',
+);
+
 $messages['br'] = array(
 	'bookinfo-header' => 'Titouroù war al levr',
 	'bookinfo-result-title' => 'Titl :',

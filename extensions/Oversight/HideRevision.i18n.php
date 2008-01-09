@@ -96,6 +96,15 @@ $messages['bg'] = array(
 	'oversight-hidden'      => 'Скрита редакция',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'hiderevision'          => 'স্থায়ীভাবে সংশোধনগুলি লুকিয়ে রাখা হোক',
+	'hiderevision-prompt'   => 'যে সংশোধনটি সরিয়ে নিতে হবে তার ক্রমসংখ্যা:',
+	'hiderevision-continue' => 'অগ্রসর হোন',
+);
+
 /* Corse (Corsu)*/
 $messages['co'] = array(
 	'hiderevision' => 'Piattà e revisione di manera permanente',
@@ -556,6 +565,44 @@ $messages['ja'] = array(
 	'oversight-header' => '下記は、最近永久に秘匿され、非公開となった版の一覧です。この情報を公開する事は、Oversight権限を永久に失う事になるかも知れません。',
 );
 
+/* Kazakh Arabic (AlefZet) */
+$messages['kk-arab'] = array(
+	'hiderevision' => 'نۇسقالاردى تۇراقتى جاسىرۋ',
+	'hiderevision-prompt' => 'جويىلاتىن نۇسقا نٶمٸرٸ:',
+	'hiderevision-continue' => 'جالعاستىرۋ',
+	'hiderevision-text' => "بۇل ''تەك''' كەلەسٸ جاعدايلاردا قولدانىلۋ قاجەت:
+* جەكە دەرەكتەر تەرٸس بولسا
+*: ''ٷي مەكەن جايى جٵنە تەلەفون نٶمٸرٸ, ٵلەۋمەتتٸك ساقتاندىرۋ نٶمٸرٸ, ت.ب.''
+
+'''بۇل جٷيە قىزمەتٸن تەرٸس پايدالانساڭىز, قۇقىقتارىڭىز ٶشٸرٸلەدٸ.'''
+
+الاستاتىلعان دانالار توراپ بويىنشا ٵركٸمگەدە كٶرٸنبەيدٸ,
+دەگەنمەن, جويۋلار جازىلىپ الىنادى جٵنە قاتە ٵرەكەت بولسا,
+دەرەكقور ٵكٸمشٸسٸ قولمەن قايتادان كەلتٸرۋگە مٷمكٸن.",
+	'hiderevision-reason' => 'سەبەبٸ (جەكە جازىلىپ الىنادى):',
+	'hiderevision-submit' => 'دەرەكتەردٸ تۇراقتى جاسىرۋ',
+	'hiderevision-tab' => 'نۇسقانى جاسىر',
+	'hiderevision-norevisions' => 'جويۋعا ەشقانداي نۋسقا بەلگٸلەنبەگەن.',
+	'hiderevision-noreason' => 'بۇل جويۋدىڭ سەبەبٸن جازىپ بەرٸڭٸز.',
+	'hiderevision-status' => '$1 نۇسقاسى: $2',
+	'hiderevision-success' => 'سٵتتٸ مۇراعاتالدى جٵنە جويلدى.',
+	'hiderevision-error-missing' => 'دەرەكقوردا تابىلمادى.',
+	'hiderevision-error-current' => 'بەتتٸڭ سوڭعى تٷزەتۋٸ جويىلىنبادى. الدىنان بۇل تٷزەتۋدٸ قايتارىڭىز.',
+	'hiderevision-error-delete' => 'مۇراعاتتالىنبادى; الدىنان جويىلعانبا؟',
+	'hiderevision-archive-status' => '$1 كەزٸندەگٸ نۇسقا جويىلدى: $2',
+	'oversight-nodiff' => 'ٶزگەرٸستەر بايقالىنبايدى, ٶيتكەنٸ اعىمدا بۇل بەتتٸڭ الدىڭعى نۇسقاسى جوق. قاي-قايسىسى بولۋى مٷمكٸن:
+* بەت جويلعان
+* جاسىرىلعان نۇسقا بٸرٸنشٸ بولعان',
+	'oversight-log-hiderev' => '$1 كەزٸندەگٸ تٷزەتۋ جويىلدى',
+	'oversight' => 'بەت نۇسقالارىن جاسىرۋ',
+	'oversight-view' => 'ەگجەي-تەگجەيلەرٸ',
+	'oversight-difference' => '(الدىنان قالعان نۇسقامەن ايىرماشىلىق)',
+	'oversight-prev' => 'الدىڭعى نۇسقا',
+	'oversight-hidden' => 'جاسىرىلعان نۇسقا',
+	'oversight-header' => 'تٶمەندە بارشادان تۇراقتى جاسىرىلعان نۇسقالار تٸزٸمٸ بەرٸلەدٸ.
+بۇل مٵلٸمەتتٸ بارشاعا اشقاندا نۇسقا جاسىرۋشى قۇقىقتارىڭىز ٵردايىم ٶشٸرٸلەدٸ.',
+);
+
 /* Kazakh Cyrillic (AlefZet) */
 $messages['kk-cyrl'] = array(
 	'hiderevision' => 'Нұсқаларды тұрақты жасыру',
@@ -630,44 +677,6 @@ derekqor äkimşisi qolmen qaýtadan keltirwge mümkin.",
 	'oversight-hidden' => 'Jasırılğan nusqa',
 	'oversight-header' => 'Tömende barşadan turaqtı jasırılğan nusqalar tizimi beriledi.
 Bul mälimetti barşağa aşqanda Nusqa jasırwşı quqıqtarıñız ärdaýım öşiriledi.',
-);
-
-/* Kazakh Arabic (AlefZet) */
-$messages['kk-arab'] = array(
-	'hiderevision' => 'نۇسقالاردى تۇراقتى جاسىرۋ',
-	'hiderevision-prompt' => 'جويىلاتىن نۇسقا نٶمٸرٸ:',
-	'hiderevision-continue' => 'جالعاستىرۋ',
-	'hiderevision-text' => "بۇل ''تەك''' كەلەسٸ جاعدايلاردا قولدانىلۋ قاجەت:
-* جەكە دەرەكتەر تەرٸس بولسا
-*: ''ٷي مەكەن جايى جٵنە تەلەفون نٶمٸرٸ, ٵلەۋمەتتٸك ساقتاندىرۋ نٶمٸرٸ, ت.ب.''
-
-'''بۇل جٷيە قىزمەتٸن تەرٸس پايدالانساڭىز, قۇقىقتارىڭىز ٶشٸرٸلەدٸ.'''
-
-الاستاتىلعان دانالار توراپ بويىنشا ٵركٸمگەدە كٶرٸنبەيدٸ,
-دەگەنمەن, جويۋلار جازىلىپ الىنادى جٵنە قاتە ٵرەكەت بولسا,
-دەرەكقور ٵكٸمشٸسٸ قولمەن قايتادان كەلتٸرۋگە مٷمكٸن.",
-	'hiderevision-reason' => 'سەبەبٸ (جەكە جازىلىپ الىنادى):',
-	'hiderevision-submit' => 'دەرەكتەردٸ تۇراقتى جاسىرۋ',
-	'hiderevision-tab' => 'نۇسقانى جاسىر',
-	'hiderevision-norevisions' => 'جويۋعا ەشقانداي نۋسقا بەلگٸلەنبەگەن.',
-	'hiderevision-noreason' => 'بۇل جويۋدىڭ سەبەبٸن جازىپ بەرٸڭٸز.',
-	'hiderevision-status' => '$1 نۇسقاسى: $2',
-	'hiderevision-success' => 'سٵتتٸ مۇراعاتالدى جٵنە جويلدى.',
-	'hiderevision-error-missing' => 'دەرەكقوردا تابىلمادى.',
-	'hiderevision-error-current' => 'بەتتٸڭ سوڭعى تٷزەتۋٸ جويىلىنبادى. الدىنان بۇل تٷزەتۋدٸ قايتارىڭىز.',
-	'hiderevision-error-delete' => 'مۇراعاتتالىنبادى; الدىنان جويىلعانبا؟',
-	'hiderevision-archive-status' => '$1 كەزٸندەگٸ نۇسقا جويىلدى: $2',
-	'oversight-nodiff' => 'ٶزگەرٸستەر بايقالىنبايدى, ٶيتكەنٸ اعىمدا بۇل بەتتٸڭ الدىڭعى نۇسقاسى جوق. قاي-قايسىسى بولۋى مٷمكٸن:
-* بەت جويلعان
-* جاسىرىلعان نۇسقا بٸرٸنشٸ بولعان',
-	'oversight-log-hiderev' => '$1 كەزٸندەگٸ تٷزەتۋ جويىلدى',
-	'oversight' => 'بەت نۇسقالارىن جاسىرۋ',
-	'oversight-view' => 'ەگجەي-تەگجەيلەرٸ',
-	'oversight-difference' => '(الدىنان قالعان نۇسقامەن ايىرماشىلىق)',
-	'oversight-prev' => 'الدىڭعى نۇسقا',
-	'oversight-hidden' => 'جاسىرىلعان نۇسقا',
-	'oversight-header' => 'تٶمەندە بارشادان تۇراقتى جاسىرىلعان نۇسقالار تٸزٸمٸ بەرٸلەدٸ.
-بۇل مٵلٸمەتتٸ بارشاعا اشقاندا نۇسقا جاسىرۋشى قۇقىقتارىڭىز ٵردايىم ٶشٸرٸلەدٸ.',
 );
 
 $messages['ksh'] = array(
@@ -899,7 +908,9 @@ $messages['rmy'] = array(
 	'hiderevision-submit' => 'Garav o paruvipen',
 );
 
-/** Russian (Русский) */
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
 $messages['ru'] = array(
 	'hiderevision'                => 'Скрыть версию страницы',
 	'hiderevision-prompt'         => 'Номер версии, которую требуется скрыть:',
@@ -927,7 +938,7 @@ $messages['ru'] = array(
 *Скрытая версия была первой',
 	'oversight-log-hiderev'       => 'скрыта правка со страницы $1',
 	'oversight'                   => 'Журнал скрытия версий',
-	'oversight-view'              => 'детали',
+	'oversight-view'              => 'подробнее',
 	'oversight-difference'        => '(Разница с предыдущей неудалённой версией)',
 	'oversight-prev'              => 'Предыдущая версия',
 	'oversight-hidden'            => 'Скрытая версия',
@@ -1222,18 +1233,13 @@ $messages['zh-hant'] = array(
 	'oversight-header'            => '以下列示的是已經永久隱藏的修訂版本。請注意！洩漏這些訊息將會永遠喪失{{int:Oversight}}權限！',
 );
 
-
-	/* Kazakh fallbacks */
-	$messages['kk-kz'] = $messages['kk-cyrl'];
-	$messages['kk-tr'] = $messages['kk-latn'];
-	$messages['kk-cn'] = $messages['kk-arab'];
-	$messages['kk'] = $messages['kk-cyrl'];
-
-	/* Chinese defaults, fallback to zh-hans or zh-hant */
-	$messages['zh'] = $messages['zh-hans'];
-	$messages['zh-cn'] = $messages['zh-hans'];
-	$messages['zh-hk'] = $messages['zh-hant'];
-	$messages['zh-sg'] = $messages['zh-hans'];
-	$messages['zh-tw'] = $messages['zh-hant'];
-	/* Cantonese default, fallback to yue */
-	$messages['zh-yue'] = $messages['yue'];
+$messages['kk'] = $messages['kk-cyrl'];
+$messages['kk-cn'] = $messages['kk-arab'];
+$messages['kk-kz'] = $messages['kk-cyrl'];
+$messages['kk-tr'] = $messages['kk-latn'];
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-tw'] = $messages['zh-hant'];
+$messages['zh-yue'] = $messages['yue'];

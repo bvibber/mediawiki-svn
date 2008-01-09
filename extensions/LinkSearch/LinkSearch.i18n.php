@@ -422,7 +422,7 @@ $wgLinkSearchMessages['sk'] = array(
 	'linksearch-pat'   => 'Vyhľadávací vzor:',
 	'linksearch-ns'    => 'Menný priestor:',
 	'linksearch-ok'    => 'Hľadať',
-	'linksearch-text'  => 'Je možné použiť zástupné znaky ako "*.wikipedia.org".',
+	'linksearch-text'  => 'Je možné použiť zástupné znaky ako „*.wikipedia.org“.',
 	'linksearch-line'  => 'Na $1 odkazuje $2',
 	'linksearch-error' => 'Zástupné znaky je možné použiť iba na začiatku názvu domény.',
 );

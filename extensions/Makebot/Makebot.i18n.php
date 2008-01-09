@@ -94,6 +94,16 @@ $messages['bg'] = array(
 	'makebot-logentryrevoke' => 'отне бот статуса на [[$1]]',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'makebot'          => 'বট মর্যাদা প্রদান করুন বা প্রত্যাহার করুন',
+	'makebot-header'   => "'''একজন স্থানীয় আমলা এই পাতাটি ব্যবহার করে আরেকটি ব্যবহারকারী অ্যাকাউন্টকে [[{{MediaWiki:Grouppage-bot}}|বট মর্যাদা]] প্রদান করতে বা সেটি থেকে বট মর্যাদা প্রত্যাহার করতে পারবেন।'''<br />বট মর্যাদাপ্রাপ্ত ব্যবহারকারীর সম্পাদনাগুলি [[Special:Recentchanges|সাম্প্রতিক পরিবর্তন]] পাতা এবং সেই রকম তালিকাগুলিতে লুকিয়ে রাখে, এবং যেসমস্ত ব্যবহারকারী স্বয়ংক্রিয় উপায়ে সম্পাদনা করেন, তাদেরকে চিহ্নিত করতে সহায়ক। এই কাজটি প্রয়োগযোগ্য নীতিমালা মেনে সম্পাদন করা উচিত।",
+	'makebot-username' => 'ব্যবহারকারী নাম:',
+	'makebot-search'   => 'চলো',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -601,6 +611,27 @@ $messages['ja'] = array(
 	'makebot-logentryrevoke'  => '[[$1]]のbotフラグを剥奪しました。',
 );
 
+/* Kazakh Arabic (kk:User:AlefZet) */
+$messages['kk-arab'] = array(
+	'makebot'                 => 'بوت كٷيٸن بەرۋ نە قايتارۋ',
+	'makebot-header'          => '\'\'\'بۇل بەتتٸ ورنىنداعى تٶرەشٸلەر باسقا كاتىسۋشى تٸركەلگٸسٸنە [[{{MediaWiki:Grouppage-bot}}|بوت كٷيٸن]] بەرۋ نە قايتارۋ ٷشٸن قولدانادى.\'\'\'<br />بەرٸلگەن بوت كٷيٸ قاتىسۋشىنىڭ ٶڭدەۋلەرٸن [[{{ns:special}}:Recentchanges|جۋىقتاعى ٶزگەرٸستەر]] سيياقتى تٸزٸمدەردەن جاسىرادى, جٵنە دە ٶزدٸك تٷردە ٶڭدەۋ جاسايتىن قاتىسۋشىلاردى بەلگٸلەۋگە قولايلى. وسى ٵرەكەت ٸسكە اساتىن ساياساتى بويىنشا جاسالۋى قاجەت.',
+	'makebot-username'        => 'قاتىسۋشى اتى:',
+	'makebot-search'          => 'ٶتۋ',
+	'makebot-isbot'           => '[[{{ns:user}}:$1|$1]] دەگەندە بوت كٷيٸ بار.',
+	'makebot-notbot'          => '[[{{ns:user}}:$1|$1]] دەگەندە بوت كٷيٸ جوق.',
+	'makebot-privileged'      => '[[{{ns:user}}:$1|$1]] دەگەندە [[{{ns:special}}:Listadmins|ٵكٸمشٸ نەمەسە تٶرەشٸ قۇقىقتارى]] بار, سوندىقتان بوت كٷيٸ بەرٸلمەيدٸ.',
+	'makebot-change'          => 'كٷيٸن ٶزگەرتۋ:',
+	'makebot-grant'           => 'بەرۋ',
+	'makebot-revoke'          => 'قايتا شاقىرۋ',
+	'makebot-comment'         => 'مٵندەمەسٸ:',
+	'makebot-granted'         => '[[{{ns:user}}:$1|$1]] دەگەندە ەندٸ بوت كٷيٸ بار.',
+	'makebot-revoked'         => '[[{{ns:user}}:$1|$1]] دەگەندە ەندٸ بوت كٷيٸ جوق.',
+	'makebot-logpage'         => 'بوت كٷيٸ جۋرنالى',
+	'makebot-logpagetext'     => 'بۇل قاتىسۋشى [[{{MediaWiki:Grouppage-bot}}|بوت]] كٷيٸن ٶزگەرتۋ جۋرنالى.',
+	'makebot-logentrygrant'   => '[[$1]] دەگەنگە بوت كٷيٸ بەرٸلدٸ',
+	'makebot-logentryrevoke'  => '[[$1]] دەگەننەن بوت كٷيٸ الاستاتىلدى',
+);
+
 /* Kazakh Cyrillic (kk:User:AlefZet) */
 $messages['kk-cyrl'] = array(
 	'makebot'                 => 'Бот күйін беру не қайтару',
@@ -642,32 +673,6 @@ $messages['kk-latn'] = array(
 	'makebot-logentrygrant'   => '[[$1]] degenge bot küýi berildi',
 	'makebot-logentryrevoke'  => '[[$1]] degennen bot küýi alastatıldı',
 );
-
-/* Kazakh Arabic (kk:User:AlefZet) */
-$messages['kk-arab'] = array(
-	'makebot'                 => 'بوت كٷيٸن بەرۋ نە قايتارۋ',
-	'makebot-header'          => '\'\'\'بۇل بەتتٸ ورنىنداعى تٶرەشٸلەر باسقا كاتىسۋشى تٸركەلگٸسٸنە [[{{MediaWiki:Grouppage-bot}}|بوت كٷيٸن]] بەرۋ نە قايتارۋ ٷشٸن قولدانادى.\'\'\'<br />بەرٸلگەن بوت كٷيٸ قاتىسۋشىنىڭ ٶڭدەۋلەرٸن [[{{ns:special}}:Recentchanges|جۋىقتاعى ٶزگەرٸستەر]] سيياقتى تٸزٸمدەردەن جاسىرادى, جٵنە دە ٶزدٸك تٷردە ٶڭدەۋ جاسايتىن قاتىسۋشىلاردى بەلگٸلەۋگە قولايلى. وسى ٵرەكەت ٸسكە اساتىن ساياساتى بويىنشا جاسالۋى قاجەت.',
-	'makebot-username'        => 'قاتىسۋشى اتى:',
-	'makebot-search'          => 'ٶتۋ',
-	'makebot-isbot'           => '[[{{ns:user}}:$1|$1]] دەگەندە بوت كٷيٸ بار.',
-	'makebot-notbot'          => '[[{{ns:user}}:$1|$1]] دەگەندە بوت كٷيٸ جوق.',
-	'makebot-privileged'      => '[[{{ns:user}}:$1|$1]] دەگەندە [[{{ns:special}}:Listadmins|ٵكٸمشٸ نەمەسە تٶرەشٸ قۇقىقتارى]] بار, سوندىقتان بوت كٷيٸ بەرٸلمەيدٸ.',
-	'makebot-change'          => 'كٷيٸن ٶزگەرتۋ:',
-	'makebot-grant'           => 'بەرۋ',
-	'makebot-revoke'          => 'قايتا شاقىرۋ',
-	'makebot-comment'         => 'مٵندەمەسٸ:',
-	'makebot-granted'         => '[[{{ns:user}}:$1|$1]] دەگەندە ەندٸ بوت كٷيٸ بار.',
-	'makebot-revoked'         => '[[{{ns:user}}:$1|$1]] دەگەندە ەندٸ بوت كٷيٸ جوق.',
-	'makebot-logpage'         => 'بوت كٷيٸ جۋرنالى',
-	'makebot-logpagetext'     => 'بۇل قاتىسۋشى [[{{MediaWiki:Grouppage-bot}}|بوت]] كٷيٸن ٶزگەرتۋ جۋرنالى.',
-	'makebot-logentrygrant'   => '[[$1]] دەگەنگە بوت كٷيٸ بەرٸلدٸ',
-	'makebot-logentryrevoke'  => '[[$1]] دەگەننەن بوت كٷيٸ الاستاتىلدى',
-);
-	/* Kazakh fallbacks */
-	$messages['kk-kz'] = $messages['kk-cyrl'];
-	$messages['kk-tr'] = $messages['kk-latn'];
-	$messages['kk-cn'] = $messages['kk-arab'];
-	$messages['kk'] = $messages['kk-cyrl'];
 
 $messages['ksh'] = array(
 	'makebot'                 => '{{NS:User}} zom Bot maache un ömmjekiijot',
@@ -928,25 +933,28 @@ $messages['ru'] = array(
 	'makebot-logentryrevoke' => 'снял статус бота с участника [[$1]]',
 );
 
-/* Slovak (helix84) */
+/** Slovak (Slovenčina)
+ * @author Helix84
+ * @author Robbot
+ */
 $messages['sk'] = array(
-	'makebot'                 => 'Udeliť alebo odobrať status bota',
-	'makebot-header'          => '\'\'\'Miestny byrokrat môže použiť túto stránku na udelenie alebo odobranie [[{{MediaWiki:Grouppage-bot}}|statusu bot]] inému používateľskému účtu.\'\'\'<br />Status bot skrýva úpravy používateľa z [[Special:Recentchanges|posledných zmien]] a podobných zoznamov, používa sa na označenie používateľov, ktorí robia automatizované úpravy. Využívanie tejto stránky by malo prebiehať v súlade s prijatými zásadami.',
-	'makebot-username'        => 'Používateľské meno:',
-	'makebot-search'          => 'Vykonaj',
-	'makebot-isbot'           => '[[User:$1|$1]] má status bot.',
-	'makebot-notbot'          => '[[User:$1|$1]] nemá status bot.',
-	'makebot-privileged'      => '[[User:$1|$1]] má [[Special:Listadmins|privilégiá správcu alebo byrokrata]], a preto mu nemôže byt udelený status bot.',
-	'makebot-change'          => 'Zmeniť status:',
-	'makebot-grant'           => 'Udeliť',
-	'makebot-revoke'          => 'Odobrať',
-	'makebot-comment'         => 'Komentár:',
-	'makebot-granted'         => '[[User:$1|$1]] odteraz má status bot.',
-	'makebot-revoked'         => '[[User:$1|$1]] odteraz nemá status bot.',
-	'makebot-logpage'         => 'Záznam statusu bot',
-	'makebot-logpagetext'     => 'Toto je záznam zmien používateľského stavu na/z [[{{MediaWiki:Grouppage-bot}}|bot]].',
-	'makebot-logentrygrant'   => 'udelený status bot používateľovi [[$1]]',
-	'makebot-logentryrevoke'  => 'odobratý status bot používateľovi [[$1]]',
+	'makebot'                => 'Udeliť alebo odobrať status bota',
+	'makebot-header'         => "'''Miestny byrokrat môže použiť túto stránku na udelenie alebo odobranie [[{{MediaWiki:Grouppage-bot}}|statusu bot]] inému používateľskému účtu.'''<br />Status bot skrýva úpravy používateľa z [[Special:Recentchanges|posledných zmien]] a podobných zoznamov, používa sa na označenie používateľov, ktorí robia automatizované úpravy. Využívanie tejto stránky by malo prebiehať v súlade s prijatými zásadami.",
+	'makebot-username'       => 'Používateľské meno:',
+	'makebot-search'         => 'Vykonať',
+	'makebot-isbot'          => '[[User:$1|$1]] má status bot.',
+	'makebot-notbot'         => '[[User:$1|$1]] nemá status bot.',
+	'makebot-privileged'     => '[[User:$1|$1]] má [[Special:Listadmins|privilégiá správcu alebo byrokrata]], a preto mu nemôže byt udelený status bot.',
+	'makebot-change'         => 'Zmeniť status:',
+	'makebot-grant'          => 'Udeliť',
+	'makebot-revoke'         => 'Odobrať',
+	'makebot-comment'        => 'Komentár:',
+	'makebot-granted'        => '[[User:$1|$1]] odteraz má status bot.',
+	'makebot-revoked'        => '[[User:$1|$1]] odteraz nemá status bot.',
+	'makebot-logpage'        => 'Záznam statusu bot',
+	'makebot-logpagetext'    => 'Toto je záznam zmien používateľského stavu na/z [[{{MediaWiki:Grouppage-bot}}|bot]].',
+	'makebot-logentrygrant'  => 'udelený status bot používateľovi [[$1]]',
+	'makebot-logentryrevoke' => 'odobratý status bot používateľovi [[$1]]',
 );
 
 /* Albanian */
@@ -1271,11 +1279,13 @@ $messages['zh-hk'] = array(
 	'makebot-logentrygrant'   => '授予[[$1]]機械人身份',
 	'makebot-logentryrevoke'  => ' 終止[[$1]]機械人身份',
 );
-	/* Chinese defaults, fallback to zh-hans */
-	$messages['zh'] = $messages['zh-hans'];
-	$messages['zh-cn'] = $messages['zh-hans'];
-	$messages['zh-sg'] = $messages['zh-hans'];
-	$messages['zh-tw'] = $messages['zh-hant'];
 
-	/* Cantonese default, fallback to yue */
-	$messages['zh-yue'] = $messages['yue'];
+$messages['kk'] = $messages['kk-cyrl'];
+$messages['kk-cn'] = $messages['kk-arab'];
+$messages['kk-kz'] = $messages['kk-cyrl'];
+$messages['kk-tr'] = $messages['kk-latn'];
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-tw'] = $messages['zh-hant'];
+$messages['zh-yue'] = $messages['yue'];
