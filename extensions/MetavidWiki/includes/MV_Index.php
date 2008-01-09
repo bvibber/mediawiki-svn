@@ -130,6 +130,11 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  			
  		} 		
  	}
+ 	function remove_by_stream_id($stream_id){
+ 		global $mvIndexTableName;
+ 		$dbw =& wfGetDB(DB_WRITE); 
+ 		$dbw->delete($mvIndexTableName, array('stream_id'=>$stream_id));
+ 	}
  	/* 
  	 * removes a single entry by wiki_title name
  	 */

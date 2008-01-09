@@ -120,9 +120,11 @@ class MV_StreamPage extends Article{
 		$wgOut->output();
  	} 
  	function delete(){
- 		global $wgOut; 		
- 		$wgOut->addHTML( wfMsg('mv_stream_delete_warrning', 
+ 		global $wgOut, $wgRequest,$wgUser; 		
+ 		if(!$wgRequest->wasPosted()){
+ 			$wgOut->addHTML( wfMsg('mv_stream_delete_warrning', 
 			 MV_Index::countMVDInRange($this->mvTitle->getStreamId())));
+ 		}
  		//update text button to delete stream rather than delete stream
  		parent::delete();
  	}

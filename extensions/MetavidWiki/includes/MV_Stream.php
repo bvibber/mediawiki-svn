@@ -55,6 +55,12 @@ class MV_Stream {
 	function doesStreamExist(){
 		return $this->db_load_stream();
 	}
+	//removes the stream from the db:
+	function deleteDB(){
+		global $mvStreamTable;
+		$dbw = & wfGetDB(DB_WRITE);
+		$dbw->delete($mvStreamTable, array('id'=>$this->id));
+	}
 	function db_load_stream() {
 		global $mvStreamTable;
 		$dbr = & wfGetDB(DB_SLAVE);
