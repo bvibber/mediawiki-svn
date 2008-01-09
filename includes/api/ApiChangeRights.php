@@ -44,25 +44,32 @@ class ApiChangeRights extends ApiBase {
 			$this->dieUsage('The wiki is in read-only mode', 'readonly');
 		$params = $this->extractRequestParams();
 
-		$ur = new UserrightsForm($wgRequest);
+		$ur = new UserrightsPage($wgRequest);
 		$allowed = $ur->changeableGroups();
 		$res = array();
-
-		if(is_null($params['user']))
-			$this->dieUsage('The user parameter must be set', 'nouser');
-
-		$uName = User::getCanonicalName($params['user']);
-		$u = User::newFromName($uName);
-		if(!$u)
-			$this->dieUsage("Invalid username ``{$params['user']}''", 'invaliduser');
-		if($u->getId() == 0) // Anon or non-existent
-			$this->dieUsage("User ``{$params['user']}'' doesn't exist", 'nosuchuser');
+		
+		$u = $ur->fetchUser_real($params['user']);
+		if(is_array($u))
+			switch($u[0])
+			{
+				case UserrightsPage::FETCHUSER_NO_INTERWIKI:
+					$this->dieUsage("You don't have permission to change users' rights on other wikis", 'nointerwiki');
+				case UserrightsPage::FETCHUSER_NO_DATABASE:
+					$this->dieUsage("Database ``{$u[1]}'' does not exist or is not local", 'nosuchdatabase');
+				case UserrightsPage::FETCHUSER_NO_USER:
+					$this->dieUsage("You specified an empty username, or none at all", 'emptyuser');
+				case UserrightsPage::FETCHUSER_NOSUCH_USERID:
+					$this->dieUsage("There is no user with ID ``{$u[1]}''", 'nosuchuserid');
+				case UserrightsPage::FETCHUSER_NOSUCH_USERNAME:
+					$this->dieUsage("There is no user with username ``{$u[1]}''", 'nosuchusername');
+				default:
+					$this->dieDebug(__METHOD__, "UserrightsPage::fetchUser_real() returned an unknown error ({$u[0]})");
+			}
 
 		$curgroups = $u->getGroups();
-
 		if($params['listgroups'])
 		{
-			$res['user'] = $uName;
+			$res['user'] = $u->getName();
 			$res['allowedgroups'] = $allowed;
 			$res['ingroups'] = $curgroups;
 			$this->getResult()->setIndexedTagName($res['ingroups'], 'group');
@@ -72,7 +79,7 @@ class ApiChangeRights extends ApiBase {
 ;
 		if($params['gettoken'])
 		{
-			$res['changerightstoken'] = $wgUser->editToken($uName);
+			$res['changerightstoken'] = $wgUser->editToken($u->getName());
 			$this->getResult()->addValue(null, $this->getModuleName(), $res);
 			return;
 		}
@@ -81,41 +88,16 @@ class ApiChangeRights extends ApiBase {
 			$this->dieUsage('At least one of the addto and rmfrom parameters must be set', 'noaddrm');
 		if(is_null($params['token']))
 			$this->dieUsage('The token parameter must be set', 'notoken');
-		if(!$wgUser->matchEditToken($params['token'], $uName))
+		if(!$wgUser->matchEditToken($params['token'], $u->getName()))
 			$this->dieUsage('Invalid token', 'badtoken');
 
-		if(!$wgUser->isAllowed('userrights'))
-			$this->dieUsage('You don\'t have permission to change users\' rights', 'permissiondenied');
-
-		// First let's remove redundant groups and check permissions while we're at it
-		if(is_null($params['addto']))
-			$params['addto'] = array();
-		$addto = array();
-		foreach($params['addto'] as $g)
-		{
-			if(!in_array($g, $allowed['add']))
-				$this->dieUsage("You don't have permission to add to group ``$g''", 'cantadd');
-			if(!in_array($g, $curgroups))
-				$addto[] = $g;
-		}
-
-		if(is_null($params['rmfrom']))
-			$params['rmfrom'] = array();
-		$rmfrom = array();
-		foreach($params['rmfrom'] as $g)
-		{
-			if(!in_array($g, $allowed['remove']))
-				$this->dieUsage("You don't have permission to remove from group ``$g''", 'cantremove');
-			if(in_array($g, $curgroups))
-				$rmfrom[] = $g;
-		}
 		$dbw = wfGetDb(DB_MASTER);
 		$dbw->begin();
-		$ur->doSaveUserGroups($u, $rmfrom, $addto, $params['reason']);
+		$ur->saveUserGroups($u, $params['rmfrom'], $params['addto'], $params['reason']);
 		$dbw->commit();
-		$res['user'] = $uName;
-		$res['addedto'] = $addto;
-		$res['removedfrom'] = $rmfrom;
+		$res['user'] = $u->getName();
+		$res['addedto'] = (array)$params['addto'];
+		$res['removedfrom'] = (array)$params['rmfrom'];
 		$res['reason'] = $params['reason'];
 
 		$this->getResult()->setIndexedTagName($res['addedto'], 'group');
@@ -165,6 +147,6 @@ class ApiChangeRights extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id$';
+		return __CLASS__ . ': $Id: ApiChangeRights.php 28216 2007-12-06 18:33:18Z vasilievvv $';
 	}
 }

@@ -95,7 +95,6 @@ function wfSpecialImport( $page = '' ) {
 	<form enctype='multipart/form-data' method='post' action=\"$action\">
 		<input type='hidden' name='action' value='submit' />
 		<input type='hidden' name='source' value='upload' />
-		<input type='hidden' name='MAX_FILE_SIZE' value='2000000' />
 		<input type='file' name='xmlimport' value='' size='30' />
 		<input type='submit' value=\"" . wfMsgHtml( "uploadbtn" ) . "\" />
 	</form>
@@ -850,7 +849,18 @@ class ImportStreamSource {
 			return new WikiErrorMsg( 'importnofile' );
 		}
 		if( !empty( $upload['error'] ) ) {
-			return new WikiErrorMsg( 'importuploaderror', $upload['error'] );
+			switch($upload['error']){
+				case 1: # The uploaded file exceeds the upload_max_filesize directive in php.ini. 
+					return new WikiErrorMsg( 'importuploaderrorsize' );
+				case 2: # The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.
+					return new WikiErrorMsg( 'importuploaderrorsize' );
+				case 3: # The uploaded file was only partially uploaded
+					return new WikiErrorMsg( 'importuploaderrorpartial' );
+			    case 6: #Missing a temporary folder. Introduced in PHP 4.3.10 and PHP 5.0.3.
+			    	return new WikiErrorMsg( 'importuploaderrortemp' );
+			    # case else: # Currently impossible
+			}
+			
 		}
 		$fname = $upload['tmp_name'];
 		if( is_uploaded_file( $fname ) ) {

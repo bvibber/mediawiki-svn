@@ -827,7 +827,7 @@ class OutputPage {
 		global $wgTitle;
 
 		$this->mDebugtext .= 'Original title: ' .
-		  $wgTitle->getPrefixedText() . "\n";
+		$wgTitle->getPrefixedText() . "\n";
 		$this->setPageTitle( wfMsg( $title ) );
 		$this->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
 		$this->setRobotpolicy( 'noindex,nofollow' );
@@ -853,7 +853,7 @@ class OutputPage {
 		global $wgTitle;
 
 		$this->mDebugtext .= 'Original title: ' .
-			 $wgTitle->getPrefixedText() . "\n";
+		$wgTitle->getPrefixedText() . "\n";
 		$this->setPageTitle( wfMsg( 'permissionserrors' ) );
 		$this->setHTMLTitle( wfMsg( 'permissionserrors' ) );
 		$this->setRobotpolicy( 'noindex,nofollow' );
@@ -981,14 +981,12 @@ class OutputPage {
 
 	/**
 	 * @param array $errors An array of arrays returned by Title::getUserPermissionsErrors
-	 * @return string The error-messages, formatted into a list.
+	 * @return string The wikitext error-messages, formatted into a list.
 	 */
 	public function formatPermissionsErrorMessage( $errors ) {
-		$text = '';
+		$text = wfMsgExt( 'permissionserrorstext', array( 'parsemag' ), count( $errors ) ) . "\n\n";
 
-		if (sizeof( $errors ) > 1) {
-
-			$text .= wfMsgExt( 'permissionserrorstext', array( 'parse' ), count( $errors ) ) . "\n";
+		if (count( $errors ) > 1) {
 			$text .= '<ul class="permissions-errors">' . "\n";
 
 			foreach( $errors as $error )
@@ -999,7 +997,7 @@ class OutputPage {
 			}
 			$text .= '</ul>';
 		} else {
-			$text .= call_user_func_array( 'wfMsg', $errors[0]);
+			$text .= '<div class="permissions-errors">' . call_user_func_array( 'wfMsg', $errors[0]) . '</div>';
 		}
 
 		return $text;
@@ -1039,8 +1037,12 @@ class OutputPage {
 
 		if ( !empty($reasons) ) {
 			// Permissions error
-			$this->setPageTitle( wfMsg( 'viewsource' ) );
-			$this->setSubtitle( wfMsg( 'viewsourcefor', $skin->makeKnownLinkObj( $wgTitle ) ) );
+			if( $source ) {
+				$this->setPageTitle( wfMsg( 'viewsource' ) );
+				$this->setSubtitle( wfMsg( 'viewsourcefor', $skin->makeKnownLinkObj( $wgTitle ) ) );
+			} else {
+				$this->setPageTitle( wfMsg( 'badaccess' ) );
+			}
 			$this->addWikiText( $this->formatPermissionsErrorMessage( $reasons ) );
 		} else {
 			// Wiki is read only
@@ -1073,7 +1075,12 @@ class OutputPage {
 			$this->addHTML( $skin->formatTemplates( $article->getUsedTemplates() ) );
 		}
 
-		$this->returnToMain( false, $wgTitle );
+		# If the title doesn't exist, it's fairly pointless to print a return
+		# link to it.  After all, you just tried editing it and couldn't, so
+		# what's there to do there?
+		if( $wgTitle->exists() ) {
+			$this->returnToMain( false, $wgTitle );
+		}
 	}
 
 	/** @deprecated */

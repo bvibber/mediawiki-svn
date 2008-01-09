@@ -1098,27 +1098,6 @@ class Article {
 		$isRedirect = !is_null($redirectTitle);
 		if ($isRedirect || is_null($lastRevIsRedirect) || $lastRevIsRedirect !== $isRedirect) {
 
-			$imageResult = true;	//Result of imageredirects handling
-			if( $this->mTitle->getNamespace() == NS_IMAGE ) {
-				wfProfileIn( __METHOD__ . "-img" );
-
-				$exists = $redirectTitle ? RepoGroup::singleton()->findFile( $redirectTitle->getDBkey() ) !== false : false;
-				if( $isRedirect && $redirectTitle->getNamespace() == NS_IMAGE && $exists ) {
-					$set = array( 
-						'ir_from' => $this->mTitle->getDBkey(),
-						'ir_to' => $redirectTitle->getDBkey(),
-					);
-					$dbw->replace( 'imageredirects', array( 'ir_from' ), $set, __METHOD__ );
-					$imageResult = $dbw->affectedRows() != 0;
-				} else {
-					// Non-redirect or redirect to non-image
-					$where = array( 'ir_from' => $this->mTitle->getDBkey() );
-					$dbw->delete( 'imageredirects', $where, __METHOD__ );
-				}
-
-				wfProfileOut( __METHOD__ . "-img" );
-			}
-
 			wfProfileIn( __METHOD__ );
 
 			if ($isRedirect) {
@@ -1138,7 +1117,7 @@ class Article {
 			}
 
 			wfProfileOut( __METHOD__ );
-			return ( $dbw->affectedRows() != 0 ) && $imageResult;
+			return ( $dbw->affectedRows() != 0 );
 		}
 
 		return true;
@@ -1370,8 +1349,10 @@ class Article {
 
 			$lastRevision = 0;
 			$revisionId = 0;
+			
+			$changed = ( strcmp( $text, $oldtext ) != 0 );
 
-			if ( 0 != strcmp( $text, $oldtext ) ) {
+			if ( $changed ) {
 				$this->mGoodAdjustment = (int)$this->isCountable( $text )
 				  - (int)$this->isCountable( $oldtext );
 				$this->mTotalAdjustment = 0;
@@ -1436,9 +1417,8 @@ class Article {
 				# Invalidate cache of this article and all pages using this article
 				# as a template. Partly deferred.
 				Article::onArticleEdit( $this->mTitle );
-
+				
 				# Update links tables, site stats, etc.
-				$changed = ( strcmp( $oldtext, $text ) != 0 );
 				$this->editUpdates( $text, $summary, $isminor, $now, $revisionId, $changed );
 			}
 		} else {
@@ -2263,7 +2243,6 @@ class Article {
 			$dbw->delete( 'externallinks', array( 'el_from' => $id ) );
 			$dbw->delete( 'langlinks', array( 'll_from' => $id ) );
 			$dbw->delete( 'redirect', array( 'rd_from' => $id ) );
-			$dbw->delete( 'imageredirects', array( 'ir_from' => $t ) );
 		}
 
 		# If using cleanup triggers, we can skip some manual deletes

@@ -355,8 +355,17 @@ class EditPage {
 		}
 
 		$permErrors = $this->mTitle->getUserPermissionsErrors('edit', $wgUser);
-		if( !$this->mTitle->exists() )
-			$permErrors += array_diff( $this->mTitle->getUserPermissionsErrors('create', $wgUser), $permErrors );
+		if( !$this->mTitle->exists() ) {
+			# We can't use array_diff here, because that considers ANY TWO
+			# ARRAYS TO BE EQUAL.  Thanks, PHP.
+			$createErrors = $this->mTitle->getUserPermissionsErrors('create', $wgUser);
+			foreach( $createErrors as $error ) {
+				# in_array() actually *does* work as expected.
+				if( !in_array( $error, $permErrors ) ) {
+					$permErrors[] = $error;
+				}
+			}
+		}
 
 		# Ignore some permissions errors.
 		$remove = array();
@@ -380,8 +389,7 @@ class EditPage {
 		# array_diff returns elements in $permErrors that are not in $remove.
 		$permErrors = array_diff( $permErrors, $remove );
 
-		if ( !empty($permErrors) )
-		{
+		if ( !empty($permErrors) ) {
 			wfDebug( "$fname: User can't edit\n" );
 			$wgOut->readOnlyPage( $this->getContent(), true, $permErrors );
 			wfProfileOut( $fname );
@@ -1097,6 +1105,9 @@ class EditPage {
 			}
 			$wgOut->addWikiText( $notice );
 		}
+		if( !$this->mTitle->exists() && $this->mTitle->getRestrictions( 'create' ) != array() ){
+			$wgOut->addWikiText( wfMsg( 'titleprotectedwarning' ) );
+		}
 
 		if ( $this->kblength === false ) {
 			$this->kblength = (int)(strlen( $this->textbox1 ) / 1024);
@@ -1341,7 +1352,7 @@ END
 			$de->showDiff( wfMsg( "yourtext" ), wfMsg( "storedversion" ) );
 
 			$wgOut->addWikiText( '==' . wfMsg( "yourtext" ) . '==' );
-			$wgOut->addHTML( "<textarea tabindex=6 id='wpTextbox2' name=\"wpTextbox2\" rows='{$rows}' cols='{$cols}' wrap='virtual'>"
+			$wgOut->addHTML( "<textarea tabindex='6' id='wpTextbox2' name=\"wpTextbox2\" rows='{$rows}' cols='{$cols}'>"
 				. htmlspecialchars( $this->safeUnicodeOutput( $this->textbox2 ) ) . "\n</textarea>" );
 		}
 		$wgOut->addHTML( $this->editFormTextBottom );

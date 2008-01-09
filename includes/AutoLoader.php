@@ -93,7 +93,6 @@ function __autoload($className) {
 		'FileStore' => 'includes/FileStore.php',
 		'FSException' => 'includes/FileStore.php',
 		'FSTransaction' => 'includes/FileStore.php',
-		'HTMLForm' => 'includes/HTMLForm.php',
 		'HistoryBlob' => 'includes/HistoryBlob.php',
 		'ConcatenatedGzipHistoryBlob' => 'includes/HistoryBlob.php',
 		'HistoryBlobStub' => 'includes/HistoryBlob.php',
@@ -232,7 +231,7 @@ function __autoload($className) {
 		'UploadForm' => 'includes/SpecialUpload.php',
 		'UploadFormMogile' => 'includes/SpecialUploadMogile.php',
 		'LoginForm' => 'includes/SpecialUserlogin.php',
-		'UserrightsForm' => 'includes/SpecialUserrights.php',
+		'UserrightsPage' => 'includes/SpecialUserrights.php',
 		'SpecialVersion' => 'includes/SpecialVersion.php',
 		'WantedCategoriesPage' => 'includes/SpecialWantedcategories.php',
 		'WantedPagesPage' => 'includes/SpecialWantedpages.php',
@@ -315,6 +314,7 @@ function __autoload($className) {
 		'ApiFormatYaml' => 'includes/api/ApiFormatYaml.php',
 		'ApiHelp' => 'includes/api/ApiHelp.php',
 		'ApiLogin' => 'includes/api/ApiLogin.php',
+		'ApiLogout' => 'includes/api/ApiLogout.php',
 		'ApiMain' => 'includes/api/ApiMain.php',
 		'ApiOpenSearch' => 'includes/api/ApiOpenSearch.php',
 		'ApiPageSet' => 'includes/api/ApiPageSet.php',
@@ -350,7 +350,8 @@ function __autoload($className) {
 
 		# apiedit branch
 		'ApiBlock' => 'includes/api/ApiBlock.php',
-		'ApiChangeRights' => 'includes/api/ApiChangeRights.php',
+		#'ApiChangeRights' => 'includes/api/ApiChangeRights.php',
+		# Disabled for now
 		'ApiDelete' => 'includes/api/ApiDelete.php',
 		'ApiMove' => 'includes/api/ApiMove.php',
 		'ApiProtect' => 'includes/api/ApiProtect.php',
