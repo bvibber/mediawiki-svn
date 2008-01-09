@@ -61,7 +61,7 @@ class AssertEdit
 		'test' => false      //Do we allow random tests?
 	);
 
-	static function setAssert( $key, $val ) {
+	static function setAssert( $key, $value ) {
 		//Don't confuse things by changing core assertions.
 		switch ( $key ) {
 			case 'true':
@@ -72,7 +72,7 @@ class AssertEdit
 				return false;
 		}
 		//make sure it's useable.
-		if ( is_bool( $value ) or is_callable( $value ) ) {
+		if ( is_bool( $value ) || is_callable( $value ) ) {
 			self::$msAssert[$key] = $value;
 			return true;
 		} else {
