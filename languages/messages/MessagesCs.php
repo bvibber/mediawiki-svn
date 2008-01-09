@@ -3,6 +3,7 @@
  *
  * @addtogroup Language
  *
+ * @author Mormegil
  * @author Li-sung
  * @author Helix84
  * @author Danny B.
@@ -724,7 +725,7 @@ Pokud jste zde omylem, stiskněte ve svém prohlížeči tlačítko ''Zpět''.",
 'userinvalidcssjstitle'     => "'''Varování:''' Vzhled „$1“ neexistuje. Nezapomeňte, že uživatelské .css a .js soubory používají malá písmena, např. {{ns:user}}:{{BASEPAGENAME}}/monobook.css, nikoli {{ns:user}}:{{BASEPAGENAME}}/Monobook.css.",
 'updated'                   => '(Změna uložena)',
 'note'                      => '<strong>Poznámka:</strong>&nbsp;',
-'previewnote'               => 'Pamatujte, že toto je pouze náhled, ne uložení!',
+'previewnote'               => '<strong>Pamatujte, že toto je pouze náhled, změny zatím nebyly uloženy!</strong>',
 'previewconflict'           => 'Tento náhled ukazuje text tak, jak bude vypadat po uložení stránky.',
 'session_fail_preview'      => '<strong>Omlouváme se, ale váš požadavek se nepodařilo zpracovat. Zkuste to prosím znovu. Pokud se tento problém bude opakovat, zkuste se odhlásit a znovu přihlásit.</strong>',
 'session_fail_preview_html' => "<strong>Omlouváme se, ale váš požadavek se nepodařilo zpracovat.</strong>
@@ -742,7 +743,7 @@ Toto se může někdy stát pokud používáte chybující webový anonymizér.<
 'explainconflict'           => 'Někdo změnil stránku po započetí vaší editace. Výše vidíte aktuální text stránky. Vaše změny jsou uvedeny dole. Musíte sloučit své změny se stávajícím textem. <b>Pouze</b> výše uvedený text zůstane uchován po kliknutí na „Uložit“. <br />',
 'yourtext'                  => 'Váš text',
 'storedversion'             => 'Uložená verze',
-'nonunicodebrowser'         => '<strong>UPOZORNĚNÍ: Váš prohlížeč není schopen pracovat se znaky Unicode, pro editaci stránek prosím použijte nějaký jiný.</strong>',
+'nonunicodebrowser'         => '<strong>UPOZORNĚNÍ: Váš prohlížeč není schopen pracovat se znaky Unicode. Abyste mohli tuto stránku bezpečně editovat, je použita pomůcka: všechny znaky mimo ASCII jsou zobrazeny v hexadecimálních kódech.</strong>',
 'editingold'                => '<strong>VAROVÁNÍ: Nyní editujete zastaralou verzi této stránky. Když ji uložíte, všechny změny provedené mezitím se ztratí.</strong>',
 'yourdiff'                  => 'Rozdíly',
 'copyrightwarning'          => 'Všechny příspěvky do {{grammar:2sg|{{SITENAME}}}} jsou zveřejňovány podle $2 (podrobnosti najdete na $1). Pokud si nepřejete, aby váš text byl nemilosrdně upravován a volně šířen, pak ho do {{grammar:2sg|{{SITENAME}}}} neukládejte.<br />
@@ -755,6 +756,7 @@ Uložením příspěvku se zavazujete, že je vaším dílem nebo je zkopírová
 'protectedpagewarning'      => '<strong>Varování:</strong> Tato stránka byla zamčena, takže ji mohou editovat pouze správci.',
 'semiprotectedpagewarning'  => '<strong>Poznámka:</strong> Tato stránka byla zamčena, takže ji mohou editovat pouze registrovaní uživatelé.',
 'cascadeprotectedwarning'   => "'''Varování:''' Tato stránka byla zamčena, takže ji mohou editovat pouze správci. Je vložena na následující, kaskádním zámkem  {{PLURAL:$1|zamčenou, stránku|zamčené, stránky|zamčené, stránky}}:",
+'titleprotectedwarning'     => '<strong>POZOR:  Tento název byl uzamčen, pouze někteří uživatelé zde mohou založit stránku.</strong>',
 'templatesused'             => 'Šablony používané na této stránce:',
 'templatesusedpreview'      => 'Šablony používané v tomto náhledu:',
 'templatesusedsection'      => 'Šablony používané v této části stránky:',
@@ -762,7 +764,7 @@ Uložením příspěvku se zavazujete, že je vaším dílem nebo je zkopírová
 'template-semiprotected'    => '(polozamčena)',
 'edittools'                 => '<!-- Tento text bude zobrazen pod formuláři pro editaci stránek a načítání souborů. -->',
 'nocreatetitle'             => 'Vytváření nových stránek je omezeno',
-'nocreatetext'              => 'Na tomto serveru je možnost vytváření nových stránek omezena.
+'nocreatetext'              => 'Na {{grammar:6sg|{{SITENAME}}}} je možnost vytváření nových stránek omezena.
 Můžete se vrátit a editovat již existující stránku, nebo [[Special:Userlogin|se přihlásit či se registrovat]].',
 'nocreate-loggedin'         => 'Nemáte povoleno zakládat nové stránky na {{grammar:6sg|{{SITENAME}}}}.',
 'permissionserrors'         => 'Chyba v povolení',
@@ -787,7 +789,7 @@ $3 uvádí toto zdůvodnění: ''$2''",
 'viewpagelogs'        => 'Zobrazit protokolovací záznamy k této stránce',
 'nohistory'           => 'O této stránce neexistuje historie editací.',
 'revnotfound'         => 'Verze nenalezena',
-'revnotfoundtext'     => 'Nelze najít starou verzi, kterou žádáte. Zkuste prosím zkontrolovat URL hledané stránky.\b',
+'revnotfoundtext'     => 'Nelze najít starou verzi, kterou žádáte. Zkuste prosím zkontrolovat URL hledané stránky.\\b',
 'loadhist'            => 'Načítá se stránka historie editací',
 'currentrev'          => 'Aktuální verze',
 'revisionasof'        => 'Verze z $1',
@@ -875,6 +877,7 @@ Ujistěte se, že tato změna udrží souvislost a posloupnost verzí v historii
 'mergehistory-go'                  => 'Zobrazit slučitelné editace',
 'mergehistory-submit'              => 'Sloučit verze',
 'mergehistory-empty'               => 'Nelze sloučit žádnou verzi',
+'mergehistory-success'             => '$3 {{PLURAL:$3|verze|verze|verzí}} stránky [[:$1]] {{PLURAL:$3|byla úspěšně sloučena|byly úspěšně sloučeny|bylo úspěšně sloučeno}} do stránky [[:$2]].',
 'mergehistory-fail'                => 'Sloučení historií nelze provést. Překontrolujte zadané stránky a jejich historii.',
 'mergehistory-no-source'           => 'Zdrojová stránka $1 neexistuje.',
 'mergehistory-no-destination'      => 'Cílová stránka $1 neexistuje.',
@@ -882,8 +885,10 @@ Ujistěte se, že tato změna udrží souvislost a posloupnost verzí v historii
 'mergehistory-invalid-destination' => 'Cílová stránka musí mít platný název.',
 
 # Merge log
-'mergelog'    => 'Kniha slučování',
-'revertmerge' => 'Zrušit sloučení',
+'mergelog'           => 'Kniha slučování',
+'pagemerge-logentry' => 'slučuje stránku [[$1]] se stránkou [[$2]] (verze do $3)',
+'revertmerge'        => 'Zrušit sloučení',
+'mergelogpagetext'   => 'Níže je seznam nejnovějších sloučení historie jedné stránky s jinou.',
 
 # Diffs
 'history-title'           => 'Historie verzí stránky „$1“',
@@ -985,13 +990,14 @@ $2 Vypsat přesměrování &nbsp; Hledat $3 $9',
 'userrights-editusergroup'    => 'Upravit uživatelské skupiny',
 'saveusergroups'              => 'Uložit uživatelské skupiny',
 'userrights-groupsmember'     => 'Člen skupin:',
+'userrights-groupsremovable'  => 'Odebratelné skupiny:',
 'userrights-groupsavailable'  => 'Dostupné skupiny:',
 'userrights-groupshelp'       => 'Zvolte skupiny, do/ze kterých chcete uživatele přidat/odebrat.
 Nezvolené skupiny nebudou změněny. Skupinu můžete vyřadit z vybraných pomocí CTRL + Levé tlačítko myši',
 'userrights-reason'           => 'Zdůvodnění:',
 'userrights-available-none'   => 'Nemůžete měnit zařazení do skupin.',
-'userrights-available-add'    => 'Můžete uživatele přidat do skupiny $1.',
-'userrights-available-remove' => 'Můžete odebrat uživatele ze skupiny $1.',
+'userrights-available-add'    => 'Můžete uživatele přidat do {{PLURAL:$2|skupiny|skupin|skupin}}: $1.',
+'userrights-available-remove' => 'Můžete odebrat uživatele z {{PLURAL:$2|této skupiny|těchto skupin|těchto skupin}}: $1.',
 'userrights-no-interwiki'     => 'Nemáte povoleno měnit uživatelská práva na jiných wiki.',
 'userrights-nodatabase'       => 'Databáze $1 neexistuje nebo není místní.',
 'userrights-nologin'          => 'Musíte se [[Special:Userlogin|přihlásit]] k účtu správce, abyste mohli měnit uživatelská práva.',
@@ -1218,7 +1224,7 @@ Zde je příslušný výpis z knihy smazaných stránek:",
 'filedelete-submit'      => 'Smazat',
 'filedelete-success'     => "Soubor '''$1''' byl smazán.",
 'filedelete-success-old' => '<span class="plainlinks">Verze souboru \'\'\'[[Media:$1|$1]]\'\'\' z $3 $2 byla smazána.</span>',
-'filedelete-nofile'      => "Soubor '''$1''' neexistuje.",
+'filedelete-nofile'      => "Soubor '''$1''' na {{grammar:6sg|{{SITENAME}}}} neexistuje.",
 'filedelete-nofile-old'  => "Neexistuje archivní verze souboru '''$1''' s udávanými atributy.",
 'filedelete-iscurrent'   => 'Pokoušíte se smazat současnou verzi souboru. Nejprve navraťte starší verzi souboru.',
 
@@ -1477,7 +1483,7 @@ Rady a kontakt:
 'confirmdelete'               => 'Potvrdit smazání',
 'deletesub'                   => '(Maže se „$1“)',
 'historywarning'              => 'Varování: Stránka, jíž chcete smazat, má historii:',
-'confirmdeletetext'           => 'Chystáte se trvale smazat z databáze stránku nebo obrázek s celou jeho historií. Prosím potvrďte, že to opravdu chcete učinit, že si uvědomujete důsledky a že je to v souladu s [[{{MediaWiki:Policy-url}}|pravidly]].',
+'confirmdeletetext'           => 'Chystáte se smazat stránku s celou její historií. Prosím potvrďte, že to opravdu chcete učinit, že si uvědomujete důsledky a že je to v souladu s [[{{MediaWiki:Policy-url}}|pravidly]].',
 'actioncomplete'              => 'Provedeno',
 'deletedtext'                 => 'Stránka nebo soubor „$1“ byla smazána.
 $2 zaznamenává poslední smazání.',
@@ -1533,7 +1539,7 @@ Současné nastavení pro tuto stránku je: <strong>$1</strong>:',
 'protect-expiring'            => 'vyprší $1 (UTC)',
 'protect-cascade'             => 'Kaskádní zámek - zamkne všechny stránky vložené do této stránky.',
 'protect-cantedit'            => 'Nemůžete měnit nastavení zámků této stránky, protože nemáte povoleno tuto stránku editovat.',
-'restriction-type'            => 'Povolení:',
+'restriction-type'            => 'Omezení:',
 'restriction-level'           => 'Úroveň omezení:',
 'minimum-size'                => 'Min. velikost',
 'maximum-size'                => 'Max. velikost',
@@ -1541,7 +1547,7 @@ Současné nastavení pro tuto stránku je: <strong>$1</strong>:',
 
 # Restrictions (nouns)
 'restriction-edit'   => 'editace',
-'restriction-move'   => 'přesun',
+'restriction-move'   => 'přesunutí',
 'restriction-create' => 'vytvoření',
 
 # Restriction levels
@@ -1664,7 +1670,7 @@ $1',
 'ipusubmit'                   => 'Odblokovat',
 'unblocked'                   => '[[User:$1|$1]] byl odblokován',
 'unblocked-id'                => 'Blok $1 byl zrušen',
-'ipblocklist'                 => 'Seznam blokovaných IP adres',
+'ipblocklist'                 => 'Seznam blokovaných IP adres a uživatelských jmen',
 'ipblocklist-legend'          => 'Hledat zablokovaného uživatele',
 'ipblocklist-username'        => 'Jméno nebo IP adresa:',
 'ipblocklist-submit'          => 'Hledat',
@@ -1812,7 +1818,9 @@ Do níže uvedeného editačního pole zadejte názvy stránek, které chcete ex
 'importhistoryconflict'      => 'Existuje konflikt mezi historiemi verzí. Možná, že tato stránka byla již importována dříve.',
 'importnosources'            => 'Nebyly definovány žádné zdroje pro import mezi wiki a přímé načítání historie je vypnuto.',
 'importnofile'               => 'Nebyl načten importní soubor.',
-'importuploaderror'          => 'Nepodařilo se načíst importní soubor; možná jeho velikost přesahuje dovolenou mez.',
+'importuploaderrorsize'      => 'Nepodařilo se načíst importní soubor. Soubor je větší než povolená velikost.',
+'importuploaderrorpartial'   => 'Nepodařilo se načíst importní soubor. Soubor byl načten jen částečně.',
+'importuploaderrortemp'      => 'Nepodařilo se načíst importní soubor. Není k dispozici dočasná složka.',
 
 # Import log
 'importlogpage'                    => 'Kniha importů',

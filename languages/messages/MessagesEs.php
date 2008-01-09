@@ -16,6 +16,8 @@
  * @author Nike
  * @author לערי ריינהארט
  * @author Siebrand
+ * @author Piolinfax
+ * @author Dmcdevit
  */
 
 $skinNames = array(
@@ -102,13 +104,13 @@ $messages = array(
 'skinpreview' => '(Ver cómo queda)',
 
 # Dates
-'sunday'        => 'Domingo',
-'monday'        => 'Lunes',
-'tuesday'       => 'Martes',
-'wednesday'     => 'Miércoles',
-'thursday'      => 'Jueves',
-'friday'        => 'Viernes',
-'saturday'      => 'Sábado',
+'sunday'        => 'domingo',
+'monday'        => 'lunes',
+'tuesday'       => 'martes',
+'wednesday'     => 'miércoles',
+'thursday'      => 'jueves',
+'friday'        => 'viernes',
+'saturday'      => 'sábado',
 'sun'           => 'dom',
 'mon'           => 'lun',
 'tue'           => 'mar',
@@ -516,7 +518,7 @@ Tu identificador de bloqueo es $5. Por favor, incluye este identificador en cual
 'whitelistreadtitle'        => 'Se requiere identificación para leer',
 'whitelistreadtext'         => 'Tienes que [[Special:Userlogin|registrarte]] para leer artículos.',
 'whitelistacctitle'         => 'No se le permite crear una cuenta',
-'whitelistacctext'          => 'Para que se te permita crear cuentas en este wiki tienes que [[Special:Userlogin|iniciar sesión]] y tener los permisos apropiados.',
+'whitelistacctext'          => 'Para poder crear cuentas en {{SITENAME}} se ha de [[Special:Userlogin|iniciar sesión]] y tener los permisos apropiados.',
 'confirmedittitle'          => 'Se requiere confirmación de dirección electrónica para editar',
 'confirmedittext'           => 'Debes confirmar tu dirección electrónica antes de editar páginas. Por favor, establece y valida una dirección electrónica a través de tus [[Special:Preferences|preferencias de usuario]].',
 'nosuchsectiontitle'        => 'No existe tal sección',
@@ -1375,7 +1377,7 @@ las páginas en particular que han sido objeto de vandalismo).',
 'ipbenableautoblock'          => 'Bloquear automáticamente la dirección IP usada por este usuario, y cualquier IP posterior desde la cual intente editar',
 'ipbsubmit'                   => 'Bloquear a este usuario',
 'ipbother'                    => 'Especificar caducidad',
-'ipboptions'                  => '2 horas:2 hours,1 día:1 day,3 días:3 days,1 semana:1 week,2 semanas:2 weeks,1 mes:1 month,3 meses:3 months,6 meses:6 months,1 año:1 year,Para siempre:infinite',
+'ipboptions'                  => '2 horas:2 hours,1 día:1 day,3 días:3 days,1 semana:1 week,2 semanas:2 weeks,1 mes:1 month,3 meses:3 months,6 meses:6 months,1 año:1 year,Para siempre:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'otro',
 'ipbotherreason'              => 'Otro/adicional motivo:',
 'ipbhidename'                 => 'Ocultar usuario/IP en el registro de bloqueos, la lista de bloqueos activos y la lista de usuarios',
@@ -1554,7 +1556,6 @@ Todas las importaciones transwiki se registran en el [[Special:Log/import|regist
 'importhistoryconflict'      => 'Existen revisiones en conflicto en el historial (puede que se haya importado esta página antes)',
 'importnosources'            => 'No hay fuentes de importación transwiki y no está permitido subir directamente el historial.',
 'importnofile'               => 'No se subieron archivos de importación.',
-'importuploaderror'          => 'La subida del archivo de importación ha fallado. Quizá el archivo es mayor que el tamaño máximo de subida permitido.',
 
 # Import log
 'importlogpage'                    => 'Registro de importaciones',
@@ -1587,6 +1588,7 @@ Todas las importaciones transwiki se registran en el [[Special:Log/import|regist
 'tooltip-ca-watch'                => 'Añadir esta página a su lista de seguimiento',
 'tooltip-ca-unwatch'              => 'Borrar esta página de su lista de seguimiento',
 'tooltip-search'                  => 'Buscar en este wiki',
+'tooltip-search-go'               => 'Ir al artículo con este nombre exacto si existe',
 'tooltip-p-logo'                  => 'Portada',
 'tooltip-n-mainpage'              => 'Visitar la Portada',
 'tooltip-n-portal'                => 'Acerca del proyecto, qué puede hacer, dónde encontrar información',
@@ -1723,7 +1725,7 @@ Todas las importaciones transwiki se registran en el [[Special:Log/import|regist
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength',
+* focallength', # Do not translate list items
 
 # EXIF tags
 'exif-imagewidth'                  => 'Anchura',

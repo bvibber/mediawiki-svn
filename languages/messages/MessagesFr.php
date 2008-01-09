@@ -615,6 +615,7 @@ vous ne pourrez donc pas sauvegarder vos modifications maintenant. Vous pouvez c
 Seuls les utilisateurs ayant le statut d’administrateur peuvent la modifier..'''",
 'semiprotectedpagewarning'  => "'''Note :''' Cette page a été protégée de telle façon que seuls les contributeurs enregistrés puissent la modifier.",
 'cascadeprotectedwarning'   => '<strong>ATTENTION : Cette page a été protégée de manière à ce que seuls les [[{{MediaWiki:Grouppage-sysop}}|administrateurs]] puissent l’éditer. Cette protection a été faite car cette page est incluse dans {{PLURAL:$1|une page protégée|des pages protégées}} avec la « protection en cascade » activée.</strong>',
+'titleprotectedwarning'     => '<strong>ATTENTION : Cette page a été protégée de telle manière que seuls certains utilisateurs puissent la créer.</strong>',
 'templatesused'             => 'Modèles utilisés sur cette page :',
 'templatesusedpreview'      => 'Modèles utilisés dans cette prévisualisation :',
 'templatesusedsection'      => 'Modèles utilisés dans cette section :',
@@ -837,6 +838,7 @@ $2 Inclure les pages de redirection<br /> Rechercher $3 $9',
 'userrights-editusergroup'    => 'Modifier les groupes de l’utilisateur',
 'saveusergroups'              => 'Sauvegarder les groupes utilisateur',
 'userrights-groupsmember'     => 'Membre de :',
+'userrights-groupsremovable'  => 'Groupes supprimables :',
 'userrights-groupsavailable'  => 'Groupes disponibles :',
 'userrights-groupshelp'       => 'Choisissez les groupes desquels vous voulez retirer ou rajouter l’utilisateur. Les groupes non sélectionnés ne seront pas modifiés. Vous pouvez désélectionner un groupe avec CTRL + clic gauche.',
 'userrights-reason'           => 'Motif du changement :',
@@ -1687,7 +1689,9 @@ Toutes les actions d’importation interwiki sont conservées dans le [[Special:
 'importhistoryconflict'      => 'Un conflit a été détecté dans l’historique des versions (cette page a pu être importée auparavant).',
 'importnosources'            => 'Aucune source inter-wiki n’a été définie et la copie directe d’historique est désactivée.',
 'importnofile'               => 'Aucun fichier n’a été importé.',
-'importuploaderror'          => 'L’import du fichier a échoué : il est possible que celui-ci dépasse la taille autorisée.',
+'importuploaderrorsize'      => 'Le téléchargement du fichier à importer a échoué. Sa taille est plus grande que celle autorisée.',
+'importuploaderrorpartial'   => 'Le téléchargement du fichier à importer a échoué. Celui-ci ne l’a été que partiellement.',
+'importuploaderrortemp'      => 'Le téléchargement du fichier à importer a échoué. Un dossier temporaire est manquant.',
 
 # Import log
 'importlogpage'                    => 'Historique des importations de pages',
@@ -1831,7 +1835,9 @@ Toutes les actions d’importation interwiki sont conservées dans le [[Special:
 # Image deletion
 'deletedrevision'                 => 'L’ancienne version $1 a été supprimée',
 'filedeleteerror-short'           => 'Erreur lors de la suppression du fichier : $1',
-'filedeleteerror-long'            => 'Des erreurs ont été rencontrées lors de la suppression du fichier :\n\n$1\n',
+'filedeleteerror-long'            => 'Des erreurs ont été rencontrées lors de la suppression du fichier :
+
+$1',
 'filedelete-missing'              => 'Le fichier « $1 » ne peut pas être supprimé parce qu’il n’existe pas.',
 'filedelete-old-unregistered'     => 'La révision du fichier spécifié « $1 » n’est pas dans la base de données.',
 'filedelete-current-unregistered' => 'Le fichier spécifié « $1 » n’est pas dans la base de données.',
@@ -2266,3 +2272,4 @@ Essayez la prévisualisation normale.',
 'watchlisttools-raw'  => 'Modifier la liste (mode brut)',
 
 );
+

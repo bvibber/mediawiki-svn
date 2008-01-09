@@ -5,6 +5,7 @@
  *
  * @author Lars J. Helbo <lars.helbo@gmail.com>
  * @author Anders Wegge Jakobsen <awegge@gmail.com>
+ * @author Morten LJ
  */
 
 $namespaceNames = array(
@@ -146,26 +147,26 @@ $messages = array(
 # User preference toggles
 'tog-underline'               => 'Understreg henvisninger',
 'tog-highlightbroken'         => 'Brug røde henvisninger til tomme sider',
-'tog-justify'                 => 'Justér afsnit',
-'tog-hideminor'               => 'Skjul mindre ændringer i seneste ændringer listen',
+'tog-justify'                 => 'Vis artikler med lige marginer',
+'tog-hideminor'               => 'Skjul mindre ændringer i listen over seneste ændringer',
 'tog-extendwatchlist'         => 'Udvidet liste med seneste ændringer',
-'tog-usenewrc'                => 'Udvidet seneste ændringer liste<br />(ikke for alle browsere)',
+'tog-usenewrc'                => 'Forbedret liste over seneste ændringer (JavaScript)',
 'tog-numberheadings'          => 'Automatisk nummerering af overskrifter',
-'tog-showtoolbar'             => 'Vis værktøjslinje til redigering',
+'tog-showtoolbar'             => 'Vis værktøjslinje til redigering (JavaScript)',
 'tog-editondblclick'          => 'Redigér sider med dobbeltklik (JavaScript)',
-'tog-editsection'             => 'Redigér afsnit ved hjælp af [redigér]-henvisning',
-'tog-editsectiononrightclick' => 'Redigér afsnit ved at højreklikke<br /> på afsnittets titel (JavaScript)',
-'tog-showtoc'                 => 'Vis indholdsfortegnelse<br />(for artikler med mere end tre afsnit)',
-'tog-rememberpassword'        => 'Husk adgangskode til næste besøg',
+'tog-editsection'             => 'Redigér afsnit ved hjælp af [redigér]-henvisninger',
+'tog-editsectiononrightclick' => 'Redigér afsnit ved at klikke på deres titler (JavaScript)',
+'tog-showtoc'                 => 'Vis indholdsfortegnelse (i artikler med mere end tre afsnit)',
+'tog-rememberpassword'        => 'Husk adgangskode til næste besøg fra denne computer',
 'tog-editwidth'               => 'Redigeringsboksen har fuld bredde',
-'tog-watchcreations'          => 'Overvåg egne sider automatisk',
-'tog-watchdefault'            => 'Overvåg egne nye og ændrede artikler automatisk',
-'tog-watchmoves'              => 'Overvåg egne flyttede artikler automatisk',
-'tog-watchdeletion'           => 'Overvåg egne slettede artikler automatisk',
-'tog-minordefault'            => 'Markér som standard alle egne ændringer som mindre',
+'tog-watchcreations'          => 'Tilføj sider jeg opretter til min overvågningsliste',
+'tog-watchdefault'            => 'Tilføj sider jeg redigerer til min overvågningsliste',
+'tog-watchmoves'              => 'Tilføj sider jeg flytter til min overvågningsliste',
+'tog-watchdeletion'           => 'Tilføj sider jeg sletter til min overvågningsliste',
+'tog-minordefault'            => 'Markér som standard alle redigering som mindre',
 'tog-previewontop'            => 'Vis forhåndsvisning over redigeringsboksen',
 'tog-previewonfirst'          => 'Vis forhåndsvisning når du starter med at redigere',
-'tog-nocache'                 => 'Husk ikke siderne til næste besøg',
+'tog-nocache'                 => 'Slå caching af sider fra',
 'tog-enotifwatchlistpages'    => 'Send mig en e-mail ved sideændringer',
 'tog-enotifusertalkpages'     => 'Send mig en e-mail når min brugerdiskussionsside ændres',
 'tog-enotifminoredits'        => 'Send mig også en e-mail ved mindre ændringer af overvågede sider',
@@ -462,7 +463,6 @@ $2',
 'ns-specialprotected'  => 'Sider i navnerummet {{ns:special}} kan ikke redigeres.',
 'titleprotected'       => 'Dette sidenavn er beskyttet mod oprettelse af [[User:$1|$1]]. Begrundelsen for beskyttelsen er <i>$2</i>.',
 
-
 # Login and logout pages
 'logouttitle'                => 'Bruger-log-af',
 'logouttext'                 => 'Du er nu logget af.
@@ -698,6 +698,7 @@ så du kan ikke gemme dine ændringer lige nu. Det kan godt være en god ide at 
 'protectedpagewarning'      => '<strong>ADVARSEL: Denne side er skrivebeskyttet, så kun administratorer kan redigere den.</strong>',
 'semiprotectedpagewarning'  => "'''Halv spærring:''' Siden er spærret, så kun registrerede brugere kan ændre den.",
 'cascadeprotectedwarning'   => "'''BEMÆRK: Denne side er skrivebeskyttet, så den kun kan ændres af brugere med Administratorrettigheder. Den er indeholdt i nedenstående {{PLURAL:$1|side|sider}}, som er skrivebeskyttet med tilvalg af nedarvende sidebeskyttelse:'''",
+'titleprotectedwarning'     => '<strong>ADVARSEL:  Den side er låst så kun nogle brugere kan oprette den.</strong>',
 'templatesused'             => 'Skabeloner der er brugt på denne side:',
 'templatesusedpreview'      => 'Følgende skabeloner bruges af denne artikelforhåndsvisning:',
 'templatesusedsection'      => 'Følgende skabeloner bruges af dette afsnit:',
@@ -797,38 +798,39 @@ Administratorer kan dog fortsat se og gendanne det fjernede indhold, medmindre d
 'overlogpagetext' => 'Dette er logbogen med sletninger og spærringer, som er skjult for administratorerne.',
 
 # History merging
-'mergehistory'          => 'Sammenflet sidehistorikker',
-'mergehistory-header'   => "Denne sider giver mulighed for at flette historikken fra en kildeside ind i en nyere side. 
+'mergehistory'                     => 'Sammenflet sidehistorikker',
+'mergehistory-header'              => "Denne sider giver mulighed for at flette historikken fra en kildeside ind i en nyere side. 
 Vær opmæksom på at bevare kontinuiteten i sidehistorikken.
 
 '''Bevar som minimum den nuværende udgave af kildesiden.'''",
-'mergehistory-box'      => 'Sammenflet versioner af to sider:',
-'mergehistory-from'     => 'Kildeside:',
-'mergehistory-into'     => 'Destinationsside:',
-'mergehistory-list'     => 'Sammenflettelig revisioner',
-'mergehistory-merge'    => 'Nedenstående udgave af [[:$1]] kan sammenflettes med [[:$2]]. Vælg én version nedfor for at sammenflette denne og alle tidligere versioner. Bemærk at navigation i historikken nulstiller valget.',
-'mergehistory-go'       => 'Vis sammenflettelige versioner',
-'mergehistory-submit'   => 'Sammenflet versioner',
-'mergehistory-empty'    => 'Der findes ingen sammenflettelige udgaver',
-'mergehistory-success'  => '$3 {{PLURAL:$3|version|versioner}} af [[:$1]] blev flettet sammen med [[:$2]].',
-'mergehistory-fail'     => 'Sammenfletningen kunne ikke gennemføres. Vær venlig at kontrollere sidenavne og tidsafgrænsning.',
-'mergehistory-no-source' => 'Kildesiden $1 findes ikke.',
-'mergehistory-no-destination' => 'Destinationssiden $1 findes ikke.',
-'mergehistory-invalid-source' => 'Angiv et gyldigt sidenavn som kildeside.',
+'mergehistory-box'                 => 'Sammenflet versioner af to sider:',
+'mergehistory-from'                => 'Kildeside:',
+'mergehistory-into'                => 'Destinationsside:',
+'mergehistory-list'                => 'Sammenflettelig revisioner',
+'mergehistory-merge'               => 'Nedenstående udgave af [[:$1]] kan sammenflettes med [[:$2]]. Vælg én version nedfor for at sammenflette denne og alle tidligere versioner. Bemærk at navigation i historikken nulstiller valget.',
+'mergehistory-go'                  => 'Vis sammenflettelige versioner',
+'mergehistory-submit'              => 'Sammenflet versioner',
+'mergehistory-empty'               => 'Der findes ingen sammenflettelige udgaver',
+'mergehistory-success'             => '$3 {{PLURAL:$3|version|versioner}} af [[:$1]] blev flettet sammen med [[:$2]].',
+'mergehistory-fail'                => 'Sammenfletningen kunne ikke gennemføres. Vær venlig at kontrollere sidenavne og tidsafgrænsning.',
+'mergehistory-no-source'           => 'Kildesiden $1 findes ikke.',
+'mergehistory-no-destination'      => 'Destinationssiden $1 findes ikke.',
+'mergehistory-invalid-source'      => 'Angiv et gyldigt sidenavn som kildeside.',
 'mergehistory-invalid-destination' => 'Angiv et gyldigt sidenavn som destinationsside.',
 
 # Merge log
-'mergelog'              => 'Sammenfletningslog',
-'pagemerge-logentry'    => 'flettede [[$1]] ind i [[$2]] (revisioner indtil $3)',
-'revertmerge'           => 'Gendan sammenfletning',
-'mergelogpagetext'      => 'Nedenfor vises en liste med de nyeste sammenfletninger af en sides historik i en anden.',
+'mergelog'           => 'Sammenfletningslog',
+'pagemerge-logentry' => 'flettede [[$1]] ind i [[$2]] (revisioner indtil $3)',
+'revertmerge'        => 'Gendan sammenfletning',
+'mergelogpagetext'   => 'Nedenfor vises en liste med de nyeste sammenfletninger af en sides historik i en anden.',
 
 # Diffs
-'history-title'             => 'Revisionshistorik for "$1"',
-'lineno'                    => 'Linje $1:',
-'compareselectedversions'   => 'Sammenlign valgte versioner',
-'editundo'                  => 'annuller',
-'diff-multi'                => "<span style='font-size: smaller'>(Versionssammenligningen medtager {{plural:$1|en mellemliggende version|$1 mellemliggende versioner}}.)</span>",
+'history-title'           => 'Revisionshistorik for "$1"',
+'difference'              => '(Forskelle mellem versioner)',
+'lineno'                  => 'Linje $1:',
+'compareselectedversions' => 'Sammenlign valgte versioner',
+'editundo'                => 'annuller',
+'diff-multi'              => "<span style='font-size: smaller'>(Versionssammenligningen medtager {{plural:$1|en mellemliggende version|$1 mellemliggende versioner}}.)</span>",
 
 # Search results
 'searchresults'         => 'Søgeresultater',
@@ -920,6 +922,7 @@ Vær opmæksom på at bevare kontinuiteten i sidehistorikken.
 'userrights-editusergroup'    => 'Redigér brugergrupper',
 'saveusergroups'              => 'Gem brugergrupper',
 'userrights-groupsmember'     => 'Medlem af:',
+'userrights-groupsremovable'  => 'Grupper der kan slettes:',
 'userrights-groupsavailable'  => 'Tilgængelige grupper:',
 'userrights-groupshelp'       => 'Vælg grupper som du ønsker brugeren skal fjernes fra eller føjes til.
 Grupper som ikke er valgt, vil ikke blive ændret. Du kan ophæve valget af en gruppe ved hjælp af CTRL-tasten og et venstreklik.',
@@ -978,12 +981,11 @@ Grupper som ikke er valgt, vil ikke blive ændret. Du kan ophæve valget af en g
 'minoreditletter'                   => 'm',
 'newpageletter'                     => 'N',
 'boteditletter'                     => 'b',
-'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|overvåget bruger|overvågede brugere}}]',
+'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|overvågende bruger|overvågende brugere}}]',
 'rc_categories'                     => 'Kun sider fra kategorierne (adskilt med „|“):',
 'rc_categories_any'                 => 'Alle',
 'rc-change-size'                    => '$1 {{PLURAL:$1|Byte|Bytes}}',
 'newsectionsummary'                 => '/* $1 */ nyt afsnit',
-'difference'                => '(Forskelle mellem versioner)',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Relaterede ændringer',
@@ -1380,7 +1382,7 @@ deraf har '''$2''' (=$4%) $5-rettigheder.",
 'unwatchthispage'      => 'Fjern overvågning',
 'notanarticle'         => 'Ikke en artikel',
 'watchnochange'        => 'Ingen af siderne i din overvågningsliste er ændret i den valgte periode.',
-'watchlist-details'    => 'Du har $1 {{PLURAL:$1|side|sider}} på din overvågningsliste (fratrukket alle diskussionssider).',
+'watchlist-details'    => 'Du har $1 {{PLURAL:$1|side|sider}} på din overvågningsliste (ekskl. diskussionssider).',
 'wlheader-enotif'      => '* E-mail underretning er slået til.',
 'wlheader-showupdated' => "* Sider der er ændret siden dit sidste besøg er '''fremhævet'''",
 'watchmethod-recent'   => 'Tjekker seneste ændringer for sider i din overvågningsliste',
@@ -1494,7 +1496,7 @@ eller et billede sammen med hele den tilhørende historie fra databasen. Bekræf
 'protect-summary-cascade'     => 'nedarvende',
 'protect-expiring'            => 'til $1 (UTC)',
 'protect-cascade'             => 'Nedarvende spærring – alle skabeloner, som er indbundet i denne side spærres også.',
-'protect-cantedit'	      => 'Du kan ikke ændre beskyttelsesniveau for denne side, da du ikke kan redigere fden.',
+'protect-cantedit'            => 'Du kan ikke ændre beskyttelsesniveau for denne side, da du ikke kan redigere fden.',
 'restriction-type'            => 'Beskyttelsesstatus',
 'restriction-level'           => 'Beskyttelseshøjde',
 'minimum-size'                => 'Mindste størrelse',
@@ -1502,8 +1504,8 @@ eller et billede sammen med hele den tilhørende historie fra databasen. Bekræf
 'pagesize'                    => '(bytes)',
 
 # Restrictions (nouns)
-'restriction-edit' => 'ændre',
-'restriction-move' => 'flytte',
+'restriction-edit'   => 'ændre',
+'restriction-move'   => 'flytte',
 'restriction-create' => 'oprette',
 
 # Restriction levels
@@ -1571,13 +1573,13 @@ $1',
 'nocontribs'    => 'Ingen ændringer er fundet som opfylder disse kriterier.',
 'ucnote'        => 'Herunder er denne brugers sidste <b>$1</b> ændringer i de sidste <b>$2</b> dage.',
 'uclinks'       => 'Vis de sidste $1 ændringer; vis de sidste $2 dage.',
-'uctop'         => ' (top)',
+'uctop'         => ' (seneste)',
 'month'         => 'Måned:',
 'year'          => 'År:',
 
 'sp-contributions-newbies'     => 'Vis kun bidrag fra nye brugere',
 'sp-contributions-newbies-sub' => 'For nybegyndere',
-'sp-contributions-blocklog'    => 'Spærrelog',
+'sp-contributions-blocklog'    => 'Blokeringslog',
 'sp-contributions-search'      => 'Søge efter brugerbidrag',
 'sp-contributions-username'    => 'IP-adresse eller brugernavn:',
 'sp-contributions-submit'      => 'Søg',
@@ -1624,7 +1626,7 @@ $1',
 'ipbenableautoblock'          => 'Spærre den IP-adresse, der bruges af denne bruger samt automatisk alle følgende, hvorfra han foretager ændringer eller forsøger at anlægge brugerkonti',
 'ipbsubmit'                   => 'Bloker denne bruger',
 'ipbother'                    => 'Anden varighed (engelsk)',
-'ipboptions'                  => '1 time:1 hour,2 timer:2 hours,6 timer:6 hours,1 dag:1 day,3 dage:3 days,1 uge:1 week,2 uger:2 weeks,1 måned:1 month,3 måneder:3 months,1 år:1 year,ubegrænset:indefinite',
+'ipboptions'                  => '1 time:1 hour,2 timer:2 hours,6 timer:6 hours,1 dag:1 day,3 dage:3 days,1 uge:1 week,2 uger:2 weeks,1 måned:1 month,3 måneder:3 months,1 år:1 year,ubegrænset:indefinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'Anden varighed',
 'ipbotherreason'              => 'Anden/uddybende begrundelse',
 'ipbhidename'                 => 'Skjul brugernavn/IP-adresse i spærrelog, listen med aktive spærringer og brugerfortegnelsen.',
@@ -1793,7 +1795,9 @@ Alle Transwiki import-aktioner protokolleres i [[Special:Log/import|import-logge
 'importhistoryconflict'      => 'Der er en konflikt i versionhistorikken (siden kan have været importeret før)',
 'importnosources'            => 'Ingen transwiki importkilde defineret og direkte historikuploads er deaktiveret.',
 'importnofile'               => 'Ingen importfil valgt!',
-'importuploaderror'          => 'Upload af importfilen mislykkedes. Måske er filen større end tilladt.',
+'importuploaderrorsize'      => 'Upload af importfil mislykkedes da filen er større en den tilladte maksimale uploadstørrelse.',
+'importuploaderrorpartial'   => 'Upload af importfil mislykkedes da filen kun blev delvist uploadet.',
+'importuploaderrortemp'      => 'Upload af importfil mislykkedes da en midlertidig mappe mangler.',
 
 # Import log
 'importlogpage'                    => 'Importlog',
@@ -1986,7 +1990,7 @@ Kun indholdet af lister (linjer startende med *) bliver brugt. Den første henvi
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength',
+* focallength', # Do not translate list items
 
 # EXIF tags
 'exif-imagewidth'                  => 'Bredde',
@@ -2195,9 +2199,6 @@ Kun indholdet af lister (linjer startende med *) bliver brugt. Den første henvi
 
 'exif-gaincontrol-0' => 'Ingen',
 'exif-gaincontrol-1' => 'Ringe',
-'exif-gaincontrol-2' => 'High gain up',
-'exif-gaincontrol-3' => 'Low gain down',
-'exif-gaincontrol-4' => 'High gain down',
 
 'exif-contrast-0' => 'Normal',
 'exif-contrast-1' => 'Svag',
@@ -2291,7 +2292,6 @@ Trackbacks for denne side:<br />
 $1
 </div>',
 'trackbackremove'   => '([$1 löschen])',
-'trackbacklink'     => 'Trackback',
 'trackbackdeleteok' => 'Trackback blev slettet.',
 
 # Delete conflict

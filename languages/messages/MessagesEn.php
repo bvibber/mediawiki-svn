@@ -335,6 +335,7 @@ $magicWords = array(
 	'special'                => array( 0,    'special',               ),
 	'defaultsort'            => array( 1,    'DEFAULTSORT:', 'DEFAULTSORTKEY:', 'DEFAULTCATEGORYSORT:' ),
 	'filepath'               => array( 0,    'FILEPATH:'              ),
+	'tag'                    => array( 0,    'tag'                    ),
 );
 
 /**
@@ -1076,6 +1077,7 @@ the text into a text file and save it for later.</strong>',
 'protectedpagewarning'      => '<strong>WARNING:  This page has been locked so that only users with sysop privileges can edit it.</strong>',
 'semiprotectedpagewarning'  => "'''Note:''' This page has been locked so that only registered users can edit it.",
 'cascadeprotectedwarning'   => "'''Warning:''' This page has been locked so that only users with sysop privileges can edit it, because it is included in the following cascade-protected {{PLURAL:$1|page|pages}}:",
+'titleprotectedwarning'     => '<strong>WARNING:  This page has been locked so that only some users can create it.</strong>',
 'templatesused'             => 'Templates used on this page:',
 'templatesusedpreview'      => 'Templates used in this preview:',
 'templatesusedsection'      => 'Templates used in this section:',
@@ -1083,7 +1085,7 @@ the text into a text file and save it for later.</strong>',
 'template-semiprotected'    => '(semi-protected)',
 'edittools'                 => '<!-- Text here will be shown below edit and upload forms. -->', # only translate this message to other languages if you have to change it
 'nocreatetitle'             => 'Page creation limited',
-'nocreatetext'              => 'This site has restricted the ability to create new pages.
+'nocreatetext'              => '{{SITENAME}} has restricted the ability to create new pages.
 You can go back and edit an existing page, or [[Special:Userlogin|log in or create an account]].',
 'nocreate-loggedin'         => 'You do not have permission to create new pages on {{SITENAME}}.',
 'permissionserrors'         => 'Permissions Errors',
@@ -1152,7 +1154,7 @@ There may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}
 </div>',
 'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">
 This page revision has been removed from the public archives.
-As an administrator on this site you can view it;
+As an administrator on {{SITENAME}} you can view it;
 there may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].
 </div>',
 'rev-delundel'                => 'show/hide',
@@ -1337,8 +1339,8 @@ containing all of the search terms will appear in the result).",
 Unselected groups will not be changed. You can deselect a group with CTRL + Left Click',
 'userrights-reason'           => 'Reason for change:',
 'userrights-available-none'   => 'You may not alter group membership.',
-'userrights-available-add'    => 'You can add users to $1.',
-'userrights-available-remove' => 'You can remove users from $1.',
+'userrights-available-add'    => 'You can add users to {{PLURAL:$2|this group|these groups}}: $1.',
+'userrights-available-remove' => 'You can remove users from {{PLURAL:$2|this group|these groups}}: $1.',
 'userrights-no-interwiki'     => 'You do not have permission to edit user rights on other wikis.',
 'userrights-nodatabase'       => 'Database $1 does not exist or is not local.',
 'userrights-nologin'          => 'You must [[Special:Userlogin|log in]] with an administrator account to assign user rights.',
@@ -1573,7 +1575,7 @@ PICT # misc.
 'filedelete-submit'      => 'Delete',
 'filedelete-success'     => "'''$1''' has been deleted.",
 'filedelete-success-old' => '<span class="plainlinks">The version of \'\'\'[[Media:$1|$1]]\'\'\' as of $3, $2 has been deleted.</span>',
-'filedelete-nofile'      => "'''$1''' does not exist on this site.",
+'filedelete-nofile'      => "'''$1''' does not exist on {{SITENAME}}.",
 'filedelete-nofile-old'  => "There is no archived version of '''$1''' with the specified attributes.",
 'filedelete-iscurrent'   => 'You are attempting to delete the most recent version of this file. Please revert to an older version first.',
 
@@ -1896,7 +1898,7 @@ Feedback and further assistance:
 'confirmdelete'               => 'Confirm delete',
 'deletesub'                   => '(Deleting "$1")',
 'historywarning'              => 'Warning: The page you are about to delete has a history:',
-'confirmdeletetext'           => 'You are about to delete a page along with all of its history from the database.
+'confirmdeletetext'           => 'You are about to delete a page along with all of its history.
 Please confirm that you intend to do this, that you understand the consequences, and that you are doing this in accordance with [[{{MediaWiki:Policy-url}}|the policy]].',
 'actioncomplete'              => 'Action complete',
 'deletedtext'                 => '"$1" has been deleted.
@@ -2153,8 +2155,8 @@ the list of currently operational bans and blocks.',
 'proxyblockreason'            => 'Your IP address has been blocked because it is an open proxy. Please contact your Internet service provider or tech support and inform them of this serious security problem.',
 'proxyblocksuccess'           => 'Done.',
 'sorbs'                       => 'DNSBL', # only translate this message to other languages if you have to change it
-'sorbsreason'                 => 'Your IP address is listed as an open proxy in the DNSBL used by this site.',
-'sorbs_create_account_reason' => 'Your IP address is listed as an open proxy in the DNSBL used by this site. You cannot create an account',
+'sorbsreason'                 => 'Your IP address is listed as an open proxy in the DNSBL used by {{SITENAME}}.',
+'sorbs_create_account_reason' => 'Your IP address is listed as an open proxy in the DNSBL used by {{SITENAME}}. You cannot create an account',
 
 # Developer tools
 'lockdb'              => 'Lock database',
@@ -2300,7 +2302,9 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'importhistoryconflict'      => 'Conflicting history revision exists (may have imported this page before)',
 'importnosources'            => 'No transwiki import sources have been defined and direct history uploads are disabled.',
 'importnofile'               => 'No import file was uploaded.',
-'importuploaderror'          => 'Upload of import file failed; perhaps the file is bigger than the allowed upload size.',
+'importuploaderrorsize'      => 'Upload of import file failed. The file is bigger than the allowed upload size.',
+'importuploaderrorpartial'   => 'Upload of import file failed. The file was only partially uploaded.',
+'importuploaderrortemp'      => 'Upload of import file failed. A temporary folder is missing.',
 
 # Import log
 'importlogpage'                    => 'Import log',
@@ -3111,5 +3115,8 @@ $1',
 # Signatures
 'signature'      => '[[{{ns:user}}:$1|$2]]', # don't translate or duplicate this message to other languages
 'signature-anon' => '[[{{#special:Contributions}}/$1|$2]]', # don't translate or duplicate this message to other languages
+
+# Core parser functions
+'unknown_extension_tag' => 'Unknown extension tag "$1"',
 
 );

@@ -7,6 +7,7 @@
  * @author Jiemurat
  * @author AlefZet
  * @author Siebrand
+ * @author SPQRobin
  */
 
 $fallback = 'kk-latn';
@@ -85,29 +86,44 @@ $linkTrail = "/^([a-zı'ʼ’“»]+)(.*)$/sDu";
 
 $messages = array(
 # User preference toggles
-'tog-underline'            => "Siltewdin' astın sız:",
-'tog-justify'              => "Tekstti bettin' ken'ligi boyınsha tuwrılaw",
-'tog-hideminor'            => "Aqırg'ı o'zgerislerden kishilerin jasır",
-'tog-showtoolbar'          => "O'zgertiw a'sbapların ko'rset (JavaScript)",
-'tog-showtoc'              => "Mazmunın ko'rset (3-ten artıq bo'limi bar betlerge)",
-'tog-rememberpassword'     => "Menin' kirgenimdi usı kompyuterde saqlap qal",
-'tog-watchcreations'       => 'Men jaratqan betlerdi baqlaw dizimime qos',
-'tog-watchdefault'         => "Men o'zgeris kiritken betlerdi baqlaw dizimime qos",
-'tog-watchmoves'           => "Men ko'shirgen betlerdi baqlaw dizimime qos",
-'tog-watchdeletion'        => "Men o'shirgen betlerdi baqlaw dizimime qos",
-'tog-minordefault'         => "Defolt boyınsha barlıq o'zgerislerdi kishi dep esaplaw",
-'tog-previewonfirst'       => "Birinshi o'zgertiwdi ko'rip shıq",
-'tog-enotifwatchlistpages' => "Baqlang'an bet o'zgertilgende mag'an xat jiber",
-'tog-enotifusertalkpages'  => "Menin' sa'wbetim o'zgertilgende mag'an xat jiber",
-'tog-enotifminoredits'     => "Kishi o'zgerisler haqqında da mag'an xat jiber",
-'tog-enotifrevealaddr'     => "Eskertiw xatlarında e-mail adresimdi ko'rset",
-'tog-shownumberswatching'  => "Baqlag'an paydalanıwshılar sanın ko'rset",
-'tog-externaleditor'       => "Defolt boyınsha sırtqı o'zgertiwshini qollan",
-'tog-watchlisthideown'     => "Baqlaw dizimindegi menin' o'zgertiwlerimdi jasır",
-'tog-watchlisthidebots'    => "Baqlaw dizimindegi bot o'zgertiwlerin jasır",
-'tog-watchlisthideminor'   => "Baqlaw diziminen kishi o'zgerislerdi jasır",
-'tog-ccmeonemails'         => "Basqa qollanıwshılarg'a jibergen xatlarımnın' ko'shirmesin mag'an da jiber",
-'tog-diffonly'             => "Bet mag'lıwmatın parqlardan to'mengi jerde ko'rsetpe",
+'tog-underline'               => "Siltewdin' astın sız:",
+'tog-highlightbroken'         => 'Jaramsız siltewlerdi <a href="" class="new">usılay</a> tuwrıla (alternativ: usınday<a href="" class="internal">?</a>).',
+'tog-justify'                 => "Tekstti bettin' ken'ligi boyınsha tuwrılaw",
+'tog-hideminor'               => "Aqırg'ı o'zgerislerden kishilerin jasır",
+'tog-extendwatchlist'         => "Baqlaw dizimin ken'eyt (ha'mme jaramlı o'zgerislerdi ko'rset)",
+'tog-usenewrc'                => "Ken'eytilgen jaqındag'ı o'zgerisler (JavaScript)",
+'tog-numberheadings'          => 'Atamalardı avtomat nomerle',
+'tog-showtoolbar'             => "O'zgertiw a'sbapların ko'rset (JavaScript)",
+'tog-editondblclick'          => "Eki ma'rte basıp o'zgertiw (JavaScript)",
+'tog-editsection'             => "Bo'limlerdi [o'zgertiw] siltew arqalı o'zgertiwdi qos",
+'tog-editsectiononrightclick' => "Bo'lim atamasın on' jaqqa basıp o'zgertiwdi qos (JavaScript)",
+'tog-showtoc'                 => "Mazmunın ko'rset (3-ten artıq bo'limi bar betlerge)",
+'tog-rememberpassword'        => "Menin' kirgenimdi usı kompyuterde saqlap qal",
+'tog-editwidth'               => "O'zgertiw maydanının' eni tolıq",
+'tog-watchcreations'          => 'Men jaratqan betlerdi baqlaw dizimime qos',
+'tog-watchdefault'            => "Men o'zgeris kiritken betlerdi baqlaw dizimime qos",
+'tog-watchmoves'              => "Men ko'shirgen betlerdi baqlaw dizimime qos",
+'tog-watchdeletion'           => "Men o'shirgen betlerdi baqlaw dizimime qos",
+'tog-minordefault'            => "Defolt boyınsha barlıq o'zgerislerdi kishi dep esaplaw",
+'tog-previewontop'            => "O'zgertiw maydanınan aldın ko'rip shıg'ıw maydanın ko'rset",
+'tog-previewonfirst'          => "Birinshi o'zgertiwdi ko'rip shıq",
+'tog-nocache'                 => "Betti keshte saqlawdı o'shir",
+'tog-enotifwatchlistpages'    => "Baqlang'an bet o'zgertilgende mag'an xat jiber",
+'tog-enotifusertalkpages'     => "Menin' sa'wbetim o'zgertilgende mag'an xat jiber",
+'tog-enotifminoredits'        => "Kishi o'zgerisler haqqında da mag'an xat jiber",
+'tog-enotifrevealaddr'        => "Eskertiw xatlarında e-mail adresimdi ko'rset",
+'tog-shownumberswatching'     => "Baqlag'an paydalanıwshılar sanın ko'rset",
+'tog-fancysig'                => 'Shala imzalar (avtomat siltewsiz)',
+'tog-externaleditor'          => "Defolt boyınsha sırtqı o'zgertiwshini qollan",
+'tog-externaldiff'            => 'Defoltta sırtqı parqtı qollan',
+'tog-showjumplinks'           => "«O'tip ketiw» siltewlerin qos",
+'tog-uselivepreview'          => "Janlı ko'rip shıg'ıwdı qollan (JavaScript) (Sınawda)",
+'tog-forceeditsummary'        => "O'zgertiw juwmag'ı bos qalg'anda mag'an eskert",
+'tog-watchlisthideown'        => "Baqlaw dizimindegi menin' o'zgertiwlerimdi jasır",
+'tog-watchlisthidebots'       => "Baqlaw dizimindegi bot o'zgertiwlerin jasır",
+'tog-watchlisthideminor'      => "Baqlaw diziminen kishi o'zgerislerdi jasır",
+'tog-ccmeonemails'            => "Basqa qollanıwshılarg'a jibergen xatlarımnın' ko'shirmesin mag'an da jiber",
+'tog-diffonly'                => "Bet mag'lıwmatın parqlardan to'mengi jerde ko'rsetpe",
 
 'underline-always'  => "Ha'r dayım",
 'underline-never'   => 'Hesh qashan',
@@ -175,7 +191,7 @@ $messages = array(
 'category-media-header' => '"$1" kategoriyasindag\'ı media',
 'category-empty'        => "''Bul kategoriyada ha'zir hesh bet yamasa media joq''",
 
-'linkprefix'   => '/^(.*?)([a-zıA-Zİ\x80-\xff]+)$/sDu',
+'linkprefix'   => '/^(.*?)([a-zıA-Zİ\\x80-\\xff]+)$/sDu',
 'mainpagetext' => "<big>'''MediaWiki tabıslı ornatıldı.'''</big>",
 
 'about'          => 'Proyekt haqqında',
@@ -381,6 +397,8 @@ Soraw: $2',
 
 # Login and logout pages
 'logouttitle'                => "Shıg'ıw",
+'logouttext'                 => "<strong>Siz endi sayttan shıqtın'ız.</strong><br />
+Siz {{SITENAME}} saytınan anonim halda paydalanıwın'ız mu'mkin. Yamasa siz ja'ne ha'zirgi yaki basqa paydalanıwshı atı menen qaytadan sistemag'a kiriwin'izge boladı. Sonı este saqlan', ayrım betler sizin' brauzerin'izdin' keshi tazalanbag'anlıg'ı sebebli sistemada kirgenin'izdey ko'riniste dawam ettire beriwi mu'mkin.",
 'welcomecreation'            => "== Xosh keldin'iz, $1! ==
 
 Akkauntın'ız jaratıldı. {{SITENAME}} sazlawların'ızdı o'zgertiwdi umıtpan'.",

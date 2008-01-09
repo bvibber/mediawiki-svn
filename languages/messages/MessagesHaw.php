@@ -8,6 +8,8 @@
  * @author Siebrand
  */
 
+
+
 $messages = array(
 # User preference toggles
 'tog-underline'          => 'Kahalalo i nā loulou:',
@@ -116,18 +118,20 @@ $messages = array(
 'jumptosearch'     => 'huli',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'     => 'E pili ana iā {{SITENAME}}',
-'currentevents' => 'Ka nū hou',
-'disclaimers'   => 'Nā a‘o ‘ana laulā',
-'mainpage'      => 'Ka papa kinohi',
-'portal'        => 'Ka hui kaiaulu',
-'portal-url'    => 'Project:Ka hui kaiaulu',
-'privacy'       => 'Palapala pilikino',
-'sitesupport'   => 'E lūlū mai',
+'aboutsite'      => 'E pili ana iā {{SITENAME}}',
+'currentevents'  => 'Ka nū hou',
+'disclaimers'    => 'Nā a‘o ‘ana laulā',
+'disclaimerpage' => 'Project:Nā a‘o ‘ana laulā',
+'mainpage'       => 'Ka papa kinohi',
+'portal'         => 'Ka hui kaiaulu',
+'portal-url'     => 'Project:Ka hui kaiaulu',
+'privacy'        => 'Palapala pilikino',
+'privacypage'    => 'Project:Palapala pilikino',
+'sitesupport'    => 'E lūlū mai',
 
 'badaccess' => 'Hewa ‘ae',
 
-'youhavenewmessages'      => 'He $1 ($2) kou.',
+'youhavenewmessages'      => 'He $1 ($2) kāu.',
 'newmessageslink'         => 'mau memo hou',
 'youhavenewmessagesmulti' => 'He mau memo kou ma $1',
 'editsection'             => "E ho'opololei",
@@ -138,6 +142,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Mea',
+'nstab-image'     => 'Waihona',
 'nstab-mediawiki' => 'Memo',
 'nstab-template'  => 'Anakuhi',
 'nstab-category'  => 'Mahele',
@@ -263,11 +268,14 @@ hō‘ike ‘ia i lalo:",
 'fileuploadsummary' => "Hō'ulu'ulu mana'o:",
 
 # Image list
-'ilsubmit'          => 'Huli',
-'filehist-datetime' => 'Manawa',
-'filehist-user'     => 'Mea ho‘ohana',
-'filehist-comment'  => 'Mana‘o',
-'imagelinks'        => 'Nā loulou',
+'ilsubmit'            => 'Huli',
+'filehist-datetime'   => 'Manawa',
+'filehist-user'       => 'Mea ho‘ohana',
+'filehist-dimensions' => 'Nā nui',
+'filehist-filesize'   => 'Nui o ka waihona',
+'filehist-comment'    => 'Mana‘o',
+'imagelinks'          => 'Nā loulou',
+'linkstoimage'        => 'Loulou kēia mau ‘ao‘ao i kēia waihona:',
 
 # Random page
 'randompage' => 'He mo‘olelo kaulele',
