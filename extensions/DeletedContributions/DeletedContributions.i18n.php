@@ -1,313 +1,312 @@
 <?php
-$wgDeletedContribsMessages = array();
+/**
+ * Internationalisation file for extension DeletedContributions.
+ *
+ * @addtogroup Extensions
+*/
 
-$wgDeletedContribsMessages['en'] = array(
+$messages = array();
+
+$messages['en'] = array(
 	'deletedcontributions' => 'Deleted user contributions',
 );
 
-$wgDeletedContribsMessages['af'] = array(
+$messages['af'] = array(
 	'deletedcontributions' => 'Geskrapte gebruikersbydraes',
 );
 
 /* Arabic (Meno25) */
-$wgDeletedContribsMessages['ar'] = array(
+$messages['ar'] = array(
 	'deletedcontributions' => 'مساهمات المستخدم المحذوفة',
 );
 
 /** Asturian (Asturianu)
  * @author SPQRobin
  */
-$wgDeletedContribsMessages['ast'] = array(
+$messages['ast'] = array(
 	'deletedcontributions' => "Contribuciones d'usuariu borraes",
 );
 
-$wgDeletedContribsMessages['ba'] = array(
+$messages['ba'] = array(
 	'deletedcontributions' => 'Ҡулланыусыларҙың юйылған өлөшө',
 );
 
-$wgDeletedContribsMessages['be'] = array(
+$messages['be'] = array(
 	'deletedcontributions' => 'Выдалены ўклад удзельніка',
 );
 
-$wgDeletedContribsMessages['bcl'] = array(
+$messages['bcl'] = array(
 	'deletedcontributions' => 'Parâon an mga kontribusyon kan parágamit',
 );
 
-$wgDeletedContribsMessages['bg'] = array(
+$messages['bg'] = array(
 	'deletedcontributions' => 'Изтрити приноси на потребител',
 );
 
-$wgDeletedContribsMessages['ca'] = array(
+$messages['ca'] = array(
 	'deletedcontributions' => 'Contribucions esborrades',
 );
 
-$wgDeletedContribsMessages['cdo'] = array(
+$messages['cdo'] = array(
 	'deletedcontributions' => 'Ké̤ṳk chēng lâi gì ê̤ṳng-hô góng-hióng',
 );
 
-$wgDeletedContribsMessages['cs'] = array(
+$messages['cs'] = array(
 	'deletedcontributions' => 'Smazané editace uživatele',
 );
 
-$wgDeletedContribsMessages['cy'] = array(
+$messages['cy'] = array(
 	'deletedcontributions'         => 'Cyfraniadau\'r defnyddiwr a ddilëwyd',
 );
 
-$wgDeletedContribsMessages['da'] = array(
+$messages['da'] = array(
 	'deletedcontributions' => 'Slettede brugerbidrag',
 );
 
-$wgDeletedContribsMessages['de'] = array(
+$messages['de'] = array(
 	'deletedcontributions' => 'Gelöschte Benutzerbeiträge',
 );
 
-$wgDeletedContribsMessages['el'] = array(
+$messages['el'] = array(
 	'deletedcontributions' => 'Διαγραμμένες συνεισφορές χρήστη',
 );
 
-$wgDeletedContribsMessages['eo'] = array(
+$messages['eo'] = array(
 	'deletedcontributions' => 'Forigitaj kontribuoj de la uzulo',
 );
 
-$wgDeletedContribsMessages['es'] = array(
+$messages['es'] = array(
 	'deletedcontributions' => 'Contribuciones de usuario borradas',
 );
 
-$wgDeletedContribsMessages['eu'] = array(
+$messages['eu'] = array(
 	'deletedcontributions' => 'Ezabatutako ekarpenak',
 );
 
-$wgDeletedContribsMessages['fa'] = array(
+$messages['fa'] = array(
 	'deletedcontributions' => 'مشارکت‌های حذف شده',
 );
 
-$wgDeletedContribsMessages['fi'] = array(
+$messages['fi'] = array(
 	'deletedcontributions' => 'Poistetut muokkaukset',
 );
 
-$wgDeletedContribsMessages['fr'] = array(
+$messages['fr'] = array(
 	'deletedcontributions' => 'Contributions supprimées d’un utilisateur',
 );
 
 /** Franco-Provençal (Arpetan)
  * @author ChrisPtDe
  */
-$wgDeletedContribsMessages['frp'] = array(
+$messages['frp'] = array(
 	'deletedcontributions' => 'Contribucions suprimâs d’un utilisator',
 );
 
-$wgDeletedContribsMessages['ga'] = array(
+$messages['ga'] = array(
 	'deletedcontributions' => 'Dréachtaí úsáideora scriosta',
 );
 
-$wgDeletedContribsMessages['gl'] = array(
+$messages['gl'] = array(
 	'deletedcontributions' => 'Contribucións eliminadas do usuario',
 );
 
-$wgDeletedContribsMessages['he'] = array(
+$messages['he'] = array(
 	'deletedcontributions' => 'תרומות משתמש מחוקות',
 );
 
-$wgDeletedContribsMessages['hr'] = array(
+$messages['hr'] = array(
 	'deletedcontributions' => 'Obrisani suradnički doprinosi',
 );
 
-$wgDeletedContribsMessages['hsb'] = array(
+$messages['hsb'] = array(
 	'deletedcontributions' => 'wušmórnjene přinoški',
 );
 
-$wgDeletedContribsMessages['hu'] = array(
+$messages['hu'] = array(
 	'deletedcontributions' => 'Törölt szerkesztések',
 );
 
-$wgDeletedContribsMessages['hy'] = array(
+$messages['hy'] = array(
 	'deletedcontributions' => 'Մասնակցի ջնջված ներդրում',
 );
 
-$wgDeletedContribsMessages['id'] = array(
+$messages['id'] = array(
 	'deletedcontributions' => 'Kontribusi yang dihapus',
 );
 
-$wgDeletedContribsMessages['is'] = array(
+$messages['is'] = array(
 	'deletedcontributions' => 'Eyddar breytingar notenda',
 );
 
-$wgDeletedContribsMessages['it'] = array(
+$messages['it'] = array(
 	'deletedcontributions' => 'Contributi utente cancellati',
 );
 
-$wgDeletedContribsMessages['ja'] = array(
+$messages['ja'] = array(
 	'deletedcontributions' => '利用者の削除された投稿履歴',
 );
 
-$wgDeletedContribsMessages['kk-cyrl'] = array(
+$messages['kk-cyrl'] = array(
 	'deletedcontributions' => 'Пайдаланушының жойылған үлесі',
 );
-$wgDeletedContribsMessages['kk-latn'] = array(
+$messages['kk-latn'] = array(
 	'deletedcontributions' => 'Paýdalanwşınıñ joýılğan ülesi',
 );
-$wgDeletedContribsMessages['kk-arab'] = array(
+$messages['kk-arab'] = array(
 	'deletedcontributions' => 'پايدالانۋشىنىڭ جويىلعان ٷلەسٸ',
 );
-$wgDeletedContribsMessages['kk-kz'] = $wgDeletedContribsMessages['kk-cyrl'];
-$wgDeletedContribsMessages['kk-tr'] = $wgDeletedContribsMessages['kk-latn'];
-$wgDeletedContribsMessages['kk-cn'] = $wgDeletedContribsMessages['kk-arab'];
-$wgDeletedContribsMessages['kk'] = $wgDeletedContribsMessages['kk-cyrl'];
 
-$wgDeletedContribsMessages['ku-latn'] = array(
+$messages['ku-latn'] = array(
 	'deletedcontributions' => 'Guherandinên bikarhênerekî yê jêbirî',
 );
 
-$wgDeletedContribsMessages['nan'] = array(
+$messages['nan'] = array(
 	'deletedcontributions' => 'Hō͘ lâng thâi tiāu ê kòng-hiàn',
 );
 
-$wgDeletedContribsMessages['la'] = array(
+$messages['la'] = array(
 	'deletedcontributions' => 'Conlationes usoris deletae',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-$wgDeletedContribsMessages['lb'] = array(
+$messages['lb'] = array(
 	'deletedcontributions' => 'Geläschte Kontributiounen',
 );
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  */
-$wgDeletedContribsMessages['li'] = array(
+$messages['li'] = array(
 	'deletedcontributions' => 'Gewisdje gebroekersbiedraag',
 );
 
 /** Lozi (Silozi)
  * @author Ooswesthoesbes
  */
-$wgDeletedContribsMessages['loz'] = array(
+$messages['loz'] = array(
 	'deletedcontributions' => 'Afina di sebelu bye sa afi kulobala',
 );
 
-$wgDeletedContribsMessages['lt'] = array(
+$messages['lt'] = array(
 	'deletedcontributions' => 'Ištrintas naudotojo indėlis',
 );
 
-$wgDeletedContribsMessages['mk'] = array(
+$messages['mk'] = array(
 	'deletedcontributions' => 'Избришани кориснички придонеси',
 );
 
-$wgDeletedContribsMessages['ms'] = array(
+$messages['ms'] = array(
 	'deletedcontributions' => 'Sumbangan pengguna yang telah dipadam',
 );
 
-$wgDeletedContribsMessages['nl'] = array(
+$messages['nl'] = array(
 	'deletedcontributions' => 'Verwijderde gebruikersbijdragen',
 );
 
-$wgDeletedContribsMessages['no'] = array(
+$messages['no'] = array(
 	'deletedcontributions' => 'Slettede brukerbidrag',
 );
 
-$wgDeletedContribsMessages['oc'] = array(
+$messages['oc'] = array(
 	'deletedcontributions' => 'Contribucions suprimidas d’un utilizaire',
 );
 
-$wgDeletedContribsMessages['pl'] = array(
+$messages['pl'] = array(
 	'deletedcontributions' => 'Skasowany wkład użytkownika',
 );
 
-$wgDeletedContribsMessages['pms'] = array(
+$messages['pms'] = array(
 	'deletedcontributions' => 'Modìfiche faite da utent scancelà',
 );
 
-$wgDeletedContribsMessages['pt'] = array(
+$messages['pt'] = array(
 	'deletedcontributions' => 'Edições eliminadas',
 );
 
-$wgDeletedContribsMessages['ro'] = array(
+$messages['ro'] = array(
 	'deletedcontributions' => 'Contribuţii şterse',
 );
 
-$wgDeletedContribsMessages['ru'] = array(
+$messages['ru'] = array(
 	'deletedcontributions' => 'Удалённый вклад',
 );
 
-$wgDeletedContribsMessages['sk'] = array(
+$messages['sk'] = array(
 	'deletedcontributions' => 'Zmazané príspevky používateľa',
 );
 
-$wgDeletedContribsMessages['sr-ec'] = array(
+$messages['sr-ec'] = array(
 	'deletedcontributions' => 'Обрисане измене',
 );
 
-$wgDeletedContribsMessages['sr-el'] = array(
+$messages['sr-el'] = array(
 	'deletedcontributions' => 'Obrisane izmene',
 );
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-$wgDeletedContribsMessages['stq'] = array(
+$messages['stq'] = array(
 	'deletedcontributions' => 'Läskede Benutserbiedraage',
 );
 
-$wgDeletedContribsMessages['sv'] = array(
+$messages['sv'] = array(
 	'deletedcontributions' => 'Raderade användarbidrag',
 );
 
-$wgDeletedContribsMessages['sq'] = array(
+$messages['sq'] = array(
 	'deletedcontributions' => 'Kontribute të grisura',
 );
 
-$wgDeletedContribsMessages['te'] = array(
+$messages['te'] = array(
 	'deletedcontributions' => 'తొలగించబడిన సభ్యుని రచనలు',
 );
 
 /** Tonga (faka-Tonga)
  * @author SPQRobin
  */
-$wgDeletedContribsMessages['to'] = array(
+$messages['to'] = array(
 	'deletedcontributions' => 'Ngaahi foaki ʻo ha ʻetita kuo tāmateʻi',
 );
 
-$wgDeletedContribsMessages['tr'] = array(
+$messages['tr'] = array(
 	'deletedcontributions' => 'Silinen kullanıcı katkıları',
 );
 
-$wgDeletedContribsMessages['uk'] = array(
+$messages['uk'] = array(
 	'deletedcontributions' => 'Вилучені редагування користувачів',
 );
 
-$wgDeletedContribsMessages['vi'] = array(
+$messages['vi'] = array(
 	'deletedcontributions' => 'Đóng góp đã bị xóa của thành viên',
 );
 
-$wgDeletedContribsMessages['vo'] = array(
+$messages['vo'] = array(
 	'deletedcontributions' => 'Gebanakeblünots pemoüköl',
 );
 
-$wgDeletedContribsMessages['yue'] = array(
+$messages['yue'] = array(
 	'deletedcontributions' => '已經刪除咗嘅用戶貢獻',
 );
 
-$wgDeletedContribsMessages['zh-hans'] = array(
+$messages['zh-hans'] = array(
 	'deletedcontributions' => '已删除的用户贡献',
 );
 
-$wgDeletedContribsMessages['zh-hant'] = array(
+$messages['zh-hant'] = array(
 	'deletedcontributions' => '已刪除的用戶貢獻',
 );
 
-# Kazakh fallbacks
-$wgDeletedContribsMessages['kk-kz'] = $wgDeletedContribsMessages['kk-cyrl'];
-$wgDeletedContribsMessages['kk-tr'] = $wgDeletedContribsMessages['kk-latn'];
-$wgDeletedContribsMessages['kk-cn'] = $wgDeletedContribsMessages['kk-arab'];
-$wgDeletedContribsMessages['kk'] = $wgDeletedContribsMessages['kk-cyrl'];
-
-# Chinese fallbacks
-$wgDeletedContribsMessages['zh'] = $wgDeletedContribsMessages['zh-hans'];
-$wgDeletedContribsMessages['zh-cn'] = $wgDeletedContribsMessages['zh-hans'];
-$wgDeletedContribsMessages['zh-hk'] = $wgDeletedContribsMessages['zh-hant'];
-$wgDeletedContribsMessages['zh-min-nan'] = $wgDeletedContribsMessages['nan'];
-$wgDeletedContribsMessages['zh-sg'] = $wgDeletedContribsMessages['zh-hans'];
-$wgDeletedContribsMessages['zh-tw'] = $wgDeletedContribsMessages['zh-hant'];
-$wgDeletedContribsMessages['zh-yue'] = $wgDeletedContribsMessages['yue'];
+$messages['kk'] = $messages['kk-cyrl'];
+$messages['kk-cn'] = $messages['kk-arab'];
+$messages['kk-kz'] = $messages['kk-cyrl'];
+$messages['kk-tr'] = $messages['kk-latn'];
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-min-nan'] = $messages['nan'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-tw'] = $messages['zh-hant'];
+$messages['zh-yue'] = $messages['yue'];
