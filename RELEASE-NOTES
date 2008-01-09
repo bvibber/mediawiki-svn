@@ -112,7 +112,17 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Add HTML ID's mw-read-only-warning and mw-anon-edit-warning to warnings when
   editing to allow CSS styling.
 * Parser now returns list of sections
-* Support images-redirects
+* When a user is prohibited from creating a page, a title of "View source"
+  makes no sense, and there should be no "Return to [[Page]]" link.
+* (bug 12486) Protected titles now give a warning for privileged editors.
+* (bug 9939) Special:Search now sets focus to search input box when no existing
+  search is active
+* For Special:Userrights, use GET instead of POST to search for users.
+* Allow subpage syntax for Special:Userrights, i.e., Special:Userrights/Name.
+* When submitting changes on Special:Userrights, show the full form again, not
+  just the search box.
+* Added exception hooks
+
 
 === Bug fixes in 1.12 ===
 
@@ -273,6 +283,16 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 12416) Fix password setting for createAndPromote.php
 * (bug 3097) Inconsistently usable titles containing HTML character entities
   are now forbidden. A run of cleanupTitles.php will fix up existing pages.
+* (bug 12446) Permissions check fix for undelete link
+* (bug 12451) AJAX title normalization tweaks
+* When a user creating a page is not allowed to either create the page nor edit
+  it, all applicable reasons are now shown.
+* (bug 11428) Allow $wgScript inside $wgArticlePath when emulating PATH_INFO
+  Fixes 'root'-style rewrite configurations
+* (bug 12493) Removed hardcoded MAX_FILE_SIZE from Special:Import upload form
+* (bug 12489) Special:Userrights listed in restricted section again
+* (bug 12553) Fixed invalid XHTML in edit conflict screen
+* (bug 12505) Fixed section=0 with action=raw
 
 
 == Parser changes in 1.12 ==
@@ -383,7 +403,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Add rvtoken=rollback to prop=revisions
 * Add meta=allmessages to get messages from site's messages cache.
 * Use bold and italics highlighting only in API help
-* Added action={block,changerights,delete,move,protect,rollback,unblock,undelete} and list={blocks,deletedrevs}
+* Added action={block,delete,move,protect,rollback,unblock,undelete} and list={blocks,deletedrevs}
 * Fixed sessionid attribute in action=login
 * Standardized limits. Revisions and Deletedrevisions formerly using 200 / 10000, 
   now 500 / 5000, in line with other modules.
@@ -392,6 +412,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Fix output of wfSajaxSearch
 * (bug 12413) meta=userinfo missing <query> tag
 * Add list of sections to action=parse output
+* Added action=logout
 
 === Languages updated in 1.12 ===
 
@@ -498,10 +519,13 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Kurdish (Arabic) (ku-arab)
 * Kurdish (Latin) (ku-latn)
 * Cornish (kw) (new)
+* Kirghiz (ky) (new)
 * Latin (la)
+* Ladino (lad) (new)
 * Luxembourgish (lb) (new)
 * Lak (lbe) (new)
 * Limbugian (li)
+* Líguru (lij) (new)
 * Lozi (loz) (new)
 * Lingala (ln)
 * Lithuanian (lt)
@@ -509,8 +533,10 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Malagasy (mg) (new)
 * Malayalam (ml)
 * Macedonian (mk)
+* Marathi (mr)
 * Malay (ms)
 * Erzya (myv) (new)
+* Nauru (na) (new)
 * Nahuatl (nah)
 * Min-nan (nan)
 * Napolitan (nap)
@@ -518,7 +544,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Dutch Low Saxon (nds-nl)
 * Newari (new) (new)
 * Dutch (nl)
-* Norwegian (no)
+* Norwegian (nynorsk) (nn)
+* Norwegian (bokmål)‬ (no)
 * Novial (nov) (new)
 * Northern Sotho (nso) (new)
 * Occitan (oc)
