@@ -11,7 +11,7 @@ class PurgeCache extends SpecialPage {
 
 	function PurgeCache() {
 		SpecialPage::SpecialPage( 'PurgeCache', 'purgecache' );
-		self::loadMessages();
+		wfLoadExtensionMessages('PurgeCache');
 	}
 	
 	function execute() {
@@ -38,17 +38,6 @@ class PurgeCache extends SpecialPage {
 		$form .= wfCloseElement( 'form' );
 		return $form;
 	}
-
-	function loadMessages() {
-                static $messagesLoaded = false;
-                global $wgMessageCache;
-                if ( !$messagesLoaded ) {
-                        $messagesLoaded = true;
-			wfLoadExtensionMessages('PurgeCache');
-                        }
-                return true;
-        }
-
 }
 
 
