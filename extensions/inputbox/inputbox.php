@@ -35,7 +35,6 @@ $wgExtensionMessagesFiles['Inputbox'] = $dir . 'InputBox.i18n.php';
  */
 function efInputBoxSetup() {
 	global $wgParser;
-	wfLoadExtensionMessages('Inputbox');
 	$wgParser->setHook( 'inputbox', 'efInputBoxRender' );
 }
 
@@ -55,6 +54,7 @@ class Inputbox {
 	}
 
 	function render() {
+		wfLoadExtensionMessages('Inputbox');
 		switch( $this->type ) {
 			case 'create':
 			case 'comment':
