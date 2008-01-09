@@ -136,10 +136,11 @@ $messages['fa'] = array(
 	'expand_templates_title'           => 'عنوان موضوع، برای {{PAGENAME}} و غیره:',
 	'expand_templates_input'           => 'متن ورودی:',
 	'expand_templates_output'          => 'نتیجه',
+	'expand_templates_xml_output'      => 'خروجی XML',
 	'expand_templates_ok'              => 'تایید',
 	'expand_templates_remove_comments' => 'حذف توضیحات',
+	'expand_templates_generate_xml'    => 'نمایش درخت تجزیهٔ XML',
 	'expand_templates_preview'         => 'پیش‌نمایش',
-
 );
 
 /** Finnish (Suomi)
