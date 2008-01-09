@@ -9,6 +9,8 @@
  * @author לערי ריינהארט
  * @author Siebrand
  * @author SPQRobin
+ * @author Max sonnelid
+ * @author Eirik
  */
 
 $skinNames = array(
@@ -154,10 +156,10 @@ $messages = array(
 'tog-showtoc'                 => 'Vis innholdsfortegnelse (for sider med mer enn tre seksjoner)',
 'tog-rememberpassword'        => 'Husk passordet',
 'tog-editwidth'               => 'Full bredde på redigeringsboksen',
-'tog-watchcreations'          => 'Overvåk sider du oppretter',
-'tog-watchdefault'            => 'Overvåk alle redigerte sider',
-'tog-watchmoves'              => 'Legg til sider jeg flytter i overvåkningslista mi',
-'tog-watchdeletion'           => 'Legg til sider jeg sletter i overvåkningslista mi',
+'tog-watchcreations'          => 'Overvåk sider jeg oppretter',
+'tog-watchdefault'            => 'Overvåk alle sider jeg redigerer',
+'tog-watchmoves'              => 'Overvåk sider jeg flytter',
+'tog-watchdeletion'           => 'Overvåk sider jeg sletter.',
 'tog-minordefault'            => 'Merk i utgangspunktet alle redigeringer som mindre',
 'tog-previewontop'            => 'Flytt forhåndsvisningen foran redigeringsboksen',
 'tog-previewonfirst'          => 'Vis forhåndsvisning ved første redigering av en side',
@@ -173,7 +175,7 @@ $messages = array(
 'tog-showjumplinks'           => 'Slå på «gå til»-lenker',
 'tog-uselivepreview'          => 'Bruk levende forhåndsvisning (eksperimentell JavaScript)',
 'tog-forceeditsummary'        => 'Advar meg når jeg ikke har noen redigeringsforklaring',
-'tog-watchlisthideown'        => 'Skjul mine endringer fra overvåkningslista',
+'tog-watchlisthideown'        => 'Skjul egne endringer fra overvåkningslista',
 'tog-watchlisthidebots'       => 'Skjul robotendringer fra overvåkningslista',
 'tog-watchlisthideminor'      => 'Skjul mindre endringer fra overvåkningslista',
 'tog-nolangconversion'        => 'Slå av variantkonvertering',
@@ -505,7 +507,7 @@ Brukerkontoen din har blitt opprettet. Ikke glem å endre [[Special:Preferences|
 'email'                      => 'E-post',
 'prefs-help-realname'        => '* Virkelig navn (valgfritt): dersom du velger å oppgi navnet, vil det bli brukt til å kreditere deg for ditt arbeid.',
 'loginerror'                 => 'Innloggingsfeil',
-'prefs-help-email'           => '* E-post (valgfritt): Muliggjør at andre kan kontakte deg uten at identiteten din blir avslørt.',
+'prefs-help-email'           => '* E-post (valgfritt): Gjør at andre kan kontakte deg uten at identiteten din blir avslørt.',
 'prefs-help-email-required'  => 'E-postadresse er påkrevd.',
 'nocookiesnew'               => 'Din brukerkonto er nå opprettet, men du har ikke logget på. {{SITENAME}} bruker informasjonskapsler («cookies») for å logge brukere på. Du har slått dem av. Slå dem p åfor å kunne logge på med ditt nye brukernavn og passord.',
 'nocookieslogin'             => '{{SITENAME}} bruker informasjonskapsler («cookies») for å logge brukere på. Du har slått dem av. Slå dem på og prøv igjen.',
@@ -537,7 +539,7 @@ Dersom denne forespørselen ble utført av noen andre, eller om du kom på passo
 'invalidemailaddress'        => 'E-postadressa kan ikke aksepteres, fordi den er ugyldig formatert. Skriv inn en fungerende e-postadresse eller tøm feltet.',
 'accountcreated'             => 'Brukerkonto opprettet',
 'accountcreatedtext'         => 'Brukerkonto for $1 har blitt opprettet.',
-'createaccount-title'        => 'Kontoopretting på {{SITENAME}}',
+'createaccount-title'        => 'Kontooppretting på {{SITENAME}}',
 'createaccount-text'         => 'Noen ($1) opprettet en konto for $2 på {{SITENAME}} ($4). Passordet for «$2» er «$3». Du burde logge inn og endre passordet nå.
 
 Du kan ignorere denne beskjeden dersom kontoen feilaktig ble opprettet.',
@@ -545,7 +547,7 @@ Du kan ignorere denne beskjeden dersom kontoen feilaktig ble opprettet.',
 
 # Password reset dialog
 'resetpass'               => 'Resett kontopassord',
-'resetpass_announce'      => 'Du logget inn med en midlertidig e-postkode. For å fullføre innloggingen, må du oppgi et nytt passord her:',
+'resetpass_announce'      => 'Du logget inn med en midlertidig e-postkode. For å fullføre innloggingen må du oppgi et nytt passord her:',
 'resetpass_text'          => '<!-- Legg til tekst her -->',
 'resetpass_header'        => 'Resett passord',
 'resetpass_submit'        => 'Angi passord og logg inn',
@@ -683,6 +685,7 @@ kopiere teksten din til en tekstfil, så du kan lagre den til senere.</strong>',
 'protectedpagewarning'      => '<strong>ADVARSEL: Denne siden er låst, slik at kun brukere med administratorrettigheter kan redigere den.</strong>',
 'semiprotectedpagewarning'  => "'''Merk:''' Denne siden har blitt låst slik at kun registrerte brukere kan endre den. Nyopprettede og anonyme brukere kan ikke redigere.",
 'cascadeprotectedwarning'   => "'''Advarsel:''' Denne siden har blitt låst slik at kun brukere med administratorrettigheter kan redigere den, fordi den inkluderes i følgende dypbeskyttede sider:<!--{{PLURAL:$1}}-->",
+'titleprotectedwarning'     => '<strong>ADVARSEL: Denne siden har blitt låst slik at kun visse brukere kan opprette den.</strong>',
 'templatesused'             => 'Maler i bruk på denne siden:',
 'templatesusedpreview'      => 'Maler som brukes i denne forhåndsvisningen:',
 'templatesusedsection'      => 'Maler brukt i denne seksjonen:',
@@ -690,7 +693,7 @@ kopiere teksten din til en tekstfil, så du kan lagre den til senere.</strong>',
 'template-semiprotected'    => '(halvbeskyttet)',
 'edittools'                 => '<!-- Teksten her vil vises under redigerings- og opplastingsboksene. -->',
 'nocreatetitle'             => 'Sideoppretting er begrenset',
-'nocreatetext'              => 'Denne siden har begrensede muligheter for oppretting av nye sider. Du kan gå tilbake og redigere en eksisterende side, eller [[Special:Userlogin|logge inn eller opprette en ny konto]].',
+'nocreatetext'              => '{{SITENAME}} har begrensede muligheter for oppretting av nye sider. Du kan gå tilbake og redigere en eksisterende side, eller [[Special:Userlogin|logge inn eller opprette en ny konto]].',
 'nocreate-loggedin'         => 'Du har ikke tillatelse til å opprette sider på {{SITENAME}}.',
 'permissionserrors'         => 'Tilgangsfeil',
 'permissionserrorstext'     => 'Du har ikke tillatelse til å utføre dette, av følgende {{PLURAL:$1|grunn|grunner}}:',
@@ -745,7 +748,7 @@ Grunnen som ble oppgitt av $3 er ''$2''",
 'rev-deleted-user'            => '(brukernavn fjernet)',
 'rev-deleted-event'           => '(fjernet)',
 'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">
-Denne sidehistorikken har blitt fjernet fra de offentlige arkivene. Det kan være detaljer i [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} slettingsloggen].
+Denne revisjonen har blitt fjernet fra de offentlige arkivene. Det kan være detaljer i [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} slettingsloggen].
 </div>',
 'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">
 Denne revisjonen har blitt fjernet fra det offentlige arkivet. Som administrator har du mulighet til å se den; det kan være detaljer i [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} slettingsloggen].
@@ -904,12 +907,13 @@ Andre administratorer på {{SITENAME}} vil fortsatt kunne se det skjulte innhold
 'userrights-editusergroup'    => 'Rediger brukergrupper',
 'saveusergroups'              => 'Lagre brukergrupper',
 'userrights-groupsmember'     => 'Medlem av:',
+'userrights-groupsremovable'  => 'Avsettlige grupper:',
 'userrights-groupsavailable'  => 'Tilgjengelige grupper:',
 'userrights-groupshelp'       => 'Velg grupper du vil at brukeren skal fjernes fra eller lagt til. Ikke valgte grupper vil ikke bli forandret. Du kan fjerne merkingen av en gruppe med Ctrl + Venstreklikk.',
 'userrights-reason'           => 'Endringsgrunn:',
 'userrights-available-none'   => 'Du kan ikke endre gruppemedlemsskaper.',
-'userrights-available-add'    => 'Du kan legge til brukere i $1.',
-'userrights-available-remove' => 'Du kan fjerne brukere fra $1.',
+'userrights-available-add'    => 'Du kan legge til brukere i {{PLURAL:$2|denne gruppa|disse gruppene}}: $1.',
+'userrights-available-remove' => 'Du kan fjerne brukere fra {{PLURAL:$2|denne gruppa|disse gruppene}}: $1.',
 'userrights-no-interwiki'     => 'Du har ikke tillatelse til å endre brukerrettigheter på andre wikier.',
 'userrights-nodatabase'       => 'Databasen $1 finnes ikke, eller er ikke lokal.',
 'userrights-nologin'          => 'Du må [[Special:Userlogin|logge inn]] med en administratorkonto for å endre brukerrettigheter.',
@@ -1133,7 +1137,7 @@ PICT # div.
 'filedelete-submit'      => 'Slett',
 'filedelete-success'     => "'''$1''' har blitt slettet.",
 'filedelete-success-old' => '<span class="plainlinks">Versjonen av \'\'\'[[Media:$1|$1]]\'\'\' à $3, $2 har blitt slettet.</span>',
-'filedelete-nofile'      => "'''$1''' eksisterer ikke på denne siden.",
+'filedelete-nofile'      => "'''$1''' eksisterer ikke på {{SITENAME}}.",
 'filedelete-nofile-old'  => "Det er ingen arkivert versjon av '''$1''' med de gitte attributtene.",
 'filedelete-iscurrent'   => 'Du forsøker å slette den nyeste versjonen av denne filen. Vennligst tilbakestill til en eldre versjon først.',
 
@@ -1467,11 +1471,7 @@ Tilbakemeldinger og videre assistanse:
 'undeletepagetext'             => 'Følgende sider er slettet, men finnes fortsatt i arkivet og kan gjenopprettes. Arkivet blir periodevis slettet.',
 'undeleteextrahelp'            => "For å gjenopprette hele siden, la alle boksene være som de er, og klikk '''Gjenopprett'''. For å gjenopprette kun deler, kryss av revisjonenes bokser, og klikk '''Gjenopprett'''.",
 'undeleterevisions'            => '$1 revisjoner arkivert',
-'undeletehistory'              => 'Hvis du gjenoppretter siden, vil alle de historiske
-revisjoner også bli gjenopprettet. Hvis en ny side med det samme navnet
-er opprettet siden denne ble slettet, vil de gjenopprettede revisjonene
-dukke opp i den tidligere historikken, og den nyeste revisjonen vil forbli
-på siden.',
+'undeletehistory'              => 'Om du gjenoppretter siden vil alle revisjoner gjenopprettes i historikken. Dersom en ny side ved samme navn har blitt oprettet etter slettingen, vil de gjenopprettede revisjonene dukke opp før denne i redigeringshistorikken. Merk også at restriksjoner på filrevisjoner mistes ved gjenoppretting.',
 'undeleterevdel'               => 'Gjenoppretting kan ikke utføres dersom det resulterer i at den øverste revisjonen blir delvis slettet. I slike tilfeller må du fjerne merkingen av den nyeste slettede revisjonen. Revisjoner av filer som du ikke har tilgang til vil ikke gjenopprettes.',
 'undeletehistorynoadmin'       => 'Denne artikkelen har blitt slettet. Grunnen for slettingen vises i oppsummeringen nedenfor, sammen med detaljer om brukerne som redigerte siden før den ble slettet. Teksten i disse slettede revisjonene er kun tilgjengelig for administratorer.',
 'undelete-revision'            => 'Slettet revisjon av $1 av $3 (fra $2):',
@@ -1536,7 +1536,7 @@ $1',
 'nolinkshere'         => "Ingen sider lenker til '''[[:$1]]'''.",
 'nolinkshere-ns'      => "Ingen sider lenker til '''[[:$1]]''' i valgte navnerom.",
 'isredirect'          => 'omdirigeringsside',
-'istemplate'          => 'inklusjon',
+'istemplate'          => 'inkludert som mal',
 'whatlinkshere-prev'  => 'forrige $1',
 'whatlinkshere-next'  => 'neste $1',
 'whatlinkshere-links' => '← lenker',
@@ -1616,8 +1616,8 @@ $1',
 'proxyblocker-disabled'       => 'Denne funksjonen er slått av.',
 'proxyblockreason'            => 'IP-adressa di har blitt blokkert fordi den er en åpen proxy. Kontakt internettleverandør eller teknisk støtte og informer dem om dette alvorlige sikkerhetsproblemet.',
 'proxyblocksuccess'           => 'Utført.',
-'sorbsreason'                 => 'IP-adressa di er oppgitt som åpen proxy i DNSBL.',
-'sorbs_create_account_reason' => 'IP-adressa di oppgis som en åpen proxy i DNSBL. Du kan ikke opprette en konto.',
+'sorbsreason'                 => 'Din IP-adresse oppgis som en åpen proxy i DNSBL-en brukt av {{SITENAME}}.',
+'sorbs_create_account_reason' => 'Din IP-adresse oppgis som en åpen proxy i DNSBL-en brukt av {{SITENAME}}. Du kan ikke opprette en konto',
 
 # Developer tools
 'lockdb'              => 'Lås database',
@@ -1750,7 +1750,9 @@ For å eksportere sider, skriv inn titler i tekstboksen under, én tittel per li
 'importhistoryconflict'      => 'Motstridende revisjoner finnes (siden kan ha blitt importert tidligere)',
 'importnosources'            => 'Ingen transwikiimportkilder er definert, og direkte historikkimporteringer er slått av.',
 'importnofile'               => 'Ingen importfil opplastet.',
-'importuploaderror'          => 'Opplasting av importfil feilet; kanskje fila er større en den tillatte opplastingsstørrelsen.',
+'importuploaderrorsize'      => 'Importfilopplasting mislyktes. Filen er større enn tillatt opplastingsstørrelse.',
+'importuploaderrorpartial'   => 'Importfilopplasting mislyktes. Filen ble kun delvis opplastet.',
+'importuploaderrortemp'      => 'Importfilopplasting mislyktes. En midlertidig mappe mangler.',
 
 # Import log
 'importlogpage'                    => 'Importlogg',
@@ -1925,7 +1927,7 @@ $1',
 # Bad image list
 'bad_image_list' => 'Formatet er slik:
 
-Kun listeelementer (linjer som starter med *) tas med. Den første lenka på en linje må være en lenke til et dårlig bilde. Alle andre linker på samme linje anses å være unntak, altså artikler hvor bildet er tillat brukt.',
+Kun listeelementer (linjer som starter med *) tas med. Den første lenka på en linje må være en lenke til et dårlig bilde. Alle andre linker på samme linje anses å være unntak, altså artikler hvor bildet er tillatt brukt.',
 
 # Metadata
 'metadata'          => 'Metadata',

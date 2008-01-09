@@ -10,6 +10,7 @@
 	'ab' => 'Аҧсуа',	# Abkhaz, should possibly add ' бысжѡа'
 	'af' => 'Afrikaans',	# Afrikaans
 	'ak' => 'Akan',		# Akan
+	'aln' => 'Gegë',	# Gheg Albanian
 	'als' => 'Alemannisch',	# Alemannic -- not a valid code, for compatibility. See gsw.
 	'am' => 'አማርኛ',	# Amharic
 	'an' => 'Aragonés',	# Aragonese
@@ -244,7 +245,7 @@
 	'scn' => 'Sicilianu',	# Sicilian
 	'sco' => 'Scots',       # Scots
 	'sd' => 'سنڌي',	# Sindhi
-	'sdc' => 'Sassarese',	# Sassarese
+	'sdc' => 'Sassaresu',	# Sassarese
 	'se' => 'Sámegiella',	# Northern Sami
 	'sei' => 'Cmique Itom',	# Seri
 	'sg' => 'Sängö',		# Sango/Sangho

@@ -111,38 +111,52 @@ $messages = array(
 'mytalk'         => 'Aking usapan',
 'navigation'     => 'Nabigasyon',
 
-'errorpagetitle'   => 'Kamalian',
-'returnto'         => 'Bumalik sa $1.',
-'tagline'          => 'Mula sa {{SITENAME}}',
-'help'             => 'Tulong',
-'search'           => 'Hanapin',
-'searchbutton'     => 'Hanapin',
-'go'               => 'Puntahan',
-'searcharticle'    => 'Puntahan',
-'history'          => 'Kasaysayan ng pahina',
-'history_short'    => 'Kasaysayan',
-'info_short'       => 'Impormasyon',
-'printableversion' => 'Bersyong maaaring ilimbag',
-'permalink'        => 'Palagiang kawing',
-'print'            => 'Ilimbag',
-'edit'             => 'Baguhin',
-'editthispage'     => 'Baguhin itong pahina',
-'delete'           => 'Burahin',
-'deletethispage'   => 'Burahin itong pahina',
-'protect'          => 'Ipagsanggalang',
-'protectthispage'  => 'Ipagsanggalang itong pahina',
-'unprotect'        => 'huwag ipagsanggalang',
-'newpage'          => 'Bagong pahina',
-'talkpage'         => 'Pag-usapan itong pahina',
-'talkpagelinktext' => 'Usapan',
-'personaltools'    => 'Mga kagamitang pansarili',
-'talk'             => 'Usapan',
-'toolbox'          => 'Mga kagamitan',
-'otherlanguages'   => 'Sa ibang wika',
-'redirectedfrom'   => '(Ikinarga mula sa $1)',
-'redirectpagesub'  => 'Pahina ng pagkarga',
-'protectedpage'    => 'Pahinang nakasanggalang',
-'jumptonavigation' => 'nabigasyon',
+'errorpagetitle'    => 'Kamalian',
+'returnto'          => 'Bumalik sa $1.',
+'tagline'           => 'Mula sa {{SITENAME}}',
+'help'              => 'Tulong',
+'search'            => 'Paghahanap',
+'searchbutton'      => 'Hanapin',
+'go'                => 'Puntahan',
+'searcharticle'     => 'Puntahan',
+'history'           => 'Kasaysayan ng pahina',
+'history_short'     => 'Kasaysayan',
+'info_short'        => 'Impormasyon',
+'printableversion'  => 'Bersyong maaaring ilimbag',
+'permalink'         => 'Palagiang kawing',
+'print'             => 'Ilimbag',
+'edit'              => 'Baguhin',
+'editthispage'      => 'Baguhin itong pahina',
+'delete'            => 'Burahin',
+'deletethispage'    => 'Burahin itong pahina',
+'protect'           => 'Ipagsanggalang',
+'protect_change'    => 'palitan ang pagsanggalang',
+'protectthispage'   => 'Ipagsanggalang itong pahina',
+'unprotect'         => 'huwag ipagsanggalang',
+'unprotectthispage' => 'Huwag ipagsanggalang itong pahina',
+'newpage'           => 'Bagong pahina',
+'talkpage'          => 'Pag-usapan itong pahina',
+'talkpagelinktext'  => 'Usapan',
+'specialpage'       => 'Natatanging pahina',
+'personaltools'     => 'Mga kagamitang pansarili',
+'talk'              => 'Usapan',
+'toolbox'           => 'Mga kagamitan',
+'userpage'          => 'Tingnan ang pahina ng manggagamit',
+'projectpage'       => 'Tingnan ang pahina ng proyekto',
+'imagepage'         => 'Tingnan ang pahina ng larawan',
+'mediawikipage'     => 'Tingnan ang pahina ng mensahe',
+'templatepage'      => 'Tingnan ang pahina ng suleras',
+'viewhelppage'      => 'Tingnan ang pahina ng tulong',
+'categorypage'      => 'Tingnan ang pahina ng kategorya',
+'viewtalkpage'      => 'Tingnan ang usapan',
+'otherlanguages'    => 'Sa ibang wika',
+'redirectedfrom'    => '(Ikinarga mula sa $1)',
+'redirectpagesub'   => 'Pahina ng pagkarga',
+'lastmodifiedat'    => 'Huling binago ang pahinang ito noong $2, $1.', # $1 date, $2 time
+'protectedpage'     => 'Pahinang nakasanggalang',
+'jumpto'            => 'Tumalon sa:',
+'jumptonavigation'  => 'nabigasyon',
+'jumptosearch'      => 'Paghahanap',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Tungkol sa {{SITENAME}}',
@@ -179,9 +193,12 @@ $messages = array(
 'newmessagesdifflink'     => 'huling pagbabago',
 'youhavenewmessagesmulti' => 'Mayroon kang mga bagong mensahe sa $1',
 'editsection'             => 'baguhin',
+'editold'                 => 'baguhin',
 'toc'                     => 'Mga nilalaman',
 'showtoc'                 => 'ipakita',
 'hidetoc'                 => 'itago',
+'thisisdeleted'           => 'Tingnan o ibalik ang $1?',
+'viewdeleted'             => 'Tingnan ang $1?',
 'restorelink'             => '{{PLURAL:$1|isang binurang pagbabago|$1 binurang pagbabago}}',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
@@ -196,9 +213,23 @@ $messages = array(
 'nstab-help'      => 'Pahina ng tulong',
 'nstab-category'  => 'Kategorya',
 
+# Main script and global functions
+'nospecialpagetext' => "<big>'''Humiling ka ng isang walang-kabuluhang natatanging pahina.'''</big>
+
+Isang tala ng mga may-kabuluhang natatanging pahina ay matatagpuan sa [[Special:Specialpages]].",
+
 # General errors
 'error'                => 'Kamalian',
+'databaseerror'        => 'Kamalian sa kalipunan ng datos',
+'noconnect'            => 'Paumanhin! Nagkakaranas ang wiki ng kahirapang teknikal, at hindi makapag-ugnayan sa serbidor ng kalipunan ng datos. <br />
+$1',
+'nodb'                 => 'Hindi mapilian ang kalipunan ng datos na $1',
 'cachederror'          => 'Ang sumusunod ay isang ibinaong kopya ng hinihiling na pahina, at maaaring hindi ito bago.',
+'readonly'             => 'Nakakandado ang kalipunan ng datos',
+'readonlytext'         => 'Kasalukuyang nakakandado ang kalipunan ng datos sa mga bagong entrada at sa ibang mga pagbabago, marahil para sa kalakarang pagpapanatili ng kalipunan ng datos, kung saan pagkatapos ito ay babalik sa normal.
+
+Ang tagapangasiwang nagkandado nito ay nagbigay ng sumusunod na dahilan: $1',
+'readonly_lag'         => 'Automatikong kinandado ang kalipunan ng datos habang humahabol ang mga aliping serbidor ng kalipunan ng datos sa pinuno',
 'internalerror'        => 'Kamaliang panloob',
 'internalerror_info'   => 'Kamaliang panloob: $1',
 'filecopyerror'        => 'Hindi makopya ang talaksang "$1" sa "$2".',
@@ -208,11 +239,15 @@ $messages = array(
 'filenotfound'         => 'Hindi mahanap ang talaksang "$1".',
 'fileexistserror'      => 'Hindi makapagsulat sa talaksang "$1": umiiral ang talaksan',
 'formerror'            => 'Kamalian: hindi maipadala ang pormularyo',
+'badarticleerror'      => 'Hindi maisasagawa ang gawaing ito sa pahinang ito.',
 'viewsource'           => 'Tingnan ang pinagmulan',
 'viewsourcefor'        => 'para sa $1',
+'actionthrottled'      => 'Hinadlangan ang gawain',
 'protectedpagetext'    => 'Kinandado ang pahinang ito upang maihadlang ang pagbabago',
 'viewsourcetext'       => 'Maaari mong tingnan at kopyahin ang pinagmulan ng pahinang ito:',
+'namespaceprotected'   => "Wala kang pahintulot na magbago ng mga pahinang nasa ngalan-espasyong '''$1'''.",
 'customcssjsprotected' => 'Wala kang pahintulot na baguhin ang pahinang ito, dahil naglalaman ito ng mga kagustuhang pansarili ng ibang manggagamit.',
+'ns-specialprotected'  => 'Hindi maaaring baguhin ang mga pahinang nasa ngalan-espasyong {{ns:special}}.',
 
 # Login and logout pages
 'welcomecreation'           => '== Maligayang pagdating, $1! ==
@@ -221,10 +256,12 @@ Nilikha na ang iyong kuwenta. Huwag kalimutang baguhin ang iyong mga kagustuhan 
 'loginpagetitle'            => 'Paglagda ng manggagamit',
 'yourname'                  => 'Bansag:',
 'yourpassword'              => 'Hudyat:',
+'yourpasswordagain'         => 'Iyong hudyat muli:',
 'remembermypassword'        => 'Tandaan ang hudyat sa kompyuter na ito',
 'yourdomainname'            => 'Iyong dominyo:',
 'loginproblem'              => '<b>Nagkaroon ng problema sa iyong paglagda.</b><br />Subukan po muli!',
 'login'                     => 'Lumagda',
+'loginprompt'               => 'Dapat pinapahintulot ang mga kuki upang makapaglagda sa {{SITENAME}}.',
 'userlogin'                 => 'Lumagda / lumikha ng kuwenta',
 'logout'                    => 'Umalis sa paglagda',
 'userlogout'                => 'Umalis sa paglagda',
@@ -235,6 +272,7 @@ Nilikha na ang iyong kuwenta. Huwag kalimutang baguhin ang iyong mga kagustuhan 
 'gotaccount'                => 'May kuwenta ka na? $1.',
 'gotaccountlink'            => 'Lumagda',
 'badretype'                 => 'Hindi magkatugma ang ipinasok mong mga hudyat.',
+'youremail'                 => 'E-liham:',
 'username'                  => 'Bansag:',
 'uid'                       => 'Bilang ng manggagamit:',
 'yourrealname'              => 'Tunay na pangalan:',
@@ -247,12 +285,21 @@ Nilikha na ang iyong kuwenta. Huwag kalimutang baguhin ang iyong mga kagustuhan 
 'loginsuccess'              => "'''Nakalagda ka na sa {{SITENAME}} bilang si \"\$1\".'''",
 'nosuchusershort'           => 'Walang manggagamit na may pangalang "$1". Pakitingnan ang iyong pagbaybay.',
 'passwordremindertitle'     => 'Bagong pansamantalang hudyat para sa {{SITENAME}}',
+'loginlanguagelabel'        => 'Wika: $1',
+
+# Edit page toolbar
+'bold_sample'   => 'Tekstong maitim',
+'bold_tip'      => 'Tekstong maitim',
+'italic_sample' => 'Tekstong italika',
+'italic_tip'    => 'Tekstong italika',
 
 # Edit pages
 'summary'                => 'Buod',
+'subject'                => 'Paksa/punong pamagat',
 'minoredit'              => 'Ito ay isang maliit na pagbabago',
 'watchthis'              => 'Bantayan itong pahina',
 'savearticle'            => 'Itala ang pahina',
+'preview'                => 'Pribyu',
 'blockedtitle'           => 'Nakaharang ang tagagamit',
 'blockedoriginalsource'  => "Ang pinagmulan ng '''$1''' ay 
 pinapakita sa ibaba:",
@@ -285,6 +332,7 @@ pinapakita sa ibaba:",
 'uploadnologintext' => 'Dapat ikaw ay [[Special:Userlogin|nakalagda]]
 upang makapagkarga ng talaksan.',
 'uploaderror'       => 'Kamalian sa pagkarga',
+'watchthisupload'   => 'Bantayan itong pahina',
 
 # Image list
 'nolinkstoimage' => 'Walang pahing tumuturo sa talaksang ito.',
@@ -365,6 +413,10 @@ upang makapagkarga ng talaksan.',
 'ipbother'           => 'Ibang oras:',
 'ipboptions'         => '2 oras:2 hours,1 araw:1 day,3 araw:3 days,1 linggo:1 week,2 linggo:2 weeks,1 buwan:1 month,3 buwan:3 months,6 buwan:6 months,1 taon:1 year,walang hanggan:infinite', # display1:time1,display2:time2,...
 
+# Developer tools
+'lockdb'   => 'Kandaduhan ang kalipunan ng datos',
+'unlockdb' => 'Buksan ang kalipunan ng datos',
+
 # Move page
 'movenologin'             => 'Hindi nakalagda',
 'movenologintext'         => 'Kailangang ikaw ay isang naka-rehistrong manggagamit at ay [[Special:Userlogin|nakalagda]] upang makapaglipat ng pahina.',
@@ -428,11 +480,15 @@ Pumili muli ng ibang pangalan.',
 'show-big-image'       => 'Buong resolusyon',
 'show-big-image-thumb' => '<small>Laki ng itong pribyu: $1 × $2 piksel</small>',
 
+# Special:Newimages
+'newimages' => 'Galeriya ng mga bagong talaksan',
+
 # External editor support
 'edit-externally' => 'Baguhin ang talaksang ito sa pamamagitan ng panlabas na aplikasyon',
 
 # Delete conflict
 'deletedwhileediting' => 'Babala: Nabura na ang pahinang ito pagkatapos mong magsimulang magbago!',
+'recreate'            => 'Likhain muli',
 
 # HTML dump
 'redirectingto' => 'Nagkakarga sa [[$1]]...',
@@ -441,6 +497,11 @@ Pumili muli ng ibang pangalan.',
 'confirm_purge' => 'Linisin ang baunan ng pahinang ito?
 
 $1',
+
+# Table pager
+'table_pager_first' => 'Unang pahina',
+'table_pager_last'  => 'Huling pahina',
+'table_pager_empty' => 'Walang resulta',
 
 # Auto-summaries
 'autosumm-blank'   => 'Itinatanggal ang lahat ng nilalaman mula sa pahina',

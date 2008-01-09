@@ -591,10 +591,10 @@ $2',
 'rev-deleted-comment'         => '（此註刪矣）',
 'rev-deleted-user'            => '（此簿刪矣）',
 'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">
-此審刪矣，詳見[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}}誌刪].
+此審刪矣，詳見[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}}誌刪]。
 </div>',
 'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">
-此審刪矣，惟有秩可見之，詳見[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} 誌刪].
+此審刪矣，惟{{SITENAME}}有秩可見之，詳見[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} 誌刪]。
 </div>',
 'rev-delundel'                => '見/藏',
 'revisiondelete'              => '刪、還審',
@@ -725,8 +725,8 @@ $2',
 'userrights-groupshelp'       => '揀社以增員、減員，未揀者不變也。欲略之，押Ctrl並左擊。',
 'userrights-reason'           => '因：',
 'userrights-available-none'   => '爾非改組員也。',
-'userrights-available-add'    => '爾可加簿至$1也。',
-'userrights-available-remove' => '爾可自$1減簿也。',
+'userrights-available-add'    => '爾可加簿至{{PLURAL:$2|單組|數組}}也：$1。',
+'userrights-available-remove' => '爾可自{{PLURAL:$2|單組|數組}}減簿也：$1。',
 'userrights-no-interwiki'     => '爾無權改他山wiki之簿權也。',
 'userrights-nodatabase'       => '資料庫$1無存或卝本地也。',
 'userrights-nologin'          => '爾以有秩乲簿[[Special:Userlogin|登]]後以定簿之權也。',
@@ -883,7 +883,7 @@ $2',
 'filedelete-submit'      => '刪',
 'filedelete-success'     => "'''$1'''刪矣。",
 'filedelete-success-old' => "<span class=\"plainlinks\">'''[[Media:$1|$1]]'''$2$3之版刪矣。</span>",
-'filedelete-nofile'      => "此站無'''$1'''也。",
+'filedelete-nofile'      => "{{SITENAME}}無'''$1'''也。",
 'filedelete-nofile-old'  => "無合'''$1'''藏也。",
 'filedelete-iscurrent'   => '刪版乃新，先還舊焉。',
 
@@ -1460,7 +1460,9 @@ $NEWPAGE
 'importhistoryconflict'      => '舊審沖，疑早存焉',
 'importnosources'            => '互匯而未定入源，審、誌不予直進。',
 'importnofile'               => '無匯入也。',
-'importuploaderror'          => '檔未入匯，疑幅越焉。',
+'importuploaderrorsize'      => '檔未入匯。幅越焉。',
+'importuploaderrorpartial'   => '檔未入匯。檔部傳。',
+'importuploaderrortemp'      => '檔未入匯。臨夾已失。',
 
 # Import log
 'importlogpage'                    => '誌入',

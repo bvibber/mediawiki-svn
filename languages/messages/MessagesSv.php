@@ -354,6 +354,7 @@ $messages = array(
 'edithelp'          => 'Redigeringshjälp',
 'edithelppage'      => 'Help:Hur man redigerar en sida',
 'faq'               => 'FAQ',
+'faqpage'           => 'Project:FAQ',
 'helppage'          => 'Help:Innehåll',
 'mainpage'          => 'Huvudsida',
 'policy-url'        => 'Project:Riktlinjer',
@@ -389,7 +390,7 @@ $messages = array(
 'viewdeleted'             => 'Visa $1?',
 'restorelink'             => '{{PLURAL:$1|en raderad version|$1 raderade versioner}}',
 'feedlinks'               => 'Matning:',
-'feed-invalid'            => 'Ogiltig matningstyp.',
+'feed-invalid'            => 'Ugyldig abonnementsype.',
 'site-rss-feed'           => '$1 RSS-matning',
 'site-atom-feed'          => '$1 Atom-matning',
 'page-rss-feed'           => '"$1" RSS-matning',
@@ -703,6 +704,7 @@ dina ändringar just nu. Det kan vara klokt att kopiera över texten till din eg
 Försäkra dig om att du följer riktlinjerna för redigering av skyddade sidor.</strong>',
 'semiprotectedpagewarning'  => "'''Observera:''' Denna sida har delvis skrivskyddats, så att endast registrerade användare kan redigera den.",
 'cascadeprotectedwarning'   => '<strong>VARNING:</strong> Den här sidan är låst så att bara administratörer kan redigera den. Det beror på att sidan inkluderas på följande {{PLURAL:$1|sida|sidor}} som skyddats med "kaskaderande skrivskydd":',
+'titleprotectedwarning'     => '<strong>VARNING: Den här sidan har skyddats så att endast vissa användare kan skapa den.</strong>',
 'templatesused'             => 'Mallar som används på den här sidan:',
 'templatesusedpreview'      => 'Mallar som används i förhandsgranskningen:',
 'templatesusedsection'      => 'Mallar som används i det här avsnittet:',
@@ -710,7 +712,8 @@ Försäkra dig om att du följer riktlinjerna för redigering av skyddade sidor.
 'template-semiprotected'    => '(delvis skyddad)',
 'edittools'                 => '<!-- Denna text kommer att visas nedanför redigeringsrutor och uppladdningsformulär. -->',
 'nocreatetitle'             => 'Skapande av sidor begränsat',
-'nocreatetext'              => 'Denna wiki har begränsat möjligheterna att skapa nya sidor. Du kan redigera existerande sidor, eller [[Special:Userlogin|logga in eller skapa ett användarkonto]].',
+'nocreatetext'              => '{{SITENAME}} har begränsat möjligheterna att skapa nya sidor.
+Du kan redigera existerande sidor, eller [[Special:Userlogin|logga in eller skapa ett användarkonto]].',
 'nocreate-loggedin'         => 'Du har inte behörighet att skapa nya sidor på {{SITENAME}}.',
 'permissionserrors'         => 'Behörighetsfel',
 'permissionserrorstext'     => 'Du har inte behörighet att göra det du försöker göra, av följande {{PLURAL:$1|anledning|anledningar}}:',
@@ -767,7 +770,10 @@ Prova att [[Special:Search|söka på wikin]] för relevanta nya sidor.',
 'rev-deleted-comment'         => '(kommentar borttagen)',
 'rev-deleted-user'            => '(användarnamn borttaget)',
 'rev-deleted-event'           => '(loggåtgärd borttagen)',
-'rev-deleted-text-permission' => '<div class="mw-warning plainlinks"> Denna version av sidan har avlägsnats från de öppna arkiven. Det kan finnas mer information i [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} borttagningsloggen]. </div>',
+'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">
+Denna version av sidan har avlägsnats från de öppna arkiven.
+Det kan finnas mer information i [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} borttagningsloggen].
+</div>',
 'rev-deleted-text-view'       => '<div class="mw-warning plainlinks"> Denna version av sidan har avlägsnats från de öppna arkiven. Som administratör på denna wiki kan du se den. Det kan finnas mer information i [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} borttagningsloggen]. </div>',
 'rev-delundel'                => 'visa/göm',
 'revisiondelete'              => 'Ta bort/återställ versioner',
@@ -925,12 +931,13 @@ $2 Lista omdirigeringar &nbsp; Sök efter $3 $9',
 'userrights-editusergroup'    => 'Redigera användargrupper',
 'saveusergroups'              => 'Spara användargrupper',
 'userrights-groupsmember'     => 'Medlem i:',
+'userrights-groupsremovable'  => 'Grupper som kan tas bort:',
 'userrights-groupsavailable'  => 'Tillgängliga grupper:',
 'userrights-groupshelp'       => 'Markera de grupper, som du vill lägga till eller ta bort användare i. De grupper som du inte markerar, kommer inte att förändras. Du kan avmarkera en grupp med CTRL + vänsterklick.',
 'userrights-reason'           => 'Anledning till ändringen:',
 'userrights-available-none'   => 'Du kan inte ändra några grupptillhörigheter.',
-'userrights-available-add'    => 'Du kan lägga till användare i $1.',
-'userrights-available-remove' => 'Du kan ta bort användare från $1.',
+'userrights-available-add'    => 'Du kan lägga till användare i följande {{PLURAL:$2|grupp|grupper}}: $1.',
+'userrights-available-remove' => 'Du kan ta bort användare från följande {{PLURAL:$2|grupp|grupper}}: $1.',
 'userrights-no-interwiki'     => 'Du har inte behörighet att ändra användarrättigheter på andra wikis.',
 'userrights-nodatabase'       => 'Databasen $1 finns inte eller så är den inte lokal.',
 'userrights-nologin'          => 'Du måste [[Special:Userlogin|logga in]] med ett administratörskonto för att ändra användarrättigheter.',
@@ -1419,7 +1426,7 @@ Feedback och hjälp:
 'confirmdelete'               => 'Bekräfta borttagning',
 'deletesub'                   => '(Tar bort "$1")',
 'historywarning'              => 'Varning: Sidan du håller på att radera har en historik:',
-'confirmdeletetext'           => 'Du håller på att permanent ta bort en sida med all dess historik från databasen.
+'confirmdeletetext'           => 'Du håller på att ta bort en sida med hela dess historik.
 Bekräfta att du förstår vad du håller på med och vilka konsekvenser detta leder till, och att du följer [[{{MediaWiki:Policy-url}}|riktlinjerna]].',
 'actioncomplete'              => 'Genomfört',
 'deletedtext'                 => '"$1" har tagits bort. 
@@ -1531,7 +1538,9 @@ I  [[Special:Log/delete|borttagningsloggen]] kan du hitta information om nyligen
 'undelete-cleanup-error'       => 'Fel vid radering av den oanvända arkivfilen "$1".',
 'undelete-missing-filearchive' => 'Filen med arkiv-ID $1 kunde inte återställas eftersom den inte finns i databasen. Filen kanske redan har återställts.',
 'undelete-error-short'         => 'Fel vid filåterställning: $1',
-'undelete-error-long'          => 'Fel inträffade när vid återställning av filen:\n\n$1',
+'undelete-error-long'          => 'Fel inträffade när vid återställning av filen:
+
+$1',
 
 # Namespace form on various pages
 'namespace'      => 'Namnrymd:',
@@ -1649,7 +1658,7 @@ I  [[Special:Log/delete|borttagningsloggen]] kan du hitta information om nyligen
 'proxyblockreason'            => 'Din IP-adress har blivit blockerad eftersom den tillhör en öppen proxy. Kontakta din internetleverantör eller din organisations eller företags tekniska support, och informera dem om denna allvarliga säkerhetsrisk.',
 'proxyblocksuccess'           => 'Gjort.',
 'sorbsreason'                 => 'Din IP-adress finns med på DNSBL:s lista över öppna proxies.',
-'sorbs_create_account_reason' => 'Din IP-adress finns med på DNSBL-lista över öppna proxyn. Du kan därför inte skapa något användarkonto.',
+'sorbs_create_account_reason' => 'Din IP-adress finns med på listan över öppna proxyn, DNSBL, som används av {{SITENAME}}. Du kan därför inte skapa något användarkonto.',
 
 # Developer tools
 'lockdb'              => 'Lås databas',
@@ -1768,7 +1777,9 @@ All överföring mellan wikier (transwiki) listas i  [[Special:Log/import|import
 'importhistoryconflict'      => 'Det föreligger en konflikt i versionshistoriken (kanske har denna sida importerats tidigare)',
 'importnosources'            => 'Inga källor för transwiki-import har angivits, och direkt uppladdning av historik har stängts av.',
 'importnofile'               => 'Ingen fil att importera har laddats upp.',
-'importuploaderror'          => 'Importfilen kunde inte laddas upp; kanske är den större än vad filer som skall laddas upp får vara.',
+'importuploaderrorsize'      => 'Uppladdningen av importfilen misslyckades. Filen är större än vad som är tillåtet att ladda upp.',
+'importuploaderrorpartial'   => 'Uppladdningen av importfilen misslyckades. Bara en del av filen laddades upp.',
+'importuploaderrortemp'      => 'Uppladdningen av importfilen misslyckades. En temporär katalog saknas.',
 
 # Import log
 'importlogpage'                    => 'Importlogg',
@@ -1912,7 +1923,9 @@ All överföring mellan wikier (transwiki) listas i  [[Special:Log/import|import
 # Image deletion
 'deletedrevision'                 => 'Raderade gammal sidversion $1',
 'filedeleteerror-short'           => 'Fel vid radering av fil: $1',
-'filedeleteerror-long'            => 'Fel inträffade vid raderingen av filen:\n\n$1',
+'filedeleteerror-long'            => 'Fel inträffade vid raderingen av filen:
+
+$1',
 'filedelete-missing'              => 'Filen "$1" kan inte raderas eftersom den inte finns.',
 'filedelete-old-unregistered'     => 'Den angivna filversionen "$1" finns inte i databasen.',
 'filedelete-current-unregistered' => 'Den angivna filen "$1" finns inte i databasen.',

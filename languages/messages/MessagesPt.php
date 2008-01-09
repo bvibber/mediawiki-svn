@@ -14,6 +14,7 @@
  * @author Malafaya
  * @author SPQRobin
  * @author לערי ריינהארט
+ * @author Villate
  */
 
 $namespaceNames = array(
@@ -153,7 +154,6 @@ $specialPageAliases = array(
 	'MergeHistory'              => array( 'Fundir_históricos', 'Fundir_edições' ),
 );
 
-
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'Sublinhar hiperligações',
@@ -269,7 +269,7 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Lista de configuração de opções]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki Perguntas e respostas frequentes]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Lista de e-mail de anúncios de novas versões do MediaWiki]',
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Lista de correio de anúncios de novas versões do MediaWiki]',
 
 'about'          => 'Sobre',
 'article'        => 'Artigo',
@@ -728,6 +728,7 @@ Por favor, considere seccionar a página em secções de menor dimensão.</stron
 'protectedpagewarning'      => '<strong>AVISO: Esta página foi protegida e poderá ser editada apenas por utilizadores com privilégios sysop (administradores).</strong>',
 'semiprotectedpagewarning'  => "'''Nota:''' Esta página foi protegida de modo a que apenas utilizadores registados a possam editar.",
 'cascadeprotectedwarning'   => "'''Atenção:''' Esta página se encontra protegida de forma que apenas {{int:group-sysop}} possam editá-la, uma vez que se encontra incluída {{PLURAL:\$1|na seguinte página protegida|nas seguintes páginas protegidas}} com a \"proteção progressiva\":",
+'titleprotectedwarning'     => '<strong>ATENÇÃO: Esta página foi protegida, apenas alguns utilizadores poderão criá-la.</strong>',
 'templatesused'             => 'Predefinições utilizadas nesta página:',
 'templatesusedpreview'      => 'Predefinições utilizadas nesta previsão:',
 'templatesusedsection'      => 'Predefinições utilizadas nesta secção:',
@@ -940,6 +941,7 @@ Note que os índices do conteúdo da {{SITENAME}} destes sites podem estar desac
 'resultsperpage'           => 'Resultados por página:',
 'contextlines'             => 'Linhas por resultado:',
 'contextchars'             => 'Contexto por linha:',
+'stub-threshold'           => 'Links para páginas de conteúdo aparecerão <a href="#" class="stub">desta forma</a> se elas possuírem menos de (bytes):',
 'recentchangesdays'        => 'Dias a serem exibidos nas Mudanças recentes:',
 'recentchangescount'       => 'Número de edições a serem exibidas nas Mudanças recentes:',
 'savedprefs'               => 'As suas preferências foram salvas.',
@@ -961,6 +963,7 @@ Note que os índices do conteúdo da {{SITENAME}} destes sites podem estar desac
 'userrights-editusergroup'    => 'Editar grupos do utilizador',
 'saveusergroups'              => 'Salvar Grupos do Utilizador',
 'userrights-groupsmember'     => 'Membro de:',
+'userrights-groupsremovable'  => 'Grupos dos quais pode ser removido:',
 'userrights-groupsavailable'  => 'Grupos disponíveis:',
 'userrights-groupshelp'       => 'Seleccione os grupos no qual deseja que o utilizador seja removido ou adicionado.
 Grupos não seleccionados, não serão alterados. Pode seleccionar ou remover a selecção a um grupo com CTRL + Click esquerdo',
@@ -972,7 +975,6 @@ Grupos não seleccionados, não serão alterados. Pode seleccionar ou remover a 
 'userrights-nodatabase'       => 'A base de dados $1 não existe ou não é uma base de dados local.',
 'userrights-nologin'          => 'Você precisa [[Special:Userlogin|autenticar-se]] como um administrador para especificar os privilégios de utilizador.',
 'userrights-notallowed'       => 'Sua conta não possui permissão para conceder privilégios a utilizadores.',
-'userrights-groupsremovable'  => 'Grupos dos quais pode ser removido:',
 
 # Groups
 'group'               => 'Grupo:',
@@ -1179,7 +1181,7 @@ O registo de eliminação é exibido a seguir, para sua comodidade:",
 'filedelete-submit'      => 'Eliminar',
 'filedelete-success'     => "'''$1''' foi eliminado.",
 'filedelete-success-old' => '<span class="plainlinks">A versão de \'\'\'[[Media:$1|$1]]\'\'\' tal como $3, $2 foi eliminada.</span>',
-'filedelete-nofile'      => "'''$1''' não existe neste sítio.",
+'filedelete-nofile'      => "'''$1''' não existe na {{SITENAME}}.",
 'filedelete-nofile-old'  => "Não há uma versão de '''$1''' em arquivo com os parâmetros especificados.",
 'filedelete-iscurrent'   => 'Você está tentando eliminar a versão mais recente deste ficheiro. Por gentileza, reverta para uma edição anterior antes de tentar novamente.',
 
@@ -1807,7 +1809,9 @@ Todas as acções de importação transwiki são registadas no [[{{ns:special}}:
 'importhistoryconflict'      => 'Existem conflitos de edições no histórico (talvez esta página já foi importada antes)',
 'importnosources'            => 'Não foram definidas fontes de importação transwiki e o carregamento directo de históricos encontra-se desactivado.',
 'importnofile'               => 'Nenhum ficheiro de importação foi carregado.',
-'importuploaderror'          => 'O carregamento do ficheiro de importação falhou; talvez o ficheiro seja maior do que o tamanho de carregamento permitido.',
+'importuploaderrorsize'      => 'O envio do ficheiro a ser importado falhou. O ficheiro é maior do que o tamanho máximo permitido para upload.',
+'importuploaderrorpartial'   => 'O envio do ficheiro a ser importado falhou. O ficheiro foi recebido parcialmente.',
+'importuploaderrortemp'      => 'O envio do ficheiro a ser importado falhou. Não há um diretório temporário.',
 
 # Import log
 'importlogpage'                    => 'Registo de importações',
@@ -2007,12 +2011,14 @@ Any subsequent links on the same line are considered to be exceptions, i.e. arti
 'exif-orientation'                 => 'Orientação',
 'exif-samplesperpixel'             => 'Número de componentes',
 'exif-planarconfiguration'         => 'Arranjo de dados',
+'exif-ycbcrsubsampling'            => 'Porcentagem de submistura do canal amarelo para o ciano',
 'exif-ycbcrpositioning'            => 'Posicionamento Y e C',
 'exif-xresolution'                 => 'Resolução horizontal',
 'exif-yresolution'                 => 'Resolução vertical',
 'exif-stripoffsets'                => 'Localização de dados da imagem',
 'exif-jpeginterchangeformatlength' => 'Bytes de dados JPEG',
 'exif-transferfunction'            => 'Função de transferência',
+'exif-whitepoint'                  => 'Cromaticidade do ponto branco',
 'exif-referenceblackwhite'         => 'Par de valores de referência de preto e branco',
 'exif-datetime'                    => 'Data e hora de modificação do ficheiro',
 'exif-imagedescription'            => 'Título',
@@ -2048,9 +2054,12 @@ Any subsequent links on the same line are considered to be exceptions, i.e. arti
 'exif-subjectdistance'             => 'Distância do sujeito',
 'exif-meteringmode'                => 'Modo de medição',
 'exif-lightsource'                 => 'Fonte de luz',
+'exif-flash'                       => 'Flash',
 'exif-focallength'                 => 'Comprimento de foco da lente',
 'exif-subjectarea'                 => 'Área de sujeito',
 'exif-flashenergy'                 => 'Energia do flash',
+'exif-focalplanexresolution'       => 'Resolução do plano focal X',
+'exif-focalplaneyresolution'       => 'Resolução do plano focal Y',
 'exif-subjectlocation'             => 'Localização de sujeito',
 'exif-exposureindex'               => 'Índice de exposição',
 'exif-sensingmethod'               => 'Método de sensação',
@@ -2058,6 +2067,7 @@ Any subsequent links on the same line are considered to be exceptions, i.e. arti
 'exif-scenetype'                   => 'Tipo de cena',
 'exif-cfapattern'                  => 'padrão CFA',
 'exif-exposuremode'                => 'Modo de exposição',
+'exif-whitebalance'                => 'Balanço do branco',
 'exif-digitalzoomratio'            => 'Proporção de zoom digital',
 'exif-focallengthin35mmfilm'       => 'Distância focal em filme de 35 mm',
 'exif-scenecapturetype'            => 'Tipo de captura de cena',
@@ -2103,6 +2113,15 @@ Any subsequent links on the same line are considered to be exceptions, i.e. arti
 
 'exif-unknowndate' => 'Data desconhecida',
 
+'exif-orientation-1' => 'Normal', # 0th row: top; 0th column: left
+'exif-orientation-2' => 'Espelhamento horizontal', # 0th row: top; 0th column: right
+'exif-orientation-3' => 'Rotacionado em 180°', # 0th row: bottom; 0th column: right
+'exif-orientation-4' => 'Espelhamento vertical', # 0th row: bottom; 0th column: left
+'exif-orientation-5' => 'Rotacionado em 90º em sentido anti-horário e espelhado verticalmente', # 0th row: left; 0th column: top
+'exif-orientation-6' => 'Rotacionado em 90° no sentido horário', # 0th row: right; 0th column: top
+'exif-orientation-7' => 'Rotacionado em 90° no sentido horário e espelhado verticalmente', # 0th row: right; 0th column: bottom
+'exif-orientation-8' => 'Rotacionado 90° no sentido anti-horário', # 0th row: left; 0th column: bottom
+
 'exif-planarconfiguration-1' => 'formato irregular',
 'exif-planarconfiguration-2' => 'formato plano',
 
@@ -2125,10 +2144,27 @@ Any subsequent links on the same line are considered to be exceptions, i.e. arti
 'exif-lightsource-1'   => 'Luz do dia',
 'exif-lightsource-2'   => 'Fluorescente',
 'exif-lightsource-3'   => 'Tungsténio (luz incandescente)',
+'exif-lightsource-4'   => 'Flash',
+'exif-lightsource-9'   => 'Tempo bom',
 'exif-lightsource-10'  => 'Tempo nublado',
+'exif-lightsource-12'  => 'Iluminação fluorecente (D 5700 – 7100K)',
+'exif-lightsource-13'  => 'Iluminação fluorecente branca (N 4600 – 5400K)',
+'exif-lightsource-14'  => 'Iluminação fluorecente esbranquiçada (W 3900 – 4500K)',
+'exif-lightsource-15'  => 'Iluminação fluorecente branca (WW 3200 – 3700K)',
+'exif-lightsource-17'  => 'Padrão de lâmpada A',
+'exif-lightsource-18'  => 'Padrão de lâmpada B',
+'exif-lightsource-19'  => 'Padrão de lâmpada C',
 'exif-lightsource-255' => 'Outra fonte de luz',
 
 'exif-focalplaneresolutionunit-2' => 'polegadas',
+
+'exif-sensingmethod-1' => 'Indefinido',
+'exif-sensingmethod-2' => 'Sensor de áreas de cores de um chip',
+'exif-sensingmethod-3' => 'Sensor de áreas de cores de dois chips',
+'exif-sensingmethod-4' => 'Sensor de áreas de cores de três chips',
+'exif-sensingmethod-5' => 'Sensor de área sequencial de cores',
+'exif-sensingmethod-7' => 'Sensor trilinear',
+'exif-sensingmethod-8' => 'Sensor linear sequencial de cores',
 
 'exif-customrendered-0' => 'Processo normal',
 'exif-customrendered-1' => 'Processo personalizado',
@@ -2142,11 +2178,22 @@ Any subsequent links on the same line are considered to be exceptions, i.e. arti
 'exif-scenecapturetype-3' => 'Cena noturna',
 
 'exif-gaincontrol-0' => 'Nenhum',
+'exif-gaincontrol-1' => 'Baixo ganho positivo',
+'exif-gaincontrol-2' => 'Alto ganho positivo',
+'exif-gaincontrol-3' => 'Baixo ganho negativo',
+'exif-gaincontrol-4' => 'Alto ganho negativo',
 
 'exif-contrast-0' => 'Normal',
 'exif-contrast-1' => 'Suave',
+'exif-contrast-2' => 'Alto',
 
 'exif-saturation-0' => 'Normal',
+'exif-saturation-1' => 'Baixa saturação',
+'exif-saturation-2' => 'Alta saturação',
+
+'exif-sharpness-0' => 'Normal',
+'exif-sharpness-1' => 'Fraco',
+'exif-sharpness-2' => 'Forte',
 
 'exif-subjectdistancerange-0' => 'Desconhecida',
 'exif-subjectdistancerange-2' => 'Vista próxima',

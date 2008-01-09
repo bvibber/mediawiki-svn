@@ -705,6 +705,7 @@ $2',
 'protectedpagewarning'      => '<strong>警告：呢版已經受到保護，只有管理員權限嘅用戶先至可以改。</strong>',
 'semiprotectedpagewarning'  => "'''注意：'''呢一頁已經鎖咗，只有已經註冊嘅用戶先至可以改。",
 'cascadeprotectedwarning'   => "'''警告：'''呢一頁已經鎖咗，只有管理員權限嘅用戶先至可以改，因為佢係響以下連串保護嘅{{PLURAL:$1|一|幾}}頁度包含咗：",
+'titleprotectedwarning'     => '<strong>警告：呢一版已經鎖咗，只有一啲用戶先至可以開到。</strong>',
 'templatesused'             => '喺呢一頁所用嘅模：',
 'templatesusedpreview'      => '喺呢一次預覽所用嘅模：',
 'templatesusedsection'      => '喺呢一小節所用嘅模：',
@@ -712,7 +713,7 @@ $2',
 'template-semiprotected'    => '(半保護)',
 'edittools'                 => '<!-- 喺呢度嘅文字會喺編輯框下面同埋上載表格中顯示。 -->',
 'nocreatetitle'             => '頁面建立被限制',
-'nocreatetext'              => '呢個網站已經限制咗起新版嘅能力。
+'nocreatetext'              => '{{SITENAME}}已經限制咗起新版嘅能力。
 你可以番轉頭去編輯一啲已經存在嘅頁面，或者[[Special:Userlogin|登入或開個新戶口]]。',
 'nocreate-loggedin'         => '你響{{SITENAME}}度並無許可權去開新版。',
 'permissionserrors'         => '權限錯誤',
@@ -778,7 +779,7 @@ $2',
 </div>',
 'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">
 呢頁嘅修訂喺公共檔案庫中已經洗咗。
-作為一個喺呢個網站嘅管理員，你可以去睇吓佢；
+作為一個喺{{SITENAME}}嘅管理員，你可以去睇吓佢；
 喺[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} 刪除日誌]裏面可能會有更詳細嘅資料。
 </div>',
 'rev-delundel'                => '顯示／隱藏',
@@ -945,8 +946,8 @@ $2',
 'userrights-groupshelp'       => '選擇你想畀用戶加入或移出嘅組。未選擇嘅組將唔會被改變。你可以用CTRL + 撳滑鼠左掣以取消已經選擇嘅一個組',
 'userrights-reason'           => '更改嘅原因:',
 'userrights-available-none'   => '你唔可以改組成員。',
-'userrights-available-add'    => '你可以加入用戶到$1。',
-'userrights-available-remove' => '你可以響$1度拎走用戶。',
+'userrights-available-add'    => '你可以加入用戶到{{PLURAL:$2|呢一組|呢幾組}}: $1。',
+'userrights-available-remove' => '你可以響{{PLURAL:$2|呢一組|呢幾組}}度拎走用戶: $1。',
 'userrights-no-interwiki'     => '你並無權限去編輯響其它wiki嘅用戶權限。',
 'userrights-nodatabase'       => '資料庫$1唔存在或者唔係本地嘅。',
 'userrights-nologin'          => '你一定要以操作員戶口[[Special:Userlogin|登入]]咗之後先可以指定用戶權限。',
@@ -1157,7 +1158,7 @@ $2',
 'filedelete-submit'      => '刪除',
 'filedelete-success'     => "'''$1'''已經刪除咗。",
 'filedelete-success-old' => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\'響 $2 $3 嘅版本已經刪除咗。</span>',
-'filedelete-nofile'      => "'''$1'''響呢個網站度唔存在。",
+'filedelete-nofile'      => "'''$1'''響{{SITENAME}}度唔存在。",
 'filedelete-nofile-old'  => "用指定嘅屬性，呢度係無'''$1'''響 $2 $3 嘅歸檔版本。",
 'filedelete-iscurrent'   => '你而家嘗試刪除呢個檔案嘅最近版本。請先將個檔打回頭做舊啲嘅版本先。',
 
@@ -1431,7 +1432,7 @@ wiki: $PAGEEDITOR_WIKI
 'confirmdelete'               => '確認刪除',
 'deletesub'                   => '("$1"刪除中)',
 'historywarning'              => '警告：你要刪除嘅頁面有歷史版本：',
-'confirmdeletetext'           => '你準備從資料庫度刪除一個頁面或者圖像，包括佢嘅所有歷史版本。
+'confirmdeletetext'           => '你準備刪除一個頁面或者圖像，包括佢嘅所有歷史版本。
 請確認你打算噉做，而且你知道後果係點，加上確認你噉做冇違反到[[{{MediaWiki:Policy-url}}]]。',
 'actioncomplete'              => '操作完成',
 'deletedtext'                 => '"$1"已經刪除。
@@ -1671,8 +1672,8 @@ $1',
 'proxyblocker-disabled'       => '呢個功能已經停用。',
 'proxyblockreason'            => '你嘅IP係一個公開（指任何人都可以用，無須身份認證？）嘅代理地址，因此被封鎖。請聯絡你嘅Internet服務提供商或技術支援，向佢哋報告呢個嚴重嘅安全問題。',
 'proxyblocksuccess'           => '完成。',
-'sorbsreason'                 => '你嘅IP地址已經畀響呢個網站度用嘅DNSBL列咗做公開代理。',
-'sorbs_create_account_reason' => '你嘅IP地址已經畀響呢個網站度用嘅DNSBL列咗做公開代理。你唔可以開新戶口。',
+'sorbsreason'                 => '你嘅IP地址已經畀響{{SITENAME}}度用嘅DNSBL列咗做公開代理。',
+'sorbs_create_account_reason' => '你嘅IP地址已經畀響{{SITENAME}}度用嘅DNSBL列咗做公開代理。你唔可以開新戶口。',
 
 # Developer tools
 'lockdb'              => '鎖定資料庫',
@@ -1804,7 +1805,9 @@ $1',
 'importhistoryconflict'      => '存在有衝突嘅歷史版本（之前可能曾經倒入過呢頁）',
 'importnosources'            => '未定義 transwiki 嘅匯入來源，同埋歷史嘅直接上載已經停用。',
 'importnofile'               => '冇上載到任何要倒入嘅檔案。',
-'importuploaderror'          => '上載要倒入嘅文件失敗；可能文件超過咗允許嘅上載大細。',
+'importuploaderrorsize'      => '上載要倒入嘅檔案失敗。個檔案大過可以容許嘅上載大細。',
+'importuploaderrorpartial'   => '上載要倒入嘅檔案失敗。個檔案只係部份上載咗。',
+'importuploaderrortemp'      => '上載要倒入嘅檔案失敗。個臨時資料夾唔見咗。',
 
 # Import log
 'importlogpage'                    => '倒入日誌',
