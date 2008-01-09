@@ -5,9 +5,9 @@
  * @addtogroup Extensions
 */
 
-$wgDesysopMessages = array();
+$messages = array();
 
-$wgDesysopMessages['en'] = array(
+$messages['en'] = array(
 	'desysoptitle'         => 'Revoke sysop access for a user',
 	'desysoptext'          => "This form is used by bureaucrats to revoke a user's sysop permission. Type the user in the box and press the button to revoke the user's sysop access.",
 	'desysopname'          => 'Name of the user:',
@@ -17,7 +17,8 @@ $wgDesysopMessages['en'] = array(
 	'desysop'              => 'Desysop a user',
 	'desysopnot_sysop'     => 'This user is not an administrator',
 );
-$wgDesysopMessages['ar'] = array(
+
+$messages['ar'] = array(
 	'desysoptitle'         => 'اسحب الصلاحيات الإدارية من مستخدم',
 	'desysoptext'          => 'هذه الاستمارة يتم استخدامها بواسطة البيروقراطيين لسحب صلاحيات المستخدم الإدارية. اكتب اسم المستخدم في الصندوق واضغط الزر لكي تسحب صلاحيات المستخدم الإدارية.',
 	'desysopname'          => 'اسم المستخدم:',
@@ -27,7 +28,8 @@ $wgDesysopMessages['ar'] = array(
 	'desysop'              => 'عزل مستخدم',
 	'desysopnot_sysop'     => 'هذا المستخدم ليس إداريا',
 );
-$wgDesysopMessages['bcl'] = array(
+
+$messages['bcl'] = array(
 	'desysopname'          => 'Pangaran kan parágamit:',
 	'desysopnot_sysop'     => 'Bakong administrador an parágamit na ini.',
 );
@@ -35,7 +37,7 @@ $wgDesysopMessages['bcl'] = array(
 /** Bulgarian (Български)
  * @author DCLXVI
  */
-$wgDesysopMessages['bg'] = array(
+$messages['bg'] = array(
 	'desysoptitle'     => 'Отнемане на администраторски права',
 	'desysoptext'      => 'Този формуляр се използва от бюрократите за отнемане на администраторски права. Въвежда се потребителското име в текстовата кутия и се натиска бутона, за да се отнемат администраторските права на потребителя.',
 	'desysopname'      => 'Потребителско име:',
@@ -44,10 +46,11 @@ $wgDesysopMessages['bg'] = array(
 	'desysopnot_sysop' => 'Този потребител не е администратор',
 );
 
-$wgDesysopMessages['ca'] = array(
+$messages['ca'] = array(
 	'desysopsetrights'     => 'Defineix els permisos d\'usuaris',
 );
-$wgDesysopMessages['cs'] = array(
+
+$messages['cs'] = array(
 	'desysoptitle'         => 'Odebrat uživateli práva správce',
 	'desysoptext'          => 'Pomocí tohoto formuláře může byrokrat odebrat uživateli práva správce. Napište uživatelovo jméno do rámečku a klikněte na tlačítko, práva budou odebrána.',
 	'desysopname'          => 'Jméno uživatele:',
@@ -57,7 +60,8 @@ $wgDesysopMessages['cs'] = array(
 	'desysop'              => 'Odebrat práva',
 	'desysopnot_sysop'     => 'Tento uživatel není správce.',
 );
-$wgDesysopMessages['de'] = array(
+
+$messages['de'] = array(
 	'desysoptitle'         => 'Administratorenrechte entziehen',
 	'desysoptext'          => 'Mit diesem Formular können Bürokraten Administratoren wieder zu normalen Benutzern machen.',
 	'desysopname'          => 'Benutzername:',
@@ -67,13 +71,15 @@ $wgDesysopMessages['de'] = array(
 	'desysop'              => 'Administratorenrechte entziehen',
 	'desysopnot_sysop'     => 'Dieser Benutzer ist kein Administrator.',
 );
-$wgDesysopMessages['el'] = array(
+
+$messages['el'] = array(
 	'desysopname'          => 'Όνομα του χρήστη:',
 	'desysopsetrights'     => 'Καθορισμός δικαιωμάτων χρήστη',
 	'desysoprightsfail'    => '<b>Δεν ήταν δυνατή η ρύθμιση των δικαιωμάτων για το χρήστη "$1". Βεβαιωθείτε πως έχετε πληκτρολογήσει σωστά το όνομα.</b>',
 	'desysopnot_sysop'     => 'Αυτός ο χρήστης δεν είναι διαχειριστής',
 );
-$wgDesysopMessages['eo'] = array(
+
+$messages['eo'] = array(
 	'desysoptitle'         => 'Revoku administrantan akceson por uzanto',
 	'desysoptext'          => 'Ĉi tiu formularo estas uzata de burokratoj por revoki la administrantan permeson de uzanto. Tajpu la uzantan nomon en la keston kaj presu la butonon por revoki la administrantan akceson de uzanto.',
 	'desysopname'          => 'Nomo de la uzanto:',
@@ -83,10 +89,12 @@ $wgDesysopMessages['eo'] = array(
 	'desysop'              => 'Neadministrantigu uzanton',
 	'desysopnot_sysop'     => 'Ĉi tiu uzanto ne estas administranto',
 );
-$wgDesysopMessages['ext'] = array(
+
+$messages['ext'] = array(
 	'desysopnot_sysop'     => 'Esti usuáriu nu es un duendi',
 );
-$wgDesysopMessages['fr'] = array(
+
+$messages['fr'] = array(
 	'desysoptitle'         => 'Enlever les droits d’administrateur à cet utilisateur',
 	'desysoptext'          => 'Ce formulaire est utilisé par les bureaucrates pour enlever ses droits à un administrateur. Entrez le nom d’un administrateur ci-dessous et pressez le bouton pour enlever les droits.',
 	'desysopname'          => 'Nom de l’utilisateur :',
@@ -96,7 +104,8 @@ $wgDesysopMessages['fr'] = array(
 	'desysop'              => 'Enlever les droits d’administrateur',
 	'desysopnot_sysop'     => 'Cet utilisateur n’est pas un administrateur.',
 );
-$wgDesysopMessages['gl'] = array(
+
+$messages['gl'] = array(
 	'desysoptitle'         => 'Retirarlle o acceso como administrador a un usuario',
 	'desysoptext'          => 'Este formulario é para que os burócratas lle retiren os permisos de administrador a un usuario. Escriba o nome do usuario na caixa e prema no botón para retirarlle o acceso como administrador ao usuario.',
 	'desysopname'          => 'Nome do usuario:',
@@ -106,7 +115,8 @@ $wgDesysopMessages['gl'] = array(
 	'desysop'              => 'Retirarlle o acceso como administrador a un usuario',
 	'desysopnot_sysop'     => 'Este usuario non é administrador',
 );
-$wgDesysopMessages['he'] = array(
+
+$messages['he'] = array(
 	'desysoptitle'         => 'בטל הרשאת מפעיל מערכת למשתמש',
 	'desysoptext'          => "דף זה משמש ביורוקרטים לביטול הרשאת מפעיל מערכת של משתמש. אנא הקישו את שם המשתמש בתיבת הטקסט ולחצו על הכפתור על מנת להפוך את המשתמש למפעיל מערכת.",
 	'desysopname'          => 'שם המשתמש:',
@@ -116,7 +126,8 @@ $wgDesysopMessages['he'] = array(
 	'desysop'              => 'בטל הרשאת מפעיל מערכת למשתמש',
 	'desysopnot_sysop'     => 'משתמש זה אינו מפעיל מערכת',
 );
-$wgDesysopMessages['hsb'] = array(
+
+$messages['hsb'] = array(
 	'desysoptitle'         => 'Prawa administratora zebrać',
 	'desysoptext'          => 'Z tutym formularom móža běrokraća wužiwarjej prawa administratora zebrać. Zapisaj mjeno wužiwarja do kašćika a tłóč na knefl zo by wužiwarjej   přistup administratora zebrał.',
 	'desysopname'          => 'Mjeno wužiwarja:',
@@ -126,7 +137,8 @@ $wgDesysopMessages['hsb'] = array(
 	'desysop'              => 'Desysop',
 	'desysopnot_sysop'     => 'Tutón wužiwar administrator njeje.',
 );
-$wgDesysopMessages['hu'] = array(
+
+$messages['hu'] = array(
 	'desysopname'          => 'Felhasználó neve:',
 	'desysopok'            => '<b>„$1” adminisztrátori joga el lett távolítva</b>',
 	'desysopsetrights'     => 'Jogok beállítása',
@@ -134,7 +146,8 @@ $wgDesysopMessages['hu'] = array(
 	'desysop'              => 'Adminisztrátori jog megvonása',
 	'desysopnot_sysop'     => 'Ez a szerkesztő nem adminisztrátor',
 );
-$wgDesysopMessages['id'] = array(
+
+$messages['id'] = array(
 	'desysoptitle'         => 'Mencabut akses pengurus dari pengguna',
 	'desysoptext'          => "Formulir ini digunakan oleh birokrat untuk mencabut hak pengurus dari seorang pengguna. Masukkan nama pengguna di kotak yang tersedia dan tekan tombol untuk mencabut hak sebagai pengurus dari pengguna yang bersangkutan.",
 	'desysopname'          => 'Nama pengguna:',
@@ -144,10 +157,12 @@ $wgDesysopMessages['id'] = array(
 	'desysop'              => 'Mencabut hak pengurus pengguna',
 	'desysopnot_sysop'     => 'Pengguna ini bukan pengurus',
 );
-$wgDesysopMessages['is'] = array(
+
+$messages['is'] = array(
 	'desysopsetrights'     => 'Breyta réttindum notanda',
 );
-$wgDesysopMessages['it'] = array(
+
+$messages['it'] = array(
 	'desysoptitle'         => "Revoca dei privilegi di amministratore",
 	'desysoptext'          => "Questo modulo consente ai burocrati di revocare i privilegi di amministratore a un utente. Inserire il nome utente nella casella di testo e premere il pulsante per revocarne l'accesso come amministratore.",
 	'desysopname'          => "Nome utente:",
@@ -157,7 +172,8 @@ $wgDesysopMessages['it'] = array(
 	'desysop'              => "Revoca i privilegi di amministratore",
 	'desysopnot_sysop'     => "L'utente specificato non è un amministratore",
 );
-$wgDesysopMessages['ja'] = array(
+
+$messages['ja'] = array(
 	'desysoptitle'         => '利用者から管理者権限を取り消す',
 	'desysoptext'          => "このフォームはビューロクラットが利用者から管理者権限を取り消すために使用されます。下欄に利用者名を入力し、ボタンをクリックすると取り消しが実行されます。",
 	'desysopname'          => '取り消す利用者の名前: ',
@@ -167,14 +183,17 @@ $wgDesysopMessages['ja'] = array(
 	'desysop'              => '管理者権限の取り消し',
 	'desysopnot_sysop'     => 'この利用者は管理者ではありません',
 );
-$wgDesysopMessages['kab'] = array(
+
+$messages['kab'] = array(
 	'desysopname'          => 'Isem n wemseqdac:',
 );
-$wgDesysopMessages['ko'] = array(
+
+$messages['ko'] = array(
 	'desysopsetrights'     => '사용자 권한 설정',
 	'desysoprightsfail'    => '\'\'\'$1 사용자에게 관리자 권한을 줄 수 없습니다(철자를 맞게 입력했는지 확인해주세요).\'\'\'',
 );
-$wgDesysopMessages['ku-latn'] = array(
+
+$messages['ku-latn'] = array(
 	'desysopname'          => 'Navî bikarhêner:',
 	'desysopok'            => '<b>Bikarhêner "$1" niha hate neadminkirin</b>',
 	'desysopsetrights'     => 'Qebûlkirinên bikarhêneran biguherîne',
@@ -182,7 +201,8 @@ $wgDesysopMessages['ku-latn'] = array(
 	'desysop'              => 'Bikarhênerekî neadmîn ke',
 	'desysopnot_sysop'     => 'Ev bikarhênera ne admînek e',
 );
-$wgDesysopMessages['la'] = array(
+
+$messages['la'] = array(
 	'desysoptitle'         => 'Revocare statum magistratus usoris',
 	'desysoptext'          => 'Grapheocrates hac pagina uti possunt ad revocandum statum magistratus usoris. Nomen usoris in capsam inscribe et preme in "Revocare statum magistratus" ad statum revocandum.',
 	'desysopname'          => 'Nomen usoris:',
@@ -196,14 +216,14 @@ $wgDesysopMessages['la'] = array(
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-$wgDesysopMessages['lb'] = array(
+$messages['lb'] = array(
 	'desysopname' => 'Benotzernumm:',
 );
 
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */
-$wgDesysopMessages['lt'] = array(
+$messages['lt'] = array(
 	'desysoptitle'      => 'Panaikinti administratoriaus teises naudotojui',
 	'desysoptext'       => 'Ši forma yra naudojama biurokratams administratoriaus teisių naudotojui nuėmimui. Įveskite naudotoją laukelyje ir spauskite mygtuką, norėdami panaikinti administratoriaus teises.',
 	'desysopname'       => 'Naudotojo vardas:',
@@ -214,7 +234,7 @@ $wgDesysopMessages['lt'] = array(
 	'desysopnot_sysop'  => 'Šis naudotojas nėra administratorius',
 );
 
-$wgDesysopMessages['nds'] = array(
+$messages['nds'] = array(
 	'desysoptitle'         => 'Bruker as Admin aflohnen',
 	'desysoptext'          => 'Dit Formular warrt vun Bürokraten bruukt, Admins aftolohnen. Musst den Brukernaam in dat Feld ingeven un den Knopp drücken, dat de Adminrechten wegnahmen warrt.',
 	'desysopname'          => 'Naam vun’n Bruker:',
@@ -224,7 +244,8 @@ $wgDesysopMessages['nds'] = array(
 	'desysop'              => 'Bruker as Admin aflohnen',
 	'desysopnot_sysop'     => 'Disse Bruker is keen Admin',
 );
-$wgDesysopMessages['nl'] = array(
+
+$messages['nl'] = array(
 	'desysoptitle'         => 'Beheerdersrechten voor een gebruiker intrekken',
 	'desysoptext'          => 'Bureaucraten gebruiken dit formulier om beheerdersrechten voor een gebruiker in te trekken. Voer de gebruikersnaam in het veld in en klik op de knop om de beheerdersrechten in te trekken.',
 	'desysopname'          => 'Gebruikersnaam:',
@@ -234,7 +255,8 @@ $wgDesysopMessages['nl'] = array(
 	'desysop'              => 'Beheerdersrechten intrekken',
 	'desysopnot_sysop'     => 'Deze gebruiker is geen beheerder',
 );
-$wgDesysopMessages['no'] = array(
+
+$messages['no'] = array(
 	'desysoptitle'         => 'Fjern administratorstatus for en bruker',
 	'desysoptext'          => 'Dette skjemaet brukes av byråkrater for å fjerne brukeres administratorrettigheter. Skriv inn brukernavnet i boksen og trykk på knappen for å fjerne brukerens administratortilgang.',
 	'desysopname'          => 'Brukernavn:',
@@ -244,7 +266,8 @@ $wgDesysopMessages['no'] = array(
 	'desysop'              => 'Fjern administratortilgang for en bruker',
 	'desysopnot_sysop'     => 'Denne brukeren er ikke en administrator',
 );
-$wgDesysopMessages['oc'] = array(
+
+$messages['oc'] = array(
 	'desysoptitle'         => 'Levar los dreches d’administrator a aqueste utilizaire',
 	'desysoptext'          => 'Aqueste formulari es utilizat pels burocratas per levar sos dreches a un administrator. Entratz lo nom d’un administrator çai jos e clicatz lo boton per levar los dreches.',
 	'desysopname'          => 'Nom de l\'utilizaire:',
@@ -254,7 +277,8 @@ $wgDesysopMessages['oc'] = array(
 	'desysop'              => 'Levar los dreches d’administrator',
 	'desysopnot_sysop'     => 'Aqueste utilizaire es pas un administrator',
 );
-$wgDesysopMessages['pl'] = array(
+
+$messages['pl'] = array(
 	'desysoptitle'         => 'Odebranie uprawnień administratora',
 	'desysoptext'          => 'Ten formularz jest używany przez biurokratów by odbierać użytkownikom uprawnienia administratora. Wpisz nazwę użytkownika do pola obok i wciśnij przycisk by odebrać użytkownikowi dostęp do funkcji administratora.',
 	'desysopname'          => 'Nazwa użytkownika',
@@ -264,8 +288,9 @@ $wgDesysopMessages['pl'] = array(
 	'desysop'              => 'Odebranie uprawnień administratora',
 	'desysopnot_sysop'     => 'Ten użytkownik nie jest administratorem.',
 );
+
 /* Piedmontese (Bèrto 'd Sèra) */
-$wgDesysopMessages['pms'] = array(
+$messages['pms'] = array(
 	'desysoptitle'         => 'Révoca dla qualìfica da aministrator',
 	'desysoptext'          => 'Sta domanda-sì a la dòvro ij mangiapapé për gavé le qualìfiche da aministrator. Ch\'a buta lë stranòm dl\'utent e ch\'a-i bata ansima al boton për fé la révoca dla qualìfica.',
 	'desysopname'          => 'Stranòm:',
@@ -275,7 +300,8 @@ $wgDesysopMessages['pms'] = array(
 	'desysop'              => 'Gaveje la qualìfica d\'aministrator a n\'utent',
 	'desysopnot_sysop'     => 'St\'utent-sì a l\'é pa n\'aministrator',
 );
-$wgDesysopMessages['pt'] = array(
+
+$messages['pt'] = array(
 	'desysoptitle'         => 'Revogar acesso de administrador a um utilizador',
 	'desysoptext'          => 'Este formulário é usado por burocratas para revogar a permissão de administração de um utilizador. Introduza o nome do utilizador na caixa e pressione o botão para revogar o acesso de administração do utilizador.',
 	'desysopname'          => 'Nome do utilizador:',
@@ -285,7 +311,8 @@ $wgDesysopMessages['pt'] = array(
 	'desysop'              => 'Retirar privilégio de administração a um utilizador',
 	'desysopnot_sysop'     => 'Este utilizador não é um administrador',
 );
-$wgDesysopMessages['ro'] = array(
+
+$messages['ro'] = array(
 	'desysoptitle'         => 'Revocarea permisiunilor de administrator',
 	'desysoptext'          => 'Acest formular este utilizat de birocraţi pentru a revoca permisiunile de administrator ale utilizatorilor. Tastează numele utilizatorului în cutie şi apasă butonul pentru a-i revoca permisiunile de administrator.',
 	'desysopname'          => 'Numele utilizatorului:',
@@ -295,7 +322,8 @@ $wgDesysopMessages['ro'] = array(
 	'desysop'              => 'Revocă permisiunile de administrator',
 	'desysopnot_sysop'     => 'Acest utilizator nu este administrator',
 );
-$wgDesysopMessages['ru'] = array(
+
+$messages['ru'] = array(
 	'desysoptitle'         => 'Отозвать права администратора у участника',
 	'desysoptext'          => "Эту форму могут использовать «бюрократы» для того, чтобы отозвать права администратора у участника. Введите имя участника и нажмите на кнопку, чтобы запретить ему доступ к административным функциям.",
 	'desysopname'          => 'Имя участника:',
@@ -305,7 +333,8 @@ $wgDesysopMessages['ru'] = array(
 	'desysop'              => 'Отозвать права администратора у участника',
 	'desysopnot_sysop'     => 'Этот участник не является администратором',
 );
-$wgDesysopMessages['sk'] = array(
+
+$messages['sk'] = array(
 	'desysoptitle'         => 'Odober používateľovi privilégiá správcu',
 	'desysoptext'          => 'Tento formulár používajú byrokrati na odobratie privilégií správcu používateľovi. Do poľa napíšte meno používateľa. Po stlačení tlačidla sa odoberú používateľovi privilégiá správcu.',
 	'desysopname'          => 'Meno používateľa:',
@@ -315,7 +344,8 @@ $wgDesysopMessages['sk'] = array(
 	'desysop'              => 'Odobrať privilégiá správcu používateľovi',
 	'desysopnot_sysop'     => 'Tento používateľ nie je správca',
 );
-$wgDesysopMessages['sr-ec'] = array(
+
+$messages['sr-ec'] = array(
 	'desysoptitle'         => 'Одузимање администраторских права',
 	'desysoptext'          => "Ову страницу користе бирократе како би одузели администраторска права кориснику. Унестите корисничко име у поље испод и притисните дугме како би одузели корисничка администраторска права.",
 	'desysopname'          => 'Корисник:',
@@ -325,7 +355,8 @@ $wgDesysopMessages['sr-ec'] = array(
 	'desysop'              => 'Одузми админ права кориснику',
 	'desysopnot_sysop'     => 'Овај корисник није администратор',
 );
-$wgDesysopMessages['sr-el'] = array(
+
+$messages['sr-el'] = array(
 	'desysoptitle'         => 'Oduzimanje administratorskih prava',
 	'desysoptext'          => "Ovu stranicu koriste birokrate kako bi oduzeli administratorska prava korisniku. Unestite korisničko ime u polje ispod i pritisnite dugme kako bi oduzeli korisnička administratorska prava.",
 	'desysopname'          => 'Korisnik:',
@@ -335,12 +366,11 @@ $wgDesysopMessages['sr-el'] = array(
 	'desysop'              => 'Oduzmi admin prava korisniku',
 	'desysopnot_sysop'     => 'Ovaj korisnik nije administrator',
 );
-$wgDesysopMessages['sr'] = $wgDesysopMessages['sr-ec'];
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-$wgDesysopMessages['stq'] = array(
+$messages['stq'] = array(
 	'desysoptitle'      => 'Administratoregjuchte äntluuke',
 	'desysoptext'       => 'Mäd dit Formular konnen Bürokrate Administratore wier tou normoale Benutsere moakje.',
 	'desysopname'       => 'Benutsernoome:',
@@ -351,7 +381,7 @@ $wgDesysopMessages['stq'] = array(
 	'desysopnot_sysop'  => 'Dissen Benutser is naan Administrator',
 );
 
-$wgDesysopMessages['su'] = array(
+$messages['su'] = array(
 	'desysoptitle'         => 'Cabut status kuncén ti pamaké',
 	'desysoptext'          => 'Pormulir ieu dipaké ku birokrat pikeun nyabut kawenangan kuncén. Mangga ketikkeun landihan pamaké dina kotak, lajeng pencét tombolna pikeun nyabut status kuncénna.',
 	'desysopname'          => 'Landihan pamaké:',
@@ -365,22 +395,24 @@ $wgDesysopMessages['su'] = array(
 /** Volapük (Volapük)
  * @author Malafaya
  */
-$wgDesysopMessages['vo'] = array(
+$messages['vo'] = array(
 	'desysopname' => 'Nem gebana:',
 );
 
-$wgDesysopMessages['tet'] = array(
+$messages['tet'] = array(
 	'desysoptitle'         => 'Hasai kuana administradór ba uza-na\'in ida',
 	'desysoptext'          => 'Burokrata bele uza pájina ne\'e ba hasai kuana administradór.',
 	'desysopname'          => 'Naran uza-na\'in:',
 	'desysopok'            => '<b>"$1" agora lá\'os administradór</b>',
 	'desysop'              => 'Hasai kuana administradór ba uza-na\'in ida',
 );
-$wgDesysopMessages['wa'] = array(
+
+$messages['wa'] = array(
 	'desysopsetrights'     => 'Defini les droets d\'&nbsp;l\'&nbsp;uzeu',
 	'desysoprightsfail'    => '<b>Les droets po l\' uzeu «$1» n\' ont nén polou esse definis. (Avoz vs tapé l\' no bén comifåt?)</b>',
 );
-$wgDesysopMessages['yue'] = array(
+
+$messages['yue'] = array(
 	'desysoptitle'         => '撤銷一位用戶嘅操作員權限',
 	'desysoptext'          => "呢個表格係畀事務員用以撤銷一位用戶嘅操作員權限。響下面嘅框度輸入用戶名並撳一下個掣去撤銷嗰位用戶嘅操作員權限。",
 	'desysopname'          => '用戶名：',
@@ -390,7 +422,8 @@ $wgDesysopMessages['yue'] = array(
 	'desysop'              => '解除一位用戶嘅操作員權限',
 	'desysopnot_sysop'     => '呢位用戶唔係一位管理員',
 );
-$wgDesysopMessages['zh-hans'] = array(
+
+$messages['zh-hans'] = array(
 	'desysoptitle'         => '撤销一位用户的操作员权限',
 	'desysoptext'          => "这个表格供行政员使用以撤销一位用户的操作员权限。在下面的框中输入用户名并按下按钮以撤销该用户的操作员权限。",
 	'desysopname'          => '用户名称：',
@@ -400,7 +433,8 @@ $wgDesysopMessages['zh-hans'] = array(
 	'desysop'              => '解除一位用户的操作员权限',
 	'desysopnot_sysop'     => '这位用户不是一位管理员',
 );
-$wgDesysopMessages['zh-hant'] = array(
+
+$messages['zh-hant'] = array(
 	'desysoptitle'         => '撤銷一位用戶的操作員權限',
 	'desysoptext'          => "這個表格供行政員使用以撤銷一位用戶的操作員權限。在下面的框中輸入用戶名並按下按鈕以撤銷該用戶的操作員權限。",
 	'desysopname'          => '用戶名稱：',
@@ -410,9 +444,11 @@ $wgDesysopMessages['zh-hant'] = array(
 	'desysop'              => '解除一位用戶的操作員權限',
 	'desysopnot_sysop'     => '這位用戶不是一位管理員',
 );
-$wgDesysopMessages['zh'] = $wgDesysopMessages['zh-hans'];
-$wgDesysopMessages['zh-cn'] = $wgDesysopMessages['zh-hans'];
-$wgDesysopMessages['zh-hk'] = $wgDesysopMessages['zh-hant'];
-$wgDesysopMessages['zh-sg'] = $wgDesysopMessages['zh-hans'];
-$wgDesysopMessages['zh-tw'] = $wgDesysopMessages['zh-hant'];
-$wgDesysopMessages['zh-yue'] = $wgDesysopMessages['yue'];
+
+$messages['sr'] = $messages['sr-ec'];
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-tw'] = $messages['zh-hant'];
+$messages['zh-yue'] = $messages['yue'];

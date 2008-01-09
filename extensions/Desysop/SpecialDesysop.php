@@ -3,10 +3,6 @@
  * @addtogroup SpecialPage
  */
 
-/**
- *
- */
-
 if ( !defined( 'MEDIAWIKI' ) ) {
 	echo "DeSysop extension\n";
 	exit( 1 ) ;
@@ -14,10 +10,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Desysop',
+	'version' => '2008-01-09',
 	'description' => 'Gives bureaucrats the ability to revoke Sysop access',
 	'author' => 'Andrew Garrett',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Desysop',
 );
+
+$wgExtensionMessagesFiles['Desysop'] = dirname(__FILE__) . '/SpecialDesysop.i18n.php';
 
 /**
  * Quick hack for clusters with multiple master servers; if an alternate
@@ -33,13 +32,8 @@ $wgAlternateMaster = array();
 
 $wgGroupPermissions['bureaucrat']['desysop'] = true;
 
-# Internationalisation
-require_once( 'SpecialDesysop.i18n.php' );
-
 # Register special page
 if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 }
 extAddSpecialPage( dirname(__FILE__) . '/SpecialDesysop_body.php', 'Desysop', 'DesysopPage' );
-
-

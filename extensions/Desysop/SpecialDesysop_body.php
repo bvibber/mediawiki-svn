@@ -5,12 +5,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-# Add messages
-global $wgMessageCache, $wgDesysopMessages;
-foreach( $wgDesysopMessages as $key => $value ) {
-	$wgMessageCache->addMessages( $wgDesysopMessages[$key], $key );
-}
-
 require_once( 'SpecialUserrights.php' );
 require_once( "LinksUpdate.php" );
 
@@ -21,6 +15,8 @@ class DeSysopPage extends SpecialPage {
 
 	function execute( $subpage ) {
 		global $wgUser, $wgOut, $wgRequest;
+
+		wfLoadExtensionMessages( 'Desysop' );
 
 		if ( $wgUser->isAnon() or $wgUser->isBlocked() ) {
 			$wgOut->errorpage( "movenologin", "movenologintext" );
@@ -61,7 +57,7 @@ class DesysopForm {
 		$this->mUser = $request->getText( 'wpDesysopUser' );
 		$this->mSubmit = $request->getBool( 'wpDesysopSubmit' ) &&
 			$request->wasPosted() &&
-			$wgUser->matchEditToken( $request->getVal( 'wpEditToken' ) );		
+			$wgUser->matchEditToken( $request->getVal( 'wpEditToken' ) );
 	}
 
 	function showForm( $err = '') {
@@ -92,7 +88,7 @@ class DesysopForm {
 				<td align='left'>
 					<input type='text' size='40' name=\"wpDesysopUser\" value=\"$encUser\" />
 				</td>
-			</tr>" 
+			</tr>"
 		);
 
 		$mss = wfMsg( "desysopsetrights" );
@@ -104,7 +100,7 @@ class DesysopForm {
 					<input type='submit' name=\"wpDesysopSubmit\" value=\"{$mss}\" />
 				</td></tr></table>
 				<input type='hidden' name='wpEditToken' value=\"{$token}\" />
-			</form>\n" 
+			</form>\n"
 		);
 	}
 
@@ -175,7 +171,7 @@ class DesysopForm {
 		$log = new LogPage( 'rights' );
 		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $this->mUser ), '',
 			array( $this->makeGroupNameList( $oldGroups ), $this->makeGroupNameList( $newGroups ) ) );
-			
+
 		$this->showSuccess();
 	}
 
