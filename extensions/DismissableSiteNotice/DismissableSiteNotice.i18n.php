@@ -1,290 +1,290 @@
 <?php
 /**
- * Internationalisation file for DismissableSiteNotice extension.
+ * Internationalisation file for extension DismissableSiteNotice.
  *
  * @addtogroup Extensions
 */
 
-$wgDismissableSiteNoticeMessages = array();
+$messages = array();
 
-$wgDismissableSiteNoticeMessages['en'] = array(
+$messages['en'] = array(
 	'sitenotice_id'    => '0', # Don't translate this
 	'sitenotice_close' => 'dismiss',
 );
 
-$wgDismissableSiteNoticeMessages['af'] = array(
+$messages['af'] = array(
 	'sitenotice_close' => 'versteek',
 );
 
-$wgDismissableSiteNoticeMessages['am'] = array(
+$messages['am'] = array(
 	'sitenotice_close' => '<-- ይህን አውጣ',
 );
 
-$wgDismissableSiteNoticeMessages['ar'] = array(
+$messages['ar'] = array(
 	'sitenotice_close' => 'إغلاق',
 );
 
 /** Asturian (Asturianu)
  * @author SPQRobin
  */
-$wgDismissableSiteNoticeMessages['ast'] = array(
+$messages['ast'] = array(
 	'sitenotice_close' => 'desaniciar',
 );
 
 /** Bulgarian (Български)
  * @author DCLXVI
  */
-$wgDismissableSiteNoticeMessages['bg'] = array(
+$messages['bg'] = array(
 	'sitenotice_close' => 'скриване',
 );
 
-$wgDismissableSiteNoticeMessages['bn'] = array(
+$messages['bn'] = array(
 	'sitenotice_close' => 'নোটিশ বন্ধ করুন',
 );
 
-$wgDismissableSiteNoticeMessages['br'] = array(
+$messages['br'] = array(
 	'sitenotice_close' => 'kuzhat',
 );
 
-$wgDismissableSiteNoticeMessages['ca'] = array(
+$messages['ca'] = array(
 	'sitenotice_close' => 'amaga',
 );
 
-$wgDismissableSiteNoticeMessages['cdo'] = array(
+$messages['cdo'] = array(
 	'sitenotice_close' => 'cĕk lâi',
 );
 
-$wgDismissableSiteNoticeMessages['cs'] = array(
+$messages['cs'] = array(
 	'sitenotice_close' => 'zavřít',
 );
 
-$wgDismissableSiteNoticeMessages['de'] = array(
+$messages['de'] = array(
 	'sitenotice_close' => 'Schließen',
 );
 
-$wgDismissableSiteNoticeMessages['el'] = array(
+$messages['el'] = array(
 	'sitenotice_close' => 'απομάκρυνση',
 );
 
-$wgDismissableSiteNoticeMessages['es'] = array(
+$messages['es'] = array(
 	'sitenotice_close' => 'ocultar',
 );
 
 # فارسی (Huji)
-$wgDismissableSiteNoticeMessages['fa'] = array(
+$messages['fa'] = array(
 	'sitenotice_close' => 'بستن',
 
 );
 
-$wgDismissableSiteNoticeMessages['fi'] = array(
+$messages['fi'] = array(
 	'sitenotice_close' => 'piilota',
 );
 
-$wgDismissableSiteNoticeMessages['fiu-vro'] = array(
+$messages['fiu-vro'] = array(
 	'sitenotice_close' => 'Käkiq ärq',
 );
 
-$wgDismissableSiteNoticeMessages['fo'] = array(
+$messages['fo'] = array(
 	'sitenotice_close' => 'flyt burtur',
 );
 
-$wgDismissableSiteNoticeMessages['fr'] = array(
+$messages['fr'] = array(
 	'sitenotice_close' => 'cacher',
 );
 
 /** Franco-Provençal (Arpetan)
  * @author ChrisPtDe
  */
-$wgDismissableSiteNoticeMessages['frp'] = array(
+$messages['frp'] = array(
 	'sitenotice_close' => 'cachiér',
 );
 
 /** Irish (Gaeilge)
  * @author SPQRobin
  */
-$wgDismissableSiteNoticeMessages['ga'] = array(
+$messages['ga'] = array(
 	'sitenotice_close' => 'díbh',
 );
 
-$wgDismissableSiteNoticeMessages['gl'] = array(
+$messages['gl'] = array(
 	'sitenotice_close' => 'retirar',
 );
 
-$wgDismissableSiteNoticeMessages['he'] = array(
+$messages['he'] = array(
 	'sitenotice_close' => 'הסתרה',
 );
 
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  */
-$wgDismissableSiteNoticeMessages['hr'] = array(
+$messages['hr'] = array(
 	'sitenotice_close' => 'sakrij',
 );
 
-$wgDismissableSiteNoticeMessages['hsb'] = array(
+$messages['hsb'] = array(
 	'sitenotice_close' => 'schować',
 );
 
-$wgDismissableSiteNoticeMessages['hu'] = array(
+$messages['hu'] = array(
 	'sitenotice_close' => 'elrejt',
 );
 
-$wgDismissableSiteNoticeMessages['hy'] = array(
+$messages['hy'] = array(
 	'sitenotice_close' => 'փակել',
 );
 
-$wgDismissableSiteNoticeMessages['id'] = array(
+$messages['id'] = array(
 	'sitenotice_close' => 'tutup',
 );
 
 /** Icelandic (Íslenska)
  * @author SPQRobin
  */
-$wgDismissableSiteNoticeMessages['is'] = array(
+$messages['is'] = array(
 	'sitenotice_close' => 'fela',
 );
 
-$wgDismissableSiteNoticeMessages['it'] = array(
+$messages['it'] = array(
 	'sitenotice_close' => 'nascondi',
 );
 
-$wgDismissableSiteNoticeMessages['ja'] = array(
+$messages['ja'] = array(
 	'sitenotice_close' => '非表示',
 );
 
-$wgDismissableSiteNoticeMessages['kk-cyrl'] = array(
+$messages['kk-cyrl'] = array(
 	'sitenotice_close' => 'тасалау',
 );
-$wgDismissableSiteNoticeMessages['kk-latn'] = array(
+
+$messages['kk-latn'] = array(
 	'sitenotice_close' => 'tasalaw',
 );
-$wgDismissableSiteNoticeMessages['kk-arab'] = array(
+
+$messages['kk-arab'] = array(
 	'sitenotice_close' => 'تاسالاۋ',
 );
-$wgDismissableSiteNoticeMessages['kk-kz'] = $wgDismissableSiteNoticeMessages['kk-cyrl'];
-$wgDismissableSiteNoticeMessages['kk-tr'] = $wgDismissableSiteNoticeMessages['kk-latn'];
-$wgDismissableSiteNoticeMessages['kk-cn'] = $wgDismissableSiteNoticeMessages['kk-arab'];
-$wgDismissableSiteNoticeMessages['kk'] = $wgDismissableSiteNoticeMessages['kk-cyrl'];
 
-$wgDismissableSiteNoticeMessages['lb'] = array(
+$messages['lb'] = array(
 	'sitenotice_close' => 'verstoppen',
 );
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  */
-$wgDismissableSiteNoticeMessages['li'] = array(
+$messages['li'] = array(
 	'sitenotice_close' => 'sloet',
 );
 
-$wgDismissableSiteNoticeMessages['lt'] = array(
+$messages['lt'] = array(
 	'sitenotice_close' => 'paslėpti',
 );
 
-$wgDismissableSiteNoticeMessages['nan'] = array(
+$messages['nan'] = array(
 	'sitenotice_close' => 'Chhú-siau',
 );
 
-$wgDismissableSiteNoticeMessages['nds'] = array(
+$messages['nds'] = array(
 	'sitenotice_close' => 'wegmaken',
 );
 
-$wgDismissableSiteNoticeMessages['nl'] = array(
+$messages['nl'] = array(
 	'sitenotice_close' => 'sluiten',
 );
 
-$wgDismissableSiteNoticeMessages['no'] = array(
+$messages['no'] = array(
 	'sitenotice_close' => 'lukk',
 );
 
-$wgDismissableSiteNoticeMessages['oc'] = array(
+$messages['oc'] = array(
 	'sitenotice_close' => 'amagar',
 );
 
-$wgDismissableSiteNoticeMessages['pl'] = array(
+$messages['pl'] = array(
 	'sitenotice_close' => 'ukryj',
 );
 
-$wgDismissableSiteNoticeMessages['pms'] = array(
+$messages['pms'] = array(
 	'sitenotice_close' => 'stërma',
 );
 
-$wgDismissableSiteNoticeMessages['pt'] = array(
+$messages['pt'] = array(
 	'sitenotice_close' => 'ignorar',
 );
 
-$wgDismissableSiteNoticeMessages['pt-br'] = $wgDismissableSiteNoticeMessages['pt'];
+$messages['pt-br'] = $messages['pt'];
 
-$wgDismissableSiteNoticeMessages['ro'] = array(
+$messages['ro'] = array(
 	'sitenotice_close' => 'ascunde',
 );
 
 /** Russian (Русский)
  * @author .:Ajvol:.
  */
-$wgDismissableSiteNoticeMessages['ru'] = array(
+$messages['ru'] = array(
 	'sitenotice_close' => 'скрыть',
 );
 
 /** Sassarese (Sassarese)
  * @author Felis
  */
-$wgDismissableSiteNoticeMessages['sdc'] = array(
+$messages['sdc'] = array(
 	'sitenotice_close' => 'cua',
 );
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-$wgDismissableSiteNoticeMessages['stq'] = array(
+$messages['stq'] = array(
 	'sitenotice_close' => 'Sluute',
 );
 
-$wgDismissableSiteNoticeMessages['sk'] = array(
+$messages['sk'] = array(
 	'sitenotice_close' => 'nezobrazovať',
 );
 
-$wgDismissableSiteNoticeMessages['sq'] = array(
+$messages['sq'] = array(
 	'sitenotice_close' => 'fshihe',
 );
 
-$wgDismissableSiteNoticeMessages['su'] = array(
+$messages['su'] = array(
 	'sitenotice_close' => 'bubarkeun',
 );
 
-$wgDismissableSiteNoticeMessages['sv'] = array(
+$messages['sv'] = array(
 	'sitenotice_close' => 'dölj',
 );
-$wgDismissableSiteNoticeMessages['tet'] = array(
+
+$messages['tet'] = array(
 	'sitenotice_close' => 'subar',
 );
-$wgDismissableSiteNoticeMessages['ur'] = array(
+
+$messages['ur'] = array(
 	'sitenotice_close' => 'ترک',
 );
-$wgDismissableSiteNoticeMessages['yue'] = array(
+
+$messages['yue'] = array(
 	'sitenotice_close' => '閂咗佢',
 );
-$wgDismissableSiteNoticeMessages['zh-classical'] = array(
+
+$messages['zh-classical'] = array(
 	'sitenotice_close' => '關',
 );
-$wgDismissableSiteNoticeMessages['zh-hans'] = array(
+
+$messages['zh-hans'] = array(
 	'sitenotice_close' => '关闭',
 );
-$wgDismissableSiteNoticeMessages['zh-hant'] = array(
+
+$messages['zh-hant'] = array(
 	'sitenotice_close' => '關閉',
 );
 
-# Kazakh fallback
-$wgDismissableSiteNoticeMessages['kk-kz'] = $wgDismissableSiteNoticeMessages['kk-cyrl'];
-$wgDismissableSiteNoticeMessages['kk-tr'] = $wgDismissableSiteNoticeMessages['kk-latn'];
-$wgDismissableSiteNoticeMessages['kk-cn'] = $wgDismissableSiteNoticeMessages['kk-arab'];
-$wgDismissableSiteNoticeMessages['kk'] = $wgDismissableSiteNoticeMessages['kk-cyrl'];
-
-# Chinese fallback
-$wgDismissableSiteNoticeMessages['zh'] = $wgDismissableSiteNoticeMessages['zh-hans'];
-$wgDismissableSiteNoticeMessages['zh-cn'] = $wgDismissableSiteNoticeMessages['zh-hans'];
-$wgDismissableSiteNoticeMessages['zh-hk'] = $wgDismissableSiteNoticeMessages['zh-hant'];
-$wgDismissableSiteNoticeMessages['zh-min-nan'] = $wgDismissableSiteNoticeMessages['nan'];
-$wgDismissableSiteNoticeMessages['zh-sg'] = $wgDismissableSiteNoticeMessages['zh-hans'];
-$wgDismissableSiteNoticeMessages['zh-hk'] = $wgDismissableSiteNoticeMessages['zh-hant'];
-$wgDismissableSiteNoticeMessages['zh-yue'] = $wgDismissableSiteNoticeMessages['yue'];
+$messages['kk'] = $messages['kk-cyrl'];
+$messages['kk-cn'] = $messages['kk-arab'];
+$messages['kk-kz'] = $messages['kk-cyrl'];
+$messages['kk-tr'] = $messages['kk-latn'];
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-min-nan'] = $messages['nan'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-yue'] = $messages['yue'];

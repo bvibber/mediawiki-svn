@@ -2,19 +2,22 @@
 
 $wgExtensionCredits['other'][] = array(
         'name' => 'DismissableSiteNotice',
+        'version' => '2008-01-09',
         'author' => 'Brion Vibber',
-        'description' => 'Allows users to close the sitenotice.'
+        'description' => 'Allows users to close the sitenotice.',
+        'url' => 'http://www.mediawiki.org/wiki/Extension:DismissableSiteNotice',
 );
+
+$wgExtensionMessagesFiles['DismissableSiteNotice'] = dirname(__FILE__) . '/DismissableSiteNotice.i18n.php';
 
 function wfDismissableSiteNotice( &$notice ) {
 	global $wgMajorSiteNoticeID, $wgUser;
-	
+
 	if ( !$notice ) {
 		return true;
 	}
 
-
-	wfInitSiteNoticeMessage();
+	wfLoadExtensionMessages( 'DismissableSiteNotice' );
 	$encNotice = Xml::escapeJsString($notice);
 	$encClose = Xml::escapeJsString( wfMsg( 'sitenotice_close' ) );
 	$id = intval( $wgMajorSiteNoticeID ) . "." . intval( wfMsgForContent( 'sitenotice_id' ) );
@@ -81,20 +84,6 @@ EOT;
 	return true;
 }
 
-function wfInitSiteNoticeMessage() {
-	global $wgMessageCache, $wgDismissableSiteNoticeMessages;
-	foreach( $wgDismissableSiteNoticeMessages as $key => $value ) {
-		$wgMessageCache->addMessages( $wgDismissableSiteNoticeMessages[$key], $key );
-	}
-	return true;
-}
-
-# Internationalisation file
-require_once( 'DismissableSiteNotice.i18n.php' );
-
 $wgHooks['SiteNoticeAfter'][] = 'wfDismissableSiteNotice';
-$wgHooks['LoadAllMessages'][] = 'wfInitSiteNoticeMessage';
 
 $wgMajorSiteNoticeID = 1;
-
-
