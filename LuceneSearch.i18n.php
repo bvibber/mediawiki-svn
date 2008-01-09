@@ -963,13 +963,17 @@ Ye can rake the wiki wi an ootside rake service:',
 	'searchincategory'      => 'incategory',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ * @author Robbot
+ */
 $wgLuceneSearchMessages['sk'] = array(
 	'searchnumber'          => '<strong>Výsledky $1-$2 zo $3</strong>',
-	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Späť</span>',
-	'searchnext'            => '<span style=\'font-size: small\'>Ďalej</span> &#x00BB;',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Späť</span>",
+	'searchnext'            => "<span style='font-size: small'>Ďalej</span> &#x00BB;",
 	'lucene-searchscore'    => 'Relevantnosť: $1%',
 	'lucene-resultsize'     => '$1 ($2 slov)',
-	'searchdidyoumean'      => 'Mali ste na mysli: "<a href="$1">$2</a>"?',
+	'searchdidyoumean'      => 'Mali ste na mysli: „<a href="$1">$2</a>“?',
 	'searchnoresults'       => 'Ľutujeme, vyhľadávanie nevrátilo na vašu požiadavku žiadne presné výsledky.',
 	'searchnearmatches'     => '<b>Tieto stránky majú názvy podobné vašej požiadavke:</b>',
 	'lucenepowersearchtext' => 'Vyhľadávanie v menných priestoroch: $1 Hľadanie $3 $9',
