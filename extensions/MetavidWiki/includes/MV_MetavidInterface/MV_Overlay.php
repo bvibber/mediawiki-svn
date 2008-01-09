@@ -765,10 +765,10 @@ class mvd_pageObj{
 	
 }
 function mvParsePropertiesCallback($maches){
-	global $mvMatchesSST, $mv_smw_tag_arry;
+	global $mvMatchesSST, $mv_smw_tag_arry;	
 	$mv_smw_tag_arry[$maches[2]]=$maches[3];
+	//@@todo not all semantic tags need not be striped
 	//replace the semantic tag with an empty string:
-	//@@todo other semantic tags need not be striped
 	return '';
 }
 ?>

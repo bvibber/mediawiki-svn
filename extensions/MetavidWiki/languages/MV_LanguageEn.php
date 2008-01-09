@@ -25,8 +25,8 @@ class MV_LanguageEn {
 	'mv_missing_stream' => 'Missing Stream: $1',
 	
 	#stream/files key descriptions: 
-	'mv_ogg_low_quality'=>'Web Stremable ogg theora, hosted by metavid',
-	'mv_ogg_high_quality'=>'High Quality ogg theora, hosted by metavid',
+	'mv_ogg_low_quality'=>'Web Stremable ogg theora, hosted on metavid',
+	'mv_ogg_high_quality'=>'High Quality ogg theora, hosted on metavid',
 	'mv_archive_org_link'=>'Links into Archive.org mpeg2 originals',
 	
 	'mv_error_stream_missing'=>'<span class="error">Error: There is no video stream associated with this metadata.</span><br> Please report this to the site adimistrator.<br> <i>stream metadata interface is disabled</i>',
@@ -45,7 +45,13 @@ class MV_LanguageEn {
 	'mv_path_type_wiki_title'=>'wiki media title',
 	'mv_path_type_label'=>'path type',
 	'mv_base_offset_label'=>'base offset',
+	'mv_duration_label'=>'duration',
 	'mv_file_desc_label'=>'stream desc msg',
+	'mv_delete_stream_file'=>'delete stream file reference',
+	'mv_save_changes'=>'Save Changes',
+	'mv_file_with_same_desc'=>'Error: stream file with same description key <i>$1</i> already present',
+	'mv_updated_stream_files'=>'Updated Stream Files Record',
+	'mv_removed_file_stream'=>'Removed Stream file: $1',
 
 	'mv_add_stream_file'=>'Add Stream File',
 	'mv_media_path'=>'media path',

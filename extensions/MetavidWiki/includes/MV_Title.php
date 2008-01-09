@@ -202,7 +202,7 @@
 	 * (for now using anx)
 	 */
 	function getWebStreamURL(){
-		global $mvStreamFiles, $mvVideoArchivePaths, $mvDefaultVideoQualityId;
+		global $mvStreamFilesTable, $mvVideoArchivePaths, $mvDefaultVideoQualityId;
 		//@@todo mediawiki path for media (insted of hard link to $mvVideoArchive)
 		//@@todo make sure file exisits
 		$anx_req='';
@@ -212,7 +212,7 @@
 		if( $this->doesStreamExists() ){			
 			//@@todo cache this:
 			$dbr = & wfGetDB(DB_READ);
-			$result = $dbr->select($dbr->tableName($mvStreamFiles), array('path'), array (			
+			$result = $dbr->select($dbr->tableName($mvStreamFilesTable), array('path'), array (			
 				'stream_id' => $this->mvStream->id,
 				'file_desc_msg'=>$mvDefaultVideoQualityId
 			));

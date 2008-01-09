@@ -353,7 +353,7 @@ class MV_StreamImage{
 	}
 
 	function getLocalStreamPath ($stream_id, $quality='') {
-		global $mvStreamFiles, $mvStreamTable, $mvLocalVideoLoc;
+		global $mvStreamTable, $mvLocalVideoLoc;
 		//grab streamFile		
 		$stream =& mvGetMVStream(array('id'=>$stream_id));
 		$stream->db_load_stream();

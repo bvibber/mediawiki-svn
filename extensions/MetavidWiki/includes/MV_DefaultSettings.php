@@ -94,7 +94,7 @@ define('MV_MISSING_PERSON_IMG','Missing person.jpg');
 # the metavid table names:
 #######
 $mvStreamTable 		= 'mv_streams';
-$mvStreamFiles 		= 'mv_stream_files';
+$mvStreamFilesTable	= 'mv_stream_files';
 $mvIndexTableName 	= 'mv_mvd_index';
 $mvStreamImageTable = 'mv_stream_images';
 $mvUrlCacheTable 	= 'mv_url_cache';

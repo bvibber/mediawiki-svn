@@ -21,33 +21,67 @@
  	var $base_offset='';//base offset from the stream  date_start_time
  	var $duration='';	//duration of clip.
  	var $file_desc_msg='';
+ 	var $path_type ='';
+ 	var $id = '';
  	var $path='';
+ 	var $_parent_stream=null;
  	
  	function __construct(&$parent_stream, $initRow=''){
- 		$this->parent_stream =& $parent_stream;
+ 		$this->_parent_stream =& $parent_stream;
  		//no init val.. popluate from db 		 	
- 		if($this->parent_stream && $initRow==''){
+ 		if($this->_parent_stream && $initRow==''){
  			$this->getStreamFileDB();
  		}else{		 
  			//populate from the initRow obj
 			if (is_object($initRow))
 				$initRow = get_object_vars($initRow);
 			if (is_array($initRow)) {
-				foreach ($initRow as $key => $val) {
-					//make sure the key exisit and is not private
-					if (isset ($this-> $key) && $key[0] != '_') {
-						$this->$key = $val;
-					}
-				}
+				$this->updateValues($initRow);				
 			}
  		}
  	}
+ 	function updateValues($initRow){
+		foreach ($initRow as $key => $val) {			
+			//make sure the key exisit and is not private
+			if (isset ($this-> $key) && $key[0] != '_') {
+				$this->$key = $val;
+			}
+		}
+ 	}
+ 	function deleteStreamFileDB(){
+ 		global $mvStreamFilesTable;
+ 		$dbw = & wfGetDB(DB_WRITE);
+ 		$dbw->delete($mvStreamFilesTable, array('id'=>$this->id));
+ 	}
+ 	function writeStreamFileDB(){
+ 		global $mvStreamFilesTable;
+ 		$dbw = & wfGetDB(DB_WRITE); 	
+ 		if($this->id==''){
+			$dbw->insert($mvStreamFilesTable, array(
+				'stream_id'=>$this->stream_id,
+				'base_offset'=>$this->base_offset,
+				'duration'=>$this->duration,
+				'file_desc_msg'=>$this->file_desc_msg,
+				'path_type'=>$this->path_type,
+				'path'=>$this->path
+			), __METHOD__);
+ 		}else{
+ 			//udpate: 
+ 			$dbw->update($mvStreamFilesTable, array(				
+				'base_offset'=>$this->base_offset,
+				'duration'=>$this->duration,
+				'file_desc_msg'=>$this->file_desc_msg,
+				'path_type'=>$this->path_type,
+				'path'=>$this->path
+			), array('id'=>$this->id), __METHOD__);
+ 		}
+ 	}
  	function getStreamFileDB($quality=null){
-		global $mvDefaultVideoQualityId, $mvStreamFiles;
+		global $mvDefaultVideoQualityId, $mvStreamFilesTable;
 		if($quality==null)$quality=$mvDefaultVideoQualityId;
 		$dbr = & wfGetDB(DB_READ);
-		$result = $dbr->select($dbr->tableName($mvStreamFiles), array('path'), array (			
-			'stream_id' => $this->parent_stream->getStreamId(),
+		$result = $dbr->select($dbr->tableName($mvStreamFilesTable), array('path'), array (			
+			'stream_id' => $this->_parent_stream->getStreamId(),
 			'file_desc_msg'=>$quality
 		));
 		$row  =$dbr->fetchObject($result);
@@ -65,16 +99,16 @@
 		if($quality==null)$quality=$mvDefaultVideoQualityId;
 		
 		if(!is_dir($mvLocalVideoLoc))return null;
-		if(!is_file($mvLocalVideoLoc . $this->parent_stream->getStreamName() ))return null;
+		if(!is_file($mvLocalVideoLoc . $this->_parent_stream->getStreamName() ))return null;
 		//all looks good return: 		
-		return $mvLocalVideoLoc . $this->parent_stream->getStreamName();		
+		return $mvLocalVideoLoc . $this->_parent_stream->getStreamName();		
 	}
  	/*
  	 * returns the path with {sn} replaced with stream name if present
  	 */
  	function getPath(){
  		return $this->path;
- 		//return str_replace('{sn}',$this->parent_stream->name, $this->path);
+ 		//return str_replace('{sn}',$this->_parent_stream->name, $this->path);
  	}
  	function get_link(){ 		
  		global $mvVideoArchivePaths;

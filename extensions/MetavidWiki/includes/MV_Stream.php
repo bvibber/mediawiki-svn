@@ -103,9 +103,9 @@ class MV_Stream {
 	 * returns a list of files from the mv_stream_files table
 	 */
 	function getFileList(){
-		global $mvStreamFiles;
+		global $mvStreamFilesTable;
 		$dbr = & wfGetDB(DB_READ);
-		$result = $dbr->select($dbr->tableName($mvStreamFiles), '*', array (
+		$result = $dbr->select($dbr->tableName($mvStreamFilesTable), '*', array (
 			'stream_id' => $this->id
 		));
 		//print_r($result);		
