@@ -4,24 +4,20 @@ if (!defined('MEDIAWIKI')) {
 	die( 1 );
 }
 
-# Add messages
-global $wgMessageCache, $wgFilepathMessages;
-foreach( $wgFilepathMessages as $key => $value ) {
-	$wgMessageCache->addMessages( $wgFilepathMessages[$key], $key );
-}
-
 class SpecialFilepath extends SpecialPage {
 	function SpecialFilepath() {
 		SpecialPage::SpecialPage( 'Filepath' );
 	}
-	
+
 	function execute( $par ) {
 		global $wgRequest, $wgOut;
 
+		wfLoadExtensionMessages( 'Filepath' );
+
 		$file = isset( $par ) ? $par : $wgRequest->getText( 'file' );
-		
+
 		$title = Title::makeTitleSafe( NS_IMAGE, $file );
-		
+
 		if ( is_null( $title ) ) {
 			$this->setHeaders();
 			$this->outputHeader();
@@ -44,11 +40,11 @@ class SpecialFilepath extends SpecialPage {
 
 class FilepathForm {
 	var $mTitle;
-	
+
 	function FilepathForm( &$title ) {
 		$this->mTitle =& $title;
 	}
-	
+
 	function execute() {
 		global $wgOut, $wgTitle, $wgScript;
 
@@ -86,7 +82,4 @@ class FilepathForm {
 			wfCloseElement( 'form' )
 		);
 	}
-
 }
-
-
