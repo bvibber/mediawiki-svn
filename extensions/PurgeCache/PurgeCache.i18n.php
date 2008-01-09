@@ -1,7 +1,9 @@
 <?php
-
-/*Internationalization file of Purge cache extension
- Created by Bertrand GRONDIN
+/**
+ * Internationalisation file for extension PurgeCache.
+ *
+ * @addtogroup Extensions
+ * @author Bertrand GRONDIN
 */
 
 $messages = array();
@@ -19,4 +21,3 @@ $messages['fr'] = array(
 	'purgecache-purged' => 'Le cache a été purgé.',
 	'purgecache-button' => 'Purger',
 );
-
