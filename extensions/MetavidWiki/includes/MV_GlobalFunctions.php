@@ -7,6 +7,7 @@
  * 
  */
 define('MV_VERSION','0.1 (pre alpha)');
+
 if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 /**
  * Switch on Metavid MediaWiki. This function must be called in LocalSettings.php
@@ -18,6 +19,10 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 if ( !function_exists( 'extAddSpecialPage' ) ) {
       require_once( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 }
+
+$wgExtensionMessagesFiles['MetavidWiki'] =$mvgIP . '/languages/MV_Messages.php';
+require_once($mvgIP . '/languages/MV_Language.php');
+
 
 //setup autoload classes: 
 $wgAutoloadClasses['MV_Overlay'] = dirname(__FILE__)  . '/MV_MetavidInterface/MV_Overlay.php';
@@ -180,9 +185,6 @@ function mvInitNamespaces() {
 			$mvNamespaceIndex = 100;
 	}
 
-
-	mvfInitContentLanguage($wgLanguageCode);
-
 	//register the namespace:MVD & Metavid
 	define('MV_NS_STREAM',			$mvNamespaceIndex);
 	define('MV_NS_STREAM_TALK',		$mvNamespaceIndex+1);
@@ -191,10 +193,13 @@ function mvInitNamespaces() {
 	define('MV_NS_MVD', 			$mvNamespaceIndex+4);
 	define('MV_NS_MVD_TALK', 		$mvNamespaceIndex+5);
 	
+	mvfInitContentLanguage($wgLanguageCode);
+		
+	//print_r($mvgContLang);
+	//print_r($mvgContLang->getNamespaces());
 	// Register namespace identifiers
-	if (!is_array($wgExtraNamespaces)) { $wgExtraNamespaces=array(); }
-	$wgExtraNamespaces = $wgExtraNamespaces + $mvgContLang->getNamespaceArray();
-
+	if (!is_array($wgExtraNamespaces)) { $wgExtraNamespaces=array(); }	
+	$wgExtraNamespaces = $wgExtraNamespaces + $mvgContLang->getNamespaces();	
 	//update the mvLastNamespaceIndex for however many name spaces are established above: 
 	$mvLastNamespaceIndex =  $mvNamespaceIndex +6;
 }
@@ -218,12 +223,13 @@ function mvfInitContentLanguage($langcode) {
 
 	if (file_exists($mvgIP . '/languages/'. $mvContLangClass . '.php')) {
 		include_once( $mvgIP . '/languages/'. $mvContLangClass . '.php' );
+		//print "included: " . $mvgIP . '/languages/'. $mvContLangClass . '.php';
 	}
 
 	// fallback if language not supported
 	if ( !class_exists($mvContLangClass)) {
 		include_once($mvgIP . '/languages/MV_LanguageEn.php');
-		$mvContLangClass = 'SMW_LanguageEn';
+		$mvContLangClass = 'MV_LanguageEn';
 	}
 
 	$mvgContLang = new $mvContLangClass();
@@ -244,7 +250,6 @@ function mvfInitUserLanguage($langcode) {
 	if (file_exists($mvgIP . '/languages/'. $mvLangClass . '.php')) {
 		include_once( $mvgIP . '/languages/'. $mvLangClass . '.php' );
 	}
-
 	// fallback if language not supported
 	if ( !class_exists($mvLangClass)) {
 		global $mvgContLang;
@@ -253,27 +258,35 @@ function mvfInitUserLanguage($langcode) {
 		$mvgLang = new $mvLangClass();
 	}
 }
-
 /**
- * Initialize messages. These settings must be applied later on, since
+ * Initialize messages - these settings must be applied later on, since
  * the MessageCache does not exist yet when the settings are loaded in
  * LocalSettings.php.
+ * Function based on version in ContributionScores extension
  */
 function mvfInitMessages() {
-	global $mvgMessagesInPlace; // record whether the function was already called
-	if ($mvgMessagesInPlace) { return; }
-
-	global $wgMessageCache, $mvgContLang, $mvgLang, $wgContLang, $wgLang;
-	// make sure that language objects exist
-	mvfInitContentLanguage($wgContLang->getCode());
-	mvfInitUserLanguage($wgLang->getCode());
-
-	$wgMessageCache->addMessages($mvgContLang->getContentMsgArray(), $wgContLang->getCode());
-	$wgMessageCache->addMessages($mvgLang->getUserMsgArray(), $wgLang->getCode());
-
-	$mvgMessagesInPlace = true;
+	global $wgVersion, $wgExtensionFunctions;
+	if (version_compare($wgVersion, '1.11', '>=' )) {
+		wfLoadExtensionMessages( 'MetavidWiki' );
+	} else {
+		$wgExtensionFunctions[] = 'sffLoadMessagesManually';
+	}
 }
 
+/**
+ * Setting of message cache for versions of MediaWiki that do not support
+ * wgExtensionFunctions - based on ceContributionScores() in
+ * ContributionScores extension
+ */
+function sffLoadMessagesManually() {
+	global $mvgIP, $wgMessageCache;
+
+	# add messages
+	require($mvgIP . '/languages/MV_Messages.php');
+	foreach($messages as $key => $value) {
+		$wgMessageCache->addMessages($messages[$key], $key);
+	}
+}
 /*
  * Ajax Hooks 
  */

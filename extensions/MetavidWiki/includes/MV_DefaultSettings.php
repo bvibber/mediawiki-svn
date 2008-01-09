@@ -115,10 +115,10 @@ $mvDo_SQL_CALC_FOUND_ROWS = true;
 #			[metavid_live] -- used for the setting up the scripts for a live stream. 
 #			[upload_file]	-- used video file uploads 
 #			[external_file] -- used to add external files via http urls (such as a file from archive.org)
-//$mvStreamTypePermission['metavid_file']= array('sysop', 'bot');
-//$mvStreamTypePermission['metavid_live']= array();
-//$mvStreamTypePermission['upload_file']= array();
-//$mvStreamTypePermission['external_file']=array();
+$mvStreamTypePermission['metavid_file']= array('sysop', 'bot');
+$mvStreamTypePermission['metavid_live']= array();
+$mvStreamTypePermission['upload_file']= array();
+$mvStreamTypePermission['external_file']=array();
 
 $wgGroupPermissions['user']['mv_delete_mvd'] = true;
 $wgGroupPermissions['sysop']['mv_edit_stream']=true;
