@@ -1,14 +1,14 @@
 <?php
 /**
- * Internationalisation file for LinkSearch extension.
+ * Internationalisation file for extension LinkSearch.
  *
  * @package MediaWiki
  * @subpackage Extensions
-*/
+ */
 
-$wgLinkSearchMessages = array();
+$messages = array();
 
-$wgLinkSearchMessages['en'] = array(
+$messages['en'] = array(
 	'linksearch'       => 'Search web links',
 	'linksearch-pat'   => 'Search pattern:',
 	'linksearch-ns'    => 'Namespace:',
@@ -18,11 +18,11 @@ $wgLinkSearchMessages['en'] = array(
 	'linksearch-error' => 'Wildcards may appear only at the start of the hostname.',
 );
 
-$wgLinkSearchMessages['af'] = array(
+$messages['af'] = array(
 	'linksearch'       => 'Soek webskakels',
 );
 
-$wgLinkSearchMessages['ar'] = array(
+$messages['ar'] = array(
 	'linksearch'       => 'بحث وصلات الويب',
 	'linksearch-pat'   => 'نمط البحث:',
 	'linksearch-ns'    => 'النطاق:',
@@ -35,16 +35,16 @@ $wgLinkSearchMessages['ar'] = array(
 /** Asturian (Asturianu)
  * @author SPQRobin
  */
-$wgLinkSearchMessages['ast'] = array(
+$messages['ast'] = array(
 	'linksearch' => 'Buscar enllaces web',
 );
 
-$wgLinkSearchMessages['bcl'] = array(
+$messages['bcl'] = array(
 	'linksearch-ok'    => 'Hanápon',
 	'linksearch-line'  => '$1 an nakatakod sa $2',
 );
 
-$wgLinkSearchMessages['bg'] = array(
+$messages['bg'] = array(
 	'linksearch'       => 'Търсене на външни препратки',
 	'linksearch-pat'   => 'Търсене по:',
 	'linksearch-ns'    => 'Именно пространство:',
@@ -57,27 +57,27 @@ $wgLinkSearchMessages['bg'] = array(
 /** Breton (Brezhoneg)
  * @author Fulup
  */
-$wgLinkSearchMessages['br'] = array(
+$messages['br'] = array(
 	'linksearch-ok' => 'Klask',
 );
 
-$wgLinkSearchMessages['cdo'] = array(
+$messages['cdo'] = array(
 	'linksearch-ok'    => 'Sìng-tō̤',
 );
 
-$wgLinkSearchMessages['co'] = array(
+$messages['co'] = array(
 	'linksearch-ns'    => 'Spaziu:',
 	'linksearch-ok'    => 'Ricerca',
 );
 
-$wgLinkSearchMessages['cs'] = array(
+$messages['cs'] = array(
 	'linksearch'       => 'Hledání externích odkazů',
 	'linksearch-text'  => 'Lze používat zástupné znaky, např. „*.wikipedia.org“.',
 	'linksearch-line'  => '$2 odkazuje na $1',
 	'linksearch-error' => 'Zástupné znaky lze použít jen na začátku doménového jména.',
 );
 
-$wgLinkSearchMessages['de'] = array(
+$messages['de'] = array(
 	'linksearch'       => 'Weblink-Suche',
 	'linksearch-pat'   => 'Suchmuster:',
 	'linksearch-ns'    => 'Namensraum:',
@@ -87,11 +87,11 @@ $wgLinkSearchMessages['de'] = array(
 	'linksearch-error' => 'Wildcards können nur am Anfang der URL verwendet werden.',
 );
 
-$wgLinkSearchMessages['el'] = array(
+$messages['el'] = array(
 	'linksearch-ok'    => 'Αναζήτηση',
 );
 
-$wgLinkSearchMessages['es'] = array(
+$messages['es'] = array(
 	'linksearch'       => 'Buscar enlaces a páginas web',
 	'linksearch-pat'   => 'Patrón de búsqueda:',
 	'linksearch-ns'    => 'Nombre de espacio:',
@@ -100,12 +100,12 @@ $wgLinkSearchMessages['es'] = array(
 	'linksearch-error' => 'Los comodines sólo pueden aparecer al principio del nombre de sitio.',
 );
 
-$wgLinkSearchMessages['ext'] = array(
+$messages['ext'] = array(
 	'linksearch-ok'    => 'Landeal',
 );
 
 # فارسی (Huji)
-$wgLinkSearchMessages['fa'] = array(
+$messages['fa'] = array(
 	'linksearch'       => 'جستجوی پیوندهای وب',
 	'linksearch-pat'   => 'جستجوی الگو:',
 	'linksearch-ns'    => 'فضای نام:',
@@ -116,7 +116,7 @@ $wgLinkSearchMessages['fa'] = array(
 
 );
 
-$wgLinkSearchMessages['fi'] = array(
+$messages['fi'] = array(
 	'linksearch'       => 'Etsi ulkoisia linkkejä',
 	'linksearch-pat'   => 'Osoite',
 	'linksearch-ns'    => 'Nimiavaruus',
@@ -125,11 +125,12 @@ $wgLinkSearchMessages['fi'] = array(
 	'linksearch-line'  => '$1 on linkitetty sivulta $2',
 	'linksearch-error' => 'Jokerimerkkiä voi käyttää ainoastaan osoitteen alussa.',
 );
-$wgLinkSearchMessages['fo'] = array(
+
+$messages['fo'] = array(
 	'linksearch-ns'    => 'Navnarúm:',
 );
 
-$wgLinkSearchMessages['fr'] = array(
+$messages['fr'] = array(
 	'linksearch'       => 'Rechercher des liens Internet',
 	'linksearch-pat'   => 'Rechercher l’expression :',
 	'linksearch-ns'    => 'Espace de noms :',
@@ -142,7 +143,7 @@ $wgLinkSearchMessages['fr'] = array(
 /** Franco-Provençal (Arpetan)
  * @author ChrisPtDe
  */
-$wgLinkSearchMessages['frp'] = array(
+$messages['frp'] = array(
 	'linksearch'       => 'Rechèrchiér des lims Malyâjo',
 	'linksearch-pat'   => 'Rechèrchiér l’èxprèssion :',
 	'linksearch-ns'    => 'Èspâço de nom :',
@@ -152,7 +153,7 @@ $wgLinkSearchMessages['frp'] = array(
 	'linksearch-error' => 'Los caractèros « j·oquèr » pôvont étre utilisâs ren qu’u comencement du nom de domêno.',
 );
 
-$wgLinkSearchMessages['gl'] = array(
+$messages['gl'] = array(
 	'linksearch'       => 'Buscar ligazóns web',
 	'linksearch-pat'   => 'Patrón de procura:',
 	'linksearch-ns'    => 'Espazo de nomes:',
@@ -162,16 +163,16 @@ $wgLinkSearchMessages['gl'] = array(
 	'linksearch-error' => 'Os comodíns só poden aparecer ao principio do nome do servidor.',
 );
 
-$wgLinkSearchMessages['grc'] = array(
+$messages['grc'] = array(
 	'linksearch-ok'    => 'Ζητεῖν',
 );
 
 /** Gujarati (ગુજરાતી) */
-$wgLinkSearchMessages['gu'] = array(
+$messages['gu'] = array(
 	'linksearch-ok' => 'શોધ',
 );
 
-$wgLinkSearchMessages['he'] = array(
+$messages['he'] = array(
 	'linksearch'       => 'חיפוש קישורים חיצוניים',
 	'linksearch-pat'   => 'קישור לחיפוש:',
 	'linksearch-ns'    => 'מרחב שם:',
@@ -181,7 +182,7 @@ $wgLinkSearchMessages['he'] = array(
 	'linksearch-error' => 'תווים כלליים יכולים להופיע רק בתחילת שם השרת.',
 );
 
-$wgLinkSearchMessages['hr'] = array(
+$messages['hr'] = array(
 	'linksearch'       => 'Pretraživanje poveznica (s članaka na wikiju)',
 	'linksearch-pat'   => 'Uzorak traženja:',
 	'linksearch-ns'    => 'Imenski prostor:',
@@ -190,7 +191,8 @@ $wgLinkSearchMessages['hr'] = array(
 	'linksearch-line'  => '$1 poveznica s članka $2',
 	'linksearch-error' => 'Džoker znakovi se mogu rabiti samo na početku imena poslužitelja.',
 );
-$wgLinkSearchMessages['hsb'] = array(
+
+$messages['hsb'] = array(
 	'linksearch'       => 'Pytanje eksternych wotkazow',
 	'linksearch-pat'   => 'Pytanski muster:',
 	'linksearch-ns'    => 'Mjenowy rum:',
@@ -203,7 +205,7 @@ $wgLinkSearchMessages['hsb'] = array(
 /** Hungarian (Magyar)
  * @author Bdanee
  */
-$wgLinkSearchMessages['hu'] = array(
+$messages['hu'] = array(
 	'linksearch'       => 'Keresés külső hivatkozások szerint',
 	'linksearch-pat'   => 'Keresett minta:',
 	'linksearch-ns'    => 'Névtér:',
@@ -214,7 +216,7 @@ $wgLinkSearchMessages['hu'] = array(
 
 );
 
-$wgLinkSearchMessages['id'] = array(
+$messages['id'] = array(
 	'linksearch'       => 'Pencarian pranala luar',
 	'linksearch-pat'   => 'Pola pencarian:',
 	'linksearch-ns'    => 'Ruang nama:',
@@ -228,7 +230,7 @@ $wgLinkSearchMessages['id'] = array(
  * @author SPQRobin
  * @author Spacebirdy
  */
-$wgLinkSearchMessages['is'] = array(
+$messages['is'] = array(
 	'linksearch'    => 'Leita að vefföngum',
 	'linksearch-ok' => 'Leita',
 );
@@ -237,7 +239,7 @@ $wgLinkSearchMessages['is'] = array(
  * @author .anaconda
  * @author BrokenArrow
  */
-$wgLinkSearchMessages['it'] = array(
+$messages['it'] = array(
 	'linksearch'       => 'Ricerca collegamenti esterni',
 	'linksearch-pat'   => 'Pattern di ricerca:',
 	'linksearch-ns'    => 'Namespace:',
@@ -247,7 +249,7 @@ $wgLinkSearchMessages['it'] = array(
 	'linksearch-error' => "I metacaratteri possono essere usati solo all'inizio del nome dell'host.",
 );
 
-$wgLinkSearchMessages['ja'] = array(
+$messages['ja'] = array(
 	'linksearch'       => '外部リンクの検索',
 	'linksearch-pat'   => '検索パターン:',
 	'linksearch-ns'    => '名前空間:',
@@ -256,7 +258,8 @@ $wgLinkSearchMessages['ja'] = array(
 	'linksearch-line'  => '$1 が $2 からリンクされています',
 	'linksearch-error' => 'ワイルドカードはホスト名の先頭でのみ使用できます。',
 );
-$wgLinkSearchMessages['kk-cyrl'] = array(
+
+$messages['kk-cyrl'] = array(
 	'linksearch'       => 'Сыртқы сілтемелерді іздеу',
 	'linksearch-pat'   => 'Іздеу шарты:',
 	'linksearch-ns'    => 'Есім аясы:',
@@ -265,7 +268,8 @@ $wgLinkSearchMessages['kk-cyrl'] = array(
 	'linksearch-line'  => '$2 дегеннен $1 сілтеген',
 	'linksearch-error' => 'Бәдел нышандар тек сервер жайы атауының бастауында болуы мүмкін.',
 );
-$wgLinkSearchMessages['kk-latn'] = array(
+
+$messages['kk-latn'] = array(
 	'linksearch'       => 'Sırtqı siltemelerdi izdew',
 	'linksearch-pat'   => 'İzdew şartı:',
 	'linksearch-ns'    => 'Esim ayası:',
@@ -274,7 +278,8 @@ $wgLinkSearchMessages['kk-latn'] = array(
 	'linksearch-line'  => '$2 degennen $1 siltegen',
 	'linksearch-error' => 'Bädel nışandar tek server jaýı atawınıñ bastawında bolwı mümkin.',
 );
-$wgLinkSearchMessages['kk-arab'] = array(
+
+$messages['kk-arab'] = array(
 	'linksearch'       => 'سىرتقى سٸلتەمەلەردٸ ٸزدەۋ',
 	'linksearch-pat'   => 'ٸزدەۋ شارتى:',
 	'linksearch-ns'    => 'ەسٸم اياسى:',
@@ -284,7 +289,7 @@ $wgLinkSearchMessages['kk-arab'] = array(
 	'linksearch-error' => 'بٵدەل نىشاندار تەك سەرۆەر جايى اتاۋىنىڭ باستاۋىندا بولۋى مٷمكٸن.',
 );
 
-$wgLinkSearchMessages['la'] = array(
+$messages['la'] = array(
 	'linksearch'       => 'Quaerere nexus externos',
 	'linksearch-ns'    => 'Spatium nominale:',
 	'linksearch-ok'    => 'Quaerere',
@@ -293,7 +298,7 @@ $wgLinkSearchMessages['la'] = array(
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-$wgLinkSearchMessages['lb'] = array(
+$messages['lb'] = array(
 	'linksearch'      => 'Weblink-Sich',
 	'linksearch-ns'   => 'Nummraum:',
 	'linksearch-ok'   => 'Sichen',
@@ -303,12 +308,12 @@ $wgLinkSearchMessages['lb'] = array(
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  */
-$wgLinkSearchMessages['li'] = array(
+$messages['li'] = array(
 	'linksearch-ns' => 'Naamruumdje:',
 	'linksearch-ok' => 'Zeuk',
 );
 
-$wgLinkSearchMessages['lo'] = array(
+$messages['lo'] = array(
 	'linksearch'       => 'ຄົ້ນຫາການເຊື່ອມຕໍ່ຫາເວັບ',
 );
 
@@ -316,29 +321,29 @@ $wgLinkSearchMessages['lo'] = array(
  * @author Garas
  * @author Pdxx
  */
-$wgLinkSearchMessages['lt'] = array(
+$messages['lt'] = array(
 	'linksearch'    => 'Ieškoti interneto nuorodose',
 	'linksearch-ns' => 'Vardų sritis:',
 	'linksearch-ok' => 'Ieškoti',
 );
 
-$wgLinkSearchMessages['nan'] = array(
+$messages['nan'] = array(
 	'linksearch'       => 'Chhiau-chhoē chām-goā liân-kiat',
 );
 
-$wgLinkSearchMessages['nap'] = array(
+$messages['nap'] = array(
 	'linksearch-ok'    => 'Truova',
 );
 
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
-$wgLinkSearchMessages['nds'] = array(
+$messages['nds'] = array(
 	'linksearch-ns' => 'Naamruum:',
 	'linksearch-ok' => 'Söken',
 );
 
-$wgLinkSearchMessages['nl'] = array(
+$messages['nl'] = array(
 	'linksearch'       => 'Externe links zoeken',
 	'linksearch-pat'   => 'Zoekpatroon:',
 	'linksearch-ns'    => 'Naamruimte:',
@@ -348,7 +353,7 @@ $wgLinkSearchMessages['nl'] = array(
 	'linksearch-error' => 'Wildcards zijn alleen toegestaan aan het begin van een hostnaam.',
 );
 
-$wgLinkSearchMessages['no'] = array(
+$messages['no'] = array(
 	'linksearch'       => 'Søk i eksterne lenker',
 	'linksearch-pat'   => 'Søkemønster:',
 	'linksearch-ns'    => 'Navnerom:',
@@ -358,7 +363,7 @@ $wgLinkSearchMessages['no'] = array(
 	'linksearch-error' => 'Jokertegn kan kun brukes foran tjenernavnet.',
 );
 
-$wgLinkSearchMessages['oc'] = array(
+$messages['oc'] = array(
 	'linksearch'       => 'Recercar de ligams Internet',
 	'linksearch-pat'   => 'Recercar l’expression :',
 	'linksearch-ns'    => 'Espaci de noms :',
@@ -368,7 +373,7 @@ $wgLinkSearchMessages['oc'] = array(
 	'linksearch-error' => 'Los caractèrs « joker » pòdon pas èsser utilizats qu’al començament del nom de domeni.',
 );
 
-$wgLinkSearchMessages['pl'] = array(
+$messages['pl'] = array(
 	'linksearch'       => 'Szukanie linków zewnętrznych',
 	'linksearch-pat'   => 'Wzorzec wyszukiwania:',
 	'linksearch-ns'    => 'Przestrzeń nazw:',
@@ -378,7 +383,7 @@ $wgLinkSearchMessages['pl'] = array(
 	'linksearch-error' => 'Maski można użyć tylko na początku nazwy hosta.',
 );
 
-$wgLinkSearchMessages['pms'] = array(
+$messages['pms'] = array(
 	'linksearch'       => 'Sërchè antra j\'anliure dla Ragnà',
 	'linksearch-pat'   => 'Schema d\'arsërca:',
 	'linksearch-ns'    => 'Spassi nominal:',
@@ -388,7 +393,7 @@ $wgLinkSearchMessages['pms'] = array(
 	'linksearch-error' => 'Ij ciapatut as peulo butesse mach an prinsipi dël nòm dël servent.',
 );
 
-$wgLinkSearchMessages['pt'] = array(
+$messages['pt'] = array(
 	'linksearch'       => 'Procurar por links da web',
 	'linksearch-pat'   => 'Padrão de procura:',
 	'linksearch-ns'    => 'Espaço nominal:',
@@ -397,14 +402,12 @@ $wgLinkSearchMessages['pt'] = array(
 	'linksearch-line'  => '$1 está lincado em $2',
 	'linksearch-error' => '"Caracteres mágicos" (wildcards) podem ser utilizados apenas no início do endereço.',
 );
-// Brazillian portuguese inherits portuguese.
-$wgLinkSearchMessages['pt-br'] = $wgLinkSearchMessages['pt'];
 
-$wgLinkSearchMessages['rm'] = array(
+$messages['rm'] = array(
 	'linksearch-ok'    => 'Tschertgar',
 );
 
-$wgLinkSearchMessages['ru'] = array(
+$messages['ru'] = array(
 	'linksearch'       => 'Поиск внешних ссылок',
 	'linksearch-pat'   => 'Шаблон для поиска:',
 	'linksearch-ns'    => 'Пространство имён:',
@@ -417,7 +420,7 @@ $wgLinkSearchMessages['ru'] = array(
 /** Slovak (Slovenčina)
  * @author Helix84
  */
-$wgLinkSearchMessages['sk'] = array(
+$messages['sk'] = array(
 	'linksearch'       => 'Hľadať webové odkazy',
 	'linksearch-pat'   => 'Vyhľadávací vzor:',
 	'linksearch-ns'    => 'Menný priestor:',
@@ -427,7 +430,7 @@ $wgLinkSearchMessages['sk'] = array(
 	'linksearch-error' => 'Zástupné znaky je možné použiť iba na začiatku názvu domény.',
 );
 
-$wgLinkSearchMessages['sq'] = array(
+$messages['sq'] = array(
 	'linksearch'       => 'Kërkoni lidhje të jashtme',
 	'linksearch-error' => 'Ylli mund të përdoret vetëm në fillim të emrit',
 	'linksearch-ok'    => 'Kërko',
@@ -435,21 +438,21 @@ $wgLinkSearchMessages['sq'] = array(
 	'linksearch-text'  => 'Ylli zëvëndësues mund të përdoret si p.sh. "*.wikipedia.org".',
 );
 
-$wgLinkSearchMessages['sr'] = array(
+$messages['sr'] = array(
 	'linksearch'	   => 'Претрага интернет веза',
 	'linksearch-text'  => 'Џокери као што су "*.wikipedia.org" могу да се користе.',
 	'linksearch-line'  => '$1 повезана са $2',
 	'linksearch-error' => 'Џокери могу да се појављују само на почетку домена.'
 );
 
-$wgLinkSearchMessages['ss'] = array(
+$messages['ss'] = array(
 	'linksearch-ok'    => 'Kucálata',
 );
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-$wgLinkSearchMessages['stq'] = array(
+$messages['stq'] = array(
 	'linksearch'       => 'Webferbiendenge-Säike',
 	'linksearch-pat'   => 'Säikmuster:',
 	'linksearch-ns'    => 'Noomensruum:',
@@ -459,7 +462,7 @@ $wgLinkSearchMessages['stq'] = array(
 	'linksearch-error' => 'Wildcards konnen bloot an dän Ounfang fon ju URL ferwoand wäide.',
 );
 
-$wgLinkSearchMessages['sv'] = array(
+$messages['sv'] = array(
 	'linksearch'       => 'Sök webblänkar',
 	'linksearch-pat'   => 'Sökmönster:',
 	'linksearch-ns'    => 'Namnrymd:',
@@ -472,7 +475,7 @@ $wgLinkSearchMessages['sv'] = array(
 /** Tonga (faka-Tonga)
  * @author SPQRobin
  */
-$wgLinkSearchMessages['to'] = array(
+$messages['to'] = array(
 	'linksearch'       => 'Kumi ha ngaahi fehokotaki fakamatamatakupenga',
 	'linksearch-line'  => 'Kuo fehokotaki ʻa e $1 mei he $2',
 	'linksearch-error' => 'ʻOku ngofua pē ke ʻasi ha ngaahi lauʻifano ʻi he kamataʻanga ʻo e tauhia hono hingoa.',
@@ -481,12 +484,12 @@ $wgLinkSearchMessages['to'] = array(
 /** Volapük (Volapük)
  * @author Malafaya
  */
-$wgLinkSearchMessages['vo'] = array(
+$messages['vo'] = array(
 	'linksearch-ns' => 'Nemaspad:',
 	'linksearch-ok' => 'Suk',
 );
 
-$wgLinkSearchMessages['yue'] = array(
+$messages['yue'] = array(
 	'linksearch'       => '搵網頁連結',
 	'linksearch-pat'   => '搵嘅形態:',
 	'linksearch-ns'    => '空間名',
@@ -496,7 +499,7 @@ $wgLinkSearchMessages['yue'] = array(
 	'linksearch-error' => '萬用字元只可以響主機名嘅開頭度用。',
 );
 
-$wgLinkSearchMessages['zh-hans'] = array(
+$messages['zh-hans'] = array(
 	'linksearch'       => '搜索网页链接',
 	'linksearch-pat'   => '搜索网址:',
 	'linksearch-ns'    => '名字空间:',
@@ -506,7 +509,7 @@ $wgLinkSearchMessages['zh-hans'] = array(
 	'linksearch-error' => '通配符仅可在主机名称的开头使用。',
 );
 
-$wgLinkSearchMessages['zh-hant'] = array(
+$messages['zh-hant'] = array(
 	'linksearch'       => '搜尋網頁連結',
 	'linksearch-pat'   => '搜尋網址:',
 	'linksearch-ns'    => '名稱空間:',
@@ -516,17 +519,15 @@ $wgLinkSearchMessages['zh-hant'] = array(
 	'linksearch-error' => '萬用字元僅可在主機名稱的開頭使用。',
 );
 
-# Kazakh fallbacks
-$wgLinkSearchMessages['kk-kz'] = $wgLinkSearchMessages['kk-cyrl'];
-$wgLinkSearchMessages['kk-tr'] = $wgLinkSearchMessages['kk-latn'];
-$wgLinkSearchMessages['kk-cn'] = $wgLinkSearchMessages['kk-arab'];
-$wgLinkSearchMessages['kk'] = $wgLinkSearchMessages['kk-cyrl'];
-
-# Chinese fallbacks
-$wgLinkSearchMessages['zh'] = $wgLinkSearchMessages['zh-hans'];
-$wgLinkSearchMessages['zh-cn'] = $wgLinkSearchMessages['zh-hans'];
-$wgLinkSearchMessages['zh-hk'] = $wgLinkSearchMessages['zh-hant'];
-$wgLinkSearchMessages['zh-min-nan'] = $wgLinkSearchMessages['nan'];
-$wgLinkSearchMessages['zh-sg'] = $wgLinkSearchMessages['zh-hans'];
-$wgLinkSearchMessages['zh-tw'] = $wgLinkSearchMessages['zh-hant'];
-$wgLinkSearchMessages['zh-yue'] = $wgLinkSearchMessages['yue'];
+$messages['kk'] = $messages['kk-cyrl'];
+$messages['kk-cn'] = $messages['kk-arab'];
+$messages['kk-kz'] = $messages['kk-cyrl'];
+$messages['kk-tr'] = $messages['kk-latn'];
+$messages['pt-br'] = $messages['pt'];
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-min-nan'] = $messages['nan'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-tw'] = $messages['zh-hant'];
+$messages['zh-yue'] = $messages['yue'];

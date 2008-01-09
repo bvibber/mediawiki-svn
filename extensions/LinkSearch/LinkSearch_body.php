@@ -1,30 +1,16 @@
 <?php
 
-
 class LinkSearchSpecialPage extends SpecialPage {
-	function __construct() {
-		self::initMessages();
-		parent::__construct( 'Linksearch' );
+	public function __construct() {
+		SpecialPage::SpecialPage( 'Linksearch' );
 	}
-
-	static function initMessages() {
-		static $done = false;
-		if ( $done ) {
-			return true;
-		}
-		$done = true;
-		require_once( dirname(__FILE__).'/LinkSearch.i18n.php' );
-		global $wgMessageCache;
-		foreach( $wgLinkSearchMessages as $lang => $messages ) {
-			$wgMessageCache->addMessages( $messages, $lang );
-		}
-		return true;
-	}
-
-
 
 	function execute( $par ) {
+
+		wfLoadExtensionMessages( 'LinkSearch' );
+
 		$this->setHeaders();
+
 		list( $limit, $offset ) = wfCheckLimits();
 		global $wgOut, $wgRequest, $wgUrlProtocols, $wgMiserMode;
 		$target = $GLOBALS['wgRequest']->getVal( 'target', $par );
@@ -82,17 +68,12 @@ class LinkSearchSpecialPage extends SpecialPage {
 	}
 }
 
-
-
 class LinkSearchPage extends QueryPage {
+
 	function __construct( $query, $ns, $prot ) {
 		$this->mQuery = $query;
 		$this->mNs = $ns;
 		$this->mProt = $prot;
-	}
-
-	function getName() {
-		return 'Linksearch';
 	}
 
 	/**
@@ -177,4 +158,3 @@ class LinkSearchPage extends QueryPage {
 		return '';
 	}
 }
-

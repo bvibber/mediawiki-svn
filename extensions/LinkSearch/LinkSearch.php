@@ -11,13 +11,13 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Brion Vibber',
 	'description' => 'Find pages with external links matching specific patterns',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:LinkSearch',
-	'version' => '1.1',
+	'version' => '1.2',
 );
-$wgHooks['LoadAllMessages'][] = 'LinkSearchSpecialPage::initMessages';
 
-$wgSpecialPages['Linksearch'] = array( /*class*/ 'LinkSearchSpecialPage', 
-	/*name*/ 'Linksearch', /* permission */'', /*listed*/ true, 
+$wgExtensionMessagesFiles['LinkSearch'] = dirname(__FILE__) . '/LinkSearch.i18n.php';
+
+$wgSpecialPages['Linksearch'] = array( /*class*/ 'LinkSearchSpecialPage',
+	/*name*/ 'Linksearch', /* permission */'', /*listed*/ true,
 	/*function*/ false, /*file*/ false );
 $wgAutoloadClasses['LinkSearchPage'] = dirname(__FILE__) . '/LinkSearch_body.php';
 $wgAutoloadClasses['LinkSearchSpecialPage'] = dirname(__FILE__) . '/LinkSearch_body.php';
-
