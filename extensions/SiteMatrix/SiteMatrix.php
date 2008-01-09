@@ -10,11 +10,12 @@ if (!defined('MEDIAWIKI')) {
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'SiteMatrix',
+	'version' => '2008-01-09',
 	'description' => 'Displays a list of Wikimedia wikis',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:SiteMatrix',
 );
 
-# Internationalisation file
-require_once( dirname(__FILE__) . '/SiteMatrix.i18n.php' );
+$wgExtensionMessagesFiles['SiteMatrix'] = dirname(__FILE__) . '/SiteMatrix.i18n.php';
 
 if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
@@ -23,4 +24,3 @@ extAddSpecialPage( dirname(__FILE__) . '/SiteMatrix_body.php', 'SiteMatrix', 'Si
 
 $wgAutoloadClasses['ApiQuerySiteMatrix'] = dirname( __FILE__ ) . '/SiteMatrix_body.php';
 $wgAPIModules['sitematrix'] = 'ApiQuerySiteMatrix';
-

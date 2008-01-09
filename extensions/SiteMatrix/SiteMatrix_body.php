@@ -5,11 +5,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
     exit( 1 );
 }
 
-# Add messages
-global $wgMessageCache, $wgSiteMatrixMessages;
-foreach( $wgSiteMatrixMessages as $key => $value ) {
-	$wgMessageCache->addMessages( $wgSiteMatrixMessages[$key], $key );
-}
 
 global $IP;
 require_once( $IP.'/languages/Names.php' );
@@ -18,15 +13,15 @@ class SiteMatrix
 {
 	public $langlist, $sites, $names, $hosts;
 	public $wikipediaSpecial, $hidden, $specials, $matrix;
-	
+
 	public function __construct()
 	{
 		global $wgLocalDatabases, $IP;
-	
+
 		$this->langlist = array_map( 'trim', file( '/home/wikipedia/common/langlist' ) );
 		sort( $this->langlist );
 		$xLanglist = array_flip( $this->langlist );
-		
+
 		$this->sites = array(
 			'wiki',
 			'wiktionary',
@@ -36,7 +31,7 @@ class SiteMatrix
 			'wikiquote',
 			'wikiversity',
 		);
-		$this->names = array( 
+		$this->names = array(
 			'wiki' => 'Wikipedia<br />w',
 			'wiktionary' => 'Wiktionary<br />wikt',
 			'wikibooks' => 'Wikibooks<br />b',
@@ -64,7 +59,7 @@ class SiteMatrix
 		$this->hidden = array(
 			'foundation', 'mediawiki',
 		);
-		
+
 		# Tabulate the matrix
 		$this->specials = array();
 		$this->matrix = array();
@@ -95,7 +90,9 @@ class SiteMatrixPage extends SpecialPage {
 	function execute( $par ) {
 		global $wgOut, $wgRequest, $wgLanguageNames;
 		$this->setHeaders();
-		
+
+		wfLoadExtensionMessages( 'SiteMatrix' );
+
 		$matrix = new SiteMatrix();
 
 		if ($wgRequest->getVal( 'action' ) == "raw")
@@ -122,11 +119,11 @@ class SiteMatrixPage extends SpecialPage {
 				if ( in_array($lang, $matrix->hidden) ) {
 					continue;
 				}
-				
+
 				$langhost = str_replace("_", "-", $lang);
 				$domain = in_array($lang, $matrix->wikipediaSpecial) ? ".wikipedia.org" : ".wikimedia.org";
 				$url = "http://{$langhost}{$domain}/";
-				
+
 				echo "\t\t<special code=\"{$langhost}\" url=\"{$url}\" />\n";
 			}
 			echo "\t</specials>\n";
