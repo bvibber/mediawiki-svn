@@ -11,23 +11,20 @@ if (!defined('MEDIAWIKI')) die();
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-$wgExtensionFunctions[] = 'wfNewuserlog';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Newuserlog',
+	'version' => '2008-01-09',
 	'description' => 'adds a [[Special:Log/newusers|log of account creations]] to [[Special:Log]]',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Newuserlog',
 	'author' => 'Ævar Arnfjörð Bjarmason'
 );
 
-# Internationalisation file
-require_once( 'Newuserlog.i18n.php' );
+$wgExtensionFunctions[] = 'wfNewuserlog';
+$wgExtensionMessagesFiles['Newuserlog'] = dirname(__FILE__) . '/Newuserlog.i18n.php';
 
 function wfNewuserlog() {
 	# Add messages
-	global $wgMessageCache, $wgNewuserlogMessages;
-	foreach( $wgNewuserlogMessages as $key => $value ) {
-		$wgMessageCache->addMessages( $wgNewuserlogMessages[$key], $key );
-	}
+	wfLoadExtensionMessages( 'Newuserlog' );
 
 	# Add a new log type
 	global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
@@ -78,4 +75,3 @@ function wfNewuserlogHook( $user = null ) {
 
 	return true;
 }
-
