@@ -159,6 +159,7 @@ class TodoForm {
 	}
 
 	function showError( $result ) {
+		global $wgOut;
 		if( WikiError::isError( $result ) ) {
 			$wgOut->addHTML( '<p class="error">' .
 				htmlspecialcahrs( $result->getMessage() ) .
@@ -441,6 +442,7 @@ class TodoItem {
 	 */
 	function sendConfirmationMail( $closeComment ) {
 		require_once 'includes/UserMailer.php';
+		global $wgContLang;
 
 		$owner = User::newFromId( $this->owner );
 		if( is_null( $owner ) ) {
