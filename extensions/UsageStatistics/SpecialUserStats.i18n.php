@@ -80,36 +80,21 @@ $messages['fi'] = array(
 	'usagestatisticsbadstartend' => '<b>Aloitus- tai lopetuspäivä ei kelpaa! Tarkista päivämäärät.</b>',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ */
 $messages['fr'] = array(
-	'specialuserstats'           => 'Statistiques Utilisation',
+	'specialuserstats'           => "Statistiques d'utilisation",
 	'usagestatistics'            => 'Statistiques Utilisation',
 	'usagestatisticsfor'         => '<h2>Statistiques Utilisation pour [[:user:$1|$1]]</h2>',
 	'usagestatisticsallusers'    => 'Tous les utilisateurs',
-	'usagestatisticsinterval'    => 'Interval',
-	'usagestatisticstype'        => 'Type',
-	'usagestatisticsstart'       => 'Date de Début',
-	'usagestatisticsend'         => 'Date de Fin',
-	'usagestatisticssubmit'      => 'Générer Statistiques',
-	'usagestatisticsnostart'     => '* <font color=red>Entrer une date de Début</font>',
-	'usagestatisticsnoend'       => '* <font color=red>Entrer une date de Fin</font>',
-	'usagestatisticsbadstartend' => '<b>Mauvais format de Date de <i>Début</i> ou de <i>Fin</i> !</b>',
-);
-/** Dutch (Nederlands)
- * @author SPQRobin
- */
-$messages['nl'] = array(
-	'specialuserstats'           => 'Gebruiksstatistieken',
-	'usagestatistics'            => 'Gebruiksstatistieken',
-	'usagestatisticsfor'         => '<h2>Gebruikersstatistieken voor [[User:$1|$1]]</h2>',
-	'usagestatisticsallusers'    => 'Alle gebruikers',
-	'usagestatisticsinterval'    => 'Onderbreking',
-	'usagestatisticstype'        => 'Type',
-	'usagestatisticsstart'       => 'Begindatum',
-	'usagestatisticsend'         => 'Einddatum',
-	'usagestatisticssubmit'      => 'Statistieken tonen',
-	'usagestatisticsnostart'     => '* <font color=red>Gelieve een begindatum op te geven</font>',
-	'usagestatisticsnoend'       => '* <font color=red>Gelieve een einddatum op te geven</font>',
-	'usagestatisticsbadstartend' => '<b>Slechte <i>begindatum</i> en/of <i>einddatum</i>!</b>',
+	'usagestatisticsinterval'    => 'Intervalle',
+	'usagestatisticsstart'       => 'Date de début',
+	'usagestatisticsend'         => 'Date de fin',
+	'usagestatisticssubmit'      => 'Générer les statistiques',
+	'usagestatisticsnostart'     => '* <font color=red>Entrer une date de début</font>',
+	'usagestatisticsnoend'       => '* <font color=red>Entrer une date de fin</font>',
+	'usagestatisticsbadstartend' => '<b>Mauvais format de date de <i>début</i> ou de <i>fin</i> !</b>',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -148,6 +133,24 @@ $messages['lb'] = array(
 	'usagestatisticsbadstartend' => '<b>Falsche Format vum <i>Ufanks-</i> oder vum <i>Schluss</i> Datum!</b>',
 );
 
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ */
+$messages['nl'] = array(
+	'specialuserstats'           => 'Gebruiksstatistieken',
+	'usagestatistics'            => 'Gebruiksstatistieken',
+	'usagestatisticsfor'         => '<h2>Gebruikersstatistieken voor [[User:$1|$1]]</h2>',
+	'usagestatisticsallusers'    => 'Alle gebruikers',
+	'usagestatisticsinterval'    => 'Onderbreking',
+	'usagestatisticstype'        => 'Type',
+	'usagestatisticsstart'       => 'Begindatum',
+	'usagestatisticsend'         => 'Einddatum',
+	'usagestatisticssubmit'      => 'Statistieken tonen',
+	'usagestatisticsnostart'     => '* <font color=red>Gelieve een begindatum op te geven</font>',
+	'usagestatisticsnoend'       => '* <font color=red>Gelieve een einddatum op te geven</font>',
+	'usagestatisticsbadstartend' => '<b>Slechte <i>begindatum</i> en/of <i>einddatum</i>!</b>',
+);
+
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
  */
@@ -173,4 +176,3 @@ $messages['vo'] = array(
 	'usagestatisticsallusers' => 'Gebans Valik',
 	'usagestatisticssubmit'   => 'Jafön Statitis',
 );
-

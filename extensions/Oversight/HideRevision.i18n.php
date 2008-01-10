@@ -1125,26 +1125,38 @@ Muugelke Gruunde:
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'hiderevision'               => 'Dölj sidversioner permanent',
-	'hiderevision-prompt'        => 'Nummer för sidversionen som ska tas bort:',
-	'hiderevision-continue'      => 'Fortsätt',
-	'hiderevision-text'          => "Översyn ska användas '''endast''' i följande fall:
+	'hiderevision'                => 'Dölj sidversioner permanent',
+	'hiderevision-prompt'         => 'Nummer för sidversionen som ska tas bort:',
+	'hiderevision-continue'       => 'Fortsätt',
+	'hiderevision-text'           => "Översyn ska användas '''endast''' i följande fall:
 * Otillåten peronlig information
 *: ''hemadresser, telefonnummer, personnummer, och liknande''
 
 '''Missbruk av det här systemet leder till att rättigheterna tas bort.'''
 
 Sidversioner som tagits bort kommer inte att vara synliga för någon genom webplatsen, men raderingarna loggförs och kan återställas manuellt av databasadministratörer ifall du gör något misstag.",
-	'hiderevision-reason'        => 'Anledning (sparas i en privat logg):',
-	'hiderevision-submit'        => 'Dölj informationen permanent',
-	'hiderevision-tab'           => 'Dölj version',
-	'hiderevision-noreason'      => 'Du måste ge en anledning för den här raderingen.',
-	'hiderevision-status'        => 'Sidversion $1: $2',
-	'hiderevision-success'       => 'Arkiverades och raderades.',
-	'hiderevision-error-missing' => 'Hittades inte i databasen.',
-	'hiderevision-error-current' => 'Kan inte radera den sista versionen av en sida. Återställ den senaste ändringen först.',
-	'oversight-log-hiderev'      => 'tog bort en version av $1',
-	'oversight'                  => 'Översyn',
+	'hiderevision-reason'         => 'Anledning (sparas i en privat logg):',
+	'hiderevision-submit'         => 'Dölj informationen permanent',
+	'hiderevision-tab'            => 'Dölj version',
+	'hiderevision-norevisions'    => 'Ingen sidversion har angivits.',
+	'hiderevision-noreason'       => 'Du måste ge en anledning för den här raderingen.',
+	'hiderevision-status'         => 'Sidversion $1: $2',
+	'hiderevision-success'        => 'Arkivering och radering lyckades.',
+	'hiderevision-error-missing'  => 'Hittades inte i databasen.',
+	'hiderevision-error-current'  => 'Kan inte radera den sista versionen av en sida. Återställ den senaste ändringen först.',
+	'hiderevision-error-delete'   => 'Kunde inte arkivera; har versionen raderats tidigare?',
+	'hiderevision-archive-status' => 'Raderade version av $1: $2',
+	'oversight-nodiff'            => 'Ändringarna kunde inte hittas eftersom det inte finns någon tidigare version av sidan. Anledningar till det kan vara:
+* Sidan har raderats
+* Den dolda versionen var den första sidversionen',
+	'oversight-log-hiderev'       => 'tog bort en version av $1',
+	'oversight'                   => 'Översyn',
+	'oversight-view'              => 'mer info',
+	'oversight-difference'        => '(Skillnad mot föregående synliga version)',
+	'oversight-prev'              => 'Senaste tidigare version',
+	'oversight-hidden'            => 'Dold version',
+	'oversight-header'            => 'Här nedanför visas en lista över sidversioner som nyligen dolts permanent från allmän visning.
+Användare som sprider den här informationen vidare kan få sina översynsrättigheter permanent borttagna.',
 );
 
 $messages['tet'] = array(

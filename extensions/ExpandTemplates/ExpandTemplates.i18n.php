@@ -266,6 +266,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author KossuthRad
+ * @author Bdanee
  */
 $messages['hu'] = array(
 	'expandtemplates'                  => 'Sablonok kibontása',
@@ -274,8 +275,10 @@ Kibontja az elemző függvényeket (pl. <nowiki>{{</nowiki>#if:...}}), és a vá
 	'expand_templates_title'           => 'Szöveg címe, például &#123;&#123;PAGENAME}} sablonhoz:',
 	'expand_templates_input'           => 'Vizsgálandó szöveg',
 	'expand_templates_output'          => 'Eredmény',
+	'expand_templates_xml_output'      => 'XML kimenet',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Megjegyzések eltávolítása',
+	'expand_templates_generate_xml'    => 'XML elemzési fa mutatása',
 	'expand_templates_preview'         => 'Előnézet',
 );
 

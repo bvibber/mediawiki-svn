@@ -168,14 +168,14 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'contributors'             => 'Colaboradores',
 	'contributors-toolbox'     => 'Principais colaboradores',
-	'contributors-legend'      => 'Listaxe cos principais colaboradores dun artigo',
+	'contributors-legend'      => 'Listaxe cos principais colaboradores dunha páxina',
 	'contributors-target'      => 'Título:',
 	'contributors-submit'      => 'Amosar',
 	'contributors-subtitle'    => 'Principais colaboradores en $1',
 	'contributors-others-long' => 'Existen outros $1 colaboradores nesta páxina.',
 	'contributors-others'      => 'e outros $1',
 	'contributors-badtitle'    => 'Título non válido.',
-	'contributors-nosuchpage'  => 'Non existe o artigo $1.',
+	'contributors-nosuchpage'  => 'Non existe a páxina $1.',
 );
 
 $messages['hsb'] = array(
@@ -242,6 +242,20 @@ $messages['kab'] = array(
 	'contributors-nosuchpage' => 'Amagrad $1 ulac-it.',
 );
 
+/* Kazakh Arabic (AlefZet) */
+$messages['kk-cn'] = array(
+	'contributors' => 'ٷلەسكەرلەر',
+	'contributors-toolbox' => 'باستى ٷلەسكەرلەر',
+	'contributors-legend' => 'ماقالا باستى ٷلەسكەرلەرٸ تٸزٸمٸ',
+	'contributors-target' => 'اتاۋى:',
+	'contributors-submit' => 'كٶرسەت',
+	'contributors-subtitle' => '$1 بەتٸنٸڭ باستى ٷلەسكەرلەرٸ',
+	'contributors-others-long' => 'بۇل بەتتٸڭ باسقا $1 ٷلەسكەرٸ بار.',
+	'contributors-others' => 'جٵنە $1 باسقالار',
+	'contributors-badtitle' => 'جارامسىز اتاۋ.',
+	'contributors-nosuchpage' => '$1 دەگەن ماقالا بٸزدە جوق.',
+);
+
 /* Kazakh Cyrillic (AlefZet) */
 $messages['kk-kz'] = array(
 	'contributors' => 'Үлескерлер',
@@ -268,20 +282,6 @@ $messages['kk-tr'] = array(
 	'contributors-others' => 'jäne $1 basqalar',
 	'contributors-badtitle' => 'Jaramsız ataw.',
 	'contributors-nosuchpage' => '$1 degen maqala bizde joq.',
-);
-
-/* Kazakh Arabic (AlefZet) */
-$messages['kk-cn'] = array(
-	'contributors' => 'ٷلەسكەرلەر',
-	'contributors-toolbox' => 'باستى ٷلەسكەرلەر',
-	'contributors-legend' => 'ماقالا باستى ٷلەسكەرلەرٸ تٸزٸمٸ',
-	'contributors-target' => 'اتاۋى:',
-	'contributors-submit' => 'كٶرسەت',
-	'contributors-subtitle' => '$1 بەتٸنٸڭ باستى ٷلەسكەرلەرٸ',
-	'contributors-others-long' => 'بۇل بەتتٸڭ باسقا $1 ٷلەسكەرٸ بار.',
-	'contributors-others' => 'جٵنە $1 باسقالار',
-	'contributors-badtitle' => 'جارامسىز اتاۋ.',
-	'contributors-nosuchpage' => '$1 دەگەن ماقالا بٸزدە جوق.',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

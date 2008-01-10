@@ -258,8 +258,8 @@ function efDuplicatorMessages() {
  * @author Alma
  */
 'gl' => array(
-	'duplicator'                       => 'Duplicar un artigo',
-	'duplicator-toolbox'               => 'Duplicar este artigo',
+	'duplicator'                       => 'Duplicar unha páxina',
+	'duplicator-toolbox'               => 'Duplicar esta páxina',
 	'duplicator-header'                => 'Esta páxina permite a duplicación completa dun artigo e crea copias independentes
 de todos os historiais. Resulta útil cando se subdivide un artigo, etc.',
 	'duplicator-options'               => 'Opcións',

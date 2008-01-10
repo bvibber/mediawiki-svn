@@ -41,10 +41,14 @@ $messages['ar'] = array(
 );
 
 /** Asturian (Asturianu)
+ * @author Esbardu
  * @author SPQRobin
  */
 $messages['ast'] = array(
-	'sitematrix' => 'Llista de wikis de Wikimedia',
+	'sitematrix'          => 'Llista de wikis de Wikimedia',
+	'sitematrix-language' => 'Llingua',
+	'sitematrix-project'  => 'Nomes del proyeutu, del enllaz interproyeutu y del enllaz interwiki',
+	'sitematrix-others'   => 'Otros proyeutos de Wikimedia',
 );
 
 $messages['bcl'] = array(

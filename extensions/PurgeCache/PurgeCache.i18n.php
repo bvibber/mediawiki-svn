@@ -49,6 +49,26 @@ $messages['hsb'] = array(
 	'purgecache-button'  => 'Prózdnić',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'purgecache'         => 'Cache eidel maachen',
+	'purgecache-warning' => "Hei ginn d'Tafele vum Cache eidelgemaach.",
+	'purgecache-purged'  => 'De Cache gouf eidel gemaach.',
+	'purgecache-button'  => 'Eidel maachen',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'purgecache'         => 'Cache legen',
+	'purgecache-warning' => 'Hiermee worden de cachetabellen geleegd.',
+	'purgecache-purged'  => 'De cache is geleegd.',
+	'purgecache-button'  => 'Cache legen',
+);
+
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
  */
