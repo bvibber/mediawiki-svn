@@ -24,11 +24,11 @@ EOT;
 }
 
 $wgExtensionCredits['specialpage'][] = array(
-		'name' => 'ChangeAuthor',
-		'author' => 'Roan Kattouw',
-		'url' => 'http://www.mediawiki.org/wiki/Extension:ChangeAuthor',
-		'version' => '1.0',
-		'description' => 'Allows changing a revision\'s author'
+	'name' => 'ChangeAuthor',
+	'author' => 'Roan Kattouw',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:ChangeAuthor',
+	'version' => '1.0',
+	'description' => 'Allows changing a revision\'s author'
 );
 
 $dir = dirname(__FILE__) . '/';
@@ -36,7 +36,6 @@ $wgExtensionMessagesFiles['ChangeAuthor'] = $dir . 'ChangeAuthor.i18n.php';
 $wgAutoloadClasses['ChangeAuthor'] = dirname(__FILE__) . '/ChangeAuthor.body.php';
 
 $wgSpecialPages['ChangeAuthor'] = 'ChangeAuthor';
-$wgHooks['LoadAllMessages'][] = 'ChangeAuthor::loadMessages';
 $wgHooks['LanguageGetSpecialPageAliases'][] = 'ChangeAuthorLocalizedPageName';
 
 $wgLogTypes[] = 'changeauth';
@@ -46,10 +45,10 @@ $wgLogActions['changeauth/changeauth'] = 'changeauthor-logentry';
 
 function ChangeAuthorLocalizedPageName(&$specialPageArray, $code)
 {
-		ChangeAuthor::loadMessages();
-		$text = wfMsg('changeauthor-short');
+	ChangeAuthor::loadMessages();
+	$text = wfMsg('changeauthor-short');
 
-		$title = Title::newFromText($text);
-		$specialPageArray['ChangeAuthor'][] = $title->getDBKey();
-		return true;
+	$title = Title::newFromText($text);
+	$specialPageArray['ChangeAuthor'][] = $title->getDBKey();
+	return true;
 }
