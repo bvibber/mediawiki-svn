@@ -15,10 +15,11 @@ $wgExtensionCredits['specialpage'][] = array(
 
 # Internationalisation
 $wgExtensionMessagesFiles['DeletedContributions'] = dirname(__FILE__) . '/DeletedContributions.i18n.php';
-$wgExtensionFunctions[] = 'efLoadDeletedContribsMessages';
+$wgExtensionFunctions[] = 'efLoadDeletedContribs';
 
 global $wgHooks;
 $wgHooks['ContributionsToolLinks'][] = 'wfLoadContribsLink';
+$wgHooks['SpecialPageExecuteBeforeHeader'][] = 'wfDeletedContributionsMessages';
 
 /**
  * Add a "Deleted contributions" link to Special:Contributions for sysops.
@@ -26,6 +27,8 @@ $wgHooks['ContributionsToolLinks'][] = 'wfLoadContribsLink';
 function wfLoadContribsLink( $id, $nt, &$links ) {
 	global $wgUser;
 	if( $wgUser->isAllowed( 'deletedhistory' ) ) {
+		wfLoadExtensionMessages( 'DeletedContributions' );
+	
 		$links[] = $wgUser->getSkin()->makeKnownLinkObj(
 			SpecialPage::getTitleFor( 'DeletedContributions', $nt->getDBkey() ),
 			wfMsgHtml( 'deletedcontributions' )
@@ -34,9 +37,17 @@ function wfLoadContribsLink( $id, $nt, &$links ) {
 	return true;
 }
 
-function efLoadDeletedContribsMessages() {
+function wfDeletedContributionsMessages( $specialpage, $par, $func ) {
+	if( $specialpage->name() == 'DeletedContributions' ) {
+		wfLoadExtensionMessages( 'DeletedContributions' );
+		$specialpage->setHeaders(); // set again so that it actually has the fucking message
+	}
+	return true;
+}
+
+# Load once IndexPager and stuff is loaded
+function efLoadDeletedContribs() {
 	require( dirname( __FILE__ ) . '/DeletedContributions_body.php' );
-	wfLoadExtensionMessages( 'DeletedContributions' );
 }
 
 $wgSpecialPages['DeletedContributions'] = array( 'SpecialPage', 'DeletedContributions', 'deletedhistory',
