@@ -5,6 +5,7 @@ gMsg['ogg-no-xiphqt']='You do not appear to have the XiphQT component for QuickT
 
 var quicktimeEmbed = {    
 	instanceOf:'quicktimeEmbed',
+	qtTimers:{},
     getEmbedHTML : function (){    
     	var controls_html ='';
     	js_log('embedObj control is: '+this.controls);
@@ -21,11 +22,14 @@ var quicktimeEmbed = {
     getEmbedObj:function(){
 		var controllerHeight = 16; // by observation
 		var extraAttribs = '';
-		if ( player == 'quicktime-activex' ) {
+		if ( embedTypes.playerType == 'quicktime-activex' ) {
 			extraAttribs = 'classid="clsid:02BF25D5..."';
 		}
-		elt.innerHTML += 
-			"<div><object id=" + this.pid + 
+		// Poll for completion
+		var this_ = this;
+		this.qtTimers[this.pid] = window.setInterval( this.makeQuickTimePollFunction(), 500 );
+		
+		return "<div><object id=" + this.pid + 
 			" type='video/quicktime'" +
 			" width=" + this.width  + 
 			" height=" + this.height + controllerHeight  + 
@@ -39,25 +43,23 @@ var quicktimeEmbed = {
 			"<param name='AUTOPLAY' value='True'/>" +
 			"<param name='src' value=" + mv_embed_path + 'null_file.mov' +  "/>" +
 			"<param name='QTSRC' value=" + this.src + "/>" +
-			"</object></div>";
-
-		// Poll for completion
-		var this_ = this;
-		this.qtTimers[this.pid] = window.setInterval( this.makeQuickTimePollFunction(), 500 );
+			"</object></div>";		
     },
-    makeQuickTimePollFunction : function () {
+    makeQuickTimePollFunction : function ( ) {
 		var this_ = this;
-		return function () {
-			var videoElt = document.getElementById( this.pid );
-			if ( elt && videoElt ) {
+		return function () {			
+			var videoElt = document.getElementById( this_.pid );
+			if ( videoElt ) {
 				// Detect XiphQT (may throw)
 				var xiphQtVersion = false, done = false;
+				js_log('try quicktime: getComponent:');
 				try {
 					xiphQtVersion = videoElt.GetComponentVersion('imdc','XiTh', 'Xiph');
 					done = true;
 				} catch ( e ) {}
+				js_log('done with try');
 				if ( done ) {
-					window.clearInterval( this_.qtTimers[this.pid] );
+					window.clearInterval( this_.qtTimers[this_.pid] );
 					if ( !xiphQtVersion || xiphQtVersion == '0.0' ) {
 						$j(this_).html(getMsg('ogg-no-xiphqt'));						
 						/*var div = document.createElement( 'div' );

@@ -206,7 +206,7 @@ var embedTypes = {
 		 // ActiveX plugins
 		 // VLC
 		 if ( this.testActiveX( 'VideoLAN.VLCPlugin.2' ) ) {
-		 	this.clientSupports['vlcActivex'] = true;
+		 	this.clientSupports['vlc-activex'] = true;
 		 }
 		 // Java
 		 if ( javaEnabled && this.testActiveX( 'JavaWebStart.isInstalled' ) ) {
@@ -214,7 +214,7 @@ var embedTypes = {
 		 }
 		 // QuickTime
 		 if ( this.testActiveX( 'QuickTimeCheckObject.QuickTimeCheck.1' ) ) {
-		 	this.clientSupports['quicktimeActivex'] = true;
+		 	this.clientSupports['quicktime-activex'] = true;
 		 }		
 		 // <video> element (should not need to be attached to the dom to test)(
 		 var v = document.createElement("video");
@@ -274,6 +274,9 @@ var embedTypes = {
 				}
 			}
 		}
+		//@@The xiph quicktime component does not work well with annodex streams (temporarly disable)
+		this.clientSupports['quicktime-mozilla'] = false;
+		this.clientSupports['quicktime-activex'] = false;
 		//js_log(this.clientSupports);
 	 },
 	 setCookie : function ( name, value, expiry, path, domain, secure ) {
@@ -612,8 +615,21 @@ function swapEmbedVideoElement(video_element, videoInterface){
 var embedVideo = function(element) {	
 	return this.init(element);
 };
+//base embedVideo object
 embedVideo.prototype = {
 	slider:null,
+	//utility functions for property values: 
+	hx : function ( s ) {
+		if ( typeof s != 'String' ) {
+			s = s.toString();
+		}
+		return s.replace( /&/g, '&amp;' )
+			. replace( /</g, '&lt;' )
+			. replace( />/g, '&gt;' );
+	},
+	hq : function ( s ) {
+		return '"' + this.hx( s ) + '"';
+	},
 	init: function(element){		   
 		 //inherit all the default video_attributes 
 	    for(var attr in video_attributes){       
