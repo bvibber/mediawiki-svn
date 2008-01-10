@@ -13,7 +13,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionFunctions[] = 'wfSpecialConceptMapping';
 $wgExtensionCredits['specialpage'][] = array(
-	'name' => 'foo',
+	'name' => 'SpecialConceptMapping',
 	'author' => 'Kim Bruning',
 );
 
