@@ -86,7 +86,7 @@ $messages['en'] = array(
 	'anno_en_desc' => 'English categorizations and annotations. This overlay can be used to \"tag\"/Categorize sections of video or to add annotative information that is not spoken text',
 
 	'mv_data_page_title' => '$1 for $2 from $3',
-	'mv_time_separator'  => 'to',
+	'mv_time_separator'  => '$1 to $2',
 
 	# Messages for  Special List stream
 	'mv_list_streams'      => 'Metavid List Streams',
@@ -259,7 +259,7 @@ $messages['ar'] = array(
 	'anno_en'                        => 'الأنوتاشنات والتصنيفات',
 	'anno_en_desc'                   => 'الأنوتاشنتات والتصنيفات الإنجليزية. هذه التغطية يمكن استخدامها ل \\"tag\\"/تصنيف أقسام من الفيديو أو لإضافة معلومات أنوتاشن ليست نصا منطوقا',
 	'mv_data_page_title'             => '$1 ل$2 من $3',
-	'mv_time_separator'              => 'إلى',
+	
 	'mv_list_streams'                => 'عرض ستريمات ميتافيد',
 	'mv_list_streams_page'           => 'عرض ستريمات إم في',
 	'mv_list_streams_docu'           => 'الستريمات التالية موجودة:',
@@ -433,7 +433,7 @@ $messages['fr'] = array(
 	'anno_en'                        => 'Annotations et catégories',
 	'anno_en_desc'                   => 'Annotations et catégorisation anglaises. Cette présentation peut être utilisée pour « baliser »  ou catégoriser des sections de vidéo ou pour ajouter des annotations qui ne sont pas du texte parlé.',
 	'mv_data_page_title'             => '$1 pour $2 à partir de $3',
-	'mv_time_separator'              => 'vers',
+	'mv_time_separator'              => '$1 vers $2',
 	'mv_list_streams'                => 'Liste des flux de metavid',
 	'mv_list_streams_page'           => 'Liste des flux de metavid',
 	'mv_list_streams_docu'           => 'Le flux suivant existe :',
@@ -557,7 +557,7 @@ $messages['nl'] = array(
 	'mv_tool_export_title'          => 'Streammetadata exporteren',
 	'anno_en'                       => 'Annotaties en categorieën',
 	'mv_data_page_title'            => '$1 voor $2 van $3',
-	'mv_time_separator'             => 'naar',
+	'mv_time_separator'             => '$1 naar $2',
 	'mv_list_streams_docu'          => 'De volgende streams zijn beschikbaar:',
 	'mv_list_streams_none'          => 'Er zijn geen streams',
 	'mvBadMVDtitle'                 => 'type of stream niet aanwezig, of onjuiste tijdsnotatie',
