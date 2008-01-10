@@ -15,19 +15,19 @@ $messages['en'] = array(
 	'mv_missing_stream' => 'Missing Stream: $1',
 
 	#stream/files key descriptions:
-	'mv_ogg_low_quality'      => 'Web Stremable ogg theora, hosted on metavid',
+	'mv_ogg_low_quality'      => 'Web Streamable ogg theora, hosted on metavid',
 	'mv_ogg_high_quality'     => 'High Quality ogg theora, hosted on metavid',
 	'mv_archive_org_link'     => 'Links into Archive.org mpeg2 originals',
 
-	'mv_error_stream_missing' => '<span class="error">Error: There is no video stream associated with this metadata.</span><br /> Please report this to the site adimistrator.<br /> <i>stream metadata interface is disabled</i>',
+	'mv_error_stream_missing' => '<span class="error">Error: There is no video stream associated with this metadata.</span><br />Please report this to the site administrator.<br /><i>stream metadata interface is disabled</i>',
 
 	#add/edit stream text:
 	'mv_stream_meta'                => 'Stream Page',
 	'mv_add_stream'                 => 'Metavd Add Stream',
 	'mv_edit_stream'                => 'Metavid Edit Stream',
 	'mv_add_stream_page'            => 'Mv Add Stream',
-	'mv_edit_strea_docu'            => '<p>Edit stream <b>admin</b> <br /> for normal user view/edit see $1 page',
-	'mv_add_stream_docu'            => '<p>Add a new Stream with the field below.</p><p> More information is given on the <a href="$1">help page for add stream</a>.</p>',
+	'mv_edit_strea_docu'            => '<p>Edit stream <b>admin</b><br />for normal user view/edit see $1 page',
+	'mv_add_stream_docu'            => '<p>Add a new Stream with the field below.</p><p>More information is given on the <a href="$1">help page for add stream</a>.</p>',
 	'mv_add_stream_submit'          => 'Add stream',
 	'mv_no_stream_files'            => 'No Existing Stream files',
 	'mv_edit_stream_files'          => 'Edit stream files',
