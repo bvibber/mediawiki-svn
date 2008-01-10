@@ -49,7 +49,6 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 */
 	function efMakeBot() {
 		global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
-		wfLoadExtensionMessages('Makebot');
 		$wgLogTypes[] = 'makebot';
 		$wgLogNames['makebot'] = 'makebot-logpage';
 		$wgLogHeaders['makebot'] = 'makebot-logpagetext';
