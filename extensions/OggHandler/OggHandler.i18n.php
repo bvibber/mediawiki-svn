@@ -98,10 +98,18 @@ $messages['bcl'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'ogg-more'      => 'Повече...',
-	'ogg-dismiss'   => 'Затваряне',
-	'ogg-download'  => 'Изтеглене на файла',
-	'ogg-desc-link' => 'Информация за файла',
+	'ogg-short-audio' => 'Ogg $1 звуков файл, $2',
+	'ogg-short-video' => 'Ogg $1 видео файл, $2',
+	'ogg-long-audio'  => '(Ogg $1 звуков файл, продължителност $2, $3)',
+	'ogg-long-video'  => '(Ogg $1 видео файл, продължителност $2, $4×$5 пиксела, $3)',
+	'ogg-long-error'  => '(Невалиден ogg файл: $1)',
+	'ogg-play'        => 'Пускане',
+	'ogg-pause'       => 'Пауза',
+	'ogg-stop'        => 'Спиране',
+	'ogg-more'        => 'Повече...',
+	'ogg-dismiss'     => 'Затваряне',
+	'ogg-download'    => 'Изтеглене на файла',
+	'ogg-desc-link'   => 'Информация за файла',
 );
 
 /** Bengali (বাংলা)

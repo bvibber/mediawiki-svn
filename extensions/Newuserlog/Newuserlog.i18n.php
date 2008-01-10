@@ -168,17 +168,6 @@ $messages['frp'] = array(
 	'newuserlog-create2-entry' => 'compto crèâ por $1',
 );
 
-/** Luxembourgish (Lëtzebuergesch)
- * @author SPQRobin
- * @author Robby
- */
-$messages['lb'] = array(
-	'newuserlogpage'           => 'Logbuch vun den neien Umeldungen',
-	'newuserlogpagetext'       => "Dëst ass d'Lescht vun de Benotzernimm déi ugeluecht goufen",
-	'newuserlog-create-entry'  => 'Neie Benotzer',
-	'newuserlog-create2-entry' => "Benotzerkonto fir den/d' $1 gemaach",
-);
-
 /** Irish (Gaeilge)
  * @author SPQRobin
  */
@@ -268,6 +257,13 @@ $messages['ja'] = array(
 	'newuserlog-create2-entry' => 'アカウント $1 が作成されました',
 );
 
+$messages['kk-arab'] = array(
+	'newuserlogpage'           => 'تٸركەلۋ جۋرنالى',
+	'newuserlogpagetext'       => 'بۇل قاتىسۋشى تٸركەلگٸ جاساۋ جۋرنالى',
+	'newuserlog-create-entry'  => 'جاڭا قاتىسۋشى',
+	'newuserlog-create2-entry' => 'جاڭا تٸركەلگٸ جاسادى — $1',
+);
+
 $messages['kk-cyrl'] = array(
 	'newuserlogpage'           => 'Тіркелу журналы',
 	'newuserlogpagetext'       => 'Бұл қатысушы тіркелгі жасау журналы',
@@ -280,13 +276,6 @@ $messages['kk-latn'] = array(
 	'newuserlogpagetext'       => 'Bul qatıswşı tirkelgi jasaw jwrnalı',
 	'newuserlog-create-entry'  => 'Jaña qatıswşı',
 	'newuserlog-create2-entry' => 'jaña tirkelgi jasadı — $1',
-);
-
-$messages['kk-arab'] = array(
-	'newuserlogpage'           => 'تٸركەلۋ جۋرنالى',
-	'newuserlogpagetext'       => 'بۇل قاتىسۋشى تٸركەلگٸ جاساۋ جۋرنالى',
-	'newuserlog-create-entry'  => 'جاڭا قاتىسۋشى',
-	'newuserlog-create2-entry' => 'جاڭا تٸركەلگٸ جاسادى — $1',
 );
 
 $messages['ko'] = array(
@@ -431,7 +420,6 @@ $messages['sr-el'] = array(
 	'newuserlog-create2-entry' => 'napravio nalog za $1',
 );
 
-$messages['sr'] = $messages['sr-ec'];
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
@@ -554,6 +542,7 @@ $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
 $messages['kk-tr'] = $messages['kk-latn'];
+$messages['sr'] = $messages['sr-ec'];
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];
 $messages['zh-hk'] = $messages['zh-hant'];

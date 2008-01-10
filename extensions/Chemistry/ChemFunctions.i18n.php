@@ -96,11 +96,13 @@ $messages['el'] = array(
 
 /** French (Français)
  * @author Sherbrooke
+ * @author Grondin
  */
 $messages['fr'] = array(
 	'chemicalsources'                  => 'Sources pour la chimie',
 	'chemFunctions_ListPage'           => 'Sources pour la chimie',
-	'chemFunctions_DataList'           => 'Suit une liste de liens vers des sites qui peuvent apporter des informations à propos des substances chimiques que vous recherchez.<br /><br />
+	'chemFunctions_DataList'           => 'Voici, ci-dessous, une liste de liens vers des sites qui peuvent apporter des informations à propos des substances chimiques que vous recherchez.
+
 * [http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI Composé $MIXCASNameFormula], NIST
 * [http://ptcl.chem.ox.ac.uk/MSDS/ MSDS], Université d\'Oxford',
 	'chemFunctions_CAS'                => 'Numéro CAS',
@@ -142,6 +144,15 @@ $messages['gl'] = array(
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Universidade de Oxford (UK) (non consultábel)</a><br />',
 	'chemFunctions_CAS'      => 'número CAS',
 	'chemFunctions_Formula'  => 'Fórmula',
+);
+
+/** Croatian (Hrvatski)
+ * @author Dnik
+ */
+$messages['hr'] = array(
+	'chemicalsources'        => 'Kemijski izvori',
+	'chemFunctions_ListPage' => 'Kemijski izvori',
+	'chemFunctions_Formula'  => 'Formula',
 );
 
 $messages['hsb'] = array(
@@ -383,15 +394,6 @@ $messages['sr-el'] = array(
 $messages['stq'] = array(
 	'chemicalsources' => 'Chemiske Wällen',
 
-);
-
-/** Croatian (Hrvatski)
- * @author Dnik
- */
-$messages['hr'] = array(
-	'chemicalsources'        => 'Kemijski izvori',
-	'chemFunctions_ListPage' => 'Kemijski izvori',
-	'chemFunctions_Formula'  => 'Formula',
 );
 
 $messages['vi'] = array(

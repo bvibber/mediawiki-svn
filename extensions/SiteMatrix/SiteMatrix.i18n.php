@@ -18,9 +18,15 @@ $messages['af'] = array(
 	"sitematrix" => "Lys van Wikimedia-wiki's",
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ * @author SPQRobin
+ */
 $messages['an'] = array(
-	'sitematrix' => 'Lista de wikis de Wikimedia',
+	'sitematrix'          => 'Lista de wikis de Wikimedia',
 	'sitematrix-language' => 'Luenga',
+	'sitematrix-project'  => "Nombre d'o procheuto, binclo entre procheutos y binclo interwiki",
+	'sitematrix-others'   => 'Atros procheutos de Wikimedia',
 );
 
 $messages['ang'] = array(
@@ -48,8 +54,15 @@ $messages['bcl'] = array(
 	'sitematrix-others' => 'Ibang mga proyekto kan Wikimedia',
 );
 
+/** Belarusian (Беларуская)
+ * @author Yury Tarasievich
+ * @author לערי ריינהארט
+ */
 $messages['be'] = array(
-	'sitematrix' => 'Сьпіс усіх праектаў фундацыі Wikimedia',
+	'sitematrix'          => 'Сьпіс усіх праектаў фундацыі Wikimedia',
+	'sitematrix-language' => 'Мова',
+	'sitematrix-project'  => 'Назва праекту, спасылка між праектамі і спасылка інтэрвікі',
+	'sitematrix-others'   => 'Іншыя праекты Фонду Вікімедыя',
 );
 
 /** Bulgarian (Български)
@@ -101,8 +114,14 @@ $messages['cs'] = array(
 	'sitematrix-others' => 'Ostatní projekty nadace Wikimedia',
 );
 
+/** Danish (Dansk)
+ * @author Morten LJ
+ */
 $messages['da'] = array(
-	'sitematrix' => 'Liste over alle Wikimedias wikier',
+	'sitematrix'          => 'Alle Wikimedias wikier',
+	'sitematrix-language' => 'Sprog',
+	'sitematrix-project'  => 'Projektnavn, interprojektlink og interwikilink',
+	'sitematrix-others'   => 'Andre projekter under Wikimedia',
 );
 
 $messages['de'] = array(
@@ -348,6 +367,16 @@ $messages['nl'] = array(
 	'sitematrix-language' => 'Taal',
 	'sitematrix-project' => 'Naam van het project, interprojectlink en interwikilink',
 	'sitematrix-others' => 'Andere projecten van Wikimedia',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'sitematrix'          => 'Liste over wikiar frå Wikimedia',
+	'sitematrix-language' => 'Språk',
+	'sitematrix-project'  => 'Namnet på prosjektet, interprosjektlenkje og interwikilenkje',
+	'sitematrix-others'   => 'Andre prosjekt frå Wikimedia',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

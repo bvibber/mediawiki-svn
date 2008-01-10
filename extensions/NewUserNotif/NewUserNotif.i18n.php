@@ -22,6 +22,16 @@ function efNewUserNotifMessages() {
 حساب مستخدم جديد، $2، تم إنشاؤه على $3 في $4.',
 ),
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+'bg' => array(
+	'newusernotifsubj' => 'Съобщение за нов потребител в $1',
+	'newusernotifbody' => 'Здравейте $1,
+
+В $3 беше регистрирана нова потребителска сметка, $2, на $4.',
+),
+
 'de' => array(
 	'newusernotifsubj' => 'Benachrichtung für $1 über die Einrichtung eines neuen Benutzerskontos',
 	'newusernotifbody' => "Hallo $1,\n\nEin neues Benutzerkonto, $2, wurde am $4 auf $3 angelegt.",

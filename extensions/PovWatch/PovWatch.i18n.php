@@ -77,6 +77,7 @@ $messages['bg'] = array(
 	'povwatch_invalid_title'   => 'Посоченото заглавие е невалидно',
 	'povwatch_unknown_subpage' => 'Непозната подстраница.',
 	'povwatch_title'           => 'Заглавие:',
+	'povwatch_no_log'          => 'Дневникът не съдържа записи.',
 );
 
 /** Greek (Ελληνικά)

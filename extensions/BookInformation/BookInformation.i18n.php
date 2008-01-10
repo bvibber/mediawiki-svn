@@ -103,6 +103,23 @@ $messages['ca'] = array(
 	'bookinfo-provider'=> 'Proveïdor de dades: $1',
 );
 
+/** Danish (Dansk)
+ * @author Morten LJ
+ */
+$messages['da'] = array(
+	'bookinfo-header'            => 'Boginformation',
+	'bookinfo-result-title'      => 'Titel:',
+	'bookinfo-result-author'     => 'Forfatter:',
+	'bookinfo-result-publisher'  => 'Udgiver:',
+	'bookinfo-result-year'       => 'År:',
+	'bookinfo-error-invalidisbn' => 'Det indtastede ISBN-nummer er ugyldigt.',
+	'bookinfo-error-nosuchitem'  => 'Varen eksisterer ikke eller blev ikke fundet.',
+	'bookinfo-error-nodriver'    => 'Kunne ikke indlæse en passende boginformationsdriver.',
+	'bookinfo-error-noresponse'  => 'Intet svar eller forespørgslen fik timeout.',
+	'bookinfo-purchase'          => 'Køb denne bog hos $1',
+	'bookinfo-provider'          => 'Data leveret af: $1',
+);
+
 /* German (Raymond) */
 $messages['de'] = array(
 	'bookinfo-header' => 'Informationen über Bücher',

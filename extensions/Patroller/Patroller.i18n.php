@@ -69,12 +69,13 @@ function efPatrollerMessages() {
 ),
 
 /** Bulgarian (Български)
- * @author Spiritia
  * @author DCLXVI
+ * @author Spiritia
  */
 'bg' => array(
 	'patrol-revert'          => 'Възвръщане',
 	'patrol-revert-reason'   => 'Причина:',
+	'patrol-skip'            => 'Пропускане',
 	'patrol-reverting'       => 'Възвръщане: $1',
 	'patrol-endorsed-ok'     => 'Редакцията беше отбелязана като проверена.',
 	'patrol-endorsed-failed' => 'Редакцията не може да бъде отбелязана като проверена.',

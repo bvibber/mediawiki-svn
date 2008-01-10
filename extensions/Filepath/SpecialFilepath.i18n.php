@@ -474,6 +474,15 @@ $messages['to'] = array(
 	'filepath_submit' => 'Ko e hala',
 );
 
+/** Turkish (Türkçe)
+ * @author SPQRobin
+ */
+$messages['tr'] = array(
+	'filepath'        => 'Dosyanın konumu',
+	'filepath_page'   => 'Dosya adı:',
+	'filepath_submit' => 'Konum',
+);
+
 /** Tahitian (Reo Mā`ohi)
  * @author SPQRobin
  */

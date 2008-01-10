@@ -50,6 +50,13 @@ database administrator if you make a mistake.",
 Releasing this information can result in permanent loss of Oversight privileges.',
 );
 
+/** Message documentation (Message documentation)
+ * @author Lejonel
+ */
+$messages['qqq'] = array(
+	'oversight' => 'Oversight extension. The name of the page Special:Oversight, used in the list of special pages and at the top of Special:Oversight.',
+);
+
 $messages['ar'] = array(
 	'hiderevision' => 'أخف النسخ بشكل دائم',
 	'hiderevision-prompt' => 'رقم النسخة للإزالة:',
@@ -1114,6 +1121,32 @@ Muugelke Gruunde:
 	'oversight-header'            => 'Hierunner foulget ne Lieste fon do duurhaft wächhoalde Versione. Ju Bekoandmoakenge fon disse Informatione kon dän duurhafte Ferljus fon do Oversight-Gjuchte betjuude.',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'hiderevision'               => 'Dölj sidversioner permanent',
+	'hiderevision-prompt'        => 'Nummer för sidversionen som ska tas bort:',
+	'hiderevision-continue'      => 'Fortsätt',
+	'hiderevision-text'          => "Översyn ska användas '''endast''' i följande fall:
+* Otillåten peronlig information
+*: ''hemadresser, telefonnummer, personnummer, och liknande''
+
+'''Missbruk av det här systemet leder till att rättigheterna tas bort.'''
+
+Sidversioner som tagits bort kommer inte att vara synliga för någon genom webplatsen, men raderingarna loggförs och kan återställas manuellt av databasadministratörer ifall du gör något misstag.",
+	'hiderevision-reason'        => 'Anledning (sparas i en privat logg):',
+	'hiderevision-submit'        => 'Dölj informationen permanent',
+	'hiderevision-tab'           => 'Dölj version',
+	'hiderevision-noreason'      => 'Du måste ge en anledning för den här raderingen.',
+	'hiderevision-status'        => 'Sidversion $1: $2',
+	'hiderevision-success'       => 'Arkiverades och raderades.',
+	'hiderevision-error-missing' => 'Hittades inte i databasen.',
+	'hiderevision-error-current' => 'Kan inte radera den sista versionen av en sida. Återställ den senaste ändringen först.',
+	'oversight-log-hiderev'      => 'tog bort en version av $1',
+	'oversight'                  => 'Översyn',
+);
+
 $messages['tet'] = array(
 	'hiderevision-prompt' => 'Sura versaun nian ne\'ebé hakarak halakon:',
 	'hiderevision-tab' => 'Subar versaun',
@@ -1123,6 +1156,13 @@ $messages['tet'] = array(
 	'oversight-log-hiderev' => 'subar edita husi $1',
 	'oversight-view' => 'barak liu',
 	'oversight-hidden' => 'Versaun nasubar tiha ona',
+);
+
+/** Turkish (Türkçe)
+ * @author SPQRobin
+ */
+$messages['tr'] = array(
+	'hiderevision-error-missing' => 'Veritabanında bulunamadı',
 );
 
 /* Cantonese (Shinjiman) */

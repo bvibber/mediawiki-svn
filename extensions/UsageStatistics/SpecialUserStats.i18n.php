@@ -40,6 +40,21 @@ $messages['ar'] = array(
 	'usagestatisticsbadstartend' => '<b>تاريخ <i>بدء</i> و/أو <i>انتهاء</i> سيء!</b>',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'usagestatisticsallusers'    => 'Всички потребители',
+	'usagestatisticsinterval'    => 'Интервал',
+	'usagestatisticstype'        => 'Вид',
+	'usagestatisticsstart'       => 'Начална дата',
+	'usagestatisticsend'         => 'Крайна дата',
+	'usagestatisticssubmit'      => 'Генериране на статистиката',
+	'usagestatisticsnostart'     => '* <font color=red>Необходимо е да се посочи начална дата</font>',
+	'usagestatisticsnoend'       => '* <font color=red>Необходимо е да се посочи крайна дата</font>',
+	'usagestatisticsbadstartend' => '<b>Невалидна <i>Начална</i> и/или <i>Крайна</i> дата!</b>',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -131,6 +146,24 @@ $messages['lb'] = array(
 	'usagestatisticsnostart'     => '* <font color=red>Gitt w.e.g een Ufanksdatum un</font>',
 	'usagestatisticsnoend'       => '* <font color=red>Gitt w.e.g. ee Schlussdatum un</font>',
 	'usagestatisticsbadstartend' => '<b>Falsche Format vum <i>Ufanks-</i> oder vum <i>Schluss</i> Datum!</b>',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'specialuserstats'           => 'Statistikk over bruk',
+	'usagestatistics'            => 'Statistikk over bruk',
+	'usagestatisticsfor'         => '<h2>Statistikk over bruk for [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'    => 'Alle brukarane',
+	'usagestatisticsinterval'    => 'Intervall',
+	'usagestatisticstype'        => 'Type',
+	'usagestatisticsstart'       => 'Startdato',
+	'usagestatisticsend'         => 'Sluttdato',
+	'usagestatisticssubmit'      => 'Lag statistikk',
+	'usagestatisticsnostart'     => '* <font color=red>Ver venleg og oppgje startdato</font>',
+	'usagestatisticsnoend'       => '* <font color=red>Ver venleg og oppgje sluttdato</font>',
+	'usagestatisticsbadstartend' => '<b>Ugyldig <i>start</i>– og/eller <i>slutt</i>dato!</b>',
 );
 
 /** Volapük (Volapük)

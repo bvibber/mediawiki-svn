@@ -126,27 +126,32 @@ $messages['be-x-old'] = array(
 	'already_bureaucrat'   => 'Гэты ўдзельнік ужо зьяўляецца бюракратам',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ * @author DCLXVI
+ */
 $messages['bg'] = array(
-	'makesysoptitle' => 'Превръщане на потребител в администратор',
-	'makesysoptext' => 'Този формуляр се използва от бюрократи за превръщане на обикновени потребители в администратори.
+	'makesysoptitle'           => 'Превръщане на потребител в администратор',
+	'makesysoptext'            => 'Този формуляр се използва от бюрократи за превръщане на обикновени потребители в администратори.
 
 Въведете името на потребителя в полето и натиснете бутона, за да направите съответния потребител администратор',
-	'makesysopname' => 'Име на потребителя:',
-	'makesysopsubmit' => 'Превръщане на потребителя в администратор',
-	'makesysopok' => '<b>Потребителят „$1“ беше направен администратор</b>.',
-	'makebureaucratok' => '<b>Потребител "$1" получи статус на бюрократ</b>',
-	'makesysopfail' => '<b>Потребителят „$1“ не беше направен администратор. (Правилно ли въведохте името?)</b>',
-	'setbureaucratflag' => 'Вдигане на флага „бюрократ“',
-	'rights' => 'Права:',
-	'set_user_rights' => 'Даване на потребителски права',
-	'user_rights_set' => '<b>Потребителските права на „$1“ са променени</b>',
-	'set_rights_fail' => '<b>Потребителските права на „$1“ не бяха променени. (Правилно ли въведохте името?)</b>',
-	'makesysop' => 'Превръщане на потребител в администратор',
-	'already_sysop' => 'Този потребител беше вече администратор',
-	'already_bureaucrat' => 'Този потребител беше вече бюрократ',
-	'group-steward' => 'Стюарди',
-	'group-steward-member' => 'Стюард',
-	'grouppage-steward' => '{{ns:project}}:Стюарди',
+	'makesysopname'            => 'Име на потребителя:',
+	'makesysopsubmit'          => 'Превръщане на потребителя в администратор',
+	'makesysopok'              => '<b>Потребителят „$1“ беше направен администратор</b>.',
+	'makebureaucratok'         => '<b>Потребител "$1" получи статус на бюрократ</b>',
+	'makesysopfail'            => '<b>Потребителят „$1“ не беше направен администратор. (Правилно ли въведохте името?)</b>',
+	'makesysop-see-userrights' => 'За повече възможности, вижте [[Special:Userrights]].',
+	'setbureaucratflag'        => 'Вдигане на флага „бюрократ“',
+	'rights'                   => 'Права:',
+	'set_user_rights'          => 'Даване на потребителски права',
+	'user_rights_set'          => '<b>Потребителските права на „$1“ са променени</b>',
+	'set_rights_fail'          => '<b>Потребителските права на „$1“ не бяха променени. (Правилно ли въведохте името?)</b>',
+	'makesysop'                => 'Превръщане на потребител в администратор',
+	'already_sysop'            => 'Този потребител беше вече администратор',
+	'already_bureaucrat'       => 'Този потребител беше вече бюрократ',
+	'group-steward'            => 'Стюарди',
+	'group-steward-member'     => 'Стюард',
+	'grouppage-steward'        => '{{ns:project}}:Стюарди',
 );
 
 /** Bengali (বাংলা)
@@ -1470,11 +1475,17 @@ $messages['to'] = array(
 	'group-steward-member' => 'Setuate',
 );
 
+/** Turkish (Türkçe)
+ * @author SPQRobin
+ * @author Uğur Başak
+ */
 $messages['tr'] = array(
-	'already_bureaucrat'   => 'Bu kullanıcı zaten bürokrat',
-	'already_sysop'        => 'Bu kullanıcı zaten yönetici',
-	'rights'               => 'Haklar:',
-	'user_rights_set'      => '<b>"$1" için kullanıcı hakları güncellendi</b>',
+	'rights'             => 'Haklar:',
+	'user_rights_set'    => '<b>"$1" için kullanıcı hakları güncellendi</b>',
+	'already_sysop'      => 'Bu kullanıcı zaten yönetici',
+	'already_bureaucrat' => 'Bu kullanıcı zaten bürokrat',
+	'group-steward'      => 'Stewardlar',
+	'grouppage-steward'  => '{{ns:project}}:Stewardlar',
 );
 
 $messages['tt'] = array(

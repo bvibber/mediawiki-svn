@@ -180,6 +180,12 @@ $messages['kaa'] = array(
 	'crossnamespacelinks'         => 'Basqa isimler ko\'pligine silteytug\'ın betler',
 );
 
+$messages['kk-arab'] = array(
+	'crossnamespacelinks'         => 'باسقا ەسٸم اياسىنا سٸلتەيتٸن بەتتەر',
+	'crossnamespacelinks-summary' => 'بۇل بەتتە نەگٸزگٸ ەسٸم اياسىنداعى بەتتەگٸ باسقا ەسٸم ايالىرىنداعى ({{ns:special}}, {{ns:talk}}, {{ns:project}} جٵنە {{ns:template}} ەسٸم ايالارىنان تىس) بەتتەرگە سٸلتەمە تٸزٸمٸ بەرٸلەدٸ. وسىنداي سٸلتەمەلەردٸ قولدانۋعا ۇسىنىلمايدى.',
+	'crossnamespacelinkstext'     => '«$1» بەتٸ: «$3» ەسٸم اياسىنا $2 سٸلتەمە '
+);
+
 $messages['kk-cyrl'] = array(
 	'crossnamespacelinks'         => 'Басқа есім аясына сілтейтін беттер',
 	'crossnamespacelinks-summary' => 'Бұл бетте негізгі есім аясындағы беттегі басқа есім аялырындағы ({{ns:special}}, {{ns:talk}}, {{ns:project}} және {{ns:template}} есім аяларынан тыс) беттерге сілтеме тізімі беріледі. Осындай сілтемелерді қолдануға ұсынылмайды.',
@@ -190,12 +196,6 @@ $messages['kk-latn'] = array(
 	'crossnamespacelinks'         => 'Basqa esim ayasına silteýtin better',
 	'crossnamespacelinks-summary' => 'Bul bette negizgi esim ayasındağı bettegi basqa esim ayalırındağı ({{ns:special}}, {{ns:talk}}, {{ns:project}} jäne {{ns:template}} esim ayalarınan tıs) betterge silteme tizimi beriledi. Osındaý siltemelerdi qoldanwğa usınılmaýdı.',
 	'crossnamespacelinkstext'     => '«$1» beti: «$3» esim ayasına $2 silteme '
-);
-
-$messages['kk-arab'] = array(
-	'crossnamespacelinks'         => 'باسقا ەسٸم اياسىنا سٸلتەيتٸن بەتتەر',
-	'crossnamespacelinks-summary' => 'بۇل بەتتە نەگٸزگٸ ەسٸم اياسىنداعى بەتتەگٸ باسقا ەسٸم ايالىرىنداعى ({{ns:special}}, {{ns:talk}}, {{ns:project}} جٵنە {{ns:template}} ەسٸم ايالارىنان تىس) بەتتەرگە سٸلتەمە تٸزٸمٸ بەرٸلەدٸ. وسىنداي سٸلتەمەلەردٸ قولدانۋعا ۇسىنىلمايدى.',
-	'crossnamespacelinkstext'     => '«$1» بەتٸ: «$3» ەسٸم اياسىنا $2 سٸلتەمە '
 );
 
 $messages['kn'] = array(
@@ -324,7 +324,6 @@ $messages['sr-el'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|veza|veze|veza}} ka $3 imenskom prostoru'
 );
 
-$messages['sr'] = $messages['sr-ec'];
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
@@ -354,6 +353,13 @@ $messages['sv'] = array(
 $messages['to'] = array(
 	'crossnamespacelinks'     => 'Ngaahi fehokotaki vā fakalava',
 	'crossnamespacelinkstext' => '$1: {{PLURAL:$2||ngaahi}} fehokotaki ʻe $2 ki he $3',
+);
+
+/** Turkish (Türkçe)
+ * @author SPQRobin
+ */
+$messages['tr'] = array(
+	'crossnamespacelinks' => 'Alanlar arası bağlantısı olan sayfalar',
 );
 
 $messages['vec'] = array(
@@ -391,6 +397,7 @@ $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
 $messages['kk-tr'] = $messages['kk-latn'];
 $messages['pt-br'] = $messages['pt'];
+$messages['sr'] = $messages['sr-ec'];
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];
 $messages['zh-hk'] = $messages['zh-hant'];

@@ -16,6 +16,13 @@ $messages['ar'] = array(
 	'purge' => 'إفراغ الكاش',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'purge' => 'изчистване',
+);
+
 /** Catalan (Català)
  * @author SMP
  */
@@ -75,3 +82,4 @@ $messages['stq'] = array(
 $messages['to'] = array(
 	'purge' => 'fakamaʻa',
 );
+

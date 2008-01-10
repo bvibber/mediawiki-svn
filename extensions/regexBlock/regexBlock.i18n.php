@@ -108,6 +108,7 @@ $messages['bg'] = array(
 	'regexblock-form-username'        => 'IP адрес или потребителско име:',
 	'regexblock-form-reason'          => 'Причина:',
 	'regexblock-form-match'           => 'Пълно съвпадение',
+	'regexblock-form-account-block'   => 'Блокиране създаването на нови сметки',
 	'regexblock-stats-username'       => 'За $1',
 	'regexblock-currently-blocked'    => 'Текущо блокирани адреси:',
 	'regexblock-view-all'             => 'Всички',
@@ -427,3 +428,4 @@ $messages['oc'] = array(
 	'regexblock-view-empty'           => 'La lista dels utilizaires e de las adreças IP blocats es voida.',
 	'regexblock-view-time'            => 'lo $1',
 );
+

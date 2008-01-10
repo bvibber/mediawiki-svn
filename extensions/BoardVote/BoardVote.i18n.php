@@ -2544,6 +2544,25 @@ $messages['to'] = array(
 	'boardvote_dumplink' => 'Lomiʻi heni',
 );
 
+/** Turkish (Türkçe)
+ * @author SPQRobin
+ */
+$messages['tr'] = array(
+	'boardvote'              => 'Wikimedia Mütevelli Heyeti Seçimleri',
+	'boardvote_intro_change' => '<p>Daha evvel oy kullanmıştınız. Ama oyunuzu değiştirebilirsiniz. Aşağıdaki formu kullanarak, uygun olduğunu düşündüğünüz aday ya da adayların yanına tık atıp, oyunuzu gönderiniz.</p>',
+	'boardvote_notloggedin'  => 'Oturum açmamışsınız. Oy kullanabilmek için, kullanıcı olarak $2 tarihinden önce en az $1 değişikliğe sahip olmanız şart. Ayrıca ilk değişikliğinizin $3 tarihinden önce gerçekleşmiş olması gerekmekte.',
+	'boardvote_novotes'      => 'Henüz kimse oy kullanmadı.',
+	'boardvote_time'         => 'Oy kullandığı tarih',
+	'boardvote_edits'        => 'Değişiklik sayısı',
+	'boardvote_days'         => 'Günleri',
+	'boardvote_listintro'    => '<p>Bugüne kadar kaydedilmiş oyların listesi. Şifrelendirilmiş olarak indirmek için $1.</p>',
+	'boardvote_dumplink'     => 'buraya tıklayın',
+	'boardvote_submit'       => 'Oyunuzu kullanın',
+	'boardvote_needadmin'    => 'Bu işlemi sadece seçim yöneticileri yapabilir.',
+	'boardvote_notstarted'   => 'Oylama henüz başlamadı',
+	'boardvote_edits_many'   => 'çok',
+);
+
 /** Tahitian (Reo Mā`ohi)
  * @author SPQRobin
  */
