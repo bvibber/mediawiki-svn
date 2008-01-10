@@ -71,6 +71,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'WebStore',
 	'author' => 'Tim Starling',
 	'description' => 'Web-only (non-NFS) file storage middleware',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:WebStore',
 );
 
 define( 'MW_WEBSTORE_ENABLED', 1 );
