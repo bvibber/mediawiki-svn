@@ -23,9 +23,6 @@ $wgExtensionFunctions[] = 'wfNewuserlog';
 $wgExtensionMessagesFiles['Newuserlog'] = dirname(__FILE__) . '/Newuserlog.i18n.php';
 
 function wfNewuserlog() {
-	# Add messages
-	wfLoadExtensionMessages( 'Newuserlog' );
-
 	# Add a new log type
 	global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
 	$wgLogTypes[]                      = 'newusers';
@@ -42,6 +39,7 @@ function wfNewuserlog() {
 
 function wfNewuserlogHook( $user = null ) {
 	global $wgUser, $wgContLang, $wgVersion;
+	wfLoadExtensionMessages( 'Newuserlog' );
 
 	if( is_null( $user ) ) {
 		// Compatibility with old versions which didn't pass the parameter
