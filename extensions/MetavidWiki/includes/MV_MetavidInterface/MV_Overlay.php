@@ -33,10 +33,10 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$this->load_transcripts();
 		$out='';
 		//set up left hand side timeline
-		$wgOut->addHTML('<div id="mv_time_line" style="float:left;background:#DDDDDD;width:2em;height:95%;overflow:hidden;">' . 
+		$wgOut->addHTML('<div id="mv_time_line">' . 
 					$this->get_video_timeline() .
 				'</div>');
-		$wgOut->addHTML("<div id=\"mv_fd_mvd_cont\" style=\"position:relative;height:95%;width:98%;margin:4px;overflow:auto;\">");
+		$wgOut->addHTML("<div id=\"mv_fd_mvd_cont\" >");
 			$wgOut->addHTML("<div id=\"mv_add_new_mvd\" style=\"display:none;\"></div>");			
 			$this->get_transcript_pages();
 		$wgOut->addHTML("</div>");
@@ -153,7 +153,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			'onmouseup="mv_do_play()" ' . 			
 			*/
 			'style="position:absolute;background:#'.$this->getMvdBgColor($mvd_page).';'.
-			'width:2em;';
+			'width:25px;';
 		//check if duration is set (for php calculation of height position)
 		if($this->duration){			
 			$page_duration = $mvd_page->end_time - $mvd_page->start_time;			

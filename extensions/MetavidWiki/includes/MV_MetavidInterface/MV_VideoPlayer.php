@@ -30,8 +30,7 @@
 		//check if media is availible: 
 		$stream_web_url = $cur_stream->getWebStreamURL();		
 		if($stream_web_url){		 
-			$out='<span class="mv_video_time_hr"  
-				id="mv_videoPlayerTime">'.$cur_stream->mvTitle->getStartTime().' to '.
+			$out='<span id="mv_videoPlayerTime">'.$cur_stream->mvTitle->getStartTime().' to '.
 				$cur_stream->mvTitle->getEndTime() . 
 				'</span>';
 			$out.="<video id=\"embed_vid\" thumbnail=\"".$cur_stream->getStreamImageURL() ."\"". 

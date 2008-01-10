@@ -14,7 +14,7 @@
  	function getHTML(){
  		global $wgOut;
  		//@@todo look at mv_interface context to get what to display in tool box:
- 		$wgOut->addHTML('<div style="overflow:auto;width:100%;height:90%" id="mv_tool_cont">');
+ 		$wgOut->addHTML('<div id="mv_tool_cont">');
  		$this->get_tool_html('stream_page');
 		$wgOut->addHTML('</div>');
 	}

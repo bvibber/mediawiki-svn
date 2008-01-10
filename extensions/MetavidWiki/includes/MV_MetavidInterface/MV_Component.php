@@ -44,7 +44,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  	function render_full(){
  		global $wgOut;
  		//"<div >" .
- 		$wgOut->addHTML("<fieldset id=\"".get_class($this)."\" style=\"". $this->mv_interface->getStylePos(get_class($this))."\">\n" .
+ 		$wgOut->addHTML("<fieldset id=\"".get_class($this)."\" >\n" .
  					"<legend id=\"mv_leg_".get_class($this)."\">".$this->render_menu()."</legend>\n"); 				
  		//do the implemented html 
  		$this->getHTML(); 

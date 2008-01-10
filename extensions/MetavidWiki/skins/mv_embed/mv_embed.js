@@ -780,7 +780,8 @@ embedVideo.prototype = {
 				});			
 			}
 		}
-	},selectPlaybackMethod:function(){
+	},
+	selectPlaybackMethod:function(){
 		 //put select list on-top
 		 //make sure the parent is relatively positioned:
 		 $j('#'+this.id).css('position', 'relative');
@@ -1327,7 +1328,6 @@ function getMvEmbedPath(){
 	}
 }
 
-
 /*
 * utility functions:
 */
@@ -1339,9 +1339,9 @@ function getMvEmbedPath(){
 	     /*
 	      * IE and non-firebug debug:
 	      */
-	      /* var log_elm = document.getElementById('mv_js_log');
+	     /*var log_elm = document.getElementById('mv_js_log');
 	     if(!log_elm){
-	     	document.write('<textarea id="mv_js_log" cols="80" rows="6"></textarea>');
+	     	document.write('<div style="position:absolute;z-index:50;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
 	     	var log_elm = document.getElementById('mv_js_log');
 	     }
 	     if(log_elm){

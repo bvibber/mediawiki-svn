@@ -914,7 +914,7 @@ function mv_tool_disp(tool_id){
   					case 'search':
   						//load search.js  ... @@todo cleanup path
   						mvJsLoader.doLoad({  	  
-							'mv_setup_search':'../mv_search.js',
+							'mv_setup_search':'../mv_search.js'
 					  	},function(){   
 					  		$j('#mv_tool_cont').html( mv_result['innerHTML']);
 					  		mv_setup_search();

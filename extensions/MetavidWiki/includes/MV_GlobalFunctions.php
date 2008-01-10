@@ -164,9 +164,14 @@ function mvSetupExtension(){
 			$wgOut->addLink(array(
 				'rel'   => 'stylesheet',
 				'type'  => 'text/css',
-				'media' => 'screen, projection',
+				'media' => 'all',
 				'href'  => $mvCssUrl
 			));				
+			//add extra IE styles fixes 
+			$mvCssUrlIE = $mvgScriptPath . '/skins/MV_customIE.css';
+			$wgOut->addScript('<!--[if IE]>' .
+						'<link href="'.$mvCssUrlIE.'" rel="stylesheet" media="all" type="text/css">'.
+					'<![endif]-->');
 			
 			$mvgHeadersInPlace=true;
 		}

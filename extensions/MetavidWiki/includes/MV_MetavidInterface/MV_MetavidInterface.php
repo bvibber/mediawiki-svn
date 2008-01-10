@@ -18,18 +18,7 @@
  	var $components = array();
  	var $context=null;
  	var $page_title='';
- 	var $page_header='';
- 	//default layout: 
- 	var $cpLayout = array(
- 		'MV_VideoPlayer'=>'position:absolute;width:322px;top:30px;height:270px;left:10px;margin:4px;',
- 		'MV_Overlay'=>'position:absolute;left:365px;right:10px;top:30px;bottom:10px;margin:4px;',
- 		'MV_Tools'=>'position:absolute;width:322px;top:312px;left:10px;bottom:10px;margin:4px;',
- 		'MV_StreamMeta'=>'position:absolute;width:322px;top:307px;left:10px;bottom:10px;margin:4px;',
- 		
- 		'MV_SequencePlayer'=>'position:absolute;width:322px;top:25px;bottom:195px;left:10px;margin:4px;',
- 		'MV_SequenceTools'=>'position:absolute;left:365px;right:10px;top:25px;bottom:195px;margin:4px;',
- 		'MV_SequenceTimeline'=>'position:absolute;left:10px;right:10px;height:174px;bottom:0px;margin:4px;',
- 	);
+ 	var $page_header=''; 	
  	function __construct($contextType, & $contextArticle=null ){
  		global $mv_default_view;
  		$this->context = $contextType;
@@ -115,12 +104,7 @@
 
 		
 		$this->page_title = $this->article->mvTitle->getStreamNameText().' '.$this->article->mvTitle->getTimeDesc();
- 	}
- 	/*renders style position based on default layout */
- 	function getStylePos($cp_name){
- 		if(isset($this->cpLayout[$cp_name]))return $this->cpLayout[$cp_name];
- 		return '';
- 	}
+ 	} 	
  	/*
  	 * renders the full page  to the wgOut object
  	 */
@@ -130,22 +114,38 @@
  		
  		//output title and header: 		
  		$wgOut->setHTMLTitle($this->page_title);
+ 		
  		if($this->page_header=='')$this->page_header = '<span style="position:relative;top:-12px;font-weight:bold">' . 
  			$this->page_title . '</span>';
- 		$wgOut->addHTML($this->page_header);
- 		
- 		
+ 		$wgOut->addHTML($this->page_header); 		 		
  		//output the time range
  		//output basic steam info in the 
  		//$out.='<div id="mv_base_container" style="position:absolute;border:solid;border-color:red;width:100%;height:100%">';
+
+ 		//start swiching interfaces over to table layout 
+ 		//seems easier to get IE & firefox to layout stuff the same way
+ 		//if someone wants to prove me wrong and write cross-browser div/css layout ... by all means :)
+ 		/*if($this->context=='stream'){
+ 			$wgOut->addHTML('<table width="100%" height="600">');
+ 				$wgOut->addHTML('<tr>' .
+ 									'<td width="330" >'
+ 								'</tr>' .
+ 								'<tr>' .
+ 								'</tr>'); 								 								
+ 			$wgOut->addHTML('</table>');
+ 		}else{*/ 	
+ 		//@@todo dynamic resize page_spacer:
+ 		$wgOut->addHTML('<div id="mv_page_spacer" style="width:100%;height:550px">');	 
  		foreach($this->components as $cpKey => &$component){ 			
- 			$component->render_full();
- 		}
+ 			$component->render_full(); 			
+ 		} 		 	
+ 		$wgOut->addHTML('</div>');
  		//for now output spacers 
 		//@@todo output a dynamic spacer javascript layout		
-		$out='';  	
- 		for($i=0;$i<28;$i++)$out.="<br>";
- 		$wgOut->addHTML($out); 		 		
+		//$out='';  	
+ 		//for($i=0;$i<28;$i++)$out.="<br>";
+ 		//$wgOut->addHTML($out);
+ 		//} 		 		
  	} 	
  }
 ?>
