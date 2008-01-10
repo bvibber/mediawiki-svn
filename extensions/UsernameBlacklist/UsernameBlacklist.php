@@ -29,12 +29,11 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 	 * Register the extension
 	 */
 	function efUsernameBlacklistSetup() {
-		global $wgHooks, $wgVersion, $wgMessageCache;
+		global $wgHooks;
 		require_once( dirname( __FILE__ ) . '/UsernameBlacklist.i18n.php' );
 		$wgHooks['AbortNewAccount'][] = 'efUsernameBlacklist';
 		$wgHooks['ArticleSaveComplete'][] = 'efUsernameBlacklistInvalidate';
 		$wgHooks['EditFilter'][] = 'efUsernameBlacklistValidate';
-		wfLoadExtensionMessages('UsernameBlacklist');
 	}
 
 	/**
@@ -46,6 +45,7 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 		global $wgUser;
 		$blackList =& UsernameBlacklist::fetch();
 		if( $blackList->match( $user->getName() ) && !$wgUser->isAllowed( 'uboverride' ) ) {
+			wfLoadExtensionMessages( 'UsernameBlacklist' );
 			global $wgOut;
 			$returnTitle = Title::makeTitle( NS_SPECIAL, 'Userlogin' );
 			$wgOut->errorPage( 'blacklistedusername', 'blacklistedusernametext' );
@@ -82,6 +82,7 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 			$badLines = $blacklist->validate( $text );
 			
 			if( $badLines ) {
+				wfLoadExtensionMessages( 'UsernameBlacklist' );
 				$badList = "*<tt>" .
 					implode( "</tt>\n*<tt>",
 						array_map( 'wfEscapeWikiText', $badLines ) ) .
@@ -148,7 +149,7 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 		 */
 		function buildBlacklist() {
 			$blacklist = wfMsgForContent( 'usernameblacklist' );
-			if( $blacklist != '&lt;usernameblacklist&gt;' ) {
+			if( !wfEmptyMsg( 'usernameblacklist', $blacklist ) ) {
 				return $this->safeBlacklist( $blacklist );
 			} else {
 				return array();
