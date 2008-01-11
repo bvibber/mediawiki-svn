@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 $dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['Duplicator'] = $dir . 'Duplicator.i18n.specialpagealiases.php';
+$wgExtensionMessagesFiles['Duplicator'] = $dir . 'Duplicator.i18n.php';
 $wgAutoloadClasses['SpecialDuplicator'] = $dir . 'Duplicator.page.php';
 $wgSpecialPages['Duplicator'] = 'SpecialDuplicator';
 $wgHooks['LanguageGetSpecialPageAliases'][] = 'efDuplicatorSetupAliases';
@@ -38,7 +38,7 @@ $wgDuplicatorRevisionLimit = 250;
  */
 function efDuplicator() {
 	global $wgHooks;
-	require_once( dirname( __FILE__ ) . '/Duplicator.aliases.i18n.php' );
+	require_once( dirname( __FILE__ ) . '/Duplicator.i18n.specialpagealiases.php' );
 	$wgHooks['SkinTemplateBuildNavUrlsNav_urlsAfterPermalink'][] = 'efDuplicatorNavigation';
 	$wgHooks['MonoBookTemplateToolboxEnd'][] = 'efDuplicatorToolbox';
 }
