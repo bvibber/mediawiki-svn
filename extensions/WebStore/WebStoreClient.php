@@ -5,7 +5,7 @@ class WebStoreClient extends FileStore {
 	var $lastError;
 
 	function __construct() {
-		WebStoreCommon::initialiseMessages();
+		wfLoadExtensionMessages( 'WebStore' );
 	}
 
 	function getURL( $script ) {
@@ -20,7 +20,7 @@ class WebStoreClient extends FileStore {
 
 	function parseResponse( $text ) {
 		if ( strval( $text ) == '' ) {
-			// lastError should have been set by post/postFile, but just in case, we'll 
+			// lastError should have been set by post/postFile, but just in case, we'll
 			// set a fallback message here.
 			if ( strval( $this->lastError ) == '' ) {
 				$this->setError( 'webstore_no_response' );
@@ -68,7 +68,7 @@ class WebStoreClient extends FileStore {
 	 * "new" if the file didn't exist, and "failure" if there was a problem. Details
 	 * of the problem are put in $this->lastError.
 	 *
-	 * The source zone may be one of "local", "temp", "public" or "deleted". The 
+	 * The source zone may be one of "local", "temp", "public" or "deleted". The
 	 * file is copied if it is "public", and moved otherwise.
 	 */
 	function publish( $srcZone, $srcRel, $dstRel, $archiveRel ) {
@@ -124,7 +124,7 @@ class WebStoreClient extends FileStore {
 
 	function metadata( $zone, $path ) {
 		$content = $this->post( $this->getURL( 'metadata.php' ),
-			array( 
+			array(
 				'zone' => $zone,
 				'path' => $path,
 			));
@@ -184,5 +184,3 @@ class WebStoreClient extends FileStore {
 		return $post->content;
 	}
 }
-
-

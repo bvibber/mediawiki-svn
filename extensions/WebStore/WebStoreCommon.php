@@ -1,10 +1,9 @@
 <?php
 
-
 class WebStoreCommon {
 	const NO_LOCK = 1;
 	const OVERWRITE = 2;
-	
+
 	static $httpErrors = array(
 		400 => 'Bad Request',
 		403 => 'Access Denied',
@@ -14,7 +13,7 @@ class WebStoreCommon {
 
 	static $tempDirFormat = 'Y-m-d\TH';
 
-	var $accessRanges = array(), $publicDir = false, $tmpDir = false, 
+	var $accessRanges = array(), $publicDir = false, $tmpDir = false,
 		$deletedDir = false, $tempExpiry = 7200,
 		$inplaceScalerAccess = array(), $errors = array(),
 		$pathDisclosureProtection = 'simple';
@@ -41,8 +40,8 @@ class WebStoreCommon {
 			}
 		}
 		$this->windows = wfIsWindows();
-		
-		self::initialiseMessages();
+
+		wfLoadExtensionMessages( 'WebStore' );
 	}
 
 	function setErrorHandler() {
@@ -113,7 +112,7 @@ EOT;
 		}
 		$this->setErrorHandler();
 		$this->execute();
-	}		
+	}
 
 	function validateFilename( $filename ) {
 		if ( strval( $filename ) == '' ) {
@@ -173,10 +172,10 @@ EOT;
 
 	/**
 	 * Move a file from one place to another. Fails if the destination file already exists.
-	 * Requires a filesystem with locking semantics to work concurrently, i.e. not NFS. 
+	 * Requires a filesystem with locking semantics to work concurrently, i.e. not NFS.
 	 *
-	 * $flags may be: 
-	 * 		self::NO_LOCK if you already have the destination lock. 
+	 * $flags may be:
+	 * 		self::NO_LOCK if you already have the destination lock.
 	 * Returns true on success and false on failure.
 	 */
 	function movePath( $srcPath, $dstPath, $flags = 0 ) {
@@ -235,11 +234,11 @@ EOT;
 	}
 
 	/*
-	 * Atomically copy a file from one place to another. Fails if the destination file 
-	 * already exists. Requires a filesystem with locking semantics to work concurrently, 
+	 * Atomically copy a file from one place to another. Fails if the destination file
+	 * already exists. Requires a filesystem with locking semantics to work concurrently,
 	 * i.e. not NFS.
 	 *
-	 * $flags may be: 
+	 * $flags may be:
 	 *      * self::NO_LOCK if you already have the destination lock (*.lock.MW_WebStore)
 	 *      * self::OVERWRITE to overwrite the destination if it exists
 	 *
@@ -340,22 +339,6 @@ EOT;
 			}
 		}
 		return false;
-	}
-
-	static function initialiseMessages() {
-		static $done = false;
-		if ( $done ) {
-			return true;
-		}
-		$done = true;
-
-		require( dirname( __FILE__ ) . '/WebStore.i18n.php' );
-
-		global $wgMessageCache;
-		foreach ( $messages as $code => $messages2 ) {
-			$wgMessageCache->addMessages( $messages2, $code );
-		}
-		return true;
 	}
 
 	/**
@@ -474,7 +457,7 @@ class WebStoreError {
 			}
 		}
 
-		$xml = "<{$this->type}>\n" . 
+		$xml = "<{$this->type}>\n" .
 			Xml::element( 'message', null, $this->message ) . "\n" .
 			Xml::element( 'text', null, wfMsgReal( $this->message, $this->params ) ) ."\n";
 		foreach ( $this->params as $param ) {
@@ -493,5 +476,3 @@ class WebStoreWarning extends WebStoreError {
 		$this->params = array_slice( func_get_args(), 1 );
 	}
 }
-
-

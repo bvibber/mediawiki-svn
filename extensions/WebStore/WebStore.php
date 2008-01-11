@@ -1,9 +1,8 @@
 <?php
 
-
 $wgWebStoreSettings = array(
 	/**
-	 * Set this in LocalSettings.php to an array of IP ranges allowed to access 
+	 * Set this in LocalSettings.php to an array of IP ranges allowed to access
 	 * the store. Empty by default for maximum security.
 	 */
 	'accessRanges' => array( '127.0.0.1' ),
@@ -62,17 +61,18 @@ $wgWebStoreSettings = array(
 	'pathDisclosureProtection' => 'simple',
 );
 
-$wgAutoloadClasses['WebStoreClient'] = 'extensions/WebStore/WebStoreClient.php';
-$wgAutoloadClasses['WebStoreCommon'] = 'extensions/WebStore/WebStoreCommon.php';
-$wgAutoloadClasses['WebStorePostFile'] = 'extensions/WebStore/WebStorePostFile.php';
-$wgHooks['LoadAllMessages'][] = 'WebStoreCommon::initialiseMessages';
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['WebStore'] = $dir . 'WebStore.i18n.php';
+$wgAutoloadClasses['WebStoreClient'] = $dir . 'WebStoreClient.php';
+$wgAutoloadClasses['WebStoreCommon'] = $dir . 'WebStoreCommon.php';
+$wgAutoloadClasses['WebStorePostFile'] = $dir . 'WebStorePostFile.php';
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'WebStore',
+	'version' => '2008-01-11',
 	'author' => 'Tim Starling',
 	'description' => 'Web-only (non-NFS) file storage middleware',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:WebStore',
 );
 
 define( 'MW_WEBSTORE_ENABLED', 1 );
-
