@@ -26,6 +26,8 @@
 # between Login and Convert
 
 require_once("Auth/OpenID/Consumer.php");
+require_once("Auth/OpenID/SReg.php");
+require_once("Auth/OpenID/FileStore.php");
 
 class SpecialOpenID extends SpecialPage {
 
@@ -305,14 +307,49 @@ class SpecialOpenID extends SpecialPage {
 			}
 		}
 
-		$auth_request->addExtensionArg('sreg', 'optional', 'nickname,email,fullname,language,timezone');
+		$sreg_request = Auth_OpenID_SRegRequest::build(
+													   // Required
+													   array(),
+													   // Optional
+													   array('nickname','email',
+															 'fullname','language','timezone'));
 
+		if ($sreg_request) {
+			$auth_request->addExtension($sreg_request);
+		}
+		
 		$process_url = $this->fullUrl($finish_page);
 
-		$redirect_url = $auth_request->redirectURL($trust_root,
-												   $process_url);
-
-		# OK, now go
-		$wgOut->redirect($redirect_url);
+		if ($auth_request->shouldSendRedirect()) {
+			$redirect_url = $auth_request->redirectURL($trust_root,
+													   $process_url);
+			if (Auth_OpenID::isFailure($redirect_url)) {
+				displayError("Could not redirect to server: " . $redirect_url->message);
+			} else {
+				# OK, now go
+				$wgOut->redirect($redirect_url);
+			}
+		} else {
+			// Generate form markup and render it.
+			$form_id = 'openid_message';
+			$form_html = $auth_request->formMarkup($trust_root, $process_url,
+												   false, array('id' => $form_id));
+			
+			// Display an error if the form markup couldn't be generated;
+			// otherwise, render the HTML.
+			if (Auth_OpenID::isFailure($form_html)) {
+				displayError("Could not redirect to server: " . $form_html->message);
+			} else {
+				$page_contents = array(
+									   "<html><head><title>",
+									   "OpenID transaction in progress",
+									   "</title></head>",
+									   "<body onload='document.getElementById(\"".$form_id."\").submit()'>",
+									   $form_html,
+									   "</body></html>");
+				$wgOut->disable();
+				print implode("\n", $page_contents);
+			}
+		}
 	}
 }

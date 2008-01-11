@@ -120,7 +120,6 @@ function setupOpenID() {
 
 	# Autoload storage classes
 
-	$wgAutoloadClasses['Auth_OpenID_FileStore'] = 'Auth/OpenID/FileStore.php';
 	$wgAutoloadClasses['OpenID_MemcStore'] = dirname(__FILE__) . '/MemcStore.php';
 
 	$wgHooks['PersonalUrls'][] = 'OpenIDPersonalUrls';
