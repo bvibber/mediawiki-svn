@@ -1,6 +1,6 @@
 <?php
 
-$allMessages = array(
+$messages = array(
 	'textrichditor' => 'Uitgebreide editor',
 	'tog-riched_disable' => 'Uitgebreide editor uitschakelen',
 	'tog-riched_disable_ns_main' => 'Uitgebreide editor uitschakelen binnen de hoofdnaamruimte',

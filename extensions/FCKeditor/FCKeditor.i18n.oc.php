@@ -1,6 +1,6 @@
 <?php
 
-$allMessages = array(
+$messages = array(
 	'textrichditor' => '\'\'Rich Editor\'\'',
 	'tog-riched_disable' => 'Desactivar \'\'Rich Editor\'\'',
 	'tog-riched_disable_ns_main' => 'Desactivar \'\'Rich Editor\'\' dins l\'espaci de noms principal.',

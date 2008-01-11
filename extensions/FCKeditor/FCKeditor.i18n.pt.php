@@ -1,5 +1,5 @@
 <?php
-$allMessages = array(
+$messages = array(
 	'textrichditor' => 'Editor Rico',
 	'tog-riched_disable' => 'Desactivar editor rico',
 	'tog-riched_disable_ns_main' => 'Desactivar editor rico no espaço nominal principal',

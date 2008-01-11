@@ -1,6 +1,6 @@
 <?php
 
-$allMessages = array(
+$messages = array(
 'textrichditor' => 'Rich Editor',
 'tog-riched_disable' => 'Wyłącz Rich Editora',
 'tog-riched_disable_ns_main' => 'Wyłącz Rich Editora wewątrz głównej przestrzeni nazw',

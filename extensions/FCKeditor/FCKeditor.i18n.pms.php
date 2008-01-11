@@ -1,6 +1,6 @@
 <?php
 
-$allMessages = array(
+$messages = array(
 	'textrichditor' => 'Editor svicio',
 	'tog-riched_disable' => 'Disabilité l\'editor svicio',
 	'tog-riched_disable_ns_main' => 'Disabilité l\'editor svicio ant lë spassi nominal prinsipal',

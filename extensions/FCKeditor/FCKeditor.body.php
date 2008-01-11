@@ -124,7 +124,7 @@ class FCKeditor_MediaWiki
                 require( dirname( __FILE__ ) . DIRECTORY_SEPARATOR .'FCKeditor.i18n.en.php' );
             }
 
-            $wgMessageCache->addMessages( $allMessages, $lang );
+            $wgMessageCache->addMessages( $messages, $lang );
             self::$messagesLoaded = true;
         }
 

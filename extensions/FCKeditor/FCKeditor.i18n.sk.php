@@ -1,5 +1,5 @@
 <?php
-$allMessages = array(
+$messages = array(
 	'textrichditor' => 'Editor formátovaného textu',
 	'tog-riched_disable' => 'Vypnúť editor formátovaného textu',
 	'tog-riched_disable_ns_main' => 'Vypnúť editor formátovaného textu v hlavnom mennom priestore',

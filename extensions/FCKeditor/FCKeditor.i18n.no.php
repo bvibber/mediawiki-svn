@@ -1,5 +1,5 @@
 <?php
-$allMessages = array(
+$messages = array(
 	'textrichditor' => 'Rik tekstredigering',
 	'tog-riched_disable' => 'Slå av rik tekstredigering',
 	'tog-riched_disable_ns_main' => 'Slå av rik tekstredigering i hovednavnerommet',

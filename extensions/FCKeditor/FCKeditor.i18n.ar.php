@@ -1,5 +1,5 @@
 <?php
-$allMessages = array(
+$messages = array(
 	'textrichditor' => 'محرر متقدم',
 	'tog-riched_disable' => 'عطل المحرر المتقدم',
 	'tog-riched_disable_ns_main' => 'عطل المحرر المتقدم في النطاق الرئيسي',
