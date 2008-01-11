@@ -82,6 +82,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Sherbrooke
+ * @author Grondin
  */
 $messages['fr'] = array(
 	'specialuserstats'           => "Statistiques d'utilisation",
@@ -89,6 +90,7 @@ $messages['fr'] = array(
 	'usagestatisticsfor'         => '<h2>Statistiques Utilisation pour [[:user:$1|$1]]</h2>',
 	'usagestatisticsallusers'    => 'Tous les utilisateurs',
 	'usagestatisticsinterval'    => 'Intervalle',
+	'usagestatisticstype'        => 'Type',
 	'usagestatisticsstart'       => 'Date de début',
 	'usagestatisticsend'         => 'Date de fin',
 	'usagestatisticssubmit'      => 'Générer les statistiques',

@@ -452,14 +452,14 @@ adatbázis-adminisztrátor, ha hibát vétesz.",
 Ezen információk kiadása az adatvédelmi biztosi jogosultség végleges elvesztését is jelentheti.',
 );
 
-/* Indonesian (borgx) */
+/** Indonesian (Bahasa Indonesia)
+ * @author Borgx
+ */
 $messages['id'] = array(
-	'hiderevision' => 'Sembunyikan revisi',
-	// Empty form
-	'hiderevision-prompt' => 'Nomor revisi untuk dihilangkan:',
-	'hiderevision-continue' => 'Lanjutkan',
-	// Confirmation form
-	'hiderevision-text' => "Ini hanya diproses '''hanya''' dalam kasus:
+	'hiderevision'                => 'Sembunyikan revisi',
+	'hiderevision-prompt'         => 'Nomor revisi untuk dihilangkan:',
+	'hiderevision-continue'       => 'Lanjutkan',
+	'hiderevision-text'           => "Ini hanya diproses '''hanya''' dalam kasus:
 * Informasi pribadi
 *: ''alamat rumah, nomor telepon, dll''
 
@@ -468,31 +468,27 @@ $messages['id'] = array(
 Item yang dihilangkan tidak akan dapat dilihat oleh siapapun melalui situs web,
 tetapi penghapusan akan dicatat dan dapat dikembalikan secara manual oleh seorang
 administrator basis data jika Anda membuat kesalahan.",
-	'hiderevision-reason' => 'Alasan:',
-	'hiderevision-submit' => 'Sembunyikan data secara permanen',
-	// Tab displayed to allowed users on old revision display
-	'hiderevision-tab' => 'Sembunyikan revisi',
-	// Status & errors on action
-	'hiderevision-norevisions' => 'Tidak ada revisi untuk dihapus.',
-	'hiderevision-noreason' => 'Anda harus menyatakan alasan penghapusan.',
-	'hiderevision-status' => 'Revisi $1: $2',
-	'hiderevision-success' => 'Revisi telah disembunyikan.',
-	'hiderevision-error-missing' => 'Tidak ditemukan dalam basis data.',
-	'hiderevision-error-current' => 'Tidak bisa memproses penghapusan. Kembalikan perubahan ini dahulu.',
-	'hiderevision-error-delete' => 'Tidak bisa memproses penghapusan. Sudah dihapus?',
+	'hiderevision-reason'         => 'Alasan:',
+	'hiderevision-submit'         => 'Sembunyikan data secara permanen',
+	'hiderevision-tab'            => 'Sembunyikan revisi',
+	'hiderevision-norevisions'    => 'Tidak ada revisi untuk dihapus.',
+	'hiderevision-noreason'       => 'Anda harus menyatakan alasan penghapusan.',
+	'hiderevision-status'         => 'Revisi $1: $2',
+	'hiderevision-success'        => 'Revisi telah disembunyikan.',
+	'hiderevision-error-missing'  => 'Tidak ditemukan dalam basis data.',
+	'hiderevision-error-current'  => 'Tidak bisa memproses penghapusan. Kembalikan perubahan ini dahulu.',
+	'hiderevision-error-delete'   => 'Tidak bisa memproses penghapusan. Sudah dihapus?',
 	'hiderevision-archive-status' => 'Revisi dihapus dari $1: $2',
-	'oversight-nodiff' => 'Tidak dapat melacak perubahan karena tidak ada revisi terdahulu untuk halaman dimaksud. Hal ini dapat terjadi karena:
+	'oversight-nodiff'            => 'Tidak dapat melacak perubahan karena tidak ada revisi terdahulu untuk halaman dimaksud. Hal ini dapat terjadi karena:
 *Halaman telah dihapus
 *Revisi yang disembunyikan merupakan revisi pertama',
-	// Logging
-	'oversight-log-hiderev' => 'menghapus sebuah suntingan dari $1',
-	// Oversight review page
-	'oversight' => 'Pengawas',
-	'oversight-view' => 'detil',
-	'oversight-difference' => '(Perbedaan dari revisi terdahulu yang ada)',
-	'oversight-prev' => 'revisi terdahulu terakhir',
-	'oversight-hidden' => 'Revisi disembunyikan',
-	'oversight-header' => 'Di bawah ini adalah daftar revisi yang disembunyikan secara permanen dari publik.
+	'oversight-log-hiderev'       => 'menghapus sebuah suntingan dari $1',
+	'oversight'                   => 'Log penghapusan revisi secara permanen',
+	'oversight-view'              => 'detil',
+	'oversight-difference'        => '(Perbedaan dari revisi terdahulu yang ada)',
+	'oversight-prev'              => 'revisi terdahulu terakhir',
+	'oversight-hidden'            => 'Revisi disembunyikan',
+	'oversight-header'            => 'Di bawah ini adalah daftar revisi yang disembunyikan secara permanen dari publik.
 Menyebarkan informasi ini dapat berakibat kepada hilangnya hak pengawas.',
 );
 

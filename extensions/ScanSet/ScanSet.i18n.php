@@ -43,6 +43,14 @@ $messages['bg'] = array(
 	'scanset_prev' => '&lt; Предишни',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'scanset_next' => 'পরবর্তী &gt;',
+	'scanset_prev' => '&lt; পূর্ববর্তী',
+);
+
 # فارسی (Huji)
 $messages['fa'] = array(
 	'scanset_no_name'                   => 'ScanSet: شما باید نام مجموعه را وارد کنید، مثلاً <scanset name="EB1911" />.',
@@ -82,6 +90,16 @@ $messages['fr'] = array(
 	'scanset_invalid_volume'            => 'ScanSet : Volume non valide',
 	'scanset_next'                      => 'Suivant &gt;',
 	'scanset_prev'                      => '&lt; Précédent',
+);
+
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'scanset_opendir_error' => 'ScanSet: Erro, non se pode abrir o directorio $1',
+	'scanset_next'          => 'Seguinte &gt;',
+	'scanset_prev'          => '&lt; Anterior',
+
 );
 
 /** Croatian (Hrvatski)
@@ -132,16 +150,6 @@ $messages['hu'] = array(
 	'scanset_invalid_volume'            => 'ScanSet: érvénytelen kötet',
 	'scanset_next'                      => 'Következő &gt;',
 	'scanset_prev'                      => '← Előző',
-);
-
-/** Galician (Galego)
- * @author Alma
- */
-$messages['gl'] = array(
-	'scanset_opendir_error' => 'ScanSet: Erro, non se pode abrir o directorio $1',
-	'scanset_next'          => 'Seguinte &gt;',
-	'scanset_prev'          => '&lt; Anterior',
-
 );
 
 /** Dutch (Nederlands)

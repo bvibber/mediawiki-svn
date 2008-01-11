@@ -54,10 +54,13 @@ $messages['be'] = array(
 	'createarticle'  => 'Пачаць артыкул',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
 $messages['bg'] = array(
 	'tryexact'       => 'Пълно и точно съвпадение',
 	'searchfulltext' => 'Претърсване на целия текст',
-	'createarticle'  => 'Създаване на статия',
+	'createarticle'  => 'Създаване',
 );
 
 /** Bislama (Bislama)
@@ -360,6 +363,14 @@ $messages['kab'] = array(
 	'createarticle'  => 'Xleq amagrad',
 );
 
+$messages['kk-arab'] = array(
+	'inputbox-error-no-type'  => 'جاسالاتىن ەنگٸزۋ جولاعىنىڭ تٷرٸن كەلتٸرمەپسٸز.',
+	'inputbox-error-bad-type' => 'ەنگٸزۋ جولاقتىڭ «$1» تٷرٸ تانىلمادى. تەك «create», «comment», «search» نە «search2» دەگەن تٷرلەردٸ كەلتٸرٸڭٸز.',
+	'tryexact'                => 'دٵل سٵيكەسٸن سىناپ كٶرٸڭٸز',
+	'searchfulltext'          => 'تولىق مٵتٸنٸمەن ٸزدەۋ',
+	'createarticle'           => 'بەتتٸ باستاۋ',
+);
+
 $messages['kk-cyrl'] = array(
 	'inputbox-error-no-type'  => 'Жасалатын енгізу жолағының түрін келтірмепсіз.',
 	'inputbox-error-bad-type' => 'Енгізу жолақтың «$1» түрі танылмады. Тек «create», «comment», «search» не «search2» деген түрлерді келтіріңіз.',
@@ -374,14 +385,6 @@ $messages['kk-latn'] = array(
 	'tryexact'                => 'Däl säýkesin sınap köriñiz',
 	'searchfulltext'          => 'Tolıq mätinimen izdew',
 	'createarticle'           => 'Betti bastaw',
-);
-
-$messages['kk-arab'] = array(
-	'inputbox-error-no-type'  => 'جاسالاتىن ەنگٸزۋ جولاعىنىڭ تٷرٸن كەلتٸرمەپسٸز.',
-	'inputbox-error-bad-type' => 'ەنگٸزۋ جولاقتىڭ «$1» تٷرٸ تانىلمادى. تەك «create», «comment», «search» نە «search2» دەگەن تٷرلەردٸ كەلتٸرٸڭٸز.',
-	'tryexact'                => 'دٵل سٵيكەسٸن سىناپ كٶرٸڭٸز',
-	'searchfulltext'          => 'تولىق مٵتٸنٸمەن ٸزدەۋ',
-	'createarticle'           => 'بەتتٸ باستاۋ',
 );
 
 /** Korean (한국어)
@@ -736,18 +739,15 @@ $messages['zh-hant'] = array(
 	'searchfulltext' => '全文檢索',
 	'createarticle'  => '建立文章',
 );
-	/* Kazakh fallbacks */
-	$messages['kk-kz'] = $messages['kk-cyrl'];
-	$messages['kk-tr'] = $messages['kk-latn'];
-	$messages['kk-cn'] = $messages['kk-arab'];
-	$messages['kk'] = $messages['kk-cyrl'];
-	/* Min nan default, fallback to nan */
-	$messages['zh-min-nan'] = $messages['nan'];
-	/* Chinese defaults, fallback to zh-hans or zh-hant */
-	$messages['zh'] = $messages['zh-hans'];
-	$messages['zh-cn'] = $messages['zh-hans'];
-	$messages['zh-hk'] = $messages['zh-hant'];
-	$messages['zh-tw'] = $messages['zh-hans'];
-	$messages['zh-sg'] = $messages['zh-hant'];
-	/* Cantonese default, fallback to yue */
-	$messages['zh-yue'] = $messages['yue'];
+
+$messages['kk'] = $messages['kk-cyrl'];
+$messages['kk-cn'] = $messages['kk-arab'];
+$messages['kk-kz'] = $messages['kk-cyrl'];
+$messages['kk-tr'] = $messages['kk-latn'];
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-min-nan'] = $messages['nan'];
+$messages['zh-sg'] = $messages['zh-hant'];
+$messages['zh-tw'] = $messages['zh-hans'];
+$messages['zh-yue'] = $messages['yue'];

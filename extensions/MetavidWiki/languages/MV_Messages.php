@@ -259,7 +259,7 @@ $messages['ar'] = array(
 	'anno_en'                        => 'الأنوتاشنات والتصنيفات',
 	'anno_en_desc'                   => 'الأنوتاشنتات والتصنيفات الإنجليزية. هذه التغطية يمكن استخدامها ل \\"tag\\"/تصنيف أقسام من الفيديو أو لإضافة معلومات أنوتاشن ليست نصا منطوقا',
 	'mv_data_page_title'             => '$1 ل$2 من $3',
-	
+	'mv_time_separator'              => '$1 إلى $2',
 	'mv_list_streams'                => 'عرض ستريمات ميتافيد',
 	'mv_list_streams_page'           => 'عرض ستريمات إم في',
 	'mv_list_streams_docu'           => 'الستريمات التالية موجودة:',
@@ -369,6 +369,7 @@ $messages['bg'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Nike
  */
 $messages['fr'] = array(
 	'metavid'                        => 'Page metavid',
@@ -518,6 +519,7 @@ $messages['fr'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
 	'metavid'                       => 'Metavid-pagina',
