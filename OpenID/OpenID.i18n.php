@@ -71,6 +71,7 @@ $OpenIDMessages =array(
 				 'openidalreadyloggedin' => '<strong>User $1, you are already logged in!</strong>',
 				 'tog-hideopenid' => 'Hide your <a href="http://openid.net/">OpenID</a> on your user page, if you log in with OpenID.',
 				 'openidnousername' => 'No username specified.',
-				 'openidbadusername' => 'Bad username specified.',				 
+				 'openidbadusername' => 'Bad username specified.',
+				 'openidautosubmit' => 'This page includes a form that should be automatically submitted if you have JavaScript enabled. If not, try the "Continue" button.',
 				 )
 );

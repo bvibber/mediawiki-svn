@@ -340,15 +340,9 @@ class SpecialOpenID extends SpecialPage {
 			if (Auth_OpenID::isFailure($form_html)) {
 				displayError("Could not redirect to server: " . $form_html->message);
 			} else {
-				$page_contents = array(
-									   "<html><head><title>",
-									   "OpenID transaction in progress",
-									   "</title></head>",
-									   "<body onload='document.getElementById(\"".$form_id."\").submit()'>",
-									   $form_html,
-									   "</body></html>");
-				$wgOut->disable();
-				print implode("\n", $page_contents);
+				$wgOut->addHtml("<p>" . wfMsg("openidautosubmit") . "</p>");
+				$wgOut->addHtml($form_html);
+				$wgOut->addInlineScript("function submitOpenIDForm() {\n document.getElementById(\"".$form_id."\").submit()\n }\nhookEvent(\"load\", submitOpenIDForm);\n");
 			}
 		}
 	}
