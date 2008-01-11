@@ -1,4 +1,6 @@
 <?php
+if ( ! defined( 'MEDIAWIKI' ) )
+	die();
 
 /**
  * Special page class for the CountEdits extension
@@ -6,17 +8,18 @@
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
- 
+
 class SpecialCountEdits extends SpecialPage {
-	
+
 	var $target;
 
-	function __construct() {
-		parent::__construct( 'CountEdits' );
+	public function __construct() {
+		SpecialPage::SpecialPage( 'CountEdits' );
 	}
-	
-	function execute( $params ) {
+
+	public function execute( $params ) {
 		global $wgOut, $wgUser;
+		wfLoadExtensionMessages( 'CountEdits' );
 		$skin = $wgUser->getSkin();
 		$this->setHeaders();
 		$this->loadRequest( $params );
@@ -36,7 +39,7 @@ class SpecialCountEdits extends SpecialPage {
 		$this->showTopTen( $wgOut );
 		return true;
 	}
-	
+
 	function loadRequest( $params ) {
 		global $wgRequest;
 		if( $params ) {
@@ -46,7 +49,7 @@ class SpecialCountEdits extends SpecialPage {
 			$this->target = $target ? $target : '';
 		}
 	}
-	
+
 	function makeForm() {
 		$self = $this->getTitle();
 		$form  = '<form method="post" action="'. $self->getLocalUrl() . '">';
@@ -56,7 +59,7 @@ class SpecialCountEdits extends SpecialPage {
 		$form .= '</p></form>';
 		return $form;
 	}
-	
+
 	function countEditsReal( $id, $text = false ) {
 		global $wgVersion;
 		$dbr =& wfGetDB( DB_SLAVE );
@@ -72,7 +75,7 @@ class SpecialCountEdits extends SpecialPage {
 			return $dbr->selectField( 'revision', 'COUNT(rev_id)', $conds, 'CountEdits::countEditsReal' );
 		}
 	}
-	
+
 	function showResults( $count, $id = 0 ) {
 		global $wgOut, $wgUser, $wgLang;
 		$skin =& $wgUser->getSkin();
@@ -81,13 +84,13 @@ class SpecialCountEdits extends SpecialPage {
 		$wgOut->addHtml( '<p>' . wfMsgHtml( 'countedits-resulttext', $links, $count ) . '</p>' );
 		$wgOut->addWikiText( wfMsg( 'countedits-warning' ) );
 	}
-	
+
 	function showTopTen( &$out ) {
 		global $wgCountEditsMostActive;
 		if( $wgCountEditsMostActive )
 			$out->addHtml( $this->getMostActive() );
 	}
-	
+
 	function getMostActive() {
 		global $wgUser, $wgLang;
 		$dbr =& wfGetDB( DB_SLAVE );
@@ -117,7 +120,4 @@ class SpecialCountEdits extends SpecialPage {
 			return '';
 		}
 	}
-
 }
-
-
