@@ -15,9 +15,13 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionFunctions[] = 'wfContributionseditcount';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Contributionseditcount',
-	'description' => 'displays an edit count on Special:Contributions',
-	'author' => 'Ævar Arnfjörð Bjarmason'
+	'version' => '2008-01-11',
+	'description' => 'Displays an edit count on Special:Contributions',
+	'author' => 'Ævar Arnfjörð Bjarmason',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Contributionseditcount',
 );
+
+$wgExtensionMessagesFiles['Contributionseditcount'] = dirname( __FILE__ ) . '/Contributionseditcount.i18n.php';
 
 function wfContributionseditcount() {
 
@@ -27,21 +31,18 @@ function wfContributionseditcount() {
 	class Contributionseditcount {
 
 		public function __construct() {
-			global $wgMessageCache, $wgHooks;
-			require_once( dirname( __FILE__ ) . '/Contributionseditcount.i18n.php' );
-			foreach( efContributionseditcountMessages() as $lang => $messages )
-				$wgMessageCache->addMessages( $messages, $lang );
+			global $wgHooks;
 			$wgHooks['SpecialContributionsBeforeMainOutput'][] = array( &$this, 'hook' );
 		}
-		
+
 		public function hook( $uid ) {
 			global $wgOut, $wgLang;
 			if ( $uid != 0 )
+				wfLoadExtensionMessages( 'Contributionseditcount' );
 				$wgOut->addWikiText( wfMsg( 'contributionseditcount', $wgLang->formatNum( User::edits( $uid ) ) ) );
 			return true;
 		}
 	}
 
 	new Contributionseditcount();
-
 }

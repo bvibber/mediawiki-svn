@@ -1,141 +1,135 @@
 <?php
-
 /**
- * Messages file for the Contributionseditcount extension
- */
- 
-function efContributionseditcountMessages()  {
-	$messages = array(
-	
-/* English */
-'en' => array(
+ * Internationalisation file for extension Contributionseditcount.
+ *
+ * @addtogroup Extensions
+*/
+
+$messages = array();
+
+$messages['en'] = array(
 	'contributionseditcount'  =>  'This user has $1 edits.',
-),
+);
 
-'ar' => array(
+$messages['ar'] = array(
 	'contributionseditcount' => 'هذا المستخدم لديه $1 تعديل.',
-),
+);
 
-'bcl' => array(
+$messages['bcl'] = array(
 	'contributionseditcount' => 'An parágamit na ini igwang $1 na mga hirá.',
-),
+);
 
-'bg' => array(
+$messages['bg'] = array(
 	'contributionseditcount' => 'Този потребител е направил $1 редакции.',
-),
+);
 
-'bn' => array(
+$messages['bn'] = array(
 	'contributionseditcount' => 'এ ব্যবহারকারীর $1 সম্পাদনা হয়েছে।',
-),
+);
 
-'de' => array(
+$messages['de'] = array(
 	'contributionseditcount'  =>  'Dieser Benutzer hat $1 Bearbeitungen.',
-),
+);
 
-'el' => array(
+$messages['el'] = array(
 	'contributionseditcount' => 'Αυτός ο χρήστης έχει κάνει $1 επεξεργασίες.',
-),
+);
 
-'ext' => array(
+$messages['ext'] = array(
 	'contributionseditcount' => 'Esti usuáriu á hechu $1 eicionis.',
-),
+);
 
-'fi' => array(
+$messages['fi'] = array(
 	'contributionseditcount'  =>  'Tällä käyttäjällä on $1 muokkausta.',
-),
+);
 
-'fr' => array(
+$messages['fr'] = array(
 	'contributionseditcount' => 'Cet utilisateur a {{PLURAL:$1|$1 édition|$1 éditions}}.',
-),
+);
 
-'gl' => array(
+$messages['gl'] = array(
 	'contributionseditcount' => 'Este usuario ten $1 edicións.',
-),
+);
 
-'hsb' => array(
+$messages['hsb'] = array(
 	'contributionseditcount' => 'Wužiwar ma $1 změnow.',
-),
+);
 
-'it' => array(
+$messages['it'] = array(
 	'contributionseditcount' => 'Questo utente ha $1 edit',
-),
+);
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-'lb' => array(
+$messages['lb'] = array(
 	'contributionseditcount' => 'Dëse Benotzer huet $1 Kontributiounen.',
-),
+);
 
-'nl' => array(
+$messages['nl'] = array(
 	'contributionseditcount'  =>  'Deze gebruiker heeft $1 bewerkingen.',
-),
+);
 
-'no' => array(
+$messages['no'] = array(
 	'contributionseditcount' => 'Denne brukeren har $1 redigeringer.',
-),
+);
 
-'oc' => array(
+$messages['oc'] = array(
 	'contributionseditcount' => 'Aqueste utilizaire a {{PLURAL:$1|$1 edicion|$1 edicions}}.',
-),
+);
 
-'pl' => array(
+$messages['pl'] = array(
 	'contributionseditcount' => 'Ten użytkownik ma $1 edycji.',
-),
+);
 
-'pms' => array(
+$messages['pms'] = array(
 	'contributionseditcount' => 'St\'utent-sì a l\'ha fait $1 modìfiche.',
-),
+);
 
-'pt' => array(
+$messages['pt'] = array(
 	'contributionseditcount' => 'Este utilizador tem $1 edições.',
-),
+);
 
-'sah' => array(
+$messages['sah'] = array(
 	'contributionseditcount' => 'Бу кыттааччы $1 көннөрүүлээх.',
-),
+);
 
 /** Slovak (Slovenčina)
  * @author Helix84
  */
-'sk' => array(
+$messages['sk'] = array(
 	'contributionseditcount' => 'Tento používateľ má $1 úprav.',
-),
+);
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-'stq' => array(
+$messages['stq'] = array(
 	'contributionseditcount' => 'Dissen Benutser häd $1 Beoarbaidengen.',
-),
+);
 
 /** Volapük (Volapük)
  * @author Malafaya
  */
-'vo' => array(
+$messages['vo'] = array(
 	'contributionseditcount' => 'Geban at labon redakamis $1.',
-),
+);
 
-'yue' => array(
+$messages['yue'] = array(
 	'contributionseditcount'  =>  '呢個用戶有 $1 次編輯。',
-),
+);
 
-'zh-hans' => array(
+$messages['zh-hans'] = array(
 	'contributionseditcount'  =>  '这个用户拥有 $1 次编辑。',
-),
+);
 
-'zh-hant' => array(
+$messages['zh-hant'] = array(
 	'contributionseditcount'  =>  '這個用戶擁有 $1 次編輯。',
-),
+);
 
-	);
-
-	$messages['zh'] = $messages['zh-hans'];
-	$messages['zh-cn'] = $messages['zh-hans'];
-	$messages['zh-hk'] = $messages['zh-hant'];
-	$messages['zh-sg'] = $messages['zh-hans'];
-	$messages['zh-tw'] = $messages['zh-hant'];
-	$messages['zh-yue'] = $messages['yue'];
-
-	return $messages;
-}
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-tw'] = $messages['zh-hant'];
+$messages['zh-yue'] = $messages['yue'];
