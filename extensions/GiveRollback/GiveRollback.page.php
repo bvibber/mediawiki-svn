@@ -22,19 +22,20 @@ class GiveRollback extends SpecialPage {
 	function GiveRollback() {
 		SpecialPage::SpecialPage( 'Giverollback', 'giverollback' );
 	}
-	
+
 	/**
 	 * Main execution function
 	 * @param $par Parameters passed to the page
 	 */
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser;
-		
+		wfLoadExtensionMessages( 'GiveRollback' );
+
 		if( !$wgUser->isAllowed( 'giverollback' ) ) {
 			$wgOut->permissionRequired( 'giverollback' );
 			return;
 		}
-		
+
 		$this->setHeaders();
 
 		$this->target = $par
@@ -43,7 +44,7 @@ class GiveRollback extends SpecialPage {
 
 		$wgOut->addWikiText( wfMsg( 'giverollback-header' ) );
 		$wgOut->addHtml( $this->makeSearchForm() );
-		
+
 		if( $this->target != '' ) {
 			$wgOut->addHtml( wfElement( 'p', NULL, NULL ) );
 			$user = User::newFromName( $this->target );
@@ -94,9 +95,9 @@ class GiveRollback extends SpecialPage {
 				$wgOut->addWikiText( wfMsg( 'noname' ) );
 			}
 		}
-		
+
 	}
-	
+
 	/**
 	 * Produce a form to allow for entering a username
 	 * @return string
@@ -110,7 +111,7 @@ class GiveRollback extends SpecialPage {
 		$form .= wfCloseElement( 'form' );
 		return $form;
 	}
-	
+
 	/**
 	 * Produce a form to allow granting or revocation of the rights
 	 * @param $type Either MW_GIVEROLLBACK_GRANT or MW_GIVEROLLBACK_REVOKE
@@ -127,7 +128,7 @@ class GiveRollback extends SpecialPage {
 			$grant = false;
 			$revoke = true;
 		}
-	
+
 		# Start the table
 		$form  = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->getLocalUrl() ) );
 		$form .= wfOpenElement( 'table' ) . wfOpenElement( 'tr' );
@@ -168,7 +169,7 @@ class GiveRollback extends SpecialPage {
 		$targetPage = $target->getUserPage();
 		$log->addEntry( $type, $targetPage, $comment );
 	}
-	
+
 	/**
 	 * Show the bot status log entries for the specified user
 	 * @param $user User to show the log for
@@ -180,6 +181,4 @@ class GiveRollback extends SpecialPage {
 		$logViewer = new LogViewer( new LogReader( new FauxRequest( array( 'page' => $title->getPrefixedText(), 'type' => 'gvrollback' ) ) ) );
 		$logViewer->showList( $wgOut );
 	}
-
 }
-

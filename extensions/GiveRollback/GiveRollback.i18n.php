@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Internationalisation file for the GiveRollback extension
+ * Internationalisation file for the extension GiveRollback.
  *
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
@@ -9,11 +9,10 @@
  * @licence GNU General Public Licence 2.0 or later
  */
 
-function efGiveRollbackMessages() {
-	$messages = array(
-	
-/* English (Rob Church) */
-'en' => array(
+/* English
+ * @author Rob Church
+ */
+$messages['en'] = array(
 	'giverollback' => 'Grant or revoke rollback rights',
 	'giverollback-header' => "'''A local bureaucrat can use this page to grant or revoke [[{{MediaWiki:Giverollback-page}}|rollback rights]] to another user account.'''<br />This can be used to allow non-sysops to revert vandalism quickly. This should be done in accordance with applicable policies.",
 	'giverollback-username' => 'Username:',
@@ -33,15 +32,15 @@ function efGiveRollbackMessages() {
 	'giverollback-logentrygrant' => 'granted rollback rights to [[$1]]',
 	'giverollback-logentryrevoke' => 'removed rollback rights from [[$1]]',
 	'giverollback-page' => '{{ns:help}}:Rollback',
-),
+);
 
-'af' => array(
+$messages['af'] = array(
 	'giverollback-username' => 'Gebruikersnaam:',
 	'giverollback-search' => 'Gaan',
 	'giverollback-page' => '{{ns:help}}:Rol terug',
-),
+);
 
-'ar' => array(
+$messages['ar'] = array(
 	'giverollback' => 'منح أو سحب صلاحيات الاسترجاع',
 	'giverollback-header' => '\'\'\'بيروقراط محلي يمكن أن يستخدم هذه الصفحة لمنح أو سحب [[Help:Rollback|صلاحيات الاسترجاع]] لحساب مستخدم آخر.\'\'\'<br />هذا يمكن أن يستخدم للسماح لغير الإداريين باسترجاع التخريب سريعا. هذا يجب أن ينفذ بالتوافق مع السياسات المطبقة.',
 	'giverollback-username' => 'اسم المستخدم:',
@@ -61,20 +60,20 @@ function efGiveRollbackMessages() {
 	'giverollback-logentrygrant' => 'منح صلاحيات استرجاع إلى [[$1]]',
 	'giverollback-logentryrevoke' => 'أزال صلاحيات استرجاع من [[$1]]',
 	'giverollback-page' => '{{ns:help}}:استرجاع',
-),
+);
 
 /** Bulgarian (Български)
  * @author DCLXVI
  */
-'bg' => array(
+$messages['bg'] = array(
 	'giverollback-username' => 'Потребителско име:',
 	'giverollback-grant'    => 'Предоставяне',
 	'giverollback-revoke'   => 'Отнемане',
 	'giverollback-comment'  => 'Коментар:',
-),
+);
 
 /* German (Raymond) */
-'de' => array(
+$messages['de'] = array(
 	'giverollback' => 'Zurücksetzen-Recht erteilen oder entziehen',
 	'giverollback-header' => "'''Ein lokaler Bürokrat kann auf dieser Seite anderen Benutzern das Recht zum Zurücksetzen ''(Rollback)'' erteilen oder entziehen.<br />Dadurch können auch Benutzer ohne Administratoren-Status Vandalismus schnell rückgängig machen. Dies sollte in Übereinstimmung mit den anwendbaren Richtlinien geschehen.",
 	'giverollback-username' => 'Benutzername:',
@@ -93,21 +92,21 @@ function efGiveRollbackMessages() {
 	'giverollback-logpagetext' => 'Dies ist das Logbuch der Zurücksetzen-Rechtevergabe für Nicht-Administratoren.',
 	'giverollback-logentrygrant' => 'erteilte das Zurücksetzen-Recht an [[$1]]',
 	'giverollback-logentryrevoke' => 'entzog das Zurücksetzen-Recht von [[$1]]',
-),
+);
 
-'el' => array(
+$messages['el'] = array(
 	'giverollback-username' => 'Όνομα χρήστη:',
 	'giverollback-comment' => 'Σχόλιο:',
-),
+);
 
-'ext' => array(
+$messages['ext'] = array(
 	'giverollback-username' => 'Nombri el usuáriu:',
 	'giverollback-search' => 'Dil',
 	'giverollback-change' => 'Chambal estau:',
-),
+);
 
 /* Finnish */
-'fi' => array(
+$messages['fi'] = array(
 	'giverollback' => 'Anna tai poista palautusoikeudet',
 	'giverollback-header' => "'''Paikallinen byrokraatti voi käyttää tätä sivua antaakseen tai poistaakseen palautusoikeudet toiselta käyttäjältä.'''<br />Tätä voidaan käyttää niin, että ei-ylläpitäjät voivat nopeasti palauttaa vandalismia. Tämä tulisi tehdä soveltuvien käytäntöjen mukaisesti.",
 	'giverollback-username' => 'Käyttäjänimi:',
@@ -126,10 +125,10 @@ function efGiveRollbackMessages() {
 	'giverollback-logpagetext' => 'Tämä on loki muutoksista ei-ylläpitäjien palautusoikeuksiin.',
 	'giverollback-logentrygrant' => 'antoi palautusoikeudet käyttäjälle [[$1]]',
 	'giverollback-logentryrevoke' => 'poisti palautusoikeudet käyttäjältä [[$1]]',
-),
+);
 
 /* French */
-'fr' => array(
+$messages['fr'] = array(
 	'giverollback' => 'Donner ou enlever les droits de révocation',
 	'giverollback-header' => '\'\'\'Un bureaucrate local peut utiliser cette page pour donner ou enlever les droits de révocation (« revert ») à un compte utilisateur.\'\'\'<br />
 On peut l’utiliser pour autoriser des non-administrateurs à révoquer des vandalismes plus rapidement. Les bureaucrates ne devraient le faire qu’en accord avec les règles en vigueur.',
@@ -150,14 +149,14 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logentrygrant' => 'a donné les droits de révocation à [[$1]]',
 	'giverollback-logentryrevoke' => 'a enlevé les droits de révocation de [[$1]]',
 	'giverollback-page' => '{{ns:help}}:Rollback',#identical but defined
-),
+);
 
 /** Galician (Galego)
  * @author Alma
  * @author Siebrand
  * @author Xosé
  */
-'gl' => array(
+$messages['gl'] = array(
 	'giverollback'                => 'Conceder ou revocar dereitos de retroceso',
 	'giverollback-header'         => "'''Un burócrata local pode usar esta páxina para conceder ou revocar [[{{MediaWiki:Giverollback-page}}|dereitos de retroceso]] a outra conta de usuario.''' <br /> Isto pode ser usado para permitir a non administradores revertir vandalismos rapidamente. Debe facerse de conformidade coas políticas aplicábeis.",
 	'giverollback-username'       => 'Nome de usuario:',
@@ -177,12 +176,12 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logentrygrant'  => 'conceder dereitos de retroceso a [[$1]]',
 	'giverollback-logentryrevoke' => 'eliminados dereitos de retroceso de [[$1]]',
 	'giverollback-page'           => '{{ns:help}}:Retroceso',
-),
+);
 
 /** Croatian (Hrvatski)
  * @author Dnik
  */
-'hr' => array(
+$messages['hr'] = array(
 	'giverollback'                => 'Dodjelite ili oduzmite rollback prava',
 	'giverollback-header'         => "'''Lokalni birokrat može koristiti ovu stranicu da dodjeli ili oduzme [[{{MediaWiki:Giverollback-page}}|rollback prava]] drugom suradniku.'''<br />Ovo se može koristiti da se dopusti poništavanje vandalizama suradnicima koji nisu administratori, u skladu s primjenjivim pravilima.",
 	'giverollback-username'       => 'Ime suradnika:',
@@ -202,9 +201,9 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logentrygrant'  => 'dodjeljena rollback prava suradniku [[$1]]',
 	'giverollback-logentryrevoke' => 'oduzeta rollback prava suradniku [[$1]]',
 	'giverollback-page'           => '{{ns:help}}:Rollback',
-),
+);
 
-'hsb' => array(
+$messages['hsb'] = array(
 	'giverollback' => 'Prawa wróćostajenja dać abo zebrać',
 	'giverollback-header' => '\'\'\'Lokalny běrokrat móže stronu wužiwać, zo by druhim wužiwarjam prawo wróćostajenja \'\'(rollback)\'\' dał abo zebrał.\'\'\'<br /> Tak móža tež wužiwarjo bjez prawow administratora wandalizm spěšnje wróćo stajić. To měło so w přezjednosći z nałožujomnymi prawidłami stać.',
 	'giverollback-username' => 'Wužiwarske mjeno:',
@@ -224,10 +223,10 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logentrygrant' => 'je wužiwarjej [[$1]] prawo wróćostajenja dał',
 	'giverollback-logentryrevoke' => 'je wužiwarjej [[$1]] prawo wróćostajenja zebrał',
 	'giverollback-page' => '{{ns:help}}:Wróćostajenje',
-),
+);
 
 /* Italian (BrokenArrow) */
-'it' => array(
+$messages['it'] = array(
 	'giverollback' => 'Assegna o revoca il diritto di rollback',
 	'giverollback-header' => "'''Questa pagina consente ai burocrati di assegnare o revocare il diritto di [[{{MediaWiki:Giverollback-page}}|rollback]] a un'altra utenza.'''<br /> Questa funzione consente di annullare i vandalismi in modo rapido anche a chi non è amministratore. Tale operazione dev'essere effettuata in conformità con le policy del sito.",
 	'giverollback-username' => 'Nome utente:',
@@ -246,28 +245,28 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logpagetext' => 'Qui di seguito viene riportata la lista delle modifiche al diritto di [[{{MediaWiki:Giverollback-page}}|rollback]] per gli utenti non amministratori.',
 	'giverollback-logentrygrant' => 'ha concesso il diritto di rollback a [[$1]]',
 	'giverollback-logentryrevoke' => 'ha revocato il diritto di rollback a [[$1]]',
-),
+);
 
-'la' => array(
+$messages['la'] = array(
 	'giverollback-username' => 'Nomen usoris:',
 	'giverollback-search' => 'Ire',
 	'giverollback-grant' => 'Licere',
 	'giverollback-revoke' => 'Revocare',
 	'giverollback-comment' => 'Summarium:',
 	'giverollback-granted' => '[[User:$1|$1]] nunc habet iures \'\'rollback\'\'.',
-),
+);
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-'lb' => array(
+$messages['lb'] = array(
 	'giverollback-username' => 'Benotzernumm:',
 	'giverollback-change'   => 'Statut änneren:',
 	'giverollback-comment'  => 'Bemierkung:',
-),
+);
 
 /* nld / Dutch (Siebrand Mazeland) */
-'nl' => array(
+$messages['nl'] = array(
 	'giverollback' => 'Terugdraairechten beheren',
 	'giverollback-header' => '\'\'\'Een lokale bureaucraat kan deze pagina gebruiken om [[{{MediaWiki:Giverollback-page}}|terugdraairechten]] voor een gebruiker in te stellen of te verwijderen.\'\'\'<br />Dit kan gebruikt worden om gebruikers die geen beheerder zijn snel vandalisme terug te laten draaien. Dit hoort uiteraard te gebeuren in overeenstemming met het geldende beleid.',
 	'giverollback-username' => 'Gebruiker:',
@@ -287,9 +286,9 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logentrygrant' => 'heeft terugdraairechten gegeven aan [[$1]]',
 	'giverollback-logentryrevoke' => 'heeft terugdraairechten ingetrokken voor [[$1]]',
 	'giverollback-page' => '{{ns:help}}:Terugdraaien',
-),
+);
 
-'no' => array(
+$messages['no'] = array(
 	'giverollback' => 'Gi eller fjern tilbakerullingsrettigheter',
 	'giverollback-header' => '\'\'\'En lokal byråkrat kun bruke denne siden til å gi eller fjerne brukeres [[{{MediaWiki:Giverollback-page}}|tilbakerullingsrettigheter]].\'\'\'<br />Dette kan brukes for å tillate brukere som ikke er administratorer å tilbakestille hærverk raskt. Dette burde gis i henhold til aktuelle retningslinjer.',
 	'giverollback-username' => 'Brukernavn:',
@@ -309,9 +308,9 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logentrygrant' => 'ga [[$1]] tilbakerullingsrettigheter',
 	'giverollback-logentryrevoke' => 'fjernet tilbakerullingsrettigheter fra [[$1]]',
 	'giverollback-page' => '{{ns:help}}:Rollback',#identical but defined
-),
+);
 
-'oc' => array(
+$messages['oc'] = array(
 	'giverollback' => 'Balhar o levar los dreches de revocacion',
 	'giverollback-header' => '\'\'\'Un burocrata local pòt utilizar aquesta pagina per balhar o levar los dreches de revocacion (« revert ») a un compte d\'utilizaire.\'\'\'<br /> Se pòt l’utilizar per autorizar de non-administrators a revocar de vandalismes mai rapidament. Los burocratas deurián o far pas qu’en acòrdi amb las règlas en vigor.',
 	'giverollback-username' => 'Nom d’utilizaire :',
@@ -330,9 +329,9 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logpagetext' => 'Aquesta pagina presenta un jornal del cambiament dels dreches de revocacion.',
 	'giverollback-logentrygrant' => 'a balhat los dreches de revocacion a [[$1]]',
 	'giverollback-logentryrevoke' => 'a levat los dreches de revocacion de [[$1]]',
-),
+);
 
-'pl' => array(
+$messages['pl'] = array(
 	'giverollback' => 'Nadaj lub odbierz uprawnienia cofania edycji',
 	'giverollback-header' => '\'\'\'Lokalny biurokrata może użyć tej strony do przyznawania lub odbierania [[{{MediaWiki:Giverollback-page}}|praw do cofania edycji]].\'\'\'<br />Prawa te pozwalają użytkownikom nie będącym administratorami na szybkie cofanie wandalizmów. Należy pamiętać o przestrzeganiu przy tym odpowiednich zasad.',
 	'giverollback-username' => 'Nazwa użytkownika',
@@ -351,9 +350,9 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logpagetext' => 'Rejestr zmian w prawach do [[{{MediaWiki:Giverollback-page}}|cofania edycji]] u użytkowników niebędących administratorami.',
 	'giverollback-logentrygrant' => 'przyznano [[$1]] prawa do cofania edycji',
 	'giverollback-logentryrevoke' => 'odebrano [[$1]] prawa do cofania edycji',
-),
+);
 
-'pms' => array(
+$messages['pms'] = array(
 	'giverollback' => 'Dé ò gavé ël drit d\'anulament',
 	'giverollback-header' => '\'\'\'Un mangiapapé local a peul dovré sta pàgina-sì për déje ò gaveje ël [[{{MediaWiki:Giverollback-page}}|drit d\'anulament]] a n\'àotr cont utent.\'\'\'<br />Sòn a peul esse dovrà për deje a gent ch\'a resta nen aministrator la possibilità dë scancelé ampressa ël darmagi fait da ij vàndaj. Ës drit-sì dovrìa dovresse an acòrd a le polìtiche locaj corente.',
 	'giverollback-username' => 'Stranòm:',
@@ -372,14 +371,14 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logpagetext' => 'Sòn a l\'é un registr dij cambiament ant j\'assegnassion dij drit d\'[[{{MediaWiki:Giverollback-page}}|anulament]] a utent ch\'a l\'han nen la qualìfica d\'aministrator.',
 	'giverollback-logentrygrant' => 'drit d\'anulament dait a [[$1]]',
 	'giverollback-logentryrevoke' => 'drit d\'anulament gavà a [[$1]]',
-),
+);
 
-'rm' => array(
+$messages['rm'] = array(
 	'giverollback-username' => 'Num d\'utilisader:',
-),
+);
 
 /* Slovak (helix84) */
-'sk' => array(
+$messages['sk'] = array(
 	'giverollback' => 'Udeliť alebo odobrať právo rollback',
 	'giverollback-header' => '\'\'\'Miestny byrokrat m§že použiť túto stránku na udelenie alebo odobranie [[{{MediaWiki:Giverollback-page}}|práva rollback]] inému používateľskému účtu.\'\'\'<br />Tak je možné napríklad umožniť používateľom, ktorí nie sú správci rýchlejšie vracať vandalské úpravy. Využívanie tejto stránky by malo prebiehať v súlade s prijatými zásadami.',
 	'giverollback-username' => 'Používateľské meno:',
@@ -399,10 +398,10 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logentrygrant' => 'udelené právo rollback používateľovi [[$1]]',
 	'giverollback-logentryrevoke' => 'odobraté právo rollback používateľovi [[$1]]',
 	'giverollback-page' => '{{ns:help}}:Rollback',#identical but defined
-),
+);
 
 /* Serbian default (Sasa Stefanovic) */
-'sr' => array(
+$messages['sr'] = array(
 	'giverollback' => 'Додај или одузми права враћања',
 	'giverollback-header' => "'''Локални бирократа може да користи ову страницу да додели или одузме права враћања другим корисницима.'''<br />Ова права се могу користити како бисте доделили обичним корисницима могућност брзог враћања вандализама. Ово мора да се уради са тренутним правилима пројекта.",
 	'giverollback-username' => 'Корисник:',
@@ -421,10 +420,10 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logpagetext' => 'Ово је историја промена обичних корисника са [[{{MediaWiki:Giverollback-page}}|правом враћања]] ',
 	'giverollback-logentrygrant' => 'доделио права враћања кориснику [[$1]]',
 	'giverollback-logentryrevoke' => 'одузео права враћања кориснику [[$1]]',
-),
+);
 
 /* Serbian cyrillic (Sasa Stefanovic) */
-'sr-ec' => array(
+$messages['sr-ec'] = array(
 	'giverollback' => 'Додај или одузми права враћања',
 	'giverollback-header' => "'''Локални бирократа може да користи ову страницу да додели или одузме права враћања другим корисницима.'''<br />Ова права се могу користити како бисте доделили обичним корисницима могућност брзог враћања вандализама. Ово мора да се уради са тренутним правилима пројекта.",
 	'giverollback-username' => 'Корисник:',
@@ -443,10 +442,10 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logpagetext' => 'Ово је историја промена обичних корисника са [[{{MediaWiki:Giverollback-page}}|правом враћања]] ',
 	'giverollback-logentrygrant' => 'доделио права враћања кориснику [[$1]]',
 	'giverollback-logentryrevoke' => 'одузео права враћања кориснику [[$1]]',
-),
+);
 
 /* Serbian latin (Sasa Stefanovic) */
-'sr-el' => array(
+$messages['sr-el'] = array(
 	'giverollback' => 'Dodaj ili oduzmi prava vraćanja',
 	'giverollback-header' => "'''Lokalni birokrata može da koristi ovu stranicu da dodeli ili oduzme prava vraćanja drugim korisnicima.'''<br />Ova prava se mogu koristiti kako biste dodelili običnim korisnicima mogućnost brzog vraćanja vandalizama. Ovo mora da se uradi sa trenutnim pravilima projekta.",
 	'giverollback-username' => 'Korisnik:',
@@ -465,16 +464,16 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logpagetext' => 'Ovo je istorija promena običnih korisnika sa [[{{MediaWiki:Giverollback-page}}|pravom vraćanja]] ',
 	'giverollback-logentrygrant' => 'dodelio prava vraćanja korisniku [[$1]]',
 	'giverollback-logentryrevoke' => 'oduzeo prava vraćanja korisniku [[$1]]',
-),
+);
 
-'ss' => array(
+$messages['ss'] = array(
 	'giverollback-search' => 'Kúhámba',
-),
+);
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-'stq' => array(
+$messages['stq'] = array(
 	'giverollback'                => 'Touräächsät-Gjucht reeke of äntluuke',
 	'giverollback-header'         => "'''N lokoalen Bürokroat kon ap disse Siede uur Benutsere dät Gjucht toun Touräächsätten ''(Rollback)'' reeke of äntluuke.<br />Deertruch konnen uk Benutsere sunner Administratore-Stoatus Vandalismus gau tourääch traale. Dit schuul in Uureenstimmenge mäd do anweendboare Gjuchtlienjen geböäre.",
 	'giverollback-username'       => 'Benutsernoome:',
@@ -494,10 +493,10 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logentrygrant'  => 'roate dät Touräächsätgjucht an [[$1]]',
 	'giverollback-logentryrevoke' => 'äntlook dät Touräächsätgjucht fon [[$1]]',
 	'giverollback-page'           => '{{ns:help}}:Touräächtraalen',
-),
+);
 
 /* Cantonese (Shinjiman) */
-'yue' => array(
+$messages['yue'] = array(
 	'giverollback' => '畀或收番一撳還原權限',
 	'giverollback-header' => "'''一位事務員可以用呢一版去畀或收番呢一個用戶戶口嘅[[{{MediaWiki:Giverollback-page}}|一撳還原權限]]。'''<br />呢個係可以容許非操作員可以更加快噉去回復破壞。呢個應該要在合適嘅政策來進行。",
 	'giverollback-username' => '用戶名:',
@@ -516,10 +515,10 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logpagetext' => '呢個係非操作員嘅[[{{MediaWiki:Giverollback-page}}|一撳還原]]權限記錄。',
 	'giverollback-logentrygrant' => '已經畀咗 [[$1]] 嘅一撳還原權限',
 	'giverollback-logentryrevoke' => '已經收番 [[$1]] 嘅一撳還原權限',
-),
+);
 
 /* Chinese (Simplified) (Shinjiman) */
-'zh-hans' => array(
+$messages['zh-hans'] = array(
 	'giverollback' => '给予或撤销快速回退权限',
 	'giverollback-header' => "'''一位本地行政员可以使用这一页来给予或撤销另一位用户的[[{{MediaWiki:Giverollback-page}}|快速回退权限]]。'''<br />这可容许非操作员快速地回退破坏。这应该要在合适的方针之下进行。",
 	'giverollback-username' => '用户名称:',
@@ -538,10 +537,10 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logpagetext' => '这个是非操作员的[[{{MediaWiki:Giverollback-page}}|快速回退]]权限记录。',
 	'giverollback-logentrygrant' => '已经给予 [[$1]] 的快速回退权限',
 	'giverollback-logentryrevoke' => '已经撤销 [[$1]] 的快速回退权限',
-),
+);
 
 /* Chinese (Traditional) (Shinjiman) */
-'zh-hant' => array(
+$messages['zh-hant'] = array(
 	'giverollback' => '給予或撤銷快速回退權限',
 	'giverollback-header' => "'''一位本地行政員可以使用這一頁來給予或撤銷另一位用戶的[[{{MediaWiki:Giverollback-page}}|快速回退權限]]。'''<br />這可容許非操作員快速地回退破壞。這應該要在合適的方針之下進行。",
 	'giverollback-username' => '用戶名稱:',
@@ -560,18 +559,11 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	'giverollback-logpagetext' => '這個是非操作員的[[{{MediaWiki:Giverollback-page}}|快速回退]]權限記錄。',
 	'giverollback-logentrygrant' => '已經給予 [[$1]] 的快速回退權限',
 	'giverollback-logentryrevoke' => '已經撤銷 [[$1]] 的快速回退權限',
-),
+);
 
-	);
-
-	/* Chinese defaults, fallback to zh-hans or zh-hant */
-	$messages['zh'] = $messages['zh-hans'];
-	$messages['zh-cn'] = $messages['zh-hans'];
-	$messages['zh-hk'] = $messages['zh-hant'];
-	$messages['zh-tw'] = $messages['zh-hans'];
-	$messages['zh-sg'] = $messages['zh-hant'];
-	/* Cantonese default, fallback to yue */
-	$messages['zh-yue'] = $messages['yue'];
-
-	return $messages;
-}
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-tw'] = $messages['zh-hans'];
+$messages['zh-sg'] = $messages['zh-hant'];
+$messages['zh-yue'] = $messages['yue'];
