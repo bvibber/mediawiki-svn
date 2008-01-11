@@ -1,19 +1,26 @@
 <?php
 
-$wgExtensionFunctions[] = 'wfSetupMiniDonation';
+if (!defined('MEDIAWIKI')) die();
 
-# Internationalisation file
-require_once( 'MiniDonation.i18n.php' );
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'Mini donation',
+	'url' => 'http://mediawiki.org/wiki/Extension:MiniDonation',
+	'description' => 'Adds a tag <nowiki><donateform></nowiki> to support donations via PayPal',
+	'version' => '2008-01-11',
+);
+
+$wgExtensionFunctions[] = 'wfSetupMiniDonation';
+$wgExtensionMessagesFiles['MiniDonation'] = dirname(__FILE__) . '/MiniDonation.i18n.php';
 
 function wfSetupMiniDonation() {
-	global $wgParser, $wgMessageCache, $wgMiniDonationMessages;
+	global $wgParser;
+
 	$wgParser->setHook( 'donationform', 'wfMiniDonationHook' );
-	foreach( $wgMiniDonationMessages as $key => $value ) {
-		$wgMessageCache->addMessages( $wgMiniDonationMessages[$key], $key );
-	}
 }
 
 function wfMiniDonationHook( $text, $params, $parser ) {
+	wfLoadExtensionMessages( 'MiniDonation' );
+
 	$default = "25";
 	$fontSize = "90%";
 	$encDefault = htmlspecialchars( $default );
@@ -64,5 +71,3 @@ function wfMiniDonationHook( $text, $params, $parser ) {
 </form></span>
 EOT;
 }
-
-

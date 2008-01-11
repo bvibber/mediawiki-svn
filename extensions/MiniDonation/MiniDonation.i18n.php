@@ -1,153 +1,169 @@
 <?php
 /**
- * Internationalisation file for MiniDonation extension.
+ * Internationalisation file for extension MiniDonation.
  *
  * @addtogroup Extensions
 */
 
-$wgMiniDonationMessages = array();
+$messages = array();
 
-$wgMiniDonationMessages['en'] = array(
+$messages['en'] = array(
 	'donationform-submit' => 'Donate via PayPal',
 );
-$wgMiniDonationMessages['an'] = array(
+
+$messages['an'] = array(
 	'donationform-submit' => 'Donar fendo serbir Paypal',
 );
-$wgMiniDonationMessages['ar'] = array(
+
+$messages['ar'] = array(
 	'donationform-submit' => 'تبرع من خلال باي بال',
 );
-$wgMiniDonationMessages['bcl'] = array(
+
+$messages['bcl'] = array(
 	'donationform-submit' => 'Magdonar sa paagi kan PayPal',
 );
-$wgMiniDonationMessages['bg'] = array(
+
+$messages['bg'] = array(
 	'donationform-submit' => 'Направете дарение чрез PayPal',
 );
-$wgMiniDonationMessages['de'] = array(
+
+$messages['de'] = array(
 	'donationform-submit' => 'Spenden über PayPal',
 );
-$wgMiniDonationMessages['el'] = array(
+
+$messages['el'] = array(
 	'donationform-submit' => 'Δωρίστε μέσω PayPal',
 );
-$wgMiniDonationMessages['ext'] = array(
+
+$messages['ext'] = array(
 	'donationform-submit' => 'Donal meyanti PayPal',
 );
-$wgMiniDonationMessages['fi'] = array(
+
+$messages['fi'] = array(
 	'donationform-submit' => 'Lahjoita PayPalin kautta',
 );
-$wgMiniDonationMessages['fr'] = array(
+
+$messages['fr'] = array(
 	'donationform-submit' => 'Faire un don avec PayPal',
 );
-$wgMiniDonationMessages['gl'] = array(
+
+$messages['gl'] = array(
 	'donationform-submit' => 'Doar mediante PayPal',
 );
-$wgMiniDonationMessages['he'] = array(
+
+$messages['he'] = array(
 	'donationform-submit' => 'תרומה באמצעות PayPal',
 );
-$wgMiniDonationMessages['hsb'] = array(
+
+$messages['hsb'] = array(
 	'donationform-submit' => 'Přez PayPal darić',
 );
-$wgMiniDonationMessages['id'] = array(
+
+$messages['id'] = array(
 	'donationform-submit' => 'Donasi melalui PayPal',
 );
-$wgMiniDonationMessages['it'] = array(
+
+$messages['it'] = array(
 	'donationform-submit' => 'Donazione mediante PayPal',
 );
-$wgMiniDonationMessages['ja'] = array(
+
+$messages['ja'] = array(
 	'donationform-submit' => 'PayPal を通じて寄付する',
 );
 
-$wgMiniDonationMessages['kk-cyrl'] = array(
+$messages['kk-cyrl'] = array(
 	'donationform-submit' => 'Жәрдемді PayPal жүйесімен жіберу',
 );
 
-$wgMiniDonationMessages['kk-latn'] = array(
+$messages['kk-latn'] = array(
 	'donationform-submit' => 'Järdemdi PayPal jüýesimen jiberw',
 );
 
-$wgMiniDonationMessages['kk-arab'] = array(
+$messages['kk-arab'] = array(
 	'donationform-submit' => 'جٵردەمدٸ PayPal جٷيەسٸمەن جٸبەرۋ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-$wgMiniDonationMessages['lb'] = array(
+$messages['lb'] = array(
 	'donationform-submit' => 'Donatiounen iwwer PayPal',
 );
 
-$wgMiniDonationMessages['lt'] = array(
+$messages['lt'] = array(
 	'donationform-submit' => 'Aukoti per PayPal',
 );
 
-$wgMiniDonationMessages['nl'] = array(
+$messages['nl'] = array(
 	'donationform-submit' => 'Doneer via PayPal',
 );
 
-$wgMiniDonationMessages['no'] = array(
+$messages['no'] = array(
 	'donationform-submit' => 'Doner med PayPal',
 );
 
-$wgMiniDonationMessages['oc'] = array(
+$messages['oc'] = array(
 	'donationform-submit' => 'Far un don amb PayPal',
 );
-$wgMiniDonationMessages['pl'] = array(
+
+$messages['pl'] = array(
 	'donationform-submit' => 'Przekaż dar pieniężny przez PayPal',
 );
+
 /* Piedmontese (Bèrto 'd Sèra) */
-$wgMiniDonationMessages['pms'] = array(
+$messages['pms'] = array(
 	'donationform-submit' => 'Fé na donassion con PayPal',
 );
-$wgMiniDonationMessages['pt'] = array(
+
+$messages['pt'] = array(
 	'donationform-submit' => 'Doe pelo PayPal',
 );
 
 /** Sassarese (Sassarese)
  * @author Felis
  */
-$wgMiniDonationMessages['sdc'] = array(
+$messages['sdc'] = array(
 	'donationform-submit' => 'Dunazioni via PayPal',
 );
 
-$wgMiniDonationMessages['sk'] = array(
+$messages['sk'] = array(
 	'donationform-submit' => 'Darujte pomocou PayPal',
 );
-$wgMiniDonationMessages['sr-ec'] = array(
+
+$messages['sr-ec'] = array(
 	'donationform-submit' => 'Донирајте преко PayPal',
 );
-$wgMiniDonationMessages['sr-el'] = array(
+
+$messages['sr-el'] = array(
 	'donationform-submit' => 'Donirajte PayPal',
 );
-
-$wgMiniDonationMessages['sr'] = $wgMiniDonationMessages['sr-ec'];
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-$wgMiniDonationMessages['stq'] = array(
+$messages['stq'] = array(
 	'donationform-submit' => 'Spändje uur PayPal',
 );
 
-$wgMiniDonationMessages['yue'] = array(
+$messages['yue'] = array(
 	'donationform-submit' => '透過PayPal捐款',
 );
 
-$wgMiniDonationMessages['zh-hans'] = array(
+$messages['zh-hans'] = array(
 	'donationform-submit' => '经PayPal捐款',
 );
 
-$wgMiniDonationMessages['zh-hant'] = array(
+$messages['zh-hant'] = array(
 	'donationform-submit' => '經PayPal捐款',
 );
 
-# Kazakh fallback
-$wgMiniDonationMessages['kk-kz'] = $wgMiniDonationMessages['kk-cyrl'];
-$wgMiniDonationMessages['kk-tr'] = $wgMiniDonationMessages['kk-latn'];
-$wgMiniDonationMessages['kk-cn'] = $wgMiniDonationMessages['kk-arab'];
-$wgMiniDonationMessages['kk'] = $wgMiniDonationMessages['kk-cyrl'];
-
-# Chinese fallback
-$wgMiniDonationMessages['zh'] = $wgMiniDonationMessages['zh-hans'];
-$wgMiniDonationMessages['zh-cn'] = $wgMiniDonationMessages['zh-hans'];
-$wgMiniDonationMessages['zh-hk'] = $wgMiniDonationMessages['zh-hant'];
-$wgMiniDonationMessages['zh-sg'] = $wgMiniDonationMessages['zh-hans'];
-$wgMiniDonationMessages['zh-tw'] = $wgMiniDonationMessages['zh-hant'];
+$messages['sr'] = $messages['sr-ec'];
+$messages['kk-kz'] = $messages['kk-cyrl'];
+$messages['kk-tr'] = $messages['kk-latn'];
+$messages['kk-cn'] = $messages['kk-arab'];
+$messages['kk'] = $messages['kk-cyrl'];
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-tw'] = $messages['zh-hant'];
