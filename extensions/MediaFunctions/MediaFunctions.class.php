@@ -74,7 +74,7 @@ class MediaFunctions {
 		}
 		return self::error( $file, $name );
 	}
-	
+
 	/**
 	 * Get the dimensions of a file
 	 *
@@ -90,7 +90,7 @@ class MediaFunctions {
 		}
 		return self::error( $file, $name );
 	}
-	
+
 	/**
 	 * Get EXIF metadata associated with a file
 	 *
@@ -136,7 +136,7 @@ class MediaFunctions {
 		}
 		return self::ERR_INVALID_TITLE;
 	}
-	
+
 	/**
 	 * Generate an error
 	 *
@@ -145,7 +145,7 @@ class MediaFunctions {
 	 * @return string
 	 */
 	private static function error( $error, $name ) {
+		wfLoadExtensionMessages( 'MediaFunctions' );
 		return htmlspecialchars( wfMsgForContent( $error, $name ) );
 	}
-
 }
