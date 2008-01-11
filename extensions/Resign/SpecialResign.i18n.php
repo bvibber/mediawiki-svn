@@ -1,15 +1,13 @@
 <?php
-
 /**
- * Internationalisation file for Resign extension
+ * Internationalisation file for extension Resign.
  *
  * @addtogroup Extensions
 */
 
-function efResignMessages() {
-	$messages = array(
-	
-'en' => array(
+$messages = array();
+
+$messages['en'] = array(
 	'resign'           => 'Resign',
 	'resign-text'      => "You can '''remove your permissions''' (e.g. sysop) in this page. Please check the permissions you would like to remove.
 
@@ -20,10 +18,10 @@ Remember: '''You cannot get your permissions back this way!''' You will have to 
 	'resign-nogroups'  => 'Please check the permissions you would like to remove.',
 	'resign-success'   => "'''The permissions were successfully removed.'''",
 	'resign-logentry'  => 'removed permissions $2 from himself',
-),
+);
 
 /* Arabic (Meno25) */
-'ar' => array(
+$messages['ar'] = array(
 	'resign' => 'استقالة',
 	'resign-text' => 'يمكنك \'\'\'إزالة صلاحياتك\'\'\' (مثال الصلاحيات الإدارية) في هذه الصفحة. من فضلك علم على الصلاحيات التي تود إزالتها.
 
@@ -34,21 +32,21 @@ Remember: '''You cannot get your permissions back this way!''' You will have to 
 	'resign-nogroups' => 'من فضلك اختر الصلاحيات التي تريد إزالتها.',
 	'resign-success' => '\'\'\'الصلاحيات تمت إزالتها بنجاح.\'\'\'',
 	'resign-logentry' => 'سحب الصلاحيات $2 من نفسه',
-),
+);
 
-'bcl' => array(
+$messages['bcl'] = array(
 	'resign-reason' => 'Rason:',
-),
+);
 
 /** Bulgarian (Български)
  * @author DCLXVI
  */
-'bg' => array(
+$messages['bg'] = array(
 	'resign-reason'  => 'Причина:',
 	'resign-success' => "'''Правата бяха премахнати успешно.'''",
-),
+);
 
-'de' => array(
+$messages['de'] = array(
 	'resign'           => 'Rückgabe von Berechtigungen',
 	'resign-text'      => "Du kannst auf dieser Seite '''deine Berechtigungen zurückgeben''' (z.B. die Administrator-Berechtigung). Bitte prüfe die Berechtigungen, die du zurückgeben möchtest.
 
@@ -59,20 +57,20 @@ Wichtig: '''Dieser Schritt ist unwiderruflich!''' Du musst einen Bürokraten ode
 	'resign-nogroups'  => 'Bitte markiere die Berechtigungen, die du zurückgeben möchtest.',
 	'resign-success'   => "'''Die Rückgabe der Berechtigungen war erfolgreich.'''",
 	'resign-logentry'  => 'gab die Berechtigung(en) $2 zurück',
-),
+);
 
 /** Greek (Ελληνικά)
  * @author Consta
  */
-'el' => array(
+$messages['el'] = array(
 	'resign-reason' => 'Λόγος:',
-),
+);
 
-'ext' => array(
+$messages['ext'] = array(
 	'resign-reason' => 'Razón:',
-),
+);
 
-'fi' => array(
+$messages['fi'] = array(
 	'resign'           => 'Eroa',
 	'resign-text'      => "Voit '''poistaa omat oikeutesi''' (esim. ylläpitäjän oikeudet) tällä sivulla. Ole hyvä ja rastita oikeudet, jotka haluaisit poistaa.
 
@@ -83,9 +81,9 @@ Muista: '''Et voi saada oikeuksiasi takaisin tämän sivun avulla!''' Sinun täy
 	'resign-nogroups'  => 'Ole hyvä ja rastita oikeudet, jotka haluat poistaa.',
 	'resign-success'   => "'''Oikeudet poistettiin onnistuneesti.'''",
 	'resign-logentry'  => 'poisti oikeudet $2 itseltään',
-),
+);
 
-'fr' => array(
+$messages['fr'] = array(
 	'resign' => 'Quitter',
 	'resign-text' => 'Vous pouvez vous \'\'\'retirer vos droits\'\'\' (d\'adminsitrateurs, par exemple) dans cette page-ci. Prière de vérifier celles que vous souhaitez retirer.
 
@@ -96,9 +94,9 @@ Muista: '''Et voi saada oikeuksiasi takaisin tämän sivun avulla!''' Sinun täy
 	'resign-nogroups' => 'Prière de cocher les droits que vous souhaitez retirer.',
 	'resign-success' => '\'\'\'Les droits sont maintenant retirés.\'\'\'',
 	'resign-logentry' => 'a retiré les droits $2 pour son compte',
-),
+);
 
-'gl' => array(
+$messages['gl'] = array(
 	'resign' => 'Dimitir',
 	'resign-text' => 'Pode \'\'\'retirar os seus permisos\'\'\' (p.ex. administrador) nesta páxina. Seleccione os permisos que quere retirar.
 
@@ -110,9 +108,9 @@ Use esta páxina con moito tento.',
 	'resign-nogroups' => 'Seleccione os permisos que quere retirar.',
 	'resign-success' => '\'\'\'Os permisos retiráronse sen problemas.\'\'\'',
 	'resign-logentry' => 'eliminou permisos $2 a si mesmo',
-),
+);
 
-'he' => array(
+$messages['he'] = array(
 	'resign'           => 'התפטרות',
 	'resign-text'      => "בדף זה תוכלו '''להסיר את ההרשאות שלכם''' (למשל, הרשאות מפעיל מערכת). אנא סמנו את ההרשאות שברצונכם להסיר.
 
@@ -123,9 +121,9 @@ Use esta páxina con moito tento.',
 	'resign-nogroups'  => 'אנא בחרו את ההרשאות שברצונכם להסיר.',
 	'resign-success'   => "'''ההרשאות הוסרו בהצלחה.'''",
 	'resign-logentry'  => 'הסיר את ההרשאות $2 שלו',
-),
-	
-'hsb' => array(
+);
+
+$messages['hsb'] = array(
 	'resign' => 'Wotstup',
 	'resign-text' => 'Móžeš na tutej stronje \'\'\'swoje prawa wróćo dać\'\'\' (na př. prawo administratora). Prošu pruwuj prawa, kotrež chceš wróćo dać.
 
@@ -136,9 +134,9 @@ Kedźbu: \'\'\'Njemóžeš te prawa na tute wašnje wróćo dóstać!\'\'\' Dyrb
 	'resign-nogroups' => 'Prošu markěruj prawa, kotrež chceš wróćo dać.',
 	'resign-success' => '\'\'\'Prawa buchu wuspěšnje wotstronjene.\'\'\'',
 	'resign-logentry' => 'wróći prawa $2',
-),
+);
 
-'id' => array(
+$messages['id'] = array(
 	'resign'           => 'Pengunduran diri',
 	'resign-text'      => "Anda dapat melepaskan hak Anda (mis. pengurus) melalui halaman ini. Silakan tandai hak yang ingin Anda lepas.
 
@@ -149,22 +147,22 @@ Ingat: '''Anda tidak dapat memperoleh kembali hak Anda melalui ini!''' Anda haru
 	'resign-nogroups'  => 'Harap pilih hak yang ingin Anda lepas.',
 	'resign-success'   => "'''Proses pelepasan hak berhasil.'''",
 	'resign-logentry'  => 'melepaskan hak $2 dari dirinya sendiri',
-),
+);
 
-'la' => array(
+$messages['la'] = array(
 	'resign-reason' => 'Causa:',
 	'resign-success' => '\'\'\'Permissiones remotae erant.\'\'\'',
 	'resign-logentry' => 'removit suae permissiones $2',
-),
+);
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-'lb' => array(
+$messages['lb'] = array(
 	'resign-reason' => 'Grond:',
-),
+);
 
-'nl' => array(
+$messages['nl'] = array(
 	'resign' => 'Opzeggen',
 	'resign-text' => 'Op deze pagina kunt u uw \'\'\'gebruikersrechten intrekken\'\'\' (bijvoorbeeld uw rol als beheerder). Markeer de rechten die u wilt verwijderen.
 
@@ -175,10 +173,10 @@ Let op: \'\'\'U kunt op deze wijze uw gebruikersrechten niet terugkrijgen!\'\'\'
 	'resign-nogroups' => 'Selecteer alstublieft de gebruikersrechten die u wilt intrekken.',
 	'resign-success' => '\'\'\'De gebruikersrechten zijn succesvol verwijderd.\'\'\'',
 	'resign-logentry' => 'verwijderde gebruikersrechten $2 voor zichzelf',
-),
+);
 
 /* Norwegian (Jon Harald Søby) */
-'no' => array(
+$messages['no'] = array(
 	'resign' => 'Trekke seg',
 	'resign-text' => 'Du kan \'\'\'fjerne dine rettigheter\'\'\' (f.eks. administratorrettigheter) på denne siden. Vennligst kryss av rettighetene du vil fjerne.
 
@@ -189,9 +187,9 @@ Husk: \'\'\'Du kan ikke få tilbake rettighetene på denne måten!\'\'\' Du må 
 	'resign-nogroups' => 'Vennligst merk av rettighetene du ønsker å fjerne.',
 	'resign-success' => '\'\'\'Rettighetene ble fjernet.\'\'\'',
 	'resign-logentry' => 'fjernet følgende tillatelser fra seg selv: $2',
-),
+);
 
-'oc' => array(
+$messages['oc'] = array(
 	'resign' => 'Quitar',
 	'resign-text' => 'Podètz vos \'\'\'levar vòstres dreches\'\'\' (d\'adminsitrators, per exemple) dins aquesta pagina. Prec de verificar las que desiratz levar. \'\'\'Per contra, podètz pas mai los obténer per aquesta pagina !\'\'\' Deuretz convéncer un burocrata o un steward de vos los tornar. Tre alara, siatz prudent abans de modificar vòstras permissions.',
 	'resign-reason' => 'Rason(s) :',
@@ -200,9 +198,9 @@ Husk: \'\'\'Du kan ikke få tilbake rettighetene på denne måten!\'\'\' Du må 
 	'resign-nogroups' => 'Mercés de marcar los dreches que desiratz levar.',
 	'resign-success' => '\'\'\'Ara los dreches son levats.\'\'\'',
 	'resign-logentry' => 'a levat los dreches $2 per son compte',
-),
+);
 
-'pl' => array(
+$messages['pl'] = array(
 	'resign' => 'Rezygnacja',
 	'resign-text' => 'Możesz na tej stronie \'\'\'odebrać sobie uprawnienia\'\'\' (np. administratora). Zaznacz uprawnienia, które chciałbyś usunąć. Pamiętaj: \'\'\'Nie możesz w ten sposób przywrócić sobie uprawnień!\'\'\' Konieczne będzie przekonanie biurokraty lub stewarda do przyznania ci z powrotem uprawnień. Używaj tej strony bardzo ostrożnie.',
 	'resign-reason' => 'Powód:',
@@ -211,10 +209,10 @@ Husk: \'\'\'Du kan ikke få tilbake rettighetene på denne måten!\'\'\' Du må 
 	'resign-nogroups' => 'Zaznacz uprawnienia, które chcesz usunąć.',
 	'resign-success' => '\'\'\'Uprawnienia zostały pomyślnie usunięte.\'\'\'',
 	'resign-logentry' => 'usunięto własne uprawnienia $2',
-),
+);
 
 /* Piedmontese (Bèrto 'd Sèra) */
-'pms' => array(
+$messages['pms'] = array(
 	'resign' => 'Dimission',
 	'resign-text' => 'A peul \'\'\'gavesse sò drit\'\'\' (pr\'esempi, la qualìfica da aministrator) ant sta pàgina-sì. Për piasì, ch\'a-i fasa la crosëtta ansima a ij drit ch\'a veul gavesse.
 
@@ -225,9 +223,9 @@ Ch\'a ten-a da ment: \'\'\'a podrà pì nen pijeje andré ën dovrand l\'istess 
 	'resign-nogroups' => 'Për piasì, ch\'a-i buta la crosëtta ansima a le casele dij drit ch\'a veul gavesse.',
 	'resign-success' => '\'\'\'Soe dimission a son andaite a bon fin.\'\'\'',
 	'resign-logentry' => 'a l\'ha gavasse ij drit dë $2',
-),
+);
 
-'pt' => array(
+$messages['pt'] = array(
 	'resign' => 'Renunciar',
 	'resign-text' => 'Você pode \'\'\'remover suas próprias permissões\'\'\' (tais como a de administrador) a partir desta página. Por gentileza, verifique as permissões que você deseja remover.
 
@@ -238,9 +236,9 @@ Lembre-se: \'\'\'Você não poderá obter suas permissões de volta a partir des
 	'resign-nogroups' => 'Por gentileza, selecione as permissões que deseja remover de si mesmo.',
 	'resign-success' => '\'\'\'As permissões foram removidas com sucesso.\'\'\'',
 	'resign-logentry' => 'removeu as permissões de $2 de si mesmo',
-),
+);
 
-'sk' => array(
+$messages['sk'] = array(
 	'resign' => 'Rezignovať',
 	'resign-text' => 'Na tejto stránke sa môžete \'\'\'vzdať svojich privilégií\'\'\' (napr. správca). Prosím, zaškrtnite, ktoré privilégiá chcete odstrániť.
 
@@ -251,12 +249,12 @@ Pamätajte: \'\'\'Týmto spôsobom už svoje privilégiá nedostanete naspäť!\
 	'resign-nogroups' => 'Prosím, zaškrtnite privilégiá, ktoré chcete odstrániť.',
 	'resign-success' => '\'\'\'Privilégiá boli úspešne odňaté.\'\'\'',
 	'resign-logentry' => 'odstránil svoje privilégiá $2',
-),
+);
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-'stq' => array(
+$messages['stq'] = array(
 	'resign'           => 'Touräächgoawe fon Begjuchtigengen',
 	'resign-text'      => "Du koast ap disse Siede '''dien Begjuchtigengen touräächreeke''' (t.B. ju Administrator-Begjuchtigenge). Wröigje do Begjuchtigengen, do du touräächreeke moatest.
 
@@ -267,9 +265,9 @@ Wichtich: '''Dissen Stap kon nit tourääch annerd wäide!''' Du moast n Bürokr
 	'resign-nogroups'  => 'Markier do Begjuchtigengen, do du touräächreeke moatest.',
 	'resign-success'   => "'''Ju Touräächgoawe fon do Begjuchtigengen hiede Ärfoulch.'''",
 	'resign-logentry'  => 'roate ju/do Begjuchtigenge(n) $2 tourääch',
-),
+);
 
-'wa' => array(
+$messages['wa'] = array(
 	'resign' => 'Si rsaetchî',
 	'resign-text' => 'Vos ploz \'\'\'rissaetchî vos permissions\'\'\' (eg d\' manaedjeu) e cisse pådje ci. S\' i vs plait verifyîz les permissions ki vos vs voloz rsaetchî.
 
@@ -280,10 +278,10 @@ Wichtich: '''Dissen Stap kon nit tourääch annerd wäide!''' Du moast n Bürokr
 	'resign-nogroups' => 'Verifyîz s\' i vs plait les permissions ki vos vloz rsaetchî.',
 	'resign-success' => '\'\'\'Les permissions ont stî rsaetcheyes comifåt.\'\'\'',
 	'resign-logentry' => 'rissaetcha les permissions $2 po lu-minme',
-),
+);
 
 /* Cantonese (Shinjiman) */
-'yue' => array(
+$messages['yue'] = array(
 	'resign'           => '劈炮',
 	'resign-text'      => "你可以響呢一版度'''拎走你嘅權限''' (好似操作員噉) 。請檢查清楚你需要去拎走嘅權限。
 
@@ -294,10 +292,10 @@ Wichtich: '''Dissen Stap kon nit tourääch annerd wäide!''' Du moast n Bürokr
 	'resign-nogroups'  => '請檢查你要去拎走嘅權限。',
 	'resign-success'   => "'''呢啲權限已經成功噉拎走咗。'''",
 	'resign-logentry'  => '自己拎走咗$2權限',
-),
+);
 
 /* Chinese (Simplified) (Shinjiman) */
-'zh-hans' => array(
+$messages['zh-hans'] = array(
 	'resign'           => '辞职',
 	'resign-text'      => "您可以在响这一页面中'''移除阁下的的权限''' (好像操作员) 。请检查清楚您需要去移除的权限。
 
@@ -308,10 +306,10 @@ Wichtich: '''Dissen Stap kon nit tourääch annerd wäide!''' Du moast n Bürokr
 	'resign-nogroups'  => '请检查您要去移除的权限。',
 	'resign-success'   => "'''这些权限已经成功地移除。'''",
 	'resign-logentry'  => '自行移除了$2权限',
-),
+);
 
 /* Chinese (Traditional) (Shinjiman) */
-'zh-hant' => array(
+$messages['zh-hant'] = array(
 	'resign'           => '辭職',
 	'resign-text'      => "您可以在響這一頁面中'''移除閣下的的權限''' (好像操作員) 。請檢查清楚您需要去移除嘅權限。
 
@@ -322,18 +320,11 @@ Wichtich: '''Dissen Stap kon nit tourääch annerd wäide!''' Du moast n Bürokr
 	'resign-nogroups'  => '請檢查您要去移除的權限。',
 	'resign-success'   => "'''這些權限已經成功地移除。'''",
 	'resign-logentry'  => '自行移除了$2權限',
-),
+);
 
-	);
-
-	/* Chinese defaults, fallback to zh-hans or zh-hant */
-	$messages['zh'] = $messages['zh-hans'];
-	$messages['zh-cn'] = $messages['zh-hans'];
-	$messages['zh-hk'] = $messages['zh-hant'];
-	$messages['zh-sg'] = $messages['zh-hans'];
-	$messages['zh-tw'] = $messages['zh-hant'];
-	/* Cantonese default, fallback to yue */
-	$messages['zh-yue'] = $messages['yue'];
-
-	return $messages;
-}
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-tw'] = $messages['zh-hant'];
+$messages['zh-yue'] = $messages['yue'];

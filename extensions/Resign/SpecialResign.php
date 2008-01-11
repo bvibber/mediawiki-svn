@@ -9,9 +9,9 @@ if (!defined('MEDIAWIKI')) die();
  * @author Rotem Liss
  */
 
-$wgExtensionFunctions[] = 'wfSpecialResign';
 $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Rotem Liss',
+	'version' => '2008-01-11',
 	'name' => 'Resign',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Resign',
 	'description' => 'Gives users the ability to remove their permissions'
@@ -27,13 +27,7 @@ foreach( $wgGroupPermissions as $key => $value ) {
 # Add log action
 $wgLogActions['rights/resign'] = 'resign-logentry';
 
-$wgAutoloadClasses['ResignPage'] = dirname( __FILE__ ) . '/SpecialResign_body.php';
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['ResignPage'] = $dir . 'SpecialResign.i18n.php';
+$wgAutoloadClasses['ResignPage'] = $dir . 'SpecialResign_body.php';
 $wgSpecialPages['Resign'] = 'ResignPage';
-
-function wfSpecialResign() {
-	global $wgMessageCache;
-	require_once( dirname(__FILE__) . '/SpecialResign.i18n.php' );
-	$wgMessageCache->addMessagesByLang( efResignMessages() );
-}
-
-

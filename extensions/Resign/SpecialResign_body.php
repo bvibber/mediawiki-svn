@@ -3,7 +3,7 @@
 class ResignPage extends SpecialPage {
 	private $mGroups, $mReason, $mConfirm, $mSubmit;
 
-	function __construct() {
+	public function __construct() {
 		parent::__construct( 'Resign', 'resign' );
 
 		global $wgUser, $wgRequest;
@@ -18,8 +18,10 @@ class ResignPage extends SpecialPage {
 		$this->mSubmit = $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpToken' ) );
 	}
 
-	function execute( $par ) {
+	public function execute( $par ) {
 		global $wgOut, $wgUser, $wgRequest;
+
+		wfLoadExtensionMessages( 'ResignPage' );
 
 		$this->setHeaders();
 
@@ -91,5 +93,3 @@ class ResignPage extends SpecialPage {
 		return implode( ', ', $ids );
 	}
 }
-
-
