@@ -19,7 +19,7 @@ measures.
 This extension requires:
 
 * PHP 5.0.x (5.1.x *strongly recommended*) or above
-* MediaWiki 1.7.0 or above
+* MediaWiki 1.11.0 or above
 
 == Installation ==
 
@@ -43,7 +43,9 @@ To configure the minimum name length, set $wgMinimumNameLength in LocalSettings.
 	$wgMinimumNameLength = 10;
 	
 == Change log ==
-
+11/01/2008
+1.1
+	Uses wfLoadExtensionMessages now
 29/03/2007
 1.0
 	Initial release

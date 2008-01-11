@@ -1,5 +1,9 @@
 <?php
-
+if ( ! defined( 'MEDIAWIKI' ) )
+{
+	echo( "This file is an extension to the MediaWiki software. It cannot be used standalone.\n" );
+	exit( 1 );
+}
 /**
  * Extension enforces a minimum username length
  * during account registration
@@ -8,52 +12,48 @@
  * @subpackage Extensions
  * @author Rob Church <robchur@gmail.com>
  */
-if( defined( 'MEDIAWIKI' ) ) {
 
-	$wgExtensionFunctions[] = 'efMinimumNameLengthSetup';
-	$wgExtensionCredits['other'][] = array(
-		'name' => 'Minimum Username Length',
-		'author' => 'Rob Church',
-		'url' => 'http://www.mediawiki.org/wiki/Extension:Minimum_Name_Length',
-	);
+/**
+ * Minimum username length to enforce
+ */
+$wgMinimumUsernameLength = 10;
 
-	/**
-	 * Minimum username length to enforce
-	 */
-	$wgMinimumUsernameLength = 10;
+$wgExtensionCredits['other'][] = array(
+	'name' => 'Minimum Username Length',
+	'version' => '1.1',
+	'author' => 'Rob Church',
+	'description' => 'Enforce a minimum username length',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Minimum_Name_Length',
+);
 
-	/**
-	 * Extension setup function
-	 */
-	function efMinimumNameLengthSetup() {
-		global $wgHooks, $wgMessageCache;
-		$wgHooks['AbortNewAccount'][] = 'efMinimumNameLength';
-		require_once( dirname( __FILE__ ) . '/MinimumNameLength.i18n.php' );
-		foreach( efMinimumNameLengthMessages() as $lang => $messages )
-			$wgMessageCache->addMessages( $messages, $lang );
-	}
-	
-	/**
-	 * Hooks account creation and checks the
-	 * username length, cancelling with an error
-	 * if the username is too short
-	 *
-	 * @param User $user User object being created
-	 * @param string $error Reference to error message to show
-	 * @return bool
-	 */
-	function efMinimumNameLength( $user, &$error ) {
-		global $wgMinimumUsernameLength;
-		if( mb_strlen( $user->getName() ) < $wgMinimumUsernameLength ) {
-			$error = wfMsgHtml( 'minnamelength-error', $wgMinimumUsernameLength );
-			return false;
-		} else {
-			return true;
-		}
-	}
+$wgExtensionMessagesFiles['MinimumNameLength'] = dirname(__FILE__) . '/MinimumNameLength.i18n.php';
+$wgExtensionFunctions[] = 'efMinimumNameLengthSetup';
 
-} else {
-	echo( "This file is an extension to the MediaWiki software. It cannot be used standalone.\n" );
-	exit( 1 );
+/**
+ * Extension setup function
+ */
+function efMinimumNameLengthSetup() {
+	global $wgHooks;
+	$wgHooks['AbortNewAccount'][] = 'efMinimumNameLength';
 }
 
+/**
+ * Hooks account creation and checks the
+ * username length, cancelling with an error
+ * if the username is too short
+ *
+ * @param User $user User object being created
+ * @param string $error Reference to error message to show
+ * @return bool
+ */
+function efMinimumNameLength( $user, &$error ) {
+	global $wgMinimumUsernameLength;
+
+	if( mb_strlen( $user->getName() ) < $wgMinimumUsernameLength ) {
+		wfLoadExtensionMessages( 'MinimumNameLength' );
+		$error = wfMsgHtml( 'minnamelength-error', $wgMinimumUsernameLength );
+		return false;
+	}
+
+	return true;
+}
