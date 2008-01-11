@@ -1,4 +1,8 @@
 <?php
+if (!defined('MEDIAWIKI')) {
+echo "Vote extension";
+exit(1);
+}
 
 /**
  * Special page allows users to register votes for a particular
@@ -9,52 +13,46 @@
  * Please see the LICENCE file for terms of use and redistribution
  */
  
-if( defined( 'MEDIAWIKI' ) ) {
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'Vote',
+	'version' => '2008-01-11',
+	'author' => 'Rob Church',
+	'description' => 'Provides simple polling capabilities',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Vote',
+);
 
-	$wgAutoloadClasses['SpecialVote'] = dirname( __FILE__ ) . '/Vote.page.php';
-	$wgSpecialPages['Vote'] = 'SpecialVote';
-	$wgExtensionFunctions[] = 'efVote';
-	$wgExtensionCredits['specialpage'][] = array(
-			'name' => 'Vote',
-			'author' => 'Rob Church',
-			'description' => 'Provides simple polling capabilities',
-	);
-	
-	/**
-	 * Users who can vote
-	 */
-	$wgGroupPermissions['user']['vote'] = true;
-	
-	/**
-	 * Users who can view vote results
-	 */
-	$wgGroupPermissions['bureaucrat']['voteadmin'] = true;
-	
-	/**
-	 * Extension setup function
-	 */
-	function efVote() {
-		global $wgMessageCache, $wgHooks;
-		require_once( dirname( __FILE__ ) . '/Vote.i18n.php' );
-		foreach( efVoteMessages() as $lang => $messages )
-			$wgMessageCache->addMessages( $messages, $lang );
-		$wgHooks['SkinTemplateSetupPageCss'][] = 'efVoteCss';
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['SpecialVote'] = $dir . 'Vote.i18n.php';
+$wgAutoloadClasses['SpecialVote'] = $dir . 'Vote.page.php';
+$wgSpecialPages['Vote'] = 'SpecialVote';
+$wgExtensionFunctions[] = 'efVote';
+
+/**
+ * Users who can vote
+ */
+$wgGroupPermissions['user']['vote'] = true;
+
+/**
+ * Users who can view vote results
+ */
+$wgGroupPermissions['bureaucrat']['voteadmin'] = true;
+
+/**
+ * Extension setup function
+ */
+function efVote() {
+	global $wgHooks;
+	$wgHooks['SkinTemplateSetupPageCss'][] = 'efVoteCss';
+}
+
+/**
+ * Add extra CSS to the skin
+ */
+function efVoteCss( &$css ) {
+	global $wgTitle;
+	if( $wgTitle->isSpecial( 'Vote' ) ) {
+		$file = dirname( __FILE__ ) . '/Vote.css';
+		$css .= "/*<![CDATA[*/\n" . htmlspecialchars( file_get_contents( $file ) ) . "\n/*]]>*/";
 	}
-	
-	/**
-	 * Add extra CSS to the skin
-	 */
-	function efVoteCss( &$css ) {
-		global $wgTitle;
-		if( $wgTitle->isSpecial( 'Vote' ) ) {
-			$file = dirname( __FILE__ ) . '/Vote.css';
-			$css .= "/*<![CDATA[*/\n" . htmlspecialchars( file_get_contents( $file ) ) . "\n/*]]>*/";
-		}
-		return true;
-	}
-
-
-} else {
-	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
-	exit( 1 ) ;
+	return true;
 }

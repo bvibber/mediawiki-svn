@@ -8,17 +8,18 @@
  *
  * Please see the LICENCE file for terms of use and redistribution
  */
- 
+
 class SpecialVote extends SpecialPage {
 
 	private $user;
-	
+
 	public function __construct() {
 		parent::__construct( 'Vote', 'vote' );
 	}
-	
+
 	public function execute( $mode ) {
 		global $wgOut, $wgUser;
+		wfLoadExtensionMessages( 'SpecialVote' );
 		$this->setHeaders();
 		$this->user = $wgUser;
 		if( strtolower( $mode ) == 'results' ) {
@@ -40,7 +41,7 @@ class SpecialVote extends SpecialPage {
 			}
 		}
 	}
-	
+
 	private function showNormal() {
 		global $wgOut, $wgRequest, $wgUser;
 		$self = SpecialPage::getTitleFor( 'Vote' );
@@ -69,13 +70,13 @@ class SpecialVote extends SpecialPage {
 			$wgOut->addHtml( $this->makeForm( $current ) );
 		}
 	}
-	
+
 	private static function getExistingVote( $user ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$choice = $dbr->selectField( 'vote', 'vote_choice', array( 'vote_user' => $user->getId() ), __METHOD__ );
 		return $choice;
 	}
-	
+
 	private static function updateVote( $user, $choice ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->begin();
@@ -83,7 +84,7 @@ class SpecialVote extends SpecialPage {
 		$dbw->insert( 'vote', array( 'vote_user' => $user->getId(), 'vote_choice' => $choice ), __METHOD__ );
 		$dbw->commit();
 	}
-	
+
 	private function showResults() {
 		global $wgOut, $wgLang;
 		$wgOut->setPageTitle( wfMsg( 'vote-results' ) );
@@ -103,7 +104,7 @@ class SpecialVote extends SpecialPage {
 			$wgOut->addWikiText( wfMsgNoTrans( 'vote-results-none' ) );
 		}
 	}
-	
+
 	private function getChoices() {
 		static $return = false;
 		if( !$return ) {
@@ -114,14 +115,14 @@ class SpecialVote extends SpecialPage {
 				$return[ strtolower( $short ) ] = $long;
 			}
 		}
-		return $return;		
+		return $return;
 	}
-	
+
 	private function getChoiceDesc( $short ) {
 		$choices = $this->getChoices();
 		return $choices[$short];
 	}
-	
+
 	private function makeForm( $current ) {
 		global $wgUser;
 		$self = $this->getTitle();
@@ -139,7 +140,7 @@ class SpecialVote extends SpecialPage {
 		$form .= '</fieldset></form>';
 		return $form;
 	}
-	
+
 	private static function makeSelectOption( $value, $label, $selected = false ) {
 		$attribs = array();
 		$attribs['value'] = $value;

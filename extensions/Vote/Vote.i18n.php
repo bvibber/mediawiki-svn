@@ -1,18 +1,18 @@
 <?php
-
 /**
- * Internationalisation file for the Vote extension
+ * Internationalisation file for extension Vote.
  *
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
- * Please see the LICENCE file for terms of use and redistribution
+ * @license Please see the LICENCE file for terms of use and redistribution
  */
 
-function efVoteMessages() {
-	$messages = array(
+$messages = array();
 
-/* English (Rob Church) */
-'en' => array(
+/* English
+ * @author Rob Church
+ */
+$messages['en'] = array(
 	'vote' => 'Vote',
 	'vote-header' => "You can vote for '''Supreme Overlord of the World''' here!",
 	'vote-current' => "Your current vote is for '''$1'''.",
@@ -31,11 +31,11 @@ riddler|Riddler",
 	'vote-login' => 'You must $1 to vote.',
 	'vote-login-link' => 'log in',
 	'vote-invalid-choice' => 'You must select one of the available options.',
-),
+);
 
 /* Arabic (Meno25) */
-'ar' => array(
-'vote' => 'تصويت',
+$messages['ar'] = array(
+	'vote' => 'تصويت',
 	'vote-header' => 'يمكنك التصويت لاختيار \'\'\'الرئيس الأعلى للعالم\'\'\' هنا!',
 	'vote-current' => 'تصويتك الحالي ل \'\'\'$1\'\'\'.',
 	'vote-legend' => 'وضع أو تغيير التصويت',
@@ -53,9 +53,9 @@ riddler|Riddler",
 	'vote-login' => 'يجب عليك $1 لكي تصوت.',
 	'vote-login-link' => 'دخول',
 	'vote-invalid-choice' => 'يجب عليك اختيار واحد من الخيارات المتاحة.',
-),
+);
 
-'bcl' => array(
+$messages['bcl'] = array(
 	'vote' => 'Magboto',
 	'vote-submit' => 'Magboto',
 	'vote-registered' => 'Nairehistro na an boto mo.',
@@ -66,12 +66,12 @@ riddler|Riddler",
 	'vote-results-none' => 'Mayong botong naikaag sa mga oras na ini.',
 	'vote-login' => 'Kaipuhan mong $1 magboto.',
 	'vote-login-link' => 'maglaog',
-),
+);
 
 /** Bulgarian (Български)
  * @author DCLXVI
  */
-'bg' => array(
+$messages['bg'] = array(
 	'vote'                => 'Гласуване',
 	'vote-caption'        => 'Текущ избор:',
 	'vote-submit'         => 'Гласуване',
@@ -82,9 +82,9 @@ riddler|Riddler",
 	'vote-login'          => 'За гласуване е необходимо $1 в системата.',
 	'vote-login-link'     => 'влизане',
 	'vote-invalid-choice' => 'Необходимо е да бъде избрана една от наличните възможности.',
-),
+);
 
-'br' => array(
+$messages['br'] = array(
 	'vote' => 'Votiñ',
 	'vote-current' => 'Votet hoc\'h eus evit \'\'\'$1\'\'\'.',
 	'vote-registered' => 'Enrollet eo bet ho vot.',
@@ -93,12 +93,12 @@ riddler|Riddler",
 	'vote-results-choice' => 'Dibab',
 	'vote-login' => 'Ret eo deoc\'h $1 evit votiñ.',
 	'vote-login-link' => 'en em enrollañ',
-),
+);
 
 /** Greek (Ελληνικά)
  * @author Consta
  */
-'el' => array(
+$messages['el'] = array(
 	'vote'                => 'Ψηφοφορία',
 	'vote-caption'        => 'Η επιλογή σας:',
 	'vote-submit'         => 'Ψηφοφορία',
@@ -109,16 +109,16 @@ riddler|Riddler",
 	'vote-login'          => 'Πρέπει $1 να ψηφίσετε.',
 	'vote-login-link'     => 'Εγγραφή',
 	'vote-invalid-choice' => 'Πρέπει να επιλέξετε μια από της διαθέσιμες επιλογές.',
-),
+);
 
-'ext' => array(
+$messages['ext'] = array(
 	'vote' => 'Votal',
 	'vote-submit' => 'Votal',
 	'vote-registered' => 'El tu votu s´á rustrau.',
 	'vote-results-count' => 'Cuenta',
-),
+);
 
-'fa' => array(
+$messages['fa'] = array(
 	'vote' => 'رای‌گیری',
 	'vote-current' => 'رای فعلی شما \'\'\'$1\'\'\' است.',
 	'vote-legend' => 'رای خود را وارد یا اصلاح نمایید',
@@ -133,10 +133,10 @@ riddler|Riddler",
 	'vote-login' => 'برای رای دادن باید $1.',
 	'vote-login-link' => 'به سیستم وارد شوید',
 	'vote-invalid-choice' => 'شما باید یکی از گزینه‌های موجود را انتخاب کنید.',
-),
+);
 
 /* French (Ashar Voultoiz) */
-'fr' => array(
+$messages['fr'] = array(
 	'vote' => 'Vote',
 	'vote-header' => "Vous pouvez voter pour le '''maître de l'Univers''' ici !",
 	'vote-current' => "Votre vote actuel est pour '''$1'''.",
@@ -155,9 +155,9 @@ sphinx|Sphinx",
 	'vote-login' => 'Vous devez $1 pour voter.',
 	'vote-login-link' => 'vous connecter',
 	'vote-invalid-choice' => 'Vous devez choisir une des options disponible.',
-),
+);
 
-'gl' => array(
+$messages['gl'] = array(
 	'vote' => 'Votación',
 	'vote-header' => 'Pode votar aquí polo \'\'\'Mellor Candidato do Mundo\'\'\'!',
 	'vote-current' => 'O seu voto actual é para \'\'\'$1\'\'\'.',
@@ -176,9 +176,9 @@ riddler|Riddler',
 	'vote-login' => 'Ten que $1 para votar.',
 	'vote-login-link' => 'rexistrarse',
 	'vote-invalid-choice' => 'Ten que escoller unha das opcións disponíbeis.',
-),
+);
 
-'hsb' => array(
+$messages['hsb'] = array(
 	'vote' => 'Hłosować',
 	'vote-header' => 'Móžeš tu za \'\'\'Supreme Overlord of the World\'\'\' hłosować!',
 	'vote-current' => 'Twój aktualny hłós je za \'\'\'$1\'\'\'.',
@@ -195,10 +195,10 @@ riddler|Riddler',
 	'vote-login' => 'Dyrbiš $1, zo by wothłosował.',
 	'vote-login-link' => 'přizjewić',
 	'vote-invalid-choice' => 'Dyrbiš jednu z k dispoziciji stejacych opcijow wubrać.',
-),
+);
 
 /* Indonesian (Ivan Lanin) */
-	'id' => array(
+$messages['id'] = array(
 	'vote' => 'Pemilihan',
 	'vote-header' => "Anda dapat memilih '''Penguasa Tertinggi Dunia''' di sini!",
 	'vote-current' => "Pilihan Anda saat ini adalah '''$1'''.",
@@ -217,18 +217,18 @@ riddler|Riddler",
 	'vote-login' => 'Anda harus $1 untuk memilih.',
 	'vote-login-link' => 'masuk log',
 	'vote-invalid-choice' => 'Anda harus memilih salah satu pilihan yang tersedia.',
-),
+);
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-'lb' => array(
+$messages['lb'] = array(
 	'vote'              => 'Ofstëmmen',
 	'vote-view-results' => "Kuckt d'Resultater",
 	'vote-results'      => 'Resultater vun der Ofstëmmung',
-),
+);
 
-'nl' => array(
+$messages['nl'] = array(
 	'vote' => 'Stemmen',
 	'vote-header' => 'U kunt hier stemmen voor \'\'\'Alleenheerser over de Wereld\'\'\'!',
 	'vote-current' => 'Uw huidige stem is voor \'\'\'$1\'\'\'.',
@@ -247,10 +247,10 @@ riddler|Riddler',#identical but defined
 	'vote-login' => 'U moet $1 om te kunnen stemmen.',
 	'vote-login-link' => 'aanmelden',
 	'vote-invalid-choice' => 'U moet een van de beschikbare opties kiezen.',
-),
+);
 
 /* Norwegian (Jon Harald Søby) */
-'no' => array(
+$messages['no'] = array(
 	'vote' => 'Avstemning',
 	'vote-header' => 'Du kan stemme på \'\'\'(eksempelbruker)\'\'\' her!',
 	'vote-current' => 'Din nåværende stemme er på \'\'\'$1\'\'\'.',
@@ -269,10 +269,10 @@ bruker3|Tredje brukernavn',
 	'vote-login' => 'Du må $1 for å stemme.',
 	'vote-login-link' => 'logge inn',
 	'vote-invalid-choice' => 'Du må velge en av de tilgjengelige alternativene.',
-),
+);
 
 /* Occitan (Cedric31) */
-'oc' => array(
+$messages['oc'] = array(
 	'vote' => 'Vòte',
 	'vote-header' => 'Podètz votar pel \'\'\'mèstre de l\'Univèrs\'\'\' aicí !',
 	'vote-current' => 'Vòstre vòte actual es per \'\'\'$1\'\'\'.',
@@ -291,9 +291,9 @@ sphinx|Esfinx',
 	'vote-login' => 'Devètz $1 per votar.',
 	'vote-login-link' => 'vos connectar',
 	'vote-invalid-choice' => 'Devètz causir una de las opcions disponibla.',
-),
+);
 
-'pl' => array(
+$messages['pl'] = array(
 	'vote' => 'Głosuj',
 	'vote-header' => 'Tutaj możesz zagłosować na \'\'\'Naczelnego Przywódcę Świata\'\'\'!',
 	'vote-current' => 'Aktualnie Twój głos oddany jest za \'\'\'$1\'\'\'.',
@@ -309,10 +309,10 @@ sphinx|Esfinx',
 	'vote-login' => 'By głosować, musisz $1.',
 	'vote-login-link' => 'zaloguj',
 	'vote-invalid-choice' => 'Musisz wybrać jedną z dostępnych opcji.',
-),
+);
 
 /* Piedmontese (Bèrto 'd Sèra) */
-'pms' => array(
+$messages['pms'] = array(
 	'vote' => 'Voté',
 	'vote-header' => 'A peul voté për \'\'\'ël superbargé dl<nowiki>\'</nowiki>ann\'\'\' ambelessì!',
 	'vote-current' => 'Sò vot corent a l\'é për \'\'\'$1\'\'\'.',
@@ -331,9 +331,9 @@ Gioanin|Gioanin',
 	'vote-login' => 'Për voté a venta $1.',
 	'vote-login-link' => 'ch\'a rintra ant ël sistema',
 	'vote-invalid-choice' => 'A venta ch\'as selession-a un-a dj\'opsion disponibij.',
-),
+);
 
-'sk' => array(
+$messages['sk'] = array(
 	'vote' => 'Hlasovať',
 	'vote-header' => 'Tu môžete hlasovať o \'\'\'Hlavnom diktátorovi sveta\'\'\'!',
 	'vote-current' => 'Aktuálne hlasujete za \'\'\'$1\'\'\'.',
@@ -349,17 +349,17 @@ Gioanin|Gioanin',
 	'vote-login' => 'Aby ste mohli hlasovať, musíte $1.',
 	'vote-login-link' => 'sa prihlásiť',
 	'vote-invalid-choice' => 'Musíte vybrať jednu z dostupných možností.',
-),
+);
 
 /** Albanian (Shqip)
  * @author Ergon
  */
-'sq' => array(
+$messages['sq'] = array(
 	'vote' => 'Voto',
-),
+);
 
 /* Sundanese (Kandar via BetaWiki) */
-'su' => array(
+$messages['su'] = array(
 	'vote-header' => 'Anjeun bisa milih \'\'\'Supreme Overlord of the World\'\'\' di dieu!',
 	'vote-current' => 'Anjeun geus milih \'\'\'$1\'\'\'.',
 	'vote-caption' => 'Pilihan anjeun:',
@@ -368,17 +368,17 @@ Gioanin|Gioanin',
 	'vote-login' => 'Anjeun kudu $1 pikeun milu milih.',
 	'vote-login-link' => 'asup log',
 	'vote-invalid-choice' => 'Anjeun kudu milih salah sahiji ti nu aya.',
-),
+);
 
 /** Volapük (Volapük)
  * @author Malafaya
  */
-'vo' => array(
+$messages['vo'] = array(
 	'vote-submit' => 'Vögodön',
-),
+);
 
 /* Cantonese (Shinjiman) */
-'yue' => array(
+$messages['yue'] = array(
 	'vote' => '投票',
 	'vote-header' => "你可以響呢度投下'''響呢個世界度至高無尚'''嘅一票！",
 	'vote-current' => "你而家係投緊'''$1'''。",
@@ -397,10 +397,10 @@ riddler|謎人",
 	'vote-login' => '你一定要$1先可以投票。',
 	'vote-login-link' => '登入',
 	'vote-invalid-choice' => '你一定要響可以揀嘅選項度揀一個。',
-),
+);
 
 /* Chinese (Simplified) (Shinjiman) */
-'zh-hans' => array(
+$messages['zh-hans'] = array(
 	'vote' => '投票',
 	'vote-header' => "您可以在这里投下'''在这个世界中至高无尚'''的一票！",
 	'vote-current' => "您现正为'''$1'''投票。",
@@ -419,10 +419,10 @@ riddler|谜人",
 	'vote-login' => '您一定要$1先可以投票。',
 	'vote-login-link' => '登入',
 	'vote-invalid-choice' => '您一定要在可以选择的选项中选择一个。',
-),
+);
 
 /* Chinese (Traditonal) (Shinjiman) */
-'zh-hant' => array(
+$messages['zh-hant'] = array(
 	'vote' => '投票',
 	'vote-header' => "您可以在這裡投下'''在這個世界中至高無尚'''的一票！",
 	'vote-current' => "您現正為'''$1'''投票。",
@@ -441,19 +441,11 @@ riddler|謎人",
 	'vote-login' => '您一定要$1先可以投票。',
 	'vote-login-link' => '登入',
 	'vote-invalid-choice' => '您一定要在可以選擇的選項中選擇一個。',
-),
+);
 
-	);
-
-	/* Chinese defaults, fallback to zh-hans */
-	$messages['zh'] = $messages['zh-hans'];
-	$messages['zh-cn'] = $messages['zh-hans'];
-	$messages['zh-hk'] = $messages['zh-hant'];
-	$messages['zh-sg'] = $messages['zh-hans'];
-	$messages['zh-tw'] = $messages['zh-hant'];
-
-	/* Cantonese default, fallback to yue */
-	$messages['zh-yue'] = $messages['yue'];
-
-	return $messages;
-}
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-tw'] = $messages['zh-hant'];
+$messages['zh-yue'] = $messages['yue'];
