@@ -6,7 +6,7 @@
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
- 
+
 class SpecialDuplicator extends SpecialPage {
 
 	/**
@@ -14,13 +14,13 @@ class SpecialDuplicator extends SpecialPage {
 	 */
 	private $source = '';
 	private $sourceTitle = NULL;
-	
+
 	/**
 	 * Title of the page we are saving to
 	 */
 	private $dest = '';
 	private $destTitle = NULL;
-	
+
 	/**
 	 * Whether or not we're duplicating the talk page
 	 */
@@ -32,7 +32,7 @@ class SpecialDuplicator extends SpecialPage {
 	public function __construct() {
 		parent::__construct( 'Duplicator' );
 	}
-	
+
 	/**
 	 * Main execution function
 	 *
@@ -40,28 +40,29 @@ class SpecialDuplicator extends SpecialPage {
 	 */
 	public function execute( $title ) {
 		global $wgUser, $wgOut, $wgRequest, $wgLang, $wgDuplicatorRevisionLimit;
+		wfLoadExtensionMessages( 'Duplicator' );
 		$this->setHeaders();
-		
+
 		# Check permissions
 		if( !$wgUser->isAllowed( 'duplicate' ) ) {
 			$wgOut->permissionRequired( 'duplicate' );
 			return;
 		}
-		
+
 		# Check for database lock
 		if( wfReadOnly() ) {
 			$wgOut->readOnlyPage();
 			return;
 		}
-		
+
 		$this->setOptions( $wgRequest, $title );
 		$wgOut->addWikiText( wfMsgNoTrans( 'duplicator-header' ) );
 		$wgOut->addHtml( $this->buildForm() );
-		
+
 		# If the token doesn't match or the form wasn't POSTed, stop
 		if( !$wgRequest->wasPosted() || !$wgUser->matchEditToken( $wgRequest->getVal( 'token' ), 'duplicator' ) )
 		return;
-		
+
 		# Check we've got a valid source title
 		if( is_object( $this->sourceTitle ) ) {
 			# Check the source exists
@@ -115,9 +116,9 @@ class SpecialDuplicator extends SpecialPage {
 			# Invalid source title
 			$wgOut->addWikiText( wfMsgNoTrans( 'duplicator-source-invalid' ) );
 		}
-		
+
 	}
-	
+
 	/**
 	 * Determine various options and attempt initialisation of objects
 	 *
@@ -132,7 +133,7 @@ class SpecialDuplicator extends SpecialPage {
 		$this->destTitle = Title::newFromUrl( $this->dest );
 		$this->talk = $request->getCheck( 'talk' );
 	}
-	
+
 	/**
 	 * Should we allow the user to see the talk page option?
 	 * Don't bother if there is no talk page, or we're duplicating one
@@ -151,7 +152,7 @@ class SpecialDuplicator extends SpecialPage {
 			return true;
 		}
 	}
-	
+
 	/**
 	 * Build a form for entering the source and destination titles
 	 *
@@ -183,7 +184,7 @@ class SpecialDuplicator extends SpecialPage {
 		$form .= '</fieldset></form>';
 		return $form;
 	}
-	
+
 	/**
 	 * Duplicate one page to another, including full histories
 	 * Does some basic error-catching, but not as much as the code above [should]
@@ -193,7 +194,7 @@ class SpecialDuplicator extends SpecialPage {
 	 * @return bool
 	 */
 	private function duplicate( &$source, &$dest ) {
-		global $wgUser;
+		global $wgUser, $wgBot;
 		if( !$source->exists() || $dest->exists() )
 			return false; # Source doesn't exist, or destination does
 		$dbw =& wfGetDB( DB_MASTER );
@@ -233,11 +234,10 @@ class SpecialDuplicator extends SpecialPage {
 		$destArticle->updateRevisionOn( $dbw, $nr );
 		$destArticle->createUpdates( $nr );
 		Article::onArticleCreate( $dest );
-		RecentChange::notifyNew( $nr->getTimestamp(), $dest, true, $wgUser, $comment );
+		$bot = $wgUser->isAllowed( 'bot' );
+		RecentChange::notifyNew( $nr->getTimestamp(), $dest, true, $wgUser, $comment, $bot );
 		$dest->invalidateCache();
 		$dbw->commit();
 		return true;
 	}
-	
 }
-
