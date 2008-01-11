@@ -1,4 +1,6 @@
 <?php
+if ( ! defined( 'MEDIAWIKI' ) )
+    die();
 
 /**
  * Extension to provide customisable email notification of new user creation
@@ -9,54 +11,48 @@
  * @licence GNU General Public Licence 2.0 or later
  */
 
-if( defined( 'MEDIAWIKI' ) ) {
+$wgExtensionCredits['other'][] = array(
+	'name' => 'New User Email Notification',
+	'version' => '1.5',
+	'author' => 'Rob Church',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:New_User_Email_Notification',
+	'description' => 'Sends email notification when user accounts are created',
+);
 
-	$wgAutoloadClasses['NewUserNotifier'] = dirname( __FILE__ ) . '/NewUserNotif.class.php';
-	$wgExtensionFunctions[] = 'efNewUserNotifSetup';
-	$wgExtensionCredits['other'][] = array(
-		'name' => 'New User Email Notification',
-		'author' => 'Rob Church',
-		'url' => 'http://www.mediawiki.org/wiki/Extension:New_User_Email_Notification',
-		'description' => 'Sends email notification when user accounts are created',
-	);
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['NewUserNotifier'] = $dir . 'NewUserNotif.i18n.php';
+$wgAutoloadClasses['NewUserNotifier'] = $dir . 'NewUserNotif.class.php';
+$wgExtensionFunctions[] = 'efNewUserNotifSetup';
 
-	/**
-	 * Email address to use as the sender
-	 */
-	$wgNewUserNotifSender = $wgPasswordSender;
-	
-	/**
-	 * Users who should receive notification mails
-	 */
-	$wgNewUserNotifTargets[] = 1;
-	
-	/**
-	 * Additional email addresses to send mails to
-	 */
-	$wgNewUserNotifEmailTargets = array();
+/**
+ * Email address to use as the sender
+ */
+$wgNewUserNotifSender = $wgPasswordSender;
 
-	/**
-	 * Extension setup
-	 */
-	function efNewUserNotifSetup() {
-		global $wgHooks, $wgMessageCache;
-		$wgHooks['AddNewAccount'][] = 'efNewUserNotif';
-		require_once( dirname( __FILE__ ) . '/NewUserNotif.i18n.php' );
-		foreach( efNewUserNotifMessages() as $lang => $messages )
-			$wgMessageCache->addMessages( $messages, $lang );
-	}
-	
-	/**
-	 * Hook account creation
-	 *
-	 * @param User $user User account that was created
-	 * @return bool
-	 */
-	function efNewUserNotif( $user ) {
-		return NewUserNotifier::hook( $user );
-	}
-	
-} else {
-	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
-	exit( 1 );
+/**
+ * Users who should receive notification mails
+ */
+$wgNewUserNotifTargets[] = 1;
+
+/**
+ * Additional email addresses to send mails to
+ */
+$wgNewUserNotifEmailTargets = array();
+
+/**
+ * Extension setup
+ */
+function efNewUserNotifSetup() {
+	global $wgHooks;
+	$wgHooks['AddNewAccount'][] = 'efNewUserNotif';
+}
+
+/**
+ * Hook account creation
+ *
+ * @param User $user User account that was created
+ * @return bool
+ */
+function efNewUserNotif( $user ) {
+	return NewUserNotifier::hook( $user );
 }

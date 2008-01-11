@@ -10,10 +10,10 @@
 require_once( 'UserMailer.php' );
 
 class NewUserNotifier {
-		
+
 	private $sender;
 	private $user;
-	
+
 	/**
 	 * Constructor
 	 */
@@ -29,6 +29,7 @@ class NewUserNotifier {
 	 */
 	public function execute( $user ) {
 		$this->user = $user;
+		wfLoadExtensionMessages( 'NewUserNotifier' );
 		$this->sendExternalMails();
 		$this->sendInternalMails();
 	}
@@ -47,7 +48,7 @@ class NewUserNotifier {
 			);
 		}
 	}
-	
+
 	/**
 	 * Send email to users
 	 */
@@ -64,7 +65,7 @@ class NewUserNotifier {
 			}
 		}
 	}
-	
+
 	/**
 	 * Initialise a user from an identifier or a username
 	 *
@@ -95,7 +96,7 @@ class NewUserNotifier {
 			$wgContLang->timeAndDate( wfTimestampNow() )
 		);
 	}
-	
+
 	/**
 	 * Hook account creation
 	 *
@@ -107,5 +108,4 @@ class NewUserNotifier {
 		$notifier->execute( $user );
 		return true;
 	}
-		
 }
