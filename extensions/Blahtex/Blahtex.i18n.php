@@ -283,10 +283,11 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Sherbrooke
+ * @author Grondin
  */
 $messages['fr'] = array(
 	'math_noblahtex'                        => 'Ne peut exécuter blahtex, qui devrait être à $1',
-	'math_AmbiguousInfix'                   => "La position de « $1 » est ambigue (ajouter des balises additionnelles « { ... } » peut lever l'ambiguité)",
+	'math_AmbiguousInfix'                   => "La position de « $1 » est ambiguë (ajouter des balises additionnelles « { ... } » peut lever l'ambiguïté)",
 	'math_CannotChangeDirectory'            => 'Ne peut changer de dossier de travail',
 	'math_CannotCreateTexFile'              => 'Ne peut créer un fichier tex',
 	'math_CannotRunDvipng'                  => 'Ne peut exécuter dvipng',
