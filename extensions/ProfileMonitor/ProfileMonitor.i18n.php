@@ -1,17 +1,17 @@
 <?php
-
 /**
- * Messages file for ProfileMonitor extension
+ * Internationalisation file for extension ProfileMonitor.
  *
  * @addtogroup Extensions
  * @author Rob Church <rob.church@mintrasystems.com>
+*/
+
+$messages = array();
+
+/* English
+ * @author Rob Church
  */
-
-function efProfileMonitorMessages() {
-	$messages = array(
-
-/* English (Rob Church) */
-'en' => array(
+$messages['en'] = array(
 	'profiling' => 'Profiling data',
 	'profiling-process' => 'Process string:',
 	'profiling-wildcard' => 'Use wildcard',
@@ -22,9 +22,9 @@ function efProfileMonitorMessages() {
 	'profiling-data-time' => 'Time (all)',
 	'profiling-data-average' => 'Time (avg)',
 	'profiling-no-data' => 'No matching data found.',
-),
+);
 
-'ar' => array(
+$messages['ar'] = array(
 	'profiling' => 'معالجة البيانات',
 	'profiling-process' => 'معالجة العملية:',
 	'profiling-wildcard' => 'استخدم كارتا خاصا',
@@ -35,9 +35,9 @@ function efProfileMonitorMessages() {
 	'profiling-data-time' => 'الزمن (الكل)',
 	'profiling-data-average' => 'الزمن (متوسط)',
 	'profiling-no-data' => 'لم يتم إيجاد بيانات مطابقة.',
-),
+);
 
-'fr' => array(
+$messages['fr'] = array(
 	'profiling' => 'Données pour évaluer',
 	'profiling-process' => 'Chaîne de caractères à traiter :',
 	'profiling-wildcard' => 'Utilisez des « joker »',
@@ -48,13 +48,13 @@ function efProfileMonitorMessages() {
 	'profiling-data-time' => 'Durée (tout)',
 	'profiling-data-average' => 'Durée (moyenne)',
 	'profiling-no-data' => 'Aucune donnée correspondante trouvée',
-),
+);
 
 /** Galician (Galego)
  * @author Alma
  * @author Xosé
  */
-'gl' => array(
+$messages['gl'] = array(
 	'profiling'              => 'Perfís de datos',
 	'profiling-process'      => 'Cadea do proceso:',
 	'profiling-wildcard'     => 'Empregar comodín',
@@ -66,9 +66,9 @@ function efProfileMonitorMessages() {
 	'profiling-data-average' => 'Tempo (media)',
 	'profiling-no-data'      => 'Non coinciden os datos atopados.',
 
-),
+);
 
-'hsb' => array(
+$messages['hsb'] = array(
 	'profiling' => 'Profilowanske daty',
 	'profiling-process' => 'Znamjenjowy slěd předźěłać:',
 	'profiling-wildcard' => 'Zastupowacy symbol wužiwać',
@@ -79,10 +79,10 @@ function efProfileMonitorMessages() {
 	'profiling-data-time' => 'Čas (dohromady)',
 	'profiling-data-average' => 'Čas (přerězk)',
 	'profiling-no-data' => 'Žane wotpowědne daty namakane.',
-),
+);
 
 /* Indonesian (IvanLanin) */
-'id' => array(
+$messages['id'] = array(
 	'profiling' => 'Profilisasi data',
 	'profiling-process' => 'Proses data:',
 	'profiling-wildcard' => 'Gunakan wildcard',
@@ -93,10 +93,10 @@ function efProfileMonitorMessages() {
 	'profiling-data-time' => 'Waktu (seluruhnya)',
 	'profiling-data-average' => 'Waktu (rata-rata)',
 	'profiling-no-data' => 'Tidak ditemukan data yang cocok.',
-),
+);
 
 /* Italian (BrokenArrow) */
-'it' => array(
+$messages['it'] = array(
 	'profiling' => 'Dati di profiling',
 	'profiling-process' => 'Stringa processo:',
 	'profiling-wildcard' => 'Usa metacaratteri',
@@ -107,10 +107,10 @@ function efProfileMonitorMessages() {
 	'profiling-data-time' => 'Tempo totale',
 	'profiling-data-average' => 'Tempo medio',
 	'profiling-no-data' => 'Nessun dato corrispondente.',
-),
+);
 
 /* nld / Dutch (Siebrand Mazeland) */
-'nl' => array(
+$messages['nl'] = array(
 	'profiling' => 'Profilinggegevens',
 	'profiling-process' => 'Verwerk string:',
 	'profiling-wildcard' => 'Gebruik wildcard',
@@ -121,9 +121,9 @@ function efProfileMonitorMessages() {
 	'profiling-data-time' => 'Tijd (tot)',
 	'profiling-data-average' => 'Tijd (gem)',
 	'profiling-no-data' => 'Geen gegevens gevonden.',
-),
+);
 
-'no' => array(
+$messages['no'] = array(
 	'profiling' => 'Profileringsdata',
 	'profiling-process' => 'Prosesseringsstreng:',
 	'profiling-wildcard' => 'Bruk vilkårlig tegn',
@@ -134,9 +134,9 @@ function efProfileMonitorMessages() {
 	'profiling-data-time' => 'Tid (alle)',
 	'profiling-data-average' => 'Tid (gj.snitt)',
 	'profiling-no-data' => 'Ingen passende resultater.',
-),
+);
 
-'oc' => array(
+$messages['oc'] = array(
 	'profiling' => 'Donadas per evaluar',
 	'profiling-process' => 'Cadena de caractèrs de tractar :',
 	'profiling-wildcard' => 'Utilizatz de « joker »',
@@ -147,9 +147,9 @@ function efProfileMonitorMessages() {
 	'profiling-data-time' => 'Durada (tot)',
 	'profiling-data-average' => 'Durada (mejana)',
 	'profiling-no-data' => 'Cap de donada correspondenta pas trobada',
-),
+);
 
-'pms' => array(
+$messages['pms'] = array(
 	'profiling' => 'Antramentr ch\'as càlcola ël profil da \'nt ij dat',
 	'profiling-process' => 'Espression processà:',
 	'profiling-wildcard' => 'Dovré ël ciapatut',
@@ -160,10 +160,10 @@ function efProfileMonitorMessages() {
 	'profiling-data-time' => 'Temp (an total)',
 	'profiling-data-average' => 'Temp (mojen)',
 	'profiling-no-data' => 'A l\'é pa trovasse gnun dat parej.',
-),
+);
 
 /* Slovak (helix84) */
-'sk' => array(
+$messages['sk'] = array(
 	'profiling' => 'Profilovacie údaje',
 	'profiling-process' => 'Spracovať reťazec:',
 	'profiling-wildcard' => 'Použiť zástupné znaky',
@@ -174,17 +174,17 @@ function efProfileMonitorMessages() {
 	'profiling-data-time' => 'Čas (všetky)',
 	'profiling-data-average' => 'Čas (priemer)',
 	'profiling-no-data' => 'Neboli nájdené vyhovujúce údaje.',
-),
+);
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-'stq' => array(
+$messages['stq'] = array(
 	'profiling-data-count' => 'täl',
-),
+);
 
 /* Cantonese (Shinjiman) */
-'yue' => array(
+$messages['yue'] = array(
 	'profiling' => '檢核資料',
 	'profiling-process' => '處理字串:',
 	'profiling-wildcard' => '用萬用符',
@@ -195,10 +195,10 @@ function efProfileMonitorMessages() {
 	'profiling-data-time' => '時間 (全部)',
 	'profiling-data-average' => '時間 (平均)',
 	'profiling-no-data' => '搵唔到對應嘅資料。',
-),
+);
 
 /* Chinese (Simplified) (Shinjiman) */
-'zh-hans' => array(
+$messages['zh-hans'] = array(
 	'profiling' => '检核数据',
 	'profiling-process' => '处理字串:',
 	'profiling-wildcard' => '使用通配符',
@@ -209,10 +209,10 @@ function efProfileMonitorMessages() {
 	'profiling-data-time' => '时间 (全部)',
 	'profiling-data-average' => '时间 (平均)',
 	'profiling-no-data' => '找不到匹配的数据。',
-),
+);
 
 /* Chinese (Traditional) (Shinjiman) */
-'zh-hant' => array(
+$messages['zh-hant'] = array(
 	'profiling' => '檢核資料',
 	'profiling-process' => '處理字串:',
 	'profiling-wildcard' => '使用萬用字元',
@@ -223,18 +223,11 @@ function efProfileMonitorMessages() {
 	'profiling-data-time' => '時間 (全部)',
 	'profiling-data-average' => '時間 (平均)',
 	'profiling-no-data' => '找不到對應的資料。',
-),
+);
 
-	);
-
-	/* Chinese defaults, fallback to zh-hans or zh-hant */
-	$messages['zh'] = $messages['zh-hans'];
-	$messages['zh-cn'] = $messages['zh-hans'];
-	$messages['zh-hk'] = $messages['zh-hant'];
-	$messages['zh-tw'] = $messages['zh-hans'];
-	$messages['zh-sg'] = $messages['zh-hant'];
-	/* Cantonese default, fallback to yue */
-	$messages['zh-yue'] = $messages['yue'];
-
-	return $messages;
-}
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-tw'] = $messages['zh-hans'];
+$messages['zh-sg'] = $messages['zh-hant'];
+$messages['zh-yue'] = $messages['yue'];

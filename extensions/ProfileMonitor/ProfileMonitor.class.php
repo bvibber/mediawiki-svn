@@ -6,21 +6,24 @@
  * @addtogroup Extensions
  * @author Rob Church <rob.church@mintrasystems.com>
  */
- 
+
 class ProfileMonitor extends SpecialPage {
 
 	public function __construct() {
 		parent::__construct( 'Profiling' );
 	}
-	
+
 	public function execute( $par ) {
 		global $wgOut, $wgRequest;
+
+		wfLoadExtensionMessages( 'ProfileMonitor' );
+
 		$this->setHeaders();
-		
+
 		$process = $wgRequest->getText( 'process' );
 		$wild = $wgRequest->getCheck( 'wildcard' );
 		$wgOut->addHtml( $this->makeSearchForm( $process, $wild ) );
-		
+
 		if( $wgRequest->getCheck( 'submit' ) ) {
 			$dbr =& wfGetDB( DB_SLAVE );
 			$res = $dbr->query( $this->makeSql( $dbr, $process, $wild ), __METHOD__ );
@@ -34,9 +37,8 @@ class ProfileMonitor extends SpecialPage {
 				$wgOut->addWikiText( wfMsg( 'profiling-no-data' ) );
 			}
 		}
-		
 	}
-	
+
 	private function makeSearchForm( $process, $wild = false ) {
 		$self = Title::makeTitle( NS_SPECIAL, 'Profiling' );
 		$html  = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
@@ -46,12 +48,12 @@ class ProfileMonitor extends SpecialPage {
 		$html .= '<tr><td>&nbsp;</td><td>' . wfSubmitButton( wfMsg( 'profiling-ok' ), array( 'name' => 'submit' ) ) . '</td></table></form>';
 		return $html;
 	}
-	
+
 	private function makeSql( &$dbr, $process, $wild = false ) {
 		$profiling = $dbr->tableName( 'profiling' );
 		return "SELECT * FROM {$profiling} WHERE " . $this->makeWhereClause( $dbr, $process, $wild );
 	}
-	
+
 	private function makeWhereClause( &$dbr, $process, $wild = false ) {
 		if( $wild )
 			if( strpos( $process, '%' ) === false )
@@ -61,7 +63,7 @@ class ProfileMonitor extends SpecialPage {
 				? "pf_name LIKE {$process}"
 				: "pf_name = {$process}";
 	}
-	
+
 	private function makeTable( $data ) {
 		$table  = '<table class="profiledata"><tr>';
 		$table .= '<th>' . wfMsgHtml( 'profiling-data-process' ) . '</th>';
@@ -80,6 +82,4 @@ class ProfileMonitor extends SpecialPage {
 		$table .= '</table>';
 		return $table;
 	}
-
 }
-
