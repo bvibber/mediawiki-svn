@@ -17,11 +17,6 @@
  *
  */
 
-require_once( dirname( __FILE__ ) . '/ImageMap.i18n.php' );
-global $wgMessageCache;
-foreach( efImageMapMessages() as $lang => $messages )
-	$wgMessageCache->addMessages( $messages, $lang );
-
 class ImageMap {
 	static public $id = 0;
 
@@ -33,6 +28,7 @@ class ImageMap {
 
 	static function render( $input, $params, $parser ) {
 		global $wgScriptPath, $wgUser, $wgUrlProtocols, $wgNoFollowLinks;
+		wfLoadExtensionMessages( 'ImageMap' );
 
 		$lines = explode( "\n", $input );
 

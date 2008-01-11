@@ -1,14 +1,16 @@
 <?php
-
 /**
- * Internationalisation file for ImageMap extension
+ * Internationalisation file for extension FindSpam.
+ *
+ * @addtogroup Extensions
+*/
+
+$messages = array();
+
+/* English
+ * @author Tim Starling
  */
-
-function efImageMapMessages() {
-	$messages = array(
-
-/* English (Tim Starling) */
-'en' => array(
+$messages['en'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: must specify an image in the first line',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: image is invalid or non-existent',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: no valid link was found at the end of line $1',
@@ -22,9 +24,9 @@ function efImageMapMessages() {
 	'imagemap_description'          => 'About this image',
 	# Note to translators: keep the same order
 	'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
-),
+);
 
-'ar' => array(
+$messages['ar'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: يجب تحديد صورة في الخط الأول',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: الصورة غير صحيحة أو غير موجودة',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: لم يتم العثور على وصلة صحيحة في نهاية السطر $1',
@@ -35,16 +37,16 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: إحداثي غير صحيح عند الخط $1، يجب أن يكون رقما',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: محدد وصف غير صحيح، يجب أن يكون واحدا من: <tt>$1</tt>',
 	'imagemap_description'          => 'حول هذه الصورة',
-),
+);
 
-'bcl' => array(
+$messages['bcl'] = array(
 	'imagemap_description'          => 'Manónongod sa retratong ini',
-),
+);
 
 /** Bulgarian (Български)
  * @author Spiritia
  */
-'bg' => array(
+$messages['bg'] = array(
 	'imagemap_no_image'           => '&lt;imagemap&gt;: трябва да се укаже изображение на първия ред',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: невалидно или липсващо изображение',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: липсва валидна препратка в края на ред $1',
@@ -53,12 +55,12 @@ function efImageMapMessages() {
 	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: неразпозната фигура на ред $1; всеки ред трябва да са започва с някое от следните: default (по подразбиране), rect (правоъгълник), circle (кръг) или poly (многоъгълник)',
 	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: невалидна координата на ред $1, трябва да бъде число',
 	'imagemap_description'        => 'Информация за изображението',
-),
+);
 
 /** Czech (Česky)
  * @author Li-sung
  */
-'cs' => array(
+$messages['cs'] = array(
 	'imagemap_no_image'           => '&lt;imagemap&gt;: na první řádce musí být určen obrázek',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: soubor není platný nebo neexistuje',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: nebyl nalezen žádný platný odkaz na konci řádku $1',
@@ -69,10 +71,10 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: neplatné souřadnice na řádku $1, je očekáváno číslo',
 	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: neplatné určení oblasti desc, je očekávána jedna z možností: <tt>$1</tt>',
 	'imagemap_description'        => 'O tomto obrázku',
-),
+);
 
 /* Danish (Wegge) */
-'da' => array(
+$messages['da'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: Der skal angives et billednavn i første linje',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: Billedet er ugyldigt eller findes ikke',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: Fandt ikke en brugbar henvisning i slutningen af linje $1',
@@ -86,10 +88,10 @@ function efImageMapMessages() {
 	'imagemap_description'          => 'Om dette billede',
 	# Note to translators: keep the same order
 	'imagemap_desc_types'           => 'top-højre, bund-højre, bund-venstre, top-venstre, ingen',
-),
+);
 
 /* German (Raymond) */
-'de' => array(
+$messages['de'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;-Fehler: In der ersten Zeile muss ein Bild angegeben werden',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;-Fehler: Bild ist ungültig oder nicht vorhanden',
 	'imagemap_no_link'              => '&lt;imagemap&gt;-Fehler: Am Ende von Zeile $1 wurde kein gültiger Link gefunden',
@@ -103,18 +105,18 @@ function efImageMapMessages() {
 	'imagemap_description'          => 'Über dieses Bild',
 	# Note to translators: keep the same order
 	'imagemap_desc_types'           => 'oben rechts, unten rechts, unten links, oben links, keine',
-),
+);
 
-'el' => array(
+$messages['el'] = array(
 	'imagemap_description'          => 'Σχετικά με αυτήν την εικόνα',
-),
+);
 
-'ext' => array(
+$messages['ext'] = array(
 	'imagemap_description'          => 'Al tentu esta imahin',
-),
+);
 
 # فارسی (Huji)
-'fa' => array(
+$messages['fa'] = array(
 	'imagemap_no_image'           => '<imagemap>: باید در اولین سطر یک تصویر را مشخص کنید',
 	'imagemap_invalid_image'      => '<imagemap>: تصویر غیرمجاز است یا وجود ندارد',
 	'imagemap_no_link'            => '<imagemap>: هیچ پیوند مجازی تا انتهای سطر $1 پیدا نشد',
@@ -126,10 +128,10 @@ function efImageMapMessages() {
 	'imagemap_invalid_desc'       => '<imagemap>: توضیحات غیرمجاز، باید یکی از این موارد باشد: <tt>$1</tt>',
 	'imagemap_description'        => 'دربارهٔ این تصویر',
 
-),
+);
 
 /* French */
-'fr' => array(
+$messages['fr'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt; : vous devez spécifier une image dans la première ligne',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt; : l’image est invalide ou n’existe pas',
 	'imagemap_no_link'              => '&lt;imagemap&gt; : aucun lien valide n’a été trouvé à la fin de la ligne $1',
@@ -141,12 +143,12 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt; : coordonnée invalide à la ligne $1, doit être un nombre',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt; : paramètre « desc » invalide, les paramètres possibles sont : $1',
 	'imagemap_description'          => 'À propos de cette image',
-),
+);
 
 /** Franco-Provençal (Arpetan)
  * @author ChrisPtDe
  */
-'frp' => array(
+$messages['frp'] = array(
 	'imagemap_no_image'           => '&lt;imagemap&gt; : vos dête spècefiar una émâge dens la premiére legne',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt; : l’émâge est envalida ou ègziste pas',
 	'imagemap_no_link'            => '&lt;imagemap&gt; : nion lim valido at étâ trovâ a la fin de la legne $1',
@@ -157,13 +159,13 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'      => '&lt;imagemap&gt; : coordonâ envalida a la legne $1, dêt étre un nombro',
 	'imagemap_invalid_desc'       => '&lt;imagemap&gt; : paramètre « dèsc » envalido, los paramètres possiblos sont : <tt>$1</tt>',
 	'imagemap_description'        => 'A propôs de ceta émâge',
-),
+);
 
 /** Galician (Galego)
  * @author Alma
  * @author Xosé
  */
-'gl' => array(
+$messages['gl'] = array(
 	'imagemap_no_image'           => '&lt;imagemap&gt;: debe especificar unha imaxe na primeira liña',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: a imaxe non é válida ou non existe',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: foi atopada unha ligazón non válida ao final da liña $1',
@@ -174,15 +176,15 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: coordinada non válida na liña $1, debe ser un número',
 	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: especificación desc non válida, debe ser un de: <tt>$1</tt>',
 	'imagemap_description'        => 'Sobre esta imaxe',
-),
+);
 
 /** Gujarati (ગુજરાતી) */
-'gu' => array(
+$messages['gu'] = array(
 	'imagemap_description' => 'આ ચિત્ર વિષે',
-),
+);
 
 /* Hebrew (Rotem Liss) */
-'he' => array(
+$messages['he'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: יש לציין תמונה בשורה הראשונה',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: התמונה שגויה או שאינה קיימת',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: לא נמצא קישור תקף בסוף שורה $1',
@@ -194,9 +196,9 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: קוארדינאטה שגויה בשורה $1, היא חייבת להיות מספר',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: הגדרת פרמטר desc שגויה, צריך להיות אחד מהבאים: $1',
 	'imagemap_description'          => 'אודות התמונה',
-),
+);
 
-'hr' => array(
+$messages['hr'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: morate navesti ime slike koju rabite u prvom retku',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: slika ne postoji ili je krivog tipa',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: nema (ispravne) poveznice na kraju retka $1',
@@ -207,9 +209,9 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: nevaljane koordinate u retku $1, mora biti broj',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: nevaljan opis, mora biti jedan od: <tt>$1</tt>',
 	'imagemap_description'          => 'Ovo je slika/karta s poveznicama (\'\'imagemap\'\')',
-),
+);
 
-'hsb' => array(
+$messages['hsb'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt; zmylk: Dyrbiš w prěnjej lince wobraz podać',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt; zmylk: Wobraz je njepłaćiwy abo njeeksistuje',
 	'imagemap_no_link'              => '&lt;imagemap&gt; zmylk: Na kóncu linki $1 njebu płaćiwy wotkaz namakany',
@@ -220,13 +222,13 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt; zmylk: njepłaćiwa koordinata w lince $1: su jenož ličby dowolene',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt; zmylk: Njepłaćiwy parameter "desc", móžne su: <tt>$1</tt>',
 	'imagemap_description'          => 'Wo tutym wobrazu',
-),
+);
 
 /** Hungarian (Magyar)
  * @author KossuthRad
  * @author Bdanee
  */
-'hu' => array(
+$messages['hu'] = array(
 	'imagemap_no_image'           => '&lt;imagemap&gt;: kell egy előírt kép az első sorban',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: érvénytelen vagy nem létező kép',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: nincs érvényes link a(z) $1. sor végén',
@@ -237,10 +239,10 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: érvénytelen koordináta a $1 vonalban, számnak kell lennie',
 	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: hibás desc leírás, ezek egyike kell: <tt>$1</tt>',
 	'imagemap_description'        => 'Kép leírása',
-),
+);
 
 /* Indonesian (Ivan Lanin) */
-'id' => array(
+$messages['id'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: harus memberikan suatu gambar di baris pertama',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: gambar tidak sah atau tidak ditemukan',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: tidak ditemukan pranala yang sah di akhir baris ke $1',
@@ -252,17 +254,17 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: koordinat tidak sah pada baris ke $1, haruslah berupa angka',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: spesifikasi desc tidak sah, harus salah satu dari: $1',
 	'imagemap_description'          => 'Tentang gambar ini',
-),
+);
 
 /** Icelandic (Íslenska)
  * @author SPQRobin
  */
-'is' => array(
+$messages['is'] = array(
 	'imagemap_description' => 'Um þessa mynd',
-),
+);
 
 /* Italian (AnyFile, fixed typos by BrokenArrow) */
-'it' => array(
+$messages['it'] = array(
 	'imagemap_no_image'             => "&lt;imagemap&gt;: si deve specificare un'immagine nella prima riga",
 	'imagemap_invalid_image'        => "&lt;imagemap&gt;: l'immagine non è valida o non esiste",
 	'imagemap_no_link'              => '&lt;imagemap&gt;: non è stato trovato alcun collegamento valido alla fine della riga $1',
@@ -273,10 +275,10 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: coordinata non valida nella riga $1, deve essere un numero',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: Valore non valido per il parametro desc, deve essere uno dei seguenti: $1',
 	'imagemap_description'          => 'Informazioni sull\'immagine',
-),
+);
 
 /* Kazakh Cyrillic (AlefZet) */
-'kk-cyrl' => array(
+$messages['kk-cyrl'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: бірінші жолда суретті көрсету қажет',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: сурет жарамсыз немесе жоқ',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: $1 жол аяғында жарамды сілтеме табылмады',
@@ -288,10 +290,10 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: $1 жолында жарамсыз координата, сан болуы қажет',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: жарамсыз сипаттама маманданымы, мынаның біреуі болуы қажет: $1',
 	'imagemap_description'          => 'Бұл сурет туралы',
-),
+);
 
 /* Kazakh Latin (AlefZet) */
-'kk-latn' => array(
+$messages['kk-latn'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: birinşi jolda swretti körsetw qajet',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: swret jaramsız nemese joq',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: $1 jol ayağında jaramdı silteme tabılmadı',
@@ -303,10 +305,10 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: $1 jolında jaramsız koordïnata, san bolwı qajet',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: jaramsız sïpattama mamandanımı, mınanıñ birewi bolwı qajet: $1',
 	'imagemap_description'          => 'Bul swret twralı',
-),
+);
 
 /* Kazakh Arabic (AlefZet) */
-'kk-arab' => array(
+$messages['kk-arab'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: بٸرٸنشٸ جولدا سۋرەتتٸ كٶرسەتۋ قاجەت',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: سۋرەت جارامسىز نەمەسە جوق',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: $1 جول اياعىندا جارامدى سٸلتەمە تابىلمادى',
@@ -318,20 +320,20 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: $1 جولىندا جارامسىز كوورديناتا, سان بولۋى قاجەت',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: جارامسىز سيپاتتاما ماماندانىمى, مىنانىڭ بٸرەۋٸ بولۋى قاجەت: $1',
 	'imagemap_description'          => 'بۇل سۋرەت تۋرالى',
-),
+);
 
-'la' => array(
+$messages['la'] = array(
 	'imagemap_description'          => 'De hac imagine',
-),
+);
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-'lb' => array(
+$messages['lb'] = array(
 	'imagemap_description' => 'Iwwert dëst Bild',
-),
+);
 
-'nds' => array(
+$messages['nds'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: in de eerste Reeg mutt en Bild angeven wesen',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: Bild geiht nich oder dat gifft dat gornich',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: an dat Enn vun Reeg $1 weer keen Lenk',
@@ -342,20 +344,20 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: Koordinaat in Reeg $1 nich bi de Reeg, mutt en Tall wesen',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: Beschrieven nich bi de Reeg, mutt een vun disse wesen: <tt>$1</tt>',
 	'imagemap_description'          => 'Över dit Bild',
-),
+);
 
 /** Lithuanian (Lietuvių)
  * @author Matasg
  * @author Garas
  */
-'lt' => array(
+$messages['lt'] = array(
 	'imagemap_no_image'      => '&lt;imagemap&gt;: privalote nurodyti paveikslėlį pirmoje linijoje',
 	'imagemap_invalid_image' => '&lt;imagemap&gt;: blogas arba neegzistuojantis paveikslėlis',
 	'imagemap_description'   => 'Apie šį paveikslėlį',
-),
+);
 
 /* nld / Dutch (Siebrand Mazeland) */
-'nl' => array(
+$messages['nl'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: geef een afbeelding op in de eerste regel',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: de afbeelding is corrupt of bestaat niet',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: er is geen geldige link aangetroffen aan het einde van regel $1',
@@ -368,10 +370,10 @@ function efImageMapMessages() {
 	'imagemap_description'          => 'Over deze afbeelding',
 	# Note to translators: keep the same order
 	'imagemap_desc_types'           => 'rechtsboven, rechtsonder, linksonder, linksboven, geen',
-),
+);
 
 /* Norwegian (Jon Harald Søby) */
-'no' => array(
+$messages['no'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: må angi et bilde i første linje',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: bilde er ugyldig eller ikke-eksisterende',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: ingen gyldig lenke ble funnet i slutten av linje $1',
@@ -382,10 +384,10 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: ugyldig koordinat i slutten av linje $1, må være et tall',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: ugyldig desc-spesifisering, må være enten: <tt>$1</tt>',
 	'imagemap_description'          => 'Om dette bildet',
-),
+);
 
 /* Occitan (Cedric31) */
-'oc' => array(
+$messages['oc'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt; : devètz especificar un imatge dins la primièra linha',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt; : l’imatge es invalid o existís pas',
 	'imagemap_no_link'              => '&lt;imagemap&gt; : cap de ligam valid es pas estat trobat a la fin de la linha $1',
@@ -396,9 +398,9 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt; : coordenada invalida a la linha $1, deu èsser un nombre',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt; : paramètre « desc » invalid, los paramètres possibles son : $1',
 	'imagemap_description'          => 'A prepaus d\'aqueste imatge',
-),
+);
 
-'pl' => array(
+$messages['pl'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: należy wpisać grafikę w pierwszej linii',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: grafika jest niepoprawna lub nie istnieje',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: nie znaleziono poprawnego linku na końcu linii $1',
@@ -409,10 +411,10 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: nieprawidłowa współrzędna w linii $1; należy podać liczbę',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: nieprawidłowa specyfikacja opisu; należy wpisać jeden z wariantów: <tt>$1</tt>',
 	'imagemap_description'          => 'Informacje o tej grafice',
-),
+);
 
 /* Piedmontese (Bèrto 'd Sèra) */
-'pms' => array(
+$messages['pms'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: ant la prima riga a venta ch\'a-i sia la specìfica ëd na figura',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: la figura ò ch\'a l\'ha chèich-còs ch\'a va nen, ò ch\'a-i é nen d\'autut',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: pa gnun-a anliura bon-a a la fin dla riga $1',
@@ -423,10 +425,10 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: coordinà nen bon-a a la riga $1, a l\'ha da esse un nùmer',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: specìfica dla descrission nen bon-a, a l\'ha da esse un-a ëd coste-sì: <tt>$1</tt>',
 	'imagemap_description'          => 'Rësgoard a sta figura-sì',
-),
+);
 
 /* Portuguese (Lugusto) */
-'pt' => array(
+$messages['pt'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: é necessário especificar uma imagem na primeira linha',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: imagem inválida ou inexistente',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: não foi encontrado um link válido ao final da linha $1',
@@ -438,12 +440,12 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: coordenada inválida na linha $1. 0 necessário que seja um número',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: especificação desc inválida. 0 necessário que seja uma dentre: <tt>$1</tt>',
 	'imagemap_description'          => 'Sobre esta imagem',
-),
+);
 
 /** Russian (Русский)
  * @author .:Ajvol:.
  */
-'ru' => array(
+$messages['ru'] = array(
 	'imagemap_no_image'           => '&lt;imagemap&gt;: в первой строке должно быть задано изображение',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: неверное или отсутствующее изображение',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: неверная ссылка в конце строки $1',
@@ -454,10 +456,10 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: ошибочная координата в строке $1, ожидается число',
 	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: ошибочное значение desc, ожидается одно из следующих значений: <tt>$1</tt>',
 	'imagemap_description'        => 'Описание изображения',
-),
+);
 
 /* Slovak (helix84) */
-'sk' => array(
+$messages['sk'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: musí mať na prvom riadku uvedený obrázok',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: obrázok je neplatný alebo neexistuje',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: na konci riadka $1 nebol nájdený platný odkaz',
@@ -469,24 +471,24 @@ function efImageMapMessages() {
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: neplatná súradnica na riadku $1, musí to byť číslo',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: neplatný popis, musí byť jedno z nasledovných: $1',
 	'imagemap_description'          => 'O tomto obrázku',
-),
+);
 
 /** ћирилица (ћирилица)
  * @author Sasa Stefanovic
  */
-'sr-ec' => array(
+$messages['sr-ec'] = array(
 	'imagemap_description' => 'О овој слици',
-),
+);
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-'stq' => array(
+$messages['stq'] = array(
 	'imagemap_no_image' => '&lt;imagemap&gt;-Failer: In ju eerste Riege mout ne Bielde ounroat wäide',
-),
+);
 
 /* Swedish */
-'sv' => array(
+$messages['sv'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: en bild måste anges på första raden',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: bilden är ogiltig eller existerar inte',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: ingen giltig länk fanns i slutet av rad $1',
@@ -500,21 +502,21 @@ function efImageMapMessages() {
 	'imagemap_description'          => 'Bildinformation',
 	# Note to translators: keep the same order
 	'imagemap_desc_types'           => 'uppe till höger, nere till höger, nere till vänster, uppe till vänster, ingen',
-),
+);
 
-'tet' => array(
+$messages['tet'] = array(
 	'imagemap_description'          => 'Kona-ba imajen ne\'e',
-),
+);
 
 /** Volapük (Volapük)
  * @author Malafaya
  */
-'vo' => array(
+$messages['vo'] = array(
 	'imagemap_description' => 'Tefü magod at',
-),
+);
 
 /* Cantonese (Shinjiman) */
-'yue' => array(
+$messages['yue'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: 一定要響第一行指定一幅圖像',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: 圖像唔正確或者唔存在',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: 響第$1行結尾度搵唔到一個正式嘅連結',
@@ -527,10 +529,10 @@ function efImageMapMessages() {
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: 唔正確嘅 desc 參數，一定係要以下嘅其中之一: $1',
 	'imagemap_description'          => '關於呢幅圖像',
 	'imagemap_desc_types'           => '右上, 右下, 左下, 左上, 無',
-),
+);
 
 /* Chinese (Simplified) (Shinjiman) */
-'zh-hans' => array(
+$messages['zh-hans'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: 必须要在第一行指定一幅图像',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: 图像不正确或者不存在',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: 在第$1行结尾中找不到一个正式的链接',
@@ -543,10 +545,10 @@ function efImageMapMessages() {
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: 不正确的 desc 参数，必须是以下的其中之一: $1',
 	'imagemap_description'          => '关于这幅图像',
 	'imagemap_desc_types'           => '右上, 右下, 左下, 左上, 无',
-),
+);
 
 /* Chinese (Traditional) (Shinjiman) */
-'zh-hant' => array(
+$messages['zh-hant'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: 必須要在第一行指定一幅圖像',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: 圖像不正確或者不存在',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: 在第$1行結尾中找不到一個正式的連結',
@@ -559,24 +561,15 @@ function efImageMapMessages() {
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: 不正確的 desc 參數，必須是以下的其中之一: $1',
 	'imagemap_description'          => '關於這幅圖像',
 	'imagemap_desc_types'           => '右上, 右下, 左下, 左上, 無',
-),
+);
 
-	);
-
-	/* Kazakh fallbacks */
-	$messages['kk-kz'] = $messages['kk-cyrl'];
-	$messages['kk-tr'] = $messages['kk-latn'];
-	$messages['kk-cn'] = $messages['kk-arab'];
-	$messages['kk'] = $messages['kk-cyrl'];
-
-	/* Chinese defaults, fallback to zh-hans or zh-hant */
-	$messages['zh'] = $messages['zh-hans'];
-	$messages['zh-cn'] = $messages['zh-hans'];
-	$messages['zh-hk'] = $messages['zh-hant'];
-	$messages['zh-tw'] = $messages['zh-hans'];
-	$messages['zh-sg'] = $messages['zh-hant'];
-	/* Cantonese default, fallback to yue */
-	$messages['zh-yue'] = $messages['yue'];
-
-	return $messages;
-}
+$messages['kk-kz'] = $messages['kk-cyrl'];
+$messages['kk-tr'] = $messages['kk-latn'];
+$messages['kk-cn'] = $messages['kk-arab'];
+$messages['kk'] = $messages['kk-cyrl'];
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-tw'] = $messages['zh-hans'];
+$messages['zh-sg'] = $messages['zh-hant'];
+$messages['zh-yue'] = $messages['yue'];
