@@ -15,7 +15,7 @@
  * @version 0.5
  *		changed algorithm to recoignize parameters
  * @version 0.6
- *		added a mechanism to save the called template´s raw text to a new article 
+ *		added a mechanism to save the called template´s raw text to a new article
  *				when doing this we replace symbols in the raw text which parameter names from our call by the values of these parameters
  *				Call/abc,saveAsPage=xyz,foo=bar
  *				will tale the raw text of "Template:Abc", replace all occurencies of 'foo' by 'bar' and save the result as a normal
@@ -30,17 +30,17 @@ class Call extends SpecialPage
                 wfLoadExtensionMessages('Call');
         }
 
-        
+
 		function execute($par) {
 			global $wgParser;
 		    global $wgOut, $wgRequest, $wgRawHtml, $wgUser;
 		    $oldRawHtml = $wgRawHtml;
 		    $wgRawHtml = false;         // disable raw html if it's enabled as this could be XSS security risk
             $this->setHeaders();
-            		 
+
             global $_REQUEST;
        		$argkeys = array_keys($_REQUEST);
-       		
+
        		// find the position of "title" and count succeeding arguments until we find one that matches
        		// one of the patterns which belong to typical session cookie variables
        		$argTitle=-1; $argCount=0; $n=0;
@@ -51,7 +51,7 @@ class Call extends SpecialPage
 		       		++$argCount;
 	       		}
 	       		$n++;
-       		}	
+       		}
 
        		$debug= !(strpos($wgRequest->getText('title'),'DebuG')===false);
        		if ($debug) {
@@ -62,7 +62,7 @@ class Call extends SpecialPage
 	       		}
 		        $wgOut->addHtml("\npar=$par\nargTitle=$argTitle\nargCount=$argCount</pre>");
        		}
-       		
+
        		$wikitext=''; $n=0; $i=-1;
        		foreach ($argkeys as $argKeyNr => $argKey) {
 	       		$i++;
@@ -83,14 +83,14 @@ class Call extends SpecialPage
 					$wikitext .= ( '|' . $argKey . '=' . $arg );
 				}
        		}
-       		
+
        		if ($wikitext=='' && $par!='') {
 	       		// the first argument may contain parameters which are separated by comma
 	       		// this is the case if [[Call,a=b]] syntax is used
 	   			$wikitext = str_replace( ",", "|", $par );
 				$wikitext = str_replace( "_", " ", $wikitext );
        		}
-            
+
        		// check if the result shall be saved as a wiki article
 			$saveAsPageLink=''; $saveAsPage=''; $saveAsTitle=null;
        		$wikitextS = preg_replace('/^.*\|\s*saveAsPage\s*=\s*/s','',$wikitext);
@@ -100,14 +100,14 @@ class Call extends SpecialPage
 				$saveAsPage    = $saveAsTitle->getText();
 				if ($saveAsTitle->getNamespace()==14) $saveAsPageLink = ':'.$saveAsPageLink;
        		}
-       		
+
        		// check if we want to execute a built-in command
 			$cmd = preg_replace('/^.*\|\s*cmd\s*=\s*/s','',$wikitext);
        		if ($cmd == $wikitext) $cmd='';
        		else {
 	       		$cmd = preg_replace('/\s*\|.*/s','',$cmd);
        		}
-       		
+
        		// in both cases we need the raw text of the called page
        		$rawText='';
        		if ($cmd!='' || $saveAsPage!='') {
@@ -163,7 +163,7 @@ class Call extends SpecialPage
 			        $wgOut->addHtml($wgOut->parse("{{".$wikitext."}}"));
 		        }
 	        }
-	        
+
             $skin = $wgUser->getSkin();
 		    $wgRawHtml = $oldRawHtml;
 
@@ -174,7 +174,7 @@ class Call extends SpecialPage
    				$wgOut->setPageTitle($newTitle[0]);
 			}
   			// $wgOut->addMeta("http:expires", "0");
-  
+
 		}
 
         static function convertTableToTemplateCalls($rawText, $parms) {
@@ -222,4 +222,3 @@ class Call extends SpecialPage
 	    	return join("\n",$text);
 	    }
 }
-?>

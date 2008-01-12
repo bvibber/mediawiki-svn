@@ -1,8 +1,9 @@
 <?php
-
-/*Internationalization file for Call Extension
- @addGroup Extension
-*/
+/*
+ * Internationalization file for Call Extension
+ *
+ * @addGroup Extension
+ */
 
 $messages = array();
 
