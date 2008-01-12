@@ -29,6 +29,6 @@ if ( !function_exists( 'extAddSpecialPage' ) ) {
 }
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['Asksql'] = $dir . 'Asksql.i18n.php';
-extAddSpecialPage( dirname(__FILE__) . '/Asksql_body.php', 'Asksql', 'SpecialAsksql' );
+extAddSpecialPage( $dir . 'Asksql_body.php', 'Asksql', 'SpecialAsksql' );
 
 
