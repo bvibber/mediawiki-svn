@@ -326,17 +326,19 @@ $messages['ja'] = array(
 );
 
 $messages['kk-arab'] = array(
-	'expandtemplates'                  => 'ٷلگٸلەردٸ ۇلعايتۋ',
-	'expand_templates_intro'           => 'وسى قۇرال ارنايى بەتٸ ٵلدەبٸر مٵتٸندٸ الادى دا,
-بۇنىڭ ٸشٸندەگٸ بارلىق كٸرٸكتەلگەن ٷلگٸلەردٸ مەيلٸنشە ۇلعايتادى.
-مىنا <nowiki>{{</nowiki>#if:...}} سيياقتى جٶڭدەتۋ فۋنكتسييالارىن دا, جٵنە <nowiki>{{</nowiki>CURRENTDAY}}
-سيياقتى اينامالىلارىن دا ۇلعايتادى (ناقتى ايتقاندا, قوس قابات ساداق جاقشالار اراسىنداعى بارلىعىن).
-بۇنى ٶز MediaWiki باعدارلاماسىنان قاتىستى جٶڭدەتۋ ساتىن شاقىرىپ ٸستەلٸنەدٸ.',
-	'expand_templates_title'           => 'مٵتٸن ارالىق اتاۋى ({{PAGENAME}} ت.ب. بەتتەر ٷشٸن):',
-	'expand_templates_input'           => 'كٸرٸس مٵتٸنٸ:',
-	'expand_templates_output'          => 'نٵتيجەسٸ',
+	'expandtemplates'                  => 'ۇلگىلەردى ۇلعايتۋ',
+	'expand_templates_intro'           => 'وسى قۇرال ارنايى بەتى الدەبىر ٴماتىندى الادى دا,
+بۇنىڭ ىشىندەگى بارلىق كىرىكتەلگەن ۇلگىلەردى مەيلىنشە ۇلعايتادى.
+مىنا <nowiki>{{#if:...}} سىيياقتى جوڭدەتۋ فۋنكتسىييالارىن دا, جانە {{CURRENTDAY}}
+سىيياقتى اينامالىلارىن دا ۇلعايتادى (ناقتى ايتقاندا, قوس قابات ساداق جاقشالار اراسىنداعى بارلىعىن).
+بۇنى ٴوز MediaWiki باعدارلاماسىنان قاتىستى جوڭدەتۋ ساتىن شاقىرىپ ىستەلىنەدى.',
+	'expand_templates_title'           => 'ٴماتىن ارالىق اتاۋى ({{PAGENAME}} ت.ب. بەتتەر ٴۇشىن):',
+	'expand_templates_input'           => 'كىرىس ٴماتىنى:',
+	'expand_templates_output'          => 'ناتىيجەسى',
+	'expand_templates_xml_output'      => 'XML شىعارۋى',
 	'expand_templates_ok'              => 'جارايدى',
-	'expand_templates_remove_comments' => 'مٵندەمەلەرٸن الاستاتىپ؟',
+	'expand_templates_remove_comments' => 'ماندەمەلەرىن الاستاتىپ?',
+	'expand_templates_generate_xml'    => 'XML وڭدەتۋ بۇتاقتارىن كورسەت',
 	'expand_templates_preview'         => 'قاراپ شىعۋ',
 );
 
@@ -350,8 +352,10 @@ $messages['kk-cyrl'] = array(
 	'expand_templates_title'           => 'Мәтін аралық атауы ({{PAGENAME}} т.б. беттер үшін):',
 	'expand_templates_input'           => 'Кіріс мәтіні:',
 	'expand_templates_output'          => 'Нәтижесі',
+	'expand_templates_xml_output'      => 'XML шығаруы',
 	'expand_templates_ok'              => 'Жарайды',
 	'expand_templates_remove_comments' => 'Мәндемелерін аластатып?',
+	'expand_templates_generate_xml'    => 'XML өңдету бұтақтарын көрсет',
 	'expand_templates_preview'         => 'Қарап шығу',
 );
 
@@ -365,8 +369,10 @@ Bunı öz MediaWiki bağdarlamasınan qatıstı jöñdetw satın şaqırıp iste
 	'expand_templates_title'           => 'Mätin aralıq atawı ({{PAGENAME}} t.b. better üşin):',
 	'expand_templates_input'           => 'Kiris mätini:',
 	'expand_templates_output'          => 'Nätïjesi',
+	'expand_templates_xml_output'      => 'XML şığarwı',
 	'expand_templates_ok'              => 'Jaraýdı',
 	'expand_templates_remove_comments' => 'Mändemelerin alastatıp?',
+	'expand_templates_generate_xml'    => 'XML öñdetw butaqtarın körset',
 	'expand_templates_preview'         => 'Qarap şığw',
 );
 

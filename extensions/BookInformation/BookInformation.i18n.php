@@ -331,6 +331,49 @@ $messages['ka'] = array(
 	'bookinfo-result-year'      => 'წელი:',
 );
 
+/** Kazakh (Қазақша)
+ * @author AlefZet
+ */
+$messages['kk-cyrl'] = array(
+	'bookinfo-header'            => 'Кітап мәліметі',
+	'bookinfo-result-title'      => 'Атауы:',
+	'bookinfo-result-author'     => 'Ауторы:',
+	'bookinfo-result-publisher'  => 'Баспагері:',
+	'bookinfo-result-year'       => 'Жылы:',
+	'bookinfo-error-invalidisbn' => 'Жарамсыз ISBN енгізілген.',
+	'bookinfo-error-nosuchitem'  => 'Тізімнің данасы болмаған не табылмаған.',
+	'bookinfo-error-nodriver'    => 'Кітап мәліметтерінің өз драйвері бастамаланбады',
+	'bookinfo-error-noresponse'  => 'Еш жауап жоқ не сұранымдың мезгілі өтіп кетті.',
+	'bookinfo-purchase'          => 'Бұл кітапты $1 дегеннен сатып алу',
+	'bookinfo-provider'          => 'Дерек жетістірушісі: $1',
+);
+$messages['kk-latn'] = array(
+	'bookinfo-header'            => 'Kitap mälimeti',
+	'bookinfo-result-title'      => 'Atawı:',
+	'bookinfo-result-author'     => 'Awtorı:',
+	'bookinfo-result-publisher'  => 'Baspageri:',
+	'bookinfo-result-year'       => 'Jılı:',
+	'bookinfo-error-invalidisbn' => 'Jaramsız ISBN engizilgen.',
+	'bookinfo-error-nosuchitem'  => 'Tizimniñ danası bolmağan ne tabılmağan.',
+	'bookinfo-error-nodriver'    => 'Kitap mälimetteriniñ öz draýveri bastamalanbadı',
+	'bookinfo-error-noresponse'  => 'Eş jawap joq ne suranımdıñ mezgili ötip ketti.',
+	'bookinfo-purchase'          => 'Bul kitaptı $1 degennen satıp alw',
+	'bookinfo-provider'          => 'Derek jetistirwşisi: $1',
+);
+$messages['kk-arab'] = array(
+	'bookinfo-header'            => 'كىتاپ مالىمەتى',
+	'bookinfo-result-title'      => 'اتاۋى:',
+	'bookinfo-result-author'     => 'اۋتورى:',
+	'bookinfo-result-publisher'  => 'باسپاگەرى:',
+	'bookinfo-result-year'       => 'جىلى:',
+	'bookinfo-error-invalidisbn' => 'جارامسىز ISBN ەنگىزىلگەن.',
+	'bookinfo-error-nosuchitem'  => 'ٴتىزىمنىڭ داناسى بولماعان نە تابىلماعان.',
+	'bookinfo-error-nodriver'    => 'كىتاپ مالىمەتتەرىنىڭ ٴوز درايۆەرى باستامالانبادى',
+	'bookinfo-error-noresponse'  => 'ەش جاۋاپ جوق نە سۇرانىمدىڭ مەزگىلى ٴوتىپ كەتتى.',
+	'bookinfo-purchase'          => 'بۇل كىتاپتى $1 دەگەننەن ساتىپ الۋ',
+	'bookinfo-provider'          => 'دەرەك جەتىستىرۋشىسى: $1',
+);
+
 $messages['la'] = array(
 	'bookinfo-result-title' => 'Titulus:',
 	'bookinfo-result-author' => 'Auctor:',
@@ -630,6 +673,11 @@ $messages['zh-hant'] = array(
 	'bookinfo-purchase' => '在$1買這本書',
 	'bookinfo-provider' => '資料提供者: $1',
 );
+
+$messages['kk'] = $messages['kk-cyrl'];
+$messages['kk-kz'] = $messages['kk-cyrl'];
+$messages['kk-tr'] = $messages['kk-latn'];
+$messages['kk-cn'] = $messages['kk-arab'];
 
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];

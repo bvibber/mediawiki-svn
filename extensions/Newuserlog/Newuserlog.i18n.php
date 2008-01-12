@@ -258,10 +258,10 @@ $messages['ja'] = array(
 );
 
 $messages['kk-arab'] = array(
-	'newuserlogpage'           => 'تٸركەلۋ جۋرنالى',
-	'newuserlogpagetext'       => 'بۇل قاتىسۋشى تٸركەلگٸ جاساۋ جۋرنالى',
+	'newuserlogpage'           => 'تىركەلۋ جۋرنالى',
+	'newuserlogpagetext'       => 'بۇل قاتىسۋشى تىركەلگى جاساۋ جۋرنالى',
 	'newuserlog-create-entry'  => 'جاڭا قاتىسۋشى',
-	'newuserlog-create2-entry' => 'جاڭا تٸركەلگٸ جاسادى — $1',
+	'newuserlog-create2-entry' => 'جاڭا تىركەلگى جاسادى — $1',
 );
 
 $messages['kk-cyrl'] = array(

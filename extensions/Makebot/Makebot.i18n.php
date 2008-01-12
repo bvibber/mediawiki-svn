@@ -613,34 +613,34 @@ $messages['ja'] = array(
 
 /* Kazakh Arabic (kk:User:AlefZet) */
 $messages['kk-arab'] = array(
-	'makebot'                 => 'بوت كٷيٸن بەرۋ نە قايتارۋ',
-	'makebot-header'          => '\'\'\'بۇل بەتتٸ ورنىنداعى تٶرەشٸلەر باسقا كاتىسۋشى تٸركەلگٸسٸنە [[{{MediaWiki:Grouppage-bot}}|بوت كٷيٸن]] بەرۋ نە قايتارۋ ٷشٸن قولدانادى.\'\'\'<br />بەرٸلگەن بوت كٷيٸ قاتىسۋشىنىڭ ٶڭدەۋلەرٸن [[{{ns:special}}:Recentchanges|جۋىقتاعى ٶزگەرٸستەر]] سيياقتى تٸزٸمدەردەن جاسىرادى, جٵنە دە ٶزدٸك تٷردە ٶڭدەۋ جاسايتىن قاتىسۋشىلاردى بەلگٸلەۋگە قولايلى. وسى ٵرەكەت ٸسكە اساتىن ساياساتى بويىنشا جاسالۋى قاجەت.',
+	'makebot'                 => 'بوت كۇيىن بەرۋ نە قايتارۋ',
+	'makebot-header'         => "'''بۇل بەتتى ورنىنداعى بىتىكشىلەر باسقا كاتىسۋشى تىركەلگىسىنە [[{{MediaWiki:Grouppage-bot}}|بوت كۇيىن]] بەرۋ نە قايتارۋ ٴۇشىن قولدانادى.'''<br />بەرىلگەن بوت كۇيى قاتىسۋشىنىڭ وڭدەۋلەرىن [[{{ns:special}}:Recentchanges|جۋىقتاعى وزگەرىستەر]] سىيياقتى تىزىمدەردەن جاسىرادى, جانە دە وزدىك تۇردە وڭدەۋ جاسايتىن قاتىسۋشىلاردى بەلگىلەۋگە قولايلى. وسى ارەكەت ىسكە اساتىن ساياساتى بويىنشا جاسالۋى قاجەت.",
 	'makebot-username'        => 'قاتىسۋشى اتى:',
-	'makebot-search'          => 'ٶتۋ',
-	'makebot-isbot'           => '[[{{ns:user}}:$1|$1]] دەگەندە بوت كٷيٸ بار.',
-	'makebot-notbot'          => '[[{{ns:user}}:$1|$1]] دەگەندە بوت كٷيٸ جوق.',
-	'makebot-privileged'      => '[[{{ns:user}}:$1|$1]] دەگەندە [[{{ns:special}}:Listadmins|ٵكٸمشٸ نەمەسە تٶرەشٸ قۇقىقتارى]] بار, سوندىقتان بوت كٷيٸ بەرٸلمەيدٸ.',
-	'makebot-change'          => 'كٷيٸن ٶزگەرتۋ:',
+	'makebot-search'          => 'ٴوتۋ',
+	'makebot-isbot'           => '[[{{ns:user}}:$1|$1]] دەگەندە بوت كۇيى بار.',
+	'makebot-notbot'          => '[[{{ns:user}}:$1|$1]] دەگەندە بوت كۇيى جوق.',
+	'makebot-privileged'      => '[[{{ns:user}}:$1|$1]] دەگەندە [[{{ns:special}}:Listadmins|اكىمشى نەمەسە بىتىكشى قۇقىقتارى]] بار, سوندىقتان بوت كۇيى بەرىلمەيدى.',
+	'makebot-change'          => 'كۇيىن وزگەرتۋ:',
 	'makebot-grant'           => 'بەرۋ',
 	'makebot-revoke'          => 'قايتا شاقىرۋ',
-	'makebot-comment'         => 'مٵندەمەسٸ:',
-	'makebot-granted'         => '[[{{ns:user}}:$1|$1]] دەگەندە ەندٸ بوت كٷيٸ بار.',
-	'makebot-revoked'         => '[[{{ns:user}}:$1|$1]] دەگەندە ەندٸ بوت كٷيٸ جوق.',
-	'makebot-logpage'         => 'بوت كٷيٸ جۋرنالى',
-	'makebot-logpagetext'     => 'بۇل قاتىسۋشى [[{{MediaWiki:Grouppage-bot}}|بوت]] كٷيٸن ٶزگەرتۋ جۋرنالى.',
-	'makebot-logentrygrant'   => '[[$1]] دەگەنگە بوت كٷيٸ بەرٸلدٸ',
-	'makebot-logentryrevoke'  => '[[$1]] دەگەننەن بوت كٷيٸ الاستاتىلدى',
+	'makebot-comment'         => 'ماندەمەسى:',
+	'makebot-granted'         => '[[{{ns:user}}:$1|$1]] دەگەندە ەندى بوت كۇيى بار.',
+	'makebot-revoked'         => '[[{{ns:user}}:$1|$1]] دەگەندە ەندى بوت كۇيى جوق.',
+	'makebot-logpage'         => 'بوت كۇيى جۋرنالى',
+	'makebot-logpagetext'     => 'بۇل قاتىسۋشى [[{{MediaWiki:Grouppage-bot}}|بوت]] كۇيىن وزگەرتۋ جۋرنالى.',
+	'makebot-logentrygrant'   => '[[$1]] دەگەنگە بوت كۇيى بەرىلدى',
+	'makebot-logentryrevoke'  => '[[$1]] دەگەننەن بوت كۇيى الاستالدى',
 );
 
 /* Kazakh Cyrillic (kk:User:AlefZet) */
 $messages['kk-cyrl'] = array(
 	'makebot'                 => 'Бот күйін беру не қайтару',
-	'makebot-header'          => '\'\'\'Бұл бетті орнындағы төрешілер басқа катысушы тіркелгісіне [[{{MediaWiki:Grouppage-bot}}|бот күйін]] беру не қайтару үшін қолданады.\'\'\'<br />Берілген бот күйі қатысушының өңдеулерін [[{{ns:special}}:Recentchanges|жуықтағы өзгерістер]] сияқты тізімдерден жасырады, және де өздік түрде өңдеу жасайтын қатысушыларды белгілеуге қолайлы. Осы әрекет іске асатын саясаты бойынша жасалуы қажет.',
+	'makebot-header'         => "'''Бұл бетті орнындағы бітікшілер басқа катысушы тіркелгісіне [[{{MediaWiki:Grouppage-bot}}|бот күйін]] беру не қайтару үшін қолданады.'''<br />Берілген бот күйі қатысушының өңдеулерін [[{{ns:special}}:Recentchanges|жуықтағы өзгерістер]] сияқты тізімдерден жасырады, және де өздік түрде өңдеу жасайтын қатысушыларды белгілеуге қолайлы. Осы әрекет іске асатын саясаты бойынша жасалуы қажет.",
 	'makebot-username'        => 'Қатысушы аты:',
 	'makebot-search'          => 'Өту',
 	'makebot-isbot'           => '[[{{ns:user}}:$1|$1]] дегенде бот күйі бар.',
 	'makebot-notbot'          => '[[{{ns:user}}:$1|$1]] дегенде бот күйі жоқ.',
-	'makebot-privileged'      => '[[{{ns:user}}:$1|$1]] дегенде [[{{ns:special}}:Listadmins|әкімші немесе төреші құқықтары]] бар, сондықтан бот күйі берілмейді.',
+	'makebot-privileged'      => '[[{{ns:user}}:$1|$1]] дегенде [[{{ns:special}}:Listadmins|әкімші немесе бітікші құқықтары]] бар, сондықтан бот күйі берілмейді.',
 	'makebot-change'          => 'Күйін өзгерту:',
 	'makebot-grant'           => 'Беру',
 	'makebot-revoke'          => 'Қайта шақыру',
@@ -650,18 +650,18 @@ $messages['kk-cyrl'] = array(
 	'makebot-logpage'         => 'Бот күйі журналы',
 	'makebot-logpagetext'     => 'Бұл қатысушы [[{{MediaWiki:Grouppage-bot}}|бот]] күйін өзгерту журналы.',
 	'makebot-logentrygrant'   => '[[$1]] дегенге бот күйі берілді',
-	'makebot-logentryrevoke'  => '[[$1]] дегеннен бот күйі аластатылды',
+	'makebot-logentryrevoke'  => '[[$1]] дегеннен бот күйі аласталды',
 );
 
 /* Kazakh Latin (kk:User:AlefZet) */
 $messages['kk-latn'] = array(
 	'makebot'                 => 'Bot küýin berw ne qaýtarw',
-	'makebot-header'          => '\'\'\'Bul betti ornındağı töreşiler basqa katıswşı tirkelgisine [[{{MediaWiki:Grouppage-bot}}|bot küýin]] berw ne qaýtarw üşin qoldanadı.\'\'\'<br />Berilgen bot küýi qatıswşınıñ öñdewlerin [[{{ns:special}}:Recentchanges|jwıqtağı özgerister]] sïyaqtı tizimderden jasıradı, jäne de özdik türde öñdew jasaýtın qatıswşılardı belgilewge qolaýlı. Osı äreket iske asatın sayasatı boýınşa jasalwı qajet.',
+	'makebot-header'         => "'''Bul betti ornındağı bitikşiler basqa katıswşı tirkelgisine [[{{MediaWiki:Grouppage-bot}}|bot küýin]] berw ne qaýtarw üşin qoldanadı.'''<br />Berilgen bot küýi qatıswşınıñ öñdewlerin [[{{ns:special}}:Recentchanges|jwıqtağı özgerister]] sïyaqtı tizimderden jasıradı, jäne de özdik türde öñdew jasaýtın qatıswşılardı belgilewge qolaýlı. Osı äreket iske asatın sayasatı boýınşa jasalwı qajet.",
 	'makebot-username'        => 'Qatıswşı atı:',
 	'makebot-search'          => 'Ötw',
 	'makebot-isbot'           => '[[{{ns:user}}:$1|$1]] degende bot küýi bar.',
 	'makebot-notbot'          => '[[{{ns:user}}:$1|$1]] degende bot küýi joq.',
-	'makebot-privileged'      => '[[{{ns:user}}:$1|$1]] degende [[{{ns:special}}:Listadmins|äkimşi nemese töreşi quqıqtarı]] bar, sondıqtan bot küýi berilmeýdi.',
+	'makebot-privileged'      => '[[{{ns:user}}:$1|$1]] degende [[{{ns:special}}:Listadmins|äkimşi nemese bitikşi quqıqtarı]] bar, sondıqtan bot küýi berilmeýdi.',
 	'makebot-change'          => 'Küýin özgertw:',
 	'makebot-grant'           => 'Berw',
 	'makebot-revoke'          => 'Qaýta şaqırw',
@@ -671,7 +671,7 @@ $messages['kk-latn'] = array(
 	'makebot-logpage'         => 'Bot küýi jwrnalı',
 	'makebot-logpagetext'     => 'Bul qatıswşı [[{{MediaWiki:Grouppage-bot}}|bot]] küýin özgertw jwrnalı.',
 	'makebot-logentrygrant'   => '[[$1]] degenge bot küýi berildi',
-	'makebot-logentryrevoke'  => '[[$1]] degennen bot küýi alastatıldı',
+	'makebot-logentryrevoke'  => '[[$1]] degennen bot küýi alastaldı',
 );
 
 $messages['ksh'] = array(

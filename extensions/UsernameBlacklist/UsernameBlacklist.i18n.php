@@ -261,20 +261,19 @@ $messages['it'] = array(
 
 /* Kazakh Arabic (kk:AlefZet) */
 $messages['kk-arab'] = array(
-	'blacklistedusername' => 'قارا تٸزٸمدەگٸ قاتىسۋشى اتى',
-	'blacklistedusernametext' => 'تانداعان قاتىسۋشى اتىڭىز [[{{ns:mediawiki}}:Usernameblacklist| قاتىسۋشى اتى قارا تٸزٸمٸنە]] كٸرەدٸ.
+	'blacklistedusername' => 'قارا تىزىمدەگى قاتىسۋشى اتى',
+	'blacklistedusernametext' => 'تانداعان قاتىسۋشى اتىڭىز [[{{ns:mediawiki}}:Usernameblacklist| قاتىسۋشى اتى قارا تىزىمىنە]] كىرەدى.
 باسقا اتاۋ تالعاڭىز.',
 	'usernameblacklist' => '<pre>
-# قارا تٸزٸمدەگٸ قاتىسۋشى اتىن تٸركەلگٸ جاساۋدان ساقتاپ قالۋ ٷشٸن بۇل تٸزٸمدەگٸ دانالار
-# قايتالاۋلى كٵلام (regular expression) بٶلٸگٸ بوپ پايدالانىلادى. ٵرقايسى دانا بايراقشامەن
-# پٸشٸمدەلگەن تٸزٸمدٸڭ بٶلٸگٸ بولۋى قاجەت, مىسالى:
+# قارا تىزىمدەگى قاتىسۋشى اتىن تىركەلگى جاساۋدان ساقتاپ قالۋ ٴۇشىن بۇل تىزىمدەگى دانالار
+# جۇيەلى ايتىلىم (regular expression) بولىگى بوپ پايدالانىلادى. ارقايسى دانا بايراقشامەن
+# پىشىمدەلگەن ٴتىزىمدىڭ بولىگى بولۋى قاجەت, مىسالى:
 #
 # * Foo
 # * [Bb]ar
 </pre>',
-	'usernameblacklist-invalid-lines' => 'قاتىسۋشى اتى قارا تٸزٸمٸندەگٸ كەلەسٸ {{PLURAL:$1|جول|جولدار}} جارامسىز {{PLURAL:$1|بولدى|بولدى}}; ساقتاۋدىڭ الدىندا {{PLURAL:$1|بۇنى|بۇلاردى}} دۇرىستاپ شىعىڭىز:',
+	'usernameblacklist-invalid-lines' => 'قاتىسۋشى اتى قارا تىزىمىندەگى كەلەسى {{PLURAL:$1|جول|جولدار}} جارامسىز {{PLURAL:$1|بولدى|بولدى}}; ساقتاۋدىڭ الدىندا {{PLURAL:$1|بۇنى|بۇلاردى}} دۇرىستاپ شىعىڭىز:',
 );
-
 /* Kazakh Cyrillic (kk:AlefZet) */
 $messages['kk-cyrl'] = array(
 	'blacklistedusername' => 'Қара тізімдегі қатысушы аты',
@@ -282,7 +281,7 @@ $messages['kk-cyrl'] = array(
 Басқа атау талғаңыз.',
 	'usernameblacklist' => '<pre>
 # Қара тізімдегі қатысушы атын тіркелгі жасаудан сақтап қалу үшін бұл тізімдегі даналар
-# қайталаулы кәлам (regular expression) бөлігі боп пайдаланылады. Әрқайсы дана байрақшамен
+# жүйелі айтылым (regular expression) бөлігі боп пайдаланылады. Әрқайсы дана байрақшамен
 # пішімделген тізімдің бөлігі болуы қажет, мысалы:
 #
 # * Foo
@@ -297,7 +296,7 @@ $messages['kk-latn'] = array(
 Basqa ataw talğañız.',
 	'usernameblacklist' => '<pre>
 # Qara tizimdegi qatıswşı atın tirkelgi jasawdan saqtap qalw üşin bul tizimdegi danalar
-# qaýtalawlı kälam (regular expression) böligi bop paýdalanıladı. Ärqaýsı dana baýraqşamen
+# jüýeli aýtılım (regular expression) böligi bop paýdalanıladı. Ärqaýsı dana baýraqşamen
 # pişimdelgen tizimdiñ böligi bolwı qajet, mısalı:
 #
 # * Foo
@@ -305,6 +304,7 @@ Basqa ataw talğañız.',
 </pre>',
 	'usernameblacklist-invalid-lines' => 'Qatıswşı atı qara tizimindegi kelesi {{PLURAL:$1|jol|joldar}} jaramsız {{PLURAL:$1|boldı|boldı}}; saqtawdıñ aldında {{PLURAL:$1|bunı|bulardı}} durıstap şığıñız:',
 );
+
 /* Kurdi */
 $messages['ku'] = array(
 	'blacklistedusernametext' => 'Wê navî yê te hilbijart li ser [[MediaWiki:Usernameblacklist|lîstêya navên nebaş]] e. Xêra xwe navekî din hilbijêre.',
