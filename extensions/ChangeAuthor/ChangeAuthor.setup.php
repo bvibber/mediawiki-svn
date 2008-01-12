@@ -27,13 +27,13 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'ChangeAuthor',
 	'author' => 'Roan Kattouw',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ChangeAuthor',
-	'version' => '1.0',
+	'version' => '1.0.1',
 	'description' => 'Allows changing a revision\'s author'
 );
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['ChangeAuthor'] = $dir . 'ChangeAuthor.i18n.php';
-$wgAutoloadClasses['ChangeAuthor'] = dirname(__FILE__) . '/ChangeAuthor.body.php';
+$wgAutoloadClasses['ChangeAuthor'] = $dir . 'ChangeAuthor.body.php';
 
 $wgSpecialPages['ChangeAuthor'] = 'ChangeAuthor';
 $wgHooks['LanguageGetSpecialPageAliases'][] = 'ChangeAuthorLocalizedPageName';
