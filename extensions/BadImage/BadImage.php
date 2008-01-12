@@ -13,9 +13,9 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 	global $wgAutoloadClasses, $wgSpecialPages;
 	
-	$wgAutoloadClasses['BadImageList'] = dirname( __FILE__ ). '/BadImage.class.php';
-	$wgAutoloadClasses['BadImageManipulator'] = dirname( __FILE__ ) . '/BadImage.page.php';
 	$dir = dirname(__FILE__) . '/';
+	$wgAutoloadClasses['BadImageList'] = $dir . 'BadImage.class.php';
+	$wgAutoloadClasses['BadImageManipulator'] = $dir . 'BadImage.page.php';
 	$wgExtensionMessagesFiles['BadImages'] = $dir . 'BadImage.i18n.php';
 
 	$wgSpecialPages['Badimages'] = 'BadImageManipulator';
