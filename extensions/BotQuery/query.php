@@ -31,12 +31,12 @@ $proxyLang = GetCleanProxyValue('proxylang');
 
 if ($proxySite || $proxyLang) {
 
-    $_COOKIE = array();     // Security measure - treat all requests as anonymous
+	$_COOKIE = array();     // Security measure - treat all requests as anonymous
 
-    // Set magic values $site & $lang.
-    // This will only work if the target site is hosted on the same cluster
-    if ($proxySite) $site = $proxySite;
-    if ($proxyLang) $lang = $proxyLang;
+	// Set magic values $site & $lang.
+	// This will only work if the target site is hosted on the same cluster
+	if ($proxySite) $site = $proxySite;
+	if ($proxyLang) $lang = $proxyLang;
 }
 
 if ( file_exists( "$IP/includes/WebStart.php" ) ) {
@@ -274,7 +274,7 @@ class BotQueryProcessor {
 				"apfilterredir- Which pages to list: 'all' (default), 'redirects', or 'nonredirects'",
 				"Example: query.php?what=allpages&aplimit=50    (first 50 pages)",
 				"         query.php?what=allpages&aplimit=20&apnamespace=10&apfrom=C&apfilterredir=nonredirects",
-                "                                               (20 templates starting with 'C' that are not redirects)",
+				"                                               (20 templates starting with 'C' that are not redirects)",
 			)),
 		'nolanglinks'    => array(
 			GN_FUNC => 'genMetaNoLangLinksPages',
@@ -534,7 +534,7 @@ class BotQueryProcessor {
 
 		$this->pageIdByText = array();	// reverse page ID lookup
 		$this->requestsize = 0;
-        $this->db =& wfGetDB( DB_SLAVE );
+		$this->db =& wfGetDB( DB_SLAVE );
 
 		$this->isBot = $wgUser->isAllowed( 'bot' );
 
@@ -576,15 +576,15 @@ class BotQueryProcessor {
 	 */
 	function ExceptionHandler( $e ) {
 		global $wgFullyInitialised;
-		 if ( is_a( $e, 'MWException' ) ) {
-			 try {
-                 $this->dieUsage( "Exception Caught: {$e->getMessage()}\n\n{$e->getTraceAsString()}\n\n", 'internal_error' );
-			 } catch (Exception $e2) {
-                 echo $e->__toString();
-             }
-		 } else {
-			 echo $e->__toString();
-		 }
+		if ( is_a( $e, 'MWException' ) ) {
+			try {
+				$this->dieUsage( "Exception Caught: {$e->getMessage()}\n\n{$e->getTraceAsString()}\n\n", 'internal_error' );
+			} catch (Exception $e2) {
+				echo $e->__toString();
+			}
+		} else {
+			echo $e->__toString();
+		}
 
 		// Final cleanup, similar to wfErrorExit()
 		if ( $wgFullyInitialised ) {
@@ -681,9 +681,9 @@ class BotQueryProcessor {
 			}
 		}
 
-        global $proxySite, $proxyLang;
-        if ($proxySite) $paramVals[] = "proxySite=$proxySite";
-        if ($proxyLang) $paramVals[] = "proxyLang=$proxyLang";
+		global $proxySite, $proxyLang;
+		if ($proxySite) $paramVals[] = "proxySite=$proxySite";
+		if ($proxyLang) $paramVals[] = "proxyLang=$proxyLang";
 
 		$paramStr = implode( '&', $paramVals );
 		$perfVals = array();
@@ -1010,9 +1010,9 @@ class BotQueryProcessor {
 		if( $apfrom !== '' ) $where[] = 'page_title>=' . $this->db->addQuotes(titleToKey($apfrom));
 
 		if ($apfilterredir === 'redirects')
-            $where['page_is_redirect'] = 1;
+			$where['page_is_redirect'] = 1;
 		else if ($apfilterredir === 'nonredirects')
-            $where['page_is_redirect'] = 0;
+			$where['page_is_redirect'] = 0;
 
 		$this->startDbProfiling();
 		$res = $this->db->select(
@@ -1121,9 +1121,9 @@ class BotQueryProcessor {
 		}
 
 		if ($cpextended)
-            $fields = array( 'cl_from', 'cl_sortkey', 'cl_timestamp' );
-        else
-            $fields = array( 'cl_from', 'cl_sortkey' );   // Need 'cl_sortkey' to continue paging
+			$fields = array( 'cl_from', 'cl_sortkey', 'cl_timestamp' );
+		else
+			$fields = array( 'cl_from', 'cl_sortkey' );   // Need 'cl_sortkey' to continue paging
 
 		$this->validateLimit( 'cplimit', $cplimit, 500, 5000 );
 
@@ -1178,48 +1178,48 @@ class BotQueryProcessor {
 			__METHOD__ );
 		$this->endDbProfiling( $prop );
 
-        $multiLinkRedirPages = array();
-        
+		$multiLinkRedirPages = array();
+
 		while ( $row = $this->db->fetchObject( $res ) ) {
-            $pageId = intval($row->pl_from);
+			$pageId = intval($row->pl_from);
 			$data = & $this->data['pages'][$pageId]['redirect'];
-            if ( !isset($data['to']) ) {
+			if ( !isset($data['to']) ) {
 			    $data['to'] = $this->getLinkInfo( $row->pl_namespace, $row->pl_title, $row->page_id, $row->page_is_redirect );
-            } else {
-                // More than one link exists from redirect page
-                $multiLinkRedirPages[$pageId] = '';
-            }
+			} else {
+				// More than one link exists from redirect page
+				$multiLinkRedirPages[$pageId] = '';
+			}
 		}
 		$this->db->freeResult( $res );
-        
-        if (!empty($multiLinkRedirPages)) {
-            // We found some bad redirect pages. Get the content and solve.   
-            $multiLinkRedirPages = array_keys($multiLinkRedirPages);
-            $ids = array();
-            foreach( $multiLinkRedirPages as $pageId ) {
-                $ids[] = "(rev_page=$pageId AND rev_id={$this->data['pages'][$pageId]['revid']})";
-            }
 
-            $this->startDbProfiling();
-            $res = $this->db->select(
-                array('page', 'revision', 'text'),
-                array('page_id', 'page_is_redirect', 'old_id', 'old_text', 'old_flags'),
-                array('page_id' => $multiLinkRedirPages, 'page_id=rev_page', 'page_latest=rev_id', 'rev_text_id=old_id' ),
-                __METHOD__
-                );
-            while ( $row = $this->db->fetchObject( $res ) ) {
-                $title = Title :: newFromRedirect(Revision::getRevisionText( $row ));
-                if ($title) {
-                    $article = new Article($title);
-                    $pageId = $article->getTitle()->getArticleId();
-                    $isRedirect = $pageId > 0 ? !$article->checkTouched() : false;                    
-                    $link = $this->getTitleInfo( $title, $pageId, $isRedirect );
-                    $this->data['pages'][intval($row->page_id)]['redirect']['to'] = $link;
-                }
-            }
-            $this->db->freeResult( $res );
-        }
-        
+		if (!empty($multiLinkRedirPages)) {
+			// We found some bad redirect pages. Get the content and solve.   
+			$multiLinkRedirPages = array_keys($multiLinkRedirPages);
+			$ids = array();
+			foreach( $multiLinkRedirPages as $pageId ) {
+				$ids[] = "(rev_page=$pageId AND rev_id={$this->data['pages'][$pageId]['revid']})";
+			}
+
+			$this->startDbProfiling();
+			$res = $this->db->select(
+				array('page', 'revision', 'text'),
+				array('page_id', 'page_is_redirect', 'old_id', 'old_text', 'old_flags'),
+				array('page_id' => $multiLinkRedirPages, 'page_id=rev_page', 'page_latest=rev_id', 'rev_text_id=old_id' ),
+				__METHOD__
+			);
+			while ( $row = $this->db->fetchObject( $res ) ) {
+				$title = Title :: newFromRedirect(Revision::getRevisionText( $row ));
+				if ($title) {
+					$article = new Article($title);
+					$pageId = $article->getTitle()->getArticleId();
+					$isRedirect = $pageId > 0 ? !$article->checkTouched() : false;                    
+					$link = $this->getTitleInfo( $title, $pageId, $isRedirect );
+					$this->data['pages'][intval($row->page_id)]['redirect']['to'] = $link;
+				}
+			}
+			$this->db->freeResult( $res );
+		}
+
 		$this->endProfiling( $prop );
 	}
 	
@@ -1378,11 +1378,11 @@ class BotQueryProcessor {
 		$clextended = null;
 		extract( $this->getParams( $prop, $genInfo ));
 
-        $fields = array( 'cl_from', 'cl_to' );
-        if ($clextended) {
-            $fields[] = 'cl_sortkey';
-            $fields[] = 'cl_timestamp';
-        }
+		$fields = array( 'cl_from', 'cl_to' );
+		if ($clextended) {
+			$fields[] = 'cl_sortkey';
+			$fields[] = 'cl_timestamp';
+		}
 
 		$this->startDbProfiling();
 		$res = $this->db->select(
@@ -1394,7 +1394,7 @@ class BotQueryProcessor {
 
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			$values = $this->getLinkInfo( NS_CATEGORY, $row->cl_to );
-            if ($clextended) {
+			if ($clextended) {
 				 $values['sortkey'] = $row->cl_sortkey;
 				 $values['timestamp'] = $row->cl_timestamp;
 			}
@@ -2019,7 +2019,7 @@ class BotQueryProcessor {
 				if (!$titleObj->userCanRead()) {
 					$this->dieUsage( "No read permission for $titleString", 'pi_titleaccessdenied' );
 				}
-                $linkBatch->addObj( $titleObj );    // <0 namespaces will be ignored
+				$linkBatch->addObj( $titleObj );    // <0 namespaces will be ignored
 
 				// Make sure we remember the original title that was given to us
 				// This way the caller can correlate new titles with the originally requested, i.e. namespace is localized or capitalization
@@ -2028,14 +2028,14 @@ class BotQueryProcessor {
 				}
 			}
 
-            if (!$linkBatch->isEmpty()) {
+			if (!$linkBatch->isEmpty()) {
 			    // Create a list of pages to query
 			    $where[] = $linkBatch->constructSet( 'page', $this->db );
 			    $this->requestsize += $linkBatch->getSize();
 
 			    // we don't need the batch any more, data can be destroyed
 			    return $linkBatch->data;
-            }
+			}
 		}
 
 		return null;    // No titles to get from the database
@@ -2298,10 +2298,10 @@ class BotQueryProcessor {
 				"    pageids    - A list of page ids, separated by the pipe '|' symbol.",
 				"    revids     - List of revision ids, separated by '|' symbol. See 'revisions' property for additional information.",
 				"    noprofile  - When present, each sql query execution time will be hidden.",
-                "    proxysite  - Access alternative site (wikipedia/wikinews/wikiquote/...)",
-                "    proxylang  - Access alternative language (en/ru/he/commons/...)",
-                "                 *Note*: proxying is a security workaround for the browser-based scripts. Avoid using it if you can.",
-                "                         User is treated as anonymous, and only sites/languages hosted at the same cluster are accessible.",
+				"    proxysite  - Access alternative site (wikipedia/wikinews/wikiquote/...)",
+				"    proxylang  - Access alternative language (en/ru/he/commons/...)",
+				"                 *Note*: proxying is a security workaround for the browser-based scripts. Avoid using it if you can.",
+				"                         User is treated as anonymous, and only sites/languages hosted at the same cluster are accessible.",
 				"",
 				"*Examples*",
 				"    query.php?what=links|templates&titles=User:Yurik",
@@ -2597,8 +2597,8 @@ class BotQueryProcessor {
 	function printYAML( &$data )
 	{
 		sanitizeOutputData($data);
-        require_once 'spyc.php';
-        echo Spyc::YAMLDump($data);
+		require_once 'spyc.php';
+		echo Spyc::YAMLDump($data);
 	}
 }
 
@@ -2770,11 +2770,11 @@ function formatTimeInMs($timeDelta)
 
 function titleToKey($title)
 {
-    return str_replace(' ', '_', $title);
+	return str_replace(' ', '_', $title);
 }
 function keyToTitle($key)
 {
-    return str_replace('_', ' ', $key);
+	return str_replace('_', ' ', $key);
 }
 
 /**
@@ -2783,12 +2783,12 @@ function keyToTitle($key)
 function GetCleanProxyValue($name)
 {
 	if (isset($_REQUEST[$name]) && !empty($_REQUEST[$name]))
-    {
-        $value = $_REQUEST[$name];
-        if (preg_match('/^[a-z-]+$/', $value))
-            return $value;
-    }
-    return false;
+	{
+		$value = $_REQUEST[$name];
+		if (preg_match('/^[a-z-]+$/', $value))
+			return $value;
+	}
+	return false;
 }
 
 
