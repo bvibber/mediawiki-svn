@@ -60,9 +60,10 @@ class MV_SpecialExport {
 		$wgOut->addHTML( $html );
 	}    
 	function get_stream_cmml(){		
-		$dbr =& wfGetDB(DB_SLAVE);
+		$dbr =& wfGetDB(DB_SLAVE);		
 		//get the stream title	
-		$streamTilte = new MV_Title($this->stream_name.'/'.$this->req_time);	
+		$streamTilte = new MV_Title($this->stream_name.'/'.$this->req_time);		
+		$wgTitle = Title::newFromText($this->stream_name.'/'.$this->req_time, MV_NS_STREAM);
 		//do mvd_index query:
 		$mvd_res = MV_Index::getMVDInRange($streamTilte->getStreamId(),
 				$streamTilte->getStartTimeSeconds(), 
@@ -81,6 +82,8 @@ class MV_SpecialExport {
 			<param id="vheight" name="video.height" value="320"/>
 			<param id="vwidth"  name="video.width"  value="240"/>
 		</import>
+		<img id="stream_img" src="<?=htmlentities($streamTilte->getStreamImageURL())?>"/>
+		<a id="stream_link" href="<?=htmlentities($wgTitle->getFullURL() )?>"/>
 	</stream>	
 	<head>
 		<title><?=$streamTilte->getTitleDesc()?></title>

@@ -747,20 +747,22 @@ mvClip.prototype = {
 				thisClip.mvMetaDataProvider = defaultMetaDataProvider;
 			}
 			//get xml data to resolve location of the media, desc + caption data
-			var url = thisClip.mvMetaDataProvider + this.mvclip.replace(/\?/, "&");			
+			var url = thisClip.mvMetaDataProvider +
+						'?title=Special:MvExportStream&feed_format=cmml&stream_name='+
+						this.mvclip.replace(/\?/, "&");			
+			
 			do_request(url, function(data){
 				//ajax return (done loading) 
 				thisClip.loading=false;
-				//data should be cmml.. first get src:
-				ielm = data.getElementsByTagName('import')[0];
-				thisClip.src = ielm.getAttribute('src') + '?t='+
-				 seconds2ntp(ielm.getAttribute('start')) + '/' + 
-				 seconds2ntp(ielm.getAttribute('end'));
+				//set src
+				if(data.getElementsById('videosrc'))
+					thisClip.src = data.getElementsById('videosrc').getAttribute('src');
+	
 				js_log('set src: '+ thisClip.src);
 				
-				//set the linkback: (if not already set) 
+				//set linkback: (if not already set) 
 				if(!thisClip.linkback)
-					thisClip.linkback = mvMetaDataProvider + '/overlay/video_player/webview/' +
+					thisClip.linkback = thisClip.mvMetaDataProvider + '/overlay/video_player/webview/' +
 						'?stream_name='+ thisClip.mvclip.replace(/\?/, "&");		
 					
 				//set the title (if not already set) 
@@ -768,7 +770,7 @@ mvClip.prototype = {
 					thisClip.title = ielm.getAttribute('title');
 				
 				//@@todo should extend the cmml to point to thumbnails
-				thisClip.img = mvMetaDataProvider + '/image_media/' + thisClip.mvclip.substr(0, 
+				thisClip.img = thisClip.mvMetaDataProvider + '/image_media/' + thisClip.mvclip.substr(0, 
 					thisClip.mvclip.indexOf('/')).replace(/\&/, "?");
 				js_log('set img: '+ thisClip.img);
 				

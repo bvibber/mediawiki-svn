@@ -168,10 +168,13 @@ function mvSetupExtension(){
 				'href'  => $mvCssUrl
 			));				
 			//add extra IE styles fixes 
-			$mvCssUrlIE = $mvgScriptPath . '/skins/MV_customIE.css';
-			$wgOut->addScript('<!--[if IE]>' .
-						'<link href="'.$mvCssUrlIE.'" rel="stylesheet" media="all" type="text/css">'.
-					'<![endif]-->');
+			$wgOut->addScript('<!--[if IE 7]>' .
+								'<link href="'.$mvgScriptPath . '/skins/MV_customIE7.css'.'" rel="stylesheet" media="all" type="text/css">'.
+							  '<![endif]-->' .
+							  '<!--[if IE6]>'.
+							  	'<link href="'.$mvgScriptPath . '/skins/MV_customIE6.css'.'" rel="stylesheet" media="all" type="text/css">'.
+							  '<![endif]-->'
+					);
 			
 			$mvgHeadersInPlace=true;
 		}
