@@ -73,7 +73,9 @@ $allMessages = array(
  * @author Pyt
  */
 	'stq' => array(
-		'signaturelogpage' => 'Unnerschrifts-Logbouk',
+		'signaturelogpage'     => 'Unnerschrifts-Logbouk',
+		'signaturelogpagetext' => 'Dit is dät Unnerschrifts-Logbouk foar Dokumente, do der uur ju Siede [[{{ns:special}}:SignDocument]] unnerschrieuwen wäide konnen.',
+		'signaturelogentry'    => 'häd dät Dokument $1 unnerschrieuwen',
 	),
 
 /** Volapük (Volapük)
@@ -110,6 +112,3 @@ $allMessages['zh-hk'] = $allMessages['zh-hant'];
 $allMessages['zh-sg'] = $allMessages['zh-hans'];
 $allMessages['zh-tw'] = $allMessages['zh-hant'];
 $allMessages['zh-yue'] = $allMessages['yue'];
-
-
-

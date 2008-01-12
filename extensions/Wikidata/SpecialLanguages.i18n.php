@@ -11,13 +11,16 @@ $wgLanguageManagerMessages['en'] = array(
 	'langman_title' => 'Language manager',
 	'languages'=>'Wikidata: Language manager',
 );
+
 $wgLanguageManagerMessages['ar'] = array(
 	'langman_title' => 'مدير اللغة',
 	'languages' => 'Wikidata: مدير اللغة',
 );
+
 $wgLanguageManagerMessages['bcl'] = array(
 	'languages' => 'Wikidata: Manager kan tataramon',
 );
+
 $wgLanguageManagerMessages['bn'] = array(
 	'langman_title' => 'ভাষা ব্যবস্থাপক',
 	'languages' => 'Wikidata: ভাষা ব্যবস্থাপক',
@@ -101,14 +104,17 @@ $wgLanguageManagerMessages['oc'] = array(
 	'langman_title' => 'Gestion de las lengas',
 	'languages' => 'Wikidata: Gestion de las lengas',
 );
+
 $wgLanguageManagerMessages['pms'] = array(
 	'langman_title' => 'Gestor dle lenghe',
 	'languages' => 'Wikidata: Gestor dle lenghe',
 );
+
 $wgLanguageManagerMessages['pt'] = array(
 	'langman_title' => 'Gestor de línguas',
 	'languages' => 'Wikidata: Gestor de línguas',
 );
+
 $wgLanguageManagerMessages['sk'] = array(
 	'langman_title' => 'Správca jazykov',
 	'languages' => 'Wikidata: Správca jazykov',
@@ -126,10 +132,20 @@ $wgLanguageManagerMessages['sv'] = array(
 	'langman_title' => 'Språkhanterare',
 	'languages' => 'Wikidata: Språkhanterare',
 );
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$wgLanguageManagerMessages['tr'] = array(
+	'langman_title' => 'Lisan idarecisi',
+	'languages'     => 'Wikidata: Lisan idarecisi',
+);
+
 $wgLanguageManagerMessages['zh-hans'] = array(
 	'langman_title' => '语言管理员',
 	'languages'=>'Wikidata: 语言管理员',
 );
+
 $wgLanguageManagerMessages['zh-hant'] = array(
 	'langman_title' => '語言管理員',
 	'languages'=>'Wikidata: 語言管理員',

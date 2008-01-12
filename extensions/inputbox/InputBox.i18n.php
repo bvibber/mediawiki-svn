@@ -515,6 +515,13 @@ $messages['oc'] = array(
 	'createarticle'           => 'Crear l’article',
 );
 
+/** Pangasinan (Pangasinan)
+ * @author SPQRobin
+ */
+$messages['pag'] = array(
+	'createarticle' => 'Mangawa na artikulo',
+);
+
 $messages['pl'] = array(
 	'inputbox-error-no-type'  => 'Typ pola wejściowego nie został określony',
 	'inputbox-error-bad-type' => 'Typ "$1" pola wejściowego nie został rozpoznany. Proszę wybrać "create", "comment", "search" lub "search2".',

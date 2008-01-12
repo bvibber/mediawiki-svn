@@ -620,8 +620,10 @@ $messages['sv'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'bookinfo-header'           => 'Nüns dö buk',
 	'bookinfo-result-title'     => 'Tiäd:',
 	'bookinfo-result-author'    => 'Lautan:',
 	'bookinfo-result-publisher' => 'Dabükan:',
@@ -675,10 +677,9 @@ $messages['zh-hant'] = array(
 );
 
 $messages['kk'] = $messages['kk-cyrl'];
+$messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
 $messages['kk-tr'] = $messages['kk-latn'];
-$messages['kk-cn'] = $messages['kk-arab'];
-
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];
 $messages['zh-hk'] = $messages['zh-hant'];

@@ -111,6 +111,13 @@ $messages['sk'] = array(
 	'languageselector-setlang' => 'nastaviť',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'languageselector' => 'Dil',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */
@@ -142,10 +149,10 @@ $messages['zh-hant'] = array(
 	'languageselector-setlang' => '設定',
 );
 
+$messages['kk'] = $messages['kk-cyrl'];
+$messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
 $messages['kk-tr'] = $messages['kk-latn'];
-$messages['kk-cn'] = $messages['kk-arab'];
-$messages['kk'] = $messages['kk-cyrl'];
 $messages['zh']      = $messages['zh-hans'];
 $messages['zh-cn']   = $messages['zh-hans'];
 $messages['zh-hk']   = $messages['zh-hant'];

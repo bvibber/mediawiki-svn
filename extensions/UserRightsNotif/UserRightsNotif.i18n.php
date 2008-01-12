@@ -31,6 +31,16 @@ $2',
  */
 $messages['bg'] = array(
 	'userrightsnotifysubject' => 'Промяна на груповата принадлежност в $1',
+	'userrightsnotifybody'    => 'Здравейте $1,
+
+С това писмо ви уведомяваме, че вашата групова принадлежност в $2 беше променена от $3 на $4.
+
+Добавено: $5
+Премахнато: $6
+
+Поздрави,
+
+$2',
 );
 
 /** Catalan (Català)
@@ -143,3 +153,4 @@ $messages['oc'] = array(
 	'userrightsnotifysubject' => 'Cambiament d’apartenéncia a de gropes d’utilizaires sus $1',
 	'userrightsnotifybody'    => "Bonjorn $1, Ai l'onor de vos informar que vòstra apartenéncia als gropes d'utilizaires sus $2 es estada modificada per $3 lo $4. Ajustat : $5 Levat : $6 Coralament, $2",
 );
+

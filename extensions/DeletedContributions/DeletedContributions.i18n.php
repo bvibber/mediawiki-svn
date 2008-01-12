@@ -31,12 +31,12 @@ $messages['ba'] = array(
 	'deletedcontributions' => 'Ҡулланыусыларҙың юйылған өлөшө',
 );
 
-$messages['be'] = array(
-	'deletedcontributions' => 'Выдалены ўклад удзельніка',
-);
-
 $messages['bcl'] = array(
 	'deletedcontributions' => 'Parâon an mga kontribusyon kan parágamit',
+);
+
+$messages['be'] = array(
+	'deletedcontributions' => 'Выдалены ўклад удзельніка',
 );
 
 $messages['bg'] = array(
@@ -160,10 +160,6 @@ $messages['ku-latn'] = array(
 	'deletedcontributions' => 'Guherandinên bikarhênerekî yê jêbirî',
 );
 
-$messages['nan'] = array(
-	'deletedcontributions' => 'Hō͘ lâng thâi tiāu ê kòng-hiàn',
-);
-
 $messages['la'] = array(
 	'deletedcontributions' => 'Conlationes usoris deletae',
 );
@@ -199,6 +195,10 @@ $messages['mk'] = array(
 
 $messages['ms'] = array(
 	'deletedcontributions' => 'Sumbangan pengguna yang telah dipadam',
+);
+
+$messages['nan'] = array(
+	'deletedcontributions' => 'Hō͘ lâng thâi tiāu ê kòng-hiàn',
 );
 
 $messages['nl'] = array(
@@ -237,12 +237,23 @@ $messages['sk'] = array(
 	'deletedcontributions' => 'Zmazané príspevky používateľa',
 );
 
+$messages['sq'] = array(
+	'deletedcontributions' => 'Kontribute të grisura',
+);
+
 $messages['sr-ec'] = array(
 	'deletedcontributions' => 'Обрисане измене',
 );
 
 $messages['sr-el'] = array(
 	'deletedcontributions' => 'Obrisane izmene',
+);
+
+/** Sranan Tongo (Sranan Tongo)
+ * @author Adfokati
+ */
+$messages['srn'] = array(
+	'deletedcontributions' => 'Trowe kenki fu masyin',
 );
 
 /** Seeltersk (Seeltersk)
@@ -254,10 +265,6 @@ $messages['stq'] = array(
 
 $messages['sv'] = array(
 	'deletedcontributions' => 'Raderade användarbidrag',
-);
-
-$messages['sq'] = array(
-	'deletedcontributions' => 'Kontribute të grisura',
 );
 
 $messages['te'] = array(

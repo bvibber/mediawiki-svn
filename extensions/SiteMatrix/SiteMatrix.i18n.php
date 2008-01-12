@@ -190,6 +190,16 @@ $messages['frc'] = array(
 	'sitematrix' => 'Liste de wikis à Wikimedia',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'sitematrix'          => 'Lista des vouiquis de Wikimedia Foundation',
+	'sitematrix-language' => 'Lengoua',
+	'sitematrix-project'  => 'Nom du projèt, lim entèrprojèt et lim entèrvouiqui',
+	'sitematrix-others'   => 'Ôtros projèts de Wikimedia Foundation',
+);
+
 $messages['gl'] = array(
 	'sitematrix' => 'Listaxe dos wikis de Wikimedia',
 	'sitematrix-language' => 'Linguaxe',
@@ -401,6 +411,13 @@ $messages['oc'] = array(
 	'sitematrix-others' => 'Autres projèctes de Wikimedia Foundation',
 );
 
+/** Pangasinan (Pangasinan)
+ * @author SPQRobin
+ */
+$messages['pag'] = array(
+	'sitematrix' => 'Listaan na saray Wikimedia wiki',
+);
+
 $messages['pl'] = array(
 	'sitematrix' => 'Lista projektów Wikimedia',
 	'sitematrix-language' => 'Język',
@@ -534,6 +551,7 @@ $messages['vec'] = array(
  */
 $messages['vo'] = array(
 	'sitematrix-language' => 'Pük',
+	'sitematrix-others'   => 'Proyeks votik ela Wikimedia',
 );
 
 $messages['wa'] = array(

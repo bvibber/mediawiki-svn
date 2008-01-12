@@ -124,6 +124,8 @@ $messages['bg'] = array(
 	'webstore_dest_open'               => 'Целевият файл „$1“ не може да бъде отворен.',
 	'webstore_dest_mkdir'              => 'Невъзможно е да бъде създадена целевата директория „$1“.',
 	'webstore_archive_mkdir'           => 'Невъзможно е да бъде създадена архивната директория „$1“.',
+	'webstore_src_close'               => 'Грешка при затваряне на файла-източник „$1“.',
+	'webstore_src_delete'              => 'Грешка при изтриване на файла-източник „$1“.',
 	'webstore_rename'                  => 'Грешка при преименуване на файла „$1“ като „$2“.',
 	'webstore_dest_exists'             => 'Грешка, целевият файл „$1“ съществува.',
 	'webstore_temp_open'               => 'Грешка при отваряне на временния файл „$1“.',
@@ -514,3 +516,4 @@ $messages['pt'] = array(
 	'inplace_scaler_no_temp' => 'Não existe directoria temporária, defina $wgLocalTmpDirectory com uma directoria onde seja possível escrever.',
 	'inplace_scaler_not_enough_params' => 'Parâmetros insuficientes.',
 );
+

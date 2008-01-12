@@ -26,6 +26,13 @@ $wgDataSearchMessages['bcl'] = array(
 	'datasearch' => 'Wikidata: Data search',#identical but defined
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$wgDataSearchMessages['bg'] = array(
+	'datasearch' => 'Уикиданни: Търсене на данни',
+);
+
 $wgDataSearchMessages['bn'] = array(
 	'datasearch' => 'Wikidata: তথ্য অনুসন্ধান',
 );

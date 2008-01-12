@@ -270,6 +270,9 @@ $messages['bcl'] = array(
  */
 $messages['bg'] = array(
 	'boardvote'              => 'Избори за борда на Фондация Уикимедия',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Гласуване]]
+* [[Special:Boardvote/list|Списък на гласовете до ммента]]
+* [[Special:Boardvote/dump|Извличане на криптирана информация]]',
 	'boardvote_intro_change' => '<p>Вие вече сте гласували. Ако желаете, обаче, можете да промените вота си, като използвате формата по-долу. Отбележете кутийките срещу имената на всички кандидати, които одобрявате.</p>',
 	'boardvote_notloggedin'  => 'Не сте влезли в системата. За да гласувате, трябва да използвате сметка с най-малко $1 приноса към $2, като първата ви редакция е отпреди $3.',
 	'boardvote_notqualified' => 'Не отговаряте на условията за гласуване в тези избори. Трябвало е да имате $3 редакции към $2, като първата ви редакция е отпреди $5.',
@@ -283,6 +286,7 @@ $messages['bg'] = array(
 	'boardvote_notstarted'   => 'Гласуването все още не е започнало',
 	'boardvote_closed'       => 'Гласуването е приключено, вижте [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En страницата с резултатите].',
 	'boardvote_edits_many'   => 'много',
+	'boardvote_blocked'      => 'Потребителската ви сметка е блокирана на уикито, от което гласувате. На блокираните потребители не се позволява да гласуват.',
 	'boardvote_welcome'      => "Здравейте, '''$1'''!",
 );
 
@@ -379,6 +383,14 @@ $messages['cdo'] = array(
 	'boardvote_edits'         => "Siŭ-gāi",
 	'boardvote_dumplink'      => "Áik cŭ-uái",
 	'boardvote_submit'        => 'Hō̤',
+);
+
+/** Chechen (Нохчийн)
+ * @author SPQRobin
+ */
+$messages['ce'] = array(
+	'boardvote_time' => 'Хан',
+	'boardvote_days' => 'Денош',
 );
 
 $messages['co'] = array(
@@ -1926,6 +1938,17 @@ La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/
 
 );
 
+/** Pangasinan (Pangasinan)
+ * @author SPQRobin
+ */
+$messages['pag'] = array(
+	'boardvote_novotes'    => 'Anggapo niy binmoto',
+	'boardvote_days'       => 'Agew',
+	'boardvote_dumplink'   => 'Click dia',
+	'boardvote_notstarted' => 'Aga ni gimmapo so botoan',
+	'boardvote_edits_many' => 'dakel',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Sp5uhe
@@ -2596,14 +2619,17 @@ $messages['ty'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
-	'boardvote_time'       => 'Tim',
-	'boardvote_user'       => 'Geban',
-	'boardvote_edits'      => 'Redakams',
-	'boardvote_days'       => 'Dels',
-	'boardvote_edits_many' => 'mödik',
-	'boardvote_welcome'    => "Benokömö, o '''$1'''!",
+	'boardvote_intro_change' => '<p>Ya evögodol. Kanol ye votükön vögodi olik me fomet dono. Välolös bokilis nilü steifädans, kelis büuköl.</p>',
+	'boardvote_novotes'      => 'Nek nog evögodon.',
+	'boardvote_time'         => 'Tim',
+	'boardvote_user'         => 'Geban',
+	'boardvote_edits'        => 'Redakams',
+	'boardvote_days'         => 'Dels',
+	'boardvote_edits_many'   => 'mödik',
+	'boardvote_welcome'      => "Benokömö, o '''$1'''!",
 );
 
 $messages['wa'] = array(

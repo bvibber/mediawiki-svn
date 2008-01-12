@@ -43,6 +43,13 @@ $messages['fr'] = array(
 	'filelist-show-gallery' => 'Voir la gallerie',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'filelist-show-gallery' => 'Amosar galería',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Dundak
  */
@@ -87,3 +94,4 @@ $messages['sr-ec'] = array(
 	'filelist-show-list'    => 'Прикажи списак',
 	'filelist-show-gallery' => 'Прикажи галерију',
 );
+

@@ -83,6 +83,13 @@ $messages['ca'] = array(
 	'expand_templates_remove_comments' => 'Elimina els comentaris',
 );
 
+/** Chechen (Нохчийн)
+ * @author SPQRobin
+ */
+$messages['ce'] = array(
+	'expand_templates_remove_comments' => 'Комментариш дIаяккха',
+);
+
 $messages['co'] = array(
 	'expand_templates_output'          => 'Risultatu',
 );
@@ -534,6 +541,7 @@ $messages['ru'] = array(
 	'expand_templates_input'           => 'Входной текст:',
 	'expand_templates_output'          => 'Результат',
 	'expand_templates_xml_output'      => 'XML вывод',
+	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Удалить комментарии',
 	'expand_templates_generate_xml'    => 'Показать дерево разбора XML',
 	'expand_templates_preview'         => 'Предпросмотр',

@@ -124,6 +124,13 @@ $messages['tet'] = array(
 	'newusernotifbody' => 'Olá $1,\n\nuza-na\'in foun, $2, registrar tiha iha $3 iha loron $4.',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'newusernotifbody' => 'Merhaba $1',
+);
+
 $messages['yue'] = array(
 	'newusernotifsubj' => '$1嘅新用戶通知',
 	'newusernotifbody' => "你好 $1，\n\n一個新嘅用戶戶口$2，已經響$4喺$3度開咗。",

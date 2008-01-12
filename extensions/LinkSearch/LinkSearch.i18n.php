@@ -259,6 +259,16 @@ $messages['ja'] = array(
 	'linksearch-error' => 'ワイルドカードはホスト名の先頭でのみ使用できます。',
 );
 
+$messages['kk-arab'] = array(
+	'linksearch'       => 'سىرتقى سٸلتەمەلەردٸ ٸزدەۋ',
+	'linksearch-pat'   => 'ٸزدەۋ شارتى:',
+	'linksearch-ns'    => 'ەسٸم اياسى:',
+	'linksearch-ok'    => 'ٸزدەۋ',
+	'linksearch-text'  => '«*.wikipedia.org» اتاۋىنا ۇقساستى بٵدەل نىشانداردى قولدانۋعا بولادى. ',
+	'linksearch-line'  => '$2 دەگەننەن $1 سٸلتەگەن',
+	'linksearch-error' => 'بٵدەل نىشاندار تەك سەرۆەر جايى اتاۋىنىڭ باستاۋىندا بولۋى مٷمكٸن.',
+);
+
 $messages['kk-cyrl'] = array(
 	'linksearch'       => 'Сыртқы сілтемелерді іздеу',
 	'linksearch-pat'   => 'Іздеу шарты:',
@@ -277,16 +287,6 @@ $messages['kk-latn'] = array(
 	'linksearch-text'  => '«*.wikipedia.org» atawına uqsastı bädel nışandardı qoldanwğa boladı. ',
 	'linksearch-line'  => '$2 degennen $1 siltegen',
 	'linksearch-error' => 'Bädel nışandar tek server jaýı atawınıñ bastawında bolwı mümkin.',
-);
-
-$messages['kk-arab'] = array(
-	'linksearch'       => 'سىرتقى سٸلتەمەلەردٸ ٸزدەۋ',
-	'linksearch-pat'   => 'ٸزدەۋ شارتى:',
-	'linksearch-ns'    => 'ەسٸم اياسى:',
-	'linksearch-ok'    => 'ٸزدەۋ',
-	'linksearch-text'  => '«*.wikipedia.org» اتاۋىنا ۇقساستى بٵدەل نىشانداردى قولدانۋعا بولادى. ',
-	'linksearch-line'  => '$2 دەگەننەن $1 سٸلتەگەن',
-	'linksearch-error' => 'بٵدەل نىشاندار تەك سەرۆەر جايى اتاۋىنىڭ باستاۋىندا بولۋى مٷمكٸن.',
 );
 
 $messages['la'] = array(
@@ -371,6 +371,15 @@ $messages['oc'] = array(
 	'linksearch-text'  => 'Aquesta pagina especiala permetís de recercar las paginas dins lasqualas un ligam extèrn apareis.<br />De caractèrs « joker » pòdon èsser utilizats, per exemple <code>*.wikipedia.org</code>.',
 	'linksearch-line'  => '$1 amb un ligam a partir de $2',
 	'linksearch-error' => 'Los caractèrs « joker » pòdon pas èsser utilizats qu’al començament del nom de domeni.',
+);
+
+/** Pangasinan (Pangasinan)
+ * @author SPQRobin
+ */
+$messages['pag'] = array(
+	'linksearch'     => 'Anapen ramay gawing ed web',
+	'linksearch-pat' => 'Anapen so pattern:',
+	'linksearch-ok'  => 'Anapen',
 );
 
 $messages['pl'] = array(

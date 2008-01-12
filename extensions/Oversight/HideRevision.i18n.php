@@ -807,6 +807,14 @@ $messages['oc'] = array(
 	'oversight-header'            => "Çaijós, figura la lista de las revisions amagadas de biais permanent al public. La divulgacion d'aquesta informacion pòt aver coma consequéncia la descasença dels privilègis d’Oversight.",
 );
 
+/** Pangasinan (Pangasinan)
+ * @author SPQRobin
+ */
+$messages['pag'] = array(
+	'hiderevision-tab'           => 'Iyatol so binalo',
+	'hiderevision-error-missing' => 'Aga naanap ed database.',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  */
@@ -1171,6 +1179,14 @@ $messages['tet'] = array(
  */
 $messages['tr'] = array(
 	'hiderevision-error-missing' => 'Veritabanında bulunamadı',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'hiderevision-tab'      => 'Klänedön revidi',
+	'hiderevision-noreason' => 'Mutol bepenön kodi moükama at.',
 );
 
 /* Cantonese (Shinjiman) */

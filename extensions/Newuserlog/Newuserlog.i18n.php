@@ -81,6 +81,14 @@ $messages['cdo'] = array(
 	'newuserlog-create-entry'  => 'Sĭng ê̤ṳng-hô',
 );
 
+/** Chechen (Нохчийн)
+ * @author SPQRobin
+ */
+$messages['ce'] = array(
+	'newuserlogpage'          => 'Керла юзери терахь',
+	'newuserlog-create-entry' => 'Керла Юзер',
+);
+
 $messages['cs'] = array(
 	'newuserlogpage'           => 'Kniha nových uživatelů',
 	'newuserlogpagetext'       => 'Toto je záznam nově zaregistrovaných uživatelů.',
@@ -355,6 +363,13 @@ $messages['oc'] = array(
 	'newuserlogpagetext'       => 'Jornal de las creacions de comptes d\'utilizaires',
 	'newuserlog-create-entry'  => 'Utilizaire novèl',
 	'newuserlog-create2-entry' => 'compte creat per $1',
+);
+
+/** Pangasinan (Pangasinan)
+ * @author SPQRobin
+ */
+$messages['pag'] = array(
+	'newuserlog-create-entry' => 'Balon user',
 );
 
 $messages['pl'] = array(

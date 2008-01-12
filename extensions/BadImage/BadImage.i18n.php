@@ -868,6 +868,13 @@ $messages['sv'] = array(
 	'badimages-log-remove' => 'strök [[$1]] från listan över dåliga bilder',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'badimages-add-btn' => 'Ekle',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */
