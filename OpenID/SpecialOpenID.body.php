@@ -164,7 +164,18 @@ class SpecialOpenID extends SpecialPage {
 			return NULL;
 		}
 	}
-	
+
+	function scriptUrl($title) {
+		global $wgServer, $wgScript;
+		$nt = Title::makeTitleSafe(NS_SPECIAL, $title);
+		if (isset($nt)) {
+			$dbkey = wfUrlencode( $nt->getPrefixedDBkey() );
+			return "{$wgServer}{$wgScript}?title={$dbkey}";
+		} else {
+			return $url;
+		}
+	}
+		
 	function canLogin($openid_url) {
 
 		global $wgOpenIDConsumerDenyByDefault, $wgOpenIDConsumerAllow, $wgOpenIDConsumerDeny;
@@ -318,7 +329,7 @@ class SpecialOpenID extends SpecialPage {
 			$auth_request->addExtension($sreg_request);
 		}
 		
-		$process_url = $this->fullUrl($finish_page);
+		$process_url = $this->scriptUrl($finish_page);
 
 		if ($auth_request->shouldSendRedirect()) {
 			$redirect_url = $auth_request->redirectURL($trust_root,

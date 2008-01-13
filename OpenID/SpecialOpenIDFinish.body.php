@@ -92,7 +92,7 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 
 		 default: # No parameter, returning from a server
 
-			$response = $consumer->complete($this->fullUrl('OpenIDFinish'));
+			$response = $consumer->complete($this->scriptUrl('OpenIDFinish'));
 
 			if (!isset($response)) {
 				$wgOut->errorpage('openiderror', 'openiderrortext');

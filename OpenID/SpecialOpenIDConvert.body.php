@@ -115,7 +115,7 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 
 		$consumer = $this->getConsumer();
 		
-		$response = $consumer->complete($this->fullUrl('OpenIDConvert/Finish'));
+		$response = $consumer->complete($this->scriptUrl('OpenIDConvert/Finish'));
 
 		if (!isset($response)) {
 			$wgOut->errorpage('openiderror', 'openiderrortext');
