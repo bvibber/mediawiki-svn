@@ -49,7 +49,6 @@ $wgLuceneCacheExpiry = 60 * 15;
 if (!defined('MEDIAWIKI')) {
 	die( "This file is part of MediaWiki, it is not a valid entry point\n" );
 }
-	
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'LuceneSearch',
@@ -62,7 +61,7 @@ $wgExtensionCredits['specialpage'][] = array(
 /** Lucene-search (mwsearch) version. from 2.0 we support search prefixes */
 $wgLuceneSearchVersion = 1.0;
 
-/** Show additional "exact case" search button, 
+/** Show additional "exact case" search button,
  index needs to be built with exact case option */
 $wgLuceneSearchExactCase = false;
 
@@ -80,7 +79,8 @@ define('LS_PER_PAGE', 10);
 if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 }
+
 extAddSpecialPage( dirname(__FILE__) . '/LuceneSearch_body.php', 'Search', 'LuceneSearch' );
+
+$wgExtensionMessagesFiles['LuceneSearch'] = dirname(__FILE__) . '/LuceneSearch.i18n.php';
 $wgAutoloadClasses['LuceneResult'] = dirname(__FILE__) . '/LuceneSearch_body.php';
-
-

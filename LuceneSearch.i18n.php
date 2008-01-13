@@ -1,13 +1,13 @@
 <?php
 /**
- * Internationalisation file for LuceneSearch extension.
+ * Internationalisation file for extension LuceneSearch.
  *
  * @addtogroup Extensions
 */
 
-$wgLuceneSearchMessages = array();
+$messages = array();
 
-$wgLuceneSearchMessages['en'] = array(
+$messages['en'] = array(
 	'searchnumber'          => "<strong>Results $1-$2 of $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prev</span>",
 	'searchnext'            => "<span style='font-size: small'>Next</span> &#x00BB;",
@@ -17,9 +17,10 @@ $wgLuceneSearchMessages['en'] = array(
 	'searchnoresults'       => "Sorry, there were no exact matches to your query.",
 	'searchnearmatches'     => "<b>These pages have similar titles to your query:</b>\n",
 	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "
-Search in namespaces:\n
-$1\n
+	'lucenepowersearchtext' => "Search in namespaces:
+
+$1
+
 Search for $3 $9 $10",
 	'lucenefallback'        => "There was a problem with the wiki search.
 This is probably temporary; try again in a few moments,
@@ -30,7 +31,7 @@ or you can search the wiki through an external search service:\n",
 	'searchaliases'         => ""
 );
 
-$wgLuceneSearchMessages['af'] = array(
+$messages['af'] = array(
 	'searchnumber'          => '<strong>Resultate $1-$2 van $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Vorige</span>',
 	'searchnext'            => '<span style=\'font-size: small\'>Volgende</span> &#x00BB;',
@@ -40,15 +41,16 @@ $wgLuceneSearchMessages['af'] = array(
 	'searchnoresults'       => 'Jammer, daar was niks wat u navraag presies pas nie.',
 	'searchnearmatches'     => '<b>Hierdie bladsye het titels soortgelyk aan u navraag:</b>',
 	'lucenepowersearchtext' => 'Soek in naamruimtes:
-<br />
+
 $1
-<br />Soek vir $3 $9',
+
+Soek vir $3 $9',
 );
 
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
-$wgLuceneSearchMessages['am'] = array(
+$messages['am'] = array(
 	'searchnumber'    => '<strong><big>ውጤቶች #$1 እስከ $2 (ከ$3):</big></strong>',
 	'searchnoresults' => 'ውጤት፦ ለጥያቄዎ ምንም ተመሳሳይ ጽሕፈት በማናቸውም ጽሁፍ አይገኝም።',
 );
@@ -56,7 +58,7 @@ $wgLuceneSearchMessages['am'] = array(
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
-$wgLuceneSearchMessages['an'] = array(
+$messages['an'] = array(
 	'searchnumber'          => '<strong>Resultaus $1-$2 de $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Anterior</span>",
 	'searchnext'            => "<span style='font-size: small'>Siguient</span> &#x00BB;",
@@ -71,14 +73,14 @@ $1
 
 Mirar $3 $9',
 	'lucenefallback'        => 'Bi ha abito uno problema fendo a busca en a wiki.
-Prebablement sía temporal. Prebe de fer-lo una atra begada dimpués de bels menutos, 
+Prebablement sía temporal. Prebe de fer-lo una atra begada dimpués de bels menutos,
 u faiga serbir bel buscador esterno ta esplorar a wiki.',
 	'searchexactcase'       => 'Mirar esautament (mayusclas e minusclas)',
 	'searchall'             => 'toz',
 	'searchincategory'      => 'en a categoría',
 );
 
-$wgLuceneSearchMessages['ar'] = array(
+$messages['ar'] = array(
 	'searchnumber'          => '<strong>النتائج $1-$2 ل$3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>السابق</span>',
 	'searchnext'            => '<span style=\'font-size: small\'>التالي</span> &#x00BB;',
@@ -102,7 +104,7 @@ $1
  * @author SPQRobin
  * @author Esbardu
  */
-$wgLuceneSearchMessages['ast'] = array(
+$messages['ast'] = array(
 	'searchnumber'          => '<strong>Resultaos $1-$2 de $3</strong>',
 	'searchnoresults'       => 'Sentímoslo, nun hebo coincidencies exautes pa la to busca.',
 	'lucenepowersearchtext' => 'Buscar nos espacios de nomes:
@@ -112,7 +114,7 @@ $1
 Buscar $3 $9 $10',
 );
 
-$wgLuceneSearchMessages['bcl'] = array(
+$messages['bcl'] = array(
 	'lucene-resultsize'     => '$1 ($2 mga tataramon)',
 	'searchdidyoumean'      => 'An gusto mo: "<a href="$1">$2</a>"?',
 	'searchall'             => 'gabos',
@@ -123,7 +125,7 @@ $wgLuceneSearchMessages['bcl'] = array(
  * @author DCLXVI
  * @author Borislav
  */
-$wgLuceneSearchMessages['bg'] = array(
+$messages['bg'] = array(
 	'searchnumber'          => '<strong>Резултати $1–$2 от $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Предишни</span>",
 	'searchnext'            => "<span style='font-size: small'>Следващи</span> &#x00BB;",
@@ -137,14 +139,14 @@ $1
 	'searchall'             => 'всички',
 );
 
-$wgLuceneSearchMessages['br'] = array(
+$messages['br'] = array(
 	'searchnoresults'       => 'Siwazh deoc\'h, n\'eus ket bet kavet respont ebet o klotañ-rik gant ho koulenn.',
 );
 
 /** Catalan (Català)
  * @author SMP
  */
-$wgLuceneSearchMessages['ca'] = array(
+$messages['ca'] = array(
 	'searchnumber'          => '<strong>Resultats $1-$2 de $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Anterior</span>",
 	'searchnext'            => "<span style='font-size: small'>Posterior</span> &#x00BB;",
@@ -165,7 +167,7 @@ Probablement és un problema temporal; torneu a intentar-ho d'aquí uns moments.
 	'searchincategory'      => 'a categoria',
 );
 
-$wgLuceneSearchMessages['cdo'] = array(
+$messages['cdo'] = array(
 	'searchnumber'          => "<strong>$3 bĭk giék-guō gì $1-$2</strong>",
 	'lucene-searchscore'    => "Guăng-lièng-séng: $1%",
 	'lucene-resultsize'     => "$1 ($2 cê)",
@@ -176,7 +178,7 @@ $wgLuceneSearchMessages['cdo'] = array(
 /** Czech (Česky)
  * @author Li-sung
  */
-$wgLuceneSearchMessages['cs'] = array(
+$messages['cs'] = array(
 	'searchnumber'          => '<strong>Výsledky $1–$2 z $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Předchozí</span>",
 	'searchnext'            => "<span style='font-size: small'>Následující</span> &#x00BB;",
@@ -197,7 +199,7 @@ Hledat $3 $9 $10',
 	'searchincategory'      => 'v kategorii',
 );
 
-$wgLuceneSearchMessages['de'] = array(
+$messages['de'] = array(
 	'searchnumber'		=> "<strong>Ergebnisse $1–$2 von $3</strong>",
 	'searchprev'            => "&larr; <span style='font-size: smaller'>Vorherige</span>",
 	'searchnext'            => "<span style='font-size: smaller'>Nächste</span> &rarr;",
@@ -221,14 +223,14 @@ Alternativ kannst du auch die externen Suchmöglichkeiten nutzen:\n",
  * @author Consta
  * @author MF-Warburg
  */
-$wgLuceneSearchMessages['el'] = array(
+$messages['el'] = array(
 	'lucene-searchscore' => 'Σχετικότητα: $1%',
 	'lucene-resultsize'  => '$1 ($2 λέξεις)',
 	'searchdidyoumean'   => 'Μήπως εννοείτε: "<a href="$1">$2</a>";',
 	'lucenefallback'     => 'Υπήρξε κάποιο πρόβλημα με την αναζήτηση στο wiki. Αυτό είναι μάλλον προσωρινό. Προσπαθήστε ξανά αργότερα ή πραγματοποιήστε την αναζήτησή σας στο wiki μέσω μιας εξωτερικής υπηρεσίας αναζήτησης:',
 );
 
-$wgLuceneSearchMessages['eo'] = array(
+$messages['eo'] = array(
 	'searchnumber'          => '<strong>Rezultoj $1-$2 el $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Antaŭa</span>',
 	'searchnext'            => '<span style=\'font-size: small\'>Sekvanta</span> &#x00BB;',
@@ -237,8 +239,7 @@ $wgLuceneSearchMessages['eo'] = array(
 	'searchdidyoumean'      => 'Ĉu vi celis : "<a href="$1">$2</a>"?',
 	'searchnoresults'       => 'Bedaŭrinde ne estas precize kongrua rezulto por via serĉo.',
 	'searchnearmatches'     => '<b>Ĉi tiuj paĝoj havas titolojn similajn al via serĉo:</b>',
-	'lucenepowersearchtext' => '
-Serĉo en nomspacoj:
+	'lucenepowersearchtext' => 'Serĉo en nomspacoj:
 
 $1
 
@@ -247,7 +248,7 @@ Serĉo de $3 $9 $10',
 Estas verŝajne nur portempa; bonvolu provi denove post iom da tempo
 aŭ vi povas esplori la vikion per eksteraj serĉservoj.',
 );
-$wgLuceneSearchMessages['es'] = array(
+$messages['es'] = array(
 	'searchnumber'          => '<strong>Resultados $1-$2 de $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Previo</span>',
 	'searchnext'            => '<span style=\'font-size: small\'>Siguiente</span> &#x00BB;',
@@ -262,14 +263,14 @@ $1
 
 Buscar $3 $9',
 	'lucenefallback'        => 'Ha habido un problema con la búsqueda.
-Probablemente sea temporal. Intentelo de nuevo en unos minutos, 
+Probablemente sea temporal. Intentelo de nuevo en unos minutos,
 o emplee algún buscador externo para explorar la wiki.',
 	'searchexactcase'       => 'Búsqueda sensible a mayúsculas',
 	'searchall'             => 'todos',
 	'searchincategory'      => 'en categoría',
 );
 
-$wgLuceneSearchMessages['et'] = array(
+$messages['et'] = array(
 	'searchnumber'          => '<strong>Tulemused $1-$2 (kokku $3)</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Eelmine</span>',
 	'searchnext'            => '<span style=\'font-size: small\'>Järgmine</span> &#x00BB;',
@@ -281,12 +282,12 @@ See on tõenäoliselt ainult ajutine;
 proovige mõne hetke pärast uuesti või otsige välise teenuse abil:',
 );
 
-$wgLuceneSearchMessages['ext'] = array(
+$messages['ext'] = array(
 	'searchall'             => 'tó',
 );
 
 # فارسی (Huji)
-$wgLuceneSearchMessages['fa'] = array(
+$messages['fa'] = array(
 	'searchnumber'          => '<strong>نتایج $1-$2 از $3</strong>',
 	'searchprev'            => "« <span style='font-size: small'>قبلی</span>",
 	'searchnext'            => "<span style='font-size: small'>بعدی</span> »",
@@ -311,7 +312,7 @@ $1
 /** Finnish (Suomi)
  * @author Nike
  */
-$wgLuceneSearchMessages['fi'] = array(
+$messages['fi'] = array(
 	'searchnumber'          => '<strong>Tulokset $1–$2 (yhteensä $3)</strong>',
 	'searchprev'            => "← <span style='font-size: small'>edelliset</span>",
 	'searchnext'            => "<span style='font-size: small'>seuraavat</span> →",
@@ -331,7 +332,7 @@ Hakulauseke $3 $9 $10',
 	'searchincategory'      => 'luokassa',
 );
 
-$wgLuceneSearchMessages['fo'] = array(
+$messages['fo'] = array(
 	'searchnumber'          => '<strong>Úrslit $1-$2 av $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Undanfarnu</span>',
 	'searchnext'            => '<span style=\'font-size: small\'>Næstu</span> &#x00BB;',
@@ -341,7 +342,7 @@ $wgLuceneSearchMessages['fo'] = array(
 	'lucenepowersearchtext' => 'Leita í navnaøki: $1 Leita eftur $3 $9',
 );
 
-$wgLuceneSearchMessages['fr'] = array(
+$messages['fr'] = array(
 	'searchnumber'          => '<strong>Résultats $1 – $2 sur $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Préc.</span>',
 	'searchnext'            => '<span style=\'font-size: small\'>Suiv.</span> &#x00BB;',
@@ -350,8 +351,10 @@ $wgLuceneSearchMessages['fr'] = array(
 	'searchdidyoumean'      => 'Pensiez-vous à : « <a href="$1">$2</a> » ?',
 	'searchnoresults'       => 'Désolé, il n’existe aucune correspondance exacte à votre requête.',
 	'searchnearmatches'     => '<strong>Ces pages ont un titre similaire à votre requête.</strong>',
-	'lucenepowersearchtext' => '
-Rechercher dans les espaces : $1 <br/>
+	'lucenepowersearchtext' => 'Rechercher dans les espaces :
+
+$1
+
 Texte à rechercher : $3 $9 $10',
 	'lucenefallback'        => 'Un problème est survenu avec la recherche wiki. Ce souci est probablement temporaire ; merci de réessayer dans un instant ou d’utiliser un service de recherche externe.',
 	'searchexactcase'       => 'Rechercher (sensible à la casse)',
@@ -362,7 +365,7 @@ Texte à rechercher : $3 $9 $10',
 /** Franco-Provençal (Arpetan)
  * @author ChrisPtDe
  */
-$wgLuceneSearchMessages['frp'] = array(
+$messages['frp'] = array(
 	'searchnumber'          => '<strong>Rèsultats $1 – $2 dessus $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prèc.</span>",
 	'searchnext'            => "<span style='font-size: small'>Siuv.</span> &#x00BB;",
@@ -387,11 +390,11 @@ ou ben d’utilisar un sèrviço de rechèrche de defôr.',
 /** Irish (Gaeilge)
  * @author SPQRobin
  */
-$wgLuceneSearchMessages['ga'] = array(
+$messages['ga'] = array(
 	'searchdidyoumean' => 'An raibh tú ag lorg ar an bhfrása seo? "<a href="$1">$2</a>"',
 );
 
-$wgLuceneSearchMessages['gl'] = array(
+$messages['gl'] = array(
 	'searchnumber'          => '<strong>Resultados $1-$2 de $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Anterior</span>',
 	'searchnext'            => '<span style=\'font-size: small\'>Seguinte</span> &#x00BB;',
@@ -413,7 +416,7 @@ ou vostede pode buscar o wiki a través dun servizo de procura externa:',
 	'searchincategory'      => 'na categoría',
 );
 
-$wgLuceneSearchMessages['hak'] = array(
+$messages['hak'] = array(
 	'searchnumber'          => '<strong>Khiung-yû $3 hong chhìm-chhut ke kiet-kó, yî-ha he thi $1-$2 hong ke kiet-kó</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Song yit-hong</span>',
 	'searchnext'            => '<span style=\'font-size: small\'>Hâ yit-hong</span> &#x00BB;',
@@ -424,7 +427,7 @@ $wgLuceneSearchMessages['hak'] = array(
 	'searchnearmatches'     => '<b>Yî-ha hong-mien lâu ngì chhà-chhìm ke nui-yùng yû siong-sṳ ke phêu-thì:</b>',
 );
 
-$wgLuceneSearchMessages['he'] = array(
+$messages['he'] = array(
 	'searchnumber'          => "<strong>תוצאות $1-$2 מתוך $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>הקודם</span>",
 	'searchnext'            => "<span style='font-size: small'>הבא</span> &#x00BB;",
@@ -434,9 +437,9 @@ $wgLuceneSearchMessages['he'] = array(
 	'searchnoresults'       => "מצטערים, אין דפים עם הכותרת המדויקת שחיפשת.",
 	'searchnearmatches'     => "<b>דפים אלו הם בעלי כותרת דומה למבוקשת:</b>\n",
 	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "
-חיפוש במרחבי השם:\n
-$1\n
+	'lucenepowersearchtext' => "חיפוש במרחבי השם:\n
+$1
+
 חיפוש של $3 $9 $10",
 	'lucenefallback'        => "יש בעיה עם מנוע הוויקי.
 סביר להניח שהיא זמנית; אנא נסו שנית בעוד מספר דקות.
@@ -446,7 +449,7 @@ $1\n
 	'searchincategory'      => 'בקטגוריה',
 );
 
-$wgLuceneSearchMessages['hr'] = array(
+$messages['hr'] = array(
 	'searchnumber'          => '<strong>Rezultati $1-$2 od $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Prethodno</span>',
 	'searchnext'            => '<span style=\'font-size: small\'>Slijedeći</span> &#x00BB;',
@@ -466,7 +469,7 @@ ili možete pretraživati wiki pomoću vanjske tražilice:',
 	'searchincategory'      => 'u kategoriji',
 );
 
-$wgLuceneSearchMessages['hsb'] = array(
+$messages['hsb'] = array(
 	'searchnumber'          => '<strong>Wuslědki $1–$2 z $3</strong>',
 	'searchprev'            => '&larr; <span style=\'font-size: smaller\'>Předchadny</span>',
 	'searchnext'            => '<span style=\'font-size: smaller\'>Přichodny</span> &rarr;',
@@ -475,7 +478,11 @@ $wgLuceneSearchMessages['hsb'] = array(
 	'searchdidyoumean'      => 'Měnješe ty „<a href="$1">$2</a>“?',
 	'searchnoresults'       => 'Bohužel njebuchu přihódne strony za twoje pytanske naprašowanje namakane.',
 	'searchnearmatches'     => '<b>Tute strony maja k pytanskemu naprašowanju podobne titule:</b>',
-	'lucenepowersearchtext' => 'W mjenowych rumach pytać: $1<br />Pytać za: $3 $9 $10',
+	'lucenepowersearchtext' => 'W mjenowych rumach pytać:
+
+$1
+
+Pytać za: $3 $9 $10',
 	'lucenefallback'        => '<br /> ---- <br />
 Je nachwilny problem z nutřkownej pytawu. Spytaj za někotre wokomiki hišće raz abo přepytuj Wikipediju z eksternej pytawu:',
 	'searchexactcase'       => 'Wulko-/małopisanje při pytanju wobkedźbować',
@@ -486,7 +493,7 @@ Je nachwilny problem z nutřkownej pytawu. Spytaj za někotre wokomiki hišće r
 /** Hungarian (Magyar)
  * @author Bdanee
  */
-$wgLuceneSearchMessages['hu'] = array(
+$messages['hu'] = array(
 	'searchnumber'          => '<strong>$1-$2, összesen: $3 találat</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>előző</span>",
 	'searchnext'            => "<span style='font-size: small'>következő</span> &#x00BB;",
@@ -507,7 +514,7 @@ A hiba átmeneti; próbáld újra néhány másodperc múlva vagy kereshetsz a w
 	'searchincategory'      => 'kategóriában',
 );
 
-$wgLuceneSearchMessages['id'] = array(
+$messages['id'] = array(
 	'searchnumber'          => "<strong>Hasil pencarian $1-$2 dari $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Sebelumnya</span>",
 	'searchnext'            => "<span style='font-size: small'>Selanjutnya</span> &#x00BB;",
@@ -516,9 +523,10 @@ $wgLuceneSearchMessages['id'] = array(
 	'searchdidyoumean'      => "Apakah maksud Anda: \"<a href=\"$1\">$2</a>\"?",
 	'searchnoresults'       => "Maaf, tidak ditemukan hasil yang tepat sama dengan permintaan Anda.",
 	'searchnearmatches'     => "<b>Halaman-halaman berikut mempunyai judul yang mirip dengan permintaan Anda:</b>\n",
-	'lucenepowersearchtext' => "
-Pencarian di namespace:\n
-$1\n
+	'lucenepowersearchtext' => "Pencarian di namespace:
+
+$1
+
 Pencarian terhadap $3 $9 $10",
 	'lucenefallback'        => "Ada masalah pada pencarian wiki.
 Masalah ini mungkin hanya sementara; silakan coba lagi dalam beberapa saat,
@@ -530,7 +538,7 @@ atau gunakan layanan pencari eksternal:\n"
  * @author Spacebirdy
  * @author Jóna Þórunn
  */
-$wgLuceneSearchMessages['is'] = array(
+$messages['is'] = array(
 	'searchnumber'          => '<strong>Niðurstöður $1–$2 af $3</strong>',
 	'searchnext'            => "<span style='font-size: small'>Næsta</span> &#x00BB;",
 	'searchdidyoumean'      => 'Áttirðu við: "<a href="$1">$2</a>"?',
@@ -542,7 +550,7 @@ Leita að $3 $9',
 /** Italian (Italiano)
  * @author BrokenArrow
  */
-$wgLuceneSearchMessages['it'] = array(
+$messages['it'] = array(
 	'searchnumber'          => '<strong>Risultati da $1 a $2 su un totale di $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Precedente</span>",
 	'searchnext'            => "<span style='font-size: small'>Successivo</span> &#x00BB;",
@@ -551,21 +559,20 @@ $wgLuceneSearchMessages['it'] = array(
 	'searchdidyoumean'      => 'Forse stavi cercando: "<a href="$1">$2</a>"?',
 	'searchnoresults'       => 'La funzione di ricerca non ha trovato corrispondenze esatte con il testo cercato.',
 	'searchnearmatches'     => '<b>Le pagine elencate di seguito hanno titoli simili al testo cercato:</b>',
-	'lucenepowersearchtext' => '
-Cerca nei namespace selezionati:
+	'lucenepowersearchtext' => 'Cerca nei namespace selezionati:
 
 $1
 
 Testo da ricercare $3 $9 $10',
-	'lucenefallback'        => 'Il motore di ricerca interno ha un problema. 
-	Probabilmente si tratta di un errore temporaneo, destinato a risolversi in breve tempo. 
+	'lucenefallback'        => 'Il motore di ricerca interno ha un problema.
+	Probabilmente si tratta di un errore temporaneo, destinato a risolversi in breve tempo.
 	Nel frattempo, si consiglia di riprovare tra qualche istante o di utilizzare un motore di ricerca esterno:',
 	'searchexactcase'       => 'Rispetta maiuscole/minuscole',
 	'searchall'             => 'tutti',
 	'searchincategory'      => 'incategoria',
 );
 
-$wgLuceneSearchMessages['ja'] = array(
+$messages['ja'] = array(
 	'searchnumber'          => '<strong>$3 件中 $1 - $2 件目</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>前へ</span>',
 	'searchnext'            => '<span style=\'font-size: small\'>次へ</span> &#x00BB;',
@@ -574,8 +581,7 @@ $wgLuceneSearchMessages['ja'] = array(
 	'searchdidyoumean'      => 'もしかして: "<a href="$1">$2</a>"',
 	'searchnoresults'       => '該当するページが見つかりませんでした。',
 	'searchnearmatches'     => '<b>タイトルが検索語に近い項目:</b>',
-	'lucenepowersearchtext' => '
-検索する名前空間:
+	'lucenepowersearchtext' => '検索する名前空間:
 
 $1
 
@@ -583,7 +589,7 @@ $1
 	'lucenefallback'        => '検索中に一時的な問題が発生しました。しばらく経ってから再度検索するか、外部の検索サービスを使用してください:',
 );
 
-$wgLuceneSearchMessages['kaa'] = array(
+$messages['kaa'] = array(
 	'lucenepowersearchtext' => 'Mına isimler ko\'pliginde izlew:
 
 $1
@@ -591,7 +597,7 @@ $1
 İzlew sorawı: $3 $9 $10',
 );
 
-$wgLuceneSearchMessages['kk-cyrl'] = array(
+$messages['kk-cyrl'] = array(
 	'searchnumber'          => "<strong>$3 ішіндегі $1—$2 нәтиже</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Алдыңғыға</span>",
 	'searchnext'            => "<span style='font-size: small'>Келесіге</span> &#x00BB;",
@@ -601,9 +607,10 @@ $wgLuceneSearchMessages['kk-cyrl'] = array(
 	'searchnoresults'       => "Ғафу етіңіз, сұранымынызға нақты сәйкесі бар еш нәтиже табылмады.",
 	'searchnearmatches'     => "<b>Мына бет атауларында сұранымыңызға ұқсастығы бар:</b>\n",
 	'searchnearmatch'       => "<li>$1</li><br />",
-	'lucenepowersearchtext' => "
-Мына есім аяларда іздеу:<br />
-$1<br />
+	'lucenepowersearchtext' => "Мына есім аяларда іздеу:
+
+$1
+
 Іздестіру сұранысы: $3 $9 $10",
 	'lucenefallback'        => "Мында «уики іздеу» дегенді пайдаланғанда шатақ шықты.
 Бәлкім, бұл уақытша кедергі болды; біршама сәттен соң қайталаңыз,
@@ -613,7 +620,7 @@ $1<br />
 	'searchincategory'      => 'санатта',
 );
 
-$wgLuceneSearchMessages['kk-latn'] = array(
+$messages['kk-latn'] = array(
 	'searchnumber'          => "<strong>$3 işindegi $1—$2 nätïje</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Aldıñğığa</span>",
 	'searchnext'            => "<span style='font-size: small'>Kelesige</span> &#x00BB;",
@@ -623,9 +630,9 @@ $wgLuceneSearchMessages['kk-latn'] = array(
 	'searchnoresults'       => "Ğafw etiñiz, suranımınızğa naqtı säýkesi bar eş nätïje tabılmadı.",
 	'searchnearmatches'     => "<b>Mına bet atawlarında suranımıñızğa uqsastığı bar:</b>\n",
 	'searchnearmatch'       => "<li>$1</li><br />",
-	'lucenepowersearchtext' => "
-Mına esim ayalarda izdew:<br />
-$1<br />
+	'lucenepowersearchtext' => "Mına esim ayalarda izdew:
+$1
+
 İzdestirw suranısı: $3 $9 $10",
 	'lucenefallback'        => "Mında «wïkï izdew» degendi paýdalanğanda şataq şıqtı.
 Bälkim, bul waqıtşa kedergi boldı; birşama sätten soñ qaýtalañız,
@@ -635,7 +642,7 @@ nemese osı wïkïden izdew üşin sırtqı qızmetterin qoldanıñız:<br />",
 	'searchincategory'      => 'sanatta',
 );
 
-$wgLuceneSearchMessages['kk-arab'] = array(
+$messages['kk-arab'] = array(
 	'searchnumber'          => "<strong>$3 ٸشٸندەگٸ $1—$2 نٵتيجە</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>الدىڭعىعا</span>",
 	'searchnext'            => "<span style='font-size: small'>كەلەسٸگە</span> &#x00BB;",
@@ -645,9 +652,10 @@ $wgLuceneSearchMessages['kk-arab'] = array(
 	'searchnoresults'       => "عافۋ ەتٸڭٸز, سۇرانىمىنىزعا ناقتى سٵيكەسٸ بار ەش نٵتيجە تابىلمادى.",
 	'searchnearmatches'     => "<b>مىنا بەت اتاۋلارىندا سۇرانىمىڭىزعا ۇقساستىعى بار:</b>\n",
 	'searchnearmatch'       => "<li>$1</li><br />",
-	'lucenepowersearchtext' => "
-مىنا ەسٸم ايالاردا ٸزدەۋ:<br />
-$1<br />
+	'lucenepowersearchtext' => "مىنا ەسٸم ايالاردا ٸزدەۋ:
+
+$1
+
 ٸزدەستٸرۋ سۇرانىسى: $3 $9 $10",
 	'lucenefallback'        => "مىندا «ۋيكي ٸزدەۋ» دەگەندٸ پايدالانعاندا شاتاق شىقتى.
 بٵلكٸم, بۇل ۋاقىتشا كەدەرگٸ بولدى; بٸرشاما سٵتتەن سوڭ قايتالاڭىز,
@@ -656,13 +664,8 @@ $1<br />
 	'searchall'             => 'بارلىعىندا',
 	'searchincategory'      => 'ساناتتا',
 );
-# Fallback Kazakh
-$wgLuceneSearchMessages['kk-kz'] = $wgLuceneSearchMessages['kk-cyrl'];
-$wgLuceneSearchMessages['kk-tr'] = $wgLuceneSearchMessages['kk-latn'];
-$wgLuceneSearchMessages['kk-cn'] = $wgLuceneSearchMessages['kk-arab'];
-$wgLuceneSearchMessages['kk'] = $wgLuceneSearchMessages['kk-cyrl'];
 
-$wgLuceneSearchMessages['la'] = array(
+$messages['la'] = array(
 	'lucenepowersearchtext' => 'In spatiis nominalibus petere:
 
 $1
@@ -673,7 +676,7 @@ Petere $3 $9 $10',
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-$wgLuceneSearchMessages['lb'] = array(
+$messages['lb'] = array(
 	'searchnumber'          => '<strong>Resultater $1–$2 vun $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Virescht</span>",
 	'searchnext'            => "<span style='font-size: smaller'>Nächst</span> &#x00BB;",
@@ -682,7 +685,9 @@ $wgLuceneSearchMessages['lb'] = array(
 	'searchdidyoumean'      => 'Mengt Dir "<a href="$1">$2</a>"?',
 	'searchnoresults'       => 'Pardon, et goufe keng Säiten fir är Ufro fontt.',
 	'searchnearmatches'     => '<b>Dës Säiten hunn ähnlech Titele wéi är Ufro :</b>',
-	'lucenepowersearchtext' => 'Sich an den Nimmraim $1
+	'lucenepowersearchtext' => 'Sich an den Nimmraim:
+
+$1
 
 Sichen no $3 $9 $10',
 	'lucenefallback'        => 'Bäi der {{SITENAME}}-interner Sich ass e Problem opgetratt.
@@ -696,7 +701,7 @@ Dir kënnt awer och déi extern Sichméiglichkeete benotzen:',
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  */
-$wgLuceneSearchMessages['li'] = array(
+$messages['li'] = array(
 	'lucene-searchscore' => 'Relevantie: $1%',
 	'lucene-resultsize'  => '$1 ($2 wäörd)',
 	'searchdidyoumean'   => 'Bedoeldese: "<a href="$1">$2</a>"?',
@@ -705,7 +710,7 @@ $wgLuceneSearchMessages['li'] = array(
 	'searchincategory'   => 'in categorie',
 );
 
-$wgLuceneSearchMessages['lo'] = array(
+$messages['lo'] = array(
 	'searchdidyoumean'      => "ຫຼື ທ່ານໝາຍຄວາມວ່າ",
 	'searchnoresults'       => "ຂໍໂທດຫຼາຍໆ, ບໍ່ມີ ບົດຄວາມ ທີ່ມີຊື່ກົງກັບສິ່ງທີ່ ທ່ານ ຊອກຫາແບບສົມບູນ.",
 );
@@ -713,14 +718,14 @@ $wgLuceneSearchMessages['lo'] = array(
 /** Lozi (Silozi)
  * @author Ooswesthoesbes
  */
-$wgLuceneSearchMessages['loz'] = array(
+$messages['loz'] = array(
 	'searchall' => 'xete',
 );
 
 /** Lithuanian (Lietuvių)
  * @author Garas
  */
-$wgLuceneSearchMessages['lt'] = array(
+$messages['lt'] = array(
 	'searchnumber'          => '<strong>Rezultatai $1-$2 iš $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Atgal</span>",
 	'searchnext'            => "<span style='font-size: small'>Pirmyn</span> &#x00BB;",
@@ -730,8 +735,7 @@ $wgLuceneSearchMessages['lt'] = array(
 	'searchnoresults'       => 'Atsiprašome, jūsų užklausai nėra jokių tikslių atitikmenų.',
 	'searchnearmatches'     => '<b>Šie puslapiai turi panašius pavadinimus į jūsų užklausą:</b>
 ',
-	'lucenepowersearchtext' => '
-Ieškoti vardų srityse:
+	'lucenepowersearchtext' => 'Ieškoti vardų srityse:
 
 $1
 
@@ -747,24 +751,26 @@ arba galite mėginti ieškoti projekte per išorines paieškos paslaugas:
 /** Latvian (Latviešu)
  * @author SPQRobin
  */
-$wgLuceneSearchMessages['lv'] = array(
+$messages['lv'] = array(
 	'searchnoresults' => 'Šeit, diemžēl, nav lapas ar tieši tādu nosaukumu.',
 );
 
-$wgLuceneSearchMessages['nan'] = array(
+$messages['nan'] = array(
 	'searchnumber'          => "<strong>$3 hāng kiat-kó ê tē $1-$2 hāng</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Thâu-chêng</span>",
 	'searchnext'            => "<span style='font-size: small'>Āu-piah</span> &#x00BB;",
 	'lucene-searchscore'    => "Koan-liân-sèng: $1%",
 	'lucene-resultsize'     => "$1 ($2 jī)",
 	'searchnoresults'       => "Chhōe bô tùi-tâng ê bûn-jī.",
-	'lucenepowersearchtext' => "Chhiau chia ê miâ-khong-kan:\n
-$1\n
+	'lucenepowersearchtext' => "Chhiau chia ê miâ-khong-kan:
+
+$1
+
 Chhōe $3 $9 $10",
 	'lucenefallback'        => "Wiki ê chhiau-chhoē kong-lêng chhut būn-tê, chiām-sî bē iōng tit; chhiáⁿ liâm-mī koh chhì. Mā thang ēng goā-chām ê kiám-sek ho̍k-bū chhiau-chhoē khoàⁿ-māi:\n",
 );
 
-$wgLuceneSearchMessages['nds'] = array(
+$messages['nds'] = array(
 	'searchnumber'          => '<strong>Resultaten $1-$2 vun $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Vörig</span>',
 	'searchnext'            => '<span style=\'font-size: small\'>Tokamen</span> &#x00BB;',
@@ -783,7 +789,7 @@ $wgLuceneSearchMessages['nds'] = array(
 /** Dutch (Nederlands)
  * @author Siebrand
  */
-$wgLuceneSearchMessages['nl'] = array(
+$messages['nl'] = array(
 	'searchnumber'          => '<strong>Resultaten $1-$2 van $3</strong>',
 	'searchprev'            => "« <span style='font-size: small'>Vorige</span>",
 	'searchnext'            => "<span style='font-size: small'>Volgende</span> »",
@@ -792,15 +798,12 @@ $wgLuceneSearchMessages['nl'] = array(
 	'searchdidyoumean'      => 'Bedoelde u: "<a href="$1">$2</a>"?',
 	'searchnoresults'       => 'Sorry, uw zoekopdracht heeft geen resultaten opgeleverd.',
 	'searchnearmatches'     => '<b>Deze paginanamen komen overeen met uw zoekopdracht:</b>',
-	'lucenepowersearchtext' => '
-Zoek in de volgende naamruimten:
+	'lucenepowersearchtext' => 'Zoek in de volgende naamruimten:
 
 $1
 
 Zoek naar $3 $9 $10',
-	'lucenefallback'        => 'Er is een storing in de wikizoekmachine.
-Deze is waarschijnlijk tijdelijk van aard; probeer het over enige tijd opnieuw
-of doorzoek de wiki via een externe zoekmachine:',
+	'lucenefallback'        => 'Er is een storing in de wikizoekmachine. Deze is waarschijnlijk tijdelijk van aard; probeer het over enige tijd opnieuw of doorzoek de wiki via een externe zoekmachine:',
 	'searchexactcase'       => 'Hoofdlettergevoelig zoeken',
 	'searchall'             => 'alle',
 	'searchincategory'      => 'binnen categorie',
@@ -809,7 +812,7 @@ of doorzoek de wiki via een externe zoekmachine:',
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$wgLuceneSearchMessages['no'] = array(
+$messages['no'] = array(
 	'searchnumber'          => '<strong>Resultat $1–$2 av $3</strong>',
 	'searchprev'            => '« <span style="font-size:small;">Forrige</span>',
 	'searchnext'            => '<span style="font-size:small;">Neste</span> »',
@@ -829,7 +832,7 @@ Søk etter $3 $9 $10',
 	'searchincategory'      => 'i kategori',
 );
 
-$wgLuceneSearchMessages['oc'] = array(
+$messages['oc'] = array(
 	'searchnumber'          => '<strong>Resultats $1-$2 sus $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Prec.</span>',
 	'searchnext'            => '<span style=\'font-size: small\'>Seg.</span> &#x00BB;',
@@ -838,7 +841,11 @@ $wgLuceneSearchMessages['oc'] = array(
 	'searchdidyoumean'      => 'Pensavetz a : « <a href="$1">$2</a> » ?',
 	'searchnoresults'       => 'O planhem, existís pas cap de correspondéncia exacta a vòstra requèsta.',
 	'searchnearmatches'     => '<strong>Aquestas paginas an un títol similar a vòstra requèsta.</strong>',
-	'lucenepowersearchtext' => 'Recercar dins los espacis : $1<br />Tèxt de recercar : $3 $9',
+	'lucenepowersearchtext' => 'Recercar dins los espacis :
+
+$1
+
+Tèxt de recercar : $3 $9',
 	'lucenefallback'        => 'Un problèma es subrevengut amb la recèrca wiki. Aqueste problèma es probablament temporari ; mercé de tornar ensajar dins un moment o d’utilizar un servici de recèrca extèrna.',
 	'searchexactcase'       => 'Recercar (sensible a la cassa)',
 	'searchall'             => 'Totes',
@@ -849,7 +856,7 @@ $wgLuceneSearchMessages['oc'] = array(
  * @author Derbeth
  * @author Sp5uhe
  */
-$wgLuceneSearchMessages['pl'] = array(
+$messages['pl'] = array(
 	'searchnumber'          => '<strong>Wyniki $1-$2 z $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Poprzednia</span>",
 	'searchnext'            => "<span style='font-size: small'>Następna</span> &#x00BB;",
@@ -858,8 +865,7 @@ $wgLuceneSearchMessages['pl'] = array(
 	'searchdidyoumean'      => 'Czy chodziło Ci o "<a href="1">$2</a>"?',
 	'searchnoresults'       => 'Niestety nie znaleziono stron pasujących do podanych kryteriów wyszukiwania.',
 	'searchnearmatches'     => '<b>Strony o podobnych nazwach:</b>',
-	'lucenepowersearchtext' => '
-Szukaj w przestrzeniach nazw:
+	'lucenepowersearchtext' => 'Szukaj w przestrzeniach nazw:
 
 $1
 
@@ -873,7 +879,7 @@ lub przeszukaj wiki za pomocą zewnętrznych wyszukiwarek:',
 );
 
 /* Piedmontese (Bèrto 'd Sèra) */
-$wgLuceneSearchMessages['pms'] = array(
+$messages['pms'] = array(
 	'searchnumber'          => '<strong>Arzultà $1-$2 ëd $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>andré</span>',
 	'searchnext'            => '<span style=\'font-size: small\'>Anans</span> &#x00BB;',
@@ -898,7 +904,7 @@ A l\'é belfé ch\'a sia già butasse a pòst daspërchiel; ch\'a lassa passé n
 /** Portuguese (Português)
  * @author 555
  */
-$wgLuceneSearchMessages['pt'] = array(
+$messages['pt'] = array(
 	'searchnumber'          => '<strong>Resultados $1-$2 de $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Anterior</span>",
 	'searchnext'            => "<span style='font-size: small'>Posterior</span> &#x00BB;",
@@ -907,8 +913,7 @@ $wgLuceneSearchMessages['pt'] = array(
 	'searchdidyoumean'      => 'Você quis dizer: "<a href="$1">$2</a>"?',
 	'searchnoresults'       => 'Desculpe, mas não existem resultados exatos correspondentes à sua procura.',
 	'searchnearmatches'     => '<b>As páginas a seguir possuem títulos similares com o que você pesquisou:</b>',
-	'lucenepowersearchtext' => '
-Pesquisar nos espaços nominais:
+	'lucenepowersearchtext' => 'Pesquisar nos espaços nominais:
 
 $1
 
@@ -924,7 +929,7 @@ ou procure por conteúdos neste wiki através de um mecanismo externo:',
 /** Russian (Русский)
  * @author .:Ajvol:.
  */
-$wgLuceneSearchMessages['ru'] = array(
+$messages['ru'] = array(
 	'searchnumber'          => '<strong>Результаты $1—$2 из $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Пред.</span>",
 	'searchnext'            => "<span style='font-size: small'>След.</span> &#x00BB;",
@@ -933,8 +938,7 @@ $wgLuceneSearchMessages['ru'] = array(
 	'searchdidyoumean'      => 'Возможно, вы имели в виду «<a href="1">$2</a>»?',
 	'searchnoresults'       => 'К сожалению, по вашему запросу не было найдено точных соответствий.',
 	'searchnearmatches'     => '<b>Следующие страницы имеют заголовок, похожий на ваш запрос:</b>',
-	'lucenepowersearchtext' => '
-Поиск в пространствах имён:
+	'lucenepowersearchtext' => 'Поиск в пространствах имён:
 
 $1
 
@@ -950,7 +954,7 @@ $1
 /** Scots (Scots)
  * @author OchAyeTheNoo
  */
-$wgLuceneSearchMessages['sco'] = array(
+$messages['sco'] = array(
 	'searchnumber'          => '<strong>Results $1-$2 o $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Hind</span>",
 	'searchnext'            => "<span style='font-size: small'>Next</span> &#x00BB;",
@@ -976,7 +980,7 @@ Ye can rake the wiki wi an ootside rake service:',
  * @author Helix84
  * @author Robbot
  */
-$wgLuceneSearchMessages['sk'] = array(
+$messages['sk'] = array(
 	'searchnumber'          => '<strong>Výsledky $1-$2 zo $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Späť</span>",
 	'searchnext'            => "<span style='font-size: small'>Ďalej</span> &#x00BB;",
@@ -992,7 +996,7 @@ $wgLuceneSearchMessages['sk'] = array(
 	'searchincategory'      => 'v kategórii',
 );
 
-$wgLuceneSearchMessages['sq'] = array(
+$messages['sq'] = array(
 	'lucenepowersearchtext' => 'Kërko në hapësirat: $1 për $3 $9',
 	'searchnext'            => "<span style='font-size: small'>Më pas</span> &#x00BB;",
 	'searchnoresults'       => 'Nuk u gjet asnjë përputhje. Për ndihmë rreth kërkimit ju lutem shikoni Kërkime.',
@@ -1002,7 +1006,7 @@ $wgLuceneSearchMessages['sq'] = array(
 	'lucene-resultsize'     => '$1 ($2 fjalë)',
 );
 
-$wgLuceneSearchMessages['sr-ec'] = array(
+$messages['sr-ec'] = array(
 	'searchnumber'          => "<strong>Резултати $1-$2 од $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Претходна</span>",
 	'searchnext'            => "<span style='font-size: small'>Следећа</span> &#x00BB;",
@@ -1012,9 +1016,10 @@ $wgLuceneSearchMessages['sr-ec'] = array(
 	'searchnoresults'       => "Извињавамо се, не постоје резултати за ваш упит.",
 	'searchnearmatches'     => "<b>Следеће странице имају сличне називе као што сте тражили:</b>\n",
 	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "
-Претрага у именским просторима:\n
-$1\n
+	'lucenepowersearchtext' => "Претрага у именским просторима:
+
+$1
+
 Претрага за $3 $9 $10",
 	'lucenefallback'        => "Дошло је до проблема у вики претрази...
 Ово је вероватно привремено; покушајте поново након неколико момената,
@@ -1024,7 +1029,7 @@ $1\n
 	'searchincategory'      => "укатегорији\nukategoriji"
 );
 
-$wgLuceneSearchMessages['sr-el'] = array(
+$messages['sr-el'] = array(
 	'searchnumber'          => "<strong>Rezultati $1-$2 od $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prethodna</span>",
 	'searchnext'            => "<span style='font-size: small'>Sledeća</span> &#x00BB;",
@@ -1034,9 +1039,10 @@ $wgLuceneSearchMessages['sr-el'] = array(
 	'searchnoresults'       => "Izvinjavamo se, ne postoje rezultati za vaš upit.",
 	'searchnearmatches'     => "<b>Sledeće stranice imaju slične nazive kao što ste tražili:</b>\n",
 	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "
-Pretraga u imenskim prostorima:\n
-$1\n
+	'lucenepowersearchtext' => "Pretraga u imenskim prostorima:
+
+$1
+
 Pretraga za $3 $9 $10",
 	'lucenefallback'        => "Došlo je do problema u viki pretrazi...
 Ovo je verovatno privremeno; pokušajte ponovo nakon nekoliko momenata,
@@ -1046,13 +1052,11 @@ ili pretražite viki preko nekog od spoljnih pretraživačkih servisa:\n",
 	'searchincategory'      => "укатегорији\nukategoriji"
 );
 
-$wgLuceneSearchMessages['sr'] = $wgLuceneSearchMessages['sr-ec'];
-
 /** Seeltersk (Seeltersk)
  * @author Maartenvdbent
  * @author Pyt
  */
-$wgLuceneSearchMessages['stq'] = array(
+$messages['stq'] = array(
 	'searchnumber'          => '<strong>Resultoate $1-$2 fon $3</strong>',
 	'searchprev'            => "&larr; <span style='font-size: smaller'>Foarige</span>",
 	'searchnext'            => "<span style='font-size: smaller'>Naiste</span> &rarr;",
@@ -1070,7 +1074,7 @@ Uurs koast du uk do externe Säikmuugelkhaide nutsje:',
 	'searchincategory'      => 'in Kategorie',
 );
 
-$wgLuceneSearchMessages['sv'] = array(
+$messages['sv'] = array(
 	'searchnumber'          => "<strong>Resultat $1-$2 av $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Föregående</span>",
 	'searchnext'            => "<span style='font-size: small'>Nästa</span> &#x00BB;",
@@ -1080,15 +1084,17 @@ $wgLuceneSearchMessages['sv'] = array(
 	'searchnoresults'       => "Sökningen gav tyvärr inga exakta träffar.",
 	'searchnearmatches'     => "<b>Följande sidor har titlar som liknar din sökning:</b>\n",
 	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "Sök i följande namnrymder:\n
-$1\n
+	'lucenepowersearchtext' => "Sök i följande namnrymder:
+
+$1
+
 Sök efter $3 $9 $10",
-	'lucenefallback'        => "På grund av ett problem kunde inte sökningen utföras. 
+	'lucenefallback'        => "På grund av ett problem kunde inte sökningen utföras.
 Det var troligen bara något tillfälligt; försök igen om en liten stund,
 eller sök på wikin med någon extern söktjänst:\n"
 );
 
-$wgLuceneSearchMessages['ur'] = array(
+$messages['ur'] = array(
 	'searchnumber'          => '<strong><font face="times new roman, urdu naskh asiatype">نـتـائـج : $3 کے $1 تـا $2 </strong></font>',
 	'searchprev'            => 'پیچھے',
 	'searchnext'            => 'آگے',
@@ -1101,31 +1107,35 @@ $wgLuceneSearchMessages['ur'] = array(
 /** Volapük (Volapük)
  * @author Malafaya
  */
-$wgLuceneSearchMessages['vo'] = array(
+$messages['vo'] = array(
 	'lucene-resultsize' => '$1 (vöds $2)',
 	'searchall'         => 'valik',
 );
 
-$wgLuceneSearchMessages['wa'] = array(
+$messages['wa'] = array(
 	'searchnumber'          => '<strong>Rizultats: $1-$2 di $3</strong>',
 	'searchprev'            => '← <span style=\'font-size: small\'>Div.</span>',
 	'searchnext'            => '<span style=\'font-size: small\'>Shuv.</span> →',
 	'searchnoresults'       => 'Mande escuzes, mins i gn a rén ki corespond.',
 	'searchnearmatches'     => '<b>Les pådjes shuvantes ont des tites ki ravizèt çou k\' vos avoz cwerou:</b>',
-	'lucenepowersearchtext' => 'Cweraedje dins les espåces di lomaedje: $1 <br />
+	'lucenepowersearchtext' => 'Cweraedje dins les espåces di lomaedje:
+
+$1
+
 Cweraedje di: $3 $9 $10',
 );
 
-$wgLuceneSearchMessages['wuu'] = array(
+$messages['wuu'] = array(
 	'searchnoresults'       => "对弗起，寻弗着搭倷个要求完全匹配个结果。",
 	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "
-拉名字空间里向寻：\n
-$1\n
+	'lucenepowersearchtext' => "拉名字空间里向寻：
+
+$1
+
 寻：$3 $9 $10",
 );
 
-$wgLuceneSearchMessages['yue'] = array(
+$messages['yue'] = array(
 	'searchnumber'          => "<strong>一共有$3項搜尋結果，以下係第$1-$2項結果</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>上一版</span>",
 	'searchnext'            => "<span style='font-size: small'>下一版</span> &#x00BB;",
@@ -1135,9 +1145,10 @@ $wgLuceneSearchMessages['yue'] = array(
 	'searchnoresults'       => "對唔住，搵唔到同你匹配嘅查詢。",
 	'searchnearmatches'     => "<b>以下頁面同你查詢嘅内容有相似嘅標題：</b>\n",
 	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "
-響空間名度搵：\n
-$1\n
+	'lucenepowersearchtext' => "響空間名度搵：
+
+$1
+
 搜尋：$3 $9 $10",
 	'lucenefallback'        => "Wiki搜尋出咗問題。呢個可能係暫時性嘅，請稍後再試。你亦都可以通過利用外部搜尋服務來去搵呢個wiki：\n",
 	'searchexactcase'       => '完全大細楷配合搵嘢',
@@ -1145,7 +1156,7 @@ $1\n
 	'searchincategory'      => '響分類度'
 );
 
-$wgLuceneSearchMessages['zh-hans'] = array(
+$messages['zh-hans'] = array(
 	'searchnumber'          => "<strong>共有$3项搜索结果，以下是第$1-$2项结果</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>上一页</span>",
 	'searchnext'            => "<span style='font-size: small'>下一页</span> &#x00BB;",
@@ -1155,9 +1166,10 @@ $wgLuceneSearchMessages['zh-hans'] = array(
 	'searchnoresults'       => "对不起，找不到和您匹配的查询。",
 	'searchnearmatches'     => "<b>以下页面与你查询的内容有相似的标题：</b>\n",
 	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "
-在名字空间中搜索：\n
-$1\n
+	'lucenepowersearchtext' => "在名字空间中搜索：
+
+$1
+
 搜索：$3 $9 $10",
 	'lucenefallback'        => "系统搜索发生错误。这可能是暂时性的，请稍后重试。你也可以通过使用外部搜索服务搜索本站：\n",
 	'searchexactcase'       => '完全大小写匹配搜寻',
@@ -1165,7 +1177,7 @@ $1\n
 	'searchincategory'      => '在分类中'
 );
 
-$wgLuceneSearchMessages['zh-hant'] = array(
+$messages['zh-hant'] = array(
 	'searchnumber'          => "<strong>共有$3項搜尋結果，以下是第$1-$2項結果</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>上一頁</span>",
 	'searchnext'            => "<span style='font-size: small'>下一頁</span> &#x00BB;",
@@ -1175,9 +1187,10 @@ $wgLuceneSearchMessages['zh-hant'] = array(
 	'searchnoresults'       => "對不起，找不到和您匹配的查詢。",
 	'searchnearmatches'     => "<b>以下頁面與你查詢的内容有相似的標題：</b>\n",
 	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "
-在名字空間中搜尋：\n
-$1\n
+	'lucenepowersearchtext' => "在名字空間中搜尋：
+
+$1
+
 搜尋：$3 $9 $10",
 	'lucenefallback'        => "系統搜尋發生錯誤。這可能是暫時性的，請稍後重試。你也可以通過使用外部搜尋服務搜尋本站：\n",
 	'searchexactcase'       => '完全大小寫配合搜尋',
@@ -1185,11 +1198,15 @@ $1\n
 	'searchincategory'      => '在分類中'
 );
 
-# Fallback Chinese
-$wgLuceneSearchMessages['zh'] = $wgLuceneSearchMessages['zh-hans'];
-$wgLuceneSearchMessages['zh-cn'] = $wgLuceneSearchMessages['zh-hans'];
-$wgLuceneSearchMessages['zh-hk'] = $wgLuceneSearchMessages['zh-hant'];
-$wgLuceneSearchMessages['zh-min-nan'] = $wgLuceneSearchMessages['nan'];
-$wgLuceneSearchMessages['zh-sg'] = $wgLuceneSearchMessages['zh-hans'];
-$wgLuceneSearchMessages['zh-tw'] = $wgLuceneSearchMessages['zh-hant'];
-$wgLuceneSearchMessages['zh-yue'] = $wgLuceneSearchMessages['yue'];
+$messages['kk-kz'] = $messages['kk-cyrl'];
+$messages['kk-tr'] = $messages['kk-latn'];
+$messages['kk-cn'] = $messages['kk-arab'];
+$messages['kk'] = $messages['kk-cyrl'];
+$messages['sr'] = $messages['sr-ec'];
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-min-nan'] = $messages['nan'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-tw'] = $messages['zh-hant'];
+$messages['zh-yue'] = $messages['yue'];

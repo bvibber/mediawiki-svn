@@ -30,12 +30,6 @@ if (!defined('MEDIAWIKI')) {
 global $IP;
 require_once($IP.'/includes/SearchEngine.php');
 
-# Add messages
-global $wgMessageCache, $wgLuceneSearchMessages;
-foreach( $wgLuceneSearchMessages as $lang => $messages ) {
-	$wgMessageCache->addMessages( $messages, $lang );
-}
-
 class LuceneSearch extends SpecialPage
 {
 	var $namespaces;
@@ -88,6 +82,7 @@ class LuceneSearch extends SpecialPage
 			$wgUser;
 		global $wgGoToEdit;
 
+		wfLoadExtensionMessages( 'LuceneSearch' );
 		$fname = 'LuceneSearch::execute';
 		wfProfileIn( $fname );
 		$this->setHeaders();
@@ -291,11 +286,11 @@ class LuceneSearch extends SpecialPage
 	 * Replaces localized namespace prefixes with the standard ones
 	 * defined in lucene-search daemon global configuration
 	 *
-	 * Small parser that extracts prefixes (e.g. help from 'help:editing'), 
+	 * Small parser that extracts prefixes (e.g. help from 'help:editing'),
 	 * but ignores those that are within quotes (i.e. in a phrase). It
-	 * replaces those with prefixes defined in messages searchall (all keyword) 
+	 * replaces those with prefixes defined in messages searchall (all keyword)
 	 * and searchincategory (incategory keyword), and in wgLuceneSearchNSPrefixes.
-	 * 
+	 *
 	 *
 	 * @param query - search query
 	 * @access private
@@ -330,7 +325,7 @@ class LuceneSearch extends SpecialPage
 			$c = $query[$i];
 
 			// ignore chars in quotes
-			if($inquotes && $c!='"'); 
+			if($inquotes && $c!='"');
 			// check if $c is valid prefix character
 			else if(($c >= 'a' && $c <= 'z') ||
 				 ($c >= 'A' && $c <= 'Z') ||
@@ -339,9 +334,9 @@ class LuceneSearch extends SpecialPage
 					$start = $i; // begin of token
 					$len = 1;
 				} else
-					$len++;	
+					$len++;
 			// check for utf-8 chars
-			} else if(($c >= "\xc0" && $c <= "\xff")){ 
+			} else if(($c >= "\xc0" && $c <= "\xff")){
 				$utf8len = 1;
 				for($j = $i+1; $j < $qlen; $j++){ // fetch extra utf-8 bytes
 					if($query[$j] >= "\x80" && $query[$j] <= "\xbf")
@@ -357,12 +352,12 @@ class LuceneSearch extends SpecialPage
 				$i = $j - 1;  // we consumed the chars
 			// check for end of prefix (i.e. semicolon)
 			} else if($c == ':' && $len !=0){
-				$rewrite = array(); // here we collect namespaces 
+				$rewrite = array(); // here we collect namespaces
 				$prefixes = explode(',',substr($query,$start,$len));
 				// iterate thru comma-separated list of prefixes
 				foreach($prefixes as $prefix){
 					$index = $wgContLang->getNsIndex($prefix);
-					
+
 					// check for special prefixes all/incategory
 					if(in_array($prefix,$allkeywords)){
 						$rewrite = 'all';
@@ -376,7 +371,7 @@ class LuceneSearch extends SpecialPage
 					// check aliases
 					else if(isset($aliases[$prefix]))
 						$rewrite = array_merge($rewrite,$aliases[$prefix]);
-					
+
 				}
 				$translated = null;
 				if($rewrite === 'all' || $rewrite === 'incategory')
@@ -390,15 +385,15 @@ class LuceneSearch extends SpecialPage
 					$rewritten .= $translated . ':';
 					$rindex = $i+1;
 				}
-				
+
 				$len = 0;
 			} else{ // end of token
 				if($c == '"') // get in/out of quotes
 					$inquotes = !$inquotes;
-				
+
 				$len = 0;
 			}
-				
+
 		}
 		// add rest of the original query that doesn't need rewritting
 		$rewritten .= substr($query,$rindex,$qlen-$rindex);
@@ -434,7 +429,7 @@ class LuceneSearch extends SpecialPage
 		if( strlen( $query ) < 1 ) {
 			return;
 		}
-		
+
 		/// @fixme -- this is totally missing atm
 		return;
 
@@ -616,7 +611,7 @@ class LuceneSearch extends SpecialPage
 		return "<br /><br />\n<form id=\"powersearch\" method=\"get\" " .
 		"action=\"$action\">\n{$ret}\n</form>\n";
 	}
-	
+
 	function makeFocusJS() {
 		return "<script type='text/javascript'>" .
 			"document.getElementById('lsearchbox').focus();" .
@@ -776,7 +771,7 @@ class LuceneSearchSet {
 		// Cache results for fifteen minutes; they'll be read again
 		// on reloads and paging.
 		$key = wfMemcKey( 'lucene', $wgLuceneSearchVersion, md5( $searchPath ) );
-		
+
 		$resultSet = $wgMemc->get( $key );
 		if( is_object( $resultSet ) ) {
 			wfDebug( "$fname: got cached lucene results for key $key\n" );
@@ -799,14 +794,14 @@ class LuceneSearchSet {
 			$pick = ($pick + 1) % count( $hosts );
 			$host = $hosts[$pick];
 			$searchUrl = "http://$host:$wgLucenePort$searchPath";
-			
+
 			wfDebug( "Fetching search data from $searchUrl\n" );
 			wfSuppressWarnings();
 			wfProfileIn( $fname.'-contact-'.$host );
 			$data = wfGetHTTP( $searchUrl );
 			wfProfileOut( $fname.'-contact-'.$host );
 			wfRestoreWarnings();
-			
+
 			if( $data === false ) {
 				wfDebug( "Failed on $searchUrl!\n" );
 			}
