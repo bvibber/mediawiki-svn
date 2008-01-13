@@ -26,6 +26,8 @@ if (!defined('MEDIAWIKI'))
   exit(1);
 
 require_once("Auth/OpenID/Consumer.php");
+require_once("Auth/OpenID/SReg.php");
+require_once("Auth/Yadis/XRI.php");
 
 class SpecialOpenIDFinish extends SpecialOpenID {
 	
@@ -111,9 +113,10 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 				break;
 			 case Auth_OpenID_SUCCESS:
 				// This means the authentication succeeded.
-				$openid = $response->identity_url;
-				$sreg = $response->extensionResponse('sreg');
-
+				$openid = $response->getDisplayIdentifier();
+				$sreg_resp = Auth_OpenID_SRegResponse::fromSuccessResponse($response);
+				$sreg = $sreg_resp->contents();
+				
 				if (!isset($openid)) {
 					$wgOut->errorpage('openiderror', 'openiderrortext');
 					return;
@@ -395,11 +398,9 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 	}
 
 	function toUserName($openid) {
-        if (Services_Yadis_identifierScheme($openid) == 'XRI') {
-			wfDebug("OpenID: Handling an XRI: $openid\n");
+        if (Auth_Yadis_identifierScheme($openid) == 'XRI') {
 			return $this->toUserNameXri($openid);
 		} else {
-			wfDebug("OpenID: Handling an URL: $openid\n");
 			return $this->toUserNameUrl($openid);
 		}
 	}
