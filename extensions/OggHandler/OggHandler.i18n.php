@@ -352,7 +352,7 @@ $messages['frp'] = array(
 	'ogg-play'                => 'Liére',
 	'ogg-pause'               => 'Pousa',
 	'ogg-stop'                => 'Arrét',
-	'ogg-play-video'          => 'Liére lo vidèô',
+	'ogg-play-video'          => 'Liére la vidèô',
 	'ogg-play-sound'          => 'Liére lo son',
 	'ogg-no-player'           => 'Dèsolâ, voutron sistèmo at aparament pas yon des liésors sotegnus. Volyéd enstalar <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">yon des liésors sotegnus</a>.',
 	'ogg-no-xiphqt'           => 'Aparament vos avéd pas lo composent XiphQT por QuickTime. QuickTime pôt pas liére los fichiérs Ogg sen cél composent. Volyéd <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">tèlèchargiér XiphQT</a> ou ben chouèsir/cièrdre un ôtro liésor.',

@@ -82,6 +82,11 @@ $messages['kk'] = array(
 	'minnamelength-error' => 'Қатысушы атыңыз тым қысқа.Ең кемінде ұзындығы $1 болуы қажет.',
 );
 
+/* Kazakh Arabic */
+$messages['kk-cn'] = array(
+	'minnamelength-error' => 'قاتىسۋشى اتىڭىز تىم قىسقا.ەڭ كەمٴىندە ۇزىندىعى $1 بولۋى قاجەت.',
+);
+
 /* Kazakh Cyrillic */
 $messages['kk-kz'] = array(
 	'minnamelength-error' => 'Қатысушы атыңыз тым қысқа.Ең кемінде ұзындығы $1 болуы қажет.',
@@ -90,11 +95,6 @@ $messages['kk-kz'] = array(
 /* Kazakh Latin */
 $messages['kk-tr'] = array(
 	'minnamelength-error' => 'Qatıswşı atıñız tım qısqa.Eñ keminde uzındığı $1 bolwı qajet.',
-);
-
-/* Kazakh Arabic */
-$messages['kk-cn'] = array(
-	'minnamelength-error' => 'قاتىسۋشى اتىڭىز تىم قىسقا.ەڭ كەمٴىندە ۇزىندىعى $1 بولۋى قاجەت.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -124,6 +124,13 @@ $messages['pl'] = array(
 /* Piedmontese (Bèrto 'd Sèra) */
 $messages['pms'] = array(
 	'minnamelength-error' => 'Sò stranòm a l\'é tròp curt. A venta ch\'al sia longh almanch $1 caràter.',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'minnamelength-error' => 'Ваше имя участника слишком коротко. Минимальная длина — $1.',
 );
 
 $messages['sk'] = array(

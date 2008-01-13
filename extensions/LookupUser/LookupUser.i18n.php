@@ -169,6 +169,23 @@ $messages['oc'] = array(
 	'lookupuser_useroptions'       => "Opcions de l'utilizaire :",
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'lookupuser'                   => 'Vyhľadať informácie o používateľovi',
+	'lookupuser_intro'             => 'Zadajte používateľské meno, ktorého nastavenia chcete zobraziť.',
+	'lookupuser_nonexistent'       => 'Chyba: Používateľ neexistuje',
+	'lookupuser_authenticated'     => 'Overenie emailu: $1',
+	'lookupuser_not_authenticated' => 'neoverený',
+	'lookupuser_id'                => 'ID používateľa: <tt>#$1</tt>',
+	'lookupuser_email'             => 'Email: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'          => 'Skutočné meno: $1',
+	'lookupuser_registration'      => 'Dátum registrácie: $1',
+	'lookupuser_touched'           => 'Posledný záznam používateľa: $1',
+	'lookupuser_useroptions'       => 'Nastavenia používateľa:',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -192,3 +209,4 @@ $messages['stq'] = array(
 $messages['vo'] = array(
 	'lookupuser_realname' => 'Nem jenöfik: $1',
 );
+

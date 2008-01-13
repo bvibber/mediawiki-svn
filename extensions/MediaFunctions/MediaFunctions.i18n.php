@@ -101,6 +101,14 @@ $messages['ru'] = array(
 	'mediafunctions-not-exist'     => '«$1» не существует',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'mediafunctions-invalid-title' => '„$1“ nie je platný názov',
+	'mediafunctions-not-exist'     => '„$1“ neexistuje',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -135,6 +143,6 @@ $messages['zh-hant'] = array(
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];
 $messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-tw'] = $messages['zh-hans'];
 $messages['zh-sg'] = $messages['zh-hant'];
+$messages['zh-tw'] = $messages['zh-hans'];
 $messages['zh-yue'] = $messages['yue'];

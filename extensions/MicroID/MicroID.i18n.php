@@ -53,9 +53,24 @@ $messages['oc'] = array(
 	'tog-microid' => 'Publicar un <a href="http://microid.org/">MicroID</a> en vista de confirmar vòstra identitat alprèp de servicis extèrnes',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'tog-microid' => 'Опубликуйте <a href="http://microid.org/">MicroID</a>, чтобы подтвердить учётную запись с внешними службами',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'tog-microid' => 'Zverejniť <a href="http://microid.org/">MicroID</a> na potvrdenie účtu pre externé služby',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
 $messages['stq'] = array(
 	'tog-microid' => 'Fereepentelkje ne <a href="http://microid.org/">MicroID</a>, uum dät Benutserkonto truch n externen Service tou bestäätigjen.',
 );
+

@@ -274,3 +274,36 @@ $messages['oc'] = array(
 	'povwatch_added'                   => 'ajustat',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'povwatch'                         => 'PovWatch',
+	'povwatch_no_session'              => 'Error: nebolo možné odoslať formulár kvôli strate údajov prihlasovacej relácie.',
+	'povwatch_not_allowed_push'        => 'Nie ste správca PovWatch, nemôžete pridávať stránky na zoznamy sledovaných stránok.',
+	'povwatch_already_subscribed'      => 'Už ste sa prihlásili na odber PovWatch',
+	'povwatch_subscribed'              => 'Teraz ste sa prihlásili na odber PovWatch',
+	'povwatch_not_subscribed'          => 'Nie ste prihlásený na odber PovWatch, takže ho nemôžete odhlásiť.',
+	'povwatch_unsubscribed'            => 'Teraz ste sa odhlásili z odberu PovWatch',
+	'povwatch_invalid_title'           => 'Zadaný názov bol neplatný',
+	'povwatch_pushed'                  => '[[$1]] bolo úspešne pridané na {{PLURAL:$1|zoznam sledovaných stránok jedného používateľa|zoznamy sledovaných stránok $1 používateľov}}',
+	'povwatch_intro'                   => 'PovWatch je služba, ktorá umožňuje diskrétne pridávať obsažné stránky na zoznamy sledovaných stránok správcov, ktorí si to objednali.
+
+Záznam posledných zoznamov sledovaných stránok sa nachádza na [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list'         => 'Je dostupný [[Special:PovWatch/subscribers|zoznam odoberateľov]].',
+	'povwatch_subscriber_list_intro'   => '<strong>Zoznam odoberateľov</strong>',
+	'povwatch_not_allowed_subscribers' => 'Nemáte oprávnenie prehliadať zoznam odoberateľov PovWatch.',
+	'povwatch_unknown_subpage'         => 'Neznáma podstránka.',
+	'povwatch_push'                    => 'Pridať',
+	'povwatch_push_intro'              => 'Použite tento formulár na pridanie stránok na zoznamy sledovaných stránok používateľov, ktorí ich odoberajú. Prosím, buďte pozorní pri písaní názvu stránky, je možné pridať aj názvy neexistujúcich stránok a neexistuje spôsob ako ich odstrániť, keď raz boli pridané.',
+	'povwatch_title'                   => 'Názov:',
+	'povwatch_comment'                 => 'Komentár v zázname:',
+	'povwatch_no_log'                  => 'Neexistujú žiadne položky záznamu.',
+	'povwatch_no_subscribers'          => 'Neexistujú žiadni odoberatelia.',
+	'povwatch_unsubscribe_intro'       => 'Prihlásili ste sa na odber PovWatch. Odhlásiť odber môžete kliknutím na tlačidlo dolu.',
+	'povwatch_unsubscribe'             => 'Odhlásiť odber',
+	'povwatch_subscribe_intro'         => 'Nie ste prihlásený na odber PovWatch. Prihlásiť odber môžete kliknutím na tlačidlo dolu.',
+	'povwatch_subscribe'               => 'Prihlásiť odber',
+	'povwatch_added'                   => 'pridaný',
+);
+

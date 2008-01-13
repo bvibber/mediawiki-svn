@@ -71,16 +71,16 @@ $messages['ja'] = array(
 	'donationform-submit' => 'PayPal を通じて寄付する',
 );
 
+$messages['kk-arab'] = array(
+	'donationform-submit' => 'جٵردەمدٸ PayPal جٷيەسٸمەن جٸبەرۋ',
+);
+
 $messages['kk-cyrl'] = array(
 	'donationform-submit' => 'Жәрдемді PayPal жүйесімен жіберу',
 );
 
 $messages['kk-latn'] = array(
 	'donationform-submit' => 'Järdemdi PayPal jüýesimen jiberw',
-);
-
-$messages['kk-arab'] = array(
-	'donationform-submit' => 'جٵردەمدٸ PayPal جٷيەسٸمەن جٸبەرۋ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -117,6 +117,13 @@ $messages['pms'] = array(
 
 $messages['pt'] = array(
 	'donationform-submit' => 'Doe pelo PayPal',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'donationform-submit' => 'Пожертвовать через PayPal',
 );
 
 /** Sassarese (Sassarese)
@@ -157,11 +164,11 @@ $messages['zh-hant'] = array(
 	'donationform-submit' => '經PayPal捐款',
 );
 
-$messages['sr'] = $messages['sr-ec'];
+$messages['kk'] = $messages['kk-cyrl'];
+$messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
 $messages['kk-tr'] = $messages['kk-latn'];
-$messages['kk-cn'] = $messages['kk-arab'];
-$messages['kk'] = $messages['kk-cyrl'];
+$messages['sr'] = $messages['sr-ec'];
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];
 $messages['zh-hk'] = $messages['zh-hant'];

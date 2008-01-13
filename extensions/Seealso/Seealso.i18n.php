@@ -84,6 +84,13 @@ $messages['nl'] = array(
 	'seealso' => 'Zie ook',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'seealso' => 'Pozri aj',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -97,3 +104,4 @@ $messages['stq'] = array(
 $messages['sv'] = array(
 	'seealso' => 'Se även',
 );
+

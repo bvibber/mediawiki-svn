@@ -267,6 +267,32 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 	'oversight-header' => 'Ci-dessous, figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges d’Oversight.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'hiderevision'                => 'Cachiér por de bon les vèrsions',
+	'hiderevision-prompt'         => 'Numerô de vèrsion a suprimar :',
+	'hiderevision-continue'       => 'Continuar',
+	'hiderevision-reason'         => 'Rêson (serat enregistrâ sèparament) :',
+	'hiderevision-submit'         => 'Cachiér ceta balyê de maniére durâbla',
+	'hiderevision-tab'            => 'Cachiér la vèrsion',
+	'hiderevision-norevisions'    => 'Niona vèrsion endicâ a suprimar.',
+	'hiderevision-noreason'       => 'Vos dête endicar la rêson prècisa de ceta suprèssion.',
+	'hiderevision-status'         => 'Vèrsion $1 : $2',
+	'hiderevision-success'        => 'Arch·ivâ et suprimâ avouéc reusséta.',
+	'hiderevision-error-missing'  => 'Pas trovâ dens la bâsa de balyês.',
+	'hiderevision-error-current'  => 'Pôt pas suprimar la dèrriére vèrsion dens una pâge. Féte una anulacion d’èdicion dês devant.',
+	'hiderevision-error-delete'   => 'Pôt pas étre arch·ivâ ; la pâge arêt-el étâ suprimâ ?',
+	'hiderevision-archive-status' => 'Vèrsion suprimâ de $1 : $2',
+	'oversight-log-hiderev'       => 'at suprimâ una èdicion de $1',
+	'oversight'                   => 'Survelyér',
+	'oversight-view'              => 'dètalys',
+	'oversight-difference'        => '(Difèrence per rapôrt a la vèrsion prècèdenta)',
+	'oversight-prev'              => 'Dèrriére vèrsion prècèdenta',
+	'oversight-hidden'            => 'Vèrsion cachiê',
+);
+
 $messages['gl'] = array(
 	'hiderevision' => 'Agochar revisións permanentemente',
 	'hiderevision-prompt' => 'Número de revisión a eliminar:',

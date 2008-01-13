@@ -133,6 +133,15 @@ $messages['ru'] = array(
 	'msfunc_div_zero' => 'Деление на ноль',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'msfunc_nan'      => 'Výsledná hodnota nie je číslo',
+	'msfunc_inf'      => 'Výsledná hodnota je nekonečno',
+	'msfunc_div_zero' => 'Delenie nulou',
+);
+
 $messages['sr-ec'] = array(
         'msfunc_nan' => "Резултат није број" ,
         'msfunc_inf' => "Резултат је бесконачан" ,

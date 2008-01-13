@@ -404,6 +404,16 @@ $messages['pt'] = array(
 	'newuserlog-create2-entry' => 'criou conta para $1',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'newuserlogpage'           => "Rakiquna kamariy hallch'a",
+	'newuserlogpagetext'       => "Kayqa ruraqkunap rakiqunankunata kamariymanta hallch'am",
+	'newuserlog-create-entry'  => 'Musuq ruraq',
+	'newuserlog-create2-entry' => 'kamarin $1-paq rakiqunata',
+);
+
 $messages['ro'] = array(
 	'newuserlogpage'           => 'Jurnal utilizatori noi',
 	'newuserlog-create-entry'  => 'Utilizator nou',

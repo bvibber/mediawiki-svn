@@ -155,8 +155,14 @@ $messages['et'] = array(
 	'sitematrix-language' => 'Keel',
 );
 
+/** Extremaduran (Estremeñu)
+ * @author Better
+ */
 $messages['ext'] = array(
+	'sitematrix'          => 'Lista e güiquis de Wikimedia',
 	'sitematrix-language' => 'Palra',
+	'sitematrix-project'  => 'Nombri el proyeutu, atihu entriproyeutu i atihu entrigüiqui',
+	'sitematrix-others'   => 'Otrus proyeutus de Wikimedia',
 );
 
 # فارسی (Huji)
