@@ -282,8 +282,29 @@ See on tõenäoliselt ainult ajutine;
 proovige mõne hetke pärast uuesti või otsige välise teenuse abil:',
 );
 
+/** Extremaduran (Estremeñu)
+ * @author Better
+ */
 $messages['ext'] = array(
+	'searchnumber'          => '<strong>Resurtaus $1-$2 de $3</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Anter</span>",
+	'searchnext'            => "<span style='font-size: small'>Siguienti</span> &#x00BB;",
+	'lucene-searchscore'    => 'Emportáncia: $1%',
+	'lucene-resultsize'     => '$1 ($2 parabras)',
+	'searchdidyoumean'      => 'Igual as queriu izil: "<a href="$1">$2</a>"?',
+	'searchnoresults'       => "Nu imus alcuentrau dengún resurtau pal landeu qu'as solicitau.",
+	'searchnearmatches'     => '<b>Las siguientis páhinas tienin entítulus idénticus al tu landeu:</b>',
+	'lucenepowersearchtext' => "Landeal n'espaciu e nombris:
+
+$1
+
+Landeal $3 $9 $10",
+	'lucenefallback'        => 'Desisti un pobrema con el landeru güiqui.
+Siguramenti es temporal; preba e nuevu endrentu un ratu,
+u pueis landeal nel güiqui a través dun landeru esternu:',
+	'searchexactcase'       => 'Landeu desatu',
 	'searchall'             => 'tó',
+	'searchincategory'      => 'encategoria',
 );
 
 # فارسی (Huji)
@@ -597,6 +618,29 @@ $1
 İzlew sorawı: $3 $9 $10',
 );
 
+$messages['kk-arab'] = array(
+	'searchnumber'          => "<strong>$3 ٸشٸندەگٸ $1—$2 نٵتيجە</strong>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>الدىڭعىعا</span>",
+	'searchnext'            => "<span style='font-size: small'>كەلەسٸگە</span> &#x00BB;",
+	'lucene-searchscore'    => "سٵيكەستٸگٸ: $1 ٪",
+	'lucene-resultsize'     => "$1 ($2 سٶز)",
+	'searchdidyoumean'      => "مىناۋ دەپ ەسەپكە الدىڭىز با: «<a href=\"$1\">$2</a>»؟",
+	'searchnoresults'       => "عافۋ ەتٸڭٸز, سۇرانىمىنىزعا ناقتى سٵيكەسٸ بار ەش نٵتيجە تابىلمادى.",
+	'searchnearmatches'     => "<b>مىنا بەت اتاۋلارىندا سۇرانىمىڭىزعا ۇقساستىعى بار:</b>\n",
+	'searchnearmatch'       => "<li>$1</li><br />",
+	'lucenepowersearchtext' => "مىنا ەسٸم ايالاردا ٸزدەۋ:
+
+$1
+
+ٸزدەستٸرۋ سۇرانىسى: $3 $9 $10",
+	'lucenefallback'        => "مىندا «ۋيكي ٸزدەۋ» دەگەندٸ پايدالانعاندا شاتاق شىقتى.
+بٵلكٸم, بۇل ۋاقىتشا كەدەرگٸ بولدى; بٸرشاما سٵتتەن سوڭ قايتالاڭىز,
+نەمەسە وسى ۋيكيدەن ٸزدەۋ ٷشٸن سىرتقى قىزمەتتەرٸن قولدانىڭىز:<br />",
+	'searchexactcase'       => 'باس-كٸشٸ ٵرٸپٸن ەسكەرۋ',
+	'searchall'             => 'بارلىعىندا',
+	'searchincategory'      => 'ساناتتا',
+);
+
 $messages['kk-cyrl'] = array(
 	'searchnumber'          => "<strong>$3 ішіндегі $1—$2 нәтиже</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Алдыңғыға</span>",
@@ -640,29 +684,6 @@ nemese osı wïkïden izdew üşin sırtqı qızmetterin qoldanıñız:<br />",
 	'searchexactcase'       => 'Bas-kişi äripin eskerw',
 	'searchall'             => 'barlığında',
 	'searchincategory'      => 'sanatta',
-);
-
-$messages['kk-arab'] = array(
-	'searchnumber'          => "<strong>$3 ٸشٸندەگٸ $1—$2 نٵتيجە</strong>",
-	'searchprev'            => "&#x00AB; <span style='font-size: small'>الدىڭعىعا</span>",
-	'searchnext'            => "<span style='font-size: small'>كەلەسٸگە</span> &#x00BB;",
-	'lucene-searchscore'    => "سٵيكەستٸگٸ: $1 ٪",
-	'lucene-resultsize'     => "$1 ($2 سٶز)",
-	'searchdidyoumean'      => "مىناۋ دەپ ەسەپكە الدىڭىز با: «<a href=\"$1\">$2</a>»؟",
-	'searchnoresults'       => "عافۋ ەتٸڭٸز, سۇرانىمىنىزعا ناقتى سٵيكەسٸ بار ەش نٵتيجە تابىلمادى.",
-	'searchnearmatches'     => "<b>مىنا بەت اتاۋلارىندا سۇرانىمىڭىزعا ۇقساستىعى بار:</b>\n",
-	'searchnearmatch'       => "<li>$1</li><br />",
-	'lucenepowersearchtext' => "مىنا ەسٸم ايالاردا ٸزدەۋ:
-
-$1
-
-ٸزدەستٸرۋ سۇرانىسى: $3 $9 $10",
-	'lucenefallback'        => "مىندا «ۋيكي ٸزدەۋ» دەگەندٸ پايدالانعاندا شاتاق شىقتى.
-بٵلكٸم, بۇل ۋاقىتشا كەدەرگٸ بولدى; بٸرشاما سٵتتەن سوڭ قايتالاڭىز,
-نەمەسە وسى ۋيكيدەن ٸزدەۋ ٷشٸن سىرتقى قىزمەتتەرٸن قولدانىڭىز:<br />",
-	'searchexactcase'       => 'باس-كٸشٸ ٵرٸپٸن ەسكەرۋ',
-	'searchall'             => 'بارلىعىندا',
-	'searchincategory'      => 'ساناتتا',
 );
 
 $messages['la'] = array(
@@ -924,6 +945,27 @@ ou procure por conteúdos neste wiki através de um mecanismo externo:',
 	'searchexactcase'       => 'Pesquisar esta grafia exata',
 	'searchall'             => 'tudo',
 	'searchincategory'      => 'na categoria',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'searchnumber'          => '<strong>Tarisqakuna: $1-manta $2-kama, tukuy $3-nintin</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Ñawpaq</span>",
+	'searchnext'            => "<span style='font-size: small'>Qatiq</span> &#x00BB;",
+	'lucene-searchscore'    => 'Ima chaniyuq: $1%',
+	'lucene-resultsize'     => '$1 ($2 rimakuna)',
+	'searchdidyoumean'      => 'Kayta niyta munankichu: "<a href="$1">$2</a>"?',
+	'searchnoresults'       => 'Manam ima nisqayki hinalla tarisqachu.',
+	'searchnearmatches'     => "<b>Kay p'anqakunam nisqayki hina kaqlla sutiyuq:</b>",
+	'lucenepowersearchtext' => "Kay suti k'itikunapi maskay:
+
+$1
+
+Maskay: $3 $9 $10",
+	'searchall'             => 'tukuy',
+	'searchincategory'      => 'katiguriyapi',
 );
 
 /** Russian (Русский)
@@ -1198,10 +1240,10 @@ $1
 	'searchincategory'      => '在分類中'
 );
 
+$messages['kk'] = $messages['kk-cyrl'];
+$messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
 $messages['kk-tr'] = $messages['kk-latn'];
-$messages['kk-cn'] = $messages['kk-arab'];
-$messages['kk'] = $messages['kk-cyrl'];
 $messages['sr'] = $messages['sr-ec'];
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];
