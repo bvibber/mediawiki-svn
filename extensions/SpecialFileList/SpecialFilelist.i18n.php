@@ -86,6 +86,15 @@ $messages['no'] = array(
 	'filelist-show-gallery' => 'Vis gallery',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'filelist'              => 'Zoznam súborov',
+	'filelist-show-list'    => 'Zobraziť zoznam',
+	'filelist-show-gallery' => 'Zobraziť galériu',
+);
+
 /** ћирилица (ћирилица)
  * @author Sasa Stefanovic
  */

@@ -397,6 +397,7 @@ function efPatrollerMessages() {
 
 /** Russian (Русский)
  * @author Illusion
+ * @author .:Ajvol:.
  */
 'ru' => array(
 	'patrol'                 => 'Патрулирование',
@@ -413,7 +414,7 @@ function efPatrollerMessages() {
 	'patrol-another'         => 'Вывести ещё одну правку, если имеется.',
 	'group-patroller'        => 'Патрулирующие',
 	'group-patroller-member' => 'патрулирующий',
-	'grouppage-patroller'    => '{{ns:project}}:Патрулирующие',
+	'grouppage-patroller'    => '{{ns:project}}:Патрулирование',
 ),
 
 /* Slovak (helix84) */

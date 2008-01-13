@@ -81,6 +81,14 @@ $messages['oc'] = array(
 	'stalepages-summary' => 'Aquò es una lista de paginas que son pas estadas modificadas dempuèi {{plural:$1|$1 jorn|$1 jorns}}.',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'stalepages'         => 'Neaktívne stránky',
+	'stalepages-summary' => 'Toto je zoznam stránok, ktoré neboli upravované aspoň $1 dní.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

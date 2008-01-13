@@ -159,6 +159,24 @@ $3',
 	'latexdoc_get_pdf'         => 'Obţine PDF',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'latexdoc_no_text'         => 'Stránka neobsahuje žiadny text, nie je možné vytvoriť DVI',
+	'latexdoc_cant_create_dir' => 'Nie je možné vytvoriť dočasný adresár $1',
+	'latexdoc_cant_write'      => 'Nie je možné zapísať do súboru $1',
+	'latexdoc_error'           => 'Chyba LaTeXu
+
+Príkaz: $1
+
+Výstup: $2
+
+$3',
+	'latexdoc_get_dvi'         => 'Stiahnuť DVI',
+	'latexdoc_get_pdf'         => 'Stiahnuť PDF',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */
@@ -166,3 +184,4 @@ $messages['vo'] = array(
 	'latexdoc_get_dvi' => 'Dagetön DVI-i',
 	'latexdoc_get_pdf' => 'Dagetön PDF-i',
 );
+

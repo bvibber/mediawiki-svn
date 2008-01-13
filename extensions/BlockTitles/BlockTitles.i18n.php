@@ -40,6 +40,14 @@ $messages['bg'] = array(
 	'block_title_error'            => 'Заглавието на тази страница е блокирано. Това не позволява страницата да бъде създадена.',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'block_title_error_page_title' => 'নিষিদ্ধ শিরোনাম',
+	'block_title_error'            => 'দুঃখিত, এই শিরোনামে পাতাটি সংরক্ষণ করার অনুমোদন নাই।',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -317,10 +325,9 @@ $messages['zh-hant'] = array(
 );
 
 $messages['kk'] = $messages['kk-cyrl'];
+$messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
 $messages['kk-tr'] = $messages['kk-latn'];
-$messages['kk-cn'] = $messages['kk-arab'];
-
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];
 $messages['zh-hk'] = $messages['zh-hant'];

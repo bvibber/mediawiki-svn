@@ -293,13 +293,19 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Zaheen
  */
 $messages['bn'] = array(
-	'boardvote'              => 'উইকিমিডিয়া বোর্ড অফ ট্রাটিজ-এর নির্বাচন',
+	'boardvote'              => 'উইকিমিডিয়া বোর্ড অফ ট্রাস্টিজ-এর নির্বাচন',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|ভোট দিন]]
 * [[Special:Boardvote/list|এ পর্যন্ত দেওয়া ভোটের তালিকা]]
 * [[Special:Boardvote/dump|গুপ্তায়িত নির্বাচন রেকর্ড ডাম্প করা হোক]]',
+	'boardvote_time'         => 'সময়',
+	'boardvote_user'         => 'ব্যবহারকারী',
+	'boardvote_edits'        => 'সম্পাদনাসমূহ',
+	'boardvote_days'         => 'দিন',
+	'boardvote_ip'           => 'আইপি',
 	'group-boardvote'        => 'বোর্ড নির্বাচন প্রশাসকগণ',
 	'group-boardvote-member' => 'বোর্ড নির্বাচন প্রশাসক',
 	'grouppage-boardvote'    => '{{ns:project}}:বোর্ড নির্বাচন প্রশাসকগণ',
@@ -1655,21 +1661,31 @@ $messages['li'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Stöm]]
 * [[Special:Boardvote/list|Oetgebrachdje stömme toeane]]
 * [[Special:Boardvote/dump|Dump geëncrypdje verkezingsopname]]',
+	'boardvote_intro_change' => "<p>Geer höb al gestömp. Geer kintj uche stöm verangere via 't óngersäöndje formeleer. Vink estebleef de vekskes nao edere kanditaat daet geer steuntj aan.</p>",
+	'boardvote_nosession'    => "Uch Wikimedia-gebroekersnómmer kin neet bepaoldj waere. Meldj geer uch aan in de wiki wo geer volduit aan de eise en gao nao <nowiki>[[Special:Boardvote]]</nowiki>. Gebroek 'ne gebroeker mit teminste $1 biedraag veur $2 en mit uche ieëste bewèrking veur $3.",
+	'boardvote_notloggedin'  => 'Geer bönt neet aangemeldj. Geer kintj stömmes es geer uvh veur $2 teminste $1 bewèrkinge höb gemaakt en uche ieëste bewèrking mót veur $3 gemaak zeen.',
+	'boardvote_notqualified' => 'Geer kintj neet stömme in dees verkezing. Geer mót $3 bewèrkinge gemaak höbbe veur $2 en uche ieëste bewèrking mót veur $5 gemaak zeen.',
+	'boardvote_novotes'      => "D'r is door nag nemes gestömp.",
 	'boardvote_time'         => 'Tied',
 	'boardvote_user'         => 'Gebroeker',
 	'boardvote_edits'        => 'Bewerkinge',
 	'boardvote_days'         => 'Daag',
 	'boardvote_ip'           => 'IP-adres',
 	'boardvote_ua'           => 'User-agent',
+	'boardvote_listintro'    => '<p>Hiej ónger staon alle stömme die toet noe toe zeen oetgebrach. $1 veur de versleuteldje gegaeves.</p>',
 	'boardvote_dumplink'     => 'Klik hiej',
 	'boardvote_submit'       => 'ok',
 	'boardvote_strike'       => 'Óngeljig',
 	'boardvote_unstrike'     => 'Geljig',
+	'boardvote_needadmin'    => 'Allein lede van de Verkezingscommisie kinne dees hanjeling oetveure.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Wikimedia Bestuursverkeziginge</a>:<!--  Vote open until July 12 -->',
 	'boardvote_notstarted'   => "'t Stömme is nag neet begós",
+	'boardvote_closed'       => 'De stömming is noe geslaote. zee saon [http://meta.wikimedia.org/wiki/Board_elections de verkezingspazjena veur de rezultaote].',
 	'boardvote_edits_many'   => 'väöl',
 	'group-boardvote'        => 'Boardvote-administrators',
 	'group-boardvote-member' => 'Boardvote-administrator',
 	'grouppage-boardvote'    => '{{ns:project}}:Boardvote-administrator',
+	'boardvote_blocked'      => 'Sorry, doe bös geblokkeerd op uche geregistreerde wiki. Geblokkeerde gebroekers moge neet stömme.',
 	'boardvote_welcome'      => "Wèlkom, '''$1'''!",
 	'go_to_board_vote'       => 'Wikimedia Bestuursverkezing 2007',
 );

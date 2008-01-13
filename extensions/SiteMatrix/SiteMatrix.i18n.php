@@ -455,7 +455,7 @@ $messages['ro'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
-	'sitematrix'          => 'Проекты Викимедиа',
+	'sitematrix'          => 'Список проектов Викимедиа',
 	'sitematrix-language' => 'Язык',
 	'sitematrix-project'  => 'Имя проекта, межпроектная ссылка и интервики',
 	'sitematrix-others'   => 'Другие проекты «Фонда Викимедиа»',

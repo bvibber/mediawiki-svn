@@ -79,6 +79,26 @@ $messages['nn'] = array(
 	'purgecache-button'  => 'Slett mellomlagring',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'purgecache'         => 'Czyść pamięć podręczną',
+	'purgecache-warning' => 'To polecenie spowoduje wyczyszczenie tablic pamięci podręcznej.',
+	'purgecache-purged'  => 'Pamięć podręczna została wyczyszczona.',
+	'purgecache-button'  => 'Czyść',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'purgecache'         => 'Очистить кэш',
+	'purgecache-warning' => 'Будет произведена очистка кэш-таблиц.',
+	'purgecache-purged'  => 'Кэш был очищен.',
+	'purgecache-button'  => 'Очистить',
+);
+
 /** ћирилица (ћирилица)
  * @author Sasa Stefanovic
  */

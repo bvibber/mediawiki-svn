@@ -815,32 +815,36 @@ $messages['oc'] = array(
 	'ogg-desc-link'           => "A prepaus d'aqueste fichièr",
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
-	'ogg-short-audio' => 'Plik dźwiękowy Ogg $1, $2',
-	'ogg-short-video' => 'Plik wideo Ogg $1, $2',
-	'ogg-short-general' => 'Plik multimedialny Ogg $1, $2',
-	'ogg-long-audio' => '(Plik dźwiękowy Ogg $1, długość $2, $3)',
-	'ogg-long-video' => '(Plik wideo Ogg $1, długość $2, $4×$5 pikseli, $3)',
-	'ogg-long-multiplexed' => '(Plik audio/wideo Ogg, $1, długość $2, $4×$5 pikseli, ogółem $3)',
-	'ogg-long-general' => '(Plik multimedialny Ogg, długość $2, $3)',
-	'ogg-long-error' => '(Niepoprawny plik Ogg: $1)',
-	'ogg-play' => 'Odtwórz',
-	'ogg-pause' => 'Pauza',
-	'ogg-stop' => 'Stop',#identical but defined
-	'ogg-play-video' => 'Odtwórz wideo',
-	'ogg-play-sound' => 'Odtwórz dźwięk',
-	'ogg-no-player' => 'Przykro nam, twój system zdaje się nie mieć żadnego obsługiwanego programu do odtwarzania. Prosimy o <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/pl">ściągnięcie odtwarzacza</a>.',
-	'ogg-no-xiphqt' => 'Zdaje się, że nie masz komponentu XiphQT dla programu QuickTime. QuickTime nie może odtwarzać plików Ogg bez tego komponentu. Prosimy <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/pl">ściągnąć XiphQT</a> lub wybrać inny odtwarzacz.',
+	'ogg-short-audio'         => 'Plik dźwiękowy Ogg $1, $2',
+	'ogg-short-video'         => 'Plik wideo Ogg $1, $2',
+	'ogg-short-general'       => 'Plik multimedialny Ogg $1, $2',
+	'ogg-long-audio'          => '(Plik dźwiękowy Ogg $1, długość $2, $3)',
+	'ogg-long-video'          => '(Plik wideo Ogg $1, długość $2, rozdzielczość $4×$5, $3)',
+	'ogg-long-multiplexed'    => '(Plik audio/wideo Ogg, $1, długość $2, rozdzielczość $4×$5, ogółem $3)',
+	'ogg-long-general'        => '(Plik multimedialny Ogg, długość $2, $3)',
+	'ogg-long-error'          => '(Niepoprawny plik Ogg: $1)',
+	'ogg-play'                => 'Odtwórz',
+	'ogg-pause'               => 'Pauza',
+	'ogg-stop'                => 'Stop',
+	'ogg-play-video'          => 'Odtwórz wideo',
+	'ogg-play-sound'          => 'Odtwórz dźwięk',
+	'ogg-no-player'           => 'Twój system nie ma żadnego programu do obsługi odtwarzania. Prosimy o <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/pl">pobranie i zainstalowanie odtwarzacza</a>.',
+	'ogg-no-xiphqt'           => 'Brak komponentu XiphQT dla programu QuickTime. QuickTime nie może odtwarzać plików Ogg bez tego komponentu. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/pl">Pobierz XiphQT</a> lub użyj innego odtwarzacza.',
 	'ogg-player-videoElement' => 'element <video>',
-	'ogg-player-oggPlugin' => 'wtyczka Ogg',
-	'ogg-player-thumbnail' => 'Tylko nieruchomy obraz',
-	'ogg-player-soundthumb' => 'Bez odtwarzacza',
-	'ogg-player-selected' => '(wybrany)',
-	'ogg-use-player' => 'Użyj odtwarzacza:',
-	'ogg-more' => 'Więcej...',
-	'ogg-dismiss' => 'Zamknij',
-	'ogg-download' => 'Ściągnij plik',
-	'ogg-desc-link' => 'O tym pliku',
+	'ogg-player-oggPlugin'    => 'wtyczka Ogg',
+	'ogg-player-thumbnail'    => 'Tylko nieruchomy obraz',
+	'ogg-player-soundthumb'   => 'Brak odtwarzacza',
+	'ogg-player-selected'     => '(wybrany)',
+	'ogg-use-player'          => 'Użyj odtwarzacza:',
+	'ogg-more'                => 'Więcej...',
+	'ogg-dismiss'             => 'Zamknij',
+	'ogg-download'            => 'Pobierz plik',
+	'ogg-desc-link'           => 'Właściwości pliku',
 );
 
 $messages['pms'] = array(

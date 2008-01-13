@@ -321,6 +321,16 @@ $messages['lb'] = array(
 	'newuserlog-create2-entry' => "Benotzerkonto fir den/d' $1 gemaach",
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'newuserlogpage'           => 'Logbook nuuj gebroekers',
+	'newuserlogpagetext'       => 'Hiej ónger saton de nuuj ingesjreve gebroekers',
+	'newuserlog-create-entry'  => "is 'ne nuje gebroeker",
+	'newuserlog-create2-entry' => 'haet de gebroeker [[user:$1|$1]] aangemaak',
+);
+
 $messages['lo'] = array(
 	'newuserlogpage'           => 'ບັນທຶກການສ້າງບັນຊີຜູ້ໃຊ້',
 	'newuserlogpagetext'       => 'ນີ້ແມ່ນ ບັນທຶກການສ້າງ ບັນຊີຜູ້ໃຊ້ໃໝ່',

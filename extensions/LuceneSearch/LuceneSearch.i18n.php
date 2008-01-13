@@ -697,7 +697,12 @@ Dir kënnt awer och déi extern Sichméiglichkeete benotzen:',
  * @author Ooswesthoesbes
  */
 $wgLuceneSearchMessages['li'] = array(
-	'searchall' => 'alle',
+	'lucene-searchscore' => 'Relevantie: $1%',
+	'lucene-resultsize'  => '$1 ($2 wäörd)',
+	'searchdidyoumean'   => 'Bedoeldese: "<a href="$1">$2</a>"?',
+	'searchexactcase'    => 'Huidlèttergeveulig zeuke',
+	'searchall'          => 'alle',
+	'searchincategory'   => 'in categorie',
 );
 
 $wgLuceneSearchMessages['lo'] = array(
@@ -840,13 +845,17 @@ $wgLuceneSearchMessages['oc'] = array(
 	'searchincategory'      => 'Cercar dins las categorias',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Sp5uhe
+ */
 $wgLuceneSearchMessages['pl'] = array(
 	'searchnumber'          => '<strong>Wyniki $1-$2 z $3</strong>',
-	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Poprzednia</span>',
-	'searchnext'            => '<span style=\'font-size: small\'>Następna</span> &#x00BB;',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Poprzednia</span>",
+	'searchnext'            => "<span style='font-size: small'>Następna</span> &#x00BB;",
 	'lucene-searchscore'    => 'Trafność: $1%',
 	'lucene-resultsize'     => '$1 ($2 słów)',
-	'searchdidyoumean'      => 'Może chodziło Ci o "<a href="1">$2</a>"?',
+	'searchdidyoumean'      => 'Czy chodziło Ci o "<a href="1">$2</a>"?',
 	'searchnoresults'       => 'Niestety nie znaleziono stron pasujących do podanych kryteriów wyszukiwania.',
 	'searchnearmatches'     => '<b>Strony o podobnych nazwach:</b>',
 	'lucenepowersearchtext' => '

@@ -154,3 +154,20 @@ $messages['oc'] = array(
 	'userrightsnotifybody'    => "Bonjorn $1, Ai l'onor de vos informar que vòstra apartenéncia als gropes d'utilizaires sus $2 es estada modificada per $3 lo $4. Ajustat : $5 Levat : $6 Coralament, $2",
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'userrightsnotifysubject' => 'Zmena členstva $1 v skupine',
+	'userrightsnotifybody'    => 'Dobrý deň, $1
+
+Týmto vás informujeme, že vaše členstvo v skupine $2 bolo zmenené z $3 na $4.
+
+Pridané: $5
+Odstránené: $6
+
+S pozdravom,
+
+$2',
+);
+

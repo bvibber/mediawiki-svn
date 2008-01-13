@@ -127,6 +127,21 @@ $messages['nl'] = array(
 	'showprocesslist-info'    => 'Informatie',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'showprocesslist'         => 'Zobraziť zoznam procesov',
+	'showprocesslist-id'      => 'ID',
+	'showprocesslist-user'    => 'Používateľ',
+	'showprocesslist-host'    => 'Stroj',
+	'showprocesslist-db'      => 'db',
+	'showprocesslist-command' => 'Príkaz',
+	'showprocesslist-time'    => 'Čas',
+	'showprocesslist-state'   => 'Stav',
+	'showprocesslist-info'    => 'Informácie',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

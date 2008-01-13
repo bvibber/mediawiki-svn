@@ -177,6 +177,39 @@ $messages['lb'] = array(
 	'povwatch_added' => 'derbäigesat',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'povwatch'                         => 'POV-Beloer',
+	'povwatch_no_session'              => "Fout: 't formeleer kós neet verwèrk waere ómdet de sessiegegaeves verlaore zeen gegange.",
+	'povwatch_not_allowed_push'        => "Doe bös geine administrator van POV-Beloer en kins gein pazjena's op volglies zitte.",
+	'povwatch_already_subscribed'      => 'Doe bös al geabonneertdj op POV-Beloer',
+	'povwatch_subscribed'              => 'Doe bös noe geabonneerdj op POV-Beloer',
+	'povwatch_not_subscribed'          => 'Doe bös neet geabonneerdj op POV-Beloer, dus doe kans neet oetsjrieve.',
+	'povwatch_unsubscribed'            => 'Doe bös oetgesjreve van POV-Beloer',
+	'povwatch_invalid_title'           => 'De opgegaeve pazjenanaam is óngeljig',
+	'povwatch_pushed'                  => '[[$1]] is succesvol toegeweze aan $2 volglies van gebroekers.',
+	'povwatch_intro'                   => "POV-Beloer is 'ne deens dae 't meugelik maak geveulige pazjena's discreet op de volglies van geabonneerdje administrators te zitte.
+
+'n Logbook mit recènt toegeweze pazjena's op volglies is te bekieke op [[Special:PovWatch/log]].",
+	'povwatch_subscriber_list'         => "d'r Is 'ne [[Special:PovWatch/subscribers|lies mit abonnees]] besjikbaar.",
+	'povwatch_subscriber_list_intro'   => '<strong>Abonnees</strong>',
+	'povwatch_not_allowed_subscribers' => 'Doe moogs de lies van abonnees op POV-Beloer neet bekieke.',
+	'povwatch_unknown_subpage'         => 'Ónbekindje subpazjena.',
+	'povwatch_push'                    => 'Toewieze',
+	'povwatch_push_intro'              => "Gebroek 't óngerstäönde formeleer óm pazjena's op de volglies van abonnees te zitte. Bön veurzichtig bie 't inveure van de pazjena; zelfs neet bestäönde pazjena's kinne toegevoeg waere en doe kans de pazjena neet wisse es dae is toegeweze.",
+	'povwatch_title'                   => 'Pazjena:',
+	'povwatch_comment'                 => 'Logbookopmèrking:',
+	'povwatch_no_log'                  => "'t Logbook is laeg.",
+	'povwatch_no_subscribers'          => "d'r Is nemes geabonneerdj.",
+	'povwatch_unsubscribe_intro'       => 'Doe bös noe geabonneerdj op POV-Beloer. Klik op de óngerstäönde knoep óm uch oet te sjrieve.',
+	'povwatch_unsubscribe'             => 'Oetsjrieve',
+	'povwatch_subscribe_intro'         => 'Doe bös neet ingesjreve veur POV-Beloer. Klik op de óngerstäönde knoep óm uch te abonnere.',
+	'povwatch_subscribe'               => 'Abonnere',
+	'povwatch_added'                   => 'toegevoeg',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

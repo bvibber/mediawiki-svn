@@ -149,3 +149,20 @@ $messages['oc'] = array(
 	'postcomment_invalidrequest'           => 'Requèsta invalida',
 	'postcomment_replyto'                  => 'Respondre a $1',
 );
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'postcomment_discussionprotected'      => 'Táto diskusná stránka bola zamknutá proti ďalším príspevkom.',
+	'postcomment_notloggedin'              => 'Nie ste prihlásený.',
+	'postcomment_youareloggedinas'         => 'Ste prihlásený ako $1',
+	'postcomment_addcommentdiscussionpage' => 'Pridajte svoj komentár na túto diskusnú stránku',
+	'postcomment_leavemessagefor'          => 'Nechajte správu pre $1',
+	'postcomment_post'                     => 'Poslať',
+	'postcomment_said'                     => 'povedal',
+	'postcomment_invalidrequest'           => 'Neplatná požiadavka.',
+	'postcomment_replyto'                  => 'Odpovedať $1',
+	'postcomment_nopostingtoadd'           => 'Niet pridať aký príspevok.',
+);
+

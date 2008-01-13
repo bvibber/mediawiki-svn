@@ -333,21 +333,27 @@ Gioanin|Gioanin',
 	'vote-invalid-choice' => 'A venta ch\'as selession-a un-a dj\'opsion disponibij.',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
-	'vote' => 'Hlasovať',
-	'vote-header' => 'Tu môžete hlasovať o \'\'\'Hlavnom diktátorovi sveta\'\'\'!',
-	'vote-current' => 'Aktuálne hlasujete za \'\'\'$1\'\'\'.',
-	'vote-legend' => 'Hlasovať alebo zmeniť hlas',
-	'vote-caption' => 'Vaša voľba:',
-	'vote-submit' => 'Hlasovať',
-	'vote-registered' => 'Váš hlas bol zaznamenaný.',
-	'vote-view-results' => 'Zobraziť výsledky',
-	'vote-results' => 'Výsledky hlasovania',
+	'vote'                => 'Hlasovať',
+	'vote-header'         => "Tu môžete hlasovať o '''Hlavnom diktátorovi sveta'''!",
+	'vote-current'        => "Aktuálne hlasujete za '''$1'''.",
+	'vote-legend'         => 'Hlasovať alebo zmeniť hlas',
+	'vote-caption'        => 'Vaša voľba:',
+	'vote-choices'        => 'joker|The Joker
+penguin|The Penguin
+riddler|Riddler',
+	'vote-submit'         => 'Hlasovať',
+	'vote-registered'     => 'Váš hlas bol zaznamenaný.',
+	'vote-view-results'   => 'Zobraziť výsledky',
+	'vote-results'        => 'Výsledky hlasovania',
 	'vote-results-choice' => 'Voľba',
-	'vote-results-count' => 'Počet',
-	'vote-results-none' => 'Momentálne nie sú žiadne hlasy.',
-	'vote-login' => 'Aby ste mohli hlasovať, musíte $1.',
-	'vote-login-link' => 'sa prihlásiť',
+	'vote-results-count'  => 'Počet',
+	'vote-results-none'   => 'Momentálne nie sú žiadne hlasy.',
+	'vote-login'          => 'Aby ste mohli hlasovať, musíte $1.',
+	'vote-login-link'     => 'sa prihlásiť',
 	'vote-invalid-choice' => 'Musíte vybrať jednu z dostupných možností.',
 );
 

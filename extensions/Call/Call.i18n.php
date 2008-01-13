@@ -23,6 +23,25 @@ In case of problems you can try <b>Special:Call/DebuG</b>',
 	'call-save-failed' => 'The following text has NOT been saved to page <big>[[$1]]</big> because that page already exists.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'call'              => 'استدعاء',
+	'call-text'         => "امتداد الاستدعاء يتوقع صفحة ويكي ومحددات اختيارية لهذه الصفحة كمدخلات.<br><br>
+مثال 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br/>
+مثال 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br/>
+مثال 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br/><br/>
+مثال 4 (مسار متصفح): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt><br/><br/>
+
+<i>امتداد الاستدعاء</i> سيستدعي الصفحة المعطاة ويمرر المحددات.<br>سترى محتويات الصفحة المستدعاة وعنوانها ولكن 'نوعها' سيكون ذلك الخاص بصفحة خاصة,<br>أي أن صفحة مثل هذه لا يمكن تعديلها.<br>المحتويات التي تراها ربما تتغير على حسب قيمة المحددات التي مررتها.<br><br>
+<i>امتداد الاستدعاء</i> مفيد في بناء تطبيقات تفاعلية مع الميدياويكي.<br>لمثال انظر <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a> ..<br/>
+في حالة وجود مشكلات يمكنك محاولة <b>Special:Call/DebuG</b>",
+	'call-save'         => "ناتج هذا الاستدعاء سيتم حفظه في صفحة اسمها ''$1''.",
+	'call-save-success' => 'النص التالي تم حفظه لصفحة <big>[[$1]]</big> .',
+	'call-save-failed'  => 'النص التالي لم يتم حفظه لصفحة <big>[[$1]]</big> لأن هذه الصفحة موجودة بالفعل.',
+);
+
 $messages['fr'] = array(
 	'call' => 'Appel',
 	'call-text' => 'L’extension Appel a besoin d’une page wiki et des paramètres facultatifs pour cette dernière.<br><br>
@@ -36,3 +55,27 @@ L’extension <i>Appel</i> appellera la page indiquée en y passant les paramèt
 	'call-save-success' => 'Le texte suivant a été sauvegardé vers la page <big>[[$1]]</big> .',
 	'call-save-failed' => 'Le texte suivant n’a pu être sauvergardé vers la page <big>[[$1]]</big> du fait qu’elle existe déjà.',
 );
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'call'              => 'Call',
+	'call-text'         => "Rozšírenie Call očakáva ako argumenty stránku wiki a voliteľné parametre danej stránky.<br><br>
+Príklad 1: &nbsp; <tt>[[Special:Call/Moja šablóna,parm1=value1]]</tt><br/>
+Príklad 2: &nbsp; <tt>[[Special:Call/Diskusia:Moja diskusia,parm1=value1]]</tt><br/>
+Príklad 3: &nbsp; <tt>[[Special:Call/:Moja stránka,parm1=value1,parm2=value2]]</tt><br/><br/>
+Príklad 4 (URL prehliadača): &nbsp; <tt>http://mojadoména/mojawiki/index.php?Special:Call/:Moja stránka,parm1=value1</tt><br/><br/>
+
+<i>Rozšírenie Call</i> zavolá danú stránku a odovzdá jej parametre.<br>
+Uvidiíte obsah zavolanej stránky a jej názov, ale jej ''typ'' bude špeciálna stránka,<br>
+t.j. takú stránku nie je možné upravovať.<br>
+Obsah, ktorý uvidíte sa môže líšiť v závislosti od parametrov, ktoré ste odovzdali.<br><br>
+<i>Rozšírenie Call</i> je užitočné pri budovaní interaktívnych aplikácií pomocou MediaWiki.<br>
+Ako príklad si môžete pozrieť <a href='http://semeb.com/dpldemo/Template:Catlist'>GUI DPL</a> ..<br/>
+V prípade problémov môžete skúsuť <b>Special:Call/DebuG</b>",
+	'call-save'         => "Výstup tejto stránky by bol uložený na stránku s názvom ''$1''.",
+	'call-save-success' => 'Nasledovný text bol uložený na stránku <big>[[$1]]</big>.',
+	'call-save-failed'  => "Nasledovný text NEBOL uložený na stránku ''$1'', pretože taká stránka už existuje.",
+);
+

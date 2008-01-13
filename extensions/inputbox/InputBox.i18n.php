@@ -112,6 +112,20 @@ $messages['co'] = array(
 	'createarticle'  => "Creà l'articulu",
 );
 
+/** Crimean Turkish (Latin) (Qırımtatarca (Latin))
+ * @author Alessandro
+ */
+$messages['crh-latn'] = array(
+	'createarticle' => 'Saifeni yañart',
+);
+
+/** Crimean Turkish (Cyrillic) (Qırımtatarca (Cyrillic))
+ * @author Alessandro
+ */
+$messages['crh-cyrl'] = array(
+	'createarticle' => 'Саифени янъарт',
+);
+
 $messages['cs'] = array(
 	'tryexact'       => 'Vyzkoušet přesné hledání',
 	'searchfulltext' => 'Plnotextové hledání',
