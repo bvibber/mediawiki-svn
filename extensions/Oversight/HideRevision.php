@@ -61,6 +61,7 @@ function hrSetup() {
 	$GLOBALS['wgHooks']['ArticleViewHeader'][] = 'hrArticleViewHeaderHook';
 	$GLOBALS['wgHooks']['DiffViewHeader'][] = 'hrDiffViewHeaderHook';
 	$GLOBALS['wgHooks']['UndeleteShowRevision'][] = 'hrUndeleteShowRevisionHook';
+	wfLoadExtensionMessages ('HideRevision');
 }
 
 /**
@@ -101,7 +102,6 @@ class HideRevisionTabInstaller {
 	}
 
 	function insertTab( $skin, &$content_actions ) {
-		wfLoadExtensionMessages('HideRevision');
 		$special = Title::makeTitle( NS_SPECIAL, 'HideRevision' );
 			$content_actions['hiderevision'] = array(
 				'class' => false,
@@ -145,7 +145,6 @@ function hrInstallArchiveTab( $target, $timestamp ) {
  * Special page handler function for Special:HideRevision
  */
 function wfSpecialHideRevision( $par=null ) {
-	wfLoadExtensionMessages('HideRevision');
 	global $wgRequest;
 	$form = new HideRevisionForm( $wgRequest );
 	$form->run();
@@ -495,7 +494,6 @@ function hrInsertRevision( $dbw, $title, $rev, $reason ) {
  */
 function wfSpecialOversight( $par=null ) {
 	global $wgRequest, $wgUser, $wgRCMaxAge;
-	wfLoadExtensionMessages('HideRevision');
 	$revision = $wgRequest->getIntOrNull( 'revision' );
 	if ( $wgRequest->getCheck( 'diff' ) && !is_null( $revision )) {
 		sosShowDiff( $revision);
