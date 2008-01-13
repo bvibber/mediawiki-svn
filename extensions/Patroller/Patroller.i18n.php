@@ -1,7 +1,6 @@
 <?php
-
 /**
- * Internationalisation file for the Patroller extension
+ * Internationalisation file for extension Patroller.
  *
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
@@ -9,11 +8,12 @@
  * @licence GNU General Public Licence 2.0
  */
 
-function efPatrollerMessages() {
-	$messages = array(
+$messages = array();
 
-/* English (Rob Church) */
-'en' => array(
+/* English
+ * @author Rob Church
+ */
+$messages['en'] = array(
 	'patrol' => 'Patrol edits',
 	'patrol-endorse' => 'Endorse',
 	'patrol-revert' => 'Revert',
@@ -33,10 +33,10 @@ function efPatrollerMessages() {
 	'group-patroller' => 'Patrollers',
 	'group-patroller-member' => 'Patroller',
 	'grouppage-patroller' => '{{ns:project}}:Patroller',
-),
+);
 
 /* Arabic (Meno25) */
-'ar' => array(
+$messages['ar'] = array(
 	'patrol' => 'تعديلات مراجعة',
 	'patrol-endorse' => 'تأكيد',
 	'patrol-revert' => 'استرجاع',
@@ -58,21 +58,21 @@ function efPatrollerMessages() {
 	'group-patroller' => 'مراجعون',
 	'group-patroller-member' => 'مراجع',
 	'grouppage-patroller' => '{{ns:project}}:مراجع',
-),
+);
 
-'bcl' => array(
+$messages['bcl'] = array(
 	'patrol-endorse' => 'Iindorso',
 	'patrol-revert-reason' => 'Rason:',
 	'patrol-skip' => 'Laktawan',
 	'patrol-reverting' => 'Pigbabalik: $1',
 	'patrol-resume' => 'Lagatik digdi tangarig magpadagos.',
-),
+);
 
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
  */
-'bg' => array(
+$messages['bg'] = array(
 	'patrol-revert'          => 'Възвръщане',
 	'patrol-revert-reason'   => 'Причина:',
 	'patrol-skip'            => 'Пропускане',
@@ -87,10 +87,10 @@ function efPatrollerMessages() {
 	'patrol-another'         => 'Показване на други евентуални редакции.',
 	'group-patroller'        => 'Патрулиращи',
 	'group-patroller-member' => 'Патрулиращ',
-),
+);
 
 /* German (Raymond) */
-'de' => array(
+$messages['de'] = array(
 	'patrol'                 => 'Kontrolle der Bearbeitungen',
 	'patrol-endorse'         => 'Bestätigen',
 	'patrol-revert'          => 'Zurücksetzen',
@@ -110,17 +110,17 @@ function efPatrollerMessages() {
 	'group-patroller'        => 'Kontrolleure',
 	'group-patroller-member' => 'Kontrolleur',
 	'grouppage-patroller'    => '{{ns:project}}:Kontrolleur',
-),
+);
 
 /** Greek (Ελληνικά)
  * @author Consta
  */
-'el' => array(
+$messages['el'] = array(
 	'patrol-revert-reason' => 'Λόγος:',
-),
+);
 
 /* Spanish (Titoxd) */
-'es' => array(
+$messages['es'] = array(
 	'patrol' => 'Revisar ediciones',
 	'patrol-endorse' => 'Aprovar',
 	'patrol-revert' => 'Revertir',
@@ -137,10 +137,10 @@ function efPatrollerMessages() {
 	'patrol-another' => 'Mostrar otra edición (si disponible).',
 	'patrol-stopped' => 'Has optado no marcar otra edición como revisada. $1',
 	'patrol-resume' => 'Haz click aquí para continuar.',
-),
+);
 
 /* French */
-'fr' => array(
+$messages['fr'] = array(
 	'patrol' => 'Vérification des modifications',
 	'patrol-endorse' => 'Accepter',
 	'patrol-revert' => 'Annuler',
@@ -160,9 +160,9 @@ function efPatrollerMessages() {
 	'group-patroller' => 'Patrouilleurs',
 	'group-patroller-member' => 'Patrouilleur',
 	'grouppage-patroller' => '{{ns:project}}:Patrouilleur',
-),
+);
 
-'gl' => array(
+$messages['gl'] = array(
 	'patrol' => 'Patrullar edicións',
 	'patrol-endorse' => 'Apoiar',
 	'patrol-revert' => 'Desfacer',
@@ -184,10 +184,10 @@ function efPatrollerMessages() {
 	'group-patroller' => 'Patrulleiros',
 	'group-patroller-member' => 'Patrulleiro',
 	'grouppage-patroller' => '{{ns:project}}:Patrulleiro',
-),
+);
 
-'hsb' => array(
-'patrol' => 'Dohladowanje změnow',
+$messages['hsb'] = array(
+	'patrol' => 'Dohladowanje změnow',
 	'patrol-endorse' => 'Přihłosować',
 	'patrol-revert' => 'Cofnyć',
 	'patrol-revert-reason' => 'Přičina:',
@@ -208,10 +208,10 @@ function efPatrollerMessages() {
 	'group-patroller' => 'Dohladowarjo',
 	'group-patroller-member' => 'Dohladowar',
 	'grouppage-patroller' => '{{ns:project}}:Dohladowar',
-),
+);
 
 /* Indonesian (Ivan Lanin) */
-'id' => array(
+$messages['id'] = array(
 	'patrol'                 => 'Patroli suntingan',
 	'patrol-endorse'         => 'Setujui',
 	'patrol-revert'          => 'Kembalikan',
@@ -231,10 +231,10 @@ function efPatrollerMessages() {
 	'group-patroller'        => 'Pematroli',
 	'group-patroller-member' => 'Pematroli',
 	'grouppage-patroller'    => '{{ns:project}}:Pematroli',
-),
+);
 
 /* Italian (BrokenArrow) */
-'it' => array(
+$messages['it'] = array(
 	'patrol' => 'Verifica delle modifiche',
 	'patrol-endorse' => 'Approva',
 	'patrol-revert' => 'Ripristina',
@@ -251,16 +251,16 @@ function efPatrollerMessages() {
 	'patrol-another' => 'Mostra un\'altra modifica, se disponibile.',
 	'patrol-stopped' => 'Si è scelto di non verificare altre modifiche. $1',
 	'patrol-resume' => 'Fare clic qui per riprendere.',
-),
+);
 
-'la' => array(
+$messages['la'] = array(
 	'patrol-revert-reason' => 'Causa:',
-),
+);
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-'lb' => array(
+$messages['lb'] = array(
 	'patrol'               => 'Kontroll vun den Ännerungen',
 	'patrol-endorse'       => 'Bestätegen',
 	'patrol-revert'        => 'Zrécksetzen',
@@ -268,10 +268,10 @@ function efPatrollerMessages() {
 	'patrol-skip'          => 'Iwwersrangen',
 	'patrol-reverting'     => 'Zrécksetzen: $1',
 	'patrol-reverted-ok'   => "D'Ännerung gouf zréckgesat.",
-),
+);
 
 /* nld / Dutch (Siebrand Mazeland) */
-'nl' => array(
+$messages['nl'] = array(
 	'patrol' => 'Wijzigingen controleren',
 	'patrol-endorse' => 'Goedkeuren',
 	'patrol-revert' => 'Terugdraaien',
@@ -293,10 +293,10 @@ function efPatrollerMessages() {
 	'group-patroller' => 'Controleurs',
 	'group-patroller-member' => 'Controleur',
 	'grouppage-patroller' => '{{ns:project}}:Controleur',
-),
+);
 
 /* Norwegian (Jon Harald Søby) */
-'no' => array(
+$messages['no'] = array(
 	'patrol' => 'Patruljer redigeringer',
 	'patrol-endorse' => 'Godkjenn',
 	'patrol-revert' => 'Tilbakestill',
@@ -318,10 +318,10 @@ function efPatrollerMessages() {
 	'group-patroller' => 'Patruljører',
 	'group-patroller-member' => 'Patruljør',
 	'grouppage-patroller' => '{{ns:project}}:Patruljør',
-),
+);
 
 /* Occitan (Cedric31) */
-'oc' => array(
+$messages['oc'] = array(
 	'patrol' => 'Verificacion de las modificacions',
 	'patrol-endorse' => 'Acceptar',
 	'patrol-revert' => 'Anullar',
@@ -343,9 +343,9 @@ function efPatrollerMessages() {
 	'group-patroller' => 'Patrolhaires',
 	'group-patroller-member' => 'Patrolhaire',
 	'grouppage-patroller' => '{{ns:project}}:Patrolhaire',
-),
+);
 
-'pl' => array(
+$messages['pl'] = array(
 	'patrol' => 'Patrolowanie edycji',
 	'patrol-revert' => 'Cofnij',
 	'patrol-revert-reason' => 'Powód:',
@@ -364,10 +364,10 @@ function efPatrollerMessages() {
 	'group-patroller' => 'Patrolujący',
 	'group-patroller-member' => 'Patrolujący',
 	'grouppage-patroller' => '{{ns:project}}:Patrolujący',
-),
+);
 
 /* Piedmontese (Bèrto 'd Sèra) */
-'pms' => array(
+$messages['pms'] = array(
 	'patrol' => 'Patojé le modìfiche',
 	'patrol-endorse' => 'Aprové',
 	'patrol-revert' => 'Buté com a l\'era',
@@ -389,17 +389,17 @@ function efPatrollerMessages() {
 	'group-patroller' => 'Gent ëd patoja',
 	'group-patroller-member' => 'ëd patoja',
 	'grouppage-patroller' => '{{ns:project}}:patoja',
-),
+);
 
-'rm' => array(
+$messages['rm'] = array(
 	'patrol-revert-reason' => 'Motiv:',
-),
+);
 
 /** Russian (Русский)
  * @author Illusion
  * @author .:Ajvol:.
  */
-'ru' => array(
+$messages['ru'] = array(
 	'patrol'                 => 'Патрулирование',
 	'patrol-endorse'         => 'Подтвердить',
 	'patrol-revert'          => 'Откатить',
@@ -415,10 +415,10 @@ function efPatrollerMessages() {
 	'group-patroller'        => 'Патрулирующие',
 	'group-patroller-member' => 'патрулирующий',
 	'grouppage-patroller'    => '{{ns:project}}:Патрулирование',
-),
+);
 
 /* Slovak (helix84) */
-'sk' => array(
+$messages['sk'] = array(
 	'patrol' => 'Strážiť úpravy',
 	'patrol-endorse' => 'Schváliť',
 	'patrol-revert' => 'Vrátiť',
@@ -440,12 +440,12 @@ function efPatrollerMessages() {
 	'group-patroller' => 'Strážcovia',
 	'group-patroller-member' => 'Strážca',
 	'grouppage-patroller' => '{{ns:project}}:Strážca',
-),
+);
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-'stq' => array(
+$messages['stq'] = array(
 	'patrol'                 => 'Kontrolle fon do Beoarbaidengen',
 	'patrol-endorse'         => 'Bestäätigje',
 	'patrol-revert'          => 'Touräächsätte',
@@ -467,10 +467,10 @@ function efPatrollerMessages() {
 	'group-patroller'        => 'Kontrolleure',
 	'group-patroller-member' => 'Kontrolleur',
 	'grouppage-patroller'    => '{{ns:project}}:Kontrolleur',
-),
+);
 
 /* Sundanese (Kandar via BetaWiki) */
-'su' => array(
+$messages['su'] = array(
 	'patrol' => 'Ronda éditan',
 	'patrol-endorse' => 'Widian',
 	'patrol-revert' => 'Balikkeun',
@@ -492,10 +492,10 @@ function efPatrollerMessages() {
 	'group-patroller' => 'Nu ngaronda',
 	'group-patroller-member' => 'Nu ngaronda',
 	'grouppage-patroller' => '{{ns:project}}:Nu ngaronda',
-),
+);
 
 /* Cantonese (Hillgentleman, Shinjiman) */
-'yue' => array(
+$messages['yue'] = array(
 	'patrol' => '巡啲編輯',
 	'patrol-endorse' => '簽署支持',
 	'patrol-revert' => '打回頭',
@@ -515,10 +515,10 @@ function efPatrollerMessages() {
 	'group-patroller' => '巡邏員',
 	'group-patroller-member' => '巡邏員',
 	'grouppage-patroller' => '{{ns:project}}:巡邏員',
-),
+);
 
 /* Chinese (Simplified) (下一次登录) */
-'zh-hans' => array(
+$messages['zh-hans'] = array(
 	'patrol' => '编辑巡逻',
 	'patrol-endorse' => '批注',
 	'patrol-revert' => '回退',
@@ -538,10 +538,10 @@ function efPatrollerMessages() {
 	'group-patroller' => '巡逻员',
 	'group-patroller-member' => '巡逻员',
 	'grouppage-patroller' => '{{ns:project}}:巡逻员',
-),
+);
 
 /* Chinese (Traditional) (KilluaZaoldyeck, Shinjiman) */
-'zh-hant' => array(
+$messages['zh-hant'] = array(
 	'patrol' => '覆查編輯',
 	'patrol-endorse' => '批註',
 	'patrol-revert' => '回退',
@@ -561,18 +561,11 @@ function efPatrollerMessages() {
 	'group-patroller' => '巡邏員',
 	'group-patroller-member' => '巡邏員',
 	'grouppage-patroller' => '{{ns:project}}:巡邏員',
-),
+);
 
-	);
-
-	/* Chinese defaults, fallback to zh-hans or zh-hant */
-	$messages['zh'] = $messages['zh-hans'];
-	$messages['zh-cn'] = $messages['zh-hans'];
-	$messages['zh-hk'] = $messages['zh-hant'];
-	$messages['zh-tw'] = $messages['zh-hans'];
-	$messages['zh-sg'] = $messages['zh-hant'];
-	/* Cantonese default, fallback to yue */
-	$messages['zh-yue'] = $messages['yue'];
-
-	return $messages;
-}
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-tw'] = $messages['zh-hans'];
+$messages['zh-sg'] = $messages['zh-hant'];
+$messages['zh-yue'] = $messages['yue'];

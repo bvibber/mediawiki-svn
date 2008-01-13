@@ -10,12 +10,11 @@
  */
 
 class Patroller extends SpecialPage {
-	
+
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
-		self::initialiseMessages();
 		parent::__construct( 'Patrol', 'patroller' );
 	}
 
@@ -24,25 +23,28 @@ class Patroller extends SpecialPage {
 	 */
 	public function execute( $par ) {
 		global $wgUser, $wgRequest, $wgOut;
+
+		wfLoadExtensionMessages( 'Patroller' );
+
 		$this->setHeaders();
-		
+
 		# Check permissions
 		if( !$wgUser->isAllowed( 'patroller' ) ) {
 			$wgOut->permissionRequired( 'patroller' );
 			return;
 		}
-		
+
 		# Keep out blocked users
 		if( $wgUser->isBlocked() ) {
 			$wgOut->blockedPage();
 			return;
 		}
-		
+
 		# Prune old assignments if needed
 		wfSeedRandom();
 		if( 0 == mt_rand( 0, 499 ) )
 			$this->pruneAssignments();
-		
+
 		# See if something needs to be done
 		if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getText( 'wpToken' ) ) ) {
 			if( $rcid = $wgRequest->getIntOrNull( 'wpRcId' ) ) {
@@ -96,9 +98,8 @@ class Patroller extends SpecialPage {
 				$wgOut->addWikiText( wfMsg( 'patrol-nonefound' ) );
 			}
 		}
-		
 	}
-	
+
 	/**
 	 * Produce a stub recent changes listing for a single diff.
 	 *
@@ -113,7 +114,7 @@ class Patroller extends SpecialPage {
 						 $list->recentChangesLine( $edit ) .
 						 $list->endRecentChangesList() );
 	}
-	
+
 	/**
 	 * Output a trimmed down diff view corresponding to a particular change
 	 *
@@ -123,7 +124,7 @@ class Patroller extends SpecialPage {
 		$diff = new DifferenceEngine( $edit->getTitle(), $edit->mAttribs['rc_last_oldid'], $edit->mAttribs['rc_this_oldid'] );
 		$diff->showDiff( '', '' );
 	}
-	
+
 	/**
 	 * Output a bunch of controls to let the user endorse, revert and skip changes
 	 *
@@ -145,7 +146,7 @@ class Patroller extends SpecialPage {
 		$form .= '</form>';
 		$wgOut->addHtml( $form );
 	}
-	
+
 	/**
 	 * Fetch a recent change which
 	 *   - the user doing the patrolling didn't cause
@@ -174,7 +175,7 @@ class Patroller extends SpecialPage {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Fetch a particular recent change given the rc_id value
 	 *
@@ -191,7 +192,7 @@ class Patroller extends SpecialPage {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Assign the patrolling of a particular change, so
 	 * other users don't pull it up, duplicating effort
@@ -205,7 +206,7 @@ class Patroller extends SpecialPage {
 		$res = $dbw->insert( 'patrollers', $val, 'Patroller::assignChange', 'IGNORE' );
 		return (bool)$dbw->affectedRows();
 	}
-	
+
 	/**
 	 * Remove the assignment for a particular change, to let another user handle it
 	 *
@@ -214,7 +215,7 @@ class Patroller extends SpecialPage {
 	 */
 	private function unassignChange( $rcid ) {
 		$dbw =& wfGetDB( DB_MASTER );
-		$dbw->delete( 'patrollers', array( 'ptr_change' => $rcid ), 'Patroller::unassignChange' );		
+		$dbw->delete( 'patrollers', array( 'ptr_change' => $rcid ), 'Patroller::unassignChange' );
 	}
 
 	/**
@@ -226,7 +227,7 @@ class Patroller extends SpecialPage {
 		$dbw =& wfGetDB( DB_MASTER );
 		$dbw->delete( 'patrollers', array( 'ptr_timestamp < ' . $dbw->timestamp( time() - 120 ) ), 'Patroller::pruneAssignments' );
 	}
-	
+
 	/**
 	 * Revert a change, setting the page back to the "old" version
 	 *
@@ -260,7 +261,7 @@ class Patroller extends SpecialPage {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Make a nice little drop-down box containing all the pre-defined revert
 	 * reasons for simplified selection
@@ -289,7 +290,7 @@ class Patroller extends SpecialPage {
 			}
 		}
 	}
-	
+
 	/**
 	 * Determine which of the two "revert reason" form fields to use;
 	 * the pre-defined reasons, or the nice custom text box
@@ -303,7 +304,7 @@ class Patroller extends SpecialPage {
 				? $custom
 				: $request->getText( 'wpPatrolRevertReasonCommon' );
 	}
-	
+
 	/**
 	 * Initialise extension messages
 	 */
@@ -318,6 +319,4 @@ class Patroller extends SpecialPage {
 		}
 		return true;
 	}
-	
 }
-

@@ -1,5 +1,5 @@
 <?php
-
+if (!defined('MEDIAWIKI')) die();
 /**
  * Extension adds improved patrolling interface
  *
@@ -9,26 +9,19 @@
  * @licence GNU General Public Licence 2.0
  */
 
-if( defined( 'MEDIAWIKI' ) ) {
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'Patroller',
+	'version' => '1.0rc2',
+	'author' => 'Rob Church',
+	'description' => 'Enhanced patrolling interface with workload sharing',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Patroller',
+);
 
-	$wgSpecialPages['Patrol'] = 'Patroller';
-	$wgAutoloadClasses['Patroller'] = dirname( __FILE__ ) . '/Patroller.class.php';
-	$wgHooks['LoadAllMessages'][] = 'Patroller::initialiseMessages';
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['Patroller'] = $dir . 'Patroller.i18n.php';
+$wgAutoloadClasses['Patroller'] = $dir . 'Patroller.class.php';
+$wgSpecialPages['Patrol'] = 'Patroller';
 
-	$wgExtensionCredits['specialpage'][] = array(
-		'name' => 'Patroller',
-		'author' => 'Rob Church',
-		'description' => 'Enhanced patrolling interface with workload sharing',
-		'url' => 'http://www.mediawiki.org/wiki/Extension:Patroller',
-	);
-
-	$wgAvailableRights[] = 'patroller';
-	$wgGroupPermissions['sysop']['patroller'] = true;
-	$wgGroupPermissions['patroller']['patroller'] = true;
-
-} else {
-	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
-	exit( 1 );
-}
-
-
+$wgAvailableRights[] = 'patroller';
+$wgGroupPermissions['sysop']['patroller'] = true;
+$wgGroupPermissions['patroller']['patroller'] = true;

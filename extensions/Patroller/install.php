@@ -62,4 +62,3 @@ if( !$dba->tableExists( 'patrollers' ) ) {
 # Close the connection
 $dba->close();
 echo( "\n" );
-
