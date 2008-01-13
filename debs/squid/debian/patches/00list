@@ -3,8 +3,8 @@
 04-smb-auth
 06-unlinkd
 20-wikimedia-errors
-21-nomanglerequestheaders
+21-nomangle-requestCC
+22-normalize-requestAE
 22-udplog
 23-variant-invalidation
-24-httpheader-repacking
 25-coss-remove-swap-log

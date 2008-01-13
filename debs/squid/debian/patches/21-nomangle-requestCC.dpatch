@@ -1,0 +1,26 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 21-nomangle-requestCC.dpatch by  <domas@wikimedia.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: No description.
+
+@DPATCH@
+diff -urNad squid-2.6.18~/src/http.c squid-2.6.18/src/http.c
+--- squid-2.6.18~/src/http.c	2008-01-13 15:37:24.000000000 +0000
++++ squid-2.6.18/src/http.c	2008-01-13 15:39:47.000000000 +0000
+@@ -1315,6 +1316,7 @@
+ 	}
+     }
+     /* append Cache-Control, add max-age if not there already */
++#if 0
+     {
+ 	HttpHdrCc *cc = httpHeaderGetCc(hdr_in);
+ 	if (!cc)
+@@ -1334,6 +1336,7 @@
+ 	httpHeaderPutCc(hdr_out, cc);
+ 	httpHdrCcDestroy(cc);
+     }
++#endif
+     /* maybe append Connection: keep-alive */
+     if (flags.keepalive || request->flags.pinned) {
+ 	if (flags.proxying) {

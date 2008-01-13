@@ -1,0 +1,35 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 22-normalize-requestAE.dpatch by  <mark@sage.knams.wikimedia.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: No description.
+
+@DPATCH@
+diff -urNad squid-2.6.18~/src/http.c squid-2.6.18/src/http.c
+--- squid-2.6.18~/src/http.c	2008-01-13 15:41:02.000000000 +0000
++++ squid-2.6.18/src/http.c	2008-01-13 15:41:10.000000000 +0000
+@@ -375,7 +375,11 @@
+ 	    if (Config.accessList.vary_encoding && aclCheckFast(Config.accessList.vary_encoding, &checklist)) {
+ 		stringClean(&request->vary_encoding);
+ 		request->vary_encoding = httpHeaderGetStrOrList(&request->header, HDR_ACCEPT_ENCODING);
+-		strCat(request->vary_encoding, "");
++		/* As we already strip other encodings at output filter, we can simplify object storage too */
++		if (strstr(strBuf(request->vary_encoding),"gzip"))
++		    stringReset(&request->vary_encoding,"gzip");
++		else
++		    stringReset(&request->vary_encoding,"");
+ 	    }
+ 	}
+ 	if (strcmp(name, "*") == 0) {
+@@ -1168,6 +1172,11 @@
+ 	    if (!opt_forwarded_for)
+ 		httpHeaderAddEntry(hdr_out, httpHeaderEntryClone(e));
+ 	    break;
++	case HDR_ACCEPT_ENCODING:
++	    /* Strip everything other encoding, except gzip. x-gzip is equivalent of gzip */
++	    if (strstr(strBuf(e->value),"gzip"))
++		httpHeaderPutStr(hdr_out, HDR_ACCEPT_ENCODING, "gzip");
++	    break;
+ 	case HDR_RANGE:
+ 	case HDR_IF_RANGE:
+ 	case HDR_REQUEST_RANGE:
