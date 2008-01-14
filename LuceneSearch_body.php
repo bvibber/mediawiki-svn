@@ -466,7 +466,7 @@ class LuceneSearch extends SpecialPage
 			$rev = Revision::newFromTitle($t);
 			if ($rev === null) {
 				wfProfileOut( $fname );
-				return "<!--Broken link in search results: ".$t->getDBKey()."-->\n";
+				return "<!--Broken link in search results: ".$t->getDBkey()."-->\n";
 			}
 
 			$text = $rev->getText();
