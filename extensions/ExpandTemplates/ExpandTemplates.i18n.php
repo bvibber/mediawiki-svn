@@ -110,8 +110,10 @@ $messages['de'] = array(
 	'expand_templates_title'           => 'Kontexttitel, für {{PAGENAME}} etc.:',
 	'expand_templates_input'           => 'Eingabefeld:',
 	'expand_templates_output'          => 'Ergebnis',
+	'expand_templates_xml_output'      => 'XML-Ausgabe',
 	'expand_templates_ok'              => 'Ausführen',
 	'expand_templates_remove_comments' => 'Kommentare entfernen',
+	'expand_templates_generate_xml'    => 'Zeige XML Parser-Baum',
 	'expand_templates_preview'         => 'Vorschau',
 );
 
