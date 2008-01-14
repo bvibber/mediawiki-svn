@@ -99,6 +99,16 @@ $messages['ru'] = array(
 	'purgecache-button'  => 'Очистить',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'purgecache'         => 'Prečistiť vyrovnávaciu pamäť',
+	'purgecache-warning' => 'Toto prečistí tabuľky vyrovnávacej pamäte',
+	'purgecache-purged'  => 'Vyrovnávacia pamäť boal prečistená.',
+	'purgecache-button'  => 'Prečistiť',
+);
+
 /** ћирилица (ћирилица)
  * @author Sasa Stefanovic
  */

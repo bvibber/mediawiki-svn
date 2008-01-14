@@ -148,6 +148,19 @@ $messages['ext'] = array(
 	'contributors-others' => 'i otrus $1',
 );
 
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ */
+$messages['fi'] = array(
+	'contributors'             => 'Muokkaajat',
+	'contributors-toolbox'     => 'Pääasialliset muokkaajat',
+	'contributors-legend'      => 'Luettele sivun pääasialliset muokkaajat',
+	'contributors-target'      => 'Sivun otsikko',
+	'contributors-submit'      => 'Näytä',
+	'contributors-subtitle'    => '$1:n pääasialliset muokkaajat',
+	'contributors-others-long' => 'Tällä sivulla on ollut $1 muuta muokkaajaa.',
+);
+
 /* French */
 $messages['fr'] = array(
 	'contributors' => 'Contributeurs',

@@ -69,6 +69,13 @@ $messages['pt'] = array(
 	'purge' => 'purgar',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'purge' => 'prečistiť',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

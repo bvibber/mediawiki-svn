@@ -273,11 +273,14 @@ $messages['el'] = array(
 
 /** Finnish (Suomi)
  * @author Nike
+ * @author Cimon Avaro
  */
 $messages['fi'] = array(
 	'math_noblahtex'             => 'Blahtexin suorittaminen epäonnistui. Sen pitäisi sijaita kohteessa $1.',
 	'math_CannotChangeDirectory' => 'Työhakemiston vaihtaminen epäonnistui.',
 	'math_CannotCreateTexFile'   => 'Tex-tiedoston luominen epäonnistui.',
+	'math_NotEnoughArguments'    => '"$1:lle" ei tarjottu riittävästi argumentteja.',
+	'math_TooManyTokens'         => 'Syöte on liian pitkä.',
 	'math_UnrecognisedCommand'   => 'Tunnistamaton komento ”$1”',
 );
 

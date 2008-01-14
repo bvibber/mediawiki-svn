@@ -274,6 +274,13 @@ $messages['frp'] = array(
 	'hiderevision'                => 'Cachiér por de bon les vèrsions',
 	'hiderevision-prompt'         => 'Numerô de vèrsion a suprimar :',
 	'hiderevision-continue'       => 'Continuar',
+	'hiderevision-text'           => "Ceta fonccionalitât dêt étre utilisâ '''ren que''' por los câs siuvents :
+* Enformacions a sè que vont pas avouéc :
+*: ''Adrèce a sè et numerô de tèlèfone, numerô de sècuritât sociâla, etc...''
+
+'''L’abus de ceta fonccionalitât arat coment consèquence la pèrta de celos privilèjos.'''
+
+Los articllos èfaciês sont pas més visiblos dens ceti sistèmo, mas celes suprèssions sont jornalisâs et pôvont étre rèstorâs manuèlament per un administrator èyent l’accès drêt sur la bâsa de balyês se vos éd fêt una èrror.",
 	'hiderevision-reason'         => 'Rêson (serat enregistrâ sèparament) :',
 	'hiderevision-submit'         => 'Cachiér ceta balyê de maniére durâbla',
 	'hiderevision-tab'            => 'Cachiér la vèrsion',
@@ -285,12 +292,16 @@ $messages['frp'] = array(
 	'hiderevision-error-current'  => 'Pôt pas suprimar la dèrriére vèrsion dens una pâge. Féte una anulacion d’èdicion dês devant.',
 	'hiderevision-error-delete'   => 'Pôt pas étre arch·ivâ ; la pâge arêt-el étâ suprimâ ?',
 	'hiderevision-archive-status' => 'Vèrsion suprimâ de $1 : $2',
+	'oversight-nodiff'            => 'Empossiblo de dècelar des changements tant que sè trove gins de vèrsion prècèdenta por la pâge. Les rêsons pôvont étre les siuventes :
+*La pâge at étâ suprimâ.
+*La vèrsion cachiê ére la tota premiére de la pâge.',
 	'oversight-log-hiderev'       => 'at suprimâ una èdicion de $1',
 	'oversight'                   => 'Survelyér',
 	'oversight-view'              => 'dètalys',
 	'oversight-difference'        => '(Difèrence per rapôrt a la vèrsion prècèdenta)',
 	'oversight-prev'              => 'Dèrriére vèrsion prècèdenta',
 	'oversight-hidden'            => 'Vèrsion cachiê',
+	'oversight-header'            => 'Ce-desot, figure la lista de les vèrsions cachiês de maniére durâbla u publico. La publecacion de ceta enformacion pôt avêr coment consèquence la pèrta des privilèjos de survelyence.',
 );
 
 $messages['gl'] = array(
@@ -509,7 +520,7 @@ administrator basis data jika Anda membuat kesalahan.",
 *Halaman telah dihapus
 *Revisi yang disembunyikan merupakan revisi pertama',
 	'oversight-log-hiderev'       => 'menghapus sebuah suntingan dari $1',
-	'oversight'                   => 'Log penghapusan revisi secara permanen',
+	'oversight'                   => 'Log_penghapusan_revisi_secara_permanen',
 	'oversight-view'              => 'detil',
 	'oversight-difference'        => '(Perbedaan dari revisi terdahulu yang ada)',
 	'oversight-prev'              => 'revisi terdahulu terakhir',
