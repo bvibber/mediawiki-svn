@@ -6,7 +6,7 @@ $wgExtensionCredits['parserhook'][] = array(
     'name'        => 'ToolTip',
     'author'      => 'Paul Grinberg',
     'description' => 'adds <nowiki><tooltip></nowiki> and <nowiki>{{#tooltip:}}</nowiki>tag',
-    'version'     => '0.5.1'
+    'version'     => '0.5.2'
 );
 
 function wfToolTipExtension() {
@@ -14,7 +14,7 @@ function wfToolTipExtension() {
     global $wgOut;
     global $wgScriptPath;
     
-    $output .= <<< END
+    $output = <<< END
 <style type="text/css">
     .xstooltip{
         visibility: hidden;
