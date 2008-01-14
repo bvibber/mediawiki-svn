@@ -1,19 +1,19 @@
 <?php
-/* 
-cortado_embed.php 
-all file checks and conditions should be checked prior to loading this page. 
+/*
+cortado_embed.php
+all file checks and conditions should be checked prior to loading this page.
 this page serves as a wrapper for the cortado java applet
 */
 //load the http GETS:
 
-//default to null media in not provided: 
+//default to null media in not provided:
 $media_url = (isset($_GET['media_url']))?$_GET['media_url']:die('no media url provided');
 //default duration to 30 seconds if not provided. (ideally cortado would read this from the video file)
 $duration = (isset($_GET['duration']))?$_GET['duration']:0;
 //id (set to random if none provided)
 $id = (isset($_GET['id']))?$_GET['id']:'vid_'.rand('1000000');
 
-//default to video: 
+//default to video:
 $stream_type = (isset($_GET['stream_type']))?$_GET['stream_type']:'video';
 if($stream_type=='video'){
 	$audio=$video='true';
@@ -42,16 +42,16 @@ body {
 -->
 </style></head>
 <body>
-	<applet id="<?=$id?>" code="com.fluendo.player.Cortado.class" archive="cortado-ovt-stripped-0.2.2.1.jar" width="<?=$width?>" height="<?=$height?>">	
+	<applet id="<?=$id?>" code="com.fluendo.player.Cortado.class" archive="cortado-ovt-stripped-0.2.2.1.jar" width="<?=$width?>" height="<?=$height?>">
 		<param name="url" value="<?=$media_url?>" />
-		<param name="local" value="false"/> 
+		<param name="local" value="false"/>
 		<param name="keepaspect" value="true" />
 		<param name="video" value="<?=$audio?>" />
 		<param name="audio" value="<?=$video?>" />
 		<param name="seekable" value="true" />
 		<? if($duration!=0){
 			?>
-			<param name="duration" value="<?=$duration?>" />		
+			<param name="duration" value="<?=$duration?>" />
 			<?
 		 } ?>
 		<param name="bufferSize" value="200" />

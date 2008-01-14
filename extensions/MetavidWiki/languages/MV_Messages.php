@@ -121,7 +121,7 @@ $messages['en'] = array(
 	'mv_adjust_preview'           => 'Preview Adjustment',
 	'mv_adjust_preview_stop'      => 'Stop Preview',
 	'mv_adjust_default_reason'    => 'metavid interface adjust',
-	'mv_adjust_old_title_missing' => 'The page you are tyring to move from ($1) does not exist',
+	'mv_adjust_old_title_missing' => 'The page you are trying to move from ($1) does not exist',
 	'mv_adjust_ok_move'           => 'Success, adjusting...',
 
 	'mv_start_desc'               => 'Start Time',
