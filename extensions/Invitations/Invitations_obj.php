@@ -160,7 +160,7 @@ class Invitations {
 		// We /should/ be OK to go.
 		$dbw = wfGetDB( DB_MASTER );
 
-		$dbw->update( 'invite_count', array( 'ic_count=ic_count-1' ), 
+		$dbw->update( 'invite_count', array( 'ic_count=ic_count-1' ),
 				array( ic_user => $inviter->getId(), ic_type => $feature ), __METHOD__ );
 
 		$dbw->insert( 'invitation',

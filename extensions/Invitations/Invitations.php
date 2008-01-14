@@ -31,4 +31,3 @@ $wgLogTypes[] = 'invite';
 $wgLogNames['invite'] = 'invite-logpage';
 $wgLogHeaders['invite'] = 'invite-logpagetext';
 $wgLogActions['invite/invite']  = 'invite-logentry';
-
