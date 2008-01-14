@@ -480,7 +480,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 					} else {
 						$title = Title::newFromText($localParser->transformMsg($sParam, $pOptions));
 						if( !is_null($title) )
-							$aCategories[] = $title->getDbKey();
+							$aCategories[] = $title->getDBkey();
 					}
 				}
 				if( !empty($aCategories) ) {
@@ -493,7 +493,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 			case 'notcategory':
 				$title = Title::newFromText($localParser->transformMsg($sArg, $pOptions));
 				if( !is_null($title) )
-					$aExcludeCategories[] = $title->getDbKey();
+					$aExcludeCategories[] = $title->getDBkey();
 				break;
 				
 			case 'namespace':
@@ -853,7 +853,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	if ( !is_null($tLinksTo) ) {
 		$sSqlPageLinksTable = $sPageLinksTable . ' as pl, ';
 		$sSqlCond_page_pl = ' AND page_id=pl.pl_from  AND pl.pl_namespace=' . intval( $tLinksTo->getNamespace() ) . 
-			" AND pl.pl_title=" . $dbr->addQuotes( $tLinksTo->getDbKey() );
+			" AND pl.pl_title=" . $dbr->addQuotes( $tLinksTo->getDBkey() );
  	}
 	
 	if ($bAddFirstCategoryDate)

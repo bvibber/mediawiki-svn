@@ -309,7 +309,7 @@ class HideRevisionForm {
 			),
 			array(
 				'ar_namespace' => $this->mTarget->getNamespace(),
-				'ar_title' => $this->mTarget->getDbKey(),
+				'ar_title' => $this->mTarget->getDBkey(),
 				'ar_timestamp' => $this->mTimestamps,
 			),
 			__METHOD__ );
@@ -455,7 +455,7 @@ function hrHideArchivedRevision( $dbw, $title, $timestamp, $reason ) {
 
 	$dbw->delete( 'archive', array(
 		'ar_namespace' => $title->getNamespace(),
-		'ar_title'     => $title->getDbKey(),
+		'ar_title'     => $title->getDBkey(),
 		'ar_timestamp' => $timestamp ),
 		__METHOD__ );
 
@@ -469,7 +469,7 @@ function hrInsertRevision( $dbw, $title, $rev, $reason ) {
 		array(
 			'hidden_page'       => $rev->getPage(),
 			'hidden_namespace'  => $title->getNamespace(),
-			'hidden_title'      => $title->getDbKey(),
+			'hidden_title'      => $title->getDBkey(),
 
 			'hidden_rev_id'     => $rev->getId(),
 			'hidden_text_id'    => $rev->getTextId(),

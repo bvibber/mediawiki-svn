@@ -66,7 +66,7 @@
 				//render search box
 				$this->innerHTML = '<h3>Search Stream: '. $title_str . '</h3>';
 				$MvSearch = new MV_SpecialMediaSearch();
-				$MvSearch->setupFilters('stream', array('stream_name'=>$title->getDBKey() ));
+				$MvSearch->setupFilters('stream', array('stream_name'=>$title->getDBkey() ));
 				$this->innerHTML.= $MvSearch->dynamicSearchControl();
 			break;	
 			case 'navigate':

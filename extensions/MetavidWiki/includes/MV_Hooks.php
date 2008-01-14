@@ -55,7 +55,7 @@
 	//load the sequence page 
 	function mvSeqTag(&$input, &$argv, &$parser){
 		global $wgTitle;	
-		//print "cur title: " . $wgTitle->getDBKey() . ' ns: ' . $wgTitle->getNamespace();	
+		//print "cur title: " . $wgTitle->getDBkey() . ' ns: ' . $wgTitle->getNamespace();	
 		//check namespace (seq only show up via <tag> when in mvSequence namespace
 		if($wgTitle->getNamespace() == MV_NS_SEQUENCE ){	
 			$marker = MV_SequencePage::doSeqReplace($input, $argv, $parser);

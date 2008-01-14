@@ -181,7 +181,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		global $wgOut;		
 		$mvdTile = Title::makeTitle(MV_NS_MVD, $mvd_page->wiki_title );		
 		
-		//print "js_log('titleDB: ".$tsTitle->getDBKey() ."');\n";
+		//print "js_log('titleDB: ".$tsTitle->getDBkey() ."');\n";
 		if($mvdTile->exists()){	
 			//grab the article text:
 			$curRevision = Revision::newFromTitle($mvdTile);			
@@ -367,7 +367,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			if($personTitle->exists()){
 				//get person full name from semantic table if available
 				$person_result = $dbr->select('smw_attributes', 'value_xsd', array('attribute_title'=>'Full_Name',
-										'subject_title'=>$personTitle->getDBKey()),
+										'subject_title'=>$personTitle->getDBkey()),
 										__METHOD__);
 				if($dbr->numRows($person_result)== 0){
 					$person_full_name = $person_name;
@@ -688,11 +688,11 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		}
 		
 		//$tsTitle = Title::newFromText( $newTitle, MV_NS_MVD);
-		//print "js_log('titleDB: ".$tsTitle->getDBKey() ."');\n";
+		//print "js_log('titleDB: ".$tsTitle->getDBkey() ."');\n";
 		/*if($tsTitle->exists()){	
-			print "js_log('{$tsTitle->getDBKey()}  presnet:');\n";
+			print "js_log('{$tsTitle->getDBkey()}  presnet:');\n";
 		}else{
-			print "js_log('{$tsTitle->getDBKey()}  not present');\n";
+			print "js_log('{$tsTitle->getDBkey()}  not present');\n";
 		}*/		
 		
 		#return the javascript object (so that the inteface can update the user)

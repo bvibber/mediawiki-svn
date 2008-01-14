@@ -524,7 +524,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		if (!$img) {
 			$img = wfLocalFile($imgTitle);
 		}
-		//print "title is: " .$imgTitle->getDBKey() ."IMAGE IS: " . $img->getURL();
+		//print "title is: " .$imgTitle->getDBkey() ."IMAGE IS: " . $img->getURL();
 
 		return '<span class="mv_person_ac" id="mv_person' . $inx . '" style="display:' . $disp . ';width:90px;">' .
 		'<img id="mv_person_img' . $inx . '" style="padding:2px;" src="' . $img->getURL() . '" width="44">' .

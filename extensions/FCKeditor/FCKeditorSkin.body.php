@@ -298,7 +298,7 @@ class FCKeditorSkin
                     $class = 'internal';
                 } else {
                     $upload = SpecialPage::getTitleFor( 'Upload' );
-                    $url = $upload->getLocalUrl( 'wpDestFile=' . urlencode( $title->getDbKey() ) );
+                    $url = $upload->getLocalUrl( 'wpDestFile=' . urlencode( $title->getDBkey() ) );
                     $class = 'new';
                 }
             }

@@ -223,7 +223,7 @@ function wfMiniPreviewGetImageCategories ( &$imagePage ) {
     array(
       'cl_from          =  page_id',
       'page_namespace' => '6', # Image page only
-      'page_title' => $imagePage->mTitle->getDBKey() )
+      'page_title' => $imagePage->mTitle->getDBkey() )
   );
 
   $ret = array();
@@ -244,7 +244,7 @@ function wfMiniPreviewGetImageGalleries ( &$imagePage ) {
     array(
       'page_id = il_from',
       'page_namespace' => $wgMiniPreviewGalleryNamespace,
-      'il_to' => $imagePage->mTitle->getDBKey() )
+      'il_to' => $imagePage->mTitle->getDBkey() )
   );
 
   $ret = array();
@@ -337,7 +337,7 @@ function wfMiniPreviewGetPreviewForGallery ( $id , $title , $imagePage ) {
     array( 'il_from', 'page_id', 'max(il_to) AS maxto' ),
     array(
       'il_from' => $id, # Same page
-      'il_to < ' . $dbr->addQuotes( $imagePage->getTitle()->getDBKey() ), # Title comes before the current one
+      'il_to < ' . $dbr->addQuotes( $imagePage->getTitle()->getDBkey() ), # Title comes before the current one
       'page_title = il_to',
       'page_namespace=6' # Images only
       ),
@@ -356,7 +356,7 @@ function wfMiniPreviewGetPreviewForGallery ( $id , $title , $imagePage ) {
     array( 'il_from', 'page_id', 'min(il_to) AS minto' ),
     array(
       'il_from' => $id, # Same page
-      'il_to > ' . $dbr->addQuotes( $imagePage->mTitle->getDBKey() ), # Title comes after the current one
+      'il_to > ' . $dbr->addQuotes( $imagePage->mTitle->getDBkey() ), # Title comes after the current one
       'page_title = il_to',
       'page_namespace=6' # Images only
       ),

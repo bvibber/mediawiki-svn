@@ -170,7 +170,7 @@ exit;
 				  `page_namespace`  =  ".MV_NS_STREAM." OR 
 				  `page_namespace`  = ".MV_NS_SEQUENCE." )
 				   AND `cl_from`=  `page_id`
-			       AND `cl_to` = '{$title->getDBKey()}'
+			       AND `cl_to` = '{$title->getDBkey()}'
 			       AND `page_is_redirect`=0",
 			#+ $pageCondition,
 			__METHOD__,

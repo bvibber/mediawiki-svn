@@ -32,7 +32,7 @@
  	function __construct($title){ 	
  		//handle title object	
  		if(is_object($title)){ 			 			
- 			$title = $title->getDBKey();
+ 			$title = $title->getDBkey();
  		}
  		$title = $this->normalizeTitle($title);
  		//its just a plain string generate the parse info

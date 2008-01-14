@@ -72,7 +72,7 @@ function wfTalkHereArticleFromTitle( &$title, &$article ) {
 	if ( !Namespace::isTalk($ns) && Namespace::canTalk($ns) && $title->exists() 
 		&& ( !$wgTalkHereNamespaces || in_array($ns, $wgTalkHereNamespaces) ) ) {
 		$tns = Namespace::getTalk($ns);
-		$talk = Title::makeTitle($tns, $title->getDBKey());
+		$talk = Title::makeTitle($tns, $title->getDBkey());
 
 		if ($talk && $talk->userCan('read')) {
 			$t = clone $title;

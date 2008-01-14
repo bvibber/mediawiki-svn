@@ -348,7 +348,7 @@ class Player {
 
 
 	function getPlayerTitle() {
-		if (!@$this->playerTitle) $this->playerTitle = SpecialPage::getTitleFor('Player', $this->title->getDBKey());
+		if (!@$this->playerTitle) $this->playerTitle = SpecialPage::getTitleFor('Player', $this->title->getDBkey());
 		return $this->playerTitle;
 	}
 
@@ -370,7 +370,7 @@ class Player {
 		unset($ajaxopt['caption']);
 		$ajaxopt = urlencodeMap($ajaxopt);
 	
-		if ( $wgUseAjax ) $js = ' this.href="javascript:void(0);"; loadPlayer("' . Xml::escapeJsString($this->title->getDBKey()) . '", "' . Xml::escapeJsString($ajaxopt) . '", "' . Xml::escapeJsString($this->uniq) . '");';
+		if ( $wgUseAjax ) $js = ' this.href="javascript:void(0);"; loadPlayer("' . Xml::escapeJsString($this->title->getDBkey()) . '", "' . Xml::escapeJsString($ajaxopt) . '", "' . Xml::escapeJsString($this->uniq) . '");';
 		else $js = '';
 		
 		$alt = htmlspecialchars(wfMsg('player-clicktoplay', $this->title->getText()));

@@ -59,10 +59,10 @@ function setupCatRSSExtension() {
 			$this->mTitleStrings = array();
 			if ( is_array($tarray) ) {
 				foreach($tarray as $title) {
-					$this->mTitleStrings[] = $title->getDBKey();
+					$this->mTitleStrings[] = $title->getDBkey();
 				}
 			} else {
-				$this->mTitleStrings[] = $title->getDBKey();
+				$this->mTitleStrings[] = $title->getDBkey();
 			}
 		}
 
@@ -162,7 +162,7 @@ function setupCatRSSExtension() {
 				htmlspecialchars( wfMsgForContent( 'catfeedsummary' ) ),
 				$wgTitle->getFullUrl() );
 						
-			$pagekey = md5( $this->mTitle->getDBKey() );
+			$pagekey = md5( $this->mTitle->getDBkey() );
 			$timekey = "$wgDBname:catfeed:$pagekey:$this->mFeedFormat:limit:{$this->mLimit}:timestamp";
 			$key = "$wgDBname:catfeed:$pagekey:$this->mFeedFormat:limit:{$this->mLimit}";
 			$cachedFeed = false;

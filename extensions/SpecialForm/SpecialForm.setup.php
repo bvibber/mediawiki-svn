@@ -49,7 +49,7 @@ function formLocalizedPageName(&$specialPageArray, $code) {
 
 	# Convert from title in text form to DBKey and put it into the alias array:
 	$title = Title::newFromText($text);
-	$specialPageArray['Form'][] = $title->getDBKey();
+	$specialPageArray['Form'][] = $title->getDBkey();
 
 	return true;
 }

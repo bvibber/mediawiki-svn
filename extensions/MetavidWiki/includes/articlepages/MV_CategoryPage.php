@@ -45,7 +45,7 @@ class MvCategoryViewer extends CategoryViewer {
 			array( 'page_title', 'page_namespace', 'page_len', 'page_is_redirect', 'cl_sortkey' ),
 			array( $pageCondition,
 			       'cl_from          =  page_id',
-			       'cl_to'           => $this->title->getDBKey()),
+			       'cl_to'           => $this->title->getDBkey()),
 			       #'page_is_redirect' => 0),
 			#+ $pageCondition,
 			__METHOD__,
@@ -108,7 +108,7 @@ class MvCategoryViewer extends CategoryViewer {
 		$s = ($this->show_mv_links)?$this->getRssLinks():'';
 		if( $this->showGallery && ! $this->gallery->isEmpty() ) {
 			$title = Title::MakeTitle(NS_SPECIAL, 'MediaSearch');			
-			$query = 'f[0][t]='.urlencode('category').'&f[0][v]='.$wgTitle->getDBKey();
+			$query = 'f[0][t]='.urlencode('category').'&f[0][v]='.$wgTitle->getDBkey();
 			$search_link = $sk->makeKnownLinkObj($title,wfMsg('mv_search_category').":".$wgTitle->getText(), $query);			
 			
 			return "<div id=\"mw-category-media\">\n" .
@@ -124,7 +124,7 @@ class MvCategoryViewer extends CategoryViewer {
 	function getRssLinks(){
 		global $wgUser, $mvgScriptPath;
 		$sk = $wgUser->getSkin();
-		$query = 'feed_format=rss&cat='. $this->title->getDBKey();
+		$query = 'feed_format=rss&cat='. $this->title->getDBkey();
 		$nt = Title::makeTitle(NS_SPECIAL, 'MvVideoFeed');
 		$img = '<img border="0" width="28" height="28" src="'.$mvgScriptPath . '/skins/images/feed-icon-28x28.png">';
 		return '<span style="float:right;">' . 

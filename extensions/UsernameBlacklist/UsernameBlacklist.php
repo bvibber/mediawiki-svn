@@ -76,7 +76,7 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 	 */
 	function efUsernameBlacklistValidate( $editPage, $text, $section, &$hookError ) {
 		if( $editPage->mTitle->getNamespace() == NS_MEDIAWIKI &&
-		 	$editPage->mTitle->getDbKey() == 'Usernameblacklist' ) {
+		 	$editPage->mTitle->getDBkey() == 'Usernameblacklist' ) {
 			
 			$blacklist = UsernameBlacklist::fetch();
 			$badLines = $blacklist->validate( $text );

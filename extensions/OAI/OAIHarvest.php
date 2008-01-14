@@ -447,7 +447,7 @@ class OAIUpdateRecord {
 			$db->update( 'page',
 				array(
 					'page_namespace' => $title->getNamespace(),
-					'page_title'     => $title->getDbkey() ),
+					'page_title'     => $title->getDBkey() ),
 				array( 'page_id' => $pageId ),
 				$fname );
 		} else {

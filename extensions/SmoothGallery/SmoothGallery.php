@@ -54,7 +54,7 @@ function wfSmoothGallery() {
 function smoothGalleryImagesByCat( $title ) {
 	global $wgContLang;
 
-	$name = $title->getDBKey();
+	$name = $title->getDBkey();
 
 	$dbr = wfGetDB( DB_SLAVE );
 

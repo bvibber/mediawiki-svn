@@ -49,6 +49,6 @@ function ChangeAuthorLocalizedPageName(&$specialPageArray, $code)
 	$text = wfMsg('changeauthor-short');
 
 	$title = Title::newFromText($text);
-	$specialPageArray['ChangeAuthor'][] = $title->getDBKey();
+	$specialPageArray['ChangeAuthor'][] = $title->getDBkey();
 	return true;
 }

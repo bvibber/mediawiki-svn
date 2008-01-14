@@ -30,7 +30,7 @@ function whoiswatching(&$specialPageArray, $code) {
 
   # Convert from title in text form to DBKey and put it into the alias array:
   $title = Title::newFromText($text);
-  $specialPageArray['WhoIsWatching'][] = $title->getDBKey();
+  $specialPageArray['WhoIsWatching'][] = $title->getDBkey();
 
   return true;
 }

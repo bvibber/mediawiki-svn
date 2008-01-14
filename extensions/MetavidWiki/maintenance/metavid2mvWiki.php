@@ -325,7 +325,7 @@ function do_people_insert() {
 		# Check if already there existence
 		$image = wfLocalFile($imgTitle);
 		if ($image->exists()) {
-			echo ($imgTitle->getDBKey() . " already in the wiki\n");
+			echo ($imgTitle->getDBkey() . " already in the wiki\n");
 			continue;
 		}
 
@@ -341,7 +341,7 @@ function do_people_insert() {
 		}
 
 		# Stash the file
-		echo ("Saving " . $imgTitle->getDBKey() . "...");
+		echo ("Saving " . $imgTitle->getDBkey() . "...");
 		$image = wfLocalFile($imgTitle);
 
 		$archive = $image->publish($local_file);
@@ -663,7 +663,7 @@ function do_update_wiki_page($wgTitle, $wikiText, $ns = null, $forceUpdate=false
 	
 	$wgArticle = new Article($wgTitle);
 	if(!mvDoMvPage($wgTitle, $wgArticle, false)){
-		print "bad title: ".$wgTitle->getDBKey()." no edit";
+		print "bad title: ".$wgTitle->getDBkey()." no edit";
 		if($wgTitle->exists()){
 			print "remove article";			
 			$wgArticle->doDeleteArticle( 'bad title' );		
@@ -698,7 +698,7 @@ function do_update_wiki_page($wgTitle, $wikiText, $ns = null, $forceUpdate=false
 	//got here do the edit: 	
 	$sum_txt = 'metavid bot insert';	
 	$wgArticle->doEdit($wikiText, $sum_txt);
-	print "did edit on " . $wgTitle->getDbKey() . "\n";
+	print "did edit on " . $wgTitle->getDBkey() . "\n";
 	//die;
 }
 //given a stream name it pulls all metavid stream data and builds semantic wiki page

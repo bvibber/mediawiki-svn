@@ -307,7 +307,7 @@ function DynamicPageList( $input ) {
 		$sSqlSelectFrom .= " INNER JOIN $categorylinks AS c" . ($iCurrentTableNumber+1);
 		$sSqlSelectFrom .= ' ON page_id = c'.($iCurrentTableNumber+1).'.cl_from';
 		$sSqlSelectFrom .= ' AND c'.($iCurrentTableNumber+1).'.cl_to='.
-			$dbr->addQuotes( $aCategories[$i]->getDbKey() );
+			$dbr->addQuotes( $aCategories[$i]->getDBkey() );
 
 		$iCurrentTableNumber++;
 	}
@@ -316,7 +316,7 @@ function DynamicPageList( $input ) {
 		$sSqlSelectFrom .= " LEFT OUTER JOIN $categorylinks AS c" . ($iCurrentTableNumber+1);
 		$sSqlSelectFrom .= ' ON page_id = c'.($iCurrentTableNumber+1).'.cl_from';
 		$sSqlSelectFrom .= ' AND c'.($iCurrentTableNumber+1).'.cl_to='.
-			$dbr->addQuotes( $aExcludeCategories[$i]->getDbKey() );
+			$dbr->addQuotes( $aExcludeCategories[$i]->getDBkey() );
 
 		$sSqlWhere .= ' AND c'.($iCurrentTableNumber+1).'.cl_to IS NULL';
 

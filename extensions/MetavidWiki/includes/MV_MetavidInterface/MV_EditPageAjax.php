@@ -147,7 +147,7 @@
 		if($this->mTitle->getNamespace() == MV_NS_MVD){
 			//get display type get mvTitle if not set
 			if(!isset($this->article->mvTitle)){				
-				$this->mvTitle = new MV_Title($this->mTitle->getDBKey());			
+				$this->mvTitle = new MV_Title($this->mTitle->getDBkey());			
 			}
 			$editFormType=strtolower($this->mvTitle->getTypeMarker());
 		}else{
@@ -339,7 +339,7 @@
 				wfMsgExt('cancel', array('parseinline')) );
 			$edithelpurl = Skin::makeInternalOrExternalUrl( wfMsgForContent( 'mv_edithelpsequence' ));
 		}else{
-			$cancel = '<a href="javascript:mv_disp_mvd(\''.$this->mTitle->getDBKey(). '\',\''.
+			$cancel = '<a href="javascript:mv_disp_mvd(\''.$this->mTitle->getDBkey(). '\',\''.
 					 $this->mvd_id.'\');">' . wfMsgExt('cancel', array('parseinline')).'</a>';
 			$edithelpurl = Skin::makeInternalOrExternalUrl( wfMsgForContent( 'edithelppage' ));					 
 		}

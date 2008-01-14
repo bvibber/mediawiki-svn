@@ -95,7 +95,7 @@ function wfPolyglotArticleFromTitle( &$title, &$article ) {
 		return true;
 	}
 
-	$n = $title->getDBKey();
+	$n = $title->getDBkey();
 	$nofollow = false;
 
 	//TODO: when user-defined language links start working (see below),
@@ -161,7 +161,7 @@ function wfPolyglotGetLanguages( $title ) {
 	global $wgPolyglotLanguages;
 	if (!$wgPolyglotLanguages) return NULL;
 
-	$n = $title->getDBKey();
+	$n = $title->getDBkey();
 	$ns = $title->getNamespace();
 
 	$links = array();
@@ -181,7 +181,7 @@ function wfPolyglotParserAfterTidy( &$parser, &$text ) {
 	if ( !$wgPolyglotLanguages ) return true;
 	if ( !$parser->mOptions->getInterwikiMagic() ) return true;
 
-	$n = $parser->mTitle->getDBKey();
+	$n = $parser->mTitle->getDBkey();
 	$ns = $parser->mTitle->getNamespace();
 	$contln = $wgContLang->getCode();
 

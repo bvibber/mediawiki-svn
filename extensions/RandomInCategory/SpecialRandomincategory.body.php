@@ -58,7 +58,7 @@ class RandomPageInCategory extends SpecialPage {
 		if( !$category ) {
 			return false;
 		}
-		$this->category = $category->getDBKey();
+		$this->category = $category->getDBkey();
 		return true;
 	}
 
