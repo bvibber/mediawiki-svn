@@ -18,6 +18,7 @@ $messages['en'] = array(
 	'tasklistprojdisp'        => 'Display',
 	'tasklistbyname'          => '== Todo List for %s ==',
 	'tasklistnoprojects'      => "ERROR: It looks like you enabled '''\$wgUseProjects''', but did not create [[MediaWiki:TodoTasksValidProjects]]. See [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] for more details.",
+    'tasklistemailbody'       => ",\n\nSomeone has assigned a new Task for you on %s.\n\nTo see your complete Task List go to %s.\n\n\tYour friendly %s notification system\n",
 );
 
 $messages['ar'] = array(

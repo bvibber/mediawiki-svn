@@ -171,9 +171,7 @@ function wfTodoParserFunction_Render( &$parser, $input, $users, $project='') {
          */
         $adminAddress = new MailAddress( $wgEmergencyContact, 'WikiAdmin' );
         $tasklist = Title::newFromText("Special:TaskList");
-        $body = ",\n\nSomeone has assigned a new Task for you on " . $parser->getTitle()->getFullURL() .
-                ".\n\nTo see your complete Task List go to " . $tasklist->getFullURL() .
-                ".\n\n\tYour friendly ${wgSitename} notification system\n";
+        $body = sprintf(wfMsgTL('tasklistemailbody'), $parser->getTitle()->getFullURL(), $tasklist->getFullURL(), $wgSitename);
         $row = $dbr->selectRow( 'todo', 'id', array( 'hash' => $hash ), __METHOD__ );
         if (!$row) {                                    // this is a new todo item
             while ($userid = array_pop($userIdList)) {
