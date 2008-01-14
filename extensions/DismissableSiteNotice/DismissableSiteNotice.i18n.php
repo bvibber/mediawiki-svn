@@ -153,15 +153,15 @@ $messages['ja'] = array(
 );
 
 $messages['kk-cyrl'] = array(
-	'sitenotice_close' => 'тасалау',
+	'sitenotice_close' => 'тасалату',
 );
 
 $messages['kk-latn'] = array(
-	'sitenotice_close' => 'tasalaw',
+	'sitenotice_close' => 'tasalatw',
 );
 
 $messages['kk-arab'] = array(
-	'sitenotice_close' => 'تاسالاۋ',
+	'sitenotice_close' => 'تاسالاتۋ',
 );
 
 $messages['lb'] = array(
