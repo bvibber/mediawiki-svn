@@ -160,7 +160,7 @@ function mvSetupExtension(){
 				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_stream.js\" ></script>");	
 
 			 
-			$mvCssUrl = $mvgScriptPath . '/skins/MV_custom.css';
+			$mvCssUrl = $mvgScriptPath . '/skins/mv_custom.css';
 			$wgOut->addLink(array(
 				'rel'   => 'stylesheet',
 				'type'  => 'text/css',
@@ -169,10 +169,10 @@ function mvSetupExtension(){
 			));				
 			//add extra IE styles fixes 
 			$wgOut->addScript('<!--[if IE 7]>' .
-								'<link href="'.$mvgScriptPath . '/skins/MV_customIE7.css'.'" rel="stylesheet" media="all" type="text/css">'.
-							  '<![endif]-->' .
-							  '<!--[if IE6]>'.
-							  	'<link href="'.$mvgScriptPath . '/skins/MV_customIE6.css'.'" rel="stylesheet" media="all" type="text/css">'.
+								'<style type="text/css">@import "'.$mvgScriptPath . '/skins/mv_customIE6.css";</style>'.
+							  '<![endif]--> ' .
+							  '<!--[if IE 6]>'.
+							  	'<style type="text/css">@import "'.$mvgScriptPath . '/skins/mv_customIE6.css";</style>'.
 							  '<![endif]-->'
 					);
 			

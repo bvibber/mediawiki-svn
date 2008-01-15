@@ -808,6 +808,7 @@ function mv_disp_play_controls(disp){
 function scroll_to_pos(mvd_id){
 	if( $j('#mv_fd_mvd_'+mvd_id).get(0)){
 		//do scroll in 1 second
+		//@@todo debug IE issues with scrolling
 		$j('#mv_fd_mvd_cont').animate({scrollTop: $j('#mv_fd_mvd_'+mvd_id).position().top}, 'slow');
 	}
 }

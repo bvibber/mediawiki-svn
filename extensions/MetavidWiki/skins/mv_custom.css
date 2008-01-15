@@ -168,6 +168,10 @@ textarea.mv_ajax_textarea{
 }
 
 /*stream interface*/
+#mv_page_spacer{
+	width:100%;
+	height:550px;
+}
 #MV_VideoPlayer{
 	position:absolute;width:322px;top:30px;height:270px;left:10px;margin:4px;
 }

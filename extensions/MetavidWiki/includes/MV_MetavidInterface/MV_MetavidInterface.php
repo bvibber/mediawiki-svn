@@ -135,7 +135,7 @@
  			$wgOut->addHTML('</table>');
  		}else{*/ 	
  		//@@todo dynamic resize page_spacer:
- 		$wgOut->addHTML('<div id="mv_page_spacer" style="width:100%;height:550px">');	 
+ 		$wgOut->addHTML('<div id="mv_page_spacer">');	 
  		foreach($this->components as $cpKey => &$component){ 			
  			$component->render_full(); 			
  		} 		 	

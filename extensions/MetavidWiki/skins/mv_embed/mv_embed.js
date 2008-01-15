@@ -50,7 +50,8 @@ gMsg['download_clip']='Download the Clip';
 gMsg['genneric_missing_plugin']='You don\'t appear to have a supported in browser playback method<br>' +
 		'visit the <a href="http://metavid.ucsc.edu/wiki/index.php/Client_Download">playback clients</a> page to download a player<br>';
 		
-//grabs from the globalMsg obj
+//grabs from the globalMsg obj 
+//@@todo integrate msg serving into CMS
 function getMsg( key ) {
 	 if ( key in gMsg ) {
 	 	return gMsg[key];
@@ -366,7 +367,7 @@ function init_mv_embed(){
 		js_log('no video or playlist on the page... (done)');
 	}	
 	//affter mv run any queued functions:		
-	js_log('run queue functions:' + mvEmbed.flist);
+	//js_log('run queue functions:' + mvEmbed.flist);
 	while (mvEmbed.flist.length){
 		mvEmbed.flist.shift()();
 	}
