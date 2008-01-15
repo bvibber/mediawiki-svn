@@ -228,13 +228,20 @@
 			global $mvDefaultVideoPlaybackRes;
 			$size=$mvDefaultVideoPlaybackRes;
 		}
-		$vid_id=($vid_id=='')?'':'id="vid_'.$vid_id.'"';
+		$vid_id=($vid_id=='')?'':'id="'.$vid_id.'"';
 		list($vWidth, $vHeight) = explode('x', $size);
-				
-		return '<'.$tag.' '.$vid_id.' thumbnail="'.$this->getStreamImageURL($size, null, $force_server).'" '.
-				'src="'.$this->getWebStreamURL() .'" ' .
+		$stream_web_url = $this->getWebStreamURL();		
+		if($stream_web_url){		 					
+			return '<span id="mv_videoPlayerTime">'.$this->getStartTime().' to '.
+				$this->getEndTime() . 
+				'</span>'.
+				'<'.$tag.' '.$vid_id.' thumbnail="'.$this->getStreamImageURL($size, null, $force_server).'" '.
+				'src="'.$stream_web_url .'" ' .
 				'style="width:'.$vWidth.'px;height:'.$vHeight.'px" '.
 				'controls="true" embed_link="true" />';	
+		}else{
+			return wfMsg('mv_error_stream_missing');
+		}						
 	}
 	function getTitleDesc(){	
 		if($this->type_marker){

@@ -56,8 +56,6 @@ function mv_setup_search(){
 					}));
 				//update the input name: 
 				$j('#mv_person_input_'+inx).attr('name', 'f['+inx+'][v]');
-				//default to OR for and_or select:
-				$j('#mvsel_a_'+inx).get(0).selectedIndex=1;
 				mv_add_person_ac(inx);
 			break;			
 			case 'smw_property':

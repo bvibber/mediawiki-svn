@@ -36,7 +36,7 @@ var mv_lock_vid_updates=false;
 //10 possible colors for clips: (can be in hexadecimal)
 var mv_clip_colors = new Array('aqua', 'blue', 'fuchsia', 'green', 'lime', 'maroon', 'navy', 'olive', 'purple', 'red');
 //the base url for requesting stream metadata 
-if(!wgServer){
+if(typeof wgServer=='undefined'){
 	var defaultMetaDataProvider = 'http://metavid.ucsc.edu/overlay/archive_browser/export_cmml?stream_name=';
 }else{
 	var defaultMetaDataProvider = wgServer+wgScript+'?title=Special:MvExportStream&feed_format=cmml&stream_name=';

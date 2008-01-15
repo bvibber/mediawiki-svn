@@ -23,22 +23,11 @@
 	}
 	function embed_html(){		
 		global $mvDefaultVideoPlaybackRes;
-		$out='';			
-		$cur_stream =  & mvGetMVStream( $this->getReqStreamName() );
+		$out='';
 		//give the stream the request information:
-		$cur_stream->mvTitle= & $this->mv_interface->article->mvTitle;
-		//check if media is availible: 
-		$stream_web_url = $cur_stream->getWebStreamURL();		
-		if($stream_web_url){		 
-			$out='<span id="mv_videoPlayerTime">'.$cur_stream->mvTitle->getStartTime().' to '.
-				$cur_stream->mvTitle->getEndTime() . 
-				'</span>';
-			$out.="<video id=\"embed_vid\" thumbnail=\"".$cur_stream->getStreamImageURL() ."\"". 
-			 	" controls=\"true\" embed_link=\"true\" src=\"".$stream_web_url."\"></video>";
-		}else{
-			$out.=wfMsg('mv_error_stream_missing');
-		}
-		return $out;
+		$mvTitle= & $this->mv_interface->article->mvTitle;
+		//check if media is availible: 				
+		return $mvTitle->getEmbedVideoHtml('embed_vid');
 	}
 	function render_menu(){
 		return 'embed video';

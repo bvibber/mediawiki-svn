@@ -270,7 +270,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 					$stream_out .= $mvd_out;
 				}*/				
 			}
-			$nsary = $mvgContLang->getNamespaceArray();
+			$nsary = $mvgContLang->getNamespaces();
 			//output stream name and mach count
 			/*$o.='<br><img class="mv_stream_play_button" name="'.$nsary[MV_NS_STREAM].':' .
 				$mvTitle->getStreamName() .
@@ -382,6 +382,8 @@ class MV_SpecialMediaSearch extends SpecialPage {
 			$mvTitle = new MV_Title($mvd->wiki_title);
 			//validate title and load stream ref:
 			if($mvTitle->validRequestTitle()){
+				//confirm the stream exists: 
+				
 				list($vWidth, $vHeight) = explode('x', $mvDefaultSearchVideoPlaybackRes); 
 				$embedHTML='<span style="float:left;width:'.($vWidth+20).'px">' . 
 									$mvTitle->getEmbedVideoHtml($mvd_id, $mvDefaultSearchVideoPlaybackRes) .
@@ -486,7 +488,8 @@ class MV_SpecialMediaSearch extends SpecialPage {
 	function getResultsBar(){		
 		$o='<div class="mv_result_bar">';
 		if($this->numResultsFound){
-			$o.=wfMsg('mv_results_found_for',$this->offset, ($this->limit+$this->offset), number_format($this->numResultsFound));
+			$re = ($this->numResultsFound < $this->limit+$this->offset)?$this->numResultsFound:($this->limit+$this->offset);
+			$o.=wfMsg('mv_results_found_for',$this->offset,$re , number_format($this->numResultsFound));
 		}
 		$o.=$this->getFilterDesc();
 		$o.='</div>';

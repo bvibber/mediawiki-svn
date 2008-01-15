@@ -48,7 +48,7 @@ gMsg['ogg-player-cortado']='Java Cortado';
 gMsg['ogg-player-selected']=' (selected)';
 gMsg['download_clip']='Download the Clip';
 gMsg['genneric_missing_plugin']='You don\'t appear to have a supported in browser playback method<br>' +
-		'visit the <a href="http://metavid.ucsc.edu/wiki/index.php/Client_Download">playback clients</a> page to download a player<br>';
+		'visit the <a href="http://metavid.ucsc.edu/wiki/index.php/Client_Download">Playback Methods</a> page to download a player<br>';
 		
 //grabs from the globalMsg obj 
 //@@todo integrate msg serving into CMS
@@ -840,7 +840,7 @@ embedVideo.prototype = {
 	  	
 	  	 //add plugin config button (don't add for playlists) 
 	  	 if(!this.pc){
-			 thumb_html+='<div style="position:absolute;top:2px;left:2px;z-index:1;width:28px;height:28px;">' +
+			 thumb_html+='<div style="position:absolute;top:2px;left:2px;z-index:99;width:28px;height:28px;">' +
 				 '<a title="'+getMsg('select_playback')+'" href="#" onClick="document.getElementById(\''+this.id+'\').selectPlaybackMethod();return false;">'+
 				 	getTransparentPng({id:'plug_'+this.id,width:'27',height:'27',src:mv_embed_path + 'images/vid_plugin_edit_sm.png'})+
 				 '</a>'+
@@ -1202,9 +1202,9 @@ embedVideo.prototype = {
 function getTransparentPng(image){
 	if(!image.style)image.style='';
 	if( isIE() ){
-		return '<span id="'+image.id+'" style="display:inline-block;cursor:hand;width:'+image.width+'px;height:'+image.height+'px;' +
+		return '<span id="'+image.id+'" style="display:inline-block;width:'+image.width+'px;height:'+image.height+'px;' +
     		'filter:progid:DXImageTransform.Microsoft.AlphaImageLoader' +
-    		'(src=\''+image.src+'\', sizingMethod=\'scale\');'+image.style+'"></span>';	
+    		'(src=\''+image.src+'\', sizingMethod=\'scale\');"></span>';	
 	}else{		
 		return '<img id="'+image.id+'" style="'+image.style+'"  width="'+image.width+'" height="'+image.height+'" border="0" src="'+
 			image.src + '">';
@@ -1335,14 +1335,14 @@ function getMvEmbedPath(){
 	     /*
 	      * IE and non-firebug debug:
 	      */
-	     /*var log_elm = document.getElementById('mv_js_log');
+	     var log_elm = document.getElementById('mv_js_log');
 	     if(!log_elm){
 	     	document.write('<div style="position:absolute;z-index:50;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
 	     	var log_elm = document.getElementById('mv_js_log');
 	     }
 	     if(log_elm){
 	     	log_elm.value+=string+"\n";
-	     }*/
+	     }
 	   }
 	}
 //}
