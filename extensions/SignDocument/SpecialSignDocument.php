@@ -20,16 +20,16 @@ class SignDocument extends SpecialPage {
      * Constructor
      */
     function SignDocument() {
-		SpecialPage::SpecialPage( 'SignDocument' );
-		self::loadMessages();
+		SpecialPage::SpecialPage( 'SignDocument', 'sigadmin' );
+		wfLoadExtensionMessages('SpecialSignDocument');
 		$this->includable( true );
 	}
 
 	function execute($par = null) {
-		global $wgOut, $wgRequest;
+		global $wgOut, $wgRequest, $wgUser;
 
 		$this->setHeaders();
-
+		if ( $wgUser->isAllowed( 'sigadmin' ) ) {
 		$this->mDocumentId = (int) $wgRequest->getVal( 'doc', null );
 		
 		if ( $this->mDocumentId && !is_null($wgRequest->getVal( 'viewsigs' )) ) {
@@ -46,6 +46,10 @@ class SignDocument extends SpecialPage {
 		}
 		else {
 			$this->dealWithPost();
+		}
+			}
+		else {
+		$wgOut->permissionRequired( 'sigadmin' );
 		}
 	}
 
@@ -74,7 +78,6 @@ class SignDocument extends SpecialPage {
 		$wgOut->addHTML( $out );
 	}
 
-	
 	function buildDocSelector( ) {
 		$id = 'mw-SignDocument-docselector';
 
@@ -243,7 +246,6 @@ class SignDocument extends SpecialPage {
 						$markPrivate,
 						$markPrivate,
 						false);
-																								
 		}
 			
 		$out .= '</td></tr>';
@@ -292,19 +294,6 @@ class SignDocument extends SpecialPage {
 		
 		$wgOut->addWikiText( wfMsg( 'sig-success' ) );
 	}
-																																																																		
-	function loadMessages() {
-		static $messagesLoaded = false;
-		global $wgMessageCache;
-		
-		if ( $messagesLoaded ) return;
-		$messagesLoaded = true;
-
-		require( dirname( __FILE__ ) . '/SpecialSignDocument.i18n.php' );
-		foreach ( $allMessages as $lang => $langMessages ) {
-			$wgMessageCache->addMessages( $langMessages, $lang );
-		}
-	}																														            
 }
 
 /**
@@ -351,8 +340,6 @@ class SignatureViewer {
 		$wgOut->addHTML( '</fieldset>' );
 
 		$wgOut->addHTML( $this->getFieldSelector() );
-
-		
 	}
 
 	private function setUp() {
@@ -417,7 +404,6 @@ class SignatureViewer {
 		return $out;
 	}
 
-	
 	private function getFieldSelector() {
 		global $wgTitle;
 		$out = '';
@@ -494,7 +480,6 @@ class SignatureViewer {
 		$out .= $this->getSigCell( 'age', $sig->getBday(), $del );
 		$out .= $this->getSigCell( 'ip', $sig->getIp(), $del );
 		$out .= $this->getSigCell( 'agent', $sig->getAgent(), $del );
-		
 
 		return $out . '</tr>' ;
 	}
@@ -524,7 +509,6 @@ class SignatureViewer {
 			$wgOut->permissionRequired( 'sigadmin' );
 			return;
 		}
-			
 
 		$sig = SignDocumentSignature::newFromDB( $wgRequest->getVal('detail') );
 
@@ -538,7 +522,6 @@ class SignatureViewer {
 		$wgOut->addHTML( $this->getDetailTable( $sig ) );
 
 		$wgOut->addHTML( $this->runDetailUniqueQuery( $sig ) );
-		
 	}
 
 	private function getDetailReviewForm( $sig ) {
@@ -683,6 +666,4 @@ class SignatureViewer {
 					
 		return $out;
 	}
-	
 }
-?>

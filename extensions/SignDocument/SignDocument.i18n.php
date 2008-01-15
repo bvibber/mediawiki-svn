@@ -1,114 +1,118 @@
 <?php
-$allMessages = array(
-	'en' => array(
-		'signaturelogpage'      => 'Signature Log',
-		'signaturelogpagetext'  => 'This is a log of all signatures added to documents via [[Special:SignDocument]].',
-		'signaturelogentry'     => 'signed the document $1',
-	),
 
-	'ar' => array(
-		'signaturelogpage' => 'سجل التوقيع',
-		'signaturelogpagetext' => 'هذا سجل بكل التوقيعات التي أضيفت إلى الوثائق من خلال [[Special:SignDocument]].',
-		'signaturelogentry' => 'وقع الوثيقة $1',
-	),
+/*Intersationalizaton file for Signdocument extension
+/* @MessagesGroups SignDocument
+*/
 
-	'de' => array(
-		'signaturelogpage'      => 'Unterschrifts-Logbuch',
-		'signaturelogpagetext'  => 'Dies ist das Unterschrifts-Logbuch für Dokumente, die über die Seite [[{{ns:special}}:SignDocument]] unterschrieben werden können.',
-		'signaturelogentry'     => 'hat das Dokument $1 unterschrieben',
-	),
+$messages = array();
+$messages['en'] = array(
+	'signaturelogpage'      => 'Signature Log',
+	'signaturelogpagetext'  => 'This is a log of all signatures added to documents via [[Special:SignDocument]].',
+	'signaturelogentry'     => 'signed the document $1',
+	);
 
-	'fr' => array(
-		'signaturelogpage' => 'Journal des signatures',
-		'signaturelogpagetext' => 'Ceci est le journal de toutes les signatures ajoutées aux documents via [[Special:SignDocument]].',
-		'signaturelogentry' => 'a signé le document $1.',
-	),
+$messages['ar'] = array(
+	'signaturelogpage' => 'سجل التوقيع',
+	'signaturelogpagetext' => 'هذا سجل بكل التوقيعات التي أضيفت إلى الوثائق من خلال [[Special:SignDocument]].',
+	'signaturelogentry' => 'وقع الوثيقة $1',
+	);
 
-	'gl' => array(
-		'signaturelogpage' => 'Rexistro de Sinaturas',
-		'signaturelogpagetext' => 'Este é un rexistro de todas as sinaturas engadidas aos documentos mediante [[Special:SignDocument]].',
-		'signaturelogentry' => 'asinou o documento $1',
-	),
+$messages['de'] = array(
+	'signaturelogpage'      => 'Unterschrifts-Logbuch',
+	'signaturelogpagetext'  => 'Dies ist das Unterschrifts-Logbuch für Dokumente, die über die Seite [[{{ns:special}}:SignDocument]] unterschrieben werden können.',
+	'signaturelogentry'     => 'hat das Dokument $1 unterschrieben',
+	);
 
-	'hsb' => array(
-		'signaturelogpage' => 'Proatokol podpisow',
-		'signaturelogpagetext' => 'Tio estas protokol wšěch podpisow, kotrež buchu přez [[Special:SignDocument]] dokumentam přidate.',
-		'signaturelogentry' => 'je dokument $1 podpisał',
-	),
+$messages['fr'] = array(
+	'signaturelogpage' => 'Journal des signatures',
+	'signaturelogpagetext' => 'Ceci est le journal de toutes les signatures ajoutées aux documents via [[Special:SignDocument]].',
+	'signaturelogentry' => 'a signé le document $1.',
+	);
 
-	'nl' => array(
-		'signaturelogpage'      => 'Logboek ondertekeningen',
-		'signaturelogpagetext'  => 'Dit is een logboek van alle ondertekeningen van documenten via [[Special:SignDocument]].',
-		'signaturelogentry'     => 'ondertekende het document $1',
-	),
+$messages['gl'] = array(
+	'signaturelogpage' => 'Rexistro de Sinaturas',
+	'signaturelogpagetext' => 'Este é un rexistro de todas as sinaturas engadidas aos documentos mediante [[Special:SignDocument]].',
+	'signaturelogentry' => 'asinou o documento $1',
+	);
 
-	'no' => array(
-		'signaturelogpage' => 'Signaturlogg',
-		'signaturelogpagetext' => 'Dette er en logg over alle signaturer lagt til dokumenter via [[Special:SignDocument]].',
-		'signaturelogentry' => 'signerte dokumentet $1',
-	),
+$messages['hsb'] = array(
+	'signaturelogpage' => 'Proatokol podpisow',
+	'signaturelogpagetext' => 'Tio estas protokol wšěch podpisow, kotrež buchu přez [[Special:SignDocument]] dokumentam přidate.',
+	'signaturelogentry' => 'je dokument $1 podpisał',
+	);
 
-	'oc' => array(
-		'signaturelogpage' => 'Jornal de las signaturas',
-		'signaturelogpagetext' => 'Aquò es lo jornal de totas las signaturas ajustadas als documents via [[Special:SignDocument]].',
-		'signaturelogentry' => 'a signat lo document $1.',
-	),
+$messages['nl'] = array(
+	'signaturelogpage'      => 'Logboek ondertekeningen',
+	'signaturelogpagetext'  => 'Dit is een logboek van alle ondertekeningen van documenten via [[Special:SignDocument]].',
+	'signaturelogentry'     => 'ondertekende het document $1',
+	);
 
-	'pms' => array(
-		'signaturelogpage' => 'Registr dle firme',
-		'signaturelogpagetext' => 'Sòn a l\'é ël registr dle firme giontà ant sëj document ën dovrand la fonsion ëd [[Special:SignDocument|firma digital]].',
-		'signaturelogentry' => 'a l\'é firmasse ël document $1',
-	),
+$messages['no'] = array(
+	'signaturelogpage' => 'Signaturlogg',
+	'signaturelogpagetext' => 'Dette er en logg over alle signaturer lagt til dokumenter via [[Special:SignDocument]].',
+	'signaturelogentry' => 'signerte dokumentet $1',
+	);
+
+$messages['oc'] = array(
+	'signaturelogpage' => 'Jornal de las signaturas',
+	'signaturelogpagetext' => 'Aquò es lo jornal de totas las signaturas ajustadas als documents via [[Special:SignDocument]].',
+	'signaturelogentry' => 'a signat lo document $1.',
+	);
+
+$messages['pms'] = array(
+	'signaturelogpage' => 'Registr dle firme',
+	'signaturelogpagetext' => 'Sòn a l\'é ël registr dle firme giontà ant sëj document ën dovrand la fonsion ëd [[Special:SignDocument|firma digital]].',
+	'signaturelogentry' => 'a l\'é firmasse ël document $1',
+	);
 
 /** Slovak (Slovenčina)
  * @author Helix84
  */
-	'sk' => array(
-		'signaturelogpage'     => 'Záznam podpisov',
-		'signaturelogpagetext' => 'Toto je záznam všetkých podpisov, ktoré boli pridané do dokumentov prostredníctvom [[Special:SignDocument]].',
-		'signaturelogentry'    => 'podpísal dokument $1',
-	),
+$messages['sk'] = array(
+	'signaturelogpage'     => 'Záznam podpisov',
+	'signaturelogpagetext' => 'Toto je záznam všetkých podpisov, ktoré boli pridané do dokumentov prostredníctvom [[Special:SignDocument]].',
+	'signaturelogentry'    => 'podpísal dokument $1',
+	);
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-	'stq' => array(
-		'signaturelogpage'     => 'Unnerschrifts-Logbouk',
-		'signaturelogpagetext' => 'Dit is dät Unnerschrifts-Logbouk foar Dokumente, do der uur ju Siede [[{{ns:special}}:SignDocument]] unnerschrieuwen wäide konnen.',
-		'signaturelogentry'    => 'häd dät Dokument $1 unnerschrieuwen',
-	),
+$messages['stq'] = array(
+	'signaturelogpage'     => 'Unnerschrifts-Logbouk',
+	'signaturelogpagetext' => 'Dit is dät Unnerschrifts-Logbouk foar Dokumente, do der uur ju Siede [[{{ns:special}}:SignDocument]] unnerschrieuwen wäide konnen.',
+	'signaturelogentry'    => 'häd dät Dokument $1 unnerschrieuwen',
+	);
 
 /** Volapük (Volapük)
  * @author Malafaya
  */
-	'vo' => array(
-		'sign-realname'                => 'Nem:',
-		'sign-viewfield-realname'      => 'Nem',
-		'sign-viewfield-reviewcomment' => 'Küpet',
-	),
+$messages['vo'] = array(
+	'sign-realname'                => 'Nem:',
+	'sign-viewfield-realname'      => 'Nem',
+	'sign-viewfield-reviewcomment' => 'Küpet',
+	);
 
-	'yue' => array(
-		'signaturelogpage'      => '簽名日誌',
-		'signaturelogpagetext'  => '呢個係全部經過[[Special:SignDocument]]簽過名嘅文件嘅日誌。',
-		'signaturelogentry'     => '簽咗$1文件',
-	),
+$messages['yue'] = array(
+	'signaturelogpage'      => '簽名日誌',
+	'signaturelogpagetext'  => '呢個係全部經過[[Special:SignDocument]]簽過名嘅文件嘅日誌。',
+	'signaturelogentry'     => '簽咗$1文件',
+	);
 
-	'zh-hans' => array(
-		'signaturelogpage'      => '签署日志',
-		'signaturelogpagetext'  => '这个是所有经过[[Special:SignDocument]]签署文件的日志。',
-		'signaturelogentry'     => '已经签署$1文件',
-	),
+$messages['zh-hans'] = array(
+	'signaturelogpage'      => '签署日志',
+	'signaturelogpagetext'  => '这个是所有经过[[Special:SignDocument]]签署文件的日志。',
+	'signaturelogentry'     => '已经签署$1文件',
+	);
 
-	'zh-hant' => array(
-		'signaturelogpage'      => '簽署日誌',
-		'signaturelogpagetext'  => '這個是所有經過[[Special:SignDocument]]簽署文件的日誌。',
-		'signaturelogentry'     => '已經簽署$1文件',
-	),
-);
+$messages['zh-hant'] = array(
+	'signaturelogpage'      => '簽署日誌',
+	'signaturelogpagetext'  => '這個是所有經過[[Special:SignDocument]]簽署文件的日誌。',
+	'signaturelogentry'     => '已經簽署$1文件',
+	);
 
-$allMessages['zh'] = $allMessages['zh-hans'];
-$allMessages['zh-cn'] = $allMessages['zh-hans'];
-$allMessages['zh-hk'] = $allMessages['zh-hant'];
-$allMessages['zh-sg'] = $allMessages['zh-hans'];
-$allMessages['zh-tw'] = $allMessages['zh-hant'];
-$allMessages['zh-yue'] = $allMessages['yue'];
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-tw'] = $messages['zh-hant'];
+$messages['zh-yue'] = $messages['yue'];

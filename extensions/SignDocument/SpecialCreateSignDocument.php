@@ -5,32 +5,30 @@ require_once( 'SignDocumentHelpers.php' );
 
 //TODO: Doc
 class CreateSignDocument extends SpecialPage {
-	
 	/**
      * Constructor
      */
-    function __construct() {
-		parent::__construct( 'CreateSignDocument', 'createsigndocument' );
-		self::loadMessages();
+    function CreateSignDocument() {
+		SpecialPage::SpecialPage( 'CreateSignDocument', 'createsigndocument' );
+		wfLoadExtensionMessages('CreateSignDocument');
 	}
 
-	function execute($par = null) {
+	function execute($par) {
 		global $wgOut, $wgRequest, $wgUser;
-
-		if (!$wgUser->isAllowed( 'createsigndocument' )) {
-			$wgOut->permissionRequired( 'createsigndocument' );
-			return;
-		}
-		
 		$this->setHeaders();
-
+		if ($wgUser->isAllowed( 'createsigndocument' )) {
+		
 		if ( $wgRequest->wasPosted() )
 			$this->dealWithPost();
 		else
 			$this->buildCreateForm();
-			
-			
-	}
+		}
+
+		else {
+			$wgOut->permissionRequired( 'createsigndocument' );
+			return;
+		}
+}
 
 	function buildCreateForm() {
 		global $wgOut, $wgGroupPermissions, $wgTitle;
@@ -96,7 +94,6 @@ class CreateSignDocument extends SpecialPage {
 				'value' => $a) + $selectedAttr, $a );
 			$selectedAttr = array();
 		}
-
 		return $ret;
 	}
 
@@ -125,20 +122,4 @@ class CreateSignDocument extends SpecialPage {
 		$wgOut->addWikiText( wfMsg("createsigndoc-error-$type", $args) );
 		return;
 	}
-
-	function loadMessages() {
-		static $messagesLoaded = false;
-		global $wgMessageCache;
-		
-		if ( $messagesLoaded ) return;
-		$messagesLoaded = true;
-
-		require( dirname( __FILE__ ) . '/SpecialCreateSignDocument.i18n.php' );
-		foreach ( $allMessages as $lang => $langMessages ) {
-			$wgMessageCache->addMessages( $langMessages, $lang );
-		}
-	}																														            
-										  
-
 }
-?>

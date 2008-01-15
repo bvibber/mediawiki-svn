@@ -4,7 +4,17 @@
  * Sets up the extension.
  */
 	
-if (!defined('MEDIAWIKI')) die();
+if (!defined('MEDIAWIKI')) {
+        echo <<<EOT
+To install my extension, put the following line in LocalSettings.php:
+require_once( "$IP/extensions/Oversight/WipeRevision.php" );
+EOT;
+        exit( 1 );
+}
+
+if ( !function_exists( 'extAddSpecialPage' ) ) {
+	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
+}
 
 /**
  * Adds two special pages, Special:SignDocument and Special:CreateSignDocument, which
@@ -18,59 +28,36 @@ if (!defined('MEDIAWIKI')) die();
  */
 		 
 
-$wgExtensionFunctions[] = 'wfSpecialSignDocument';
-$wgExtensionFunctions[] = 'wfSpecialCreateSignDocument';
+#$wgExtensionFunctions[] = 'wfSpecialSignDocument';
+#$wgExtensionFunctions[] = 'wfSpecialCreateSignDocument';
 $wgExtensionFunctions[] = 'wfCreateSignatureLog';
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'SignDocument',
 	'author' => 'Daniel Cannon',
 	'description' => 'Enables document signing',
+	'version' => '2008-01-15',
 );
 
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['SignDocument'] = $dir . 'SignDocument.i18n.php';
+$wgExtensionMessagesFiles['SpecialSignDocument'] = $dir . 'SpecialSignDocument.i18n.php';
+$wgExtensionMessagesFiles['CreateSignDocument'] = $dir . 'SpecialCreateSignDocument.i18n.php';
+extAddSpecialPage( $dir . 'SpecialSignDocument.php', 'SignDocument', 'SignDocument' );
+extAddSpecialPage( $dir. 'SpecialCreateSignDocument.php', 'CreateSignDocument', 'CreateSignDocument' );
 /* Set up sigadmin permissions. */
+$wgAvailableRights[] = 'sigadmin';
+$wgAvailableRights[] = 'createsigndocument';
+$wgGroupPermissions['*']['sigadmin'] = false;
 $wgGroupPermissions['sigadmin']['sigadmin'] = true;
+$wgGroupPermissions['*']['createsigndocument'] = false;
 $wgGroupPermissions['sigadmin']['createsigndocument'] = true;
-
-/**
- * Register Special:SignDocument
- */
-function wfSpecialSignDocument() {
-	global $IP, $wgMessageCache;
-
-	$GLOBALS['wgAutoloadClasses']['SignDocument'] = dirname( __FILE__ ) .
-					        '/SpecialSignDocument.php';
-
-	$GLOBALS['wgSpecialPages']['signdocument'] = array( /*class*/ 'SignDocument',
-			/*name*/ 'signdocument', /* permission */'', /*listed*/ true,
-			/*function*/ false, /*file*/ false );
-													
-}
-
-/**
- * Register Special:CreateSignDocument
- */
-function wfSpecialCreateSignDocument() {
-	# Register special page
-	if ( !function_exists( 'extAddSpecialPage' ) ) {
-		require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
-	}
-	extAddSpecialPage( dirname(__FILE__) . '/SpecialCreateSignDocument.php', 
-			'createsigndocument', 'CreateSignDocument' );
-}
 
 /**
  * Create the Signature log.
  */
 function wfCreateSignatureLog() {
-	require_once( 'SignDocument.i18n.php' );
-
-	# Add messages
-	global $wgMessageCache, $wgNewuserlogMessages;
-
-	foreach( $allMessages as $key => $value ) {
-		$wgMessageCache->addMessages( $value, $key );
-	}
+	wfLoadExtensionMessages('SignDocument');
 	
 	# Add a new log type
 	global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
@@ -79,7 +66,6 @@ function wfCreateSignatureLog() {
 	$wgLogNames['signature']           = 'signaturelogpage';
 	$wgLogHeaders['signature']         = 'signaturelogpagetext';
 	$wgLogActions['signature/sign']    = 'signaturelogentry';
-
 }
 
 /**
@@ -94,4 +80,3 @@ function wfLogSignDocumentSignature( $sig ) {
 		'id=' . $sig->mId );
 
 }
-?>
