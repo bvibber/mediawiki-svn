@@ -2,7 +2,7 @@
 
 class LinkSearchSpecialPage extends SpecialPage {
 	public function __construct() {
-		SpecialPage::SpecialPage( 'Linksearch' );
+		parent::__construct( 'Linksearch' );
 	}
 
 	function execute( $par ) {
@@ -76,6 +76,10 @@ class LinkSearchPage extends QueryPage {
 		$this->mProt = $prot;
 	}
 
+	function getName() { 	 
+		return 'Linksearch'; 	 
+	}
+	
 	/**
 	 * Disable RSS/Atom feeds
 	 */
