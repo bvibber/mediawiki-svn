@@ -5,19 +5,19 @@
 
 $messages = array();
 
-$messages['en'] = array( 
+$messages['en'] = array(
 	'createsigndocument'         => 'Enable Document Signing',
-	'createsigndoc-head'         => 
+	'createsigndoc-head'         =>
 "Use this form to create a 'Sign Document' page for the provided page, such that
 users will be able to sign it via [[Special:SignDocument]]. Please specify the name
-of the page on which you wish to enable digital signing, members of which 
-usergroup should be allowed to sign it, which fields you wish to be visible to users 
-and which should be optional, a minimum age to require users to be to sign the 
-document (no minimum if omitted); and a brief introductory text describing the 
+of the page on which you wish to enable digital signing, members of which
+usergroup should be allowed to sign it, which fields you wish to be visible to users
+and which should be optional, a minimum age to require users to be to sign the
+document (no minimum if omitted); and a brief introductory text describing the
 document and providing instructions to users.
 
 <b>There is presently no way to delete or modify signature documents after they are
-created</b> without direct database access. Additionally, the text of the page 
+created</b> without direct database access. Additionally, the text of the page
 displayed on the signature page will be the ''current'' text of the page, regardless
 of changes made to it after today. Please be absolutely positive that the document
 is to a point of stability for signing, and please also be sure that you specify
@@ -38,13 +38,15 @@ all fields exactly as they should be, ''before submitting this form''.",
 	'createsigndoc-error-pagenoexist' => 'Error: The page [[$1]] does not exist.',
 	'createsigndoc-success'      => 'Document signing has been successfully enabled
 on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} this page].',
-	);
+);
+
 $messages['af'] = array(
 	'createsigndoc-pagename' => 'Bladsy:',
-	);
+);
+
 $messages['ang'] = array(
 	'createsigndoc-pagename' => 'Tramet:',
-	);
+);
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -52,14 +54,14 @@ $messages['ar'] = array(
 	'createsigndocument'              => 'فعل توقيع الوثيقة',
 	'createsigndoc-head'              => "استخدم هذه الوثيقة لإنشاء صفحة 'Sign Document' للصفحة المعطاة، بحيث
 يمكن للمستخدمين توقيعها من خلال [[Special:SignDocument]]. من فضلك حدد اسم
-الصفحة التي تود تفعيل التوقيع الرقمي عليها، أعضاء أي 
-مجموعة مستخدم مسموح لهم بتوقيعها، أي حقول تود أن تكون مرئية للمستخدمين 
-وأي يجب أن تكون اختيارية، عمر أدنى لمستخدمين ليمكن لهم توقيع 
-الوثيقة (لا حد أدنى لو حذفت)، ونص تقديمي مختصر يصف 
+الصفحة التي تود تفعيل التوقيع الرقمي عليها، أعضاء أي
+مجموعة مستخدم مسموح لهم بتوقيعها، أي حقول تود أن تكون مرئية للمستخدمين
+وأي يجب أن تكون اختيارية، عمر أدنى لمستخدمين ليمكن لهم توقيع
+الوثيقة (لا حد أدنى لو حذفت)، ونص تقديمي مختصر يصف
 الوثيقة ويوفر التعليمات للمستخدمين.
 
 <b>لا توجد حاليا أية طريقة لحذف أو تعديل توقيعات الوثائق بعد
-إنشائها</b> بدون دخول قاعدة البيانات مباشرة. إضافة إلى ذلك، نص الصفحة 
+إنشائها</b> بدون دخول قاعدة البيانات مباشرة. إضافة إلى ذلك، نص الصفحة
 المعروض في صفحة التوقيع سيكون النص ''الحالي'' للصفحة، بغض النظر عن
 التغييرات بها بعد اليوم. من فضلك كن متأكدا تماما من أن الوثيقة
 وصلت لنقطة ثبات للتوقيع، ومن فضلك أيضا تأكد أنك حددت
@@ -79,14 +81,14 @@ $messages['ar'] = array(
 	'createsigndoc-error-generic'     => 'خطأ: $1',
 	'createsigndoc-error-pagenoexist' => 'خطأ: الصفحة [[$1]] غير موجودة.',
 	'createsigndoc-success'           => 'توقيع الوثيقة تم تفعيله بنجاح على [[$1]]. لاختباره، من فضلك زر [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} هذه الصفحة].',
-	);
+);
 
 $messages['bcl'] = array(
 	'createsigndoc-pagename' => 'Páhina:',
 	'createsigndoc-bday' => 'Kamondágan:',
 	'createsigndoc-create' => 'Maggibo',
 	'createsigndoc-error-generic' => 'Salâ: $1',
-	);
+);
 
 /** Bulgarian (Български)
  * @author DCLXVI
@@ -105,7 +107,7 @@ $messages['bg'] = array(
 	'createsigndoc-create'            => 'Създаване',
 	'createsigndoc-error-generic'     => 'Грешка: $1',
 	'createsigndoc-error-pagenoexist' => 'Грешка: Страницата [[$1]] не съществува.',
-	);
+);
 
 /** Greek (Ελληνικά)
  * @author Consta
@@ -121,7 +123,7 @@ $messages['el'] = array(
 	'createsigndoc-introtext'         => 'Εισαγωγή:',
 	'createsigndoc-error-generic'     => 'Σφάλμα: $1',
 	'createsigndoc-error-pagenoexist' => 'Σφάλμα: Η σελίδα [[$1]] δεν υπάρχει.',
-	);
+);
 
 $messages['ext'] = array(
 	'createsigndoc-pagename' => 'Páhina:',
@@ -129,7 +131,7 @@ $messages['ext'] = array(
 	'createsigndoc-optional' => 'Ocional',
 	'createsigndoc-create' => 'Creal',
 	'createsigndoc-error-pagenoexist' => 'Marru: La páhina [[$1]] nu desisti.',
-	);
+);
 
 /** French (Français)
  * @author Sherbrooke
@@ -155,7 +157,7 @@ $messages['fr'] = array(
 	'createsigndoc-error-generic'     => 'Erreur : $1',
 	'createsigndoc-error-pagenoexist' => "La page [[$1]] n'existe pas.",
 	'createsigndoc-success'           => "L'authentification des documents est activée sur [[$1]]. Pour la tester, voir [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} cette page].",
-	);
+);
 
 /** Galician (Galego)
  * @author Alma
@@ -189,7 +191,7 @@ tamén de que especifica todos os campos exactamente como han de ser ''antes de 
 	'createsigndoc-error-generic'     => 'Erro: $1',
 	'createsigndoc-error-pagenoexist' => 'Erro: A páxina [[$1]] non existe.',
 	'createsigndoc-success'           => 'O documento asinado foi habilitado con éxito en [[$1]]. Para comprobalo, visite [{{SERVER}}{{localurl: Special: SignDocument|doc=$2}} esta páxina].',
-	);
+);
 
 $messages['hsb'] = array(
 	'createsigndocument' => 'Podpisanje dokumentow zmóžnić',
@@ -211,12 +213,12 @@ $messages['hsb'] = array(
 	'createsigndoc-error-generic' => 'Zmylk: $1',
 	'createsigndoc-error-pagenoexist' => 'Zmylk: Strona [[$1]] njeeksistuje.',
 	'createsigndoc-success' => 'Podpisanje dokumentow bu wuspěšnje na [[$1]]aktiwizowane. Zo by je testował, wopytaj prošu [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} tutu stronu:].',
-	);
+);
 
 $messages['la'] = array(
 	'createsigndoc-pagename' => 'Pagina:',
 	'createsigndoc-error-pagenoexist' => 'Error: Pagina [[$1]] non existit.',
-	);
+);
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
@@ -231,11 +233,11 @@ $messages['lb'] = array(
 	'createsigndoc-hidden'            => 'Verstoppt',
 	'createsigndoc-error-generic'     => 'Feeler: $1',
 	'createsigndoc-error-pagenoexist' => "Feeler: D'Säit [[$1]] gëtt et net.",
-	);
+);
 
-$messages['nl'] = array( 
+$messages['nl'] = array(
 	'createsigndocument'         => 'Documentondertekening inschakelen',
-	'createsigndoc-head'         => 
+	'createsigndoc-head'         =>
 "Gebruik dit formulier om een pagina 'Document ondertekenen' voor een gegeven
 pagina te maken, zodat gebruikers het kunnen ondertekenen via
 [[Special:SignDocument]]. Geef alstublieft op voor welke pagina u digitaal
@@ -269,7 +271,7 @@ en zorg er alstublieft voor dat alle velden de juiste waarden hebben
 	'createsigndoc-error-pagenoexist' => 'Error: De pagina [[$1]] bestaat niet.',
 	'createsigndoc-success'      => 'Documentondertekening is ingeschakeld op
 [[$1]]. Ga alstublieft naar [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} deze pagina] om het te testen.',
-	);
+);
 
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
@@ -294,7 +296,7 @@ $messages['no'] = array(
 	'createsigndoc-error-generic'     => 'Feil: $1',
 	'createsigndoc-error-pagenoexist' => 'Feil: Siden [[$1]] eksisterer ikke.',
 	'createsigndoc-success'           => 'Dokumentsignering har blitt slått på for [[$1]]. For å signere det, besøk [{{fullurl:Special:SignDocument|doc=$2}} denne siden].',
-	);
+);
 
 /** Occitan (Occitan)
  * @author Cedric31
@@ -317,7 +319,7 @@ $messages['oc'] = array(
 	'createsigndoc-error-generic'     => 'Error : $1',
 	'createsigndoc-error-pagenoexist' => 'La pagina [[$1]] existís pas.',
 	'createsigndoc-success'           => "L'autentificacion dels documents es activada sus [[$1]]. Per la testar, vejatz [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} aquesta pagina].",
-	);
+);
 
 $messages['pl'] = array(
 	'createsigndoc-pagename' => 'Strona:',
@@ -326,25 +328,25 @@ $messages['pl'] = array(
 	'createsigndoc-bday' => 'Data urodzenia:',
 	'createsigndoc-error-generic' => 'Błąd: $1',
 	'createsigndoc-error-pagenoexist' => 'Błąd: Strona [[$1]] nie istnieje',
-	);
+);
 
 /** Piemontèis (Piemontèis)
  * @author Bèrto 'd Sèra
  */
 $messages['pms'] = array(
 	'createsigndocument'              => 'Visché la firma digital ëd na pàgina coma document',
-	'createsigndoc-head'              => "Ch'a dòvra la domanda ambelessì sota për visché l'opsion ëd 'Firma Digital' ëd n'artìcol, ch'a lassa che j'utent a peulo firmé ën dovrand la fonsion ëd [[Special:SignDocument|firma digital]]. 
+	'createsigndoc-head'              => "Ch'a dòvra la domanda ambelessì sota për visché l'opsion ëd 'Firma Digital' ëd n'artìcol, ch'a lassa che j'utent a peulo firmé ën dovrand la fonsion ëd [[Special:SignDocument|firma digital]].
 
 Për piasì, ch'an buta:
-*ël nòm dl'artìcol andova ch'a veul visché la fonsion ëd firma digital, 
-*ij component ëd che partìa d'utent ch'a resto aotorisà a firmé, 
-*che camp ch'a debio smon-se a j'utent e coj ch'a debio resté opsionaj, 
-*n'eta mìnima përché n'utent a peula firmé (a peulo tuti s'a buta nen ël mìnim); 
-*un cit ëspiegon ch'a disa lòn ch'a l'é ës document e ch'a-j disa a j'utent coma fé. 
+*ël nòm dl'artìcol andova ch'a veul visché la fonsion ëd firma digital,
+*ij component ëd che partìa d'utent ch'a resto aotorisà a firmé,
+*che camp ch'a debio smon-se a j'utent e coj ch'a debio resté opsionaj,
+*n'eta mìnima përché n'utent a peula firmé (a peulo tuti s'a buta nen ël mìnim);
+*un cit ëspiegon ch'a disa lòn ch'a l'é ës document e ch'a-j disa a j'utent coma fé.
 
 Anans che dovré sossì ch'a ten-a present che:
-#<b>Për adess a-i é gnun-a manera dë scancelé ò modifiché ij document ch'as mando an firma, na vira ch'a sio stait creà</b> sensa dovej travajé ant sla base dat da fòra. 
-#Ël test smonù ant sla pàgina an firma a resta col ëd quand as anandio a cheuje le firme, donca la version ''corenta'' al moment ch'as fa sossì, e qualsëssìa modìfica ch'as fasa peuj '''an firma a la riva pì nen'''. 
+#<b>Për adess a-i é gnun-a manera dë scancelé ò modifiché ij document ch'as mando an firma, na vira ch'a sio stait creà</b> sensa dovej travajé ant sla base dat da fòra.
+#Ël test smonù ant sla pàgina an firma a resta col ëd quand as anandio a cheuje le firme, donca la version ''corenta'' al moment ch'as fa sossì, e qualsëssìa modìfica ch'as fasa peuj '''an firma a la riva pì nen'''.
 
 Për piasì, ch'a varda d'avej controlà sò test coma ch'as dev anans che mandelo an firma, e ch'a varda che tuti ij camp a sio coma ch'a-j ven-o bin a chiel, ''anans dë mandé la domanda''.",
 	'createsigndoc-pagename'          => 'Pàgina:',
@@ -362,7 +364,7 @@ Për piasì, ch'a varda d'avej controlà sò test coma ch'as dev anans che mande
 	'createsigndoc-error-generic'     => 'Eror: $1',
 	'createsigndoc-error-pagenoexist' => "Eror: a-i é pa gnun-a pàgina ch'as ciama [[$1]].",
 	'createsigndoc-success'           => "La procedura për buté an firma [[$1]] a l'é andaita a bonfin. Për provela, për piasì ch'a varda [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} ambelessì].",
-	);
+);
 
 /** Slovak (Slovenčina)
  * @author Helix84
@@ -393,12 +395,12 @@ používateľom inštrukcie.
 	'createsigndoc-error-generic'     => 'Chyba: $1',
 	'createsigndoc-error-pagenoexist' => 'Chyba: Stránka [[$1]] neexistuje.',
 	'createsigndoc-success'           => 'Podpisovanie dokumentov bolo úspešne zapnuté pre stránku  [[$1]]. Otestovať ho môžete na [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} tejto stránke].',
-	);
+);
 
 $messages['ss'] = array(
 	'createsigndoc-phone' => 'Inombolo yelucingo:',
 	'createsigndoc-create' => 'Kúdála',
-	);
+);
 
 /** Volapük (Volapük)
  * @author Malafaya
@@ -406,4 +408,4 @@ $messages['ss'] = array(
 $messages['vo'] = array(
 	'createsigndoc-pagename'      => 'Pad:',
 	'createsigndoc-error-generic' => 'Pöl: $1',
-	);
+);

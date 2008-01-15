@@ -1,16 +1,17 @@
-<?PHP
+<?php
 
 /* Messages for Special:SignDocument.
-	 * @addtogroup Extensions
+ * @addtogroup Extensions
  */
 
 $messages = array();
-$messages['en'] = array( 
+
+$messages['en'] = array(
 	'signdocument'         => 'Sign Document',
 	'sign-nodocselected'   => 'Please select the document you wish to sign.',
 	'sign-selectdoc'       => 'Document:',
-	'sign-docheader'       => 
-'<div class="noarticletext">Please use this form to sign the document "[[$1]]," ' . 
+	'sign-docheader'       =>
+'<div class="noarticletext">Please use this form to sign the document "[[$1]]," ' .
 'shown below. Please read through the entire document, and if you wish to indicate your '.
 'support for it, please fill in the required fields to sign it.</div>',
 	'sign-error-nosuchdoc' => 'The document you requested ($1) does not exist.',
@@ -24,7 +25,7 @@ $messages['en'] = array(
 	'sign-bday'            => 'Age:',
 	'sign-email'           => 'E-mail address:',
 	'sign-indicates-req'   => '<small><i><font color="red">*</font> indicates required field.</i></small>',
-	'sign-hide-note'       => 
+	'sign-hide-note'       =>
 '<small><i><font color="red">**</font> Note: Unlisted information will still be visible to moderators.</i></small>',
 	'sign-list-anonymous'  => 'List anonymously',
 	'sign-list-hideaddress'=> 'Do not list address',
@@ -39,10 +40,10 @@ $messages['en'] = array(
 'below and clicking "Sign Document." Please ' .
 'ensure that your personal information is correct and that we have some way to contact you ' .
 'to verify your identity. Note that your [[wikipedia:IP address|IP address]] ' .
-'and other identifying information will be recorded by this form and used by moderators ' . 
+'and other identifying information will be recorded by this form and used by moderators ' .
 'to eliminate duplicate signatures and confirm the correctness of your personal information. ' .
-'As the use of open and anonymizing proxies inhibits our ability to perform this task, ' . 
-'signatures from such proxies will likely not be counted. If you are currently connected ' . 
+'As the use of open and anonymizing proxies inhibits our ability to perform this task, ' .
+'signatures from such proxies will likely not be counted. If you are currently connected ' .
 'through a proxy server, please disconnect from it and use a standard connection while signing. '.
 '<br /><br /> $1',
 	'sig-success'               => 'You have successfully signed the document.',
@@ -102,14 +103,17 @@ $messages['en'] = array(
 	'sign-uniquequery-similaremail'=> 'Similar email',
 	'sign-uniquequery-1signed2'    => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} '.
 	'$1] signed [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
-	);
+);
+
 $messages['af'] = array(
 	'sign-realname' => 'Naam:',
 	'sign-viewfield-realname' => 'Naam',
-	);
+);
+
 $messages['ang'] = array(
 	'sign-realname' => 'Nama:',
-	);
+);
+
 $messages['ar'] = array(
 	'signdocument' => 'توقيع الوثيقة',
 	'sign-nodocselected' => 'من فضلك اختر الوثيقة التي تود توقيعها.',
@@ -190,7 +194,8 @@ $messages['ar'] = array(
 	'sign-uniquequery-similarphone' => 'هاتف مشابه',
 	'sign-uniquequery-similaremail' => 'بريد إلكتروني مشابه',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] وقع [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
-	);
+);
+
 $messages['bcl'] = array(
 	'signdocument' => 'Pirmahan an Dokumento',
 	'sign-selectdoc' => 'Dokumento:',
@@ -204,7 +209,7 @@ $messages['bcl'] = array(
 	'sign-viewfield-age' => 'Edad',
 	'sign-viewfield-reviewcomment' => 'Komento',
 	'sign-review-comment' => 'Komento',
-	);
+);
 
 /** Bulgarian (Български)
  * @author DCLXVI
@@ -243,7 +248,7 @@ $messages['bg'] = array(
 	--></span>',
 	'sign-viewfield-reviewcomment' => 'Коментар',
 	'sign-review-comment'          => 'Коментар',
-	);
+);
 
 /** Greek (Ελληνικά)
  * @author Consta
@@ -270,7 +275,7 @@ $messages['el'] = array(
 	'sign-uniquequery-similarname'    => 'Παρόμοιο όνομα',
 	'sign-uniquequery-similaraddress' => 'Παρόμοια διεύθυνση',
 	'sign-uniquequery-similarphone'   => 'Παρόμοιο τηλέφωνο',
-	);
+);
 
 $messages['ext'] = array(
 	'sign-selectdoc' => 'Decumentu:',
@@ -286,7 +291,8 @@ $messages['ext'] = array(
 	'sign-viewfield-options' => 'Ocionis',
 	'sign-signatures' => 'Firmas',
 	'sign-closed' => 'afechau',
-	);
+);
+
 $messages['fr'] = array(
 	'signdocument' => 'Authentifier le document',
 	'sign-nodocselected' => 'Prière de choisir le document que vous voulez authentifier',
@@ -369,7 +375,8 @@ $1',
 	'sign-uniquequery-similarphone' => 'Numéro de téléphone semblable',
 	'sign-uniquequery-similaremail' => 'Adresse de courriel semblable',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] a authentifié [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
-	);
+);
+
 $messages['gl'] = array(
 	'signdocument' => 'Asine o Documento',
 	'sign-nodocselected' => 'Seleccione o documento que vostede quere asinar.',
@@ -450,7 +457,8 @@ $messages['gl'] = array(
 	'sign-uniquequery-similarphone' => 'Teléfono parecido',
 	'sign-uniquequery-similaremail' => 'Correo electrónico parecido',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] asinado [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
-	);
+);
+
 $messages['hsb'] = array(
 	'signdocument' => 'Dokument podpisać',
 	'sign-nodocselected' => 'Prošu wubjer dokument, kotryž chceš podpisać.',
@@ -531,7 +539,7 @@ $messages['hsb'] = array(
 	'sign-uniquequery-similarphone' => 'Podobne telefonowe čisło',
 	'sign-uniquequery-similaremail' => 'Podobna e-mejlowa adresa',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] je [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2] podpisał.',
-	);
+);
 
 $messages['la'] = array(
 	'sign-realname' => 'Nomen:',
@@ -540,7 +548,7 @@ $messages['la'] = array(
 	'sign-viewfield-city' => 'Urbs',
 	'sign-viewfield-reviewcomment' => 'Sententia',
 	'sign-review-comment' => 'Sententia',
-	);
+);
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
@@ -555,7 +563,7 @@ $messages['lb'] = array(
 	'sign-viewfield-age'           => 'Alter',
 	'sign-viewfield-reviewcomment' => 'Bemierkung',
 	'sign-review-comment'          => 'Bemierkung',
-	);
+);
 
 $messages['nl'] = array(
 	'signdocument' => 'Document ondertekenen',
@@ -637,7 +645,8 @@ $messages['nl'] = array(
 	'sign-uniquequery-similarphone' => 'Gelijkaardige telefoonnummer',
 	'sign-uniquequery-similaremail' => 'Gelijkaardige e-mailadres',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] ondertekende [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
-	);
+);
+
 $messages['no'] = array(
 	'signdocument' => 'Signer dokument',
 	'sign-nodocselected' => 'Vennligst velg dokumentet du ønsker å signere.',
@@ -718,7 +727,7 @@ $messages['no'] = array(
 	'sign-uniquequery-similarphone' => 'Lignende telefonnummer',
 	'sign-uniquequery-similaremail' => 'Lignende e-postadresse',
 	'sign-uniquequery-1signed2' => '[{{fullurl:Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] signerte [{{fullurl:Special:SignDocument|doc=$4&viewsigs}} $2].',
-	);
+);
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -789,7 +798,7 @@ $messages['oc'] = array(
 	'sign-uniquequery-similarphone'   => 'Numèro de telèfon similar',
 	'sign-uniquequery-similaremail'   => 'Adreça de corrièr electronica similara',
 	'sign-uniquequery-1signed2'       => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] a autentificat [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
-	);
+);
 
 $messages['pl'] = array(
 	'sign-viewfield-address' => 'Adres',
@@ -802,7 +811,8 @@ $messages['pl'] = array(
 	'sign-viewfield-age' => 'Wiek',
 	'sign-viewfield-options' => 'Opcje',
 	'sign-review-comment' => 'Komentarz',
-	);
+);
+
 $messages['pms'] = array(
 	'signdocument' => 'Firma digital d\'un document',
 	'sign-nodocselected' => 'Për piasì, ch\'a sërna ël document ch\'a veul firmé.',
@@ -827,9 +837,9 @@ $messages['pms'] = array(
 	'sign-list-hidebday' => 'Pùblica nen l\'età (contut che j\'aministrator ij dat personaj a-j ës-ciàiro franch midem)',
 	'sign-list-hideemail' => 'Pùblica nen l\'adrëssa ëd pòsta eletrònica (contut che j\'aministrator ij dat personaj a-j ës-ciàiro franch midem)',
 	'sign-submit' => 'Ch\'a-i daga \'n colp ambelessì për firmé',
-	'sign-information' => '<div class="noarticletext">Motobin mersì për avej dovrà sò temp a lese ës document-sì. S\'a l\'é d\'acòrdi con lòn ch\'a-i é scrit për piasì ch\'a lo disa ën butand sò dat personaj e dand-ie un colp ansima al boton dla firma.  
+	'sign-information' => '<div class="noarticletext">Motobin mersì për avej dovrà sò temp a lese ës document-sì. S\'a l\'é d\'acòrdi con lòn ch\'a-i é scrit për piasì ch\'a lo disa ën butand sò dat personaj e dand-ie un colp ansima al boton dla firma.
 
-Ch\'a varda che sò dat a sio giust, e che i peulo contatela për verifiché soa identità. Ch\'a ten-a present che soa [[wikipedia:IP address|adrëssa IP]] e dj\'àotre anformassion ansima soa identità a resteran registrà quand a firma e saran dovrà da j\'aministrator për eliminé le firme dobie e confermé che ij dat personaj a sio giust. 
+Ch\'a varda che sò dat a sio giust, e che i peulo contatela për verifiché soa identità. Ch\'a ten-a present che soa [[wikipedia:IP address|adrëssa IP]] e dj\'àotre anformassion ansima soa identità a resteran registrà quand a firma e saran dovrà da j\'aministrator për eliminé le firme dobie e confermé che ij dat personaj a sio giust.
 
 \'\'\'Nòta\'\'\': për via che ën passand për ij \'\'\'proxy duvèrt\'\'\' (ch\'a fan ëvnì anònima la gent); un an permëtt nen da fé sossì, le firme ch\'a rivo ën passand për dij canaj parej as peulo nen contesse. Se ant ës moment-sì chiel/chila a l\'é tacà a \'n proxy, për piasì, \'\'\'për firmé\'\'\' ch\'as dëstaca e \'\'\'ch\'a dòvra na conession normal\'\'\'. <br />$1
 </div>',
@@ -879,10 +889,11 @@ Ch\'a varda che sò dat a sio giust, e che i peulo contatela për verifiché soa
 	'sign-uniquequery-similarphone' => 'Teléfono ch\'a-j ësmija',
 	'sign-uniquequery-similaremail' => 'Pòsta eletrònica ch\'a-j ësmija',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] firmà [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
-	);
+);
+
 $messages['rm'] = array(
 	'sign-viewfield-realname' => 'Num',
-	);
+);
 
 /** Slovak (Slovenčina)
  * @author Helix84
@@ -967,11 +978,11 @@ $messages['sk'] = array(
 	'sign-uniquequery-similarphone'   => 'Podobný telefón',
 	'sign-uniquequery-similaremail'   => 'Podobný email',
 	'sign-uniquequery-1signed2'       => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] podpísal [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
-	);
+);
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
 $messages['stq'] = array(
 	'sign-realname' => 'Noome:',
-	);
+);
