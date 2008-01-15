@@ -761,6 +761,8 @@ $messages['zh-hant'] = array(
 	'createarticle'  => '建立文章',
 );
 
+# Fallbacks:
+$messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];

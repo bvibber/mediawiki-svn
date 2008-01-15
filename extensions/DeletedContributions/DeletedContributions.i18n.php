@@ -306,6 +306,8 @@ $messages['zh-hant'] = array(
 	'deletedcontributions' => '已刪除的用戶貢獻',
 );
 
+# Fallbacks:
+$messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];

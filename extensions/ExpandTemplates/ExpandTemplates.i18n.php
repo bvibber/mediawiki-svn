@@ -683,6 +683,8 @@ $messages['zh-hant'] = array(
 	'expand_templates_preview'         => '預覽',
 );
 
+# Fallbacks:
+$messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];

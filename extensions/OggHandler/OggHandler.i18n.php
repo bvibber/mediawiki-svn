@@ -1148,6 +1148,8 @@ $messages['zh-hant'] = array(
 	'ogg-desc-link'        => '關於這個檔案',
 );
 
+# Fallbacks:
+$messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];

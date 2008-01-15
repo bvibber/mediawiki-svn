@@ -1678,6 +1678,8 @@ $messages['zh-hant'] = array(
 	'grouppage-steward'    => '{{ns:project}}:監管員',
 );
 
+# Fallbacks:
+$messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];

@@ -563,6 +563,8 @@ $messages['zh-hant'] = array(
 	'imagemap_desc_types'           => '右上, 右下, 左下, 左上, 無',
 );
 
+# Fallbacks:
+$messages['de-formal'] = $messages['de'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
 $messages['kk-tr'] = $messages['kk-latn'];
 $messages['kk-cn'] = $messages['kk-arab'];

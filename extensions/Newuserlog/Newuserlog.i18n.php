@@ -573,6 +573,8 @@ $messages['zh-hant'] = array(
 	'newuserlog-create2-entry' => '已創建$1的帳戶',
 );
 
+# Fallbacks:
+$messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];

@@ -530,6 +530,8 @@ $messages['zh-hant'] = array(
 請輸入檔名，不要包含"{{ns:image}}:"開頭。',
 );
 
+# Fallbacks:
+$messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];

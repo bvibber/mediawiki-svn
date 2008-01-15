@@ -600,6 +600,8 @@ $messages['zh-tw'] = array(
 	'sitematrix-others'   => '維基媒體的其它計畫',
 );
 
+# Fallbacks:
+$messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
