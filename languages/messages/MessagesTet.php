@@ -355,7 +355,9 @@ $messages = array(
 'randompage' => 'Pájina ruma',
 
 # Statistics
-'statistics' => 'Estátistika',
+'statistics'    => 'Estátistika',
+'sitestats'     => '{{SITENAME}} estátistika',
+'userstatstext' => "Iha ne'e registrar tiha ona '''$1''' [[Special:Listusers|uza-na'in]], '''$2''' (ka '''$4''') $5.",
 
 'brokenredirects-edit'   => '(edita)',
 'brokenredirects-delete' => '(halakon)',
@@ -363,6 +365,7 @@ $messages = array(
 # Miscellaneous special pages
 'nlinks'            => '$1 ligasaun',
 'nmembers'          => '$1 membru',
+'nrevisions'        => '$1 versaun',
 'allpages'          => 'Pájina hotu',
 'longpages'         => 'Pájina naruk',
 'listusers'         => "Lista uza-na'in",
@@ -373,6 +376,7 @@ $messages = array(
 'move'              => 'Book',
 'movethispage'      => "Book pájina ne'e",
 
+'userrights'     => "Filak kuana uza-na'in",
 'groups'         => "Lubu uza-na'in",
 'alphaindexline' => "$1 to'o $2",
 'version'        => 'Versaun',

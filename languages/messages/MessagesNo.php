@@ -656,7 +656,7 @@ Din blokkerings-ID er $5. Vennligst inkluder denne ID-en i din forespørsel.",
 ''Fordi {{SITENAME}} har rå HTML slått på, er forhåndsvisningen skjult for å forhindre JavaScript-angrep.''
 
 <strong>Om dette er et legitimt redigeringsforsøk, prøv igjen. Om det da ikke fungerer, prøv å logge ut og logge inn igjen.</strong>",
-'token_suffix_mismatch'     => '<strong>Redigeringen din har blitt avvist fordi klienten din ikke hadde punktasjonstegn i redigeringsteksten. Redigeringen har blitt avvist for å hindre ødeleggelse av artikkelteksten. Dette forekommer av og til når man bruker vevbaserte aonynyme proxytjenester.</strong>',
+'token_suffix_mismatch'     => '<strong>Redigeringen din har blitt avvist fordi klienten din ikke hadde punktasjonstegn i redigeringsteksten. Redigeringen har blitt avvist for å hindre ødeleggelse av artikkelteksten. Dette forekommer av og til når man bruker vevbaserte anonyme proxytjenester.</strong>',
 'editing'                   => 'Redigerer $1',
 'editinguser'               => 'Redigerer brukeren <b>$1</b>',
 'editingsection'            => 'Redigerer $1 (seksjon)',
@@ -2318,5 +2318,8 @@ Prøv vanlig forhåndsvisning.',
 'watchlisttools-view' => 'Vis relevante endringer',
 'watchlisttools-edit' => 'Vis og rediger overvåkningsliste',
 'watchlisttools-raw'  => 'Rediger rå overvåkningsliste',
+
+# Core parser functions
+'unknown_extension_tag' => 'Ukjent tilleggsmerking «$1»',
 
 );

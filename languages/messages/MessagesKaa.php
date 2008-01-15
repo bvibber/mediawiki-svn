@@ -432,6 +432,7 @@ Akkauntın'ız jaratıldı. {{SITENAME}} sazlawların'ızdı o'zgertiwdi umıtpa
 'yournick'                   => "Nik isimin'iz:",
 'badsiglength'               => "Laqap atın'ız dım uzın; $1 simvoldan aspawı kerek.",
 'email'                      => 'E-mail',
+'prefs-help-realname'        => "Haqıyqıy atın'ız (ma'jbu'riy emes): eger onı ko'rsetsen'iz, bet kim ta'repinen o'zgertilgenin ko'rsetiwde qollanıladı.",
 'loginerror'                 => 'Kiriwde qatelik',
 'prefs-help-email-required'  => 'E-mail adresi kerek.',
 'noname'                     => 'Siz kiritken paydalanıwshı atı qate.',
@@ -474,7 +475,7 @@ tastıyıqlaw ushın xattag'ı ko'rsetpelerdi bejerin'.",
 'resetpass_header'    => "Paroldi o'zgertiw",
 'resetpass_submit'    => "Paroldi kirgizin'",
 'resetpass_success'   => "Parolin'iz sa'tli o'zgertildi! Endi kirin'...",
-'resetpass_forbidden' => "Bul wikide parol o'zgertilmeydi",
+'resetpass_forbidden' => "{{SITENAME}} proyektinde parol o'zgertilmeydi",
 'resetpass_missing'   => "Forma mag'lıwmatı joq.",
 
 # Edit page toolbar
@@ -566,9 +567,9 @@ Qosqan u'lesin'iz o'zin'izdin' jazg'anın'ız yamasa ashıq tu'rdegi derekten al
 'template-protected'        => "(qorg'alg'an)",
 'template-semiprotected'    => "(yarım-qorg'alg'an)",
 'nocreatetitle'             => 'Bet jaratıw sheklengen',
-'nocreatetext'              => "Bul saytta taza betlerdi jaratıw sheklengen. 
-Arqag'a qaytip bar betti o'zgertiwin'iz mu'mkin, yamasa [[{{ns:special}}:Userlogin|kiriwin'izge / akkaunt jaratıwın'ızg'a]] boladı.",
-'nocreate-loggedin'         => "Bul wikide taza betler jaratıwın'ızg'a ruxsatın'ız joq.",
+'nocreatetext'              => "{{SITENAME}} saytında taza betlerdi jaratıw sheklengen. 
+Arqag'a qaytıp bar betti o'zgertiwin'izge yamasa [[{{ns:special}}:Userlogin|kiriwin'izge / akkaunt jaratıwın'ızg'a]] boladı.",
+'nocreate-loggedin'         => "{{SITENAME}} proyektinde taza betler jaratıwın'ızg'a ruxsatın'ız joq.",
 'permissionserrors'         => 'Ruxsatnamalar Qatelikleri',
 'recreate-deleted-warn'     => "'''Esletpe: Aldın o'shirilgen betti qayta jaratajaqsız.'''
 
@@ -788,7 +789,7 @@ Sha'rtli belgiler: (ha'z.) = ha'zirgi nusqasi menen parqı,
 'savefile'           => 'Fayldı saqla',
 'uploadedimage'      => '«[[$1]]» faylı aploud qılındı',
 'uploaddisabled'     => 'Aploudqa ruxsat berilmegen',
-'uploaddisabledtext' => 'Bul wikide aploudqa ruxsat berilmegen.',
+'uploaddisabledtext' => '{{SITENAME}} proyektinde aploudqa ruxsat berilmegen.',
 'uploadvirus'        => "Bul failda virus bar! Mag'lıwmat: $1",
 'sourcefilename'     => "Derektin' fayl atı",
 'destfilename'       => 'Belgilengen fail atı',
@@ -851,7 +852,7 @@ Sha'rtli belgiler: (ha'z.) = ha'zirgi nusqasi menen parqı,
 'filedelete-submit'      => "O'shiriw",
 'filedelete-success'     => "'''$1''' o'shirildi.",
 'filedelete-success-old' => "<span class=\"plainlinks\">\$3, \$2 waqtındag'ı '''[[{{ns:media}}:\$1|\$1]]''' nusqası o'shirildi.</span>",
-'filedelete-nofile'      => "'''$1''' bul saytta joq.",
+'filedelete-nofile'      => "'''$1''' degen {{SITENAME}} proyektinde joq.",
 
 # MIME search
 'mimesearch' => 'MIME izlew',
@@ -923,7 +924,7 @@ Sha'rtli belgiler: (ha'z.) = ha'zirgi nusqasi menen parqı,
 'shortpages'              => "En' qısqa betler",
 'longpages'               => "En' uzın betler",
 'deadendpages'            => "Hesh betke siltemeytug'ın betler",
-'deadendpagestext'        => "To'mendegi betler usi wikidegi basqa betlerge siltelmegen.",
+'deadendpagestext'        => "To'mendegi betler {{SITENAME}} proyektindegi basqa betlerge siltelmegen.",
 'protectedpages'          => "Qorg'alg'an betler",
 'protectedpagestext'      => "To'mendegi betler ko'shiriw ha'm o'zgertiwden qorg'alg'an",
 'protectedpagesempty'     => "Usı parametrler menen ha'zir hesh bet qorg'almag'an",
@@ -1045,6 +1046,9 @@ Eger siz bul betti baqlaw dizimin'izden o'shirmekshi bolsan'ız bettin' joqarg'�
 'exblank'                     => 'bet bos edi',
 'confirmdelete'               => "O'shiriwdi tastıyıqlan'",
 'deletesub'                   => '("$1" o\'shirilmekte)',
+'historywarning'              => "Esletpe: O'shireyin dep atırg'an betin'izdin' tariyxi bar:",
+'confirmdeletetext'           => "Siz bul betti yamasa su'wretti barliq tariyxı menen mag'lıwmatlar bazasınan o'shirejaqsız.
+Bunın' aqıbetin tu'singenin'izdi ha'm [[{{MediaWiki:Policy-url}}]] siyasatına ılayıqlı ekenligin tastıyıqlan'.",
 'actioncomplete'              => "Ha'reket tamamlandı",
 'deletedtext'                 => "\"\$1\" o'shirildi.
 Aqırg'ı o'shirilgenlerdin' dizimin ko'riw ushin \$2 ni qaran'",
@@ -1053,6 +1057,7 @@ Aqırg'ı o'shirilgenlerdin' dizimin ko'riw ushin \$2 ni qaran'",
 'dellogpagetext'              => "To'mende en' aqırg'ı o'shirilgenlerdin' dizimi keltirilgen",
 'deletionlog'                 => "o'shiriw jurnalı",
 'deletecomment'               => "O'shiriwdin' sebebi",
+'deleteotherreason'           => 'Basqa/qosımsha sebep:',
 'deletereasonotherlist'       => 'Basqa sebep',
 'rollback'                    => "O'zgerislerdi biykar etiw",
 'rollback_short'              => 'Biykar etiw',
@@ -1069,12 +1074,21 @@ Aqırg'ı o'shirilgenlerdin' dizimin ko'riw ushin \$2 ni qaran'",
 'protect_expiry_invalid'      => "Nadurıs ku'shin joytıw waqtı.",
 'protect_expiry_old'          => "Kushin joytıw waqtı o'tip ketken.",
 'unprotectsub'                => '("$1" qorg\'almawmaqta)',
+'protect-unchain'             => "Ko'shiriw ruxsatın beriw",
+'protect-text'                => "<strong>$1</strong> betinin' qorg'aw da'rejesin ko're yamasa o'zgerte alasız.",
+'protect-locked-access'       => "Akkauntın'ızdın' bettın' qorg'aw da'rejesin o'zgertiwge ruxsatı joq.
+<strong>$1</strong> betinin' ha'zirgi sazlawları:",
+'protect-cascadeon'           => "Bul bet ha'zirgi waqıtta qorg'alg'an, sebebi usı bet kaskadlı qorg'awı bar {{PLURAL:$1|betke|betlerine}} qosılg'an. Bul bettin' qorg'aw da'rejesin o'zgerte alasız, biraq bul kaskadlı qorg'awg'a ta'sir etpeydi.",
 'protect-default'             => '(defolt)',
 'protect-fallback'            => '"$1" ruxsatı kerek',
 'protect-level-autoconfirmed' => 'Anonim paydalanıwshılardı bloklaw',
 'protect-level-sysop'         => 'Tek administratorlar',
 'protect-summary-cascade'     => "kaskadlang'an",
+'protect-expiring'            => 'pitiw waqtı: $1 (UTC)',
+'protect-cascade'             => "Bul betke qosılg'an betlerdi qorg'aw (kaskadlı qorg'aw).",
+'protect-cantedit'            => "Bul bettin' qorg'aw da'rejesin o'zgerte almaysız, sebebi oni o'zgertiwge sizin' ruxsatın'ız joq.",
 'restriction-type'            => 'Ruxsatnama:',
+'restriction-level'           => "Sheklew da'rejesi:",
 'minimum-size'                => "En' az o'lshemi",
 'maximum-size'                => "En' ko'p o'lshemi",
 'pagesize'                    => '(bayt)',
@@ -1208,6 +1222,27 @@ Basqa bloklawlar ushın [[{{ns:special}}:Ipblocklist|IP bloklaw dizimin]] ko'rip
 
 # Move page
 'movepage'                => "Betti ko'shiriw",
+'movepagetext'            => "To'mendegi forma bettin' atamasın o'zgertedi, 
+onın' barlıq tariyxın taza atamag'a ko'shiredi.
+Burıng'ı bet ataması taza atamag'a qayta bag'ıtlang'an bet bolıp qaladı.
+Eski atamag'a silteytug'ın siltewler o'zgertilmeydi, ko'shiriwden son'
+shınjırlı yamasa natuwrı qayta bag'ıtlang'an betlerdin' bar-joqlıg'ınj tekserip ko'rin'.
+Siltewlerdin' tuwrı islewine siz juwapker bolasız.
+
+Itibar berin': eger taza atamalı bet aldınnan bar bolsa ha'm son'g'ı o'zgertiw tariyxısız 
+bos bet yamasa qayta bag'ıtlandırıwshı bolg'anına deyin bet '''ko'shirilmeydi'''.
+Bul degeni, eger betti aljasıp qayta atasan'iz 
+aldıng'ı atamag'a qaytıwın'ızg'a boladı, biraq bar bettin' u'stine 
+jazıwın'ızg'a bolmaydi.
+
+<b>ESTE TUTIN'!</b>
+Bul ko'p qaralatug'ın betke qatan' ha'm ku'tilmegen o'zgerisler alıp keliwi mu'mkin;
+dawam ettiriwden aldın qanday aqıbetlerge alıp keliwin oylap ko'rin'.",
+'movepagetalktext'        => "To'mendegi sebepler bar '''bolg'anısha''', sa'wbet beti avtomatik halda ko'shiriledi:
+* Bos emes sa'wbet beti jan'a atamada bar bolg'anda yaki
+* To'mendegi qutını belgilemegen'izde.
+
+Bul jag'daylarda eger qa'lesen'iz betti qoldan ko'shiriwin'iz yamasa qosıwın'izg'a boladı.",
 'movearticle'             => "Ko'shiriletug'ın bet:",
 'movenologin'             => 'Kirilmegen',
 'newtitle'                => 'Taza atama:',
@@ -1215,7 +1250,14 @@ Basqa bloklawlar ushın [[{{ns:special}}:Ipblocklist|IP bloklaw dizimin]] ko'rip
 'movepagebtn'             => "Betti ko'shir",
 'pagemovedsub'            => "Tabıslı ko'shirildi",
 'movepage-moved'          => "<big>'''\"\$1\" beti \"\$2\" degenge ko'shirildi'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'articleexists'           => "Bunday atamalı bet bar yamasa 
+natuwrı atama sayladın'ız.
+Basqa atama saylan'",
+'talkexists'              => "'''Bettin' o'zi a'wmetli ko'shirildi, biraq sa'wbet beti ko'shirilmedi sebebi jan'a atamanın' sa'wbet beti bar eken. Olardı o'zin'iz qoldan qosın'.'''",
 'movedto'                 => "betke ko'shirildi",
+'movetalk'                => "Baylanıslı sa'wbet betin ko'shiriw",
+'talkpagemoved'           => "Qatnaslı sa'wbet beti de ko'shirildi.",
+'talkpagenotmoved'        => "Qatnaslı sa'wbet beti <strong>ko'shirilmedi</strong>.",
 '1movedto2'               => "[[$1]] beti [[$2]] degenge ko'shirildi",
 '1movedto2_redir'         => "[[$1]] beti [[$2]] degen burıwshıg'a ko'shirildi",
 'movelogpage'             => "Ko'shiriw jurnalı",
