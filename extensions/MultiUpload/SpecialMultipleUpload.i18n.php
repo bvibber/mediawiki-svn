@@ -20,6 +20,8 @@ Choose 'Browse' and select each file you wish to upload. You can upload from 1 t
 You can enter an optional '''Destination filename''' and provide a '''Summary''' describing your file.
 
 Inappropriate files will be deleted immediately, see the [[{{MediaWiki:Multipleupload-page}}|file deletion policy]].",
+	'multiupload-fileuploaded'			=> "File uploaded.",
+    'multiupload-toolbox' => "Upload multiple files",
 );
 
 $messages['ar'] = array(
@@ -201,4 +203,18 @@ Wääl 'Browse' un wääl älke Doatäi uut, ju du hoochleede moatest. Du koast 
 Du koast woalwiese uk n '''Siel-Doatäinoome''' foarreeke un ne '''Beschrieuwenge''' foar dien Doatäie.
 
 Uunoainde Doatäie wäide fluks läsked, sjuch do [[{{MediaWiki:Multipleupload-page}}|Läskgjuchtlienjen]].",
+);
+
+$messages['pl'] = array(
+	'multipleupload' => "Prześlij pliki",
+	'multipleupload-ignoreallwarnings' => "Ignoruj <b>wszystkie ostrzeżenia</b> i zapisz pliki.",
+	'multipleupload-saveallfiles' => "Zapisz wszystkie pliki",
+	'multipleupload-addresswarnings' => "Rozwiąż wszystkie problemy, zanim prześlesz pliki.",
+	'multipleupload-text' => "Prześlij wszystkie wymienione pliki. <br/><br/>
+			Kliknij 'Przeglądaj...' i wybierz plik, który chcesz wysłac. Możesz wysłać od 1 do $1
+			plików za jednym razem. <br/><br/>
+			Możesz wprowadzić opcjonalne <b>$2</b> i <b>$3</b> opisujące wysyłany plik. <br/><br/>
+			<br/>
+			Nieprawidłowe pliki będą natychmiast kasowane, zobacz [[Projekt:Zasady kasowania plików|Zasady kasowania plików]].<br/><br/>
+				",
 );
