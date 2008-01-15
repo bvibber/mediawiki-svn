@@ -32,9 +32,14 @@ $wgExtensionMessagesFiles['MultiUpload'] = $dir . 'SpecialMultipleUpload.i18n.ph
 function wfMultipleUpload() {
 	SpecialPage::AddPage(new SpecialPage('MultipleUpload'));
 
-	global $wgMaxUploadFiles;
+	global $wgMaxUploadFiles, $wgHooks;
 	$wgMaxUploadFiles = intval( $wgMaxUploadFiles );
 	wfLoadExtensionMessages( 'MultiUpload' );
+
+    $wgHooks['MonoBookTemplateToolboxEnd'][]  = 'wfMultiUploadToolbox';
+    $wgHooks['UploadComplete'][]  = 'wfMultiUploadShowSuccess';
+    $wgHooks['SkinTemplateBuildNavUrlsNav_urlsAfterPermalink'][] = 'wfSpecialMultiUploadNav';
+
 }
 
 /**
@@ -127,9 +132,13 @@ class MultipleUploadForm extends UploadForm {
 		for ($x = 0; $x < $wgMaxUploadFiles; $x++) {
 			$this->mFileIndex = $x;
 			if (!isset ($this->mUploadTempNameArray[$x]) || $this->mUploadTempNameArray[$x] == null) continue;
-			$this->mUploadTempName = $this->mUploadTempNameArray[$x];
-			$this->mUploadSize = $this->mUploadSizeArray[$x];
-			$this->mOname = $this->mOnameArray [$x];
+   
+            $this->mTempPath = $this->mUploadTempNameArray[$x]; 
+            $this->mFileSize = $this->mUploadSizeArray[$x];
+            $this->mSrcName = $this->mOnameArray[$x]; // for mw > 1.9
+            $this->mRemoveTempFile = true;
+            $this->mIgnoreWarning = true;
+
 			$this->mUploadError = $this->mUploadErrorArray [$x];
 			$this->mDestFile = $this->mDestFileArray [$x];
 			$this->mUploadDescription = $this->mUploadDescriptionArray [$x];
@@ -430,4 +439,40 @@ function fillDestFilenameMulti(i) {
 
 	/* -------------------------------------------------------------- */
 
+}
+
+function wfSpecialMultiUploadNav( &$skintemplate, &$nav_urls, &$oldid, &$revid ) {
+    global $wgUser;
+    if ($wgUser->isAllowed( 'upload' ))
+        $nav_urls['multiupload'] = array(
+            'text' => wfMsg( 'multiupload_link' ),
+            'href' => $skintemplate->makeSpecialUrl( 'MultipleUpload')
+        );
+
+    return true;
+}
+function wfMultiUploadToolbox( &$monobook ) {
+    if ( isset( $monobook->data['nav_urls']['multiupload'] ) )  {
+        if ( $monobook->data['nav_urls']['multiupload']['href'] == '' ) {
+            ?><li id="t-ismultiupload"><?php echo $monobook->msg( 'multiupload-toolbox' ); ?></li><?php
+        } else {
+            ?><li id="t-multiupload"><?php
+                ?><a href="<?php echo htmlspecialchars( $monobook->data['nav_urls']['multiupload']['href'] ) ?>"><?php
+                    echo $monobook->msg( 'multiupload-toolbox' );
+                ?></a><?php
+            ?></li><?php
+        }
+    }
+    return true;
+}
+
+function wfMultiUploadShowSuccess($uploadForm) {
+    global $wgOut, $wgTitle;
+    if ($wgTitle->getText() == "MultipleUpload") {
+        $imgTitle = $uploadForm->mLocalFile->getTitle();
+        $wgOut->addWikiText( "[[{$imgTitle->getFullText()}|left|thumb]]" );
+        $text = wfMsgWikiHtml( 'multiupload-fileuploaded');
+        $wgOut->addHTML( $text );
+    }
+    return true;
 }
