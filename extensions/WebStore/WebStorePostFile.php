@@ -1,7 +1,7 @@
 <?php
 
 class WebStorePostFile {
-	var $curl, $content, $outputFile, $errno, $error, $responseCode, $contentType, $success,
+	public static $curl, $content, $outputFile, $errno, $error, $responseCode, $contentType, $success,
 		$sourceFile, $sourcePath;
 
 	static function post( $url, $fileParamName, $sourcePath, $params = array(), $proxy = false, 
