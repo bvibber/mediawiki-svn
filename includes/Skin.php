@@ -298,6 +298,7 @@ class Skin extends Linker {
 		global $wgTitle, $wgCanonicalNamespaceNames, $wgOut, $wgArticle;
 		global $wgBreakFrames, $wgRequest;
 		global $wgUseAjax, $wgAjaxWatch;
+		global $wgVersion, $wgEnableAPI, $wgEnableWriteAPI;
 
 		$ns = $wgTitle->getNamespace();
 		$nsname = isset( $wgCanonicalNamespaceNames[ $ns ] ) ? $wgCanonicalNamespaceNames[ $ns ] : $wgTitle->getNsText();
@@ -310,7 +311,7 @@ class Skin extends Linker {
 			'wgScript' => $wgScript,
 			'wgServer' => $wgServer,
 			'wgCanonicalNamespace' => $nsname,
-			'wgCanonicalSpecialPageName' => SpecialPage::resolveAlias( $wgTitle->getDBKey() ),
+			'wgCanonicalSpecialPageName' => SpecialPage::resolveAlias( $wgTitle->getDBkey() ),
 			'wgNamespaceNumber' => $wgTitle->getNamespace(),
 			'wgPageName' => $wgTitle->getPrefixedDBKey(),
 			'wgTitle' => $wgTitle->getText(),
@@ -325,6 +326,9 @@ class Skin extends Linker {
 			'wgContentLanguage' => $wgContLang->getCode(),
 			'wgBreakFrames' => $wgBreakFrames,
 			'wgCurRevisionId' => isset( $wgArticle ) ? $wgArticle->getLatest() : 0,
+			'wgVersion' => $wgVersion,
+			'wgEnableAPI' => $wgEnableAPI,
+			'wgEnableWriteAPI' => $wgEnableWriteAPI,
 		);
 
 		global $wgLivePreview;
@@ -1069,7 +1073,7 @@ END;
 			$dbr = wfGetDB( DB_SLAVE );
 			$watchlist = $dbr->tableName( 'watchlist' );
 			$sql = "SELECT COUNT(*) AS n FROM $watchlist
-				WHERE wl_title='" . $dbr->strencode($wgTitle->getDBKey()) .
+				WHERE wl_title='" . $dbr->strencode($wgTitle->getDBkey()) .
 				"' AND  wl_namespace=" . $wgTitle->getNamespace() ;
 			$res = $dbr->query( $sql, 'Skin::pageStats');
 			$x = $dbr->fetchObject( $res );

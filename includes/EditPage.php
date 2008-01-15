@@ -335,12 +335,11 @@ class EditPage {
 	function edit() {
 		global $wgOut, $wgUser, $wgRequest, $wgTitle;
 
-		if ( ! wfRunHooks( 'AlternateEdit', array( &$this ) ) )
+		if ( !wfRunHooks( 'AlternateEdit', array( &$this ) ) )
 			return;
 
-		$fname = 'EditPage::edit';
-		wfProfileIn( $fname );
-		wfDebug( "$fname: enter\n" );
+		wfProfileIn( __METHOD__ );
+		wfDebug( __METHOD__.": enter\n" );
 
 		// this is not an article
 		$wgOut->setArticleFlag(false);
@@ -350,7 +349,13 @@ class EditPage {
 
 		if( $this->live ) {
 			$this->livePreview();
-			wfProfileOut( $fname );
+			wfProfileOut( __METHOD__ );
+			return;
+		}
+		
+		if( wfReadOnly() ) {
+			$wgOut->readOnlyPage( $this->getContent() );
+			wfProfileOut( __METHOD__ );
 			return;
 		}
 
@@ -386,13 +391,12 @@ class EditPage {
 				}
 			}
 		}
-		# array_diff returns elements in $permErrors that are not in $remove.
 		$permErrors = array_diff( $permErrors, $remove );
 
 		if ( !empty($permErrors) ) {
-			wfDebug( "$fname: User can't edit\n" );
+			wfDebug( __METHOD__.": User can't edit\n" );
 			$wgOut->readOnlyPage( $this->getContent(), true, $permErrors );
-			wfProfileOut( $fname );
+			wfProfileOut( __METHOD__ );
 			return;
 		} else {
 			if ( $this->save ) {
@@ -412,7 +416,7 @@ class EditPage {
 			}
 		}
 
-		wfProfileIn( "$fname-business-end" );
+		wfProfileIn( __METHOD__."-business-end" );
 
 		$this->isConflict = false;
 		// css / js subpages of user pages get a special treatment
@@ -455,8 +459,8 @@ class EditPage {
 
 		if ( 'save' == $this->formtype ) {
 			if ( !$this->attemptSave() ) {
-				wfProfileOut( "$fname-business-end" );
-				wfProfileOut( $fname );
+				wfProfileOut( __METHOD__."-business-end" );
+				wfProfileOut( __METHOD__ );
 				return;
 			}
 		}
@@ -466,8 +470,8 @@ class EditPage {
 		if ( 'initial' == $this->formtype || $this->firsttime ) {
 			if ($this->initialiseForm() === false) {
 				$this->noSuchSectionPage();
-				wfProfileOut( "$fname-business-end" );
-				wfProfileOut( $fname );
+				wfProfileOut( __METHOD__."-business-end" );
+				wfProfileOut( __METHOD__ );
 				return;
 			}
 			if( !$this->mTitle->getArticleId() ) 
@@ -475,8 +479,8 @@ class EditPage {
 		}
 
 		$this->showEditForm();
-		wfProfileOut( "$fname-business-end" );
-		wfProfileOut( $fname );
+		wfProfileOut( __METHOD__."-business-end" );
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -681,7 +685,7 @@ class EditPage {
 	 * Attempt submission (no UI)
 	 * @return one of the constants describing the result
 	 */
-	function internalAttemptSave( &$result ) {
+	function internalAttemptSave( &$result, $bot = false ) {
 		global $wgSpamRegex, $wgFilterCallback, $wgUser, $wgOut, $wgParser;
 		global $wgMaxArticleSize, $wgTitle;
 
@@ -800,7 +804,7 @@ class EditPage {
 			$isComment = ( $this->section == 'new' );
 			
 			$this->mArticle->insertNewArticle( $this->textbox1, $this->summary,
-				$this->minoredit, $this->watchthis, false, $isComment);
+				$this->minoredit, $this->watchthis, false, $isComment, $bot);
 
 			wfProfileOut( $fname );
 			return self::AS_SUCCESS_NEW_ARTICLE;
@@ -944,7 +948,7 @@ class EditPage {
 
 		# update the article here
 		if( $this->mArticle->updateArticle( $text, $this->summary, $this->minoredit,
-			$this->watchthis, '', $sectionanchor ) ) {
+			$this->watchthis, $bot, $sectionanchor ) ) {
 			wfProfileOut( $fname );
 			return self::AS_SUCCESS_UPDATE;
 		} else {
@@ -1004,7 +1008,6 @@ class EditPage {
 			$this->textbox1 = $this->getContent();
 			$this->edittime = $this->mArticle->getTimestamp();
 		} else {
-
 			if( $this->section != '' ) {
 				if( $this->section == 'new' ) {
 					$s = wfMsg('editingcomment', $wgTitle->getPrefixedText() );
@@ -1040,7 +1043,7 @@ class EditPage {
 				$wgOut->addWikiText( '<div id="mw-missingcommentheader">' . wfMsg( 'missingcommentheader' ) . '</div>' );
 			}
 
-			if( !$this->hookError == '' ) {
+			if( $this->hookError !== '' ) {
 				$wgOut->addWikiText( $this->hookError );
 			}
 
@@ -1088,7 +1091,7 @@ class EditPage {
 				if( wfEmptyMsg( 'semiprotectedpagewarning', $notice ) || $notice == '-' )
 					$notice = '';
 			} else {
-			# Then it must be protected based on static groups (regular)
+				# Then it must be protected based on static groups (regular)
 				$notice = wfMsg( 'protectedpagewarning' );
 			}
 			$wgOut->addWikiText( $notice );
@@ -2158,10 +2161,10 @@ END
 	 * @return bool false if output is done, true if the rest of the form should be displayed
 	 */
 	function attemptSave() {
-		global $wgUser, $wgOut, $wgTitle;
+		global $wgUser, $wgOut, $wgTitle, $wgRequest;
 
 		$resultDetails = false;
-		$value = $this->internalAttemptSave( $resultDetails );
+		$value = $this->internalAttemptSave( $resultDetails, $wgUser->isAllowed('bot') && $wgRequest->getBool('bot', true) );
 		
 		if( $value == self::AS_SUCCESS_UPDATE || $value == self::AS_SUCCESS_NEW_ARTICLE ) {
 			$this->didSave = true;

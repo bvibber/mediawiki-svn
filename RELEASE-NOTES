@@ -35,6 +35,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * New permission userrights-interwiki for changing user rights on foreign wikis.
 * $wgImplictGroups for groups that are hidden from Special:Listusers, etc.
 * $wgAutopromote: automatically promote users who match specified criteria
+* $wgGroupsAddToSelf, $wgGroupsRemoveFromSelf: allow users to add or remove
+  themselves from specified groups via Special:Userrights.
 
 === New features in 1.12 ===
 * (bug 10735) Add a warning for non-descriptive filenames at Special:Upload
@@ -122,6 +124,13 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * When submitting changes on Special:Userrights, show the full form again, not
   just the search box.
 * Added exception hooks
+* (bug 12574) Allow bots to specify whether an edit should be marked as a bot
+  edit, via the parameter 'bot'. (Default: '1')
+* (bug 12536) User should be able to get MediaWiki version from any page
+* (bug 12622) A JavaScript constant to declare whether api.php is available
+* Add caching to the AJAX search
+* Added APCOND_INGROUPS
+* (bug 18585) Added a bunch of parameters to the revertpage message
 
 
 === Bug fixes in 1.12 ===
@@ -293,6 +302,18 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 12489) Special:Userrights listed in restricted section again
 * (bug 12553) Fixed invalid XHTML in edit conflict screen
 * (bug 12505) Fixed section=0 with action=raw
+* (bug 12614) Do not log user rights change that didn't change anything
+* (bug 12584) Don't reset cl_timestamp when auto-updating sort key on move
+* (bug 12588) Fix selection in namespace selector on Special:Newpages
+* Use only default options when generating RSS and Atom syndication links.
+  This should help prevent infinite link loops that some software may follow,
+  and will generally keep feed behavior cleaner.
+* (bug 12608) Unifying the spelling of getDBkey() in the code.
+* (bug 12611) Bot flag ignored in recent changes
+* (bug 12617) Decimal and thousands separators for Romanian
+* (bug 12567) Fix for misformatted read-only messages on edit, protect.
+  Also added proper read-only checks to several special pages.
+  Have removed read-only checks from the general user permission framework.
 
 
 == Parser changes in 1.12 ==
@@ -399,7 +420,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Make prop=info check for restrictions in the old format too.
 * Add apihighlimits permission, default for sysops and bots
 * Add limit=max to use maximal limit
-* Add action=parse to render parser output. Use it instead of action=render which is deprecated.
+* Add action=parse to render parser output. Use it instead of action=render which has been removed
 * Add rvtoken=rollback to prop=revisions
 * Add meta=allmessages to get messages from site's messages cache.
 * Use bold and italics highlighting only in API help
@@ -413,6 +434,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * (bug 12413) meta=userinfo missing <query> tag
 * Add list of sections to action=parse output
 * Added action=logout
+* Added cascade flag to prop=info&inprop=protections
+* Added wlshow parameter to list=watchlist, similar to rcshow (list=recentchanges)
 
 === Languages updated in 1.12 ===
 
@@ -454,6 +477,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Welsh (cy)
 * Danish (da)
 * German (de)
+* German (de-formal) (new)
 * Zazaki (diq) (new)
 * Lower Sorbian (dsb) (new)
 * Middle Dutch (dum) (new)
@@ -549,6 +573,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Novial (nov) (new)
 * Northern Sotho (nso) (new)
 * Occitan (oc)
+* Pangasinan (pag) (new)
+* Papiamento (pap) (new)
 * Deitsch (pdc) (new)
 * Polish (pl)
 * Piemontèis (pms)

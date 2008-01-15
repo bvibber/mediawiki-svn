@@ -34,6 +34,11 @@ function wfSpecialImport( $page = '' ) {
 	$frompage = '';
 	$history = true;
 
+	if ( wfReadOnly() ) {
+		$wgOut->readOnlyPage();
+		return;
+	}
+
 	if( $wgRequest->wasPosted() && $wgRequest->getVal( 'action' ) == 'submit') {
 		$isUpload = false;
 		$namespace = $wgRequest->getIntOrNull( 'namespace' );
@@ -682,7 +687,7 @@ class WikiImporter {
 			$this->origTitle = Title::newFromText( $this->workTitle );
 			if( !is_null( $this->mTargetNamespace ) && !is_null( $this->origTitle ) ) {
 				$this->pageTitle = Title::makeTitle( $this->mTargetNamespace,
-					$this->origTitle->getDbKey() );
+					$this->origTitle->getDBkey() );
 			} else {
 				$this->pageTitle = Title::newFromText( $this->workTitle );
 			}

@@ -891,6 +891,14 @@ $wgMaxArticleSize	= 2048; # Maximum article size in kilobytes
 
 $wgMaxPPNodeCount = 1000000;  # A complexity limit on template expansion
 
+/**
+ * Maximum recursion depth for templates within templates.
+ * The current parser adds two levels to the PHP call stack for each template, 
+ * and xdebug limits the call stack to 100 by default. So this should hopefully
+ * stop the parser before it hits the xdebug limit.
+ */
+$wgMaxTemplateDepth = 40;
+
 $wgExtraSubtitle	= '';
 $wgSiteSupportPage	= ''; # A page where you users can receive donations
 
@@ -1134,6 +1142,13 @@ $wgGroupPermissions['bureaucrat']['userrights'] = true;
  * Implicit groups, aren't shown on Special:Listusers or somewhere else
  */
 $wgImplicitGroups = array( '*', 'user', 'autoconfirmed', 'emailconfirmed' );
+
+/**
+ * These are the groups that users are allowed to add to or remove from
+ * their own account via Special:Userrights.
+ */
+$wgGroupsAddToSelf = array();
+$wgGroupsRemoveFromSelf = array();
 
 /**
  * Set of available actions that can be restricted via action=protect
@@ -2513,7 +2528,7 @@ $wgRateLimits = array(
 	'edit' => array(
 		'anon'   => null, // for any and all anonymous edits (aggregate)
 		'user'   => null, // for each logged-in user
-		'newbie' => null, // for each recent account; overrides 'user'
+		'newbie' => null, // for each recent (autoconfirmed) account; overrides 'user'
 		'ip'     => null, // for each anon and recent account
 		'subnet' => null, // ... with final octet removed
 		),

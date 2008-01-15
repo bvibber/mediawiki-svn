@@ -86,16 +86,19 @@ class ApiQueryInfo extends ApiQueryBase {
 		$db = $this->getDB();
 		if ($fld_protection && !empty($titles)) {
 			$this->addTables('page_restrictions');
-			$this->addFields(array('pr_page', 'pr_type', 'pr_level', 'pr_expiry'));
+			$this->addFields(array('pr_page', 'pr_type', 'pr_level', 'pr_expiry', 'pr_cascade'));
 			$this->addWhereFld('pr_page', array_keys($titles));
 
 			$res = $this->select(__METHOD__);
 			while($row = $db->fetchObject($res)) {
-				$protections[$row->pr_page][] = array(
+				$a = array(
 					'type' => $row->pr_type,
 					'level' => $row->pr_level,
 					'expiry' => Block::decodeExpiry( $row->pr_expiry, TS_ISO_8601 )
 				);
+				if($row->pr_cascade)
+					$a['cascade'] = '';
+				$protections[$row->pr_page][] = $a;
 			}
 			$db->freeResult($res);
 		}
@@ -204,8 +207,8 @@ class ApiQueryInfo extends ApiQueryBase {
 				{
 					// Apparently the XML formatting code doesn't like array(null)
 					// This is painful to fix, so we'll just work around it
-					if(isset($prottitles[$title->getNamespace()][$title->getDbKey()]))
-						$res['query']['pages'][$pageid]['protection'][] = $prottitles[$title->getNamespace()][$title->getDbKey()];
+					if(isset($prottitles[$title->getNamespace()][$title->getDBkey()]))
+						$res['query']['pages'][$pageid]['protection'][] = $prottitles[$title->getNamespace()][$title->getDBkey()];
 					else
 						$res['query']['pages'][$pageid]['protection'] = array();
 					$result->setIndexedTagName($res['query']['pages'][$pageid]['protection'], 'pr');

@@ -592,22 +592,6 @@ class OutputPage {
 		}
 		$fname = 'OutputPage::output';
 		wfProfileIn( $fname );
-		$sk = $wgUser->getSkin();
-
-		if ( $wgUseAjax ) {
-			$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajax.js?$wgStyleVersion\"></script>\n" );
-
-			wfRunHooks( 'AjaxAddScript', array( &$this ) );
-
-			if( $wgAjaxSearch && $wgUser->getBoolOption( 'ajaxsearch' ) ) {
-				$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajaxsearch.js?$wgStyleVersion\"></script>\n" );
-				$this->addScript( "<script type=\"{$wgJsMimeType}\">hookEvent(\"load\", sajax_onload);</script>\n" );
-			}
-
-			if( $wgAjaxWatch && $wgUser->isLoggedIn() ) {
-				$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajaxwatch.js?$wgStyleVersion\"></script>\n" );
-			}
-		}
 
 		if ( '' != $this->mRedirect ) {
 			if( substr( $this->mRedirect, 0, 4 ) != 'http' ) {
@@ -690,6 +674,25 @@ class OutputPage {
 			if ( $statusMessage[$this->mStatusCode] )
 				$wgRequest->response()->header( 'HTTP/1.1 ' . $this->mStatusCode . ' ' . $statusMessage[$this->mStatusCode] );
 		}
+
+		$sk = $wgUser->getSkin();
+
+		if ( $wgUseAjax ) {
+			$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajax.js?$wgStyleVersion\"></script>\n" );
+
+			wfRunHooks( 'AjaxAddScript', array( &$this ) );
+
+			if( $wgAjaxSearch && $wgUser->getBoolOption( 'ajaxsearch' ) ) {
+				$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajaxsearch.js?$wgStyleVersion\"></script>\n" );
+				$this->addScript( "<script type=\"{$wgJsMimeType}\">hookEvent(\"load\", sajax_onload);</script>\n" );
+			}
+
+			if( $wgAjaxWatch && $wgUser->isLoggedIn() ) {
+				$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajaxwatch.js?$wgStyleVersion\"></script>\n" );
+			}
+		}
+
+
 
 		# Buffer output; final headers may depend on later processing
 		ob_start();
@@ -825,9 +828,9 @@ class OutputPage {
 	 */
 	public function showErrorPage( $title, $msg, $params = array() ) {
 		global $wgTitle;
-
-		$this->mDebugtext .= 'Original title: ' .
-		$wgTitle->getPrefixedText() . "\n";
+		if ( isset($wgTitle) ) {
+			$this->mDebugtext .= 'Original title: ' . $wgTitle->getPrefixedText() . "\n";
+		}
 		$this->setPageTitle( wfMsg( $title ) );
 		$this->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
 		$this->setRobotpolicy( 'noindex,nofollow' );
@@ -1298,25 +1301,17 @@ class OutputPage {
 			$ret .= " />\n";
 		}
 		
-		if( $this->isSyndicated() ) {
+		foreach( $this->getSyndicationLinks() as $format => $link ) {
 			# Use the page name for the title (accessed through $wgTitle since
 			# there's no other way).  In principle, this could lead to issues
 			# with having the same name for different feeds corresponding to
 			# the same page, but we can't avoid that at this low a level.
-			global $wgTitle, $wgFeedClasses;
-			
-			if( is_string( $this->getFeedAppendQuery() ) ) {
-				$appendQuery = "&" . $this->getFeedAppendQuery();
-			} else {
-				$appendQuery = "";
-			}
+			global $wgTitle;
 
-			foreach( $wgFeedClasses as $format => $class ) {
-				$ret .= $this->feedLink(
-					$format,
-					$wgRequest->appendQuery( "feed=$format{$appendQuery}" ),
-					wfMsg( "page-{$format}-feed", $wgTitle->getPrefixedText() ) );
-			}
+			$ret .= $this->feedLink(
+				$format,
+				$link,
+				wfMsg( "page-{$format}-feed", $wgTitle->getPrefixedText() ) );
 		}
 
 		# Recent changes feed should appear on every page
@@ -1334,6 +1329,28 @@ class OutputPage {
 			wfMsg( 'site-atom-feed', $wgSitename ) );
 
 		return $ret;
+	}
+	
+	/**
+	 * Return URLs for each supported syndication format for this page.
+	 * @return array associating format keys with URLs
+	 */
+	public function getSyndicationLinks() {
+		global $wgTitle, $wgFeedClasses;
+		$links = array();
+		
+		if( $this->isSyndicated() ) {
+			if( is_string( $this->getFeedAppendQuery() ) ) {
+				$appendQuery = "&" . $this->getFeedAppendQuery();
+			} else {
+				$appendQuery = "";
+			}
+
+			foreach( $wgFeedClasses as $format => $class ) {
+				$links[$format] = $wgTitle->getLocalUrl( "feed=$format{$appendQuery}" );
+			}
+		}
+		return $links;
 	}
 	
 	/**

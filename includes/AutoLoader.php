@@ -213,6 +213,7 @@ function __autoload($className) {
 		'PreferencesForm' => 'includes/SpecialPreferences.php',
 		'SpecialPrefixindex' => 'includes/SpecialPrefixindex.php',
 		'RandomPage' => 'includes/SpecialRandompage.php',
+		'SpecialRandomredirect' => 'includes/SpecialRandomredirect.php',
 		'PasswordResetForm' => 'includes/SpecialResetpass.php',
 		'RevisionDeleteForm' => 'includes/SpecialRevisiondelete.php',
 		'RevisionDeleter' => 'includes/SpecialRevisiondelete.php',
@@ -345,7 +346,6 @@ function __autoload($className) {
 		'ApiQuerySiteinfo' => 'includes/api/ApiQuerySiteinfo.php',
 		'ApiQueryUserInfo' => 'includes/api/ApiQueryUserInfo.php',
 		'ApiQueryWatchlist' => 'includes/api/ApiQueryWatchlist.php',
-		'ApiRender' => 'includes/api/ApiRender.php',
 		'ApiResult' => 'includes/api/ApiResult.php',
 
 		# apiedit branch

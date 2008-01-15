@@ -37,19 +37,6 @@ class Article {
 	/**@}}*/
 
 	/**
-	 * Constants used by internal components to get rollback results
-	 */
-	const SUCCESS = 0;			// Operation successful
-	const PERM_DENIED = 1;		// Permission denied
-	const BLOCKED = 2;			// User has been blocked
-	const READONLY = 3;			// Wiki is in read-only mode
-	const BAD_TOKEN = 4;		// Invalid token specified
-	const BAD_TITLE = 5;		// $this is not a valid Article
-	const ALREADY_ROLLED = 6;	// Someone else already rolled this back. $from and $summary will be set
-	const ONLY_AUTHOR = 7;		// User is the only author of the page
-	const RATE_LIMITED = 8;
- 
-	/**
 	 * Constructor and clear the article
 	 * @param $title Reference to a Title object.
 	 * @param $oldId Integer revision ID, null to fetch from request, zero for current
@@ -1201,10 +1188,11 @@ class Article {
 	/**
 	 * @deprecated use Article::doEdit()
 	 */
-	function insertNewArticle( $text, $summary, $isminor, $watchthis, $suppressRC=false, $comment=false ) {
+	function insertNewArticle( $text, $summary, $isminor, $watchthis, $suppressRC=false, $comment=false, $bot=false ) {
 		$flags = EDIT_NEW | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY |
 			( $isminor ? EDIT_MINOR : 0 ) |
-			( $suppressRC ? EDIT_SUPPRESS_RC : 0 );
+			( $suppressRC ? EDIT_SUPPRESS_RC : 0 ) |
+			( $bot ? EDIT_FORCE_BOT : 0 );
 
 		# If this is a comment, add the summary as headline
 		if ( $comment && $summary != "" ) {
@@ -1323,7 +1311,7 @@ class Article {
 
 		# Silently ignore EDIT_MINOR if not allowed
 		$isminor = ( $flags & EDIT_MINOR ) && $wgUser->isAllowed('minoredit');
-		$bot = $wgUser->isAllowed( 'bot' ) || ( $flags & EDIT_FORCE_BOT );
+		$bot = $flags & EDIT_FORCE_BOT;
 
 		$oldtext = $this->getContent();
 		$oldsize = strlen( $oldtext );
@@ -1884,21 +1872,20 @@ class Article {
 		$row = $dbw->fetchObject($res);
 		$onlyAuthor = $row->rev_user_text;
 		// Try to find a second contributor
-		while(($row = $dbw->fetchObject($res)))
-			if($row->rev_user_text != $onlyAuthor)
-			{
+		while( $row = $dbw->fetchObject($res) ) {
+			if($row->rev_user_text != $onlyAuthor) {
 				$onlyAuthor = false;
 				break;
 			}
+		}
 		$dbw->freeResult($res);
 
 		// Generate the summary with a '$1' placeholder
-		if($blank)
+		if($blank) {
 			// The current revision is blank and the one before is also
 			// blank. It's just not our lucky day
 			$reason = wfMsgForContent('exbeforeblank', '$1');
-		else
-		{
+		} else {
 			if($onlyAuthor)
 				$reason = wfMsgForContent('excontentauthor', '$1', $onlyAuthor);
 			else
@@ -1942,11 +1929,16 @@ class Article {
 
 		# This code desperately needs to be totally rewritten
 
+		# Read-only check...
+		if ( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
+			return;
+		}
+		
 		# Check permissions
 		$permission_errors = $this->mTitle->getUserPermissionsErrors( 'delete', $wgUser );
 
-		if (count($permission_errors)>0)
-		{
+		if (count($permission_errors)>0) {
 			$wgOut->showPermissionsErrorPage( $permission_errors );
 			return;
 		}
@@ -2268,57 +2260,73 @@ class Article {
 	/**
 	 * Roll back the most recent consecutive set of edits to a page
 	 * from the same user; fails if there are no eligible edits to
-	 * roll back to, e.g. user is the sole contributor
+	 * roll back to, e.g. user is the sole contributor. This function
+	 * performs permissions checks on $wgUser, then calls commitRollback()
+	 * to do the dirty work
 	 *
 	 * @param string $fromP - Name of the user whose edits to rollback. 
 	 * @param string $summary - Custom summary. Set to default summary if empty.
 	 * @param string $token - Rollback token.
 	 * @param bool $bot - If true, mark all reverted edits as bot.
 	 * 
-	 * @param array $resultDetails contains result-specific dict of additional values
-	 *    ALREADY_ROLLED : 'current' (rev)
-	 *    SUCCESS        : 'summary' (str), 'current' (rev), 'target' (rev)
+	 * @param array $resultDetails contains result-specific array of additional values
+	 *    'alreadyrolled' : 'current' (rev)
+	 *    success        : 'summary' (str), 'current' (rev), 'target' (rev)
 	 * 
-	 * @return self::SUCCESS on succes, self::* on failure
+	 * @return array of errors, each error formatted as array(messagekey, param1, param2, ...).
+	 * On success, the array is empty.  This array can also be passed to OutputPage::showPermissionsErrorPage().
+	 * NOTE: If the user is blocked, 'blocked' is passed as a message, but it doesn't exist. Be sure to check
+	 *       it before calling showPermissionsErrorPage(). The same is true for 'actionthrottledtext', which
+	 *	 is passed if the rate limit is passed.
 	 */
 	public function doRollback( $fromP, $summary, $token, $bot, &$resultDetails ) {
-		global $wgUser, $wgUseRCPatrol;
+		global $wgUser;
 		$resultDetails = null;
 
-		# Just in case it's being called from elsewhere		
-
-		if( $wgUser->isAllowed( 'rollback' ) && $this->mTitle->userCan( 'edit' ) ) {
-			if( $wgUser->isBlocked() ) {
-				return self::BLOCKED;
-			}
-		} else {
-			return self::PERM_DENIED;
-		}
-			
-		if ( wfReadOnly() ) {
-			return self::READONLY;
-		}
-
+		# Check permissions
+		$errors = array_merge( $this->mTitle->getUserPermissionsErrors( 'edit', $wgUser ),
+						$this->mTitle->getUserPermissionsErrors( 'rollback', $wgUser ) );
 		if( !$wgUser->matchEditToken( $token, array( $this->mTitle->getPrefixedText(), $fromP ) ) )
-			return self::BAD_TOKEN;
+			$errors[] = array( 'sessionfailure' );
 
 		if ( $wgUser->pingLimiter('rollback') || $wgUser->pingLimiter() ) {
-			return self::RATE_LIMITED;
+			$errors[] = array( 'actionthrottledtext' );
 		}
+		if ( $wgUser->isBlocked() )
+			$errors[] = array( 'blocked' );
 
+		# If there were errors, bail out now
+		if(!empty($errors))
+			return $errors;
+		
+		return $this->commitRollback($fromP, $summary, $bot, $resultDetails);
+	}
+	
+	/**
+	 * Backend implementation of doRollback(), please refer there for parameter and return value documentation
+	 *
+	 * NOTE: This function does NOT check ANY permissions, it just commits the rollback to the DB.
+	 *       Therefore, you should only call this function directly if you really know what you're doing. If you don't, use doRollback() instead
+	 */	
+	public function commitRollback($fromP, $summary, $bot, &$resultDetails) {
+		global $wgUseRCPatrol;
 		$dbw = wfGetDB( DB_MASTER );
 
 		# Get the last editor
 		$current = Revision::newFromTitle( $this->mTitle );
 		if( is_null( $current ) ) {
 			# Something wrong... no page?
-			return self::BAD_TITLE;
+			return array(array('notanarticle'));
 		}
 
 		$from = str_replace( '_', ' ', $fromP );
 		if( $from != $current->getUserText() ) {
 			$resultDetails = array( 'current' => $current );
-			return self::ALREADY_ROLLED;
+			return array(array('alreadyrolled',
+				htmlspecialchars($this->mTitle->getPrefixedText()),
+				htmlspecialchars($fromP),
+				htmlspecialchars($current->getUserText())
+			));
 		}
 
 		# Get the last edit not by this guy
@@ -2326,17 +2334,15 @@ class Article {
 		$user_text = $dbw->addQuotes( $current->getUserText() );
 		$s = $dbw->selectRow( 'revision',
 			array( 'rev_id', 'rev_timestamp' ),
-			array(
-				'rev_page' => $current->getPage(),
+			array(	'rev_page' => $current->getPage(),
 				"rev_user <> {$user} OR rev_user_text <> {$user_text}"
 			), __METHOD__,
-			array(
-				'USE INDEX' => 'page_timestamp',
+			array(	'USE INDEX' => 'page_timestamp',
 				'ORDER BY'  => 'rev_timestamp DESC' )
 			);
 		if( $s === false ) {
-			# Something wrong
-			return self::ONLY_AUTHOR;
+			# No one else ever edited this page
+			return array(array('cantrollback'));
 		}
 	
 		$set = array();
@@ -2359,10 +2365,17 @@ class Article {
 				);
 		}
 
-		# Get the edit summary
+		# Generate the edit summary if necessary
 		$target = Revision::newFromId( $s->rev_id );
 		if( empty( $summary ) )
-			$summary = wfMsgForContent( 'revertpage', $target->getUserText(), $from );
+		{
+			global $wgLang;
+			$summary = wfMsgForContent( 'revertpage',
+					 $target->getUserText(), $from,
+					 $s->rev_id, $wgLang->timeanddate(wfTimestamp(TS_MW, $s->rev_timestamp), true),
+					 $current->getId(), $wgLang->timeanddate($current->getTimestamp())
+			);
+		}
 
 		# Save
 		$flags = EDIT_UPDATE;
@@ -2370,7 +2383,7 @@ class Article {
 		if ($wgUser->isAllowed('minoredit'))
 			$flags |= EDIT_MINOR;
 
-		if( $bot )
+		if( $bot && ($wgUser->isAllowed('markbotedits') || $wgUser->isAllowed('bot')) )
 			$flags |= EDIT_FORCE_BOT;
 		$this->doEdit( $target->getText(), $summary, $flags );
 
@@ -2381,7 +2394,7 @@ class Article {
 			'current' => $current,
 			'target' => $target,
 		);
-		return self::SUCCESS;
+		return array();
 	}
 
 	/**
@@ -2389,18 +2402,7 @@ class Article {
 	 */
 	function rollback() {
 		global $wgUser, $wgOut, $wgRequest, $wgUseRCPatrol;
-
 		$details = null;
-
-		# Skip the permissions-checking in doRollback() itself, by checking permissions here.
-
-		$perm_errors = array_merge( $this->mTitle->getUserPermissionsErrors( 'edit', $wgUser ),
-						$this->mTitle->getUserPermissionsErrors( 'rollback', $wgUser ) );
-
-		if (count($perm_errors)) {
-			$wgOut->showPermissionsErrorPage( $perm_errors );
-			return;
-		}
 
 		$result = $this->doRollback(
 			$wgRequest->getVal( 'from' ),
@@ -2409,62 +2411,30 @@ class Article {
 			$wgRequest->getBool( 'bot' ),
 			$details
 		);
-
-		switch( $result ) {
-			case self::BLOCKED:
-				$wgOut->blockedPage();
-				break;
-			case self::PERM_DENIED:
-				$wgOut->permissionRequired( 'rollback' );
-				break;
-			case self::READONLY:
-				$wgOut->readOnlyPage( $this->getContent() );
-				break;
-			case self::BAD_TOKEN:
-				$wgOut->setPageTitle( wfMsg( 'rollbackfailed' ) );
-				$wgOut->addWikiText( wfMsg( 'sessionfailure' ) );
-				break;
-			case self::BAD_TITLE:
-				$wgOut->addHtml( wfMsg( 'notanarticle' ) );
-				break;
-			case self::ALREADY_ROLLED:
-				$current = $details['current'];
-				$wgOut->setPageTitle( wfMsg( 'rollbackfailed' ) );
-				$wgOut->addWikiText(
-					wfMsg( 'alreadyrolled',
-						htmlspecialchars( $this->mTitle->getPrefixedText() ),
-						htmlspecialchars( $wgRequest->getVal( 'from' ) ),
-						htmlspecialchars( $current->getUserText() )
-					)
-				);
-				if( $current->getComment() != '' ) {
-					$wgOut->addHtml( wfMsg( 'editcomment',
-						$wgUser->getSkin()->formatComment( $current->getComment() ) ) );
-				}
-				break;
-			case self::ONLY_AUTHOR:
-				$wgOut->setPageTitle( wfMsg( 'rollbackfailed' ) );
-				$wgOut->addHtml( wfMsg( 'cantrollback' ) );
-				break;
-			case self::RATE_LIMITED:
-				$wgOut->rateLimited();
-				break;
-			case self::SUCCESS:
-				$current = $details['current'];
-				$target = $details['target'];
-				$wgOut->setPageTitle( wfMsg( 'actioncomplete' ) );
-				$wgOut->setRobotPolicy( 'noindex,nofollow' );
-				$old = $wgUser->getSkin()->userLink( $current->getUser(), $current->getUserText() )
-					. $wgUser->getSkin()->userToolLinks( $current->getUser(), $current->getUserText() );
-				$new = $wgUser->getSkin()->userLink( $target->getUser(), $target->getUserText() )
-					. $wgUser->getSkin()->userToolLinks( $target->getUser(), $target->getUserText() );
-				$wgOut->addHtml( wfMsgExt( 'rollback-success', array( 'parse', 'replaceafter' ), $old, $new ) );
-				$wgOut->returnToMain( false, $this->mTitle );
-				break;
-			default:
-				throw new MWException( __METHOD__ . ": Unknown return value `{$result}`" );
+		
+		if(in_array(array('blocked'), $result)) {
+			$wgOut->blockedPage();
+			return;
+		}
+		if(in_array(array('actionthrottledtext'), $result)) {
+			$wgOut->rateLimited();
+			return;
+		}
+		if(!empty($result)) {
+			$wgOut->showPermissionsErrorPage( $result );
+			return;
 		}
 
+		$current = $details['current'];
+		$target = $details['target'];
+		$wgOut->setPageTitle( wfMsg( 'actioncomplete' ) );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		$old = $wgUser->getSkin()->userLink( $current->getUser(), $current->getUserText() )
+			. $wgUser->getSkin()->userToolLinks( $current->getUser(), $current->getUserText() );
+		$new = $wgUser->getSkin()->userLink( $target->getUser(), $target->getUserText() )
+			. $wgUser->getSkin()->userToolLinks( $target->getUser(), $target->getUserText() );
+		$wgOut->addHtml( wfMsgExt( 'rollback-success', array( 'parse', 'replaceafter' ), $old, $new ) );
+		$wgOut->returnToMain( false, $this->mTitle );
 	}
 
 

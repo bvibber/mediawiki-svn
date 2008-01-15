@@ -1026,6 +1026,9 @@ class Title {
 
 	/**
 	 * Can $user perform $action on this page?
+	 *
+	 * FIXME: This *does not* check throttles (User::pingLimiter()).
+	 *
 	 * @param string $action action that permission needs to be checked for
 	 * @param bool $doExpensiveQueries Set this to false to avoid doing unnecessary queries.
 	 * @return array Array of arrays of the arguments to wfMsg to explain permissions problems.
@@ -1035,16 +1038,9 @@ class Title {
 
 		global $wgContLang;
 		global $wgLang;
-
-		if ( wfReadOnly() && $action != 'read' ) {
-			global $wgReadOnly;
-			$errors[] = array( 'readonlytext', $wgReadOnly );
-		}
-
 		global $wgEmailConfirmToEdit, $wgUser;
 
-		if ( $wgEmailConfirmToEdit && !$user->isEmailConfirmed() )
-		{
+		if ( $wgEmailConfirmToEdit && !$user->isEmailConfirmed() ) {
 			$errors[] = array( 'confirmedittext' );
 		}
 
@@ -1100,15 +1096,16 @@ class Title {
 	}
 
 	/**
-	 * Can $user perform $action on this page?
-	 * This is an internal function, which checks ONLY that previously checked by userCan (i.e. it leaves out checks on wfReadOnly() and blocks)
+	 * Can $user perform $action on this page? This is an internal function,
+	 * which checks ONLY that previously checked by userCan (i.e. it leaves out
+	 * checks on wfReadOnly() and blocks)
+	 *
 	 * @param string $action action that permission needs to be checked for
 	 * @param bool $doExpensiveQueries Set this to false to avoid doing unnecessary queries.
 	 * @return array Array of arrays of the arguments to wfMsg to explain permissions problems.
 	 */
 	private function getUserPermissionsErrorsInternal( $action, $user, $doExpensiveQueries = true ) {
-		$fname = 'Title::userCan';
-		wfProfileIn( $fname );
+		wfProfileIn( __METHOD__ );
 
 		$errors = array();
 
@@ -1118,6 +1115,16 @@ class Title {
 		}
 
 		if (!wfRunHooks( 'getUserPermissionsErrors', array( &$this, &$user, $action, &$result ) ) ) {
+			if ($result != array() && is_array($result) && !is_array($result[0]))
+				$errors[] = $result; # A single array representing an error
+			else if (is_array($result) && is_array($result[0]))
+				$errors = array_merge( $errors, $result ); # A nested array representing multiple errors
+			else if ($result != '' && $result != null && $result !== true && $result !== false)
+				$errors[] = array($result); # A string representing a message-id
+			else if ($result === false )
+				$errors[] = array('badaccess-group0'); # a generic "We don't want them to do that"
+		}
+		if ($doExpensiveQueries && !wfRunHooks( 'getUserPermissionsErrorsExpensive', array( &$this, &$user, $action, &$result ) ) ) {
 			if ($result != array() && is_array($result) && !is_array($result[0]))
 				$errors[] = $result; # A single array representing an error
 			else if (is_array($result) && is_array($result[0]))
@@ -1194,7 +1201,6 @@ class Title {
 			}
 		}
 
-
 		if ($action == 'create') {			
 			$title_protection = $this->getTitleProtection();
 
@@ -1208,16 +1214,14 @@ class Title {
 					$errors[] = array ( 'titleprotected', User::whoIs($pt_user), $pt_reason );
 				}
 			}
-		}
 
-		if( $action == 'create' ) {
 			if( (  $this->isTalkPage() && !$user->isAllowed( 'createtalk' ) ) ||
 				( !$this->isTalkPage() && !$user->isAllowed( 'createpage' ) ) ) {
 				$errors[] = $user->isAnon() ? array ('nocreatetext') : array ('nocreate-loggedin');
 			}
 		} elseif( $action == 'move' && !( $this->isMovable() && $user->isAllowed( 'move' ) ) ) {
 			$errors[] = $user->isAnon() ? array ( 'movenologintext' ) : array ('movenotallowed');
-		} else if ( !$user->isAllowed( $action ) ) {
+		} elseif ( !$user->isAllowed( $action ) ) {
 			$return = null;
 			$groups = array();
 			global $wgGroupPermissions;
@@ -1246,7 +1250,7 @@ class Title {
 			$errors[] = $return;
 		}
 
-		wfProfileOut( $fname );
+		wfProfileOut( __METHOD__ );
 		return $errors;
 	}
 
@@ -1255,11 +1259,15 @@ class Title {
 	 * @return mixed An associative array representing any existent title
 	 *   protection, or false if there's none.
 	 */
-	public function getTitleProtection() {
-		$dbr = wfGetDB( DB_SLAVE );
+	private function getTitleProtection() {
+		// Can't protect pages in special namespaces
+		if ( $this->getNamespace() < 0 ) {
+			return false;
+		}
 
+		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'protected_titles', '*', 
-			array ('pt_namespace' => $this->getNamespace(), 'pt_title' => $this->getDBKey()) );
+			array ('pt_namespace' => $this->getNamespace(), 'pt_title' => $this->getDBkey()) );
 
 		if ($row = $dbr->fetchRow( $res )) {
 			return $row;
@@ -1277,7 +1285,7 @@ class Title {
 			return true;
 		}
 
-		list ($namespace, $title) = array( $this->getNamespace(), $this->getDBKey() );
+		list ($namespace, $title) = array( $this->getNamespace(), $this->getDBkey() );
 
 		$dbw = wfGetDB( DB_MASTER );
 
@@ -1319,7 +1327,7 @@ class Title {
 		$dbw = wfGetDB( DB_MASTER );
 
 		$dbw->delete( 'protected_titles', 
-			array ('pt_namespace' => $this->getNamespace(), 'pt_title' => $this->getDBKey()), __METHOD__ );
+			array ('pt_namespace' => $this->getNamespace(), 'pt_title' => $this->getDBkey()), __METHOD__ );
 	}
 
 	/**
@@ -1366,8 +1374,12 @@ class Title {
 	 * @todo fold these checks into userCan()
 	 */
 	public function userCanRead() {
-		global $wgUser;
-
+		global $wgUser, $wgGroupPermissions;
+		
+		# Shortcut for public wikis, allows skipping quite a bit of code path
+		if ($wgGroupPermissions['*']['read'])
+			return true;
+		
 		$result = null;
 		wfRunHooks( 'userCan', array( &$this, &$wgUser, 'read', &$result ) );
 		if ( $result !== null ) {
@@ -1415,7 +1427,7 @@ class Title {
 			 * and check again
 			 */
 			if( $this->getNamespace() == NS_SPECIAL ) {
-				$name = $this->getDBKey();
+				$name = $this->getDBkey();
 				list( $name, /* $subpage */) = SpecialPage::resolveAliasWithSubpage( $name );
 				if ( $name === false ) {
 					# Invalid special page, but we show standard login required message
@@ -2143,7 +2155,7 @@ class Title {
 			array(
 				"{$prefix}_from=page_id",
 				"{$prefix}_namespace" => $this->getNamespace(),
-				"{$prefix}_title"     => $this->getDbKey() ),
+				"{$prefix}_title"     => $this->getDBkey() ),
 			'Title::getLinksTo',
 			$options );
 
@@ -2348,13 +2360,26 @@ class Title {
 		}
 		$redirid = $this->getArticleID();
 
-		# Fixing category links (those without piped 'alternate' names) to be sorted under the new title
+		// Category memberships include a sort key which may be customized.
+		// If it's left as the default (the page title), we need to update
+		// the sort key to match the new title.
+		//
+		// Be careful to avoid resetting cl_timestamp, which may disturb
+		// time-based lists on some sites.
+		//
+		// Warning -- if the sort key is *explicitly* set to the old title,
+		// we can't actually distinguish it from a default here, and it'll
+		// be set to the new title even though it really shouldn't.
+		// It'll get corrected on the next edit, but resetting cl_timestamp.
 		$dbw = wfGetDB( DB_MASTER );
-		$categorylinks = $dbw->tableName( 'categorylinks' );
-		$sql = "UPDATE $categorylinks SET cl_sortkey=" . $dbw->addQuotes( $nt->getPrefixedText() ) .
-			" WHERE cl_from=" . $dbw->addQuotes( $pageid ) .
-			" AND cl_sortkey=" . $dbw->addQuotes( $this->getPrefixedText() );
-		$dbw->query( $sql, 'SpecialMovepage::doSubmit' );
+		$dbw->update( 'categorylinks',
+			array(
+				'cl_sortkey' => $nt->getPrefixedText(),
+				'cl_timestamp=cl_timestamp' ),
+			array(
+				'cl_from' => $pageid,
+				'cl_sortkey' => $this->getPrefixedText() ),
+			__METHOD__ );
 
 		# Update watchlists
 
@@ -2473,7 +2498,7 @@ class Title {
 				array(
 					'pl_from'      => $newid,
 					'pl_namespace' => $nt->getNamespace(),
-					'pl_title'     => $nt->getDbKey() ),
+					'pl_title'     => $nt->getDBkey() ),
 				$fname );
 		}
 		
@@ -2749,7 +2774,7 @@ class Title {
 		// Note: === is necessary for proper matching of number-like titles.
 		return $this->getInterwiki() === $title->getInterwiki()
 			&& $this->getNamespace() == $title->getNamespace()
-			&& $this->getDbkey() === $title->getDbkey();
+			&& $this->getDBkey() === $title->getDBkey();
 	}
 	
 	/**

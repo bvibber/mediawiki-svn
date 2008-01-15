@@ -87,9 +87,7 @@ class Parser
 	var $mIncludeCount, $mArgStack, $mLastSection, $mInPre;
 	var $mInterwikiLinkHolders, $mLinkHolders;
 	var $mIncludeSizes, $mPPNodeCount, $mDefaultSort;
-	var $mTplExpandCache,// empty-frame expansion cache
-	    $mTemplatePath;	// stores an unsorted hash of all the templates already loaded
-		                // in this path. Used for loop detection.
+	var $mTplExpandCache; // empty-frame expansion cache
 	var $mTplRedirCache, $mTplDomCache, $mHeadings;
 
 	# Temporary
@@ -225,7 +223,6 @@ class Parser
 		$this->mUniqPrefix = "\x7fUNIQ" . Parser::getRandomString();
 
 		# Clear these on every parse, bug 4549
- 		$this->mTemplatePath = array();
 		$this->mTplExpandCache = $this->mTplRedirCache = $this->mTplDomCache = array();
 
 		$this->mShowToc = true;
@@ -2653,7 +2650,7 @@ class Parser
 		$searchBase = implode( '', array_keys( $rules ) ) . '<';
 		$revText = strrev( $text ); // For fast reverse searches
 
-		$i = -1; # Input pointer, starts out pointing to a pseudo-newline before the start
+		$i = 0;                     # Input pointer, starts out pointing to a pseudo-newline before the start
 		$topAccum = '<root>';      # Top level text accumulator
 		$accum =& $topAccum;            # Current text accumulator
 		$findEquals = false;            # True to find equals signs in arguments
@@ -2662,10 +2659,7 @@ class Parser
 		$headingIndex = 1;
 		$noMoreGT = false;         # True if there are no more greater-than (>) signs right of $i
 		$findOnlyinclude = $enableOnlyinclude; # True to ignore all input up to the next <onlyinclude>
-
-		if ( $enableOnlyinclude ) {
-			$i = 0;
-		}
+		$fakeLineStart = true;     # Do a line-start run without outputting an LF character
 
 		while ( true ) {
 			if ( $findOnlyinclude ) {
@@ -2682,7 +2676,7 @@ class Parser
 				$findOnlyinclude = false;
 			}
 
-			if ( $i == -1 ) {
+			if ( $fakeLineStart ) {
 				$found = 'line-start';
 				$curChar = '';
 			} else {
@@ -2783,6 +2777,9 @@ class Parser
 						// $wsEnd will be the position of the last space
 						$wsEnd = $endPos + 2 + strspn( $text, ' ', $endPos + 3 );
 						// Eat the line if possible
+						// TODO: This could theoretically be done if $wsStart == 0, i.e. for comments at 
+						// the overall start. That's not how Sanitizer::removeHTMLcomments() does it, but 
+						// it's a possible beneficial b/c break.
 						if ( $wsStart > 0 && substr( $text, $wsStart - 1, 1 ) == "\n" 
 							&& substr( $text, $wsEnd + 1, 1 ) == "\n" )
 						{
@@ -2794,15 +2791,20 @@ class Parser
 							if ( $wsLength > 0 && substr( $accum, -$wsLength ) === str_repeat( ' ', $wsLength ) ) {
 								$accum = substr( $accum, 0, -$wsLength );
 							}
+							// Do a line-start run next time to look for headings after the comment,
+							// but only if stackIndex=-1, because headings don't exist at deeper levels.
+							if ( $stackIndex == -1 ) {
+								$fakeLineStart = true;
+							}
 						} else {
 							// No line to eat, just take the comment itself
 							$startPos = $i;
 							$endPos += 2;
 						}
 
+						$i = $endPos + 1;
 						$inner = substr( $text, $startPos, $endPos - $startPos + 1 );
 						$accum .= '<comment>' . htmlspecialchars( $inner ) . '</comment>';
-						$i = $endPos + 1;
 					}
 					continue;
 				}
@@ -2873,8 +2875,12 @@ class Parser
 			elseif ( $found == 'line-start' ) {
 				// Is this the start of a heading? 
 				// Line break belongs before the heading element in any case
-				$accum .= $curChar;
-				$i++;
+				if ( $fakeLineStart ) {
+					$fakeLineStart = false;
+				} else {
+					$accum .= $curChar;
+					$i++;
+				}
 				
 				$count = strspn( $text, '=', $i, 6 );
 				if ( $count > 0 ) {
@@ -2882,6 +2888,7 @@ class Parser
 						'open' => "\n",
 						'close' => "\n",
 						'parts' => array( str_repeat( '=', $count ) ),
+						'startPos' => $i,
 						'count' => $count );
 					$stack[++$stackIndex] = $piece;
 					$i += $count;
@@ -2900,10 +2907,21 @@ class Parser
 				$m = false;
 				$count = $piece['count'];
 				if ( preg_match( "/\s*(={{$count}})/A", $revText, $m, 0, strlen( $text ) - $i ) ) {
-					// Found match, output <h>
-					$count = min( strlen( $m[1] ), $count );
-					$element = "<h level=\"$count\" i=\"$headingIndex\">$accum</h>";
-					$headingIndex++;
+					if ( $i - strlen( $m[0] ) == $piece['startPos'] ) {
+						// This is just a single string of equals signs on its own line
+						// Divide by two and round down to create start and end delimiters
+						$count = intval( $count / 2 );
+					} else {
+						$count = min( strlen( $m[1] ), $count );
+					}
+					if ( $count > 0 ) {
+						// Normal match, output <h>
+						$element = "<h level=\"$count\" i=\"$headingIndex\">$accum</h>";
+						$headingIndex++;
+					} else {
+						// Single equals sign on its own line, count=0
+						$element = $accum;
+					}
 				} else {
 					// No match, no <h>, just pass down the inner text
 					$element = $accum;
@@ -3011,12 +3029,11 @@ class Parser
 					foreach ( $parts as $partIndex => $part ) {
 						if ( isset( $piece['eqpos'][$partIndex] ) ) {
 							$eqpos = $piece['eqpos'][$partIndex];
-							list( $ws1, $argName, $ws2 ) = self::splitWhitespace( substr( $part, 0, $eqpos ) );
-							list( $ws3, $argValue, $ws4 ) = self::splitWhitespace( substr( $part, $eqpos + 1 ) );
-							$element .= "<part>$ws1<name>$argName</name>$ws2=$ws3<value>$argValue</value>$ws4</part>";
+							$argName = substr( $part, 0, $eqpos );
+							$argValue = substr( $part, $eqpos + 1 );
+							$element .= "<part><name>$argName</name>=<value>$argValue</value></part>";
 						} else {
-							list( $ws1, $value, $ws2 ) = self::splitWhitespace( $part );
-							$element .= "<part>$ws1<name index=\"$argIndex\" /><value>$value</value>$ws2</part>";
+							$element .= "<part><name index=\"$argIndex\" /><value>$part</value></part>";
 							$argIndex++;
 						}
 					}
@@ -3251,7 +3268,8 @@ class Parser
 			$id = $this->mVariables->matchStartToEnd( $part1 );
 			if ( $id !== false ) {
 				$text = $this->getVariableValue( $id );
-				$this->mOutput->mContainsOldMagic = true;
+				if (MagicWord::getCacheTTL($id)>-1)
+					$this->mOutput->mContainsOldMagic = true;
 				$found = true;
 			}
 		}
@@ -3275,9 +3293,6 @@ class Parser
 			}
 		}
 		wfProfileOut( __METHOD__.'-modifiers' );
-
-		# Save path level before recursing into functions & templates.
-		$lastPathLevel = $this->mTemplatePath;
 
 		# Parser functions
 		if ( !$found ) {
@@ -3356,10 +3371,16 @@ class Parser
 					$wgContLang->findVariantLink($part1, $title);
 				}
 				# Do infinite loop check
-				if ( isset( $this->mTemplatePath[$titleText] ) ) {
+				if ( !$frame->loopCheck( $title ) ) {
 					$found = true;
-					$text = "[[$part1]]" . $this->insertStripItem( '<!-- WARNING: template loop detected -->' );
+					$text = "<span class=\"error\">Template loop detected: [[$titleText]]</span>";
 					wfDebug( __METHOD__.": template loop broken at '$titleText'\n" );
+				}
+				# Do recursion depth check
+				$limit = $this->mOptions->getMaxTemplateDepth();
+				if ( $frame->depth >= $limit ) {
+					$found = true;
+					$text = "<span class=\"error\">Template recursion depth limit exceeded ($limit)</span>";
 				}
 			}
 		}
@@ -3411,8 +3432,6 @@ class Parser
 		# Recover the source wikitext and return it
 		if ( !$found ) {
 			$text = '{{' . $frame->implode( '|', $titleWithSpaces, $args ) . '}}';
-			# Prune lower levels off the recursion check path
-			$this->mTemplatePath = $lastPathLevel;
 			wfProfileOut( $fname );
 			return $text;
 		}
@@ -3421,10 +3440,8 @@ class Parser
 		if ( $isDOM ) {
 			# Clean up argument array
 			$newFrame = $frame->newChild( $args, $title );
-			# Add a new element to the templace recursion path
-			$this->mTemplatePath[$titleText] = 1;
 
-			if ( $titleText !== false && count( $newFrame->args ) == 0 ) {
+			if ( $titleText !== false && $newFrame->isEmpty() ) {
 				# Expansion is eligible for the empty-frame cache
 				if ( isset( $this->mTplExpandCache[$titleText] ) ) {
 					$text = $this->mTplExpandCache[$titleText];
@@ -3433,6 +3450,7 @@ class Parser
 					$this->mTplExpandCache[$titleText] = $text;
 				}
 			} else {
+				# Uncached expansion
 				$text = $newFrame->expand( $text );
 			}
 		}
@@ -3454,9 +3472,6 @@ class Parser
 			$text = "\n" . $text;
 		}
 		
-		# Prune lower levels off the recursion check path
-		$this->mTemplatePath = $lastPathLevel;
-
 		if ( !$this->incrementIncludeSize( 'post-expand', strlen( $text ) ) ) {
 			# Error, oversize inclusion
 			$text = "[[$originalTitle]]" . 
@@ -3630,15 +3645,14 @@ class Parser
 	function argSubstitution( $piece, $frame ) {
 		wfProfileIn( __METHOD__ );
 
-		$text = false;
 		$error = false;
 		$parts = $piece['parts'];
-		$argWithSpaces = $frame->expand( $piece['title'] );
-		$arg = trim( $argWithSpaces );
+		$nameWithSpaces = $frame->expand( $piece['title'] );
+		$argName = trim( $nameWithSpaces );
 
-		if ( isset( $frame->args[$arg] ) ) {
-			$text = $frame->parent->expand( $frame->args[$arg] );
-		} else if ( ( $this->ot['html'] || $this->ot['pre'] ) && $parts->length > 0 ) {
+		$text = $frame->getArgument( $argName );
+		if (  $text === false && ( $this->ot['html'] || $this->ot['pre'] ) && $parts->length > 0 ) {
+			# No match in frame, use the supplied default
 			$text = $frame->expand( $parts->item( 0 ) );
 		}
 		if ( !$this->incrementIncludeSize( 'arg', strlen( $text ) ) ) {
@@ -3646,7 +3660,8 @@ class Parser
 		}
 
 		if ( $text === false ) {
-			$text = '{{{' . $frame->implode( '|', $argWithSpaces, $parts ) . '}}}';
+			# No match anywhere
+			$text = '{{{' . $frame->implode( '|', $nameWithSpaces, $parts ) . '}}}';
 		}
 		if ( $error !== false ) {
 			$text .= $error;
@@ -4355,8 +4370,6 @@ class Parser
 	 *   found                     The text returned is valid, stop processing the template. This
 	 *                             is on by default.
 	 *   nowiki                    Wiki markup in the return value should be escaped
-	 *   noparse                   Unsafe HTML tags should not be stripped, etc.
-	 *   noargs                    Don't replace triple-brace arguments in the return value
 	 *   isHTML                    The returned text is HTML, armour it against wikitext transformation
 	 *
 	 * @public
@@ -4791,13 +4804,7 @@ class Parser
 				$label = '';
 			}
 
-			$pout = $this->parse( $label,
-				$this->mTitle,
-				$this->mOptions,
-				false, // Strip whitespace...?
-				false  // Don't clear state!
-			);
-			$html = $pout->getText();
+			$html = $this->recursiveTagParse( trim( $label ) );
 
 			$ig->add( $nt, $html );
 
@@ -5326,6 +5333,17 @@ class PPFrame {
 	var $parser, $title;
 	var $titleCache;
 
+	/**
+	 * Hashtable listing templates which are disallowed for expansion in this frame,
+	 * having been encountered previously in parent frames.
+	 */
+	var $loopCheckHash;
+
+	/**
+	 * Recursion depth of this frame, top = 0
+	 */
+	var $depth;
+
 	const NO_ARGS = 1;
 	const NO_TEMPLATES = 2;
 	const STRIP_COMMENTS = 4;
@@ -5342,6 +5360,8 @@ class PPFrame {
 		$this->parser = $parser;
 		$this->title = $parser->mTitle;
 		$this->titleCache = array( $this->title ? $this->title->getPrefixedDBkey() : false );
+		$this->loopCheckHash = array();
+		$this->depth = 0;
 	}
 
 	/**
@@ -5349,7 +5369,8 @@ class PPFrame {
 	 * $args is optionally a DOMNodeList containing the template arguments
 	 */
 	function newChild( $args = false, $title = false ) {
-		$assocArgs = array();
+		$namedArgs = array();
+		$numberedArgs = array();
 		if ( $title === false ) {
 			$title = $this->title;
 		}
@@ -5361,19 +5382,21 @@ class PPFrame {
 				}
 
 				$nameNodes = $xpath->query( 'name', $arg );
+				$value = $xpath->query( 'value', $arg );
 				if ( $nameNodes->item( 0 )->hasAttributes() ) {
 					// Numbered parameter
-					$name = $nameNodes->item( 0 )->attributes->getNamedItem( 'index' )->textContent;
+					$index = $nameNodes->item( 0 )->attributes->getNamedItem( 'index' )->textContent;
+					$numberedArgs[$index] = $value->item( 0 );
+					unset( $namedArgs[$index] );
 				} else {
 					// Named parameter
-					$name = $this->expand( $nameNodes->item( 0 ), PPFrame::STRIP_COMMENTS );
+					$name = trim( $this->expand( $nameNodes->item( 0 ), PPFrame::STRIP_COMMENTS ) );
+					$namedArgs[$name] = $value->item( 0 );
+					unset( $numberedArgs[$name] );
 				}
-
-				$value = $xpath->query( 'value', $arg );
-				$assocArgs[$name] = $value->item( 0 );
 			}
 		}
-		return new PPTemplateFrame( $this->parser, $this, $assocArgs, $title );
+		return new PPTemplateFrame( $this->parser, $this, $numberedArgs, $namedArgs, $title );
 	}
 
 	/**
@@ -5579,28 +5602,55 @@ class PPFrame {
 			return isset( $this->titleCache[$level] ) ? $this->titleCache[$level] : false;
 		}
 	}
+
+	/**
+	 * Returns true if there are no arguments in this frame
+	 */
+	function isEmpty() {
+		return true;
+	}
+
+	function getArgument( $name ) {
+		return false;
+	}
+
+	/**
+	 * Returns true if the infinite loop check is OK, false if a loop is detected
+	 */
+	function loopCheck( $title ) {
+		return !isset( $this->loopCheckHash[$title->getPrefixedDBkey()] );
+	}
 }
 
 /**
  * Expansion frame with template arguments
  */
 class PPTemplateFrame extends PPFrame {
-	var $parser, $args, $parent;
-	var $titleCache;
+	var $numberedArgs, $namedArgs, $parent;
+	var $numberedExpansionCache, $namedExpansionCache;
 
-	function __construct( $parser, $parent = false, $args = array(), $title = false ) {
+	function __construct( $parser, $parent = false, $numberedArgs = array(), $namedArgs = array(), $title = false ) {
 		$this->parser = $parser;
 		$this->parent = $parent;
-		$this->args = $args;
+		$this->numberedArgs = $numberedArgs;
+		$this->namedArgs = $namedArgs;
 		$this->title = $title;
+		$pdbk = $title ? $title->getPrefixedDBkey() : false;
 		$this->titleCache = $parent->titleCache;
-		$this->titleCache[] = $title ? $title->getPrefixedDBkey() : false;
+		$this->titleCache[] = $pdbk;
+		$this->loopCheckHash = /*clone*/ $parent->loopCheckHash;
+		if ( $pdbk !== false ) {
+			$this->loopCheckHash[$pdbk] = true;
+		}
+		$this->depth = $parent->depth + 1;
+		$this->numberedExpansionCache = $this->namedExpansionCache = array();
 	}
 
 	function __toString() {
 		$s = 'tplframe{';
 		$first = true;
-		foreach ( $this->args as $name => $value ) {
+		$args = $this->numberedArgs + $this->namedArgs;
+		foreach ( $args as $name => $value ) {
 			if ( $first ) {
 				$first = false;
 			} else {
@@ -5612,5 +5662,42 @@ class PPTemplateFrame extends PPFrame {
 		$s .= '}';
 		return $s;
 	}
-}
+	/**
+	 * Returns true if there are no arguments in this frame
+	 */
+	function isEmpty() {
+		return !count( $this->numberedArgs ) && !count( $this->namedArgs );
+	}
 
+	function getNumberedArgument( $index ) {
+		if ( !isset( $this->numberedArgs[$index] ) ) {
+			return false;
+		}
+		if ( !isset( $this->numberedExpansionCache[$index] ) ) {
+			# No trimming for unnamed arguments
+			$this->numberedExpansionCache[$index] = $this->parent->expand( $this->numberedArgs[$index], self::STRIP_COMMENTS );
+		}
+		return $this->numberedExpansionCache[$index];
+	}
+
+	function getNamedArgument( $name ) {
+		if ( !isset( $this->namedArgs[$name] ) ) {
+			return false;
+		}
+		if ( !isset( $this->namedExpansionCache[$name] ) ) {
+			# Trim named arguments post-expand, for backwards compatibility
+			$this->namedExpansionCache[$name] = trim( 
+				$this->parent->expand( $this->namedArgs[$name], self::STRIP_COMMENTS ) );
+		}
+		return $this->namedExpansionCache[$name];
+	}
+
+	function getArgument( $name ) {
+		wfDebug( __METHOD__." getting '$name'\n" );
+		$text = $this->getNumberedArgument( $name );
+		if ( $text === false ) {
+			$text = $this->getNamedArgument( $name );
+		}
+		return $text;
+	}
+}

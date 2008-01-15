@@ -63,10 +63,34 @@ abstract class ApiBase {
 		$this->mModulePrefix = $modulePrefix;
 	}
 
+	/*****************************************************************************
+	 * ABSTRACT METHODS                                                          *
+	 *****************************************************************************/
+
 	/**
-	 * Executes this module
+	 * Evaluates the parameters, performs the requested query, and sets up the 
+	 * result. Concrete implementations of ApiBase must override this method to 
+	 * provide whatever functionality their module offers. Implementations must
+	 * not produce any output on their own and are not expected to handle any
+	 * errors. 
+	 *
+	 * The execute method will be invoked directly by ApiMain immediately before
+	 * the result of the module is output. Aside from the constructor, implementations
+	 * should assume that no other methods will be called externally on the module
+	 * before the result is processed.
+	 *
+	 * The result data should be stored in the result object referred to by 
+	 * "getResult()". Refer to ApiResult.php for details on populating a result
+	 * object.
 	 */
 	public abstract function execute();
+
+	/**
+	 * Returns a String that identifies the version of the extending class. Typically
+	 * includes the class name, the svn revision, timestamp, and last author. May
+	 * be severely incorrect in many implementations!
+	 */
+	public abstract function getVersion();
 
 	/**
 	 * Get the name of the module being executed by this instance 
@@ -100,14 +124,16 @@ abstract class ApiBase {
 	}
 
 	/**
-	 * If this module's $this is the same as $this->mMainModule, its the root, otherwise no
+	 * Returns true if this module is the main module ($this === $this->mMainModule), 
+	 * false otherwise.
 	 */
 	public function isMain() {
 		return $this === $this->mMainModule;
 	}
 
 	/**
-	 * Get result object
+	 * Get the result object. Please refer to the documentation in ApiResult.php
+	 * for details on populating and accessing data in a result object.
 	 */
 	public function getResult() {
 		// Main module has getResult() method overriden
@@ -125,7 +151,8 @@ abstract class ApiBase {
 	}
 
 	/**
-	 * Set warning section for this module. Users should monitor this section to notice any changes in API.
+	 * Set warning section for this module. Users should monitor this section to 
+	 * notice any changes in API.
 	 */
 	public function setWarning($warning) {
 		$msg = array();
@@ -196,6 +223,10 @@ abstract class ApiBase {
 		return $msg;
 	}
 
+	/** 
+	 * Generates the parameter descriptions for this module, to be displayed in the
+	 * module's help.
+	 */
 	public function makeHelpMsgParameters() {
 		$params = $this->getAllowedParams();
 		if ($params !== false) {
@@ -208,7 +239,7 @@ abstract class ApiBase {
 				if (is_array($desc))
 					$desc = implode($paramPrefix, $desc);
 
-				@ $type = $paramSettings[self :: PARAM_TYPE];
+				$type = $paramSettings[self :: PARAM_TYPE];
 				if (isset ($type)) {
 					if (isset ($paramSettings[self :: PARAM_ISMULTI]))
 						$prompt = 'Values (separate with \'|\'): ';
@@ -325,6 +356,10 @@ abstract class ApiBase {
 		return $this->getParameterFromSettings($paramName, $paramSettings);
 	}
 
+	/**
+	 * Returns an array of the namespaces (by integer id) that exist on the
+	 * wiki. Used primarily in help documentation.
+	 */
 	public static function getValidNamespaces() {
 		static $mValidNamespaces = null;
 		if (is_null($mValidNamespaces)) {
@@ -341,6 +376,7 @@ abstract class ApiBase {
 
 	/**
 	 * Using the settings determine the value for the given parameter
+	 *
 	 * @param $paramName String: parameter name
 	 * @param $paramSettings Mixed: default value or an array of settings using PARAM_* constants.
 	 * @param $parseMaxLimit Boolean: parse limit when max is given?
@@ -513,6 +549,41 @@ abstract class ApiBase {
 	public function dieUsage($description, $errorCode, $httpRespCode = 0) {
 		throw new UsageException($description, $this->encodeParamName($errorCode), $httpRespCode);
 	}
+	
+	/**
+	 * Array that maps message keys to error messages. $1 and friends are replaced.
+	 */
+	public static $messageMap = array(
+		'ns-specialprotected' => array('code' => 'unsupportednamespace', 'info' => "Pages in the Special namespace can't be edited"),
+		'protectedinterface' => array('code' => 'protectednamespace-interface', 'info' => "You're not allowed to edit interface messages"),
+		'namespaceprotected' => array('code' => 'protectednamespace', 'info' => "You're not allowed to edit pages in the ``\$1'' namespace"),
+		'customcssjsprotected' => array('code' => 'customcssjsprotected', 'info' => "You're not allowed to edit custom CSS and JavaScript pages"),
+		'cascadeprotected' => array('code' => 'cascadeprotected', 'info' =>"The page you're trying to edit is protected because it's included in a cascade-protected page"),
+		'protectedpagetext' => array('code' => 'protectedpage', 'info' => "The ``\$1'' right is required to edit this page"),
+		'protect-cantedit' => array('code' => 'cantedit', 'info' => "You can't protect this page because you can't edit it"),
+		'badaccess-group0' => array('code' => 'permissiondenied', 'info' => "Permission denied"), // Generic permission denied message
+		'badaccess-group1' => array('code' => 'permissiondenied', 'info' => "Permission denied"), // Can't use the parameter 'cause it's wikilinked
+		'badaccess-group2' => array('code' => 'permissiondenied', 'info' => "Permission denied"),
+		'badaccess-groups' => array('code' => 'permissiondenied', 'info' => "Permission denied"),
+		'unknownerror' => array('code' => 'unknownerror', 'info' => "Unknown error"),
+		'titleprotected' => array('code' => 'protectedtitle', 'info' => "This title has been protected from creation"),
+		'nocreate-loggedin' => array('code' => 'cantcreate', 'info' => "You don't have permission to create new pages"),
+		'nocreatetext' => array('code' => 'cantcreate-anon', 'info' => "Anonymous users can't create new pages"),
+		'movenologintext' => array('code' => 'cantmove-anon', 'info' => "Anonymous users can't move pages"),
+		'movenotallowed' => array('code' => 'cantmove', 'info' => "You don't have permission to move pages")
+	);
+	
+	/**
+	 * Output the error message related to a certain array
+	 * @param array $error Element of a getUserPermissionsErrors()
+	 */
+	public function dieUsageMsg($error) {
+		$key = array_shift($error);
+		if(isset(self::$messageMap[$key]))
+			$this->dieUsage(wfMsgReplaceArgs(self::$messageMap[$key]['info'], $error), self::$messageMap[$key]['code']);
+		// If the key isn't present, throw an "unknown error
+		$this->dieUsage(self::$messageMap['unknownerror']['info'], self::$messageMap['unknownerror']['code']);
+	}
 
 	/**
 	 * Internal code errors should be reported with this method
@@ -637,10 +708,12 @@ abstract class ApiBase {
 		print "\n</pre>\n";
 	}
 
-	public abstract function getVersion();
 
+	/**
+	 * Returns a String that identifies the version of this class.
+	 */
 	public static function getBaseVersion() {
 		return __CLASS__ . ': $Id$';
-	}
+	} 
 }
 

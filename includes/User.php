@@ -1639,8 +1639,8 @@ class User {
 
 	/**
 	 * Get the list of implicit group memberships this user has.
-	 * This includes all explicit groups, plus 'user' if logged in
-	 * and '*' for all accounts.
+	 * This includes all explicit groups, plus 'user' if logged in,
+	 * '*' for all accounts and autopromoted groups
 	 * @param boolean $recache Don't use the cache
 	 * @return array of strings
 	 */
@@ -1961,6 +1961,7 @@ class User {
 	 * Logout user.
 	 */
 	function logout() {
+		global $wgUser;
 		if( wfRunHooks( 'UserLogout', array(&$this) ) ) {
 			$this->doLogout();
 			wfRunHooks( 'UserLogoutComplete', array(&$wgUser) );

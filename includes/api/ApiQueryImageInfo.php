@@ -68,7 +68,13 @@ class ApiQueryImageInfo extends ApiQueryBase {
 					$repository = $img->getRepoName();
 
 					$isCur = true;
+					$count = 0;
 					while($line = $img->nextHistoryLine()) { // assignment
+						# FIXME: Limiting to 500 because it's unlimited right now
+						#	 500+ image histories are scarce, but this has DoS potential
+						#	 FileRepo.php should be fixed
+						if($count++ == 500)
+							break;
 						$row = get_object_vars( $line );
 						$vals = array();
 						$prefix = $isCur ? 'img' : 'oi';
@@ -110,11 +116,12 @@ class ApiQueryImageInfo extends ApiQueryBase {
 					$img->resetHistory();
 				}
 
-                $this->getResult()->addValue(array ('query', 'pages', intval($pageId)),
-                    'imagerepository',
-                    $repository);
-                if (!empty($data))
-                    $this->addPageSubItems($pageId, $data);
+				$this->getResult()->addValue(array(
+						'query', 'pages', intval($pageId)),
+						'imagerepository', $repository
+				);
+				if (!empty($data))
+					$this->addPageSubItems($pageId, $data);
 			}
 		}
 	}

@@ -73,8 +73,10 @@ function code2utf($num){
    return '';
 }
 
+define( 'AJAX_SEARCH_VERSION', 1 );	//AJAX search cache version
+
 function wfSajaxSearch( $term ) {
-	global $wgContLang, $wgOut, $wgUser, $wgCapitalLinks;
+	global $wgContLang, $wgOut, $wgUser, $wgCapitalLinks, $wgMemc;
 	$limit = 16;
 	$sk = $wgUser->getSkin();
 
@@ -84,13 +86,21 @@ function wfSajaxSearch( $term ) {
 		$term = $wgContLang->ucfirst( $term ); 
 	$term_title = Title::newFromText( $term );
 
+	$memckey = wfMemcKey( 'ajaxsearch', md5( $term_title->getFullText() ) );
+	$cached = $wgMemc->get($memckey);
+	if( is_array( $cached ) && $cached['version'] == AJAX_SEARCH_VERSION ) {
+		$response = new AjaxResponse( $cached['html'] );
+		$response->setCacheDuration( 30*60 );
+		return $response;
+	}
+
 	$r = $more = '';
 	$canSearch = true;
 	if( $term_title && $term_title->getNamespace() != NS_SPECIAL ) {
 		$db = wfGetDB( DB_SLAVE );
 		$res = $db->select( 'page', array( 'page_title', 'page_namespace' ),
 				array(  'page_namespace' => $term_title->getNamespace(),
-					"page_title LIKE '". $db->strencode( $term_title->getDBKey() ) ."%'" ),
+					"page_title LIKE '". $db->strencode( $term_title->getDBkey() ) ."%'" ),
 					"wfSajaxSearch",
 					array( 'LIMIT' => $limit+1 )
 				);
@@ -147,10 +157,10 @@ function wfSajaxSearch( $term ) {
 			. '<ul>' .$r .'</ul>' . $more;
 	}
 
+	$wgMemc->set( $memckey, array( 'version' => AJAX_SEARCH_VERSION, 'html' => $html ), 30 * 60 );
+
 	$response = new AjaxResponse( $html );
-
 	$response->setCacheDuration( 30*60 );
-
 	return $response;
 }
 

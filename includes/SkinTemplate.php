@@ -219,22 +219,10 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'catlinks', $this->getCategories());
 		if( $wgOut->isSyndicated() ) {
 			$feeds = array();
-			foreach( $wgFeedClasses as $format => $class ) {
-				$linktext = $format;
-				if ( $format == "atom" ) {
-					$linktext = wfMsg( 'feed-atom' );
-				} else if ( $format == "rss" ) {
-					$linktext = wfMsg( 'feed-rss' );
-				}
-				if( is_string( $wgOut->getFeedAppendQuery() ) ) {
-					$appendQuery = "&" . $wgOut->getFeedAppendQuery();
-				} else {
-					$appendQuery = "";
-				}
+			foreach( $wgOut->getSyndicationLinks() as $format => $link ) {
 				$feeds[$format] = array(
-					'text' => $linktext,
-					'href' => $wgRequest->appendQuery( "feed={$format}{$appendQuery}" )
-				);
+					'text' => wfMsg( "feed-$format" ),
+					'href' => $link );
 			}
 			$tpl->setRef( 'feeds', $feeds );
 		} else {
@@ -356,7 +344,7 @@ class SkinTemplate extends Skin {
 				$dbr = wfGetDB( DB_SLAVE );
 				$watchlist = $dbr->tableName( 'watchlist' );
 				$sql = "SELECT COUNT(*) AS n FROM $watchlist
-					WHERE wl_title='" . $dbr->strencode($this->mTitle->getDBKey()) .
+					WHERE wl_title='" . $dbr->strencode($this->mTitle->getDBkey()) .
 					"' AND  wl_namespace=" . $this->mTitle->getNamespace() ;
 				$res = $dbr->query( $sql, 'SkinTemplate::outputPage');
 				$x = $dbr->fetchObject( $res );
@@ -765,7 +753,7 @@ class SkinTemplate extends Skin {
 				}
 
 				if ( $this->mTitle->getNamespace() !== NS_MEDIAWIKI && $wgUser->isAllowed( 'protect' ) ) {
-					if(!is_array($this->mTitle->getTitleProtection())){
+					if( !$this->mTitle->getRestrictions( 'create' ) ) {
 						$content_actions['protect'] = array(
 							'class' => ($action == 'protect') ? 'selected' : false,
 							'text' => wfMsg('protect'),

@@ -89,7 +89,7 @@ class SpecialPage
 		'Newimages'                 => array( 'IncludableSpecialPage', 'Newimages' ),
 		'Listusers'                 => array( 'SpecialPage', 'Listusers' ),
 		'Statistics'                => array( 'SpecialPage', 'Statistics' ),
-		'Randompage'                => array( 'SpecialPage', 'Randompage' ),
+		'Randompage'                => 'Randompage',
 		'Lonelypages'               => array( 'SpecialPage', 'Lonelypages' ),
 		'Uncategorizedpages'        => array( 'SpecialPage', 'Uncategorizedpages' ),
 		'Uncategorizedcategories'   => array( 'SpecialPage', 'Uncategorizedcategories' ),
@@ -141,7 +141,7 @@ class SpecialPage
 		'Listredirects'             => array( 'SpecialPage', 'Listredirects' ),
 		'Revisiondelete'            => array( 'UnlistedSpecialPage', 'Revisiondelete', 'deleterevision' ),
 		'Unusedtemplates'           => array( 'SpecialPage', 'Unusedtemplates' ),
-		'Randomredirect'            => array( 'SpecialPage', 'Randomredirect' ),
+		'Randomredirect'            => 'SpecialRandomredirect',
 		'Withoutinterwiki'          => array( 'SpecialPage', 'Withoutinterwiki' ),
 
 		'Mypage'                    => array( 'SpecialMypage' ),
@@ -408,7 +408,6 @@ class SpecialPage
 			$par = $bits[1];
 		}
 		$page = SpecialPage::getPageByAlias( $name );
-
 		# Nonexistent?
 		if ( !$page ) {
 			if ( !$including ) {
