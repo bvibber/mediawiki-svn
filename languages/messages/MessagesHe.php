@@ -186,6 +186,7 @@ $magicWords = array(
 	'special'               => array( 0,    'מיוחד',                             'special'                ),
 	'defaultsort'           => array( 1,    'מיון רגיל:',                        'DEFAULTSORT:'           ),
 	'filepath'              => array( 0,    'נתיב לקובץ:',                       'FILEPATH:'              ),
+	'tag'                   => array( 0,    'תגית',                              'tag'                    ),
 );
 
 $specialPageAliases = array(
@@ -1086,24 +1087,26 @@ $2',
 'files'                    => 'קבצים',
 
 # User rights
-'userrights-lookup-user'      => 'ניהול קבוצות משתמש',
-'userrights-user-editname'    => 'שם משתמש:',
-'editusergroup'               => 'עריכת קבוצות משתמשים',
-'userrights-editusergroup'    => 'עריכת קבוצות משתמש',
-'saveusergroups'              => 'שמירת קבוצות משתמש',
-'userrights-groupsmember'     => 'חבר בקבוצות:',
-'userrights-groupsremovable'  => 'ניתן להסירו מהקבוצות:',
-'userrights-groupsavailable'  => 'קבוצות זמינות:',
-'userrights-groupshelp'       => 'אנא בחרו קבוצות שברצונכם שהמשתמש יתווסף אליהן או יוסר מהן.
+'userrights-lookup-user'           => 'ניהול קבוצות משתמש',
+'userrights-user-editname'         => 'שם משתמש:',
+'editusergroup'                    => 'עריכת קבוצות משתמשים',
+'userrights-editusergroup'         => 'עריכת קבוצות משתמש',
+'saveusergroups'                   => 'שמירת קבוצות משתמש',
+'userrights-groupsmember'          => 'חבר בקבוצות:',
+'userrights-groupsremovable'       => 'ניתן להסירו מהקבוצות:',
+'userrights-groupsavailable'       => 'קבוצות זמינות:',
+'userrights-groupshelp'            => 'אנא בחרו קבוצות שברצונכם שהמשתמש יתווסף אליהן או יוסר מהן.
 קבוצות שלא נבחרו לא ישתנו. באפשרותכם לבטל בחירה של קבוצה באמצעות לחיצה על הכפתור השמאלי של העכבר ועל Ctrl מעליה.',
-'userrights-reason'           => 'סיבה לשינוי:',
-'userrights-available-none'   => 'אינכם יכולים לשנות את ההשתייכות לקבוצות.',
-'userrights-available-add'    => 'באפשרותכם להוסיף משתמשים {{plural:$2|לקבוצה הבאה|לקבוצות הבאות}}: $1.',
-'userrights-available-remove' => 'באפשרותכם להסיר משתמשים {{plural:$2|מהקבוצה הבאה|מהקבוצות הבאות}}: $1.',
-'userrights-no-interwiki'     => 'אין לכם הרשאה לערוך הרשאות משתמש באתרים אחרים.',
-'userrights-nodatabase'       => 'מסד הנתונים $1 אינו קיים או אינו מקומי.',
-'userrights-nologin'          => 'עליכם [[Special:Userlogin|להיכנס לחשבון]] עם הרשאות מתאימות כדי לשנות הרשאות של משתמשים.',
-'userrights-notallowed'       => 'לחשבון המשתמש שלכם אין הרשאה לשנות הרשאות של משתמשים.',
+'userrights-reason'                => 'סיבה לשינוי:',
+'userrights-available-none'        => 'אינכם יכולים לשנות את ההשתייכות לקבוצות.',
+'userrights-available-add'         => 'באפשרותכם להוסיף משתמשים {{plural:$2|לקבוצה הבאה|לקבוצות הבאות}}: $1.',
+'userrights-available-remove'      => 'באפשרותכם להסיר משתמשים {{plural:$2|מהקבוצה הבאה|מהקבוצות הבאות}}: $1.',
+'userrights-available-add-self'    => 'באפשרותכם להוסיף את עצמכם {{plural:$2|לקבוצה הבאה|לקבוצות הבאות}}: $1.',
+'userrights-available-remove-self' => 'באפשרותכם להסיר את עצמכם {{plural:$2|מהקבוצה הבאה|מהקבוצות הבאות}}: $1.',
+'userrights-no-interwiki'          => 'אין לכם הרשאה לערוך הרשאות משתמש באתרים אחרים.',
+'userrights-nodatabase'            => 'מסד הנתונים $1 אינו קיים או אינו מקומי.',
+'userrights-nologin'               => 'עליכם [[Special:Userlogin|להיכנס לחשבון]] עם הרשאות מתאימות כדי לשנות הרשאות של משתמשים.',
+'userrights-notallowed'            => 'לחשבון המשתמש שלכם אין הרשאה לשנות הרשאות של משתמשים.',
 
 # Groups
 'group'               => 'קבוצה:',
@@ -2572,5 +2575,8 @@ $1',
 'hebrew-calendar-m10-gen' => 'בתמוז',
 'hebrew-calendar-m11-gen' => 'באב',
 'hebrew-calendar-m12-gen' => 'באלול',
+
+# Core parser functions
+'unknown_extension_tag' => 'תגית בלתי ידועה: "$1"',
 
 );

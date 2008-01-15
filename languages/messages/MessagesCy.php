@@ -575,7 +575,7 @@ Y rheswm a roddwyd dros y bloc gan $3 yw ''$2''.",
 'nohistory'           => 'Does dim hanes cywiriadau am tudalen hon.',
 'revnotfound'         => 'Cywiriad nid wedi darganfod',
 'revnotfoundtext'     => 'Ni ellir darganfod yr hen cywiriad y tudalen rydych wedi gofyn amdano. Gwiriwch yr URL rydych wedi defnyddio i darganfod y tudalen hon.',
-'loadhist'            => 'Yn llwytho hanes y tudalen',
+'loadhist'            => 'Yn llwytho hanes y dudalen',
 'currentrev'          => 'Diwygiad cyfoes',
 'revisionasof'        => 'Diwygiad $1',
 'previousrevision'    => '← at y diwygiad blaenorol',
@@ -595,6 +595,10 @@ Eglurhad: (cyf.) = gwahaniaethau rhyngddo a'r fersiwn cyfredol,
 'histlast'            => 'Diweddaraf',
 'historysize'         => '({{PLURAL:$1|1 beit|$1 beits}})',
 'historyempty'        => '(gwag)',
+
+# Revision deletion
+'logdelete-logentry' => 'newidiwyd y gallu i weld y digwyddiad [[$1]]',
+'logdelete-success'  => "Llwyddwyd i guddio'r digwyddiad.",
 
 # Oversight log
 'oversightlog' => 'Lòg arolygiaeth',
@@ -982,9 +986,12 @@ Mae gan '''$2''' (neu '''$4%''') ohonynt alluoedd $5.",
 'specialloguserlabel'  => 'Defnyddiwr:',
 'speciallogtitlelabel' => 'Teitl:',
 'log'                  => 'Logiau',
+'log-search-legend'    => 'Chwilio am logiau',
+'log-search-submit'    => 'Eler',
 'alllogstext'          => "Mae pob cofnod yn holl logiau {{SITENAME}} wedi cael eu rhestru yma. 
 Gallwch weld chwiliad mwy penodol trwy ddewis y math o lòg, enw'r defnyddiwr, neu'r dudalen benodedig. Sylwer bod prif lythrennau o bwys i'r chwiliad.",
-'logempty'             => 'Does dim eitemau yn cyfateb yn y log.',
+'logempty'             => 'Does dim eitemau yn cyfateb yn y lòg.',
+'log-title-wildcard'   => "Chwilio am deitlau'n dechrau gyda'r geiriau hyn",
 
 # Special:Allpages
 'nextpage'          => 'Tudalen nesaf ($1)',
@@ -1278,17 +1285,17 @@ Ceir cofnod o'r tudalennau a ddilëwyd neu a adferwyd yn ddiweddar ar y [[Specia
 # Developer tools
 'lockdb'              => "Cloi'r databas",
 'unlockdb'            => "Datgloi'r databas",
-'lockdbtext'          => "Bydd cloi'r databas yn golygu na all unrhyw ddefnyddiwr olygu tudalennau, newid eu dewisiadau, golygu eu rhestrau gwylio, na gwneud unrhywbeth arall sydd angen newid yn y databas. Cadarnhewch eich bod chi wir am wneud hyn, ac y byddwch yn ei ddatgloi unwaith mae'r gwaith cynnal a chadw drosodd.",
+'lockdbtext'          => "Bydd cloi'r databas yn golygu na all unrhyw ddefnyddiwr olygu tudalennau, newid eu dewisiadau, golygu eu rhestrau gwylio, na gwneud unrhywbeth arall sydd angen newid yn y databas. Cadarnhewch eich bod chi wir am wneud hyn, ac y byddwch yn ei ddatgloi unwaith mae'r gwaith cynnal a chadw ar ben.",
 'unlockdbtext'        => "Bydd datgloi'r databas yn ail-alluogi unrhyw ddefnyddiwr i olygu tudalennau, newid eu dewisiadau, golygu eu rhestrau gwylio, neu i wneud unrhywbeth arall sydd angen newid yn y databas. Cadarnhewch eich bod chi wir am wneud hyn.",
 'lockconfirm'         => "Ydw, rydw i wir am gloi'r databas.",
 'unlockconfirm'       => "Ydw, rydw i wir am ddatgloi'r databas.",
 'lockbtn'             => "Cloi'r databas",
 'unlockbtn'           => "Datgloi'r databas",
-'locknoconfirm'       => "Rydych chi heb dicio'r blwch cadarnhad.",
+'locknoconfirm'       => "Nid ydych wedi ticio'r blwch cadarnhad.",
 'lockdbsuccesssub'    => "Wedi llwyddo cloi'r databas",
 'unlockdbsuccesssub'  => "Databas wedi'i ddatgloi",
-'lockdbsuccesstext'   => "Mae'r databas wedi'i gloi. <br />
-Cofiwch ddatgloi'r databas pan mae'r gwaith cynnal wedi gorffen.",
+'lockdbsuccesstext'   => "Mae'r databas wedi'i gloi. 
+<br />Cofiwch [[Special:Unlockdb|ddatgloi'r]] databas pan fydd y gwaith cynnal ar ben.",
 'unlockdbsuccesstext' => "Mae'r databas wedi'i ddatgloi.",
 
 # Move page
@@ -1377,7 +1384,6 @@ Yn achos yr ail ddewis, mae modd defnyddio cyswllt, e.e. [[{{ns:special}}:Export
 'importhistoryconflict' => "Mae gwrthdaro rhwng adolygiadau hanes (efallai eich bod chi wedi mewnforio'r dudalen o'r blaen)",
 'importnosources'       => "Ni ddiffiniwyd unrhyw ffynonellau mewnforio traws-wici, ac mae uwchlwytho hanesion yn uniongyrchol wedi'i analluogi.",
 'importnofile'          => 'Ni uwchlwythwyd unrhyw ffeil mewnforio.',
-'importuploaderror'     => "Methwyd uwchlwytho'r ffeil; efallai bod y ffeil yn fwy o faint na'r hyn sy'n cael ei ganiatau.",
 
 # Import log
 'importlogpage' => 'Lòg mewnforio',
@@ -1576,8 +1582,18 @@ $1",
 'autoredircomment' => 'Yn ailgyfeirio at [[$1]]',
 'autosumm-new'     => 'Tudalen newydd: $1',
 
+# Live preview
+'livepreview-loading' => "Wrthi'n llwytho…",
+'livepreview-ready'   => 'Llwytho… Ar ben!',
+'livepreview-failed'  => 'Y rhagolwg byw wedi methu! Rhowch gynnig ar y rhagolwg arferol.',
+'livepreview-error'   => 'Wedi methu cysylltu: $1 "$2". Rhowch gynnig ar y rhagolwg arferol.',
+
 # Friendlier slave lag warnings
 'lag-warn-normal' => 'Hwyrach na ddangosir isod y newidiadau a ddigwyddodd o fewn y $1 eiliad ddiwethaf.',
 'lag-warn-high'   => 'Mae gweinydd y data-bas ar ei hôl hi: efallai nad ymddengys newidiadau o fewn y $1 eiliad ddiwethaf ar y rhestr.',
+
+# Watchlist editor
+'watchlistedit-normal-legend'  => 'Tynnu tudalennau oddiar y rhestr gwylio',
+'watchlistedit-normal-explain' => "Rhestrir y teitlau ar eich rhestr gwylio isod. I dynnu teitl oddiar y rhestr, ticiwch y blwch ar ei gyfer, yna cliciwch 'Tynnu'r tudalennau'. Gallwch hefyd ddewis golygu'r rhestr gwylio ar ei [[Special:Watchlist/raw|ffurf syml]].",
 
 );

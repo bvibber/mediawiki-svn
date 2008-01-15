@@ -3,9 +3,10 @@
  *
  * @addtogroup Language
  *
- * @author Ivan Lanin (since March 2006)
  * @author Irwangatot
  * @author לערי ריינהארט
+ * @author IvanLanin
+ * @author Borgx
  */
 
 /**
@@ -213,8 +214,8 @@ $specialPageAliases = array(
 	'Lonelypages'               => array( 'Halaman_tak_bertuan', 'Halamantakbertuan' ),
 	'Uncategorizedpages'        => array( 'Halamantakterkategori' ),
 	'Uncategorizedcategories'   => array( 'Kategoritakterkategori' ),
-	'Uncategorizedtemplates'    => array( 'Templattakterkategori' ),
 	'Uncategorizedimages'       => array( 'Berkastakterkategori' ),
+	'Uncategorizedtemplates'    => array( 'Templattakterkategori' ),
 	'Unusedcategories'          => array( 'Kategoritakdigunakan' ),
 	'Unusedimages'              => array( 'Berkastakdigunakan' ),
 	'Wantedpages'               => array( 'Halamandiinginkan' ),
@@ -232,12 +233,14 @@ $specialPageAliases = array(
 	'Ancientpages'              => array( 'Artikel_lama', 'Artikeltertua' ),
 	'Deadendpages'              => array( 'Halaman_buntu', 'Halamanbuntu' ),
 	'Protectedpages'            => array( 'Halamandilindungi' ),
+	'Protectedtitles'           => array( 'Judulyangdilindungi' ),
 	'Allpages'                  => array( 'Daftar_halaman', 'Daftarhalaman' ),
-	'Prefixindex'               => array( 'Indeksawalan' ) ,
+	'Prefixindex'               => array( 'Indeksawalan' ),
 	'Ipblocklist'               => array( 'Daftar_pemblokiran', 'Daftarblokirip' ),
 	'Specialpages'              => array( 'Halaman_istimewa', 'Halamanistimewa' ),
 	'Contributions'             => array( 'Kontribusi_pengguna', 'Kontribusi' ),
 	'Emailuser'                 => array( 'Suratepengguna' ),
+	'Confirmemail'              => array( 'Konfirmasi_surat_e', 'konfirmasisurate' ),
 	'Whatlinkshere'             => array( 'Pranala_balik', 'Pranalabalik' ),
 	'Recentchangeslinked'       => array( 'Perubahan_terkait', 'Perubahanterkait' ),
 	'Movepage'                  => array( 'Pindahkan_halaman', 'Pindahkanhalaman' ),
@@ -264,11 +267,11 @@ $specialPageAliases = array(
 	'Mytalk'                    => array( 'Pembicaraansaya' ),
 	'Mycontributions'           => array( 'Kontribusisaya' ),
 	'Listadmins'                => array( 'Daftar_pengurus', 'Daftarpengurus' ),
+	'Listbots'                  => array( 'Daftar_bot', 'Daftarbot' ),
 	'Popularpages'              => array( 'Halaman_populer', 'Halamanpopuler' ),
 	'Search'                    => array( 'Pencarian', 'Cari' ),
 	'Resetpass'                 => array( 'Resetpass' ),
 	'Withoutinterwiki'          => array( 'Tanpa_interwiki', 'Tanpainterwiki' ),
-	'Protectedtitles'           => array( 'Judulyangdilindungi' ),
 );
 
 $messages = array(
@@ -957,7 +960,8 @@ Pengurus lain akan dapat mengakses isi tersebunyi dan dapat membatalkan penghapu
 'userrights-editusergroup'    => 'Sunting kelompok pengguna',
 'saveusergroups'              => 'Simpan kelompok pengguna',
 'userrights-groupsmember'     => 'Anggota dari:',
-'userrights-groupsavailable'  => 'Kelompok yang tersedia:',
+'userrights-groupsremovable'  => 'Grup yang dapat dicabut:',
+'userrights-groupsavailable'  => 'Grup yang dapat diberikan:',
 'userrights-groupshelp'       => 'Pilih kelompok yang Anda ingin hapus dari atau tambahkan pada pengguna. Kelompok yang tak dipilih tak akan diganti. Anda dapat membatalkan pilihan dengan menekan tombol CTRL + Klik kiri',
 'userrights-reason'           => 'Alasan pengubahan:',
 'userrights-available-none'   => 'Anda tak dapat mengganti keangotaan kelompok.',
@@ -1256,7 +1260,6 @@ Telah dimuat sejumlah '''$8''' berkas dan sedang terjadi '''$7''' [http://meta.w
 'protectedpagestext'      => 'Halaman-halaman berikut dilindungi dari pemindahan atau penyuntingan.',
 'protectedpagesempty'     => 'Saat ini tidak ada halaman yang sedang dilindungi dengan parameter-parameter tersebut.',
 'protectedtitles'         => 'Judul yang dilindungi',
-'protectedtitles-summary' => '',
 'protectedtitlestext'     => 'Judul berikut ini dilindungi dari pembuatan',
 'protectedtitlesempty'    => 'Tidak ada judul yang dilindungi.',
 'listusers'               => 'Daftar pengguna',
@@ -1426,7 +1429,7 @@ Umpan balik dan bantuan lanjutan:
 'deletionlog'                 => 'log penghapusan',
 'reverted'                    => 'Dikembalikan ke revisi sebelumnya',
 'deletecomment'               => 'Alasan penghapusan',
-'deleteotherreason'           => 'Lainnya/Alasan tambahan:',
+'deleteotherreason'           => 'Lainnya/alasan tambahan:',
 'deletereasonotherlist'       => 'Alasan lain',
 'deletereason-dropdown'       => '*Alasan penghapusan
 ** Permintaan pengguna
