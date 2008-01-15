@@ -289,7 +289,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	}
 	/*return transcript menu*/
 	function get_mvd_menu(&$mvd_page){		
-		global $wgUser;		
+		global $wgUser, $mvgScriptPath;		
 		$sk = $wgUser->getSkin();
 		
 		$out='';
@@ -304,10 +304,13 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$hlink =  $sk->makeKnownLinkObj($hTitle,wfMsg('mv_history'),'action=history'); 		
 		$dTitle =  Title::newFromText($mvd_page->wiki_title, MV_NS_MVD_TALK);
 		$dlink = $sk->makeKnownLinkObj($dTitle,  wfMsg('talk') );
-			
+		
+		//
 		$plink='<a title="'.wfMsg('mv_play').' '.seconds2ntp($mvd_page->start_time) . ' to ' . seconds2ntp($mvd_page->end_time).' " ' .
 				'style="font-weight:bold;color:#000" ' .		
-				'href="javascript:mv_do_play();">'. seconds2ntp($mvd_page->start_time) . ' to ' . seconds2ntp($mvd_page->end_time).'</a>';
+				'href="javascript:mv_do_play({s:\''.seconds2ntp($mvd_page->start_time).'\',e:\''.seconds2ntp($mvd_page->end_time).'\'});">' .
+					'<img src="'.$mvgScriptPath.'/skins/images/control_play_blue.png"> '.
+					seconds2ntp($mvd_page->start_time) . ' to ' . seconds2ntp($mvd_page->end_time).'</a>';
 		
 		//@@TODO set up conditional display: (view source if not logged on, protect, remove if given permission)  
 		$out.=$plink;

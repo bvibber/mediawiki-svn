@@ -146,6 +146,9 @@ var embedTypes = {
 	 			return 'oggplay'; break;
 	 		case 'cortado':
 	 			return 'java';break;
+	 		case 'oggPlugin':
+	 			return 'generic';
+	 		break;
 	 		default:
 	 			return null;
 	 	}
@@ -337,7 +340,7 @@ var mvJsLoader = {
 			 }
 		 }
 		 if(loading){
-			 if( this.load_time++ > 1000){ //time out after ~25seconds
+			 if( this.load_time++ > 2000){ //time out after ~50seconds
 			 	js_error( getMsg('error_load_lib') );
 			 }else{
 				 setTimeout('mvJsLoader.doLoad()',25);
@@ -393,7 +396,9 @@ var mvEmbed = {
 		}
 		//load the detected plugin playback type:
 		if(embedTypes.getPlayerType()){
-			plugins[embedTypes.getPlayerLib()+'Embed']='mv_'+embedTypes.getPlayerLib()+'Embed.js';
+			if( embedTypes.getPlayerLib() ){
+				plugins[embedTypes.getPlayerLib()+'Embed']='mv_'+embedTypes.getPlayerLib()+'Embed.js';
+			}
 		}	
 		mvJsLoader.doLoad(plugins, function(){	  		
 			mvEmbed.init();
@@ -1225,16 +1230,6 @@ function getTransparentPng(image){
 * EMBED OBJECTS:
 * (dynamically included)
 */
-
-/* the most simple implementation used for unknown application/ogg plugin */
-var genericEmbed={
-	instanceOf:'genericEmbed',
-    getEmbedObj:function(){
-    	return '<object type="application/ogg" '+
-			      'width="'+this.width+'" height="'+this.height+'" ' +
-		    	  'data="' + this.src + '"></object>';
-    }
-}
 
 
 /*

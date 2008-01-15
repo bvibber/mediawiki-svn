@@ -116,7 +116,8 @@ var mv_init_interface = {
 		//js_log('stop: '+ ebvid['stop'].toString() );
 		//js_log('org_eb_stop: '+ ebvid['org_eb_stop'].toString() );
 		//add all the hover hooks:
-		this.addHoverHooks();
+		this.addHoverHooks();				
+		
 		
 		//unlock the interface updates once everything is setup: 
 		mv_lock_vid_updates=false;		
@@ -740,18 +741,26 @@ function mv_do_stop(){
 		$j('#big_play_link_embed_vid').attr('href', 'javascript:mv_do_play();');
 	}
 }
-function mv_do_play(){
+function mv_do_play(mvd_id){
+	//foce a given mvd if set
+	if(mvd_id){
+		do_video_mvd_update(mv_init_interface.cur_mvd_id);
+	}
 	//fade out the time disp:
 	$j('#mv_videoPlayerTime').fadeOut("fast");
 	//disable interface actions (mouse in out etc)
 	mv_lock_vid_updates=true;
 	//stop the current	
 	$j('#embed_vid').get(0).stop();
-	//update the src if nessesary:
-	if(mv_init_interface.cur_mvd_id!=mv_init_interface.delay_cur_mvd_id){
-		mv_init_interface.cur_mvd_id =mv_init_interface.delay_cur_mvd_id;
-		do_video_mvd_update(mv_init_interface.cur_mvd_id);
-	}
+	
+	//update the src if nessesary and no mvd provided:
+	if(!mvd_id){	
+		if(mv_init_interface.cur_mvd_id!=mv_init_interface.delay_cur_mvd_id){
+			mv_init_interface.cur_mvd_id =mv_init_interface.delay_cur_mvd_id;
+			do_video_mvd_update(mv_init_interface.cur_mvd_id);
+		}
+	}	
+	
 	//show the controls: 
 	mv_disp_play_controls(true);		
 	//update the embed video actual play time
