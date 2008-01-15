@@ -194,6 +194,8 @@ class ChangeAuthor extends SpecialPage
 			else
 				$stxt = wfMsgHtml('historysize', $wgLang->formatNum( $size ) );
 		}
+		else
+			$stxt = ''; // Stop PHP from whining about unset variables
                 $comment = $this->skin->commentBlock($rev->getComment(), $title);
 		
 		// Now put it all together
