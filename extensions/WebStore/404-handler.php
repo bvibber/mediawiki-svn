@@ -30,7 +30,8 @@ class WebStore404Handler extends WebStoreCommon {
 			$this->real404();
 			return true;
 		}
-		$rel = substr( $url, strlen( $thumbBase ) + 1 ); //plus one for slash
+
+		$rel = substr( $url, strlen( $thumbBase ) + 1 ); // plus one for slash
 		// Check for path traversal
 		if ( !$this->validateFilename( $rel ) ) {
 			header( 'X-Debug: invalid path traversal' );
@@ -40,7 +41,6 @@ class WebStore404Handler extends WebStoreCommon {
 
 		if ( !preg_match( '!^(\w)/(\w\w)/([^/]*)/([^/]*)$!', $rel, $parts ) ) {
 			header( 'X-Debug: regex mismatch' );
-			print $rel;
 			$this->real404();
 			return false;
 		}
