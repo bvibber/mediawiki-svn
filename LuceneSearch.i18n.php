@@ -776,6 +776,14 @@ $messages['lv'] = array(
 	'searchnoresults' => 'Šeit, diemžēl, nav lapas ar tieši tādu nosaukumu.',
 );
 
+/** Erzya (эрзянь кель)
+ * @author Amdf
+ */
+$messages['myv'] = array(
+	'lucene-resultsize' => '$1 ($2 валт)',
+	'searchall'         => 'весе',
+);
+
 $messages['nan'] = array(
 	'searchnumber'          => "<strong>$3 hāng kiat-kó ê tē $1-$2 hāng</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Thâu-chêng</span>",
@@ -1240,7 +1248,6 @@ $1
 	'searchincategory'      => '在分類中'
 );
 
-# Fallbacks:
 $messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
