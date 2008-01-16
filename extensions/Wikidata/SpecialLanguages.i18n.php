@@ -101,7 +101,7 @@ $wgLanguageManagerMessages['en'] = array(
 	'ow_copy_successful'                    => "<h2>Copy Successful</h2>Your data appears to have been copied successfully. Don't forget to doublecheck to make sure!",
 	'ow_copy_unsuccessful'                  => '<h3>Copy unsuccessful</h3> No copy operation has taken place.',
 	'ow_no_action_specified'                => "<h3>No action was specified</h3> Perhaps you came to this page directly? Normally you don't need to be here.",
-	'ow_db_consistency__not_found'          => "<h2>Error</h2>There is an issue with database consistency, wikidata can't find valid data connected to this defined meaning ID, it might be lost. Please contact the server operator or administrator.",
+	'ow_db_consistency_not_found'          => "<h2>Error</h2>There is an issue with database consistency, wikidata can't find valid data connected to this defined meaning ID, it might be lost. Please contact the server operator or administrator.",
 );
 
 $wgLanguageManagerMessages['ar'] = array(
