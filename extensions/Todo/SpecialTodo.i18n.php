@@ -172,7 +172,8 @@ $4',
  * @author Robby
  */
 $messages['lb'] = array(
-	'todo-new-queue' => 'nei',
+	'todo-new-queue'   => 'nei',
+	'todo-list-change' => 'Änneren',
 );
 
 /** Dutch (Nederlands)
@@ -280,4 +281,3 @@ $messages['vo'] = array(
 	'todo-list-change'  => 'Votükön',
 	'todo-form-details' => 'Notets:',
 );
-

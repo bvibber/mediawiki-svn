@@ -370,6 +370,15 @@ $messages['lv'] = array(
 	'sitematrix' => 'Visu Wikimedia wiki projektu uzskaitījums',
 );
 
+/** Erzya (эрзянь кель)
+ * @author Amdf
+ */
+$messages['myv'] = array(
+	'sitematrix'          => 'Валпаргонь коряс Викимедиянь пелькстнэ',
+	'sitematrix-language' => 'Кель',
+	'sitematrix-others'   => 'Лия Викимедиянь проекттнэ',
+);
+
 $messages['nan'] = array(
 	'sitematrix' => 'Wikimedia wiki lia̍t-toaⁿ',
 );
@@ -600,7 +609,6 @@ $messages['zh-tw'] = array(
 	'sitematrix-others'   => '維基媒體的其它計畫',
 );
 
-# Fallbacks:
 $messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];

@@ -88,6 +88,38 @@ $messages['ar'] = array(
 	'ogg-desc-link'                => 'حول هذا الملف',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'ogg-short-audio'         => 'Archivu de soníu ogg $1, $2',
+	'ogg-short-video'         => 'Archivu de videu ogg $1, $2',
+	'ogg-short-general'       => 'Archivu multimedia ogg $1, $2',
+	'ogg-long-audio'          => '(Archivu de soníu ogg $1, llonxitú $2, $3)',
+	'ogg-long-video'          => '(Archivu de videu ogg $1, llonxitú $2, $4×$5 píxeles, $3)',
+	'ogg-long-multiplexed'    => "(Archivu d'audiu/videu ogg multiplexáu, $1, llonxitú $2, $4×$5 píxeles, $3)",
+	'ogg-long-general'        => '(Archivu multimedia ogg, llonxitú $2, $3)',
+	'ogg-long-error'          => '(Archivu ogg non válidu: $1)',
+	'ogg-play'                => 'Reproducir',
+	'ogg-pause'               => 'Pausar',
+	'ogg-stop'                => 'Aparar',
+	'ogg-play-video'          => 'Reproducir videu',
+	'ogg-play-sound'          => 'Reproducir soníu',
+	'ogg-no-player'           => 'Sentímoslo, el to sistema nun paez tener nengún de los reproductores soportaos. Por favor <a
+href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarga un reproductor</a>.',
+	'ogg-no-xiphqt'           => 'Paez que nun tienes el componente XiphQT pa QuickTime. QuickTime nun pue reproducr archivos ogg ensin esti componente. Por favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarga XiphQT</a> o escueyi otru reproductor.',
+	'ogg-player-videoElement' => 'elementu <video>',
+	'ogg-player-oggPlugin'    => 'Plugin ogg',
+	'ogg-player-thumbnail'    => 'Namái imaxe en pausa',
+	'ogg-player-soundthumb'   => 'Nun hai reproductor',
+	'ogg-player-selected'     => '(seleicionáu)',
+	'ogg-use-player'          => 'Utilizar el reproductor:',
+	'ogg-more'                => 'Más...',
+	'ogg-dismiss'             => 'Zarrar',
+	'ogg-download'            => 'Descargar archivu',
+	'ogg-desc-link'           => 'Tocante a esti archivu',
+);
+
 /** Bikol Central*/
 $messages['bcl'] = array(
 	'ogg-more' => 'Dakol pa..',
@@ -1148,7 +1180,6 @@ $messages['zh-hant'] = array(
 	'ogg-desc-link'        => '關於這個檔案',
 );
 
-# Fallbacks:
 $messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];

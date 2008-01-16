@@ -354,6 +354,23 @@ $messages['mk'] = array(
 	'newuserlog-create2-entry' => 'направив налог за $1',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'newuserlogpage'           => 'नवीन सदस्यांची नोंद',
+	'newuserlogpagetext'       => 'ही नवीन सदस्यांची नोंद यादी आहे.',
+	'newuserlog-create-entry'  => 'नवीन सदस्य',
+	'newuserlog-create2-entry' => '$1 साठी सदस्यत्व घेतले.',
+);
+
+/** Erzya (эрзянь кель)
+ * @author Amdf
+ */
+$messages['myv'] = array(
+	'newuserlog-create-entry' => 'Од совиця',
+);
+
 $messages['nl'] = array(
 	'newuserlogpage'           => 'Logboek nieuwe gebruikers',
 	'newuserlogpagetext'       => 'Hieronder staan de nieuw ingeschreven gebruikers',
@@ -573,7 +590,6 @@ $messages['zh-hant'] = array(
 	'newuserlog-create2-entry' => '已創建$1的帳戶',
 );
 
-# Fallbacks:
 $messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];

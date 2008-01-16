@@ -216,6 +216,7 @@ $messages['bcl'] = array(
  */
 $messages['bg'] = array(
 	'sign-selectdoc'               => 'Документ:',
+	'sign-error-nosuchdoc'         => 'Документът, който пожелахте ($1) не съществува.',
 	'sign-realname'                => 'Име:',
 	'sign-address'                 => 'Адрес:',
 	'sign-city'                    => 'Град:',
@@ -237,15 +238,15 @@ $messages['bg'] = array(
 	'sign-viewfield-options'       => 'Настройки',
 	'sign-emailto'                 => '<a href="mailto:$1">$1</a>',
 	'sign-iptools'                 => '<span class="plainlinksneverexpand"><!--
-	-->[[User:$1|$1]] ([[User talk:$1|беседа]] • <!--
-	-->[[Special:Contributions/$1|приноси]] • <!--
-	-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
-	-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
-	-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
-	-->[[Special:Blockip/$1|блокиране]] • <!--
-	-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} дневник на блокиранията] • <!--
-	-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} проверка])<!--
-	--></span>',
+		-->[[User:$1|$1]] ([[User talk:$1|беседа]] • <!--
+		-->[[Special:Contributions/$1|приноси]] • <!--
+		-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+		-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+		-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+		-->[[Special:Blockip/$1|блокиране]] • <!--
+		-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} дневник на блокиранията] • <!--
+		-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} проверка])<!--
+		--></span>',
 	'sign-viewfield-reviewcomment' => 'Коментар',
 	'sign-review-comment'          => 'Коментар',
 );
@@ -986,3 +987,4 @@ $messages['sk'] = array(
 $messages['stq'] = array(
 	'sign-realname' => 'Noome:',
 );
+

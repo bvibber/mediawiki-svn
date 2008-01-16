@@ -447,26 +447,29 @@ $messages['it'] = array(
 	'badimages-page'           => '{{ns:help}}:Elenco dei file discutibili',
 );
 
-/* Japanese (nihongo) */
+/** Japanese (日本語)
+ * @author Tmnk
+ */
 $messages['ja'] = array(
-	'badimages' => 'ひどい画像の一覧',
-	'badimages-add-btn' => '追加',
-	'badimages-added' => '$1 を一覧に追加しました。',
-	'badimages-count' => 'この一覧には \'\'\'$1\'\'\' 個の画像が登録されています。',
-	'badimages-name' => '名前:',
-	'badimages-not-added' => '一覧への追加に失敗しました。',
-	'badimages-not-removed' => '一覧からの削除に失敗しました。',
-	'badimages-reason' => '理由:',
-	'badimages-remove' => '（削除）',
-	'badimages-remove-btn' => '削除',
+	'badimages'                => 'ひどい画像の一覧',
+	'badimages-add-btn'        => '追加',
+	'badimages-added'          => '$1 を一覧に追加しました。',
+	'badimages-count'          => "この一覧には '''$1''' 個の画像が登録されています。",
+	'badimages-name'           => '名前:',
+	'badimages-not-added'      => '一覧への追加に失敗しました。',
+	'badimages-not-removed'    => '一覧からの削除に失敗しました。',
+	'badimages-reason'         => '理由:',
+	'badimages-remove'         => '（削除）',
+	'badimages-remove-btn'     => '削除',
 	'badimages-remove-confirm' => '一覧から $1 を削除してよろしいですか？:',
-	'badimages-removed' => '$1 を一覧から削除しました。',
-	'badimages-subheading' => '現在の一覧',
-	'badimages-unprivileged' => '一覧を編集する権限がありません。',
-	'badimages-log-name' => '{{int:badimages}}編集記録',
-	'badimages-log-header' => 'これは [[{{MediaWiki:Badimages-page}}|{{int:badimages}}]]への変更の記録です。',
-	'badimages-log-add' => '[[$1]] を一覧に追加しました。',
-	'badimages-log-remove' => '[[$1]] を一覧から削除しました。',
+	'badimages-removed'        => '$1 を一覧から削除しました。',
+	'badimages-subheading'     => '現在の一覧',
+	'badimages-unprivileged'   => '一覧を編集する権限がありません。',
+	'badimages-log-name'       => '{{int:badimages}}編集記録',
+	'badimages-log-header'     => 'これは [[{{MediaWiki:Badimages-page}}|{{int:badimages}}]]への変更の記録です。',
+	'badimages-log-add'        => '[[$1]] を一覧に追加しました。',
+	'badimages-log-remove'     => '[[$1]] を一覧から削除しました。',
+	'badimages-page'           => '{{ns:help}}:ひどい画像の一覧表',
 );
 
 $messages['la'] = array(

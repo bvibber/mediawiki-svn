@@ -83,6 +83,13 @@ $messages['eu'] = array(
 	'deletedcontributions' => 'Ezabatutako ekarpenak',
 );
 
+/** Extremaduran (Estremeñu)
+ * @author Better
+ */
+$messages['ext'] = array(
+	'deletedcontributions' => 'Contribucionis el usuáriu esborrás',
+);
+
 $messages['fa'] = array(
 	'deletedcontributions' => 'مشارکت‌های حذف شده',
 );
@@ -306,7 +313,6 @@ $messages['zh-hant'] = array(
 	'deletedcontributions' => '已刪除的用戶貢獻',
 );
 
-# Fallbacks:
 $messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];

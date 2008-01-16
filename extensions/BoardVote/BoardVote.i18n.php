@@ -1744,6 +1744,18 @@ Jūs būsite peradresuotas į šį išorinį serverį po 20 sekundžių. [1$ Spa
 Gali būti rodomas saugumo įspėjimas apie nepasirašytą sertifikatą.',
 );
 
+/** Erzya (эрзянь кель)
+ * @author Amdf
+ */
+$messages['myv'] = array(
+	'boardvote_time'       => 'Шка',
+	'boardvote_user'       => 'Совиця',
+	'boardvote_days'       => 'Чить',
+	'boardvote_ip'         => 'IP',
+	'boardvote_submit'     => 'ОК',
+	'boardvote_edits_many' => 'ламот',
+);
+
 $messages['nan'] = array(
 	'boardvote'               => "Wikimedia Táng-sū-hōe soán-kí",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Tâu-phiò]]

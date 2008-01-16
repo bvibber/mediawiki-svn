@@ -391,6 +391,7 @@ $messages['lb'] = array(
 	'bookinfo-result-year'       => 'Joer:',
 	'bookinfo-error-invalidisbn' => 'Dir hutt eng ISBN aginn déi et net gëtt.',
 	'bookinfo-error-nosuchitem'  => "D'Säit gëtt et net oder si gouf net fonnt.",
+	'bookinfo-purchase'          => 'Dëst Buch op $1 kafen',
 );
 
 /** Limburgish (Limburgs)
@@ -421,6 +422,15 @@ $messages['lt'] = array(
 	'bookinfo-result-year'       => 'Metai:',
 	'bookinfo-error-invalidisbn' => 'Įvestas blogas ISBN',
 	'bookinfo-purchase'          => 'Pirkti šią knygą iš $1',
+);
+
+/** Erzya (эрзянь кель)
+ * @author Amdf
+ */
+$messages['myv'] = array(
+	'bookinfo-result-title'  => 'Лемдевкс:',
+	'bookinfo-result-author' => 'Сёрмадыця:',
+	'bookinfo-result-year'   => 'Ие:',
 );
 
 /** Low German (Plattdüütsch)

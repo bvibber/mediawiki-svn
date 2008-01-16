@@ -324,6 +324,13 @@ $messages['lv'] = array(
 	'filepath_submit' => 'Atrast adresi',
 );
 
+/** Erzya (эрзянь кель)
+ * @author Amdf
+ */
+$messages['myv'] = array(
+	'filepath_page' => 'Файл:',
+);
+
 $messages['nan'] = array(
 	'filepath'         => 'Tóng-àn ê soàⁿ-lō·',
 );
@@ -530,7 +537,6 @@ $messages['zh-hant'] = array(
 請輸入檔名，不要包含"{{ns:image}}:"開頭。',
 );
 
-# Fallbacks:
 $messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];

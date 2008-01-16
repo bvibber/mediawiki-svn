@@ -42,6 +42,14 @@ $messages['ar'] = array(
 	'call-save-failed'  => 'النص التالي لم يتم حفظه لصفحة <big>[[$1]]</big> لأن هذه الصفحة موجودة بالفعل.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'call-save-success' => 'Следният текст беше съхранен на страницата <big>[[$1]]</big> .',
+	'call-save-failed'  => 'Следният текст НЕ БЕШЕ съхранен на страницата <big>[[$1]]</big>, тъй като тя вече съществува.',
+);
+
 $messages['fr'] = array(
 	'call' => 'Appel',
 	'call-text' => 'L’extension Appel a besoin d’une page wiki et des paramètres facultatifs pour cette dernière.<br><br>
@@ -72,7 +80,7 @@ De <i>extensie Aanroepen</i> kan behulpzaam zijn bij het bouwen van interactieve
 Bij problemen kan u gebruik maken van <b>Special:Call/DebuG</b>",
 	'call-save'         => "De uitvoer van deze aanroep zou opgeslagen zijn in de pagina ''$1''.",
 	'call-save-success' => 'De volgende tekst is opgeslagen in pagina <big>[[$1]]</big>.',
-	'call-save-failed'  => 'De volgende tekst is NIET opgeslaten in pagina <big>[[$1]]</big> omdat die pagina al bestaat.',
+	'call-save-failed'  => 'De volgende tekst is NIET opgeslagen in pagina <big>[[$1]]</big> omdat die pagina al bestaat.',
 );
 
 /** Slovak (Slovenčina)

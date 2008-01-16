@@ -69,8 +69,12 @@ $messages['eo'] = array(
 	'backforth-prev' => 'Antaŭa ($1)',
 );
 
+/** Extremaduran (Estremeñu)
+ * @author Better
+ */
 $messages['ext'] = array(
 	'backforth-next' => 'Siguienti ($1)',
+	'backforth-prev' => 'Anteriol ($1)',
 );
 
 $messages['fi'] = array(
@@ -139,6 +143,14 @@ $messages['kaa'] = array(
 $messages['kn'] = array(
 	'backforth-next' => 'ಮುಂದಿನ ($1)',
 	'backforth-prev' => 'ಹಿಂದಿನ ($1)',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'backforth-next' => 'Nächst ($1)',
+	'backforth-prev' => 'Virescht ($1)',
 );
 
 /** Lithuanian (Lietuvių)

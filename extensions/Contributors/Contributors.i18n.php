@@ -150,6 +150,7 @@ $messages['ext'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Nike
  */
 $messages['fi'] = array(
 	'contributors'             => 'Muokkaajat',
@@ -157,8 +158,8 @@ $messages['fi'] = array(
 	'contributors-legend'      => 'Luettele sivun pääasialliset muokkaajat',
 	'contributors-target'      => 'Sivun otsikko',
 	'contributors-submit'      => 'Näytä',
-	'contributors-subtitle'    => '$1:n pääasialliset muokkaajat',
-	'contributors-others-long' => 'Tällä sivulla on ollut $1 muuta muokkaajaa.',
+	'contributors-subtitle'    => 'Sivun $1 pääasialliset muokkaajat',
+	'contributors-others-long' => 'Tällä sivulla on $1 muuta muokkaajaa.',
 );
 
 /* French */

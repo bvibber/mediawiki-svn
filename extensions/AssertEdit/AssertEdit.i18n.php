@@ -120,6 +120,14 @@ $messages['it'] = array(
 	'assert_edit_message' => "L'asserzione indicata ($1) non è riuscita.",
 );
 
+/** Japanese (日本語)
+ * @author Tmnk
+ */
+$messages['ja'] = array(
+	'assert_edit_title'   => 'Assertの失敗',
+	'assert_edit_message' => '($1)というAssert処理が失敗しました。',
+);
+
 $messages['kk-arab'] = array(
 	'assert_edit_title' => 'ماقۇلداۋ سٵتسٸز',
 	'assert_edit_message' => 'ەنگٸزٸلگەن ماقۇلداۋ ($1) سٵتسٸز.',

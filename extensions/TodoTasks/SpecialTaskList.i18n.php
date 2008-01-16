@@ -27,21 +27,31 @@ To see your complete Task List go to %s.
 Your friendly %s notification system",
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'tasklist'                => 'قائمة المهام',
-	'tasklistbyproject'       => 'قائمة المهام حسب المشروع',
-	'tasklistunknownproject'  => 'مشروع غير معروف',
-	'tasklistunspecuser'      => 'مستخدم غير محدد',
-	'tasklistincorrectuser'   => 'اسم مستخدم غير صحيح',
-	'tasklistemail'           => 'عزيزي %s',
-	'tasklistemailsubject'    => 'التغيير في قائمة مهام [%s]',
-	'tasklistmytasks'         => 'مهامي',
-	'tasklistbyprojectbad'    => 'المشروع \'\'\'%s\'\'\' ليس مشروعا صحيحا. لقائمة بالمشاريع الصحيحة، انظر [[MediaWiki:TodoTasksValidProjects]].',
-	'tasklistbyprojname'      => 'المهام الموكلة ل\'\'\'%s\'\'\'',
-	'tasklistchooseproj'      => 'اختر المشروع:',
-	'tasklistprojdisp'        => 'عرض',
-	'tasklistbyname'          => '== قائمة العمل ل%s ==',
-	'tasklistnoprojects'      => 'خطأ: يبدو أنك فعلت \'\'\'$wgUseProjects\'\'\'، لكن لم تنشيء [[MediaWiki:TodoTasksValidProjects]]. انظر [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 تعليمات التنصيب] لمزيد من التفاصيل.',
+	'tasklist'               => 'قائمة المهام',
+	'tasklistbyproject'      => 'قائمة المهام حسب المشروع',
+	'tasklistunknownproject' => 'مشروع غير معروف',
+	'tasklistunspecuser'     => 'مستخدم غير محدد',
+	'tasklistincorrectuser'  => 'اسم مستخدم غير صحيح',
+	'tasklistemail'          => 'عزيزي %s',
+	'tasklistemailsubject'   => 'التغيير في قائمة مهام [%s]',
+	'tasklistmytasks'        => 'مهامي',
+	'tasklistbyprojectbad'   => "المشروع '''%s''' ليس مشروعا صحيحا. لقائمة بالمشاريع الصحيحة، انظر [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname'     => "المهام الموكلة ل'''%s'''",
+	'tasklistchooseproj'     => 'اختر المشروع:',
+	'tasklistprojdisp'       => 'عرض',
+	'tasklistbyname'         => '== قائمة العمل ل%s ==',
+	'tasklistnoprojects'     => "خطأ: يبدو أنك فعلت '''\$wgUseProjects'''، لكن لم تنشيء [[MediaWiki:TodoTasksValidProjects]]. انظر [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 تعليمات التنصيب] لمزيد من التفاصيل.",
+	'tasklistemailbody'      => '،
+
+شخص ما أضاف مهمة جديدة لك في %s.
+
+لرؤية قائمة مهامك الكاملة اذهب إلى %s.
+
+نظام إخطار %s الصديق',
 );
 
 /** Bulgarian (Български)
@@ -68,21 +78,32 @@ $messages['de'] = array(
 	'tasklistnoprojects'      => "Fehler: Es sieht so aus, als wenn '''\$wgUseProjects''' aktiviert wäre, aber es wurde keine Seiten [[MediaWiki:TodoTasksValidProjects]] erstellt. Siehe die [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installationsanweisungen] für weitere Details.",
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'tasklist'                => 'Liste de tâches',
-	'tasklistbyproject'       => 'Liste de tâches par projet',
-	'tasklistunknownproject'  => 'Projet inconnu',
-	'tasklistunspecuser'      => 'Contributeur inconnu',
-	'tasklistincorrectuser'   => 'Pseudonyme incorrect',
-	'tasklistemail'           => 'Cher %s',
-	'tasklistemailsubject'    => '[%s] Changement à la liste de tâches',
-	'tasklistmytasks'         => 'Mes tâches',
-	'tasklistbyprojectbad'    => 'Le projet \'\'\'%s\'\'\' n\'est pas valide. Consulter la [[MediaWiki:TodoTasksValidProjects|liste des projets]].',
-	'tasklistbyprojname'      => 'Tâches assignées pour \'\'\'%s\'\'\'.',
-	'tasklistchooseproj'      => 'Projet sélectionné :',
-	'tasklistprojdisp'        => 'Afficher',
-	'tasklistbyname'          => '== Liste de tâches à faire pour %s ==',
-	'tasklistnoprojects'      => 'Erreur : il semble que vous ayez activé \'\'\'$wgUseProjects\'\'\', mais sans avoir créé [[MediaWiki:TodoTasksValidProjects]]. Prière de lire les [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instructions d\'installation] pour plus de détails.',
+	'tasklist'               => 'Liste de tâches',
+	'tasklistbyproject'      => 'Liste de tâches par projet',
+	'tasklistunknownproject' => 'Projet inconnu',
+	'tasklistunspecuser'     => 'Contributeur inconnu',
+	'tasklistincorrectuser'  => 'Pseudonyme incorrect',
+	'tasklistemail'          => 'Cher %s',
+	'tasklistemailsubject'   => '[%s] Changement à la liste de tâches',
+	'tasklistmytasks'        => 'Mes tâches',
+	'tasklistbyprojectbad'   => "Le projet '''%s''' n'est pas valide. Consulter la [[MediaWiki:TodoTasksValidProjects|liste des projets]].",
+	'tasklistbyprojname'     => "Tâches assignées pour '''%s'''.",
+	'tasklistchooseproj'     => 'Projet sélectionné :',
+	'tasklistprojdisp'       => 'Afficher',
+	'tasklistbyname'         => '== Liste de tâches à faire pour %s ==',
+	'tasklistnoprojects'     => "Erreur : il semble que vous ayez activé '''\$wgUseProjects''', mais sans avoir créé [[MediaWiki:TodoTasksValidProjects]]. Prière de lire les [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instructions d'installation] pour plus de détails.",
+	'tasklistemailbody'      => ",
+
+Quelqu'un vous a assigné une nouvelle tâche pour vous sur %s.
+
+Pour voir votre liste complète des tâches à effectuer, allez sur %s.
+
+Votre bien aimable système de notification de %s",
 );
 
 $messages['gl'] = array(
@@ -119,38 +140,58 @@ $messages['he'] = array(
 	'tasklistnoprojects'      => "שגיאה: נראה שאפשרת את '''\$wgUseProjects''', אבל לא יצרת [[MediaWiki:TodoTasksValidProjects]]. ראה [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] for more details.",
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'tasklist'                => 'Lisćina nadawkow',
-	'tasklistbyproject'       => 'Lisćina nadawkow po projekće',
-	'tasklistunknownproject'  => 'Njeznaty projekt',
-	'tasklistunspecuser'      => 'Wužiwar njepodaty',
-	'tasklistincorrectuser'   => 'Njekorektne wužiwarske mjeno',
-	'tasklistemail'           => 'Luby %s',
-	'tasklistemailsubject'    => '[%s] Změna lisćiny nadawkow',
-	'tasklistmytasks'         => 'Moje nadawki',
-	'tasklistbyprojectbad'    => 'Projekt \'\'\'%s\'\'\' płaćiwy projekt njeje. Za lisćinu płaćiwych projektow, hlej [[MediaWiki:TodoTasksValidProjects]].',
-	'tasklistbyprojname'      => 'Nadawki so za \'\'\'%s\'\'\' připokazachu.',
-	'tasklistchooseproj'      => 'Wubjer projekt:',
-	'tasklistprojdisp'        => 'Pokazać',
-	'tasklistbyname'          => '== Nadawkowa lisćina za %s ==',
-	'tasklistnoprojects'      => 'ZMYLK: Zda so, zo sy \'\'\'$wgUseProjects\'\'\' aktiwizował, ale njejsy [[MediaWiki:TodoTasksValidProjects]] wutworił. Hlej [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] za dalše podrobnosće.',
+	'tasklist'               => 'Lisćina nadawkow',
+	'tasklistbyproject'      => 'Lisćina nadawkow po projekće',
+	'tasklistunknownproject' => 'Njeznaty projekt',
+	'tasklistunspecuser'     => 'Wužiwar njepodaty',
+	'tasklistincorrectuser'  => 'Njekorektne wužiwarske mjeno',
+	'tasklistemail'          => 'Luby %s',
+	'tasklistemailsubject'   => '[%s] Změna lisćiny nadawkow',
+	'tasklistmytasks'        => 'Moje nadawki',
+	'tasklistbyprojectbad'   => "Projekt '''%s''' płaćiwy projekt njeje. Za lisćinu płaćiwych projektow, hlej [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname'     => "Nadawki so za '''%s''' připokazachu.",
+	'tasklistchooseproj'     => 'Wubjer projekt:',
+	'tasklistprojdisp'       => 'Pokazać',
+	'tasklistbyname'         => '== Nadawkowa lisćina za %s ==',
+	'tasklistnoprojects'     => "ZMYLK: Zda so, zo sy '''\$wgUseProjects''' aktiwizował, ale njejsy [[MediaWiki:TodoTasksValidProjects]] wutworił. Hlej [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] za dalše podrobnosće.",
+	'tasklistemailbody'      => ',
+
+Něchtó je nowy nadawk za tebje na %s připokazal.
+
+Zo by swoju dospołnu lisćinu nadawkow widźał, dźi k %s.
+
+Twój přećelny zdźělenski system %s.',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'tasklist'                => 'Takenlijst',
-	'tasklistbyproject'       => 'Takenlijst per project',
-	'tasklistunknownproject'  => 'Onbekend project',
-	'tasklistunspecuser'      => 'Gebruiker niet aangegeven',
-	'tasklistincorrectuser'   => 'Gebruiker bestaat niet',
-	'tasklistemail'           => 'Beste %s',
-	'tasklistemailsubject'    => '[%s] verandering in takenlijst',
-	'tasklistmytasks'         => 'Mijn taken',
-	'tasklistbyprojectbad'    => 'Project \'\'\'%s\'\'\' is geen geldige projectnaam. Een lijst met projecten is te vinden op [[MediaWiki:TodoTasksValidProjects]].',
-	'tasklistbyprojname'      => 'Toegewezen taken voor \'\'\'%s\'\'\'',
-	'tasklistchooseproj'      => 'Project selecteren:',
-	'tasklistprojdisp'        => 'Tonen',
-	'tasklistbyname'          => '== Takenlijst voor %s ==',
-	'tasklistnoprojects'      => 'FOUT: het lijkt alsof u \'\'\'$wgUseProjects\'\'\' hebt ingeschakeld, maar [[MediaWiki:TodoTasksValidProjects]] niet heeft aangemaakt. Zie de  [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 installatie-instructies] voor meer details.',
+	'tasklist'               => 'Takenlijst',
+	'tasklistbyproject'      => 'Takenlijst per project',
+	'tasklistunknownproject' => 'Onbekend project',
+	'tasklistunspecuser'     => 'Gebruiker niet aangegeven',
+	'tasklistincorrectuser'  => 'Gebruiker bestaat niet',
+	'tasklistemail'          => 'Beste %s',
+	'tasklistemailsubject'   => '[%s] verandering in takenlijst',
+	'tasklistmytasks'        => 'Mijn taken',
+	'tasklistbyprojectbad'   => "Project '''%s''' is geen geldige projectnaam. Een lijst met projecten is te vinden op [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname'     => "Toegewezen taken voor '''%s'''",
+	'tasklistchooseproj'     => 'Project selecteren:',
+	'tasklistprojdisp'       => 'Tonen',
+	'tasklistbyname'         => '== Takenlijst voor %s ==',
+	'tasklistnoprojects'     => "FOUT: het lijkt alsof u '''\$wgUseProjects''' hebt ingeschakeld, maar [[MediaWiki:TodoTasksValidProjects]] niet heeft aangemaakt. Zie de  [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 installatie-instructies] voor meer details.",
+	'tasklistemailbody'      => ',
+
+Iemand heeft een nieuwe taak aan u toegewezen op %s.
+
+Op %s kan u uw complete takenlijst bekijken.
+
+Het waarschuwingssysteem',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

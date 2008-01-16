@@ -53,6 +53,14 @@ $messages['el'] = array(
 	'languageselector' => 'Γλώσσα',
 );
 
+/** Extremaduran (Estremeñu)
+ * @author Better
+ */
+$messages['ext'] = array(
+	'languageselector'         => 'Palra',
+	'languageselector-setlang' => 'Acetal',
+);
+
 /** French (Français)
  * @author Bertrand GRONDIN
 */
@@ -109,6 +117,13 @@ $messages['nl'] = array(
 $messages['sk'] = array(
 	'languageselector'         => 'Jazyk',
 	'languageselector-setlang' => 'nastaviť',
+);
+
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'languageselector-setlang' => 'välj',
 );
 
 /** Turkish (Türkçe)

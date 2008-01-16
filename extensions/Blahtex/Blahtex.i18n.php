@@ -279,7 +279,7 @@ $messages['fi'] = array(
 	'math_noblahtex'             => 'Blahtexin suorittaminen epäonnistui. Sen pitäisi sijaita kohteessa $1.',
 	'math_CannotChangeDirectory' => 'Työhakemiston vaihtaminen epäonnistui.',
 	'math_CannotCreateTexFile'   => 'Tex-tiedoston luominen epäonnistui.',
-	'math_NotEnoughArguments'    => '"$1:lle" ei tarjottu riittävästi argumentteja.',
+	'math_NotEnoughArguments'    => 'Liian vähän argumentteja komennolle $1.',
 	'math_TooManyTokens'         => 'Syöte on liian pitkä.',
 	'math_UnrecognisedCommand'   => 'Tunnistamaton komento ”$1”',
 );
@@ -636,6 +636,14 @@ $messages['it'] = array(
 	'math_UnrecognisedCommand'              => 'Comando "$1" non riconosciuto',
 	'math_WrongFontEncoding'                => 'Il simbolo "$1" non è consentito nella codifica di font "$2"',
 	'math_WrongFontEncodingWithHint'        => 'Il simbolo "$1" non è consentito nella codifica di font "$2" (se necessario, usare il comando "$3{...}")',
+);
+
+/** Japanese (日本語)
+ * @author Tmnk
+ */
+$messages['ja'] = array(
+	'math_noblahtex'      => '$1にあるべきblahtexを実行できません。',
+	'math_AmbiguousInfix' => '"$1"の位置付けが曖昧です。(波かっこ"{ ... }"の記述を加えて、曖昧な位置付けを直してください。)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

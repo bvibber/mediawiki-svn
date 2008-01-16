@@ -102,19 +102,24 @@ Pode introducir un \'\'\'Nome de ficheiro de destino\'\'\' opcional e fornecer u
 Os ficheiros inapropiados eliminaranse inmediatamente: vexa a [[{{MediaWiki:Multipleupload-page}}|política de eliminación de ficheiros]].',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'multipleupload'    => 'Dataje nahrać',
-	'multipleupload-ignoreallwarnings' => '\'\'\'Wšě warnowanja\'\'\' ignorować a dataje składować.',
-	'multipleupload-saveallfiles' => 'Wšě dataje składować',
-	'multipleupload-addresswarnings' => 'Prošu wobkedźbuj warnowanja, prjedy hač dataje znowa nahraješ.',
-	'multipleupload-page' => '{{ns:project}}:Prawidła za wušmórnjenje wobrazow',
-	'multipleupload-text' => 'Nahraj wjacore dataje jowle.
+	'multipleupload'                   => 'Dataje nahrać',
+	'multipleupload-ignoreallwarnings' => "'''Wšě warnowanja''' ignorować a dataje składować.",
+	'multipleupload-saveallfiles'      => 'Wšě dataje składować',
+	'multipleupload-addresswarnings'   => 'Prošu wobkedźbuj warnowanja, prjedy hač dataje znowa nahraješ.',
+	'multipleupload-page'              => '{{ns:project}}:Prawidła za wušmórnjenje wobrazow',
+	'multipleupload-text'              => "Nahraj wjacore dataje jowle.
 
-Wuzwolij \'Přepytać\' a wubjer kóždu dataju, kotruž chceš nahrać. Móžeš 1 hač $1 {{PLURAL:$1|dataju|dataji|dataje|datajow}} naraz nahrać.
+Wuzwolij 'Přepytać' a wubjer kóždu dataju, kotruž chceš nahrać. Móžeš 1 hač $1 {{PLURAL:$1|dataju|dataji|dataje|datajow}} naraz nahrać.
 
-Móžeš opcionalne \'\'\'mjeno za cilowu dataju\'\'\' zapodać a \'\'\'Zjeće\'\'\' podać, kotrež twoje foto wopisuje.
+Móžeš opcionalne '''mjeno za cilowu dataju''' zapodać a '''Zjeće''' podać, kotrež twoje foto wopisuje.
 
-Njepřihódne wobrazy budu so hnydom wušmórować, hlej [[{{MediaWiki:Multipleupload-page}}|prawidła za wušmórnjenje wobrazow]].',
+Njepřihódne wobrazy budu so hnydom wušmórować, hlej [[{{MediaWiki:Multipleupload-page}}|prawidła za wušmórnjenje wobrazow]].",
+	'multiupload-fileuploaded'         => 'Dataja nahrata.',
+	'multiupload-toolbox'              => 'Wjacore dataje nahrać',
 );
 
 /** Dutch (Nederlands)
@@ -169,6 +174,20 @@ Podètz inscriure la '''destinacion del fichièr''' e emplenar lo '''Somari''' p
 Los imatges pas pertinents poiràn èsser escafadas immediatament. Vejatz la pagina [[{{MediaWiki:Multipleupload-page}}|image deletion policy]].",
 );
 
+$messages['pl'] = array(
+	'multipleupload' => "Prześlij pliki",
+	'multipleupload-ignoreallwarnings' => "Ignoruj <b>wszystkie ostrzeżenia</b> i zapisz pliki.",
+	'multipleupload-saveallfiles' => "Zapisz wszystkie pliki",
+	'multipleupload-addresswarnings' => "Rozwiąż wszystkie problemy, zanim prześlesz pliki.",
+	'multipleupload-text' => "Prześlij wszystkie wymienione pliki. <br/><br/>
+			Kliknij 'Przeglądaj...' i wybierz plik, który chcesz wysłac. Możesz wysłać od 1 do $1
+			plików za jednym razem. <br/><br/>
+			Możesz wprowadzić opcjonalne <b>$2</b> i <b>$3</b> opisujące wysyłany plik. <br/><br/>
+			<br/>
+			Nieprawidłowe pliki będą natychmiast kasowane, zobacz [[Projekt:Zasady kasowania plików|Zasady kasowania plików]].<br/><br/>
+				",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -205,16 +224,3 @@ Du koast woalwiese uk n '''Siel-Doatäinoome''' foarreeke un ne '''Beschrieuweng
 Uunoainde Doatäie wäide fluks läsked, sjuch do [[{{MediaWiki:Multipleupload-page}}|Läskgjuchtlienjen]].",
 );
 
-$messages['pl'] = array(
-	'multipleupload' => "Prześlij pliki",
-	'multipleupload-ignoreallwarnings' => "Ignoruj <b>wszystkie ostrzeżenia</b> i zapisz pliki.",
-	'multipleupload-saveallfiles' => "Zapisz wszystkie pliki",
-	'multipleupload-addresswarnings' => "Rozwiąż wszystkie problemy, zanim prześlesz pliki.",
-	'multipleupload-text' => "Prześlij wszystkie wymienione pliki. <br/><br/>
-			Kliknij 'Przeglądaj...' i wybierz plik, który chcesz wysłac. Możesz wysłać od 1 do $1
-			plików za jednym razem. <br/><br/>
-			Możesz wprowadzić opcjonalne <b>$2</b> i <b>$3</b> opisujące wysyłany plik. <br/><br/>
-			<br/>
-			Nieprawidłowe pliki będą natychmiast kasowane, zobacz [[Projekt:Zasady kasowania plików|Zasady kasowania plików]].<br/><br/>
-				",
-);

@@ -94,13 +94,19 @@ $messages['co'] = array(
 	'expand_templates_output'          => 'Risultatu',
 );
 
+/** Czech (Česky)
+ * @author Li-sung
+ * @author Danny B.
+ */
 $messages['cs'] = array(
 	'expandtemplates'                  => 'Substituce šablon',
 	'expand_templates_intro'           => 'Pomocí této speciální stránky můžete nechat v textu substituovat všechny šablony a funkce parseru jako <code><nowiki>{{</nowiki>#if:…...}}</code> či proměnné jako <code><nowiki>{{</nowiki>CURRENTDAY}} – tzn. prakticky všechno v dvojitých složených závorkách. K tomu se používají přímo odpovídající funkce parseru MediaWiki.',
 	'expand_templates_title'           => 'Název stránky kvůli kontextu pro <code>{{PAGENAME}}</code> apod.:',
 	'expand_templates_input'           => 'Vstupní text:',
 	'expand_templates_output'          => 'Výstup',
+	'expand_templates_xml_output'      => 'Výstup XML',
 	'expand_templates_remove_comments' => 'Odstranit komentáře',
+	'expand_templates_generate_xml'    => 'Zobrazit syntaktický strom v XML',
 	'expand_templates_preview'         => 'Náhled',
 );
 
@@ -430,8 +436,10 @@ Hiej veur waere de relevante functies van de MediaWiki-parser gebroek.",
 	'expand_templates_title'           => 'Contekstitel, veur {{PAGENAME}}, etc:',
 	'expand_templates_input'           => 'Inlaajteks:',
 	'expand_templates_output'          => 'Rezultaot',
+	'expand_templates_xml_output'      => 'XML-oetveur',
 	'expand_templates_ok'              => 'ok',
 	'expand_templates_remove_comments' => 'Wis opmerkinge',
+	'expand_templates_generate_xml'    => 'XML-parserboum bekieke',
 	'expand_templates_preview'         => 'Veurvertoeaning',
 );
 
@@ -683,7 +691,6 @@ $messages['zh-hant'] = array(
 	'expand_templates_preview'         => '預覽',
 );
 
-# Fallbacks:
 $messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
