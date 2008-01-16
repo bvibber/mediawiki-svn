@@ -89,9 +89,9 @@ class SiteMatrixPage extends SpecialPage {
 
 	function execute( $par ) {
 		global $wgOut, $wgRequest, $wgLanguageNames;
-		$this->setHeaders();
-
 		wfLoadExtensionMessages( 'SiteMatrix' );
+		
+		$this->setHeaders();
 
 		$matrix = new SiteMatrix();
 
