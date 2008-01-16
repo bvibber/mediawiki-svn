@@ -17,12 +17,9 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Erik Moeller',
 );
 
-# Internationalisation file
-require_once( 'SpecialLanguages.i18n.php' );
-
-
 function wfSpecialManageLanguages() {
 	# Add messages
+	require_once( 'SpecialLanguages.i18n.php' );
 	global $wgMessageCache, $messages, $IP;
 	foreach( $messages as $key => $value ) {
 		$wgMessageCache->addMessages( $messages[$key], $key );
