@@ -292,7 +292,15 @@ class ImageMap {
 		# Register links
 		$parser->mOutput->addImage( $imageTitle->getDBkey() );
 		foreach ( $links as $title ) {
-			$parser->mOutput->addLink( $title );
+			if( $title->isExternal() || $title->getNamespace() == NS_SPECIAL ) {
+				// Don't register special or interwiki links...
+			} elseif( $title->getNamespace() == NS_MEDIA ) {
+				// Regular Media: links are recorded as image usages
+				$parser->mOutput->addImage( $title->getDBkey() );
+			} else {
+				// Plain ol' link
+				$parser->mOutput->addLink( $title );
+			}
 		}
 		if ( isset( $extLinks ) ) {
 			foreach ( $extLinks as $title ) {
