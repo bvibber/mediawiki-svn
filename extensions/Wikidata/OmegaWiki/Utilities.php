@@ -12,12 +12,14 @@ function implodeFixed($values, $separator = ", ", $prefix = '"', $suffix = '"') 
 }
 
 
+/**
+ * @deprecated, use normal wfMsg stuff instead
+ */
 function wfMsgSc($message) {
 	$args=func_get_args();
 	array_shift($args);
-	global 
-		$wdSiteContext;
-	return wfMsgReal("${wdSiteContext}_${message}", $args, true);
+	# this is now hardcoded. We can next refactor out wfMsgSc everywhere.
+	return wfMsgReal("ow_${message}", $args, true);
 }
 
 
