@@ -5,6 +5,7 @@
  * @addtogroup Extensions
 */
 
+
 $wgLanguageManagerMessages = array();
 
 $wgLanguageManagerMessages['en'] = array(
@@ -158,3 +159,10 @@ $wgLanguageManagerMessages['zh-hk'] = $wgLanguageManagerMessages['zh-hant'];
 $wgLanguageManagerMessages['zh-sg'] = $wgLanguageManagerMessages['zh-hans'];
 $wgLanguageManagerMessages['zh-tw'] = $wgLanguageManagerMessages['zh-hant'];
 $wgLanguageManagerMessages['zh-yue'] = $wgLanguageManagerMessages['yue'];
+
+global 
+	$IP, $wdSiteContext;
+require_once("{$IP}/extensions/Wikidata/DefaultDataset.i18n.php");
+global $wgDefaultDatasetMessages;
+defaultDataset2wgLanguageManager($wgDefaultDatasetMessages, $wgLanguageManagerMessages, $wdSiteContext);
+
