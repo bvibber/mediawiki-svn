@@ -10,6 +10,7 @@ $wdMessages = array();
 /** English
  */
 $wdMessages['en'] = array(
+	'datasearch'                            => 'Wikidata: Data search',
 	'langman_title'                         => 'Language manager',
 	'languages'                             => 'Wikidata: Language manager',
 	'ow_save'                               => 'Save',
@@ -104,12 +105,21 @@ $wdMessages['en'] = array(
 	'ow_db_consistency_not_found'          => "<h2>Error</h2>There is an issue with database consistency, wikidata can't find valid data connected to this defined meaning ID, it might be lost. Please contact the server operator or administrator.",
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$wdMessages['an'] = array(
+	'datasearch' => 'Wikidata: Mirar datos',
+);
+
 $wdMessages['ar'] = array(
+	'datasearch' => 'Wikidata: بحث البيانات',
 	'langman_title' => 'مدير اللغة',
 	'languages' => 'Wikidata: مدير اللغة',
 );
 
 $wdMessages['bcl'] = array(
+	'datasearch' => 'Wikidata: Data search',#identical but defined
 	'languages' => 'Wikidata: Manager kan tataramon',
 );
 
@@ -117,6 +127,7 @@ $wdMessages['bcl'] = array(
  * @author DCLXVI
  */
 $wdMessages['bg'] = array(
+	'datasearch' => 'Уикиданни: Търсене на данни',
 	'ow_save'                         => 'Съхранение',
 	'ow_history'                      => 'История',
 	'ow_noedit_title'                 => 'Необходими са права за редактиране',
@@ -146,6 +157,7 @@ $wdMessages['bg'] = array(
 );
 
 $wdMessages['bn'] = array(
+	'datasearch' => 'Wikidata: তথ্য অনুসন্ধান',
 	'langman_title' => 'ভাষা ব্যবস্থাপক',
 	'languages' => 'Wikidata: ভাষা ব্যবস্থাপক',
 );
@@ -153,6 +165,7 @@ $wdMessages['bn'] = array(
 /** Brezhoneg (Brezhoneg)
  */
 $wdMessages['br'] = array(
+	'datasearch' => 'Wikidata: Klask roadennoù',
 	'langman_title'                         => 'Merer yezhoù',
 	'languages'                             => 'Wikidata: Merer yezhoù',
 	'ow_save'                               => 'Enrollañ',
@@ -324,6 +337,7 @@ $wdMessages['de'] = array(
 
 /** Ελληνικά (Ελληνικά) */
 $wdMessages['el'] = array(
+	'datasearch' => 'Βικιδεδομένα: Αναζήτηση δεδομένων',
 	'langman_title' => 'Διαχειριστής γλώσσας',
 	'languages'     => 'Wikidata: Διαχειριστής γλώσσας',
 );
@@ -436,6 +450,7 @@ $wdMessages['fi'] = array(
  * @author Grondin
  */
 $wdMessages['fr'] = array(
+	'datasearch' => 'Wikidata: Recherche de données',
 	'langman_title'                         => 'Gestion des langues',
 	'languages'                             => 'Wikidata: Gestion des langues',
 	'ow_save'                               => 'Sauvegarder',
@@ -521,6 +536,7 @@ aux sens définis dans les autres données.</p>",
 );
 
 $wdMessages['gl'] = array(
+	'datasearch' => 'Wikidata: Procura de datos',
 	'langman_title' => 'Xestor de linguas',
 	'languages' => 'Wikidata: Xestor de linguas',
 );
@@ -530,11 +546,13 @@ $wdMessages['he'] = array(
 );
 
 $wdMessages['hsb'] = array(
+	'datasearch' => 'Wikidata: Pytanje datow',
 	'langman_title' => 'Zrjadowak rěčow',
 	'languages' => 'Wikidata: Zrjadowak rěčow',
 );
 
 $wdMessages['id'] = array(
+	'datasearch' => 'Wikidata: Pencarian data',
 	'langman_title' => 'Pengelola bahasa',
 	'languages'=>'Wikidata: Pengelola bahasa',
 );
@@ -581,14 +599,23 @@ $wdMessages['kk'] = $wdMessages['kk-kz'];
  * @author Robby
  */
 $wdMessages['lb'] = array(
+	'datasearch' => 'Wikidata: Date sichen',
 	'langman_title' => 'Sproochmanager',
 	'languages'     => 'Wikidata: Sproochmanager',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'datasearch' => 'Wikidata: Duomenų paieška',
 );
 
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $wdMessages['nl'] = array(
+	'datasearch' => 'Wikidata: Gegevens zoeken',
 	'langman_title'                         => 'Taalmanager',
 	'languages'                             => 'Wikidata: Taalmanager',
 	'ow_save'                               => 'Opslaan',
@@ -668,11 +695,13 @@ $wdMessages['nl'] = array(
  * @author Jon Harald Søby
  */
 $wdMessages['no'] = array(
+	'datasearch' => 'Wikidata: Datasøk',
 	'langman_title' => 'Språkbehandler',
 	'languages'     => 'Wikidata: Språkbehandler',
 );
 
 $wdMessages['oc'] = array(
+	'datasearch' => 'Wikidata: Recèrca de donadas',
 	'langman_title' => 'Gestion de las lengas',
 	'languages' => 'Wikidata: Gestion de las lengas',
 );
@@ -680,6 +709,7 @@ $wdMessages['oc'] = array(
 /** Piemontèis (Piemontèis)
  */
 $wdMessages['pms'] = array(
+	'datasearch' => 'Wikidata: Arsërca antra ij dat',
 	'langman_title'                   => 'Gestor dle lenghe',
 	'languages'                       => 'Wikidata: Gestor dle lenghe',
 	'ow_save'                         => 'Salvé',
@@ -720,6 +750,7 @@ $wdMessages['pms'] = array(
 /** Português (Português)
  */
 $wdMessages['pt'] = array(
+	'datasearch' => 'Wikidata: Pesquisa de dados',
 	'langman_title'                         => 'Gestor de línguas',
 	'languages'                             => 'Gestor de línguas',
 	'ow_save'                               => 'Salvar',
@@ -816,7 +847,12 @@ Oops, por favor, contacte um administrador do servidor.',
 Os seus dados aparentam ter sido copiados com sucesso. Não se esqueça de verificar para ter a certeza!',
 );
 
+$wdMessages['ro'] = array(
+	'datasearch' => 'Wikidata: Căutare de date',
+);
+
 $wdMessages['sk'] = array(
+	'datasearch' => 'Wikidata: Hľadanie údajov',
 	'langman_title' => 'Správca jazykov',
 	'languages' => 'Wikidata: Správca jazykov',
 );
@@ -911,11 +947,13 @@ $wdMessages['sr-ec'] = array(
  * @author Pyt
  */
 $wdMessages['stq'] = array(
+	'datasearch' => 'Wikidata: Doatensäike',
 	'langman_title' => 'Sproakmanager',
 	'languages'     => 'Wikidata: Sproakmanager',
 );
 
 $wdMessages['sv'] = array(
+	'datasearch' => 'Wikidata: Datasökning',
 	'langman_title' => 'Språkhanterare',
 	'languages' => 'Wikidata: Språkhanterare',
 );
@@ -950,12 +988,18 @@ $wdMessages['vo'] = array(
 	'ow_LinkAttributeValues'          => 'Liuds',
 );
 
+$wdMessages['yue'] = array(
+	'datasearch' => 'Wikidata: 搵資料',
+);
+
 $wdMessages['zh-hans'] = array(
+	'datasearch' => 'Wikidata: 数据搜寻',
 	'langman_title' => '语言管理员',
 	'languages'=>'Wikidata: 语言管理员',
 );
 
 $wdMessages['zh-hant'] = array(
+	'datasearch' => 'Wikidata: 資料搜尋',
 	'langman_title' => '語言管理員',
 	'languages'=>'Wikidata: 語言管理員',
 );
