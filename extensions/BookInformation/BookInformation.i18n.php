@@ -534,6 +534,19 @@ $messages['pt'] = array(
 	'bookinfo-provider'          => 'Provedor de dados: $1',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'bookinfo-header'            => 'Liwrumanta willakuna',
+	'bookinfo-result-title'      => 'Liwrup sutin:',
+	'bookinfo-result-author'     => 'Qillqaq:',
+	'bookinfo-result-publisher'  => 'Uyaychaq:',
+	'bookinfo-result-year'       => 'Uyaychay wata:',
+	'bookinfo-error-invalidisbn' => 'ISBN huchhaqa manam allinchu.',
+	'bookinfo-error-nosuchitem'  => 'Chay sutiyuq liwruqa manam kanchu icha manam tarisqachu.',
+);
+
 $messages['ro'] = array(
 	'bookinfo-result-title' => 'Titlu:',
 	'bookinfo-result-author' => 'Autor:',

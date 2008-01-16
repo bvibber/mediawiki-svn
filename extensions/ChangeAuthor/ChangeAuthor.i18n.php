@@ -373,6 +373,7 @@ $messages['oc'] = array(
 	'changeauthor-weirderror'           => "Una error s'es producha. Ensajatz tornamai. Se aquesta error es apareguda mantun còp, la banca de donadas es probablament corrompuda.",
 	'changeauthor-invalidform'          => "Utilizatz lo formulari generit per Special:ChangeAuthor puslèu qu'un formulari personal",
 	'changeauthor-success'              => 'Vòstra requèsta es estada tractada amb succès.',
+	'changeauthor-logentry'             => "Modificacion de l'autor de $2 de $1 dempuèi $3 vèrs $4",
 	'changeauthor-logpagename'          => "Jornal dels cambiaments faches per l'autor",
 );
 

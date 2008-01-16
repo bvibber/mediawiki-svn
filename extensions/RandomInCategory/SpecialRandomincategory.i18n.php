@@ -30,9 +30,10 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'randomincategory'         => 'Случайна страница в категорията',
-	'randomincategory-toolbox' => 'Случайна страница',
-	'randomincategory-label'   => 'Категория:',
+	'randomincategory'            => 'Случайна страница в категорията',
+	'randomincategory-toolbox'    => 'Случайна страница',
+	'randomincategory-nocategory' => 'Категорията $1 не съществува или е празна',
+	'randomincategory-label'      => 'Категория:',
 );
 
 /** German (Deutsch)
@@ -55,6 +56,15 @@ $messages['fr'] = array(
 	'randomincategory-nocategory' => 'La catégorie « $1 » n’existe pas ou est vide',
 	'randomincategory-label'      => 'Catégorie :',
 	'randomincategory-submit'     => 'Lancer',
+);
+
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'randomincategory-nocategory' => 'A categoría $1 non existe ou está baleira',
+	'randomincategory-label'      => 'Categoría:',
+	'randomincategory-submit'     => 'Adiante',
 );
 
 /** Upper Sorbian (Hornjoserbsce) */
@@ -110,3 +120,4 @@ $messages['sk'] = array(
 	'randomincategory-label'      => 'Kategória:',
 	'randomincategory-submit'     => 'Choď',
 );
+

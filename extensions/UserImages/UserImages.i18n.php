@@ -24,10 +24,13 @@ $messages['ar'] = array(
 	'userimages-noimages' => 'ليس لدى $1 صور مرفوعة.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
 $messages['bg'] = array(
-	'userimages-caption' => 'Картинки, качени от $1',
-	'userimages-noname' => 'Невалидно или липсващо потребителско име.',
-	'userimages-noimages' => '$1 няма качени картинки.',
+	'userimages-caption'  => 'Файлове, качени от $1',
+	'userimages-noname'   => 'Невалидно потребителско име или полето е оставено празно.',
+	'userimages-noimages' => '$1 няма качени файлове.',
 );
 
 $messages['bn'] = array(

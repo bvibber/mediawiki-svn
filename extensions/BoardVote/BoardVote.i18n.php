@@ -2167,6 +2167,17 @@ Será redireccionado para este servidor externo dentro de 20 segundos. [$1 Cliqu
 Um aviso de segurança sobre um certificado não assinado poderá eventualmente ser apresentado.',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'boardvote_redirecting' => "Akllanakuytaqa hawa, huk runakunap kamachisqan sirwiqpim rurachkanchik aswan qasi astawan rikunalla kananpaq.
+
+Iskay chunka sikundupim chay hawa sirwiqman pusasqaykiku. [$1 Kaypi ñit'iy] chayman kunan rinaykipaq.
+
+Mana silq'usqa illumanta qasi yuyampay rikch'akunqachá.",
+);
+
 $messages['rm'] = array(
 	'boardvote_user'          => 'Utilisader',
 	'boardvote_welcome'       => 'Chau \'\'\'$1\'\'\'!',
@@ -2551,6 +2562,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Max sonnelid
  * @author Sannab
  * @author SPQRobin
  */
@@ -2600,6 +2612,7 @@ Om du fick detta meddelande trots att du '''har gjort''' fler än $1 redigeringa
 	'boardvote_edits'        => 'Redigeringar',
 	'boardvote_days'         => 'Dagar',
 	'boardvote_ip'           => 'IP',
+	'boardvote_ua'           => 'Användar agent',
 	'boardvote_listintro'    => '<p>Det här är en lista över alla röster som har registrerats hittills.
 $1 för de krypterade uppgifterna.</p>',
 	'boardvote_dumplink'     => 'Klicka här',
@@ -2609,7 +2622,14 @@ $1 för de krypterade uppgifterna.</p>',
 	'boardvote_needadmin'    => 'Endast valadministratörer kan utföra denna operation.',
 	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Styrelseval i Wikimediastiftelsen</a>:  Valet pågår till och med den 12 juli kl 02:00 (CEST)',
 	'boardvote_notstarted'   => 'Röstning har ej påbörjats än',
+	'boardvote_closed'       => 'Röstningen är nu stängs, se [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En Val sidan för resultat] snart.',
+	'boardvote_edits_many'   => 'många',
+	'group-boardvote'        => 'Styrelse röst administratörer',
+	'group-boardvote-member' => 'Styrelse röst administratör',
+	'grouppage-boardvote'    => '{{ns:project}}:Styrelse röst administratör',
+	'boardvote_blocked'      => 'Beklagar, du har blivigt blockerad på din registrerade wiki. Blockerade användare är inte tillåtna att rösta.',
 	'boardvote_welcome'      => "Välkommen '''$1'''!",
+	'go_to_board_vote'       => 'Val till Wikimedias styrelse 2007',
 );
 
 /** Tonga (faka-Tonga)

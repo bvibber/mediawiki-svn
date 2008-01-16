@@ -111,6 +111,14 @@ $messages['nl'] = array(
 	'languageselector-setlang' => 'instellen',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'languageselector'         => 'Lenga',
+	'languageselector-setlang' => 'Definir',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

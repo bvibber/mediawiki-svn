@@ -132,6 +132,7 @@ Njepřihódne wobrazy budu so hnydom wušmórować, hlej [[{{MediaWiki:Multipleu
 
 /** Dutch (Nederlands)
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
 	'multipleupload'                   => 'Bestanden uploaden',
@@ -146,7 +147,8 @@ Kies 'Doorzoeken' en selecteer elk bestand dat u wil uploaden. U kan van 1 tot $
 U kunt een optionele '''Bestemming bestandsnaam'''  opgeven en een '''Samenvatting''' die uw bestand beschrijft opgeven.
 
 Onrelevante afbeeldingen zullen onmiddelijk verwijderd worden, zie het [[{{MediaWiki:Multipleupload-page}}|verwijderingsbeleid van bestanden]].",
-
+	'multiupload-fileuploaded'         => 'Bestand toegevoegd.',
+	'multiupload-toolbox'              => 'Meerdere bestanden uploaden',
 );
 
 $messages['no'] = array(

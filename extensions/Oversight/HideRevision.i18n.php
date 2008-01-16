@@ -103,6 +103,19 @@ $messages['bg'] = array(
 	'oversight-hidden'      => 'Скрита редакция',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'hiderevision-continue'    => 'Продължаване',
+	'hiderevision-tab'         => 'Скриване на редакцията',
+	'hiderevision-norevisions' => 'Не са посочени редакции за изтриване.',
+	'hiderevision-noreason'    => 'Необходимо е да се посочи причина за това премахване.',
+	'hiderevision-status'      => 'Редакция $1: $2',
+	'oversight-view'           => 'детайли',
+	'oversight-hidden'         => 'Скрита редакция',
+);
+
 /** Bengali (বাংলা)
  * @author Zaheen
  */

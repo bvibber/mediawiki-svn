@@ -46,6 +46,7 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'call'              => 'Извикване',
 	'call-save-success' => 'Следният текст беше съхранен на страницата <big>[[$1]]</big> .',
 	'call-save-failed'  => 'Следният текст НЕ БЕШЕ съхранен на страницата <big>[[$1]]</big>, тъй като тя вече съществува.',
 );
@@ -81,6 +82,23 @@ Bij problemen kan u gebruik maken van <b>Special:Call/DebuG</b>",
 	'call-save'         => "De uitvoer van deze aanroep zou opgeslagen zijn in de pagina ''$1''.",
 	'call-save-success' => 'De volgende tekst is opgeslagen in pagina <big>[[$1]]</big>.',
 	'call-save-failed'  => 'De volgende tekst is NIET opgeslagen in pagina <big>[[$1]]</big> omdat die pagina al bestaat.',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'call'              => 'Apèl',
+	'call-text'         => "L’extension Apèl a besonh d’una pagina wiki e de paramètres facultatius per aquesta darrièra.<br><br>
+Exemple 1: &nbsp; <tt>[[Special:Call/Mon modèl,parm1=value1]]</tt><br/>
+Exemple 2: &nbsp; <tt>[[Special:Call/Discussion:Ma discussion,parm1=value1]]</tt><br/>
+Exemple 3: &nbsp; <tt>[[Special:Call/:Ma pagina,parm1=value1,parm2=value2]]</tt><br/><br/>
+Exemple 4 (Adreça per navegaire) : &nbsp; <tt>http://mondomeni/monwiki/index.php?Special:Call/:Ma_Pagina,parm1=value1</tt><br/><br/>
+
+L’extension <i>Apèl</i> apelarà la pagina indicada en i passant los paramètres.<br>Veiretz las informacions d'aquesta pagina, son títol, mas son « tipe » serà lo d’una pagina especiala mas poirà pas èsser editada.<br>Las informacions que veiretz variaràn en foncion dels paramètres qu'auretz indicats.<br>Aquesta extension es fòrt practica per crear d'aplicacions interactivas amb MediaWiki.<br>A títol d’exemple, vejatz <a href='http://semeb.com/dpldemo/Template:Catlist'>the DPL GUI</a> ..<br/>En cas de problèmas, podètz ensajar <b>Special:Call/DebuG</b>",
+	'call-save'         => "Çò qu'es indicat per aqueste apèl poiriá èsser salvat vèrs una pagina intitolada ''$1''.",
+	'call-save-success' => 'Lo tèxt seguent es estat salvagardat vèrs la pagina <big>[[$1]]</big> .',
+	'call-save-failed'  => 'Lo tèxt seguent a pogut èsser salvargardat vèrs la pagina <big>[[$1]]</big> del fach qu’existís ja.',
 );
 
 /** Slovak (Slovenčina)

@@ -40,6 +40,7 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'lookupuser_nonexistent'  => 'Грешка: Потребителят не съществува',
 	'lookupuser_id'           => 'Потребителски номер: <tt>#$1</tt>',
 	'lookupuser_email'        => 'Е-поща: [[Special:Emailuser/$2|$1]]',
 	'lookupuser_realname'     => 'Име и фамилия: $1',

@@ -368,6 +368,7 @@ $messages['bg'] = array(
 	'mv_search_or'         => 'или',
 	'mv_category'          => 'категория',
 	'mv_remove_filter'     => 'премахване на филтър',
+	'mv_match_text'        => '~  $1 съвпадения',
 );
 
 /** French (Français)
@@ -519,6 +520,18 @@ $messages['fr'] = array(
 	'mv_new_anno_en'                 => 'Nouvelle balise ou annotation',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'mv_edit'            => 'Editar',
+	'mv_history'         => 'Historial',
+	'mv_search_category' => 'Categoría',
+	'mv_search_and'      => 'e',
+	'mv_search_or'       => 'ou',
+	'mv_category'        => 'categoría',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -626,6 +639,46 @@ $messages['hsb'] = array(
 	'mv_search_and'                  => 'a',
 	'mv_search_or'                   => 'abo',
 	'mv_search_not'                  => 'nic',
+	'mv_search_stream_name'          => 'Mjeno streama',
+	'mv_stream_name'                 => 'mjeno streama',
+	'mv_match'                       => 'wotpowědnik',
+	'mv_spoken_by'                   => 'rěčany wot',
+	'mv_category'                    => 'kategorija',
+	'mv_search_no_results'           => 'Žane medijowe wotpowědniki',
+	'mv_media_matches'               => 'Medijowe wotpowědniki',
+	'mv_remove_filter'               => 'Filter wotstronić',
+	'mv_advaced_search'              => 'Rozšěrjene medijowe pytanje',
+	'mv_expand_play'                 => 'W rjedźe rozfałdować a wothrać',
+	'mv_view_in_stream_interface'    => 'W streamowym powjerchu wobhladać',
+	'mv_view_wiki_page'              => 'Wikijowu stronu wobhladać',
+	'mv_error_mvd_not_found'         => 'Zmylk mvd njenamakany',
+	'mv_match_text'                  => '~ $1 {{PLURAL:$1|wotpowědnik|wotpowědnikaj|wotpowědniki|wotpowědnikow}}',
+	'mv_edit_sequence'               => 'Wobdźěłanje sekwency:$1',
+	'mv_sequence_player_title'       => 'Wothrawak sekwencow',
+	'mv_save_sequence'               => 'Sekwencu składować',
+	'mv_sequence_page_desc'          => 'Aktualnu sekwencu składować',
+	'mv_sequence_add'                => 'Klipy přidać',
+	'mv_sequence_add_manual'         => 'Po mjenje přidać',
+	'mv_sequence_add_manual_desc'    => 'Klipy po streamowym mjenje přidać',
+	'mv_sequence_add_search'         => 'Po pytanju přidać',
+	'mv_sequence_add_search_desc'    => 'Klipy z medijowym pytanjom přidać',
+	'mv_seq_add_end'                 => 'Kóncej sekwency přidać',
+	'mv_sequence_timeline'           => 'Časowa lajsta sekwency:',
+	'mv_edit_sequence_desc_help'     => 'Wopisanje sekwency<br />',
+	'mv_edithelpsequence'            => 'Pomoc:Wobdźěłanje_sekwency',
+	'mv_seq_summary'                 => 'Zjeće wobdźěłanja sekwency',
+	'mv_add_clip_by_name'            => 'Klip po mjenje přidać',
+	'mv_export_cmml'                 => 'cmml eksportować',
+	'mv_search_stream'               => 'Stream pytać',
+	'mv_navigate_stream'             => 'W cyłym streamje nawigěrować',
+	'mv_embed_options'               => 'Opcije zasadźić',
+	'mv_overlay'                     => 'Rjadowaki naworštowanja',
+	'mv_stream_tool_heading'         => 'Streamowe nastroje',
+	'mv_tool_missing'                => 'požadanje wo nastroj ($1) njeeksistuje',
+	'mv_bad_tool_request'            => 'Špatna rjadka nastroja měła tule formu měć: mjeno_nastroja|zwobraznjene_mjeno_nastroja',
+	'mv_search_stream_title'         => 'Aktualny stream přepytać',
+	'mv_new_ht_en'                   => 'Nowy přepis',
+	'mv_new_anno_en'                 => 'Nowa taflička abo přispomnjenka',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -790,6 +843,55 @@ $messages['nl'] = array(
 	'mv_search_stream_title'         => 'Zoeken in de huidige stream',
 	'mv_new_ht_en'                   => 'Nieuwe transcriptie',
 	'mv_new_anno_en'                 => 'Nieuwe tag of annotatie',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'metavid'                       => 'Pagina metavid',
+	'mv_missing_stream'             => 'Flus mancant : $1',
+	'mv_ogg_low_quality'            => 'Flus ogg utilizable en linha, alberjat sus metavid',
+	'mv_ogg_high_quality'           => 'Flus ogg de nauta qualitat, alberjat sus metavid.',
+	'mv_archive_org_link'           => 'Ligams vèrs los originals mpeg2 dins Archive.org',
+	'mv_error_stream_missing'       => '<span class="error">Error : existís pas cap de flus vidèo associat amb aquesta metadonada.</span><br /> Reportatz aquò sul site d\'aministracion.<br /> <i>L\'interfàcia de flus de las metadonadas es desactivada</i>.',
+	'mv_stream_meta'                => 'Pagina de flus',
+	'mv_add_stream'                 => "Ajust d'un flus metavid",
+	'mv_edit_stream'                => 'Modificar un flus metavid',
+	'mv_add_stream_page'            => "Ajust d'un flus metavid",
+	'mv_edit_strea_docu'            => "<b>Editar l'administracion dels fluses</b> <br /> per qu'un utilizaire pòsca veire o editar la pagina $1 de visualizacion.",
+	'mv_add_stream_docu'            => "<p>Ajustar un flus novèl amb lo champ çaijós.</p><p>Mai d'informacions son balhadas sus <a href=\"\$1\">la pagina d'ajuda concernent l'ajust d'un flus.",
+	'mv_add_stream_submit'          => 'Ajustar un flus',
+	'mv_no_stream_files'            => 'Fichièrs de flus inexistents.',
+	'mv_edit_stream_files'          => 'Modificar los fichièrs de flus',
+	'mv_path_type_url_anx'          => 'Adreça internet complèta del mèdia',
+	'mv_path_type_wiki_title'       => 'Títol wiki del mèdia',
+	'mv_path_type_label'            => 'tipe de camin',
+	'mv_base_offset_label'          => 'offset de basa',
+	'mv_duration_label'             => 'durada',
+	'mv_file_desc_label'            => 'msg de desc del flus',
+	'mv_delete_stream_file'         => 'referéncia del fichièr de flus suprimit',
+	'mv_save_changes'               => 'Salvagardar las modificacions',
+	'mv_file_with_same_desc'        => 'Error : fichièr de flus amb la meteissa clau de descripcion  <i>$1</i> ja presenta',
+	'mv_updated_stream_files'       => 'Mesa a jorn dels enregistraments dels fichièrs de flus',
+	'mv_removed_file_stream'        => 'Fichièr de flus levat : $1',
+	'mv_missing_stream_text'        => 'Lo flus <b>$1</b> qu\'avètz demandat es pas disponible.<br />Vos es permes de consultar la <a href="$2">Lista dels fluses</a><br />O alara vos cal èsser autorizat a <a href="$3">Ajustar lo flus</a>',
+	'mv_add_stream_file'            => 'Ajustar un fichièr de flus',
+	'mv_media_path'                 => 'camin del mèdia',
+	'mv_file_list'                  => 'Fichièrs de fluses',
+	'mv_label_stream_name'          => 'Nom del flus',
+	'mv_label_stream_desc'          => 'Descripcion del flus',
+	'add_stream_permission'         => "Vos es pas permes d'ajustar un flus novèl",
+	'edit_stream_missing'           => 'Nom del flus mancant',
+	'mv_stream_already_exists'      => 'Lo flus <a href="$2">$1</a> existís ja',
+	'mv_summary_add_stream'         => 'flus ajustat per un formulari',
+	'mv_error_stream_insert'        => "fracàs per l'insercion del flus",
+	'mv_redirect_and_delete_reason' => 'pagina de redireccion levada',
+	'mv_remove_reason'              => 'Motiu de la supression :',
+	'mv_stream_delete_warrning'     => "<b>La supression d'aqueste flus levarà tanben $1 partidas de las metadonadas associadas</b><br />",
+	'mv_label_stream_type'          => 'Tipe de flus',
+	'mv_metavid_file'               => 'Fichièr existent sul serveire',
+	'mv_metavid_live'               => 'Installar lo flus en dirècte',
 );
 
 /** Slovak (Slovenčina)

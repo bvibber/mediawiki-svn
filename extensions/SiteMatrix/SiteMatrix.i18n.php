@@ -206,6 +206,16 @@ $messages['frp'] = array(
 	'sitematrix-others'   => 'Ôtros projèts de Wikimedia Foundation',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'sitematrix'          => 'Liosta na vicí Vicíméid',
+	'sitematrix-language' => 'Teanga',
+	'sitematrix-project'  => 'Ainm an tionscadail, nasc idirthionscadail agus nasc idirvicí',
+	'sitematrix-others'   => 'Tionscadail eile ar Vicíméid',
+);
+
 $messages['gl'] = array(
 	'sitematrix' => 'Listaxe dos wikis de Wikimedia',
 	'sitematrix-language' => 'Linguaxe',

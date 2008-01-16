@@ -9,6 +9,8 @@
  * @licence GNU General Public Licence 2.0 or later
  */
 
+$messages = array();
+
 /* English
  * @author Rob Church
  */
@@ -67,6 +69,7 @@ $messages['ar'] = array(
  */
 $messages['bg'] = array(
 	'giverollback-username' => 'Потребителско име:',
+	'giverollback-change'   => 'Промяна на статута:',
 	'giverollback-grant'    => 'Предоставяне',
 	'giverollback-revoke'   => 'Отнемане',
 	'giverollback-comment'  => 'Коментар:',
@@ -265,27 +268,29 @@ $messages['lb'] = array(
 	'giverollback-comment'  => 'Bemierkung:',
 );
 
-/* nld / Dutch (Siebrand Mazeland) */
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ */
 $messages['nl'] = array(
-	'giverollback' => 'Terugdraairechten beheren',
-	'giverollback-header' => '\'\'\'Een lokale bureaucraat kan deze pagina gebruiken om [[{{MediaWiki:Giverollback-page}}|terugdraairechten]] voor een gebruiker in te stellen of te verwijderen.\'\'\'<br />Dit kan gebruikt worden om gebruikers die geen beheerder zijn snel vandalisme terug te laten draaien. Dit hoort uiteraard te gebeuren in overeenstemming met het geldende beleid.',
-	'giverollback-username' => 'Gebruiker:',
-	'giverollback-search' => 'OK',
-	'giverollback-hasrb' => '[[User:$1|$1]] heeft terugdraairechten.',
-	'giverollback-norb' => '[[User:$1|$1]] heeft geen terugdraairechten.',
-	'giverollback-toonew' => '[[User:$1|$1]] is te nieuw en kan geen terugdraairechten krijgen.',
-	'giverollback-sysop' => '[[User:$1|$1]] is beheerder en heeft al terugdraairechten.',
-	'giverollback-change' => 'Status wijzigen:',
-	'giverollback-grant' => 'Toestaan',
-	'giverollback-revoke' => 'Intrekken',
-	'giverollback-comment' => 'Opmerking:',
-	'giverollback-granted' => '[[User:$1|$1]] heeft nu terugdraairechten.',
-	'giverollback-revoked' => '[[User:$1|$1]] heeft geen terugdraairechten meer.',
-	'giverollback-logpage' => 'Terugdraairechtenlogboek',
-	'giverollback-logpagetext' => 'Dit is een logboek van de wijzigingen ten aanzien van \' [[{{MediaWiki:Giverollback-page}}|terugdraairechten]] voor gebruikers die geen beheerder zijn.',
-	'giverollback-logentrygrant' => 'heeft terugdraairechten gegeven aan [[$1]]',
+	'giverollback'                => 'Terugdraairechten beheren',
+	'giverollback-header'         => "'''Een lokale bureaucraat kan deze pagina gebruiken om [[{{MediaWiki:Giverollback-page}}|terugdraairechten]] voor een gebruiker in te stellen of te verwijderen.'''<br />Dit kan gebruikt worden om gebruikers die geen beheerder zijn snel vandalisme terug te laten draaien. Dit hoort uiteraard te gebeuren in overeenstemming met het geldende beleid.",
+	'giverollback-username'       => 'Gebruiker:',
+	'giverollback-search'         => 'OK',
+	'giverollback-hasrb'          => '[[User:$1|$1]] heeft terugdraairechten.',
+	'giverollback-norb'           => '[[User:$1|$1]] heeft geen terugdraairechten.',
+	'giverollback-toonew'         => '[[User:$1|$1]] is te nieuw en kan geen terugdraairechten krijgen.',
+	'giverollback-sysop'          => '[[User:$1|$1]] is beheerder en heeft al terugdraairechten.',
+	'giverollback-change'         => 'Status wijzigen:',
+	'giverollback-grant'          => 'Toestaan',
+	'giverollback-revoke'         => 'Intrekken',
+	'giverollback-comment'        => 'Opmerking:',
+	'giverollback-granted'        => '[[User:$1|$1]] heeft nu terugdraairechten.',
+	'giverollback-revoked'        => '[[User:$1|$1]] heeft geen terugdraairechten meer.',
+	'giverollback-logpage'        => 'Terugdraairechtenlogboek',
+	'giverollback-logpagetext'    => "Dit is een logboek van de wijzigingen ten aanzien van ' [[{{MediaWiki:Giverollback-page}}|terugdraairechten]] voor gebruikers die geen beheerder zijn.",
+	'giverollback-logentrygrant'  => 'heeft terugdraairechten gegeven aan [[$1]]',
 	'giverollback-logentryrevoke' => 'heeft terugdraairechten ingetrokken voor [[$1]]',
-	'giverollback-page' => '{{ns:help}}:Terugdraaien',
+	'giverollback-page'           => '{{ns:help}}:Terugdraaien',
 );
 
 $messages['no'] = array(
@@ -564,6 +569,6 @@ $messages['zh-hant'] = array(
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];
 $messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-tw'] = $messages['zh-hans'];
 $messages['zh-sg'] = $messages['zh-hant'];
+$messages['zh-tw'] = $messages['zh-hans'];
 $messages['zh-yue'] = $messages['yue'];

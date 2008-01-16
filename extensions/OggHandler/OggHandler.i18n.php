@@ -711,10 +711,23 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'ogg-pause'   => 'Paus',
-	'ogg-stop'    => 'Stopp',
-	'ogg-more'    => 'Méi ...',
-	'ogg-dismiss' => 'Zoumaachen',
+	'ogg-short-audio'         => 'Ogg-$1-Tounfichier, $2',
+	'ogg-short-video'         => 'Ogg-$1-Videofichier, $2',
+	'ogg-short-general'       => 'Ogg-$1-Mediefichier, $2',
+	'ogg-long-audio'          => '(Ogg-$1-Tounfichier, Dauer: $2, $3)',
+	'ogg-long-video'          => '(Ogg-$1-Videofichier, Dauer: $2, $4×$5 Pixel, $3)',
+	'ogg-long-multiplexed'    => '(Ogg-Toun-/Video-Fichier, $1, Dauer: $2, $4×$5 Pixel, $3)',
+	'ogg-play'                => 'Ofspillen',
+	'ogg-pause'               => 'Paus',
+	'ogg-stop'                => 'Stopp',
+	'ogg-play-video'          => 'Video ofspillen',
+	'ogg-play-sound'          => 'Tounfichier ofspillen',
+	'ogg-player-videoElement' => '<video>-Element',
+	'ogg-player-oggPlugin'    => 'Ogg-Plugin',
+	'ogg-more'                => 'Méi ...',
+	'ogg-dismiss'             => 'Zoumaachen',
+	'ogg-download'            => 'Fichier eroflueden',
+	'ogg-desc-link'           => 'Iwwer dëse Fichier',
 );
 
 /** Limburgish (Limburgs)

@@ -1124,24 +1124,30 @@ Uurs koast du uk do externe Säikmuugelkhaide nutsje:',
 	'searchincategory'      => 'in Kategorie',
 );
 
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
 $messages['sv'] = array(
-	'searchnumber'          => "<strong>Resultat $1-$2 av $3</strong>",
+	'searchnumber'          => '<strong>Resultat $1-$2 av $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Föregående</span>",
 	'searchnext'            => "<span style='font-size: small'>Nästa</span> &#x00BB;",
-	'lucene-searchscore'    => "Relevans: $1%",
-	'lucene-resultsize'     => "$1 ($2 ord)",
-	'searchdidyoumean'      => "Menade du: \"<a href=\"$1\">$2</a>\"?",
-	'searchnoresults'       => "Sökningen gav tyvärr inga exakta träffar.",
-	'searchnearmatches'     => "<b>Följande sidor har titlar som liknar din sökning:</b>\n",
-	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "Sök i följande namnrymder:
+	'lucene-searchscore'    => 'Relevans: $1%',
+	'lucene-resultsize'     => '$1 ($2 ord)',
+	'searchdidyoumean'      => 'Menade du: "<a href="$1">$2</a>"?',
+	'searchnoresults'       => 'Sökningen gav tyvärr inga exakta träffar.',
+	'searchnearmatches'     => '<b>Följande sidor har titlar som liknar din sökning:</b>
+',
+	'lucenepowersearchtext' => 'Sök i följande namnrymder:
 
 $1
 
-Sök efter $3 $9 $10",
-	'lucenefallback'        => "På grund av ett problem kunde inte sökningen utföras.
+Sök efter $3 $9 $10',
+	'lucenefallback'        => 'På grund av ett problem kunde inte sökningen utföras.
 Det var troligen bara något tillfälligt; försök igen om en liten stund,
-eller sök på wikin med någon extern söktjänst:\n"
+eller sök på wikin med någon extern söktjänst:
+',
+	'searchall'             => 'alla',
+	'searchincategory'      => 'i kategori',
 );
 
 $messages['ur'] = array(

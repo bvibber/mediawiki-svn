@@ -92,12 +92,16 @@ $messages['no'] = array(
 	'cspammer-log-page' => 'Kommentarforsøplerlogg',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ * @author Siebrand
+ */
 $messages['oc'] = array(
-	'commentspammer-save-blocked' => 'Vòstra adreça IP es la d\'una persona sospechada de crear de spams, la pagina es pas estada salvagardada. [[Special:Userlogin|Conectatz-vos o creatz un compte]] per contornar aqueste interdich.',
-	'commentspammer-log-msg' => 'Modificacions de [[Special:Contributions/$1|$1]] a [[:$2]].',
-	'commentspammer-log-msg-info' => 'Lo darrièr spam remonta a {{PLURAL:$1|$1 jorn|$1 jorns}}, lo nivèl d\'alèrta es a $2 e lo còdi d\'atac es $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Vejatz los detalhs] o [[Special:Blockip/$4|blocatz]].',
-	'cspammerlogpagetext' => 'Jornal de las modificacions acceptadas o rejetadas segon que la font èra un creator de spams conegut.',
-	'cspammer-log-page' => 'Jornal del creator de spams',
+	'commentspammer-save-blocked' => "Vòstra adreça IP es la d'una persona sospechada de crear de spams, la pagina es pas estada salvagardada. [[Special:Userlogin|Conectatz-vos o creatz un compte]] per contornar aqueste interdich.",
+	'commentspammer-log-msg'      => 'Modificacions de [[Special:Contributions/$1|$1]] a [[:$2]].',
+	'commentspammer-log-msg-info' => "Lo darrièr spam remonta a {{PLURAL:$1|$1 jorn|$1 jorns}}, lo nivèl d'alèrta es a $2 e lo còde d'atac es $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Vejatz los detalhs] o [[Special:Blockip/$4|blocatz]].",
+	'cspammerlogpagetext'         => 'Jornal de las modificacions acceptadas o rejetadas segon que la font èra un creator de spams conegut.',
+	'cspammer-log-page'           => 'Jornal del creator de spams',
 );
 
 $messages['pl'] = array(
@@ -142,3 +146,4 @@ $messages['stq'] = array(
 	'cspammerlogpagetext'         => 'Lieste fon Beoarbaidengen, do der ferlööwed of ouliend wuuden ap dän Gruund, of ju Wälle n bekoanden Kommentoar-Spammer waas.',
 	'cspammer-log-page'           => 'Kommentoar-Spammer Logbouk',
 );
+
