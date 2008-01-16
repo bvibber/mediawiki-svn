@@ -1,10 +1,14 @@
 <?php
-/* Internationalization file of extension Todo.
-This file was created by Bertrand GRONDIN */
+/**
+ * Internationalisation file for extension Todo.
+ *
+ * @addtogroup Extensions
+ * @author Bertrand GRONDIN
+ */
 
-$messages =array ();
+$messages = array();
 
-$messages['en'] = array (
+$messages['en'] = array(
 	'todo' => 'Todo list',
 	'todo-tab' => 'todo',
 	'todo-new-queue' => 'new',
