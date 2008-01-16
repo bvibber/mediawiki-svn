@@ -24,19 +24,25 @@ Inappropriate files will be deleted immediately, see the [[{{MediaWiki:Multipleu
     'multiupload-toolbox' => "Upload multiple files",
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ * @author SPQRobin
+ */
 $messages['ar'] = array(
-	'multipleupload'    => 'رفع الملفات',
-	'multipleupload-ignoreallwarnings' => 'تجاهل \'\'\'كل التحذيرات\'\'\' واحفظ الملفات على أية حال.',
-	'multipleupload-saveallfiles' => 'حفظ كل الملفات',
-	'multipleupload-addresswarnings' => 'من فضلك صحح أية تحذيرات قبل إعادة رفع الملفات.',
-	'multipleupload-page' => '{{ns:project}}:سياسة حذف الصور',
-	'multipleupload-text' => 'ارفع ملفات متعددة هنا.
+	'multipleupload'                   => 'رفع الملفات',
+	'multipleupload-ignoreallwarnings' => "تجاهل '''كل التحذيرات''' واحفظ الملفات على أية حال.",
+	'multipleupload-saveallfiles'      => 'حفظ كل الملفات',
+	'multipleupload-addresswarnings'   => 'من فضلك صحح أية تحذيرات قبل إعادة رفع الملفات.',
+	'multipleupload-page'              => '{{ns:project}}:سياسة حذف الصور',
+	'multipleupload-text'              => "ارفع ملفات متعددة هنا.
 
-اختر \'Browse\' واختر كل ملف تود رفعه. يمكنك رفع من 1 إلى $1 ملف في المرة.
+اختر 'Browse' واختر كل ملف تود رفعه. يمكنك رفع من 1 إلى $1 ملف في المرة.
 
-يمكنك إدخال \'\'\'اسم ملف الوجهة\'\'\' اختياريا وتوفير \'\'\'ملخص\'\'\' يصف صورتك.
+يمكنك إدخال '''اسم ملف الوجهة''' اختياريا وتوفير '''ملخص''' يصف صورتك.
 
-الصور غير الملائمة سيتم حذفها فورا، انظر [[{{MediaWiki:Multipleupload-page}}|سياسة حذف الصور]].',
+الصور غير الملائمة سيتم حذفها فورا، انظر [[{{MediaWiki:Multipleupload-page}}|سياسة حذف الصور]].",
+	'multiupload-fileuploaded'         => 'تم رفع الملف.',
+	'multiupload-toolbox'              => 'رفع ملفات متعددة',
 );
 
 $messages['bg'] = array(
@@ -86,6 +92,8 @@ Choisissez « Rechercher » et sélectionner chaque fichier que vous voulez tél
 Vous pouver inscrire la '''destination du fichier''' et Remplir le '''Sommaire''' pour décrire votre image.
 
 Les images non pertinentes pourront être effacées immédiatement. Voyez la page [[{{MediaWiki:Multipleupload-page}}|image deletion policy]].",
+	'multiupload-fileuploaded'         => 'Fichier téléchargé',
+	'multiupload-toolbox'              => 'Télécharger plusieurs fichiers',
 );
 
 $messages['gl'] = array(
