@@ -17,12 +17,13 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Erik Moeller',
 );
 
+require_once( 'SpecialLanguages.i18n.php' );
+
 function wfSpecialManageLanguages() {
 	# Add messages
-	require_once( 'SpecialLanguages.i18n.php' );
-	global $wgMessageCache, $IP;
-	foreach( $messages as $key => $value ) {
-		$wgMessageCache->addMessages( $messages[$key], $key );
+	global $wgMessageCache, $wdMessages, $IP;
+	foreach( $wdMessages as $language => $translations ) {
+		$wgMessageCache->addMessages( $translations, $language );
 	}
 	require_once "$IP/includes/SpecialPage.php";
 

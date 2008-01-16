@@ -34,7 +34,7 @@ function wfSpecialCopy() {
 	require_once("Utilities.php");
 	require_once("DefinedMeaningModel.php");
 	require_once("Copy.php");
-	class SpecialCopy extends SpecialPage {
+	class SpecialCopy extends UnlistedSpecialPage {
 
 		function SpecialCopy() {
 			SpecialPage::SpecialPage( 'Copy' );

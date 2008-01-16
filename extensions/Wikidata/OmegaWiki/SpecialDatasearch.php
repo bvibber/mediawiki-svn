@@ -8,11 +8,11 @@ require_once("Wikidata.php");
 
 function wfSpecialDatasearch() {
 	# Add messages
-	require_once( 'SpecialDatasearch.i18n.php' );
-	global $wgMessageCache, $IP;
-	foreach( $messages as $key => $value ) {
-		$wgMessageCache->addMessages( $messages[$key], $key );
-	}
+	#require_once( 'SpecialDatasearch.i18n.php' );
+	#global $wgMessageCache, $messages, $IP;
+	#foreach( $messages as $key => $value ) {
+	#	$wgMessageCache->addMessages( $messages[$key], $key );
+	#}
 
 	class SpecialDatasearch extends SpecialPage {
 		protected $externalIdentifierAttribute;
