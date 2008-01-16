@@ -20,7 +20,7 @@ $wgExtensionCredits['specialpage'][] = array(
 function wfSpecialManageLanguages() {
 	# Add messages
 	require_once( 'SpecialLanguages.i18n.php' );
-	global $wgMessageCache, $messages, $IP;
+	global $wgMessageCache, $IP;
 	foreach( $messages as $key => $value ) {
 		$wgMessageCache->addMessages( $messages[$key], $key );
 	}
