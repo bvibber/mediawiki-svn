@@ -37,7 +37,7 @@ function wfSpecialCopy() {
 	class SpecialCopy extends UnlistedSpecialPage {
 
 		function SpecialCopy() {
-			SpecialPage::SpecialPage( 'Copy' );
+			UnlistedSpecialPage::UnlistedSpecialPage( 'Copy' );
 		}
 		function execute( $par ) {
 			global $wgOut, $wgRequest, $wgTitle, $wgUser, $wdTermDBDataSet;
