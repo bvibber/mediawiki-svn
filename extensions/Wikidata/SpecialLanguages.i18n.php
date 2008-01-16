@@ -3,14 +3,13 @@
  * Internationalisation file for Language Manager extension.
  *
  * @addtogroup Extensions
-*/
+ */
 
-
-$wgLanguageManagerMessages = array();
+$messages = array();
 
 /** English
  */
-$wgLanguageManagerMessages['en'] = array(
+$messages['en'] = array(
 	'langman_title'                         => 'Language manager',
 	'languages'                             => 'Wikidata: Language manager',
 	'ow_save'                               => 'Save',
@@ -104,19 +103,19 @@ $wgLanguageManagerMessages['en'] = array(
 	'ow_db_consistency_not_found'          => "<h2>Error</h2>There is an issue with database consistency, wikidata can't find valid data connected to this defined meaning ID, it might be lost. Please contact the server operator or administrator.",
 );
 
-$wgLanguageManagerMessages['ar'] = array(
+$messages['ar'] = array(
 	'langman_title' => 'مدير اللغة',
 	'languages' => 'Wikidata: مدير اللغة',
 );
 
-$wgLanguageManagerMessages['bcl'] = array(
+$messages['bcl'] = array(
 	'languages' => 'Wikidata: Manager kan tataramon',
 );
 
 /** Bulgarian (Български)
  * @author DCLXVI
  */
-$wgLanguageManagerMessages['bg'] = array(
+$messages['bg'] = array(
 	'ow_save'                         => 'Съхранение',
 	'ow_history'                      => 'История',
 	'ow_noedit_title'                 => 'Необходими са права за редактиране',
@@ -145,14 +144,14 @@ $wgLanguageManagerMessages['bg'] = array(
 	'ow_no_action_specified'          => '<h3>Не е посочено действие</h3> Вероятно сте попаднали тук директно? Обикновено не се налага да идвате тук.',
 );
 
-$wgLanguageManagerMessages['bn'] = array(
+$messages['bn'] = array(
 	'langman_title' => 'ভাষা ব্যবস্থাপক',
 	'languages' => 'Wikidata: ভাষা ব্যবস্থাপক',
 );
 
 /** Brezhoneg (Brezhoneg)
  */
-$wgLanguageManagerMessages['br'] = array(
+$messages['br'] = array(
 	'langman_title'                         => 'Merer yezhoù',
 	'languages'                             => 'Wikidata: Merer yezhoù',
 	'ow_save'                               => 'Enrollañ',
@@ -238,7 +237,7 @@ $wgLanguageManagerMessages['br'] = array(
 
 /** Deutsch (Deutsch)
  */
-$wgLanguageManagerMessages['de'] = array(
+$messages['de'] = array(
 	'langman_title'                         => 'Sprachmanager',
 	'ow_save'                               => 'Speichern',
 	'ow_history'                            => 'Versionen/Autoren',
@@ -323,7 +322,7 @@ $wgLanguageManagerMessages['de'] = array(
 );
 
 /** Ελληνικά (Ελληνικά) */
-$wgLanguageManagerMessages['el'] = array(
+$messages['el'] = array(
 	'langman_title' => 'Διαχειριστής γλώσσας',
 	'languages'     => 'Wikidata: Διαχειριστής γλώσσας',
 );
@@ -331,7 +330,7 @@ $wgLanguageManagerMessages['el'] = array(
 /** Español (Español)
  * @author Ascánder
  */
-$wgLanguageManagerMessages['es'] = array(
+$messages['es'] = array(
 	'ow_save'                          => 'Guardar',
 	'ow_history'                       => 'Historial',
 	'ow_datasets'                      => 'Selección de la base',
@@ -412,7 +411,7 @@ Favor contactar al administrador.',
 
 /** Suomi (Suomi)
  */
-$wgLanguageManagerMessages['fi'] = array(
+$messages['fi'] = array(
 	'ow_AlternativeDefinition'   => 'Vaihtoehtoinen määritelmä',
 	'ow_AlternativeDefinitions'  => 'Vaihtoehtoiset määritelmät',
 	'ow_Annotation'              => 'Annotaatiot',
@@ -435,7 +434,7 @@ $wgLanguageManagerMessages['fi'] = array(
 /** French (Français)
  * @author Grondin
  */
-$wgLanguageManagerMessages['fr'] = array(
+$messages['fr'] = array(
 	'langman_title'                         => 'Gestion des langues',
 	'languages'                             => 'Wikidata: Gestion des langues',
 	'ow_save'                               => 'Sauvegarder',
@@ -520,21 +519,21 @@ aux sens définis dans les autres données.</p>",
 	'ow_db_consistency_not_found'           => "<h2>Erreur</h2> Un problème a été trouvé dans la base de donnée. Wikidata ne peut trouver des données valides liées au numéro de sens défini. Il pourrait être perdu. Veuillez contacter l'opérateur ou l'administrateur du serveur.",
 );
 
-$wgLanguageManagerMessages['gl'] = array(
+$messages['gl'] = array(
 	'langman_title' => 'Xestor de linguas',
 	'languages' => 'Wikidata: Xestor de linguas',
 );
 
-$wgLanguageManagerMessages['he'] = array(
+$messages['he'] = array(
 	'langman_title' => 'מנהל שפות',
 );
 
-$wgLanguageManagerMessages['hsb'] = array(
+$messages['hsb'] = array(
 	'langman_title' => 'Zrjadowak rěčow',
 	'languages' => 'Wikidata: Zrjadowak rěčow',
 );
 
-$wgLanguageManagerMessages['id'] = array(
+$messages['id'] = array(
 	'langman_title' => 'Pengelola bahasa',
 	'languages'=>'Wikidata: Pengelola bahasa',
 );
@@ -542,7 +541,7 @@ $wgLanguageManagerMessages['id'] = array(
 /** ქართული (ქართული)
  * @author Sopho
  */
-$wgLanguageManagerMessages['ka'] = array(
+$messages['ka'] = array(
 	'ow_history'                  => 'ისტორია',
 	'ow_AlternativeDefinition'    => 'ალტერნატიული განსაზღვრება',
 	'ow_AlternativeDefinitions'   => 'ალტერნატიული განსაზღვრებები',
@@ -563,24 +562,24 @@ $wgLanguageManagerMessages['ka'] = array(
 	'ow_Text'                     => 'ტექსტი',
 );
 
-$wgLanguageManagerMessages['kk-kz'] = array(
+$messages['kk-kz'] = array(
 	'langman_title' => 'Тілдерді меңгеру',
 );
 
-$wgLanguageManagerMessages['kk-tr'] = array(
+$messages['kk-tr'] = array(
 	'langman_title' => 'Tilderdi meñgerw',
 );
 
-$wgLanguageManagerMessages['kk-cn'] = array(
+$messages['kk-cn'] = array(
 	'langman_title' => 'تٴىلدەردٴى مەڭگەرۋ',
 );
 
-$wgLanguageManagerMessages['kk'] = $wgLanguageManagerMessages['kk-kz'];
+$messages['kk'] = $messages['kk-kz'];
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-$wgLanguageManagerMessages['lb'] = array(
+$messages['lb'] = array(
 	'langman_title' => 'Sproochmanager',
 	'languages'     => 'Wikidata: Sproochmanager',
 );
@@ -588,7 +587,7 @@ $wgLanguageManagerMessages['lb'] = array(
 /** Dutch (Nederlands)
  * @author Siebrand
  */
-$wgLanguageManagerMessages['nl'] = array(
+$messages['nl'] = array(
 	'langman_title'                         => 'Taalmanager',
 	'languages'                             => 'Wikidata: Taalmanager',
 	'ow_save'                               => 'Opslaan',
@@ -667,19 +666,19 @@ $wgLanguageManagerMessages['nl'] = array(
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$wgLanguageManagerMessages['no'] = array(
+$messages['no'] = array(
 	'langman_title' => 'Språkbehandler',
 	'languages'     => 'Wikidata: Språkbehandler',
 );
 
-$wgLanguageManagerMessages['oc'] = array(
+$messages['oc'] = array(
 	'langman_title' => 'Gestion de las lengas',
 	'languages' => 'Wikidata: Gestion de las lengas',
 );
 
 /** Piemontèis (Piemontèis)
  */
-$wgLanguageManagerMessages['pms'] = array(
+$messages['pms'] = array(
 	'langman_title'                   => 'Gestor dle lenghe',
 	'languages'                       => 'Wikidata: Gestor dle lenghe',
 	'ow_save'                         => 'Salvé',
@@ -719,7 +718,7 @@ $wgLanguageManagerMessages['pms'] = array(
 
 /** Português (Português)
  */
-$wgLanguageManagerMessages['pt'] = array(
+$messages['pt'] = array(
 	'langman_title'                         => 'Gestor de línguas',
 	'languages'                             => 'Gestor de línguas',
 	'ow_save'                               => 'Salvar',
@@ -816,7 +815,7 @@ Oops, por favor, contacte um administrador do servidor.',
 Os seus dados aparentam ter sido copiados com sucesso. Não se esqueça de verificar para ter a certeza!',
 );
 
-$wgLanguageManagerMessages['sk'] = array(
+$messages['sk'] = array(
 	'langman_title' => 'Správca jazykov',
 	'languages' => 'Wikidata: Správca jazykov',
 );
@@ -824,7 +823,7 @@ $wgLanguageManagerMessages['sk'] = array(
 /** ћирилица (ћирилица)
  * @author Millosh
  */
-$wgLanguageManagerMessages['sr-ec'] = array(
+$messages['sr-ec'] = array(
 	'ow_save'                               => 'Сачувај',
 	'ow_history'                            => 'Историја',
 	'ow_datasets'                           => 'Одабир скупа података',
@@ -910,12 +909,12 @@ $wgLanguageManagerMessages['sr-ec'] = array(
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-$wgLanguageManagerMessages['stq'] = array(
+$messages['stq'] = array(
 	'langman_title' => 'Sproakmanager',
 	'languages'     => 'Wikidata: Sproakmanager',
 );
 
-$wgLanguageManagerMessages['sv'] = array(
+$messages['sv'] = array(
 	'langman_title' => 'Språkhanterare',
 	'languages' => 'Wikidata: Språkhanterare',
 );
@@ -923,14 +922,14 @@ $wgLanguageManagerMessages['sv'] = array(
 /** Turkish (Türkçe)
  * @author Karduelis
  */
-$wgLanguageManagerMessages['tr'] = array(
+$messages['tr'] = array(
 	'langman_title' => 'Lisan idarecisi',
 	'languages'     => 'Wikidata: Lisan idarecisi',
 );
 
 /** Volapük (Volapük)
  */
-$wgLanguageManagerMessages['vo'] = array(
+$messages['vo'] = array(
 	'ow_history'                      => 'Jenotem',
 	'ow_add_concept_link'             => 'Läükön yümi tikädes votik',
 	'ow_concept_panel'                => 'Tikädafremül',
@@ -950,20 +949,20 @@ $wgLanguageManagerMessages['vo'] = array(
 	'ow_LinkAttributeValues'          => 'Liuds',
 );
 
-$wgLanguageManagerMessages['zh-hans'] = array(
+$messages['zh-hans'] = array(
 	'langman_title' => '语言管理员',
 	'languages'=>'Wikidata: 语言管理员',
 );
 
-$wgLanguageManagerMessages['zh-hant'] = array(
+$messages['zh-hant'] = array(
 	'langman_title' => '語言管理員',
 	'languages'=>'Wikidata: 語言管理員',
 );
 
-$wgLanguageManagerMessages['yue'] = $wgLanguageManagerMessages['zh-hant'];
-$wgLanguageManagerMessages['zh'] = $wgLanguageManagerMessages['zh-hans'];
-$wgLanguageManagerMessages['zh-cn'] = $wgLanguageManagerMessages['zh-hans'];
-$wgLanguageManagerMessages['zh-hk'] = $wgLanguageManagerMessages['zh-hant'];
-$wgLanguageManagerMessages['zh-sg'] = $wgLanguageManagerMessages['zh-hans'];
-$wgLanguageManagerMessages['zh-tw'] = $wgLanguageManagerMessages['zh-hant'];
-$wgLanguageManagerMessages['zh-yue'] = $wgLanguageManagerMessages['yue'];
+$messages['yue'] = $messages['zh-hant'];
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-tw'] = $messages['zh-hant'];
+$messages['zh-yue'] = $messages['yue'];

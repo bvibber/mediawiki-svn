@@ -23,9 +23,9 @@ require_once( 'SpecialLanguages.i18n.php' );
 
 function wfSpecialManageLanguages() {
 	# Add messages
-	global $wgMessageCache, $wgLanguageManagerMessages, $IP;
-	foreach( $wgLanguageManagerMessages as $key => $value ) {
-		$wgMessageCache->addMessages( $wgLanguageManagerMessages[$key], $key );
+	global $wgMessageCache, $messages, $IP;
+	foreach( $messages as $key => $value ) {
+		$wgMessageCache->addMessages( $messages[$key], $key );
 	}
 	require_once "$IP/includes/SpecialPage.php";
 
@@ -33,7 +33,7 @@ function wfSpecialManageLanguages() {
 		function SpecialLanguages() {
 			SpecialPage::SpecialPage( 'Languages' );
 		}
-		
+
 		function execute( $par ) {
 			global $wgOut, $wgRequest, $wgTitle, $wgUser;
 			$wgOut->setPageTitle(wfMsg('langman_title'));
@@ -55,7 +55,7 @@ function wfSpecialManageLanguages() {
 				} else {
 					$wgOut->addHTML('Adding language '.$langname.' with key '.$langiso6393.'.');
 					$sql='INSERT INTO language(iso639_2,iso639_3,wikimedia_key) values('.$dbr->addQuotes($langiso6392).','.$dbr->addQuotes($langiso6393).','.$dbr->addQuotes($langwmf).')';
-					
+
 					$dbr->query($sql);
 					$id=$dbr->insertId();
 					$sql='INSERT INTO language_names(language_id,name_language_id,language_name) values ('.$id.',85,'.$dbr->addQuotes($langname).')';
@@ -120,6 +120,6 @@ END
 
 		}
 	}
-	
+
 	SpecialPage::addPage( new SpecialLanguages );
 }

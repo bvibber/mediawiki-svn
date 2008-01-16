@@ -5,134 +5,134 @@
  * @addtogroup Extensions
 */
 
-$wgDataSearchMessages = array();
+$messages = array();
 
-$wgDataSearchMessages['en'] = array(
+$messages['en'] = array(
 	'datasearch' => 'Wikidata: Data search',
 );
 
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
-$wgDataSearchMessages['an'] = array(
+$messages['an'] = array(
 	'datasearch' => 'Wikidata: Mirar datos',
 );
 
-$wgDataSearchMessages['ar'] = array(
+$messages['ar'] = array(
 	'datasearch' => 'Wikidata: بحث البيانات',
 );
 
-$wgDataSearchMessages['bcl'] = array(
+$messages['bcl'] = array(
 	'datasearch' => 'Wikidata: Data search',#identical but defined
 );
 
 /** Bulgarian (Български)
  * @author DCLXVI
  */
-$wgDataSearchMessages['bg'] = array(
+$messages['bg'] = array(
 	'datasearch' => 'Уикиданни: Търсене на данни',
 );
 
-$wgDataSearchMessages['bn'] = array(
+$messages['bn'] = array(
 	'datasearch' => 'Wikidata: তথ্য অনুসন্ধান',
 );
 
-$wgDataSearchMessages['br'] = array(
+$messages['br'] = array(
 	'datasearch' => 'Wikidata: Klask roadennoù',
 );
 
-$wgDataSearchMessages['el'] = array(
+$messages['el'] = array(
 	'datasearch' => 'Βικιδεδομένα: Αναζήτηση δεδομένων',
 );
 
-$wgDataSearchMessages['fr'] = array(
+$messages['fr'] = array(
 	'datasearch' => 'Wikidata: Recherche de données',
 );
 
-$wgDataSearchMessages['gl'] = array(
+$messages['gl'] = array(
 	'datasearch' => 'Wikidata: Procura de datos',
 );
 
-$wgDataSearchMessages['hsb'] = array(
+$messages['hsb'] = array(
 	'datasearch' => 'Wikidata: Pytanje datow',
 );
 
-$wgDataSearchMessages['id'] = array(
+$messages['id'] = array(
 	'datasearch' => 'Wikidata: Pencarian data',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-$wgDataSearchMessages['lb'] = array(
+$messages['lb'] = array(
 	'datasearch' => 'Wikidata: Date sichen',
 );
 
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */
-$wgDataSearchMessages['lt'] = array(
+$messages['lt'] = array(
 	'datasearch' => 'Wikidata: Duomenų paieška',
 );
 
-$wgDataSearchMessages['nl'] = array(
+$messages['nl'] = array(
 	'datasearch' => 'Wikidata: Gegevens zoeken',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$wgDataSearchMessages['no'] = array(
+$messages['no'] = array(
 	'datasearch' => 'Wikidata: Datasøk',
 
 );
 
-$wgDataSearchMessages['oc'] = array(
+$messages['oc'] = array(
 	'datasearch' => 'Wikidata: Recèrca de donadas',
 );
 
-$wgDataSearchMessages['pms'] = array(
+$messages['pms'] = array(
 	'datasearch' => 'Wikidata: Arsërca antra ij dat',
 );
 
-$wgDataSearchMessages['pt'] = array(
+$messages['pt'] = array(
 	'datasearch' => 'Wikidata: Pesquisa de dados',
 );
 
-$wgDataSearchMessages['ro'] = array(
+$messages['ro'] = array(
 	'datasearch' => 'Wikidata: Căutare de date',
 );
 
-$wgDataSearchMessages['sk'] = array(
+$messages['sk'] = array(
 	'datasearch' => 'Wikidata: Hľadanie údajov',
 );
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-$wgDataSearchMessages['stq'] = array(
+$messages['stq'] = array(
 	'datasearch' => 'Wikidata: Doatensäike',
 );
 
-$wgDataSearchMessages['sv'] = array(
+$messages['sv'] = array(
 	'datasearch' => 'Wikidata: Datasökning',
 );
 
-$wgDataSearchMessages['yue'] = array(
+$messages['yue'] = array(
 	'datasearch' => 'Wikidata: 搵資料',
 );
 
-$wgDataSearchMessages['zh-hans'] = array(
+$messages['zh-hans'] = array(
 	'datasearch' => 'Wikidata: 数据搜寻',
 );
 
-$wgDataSearchMessages['zh-hant'] = array(
+$messages['zh-hant'] = array(
 	'datasearch' => 'Wikidata: 資料搜尋',
 );
 
-$wgDataSearchMessages['zh'] = $wgDataSearchMessages['zh-hans'];
-$wgDataSearchMessages['zh-cn'] = $wgDataSearchMessages['zh-hans'];
-$wgDataSearchMessages['zh-hk'] = $wgDataSearchMessages['zh-hant'];
-$wgDataSearchMessages['zh-sg'] = $wgDataSearchMessages['zh-hans'];
-$wgDataSearchMessages['zh-tw'] = $wgDataSearchMessages['zh-hant'];
-$wgDataSearchMessages['zh-yue'] = $wgDataSearchMessages['yue'];
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-tw'] = $messages['zh-hant'];
+$messages['zh-yue'] = $messages['yue'];
