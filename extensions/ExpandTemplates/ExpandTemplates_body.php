@@ -4,6 +4,7 @@
 wfLoadExtensionMessages( 'ExpandTemplates' );
 
 class ExpandTemplates extends SpecialPage {
+	var $generateXML, $removeComments, $isNewParser;
 
 	/* 50MB allows fixing those huge pages */
 	const MAX_INCLUDE_SIZE = 50000000;
@@ -17,6 +18,8 @@ class ExpandTemplates extends SpecialPage {
 
 		$this->setHeaders();
 
+		$this->isNewParser = is_callable( array( $wgParser, 'preprocessToDom' ) );
+
 		$titleStr = $wgRequest->getText( 'contexttitle' );
 		$title = Title::newFromText( $titleStr );
 		$selfTitle = $this->getTitle();
@@ -24,28 +27,28 @@ class ExpandTemplates extends SpecialPage {
 			$title = $selfTitle;
 		}
 		$input = $wgRequest->getText( 'input' );
-		$generateXML = $wgRequest->getBool( 'generate_xml' );
+		$this->generateXML = $this->isNewParser ? $wgRequest->getBool( 'generate_xml' ) : false;
 		if ( strlen( $input ) ) {
-			$removeComments = $wgRequest->getBool( 'removecomments', false );
+			$this->removeComments = $wgRequest->getBool( 'removecomments', false );
 			$options = new ParserOptions;
-			$options->setRemoveComments( $removeComments );
+			$options->setRemoveComments( $this->removeComments );
 			$options->setMaxIncludeSize( self::MAX_INCLUDE_SIZE );
-			if ( $generateXML ) {
+			if ( $this->generateXML ) {
 				$wgParser->startExternalParse( $title, $options, OT_PREPROCESS );
 				$dom = $wgParser->preprocessToDom( $input );
 				$xml = $dom->saveXML();
 			}
 			$output = $wgParser->preprocess( $input, $title, $options );
 		} else {
-			$removeComments = $wgRequest->getBool( 'removecomments', true );
+			$this->removeComments = $wgRequest->getBool( 'removecomments', true );
 			$output = false;
 		}
 
 		$wgOut->addWikiText( wfMsg( 'expand_templates_intro' ) );
-		$wgOut->addHtml( $this->makeForm( $titleStr, $removeComments, $input, $generateXML ) );
+		$wgOut->addHtml( $this->makeForm( $titleStr, $input ) );
 
 		if( $output !== false ) {
-			if ( $generateXML ) {
+			if ( $this->generateXML ) {
 				$wgOut->addHtml( $this->makeOutput( $xml, 'expand_templates_xml_output' ) );
 			}
 			$wgOut->addHtml( $this->makeOutput( $output ) );
@@ -58,11 +61,10 @@ class ExpandTemplates extends SpecialPage {
 	 * Generate a form allowing users to enter information
 	 *
 	 * @param $title Value for context title field
-	 * @param $removeComments Toggle the remove comments box checked/unchecked
 	 * @param $input Value for input textbox
 	 * @return string
 	 */
-	private function makeForm( $title, $removeComments, $input, $generateXML ) {
+	private function makeForm( $title, $input ) {
 		$self = $this->getTitle();
 		$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
 		$form .= "<fieldset><legend>" . wfMsgHtml( 'expandtemplates' ) . "</legend>\n";
@@ -71,8 +73,10 @@ class ExpandTemplates extends SpecialPage {
 		$form .= Xml::openElement( 'textarea', array( 'name' => 'input', 'id' => 'input', 'rows' => 10, 'cols' => 10 ) );
 		$form .= htmlspecialchars( $input );
 		$form .= Xml::closeElement( 'textarea' );
-		$form .= '<p>' . Xml::checkLabel( wfMsg( 'expand_templates_remove_comments' ), 'removecomments', 'removecomments', $removeComments ) . '</p>';
-		$form .= '<p>' . Xml::checkLabel( wfMsg( 'expand_templates_generate_xml' ), 'generate_xml', 'generate_xml', $generateXML ) . '</p>';
+		$form .= '<p>' . Xml::checkLabel( wfMsg( 'expand_templates_remove_comments' ), 'removecomments', 'removecomments', $this->removeComments ) . '</p>';
+		if ( $this->isNewParser ) {
+			$form .= '<p>' . Xml::checkLabel( wfMsg( 'expand_templates_generate_xml' ), 'generate_xml', 'generate_xml', $this->generateXML ) . '</p>';
+		}
 		$form .= '<p>' . Xml::submitButton( wfMsg( 'expand_templates_ok' ) ) . '</p>';
 		$form .= "</fieldset>\n";
 		$form .= Xml::closeElement( 'form' );
