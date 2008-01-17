@@ -51,8 +51,9 @@ Soek vir $3 $9',
  * @author Codex Sinaiticus
  */
 $messages['am'] = array(
-	'searchnumber'    => '<strong><big>ውጤቶች #$1 እስከ $2 (ከ$3):</big></strong>',
-	'searchnoresults' => 'ውጤት፦ ለጥያቄዎ ምንም ተመሳሳይ ጽሕፈት በማናቸውም ጽሁፍ አይገኝም።',
+	'searchnumber'          => '<strong><big>ውጤቶች #$1 እስከ $2 (ከ$3):</big></strong>',
+	'searchnoresults'       => 'ውጤት፦ ለጥያቄዎ ምንም ተመሳሳይ ጽሕፈት በማናቸውም ጽሁፍ አይገኝም።',
+	'lucenepowersearchtext' => 'ባመለከቱት ክፍለ-ዊኪዎች ውስጥ ፍለጋ ለማድረግ፦ <br/> $1 ይኸው ጥያቄ ይፈለግ፡- $3 $9',
 );
 
 /** Aragonese (Aragonés)
@@ -130,6 +131,7 @@ $messages['bg'] = array(
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Предишни</span>",
 	'searchnext'            => "<span style='font-size: small'>Следващи</span> &#x00BB;",
 	'lucene-resultsize'     => '$1 ($2 думи)',
+	'searchnoresults'       => 'За съжаление нямаше точни съвпадения със заявката ви.',
 	'searchnearmatches'     => '<b>Следните страници имат сходни с търсенето имена:</b>',
 	'lucenepowersearchtext' => 'Търсене в именни пространства:
 
@@ -1146,6 +1148,7 @@ Sök efter $3 $9 $10',
 Det var troligen bara något tillfälligt; försök igen om en liten stund,
 eller sök på wikin med någon extern söktjänst:
 ',
+	'searchexactcase'       => 'Exakt sökning',
 	'searchall'             => 'alla',
 	'searchincategory'      => 'i kategori',
 );
