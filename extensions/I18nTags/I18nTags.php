@@ -20,8 +20,14 @@ $wgExtensionCredits['parserhook'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgAutoloadClasses['I18nTags'] = $dir . 'I18nTags_body.php';
-$wgExtensionFunctions[] = 'efI18nTagsInit';
 $wgExtensionMessagesFiles['I18nTags'] = $dir . 'I18nTags.i18n.php';
+
+if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+	$wgHooks['ParserFirstCallInit'][] = 'efI18nTagsInit';
+} else {
+	$wgExtensionFunctions[] = 'efI18nTagsInit';
+}
+
 
 function efI18nTagsInit() {
 	global $wgParser;
@@ -32,4 +38,5 @@ function efI18nTagsInit() {
 	$wgParser->setHook( 'linktrail', array($class, 'linktrail') );
 	wfLoadExtensionMessages( 'I18nTags' );
 	$wgParser->setFunctionHook( 'languagename',  array($class, 'languageName' ) );
+	return true;
 }
