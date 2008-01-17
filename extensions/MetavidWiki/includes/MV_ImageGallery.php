@@ -52,7 +52,7 @@
 				
 				//remap MVD namespace links into the Stream view (so contextual metadata is present)
 				if($nt->getNamespace() == MV_NS_MVD ){
-					$nt = Title::MakeTitle(MV_NS_STREAM,$mvTitle->getNearStreamName(0) );
+					$nt = Title::MakeTitle(MV_NS_STREAM,$mvTitle->getWikiTitle() );
 				}					
 				$vidH = round($this->mWidths*$mvDefaultAspectRatio);
 				$vidRes = $this->mWidths.'x'.$vidH;

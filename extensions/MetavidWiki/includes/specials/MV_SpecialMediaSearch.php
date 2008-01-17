@@ -221,13 +221,12 @@ class MV_SpecialMediaSearch extends SpecialPage {
 					$mvd_out .='&nbsp;';
 					$mvdTitle = Title::MakeTitle(MV_NS_MVD, $mvd->wiki_title);
 					$mvd_out .= $sk->makeKnownLinkObj($mvdTitle, '<img border="0" src="' . $mvgScriptPath . '/skins/images/run_mediawiki.png">', '', '', '', '', ' title="' . wfMsg('mv_view_wiki_page') . '" ');												
-					
-					//@@todo is it faster to hit the semantic media db or run the regEx ?
+										
 					$mvd_out.='<span id="mvr_desc_'.$mvd->id.'">';
-					$smw_properties = MV_Overlay::get_and_strip_semantic_tags($mvd->text); 
-					if(isset($smw_properties['Spoken By'])){
-						$ptitle = Title::MakeTitle(NS_MAIN, $smw_properties['Spoken By']);
-						$mvd_out.=' '.$sk->makeKnownLinkObj($ptitle, $smw_properties['Spoken By']);
+										 
+					if(isset($mvd->spoken_by)){
+						$ptitle = Title::MakeTitle(NS_MAIN, $mvd->spoken_by);
+						$mvd_out.=' '.$sk->makeKnownLinkObj($ptitle, $mvd->spoken_by);
 					}		
 					if(!isset($mvd->toplq))$mvd->toplq=false;							
 					//output short desc send partial regEx: 
@@ -372,7 +371,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		//return "<li>{$link} ({$size}){$extract}</li>\n";
 		return $extract;
 	}
-	//output expanded request with retired title text
+	//output expanded request via mvd_id
 	function expand_wt($mvd_id, $terms_ary) {
 		global $wgOut,$mvgIP;
 		global $mvDefaultSearchVideoPlaybackRes;		
@@ -386,7 +385,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 				
 				list($vWidth, $vHeight) = explode('x', $mvDefaultSearchVideoPlaybackRes); 
 				$embedHTML='<span style="float:left;width:'.($vWidth+20).'px">' . 
-									$mvTitle->getEmbedVideoHtml($mvd_id, $mvDefaultSearchVideoPlaybackRes) .
+									$mvTitle->getEmbedVideoHtml('vid_'.$mvd_id, $mvDefaultSearchVideoPlaybackRes) .
 							'</span>';
 				$wgOut->clearHTML();
 								
@@ -488,7 +487,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 	function getResultsBar(){		
 		$o='<div class="mv_result_bar">';
 		if($this->numResultsFound){
-			$re = ($this->numResultsFound < $this->limit+$this->offset)?$this->numResultsFound:($this->limit+$this->offset);
+			$re = ($this->limit+$this->offset > $this->numResultsFound)?$this->numResultsFound:($this->limit+$this->offset);
 			$o.=wfMsg('mv_results_found_for',$this->offset,$re , number_format($this->numResultsFound));
 		}
 		$o.=$this->getFilterDesc();

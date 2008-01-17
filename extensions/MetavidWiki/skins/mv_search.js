@@ -56,6 +56,17 @@ function mv_setup_search(){
 					}));
 				//update the input name: 
 				$j('#mv_person_input_'+inx).attr('name', 'f['+inx+'][v]');
+				//for more logical default behavior: 
+				//default to OR if any other "spoken by" are present in list else AND				
+				var default_sel_inx=0;
+				$j('.mv_search_select').each(function(){
+					if(this.id!='mvsel_t_'+inx){
+						if(this.value=='spoken_by'){
+							default_sel_inx=1; //set to OR
+						}
+					}
+				})
+				$j('#mvsel_a_'+inx).get(0).selectedIndex=default_sel_inx;
 				mv_add_person_ac(inx);
 			break;			
 			case 'smw_property':

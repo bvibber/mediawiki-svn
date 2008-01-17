@@ -17,11 +17,18 @@ $mvgIP = $IP . '/extensions/MetavidWiki';
 //include the global functions & init the extension 
 include_once('MV_GlobalFunctions.php');
 
+##########################
+# semanticWiki integration options
+##########################
+//if you want to include spoken by relation in search results:  
+$mvSpokenByInSearchResult = true;
 
-######
+
+#########################
 # metavid paths 
 # @@todo clean up with internal handlers for annodex and images
 # use the mediaWiki defaults for storage of media  
+##########################
 
 //define the image location:
 //$mvImageWebLoc ='http://metavid.ucsc.edu/image_media/';

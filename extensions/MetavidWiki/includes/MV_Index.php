@@ -107,7 +107,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		global $mvIndexTableName, $mvDefaultClipLength; 		
  		$dbr =& wfGetDB(DB_SLAVE);	 		
  		
- 		$sql = "SELECT `id`, `mvd_type`, `wiki_title`, `stream_id`, `start_time`, `end_time` " .
+ 		$sql = "SELECT `mv_page_id` as `id`, `mvd_type`, `wiki_title`, `stream_id`, `start_time`, `end_time` " .
  				"FROM {$dbr->tableName($mvIndexTableName)} " . 
  				"WHERE `stream_id`={$stream_id} ";
 		if($mvd_type!='all'){
@@ -145,7 +145,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		return true;
  	}
  	function doFiltersQuery(&$filters){
- 		global $mvIndexTableName, $mvDefaultClipLength, $wgRequest, $mvDo_SQL_CALC_FOUND_ROWS; 		
+ 		global $mvIndexTableName, $mvDefaultClipLength, $wgRequest, $mvDo_SQL_CALC_FOUND_ROWS, $mvSpokenByInSearchResult; 		
  		$dbr =& wfGetDB(DB_SLAVE);
  		//organize the queries (group full-text searches and category/attributes)
  		//if the attribute is not a numerical just add it to the fulltext query 
@@ -155,7 +155,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		$selOpt = ($mvDo_SQL_CALC_FOUND_ROWS)?'SQL_CALC_FOUND_ROWS':''; 
  		
  		list( $this->limit, $this->offset ) = $wgRequest->getLimitOffset( 20, 'searchlimit' );
- 		
+ 		//print_r($filters);
+ 		//print_r($_GET);
  		foreach($filters as $f){
  			//proocc and or for fulltext:
  			if(!isset($f['a']))$f['a']='and';
@@ -195,6 +196,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  				break;
  			} 		
  		}
+ 		$searchindexTable = $dbr->tableName( 'searchindex' );
  		$ret_ary = array();
  		//only run the top range query if we have no secondary query
  		if($toplq!='' && $ftq==''){
@@ -203,18 +205,27 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  			if($snq!='')$andstr.='AND'; 			
  			//@@todo we should only look in annotative layer for top level queries? ...
  			//@@todo paging for top level queries? ... 100 stream limit is probably ok  
- 			$sql = "SELECT `id`, `stream_id`,`start_time`,`end_time`, `wiki_title`, `text`
+ 			//@@ no spoken by attribute for 'anno_en' mvd_type 	
+ 			$sql = "SELECT `mv_page_id` as `id`, `stream_id`,`start_time`,`end_time`, `wiki_title`, $searchindexTable.`si_text` as `text`
 	 			FROM `$mvIndexTableName` 
+	 			JOIN $searchindexTable ON `$mvIndexTableName`.`mv_page_id` = $searchindexTable.`si_page`
 	 			WHERE $snq $andstr `mvd_type`='Anno_en' 
-		 			AND MATCH (text) 
+		 			AND MATCH ($searchindexTable.`si_text`) 
 		 			AGAINST('$toplq' IN BOOLEAN MODE)
 	 			LIMIT 0, 100";
-	 		//echo "topQ: $sql \n\n";
+	 		echo "topQ: $sql \n\n";
  			$top_result = $dbr->query($sql); 			
  			if($dbr->numRows($top_result)==0)return array();
  			//set up ranges sql query
- 			$sql="SELECT $selOpt `id`, `stream_id`,`start_time`,`end_time`, `wiki_title`, `text`
- 				 FROM `$mvIndexTableName` WHERE  ";
+ 			$sql="SELECT $selOpt `mv_page_id` as `id`, `stream_id`,`start_time`,`end_time`, `wiki_title`, $searchindexTable.`si_text` as `text` ";
+ 				if($mvSpokenByInSearchResult)$sql.=",`smw_relations`.`object_title` as `spoken_by` ";
+ 				$sql.="FROM `$mvIndexTableName` " .
+ 				"JOIN $searchindexTable ON `$mvIndexTableName`.`mv_page_id` = $searchindexTable.`si_page` ";
+ 				if($mvSpokenByInSearchResult){
+	 				$sql.="LEFT JOIN `smw_relations` ON (`mv_mvd_index`.`mv_page_id`=`smw_relations`.`subject_id` " .
+	 					"AND `smw_relations`.`relation_title`='Spoken_By') ";
+	 			}
+ 				$sql.="WHERE  ";
  			$or=''; 	
  			$sql.='( ';			 				  				 
  			while($row = $dbr->fetchObject( $top_result )){ 	
@@ -239,16 +250,24 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		}else{ 		
  			//add the top query to the base query: 
  			$ftq.=$toplq;
-	 		$sql = "SELECT $selOpt `id`,`stream_id`,`start_time`,`end_time`, `wiki_title`, `text`
-	 			FROM `$mvIndexTableName` 
-	 			WHERE $snq ";
+	 		$sql = "SELECT $selOpt `mv_page_id` as `id`,`stream_id`,`start_time`,`end_time`, `wiki_title`, $searchindexTable.`si_text` AS `text` ";
+	 		if($mvSpokenByInSearchResult)$sql.=",`smw_relations`.`object_title` as `spoken_by` ";
+	 		$sql.="FROM `$mvIndexTableName` 
+	 			JOIN $searchindexTable ON `$mvIndexTableName`.`mv_page_id` = $searchindexTable.`si_page` ";
+	 			
+ 			//include spoken by relation in results (LEFT JOIN should not be *that* costly )
+ 			if($mvSpokenByInSearchResult){
+ 				$sql.="LEFT JOIN `smw_relations` ON (`mv_mvd_index`.`mv_page_id`=`smw_relations`.`subject_id` " .
+ 					"AND `smw_relations`.`relation_title`='Spoken_By') ";
+ 			}
+	 		$sql.="WHERE $snq ";
 	 		if($ftq!=''){
-	 			$sql.="	MATCH (text) 
+	 			$sql.="	MATCH ( $searchindexTable.`si_text` ) 
 	 				AGAINST('$ftq' IN BOOLEAN MODE) ";
 	 		}
 	 		$sql.="LIMIT {$this->offset}, {$this->limit} ";
  		}
- 		//echo "SQL:".$sql;  			
+ 		echo "SQL:".$sql;  			
  		$result = $dbr->query($sql);
  		
  		$this->numResults=$dbr->numRows($result);
@@ -349,6 +368,28 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		}
 		$ret_ary[$row->stream_id][]=$new_srange; 		 		
  	}
+ 	function getMVDbyId($id, $fields='*'){ 	
+ 		global $mvIndexTableName;	
+ 		$dbr =& wfGetDB(DB_SLAVE);
+ 		$result = $dbr->select( $mvIndexTableName, $fields,
+ 			array('mv_page_id'=>$id) );	
+ 		if($dbr->numRows($result)==0){
+ 			return array();
+ 		}else{			 			
+ 			return $dbr->fetchObject( $result );
+ 		} 		
+ 	}
+ 	function getMVDbyTitle($title_key, $fields='*'){ 	
+ 		global $mvIndexTableName;	
+ 		$dbr =& wfGetDB(DB_SLAVE);
+ 		$result = $dbr->select( $mvIndexTableName, $fields,
+ 			array('wiki_title'=>$title_key) );	
+ 		if($dbr->numRows($result)==0){
+ 			return null;
+ 		}else{			 			
+ 			return $dbr->fetchObject( $result );
+ 		} 		
+ 	}
  	function update_index_title($old_title, $new_title){
  		global $mvIndexTableName;
 
@@ -366,34 +407,12 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  			$mvd_row = MV_Index::getMVDbyTitle( $old_title ); 			
  			$dbw =& wfGetDB(DB_WRITE); 	
  			$dbw->update($mvIndexTableName, $update_ary, 
- 				array('id'=>$mvd_row->id));
+ 				array('mv_page_id'=>$mvd_row->mv_page_id));
  		}else{
  			//print "NOT VALID MOVE";
  			//@@todo better error handling (tyring to move a MVD data into bad request form)
  			throw new MWException("Invalid Page name for MVD namespace \n");
  		}			
- 	}
- 	function getMVDbyId($id, $fields='*'){ 	
- 		global $mvIndexTableName;	
- 		$dbr =& wfGetDB(DB_SLAVE);
- 		$result = $dbr->select( $mvIndexTableName, $fields,
- 			array('id'=>$id) );	
- 		if($dbr->numRows($result)==0){
- 			return array();
- 		}else{			 			
- 			return $dbr->fetchObject( $result );
- 		} 		
- 	}
- 	function getMVDbyTitle($title_key, $fields='*'){ 	
- 		global $mvIndexTableName;	
- 		$dbr =& wfGetDB(DB_SLAVE);
- 		$result = $dbr->select( $mvIndexTableName, $fields,
- 			array('wiki_title'=>$title_key) );	
- 		if($dbr->numRows($result)==0){
- 			return null;
- 		}else{			 			
- 			return $dbr->fetchObject( $result );
- 		} 		
  	}
  	/*
  	 * update_index_page updates the `mv_mvd_index` table (on MVD namespace saves) 
@@ -412,8 +431,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			'mvd_type'=>$mvTitle->getTypeMarker(),
 			'stream_id'=>$mvTitle->getStreamId(), 
 			'start_time'=>$mvTitle->getStartTimeSeconds(),
-			'end_time'=>$mvTitle->getEndTimeSeconds(),
-			'text'=>	$text	
+			'end_time'=>$mvTitle->getEndTimeSeconds(),			
 		);
 		
 		$dbw =& wfGetDB(DB_WRITE); 					
@@ -421,7 +439,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  			return $dbw->insert( $mvIndexTableName , $insAry); 			
  		}else{
  			$dbw->update($mvIndexTableName, $insAry, 
- 				array('id'=>$mvd_row->id));
+ 				array('mv_page_id'=>$mvd_row->mv_page_id));
  		}
  	}
  }

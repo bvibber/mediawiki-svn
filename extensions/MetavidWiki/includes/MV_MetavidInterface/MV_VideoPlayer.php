@@ -26,7 +26,8 @@
 		$out='';
 		//give the stream the request information:
 		$mvTitle= & $this->mv_interface->article->mvTitle;
-		//check if media is availible: 				
+		//check if media is availible: 	
+		$mvTitle->dispVideoPlayerTime=true;			
 		return $mvTitle->getEmbedVideoHtml('embed_vid');
 	}
 	function render_menu(){

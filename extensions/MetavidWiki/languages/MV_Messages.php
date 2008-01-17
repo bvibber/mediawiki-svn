@@ -19,7 +19,7 @@ $messages['en'] = array(
 	'mv_ogg_high_quality'     => 'High Quality ogg theora, hosted on metavid',
 	'mv_archive_org_link'     => 'Links into Archive.org mpeg2 originals',
 
-	'mv_error_stream_missing' => '<span class="error">Error: There is no video stream associated with this metadata.</span><br />Please report this to the site administrator.<br /><i>stream metadata interface is disabled</i>',
+	'mv_error_stream_missing' => '<span class="error">Error: There is no video file associated with this stream.</span><br />Please report this to the site administrator.',
 
 	#add/edit stream text:
 	'mv_stream_meta'                => 'Stream Page',

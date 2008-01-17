@@ -24,7 +24,7 @@
 
  	
  	var $hasMVDType = false;
- 	
+ 	var $dispVideoPlayerTime=false;
  	//a pointer to the mvStream 
  	var $mvStream = null;
  	var $wiki_title='';
@@ -231,14 +231,19 @@
 		$vid_id=($vid_id=='')?'':'id="'.$vid_id.'"';
 		list($vWidth, $vHeight) = explode('x', $size);
 		$stream_web_url = $this->getWebStreamURL();		
-		if($stream_web_url){		 					
-			return '<span id="mv_videoPlayerTime">'.$this->getStartTime().' to '.
-				$this->getEndTime() . 
-				'</span>'.
-				'<'.$tag.' '.$vid_id.' thumbnail="'.$this->getStreamImageURL($size, null, $force_server).'" '.
+		if($stream_web_url){
+			$o='';		
+			if($this->dispVideoPlayerTime){				
+				$o.='<span id="mv_videoPlayerTime">'.$this->getStartTime().' to '.
+					$this->getEndTime() . 
+					'</span>';
+			}				
+			$o.='<'.$tag.' '.$vid_id.' thumbnail="'.$this->getStreamImageURL($size, null, $force_server).'" '.
 				'src="'.$stream_web_url .'" ' .
 				'style="width:'.$vWidth.'px;height:'.$vHeight.'px" '.
-				'controls="true" embed_link="true" />';	
+				'controls="true" embed_link="true" />';
+				
+			return $o;	
 		}else{
 			return wfMsg('mv_error_stream_missing');
 		}						

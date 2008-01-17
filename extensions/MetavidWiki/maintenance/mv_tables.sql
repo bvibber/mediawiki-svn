@@ -1,10 +1,18 @@
-<?
-/*
-*will update tables to new database schema (once we have a more or less stable version)
-*
-*
-*table code:
+-- metavid tables 
+--
+-- stores the most recent mysql schema 
 
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `mvWiki`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mv_mvd_index`
+--
 
 CREATE TABLE IF NOT EXISTS `mv_mvd_index` (
   `id` int(10) unsigned NOT NULL auto_increment,
@@ -20,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `mv_mvd_index` (
   KEY `stream_id` (`stream_id`),
   KEY `stream_time_start` (`start_time`,`end_time`),
   FULLTEXT KEY `text` (`text`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='metavid data index' AUTO_INCREMENT=5545 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='metavid data index' AUTO_INCREMENT=0 ;
 
 -- --------------------------------------------------------
 
@@ -38,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `mv_streams` (
   UNIQUE KEY `name` (`name`),
   KEY `adj_start_time` (`date_start_time`),
   KEY `state` (`state`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
 
 -- --------------------------------------------------------
 
@@ -49,14 +57,14 @@ CREATE TABLE IF NOT EXISTS `mv_streams` (
 CREATE TABLE IF NOT EXISTS `mv_stream_files` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `stream_id` int(10) unsigned NOT NULL,
-  `base_offset` int(10) default NULL,
-  `duration` int(9) default NULL,
-  `path_type` enum('mvprime','cap1','ext_cspan','ext_archive_org','ext_url') character set utf8 collate utf8_unicode_ci NOT NULL,
+  `base_offset` int(10) NOT NULL default '0',
+  `duration` int(9) NOT NULL,
   `file_desc_msg` varchar(255) character set utf8 collate utf8_unicode_ci NOT NULL,
+  `path_type` enum('url_anx','wiki_title') character set utf8 collate utf8_bin NOT NULL default 'url_anx',
   `path` text character set utf8 collate utf8_unicode_ci NOT NULL,
   UNIQUE KEY `id` (`id`),
   KEY `stream_id` (`stream_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='base urls for path types are hard coded' AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='base urls for path types are hard coded' AUTO_INCREMENT=0 ;
 
 -- --------------------------------------------------------
 
@@ -70,22 +78,21 @@ CREATE TABLE IF NOT EXISTS `mv_stream_images` (
   `time` int(11) NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `stream_id` (`stream_id`,`time`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='time to images table' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='time to images table' AUTO_INCREMENT=0 ;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `mv_url_cache`
 --
- CREATE  TABLE IF NOT EXISTS  `mv_url_cache` (
-`id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
-`url` VARCHAR( 255 ) NOT NULL ,
-`post_vars` TEXT NULL ,
-`req_time` INT NOT NULL ,
-`result` TEXT NULL ,
-INDEX ( `url` ) ,
-UNIQUE (
-`id`
-)
-) ENGINE = MYISAM COMMENT = 'simple url cache (as to not tax external services too much) ' 
 
-*/
-?>
+CREATE TABLE IF NOT EXISTS `mv_url_cache` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `url` varchar(255) NOT NULL,
+  `post_vars` text,
+  `req_time` int(11) NOT NULL,
+  `result` text,
+  UNIQUE KEY `id` (`id`),
+  KEY `url` (`url`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='simple url cache (as to not tax external services too much) ' AUTO_INCREMENT=10 ;
+
