@@ -131,3 +131,4 @@ $messages['stq'] = array(
 	'findspam-ok'          => 'OK',
 	'findspam-notextfound' => 'Neen Biedraage fuunen',
 );
+

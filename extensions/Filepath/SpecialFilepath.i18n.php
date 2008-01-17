@@ -16,6 +16,15 @@ $messages['en'] = array(
 Enter the file name without the "{{ns:image}}:" prefix.',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'filepath'        => 'Iyeltakkelda',
+	'filepath_page'   => 'Iyeltak :',
+	'filepath_submit' => 'Kelda',
+);
+
 $messages['af'] = array(
 	'filepath'        => 'Lêerpad',
 	'filepath_page'   => 'Lêer:',

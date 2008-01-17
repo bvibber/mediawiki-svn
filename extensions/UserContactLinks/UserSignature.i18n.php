@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'usercontactlink-baduser' => 'incorrect username',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'usercontactlink-baduser' => 'Favesikyoltaj',
+);
+
 $messages['ar'] = array(
 	'usercontactlink-baduser' => 'اسم مستخدم غير صحيح',
 );
@@ -27,7 +34,7 @@ $messages['de'] = array(
 );
 
 #Translation in french language by Bertrand GRONDIN
-$messages ['fr'] = array(
+$messages['fr'] = array(
 	'usercontactlink-baduser' => 'nom d’utilisateur incorrect',
 );
 
@@ -60,3 +67,4 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'usercontactlink-baduser' => 'nom d’utilizaire incorrècte',
 );
+

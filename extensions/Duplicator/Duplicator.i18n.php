@@ -668,6 +668,6 @@ $messages['zh-hant'] = array(
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];
 $messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-tw'] = $messages['zh-hans'];
 $messages['zh-sg'] = $messages['zh-hant'];
+$messages['zh-tw'] = $messages['zh-hans'];
 $messages['zh-yue'] = $messages['yue'];

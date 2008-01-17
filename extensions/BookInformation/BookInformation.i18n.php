@@ -23,6 +23,19 @@ $messages['en'] = array(
 	'bookinfo-provider' => 'Data provider: $1',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'bookinfo-header'            => 'Nevagiva',
+	'bookinfo-result-title'      => 'Vergumvelt :',
+	'bookinfo-result-author'     => 'Sutesik :',
+	'bookinfo-result-publisher'  => 'Sanegasik :',
+	'bookinfo-result-year'       => 'Ilana :',
+	'bookinfo-error-invalidisbn' => 'Meenaf bazen ISBN otuk',
+	'bookinfo-provider'          => 'Origdafusik : $1',
+);
+
 /* Arabic (Meno25) */
 $messages['ar'] = array(
 	'bookinfo-header' => 'معلومات كتاب',

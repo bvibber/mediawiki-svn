@@ -16,6 +16,14 @@ $messages['en'] = array(
 	'block_title_error' => 'Sorry, the title of this page is not allowed to be saved.',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'block_title_error_page_title' => 'Elekan vergumvelt',
+	'block_title_error'            => 'Argenon, vergumvelt ke batu bu me zo rogiwar.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

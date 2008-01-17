@@ -392,19 +392,19 @@ $messages['su'] = array(
 	'desysopnot_sysop'     => 'Pamaké ieu lain administrator',
 );
 
-/** Volapük (Volapük)
- * @author Malafaya
- */
-$messages['vo'] = array(
-	'desysopname' => 'Nem gebana:',
-);
-
 $messages['tet'] = array(
 	'desysoptitle'         => 'Hasai kuana administradór ba uza-na\'in ida',
 	'desysoptext'          => 'Burokrata bele uza pájina ne\'e ba hasai kuana administradór.',
 	'desysopname'          => 'Naran uza-na\'in:',
 	'desysopok'            => '<b>"$1" agora lá\'os administradór</b>',
 	'desysop'              => 'Hasai kuana administradór ba uza-na\'in ida',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'desysopname' => 'Nem gebana:',
 );
 
 $messages['wa'] = array(

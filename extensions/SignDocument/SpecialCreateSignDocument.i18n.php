@@ -409,3 +409,4 @@ $messages['vo'] = array(
 	'createsigndoc-pagename'      => 'Pad:',
 	'createsigndoc-error-generic' => 'Pöl: $1',
 );
+

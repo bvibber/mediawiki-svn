@@ -528,7 +528,6 @@ $messages['zh-hant'] = array(
 	'linksearch-error' => '萬用字元僅可在主機名稱的開頭使用。',
 );
 
-# Fallbacks:
 $messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];

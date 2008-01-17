@@ -31,7 +31,7 @@ $messages['de'] = array(
 
 );
 
-$messages ['fr'] = array(
+$messages['fr'] = array(
 	'tidy' => 'Classer',
 	'untidy' => 'Déclasser',
 );
@@ -72,3 +72,4 @@ $messages['stq'] = array(
 	'tidy'   => 'Oardenje',
 	'untidy' => 'Nit oardenje',
 );
+

@@ -92,7 +92,7 @@ $messages['el'] = array(
 	'spamregex-summary-log' => '(περίληψη)',
 );
 
-$messages ['fr'] = array(
+$messages['fr'] = array(
 	'spamregex' => 'Expressions régulières de Spams',
 	'spamregex_summary' => 'Le texte en question a été détecté dans le commentaire de la page.',
 	'spamregex-intro' => 'Utilisez ce formulaire pour bloquer effectivement les expressions pouvant être sauvegardées dans une page texte. Si le texte contient les expressions définies, les changements ne pourront être sauvegardés et un motif explicatif sera affiché à l’utilisateur qui a voulu sauvegarder la page. Il est important de prendre en considération que les expressions ne devront être ni trop longues ni trop courantes.',

@@ -17,6 +17,15 @@ $messages['en'] = array(
 	'userimages-noimages' => '$1 has no image uploads.',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'userimages-caption'  => 'Ewaveem kalvajayan gan $1',
+	'userimages-noname'   => 'Favesikyoltaj ok mevuesteks.',
+	'userimages-noimages' => 'Meka kalvajayana ewava gan $1.',
+);
+
 /* Arabic */
 $messages['ar'] = array(
 	'userimages-caption' => 'الصور المرفوعة بواسطة $1',

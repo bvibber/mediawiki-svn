@@ -164,7 +164,6 @@ $messages['zh-hant'] = array(
 	'donationform-submit' => '經PayPal捐款',
 );
 
-# Fallbacks:
 $messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];

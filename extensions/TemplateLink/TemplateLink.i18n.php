@@ -99,3 +99,4 @@ $messages['stq'] = array(
 		'templatelink_empty'    => 'Aan Parameter mout anroat wäide.',
 		'templatelink_newtitle' => '$1 (ärsät)',
 );
+

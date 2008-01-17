@@ -277,6 +277,21 @@ $messages['it'] = array(
 	'imagemap_description'          => 'Informazioni sull\'immagine',
 );
 
+/* Kazakh Arabic (AlefZet) */
+$messages['kk-arab'] = array(
+	'imagemap_no_image'             => '&lt;imagemap&gt;: بٸرٸنشٸ جولدا سۋرەتتٸ كٶرسەتۋ قاجەت',
+	'imagemap_invalid_image'        => '&lt;imagemap&gt;: سۋرەت جارامسىز نەمەسە جوق',
+	'imagemap_no_link'              => '&lt;imagemap&gt;: $1 جول اياعىندا جارامدى سٸلتەمە تابىلمادى',
+	'imagemap_invalid_title'        => '&lt;imagemap&gt;: $1 جول اياعىنداعى سٸلتەمەدە جارامسىز اتاۋ',
+	'imagemap_missing_coord'        => '&lt;imagemap&gt;: $1 جولداعى كەسكٸن ٷشٸن كوورديناتتار جەتٸكسٸز',
+	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: $1 جولداعى كەسكٸن جارامسىز, ٵربٸر جول مىنانىڭ بٸرەۋٸنەن باستالۋ قاجەت: ',
+									   'default, rect, circle or poly',
+	'imagemap_no_areas'             => '&lt;imagemap&gt;: ەڭ كەمٸندە بٸر اۋماق ماماندانىمى بەرٸلۋ قاجەت',
+	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: $1 جولىندا جارامسىز كوورديناتا, سان بولۋى قاجەت',
+	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: جارامسىز سيپاتتاما ماماندانىمى, مىنانىڭ بٸرەۋٸ بولۋى قاجەت: $1',
+	'imagemap_description'          => 'بۇل سۋرەت تۋرالى',
+);
+
 /* Kazakh Cyrillic (AlefZet) */
 $messages['kk-cyrl'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: бірінші жолда суретті көрсету қажет',
@@ -307,21 +322,6 @@ $messages['kk-latn'] = array(
 	'imagemap_description'          => 'Bul swret twralı',
 );
 
-/* Kazakh Arabic (AlefZet) */
-$messages['kk-arab'] = array(
-	'imagemap_no_image'             => '&lt;imagemap&gt;: بٸرٸنشٸ جولدا سۋرەتتٸ كٶرسەتۋ قاجەت',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;: سۋرەت جارامسىز نەمەسە جوق',
-	'imagemap_no_link'              => '&lt;imagemap&gt;: $1 جول اياعىندا جارامدى سٸلتەمە تابىلمادى',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: $1 جول اياعىنداعى سٸلتەمەدە جارامسىز اتاۋ',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: $1 جولداعى كەسكٸن ٷشٸن كوورديناتتار جەتٸكسٸز',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: $1 جولداعى كەسكٸن جارامسىز, ٵربٸر جول مىنانىڭ بٸرەۋٸنەن باستالۋ قاجەت: ',
-									   'default, rect, circle or poly',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;: ەڭ كەمٸندە بٸر اۋماق ماماندانىمى بەرٸلۋ قاجەت',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: $1 جولىندا جارامسىز كوورديناتا, سان بولۋى قاجەت',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: جارامسىز سيپاتتاما ماماندانىمى, مىنانىڭ بٸرەۋٸ بولۋى قاجەت: $1',
-	'imagemap_description'          => 'بۇل سۋرەت تۋرالى',
-);
-
 $messages['la'] = array(
 	'imagemap_description'          => 'De hac imagine',
 );
@@ -331,6 +331,16 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'imagemap_description' => 'Iwwert dëst Bild',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ * @author Garas
+ */
+$messages['lt'] = array(
+	'imagemap_no_image'      => '&lt;imagemap&gt;: privalote nurodyti paveikslėlį pirmoje linijoje',
+	'imagemap_invalid_image' => '&lt;imagemap&gt;: blogas arba neegzistuojantis paveikslėlis',
+	'imagemap_description'   => 'Apie šį paveikslėlį',
 );
 
 $messages['nds'] = array(
@@ -344,16 +354,6 @@ $messages['nds'] = array(
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: Koordinaat in Reeg $1 nich bi de Reeg, mutt en Tall wesen',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: Beschrieven nich bi de Reeg, mutt een vun disse wesen: <tt>$1</tt>',
 	'imagemap_description'          => 'Över dit Bild',
-);
-
-/** Lithuanian (Lietuvių)
- * @author Matasg
- * @author Garas
- */
-$messages['lt'] = array(
-	'imagemap_no_image'      => '&lt;imagemap&gt;: privalote nurodyti paveikslėlį pirmoje linijoje',
-	'imagemap_invalid_image' => '&lt;imagemap&gt;: blogas arba neegzistuojantis paveikslėlis',
-	'imagemap_description'   => 'Apie šį paveikslėlį',
 );
 
 /* nld / Dutch (Siebrand Mazeland) */
@@ -563,15 +563,14 @@ $messages['zh-hant'] = array(
 	'imagemap_desc_types'           => '右上, 右下, 左下, 左上, 無',
 );
 
-# Fallbacks:
 $messages['de-formal'] = $messages['de'];
+$messages['kk'] = $messages['kk-cyrl'];
+$messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
 $messages['kk-tr'] = $messages['kk-latn'];
-$messages['kk-cn'] = $messages['kk-arab'];
-$messages['kk'] = $messages['kk-cyrl'];
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];
 $messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-tw'] = $messages['zh-hans'];
 $messages['zh-sg'] = $messages['zh-hant'];
+$messages['zh-tw'] = $messages['zh-hans'];
 $messages['zh-yue'] = $messages['yue'];

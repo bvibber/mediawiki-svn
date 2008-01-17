@@ -21,11 +21,8 @@
  * @addtogroup Extensions
  */
 
-if (!defined('MEDIAWIKI')) {
-	exit( 1 );
-}
+$messages = array();
 
-$messages =array();
 $messages['en'] = array(
 	'form' => 'Form',
 	'formnoname' => 'No Form Name',
@@ -46,7 +43,7 @@ $messages['en'] = array(
 	'formsavesummary' => 'New page using [[Special:Form/$1]]',
 	'formsaveerror' => 'Error Saving Form',
 	'formsaveerrortext' => 'There was an unknown error saving page \'$1\'.',
-	);
+);
 
 $messages['ar'] = array(
 	'form' => 'استمارة',
@@ -67,12 +64,12 @@ $messages['ar'] = array(
 	'formsavesummary' => 'صفحة جديدة باستخدام [[Special:Form/$1]]',
 	'formsaveerror' => 'خطأ في حفظ الاستمارة',
 	'formsaveerrortext' => 'حدث خطأ غير معروف أثناء حفظ الاستمارة \'$1\'.',
-	);
+);
 
 $messages['bcl'] = array(
 	'formtitlepattern' => 'Magdugang nin Bâgong $1',
 	'formsave' => 'Itagama',
-	);
+);
 
 /** Bulgarian (Български)
  * @author DCLXVI
@@ -85,7 +82,7 @@ $messages['bg'] = array(
 	'formrequiredfieldpluralerror' => 'Този формуляр изисква полетата $1 да бъдат попълнени.',
 	'formrequiredfielderror'       => 'Този формуляр изисква полето $1 да бъде попълнено.',
 	'formsaveerror'                => 'Грешка при съхранение на формуляра',
-	);
+);
 
 $messages['de'] = array(
 	'form'                         => 'Formular',
@@ -106,7 +103,7 @@ $messages['de'] = array(
 	'formsavesummary'              => 'Neue Seite, die auf [[{{ns:Special}}:Form/$1]] basiert',
 	'formsaveerror'                => 'Fehler beim Speichern des Formulares',
 	'formsaveerrortext'            => 'Es gab einen unbekannten Fehler beim Speichern der Seite „$1“.',
-	);
+);
 
 $messages['fr'] = array(
 	'form' => 'Formulaire',
@@ -127,7 +124,7 @@ $messages['fr'] = array(
 	'formsavesummary' => 'Créer un nouvel article à l\'aide de [[Special:Formulaire/$1]]',
 	'formsaveerror' => 'Une erreur s\'est produite pendant la sauvegarde.',
 	'formsaveerrortext' => 'Une erreur inconnue s\'est produite pendant la sauvegarde de \'\'$1\'\'.',
-	);
+);
 
 $messages['gl'] = array(
 	'form' => 'Formulario',
@@ -147,7 +144,7 @@ $messages['gl'] = array(
 	'formsavesummary' => 'Nova páxina usando [[Special:Form/$1]]',
 	'formsaveerror' => 'Erro ao gardar o formulario',
 	'formsaveerrortext' => 'Houbo un erro descoñecido ao gardar a páxina \'$1\'.',
-	);
+);
 
 $messages['hsb'] = array(
 	'form' => 'Formular',
@@ -168,12 +165,12 @@ $messages['hsb'] = array(
 	'formsavesummary' => 'Nowy nastawk, kotryž na [{{ns:Special}}:Form/$1]] bazěruje.',
 	'formsaveerror' => 'Zmylk při składowanju formulara',
 	'formsaveerrortext' => 'Bě njeznaty zmylk při składowanju nastawka "$1".',
-	);
+);
 
 $messages['la'] = array(
 	'formsave' => 'Servare',
 	'formarticleexiststext' => 'Pagina [[$1]] iam existit.',
-	);
+);
 
 $messages['nl'] = array(
 	'form' => 'Formulier',
@@ -194,7 +191,7 @@ $messages['nl'] = array(
 	'formsavesummary' => 'Nieuwe pagina via [[Special:Form/$1]]',
 	'formsaveerror' => 'Fout bij opslaan formulier',
 	'formsaveerrortext' => 'Er is een onbekende fout opgetreden bij het opslaan van pagina \'$1\'.',
-	);
+);
 
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
@@ -218,7 +215,7 @@ $messages['no'] = array(
 	'formsavesummary'              => 'Ny side vha. [[Special:Form/$1]]',
 	'formsaveerror'                => 'Feil under skjemalagring',
 	'formsaveerrortext'            => 'Det var en ukjent feil under lagring av siden ‘$1’.',
-	);
+);
 
 $messages['oc'] = array(
 	'form' => 'Formulari',
@@ -239,7 +236,7 @@ $messages['oc'] = array(
 	'formsavesummary' => 'Crear un article novèl amb l\'ajuda de [[Special:Formulari/$1]]',
 	'formsaveerror' => 'Una error s\'es producha pendent la salvagàrdia.',
 	'formsaveerrortext' => 'Una error desconeguda s\'es producha pendent la salvagàrdia de \'\'$1\'\'.',
-	);
+);
 
 $messages['pl'] = array(
 	'form' => 'Formularz',
@@ -258,7 +255,7 @@ $messages['pl'] = array(
 	'formsavesummary' => 'Nowa strona za pomocą [[Special:Form/$1]]',
 	'formsaveerror' => 'Błąd przy zapisywaniu formularza',
 	'formsaveerrortext' => 'Wystąpił nieznany błąd przy zapisywaniu strony \'$1\'.',
-	);
+);
 
 $messages['pms'] = array(
 	'form' => 'Domanda',
@@ -279,7 +276,7 @@ $messages['pms'] = array(
 	'formsavesummary' => 'Neuva pàgina ch\'a dòvra [[Special:Form/$1]]',
 	'formsaveerror' => 'Eror ën salvand ël mòdulo ëd domanda',
 	'formsaveerrortext' => 'A-i é sta-ie n\'eror amprevist ën salvand la pàgina \'$1\'.',
-	);
+);
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
@@ -303,4 +300,5 @@ $messages['stq'] = array(
 	'formsavesummary'              => 'Näie Siede, ju der ap [[{{ns:Special}}:Form/$1]] basiert',
 	'formsaveerror'                => 'Failer bie dät Spiekerjen fon dät Formular',
 	'formsaveerrortext'            => 'Dät roate n uunbekoanden Failer bie dät Spiekerjen fon ju Siede „$1“.',
-	);
+);
+

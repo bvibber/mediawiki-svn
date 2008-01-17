@@ -28,6 +28,12 @@ $messages['ast'] = array(
 	'ajax-se-idling'  => '(hai $1s)',
 );
 
+$messages['bcl'] = array(
+	'ajax-se-title' => 'Presenteng pighihira:',
+	'ajax-se-pending' => 'pendiente an pagrepresko ... (pindoton an kahon o magpoon paghirá)',
+	'ajax-se-idling' => '($1s na an nakaagi)',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -69,12 +75,6 @@ $messages['el'] = array(
 $messages['ext'] = array(
 	'ajax-se-title' => 'Uguañoti eitandu:',
 	'ajax-se-idling' => '(hazi $1s)',
-);
-
-$messages['bcl'] = array(
-	'ajax-se-title' => 'Presenteng pighihira:',
-	'ajax-se-pending' => 'pendiente an pagrepresko ... (pindoton an kahon o magpoon paghirá)',
-	'ajax-se-idling' => '($1s na an nakaagi)',
 );
 
 $messages['fi'] = array(
@@ -149,6 +149,12 @@ $messages['ja'] = array(
 	'ajax-se-idling' => '（$1秒前）',
 );
 
+$messages['kk-arab'] = array(
+	'ajax-se-title' => 'اعىمداعى ٶڭدەلۋدە:',
+	'ajax-se-pending' => 'جاڭارتۋ كٷتٸلۋدە... (بۇل قابىشاقتى نۇقىڭىز, نەمەسە ٶڭدەۋدٸ باستاڭىز)',
+	'ajax-se-idling' => '($1 s بۇرىن)',
+);
+
 $messages['kk-cyrl'] = array(
 	'ajax-se-title' => 'Ағымдағы өңделуде:',
 	'ajax-se-pending' => 'жаңарту күтілуде... (бұл қабышақты нұқыңыз, немесе өңдеуді бастаңыз)',
@@ -159,12 +165,6 @@ $messages['kk-latn'] = array(
 	'ajax-se-title' => 'Ağımdağı öñdelwde:',
 	'ajax-se-pending' => 'jañartw kütilwde... (bul qabışaqtı nuqıñız, nemese öñdewdi bastañız)',
 	'ajax-se-idling' => '($1 s burın)',
-);
-
-$messages['kk-arab'] = array(
-	'ajax-se-title' => 'اعىمداعى ٶڭدەلۋدە:',
-	'ajax-se-pending' => 'جاڭارتۋ كٷتٸلۋدە... (بۇل قابىشاقتى نۇقىڭىز, نەمەسە ٶڭدەۋدٸ باستاڭىز)',
-	'ajax-se-idling' => '($1 s بۇرىن)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

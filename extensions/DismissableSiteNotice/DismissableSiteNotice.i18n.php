@@ -152,16 +152,16 @@ $messages['ja'] = array(
 	'sitenotice_close' => '非表示',
 );
 
+$messages['kk-arab'] = array(
+	'sitenotice_close' => 'تاسالاتۋ',
+);
+
 $messages['kk-cyrl'] = array(
 	'sitenotice_close' => 'тасалату',
 );
 
 $messages['kk-latn'] = array(
 	'sitenotice_close' => 'tasalatw',
-);
-
-$messages['kk-arab'] = array(
-	'sitenotice_close' => 'تاسالاتۋ',
 );
 
 $messages['lb'] = array(
@@ -211,7 +211,6 @@ $messages['pt'] = array(
 	'sitenotice_close' => 'ignorar',
 );
 
-$messages['pt-br'] = $messages['pt'];
 
 $messages['ro'] = array(
 	'sitenotice_close' => 'ascunde',
@@ -231,19 +230,19 @@ $messages['sdc'] = array(
 	'sitenotice_close' => 'cua',
 );
 
-/** Seeltersk (Seeltersk)
- * @author Pyt
- */
-$messages['stq'] = array(
-	'sitenotice_close' => 'Sluute',
-);
-
 $messages['sk'] = array(
 	'sitenotice_close' => 'nezobrazovať',
 );
 
 $messages['sq'] = array(
 	'sitenotice_close' => 'fshihe',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'sitenotice_close' => 'Sluute',
 );
 
 $messages['su'] = array(
@@ -278,12 +277,12 @@ $messages['zh-hant'] = array(
 	'sitenotice_close' => '關閉',
 );
 
-# Fallbacks:
 $messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
 $messages['kk-tr'] = $messages['kk-latn'];
+$messages['pt-br'] = $messages['pt'];
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];
 $messages['zh-hk'] = $messages['zh-hant'];

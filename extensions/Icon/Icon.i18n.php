@@ -13,6 +13,14 @@ $messages['en'] = array(
 	'icon-badwidth' => 'Bad Width',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'icon-badimage' => 'Ewavaja',
+	'icon-badwidth' => 'Lumaj',
+);
+
 $messages['ar'] = array(
 	'icon-badimage' => 'صورة سيئة',
 	'icon-badwidth' => 'عرض سيىء',
@@ -101,3 +109,4 @@ $messages['stq'] = array(
 	'icon-badimage' => 'Defekte Bielde',
 	'icon-badwidth' => 'Falske Bratte',
 );
+

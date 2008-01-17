@@ -192,3 +192,4 @@ $messages['vo'] = array(
 	'importfreeimages_next'           => 'Sököl $1',
 	'importfreeimages_filefromflickr' => "$1 fa geban: <b>[$2]</b> de 'flickr'. 'URL' rigik",
 );
+

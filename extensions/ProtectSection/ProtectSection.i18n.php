@@ -13,6 +13,15 @@ $messages['en'] = array(
 	'protectsection_forbidden'  => 'Forbidden',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'protectsection_add_remove' => 'Rin yawal da va nendan gabot loplekul oke dimplekul',
+	'protectsection_modify'     => 'Rin yawal da va nendan krent betal',
+	'protectsection_forbidden'  => 'Poun',
+);
+
 $messages['ar'] = array(
 	'protectsection_add_remove' => 'أنت حاولت إضافة أو إزالة قسم محمي',
 	'protectsection_modify'     => 'أنت حاولت تعديل نص محمي',
@@ -105,3 +114,4 @@ $messages['stq'] = array(
 	'protectsection_modify'     => 'Du hääst fersoacht, n schutseden Text tou beoarbaidjen.',
 	'protectsection_forbidden'  => 'Ferbeeden',
 );
+

@@ -22,6 +22,22 @@ $messages['en'] = array(
 	'contributors-nosuchpage' => 'The page $1 doesn\'t exist.',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'contributors'             => 'Webesikeem',
+	'contributors-toolbox'     => 'webepesikeem',
+	'contributors-legend'      => 'Buwebepesikeem',
+	'contributors-target'      => 'Vergumvelt :',
+	'contributors-submit'      => 'Nedira',
+	'contributors-subtitle'    => 'Webepesikeem va $1',
+	'contributors-others-long' => 'Tid $1 ar webesik va batu bu.',
+	'contributors-others'      => 'is $1 ar',
+	'contributors-badtitle'    => 'Vergumveltaj.',
+	'contributors-nosuchpage'  => '$1 bu me tir.',
+);
+
 /** Arabic (العربية)
  * @author Mido
  * @author Meno25

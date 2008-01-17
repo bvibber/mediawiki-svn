@@ -23,6 +23,19 @@ $messages['en'] = array(
 	'countedits-nocontribs' => 'There have been no contributions to this wiki.',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'countedits'              => 'Betarota',
+	'countedits-username'     => 'Favesikyolt :',
+	'countedits-ok'           => 'Enkalí !',
+	'countedits-nosuchuser'   => 'Mek favesik dem $1 yolt.',
+	'countedits-resultheader' => 'Trasikseem va $1',
+	'countedits-resulttext'   => '$1 $2 -on al betar',
+	'countedits-mostactive'   => 'Tel lowebesikeem',
+);
+
 /* Arabic (Meno25) */
 $messages['ar'] = array(
 	'countedits' => 'عد التعديلات',
@@ -212,6 +225,19 @@ $messages['it'] = array(
 	'countedits-nocontribs' => 'Il sito non ha subito alcuna modifica.',
 );
 
+/* Kazakh Arabic (AlefZet) */
+$messages['kk-arab'] = array(
+	'countedits' => 'تٷزەتۋ ساناۋ',
+	'countedits-warning' => "'''نازار سالىڭىز:''' كٸتاپتٸ مۇقاباسىنان جورامالداماڭىز. ٷلەسكەردٸ تٷزەتۋ سانىنان جورامالداماڭىز.",
+	'countedits-username' => 'قاتىسۋشا اتى:',
+	'countedits-ok' => 'جارايدى',
+	'countedits-nosuchuser' => 'مىناداي اتاۋى بار قاتىسۋشى جوق: $1.',
+	'countedits-resultheader' => '$1 دەگەن ٷشٸن تابىلعان ناتيجەلەرٸ',
+	'countedits-resulttext' => '$1 دەگەن $2 تٷزەتۋ ٸستەگەن',
+	'countedits-mostactive' => 'ەڭ بەلسەندٸ ٷلەسكەرلەر',
+	'countedits-nocontribs' => 'بۇل ۋيكيدە ەش ٷلەس بولعان جوق.',
+);
+
 /* Kazakh Cyrillic (AlefZet) */
 $messages['kk-cyrl'] = array(
 	'countedits' => 'Түзету санау',
@@ -236,19 +262,6 @@ $messages['kk-latn'] = array(
 	'countedits-resulttext' => '$1 degen $2 tüzetw istegen',
 	'countedits-mostactive' => 'Eñ belsendi üleskerler',
 	'countedits-nocontribs' => 'Bul wïkïde eş üles bolğan joq.',
-);
-
-/* Kazakh Arabic (AlefZet) */
-$messages['kk-arab'] = array(
-	'countedits' => 'تٷزەتۋ ساناۋ',
-	'countedits-warning' => "'''نازار سالىڭىز:''' كٸتاپتٸ مۇقاباسىنان جورامالداماڭىز. ٷلەسكەردٸ تٷزەتۋ سانىنان جورامالداماڭىز.",
-	'countedits-username' => 'قاتىسۋشا اتى:',
-	'countedits-ok' => 'جارايدى',
-	'countedits-nosuchuser' => 'مىناداي اتاۋى بار قاتىسۋشى جوق: $1.',
-	'countedits-resultheader' => '$1 دەگەن ٷشٸن تابىلعان ناتيجەلەرٸ',
-	'countedits-resulttext' => '$1 دەگەن $2 تٷزەتۋ ٸستەگەن',
-	'countedits-mostactive' => 'ەڭ بەلسەندٸ ٷلەسكەرلەر',
-	'countedits-nocontribs' => 'بۇل ۋيكيدە ەش ٷلەس بولعان جوق.',
 );
 
 $messages['ku-latn'] = array(
@@ -525,9 +538,9 @@ $messages['zh-hant'] = array(
 );
 
 $messages['kk'] = $messages['kk-cyrl'];
+$messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
 $messages['kk-tr'] = $messages['kk-latn'];
-$messages['kk-cn'] = $messages['kk-arab'];
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];
 $messages['zh-hk'] = $messages['zh-hant'];

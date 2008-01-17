@@ -392,7 +392,6 @@ $messages['zh-hant'] = array(
 	'crossnamespacelinkstext' => '$1: $2 個連結到 $3'
 );
 
-# Fallbacks:
 $messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];

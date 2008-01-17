@@ -22,6 +22,24 @@ $messages['en'] = array(
 	'usagestatisticsbadstartend' => '<b>Bad <i>Start</i> and/or <i>End</i> date!</b>',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'specialuserstats'           => 'Faverenkopaceem',
+	'usagestatistics'            => 'Faverenkopaceem',
+	'usagestatisticsfor'         => '<h2>Faverenkopaceem ke [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'    => 'Favesikeem',
+	'usagestatisticsinterval'    => 'Waluk',
+	'usagestatisticstype'        => 'Ord',
+	'usagestatisticsstart'       => 'Tozevla',
+	'usagestatisticsend'         => 'Tenevla',
+	'usagestatisticssubmit'      => 'Nasbara va faverenkopaca',
+	'usagestatisticsnostart'     => '* <font color=red>Va tozevla vay bazel !</font>',
+	'usagestatisticsnoend'       => '* <font color=red>Va tenevla vay bazel !</font>',
+	'usagestatisticsbadstartend' => '<b><i>Tozevlaja</i> ik <i>Tenevlaja</i> !</b>',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -178,3 +196,4 @@ $messages['vo'] = array(
 	'usagestatisticsallusers' => 'Gebans Valik',
 	'usagestatisticssubmit'   => 'Jafön Statitis',
 );
+

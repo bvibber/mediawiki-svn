@@ -15,6 +15,17 @@ $messages['en'] = array(
 	'specialwhoiswatchingaddbtn'  => 'Add selected Users',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'whoiswatching'                => 'Toktan va wikibu suzdar ?',
+	'specialwhoiswatchingthepage'  => 'Toktan va %s suzdar ?',
+	'specialwhoiswatchingusage'    => 'Batu aptafu bu me rontion zo rofaver. Va [[MediaWiki:Number_of_watching_users_pageview]] bu vay favel aze va koaxo va batu aptafu bu tentul.',
+	'specialwhoiswatchingaddusers' => 'Loplekura va favesik ta busuzdara',
+	'specialwhoiswatchingaddbtn'   => 'Loplekura va reban favesik',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

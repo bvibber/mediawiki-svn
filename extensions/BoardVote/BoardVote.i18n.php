@@ -87,6 +87,26 @@ You will be redirected to this external server in 20 seconds. [$1 Click here] to
 A security warning about an unsigned certificate may be displayed.',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'boardvote_novotes'    => 'Metan ixam al brudar.',
+	'boardvote_time'       => 'Ugal',
+	'boardvote_user'       => 'Favesik',
+	'boardvote_edits'      => 'Betaks yo',
+	'boardvote_days'       => 'Viel se',
+	'boardvote_ip'         => 'IP mane',
+	'boardvote_dumplink'   => 'Batliz vulegal',
+	'boardvote_submit'     => 'Tuená !',
+	'boardvote_strike'     => 'Yastera',
+	'boardvote_unstrike'   => 'Volyastera',
+	'boardvote_needadmin'  => 'Anton liburaristusik baton roskur.',
+	'boardvote_notstarted' => 'Brudaratoza men tir',
+	'boardvote_edits_many' => 'konak',
+	'boardvote_welcome'    => "'''$1''' til drumbaf !",
+);
+
 $messages['af'] = array(
 	'boardvote'               => 'Wikimedia-Trusteeraadverkiesing',
 	'boardvote_time'          => 'Tyd',

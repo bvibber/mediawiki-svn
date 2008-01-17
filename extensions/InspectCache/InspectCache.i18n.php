@@ -47,7 +47,7 @@ $messages['de'] = array(
 	'inspectcache-deleted' => 'Gelöschter Cache',
 );
 
-$messages ['fr'] = array(
+$messages['fr'] = array(
 	'inspectcache' => 'Inspection du Cache',
 	'inspectcache-ok' => 'Lancer',
 	'inspectcache-general' => 'Cache général',
@@ -155,3 +155,4 @@ $messages['stq'] = array(
 	'inspectcache-message' => 'Ättergjuchte-Cache',
 	'inspectcache-deleted' => 'Läskeden Cache',
 );
+

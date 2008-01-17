@@ -17,6 +17,19 @@ $messages['en'] = array(
 	'watchers_less_than_x' => "Less than $1 people watch this page.",
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'watchers'               => 'Suzdasikeem',
+	'watchers_link_title'    => 'Toktan va batu bu suzdar ?',
+	'watchers_error_article' => '<b>Rokla :</b> Batu bu me tir.',
+	'watchers_header'        => 'Tan va "$1" suzdas',
+	'watchers_noone_watches' => 'Metan va batu bu suzdar',
+	'watchers_x_or_more'     => '$1 ok lotan va batu bu suzdad.',
+	'watchers_less_than_x'   => 'Le $1 korik tid suzdas va batu bu.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -185,3 +198,4 @@ $messages['sk'] = array(
 	'watchers_x_or_more' => "$1 alebo viac ľudí sleduje túto stránku.",
 	'watchers_less_than_x' => "Menej ako $1 ľudí sleduje túto stránku.",
 );
+

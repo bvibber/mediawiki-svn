@@ -16,6 +16,15 @@ $messages['en'] = array(
 	'filelist-show-gallery' => 'Show gallery',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'filelist'              => 'Iyeltakeem',
+	'filelist-show-list'    => 'Nedira va iyeltakeem',
+	'filelist-show-gallery' => 'Nedira va ginsa',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
