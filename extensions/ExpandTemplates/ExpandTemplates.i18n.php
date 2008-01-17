@@ -645,14 +645,18 @@ $messages['su'] = array(
 	'expand_templates_ok'              => 'Heug',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
 $messages['sv'] = array(
 	'expandtemplates'                  => 'Expandera mallar',
 	'expand_templates_intro'           => 'Den här specialsidan tar en text och expanderar rekursivt alla mallar som används. Även parserfunktioner (som <nowiki>{{</nowiki>#if:...}}), variabler som <nowiki>{{</nowiki>CURRENTDAY}} och annan kod med dubbla klammerparenteser expanderas.',
 	'expand_templates_title'           => 'Sidans titel, används för t.ex. {{PAGENAME}}:',
 	'expand_templates_input'           => 'Text som ska expanderas:',
 	'expand_templates_output'          => 'Expanderad kod',
-	'expand_templates_ok'              => 'OK',
+	'expand_templates_xml_output'      => 'XML-kod',
 	'expand_templates_remove_comments' => 'Ta bort kommentarer',
+	'expand_templates_generate_xml'    => 'Visa parseträd som XML',
 	'expand_templates_preview'         => 'Förhandsvisning',
 );
 

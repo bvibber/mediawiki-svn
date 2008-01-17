@@ -22,24 +22,6 @@ $messages['en'] = array(
 	'usagestatisticsbadstartend' => '<b>Bad <i>Start</i> and/or <i>End</i> date!</b>',
 );
 
-/** Kotava (Kotava)
- * @author Wikimistusik
- */
-$messages['avk'] = array(
-	'specialuserstats'           => 'Faverenkopaceem',
-	'usagestatistics'            => 'Faverenkopaceem',
-	'usagestatisticsfor'         => '<h2>Faverenkopaceem ke [[:user:$1|$1]]</h2>',
-	'usagestatisticsallusers'    => 'Favesikeem',
-	'usagestatisticsinterval'    => 'Waluk',
-	'usagestatisticstype'        => 'Ord',
-	'usagestatisticsstart'       => 'Tozevla',
-	'usagestatisticsend'         => 'Tenevla',
-	'usagestatisticssubmit'      => 'Nasbara va faverenkopaca',
-	'usagestatisticsnostart'     => '* <font color=red>Va tozevla vay bazel !</font>',
-	'usagestatisticsnoend'       => '* <font color=red>Va tenevla vay bazel !</font>',
-	'usagestatisticsbadstartend' => '<b><i>Tozevlaja</i> ik <i>Tenevlaja</i> !</b>',
-);
-
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -56,6 +38,24 @@ $messages['ar'] = array(
 	'usagestatisticsnostart'     => '* <font color=red>من فضلك حدد تاريخا للبدء</font>',
 	'usagestatisticsnoend'       => '* <font color=red>من فضلك حدد تاريخا للانتهاء</font>',
 	'usagestatisticsbadstartend' => '<b>تاريخ <i>بدء</i> و/أو <i>انتهاء</i> سيء!</b>',
+);
+
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'specialuserstats'           => 'Faverenkopaceem',
+	'usagestatistics'            => 'Faverenkopaceem',
+	'usagestatisticsfor'         => '<h2>Faverenkopaceem ke [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'    => 'Favesikeem',
+	'usagestatisticsinterval'    => 'Waluk',
+	'usagestatisticstype'        => 'Ord',
+	'usagestatisticsstart'       => 'Tozevla',
+	'usagestatisticsend'         => 'Tenevla',
+	'usagestatisticssubmit'      => 'Nasbara va faverenkopaca',
+	'usagestatisticsnostart'     => '* <font color=red>Va tozevla vay bazel !</font>',
+	'usagestatisticsnoend'       => '* <font color=red>Va tenevla vay bazel !</font>',
+	'usagestatisticsbadstartend' => '<b><i>Tozevlaja</i> ik <i>Tenevlaja</i> !</b>',
 );
 
 /** Bulgarian (Български)
@@ -187,6 +187,23 @@ $messages['nn'] = array(
 	'usagestatisticsnostart'     => '* <font color=red>Ver venleg og oppgje startdato</font>',
 	'usagestatisticsnoend'       => '* <font color=red>Ver venleg og oppgje sluttdato</font>',
 	'usagestatisticsbadstartend' => '<b>Ugyldig <i>start</i>– og/eller <i>slutt</i>dato!</b>',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'specialuserstats'           => "Estatisticas d'utilizacion",
+	'usagestatistics'            => 'Estatisticas Utilizacion',
+	'usagestatisticsfor'         => '<h2>Estatisticas Utilizacion per [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'    => 'Totes los utilizaires',
+	'usagestatisticstype'        => 'Tipe',
+	'usagestatisticsstart'       => 'Data de començament',
+	'usagestatisticsend'         => 'Data de fin',
+	'usagestatisticssubmit'      => 'Generir las estatisticas',
+	'usagestatisticsnostart'     => '* <font color=red>Picar una data de començament</font>',
+	'usagestatisticsnoend'       => '* <font color=red>Picar una data de fin</font>',
+	'usagestatisticsbadstartend' => '<b>Format de data de <i>començament</i> o de <i>fin</i> marrit !</b>',
 );
 
 /** Volapük (Volapük)

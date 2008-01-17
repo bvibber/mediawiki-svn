@@ -68,8 +68,10 @@ $messages['hsb'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'findspam-ip' => 'IP-Adress:',
-	'findspam-ok' => 'OK',
+	'findspam'             => "''Spam'' sichen",
+	'findspam-ip'          => 'IP-Adress:',
+	'findspam-ok'          => 'OK',
+	'findspam-notextfound' => 'Keng Kontributioune fonnt',
 );
 
 /** Low German (Plattdüütsch)

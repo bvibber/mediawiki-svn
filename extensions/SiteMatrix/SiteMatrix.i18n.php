@@ -539,10 +539,14 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Mpradeep
  * @author לערי ריינהארט
  */
 $messages['te'] = array(
-	'sitematrix' => 'వికీమీడియా వికీల జాబితా',
+	'sitematrix'          => 'వికీమీడియా వికీల జాబితా',
+	'sitematrix-language' => 'భాష',
+	'sitematrix-project'  => 'ప్రాజెక్టు పేరు, అంతర్‌ప్రాజెక్టు లింకు మరియు అంతర్వికీ లింకు',
+	'sitematrix-others'   => 'వికీమీడియాలోని ఇతర ప్రాజెక్టులు',
 );
 
 $messages['tet'] = array(

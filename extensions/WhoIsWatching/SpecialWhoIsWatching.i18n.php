@@ -15,17 +15,6 @@ $messages['en'] = array(
 	'specialwhoiswatchingaddbtn'  => 'Add selected Users',
 );
 
-/** Kotava (Kotava)
- * @author Wikimistusik
- */
-$messages['avk'] = array(
-	'whoiswatching'                => 'Toktan va wikibu suzdar ?',
-	'specialwhoiswatchingthepage'  => 'Toktan va %s suzdar ?',
-	'specialwhoiswatchingusage'    => 'Batu aptafu bu me rontion zo rofaver. Va [[MediaWiki:Number_of_watching_users_pageview]] bu vay favel aze va koaxo va batu aptafu bu tentul.',
-	'specialwhoiswatchingaddusers' => 'Loplekura va favesik ta busuzdara',
-	'specialwhoiswatchingaddbtn'   => 'Loplekura va reban favesik',
-);
-
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -35,6 +24,17 @@ $messages['ar'] = array(
 	'specialwhoiswatchingusage'    => 'هذه الصفحة الخاصة لا يمكن استخدامها بمفردها. من فضلك استخدم الصفحة [[MediaWiki:Number_of_watching_users_pageview]] لتعريف نقطة مدخل إلى هذه الصفحة الخاصة.',
 	'specialwhoiswatchingaddusers' => 'أضف مستخدمين لمراقبة الصفحة',
 	'specialwhoiswatchingaddbtn'   => 'أضف مستخدمين مختارين',
+);
+
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'whoiswatching'                => 'Toktan va wikibu suzdar ?',
+	'specialwhoiswatchingthepage'  => 'Toktan va %s suzdar ?',
+	'specialwhoiswatchingusage'    => 'Batu aptafu bu me rontion zo rofaver. Va [[MediaWiki:Number_of_watching_users_pageview]] bu vay favel aze va koaxo va batu aptafu bu tentul.',
+	'specialwhoiswatchingaddusers' => 'Loplekura va favesik ta busuzdara',
+	'specialwhoiswatchingaddbtn'   => 'Loplekura va reban favesik',
 );
 
 /** Bulgarian (Български)
@@ -142,9 +142,11 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'whoiswatching'               => 'Utilizaires agachant una pagina del wiki',
-	'specialwhoiswatchingthepage' => 'Utilizaires agachant %s',
-	'specialwhoiswatchingusage'   => "Aquesta pagina especiala pòt pas èsser utilizada sola. Passatz per [[MediaWiki:Number_of_watching_users_pageview]] per definir un punt d'entrada vèrs aquesta pagina especiala.",
+	'whoiswatching'                => 'Utilizaires agachant una pagina del wiki',
+	'specialwhoiswatchingthepage'  => 'Utilizaires agachant %s',
+	'specialwhoiswatchingusage'    => "Aquesta pagina especiala pòt pas èsser utilizada sola. Passatz per [[MediaWiki:Number_of_watching_users_pageview]] per definir un punt d'entrada vèrs aquesta pagina especiala.",
+	'specialwhoiswatchingaddusers' => 'Ajustar los utilizaires per veire la pagina',
+	'specialwhoiswatchingaddbtn'   => 'Ajustar los utilizaires seleccionats',
 );
 
 $messages['pt'] = array(

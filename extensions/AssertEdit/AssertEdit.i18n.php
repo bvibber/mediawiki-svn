@@ -213,6 +213,14 @@ $messages['stq'] = array(
 	'assert_edit_message' => 'Die ounroate Anspruch ($1) is failsloain.',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'assert_edit_title'   => 'Försäkran misslyckades',
+	'assert_edit_message' => 'Den försäkran som angavs ($1) misslyckades.',
+);
+
 /** 粵語 (粵語)
  * @author Shinjiman
  */

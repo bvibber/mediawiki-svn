@@ -447,10 +447,43 @@ $messages['oc'] = array(
 	'inplace_scaler_no_handler'        => 'Cap de foncion (« handler ») per transformar aqueste format MIME.',
 	'inplace_scaler_no_output'         => 'Cap de fichièr de transformacion generit',
 	'inplace_scaler_zero_size'         => 'La transformacion a creat un fichièr de talha zèro.',
+	'webstore_access'                  => 'Aqueste servici es restrenhut per adreça IP.',
 	'webstore_path_invalid'            => 'Lo nom de fichièr es pas corrècte.',
+	'webstore_dest_open'               => 'Impossible de dobrir lo fichièr de destinacion "$1".',
+	'webstore_dest_lock'               => 'Fracàs per obténer lo varrolhatge sul fichièr de destinacion « $1 ».',
+	'webstore_dest_mkdir'              => 'Impossible de crear lo repertòri "$1".',
+	'webstore_archive_lock'            => 'Fracàs per obténer lo varrolhatge del fichièr archivat « $1 ».',
+	'webstore_archive_mkdir'           => "Impossible de crear lo repertòri d'archivatge « $1 ».",
+	'webstore_src_open'                => 'Impossible de dobrir lo fichièr font « $1 ».',
+	'webstore_src_close'               => 'Error de tampadura del fichièr font « $1 ».',
+	'webstore_src_delete'              => 'Error de supression del fichièr font « $1 ».',
+	'webstore_rename'                  => 'Error de renomatge del fichièr « $1 » en « $2 ».',
+	'webstore_lock_open'               => 'Error de dobertura del fichièr varrolhat « $1 ».',
+	'webstore_lock_close'              => 'Error de tampadura del fichièr varrolhat « $1 ».',
+	'webstore_dest_exists'             => 'Error, lo fichièr de destinacion « $1 » existís.',
+	'webstore_temp_open'               => 'Error de dobertura del fichièr temporari « $1 ».',
+	'webstore_temp_copy'               => 'Error de còpia del fichièr temporari « $1 » vèrs lo fichièr de destinacion « $2 ».',
+	'webstore_temp_close'              => 'Error de tampadura del fichièr temporari « $1 ».',
+	'webstore_temp_lock'               => 'Error de varrolhatge del fichièr temporari « $1 ».',
+	'webstore_no_archive'              => 'Error de varrolhatge del fichièr temporari « $1 ».',
+	'webstore_no_file'                 => 'Cap de fichièr es pas estat telecargat.',
+	'webstore_move_uploaded'           => 'Error de desplaçament del fichièr telecargat « $1 » vèrs l’emplaçament temporari « $2 ».',
+	'webstore_invalid_zone'            => 'Zòna « $1 » invalida.',
+	'webstore_no_deleted'              => 'Cap de repertòri d’archius pels fichièrs suprimits es pas estat definit.',
+	'webstore_curl'                    => 'Error dempuèi cURL : $1',
 	'webstore_404'                     => 'Fichièr pas trobat.',
+	'webstore_metadata_not_found'      => 'Fichièr pas trobat : $1',
+	'webstore_postfile_not_found'      => "Fichièr d'enregistrar pas trobat.",
+	'webstore_scaler_empty_response'   => "L’escandilhatge de l'imatge a balhat una responsa nulla amb un còde de 200 responsas. Aquò poiriá èsser degut a una error de l'escandilhatge.",
+	'webstore_invalid_response'        => 'Responsa invalida dempuèi lo serveire :  
+
+$1',
 	'webstore_no_response'             => 'Lo serveire respondís pas',
+	'webstore_backend_error'           => 'Error dempuèi lo serveire de stocatge :  
+
+$1',
 	'webstore_php_error'               => 'Las errors PHP seguentas son susvengudas',
+	'webstore_no_handler'              => 'Aqueste tipe MIME pòt pas èsser transformat.',
 );
 
 $messages['pl'] = array(
@@ -515,5 +548,58 @@ $messages['pt'] = array(
 	'inplace_access_denied' => 'Este serviço está restringido por IP de cliente.',
 	'inplace_scaler_no_temp' => 'Não existe directoria temporária, defina $wgLocalTmpDirectory com uma directoria onde seja possível escrever.',
 	'inplace_scaler_not_enough_params' => 'Parâmetros insuficientes.',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'inplace_access_disabled'          => 'Prístup k tejto službe bol vypnutý pre všetkých klientov.',
+	'inplace_access_denied'            => 'Táto služba je obmedzená na určené klientské IP adresy.',
+	'inplace_scaler_no_temp'           => 'Dočasný adresár nie je platný, nastavte $wgLocalTmpDirectory na zapisovateľný adresár.',
+	'inplace_scaler_not_enough_params' => 'Nedostatok parametrov.',
+	'inplace_scaler_invalid_image'     => 'Neplatný obrázok, nebolo možné určiť veľkosť.',
+	'inplace_scaler_failed'            => 'Počas zmeny veľkosti obrázka sa vyskytla chyba: $1',
+	'inplace_scaler_no_handler'        => 'Pre transformáciu tohto typu MIME neexistuje obsluha',
+	'inplace_scaler_no_output'         => 'Nebol vytvorený výstupný súbor tejto transformácie.',
+	'inplace_scaler_zero_size'         => 'Transformácia vytvorila výstupný súbor s nulovou veľkosťou.',
+	'webstore_access'                  => 'Táto služba je obmedzená na určené klientské IP adresy.',
+	'webstore_path_invalid'            => 'Názov súboru bol neplatný.',
+	'webstore_dest_open'               => 'Nebolo možné otvoriť cieľový súbor „$1“.',
+	'webstore_dest_lock'               => 'Nebolo možné záskať zámok na cieľový súbor „$1“.',
+	'webstore_dest_mkdir'              => 'Nebolo možné vytvoriť cieľový adresár „$1“.',
+	'webstore_archive_lock'            => 'Nebolo možné získať zámok na súbor archívu „$1“.',
+	'webstore_archive_mkdir'           => 'Nebolo možné vytvoriť archívny adresár „$1“.',
+	'webstore_src_open'                => 'Nebolo možné otvoriť zdrojový súbor „$1“.',
+	'webstore_src_close'               => 'Chyba pri zatváraní zdrojového súboru „$1“.',
+	'webstore_src_delete'              => 'Chyba pri mazaní zdrojového súboru „$1“.',
+	'webstore_rename'                  => 'Chyba pri premenovávaní súboru „$1“ na „$2“.',
+	'webstore_lock_open'               => 'Chyba pri otváraní súboru zámku „$1“.',
+	'webstore_lock_close'              => 'Chyba pri zatváraní súboru zámku „$1“.',
+	'webstore_dest_exists'             => 'Chyba, cieľový súbor „$1“ existuje.',
+	'webstore_temp_open'               => 'Chyba pri otváraní dočasného súboru „$1“.',
+	'webstore_temp_copy'               => 'Chyba pri kopírovaní dočasného súboru „$1“ do cieľového súboru „$2“.',
+	'webstore_temp_close'              => 'Chyba pri zatváraní dočasného súboru „$1“.',
+	'webstore_temp_lock'               => 'Chyba pri zamykaní dočasného súboru „$1“.',
+	'webstore_no_archive'              => 'Cieľový súbor existuje a nebol zadaný archív.',
+	'webstore_no_file'                 => 'Žiadny súbor nebol nahraný.',
+	'webstore_move_uploaded'           => 'Chyba pri presúvaní nahraného súboru „$1“ na dočasné miesto „$2“.',
+	'webstore_invalid_zone'            => 'Neplatné zóna „$1“.',
+	'webstore_no_deleted'              => 'Nebol definovaný žiadny archívny adresár pre zmazané súbory.',
+	'webstore_curl'                    => 'Chýba od cURL: $1',
+	'webstore_404'                     => 'Súbor nenájdený.',
+	'webstore_php_warning'             => 'Upozornenie PHP: $1',
+	'webstore_metadata_not_found'      => 'Súbor nebol nájdený: $1',
+	'webstore_postfile_not_found'      => 'Súbor na odoslanie nebol nájdený.',
+	'webstore_scaler_empty_response'   => 'Zmena veľkosti obrázka vrátila prázdnu odpoveď s kódom 200. Toto by mohlo znamenať kritickú chybu PHP pri zmene veľkosti obrázka.',
+	'webstore_invalid_response'        => 'Neplatná odpoveď od servera:
+
+$1',
+	'webstore_no_response'             => 'Žiadna odpoveď od servera',
+	'webstore_backend_error'           => 'Chyba od úložného servera:
+
+$1',
+	'webstore_php_error'               => 'Vyskytli sa chyby PHP:',
+	'webstore_no_handler'              => 'Pre transformáciu tohto typu MIME neexistuje obsluha',
 );
 

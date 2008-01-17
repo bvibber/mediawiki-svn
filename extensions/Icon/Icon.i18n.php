@@ -13,17 +13,17 @@ $messages['en'] = array(
 	'icon-badwidth' => 'Bad Width',
 );
 
+$messages['ar'] = array(
+	'icon-badimage' => 'صورة سيئة',
+	'icon-badwidth' => 'عرض سيىء',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */
 $messages['avk'] = array(
 	'icon-badimage' => 'Ewavaja',
 	'icon-badwidth' => 'Lumaj',
-);
-
-$messages['ar'] = array(
-	'icon-badimage' => 'صورة سيئة',
-	'icon-badwidth' => 'عرض سيىء',
 );
 
 /** Bulgarian (Български)
@@ -68,6 +68,14 @@ $messages['hsb'] = array(
 $messages['la'] = array(
 	'icon-badimage' => 'Imago mala',
 	'icon-badwidth' => 'Latitudo mala',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'icon-badimage' => 'Futtist Bild',
+	'icon-badwidth' => 'Falsch Breet',
 );
 
 /** Lithuanian (Lietuvių)

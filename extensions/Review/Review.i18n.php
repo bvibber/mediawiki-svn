@@ -405,3 +405,47 @@ $messages['pl'] = array(
 	'review_sidebar_title' => 'Ocenianie',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'review_sidebar_title'                                   => 'Kontrola',
+	'review_topics'                                          => '# Toto je zoznam téma a rozsahov rozšírenia Kontrola (Review)
+# Každú tému definuje riadok s piatimi hodnotami oddelenými „:“ (všetky ostatné riadky sú ignorované).
+# Poradie je: číselný kľúč (>0), názov, max. rozsah (>1; 2=áno/nie), význam najnižšej hodnoty (napr., „zlý“), význam najvyššej hodnoty (napr., „dobrý“).
+1:Kvalita:5:zlá:dobrá
+2:Vhodný do 1.0:2:nie:áno',
+	'review_topic_page'                                      => 'Kontrola tém',
+	'review_sidebar_explanation'                             => 'Zaškrtávacie pole vľavo vždy znamená „bez názoru“.',
+	'review_save'                                            => 'Uložiť kontrolu',
+	'review_your_review'                                     => 'Vaša kontrola tejto stránky/revízie:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => 'Už ste vykonali kontrolu iných verzií tejto stránky. Vaše ostatné hodnotenia sa zlúčia do tohto, kde ste vybrali „bez názoru“.',
+	'review_page_link'                                       => 'štatistika kontroly',
+	'review_sidebar_final'                                   => 'Údaje o kontrole tejto stránky, pozri $1',
+	'review_for_page'                                        => 'Kontrola stránky „$1“',
+	'review_for_user'                                        => 'Kontrola používateľa „$1“',
+	'review_error'                                           => 'Niečo nie je v poriadku!',
+	'review_no_reviews_for_page'                             => '„$1“ zatiaľ nebola skontrolovaná.',
+	'review_total_statistics'                                => 'Celkom',
+	'review_statistics_left_corner'                          => 'Revízia',
+	'review_version_link'                                    => 'Revízia #$1',
+	'review_statistic_cell'                                  => 'Priemer: $1 z $2<br />($4 používateľov, $5 anonymov)',
+	'review_version_statistic_cell'                          => '$1 z $2',
+	'review_version_reviews_link'                            => '<small>(kontroly verzie)</small>',
+	'review_concerns_page'                                   => 'Toto je kontrola stránky „$1“.',
+	'review_concerns_user'                                   => 'Toto je o kontrolách od používateľa „$1“.',
+	'review_user_reviews'                                    => '<small>(kontroly od tohto používateľa)</small>',
+	'review_user_page_list'                                  => 'Tento používateľ kontroloval nasledovné stránky:',
+	'review_user_details_link'                               => '(podrobnosti)',
+	'review_do_merge'                                        => 'Zlúčiť moje kontroly iných revízií tejto stránky do tejto',
+	'review_has_been_stored'                                 => "<span id='review_has_been_stored'>Vaša kontrola bola uložená!</span>",
+	'revision_review_this_page_version_link'                 => 'Skontrolovať túto verziu stránky.',
+	'review_page_review'                                     => 'Kontrola stránky „$1“',
+	'review_blocked'                                         => 'Ste zablokovaný, choďte preč.',
+	'review_wrong_namespace'                                 => 'Stránky v tomto mennom priestore nemožno kontrolovať!',
+	'review_topic'                                           => 'Téma',
+	'review_no_opinion'                                      => 'bez názoru',
+	'review_rating'                                          => 'Hodnotenie',
+	'review_comment'                                         => 'Komentár',
+);
+

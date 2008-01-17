@@ -126,10 +126,15 @@ $messages['crh-cyrl'] = array(
 	'createarticle' => 'Саифени янъарт',
 );
 
+/** Czech (Česky)
+ * @author Li-sung
+ */
 $messages['cs'] = array(
-	'tryexact'       => 'Vyzkoušet přesné hledání',
-	'searchfulltext' => 'Plnotextové hledání',
-	'createarticle'  => 'Vytvořit článek',
+	'inputbox-error-no-type'  => 'Není určen typ formulářového pole k vytvoření.',
+	'inputbox-error-bad-type' => 'Nerozpoznaný typ pole „$1“. Uveďte jednu z možností: „create“, „comment“, „search“ nebo „search2“.',
+	'tryexact'                => 'Vyzkoušet přesné hledání',
+	'searchfulltext'          => 'Plnotextové hledání',
+	'createarticle'           => 'Vytvořit článek',
 );
 
 $messages['cv'] = array(

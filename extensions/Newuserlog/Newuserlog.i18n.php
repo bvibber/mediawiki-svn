@@ -110,6 +110,14 @@ $messages['el'] = array(
 	'newuserlog-create2-entry' => 'δημιουργία λογαριασμού: $1',
 );
 
+/** Emiliano-Romagnolo (Emiliàn e rumagnòl)
+ * @author SPQRobin
+ */
+$messages['eml'] = array(
+	'newuserlogpage'          => 'Regestér di nōv utèint',
+	'newuserlog-create-entry' => 'Un utèint nōv',
+);
+
 $messages['eo'] = array(
 	'newuserlogpage'           => 'Uzantokreada loglibro',
 	'newuserlogpagetext'       => 'Ĉi tio estas loglibro de uzantokreadoj',
@@ -537,6 +545,13 @@ $messages['ur'] = array(
 
 $messages['vec'] = array(
 	'newuserlogpagetext'       => 'Questo xè el log dei novi utenti registrai',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'newuserlog-create2-entry' => 'đã tạo tài khoản mới với tên $1',
 );
 
 $messages['vls'] = array(

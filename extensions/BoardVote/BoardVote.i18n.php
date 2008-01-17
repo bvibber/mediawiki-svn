@@ -87,26 +87,6 @@ You will be redirected to this external server in 20 seconds. [$1 Click here] to
 A security warning about an unsigned certificate may be displayed.',
 );
 
-/** Kotava (Kotava)
- * @author Wikimistusik
- */
-$messages['avk'] = array(
-	'boardvote_novotes'    => 'Metan ixam al brudar.',
-	'boardvote_time'       => 'Ugal',
-	'boardvote_user'       => 'Favesik',
-	'boardvote_edits'      => 'Betaks yo',
-	'boardvote_days'       => 'Viel se',
-	'boardvote_ip'         => 'IP mane',
-	'boardvote_dumplink'   => 'Batliz vulegal',
-	'boardvote_submit'     => 'Tuená !',
-	'boardvote_strike'     => 'Yastera',
-	'boardvote_unstrike'   => 'Volyastera',
-	'boardvote_needadmin'  => 'Anton liburaristusik baton roskur.',
-	'boardvote_notstarted' => 'Brudaratoza men tir',
-	'boardvote_edits_many' => 'konak',
-	'boardvote_welcome'    => "'''$1''' til drumbaf !",
-);
-
 $messages['af'] = array(
 	'boardvote'               => 'Wikimedia-Trusteeraadverkiesing',
 	'boardvote_time'          => 'Tyd',
@@ -271,6 +251,26 @@ servidor esternu y controláu de forma independiente.
 Vas ser redirixíu a esti servidor esternu en 20 segundos. [$1 Calca equí] pa dir agora.
 
 Podría apaecer un avisu de seguridá tocante a un certificáu non firmáu.",
+);
+
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'boardvote_novotes'    => 'Metan ixam al brudar.',
+	'boardvote_time'       => 'Ugal',
+	'boardvote_user'       => 'Favesik',
+	'boardvote_edits'      => 'Betaks yo',
+	'boardvote_days'       => 'Viel se',
+	'boardvote_ip'         => 'IP mane',
+	'boardvote_dumplink'   => 'Batliz vulegal',
+	'boardvote_submit'     => 'Tuená !',
+	'boardvote_strike'     => 'Yastera',
+	'boardvote_unstrike'   => 'Volyastera',
+	'boardvote_needadmin'  => 'Anton liburaristusik baton roskur.',
+	'boardvote_notstarted' => 'Brudaratoza men tir',
+	'boardvote_edits_many' => 'konak',
+	'boardvote_welcome'    => "'''$1''' til drumbaf !",
 );
 
 $messages['bcl'] = array(
@@ -2281,6 +2281,19 @@ $messages['ru'] = array(
 Может возникнуть сообщение о неподписанном сертификате.',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'boardvote_time'       => 'Кэм',
+	'boardvote_user'       => 'Кыттааччы',
+	'boardvote_edits'      => 'Көннөрүүлэр',
+	'boardvote_days'       => 'Күннэр',
+	'boardvote_dumplink'   => 'Маны баттаа',
+	'boardvote_edits_many' => 'элбэх',
+	'boardvote_welcome'    => "Нөрүөн нөргүй, '''$1'''!",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -2582,8 +2595,9 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
- * @author Max sonnelid
  * @author Sannab
+ * @author Lejonel
+ * @author Max sonnelid
  * @author SPQRobin
  */
 $messages['sv'] = array(
@@ -2632,7 +2646,7 @@ Om du fick detta meddelande trots att du '''har gjort''' fler än $1 redigeringa
 	'boardvote_edits'        => 'Redigeringar',
 	'boardvote_days'         => 'Dagar',
 	'boardvote_ip'           => 'IP',
-	'boardvote_ua'           => 'Användar agent',
+	'boardvote_ua'           => 'Användaragent',
 	'boardvote_listintro'    => '<p>Det här är en lista över alla röster som har registrerats hittills.
 $1 för de krypterade uppgifterna.</p>',
 	'boardvote_dumplink'     => 'Klicka här',
@@ -2642,14 +2656,21 @@ $1 för de krypterade uppgifterna.</p>',
 	'boardvote_needadmin'    => 'Endast valadministratörer kan utföra denna operation.',
 	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Styrelseval i Wikimediastiftelsen</a>:  Valet pågår till och med den 12 juli kl 02:00 (CEST)',
 	'boardvote_notstarted'   => 'Röstning har ej påbörjats än',
-	'boardvote_closed'       => 'Röstningen är nu stängs, se [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En Val sidan för resultat] snart.',
+	'boardvote_closed'       => 'Röstningen är nu stängd, se [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En valsidan för resultat] snart.',
 	'boardvote_edits_many'   => 'många',
-	'group-boardvote'        => 'Styrelse röst administratörer',
-	'group-boardvote-member' => 'Styrelse röst administratör',
-	'grouppage-boardvote'    => '{{ns:project}}:Styrelse röst administratör',
-	'boardvote_blocked'      => 'Beklagar, du har blivigt blockerad på din registrerade wiki. Blockerade användare är inte tillåtna att rösta.',
+	'group-boardvote'        => 'Styrelsevalsadministratörer',
+	'group-boardvote-member' => 'Styrelsevalsadministratör',
+	'grouppage-boardvote'    => '{{ns:project}}:Styrelsevalsadministratör',
+	'boardvote_blocked'      => 'Beklagar, du har blivit blockerad på din registrerade wiki. Blockerade användare är inte tillåtna att rösta.',
 	'boardvote_welcome'      => "Välkommen '''$1'''!",
 	'go_to_board_vote'       => 'Val till Wikimedias styrelse 2007',
+);
+
+/** Telugu (తెలుగు)
+ * @author Mpradeep
+ */
+$messages['te'] = array(
+	'boardvote' => 'వికీమీడియా ట్రస్టుబోర్డు ఎన్నికలు',
 );
 
 /** Tonga (faka-Tonga)

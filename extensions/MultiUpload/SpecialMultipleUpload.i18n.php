@@ -214,6 +214,8 @@ Tlačidlom „Prehliadať“ vyberte každý súbor, ktorý chcete nahrať. Mô�
 Môžete zadať voliteľný '''Cieľový názov súboru''' a poskytnúť '''Zhrnutie''' popisujúce váš súbor.
 
 Nevhodné súbory budú okamžite zmazané, pozri [[{{MediaWiki:Multipleupload-page}}|pravidlá mazania súborov]].",
+	'multiupload-fileuploaded'         => 'Súbor nahraný.',
+	'multiupload-toolbox'              => 'Nahrať viacero súborov',
 );
 
 /** Seeltersk (Seeltersk)
