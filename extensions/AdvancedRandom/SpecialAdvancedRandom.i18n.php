@@ -18,6 +18,13 @@ $messages['ar'] = array(
 	'advancedrandom' => 'عشوائي متقدم',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'advancedrandom' => 'Xuyavapon',
+);
+
 /** Bengali (বাংলা)
  * @author Zaheen
  */

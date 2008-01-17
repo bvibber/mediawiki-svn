@@ -118,6 +118,13 @@ $wdMessages['ar'] = array(
 	'languages' => 'Wikidata: مدير اللغة',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$wdMessages['avk'] = array(
+	'datasearch' => 'Wikidata : Origaneyara',
+);
+
 $wdMessages['bcl'] = array(
 	'datasearch' => 'Wikidata: Data search',#identical but defined
 	'languages' => 'Wikidata: Manager kan tataramon',
