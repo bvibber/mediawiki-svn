@@ -20,7 +20,7 @@ $messages['en'] = array(
 	'pdtest_diff' => 'Differences',
 	'pdtest_side_by_side' => 'Output comparison',
 	'pdt_comparing_page' => 'Comparing parser output from [[$1]]',
-),
+);
 
 $messages['he'] = array(
 	'parserdifftest' => 'בדיקת השינויים במפענח',
