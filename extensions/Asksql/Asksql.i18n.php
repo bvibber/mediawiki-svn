@@ -42,9 +42,15 @@ $messages['ar'] = array(
  */
 $messages['ast'] = array(
 	'asksql'          => 'Consulta SQL',
+	'asksqltext'      => "Usa'l formulariu d'embaxo pa facer una consulta direuta
+a la base de datos.
+Usa comines simples ('como estes') pa dellimitar les cadenes lliterales.
+Esto pue añader davezu grandes cargues nel servidor, asina que por
+favor usa esta función con xacíu.",
 	'sqlislogged'     => 'Por favor fíxate en que toles consultes queden rexistraes.',
 	'sqlquery'        => 'Introducir consulta',
 	'querybtn'        => 'Unviar consulta',
+	'selectonly'      => 'Namái se permiten consultes de solo llectura.',
 	'querysuccessful' => 'Consulta efeutuada correutamente',
 );
 

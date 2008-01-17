@@ -33,10 +33,17 @@ $messages['ar'] = array(
 );
 
 /** Asturian (Asturianu)
+ * @author Esbardu
  * @author SPQRobin
  */
 $messages['ast'] = array(
-	'linksearch' => 'Buscar enllaces web',
+	'linksearch'       => 'Buscar enllaces web',
+	'linksearch-pat'   => 'Patrón de busca:',
+	'linksearch-ns'    => 'Espaciu de nomes:',
+	'linksearch-ok'    => 'Buscar',
+	'linksearch-text'  => 'Puen usase comodinos como "*.wikipedia.org".<br />Protocolos almitíos: <tt>$1</tt>',
+	'linksearch-line'  => '$1 enllaciáu dende $2',
+	'linksearch-error' => 'Los comodinos namái puen apaecer al entamu del nome del güéspede.',
 );
 
 $messages['bcl'] = array(

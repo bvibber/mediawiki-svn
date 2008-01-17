@@ -90,6 +90,13 @@ $messages['pt'] = array(
 	'contributionseditcount' => 'Este utilizador tem $1 edições.',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'contributionseditcount' => 'Этот участник сделал $1 правок.',
+);
+
 $messages['sah'] = array(
 	'contributionseditcount' => 'Бу кыттааччы $1 көннөрүүлээх.',
 );

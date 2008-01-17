@@ -41,6 +41,16 @@ $messages['ar'] = array(
 	'newuserlog-create2-entry' => 'أنشأ الحساب الخاص باسم $1',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'newuserlogpage'           => "Rexistru de creación d'usuarios",
+	'newuserlogpagetext'       => "Esti ye un rexistru de creación d'usuarios",
+	'newuserlog-create-entry'  => 'Usuariu nuevu',
+	'newuserlog-create2-entry' => 'creó una cuenta pa $1',
+);
+
 $messages['bcl'] = array(
 	'newuserlog-create-entry'  => 'Bâgong parágamit',
 );

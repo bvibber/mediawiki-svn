@@ -232,6 +232,13 @@ $messages['oc'] = array(
 	'tasklistprojdisp'       => 'Afichar',
 	'tasklistbyname'         => '== Lista de prètzfaches de far per %s ==',
 	'tasklistnoprojects'     => "Error : sembla qu'avètz activat '''\$wgUseProjects''', mas sens aver creat [[MediaWiki:TodoTasksValidProjects]]. Legissètz las [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instruccions d'installacion] per mai de detalhs.",
+	'tasklistemailbody'      => ",
+
+Qualqu'un vos a assignat un prètzfach novèl sus %s.
+
+Per veire vòstra lista completa dels prètzfaches d'efectuar, anatz sus %s.
+
+Vòstre plan amable sistèma de notificacion de %s",
 );
 
 $messages['pl'] = array(

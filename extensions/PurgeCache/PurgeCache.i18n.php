@@ -32,6 +32,16 @@ $messages['bg'] = array(
 	'purgecache-button' => 'Изчистване',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'purgecache'         => 'Esborra memòria cau',
+	'purgecache-warning' => "D'aquesta manera actualitzareu les taules de la memòria cau (''caché'').",
+	'purgecache-purged'  => 'Heu purgat la memòria cau.',
+	'purgecache-button'  => 'Purga',
+);
+
 $messages['fr'] = array(
 	'purgecache' => 'Purger le cache',
 	'purgecache-warning' => 'Ceci purgera les tables du cache.',

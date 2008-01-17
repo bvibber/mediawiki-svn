@@ -31,6 +31,14 @@ $messages['ar'] = array(
 	'backforth-prev' => 'السابق ($1)',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'backforth-next' => 'Siguiente ($1)',
+	'backforth-prev' => 'Anterior ($1)',
+);
+
 $messages['bcl'] = array(
 	'backforth-next' => 'Sunod ($1)',
 	'backforth-prev' => 'Nakaagi ($1)',

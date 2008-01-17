@@ -18,6 +18,13 @@ $messages['ar'] = array(
 	'advancedrandom' => 'عشوائي متقدم',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'advancedrandom' => 'Accesu aleatoriu avanzáu',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */
@@ -160,7 +167,6 @@ $messages['zh-hant'] = array(
 	'advancedrandom' => '進階隨機',
 );
 
-# Fallbacks:
 $messages['de-formal'] = $messages['de'];
 $messages['zh']     = $messages['zh-hans'];
 $messages['zh-cn']  = $messages['zh-hans'];

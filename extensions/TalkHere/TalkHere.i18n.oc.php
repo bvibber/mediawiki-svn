@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Internationalisation file for the TalkHere extension
  *
@@ -14,7 +13,7 @@
  * @author Cedric31
  */
 $messages = array(
-	'talkhere-foottext'    => "Los comentaris çai sús son estats daissats per de vesitaires. <br/>  Lo gestionari del site es pas responsable de lor contengut.",
+	'talkhere-foottext'    => 'Los comentaris çaisús son estats daissats per de vesitaires. <br/>  Lo gestionari del site es pas responsable de lor contengut.',
 	'talkhere-talkpage'    => 'pagina de dscussion',
 	'talkhere-notalk'      => "''(cap de comentari actualament)''",
 	'talkhere-addcomment'  => 'ajustar un comentari',

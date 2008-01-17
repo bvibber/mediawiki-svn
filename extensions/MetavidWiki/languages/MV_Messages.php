@@ -195,6 +195,7 @@ $messages['en'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author Siebrand
  */
 $messages['ar'] = array(
 	'metavid'                        => 'صفحة ميتافيد',
@@ -202,7 +203,7 @@ $messages['ar'] = array(
 	'mv_ogg_low_quality'             => 'ثيورا أو جي جي، مستضاف على ميتافيد',
 	'mv_ogg_high_quality'            => 'ثيورا أو جي جي ذو جودة عالية، مستضاف على ميتافيد',
 	'mv_archive_org_link'            => 'يصل إلى Archive.org mpeg2 الأصلي',
-	'mv_error_stream_missing'        => '<span class="error">خطأ: لا يوجد ستريم فيديو مصاحب لبيانات الميتا هذه.</span><br /> من فضلك أبلغ هذا إلى إداري الموقع.<br /> <i>واجهة ستريم بيانات الميتا معطلة</i>',
+	'mv_error_stream_missing'        => '<span class="error">خطأ: لا يوجد ستريم فيديو مصاحب لبيانات الميتا هذه.</span><br /> من فضلك أبلغ هذا إلى إداري الموقع.',
 	'mv_stream_meta'                 => 'صفحة ستريم',
 	'mv_add_stream'                  => 'أضف ستريم ميتافيد',
 	'mv_edit_stream'                 => 'عدل ستريم ميتافيد',
@@ -380,7 +381,7 @@ $messages['fr'] = array(
 	'mv_ogg_low_quality'             => 'Flux ogg utilisable en ligne, hébergé sur metavid',
 	'mv_ogg_high_quality'            => 'Flux ogg de haute qualité, hébergé sur metavid.',
 	'mv_archive_org_link'            => 'Liens vers les originaux mpeg2 dans Archive.org',
-	'mv_error_stream_missing'        => "<span class=\"error\">Erreur : il n'existe aucun flux vidéo associé avec cette metadonnée.</span><br /> Vous êtes prié de reporter ceci sur le site d'aministration.<br /> <i>L'interface de flux des métadonnées est désactivée</i>.",
+	'mv_error_stream_missing'        => '<span class="error">Erreur : il n\'existe aucun fichier vidéo associé avec ce flux.</span><br /> Vous êtes prié de reporter ceci sur le site d\'administration.',
 	'mv_stream_meta'                 => 'Page de flux',
 	'mv_add_stream'                  => "Ajout d'un flux metavid",
 	'mv_edit_stream'                 => 'Modifier un flux metavid',
@@ -542,7 +543,7 @@ $messages['hsb'] = array(
 	'mv_ogg_low_quality'             => 'Streamujomne ogg theora, na metavidźe hostowane',
 	'mv_ogg_high_quality'            => 'Ogg theora wysokeje kwality, na metavidźe hostowane',
 	'mv_archive_org_link'            => 'Wotkazy k originalam mpeg2 na Archive.org',
-	'mv_error_stream_missing'        => '<span class="error">Zmylk: Njeje wideostream zwjazany z tutymi metadatami.</span><br />Prošu zdźěl to sydłowemu administratorej.<br /><i>Interfejs streamowych datow je znjemóžnjeny</i>',
+	'mv_error_stream_missing'        => '<span class="error">Zmylk: Njeje wideodataja zwjazana z tutym streamom.</span><br />Prošu zdźěl to sydłowemu administratorej.',
 	'mv_stream_meta'                 => 'Strona streama',
 	'mv_add_stream'                  => 'Metavid stream přidać',
 	'mv_edit_stream'                 => 'Metavid stream wobdźěłać',
@@ -709,7 +710,7 @@ $messages['nl'] = array(
 	'mv_ogg_low_quality'             => 'Via het web te streamen ogg theora, gehost op metavid',
 	'mv_ogg_high_quality'            => 'Hoge kwaliteit ogg theora, gehost op metavid',
 	'mv_archive_org_link'            => 'Links naar de originele mpeg2 op Archive.org',
-	'mv_error_stream_missing'        => '<span class="error">Fout: Er is geen videostream gekoppeld aan deze metadata.</span><br />Rapporteer dit alstublieft aan de sitebeheerder.<br /><i>De streammetadatainterface is uitgeschakeld</i>',
+	'mv_error_stream_missing'        => '<span class="error">Fout: Er is geen videobestand gekoppeld aan deze stream.</span><br />Rapporteer dit alstublieft aan de sitebeheerder.',
 	'mv_stream_meta'                 => 'Streampagina',
 	'mv_add_stream'                  => 'Metavid stream toevoegen',
 	'mv_edit_stream'                 => 'Metavid-stream bewerken',
@@ -851,6 +852,7 @@ $messages['nl'] = array(
 
 /** Occitan (Occitan)
  * @author Cedric31
+ * @author Siebrand
  */
 $messages['oc'] = array(
 	'metavid'                       => 'Pagina metavid',
@@ -858,7 +860,7 @@ $messages['oc'] = array(
 	'mv_ogg_low_quality'            => 'Flus ogg utilizable en linha, alberjat sus metavid',
 	'mv_ogg_high_quality'           => 'Flus ogg de nauta qualitat, alberjat sus metavid.',
 	'mv_archive_org_link'           => 'Ligams vèrs los originals mpeg2 dins Archive.org',
-	'mv_error_stream_missing'       => '<span class="error">Error : existís pas cap de flus vidèo associat amb aquesta metadonada.</span><br /> Reportatz aquò sul site d\'aministracion.<br /> <i>L\'interfàcia de flus de las metadonadas es desactivada</i>.',
+	'mv_error_stream_missing'       => '<span class="error">Error : existís pas cap de flus vidèo associat amb aquesta metadonada.</span><br /> Reportatz aquò sul site d\'aministracion.',
 	'mv_stream_meta'                => 'Pagina de flus',
 	'mv_add_stream'                 => "Ajust d'un flus metavid",
 	'mv_edit_stream'                => 'Modificar un flus metavid',
@@ -932,9 +934,8 @@ $messages['sk'] = array(
 	'mv_ogg_low_quality'             => 'Streamovateľný ogg theora, hosťovaný na metavid',
 	'mv_ogg_high_quality'            => 'Ogg theora vo vysokej kvalite, hosťovaný na metavid',
 	'mv_archive_org_link'            => 'Odkazy do mpeg2 originálov na Archive.org',
-	'mv_error_stream_missing'        => '<span class="error">Chyba: Neexistuje video stream asociovaný s týmito metadátami.</span><br />
-Prosím, oznámte to správcovi webovej lokality.<br />
-<i>rozhranie metadát streamu je vypnuté</i>',
+	'mv_error_stream_missing'        => '<span class="error">Chyba: Neexistuje video súbor asociovaný s týmito metadátami.</span><br />
+Prosím, oznámte to správcovi webovej lokality.',
 	'mv_stream_meta'                 => 'Stránka streamu',
 	'mv_add_stream'                  => 'Metavid Pridať stream',
 	'mv_edit_stream'                 => 'Metavid Upraviť stream',

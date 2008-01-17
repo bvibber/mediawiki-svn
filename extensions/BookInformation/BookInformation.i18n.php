@@ -640,18 +640,22 @@ $messages['stq'] = array(
 	'bookinfo-provider' => 'Doaten-Lääwerant: $1',
 );
 
+/** Swedish (Svenska)
+ * @author Sannab
+ * @author Lejonel
+ */
 $messages['sv'] = array(
-	'bookinfo-header' => 'Bokinformation',
-	'bookinfo-result-title' => 'Titel:',
-	'bookinfo-result-author' => 'Författare:',
-	'bookinfo-result-publisher' => 'Utgivare:',
-	'bookinfo-result-year' => 'År:',
-	'bookinfo-error-invalidisbn' => 'Ogiltig ISBN angiven.',
-	'bookinfo-error-nosuchitem' => 'Posten existerar inte eller kunde inte hittas.',
-	'bookinfo-error-nodriver' => 'Kunde ej starta upp en lämplig drivrutin för bokinformation.',
-	'bookinfo-error-noresponse' => 'Fick inget svar eller det tog för lång tid att få svar.',
-	'bookinfo-purchase' => 'Köp denna bok från $1',
-	'bookinfo-provider' => 'Data hämtat från: $1',
+	'bookinfo-header'            => 'Bokinformation',
+	'bookinfo-result-title'      => 'Titel:',
+	'bookinfo-result-author'     => 'Författare:',
+	'bookinfo-result-publisher'  => 'Utgivare:',
+	'bookinfo-result-year'       => 'År:',
+	'bookinfo-error-invalidisbn' => 'Ogiltigt ISBN angivet.',
+	'bookinfo-error-nosuchitem'  => 'Posten existerar inte eller kunde inte hittas.',
+	'bookinfo-error-nodriver'    => 'Kunde ej starta upp en lämplig drivrutin för bokinformation.',
+	'bookinfo-error-noresponse'  => 'Fick inget svar eller det tog för lång tid att få svar.',
+	'bookinfo-purchase'          => 'Köp denna bok från $1',
+	'bookinfo-provider'          => 'Data hämtat från: $1',
 );
 
 /** Volapük (Volapük)

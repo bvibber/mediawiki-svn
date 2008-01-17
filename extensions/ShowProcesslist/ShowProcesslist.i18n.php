@@ -127,6 +127,21 @@ $messages['nl'] = array(
 	'showprocesslist-info'    => 'Informatie',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'showprocesslist'         => 'Veire la lista dels procediments',
+	'showprocesslist-id'      => 'n°',
+	'showprocesslist-user'    => 'Utilizaire',
+	'showprocesslist-host'    => 'Òste',
+	'showprocesslist-db'      => 'Banca de donadas',
+	'showprocesslist-command' => 'Comanda',
+	'showprocesslist-time'    => 'Durada',
+	'showprocesslist-state'   => 'Estat',
+	'showprocesslist-info'    => 'Informacions',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

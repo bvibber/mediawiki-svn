@@ -36,3 +36,22 @@ $messages['he'] = array(
 	'pdtest_side_by_side' => 'השוואת הפלט',
 	'pdt_comparing_page' => 'משווה את פלט המפענחים מהדף [[$1]]',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'parserdifftest'      => 'Parserverschillentest',
+	'pdtest_no_target'    => 'Geen doel aangegeven.',
+	'pdtest_page_missing' => 'De aangegeven pagina is niet aangetroffen in de database.',
+	'pdtest_no_changes'   => 'Geen wijzigingen geconstateerd.',
+	'pdtest_time_report'  => '<b>$1</b> duurde $2 seconden, <b>$3</b> duurde $4 seconden.',
+	'pdtest_title'        => 'Contexttitel:',
+	'pdtest_text'         => 'Invoertekst:',
+	'pdtest_ok'           => 'OK',
+	'pdtest_get_text'     => 'Tekst van pagina ophalen',
+	'pdtest_diff'         => 'Verschillen',
+	'pdtest_side_by_side' => 'Uitvoervergelijking',
+	'pdt_comparing_page'  => 'Vergelijk van parseruitvoer van [[$1]]',
+);
+

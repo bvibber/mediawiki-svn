@@ -16,15 +16,6 @@ $messages['en'] = array(
 	'filelist-show-gallery' => 'Show gallery',
 );
 
-/** Kotava (Kotava)
- * @author Wikimistusik
- */
-$messages['avk'] = array(
-	'filelist'              => 'Iyeltakeem',
-	'filelist-show-list'    => 'Nedira va iyeltakeem',
-	'filelist-show-gallery' => 'Nedira va ginsa',
-);
-
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -32,6 +23,15 @@ $messages['ar'] = array(
 	'filelist'              => 'قائمة الملف',
 	'filelist-show-list'    => 'عرض القائمة',
 	'filelist-show-gallery' => 'عرض المعرض',
+);
+
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'filelist'              => 'Iyeltakeem',
+	'filelist-show-list'    => 'Nedira va iyeltakeem',
+	'filelist-show-gallery' => 'Nedira va ginsa',
 );
 
 /** Bulgarian (Български)
@@ -93,6 +93,15 @@ $messages['no'] = array(
 	'filelist'              => 'Filliste',
 	'filelist-show-list'    => 'Vis liste',
 	'filelist-show-gallery' => 'Vis gallery',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'filelist'              => 'Lista dels fichièrs',
+	'filelist-show-list'    => 'Veire la lista',
+	'filelist-show-gallery' => 'Veire la galariá',
 );
 
 /** Slovak (Slovenčina)

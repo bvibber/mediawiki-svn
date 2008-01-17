@@ -26,6 +26,17 @@ $messages['ar'] = array(
 	'specialwhoiswatchingaddbtn'   => 'أضف مستخدمين مختارين',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'whoiswatching'                => 'Quíen ta vixilando una páxina wiki',
+	'specialwhoiswatchingthepage'  => 'Quién ta vixilando %s',
+	'specialwhoiswatchingusage'    => "Esta páxina especial nun pue ser usada por sí sola. Por favor usa la páxina [[MediaWiki:Number_of_watching_users_pageview]] pa definir un puntu d'entrada qu'empobine a esta páxina especial.",
+	'specialwhoiswatchingaddusers' => 'Añadi los usuarios pa vixilar la páxina',
+	'specialwhoiswatchingaddbtn'   => 'Añader los usuarios seleicionaos',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */

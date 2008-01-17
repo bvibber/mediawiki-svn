@@ -28,6 +28,14 @@ $messages['ar'] = array(
 	'assert_edit_message' => 'التأكيد المحدد ($1) فشل.',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'assert_edit_title'   => "Falló l'afirmación",
+	'assert_edit_message' => "Falló l'afirmación especificada ($1).",
+);
+
 /** Bengali (বাংলা)
  * @author Zaheen
  */

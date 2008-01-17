@@ -17,19 +17,6 @@ $messages['en'] = array(
 	'watchers_less_than_x' => "Less than $1 people watch this page.",
 );
 
-/** Kotava (Kotava)
- * @author Wikimistusik
- */
-$messages['avk'] = array(
-	'watchers'               => 'Suzdasikeem',
-	'watchers_link_title'    => 'Toktan va batu bu suzdar ?',
-	'watchers_error_article' => '<b>Rokla :</b> Batu bu me tir.',
-	'watchers_header'        => 'Tan va "$1" suzdas',
-	'watchers_noone_watches' => 'Metan va batu bu suzdar',
-	'watchers_x_or_more'     => '$1 ok lotan va batu bu suzdad.',
-	'watchers_less_than_x'   => 'Le $1 korik tid suzdas va batu bu.',
-);
-
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -41,6 +28,32 @@ $messages['ar'] = array(
 	'watchers_noone_watches' => 'لا أحد يراقب هذه الصفحة.',
 	'watchers_x_or_more'     => '$1 أو أكثر يراقبون هذه الصفحة.',
 	'watchers_less_than_x'   => 'أقل من $1 يراقبون هذه الصفحة.',
+);
+
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'watchers'               => 'Vixilantes',
+	'watchers_link_title'    => '¿Quién vixila esta páxina?',
+	'watchers_error_article' => '<b>Error:</b> La páxina nun esiste.',
+	'watchers_header'        => 'Persones que tán vixilando "$1"',
+	'watchers_noone_watches' => 'Naide ta vixilando esta páxina.',
+	'watchers_x_or_more'     => '$1 o más persones tán vixilando esta páxina.',
+	'watchers_less_than_x'   => 'Hai menos de $1 vixilando esta páxina.',
+);
+
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'watchers'               => 'Suzdasikeem',
+	'watchers_link_title'    => 'Toktan va batu bu suzdar ?',
+	'watchers_error_article' => '<b>Rokla :</b> Batu bu me tir.',
+	'watchers_header'        => 'Tan va "$1" suzdas',
+	'watchers_noone_watches' => 'Metan va batu bu suzdar',
+	'watchers_x_or_more'     => '$1 ok lotan va batu bu suzdad.',
+	'watchers_less_than_x'   => 'Le $1 korik tid suzdas va batu bu.',
 );
 
 /** Bulgarian (Български)

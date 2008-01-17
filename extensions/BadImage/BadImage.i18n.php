@@ -62,6 +62,31 @@ $messages['ar'] = array(
 	'badimages-page' => '{{ns:help}}:قائمة الصور السيئة',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'badimages'                => "Llista d'imáxenes non válides",
+	'badimages-add-btn'        => 'Añader',
+	'badimages-added'          => 'Añadióse $1 a la llista.',
+	'badimages-count'          => "Hai '''$1''' imáxenes na llista d'imáxenes non válides.",
+	'badimages-name'           => 'Nome:',
+	'badimages-not-added'      => 'Nun se pudo añader la imaxe.',
+	'badimages-not-removed'    => 'Nun se pudo eliminar la imaxe.',
+	'badimages-reason'         => 'Motivu:',
+	'badimages-remove'         => '(eliminar)',
+	'badimages-remove-btn'     => 'Eliminar',
+	'badimages-remove-confirm' => 'Por favor confirma que quies eliminar $1 de la llista:',
+	'badimages-removed'        => 'Eliminóse $1 de la llista.',
+	'badimages-subheading'     => 'Elementos actuales',
+	'badimages-unprivileged'   => '(Nun tienes permisos suficientes pa modificar la llista)',
+	'badimages-log-name'       => "Llista d'imáxenes non válides",
+	'badimages-log-header'     => "Esti ye un rexistru de los cambeos na [[{{MediaWiki:Badimages-page}}|llista d'imáxenes non válides]].",
+	'badimages-log-add'        => "añadió [[$1]] a la llista d'imáxenes non válides",
+	'badimages-log-remove'     => "eliminó [[$1]] de la llista d'imáxenes non válides",
+	'badimages-page'           => "{{ns:help}}:Llista d'imáxenes non válides",
+);
+
 $messages['bcl'] = array(
 	'badimages-add-btn' => 'Magdugang',
 	'badimages-name' => 'Pangaran:',

@@ -226,7 +226,7 @@ $wdMessages['bcl'] = array(
  * @author DCLXVI
  */
 $wdMessages['bg'] = array(
-	'datasearch' => 'Уикиданни: Търсене на данни',
+	'datasearch'                      => 'Уикиданни: Търсене на данни',
 	'ow_save'                         => 'Съхранение',
 	'ow_history'                      => 'История',
 	'ow_noedit_title'                 => 'Необходими са права за редактиране',
@@ -239,7 +239,10 @@ $wdMessages['bg'] = array(
 	'ow_ClassAttributeLevel'          => 'Ниво',
 	'ow_ClassAttributeType'           => 'Вид',
 	'ow_Definition'                   => 'Определение',
+	'ow_DefinedMeaningAttributes'     => 'Анотация',
 	'ow_ExactMeanings'                => 'Точни значения',
+	'ow_Language'                     => 'Език',
+	'ow_LevelAnnotation'              => 'Анотация',
 	'ow_PopupAnnotation'              => 'Анотация',
 	'ow_Synonyms'                     => 'Синоними',
 	'ow_SynonymsAndTranslations'      => 'Синоними и преводи',
@@ -523,40 +526,46 @@ Favor contactar al administrador.',
 	'ow_copy_successful'               => '<h2>Copia exitosa</h2>Sus datos han sido copiados exitosamente (Favor verificar de todas formas).',
 );
 
-/** Suomi (Suomi)
+/** Finnish (Suomi)
+ * @author Nike
  */
 $wdMessages['fi'] = array(
-	'ow_AlternativeDefinition'   => 'Vaihtoehtoinen määritelmä',
-	'ow_AlternativeDefinitions'  => 'Vaihtoehtoiset määritelmät',
-	'ow_Annotation'              => 'Annotaatiot',
-	'ow_ClassAttributeAttribute' => 'Ominaisuus',
-	'ow_ClassAttributes'         => 'Luokkaominaisuudet',
-	'ow_ClassAttributeLevel'     => 'Taso',
-	'ow_ClassAttributeType'      => 'Tyyppi',
-	'ow_Definition'              => 'Määritelmä',
-	'ow_ExactMeanings'           => 'Tarkat merkityset',
-	'ow_Expression'              => 'Ilmaisu',
-	'ow_Expressions'             => 'Ilmaisut',
-	'ow_IdenticalMeaning'        => 'Identtinen merkitys',
-	'ow_Language'                => 'Kieli',
-	'ow_LevelAnnotation'         => 'Annotaatio',
-	'ow_Spelling'                => 'Kirjoitusasu',
-	'ow_SynonymsAndTranslations' => 'Synonyymit ja käännökset',
-	'ow_Text'                    => 'Teksti',
+	'ow_AlternativeDefinition'         => 'Vaihtoehtoinen määritelmä',
+	'ow_AlternativeDefinitions'        => 'Vaihtoehtoiset määritelmät',
+	'ow_Annotation'                    => 'Annotaatiot',
+	'ow_ClassAttributeAttribute'       => 'Ominaisuus',
+	'ow_ClassAttributes'               => 'Luokkaominaisuudet',
+	'ow_ClassAttributeLevel'           => 'Taso',
+	'ow_ClassAttributeType'            => 'Tyyppi',
+	'ow_Definition'                    => 'Määritelmä',
+	'ow_ExactMeanings'                 => 'Tarkat merkityset',
+	'ow_Expression'                    => 'Ilmaisu',
+	'ow_Expressions'                   => 'Ilmaisut',
+	'ow_IdenticalMeaning'              => 'Identtinen merkitys',
+	'ow_Language'                      => 'Kieli',
+	'ow_LevelAnnotation'               => 'Annotaatio',
+	'ow_Spelling'                      => 'Kirjoitusasu',
+	'ow_SynonymsAndTranslations'       => 'Synonyymit ja käännökset',
+	'ow_Source'                        => 'Lähde',
+	'ow_SourceIdentifier'              => 'Lähdetunnus',
+	'ow_Text'                          => 'Teksti',
+	'ow_TranslatedText'                => 'Käännetty teksti',
+	'ow_TranslatedTextAttributeValue'  => 'Teksti',
+	'ow_TranslatedTextAttributeValues' => 'Käännettävä teksti',
 );
 
 /** French (Français)
  * @author Grondin
  */
 $wdMessages['fr'] = array(
-	'datasearch' => 'Wikidata: Recherche de données',
+	'datasearch'                            => 'Wikidata: Recherche de données',
 	'langman_title'                         => 'Gestion des langues',
 	'languages'                             => 'Wikidata: Gestion des langues',
 	'ow_save'                               => 'Sauvegarder',
 	'ow_history'                            => 'Historique',
 	'ow_datasets'                           => 'Selection des données définies',
-	'ow_noedit'                             => "Vous n'êtes pas autorisé d'éditer les pages dans les données préétablies « $1 ». Veuillez voir [[{{MediaWiki:Ow editing policy url}}|nos règles d'édition]].",
 	'ow_noedit_title'                       => "Aucune permission d'éditer.",
+	'ow_noedit'                             => "Vous n'êtes pas autorisé d'éditer les pages dans les données préétablies « $1 ». Veuillez voir [[Project:Permission policy|nos règles d'édition]].",
 	'ow_uipref_datasets'                    => 'Vue par défaut',
 	'ow_uiprefs'                            => 'Données wiki',
 	'ow_none_selected'                      => '<Aucune sélection>',
@@ -590,24 +599,35 @@ aux sens définis dans les autres données.</p>",
 	'ow_ClassAttributeAttribute'            => 'Attribut',
 	'ow_ClassAttributes'                    => 'Attributs de classe',
 	'ow_ClassAttributeLevel'                => 'Niveau',
+	'ow_ClassAttributeType'                 => 'Type',
 	'ow_ClassMembership'                    => 'Classes',
+	'ow_Collection'                         => 'Collection',
 	'ow_CollectionMembership'               => 'Collections',
 	'ow_Definition'                         => 'Définition',
+	'ow_DefinedMeaningAttributes'           => 'Annotation',
 	'ow_DefinedMeaning'                     => 'Sens défini',
 	'ow_DefinedMeaningReference'            => 'Sens défini',
 	'ow_ExactMeanings'                      => 'Sens exacts',
+	'ow_Expression'                         => 'Expression',
 	'ow_ExpressionMeanings'                 => 'Sens des expressions',
+	'ow_Expressions'                        => 'Expressions',
 	'ow_IdenticalMeaning'                   => 'Sens identique ?',
 	'ow_IncomingRelations'                  => 'Relations entrantes',
 	'ow_GotoSource'                         => 'Voir la source',
 	'ow_Language'                           => 'Langue',
+	'ow_LevelAnnotation'                    => 'Annotation',
 	'ow_OptionAttribute'                    => 'Propriété',
+	'ow_OptionAttributeOption'              => 'Option',
+	'ow_OptionAttributeOptions'             => 'Options',
 	'ow_OptionAttributeValues'              => 'Valeurs des options',
 	'ow_OtherDefinedMeaning'                => 'Autre sens défini',
+	'ow_PopupAnnotation'                    => 'Annotation',
+	'ow_Relations'                          => 'Relations',
 	'ow_RelationType'                       => 'Type de relation',
 	'ow_Spelling'                           => 'Orthographe',
 	'ow_Synonyms'                           => 'Synonymes',
 	'ow_SynonymsAndTranslations'            => 'Synonymes et traductions',
+	'ow_Source'                             => 'Source',
 	'ow_SourceIdentifier'                   => 'Identificateur de source',
 	'ow_TextAttribute'                      => 'Propriété',
 	'ow_Text'                               => 'Texte',
@@ -677,6 +697,14 @@ $wdMessages['hsb'] = array(
 	'ow_uipref_datasets'                    => 'Standardny napohlad',
 	'ow_uiprefs'                            => 'Wikidaty',
 	'ow_none_selected'                      => '<Ničo wubrane>',
+	'ow_conceptmapping_help'                => '<p>Móžne akcije: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  Zwjazanje zasunyć</li>
+<li>&action=get&concept=<concept_id>  Zwjazanje wotwołać</li>
+<li>&action=list_sets  Lisćinu móžnych prefiksow konteksta datow pokazać  a na štož so poćahuja.</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> Za definowany woznam w konteksće wšě druhe pokazać</li>
+<li>&action=help  Wužitnu pomoc pokazać.</li>
+</ul></p>',
+	'ow_conceptmapping_uitext'              => '<p>Concept mapping ći dowola identifikować, kotry definowany woznam en sadźbje datow je identiski z definowanymi woznami w druhich sadźbach datow.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Wodaj, njewěm, kak mam "$1".',
 	'ow_dm_OK'                              => 'W porjadku',
 	'ow_dm_not_present'                     => 'njezapodaty',
@@ -684,9 +712,12 @@ $wdMessages['hsb'] = array(
 	'ow_mapping_successful'                 => 'Wšě pola markěrowane z [OK] přirjadowane<br />',
 	'ow_mapping_unsuccessful'               => 'Su znajmjeńša dwaj definowanej woznamej za wotkazowanje trjeba.',
 	'ow_will_insert'                        => 'Slědowace so zasunje:',
+	'ow_contents_of_mapping'                => 'Wobsah zwjazanja',
 	'ow_available_contexts'                 => 'K dispoziciji stejace konteksty',
 	'ow_add_concept_link'                   => 'Wotkazy k druhim konceptam přidać',
 	'ow_concept_panel'                      => 'Konceptowy panel',
+	'ow_dm_badtitle'                        => 'Tuta strona njepokazuje na DefinedMeaning (koncept). Prošu přepruwuj webadresu.',
+	'ow_dm_missing'                         => 'Tuta strona pokazuje po wšěm zdaću na njeeksistowacy DefinedMeaning (koncept). Prošu přepruwuj webadresu.',
 	'ow_AlternativeDefinition'              => 'Alternatiwna definicija',
 	'ow_AlternativeDefinitions'             => 'Alternatiwne definicije',
 	'ow_Annotation'                         => 'Anotacija',
@@ -740,7 +771,13 @@ $wdMessages['hsb'] = array(
 	'ow_Permission_denied'                  => '<h2>DOWOLNOSĆ ZAPOWĚDŹENA</h2>',
 	'ow_copy_no_action_specified'           => 'Podaj prošu akciju',
 	'ow_copy_help'                          => 'Jednoho dnja móžemy ći pomhać.',
+	'ow_please_proved_dmid'                 => 'Zda so, zo w twojim zapodaću "?dmid=<ID>" (dmid=Defined Meaning ID) faluje.<br />Prošu skontaktuj serweroweho administratora.',
+	'ow_please_proved_dc1'                  => 'Zda so, zo w twojim zapodaću "?dc1=<something>" (dc1=dataset context 1, dataset to copy FROM)<br />Prošu skontaktuj serweroweho administratora.',
+	'ow_please_proved_dc2'                  => 'Zda so, zo w twojim zapodaću "?dc2=<something>" (dc2=dataset context 2, dataset to copy TO)<br />Prošu skontaktuj serweroweho administratora.',
+	'ow_copy_successful'                    => '<h2>Kopěrowanje wuspěšne</h2>Zda so, zo twoje daty su so wušpěšnje kopěrowali. Njezabudź hišće raz pruwować, zo by zawěsće był.',
 	'ow_copy_unsuccessful'                  => '<h3>Kopěrowanje njewuspěšne</h3> Žana kopěrowanska operacija njeje so wotměła.',
+	'ow_no_action_specified'                => '<h3>Žana akcija podata</h3> Sy ty snano direktnje k tutej stronje přišoł? W normalny padźe njetrjebaš tu być.',
+	'ow_db_consistency_not_found'           => '<h2>Zmylk</h2>Je problem z konsistencu datoweje banki, wikidata njemóže płaćiwe daty namakać, kotrež su z tutym ID definedMeaning zwjazane. Snano su so zhubili. Prošu skontaktuj serweroweho operatora abo administratora.',
 );
 
 $wdMessages['id'] = array(
@@ -1372,6 +1409,9 @@ $wdMessages['sv'] = array(
 $wdMessages['tr'] = array(
 	'langman_title' => 'Lisan idarecisi',
 	'languages'     => 'Wikidata: Lisan idarecisi',
+	'ow_save'       => 'Kaydet',
+	'ow_dm_OK'      => 'Tamam',
+	'ow_Language'   => 'Dil',
 );
 
 /** Volapük (Volapük)
