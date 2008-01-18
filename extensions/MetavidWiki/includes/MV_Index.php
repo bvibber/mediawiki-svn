@@ -440,6 +440,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$mvd_row = MV_Index::getMVDbyTitle( $mvTitle->getWikiTitle() );
 		//set up the insert values:
 		$insAry = array(
+			'mv_page_id'=>$article->mTitle->getArticleID(),
 			'wiki_title'=>$mvTitle->getWikiTitle(),
 			'mvd_type'=>$mvTitle->getTypeMarker(),
 			'stream_id'=>$mvTitle->getStreamId(), 
