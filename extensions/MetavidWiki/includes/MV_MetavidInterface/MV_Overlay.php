@@ -551,7 +551,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 
 				//get updated mvd_id: 				
 				$dbr =& wfGetDB(DB_SLAVE);
-				$result = & MV_Index::getMVDbyTitle($titleKey, 'id');			
+				$result = & MV_Index::getMVDbyTitle($titleKey, 'mv_page_id');			
 				$mvd_id = $result->id;															
 				
 				//return $this->get_fd_mvd_request($titleKey, $mvd_id, 'enclosed');

@@ -231,7 +231,7 @@ switch ($args[0]) {
 	break;
 	default :
 		do_stream_insert('stream', $args[0]);
-		break;
+	break;
 }
 function upTempalte_Ht_en($force = false) {
 	$wgTemplateTitle = Title :: makeTitle(NS_TEMPLATE, 'Ht_en');

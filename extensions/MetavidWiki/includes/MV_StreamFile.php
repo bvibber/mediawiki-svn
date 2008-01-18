@@ -98,8 +98,8 @@
 		global $mvLocalVideoLoc,$mvDefaultVideoQualityId;
 		if($quality==null)$quality=$mvDefaultVideoQualityId;
 		
-		if(!is_dir($mvLocalVideoLoc))return null;
-		if(!is_file($mvLocalVideoLoc . $this->_parent_stream->getStreamName() ))return null;
+		if(!is_dir($mvLocalVideoLoc))return null;		
+		if(!@is_file($mvLocalVideoLoc . $this->_parent_stream->getStreamName() ))return null;
 		//all looks good return: 		
 		return $mvLocalVideoLoc . $this->_parent_stream->getStreamName();		
 	}
