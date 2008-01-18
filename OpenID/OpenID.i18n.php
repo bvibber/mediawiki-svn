@@ -2,7 +2,7 @@
 /**
  * OpenID.i18n.php -- Interface messages for OpenID for MediaWiki
  * Copyright 2006,2007 Internet Brands (http://www.internetbrands.com/)
- * Copyright 2007 Evan Prodromou <evan@prodromou.name>
+ * Copyright 2007,2008 Evan Prodromou <evan@prodromou.name>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

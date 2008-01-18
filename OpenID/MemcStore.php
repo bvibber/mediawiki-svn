@@ -2,7 +2,7 @@
 /**
  * MemcStore.php -- An OpenID store using MediaWiki's $wgMemc object
  * Copyright 2006,2007 Internet Brands (http://www.internetbrands.com/)
- * By Evan Prodromou <evan@wikitravel.org>
+ * Copyright 2007,2008 Evan Prodromou <evan@prodromou.name>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @author Evan Prodromou <evan@wikitravel.org>
+ * @author Evan Prodromou <evan@prodromou.name>
  * @addtogroup Extensions
  */
 

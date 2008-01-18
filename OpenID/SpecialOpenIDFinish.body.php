@@ -2,7 +2,7 @@
 /**
  * SpecialOpenIDFinish.body.php -- Finish logging into an OpenID site
  * Copyright 2006,2007 Internet Brands (http://www.internetbrands.com/)
- * By Evan Prodromou <evan@wikitravel.org>
+ * Copyright 2007,2008 Evan Prodromou <evan@prodromou.name>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @author Evan Prodromou <evan@wikitravel.org>
+ * @author Evan Prodromou <evan@prodromou.name>
  * @addtogroup Extensions
  */
 
@@ -51,10 +51,9 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 
 		switch ($par) {
 		 case 'ChooseName':
-			list($response, $sreg) = $this->fetchValues();
-			if (!isset($response) ||
-				$response->status != Auth_OpenID_SUCCESS ||
-				!isset($response->identity_url)) {
+			list($openid, $sreg) = $this->fetchValues();
+			if (!isset($openid)) {
+				wfDebug("OpenID: aborting in ChooseName because identity_url is missing\n");
 				$this->clearValues();
 				# No messing around, here
 				$wgOut->errorpage('openiderror', 'openiderrortext');
@@ -71,14 +70,14 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 			$nameValue = $wgRequest->getText('wpNameValue');
 			wfDebug("OpenID: Got form values '$choice' and '$nameValue'\n");
 
-			$name = $this->getUserName($response, $sreg, $choice, $nameValue);
+			$name = $this->getUserName($openid, $sreg, $choice, $nameValue);
 
 			if (!$name || !$this->userNameOK($name)) {
-				$this->chooseNameForm($response, $sreg);
+				$this->chooseNameForm($openid, $sreg);
 				return;
 			}
 
-			$user = $this->createUser($response->identity_url, $sreg, $name);
+			$user = $this->createUser($openid, $sreg, $name);
 
 			if (!isset($user)) {
 				$this->clearValues();
@@ -87,6 +86,7 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 			}
 
 			$wgUser = $user;
+
 			$this->clearValues();
 
 			$this->finishLogin($response->identity_url);
@@ -133,8 +133,8 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 						$user = $this->createUser($openid, $sreg, $name);
 					} else {
 					# For hard names
-						$this->saveValues($response, $sreg);
-						$this->chooseNameForm($response, $sreg);
+						$this->saveValues($openid, $sreg);
+						$this->chooseNameForm($openid, $sreg);
 						return;
 					}
 				}
@@ -180,7 +180,7 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 		setcookie($wgCookiePrefix.'OpenID', $openid, $exp, $wgCookiePath, $wgCookieDomain, $wgCookieSecure);
 	}
 
-	function chooseNameForm($response, $sreg) {
+	function chooseNameForm($openid, $sreg) {
 
 		global $wgOut, $wgUser;
 		$sk = $wgUser->getSkin();
@@ -204,7 +204,7 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 			$def = true;
 		}
 
-		$idname = $this->toUserName($response->identity_url);
+		$idname = $this->toUserName($openid);
 
 		if ($idname && $this->userNameOK($idname)) {
 			$wgOut->addHTML("<input type='radio' name='wpNameChoice' id='wpNameChoiceUrl' value='url' " .
@@ -572,27 +572,27 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 		}
 	}
 
-	function saveValues($response, $sreg) {
+	function saveValues($openid, $sreg) {
 		global $wgSessionStarted, $wgUser;
 
 		if (!$wgSessionStarted) {
 			$wgUser->SetupSession();
 		}
 
-		$_SESSION['openid_consumer_response'] = $response;
+		$_SESSION['openid_consumer_identity'] = $openid;
 		$_SESSION['openid_consumer_sreg'] = $sreg;
 
 		return true;
 	}
 
 	function clearValues() {
-		unset($_SESSION['openid_consumer_response']);
+		unset($_SESSION['openid_consumer_identity']);
 		unset($_SESSION['openid_consumer_sreg']);
 		return true;
 	}
 
 	function fetchValues() {
-		return array($_SESSION['openid_consumer_response'], $_SESSION['openid_consumer_sreg']);
+		return array($_SESSION['openid_consumer_identity'], $_SESSION['openid_consumer_sreg']);
 	}
 
 	function returnTo() {

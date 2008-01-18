@@ -8,7 +8,7 @@
 + Function to let skins tell if user is OpenID user
 + Function to let skins know user's OpenID URL
 + Interwiki login
-- drop-down for other URLs
+- drop-down for username prefixes (Yahoo, etc.)
 + server mode login
 + server mode trust form
 + server mode share fields form
@@ -28,6 +28,7 @@
 - Manage allow-to-trust settings in User preferences
 - Optionally redirect User: page to OpenID URL
 - If user logs in with OpenID, add a cookie, and auto-login next time
+  with check_immediate
 + Have some $trust_root values that we _always_ allow to trust
 + README
 + form to choose user ID if not sreg.nickname or sreg.fullname
@@ -38,16 +39,18 @@
 - Allow specifying a MySQLStore rather than a MemcStore
 + Fall back to FileStore if Memc is bogus
 + Unit test for MemcStore
-- for just-a-hostname OpenIDs, if the first element is not
++ for just-a-hostname OpenIDs, if the first element is not
   www, use the first element as a proposed ID
 - configurable regexps for finding a user ID from an OpenID.
 + Make the OpenID login page more prominent. A personal toolbox link for each page?
 - Update MemcStore for version 2.0 libraries
-- Update Sreg support for new API in version 2.0 libraries
++ Update Sreg support for new API in version 2.0 libraries
 - Provider-driven identifier selection (eh? do we care?)
 - fix problem with getting $request->identity after login on server
-- fix problem with return_to parsing on login
-- fix problem with return_to parsing on convert
++ fix problem with return_to parsing on login
++ fix problem with return_to parsing on convert
 - optionally allow user to specify an existing username/password after
   logging in with OpenID the first time (like ma.gnolia.com)
-  
+- deal with difference between canonical ID and "display ID" with XRIs
+- add more explanatory text to the default login (copy Wikitravel text)
+- add a public-domain Help:OpenID.wiki
