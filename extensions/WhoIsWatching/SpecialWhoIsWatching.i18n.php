@@ -116,7 +116,11 @@ $messages['hsb'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'specialwhoiswatchingthepage' => 'Wien iwwerwaacht %s',
+	'whoiswatching'                => 'Wien iwwerwaacht eng Säit',
+	'specialwhoiswatchingthepage'  => 'Wien iwwerwaacht %s',
+	'specialwhoiswatchingusage'    => 'Dës Spezialsäit kann net eleng benotzt ginn. Benotz w.e.g. [[MediaWiki:Number_of_watching_users_pageview|Zuel vun de Benotzer déi eng Sàit iwwerwaachen]] fir eng Ufankssäit fir dës Spezialsäit ze definéieren.',
+	'specialwhoiswatchingaddusers' => "Setzt Benotzer derbäi déi d'Säit iwwerwaachen",
+	'specialwhoiswatchingaddbtn'   => 'Setzt déi ausgewielte Benotzer derbäi',
 );
 
 /** Lithuanian (Lietuvių)

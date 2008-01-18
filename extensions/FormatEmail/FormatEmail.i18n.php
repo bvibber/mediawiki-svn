@@ -90,7 +90,7 @@ Denne e-posten har blitt sendt deg fra $1 via {{SITENAME}}s e-postsystem.',
 $messages['oc'] = array(
 	'email_footer' => '----------------------------------------------------------------------------
 
-Aqueste corrièr vos es estat mandat gràcia al sistèma de messajtariá de {{SITENAME}} per $1. $2',
+Aqueste corrièr vos es estat mandat gràcia al sistèma de messatjariá de {{SITENAME}} per $1. $2',
 );
 
 /** Slovak (Slovenčina)

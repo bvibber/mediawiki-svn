@@ -258,13 +258,19 @@ $messages['no'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Input-feil!',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
-	'chemicalsources' => 'Fonts per la quimia',
-	'chemFunctions_ListPage' => 'Fonts per la quimia',
-	'chemFunctions_CAS' => 'Numèro CAS',
-	'chemFunctions_EINECS' => 'Numèro EINECS',
-	'chemFunctions_ATCCode' => 'Còde ATC',
-	'chemFunctions_Name' => 'Nom UICPA',
+	'chemicalsources'                  => 'Fonts per la quimia',
+	'chemFunctions_ListPage'           => 'Fonts per la quimia',
+	'chemFunctions_DataList'           => 'Seguís una lista de ligams vèrs de sites que pòdon aportar d\'informacions a prepaus de las substçncias quimicas que recercatz. * [http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI Compausat $MIXCASNameFormula], NIST * [http://ptcl.chem.ox.ac.uk/MSDS/ MSDS], Universitat d\'Oxford',
+	'chemFunctions_CAS'                => 'Numèro CAS',
+	'chemFunctions_EINECS'             => 'Numèro EINECS',
+	'chemFunctions_ATCCode'            => 'Còde ATC',
+	'chemFunctions_ECNumber'           => 'Nomenclatura EC',
+	'chemFunctions_Formula'            => 'Formula',
+	'chemFunctions_Name'               => 'Nom UICPA',
 	'chemFunctions_ChemFormInputError' => 'Chemform, dintrant erronèu!',
 );
 

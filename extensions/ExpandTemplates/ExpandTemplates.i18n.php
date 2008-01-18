@@ -655,6 +655,7 @@ $messages['sv'] = array(
 	'expand_templates_input'           => 'Text som ska expanderas:',
 	'expand_templates_output'          => 'Expanderad kod',
 	'expand_templates_xml_output'      => 'XML-kod',
+	'expand_templates_ok'              => 'Expandera',
 	'expand_templates_remove_comments' => 'Ta bort kommentarer',
 	'expand_templates_generate_xml'    => 'Visa parseträd som XML',
 	'expand_templates_preview'         => 'Förhandsvisning',
@@ -665,6 +666,13 @@ $messages['sv'] = array(
  */
 $messages['to'] = array(
 	'expandtemplates' => 'Fakalahiange ʻa e ngaahi sīpinga',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'expand_templates_preview' => 'Büologed',
 );
 
 $messages['yue'] = array(

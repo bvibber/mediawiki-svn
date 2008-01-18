@@ -145,9 +145,11 @@ $messages['oc'] = array(
 	'postcomment_youareloggedinas'         => 'Sètz pas identificat(-ada) en tant que $1.',
 	'postcomment_addcommentdiscussionpage' => 'Ajustatz un comentari sus aquesta pagina de discussion',
 	'postcomment_leavemessagefor'          => 'Daissatz un messatge per $1',
+	'postcomment_post'                     => 'Messatge',
 	'postcomment_said'                     => 'a dich',
 	'postcomment_invalidrequest'           => 'Requèsta invalida',
 	'postcomment_replyto'                  => 'Respondre a $1',
+	'postcomment_nopostingtoadd'           => "Cap de messatge d'ajustar",
 );
 
 /** Slovak (Slovenčina)

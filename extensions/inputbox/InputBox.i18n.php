@@ -528,7 +528,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'inputbox-error-no-type'  => 'Avètz pas precisat lo tipe de la boita de dintrada de crear.',
-	'inputbox-error-bad-type' => "Tipe de boita dintradad $1 pas reconeguda. Indicatz l'opcion ''create'', ''comment'', ''search'' o ''searche2''.",
+	'inputbox-error-bad-type' => "Tipe de boita dintrada $1 pas reconeguda. Indicatz l'opcion ''create'', ''comment'', ''search'' o ''searche2''.",
 	'tryexact'                => 'Ensajatz la correspondéncia exacta',
 	'searchfulltext'          => 'Recèrca en tèxt integral',
 	'createarticle'           => 'Crear l’article',

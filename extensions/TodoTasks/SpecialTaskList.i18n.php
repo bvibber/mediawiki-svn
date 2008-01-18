@@ -167,6 +167,24 @@ Zo by swoju dospołnu lisćinu nadawkow widźał, dźi k %s.
 Twój přećelny zdźělenski system %s.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'tasklist'               => 'Lëscht vun den Aufgaben',
+	'tasklistbyproject'      => 'Lëscht vun den Aufgabe pro Projet',
+	'tasklistunknownproject' => 'Onbekannte Projet',
+	'tasklistunspecuser'     => 'Onbestemmte Benotzer',
+	'tasklistincorrectuser'  => 'Falsche Benotzernumm',
+	'tasklistemail'          => 'Léiwe %s',
+	'tasklistemailsubject'   => '[%s] Ännerunge vun der Lëscht vun den Aufgaben',
+	'tasklistmytasks'        => 'Meng Aufgaben',
+	'tasklistbyprojname'     => "Aufgaben déi dem '''%s''' zougedeelt sinn.",
+	'tasklistchooseproj'     => 'Projet auswielen:',
+	'tasklistprojdisp'       => 'Weisen',
+	'tasklistbyname'         => '== Lëscht vun den Aufgabe fir %s ==',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

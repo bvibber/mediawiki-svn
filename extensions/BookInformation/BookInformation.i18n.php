@@ -663,12 +663,13 @@ $messages['sv'] = array(
  * @author Smeira
  */
 $messages['vo'] = array(
-	'bookinfo-header'           => 'Nüns dö buk',
-	'bookinfo-result-title'     => 'Tiäd:',
-	'bookinfo-result-author'    => 'Lautan:',
-	'bookinfo-result-publisher' => 'Dabükan:',
-	'bookinfo-result-year'      => 'Yel:',
-	'bookinfo-purchase'         => 'Remolös buki at se $1',
+	'bookinfo-header'            => 'Nüns dö buk',
+	'bookinfo-result-title'      => 'Tiäd:',
+	'bookinfo-result-author'     => 'Lautan:',
+	'bookinfo-result-publisher'  => 'Dabükan:',
+	'bookinfo-result-year'       => 'Yel:',
+	'bookinfo-error-invalidisbn' => 'ISBN no lonöföl.',
+	'bookinfo-purchase'          => 'Remolös buki at se $1',
 );
 
 /* Cantonese (Shinjiman) */

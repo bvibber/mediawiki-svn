@@ -182,6 +182,8 @@ Causissetz « Recercar » e seleccionatz cada fichièr que volètz telecargar. N
 Podètz inscriure la '''destinacion del fichièr''' e emplenar lo '''Somari''' per descriure vòstre imatge.
 
 Los imatges pas pertinents poiràn èsser escafadas immediatament. Vejatz la pagina [[{{MediaWiki:Multipleupload-page}}|image deletion policy]].",
+	'multiupload-fileuploaded'         => 'Fichièr telecargat',
+	'multiupload-toolbox'              => 'Telecargar mantun fichièr',
 );
 
 $messages['pl'] = array(

@@ -11,15 +11,15 @@ $messages['en'] = array(
 	'usercontactlink-baduser' => 'incorrect username',
 );
 
+$messages['ar'] = array(
+	'usercontactlink-baduser' => 'اسم مستخدم غير صحيح',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */
 $messages['avk'] = array(
 	'usercontactlink-baduser' => 'Favesikyoltaj',
-);
-
-$messages['ar'] = array(
-	'usercontactlink-baduser' => 'اسم مستخدم غير صحيح',
 );
 
 /** Bulgarian (Български)
@@ -47,6 +47,13 @@ $messages['gl'] = array(
 
 $messages['hsb'] = array(
 	'usercontactlink-baduser' => 'njekorektne wužiwarske mjeno',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'usercontactlink-baduser' => 'falsche Benotzernumm',
 );
 
 $messages['nl'] = array(

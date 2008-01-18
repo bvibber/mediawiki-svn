@@ -832,15 +832,22 @@ $wdMessages['lb'] = array(
 	'langman_title'             => 'Sproochmanager',
 	'languages'                 => 'Wikidata: Sproochmanager',
 	'ow_save'                   => 'Späicheren',
+	'ow_history'                => 'Versiounen',
+	'ow_noedit_title'           => "Keng Erlabniss fir z'änneren",
 	'ow_uiprefs'                => 'Wikidata',
+	'ow_none_selected'          => '<Näischt ausgewielt>',
 	'ow_Definition'             => 'Definitioun',
 	'ow_Expression'             => 'Ausdrock',
 	'ow_Expressions'            => 'Ausdréck',
 	'ow_Language'               => 'Sprooch',
 	'ow_OptionAttributeOption'  => 'Optioun',
 	'ow_OptionAttributeOptions' => 'Optiounen',
+	'ow_Spelling'               => 'Schreifweis',
+	'ow_Synonyms'               => 'Synonymen',
 	'ow_Source'                 => 'Quell',
+	'ow_Text'                   => 'Text',
 	'ow_LinkAttributeValues'    => 'Linken',
+	'ow_copy_help'              => 'Fréier oder spéider kënne mir iech hëllefen.',
 );
 
 /** Lithuanian (Lietuvių)

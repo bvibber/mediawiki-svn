@@ -81,6 +81,17 @@ $messages['pt'] = array(
 	'eval_code'   => 'Código',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'eval'        => 'Вычисление',
+	'eval_submit' => 'Вычислить',
+	'eval_escape' => 'Экранировать вывод',
+	'eval_out'    => 'Вывод',
+	'eval_code'   => 'Код',
+);
+
 $messages['sk'] = array(
 	'eval_submit' => 'Vyhodnotiť',
 	'eval_escape' => 'Výstup s únikovými klauzulami',

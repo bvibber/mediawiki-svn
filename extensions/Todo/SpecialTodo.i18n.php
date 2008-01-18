@@ -176,8 +176,11 @@ $4',
  * @author Robby
  */
 $messages['lb'] = array(
+	'todo'             => 'Lëscht vun den Aufgaben',
+	'todo-tab'         => 'fir ze maachen',
 	'todo-new-queue'   => 'nei',
 	'todo-list-change' => 'Änneren',
+	'todo-list-cancel' => 'Annulléieren',
 );
 
 /** Dutch (Nederlands)

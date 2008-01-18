@@ -109,7 +109,9 @@ $messages['hsb'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'showprocesslist-id'   => 'Nummer',
 	'showprocesslist-user' => 'Benotzer',
+	'showprocesslist-time' => 'Zäit',
 );
 
 /** Dutch (Nederlands)

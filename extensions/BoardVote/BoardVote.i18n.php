@@ -1640,6 +1640,12 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'boardvote'              => 'Wale fir de Wikimedia Board of Trustees',
+	'boardvote_intro'        => "<p>Wëllkomm bei der zweeter Wal fir de Wikimedia Board of Trustees. Et ginn zwou Persoune gewielt, déi d'Benotzer vun de verschiddene Wikimedia-Projete representéieren. Si wäerten dobäi hëllefe fir z'entscheeden, wellech Richtung fir déi verschidde Wikimedia-Projeten ageschloe gëtt, ob eleng oder als Grupp, an <em>är</em> Interessen a Standpunkter beim Board of Trustees representéieren. Si wäerten och dobäi hëllefen, Konzepter z'entwéckelen, fir d'Recetten an d'Spende fir Wikimedia z'erhéijen.</p>
+
+<p>Liest w.e.g. d'Stellungnahm vun de Kandidaten an hir Äntwerten op Froen, éier Dir fir ee stëmmt. All Kandidat ass e respektéierte Benotzer, dee mat vill Zäit a Gedold dozou bäigedroen huet, aus de Projeten en Ëmfeld ze schafen, dat fir d'Verbreedung vu fräiem Wëssen aluet.</p>
+
+<p>Dir kënnt fir esou vill Kandidate stëmme wéi Dir wëllt. Déi zwéi Kandidate mat de meeschte Stëmme gewannen d'Wal. Sollt et dobäi zu engem Rampo kommen, kënnt et zu engem Ballottage.</p>",
 	'boardvote_entered'      => "Merci, är Stëmm gouf gespäichert.
 
 Wann der wëllt, kënnt der déi folgend Detailer festhalen. Är Ofstëmmungsfiche ass:
@@ -1655,7 +1661,7 @@ D'verschlësselt Versioun dovunner fannt der ënnen. Si gëtt ëffentlech op [[S
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Zréck]]",
-	'boardvote_notqualified' => 'Dir sidd net berechtegt fir un dëser Wal deelzehuelen. Dir musst $3 Ännerunge virum $3 gemaacht hunn (Dir hutt der $1). !Ar éischt Ännerung muss virum $5 gemaach gi sinn (Är éischt Ännerung ass vum $4).',
+	'boardvote_notqualified' => 'Dir sidd net berechtegt fir un dëser Wal deelzehuelen. Dir musst $3 Ännerunge virum $2 gemaacht hunn (Dir hutt der $1). Är éischt Ännerung muss virum $5 gemaach gi sinn (Är éischt Ännerung ass vum $4).',
 	'boardvote_novotes'      => 'Et huet nach keen ofgestëmmt.',
 	'boardvote_time'         => 'Zäit',
 	'boardvote_user'         => 'Benotzer',
@@ -1668,7 +1674,7 @@ D'verschlësselt Versioun dovunner fannt der ënnen. Si gëtt ëffentlech op [[S
 	'boardvote_strike'       => 'Stëmm läschen',
 	'boardvote_notstarted'   => "D'Ofstëmmung huet nach net ugefaang",
 	'boardvote_edits_many'   => 'vill',
-	'boardvote_blocked'      => 'Pardon, dir gouft op ärer Wiki gespaart. Gespaarte Benotzer däerfen net wielen.',
+	'boardvote_blocked'      => 'Dir gouft op ärer Wiki gespaart. Gespaarte Benotzer däerfen net wielen.',
 	'boardvote_welcome'      => "Wëllkomm '''$1'''!",
 	'go_to_board_vote'       => '"Wikimedia Board" Walen 2007',
 );
@@ -2714,11 +2720,14 @@ $messages['ty'] = array(
  */
 $messages['vo'] = array(
 	'boardvote_intro_change' => '<p>Ya evögodol. Kanol ye votükön vögodi olik me fomet dono. Välolös bokilis nilü steifädans, kelis büuköl.</p>',
+	'boardvote_notloggedin'  => 'No enunädol oli. Ad vögodön, mutol gebön kali labü keblünots pu $1 bü $2, e kela redakam balid äjenon bü $3.',
 	'boardvote_novotes'      => 'Nek nog evögodon.',
 	'boardvote_time'         => 'Tim',
 	'boardvote_user'         => 'Geban',
 	'boardvote_edits'        => 'Redakams',
 	'boardvote_days'         => 'Dels',
+	'boardvote_listintro'    => '<p>Is pajonon lised vögodas jünu peregistarölas valikas. $1 ad getön fomami pejüföl.</p>',
+	'boardvote_notstarted'   => 'Vögodam no nog eprimon',
 	'boardvote_edits_many'   => 'mödik',
 	'boardvote_welcome'      => "Benokömö, o '''$1'''!",
 );
