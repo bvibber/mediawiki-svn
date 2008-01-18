@@ -49,7 +49,7 @@
  	function validRequestTitle(){
  		//@@todo should throw the errors as exceptions
  		//first check if stream exists
- 		if(!$this->doesStreamExists()) {
+ 		if(!$this->doesStreamExist()) {
  			//print "stream does not exist"; 
  			return false;
  		}
@@ -66,7 +66,7 @@
  	/*
 	 * Check the db for the given stream name 
 	 */
-	function doesStreamExists(){	
+	function doesStreamExist(){	
 		//print "looking for: ". 	$this->stream_name;
 		$this->mvStream = & mvGetMVStream($this->stream_name);
 		$this->mvStream->setMvTitle($this);
@@ -93,7 +93,7 @@
 		if($this->mvStream){
 			return $this->mvStream->getStreamId();
 		}else{
-			if($this->doesStreamExists()){				
+			if($this->doesStreamExist()){				
 				return $this->mvStream->getStreamId();
 			}
 		}
@@ -205,7 +205,7 @@
 		if( $this->getStartTime()!='' && $this->getEndTime()!=''){
 			$anx_req  ='.anx?t='. $this->getStartTime() . '/' . $this->getEndTime();
 		}
-		if( $this->doesStreamExists() ){			
+		if( $this->doesStreamExist() ){			
 			//@@todo cache this:
 			$dbr = & wfGetDB(DB_READ);
 			$result = $dbr->select($dbr->tableName($mvStreamFilesTable), array('path'), array (			

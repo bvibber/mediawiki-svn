@@ -239,12 +239,14 @@ var vlcEmbed = {
     stop : function(){
     	js_log(this.vlc);
     	if(typeof this.vlc != 'undefined' ){
-    		this.vlc.playlist.stop();
-	    	if( this.monitorTimerId != 0 )
-		    {
-		        clearInterval(this.monitorTimerId);
-		        this.monitorTimerId = 0;
-		    }
+    		if(typeof this.vlc.playlist != 'undefined'){
+	    		this.vlc.playlist.stop();
+		    	if( this.monitorTimerId != 0 )
+			    {
+			        clearInterval(this.monitorTimerId);
+			        this.monitorTimerId = 0;
+			    }
+    		}
     	}
 	    //this.onStop();
 	    //do parent stop

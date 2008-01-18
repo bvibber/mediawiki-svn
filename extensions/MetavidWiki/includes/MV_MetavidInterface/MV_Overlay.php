@@ -202,11 +202,15 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	}
 	function parse_format_text($text, &$mvdTile){
 		global $wgOut;
+		global $wgParser, $wgUser, $wgTitle, $wgContLang;
 		$template_key='';			
 		if(is_object($mvdTile))$template_key = $mvdTile->getMvdTypeKey();
 		//$wgOut->addHTML('looking at: ' . strtolower($template_key));
+		
+		//pull up relevent template for given mvd type: 
 		switch(strtolower($template_key)){
 			case 'ht_en':			
+				global $wgParser, $wgUser, $wgTitle, $wgContLang;
 				$templetTitle = Title::makeTitle(NS_TEMPLATE, $template_key );	
 				if($templetTitle->exists()){	
 					$smw_attr = $this->get_and_strip_semantic_tags($text);			
@@ -217,32 +221,27 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 						$template_wiki_text.= '|PersonName='.$smw_attr['Spoken By']."\n";
 					}
 					$template_wiki_text.='|BodyText='.$text."\n".
-					'}}';
-					$wgOut->addWikiText($template_wiki_text);
-					return ;
+					'}}';										
+					$text =	$template_wiki_text;					
 				}			
 			break;
-			case 'anno_en':
-				global $wgParser, $wgUser, $wgTitle, $wgContLang;
-				$sk =& $wgUser->getSkin();
-								
-				//run via parser to add in Category info: 
-				$parserOptions = ParserOptions::newFromUser( $wgUser );
-				$parserOptions->setEditSection( false );
-				$parserOptions->setTidy(true);
-				$parserOutput = $wgParser->parse( $text , $mvdTile, $parserOptions );
-				$wgOut->addCategoryLinks( $parserOutput->getCategories() );
-				$wgOut->addHTML( $parserOutput->mText );
-				$wgOut->addHTML( $sk->getCategories() );
-				//empty out the categories
-				$wgOut->mCategoryLinks = array();							
+			case 'anno_en':											
 			break;
-			default:
-				$wgOut->addHTML(' of type: ' . $template_key);
-				//if nothing else add text directly:
-				$wgOut->addWikiText($text);
+			default:					
 			break;
-		}						
+		}
+		//now add the text with categories if present:
+		$sk =& $wgUser->getSkin();
+		//run via parser to add in Category info: 
+		$parserOptions = ParserOptions::newFromUser( $wgUser );
+		$parserOptions->setEditSection( false );
+		$parserOptions->setTidy(true);
+		$parserOutput = $wgParser->parse( $text , $mvdTile, $parserOptions );
+		$wgOut->addCategoryLinks( $parserOutput->getCategories() );
+		$wgOut->addHTML( $parserOutput->mText );
+		$wgOut->addHTML( $sk->getCategories() );
+		//empty out the categories
+		$wgOut->mCategoryLinks = array();								
 	}
 	function get_add_disp($baseTitle, $mvdType, $time_range){
 		global $wgUser, $wgOut, $mvDefaultClipLength,$mvMVDTypeKeys, $wgRequest;					

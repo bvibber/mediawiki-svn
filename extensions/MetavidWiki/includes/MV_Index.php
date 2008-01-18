@@ -149,7 +149,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		$dbr =& wfGetDB(DB_SLAVE);
  		//organize the queries (group full-text searches and category/attributes)
  		//if the attribute is not a numerical just add it to the fulltext query 
- 		$ftq=$toplq=$snq=''; //top query and full text query ='' 		
+ 		$ftq=$snq=$toplq_cat=''; //top query and full text query ='' 		 	
  		if($filters=='')return array(); 		
  		
  		$selOpt = ($mvDo_SQL_CALC_FOUND_ROWS)?'SQL_CALC_FOUND_ROWS':''; 
@@ -157,6 +157,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		list( $this->limit, $this->offset ) = $wgRequest->getLimitOffset( 20, 'searchlimit' );
  		//print_r($filters);
  		//print_r($_GET);
+ 		$categoryTable =  $dbr->tableName( 'categorylinks');
  		foreach($filters as $f){
  			//proocc and or for fulltext:
  			if(!isset($f['a']))$f['a']='and';
@@ -167,16 +168,28 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  			}
  			//add to the fulltext query: 
  			switch($f['t']){
- 				case 'spoken_by': 					
- 					$ftq.=' '.$aon.'"spoken by::'.mysql_escape_string($f['v']).'"';
+ 				case 'spoken_by': 		
+ 					//full text based semantic query:			
+ 					$ftq.=' '.$aon.'"spoken by '.mysql_escape_string($f['v']).'"';
+ 					//table based query:
+ 					
  				break; 			
  				case 'match':
  					$ftq.=' '.$aon.'"'.mysql_escape_string($f['v']).'"';
  				break;
  				//top level queries  (sets up time ranges )
- 				case 'category': 				
- 					$toplq.=' '.$aon.'"category:'.mysql_escape_string($f['v']).'" ';
+ 				case 'category':
+ 					//full text based category query: 				
+ 					$toplq.=' '.$aon.'"category '.mysql_escape_string($f['v']).'" ';
  					//$ftq.=' '.$aon.'category:'.mysql_escape_string($f['v']);
+ 					
+ 					//table based query:
+ 					switch($f['a']){
+			 			case 'and':$toplq_cat='AND';break;
+			 			case 'or':$toplq_cat='OR';break;
+			 			case 'not':$toplq_cat='NOT';break;
+			 		}	
+ 					$toplq_cat.=" $categoryTable.`cl_to`='".mysql_escape_string($f['v'])."'";
  				break;
  				case 'stream_name':
  					if($snq!=''){
@@ -199,21 +212,21 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		$searchindexTable = $dbr->tableName( 'searchindex' );
  		$ret_ary = array();
  		//only run the top range query if we have no secondary query
- 		if($toplq!='' && $ftq==''){
- 			$andstr='';
- 			//apend AND if $snq not null: 
- 			if($snq!='')$andstr.='AND'; 			
+ 		if($toplq_cat!='' && $ftq==''){ 			
+ 			//@@todo unify top query with ranged query ... kind of tricky 			
+ 			
  			//@@todo we should only look in annotative layer for top level queries? ...
- 			//@@todo paging for top level queries? ... 100 stream limit is probably ok  
- 			//@@ no spoken by attribute for 'anno_en' mvd_type 	
+ 			//@@todo paging for top level queries? ... 200 hit limit is probably ok     			
+ 			
  			$sql = "SELECT `mv_page_id` as `id`, `stream_id`,`start_time`,`end_time`, `wiki_title`, $searchindexTable.`si_text` as `text`
 	 			FROM `$mvIndexTableName` 
-	 			JOIN $searchindexTable ON `$mvIndexTableName`.`mv_page_id` = $searchindexTable.`si_page`
-	 			WHERE $snq $andstr `mvd_type`='Anno_en' 
-		 			AND MATCH ($searchindexTable.`si_text`) 
-		 			AGAINST('$toplq' IN BOOLEAN MODE)
-	 			LIMIT 0, 100";
-	 		echo "topQ: $sql \n\n";
+	 			JOIN $categoryTable ON `$mvIndexTableName`.`mv_page_id` = $categoryTable.`cl_from`
+	 			LEFT JOIN $searchindexTable ON `$mvIndexTableName`.`mv_page_id` = $searchindexTable.`si_page` 
+	 			WHERE `mvd_type`='Anno_en' " .
+	 			" $toplq_cat " .
+	 			" $snq " .  		
+	 			"LIMIT 0, 200";
+	 		//echo "topQ: $sql \n\n";
  			$top_result = $dbr->query($sql); 			
  			if($dbr->numRows($top_result)==0)return array();
  			//set up ranges sql query
@@ -267,7 +280,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	 		}
 	 		$sql.="LIMIT {$this->offset}, {$this->limit} ";
  		}
- 		echo "SQL:".$sql;  			
+ 		//echo "SQL:".$sql;  			
  		$result = $dbr->query($sql);
  		
  		$this->numResults=$dbr->numRows($result);

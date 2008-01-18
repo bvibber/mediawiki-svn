@@ -156,7 +156,7 @@ mvPlayList.prototype = {
 	    this.getHTML();	
 	},
 	getPlDuration:function(){
-		js_log("GET PL DURRATION for : "+ this.tracks[0].clips.length + 'clips');
+		//js_log("GET PL DURRATION for : "+ this.tracks[0].clips.length + 'clips');
 		if(!this.pl_duration){
 			durSum=0;
 			$j.each(this.tracks[0].clips, function(i,clip){	
@@ -754,26 +754,32 @@ mvClip.prototype = {
 			do_request(url, function(data){
 				//ajax return (done loading) 
 				thisClip.loading=false;
-				//set src
-				if(data.getElementsById('videosrc'))
-					thisClip.src = data.getElementsById('videosrc').getAttribute('src');
-	
+				//search for and set video src:
+				js_log('data:'+data);
+				$j.each(data.getElementsByTagName('import'), function(inx,n){	
+					if(n.getAttribute('id')=='videosrc'){
+						thisClip.src=n.getAttribute('src');
+						if(!thisClip.title)
+							thisClip.title = n.getAttribute('title');
+					};
+				});				
 				js_log('set src: '+ thisClip.src);
-				
-				//set linkback: (if not already set) 
-				if(!thisClip.linkback)
-					thisClip.linkback = thisClip.mvMetaDataProvider + '/overlay/video_player/webview/' +
-						'?stream_name='+ thisClip.mvclip.replace(/\?/, "&");		
-					
-				//set the title (if not already set) 
-				if(!thisClip.title)
-					thisClip.title = ielm.getAttribute('title');
-				
-				//@@todo should extend the cmml to point to thumbnails
-				thisClip.img = thisClip.mvMetaDataProvider + '/image_media/' + thisClip.mvclip.substr(0, 
-					thisClip.mvclip.indexOf('/')).replace(/\&/, "?");
-				js_log('set img: '+ thisClip.img);
-				
+				//search for and set linkback: 
+				if(!thisClip.linkback){
+					$j.each(data.getElementsByTagName('a'), function(inx,n){	
+						if(n.getAttribute('id')=='stream_link'){
+							thisClip.linkback=n.getAttribute('href');
+						};
+					});	
+				}
+				//search for and set img:
+				if(!thisClip.img){
+					$j.each(data.getElementsByTagName('img'), function(inx,n){	
+						if(n.getAttribute('id')=='stream_img'){
+							thisClip.img=n.getAttribute('src');
+						};
+					});	
+				}												
 				//now build the desc (if not already set) 
 				if(!thisClip.desc){
 					thisClip.desc='';
@@ -929,12 +935,18 @@ mvClip.prototype = {
 			}else{
 				//if a metavid image (has request parameters) use size and time args
 				if(this.img.indexOf('?')!=-1){
-					var url = this.img.split('?');		
+					js_log('get with offset: '+ start_offset);
 					var time = seconds2ntp( start_offset+ (this.embed.start_offset/1000) );
-					return url[0] +'?t='+ time +'&size='+size;	
-				}else{
-					return this.img;
+					js_log("time is: " + time);
+					this.img = this.img.replace(/t\=[^&]*/gi, "t="+time);
+					if(this.img.indexOf('&size=')!=-1){
+						this.img = this.img.replace(/size=[^&]*/gi, "size="+size);
+					}else{
+						this.img+='&size='+size;
+					}
 				}
+				return this.img;
+				
 			}
 		}
 	},
@@ -1327,6 +1339,7 @@ var xspfPlaylist ={
 			tmpElm = this.data.getElementsByTagName(properties[i])[0];
 			if(tmpElm){
 				this[i] = tmpElm.childNodes[0].nodeValue;
+				js_log('set pl property: ' + i+' to '+this[i]);
 			}
 		}
 		var clips = this.data.getElementsByTagName("track");
@@ -1338,9 +1351,11 @@ var xspfPlaylist ={
 			//js_log('cur clip:'+ cur_clip.id);
 			for(var j in properties){
 				tmpElm = clips[i].getElementsByTagName( properties[j] )[0];
-				if(tmpElm!=null){
-					cur_clip[j] = tmpElm.childNodes[0].nodeValue;
-					//js_log('set clip property: ' + j+' to '+cur_clip[j]);
+				if(tmpElm!=null){				
+					if( tmpElm.childNodes.length!=0){
+						cur_clip[j] = tmpElm.childNodes[0].nodeValue;
+						js_log('set clip property: ' + j+' to '+cur_clip[j]);
+					}
 				}
 			}			
 			//set up the embed object now that all the values have been set
@@ -1357,7 +1372,9 @@ var xspfPlaylist ={
  */
  function do_request(req_url,callback){
  	js_log('do request: ' + req_url);
-		if( parseUri(document.URL).host != parseUri(req_url).host){	
+		if( parseUri(document.URL).host != parseUri(req_url).host){
+			//@@TODO a DOM injection call to get data
+			js_log('callback: ' + callback + ' page at: ' + parseUri(document.URL).host + ' req:'+ parseUri(req_url).host);
 			$j.ajax({
 				type: "POST",
 				url:mv_embed_path + 'mv_data_proxy.php',

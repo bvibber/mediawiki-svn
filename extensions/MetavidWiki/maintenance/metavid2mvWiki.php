@@ -494,7 +494,7 @@ function do_stream_insert($mode, $stream_name = '') {
 		$MVStreams[$stream->name] = new MV_Stream($stream);
 		//check if the stream has already been added to the wiki (if not add it)	
 		$mvTitle = new MV_Title('MvStream:' . $stream->name);
-		if (!$mvTitle->doesStreamExists()) {
+		if (!$mvTitle->doesStreamExist()) {
 			//print 'do stream desc'."\n";
 			do_add_stream($mvTitle, $stream);
 			echo "stream " . $mvTitle->getStreamName() . " added \n";

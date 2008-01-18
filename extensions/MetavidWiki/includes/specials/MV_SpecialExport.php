@@ -19,55 +19,85 @@
 if (!defined('MEDIAWIKI')) die();
 
 global $IP, $smwgIP;
+//export types:
+function doExportStream($par = null){$MvSpecialExport = new MV_SpecialExport('stream',$par);}
+function doExportCat($par = null){$MvSpecialExport = new MV_SpecialExport('category',$par);}
+function doExportSeq($par = null){$MvSpecialExport = new MV_SpecialExport('sequence',$par);}
 
-function doSpecialExport($par = null) {
-	//list( $limit, $offset ) = wfCheckLimits();
-	$MvSpecialExport = new MV_SpecialExport();
-	$MvSpecialExport->execute();
-}
-SpecialPage::addPage( new SpecialPage('MvVideoFeed','',true,'doSpecialExport',false) );
-SpecialPage::addPage( new SpecialPage('MvExportStream','',true,'doSpecialExport',false) );
+SpecialPage::addPage( new SpecialPage('MvVideoFeed','',true,'doExportCat',false) );
+SpecialPage::addPage( new SpecialPage('MvExportStream','',true,'doExportStream',false) );
+SpecialPage::addPage( new SpecialPage('MvExportSequence','',true,'doExportSeq',false) );
+
 //extend supported feed types:
 $wgFeedClasses['cmml']='CmmlFeed';
 $wgFeedClasses['podcast']='PodcastFeed';
 
 class MV_SpecialExport {
 	var $feed = null;
-	//initialy just do feeds per category	
+	function __construct($export_type, $par){
+		$this->export_type=$export_type;	
+		$this->par = $par;	
+		$this->execute();
+	}
+	//@@todo think about integration into api.php	
 	function execute() {
 		global $wgRequest, $wgOut, $wgUser, $mvStream_name, $mvgIP;
 		$html='';
-				
-		$this->feed_format = $wgRequest->getVal('feed_format');	//values 'rss', 'cmml'			
-			//one of the following: 			
-		$this->cat=$wgRequest->getVal('cat'); 		//a category name
-		$this->seq_title = $wgRequest->getVal('seq_tilte');//a sequence name
-		$this->stream_name = $wgRequest->getVal('stream_name');//a stream name (cmml is defaulted in this case)		
-		$this->req_time = $wgRequest->getVal('t');
-		if(!$this->req_time)$this->req_time = $wgRequest->getVal('time_range');
-		if($this->feed_format){
-			$html.='feed format:'. $this->feed_format;  
-		}	
-		//populate the dateset: 
-		if($this->cat){
-			$this->get_category_feed();			
-		}elseif($this->seq_title){
-			
-		}elseif($this->stream_name){
-			$this->get_stream_cmml();
-		}		
-		#init html output var:  
-		$wgOut->addHTML( $html );
+		//set universal variables: 
+		$this->feed_format = $wgRequest->getVal('feed_format');	
+		
+		switch($this->export_type){
+			case 'stream':
+				$this->stream_name = $wgRequest->getVal('stream_name');	
+				$this->req_time = $wgRequest->getVal('t');		
+				if(!$this->req_time)$this->req_time = $wgRequest->getVal('time_range');
+				$this->get_stream_cmml();
+			break;
+			case 'category':
+				$this->cat=$wgRequest->getVal('cat'); 	
+				$this->get_category_feed();		
+			break;
+			case 'sequence':			
+				$this->seq_title = $this->par;
+				$this->get_sequence_xspf();
+			break;			
+		}
+		//@@todo cleaner exit? 
+		exit();
 	}    
+	function get_sequence_xspf(){		
+		//get the sequence article and export in xspf format: 		
+		$seqTitle = Title::newFromText($this->seq_title, MV_NS_SEQUENCE);
+		$seqArticle = new MV_SequencePage($seqTitle);	
+		header('Content-Type: text/xml');
+		$o='<?xml version="1.0" encoding="UTF-8"?>'."\n";
+ 		$o.='<playlist version="1" xmlns="http://xspf.org/ns/0/">'."\n";
+ 		$o.='	<title>'.$seqTitle->getText().'</title>'."\n";
+ 		$o.='	<info>'.$seqTitle->getFullURL().'</info>'."\n";
+ 		$o.='	<trackList>'."\n";
+ 		$seqArticle->parsePlaylist(); 	
+ 		foreach($seqArticle->clips as $clip){
+	 		$o.='	<track>'."\n";
+	 		$o.='		<title>'.htmlentities($clip['title']).'</title>'."\n";
+	 		$o.='		<location>'.htmlentities($clip['src']).'</location>'."\n";
+	 		$o.='		<info>'.htmlentities($clip['info']).'</info>'."\n";
+	 		$o.='		<image>'.htmlentities($clip['image']).'</image>'."\n";
+	 		$o.='		<annotation>'.htmlentities($clip['desc']).'</annotation>'."\n";	 		
+	 		$o.='	</track>'."\n";
+ 		}
+ 		$o.='	</trackList>'."\n";
+ 		$o.='</playlist>';
+ 		print $o;
+	}
 	function get_stream_cmml(){		
 		$dbr =& wfGetDB(DB_SLAVE);		
 		//get the stream title	
-		$streamTilte = new MV_Title($this->stream_name.'/'.$this->req_time);		
+		$streamTitle = new MV_Title($this->stream_name.'/'.$this->req_time);		
 		$wgTitle = Title::newFromText($this->stream_name.'/'.$this->req_time, MV_NS_STREAM);
 		//do mvd_index query:
-		$mvd_res = MV_Index::getMVDInRange($streamTilte->getStreamId(),
-				$streamTilte->getStartTimeSeconds(), 
-				$streamTilte->getEndTimeSeconds());
+		$mvd_res = MV_Index::getMVDInRange($streamTitle->getStreamId(),
+				$streamTitle->getStartTimeSeconds(), 
+				$streamTitle->getEndTimeSeconds());
 		//get the stream stream req 
 		header('Content-Type: text/xml');
 		//print the header:
@@ -76,17 +106,17 @@ class MV_SpecialExport {
 <!DOCTYPE cmml SYSTEM "cmml.dtd">
 <cmml lang="en" id="simple">	
 	<stream id="<?=$this->stream_name?>" basetime="0">
-		<import id="videosrc" lang="en" title="<?=$streamTilte->getStreamNameText()?>" 
+		<import id="videosrc" lang="en" title="<?=$streamTitle->getStreamNameText()?>" 
 			granulerate="25/1" contenttype="video/theora" 
-		src="<?=$streamTilte->getWebStreamURL()?>" start="0" end="60">
+		src="<?=$streamTitle->getWebStreamURL()?>" start="0" end="60">
 			<param id="vheight" name="video.height" value="320"/>
 			<param id="vwidth"  name="video.width"  value="240"/>
 		</import>
-		<img id="stream_img" src="<?=htmlentities($streamTilte->getStreamImageURL())?>"/>
+		<img id="stream_img" src="<?=htmlentities($streamTitle->getStreamImageURL())?>"/>
 		<a id="stream_link" href="<?=htmlentities($wgTitle->getFullURL() )?>"/>
 	</stream>	
 	<head>
-		<title><?=$streamTilte->getTitleDesc()?></title>
+		<title><?=$streamTitle->getTitleDesc()?></title>
 	</head>
 <?
 	if(count($dbr->numRows($mvd_res))!=0){ 

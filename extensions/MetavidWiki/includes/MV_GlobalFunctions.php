@@ -468,7 +468,7 @@ function mvOutputSpecialPage( $title, & $page ) {
 }
 function mvDoMetavidStreamPage(&$title, &$article){
 	$mvTitle = new MV_Title( $title->mDbkeyform); 	
-	if($mvTitle->doesStreamExists()){				
+	if($mvTitle->doesStreamExist()){				
 		//@@TODO check if we have /name corresponding to a view or
 		// /ss:ss:ss or /ss:ss:ss/ee:ee:ee corresponding to a time request
 		//force metavid to be special 

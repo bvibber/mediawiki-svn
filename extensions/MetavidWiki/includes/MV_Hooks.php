@@ -136,8 +136,8 @@
 		global $wgOut;		
 		if($title->getNamespace() == NS_CATEGORY){
 			$article = new MV_CategoryPage($title);		
-		} elseif ($title->getNamespace() == MV_NS_SEQUENCE){
-			$article = new MV_SequencePage($title);		
+		} elseif ($title->getNamespace() == MV_NS_SEQUENCE){			
+			$article = new MV_SequencePage($title);												
  		} elseif ($title->getNamespace() == MV_NS_STREAM){					
 			mvDoMetavidStreamPage($title, $article);		
 		} elseif ( $title->getNamespace() == MV_NS_MVD ) {								

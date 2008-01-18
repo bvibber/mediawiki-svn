@@ -179,7 +179,7 @@ class MV_SpecialCRUDStream {
 		$mvTitle = new MV_Title( $this->stream_name );
 		 	
 		//fist check if the given stream name already exists
-		if($mvTitle->doesStreamExists()){
+		if($mvTitle->doesStreamExist()){
 			$mv_page = Title::newFromText($this->stream_name, MV_NS_STREAM);
 			return '<span class="error">'.
 					wfMsg('mv_stream_already_exists', $this->stream_name, $mv_page->getFullURL()).
