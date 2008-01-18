@@ -38,6 +38,7 @@ all fields exactly as they should be, ''before submitting this form''.",
 	'createsigndoc-error-pagenoexist' => 'Error: The page [[$1]] does not exist.',
 	'createsigndoc-success'      => 'Document signing has been successfully enabled
 on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} this page].',
+	'createsigndoc-error-alreadycreated' => 'Document signing "$1" already exist.'
 );
 
 $messages['af'] = array(
@@ -157,6 +158,7 @@ $messages['fr'] = array(
 	'createsigndoc-error-generic'     => 'Erreur : $1',
 	'createsigndoc-error-pagenoexist' => "La page [[$1]] n'existe pas.",
 	'createsigndoc-success'           => "L'authentification des documents est activée sur [[$1]]. Pour la tester, voir [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} cette page].",
+	'createsigndoc-error-alreadycreated' => 'Le document d’authentification pour « $1 » a déjà été créé.'
 );
 
 /** Galician (Galego)
