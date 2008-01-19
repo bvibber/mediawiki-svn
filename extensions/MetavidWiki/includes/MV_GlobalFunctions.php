@@ -509,7 +509,7 @@ function mvGetMVStream($stream_init){
 		throw('error no id or name in init');
 	}
 	
-	//@@todo store runtime cache should memcache it as well)	
+	//@@todo cache in memcache)	
 	if(!isset($MVStreams[$stream_name])){
 		$MVStreams[$stream_name] = new MV_Stream($stream_init);
 		$MVStreams[$stream_name]->db_load_stream();

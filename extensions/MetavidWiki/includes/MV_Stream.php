@@ -87,6 +87,9 @@ class MV_Stream {
 			return $this->id;
 		}
 	}
+	/*
+	 * @@todo cache this!: 
+	 */
 	function getStreamNameFromId($id){
 		global $mvStreamTable;
 		$dbr = & wfGetDB(DB_SLAVE);

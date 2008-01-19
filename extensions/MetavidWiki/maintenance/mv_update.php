@@ -39,8 +39,9 @@ if($page_id_added){
 					"WHERE `id`={$mvd_row->id} LIMIT 1";
 			$wgDatabase->query($upSql);
 		}else{
-			print "ERROR: mvd row:{$mvd_row->wiki_title} missing page\n ";
-			die;
+			print "ERROR: mvd row:{$mvd_row->wiki_title} missing page (removed)\n ";
+			$wgDatabase->query("DELETE FROM `$mvIndexTableName` WHERE `id`=".$mvd_row->id.' LIMIT 1');
+			//die;
 		}
 		//status updates:
 		if($i==100){

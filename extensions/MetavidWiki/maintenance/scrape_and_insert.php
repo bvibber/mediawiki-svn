@@ -19,8 +19,8 @@ require_once( '../../../maintenance/commandLine.inc' );
  	
 Scrapes External WebSites and updates relavent local semantic content.
  
-Usage php scrape_and_insert.php insert_type [options] [param]
-insert types:
+Usage php scrape_and_insert.php insert_type [site] [options]
+site:
 	'cspan_chronicle' will take all it can from  http://www.c-spanarchives.org/
 options: 		
 	'-s --stream_name steam_name|all' the strean name or keyword "all" to proc all streams
@@ -30,6 +30,17 @@ options:
 EOT;
 exit();
 }
+/*
+ * procc the request
+ */ 
+ function proc_args(){
+ 	global $args; 	
+	switch($args[0]){
+		case 'cspan_chronicle':
+			$MV_CspanScraper = new MV_CspanScraper();
+		break;
+	}
+ }
 
 /*
  * set up the user:
@@ -47,20 +58,21 @@ if ( $wgUser->isAnon() ) {
 class MV_CspanScraper extends MV_BaseScraper{	
 	var $base_url = 'http://www.c-spanarchives.org/congress/?q=node/69850';
 	function procArguments(){
-		global $options, $args;
-		//print_r($options);
+		global $options, $args;		
 		if( !isset($options['stream_name']) && !isset($options['s'])){				
 			die("error missing stream name\n");
 		}else{			
 			$stream_inx = (isset($options['stream_name']))?$options['stream_name']:$options['s'];
 			if($args[$stream_inx]=='all'){
 				//put all in sync into stream list
+				print "do all streams\n";
 			}else{
 				$stream_name = $args[$stream_inx];
 				$this->streams[$stream_name]= new MV_Stream(array('name'=>$stream_name));		
 				if(!$this->streams[$stream_name]->doesStreamExist()){
 					die('error: stream '.$stream_name . ' does not exist');
 				}
+				print "Proccessing Stream: $stream_name \n";
 			}
 		}				
 	}
@@ -136,15 +148,6 @@ class MV_BaseScraper{
 		}
 	}
 }
-
-/*
- * procc the request
- */
-switch($args[0]){
-	case 'cspan_chronicle':
-		$MV_CspanScraper = new MV_CspanScraper();
-		$MV_CspanScraper->doScrapeInsert();
-	break;
-}
-
+//do procc args (now that classes are defined)
+ proc_args();
 ?>

@@ -180,10 +180,12 @@ if (count($args) == 0 || isset ($options['help'])) {
 	print<<<EOT
 Load Streams/data from the metavid database
 
-Usage php metavid2mvWiki.php [options] stream_name	
+Usage php metavid2mvWiki.php [options] action	
 ie: senate_proceeding_04-11-07
-
-options: 
+options:
+		--noimage will skip image downloading 
+actions:
+		stream_name  will proccess that stream name		
 		'all_in_sync' will insert all streams that are tagged in_sync
 		'all_with_files' will insert all streams with files (and categorize acording to sync status)
 		[stream_name] will insert all records for the given stream name
@@ -225,7 +227,7 @@ switch ($args[0]) {
 		upTemplate_person(true);
 		upTempalte_Ht_en(true);
 	break;
-		//by default treat the argument as a stream name: 
+	//by default treat the argument as a stream name: 
 	case 'mvd_error_check':
 		
 	break;
@@ -472,7 +474,7 @@ function do_add_stream(& $mvTitle, & $stream) {
 	$MV_SpecialAddStream->add_stream();
 }
 function do_stream_insert($mode, $stream_name = '') {
-	global $mvgIP, $MVStreams;
+	global $mvgIP, $MVStreams, $options;
 	$dbr = wfGetDB(DB_SLAVE);
 	if ($mode == 'all'){
 		$sql = "SELECT * FROM `metavid`.`streams` WHERE `sync_status`='in_sync'";
@@ -506,7 +508,9 @@ function do_stream_insert($mode, $stream_name = '') {
 		do_stream_attr_check($stream);
 
 		//do insert/copy all media images 
-		do_proccess_images($stream);
+		if(!isset($options['noimage'])){
+			do_proccess_images($stream);
+		}
 
 		//check for files (make sure they match with metavid db values
 		do_stream_file_check($stream);
@@ -636,7 +640,7 @@ function do_proccess_images($stream) {
 		if ($doInsert) {
 			//insert: 		
 			$dbw->insert('mv_stream_images', array (
-			'stream_id' => $MVStreams[$stream->name]->getStreamId(), 'time' => $relative_time));
+				'stream_id' => $MVStreams[$stream->name]->getStreamId(), 'time' => $relative_time));
 			$img_id = $dbw->insertId();
 			//$grab = exec('cd ' . $img_path . '; wget ' . $im_url);
 		}

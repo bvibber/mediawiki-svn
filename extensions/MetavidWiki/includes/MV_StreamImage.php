@@ -38,7 +38,7 @@ class MV_StreamImage{
 	 * getStreamImageURL
 	 * 
 	 * @parm:
-	 * 	$stream_id: the stream id
+	 * 	$stream_name: the unique stream name
 	 *  $req_time: the requested time in seconds or ntp format: hh:mm:ss
 	 *  $req_size: the requested size in WidthxHeight .. (or small, keyword see getSizeType)
 	 *  $directLink: if we should return a direct pointer to the file or give a url with &t=time in it
@@ -48,8 +48,10 @@ class MV_StreamImage{
 		global $wgScript,  $mvWebImgLoc, $mvLocalImgLoc,$mvExternalImages;
 		//check global external image prefrence: 
 		if($mvExternalImages){
-			global $mvExternalImgServerPath;		
-			return $mvExternalImgServerPath . '?action=ajax&rs=mv_frame_server&stream_id='.$stream_id.'&t='.$req_time.'&size='.$req_size;
+			global $mvExternalImgServerPath;
+			//try to get the stream_name for external requests: 
+			$sn = MV_Stream::getStreamNameFromId($stream_id);
+			return $mvExternalImgServerPath . '?action=ajax&rs=mv_frame_server&stream_name='.$sn.'&t='.$req_time.'&size='.$req_size;
 		}
 		
 		//by default return a non-direct link so that javascript can modify the url to get new images
