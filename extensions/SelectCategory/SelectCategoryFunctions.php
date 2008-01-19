@@ -23,7 +23,7 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 		# Get all categories from wiki:
 		$m_allCats = fnSelectCategoryGetAllCategories();
 		# Load system messages:
-		fnSelectCategoryMessageHook();
+		wfLoadExtensionMessages( 'SelectCategory' );
 		# Get the right member variables, depending on if we're on an upload form or not:
 		if( !$m_isUpload ) {
 			# Extract all categorylinks from page:
@@ -36,7 +36,7 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 		} else	{
 			# No need to get categories:
 			$m_pageCats = array();
-			
+
 			# Place output at the right place:
 			$m_place = 'uploadFormTextAfterSummary';
 			# Print the part of the table including the localised title for the select box:
@@ -69,8 +69,8 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 		$m_pageObj->$m_place .= wfMsg( 'selectcategory-subtitle' ) . "<br/>\n";
 		$m_pageObj->$m_place .= "<!-- SelectCategory end -->\n";
 
-	}	
-	
+	}
+
 	# Return true to let the rest work:
 	return true;
 }
@@ -127,27 +127,7 @@ function fnSelectCategoryOutputHook( &$m_pageObj, &$m_parserOutput ) {
 			'href'	=> $wgScriptPath . '/extensions/SelectCategory/SelectCategory.css'
 		)
 	);
-	
-	# Be nice:
-	return true;
-}
 
-## Entry point for the hook for our localised messages:
-function fnSelectCategoryMessageHook() {
-	global $wgLang;
-	global $wgMessageCache;
-	
-	# Initialize array of all messages:
-	$messages=array();
-	# Load default messages (english):
-	include( 'i18n/SelectCategory.i18n.php' );
-	# Load localised messages:
-	if( file_exists( dirname( __FILE__ ) . '/i18n/SelectCategory.i18n.' . $wgLang->getCode() . '.php' ) ) { // avoid warnings
-		include( 'i18n/SelectCategory.i18n.' . $wgLang->getCode() . '.php' );
-	}
-	# Put messages into message cache:
-	$wgMessageCache->addMessages( $messages );
-	
 	# Be nice:
 	return true;
 }
@@ -171,12 +151,12 @@ function fnSelectCategoryGetAllCategories() {
 		# Get table names to access them in SQL query:
 		$m_tblCatLink = $m_dbObj->tableName( 'categorylinks' );
 		$m_tblPage = $m_dbObj->tableName( 'page' );
-	
+
 		# Automagically detect root categories:
 		$m_sql = "	SELECT tmpSelectCat1.cl_to AS title
-				FROM $m_tblCatLink AS tmpSelectCat1 
+				FROM $m_tblCatLink AS tmpSelectCat1
 				LEFT JOIN $m_tblPage AS tmpSelectCatPage ON (tmpSelectCat1.cl_to = tmpSelectCatPage.page_title AND tmpSelectCatPage.page_namespace = 14)
-				LEFT JOIN $m_tblCatLink AS tmpSelectCat2 ON tmpSelectCatPage.page_id = tmpSelectCat2.cl_from 
+				LEFT JOIN $m_tblCatLink AS tmpSelectCat2 ON tmpSelectCatPage.page_id = tmpSelectCat2.cl_from
 				WHERE tmpSelectCat2.cl_from IS NULL GROUP BY tmpSelectCat1.cl_to";
 		# Run the query:
 		$m_res = $m_dbObj->query( $m_sql, __METHOD__ );
@@ -184,11 +164,11 @@ function fnSelectCategoryGetAllCategories() {
 		while ( $m_row = $m_dbObj->fetchRow( $m_res ) ) {
 			$m_allCats += array( $m_row['title'] => 0 );
 			$m_allCats += fnSelectCategoryGetChildren( $m_row['title'] );
-		}	
+		}
 		# Free result:
 		$m_dbObj->freeResult( $m_res );
 	}
-	
+
 	# Afterwards return the array to the caller:
 	return $m_allCats;
 }
@@ -196,17 +176,17 @@ function fnSelectCategoryGetAllCategories() {
 function fnSelectCategoryGetChildren( $m_root, $m_prefix = 1 ) {
 	# Initialize return value:
 	$m_allCats = array();
-	
+
 	# Get a database object:
 	$m_dbObj =& wfGetDB( DB_SLAVE );
 	# Get table names to access them in SQL query:
 	$m_tblCatLink = $m_dbObj->tableName( 'categorylinks' );
 	$m_tblPage = $m_dbObj->tableName( 'page' );
-	
+
 	# The normal query to get all children of a given root category:
 	$m_sql = "	SELECT tmpSelectCatPage.page_title AS title
-			FROM $m_tblCatLink AS tmpSelectCat 
-			LEFT JOIN $m_tblPage AS tmpSelectCatPage ON tmpSelectCat.cl_from = tmpSelectCatPage.page_id 
+			FROM $m_tblCatLink AS tmpSelectCat
+			LEFT JOIN $m_tblPage AS tmpSelectCatPage ON tmpSelectCat.cl_from = tmpSelectCatPage.page_id
 			WHERE tmpSelectCat.cl_to LIKE '$m_root' AND tmpSelectCatPage.page_namespace = 14";
 	# Run the query:
 	$m_res = $m_dbObj->query( $m_sql, __METHOD__ );
@@ -215,10 +195,10 @@ function fnSelectCategoryGetChildren( $m_root, $m_prefix = 1 ) {
 		# Add current entry to array:
 		$m_allCats += array( $m_row['title'] => $m_prefix );
 		$m_allCats += fnSelectCategoryGetChildren( $m_row['title'], $m_prefix + 1 );
-	}	
+	}
 	# Free result:
 	$m_dbObj->freeResult( $m_res );
-	
+
 	# Afterwards return the array to the upper recursion level:
 	return $m_allCats;
 }
@@ -238,7 +218,7 @@ function fnSelectCategoryGetPageCategories( $m_pageObj ) {
 	}
 
 	global $wgContLang;
-	
+
 	# Get page contents:
 	$m_pageText = $m_pageObj->textbox1;
 	# Get localised namespace string:
@@ -262,7 +242,7 @@ function fnSelectCategoryGetPageCategories( $m_pageObj ) {
 	}
 	# Place the cleaned text into the text box:
 	$m_pageObj->textbox1 = trim( $m_cleanText );
-	
+
 	# Return the list of categories as an array:
 	return $m_catLinks;
 }

@@ -1,3 +1,6 @@
+* v0.6 - 2008-01-19
+  - using wfLoadExtensionMessages now, all messages in one file
+
 * v0.5 - 2007-10-12
   - fixed problem with additional newline at sectionedits
   - preserve category sortkeys

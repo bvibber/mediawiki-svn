@@ -59,18 +59,22 @@ if( !isset( $wgSelectCategoryRoot ) ) $wgSelectCategoryRoot = array(
 if( !isset( $wgSelectCategoryEnableSubpages ) ) $wgSelectCategoryEnableSubpages = true;
 
 ## Register extension setup hook and credits:
-$wgExtensionFunctions[]	= 'fnSelectCategory';
 $wgExtensionCredits['parserhook'][] = array(
 	'name'		=> 'SelectCategory',
+	'version'	=> '0.6',
 	'author'	=> 'Leon Weber & Manuel Schneider',
 	'url'		=> 'http://www.mediawiki.org/wiki/Extension:SelectCategory',
 	'description'	=> 'Allows the user to select from existing categories when editing a page'
 );
 
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['SelectCategory'] = $dir . 'SelectCategory.i18n.php';
+$wgExtensionFunctions[]	= 'fnSelectCategory';
+
 ## Set Hook:
 function fnSelectCategory() {
 	global $wgHooks;
-	
+
 	## Showing the boxes
 	# Hook when starting editing:
 	$wgHooks['EditPage::showEditForm:initial'][] = array( 'fnSelectCategoryShowHook', false );
@@ -86,8 +90,6 @@ function fnSelectCategory() {
 	## Infrastructure
 	# Hook our own CSS:
 	$wgHooks['OutputPageParserOutput'][] = 'fnSelectCategoryOutputHook';
-	# Hook up local messages:
-	$wgHooks['LoadAllMessages'][] = 'fnSelectCategoryMessageHook';
 }
 
 ## Load the file containing the hook functions:
