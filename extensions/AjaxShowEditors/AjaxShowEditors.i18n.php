@@ -183,13 +183,13 @@ $messages['li'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Garas
  * @author Vpovilaitis
  */
 $messages['lt'] = array(
 	'ajax-se-title'   => 'Dabar redaguojama:',
-	'ajax-se-pending' => 'laukiama peršvietimo ... (paspausk šią dėžutę arba pradėk redaguoti)',
-	'ajax-se-idling'  => '($1s prieš)',
-
+	'ajax-se-pending' => 'laukiama atnaujinimo... (paspauskite šį laukelį arba pradėkite redaguoti)',
+	'ajax-se-idling'  => '(prieš $1 s)',
 );
 
 $messages['nl'] = array(

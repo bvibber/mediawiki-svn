@@ -160,6 +160,7 @@ $messages['de'] = array(
 
 /** Lower Sorbian (Dolnoserbski)
  * @author Pe7er
+ * @author Michawiki
  */
 $messages['dsb'] = array(
 	'tryexact'       => 'Nawłos pytaś:',

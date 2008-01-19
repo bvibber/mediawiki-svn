@@ -165,6 +165,16 @@ $messages['pms'] = array(
 	'pageby-anon'         => '<i>anònim</i>',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'pageby-first'        => 'Страница создана участником $1, $2',
+	'pageby-last'         => 'Последнее <a href="$3">изменение</a> сделанно участником $1, $2',
+	'pageby-contributors' => 'Внесли вклад:',
+	'pageby-anon'         => '<i>неизвестный</i>',
+);
+
 /** Slovak (Slovenčina)
  * @author helix84
  */

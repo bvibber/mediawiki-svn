@@ -315,6 +315,12 @@ $messages['bg'] = array(
 	'boardvote_edits_many'   => 'много',
 	'boardvote_blocked'      => 'Потребителската ви сметка е блокирана на уикито, от което гласувате. На блокираните потребители не се позволява да гласуват.',
 	'boardvote_welcome'      => "Здравейте, '''$1'''!",
+	'go_to_board_vote'       => 'Избори за борда на Уикимедия 2007',
+	'boardvote_redirecting'  => 'За по-голяма сигурност и прозрачност, гласуването се провежда на външен и независим сървър.
+
+След 20 секунди ще бъдете прехвърлени на външния сървър. [$1 Щракнете тук] за отиване сега.
+
+Възможно е да бъде показано предупреждение за неподписан сертификат.',
 );
 
 /** Bengali (বাংলা)
@@ -2724,20 +2730,40 @@ $messages['ty'] = array(
 );
 
 /** Volapük (Volapük)
- * @author Malafaya
  * @author Smeira
+ * @author Malafaya
  */
 $messages['vo'] = array(
 	'boardvote_intro_change' => '<p>Ya evögodol. Kanol ye votükön vögodi olik me fomet dono. Välolös bokilis nilü steifädans, kelis büuköl.</p>',
+	'boardvote_entered'      => 'Danö! Vögod olik peregistaron.
+
+If vilol, dalol registarön patis sököl. Peregistarol as:
+
+<pre>$1</pre>
+
+Atos pejüfon me kik notidik Guvanas Daväla:
+
+<pre>$2</pre>
+
+Is palisedon fomam pejüföl. Pojonon valikanes su [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Geikön]].',
+	'boardvote_nosession'    => 'Gebanadientif olik no kanon pafümükön. Nunädolös oli pö vük olik, e logolös eli <nowiki>[[Special:Boardvote]]</nowiki>. Mutol gebön kali labü keblünots pu $1 bü $2, e kela redakam balid äjenon bü $3.',
 	'boardvote_notloggedin'  => 'No enunädol oli. Ad vögodön, mutol gebön kali labü keblünots pu $1 bü $2, e kela redakam balid äjenon bü $3.',
+	'boardvote_notqualified' => 'No dalol kompenön pö daväl at. Zesüdos, das ädunol redakamis $3 bü $2, e das redakam balid ola äjenon bü $5.',
 	'boardvote_novotes'      => 'Nek nog evögodon.',
 	'boardvote_time'         => 'Tim',
 	'boardvote_user'         => 'Geban',
 	'boardvote_edits'        => 'Redakams',
 	'boardvote_days'         => 'Dels',
+	'boardvote_ip'           => 'ladet-IP',
 	'boardvote_listintro'    => '<p>Is pajonon lised vögodas jünu peregistarölas valikas. $1 ad getön fomami pejüföl.</p>',
-	'boardvote_notstarted'   => 'Vögodam no nog eprimon',
+	'boardvote_needadmin'    => 'Te davälaguvans dalons dunön atosi.',
+	'boardvote_notstarted'   => 'Daväl no nog eprimon',
 	'boardvote_edits_many'   => 'mödik',
+	'boardvote_blocked'      => 'Liedo peblokol in vük olik. Gebans pebloköl no dalons vögodön.',
 	'boardvote_welcome'      => "Benokömö, o '''$1'''!",
 );
 

@@ -688,6 +688,13 @@ $messages['to'] = array(
 	'expandtemplates' => 'Fakalahiange ʻa e ngaahi sīpinga',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'expand_templates_preview' => 'Ön izleme',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

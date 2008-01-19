@@ -84,6 +84,43 @@ $messages['ar'] = array(
 	'createsigndoc-success'           => 'توقيع الوثيقة تم تفعيله بنجاح على [[$1]]. لاختباره، من فضلك زر [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} هذه الصفحة].',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'createsigndocument'                 => 'فعل توقيع الوثيقة',
+	'createsigndoc-head'                 => "استخدم هذه الوثيقة لإنشاء صفحة 'Sign Document' للصفحة المعطاة، بحيث
+يمكن للمستخدمين توقيعها من خلال [[Special:SignDocument]]. من فضلك حدد اسم
+الصفحة التي تود تفعيل التوقيع الرقمي عليها، أعضاء أي 
+مجموعة مستخدم مسموح لهم بتوقيعها، أي حقول تود أن تكون مرئية للمستخدمين 
+وأي يجب أن تكون اختيارية، عمر أدنى لمستخدمين ليمكن لهم توقيع 
+الوثيقة (لا حد أدنى لو حذفت)، ونص تقديمي مختصر يصف 
+الوثيقة ويوفر التعليمات للمستخدمين.
+
+<b>لا توجد حاليا أية طريقة لحذف أو تعديل توقيعات الوثائق بعد
+إنشائها</b> بدون دخول قاعدة البيانات مباشرة. إضافة إلى ذلك، نص الصفحة 
+المعروض في صفحة التوقيع سيكون النص ''الحالي'' للصفحة، بغض النظر عن
+التغييرات بها بعد اليوم. من فضلك كن متأكدا تماما من أن الوثيقة
+وصلت لنقطة ثبات للتوقيع، ومن فضلك أيضا تأكد أنك حددت
+كل الحقول تماما كما يجب أن تكون، ''قبل تنفيذ هذه الاستمارة''.",
+	'createsigndoc-pagename'             => 'صفحة:',
+	'createsigndoc-allowedgroup'         => 'المجموعة المسموحة:',
+	'createsigndoc-email'                => 'عنوان البريد الإلكتروني:',
+	'createsigndoc-address'              => 'عنوان المنزل:',
+	'createsigndoc-extaddress'           => 'المدينة، الولاية، البلد:',
+	'createsigndoc-phone'                => 'رقم الهاتف:',
+	'createsigndoc-bday'                 => 'تاريخ الميلاد:',
+	'createsigndoc-minage'               => 'العمر الأدنى:',
+	'createsigndoc-introtext'            => 'مقدمة:',
+	'createsigndoc-hidden'               => 'مخفية',
+	'createsigndoc-optional'             => 'اختياري',
+	'createsigndoc-create'               => 'أنشيء',
+	'createsigndoc-error-generic'        => 'خطأ: $1',
+	'createsigndoc-error-pagenoexist'    => 'خطأ: الصفحة [[$1]] غير موجودة.',
+	'createsigndoc-success'              => 'توقيع الوثيقة تم تفعيله بنجاح على [[$1]]. لاختباره، من فضلك زر [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} هذه الصفحة].',
+	'createsigndoc-error-alreadycreated' => 'توقيع الوثيقة "$1" موجود بالفعل.',
+);
+
 $messages['bcl'] = array(
 	'createsigndoc-pagename' => 'Páhina:',
 	'createsigndoc-bday' => 'Kamondágan:',

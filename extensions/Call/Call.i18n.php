@@ -74,6 +74,23 @@ $messages['gl'] = array(
 	'call-save-failed'  => 'O texto seguinte NON se gardou na páxina <big>[[$1]]</big> porque xa existe esa páxina.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'call-text'         => "Rozšěrjenja Call wočakuje wiki-stronu a opcionalne parametry za tutu stronu jako argument.<br><br>
+Přikład 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br/>
+Přikład 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br/>
+Přikład 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br/><br/>
+Přikład 4 (URL wobhladowaka): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt><br/><br/>
+
+<i>Rozšěrjenje Call</i> budźe datu stronu podać a parametry přepodać.<br>Budźeš wobsah zwołaneje strony a jeje titul widźeć, ale jeje 'typ' budźe tón specialneje strony, <br>t.r. tajka strona njeda so wobdźěłować.<br>Wobsah, kotryž widźiš, móže, wotwisujo wot hódnoty parametrow, kotruž sy přepodał, wariěrować.<br><br>
+<i>Rozšěrjenje Call</i> je wužitne, zo bychu so interaktiwne aplikacije z MediaWiki tworili.<br> Za přikład hlej <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a> ..<br/> W padźe problemow móžeš <b>Special:Call/DebuG</b> spytać.",
+	'call-save'         => "Wudaće tutoho zwołanja by so na stronu z mjenom ''$1'' składowało.",
+	'call-save-success' => 'Slědowacy tekst bu na stronu <big>[[$1]]</big> składował.',
+	'call-save-failed'  => 'Slědowacy tekst NJEje so na stronu <big>[[$1]]</big> składował, dokelž ta strona hižo eksistuje.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -108,6 +125,24 @@ L’extension <i>Apèl</i> apelarà la pagina indicada en i passant los paramèt
 	'call-save'         => "Çò qu'es indicat per aqueste apèl poiriá èsser salvat vèrs una pagina intitolada ''$1''.",
 	'call-save-success' => 'Lo tèxt seguent es estat salvagardat vèrs la pagina <big>[[$1]]</big> .',
 	'call-save-failed'  => 'Lo tèxt seguent a pogut èsser salvargardat vèrs la pagina <big>[[$1]]</big> del fach qu’existís ja.',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'call'              => 'Вызов',
+	'call-text'         => "Расширение «Вызов» (Call) принимает в качестве входных данных название страницы и значения параметров.<br><br>
+Пример 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br/>
+Пример 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br/>
+Пример 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br/><br/>
+Пример 4 (URL для браузера): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt><br/><br/>
+
+Данное расширение вызовет указанную страницу и передаёт ей параметры.<br>Вы увидите сожержимое страницы, её заголовок, но её тип будет типом служебной страницы,<br>т. е .содержимое нельзя будет редактировать.<br>Отображаемое содержимое страницы может изменяться, в зависимости от переданных параметров.<br><br>Расширение «Вызов» полезно для построения интерактивных приложений с помощью MediaWiki.<br>См. например <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a>.<br/>
+В случае возникновения проблем, вы можете использовать <b>Special:Call/DebuG</b>",
+	'call-save'         => "Вывод этого вызова будет сохранён на страницу ''$1''.",
+	'call-save-success' => 'Следующий текст был сохранён на страницу <big>[[$1]]</big>.',
+	'call-save-failed'  => 'Следующий текст НЕ был сохранён на страницу <big>[[$1]]</big>, так как данная страница уже существует.',
 );
 
 /** Slovak (Slovenčina)

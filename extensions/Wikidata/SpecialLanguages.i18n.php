@@ -812,6 +812,10 @@ $wdMessages['ka'] = array(
 	'ow_Text'                     => 'ტექსტი',
 );
 
+$wdMessages['kk-cn'] = array(
+	'langman_title' => 'تٴىلدەردٴى مەڭگەرۋ',
+);
+
 $wdMessages['kk-kz'] = array(
 	'langman_title' => 'Тілдерді меңгеру',
 );
@@ -819,12 +823,6 @@ $wdMessages['kk-kz'] = array(
 $wdMessages['kk-tr'] = array(
 	'langman_title' => 'Tilderdi meñgerw',
 );
-
-$wdMessages['kk-cn'] = array(
-	'langman_title' => 'تٴىلدەردٴى مەڭگەرۋ',
-);
-
-$wdMessages['kk'] = $wdMessages['kk-kz'];
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
@@ -1410,10 +1408,18 @@ $wdMessages['stq'] = array(
 	'languages'     => 'Wikidata: Sproakmanager',
 );
 
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ * @author Sannab
+ */
 $wdMessages['sv'] = array(
-	'datasearch' => 'Wikidata: Datasökning',
-	'langman_title' => 'Språkhanterare',
-	'languages' => 'Wikidata: Språkhanterare',
+	'datasearch'                 => 'Wikidata: Datasökning',
+	'langman_title'              => 'Språkhanterare',
+	'languages'                  => 'Wikidata: Språkhanterare',
+	'ow_Language'                => 'Språk',
+	'ow_SynonymsAndTranslations' => 'Synonymer och översättningar',
+	'ow_Source'                  => 'Källa',
+	'ow_LinkAttributeValues'     => 'Länkar',
 );
 
 /** Turkish (Türkçe)
@@ -1423,8 +1429,11 @@ $wdMessages['tr'] = array(
 	'langman_title' => 'Lisan idarecisi',
 	'languages'     => 'Wikidata: Lisan idarecisi',
 	'ow_save'       => 'Kaydet',
+	'ow_history'    => 'Geçmiş',
 	'ow_dm_OK'      => 'Tamam',
 	'ow_Language'   => 'Dil',
+	'ow_Source'     => 'Kaynak',
+	'ow_Text'       => 'Metin',
 );
 
 /** Volapük (Volapük)
@@ -1449,10 +1458,6 @@ $wdMessages['vo'] = array(
 	'ow_LinkAttributeValues'          => 'Liuds',
 );
 
-$wdMessages['yue'] = array(
-	'datasearch' => 'Wikidata: 搵資料',
-);
-
 $wdMessages['zh-hans'] = array(
 	'datasearch' => 'Wikidata: 数据搜寻',
 	'langman_title' => '语言管理员',
@@ -1465,6 +1470,7 @@ $wdMessages['zh-hant'] = array(
 	'languages'=>'Wikidata: 語言管理員',
 );
 
+$wdMessages['kk'] = $wdMessages['kk-kz'];
 $wdMessages['yue'] = $wdMessages['zh-hant'];
 $wdMessages['zh'] = $wdMessages['zh-hans'];
 $wdMessages['zh-cn'] = $wdMessages['zh-hans'];
@@ -1472,3 +1478,10 @@ $wdMessages['zh-hk'] = $wdMessages['zh-hant'];
 $wdMessages['zh-sg'] = $wdMessages['zh-hans'];
 $wdMessages['zh-tw'] = $wdMessages['zh-hant'];
 $wdMessages['zh-yue'] = $wdMessages['yue'];
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'datasearch' => 'Wikidata: Duomenų paieška',
+);
+

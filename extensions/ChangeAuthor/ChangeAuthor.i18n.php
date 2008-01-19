@@ -296,6 +296,7 @@ $messages['lb'] = array(
 	'changeauthor-nosuchuser'           => 'Et gëtt kee Benotzer "$1".',
 	'changeauthor-revview'              => 'Versioun #$1 vun $2',
 	'changeauthor-nosuchtitle'          => 'Et gëtt keng Säit mam Numm "$1".',
+	'changeauthor-success'              => 'Är Ufro gouf mat succès duerchgefouert.',
 	'changeauthor-rev'                  => 'Versioun $1',
 );
 

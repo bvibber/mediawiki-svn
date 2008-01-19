@@ -108,10 +108,12 @@ $messages['bg'] = array(
  */
 $messages['bg'] = array(
 	'hiderevision-continue'    => 'Продължаване',
+	'hiderevision-submit'      => 'Перманентно скриване на информацията',
 	'hiderevision-tab'         => 'Скриване на редакцията',
 	'hiderevision-norevisions' => 'Не са посочени редакции за изтриване.',
 	'hiderevision-noreason'    => 'Необходимо е да се посочи причина за това премахване.',
 	'hiderevision-status'      => 'Редакция $1: $2',
+	'hiderevision-success'     => 'Архивирано и изтрито успешно.',
 	'oversight-view'           => 'детайли',
 	'oversight-hidden'         => 'Скрита редакция',
 );

@@ -133,6 +133,23 @@ $messages['ca'] = array(
 	'bookinfo-provider'=> 'Proveïdor de dades: $1',
 );
 
+/** Czech (Česky)
+ * @author Li-sung
+ */
+$messages['cs'] = array(
+	'bookinfo-header'            => 'Informace o knihách',
+	'bookinfo-result-title'      => 'Název:',
+	'bookinfo-result-author'     => 'Autor:',
+	'bookinfo-result-publisher'  => 'Vydavatel:',
+	'bookinfo-result-year'       => 'Rok:',
+	'bookinfo-error-invalidisbn' => 'Zadáno neplatné ISBN.',
+	'bookinfo-error-nosuchitem'  => 'Položka neexistuje nebo nebyla nalezena.',
+	'bookinfo-error-nodriver'    => 'Nepodařilo se inicializovat příslušný ovladač informací o knihách.',
+	'bookinfo-error-noresponse'  => 'Žádná odpověď nebo vypršel čas na odpověď.',
+	'bookinfo-purchase'          => 'Koupit tuto knihu na $1',
+	'bookinfo-provider'          => 'Poskytovatel dat: $1',
+);
+
 /** Danish (Dansk)
  * @author Morten LJ
  */
@@ -673,6 +690,13 @@ $messages['sv'] = array(
 	'bookinfo-error-noresponse'  => 'Fick inget svar eller det tog för lång tid att få svar.',
 	'bookinfo-purchase'          => 'Köp denna bok från $1',
 	'bookinfo-provider'          => 'Data hämtat från: $1',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'bookinfo-result-year' => 'Yıl:',
 );
 
 /** Volapük (Volapük)

@@ -40,6 +40,13 @@ $messages['ar'] = array(
 	'pdt_comparing_page'  => 'مقارنة ناتج البارسر من [[$1]]',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'pdtest_diff' => 'Разлики',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */
@@ -170,6 +177,17 @@ $messages['it'] = array(
 	'pdt_comparing_page'  => 'Confronto tra gli output del parser per [[$1]]',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'pdtest_page_missing' => 'Déi gefrote Säit gouf net an der Datebank fonnt.',
+	'pdtest_no_changes'   => 'Keng Ännerung fonnt.',
+	'pdtest_time_report'  => '<b>$1</b> huet $2 Sekonne gedauert, <b>$3</b> huet $4 Sekonne gedauert.',
+	'pdtest_ok'           => 'ok',
+	'pdtest_diff'         => 'Ënnerscheed',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -186,6 +204,24 @@ $messages['nl'] = array(
 	'pdtest_diff'         => 'Verschillen',
 	'pdtest_side_by_side' => 'Uitvoervergelijking',
 	'pdt_comparing_page'  => 'Vergelijk van parseruitvoer van [[$1]]',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'parserdifftest'      => 'Test av parserskilnader',
+	'pdtest_no_target'    => 'Inga målside er oppgjeve.',
+	'pdtest_page_missing' => 'Den oppgjevne sida fanst ikkje i databasen.',
+	'pdtest_no_changes'   => 'Ingen endringar vart oppdaga.',
+	'pdtest_time_report'  => '<b>$1</b> tok $2 sekund, <b>$3</b> tok $4 sekund.',
+	'pdtest_title'        => 'Sidetittel:',
+	'pdtest_text'         => 'Tekst som skal parsast:',
+	'pdtest_ok'           => 'Sjå skilnader',
+	'pdtest_get_text'     => 'Hent tekst frå side',
+	'pdtest_diff'         => 'Skilnader',
+	'pdtest_side_by_side' => 'Samanlikning av resultatet',
+	'pdt_comparing_page'  => 'Samanliknar parserresultat frå [[$1]]',
 );
 
 /** Occitan (Occitan)

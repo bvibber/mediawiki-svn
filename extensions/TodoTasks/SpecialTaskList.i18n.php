@@ -339,19 +339,30 @@ $messages['zh-cn'] = array(         //Simple Chinese
 	'tasklistbyname'          => '==  名称为「%s」的任务 ==', //== Todo List for %s ==
 );
 
-$messages['zh-tw'] = array(            //Taiwanese Chinese
-	'tasklist'                => '任務清單',  //Task List
-	'tasklistbyproject'       => '依專案列出任務', //Task List By Project
-	'tasklistunknownproject'  => '未知的專案', //Unknown project
-	'tasklistunspecuser'      => '未指定用戶', //Unspecified user
-	'tasklistincorrectuser'   => '用戶名稱錯誤',  //Incorrect username
-	'tasklistemail'           => '%s您好',  //Dear %s
-	'tasklistemailsubject'    => '[%s] 任務清單變更', //Task List Change
-	'tasklistmytasks'         => '我的任務',  //My tasks
-	'tasklistbyprojectbad'    => "專案「'''%s'''」並非是個有效的專案項目.請參考[[MediaWiki:TodoTasksValidProjects]]頁面以察看專案清單",
-	'tasklistbyprojname'      => "'''%s'''項下的任務", //Assigned Tasks for '''%s'''
-	'tasklistchooseproj'      => '選取專案：', //Select Project:
-	'tasklistprojdisp'        => '顯示',  //Display
-	'tasklistbyname'          => '==  名稱為「%s」的任務 ==', //== Todo List for %s ==
+/** ‪中文(台灣)‬ (‪中文(台灣)‬)
+ * @author Roc michael
+ */
+$messages['zh-tw'] = array(
+	'tasklist'               => '任務清單',
+	'tasklistbyproject'      => '依專案列出任務',
+	'tasklistunknownproject' => '未知的專案',
+	'tasklistunspecuser'     => '未指定用戶',
+	'tasklistincorrectuser'  => '用戶名稱錯誤',
+	'tasklistemail'          => '%s您好',
+	'tasklistemailsubject'   => '[%s] 任務清單變更',
+	'tasklistmytasks'        => '我的任務',
+	'tasklistbyprojectbad'   => "專案「'''%s'''」並非是個有效的專案項目.請參考[[MediaWiki:TodoTasksValidProjects]]頁面以察看專案清單",
+	'tasklistbyprojname'     => "'''%s'''項下的任務",
+	'tasklistchooseproj'     => '選取專案：',
+	'tasklistprojdisp'       => '顯示',
+	'tasklistbyname'         => '==  名稱為「%s」的任務 ==',
+	'tasklistnoprojects'     => "錯誤：您似乎設定了使'''\$wgUseProjects'''生效，但卻尚未建立[[MediaWiki:TodoTasksValidProjects]]此一頁面，請參見 [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions]此一頁面以獲得更詳細的說明。",
+	'tasklistemailbody'      => ',
+
+有人在%s指定了一項新任務給您。
+
+您可前往%s查看所有任務的清單。
+
+您最好的幫手 %s 任務通報系統',
 );
 

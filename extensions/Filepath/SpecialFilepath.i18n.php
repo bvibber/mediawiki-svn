@@ -87,10 +87,16 @@ $messages['co'] = array(
 	'filepath_page'   => 'Schedariu:',
 );
 
+/** Czech (Česky)
+ * @author Li-sung
+ */
 $messages['cs'] = array(
-	'filepath'        => 'Cesta k souboru',
-	'filepath_page'   => 'Soubor:',
-	'filepath_submit' => 'Cesta',
+	'filepath'         => 'Cesta k souboru',
+	'filepath_page'    => 'Soubor:',
+	'filepath_submit'  => 'Cesta',
+	'filepath-summary' => 'Tato speciální stránka vrátí úplnou cestu k souboru. Obrázky se zobrazí v plném rozlišení, jiné typy souborů se otevřenou v  přiřazených programech.
+
+Jméno souboru vkládejte bez označení "{{ns:image}}:" .',
 );
 
 $messages['de'] = array(

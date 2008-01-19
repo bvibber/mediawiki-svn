@@ -23,19 +23,6 @@ $messages['en'] = array(
 	'countedits-nocontribs' => 'There have been no contributions to this wiki.',
 );
 
-/** Kotava (Kotava)
- * @author Wikimistusik
- */
-$messages['avk'] = array(
-	'countedits'              => 'Betarota',
-	'countedits-username'     => 'Favesikyolt :',
-	'countedits-ok'           => 'Enkalí !',
-	'countedits-nosuchuser'   => 'Mek favesik dem $1 yolt.',
-	'countedits-resultheader' => 'Trasikseem va $1',
-	'countedits-resulttext'   => '$1 $2 -on al betar',
-	'countedits-mostactive'   => 'Tel lowebesikeem',
-);
-
 /* Arabic (Meno25) */
 $messages['ar'] = array(
 	'countedits' => 'عد التعديلات',
@@ -47,6 +34,19 @@ $messages['ar'] = array(
 	'countedits-resulttext' => '$1 لديه $2 مساهمة',
 	'countedits-mostactive' => 'أكثر المساهمين نشاطا',
 	'countedits-nocontribs' => 'لا يوجد مساهمون في هذه الويكي.',
+);
+
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'countedits'              => 'Betarota',
+	'countedits-username'     => 'Favesikyolt :',
+	'countedits-ok'           => 'Enkalí !',
+	'countedits-nosuchuser'   => 'Mek favesik dem $1 yolt.',
+	'countedits-resultheader' => 'Trasikseem va $1',
+	'countedits-resulttext'   => '$1 $2 -on al betar',
+	'countedits-mostactive'   => 'Tel lowebesikeem',
 );
 
 $messages['bcl'] = array(
@@ -281,8 +281,11 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'countedits-username'   => 'Benotzernumm:',
-	'countedits-nosuchuser' => 'Et gëtt kee Benotzer mam Numm $1.',
+	'countedits'              => 'Zuel vun den Ännerungen',
+	'countedits-username'     => 'Benotzernumm:',
+	'countedits-nosuchuser'   => 'Et gëtt kee Benotzer mam Numm $1.',
+	'countedits-resultheader' => 'Resultat fir $1',
+	'countedits-nocontribs'   => 'Keng Ännerungen op dëser Wiki.',
 );
 
 $messages['nds'] = array(

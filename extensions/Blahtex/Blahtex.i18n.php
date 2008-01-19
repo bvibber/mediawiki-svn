@@ -1001,3 +1001,10 @@ $messages['stq'] = array(
 	'math_noblahtex' => 'Kon nit uutfiere blahtex, ju der ap $1 weese schuul',
 );
 
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'math_InvalidColour' => 'Färgen "$1" är ogiltig',
+);
+

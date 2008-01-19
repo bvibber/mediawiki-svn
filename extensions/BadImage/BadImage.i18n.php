@@ -875,32 +875,39 @@ $messages['su'] = array(
 	'badimages-page' => '{{ns:help}}:Daptar gambar rusak',
 );
 
+/** Swedish (Svenska)
+ * @author Sannab
+ * @author Lejonel
+ * @author SPQRobin
+ */
 $messages['sv'] = array(
-	'badimages' => 'Lista över dåliga bilder',
-	'badimages-add-btn' => 'Lägg till',
-	'badimages-added' => '$1 las till på listan.',
-	'badimages-count' => 'Det finns \'\'\'$1\'\'\' bilder på listan över dåliga bilder.',
-	'badimages-name' => 'Namn:',
-	'badimages-not-added' => 'Bilden kunde inte läggas till.',
-	'badimages-not-removed' => 'Bilden kunde inte strykas.',
-	'badimages-reason' => 'Anledning:',
-	'badimages-remove' => '(stryk)',
-	'badimages-remove-btn' => 'Stryk',
+	'badimages'                => 'Lista över dåliga bilder',
+	'badimages-add-btn'        => 'Lägg till',
+	'badimages-added'          => '$1 las till på listan.',
+	'badimages-count'          => "Det finns '''$1''' bilder på listan över dåliga bilder.",
+	'badimages-name'           => 'Namn:',
+	'badimages-not-added'      => 'Bilden kunde inte läggas till.',
+	'badimages-not-removed'    => 'Bilden kunde inte strykas.',
+	'badimages-reason'         => 'Anledning:',
+	'badimages-remove'         => '(stryk)',
+	'badimages-remove-btn'     => 'Stryk',
 	'badimages-remove-confirm' => 'Bekräfta att du önskar stryka $1 från listan:',
-	'badimages-removed' => '$1 ströks från listan.',
-	'badimages-subheading' => 'Nuvarande poster',
-	'badimages-unprivileged' => '(Du har inte tillräcklig behörighet för att ändra i listan)',
-	'badimages-log-name' => 'Lista över dåliga bilder',
-	'badimages-log-header' => 'Detta är en logg över ändringar i [[{{MediaWiki:Badimages-page}}|listan över dåliga bilder]].',
-	'badimages-log-add' => 'la till [[$1]] till listan över dåliga bilder',
-	'badimages-log-remove' => 'strök [[$1]] från listan över dåliga bilder',
+	'badimages-removed'        => '$1 ströks från listan.',
+	'badimages-subheading'     => 'Nuvarande poster',
+	'badimages-unprivileged'   => '(Du har inte tillräcklig behörighet för att ändra i listan)',
+	'badimages-log-name'       => 'Lista över dåliga bilder',
+	'badimages-log-header'     => 'Detta är en logg över ändringar i [[{{MediaWiki:Badimages-page}}|listan över dåliga bilder]].',
+	'badimages-log-add'        => 'la till [[$1]] till listan över dåliga bilder',
+	'badimages-log-remove'     => 'strök [[$1]] från listan över dåliga bilder',
+	'badimages-page'           => '{{ns:help}}:Lista över dåliga bilder',
 );
 
 /** Turkish (Türkçe)
  * @author Karduelis
  */
 $messages['tr'] = array(
-	'badimages-add-btn' => 'Ekle',
+	'badimages-add-btn'    => 'Ekle',
+	'badimages-remove-btn' => 'Taşı',
 );
 
 /** Volapük (Volapük)

@@ -510,6 +510,13 @@ $messages['to'] = array(
 	'linksearch-error' => 'ʻOku ngofua pē ke ʻasi ha ngaahi lauʻifano ʻi he kamataʻanga ʻo e tauhia hono hingoa.',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'linksearch-ok' => 'Ara',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

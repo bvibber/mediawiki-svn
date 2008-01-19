@@ -92,6 +92,23 @@ $messages['fr'] = array(
 	'scanset_prev'                      => '&lt; Précédent',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'scanset_no_name'                   => 'ScanSet : vos dête spècefiar un nom por lo scansèt, per ègzemplo &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet : scansèt envalido ou manquent',
+	'scanset_unrecognised_index_format' => 'ScanSet : format d’endèxe encognu',
+	'scanset_opendir_error'             => 'ScanSet : èrror, empossiblo d’uvrir lo rèpèrtouèro $1',
+	'scanset_no_files'                  => 'ScanSet : lo rèpèrtouèro spècefiâ est vouedo.',
+	'scanset_no_volumes'                => 'ScanSet : nion rèpèrtouèro trovâ sur cél disco',
+	'scanset_missing_index_file'        => 'ScanSet : fichiér d’endèxe $1 manquent',
+	'scanset_index_file_error'          => 'ScanSet : èrror a la legne $1 du fichiér d’endèxe',
+	'scanset_invalid_volume'            => 'ScanSet : volumo envalido',
+	'scanset_next'                      => 'Siuvent &gt;',
+	'scanset_prev'                      => '&lt; Prècèdent',
+);
+
 /** Galician (Galego)
  * @author Alma
  */
