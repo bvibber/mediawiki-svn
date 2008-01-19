@@ -524,13 +524,17 @@ $messages['fr'] = array(
  * @author Alma
  */
 $messages['gl'] = array(
-	'mv_duration_label'  => 'duración',
-	'mv_edit'            => 'Editar',
-	'mv_history'         => 'Historial',
-	'mv_search_category' => 'Categoría',
-	'mv_search_and'      => 'e',
-	'mv_search_or'       => 'ou',
-	'mv_category'        => 'categoría',
+	'mv_duration_label'           => 'duración',
+	'mv_edit'                     => 'Editar',
+	'mv_history'                  => 'Historial',
+	'mv_edit_title'               => 'Editar Texto',
+	'mv_adjust_old_title_missing' => 'A páxina que está tentando mover desde ($1) non existe',
+	'mv_start_desc'               => 'Comezar Tempo',
+	'mv_end_desc'                 => 'Finalizar Tempo',
+	'mv_search_category'          => 'Categoría',
+	'mv_search_and'               => 'e',
+	'mv_search_or'                => 'ou',
+	'mv_category'                 => 'categoría',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

@@ -110,6 +110,17 @@ $messages['nl'] = array(
 	'randomincategory-submit'     => 'OK',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'randomincategory'            => "Pagina a l'azard dins la categoria",
+	'randomincategory-toolbox'    => "Pagina a l'azard",
+	'randomincategory-nocategory' => 'La categoria « $1 » existís pas o es voida',
+	'randomincategory-label'      => 'Categoria :',
+	'randomincategory-submit'     => 'Amodar',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

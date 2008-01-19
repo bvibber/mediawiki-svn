@@ -84,6 +84,13 @@ $messages['nl'] = array(
 	'seealso' => 'Zie ook',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'seealso' => 'Vejatz tanben',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

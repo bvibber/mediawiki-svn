@@ -117,6 +117,24 @@ $messages['fr'] = array(
 	'usagestatisticsbadstartend' => '<b>Mauvais format de date de <i>début</i> ou de <i>fin</i> !</b>',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dnik
+ */
+$messages['hr'] = array(
+	'specialuserstats'           => 'Statistika upotrebe',
+	'usagestatistics'            => 'Statistika upotrebe',
+	'usagestatisticsfor'         => '<h2>Statistika upotrebe za suradnika [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'    => 'Svi suradnici',
+	'usagestatisticsinterval'    => 'Razdoblje',
+	'usagestatisticstype'        => 'Vrsta',
+	'usagestatisticsstart'       => 'Početni datum',
+	'usagestatisticsend'         => 'Završni datum',
+	'usagestatisticssubmit'      => 'Izračunaj statistiku',
+	'usagestatisticsnostart'     => '* <font color=red>Molimo, odaberite početni datum</font>',
+	'usagestatisticsnoend'       => '* <font color=red>Molimo, odaberite završni datum</font>',
+	'usagestatisticsbadstartend' => '<b>Nevažeći <i>početni</i> i/ili <i>završni</i> datum!</b>',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

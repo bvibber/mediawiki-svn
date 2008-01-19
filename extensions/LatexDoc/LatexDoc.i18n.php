@@ -79,7 +79,7 @@ $3",
  * @author Alma
  */
 $messages['gl'] = array(
-	'latexdoc_no_text'         => 'O artigo non contén texto, non pode xenerar DVI',
+	'latexdoc_no_text'         => 'A páxina non contén texto, non pode xenerar DVI',
 	'latexdoc_cant_create_dir' => 'Non se pode crear un directorio temporal $1',
 	'latexdoc_cant_write'      => 'Non se pode escribir no ficheiro $1',
 	'latexdoc_error'           => 'Erro de LaTeX

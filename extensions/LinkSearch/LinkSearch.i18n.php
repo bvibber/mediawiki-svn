@@ -419,6 +419,19 @@ $messages['pt'] = array(
 	'linksearch-error' => '"Caracteres mágicos" (wildcards) podem ser utilizados apenas no início do endereço.',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'linksearch'       => "Internet llikapi t'inkikunata maskay",
+	'linksearch-pat'   => 'Kay qatinallakama maskay:',
+	'linksearch-ns'    => "Suti k'iti:",
+	'linksearch-ok'    => 'Maskay',
+	'linksearch-text'  => 'Ima rantipas sananchawanpas maskayta saqillasunkim, ahinataq "*.wikipedia.org".<br />Q\'imichisqa tantari qillqa: <tt>$1</tt>',
+	'linksearch-line'  => "$1-man $2-manta t'inkimusqa",
+	'linksearch-error' => 'Ima rantipas sananchaqa (* ?) tiyaypa qallariyninpim kanman chaylla.',
+);
+
 $messages['rm'] = array(
 	'linksearch-ok'    => 'Tschertgar',
 );

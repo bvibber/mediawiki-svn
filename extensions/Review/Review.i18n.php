@@ -387,6 +387,7 @@ $messages['oc'] = array(
 	'review_user_reviews'                                    => '<small>(revisions per aqueste contributor)</small>',
 	'review_user_page_list'                                  => 'Lo contributor a revisat las paginas seguentas :',
 	'review_user_details_link'                               => '(detalhs)',
+	'review_do_merge'                                        => "Fusionar mos passatges en revista de las autras revisions d'aquesta pagina amb aquesta",
 	'review_has_been_stored'                                 => "<span id='review_has_been_stored'>Vòstra revision es estada salvagardada.</span>",
 	'revision_review_this_page_version_link'                 => 'Revisar aquesta version de la pagina',
 	'review_page_review'                                     => 'Revision de la pagina « $1 »',

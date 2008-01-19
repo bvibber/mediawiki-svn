@@ -468,6 +468,16 @@ $messages['pt-br'] = array(
 	"sitematrix" => "Lista de wikis da Wikimedia",
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'sitematrix'          => 'Wikimediap wikinkuna',
+	'sitematrix-language' => 'Rimay',
+	'sitematrix-project'  => "Ruraykamaypa sutin, ruraykamaypura t'inki, wikipura t'inki (interwiki)",
+	'sitematrix-others'   => 'Wikimediap huk ruraykamayninkuna',
+);
+
 $messages['rm'] = array(
 	'sitematrix-language' => 'Linguatg',
 );

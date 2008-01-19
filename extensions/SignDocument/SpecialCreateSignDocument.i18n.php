@@ -195,26 +195,30 @@ tamén de que especifica todos os campos exactamente como han de ser ''antes de 
 	'createsigndoc-success'           => 'O documento asinado foi habilitado con éxito en [[$1]]. Para comprobalo, visite [{{SERVER}}{{localurl: Special: SignDocument|doc=$2}} esta páxina].',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'createsigndocument' => 'Podpisanje dokumentow zmóžnić',
-	'createsigndoc-head' => 'Wužij tutón formular, zo by stronu \'Podpisny dokument\' za wotpowědny nastawk wutworił, zo by wužiwarjo přez [[Special:Signdocument]] podpisać móhli. Prošu podaj mjeno nastawka, na kotrymž chceš digatalny podpis zmóžnił, kotři čłonojo kotreje wužiwarskeje skupiny smědźa tam podpisać, kotre pola wužiwarjo smědźa widźeć a kotre měli opcionalne być, trěbnu minimalnu starobu za podpisanje dokumenta (njeje minimum, jeli žane podaće njeje) a krótki zawodny tekst, kotryž tutón dokumement wopisuje a wužiwarjam pokiwy poskića.
+	'createsigndocument'                 => 'Podpisanje dokumentow zmóžnić',
+	'createsigndoc-head'                 => "Wužij tutón formular, zo by stronu 'Podpisny dokument' za wotpowědny nastawk wutworił, zo by wužiwarjo přez [[Special:Signdocument]] podpisać móhli. Prošu podaj mjeno nastawka, na kotrymž chceš digatalny podpis zmóžnił, kotři čłonojo kotreje wužiwarskeje skupiny smědźa tam podpisać, kotre pola wužiwarjo smědźa widźeć a kotre měli opcionalne być, trěbnu minimalnu starobu za podpisanje dokumenta (njeje minimum, jeli žane podaće njeje) a krótki zawodny tekst, kotryž tutón dokumement wopisuje a wužiwarjam pokiwy poskića.
 
-<b>Tuchwilu bjez přistupa k datowej bance žana móžnosć njeje, zo bychu so podpisne dokumenty zničili abo změnili, po tym zo su wutworjene.</b> Nimo toho budźe tekst, kotryž so na podpisnej stronje zwobraznja, \'\'aktualny\'\' tekst strony, njedźiwajo na změny ščinjene pozdźišo. Prošu budźe tebi absolutnje wěsty, zo je tutón dokument za podpisanje stabilny dosć, a zawěsć so tež, zo sy wšě pola takle kaž trjeba wupjelnił, \'\'prjedy hač tutón formular wotesćele\'\'.',
-	'createsigndoc-pagename' => 'Strona:',
-	'createsigndoc-allowedgroup' => 'Dowolena skupina:',
-	'createsigndoc-email' => 'E-mejlowa adresa:',
-	'createsigndoc-address' => 'Bydlenska adresa:',
-	'createsigndoc-extaddress' => 'Město, stat, kraj:',
-	'createsigndoc-phone' => 'Telefonowe čisło:',
-	'createsigndoc-bday' => 'Narodniny:',
-	'createsigndoc-minage' => 'Minimalna staroba:',
-	'createsigndoc-introtext' => 'Zawod:',
-	'createsigndoc-hidden' => 'Schowany',
-	'createsigndoc-optional' => 'Opcionalny',
-	'createsigndoc-create' => 'Wutworić',
-	'createsigndoc-error-generic' => 'Zmylk: $1',
-	'createsigndoc-error-pagenoexist' => 'Zmylk: Strona [[$1]] njeeksistuje.',
-	'createsigndoc-success' => 'Podpisanje dokumentow bu wuspěšnje na [[$1]]aktiwizowane. Zo by je testował, wopytaj prošu [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} tutu stronu:].',
+<b>Tuchwilu bjez přistupa k datowej bance žana móžnosć njeje, zo bychu so podpisne dokumenty zničili abo změnili, po tym zo su wutworjene.</b> Nimo toho budźe tekst, kotryž so na podpisnej stronje zwobraznja, ''aktualny'' tekst strony, njedźiwajo na změny ščinjene pozdźišo. Prošu budźe tebi absolutnje wěsty, zo je tutón dokument za podpisanje stabilny dosć, a zawěsć so tež, zo sy wšě pola takle kaž trjeba wupjelnił, ''prjedy hač tutón formular wotesćele''.",
+	'createsigndoc-pagename'             => 'Strona:',
+	'createsigndoc-allowedgroup'         => 'Dowolena skupina:',
+	'createsigndoc-email'                => 'E-mejlowa adresa:',
+	'createsigndoc-address'              => 'Bydlenska adresa:',
+	'createsigndoc-extaddress'           => 'Město, stat, kraj:',
+	'createsigndoc-phone'                => 'Telefonowe čisło:',
+	'createsigndoc-bday'                 => 'Narodniny:',
+	'createsigndoc-minage'               => 'Minimalna staroba:',
+	'createsigndoc-introtext'            => 'Zawod:',
+	'createsigndoc-hidden'               => 'Schowany',
+	'createsigndoc-optional'             => 'Opcionalny',
+	'createsigndoc-create'               => 'Wutworić',
+	'createsigndoc-error-generic'        => 'Zmylk: $1',
+	'createsigndoc-error-pagenoexist'    => 'Zmylk: Strona [[$1]] njeeksistuje.',
+	'createsigndoc-success'              => 'Podpisanje dokumentow bu wuspěšnje na [[$1]]aktiwizowane. Zo by je testował, wopytaj prošu [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} tutu stronu:].',
+	'createsigndoc-error-alreadycreated' => 'Podpis dokumenta "$1" hižo eksistuje.',
 );
 
 $messages['la'] = array(
@@ -237,10 +241,12 @@ $messages['lb'] = array(
 	'createsigndoc-error-pagenoexist' => "Feeler: D'Säit [[$1]] gëtt et net.",
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'createsigndocument'         => 'Documentondertekening inschakelen',
-	'createsigndoc-head'         =>
-"Gebruik dit formulier om een pagina 'Document ondertekenen' voor een gegeven
+	'createsigndocument'                 => 'Documentondertekening inschakelen',
+	'createsigndoc-head'                 => "Gebruik dit formulier om een pagina 'Document ondertekenen' voor een gegeven
 pagina te maken, zodat gebruikers het kunnen ondertekenen via
 [[Special:SignDocument]]. Geef alstublieft op voor welke pagina u digitaal
 ondertekenen wilt inschakelen, welke gebruikersgroepen kunnen ondertekeken,
@@ -257,22 +263,23 @@ ongeacht de wijzigingen die erna gemaakt worden. Zorg er alstublieft voor
 dat het document een stabiele versie heeft voordat u ondertekenen inschakelt,
 en zorg er alstublieft voor dat alle velden de juiste waarden hebben
 ''voordat u het formulier instuurt''.",
-	'createsigndoc-pagename'     => 'Pagina:',
-	'createsigndoc-allowedgroup' => 'Toegelaten groep:',
-	'createsigndoc-email'        => 'E-mailadres:',
-	'createsigndoc-address'      => 'Adres:',
-	'createsigndoc-extaddress'   => 'Stad, staat, land:',
-	'createsigndoc-phone'        => 'Telefoonnummer:',
-	'createsigndoc-bday'         => 'Geboortedatum:',
-	'createsigndoc-minage'       => 'Minimum leeftijd:',
-	'createsigndoc-introtext'    => 'Inleiding:',
-	'createsigndoc-hidden'       => 'Verborgen',
-	'createsigndoc-optional'     => 'Optioneel',
-	'createsigndoc-create'       => 'Aanmaken',
-	'createsigndoc-error-generic'=> 'Fout: $1',
-	'createsigndoc-error-pagenoexist' => 'Error: De pagina [[$1]] bestaat niet.',
-	'createsigndoc-success'      => 'Documentondertekening is ingeschakeld op
+	'createsigndoc-pagename'             => 'Pagina:',
+	'createsigndoc-allowedgroup'         => 'Toegelaten groep:',
+	'createsigndoc-email'                => 'E-mailadres:',
+	'createsigndoc-address'              => 'Adres:',
+	'createsigndoc-extaddress'           => 'Stad, staat, land:',
+	'createsigndoc-phone'                => 'Telefoonnummer:',
+	'createsigndoc-bday'                 => 'Geboortedatum:',
+	'createsigndoc-minage'               => 'Minimum leeftijd:',
+	'createsigndoc-introtext'            => 'Inleiding:',
+	'createsigndoc-hidden'               => 'Verborgen',
+	'createsigndoc-optional'             => 'Optioneel',
+	'createsigndoc-create'               => 'Aanmaken',
+	'createsigndoc-error-generic'        => 'Fout: $1',
+	'createsigndoc-error-pagenoexist'    => 'Error: De pagina [[$1]] bestaat niet.',
+	'createsigndoc-success'              => 'Documentondertekening is ingeschakeld op
 [[$1]]. Ga alstublieft naar [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} deze pagina] om het te testen.',
+	'createsigndoc-error-alreadycreated' => 'De documentondertekening "$1" bestaat al.',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

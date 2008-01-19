@@ -211,6 +211,13 @@ $messages['pt'] = array(
 	'sitenotice_close' => 'ignorar',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'sitenotice_close' => 'Pakay',
+);
+
 
 $messages['ro'] = array(
 	'sitenotice_close' => 'ascunde',

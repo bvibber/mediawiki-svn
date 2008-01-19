@@ -189,8 +189,17 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'scanset_next' => 'Seguent &gt;',
-	'scanset_prev' => '&lt; Precedent',
+	'scanset_no_name'                   => 'ScanSet : Devètz especificar un nom pel scanset, per exemple &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet : set invalid o mancant',
+	'scanset_unrecognised_index_format' => "ScanSet : Format d'indèx desconegut",
+	'scanset_opendir_error'             => 'ScanSet : Error, impossible de dobrir lo repertòri $1',
+	'scanset_no_files'                  => 'ScanSet : Lo repertòri especificat es void.',
+	'scanset_no_volumes'                => 'ScanSet : Cap de repertòri pas trobat sus aqueste disc',
+	'scanset_missing_index_file'        => "ScanSet : Fichièr d'indèx $1 mancant",
+	'scanset_index_file_error'          => "ScanSet : Error a la linha $1 del fichièr d'indèx",
+	'scanset_invalid_volume'            => 'ScanSet : Volum invalid',
+	'scanset_next'                      => 'Seguent &gt;',
+	'scanset_prev'                      => '&lt; Precedent',
 );
 
 /** Polish (Polski)

@@ -952,6 +952,24 @@ $messages['pt'] = array(
 	'ogg-desc-link'           => 'Sobre este ficheiro',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'ogg-play'              => 'Waqachiy',
+	'ogg-pause'             => "P'itiy",
+	'ogg-stop'              => 'Tukuchiy',
+	'ogg-play-video'        => 'Widyuta rikuchiy',
+	'ogg-play-sound'        => 'Ruqyayta uyarichiy',
+	'ogg-player-soundthumb' => 'Manam waqachiqchu',
+	'ogg-player-selected'   => '(akllasqa)',
+	'ogg-use-player'        => "Kay waqachiqta llamk'achiy:",
+	'ogg-more'              => 'Astawan...',
+	'ogg-dismiss'           => "Wichq'ay",
+	'ogg-download'          => 'Willañiqita chaqnamuy',
+	'ogg-desc-link'         => 'Kay willañiqimanta',
+);
+
 $messages['ru'] = array(
 	'ogg-short-audio'      => 'Звуковой файл Ogg $1, $2',
 	'ogg-short-video'      => 'Видео-файл Ogg $1, $2',

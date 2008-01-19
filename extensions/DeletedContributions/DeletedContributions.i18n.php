@@ -232,6 +232,13 @@ $messages['pt'] = array(
 	'deletedcontributions' => 'Edições eliminadas',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'deletedcontributions' => 'Qullusqa ruraqpa hukchasqankuna',
+);
+
 $messages['ro'] = array(
 	'deletedcontributions' => 'Contribuţii şterse',
 );

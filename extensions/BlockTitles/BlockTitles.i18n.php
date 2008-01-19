@@ -16,20 +16,20 @@ $messages['en'] = array(
 	'block_title_error' => 'Sorry, the title of this page is not allowed to be saved.',
 );
 
-/** Kotava (Kotava)
- * @author Wikimistusik
- */
-$messages['avk'] = array(
-	'block_title_error_page_title' => 'Elekan vergumvelt',
-	'block_title_error'            => 'Argenon, vergumvelt ke batu bu me zo rogiwar.',
-);
-
 /** Arabic (العربية)
  * @author Meno25
  */
 $messages['ar'] = array(
 	'block_title_error_page_title' => 'عنوان ممنوع',
 	'block_title_error'            => 'عذرا، عنوان هذه الصفحة غير مسموح بحفظه.',
+);
+
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'block_title_error_page_title' => 'Elekan vergumvelt',
+	'block_title_error'            => 'Argenon, vergumvelt ke batu bu me zo rogiwar.',
 );
 
 /** Bikol Central (Bikol Central)
@@ -221,7 +221,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'block_title_error_page_title' => 'Títol invalid',
-	'block_title_error'            => "O planhem, lo títol d'aqueste article es pas autorizat a èsser salvagardat.",
+	'block_title_error'            => "O planhèm, lo títol d'aqueste article es pas autorizat a èsser salvagardat.",
 );
 
 /** Polish (Polski)

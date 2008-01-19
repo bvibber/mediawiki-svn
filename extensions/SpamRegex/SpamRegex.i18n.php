@@ -124,7 +124,7 @@ $messages['fr'] = array(
  * @author Xosé
  */
 $messages['gl'] = array(
-	'spamregex_summary'              => 'O texto foi atopado no resumo do artigo.',
+	'spamregex_summary'              => 'O texto foi atopado no resumo da páxina.',
 	'spamregex-currently-blocked'    => "'''Frases actualmente bloqueadas:'''",
 	'spamregex-no-currently-blocked' => "'''Non hai frases bloqueadas.'''",
 	'spamregex-log-2'                => 'en $1',
@@ -137,7 +137,7 @@ $messages['gl'] = array(
 	'spamregex-error-1'              => 'Expresión regular non válida.',
 	'spamregex-already-blocked'      => '"$1" está aínda bloqueado',
 	'spamregex-phrase-block'         => 'Frase para bloquear:',
-	'spamregex-phrase-block-text'    => 'bloquear unha frase no texto do artigo',
+	'spamregex-phrase-block-text'    => 'bloquear unha frase no texto da páxina',
 	'spamregex-phrase-block-summary' => 'bloquear frase no resumo',
 	'spamregex-block-submit'         => 'Bloquear&nbsp;esta&nbsp;frase',
 	'spamregex-text'                 => '(Texto)',

@@ -442,6 +442,13 @@ $messages['pt'] = array(
 	'imagemap_description'          => 'Sobre esta imagem',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'imagemap_description' => 'Kay rikchamanta',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

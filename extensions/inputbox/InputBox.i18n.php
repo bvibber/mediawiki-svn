@@ -261,7 +261,7 @@ $messages['gl'] = array(
 	'inputbox-error-bad-type' => 'A caixa de entrada de tipo "$1" non se recoñece. Especifique "crear", "comentario", "procurar" ou "procurar2".',
 	'tryexact'                => 'Tentar coincidencias exactas',
 	'searchfulltext'          => 'Buscar o texto completo',
-	'createarticle'           => 'Crear artigo',
+	'createarticle'           => 'Crear páxina',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ) */
@@ -565,6 +565,15 @@ $messages['pt'] = array(
 	'createarticle'  => 'Criar página',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'tryexact'       => 'Hinalla taripanayaspa maskay',
+	'searchfulltext' => "Hunt'a qillqata maskay",
+	'createarticle'  => 'Qillqata kamariy',
+);
+
 /** Romanian (Română)
  * @author Emily
  */
@@ -732,6 +741,13 @@ $messages['wa'] = array(
 $messages['wuu'] = array(
 	'searchfulltext'          => '全文搜寻',
 	'createarticle'           => '建立新文章',
+);
+
+/** Xhosa (isiXhosa)
+ * @author SPQRobin
+ */
+$messages['xh'] = array(
+	'createarticle' => 'Bhala Ibali',
 );
 
 $messages['yue'] = array(

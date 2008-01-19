@@ -51,6 +51,13 @@ $messages['ast'] = array(
 	'newuserlog-create2-entry' => 'creó una cuenta pa $1',
 );
 
+/** Avaric (Авар)
+ * @author MF-Warburg
+ */
+$messages['av'] = array(
+	'newuserlog-create-entry' => 'ЦIияв гIахьалчи',
+);
+
 $messages['bcl'] = array(
 	'newuserlog-create-entry'  => 'Bâgong parágamit',
 );

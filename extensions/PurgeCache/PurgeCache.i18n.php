@@ -89,6 +89,16 @@ $messages['nn'] = array(
 	'purgecache-button'  => 'Slett mellomlagring',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'purgecache'         => "Purgar l'amagatal",
+	'purgecache-warning' => "Aquò purgarà las taulas de l'amagatal.",
+	'purgecache-purged'  => "L'amagatal es estat purgat.",
+	'purgecache-button'  => 'Purgar',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

@@ -65,6 +65,15 @@ L’extension <i>Appel</i> appellera la page indiquée en y passant les paramèt
 	'call-save-failed' => 'Le texte suivant n’a pu être sauvergardé vers la page <big>[[$1]]</big> du fait qu’elle existe déjà.',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ */
+$messages['gl'] = array(
+	'call-save'         => "A saída desta chamada gardaríase nunha páxina chamada ''$1''.",
+	'call-save-success' => 'O texto seguinte gardouse na páxina <big>[[$1]]</big>.',
+	'call-save-failed'  => 'O texto seguinte NON se gardou na páxina <big>[[$1]]</big> porque xa existe esa páxina.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

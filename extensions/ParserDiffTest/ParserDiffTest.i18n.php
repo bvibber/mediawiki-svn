@@ -56,6 +56,42 @@ $messages['cs'] = array(
 	'pdt_comparing_page'  => 'Porovnání výstupu parserů pro stránku [[$1]]',
 );
 
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'parserdifftest'      => 'Test de diff pour parser',
+	'pdtest_no_target'    => "Aucune cible d'indiquée",
+	'pdtest_page_missing' => "La page indiquée n'a pas été trouvée dans la base de donnée.",
+	'pdtest_no_changes'   => 'Aucun changement de détecté.',
+	'pdtest_time_report'  => '<b>$1</b> a pris $2 secondes, <b>$3</b> a pris $4 secondes.',
+	'pdtest_title'        => 'Titre du contexte :',
+	'pdtest_text'         => "Texte d'entrée :",
+	'pdtest_ok'           => 'Valider',
+	'pdtest_get_text'     => 'Obtenir le texte depuis la page',
+	'pdtest_diff'         => 'Différences',
+	'pdtest_side_by_side' => 'Comparaison en sortie',
+	'pdt_comparing_page'  => 'Comparaison du parser en sortie à partir de [[$1]]',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'parserdifftest'      => 'Èprôva de dif por parsar',
+	'pdtest_no_target'    => 'Niona ciba endicâ.',
+	'pdtest_page_missing' => 'La pâge endicâ at pas étâ trovâ dens la bâsa de balyês.',
+	'pdtest_no_changes'   => 'Nion changement dècelâ.',
+	'pdtest_time_report'  => '<b>$1</b> at prês $2 secondes, <b>$3</b> at prês $4 secondes.',
+	'pdtest_title'        => 'Titro du contèxte :',
+	'pdtest_text'         => 'Tèxte d’entrâ :',
+	'pdtest_ok'           => 'Validar',
+	'pdtest_get_text'     => 'Obtegnir lo tèxte dês la pâge',
+	'pdtest_diff'         => 'Difèrences',
+	'pdtest_side_by_side' => 'Comparèson en sortia',
+	'pdt_comparing_page'  => 'Comparèson du parsèr en sortia dês [[$1]]',
+);
+
 $messages['he'] = array(
 	'parserdifftest' => 'בדיקת השינויים במפענח',
 	'pdtest_no_target' => 'לא נבחר יעד.',
@@ -69,6 +105,24 @@ $messages['he'] = array(
 	'pdtest_diff' => 'הבדלים',
 	'pdtest_side_by_side' => 'השוואת הפלט',
 	'pdt_comparing_page' => 'משווה את פלט המפענחים מהדף [[$1]]',
+);
+
+/** Croatian (Hrvatski)
+ * @author Dnik
+ */
+$messages['hr'] = array(
+	'parserdifftest'      => 'Test razlika parsera',
+	'pdtest_no_target'    => 'Odredište nije zadano.',
+	'pdtest_page_missing' => 'Zadana stranica nije nađena u bazi podataka.',
+	'pdtest_no_changes'   => 'Promjene nisu nađene.',
+	'pdtest_time_report'  => '<b>$1</b> je trajalo $2 {{PLURAL:$2|sekundu|sekunde|sekundi}}, <b>$3</b> je trajalo $4 {{PLURAL:$4|sekundu|sekunde|sekundi}}.',
+	'pdtest_title'        => 'Naslov konteksta:',
+	'pdtest_text'         => 'Ulazni tekst:',
+	'pdtest_ok'           => 'U redu',
+	'pdtest_get_text'     => 'Izvadi tekst iz stranice',
+	'pdtest_diff'         => 'Razlike',
+	'pdtest_side_by_side' => 'Usporedba rezultata',
+	'pdt_comparing_page'  => 'Usporedba rezultata parsera stranice [[$1]]',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -86,6 +140,34 @@ $messages['hsb'] = array(
 	'pdtest_diff'         => 'Rozdźěle',
 	'pdtest_side_by_side' => 'Přirunanje wudaća',
 	'pdt_comparing_page'  => 'Wudaće parsera z [[$1]] so přirunuje',
+);
+
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'pdtest_no_target'    => 'Nincs cél megadva',
+	'pdtest_page_missing' => 'A megadott oldal nem található az adatbázisban.',
+	'pdtest_time_report'  => '<b>$1</b> $2 másodpercig, míg <b>$3</b> $4 másodpercig tartott.',
+	'pdtest_diff'         => 'Eltérések',
+);
+
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
+$messages['it'] = array(
+	'parserdifftest'      => 'Verifica delle modifiche introdotte nel parser',
+	'pdtest_no_target'    => 'Nessuna pagina specificata.',
+	'pdtest_page_missing' => 'La pagina richiesta non è stata trovata nel database.',
+	'pdtest_no_changes'   => 'Non sono state rilevate differenze.',
+	'pdtest_time_report'  => "L'elaborazione di <b>$1</b> ha richiesto $2 secondi, quella di <b>$3</b> $4 secondi.",
+	'pdtest_title'        => 'Titolo del contesto:',
+	'pdtest_text'         => 'Testo di input:',
+	'pdtest_ok'           => 'OK',
+	'pdtest_get_text'     => 'Preleva il testo dalla pagina',
+	'pdtest_diff'         => 'Differenze',
+	'pdtest_side_by_side' => 'Confronto tra gli output',
+	'pdt_comparing_page'  => 'Confronto tra gli output del parser per [[$1]]',
 );
 
 /** Dutch (Nederlands)

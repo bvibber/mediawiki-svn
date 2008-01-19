@@ -218,11 +218,16 @@ tâles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}}, sont
 	'expand_templates_preview'         => 'Prèvisualisacion',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Alma
+ */
 $messages['gl'] = array(
 	'expandtemplates'                  => 'Ampliar modelos',
 	'expand_templates_title'           => 'Título do contexto, para {{PAGENAME}} etc.:',
 	'expand_templates_input'           => 'Texto de entrada:',
 	'expand_templates_output'          => 'Resultado',
+	'expand_templates_xml_output'      => 'saída XML',
 	'expand_templates_ok'              => 'De acordo',
 	'expand_templates_remove_comments' => 'Eliminar os comentarios',
 	'expand_templates_preview'         => 'Vista previa',
@@ -249,10 +254,14 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
+ * @author Dnik
  */
 $messages['hr'] = array(
 	'expandtemplates'                  => 'Prikaz sadržaja predložaka',
-	'expand_templates_intro'           => 'Posebna stranica zauzima tekst i širi se na sve predloške unutar te stranice. Također proširuje funkcije kao <nowiki>{{</nowiki>#if:...}} i varijable kao <nowiki>{{</nowiki>CURRENTDAY}}. Funkcionira na način da se umeće na sve relevantne stranice potekavši iz samoga MediaWikija.',
+	'expand_templates_intro'           => 'Ova posebna stranica omogućuje unos wikiteksta i prikazuje njegov rezultat,
+uključujući i (rekurzivno, tj. potpuno) sve uključene predloške u wikitekstu.
+Prikazuje i rezultate funkcija kao <nowiki>{{</nowiki>#if:...}} i varijabli
+kao <nowiki>{{</nowiki>CURRENTDAY}}. Funkcionira pozivanjem parsera same MedijeWiki.',
 	'expand_templates_title'           => 'Kontekstni naslov, za {{PAGENAME}} itd.:',
 	'expand_templates_input'           => 'Ulazni tekst:',
 	'expand_templates_output'          => 'Rezultat',
@@ -542,6 +551,17 @@ Sòn a lo fa ën ciamand l\'anterprete dal programa MediaWiki.',
 	'expand_templates_ok'              => 'Bin parèj',
 	'expand_templates_remove_comments' => 'Gava via ij coment',
 	'expand_templates_preview'         => 'Preuva',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'expandtemplates'                  => "Plantillakunata mast'ariy",
+	'expand_templates_input'           => 'Yaykuchina qillqa:',
+	'expand_templates_output'          => 'Lluqsiynin:',
+	'expand_templates_remove_comments' => 'Willapusqakunata qichuy',
+	'expand_templates_preview'         => 'Ñawpaqta qhawallay',
 );
 
 /** Russian (Русский)

@@ -16,15 +16,6 @@ $messages['en'] = array(
 Enter the file name without the "{{ns:image}}:" prefix.',
 );
 
-/** Kotava (Kotava)
- * @author Wikimistusik
- */
-$messages['avk'] = array(
-	'filepath'        => 'Iyeltakkelda',
-	'filepath_page'   => 'Iyeltak :',
-	'filepath_submit' => 'Kelda',
-);
-
 $messages['af'] = array(
 	'filepath'        => 'Lêerpad',
 	'filepath_page'   => 'Lêer:',
@@ -51,6 +42,15 @@ $messages['ast'] = array(
 	'filepath'        => "Ruta d'archivu",
 	'filepath_page'   => 'Archivu:',
 	'filepath_submit' => 'Ruta',
+);
+
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'filepath'        => 'Iyeltakkelda',
+	'filepath_page'   => 'Iyeltak :',
+	'filepath_submit' => 'Kelda',
 );
 
 /** Bulgarian (Български)
@@ -414,6 +414,15 @@ $messages['pt-br'] = array(
 	'filepath'        => 'Diretório do arquivo',
 	'filepath_page'   => 'Arquivo:',
 	'filepath_submit' => 'Diretório',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'filepath'        => 'Willañiqi ñan',
+	'filepath_page'   => 'Willañiqi:',
+	'filepath_submit' => 'Ñan',
 );
 
 $messages['ru'] = array(

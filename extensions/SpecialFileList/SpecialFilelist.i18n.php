@@ -56,6 +56,7 @@ $messages['fr'] = array(
  * @author Alma
  */
 $messages['gl'] = array(
+	'filelist-show-list'    => 'Amosar listaxe',
 	'filelist-show-gallery' => 'Amosar galería',
 );
 

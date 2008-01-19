@@ -2197,6 +2197,10 @@ Um aviso de segurança sobre um certificado não assinado poderá eventualmente 
  * @author AlimanRuna
  */
 $messages['qu'] = array(
+	'boardvote'             => 'Wikimedia sunqullisqa runakunata akllanakuy',
+	'boardvote_entry'       => '* [[Special:Boardvote/vote|Runata akllay]]
+* [[Special:Boardvote/list|Ña akllanapaq nisqa kunkakuna]]
+* [[Special:Boardvote/dump|Pakaykusqa akllana qillqamusqakuna]]',
 	'boardvote_redirecting' => "Akllanakuytaqa hawa, huk runakunap kamachisqan sirwiqpim rurachkanchik aswan qasi astawan rikunalla kananpaq.
 
 Iskay chunka sikundupim chay hawa sirwiqman pusasqaykiku. [$1 Kaypi ñit'iy] chayman kunan rinaykipaq.
