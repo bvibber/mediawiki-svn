@@ -974,6 +974,10 @@ $messages['qu'] = array(
 $1
 
 Maskay: $3 $9 $10",
+	'lucenefallback'        => "Manam atinichu wikipi maskayta.
+Mit'allachá sasachakuy; ratullapi musuqmanta ruraykachay,
+ichataq hawa maskanawan wikipi maskay.",
+	'searchexactcase'       => 'Hatun sanampata musyaspa maskay',
 	'searchall'             => 'tukuy',
 	'searchincategory'      => 'katiguriyapi',
 );
