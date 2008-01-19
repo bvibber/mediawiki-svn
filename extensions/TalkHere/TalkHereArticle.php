@@ -9,7 +9,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
  * to inject the talk page's content.
  */
 class TalkHereArticle {
-	
+
 	var $_article;
 	var $_talkTitle;
 	var $_talk;
@@ -24,7 +24,7 @@ class TalkHereArticle {
 		$this->_talkTitle = $talkTitle;
 		$this->_talk = NULL;
 	}
-	
+
 	function __call( $name, $args ) {
 		$callback = array($this->_article, $name);
 		return call_user_func_array( $callback, $args );
@@ -43,8 +43,8 @@ class TalkHereArticle {
 
 	function view() {
 		global $wgOut, $wgUser, $wgJsMimeType, $wgUseAjax;
-		
-		loadTalkHereI18n();
+
+		wfLoadExtensionMessages( 'TalkHere' );
 
 		$skin = $wgUser->getSkin();
 		$hastalk = $this->_talkTitle->exists();
@@ -63,7 +63,7 @@ class TalkHereArticle {
 		if ($hastalk) {
 			//Bah, would have to call a skin-snippet here :(
 			$wgOut->addHTML('<div class="talkhere-head">');
-	
+
 			$wgOut->addHTML('<h1>');
 			if ($this->_talkTitle->userCan('edit')) {
 				$wgOut->addHTML('<span class="editsection">');
@@ -72,15 +72,15 @@ class TalkHereArticle {
 			}
 			$wgOut->addWikiText( wfMsg('talkhere-title', $this->_talkTitle->getPrefixedText() ), false );
 			$wgOut->addHTML('</h1>');
-	
+
 			$headtext = wfMsg('talkhere-headtext', $this->mTitle->getPrefixedText(), $this->_talkTitle->getPrefixedText() );
 			if ( $headtext ) {
 				$wgOut->addWikiText( $headtext );
 				$wgOut->addHTML('<hr/>');
 			}
-	
+
 			$wgOut->addHTML('</div>'); //talkhere-head
-	
+
 			$wgOut->addHTML('<div class="talkhere-comments">');
 			$this->_talk->view();
 			$wgOut->addHTML('</div>'); // talkhere-comments
@@ -98,12 +98,12 @@ class TalkHereArticle {
 				$wgOut->addHTML('</div>'); // talkhere-comments
 			}
 
-			if ( $wgUseAjax ) $wgOut->addScript( 
-			"	<script type=\"{$wgJsMimeType}\"> 
-				var talkHereLoadingMsg = \"" . Xml::escapeJsString(wfMsg('talkhere-loading')) . "\"; 
-				var talkHereCollapseMsg = \"" . Xml::escapeJsString(wfMsg('talkhere-collapse')) . "\"; 
-				var talkHereExpandMsg = \"" . Xml::escapeJsString(wfMsg('talkhere-addcomment')) . "\"; 
-				</script>\n" 
+			if ( $wgUseAjax ) $wgOut->addScript(
+			"	<script type=\"{$wgJsMimeType}\">
+				var talkHereLoadingMsg = \"" . Xml::escapeJsString(wfMsg('talkhere-loading')) . "\";
+				var talkHereCollapseMsg = \"" . Xml::escapeJsString(wfMsg('talkhere-collapse')) . "\";
+				var talkHereExpandMsg = \"" . Xml::escapeJsString(wfMsg('talkhere-addcomment')) . "\";
+				</script>\n"
 			);
 
 			$returnto = $this->_article->mTitle->getPrefixedDBKey();
@@ -118,7 +118,7 @@ class TalkHereArticle {
 			$wgOut->addHTML('</div>');
 
 			$wgOut->addHTML('<div id="talkhere_talkform" style="display:none;">&nbsp;</div>');
-			//$this->showCommentForm('new'); 	
+			//$this->showCommentForm('new');
 		}
 
 		if ($hastalk) {
@@ -160,7 +160,7 @@ class TalkHereArticle {
 		$q = 'action=submit';
 		$action = $this->_talkTitle->escapeLocalURL( $q );
 		$wgOut->addHTML('<form action="'.$action.'" method="post" id="editform"  name="editform" enctype="multipart/form-data">');
-		
+
 		$wgOut->addHTML("<div>");
 		$wgOut->addWikiText( wfMsg('talkhere-beforeinput') );
 		$wgOut->addHTML("</div>");
@@ -268,9 +268,9 @@ class TalkHereArticle {
 			$token = htmlspecialchars( $wgUser->editToken() );
 		else
 			$token = EDIT_TOKEN_SUFFIX;
-		
+
 		$wgOut->addHTML( "\n<input type='hidden' value=\"$token\" name=\"wpEditToken\" />\n" );
-		
+
 		$wgOut->addHTML('<input name="wpAutoSummary" type="hidden" value="" />');
 		$wgOut->addHTML('</form>');
 		$wgOut->addHTML("<div>");
@@ -284,7 +284,7 @@ class TalkHereArticle {
  * article was updated.
  */
 class TalkHereEditTarget {
-	
+
 	var $_article;
 	var $_returnto;
 
@@ -297,7 +297,7 @@ class TalkHereEditTarget {
 		$this->_article = $article;
 		$this->_returnto = $returnto;
 	}
-	
+
 	function __call( $name, $args ) {
 		global $wgOut;
 
@@ -318,6 +318,4 @@ class TalkHereEditTarget {
 	function __get( $name ) {
 		return $this->_article->$name;
 	}
-
 }
-
