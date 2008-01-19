@@ -44,23 +44,23 @@ class PageByRenderer {
 		$this->nominor = isset($argv['nominor']) ? $argv['nominor'] : true;
 		if ( $this->nominor === 'false' || $this->nominor === 'no' || $this->nominor === '0' )
 			$this->nominor = false;
-	
+
 		$this->nobot = isset($argv['nobot']) ? $argv['nobot'] : true;
 		if ( $this->nobot === 'false' || $this->nobot === 'no' || $this->nobot === '0' )
 			$this->nobot = false;
-	
+
 		$this->noanon = isset($argv['noanon']) ? $argv['noanon'] : false;
 		if ( $this->noanon === 'false' || $this->noanon === 'no' || $this->noanon === '0' )
 			$this->noanon = false;
-	
+
 		$this->showfirst = isset($argv['creation']) ? $argv['creation'] : true;
 		if ( $this->showfirst === 'false' || $this->showfirst === 'no' || $this->showfirst === '0' )
 			$this->showfirst = false;
-	
+
 		$this->showcomments = isset($argv['comments']) ? $argv['comments'] : true;
 		if ( $this->showcomments === 'false' || $this->showcomments === 'no' || $this->showcomments === '0' )
 			$this->showcomments = false;
-	
+
 		$this->showtime = isset($argv['time']) ? $argv['time'] : false;
 		if ( $this->showtime === 'false' || $this->showtime === 'no' || $this->showtime === '0' )
 			$this->showtime = false;
@@ -69,7 +69,7 @@ class PageByRenderer {
 	function collectInfo( ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		list( $trevision, $tuser, $tuser_groups ) = $dbr->tableNamesN( 'revision', '$tuser', 'user_groups' );
-	
+
 		#TODO: use query cache, check against page-timestamp
 		#NOTE: if $this->otherpage == false, the parser cache already takes care of this...
 
@@ -87,13 +87,13 @@ class PageByRenderer {
 		$edits = 0;
 		while ($row = $dbr->fetchObject( $res )) {
 			$edits += 1;
-			
+
 			if ($first===NULL) $first = $row;
 			$last = $row;
-			
-			if ($this->nominor && $row->rev_minor_edit) continue; 
+
+			if ($this->nominor && $row->rev_minor_edit) continue;
 			if ($this->noanon && !$row->rev_user) continue; //FIXE: this also ignores imported revisions!
-			
+
 			if (!isset($users[$row->rev_user])) {
 				$users[$row->rev_user] = array(
 					'name' => $row->rev_user ? $row->rev_user_text : NULL,
@@ -114,9 +114,9 @@ class PageByRenderer {
 
 			if ($userids) {
 				$sql = "SELECT $tuser_groups.* FROM $tuser_groups ";
-				$sql .= "WHERE ug_user IN ( " . $dbr->makeList( $userids ) . " ) "; 
+				$sql .= "WHERE ug_user IN ( " . $dbr->makeList( $userids ) . " ) ";
 				$sql .= "AND ug_group = 'bot' ";
-		
+
 				$res = $dbr->query( $sql, 'PageByRenderer::collectInfo#bots' );
 				while ($row = $dbr->fetchObject( $res )) {
 					unset($users[$row->ug_user]); #strip bots
@@ -133,12 +133,10 @@ class PageByRenderer {
 
 		return $info;
 	}
-	
+
 	function renderPageBy( ) {
 		global $wgContLang, $wgUser;
 		$sk = $wgUser->getSkin();
-
-		loadPageByI18n();
 
 		if ($this->otherpage) {
 			#TODO: if we can't use the parser cache, we should use the query cache
@@ -149,9 +147,10 @@ class PageByRenderer {
 		if (!$info) return false; #TODO: report error!
 
 		extract($info);
-		
+
 		$html = '<ul class="pageby">';
 
+		wfLoadExtensionMessages( 'PageBy' );
 		#TODO: somehere link the page history. And mention the page name, if it's not the local page.
 
 		if ($this->showfirst) {
@@ -160,10 +159,10 @@ class PageByRenderer {
 			$date = $this->showtime ? $wgContLang->timeanddate($first->rev_timestamp) : $wgContLang->date($first->rev_timestamp);
 			$diff = $this->title->getLocalURL('diff=' . $first->rev_id);
 			$comment = htmlspecialchars( $first->rev_comment );
-	
+
 			$html .= '<li class="pageby-first">';
 			$html .= wfMsg('pageby-first', $ulink, $date, $diff);
-			if ($this->showcomments) $html .= '<span class="pageby-comment">: <i>' . $comment . '</i></span>'; 
+			if ($this->showcomments) $html .= '<span class="pageby-comment">: <i>' . $comment . '</i></span>';
 			$html .= '</li>';
 			$html .= "\n";
 		}
@@ -206,16 +205,14 @@ class PageByRenderer {
 			$comment = htmlspecialchars( $last->rev_comment );
 
 			$html .= '<li class="pageby-last">';
-			$html .= wfMsg('pageby-last', $ulink, $date, $diff); 
-			if ($this->showcomments) $html .= '<span class="pageby-comment">: <i>' . $comment . '</i></span>'; 
+			$html .= wfMsg('pageby-last', $ulink, $date, $diff);
+			if ($this->showcomments) $html .= '<span class="pageby-comment">: <i>' . $comment . '</i></span>';
 			$html .= '</li>';
 		}
 
 		$html .= '</ul>';
 		$html .= "\n";
-	
+
 		return $html;
 	}
-	
 }
-
