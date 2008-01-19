@@ -184,6 +184,7 @@ Usage php metavid2mvWiki.php [options] action
 ie: senate_proceeding_04-11-07
 options:
 		--noimage will skip image downloading 
+		--skiptext skips text sync
 actions:
 		stream_name  will proccess that stream name		
 		'all_in_sync' will insert all streams that are tagged in_sync
@@ -500,11 +501,11 @@ function do_stream_insert($mode, $stream_name = '') {
 			//print 'do stream desc'."\n";
 			do_add_stream($mvTitle, $stream);
 			echo "stream " . $mvTitle->getStreamName() . " added \n";
-		} else {
-			do_update_wiki_page($stream->name, mv_semantic_stream_desc($mvTitle, $stream), MV_NS_STREAM);
+		} else {			
+				do_update_wiki_page($stream->name, mv_semantic_stream_desc($mvTitle, $stream), MV_NS_STREAM);
 			//$updated = ' updated' echo "stream " . $mvTitle->getStreamName() . " already present $updated\n";
 		}
-		//add duration and start_time attr
+		//add duration and start_time attr		
 		do_stream_attr_check($stream);
 
 		//do insert/copy all media images 
@@ -514,9 +515,11 @@ function do_stream_insert($mode, $stream_name = '') {
 
 		//check for files (make sure they match with metavid db values
 		do_stream_file_check($stream);
-
-		//proccess all stream text: 
-		do_proccess_text($stream);
+		
+		if(!isset($options['skiptext'])){
+			//proccess all stream text: 
+			do_proccess_text($stream);
+		}
 	}
 }
 function do_proccess_text($stream){
