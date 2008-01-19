@@ -360,6 +360,7 @@ $messages['nl'] = array(
 
 /** Occitan (Occitan)
  * @author Cedric31
+ * @author Siebrand
  */
 $messages['oc'] = array(
 	'review_sidebar_title'                                   => 'Revision',
@@ -379,6 +380,9 @@ $messages['oc'] = array(
 	'review_for_user'                                        => 'Revision per contributor « $1 »',
 	'review_error'                                           => 'Quicòm es copat!',
 	'review_no_reviews_for_page'                             => 'I a pas de revisions per « $1 ».',
+	'review_total_statistics'                                => 'Soma',
+	'review_statistics_left_corner'                          => 'Revision',
+	'review_version_link'                                    => 'Revision #$1',
 	'review_statistic_cell'                                  => 'Mejana : $1 de $2<br/>(contributors : $4 inscriches, $5 anonims)',
 	'review_version_statistic_cell'                          => '$1 de $2',
 	'review_version_reviews_link'                            => '<small>(revisions de version)</small>',

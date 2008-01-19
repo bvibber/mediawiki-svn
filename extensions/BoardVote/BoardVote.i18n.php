@@ -186,19 +186,19 @@ $messages['ast'] = array(
 	'boardvote_entry'        => "* [[Special:Boardvote/vote|Votar]]
 * [[Special:Boardvote/list|Llista de votos hasta la fecha]]
 * [[Special:Boardvote/dump|Volcáu de datos encriptaos d'eleición]]",
-	'boardvote_intro'        => "<p>Bienveníu a la segunda eleición pal Conseyu d'Alministración de Wikimedia.
-Tamos votando pa que dos persones representen a la comunidá d'usuarios de
-los distintos proyectos Wikimedia. Ellos aidarán a determinar la direición
-futura que los proyectos Wikimedia van siguir, en forma individual y en grupu,
-y representen los <em>tos</em> intereses y esmoliciones hacia'l Conseyu d'Alministración.
+	'boardvote_intro'        => "<p>Bienveníu a la segunda eleición pal Conseyu d'Alministración de Wikimedia. 
+Tamos votando pa que dos persones representen a la comunidá d'usuarios de 
+los distintos proyectos Wikimedia. Ellos aidarán a determinar la direición 
+futura que los proyectos Wikimedia van siguir, en forma individual y en grupu, 
+y representen los <em>tos</em> intereses y esmoliciones hacia'l Conseyu d'Alministración. 
 Ellos decidirán les formes de xenerar ingresos y la destinación de los mesmos.</p>
 
 <p>Por favor, llei con procuru les declaraciones y rempuestes de los candidatos
-enantes de votar. Caún de los candidatos ye un usuariu respetáu que contribuyó
-con munchu esfuerzu y tiempu pa facer d'estos proyectos un llugar afayadizu
+enantes de votar. Caún de los candidatos ye un usuariu respetáu que contribuyó 
+con munchu esfuerzu y tiempu pa facer d'estos proyectos un llugar afayadizu 
 col enfotu de distribuyir llibremente'l conocimientu humanu.</p>
 
-<p>Pues votar por tolos candidatos que quieras. El candidatu con más votos en cada
+<p>Pues votar por tolos candidatos que quieras. El candidatu con más votos en cada 
 posición sedrá declaráu'l ganador d'esa posición. En casu d'empate, llevaráse a
 cabu una eleición de desempate.</p>
 
@@ -218,7 +218,7 @@ Encriptóse cola clave pública de los Alministradores de la Eleición:
 
 <pre>$2</pre>
 
-A continuación amuésase la versión encriptada resultante. Va ser publicada en [[Special:Boardvote/dump]].
+A continuación amuésase la versión encriptada resultante. Va ser publicada en [[Special:Boardvote/dump]]. 
 
 <pre>$3</pre>
 
@@ -231,6 +231,7 @@ A continuación amuésase la versión encriptada resultante. Va ser publicada en
 	'boardvote_user'         => 'Usuariu',
 	'boardvote_edits'        => 'Ediciones',
 	'boardvote_days'         => 'Díes',
+	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Representante del usuariu',
 	'boardvote_listintro'    => '<p>Esta ye una llista de tolos votos rexistraos
 hasta la fecha. $1 pa los datos encriptaos.</p>',
@@ -243,8 +244,12 @@ hasta la fecha. $1 pa los datos encriptaos.</p>',
 	'boardvote_notstarted'   => 'La votación entá nun empecipió',
 	'boardvote_closed'       => 'La votación ta zarrada, mira en breve [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En la páxina de resultaos de les eleiciones].',
 	'boardvote_edits_many'   => 'munches',
+	'group-boardvote'        => "Alministradores de votaciones pal Conseyu d'Alministración",
+	'group-boardvote-member' => "Alministrador de votaciones pal Conseyu d'Alministración",
+	'grouppage-boardvote'    => "{{ns:project}}:Alministrador de votaciones pal Conseyu d'Alministración",
 	'boardvote_blocked'      => 'Sentímoslo, fuisti bloquiáu na to wiki. Los usuarios bloquiaos nun puen votar.',
 	'boardvote_welcome'      => "¡Bienveníu '''$1'''!",
+	'go_to_board_vote'       => "Eleiciones pal Conseyu d'Alministración de Wikimedia 2007",
 	'boardvote_redirecting'  => "P'ameyorar la seguridá y tresparencia, tamos faciendo les votaciones nun
 servidor esternu y controláu de forma independiente.
 
@@ -1951,19 +1956,19 @@ $messages['oc'] = array(
 * [[Special:Boardvote/dump|Enregistraments criptats]]',
 	'boardvote_intro'        => '<p>Benvenguda a las tresenas eleccions del conselh d\'administracion de <i><a href="http://wikimediafoundation.org/wiki/Acuèlh" class="extiw" title="foundation:Acuèlh">Wikimedia Foundation Inc.</a></i>. Votam per una persona que representarà la comunautat dels utilizaires suls diferents projèctes Wikimedia. Aquesta persona e lo conselh d\'administracion contribuiràn a orientar la direccion d\'aquestes projèctes e representaràn <i>vòstres</i> interèsses e preocupacions alprèp del conselh d\'administracion. Decidiràn dels mejans de finançament e de l\'afectacion dels fonses.</p> <p>Legissètz atentivament las declaracions dels candidats e lors responsas a las questions abans de votar. Totes los candidats son d\'utilizaires respectats, qu\'an balhat fòrça de temps e d\'esfòrces per far d\'aquestes projèctes un endrech acuelhant dedicat al desvolopament de la liura difusion del saber uman.</p> <p>Podètz votar per autant de candidats qu\'o desiratz. Lo que remportarà mai de voses serà declarat elegit pel pòst alqual s\'es presentat. En cas de balotatge, i aurà un vòte de departatge.</p> <p>Per mai d\'informacion, vejatz :</p> <ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006/Oc" class="extiw" title="meta:Election_FAQ_2006/Oc">FAQ sus las eleccions</a></li> <li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Oc" class="extiw" title="meta:Election_candidates_2006/Oc">Candidat-a-s</a></li></ul>',
 	'boardvote_intro_change' => "<p>Ja avètz votat. Podètz çaquelà modificar vòstre vòte en utilizant lo formulari çai jos. Mercé de marcar las casas en regard de cada candidat qu'a vòtre supòrt.</p></p>",
-	'boardvote_entered'      => "Mercé, vòstre vòte es estat enregistrat.
+	'boardvote_entered'      => "Mercé, vòstre vòte es estat enregistrat. 
 
 S'o desiratz, podètz enregistrar los detalhs seguents. Vòstre istoric de vòte es :
 
 <pre>$1</pre>
 
-Es estat criptat amb la clau publica dels escrutators oficials per l’eleccion :
+Es estat criptat amb la clau publica dels escrutators oficials per l’eleccion : 
 
-<pre>$2</pre>
+<pre>$2</pre> 
 
 La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/dump]].
 
-<pre>$3</pre>
+<pre>$3</pre> 
 
 [[Special:Boardvote/entry|Retorn]]",
 	'boardvote_nosession'    => 'Impossible de determinar vòstre identificant Wikimedia. Rendetz-vos sus vòstre wiki d’origina, enregistratz-vos, e rendetz-vos sus la pagina <nowiki>[[Special:Boardvote]]</nowiki>. Devètz possedir un compte amb al mens $1 contribucions efectuadas abans lo $2, e aver efectuat vòstra primièra edicion abans lo $3.',
@@ -1974,6 +1979,7 @@ La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/
 	'boardvote_user'         => 'Utilizaire',
 	'boardvote_edits'        => 'Modificacions',
 	'boardvote_days'         => 'Jorns',
+	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Representant de l’utilizaire',
 	'boardvote_listintro'    => 'Lista de las personas qua ja an votat :<br /><br />',
 	'boardvote_dumplink'     => 'Clicatz aicí',
@@ -1991,7 +1997,6 @@ La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/
 	'boardvote_blocked'      => 'O planhem, mas sètz estat(ada) blocat(ada) sus vòstra wiki d’origina. Los utilizaires blocats pòdon pas votar.',
 	'boardvote_welcome'      => "Benvengut '''$1'''!",
 	'boardvote_redirecting'  => 'Per mai de transparéncia e de seguretat lo vòte se desenròtla sus un serveire extèrn e independent. Seretz redirigit vèrs aqueste serveire extèrn en 20 segondas. [$1 Clicatz aicí] per i anar ara. Un avertiment concernent un certificat non signat benlèu serà afichat.',
-
 );
 
 /** Pangasinan (Pangasinan)

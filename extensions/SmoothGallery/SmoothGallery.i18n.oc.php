@@ -4,6 +4,8 @@
  */
 $messages = array(
 	'smoothgallery'                     => 'Smoothgallery',
+	'smoothgallery-title'               => 'SmoothGallery',
+	'smoothgallery-smoothgallerytitle'  => 'SmoothGallery: $1',
 	'smoothgallery-error'               => "'''Error de SmoothGallery :'''",
 	'smoothgallery-not-found'           => "Cap d'imatge ajustat a la galariá. Ajustatz al mens un imatge.",
 	'smoothgallery-no-images'           => "Cap d'imatge trobat dins aquesta galariá. Verificatz que totes los imatges requeses existisson. Aquestes imatges son pas estats trobats : $1.",

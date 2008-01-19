@@ -24,6 +24,14 @@ $messages['ar'] = array(
 	'block_title_error'            => 'عذرا، عنوان هذه الصفحة غير مسموح بحفظه.',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'block_title_error_page_title' => 'Títulu bloquiáu',
+	'block_title_error'            => "Sentímoslo, nun se permite guardar el títulu d'esta páxina.",
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */

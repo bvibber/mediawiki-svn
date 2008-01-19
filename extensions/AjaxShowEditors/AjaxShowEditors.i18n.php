@@ -283,6 +283,15 @@ $messages['sv'] = array(
 	'ajax-se-idling' => '($1s sedan)',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'ajax-se-title'   => 'Đang sửa đổi:',
+	'ajax-se-pending' => 'chờ làm tươi ... (nhấn vào hộp này hoặc bắt đầu sửa đổi)',
+	'ajax-se-idling'  => '($1 giây trước)',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

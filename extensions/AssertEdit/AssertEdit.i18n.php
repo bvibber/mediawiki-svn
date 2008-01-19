@@ -229,6 +229,14 @@ $messages['sv'] = array(
 	'assert_edit_message' => 'Den försäkran som angavs ($1) misslyckades.',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'assert_edit_title'   => 'Xác nhận thất bại',
+	'assert_edit_message' => 'Xác nhận được chỉ định ($1) đã thất bại.',
+);
+
 /** 粵語 (粵語)
  * @author Shinjiman
  */

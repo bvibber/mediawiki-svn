@@ -369,12 +369,13 @@ $messages['oc'] = array(
 	'changeauthor-invalid-username'     => "Nom d'utilizaire « $1 » invalid.",
 	'changeauthor-nosuchuser'           => "Pas d'utilizaire « $1 »",
 	'changeauthor-revview'              => 'Revision #$1 de $2',
-	'changeauthor-nosuchtitle'          => "Pas d'article intitolat « $1 »",
+	'changeauthor-nosuchtitle'          => 'Pas d\'article intitolat "$1"',
 	'changeauthor-weirderror'           => "Una error s'es producha. Ensajatz tornamai. Se aquesta error es apareguda mantun còp, la banca de donadas es probablament corrompuda.",
 	'changeauthor-invalidform'          => "Utilizatz lo formulari generit per Special:ChangeAuthor puslèu qu'un formulari personal",
 	'changeauthor-success'              => 'Vòstra requèsta es estada tractada amb succès.',
 	'changeauthor-logentry'             => "Modificacion de l'autor de $2 de $1 dempuèi $3 vèrs $4",
 	'changeauthor-logpagename'          => "Jornal dels cambiaments faches per l'autor",
+	'changeauthor-rev'                  => 'r$1',
 );
 
 /** Portuguese (Português)

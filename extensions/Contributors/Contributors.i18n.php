@@ -22,22 +22,6 @@ $messages['en'] = array(
 	'contributors-nosuchpage' => 'The page $1 doesn\'t exist.',
 );
 
-/** Kotava (Kotava)
- * @author Wikimistusik
- */
-$messages['avk'] = array(
-	'contributors'             => 'Webesikeem',
-	'contributors-toolbox'     => 'webepesikeem',
-	'contributors-legend'      => 'Buwebepesikeem',
-	'contributors-target'      => 'Vergumvelt :',
-	'contributors-submit'      => 'Nedira',
-	'contributors-subtitle'    => 'Webepesikeem va $1',
-	'contributors-others-long' => 'Tid $1 ar webesik va batu bu.',
-	'contributors-others'      => 'is $1 ar',
-	'contributors-badtitle'    => 'Vergumveltaj.',
-	'contributors-nosuchpage'  => '$1 bu me tir.',
-);
-
 /** Arabic (العربية)
  * @author Mido
  * @author Meno25
@@ -54,6 +38,22 @@ $messages['ar'] = array(
 	'contributors-others'      => 'و $1 آخرين',
 	'contributors-badtitle'    => 'عنوان خاطئ.',
 	'contributors-nosuchpage'  => 'الصفحة $1 غير موجودة.',
+);
+
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'contributors'             => 'Webesikeem',
+	'contributors-toolbox'     => 'webepesikeem',
+	'contributors-legend'      => 'Buwebepesikeem',
+	'contributors-target'      => 'Vergumvelt :',
+	'contributors-submit'      => 'Nedira',
+	'contributors-subtitle'    => 'Webepesikeem va $1',
+	'contributors-others-long' => 'Tid $1 ar webesik va batu bu.',
+	'contributors-others'      => 'is $1 ar',
+	'contributors-badtitle'    => 'Vergumveltaj.',
+	'contributors-nosuchpage'  => '$1 bu me tir.',
 );
 
 /** Bikol Central (Bikol Central)
@@ -405,6 +405,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'contributors'             => 'Contributors',
 	'contributors-toolbox'     => 'Contributors principals',
 	'contributors-legend'      => 'Listar los contributors principals de l’article',
 	'contributors-target'      => 'Títol:',

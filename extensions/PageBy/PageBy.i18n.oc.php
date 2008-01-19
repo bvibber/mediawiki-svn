@@ -10,8 +10,12 @@
  * @licence GNU General Public Licence 2.0 or later
  */
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages = array(
-	'pageby-first' => 'Pagina creada per $1, $2',
-	'pageby-last' => 'Darrièr <a href="$3">cambiament</a> lo $1, $2',
-	'pageby-anon' => '\'\'anonims\'\'',
+	'pageby-first'        => 'Pagina creada per $1, $2',
+	'pageby-last'         => 'Darrièr <a href="$3">cambiament</a> lo $1, $2',
+	'pageby-contributors' => 'Contributors :',
+	'pageby-anon'         => "''anonims''",
 );

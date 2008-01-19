@@ -192,7 +192,18 @@ $messages['nl'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'pdtest_diff' => 'Diferéncias',
+	'parserdifftest'      => 'Tèst de dif per parser',
+	'pdtest_no_target'    => "Cap de cibla pas d'indicada",
+	'pdtest_page_missing' => 'La pagina especificada es pas estada trobada dins la banca de donadas.',
+	'pdtest_no_changes'   => 'Cap de cambiament es pas estat detectat.',
+	'pdtest_time_report'  => '<b>$1</b> a pres $2 segondas, <b>$3</b> a pres $4 segondas.',
+	'pdtest_title'        => 'Títol del contèxt :',
+	'pdtest_text'         => "Tèxt d'entrada :",
+	'pdtest_ok'           => "D'acòrdi",
+	'pdtest_get_text'     => 'Obténer lo tèxt dempuèi la pagina',
+	'pdtest_diff'         => 'Diferéncias',
+	'pdtest_side_by_side' => 'Comparason en sortida',
+	'pdt_comparing_page'  => 'Comparason del parser en sortida a partir de [[$1]]',
 );
 
 /** Russian (Русский)

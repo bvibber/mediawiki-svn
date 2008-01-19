@@ -38,6 +38,23 @@ $messages['ar'] = array(
 	'bookinfo-provider' => 'مزود البيانات: $1',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'bookinfo-header'            => 'Información de llibros',
+	'bookinfo-result-title'      => 'Títulu:',
+	'bookinfo-result-author'     => 'Autor:',
+	'bookinfo-result-publisher'  => 'Editor:',
+	'bookinfo-result-year'       => 'Añu:',
+	'bookinfo-error-invalidisbn' => 'Códigu ISBN introducíu non válidu.',
+	'bookinfo-error-nosuchitem'  => "L'elementu nun esiste o nun se pudo atopar.",
+	'bookinfo-error-nodriver'    => "Nun se pudo aniciar un controlador d'información de llibros afechiscu.",
+	'bookinfo-error-noresponse'  => "Nun hai rempuesta o acabóse'l tiempu de la consulta.",
+	'bookinfo-purchase'          => 'Mercar esti llibru dende $1',
+	'bookinfo-provider'          => 'Proveedor de datos: $1',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */

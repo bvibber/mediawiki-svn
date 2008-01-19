@@ -484,6 +484,21 @@ Detta kan leda till väsentlig belastning av servern, så använd denna funktion
 	'querysuccessful'  => 'Frågan lyckades',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'asksql'          => 'Truy vấn SQL',
+	'asksqltext'      => "Sử dụng mẫu ở dưới để viết truy vấn trực tiếp đến cơ sở dữ liệu.
+Sử dụng dấu nháy đơn ('giống như vầy') để phân cách chuỗi ký tự.
+Việc làm này thường kéo tải của máy chủ một cách đáng kể, do đó xin hãy dùng chức năng này một cách nhẹ nhàng.",
+	'sqlislogged'     => 'Xin chú ý rằng tất cả các truy vấn sẽ được ghi vào nhật trình.',
+	'sqlquery'        => 'Nhập câu truy vấn',
+	'querybtn'        => 'Gửi câu truy vấn',
+	'selectonly'      => 'Chỉ chấp nhận câu truy vấn "chỉ đọc"',
+	'querysuccessful' => 'Truy vấn thành công',
+);
+
 /* Cantonese
  * @author Shinjiman
  */

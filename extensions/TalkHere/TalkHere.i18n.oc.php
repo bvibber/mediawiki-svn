@@ -13,6 +13,7 @@
  * @author Cedric31
  */
 $messages = array(
+	'talkhere-title'       => '$1',
 	'talkhere-foottext'    => 'Los comentaris çaisús son estats daissats per de vesitaires. <br/>  Lo gestionari del site es pas responsable de lor contengut.',
 	'talkhere-talkpage'    => 'pagina de dscussion',
 	'talkhere-notalk'      => "''(cap de comentari actualament)''",

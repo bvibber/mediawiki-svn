@@ -146,6 +146,13 @@ $messages['stq'] = array(
 	'advancedrandom' => 'Toufällige Siede (ferruumed)',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'advancedrandom' => 'Ngẫu nhiên nâng cao',
+);
+
 /** 粵語 (粵語)
  * @author Shinjiman
  */
