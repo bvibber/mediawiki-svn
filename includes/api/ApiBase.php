@@ -554,6 +554,10 @@ abstract class ApiBase {
 	 * Array that maps message keys to error messages. $1 and friends are replaced.
 	 */
 	public static $messageMap = array(
+		// This one MUST be present, or dieUsageMsg() will recurse infinitely
+		'unknownerror' => array('code' => 'unknownerror', 'info' => "Unknown error: ``\$1''"),
+		
+		// Messages from Title::getUserPermissionsErrors()
 		'ns-specialprotected' => array('code' => 'unsupportednamespace', 'info' => "Pages in the Special namespace can't be edited"),
 		'protectedinterface' => array('code' => 'protectednamespace-interface', 'info' => "You're not allowed to edit interface messages"),
 		'namespaceprotected' => array('code' => 'protectednamespace', 'info' => "You're not allowed to edit pages in the ``\$1'' namespace"),
@@ -565,12 +569,55 @@ abstract class ApiBase {
 		'badaccess-group1' => array('code' => 'permissiondenied', 'info' => "Permission denied"), // Can't use the parameter 'cause it's wikilinked
 		'badaccess-group2' => array('code' => 'permissiondenied', 'info' => "Permission denied"),
 		'badaccess-groups' => array('code' => 'permissiondenied', 'info' => "Permission denied"),
-		'unknownerror' => array('code' => 'unknownerror', 'info' => "Unknown error"),
 		'titleprotected' => array('code' => 'protectedtitle', 'info' => "This title has been protected from creation"),
 		'nocreate-loggedin' => array('code' => 'cantcreate', 'info' => "You don't have permission to create new pages"),
 		'nocreatetext' => array('code' => 'cantcreate-anon', 'info' => "Anonymous users can't create new pages"),
 		'movenologintext' => array('code' => 'cantmove-anon', 'info' => "Anonymous users can't move pages"),
-		'movenotallowed' => array('code' => 'cantmove', 'info' => "You don't have permission to move pages")
+		'movenotallowed' => array('code' => 'cantmove', 'info' => "You don't have permission to move pages"),
+		'confirmedittiext' => array('code' => 'confirmemail', 'info' => "You must confirm your e-mail address before you can edit"),
+		'blockedtext' => array('code' => 'blocked', 'info' => "You have been blocked from editing"),
+		'autoblockedtext' => array('code' => 'autoblocked', 'info' => "Your IP address has been blocked automatically, because it was used by a blocked user"),
+		
+		// Miscellaneous interface messages
+		'alreadyrolled' => array('code' => 'alreadyrolled', 'info' => "The page you tried to rollback was already rolled back"),
+		'cantrollback' => array('code' => 'onlyauthor', 'info' => "The page you tried to rollback only has one author"), 
+		'readonlytext' => array('code' => 'readonly', 'info' => "The wiki is currently in read-only mode"),
+		'sessionfailure' => array('code' => 'badtoken', 'info' => "Invalid token"),
+		'cannotdelete' => array('code' => 'cantdelete', 'info' => "Couldn't delete ``\$1''. Maybe it was deleted already by someone else"),
+		'notanarticle' => array('code' => 'missingtitle', 'info' => "The page you requested doesn't exist"),
+		'selfmove' => array('code' => 'selfmove', 'info' => "Can't move a page to itself"),
+		'immobile_namespace' => array('code' => 'immobilenamespace', 'info' => "You tried to move pages from or to a namespace that is protected from moving"),
+		'articleexists' => array('code' => 'articleexists', 'info' => "The destination article already exists and is not a redirect to the source article"),
+		'protectedpage' => array('code' => 'protectedpage', 'info' => "You don't have permission to perform this move"),
+		'hookaborted' => array('code' => 'hookaborted', 'info' => "The modification you tried to make was aborted by an extension hook"),
+		'cantmove-titleprotected' => array('code' => 'protectedtitle', 'info' => "The destination article has been protected from creation"),
+		// 'badarticleerror' => shouldn't happen
+		// 'badtitletext' => shouldn't happen
+		'ip_range_invalid' => array('code' => 'invalidrange', 'info' => "Invalid IP range"),
+		'range_block_disabled' => array('code' => 'rangedisabled', 'info' => "Blocking IP ranges has been disabled"),
+		'nosuchusershort' => array('code' => 'nosuchuser', 'info' => "The user you specified doesn't exist"),
+		'badipaddress' => array('code' => 'invalidip', 'info' => "Invalid IP address specified"),
+		'ipb_expiry_invalid' => array('code' => 'invalidexpiry', 'info' => "Invalid expiry time"),
+		'ipb_already_blocked' => array('code' => 'alreadyblocked', 'info' => "The user you tried to block was already blocked"),
+		'ipb_blocked_as_range' => array('code' => 'blockedasrange', 'info' => "IP address ``\$1'' was blocked as part of range ``\$2''. You can't unblock the IP invidually, but you can unblock the range as a whole."),
+		'ipb_cant_unblock' => array('code' => 'cantunblock', 'info' => "The block you specified was not found. It may have been unblocked already"),
+		
+		// API-specific messages
+		'missingparam' => array('code' => 'no$1', 'info' => "The \$1 parameter must be set"),
+		'invalidtitle' => array('code' => 'invalidtitle', 'info' => "Bad title ``\$1''"),
+		'invaliduser' => array('code' => 'invaliduser', 'info' => "Invalid username ``\$1''"),
+		'invalidexpiry' => array('code' => 'invalidexpiry', 'info' => "Invalid expiry time"),
+		'pastexpiry' => array('code' => 'pastexpiry', 'info' => "Expiry time is in the past"),
+		'create-titleexists' => array('code' => 'create-titleexists', 'info' => "Existing titles can't be protected with 'create'"),
+		'missingtitle-createonly' => array('code' => 'missingtitle-createonly', 'info' => "Missing titles can only be protected with 'create'"),
+		'cantblock' => array('code' => 'cantblock', 'info' => "You don't have permission to block users"),
+		'canthide' => array('code' => 'canthide', 'info' => "You don't have permission to hide user names from the block log"),
+		'cantblock-email' => array('code' => 'cantblock-email', 'info' => "You don't have permission to block users from sending e-mail through the wiki"),
+		'unblock-notarget' => array('code' => 'notarget', 'info' => "Either the id or the user parameter must be set"),
+		'unblock-idanduser' => array('code' => 'idanduser', 'info' => "The id and user parameters can\'t be used together"),
+		'cantunblock' => array('code' => 'permissiondenied', 'info' => "You don't have permission to unblock users"),
+		'cannotundelete' => array('code' => 'cantundelete', 'info' => "Couldn't undelete: the requested revisions may not exist, or may have been undeleted already"),
+		'permdenied-undelete' => array('code' => 'permissiondenied', 'info' => "You don't have permission to restore deleted revisions"),
 	);
 	
 	/**
@@ -580,9 +627,9 @@ abstract class ApiBase {
 	public function dieUsageMsg($error) {
 		$key = array_shift($error);
 		if(isset(self::$messageMap[$key]))
-			$this->dieUsage(wfMsgReplaceArgs(self::$messageMap[$key]['info'], $error), self::$messageMap[$key]['code']);
-		// If the key isn't present, throw an "unknown error
-		$this->dieUsage(self::$messageMap['unknownerror']['info'], self::$messageMap['unknownerror']['code']);
+			$this->dieUsage(wfMsgReplaceArgs(self::$messageMap[$key]['info'], $error), wfMsgReplaceArgs(self::$messageMap[$key]['code'], $error));
+		// If the key isn't present, throw an "unknown error"
+		$this->dieUsageMsg(array('unknownerror', $key));
 	}
 
 	/**
@@ -603,6 +650,13 @@ abstract class ApiBase {
 	 * Indicates if this module requires edit mode
 	 */
 	public function isEditMode() {
+		return false;
+	}
+	
+	/**
+	 * Indicates whether this module must be called with a POST request
+	 */
+	public function mustBePosted() {
 		return false;
 	}
 

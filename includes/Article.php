@@ -1944,13 +1944,24 @@ class Article {
 		}
 
 		$wgOut->setPagetitle( wfMsg( 'confirmdelete' ) );
-
+		
 		# Better double-check that it hasn't been deleted yet!
 		$dbw = wfGetDB( DB_MASTER );
 		$conds = $this->mTitle->pageCond();
 		$latest = $dbw->selectField( 'page', 'page_latest', $conds, __METHOD__ );
 		if ( $latest === false ) {
 			$wgOut->showFatalError( wfMsg( 'cannotdelete' ) );
+			return;
+		}
+
+		# Hack for big sites
+		$bigHistory = $this->isBigDeletion();
+		if( $bigHistory && !$this->mTitle->userCan( 'bigdelete' ) ) {
+			global $wgLang, $wgDeleteRevisionsLimit;
+			$wgOut->addWikiText( "<div class='error'>\n" .
+				wfMsg( 'delete-toobig',
+					$wgLang->formatNum( $wgDeleteRevisionsLimit ) ) .
+				"</div>\n" );
 			return;
 		}
 
@@ -1972,9 +1983,40 @@ class Article {
 		if( $hasHistory && !$confirm ) {
 			$skin=$wgUser->getSkin();
 			$wgOut->addHTML( '<strong>' . wfMsg( 'historywarning' ) . ' ' . $skin->historyLink() . '</strong>' );
+			if( $bigHistory ) {
+				global $wgLang, $wgDeleteRevisionsLimit;
+				$wgOut->addWikiText( "<div class='error'>\n" .
+					wfMsg( 'delete-warning-toobig',
+						$wgLang->formatNum( $wgDeleteRevisionsLimit ) ) .
+					"</div>\n" );
+			}
 		}
 		
 		return $this->confirmDelete( '', $reason );
+	}
+	
+	/**
+	 * @return bool whether or not the page surpasses $wgDeleteRevisionsLimit revisions
+	 */
+	function isBigDeletion() {
+		global $wgDeleteRevisionsLimit;
+		if( $wgDeleteRevisionsLimit ) {
+			$revCount = $this->estimateRevisionCount();
+			return $revCount > $wgDeleteRevisionsLimit;
+		}
+		return false;
+	}
+	
+	/**
+	 * @return int approximate revision count
+	 */
+	function estimateRevisionCount() {
+		$dbr = wfGetDB();
+		// For an exact count...
+		//return $dbr->selectField( 'revision', 'COUNT(*)',
+		//	array( 'rev_page' => $this->getId() ), __METHOD__ );
+		return $dbr->estimateRowCount( 'revision', '*',
+		 	array( 'rev_page' => $this->getId() ), __METHOD__ );
 	}
 
 	/**
@@ -2267,17 +2309,16 @@ class Article {
 	 * @param string $fromP - Name of the user whose edits to rollback. 
 	 * @param string $summary - Custom summary. Set to default summary if empty.
 	 * @param string $token - Rollback token.
-	 * @param bool $bot - If true, mark all reverted edits as bot.
+	 * @param bool   $bot - If true, mark all reverted edits as bot.
 	 * 
 	 * @param array $resultDetails contains result-specific array of additional values
 	 *    'alreadyrolled' : 'current' (rev)
 	 *    success        : 'summary' (str), 'current' (rev), 'target' (rev)
 	 * 
-	 * @return array of errors, each error formatted as array(messagekey, param1, param2, ...).
-	 * On success, the array is empty.  This array can also be passed to OutputPage::showPermissionsErrorPage().
-	 * NOTE: If the user is blocked, 'blocked' is passed as a message, but it doesn't exist. Be sure to check
-	 *       it before calling showPermissionsErrorPage(). The same is true for 'actionthrottledtext', which
-	 *	 is passed if the rate limit is passed.
+	 * @return array of errors, each error formatted as
+	 *   array(messagekey, param1, param2, ...).
+	 * On success, the array is empty.  This array can also be passed to
+	 * OutputPage::showPermissionsErrorPage().
 	 */
 	public function doRollback( $fromP, $summary, $token, $bot, &$resultDetails ) {
 		global $wgUser;
@@ -2292,9 +2333,6 @@ class Article {
 		if ( $wgUser->pingLimiter('rollback') || $wgUser->pingLimiter() ) {
 			$errors[] = array( 'actionthrottledtext' );
 		}
-		if ( $wgUser->isBlocked() )
-			$errors[] = array( 'blocked' );
-
 		# If there were errors, bail out now
 		if(!empty($errors))
 			return $errors;
@@ -2303,14 +2341,21 @@ class Article {
 	}
 	
 	/**
-	 * Backend implementation of doRollback(), please refer there for parameter and return value documentation
+	 * Backend implementation of doRollback(), please refer there for parameter
+	 * and return value documentation
 	 *
-	 * NOTE: This function does NOT check ANY permissions, it just commits the rollback to the DB.
-	 *       Therefore, you should only call this function directly if you really know what you're doing. If you don't, use doRollback() instead
+	 * NOTE: This function does NOT check ANY permissions, it just commits the
+	 * rollback to the DB Therefore, you should only call this function direct-
+	 * ly if you want to use custom permissions checks. If you don't, use
+	 * doRollback() instead.
 	 */	
 	public function commitRollback($fromP, $summary, $bot, &$resultDetails) {
-		global $wgUseRCPatrol;
+		global $wgUseRCPatrol, $wgUser;
 		$dbw = wfGetDB( DB_MASTER );
+
+		if( wfReadOnly() ) {
+			return array( array( 'readonlytext' ) );
+		}
 
 		# Get the last editor
 		$current = Revision::newFromTitle( $this->mTitle );
@@ -2411,17 +2456,32 @@ class Article {
 			$wgRequest->getBool( 'bot' ),
 			$details
 		);
-		
-		if(in_array(array('blocked'), $result)) {
+
+		if( in_array( array( 'blocked' ), $result ) ) {
 			$wgOut->blockedPage();
 			return;
 		}
-		if(in_array(array('actionthrottledtext'), $result)) {
+		if( in_array( array( 'actionthrottledtext' ), $result ) ) {
 			$wgOut->rateLimited();
 			return;
 		}
-		if(!empty($result)) {
-			$wgOut->showPermissionsErrorPage( $result );
+		# Display permissions errors before read-only message -- there's no
+		# point in misleading the user into thinking the inability to rollback
+		# is only temporary.
+		if( !empty($result) && $result !== array( array('readonlytext') ) ) {
+			# array_diff is completely broken for arrays of arrays, sigh.  Re-
+			# move any 'readonlytext' error manually.
+			$out = array();
+			foreach( $result as $error ) {
+				if( $error != array( 'readonlytext' ) ) {
+					$out []= $error;
+				}
+			}
+			$wgOut->showPermissionsErrorPage( $out );
+			return;
+		}
+		if( $result == array( array('readonlytext') ) ) {
+			$wgOut->readOnlyPage();
 			return;
 		}
 
@@ -2496,7 +2556,7 @@ class Article {
 	 * @param $changed Whether or not the content actually changed
 	 */
 	function editUpdates( $text, $summary, $minoredit, $timestamp_of_pagechange, $newid, $changed = true ) {
-		global $wgDeferredUpdateList, $wgMessageCache, $wgUser, $wgParser;
+		global $wgDeferredUpdateList, $wgMessageCache, $wgUser, $wgParser, $wgEnableParserCache;
 
 		wfProfileIn( __METHOD__ );
 
@@ -2511,8 +2571,10 @@ class Article {
 		}
 
 		# Save it to the parser cache
-		$parserCache =& ParserCache::singleton();
-		$parserCache->save( $editInfo->output, $this, $wgUser );
+		if ( $wgEnableParserCache ) {
+			$parserCache =& ParserCache::singleton();
+			$parserCache->save( $editInfo->output, $this, $wgUser );
+		}
 
 		# Update the links tables
 		$u = new LinksUpdate( $this->mTitle, $editInfo->output );
@@ -2896,9 +2958,11 @@ class Article {
 		global $wgDeferredUpdateList, $wgUseFileCache;
 
 		// Invalidate caches of articles which include this page
-		$update = new HTMLCacheUpdate( $title, 'templatelinks' );
-		$wgDeferredUpdateList[] = $update;
+		$wgDeferredUpdateList[] = new HTMLCacheUpdate( $title, 'templatelinks' );
 
+		// Invalidate the caches of all pages which redirect here
+		$wgDeferredUpdateList[] = new HTMLCacheUpdate( $title, 'redirect' );
+		
 		# Purge squid for this page only
 		$title->purgeSquid();
 
@@ -3123,7 +3187,7 @@ class Article {
 	 * @param bool    $cache
 	 */
 	public function outputWikiText( $text, $cache = true ) {
-		global $wgParser, $wgUser, $wgOut;
+		global $wgParser, $wgUser, $wgOut, $wgEnableParserCache;
 
 		$popts = $wgOut->parserOptions();
 		$popts->setTidy(true);
@@ -3132,7 +3196,7 @@ class Article {
 			$popts, true, true, $this->getRevIdFetched() );
 		$popts->setTidy(false);
 		$popts->enableLimitReport( false );
-		if ( $cache && $this && $parserOutput->getCacheTime() != -1 ) {
+		if ( $wgEnableParserCache && $cache && $this && $parserOutput->getCacheTime() != -1 ) {
 			$parserCache =& ParserCache::singleton();
 			$parserCache->save( $parserOutput, $this, $wgUser );
 		}

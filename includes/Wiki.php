@@ -220,6 +220,10 @@ class MediaWiki {
 
 		switch( $title->getNamespace() ) {
 		case NS_IMAGE:
+			$file = wfFindFile( $title );
+			if( $file && $file->getRedirected() ) {
+				return new Article( $title );
+			}
 			return new ImagePage( $title );
 		case NS_CATEGORY:
 			return new CategoryPage( $title );
@@ -245,7 +249,8 @@ class MediaWiki {
 
 		// Namespace might change when using redirects
 		if( ( $action == 'view' || $action == 'render' ) && !$request->getVal( 'oldid' ) &&
-						$request->getVal( 'redirect' ) != 'no' ) {
+						$request->getVal( 'redirect' ) != 'no' &&
+						!( $wgTitle->getNamespace() == NS_IMAGE && wfFindFile( $wgTitle->getText() ) ) ) {
 
 			$dbr = wfGetDB(DB_SLAVE);
 			$article->loadPageData($article->pageDataFromTitle($dbr, $title));

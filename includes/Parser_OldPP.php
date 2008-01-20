@@ -81,6 +81,7 @@ class Parser_OldPP
 		if ( !$this->mFirstCall ) {
 			return;
 		}
+		$this->mFirstCall = false;
 		
 		wfProfileIn( __METHOD__ );
 		global $wgAllowDisplayTitle, $wgAllowSlowParserFunctions;
@@ -128,7 +129,8 @@ class Parser_OldPP
 		}
 
 		$this->initialiseVariables();
-		$this->mFirstCall = false;
+
+		wfRunHooks( 'ParserFirstCallInit', array( &$this ) );
 		wfProfileOut( __METHOD__ );
 	}
 
@@ -3829,7 +3831,7 @@ class Parser_OldPP
 	 */
 	function getUserSig( &$user ) {
 		global $wgMaxSigChars;
-		
+
 		$username = $user->getName();
 		$nickname = $user->getOption( 'nickname' );
 		$nickname = $nickname === '' ? $username : $nickname;
@@ -3884,7 +3886,7 @@ class Parser_OldPP
 	 */
 	function cleanSig( $text, $parsing = false ) {
 		global $wgTitle;
-		$this->startExternalParse( $wgTitle, new ParserOptions(), $parsing ? OT_WIKI : OT_MSG );
+		$this->startExternalParse( $this->mTitle, new ParserOptions(), $parsing ? OT_WIKI : OT_MSG );
 
 		$substWord = MagicWord::get( 'subst' );
 		$substRegex = '/\{\{(?!(?:' . $substWord->getBaseRegex() . '))/x' . $substWord->getRegexCase();

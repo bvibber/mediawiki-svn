@@ -207,6 +207,9 @@ class Title {
 	 * Make an array of titles from an array of IDs 
 	 */
 	public static function newFromIDs( $ids ) {
+		if ( !count( $ids ) ) {
+			return array();
+		}
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'page', array( 'page_namespace', 'page_title' ),
 			'page_id IN (' . $dbr->makeList( $ids ) . ')', __METHOD__ );
@@ -2305,10 +2308,14 @@ class Title {
 			return 'badarticleerror';
 		}
 
-		if ( $auth && (
-				!$this->userCan( 'edit' ) || !$nt->userCan( 'edit' ) ||
-				!$this->userCan( 'move' ) || !$nt->userCan( 'move' ) ) ) {
-			return 'protectedpage';
+		if ( $auth ) {
+			global $wgUser;
+			$errors = array_merge($this->getUserPermissionsErrors('move', $wgUser),
+					$this->getUserPermissionsErrors('edit', $wgUser),
+					$nt->getUserPermissionsErrors('move', $wgUser),
+					$nt->getUserPermissionsErrors('edit', $wgUser));
+			if($errors !== array())
+				return $errors[0][0];
 		}
 
 		global $wgUser;

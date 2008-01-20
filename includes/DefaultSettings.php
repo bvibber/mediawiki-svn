@@ -157,6 +157,7 @@ $wgUploadDirectory	= false; /// defaults to "{$IP}/images"
 $wgHashedUploadDirectory	= true;
 $wgLogo				= false; /// defaults to "{$wgStylePath}/common/images/wiki.png"
 $wgFavicon			= '/favicon.ico';
+$wgAppleTouchIcon   = false; /// This one'll actually default to off. For iPhone and iPod Touch web app bookmarks
 $wgMathPath         = false; /// defaults to "{$wgUploadPath}/math"
 $wgMathDirectory    = false; /// defaults to "{$wgUploadDirectory}/math"
 $wgTmpDirectory     = false; /// defaults to "{$wgUploadDirectory}/tmp"
@@ -459,6 +460,11 @@ $wgHashedSharedUploadDirectory = true;
  * Please specify the namespace, as in the example below.
  */
 $wgRepositoryBaseUrl="http://commons.wikimedia.org/wiki/Image:";
+
+/**
+ * Experimental feature still under debugging.
+ */
+$wgFileRedirects = false;
 
 
 #
@@ -1094,6 +1100,7 @@ $wgGroupPermissions['bot'  ]['apihighlimits']   = true;
 $wgGroupPermissions['sysop']['block']           = true;
 $wgGroupPermissions['sysop']['createaccount']   = true;
 $wgGroupPermissions['sysop']['delete']          = true;
+$wgGroupPermissions['sysop']['bigdelete']       = true; // can be separately configured for pages with > $wgDeleteRevisionsLimit revs
 $wgGroupPermissions['sysop']['deletedhistory'] 	= true; // can view deleted history entries, but not see or restore the text
 $wgGroupPermissions['sysop']['undelete']	= true;
 $wgGroupPermissions['sysop']['editinterface']   = true;
@@ -1241,6 +1248,12 @@ $wgAutopromote = array(
  * $wgRemoveGroups['sysop'] = array( 'sysop', 'bot' ); 
  */
 $wgAddGroups = $wgRemoveGroups = array();
+
+/**
+ * Optional to restrict deletion of pages with higher revision counts
+ * to users with the 'bigdelete' permission. (Default given to sysops.)
+ */
+$wgDeleteRevisionsLimit = 0;
 
 # Proxy scanner settings
 #

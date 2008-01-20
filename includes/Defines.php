@@ -262,13 +262,14 @@ define( 'UTF8_TAIL', true );
 
 # Hook support constants
 define( 'MW_SUPPORTS_EDITFILTERMERGED', 1 );
+define( 'MW_SUPPORTS_PARSERFIRSTCALLINIT', 1 );
 
 # Allowed values for Parser::$mOutputType
 # Parameter to Parser::startExternalParse().
 define( 'OT_HTML', 1 );
 define( 'OT_WIKI', 2 );
-define( 'OT_MSG' , 3 );
-define( 'OT_PREPROCESS', 4 );
+define( 'OT_PREPROCESS', 3 );
+define( 'OT_MSG' , 3 );  // b/c alias for OT_PREPROCESS
 
 # Flags for Parser::setFunctionHook
 define( 'SFH_NO_HASH', 1 );
