@@ -129,8 +129,13 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 12536) User should be able to get MediaWiki version from any page
 * (bug 12622) A JavaScript constant to declare whether api.php is available
 * Add caching to the AJAX search
-* Added APCOND_INGROUPS
+* Add APCOND_INGROUPS
+* Add DBA caching to installer 
 * (bug 18585) Added a bunch of parameters to the revertpage message
+* Support redirects in image namespace
+* (bug 10049) Prefix index search and namespaces in Special:Withoutinterwiki
+* (bug 12668) Support for custom iPhone bookmark icon via $wgAppleTouchIcon
+* Add option to include templates in Special:Export.
 
 
 === Bug fixes in 1.12 ===
@@ -314,6 +319,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 12567) Fix for misformatted read-only messages on edit, protect.
   Also added proper read-only checks to several special pages.
   Have removed read-only checks from the general user permission framework.
+* Creating a site with a name containing '#' is no longer permitted, since the
+  name will not work (but $wgSiteName is not checked if manually set).
+* (bug 12695) Suppress dvips verbiage from web server error log
 
 
 == Parser changes in 1.12 ==
@@ -436,6 +444,11 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Added action=logout
 * Added cascade flag to prop=info&inprop=protections
 * Added wlshow parameter to list=watchlist, similar to rcshow (list=recentchanges)
+* Added support for image thumbnailing to prop=imageinfo
+* action={login,block,delete,move,protect,rollback,unblock,undelete} now must be POSTed
+* prop=imageinfo interface changed: iihistory replaced by iilimit, iistart and iiend parameters
+* Added amlang parameter to meta=allmessages
+* Added apfilterlanglinks parameter to list=allpages, replacing query.php?what=nolanglinks
 
 === Languages updated in 1.12 ===
 
@@ -449,6 +462,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Mapudungun (arn) (new)
 * Assamese (as)
 * Asturian (ast)
+* Avaric (av)
+* Kotava (avk) (new)
 * Aymara (ay)
 * Samogitian (bat-smg)
 * Boarisch (bar)
@@ -484,6 +499,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Divehi (dv)
 * Ewe (ee) (new)
 * Greek (el)
+* Emiliano-Romagnolo (eml)
 * English (en)
 * Spanish (es)
 * Estonian (et)
@@ -500,6 +516,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Franco-Provençal (frp)
 * Frisian (fy)
 * Irish (ga)
+* Gagauz (gag) (new)
 * Gön-gnŷ (gan) (new)
 * Scottish Gaelic (gd) (new)
 * Galician (gl)
@@ -547,6 +564,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Latin (la)
 * Ladino (lad) (new)
 * Luxembourgish (lb) (new)
+* Lingua Franca Nova (new)
 * Lak (lbe) (new)
 * Limbugian (li)
 * Líguru (lij) (new)
@@ -619,6 +637,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Walloon (wa)
 * Wolof (wo)
 * Wu (wuu) (new)
+* Xhosa (xh) (new)
 * Yiddish (yi)
 * Cantonese (yue)
 * Zhuang (za)

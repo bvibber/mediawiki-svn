@@ -1022,6 +1022,7 @@ $wgMessageStructure = array(
 		'withoutinterwiki',
 		'withoutinterwiki-header',
 		'withoutinterwiki-summary',
+		'withoutinterwiki-submit',
 	),
 	'fewestrevisions' => array(
 		'fewestrevisions',
@@ -1250,6 +1251,8 @@ $wgMessageStructure = array(
 		'deleteotherreason',
 		'deletereasonotherlist',
 		'deletereason-dropdown',
+		'delete-toobig',
+		'delete-warning-toobig',
 		'rollback',
 		'rollback_short',
 		'rollbacklink',
@@ -1514,6 +1517,7 @@ $wgMessageStructure = array(
 		'export-addcattext',
 		'export-addcat',
 		'export-download',
+		'export-templates',
 	),
 	'allmessages' => array(
 		'allmessages',
