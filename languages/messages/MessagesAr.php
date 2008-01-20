@@ -1144,24 +1144,26 @@ $1 ساعة.',
 'files'                    => 'ملفات',
 
 # User rights
-'userrights-lookup-user'      => 'إدارة مجموعات المستخدم',
-'userrights-user-editname'    => 'أدخل اسم مستخدم:',
-'editusergroup'               => 'تعديل مجموعات المستخدم',
-'userrights-editusergroup'    => 'تعديل مجموعات المستخدم',
-'saveusergroups'              => 'حفظ مجموعات المستخدم',
-'userrights-groupsmember'     => 'عضو في:',
-'userrights-groupsremovable'  => 'المجموعات للإزالة:',
-'userrights-groupsavailable'  => 'المجموعات المتوفرة:',
-'userrights-groupshelp'       => 'قم باختيار المجموعات التي تريد المستخدم أن يضاف إليها أو تتم إزالته منها.
+'userrights-lookup-user'           => 'إدارة مجموعات المستخدم',
+'userrights-user-editname'         => 'أدخل اسم مستخدم:',
+'editusergroup'                    => 'تعديل مجموعات المستخدم',
+'userrights-editusergroup'         => 'تعديل مجموعات المستخدم',
+'saveusergroups'                   => 'حفظ مجموعات المستخدم',
+'userrights-groupsmember'          => 'عضو في:',
+'userrights-groupsremovable'       => 'المجموعات للإزالة:',
+'userrights-groupsavailable'       => 'المجموعات المتوفرة:',
+'userrights-groupshelp'            => 'قم باختيار المجموعات التي تريد المستخدم أن يضاف إليها أو تتم إزالته منها.
 المجموعات غير المختارة ستترك كما هي. يمكنك إزالة مجموعة بالضغط على كنترل + ضغطة فأرة يسرى.',
-'userrights-reason'           => 'سبب التغيير:',
-'userrights-available-none'   => 'لا يمكنك تعديل مجموعات المستخدم.',
-'userrights-available-add'    => 'يمكنك إضافة المستخدمين إلى {{PLURAL:$2|هذه المجموعة|هذه المجموعات}}: $1.',
-'userrights-available-remove' => 'يمكنك إزالة المستخدمين من {{PLURAL:$2|هذه المجموعة|هذه المجموعات}}: $1.',
-'userrights-no-interwiki'     => 'أنت لا تمتلك الصلاحية لتعديل صلاحيات المستخدمين على الويكيات الأخرى.',
-'userrights-nodatabase'       => 'قاعدة البيانات $1 غير موجودة أو ليست محلية.',
-'userrights-nologin'          => 'يجب عليك [[Special:Userlogin|تسجيل الدخول]] بحساب إداري لتعديل صلاحيات المستخدم.',
-'userrights-notallowed'       => 'حسابك لا يمتلك السماح لتعديل صلاحيات المستخدم.',
+'userrights-reason'                => 'سبب التغيير:',
+'userrights-available-none'        => 'لا يمكنك تعديل مجموعات المستخدم.',
+'userrights-available-add'         => 'يمكنك إضافة المستخدمين إلى {{PLURAL:$2|هذه المجموعة|هذه المجموعات}}: $1.',
+'userrights-available-remove'      => 'يمكنك إزالة المستخدمين من {{PLURAL:$2|هذه المجموعة|هذه المجموعات}}: $1.',
+'userrights-available-add-self'    => 'يمكنك إضافة نفسك إلى {{PLURAL:$2|هذه المجموعة|هذه المجموعات}}: $1.',
+'userrights-available-remove-self' => 'يمكنك إزالة نفسك من {{PLURAL:$2|هذه المجموعة|هذه المجموعات}}: $1.',
+'userrights-no-interwiki'          => 'أنت لا تمتلك الصلاحية لتعديل صلاحيات المستخدمين على الويكيات الأخرى.',
+'userrights-nodatabase'            => 'قاعدة البيانات $1 غير موجودة أو ليست محلية.',
+'userrights-nologin'               => 'يجب عليك [[Special:Userlogin|تسجيل الدخول]] بحساب إداري لتعديل صلاحيات المستخدم.',
+'userrights-notallowed'            => 'حسابك لا يمتلك السماح لتعديل صلاحيات المستخدم.',
 
 # Groups
 'group'               => 'المجموعة:',
@@ -1448,6 +1450,7 @@ PICT # misc.
 
 'withoutinterwiki'        => 'صفحات بدون وصلات لغات أخرى',
 'withoutinterwiki-header' => 'الصفحات التالية لا تصل إلى نسخ بلغات أخرى:',
+'withoutinterwiki-submit' => 'عرض',
 
 'fewestrevisions' => 'المقالات ذات أقل تعديل',
 
@@ -1674,6 +1677,8 @@ $NEWPAGE
 ** طلب المؤلف
 ** خرق لحقوق التأليف والنشر
 ** تخريب',
+'delete-toobig'               => 'هذه الصفحة لها تاريخ تعديلات كبير، أكثر من $1 نسخة. حذف مثل هذه الصفحات تم منعه لمنع حدوث اضطراب فجائي في {{SITENAME}}.',
+'delete-warning-toobig'       => 'هذه الصفحة لها تاريخ تعديلات كبير، أكثر من $1 نسخة. حذفها قد يؤدي إلى اضطراب عمليات قاعدة البيانات في {{SITENAME}}؛ تقدم مع الحذر.',
 'rollback'                    => 'استرجاع التعديلات',
 'rollback_short'              => 'استرجاع',
 'rollbacklink'                => 'استرجاع',

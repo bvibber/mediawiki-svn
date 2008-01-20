@@ -916,23 +916,25 @@ $1 | $2',
 'files'                    => 'Tiedostot',
 
 # User rights
-'userrights-lookup-user'      => 'Käyttöoikeuksien hallinta',
-'userrights-user-editname'    => 'Käyttäjätunnus',
-'editusergroup'               => 'Muokkaa käyttäjän ryhmiä',
-'userrights-editusergroup'    => 'Käyttäjän ryhmät',
-'saveusergroups'              => 'Tallenna',
-'userrights-groupsmember'     => 'Jäsenenä ryhmissä',
-'userrights-groupsremovable'  => 'Poistettavat ryhmät',
-'userrights-groupsavailable'  => 'Saatavilla olevat ryhmät',
-'userrights-groupshelp'       => 'Valitse ryhmät, jotka haluat poistaa tai lisätä. Valitsemattomia ryhmiä ei muuteta. Voit poistaa valinnan pitämällä Ctrl-näppäintä pohjassa napsautuksen aikana.',
-'userrights-reason'           => 'Kommentti',
-'userrights-available-none'   => 'Et voi muuttaa ryhmäjäsenyyksiä.',
-'userrights-available-add'    => 'Voit lisätä käyttäjiä {{PLURAL:$2|ryhmään|ryhmiin}} $1.',
-'userrights-available-remove' => 'Voit poistaa käyttäjiä {{PLURAL:$2|ryhmästä|ryhmistä}} $1.',
-'userrights-no-interwiki'     => 'Sinulla ei ole lupaa muokata käyttöoikeuksia muissa wikeissä.',
-'userrights-nodatabase'       => 'Tietokantaa $1 ei ole tai se ei ole paikallinen.',
-'userrights-nologin'          => 'Sinun täytyy [[Special:Userlogin|kirjautua sisään]] ylläpitäjätunnuksella, jotta voisit muuttaa käyttöoikeuksia.',
-'userrights-notallowed'       => 'Tunnuksellasi ei ole lupaa muuttaa käyttöoikeuksia.',
+'userrights-lookup-user'           => 'Käyttöoikeuksien hallinta',
+'userrights-user-editname'         => 'Käyttäjätunnus',
+'editusergroup'                    => 'Muokkaa käyttäjän ryhmiä',
+'userrights-editusergroup'         => 'Käyttäjän ryhmät',
+'saveusergroups'                   => 'Tallenna',
+'userrights-groupsmember'          => 'Jäsenenä ryhmissä',
+'userrights-groupsremovable'       => 'Poistettavat ryhmät',
+'userrights-groupsavailable'       => 'Saatavilla olevat ryhmät',
+'userrights-groupshelp'            => 'Valitse ryhmät, jotka haluat poistaa tai lisätä. Valitsemattomia ryhmiä ei muuteta. Voit poistaa valinnan pitämällä Ctrl-näppäintä pohjassa napsautuksen aikana.',
+'userrights-reason'                => 'Kommentti',
+'userrights-available-none'        => 'Et voi muuttaa ryhmäjäsenyyksiä.',
+'userrights-available-add'         => 'Voit lisätä käyttäjiä {{PLURAL:$2|ryhmään|ryhmiin}} $1.',
+'userrights-available-remove'      => 'Voit poistaa käyttäjiä {{PLURAL:$2|ryhmästä|ryhmistä}} $1.',
+'userrights-available-add-self'    => 'Voit lisätä itsesi {{PLURAL:$2|ryhmään|näihin ryhmiin}}: $1.',
+'userrights-available-remove-self' => 'Voit poistaa itsesi {{PLURAL:$2|ryhmästä|näistä ryhmistä}}: $1.',
+'userrights-no-interwiki'          => 'Sinulla ei ole lupaa muokata käyttöoikeuksia muissa wikeissä.',
+'userrights-nodatabase'            => 'Tietokantaa $1 ei ole tai se ei ole paikallinen.',
+'userrights-nologin'               => 'Sinun täytyy [[Special:Userlogin|kirjautua sisään]] ylläpitäjätunnuksella, jotta voisit muuttaa käyttöoikeuksia.',
+'userrights-notallowed'            => 'Tunnuksellasi ei ole lupaa muuttaa käyttöoikeuksia.',
 
 # Groups
 'group'               => 'Ryhmä',
@@ -1195,6 +1197,7 @@ Ohjelmiston suorittamia ylläpitotöitä on jonossa '''$7''' {{PLURAL:$7|kappale
 
 'withoutinterwiki'        => 'Sivut, joilla ei ole kielilinkkejä',
 'withoutinterwiki-header' => 'Seuraavat sivut eivät viittaa erikielisiin versioihin:',
+'withoutinterwiki-submit' => 'Näytä',
 
 'fewestrevisions' => 'Sivut, joilla on vähiten muutoksia',
 
@@ -2303,5 +2306,8 @@ Yritä normaalia esikatselua.',
 'watchlisttools-view' => 'Näytä muutokset',
 'watchlisttools-edit' => 'Muokkaa listaa',
 'watchlisttools-raw'  => 'Lista raakamuodossa',
+
+# Core parser functions
+'unknown_extension_tag' => 'Tuntematon laajennuskoodi ”$1”.',
 
 );

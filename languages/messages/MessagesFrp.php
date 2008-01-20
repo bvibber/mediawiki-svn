@@ -234,6 +234,7 @@ $messages = array(
 'personaltools'     => 'Outils a sè',
 'postcomment'       => 'Apondre un comentèro',
 'articlepage'       => 'Vêde l’articllo',
+'talk'              => 'Discussion',
 'views'             => 'Afichâjos',
 'toolbox'           => 'Bouèta d’outils',
 'userpage'          => 'Pâge utilisator',
@@ -632,13 +633,13 @@ Solèts los utilisators èyent lo statut d’administrator pôvont la modifiar.<
 'edittools'                 => '<!-- Tot tèxte entrâ ique serat afichiê desot les bouètes d’èdicion ou d’impôrt de fichiér. -->',
 'nocreatetitle'             => 'Crèacion de pâge limitâ',
 'nocreatetext'              => '{{SITENAME}} at rètrent la possibilitât de crèar de novèles pâges.
-Vos pouede tornar arriér et modifiar una pâge ègzistenta, ou ben vos [[Special:Userlogin|conèctar ou crèar un compto]].',
+Vos pouede tornar arriér et pués modifiar una pâge ègzistenta, ou ben vos [[Special:Userlogin|conèctar ou crèar un compto]].',
 'nocreate-loggedin'         => 'Vos avéd pas la pèrmission de crèar de novèles pâges dessus {{SITENAME}}.',
 'permissionserrors'         => 'Èrror de pèrmissions',
 'permissionserrorstext'     => 'Vos avéd pas la pèrmission de fâre l’opèracion demandâ por {{PLURAL:$1|la rêson siuventa|les rêsons siuventes}} :',
 'recreate-deleted-warn'     => "'''Atencion : vos éte aprés recrèar una pâge qu’at étâ prècèdament suprimâ.'''
 
-Demandâd-vos s’o est verément convegnâblo de la recrèar en vos rèferent u jornal de les suprèssions afichiê ce-desot :",
+Demandâd-vos s’o est verément convegnâblo de la recrèar en vos refèrent u jornal de les suprèssions afichiê ce-desot :",
 
 # "Undo" feature
 'undo-success' => 'Cela modificacion vôt étre dèfêta. Volyéd confirmar los changements (visiblos d’avâl de ceta pâge), et pués sôvar se vos éte d’acôrd. Marci d’èxplicar l’anulacion dens la bouèta de rèsumâ.',
@@ -667,6 +668,7 @@ Volyéd controlar l’URL que vos éd utilisâ por arrevar a ceta pâge.',
 'cur'                 => 'ora',
 'next'                => 'siuv',
 'last'                => 'dif',
+'orig'                => 'orig',
 'page_first'          => 'prem',
 'page_last'           => 'dèrr',
 'histlegend'          => 'Lègenda : (ora) = difèrence avouéc la vèrsion d’ora,
@@ -690,11 +692,11 @@ Vos pouede tâchiér de [[Special:Search|rechèrchiér dens lo vouiqui]] des nov
 'rev-deleted-user'            => '(nom d’utilisator suprimâ)',
 'rev-deleted-event'           => '(entrâ suprimâ)',
 'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">
-Ceta vèrsion de la pâge at étâ reteriê des arch·ives publiques.
+Ceta vèrsion de la pâge at étâ enlevâ des arch·ives publiques.
 Pôt y avêr des dètalys dens lo [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} jornal de les suprèssions].
 </div>',
 'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">
-Ceta vèrsion de la pâge at étâ reteriê des arch·ives publiques.
+Ceta vèrsion de la pâge at étâ enlevâ des arch·ives publiques.
 A titro d’administrator de ceti seto, vos pouede la visualisar ;
 pôt y avêr des dètalys dens lo [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} jornal de les suprèssions].
 </div>',
@@ -855,37 +857,43 @@ Atencion, lor endèxacion du contegnu de {{SITENAME}} pôt pas étre a jorn.',
 'files'                    => 'Fichiérs',
 
 # User rights
-'userrights-lookup-user'      => 'Maneyance des drêts d’utilisator',
-'userrights-user-editname'    => 'Entrâd un nom d’utilisator :',
-'editusergroup'               => 'Modificacion des groupes d’utilisators',
-'userrights-editusergroup'    => 'Modifiar los groupes de l’utilisator',
-'saveusergroups'              => 'Sôvar los groupes de l’utilisator',
-'userrights-groupsmember'     => 'Membro de :',
-'userrights-groupsremovable'  => 'Groupes suprimâblos :',
-'userrights-groupsavailable'  => 'Groupes disponiblos :',
-'userrights-groupshelp'       => 'Chouèsésséd/cièrde los groupes desquints vos voléd reteriér ou ben rapondre l’utilisator.
+'userrights-lookup-user'           => 'Maneyance des drêts d’utilisator',
+'userrights-user-editname'         => 'Entrâd un nom d’utilisator :',
+'editusergroup'                    => 'Modificacion des groupes d’utilisators',
+'userrights-editusergroup'         => 'Modifiar los groupes de l’utilisator',
+'saveusergroups'                   => 'Sôvar los groupes de l’utilisator',
+'userrights-groupsmember'          => 'Membro de :',
+'userrights-groupsremovable'       => 'Groupes suprimâblos :',
+'userrights-groupsavailable'       => 'Groupes disponiblos :',
+'userrights-groupshelp'            => 'Chouèsésséd/cièrde los groupes desquints vos voléd enlevar ou ben rapondre l’utilisator.
 Los groupes pas sèlèccionâs seront pas modifiâs. Vos pouede dèsèlèccionar un groupe avouéc CTRL + clic gôcho.',
-'userrights-reason'           => 'Rêson du changement :',
-'userrights-available-none'   => 'Vos pouede pas changiér l’apartegnence ux difèrents groupes.',
-'userrights-available-add'    => 'Vos pouede apondre des utilisators {{PLURAL:$2|u groupe siuvent|ux groupes siuvents}} : $1.',
-'userrights-available-remove' => 'Vos pouede enlevar des utilisators {{PLURAL:$2|du groupe siuvent|des groupes siuvents}} : $1.',
-'userrights-no-interwiki'     => 'Vos avéd pas la pèrmission de modifiar los drêts des utilisators dessus d’ôtros vouiquis.',
-'userrights-nodatabase'       => 'La bâsa de balyês « $1 » ègziste pas ou ben el est pas una bâsa de balyês locala.',
-'userrights-nologin'          => 'Vos dête vos [[Special:Userlogin|conèctar]] avouéc un compto administrator por balyér los drêts d’utilisator.',
-'userrights-notallowed'       => 'Voutron compto at pas la pèrmission de balyér des drêts d’utilisator.',
+'userrights-reason'                => 'Rêson du changement :',
+'userrights-available-none'        => 'Vos pouede pas changiér l’apartegnence ux difèrents groupes.',
+'userrights-available-add'         => 'Vos pouede apondre des utilisators {{PLURAL:$2|u groupe siuvent|ux groupes siuvents}} : $1.',
+'userrights-available-remove'      => 'Vos pouede enlevar des utilisators {{PLURAL:$2|du groupe siuvent|des groupes siuvents}} : $1.',
+'userrights-available-add-self'    => 'Vos pouede vos apondre vos-mémo {{PLURAL:$2|u groupe siuvent|ux groupes siuvents}} : $1.',
+'userrights-available-remove-self' => 'Vos pouede vos enlevar vos-mémo {{PLURAL:$2|du groupe siuvent|des groupes siuvents}} : $1.',
+'userrights-no-interwiki'          => 'Vos avéd pas la pèrmission de modifiar los drêts des utilisators dessus d’ôtros vouiquis.',
+'userrights-nodatabase'            => 'La bâsa de balyês « $1 » ègziste pas ou ben el est pas una bâsa de balyês locala.',
+'userrights-nologin'               => 'Vos dête vos [[Special:Userlogin|conèctar]] avouéc un compto administrator por balyér los drêts d’utilisator.',
+'userrights-notallowed'            => 'Voutron compto at pas la pèrmission de balyér des drêts d’utilisator.',
 
 # Groups
 'group'               => 'Groupe :',
 'group-autoconfirmed' => 'Utilisators enregistrâs',
+'group-bot'           => 'Bots',
 'group-sysop'         => 'Administrators',
 'group-bureaucrat'    => 'Burôcrates',
 'group-all'           => 'Tôs',
 
 'group-autoconfirmed-member' => 'Utilisator enregistrâ',
+'group-bot-member'           => 'Bot',
 'group-sysop-member'         => 'Administrator',
 'group-bureaucrat-member'    => 'Burôcrate',
 
 'grouppage-autoconfirmed' => '{{ns:project}}:Utilisators enregistrâs',
+'grouppage-bot'           => '{{ns:project}}:Bots',
+'grouppage-sysop'         => '{{ns:project}}:Administrators',
 'grouppage-bureaucrat'    => '{{ns:project}}:Burôcrates',
 
 # User rights log
@@ -910,8 +918,12 @@ Los groupes pas sèlèccionâs seront pas modifiâs. Vos pouede dèsèlèccionar
 'rcshowhidemine'                    => '$1 mes contribucions',
 'rclinks'                           => 'Afichiér les $1 dèrriéres modificacions fêtes pendent los $2 jorns passâs&nbsp;;<br/ >$3.',
 'diff'                              => 'dif',
+'hist'                              => 'hist',
 'hide'                              => 'mâscar',
 'show'                              => 'afichiér',
+'minoreditletter'                   => 'm',
+'newpageletter'                     => 'N',
+'boteditletter'                     => 'b',
 'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|utilisator siuvent|utilisators siuvents}}]',
 'rc_categories'                     => 'Limita de les catègories (sèparacion avouéc « | »)',
 'rc_categories_any'                 => 'Totes',
@@ -953,7 +965,7 @@ ou ben por liyér tot drêt vers lo fichiér :
 'uploadedfiles'               => 'Fichiérs copiyês',
 'ignorewarning'               => 'Ignorar l’avèrtissement et sôvar lo fichiér.',
 'ignorewarnings'              => 'Ignorar los avèrtissements pendent l’impôrt',
-'minlength1'                  => 'Los noms de fichiérs dêvont comprendre u muens yona lètra.',
+'minlength1'                  => 'Los noms de fichiér dêvont comprendre u muens yona lètra.',
 'illegalfilename'             => 'Lo nom de fichiér « $1 » contint des caractèros dèfendus dens los titros de pâges. Marci de lo renomar et de lo relevar.',
 'badfilename'                 => 'L’émâge at étâ renomâ en « $1 ».',
 'filetype-badmime'            => 'Los fichiérs du tipo MIME « $1 » pôvont pas étre importâs.',
@@ -974,7 +986,7 @@ Se lo fichiér controlâ est la méma émâge (dens una rèsolucion mèlyora), y
 'file-thumbnail-no'           => 'Lo nom du fichiér comence per <strong><tt>$1</tt></strong>. O est possiblo que s’ag·ésse d’una vèrsion rèduita <i>(figura)</i>.
 Se vos disposâd du fichiér en rèsolucion hôta, importâd-lo, ôtrament volyéd changiér lo nom du fichiér.',
 'fileexists-forbidden'        => 'Un fichiér avouéc ceti nom ègziste ja ; marci de tornar arriér et de copiyér lo fichiér desot un novél nom. [[Image:$1|thumb|center|$1]]',
-'fileexists-shared-forbidden' => 'Un fichiér portent lo mémo nom ègziste ja dens la bâsa de balyês comena ; volyéd tornar arriér et l’emmandar desot un novél nom. [[Image:$1|thumb|center|$1]]',
+'fileexists-shared-forbidden' => 'Un fichiér portent lo mémo nom ègziste ja dens la bâsa de balyês comena ; volyéd tornar arriér et pués l’emmandar desot un novél nom. [[Image:$1|thumb|center|$1]]',
 'successfulupload'            => 'Copia reussia',
 'uploadwarning'               => 'Atencion !',
 'savefile'                    => 'Sôvar lo fichiér',
@@ -1048,6 +1060,7 @@ PICT # de totes sôrtes
 'filehist-current'          => 'ora',
 'filehist-datetime'         => 'Dâta et hora',
 'filehist-user'             => 'Utilisator',
+'filehist-dimensions'       => 'Dimensions',
 'filehist-filesize'         => 'Talye du fichiér',
 'filehist-comment'          => 'Comentèro',
 'imagelinks'                => 'Pâges contegnent l’émâge',
@@ -1147,6 +1160,7 @@ Cen reprèsente una moyena de {{PLURAL:$5|'''1''' modificacion|'''$5''' modifica
 
 'withoutinterwiki'        => 'Pâges sen lims entèrlengoues',
 'withoutinterwiki-header' => 'Les pâges siuventes ont pas de lims vers d’ôtres lengoues :',
+'withoutinterwiki-submit' => 'Afichiér',
 
 'fewestrevisions' => 'Articllos los muens modifiâs',
 
@@ -1205,8 +1219,8 @@ Cen reprèsente una moyena de {{PLURAL:$5|'''1''' modificacion|'''$5''' modifica
 'pager-older-n'           => '{{PLURAL:$1|1 ples viely|$1 ples vielys}}',
 
 # Book sources
-'booksources'               => 'Ôvres de rèference',
-'booksources-search-legend' => 'Rechèrchiér permié des ôvres de rèference',
+'booksources'               => 'Ôvres de refèrence',
+'booksources-search-legend' => 'Rechèrchiér permié des ôvres de refèrence',
 'booksources-isbn'          => 'ISBN :',
 'booksources-go'            => 'Validar',
 'booksources-text'          => 'Vê-que una lista de lims vers d’ôtros setos que vendont des lévros nôfs et d’ocasion et sur losquints vos troveréd pôt-étre des enformacions sur les ôvres que vos chèrchiéd. {{SITENAME}} étent pas liyê a gins de celes sociètâts, el at pas du tot l’entencion de nen fâre la recllâma.',
@@ -1287,8 +1301,8 @@ L’adrèce èlèctronica que vos éd endicâ dens voutres prèferences aparètr
 Les modificacions que vegnont de cela pâge et de la pâge de discussion associyê y seront listâs, et la pâge aparètrat '''en grâs''' dens la [[Special:Recentchanges|lista des dèrriérs changements]] por étre repèrâ ples facilament.
 
 Por suprimar cela pâge de voutra lista de siuvu, clicâd dessus « pas més siuvre » dens lo câdro de navigacion.",
-'removedwatch'         => 'Reteriê de la lista de siuvu',
-'removedwatchtext'     => 'La pâge « [[:$1]] » at étâ reteriê de voutra [[Special:Watchlist|lista de siuvu]].',
+'removedwatch'         => 'Enlevâ de la lista de siuvu',
+'removedwatchtext'     => 'La pâge « [[:$1]] » at étâ enlevâ de voutra [[Special:Watchlist|lista de siuvu]].',
 'watch'                => 'Siuvre',
 'watchthispage'        => 'Siuvre ceta pâge',
 'unwatch'              => 'Pas més siuvre',
@@ -1375,6 +1389,8 @@ L’hora endicâ est cela du sèrvior (UTC).',
 ** Demanda de l’ôtor
 ** Violacion des drêts d’ôtor
 ** Vandalismo',
+'delete-toobig'               => 'Ceta pâge dispôse d’un historico important, dèpassent $1 vèrsions. La suprèssion de tâles pâges at étâ limitâ por èvitar des pèrturbacions emprèvues de {{SITENAME}}.',
+'delete-warning-toobig'       => 'Ceta pâge dispôse d’un historico important, dèpassent $1 vèrsions. La suprimar pôt troblar lo fonccionement de la bâsa de balyês de {{SITENAME}}. A fâre avouéc prudence.',
 'rollback'                    => 'rèvocar modificacions',
 'rollback_short'              => 'Rèvocar',
 'rollbacklink'                => 'rèvocar',
@@ -1658,7 +1674,7 @@ Dens cél câs, vos devréd renomar ou fusionar la pâge manuèlament se vos lo 
 
 Volyéd controlar qu’ègziste gins de redirèccion dobla ou câssa, et corregiéd cetes se fôt.", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'Ègziste ja un articllo portent cél titro, ou ben lo titro
-que vos éd chouèsi/cièrdu est pas valido.
+que vos éd chouèsi/cièrdu est envalido.
 Volyéd nen chouèsir/cièrdre un ôtro.',
 'cantmove-titleprotected' => 'Vos avéd pas la possibilitât de dèplaciér una pâge vers cél emplacement perce que lo novél titro at étâ protègiê a la crèacion.',
 'talkexists'              => "'''La pâge lyé-méma at étâ dèplaciê avouéc reusséta, mas la pâge de discussion at pas possu étre dèplaciê perce que nen ègzistâve ja yona desot lo novél nom. Volyéd les fusionar manuèlament.'''",
@@ -1690,7 +1706,7 @@ Por èxportar des pâges, entrâd lors titros dens la bouèta de tèxte ce-desot
 Dens cél dèrriér câs, vos pouede asse-ben utilisar un lim, coment [[Special:Export/{{MediaWiki:Mainpage}}]] por la pâge {{MediaWiki:Mainpage}}.',
 'exportcuronly'     => 'Èxportar ren que la vèrsion corenta sen l’historico complèt',
 'exportnohistory'   => "---- 
-'''Nota :''' l’èxportacion complèta de l’historico de les pâges avouéc ceti formulèro at étâ dèsactivâ por des rêsons de pèrformances.",
+'''Nota :''' l’èxportacion complèta de l’historico de les pâges avouéc ceti formulèro at étâ dèsactivâ por des rêsons de pèrformences.",
 'export-submit'     => 'Èxportar',
 'export-addcattext' => 'Apondre les pâges de la catègorie :',
 'export-addcat'     => 'Apondre',
@@ -1771,7 +1787,7 @@ Totes les accions d’importacion entèrvouiqui sont consèrvâs dens lo [[Speci
 'tooltip-ca-undelete'             => 'Rèstorar ceta pâge',
 'tooltip-ca-move'                 => 'Renomar ceta pâge',
 'tooltip-ca-watch'                => 'Apondéd ceta pâge a voutra lista de siuvu.',
-'tooltip-ca-unwatch'              => 'Reteriéd ceta pâge de voutra lista de siuvu.',
+'tooltip-ca-unwatch'              => 'Enlevâd ceta pâge de voutra lista de siuvu.',
 'tooltip-search'                  => 'Chèrchiér dens {{SITENAME}}',
 'tooltip-search-go'               => 'Alâd vers una pâge portent justo ceti nom s’ègziste.',
 'tooltip-search-fulltext'         => 'Chèrchiéd les pâges presentent ceti tèxte.',
@@ -1908,8 +1924,9 @@ Totes les accions d’importacion entèrvouiqui sont consèrvâs dens lo [[Speci
 'show-big-image-thumb' => '<small>Talye de ceta vua : $1 × $2 pixèles</small>',
 
 # Special:Newimages
-'newimages' => 'Galerie des novéls fichiérs',
-'noimages'  => 'Niona émâge a afichiér.',
+'newimages'    => 'Galerie des novéls fichiérs',
+'showhidebots' => '($1 bots)',
+'noimages'     => 'Niona émâge a afichiér.',
 
 # Bad image list
 'bad_image_list' => 'Lo format est lo siuvent :
@@ -1955,7 +1972,7 @@ serat rèduita. Los ôtros champs seront cachiês per dèfôt.
 'exif-whitepoint'                  => 'Cromaticitât du pouent blanc',
 'exif-primarychromaticities'       => 'Cromaticitât de les colors primères',
 'exif-ycbcrcoefficients'           => 'Coèficients YCbCr',
-'exif-referenceblackwhite'         => 'Valors de rèference nêr et blanc',
+'exif-referenceblackwhite'         => 'Valors de refèrence nêr et blanc',
 'exif-datetime'                    => 'Dâta et hora de changement du fichiér',
 'exif-imagedescription'            => 'Dèscripcion de l’émâge',
 'exif-make'                        => 'Fabrecant de l’aparèly',
@@ -2021,11 +2038,11 @@ serat rèduita. Los ôtros champs seront cachiês per dèfôt.
 'exif-subjectdistancerange'        => 'Distance du sujèt',
 'exif-imageuniqueid'               => 'Identifiant unico de l’émâge',
 'exif-gpsversionid'                => 'Vèrsion du tag GPS',
-'exif-gpslatituderef'              => 'Rèference por la latituda',
+'exif-gpslatituderef'              => 'Refèrence por la latituda',
 'exif-gpslatitude'                 => 'Latituda',
-'exif-gpslongituderef'             => 'Rèference por la longituda',
+'exif-gpslongituderef'             => 'Refèrence por la longituda',
 'exif-gpslongitude'                => 'Longituda',
-'exif-gpsaltituderef'              => 'Rèference d’hôtior',
+'exif-gpsaltituderef'              => 'Refèrence d’hôtior',
 'exif-gpsaltitude'                 => 'Hôtior',
 'exif-gpstimestamp'                => 'Hora GPS (relojo atomico)',
 'exif-gpssatellites'               => 'Satèlites utilisâs por la mesera',
@@ -2034,18 +2051,18 @@ serat rèduita. Los ôtros champs seront cachiês per dèfôt.
 'exif-gpsdop'                      => 'Prècision de la mesera',
 'exif-gpsspeedref'                 => 'Unitât de vitèsse du recevior GPS',
 'exif-gpsspeed'                    => 'Vitèsse du recevior GPS',
-'exif-gpstrackref'                 => 'Rèference por la dirèccion du mouvement',
+'exif-gpstrackref'                 => 'Refèrence por la dirèccion du mouvement',
 'exif-gpstrack'                    => 'Dirèccion du mouvement',
-'exif-gpsimgdirectionref'          => 'Rèference por l’oriantacion de l’émâge',
+'exif-gpsimgdirectionref'          => 'Refèrence por l’oriantacion de l’émâge',
 'exif-gpsimgdirection'             => 'Oriantacion de l’émâge',
 'exif-gpsmapdatum'                 => 'Sistèmo g·eodèsico utilisâ',
-'exif-gpsdestlatituderef'          => 'Rèference por la latituda de la dèstinacion',
+'exif-gpsdestlatituderef'          => 'Refèrence por la latituda de la dèstinacion',
 'exif-gpsdestlatitude'             => 'Latituda de la dèstinacion',
-'exif-gpsdestlongituderef'         => 'Rèference por la longituda de la dèstinacion',
+'exif-gpsdestlongituderef'         => 'Refèrence por la longituda de la dèstinacion',
 'exif-gpsdestlongitude'            => 'Longituda de la dèstinacion',
-'exif-gpsdestbearingref'           => 'Rèference por lo relevament de la dèstinacion',
+'exif-gpsdestbearingref'           => 'Refèrence por lo relevament de la dèstinacion',
 'exif-gpsdestbearing'              => 'Relevament de la dèstinacion',
-'exif-gpsdestdistanceref'          => 'Rèference por la distance a la dèstinacion',
+'exif-gpsdestdistanceref'          => 'Refèrence por la distance a la dèstinacion',
 'exif-gpsdestdistance'             => 'Distance a la dèstinacion',
 'exif-gpsprocessingmethod'         => 'Nom de la mètoda de trètament du GPS',
 'exif-gpsareainformation'          => 'Nom de la zona GPS',
@@ -2147,6 +2164,7 @@ serat rèduita. Los ôtros champs seront cachiês per dèfôt.
 'exif-gaincontrol-3' => 'Rèduccion fêbla de l’aquis',
 'exif-gaincontrol-4' => 'Rèduccion fôrta de l’aquis',
 
+'exif-contrast-0' => 'Normal',
 'exif-contrast-1' => 'Fêblo',
 'exif-contrast-2' => 'Fôrt',
 
@@ -2199,7 +2217,7 @@ serat rèduita. Los ôtros champs seront cachiês per dèfôt.
 
 # E-mail address confirmation
 'confirmemail'            => 'Confirmar l’adrèce de mèl',
-'confirmemail_noemail'    => 'L’adrèce de mèl configurâ dens voutres [[Special:Preferences|prèferences]] est pas valida.',
+'confirmemail_noemail'    => 'L’adrèce de mèl configurâ dens voutres [[Special:Preferences|prèferences]] est envalida.',
 'confirmemail_text'       => '{{SITENAME}} at fôta du contrôlo de voutra adrèce de mèl devant que povêr utilisar tota fonccion de mèssageria. Utilisâd lo boton ce-desot por emmandar un mèl de confirmacion a voutra adrèce. Lo mèl contindrat un lim contegnent un code, chargiéd cél lim dens voutron navigator por validar voutra adrèce.',
 'confirmemail_pending'    => '<div class="error">
 Un code de confirmacion vos at ja étâ emmandâ per mèl ; se vos vegnéd de crèar voutron compto, volyéd atendre doux-três menutes que lo mèl arreve devant que demandar un code novél.

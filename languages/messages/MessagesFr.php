@@ -972,23 +972,25 @@ $2 Inclure les pages de redirection<br /> Rechercher $3 $9',
 'files'                    => 'Fichiers',
 
 # User rights
-'userrights-lookup-user'      => 'Gestion des droits utilisateur',
-'userrights-user-editname'    => 'Entrez un nom d’utilisateur :',
-'editusergroup'               => 'Modification des groupes utilisateurs',
-'userrights-editusergroup'    => 'Modifier les groupes de l’utilisateur',
-'saveusergroups'              => 'Sauvegarder les groupes utilisateur',
-'userrights-groupsmember'     => 'Membre de :',
-'userrights-groupsremovable'  => 'Groupes supprimables :',
-'userrights-groupsavailable'  => 'Groupes disponibles :',
-'userrights-groupshelp'       => 'Choisissez les groupes desquels vous voulez retirer ou rajouter l’utilisateur. Les groupes non sélectionnés ne seront pas modifiés. Vous pouvez désélectionner un groupe avec CTRL + clic gauche.',
-'userrights-reason'           => 'Motif du changement :',
-'userrights-available-none'   => 'Vous ne pouvez pas changer l’appartenance aux différents groupes.',
-'userrights-available-add'    => 'Vous pouvez ajouter des utilisateurs à $1.',
-'userrights-available-remove' => 'Vous pouvez enlever des utilisateurs de $1.',
-'userrights-no-interwiki'     => "Vous n'êtes pas habilité pour modifier les droits des utilisateurs sur d'autres wikis.",
-'userrights-nodatabase'       => "La base de donnée « $1 » n'existe pas ou n'est pas en local.",
-'userrights-nologin'          => "Vous devez vous [[Special:Userlogin|connecter]] avec un compte administrateur pour donner les droits d'utilisateur.",
-'userrights-notallowed'       => "Votre compte n'est pas habilité pour donner des droits d'utilisateur.",
+'userrights-lookup-user'           => 'Gestion des droits utilisateur',
+'userrights-user-editname'         => 'Entrez un nom d’utilisateur :',
+'editusergroup'                    => 'Modification des groupes utilisateurs',
+'userrights-editusergroup'         => 'Modifier les groupes de l’utilisateur',
+'saveusergroups'                   => 'Sauvegarder les groupes utilisateur',
+'userrights-groupsmember'          => 'Membre de :',
+'userrights-groupsremovable'       => 'Groupes supprimables :',
+'userrights-groupsavailable'       => 'Groupes disponibles :',
+'userrights-groupshelp'            => 'Choisissez les groupes desquels vous voulez retirer ou rajouter l’utilisateur. Les groupes non sélectionnés ne seront pas modifiés. Vous pouvez désélectionner un groupe avec CTRL + clic gauche.',
+'userrights-reason'                => 'Motif du changement :',
+'userrights-available-none'        => 'Vous ne pouvez pas changer l’appartenance aux différents groupes.',
+'userrights-available-add'         => 'Vous pouvez ajouter des utilisateurs à $1.',
+'userrights-available-remove'      => 'Vous pouvez enlever des utilisateurs de $1.',
+'userrights-available-add-self'    => 'Vous pouvez vous ajouter vous-même dans {{PLURAL:$2|ce groupe|ces groupes}} : $1.',
+'userrights-available-remove-self' => 'Vous pouvez vous enlever vous-même de {{PLURAL:$2|ce groupe|ces groupes}} : $1.',
+'userrights-no-interwiki'          => "Vous n'êtes pas habilité pour modifier les droits des utilisateurs sur d'autres wikis.",
+'userrights-nodatabase'            => "La base de donnée « $1 » n'existe pas ou n'est pas en local.",
+'userrights-nologin'               => "Vous devez vous [[Special:Userlogin|connecter]] avec un compte administrateur pour donner les droits d'utilisateur.",
+'userrights-notallowed'            => "Votre compte n'est pas habilité pour donner des droits d'utilisateur.",
 
 # Groups
 'group'               => 'Groupe :',
@@ -1257,6 +1259,7 @@ Il y a {{PLURAL:$7|'''$7''' article|'''$7''' articles}} dans [[meta:Help:Job_que
 
 'withoutinterwiki'        => 'Pages sans liens interlangues',
 'withoutinterwiki-header' => 'Les pages suivantes ne possèdent pas de liens vers d’autres langues :',
+'withoutinterwiki-submit' => 'Afficher',
 
 'fewestrevisions' => 'Articles les moins modifiés',
 
@@ -1481,6 +1484,8 @@ L’heure indiquée est celle du serveur (UTC).',
 ** Demande de l'auteur
 ** Violation des droits d'auteur
 ** Vandalisme",
+'delete-toobig'               => "Cette page dispose d'un historique important, dépassant $1 versions. La suppression de telles pages a été limitée afin d'éviter des perturbations accidentelles de {{SITENAME}}.",
+'delete-warning-toobig'       => "Cette page dispose d'un historique important, dépassant $1 versions. La supprimer peut perturber le fonctionnement de la base de donnée de {{SITENAME}}. À effectuer avec prudence.",
 'rollback'                    => 'révoquer modifications',
 'rollback_short'              => 'Révoquer',
 'rollbacklink'                => 'révoquer',
@@ -1488,7 +1493,7 @@ L’heure indiquée est celle du serveur (UTC).',
 'cantrollback'                => 'Impossible de révoquer : l’auteur est la seule personne à avoir effectué des modifications sur cette page.',
 'alreadyrolled'               => 'Impossible de révoquer la dernière modification de l’article « [[$1]] » effectuée par [[User:$2|$2]] ([[User talk:$2|Discussion]]) ; quelqu’un d’autre a déjà modifié ou révoqué l’article. La dernière modification a été effectuée par [[User:$3|$3]] ([[User talk:$3|Discussion]]).',
 'editcomment'                 => 'Le résumé de la modification était: <i>« $1 »</i>.', # only shown if there is an edit comment
-'revertpage'                  => 'Révocation des modifications de [[Special:Contributions/$2|$2]] (retour à la version précédente de [[Utilisateur:$1|$1]])',
+'revertpage'                  => 'Révocation des modifications de [[Special:Contributions/$2|$2]] (retour à la dernière version de [[User:$1|$1]])',
 'rollback-success'            => 'Révocation des modifications de $1 ; retour à la version de $2.',
 'sessionfailure'              => 'Votre session de connexion semble avoir des problèmes ; cette action a été annulée en prévention d’un piratage de session. Cliquez sur « Précédent » et rechargez la page d’où vous venez, puis réessayez.',
 'protectlogpage'              => 'Historique des protections',
@@ -1543,7 +1548,9 @@ Voici les réglages actuels de la page <strong>$1</strong> :',
 'viewdeletedpage'              => 'Historique de la page supprimée',
 'undeletepagetext'             => 'Ces pages ont été supprimées et se trouvent dans l’archive. Elles figurent toujours dans la base de données et peuvent être restaurées.
 L’archive peut être effacée périodiquement.',
-'undeleteextrahelp'            => "Pour restaurer toutes les versions de cette page, laissez vierges toutes les cases à cocher, puis cliquez sur '''''Procéder à la restauration'''''.<br />Pour procéder à une restauration sélective, cochez les cases correspondant aux versions qui sont à restaurer, puis cliquez sur '''''Procéder à la restauration'''''.<br />En cliquant sur le bouton '''''Réinitialiser''''', la boîte de résumé et les cases cochées seront remises à zéro.",
+'undeleteextrahelp'            => "* Pour restaurer toutes les versions de cette page, laissez vierges toutes les cases à cocher. Pour ne restaurer que certaines version, cochez les cases correspondant aux versions qui sont à restaurer, puis cliquez sur '''''Restaurer'''''.
+* Astuce : Pour sélectionner plusieurs versions à la suite, cliquez sur la première case, puis faites Maj+clic sur la dernière case : toutes les cases intermédiaires sont décochées.
+* En cliquant sur le bouton '''''Réinitialiser''''', la boîte de résumé et les cases cochées seront remises à zéro.",
 'undeleterevisions'            => '$1 {{PLURAL:$1|révision archivée|révisions archivées}}',
 'undeletehistory'              => 'Si vous restaurez la page, toutes les révisions seront replacées dans l’historique.
 
@@ -1786,6 +1793,7 @@ Dans ce dernier cas, vous pouvez aussi utiliser un lien, comme [[{{ns:special}}:
 'export-addcattext' => 'Ajouter les pages de la catégorie :',
 'export-addcat'     => 'Ajouter',
 'export-download'   => 'Sauvegarder en tant que fichier',
+'export-templates'  => 'Inclure les modèles',
 
 # Namespace 8 related
 'allmessages'               => 'Liste des messages système',

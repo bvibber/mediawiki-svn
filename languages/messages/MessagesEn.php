@@ -1649,6 +1649,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'withoutinterwiki'         => 'Pages without language links',
 'withoutinterwiki-header'  => 'The following pages do not link to other language versions:',
 'withoutinterwiki-summary' => '', # only translate this message to other languages if you have to change it
+'withoutinterwiki-submit'  => 'Show',
 
 'fewestrevisions'         => 'Pages with the fewest revisions',
 'fewestrevisions-summary' => '', # only translate this message to other languages if you have to change it
@@ -1917,6 +1918,8 @@ See $2 for a record of recent deletions.',
 ** Author request
 ** Copyright violation
 ** Vandalism',
+'delete-toobig'               => 'This page has a large edit history, over $1 revisions. Deletion of such pages has been restricted to prevent accidental disruption of {{SITENAME}}.',
+'delete-warning-toobig'       => 'This page has a large edit history, over $1 revisions. Deleting it may disrupt database operations of {{SITENAME}}; proceed with caution.',
 'rollback'                    => 'Roll back edits',
 'rollback_short'              => 'Rollback',
 'rollbacklink'                => 'rollback',
@@ -2258,6 +2261,7 @@ In the latter case you can also use a link, e.g. [[{{ns:special}}:Export/{{Media
 'export-addcattext' => 'Add pages from category:',
 'export-addcat'     => 'Add',
 'export-download'   => 'Save as file',
+'export-templates'  => 'Include templates',
 
 # Namespace 8 related
 'allmessages'               => 'System messages',
