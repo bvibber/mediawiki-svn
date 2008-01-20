@@ -802,7 +802,7 @@ Probeer het opnieuw. Als het dan nog niet lukt, meld u zich dan af en weer aan.<
 <strong>Als dit een legitieme bewerking is, probeer het dan opnieuw. Als het dan nog niet lukt, meld u zich dan af en weer aan.</strong>",
 'token_suffix_mismatch'     => '<strong>Uw bewerking is geweigerd omdat uw client de leestekens in het bewerkingstoken onjuist heeft behandeld. De bewerking is geweigerd om verminking van de paginatekst te voorkomen. Dit gebeurt soms als er een webgebaseerde proxydienst wordt gebruikt die fouten bevat.</strong>',
 'editing'                   => 'Bezig met bewerken van $1',
-'editinguser'               => 'Bezig met bewerken van $1',
+'editinguser'               => 'Bezig met wijzigen van de gebruikersrechten van $1',
 'editingsection'            => 'Bezig met bewerken van $1 (deelpagina)',
 'editingcomment'            => 'Bezig met bewerken van $1 (opmerking)',
 'editconflict'              => 'Bewerkingsconflict: $1',
@@ -1049,24 +1049,26 @@ Wees zeker dat deze wijziging de geschiedenisdoorlopendheid van de pagina zal be
 'files'                    => 'Bestanden',
 
 # User rights
-'userrights-lookup-user'      => 'Gebruikersgroepen beheren',
-'userrights-user-editname'    => 'Voer een gebruikersnaam in:',
-'editusergroup'               => 'Gebruikersgroepen wijzigen',
-'userrights-editusergroup'    => 'Gebruikersgroepen wijzigen',
-'saveusergroups'              => 'Gebruikersgroepen opslaan',
-'userrights-groupsmember'     => 'Lid van:',
-'userrights-groupsremovable'  => 'Verwijderbare groepen:',
-'userrights-groupsavailable'  => 'Beschikbare groepen:',
-'userrights-groupshelp'       => 'Selecteer de groepen waaruit u de gebruiker wilt verwijderen of aan toe wilt voegen.
+'userrights-lookup-user'           => 'Gebruikersgroepen beheren',
+'userrights-user-editname'         => 'Voer een gebruikersnaam in:',
+'editusergroup'                    => 'Gebruikersgroepen wijzigen',
+'userrights-editusergroup'         => 'Gebruikersgroepen wijzigen',
+'saveusergroups'                   => 'Gebruikersgroepen opslaan',
+'userrights-groupsmember'          => 'Lid van:',
+'userrights-groupsremovable'       => 'Verwijderbare groepen:',
+'userrights-groupsavailable'       => 'Beschikbare groepen:',
+'userrights-groupshelp'            => 'Selecteer de groepen waaruit u de gebruiker wilt verwijderen of aan toe wilt voegen.
 Niet geselecteerde groepen worden niet gewijzigd. Deselecteer een groep met "Ctrl + linkermuisknop".',
-'userrights-reason'           => 'Reden voor het veranderen:',
-'userrights-available-none'   => 'U mag geen gebruikersrechten veranderen.',
-'userrights-available-add'    => 'U kan gebruikers toevoegen aan deze {{PLURAL:$2|groep|groepen}}: $1.',
-'userrights-available-remove' => 'U kan gebruikers verwijderen van deze {{PLURAL:$2|groep|groepen}}: $1.',
-'userrights-no-interwiki'     => "U heeft geen rechten om gebruikersrechten op andere wiki's te wijzigen.",
-'userrights-nodatabase'       => 'Database $1 bestaat niet of is geen plaatselijke database.',
-'userrights-nologin'          => 'U moet zich [[Special:Userlogin|aanmelden]] met een gebruiker met de juiste rechten om gebruikersrechten toe te wijzen.',
-'userrights-notallowed'       => 'U heeft geen rechten om gebruikersrechten toe te wijzen.',
+'userrights-reason'                => 'Reden voor het veranderen:',
+'userrights-available-none'        => 'U mag geen gebruikersrechten veranderen.',
+'userrights-available-add'         => 'U kan gebruikers toevoegen aan deze {{PLURAL:$2|groep|groepen}}: $1.',
+'userrights-available-remove'      => 'U kan gebruikers verwijderen van deze {{PLURAL:$2|groep|groepen}}: $1.',
+'userrights-available-add-self'    => 'U kan zichzelf toevoegen aan deze {{PLURAL:$2|groep|groepen}}: $1.',
+'userrights-available-remove-self' => 'U kan zichzelf verwijderen uit deze {{PLURAL:$2|groep|groepen}}: $1.',
+'userrights-no-interwiki'          => "U heeft geen rechten om gebruikersrechten op andere wiki's te wijzigen.",
+'userrights-nodatabase'            => 'Database $1 bestaat niet of is geen plaatselijke database.',
+'userrights-nologin'               => 'U moet zich [[Special:Userlogin|aanmelden]] met een gebruiker met de juiste rechten om gebruikersrechten toe te wijzen.',
+'userrights-notallowed'            => 'U heeft geen rechten om gebruikersrechten toe te wijzen.',
 
 # Groups
 'group'               => 'Groep:',
@@ -1350,6 +1352,7 @@ De lengte van de [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] is ''
 
 'withoutinterwiki'        => "Pagina's zonder links naar andere talen",
 'withoutinterwiki-header' => "De volgende pagina's linken niet naar versies in een andere taal:",
+'withoutinterwiki-submit' => 'Tonen',
 
 'fewestrevisions' => "Pagina's met de minste bewerkingen",
 
@@ -1555,7 +1558,7 @@ Feedback en andere assistentie:
 'historywarning'              => 'Waarschuwing: de pagina die u wilt verwijderen heeft meerdere versies:',
 'confirmdeletetext'           => 'U staat op het punt een pagina te verwijderen, inclusief de geschiedenis. Bevestig alstublieft hieronder dat dit inderdaad uw bedoeling is, dat u de gevolgen begrijpt en dat de verwijdering overeenstemt met het [[{{MediaWiki:Policy-url}}|beleid]].',
 'actioncomplete'              => 'Handeling voltooid',
-'deletedtext'                 => '"$1" is verwijderd. Zie $2 voor een overzicht van recente verwijderingen.',
+'deletedtext'                 => '"$1" is verwijderd. Zie het $2 voor een overzicht van recente verwijderingen.',
 'deletedarticle'              => 'verwijderde "[[$1]]"',
 'dellogpage'                  => 'Verwijderingslogboek',
 'dellogpagetext'              => "Hieronder is een lijst van recent verwijderde pagina's en bestanden weergegeven.",
@@ -1568,6 +1571,8 @@ Feedback en andere assistentie:
 ** Op aanvraag van auteur
 ** Schending van auteursrechten
 ** Vandalisme',
+'delete-toobig'               => "Deze pagina heeft een lange bewerkingsgeschiedenis, meer dan $1 versies. Het verwijderen van dit soort pagina's is met rechten beperkt om het per ongeluk verstoren van de werking van {{SITENAME}} te voorkomen.",
+'delete-warning-toobig'       => 'Deze pagina heeft een lange bewerkingsgeschiedenis, meer dan $1 versies. Het verwijderen van deze pagina kan de werking van de database van {{SITENAME}} verstoren. Wees voorzichtig.',
 'rollback'                    => 'Wijzigingen ongedaan maken',
 'rollback_short'              => 'Terugdraaien',
 'rollbacklink'                => 'terugdraaien',
@@ -1861,6 +1866,7 @@ In het laatste geval kan u ook een link gebruiken, bijvoorbeeld [[Special:Export
 'export-addcattext' => "Voeg pagina's toe van categorie:",
 'export-addcat'     => 'Toevoegen',
 'export-download'   => 'Als bestand opslaan',
+'export-templates'  => 'Sjablonen toevoegen',
 
 # Namespace 8 related
 'allmessages'               => 'Systeemteksten',

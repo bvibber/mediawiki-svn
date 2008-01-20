@@ -286,6 +286,9 @@ $messages = array(
 'anontalk'       => 'Diskussionssidan för denna IP-adress',
 'navigation'     => 'Navigering',
 
+# Metadata in edit box
+'metadata_help' => 'Metadata:',
+
 'errorpagetitle'    => 'Fel',
 'returnto'          => 'Tillbaka till $1.',
 'tagline'           => '{{SITENAME}}',
@@ -925,23 +928,25 @@ $2 Lista omdirigeringar &nbsp; Sök efter $3 $9',
 'files'                    => 'Filer',
 
 # User rights
-'userrights-lookup-user'      => 'Hantera användargrupper',
-'userrights-user-editname'    => 'Skriv in ett användarnamn:',
-'editusergroup'               => 'Ändra användargrupper',
-'userrights-editusergroup'    => 'Redigera användargrupper',
-'saveusergroups'              => 'Spara användargrupper',
-'userrights-groupsmember'     => 'Medlem i:',
-'userrights-groupsremovable'  => 'Grupper som kan tas bort:',
-'userrights-groupsavailable'  => 'Tillgängliga grupper:',
-'userrights-groupshelp'       => 'Markera de grupper, som du vill lägga till eller ta bort användare i. De grupper som du inte markerar, kommer inte att förändras. Du kan avmarkera en grupp med CTRL + vänsterklick.',
-'userrights-reason'           => 'Anledning till ändringen:',
-'userrights-available-none'   => 'Du kan inte ändra några grupptillhörigheter.',
-'userrights-available-add'    => 'Du kan lägga till användare i följande {{PLURAL:$2|grupp|grupper}}: $1.',
-'userrights-available-remove' => 'Du kan ta bort användare från följande {{PLURAL:$2|grupp|grupper}}: $1.',
-'userrights-no-interwiki'     => 'Du har inte behörighet att ändra användarrättigheter på andra wikis.',
-'userrights-nodatabase'       => 'Databasen $1 finns inte eller så är den inte lokal.',
-'userrights-nologin'          => 'Du måste [[Special:Userlogin|logga in]] med ett administratörskonto för att ändra användarrättigheter.',
-'userrights-notallowed'       => 'Ditt konto har inte behörighet till att ändra användarrättigheter.',
+'userrights-lookup-user'           => 'Hantera användargrupper',
+'userrights-user-editname'         => 'Skriv in ett användarnamn:',
+'editusergroup'                    => 'Ändra användargrupper',
+'userrights-editusergroup'         => 'Redigera användargrupper',
+'saveusergroups'                   => 'Spara användargrupper',
+'userrights-groupsmember'          => 'Medlem i:',
+'userrights-groupsremovable'       => 'Grupper som kan tas bort:',
+'userrights-groupsavailable'       => 'Tillgängliga grupper:',
+'userrights-groupshelp'            => 'Markera de grupper, som du vill lägga till eller ta bort användare i. De grupper som du inte markerar, kommer inte att förändras. Du kan avmarkera en grupp med CTRL + vänsterklick.',
+'userrights-reason'                => 'Anledning till ändringen:',
+'userrights-available-none'        => 'Du kan inte ändra några grupptillhörigheter.',
+'userrights-available-add'         => 'Du kan lägga till användare i följande {{PLURAL:$2|grupp|grupper}}: $1.',
+'userrights-available-remove'      => 'Du kan ta bort användare från följande {{PLURAL:$2|grupp|grupper}}: $1.',
+'userrights-available-add-self'    => 'Du kan lägga till dig själv till följande {{PLURAL:$2|grupp|grupper}}: $1.',
+'userrights-available-remove-self' => 'Du kan ta bort dig själv från följande {{PLURAL:$2|grupp|grupper}}: $1.',
+'userrights-no-interwiki'          => 'Du har inte behörighet att ändra användarrättigheter på andra wikis.',
+'userrights-nodatabase'            => 'Databasen $1 finns inte eller så är den inte lokal.',
+'userrights-nologin'               => 'Du måste [[Special:Userlogin|logga in]] med ett administratörskonto för att ändra användarrättigheter.',
+'userrights-notallowed'            => 'Ditt konto har inte behörighet till att ändra användarrättigheter.',
 
 # Groups
 'group'               => 'Grupp:',
@@ -1219,6 +1224,7 @@ Sedan denna wiki startades har sidor visats totalt <b>$3</b> {{PLURAL:$3|gång|g
 
 'withoutinterwiki'        => 'Sidor utan språklänkar',
 'withoutinterwiki-header' => 'Följande sidor innehåller inte några länkar till andra språkversioner:',
+'withoutinterwiki-submit' => 'Visa',
 
 'fewestrevisions' => 'Sidor med minst antal ändringar',
 
@@ -1443,6 +1449,8 @@ Se $2 för noteringar om de senaste raderingarna.',
 ** Författarens begäran
 ** Upphovsrättsbrott
 ** Vandalism',
+'delete-toobig'               => 'Denna sida har en lång redigeringshistorik med mer än $1 sidversioner. Borttagning av sådana sidor har begränsats för att förhindra oavsiktliga driftstörningar på {{SITENAME}}.',
+'delete-warning-toobig'       => 'Denna sida har en lång redigeringshistorik med mer än $1 sidversioner. Att radera sidan kan skapa problem med hanteringen av databasen på {{SITENAME}}; var försiktig.',
 'rollback'                    => 'Rulla tillbaka ändringar',
 'rollback_short'              => 'Återställning',
 'rollbacklink'                => 'rulla tillbaka',
@@ -1852,8 +1860,8 @@ All överföring mellan wikier (transwiki) listas i  [[Special:Log/import|import
 'tooltip-upload'                  => 'Starta uppladdning',
 
 # Stylesheets
-'common.css'   => '/** CSS som skrivs här nedan påverkar alla skal **/',
-'monobook.css' => '/*CSS som skrivs in här kommer att påverka alla användare av skalet Monobook */',
+'common.css'   => '/* CSS som skrivs här påverkar alla skal */',
+'monobook.css' => '/* CSS som skrivs här kommer att påverka alla användare av skalet Monobook */',
 
 # Scripts
 'common.js'   => '/* JavaScript som skrivs här körs varje gång en användare laddar en sida. */',
@@ -2172,6 +2180,7 @@ Listan tar enbart hänsyn till rader som börjar med asterisk (*). Den första l
 'exif-whitebalance-0' => 'Automatisk vitbalans',
 'exif-whitebalance-1' => 'Manuell vitbalans',
 
+'exif-scenecapturetype-0' => 'Standard',
 'exif-scenecapturetype-1' => 'Landskap',
 'exif-scenecapturetype-2' => 'Porträtt',
 'exif-scenecapturetype-3' => 'Nattfotografering',

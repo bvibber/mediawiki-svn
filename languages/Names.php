@@ -21,6 +21,7 @@
 	'as' => 'অসমীয়া',	# Assamese
 	'ast' => 'Asturianu',	# Asturian
 	'av' => 'Авар',	# Avar
+	'avk' => 'Kotava', # Kotava
 	'ay' => 'Aymar',		# Aymara, should possibly be Aymará
 	'az' => 'Azərbaycan',	# Azerbaijani
 	'ba' => 'Башҡорт',	# Bashkir
@@ -91,6 +92,7 @@
 	'fur' => 'Furlan',		# Friulian
 	'fy' => 'Frysk',		# Frisian
 	'ga' => 'Gaeilge',		# Irish
+	'gag' => 'Gagauz',		# Gagauz
 	'gan' => '贛語',			# Gan
 	'gd' => 'Gàidhlig',	# Scots Gaelic
 	'gl' => 'Galego',		# Galician
@@ -164,6 +166,7 @@
 	'lb' => 'Lëtzebuergesch',	# Luxemburguish
 	'lbe' => 'Лакку',	# Lak
 	'lez' => 'Лезги',	# Lezgi
+	'lfn' => 'Lingua Franca Nova',	# Lingua Franca Nova
 	'lg' => 'Luganda',		# Ganda
 	'li' => 'Limburgs',	# Limburgian
 	'lij' => 'Líguru',	# Ligurian
@@ -266,7 +269,7 @@
 	'sr-jc' => 'ијекавица',	# Serbian cyrillic iyekvian
 	'sr-el' => 'latinica',	# Serbian latin ekavian
 	'sr-jl' => 'ijekavica',	# Serbian latin iyekavian
-	'srn' => 'Sranan Tongo',		# Sranan Tongo
+	'srn' => 'Sranantongo',		# Sranan Tongo
 	'ss' => 'SiSwati',		# Swati
 	'st' => 'Sesotho',		# Southern Sotho
 	'stq' => 'Seeltersk',		# Saterland Frisian

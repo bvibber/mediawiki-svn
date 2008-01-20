@@ -702,9 +702,11 @@ Titulus: (nov) = dissimilis ab forma novissima, (prox) = dissimilis ab forma pro
 'files'                    => 'Fasciculi',
 
 # User rights
-'editusergroup'               => 'Greges usorum recensere',
-'userrights-available-add'    => 'Potes usores addere ad {{PLURAL:$2|hanc gregem|has greges}}: $1.',
-'userrights-available-remove' => 'Potes usores removere ex {{PLURAL:$2|hac grege|his gregibus}}: $1.',
+'editusergroup'                    => 'Greges usorum recensere',
+'userrights-available-add'         => 'Potes usores addere ad {{PLURAL:$2|hanc gregem|has greges}}: $1.',
+'userrights-available-remove'      => 'Potes usores removere ex {{PLURAL:$2|hac grege|his gregibus}}: $1.',
+'userrights-available-add-self'    => 'Potes te addere ad {{PLURAL:$2|hanc gregem|has greges}}: $1.',
+'userrights-available-remove-self' => 'Potes te removere ex {{PLURAL:$2|hac grege|his gregibus}}: $1.',
 
 # Groups
 'group'            => 'Grex:',
@@ -887,7 +889,8 @@ Hoc aequat fere '''$5''' mutationes per paginam, et '''$6''' visae per mutatione
 'brokenredirects-edit'   => '(recensere)',
 'brokenredirects-delete' => '(delere)',
 
-'withoutinterwiki' => 'Paginae sine nexibus ad linguas alias',
+'withoutinterwiki'        => 'Paginae sine nexibus ad linguas alias',
+'withoutinterwiki-submit' => 'Monstrare',
 
 'fewestrevisions' => 'Paginae minime mutatae',
 

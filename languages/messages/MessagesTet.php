@@ -66,7 +66,9 @@ $specialPageAliases = array(
 
 $messages = array(
 # User preference toggles
-'tog-hideminor' => "Lá'os hatudu osan-rahun sira iha mudansa foufoun sira",
+'tog-hideminor'          => "Lá'os hatudu osan-rahun sira iha mudansa foufoun sira",
+'tog-watchlisthidebots'  => 'Hamsumik bot iha lista hateke',
+'tog-watchlisthideminor' => 'Hamsumik osan-rahun iha lista hateke',
 
 'underline-always' => 'Sempre',
 'underline-never'  => 'Nunka',
@@ -103,6 +105,18 @@ $messages = array(
 'october-gen'   => 'Outubru nian',
 'november-gen'  => 'Novembru nian',
 'december-gen'  => 'Dezembru nian',
+'jan'           => 'Jan',
+'feb'           => 'Fev',
+'mar'           => 'Mar',
+'apr'           => 'Abr',
+'may'           => 'Mai',
+'jun'           => 'Jun',
+'jul'           => 'Jul',
+'aug'           => 'Ago',
+'sep'           => 'Set',
+'oct'           => 'Out',
+'nov'           => 'Nov',
+'dec'           => 'Dez',
 
 # Bits of text used by many pages
 'categories'      => 'Kategoría',
@@ -200,6 +214,8 @@ $messages = array(
 'hidetoc'                 => 'subar',
 'thisisdeleted'           => 'Haree ka restaurar $1?',
 'viewdeleted'             => 'Haree $1?',
+'site-rss-feed'           => 'Feed RSS $1',
+'site-atom-feed'          => 'Feed Atom $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Pájina',
@@ -292,6 +308,7 @@ $messages = array(
 'userrights-editusergroup'  => "Filak lubu uza-na'in",
 'userrights-groupsmember'   => 'Membru iha:',
 'userrights-available-none' => "Ó la bele filak lubu uza-na'in.",
+'userrights-no-interwiki'   => "Ó la bele filak kuana uza-na'in iha wiki seluk.",
 
 # Groups
 'group'            => 'Lubu:',
@@ -309,8 +326,10 @@ $messages = array(
 'grouppage-bureaucrat' => '{{ns:project}}:Burokrata sira',
 
 # User rights log
-'rightslogtext' => "Ne'e lista ba filak lubu uza-na'in.",
-'rightsnone'    => '(mamuk)',
+'rightslog'      => "Lista filak kuana uza-na'in",
+'rightslogtext'  => "Ne'e lista ba filak lubu uza-na'in.",
+'rightslogentry' => 'filak lubu $1 nian husi $2 ba $3',
+'rightsnone'     => '(mamuk)',
 
 # Recent changes
 'recentchanges'   => 'Mudansa foufoun sira',
@@ -470,6 +489,8 @@ $messages = array(
 # Move page
 'movepage'                => 'Book pájina',
 'movearticle'             => 'Book pájina:',
+'movenotallowed'          => 'Ó la bele book pájina iha {{SITENAME}}.',
+'move-watch'              => "Hateke pájina ne'e",
 'movepagebtn'             => 'Book pájina',
 'movepage-moved'          => '<big>\'\'\'Ó book "$1" ba "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 '1movedto2'               => 'book tiha [[$1]] ba [[$2]]',
@@ -480,6 +501,9 @@ $messages = array(
 # Namespace 8 related
 'allmessagesname'    => 'Naran',
 'allmessagescurrent' => 'Testu atuál',
+
+# Import log
+'import-logentry-interwiki-detail' => '$1 versaun husi $2',
 
 # Tooltip help for the actions
 'tooltip-ca-protect'      => "Proteje pájina ne'e",
@@ -492,6 +516,9 @@ $messages = array(
 'tooltip-t-contributions' => "Haree lista kontribuisaun uza-na'in ne'e nian",
 'tooltip-t-specialpages'  => 'Lista pájina espesiál hotu nian',
 'tooltip-ca-nstab-user'   => "Haree pájina uza-na'in",
+
+# Attribution
+'and' => 'ho',
 
 # Browsing diffs
 'previousdiff' => '←Diferensa molok',
