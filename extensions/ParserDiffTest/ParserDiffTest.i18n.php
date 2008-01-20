@@ -157,6 +157,7 @@ $messages['hu'] = array(
 	'pdtest_page_missing' => 'A megadott oldal nem található az adatbázisban.',
 	'pdtest_time_report'  => '<b>$1</b> $2 másodpercig, míg <b>$3</b> $4 másodpercig tartott.',
 	'pdtest_diff'         => 'Eltérések',
+	'pdtest_side_by_side' => 'Kimenet összehasonlítása',
 );
 
 /** Italian (Italiano)

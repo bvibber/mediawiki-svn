@@ -191,6 +191,17 @@ $messages['el'] = array(
 	'bookinfo-purchase' => 'Αγοράστε αυτό το βιβλίο από $1',
 );
 
+/** Spanish (Español)
+ * @author Dmcdevit
+ */
+$messages['es'] = array(
+	'bookinfo-result-title'      => 'Título:',
+	'bookinfo-result-author'     => 'Autor:',
+	'bookinfo-result-publisher'  => 'Editorial:',
+	'bookinfo-result-year'       => 'Año:',
+	'bookinfo-error-invalidisbn' => 'Se introduce el ISBN inválido.',
+);
+
 $messages['ext'] = array(
 	'bookinfo-header' => 'Enhormación el libru',
 	'bookinfo-result-title' => 'Entítulu:',

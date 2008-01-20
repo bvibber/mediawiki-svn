@@ -232,6 +232,13 @@ $messages['li'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|link|links}} nao $3',
 );
 
+/** Lumbaart (Lumbaart)
+ * @author SPQRobin
+ */
+$messages['lmo'] = array(
+	'crossnamespacelinks' => 'Ligamm crusaa',
+);
+
 /** Lozi (Silozi)
  * @author Ooswesthoesbes
  */

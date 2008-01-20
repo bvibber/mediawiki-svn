@@ -877,6 +877,7 @@ La vèrsion criptâ siut. Serat afichiê publicament dessus [[Special:Boardvote/
 	'boardvote_user'         => 'Utilisator',
 	'boardvote_edits'        => 'Modificacions',
 	'boardvote_days'         => 'Jorns',
+	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Reprèsentent de l’utilisator',
 	'boardvote_listintro'    => 'Lista de les gens èyent votâ :<br /><br />',
 	'boardvote_dumplink'     => 'Clicâd ique',
@@ -1725,6 +1726,13 @@ $messages['li'] = array(
 	'boardvote_blocked'      => 'Sorry, doe bös geblokkeerd op uche geregistreerde wiki. Geblokkeerde gebroekers moge neet stömme.',
 	'boardvote_welcome'      => "Wèlkom, '''$1'''!",
 	'go_to_board_vote'       => 'Wikimedia Bestuursverkezing 2007',
+);
+
+/** Lumbaart (Lumbaart)
+ * @author SPQRobin
+ */
+$messages['lmo'] = array(
+	'boardvote' => 'Elezziún dal cunsili diretiif dala Wikimedia Foundation',
 );
 
 $messages['loz'] = array(

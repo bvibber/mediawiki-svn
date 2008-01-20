@@ -152,6 +152,23 @@ $messages['fr'] = array(
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|La ligne suivante|Les lignes suivantes}} de la liste noire des noms d\'utilisateurs {{PLURAL:$1|est invalide|sont invalides}} ; veuillez {{PLURAL:$1|la|les}} corriger avant d\'enregistrer :',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'blacklistedusername'             => 'Noms d’utilisator en lista nêre',
+	'blacklistedusernametext'         => 'Lo nom d’utilisator que vos éd chouèsi/cièrdu sè trove sur la [[MediaWiki:Usernameblacklist|lista des noms dèfendus]]. Volyéd chouèsir/cièrdre un ôtro nom.',
+	'usernameblacklist'               => '<pre>
+# Les entrâs de ceta lista seront utilisâs a titro d’èxprèssions règuliéres
+# por empachiér la crèacion de noms d’utilisator dèfendus. Châque èlèment dêt
+# étre dens una lista de puges, per ègzemplo
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|La legne siuventa|Les legnes siuventes}} de la lista nêre des noms d’utilisator {{PLURAL:$1|est envalida|sont envalides}} ; volyéd {{PLURAL:$1|la|les}} corregiér devant qu’enregistrar :',
+);
+
 $messages['gl'] = array(
 	'blacklistedusername' => 'Nome de usuario non permitido',
 	'blacklistedusernametext' => 'O nome de usuario que elixiu está na [[MediaWiki:Usernameblacklist| lista de nomes de usuario non permitidos]]. Por favor escolla outro nome.',

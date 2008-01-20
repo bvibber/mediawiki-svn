@@ -146,6 +146,13 @@ $messages['stq'] = array(
 	'advancedrandom' => 'Toufällige Siede (ferruumed)',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'advancedrandom' => 'Avancerad slumpsida',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */
