@@ -16,6 +16,7 @@ $messages['en'] = array(
 	'inspectcache-get' => 'Get',
 	'inspectcache-delete' => 'Delete',
 	'inspectcache-deleted' => 'Deleted Cache',
+	'inspectcache-list' => 'List',
 );
 
 $messages['ar'] = array(
@@ -131,6 +132,7 @@ $messages['ru'] = array(
 	'inspectcache-get'     => 'Получить',
 	'inspectcache-delete'  => 'Удалить',
 	'inspectcache-deleted' => 'Кэш удалён',
+	'inspectcache-list'    => 'Все ключи',
 );
 
 $messages['sk'] = array(

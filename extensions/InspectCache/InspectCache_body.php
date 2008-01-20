@@ -14,12 +14,14 @@ class InspectCache extends SpecialPage
 
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgTitle, $inspectcacheget, $inspectcachedelete;
-		$inspectcacheget = wfMsg('inspectcache-get');
-		$inspectcachedelete = wfMsg('inspectcache-delete');
+		$inspectcacheget = wfMsgHtml('inspectcache-get');
+		$inspectcachedelete = wfMsgHtml('inspectcache-delete');
+		$inspectcachelist = wfMsgHtml('inspectcache-list');
 		$this->setHeaders();
 
 		$key = $wgRequest->getVal( 'key' );
 		$delete = $wgRequest->getBool( 'delete' ) && $wgRequest->wasPosted();
+		$list = $wgRequest->getBool( 'list' );
 		$group = $wgRequest->getVal( 'group' );
 
 		$encQ = htmlspecialchars( $key );
@@ -49,7 +51,9 @@ class InspectCache extends SpecialPage
 <input type="text" size="80" name="key" value="$encQ"/><br />
 <div>$radios</div>
 <input type="submit" name="submit" value={$inspectcacheget} />
-<input type="submit" name="delete" value={$inspectcachedelete} /><br /><br />
+<input type="submit" name="delete" value={$inspectcachedelete} />
+<input type="submit" name="list"   value={$inspectcachelist} />
+<br /><br />
 </form>
 END
 );
@@ -57,6 +61,18 @@ END
 		if ( $delete && !is_null( $key ) ) {
 			$cache->delete( $key );
 			$wgOut->addHTML( wfMsg('inspectcache-deleted')."\n" );
+		} else if ( $list ) {
+			$list = $cache->keys();
+			$str = "<ul>\n";
+			foreach( $list as $li ) {
+				$keyEncoded = urlencode( $li );
+				$url = $wgTitle->getFullUrl( "key={$keyEncoded}&group={$group}" );
+				$urlEncoded = htmlspecialchars( $url );
+				$liEncoded = htmlspecialchars( $li );
+				$str .= "<li><a href=\"{$urlEncoded}\">{$liEncoded}</a></li>\n";
+			}
+			$str .= "</ul>\n";
+			$wgOut->addHTML( $str );
 		} else if ( !is_null( $key ) ) {
 			$value = $cache->get( $key );
 			if ( !is_string( $value ) ) {
