@@ -215,6 +215,7 @@ $messages['oc'] = array(
 	'usagestatistics'            => 'Estatisticas Utilizacion',
 	'usagestatisticsfor'         => '<h2>Estatisticas Utilizacion per [[:user:$1|$1]]</h2>',
 	'usagestatisticsallusers'    => 'Totes los utilizaires',
+	'usagestatisticsinterval'    => 'Interval',
 	'usagestatisticstype'        => 'Tipe',
 	'usagestatisticsstart'       => 'Data de començament',
 	'usagestatisticsend'         => 'Data de fin',

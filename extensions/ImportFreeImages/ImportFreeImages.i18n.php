@@ -152,6 +152,21 @@ $messages['oc'] = array(
 	'importfreeimages_returntoform'          => "o, clicatz <a href='$1'>aicí</a> per tornar a vòstra lista de resultats.",
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'importfreeimages'                       => 'Импортирование свободных изображений',
+	'importfreeimages_description'           => 'С помощью этой страницы вы можете искать должным образом лицензированные фотографии с Flickr и импортировать их в эту вики.',
+	'importfreeimages_noapikey'              => 'Вы не настроили ваш Flickr API-ключ. Чтобы это сделать, пожалуйста, получите API-ключ [http://www.flickr.com/services/api/misc.api_keys.html здесь] и установите wgFlickrAPIKey в ImportFreeImages.php.',
+	'importfreeimages_nophotosfound'         => 'Не найдено фотографий по условию «$1», попробуйте ещё раз.',
+	'importfreeimages_owner'                 => 'Автор',
+	'importfreeimages_importthis'            => 'Импортировать это',
+	'importfreeimages_next'                  => 'Следующие $1',
+	'importfreeimages_promptuserforfilename' => 'Пожалуйста, введите новое имя файла:',
+	'importfreeimages_returntoform'          => "Или нажмите <a href='$1'>здесь</a>, чтобы вернуться к вашим результатам поиска.",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

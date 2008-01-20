@@ -77,6 +77,13 @@ $messages['hsb'] = array(
 	'languageselector-setlang' => 'stajić',
 );
 
+/** Hungarian (Magyar)
+ * @author Dorgan
+ */
+$messages['hu'] = array(
+	'languageselector' => 'Nyelv',
+);
+
 /** Kazakh
  * @author AlefZet
 */
@@ -103,6 +110,14 @@ $messages['lb'] = array(
 	'languageselector-setlang' => 'Wielt',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'languageselector'         => 'Spraak',
+	'languageselector-setlang' => 'setten',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
 */
@@ -117,6 +132,14 @@ $messages['nl'] = array(
 $messages['oc'] = array(
 	'languageselector'         => 'Lenga',
 	'languageselector-setlang' => 'Definir',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'languageselector'         => 'Язык',
+	'languageselector-setlang' => 'установить',
 );
 
 /** Slovak (Slovenčina)

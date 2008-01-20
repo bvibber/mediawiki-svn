@@ -153,11 +153,17 @@ $messages['hsb'] = array(
  * @author Bdanee
  */
 $messages['hu'] = array(
+	'parserdifftest'      => 'Értelmezők közötti eltérés tesztelése',
 	'pdtest_no_target'    => 'Nincs cél megadva',
 	'pdtest_page_missing' => 'A megadott oldal nem található az adatbázisban.',
+	'pdtest_no_changes'   => 'Nincsenek eltérések.',
 	'pdtest_time_report'  => '<b>$1</b> $2 másodpercig, míg <b>$3</b> $4 másodpercig tartott.',
+	'pdtest_title'        => 'Szöveg címe:',
+	'pdtest_text'         => 'Bemeneti szöveg:',
+	'pdtest_ok'           => 'OK',
 	'pdtest_diff'         => 'Eltérések',
 	'pdtest_side_by_side' => 'Kimenet összehasonlítása',
+	'pdt_comparing_page'  => '[[$1]] kimeneteinek összehasonlítása',
 );
 
 /** Italian (Italiano)
@@ -191,12 +197,13 @@ $messages['lb'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
 	'parserdifftest'      => 'Parserverschillentest',
 	'pdtest_no_target'    => 'Geen doel aangegeven.',
 	'pdtest_page_missing' => 'De aangegeven pagina is niet aangetroffen in de database.',
-	'pdtest_no_changes'   => 'Geen wijzigingen geconstateerd.',
+	'pdtest_no_changes'   => 'Geen wijzigingen vastgesteld.',
 	'pdtest_time_report'  => '<b>$1</b> duurde $2 seconden, <b>$3</b> duurde $4 seconden.',
 	'pdtest_title'        => 'Contexttitel:',
 	'pdtest_text'         => 'Invoertekst:',
@@ -204,7 +211,7 @@ $messages['nl'] = array(
 	'pdtest_get_text'     => 'Tekst van pagina ophalen',
 	'pdtest_diff'         => 'Verschillen',
 	'pdtest_side_by_side' => 'Uitvoervergelijking',
-	'pdt_comparing_page'  => 'Vergelijk van parseruitvoer van [[$1]]',
+	'pdt_comparing_page'  => 'Parseruitvoer van [[$1]] vergelijken',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

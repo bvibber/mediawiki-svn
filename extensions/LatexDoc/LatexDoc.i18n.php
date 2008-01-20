@@ -159,6 +159,24 @@ $3',
 	'latexdoc_get_pdf'         => 'Obţine PDF',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'latexdoc_no_text'         => 'Страница не содержит текста, невозможно создать DVI',
+	'latexdoc_cant_create_dir' => 'Невозможно создать временную директорию $1',
+	'latexdoc_cant_write'      => 'Невозможно записать в файл $1',
+	'latexdoc_error'           => 'Ошибка LaTeX
+
+Команда: $1
+
+Вывод: $2
+
+$3',
+	'latexdoc_get_dvi'         => 'Получить DVI',
+	'latexdoc_get_pdf'         => 'Получить PDF',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

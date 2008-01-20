@@ -164,6 +164,14 @@ $messages['hsb'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Zapodatny zmylk',
 );
 
+/** Hungarian (Magyar)
+ * @author Dorgan
+ */
+$messages['hu'] = array(
+	'chemFunctions_CAS'  => 'CAS-szám',
+	'chemFunctions_Name' => 'IUPAC név',
+);
+
 $messages['id'] = array(
 	'chemicalsources' => 'Rujukan kimia',
 	'chemFunctions_ListPage' => 'Rujukan kimia',
@@ -398,6 +406,13 @@ $messages['sr-el'] = array(
 $messages['stq'] = array(
 	'chemicalsources' => 'Chemiske Wällen',
 
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'chemicalsources' => 'రసాయన మూలాలు',
 );
 
 $messages['vi'] = array(

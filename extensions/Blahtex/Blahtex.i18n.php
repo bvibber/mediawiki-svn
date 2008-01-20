@@ -344,6 +344,24 @@ $messages['fr'] = array(
 	'math_WrongFontEncodingWithHint'        => "Le symbole « $1 » pourrait ne pas être affiché par l'encodage de caractères « $2 » (essayez la commande « $3{...} »).",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'math_noblahtex'               => 'Pôt pas ègzécutar blahtex, que devrêt étre a $1',
+	'math_AmbiguousInfix'          => 'La posicion de « $1 » est pas cllâra (apondre des balises adicionèles « { ... } » pôt la rendre ples cllâra)',
+	'math_CannotChangeDirectory'   => 'Pôt pas changiér de dossiér de travâly',
+	'math_CannotCreateTexFile'     => 'Pôt pas crèar un fichiér TeX',
+	'math_CannotRunDvipng'         => 'Pôt pas ègzécutar dvipng',
+	'math_CannotRunLatex'          => 'Pôt pas ègzécutar LaTeX',
+	'math_CannotWritePngDirectory' => 'Pôt pas ècrire dens lo dossiér des fichiérs PNG',
+	'math_CannotWriteTexFile'      => 'Pôt pas ècrire dens un fichiér TeX',
+	'math_CasesRowTooBig'          => 'Pôt y avêr ren que doves entrâs dens châque renchiê d’un bloco « câses ».',
+	'math_DoubleSubscript'         => 'Doux segnos sont rapondus a la méma bâsa, yon solèt est pèrmês.',
+	'math_DoubleSuperscript'       => 'Doux èxposents sont rapondus a la méma bâsa, yon solèt est pèrmês.',
+	'math_IllegalCharacter'        => 'Caractèro dèfendu dens la balyê buchiê',
+);
+
 /** Galician (Galego)
  * @author Xosé
  * @author Alma

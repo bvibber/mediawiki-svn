@@ -296,6 +296,31 @@ $messages['hsb'] = array(
 	'duplicator-toomanyrevisions' => 'Strona [[$1]] ma přewjele ($2) wersijow a njehodźi so tohodla kopěrować. Kopěrowanje je na strony z maksimalnje $3 wersijemi wobmjezowane.',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'duplicator'                       => 'Oldal másolása',
+	'duplicator-toolbox'               => 'Oldal másolása',
+	'duplicator-header'                => 'Ez az oldal lehetővé teszi egy teljes oldal lemásolását, a laptörténettel együttvéve. A funkció hasznos lehet pl. oldalak két ágra bontásánál.',
+	'duplicator-options'               => 'Beállítások',
+	'duplicator-source'                => 'Forrás:',
+	'duplicator-dest'                  => 'Cél:',
+	'duplicator-dotalk'                => 'Vitalap másolása (ha lehetséges)',
+	'duplicator-submit'                => 'Másolás',
+	'duplicator-summary'               => '[[$1]] másolata',
+	'duplicator-success'               => "<big>'''[[$1]] átmásolva [[$2]] névre.'''</big>",
+	'duplicator-success-revisions'     => '$1 változat lett átmásolva.',
+	'duplicator-success-talkcopied'    => 'A vitalap is át lett másolva.',
+	'duplicator-success-talknotcopied' => 'A vitalap másolása nem sikerült.',
+	'duplicator-failed'                => 'Az oldalt nem sikerült lemásolni. Ismeretlen hiba történt.',
+	'duplicator-source-invalid'        => 'Adj meg egy érvényes forráscímet.',
+	'duplicator-source-notexist'       => '[[$1]] nem létezik. Add meg egy olyan lapnak a címét, amely létezik.',
+	'duplicator-dest-invalid'          => 'Adj meg egy érvényes címet.',
+	'duplicator-dest-exists'           => '[[$1]] már létezik. Add meg egy olyan oldal címet, amely még nem létezik.',
+	'duplicator-toomanyrevisions'      => '[[$1]] túl sok ($2) változattal rendelkezik, ezért nem másolható. A jelenlegi határ $3.',
+);
+
 /* Indonesia (Ivan Lanin) */
 $messages['id'] = array(
 	'duplicator' => 'Duplikasikan suatu artikel',

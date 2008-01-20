@@ -542,6 +542,18 @@ $messages['hsb'] = array(
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] je [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2] podpisał.',
 );
 
+/** Hungarian (Magyar)
+ * @author Dorgan
+ */
+$messages['hu'] = array(
+	'sign-realname' => 'Név:',
+	'sign-city'     => 'Város:',
+	'sign-zip'      => 'Irányítószám:',
+	'sign-phone'    => 'Telefonszám:',
+	'sign-bday'     => 'Életkor:',
+	'sign-email'    => 'E-mail cím:',
+);
+
 $messages['la'] = array(
 	'sign-realname' => 'Nomen:',
 	'sign-city' => 'Urbs:',
@@ -860,6 +872,16 @@ $messages['oc'] = array(
 	'sig-private'                     => "''Privat''",
 	'sign-sigdetails'                 => 'Detalhs de la signatura',
 	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
+	'sign-iptools'                    => '<span class="plainlinksneverexpand"><!--
+		-->[[User:$1|$1]] ([[User talk:$1|talk]] • <!--
+		-->[[Special:Contributions/$1|contribs]] • <!--
+		-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+		-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+		-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+		-->[[Special:Blockip/$1|block user]] • <!--
+		-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} block log] • <!--
+		-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
+		--></span>',
 	'sign-viewfield-stricken'         => 'Fautiu',
 	'sign-viewfield-reviewedby'       => 'Revisor',
 	'sign-viewfield-reviewcomment'    => 'Comentari',

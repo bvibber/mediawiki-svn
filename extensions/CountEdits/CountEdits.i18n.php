@@ -492,6 +492,13 @@ $messages['su'] = array(
 	'countedits-nocontribs' => 'Can aya kontribusi ka ieu wiki.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'countedits-ok' => 'సరే',
+);
+
 $messages['tet'] = array(
 	'countedits' => 'Sura edita',
 	'countedits-username' => 'Naran uza-na\'in:',

@@ -64,6 +64,13 @@ $messages['hsb'] = array(
 	'findspam-notextfound' => 'Žane přinoški namakane',
 );
 
+/** Hungarian (Magyar)
+ * @author Dorgan
+ */
+$messages['hu'] = array(
+	'findspam-ip' => 'IP-cím:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -105,6 +112,16 @@ $messages['oc'] = array(
 	'findspam-ok'          => 'Recercar',
 	'findspam-notextfound' => 'Cap de contribucion trobada',
 
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'findspam'             => 'Поиск спама',
+	'findspam-ip'          => 'IP-адрес:',
+	'findspam-ok'          => 'OK',
+	'findspam-notextfound' => 'Не найдено вклада',
 );
 
 $messages['sk'] = array(

@@ -28,6 +28,23 @@ $messages['af'] = array(
 	'expandtemplates'                  => 'Brei sjablone uit',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'expandtemplates'                  => 'Espandir plantillas',
+	'expand_templates_intro'           => 'Ista pachina espezial prene bel testo y espande recursibament todas as plantillas que bi ha en el. Tamién espande as funzions parser como <nowiki>{{</nowiki>#if:...}}, y as bariables como <nowiki>{{</nowiki>CURRENTDAY}}&mdash; en cheneral tot o que sía entre dobles claus.
+Isto lo fa clamando ta o parser correspondient dende o propio MediaWiki.',
+	'expand_templates_title'           => 'Títol ta contestualizar ({{PAGENAME}} etz.):',
+	'expand_templates_input'           => 'Testo ta espandir:',
+	'expand_templates_output'          => 'Resultau',
+	'expand_templates_xml_output'      => 'salida XML',
+	'expand_templates_ok'              => 'OK',
+	'expand_templates_remove_comments' => 'Borrar comentarios',
+	'expand_templates_generate_xml'    => "Amostrar l'árbol de parseyo XML",
+	'expand_templates_preview'         => 'Prebeyer',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Mido

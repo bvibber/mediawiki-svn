@@ -853,7 +853,7 @@ $wdMessages['lb'] = array(
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */
-$messages['lt'] = array(
+$wdMessages['lt'] = array(
 	'datasearch' => 'Wikidata: Duomenų paieška',
 );
 
@@ -1403,9 +1403,12 @@ $wdMessages['sr-ec'] = array(
  * @author Pyt
  */
 $wdMessages['stq'] = array(
-	'datasearch' => 'Wikidata: Doatensäike',
+	'datasearch'    => 'Wikidata: Doatensäike',
 	'langman_title' => 'Sproakmanager',
 	'languages'     => 'Wikidata: Sproakmanager',
+	'ow_save'       => 'Spiekerje',
+	'ow_history'    => 'Versione/Autore',
+	'ow_datasets'   => 'Uutwoal fon dän Doataset',
 );
 
 /** Swedish (Svenska)
@@ -1478,10 +1481,3 @@ $wdMessages['zh-hk'] = $wdMessages['zh-hant'];
 $wdMessages['zh-sg'] = $wdMessages['zh-hans'];
 $wdMessages['zh-tw'] = $wdMessages['zh-hant'];
 $wdMessages['zh-yue'] = $wdMessages['yue'];
-/** Lithuanian (Lietuvių)
- * @author Matasg
- */
-$messages['lt'] = array(
-	'datasearch' => 'Wikidata: Duomenų paieška',
-);
-

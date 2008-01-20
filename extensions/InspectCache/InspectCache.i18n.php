@@ -80,6 +80,13 @@ $messages['hsb'] = array(
 	'inspectcache-deleted' => 'Wuprózdnjeny pufrowak',
 );
 
+/** Hungarian (Magyar)
+ * @author Dorgan
+ */
+$messages['hu'] = array(
+	'inspectcache-delete' => 'Törlés',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin
@@ -123,9 +130,11 @@ $messages['oc'] = array(
 
 /** Russian (Русский)
  * @author VasilievVV
+ * @author .:Ajvol:.
  */
 $messages['ru'] = array(
 	'inspectcache'         => 'Просмотр кэша',
+	'inspectcache-ok'      => 'OK',
 	'inspectcache-general' => 'Общий кэш',
 	'inspectcache-parser'  => 'Кэш парсера',
 	'inspectcache-message' => 'Кэш сообщений',

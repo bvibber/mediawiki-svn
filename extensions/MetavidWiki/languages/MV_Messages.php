@@ -686,6 +686,17 @@ $messages['hsb'] = array(
 	'mv_new_anno_en'                 => 'Nowa taflička abo přispomnjenka',
 );
 
+/** Hungarian (Magyar)
+ * @author Dorgan
+ */
+$messages['hu'] = array(
+	'mv_tool_search' => 'Keresés',
+	'mv_edit'        => 'Szerkesztés',
+	'mv_search_and'  => 'és',
+	'mv_search_or'   => 'vagy',
+	'mv_search_not'  => 'nem',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -855,7 +866,6 @@ $messages['nl'] = array(
 
 /** Occitan (Occitan)
  * @author Cedric31
- * @author Siebrand
  */
 $messages['oc'] = array(
 	'metavid'                        => 'Pagina metavid',

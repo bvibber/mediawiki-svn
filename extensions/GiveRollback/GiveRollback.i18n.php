@@ -315,25 +315,29 @@ $messages['no'] = array(
 	'giverollback-page' => '{{ns:help}}:Rollback',#identical but defined
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
-	'giverollback' => 'Balhar o levar los dreches de revocacion',
-	'giverollback-header' => '\'\'\'Un burocrata local pòt utilizar aquesta pagina per balhar o levar los dreches de revocacion (« revert ») a un compte d\'utilizaire.\'\'\'<br /> Se pòt l’utilizar per autorizar de non-administrators a revocar de vandalismes mai rapidament. Los burocratas deurián o far pas qu’en acòrdi amb las règlas en vigor.',
-	'giverollback-username' => 'Nom d’utilizaire :',
-	'giverollback-search' => 'Cercar',
-	'giverollback-hasrb' => '[[User:$1|$1]] a los dreches de revocacion.',
-	'giverollback-norb' => '[[User:$1|$1]] a pas los dreches de revocacion.',
-	'giverollback-toonew' => '[[User:$1|$1]] es tròp recent, e pòt pas recebre los dreches de revocacion.',
-	'giverollback-sysop' => '[[User:$1|$1]] es un administrator, e pòt ja revocar los articles.',
-	'giverollback-change' => 'Cambiar l\'estatut :',
-	'giverollback-grant' => 'Balhar',
-	'giverollback-revoke' => 'Levar',
-	'giverollback-comment' => 'Comentari :',
-	'giverollback-granted' => '[[User:$1|$1]] possedís ara los dreches de revocacion.',
-	'giverollback-revoked' => '[[User:$1|$1]] possedís pas mai los dreches de revocacion.',
-	'giverollback-logpage' => 'Istoric dels dreches de revocacion',
-	'giverollback-logpagetext' => 'Aquesta pagina presenta un jornal del cambiament dels dreches de revocacion.',
-	'giverollback-logentrygrant' => 'a balhat los dreches de revocacion a [[$1]]',
+	'giverollback'                => 'Balhar o levar los dreches de revocacion',
+	'giverollback-header'         => "'''Un burocrata local pòt utilizar aquesta pagina per balhar o levar los dreches de revocacion (« revert ») a un compte d'utilizaire.'''<br /> Se pòt l’utilizar per autorizar de non-administrators a revocar de vandalismes mai rapidament. Los burocratas deurián o far pas qu’en acòrdi amb las règlas en vigor.",
+	'giverollback-username'       => 'Nom d’utilizaire :',
+	'giverollback-search'         => 'Cercar',
+	'giverollback-hasrb'          => '[[User:$1|$1]] a los dreches de revocacion.',
+	'giverollback-norb'           => '[[User:$1|$1]] a pas los dreches de revocacion.',
+	'giverollback-toonew'         => '[[User:$1|$1]] es tròp recent, e pòt pas recebre los dreches de revocacion.',
+	'giverollback-sysop'          => '[[User:$1|$1]] es un administrator, e pòt ja revocar los articles.',
+	'giverollback-change'         => "Cambiar l'estatut :",
+	'giverollback-grant'          => 'Balhar',
+	'giverollback-revoke'         => 'Levar',
+	'giverollback-comment'        => 'Comentari :',
+	'giverollback-granted'        => '[[User:$1|$1]] possedís ara los dreches de revocacion.',
+	'giverollback-revoked'        => '[[User:$1|$1]] possedís pas mai los dreches de revocacion.',
+	'giverollback-logpage'        => 'Istoric dels dreches de revocacion',
+	'giverollback-logpagetext'    => 'Aquesta pagina presenta un jornal del cambiament dels dreches de revocacion.',
+	'giverollback-logentrygrant'  => 'a balhat los dreches de revocacion a [[$1]]',
 	'giverollback-logentryrevoke' => 'a levat los dreches de revocacion de [[$1]]',
+	'giverollback-page'           => '{{ns:help}}:Rollback',
 );
 
 $messages['pl'] = array(
@@ -380,6 +384,31 @@ $messages['pms'] = array(
 
 $messages['rm'] = array(
 	'giverollback-username' => 'Num d\'utilisader:',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'giverollback'                => 'Присвоение и отзыв прав на откаты',
+	'giverollback-header'         => "'''Локальный бюрократ может использовать эту страницу для присвоения или отзыва [[{{MediaWiki:Giverollback-page}}|прав на проведение откатов]].'''<br />Это даёт возможноть участниками, не являющимся администраторами, быстро откатывать вандальные правки. Подобные действия должны происходить в соответствии с действующими правилами.",
+	'giverollback-username'       => 'Имя участника:',
+	'giverollback-search'         => 'Найти',
+	'giverollback-hasrb'          => '[[User:$1|$1]] имеет права на произведение откатов.',
+	'giverollback-norb'           => '[[User:$1|$1]] не имеет прав на произведение откатов.',
+	'giverollback-toonew'         => 'Участник [[User:$1|$1]] зарегистрировался недавно, и потому не может получить прав на проведение откатов.',
+	'giverollback-sysop'          => 'Участник [[User:$1|$1]] является администратором, у него уже есть возможность производить откаты.',
+	'giverollback-change'         => 'Изменить состояние:',
+	'giverollback-grant'          => 'Присвоить',
+	'giverollback-revoke'         => 'Отозвать',
+	'giverollback-comment'        => 'Примечание:',
+	'giverollback-granted'        => 'Участник [[User:$1|$1]] теперь имеет права на проведение откатов.',
+	'giverollback-revoked'        => 'Участник [[User:$1|$1]] больше не имеет прав на проведение откатов.',
+	'giverollback-logpage'        => 'Журнал прав на откаты',
+	'giverollback-logpagetext'    => 'Это журнал изменения прав на [[{{MediaWiki:Giverollback-page}}|проведение откатов]] для участников, не являющихся администраторами.',
+	'giverollback-logentrygrant'  => 'дал права на отаты участнику [[$1]]',
+	'giverollback-logentryrevoke' => 'отозвал права на уткаты у участника [[$1]]',
+	'giverollback-page'           => '{{ns:help}}:Откаты',
 );
 
 /* Slovak (helix84) */

@@ -174,6 +174,13 @@ $messages['oc'] = array(
 	'lookupuser_useroptions'       => "Opcions de l'utilizaire :",
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'lookupuser' => 'Показать сведения об участнике',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

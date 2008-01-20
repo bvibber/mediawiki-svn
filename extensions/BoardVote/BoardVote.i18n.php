@@ -2696,10 +2696,16 @@ $1 för de krypterade uppgifterna.</p>',
 );
 
 /** Telugu (తెలుగు)
+ * @author Veeven
  * @author Mpradeep
  */
 $messages['te'] = array(
-	'boardvote' => 'వికీమీడియా ట్రస్టుబోర్డు ఎన్నికలు',
+	'boardvote'         => 'వికీమీడియా ట్రస్టుబోర్డు ఎన్నికలు',
+	'boardvote_time'    => 'సమయం',
+	'boardvote_user'    => 'వాడుకరి',
+	'boardvote_days'    => 'రోజులు',
+	'boardvote_submit'  => 'సరే',
+	'boardvote_welcome' => "స్వాగతం '''$1'''!",
 );
 
 /** Tonga (faka-Tonga)

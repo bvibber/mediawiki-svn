@@ -65,6 +65,13 @@ $messages['hsb'] = array(
 	'icon-badwidth' => 'Špatna šěrokosć',
 );
 
+/** Hungarian (Magyar)
+ * @author Dorgan
+ */
+$messages['hu'] = array(
+	'icon-badimage' => 'Rossz kép',
+);
+
 $messages['la'] = array(
 	'icon-badimage' => 'Imago mala',
 	'icon-badwidth' => 'Latitudo mala',
@@ -100,6 +107,14 @@ $messages['nl'] = array(
 $messages['oc'] = array(
 	'icon-badimage' => 'Imatge corromput',
 	'icon-badwidth' => 'Largor erronèa',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'icon-badimage' => 'Ошибочное изображение',
+	'icon-badwidth' => 'Ошибочная ширина',
 );
 
 /** Slovak (Slovenčina)

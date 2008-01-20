@@ -703,6 +703,16 @@ $messages['sv'] = array(
 	'bookinfo-provider'          => 'Data hämtat från: $1',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'bookinfo-header'           => 'పుస్తకపు సమాచారం',
+	'bookinfo-result-author'    => 'రచయిత:',
+	'bookinfo-result-publisher' => 'ప్రచురణకర్త:',
+	'bookinfo-result-year'      => 'సంవత్సరం:',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

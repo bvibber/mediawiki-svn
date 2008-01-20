@@ -282,6 +282,14 @@ $messages['hsb'] = array(
 	'changeauthor-logpagename'          => 'Protokol wo změnach awtorow',
 );
 
+/** Hungarian (Magyar)
+ * @author Dorgan
+ */
+$messages['hu'] = array(
+	'changeauthor-comment'          => 'Megjegyzés:',
+	'changeauthor-invalid-username' => 'A(z) "$1" egy érvénytelen felhasználónév.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -484,6 +492,14 @@ $messages['stq'] = array(
 	'changeauthor-logentry'             => 'annerde Autorennoome fon ju $2 fon $1 fon $3 ap $4',
 	'changeauthor-logpagename'          => 'Autorennoome-Annerengslogbouk',
 	'changeauthor-rev'                  => 'Version $1',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'changeauthor-pagenameform-go' => 'వెళ్ళు',
+	'changeauthor-comment'         => 'వ్యాఖ్య:',
 );
 
 /** Volapük (Volapük)

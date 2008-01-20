@@ -66,8 +66,9 @@ Tuta e-mejl bu ći wot $1 přez e-mejlowy system {{SITENAME}} pósłana.',
  * @author Robby
  */
 $messages['lb'] = array(
-	'email_footer' => '------------------------------------------------------------------------------
-Dës E-Mail gouf iech vun $1 iwwer den E-Mail-System vun {{SITENAME}}geschéckt.
+	'email_footer' => '
+------------------------------------------------------------------------------
+Dës E-Mail gouf iech vun $1 iwwer den E-Mail-System vun {{SITENAME}} geschéckt.
 
 $2',
 );
@@ -91,6 +92,16 @@ $messages['oc'] = array(
 	'email_footer' => '----------------------------------------------------------------------------
 
 Aqueste corrièr vos es estat mandat gràcia al sistèma de messatjariá de {{SITENAME}} per $1. $2',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'email_footer' => '----------------------------------------------------------------------------
+Это сообщение было отправлено через сайт {{SITENAME}} пользователем $1.
+
+$2',
 );
 
 /** Slovak (Slovenčina)

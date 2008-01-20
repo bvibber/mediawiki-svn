@@ -285,26 +285,29 @@ $messages['frc'] = array(
 	'badimages-page' => '{{ns:help}}:Liste des mauvaises images',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
 $messages['frp'] = array(
-	'badimages' => 'Lista de les émâges endèsirâbles',
-	'badimages-add-btn' => 'Apondre',
-	'badimages-added' => '$1 at étâ apondua a la lista.',
-	'badimages-count' => 'Y at \'\'\'$1\'\'\' émâges dens la lista de les émâges endèsirâbles.',
-	'badimages-name' => 'Nom :',
-	'badimages-not-added' => 'L’émâge at pas possu étre apondua.',
-	'badimages-not-removed' => 'L’émâge at pas possu étre reteriê.',
-	'badimages-reason' => 'Rêson :',
-	'badimages-remove' => '(reteriér)',
-	'badimages-remove-btn' => 'Reteriér',
-	'badimages-remove-confirm' => 'Volyéd confirmar que vos voléd reteriér $1 de la lista :',
-	'badimages-removed' => '$1 at étâ reteriê de la lista.',
-	'badimages-subheading' => 'Lista d’ora',
-	'badimages-unprivileged' => '(Vos avéd pas la pèrmission de modifiar la lista.)',
-	'badimages-log-name' => 'Lista de les émâges endèsirâbles',
-	'badimages-log-header' => 'Historico de les modificacions de la [[{{MediaWiki:Badimages-page}}|lista de les émâges endèsirâbles]].',
-	'badimages-log-add' => 'at apondu [[$1]] a la lista de les émâges endèsirâbles',
-	'badimages-log-remove' => 'at reteriê [[$1]] de la lista de les émâges endèsirâbles',
-	'badimages-page' => '{{ns:help}}:Lista de les émâges endèsirâbles',
+	'badimages'                => 'Lista de les émâges endèsirâbles',
+	'badimages-add-btn'        => 'Apondre',
+	'badimages-added'          => '$1 at étâ apondua a la lista.',
+	'badimages-count'          => "Y at '''$1''' émâges dens la lista de les émâges endèsirâbles.",
+	'badimages-name'           => 'Nom :',
+	'badimages-not-added'      => 'L’émâge at pas possu étre apondua.',
+	'badimages-not-removed'    => 'L’émâge at pas possu étre enlevâ.',
+	'badimages-reason'         => 'Rêson :',
+	'badimages-remove'         => '(enlevar)',
+	'badimages-remove-btn'     => 'Enlevar',
+	'badimages-remove-confirm' => 'Volyéd confirmar que vos voléd enlevar $1 de la lista :',
+	'badimages-removed'        => '$1 at étâ enlevâ de la lista.',
+	'badimages-subheading'     => 'Lista d’ora',
+	'badimages-unprivileged'   => '(Vos avéd pas la pèrmission de modifiar la lista.)',
+	'badimages-log-name'       => 'Lista de les émâges endèsirâbles',
+	'badimages-log-header'     => 'Cen est l’historico de les modificacions de la [[{{MediaWiki:Badimages-page}}|lista de les émâges endèsirâbles]].',
+	'badimages-log-add'        => 'at apondu [[$1]] a la lista de les émâges endèsirâbles',
+	'badimages-log-remove'     => 'at enlevâ [[$1]] de la lista de les émâges endèsirâbles',
+	'badimages-page'           => '{{ns:help}}:Lista de les émâges endèsirâbles',
 );
 
 $messages['gl'] = array(
@@ -900,6 +903,15 @@ $messages['sv'] = array(
 	'badimages-log-add'        => 'la till [[$1]] till listan över dåliga bilder',
 	'badimages-log-remove'     => 'strök [[$1]] från listan över dåliga bilder',
 	'badimages-page'           => '{{ns:help}}:Lista över dåliga bilder',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'badimages-add-btn' => 'చేర్చు',
+	'badimages-name'    => 'పేరు:',
+	'badimages-reason'  => 'కారణం:',
 );
 
 /** Turkish (Türkçe)
