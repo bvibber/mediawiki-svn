@@ -61,6 +61,21 @@ class wiki2xml
 	# Some often used functions
 	
 	/**
+	 * Inherit settings from an existing parser
+	*/
+	function inherit ( &$base )
+		{
+			$this->protocols = $base->protocols ;
+			$this->errormessage = $base->errormessage ;
+			$this->compensate_markup_errors = $base->compensate_markup_errors ;
+			$this->auto_fill_templates = $base->auto_fill_templates ;
+			$this->use_space_tag = $base->use_space_tag ;
+			$this->compensate_markup_errors = $base->compensate_markup_errors ;
+			$this->allowed = $base->allowed ;
+			$this->directhtmltags = $base->directhtmltags ;
+		}
+	
+	/**
 	 * Matches a function to the current text (default:once)
 	*/
 	function once ( &$a , &$xml , $f , $atleastonce = true , $many = false )
@@ -267,6 +282,7 @@ class wiki2xml
 		if ( !$this->p_internal_link_target ( $b , $x , "}}" ) ) return false ;
 		$target = $x ;
 		$variables = array () ;
+		$varnames = array () ;
 		$vcount = 1 ;
 		while ( 1 )
 			{
@@ -277,7 +293,10 @@ class wiki2xml
 			$v = substr ( $x , $l1 ) ;
 			$v = explode ( "=" , $v ) ;
 			if ( count ( $v ) < 2 ) $vk = $vcount ;
-			else $vk = trim ( array_shift ( $v ) ) ;
+			else {
+				$vk = trim ( array_shift ( $v ) ) ;
+				$varnames[$vcount] = $vk; 
+			}
 			$vv = array_shift ( $v ) ;
 			$variables[$vk] = $vv ;
 			if ( !isset ( $variables[$vcount] ) ) $variables[$vcount] = $vv ;
@@ -333,7 +352,12 @@ class wiki2xml
 			$this->w = $w1 . $between . $w2 ;
 			$this->wl = strlen ( $this->w ) ;
 		} else {
-			$xml .= "<template>{$x}</template>" ;
+			$xml .= "<template><target>{$target}</target>";
+			for ( $i = 1 ; $i < $vcount ; $i++ ) {
+				if ( isset( $varnames[$i] ) ) $xml .= "<arg name=\"{$varnames[$i]}\">{$variables[$i]}</arg>";
+				else $xml .= "<arg>{$variables[$i]}</arg>";
+			}
+			$xml .= "</template>" ;
 			$a = $b ;
 		}
 		return true ;
@@ -843,7 +867,8 @@ class wiki2xml
 			$last = $b ;
 			if ( !$this->p_html_tag ( $b , $x2 , $tag2 , $closing , $selfclosing ) )
 				{
-				if ( $tag != "nowiki" && $this->w[$b] == '{' && $this->p_template ( $b , $x ) ) # Template, doesn't alter $b or $x
+				$dummy = "";
+				if ( $tag != "nowiki" && $this->w[$b] == '{' && $this->p_template ( $b , $dummy ) )
 					continue ;
 				$b++ ;
 				continue ;
@@ -869,6 +894,7 @@ class wiki2xml
 			
 			# Parse the part in between the tags
 			$subparser = new wiki2xml ;
+			$subparser->inherit ( $this ) ;
 			$between2 = $subparser->parse ( $between ) ;
 			
 			# Was the parsing correct?
@@ -997,6 +1023,7 @@ class wiki2xml
 		{
 		# Creating a temporary new parser to run the attribute list in
 		$np = new wiki2xml ;
+		$np->inherit ( $this ) ;
 		$np->w = $x ;
 		$np->wl = strlen ( $x ) ;
 
@@ -1316,6 +1343,7 @@ class wiki2xml
 		# Parse cell substring
 		$s = substr ( $this->w , $a , $b - $a ) ;
 		$p = new wiki2xml ;
+		$p->inherit ( $this ) ;
 		$x = $p->parse ( $s ) ;
 		if ( $x == $this->errormessage ) return false ;
 
