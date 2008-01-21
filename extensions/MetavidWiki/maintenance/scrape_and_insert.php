@@ -38,6 +38,7 @@ exit();
 	switch($args[0]){
 		case 'cspan_chronicle':
 			$MV_CspanScraper = new MV_CspanScraper();
+			$MV_CspanScraper->doScrapeInsert();
 		break;
 	}
  }
@@ -96,15 +97,52 @@ class MV_CspanScraper extends MV_BaseScraper{
 				$href='';
 				$href_match=array();
 				preg_match('/href="(.*)"/',$matches[5][$k], $href_match);
-				if(count($href_match)!=0)$href=$href_match[1];				
+				if(count($href_match)!=0)$href=$href_match[1];
+				
+				$porg = str_replace('<br>',' ',$matches[4][$k]);
+				$porg = preg_replace('/[D|R]+\-\[.*\]/', '', $porg);
+				$pparts = explode(',',$porg);
+				$pname = trim($pparts[1]) . '_' . trim($pparts[0]);			
 				$person_time_ary[]= array(
 					'start_time'=>strip_tags($matches[1][$k]),
 					'length'=>$matches[3][$k],
 					'person_title'=>str_replace('<br>',' ',$matches[4][$k]),
+					'spoken_by'=>$pname,
 					'href'=>$href
 				);
-			}
-			print_r($person_time_ary);
+			}									
+		    //group people in page matches
+		    $g_person_time_ary=array();
+		    $prev_person=null;		    
+		    foreach($person_time_ary as $ptag){
+		    	$g_person_time_ary[$ptag['spoken_by']][]=$ptag;		    			    			    
+		    }
+		   
+		    //retrive rows to find match: 
+		   	$dbr =& wfGetDB(DB_SLAVE);
+		    $mvd_res = MV_Index::getMVDInRange($stream->id, null, null, $mvd_type='ht_en',false,$smw_properties=array('Spoken_by'), '');
+		    $g_row_matches=array();
+		    //group peole in db matches:
+		   	while ($row = $dbr->fetchObject($mvd_res)) {
+		   		if(!isset($row->Spoken_by))continue;  		   				   
+   				if(!isset($g_row_matches[strtolower($row->Spoken_by)])){
+   					$g_row_matches[strtolower($row->Spoken_by)]=get_object_vars($row);
+   					$g_row_matches[strtolower($row->Spoken_by)]['end_time_sec']=$row->end_time;
+   				}else{
+   					$g_row_matches[strtolower($row->Spoken_by)]['end_time_sec']+=$row->end_time;
+   				}		   		
+	   			$cspan_person = next($g_person_time_ary);		   	
+		   	}  
+		   	//add in sync offset data for $g_person_time_ary
+		    reset($g_person_time_ary);
+		   	foreach($g_row_matches as $rp=>$rperson){
+		   		
+		   	}
+            //find match person1->person2->person3
+            
+            
+            //average switch time to get offset of stream
+            //use offset to insert all $person_time_array data 
 		}
 	}
 }
@@ -132,8 +170,7 @@ class MV_BaseScraper{
 			$page = file_get_contents($url);
 			if($page===false){
 				echo("error retriving $url retrying...\n");
-				sleep(5);
-				//@@todo: this may eventually overflow the stack:
+				sleep(5);				
 				return $this->doRequest($url);
 			}
 			if($page!=''){

@@ -102,17 +102,36 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  	}
  	/*
  	 * getMVDInRange returns the mvd titles that are in the given range
+ 	 * param list got kind of crazy long... @@todo refactor int a request object or something cleaner
  	 */
- 	function getMVDInRange($stream_id, $start_time=null, $end_time=null, $mvd_type='all',$getText=false){
+ 	function getMVDInRange($stream_id, $start_time=null, $end_time=null, $mvd_type='all',$getText=false,$smw_properties=array(), $limit='LIMIT 0, 200'){
  		global $mvIndexTableName, $mvDefaultClipLength; 		
  		$dbr =& wfGetDB(DB_SLAVE);	 		
  		
- 		$sql = "SELECT `mv_page_id` as `id`, `mvd_type`, `wiki_title`, `stream_id`, `start_time`, `end_time` " .
- 				"FROM {$dbr->tableName($mvIndexTableName)} " . 
- 				"WHERE `stream_id`={$stream_id} ";
+ 		$sql_sel = "SELECT `mv_page_id` as `id`, `mvd_type`, `wiki_title`, `stream_id`, `start_time`, `end_time` ";
+ 		$sql_from=" FROM {$dbr->tableName($mvIndexTableName)} ";
+ 		if(count($smw_properties)!=0){
+ 			foreach($smw_properties as $prop_name){
+ 				$sql_sel.=", `$prop_name`.`object_title` as `$prop_name`";
+ 				$sql_from.="LEFT JOIN `smw_relations` as `$prop_name` ON (`mv_mvd_index`.`mv_page_id`=`$prop_name`.`subject_id` " .
+	 					"AND `$prop_name`.`relation_title`='$prop_name') ";	
+ 			}					
+ 		} 	
+ 		$sql = $sql_sel . $sql_from; 	
+ 		$sql.= "WHERE `stream_id`={$stream_id} ";
 		if($mvd_type!='all'){
 			//check if mvd_type is array:
-			$sql.="AND `mvd_type`='{$mvd_type}' ";
+			if(is_array($mvd_type)){
+				$sql.='AND (';
+				$or='';
+				foreach($mvd_type as $mtype){
+					$sql.=$or."`mvd_type'='{$mtype}' ";
+					$or='OR ';
+				}
+				$sql.=')';
+			}else{
+				$sql.="AND `mvd_type`='{$mvd_type}' ";
+			}
 		}
 		//get any data that covers this rage: 
 		if($end_time)$sql.=" AND `start_time` <= " . $end_time;
@@ -120,7 +139,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		//add in ordering 
 		$sql.=' ORDER BY `start_time` ASC ';
 		//add in limit of 200 for now
-		$sql.=' LIMIT 0, 200';
+		$sql.=$limit;
 		//echo $sql;
  		$result =& $dbr->query( $sql, 'MV_Index:time_index_query'); 	 	
  		return $result;
