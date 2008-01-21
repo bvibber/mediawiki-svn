@@ -54,7 +54,14 @@ class ContentProvider {
 		$target = $dir . "/" . $fname ;
 		if ( !file_exists ( $target ) && !$this->block_file_download ) {
 			@mkdir ( $dir ) ;
-			@copy ( $url , $target ) ;
+			# dub sez... use cURL
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $url);
+			$fh = @fopen($target, 'w');
+			curl_setopt($ch, CURLOPT_FILE, $fh);
+			curl_exec($ch);
+			curl_close($ch);
+			@fclose($fh);
 		}
 		return $fname ;
 	}

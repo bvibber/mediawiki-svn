@@ -491,9 +491,14 @@ class element {
 			} else {
 				if ( $content_provider->is_an_article ( $this->link_target ) ) {
 					$link = "SEITEN-INTERNER LINK" ;
-/*					$lt = $this->internal_id ( trim ( $this->link_target ) ) ;
-					$lt = str_replace ( "+" , "_" , $lt ) ;
-					$link = "<link linkend='{$lt}'>{$link}</link>" ;*/
+					# dub sez... working internal links
+					$lt = ( trim ( $this->link_target ) ) ;
+					$lt = str_replace ( "+" , " " , $lt ) ;
+					$text = array_pop ( $this->link_parts ) ;
+					if (!$text)
+						$text = $lt;
+					$link = '<text:a xlink:type="simple" xlink:href="#' . $lt . '|outline">' . $text . '</text:a>' ;
+					#$link = "<link linkend='{$lt}'>#{$lt}|outline</link>" ;
 				} else {
 					$href = $xml2odt->get_url ( $this->link_target ) ;
 					if ( count ( $this->link_parts ) == 0 ) $text = $this->link_target ;

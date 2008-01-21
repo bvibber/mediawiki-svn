@@ -48,7 +48,8 @@ function get_form ( $as_extension = false ) {
 	}
 	$optional = "<br/>" . implode ( "<br/>" , $optional ) ;
 	
-	if ( $as_extension ) $site = "<input type='hidden' name='site' value=''/>" ;
+	# dub sez... working images
+	if ( $as_extension ) $site = "<input type='hidden' name='site' value='".$xmlg["site_base_url"]."'/>" ;
 	else $site = "Site : http://<input type='text' name='site' value='".$xmlg["site_base_url"]."'/>/index.php<br/>" ;
 
 	$additional = array() ;
