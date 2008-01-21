@@ -154,13 +154,13 @@ $messages['ja'] = array(
 );
 
 $messages['kk-cyrl'] = array(
-	'deletedcontributions' => 'Пайдаланушының жойылған үлесі',
+	'deletedcontributions' => 'Қатысушының жойылған үлесі',
 );
 $messages['kk-latn'] = array(
-	'deletedcontributions' => 'Paýdalanwşınıñ joýılğan ülesi',
+	'deletedcontributions' => 'Qatıswşınıñ joýılğan ülesi',
 );
 $messages['kk-arab'] = array(
-	'deletedcontributions' => 'پايدالانۋشىنىڭ جويىلعان ٷلەسٸ',
+	'deletedcontributions' => 'قاتىسۋشىنىڭ جويىلعان ۇلەسى',
 );
 
 $messages['ku-latn'] = array(
