@@ -32,6 +32,16 @@ $messages['bg'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Необходимо е да се включи поне една категория или да се посочи именно пространство!',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: Zuviele Kategorien!',
+	'intersection_toofewcats'    => 'DynamicPageList: Zuwenige Kategorien!',
+	'intersection_noresults'     => 'DynamicPageList: Kein Ergebnis!',
+	'intersection_noincludecats' => 'DynamicPageList: Es muss mindestens eine Kategorie eingebunden werden oder gebe einen Namensraum an!',
+);
+
 # فارسی (Huji - 4)
 $messages['fa'] = array(
 	'intersection_toomanycats'   => 'DynamicPageList: تعداد رده‌ها زیاد است!',
@@ -191,4 +201,6 @@ $messages['sv'] = array(
 	'intersection_noresults'     => 'DynamicPageList: Inga resultat!',
 	'intersection_noincludecats' => 'DynamicPageList: Du måste inkludera minst en kategori eller ange en namnrymd!',
 );
+
+$messages['de-formal'] = $messages['de'];
 

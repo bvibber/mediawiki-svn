@@ -51,6 +51,23 @@ $messages['bn'] = array(
 	'scanset_prev' => '&lt; পূর্ববর্তী',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'scanset_no_name'                   => 'ScanSet: Es muss ein Scan-Set-Name angegeben werden, z. B. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: Ungültiges oder fehlendes Scan-Set.',
+	'scanset_unrecognised_index_format' => 'ScanSet: Unbekanntes Indexformat',
+	'scanset_opendir_error'             => 'ScanSet: Fehler, Verzeichnis $1 kann nicht geöffnet werden',
+	'scanset_no_files'                  => 'ScanSet: Im angegebenen Verzeichnis sind keine Dateien vorhanden.',
+	'scanset_no_volumes'                => 'ScanSet: Kein Volume-Verzeichnis gefunden',
+	'scanset_missing_index_file'        => 'ScanSet: Indexdatei $1 nicht gefunden',
+	'scanset_index_file_error'          => 'ScanSet: Fehler im Format der Indexdatei in Zeile $1',
+	'scanset_invalid_volume'            => 'ScanSet: Ungültiges Volume',
+	'scanset_next'                      => 'Nächster →',
+	'scanset_prev'                      => '← Vorheriger',
+);
+
 # فارسی (Huji)
 $messages['fa'] = array(
 	'scanset_no_name'                   => 'ScanSet: شما باید نام مجموعه را وارد کنید، مثلاً <scanset name="EB1911" />.',
