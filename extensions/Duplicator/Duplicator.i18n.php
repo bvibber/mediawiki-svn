@@ -621,6 +621,15 @@ $messages['stq'] = array(
 	'duplicator-toomanyrevisions'      => 'Ju Siede [[$1]] häd $2 Versione, un kon deeruum nit duplizierd wäide. Der konnen bloot Sieden mäd maximoal $3 Versione duplizierd wäide.',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'duplicator-options' => 'Seçenekler',
+	'duplicator-source'  => 'Kaynak:',
+	'duplicator-dest'    => 'Hedef:',
+);
+
 /* Cantonese (Shinjiman) */
 $messages['yue'] = array(
 	'duplicator' => '複製一篇文章',

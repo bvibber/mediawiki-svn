@@ -330,5 +330,12 @@ $messages['sv'] = array(
 	'pdt_comparing_page'  => 'Jämför parsningsresultat av [[$1]]',
 );
 
-$messages['de-formal'] = $messages['de'];
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'pdtest_ok'   => 'సరే',
+	'pdtest_diff' => 'తేడాలు',
+);
 
+$messages['de-formal'] = $messages['de'];

@@ -97,3 +97,10 @@ $messages['stq'] = array(
 	'stalepages-summary' => 'Dit is ne Lieste fon Sieden, do der in do lääste $1 Deege nit beoarbaided wuuden.',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'stalepages' => 'Eski sayfalar',
+);
+

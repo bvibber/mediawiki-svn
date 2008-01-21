@@ -111,6 +111,23 @@ $messages['hsb'] = array(
 	'lookupuser_useroptions' => 'Wužiwarske opcije:',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'lookupuser'                   => 'Felhasználói információ keresése',
+	'lookupuser_intro'             => 'Add meg a felhasználó nevét, akinek meg szeretnéd nézni a beállításait.',
+	'lookupuser_nonexistent'       => 'Hiba: a felhasználó nem létezik',
+	'lookupuser_authenticated'     => 'Email megerősítés:',
+	'lookupuser_not_authenticated' => 'nincs megerősítve',
+	'lookupuser_id'                => 'Azonosító: <tt>#$1</tt>',
+	'lookupuser_email'             => 'E-mail: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'          => 'Valódi név: $1',
+	'lookupuser_registration'      => 'Regisztráció időpontja: $1',
+	'lookupuser_touched'           => 'Utolsó hozzáférés ideje: $1',
+	'lookupuser_useroptions'       => 'Beállításai:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

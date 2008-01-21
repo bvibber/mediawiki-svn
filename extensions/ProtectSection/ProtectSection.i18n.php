@@ -13,6 +13,12 @@ $messages['en'] = array(
 	'protectsection_forbidden'  => 'Forbidden',
 );
 
+$messages['ar'] = array(
+	'protectsection_add_remove' => 'أنت حاولت إضافة أو إزالة قسم محمي',
+	'protectsection_modify'     => 'أنت حاولت تعديل نص محمي',
+	'protectsection_forbidden'  => 'محظور',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */
@@ -20,12 +26,6 @@ $messages['avk'] = array(
 	'protectsection_add_remove' => 'Rin yawal da va nendan gabot loplekul oke dimplekul',
 	'protectsection_modify'     => 'Rin yawal da va nendan krent betal',
 	'protectsection_forbidden'  => 'Poun',
-);
-
-$messages['ar'] = array(
-	'protectsection_add_remove' => 'أنت حاولت إضافة أو إزالة قسم محمي',
-	'protectsection_modify'     => 'أنت حاولت تعديل نص محمي',
-	'protectsection_forbidden'  => 'محظور',
 );
 
 /** Bulgarian (Български)
@@ -67,6 +67,15 @@ $messages['hsb'] = array(
 	'protectsection_add_remove' => 'Sy spytał škitany wotrězk přidać abo wotstronić.',
 	'protectsection_modify'     => 'Sy spytał škitany tekst změnić.',
 	'protectsection_forbidden'  => 'Zakazany',
+);
+
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'protectsection_add_remove' => 'Egy védett fejezetet próbáltál meg hozzáadni vagy eltávolítani.',
+	'protectsection_modify'     => 'Védett szöveget próbáltál meg módosítani.',
+	'protectsection_forbidden'  => 'Megtagadva',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -210,6 +210,33 @@ $messages['hsb'] = array(
 	'grouppage-patroller' => '{{ns:project}}:Dohladowar',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'patrol'                 => 'Szerkesztések járőrözése',
+	'patrol-endorse'         => 'Jóváhagyás',
+	'patrol-revert'          => 'Visszaállítás',
+	'patrol-revert-reason'   => 'Ok:',
+	'patrol-skip'            => 'Kihagyás',
+	'patrol-reverting'       => 'Visszaállítás: $1',
+	'patrol-nonefound'       => 'Nincs járőrzésre váró szerkesztés.',
+	'patrol-endorsed-ok'     => 'A szerkesztést ellenőrzöttnek jelöltem.',
+	'patrol-endorsed-failed' => 'A szerkesztést nem sikerült ellenőrzöttnek jelölnöm.',
+	'patrol-reverted-ok'     => 'A szerkesztést visszaállítottam.',
+	'patrol-reverted-failed' => 'A szerkesztést nem sikerült visszaállítanom.',
+	'patrol-skipped-ok'      => 'Szerkesztés kihagyása.',
+	'patrol-reasons'         => '* Egyszerű vandalizmus
+* Újonc tesztje
+* Lásd a vitalapot',
+	'patrol-another'         => 'Mutass más szerkesztést, ha lehetséges.',
+	'patrol-stopped'         => 'Nem jelölted be, hogy szeretnél további szerkesztést járőrözni. $1',
+	'patrol-resume'          => 'Kattints ide a folytatáshoz.',
+	'group-patroller'        => 'járőrök',
+	'group-patroller-member' => 'Járőr',
+	'grouppage-patroller'    => '{{ns:project}}:Járőr',
+);
+
 /* Indonesian (Ivan Lanin) */
 $messages['id'] = array(
 	'patrol'                 => 'Patroli suntingan',

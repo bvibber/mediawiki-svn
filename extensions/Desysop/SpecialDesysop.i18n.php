@@ -400,6 +400,13 @@ $messages['tet'] = array(
 	'desysop'              => 'Hasai kuana administradór ba uza-na\'in ida',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'desysopname' => 'Kullanıcın adı:',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

@@ -348,25 +348,59 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'math_noblahtex'                        => 'Pôt pas ègzécutar blahtex, que devrêt étre a $1',
-	'math_AmbiguousInfix'                   => 'La posicion de « $1 » est pas cllâra (apondre des balises adicionèles « { ... } » pôt la rendre ples cllâra)',
-	'math_CannotChangeDirectory'            => 'Pôt pas changiér de dossiér de travâly',
-	'math_CannotCreateTexFile'              => 'Pôt pas crèar un fichiér TeX',
-	'math_CannotRunDvipng'                  => 'Pôt pas ègzécutar dvipng',
-	'math_CannotRunLatex'                   => 'Pôt pas ègzécutar LaTeX',
-	'math_CannotWritePngDirectory'          => 'Pôt pas ècrire dens lo dossiér des fichiérs PNG',
-	'math_CannotWriteTexFile'               => 'Pôt pas ècrire dens un fichiér TeX',
+	'math_noblahtex'                        => 'Pôt pas ègzécutar blahtex, que devrêt étre a $1.',
+	'math_AmbiguousInfix'                   => 'La posicion de « $1 » est pas cllâra (apondre des balises adicionèles « { ... } » pôt la rendre ples cllâra).',
+	'math_CannotChangeDirectory'            => 'Pôt pas changiér de dossiér de travâly.',
+	'math_CannotCreateTexFile'              => 'Pôt pas crèar un fichiér TeX.',
+	'math_CannotRunDvipng'                  => 'Pôt pas ègzécutar dvipng.',
+	'math_CannotRunLatex'                   => 'Pôt pas ègzécutar LaTeX.',
+	'math_CannotWritePngDirectory'          => 'Pôt pas ècrire dens lo dossiér des fichiérs PNG.',
+	'math_CannotWriteTexFile'               => 'Pôt pas ècrire dens un fichiér TeX.',
 	'math_CasesRowTooBig'                   => 'Pôt y avêr ren que doves entrâs dens châque renchiê d’un bloco « câses ».',
 	'math_DoubleSubscript'                  => 'Doux segnos sont rapondus a la méma bâsa, yon solèt est pèrmês.',
 	'math_DoubleSuperscript'                => 'Doux èxposents sont rapondus a la méma bâsa, yon solèt est pèrmês.',
 	'math_IllegalCharacter'                 => 'Caractèro dèfendu dens la balyê buchiê',
 	'math_IllegalCommandInMathMode'         => 'La comanda « $1 » est dèfendua en môdo math.',
-	'math_IllegalCommandInMathModeWithHint' => 'La comanda « $1 » est dèfendua en môdo math (pôt-étre voliâd-vos utilisar « $2 » a la place ?)',
+	'math_IllegalCommandInMathModeWithHint' => 'La comanda « $1 » est dèfendua en môdo math (pôt-étre voliâd-vos utilisar « $2 » a la place ?).',
 	'math_IllegalCommandInTextMode'         => 'La comanda « $1 » est dèfendua en môdo tèxte.',
-	'math_IllegalCommandInTextModeWithHint' => 'La comanda « $1 » est dèfendua en môdo tèxte (pôt-étre voliâd-vos utilisar « $2 » a la place ?)',
+	'math_IllegalCommandInTextModeWithHint' => 'La comanda « $1 » est dèfendua en môdo tèxte (pôt-étre voliâd-vos utilisar « $2 » a la place ?).',
 	'math_IllegalDelimiter'                 => 'Dèlimitior dèfendu aprés « $1 »',
 	'math_IllegalFinalBackslash'            => 'Lo caractèro « \\ » pôt pas aparêtre a la fin de la buchiê.',
 	'math_IllegalNestedFontEncodings'       => 'Les comandes d’encodâjo de caractèros pôvont pas étre embrecâs.',
+	'math_IllegalRedefinition'              => 'La comanda « $1 » est ja dèfenia, vos pouede pas la tornar dèfenir.',
+	'math_InvalidColour'                    => 'La color « $1 » est envalida.',
+	'math_InvalidUtf8Input'                 => 'La chêna de caractèros buchiê est pas u format UTF-8.',
+	'math_LatexFontNotSpecified'            => 'Niona police de caractèros LaTeX at étâ spècefiâ por « $1 ».',
+	'math_LatexPackageUnavailable'          => 'Pôt pas rendre lo fichiér PNG perce que lo paquetâjo LaTeX « $1 » est pas accèssiblo.',
+	'math_MismatchedBeginAndEnd'            => 'Les comandes « $1 » et « $2 » corrèspondont pas.',
+	'math_MisplacedLimits'                  => 'La comanda « $1 » dêt aparêtre aprés un opèrator quand en môdo math (suggèstion : èprovâd « mathop »).',
+	'math_MissingCommandAfterNewcommand'    => 'Un novél nom de comanda est manquent ou fôtif aprés « \\newcommand » (dêt y avêr cllârament una comanda dèfenia, dêt comenciér per « \\ » et contegnir ren que des caractèros alfabèticos).',
+	'math_MissingDelimiter'                 => 'Un dèlimitior manque aprés « $1 ».',
+	'math_MissingOpenBraceAfter'            => 'La balisa « { » manque aprés « $1 ».',
+	'math_MissingOpenBraceAtEnd'            => 'La balisa « { » manque a la fin de la buchiê.',
+	'math_MissingOpenBraceBefore'           => 'La balisa « { » manque devant « $1 ».',
+	'math_MissingOrIllegalParameterCount'   => 'Dècompto de paramètres manquents ou fôtifs dens la dèfinicion de « $1 » (dêt étre un solèt chifro comprês entre-mié 1 et 9 encllusivament)',
+	'math_MissingOrIllegalParameterIndex'   => 'Endèxe de paramètres manquents ou fôtifs dens la dèfinicion de « $1 »',
+	'math_NonAsciiInMathMode'               => 'Los caractèros en defôr d’ASCII pôvont solament étre utilisâs en môdo tèxte (tâchiéd de betar los caractèros pas de sûr dens « \\text{...} »).',
+	'math_NotEnoughArguments'               => 'Pas prod d’arguments buchiês por « $1 »',
+	'math_PngIncompatibleCharacter'         => 'Pôt pas g·ènèrar lo fichiér PNG que contint lo caractèro $1.',
+	'math_ReservedCommand'                  => 'La comanda « $1 » est resèrvâ a blahtex.',
+	'math_SubstackRowTooBig'                => 'Pôt y avêr ren que yona solèta entrâ dens châque renchiê d’un bloco « sot-pila ».',
+	'math_TooManyMathmlNodes'               => 'Y at trop de nuods dens l’âbro MathML.',
+	'math_TooManyTokens'                    => 'La balyê buchiê est trop longe.',
+	'math_UnavailableSymbolFontCombination' => 'Lo simbolo « $1 » est pas disponiblo por la police de caractèros « $2 ».',
+	'math_UnexpectedNextCell'               => 'La comanda « & » pôt solament aparêtre dens un bloco « \\begin ... \\end ».',
+	'math_UnexpectedNextRow'                => 'La comanda « \\\\ » pôt solament aparêtre dens un bloco « \\begin ... \\end ».',
+	'math_UnmatchedBegin'                   => 'La balisa « \\begin » est pas balanciê per la balisa « \\end ».',
+	'math_UnmatchedCloseBrace'              => 'La balisa « } » est pas prècèdâ per la balisa « { ».',
+	'math_UnmatchedEnd'                     => 'La balisa « \\end » est pas prècèdâ per la balisa « \\begin ».',
+	'math_UnmatchedLeft'                    => 'La balisa « \\left » est pas balanciê per la balisa « \\right ».',
+	'math_UnmatchedOpenBrace'               => 'La balisa « { » est pas balanciê per la balisa « } ».',
+	'math_UnmatchedOpenBracket'             => 'La balisa « [ » est pas balanciê per la balisa « ] ».',
+	'math_UnmatchedRight'                   => 'La balisa « \\right » est pas balanciê per la balisa « \\left ».',
+	'math_UnrecognisedCommand'              => 'Comanda encognua « $1 »',
+	'math_WrongFontEncoding'                => 'Lo simbolo « $1 » pôt pas aparêtre dens l’encodâjo de caractèros « $2 ».',
+	'math_WrongFontEncodingWithHint'        => 'Lo simbolo « $1 » porrêt pas étre afichiê per l’encodâjo de caractèros « $2 » (èprovâd la comanda « $3{...} »).',
 );
 
 /** Galician (Galego)
@@ -1031,5 +1065,17 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'math_InvalidColour' => 'Färgen "$1" är ogiltig',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'math_noblahtex'             => 'Không thể thực thi blahtex, đáng ra phải ở $1',
+	'math_AmbiguousInfix'        => 'Dùng "$1" gây khó hiểu (hãy thử dùng thêm dấu ngoặc móc "{ ... }" để rõ ràng hơn)',
+	'math_CannotChangeDirectory' => 'Không thể thay đổi thư mục hiện hành',
+	'math_CannotCreateTexFile'   => 'Không thể tạo được tập tin tex',
+	'math_CannotRunDvipng'       => 'Không thể chạy dvipng',
+	'math_CannotRunLatex'        => 'Không thể chạy latex',
 );
 

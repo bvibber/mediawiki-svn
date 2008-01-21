@@ -383,6 +383,13 @@ $messages['lo'] = array(
 	'newuserlog-create2-entry' => 'ໄດ້ສ້າງບັນຊີ ໃຫ້ $1',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'newuserlog-create-entry' => 'Naujas naudotojas',
+);
+
 /** Latvian (Latviešu)
  * @author SPQRobin
  */
@@ -541,6 +548,13 @@ $messages['sv'] = array(
 	'newuserlogpagetext'       => 'Detta är en logg över nyligen skapade användarkonton',
 	'newuserlog-create-entry'  => 'Ny användare',
 	'newuserlog-create2-entry' => 'skapade användarkonto för $1',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'newuserlog-create-entry' => 'కొత్త వాడుకరి',
 );
 
 $messages['tet'] = array(

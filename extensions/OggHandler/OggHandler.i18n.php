@@ -741,6 +741,28 @@ $messages['li'] = array(
 	'ogg-play-sound' => 'Geluid aafspele',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'ogg-short-audio'         => 'Ogg $1 garso byla, $2',
+	'ogg-short-video'         => 'Ogg $1 video byla, $2',
+	'ogg-short-general'       => 'Ogg $1 medija byla, $2',
+	'ogg-play'                => 'Groti',
+	'ogg-pause'               => 'Pauzė',
+	'ogg-stop'                => 'Sustabdyti',
+	'ogg-play-video'          => 'Groti video',
+	'ogg-play-sound'          => 'Groti garsą',
+	'ogg-player-videoElement' => '<video> elementas',
+	'ogg-player-oggPlugin'    => 'Ogg priedas',
+	'ogg-player-soundthumb'   => 'Nėra grotuvo',
+	'ogg-player-selected'     => '(pasirinkta)',
+	'ogg-use-player'          => 'Naudoti grotuvą:',
+	'ogg-more'                => 'Daugiau...',
+	'ogg-dismiss'             => 'Uždaryti',
+	'ogg-download'            => 'Atsisiųsti bylą',
+);
+
 $messages['nds'] = array(
 	'ogg-short-audio' => 'Ogg-$1-Toondatei, $2',
 	'ogg-short-video' => 'Ogg-$1-Videodatei, $2',

@@ -47,6 +47,13 @@ $messages['hsb'] = array(
 	'purge' => 'rjedźić',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'purge' => 'frissít',
+);
+
 $messages['nl'] = array(
 	'purge' => 'cache legen',
 );
@@ -88,5 +95,12 @@ $messages['stq'] = array(
  */
 $messages['to'] = array(
 	'purge' => 'fakamaʻa',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'purge' => 'Temizle',
 );
 

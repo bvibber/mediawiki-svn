@@ -286,6 +286,13 @@ $messages['sv'] = array(
 	'scanset_prev'                      => '&lt; Föregående',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'scanset_next' => 'తర్వాత &gt;',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

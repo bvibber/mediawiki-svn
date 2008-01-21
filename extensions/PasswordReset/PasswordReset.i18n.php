@@ -151,6 +151,24 @@ $messages['hsb'] = array(
 
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'passwordreset'                    => 'Jelszó beállítása',
+	'passwordreset-invalidusername'    => 'Érvénytelen felhasználói név',
+	'passwordreset-emptyusername'      => 'Nincs megadva felhasználói név',
+	'passwordreset-nopassmatch'        => 'A jelszavak nem egyeznek meg',
+	'passwordreset-username'           => 'Felhasználói név',
+	'passwordreset-newpass'            => 'Új jelszó',
+	'passwordreset-confirmpass'        => 'Jelszó megerősítése',
+	'passwordreset-success'            => 'A(z) $1 azonosítószámú felhasználó jelszava be lett állítva',
+	'passwordreset-disableuser'        => 'Felhasználói fiók letiltása?',
+	'passwordreset-disableuserexplain' => '(egy érvénytelen hasht állít be jelszónak, így a felhasználó nem tud bejelentkezni)',
+	'passwordreset-disablesuccess'     => 'A felhasználói fiók le lett tiltve (azonosító: $1)',
+	'passwordreset-accountdisabled'    => 'A felhasználói fiók le lett tiltva',
+);
+
 $messages['ie'] = array(
 	'passwordreset-username' => 'Vor nómine usatori',
 	'passwordreset-newpass' => 'Nov passa-parol',

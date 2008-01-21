@@ -168,3 +168,10 @@ $messages['sk'] = array(
 	'postcomment_nopostingtoadd'           => 'Niet pridať aký príspevok.',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'postcomment_post' => 'Posta',
+);
+

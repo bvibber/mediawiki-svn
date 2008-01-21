@@ -111,6 +111,24 @@ $3',
 	'latexdoc_get_pdf'         => 'PDF wzać',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'latexdoc_no_text'         => 'Az oldal nem tartalmaz szöveget, nem lehet elkészíteni a DVI-t',
+	'latexdoc_cant_create_dir' => 'A(z) $1 ideiglenes könyvtár nem készíthető el',
+	'latexdoc_cant_write'      => 'A(z) $1 fájlba nem lehet írni',
+	'latexdoc_error'           => 'LaTeX hiba
+
+Parancs: $1
+
+Kimenet: $2
+
+$3',
+	'latexdoc_get_dvi'         => 'DVI letöltése',
+	'latexdoc_get_pdf'         => 'PDF letöltése',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

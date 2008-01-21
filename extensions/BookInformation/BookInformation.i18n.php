@@ -717,7 +717,11 @@ $messages['te'] = array(
  * @author Karduelis
  */
 $messages['tr'] = array(
-	'bookinfo-result-year' => 'Yıl:',
+	'bookinfo-header'           => 'Kitap bilgisi',
+	'bookinfo-result-title'     => 'Başlık:',
+	'bookinfo-result-publisher' => 'Yayımcı:',
+	'bookinfo-result-year'      => 'Yıl:',
+	'bookinfo-provider'         => 'Veri sağlayıcısı: $1',
 );
 
 /** Volapük (Volapük)
@@ -731,6 +735,7 @@ $messages['vo'] = array(
 	'bookinfo-result-publisher'  => 'Dabükan:',
 	'bookinfo-result-year'       => 'Yel:',
 	'bookinfo-error-invalidisbn' => 'ISBN no lonöföl.',
+	'bookinfo-error-noresponse'  => 'No edabinon geükam, u tim tulunüpik ya epasetikon.',
 	'bookinfo-purchase'          => 'Remolös buki at se $1',
 );
 

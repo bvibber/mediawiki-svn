@@ -515,6 +515,13 @@ $messages['tet'] = array(
 	'imagemap_description'          => 'Kona-ba imajen ne\'e',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'imagemap_description' => 'Resim hakkında',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

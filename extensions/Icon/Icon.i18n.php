@@ -66,10 +66,12 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Bdanee
  * @author Dorgan
  */
 $messages['hu'] = array(
 	'icon-badimage' => 'Rossz kép',
+	'icon-badwidth' => 'Érvénytelen szélesség',
 );
 
 $messages['la'] = array(
@@ -131,5 +133,12 @@ $messages['sk'] = array(
 $messages['stq'] = array(
 	'icon-badimage' => 'Defekte Bielde',
 	'icon-badwidth' => 'Falske Bratte',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'icon-badimage' => 'Kötü resim',
 );
 

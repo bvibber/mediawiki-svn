@@ -502,6 +502,15 @@ $messages['te'] = array(
 	'changeauthor-comment'         => 'వ్యాఖ్య:',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'changeauthor-pagenameform-go'  => 'Git',
+	'changeauthor-comment'          => 'Yorum:',
+	'changeauthor-invalid-username' => '"$1" geçersiz kullanıcı.',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

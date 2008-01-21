@@ -698,6 +698,14 @@ $messages['sv'] = array(
 	'expand_templates_preview'         => 'Förhandsvisning',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'expand_templates_ok'      => 'సరే',
+	'expand_templates_preview' => 'మునుజూపు',
+);
+
 /** Tonga (faka-Tonga)
  * @author SPQRobin
  */
@@ -709,6 +717,8 @@ $messages['to'] = array(
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'expand_templates_input'   => 'Giriş metni:',
+	'expand_templates_output'  => 'Sonuç',
 	'expand_templates_preview' => 'Ön izleme',
 );
 

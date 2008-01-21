@@ -344,6 +344,14 @@ Do Bedrieuwere fon disse Websiede konnen neen Feroantwoudenge foar dän Inhoold 
 	'talkhere-collapse'    => 'Editor ferbiergje',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'talkhere-talkpage'   => 'Tartışma sayfası',
+	'talkhere-addcomment' => 'Yorumu ekle',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

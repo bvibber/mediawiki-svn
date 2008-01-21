@@ -19,15 +19,19 @@ $messages['en'] = array(
 	'inspectcache-list' => 'List',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'inspectcache' => 'اشتبه في الكاش',
-	'inspectcache-ok' => 'موافق',
+	'inspectcache'         => 'اشتبه في الكاش',
+	'inspectcache-ok'      => 'موافق',
 	'inspectcache-general' => 'الكاش العام',
-	'inspectcache-parser' => 'كاش البارسر',
+	'inspectcache-parser'  => 'كاش البارسر',
 	'inspectcache-message' => 'كاش الرسالة',
-	'inspectcache-get' => 'تنفيذ',
-	'inspectcache-delete' => 'حذف',
+	'inspectcache-get'     => 'تنفيذ',
+	'inspectcache-delete'  => 'حذف',
 	'inspectcache-deleted' => 'الكاش المحذوف',
+	'inspectcache-list'    => 'عرض',
 );
 
 /** Bulgarian (Български)
@@ -49,15 +53,19 @@ $messages['de'] = array(
 	'inspectcache-list'    => 'Liste',
 );
 
+/** French (Français)
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'inspectcache' => 'Inspection du Cache',
-	'inspectcache-ok' => 'Lancer',
+	'inspectcache'         => 'Inspection du Cache',
+	'inspectcache-ok'      => 'Lancer',
 	'inspectcache-general' => 'Cache général',
-	'inspectcache-parser' => 'Cache des parsers',
+	'inspectcache-parser'  => 'Cache des parsers',
 	'inspectcache-message' => 'Cache des messages',
-	'inspectcache-get' => 'Obtenir',
-	'inspectcache-delete' => 'Supprimer',
+	'inspectcache-get'     => 'Obtenir',
+	'inspectcache-delete'  => 'Supprimer',
 	'inspectcache-deleted' => 'Cache supprimé',
+	'inspectcache-list'    => 'Liste',
 );
 
 /** Galician (Galego)
@@ -91,10 +99,19 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Bdanee
  * @author Dorgan
  */
 $messages['hu'] = array(
-	'inspectcache-delete' => 'Törlés',
+	'inspectcache'         => 'Gyorsítótár ellenőrzése',
+	'inspectcache-ok'      => 'OK',
+	'inspectcache-general' => 'Általános gyorsítótár',
+	'inspectcache-parser'  => 'Értelmező gyorsítótár',
+	'inspectcache-message' => 'Üzenet gyorsítótár',
+	'inspectcache-get'     => 'Lekérés',
+	'inspectcache-delete'  => 'Törlés',
+	'inspectcache-deleted' => 'Törlési gyorsítótár',
+	'inspectcache-list'    => 'Listázás',
 );
 
 /** Dutch (Nederlands)
@@ -110,7 +127,7 @@ $messages['nl'] = array(
 	'inspectcache-get'     => 'Ophalen',
 	'inspectcache-delete'  => 'Verwijderen',
 	'inspectcache-deleted' => 'Cache geleegd',
-
+	'inspectcache-list'    => 'Tonen',
 );
 
 $messages['no'] = array(

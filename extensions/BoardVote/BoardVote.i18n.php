@@ -332,14 +332,22 @@ $messages['bn'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|ভোট দিন]]
 * [[Special:Boardvote/list|এ পর্যন্ত দেওয়া ভোটের তালিকা]]
 * [[Special:Boardvote/dump|গুপ্তায়িত নির্বাচন রেকর্ড ডাম্প করা হোক]]',
+	'boardvote_novotes'      => 'কেউ এখনও ভোট দেয়নি।',
 	'boardvote_time'         => 'সময়',
 	'boardvote_user'         => 'ব্যবহারকারী',
 	'boardvote_edits'        => 'সম্পাদনাসমূহ',
 	'boardvote_days'         => 'দিন',
 	'boardvote_ip'           => 'আইপি',
+	'boardvote_dumplink'     => 'এখানে ক্লিক করুন',
+	'boardvote_submit'       => 'ঠিক আছে',
+	'boardvote_needadmin'    => 'শুধু নির্বাচন প্রশাসকগণ এই কাজটি করতে পারবেন।',
+	'boardvote_notstarted'   => 'এখনও ভোট গ্রহণ শুরু হয়নি',
+	'boardvote_edits_many'   => 'অনেক',
 	'group-boardvote'        => 'বোর্ড নির্বাচন প্রশাসকগণ',
 	'group-boardvote-member' => 'বোর্ড নির্বাচন প্রশাসক',
 	'grouppage-boardvote'    => '{{ns:project}}:বোর্ড নির্বাচন প্রশাসকগণ',
+	'boardvote_welcome'      => "স্বাগতম '''$1'''!",
+	'go_to_board_vote'       => 'উইকিমিডিয়া বোর্ড নির্বাচন ২০০৭',
 );
 
 $messages['br'] = array(
@@ -2700,12 +2708,13 @@ $1 för de krypterade uppgifterna.</p>',
  * @author Mpradeep
  */
 $messages['te'] = array(
-	'boardvote'         => 'వికీమీడియా ట్రస్టుబోర్డు ఎన్నికలు',
-	'boardvote_time'    => 'సమయం',
-	'boardvote_user'    => 'వాడుకరి',
-	'boardvote_days'    => 'రోజులు',
-	'boardvote_submit'  => 'సరే',
-	'boardvote_welcome' => "స్వాగతం '''$1'''!",
+	'boardvote'          => 'వికీమీడియా ట్రస్టుబోర్డు ఎన్నికలు',
+	'boardvote_time'     => 'సమయం',
+	'boardvote_user'     => 'వాడుకరి',
+	'boardvote_days'     => 'రోజులు',
+	'boardvote_dumplink' => 'ఇక్కడ నొక్కండి',
+	'boardvote_submit'   => 'సరే',
+	'boardvote_welcome'  => "స్వాగతం '''$1'''!",
 );
 
 /** Tonga (faka-Tonga)
@@ -2773,9 +2782,13 @@ Is palisedon fomam pejüföl. Pojonon valikanes su [[Special:Boardvote/dump]].
 	'boardvote_edits'        => 'Redakams',
 	'boardvote_days'         => 'Dels',
 	'boardvote_ip'           => 'ladet-IP',
+	'boardvote_ua'           => 'Pladulan gebana',
 	'boardvote_listintro'    => '<p>Is pajonon lised vögodas jünu peregistarölas valikas. $1 ad getön fomami pejüföl.</p>',
+	'boardvote_dumplink'     => 'Klikolös is',
+	'boardvote_submit'       => 'Baiced',
 	'boardvote_needadmin'    => 'Te davälaguvans dalons dunön atosi.',
 	'boardvote_notstarted'   => 'Daväl no nog eprimon',
+	'boardvote_closed'       => 'Vögodam ya efinikon, logolös [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En davälapadi] suno ad getön sekis.',
 	'boardvote_edits_many'   => 'mödik',
 	'boardvote_blocked'      => 'Liedo peblokol in vük olik. Gebans pebloköl no dalons vögodön.',
 	'boardvote_welcome'      => "Benokömö, o '''$1'''!",

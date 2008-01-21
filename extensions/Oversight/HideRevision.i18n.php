@@ -1215,6 +1215,14 @@ Sidversioner som tagits bort kommer inte att vara synliga för någon genom webp
 Användare som sprider den här informationen vidare kan få sina översynsrättigheter permanent borttagna.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'hiderevision-continue' => 'కొనసాగించు',
+	'oversight-view'        => 'వివరాలు',
+);
+
 $messages['tet'] = array(
 	'hiderevision-prompt' => 'Sura versaun nian ne\'ebé hakarak halakon:',
 	'hiderevision-tab' => 'Subar versaun',

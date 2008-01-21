@@ -63,6 +63,14 @@ $messages['hsb'] = array(
 	'mediafunctions-not-exist'     => '"1" njeeksistuje',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'mediafunctions-invalid-title' => '„$1” nem érvényes cím',
+	'mediafunctions-not-exist'     => '„$1” nem létezik',
+);
+
 $messages['nds'] = array(
 	'mediafunctions-invalid-title' => '„$1“ is keen validen Titel',
 	'mediafunctions-not-exist'     => '„$1“ gifft dat nich',

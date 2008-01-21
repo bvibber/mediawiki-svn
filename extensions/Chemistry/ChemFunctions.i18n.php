@@ -425,6 +425,13 @@ $messages['te'] = array(
 	'chemicalsources' => 'రసాయన మూలాలు',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'chemFunctions_Name' => 'IUPAC adı',
+);
+
 $messages['vi'] = array(
 	'chemicalsources' => 'Nguồn hóa học',
 	'chemFunctions_ListPage' => 'Nguồn hóa học',

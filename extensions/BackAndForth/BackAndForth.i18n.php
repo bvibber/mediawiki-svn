@@ -240,6 +240,14 @@ $messages['sv'] = array(
 	'backforth-prev' => 'Föregående ($1)',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'backforth-next' => 'Sau ($1)',
+	'backforth-prev' => 'Trước ($1)',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

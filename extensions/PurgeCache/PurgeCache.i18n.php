@@ -59,6 +59,16 @@ $messages['hsb'] = array(
 	'purgecache-button'  => 'Prózdnić',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'purgecache'         => 'Gyorsítótár kiürítése',
+	'purgecache-warning' => 'Segítségével kiürítheted a gyorsítótáblákat.',
+	'purgecache-purged'  => 'A gyorsítótár ki lett ürítve.',
+	'purgecache-button'  => 'Frissít',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

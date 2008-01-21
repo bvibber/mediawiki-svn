@@ -151,3 +151,11 @@ $messages['stq'] = array(
 	'findspam-notextfound' => 'Neen Biedraage fuunen',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'findspam-ip' => 'IP adresi:',
+	'findspam-ok' => 'Tamam',
+);
+

@@ -529,6 +529,15 @@ $messages['stq'] = array(
 	'giverollback-page'           => '{{ns:help}}:Touräächtraalen',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'giverollback-username' => 'Kullanıcı:',
+	'giverollback-search'   => 'Git',
+	'giverollback-comment'  => 'Yorum:',
+);
+
 /* Cantonese (Shinjiman) */
 $messages['yue'] = array(
 	'giverollback' => '畀或收番一撳還原權限',

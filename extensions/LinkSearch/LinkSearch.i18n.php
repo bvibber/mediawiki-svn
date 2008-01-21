@@ -501,6 +501,13 @@ $messages['sv'] = array(
 	'linksearch-error' => 'Jokertecken kan bara användas i början av domännamnet.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'linksearch-ok' => 'వెతుకు',
+);
+
 /** Tonga (faka-Tonga)
  * @author SPQRobin
  */

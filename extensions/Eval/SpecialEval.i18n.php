@@ -106,6 +106,13 @@ $messages['stq'] = array(
 	'eval_submit' => 'wäidierje',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'eval_code' => 'Kod',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

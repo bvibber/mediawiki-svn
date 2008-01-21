@@ -141,6 +141,18 @@ Njepřihódne wobrazy budu so hnydom wušmórować, hlej [[{{MediaWiki:Multipleu
 	'multiupload-toolbox'              => 'Wjacore dataje nahrać',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'multipleupload'                   => 'Fájlok feltöltése',
+	'multipleupload-ignoreallwarnings' => "Az '''összes figyelmeztetés''' mellőzése és a fájlok elmentése.",
+	'multipleupload-saveallfiles'      => 'Összes fájl mentése',
+	'multipleupload-page'              => '{{ns:project}}:Fájltörlési irányelvek',
+	'multiupload-fileuploaded'         => 'Fájl feltöltve.',
+	'multiupload-toolbox'              => 'Több fájl feltöltése',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

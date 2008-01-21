@@ -86,6 +86,16 @@ $messages['hsb'] = array(
 	'pageby-anon'         => '<i>anonymny</i>',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'pageby-first'        => 'Az oldalt $1 készítette, $2-kor',
+	'pageby-last'         => 'Legutoljára $1 <a href="$3">módosította</a>, $2-kor',
+	'pageby-contributors' => 'Szerkesztők:',
+	'pageby-anon'         => '<i>névtelen</i>',
+);
+
 /** Armenian (Հայերեն)
  * @author Teak
  */

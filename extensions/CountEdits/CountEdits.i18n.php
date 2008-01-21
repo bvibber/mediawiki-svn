@@ -508,6 +508,13 @@ $messages['tet'] = array(
 	'countedits-nocontribs' => 'Ema lá\'os kintribui iha wiki ne\'e.',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'countedits-username' => 'Kullanıcı:',
+);
+
 /* Cantonese (Shinjiman) */
 $messages['yue'] = array(
 	'countedits' => '編輯數',

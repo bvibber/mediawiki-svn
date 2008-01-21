@@ -62,6 +62,16 @@ $messages['hsb'] = array(
 Tuta e-mejl bu ći wot $1 přez e-mejlowy system {{SITENAME}} pósłana.',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'email_footer' => '----------------------------------------------------------------------------
+Ez az üzenet $1 küldte neked a(z) {{SITENAME}} email-rendszerén keresztül.
+
+$2',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

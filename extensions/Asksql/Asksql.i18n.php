@@ -120,6 +120,13 @@ $messages['el'] = array(
 	'querysuccessful'  => 'Ερώτημα επιτυχές',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'asksql' => 'SQL-serĉomendo',
+);
+
 $messages['fi'] = array(
 	'asksql'           => 'SQL-kysely',
 	'asksqltext'       => 'Käytä alla olevaa lomaketta tehdäksesi suoria kyselyitä tietokannasta. Merkkijonovakioita merkitään yksinkertaisilla lainausmerkeillä (\'näin\'). Kyselyt voivat usein kuormittaa palvelinta huomattavasti, joten käytä tätä toimintoa säästeliäästi.',

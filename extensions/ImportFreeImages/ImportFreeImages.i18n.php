@@ -103,6 +103,23 @@ $messages['hsb'] = array(
 	'importfreeimages_returntoform' => 'Abo klikń <a href=\'$1\'>sem</a>, zo by k stronje z pytanskimi wuslědkami wróćił.',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'importfreeimages'                       => 'Szabad képek importálása',
+	'importfreeimages_description'           => 'Ez az oldal lehetővé teszi számodra megfelelően licencelt flickr képek keresését és importálását a wikidbe.',
+	'importfreeimages_noapikey'              => 'Nem állítottad be a Flickr API kulcsodat. Ahhoz, hogy ezt megtedd, kérj egy API kulcsot
+[http://www.flickr.com/services/api/misc.api_keys.html innen], majd állítsd be a wgFlickrAPIKey értékét a ImportFreeImages.php-ben.',
+	'importfreeimages_nophotosfound'         => 'Nem találtam a keresési feltételeidnek ($1) megfelelő képet, próbáld újra.',
+	'importfreeimages_owner'                 => 'Szerző',
+	'importfreeimages_importthis'            => 'importálás',
+	'importfreeimages_next'                  => 'Következő $1',
+	'importfreeimages_filefromflickr'        => '$1 <b>[$2]</b> felhasználótól a flickr-ről. Eredeti URL',
+	'importfreeimages_promptuserforfilename' => 'Add meg a cél fájlnevet:',
+	'importfreeimages_returntoform'          => "Vagy kattints <a href='$1'>ide</a>, hogy visszatérj az eredmények listájához",
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

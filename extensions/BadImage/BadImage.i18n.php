@@ -207,6 +207,31 @@ $messages['el'] = array(
 	'badimages-log-name' => 'Κατάλογος κακών εικόνων',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'badimages'                => 'Nevalida bildo-listo',
+	'badimages-add-btn'        => 'Aldonu',
+	'badimages-added'          => '$1 estis enlistigita.',
+	'badimages-count'          => "Estas '''$1''' bildoj en la listo de nevalidaj bildoj.",
+	'badimages-name'           => 'Nomo:',
+	'badimages-not-added'      => 'Ne eblas aldoni la bildon.',
+	'badimages-not-removed'    => 'Ne eblas forigi la bildon.',
+	'badimages-reason'         => 'Kialo:',
+	'badimages-remove'         => '(forigu)',
+	'badimages-remove-btn'     => 'Forigu',
+	'badimages-remove-confirm' => 'Bonvolu konfirmi ke vi volas forigi $1 el la listo:',
+	'badimages-removed'        => '$1 estis forigita el la listo.',
+	'badimages-subheading'     => 'Nunaj listanoj',
+	'badimages-unprivileged'   => 'Vi ne havas suficxan permison sxangxi la liston.',
+	'badimages-log-name'       => 'Nevalida bildo-listo',
+	'badimages-log-header'     => 'Jen loglibro de sxangxoj por la [[{{MediaWiki:Badimages-page}}|listo de nevalidaj bildoj]].',
+	'badimages-log-add'        => 'Aldonis [[$1]] al la listo de nevalidaj bildoj',
+	'badimages-log-remove'     => 'forigis [[$1]] el la listo de nevalidaj bildoj',
+	'badimages-page'           => '{{ns:help}}:Listo de nevalidaj bildoj',
+);
+
 $messages['ext'] = array(
 	'badimages-add-btn' => 'Añiil',
 	'badimages-name' => 'Nombri:',
@@ -920,6 +945,31 @@ $messages['te'] = array(
 $messages['tr'] = array(
 	'badimages-add-btn'    => 'Ekle',
 	'badimages-remove-btn' => 'Taşı',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'badimages'                => 'Danh sách hình phản cảm',
+	'badimages-add-btn'        => 'Thêm',
+	'badimages-added'          => 'Đã thêm $1 vào danh sách.',
+	'badimages-count'          => "Có '''$1''' hình trong danh sách hình phản cảm.",
+	'badimages-name'           => 'Tên:',
+	'badimages-not-added'      => 'Không thêm được hình.',
+	'badimages-not-removed'    => 'Không loại bỏ được hình.',
+	'badimages-reason'         => 'Lý do:',
+	'badimages-remove'         => '(loại bỏ)',
+	'badimages-remove-btn'     => 'Loại bỏ',
+	'badimages-remove-confirm' => 'Xin hãy xác nhận rằng bạn muốn loại bỏ $1 ra khỏi danh sách:',
+	'badimages-removed'        => 'Đã loại $1 ra khỏi danh sách.',
+	'badimages-subheading'     => 'Các mục hiện tại',
+	'badimages-unprivileged'   => '(Bạn không có đủ quyền hạn để thay đổi danh sách)',
+	'badimages-log-name'       => 'Danh sách hình phản cảm',
+	'badimages-log-header'     => 'Đây là nhật trình ghi lại sự thay đổi trong [[{{MediaWiki:Badimages-page}}|danh sách hình phản cảm]]',
+	'badimages-log-add'        => 'đã thêm [[$1]] vào danh sách hình phản cảm',
+	'badimages-log-remove'     => 'đã loại [[$1]] ra khỏi danh sách hình phản cảm',
+	'badimages-page'           => '{{ns:help}}:Danh sách hình phản cảm',
 );
 
 /** Volapük (Volapük)

@@ -72,6 +72,15 @@ $messages['id'] = array(
         'msfunc_div_zero' => "Pembagian dengan nol",
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'msfunc_nan'      => 'A kapott érték nem szám',
+	'msfunc_inf'      => 'A kapott érték végtelen',
+	'msfunc_div_zero' => 'Nullával való osztás',
+);
+
 $messages['it'] = array(
         'msfunc_nan' => "Il risultato non è un numero" ,
         'msfunc_inf' => "Il risultato è infinito" ,

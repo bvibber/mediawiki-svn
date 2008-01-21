@@ -183,6 +183,13 @@ $messages['stq'] = array(
 	'profiling-data-count' => 'täl',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'profiling-data-count' => 'Say',
+);
+
 /* Cantonese (Shinjiman) */
 $messages['yue'] = array(
 	'profiling' => '檢核資料',

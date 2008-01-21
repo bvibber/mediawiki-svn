@@ -260,8 +260,22 @@ $messages['sv'] = array(
 	'sitenotice_close' => 'dölj',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'sitenotice_close' => 'దాచు',
+);
+
 $messages['tet'] = array(
 	'sitenotice_close' => 'subar',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'sitenotice_close' => 'Kapat',
 );
 
 $messages['ur'] = array(
