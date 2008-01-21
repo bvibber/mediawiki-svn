@@ -1157,6 +1157,14 @@ eller sök på wikin med någon extern söktjänst:
 	'searchincategory'      => 'i kategori',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'lucene-resultsize' => '$1 ($2 పదాలు)',
+	'searchall'         => 'అన్నీ',
+);
+
 $messages['ur'] = array(
 	'searchnumber'          => '<strong><font face="times new roman, urdu naskh asiatype">نـتـائـج : $3 کے $1 تـا $2 </strong></font>',
 	'searchprev'            => 'پیچھے',
