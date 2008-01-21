@@ -63,6 +63,24 @@ $messages['cs'] = array(
 	'pdt_comparing_page'  => 'Porovnání výstupu parserů pro stránku [[$1]]',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'parserdifftest'      => 'Parser-Differenz-Test',
+	'pdtest_no_target'    => 'Kein Ziel angegeben.',
+	'pdtest_page_missing' => 'Die angegebene Seite wurde nicht in der Datenbank gefunden.',
+	'pdtest_no_changes'   => 'Keine Unterschiede gefunden.',
+	'pdtest_time_report'  => '<b>$1</b> benötigte $2 Sekunden, <b>$3</b> benötigte $4 Sekunden.',
+	'pdtest_title'        => 'Kontexttitel:',
+	'pdtest_text'         => 'Eingabe:',
+	'pdtest_ok'           => 'OK',
+	'pdtest_get_text'     => 'Hole Text von Seite',
+	'pdtest_diff'         => 'Unterschiede',
+	'pdtest_side_by_side' => 'Ausgabe im Vergleich',
+	'pdt_comparing_page'  => 'Vergleiche Parser-Ausgabe für [[$1]]',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -311,4 +329,6 @@ $messages['sv'] = array(
 	'pdtest_side_by_side' => 'Jämförelse av resultat',
 	'pdt_comparing_page'  => 'Jämför parsningsresultat av [[$1]]',
 );
+
+$messages['de-formal'] = $messages['de'];
 

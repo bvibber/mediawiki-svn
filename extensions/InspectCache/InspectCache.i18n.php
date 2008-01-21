@@ -46,6 +46,7 @@ $messages['de'] = array(
 	'inspectcache-get'     => 'Holen',
 	'inspectcache-delete'  => 'Löschen',
 	'inspectcache-deleted' => 'Gelöschter Cache',
+	'inspectcache-list'    => 'Liste',
 );
 
 $messages['fr'] = array(

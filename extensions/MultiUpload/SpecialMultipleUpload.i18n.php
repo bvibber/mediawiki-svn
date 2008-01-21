@@ -20,8 +20,8 @@ Choose 'Browse' and select each file you wish to upload. You can upload from 1 t
 You can enter an optional '''Destination filename''' and provide a '''Summary''' describing your file.
 
 Inappropriate files will be deleted immediately, see the [[{{MediaWiki:Multipleupload-page}}|file deletion policy]].",
-	'multiupload-fileuploaded'			=> "File uploaded.",
-    'multiupload-toolbox' => "Upload multiple files",
+	'multiupload-fileuploaded'         => "File uploaded.",
+	'multiupload-toolbox'              => "Upload multiple files",
 );
 
 /** Arabic (العربية)
@@ -52,6 +52,9 @@ $messages['bg'] = array(
 	'multipleupload-page' => '{{ns:project}}:Политика за изтриване на файлове',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
 	'multipleupload'                   => 'Dateien hochladen',
 	'multipleupload-ignoreallwarnings' => "Ignoriere '''alle Warnungen''' und speichere die Dateien.",
@@ -65,6 +68,8 @@ Währe 'Browse' und wähle jede Datei aus, die du hochladen möchtest. Dz kannst
 Du kannst wahlweise auch einen '''Ziel-Dateinamen''' vorgeben und eine '''Beschreibung''' für deine Dateien.
 
 Ungeeignete Dateien werden sofort gelöscht, siehe die [[{{MediaWiki:Multipleupload-page}}|Löschrichtlinien]].",
+	'multiupload-fileuploaded'         => 'Datei hochgeladen.',
+	'multiupload-toolbox'              => 'Hochladen mehrerer Dateien',
 );
 
 /** Greek (Ελληνικά)
