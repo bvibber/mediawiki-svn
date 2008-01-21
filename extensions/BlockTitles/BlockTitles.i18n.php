@@ -110,11 +110,12 @@ $messages['frp'] = array(
 );
 
 /** Galician (Galego)
+ * @author Alma
  * @author Xosé
  */
 $messages['gl'] = array(
 	'block_title_error_page_title' => 'Título Bloqueado',
-	'block_title_error'            => 'Sentímolo, non se permite gardar o título deste artigo.',
+	'block_title_error'            => 'Sentímolo, non se permite gardar o título desta páxina.',
 );
 
 /** Croatian (Hrvatski)

@@ -99,6 +99,14 @@ $messages['frp'] = array(
 	'pdt_comparing_page'  => 'Comparèson du parsèr en sortia dês [[$1]]',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'pdtest_no_changes' => 'Non foron detectados cambios.',
+	'pdtest_diff'       => 'Diferenzas',
+);
+
 $messages['he'] = array(
 	'parserdifftest' => 'בדיקת השינויים במפענח',
 	'pdtest_no_target' => 'לא נבחר יעד.',

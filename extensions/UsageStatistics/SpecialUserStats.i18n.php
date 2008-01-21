@@ -117,6 +117,14 @@ $messages['fr'] = array(
 	'usagestatisticsbadstartend' => '<b>Mauvais format de date de <i>début</i> ou de <i>fin</i> !</b>',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'usagestatisticsallusers' => 'Todos os Usuarios',
+	'usagestatisticssubmit'   => 'Xenerar Estatísticas',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  */

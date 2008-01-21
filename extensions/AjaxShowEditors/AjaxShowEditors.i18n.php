@@ -72,6 +72,15 @@ $messages['el'] = array(
 	'ajax-se-idling'  => '($1s πριν)',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'ajax-se-title'   => 'Nune redaktas:',
+	'ajax-se-pending' => 'atendas por refresxigo ... (klaku cxi tiun skatolon aux ekredaktu)',
+	'ajax-se-idling'  => '(antaux $1s)',
+);
+
 $messages['ext'] = array(
 	'ajax-se-title' => 'Uguañoti eitandu:',
 	'ajax-se-idling' => '(hazi $1s)',
@@ -117,6 +126,15 @@ $messages['hsb'] = array(
 	'ajax-se-title' => 'Wobdźěłuje so runje wot:',
 	'ajax-se-pending' => 'aktualizuje so ... (klikń do tutoho pola abo póčni wobdźěłować)',
 	'ajax-se-idling' => '(před $1s)',
+);
+
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'ajax-se-title'   => 'Jelenlegi szerkesztők:',
+	'ajax-se-pending' => 'várakozás a frissítésre ... (kattints ide vagy kezdj el szerkeszteni)',
+	'ajax-se-idling'  => '($1 másodperce)',
 );
 
 $messages['hy'] = array(

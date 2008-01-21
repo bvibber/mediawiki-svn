@@ -46,6 +46,14 @@ $messages['de'] = array(
 	'languageselector-setlang' => 'setzen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'languageselector'         => 'Rěc',
+	'languageselector-setlang' => 'stajiś',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

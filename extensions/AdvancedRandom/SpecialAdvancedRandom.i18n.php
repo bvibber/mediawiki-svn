@@ -50,6 +50,13 @@ $messages['de'] = array(
 	'advancedrandom' => 'Zufällige Seite (erweitert)',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'advancedrandom' => 'Progresa hazardpagxo',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  */

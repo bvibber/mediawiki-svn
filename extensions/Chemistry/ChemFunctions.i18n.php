@@ -165,11 +165,21 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Bdanee
  * @author Dorgan
  */
 $messages['hu'] = array(
-	'chemFunctions_CAS'  => 'CAS-szám',
-	'chemFunctions_Name' => 'IUPAC név',
+	'chemicalsources'                  => 'Kémiával kapcsolatos források',
+	'chemFunctions_ListPage'           => 'Kémiával kapcsolatos források',
+	'chemFunctions_DataList'           => 'Lenn azon oldalak listája található, amelyek információval szolgálhatnak az általad keresett kémiai anyagról.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula az NIST-nél</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS az Oxfordi Egyetemen (Egyesült Királyság) (nem kereshető)</a><br />',
+	'chemFunctions_CAS'                => 'CAS-szám',
+	'chemFunctions_ATCCode'            => 'ATC-kód',
+	'chemFunctions_ECNumber'           => 'ECN-szám',
+	'chemFunctions_Formula'            => 'Képlet',
+	'chemFunctions_Name'               => 'IUPAC név',
+	'chemFunctions_ChemFormInputError' => 'Chemform: bemeneti hiba!',
 );
 
 $messages['id'] = array(

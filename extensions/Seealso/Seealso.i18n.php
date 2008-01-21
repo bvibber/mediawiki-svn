@@ -35,6 +35,13 @@ $messages['de'] = array(
 	'seealso' => 'Siehe auch',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'seealso' => 'Glědaj teke',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

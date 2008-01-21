@@ -106,6 +106,26 @@ $messages['ce'] = array(
 	'newuserlog-create-entry' => 'Керла Юзер',
 );
 
+/** Crimean Turkish (Latin) (Qırımtatarca (Latin))
+ * @author Alessandro
+ */
+$messages['crh-latn'] = array(
+	'newuserlogpage'           => 'Yañı qullanıcı jurnalı',
+	'newuserlogpagetext'       => 'Eñ sоñki qayd оlğan qullanıcı jurnalı',
+	'newuserlog-create-entry'  => 'Yañı qullanıcı',
+	'newuserlog-create2-entry' => '$1 içün esap açtı',
+);
+
+/** Crimean Turkish (Cyrillic) (Qırımtatarca (Cyrillic))
+ * @author Alessandro
+ */
+$messages['crh-cyrl'] = array(
+	'newuserlogpage'           => 'Янъы къулланыджы журналы',
+	'newuserlogpagetext'       => 'Энъ сонъки къайд олгъан къулланыджы журналы',
+	'newuserlog-create-entry'  => 'Янъы къулланыджы',
+	'newuserlog-create2-entry' => '$1 ичюн эсап ачты',
+);
+
 $messages['cs'] = array(
 	'newuserlogpage'           => 'Kniha nových uživatelů',
 	'newuserlogpagetext'       => 'Toto je záznam nově zaregistrovaných uživatelů.',

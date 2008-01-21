@@ -59,25 +59,34 @@ $messages['fr'] = array(
 	'inspectcache-deleted' => 'Cache supprimé',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Alma
+ */
 $messages['gl'] = array(
-	'inspectcache' => 'Inspeccionar a Caché',
-	'inspectcache-ok' => 'De acordo',
+	'inspectcache'         => 'Inspeccionar a Caché',
+	'inspectcache-ok'      => 'De acordo',
 	'inspectcache-general' => 'Caché xeral',
 	'inspectcache-message' => 'Caché de mensaxes',
-	'inspectcache-get' => 'Obter',
-	'inspectcache-delete' => 'Eliminar',
+	'inspectcache-get'     => 'Obter',
+	'inspectcache-delete'  => 'Eliminar',
 	'inspectcache-deleted' => 'Caché eliminada',
+	'inspectcache-list'    => 'Listaxe',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'inspectcache' => 'Pufrowak pruwować',
-	'inspectcache-ok' => 'W porjadku',
+	'inspectcache'         => 'Pufrowak pruwować',
+	'inspectcache-ok'      => 'W porjadku',
 	'inspectcache-general' => 'Powšitkowny pufrowak',
-	'inspectcache-parser' => 'Parserowy pufrowak',
+	'inspectcache-parser'  => 'Parserowy pufrowak',
 	'inspectcache-message' => 'Zdźělenkowy pufrowak',
-	'inspectcache-get' => 'Wzać',
-	'inspectcache-delete' => 'Wuprózdnić',
+	'inspectcache-get'     => 'Wzać',
+	'inspectcache-delete'  => 'Wuprózdnić',
 	'inspectcache-deleted' => 'Wuprózdnjeny pufrowak',
+	'inspectcache-list'    => 'Lisćina',
 );
 
 /** Hungarian (Magyar)

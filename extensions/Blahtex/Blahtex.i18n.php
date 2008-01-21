@@ -348,18 +348,25 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'math_noblahtex'               => 'Pôt pas ègzécutar blahtex, que devrêt étre a $1',
-	'math_AmbiguousInfix'          => 'La posicion de « $1 » est pas cllâra (apondre des balises adicionèles « { ... } » pôt la rendre ples cllâra)',
-	'math_CannotChangeDirectory'   => 'Pôt pas changiér de dossiér de travâly',
-	'math_CannotCreateTexFile'     => 'Pôt pas crèar un fichiér TeX',
-	'math_CannotRunDvipng'         => 'Pôt pas ègzécutar dvipng',
-	'math_CannotRunLatex'          => 'Pôt pas ègzécutar LaTeX',
-	'math_CannotWritePngDirectory' => 'Pôt pas ècrire dens lo dossiér des fichiérs PNG',
-	'math_CannotWriteTexFile'      => 'Pôt pas ècrire dens un fichiér TeX',
-	'math_CasesRowTooBig'          => 'Pôt y avêr ren que doves entrâs dens châque renchiê d’un bloco « câses ».',
-	'math_DoubleSubscript'         => 'Doux segnos sont rapondus a la méma bâsa, yon solèt est pèrmês.',
-	'math_DoubleSuperscript'       => 'Doux èxposents sont rapondus a la méma bâsa, yon solèt est pèrmês.',
-	'math_IllegalCharacter'        => 'Caractèro dèfendu dens la balyê buchiê',
+	'math_noblahtex'                        => 'Pôt pas ègzécutar blahtex, que devrêt étre a $1',
+	'math_AmbiguousInfix'                   => 'La posicion de « $1 » est pas cllâra (apondre des balises adicionèles « { ... } » pôt la rendre ples cllâra)',
+	'math_CannotChangeDirectory'            => 'Pôt pas changiér de dossiér de travâly',
+	'math_CannotCreateTexFile'              => 'Pôt pas crèar un fichiér TeX',
+	'math_CannotRunDvipng'                  => 'Pôt pas ègzécutar dvipng',
+	'math_CannotRunLatex'                   => 'Pôt pas ègzécutar LaTeX',
+	'math_CannotWritePngDirectory'          => 'Pôt pas ècrire dens lo dossiér des fichiérs PNG',
+	'math_CannotWriteTexFile'               => 'Pôt pas ècrire dens un fichiér TeX',
+	'math_CasesRowTooBig'                   => 'Pôt y avêr ren que doves entrâs dens châque renchiê d’un bloco « câses ».',
+	'math_DoubleSubscript'                  => 'Doux segnos sont rapondus a la méma bâsa, yon solèt est pèrmês.',
+	'math_DoubleSuperscript'                => 'Doux èxposents sont rapondus a la méma bâsa, yon solèt est pèrmês.',
+	'math_IllegalCharacter'                 => 'Caractèro dèfendu dens la balyê buchiê',
+	'math_IllegalCommandInMathMode'         => 'La comanda « $1 » est dèfendua en môdo math.',
+	'math_IllegalCommandInMathModeWithHint' => 'La comanda « $1 » est dèfendua en môdo math (pôt-étre voliâd-vos utilisar « $2 » a la place ?)',
+	'math_IllegalCommandInTextMode'         => 'La comanda « $1 » est dèfendua en môdo tèxte.',
+	'math_IllegalCommandInTextModeWithHint' => 'La comanda « $1 » est dèfendua en môdo tèxte (pôt-étre voliâd-vos utilisar « $2 » a la place ?)',
+	'math_IllegalDelimiter'                 => 'Dèlimitior dèfendu aprés « $1 »',
+	'math_IllegalFinalBackslash'            => 'Lo caractèro « \\ » pôt pas aparêtre a la fin de la buchiê.',
+	'math_IllegalNestedFontEncodings'       => 'Les comandes d’encodâjo de caractèros pôvont pas étre embrecâs.',
 );
 
 /** Galician (Galego)

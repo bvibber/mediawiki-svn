@@ -146,6 +146,22 @@ $messages['de'] = array(
 	'contributors-nosuchpage' => 'Die Seite $1 ist nicht vorhanden.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'contributors'             => 'Pśinosowarje',
+	'contributors-toolbox'     => 'Głowne pśinosowarje',
+	'contributors-legend'      => 'Głowne pśinosowarje boka pokazaś',
+	'contributors-target'      => 'Titel',
+	'contributors-submit'      => 'Pokazaś',
+	'contributors-subtitle'    => 'Głowne pśinosowarje wót $1',
+	'contributors-others-long' => '{{PLURAL:$1|Jo|Stej|Su}} hyšći $1 {{PLURAL:$1|dalšny pśinosowaŕ|dalšnej pśinosowarja|dalšne pśinosowarje}} toś togo boka.',
+	'contributors-others'      => 'a $1 {{PLURAL:$1|dalšny|dalšnej|dalšne}}',
+	'contributors-badtitle'    => 'Njepłaśiwy titel.',
+	'contributors-nosuchpage'  => 'Bok $1 njeeksistěrujo.',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

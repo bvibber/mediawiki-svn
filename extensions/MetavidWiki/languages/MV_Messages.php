@@ -525,6 +525,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'mv_duration_label'           => 'duración',
+	'mv_save_changes'             => 'Gardar Cambios',
 	'mv_edit'                     => 'Editar',
 	'mv_history'                  => 'Historial',
 	'mv_edit_title'               => 'Editar Texto',
@@ -535,6 +536,10 @@ $messages['gl'] = array(
 	'mv_search_and'               => 'e',
 	'mv_search_or'                => 'ou',
 	'mv_category'                 => 'categoría',
+	'mv_view_wiki_page'           => 'Ver páxina wiki',
+	'mv_sequence_add'             => 'Engadir clips',
+	'mv_sequence_add_manual'      => 'Engadir polo Nome',
+	'mv_add_clip_by_name'         => 'Engadir Clip polo Nome',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

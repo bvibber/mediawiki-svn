@@ -96,18 +96,24 @@ Les images non pertinentes pourront être effacées immédiatement. Voyez la pag
 	'multiupload-toolbox'              => 'Télécharger plusieurs fichiers',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Alma
+ */
 $messages['gl'] = array(
-	'multipleupload'    => 'Enviar ficheiros',
-	'multipleupload-ignoreallwarnings' => 'Ignorar \'\'\'todas as advertencias\'\'\' e gardar os ficheiros igual.',
-	'multipleupload-saveallfiles' => 'Gardar todos os ficheiros',
-	'multipleupload-addresswarnings' => 'Atenda as advertencias antes volver a enviar ficheiros.',
-	'multipleupload-text' => 'Envíe varios ficheiros aquí.
+	'multipleupload'                   => 'Enviar ficheiros',
+	'multipleupload-ignoreallwarnings' => "Ignorar '''todas as advertencias''' e gardar os ficheiros igual.",
+	'multipleupload-saveallfiles'      => 'Gardar todos os ficheiros',
+	'multipleupload-addresswarnings'   => 'Atenda as advertencias antes volver a enviar ficheiros.',
+	'multipleupload-text'              => "Envíe varios ficheiros aquí.
 
-Escolla "Navegar" (ou "Browse") e escolla cada un dos ficheiros que queira enviar. Pode enviar entre 1 e $1 ficheiros de cada vez.
+Escolla \"Navegar\" (ou \"Browse\") e escolla cada un dos ficheiros que queira enviar. Pode enviar entre 1 e \$1 ficheiros de cada vez.
 
-Pode introducir un \'\'\'Nome de ficheiro de destino\'\'\' opcional e fornecer un \'\'\'Resumo\'\'\' que describa o seu ficheiro.
+Pode introducir un '''Nome de ficheiro de destino''' opcional e fornecer un '''Resumo''' que describa o seu ficheiro.
 
-Os ficheiros inapropiados eliminaranse inmediatamente: vexa a [[{{MediaWiki:Multipleupload-page}}|política de eliminación de ficheiros]].',
+Os ficheiros inapropiados eliminaranse inmediatamente: vexa a [[{{MediaWiki:Multipleupload-page}}|política de eliminación de ficheiros]].",
+	'multiupload-fileuploaded'         => 'Arquivo cargado.',
+	'multiupload-toolbox'              => 'Cargar múltiples arquivos',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

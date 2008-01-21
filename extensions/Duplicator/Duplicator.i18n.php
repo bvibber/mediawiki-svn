@@ -254,8 +254,8 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'duplicator'                       => 'Duplicar unha páxina',
 	'duplicator-toolbox'               => 'Duplicar esta páxina',
-	'duplicator-header'                => 'Esta páxina permite a duplicación completa dun artigo e crea copias independentes
-de todos os historiais. Resulta útil cando se subdivide un artigo, etc.',
+	'duplicator-header'                => 'Esta páxina permite a duplicación completa dunha páxina e crea copias independentes
+de todos os historiais. Resulta útil cando se subdivide unha páxina, etc.',
 	'duplicator-options'               => 'Opcións',
 	'duplicator-source'                => 'Fonte:',
 	'duplicator-dest'                  => 'Destino:',

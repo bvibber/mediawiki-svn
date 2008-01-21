@@ -124,6 +124,8 @@ Un journal de surveillance des articles inscrits est disponible sur [[Special:Po
  * @author Alma
  */
 $messages['gl'] = array(
+	'povwatch_already_subscribed'    => 'Vostede está aínda subscrito a PovWatch',
+	'povwatch_subscribed'            => 'Vostede está agora subscrito a PovWatch',
 	'povwatch_invalid_title'         => 'O título especificado foi non válido',
 	'povwatch_subscriber_list'       => 'Unha [[Special:PovWatch/subscribers|listaxe de subscritores]] está dispoñíbel.',
 	'povwatch_subscriber_list_intro' => '<strong>Listaxe dos subscritores</strong>',
