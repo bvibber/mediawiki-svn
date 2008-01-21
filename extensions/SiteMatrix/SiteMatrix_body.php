@@ -166,7 +166,7 @@ class SiteMatrixPage extends SpecialPage {
 		$s .= "</table>\n";
 
 		# Specials
-		$s .= '<h2>' . wfMsg( 'sitematrix-others' ) . '</h2>';
+		$s .= '<h2 id="mw-sitematrix-others">' . wfMsg( 'sitematrix-others' ) . '</h2>';
 		$s .= '<ul>';
 		foreach ( $matrix->specials as $lang ) {
 
