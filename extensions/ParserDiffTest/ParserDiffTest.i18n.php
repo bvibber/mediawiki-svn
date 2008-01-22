@@ -140,19 +140,22 @@ $messages['gl'] = array(
 	'pdtest_diff'       => 'Diferenzas',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
 $messages['he'] = array(
-	'parserdifftest' => 'בדיקת השינויים במפענח',
-	'pdtest_no_target' => 'לא נבחר יעד.',
+	'parserdifftest'      => 'בדיקת השינויים במפענח',
+	'pdtest_no_target'    => 'לא נבחר יעד.',
 	'pdtest_page_missing' => 'הדף המבוקש לא נמצא במסד הנתונים.',
-	'pdtest_no_changes' => 'לא נמצאו שינויים.',
-	'pdtest_time_report' => '<b>$1</b> לקח $2 שניות, <b>$3</b> לקח $4 שניות.',
-	'pdtest_title' => 'כותרת הדף:',
-	'pdtest_text' => 'טקסט לבדיקה:',
-	'pdtest_ok' => 'שליחה',
-	'pdtest_get_text' => 'שימוש בטקסט מהדף',
-	'pdtest_diff' => 'הבדלים',
+	'pdtest_no_changes'   => 'לא נמצאו הבדלים.',
+	'pdtest_time_report'  => '<b>$1</b> לקח $2 שניות, <b>$3</b> לקח $4 שניות.',
+	'pdtest_title'        => 'כותרת הדף:',
+	'pdtest_text'         => 'טקסט לבדיקה:',
+	'pdtest_ok'           => 'שליחה',
+	'pdtest_get_text'     => 'שימוש בטקסט מהדף',
+	'pdtest_diff'         => 'הבדלים',
 	'pdtest_side_by_side' => 'השוואת הפלט',
-	'pdt_comparing_page' => 'משווה את פלט המפענחים מהדף [[$1]]',
+	'pdt_comparing_page'  => 'משווה את פלט המפענחים מהדף [[$1]]',
 );
 
 /** Croatian (Hrvatski)
