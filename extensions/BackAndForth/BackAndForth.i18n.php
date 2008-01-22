@@ -67,6 +67,14 @@ $messages['de'] = array(
 	'backforth-prev' => 'Vorherige ($1)',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'backforth-next' => 'Pśiducy ($1)',
+	'backforth-prev' => 'Pjerwjejšny ($1)',
+);
+
 $messages['el'] = array(
 	'backforth-next' => 'Επόμενο ($1)',
 	'backforth-prev' => 'Προηγούμενο ($1)',

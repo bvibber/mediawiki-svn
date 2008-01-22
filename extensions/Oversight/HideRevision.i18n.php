@@ -126,9 +126,11 @@ $messages['bn'] = array(
 	'hiderevision'               => 'স্থায়ীভাবে সংশোধনগুলি লুকিয়ে রাখা হোক',
 	'hiderevision-prompt'        => 'যে সংশোধনটি সরিয়ে নিতে হবে তার ক্রমসংখ্যা:',
 	'hiderevision-continue'      => 'অগ্রসর হোন',
+	'hiderevision-noreason'      => 'অবশ্যই আপনাকে মুছে ফেলার কারণ বর্ণনা করতে হবে।',
 	'hiderevision-status'        => 'সংশোধন $1: $2',
 	'hiderevision-error-missing' => 'ডাটাবেজে পাওয়া যায়নি।',
 	'oversight-log-hiderev'      => '$1 থেকে একটি সম্পাদনা মুছে ফেলা হয়েছে',
+	'oversight-view'             => 'বিস্তারিত',
 	'oversight-hidden'           => 'লুকায়িত সংশোধন',
 );
 

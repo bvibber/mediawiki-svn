@@ -171,15 +171,19 @@ $messages['ru'] = array(
 	'inspectcache-list'    => 'Все ключи',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
-	'inspectcache' => 'Inšpekcia vyrovnávacej pamäte',
-	'inspectcache-ok' => 'OK',#identical but defined
+	'inspectcache'         => 'Inšpekcia vyrovnávacej pamäte',
+	'inspectcache-ok'      => 'OK',
 	'inspectcache-general' => 'Všeobecná vyrovnávacia pamäť',
-	'inspectcache-parser' => 'Vyrovnávacia pamäť syntaktického analyzátora',
+	'inspectcache-parser'  => 'Vyrovnávacia pamäť syntaktického analyzátora',
 	'inspectcache-message' => 'Vyrovnávacia pamäť správ',
-	'inspectcache-get' => 'Získať',
-	'inspectcache-delete' => 'Zmazať',
+	'inspectcache-get'     => 'Získať',
+	'inspectcache-delete'  => 'Zmazať',
 	'inspectcache-deleted' => 'Zmazaná vyrovnávacia pamäť',
+	'inspectcache-list'    => 'Zoznam',
 );
 
 /** Seeltersk (Seeltersk)

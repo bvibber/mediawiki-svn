@@ -363,6 +363,13 @@ $messages['pms'] = array(
 	'countedits-nocontribs' => 'A-i é pa anco\' sta-ie gnun-a modìfica a sta wiki-sì.',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'countedits-username' => 'کارن-نوم:',
+);
+
 /* Portuguese (Lugusto) */
 $messages['pt'] = array(
 	'countedits' => 'Contador de edições',

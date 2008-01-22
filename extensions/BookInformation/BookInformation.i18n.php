@@ -574,6 +574,16 @@ $messages['pms'] = array(
 	'bookinfo-provider' => 'Sorgiss dij dat: $1',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'bookinfo-result-title'     => 'سرليک:',
+	'bookinfo-result-author'    => 'ليکوال:',
+	'bookinfo-result-publisher' => 'خپرونکی:',
+	'bookinfo-result-year'      => 'کال:',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author 555

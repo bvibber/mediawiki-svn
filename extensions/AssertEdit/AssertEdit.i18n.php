@@ -57,6 +57,14 @@ $messages['de'] = array(
 	'assert_edit_message' => 'Der angegebene Anspruch ($1) ist fehlgeschlagen.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'assert_edit_title'   => 'Wótpšašanje wuměnjenja jo se njeraźiło.',
+	'assert_edit_message' => 'Pódane twarźenje ($1) jo se njeraźiło.',
+);
+
 # فارسی (Huji)
 $messages['fa'] = array(
 	'assert_edit_title'   => 'تایید ناموفق',
@@ -203,6 +211,14 @@ $messages['pt'] = array(
 $messages['ru'] = array(
 	'assert_edit_title'   => 'Утверждение не выполняется',
 	'assert_edit_message' => 'Указанное утверждение ($1) не выполняется.',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'assert_edit_title'   => 'Этии толоруллубат',
+	'assert_edit_message' => 'Этиллибит ($1) этии толоруллубат',
 );
 
 /** Slovak (Slovenčina)

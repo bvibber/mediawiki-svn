@@ -66,6 +66,15 @@ $messages['bg'] = array(
 Името на файла се изписва без представката "{{ns:image}}:"',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'filepath'        => 'ফাইলের পাথ',
+	'filepath_page'   => 'ফাইল:',
+	'filepath_submit' => 'পথ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

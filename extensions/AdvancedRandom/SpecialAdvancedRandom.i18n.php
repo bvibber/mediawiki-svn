@@ -50,6 +50,13 @@ $messages['de'] = array(
 	'advancedrandom' => 'Zufällige Seite (erweitert)',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'advancedrandom' => 'Rozšyrjony pśipadny bok',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

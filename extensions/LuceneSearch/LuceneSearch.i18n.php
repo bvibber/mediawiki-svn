@@ -145,8 +145,20 @@ $1
  * @author Bellayet
  */
 $messages['bn'] = array(
-	'searchdidyoumean' => 'আপনি কি বুঝাচ্ছেন: "<a href="$1">$2</a>"?',
-	'searchall'        => 'সমস্ত',
+	'searchnumber'          => '<strong>ফলাফলসমূহ $3 এর $1-$2</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>পূর্ববর্তী</span>",
+	'searchnext'            => "<span style='font-size: small'>পরবর্তী</span> &#x00BB;",
+	'lucene-searchscore'    => 'প্রাসঙ্গিকতা: $1%',
+	'lucene-resultsize'     => '$1 ($2 শব্দসমূহ)',
+	'searchdidyoumean'      => 'আপনি কি বুঝাচ্ছেন: "<a href="$1">$2</a>"?',
+	'searchnoresults'       => 'দুঃখিত, আপনার জিজ্ঞাসার সাথে হুবুহু মিলে এমন কিছু নাই।',
+	'searchnearmatches'     => '<b>এই পাতা সমূহ আপনার জিজ্ঞাসিত শিরোনামের মত:</b>',
+	'lucenepowersearchtext' => 'নামস্থানে অনুসন্ধান:
+
+$1
+
+অনুসন্ধান করা হয়েছে $3 $9 $10 এর জন্য',
+	'searchall'             => 'সমস্ত',
 );
 
 $messages['br'] = array(

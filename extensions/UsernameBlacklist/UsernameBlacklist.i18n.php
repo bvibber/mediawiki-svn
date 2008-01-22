@@ -349,6 +349,14 @@ $messages['lo'] = array(
 	'blacklistedusername' => 'ຊື່ຜູ້ໃຊ້ ໃນ ບັນຊີດຳ',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'blacklistedusername'     => 'Juodajame sąraše esantis naudotojo vardas',
+	'blacklistedusernametext' => 'Naudotojo vardas, kurį pasirinkote sutampa su [[MediaWiki:Usernameblacklist|vardu juodajame sąraše]]. Prašome pasirinkti kitą.',
+);
+
 $messages['nds'] = array(
 	'blacklistedusername' => 'Brukernaam op de swarte List',
 	'blacklistedusernametext' => 'De Brukernaam den du utsöcht hest, liekt en Naam vun de [[{{ns:8}}:Usernameblacklist|swarte List för Brukernaams]]. Söök di en annern ut.',

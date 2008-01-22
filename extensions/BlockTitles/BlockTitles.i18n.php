@@ -50,9 +50,10 @@ $messages['bcl'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Петър Петров
  */
 $messages['bg'] = array(
-	'block_title_error_page_title' => 'Забранено заглавие',
+	'block_title_error_page_title' => 'Блокирано заглавие',
 	'block_title_error'            => 'Заглавието на тази страница е блокирано. Това не позволява страницата да бъде създадена.',
 );
 
@@ -75,6 +76,14 @@ $messages['br'] = array(
 $messages['de'] = array(
 	'block_title_error_page_title' => 'Sperre Seitenname',
 	'block_title_error'            => 'Entschuldigung, aber eine Seite mit diesem Namen darf nicht gespeichert werden.',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'block_title_error_page_title' => 'Titel blokěrowany',
+	'block_title_error'            => 'Wódaj, titel toś teje strony njesmějo se składowaś.',
 );
 
 /** Greek (Ελληνικά)

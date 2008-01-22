@@ -81,6 +81,18 @@ $messages['bg'] = array(
 	'expand_templates_preview'         => 'Преглед',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'expand_templates_input'           => 'ইনপুটকৃত লেখা:',
+	'expand_templates_output'          => 'ফলাফল',
+	'expand_templates_xml_output'      => 'XML আউটপুট',
+	'expand_templates_ok'              => 'ঠিক আছে',
+	'expand_templates_remove_comments' => 'মন্তব্য মুছে ফেলো',
+	'expand_templates_preview'         => 'প্রাকদর্শন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

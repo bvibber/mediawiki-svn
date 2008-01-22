@@ -332,6 +332,31 @@ $messages['bn'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|ভোট দিন]]
 * [[Special:Boardvote/list|এ পর্যন্ত দেওয়া ভোটের তালিকা]]
 * [[Special:Boardvote/dump|গুপ্তায়িত নির্বাচন রেকর্ড ডাম্প করা হোক]]',
+	'boardvote_intro'        => '<p>উইকিমিডিয়া বোর্ড অফ ট্রাস্টিজের দ্বিতীয় নির্বাচনে আপনাদের স্বাগতম। আমরা নির্বাচন আয়োজন করছি যেখানে দুইজন ব্যক্তি নির্বাচিত হবেন এবং যারা বিভিন্ন উইকিমিডিয়া প্রকল্পসমূহে ব্যবহারকারী সম্প্রদায়ের প্রতিনিধিত্ব করবেন। উইকিমিডিয়া প্রকল্পগুলো ভবিষ্যতে কোন দিকে পা বাড়াবে তারা এ সিদ্ধান্ত নিতে সাহায্য করবেন, তারা তা করবেন ব্যক্তিগত ও দলগত ভাবে, এবং তারা বোর্ড অফ ট্রাস্টিজে <em>আপনার</em> আগ্রহ এবং দাবিগুলোর প্রতিনিধিত্ব করবেন। কিভাবে অর্থের যোগান এবং সংগৃহীত অর্থের যথার্থ প্রয়োগ করা যায় তা সিদ্ধান্ত নিবেন।</p>
+
+<p>দয়াকরে ভোট দেওয়ার আগে প্রার্থীদের বক্তব্য এবং প্রশ্নের উত্তরসমূহ ভাল করে পড়ে নিন। প্রত্যেক প্রার্থী ব্যবহারকারীদের প্রতিনিধিত্ব করে, যারা ইতিমধ্যে তাদের মূল্যবান সময়, শ্রম এবং চেষ্টার দ্বারা  প্রকল্পসমূহে মানব জ্ঞানের উন্মুক্ত বিতরণের একটি সুন্দর পরিবেশ তৈরি করতে সাহায্য করেছেন।</p>
+
+<p>আপনি ইচ্ছামত একাধিক প্রার্থীর জন্য ভোট দিতে পারেন। প্রত্যেক পদের জন্য প্রার্থী যিনি সবচেয়ে বেশি ভোট পাবেন তাকে ঐ পদের জন্য বিজয়ী ঘোষণা করা হবে। সমান সংখ্যক ভোট প্রাপ্ত হলে, চূড়ান্ত নির্বাচন অনুষ্ঠিত হবে।</p>
+
+<p>আরও তথ্যের জন্য, দেখুন:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">নির্বাচন সংক্রান্ত প্রশ্নসমূহ</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006" class="external">প্রার্থীগণ</a></li></ul>',
+	'boardvote_intro_change' => '<p>আপনি আগে ভোট দিয়েছে। আপনি নিচের ফরম থেকে আপনার ভোট পরিবর্তন করতে পারেন। আপনি যে প্রার্থীকে অনুমোদন করেন দয়াকরে প্রত্যেকের পাশের চেক বক্সে টিক দিন।</p>',
+	'boardvote_entered'      => 'ধন্যবাদ, আপনার ভোট গন্য করা হয়েছে।
+
+আপনি চাইলে, নিম্নের বিস্তারিত রেকর্ড করে রাখতে পারেন। আপনার ভোটিং রেকর্ড হল:
+
+<pre>$1</pre>
+
+এটি নির্বাচল প্রশাসকের পাবলিক কি (public key) দ্বারা এনক্রিপ্ট করা হয়েছে:
+
+<pre>$2</pre>
+
+নিম্নে এর এনক্রিপ্ট সংস্করণ রয়েছে। এটি [[Special:Boardvote/dump]] এ জনসমক্ষে দেখানো হবে।
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|পেছনে]]',
 	'boardvote_novotes'      => 'কেউ এখনও ভোট দেয়নি।',
 	'boardvote_time'         => 'সময়',
 	'boardvote_user'         => 'ব্যবহারকারী',
@@ -2154,6 +2179,17 @@ A sarà ëmnà a sta màchina esterna antra 20 second. [$1 Ch;a bata ambelessì]
 Ch\'a ten-a da ment che ën bogiandse a peul arsèive n\'avis dla sigurëssa ëd sò calcolator, rësgoard a un certificà sensa firma.',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'boardvote_time'     => 'وخت',
+	'boardvote_user'     => 'کارونکی',
+	'boardvote_days'     => 'ورځې',
+	'boardvote_dumplink' => 'دلته وټوکۍ',
+	'boardvote_welcome'  => "'''$1''' ته ښه راغلاست!",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author 555
@@ -2322,13 +2358,30 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
-	'boardvote_time'       => 'Кэм',
-	'boardvote_user'       => 'Кыттааччы',
-	'boardvote_edits'      => 'Көннөрүүлэр',
-	'boardvote_days'       => 'Күннэр',
-	'boardvote_dumplink'   => 'Маны баттаа',
-	'boardvote_edits_many' => 'элбэх',
-	'boardvote_welcome'    => "Нөрүөн нөргүй, '''$1'''!",
+	'boardvote'              => '"Викимедиа" Сүбэтин быыбара',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Куоластыырга]]
+* [[Special:Boardvote/list|Куоластаабыттар испииһэктэрэ]]
+* [[Special:Boardvote/dump|Куоластааһын хаамыыта (ким туохха куоластаабыта көрдөрүллүбэт)]]',
+	'boardvote_novotes'      => 'Ким да куоластыы илик',
+	'boardvote_time'         => 'Кэм',
+	'boardvote_user'         => 'Кыттааччы',
+	'boardvote_edits'        => 'Көннөрүүлэр',
+	'boardvote_days'         => 'Күннэр',
+	'boardvote_dumplink'     => 'Маны баттаа',
+	'boardvote_submit'       => 'OK',
+	'boardvote_strike'       => 'Соторго',
+	'boardvote_unstrike'     => 'Сотууну суох гынарга',
+	'boardvote_needadmin'    => 'Бу дьайыыны быыбары тэрийээччилэр эрэ оҥорор кыахтаахтар.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">«Викимедиа» пуонда Сүбэтигэр быыбар </a>: Куоластааһын от ыйын 12 күнүгэр дылы барар',
+	'boardvote_notstarted'   => 'Куоластааһын саҕалана илик',
+	'boardvote_closed'       => 'Куоластааһын түмүктэннэ, [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En быыбар түмүгүн манна көр].',
+	'boardvote_edits_many'   => 'элбэх',
+	'group-boardvote'        => 'Быыбар хамыыһыйатын чилиэннэрэ',
+	'group-boardvote-member' => 'Быыбар хамыыһыйатын чилиэнэ',
+	'grouppage-boardvote'    => '{{ns:project}}:Быыбар хамыыһыйатын чилиэнэ',
+	'boardvote_blocked'      => 'Бука диэн баалаама, эн бу биикигэ тугу эмит гынарыҥ бобуллубут. Онон сатаан куоластыыр кыаҕыҥ суох.',
+	'boardvote_welcome'      => "Нөрүөн нөргүй, '''$1'''!",
+	'go_to_board_vote'       => 'Викимедиа Сүбэтин быыбара - 2007',
 );
 
 /** Slovak (Slovenčina)

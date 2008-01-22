@@ -65,8 +65,10 @@ $messages['bg'] = array(
  * @author Bellayet
  */
 $messages['bn'] = array(
-	'linksearch'    => 'ওয়েব লিঙ্কসমূহ অনুসন্ধান করো',
-	'linksearch-ok' => 'অনুসন্ধান',
+	'linksearch'      => 'ওয়েব লিঙ্কসমূহ অনুসন্ধান করো',
+	'linksearch-ns'   => 'নামস্থান:',
+	'linksearch-ok'   => 'অনুসন্ধান',
+	'linksearch-line' => '$2 থেকে $1 তে লিঙ্ক করা হয়েছে',
 );
 
 /** Breton (Brezhoneg)

@@ -239,6 +239,13 @@ $messages['lb'] = array(
 	'pdtest_diff'         => 'Ënnerscheed',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'pdtest_ok' => 'Gerai',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

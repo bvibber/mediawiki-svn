@@ -43,6 +43,13 @@ $messages['bg'] = array(
 	'deletedcontributions' => 'Изтрити приноси на потребител',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'deletedcontributions' => 'মুছে ফেলা ব্যবহারকারী অবদান',
+);
+
 $messages['ca'] = array(
 	'deletedcontributions' => 'Contribucions esborrades',
 );

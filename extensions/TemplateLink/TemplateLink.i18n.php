@@ -45,6 +45,13 @@ $messages['dsb'] = array(
 	'templatelink_newtitle' => '$1 (wuměnjony)',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'templatelink_empty' => 'Πρέπει να ορίσετε μια παράμετρο.',
+);
+
 $messages['fr'] = array(
 		'templatelink' => 'Lien vers modèle',
 		'templatelink_empty' => 'Vous devez saisir un paramètre.',

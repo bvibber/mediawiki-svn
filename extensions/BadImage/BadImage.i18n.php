@@ -195,6 +195,31 @@ $messages['de'] = array(
 	'badimages-log-remove' => 'entfernte [[$1]] von der Liste unerwünschter Bilder',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'badimages'                => 'Lisćina špatnych wobrazow',
+	'badimages-add-btn'        => 'Pśidaś',
+	'badimages-added'          => '$1 bu lisćinje pśidany.',
+	'badimages-count'          => "Lisćina špatnych wobrazow wopśimjejo '''$1''' {{PLURAL:$1|wobraz|wobrazej|wobrazy}}.",
+	'badimages-name'           => 'Mě:',
+	'badimages-not-added'      => 'Wobraz njeda se pśidaś.',
+	'badimages-not-removed'    => 'Wobraz njeda se wótwónoźeś.',
+	'badimages-reason'         => 'Pśicyna:',
+	'badimages-remove'         => '(wótwónoźeś)',
+	'badimages-remove-btn'     => 'Wótwónoźeś',
+	'badimages-remove-confirm' => 'Pšosym wobkšuś, až coš $1 z lisćiny wótwónoźeś.',
+	'badimages-removed'        => '$1 jo se z lisćiny wótwónoźeł.',
+	'badimages-subheading'     => 'Aktualne zapiski',
+	'badimages-unprivileged'   => '(Njamaš dowólnosć lisćinu změniś)',
+	'badimages-log-name'       => 'Lisćina špatnych wobrazow',
+	'badimages-log-header'     => 'To jo protokol změnow w [[{{MediaWiki:Badimages-page}}|lisćinje špatnych wobrazow]].',
+	'badimages-log-add'        => 'jo [[$1]] k lisćinje špatnych wobrazow pśidał',
+	'badimages-log-remove'     => 'jo [[$1]] z lisćiny špatnych wobrazow wótwónoźeł.',
+	'badimages-page'           => '{{ns:help}}:Lisćina špatnych wobrazow',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -657,6 +682,13 @@ $messages['pms'] = array(
 	'badimages-log-header' => 'Sossì a l\'é lòn ch\'a l\'é riva-ie a la [[{{MediaWiki:Badimages-page}}|lista dle figure ch\'a venta deje deuit]].',
 	'badimages-log-add' => '[[$1]] a l\'é stait marcà ch\'a venta deje deuit.',
 	'badimages-log-remove' => '[[$1]] a l\'é stait gavà da lòn ch\'a venta deje deuit.',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'badimages-name' => 'نوم:',
 );
 
 /* Portuguese (Lugusto) */

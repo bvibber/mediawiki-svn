@@ -66,6 +66,15 @@ $messages['de'] = array(
 	'ajax-se-idling'  => '(vor $1 s)',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'ajax-se-title'   => 'Wobźěła se tuchylu wót:',
+	'ajax-se-pending' => 'caka se na aktualizaciju... (klikni na toś ten kašćik abo chop z wobźěłanim)',
+	'ajax-se-idling'  => '(pśed $1 s)',
+);
+
 $messages['el'] = array(
 	'ajax-se-title'   => 'Τρέχουσα επεξεργασία:',
 	'ajax-se-pending' => 'εκκρεμή ανανέωση ... (κάντε κλικ σε αυτό το κουτί ή ξεκινήστε την επεξεργασία)',
