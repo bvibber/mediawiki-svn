@@ -141,6 +141,14 @@ $1
 	'searchall'             => 'всички',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'searchdidyoumean' => 'আপনি কি বুঝাচ্ছেন: "<a href="$1">$2</a>"?',
+	'searchall'        => 'সমস্ত',
+);
+
 $messages['br'] = array(
 	'searchnoresults'       => 'Siwazh deoc\'h, n\'eus ket bet kavet respont ebet o klotañ-rik gant ho koulenn.',
 );
