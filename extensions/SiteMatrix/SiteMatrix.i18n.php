@@ -135,6 +135,16 @@ $messages['de'] = array(
 	'sitematrix-others'   => 'Weitere Wikimedia-Projekte',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'sitematrix'          => 'Lisćina wikijow Wikimedije',
+	'sitematrix-language' => 'Rěc',
+	'sitematrix-project'  => 'Projektowe mě, interprojektowy wótkaz a interwiki-wótkaz',
+	'sitematrix-others'   => 'Dalšne projekty Wikimedije',
+);
+
 $messages['el'] = array(
 	'sitematrix-language' => 'Γλώσσα',
 );

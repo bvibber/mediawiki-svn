@@ -78,7 +78,7 @@ $messages['bn'] = array(
 	'inputbox-error-bad-type' => '"$1" ধরণের ইনপুট বক্স নেই। দয়া করে "create", "comment", "search" অথবা "search2" নির্ধারণ করুন।',
 	'tryexact'                => 'ঠিক এই নামের নিবন্ধে যান',
 	'searchfulltext'          => 'সব বিষয়বস্তুতে খুঁজুন',
-	'createarticle'           => 'নিবন্ধ শুরু করুন',
+	'createarticle'           => 'নিবন্ধ শুরু করো',
 );
 
 /** Breton (Brezhoneg)
@@ -556,6 +556,14 @@ $messages['pms'] = array(
 	'tryexact'                => 'Sërca che a sia pròpe parej',
 	'searchfulltext'          => 'Sërca an tut ël test',
 	'createarticle'           => 'Crea n\'artìcol',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'searchfulltext' => 'بشپړ متن پلټل',
+	'createarticle'  => 'نوې ليکنه پيلول',
 );
 
 $messages['pt'] = array(

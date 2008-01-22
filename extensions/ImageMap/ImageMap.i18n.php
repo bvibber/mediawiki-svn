@@ -57,6 +57,13 @@ $messages['bg'] = array(
 	'imagemap_description'        => 'Информация за изображението',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'imagemap_description' => 'এই চিত্র সম্পর্কে',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */
@@ -425,6 +432,13 @@ $messages['pms'] = array(
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: coordinà nen bon-a a la riga $1, a l\'ha da esse un nùmer',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: specìfica dla descrission nen bon-a, a l\'ha da esse un-a ëd coste-sì: <tt>$1</tt>',
 	'imagemap_description'          => 'Rësgoard a sta figura-sì',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'imagemap_description' => 'ددې انځور په اړه',
 );
 
 /* Portuguese (Lugusto) */

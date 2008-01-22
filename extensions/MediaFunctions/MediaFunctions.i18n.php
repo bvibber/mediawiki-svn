@@ -101,6 +101,14 @@ $messages['pms'] = array(
 	'mediafunctions-not-exist'     => '"$1" a-i é pa',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'mediafunctions-invalid-title' => '"$1" يو ناسم سرليک دی',
+	'mediafunctions-not-exist'     => '"$1" هېڅ شتون نه لري',
+);
+
 /** Russian (Русский)
  * @author VasilievVV
  */

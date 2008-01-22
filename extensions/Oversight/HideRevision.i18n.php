@@ -119,12 +119,17 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Zaheen
  */
 $messages['bn'] = array(
-	'hiderevision'          => 'স্থায়ীভাবে সংশোধনগুলি লুকিয়ে রাখা হোক',
-	'hiderevision-prompt'   => 'যে সংশোধনটি সরিয়ে নিতে হবে তার ক্রমসংখ্যা:',
-	'hiderevision-continue' => 'অগ্রসর হোন',
+	'hiderevision'               => 'স্থায়ীভাবে সংশোধনগুলি লুকিয়ে রাখা হোক',
+	'hiderevision-prompt'        => 'যে সংশোধনটি সরিয়ে নিতে হবে তার ক্রমসংখ্যা:',
+	'hiderevision-continue'      => 'অগ্রসর হোন',
+	'hiderevision-status'        => 'সংশোধন $1: $2',
+	'hiderevision-error-missing' => 'ডাটাবেজে পাওয়া যায়নি।',
+	'oversight-log-hiderev'      => '$1 থেকে একটি সম্পাদনা মুছে ফেলা হয়েছে',
+	'oversight-hidden'           => 'লুকায়িত সংশোধন',
 );
 
 /* Corse (Corsu)*/
@@ -751,6 +756,13 @@ $messages['lb'] = array(
 	'oversight-log-hiderev'       => 'En Ännerung vum $1 geläscht.',
 	'oversight-view'              => 'Detailer',
 	'oversight-hidden'            => 'Verstoppte Versioun',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'hiderevision-continue' => 'Tęsti',
 );
 
 /** Dutch (Nederlands)

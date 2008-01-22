@@ -316,6 +316,14 @@ $messages['sv'] = array(
 	'block_title_error'            => 'Det är inte tillåtet att spara en sida under denna titel.',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'block_title_error_page_title' => 'Tên trang bị khóa',
+	'block_title_error'            => 'Xin lỗi, không được phép lưu tên trang này.',
+);
+
 /**
  *
  * Cantonese (Shinjiman)

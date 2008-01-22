@@ -195,7 +195,17 @@ $messages['oc'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
-	'lookupuser' => 'Показать сведения об участнике',
+	'lookupuser'                   => 'Показать сведения об участнике',
+	'lookupuser_intro'             => 'Введите имя участника, чтобы просмотреть его пользовательские настройки.',
+	'lookupuser_nonexistent'       => 'Ошибка. Участника не существует',
+	'lookupuser_authenticated'     => 'Аутентификация по эл. почте: $1',
+	'lookupuser_not_authenticated' => 'не аутентифицирован',
+	'lookupuser_id'                => 'ID участника: <tt>#$1</tt>',
+	'lookupuser_email'             => 'Эл. почта: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'          => 'Настоящее имя: $1',
+	'lookupuser_registration'      => 'Дата регистрации: $1',
+	'lookupuser_touched'           => 'Последнее обновление записи участника: $1',
+	'lookupuser_useroptions'       => 'Настройки участника:',
 );
 
 /** Slovak (Slovenčina)

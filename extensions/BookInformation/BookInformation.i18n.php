@@ -708,9 +708,20 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'bookinfo-header'           => 'పుస్తకపు సమాచారం',
+	'bookinfo-result-title'     => 'శీర్షిక:',
 	'bookinfo-result-author'    => 'రచయిత:',
 	'bookinfo-result-publisher' => 'ప్రచురణకర్త:',
 	'bookinfo-result-year'      => 'సంవత్సరం:',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'bookinfo-header'        => 'Informasaun kona-ba livru',
+	'bookinfo-result-title'  => 'Títulu:',
+	'bookinfo-result-author' => 'Autór:',
+	'bookinfo-result-year'   => 'Tinan:',
 );
 
 /** Turkish (Türkçe)

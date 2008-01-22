@@ -47,6 +47,21 @@ $messages['bg'] = array(
 	'pdtest_diff' => 'Разлики',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'pdtest_no_target'    => 'কোন লক্ষ্য নির্ধারিত হয়নি।',
+	'pdtest_page_missing' => 'ডাটাবেজে এ ধরনের পাতা খুজে পাওয়া যায়নি।',
+	'pdtest_no_changes'   => 'কোন পরিবর্তন পাওয়া যায়নি।',
+	'pdtest_time_report'  => '<b>$1</b> সময় নেয় $2 সেকেন্ড, <b>$3</b> সময় নেয় $4 সেকেন্ড।',
+	'pdtest_text'         => 'লেখা ইনপুট:',
+	'pdtest_ok'           => 'ঠিকা আছে',
+	'pdtest_get_text'     => 'পাতা থেকে লেখা পাওয়া যাবে',
+	'pdtest_diff'         => 'পার্থক্যসমূহ',
+	'pdtest_side_by_side' => 'ফলাফলের তুলনা',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */

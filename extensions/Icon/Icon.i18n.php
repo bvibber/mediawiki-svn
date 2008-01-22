@@ -42,6 +42,14 @@ $messages['de'] = array(
 	'icon-badwidth' => 'Falsche Breite',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'icon-badimage' => 'Špatny wobraz',
+	'icon-badwidth' => 'Špatna šyrokosć',
+);
+
 $messages['fr'] = array(
 	'icon-badimage' => 'Image corrompue',
 	'icon-badwidth' => 'Largeur erronée',

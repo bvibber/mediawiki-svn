@@ -27,6 +27,14 @@ $messages['de'] = array(
 	'stalepages-summary' => 'Dies ist eine Liste von Seiten, die in den letzten $1 Tagen nicht bearbeitet wurden.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'stalepages'         => 'Stare boki',
+	'stalepages-summary' => 'Toś to jo lisćina bokow, kótarež njebuchu za slědnych $1 dnjow wobźěłane.',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

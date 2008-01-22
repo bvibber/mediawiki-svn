@@ -50,6 +50,14 @@ $messages['de'] = array(
 	'selectcategory-subtitle' => 'Shift-Maus um mehrere nachfolgende Einträge zu (de-)selektieren, Strg-Maus um einzelne Einträge zu (de-)selektieren.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'selectcategory-title'    => 'Kategorije wubraś',
+	'selectcategory-subtitle' => 'Umsch-myš, aby někotare naslědujuce zapiski wubrał, Strg-myš, aby jadnotliwe zapiski wubrał.',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -158,7 +166,7 @@ $messages['pms'] = array(
 /** Portuguese (Português)
  * @author Malafaya
  */
-$messages['t'] = array(
+$messages['pt'] = array(
 	'selectcategory-title'    => 'Seleccionar categorias',
 	'selectcategory-subtitle' => 'Shift-clique para seleccionar múltiplas entradas contíguas, Ctrl-clique para seleccionar entradas não-contíguas.',
 );
@@ -204,6 +212,7 @@ $messages['zh-hant'] = array(
 );
 
 $messages['de-formal'] = $messages['de'];
+
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];
 $messages['zh-hk'] = $messages['zh-hant'];

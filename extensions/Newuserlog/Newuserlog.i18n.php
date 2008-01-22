@@ -602,6 +602,9 @@ $messages['vec'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'newuserlogpage'           => 'Nhật trình mở tài khoản',
+	'newuserlogpagetext'       => 'Đây là danh sách những tài khoản thành viên mở lên gần đây',
+	'newuserlog-create-entry'  => 'Tài khoản mới',
 	'newuserlog-create2-entry' => 'đã tạo tài khoản mới với tên $1',
 );
 

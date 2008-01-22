@@ -165,7 +165,7 @@ $messages['hu'] = array(
 	'passwordreset-success'            => 'A(z) $1 azonosítószámú felhasználó jelszava be lett állítva',
 	'passwordreset-disableuser'        => 'Felhasználói fiók letiltása?',
 	'passwordreset-disableuserexplain' => '(egy érvénytelen hasht állít be jelszónak, így a felhasználó nem tud bejelentkezni)',
-	'passwordreset-disablesuccess'     => 'A felhasználói fiók le lett tiltve (azonosító: $1)',
+	'passwordreset-disablesuccess'     => 'A felhasználói fiók le lett tiltva (azonosító: $1)',
 	'passwordreset-accountdisabled'    => 'A felhasználói fiók le lett tiltva',
 );
 

@@ -58,9 +58,13 @@ $messages['ca'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|enllaç|enllaços}} a $3',
 );
 
+/** Czech (Česky)
+ * @author Li-sung
+ */
 $messages['cs'] = array(
-	'crossnamespacelinks'     => 'Odkazy napříč jmennými prostory',
-	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|odkaz|odkazy|odkazů}} do $3'
+	'crossnamespacelinks'         => 'Odkazy napříč jmennými prostory',
+	'crossnamespacelinks-summary' => 'Na této stránce je seznam odkazů ze stránek v hlavním jmenném prostoru na stránky v jiném jmenném prostoru (kromě prostorů {{ns:special}}, {{ns:talk}}, {{ns:project}} a {{ns:template}}), což se nedoporučuje používat.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|odkaz|odkazy|odkazů}} do $3',
 );
 
 $messages['de'] = array(
@@ -390,6 +394,15 @@ $messages['tr'] = array(
 $messages['vec'] = array(
 	'crossnamespacelinks'         => 'Collegamenti da un namespace a l\'altro',
 	'crossnamespacelinkstext'     => '$1: $2 cołegamento/i $3',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'crossnamespacelinks'         => 'Liên kết qua tên miền không gian',
+	'crossnamespacelinks-summary' => 'Trang này liệt danh sách các liên kết từ một trang ở không gian tên chính đến một trang ở không gian tên khác (trừ không gian tên {{ns:special}}, {{ns:talk}}, {{ns:project}} và {{ns:template}}), là điều không khuyến khích sử dụng.',
+	'crossnamespacelinkstext'     => '$1: $2 liên kết đến $3',
 );
 
 /** Volapük (Volapük)

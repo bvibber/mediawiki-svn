@@ -180,6 +180,7 @@ $messages['ru'] = array(
 	'importfreeimages_owner'                 => 'Автор',
 	'importfreeimages_importthis'            => 'Импортировать это',
 	'importfreeimages_next'                  => 'Следующие $1',
+	'importfreeimages_filefromflickr'        => '$1 авторства <b>[$2]</b> с Flickr. Исходный адрес',
 	'importfreeimages_promptuserforfilename' => 'Пожалуйста, введите новое имя файла:',
 	'importfreeimages_returntoform'          => "Или нажмите <a href='$1'>здесь</a>, чтобы вернуться к вашим результатам поиска.",
 );

@@ -36,6 +36,15 @@ $messages['de'] = array(
                 'templatelink_newtitle' => '$1 (ersetzt)',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'templatelink'          => 'Pśedłogowy wótkaz',
+	'templatelink_empty'    => 'Musyš parameter pódaś.',
+	'templatelink_newtitle' => '$1 (wuměnjony)',
+);
+
 $messages['fr'] = array(
 		'templatelink' => 'Lien vers modèle',
 		'templatelink_empty' => 'Vous devez saisir un paramètre.',

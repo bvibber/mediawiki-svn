@@ -115,6 +115,13 @@ $messages['pms'] = array(
 	'donationform-submit' => 'Fé na donassion con PayPal',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'donationform-submit' => 'د PayPal له لوري خپله بسپنه راولېږۍ',
+);
+
 $messages['pt'] = array(
 	'donationform-submit' => 'Doe pelo PayPal',
 );

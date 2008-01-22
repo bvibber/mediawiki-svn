@@ -61,6 +61,14 @@ $messages['bg'] = array(
 	'linksearch-error' => 'Заместващите знаци могат да стоят само в началото на името на хоста.',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'linksearch'    => 'ওয়েব লিঙ্কসমূহ অনুসন্ধান করো',
+	'linksearch-ok' => 'অনুসন্ধান',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -77,8 +85,14 @@ $messages['co'] = array(
 	'linksearch-ok'    => 'Ricerca',
 );
 
+/** Czech (Česky)
+ * @author Li-sung
+ */
 $messages['cs'] = array(
 	'linksearch'       => 'Hledání externích odkazů',
+	'linksearch-pat'   => 'Vyhledávací vzor:',
+	'linksearch-ns'    => 'Jmenný prostor:',
+	'linksearch-ok'    => 'Hledat',
 	'linksearch-text'  => 'Lze používat zástupné znaky, např. „*.wikipedia.org“.',
 	'linksearch-line'  => '$2 odkazuje na $1',
 	'linksearch-error' => 'Zástupné znaky lze použít jen na začátku doménového jména.',

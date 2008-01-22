@@ -23,6 +23,15 @@ $messages['de'] = array(
 	'signaturelogentry'     => 'hat das Dokument $1 unterschrieben',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'signaturelogpage'     => 'Protokol pódpisow',
+	'signaturelogpagetext' => 'Toś to jo protokol pódpisow za dokumenty, kótarež buchu pśez [[Special:SignDocument]] pśidane.',
+	'signaturelogentry'    => 'jo dokument $1 pódpisał.',
+);
+
 $messages['fr'] = array(
 	'signaturelogpage' => 'Journal des signatures',
 	'signaturelogpagetext' => 'Ceci est le journal de toutes les signatures ajoutées aux documents via [[Special:SignDocument]].',
