@@ -40,6 +40,24 @@ $messages['ar'] = array(
 	'usagestatisticsbadstartend' => '<b>تاريخ <i>بدء</i> و/أو <i>انتهاء</i> سيء!</b>',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'specialuserstats'           => "Estadístiques d'usu",
+	'usagestatistics'            => "Estadístiques d'usu",
+	'usagestatisticsfor'         => "<h2>Estadístiques d'usu de [[:user:$1|$1]]</h2>",
+	'usagestatisticsallusers'    => 'Tolos usuarios',
+	'usagestatisticsinterval'    => 'Intervalu',
+	'usagestatisticstype'        => 'Triba',
+	'usagestatisticsstart'       => 'Fecha inicial',
+	'usagestatisticsend'         => 'Fecha final',
+	'usagestatisticssubmit'      => 'Xenerar estadístiques',
+	'usagestatisticsnostart'     => '* <font color=red>Por favor especifica una fecha inicial</font>',
+	'usagestatisticsnoend'       => '* <font color=red>Por favor especifica una fecha final</font>',
+	'usagestatisticsbadstartend' => '<b>¡Fecha <i>Inicial</i> y/o <i>Final</i> non válides!</b>',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */

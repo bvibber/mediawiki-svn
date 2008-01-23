@@ -951,6 +951,18 @@ $messages['pms'] = array(
 	'ogg-desc-link' => 'Rësgoard a st\'archivi',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'ogg-short-audio' => 'Ogg $1 غږيزه دوتنه، $2',
+	'ogg-play'        => 'غږول',
+	'ogg-play-sound'  => 'غږ غږول',
+	'ogg-dismiss'     => 'تړل',
+	'ogg-download'    => 'دوتنه ښکته کول',
+	'ogg-desc-link'   => 'د همدې دوتنې په اړه',
+);
+
 /** Portuguese (Português)
  * @author 555
  * @author Malafaya
@@ -1139,9 +1151,11 @@ $messages['sv'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
 	'ogg-player-videoElement' => 'Dilet: <video>',
+	'ogg-more'                => 'Pluikos...',
 	'ogg-dismiss'             => 'Färmükön',
 	'ogg-desc-link'           => 'Tefü ragiv at',
 );

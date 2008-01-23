@@ -77,6 +77,7 @@ $messages['bg'] = array(
 	'spamregex-block-success'        => 'Успешно блокиране',
 	'spamregex-block-message'        => "Фразата '''$1''' беше блокирана.",
 	'spamregex-error-1'              => 'Невалиден регулярен израз.',
+	'spamregex-already-blocked'      => '„$1“ е вече блокиран',
 	'spamregex-phrase-block'         => 'Фраза за блокиране:',
 	'spamregex-phrase-block-text'    => 'блокиране на фраза в текста на статията',
 	'spamregex-phrase-block-summary' => 'блокиране на фраза в резюмето',

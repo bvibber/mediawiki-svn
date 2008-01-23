@@ -100,6 +100,16 @@ $messages['pms'] = array(
 	'newusernotifbody' => 'Bondì $1, un neuv utent, $2, a l\'é stait creà ansima a $3 dël $4.',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'newusernotifsubj' => 'Уведомление о новом участнике $1',
+	'newusernotifbody' => 'Привет, $1.
+
+В проекте $3 в $4 была создана новая учётная запись — $2.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

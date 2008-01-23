@@ -738,7 +738,17 @@ $messages['tr'] = array(
  * @author Smeira
  */
 $messages['vo'] = array(
-	'expand_templates_preview' => 'Büologed',
+	'expandtemplates'                  => 'stäänükön samafomotis',
+	'expand_templates_intro'           => 'Pad patik at sumon vödemi e stäänükon samafomotis onik valik okvokölo. Stäänükon i programasekätis soäs <nowiki>{{</nowiki>#if:...}} e vödis soäs <nowiki>{{</nowiki>CURRENTDAY}}... e valikosi vü els <nowiki>{{ }}</nowiki>.
+Dunon atosi medä vokon programadili tefik se el MediaWiki it.',
+	'expand_templates_title'           => 'Yumedatiäd, pro {{PAGENAME}} e r.:',
+	'expand_templates_input'           => 'Penolös vödem:',
+	'expand_templates_output'          => 'Seks',
+	'expand_templates_xml_output'      => 'Seks fomätü XML',
+	'expand_templates_ok'              => 'Baiced',
+	'expand_templates_remove_comments' => 'Moükön küpetis',
+	'expand_templates_generate_xml'    => 'Jonön bimi: XML',
+	'expand_templates_preview'         => 'Büologed',
 );
 
 $messages['yue'] = array(

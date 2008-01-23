@@ -1259,8 +1259,10 @@ $messages['tr'] = array(
  * @author Smeira
  */
 $messages['vo'] = array(
+	'hiderevision-continue' => 'Fövön',
 	'hiderevision-tab'      => 'Klänedön revidi',
 	'hiderevision-noreason' => 'Mutol bepenön kodi moükama at.',
+	'oversight-view'        => 'pats',
 );
 
 /* Cantonese (Shinjiman) */

@@ -282,9 +282,13 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'countedits'              => 'Zuel vun den Ännerungen',
+	'countedits-warning'      => "'''Opgepasst''': Genausou wéi Dir e Buch net no sengem Aband beurteelt, sollt Dir e Mataarbechter net no der Zuel vu senge Kontributioune beurteelen.",
 	'countedits-username'     => 'Benotzernumm:',
+	'countedits-ok'           => 'ok',
 	'countedits-nosuchuser'   => 'Et gëtt kee Benotzer mam Numm $1.',
 	'countedits-resultheader' => 'Resultat fir $1',
+	'countedits-resulttext'   => '$1 huet $2 {{PLURAL:$2|Ännerung|Ännerunge}} gemaach',
+	'countedits-mostactive'   => 'Déi aktivst Benotzer',
 	'countedits-nocontribs'   => 'Keng Ännerungen op dëser Wiki.',
 );
 

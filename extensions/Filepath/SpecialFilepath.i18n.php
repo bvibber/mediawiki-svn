@@ -339,6 +339,18 @@ $messages['lo'] = array(
 	'filepath'         => 'ທາງໄປຫາໄຟລ໌',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Garas
+ */
+$messages['lt'] = array(
+	'filepath'         => 'Failo kelias',
+	'filepath_page'    => 'Failas:',
+	'filepath_submit'  => 'Kelias',
+	'filepath-summary' => 'Šis specialusis puslapis parašo pilną kelią iki failo. Paveikslėliai yra rodomi pilna raiška, kiti failų tipai paleidžiami tiesiogiai su jų susietąja programa.
+
+Įveskite failo pavadinimą be „{{ns:image}}:“ priedėlio.',
+);
+
 /** Latvian (Latviešu)
  * @author SPQRobin
  */

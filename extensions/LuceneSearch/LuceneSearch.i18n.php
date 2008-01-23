@@ -952,6 +952,19 @@ A l\'é belfé ch\'a sia già butasse a pòst daspërchiel; ch\'a lassa passé n
 	'searchincategory'      => 'ant la categorìa',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'searchnumber'          => '<strong>په دې مخ له $1-$2 پايلې، ټولټال $3</strong>',
+	'lucenepowersearchtext' => 'په نوم-تشيالونو کې لټون:
+
+$1
+
+د $3 $9 $10 لپاره پلټنه',
+	'searchall'             => 'ټول',
+);
+
 /** Portuguese (Português)
  * @author 555
  */

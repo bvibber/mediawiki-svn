@@ -32,6 +32,16 @@ $messages['bg'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Необходимо е да се включи поне една категория или да се посочи именно пространство!',
 );
 
+/** Czech (Česky)
+ * @author Li-sung
+ */
+$messages['cs'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: Příliš mnoho kategorií!',
+	'intersection_toofewcats'    => 'DynamicPageList: Málo kategorií!',
+	'intersection_noresults'     => 'DynamicPageList: Žádné výsledky!',
+	'intersection_noincludecats' => 'DynamicPageList: Musíte zahrnout alespoň jednu kategorii nebo určit jmenný prostor!',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -203,4 +213,3 @@ $messages['sv'] = array(
 );
 
 $messages['de-formal'] = $messages['de'];
-

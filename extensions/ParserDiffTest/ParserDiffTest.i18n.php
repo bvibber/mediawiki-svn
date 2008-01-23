@@ -363,4 +363,12 @@ $messages['te'] = array(
 	'pdtest_diff' => 'తేడాలు',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'pdtest_no_changes' => 'Votükams nonik petuvons.',
+	'pdtest_diff'       => 'Difs',
+);
+
 $messages['de-formal'] = $messages['de'];

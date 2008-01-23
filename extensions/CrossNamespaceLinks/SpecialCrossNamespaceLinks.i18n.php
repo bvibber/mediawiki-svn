@@ -232,6 +232,7 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'crossnamespacelinks'         => 'Säite ma Linken an aner Nimmräim',
 	'crossnamespacelinks-summary' => "Dës Säit weist eng Lëscht vun de Linke vun enger Säit aus dem Haaptnummraum op Säiten an anere Nimmräim (ausser fir d'Nimmräim {{ns:special}}, {{ns:talk}}, {{ns:project}} and {{ns:template}}), déi net solle benotzt ginn.",
 	'crossnamespacelinkstext'     => '$1 : huet $2 {{PLURAL:$2|Link|Linken}} an den Nummraum « $3 »',
 );
@@ -257,6 +258,15 @@ $messages['lmo'] = array(
  */
 $messages['loz'] = array(
 	'crossnamespacelinkstext' => "$1: $2 {{PLURAL:$2|ling'ki|ling'kina}} di $3",
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Garas
+ */
+$messages['lt'] = array(
+	'crossnamespacelinks'         => 'Nuorodos tarp vardų sričių',
+	'crossnamespacelinks-summary' => 'Šiame puslapyje yra nuorodų iš puslapių pagrindinėje vardų srityje į puslapius kitose vardų srityse sąrašas (išskyrus {{ns:special}}, {{ns:talk}}, {{ns:project}} ir {{ns:template}} vardų sritis), kurios yra nepatartinos naudoti.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|nuoroda|nuorodos|nuorodų}} į $3',
 );
 
 /** Latvian (Latviešu)

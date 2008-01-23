@@ -357,22 +357,35 @@ $messages['bn'] = array(
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|পেছনে]]',
+	'boardvote_nosession'    => 'আপনার ব্যবহারকারী আইডি খুজে পাওয়া যাচ্ছে না। আপনি যে উইকি তে যোগ্যতাসম্পন্ন দয়াকরে সেখানে লগ-ইন করুন এবং <nowiki>[[Special:Boardvote]]</nowiki> তে যান। আপনাকে এমন অ্যাকাউন্ট ব্যবহার করতে হবে যাতে $2 এর আগে অন্তত $1 অবদান থাকতে হবে, এবং যা দ্বারা $3 এর আগে প্রথম সম্পাদনা করেছেন।',
+	'boardvote_notloggedin'  => 'আপনি লগ-ইন করেননি। ভোট দিতে, আপনাকে অবশ্যই এমন অ্যাকাউন্ট ব্যবহার করতে হবে যা দ্বারা $2 এর আগে অন্তত $1 অবদান রাখা হয়েছে, এবং $3 এর আগে প্রথম সম্পাদনা করা হয়েছে।',
+	'boardvote_notqualified' => 'আপনি এই নির্বাচনে ভোট দেওয়ার যোগ্যতাসম্পন্ন নন। আপনার $2 এর আগে $3 সম্পাদনা থাকতে হবে, এবং $5 এর আগে প্রথম সম্পাদনা করতে হবে।',
 	'boardvote_novotes'      => 'কেউ এখনও ভোট দেয়নি।',
 	'boardvote_time'         => 'সময়',
 	'boardvote_user'         => 'ব্যবহারকারী',
 	'boardvote_edits'        => 'সম্পাদনাসমূহ',
 	'boardvote_days'         => 'দিন',
 	'boardvote_ip'           => 'আইপি',
+	'boardvote_ua'           => 'ব্যবহাকারী প্রতিনিধি',
+	'boardvote_listintro'    => '<p>এটি এ তারিখ পর্যন্ত গ্রহণকৃত সমস্ত ভোটের তালিকা। এনক্রিপ্ট ডাটার জন্য $1।</p>',
 	'boardvote_dumplink'     => 'এখানে ক্লিক করুন',
 	'boardvote_submit'       => 'ঠিক আছে',
 	'boardvote_needadmin'    => 'শুধু নির্বাচন প্রশাসকগণ এই কাজটি করতে পারবেন।',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">উইকিমিডিয়া বোর্ড নির্বাচন</a>:  ভোট গ্রহণ শুরু হবে ১২ই জুলাই',
 	'boardvote_notstarted'   => 'এখনও ভোট গ্রহণ শুরু হয়নি',
+	'boardvote_closed'       => 'ভোটগ্রহণ বর্তমানে বন্ধ আছে, [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En নির্বাচন পাতায় ফলাফল] সিঘ্রই দেখুন।',
 	'boardvote_edits_many'   => 'অনেক',
 	'group-boardvote'        => 'বোর্ড নির্বাচন প্রশাসকগণ',
 	'group-boardvote-member' => 'বোর্ড নির্বাচন প্রশাসক',
 	'grouppage-boardvote'    => '{{ns:project}}:বোর্ড নির্বাচন প্রশাসকগণ',
+	'boardvote_blocked'      => 'দুঃখিত, আপনার নিবন্ধিত উইকিতে আপনাকে বাধা দেওয়া হয়েছে। বাধা প্রাপ্ত ব্যবহারকারীদের ভোট দেওয়ার অনুমোদন নাই।',
 	'boardvote_welcome'      => "স্বাগতম '''$1'''!",
 	'go_to_board_vote'       => 'উইকিমিডিয়া বোর্ড নির্বাচন ২০০৭',
+	'boardvote_redirecting'  => 'নিরাপত্তা এবং স্বচ্ছতা বাড়াতে, আমরা ভোট কার্যক্রম অন্য একটি স্বাধীন সার্ভারে চালনা করছি।
+
+আপনি ২০ সেকেন্ডের মধ্যেই অন্য সার্ভারে পুননির্দেশিত হবেন। [$1 এখানে ক্লিক করুন] সেখানে এখনই যাওয়ার জন্য।
+
+অস্বাক্ষরিত সার্টিফিকেটের সম্পর্কিত একটি সতর্কিকরণ বার্তা দেখাতে পারে।',
 );
 
 $messages['br'] = array(
@@ -2842,6 +2855,19 @@ $messages['ty'] = array(
  * @author Malafaya
  */
 $messages['vo'] = array(
+	'boardvote'              => 'Daväl Kipedalefa Fünoda: Wikimedia',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vögodön]]
+* [[Special:Boardvote/list|Lised vögodas jünuik]]
+* [[Special:Boardvote/dump|Davälaregistar pejüföl]]',
+	'boardvote_intro'        => '<p>Benokömö! ini Daväl Balid Kipedalefa Fünoda: Wikimedia. Anu davälobs pösodis tel ad pladulön gebanefi proyegas distöfik ela Wikimedia. Oyufons ad sludön lüodi fütürik proyegas - grupo e balato - ed opladulons nitedis e büsidis <em>olik</em> lo Kipedalef. Okesludons tefü mods ad dagetön moni ed ad gebön monis dagetöl.</p>
+
+<p>Reidolös, begö! kuratiküno stetotis steifädanas äsi gesagis onsik säkes veütik büä ovögodol. Steifädan alik binon geban pastümöl, kel ekeblünon timi e steifi greitikis ad jafön pö proyegs at züoamöpi kovenik pro konlet e seagiv libik seva menik.</p>
+
+<p>Kanol vögodön gönü steifädans mödik, if vilol. Tefü cal alik, steifädan labü vögods mödikün posteton as gaenan. If steifädans anik labons vögodamödoti ot, daväl nulik pojenükon.</p>
+
+<p>Ad dagetön nünis pluik, reidolös:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">Daväl: SSP</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006" class="external">Steifädans</a></li></ul>',
 	'boardvote_intro_change' => '<p>Ya evögodol. Kanol ye votükön vögodi olik me fomet dono. Välolös bokilis nilü steifädans, kelis büuköl.</p>',
 	'boardvote_entered'      => 'Danö! Vögod olik peregistaron.
 
@@ -2872,11 +2898,21 @@ Is palisedon fomam pejüföl. Pojonon valikanes su [[Special:Boardvote/dump]].
 	'boardvote_dumplink'     => 'Klikolös is',
 	'boardvote_submit'       => 'Baiced',
 	'boardvote_needadmin'    => 'Te davälaguvans dalons dunön atosi.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Daväl Kipedalefa ela Wikimedia</a>:  Vögodam padälon jü yulul 12',
 	'boardvote_notstarted'   => 'Daväl no nog eprimon',
 	'boardvote_closed'       => 'Vögodam ya efinikon, logolös [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En davälapadi] suno ad getön sekis.',
 	'boardvote_edits_many'   => 'mödik',
+	'group-boardvote'        => 'guvans Daväla Kipedalefa',
+	'group-boardvote-member' => 'guvan Daväla Kipedalefa',
+	'grouppage-boardvote'    => '{{ns:project}}:guvan Daväla Kipedalefa',
 	'boardvote_blocked'      => 'Liedo peblokol in vük olik. Gebans pebloköl no dalons vögodön.',
 	'boardvote_welcome'      => "Benokömö, o '''$1'''!",
+	'go_to_board_vote'       => 'Daväl Kipedalefa ela Wikimedia (yelü 2007)',
+	'boardvote_redirecting'  => 'Ad gretükön sefi e dulogamovi, vögodam pajenükon medü dünanünöm plödik nesekidiko pekontrolöl.
+
+Olüodükol lü dünanünöm plödik at pos sekuns 20. [$1 Klikolös is] ad golön usio anu.
+
+Sefanüned tefü doküm no pedispenöl ba pojonon.',
 );
 
 $messages['wa'] = array(

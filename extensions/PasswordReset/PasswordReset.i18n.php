@@ -276,12 +276,14 @@ $messages['rm'] = array(
 
 /** Russian (Русский)
  * @author Illusion
+ * @author .:Ajvol:.
  */
 $messages['ru'] = array(
 	'passwordreset'                 => 'Сброс пароля',
 	'passwordreset-invalidusername' => 'Недопустимое имя участника',
 	'passwordreset-emptyusername'   => 'Пустое имя участника',
 	'passwordreset-nopassmatch'     => 'Пароли не совпадают',
+	'passwordreset-badtoken'        => 'Ошибочный признак правки',
 	'passwordreset-username'        => 'Имя участника',
 	'passwordreset-newpass'         => 'Новый пароль',
 	'passwordreset-confirmpass'     => 'Подтверждение пароля',

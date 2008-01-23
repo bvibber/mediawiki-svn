@@ -467,6 +467,16 @@ $messages['pms'] = array(
 	'sitematrix-others' => 'Àutri proget ëd Wikimedia',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'sitematrix'          => 'د ويکي-رسنۍ د ويکي-ګانو لړليک',
+	'sitematrix-language' => 'ژبه',
+	'sitematrix-project'  => 'د پروژې نوم، د پروژوترمېنځ تړنه او د ويکي-ګانوترمېنځ تړنه',
+	'sitematrix-others'   => 'د ويکي-رسنۍ نورې پروژې',
+);
+
 $messages['pt'] = array(
 	'sitematrix' => 'Lista de sítios Wikimedia',
 	'sitematrix-language' => 'Idioma',
@@ -597,9 +607,12 @@ $messages['vec'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'sitematrix'          => 'Lised vükas ela Wikimedia',
 	'sitematrix-language' => 'Pük',
+	'sitematrix-project'  => 'Nem proyega, yüm vüproyegik e yüm vüvükik',
 	'sitematrix-others'   => 'Proyeks votik ela Wikimedia',
 );
 

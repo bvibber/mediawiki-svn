@@ -24,6 +24,15 @@ $messages['ar'] = array(
 	'userimages-noimages' => 'ليس لدى $1 صور مرفوعة.',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'userimages-caption'  => 'Imáxenes xubíes por $1',
+	'userimages-noname'   => "Nome d'usuariu non válidu o non conseñáu.",
+	'userimages-noimages' => '$1 nun tien nenguna imaxe xubida.',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */
