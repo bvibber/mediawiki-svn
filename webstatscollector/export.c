@@ -14,7 +14,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <netinet/in.h>
-#include <db4/db.h>
+#include <db.h>
 #include "collector.h"
 
 void dumpData(FILE *fd, DB *db) {

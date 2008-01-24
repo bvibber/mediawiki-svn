@@ -2,7 +2,7 @@
 /* $Id: collector.h 12318 2005-12-31 15:34:46Z midom $ */
 
 #include <stdio.h>
-#include <db4/db.h>
+#include <db.h>
 
 #define PERIOD 3600
 #define PREFIX "dumps/"
