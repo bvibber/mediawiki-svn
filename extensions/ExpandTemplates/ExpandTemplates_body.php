@@ -36,7 +36,11 @@ class ExpandTemplates extends SpecialPage {
 			if ( $this->generateXML ) {
 				$wgParser->startExternalParse( $title, $options, OT_PREPROCESS );
 				$dom = $wgParser->preprocessToDom( $input );
-				$xml = $dom->saveXML();
+				if ( is_callable( array( $dom, 'saveXML' ) ) ) {
+					$xml = $dom->saveXML();
+				} else {
+					$xml = $dom->__toString();
+				}
 			}
 			$output = $wgParser->preprocess( $input, $title, $options );
 		} else {
