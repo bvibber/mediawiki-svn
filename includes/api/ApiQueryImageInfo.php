@@ -118,15 +118,20 @@ class ApiQueryImageInfo extends ApiQueryBase {
 		}
 		if($this->fld_url) {
 			if($this->scale && !$f->isOld()) {
-				$vals['url'] = $f->createThumb($this->urlwidth, $this->urlheight);
-			} else {
-				$vals['url'] = $f->getURL();
+				$thumb = $f->getThumbnail($this->urlwidth, $this->urlheight);
+				if($thumb)
+				{
+					$vals['thumburl'] = $thumb->getURL();
+					$vals['thumbwidth'] = $thumb->getWidth();
+					$vals['thumbheight'] = $thumb->getHeight();
+				}
 			}
+			$vals['url'] = $f->getURL();
 		}
 		if($this->fld_comment) 
 			$vals['comment'] = $f->getDescription();
 		if($this->fld_sha1) 
-			$vals['sha1'] = $f->getSha1();
+			$vals['sha1'] = wfBaseConvert($f->getSha1(), 36, 16, 40);
 		if($this->fld_metadata) {
 			$metadata = unserialize($f->getMetadata());
 			$vals['metadata'] = $metadata ? $metadata : null;

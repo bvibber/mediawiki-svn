@@ -913,7 +913,7 @@ $3 указал следующую причину: ''$2''",
 'mergehistory-invalid-destination' => 'Целевая страница должна иметь правильный заголовок.',
 
 # Merge log
-'mergelog'           => 'Журнал объединения',
+'mergelog'           => 'Журнал объединений',
 'pagemerge-logentry' => 'объединена [[$1]] и [[$2]] (версии вплоть до $3)',
 'revertmerge'        => 'Разделить',
 'mergelogpagetext'   => 'Ниже приведён список последних объединений историй страниц.',
@@ -1536,7 +1536,7 @@ $NEWPAGE
 
 Последние изменения внёс [[User:$3|$3]] ([[User_talk:$3|Обсуждение]]).',
 'editcomment'                 => 'Изменение было пояснено так: <i>«$1»</i>.', # only shown if there is an edit comment
-'revertpage'                  => 'Правки [[{{ns:special}}:Contributions/$2|$2]] ([[User_talk:$2|обсуждение]]) откачены к версии [[User:$1|$1]]',
+'revertpage'                  => 'Правки [[{{ns:special}}:Contributions/$2|$2]] ([[User_talk:$2|обсуждение]]) откачены к версии [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success'            => 'Откачены правки $1; возврат к версии $2.',
 'sessionfailure'              => 'Похоже, возникли проблемы с текущим сеансом работы;
 это действие было отменено в целях предотвращения «захвата сеанса».
@@ -1838,6 +1838,7 @@ IP-адреса.',
 'export-addcattext' => 'Добавить страницы из категории:',
 'export-addcat'     => 'Добавить',
 'export-download'   => 'Предложить сохранить как файл',
+'export-templates'  => 'Включить шаблоны',
 
 # Namespace 8 related
 'allmessages'               => 'Системные сообщения',
@@ -1884,6 +1885,10 @@ IP-адреса.',
 'importuploaderrorsize'      => 'Не удалось загрузить или импортировать файл. Размер файла превышает установленный предел.',
 'importuploaderrorpartial'   => 'Не удалось загрузить или импортировать файл. Он был загружен лишь частично.',
 'importuploaderrortemp'      => 'Не удалось загрузить или импортировать файл. Временная папка отсутствует.',
+'import-parse-failure'       => 'Ошибка разбора XML при импорте',
+'import-noarticle'           => 'Нет страницы для импортирования!',
+'import-nonewrevisions'      => 'Все редакции были ранее импортированы.',
+'xml-error-string'           => '$1 в строке $2, позиции $3 (байт $4): $5',
 
 # Import log
 'importlogpage'                    => 'Журнал импорта',

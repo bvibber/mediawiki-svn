@@ -1397,7 +1397,7 @@ Paskutinių šalinimų istorija - $2.',
 
 Paskutimas keitimas darytas naudotojo [[User:$3|$3]] ([[User_talk:$3|Aptarimas]]).',
 'editcomment'                 => 'Redagavimo komentaras: „<i>$1</i>“.', # only shown if there is an edit comment
-'revertpage'                  => 'Atmestas [[{{ns:special}}:Contributions/$2|$2]] ([[User_talk:$2|Aptarimas]]) pakeitimas; sugrąžinta naudotojo [[User:$1|$1]] versija',
+'revertpage'                  => 'Atmestas [[{{ns:special}}:Contributions/$2|$2]] ([[User_talk:$2|Aptarimas]]) pakeitimas; sugrąžinta naudotojo [[User:$1|$1]] versija', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success'            => 'Atmesti $1 keitimai; grąžinta į paskutinę $2 versiją.',
 'sessionfailure'              => 'Atrodo yra problemų su jūsų prisijungimo sesija; šis veiksmas buvo atšauktas kaip atsargumo priemonė prieš sesijos vogimą.
 Prašome paspausti „atgal“ ir perkraukite puslapį iš kurio atėjote, ir pamėginkite vėl.',
@@ -1525,8 +1525,8 @@ $1',
 'nolinkshere-ns'      => "Nurodytoje vardų srityje nei vienas puslapis nenurodo į '''[[:$1]]'''.",
 'isredirect'          => 'nukreipiamasis puslapis',
 'istemplate'          => 'įterpimas',
-'whatlinkshere-prev'  => '$1 {{PLURAL:$1|ankstesnis|ankstesni}}',
-'whatlinkshere-next'  => '$1 {{PLURAL:$1|kitas|kiti}}',
+'whatlinkshere-prev'  => '$1 {{PLURAL:$1|ankstesnis|ankstesni|ankstesnių}}',
+'whatlinkshere-next'  => '$1 {{PLURAL:$1|kitas|kiti|kitų}}',
 'whatlinkshere-links' => '← nuorodos',
 
 # Block/unblock
@@ -1714,6 +1714,7 @@ Pastaruoju atveju, jūs taip pat galite naudoti nuorodą, pvz. [[{{ns:special}}:
 'export-addcattext' => 'Pridėti puslapius iš kategorijos:',
 'export-addcat'     => 'Pridėti',
 'export-download'   => 'Saugoti kaip failą',
+'export-templates'  => 'Įtraukti šablonus',
 
 # Namespace 8 related
 'allmessages'               => 'Visi sistemos tekstai bei pranešimai',
@@ -1753,13 +1754,17 @@ Visi tarpprojektiniai importo veiksmai yra registruojami  [[Special:Log/import|i
 'importcantopen'             => 'Nepavyksta atverti importo failo',
 'importbadinterwiki'         => 'Bloga tarpprojektinė nuoroda',
 'importnotext'               => 'Tuščia arba jokio teksto',
-'importsuccess'              => 'Importas pavyko!',
+'importsuccess'              => 'Importas užbaigtas!',
 'importhistoryconflict'      => 'Yra konfliktuojanti istorijos versija (galbūt šis puslapis buvo importuotas anksčiau)',
 'importnosources'            => 'Nenustatyti transwiki importo šaltiniai, o tiesioginis praeities įkėlimas uždraustas.',
 'importnofile'               => 'Nebuvo įkeltas joks importo failas.',
 'importuploaderrorsize'      => 'Importavimo failo įkėlimas nepavyko. Failas didesnis nei leidžiamas dydis.',
 'importuploaderrorpartial'   => 'Importavimo failo įkėlimas nepavyko. Failas buvo tik dalinai įkeltas.',
 'importuploaderrortemp'      => 'Importavimo failo įkėlimas nepavyko. Trūksta laikinojo aplanko.',
+'import-parse-failure'       => 'XML importo nagrinėjimo klaida',
+'import-noarticle'           => 'Nėra puslapių importuoti!',
+'import-nonewrevisions'      => 'Visos versijos buvo importuotos anksčiau.',
+'xml-error-string'           => '$1 $2 eilutėje, $3 stulpelyje ($4 baitas): $5',
 
 # Import log
 'importlogpage'                    => 'Importo istorija',

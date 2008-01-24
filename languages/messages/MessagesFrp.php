@@ -724,8 +724,8 @@ a travèrs de cela méma entèrface, a muens qu’una rèstriccion suplèmentèr
 'revdelete-submit'            => 'Aplicar a la vèrsion sèlèccionâ',
 'revdelete-logentry'          => 'La visibilitât de la vèrsion at étâ modifiâ por [[$1]]',
 'logdelete-logentry'          => 'La visibilitât de l’èvènement at étâ modifiâ por [[$1]]',
-'revdelete-logaction'         => '$1 {{PLURAL:$1|vèrsion changiê|vèrsions changiês}} en condicion $2',
-'logdelete-logaction'         => '$1 {{PLURAL:$1|èvènement de [[$3]] changiê|èvènements de [[$3]] changiês}} en condicion $2',
+'revdelete-logaction'         => '$1 {{PLURAL:$1|vèrsion changiê|vèrsions changiês}} en môdo $2',
+'logdelete-logaction'         => '$1 {{PLURAL:$1|èvènement de [[$3]] changiê|èvènements de [[$3]] changiês}} en môdo $2',
 'revdelete-success'           => 'Visibilitât de les vèrsions changiê avouéc reusséta.',
 'logdelete-success'           => 'Visibilitât des èvènements changiê avouéc reusséta.',
 
@@ -1009,7 +1009,7 @@ Vos devriâd considèrar s’o est convegnâblo de continuar l’impôrt de cél
 'filename-prefix-blacklist'   => '  #<!-- lèssiéd ceta legne justo d’ense --> <pre>
 # La sintaxa est la siuventa :
 #  * Tot caractèro siuvent « # » tant qu’a la fin de la legne serat entèrprètâ coment un comentèro.
-#  * Tota legne pas voueda est un prèfixe por noms de fichiérs qu’est g·ènèralament balyê per los aparèlys-fotô numericos.
+#  * Tota legne pas voueda est un prèfixe por noms de fichiér qu’est g·ènèralament balyê per los aparèlys-fotô numericos.
 CIMG # Casio
 DSC_ # Nikon
 DSCF # Fuji
@@ -1608,7 +1608,7 @@ d’una adrèce IP prècèdament blocâ.',
 'ipb_already_blocked'         => '« $1 » est ja blocâ',
 'ipb_cant_unblock'            => 'Èrror : lo blocâjo d’ID $1 ègziste pas. O est possiblo qu’un dèblocâjo èye ja étâ fêt.',
 'ipb_blocked_as_range'        => 'Èrror : l’adrèce IP $1 at pas étâ blocâ tot drêt et pôt vêr pas étre dèblocâ. Portant el at étâ blocâ per la plage $2 laquinta pôt étre dèblocâ.',
-'ip_range_invalid'            => 'Bloc IP fôx.',
+'ip_range_invalid'            => 'Bloco IP fôx.',
 'blockme'                     => 'Blocâd-mè',
 'proxyblocker'                => 'Bloquior de proxy',
 'proxyblocker-disabled'       => 'Cela fonccion est dèsactivâ.',
@@ -1711,6 +1711,7 @@ Dens cél dèrriér câs, vos pouede asse-ben utilisar un lim, coment [[Special:
 'export-addcattext' => 'Apondre les pâges de la catègorie :',
 'export-addcat'     => 'Apondre',
 'export-download'   => 'Sôvar a titro de fichiér',
+'export-templates'  => 'Encllure los modèlos',
 
 # Namespace 8 related
 'allmessages'               => 'Lista des mèssâjos sistèmo',
@@ -1719,7 +1720,7 @@ Dens cél dèrriér câs, vos pouede asse-ben utilisar un lim, coment [[Special:
 'allmessagescurrent'        => 'Mèssâjo d’ora',
 'allmessagestext'           => 'Cen est la lista de tôs los mèssâjos sistèmo disponiblos dens l’èspâço MediaWiki.',
 'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' est pas disponiblo perce que '''\$wgUseDatabaseMessages''' est dèsactivâ.",
-'allmessagesfilter'         => 'Filtro d’èxprèssion racionâla :',
+'allmessagesfilter'         => 'Filtro d’èxprèssion racionèla :',
 'allmessagesmodified'       => 'Afichiér ren que les modificacions',
 
 # Thumbnails
@@ -2097,8 +2098,8 @@ serat rèduita. Los ôtros champs seront cachiês per dèfôt.
 'exif-exposureprogram-4' => 'Prioritât a l’ètopior',
 'exif-exposureprogram-5' => 'Programe crèacion (prèference a la provondior de champ)',
 'exif-exposureprogram-6' => 'Programe accion (prèference a la vitèsse d’ètopâ)',
-'exif-exposureprogram-7' => 'Condicion portrèt (por clich·ês de prés avouéc fond troblo)',
-'exif-exposureprogram-8' => 'Condicion payisâjo (por des clich·ês de payisâjos nèts)',
+'exif-exposureprogram-7' => 'Môdo portrèt (por clich·ês de prés avouéc fond troblo)',
+'exif-exposureprogram-8' => 'Môdo payisâjo (por des clich·ês de payisâjos nèts)',
 
 'exif-subjectdistance-value' => '{{PLURAL:$1|$1 mètre|$1 mètres}}',
 

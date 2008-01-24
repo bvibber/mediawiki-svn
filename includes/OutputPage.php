@@ -1031,7 +1031,7 @@ class OutputPage {
 
 		$this->setRobotpolicy( 'noindex,nofollow' );
 		$this->setArticleRelated( false );
-		
+
 		// If no reason is given, just supply a default "I can't let you do
 		// that, Dave" message.  Should only occur if called by legacy code.
 		if ( $protected && empty($reasons) ) {
@@ -1311,7 +1311,7 @@ class OutputPage {
 			$ret .= $this->feedLink(
 				$format,
 				$link,
-				wfMsg( "page-{$format}-feed", $wgTitle->getPrefixedText() ) );
+				wfMsg( "page-{$format}-feed", $wgTitle->getPrefixedText() ) ); # Used messages: 'page-rss-feed' and 'page-atom-feed' (for an easier grep)
 		}
 
 		# Recent changes feed should appear on every page

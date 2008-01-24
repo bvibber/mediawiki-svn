@@ -60,6 +60,8 @@ class ApiMain extends ApiBase {
 		'opensearch' => 'ApiOpenSearch',
 		'feedwatchlist' => 'ApiFeedWatchlist',
 		'help' => 'ApiHelp',
+		'paraminfo' => 'ApiParamInfo',
+
 		//Added by VF
 		'reguser' => 'ApiRegUser',
 		'upload' => 'ApiUploadFile',
@@ -93,7 +95,11 @@ class ApiMain extends ApiBase {
 		'xmlfm' => 'ApiFormatXml',
 		'yaml' => 'ApiFormatYaml',
 		'yamlfm' => 'ApiFormatYaml',
-		'rawfm' => 'ApiFormatJson'
+		'rawfm' => 'ApiFormatJson',
+		'txt' => 'ApiFormatTxt',
+		'txtfm' => 'ApiFormatTxt',
+		'dbg' => 'ApiFormatDbg',
+		'dbgfm' => 'ApiFormatDbg'
 	);
 
 	private $mPrinter, $mModules, $mModuleNames, $mFormats, $mFormatNames;
@@ -573,6 +579,13 @@ class ApiMain extends ApiBase {
 	 */
 	protected function addFormat( $fmtName, $fmtClass ) {
 		$this->mFormats[$fmtName] = $fmtClass;
+	}
+	
+	/**
+	 * Get the array mapping module names to class names
+	 */
+	function getModules() {
+		return $this->mModules;
 	}
 }
 

@@ -1243,6 +1243,7 @@ O tamanho da [http://meta.wikimedia.org/wiki/Help:Job_queue fila de tarefas] é 
 
 'withoutinterwiki'        => 'Páginas sem interwikis de idiomas',
 'withoutinterwiki-header' => 'As seguintes páginas não possuem links para versões em outros idiomas:',
+'withoutinterwiki-submit' => 'Exibir',
 
 'fewestrevisions' => 'Páginas de conteúdo com menos edições',
 
@@ -1471,6 +1472,8 @@ Consulte $2 para um registo de eliminações recentes.',
 ** Pedido do autor
 ** Violação de direitos autorais
 ** Vandalismo',
+'delete-toobig'               => 'Esta página possui um longo histórico de edições (mais de $1). A eliminação de páginas que se encontram em tal condição foi restrita, a fim de se evitarem interrupções acidentais em {{SITENAME}}.',
+'delete-warning-toobig'       => 'Esta página possui um longo histórico de edições (mais de $1). Eliminá-la poderá causar problemas na base de dados de {{SITENAME}}. Proceda com cuidado.',
 'rollback'                    => 'Reverter edições',
 'rollback_short'              => 'Voltar',
 'rollbacklink'                => 'voltar',
@@ -1481,7 +1484,7 @@ por [[User:$2|$2]] ([[User_talk:$2|Discussão]]); alguém editou ou já reverteu
 
 A última edição foi de [[User:$3|$3]] ([[User_talk:$3|Discussão]]).',
 'editcomment'                 => 'O sumário de edição era: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'                  => 'Revertidas edições por [[Special:Contributions/$2|$2]] ([[User talk:$2|disc]]) para a última versão por [[User:$1|$1]]',
+'revertpage'                  => 'Revertidas edições por [[Special:Contributions/$2|$2]] ([[User talk:$2|disc]]) para a última versão por [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success'            => 'Foram revertidas as edições de $1, com o conteúdo passando a estar como na última edição de $2.',
 'sessionfailure'              => 'Foram detectados problemas com a sua sessão;
 Esta acção foi cancelada como medida de protecção contra a intercepção de sessões.
@@ -1768,6 +1771,7 @@ Se desejar, pode utilizar uma ligação, por exemplo [[{{ns:special}}:Export/{{M
 'export-addcattext' => 'Adicionar à listagem páginas da categoria:',
 'export-addcat'     => 'Adicionar',
 'export-download'   => 'Oferecer para salvar como um ficheiro',
+'export-templates'  => 'Incluir predefinições',
 
 # Namespace 8 related
 'allmessages'               => 'Todas as mensagens de sistema',
@@ -1807,13 +1811,17 @@ Todas as acções de importação transwiki são registadas no [[{{ns:special}}:
 'importcantopen'             => 'Não foi possível abrir o ficheiro de importação',
 'importbadinterwiki'         => 'Ligação de interwiki incorrecta',
 'importnotext'               => 'Vazio ou sem texto',
-'importsuccess'              => 'Importação bem sucedida!',
+'importsuccess'              => 'Importação completa!',
 'importhistoryconflict'      => 'Existem conflitos de edições no histórico (talvez esta página já foi importada antes)',
 'importnosources'            => 'Não foram definidas fontes de importação transwiki e o carregamento directo de históricos encontra-se desactivado.',
 'importnofile'               => 'Nenhum ficheiro de importação foi carregado.',
 'importuploaderrorsize'      => 'O envio do ficheiro a ser importado falhou. O ficheiro é maior do que o tamanho máximo permitido para upload.',
 'importuploaderrorpartial'   => 'O envio do ficheiro a ser importado falhou. O ficheiro foi recebido parcialmente.',
 'importuploaderrortemp'      => 'O envio do ficheiro a ser importado falhou. Não há um diretório temporário.',
+'import-parse-failure'       => 'Falha ao importar dados XML',
+'import-noarticle'           => 'Sem páginas para importar!',
+'import-nonewrevisions'      => 'Todas as edições já haviam sido importadas.',
+'xml-error-string'           => '$1 na linha $2, coluna $3 (byte $4): $5',
 
 # Import log
 'importlogpage'                    => 'Registo de importações',
@@ -2351,5 +2359,8 @@ Você também pode [[{{ns:special}}:Watchlist/edit|editar a lista da forma conve
 'watchlisttools-view' => 'Ver alterações relevantes',
 'watchlisttools-edit' => 'Ver e editar a lista de vigiados',
 'watchlisttools-raw'  => 'Edição crua dos vigiados',
+
+# Core parser functions
+'unknown_extension_tag' => '"$1" é uma tag de extensão desconhecida',
 
 );

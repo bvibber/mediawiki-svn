@@ -21,10 +21,11 @@ $skinNames = array(
 	'standard'    => 'רגיל',
 	'nostalgia'   => 'נוסטלגי',
 	'cologneblue' => 'מים כחולים',
-	'simple'      => 'פשוט',
 	'monobook'    => 'מונובוק',
 	'myskin'      => 'הרקע שלי',
-	'chick'       => "צ'יק"
+	'chick'       => "צ'יק",
+	'simple'      => 'פשוט',
+	'modern'      => 'מודרני',
 );
 
 $datePreferences = array(
@@ -195,6 +196,7 @@ $specialPageAliases = array(
 	'Disambiguations'           => array( 'פירושונים', 'דפי_פירושונים' ),
 	'Userlogin'                 => array( 'כניסה_לחשבון', 'כניסה', 'כניסה_/_הרשמה_לחשבון' ),
 	'Userlogout'                => array( 'יציאה_מהחשבון', 'יציאה' ),
+	'CreateAccount'             => array( 'הרשמה_לחשבון' ),
 	'Preferences'               => array( 'העדפות', 'ההעדפות_שלי' ),
 	'Watchlist'                 => array( 'רשימת_המעקב', 'רשימת_מעקב', 'רשימת_המעקב_שלי' ),
 	'Recentchanges'             => array( 'שינויים_אחרונים' ),
@@ -1306,18 +1308,24 @@ $2',
 'filerevert-badversion'     => 'אין גרסה מקומית קודמת של הקובץ שהועלתה בתאריך המצוין.',
 
 # File deletion
-'filedelete'             => 'מחיקת $1',
-'filedelete-backlink'    => '→ $1',
-'filedelete-legend'      => 'מחיקת קובץ',
-'filedelete-intro'       => "מוחק את '''[[Media:$1|$1]]'''.",
-'filedelete-intro-old'   => '<span class="plainlinks">אתם מוחקים את הגרסה של \'\'\'[[Media:$1|$1]]\'\'\' מ־[$4 $3, $2].</span>',
-'filedelete-comment'     => 'הערה:',
-'filedelete-submit'      => 'מחיקה',
-'filedelete-success'     => "'''$1''' נמחק.",
-'filedelete-success-old' => '<span class="plainlinks">הגרסה של \'\'\'[[Media:$1|$1]]\'\'\' מ־$3, $2 נמחקה.</span>',
-'filedelete-nofile'      => "'''$1''' אינו קיים באתר זה.",
-'filedelete-nofile-old'  => "אין גרסה ישנה של '''$1''' עם התכונות המצוינות.",
-'filedelete-iscurrent'   => 'אתם מנסים למחוק את הגרסה החדשה ביותר של הקובץ. אנא שחזרו קודם לגרסה ישנה יותר.',
+'filedelete'                  => 'מחיקת $1',
+'filedelete-backlink'         => '→ $1',
+'filedelete-legend'           => 'מחיקת קובץ',
+'filedelete-intro'            => "מוחק את '''[[Media:$1|$1]]'''.",
+'filedelete-intro-old'        => '<span class="plainlinks">אתם מוחקים את הגרסה של \'\'\'[[Media:$1|$1]]\'\'\' מ־[$4 $3, $2].</span>',
+'filedelete-comment'          => 'סיבה למחיקה:',
+'filedelete-submit'           => 'מחיקה',
+'filedelete-success'          => "'''$1''' נמחק.",
+'filedelete-success-old'      => '<span class="plainlinks">הגרסה של \'\'\'[[Media:$1|$1]]\'\'\' מ־$3, $2 נמחקה.</span>',
+'filedelete-nofile'           => "'''$1''' אינו קיים באתר זה.",
+'filedelete-nofile-old'       => "אין גרסה ישנה של '''$1''' עם התכונות המצוינות.",
+'filedelete-iscurrent'        => 'אתם מנסים למחוק את הגרסה החדשה ביותר של הקובץ. אנא שחזרו קודם לגרסה ישנה יותר.',
+'filedelete-otherreason'      => 'סיבה נוספת/אחרת:',
+'filedelete-reason-otherlist' => 'סיבה אחרת',
+'filedelete-reason-dropdown'  => '
+* סיבות מחיקה נפוצות
+** הפרת זכויות יוצרים
+** קובץ כפול',
 
 # MIME search
 'mimesearch'         => 'חיפוש MIME',
@@ -1610,7 +1618,7 @@ $NEWPAGE
 
 העריכה האחרונה הייתה של [[User:$3|$3]] ([[User talk:$3|שיחה]]).',
 'editcomment'                 => "תקציר העריכה היה: \"'''\$1'''\".", # only shown if there is an edit comment
-'revertpage'                  => 'שוחזר מעריכה של [[Special:Contributions/$2|$2]] ([[User talk:$2|שיחה]]) לעריכה האחרונה של [[User:$1|$1]]',
+'revertpage'                  => 'שוחזר מעריכה של [[Special:Contributions/$2|$2]] ([[User talk:$2|שיחה]]) לעריכה האחרונה של [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success'            => 'שוחזר מעריכה של $1 לעריכה האחרונה של $2',
 'sessionfailure'              => 'נראה שיש בעיה בחיבורכם לאתר. פעולתכם בוטלה כאמצעי זהירות כנגד התחזות לתקשורת ממחשבכם. אנא חיזרו לדף הקודם ונסו שנית.',
 'protectlogpage'              => 'יומן הגנות',
@@ -1958,6 +1966,10 @@ $1',
 'importuploaderrorsize'      => 'העלאת קובץ הייבוא נכשלה. הקובץ היה גדול יותר מגודל ההעלאה המותר.',
 'importuploaderrorpartial'   => 'העלאת קובץ הייבוא נכשלה. הקובץ הועלה באופן חלקי בלבד.',
 'importuploaderrortemp'      => 'העלאת קובץ הייבוא נכשלה. חסרה תיקייה זמנית.',
+'import-parse-failure'       => 'שגיאה בפענוח ה־XML',
+'import-noarticle'           => 'אין דף לייבוא!',
+'import-nonewrevisions'      => 'כל הגרסאות יובאו בעבר.',
+'xml-error-string'           => '$1 בשורה $2, עמודה $3 (בייט מספר $4): $5',
 
 # Import log
 'importlogpage'                    => 'יומן ייבוא',

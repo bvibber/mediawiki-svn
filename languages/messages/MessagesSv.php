@@ -1007,7 +1007,7 @@ $3',
 'recentchangeslinked-summary'  => "Den här specialsidan listar de senaste ändringarna på angränsande sidor. Sidor på din övervakningslista är markerade med '''fet''' stil.",
 
 # Upload
-'upload'                      => 'Ladda upp filer',
+'upload'                      => 'Ladda upp fil',
 'uploadbtn'                   => 'Ladda upp filen',
 'reupload'                    => 'Ladda upp på nytt',
 'reuploaddesc'                => 'Tillbaka till uppladdningsformulär.',
@@ -1159,17 +1159,22 @@ PICT # allmänt bildprefix
 'filerevert-badversion'     => 'Det finns ingen tidigare version av filen från den angivna tidpunkten.',
 
 # File deletion
-'filedelete'             => 'Radera $1',
-'filedelete-legend'      => 'Radera fil',
-'filedelete-intro'       => "Du håller på att radera '''[[Media:$1|$1]]'''.",
-'filedelete-intro-old'   => "Du håller på att radera versionen av '''[[Media:$1|$1]]''' från [$4 $2 kl. $3].",
-'filedelete-comment'     => 'Anledning:',
-'filedelete-submit'      => 'Radera',
-'filedelete-success'     => "'''$1''' har raderats.",
-'filedelete-success-old' => 'Versionen av [[Media:$1|$1]] från $2 kl. $3 har raderats.',
-'filedelete-nofile'      => "Filen '''$1''' finns inte på den här webplatsen.",
-'filedelete-nofile-old'  => "Den versionen av '''$1''' kan inte raderas eftersom den inte finns.",
-'filedelete-iscurrent'   => 'Du försöker radera den senaste versionen av en fil. För att göra det måste du först återställa till en äldre version av filen.',
+'filedelete'                  => 'Radera $1',
+'filedelete-legend'           => 'Radera fil',
+'filedelete-intro'            => "Du håller på att radera '''[[Media:$1|$1]]'''.",
+'filedelete-intro-old'        => "Du håller på att radera versionen av '''[[Media:$1|$1]]''' från [$4 $2 kl. $3].",
+'filedelete-comment'          => 'Anledning:',
+'filedelete-submit'           => 'Radera',
+'filedelete-success'          => "'''$1''' har raderats.",
+'filedelete-success-old'      => 'Versionen av [[Media:$1|$1]] från $2 kl. $3 har raderats.',
+'filedelete-nofile'           => "Filen '''$1''' finns inte på den här webplatsen.",
+'filedelete-nofile-old'       => "Den versionen av '''$1''' kan inte raderas eftersom den inte finns.",
+'filedelete-iscurrent'        => 'Du försöker radera den senaste versionen av en fil. För att göra det måste du först återställa till en äldre version av filen.',
+'filedelete-otherreason'      => 'Annan/ytterligare anledning:',
+'filedelete-reason-otherlist' => 'Annan anledning',
+'filedelete-reason-dropdown'  => '*Vanliga anledningar till radering
+** Upphovsrättsbrott
+** Dubblettfil',
 
 # MIME search
 'mimesearch'         => 'MIME-sökning',
@@ -1460,7 +1465,7 @@ Se $2 för noteringar om de senaste raderingarna.',
 
 Sidan ändrades senast av [[User:$3|$3]] ([[User talk:$3|diskussion]]).',
 'editcomment'                 => 'Redigeringskommentaren var: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'                  => 'Återställt redigeringar av  [[Special:Contributions/$2|$2]] ([[User talk:$2|användardiskussion]]); återställd till senaste version av [[User:$1|$1]]',
+'revertpage'                  => 'Återställt redigeringar av  [[Special:Contributions/$2|$2]] ([[User talk:$2|användardiskussion]]); återställd till senaste version av [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success'            => 'Återställde ändringar av $1 till senaste versionen av $2.',
 'sessionfailure'              => 'Något med din session som inloggad är på tok. Din begärda åtgärd har avbrutits, för att förhindra att någon kapar din session. Klicka på "Tillbaka" i din webbläsare och ladda om den sida du kom ifrån. Försök sedan igen.',
 'protectlogpage'              => 'Skrivskyddslogg',
@@ -1742,6 +1747,7 @@ I det senare fallet kan du även använda en länk, exempel [[{{ns:special}}:Exp
 'export-addcattext' => 'Lägg till sidor från kategori:',
 'export-addcat'     => 'Lägg till',
 'export-download'   => 'Ladda ner som fil',
+'export-templates'  => 'Inkludera mallar',
 
 # Namespace 8 related
 'allmessages'               => 'Systemmeddelanden',
@@ -1781,13 +1787,17 @@ All överföring mellan wikier (transwiki) listas i  [[Special:Log/import|import
 'importcantopen'             => 'Misslyckades med att öppna importfilen.',
 'importbadinterwiki'         => 'Felaktig interwiki-länk',
 'importnotext'               => 'Tom eller ingen text',
-'importsuccess'              => 'Importen lyckades!',
+'importsuccess'              => 'Importen är genomförd!',
 'importhistoryconflict'      => 'Det föreligger en konflikt i versionshistoriken (kanske har denna sida importerats tidigare)',
 'importnosources'            => 'Inga källor för transwiki-import har angivits, och direkt uppladdning av historik har stängts av.',
 'importnofile'               => 'Ingen fil att importera har laddats upp.',
 'importuploaderrorsize'      => 'Uppladdningen av importfilen misslyckades. Filen är större än vad som är tillåtet att ladda upp.',
 'importuploaderrorpartial'   => 'Uppladdningen av importfilen misslyckades. Bara en del av filen laddades upp.',
 'importuploaderrortemp'      => 'Uppladdningen av importfilen misslyckades. En temporär katalog saknas.',
+'import-parse-failure'       => 'Tolkningsfel vid XML-import',
+'import-noarticle'           => 'Inga sidor att importera!',
+'import-nonewrevisions'      => 'Alla sidversioner hade importerats tidigare.',
+'xml-error-string'           => '$1 på rad $2, kolumn $3 (byte $4): $5',
 
 # Import log
 'importlogpage'                    => 'Importlogg',

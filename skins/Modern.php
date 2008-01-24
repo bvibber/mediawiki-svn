@@ -110,6 +110,10 @@ class ModernTemplate extends QuickTemplate {
 
 	<!-- content -->
 	<div id="mw_content">
+	<!-- contentholder does nothing by default, but it allows users to style the text inside
+	     the content area without affecting the meaning of 'em' in #mw_content, which is used
+	     for the margins -->
+	<div id="mw_contentholder">
 			<?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
 
 			<h3 id="siteSub"><?php $this->msg('tagline') ?></h3>
@@ -120,7 +124,9 @@ class ModernTemplate extends QuickTemplate {
 			<?php if($this->data['showjumplinks']) { ?><div id="jump-to-nav"><?php $this->msg('jumpto') ?> <a href="#column-one"><?php $this->msg('jumptonavigation') ?></a>, <a href="#searchInput"><?php $this->msg('jumptosearch') ?></a></div><?php } ?>
 
 			<?php $this->html('bodytext') ?>
+			<div id='mw_clear'></div>
 			<?php if($this->data['catlinks']) { ?><div id="catlinks"><?php       $this->html('catlinks') ?></div><?php } ?>
+	</div><!-- mw_contentholder -->
 	</div><!-- mw_content -->
 	</div><!-- mw_contentwrapper -->
 

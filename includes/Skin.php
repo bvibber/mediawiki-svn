@@ -1620,6 +1620,7 @@ END;
 
 		$bar = array();
 		$lines = explode( "\n", wfMsgForContent( 'sidebar' ) );
+		$heading = '';
 		foreach ($lines as $line) {
 			if (strpos($line, '*') !== 0)
 				continue;

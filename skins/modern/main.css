@@ -1,11 +1,19 @@
 body {
 	margin: 0 0 0 0;
 	padding: 0 0 0 0;
-	font-size: 10pt;
+	/*font-size: 10pt;*/
+	font-size: x-small;
+	
 
 	font-family: sans-serif;
 	color: black;
 	background-color: #f0f0f0;
+}
+
+#mw_main,
+#p-personal,
+#mw_header {
+	font-size: 130%;
 }
 
 #mw_header {
@@ -90,7 +98,7 @@ body {
 
 #mw_contentwrapper {
 	width: 100%;
-	margin: 0 0 0 -14.1em;
+	margin: 0 0 0 -15em;
 	float: right;
 }
 
@@ -134,6 +142,11 @@ body {
 	padding: 1em 0 1em 0;
 }
 
+textarea {
+	width: 100%;
+	padding: .1em;
+}
+
 #searchBody {
 	text-align: center;
 }
@@ -150,7 +163,6 @@ body {
 	background-color: #dddddd;
 	font-weight: bold;
 	border-bottom: solid 1px #3c78b5;
-	font-size: 10pt;
 	height: 1.1em;
 }
 
@@ -276,7 +288,7 @@ p {
 }
 
 a, a:hover, a:visited {
-	text-decoration: underline;
+	/*text-decoration: underline;*/
 	color: #003366;
 }
 
@@ -317,7 +329,6 @@ h1, h2 {
 }
 
 #preferences h2 {
-	font-size: 10pt;
 }
 
 .mainLegend {
@@ -559,4 +570,10 @@ img.thumbborder {
 #catlinks p {
 	margin: 0 0 0 0;
 	padding: 0 0 0 0;
+}
+
+#mw_header h1,
+#p-personal,
+#p-cactions {
+	overflow: hidden;
 }

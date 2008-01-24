@@ -17,7 +17,7 @@ $skinNames = array(
 	'standard'    => 'Clasica (Classic)',
 	'nostalgia'   => 'Recosiros (Nostalgia)',
 	'cologneblue' => 'Colonia Azul (Cologne Blue)',
-	'myskin'      => 'Mi aparenzia (MySkin)',
+	'myskin'      => 'A mía aparenzia (MySkin)',
 	'simple'      => 'Simpla (Simple)',
 );
 
@@ -28,7 +28,7 @@ $namespaceNames = array(
 	NS_TALK           => 'Descusión',
 	NS_USER           => 'Usuario',
 	NS_USER_TALK      => 'Descusión_usuario',
-	# NS_PROJECT set by $wgMetaNamespace
+	# NS_PROJECT set by \$wgMetaNamespace
 	NS_PROJECT_TALK   => 'Descusión_$1',
 	NS_IMAGE          => 'Imachen',
 	NS_IMAGE_TALK     => 'Descusión_imachen',
@@ -59,7 +59,7 @@ $specialPageAliases = array(
 	'DoubleRedirects'           => array( 'Reendrezeras_dobles', 'Dobles_reendrezeras', 'Endrezeras_dobles', 'Dobles_endrezeras' ),
 	'BrokenRedirects'           => array( 'Reendrezeras_trencatas', 'Endrezeras_trencatas', 'Reendrezeras_crebatas', 'Endrezeras_crebatas', 'Endrezeras_trencadas', 'Endrezeras_crebadas' ),
 	'Disambiguations'           => array( 'Desambigazions', 'Pachinas_de_desambigazión' ),
-	'Userlogin'                 => array( 'Dentrar', 'Enzetar_sesión' ),
+	'Userlogin'                 => array( 'Enzetar_sesión', 'Dentrar' ),
 	'Userlogout'                => array( 'Salir', 'Rematar_sesión' ),
 	'Preferences'               => array( 'Preferenzias' ),
 	'Watchlist'                 => array( 'Lista_de_seguimiento' ),
@@ -68,11 +68,11 @@ $specialPageAliases = array(
 	'Imagelist'                 => array( 'Lista_d\'imáchens', 'Lista_d\'imachens' ),
 	'Listusers'                 => array( 'Lista_d\'usuarios' ),
 	'Statistics'                => array( 'Estadistica', 'Estatistica', 'Estadisticas', 'Estatisticas' ),
-	'Randompage'                => array( 'Pachina_aliatoria', 'Pachina_aleatoria', 'Pachina_á_l\'azar' ),
+	'Randompage'                => array( 'Pachina_aleatoria', 'Pachina_aliatoria', 'Pachina_á_l\'azar' ),
 	'Lonelypages'               => array( 'Pachinas_popiellas' ),
 	'Uncategorizedpages'        => array( 'Pachinas_sin_categorías', 'Pachinas_sin_categorizar' ),
 	'Uncategorizedcategories'   => array( 'Categorías_sin_categorías', 'Categorías_sin_categorizar' ),
-	'Uncategorizedimages'       => array( 'Imachens_sin_categorías', 'Imáchens_sin_categorías', 'Imachens_sin_categorizar', 'Imáchens_sin_categorizar' ),
+	'Uncategorizedimages'       => array( 'Imáchens_sin_categorías', 'Imáchens_sin_categorías', 'Imachens_sin_categorizar', 'Imáchens_sin_categorizar' ),
 	'Uncategorizedtemplates'    => array( 'Plantillas_sin_categorías', 'Plantillas_sin_categorizar' ),
 	'Unusedcategories'          => array( 'Categorías_no_emplegatas', 'Categorías_sin_emplegar' ),
 	'Unusedimages'              => array( 'Imáchens_no_emplegatas', 'Imáchens_sin_emplegar' ),
@@ -90,7 +90,7 @@ $specialPageAliases = array(
 	'Newpages'                  => array( 'Pachinas_nuebas', 'Pachinas_más_nuebas', 'Pachinas_más_rezients', 'Pachinas_rezients' ),
 	'Ancientpages'              => array( 'Pachinas_más_biellas', 'Pachinas_biellas', 'Pachinas_más_antigas', 'Pachinas_antigas' ),
 	'Deadendpages'              => array( 'Pachinas_sin_salida', 'Pachinas_sin_de_salida' ),
-	'Protectedpages'            => array( 'Pachinas_protexitas', 'Pachinas_protechitas', 'Pachinas_protechidas' ),
+	'Protectedpages'            => array( 'Pachinas_protechitas', 'Pachinas_protechitas', 'Pachinas_protechidas' ),
 	'Protectedtitles'           => array( 'Títols_protechitos', 'Títols_protexitos', 'Títols_protechius' ),
 	'Allpages'                  => array( 'Todas_as_pachinas' ),
 	'Prefixindex'               => array( 'Pachinas_por_prefixo', 'Mirar_por_prefixo' ),
@@ -102,7 +102,7 @@ $specialPageAliases = array(
 	'Categories'                => array( 'Categorías' ),
 	'Export'                    => array( 'Esportar' ),
 	'Version'                   => array( 'Bersión' ),
-	'Allmessages'               => array( 'Todos_os_mensaches' ),
+	'Allmessages'               => array( 'Toz_os_mensaches' ),
 	'Import'                    => array( 'Importar' ),
 	'Mypage'                    => array( 'A_mía_pachina', 'A_mía_pachina_d\'usuario' ),
 	'Mytalk'                    => array( 'A_mía_descusión', 'A_mía_pachina_de_descusión' ),
@@ -116,7 +116,7 @@ $specialPageAliases = array(
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'Subrayar os binclos:',
-'tog-highlightbroken'         => 'Formatiar os binclos trencatos <a href="" class="new"> d\'ista traza </a> (y si no, asinas <a href="" class="internal">?</a>).',
+'tog-highlightbroken'         => 'Formateyar os binclos trencatos <a href="" class="new"> d\'ista traza </a> (y si no, asinas <a href="" class="internal">?</a>).',
 'tog-justify'                 => 'Achustar parrafos',
 'tog-hideminor'               => 'Amagar edizions menors en a pachina de "zaguers cambeos"',
 'tog-extendwatchlist'         => 'Enamplar a lista de seguimiento ta amostrar toz os cambeos afeutatos.',
@@ -390,17 +390,17 @@ $1",
 'nodb'                 => 'No se podió trigar a base de datos $1',
 'cachederror'          => "Ista ye una copia en caché d'a pachina demandata, y puestar que no siga esbiellata.",
 'laggedslavemode'      => "Pare cuenta: podrían faltar as zagueras edizions d'ista pachina.",
-'readonly'             => 'Base de datos bloquiata',
+'readonly'             => 'Base de datos bloqueyata',
 'enterlockreason'      => "Esplique a causa d'o bloqueyo, encluyendo una estimazión de cuán se produzirá o desbloqueyo",
-'readonlytext'         => "A base de datos de {{SITENAME}} ye bloquiata temporalment, probablement por mantenimiento rutinario, dimpués d'ixo tornará á la normalidat.
-L'almenistrador que la bloquió dió ista esplicazión:
+'readonlytext'         => "A base de datos de {{SITENAME}} ye bloqueyata temporalment, probablement por mantenimiento rutinario, dimpués d'ixo tornará á la normalidat.
+L'almenistrador que la bloqueyó dió ista esplicazión:
 <p>$1",
 'missingarticle'       => "A base de datos no trobó o testo d'a pachina \"\$1\", que abría d'aber trobato.
 
 Isto gosa pasar si se sigue un binclo enta una esferenzia de bersions zircunduzita, u enta un istorial d'una pachina que ha estato borrata.
 
 Si ista no ye a causa, podría aber trobato una error en o programa. Por fabor, informe d'isto á un almenistrador, endicando-le l'adreza URL.",
-'readonly_lag'         => 'A base de datos ye bloquiata temporalment entre que os serbidors se sincronizan.',
+'readonly_lag'         => 'A base de datos ye bloqueyata temporalment entre que os serbidors se sincronizan.',
 'internalerror'        => 'Error interna',
 'internalerror_info'   => 'Error interna: $1',
 'filecopyerror'        => 'No s\'ha puesto copiar l\'archibo "$1" ta "$2".',
@@ -469,10 +469,10 @@ S'ha creyato a suya cuenta. No xublide presonalizar as [[Special:Preferences|pre
 'youremail'                  => 'Adreza de correu electronico:',
 'username'                   => "Nombre d'usuario:",
 'uid'                        => "ID d'usuario:",
-'yourrealname'               => 'O suyo nombre reyal:',
+'yourrealname'               => 'Nombre reyal:',
 'yourlanguage'               => 'Luenga:',
 'yourvariant'                => 'Modalidat linguistica:',
-'yournick'                   => 'A suya embotada (ta siñar):',
+'yournick'                   => 'Embotada (ta siñar):',
 'badsig'                     => 'A suya siñadura no ye conforme; comprebe as etiquetas HTML.',
 'badsiglength'               => 'Embotada masiau larga; no abría de tener más de $1 caráuters.',
 'email'                      => 'Adreza de correu-e',
@@ -502,8 +502,8 @@ Si iste mensache fue demandato por otri, u si ya se\'n ha alcordato d\'a palabra
 'noemail'                    => 'No bi ha garra adreza de correu electronico rechistrada ta "$1".',
 'passwordsent'               => 'Una nueba palabra de paso plega de nimbiar-se ta o correu electronico de "$1". 
 Por fabor, identifique-se unatra bez malas que la reculla.',
-'blocked-mailpassword'       => "A suya adreza IP ye bloquiata y, ta pribar abusos, no se li premite emplegar d'a funzión de recuperazión de palabras de paso.",
-'eauthentsent'               => "S'ha nimbiato un correu electronico de confirmazión ta l'adreza espezificata. Antes que no se nimbíe dengún atro correu ta ixa cuenta, has de confirmar que ixa adreza te pertenexe. Ta ixo, cal que sigas as instruzions que trobarás en o mensache.",
+'blocked-mailpassword'       => "A suya adreza IP ye bloqueyata y, ta pribar abusos, no se li premite emplegar d'a funzión de recuperazión de palabras de paso.",
+'eauthentsent'               => "S'ha nimbiato un correu electronico de confirmazión ta l'adreza espezificata. Antes que no se nimbíe dengún atro correu ta ixa cuenta, ha de confirmar que ixa adreza te pertenexe. Ta ixo, cal que siga as instruzions que trobará en o mensache.",
 'throttled-mailpassword'     => "Ya s'ha nimbiato un correu recordatorio con a suya palabra de paso fa menos de $1 oras. Ta pribar abusos, sólo se nimbia un recordatorio cada $1 oras.",
 'mailerror'                  => 'Error en nimbiar o correu: $1',
 'acct_creation_throttle_hit' => 'Lo sentimos, ya ha creyato $1 cuentas. No puede creyar más cuentas.',
@@ -511,7 +511,7 @@ Por fabor, identifique-se unatra bez malas que la reculla.',
 'emailnotauthenticated'      => "A suya adreza de correu-e <strong> no ye encara confirmata </strong>. No podrá recullir garra correu t'as siguients funzions.",
 'noemailprefs'               => '<strong>Escriba una adreza de correu-e ta autibar istas carauteristicas.</strong>',
 'emailconfirmlink'           => 'Confirme a suya adreza de correu-e',
-'invalidemailaddress'        => "L'adreza de correu-e no puede estar azeutata pues tiene un formato incorreuto. Por favor, escriba una adreza bien formatiata, u dixe buedo ixe campo.",
+'invalidemailaddress'        => "L'adreza de correu-e no puede estar azeutata pues tiene un formato incorreuto. Por favor, escriba una adreza bien formateyata, u dixe buedo ixe campo.",
 'accountcreated'             => 'Cuenta creyata',
 'accountcreatedtext'         => "S'ha creyato a cuenta d'usuario de $1.",
 'createaccount-title'        => 'Creyar una cuenta en {{SITENAME}}',
@@ -570,19 +570,19 @@ Si ista cuenta s\'ha creyato por error, simplament innore iste mensache.',
 'missingcommentheader'      => "'''Pare cuenta:''' No ha escrito garra títol ta iste comentario. Si puncha un atra bez en con a rateta en \"Alzar\", a suya edizión se grabará sin títol.",
 'summary-preview'           => "Beyer ambiesta prebia d'o resumen",
 'subject-preview'           => "Ambiesta prebia d'o tema/títol",
-'blockedtitle'              => "L'usuario ye bloquiato",
-'blockedtext'               => "<big>'''O suyo nombre d'usuario u adreza IP ha estato bloquiato.'''</big>
+'blockedtitle'              => "L'usuario ye bloqueyato",
+'blockedtext'               => "<big>'''O suyo nombre d'usuario u adreza IP ha estato bloqueyato.'''</big>
 
 O bloqueyo fue feito por \$1. A razón data ye ''\$2''.
 
 * Prenzipio d'o bloqueyo: \$8
 * Fin d'o bloqueyo: \$6
-* Indentificazión bloquiata: \$7
+* Indentificazión bloqueyata: \$7
 
 Puede contautar con \$1 u con atro [[{{MediaWiki:Grouppage-sysop}}|almenistrador]] ta letigar sobre o bloqueyo.
 
 No puede fer serbir o binclo \"nimbiar correu electronico ta iste usuario\" si no ha rechistrato una adreza conforme de correu electronico en as suyas [[Special:Preferences|preferenzias]]. A suya adreza IP autual ye \$3, y o identificador d'o bloqueyo ye #\$5. Por fabor encluiga belún u os dos datos cuan faga cualsiquier consulta.",
-'autoblockedtext'           => "A suya adreza IP fue bloquiata automaticament porque l'eba feito serbir un atro usuario bloquiato por \$1.
+'autoblockedtext'           => "A suya adreza IP fue bloqueyata automaticament porque l'eba feito serbir un atro usuario bloqueyato por \$1.
 
 A razón d'o bloqueyo ye ista:
 
@@ -662,11 +662,11 @@ Si bi ha plegau por error, punche o botón d'o suyo nabegador ta tornar entazaga
 'longpagewarning'           => '<strong>Pare cuenta: Ista pachina tiene ya $1 kilobytes; bels nabegadors pueden tener problemas en editar pachinas de 32KB o más.
 Considere, por fabor, a posibilidat de troxar ista pachina en trestallos más chicoz.</strong>',
 'longpageerror'             => '<strong>ERROR: O testo que ha escrito ye de $1 kilobytes, que ye mayor que a grandaria maisima de $2 kilobytes. No se puede alzar.</strong>',
-'readonlywarning'           => '<strong>Pare cuenta: A base de datos ha estato bloquiata por custions de mantenimiento. Por ixo, en iste inte ye imposible alzar as suyas edizions. Puede copiar y apegar o testo en un archibo y alzar-lo ta dimpués.</strong>',
+'readonlywarning'           => '<strong>Pare cuenta: A base de datos ha estato bloqueyata por custions de mantenimiento. Por ixo, en iste inte ye imposible alzar as suyas edizions. Puede copiar y apegar o testo en un archibo y alzar-lo ta dimpués.</strong>',
 'protectedpagewarning'      => "<strong>PARE CUENTA: Ista pachina ha estato protechita ta que sólo os usuarios con premisos d'almenistrador puedan editar-la.</strong>",
 'semiprotectedpagewarning'  => "'''Nota:''' Ista pachina ha estato protechita ta que nomás usuarios rechistratos puedan editar-la.",
 'cascadeprotectedwarning'   => "'''Pare cuenta:''' Ista pachina ye protechita ta que nomás os almenistrador puedan editar-la, porque ye encluyita en {{PLURAL:$1|a siguient pachina, protechita|as siguients pachinas, protechitas}} con a opzión de ''cascada'' :",
-'titleprotectedwarning'     => '<strong>PARE CUENTA:  Ista pachina ye bloquiata ta que sólo bels usuarios puedan creyar-la.</strong>',
+'titleprotectedwarning'     => '<strong>PARE CUENTA:  Ista pachina ye bloqueyata ta que sólo bels usuarios puedan creyar-la.</strong>',
 'templatesused'             => 'Plantillas emplegatas en ista pachina:',
 'templatesusedpreview'      => 'Plantillas emplegatas en ista ambiesta prebia:',
 'templatesusedsection'      => 'Plantillas usatas en ista sezión:',
@@ -690,7 +690,7 @@ Puede consultar o rechistro de borraus que s'amuestra a continuazión:",
 
 # Account creation failure
 'cantcreateaccounttitle' => 'No se puede creyar a cuenta',
-'cantcreateaccount-text' => "A creyazión de cuentas dende ixa adreza IP (<b>$1</b>) estió bloquiata por [[User:$3|$3]].
+'cantcreateaccount-text' => "A creyazión de cuentas dende ixa adreza IP (<b>$1</b>) estió bloqueyata por [[User:$3|$3]].
 
 A razón endicata por $3 ye ''$2''",
 
@@ -770,7 +770,7 @@ Atros almenistradors de {{SITENAME}} encara podrán azeder t'o contineiu amagato
 
 # Oversight log
 'oversightlog'    => "Rechistro d'escudios",
-'overlogpagetext' => "Contino s'amuestra una lista de borraus y bloqueyos más rezients relatibos á contenius amagatos d'os almenistradors d'o sistema. Consulte a [[Special:Ipblocklist|lista d'adrezas IP bloquiatas]] ta beyer una lista d'os bloqueyos autuals.",
+'overlogpagetext' => "Contino s'amuestra una lista de borraus y bloqueyos más rezients relatibos á contenius amagatos d'os almenistradors d'o sistema. Consulte a [[Special:Ipblocklist|lista d'adrezas IP bloqueyatas]] ta beyer una lista d'os bloqueyos autuals.",
 
 # History merging
 'mergehistory'                     => 'Aunir istorials',
@@ -808,7 +808,7 @@ Asegure-se que iste cambio no crebará a continidat de l'istorial d'a pachina.
 'diff-multi'              => "(S'ha amagato {{plural:$1|una edizión entremeya|$1 edizions entremeyas}}.)",
 
 # Search results
-'searchresults'         => 'Resultaus de mirar',
+'searchresults'         => 'Resultau de mirar',
 'searchresulttext'      => "Ta más informazión sobre cómo mirar pachinas en {{SITENAME}}, consulte l'[[{{MediaWiki:Helppage}}|{{int:help}}]].",
 'searchsubtitle'        => "Ha mirato '''[[:$1]]'''",
 'searchsubtitleinvalid' => 'Ha mirato "$1"',
@@ -836,7 +836,7 @@ Mirar $3 $9',
 'mypreferences'            => 'Preferenzias',
 'prefs-edits'              => "Numero d'edizions:",
 'prefsnologin'             => 'No ye identificato',
-'prefsnologintext'         => "Has d'estar [[{{ns:special}}:Userlogin|rechistrau]] y aber enzetau una sesión ta cambiar as preferenzias d'usuario.",
+'prefsnologintext'         => "Ha d'estar [[{{ns:special}}:Userlogin|rechistrau]] y aber enzetau una sesión ta cambiar as preferenzias d'usuario.",
 'prefsreset'               => "S'ha tornato as preferenzias t'as suyas baluras almadazenatas.",
 'qbsettings'               => 'Preferenzias de "Quickbar"',
 'qbsettings-none'          => 'Denguna',
@@ -893,24 +893,26 @@ Mirar $3 $9',
 'files'                    => 'Archibos',
 
 # User rights
-'userrights-lookup-user'      => "Confegurar collas d'usuarios",
-'userrights-user-editname'    => "Escriba un nombre d'usuario:",
-'editusergroup'               => "Editar as collas d'usuarios",
-'userrights-editusergroup'    => "Editar as collas d'usuarios",
-'saveusergroups'              => "Alzar as collas d'usuarios",
-'userrights-groupsmember'     => 'Miembro de:',
-'userrights-groupsremovable'  => 'Collas sacables:',
-'userrights-groupsavailable'  => 'Collas disponibles:',
-'userrights-groupshelp'       => "Selezione as collas d'as que quiere sacar u adibir bel usuario.
+'userrights-lookup-user'           => "Confegurar collas d'usuarios",
+'userrights-user-editname'         => "Escriba un nombre d'usuario:",
+'editusergroup'                    => "Editar as collas d'usuarios",
+'userrights-editusergroup'         => "Editar as collas d'usuarios",
+'saveusergroups'                   => "Alzar as collas d'usuarios",
+'userrights-groupsmember'          => 'Miembro de:',
+'userrights-groupsremovable'       => 'Collas sacables:',
+'userrights-groupsavailable'       => 'Collas disponibles:',
+'userrights-groupshelp'            => "Selezione as collas d'as que quiere sacar u adibir bel usuario.
 As collas no trigatas no cambiarán. Puede sacar a selezión pretando de bez a tecla CTRL y o botón zurdo d'a rateta.",
-'userrights-reason'           => 'Razón ta o cambeo:',
-'userrights-available-none'   => "No puede cambiar a pertenenzia á las collas d'usuarios.",
-'userrights-available-add'    => 'Puede adibir usuarios ta {{PLURAL:$2|ista colla|istas collas}}: $1.',
-'userrights-available-remove' => "Puede sacar usuarios d'{{PLURAL:$2|ista colla|istas collas}}: $1.",
-'userrights-no-interwiki'     => "No tiene premiso ta editar os dreitos d'usuario en atras wikis.",
-'userrights-nodatabase'       => 'A base de datos $1 no esiste u no ye local.',
-'userrights-nologin'          => "Ha d'[[Special:Userlogin|enzetar una sesión]] con una cuenta d'almenistrador ta poder dar dreitos d'usuario.",
-'userrights-notallowed'       => "A suya cuenta no tiene premisos ta dar dreitos d'usuario.",
+'userrights-reason'                => 'Razón ta o cambeo:',
+'userrights-available-none'        => "No puede cambiar a pertenenzia á las collas d'usuarios.",
+'userrights-available-add'         => 'Puede adibir usuarios ta {{PLURAL:$2|ista colla|istas collas}}: $1.',
+'userrights-available-remove'      => "Puede sacar usuarios d'{{PLURAL:$2|ista colla|istas collas}}: $1.",
+'userrights-available-add-self'    => 'Puede adibir-se bustet mesmo ta {{PLURAL:$2|iste grupo|istos grupos}}: $1.',
+'userrights-available-remove-self' => "Puede sacar-se bustet mesmo d'{{PLURAL:$2|iste grupo|istos grupos}}: $1.",
+'userrights-no-interwiki'          => "No tiene premiso ta editar os dreitos d'usuario en atras wikis.",
+'userrights-nodatabase'            => 'A base de datos $1 no esiste u no ye local.',
+'userrights-nologin'               => "Ha d'[[Special:Userlogin|enzetar una sesión]] con una cuenta d'almenistrador ta poder dar dreitos d'usuario.",
+'userrights-notallowed'            => "A suya cuenta no tiene premisos ta dar dreitos d'usuario.",
 
 # Groups
 'group'               => 'Colla:',
@@ -969,10 +971,10 @@ As collas no trigatas no cambiarán. Puede sacar a selezión pretando de bez a t
 'reupload'                    => 'Cargar un atra begada',
 'reuploaddesc'                => "Tornar ta o formulario de carga d'archibos.",
 'uploadnologin'               => 'No ha enzetato una sesión',
-'uploadnologintext'           => "Has d'estar [[{{ns:special}}:Userlogin|rechistrau]] ta cargar archibos.",
+'uploadnologintext'           => "Ha d'estar [[{{ns:special}}:Userlogin|rechistrau]] ta cargar archibos.",
 'upload_directory_read_only'  => "O serbidor web no puede escribir en o direutorio de carga d'archibos ($1).",
 'uploaderror'                 => "S'ha produzito una error en cargar l'archibo",
-'uploadtext'                  => "Faiga serbir o formulario d'o cobaxo ta cargar archibos; ta beyer u mirar imáchens cargatas prebiament baiga t'a [[Special:Imagelist|lista d'archibos cargatos]]. As cargas y borraus d'archibos tamién son rechistratos en o [[Special:Log/upload|rechistro de cargas]].
+'uploadtext'                  => "Faiga serbir o formulario d'o cobaxo ta cargar archibos; ta beyer u mirar imáchens cargatas denantes baiga t'a [[Special:Imagelist|lista d'archibos cargatos]]. As cargas y borraus d'archibos tamién son rechistratos en o [[Special:Log/upload|rechistro de cargas]].
 
 Ta encluyir a imachen en una pachina, emplegue un binclo d'una d'istas trazas '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Archivo.jpg]]</nowiki>''', '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Archivo.png|testo alternatibo]]</nowiki>''' u
 '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:Archivo.ogg]]</nowiki>''' ta fer o binclo dreitament ta l'archibo.",
@@ -1032,7 +1034,7 @@ Si tienes esta imagen a toda resolución súbela, si no, por favor cambia el nom
 'sourcefilename'              => "Nombre de l'archivo d'orichen",
 'destfilename'                => "Nombre de l'archibo de destino",
 'watchthisupload'             => 'Cosirar ista pachina',
-'filewasdeleted'              => 'Una archibo con iste mesmo nombre ya se cargó prebiament y dimpués estió borrato. Abría de comprebar $1 antes de tornar á cargar-lo una atra begada.',
+'filewasdeleted'              => 'Una archibo con iste mesmo nombre ya se cargó denantes y estió borrato dimpués. Abría de comprebar $1 antes de tornar á cargar-lo una atra begada.',
 'upload-wasdeleted'           => "'''Pare cuenta: Ye cargando un archibo que ya estió borrato d'antes más.'''
 
 Abría de repensar si ye apropiato continar con a carga d'iste archibo. Aquí tiene o rechistro de borrau d'iste archibo ta que pueda comprebar a razón que se dio ta borrar-lo:",
@@ -1190,6 +1192,7 @@ d'os que '''$2''' (o '''$4%''') {{PLURAL:$1|en ye $5|en son $5}}.",
 
 'withoutinterwiki'        => "Pachinas sin d'interwikis",
 'withoutinterwiki-header' => 'As siguients pachinas no tienen binclos ta bersions en atras luengas:',
+'withoutinterwiki-submit' => 'Amostrar',
 
 'fewestrevisions' => 'Articlos con menos edizions',
 
@@ -1417,6 +1420,8 @@ Se beiga en $2 un rechistro d\'os borraus rezients.',
 ** Á demanda d'o mesmo autor
 ** trencadura de copyright
 ** Bandalismo",
+'delete-toobig'               => "Ista pachina tiene un istorial d'edizión prou largo, con más de $1 bersions. S'ha restrinchito o borrau d'ista mena de pachinas ta aprebenir d'a corrompizión azidental de {{SITENAME}}.",
+'delete-warning-toobig'       => "Ista pachina tiene un istorial d'edizión muito largo, con más de $1 bersions. Si la borra puede corromper as operazions d'a base de datos de {{SITENAME}}; contine con ficazio.",
 'rollback'                    => 'Esfer edizions',
 'rollback_short'              => 'Esfer',
 'rollbacklink'                => 'Esfer',
@@ -1424,7 +1429,7 @@ Se beiga en $2 un rechistro d\'os borraus rezients.',
 'cantrollback'                => "No se pueden esfer as edizions; o zaguer colaborador ye o unico autor d'iste articlo.",
 'alreadyrolled'               => 'No se puede esfer a zaguer edizión de [[$1]] por [[User:$2|$2]] ([[User talk:$2|descusión]]); belatro usuario ya ha editato u esfeito una edizión en ixa pachina. A zaguer edizión estió feita por [[User:$3|$3]] ([[User talk:$3|descusión]]).',
 'editcomment'                 => 'O comentario d\'a edizión ye: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'                  => "Esfeitas as zagueras edizions reyalizatas por [[Special:Contributions/$2|$2]] ([[User talk:$2|Descusión]]); s'ha retornato t'a zaguera edizión de [[User:$1|$1]]",
+'revertpage'                  => "Esfeitas as zagueras edizions reyalizatas por [[Special:Contributions/$2|$2]] ([[User talk:$2|Descusión]]); s'ha retornato t'a zaguera edizión de [[User:$1|$1]]", # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success'            => "Esfeitas as edizions de $1; s'ha retornato á la zaguer bersión de $2.",
 'sessionfailure'              => 'Pareix que bi ha un problema con a suya sesión;
 s\'ha canzelato ista aizión como mida de precura contra secuestros de sesión.
@@ -1443,14 +1448,14 @@ Por fabor, prete "Entazaga" en o suyo nabegador ta cargar a pachina d\'a que ben
 'unprotectsub'                => '(Esprotechendo "$1")',
 'protect-unchain'             => 'Confegurar premisos ta treslaus',
 'protect-text'                => "Puede beyer y cambiar o libel e protezión d'a pachina <strong>$1</strong>.",
-'protect-locked-blocked'      => "No puede cambiar os libels de protezión mientres ye bloquiato. Contino se i amuestran as opzions autuals d'a pachina <strong>$1</strong>:",
+'protect-locked-blocked'      => "No puede cambiar os libels de protezión mientres ye bloqueyato. Contino se i amuestran as opzions autuals d'a pachina <strong>$1</strong>:",
 'protect-locked-dblock'       => "Os libels de protezión no se pueden cambiar por un bloqueyo autibo d'a base de datos.
 Contino se i amuestran as opzions autuals d'a pachina <strong>$1</strong>:",
 'protect-locked-access'       => "A suya cuenta no tiene premiso ta cambiar os libels de protezión d'as pachinas. Aquí bi son as propiedaz autuals d'a pachina <strong>$1</strong>:",
 'protect-cascadeon'           => "Ista pachina ye autualment protechita por estar encluyita en {{PLURAL:$1|a siguient pachina|as siguients pachinas}}, que tienen autibata a opzión de protezión en cascada. Puede cambiar o libel de protezión d'ista pachina, pero no afeutará á la protezión en cascada.",
 'protect-default'             => '(por defeuto)',
 'protect-fallback'            => 'Amenista o premiso "$1"',
-'protect-level-autoconfirmed' => 'Bloquiar usuarios no rechistratos',
+'protect-level-autoconfirmed' => 'bloqueyar usuarios no rechistratos',
 'protect-level-sysop'         => 'Sólo almenistradors',
 'protect-summary-cascade'     => 'en cascada',
 'protect-expiring'            => 'caduca o $1 (UTC)',
@@ -1549,8 +1554,8 @@ $1',
 'whatlinkshere-links' => '← binclos',
 
 # Block/unblock
-'blockip'                     => 'Bloquiar usuario',
-'blockiptext'                 => "Replena o siguient formulario ta bloquiar l'azeso
+'blockip'                     => 'bloqueyar usuario',
+'blockiptext'                 => "Replena o siguient formulario ta bloqueyar l'azeso
 d'escritura dende una cuenta d'usuario u una adreza IP espezifica.
 Isto abría de fer-se sólo ta pribar bandalismos, y d'alcuerdo con
 as [[{{MediaWiki:Policy-url}}|politicas]].
@@ -1569,11 +1574,11 @@ as pachinas que s'han bandalizatas).",
 ** Portar-se de traza intimidatoria u biolenta / atosegar
 ** Abusar de multiples cuentas
 ** Nombre d'usuario inazeutable",
-'ipbanononly'                 => 'Bloquiar nomás os usuarios anonimos',
+'ipbanononly'                 => 'bloqueyar nomás os usuarios anonimos',
 'ipbcreateaccount'            => "Aprebenir a creyazión de cuentas d'usuario.",
 'ipbemailban'                 => 'Pribar que os usuarios nimbíen correus electronicos',
-'ipbenableautoblock'          => "Bloquiar automaticament l'adreza IP emplegata por iste usuario, y cualsiquier IP posterior dende a que prebe d'editar",
-'ipbsubmit'                   => 'Bloquiar á iste usuario',
+'ipbenableautoblock'          => "bloqueyar automaticament l'adreza IP emplegata por iste usuario, y cualsiquier IP posterior dende a que prebe d'editar",
+'ipbsubmit'                   => 'bloqueyar á iste usuario',
 'ipbother'                    => 'Espezificar atro periodo',
 'ipboptions'                  => '2 oras:2 hours,1 día:1 day,3 días:3 days,1 semana:1 week,2 semanas:2 weeks,1 mes:1 month,3 meses:3 months,6 meses:6 months,1 año:1 year,ta cutio:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'atro',
@@ -1581,52 +1586,52 @@ as pachinas que s'han bandalizatas).",
 'ipbhidename'                 => "Amagar usuario/IP en o rechistro de bloqueyos, a lista de bloqueyos autibos y a lista d'usuarios",
 'badipaddress'                => "L'adreza IP no ye conforme.",
 'blockipsuccesssub'           => "O bloqueyo s'ha feito correutament",
-'blockipsuccesstext'          => "L'adreza IP [[Special:Contributions/$1|$1]] ye bloquiata. <br />Ir t'a [[Special:Ipblocklist|lista d'adrezas IP bloquiatas]] ta beyer os bloqueyos.",
+'blockipsuccesstext'          => "L'adreza IP [[Special:Contributions/$1|$1]] ye bloqueyata. <br />Ir t'a [[Special:Ipblocklist|lista d'adrezas IP bloqueyatas]] ta beyer os bloqueyos.",
 'ipb-edit-dropdown'           => "Editar as razons d'o bloqueyo",
-'ipb-unblock-addr'            => 'Esbloquiar $1',
-'ipb-unblock'                 => 'Esbloquiar un usuario u una IP',
+'ipb-unblock-addr'            => 'Esbloqueyar $1',
+'ipb-unblock'                 => 'Esbloqueyar un usuario u una IP',
 'ipb-blocklist-addr'          => 'Amostrar bloqueyos autuals de $1',
 'ipb-blocklist'               => 'Amostrar bloqueyos autuals',
-'unblockip'                   => 'Esbloquiar usuario',
-'unblockiptext'               => "Replene o formulario que bi ha contino ta tornar os premisos d'escritura ta una adreza IP u cuenta d'usuario que aiga estato bloquiata.",
-'ipusubmit'                   => 'Esbloquiar ista adreza',
-'unblocked'                   => '[[User:$1|$1]] ha estato esbloquiato',
+'unblockip'                   => 'Esbloqueyar usuario',
+'unblockiptext'               => "Replene o formulario que bi ha contino ta tornar os premisos d'escritura ta una adreza IP u cuenta d'usuario que aiga estato bloqueyata.",
+'ipusubmit'                   => 'Esbloqueyar ista adreza',
+'unblocked'                   => '[[User:$1|$1]] ha estato esbloqueyato',
 'unblocked-id'                => "S'ha sacato o bloqueyo $1",
-'ipblocklist'                 => "Lista d'as adrezas IP bloquiatas",
-'ipblocklist-legend'          => 'Mirar un usuario bloquiato',
+'ipblocklist'                 => "Lista d'as adrezas IP bloqueyatas",
+'ipblocklist-legend'          => 'Mirar un usuario bloqueyato',
 'ipblocklist-username'        => "Nombre d'usuario u adreza IP:",
 'ipblocklist-submit'          => 'Mirar',
-'blocklistline'               => '$1, $2 ha bloquiato á $3 ($4)',
+'blocklistline'               => '$1, $2 ha bloqueyato á $3 ($4)',
 'infiniteblock'               => 'infinito',
 'expiringblock'               => 'zircunduze o $1',
 'anononlyblock'               => 'nomás anon.',
 'noautoblockblock'            => 'Bloqueyo automatico desautibato',
-'createaccountblock'          => "S'ha bloquiato a creyazión de nuebas cuentas",
-'emailblock'                  => "S'ha bloquiato o nimbió de correus electronicos",
+'createaccountblock'          => "S'ha bloqueyato a creyazión de nuebas cuentas",
+'emailblock'                  => "S'ha bloqueyato o nimbió de correus electronicos",
 'ipblocklist-empty'           => 'A lista de bloqueyos ye bueda.',
-'ipblocklist-no-results'      => "A cuenta d'usuario u adreza IP endicata no ye bloquiata.",
-'blocklink'                   => 'bloquiar',
-'unblocklink'                 => 'esbloquiar',
+'ipblocklist-no-results'      => "A cuenta d'usuario u adreza IP endicata no ye bloqueyata.",
+'blocklink'                   => 'bloqueyar',
+'unblocklink'                 => 'esbloqueyar',
 'contribslink'                => 'contrebuzions',
-'autoblocker'                 => 'Ye bloquiato automaticament porque a suya adreza IP l\'ha feito serbir rezientement "[[User:$1|$1]]". A razón data ta bloquiar á "[[User:$1|$1]]" estió "$2".',
+'autoblocker'                 => 'Ye bloqueyato automaticament porque a suya adreza IP l\'ha feito serbir rezientement "[[User:$1|$1]]". A razón data ta bloqueyar á "[[User:$1|$1]]" estió "$2".',
 'blocklogpage'                => 'Rechistro de bloqueyos',
-'blocklogentry'               => "S'ha bloquiato á [[$1]] con una durada de $2 $3",
-'blocklogtext'                => "Isto ye un rechistro de bloqueyos y esbloqueyos d'usuarios. As adrezas bloquiatas automaticament no amaneixen aquí. Mire-se a [[Special:Ipblocklist|lista d'adrezas IP bloquiatas]] ta beyer a lista autual de biedas y bloqueyos.",
-'unblocklogentry'             => 'ha esbloquiato á "$1"',
+'blocklogentry'               => "S'ha bloqueyato á [[$1]] con una durada de $2 $3",
+'blocklogtext'                => "Isto ye un rechistro de bloqueyos y esbloqueyos d'usuarios. As adrezas bloqueyatas automaticament no amaneixen aquí. Mire-se a [[Special:Ipblocklist|lista d'adrezas IP bloqueyatas]] ta beyer a lista autual de biedas y bloqueyos.",
+'unblocklogentry'             => 'ha esbloqueyato á "$1"',
 'block-log-flags-anononly'    => 'nomás os usuarios anonimos',
 'block-log-flags-nocreate'    => "s'ha desautibato a creyazión de cuentas",
 'block-log-flags-noautoblock' => "s'ha desautibato o bloqueyo automatico",
 'block-log-flags-noemail'     => "s'ha desautibato o nimbío de mensaches por correu electronico",
-'range_block_disabled'        => "A posibilidat d'os almenistradors de bloquiar rangos d'adrezas IP ye desautibata.",
+'range_block_disabled'        => "A posibilidat d'os almenistradors de bloqueyar rangos d'adrezas IP ye desautibata.",
 'ipb_expiry_invalid'          => 'O tiempo de zircunduzión no ye conforme.',
-'ipb_already_blocked'         => '"$1" ya ye bloquiato.',
-'ipb_cant_unblock'            => "'''Error''': no s'ha trobato o ID de bloqueyo $1. Talment sía ya esbloquiato.",
-'ipb_blocked_as_range'        => "Error: L'adreza IP $1 no s'ha bloquiato dreitament y por ixo no se puede esbloquiar. Manimenos, ye bloquiata por estar parte d'o rango $2, que sí buede esbloquiar-se de conchunta.",
+'ipb_already_blocked'         => '"$1" ya ye bloqueyato.',
+'ipb_cant_unblock'            => "'''Error''': no s'ha trobato o ID de bloqueyo $1. Talment sía ya esbloqueyato.",
+'ipb_blocked_as_range'        => "Error: L'adreza IP $1 no s'ha bloqueyato dreitament y por ixo no se puede esbloqueyar. Manimenos, ye bloqueyata por estar parte d'o rango $2, que sí buede esbloqueyar-se de conchunta.",
 'ip_range_invalid'            => "O rango d'adrezas IP no ye conforme.",
-'blockme'                     => 'Bloquiar-me',
-'proxyblocker'                => 'Bloquiador de proxies',
+'blockme'                     => 'bloqueyar-me',
+'proxyblocker'                => 'bloqueyador de proxies',
 'proxyblocker-disabled'       => 'Ista funzión ye desautibata.',
-'proxyblockreason'            => "S'ha bloquiato a suya adreza IP porque ye un proxy ubierto. Por fabor, contaute on o suyo furnidor de serbizios d'Internet u con o suyo serbizio d'asistenzia tecnica e informe-les d'iste grau problema de seguridat.",
+'proxyblockreason'            => "S'ha bloqueyato a suya adreza IP porque ye un proxy ubierto. Por fabor, contaute on o suyo furnidor de serbizios d'Internet u con o suyo serbizio d'asistenzia tecnica e informe-les d'iste grau problema de seguridat.",
 'proxyblocksuccess'           => 'Feito.',
 'sorbsreason'                 => 'A suya adreza IP ye en a lista de proxies ubiertos en a DNSBL de {{SITENAME}}.',
 'sorbs_create_account_reason' => 'A suya adreza IP ye en a lista de proxies ubiertos en a DNSBL de {{SITENAME}}. No puede creyar una cuenta',
@@ -1715,6 +1720,7 @@ En iste zaguer caso tamién puede usar un binclo, por exemplo [[Special:Export/{
 'export-addcattext' => 'Adibir pachinas dende a categoría:',
 'export-addcat'     => 'Adibir',
 'export-download'   => 'Alzar como un archibo',
+'export-templates'  => 'Encluyir-ie plantillas',
 
 # Namespace 8 related
 'allmessages'               => "Mensaches d'o sistema",
@@ -1754,13 +1760,17 @@ Todas as importazions interwiki se rechistran en o [[Special:Log/import|rechistr
 'importcantopen'             => "No s'ha puesto importar iste archibo",
 'importbadinterwiki'         => 'Binclo interwiki incorreuto',
 'importnotext'               => 'Buendo y sin de testo',
-'importsuccess'              => "S'ha feito a importazión correutament!",
+'importsuccess'              => "S'ha rematato a importazión!",
 'importhistoryconflict'      => "Bi ha un conflito de bersions en o istorial (talment ista pachina s'aiga importata antes)",
 'importnosources'            => "No bi ha fuents d'importazión interwiki y no ye premitito cargar o istorial dreitament.",
 'importnofile'               => "No s'ha cargato os archibos d'importazión.",
 'importuploaderrorsize'      => "Ha fallato a carga de l'archibo importato. L'archibo brinca d'a grandaria de carga premitita.",
 'importuploaderrorpartial'   => "Ha fallato a carga de l'archibo importato. Sólo una parte de l'archibo s'ha cargato.",
 'importuploaderrortemp'      => "Ha fallato a carga de l'archibo importato. No se troba o direutorio temporal.",
+'import-parse-failure'       => "Fallo en o parseyo d'a importazión XML",
+'import-noarticle'           => 'No bi ha garra pachina ta importar!',
+'import-nonewrevisions'      => "Ya s'eban importato denantes todas as bersions.",
+'xml-error-string'           => '$1 en a linia $2, col $3 (byte $4): $5',
 
 # Import log
 'importlogpage'                    => "Rechistro d'importazions",
@@ -1850,13 +1860,13 @@ Todas as importazions interwiki se rechistran en o [[Special:Log/import|rechistr
 
 # Spam protection
 'spamprotectiontitle'  => 'Filtro de protezión contra o spam',
-'spamprotectiontext'   => "A pachina que mira d'alzar ha estato bloquiata por o filtro de spam.  Regular que a causa sía en bel binclo esterno.",
+'spamprotectiontext'   => "A pachina que mira d'alzar ha estato bloqueyata por o filtro de spam.  Regular que a causa sía en bel binclo esterno.",
 'spamprotectionmatch'  => 'O testo siguient ye o que autibó o nuestro filtro de spam: $1',
 'subcategorycount'     => 'Bi ha {{PLURAL:$1|una subcategoría|$1 subcategorías}} en ista categoría.',
 'categoryarticlecount' => 'Bi ha $1 {{PLURAL:$1|articlo|articlos}} en ista categoría.',
 'category-media-count' => 'Bi ha {{PLURAL:$1|&nbsp;un archibo|$1 archibos}} en ista categoría.',
 'spambot_username'     => 'Esporga de spam de MediaWiki',
-'spam_reverting'       => "Rebertindo t'a zaguera bersión sin de binclos ta $1",
+'spam_reverting'       => "Tornando t'a zaguera bersión sin de binclos ta $1",
 'spam_blanking'        => 'Todas as bersions contienen binclos ta $1, se blanquea a pachina',
 
 # Info page

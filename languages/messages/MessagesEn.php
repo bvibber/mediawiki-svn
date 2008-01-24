@@ -114,7 +114,8 @@ $skinNames = array(
 	'monobook'    => 'MonoBook',
 	'myskin'      => 'MySkin',
 	'chick'       => 'Chick',
-	'simple'      => 'Simple'
+	'simple'      => 'Simple',
+	'modern'      => 'Modern',
 );
 
 /**
@@ -352,6 +353,7 @@ $specialPageAliases = array(
 	'Disambiguations'           => array( 'Disambiguations' ),
 	'Userlogin'                 => array( 'Userlogin' ),
 	'Userlogout'                => array( 'Userlogout' ),
+	'CreateAccount'             => array( 'CreateAccount' ),
 	'Preferences'               => array( 'Preferences' ),
 	'Watchlist'                 => array( 'Watchlist' ),
 	'Recentchanges'             => array( 'Recentchanges' ),
@@ -1414,10 +1416,10 @@ containing all of the search terms will appear in the result).",
 'reupload'                    => 'Re-upload',
 'reuploaddesc'                => 'Return to the upload form.',
 'uploadnologin'               => 'Not logged in',
-'uploadnologintext'           => 'You must be [[Special:Userlogin|logged in]]
-to upload files.',
+'uploadnologintext'           => 'You must be [[Special:Userlogin|logged in]] to upload files.',
 'upload_directory_read_only'  => 'The upload directory ($1) is not writable by the webserver.',
 'uploaderror'                 => 'Upload error',
+'upload-summary'              => '', # only translate this message to other languages if you have to change it
 'uploadtext'                  => "Use the form below to upload files, to view or search previously uploaded images go to the [[Special:Imagelist|list of uploaded files]], uploads and deletions are also logged in the [[Special:Log/upload|upload log]].
 
 To include the image in a page, use a link in the form
@@ -1567,18 +1569,24 @@ PICT # misc.
 'filerevert-badversion'     => 'There is no previous local version of this file with the provided timestamp.',
 
 # File deletion
-'filedelete'             => 'Delete $1',
-'filedelete-backlink'    => '← $1', # only translate this message to other languages if you have to change it
-'filedelete-legend'      => 'Delete file',
-'filedelete-intro'       => "You are deleting '''[[Media:$1|$1]]'''.",
-'filedelete-intro-old'   => '<span class="plainlinks">You are deleting the version of \'\'\'[[Media:$1|$1]]\'\'\' as of [$4 $3, $2].</span>',
-'filedelete-comment'     => 'Comment:',
-'filedelete-submit'      => 'Delete',
-'filedelete-success'     => "'''$1''' has been deleted.",
-'filedelete-success-old' => '<span class="plainlinks">The version of \'\'\'[[Media:$1|$1]]\'\'\' as of $3, $2 has been deleted.</span>',
-'filedelete-nofile'      => "'''$1''' does not exist on {{SITENAME}}.",
-'filedelete-nofile-old'  => "There is no archived version of '''$1''' with the specified attributes.",
-'filedelete-iscurrent'   => 'You are attempting to delete the most recent version of this file. Please revert to an older version first.',
+'filedelete'                   => 'Delete $1',
+'filedelete-backlink'          => '← $1', # only translate this message to other languages if you have to change it
+'filedelete-legend'            => 'Delete file',
+'filedelete-intro'             => "You are deleting '''[[Media:$1|$1]]'''.",
+'filedelete-intro-old'         => '<span class="plainlinks">You are deleting the version of \'\'\'[[Media:$1|$1]]\'\'\' as of [$4 $3, $2].</span>',
+'filedelete-comment'           => 'Reason for deletion:',
+'filedelete-submit'            => 'Delete',
+'filedelete-success'           => "'''$1''' has been deleted.",
+'filedelete-success-old'       => '<span class="plainlinks">The version of \'\'\'[[Media:$1|$1]]\'\'\' as of $3, $2 has been deleted.</span>',
+'filedelete-nofile'            => "'''$1''' does not exist on {{SITENAME}}.",
+'filedelete-nofile-old'        => "There is no archived version of '''$1''' with the specified attributes.",
+'filedelete-iscurrent'         => 'You are attempting to delete the most recent version of this file. Please revert to an older version first.',
+'filedelete-otherreason'       => 'Other/additional reason:',
+'filedelete-reason-otherlist'  => 'Other reason',
+'filedelete-reason-dropdown'   => '
+*Common delete reasons
+** Copyright violation
+** Duplicated file',
 
 # MIME search
 'mimesearch'         => 'MIME search',
@@ -1930,7 +1938,7 @@ by [[User:$2|$2]] ([[User talk:$2|Talk]]); someone else has edited or rolled bac
 
 Last edit was by [[User:$3|$3]] ([[User talk:$3|Talk]]).',
 'editcomment'                 => 'The edit comment was: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'                  => 'Reverted edits by [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]); changed back to last version by [[User:$1|$1]]',
+'revertpage'                  => 'Reverted edits by [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]); changed back to last version by [[User:$1|$1]]', # Also available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success'            => 'Reverted edits by $1; changed back to last version by $2.',
 'sessionfailure'              => 'There seems to be a problem with your login session; this action has been canceled as a precaution against session hijacking. Please hit "back" and reload the page you came from, then try again.',
 'protectlogpage'              => 'Protection log',
@@ -2301,13 +2309,17 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'importcantopen'             => "Couldn't open import file",
 'importbadinterwiki'         => 'Bad interwiki link',
 'importnotext'               => 'Empty or no text',
-'importsuccess'              => 'Import succeeded!',
+'importsuccess'              => 'Import finished!',
 'importhistoryconflict'      => 'Conflicting history revision exists (may have imported this page before)',
 'importnosources'            => 'No transwiki import sources have been defined and direct history uploads are disabled.',
 'importnofile'               => 'No import file was uploaded.',
 'importuploaderrorsize'      => 'Upload of import file failed. The file is bigger than the allowed upload size.',
 'importuploaderrorpartial'   => 'Upload of import file failed. The file was only partially uploaded.',
 'importuploaderrortemp'      => 'Upload of import file failed. A temporary folder is missing.',
+'import-parse-failure'       => 'XML import parse failure',
+'import-noarticle'           => 'No page to import!',
+'import-nonewrevisions'      => 'All revisions were previously imported.',
+'xml-error-string'           => '$1 at line $2, col $3 (byte $4): $5',
 
 # Import log
 'importlogpage'                    => 'Import log',
