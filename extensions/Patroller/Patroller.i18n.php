@@ -433,12 +433,18 @@ $messages['ru'] = array(
 	'patrol-revert-reason'   => 'Причина:',
 	'patrol-skip'            => 'Отложить',
 	'patrol-reverting'       => 'Откат: $1',
+	'patrol-nonefound'       => 'Невозможно найти соответствующих правок для патрулирования.',
 	'patrol-endorsed-ok'     => 'Правка подтверждена.',
 	'patrol-endorsed-failed' => 'Не удалось подтвердить правку.',
 	'patrol-reverted-ok'     => 'Правка откачена.',
 	'patrol-reverted-failed' => 'Не удалось откатить правку.',
 	'patrol-skipped-ok'      => 'Правка отложена.',
+	'patrol-reasons'         => '* Просто вандализм
+* Тест новичка
+* См. страницу обсуждения',
 	'patrol-another'         => 'Вывести ещё одну правку, если имеется.',
+	'patrol-stopped'         => 'Вы решили не патрулировать другую правку. $1',
+	'patrol-resume'          => 'Нажмите здесь для продолжения.',
 	'group-patroller'        => 'Патрулирующие',
 	'group-patroller-member' => 'патрулирующий',
 	'grouppage-patroller'    => '{{ns:project}}:Патрулирование',

@@ -185,8 +185,10 @@ $messages['sk'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'whoiswatching'               => 'Wäl beooboachtet ne Siede',
-	'specialwhoiswatchingthepage' => 'Wäl beooboachtet %s',
-	'specialwhoiswatchingusage'   => 'Disse Spezioalsiede kon nit ap sik sälwen anwoand wäide. Definier uur ju Siede [[MediaWiki:Number of watching users pageview]] ne Ienstiegssiede foar disse Spezioalsiede.',
+	'whoiswatching'                => 'Wäl beooboachtet ne Siede',
+	'specialwhoiswatchingthepage'  => 'Wäl beooboachtet %s',
+	'specialwhoiswatchingusage'    => 'Disse Spezioalsiede kon nit ap sik sälwen anwoand wäide. Definier uur ju Siede [[MediaWiki:Number of watching users pageview]] ne Ienstiegssiede foar disse Spezioalsiede.',
+	'specialwhoiswatchingaddusers' => 'Föich Benutser tou dät Bekiekjen fon ju Siede bietou.',
+	'specialwhoiswatchingaddbtn'   => 'Föich Benutser bietou',
 );
 

@@ -114,6 +114,15 @@ $messages['el'] = array(
 	'linksearch-ok'    => 'Αναζήτηση',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'linksearch-ns'   => 'Nomspaco:',
+	'linksearch-ok'   => 'Sercxu:',
+	'linksearch-line' => '$1 ligita de $2',
+);
+
 $messages['es'] = array(
 	'linksearch'       => 'Buscar enlaces a páginas web',
 	'linksearch-pat'   => 'Patrón de búsqueda:',

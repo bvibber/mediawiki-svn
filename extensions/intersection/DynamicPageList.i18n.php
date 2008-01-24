@@ -202,6 +202,16 @@ $messages['sk'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Musíte uviesť aspoň jednu kategóriu alebo menný priestor!',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: Toufuul Kategorien!',
+	'intersection_toofewcats'    => 'DynamicPageList: Toumin Kategorien!',
+	'intersection_noresults'     => 'DynamicPageList: Neen Resultoat!',
+	'intersection_noincludecats' => 'DynamicPageList: Der mout mindestens een Kategorie ienbuunen weese of reek n Noomensruum oun!',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */

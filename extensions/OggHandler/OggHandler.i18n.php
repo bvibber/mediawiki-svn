@@ -1092,30 +1092,32 @@ $messages['sr-ec'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'ogg-short-audio'       => 'Ogg-$1-Audiodoatäi, $2',
-	'ogg-short-video'       => 'Ogg-$1-Videodoatäi, $2',
-	'ogg-short-general'     => 'Ogg-$1-Mediadoatäi, $2',
-	'ogg-long-audio'        => '(Ogg-$1-Audiodoatäi, Loangte: $2, $3)',
-	'ogg-long-video'        => '(Ogg-$1-Videodoatäi, Loangte: $2, $4×$5 Pixel, $3)',
-	'ogg-long-multiplexed'  => '(Ogg-Audio-/Video-Doatäi, $1, Loangte: $2, $4×$5 Pixel, $3)',
-	'ogg-long-general'      => '(Ogg-Mediadoatäi, Loangte: $2, $3)',
-	'ogg-long-error'        => '(Uungultige Ogg-Doatäi: $1)',
-	'ogg-play'              => 'Start',
-	'ogg-pause'             => 'Pause',
-	'ogg-stop'              => 'Stop',
-	'ogg-play-video'        => 'Video ouspielje',
-	'ogg-play-sound'        => 'Audio ouspielje',
-	'ogg-no-player'         => 'Dien System schient uur neen Ouspielsoftware tou ferföigjen. Installier <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ne Ouspielsoftware</a>.',
-	'ogg-no-xiphqt'         => 'Dien System schient nit uur ju XiphQT-Komponente foar QuickTime tou ferföigjen. QuickTime kon sunner disse Komponente neen Ogg-Doatäie ouspielje.
+	'ogg-short-audio'         => 'Ogg-$1-Audiodoatäi, $2',
+	'ogg-short-video'         => 'Ogg-$1-Videodoatäi, $2',
+	'ogg-short-general'       => 'Ogg-$1-Mediadoatäi, $2',
+	'ogg-long-audio'          => '(Ogg-$1-Audiodoatäi, Loangte: $2, $3)',
+	'ogg-long-video'          => '(Ogg-$1-Videodoatäi, Loangte: $2, $4×$5 Pixel, $3)',
+	'ogg-long-multiplexed'    => '(Ogg-Audio-/Video-Doatäi, $1, Loangte: $2, $4×$5 Pixel, $3)',
+	'ogg-long-general'        => '(Ogg-Mediadoatäi, Loangte: $2, $3)',
+	'ogg-long-error'          => '(Uungultige Ogg-Doatäi: $1)',
+	'ogg-play'                => 'Start',
+	'ogg-pause'               => 'Pause',
+	'ogg-stop'                => 'Stop',
+	'ogg-play-video'          => 'Video ouspielje',
+	'ogg-play-sound'          => 'Audio ouspielje',
+	'ogg-no-player'           => 'Dien System schient uur neen Ouspielsoftware tou ferföigjen. Installier <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ne Ouspielsoftware</a>.',
+	'ogg-no-xiphqt'           => 'Dien System schient nit uur ju XiphQT-Komponente foar QuickTime tou ferföigjen. QuickTime kon sunner disse Komponente neen Ogg-Doatäie ouspielje. 
 Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">leede XiphQT</a> of wääl ne uur Ouspielsoftware.',
-	'ogg-player-thumbnail'  => 'Wies Foarschaubielde',
-	'ogg-player-soundthumb' => 'Naan Player',
-	'ogg-player-selected'   => '(uutwääld)',
-	'ogg-use-player'        => 'Ouspielsoftware:',
-	'ogg-more'              => 'Optione …',
-	'ogg-dismiss'           => 'Sluute',
-	'ogg-download'          => 'Doatäi spiekerje',
-	'ogg-desc-link'         => 'Uur disse Doatäi',
+	'ogg-player-videoElement' => '<video>-Element>',
+	'ogg-player-oggPlugin'    => 'Ogg-Plugin',
+	'ogg-player-thumbnail'    => 'Wies Foarschaubielde',
+	'ogg-player-soundthumb'   => 'Naan Player',
+	'ogg-player-selected'     => '(uutwääld)',
+	'ogg-use-player'          => 'Ouspielsoftware:',
+	'ogg-more'                => 'Optione …',
+	'ogg-dismiss'             => 'Sluute',
+	'ogg-download'            => 'Doatäi spiekerje',
+	'ogg-desc-link'           => 'Uur disse Doatäi',
 );
 
 $messages['sv'] = array(
@@ -1147,6 +1149,14 @@ $messages['sv'] = array(
 	'ogg-dismiss'          => 'Stäng',
 	'ogg-download'         => 'Ladda ner filen',
 	'ogg-desc-link'        => 'Om filen',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'ogg-more'      => 'మరిన్ని...',
+	'ogg-desc-link' => 'ఈ ఫైలు గురించి',
 );
 
 /** Volapük (Volapük)

@@ -75,3 +75,10 @@ $messages['oc'] = array(
 	'usercontactlink-baduser' => 'nom d’utilizaire incorrècte',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'usercontactlink-baduser' => 'falsken Benutsernoome',
+);
+

@@ -114,6 +114,14 @@ $messages['hu'] = array(
 	'inspectcache-list'    => 'Listázás',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'inspectcache-delete'  => 'Läschen',
+	'inspectcache-deleted' => 'Cache läschen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin
@@ -195,6 +203,9 @@ $messages['stq'] = array(
 	'inspectcache-general' => 'Algemeenen Cache',
 	'inspectcache-parser'  => 'Parser-Cache',
 	'inspectcache-message' => 'Ättergjuchte-Cache',
+	'inspectcache-get'     => 'Hoalje',
+	'inspectcache-delete'  => 'Läskje',
 	'inspectcache-deleted' => 'Läskeden Cache',
+	'inspectcache-list'    => 'Lieste',
 );
 

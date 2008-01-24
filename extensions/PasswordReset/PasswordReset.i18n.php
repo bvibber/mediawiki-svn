@@ -279,19 +279,20 @@ $messages['rm'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
-	'passwordreset'                 => 'Сброс пароля',
-	'passwordreset-invalidusername' => 'Недопустимое имя участника',
-	'passwordreset-emptyusername'   => 'Пустое имя участника',
-	'passwordreset-nopassmatch'     => 'Пароли не совпадают',
-	'passwordreset-badtoken'        => 'Ошибочный признак правки',
-	'passwordreset-username'        => 'Имя участника',
-	'passwordreset-newpass'         => 'Новый пароль',
-	'passwordreset-confirmpass'     => 'Подтверждение пароля',
-	'passwordreset-submit'          => 'Сбросить пароль',
-	'passwordreset-success'         => 'Пароль сброшен для user_id: $1',
-	'passwordreset-disableuser'     => 'Отключить учётную запись?',
-	'passwordreset-disablesuccess'  => 'Учётная запись отключена (user_id: $1)',
-	'passwordreset-accountdisabled' => 'Учётная запись отключена',
+	'passwordreset'                    => 'Сброс пароля',
+	'passwordreset-invalidusername'    => 'Недопустимое имя участника',
+	'passwordreset-emptyusername'      => 'Пустое имя участника',
+	'passwordreset-nopassmatch'        => 'Пароли не совпадают',
+	'passwordreset-badtoken'           => 'Ошибочный признак правки',
+	'passwordreset-username'           => 'Имя участника',
+	'passwordreset-newpass'            => 'Новый пароль',
+	'passwordreset-confirmpass'        => 'Подтверждение пароля',
+	'passwordreset-submit'             => 'Сбросить пароль',
+	'passwordreset-success'            => 'Пароль сброшен для user_id: $1',
+	'passwordreset-disableuser'        => 'Отключить учётную запись?',
+	'passwordreset-disableuserexplain' => '(установлен неверный хеш пароля — участник не может зайти)',
+	'passwordreset-disablesuccess'     => 'Учётная запись отключена (user_id: $1)',
+	'passwordreset-accountdisabled'    => 'Учётная запись отключена',
 );
 
 /** Slovak (Slovenčina)

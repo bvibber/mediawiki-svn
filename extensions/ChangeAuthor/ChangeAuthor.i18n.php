@@ -154,6 +154,13 @@ $messages['el'] = array(
 	'changeauthor-rev' => 'r$1',#identical but defined
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'changeauthor-nosuchtitle' => 'Estas neniu pagxo titolata "$1".',
+);
+
 /** French (Français)
  * @author Sherbrooke
  * @author Dereckson
@@ -492,6 +499,14 @@ $messages['stq'] = array(
 	'changeauthor-logentry'             => 'annerde Autorennoome fon ju $2 fon $1 fon $3 ap $4',
 	'changeauthor-logpagename'          => 'Autorennoome-Annerengslogbouk',
 	'changeauthor-rev'                  => 'Version $1',
+);
+
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'changeauthor-pagenameform-go' => 'Gå',
+	'changeauthor-comment'         => 'Kommentar:',
 );
 
 /** Telugu (తెలుగు)

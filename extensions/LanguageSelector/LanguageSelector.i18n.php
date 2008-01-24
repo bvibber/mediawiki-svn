@@ -61,6 +61,14 @@ $messages['el'] = array(
 	'languageselector' => 'Γλώσσα',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'languageselector'         => 'Lingvo',
+	'languageselector-setlang' => 'faru',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */
@@ -156,6 +164,14 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'languageselector'         => 'Jazyk',
 	'languageselector-setlang' => 'nastaviť',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'languageselector'         => 'Sproake',
+	'languageselector-setlang' => 'sätte',
 );
 
 /** Swedish (Svenska)

@@ -152,6 +152,23 @@ $messages['oc'] = array(
 	'postcomment_nopostingtoadd'           => "Cap de messatge d'ajustar",
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'postcomment_discussionprotected'      => 'Страница обсуждения была защищена от размещения новых сообщений',
+	'postcomment_notloggedin'              => 'Вы не представились системе',
+	'postcomment_youareloggedinas'         => 'Вы вошли как $1',
+	'postcomment_addcommentdiscussionpage' => 'Добавьте свой комментарий на этой странице обсуждения',
+	'postcomment_leavemessagefor'          => 'Оставить сообщения для $1',
+	'postcomment_post'                     => 'Отправить',
+	'postcomment_on'                       => 'Включить',
+	'postcomment_said'                     => 'написал(а)',
+	'postcomment_invalidrequest'           => 'Ошибочный запрос.',
+	'postcomment_replyto'                  => 'В ответ на $1',
+	'postcomment_nopostingtoadd'           => 'Нет сообщения для добавления',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -494,6 +494,23 @@ $messages['sk'] = array(
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Nasledovný riadok|Nasledovné riadky}} čiernej listiny používateľských mien {{PLURAL:$1|je neplatný|sú neplatné}} a je potrebné {{PLURAL:$1|ho|ich}} opraviť pred uložením stránky:',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'blacklistedusername'             => 'Benutsernoome ap ju Speerlieste',
+	'blacklistedusernametext'         => 'Die wäälde Benutsernoome stoant ap ju [[MediaWiki:Usernameblacklist|Lieste fon do speerde Benutsernoomen]]. Wääl n uur Noome.',
+	'usernameblacklist'               => '<pre>
+# Iendraage in disse Lieste sunt Deel fon n regulären Uutdruk,
+# die der bie ju Wröich fon Näianmäldengen ap nit wonskede Benutsernoomen anwoand wäd.
+# Älke Siede mout mäd n * ounfange, t.B.
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Ju foulgjende Riege|Do foulgjende Riegen}} in ju Lieste fon nit-wonskede Benutsernoomen {{PLURAL:$1|is|sunt}} uungultich; korrigier do foar dät Spiekerjen:',
+);
+
 /* Sundanese (Irwangatot via BetaWiki) */
 $messages['su'] = array(
 	'blacklistedusername' => 'Ngaran pamaké nu dicorét:',
@@ -513,6 +530,23 @@ $messages['sv'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => 'Följande {{PLURAL:$1|rad|rader}} i listan är {{PLURAL:$1|ogiltig|ogiltiga}}; rätta {{PLURAL:$1|den|dem}} innan du sparar:',
+);
+
+/** Telugu (తెలుగు)
+ * @author Mpradeep
+ */
+$messages['te'] = array(
+	'blacklistedusername'             => 'అనుమతిలేని పేరు',
+	'blacklistedusernametext'         => 'మీరు ఎంచుకున్న సభ్యనామం, [[MediaWiki:Usernameblacklist|అనుమతించని పేర్ల జాబితా]]లో ఉంది. దయచేసి ఇంకో పేరుని ఎంచుకోండి.',
+	'usernameblacklist'               => '<pre>
+# కొత్త ఖాతాలకు సృష్టించుకునేటప్పుడు వాటికి కింద జాబితాలో ఉన్న regular exressionకు సరిపోయే
+# పేర్లను అనుమతించరు. ఏదయినా కొత్త పేరును సభ్యనామంగా అనుమతించకూడాదని అనుకుంటే దానిని
+# ఒక నక్షత్రం గుర్తుతో పాటుగా చేర్చండి. ఉదాహరణ:
+# 
+# * ఫలానా
+# * అత[డును]
+</pre>',
+	'usernameblacklist-invalid-lines' => 'అనుమతించని పేర్లజాబితాలో ఈ కింది {{PLURAL:$1|లైను|లైన్‌లు}} అర్ధంకాకుండా {{PLURAL:$1|ఉంది|ఉన్నాయి}}; దాయచేసి {{PLURAL:$1|అందులో|వాటిలో}} ఉన్న తప్పులను సరిచేసి ఆ తరువాత భద్రపరచండి.',
 );
 
 /** Turkish (Türkçe)

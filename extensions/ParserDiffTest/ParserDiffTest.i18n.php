@@ -337,6 +337,24 @@ $messages['sk'] = array(
 	'pdt_comparing_page'  => 'Porovnáva sa výstup syntaktického analyzátora z [[$1]]',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'parserdifftest'      => 'Parser-Differenz-Test',
+	'pdtest_no_target'    => 'Neen Siel anroat.',
+	'pdtest_page_missing' => 'Ju anroate Siede wuude nit in de Doatenboank fuunen.',
+	'pdtest_no_changes'   => 'Neen Unnerscheede fuunen.',
+	'pdtest_time_report'  => '<b>$1</b> bruukte $2 Sekunden, <b>$3</b> bruukte $4 Sekunden.',
+	'pdtest_title'        => 'Kontexttittel:',
+	'pdtest_text'         => 'Iengoawe:',
+	'pdtest_ok'           => 'OK',
+	'pdtest_get_text'     => 'Hoalje Text fon Siede',
+	'pdtest_diff'         => 'Unnerscheede',
+	'pdtest_side_by_side' => 'Uutgoawe in dän Fergliek',
+	'pdt_comparing_page'  => 'Fergliek Parser-Uutgoawe foar [[$1]]',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */

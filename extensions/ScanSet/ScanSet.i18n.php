@@ -286,6 +286,23 @@ $messages['sr-ec'] = array(
 	'scanset_prev' => '&lt; Прет.',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'scanset_no_name'                   => 'ScanSet: Der mout n Scan-Set-Noome anroat wäide, t.B. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: Uungultich of failjend Scan-Set.',
+	'scanset_unrecognised_index_format' => 'ScanSet: Uunbekoand Indexformoat',
+	'scanset_opendir_error'             => 'ScanSet: Failer, Ferteeknis $1 kon nit eepend wäide',
+	'scanset_no_files'                  => 'ScanSet: In dät anroate Ferteeknis sunt neen Doatäie deer.',
+	'scanset_no_volumes'                => 'ScanSet: Neen Volume-Ferteeknis fuunen',
+	'scanset_missing_index_file'        => 'ScanSet: Indexdoatäi $1 nit fuunen',
+	'scanset_index_file_error'          => 'ScanSet: Failer in dät Formoat fon ju Indexdoatäi in Riege $1',
+	'scanset_invalid_volume'            => 'ScanSet: Uungultich Volume',
+	'scanset_next'                      => 'Naiste →',
+	'scanset_prev'                      => '← Foarige',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */

@@ -324,8 +324,10 @@ $messages['hsb'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'regexblock-form-reason' => 'Grond:',
-	'regexblock-view-all'    => 'Alleguer',
+	'regexblock-form-reason'   => 'Grond:',
+	'regexblock-view-all'      => 'Alleguer',
+	'regexblock-view-reason'   => 'Grond: $1',
+	'regexblock-view-block-by' => 'gespaart vum',
 );
 
 /** Dutch (Nederlands)

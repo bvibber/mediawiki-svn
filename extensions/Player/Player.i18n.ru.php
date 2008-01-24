@@ -6,6 +6,7 @@ $messages = array(
 	'player'                  => 'Проигрыватель',
 	'player-title'            => 'Проигрыватель',
 	'player-playertitle'      => 'Проигрыватель: $1',
+	'player-file'             => 'Имя файла',
 	'player-play'             => 'Воспроизведение',
 	'player-imagepage-header' => '<h1>$1</h1>',
 	'player-not-allowed'      => 'недопустимый формат',
@@ -16,3 +17,4 @@ $messages = array(
 	'player-goto-page'        => 'Страница',
 	'player-goto-file'        => 'файл',
 );
+

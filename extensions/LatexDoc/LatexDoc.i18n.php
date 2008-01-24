@@ -59,6 +59,13 @@ $3',
 	'latexdoc_get_pdf'         => 'Генериране на PDF',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'latexdoc_no_text' => 'Pagxo enhavas neniom da teksto; ne eblas fari DVI',
+);
+
 $messages['fr'] = array(
 	'latexdoc_no_text' => 'L’article ne contient pas de texte. Impossible de créer DVI',
 	'latexdoc_cant_create_dir' => 'Impossible de créer le répertoire temporaire $1',

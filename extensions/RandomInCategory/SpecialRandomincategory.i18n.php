@@ -132,3 +132,14 @@ $messages['sk'] = array(
 	'randomincategory-submit'     => 'Choď',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'randomincategory'            => 'Toufällige Siede in ne Kategorie',
+	'randomincategory-toolbox'    => 'Toufällige Siede',
+	'randomincategory-nocategory' => 'Kategorie $1 bestoant nit of ju is loos',
+	'randomincategory-label'      => 'Kategorie:',
+	'randomincategory-submit'     => 'OK',
+);
+

@@ -2380,6 +2380,9 @@ $messages['sah'] = array(
 	'boardvote_user'         => 'Кыттааччы',
 	'boardvote_edits'        => 'Көннөрүүлэр',
 	'boardvote_days'         => 'Күннэр',
+	'boardvote_ip'           => 'IP',
+	'boardvote_ua'           => 'Браузер',
+	'boardvote_listintro'    => '<p>Бу быыбар бүллэтиэннэрин испииһэгэ. Билиҥҥи түмүгүн манна: $1 көрүөххэ сөп (ким туох иһин куоластаабыта көстүбэт).</p>',
 	'boardvote_dumplink'     => 'Маны баттаа',
 	'boardvote_submit'       => 'OK',
 	'boardvote_strike'       => 'Соторго',
@@ -2770,8 +2773,8 @@ $1 för de krypterade uppgifterna.</p>',
 );
 
 /** Telugu (తెలుగు)
- * @author Mpradeep
  * @author Veeven
+ * @author Mpradeep
  */
 $messages['te'] = array(
 	'boardvote'              => 'వికీమీడియా ట్రస్టుబోర్డు ఎన్నికలు',
@@ -2807,12 +2810,16 @@ $messages['te'] = array(
 	'boardvote_user'         => 'వాడుకరి',
 	'boardvote_edits'        => 'దిద్దుబాట్లు',
 	'boardvote_days'         => 'రోజులు',
+	'boardvote_ip'           => 'ఐపీ',
 	'boardvote_listintro'    => '<p>ఇప్పటివరకు నమోదైన వోట్ల జాబితా ఇది. కోడీకరించబడిన డేటా కొరకు $1.</p>',
 	'boardvote_dumplink'     => 'ఇక్కడ నొక్కండి',
 	'boardvote_submit'       => 'సరే',
+	'boardvote_needadmin'    => 'ఎన్నికల నిర్వాహకులు మాత్రమే ఈ పని చెయ్యగలరు.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">వికీమీడియా బోర్డు ఎన్నికలు</a>:  జూలై 12 వరకు వోటెయ్యవచ్చు',
 	'boardvote_notstarted'   => 'వోటింగు ఇంకా మొదలు కాలేదు',
 	'boardvote_edits_many'   => 'చాలా',
 	'boardvote_welcome'      => "స్వాగతం '''$1'''!",
+	'go_to_board_vote'       => 'వికీమీడియా బోర్డు ఎన్నికలు 2007',
 );
 
 /** Tonga (faka-Tonga)

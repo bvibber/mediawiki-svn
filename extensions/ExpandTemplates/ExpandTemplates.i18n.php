@@ -714,8 +714,10 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'expand_templates_ok'      => 'సరే',
-	'expand_templates_preview' => 'మునుజూపు',
+	'expandtemplates'                  => 'మూసలను పొడగించు',
+	'expand_templates_ok'              => 'సరే',
+	'expand_templates_remove_comments' => 'వ్యాఖ్యలను తొలగించు',
+	'expand_templates_preview'         => 'మునుజూపు',
 );
 
 /** Tonga (faka-Tonga)

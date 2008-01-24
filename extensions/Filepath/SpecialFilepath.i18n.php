@@ -517,6 +517,15 @@ $messages['sv'] = array(
 Ange filens namn utan prefixet "{{ns:image}}:".',
 );
 
+/** Telugu (తెలుగు)
+ * @author Mpradeep
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'filepath_page'   => 'ఫైలు:',
+	'filepath_submit' => 'పాత్',
+);
+
 /** Tonga (faka-Tonga)
  * @author SPQRobin
  */

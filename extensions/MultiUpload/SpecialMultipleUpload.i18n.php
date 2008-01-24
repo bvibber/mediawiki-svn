@@ -279,5 +279,7 @@ Wääl 'Browse' un wääl älke Doatäi uut, ju du hoochleede moatest. Du koast 
 Du koast woalwiese uk n '''Siel-Doatäinoome''' foarreeke un ne '''Beschrieuwenge''' foar dien Doatäie.
 
 Uunoainde Doatäie wäide fluks läsked, sjuch do [[{{MediaWiki:Multipleupload-page}}|Läskgjuchtlienjen]].",
+	'multiupload-fileuploaded'         => 'Doatäi hoochleeden.',
+	'multiupload-toolbox'              => 'Hoochleeden fon moorere Doatäie',
 );
 

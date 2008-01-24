@@ -171,3 +171,20 @@ S pozdravom,
 $2',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'userrightsnotifysubject' => 'Annerenge fon ju Gruppentouheeregaid fon dän $1',
+	'userrightsnotifybody'    => 'Moin $1
+
+Dit is ne Information, dät dien Gruppentouheeregaid fon $2 truch $3 an n $4 annerd wuude.
+
+Bietouföiged: $5
+Wächhoald: $6\\
+
+Mäd früntelke Gröitnis,
+
+$2',
+);
+

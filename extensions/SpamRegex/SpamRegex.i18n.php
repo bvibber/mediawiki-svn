@@ -174,6 +174,13 @@ $messages['hsb'] = array(
 	'spamregex-summary-log'          => '(Zjeće)',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'spamregex-summary-log' => '(Resumé)',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

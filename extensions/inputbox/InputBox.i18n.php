@@ -682,9 +682,13 @@ $messages['sv'] = array(
 	'createarticle'           => 'Skapa sida',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
 $messages['te'] = array(
-	'tryexact'      => 'ఖచ్చితమైన పోలిక కొరకు ప్రయత్నించు',
-	'createarticle' => 'వ్యాసాన్ని సృష్టించు',
+	'tryexact'       => 'ఖచ్చితమైన పోలిక కొరకు ప్రయత్నించు',
+	'searchfulltext' => 'పూర్తి పాఠ్యంలో వెతుకు',
+	'createarticle'  => 'వ్యాసాన్ని సృష్టించు',
 );
 
 $messages['th'] = array(

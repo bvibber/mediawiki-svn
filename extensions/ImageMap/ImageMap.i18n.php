@@ -505,7 +505,16 @@ $messages['sr-ec'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'imagemap_no_image' => '&lt;imagemap&gt;-Failer: In ju eerste Riege mout ne Bielde ounroat wäide',
+	'imagemap_no_image'           => '&lt;imagemap&gt;-Failer: In ju eerste Riege mout ne Bielde ounroat wäide',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;-Failer: Bielde is uungultich of is nit deer',
+	'imagemap_no_link'            => '&lt;imagemap&gt;-Failer: Ap Eende fon Riege $1 wuude neen gultige Link fuunen',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;-Failer: uungultigen Tittel in dän Link in Riege $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;-Failer: Tou min Koordinate in Riege $1 foar dän Uumriet',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;-Failer: Uunbekoande Uumrietfoarm in Riege $1. Älke Riege mout mäd aan fon disse Parametere ounfange: <tt>default, rect, circle</tt> of <tt>poly</tt>',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;-Failer: Der mout mindestens een Gebiet definiert wäide',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;-Failer: Uungultige Koordinate in Riege $1: der sunt bloot Taale toulät',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;-Failer: Uungultigen „desc“-Parameter, muugelk sunt: <tt>$1</tt>',
+	'imagemap_description'        => 'Uur disse Bielde',
 );
 
 /* Swedish */
