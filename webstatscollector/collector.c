@@ -117,6 +117,10 @@ int main(int ac, char **av) {
 				handleConnection(r);
 		}
 	}
+
+	db->close(db, 0);
+	aggr->close(aggr, 0);
+
 	return(0);
 }
 
