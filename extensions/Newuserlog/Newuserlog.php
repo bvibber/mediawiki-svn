@@ -13,7 +13,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Newuserlog',
-	'version' => '2008-01-09',
+	'version' => '2008-01-24',
 	'description' => 'adds a [[Special:Log/newusers|log of account creations]] to [[Special:Log]]',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Newuserlog',
 	'author' => 'Ævar Arnfjörð Bjarmason'
@@ -35,6 +35,8 @@ function wfNewuserlog() {
 	# Run this hook on new account creation
 	global $wgHooks;
 	$wgHooks['AddNewAccount'][] = 'wfNewuserlogHook';
+	# Run this hook on Special:Log
+	$wgHooks['LogLine'][] = 'wfNewuserlogLogLine';
 }
 
 function wfNewuserlogHook( $user = null ) {
@@ -71,5 +73,31 @@ function wfNewuserlogHook( $user = null ) {
 	$log = new LogPage( 'newusers' );
 	$log->addEntry( $action, $user->getUserPage(), $message, array( $user->getId() ) );
 
+	return true;
+}
+
+/**
+ * Create user tool links for self created users
+ * @param string $log_type
+ * @param string $log_action
+ * @param object $title
+ * @param array $paramArray
+ * @param string $comment
+ * @param string $revert user tool links
+ * @return bool true
+ */
+function wfNewuserlogLogLine( $log_type = '', $log_action = '', $title = null, $paramArray = array(), &$comment = '', &$revert = '' ) {
+	if ( $log_action == 'create2' ) {
+		global $wgUser;
+		$skin = $wgUser->getSkin();
+		if( isset( $paramArray[0] ) ) {
+			$revert = $skin->userToolLinks( $paramArray[0], $title->getDBkey(), true );
+		} else {
+			# Fall back to a blue contributions link
+			$revert = $skin->userToolLinks( 1, $title->getDBkey() );
+		}
+		# Suppress $comment from old entries, not needed and can contain incorrect links
+		$comment = '';
+	}
 	return true;
 }
