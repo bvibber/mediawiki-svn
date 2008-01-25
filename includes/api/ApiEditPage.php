@@ -34,18 +34,9 @@ if (!defined('MEDIAWIKI')) {
  * @addtogroup API
  */
 class ApiEditPage extends ApiBase {
-	//----------------------------------------
-	//**** APIEDITPAGE CONSTANTS (2xx) value ****
-	const BAD_LGTOKEN 						= 001;
-	const BAD_EDITTOKEN						= 002;
-	const NO_POST_REQUEST					= 003;
-	const GET_CAPTCHA						= 004;
-	const MISSING_CAPTCHA					= 005;
-	const WRONG_REQUEST						= -1;
-	//----------------------------------------
 
 	public function __construct($query, $moduleName) {
-		parent :: __construct($query, $moduleName, 'ep');
+		parent :: __construct($query, $moduleName);
 	}
 
 	/**
@@ -61,271 +52,125 @@ class ApiEditPage extends ApiBase {
 			$result['captchaId']  = $index;
 			$result['captchaURL'] = $title->getLocalUrl( 'wpCaptchaId=' . urlencode( $index ) );
 		}
-	}
-
-	public function checkCaptcha() {
-		global $wgHooks, $wgCaptchaTriggers;
-		$i = 0;
-		$value = false;
-		while ($i < sizeof($wgHooks['EditFilter'])) {
-			if (($wgHooks['EditFilter'][$i][0] instanceof FancyCaptcha) && ($wgCaptchaTriggers['edit'] == true)) $value = true;
-			$i++;
-		}
-		return $value;
+		return true;
 	}
 
 	public function execute() {
-		global $wgUser, $wgRequest, $wgParser;
-		$title = $text = $summary = $edittime = $lgtoken = $userid = $tokenid = $value = null;
+		# TODO: ConfirmEdit support
+		# TODO: Watch/stopwatching support + respect prefs
+		global $wgUser;
+		$this->getMain()->requestWriteMode();
 
-		if( session_id() == '' ) {
-			wfSetupSession();
-    		}
+		$params = $this->extractRequestParams();
+		if(is_null($params['title']))
+			$this->dieUsageMsg(array('missingparam', 'title'));
+		if(is_null($params['text']))
+			$this->dieUsageMsg(array('missingparam', 'text'));
+		if(is_null($params['token']))
+			$this->dieUsageMsg(array('missingparam', 'token'));
+		if(!$wgUser->matchEditToken($params['token']))
+			$this->dieUsageMsg(array('sessionfailure'));
+		
+		$titleObj = Title::newFromText($params['title']);
+		if(!$titleObj)
+			$this->dieUsageMsg(array('invalidtitle', $params['title']));
+		
+		// Now let's check whether we're even allowed to do this
+		$errors = $titleObj->getUserPermissionsErrors('edit', $wgUser);
+		if(!$titleObj->exists())
+			$errors = array_merge($errors, $titleObj->getUserPermissionsErrors('create', $wgUser));
+		if(!empty($errors))
+			$this->dieUsageMsg($errors[0]);
+			
+		$wgTitle = $titleObj;
+		$articleObj = new Article($titleObj);
+		$ep = new EditPage($articleObj);
 
-		extract($this->extractRequestParams());
-		if ($title == null){
-			$value = self::WRONG_REQUEST;
-		} else {
-			// Ensure the correct timestamp format
-			$edittime =eregi_replace("[-,a-z,:]","",$edittime);
-			if ($watch == 'yes') {
-				$params = new FauxRequest(array (
-			       		'wpTitle' 	=> $title,
-			       		'wpTextbox1' 	=> $text,
-			       		'wpSummary'	=> $summary,
-		       			'wpEdittime'	=> $edittime,
-		       			'wplgToken' 	=> $lgtoken,
-			       		'wpUserID'	=> $userid,
-			       		'wpEditToken'	=> $tokenid,
-			       		'wpCaptchaWord' => $captchaword,
-					'wpCaptchaId' 	=> $captchaid,
-					'wpWatchthis'	=> $watch
-		    		));
-			} else {
-				$params = new FauxRequest(array (
-		       			'wpTitle' 	=> $title,
-			       		'wpTextbox1' 	=> $text,
-			       		'wpSummary'	=> $summary,
-			       		'wpEdittime'	=> $edittime,
-		       			'wplgToken' 	=> $lgtoken,
-		       			'wpUserID'	=> $userid,
-			       		'wpEditToken'	=> $tokenid,
-			       		'wpCaptchaWord' => $captchaword,
-					'wpCaptchaId' 	=> $captchaid
-				));
-			}
-		  	$wgRequest = $params;
-
-		  	if ((strlen($title) == 0) && ($this->checkCaptcha()) ) {
-				$value = self::GET_CAPTCHA;
-			} elseif ($this->checkCaptcha() && ($captchaid == 0)) {
-				$value = self::MISSING_CAPTCHA;
-			} else {
-				
-		    		$object_title = Title::newFromDBkey($title);
-				$myArticle = new Article($object_title);
-
-		        	// User creation since UserID number
-				if ($userid != 0) {
-	        			$myUser = new User();
-					$myUser->setID($userid);
-					$myUser->loadFromId();
-					$myUser->setCookies();
-					$wgUser = $myUser;
-
-					if ($lgtoken != $_SESSION['wsToken']){
-						$value = self::BAD_LGTOKEN;
-					}
-				}
-
-				if ($value != self::BAD_LGTOKEN) {
-	    				$md5 = $wgUser->editToken();
-	      				// This is only to fast testing. So must be cleanned before a Release
-	      				$tokenid = $md5;
-
-		      			// APiEditPage only accepts POST requests
-					if (!$_SERVER['REQUEST_METHOD']){
-	      					$value = self::NO_POST_REQUEST;
-	      				} else {
-	      					$params->wasPosted = true;
-	     					if ($md5 != $tokenid){
-							$value = BAD_EDITTOKEN;
-		      				} else {
-							$editForm = new EditPage($myArticle);
-							$editForm->mTitle = $object_title;
-							$editForm->importFormData($params);
-
-							$resultDetails = false;
-							$value = $editForm->internalAttemptSave( $resultDetails );
-						}
-		    			}
-				}
-			}
-		}
-		switch ($value) {
-			case self::WRONG_REQUEST:
-				$result['result'] = 'Error. Wrong request';
-				break;
-
-			case EditPage::AS_END:
-				$result['result'] = 'Conflict detected';
-				break;
-
-			case EditPage::AS_SUCCESS_UPDATE:
-				$result['result'] 		= 'Success';
-			       	$result['title']		= $editForm->mTitle;
-			       	$result['id']			= $myArticle->getID();
-			       	$result['revid']		= $myArticle->getRevIdFetched();
-		       		$rtext['content']		= $editForm->textbox1;
-		       		break;
-
-			case EditPage::AS_MAX_ARTICLE_SIZE_EXCEDED:
-				$result['result'] = 'Article too long';
-		          	break;
-
-			case EditPage::AS_TEXTBOX_EMPTY:
-				$result['result'] = 'Blank edition';
-				break;
-
-			case EditPage::AS_SUMMARY_NEEDED:
-				$result['result'] = 'Summary is mandatory';
-				break;
-
-			case EditPage::AS_CONFLICT_DETECTED:
-				$result['result'] = 'Conflict detected';
-				break;
-
-			case EditPage::AS_SUCCESS_NEW_ARTICLE:
-				$result['result'] 		= 'Success';
-			       	$result['title']		= $editForm->mTitle;
-			       	$result['id']			= $myArticle->getID();
-			       	$result['revid']		= $myArticle->getRevIdFetched();
-		       		$rtext['content']		= $editForm->textbox1;
-		       		break;
-
-	 		case EditPage::AS_BLANK_ARTICLE:
-			 	$result['result'] = 'Blank article';
-			 	break;
-
-		 	case EditPage::AS_NO_CREATE_PERMISSION;
-				$result['result'] = 'No create permission';
-				break;
-
-		 	case EditPage::AS_ARTICLE_WAS_DELETED:
-			 	$result['result'] = 'Article was deleted before';
-			 	break;
-
-			case EditPage::AS_RATE_LIMITED:
-			 	$result['result'] = 'Rate limit excedeed';
-			 	break;
-
-		 	case EditPage::AS_READ_ONLY_PAGE:
-			 	$result['result'] = 'Read only page';
-			 	break;
-
-		 	case EditPage::AS_READ_ONLY_PAGE_LOGGED:
-				$result['result'] = 'Read only allowed';
-				break;
-
-			case EditPage::AS_READ_ONLY_PAGE_ANON:
-				$result['result'] = 'Read only allowed';
-				break;
-
-			case EditPage::AS_CONTENT_TOO_BIG:
-				$result['result'] = 'Article too long';
-				break;
-
-			case EditPage::AS_BLOCKED_PAGE_FOR_USER:
-				$result['result'] = 'Blocked page for the user';
-				break;
-
+		// EditPage wants to parse its stuff from a WebRequest
+		// That interface kind of sucks, but it's workable
+		$reqArr = array('wpTextbox1' => $params['text'],
+				'wpEdittoken' => $params['token'],
+				'wpIgnoreBlankSummary' => ''
+		);
+		if(!is_null($params['summary']))
+			$reqArr['wpSummary'] = $params['summary'];
+		if(!is_null($params['basetimestamp']))
+			$reqArr['wpEdittime'] = wfTimestamp(TS_MW, $params['basetimestamp']);
+		else
+			$reqArr['wpEdittime'] = $articleObj->getTimestamp();
+		# Fake wpStartime; if the requester knows the page doesn't exist,
+		# wpEdittime will be NOW and no warning will be triggered
+		$reqArr['wpStarttime'] = $reqArr['wpEdittime'];
+		if($params['minor'])
+			$reqArr['wpMinoredit'] = '';
+		if($params['recreate'])
+			$reqArr['wpRecreate'] = '';
+		$req = new FauxRequest($reqArr, true);
+		$ep->importFormData($req);
+		
+		# Now let's try whether we can save this
+		$oldRevId = $articleObj->getRevIdFetched();
+		$result = null;
+		$retval = $ep->internalAttemptSave($result, $wgUser->isAllowed('bot') && $params['bot']);
+		switch($retval)
+		{
 			case EditPage::AS_HOOK_ERROR:
-				$result['result'] = 'Hook error detected';
-				break;
-
-			case EditPage::AS_SPAM_ERROR:
-				$result['result'] = 'Spam error detected';
-				break;
-
-			case EditPage::AS_FILTERING:
-				// Code extracted from SpamBlacklist extension
-				$spam = new SpamBlacklist();
-				$blacklists = $spam->getBlacklists();
-				$whitelists = $spam->getWhitelists();
-
-				if ( count( $blacklists ) ) {
-					# Run parser to strip SGML comments and such out of the markup
-					# This was being used to circumvent the filter (see bug 5185)
-					$options = new ParserOptions();
-					$text = $wgParser->preSaveTransform( $editForm->textbox1, $editForm->mTitle, $wgUser, $options );
-					$out = $wgParser->parse( $editForm->textbox1, $editForm->mTitle, $options );
-					$links = implode( "\n", array_keys( $out->getExternalLinks() ) );
-
-					# Strip whitelisted URLs from the match
-					if( is_array( $whitelists ) ) {
-						foreach( $whitelists as $regex ) {
-							wfSuppressWarnings();
-							$newLinks = preg_replace( $regex, '', $links );
-							wfRestoreWarnings();
-							if( is_string( $newLinks ) ) {
-								// If there wasn't a regex error, strip the matching URLs
-								$links = $newLinks;
-							}
-						}
-					}
-					# Do the match
-					foreach( $blacklists as $regex ) {
-						wfSuppressWarnings();
-						$check = preg_match( $regex, $links, $matches );
-						wfRestoreWarnings();
-						if( $check ) {
-							EditPage::spamPage( $matches[0] );
-							break;
-						}
-					}
-				}
-				$result['result'] = 'Filtering not passed due to forbidden URL: ' . $matches[0];
-				break;
-
 			case EditPage::AS_HOOK_ERROR_EXPECTED:
-				$result['result'] = 'Hook error detected';
+				$this->dieUsageMsg(array('hookaborted'));
+			case EditPage::AS_IMAGE_REDIRECT_ANON:
+				$this->dieUsageMsg(array('noimageredirect-anon'));
+			case EditPage::AS_IMAGE_REDIRECT_LOGGED:
+				$this->dieUsageMsg(array('noimageredirect-logged'));
+			case EditPage::AS_SPAM_ERROR:
+				$this->dieUsageMsg(array('spamdetected', $result['spam']));
+			case EditPage::AS_FILTERING:
+				$this->dieUsageMsg(array('filtered'));
+			case EditPage::AS_BLOCKED_PAGE_FOR_USER:
+				$this->dieUsageMsg(array('blockedtext'));
+			case EditPage::AS_MAX_ARTICLE_SIZE_EXCEEDED:
+			case EditPage::AS_CONTENT_TOO_BIG:
+				global $wgMaxArticleSize;
+				$this->dieUsageMsg(array('contenttoobig', $wgMaxArticleSize));
+			case EditPage::AS_READ_ONLY_PAGE_ANON:
+				$this->dieUsageMsg(array('noedit-anon'));
+			case EditPage::AS_READ_ONLY_PAGE_LOGGED:
+				$this->dieUsageMsg(array('noedit'));
+			case EditPage::AS_READ_ONLY_PAGE:
+				$this->dieUsageMsg(array('readonlytext'));
+			case EditPage::AS_RATE_LIMITED:
+				$this->dieUsageMsg(array('actionthrottledtext'));
+			case EditPage::AS_ARTICLE_WAS_DELETED:
+				$this->dieUsageMsg(array('wasdeleted'));
+			case EditPage::AS_NO_CREATE_PERMISSION:
+				$this->dieUsageMsg(array('nocreate-loggedin'));
+			case EditPage::AS_BLANK_ARTICLE:
+				$this->dieUsageMsg(array('blankpage'));
+			case EditPage::AS_CONFLICT_DETECTED:
+				$this->dieUsageMsg(array('editconflict'));
+			#case EditPage::AS_SUMMARY_NEEDED: Can't happen since we set wpIgnoreBlankSummary
+			#case EditPage::AS_TEXTBOX_EMPTY: Can't happen since we don't do sections
+			case EditPage::AS_END:
+				# This usually means some kind of race condition
+				# or DB weirdness occurred. Throw an unknown error here.
+				$this->dieUsageMsg(array('unknownerror', 'AS_END'));
+			case EditPage::AS_SUCCESS_NEW_ARTICLE:
+				$r['new'] = '';
+			case EditPage::AS_SUCCESS_UPDATE:
+				$r['pageid'] = $titleObj->getArticleID();
+				$r['title'] = $titleObj->getPrefixedText();
+				$newRevId = $titleObj->getLatestRevId();
+				if($newRevId == $oldRevId)
+					$r['nochange'] = '';
+				else
+				{
+					$r['oldrevid'] = $oldRevId;
+					$r['newrevid'] = $newRevId;
+				}
 				break;
-
-			case self::NO_POST_REQUEST:
-				$result['result'] = 'Error.Only POST requests are allowed';
-				break;
-
-			case self::BAD_LGTOKEN:
-				$result['result'] = "Error.Login token is wrong";
-				break;
-
-			case self::BAD_EDITTOKEN:
-				$result['result'] = "Error.Edit token is wrong";
-				break;
-
-			case self::GET_CAPTCHA:
-				$myCaptcha = new FancyCaptcha();
-				$myCaptcha->storage->clearAll();
-				$result['result'] = 'CaptchaIdGenerated';
-				$this->captchaSupport($myCaptcha, $result);
-				break;
-
-			case self::MISSING_CAPTCHA:
-				$myCaptcha = new FancyCaptcha();
-				$myCaptcha->storage->clearAll();
-				$result['result'] = 'MissingCaptcha';
-				$this->captchaSupport($myCaptcha, $result);
-				$result['result'] = 'Error-EditFilter';
-				break;
-
 			default:
-	                $result['result'] = 'Invalid';
-        	        break;
+				$this->dieUsageMsg(array('unknownerror', $retval));
 		}
-
-		$this->getResult()->addValue(null, 'editpage', $result);
-    		if (isset ($rtext['content']))
-			$this->getResult()->addValue('text', 'content', $rtext);
+		$this->getResult()->addValue(null, $this->getModuleName(), $r);
 	}
 
 	protected function getDescription() {
@@ -336,34 +181,37 @@ class ApiEditPage extends ApiBase {
 		return array (
 			'title' => null,
 			'text' => null,
+			'token' => null,
 			'summary' => null,
-			'userid' => array(
-				ApiBase :: PARAM_TYPE => 'integer'
-			),
-			'edittime' => array(
+			'minor' => false,
+			'bot' => false,
+			'basetimestamp' => array(
 				ApiBase :: PARAM_TYPE => 'timestamp'
 			),
-			'lgtoken' => null,
-			'tokenid' => array(
-				ApiBase :: PARAM_TYPE => 'integer'
-			),
+			'recreate' => false,
 			'captchaword' => null,
 			'captchaid' => null,
-			'watch' => false
+			'watch' => false,
+			'stopwatching' => false,
 		);
 	}
 
 	protected function getParamDescription() {
 		return array (
-			'title'			=> 'Title of article',
-			'text'			=> 'text of article',
-			'summary'		=> 'Summary of article',
-			'userid'		=> 'ID of the user',
-			'edittime'		=> 'Timestamp of base revision edited',
-			'lgtoken'		=> 'Login token of the user',
-			'captchaid'		=> 'question',
-			'captchaword'		=> 'answer',
-			'watch'			=> 'Put article in watchlist'
+			'title' => 'Title of article',
+			'text' => 'Article content',
+			'token' => 'Edit token. You can get one of these through prop=info',
+			'summary' => 'Edit summary',
+			'minor' => 'Set this flag if the edit is minor',
+			'bot' => 'Mark this edit as bot',
+			'basetimestamp' => array('Timestamp of the base revision (gotten through prop=revisions&rvprop=timestamp).',
+						'Used to detect edit conflicts; leave blank to ignore conflicts.'
+			),
+			'recreate' => 'Override any errors about the article having been deleted in the meantime',
+			'watch' => 'Put article in watchlist',
+			'stopwatching' => 'Take the article off the watchlist',
+			'captchaid' => 'question',
+			'captchaword' => 'answer',
 		);
 	}
 
