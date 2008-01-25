@@ -811,7 +811,7 @@ class EditPage {
 			if ( !wfRunHooks( 'EditFilterMerged', array( $this, $this->textbox1, &$this->hookError ) ) ) {
 				# Error messages etc. could be handled within the hook...
 				wfProfileOut( $fname );
-				return false;
+				return self::AS_HOOK_ERROR;
 			}
 
 			$isComment = ( $this->section == 'new' );
@@ -894,7 +894,7 @@ class EditPage {
 		if ( !wfRunHooks( 'EditFilterMerged', array( $this, $text, &$this->hookError ) ) ) {
 			# Error messages etc. could be handled within the hook...
 			wfProfileOut( $fname );
-			return false;
+			return self::AS_HOOK_ERROR;
 		}
 
 		# Handle the user preference to force summaries here, but not for null edits
@@ -956,7 +956,7 @@ class EditPage {
 		if ( $this->kblength > $wgMaxArticleSize ) {
 			$this->tooBig = true;
 			wfProfileOut( $fname );
-			return self::AS_MAX_ARTICLE_SIZE_EXCEDED;
+			return self::AS_MAX_ARTICLE_SIZE_EXCEEDED;
 		}
 
 		# update the article here
@@ -2190,7 +2190,7 @@ END
 			case self::AS_CONFLICT_DETECTED:
 			case self::AS_SUMMARY_NEEDED:
 			case self::AS_TEXTBOX_EMPTY:
-			case self::AS_MAX_ARTICLE_SIZE_EXCEDED:
+			case self::AS_MAX_ARTICLE_SIZE_EXCEEDED:
 			case self::AS_END:
 				return true;
 
