@@ -793,28 +793,41 @@ $wdMessages['id'] = array(
 	'languages'=>'Wikidata: Pengelola bahasa',
 );
 
-/** ქართული (ქართული)
- * @author Sopho
+/** Georgian (ქართული)
+ * @author Malafaya
  */
 $wdMessages['ka'] = array(
-	'ow_history'                  => 'ისტორია',
-	'ow_AlternativeDefinition'    => 'ალტერნატიული განსაზღვრება',
-	'ow_AlternativeDefinitions'   => 'ალტერნატიული განსაზღვრებები',
-	'ow_Annotation'               => 'შენიშვნა',
-	'ow_ApproximateMeanings'      => 'მიახლოებითი მნიშვნელობები',
-	'ow_Collection'               => 'კოლექცია',
-	'ow_Definition'               => 'განსაზღვრება',
-	'ow_DefinedMeaningAttributes' => 'შენიშვნა',
-	'ow_ExactMeanings'            => 'ზუსტი მნიშვნელობები',
-	'ow_Expression'               => 'გამოთქმა',
-	'ow_IdenticalMeaning'         => 'იდენტური მნიშვნელობა?',
-	'ow_Language'                 => 'ენა',
-	'ow_LevelAnnotation'          => 'შენიშვნა',
-	'ow_PopupAnnotation'          => 'შენიშვნა',
-	'ow_Spelling'                 => 'ორთოგრაფია',
-	'ow_SynonymsAndTranslations'  => 'სინონიმები და თარგმანი',
-	'ow_Source'                   => 'წყარო',
-	'ow_Text'                     => 'ტექსტი',
+	'ow_save'                               => 'შენახვა',
+	'ow_history'                            => 'ისტორია',
+	'ow_conceptmapping_no_action_specified' => 'ბოდიში, არ ვიცი როგორ "$1".',
+	'ow_AlternativeDefinition'              => 'ალტერნატიული განსაზღვრება',
+	'ow_AlternativeDefinitions'             => 'ალტერნატიული განსაზღვრებები',
+	'ow_Annotation'                         => 'შენიშვნა',
+	'ow_ApproximateMeanings'                => 'მიახლოებითი მნიშვნელობები',
+	'ow_Collection'                         => 'კოლექცია',
+	'ow_Definition'                         => 'განსაზღვრება',
+	'ow_DefinedMeaningAttributes'           => 'შენიშვნა',
+	'ow_ExactMeanings'                      => 'ზუსტი მნიშვნელობები',
+	'ow_Expression'                         => 'გამოთქმა',
+	'ow_IdenticalMeaning'                   => 'იდენტური მნიშვნელობა?',
+	'ow_GotoSource'                         => 'იხილეთ წყარო',
+	'ow_Language'                           => 'ენა',
+	'ow_LevelAnnotation'                    => 'შენიშვნა',
+	'ow_OptionAttribute'                    => 'თვისება',
+	'ow_PopupAnnotation'                    => 'შენიშვნა',
+	'ow_Spelling'                           => 'ორთოგრაფია',
+	'ow_Synonyms'                           => 'სინონიმები',
+	'ow_SynonymsAndTranslations'            => 'სინონიმები და თარგმანი',
+	'ow_Source'                             => 'წყარო',
+	'ow_TextAttribute'                      => 'თვისება',
+	'ow_Text'                               => 'ტექსტი',
+	'ow_TranslatedTextAttribute'            => 'თვისება',
+	'ow_TranslatedText'                     => 'თარგმნილი ტექსტი',
+	'ow_TranslatedTextAttributeValue'       => 'ტექსტი',
+	'ow_LinkAttribute'                      => 'თვისება',
+	'ow_LinkAttributeValues'                => 'ბმულები',
+	'ow_Property'                           => 'თვისება',
+	'ow_meaningsoftitle'                    => '"$1"-ის მნიშვნელობები',
 );
 
 $wdMessages['kk-cn'] = array(
