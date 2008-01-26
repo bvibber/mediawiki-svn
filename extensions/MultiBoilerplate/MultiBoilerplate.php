@@ -9,7 +9,7 @@
  * @link http://www.mediawiki.org/wiki/Extension:MultiBoilerplate
  *
  * @author MinuteElectron <minuteelectron@googlemail.com>
- * @copyright Copyright © 2007-2008 MinuteElectron.
+ * @copyright Copyright Â© 2007-2008 MinuteElectron.
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 

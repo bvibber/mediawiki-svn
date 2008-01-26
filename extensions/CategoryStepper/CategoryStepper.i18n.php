@@ -1,13 +1,13 @@
 <?php
- 
+
 /**
  * Internationalisation file for CategoryStepper extension.
  * 
  * @addtogroup Extensions
  */
- 
+
 $messages = array();
- 
+
 /**
  * English
  * @author MinuteElectron <minuteelectron@googlemail.com>

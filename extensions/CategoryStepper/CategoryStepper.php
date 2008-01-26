@@ -8,7 +8,7 @@
  * @link http://www.mediawiki.org/wiki/Extension:CategoryStepper
  *
  * @author MinuteElectron <minuteelectron@googlemail.com>
- * @copyright Copyright © 2007-2008 MinuteElectron.
+ * @copyright Copyright Â© 2007-2008 MinuteElectron.
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
@@ -47,6 +47,9 @@ function wfCategoryStepper( &$out, &$text ) {
 
 	// Get various variables needed for this extension.
 	global $wgCategoryStepper, $wgTitle, $wgArticlePath;
+
+	// Load messages into the message cache.
+	wfLoadExtensionMessages( 'CategoryStepper' );
 
 	// Open a database connection.
 	$dbr =& wfGetDB( DB_SLAVE );
@@ -92,7 +95,7 @@ function wfCategoryStepper( &$out, &$text ) {
 
 			// Generate the table at the bottom of the page and add it to the page text.
 			$text .=
-				Xml::openElement( "table", array( "class" => 'wikitable', 'style' => 'margin-left:auto;margin-right:auto;' ) ) .
+				Xml::openElement( "table", array( "class" => 'categorystepper', 'style' => 'margin-left:auto;margin-right:auto;' ) ) .
 					Xml::openElement( "tr" ) .
 						Xml::openElement( "th", array( "colspan" => "3" ) ) .
 							Xml::element( "a", array( "href" => str_replace( "$1", "Category:" . $name, $wgArticlePath ) ), $title ) .
