@@ -1018,6 +1018,57 @@ $messages['oc'] = array(
 	'mv_new_anno_en'                 => 'Balisa o anotacion novèla',
 );
 
+/** Portuguese (Português)
+ * @author 555
+ */
+$messages['pt'] = array(
+	'metavid'                 => 'Página Metavid',
+	'mv_missing_stream'       => 'Stream não localizado: $1',
+	'mv_error_stream_missing' => '<span class="error">Erro: Não há um arquivo de vídeo associado com este stream.</span><br />Por gentileza, reporte ao administrador do sítio.',
+	'mv_stream_meta'          => 'Página de stream',
+	'mv_add_stream_submit'    => 'Adicionar stream',
+	'mv_edit_stream_files'    => 'Editar ficheiros de stream',
+	'mv_duration_label'       => 'duração',
+	'mv_save_changes'         => 'Salvar alterações',
+	'mv_removed_file_stream'  => 'Foi removido o ficheiro de stream: $1',
+	'mv_add_stream_file'      => 'Adicionar ficheiro de stream',
+	'mv_file_list'            => 'Ficheiros de stream',
+	'mv_label_stream_name'    => 'Nome do stream',
+	'mv_label_stream_desc'    => 'Descrição do stream',
+	'add_stream_permission'   => 'Você não possui permissões para adicionar um novo stream',
+	'mv_remove_reason'        => 'Motivo da eliminação:',
+	'mv_label_stream_type'    => 'Tipo de stream',
+	'mv_upload_file'          => 'Enviar ficheiro',
+	'mv_external_file'        => 'Ficheiro externo',
+	'mv_tool_search'          => 'Pesquisa',
+	'mv_tool_search_title'    => 'Procurar neste stream',
+	'mv_tool_navigate'        => 'Navegação',
+	'mv_tool_navigate_title'  => 'Navegar pelo stream completo',
+	'mv_tool_export'          => 'Exportar',
+	'mv_tool_export_title'    => 'Exportar metadados do stream',
+	'mv_play'                 => 'Tocar',
+	'mv_edit'                 => 'Editar',
+	'mv_history'              => 'Histórico',
+	'mv_remove'               => 'remover',
+	'mv_adjust'               => 'ajustar',
+	'mv_adjust_submit'        => 'Salvar ajuste',
+	'mv_adjust_preview'       => 'Prever ajuste',
+	'mv_adjust_preview_stop'  => 'Interromper a previsão',
+	'mv_start_desc'           => 'Tempo de início',
+	'mv_end_desc'             => 'Tempo de término',
+	'mv_add_filter'           => 'Adicionar filtro',
+	'mv_search_category'      => 'Categoria',
+	'mv_search_smw_property'  => 'Propriedades semânticas',
+	'mv_search_and'           => 'e',
+	'mv_search_or'            => 'ou',
+	'mv_search_not'           => 'não',
+	'mv_category'             => 'categoria',
+	'mv_remove_filter'        => 'remover filtro',
+	'mv_view_wiki_page'       => 'Ver página wiki',
+	'mv_save_sequence'        => 'Salvar sequência',
+	'mv_sequence_page_desc'   => 'Salva a sequência atual',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

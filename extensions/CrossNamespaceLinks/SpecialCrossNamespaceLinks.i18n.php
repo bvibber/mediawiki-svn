@@ -73,6 +73,15 @@ $messages['de'] = array(
  	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|Link zeigt|Links zeigen}} in den $3-Namensraum'
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'crossnamespacelinks'         => 'Wótkaze do drugich mjenjowych rumow',
+	'crossnamespacelinks-summary' => 'Toś ten bok bitujo lisćinu wótkazow, kótarež z boka w głownem mjenjowem rumje na bok w drugich mjenjowych rumach pokazuju (mimo mjenjowych rumow {{ns:special}}, {{ns:talk}}, {{ns:project}} a {{ns:template}}).',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|wótkaz|wótkazej|wótkaze|wótkazow}} do $3',
+);
+
 $messages['es'] = array(
 	'crossnamespacelinks'         => 'Enlaces entre diferentes espacios de nombres',
 	'crossnamespacelinks-summary' => 'Ésta página proporciona una lista de enlaces desde una página en el espacio de nombres principal hacia una página en otros espacios de nombres (excepto para los espacios de nombres {{ns:special}}, {{ns:talk}}, {{ns:project}} y {{ns:template}}), los cuales no son aconsejables.',
@@ -384,6 +393,15 @@ $messages['sv'] = array(
 	'crossnamespacelinks'         => 'Länkar mellan namnrymder',
 	'crossnamespacelinks-summary' => 'På den här sidan finns en lista över länkar från sidor i huvudnamnrymden till sidor i andra namnrymder (utom till namnrymderna {{ns:special}}, {{ns:talk}}, {{ns:project}} och {{ns:template}}). Det rekommenderas att sådana länkar inte används.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|länk|länkar}} till $3'
+);
+
+/** Telugu (తెలుగు)
+ * @author Mpradeep
+ */
+$messages['te'] = array(
+	'crossnamespacelinks'         => 'అంతర-నేంస్పేసు లింకులు',
+	'crossnamespacelinks-summary' => 'ప్రధాన నేంస్పేసులోని పేజీల నుండి ఇతర నేంస్పేసులలోని ({{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} నేంస్పేసులు కాకుండా) పేజీలకు ఉన్న లింకుల జాబితాను ఇక్కడ చూడవచ్చు. అలా లింకులు ఇవ్వడం ఆచరణీయం కాదు.',
+	'crossnamespacelinkstext'     => '$1: $3కు {{PLURAL:$2|ఒక లింకు|$2 లింకులు}}',
 );
 
 /** Tonga (faka-Tonga)

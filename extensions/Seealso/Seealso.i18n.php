@@ -119,3 +119,10 @@ $messages['sv'] = array(
 	'seealso' => 'Se även',
 );
 
+/** ‪中文(台灣)‬ (‪中文(台灣)‬)
+ * @author Roc michael
+ */
+$messages['zh-tw'] = array(
+	'seealso' => '參見',
+);
+

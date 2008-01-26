@@ -21,6 +21,16 @@ $messages['ar'] = array(
 	'findspam-notextfound' => 'لم يتم العثور على مساهمات',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'findspam'             => 'Atopar spam',
+	'findspam-ip'          => 'Direición IP:',
+	'findspam-ok'          => 'Aceutar',
+	'findspam-notextfound' => "Nun s'atoparon contribuciones",
+);
+
 /** Bulgarian (Български)
  * @author Spiritia
  * @author DCLXVI

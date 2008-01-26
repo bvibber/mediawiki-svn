@@ -54,6 +54,13 @@ $messages['hu'] = array(
 	'purge' => 'frissít',
 );
 
+/** Japanese (日本語)
+ * @author Kahusi
+ */
+$messages['ja'] = array(
+	'purge' => 'キャッシュ削除',
+);
+
 $messages['nl'] = array(
 	'purge' => 'cache legen',
 );

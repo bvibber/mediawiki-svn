@@ -24,6 +24,15 @@ $messages['en'] = array(
 	'usernameblacklist-invalid-lines' => 'The following {{PLURAL:$1|line|lines}} in the username blacklist {{PLURAL:$1|is|are}} invalid; please correct {{PLURAL:$1|it|them}} before saving:',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'blacklistedusername'             => "Nombre d'usuario en a lista negra",
+	'blacklistedusernametext'         => "O nombre d'usuario que ha trigato concuerda con belún d'os nombre en a [[MediaWiki:Usernameblacklist|lista negra]]. Por fabor, eslicha un atro nombre.",
+	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|A linia|As linias}} siguients d'a lista negra de nombres d'usuarios no {{PLURAL:$1|ye|son}} correutas; por fabor, corricha-{{PLURAL:$1|lo|los}} antes d'alzar-la:",
+);
+
 /* Arabic (Meno25) */
 $messages['ar'] = array(
 	'blacklistedusername' => 'اسم مستخدم في القائمة السوداء',
@@ -107,6 +116,14 @@ $messages['eu'] = array(
 	'blacklistedusernametext' => 'Hautatu duzun erabiltzaile izena [[MediaWiki:Usernameblacklist|zerrenda beltzean]] ageri da. Aukeratu ezazu beste bat.',
 );
 
+/** Extremaduran (Estremeñu)
+ * @author Better
+ */
+$messages['ext'] = array(
+	'blacklistedusername'     => "Nombri d'usuáriu ena lista negra",
+	'blacklistedusernametext' => "El nombri d'usuáriu qu'as lihiu s'alcuentra ena [[MediaWiki:Usernameblacklist|lista negra]]. Pol favol, descohi otru nombri.",
+);
+
 $messages['fa'] = array(
 	'blacklistedusername' => 'نام کاربری غیر مجاز',
 	'blacklistedusernametext' => 'نام کاربری مورد نظر شما در با [[MediaWiki:Usernameblacklist|فهرست سیاه نام‌های کاربری]] مطابقت دارد. لطفاً یک نام کاربری دیگر انتخاب کنید.',
@@ -136,20 +153,23 @@ $messages['fi'] = array(
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Seuraava listan rivi ei ole kelvollinen|Seuraavat listan rivit eivät ole kelvollisia}}. Korjaa {{PLURAL:$1|se|ne}} ennen tallentamista.',
 );
 
-/* French */
+/** French (Français)
+ * @author Seb35
+ * @author Sherbrooke
+ */
 $messages['fr'] = array(
-	'blacklistedusername' => 'Noms d’utilisateurs en liste noire',
-	'blacklistedusernametext' => 'Le nom d’utilisateur que vous avez choisi se trouve sur la
+	'blacklistedusername'             => 'Noms d’utilisateurs en liste noire',
+	'blacklistedusernametext'         => 'Le nom d’utilisateur que vous avez choisi se trouve sur la
 [[MediaWiki:Usernameblacklist|liste des noms interdits]]. Veuillez choisir un autre nom.',
-	'usernameblacklist' => '<pre>
-# Les entrées de cette liste seront utilisées en tant qu\'expressions régulières
-# afin d\'empêcher la création de noms d\'utilisateurs interdits. Chaque item doit
-# faire partie d\'une liste à puces, par exemple
+	'usernameblacklist'               => "<pre>
+# Les entrées de cette liste seront utilisées en tant qu'expressions rationnelles
+# afin d'empêcher la création de noms d'utilisateurs interdits. Chaque item doit
+# faire partie d'une liste à puces, par exemple
 #
 # * Foo
 # * [Bb]ar
-</pre>',
-	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|La ligne suivante|Les lignes suivantes}} de la liste noire des noms d\'utilisateurs {{PLURAL:$1|est invalide|sont invalides}} ; veuillez {{PLURAL:$1|la|les}} corriger avant d\'enregistrer :',
+</pre>",
+	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|La ligne suivante|Les lignes suivantes}} de la liste noire des noms d'utilisateurs {{PLURAL:$1|est invalide|sont invalides}} ; veuillez {{PLURAL:$1|la|les}} corriger avant d'enregistrer :",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -167,6 +187,23 @@ $messages['frp'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|La legne siuventa|Les legnes siuventes}} de la lista nêre des noms d’utilisator {{PLURAL:$1|est envalida|sont envalides}} ; volyéd {{PLURAL:$1|la|les}} corregiér devant qu’enregistrar :',
+);
+
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'blacklistedusername'             => 'Ainm úsáideoir sa liosta dubh',
+	'blacklistedusernametext'         => "Tá an ainm úsáideoira roghnaítear agat sa [[MediaWiki:Usernameblacklist|liosta na ainm úsáideora toirmiscthe]]. Togh ceann eile, le d'thoil.",
+	'usernameblacklist'               => '<pre>
+# Beidh na hiontrálacha sa liosta seo in úsáid mar cuid den "slonn rialta" nuair a
+# coiseceann ainm úsáideoira as clárúchán. Tá gach mír sonraí cuid den liosta 
+# le hurchair, m.sh.
+#
+# * Fú
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => "Tá {{PLURAL:$1|líne|na líonta}} seo a leanas neamhbhailí sa liosta na ainm úsáideoira; ceartaigh {{PLURAL:$1|é|iad}}  le d'thoil roimh a shábháil:",
 );
 
 $messages['gl'] = array(
@@ -327,6 +364,14 @@ $messages['ku'] = array(
 	'blacklistedusernametext' => 'Wê navî yê te hilbijart li ser [[MediaWiki:Usernameblacklist|lîstêya navên nebaş]] e. Xêra xwe navekî din hilbijêre.',
 );
 
+/** Kurdish (Latin) (Kurdî / كوردی (Latin))
+ * @author Bangin
+ */
+$messages['ku-latn'] = array(
+	'blacklistedusername'     => 'Nav di nav lîsteya navên qedexe da ye',
+	'blacklistedusernametext' => 'Navî te yê bikarhêner, yê te xastî, di nav [[MediaWiki:Usernameblacklist|lîsteya navên qedexe]] da ye. Xêra xwe navekî din bibe.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -353,8 +398,9 @@ $messages['lo'] = array(
  * @author Matasg
  */
 $messages['lt'] = array(
-	'blacklistedusername'     => 'Juodajame sąraše esantis naudotojo vardas',
-	'blacklistedusernametext' => 'Naudotojo vardas, kurį pasirinkote sutampa su [[MediaWiki:Usernameblacklist|vardu juodajame sąraše]]. Prašome pasirinkti kitą.',
+	'blacklistedusername'             => 'Juodajame sąraše esantis naudotojo vardas',
+	'blacklistedusernametext'         => 'Naudotojo vardas, kurį pasirinkote sutampa su [[MediaWiki:Usernameblacklist|vardu juodajame sąraše]]. Prašome pasirinkti kitą.',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Ši|Šios}} {{PLURAL:$1|eilutė|eilutės}} juodajame naudotojų vardų sąraše yra {{PLURAL:$1|bloga|blogos}}; prašome {{PLURAL:$1|ją|jas}} pataisyti prieš išsaugant:',
 );
 
 $messages['nds'] = array(
@@ -549,12 +595,37 @@ $messages['te'] = array(
 	'usernameblacklist-invalid-lines' => 'అనుమతించని పేర్లజాబితాలో ఈ కింది {{PLURAL:$1|లైను|లైన్‌లు}} అర్ధంకాకుండా {{PLURAL:$1|ఉంది|ఉన్నాయి}}; దాయచేసి {{PLURAL:$1|అందులో|వాటిలో}} ఉన్న తప్పులను సరిచేసి ఆ తరువాత భద్రపరచండి.',
 );
 
+/** Tagalog (Tagalog)
+ * @author Felipe Aira
+ */
+$messages['tl'] = array(
+	'blacklistedusername'             => 'Ipinagbawal na bansag',
+	'usernameblacklist-invalid-lines' => 'Ang {{PLURAL:$1|sumusunod|mga sumusunod}} na hanay sa mga ipinagbabawal na bansag ay inbalido; pakitama ang {{PLURAL:$1|iyon|mga iyon}} bago magligtas:',
+);
+
 /** Turkish (Türkçe)
  * @author SPQRobin
  */
 $messages['tr'] = array(
 	'blacklistedusername'     => 'Kara listedeki kullanıcılar',
 	'blacklistedusernametext' => 'Seçtiğiniz isim [[MediaWiki:Usernameblacklist|Kara listedeki kullanıcılar]] listesinde sıralanan bir kullanıcı adıyla aynı isme sahiptir. Lütfen başka bir kullanıcı adı seçiniz.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'blacklistedusername'             => 'Danh sách đen về tên người dùng',
+	'blacklistedusernametext'         => 'Tên người dùng mà bạn chọn trùng khớp với [[MediaWiki:Usernameblacklist|danh sách đen về tên người dùng]]. Xin hãy chọn một tên khác.',
+	'usernameblacklist'               => '<pre>
+# Các mục trong danh sách này sẽ được dùng để liệt các tên người dùng vào danh sách 
+# đen không cho đăng ký, dùng biểu thức chính quy. Mỗi mục sẽ bắt đầu bằng
+# danh sách chấm đầu dòng, ví dụ
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Dòng|Những dòng}} sau đây trong Danh sách đen về tên người dùng bị sai; xin hãy sửa chữa {{PLURAL:$1|nó|chúng}} trước khi lưu:',
 );
 
 /* Cantonese (Shinjiman) */

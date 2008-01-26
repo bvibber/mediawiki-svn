@@ -1156,6 +1156,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'ogg-more'      => 'మరిన్ని...',
+	'ogg-dismiss'   => 'మూసివేయి',
 	'ogg-desc-link' => 'ఈ ఫైలు గురించి',
 );
 

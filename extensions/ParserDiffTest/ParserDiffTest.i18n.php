@@ -205,6 +205,7 @@ $messages['hu'] = array(
 	'pdtest_title'        => 'Szöveg címe:',
 	'pdtest_text'         => 'Bemeneti szöveg:',
 	'pdtest_ok'           => 'OK',
+	'pdtest_get_text'     => 'Szöveg elmentése',
 	'pdtest_diff'         => 'Eltérések',
 	'pdtest_side_by_side' => 'Kimenet összehasonlítása',
 	'pdt_comparing_page'  => '[[$1]] kimeneteinek összehasonlítása',
@@ -301,6 +302,15 @@ $messages['oc'] = array(
 	'pdt_comparing_page'  => 'Comparason del parser en sortida a partir de [[$1]]',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'pdtest_no_changes' => 'Nenhuma alteração detectada.',
+	'pdtest_get_text'   => 'Obter texto da página',
+	'pdtest_diff'       => 'Diferenças',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */
@@ -377,8 +387,10 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'pdtest_ok'   => 'సరే',
-	'pdtest_diff' => 'తేడాలు',
+	'pdtest_time_report' => '<b>$1</b> $2 క్షణాలు తీసుకుంది, <b>$3</b> $4 క్షణాలు తీసుకుంది.',
+	'pdtest_title'       => 'సందర్భపు శీర్షిక:',
+	'pdtest_ok'          => 'సరే',
+	'pdtest_diff'        => 'తేడాలు',
 );
 
 /** Volapük (Volapük)

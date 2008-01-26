@@ -69,6 +69,16 @@ $messages['hu'] = array(
 	'purgecache-button'  => 'Frissít',
 );
 
+/** Japanese (日本語)
+ * @author Kahusi
+ */
+$messages['ja'] = array(
+	'purgecache'         => 'キャッシュを削除',
+	'purgecache-warning' => 'これはキャッシュテーブルを掃除するものです。',
+	'purgecache-purged'  => 'キャッシュは削除されました。',
+	'purgecache-button'  => 'キャッシュ削除',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -93,6 +93,50 @@ $messages['ar'] = array(
 	'review_comment'                                         => 'تعليق',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'review_sidebar_title'                                   => 'Revisar',
+	'review_topics'                                          => "# Llista d'elementos y valores pa la estensión \"review\".
+# Cada elementu ta definíu por una llinia de cinco valores, separtaos por ':' (les demás llinies inórense).
+# L'orde ye: identificador numéricu (>0), nome, valor máximu (>1; 2=sí/non), significación del valor más baxu (ex. 'malu'), significación del valor más altu (ex. 'bonu').
+1:Calidá:5:malu:bonu
+2:Preparáu pa 1.0:2:non:sí",
+	'review_topic_page'                                      => 'Revisar elementos',
+	'review_sidebar_explanation'                             => "El caxellu más a manzorga siempre significa 'ensin opinión'.",
+	'review_save'                                            => 'Guardar revisión',
+	'review_your_review'                                     => "La to revisión d'esta páxina/revisión:",
+	'review_sidebar_you_have_other_reviews_for_this_article' => "Yá revisasti otres versiones d'esta páxina. Les otres evaluaciones tuyes van ser fusionaes con esta si seleicionasti 'ensin opinión'.",
+	'review_page_link'                                       => 'estadístiques de revisión',
+	'review_sidebar_final'                                   => "Pa revisar los datos de la vista d'esta páxina, mira les sos $1",
+	'review_for_page'                                        => 'Revisión de la páxina "$1"',
+	'review_for_user'                                        => 'Revisión del usuariu "$1"',
+	'review_error'                                           => '¡Hai daqué que ta mal!',
+	'review_no_reviews_for_page'                             => 'Nestos momentos nun hai revisiones de "$1".',
+	'review_total_statistics'                                => 'Total',
+	'review_statistics_left_corner'                          => 'Revisión',
+	'review_version_link'                                    => 'Revisión númberu $1',
+	'review_statistic_cell'                                  => 'Media: $1 de $2<br/>($4 usuarios rexistraos, $5 anónimos)',
+	'review_version_statistic_cell'                          => '$1 de $2',
+	'review_version_reviews_link'                            => '<small>(revisiones de versiones)</small>',
+	'review_concerns_page'                                   => 'Esta revisión ye de la páxina "$1".',
+	'review_concerns_user'                                   => 'Estes son les revisiones del usuariu "$1".',
+	'review_user_reviews'                                    => "<small>(revisiones d'esti usuariu)</small>",
+	'review_user_page_list'                                  => "L'usuariu revisó les páxines siguientes:",
+	'review_user_details_link'                               => '(detalles)',
+	'review_do_merge'                                        => "Fusionar con esta les otres revisiones míes d'esta páxina",
+	'review_has_been_stored'                                 => "<span id='review_has_been_stored'>¡Guardóse la to revisión!</span>",
+	'revision_review_this_page_version_link'                 => 'Revisar esta versión de la páxina.',
+	'review_page_review'                                     => 'Revisión de la páxina "$1"',
+	'review_blocked'                                         => 'Tas bloquiáu, nun pues siguir.',
+	'review_wrong_namespace'                                 => "¡Les páxines d'esti espaciu de nomes nun puen ser revisaes!",
+	'review_topic'                                           => 'Elementu',
+	'review_no_opinion'                                      => 'Ensin opinión',
+	'review_rating'                                          => 'Evaluación',
+	'review_comment'                                         => 'Comentariu',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

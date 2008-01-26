@@ -78,6 +78,15 @@ $messages['la'] = array(
 	'filelist-show-gallery' => 'Pinacothecam monstrare',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'filelist'              => 'Lëscht vun de Fichieren',
+	'filelist-show-list'    => 'Lëscht weisen',
+	'filelist-show-gallery' => 'Gallerie weisen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

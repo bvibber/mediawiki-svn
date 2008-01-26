@@ -186,6 +186,14 @@ $messages['hu'] = array(
 	'scanset_prev'                      => '← Előző',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'scanset_next' => 'Toliau &gt;',
+	'scanset_prev' => '&lt; Ankstesnis',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin
@@ -242,6 +250,23 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'scanset_next' => 'Nast. &gt;',
 	'scanset_prev' => '&lt; Poprz.',
+);
+
+/** Portuguese (Português)
+ * @author 555
+ */
+$messages['pt'] = array(
+	'scanset_no_name'                   => 'ScanSet: É necessário especificar um nome de conjunto de scans (por exemplo, &lt;scanset name="EB1911" /&gt;).',
+	'scanset_invalid_name'              => 'ScanSet: conjunto de scans inválido ou não encontrado.',
+	'scanset_unrecognised_index_format' => 'ScanSet: formato de índice desconhecido',
+	'scanset_opendir_error'             => 'ScanSet: não é possível abrir o diretório $1',
+	'scanset_no_files'                  => 'ScanSet: não há ficheiros no diretório especificado.',
+	'scanset_no_volumes'                => 'ScanSet: não foram encontrados diretórios contendo livros',
+	'scanset_missing_index_file'        => 'ScanSet: o ficheiro de índice $1 não foi encontrado',
+	'scanset_index_file_error'          => 'ScanSet: erro no formato de ficheiro-índice na linha $1',
+	'scanset_invalid_volume'            => 'ScanSet: livro inválido',
+	'scanset_next'                      => 'Próximo &gt;',
+	'scanset_prev'                      => '&lt; Anterior',
 );
 
 /** Russian (Русский)
@@ -325,6 +350,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'scanset_next' => 'తర్వాత &gt;',
+	'scanset_prev' => '&lt; గత',
 );
 
 /** Volapük (Volapük)

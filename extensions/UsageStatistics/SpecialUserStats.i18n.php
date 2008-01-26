@@ -233,6 +233,24 @@ $messages['nn'] = array(
 	'usagestatisticsbadstartend' => '<b>Ugyldig <i>start</i>– og/eller <i>slutt</i>dato!</b>',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'specialuserstats'           => 'Bruksstatistikk',
+	'usagestatistics'            => 'Bruksstatistikk',
+	'usagestatisticsfor'         => '<h2>Bruksstatistikk for [[:User:$1|$1]]</h2>',
+	'usagestatisticsallusers'    => 'Alle brukere',
+	'usagestatisticsinterval'    => 'Intervall',
+	'usagestatisticstype'        => 'Type',
+	'usagestatisticsstart'       => 'Starttid',
+	'usagestatisticsend'         => 'Sluttid',
+	'usagestatisticssubmit'      => 'Generer statistikk',
+	'usagestatisticsnostart'     => '* <font color="red">Vennligst oppgi en starttid</font>',
+	'usagestatisticsnoend'       => '* <font color="red">Vennligst oppgi en sluttid</font>',
+	'usagestatisticsbadstartend' => '<b>Ugyldig <i>start-</i> og/eller <i>slutttid</i>!</b>',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

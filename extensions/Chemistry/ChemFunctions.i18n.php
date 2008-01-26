@@ -414,8 +414,16 @@ $messages['sr-el'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'chemicalsources' => 'Chemiske Wällen',
-
+	'chemicalsources'                  => 'Chemiske Wällen',
+	'chemFunctions_DataList'           => 'Ätterfoulgjend fint me Links tou Sieden, do der eventuell Informatione uur chemiske Substanzen ounbjoode, ätter do Jie säike::<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Ferbiendenge $MIXCASNameFormula ap NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS an ju Oxford University (UK) (nit truchsäikboar)</a><br />',
+	'chemFunctions_CAS'                => 'CAS Nummer',
+	'chemFunctions_ATCCode'            => 'ATCCode',
+	'chemFunctions_ECNumber'           => 'ECNumber',
+	'chemFunctions_Formula'            => 'Formel',
+	'chemFunctions_Name'               => 'IUPAC Noome',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Iengoawe-Failer!',
 );
 
 /** Telugu (తెలుగు)

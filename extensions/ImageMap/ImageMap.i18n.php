@@ -39,6 +39,22 @@ $messages['ar'] = array(
 	'imagemap_description'          => 'حول هذه الصورة',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'imagemap_no_image'           => '&lt;imagemap&gt;: ha especificase una imaxe na primer llinia',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: la imaxe nun ye válida o nun esiste',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: atopóse un enllaz non válidu a lo cabero la llinia $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: títulu non válidu nel enllaz de la llinia $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: nun hai abondes coordenaes pa formar la figura de la llinia $1',
+	'imagemap_unrecognised_shape' => "&lt;imagemap&gt;: figura non reconocida en llinia $1, cada llinia ha empecipiar con dalguna d'estes: default, rect, circle o poly",
+	'imagemap_no_areas'           => "&lt;imagemap&gt;: ha conseñase a lo menos una especificación d'área",
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: coordenada non válida en llinia $1, ha ser un númberu',
+	'imagemap_invalid_desc'       => "&lt;imagemap&gt;: parámetru 'desc' non válidu, ha ser ún d'estos: <tt>$1</tt>",
+	'imagemap_description'        => 'Tocante a esta imaxe',
+);
+
 $messages['bcl'] = array(
 	'imagemap_description'          => 'Manónongod sa retratong ini',
 );
@@ -282,6 +298,22 @@ $messages['it'] = array(
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: coordinata non valida nella riga $1, deve essere un numero',
 	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: Valore non valido per il parametro desc, deve essere uno dei seguenti: $1',
 	'imagemap_description'          => 'Informazioni sull\'immagine',
+);
+
+/** Japanese (日本語)
+ * @author Kahusi
+ */
+$messages['ja'] = array(
+	'imagemap_no_image'           => '&lt;imagemap&gt;: 最初の行で画像を指定して下さい。',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: 画像が無効、又は存在しません。',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: 有効なリンクが$1行目の最後に存在しません。',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: $1行目のリンクのタイトルが無効です。',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: $1行目にある図形の座標指定が不足しています。',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: $1行目の図形は認められません。各行は次のどれかで始まる必要があります: default, rect, circle, poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: 図形の指定がありません。',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: $1行目の座標が無効です。数字を指定して下さい。',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: 無効なdescの指定です。次のどれかを指定して下さい: <tt>$1</tt>',
+	'imagemap_description'        => '画像の詳細',
 );
 
 /* Kazakh Arabic (AlefZet) */
@@ -532,6 +564,13 @@ $messages['sv'] = array(
 	'imagemap_description'          => 'Bildinformation',
 	# Note to translators: keep the same order
 	'imagemap_desc_types'           => 'uppe till höger, nere till höger, nere till vänster, uppe till vänster, ingen',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'imagemap_description' => 'ఈ బొమ్మ గురించి',
 );
 
 $messages['tet'] = array(

@@ -142,12 +142,28 @@ $messages['nl'] = array(
 	'languageselector-setlang' => 'instellen',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'languageselector'         => 'Språk',
+	'languageselector-setlang' => 'sett',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
 	'languageselector'         => 'Lenga',
 	'languageselector-setlang' => 'Definir',
+);
+
+/** Portuguese (Português)
+ * @author 555
+ */
+$messages['pt'] = array(
+	'languageselector'         => 'Idioma',
+	'languageselector-setlang' => 'seleccionar',
 );
 
 /** Russian (Русский)

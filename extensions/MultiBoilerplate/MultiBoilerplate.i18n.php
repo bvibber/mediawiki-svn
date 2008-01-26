@@ -33,3 +33,19 @@ $messages['fr'] = array(
 	'multiboilerplate-legend' => 'Sélectionner la page à incorporer',
 	'multiboilerplate-submit' => 'Charger',
 );
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'multiboilerplate-legend' => 'Tekstowy element wubrać',
+	'multiboilerplate-submit' => 'Začitać',
+);
+
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ */
+$messages['nl'] = array(
+	'multiboilerplate-legend' => 'Sjabloon selecteren',
+	'multiboilerplate-submit' => 'Laden',
+);

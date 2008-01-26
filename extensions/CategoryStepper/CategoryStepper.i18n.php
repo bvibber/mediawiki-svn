@@ -33,10 +33,34 @@ $messages['bg'] = array(
 	'categorystepper-end'   => '(Край на категорията)',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'categorystepper-start' => '(Zachopjeńk kategorije)',
+	'categorystepper-end'   => '(Kóńc kategorije)',
+);
+
 /** French (Français)
  * @author Grondin
  */
 $messages['fr'] = array(
 	'categorystepper-start' => '(Début de catégorie)',
 	'categorystepper-end'   => '(Fin de catégorie)',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'categorystepper-start' => '(Spočatk kategorije)',
+	'categorystepper-end'   => '(Kónc kategorije)',
+);
+
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ */
+$messages['nl'] = array(
+	'categorystepper-start' => '(Begin van categorie)',
+	'categorystepper-end'   => '(Einde van categorie)',
 );

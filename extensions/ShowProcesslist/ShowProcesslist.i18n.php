@@ -129,6 +129,21 @@ $messages['nl'] = array(
 	'showprocesslist-info'    => 'Informatie',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'showprocesslist'         => 'Vis prosessliste',
+	'showprocesslist-id'      => 'ID',
+	'showprocesslist-user'    => 'Bruker',
+	'showprocesslist-host'    => 'Vert',
+	'showprocesslist-db'      => 'database',
+	'showprocesslist-command' => 'Kommando',
+	'showprocesslist-time'    => 'Tid',
+	'showprocesslist-state'   => 'Tilstand',
+	'showprocesslist-info'    => 'Info',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

@@ -764,7 +764,8 @@ $messages['lb'] = array(
  * @author Matasg
  */
 $messages['lt'] = array(
-	'hiderevision-continue' => 'Tęsti',
+	'hiderevision-continue'      => 'Tęsti',
+	'hiderevision-error-missing' => 'Nerasta duomenų bazėje',
 );
 
 /** Dutch (Nederlands)
@@ -1234,6 +1235,8 @@ Användare som sprider den här informationen vidare kan få sina översynsrätt
  */
 $messages['te'] = array(
 	'hiderevision-continue' => 'కొనసాగించు',
+	'hiderevision-submit'   => 'ఈ డాటాని శాశ్వతంగా దాచు',
+	'hiderevision-tab'      => 'కూర్పుని దాచు',
 	'oversight-view'        => 'వివరాలు',
 );
 

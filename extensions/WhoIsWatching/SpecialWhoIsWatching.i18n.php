@@ -112,6 +112,15 @@ $messages['hsb'] = array(
 	'specialwhoiswatchingaddbtn'   => 'Přidaj wubranych wužiwarjow',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'whoiswatching'               => 'Ki néz egy adott wiki oldalt',
+	'specialwhoiswatchingthepage' => 'Ki nézi a(z) %s lapot',
+	'specialwhoiswatchingaddbtn'  => 'Összes kiválasztott felhasználó hozzáadása',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -192,3 +201,12 @@ $messages['stq'] = array(
 	'specialwhoiswatchingaddbtn'   => 'Föich Benutser bietou',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'whoiswatching'                => 'Användare som bevakar en sida',
+	'specialwhoiswatchingthepage'  => 'Användare som övervakar %s',
+	'specialwhoiswatchingaddusers' => 'Lägg till användare som övervakare av sidan',
+	'specialwhoiswatchingaddbtn'   => 'Lägg till valda',
+);

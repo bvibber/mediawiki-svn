@@ -582,6 +582,14 @@ Sòn a lo fa ën ciamand l\'anterprete dal programa MediaWiki.',
 	'expand_templates_preview'         => 'Preuva',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'expand_templates_output' => 'Resultado',
+	'expand_templates_ok'     => 'OK',
+);
+
 /** Quechua (Runa Simi)
  * @author AlimanRuna
  */
@@ -673,7 +681,6 @@ Do ovoga dolazi tako što se zove odgovarajuće stanje parsera iz samog MedijaVi
 	'expand_templates_remove_comments' => 'Ukloni komentare',
 );
 
-
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -683,8 +690,10 @@ $messages['stq'] = array(
 	'expand_templates_title'           => 'Kontexttittel, foar {{PAGENAME}} etc.:',
 	'expand_templates_input'           => 'Iengoawefäild:',
 	'expand_templates_output'          => 'Resultoat',
+	'expand_templates_xml_output'      => 'XML-Uutgoawe',
 	'expand_templates_ok'              => 'Uutfiere',
 	'expand_templates_remove_comments' => 'Kommentoare wächhoalje',
+	'expand_templates_generate_xml'    => 'Wies XML Parser-Boom',
 	'expand_templates_preview'         => 'Foarschau',
 );
 
@@ -712,9 +721,11 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author Veeven
+ * @author Mpradeep
  */
 $messages['te'] = array(
-	'expandtemplates'                  => 'మూసలను పొడగించు',
+	'expandtemplates'                  => 'మూసలను విస్తరించు',
+	'expand_templates_intro'           => 'ఈ ప్రత్యేక పేజీ మీరిచ్చిన మూసలను పూర్తిగా విస్తరించి, చూపిస్తుంది. ఇది <nowiki>{{</nowiki>#if:...}} వంటి పార్సరు ఫంక్షన్లను, <nowiki>{{</nowiki>CURRENTDAY}} వంటి చరరాశులను(వేరియబుల్) కూడా విస్తరిస్తుంది &mdash; నిజానికి జమిలి(మీసాల) బ్రాకెట్లలో ఉన్న ప్రతీదాన్నీ ఇది విస్తరిస్తుంది. మీడియావికీ నుండి సంబంధిత పార్సరు స్టేజిని పిలిచి ఇది ఈ పనిని సాధిస్తుంది.',
 	'expand_templates_ok'              => 'సరే',
 	'expand_templates_remove_comments' => 'వ్యాఖ్యలను తొలగించు',
 	'expand_templates_preview'         => 'మునుజూపు',

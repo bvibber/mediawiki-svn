@@ -212,3 +212,15 @@ $messages['sk'] = array(
 	'watchers_less_than_x' => "Menej ako $1 ľudí sleduje túto stránku.",
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'watchers'               => 'Övervakare',
+	'watchers_link_title'    => 'Användare som bevakar sidan',
+	'watchers_error_article' => '<b>Fel:</b> Sidan finns inte.',
+	'watchers_header'        => 'Personer som bevakar "$1"',
+	'watchers_noone_watches' => 'Ingen användare övervakar sidan.',
+	'watchers_x_or_more'     => '$1 eller fler användare bevakar sidan.',
+	'watchers_less_than_x'   => 'Färre än $1 användare bevakar sidan.',
+);
