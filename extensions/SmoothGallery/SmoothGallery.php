@@ -79,6 +79,7 @@ function smoothGalleryImagesByCat( $title ) {
 
 function renderSmoothGallery( $input, $argv, &$parser, $calledFromSpecial=false, $calledAsSet=false ) {
 	global $wgSmoothGalleryArguments;
+	global $wgSmoothGalleryUseDatabase;
 
 	parseArguments( $argv );
 
@@ -90,10 +91,10 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledFromSpecial=false,
 		//on a page. But don't do this on a special page, because it will cause
 		//us problems with javascript that uses the css classname
 		if ( $calledFromSpecial ) {
-			$gallerySetName = "myGallerySet";
+			$gallerySetName = "MediaWikiSGallerySet";
 		} else {
-			#$gallerySetName = "myGallerySet" . mt_rand();
-			$gallerySetName = "myGallerySet";
+			#$gallerySetName = "MediaWikiSGallerySet" . mt_rand();
+			$gallerySetName = "MediaWikiSGallerySet";
 		}
 
 		//Open the div, and initialize any needed variables
@@ -108,9 +109,9 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledFromSpecial=false,
 		$i = 1;
 		foreach ( $galleries as $galleryInput ) {
 			if ( $calledFromSpecial ) {
-				$galleryName = "myGallery";
+				$galleryName = "MediaWikiSGallery";
 			} else {
-				$galleryName = "myGallery" . $i;
+				$galleryName = "MediaWikiSGallery" . $i;
 			}
 
 			$output .= renderGallery( $galleryName, $galleryInput[2], $parser, $calledFromSpecial, $calledAsSet, $fallbackArray );
@@ -123,14 +124,37 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledFromSpecial=false,
 		$output .= renderJavascript( $gallerySetName, true );
 	} else {
 		if ( $calledFromSpecial ) {
-			$name = "myGallery";
+			$name = "MediaWikiSGallery";
 		} else {
-			$name = "myGallery" . mt_rand();
+			$name = "MediaWikiSGallery" . mt_rand();
 		}
 
 		$output = renderGallery( $name, $input, $parser, $calledFromSpecial, $calledAsSet, $fallbackArray );
 		$output .= renderFallback( $fallbackArray );
 		$output .= renderJavascript( $name );
+	}
+
+	//Save input and (cache) output to database if
+	//the plugin is configured to use the database
+	if ( $wgSmoothGalleryUseDatabase ) {
+		$gId = addSGTextToDB( $input, $output );
+
+		//Get a local link from the special page
+		$sp = Title::newFromText( "Special:SmoothGallery" );
+		$locallink = $sp->getLocalURL( "gallery=" . $gId );
+		$linktext = htmlspecialchars( $wgSmoothGalleryArguments["special"] );
+		if ( $linktext == '' ) {
+			$linktext = 'link';
+		}
+		$link = '<a href="' . $locallink . '">' . $linktext . '</a>';
+
+		if ( $wgSmoothGalleryArguments["special"] != '' ) {
+			// We are only sending a special page link
+			$output = $link;
+		} else if ( !$wgSmoothGalleryArguments["nolink"] ) {
+			// We want to send a link with the gallery
+			$output = '<div class="MediaWikiSGalleryLink">' . $link . $output . '</div>';
+		}
 	}
 
 	//Finished, let's send it out
@@ -139,10 +163,11 @@ function renderSmoothGallery( $input, $argv, &$parser, $calledFromSpecial=false,
 
 function parseArguments( $argv ) {
 	global $wgSmoothGalleryArguments;
+	global $wgSmoothGalleryUseDatabase;
 
 	//Parse arguments, set defaults, and do sanity checks
 	if ( isset( $argv["height"] ) && is_numeric( $argv["height"] ) ) {
-		if ( isset( $argv["special"] ) ) {
+		if ( isset( $argv["special"] ) && !$wgSmoothGalleryUseDatabase ) {
 			//Creating a link instead, the special page is going to call this
 			//function again, so "px" will be appended.
 			$wgSmoothGalleryArguments["height"] = $argv["height"];
@@ -154,7 +179,7 @@ function parseArguments( $argv ) {
 	}
 
 	if ( isset( $argv["width"] ) && is_numeric( $argv["width"] ) ) {
-		if ( isset( $argv["special"] ) ) {
+		if ( isset( $argv["special"] ) && !$wgSmoothGalleryUseDatabase ) {
 			//Creating a link instead, the special page is going to call this
 			//function again, so "px" will be appended.
 			$wgSmoothGalleryArguments["width"] = $argv["width"];
@@ -206,48 +231,61 @@ function parseArguments( $argv ) {
 	} else {
 		$wgSmoothGalleryArguments["special"] = '';
 	}
+
+	if ( isset( $argv["nolink"] ) && $argv["nolink"] == "true" ) {
+		$wgSmoothGalleryArguments["nolink"] = true;
+	} else {
+		$wgSmoothGalleryArguments["nolink"] = false;
+	}
 }
 
 function renderGallery ( $name, $input, $parser, $calledFromSpecial, $calledAsSet, &$fallbackArray ) {
 	global $wgContLang, $wgUser, $wgTitle;
 	global $wgSmoothGalleryDelimiter;
 	global $wgSmoothGalleryArguments;
+	global $wgSmoothGalleryUseDatabase;
 
 	$skin = $wgUser->getSkin();
 
 	//Sanity check
 	if ( $input == "" ) {
-		loadSmoothGalleryI18n();
-		$output = wfMsg("smoothgallery-error");
-		$output .= wfMsg("smoothgallery-not-found");
-		return $output;
+		if ( $calledFromSpecial && $wgSmoothGalleryUseDatabase ) {
+			//load input from database
+		} else {
+			loadSmoothGalleryI18n();
+			$output = wfMsg("smoothgallery-error");
+			$output .= wfMsg("smoothgallery-not-found");
+			return $output;
+		}
 	}
 
 	if ( $wgSmoothGalleryArguments["special"] ) {
-		//The user wants a link to a special page instead. Let's provide a link with
-		//the relevant info
+		if ( !$wgSmoothGalleryUseDatabase ) {
+			//The user wants a link to a special page instead. Let's provide a link with
+			//the relevant info
 
-		//sanity check
-		$name = htmlspecialchars( $wgSmoothGalleryArguments["special"] );
+			//sanity check
+			$name = htmlspecialchars( $wgSmoothGalleryArguments["special"] );
 
-		//This is a dirty, dirty hack that should be replaced. It works, and
-		//it is safe, but there *MUST* be a better way to do this...
-		$input = str_replace( $wgSmoothGalleryDelimiter, '|', $input );
+			//This is a dirty, dirty hack that should be replaced. It works, and
+			//it is safe, but there *MUST* be a better way to do this...
+			$input = str_replace( $wgSmoothGalleryDelimiter, '|', $input );
 
-		//Get a local link from the special page
-		$sp = Title::newFromText( "Special:SmoothGallery" );
-		$output = $sp->getLocalURL( "height=" . $wgSmoothGalleryArguments["height"]
-			. "&width=" . $wgSmoothGalleryArguments["width"]
-			. "&showcarousel=" . $wgSmoothGalleryArguments["carousel"]
-			. "&timed=" . $wgSmoothGalleryArguments["timed"]
-			. "&delay=" . $wgSmoothGalleryArguments["delay"]
-			. "&showarrows=" . $wgSmoothGalleryArguments["showarrows"]
-			. "&showinfopane=" . $wgSmoothGalleryArguments["showinfopane"]
-			. "&fallback=" . $wgSmoothGalleryArguments["fallback"]
-			. "&input=" . htmlspecialchars( $input ) );
+			//Get a local link from the special page
+			$sp = Title::newFromText( "Special:SmoothGallery" );
+			$output = $sp->getLocalURL( "height=" . $wgSmoothGalleryArguments["height"]
+				. "&width=" . $wgSmoothGalleryArguments["width"]
+				. "&showcarousel=" . $wgSmoothGalleryArguments["carousel"]
+				. "&timed=" . $wgSmoothGalleryArguments["timed"]
+				. "&delay=" . $wgSmoothGalleryArguments["delay"]
+				. "&showarrows=" . $wgSmoothGalleryArguments["showarrows"]
+				. "&showinfopane=" . $wgSmoothGalleryArguments["showinfopane"]
+				. "&fallback=" . $wgSmoothGalleryArguments["fallback"]
+				. "&input=" . htmlspecialchars( $input ) );
 
-		//Provide the link
-		return '<a href="' . $output . '">' . $name . '</a>';
+			//Provide the link
+			return '<a href="' . $output . '">' . $name . '</a>';
+		}
 	}
 
 	$parser->mOutput->mSmoothGalleryTag = true; # flag for use by smoothGalleryParserOutput
@@ -257,7 +295,7 @@ function renderGallery ( $name, $input, $parser, $calledFromSpecial, $calledAsSe
 		$output = '<div id="' . $name . '" class="galleryElement">';
 		$output .= '<h2>' . $name . '<h2>';
 	} else {
-		$output = '<div id="' . $name . '" class="myGallery" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . '; display:none;">';
+		$output = '<div id="' . $name . '" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . '; display:none;">';
 	}
 
 	//We need a parser to pass to the render function, this
@@ -340,18 +378,23 @@ function renderGallery ( $name, $input, $parser, $calledFromSpecial, $calledAsSe
 
 function renderFallback ( $fallbackArray ) {
 	global $wgSmoothGalleryArguments;
+	global $wgSmoothGalleryUseDatabase;
 
 	$output = '';
 
+	if ( $wgSmoothGalleryArguments["special"] != "" && !$wgSmoothGalleryUseDatabase ) {
+		return $output;
+	}
+
 	if ( $wgSmoothGalleryArguments["fallback"] == "image" ) {
-		$output .= '<div id="' . $fallbackArray['name'] . '-fallback" class="myGallerySingleImage" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . ';" alt="' . $fallbackArray["img_desc"] . '">';
+		$output .= '<div id="' . $fallbackArray['name'] . '-fallback" class="MediaWikiSGallerySingleImage" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . ';" alt="' . $fallbackArray["img_desc"] . '">';
 		$output .= $fallbackArray['fallback_image'];
 		$output .= '</div>';
 	} elseif ( $wgSmoothGalleryArguments["fallback"] == "image-warn" ) {
 		loadSmoothGalleryI18n();
-		$output .= '<div id="' . $fallbackArray['name'] . '-fallback" class="myGalleryWarning" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . ';" alt="' . $fallbackArray["img_desc"] . '">';
+		$output .= '<div id="' . $fallbackArray['name'] . '-fallback" class="MediaWikiSGalleryWarning" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . ';" alt="' . $fallbackArray["img_desc"] . '">';
 		$output .= wfMsg("smoothgallery-javascript-disabled");
-		$output .= '<div class="myGallerySingleImage">';
+		$output .= '<div class="MediaWikiSGallerySingleImage">';
 		$output .= $fallbackArray['fallback_image'];
 		$output .= '</div></div>';
 	} else {
@@ -491,9 +534,9 @@ function renderJavascript ( $name, $calledAsSet=false ) {
 
 	$output .= 'function startGallery_' . $name . '() {';
 	if ( $calledAsSet ) {
-		$output .= "var myGallerySet = new gallerySet($('" . $name . "'), {";
+		$output .= "var MediaWikiSGallerySet = new gallerySet($('" . $name . "'), {";
 	} else {
-		$output .= "var myGallery = new gallery($('" . $name . "'), {";
+		$output .= "var MediaWikiSGallery = new gallery($('" . $name . "'), {";
 	}
 
 	$output .= 'thumbWidth: 100, thumbHeight: 75'; //would be nice if we could change this to 120x120 to re-use thumbnails...
@@ -531,6 +574,21 @@ function renderJavascript ( $name, $calledAsSet=false ) {
 	$output .= '</script>';
 
 	return $output;
+}
+
+function addSGTextToDB($input, $cache) {
+	global $wgSharedDB, $wgDBname;
+	$dbw =& wfGetDB( DB_MASTER );
+
+	if (isset($wgSharedDB)) {
+		# It would be nicer to get the existing dbname
+		# and save it, but it's not possible
+		$dbw->selectDB($wgSharedDB);
+	}
+
+	$dbw->insert('text_sg', array('sg_text' => $dbw->addQuotes( $input ),
+					  'sg_cache' => $cache));
+	return $dbw->insertId();
 }
 
 function renderSmoothGallerySet( $input, $args, &$parser, $calledFromSpecial=false ) {
@@ -585,7 +643,7 @@ function loadSmoothGalleryI18n() {
  */
 $wgExtensionCredits['other'][] = array(
 	'name'        => 'SmoothGallery parser extension',
-	'version'     => '1.0i',
+	'version'     => '1.1a',
 	'author'      => 'Ryan Lane',
 	'description' => 'Allows users to create galleries with images that have been uploaded. Allows most options of SmoothGallery',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:SmoothGallery',
