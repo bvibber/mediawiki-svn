@@ -1209,11 +1209,18 @@ $messages['ur'] = array(
 );
 
 /** Volapük (Volapük)
+ * @author Smeira
  * @author Malafaya
  */
 $messages['vo'] = array(
-	'lucene-resultsize' => '$1 (vöds $2)',
-	'searchall'         => 'valik',
+	'lucene-resultsize'     => '$1 (vöds $2)',
+	'searchdidyoumean'      => 'Ba vilol-li penön: "<a href="$1">$2</a>"?',
+	'lucenepowersearchtext' => 'Sukön in nemaspads:
+
+$1
+
+Sukön: $3 $9 $10',
+	'searchall'             => 'valik',
 );
 
 $messages['wa'] = array(
