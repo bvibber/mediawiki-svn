@@ -292,7 +292,7 @@ $messages['lb'] = array(
 	'patrol-endorse'       => 'Bestätegen',
 	'patrol-revert'        => 'Zrécksetzen',
 	'patrol-revert-reason' => 'Grond:',
-	'patrol-skip'          => 'Iwwersrangen',
+	'patrol-skip'          => 'Iwwersprangen',
 	'patrol-reverting'     => 'Zrécksetzen: $1',
 	'patrol-reverted-ok'   => "D'Ännerung gouf zréckgesat.",
 );

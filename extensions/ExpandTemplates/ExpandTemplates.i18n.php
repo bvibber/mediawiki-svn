@@ -489,8 +489,10 @@ $messages['lo'] = array(
  * @author Matasg
  */
 $messages['lt'] = array(
+	'expand_templates_output'          => 'Rezultatas',
 	'expand_templates_ok'              => 'Gerai',
 	'expand_templates_remove_comments' => 'Pašalinti komentarus',
+	'expand_templates_preview'         => 'Peržiūra',
 );
 
 $messages['nan'] = array(
@@ -619,6 +621,21 @@ $messages['ru'] = array(
 	'expand_templates_preview'         => 'Предпросмотр',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'expandtemplates'                  => 'Халыыптары тэнитии',
+	'expand_templates_title'           => '{{PAGENAME}} сирэй аата уонна да атын сибидиэнньэлэр:',
+	'expand_templates_input'           => 'Киирэр сурук:',
+	'expand_templates_output'          => 'Түмүк',
+	'expand_templates_xml_output'      => 'XML тахсыыта',
+	'expand_templates_ok'              => 'OK',
+	'expand_templates_remove_comments' => 'Ырытыылары сот',
+	'expand_templates_generate_xml'    => 'XML-ы мас курдук көрдөр',
+	'expand_templates_preview'         => 'Инники көрүү',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -745,6 +762,26 @@ $messages['tr'] = array(
 	'expand_templates_input'   => 'Giriş metni:',
 	'expand_templates_output'  => 'Sonuç',
 	'expand_templates_preview' => 'Ön izleme',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'expandtemplates'                  => 'Bung tiêu bản',
+	'expand_templates_intro'           => 'Trang đặc biệt này sẽ nhận vào một đoạn văn bản và bung 
+tất cả các tiêu bản trong nó ra một cách đệ quy cho đến hết. 
+Nó cũng bung cả những hàm cú pháp như <nowiki>{{</nowiki>#if:...}}, và những biến số như
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash;thực ra cũng là các dữ liệu bình thường đặt
+trong ngoặc móc. Nó thực hiện điều này bằng cách gọi tầng dịch cú pháp từ chính MediaWiki',
+	'expand_templates_title'           => 'Tựa đề, đối với {{PAGENAME}}, v.v.:',
+	'expand_templates_input'           => 'Văn bản nhập:',
+	'expand_templates_output'          => 'Kết quả',
+	'expand_templates_xml_output'      => 'Xuất XML',
+	'expand_templates_ok'              => 'OK',
+	'expand_templates_remove_comments' => 'Bỏ các chú thích',
+	'expand_templates_generate_xml'    => 'Xem cây phân tích XML',
+	'expand_templates_preview'         => 'Xem thử',
 );
 
 /** Volapük (Volapük)

@@ -864,8 +864,10 @@ $wdMessages['lb'] = array(
 	'ow_Synonyms'                     => 'Synonymen',
 	'ow_Source'                       => 'Quell',
 	'ow_Text'                         => 'Text',
+	'ow_TranslatedText'               => 'Iwwersatenen Text',
 	'ow_TranslatedTextAttributeValue' => 'Text',
 	'ow_LinkAttributeValues'          => 'Linken',
+	'ow_meaningsoftitle'              => 'Bedeitung vun "$1"',
 	'ow_copy_help'                    => 'Fréier oder spéider kënne mir iech hëllefen.',
 );
 

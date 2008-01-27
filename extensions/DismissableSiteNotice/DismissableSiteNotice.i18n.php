@@ -230,6 +230,13 @@ $messages['ru'] = array(
 	'sitenotice_close' => 'скрыть',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'sitenotice_close' => 'кистээ',
+);
+
 /** Sassarese (Sassarese)
  * @author Felis
  */

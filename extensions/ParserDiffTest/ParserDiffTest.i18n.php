@@ -393,6 +393,24 @@ $messages['te'] = array(
 	'pdtest_diff'        => 'తేడాలు',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'parserdifftest'      => 'So sánh kiểm thử bằng hàm phân tích',
+	'pdtest_no_target'    => 'Chưa xác định mục tiêu',
+	'pdtest_page_missing' => 'Trang chỉ định không tìm thấy trong cơ sở dữ liệu.',
+	'pdtest_no_changes'   => 'Không tìm thấy sự khác biệt nào.',
+	'pdtest_time_report'  => '<b>$1</b> mất $2 giây, <b>$3</b> mất $4 giây.',
+	'pdtest_title'        => 'Tựa đề văn cảnh:',
+	'pdtest_text'         => 'Văn bản nhập:',
+	'pdtest_ok'           => 'OK',
+	'pdtest_get_text'     => 'Lấy văn bản từ trang',
+	'pdtest_diff'         => 'Khác biệt',
+	'pdtest_side_by_side' => 'So sánh đầu ra',
+	'pdt_comparing_page'  => 'Đang so sánh đầu ra hàm phân tích từ [[$1]]',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

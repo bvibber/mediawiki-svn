@@ -210,3 +210,14 @@ $messages['sv'] = array(
 	'specialwhoiswatchingaddusers' => 'Lägg till användare som övervakare av sidan',
 	'specialwhoiswatchingaddbtn'   => 'Lägg till valda',
 );
+
+/** Telugu (తెలుగు)
+ * @author Mpradeep
+ */
+$messages['te'] = array(
+	'whoiswatching'                => 'ఒక వికీపేజీని ఎవరెవరు తమ వీక్షణా జాబితాలో చేర్చుకున్నారు',
+	'specialwhoiswatchingthepage'  => '%sను ఎవరెవరు తమ వీక్షణా జాబితాలో చేర్చుకున్నారు',
+	'specialwhoiswatchingusage'    => 'ఈ ప్రత్యేక పేజీని దానంతట అది ఉపయోగించటం కుదరదు. దయచేసి [[MediaWiki:Number_of_watching_users_pageview]] అనే పేజీని సృష్టించి, అక్కడి నుండి ఈ ప్రత్యేక పేజీకి మీకు కావలిసిన విధంగా లింకులను ఇవ్వండి.',
+	'specialwhoiswatchingaddusers' => 'ఈ పేజీని వీక్షించగలిగేటట్లు వాడుకరులను చేర్చండి',
+	'specialwhoiswatchingaddbtn'   => 'ఎంచుకున్న వాడుకరులను చేర్చు',
+);

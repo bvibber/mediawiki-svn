@@ -6,18 +6,7 @@
  * @addtogroup Extensions
  */
 
-$messages = array();
-
-/**
- * English
- * @author MinuteElectron <minuteelectron@googlemail.com>
- */
-$messages[ 'en' ] = array(
-	'categorystepper-start' => '(Start of category)',
-	'categorystepper-end'   => '(End of category)',
-);
-
-/** Arabic (العربية)
+$messages = array();/** Arabic (العربية)
  * @author Meno25
  */
 $messages['ar'] = array(
@@ -57,6 +46,14 @@ $messages['hsb'] = array(
 	'categorystepper-end'   => '(Kónc kategorije)',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'categorystepper-start' => '(Ufank vun der Kategorie)',
+	'categorystepper-end'   => '(Enn vun der Kategorie)',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  */
@@ -64,3 +61,23 @@ $messages['nl'] = array(
 	'categorystepper-start' => '(Begin van categorie)',
 	'categorystepper-end'   => '(Einde van categorie)',
 );
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'categorystepper-start' => '(Prim klada)',
+	'categorystepper-end'   => '(Fin klada)',
+);
+
+
+
+/**
+ * English
+ * @author MinuteElectron <minuteelectron@googlemail.com>
+ */
+$messages[ 'en' ] = array(
+	'categorystepper-start' => '(Start of category)',
+	'categorystepper-end'   => '(End of category)',
+);
+

@@ -254,6 +254,13 @@ $messages['ru'] = array(
 	'deletedcontributions' => 'Удалённый вклад',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'deletedcontributions' => 'Сотуллубут көннөрүү',
+);
+
 $messages['sk'] = array(
 	'deletedcontributions' => 'Zmazané príspevky používateľa',
 );

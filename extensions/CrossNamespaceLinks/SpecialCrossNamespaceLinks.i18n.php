@@ -434,10 +434,13 @@ $messages['vi'] = array(
 );
 
 /** Volapük (Volapük)
+ * @author Smeira
  * @author Malafaya
  */
 $messages['vo'] = array(
-	'crossnamespacelinkstext' => '$1: {{PLURAL:$2|yüm|yüms}} $2 lü $3',
+	'crossnamespacelinks'         => 'Yüms bevü nemaspads',
+	'crossnamespacelinks-summary' => 'Su pad at palisedons yüms de pad nemaspada cifik lü pad nemaspadas votik (pläamü nemaspads: {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), kelas geb no pakomandon.',
+	'crossnamespacelinkstext'     => '$1: {{PLURAL:$2|yüm|yüms}} $2 lü $3',
 );
 
 $messages['yue'] = array(

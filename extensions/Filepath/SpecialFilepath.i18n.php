@@ -461,6 +461,18 @@ $messages['ru'] = array(
 	Введите имя файла без префикса <code>{{ns:image}}:</code>.',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'filepath'         => 'Билэ суола',
+	'filepath_page'    => 'Билэ:',
+	'filepath_submit'  => 'Суол',
+	'filepath-summary' => 'Бу аналлаах сирэй билэ толору суолун (дисскэҕэ ханна сытарын) көрдөрөр.
+
+Билэ аатын префикса суох киллэр <code>{{ns:image}}:</code>.',
+);
+
 /** Slovak (Slovenčina)
  * @author Robbot
  * @author Helix84
@@ -552,10 +564,16 @@ $messages['ty'] = array(
 );
 
 /** Volapük (Volapük)
+ * @author Smeira
  * @author Malafaya
  */
 $messages['vo'] = array(
-	'filepath_page' => 'Ragiv:',
+	'filepath'         => 'Ragivaluveg',
+	'filepath_page'    => 'Ragiv:',
+	'filepath_submit'  => 'Luveg',
+	'filepath-summary' => 'Pad patik at tuvon luvegi lölöfik ragiva. Magods pajonons ma fomät gudikün, ragivasots votik pamaifükons stedöfo kobü programs onsik.
+
+Penolös ragivanemi nen foyümot: „{{ns:image}}:“',
 );
 
 $messages['wuu'] = array(

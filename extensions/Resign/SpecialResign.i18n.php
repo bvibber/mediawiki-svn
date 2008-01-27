@@ -136,6 +136,22 @@ Kedźbu: \'\'\'Njemóžeš te prawa na tute wašnje wróćo dóstać!\'\'\' Dyrb
 	'resign-logentry' => 'wróći prawa $2',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'resign'           => 'Lemondás',
+	'resign-text'      => "Ezen a lapon '''eltávolíthatod a jogaidat''' (pl. adminisztrátori). Válaszd ki azokat, amelyektől meg szeretnél válni.
+
+Figyelem: '''ugyanitt nem kaphatod vissza a jogokat!''' Csak egy bürokrata vagy helytartó adhatja vissza őket, ezért körültekintéssel használd a lapot.",
+	'resign-reason'    => 'Ok:',
+	'resign-confirm'   => 'Megerősítem, hogy le szeretnék mondani a kiválasztott jogokról.',
+	'resign-noconfirm' => 'Jelöld be a dobozt, ha tényleg le szeretnél mondani a jogaidról.',
+	'resign-nogroups'  => 'Válaszd ki azon jogaidat, amelyeket el szeretnél távolítani.',
+	'resign-success'   => "'''A jogok sikeresen el lettek távolítva.'''",
+	'resign-logentry'  => 'eltávolította saját $2 jogait',
+);
+
 $messages['id'] = array(
 	'resign'           => 'Pengunduran diri',
 	'resign-text'      => "Anda dapat melepaskan hak Anda (mis. pengurus) melalui halaman ini. Silakan tandai hak yang ingin Anda lepas.

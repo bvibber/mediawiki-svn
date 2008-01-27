@@ -12,7 +12,7 @@ $messages = array();
  * English
  * @author MinuteElectron <minuteelectron@googlemail.com>
  */
-$messages[ 'en' ] = array(
+$messages['en'] = array(
 	'multiboilerplate-legend' => 'Select boilerplate',
 	'multiboilerplate-label'  => '',
 	'multiboilerplate-submit' => 'Load',
@@ -42,6 +42,14 @@ $messages['hsb'] = array(
 	'multiboilerplate-submit' => 'Začitać',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'multiboilerplate-legend' => 'Säit eraussichen déi soll agebaut ginn',
+	'multiboilerplate-submit' => 'Lueden',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  */
@@ -49,3 +57,4 @@ $messages['nl'] = array(
 	'multiboilerplate-legend' => 'Sjabloon selecteren',
 	'multiboilerplate-submit' => 'Laden',
 );
+

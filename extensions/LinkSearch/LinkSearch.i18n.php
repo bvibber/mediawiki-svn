@@ -551,8 +551,10 @@ $messages['tr'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'linksearch'    => 'Sukön bevüresodayümis',
 	'linksearch-ns' => 'Nemaspad:',
 	'linksearch-ok' => 'Suk',
 );

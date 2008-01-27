@@ -25,6 +25,15 @@ $messages['ar'] = array(
 		'templatelink_newtitle' => '$1 (مضمنة)',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'templatelink'          => 'Tezagluyasiki',
+	'templatelink_empty'    => 'Va dor godaful !',
+	'templatelink_newtitle' => '$1 (warzon)',
+);
+
 $messages['bcl'] = array(
 		'templatelink' => 'Takod kan Templato',
 		'templatelink_empty' => 'Kaipuhan mong suplayan an parametro.',

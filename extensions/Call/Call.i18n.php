@@ -51,6 +51,13 @@ $messages['bg'] = array(
 	'call-save-failed'  => 'Следният текст НЕ БЕШЕ съхранен на страницата <big>[[$1]]</big>, тъй като тя вече съществува.',
 );
 
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ */
+$messages['fi'] = array(
+	'call-save-success' => 'Tämä teksti on tallennettu sivulle <big>[[$1]]</big> .',
+);
+
 $messages['fr'] = array(
 	'call' => 'Appel',
 	'call-text' => 'L’extension Appel a besoin d’une page wiki et des paramètres facultatifs pour cette dernière.<br><br>
@@ -174,5 +181,13 @@ V prípade problémov môžete skúsuť <b>Special:Call/DebuG</b>",
 	'call-save'         => "Výstup tejto stránky by bol uložený na stránku s názvom ''$1''.",
 	'call-save-success' => 'Nasledovný text bol uložený na stránku <big>[[$1]]</big>.',
 	'call-save-failed'  => "Nasledovný text NEBOL uložený na stránku ''$1'', pretože taká stránka už existuje.",
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'call-save-success' => 'Vödem fovik pedakipon su pad: <big>[[$1]]</big>.',
+	'call-save-failed'  => 'Vödem fovik NO pedakipon su pad: <big>[[$1]]</big> bi pad at ya dabinon.',
 );
 

@@ -377,9 +377,16 @@ $messages['lb'] = array(
  * @author Garas
  */
 $messages['lt'] = array(
-	'imagemap_no_image'      => '&lt;imagemap&gt;: privalote nurodyti paveikslėlį pirmoje linijoje',
-	'imagemap_invalid_image' => '&lt;imagemap&gt;: blogas arba neegzistuojantis paveikslėlis',
-	'imagemap_description'   => 'Apie šį paveikslėlį',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: privalote nurodyti paveikslėlį pirmoje linijoje',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: blogas arba neegzistuojantis paveikslėlis',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: nerasta tinkama nuoroda eilutės $1 pabaigoje',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: blogas pavadinimas nuorodoje $1 eilutėje',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: nėra pakankamai koordinačių figūrai $1 eilutėje',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: neatpažįstama figūra $1 eilutėje, kiekviena eilutė privalo prasidėti su vienu iš šių žodžių: default, rect, circle arba poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: privalo būti duoda mažiausiai viena vietos specifikacija',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: netinkama koordinatė $1 eilutėje, privalo būti skaičius',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: bloga aprašymo specifikacija, privalo būti viena iš: <tt>$1</tt>',
+	'imagemap_description'        => 'Apie šį paveikslėlį',
 );
 
 $messages['nds'] = array(
@@ -585,10 +592,15 @@ $messages['tr'] = array(
 );
 
 /** Volapük (Volapük)
+ * @author Smeira
  * @author Malafaya
  */
 $messages['vo'] = array(
-	'imagemap_description' => 'Tefü magod at',
+	'imagemap_no_image'      => '&lt;imagemap&gt;: lien balid muton keninükön magodanemi',
+	'imagemap_invalid_image' => '&lt;imagemap&gt;: magod no lonöfon u no dabinon',
+	'imagemap_no_link'       => '&lt;imagemap&gt;: yüm lonöföl no petuvon finü lien: $1',
+	'imagemap_invalid_title' => '&lt;imagemap&gt;: tiäd no lonöföl pö yüm su lien: $1',
+	'imagemap_description'   => 'Tefü magod at',
 );
 
 /* Cantonese (Shinjiman) */

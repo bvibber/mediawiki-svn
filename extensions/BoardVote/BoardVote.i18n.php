@@ -641,19 +641,19 @@ $messages['el'] = array(
 Μπορεί να εμφανιστεί μια προειδοποίηση ασφάλειας για ένα μη επικυρωμένο πιστοποιητικό.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'boardvote_welcome' => "Bonvenon '''$1'''!",
+);
+
 $messages['es'] = array(
 	'boardvote_redirecting'   => 'Para mejorar la seguridad y la transparencia, la votación se está realizando en un servidor externo y controlado independientemente.
 
 Serás redireccionado a este servidor externo en 20 segundos. [$1 Haz click aquí] para ir ahora.
 
 Un aviso de seguridad sobre un certificado no cifrado podría aparacer.',
-);
-
-/** Esperanto (Esperanto)
- * @author Yekrats
- */
-$messages['eo'] = array(
-	'boardvote_welcome' => "Bonvenon '''$1'''!",
 );
 
 $messages['eu'] = array(
@@ -2946,6 +2946,8 @@ Is palisedon fomam pejüföl. Pojonon valikanes su [[Special:Boardvote/dump]].
 	'boardvote_listintro'    => '<p>Is pajonon lised vögodas jünu peregistarölas valikas. $1 ad getön fomami pejüföl.</p>',
 	'boardvote_dumplink'     => 'Klikolös is',
 	'boardvote_submit'       => 'Baiced',
+	'boardvote_strike'       => 'Duliunön',
+	'boardvote_unstrike'     => 'Säduliunön',
 	'boardvote_needadmin'    => 'Te davälaguvans dalons dunön atosi.',
 	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Daväl Kipedalefa ela Wikimedia</a>:  Vögodam padälon jü yulul 12',
 	'boardvote_notstarted'   => 'Daväl no nog eprimon',

@@ -22,6 +22,16 @@ $messages['ar'] = array(
 حساب مستخدم جديد، $2، تم إنشاؤه على $3 في $4.',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'newusernotifsubj' => 'Gruyera wetce warzaf favesik pu $1',
+	'newusernotifbody' => 'Va $1 kiavá,
+
+$2 warzafa favesikpata su zo redur koe $3 ko $4.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

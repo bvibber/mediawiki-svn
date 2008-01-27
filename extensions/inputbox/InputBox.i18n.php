@@ -742,9 +742,11 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
-	'createarticle' => 'Jafön padi',
+	'searchfulltext' => 'Sukön zi da vödem lölik',
+	'createarticle'  => 'Jafön padi',
 );
 
 $messages['wa'] = array(

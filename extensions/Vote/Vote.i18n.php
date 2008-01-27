@@ -223,9 +223,12 @@ riddler|Riddler",
  * @author Robby
  */
 $messages['lb'] = array(
-	'vote'              => 'Ofstëmmen',
-	'vote-view-results' => "Kuckt d'Resultater",
-	'vote-results'      => 'Resultater vun der Ofstëmmung',
+	'vote'                => 'Ofstëmmen',
+	'vote-submit'         => 'Ofstëmmen',
+	'vote-registered'     => 'Är Stëmm gouf ofgespäichert.',
+	'vote-view-results'   => "Kuckt d'Resultater",
+	'vote-results'        => 'Resultater vun der Ofstëmmung',
+	'vote-invalid-choice' => 'Dir musst eng vun de Méiglechkeeten auswielen.',
 );
 
 $messages['nl'] = array(

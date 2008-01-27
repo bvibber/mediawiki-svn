@@ -614,10 +614,14 @@ $messages['vls'] = array(
 );
 
 /** Volapük (Volapük)
+ * @author Smeira
  * @author Malafaya
  */
 $messages['vo'] = array(
-	'newuserlog-create-entry' => 'Geban nulik',
+	'newuserlogpage'           => 'Lised gebanijafamas',
+	'newuserlogpagetext'       => 'Is palisedons jafams gebanas nulik',
+	'newuserlog-create-entry'  => 'Geban nulik',
+	'newuserlog-create2-entry' => 'ejafon kali gebane: $1',
 );
 
 $messages['wa'] = array(

@@ -67,7 +67,7 @@ Tuta e-mejl bu ći wot $1 přez e-mejlowy system {{SITENAME}} pósłana.',
  */
 $messages['hu'] = array(
 	'email_footer' => '----------------------------------------------------------------------------
-Ez az üzenet $1 küldte neked a(z) {{SITENAME}} email-rendszerén keresztül.
+Ezt az üzenetet $1 küldte neked a(z) {{SITENAME}} email-rendszerén keresztül.
 
 $2',
 );

@@ -57,8 +57,34 @@ $messages['ast'] = array(
 	'blacklistedusernametext' => "El nome d'usuariu qu'escoyisti ta na [[MediaWiki:Usernameblacklist|llista negra de nomes d'usuariu]]. Por favor, escueyi otru nome.",
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'blacklistedusername'             => 'Favesikyolt moe ebeltavexala',
+	'blacklistedusernametext'         => 'Rinon kiblan favesikyolt va tan moe [[MediaWiki:Usernameblacklist|favesikafa ebeltavexala]] vadjer. Va ar vay kiblal !',
+	'usernameblacklist-invalid-lines' => 'Vlevef {{PLURAL:$1|conha|conha se}} moe favesikafa ebeltavexala {{PLURAL:$1|tir|tid}} meenafa; abdi giwara va {{PLURAL:$1|in|sin}} tuenal !',
+);
+
 $messages['bcl'] = array(
 	'blacklistedusername' => 'Blacklisted na username',
+);
+
+/** Belarusian (Беларуская)
+ * @author Yury Tarasievich
+ */
+$messages['be'] = array(
+	'blacklistedusername'             => 'Імя ўдзельніка ў "чорным спісе"',
+	'blacklistedusernametext'         => 'Імя ўдзельніка, выбранае вамі, знаходзіцца ў [[MediaWiki:Usernameblacklist|"чорным спісе" імёнаў]]. Выберыце іншае імя ўдзельніка.',
+	'usernameblacklist'               => '<pre>
+# Складнікі гэтага пераліку будуць выкарыстаны як частка рэгулярнага выразу для забароны рэгістрацыі з пэўнымі імёнамі ўдзельніка.
+# Кожны складнік павінен быць часткай пунктаванага спісу,
+# напрыклад:
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => 'Наступны{{PLURAL:$1| радок|я радкі}} ў "чорным спісе" ўдзельнікаў некарэктны{{PLURAL:$1||я}}; папраўце {{PLURAL:$1|яго|іх}} перад запісваннем:',
 );
 
 /** Bulgarian (Български)

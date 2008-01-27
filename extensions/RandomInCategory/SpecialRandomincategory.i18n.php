@@ -76,6 +76,17 @@ $messages['hsb'] = array(
 	'randomincategory-submit'     => 'W porjadku',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'randomincategory'            => 'Véletlen lap egy kategóriából',
+	'randomincategory-toolbox'    => 'Véletlen lap',
+	'randomincategory-nocategory' => '$1 névvel nem létezik kategória vagy üres.',
+	'randomincategory-label'      => 'Kategória:',
+	'randomincategory-submit'     => 'Menj',
+);
+
 /** Latin (Latina)
  * @author UV
  */

@@ -331,6 +331,15 @@ $1',
 	'webstore_no_handler' => 'Žadyn rjadowak, zo by so tutón MIME-typ přetworił',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'webstore_no_file'            => 'Et gouf kee Fichier eropgelueden.',
+	'webstore_metadata_not_found' => 'De Fichier $1 gouf net fonnt',
+	'webstore_no_response'        => 'De Server äntwert net',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
