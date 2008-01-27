@@ -33,17 +33,17 @@ if (!function_exists('getUserIDFromUserText')) {
     function getUserIDFromUserText($user) {
         $dbr = wfGetDB( DB_SLAVE );
         $userid = 0;
-    
+
         if (preg_match('/^\s*(.*?)\s*$/', $user, $matches))
             $user = $matches[1];
-    
+
         $u = User::newFromName($user);
         if ($u) {
-            $userid = $u->idForName();               // valid userName
+            $userid = $u->idForName(); // valid userName
         }
-        if (!$userid) {                              // if not a valid userName, try as a userRealName
+        if (!$userid) { // if not a valid userName, try as a userRealName
             $userid = $dbr->selectField( 'user', 'user_id', array( 'user_real_name' => $user ), 'renderTodo' );
-            if (!$userid) {                          // if not valid userRealName, try case insensitive userRealName
+            if (!$userid) { // if not valid userRealName, try case insensitive userRealName
                 $sql = "SELECT user_id FROM ". $dbr->tableName('user') ." WHERE UPPER(user_real_name) LIKE '%" . strtoupper($user) . "%'";
                 $res = $dbr->query( $sql, __METHOD__ );
                 if ($dbr->numRows($res)) {
@@ -51,8 +51,16 @@ if (!function_exists('getUserIDFromUserText')) {
                     $userid = $row[0];
                 }
                 $dbr->freeResult($res);
-                if (!$userid) {                      // if not case insensitive userRealName, try case insensitive lastname
-                    list ($first, $last) = preg_split('/\s+/', $user);
+                if (!$userid) { // if not case insensitive userRealName, try case insensitive lastname
+                    $first = "";
+                    $last = "";
+                    $fullname = array();
+                    $fullname = preg_split('/\s+/', $user);
+                    if (count($fullname) > 0)
+                        $first=$fullname[0];
+                    if (count($fullname) > 1)
+                        $last=$fullname[1];
+
                     if ($last != '') {
                         $sql = "SELECT user_id FROM ". $dbr->tableName('user') ." WHERE UPPER(user_real_name) LIKE '%" . strtoupper($last) . "%'";
                         $res = $dbr->query( $sql, __METHOD__ );
