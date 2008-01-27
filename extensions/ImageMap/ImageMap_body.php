@@ -128,12 +128,11 @@ class ImageMap {
 				$alt = $title->getFullText();
 			} elseif ( in_array( substr( $link , 1 , strpos($link, '//' )+1 ) , $wgUrlProtocols ) || in_array( substr( $link , 1 , strpos($link, ':' ) ) , $wgUrlProtocols ) ) {
 				if ( preg_match( '/^ \[  ([^\s]*+)  \s  ([^\]]*+)  \] \w* $ /x', $link, $m ) ) {
-					$title = htmlspecialchars( $m[1] );
-					$alt = htmlspecialchars( trim( $m[2] ) );
+					$title = $m[1];
+					$alt = trim( $m[2] );
 					$externLink = true;
 				} elseif ( preg_match( '/^ \[  ([^\]]*+) \] \w* $ /x', $link, $m ) ) {
-					$title = htmlspecialchars( $m[1] );
-					$alt = htmlspecialchars( trim( $m[1] ) );
+					$title = $alt = trim( $m[1] );
 					$externLink = true;
 				}
 			} else {
