@@ -1,7 +1,6 @@
 <?php
 
 require_once('Attribute.php');
-require_once('RecordHelper.php');
 require_once('OmegaWikiAttributes.php'); 
 
 interface Record {
@@ -13,12 +12,9 @@ interface Record {
 class ArrayRecord implements Record {
 	protected $structure;
 	protected $values = array();
-	protected $helper=null;
-	#possibly associate an OmegaWikiAttributes instance (singleton?) here	
 
 	public function __construct(Structure $structure) {
 		$this->structure = $structure;
-		$this->helper=RecordHelperFactory::getRecordHelper($this);		
 	}
 	
 	public function getStructure() {

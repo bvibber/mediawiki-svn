@@ -22,6 +22,7 @@
 
 				global $wgOut, $wgUser, $wgRequest;
 
+				$wgOut->setPageTitle("Import TSV");
 				if (!$wgUser->isAllowed('importtsv')) {
 					$wgOut->addHTML('You do not have permission to do a tsv import.');
 					return false;
