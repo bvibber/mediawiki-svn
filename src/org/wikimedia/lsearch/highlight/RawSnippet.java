@@ -253,6 +253,11 @@ public class RawSnippet {
 					sb.append("("); // hack to include initial (
 				continue;
 			}
+			if(i == showEnd-1 && t.getType() != ExtToken.Type.TEXT){
+				// exlude some final delimiters
+				if(t.getText().contains("(") || t.getText().contains("[") || t.getText().contains("{"))
+					continue;
+			}
 			if(t.getPositionIncrement() != 0){
 				start = getLength(sb);
 				sb.append(t.getText());
@@ -273,26 +278,30 @@ public class RawSnippet {
 	final private boolean isolatedStopWords(String text, int index) {
 		if(stopWords == null || stopWords.size()==0 || !stopWords.contains(text))
 			return false;
+		if(text.equals("they")){
+			int b = 0;
+			b++;
+		}
 		// look before the word
 		for(int prev=index-1;prev>=0;prev--){
 			ExtToken t = tokens.get(prev);
 			if(highlight.contains(t.termText()))
 				return false;
-			if(t.getPositionIncrement() != 0)
+			if(t.getPositionIncrement() != 0 && t.getType() == ExtToken.Type.TEXT)
 				break;
 		}
 		// look after
 		boolean firstfull = false;
 		for(int next=index+1;next<tokens.size();next++){
-			ExtToken t = tokens.get(next);
-			if(highlight.contains(t.termText()))
-				return false;
-			if(t.getPositionIncrement() != 0){
+			ExtToken t = tokens.get(next);			
+			if(t.getPositionIncrement() != 0 && t.getType() == ExtToken.Type.TEXT){
 				if(!firstfull)
 					firstfull = true;
 				else
 					break;
 			}
+			if(highlight.contains(t.termText()))
+				return false;
 		}
 		return true;
 	}
@@ -309,6 +318,9 @@ public class RawSnippet {
 	
 	public RawSnippet(ArrayList<ExtToken> tokens, FragmentScore f, Set<String> highlight, Set<String> newTerms, Set<String> stopWords){
 		this.tokens = new ArrayList<ExtToken>();
+		// include initial nontext token 
+		if(f.start > 0 && f.start < tokens.size() && tokens.get(f.start).getType()==ExtToken.Type.TEXT)
+			f.start--;
 		for(int i=f.start;i<f.end;i++)
 			this.tokens.add(tokens.get(i));
 		this.highlight = highlight;

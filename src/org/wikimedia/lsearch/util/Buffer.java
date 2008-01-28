@@ -69,7 +69,7 @@ public class Buffer {
 		return b;
 	}
 	
-	/** @return Integer type, String title, Integer rank(boost), ArrayList<ExtToken> tokens */ 
+	/** @return Integer type, Attitles.Info info */ 
 	public Object[] readAlttitleInfo(Utf8Set terms, HashMap<Integer,Position> posMap){
 		Integer type = (int)read();
 		Integer boost = readInt();

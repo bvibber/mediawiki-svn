@@ -53,6 +53,10 @@ public class FieldBuilder {
 		this(iid,Case.IGNORE_CASE,Stemmer.USE_STEMMER,Options.NONE);
 	}
 	
+	public FieldBuilder(IndexId iid, boolean exactCase){
+		this(iid,exactCase? Case.EXACT_CASE : Case.IGNORE_CASE,Stemmer.USE_STEMMER,Options.NONE);
+	}
+	
 	public FieldBuilder(IndexId iid, Case useCase){
 		this(iid,useCase,Stemmer.USE_STEMMER,Options.NONE);
 	}
@@ -90,6 +94,10 @@ public class FieldBuilder {
 	/** Get the case-insensitive builder */
 	public BuilderSet getBuilder(){
 		return getBuilder(Case.IGNORE_CASE);
+	}
+	
+	public BuilderSet getBuilder(boolean exactCase){
+		return getBuilder(exactCase? Case.EXACT_CASE : Case.IGNORE_CASE);
 	}
 	
 	/** Get BuilderSet for exactCase value */

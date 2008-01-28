@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.BitSet;
 import java.util.Hashtable;
 
+import org.apache.log4j.Logger;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.index.TermDocs;
@@ -11,6 +12,7 @@ import org.apache.lucene.search.CachingWrapperFilter;
 import org.apache.lucene.search.Filter;
 
 public class SuffixFilterCache {
+	static Logger log = Logger.getLogger(SuffixFilterCache.class);
 	protected static Hashtable<SuffixFilter,CachingWrapperFilter> cache = new Hashtable<SuffixFilter,CachingWrapperFilter>();
 	
 	/** class to create the bitset that is to be cached */

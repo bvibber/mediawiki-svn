@@ -21,7 +21,7 @@ import org.wikimedia.lsearch.util.Utf8Set;
  * @author rainman
  *
  */
-public class ExtToken extends Token implements Serializable {
+public class ExtToken extends Token {
 	static Logger log = Logger.getLogger(ExtToken.class);
 	/** position within the text */
 	public enum Position { NORMAL, FIRST_SECTION, TEMPLATE, IMAGE_CAT_IW, EXT_LINK, HEADING, REFERENCE, BULLETINS, TABLE };
@@ -116,6 +116,16 @@ public class ExtToken extends Token implements Serializable {
 		if(isStub()){
 			try {
 				setTermText(new String(serialized,termTextStart,termTextEnd-termTextStart,"utf-8"));
+				unstubOriginal();
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void unstubOriginal(){
+		if(!isStub()){ // always first unstub the main term
+			try{
 				if(originalStart != -1 && originalEnd != -1){
 					original = new String(serialized,originalStart,originalEnd-originalStart,"utf-8");
 				} else if (originalCase == CaseType.TITLE)
@@ -389,6 +399,14 @@ public class ExtToken extends Token implements Serializable {
 		return new ExtToken(serialized,start,end,startOffset,endOffset,type,pos);
 	}
 	
+	/**
+	 * Deserialize some tokens
+	 * 
+	 * @param serialized data
+	 * @param terms only tokens containing these terms will be destubed
+	 * @param posMap used to deserialize positions
+	 * @return
+	 */
 	public static ArrayList<ExtToken> deserialize(byte[] serialized, Utf8Set terms, HashMap<Integer,Position> posMap){
 		if(decomposer == null)
 			decomposer = UnicodeDecomposer.getInstance();
@@ -412,7 +430,6 @@ public class ExtToken extends Token implements Serializable {
 					}
 					if(tt != null)
 						tokens.add(tt);
-					//tokenize(tokens,s,pos);
 				}
 				ExtToken t = (tokens.size() == 0)? null : tokens.get(tokens.size()-1);
 				
@@ -425,6 +442,8 @@ public class ExtToken extends Token implements Serializable {
 					{ int len = serialized[cur++]&0xff;
 					t.setOriginalStart(cur);
 					t.setOriginalEnd(cur+len);
+					if(!t.isStub())
+						t.unstubOriginal();
 					if(t.type != Type.TEXT || t.getPositionIncrement()==0)
 						raiseException(serialized,cur,t,"Bad serialized data: trying to assign original string to nontext token or alias");
 					cur += len;

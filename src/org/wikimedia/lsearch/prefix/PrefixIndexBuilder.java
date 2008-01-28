@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
@@ -36,18 +37,23 @@ public class PrefixIndexBuilder {
 	static Logger log = Logger.getLogger(PrefixIndexBuilder.class);
 	
 	public static void main(String[] args) throws IOException{
-		final int PER_PREFIX = 15;
+		int perPrefix = 15;
 		boolean usetemp = false;
 		String dbname = null;
 		
 		Configuration.open();		
 		if(args.length == 0){
-			System.out.println("Syntax: java PrefixIndexBuilder [-t] <dbname>");
+			System.out.println("Syntax: java PrefixIndexBuilder [-t] [-p <num>] <dbname>");
+			System.out.println("Options:");
+			System.out.println("   -t       - reuse temporary index");
+			System.out.println("   -p <num> - titles per prefix (default: "+perPrefix+")");
 			return;
 		}
 		for(int i=0;i<args.length;i++){
 			if(args[i].equals("-t"))
 				usetemp = true;
+			else if(args[i].equals("-p"))
+				perPrefix = Integer.parseInt(args[++i]);
 			else if(args[i].startsWith("-")){
 				System.out.println("Unrecognized option "+args[i]);
 				return;
@@ -79,6 +85,8 @@ public class PrefixIndexBuilder {
 				String redirect = links.getRedirectTarget(key);
 				if(redirect == null)
 					redirect = "";
+				else if(redirect.equalsIgnoreCase(key))
+					continue; // ignore camelcase redirects					
 				int ref = links.getNumInLinks(key);
 				Document d = new Document();
 				d.add(new Field("key",key,Field.Store.YES,Field.Index.TOKENIZED));
@@ -100,13 +108,15 @@ public class PrefixIndexBuilder {
 		while((w = dict.next()) != null){
 			String prefix = w.getWord();
 			Term t = new Term("key",prefix);
+			// filter out unique keys
 			if(ir.docFreq(t) < 2)
 				continue;
 			TermDocs td = ir.termDocs(t);
+			// key -> rank
 			HashMap<String,Integer> refs = new HashMap<String,Integer>();
 			while(td.next()){
 				Document d = ir.document(td.doc());
-				refs.put(d.get("key"),Integer.parseInt(d.get("ref")));				
+				refs.put(d.get("key"),Integer.parseInt(d.get("ref")));
 			}
 			ArrayList<Entry<String,Integer>> sorted = new ArrayList<Entry<String,Integer>>();
 			sorted.addAll(refs.entrySet());
@@ -116,8 +126,9 @@ public class PrefixIndexBuilder {
 				}
 			});
 			ArrayList<String> selected = new ArrayList<String>();
-			for(int i=0;i<PER_PREFIX && i<sorted.size();i++){
-				selected.add(sorted.get(i).getKey());
+			for(int i=0;i<perPrefix && i<sorted.size();i++){
+				String key = sorted.get(i).getKey();
+				selected.add(key);
 			}
 			Document d = new Document();
 			d.add(new Field("prefix",prefix,Field.Store.NO,Field.Index.NO_NORMS));

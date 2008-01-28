@@ -15,8 +15,8 @@ import org.wikimedia.lsearch.util.Buffer;
 import org.wikimedia.lsearch.util.Utf8Set;
 
 /**
- * Titles and redirects, serialization/deserialization 
- * for highlighting, etc.. 
+ * Highlighting info on titles, redirects and sections in an article.
+ * This object gets serialized/deserialized in the highlight index. 
  * 
  * @author rainman
  *
@@ -29,7 +29,7 @@ public class Alttitles {
 	public static class Info {
 		protected String title;
 		protected int rank;
-		protected ArrayList<ExtToken> tokens;
+		protected ArrayList<ExtToken> tokens; // highlight tokens
 		public Info(String title, int rank, ArrayList<ExtToken> tokens){
 			this.title = title;
 			this.rank = rank;
@@ -55,9 +55,19 @@ public class Alttitles {
 		}
 		
 	}
-	
-	public static byte[] serializeAltTitle(Article article, IndexId iid, Collection<String> sections, Analyzer analyzer, String field) throws IOException{
-		WikiIndexModifier.transformArticleForIndexing(article);
+	/**
+	 * Serialize alttitle for highlighting, serializies titles, redirects, sections.
+	 * Writes original names + highlight tokens. 
+	 * 
+	 * @param article  
+	 * @param iid      target iid
+	 * @param sections sections from the tokenizer
+	 * @param analyzer highlight analyzer
+	 * @param field    field name on which data is analyzed 
+	 * @return
+	 * @throws IOException
+	 */
+	public static byte[] serializeAltTitle(Article article, IndexId iid, Collection<String> sections, Analyzer analyzer, String field) throws IOException{		
 		Buffer b = new Buffer();
 		
 		// add title
@@ -99,6 +109,14 @@ public class Alttitles {
 		.replaceAll("<.*?>","");		
 	}
 	
+	/**
+	 * Deserialize alttitle highlight info
+	 *  
+	 * @param serialized
+	 * @param terms terms to destub
+	 * @param posMap used to deserialize positions
+	 * @return
+	 */
 	public static Alttitles deserializeAltTitle(byte[] serialized, Utf8Set terms, HashMap<Integer,Position> posMap){
 		Buffer b = new Buffer(serialized);
 		Alttitles t = new Alttitles();

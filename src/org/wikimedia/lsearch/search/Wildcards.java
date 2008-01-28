@@ -164,7 +164,7 @@ public class Wildcards {
 		Term wildcardTerm = null;
 		FieldNameFactory fields = new FieldNameFactory(exactCase);
 		if(type == WildcardType.PREFIX){
-			field = fields.title();
+			field = fields.contents();
 			wildcardTerm = new Term(field,wildcard);
 		} else{
 			field = fields.reverse_title();

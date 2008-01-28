@@ -5,8 +5,10 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import org.apache.log4j.Logger;
+import org.apache.lucene.analysis.Token;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.Query;
 import org.wikimedia.lsearch.analyzers.StopWords;
@@ -27,7 +29,10 @@ import org.wikimedia.lsearch.search.NetworkStatusThread;
 import org.wikimedia.lsearch.search.SearchEngine;
 import org.wikimedia.lsearch.search.SearcherCache;
 import org.wikimedia.lsearch.search.SuffixFilterWrapper;
+import org.wikimedia.lsearch.search.SuffixNamespaceWrapper;
 import org.wikimedia.lsearch.search.Wildcards;
+import org.wikimedia.lsearch.spell.Suggest;
+import org.wikimedia.lsearch.spell.SuggestQuery;
 
 /** Local implementation for {@link RMIMessenger} */
 public class RMIMessengerImpl implements RMIMessenger {
@@ -125,19 +130,29 @@ public class RMIMessengerImpl implements RMIMessenger {
 	}
 
 	// inherit javadoc
-	public HashMap<String, HighlightResult> highlight(ArrayList<String> hits, String dbrole, Term[] terms, int[] df, int maxDoc, ArrayList<String> words, boolean exactCase) throws RemoteException{
+	public Highlight.ResultSet highlight(ArrayList<String> hits, String dbrole, Term[] terms, int[] df, int maxDoc, ArrayList<String> words, boolean exactCase) throws RemoteException{
 		IndexId iid = IndexId.get(dbrole);
 		try{
-			return Highlight.highlight(hits,iid,terms,df,maxDoc,words,StopWords.getPredefinedSet(iid),exactCase);
+			return Highlight.highlight(hits,iid,terms,df,maxDoc,words,StopWords.getPredefinedSet(iid),exactCase,null);
 		} catch(IOException e){
 			throw new RemoteException("IOException on "+dbrole,e);
 		}
 	}
 	
-	public SearchResults searchTitles(String dbrole, String searchterm, Query query, SuffixFilterWrapper filter, int offset, int limit, boolean explain) throws RemoteException {
+	public SearchResults searchTitles(String dbrole, String searchterm, ArrayList<String> words, Query query, SuffixNamespaceWrapper filter, int offset, int limit, boolean explain) throws RemoteException {
 		IndexId iid = IndexId.get(dbrole);
 		try{
-			return new SearchEngine().searchTitles(iid,searchterm,query,filter,offset,limit,explain); 
+			return new SearchEngine().searchTitles(iid,searchterm,words,query,filter,offset,limit,explain); 
+		} catch(Exception e){
+			e.printStackTrace();
+			throw new RemoteException("Exception on "+dbrole,e);
+		}
+	}
+	
+	public SuggestQuery suggest(String dbrole, String searchterm, ArrayList<Token> tokens, HashSet<String> phrases, HashSet<String> foundInContext) throws RemoteException {
+		IndexId iid = IndexId.get(dbrole);
+		try{
+			return new Suggest(iid).suggest(searchterm,tokens,phrases,foundInContext);
 		} catch(Exception e){
 			e.printStackTrace();
 			throw new RemoteException("Exception on "+dbrole,e);

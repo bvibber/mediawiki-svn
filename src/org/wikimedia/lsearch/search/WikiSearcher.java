@@ -27,7 +27,9 @@ import org.apache.lucene.search.Weight;
 import org.wikimedia.lsearch.config.IndexId;
 
 /**
- * Encapsulates the lucene search interface for MWSearch.
+ * A generalized index searcher, supports various index
+ * architectures.
+ * 
  * Depending on the structure of the index (single file, 
  * mainsplit, split) makes either a local 
  * <code>IndexSearcher</code>, or a <code>MultiSearcher</code> 
@@ -49,6 +51,7 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 	/** parts of the multisearcher, dbrole -> searchable */
 	protected Hashtable<String,Searchable> searcherParts = new Hashtable<String,Searchable>();
 	protected MultiSearcherMul ms = null;
+	protected Searcher cachedDfs = null;
 	
 	public static final boolean INVALIDATE_CACHE = true;
 	
@@ -129,14 +132,22 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 		return searcher.doc(i);
 	}
 
+	/** Note: for split indexes, the value is always cached (from last query) */
 	@Override
 	public int docFreq(Term term) throws IOException {
-		return searcher.docFreq(term);
+		if(ms != null)
+			return ms.getLastCachedDfSource().docFreq(term);
+		else
+			return searcher.docFreq(term);
 	}
 	
+	/** Note: for split indexes, these values are always cached (from last query) */
 	@Override
 	public int[] docFreqs(Term[] terms) throws IOException {
-		return searcher.docFreqs(terms);
+		if(ms != null)
+			return ms.getLastCachedDfSource().docFreqs(terms);
+		else
+			return searcher.docFreqs(terms);
 	}
 
 	@Override

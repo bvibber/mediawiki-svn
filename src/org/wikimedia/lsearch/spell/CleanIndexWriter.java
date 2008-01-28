@@ -22,6 +22,7 @@ import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.index.WikiSimilarity;
+import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.util.HighFreqTerms;
 
@@ -38,7 +39,6 @@ public class CleanIndexWriter {
 	protected IndexWriter writer;
 	protected FieldBuilder builder;
 	protected String langCode;
-	protected NamespaceFilter nsf;
 	protected Analyzer analyzer;
 	protected HashSet<String> stopWords;
 	
@@ -57,9 +57,7 @@ public class CleanIndexWriter {
 		builder.getBuilder().getFilters().setStopWords(stopWords);
 		String path = iid.getSpell().getTempPath();
 		writer = open(path);
-		addMetadata(writer,"stopWords",stopWords);
-		nsf = global.getDefaultNamespace(iid);
-		log.info("Rebuild for namespaces: "+nsf);
+		addMetadata(writer,"stopWords",stopWords);		
 	}
 	
 	protected IndexWriter open(String path) throws IOException {
@@ -87,14 +85,13 @@ public class CleanIndexWriter {
 
 	/** Add to index used for spell-check */
 	public void addArticle(Article a){
-		if(nsf.contains(Integer.parseInt(a.getNamespace())))
-			addArticle(a,writer);
+		addArticle(a,writer);
 	}
 
 	/** Add single article */
 	protected void addArticle(Article a, IndexWriter writer){
-		if(!WikiIndexModifier.checkAddPreconditions(a,langCode))
-			return; // don't add if preconditions are not met
+		//if(!WikiIndexModifier.checkAddPreconditions(a,langCode))
+		//return; // don't add if preconditions are not met
 		
 		try {
 			Document doc = WikiIndexModifier.makeDocument(a,builder,iid,stopWords,analyzer);

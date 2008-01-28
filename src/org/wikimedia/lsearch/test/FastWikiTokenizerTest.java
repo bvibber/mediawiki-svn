@@ -72,6 +72,14 @@ public class FastWikiTokenizerTest {
 			Configuration.open();
 			String text = "(ant) and some. it's stupid it's something and 5\"6' or more";
 			showTokens(text);
+			text = "| Unseen\n|-\n| \"Junior\"\n|\n| Goa'uld larva";
+			showTokens(text);
+			text = "Peđa Stojaković";
+			showTokens(text);
+			text = "{{template|param|param2}} [bad link] and [http://single] and other text and [http://com good link] and after.";
+			showTokens(text);
+			text = "In 1921, Tagore and an agricultural economist [[Leonard K. Elmhirst set up the Institute for Rural Reconstruction in a village named Surul near his ashram at Shriniketan. An English language translation of Shriniketan would mean an abode (place) of peace. He recruited many scholars";
+			showTokens(text);
 			text = "after this blank: [[Category:states in India]]";
 			showTokens(text);
 			text = "|N/A\n|[[William Franklyn]]\n|[[Stephen Fry]]\n| colspan=\"2\" | [[:de:Rolf Boysen|Rolf Boysen]]\n|-\n|[[Arthur Dent]]\n|[[Simon Jones (actor)|Simon Jones]]\n|[[Chris Langham]]</br>\nScience Fiction Theatre of Liverpool production<ref name=\"SFTL\"/>\n| colspan=\"2\" | Simon Jones\n|[[Jonathan Lermit]]\n|Simon Jones\n|[[Martin Freeman]]\n| colspan=\"2\" | [[Felix von Manteuffel]]\n|-\n|[[Minor characters from The Hitchhiker's Guide to the Galaxy#Mr. Prosser|Prosser]]\n|[[Bill Wallis]]\n|";

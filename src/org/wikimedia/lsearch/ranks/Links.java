@@ -227,15 +227,15 @@ public class Links {
 	}
 	
 	/** Modify existing article links info */
-	public void modifyArticleInfo(String text, Title t) throws IOException{
+	public void modifyArticleInfo(String text, Title t, boolean exactCase) throws IOException{
 		ensureWrite();
 		writer.deleteDocuments(new Term("article_key",t.getKey()));
-		addArticleInfo(text,t);
+		addArticleInfo(text,t,exactCase);
 	}
 	
 	/** Add links and other info from article 
 	 * @throws IOException */
-	public void addArticleInfo(String text, Title t) throws IOException{
+	public void addArticleInfo(String text, Title t, boolean exactCase) throws IOException{
 		ensureWrite();
 		Pattern linkPat = Pattern.compile("\\[\\[(.*?)(\\|(.*?))?\\]\\]");
 		int namespace = t.getNamespace();
@@ -256,7 +256,7 @@ public class Links {
 		Title redirect = Localization.getRedirectTitle(text,langCode);
 		String redirectsTo = null;
 		if(redirect != null){
-			redirectsTo = findTargetLink(redirect.getNamespace(),redirect.getTitle());
+			redirectsTo = findTargetLink(redirect.getNamespace(),redirect.getTitle(),exactCase);
 		} else { 
 			HashSet<String> contextLinks = new HashSet<String>();
 			ContextParser.Context curContext = null;
@@ -311,7 +311,7 @@ public class Links {
 				}
 				if(ns == 0 && namespace!=0)
 					continue; // skip links from other namespaces into the main namespace
-				String target = findTargetLink(ns,title);				
+				String target = findTargetLink(ns,title,exactCase);				
 				if(target != null){
 					int targetNs = Integer.parseInt(target.substring(0,target.indexOf(':')));
 					pagelinks.add(target); 
@@ -345,10 +345,13 @@ public class Links {
 	
 	/** Find the target key to title (ns:title) to which the links is pointing to 
 	 * @throws IOException */
-	protected String findTargetLink(int ns, String title) throws IOException{
+	protected String findTargetLink(int ns, String title, boolean exactCase) throws IOException{
 		String key;
 		if(title.length() == 0)
 			return null;
+		
+		if(exactCase)
+			return ns+":"+title; // don't capitalize first letter for exact case indexes
 		
 		// first letter uppercase
 		if(title.length()==1) 
@@ -438,7 +441,7 @@ public class Links {
 		return null;
 	}
 	
-	/** If article is redirect, get target, else null */
+	/** If article is redirect, get target key, else null */
 	public String getRedirectTarget(String key) throws IOException{
 		ensureRead();
 		TermDocs td = reader.termDocs(new Term("article_key",key));
@@ -446,7 +449,7 @@ public class Links {
 			String t = reader.document(td.doc(),redirectOnly).get("redirect");
 			if(t == null)
 				return null;
-			return t.substring(t.indexOf('|')+1);
+			return t.substring(0,t.indexOf('|'));
 		}
 		return null;
 	}

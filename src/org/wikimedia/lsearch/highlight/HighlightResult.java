@@ -2,6 +2,7 @@ package org.wikimedia.lsearch.highlight;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Result of higlighting, contains 
@@ -17,7 +18,7 @@ public class HighlightResult implements Serializable {
 	
 	public static final String SEPARATOR=" <b>...</b> ";
 	
-	public HighlightResult(){		
+	public HighlightResult(){
 	}
 	
 	public String getFormattedTitle(){

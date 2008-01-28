@@ -150,7 +150,7 @@ public class SimpleIndexWriter {
 			writer.addDocument(doc,indexAnalyzer);
 			log.debug(target+": Adding document "+a);
 		} catch (IOException e) {
-			log.error("I/O Error writing article "+a+" to index "+target.getImportPath());
+			log.error("I/O Error writing article "+a+" to index "+target.getImportPath()+" : "+e.getMessage());
 		} catch(Exception e){
 			e.printStackTrace();
 			log.error("Error adding document "+a+" with message: "+e.getMessage());
@@ -158,7 +158,9 @@ public class SimpleIndexWriter {
 	}
 	
 	/** Add to highlight index */
-	public void addArticleHighlight(Article a){		
+	public void addArticleHighlight(Article a){
+		if(!WikiIndexModifier.checkAddPreconditions(a,langCode))
+			return; // don't add if preconditions are not met
 		IndexId target = getTarget(a);		
 		IndexWriter writer = indexes.get(target.toString());
 		if(writer == null)
@@ -174,14 +176,14 @@ public class SimpleIndexWriter {
 	
 	/** Add to title to the titles index */
 	public void addArticleTitle(Article a){
-		if(!WikiIndexModifier.checkTitlePreconditions(a,original))
-			return;
+		if(!WikiIndexModifier.checkAddPreconditions(a,langCode))
+			return; // don't add if preconditions are not met
 		IndexId target = getTarget(a);		
 		IndexWriter writer = indexes.get(target.toString());
 		if(writer == null)
 			return;		
 		try {
-			Document doc = WikiIndexModifier.makeTitleDocument(a,indexAnalyzer,target,suffix,exactCase);
+			Document doc = WikiIndexModifier.makeTitleDocument(a,indexAnalyzer,highlightAnalyzer,target,suffix,exactCase,stopWords);
 			addDocument(writer,doc,a,target);
 		} catch (IOException e) {
 			e.printStackTrace();

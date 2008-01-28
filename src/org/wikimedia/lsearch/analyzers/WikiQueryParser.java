@@ -1723,25 +1723,27 @@ public class WikiQueryParser {
 		String oldDefaultField = this.defaultField;
 		NamespacePolicy oldPolicy = this.namespacePolicy;
 		FieldBuilder.BuilderSet oldBuilder = this.builder;
-		this.defaultField = "title";
+		this.defaultField = "alttitle";
 		this.namespacePolicy = NamespacePolicy.IGNORE;
 		
 		Query q = parseRaw(queryText);
 		
-		this.defaultField = "title_exact";
-		FieldBuilder fb = new FieldBuilder(builder.getFilters().getIndexId(),FieldBuilder.Case.EXACT_CASE);
-		this.builder = fb.getBuilder(FieldBuilder.Case.EXACT_CASE);
-		
-		Query qe = parseRaw(queryText); 
+		ArrayList<String> words = extractWords(q);
+		HashSet<String> preStopWords = StopWords.getPredefinedSet(builder.getFilters().getIndexId());
+		Query alttitle = makeAlttitleWholePhrase(words,fields.alttitle(),ADD_ALTTITLE_SLOP,ADD_ALTTITLE_BOOST,preStopWords);
 		
 		this.builder = oldBuilder;		
 		this.defaultField = oldDefaultField;
 		this.namespacePolicy = oldPolicy;
+
+		if(alttitle == null)
+			return q;
 		
 		BooleanQuery whole = new BooleanQuery(true);
-		whole.add(q,Occur.SHOULD);
-		whole.add(qe,Occur.SHOULD);
+		whole.add(q,Occur.MUST);
+		whole.add(alttitle,Occur.SHOULD);
 		return whole;
+		
 	}
 	
 	/**
@@ -1878,6 +1880,7 @@ public class WikiQueryParser {
 		this.builder = builder;
 	}
 	
+	/** Get phrase words, valid only after parseMultiPass parser call */
 	public ArrayList<String> getWords(){
 		return words;
 	}

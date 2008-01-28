@@ -7,17 +7,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import org.apache.lucene.analysis.Token;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.Query;
 import org.wikimedia.lsearch.beans.IndexReportCard;
 import org.wikimedia.lsearch.beans.ResultSet;
 import org.wikimedia.lsearch.beans.SearchResults;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.highlight.Highlight;
 import org.wikimedia.lsearch.highlight.HighlightResult;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.search.HighlightPack;
 import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
 import org.wikimedia.lsearch.search.SuffixFilterWrapper;
+import org.wikimedia.lsearch.search.SuffixNamespaceWrapper;
+import org.wikimedia.lsearch.spell.SuggestQuery;
 
 /** Facilitates communication between both indexers and searcher */
 public interface RMIMessenger extends Remote {
@@ -129,7 +133,7 @@ public interface RMIMessenger extends Remote {
 	 * @param exactCase - if this is an exact case query
 	 * @return map: key -> highlighting result
 	 */
-	public HashMap<String,HighlightResult> highlight(ArrayList<String> hits, String dbrole, Term[] terms, int df[], int maxDoc, ArrayList<String> words, boolean exactCase) throws RemoteException;
+	public Highlight.ResultSet highlight(ArrayList<String> hits, String dbrole, Term[] terms, int df[], int maxDoc, ArrayList<String> words, boolean exactCase) throws RemoteException;
 	
 	/**
 	 * Search grouped titles, similar logic to that of searchPart()
@@ -142,5 +146,18 @@ public interface RMIMessenger extends Remote {
 	 * @param limit
 	 * @return
 	 */
-	public SearchResults searchTitles(String dbrole, String searchterm, Query query, SuffixFilterWrapper filter, int offset, int limit, boolean explain) throws RemoteException;
+	public SearchResults searchTitles(String dbrole, String searchterm, ArrayList<String> words, Query query, SuffixNamespaceWrapper filter, int offset, int limit, boolean explain) throws RemoteException;
+	
+	/**
+	 * "Did you mean.." engine
+	 * 
+	 * @param dbrole
+	 * @param searchterm
+	 * @param tokens
+	 * @param phrases
+	 * @param foundInContext
+	 * @return
+	 * @throws RemoteException
+	 */
+	public SuggestQuery suggest(String dbrole, String searchterm, ArrayList<Token> tokens, HashSet<String> phrases, HashSet<String> foundInContext) throws RemoteException;
 }

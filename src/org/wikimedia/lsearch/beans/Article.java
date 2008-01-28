@@ -116,21 +116,21 @@ public class Article implements Serializable  {
 		this.redirect = redirect;
 	}
 	/**
-	 * @return Returns the contents.
+	 * @return Returns article body
 	 */
 	public String getContents() {
 		return contents;
 	}
 
 	/**
-	 * @return Returns the namespace.
+	 * @return Returns numerical namespace
 	 */
 	public String getNamespace() {
 		return namespace;
 	}
 	
 	/**
-	 * @return Returns the title.
+	 * @return Pain title without namespace prefix, and with spaces not underscores
 	 */
 	public String getTitle() {
 		return title;

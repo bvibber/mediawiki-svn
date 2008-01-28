@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 /**
@@ -29,7 +30,7 @@ public class SpellCheckTest {
 			if(lineNum == 1){
 				if(line.startsWith("#suggest")){
 					br.close();
-					return line.substring(9).replaceAll("<[^>]+>","");
+					return URLDecoder.decode(line.split(" ")[2],"utf-8");					
 				}
 			}
 			lineNum ++ ;
@@ -93,13 +94,13 @@ public class SpellCheckTest {
    	{"The James Gang (band)",""},
    	{"cource", "course"},
    	{"carolene products",""},
-   	{"orvileWright","overnight"},
+   	{"orvileWright","orville wright"},
    	{"livia tremor control","olivia tremor control"},
    	{"ommmited","omitted"},
-   	{"Good Thomas fft","Good Thomas fft"},
+   	{"Good Thomas fft",""},
    	{"Sanitazer","Sanitizer"},
    	{"Sanitizer",""},
-   	{"[2]:brion",""},
+   	{"%5B2%5D:brion",""},
    	
    };
 

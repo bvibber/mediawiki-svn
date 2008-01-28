@@ -26,6 +26,24 @@ public class SuggestResult {
 		}
 	}
 	
+	static class ComparatorForTitles implements java.util.Comparator<SuggestResult> {
+		public int compare(SuggestResult o1, SuggestResult o2){	
+			if(o1.dist - o2.dist == -1 && o1.frequency * 30 < o2.frequency)
+				return 1;
+			else if(o1.dist - o2.dist == 1 && o2.frequency * 30 < o1.frequency)
+				return -1;
+			else if(o1.dist == o2.dist){
+				if(!o1.sameLetters && o2.sameLetters)
+					return 1;
+				else if(o1.sameLetters && !o2.sameLetters)
+					return -1;
+				else
+					return o2.getFrequency() - o1.getFrequency();
+			} else 
+				return o1.dist - o2.dist;					
+		}
+	}
+	
 	static class ComparatorNoCommonMisspell implements java.util.Comparator<SuggestResult> {
 		public int compare(SuggestResult o1, SuggestResult o2){	
 			if(o1.dist == o2.dist){

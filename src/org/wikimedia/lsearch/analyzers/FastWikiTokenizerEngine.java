@@ -77,6 +77,9 @@ public class FastWikiTokenizerEngine {
 	private int keywordLen = 0;
 	private int keywordTokens = 0; // number of tokens which can be keywords (i.e. which are not in templates)
 	
+	/** valid protocols for external links */
+	private final static String[] PROTOCOLS = {"http://","https://","ftp://","mailto://","news://","gopher://"};
+	
 	/** This many tokens from begining of text are eligable for keywords */ 
 	public static int KEYWORD_TOKEN_LIMIT = 250;
 	
@@ -531,12 +534,17 @@ public class FastWikiTokenizerEngine {
 		
 		prefixLen = 0;
 		semicolonInx = -1;
+		int count = 0;
 		
-		fetchPrefix: for(lookup = cur ; lookup<textLength ; lookup++ ){
+		fetchPrefix: for(lookup = cur ; lookup<textLength-1 ; lookup++, count++ ){
+			if(count >= MAX_WORD_LEN)
+				return -1; 
 			lc = text[lookup];
 			switch(lc){
 			case ']':
-				return -1;
+				if(text[lookup+1] == ']')
+					return -1;
+				break;
 			case '|':
 				return lookup;
 			case ':':
@@ -555,11 +563,13 @@ public class FastWikiTokenizerEngine {
 		}
 		
 		// we fetched the prefix, now just continue the lookup
-		for(; lookup<textLength ; lookup++ ){
+		for(; lookup<textLength-1 ; lookup++ ){
 			lc = text[lookup];
 			switch(lc){
 			case ']':
-				return -1;
+				if(text[lookup+1]==']')
+					return -1;
+				break;
 			case '|':
 				return lookup;
 			}
@@ -606,6 +616,39 @@ public class FastWikiTokenizerEngine {
 			}
 		}
 		return false;	
+	}
+	
+	/** See if from cur starts a valid link, i.e. one that has closing ]] tags */
+	private final boolean validateLink(){
+		int count = 0;
+		for(lookup = cur; lookup < textLength-1 ; lookup++, count++){
+			if(count >= MAX_WORD_LEN)
+				return false; // need to find link target in max_word_len chars 
+			switch(text[lookup]){
+			case ']':
+				if(text[lookup+1]==']')
+					return true;
+				break;
+			case '|':
+				return true; // TODO: we just stupidly assume this is a good link 
+			}
+		}
+		return false;
+	}
+	
+	/** Check if the external link is valid, i.e. if it's a valid URL */
+	private final boolean validateExternalLink(){
+		if(cur + 1 >= textLength)
+			return false;
+		cur++; // position after the '[' char
+		for(String p : PROTOCOLS){
+			if(matchesString(p)){
+				cur--;
+				return true;
+			}
+		}
+		cur--;
+		return false;
 	}
 	
 	/** Returns true if the parsed article is a redirect page */
@@ -792,6 +835,17 @@ public class FastWikiTokenizerEngine {
 								}
 							}
 						}
+					} else if(templateLevel>0){
+						// lookahead 256 chars trying to skip template params names
+						templ_param: for( lookup = cur + 1 ; lookup < textLength && (lookup-cur)<MAX_WORD_LEN ; lookup++ ){
+							switch(text[lookup]){
+							case '=':
+								cur = lookup;
+								break templ_param;
+							case '|': case '}': case '{': case '[': case ']':
+								break templ_param;
+							}
+						}
 					}
 					continue;
 				case '\n':
@@ -875,11 +929,15 @@ public class FastWikiTokenizerEngine {
 						continue; // last char in stream					
 					// wiki-link
 					if(c1 == '['){
-						cur++; // skip this char
-						state = ParserState.LINK_BEGIN;
+						if(validateLink()){
+							cur++; // skip this char
+							state = ParserState.LINK_BEGIN;
+						}
 						continue;
 					} else{ // external link
-						state = ParserState.EXTERNAL_URL;
+						if(validateExternalLink()){
+							state = ParserState.EXTERNAL_URL;
+						}
 						continue;
 					}
 					case '{':
@@ -927,16 +985,18 @@ public class FastWikiTokenizerEngine {
 				inUrl = true;
 				switch(c){
 				case ' ':
-					flushGlue();
+					//flushGlue(); // ignore urls
 					addToken();
 					state = ParserState.EXTERNAL_WORDS;
 					continue;
 				case ']':
 					addToken();
+					inExternalLink = false;
+					inUrl = false;
 					state = ParserState.WORD;
 					continue;
 				default:
-					addToken(); // for glue
+					// addToken(); // for glue
 				}
 				continue;
 			case EXTERNAL_WORDS:
@@ -951,7 +1011,7 @@ public class FastWikiTokenizerEngine {
 			case LINK_BEGIN:
 				pipeInx = pipeLookup();
 				state = ParserState.LINK_WORDS; // default next state
-				
+
 				// process prefixes!
 				if( semicolonInx != -1 ){
 					if(prefixLen == 0)
@@ -994,7 +1054,7 @@ public class FastWikiTokenizerEngine {
 				if(pipeInx != -1){
 					cur = pipeInx; // found pipe, ignore everything up to pipe
 					continue;
-				} else{
+				} else{					
 					addLetter();
 					continue;
 				}
@@ -1136,13 +1196,13 @@ public class FastWikiTokenizerEngine {
 				continue;
 			case TEMPLATE_BEGIN:
 				state = ParserState.WORD; // default next state in case of bad syntax
-				// ignore name of the template, index parameters
+				// ignore name of the template
 				template_lookup: for( lookup = cur ; lookup < textLength ; lookup++ ){
 					switch(text[lookup]){
 					case '|':
 						templateLevel++;
 						state = ParserState.WORD;
-						cur = lookup;
+						cur = lookup-1;
 						break template_lookup;
 					case '}':
 						templateLevel++;
@@ -1299,6 +1359,6 @@ public class FastWikiTokenizerEngine {
 				}					
 			}
 		}
-		return new String(buf,0,len);	
+		return new String(buf,0,len).trim();	
 	}	
 }

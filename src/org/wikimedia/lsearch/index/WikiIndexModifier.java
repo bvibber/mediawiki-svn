@@ -197,13 +197,12 @@ public class WikiIndexModifier {
 			writer.setMaxFieldLength(MAX_FIELD_LENGTH);
 			FieldBuilder.Case dCase = (exactCase)? FieldBuilder.Case.EXACT_CASE : FieldBuilder.Case.IGNORE_CASE; 
 			FieldBuilder builder = new FieldBuilder(iid,dCase);
-			Analyzer analyzer = null;
+			Analyzer indexAnalyzer = null;
+			Analyzer highlightAnalyzer = null;
 			ReusableLanguageAnalyzer highlightContentAnalyzer = null;
-			if(iid.isHighlight()){
-				highlightContentAnalyzer = Analyzers.getReusableHighlightAnalyzer(builder.getBuilder(dCase).getFilters());
-				analyzer = Analyzers.getHighlightAnalyzer(iid); 			
-			} else
-				analyzer = Analyzers.getIndexerAnalyzer(new FieldBuilder(iid,FieldBuilder.Case.EXACT_CASE));
+			highlightContentAnalyzer = Analyzers.getReusableHighlightAnalyzer(builder.getBuilder(dCase).getFilters());
+			highlightAnalyzer = Analyzers.getHighlightAnalyzer(iid); 			
+			indexAnalyzer = Analyzers.getIndexerAnalyzer(new FieldBuilder(iid,FieldBuilder.Case.EXACT_CASE));
 			
 			HashSet<String> stopWords = StopWords.getPredefinedSet(iid);
 			for(IndexUpdateRecord rec : records){								
@@ -215,14 +214,17 @@ public class WikiIndexModifier {
 					IndexReportCard card = getReportCard(rec);
 					Document doc;					
 					try {
-						if(iid.isHighlight())
-							doc = makeHighlightDocument(rec.getArticle(),analyzer,highlightContentAnalyzer,iid);
-						else if(iid.isTitlesBySuffix())
-							doc = makeTitleDocument(rec.getArticle(),analyzer,iid,original.getTitlesSuffix(),exactCase);
-						else // normal index
-							doc = makeDocument(rec.getArticle(),builder,iid,stopWords,analyzer);
-						
-						writer.addDocument(doc,analyzer);
+						if(iid.isHighlight()){
+							doc = makeHighlightDocument(rec.getArticle(),highlightAnalyzer,highlightContentAnalyzer,iid);
+							writer.addDocument(doc,highlightAnalyzer);
+						} else if(iid.isTitlesBySuffix()){
+							doc = makeTitleDocument(rec.getArticle(),indexAnalyzer,highlightAnalyzer,iid,original.getTitlesSuffix(),exactCase,stopWords);
+							writer.addDocument(doc,indexAnalyzer);
+						} else{ // normal index
+							doc = makeDocument(rec.getArticle(),builder,iid,stopWords,indexAnalyzer);
+							writer.addDocument(doc,indexAnalyzer);
+						}
+												
 						log.debug(iid+": Adding document "+rec.getKey()+" "+rec.getArticle());
 						if(card != null)
 							card.setSuccessfulAdd();
@@ -332,6 +334,7 @@ public class WikiIndexModifier {
 			}
 			ar.setRedirectKeywords(filtered);
 			ar.setRedirectKeywordRanks(ranks);
+			// FIXME: should also make the key available!
 		}
 	}
 	
@@ -343,14 +346,6 @@ public class WikiIndexModifier {
 			return true;
 		else
 			return false;
-	}
-	
-	/** Check if atitle should be added to the titles index */
-	public static boolean checkTitlePreconditions(Article article, IndexId iid){
-		if(global == null)
-			global = GlobalConfiguration.getInstance();
-		NamespaceFilter defaultNamespaces = global.getDefaultNamespace(iid);
-		return defaultNamespaces.contains(article.getTitleObject().getNamespace());
 	}
 	
 	/**
@@ -434,7 +429,7 @@ public class WikiIndexModifier {
 			// init
 			for(IndexId part : subs){
 				mod.put(part.toString(),new SimpleIndexModifier(part,part.getLangCode(),false,global.exactCaseIndex(part.getDBname()),original));
-				Transaction t = new Transaction(part);
+				Transaction t = new Transaction(part,IndexId.Transaction.INDEX);
 				t.begin();
 				trans.put(part.toString(),t);				
 			}
@@ -466,7 +461,7 @@ public class WikiIndexModifier {
 			// normal index
 			SimpleIndexModifier modifier = new SimpleIndexModifier(iid,iid.getLangCode(),false,global.exactCaseIndex(original.getDBname()),original);
 			
-			Transaction trans = new Transaction(iid);
+			Transaction trans = new Transaction(iid,IndexId.Transaction.INDEX);
 			trans.begin();
 			boolean succDel = modifier.deleteDocuments(updateRecords);
 			boolean succAdd = modifier.addDocuments(updateRecords);
@@ -575,6 +570,7 @@ public class WikiIndexModifier {
 	
 	/** Make the document that will be indexed as highlighting data */
 	public static Document makeHighlightDocument(Article article, Analyzer analyzer, ReusableLanguageAnalyzer contentAnalyzer, IndexId iid) throws IOException{
+		WikiIndexModifier.transformArticleForIndexing(article);
 		String key = article.getTitleObject().getKey();
 		Document doc = new Document();
 		doc.add(new Field("key",key,Store.NO,Index.UN_TOKENIZED));
@@ -585,24 +581,21 @@ public class WikiIndexModifier {
 	}
 	
 	/** Make the document that holds only title data */
-	public static Document makeTitleDocument(Article article, Analyzer analyzer, IndexId titles, String suffix, boolean exactCase) throws IOException{
-		String key = article.getKey();
+	public static Document makeTitleDocument(Article article, Analyzer analyzer, Analyzer highlightAnalyzer, IndexId titles, String suffix, boolean exactCase, HashSet<String> stopWords) throws IOException{
+		transformArticleForIndexing(article);
+		
+		String key = article.getTitleObject().getKey();
 		float rankBoost = transformRank(article.getRank());
 		Document doc = new Document();
-		doc.add(new Field("key",suffix+key,Store.NO,Index.UN_TOKENIZED));
+		doc.add(new Field("key",suffix+":"+key,Store.NO,Index.UN_TOKENIZED));
 		doc.add(new Field("suffix",suffix,Store.YES,Index.UN_TOKENIZED));
 		doc.add(new Field("namespace",article.getNamespace(),Store.YES,Index.UN_TOKENIZED));
-		if(exactCase){
-			// title will always hold the original stored title
-			doc.add(new Field("title",article.getTitle(),Store.YES, Index.NO));
-			Field title = new Field("title_exact",article.getTitle(),Store.NO, Index.TOKENIZED);
-			title.setBoost(rankBoost);
-			doc.add(title);
-		} else{
-			Field title = new Field("title",article.getTitle(),Store.YES, Index.TOKENIZED);
-			title.setBoost(rankBoost);
-			doc.add(title);
-		}
+		doc.add(new Field("title",article.getTitle(),Store.YES, Index.NO));
+		// add titles + redirects in aggregate field
+		makeAlttitle(doc,"alttitle",article,titles,stopWords,exactCase,null,rankBoost,analyzer);		
+		// store highlight data
+		doc.add(new Field("alttitle",Alttitles.serializeAltTitle(article,titles,new ArrayList<String>(),highlightAnalyzer,"alttitle"),Store.COMPRESS));
+		
 		return doc;
 	}
 	
@@ -629,9 +622,11 @@ public class WikiIndexModifier {
 		for(int i=0;i<redirects.size();i++){
 			addToItems(items, new Aggregate(redirects.get(i),transformRank(ranks.get(i)),iid,analyzer,prefix,stopWords));
 		}
-		// add section headings!
-		for(String h : tokenizer.getHeadingText()){			
-			addToItems(items, new Aggregate(title+" "+h,rankBoost*HEADINGS_BOOST,iid,analyzer,prefix,stopWords));
+		if(tokenizer != null){
+			// add section headings!
+			for(String h : tokenizer.getHeadingText()){			
+				addToItems(items, new Aggregate(title+" "+h,rankBoost*HEADINGS_BOOST,iid,analyzer,prefix,stopWords));
+			}
 		}
 		makeAggregate(doc,prefix,items);
 	}	

@@ -9,7 +9,9 @@ import org.wikimedia.lsearch.analyzers.AggregateAnalyzer;
 import org.wikimedia.lsearch.search.AggregateMetaField.AggregateMetaFieldSource;
 
 /** 
- * Info about aggregate phrase fields. 
+ * Wrapper for aggregate fields info in the index. Include an instance
+ * of this class into CustomPhraseQuery to use the additional meta
+ * info (which is locally cached in AggregateMetaField). 
  * 
  * @author rainman
  *
@@ -17,6 +19,7 @@ import org.wikimedia.lsearch.search.AggregateMetaField.AggregateMetaFieldSource;
 public class AggregatePhraseInfo implements PhraseInfo, Serializable  {
 	protected transient AggregateMetaFieldSource src = null;
 	
+	/** Call this while (local) scorer is constructed to init cached meta info */
 	public void init(IndexReader reader, String field) throws IOException {
 		src = AggregateMetaField.getCachedSource(reader,field);
 	}

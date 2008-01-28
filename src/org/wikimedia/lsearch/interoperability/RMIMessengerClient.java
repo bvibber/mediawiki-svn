@@ -9,10 +9,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
+import org.apache.lucene.analysis.Token;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.Query;
 import org.wikimedia.lsearch.beans.IndexReportCard;
@@ -20,13 +22,16 @@ import org.wikimedia.lsearch.beans.SearchHost;
 import org.wikimedia.lsearch.beans.SearchResults;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.highlight.Highlight;
 import org.wikimedia.lsearch.highlight.HighlightResult;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.search.HighlightPack;
 import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
 import org.wikimedia.lsearch.search.SearcherCache;
 import org.wikimedia.lsearch.search.SuffixFilterWrapper;
+import org.wikimedia.lsearch.search.SuffixNamespaceWrapper;
 import org.wikimedia.lsearch.search.Wildcards;
+import org.wikimedia.lsearch.spell.SuggestQuery;
 
 /**
  * Invokes procedures on a remote RMIMessenger.
@@ -235,20 +240,20 @@ public class RMIMessengerClient {
 		}
 	}
 	
-	public HashMap<String,HighlightResult> highlight(String host, ArrayList<String> hits, String dbrole, Term[] terms, int df[], int maxDoc, ArrayList<String> words, boolean exactCase){
+	public Highlight.ResultSet highlight(String host, ArrayList<String> hits, String dbrole, Term[] terms, int df[], int maxDoc, ArrayList<String> words, boolean exactCase){
 		try{
 			RMIMessenger r = messengerFromCache(host);
 			return r.highlight(hits,dbrole,terms,df,maxDoc,words,exactCase);
 		} catch(Exception e){
 			e.printStackTrace();
-			return new HashMap<String,HighlightResult>();
+			return new Highlight.ResultSet(new HashMap<String,HighlightResult>(),new HashSet<String>(),new HashSet<String>());
 		}		
 	}
 	
-	public SearchResults searchTitles(String host, String dbrole, String searchterm, Query query, SuffixFilterWrapper filter, int offset, int limit, boolean explain) {
+	public SearchResults searchTitles(String host, String dbrole, String searchterm, ArrayList<String> words, Query query, SuffixNamespaceWrapper filter, int offset, int limit, boolean explain) {
 		try{
 			RMIMessenger r = messengerFromCache(host);
-			return r.searchTitles(dbrole,searchterm,query,filter,offset,limit,explain);
+			return r.searchTitles(dbrole,searchterm,words,query,filter,offset,limit,explain);
 		} catch(Exception e){
 			e.printStackTrace();
 			if(cache == null)
@@ -257,8 +262,21 @@ public class RMIMessengerClient {
 			SearchResults res = new SearchResults();
 			res.setErrorMsg("Error searching titles: "+e.getMessage());			
 			log.warn("Error invoking remote method searchTitles on host "+host+" : "+e.getMessage());
-			e.printStackTrace();
 			return res;
 		}
+	}
+	
+	public SuggestQuery suggest(String host, String dbrole, String searchterm, ArrayList<Token> tokens, HashSet<String> phrases, HashSet<String> foundInContext){
+		try{
+			RMIMessenger r = messengerFromCache(host);
+			return r.suggest(dbrole,searchterm,tokens,phrases,foundInContext);
+		} catch(Exception e){
+			e.printStackTrace();
+			if(cache == null)
+				cache = SearcherCache.getInstance();
+			cache.invalidateSearchable(IndexId.get(dbrole),host);			
+			log.warn("Error invoking suggest() on "+host+" : "+e.getMessage());
+			return null;
+		}		
 	}
 }

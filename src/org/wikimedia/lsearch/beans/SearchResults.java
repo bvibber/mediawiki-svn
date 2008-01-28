@@ -3,8 +3,9 @@ package org.wikimedia.lsearch.beans;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 
-import org.apache.lucene.index.Term;
+import org.wikimedia.lsearch.spell.SuggestQuery;
 
 /** Complete search results for a query, also containts
  *  info about the error if any. 
@@ -19,10 +20,14 @@ public class SearchResults implements Serializable {
 	protected ArrayList<ResultSet> results;
 	protected String errorMsg;
 	protected boolean retry;
-	protected String suggest;
+	protected SuggestQuery suggest;
 	protected ArrayList<ResultSet> titles;
 	public enum Format { STANDARD, JSON, OPENSEARCH };
 	protected Format format = Format.STANDARD;
+	/** phrases (two_words) from highlight to aid spellchecking */
+	protected HashSet<String> phrases = new HashSet<String>();
+	/** words found together in sentence, aid spellchecking */
+	protected HashSet<String> foundInContext = new HashSet<String>();
 	
 	public SearchResults(){
 		success = false;
@@ -81,10 +86,10 @@ public class SearchResults implements Serializable {
 		titles.add(rs);
 	}
 
-	public String getSuggest() {
+	public SuggestQuery getSuggest() {
 		return suggest;
 	}
-	public void setSuggest(String suggest) {
+	public void setSuggest(SuggestQuery suggest) {
 		this.suggest = suggest;
 	}
 	
@@ -93,6 +98,18 @@ public class SearchResults implements Serializable {
 	}
 	public void setFormat(Format format) {
 		this.format = format;
+	}
+	public HashSet<String> getFoundInContext() {
+		return foundInContext;
+	}
+	public void setFoundInContext(HashSet<String> foundInContext) {
+		this.foundInContext = foundInContext;
+	}
+	public HashSet<String> getPhrases() {
+		return phrases;
+	}
+	public void setPhrases(HashSet<String> phrases) {
+		this.phrases = phrases;
 	}
 
 	@Override

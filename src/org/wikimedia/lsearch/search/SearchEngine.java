@@ -5,6 +5,7 @@ import java.io.Reader;
 import java.net.URI;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,6 +15,7 @@ import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.Token;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
@@ -40,6 +42,7 @@ import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.frontend.SearchDaemon;
 import org.wikimedia.lsearch.frontend.SearchServer;
+import org.wikimedia.lsearch.highlight.Highlight;
 import org.wikimedia.lsearch.highlight.HighlightResult;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 import org.wikimedia.lsearch.ranks.Links;
@@ -156,7 +159,7 @@ public class SearchEngine {
 		return null;
 	}
 	
-	/** Convert User:Rainman into 2:Rainman  */
+	/** Convert namespace names into numbers, e.g. User:Rainman into 2:Rainman  */
 	protected String getKey(String title, IndexId iid){
 		title = title.replace('_',' ');
 		int colon = title.indexOf(':');
@@ -233,7 +236,7 @@ public class SearchEngine {
 		IndexId pre = iid.getPrefix();
 		SearcherCache cache = SearcherCache.getInstance();
 		SearchResults res = new SearchResults();
-		try {
+		try {			
 			long start = System.currentTimeMillis();
 			String key = getKey(searchterm.toLowerCase(),iid);
 			String namespace = getNamespace(searchterm,iid);
@@ -253,7 +256,7 @@ public class SearchEngine {
 					res.addResult(rs);
 					limitCount++;
 				}
-				//logRequest(pre,"prefix",searchterm,null,res.getNumHits(),start,searcher);
+				logRequest(pre,"prefix",searchterm,null,res.getNumHits(),start,searcher);
 				return res;
 			}
 			// check if it's an unique prefix
@@ -271,7 +274,11 @@ public class SearchEngine {
 					}
 				}
 			}
+			// we didn't find a match, but we didn't encounter an error either
+			res.setNumHits(0);
+			res.setSuccess(true);
 		} catch (IOException e) {
+			e.printStackTrace();
 			log.error("Internal error in prefixSearch on "+pre+" : "+e.getMessage());
 			res.setErrorMsg("I/O error on index "+pre);
 		}
@@ -288,7 +295,7 @@ public class SearchEngine {
 	}
 	
 	/** Search a single titles index part */
-	public SearchResults searchTitles(IndexId iid, String searchterm, Query q, SuffixFilterWrapper filter, int offset, int limit, boolean explain){
+	public SearchResults searchTitles(IndexId iid, String searchterm, ArrayList<String> words, Query q, SuffixNamespaceWrapper filter, int offset, int limit, boolean explain){
 		if(!iid.isTitlesBySuffix())
 			return null;
 		try {			
@@ -297,7 +304,10 @@ public class SearchEngine {
 			long searchStart = System.currentTimeMillis();
 			searcher = cache.getLocalSearcher(iid);
 			TopDocs hits = searcher.search(q,filter,offset+limit);
+			// search
 			SearchResults res = makeTitlesSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
+			// highlight
+			highlightTitles(iid,q,words,searcher,res);
 			return res;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -328,7 +338,7 @@ public class SearchEngine {
 			SearchResults res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
 			HighlightPack pack = new HighlightPack(res);
 			// pack extra info needed for highlighting
-			pack.terms = getTerms(q);
+			pack.terms = getTerms(q,"contents");
 			pack.dfs = searcher.docFreqs(pack.terms);
 			pack.maxDoc = searcher.maxDoc();
 			return pack;
@@ -350,8 +360,7 @@ public class SearchEngine {
 		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid,exactCase);
 		if(nsDefault == null || nsDefault.cardinality() == 0)
 			nsDefault = new NamespaceFilter("0"); // default to main namespace
-		FieldBuilder.Case dCase = exactCase? FieldBuilder.Case.EXACT_CASE : FieldBuilder.Case.IGNORE_CASE;
-		FieldBuilder.BuilderSet bs = new FieldBuilder(iid,dCase).getBuilder(dCase);
+		FieldBuilder.BuilderSet bs = new FieldBuilder(iid,exactCase).getBuilder(exactCase);
 		ArrayList<String> stopWords = null;
 		try{
 			stopWords = StopWords.getCached(iid);
@@ -366,14 +375,6 @@ public class SearchEngine {
 		long searchStart = System.currentTimeMillis();
 		Hashtable<String,NamespaceFilter> cachedFilters = GlobalConfiguration.getInstance().getNamespacePrefixes();
 		boolean searchAll = false;
-		Suggest sug = null;
-		if(offset == 0){
-			try {
-				sug = new Suggest(iid);
-			} catch (Exception e1) {
-				log.warn("Cannot open spell-suggestion indexes for "+iid+" : "+e1);
-			}
-		}
 		
 		// if search is over one field, try to use filters
 		if(fields.size()==1){
@@ -404,6 +405,7 @@ public class SearchEngine {
 				if(parts.size() == 1){
 					IndexId piid = parts.iterator().next();
 					if(!piid.isFurtherSubdivided()){
+						// search on single index part
 						String host;
 						if(piid.isMySearch())
 							host = "localhost";
@@ -425,16 +427,10 @@ public class SearchEngine {
 						RMIMessengerClient messenger = new RMIMessengerClient();						
 						HighlightPack pack = messenger.searchPart(piid,searchterm,q,nsfw,offset,limit,explain,host);
 						res = pack.res;
-						if(sug != null){
-							SuggestQuery sq = sug.suggest(searchterm,parser,res);
-							if(sq == null)
-								res.setSuggest(null);
-							else{
-								res.setSuggest(sq.getSerialized());
-							}
-						}
-						highlight(iid,q,parser.getWords(),pack.terms,pack.dfs,pack.maxDoc,res,exactCase);
-						fetchTitles(res,searchterm,iid,parser,wildcards,offset,iwlimit);
+						
+						highlight(iid,q,parser.getWords(),pack.terms,pack.dfs,pack.maxDoc,res,exactCase,null);
+						fetchTitles(res,searchterm,nsfw,iid,parser,wildcards,offset,0,iwlimit,explain);
+						suggest(iid,searchterm,parser,res,offset,nsfw);
 						return res;
 					}
 				} 
@@ -457,36 +453,12 @@ public class SearchEngine {
 				// query 
 				Wildcards wildcards = new Wildcards(searcher.getAllHosts(),exactCase);
 				q = parseQuery(searchterm,parser,iid,raw,nsfw,searchAll,wildcards);
-				
-				/* TimedTopDocCollector col = new TimedTopDocCollector(offset+limit,timelimit);
-				searcher.search(q,nsfw,col);
-				hits = col.topDocs(); */
+								
 				hits = searcher.search(q,nsfw,offset+limit);
-				res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
-				if(sug != null){
-					SuggestQuery sq = sug.suggest(searchterm,parser,res);
-					if(sq == null)
-						res.setSuggest(null);
-					else{
-						res.setSuggest(sq.getSerialized());
-						/*if(res.getNumHits() == 0){
-							// no hits: show the spell-checked results
-							hits = searcher.search(q,nsfw,offset+limit);
-							if(hits.totalHits != 0){
-								res = makeSearchResults(searcher,hits,offset,limit,iid,sq.getSearchterm(),q,searchStart,explain);
-								res.setSuggest(sq.getFormated());
-							}
-						} else if(sq.needsCheck()){
-							q = parseQuery(sq.getSearchterm(),parser,iid,raw,nsfw,searchAll);
-							hits = searcher.search(q,nsfw,1); // fetch only one result
-							if(hits.totalHits != 0){
-								res.setSuggest(sq.getFormated());
-							}
-						} */
-					}
-				}
+				res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);				
 				highlight(iid,q,parser.getWords(),searcher,res,exactCase);
-				fetchTitles(res,searchterm,iid,parser,wildcards,offset,iwlimit);
+				fetchTitles(res,searchterm,nsfw,iid,parser,wildcards,offset,0,iwlimit,explain);
+				suggest(iid,searchterm,parser,res,offset,nsfw);
 				return res;
 			} catch(Exception e){				
 				if(e.getMessage()!=null && e.getMessage().equals("time limit")){
@@ -515,6 +487,26 @@ public class SearchEngine {
 		}
 	}
 
+	/** "Did you mean.." engine, use highlight results (if any) to refine suggestions, call after all other results are already obtained */
+	protected void suggest(IndexId iid, String searchterm, WikiQueryParser parser, SearchResults res, int offset, NamespaceFilterWrapper nsfw) {
+		if(offset == 0 && iid.hasSpell()){
+			if(nsfw != null){
+				BitSet def = global.getDefaultNamespace(iid).getIncluded(); // spellcheck is on these namespaces
+				BitSet targ = nsfw.getFilter().getIncluded();
+				if(!def.intersects(targ))
+					return; // trying to spellcheck in namespaces other than built for
+			}
+			// suggest !
+			res.setSuggest(null);
+			ArrayList<Token> tokens = parser.tokenizeBareText(searchterm);			
+			RMIMessengerClient messenger = new RMIMessengerClient();
+			// find host 
+			String host = cache.getRandomHost(iid.getSpell());
+			SuggestQuery sq = messenger.suggest(host,iid.toString(),searchterm,tokens,res.getPhrases(),res.getFoundInContext());
+			res.setSuggest(sq);			
+		}
+	}
+
 	protected Query parseQuery(String searchterm, WikiQueryParser parser, IndexId iid, boolean raw, NamespaceFilterWrapper nsfw, boolean searchAll, Wildcards wildcards) throws ParseException {
 		Query q = null;
 		if(raw){
@@ -540,47 +532,67 @@ public class SearchEngine {
 	}
 	
 	
-	/** Fetch related interwiki titles */
-	protected void fetchTitles(SearchResults res, String searchterm, IndexId iid, WikiQueryParser parser, Wildcards wildcards, int offset, int iwlimit){
+	/** Fetch related interwiki titles 
+	 * @throws IOException */
+	protected void fetchTitles(SearchResults res, String searchterm, NamespaceFilterWrapper nsfw, IndexId iid, WikiQueryParser parser, Wildcards wildcards, int offset, int iwoffset, int iwlimit, boolean explain) throws IOException{
 		if(!iid.hasTitlesIndex())
 			return;
 		if(offset != 0)
-			return; // for now don't allow paging
+			return; // do titles search only for first page of normal-search results
 		IndexId titles = iid.getTitlesIndex();
-		IndexId target = null;
 		IndexId main = titles.getDB();
 		SuffixFilter sf = null;
-		if(main.getSplitFactor() > 2) // TODO: ideally, should support multisearcher stuff over many indexes
-			throw new RuntimeException("(currently) unsupported: titles index split in more than two parts");
-		if(titles.getTitlesBySuffixCount()==1){			
-			if(main.getSplitFactor() == 1){
+		NamespaceFilter nsf = null;
+		if(nsfw != null)
+			nsf = nsfw.getFilter();
+		
+		ArrayList<String> words = parser.getWords();
+		Query q = parser.parseForTitles(searchterm,wildcards);
+		
+		// this databases is in one part alone, we can optimize this case
+		if(titles.getTitlesBySuffixCount()==1){
+			IndexId target = null;
+		
+			// optimized case, we only need to search the other part of the index
+			if(main.getSplitFactor()==2)
+				target = (main.getPart(1) != titles)? main.getPart(1) : main.getPart(2); // get other part
+			// not a split index, also search a single part
+			else if(main.getSplitFactor()==1){
 				target = titles;
 				sf = new SuffixFilter(iid.getTitlesSuffix());
-			} else if(main.getSplitFactor()==2){
-				HashSet<String> names = main.getPhysicalIndexes();
-				names.remove(titles.toString());
-				target = IndexId.get(names.iterator().next());
 			}
-		} else{
-			target = titles;
-			sf = new SuffixFilter(iid.getTitlesSuffix());
+			
+			if(target != null){
+				String host = cache.getRandomHost(target);
+				RMIMessengerClient messenger = new RMIMessengerClient();
+				SuffixNamespaceWrapper wrap = null;
+				if(nsf != null || sf != null)
+					wrap = new SuffixNamespaceWrapper(nsf,sf);
+				SearchResults r = messenger.searchTitles(host,target.toString(),searchterm,words,q,wrap,iwoffset,iwlimit,explain);
+				if(r.isSuccess())
+					res.setTitles(r.getResults());
+				else
+					log.error("Error getting grouped titles results from "+host+":"+r.getErrorMsg());
+				return;
+			}			
 		}
 		
-		Query q = parser.parseForTitles(searchterm,wildcards); 
-		String host = cache.getRandomHost(target);
-		if(host != null){
-			RMIMessengerClient messenger = new RMIMessengerClient();
-			SuffixFilterWrapper wrap = null;
-			if(sf != null)
-				wrap = new SuffixFilterWrapper(sf);
-			SearchResults r = messenger.searchTitles(host,target.toString(),searchterm,q,wrap,0,iwlimit,false);
-			if(r.isSuccess()){
-				// OK! set the titles stuff
-				res.setTitles(r.getResults());				
-			} else{
-				log.error("Error getting grouped titles search results:"+r.getErrorMsg());
-			}
-		}
+		// otherwise, we need to search all parts of the index
+		long searchStart = System.currentTimeMillis();
+		WikiSearcher searcher = new WikiSearcher(main);
+		sf = new SuffixFilter(iid.getTitlesSuffix());
+		SuffixNamespaceWrapper wrap = new SuffixNamespaceWrapper(nsf,sf);
+		
+		log.info("Using titles filter: "+wrap);
+		
+		TopDocs hits = searcher.search(q,wrap,iwoffset+iwlimit);
+		SearchResults r = makeTitlesSearchResults(searcher,hits,iwoffset,iwlimit,main,searchterm,q,searchStart,explain);
+		highlightTitles(main,q,words,searcher,r);
+		
+		if(r.isSuccess())
+			res.setTitles(r.getResults());				
+		else
+			log.error("Error getting grouped titles search results: "+r.getErrorMsg());
 	}
 	
 	protected SearchResults makeSearchResults(SearchableMul s, TopDocs hits, int offset, int limit, IndexId iid, String searchterm, Query q, long searchStart, boolean explain) throws IOException{
@@ -640,9 +652,10 @@ public class SearchEngine {
 		for(Document doc : docs){
 			String namespace = doc.get("namespace");
 			String title = doc.get("title");
-			String interwiki = iid.getInterwikiBySuffix(doc.get("suffix"));
+			String suffix = doc.get("suffix");
+			String interwiki = iid.getInterwikiBySuffix(suffix);
 			float score = transformScore(scores[j]/maxScore); 
-			ResultSet rs = new ResultSet(score,namespace,title,interwiki);
+			ResultSet rs = new ResultSet(score,namespace,title,suffix,interwiki);
 			if(explain)
 				rs.setExplanation(((Searcher)s).explain(q,docids[j]));
 			res.addResult(rs);
@@ -652,29 +665,45 @@ public class SearchEngine {
 		return res;
 	}
 	
-	protected Term[] getTerms(Query q){
+	protected Term[] getTerms(Query q, String field){
+		String fieldExact = field+"_exact";
 		HashSet<Term> termSet = new HashSet<Term>();
 		q.extractTerms(termSet);
 		Iterator<Term> it = termSet.iterator();
 		while(it.hasNext()){
-			String field = it.next().field(); 
-			if(!(field.equals("contents") || field.equals("contents_exact")))
+			String fieldName = it.next().field(); 
+			if(!(fieldName.equals(field) || fieldName.equals(fieldExact)))
 				it.remove();
 		}
 		return termSet.toArray(new Term[] {});
 	}
 	
 	/** Highlight search results, and set the property in ResultSet */
-	protected void highlight(IndexId iid, Query q, ArrayList<String> words, Searcher searcher, SearchResults res, boolean exactCase) throws IOException{
-		Term[] terms = getTerms(q);
-		// FIXME: theoretically unnecessary call to docFreqs, however dfs are 
-		// lost in the multisearcher createWeight() method... 
+	protected void highlight(IndexId iid, Query q, ArrayList<String> words, WikiSearcher searcher, SearchResults res, boolean exactCase) throws IOException{
+		Term[] terms = getTerms(q,"contents");
 		int[] df = searcher.docFreqs(terms); 
 		int maxDoc = searcher.maxDoc();
-		highlight(iid,q,words,terms,df,maxDoc,res,exactCase);
+		highlight(iid,q,words,terms,df,maxDoc,res,exactCase,null);
 	}
 	
-	protected void highlight(IndexId iid, Query q, ArrayList<String> words, Term[] terms, int[] df, int maxDoc, SearchResults res, boolean exactCase) throws IOException{
+	/** Highlight search results from titles index */
+	protected void highlightTitles(IndexId iid, Query q, ArrayList<String> words, IndexSearcherMul searcher, SearchResults res) throws IOException{
+		Term[] terms = getTerms(q,"alttitle");
+		int[] df = searcher.docFreqs(terms); 
+		int maxDoc = searcher.maxDoc();
+		highlight(iid,q,words,terms,df,maxDoc,res,false,searcher.getIndexReader());
+	}
+	
+	/** Highlight search results from titles index using a wikisearcher */
+	protected void highlightTitles(IndexId iid, Query q, ArrayList<String> words, WikiSearcher searcher, SearchResults res) throws IOException{
+		Term[] terms = getTerms(q,"alttitle");
+		int[] df = searcher.docFreqs(terms); 
+		int maxDoc = searcher.maxDoc();
+		highlight(iid,q,words,terms,df,maxDoc,res,false,null);
+	}
+	
+	/** Highlight article (don't call directly, use one of the interfaces above instead) */
+	protected void highlight(IndexId iid, Query q, ArrayList<String> words, Term[] terms, int[] df, int maxDoc, SearchResults res, boolean exactCase, IndexReader reader) throws IOException{
 		// iid -> array of keys
 		HashMap<IndexId,ArrayList<String>> map = new HashMap<IndexId,ArrayList<String>>();
 		iid = iid.getHighlight();
@@ -691,14 +720,27 @@ public class SearchEngine {
 			keys.put(r.getKey(),r);
 		}
 		// highlight!
+		HashSet<String> stopWords = StopWords.getPredefinedSet(iid);
 		HashMap<String,HighlightResult> results = new HashMap<String,HighlightResult>();
 		RMIMessengerClient messenger = new RMIMessengerClient();
 		
 		for(Entry<IndexId,ArrayList<String>> e : map.entrySet()){
 			IndexId piid = e.getKey();
 			for(IndexId hiid : piid.getPhysicalIndexIds()){
-				String host = cache.getRandomHost(hiid);
-				results.putAll(messenger.highlight(host,e.getValue(),hiid.toString(),terms,df,maxDoc,words,exactCase));
+				if(reader != null){ 
+					// we got a local reader, use it
+					Highlight.ResultSet rs = Highlight.highlight(e.getValue(),hiid,terms,df,maxDoc,words,stopWords,exactCase,reader); 
+					results.putAll(rs.highlighted);
+					res.getPhrases().addAll(rs.phrases);
+					res.getFoundInContext().addAll(rs.foundInContext);
+				} else{ 
+					// remote call
+					String host = cache.getRandomHost(hiid);
+					Highlight.ResultSet rs = messenger.highlight(host,e.getValue(),hiid.toString(),terms,df,maxDoc,words,exactCase);
+					results.putAll(rs.highlighted);
+					res.getPhrases().addAll(rs.phrases);
+					res.getFoundInContext().addAll(rs.foundInContext);					
+				}
 			}
 		}
 		// set highlight property

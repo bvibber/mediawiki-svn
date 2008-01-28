@@ -16,6 +16,7 @@ public class ResultSet implements Serializable {
 	public Explanation explanation = null;
 	public HighlightResult highlight;
 	public String interwiki = null;
+	public String suffix = null;
 	public String namespaceTextual = ""; // e.g. "User" or "" for main
 	
 	public ResultSet(String key) {
@@ -30,11 +31,12 @@ public class ResultSet implements Serializable {
 		this.title = title;
 	}
 	
-	public ResultSet(double score, String namespace, String title, String interwiki) {
+	public ResultSet(double score, String namespace, String title, String suffix, String interwiki) {
 		this.score = score;
 		this.namespace = namespace;
 		this.title = title;
 		this.interwiki = interwiki;
+		this.suffix = suffix;
 	}
 	
 	public ResultSet(double score, String namespace, String title, Explanation explanation) {
@@ -76,7 +78,10 @@ public class ResultSet implements Serializable {
 	}
 	
 	public String getKey(){
-		return namespace+":"+title;
+		if(suffix == null)
+			return namespace+":"+title;
+		else
+			return suffix+":"+namespace+":"+title;
 	}
 	public String getNamespace() {
 		return namespace;
@@ -117,5 +122,12 @@ public class ResultSet implements Serializable {
 	public void setNamespaceTextual(String namespaceTextual) {
 		this.namespaceTextual = namespaceTextual;
 	}
+	public String getSuffix() {
+		return suffix;
+	}
+	public void setSuffix(String suffix) {
+		this.suffix = suffix;
+	}
+	
 	
 }

@@ -6,7 +6,13 @@ import java.io.Serializable;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.search.ScoreValue;
 import org.wikimedia.lsearch.search.RankField.RankFieldSource;
-
+/**
+ * Rank value (based on backlinks) on the whole document. It is encoded separately rather
+ * than as boost to provide better score tunning for custom phrase queries.  
+ * 
+ * @author rainman
+ *
+ */
 public class RankValue implements ScoreValue, Serializable {
 	protected transient RankFieldSource src;
 	protected float coefficient;

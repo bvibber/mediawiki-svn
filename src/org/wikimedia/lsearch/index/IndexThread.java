@@ -308,7 +308,7 @@ public class IndexThread extends Thread {
 					reader.close();
 					log.info("Optimizing "+iid);
 					long start = System.currentTimeMillis();
-					Transaction trans = new Transaction(iid);
+					Transaction trans = new Transaction(iid,IndexId.Transaction.INDEX);
 					trans.begin();
 					IndexWriter writer = new IndexWriter(iid.getIndexPath(),new SimpleAnalyzer(),false);
 					writer.optimize();

@@ -1,6 +1,7 @@
 package org.wikimedia.lsearch.highlight;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.BitSet;
@@ -58,6 +59,20 @@ public class Highlight {
 		BOOST.put(Position.EXT_LINK,0.05);
 		BOOST.put(Position.REFERENCE,0.05);
 	}	
+	
+	/** Results from higlighting multiple articles */
+	public static class ResultSet implements Serializable {
+		public HashMap<String,HighlightResult> highlighted;
+		/** phrases matched in document, word1_word2 (i.e. separated by underscore) */
+		public HashSet<String> phrases;
+		/** words found with some other query word in a sentence */
+		public HashSet<String> foundInContext;
+		public ResultSet(HashMap<String, HighlightResult> highlighted, HashSet<String> phrases, HashSet<String> foundInContext) {
+			this.highlighted = highlighted;
+			this.phrases = phrases;
+			this.foundInContext = foundInContext;
+		}
+	}
 	/**
 	 * 
 	 * @param hits - keys of articles that need to be higlighted
@@ -70,23 +85,22 @@ public class Highlight {
 	 * @returns map: key -> what to highlight
 	 */
 	@SuppressWarnings("unchecked")
-	public static HashMap<String,HighlightResult> highlight(ArrayList<String> hits, IndexId iid, Term[] terms, int df[], int maxDoc, ArrayList<String> words, HashSet<String> stopWords, boolean exactCase) throws IOException{
+	public static ResultSet highlight(ArrayList<String> hits, IndexId iid, Term[] terms, int df[], int maxDoc, ArrayList<String> words, HashSet<String> stopWords, boolean exactCase, IndexReader reader) throws IOException{
 		if(cache == null)
 			cache = SearcherCache.getInstance();
 		
-		FieldNameFactory fields = new FieldNameFactory(exactCase);
-		
 		if(stopWords == null)
 			stopWords = new HashSet<String>();
+		
+		HashSet<String> phrases = new HashSet<String>();
+		HashSet<String> inContext = new HashSet<String>();
 		
 		// terms weighted with idf
 		HashMap<String,Double> weightTerm = new HashMap<String,Double>();
 		for(int i=0;i<terms.length;i++){
 			Term t = terms[i];
-			if(t.field().equals(fields.contents())){
-				double idf = idf(df[i],maxDoc); 
-				weightTerm.put(t.text(),idf);
-			}
+			double idf = idf(df[i],maxDoc); 
+			weightTerm.put(t.text(),idf);
 		}
 		// position within main phrase
 		HashMap<String,Integer> wordIndex = new HashMap<String,Integer>();
@@ -94,7 +108,8 @@ public class Highlight {
 			wordIndex.put(words.get(i),i);
 		
 		// process requested documents
-		IndexReader reader = cache.getLocalSearcher(iid.getHighlight()).getIndexReader();
+		if(reader == null) // get new reader if none is supplied
+			reader = cache.getLocalSearcher(iid.getHighlight()).getIndexReader();
 		HashMap<String,HighlightResult> res = new HashMap<String,HighlightResult>();
 		Set<String> allTerms = weightTerm.keySet();
 		for(String key : hits){
@@ -113,9 +128,9 @@ public class Highlight {
 			preprocessTemplates(tokens);
 			
 			HashMap<String,Double> notInTitle = getTermsNotInTitle(weightTerm,alttitles,wordIndex);
-			ArrayList<RawSnippet> textSnippets = getBestTextSnippets(tokens, weightTerm, wordIndex, 2, false, stopWords);
-			ArrayList<RawSnippet> titleSnippets = getBestTextSnippets(alttitles.getTitle().getTokens(),weightTerm,wordIndex,1,true,stopWords);
-			RawSnippet redirectSnippets = getBestAltTitle(alttitles.getRedirects(),weightTerm,notInTitle,stopWords,wordIndex,1);
+			ArrayList<RawSnippet> textSnippets = getBestTextSnippets(tokens, weightTerm, wordIndex, 2, false, stopWords, true, phrases, inContext );
+			ArrayList<RawSnippet> titleSnippets = getBestTextSnippets(alttitles.getTitle().getTokens(),weightTerm,wordIndex,1,true,stopWords,false,phrases,inContext);
+			RawSnippet redirectSnippets = getBestAltTitle(alttitles.getRedirects(),weightTerm,notInTitle,stopWords,wordIndex,1,phrases,inContext);
 			RawSnippet sectionSnippets = null;
 			if(redirectSnippets == null){
 				// remove stop words for section higlighting
@@ -123,7 +138,7 @@ public class Highlight {
 					if(notInTitle.containsKey(s))
 						notInTitle.remove(s);
 				}
-				sectionSnippets = getBestAltTitle(alttitles.getSections(),weightTerm,notInTitle,stopWords,wordIndex,0);
+				sectionSnippets = getBestAltTitle(alttitles.getSections(),weightTerm,notInTitle,stopWords,wordIndex,0,phrases,inContext);
 			}
 			
 			HighlightResult hr = new HighlightResult();
@@ -196,7 +211,7 @@ public class Highlight {
 			res.put(key,hr);
 			
 		}
-		return res;
+		return new ResultSet(res,phrases,inContext);
 	}	
 	
 	/**
@@ -345,7 +360,8 @@ public class Highlight {
 	
 	/** Alttitle and sections highlighting */	
 	protected static RawSnippet getBestAltTitle(ArrayList<Alttitles.Info> altInfos, HashMap<String,Double> weightTerm, 
-			HashMap<String,Double> notInTitle, HashSet<String> stopWords, HashMap<String,Integer> wordIndex, int minAdditional){
+			HashMap<String,Double> notInTitle, HashSet<String> stopWords, HashMap<String,Integer> wordIndex, int minAdditional,
+			HashSet<String> phrases, HashSet<String> inContext){
 		ArrayList<RawSnippet> res = new ArrayList<RawSnippet>();
 		for(Alttitles.Info ainf : altInfos){			
 			double matched = 0, additionalScore = 0;
@@ -368,7 +384,7 @@ public class Highlight {
 				}
 			}
 			if((completeMatch && additional >= minAdditional) || additional >= minAdditional+1 || (additional != 0 && additional == notInTitle.size())){
-				ArrayList<RawSnippet> snippets = getBestTextSnippets(tokens, weightTerm, wordIndex, 1, false, stopWords);
+				ArrayList<RawSnippet> snippets = getBestTextSnippets(tokens, weightTerm, wordIndex, 1, false, stopWords, false, phrases, inContext);
 				if(snippets.size() > 0){
 					RawSnippet snippet = snippets.get(0);
 					snippet.setAlttitle(ainf);
@@ -407,6 +423,7 @@ public class Highlight {
 		int bestStart = -1;
 		int bestEnd = -1;
 		double bestScore = 0;
+		int bestCount = 0;
 		int sequenceNum = 0;
 		
 		FragmentScore next = null; // next in text
@@ -428,7 +445,8 @@ public class Highlight {
 	
 	/** Highlight text */
 	protected static ArrayList<RawSnippet> getBestTextSnippets(ArrayList<ExtToken> tokens, HashMap<String, Double> weightTerms, 
-			HashMap<String,Integer> wordIndex, int maxSnippets, boolean ignoreBreaks, HashSet<String> stopWords) {
+			HashMap<String,Integer> wordIndex, int maxSnippets, boolean ignoreBreaks, HashSet<String> stopWords, boolean showFirstIfNone,
+			HashSet<String> phrases, HashSet<String> foundInContext) {
 		
 		// pieces of text to ge highlighted
 		ArrayList<FragmentScore> fragments = new ArrayList<FragmentScore>();
@@ -453,6 +471,7 @@ public class Highlight {
 		int beginLen = 0;
 		HashSet<String> availableWeight = new HashSet<String>();
 		availableWeight.addAll(weightTerms.keySet());
+		HashSet<String> wordsInSentence = new HashSet<String>();
 		for(int i=0;i<=tokens.size();i++){
 			ExtToken t = null;
 			if(i < tokens.size())
@@ -463,7 +482,7 @@ public class Highlight {
 				Position pos = last.getPosition();
 				// finalize fragment
 				if(phraseScore != 0 && phraseStart != -1){
-					addToScore(fs,boostPhrase(phraseScore,phraseCount),phraseStart,i);
+					addToScore(fs,boostPhrase(phraseScore,phraseCount),phraseStart,i,phraseCount);
 					phraseScore = 0;
 					phraseStart = -1;
 					phraseCount = 0;
@@ -474,6 +493,11 @@ public class Highlight {
 					fs.end = i;
 				fs.score *= BOOST.get(pos);
 				fragments.add(fs);
+				// work out words that are close to some other in a sentence (for spellcheck)
+				if(wordsInSentence.size() > 1)
+					foundInContext.addAll(wordsInSentence);
+				wordsInSentence.clear();
+					
 				if(!ignoreBreaks && pos == Position.FIRST_SECTION && !seenFirstSentence){
 					// boost for first sentence
 					fs.score *= FIRST_SENTENCE_BOOST;
@@ -511,12 +535,16 @@ public class Highlight {
 				if(fs.found == null)
 					fs.found = new HashSet<String>();
 				fs.found.add(t.termText());				
-				addToScore(fs,weight,i,i+1);
-				addProximity(fs,weight,i,lastWeight,lastIndex);				
+				addToScore(fs,weight,i,i+1,1);
+				addProximity(fs,weight,i,lastWeight,lastIndex);
 				
 				Integer inx = wordIndex.get(t.termText());
 				Integer lastInx = (lastText != null)? wordIndex.get(lastText.termText()) : null;
-				if(t.getPositionIncrement() == 0); // FIXME: ignores phrases on stemmed words
+				if(inx != null){					
+					wordsInSentence.add(t.termText());
+				}
+				
+				if(t.getPositionIncrement() == 0); // FIXME: aliases won't get extra score for phrases
 				else if((inx != null && lastInx == null) || phraseStart == -1){
 					// begin of phrase
 					phraseScore = weight;
@@ -524,14 +552,14 @@ public class Highlight {
 					phraseCount = 1;
 				} else if((inx == null && lastInx != null)){
 					// end of phrase
-					addToScore(fs,boostPhrase(phraseScore,phraseCount),phraseStart,i);
+					addToScore(fs,boostPhrase(phraseScore,phraseCount),phraseStart,i,phraseCount);
 					phraseScore = 0;
 					phraseStart = -1;
 					phraseCount = 0;
 				} else if(inx != null && lastInx != null){
 					 if(lastInx + 1 != inx){
 						 // end of last phrase, begin of new
-						 addToScore(fs,boostPhrase(phraseScore,phraseCount),phraseStart,i);
+						 addToScore(fs,boostPhrase(phraseScore,phraseCount),phraseStart,i,phraseCount);
 						 phraseScore = weight;
 						 phraseStart = i;
 						 phraseCount = 1;
@@ -539,6 +567,7 @@ public class Highlight {
 						 // continuation of phrase
 						 phraseScore += weight;
 						 phraseCount++;
+						 phrases.add(lastText.termText()+"_"+t.termText());
 					 }
 				}
 				
@@ -546,25 +575,33 @@ public class Highlight {
 				lastWeight = weight;
 			} else if(t.getType() == Type.TEXT && t.getPositionIncrement() != 0 && phraseStart != -1 && phraseScore != 0){
 				// end of phrase, unrecognized text token 
-				addToScore(fs,boostPhrase(phraseScore,phraseCount),phraseStart,i);
+				addToScore(fs,boostPhrase(phraseScore,phraseCount),phraseStart,i,phraseCount);
 				phraseScore = 0;
 				phraseStart = -1;
 				phraseCount = 0;
 			}
 			
 			last = t;
-			// FIXME: aliases won't get extra score for phrases
 			if(t.getType() == Type.TEXT && t.getPositionIncrement() != 0)
 				lastText = t;
 		}
 		// flush phrase score stuff
 		if(phraseScore != 0 && phraseStart != -1){
-			addToScore(fs,boostPhrase(phraseScore,phraseCount),phraseStart,tokens.size());
+			addToScore(fs,boostPhrase(phraseScore,phraseCount),phraseStart,tokens.size(),phraseCount);
 		}
-
+		
+		// beginning of fragment list
+		FragmentScore fragmentsBeginning = null;
+		if(fragments.size()>0)
+			fragmentsBeginning = fragments.get(0);
 		// find fragments with best score
 		Collections.sort(fragments,  new Comparator<FragmentScore>() {
 			public int compare(FragmentScore o1, FragmentScore o2) {
+				// sort via longest phrase found
+				int c = o2.bestCount - o1.bestCount;
+				if(c != 0)
+					return c;
+				// or if phrases are of same length, then total score
 				double d = o2.score - o1.score;
 				if(d > 0)
 					return 1;
@@ -602,13 +639,10 @@ public class Highlight {
 			if(res.size() >= maxSnippets)
 				break;			
 		}
-		/*if(res.size() < maxSnippets && (res.size()==0 || res.get(0).cur.pos != Position.FIRST_SECTION)){
-			for(FragmentScore f : resNoNew){
-				if(res.size() >= maxSnippets)
-					break;
-				res.add(new RawSnippet(tokens,f,wordHighlight));
-			}
-		} */
+		// if text doesn't match show some body text
+		if(showFirstIfNone && res.size() == 0 && fragmentsBeginning != null){
+			res.add(new RawSnippet(tokens,fragmentsBeginning,wordHighlight,wordHighlight,stopWords));
+		} 
 		// always show snippet that is before in the text first 
 		Collections.sort(res,  new Comparator<RawSnippet>() {
 			public int compare(RawSnippet o1, RawSnippet o2) {
@@ -689,7 +723,7 @@ public class Highlight {
 						 phraseScore += weight;
 					 }
 				}			
-			} else if(t.getType() == Type.TEXT && t.getPositionIncrement() != 0){
+			} else if(t.getType() == Type.TEXT && t.getPositionIncrement() != 0 && phraseStart!=-1 && phraseScore!=0){
 				// end of phrase, unrecognized text token 
 				updateBest(f,phraseScore,phraseStart,i,requiredCount);
 				phraseScore = 0;
@@ -715,14 +749,15 @@ public class Highlight {
 	}
 
 	/** update best segment in the fragment */
-	private static void addToScore(FragmentScore fs, double score, int start, int end) {
+	private static void addToScore(FragmentScore fs, double score, int start, int end, int count) {
 		fs.score += score;
-		if(fs.bestScore < score){
+		if(count >= fs.bestCount && fs.bestScore < score){
 			fs.bestScore = score;
 			if(start == -1)
 				throw new RuntimeException("Phrase start cannot be -1, score="+score);
 			fs.bestStart = start;
 			fs.bestEnd = end;
+			fs.bestCount = count;
 		}		
 	}
 	

@@ -55,7 +55,7 @@ def rewrite_query(query):
     
     return prefix_re.sub(rewrite_callback,query)
 
-def make_wiki_link(line,dbname):
+def make_wiki_link(line,dbname,caption=''):
     parts = line.split(' ')
     score = float(parts[0])
     title = ''
@@ -75,9 +75,13 @@ def make_wiki_link(line,dbname):
     else:
         link = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],title)
     decoded = urllib.unquote(title.replace('_',' '))
-    return ['%1.2f -- <a href="%s">%s</a>' % (score,link,decoded),title]
+    if caption !='':
+        caption = ns+urllib.unquote(caption.replace('_',' '))
+    else:
+        caption = decoded
+    return ['%1.2f -- <a href="%s">%s</a>' % (score,link,caption),title]
 
-def make_title_link(line,dbname):
+def make_title_link(line,dbname,caption=''):
     interwiki={'w':'wikipedia', 'wikt':'wiktionary', 's':'wikisource', 'b': 'wikibooks', 'n':'wikinews', 'v':'wikiversity', 'q':'wikiquote'}
     parts = line.split(' ')
     score = float(parts[0])
@@ -87,14 +91,18 @@ def make_title_link(line,dbname):
     if ns != '':
         ns = ns +":"
     title = iw+':'+ns+parts[3]
-    caption = ns+parts[3]
+    titleText = ns+parts[3]
     
     if dbname.endswith('wiktionary'):
         link = 'http://%s.wiktionary.org/wiki/%s' % (dbname[0:2],title)
     else:
         link = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],title)
-    decoded = urllib.unquote(caption.replace('_',' '))
-    return ['%s : <a href="%s">%s</a> (%1.2f)' % (interwiki[iw],link,decoded,score),title]
+    decoded = urllib.unquote(titleText.replace('_',' '))
+    if caption!='':
+        caption = ns+urllib.unquote(caption.replace('_',' '))
+    else:
+        caption = decoded
+    return ['%s : (%1.2f) <a href="%s">%s</a>' % (interwiki[iw],score,link,caption),title]
 
 def extract_snippet(line,final_separator=True):
     parts = line.split(' ')
@@ -127,6 +135,26 @@ def extract_snippet(line,final_separator=True):
         start = sp;
     
     return [snippet,original]
+
+def extract_suggest(line):
+    parts = line.split(' ')
+    type = parts[0]
+    highlight = de_bracket_split(parts[1])
+    text = urllib.unquote_plus(parts[2].strip())
+        
+    start = 0
+    snippet = ""
+    hi = 0
+    while hi < len(highlight):
+        s = int(highlight[hi])
+        e = int(highlight[hi+1])
+        snippet += text[start:s] + "<i>" + text[s:e] + "</i>"
+        start = e
+        hi += 2
+    if start < len(text):
+        snippet += text[start:len(text)]
+    
+    return [snippet,text]
     
 
 def de_bracket(s):
@@ -188,9 +216,10 @@ class MyHandler(BaseHTTPRequestHandler):
                     numhits = int(results.readline())
                     lasthit = min(offset+limit,numhits) 
                     # suggestions
-                    suggest = results.readline();
+                    suggest = results.readline()
+                    suggestHl = ""
                     if suggest.startswith("#suggest "):                        
-                        suggest = urllib.unquote_plus(suggest[9:])
+                        [suggestHl,suggest] = extract_suggest(suggest)
                     else:
                         suggest = ""
                     # grouped titles
@@ -198,11 +227,36 @@ class MyHandler(BaseHTTPRequestHandler):
                     interwiki_count = int(interwiki_count.split(' ')[1])
                     i = 0
                     interwiki = []
-                    while i < interwiki_count:
-                        interwiki.append(make_title_link(results.readline(),dbname)[0])
-                        i+=1
-                    # read "#results" 
-                    results.readline();
+                    line = results.readline()
+                    nextLine = ''
+                    while not line.startswith("#results"):     
+                        if not line.startswith('#'):
+                            titleHl = ''
+                            redirectHl = ''
+                            redirectLink = None
+                            nextLine = results.readline()
+                            if nextLine.startswith('#h.title'):
+                                [titleHl, orig] = extract_snippet(nextLine,False)
+                                nextLine = results.readline()
+                                if nextLine.startswith('#h.redirect'):
+                                    [redirectHl, redirectLink] = extract_snippet(nextLine,False);
+                                    if redirectLink != None:
+                                        redirectLink = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],redirectLink)
+                            elif nextLine.startswith('#h.redirect'):
+                                [redirectHl, redirectLink] = extract_snippet(nextLine,False);
+                                if redirectLink != None:
+                                    redirectLink = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],redirectLink)
+                                        
+                            interwikiHtml = make_title_link(line,dbname,titleHl)[0]
+                            if redirectLink != None:
+                                interwikiHtml += '<small> (redirect <a href="%s">%s</a>)</small>' % (redirectLink.strip(), redirectHl)
+                            interwiki.append(interwikiHtml)
+                        
+                        if nextLine == '':
+                            line = results.readline()
+                        else:
+                            line = nextLine
+                            nextLine = ''
                     # html headers
                     self.send_response(200)
                     self.send_header('Cache-Control','no-cache')
@@ -212,9 +266,9 @@ class MyHandler(BaseHTTPRequestHandler):
                     self.wfile.write('<body>Query: %s <br>' % query)
                     if suggest != "":
                         sparams = params.copy()
-                        sparams['query'] = suggest.strip().replace("<i>","").replace("</i>","")
+                        sparams['query'] = suggest;
                         slink = make_link(sparams,0)
-                        self.wfile.write('Did you mean: <a href="%s">%s</a><br>' % (slink,suggest))
+                        self.wfile.write('Did you mean: <a href="%s">%s</a><br>' % (slink,suggestHl))
                     
                     # generate next/prev searchbar
                     if offset != 0:
@@ -244,8 +298,7 @@ class MyHandler(BaseHTTPRequestHandler):
                         lines.append(line)
                     i = 0
                     while i < len(lines):
-                        [link,title] = make_wiki_link(lines[i],dbname)
-                        self.wfile.write(link)
+                        scoreLine = lines[i];
                         # decode highlight info
                         textHl = ''
                         redirectHl = ''
@@ -253,13 +306,15 @@ class MyHandler(BaseHTTPRequestHandler):
                         sectionHl = ''
                         sectionLink = None
                         titleHl = ''
+                        [link,title] = make_wiki_link(scoreLine,dbname)
                         while i+1 < len(lines):                            
                             extra = lines[i+1]
                             if extra.startswith('#h.text'):
                                 [newtext, orig] = extract_snippet(extra)
                                 textHl += newtext
                             elif extra.startswith('#h.title'):
-                                [titleHl, orig] = extract_snippet(extra)
+                                [titleHl, orig] = extract_snippet(extra,False)
+                                [link,title] = make_wiki_link(scoreLine,dbname,titleHl)
                             elif extra.startswith('#h.redirect'):
                                 [redirectHl, redirectLink] = extract_snippet(extra,False);
                                 if redirectLink != None:
@@ -271,11 +326,11 @@ class MyHandler(BaseHTTPRequestHandler):
                             else:
                                 break
                             i+=1
+                                                    
+                        self.wfile.write(link) # title link
                         if redirectLink != None:
-                            redirectHl = redirectHl
                             self.wfile.write('<small> (redirect <a href="%s">%s</a>)</small>' % (redirectLink.strip(), redirectHl))
                         if sectionLink != None:
-                            sectionHl = sectionHl
                             self.wfile.write('<small> (section <a href="%s">%s</a></small>)' % (sectionLink.strip(), sectionHl))
                         self.wfile.write('<br>');
                         if textHl != '':

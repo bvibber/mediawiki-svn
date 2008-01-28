@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.HashSet;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.index.IndexReader;
@@ -26,15 +27,19 @@ public class SuggestTest {
 		Configuration.open();
 		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		boolean suggestOnly = false;
+		int limit = 10;
 		String dbname = "enwiki";
 		for(int i=0;i<args.length;i++){
 			if(args[i].equals("-s"))
 				suggestOnly = true;
+			else if(args[i].equals("-l"))
+				limit = Integer.parseInt(args[++i]);
 			else if(args[i].equals("--help")){
 				System.out.println("java SuggestTest [-s] [dbname]");
 				System.out.println("Where:");
-				System.out.println("  -s      - final suggest only, no detailed report");
-				System.out.println("  dbname  - database name (default:"+dbname+")");
+				System.out.println("  -s       - final suggest only, no detailed report");
+				System.out.println("  -l <num> - limit number of results (default:"+limit+")");
+				System.out.println("  dbname   - database name (default:"+dbname+")");
 			} else
 				dbname = args[i];
 		}
@@ -63,8 +68,8 @@ public class SuggestTest {
 						System.out.println("METAPHONES: "+dmeta.doubleMetaphone(text)+", "+dmeta.doubleMetaphone(text,true));
 						System.out.println("SUGGEST: ");
 						int count = 0;
-						for(SuggestResult r : sc.suggestWords(text,10)){
-							if(++count >= 10 )
+						for(SuggestResult r : sc.suggestWords(text,limit)){
+							if(++count >= limit )
 								break;
 							System.out.println(r);
 						}
@@ -77,7 +82,7 @@ public class SuggestTest {
 					last = text;
 				}
 			}
-			System.out.println("#suggest: "+sc.suggest(inputtext,parser,new SearchResults()));
+			System.out.println("#suggest: "+sc.suggest(inputtext,parser.tokenizeBareText(inputtext),new HashSet<String>(),new HashSet<String>()));
 			System.out.println("(finished in "+(System.currentTimeMillis()-start)+" ms)");
 		}
 		

@@ -11,6 +11,12 @@ import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexReader.FieldOption;
 
+/**
+ * Local cache of aggregate field meta informations
+ * 
+ * @author rainman
+ *
+ */
 public class AggregateMetaField {
 	static Logger log = Logger.getLogger(RankField.class);
 	protected static WeakHashMap<IndexReader,HashMap<String,AggregateMetaFieldSource>> cache = new WeakHashMap<IndexReader,HashMap<String,AggregateMetaFieldSource>>();
@@ -36,6 +42,12 @@ public class AggregateMetaField {
 		}
 	}
 	
+	/**
+	 * Cached meta aggregate info 
+	 * 
+	 * @author rainman
+	 *
+	 */
 	static public class AggregateMetaFieldSource {
 		protected int[] index = null;
 		protected byte[] length  = null;
@@ -76,7 +88,7 @@ public class AggregateMetaField {
 							log.warn("Broken length=0 for docid="+i+", at position "+j);
 						}
 						lengthNoStopWords[count] = stored[j*6+1];
-						int boostInt = ((stored[j*6+2] << 24) + (stored[j*6+3] << 16) + (stored[j*6+4] << 8) + (stored[j*6+5] << 0));
+						int boostInt = (((stored[j*6+2]&0xff) << 24) + ((stored[j*6+3]&0xff) << 16) + ((stored[j*6+4]&0xff) << 8) + ((stored[j*6+5]&0xff) << 0));
 						boost[count] = Float.intBitsToFloat(boostInt);
 						
 						count++;

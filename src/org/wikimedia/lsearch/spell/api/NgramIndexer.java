@@ -24,6 +24,8 @@ public class NgramIndexer {
 	protected IndexWriter writer;
 	protected IndexReader reader;
 	
+	public static enum Type {WORDS, TITLES};
+	
 	public NgramIndexer(){
 		path = null;
 		analyzer = null;
@@ -153,21 +155,37 @@ public class NgramIndexer {
 	}
 	
 	/** Get minimal ngram size for word. the minimal size should be at least 1/2 of word length */
-	public static int getMinNgram(String word){
-		if(word.length() <= 5)
-			return 1;
-		else if(word.length() <= 7)
-			return 2;
-		else
-			return 3;
+	public static int getMinNgram(String word, Type type){
+		switch(type){
+		case WORDS:
+			if(word.length() <= 5)
+				return 1;
+			else if(word.length() <= 7)
+				return 2;
+			else
+				return 3;
+		case TITLES:
+			if(word.length() < 5)
+				new RuntimeException("title in getMinNgram() too short");
+			return 5;
+		}
+		return 0; // err
 	}
 	
 	/** Maximal size of ngram block, at most the length of word */
-	public static int getMaxNgram(String word){
-		if(word.length() <= 4)
-			return 2;
-		else
-			return 3;
+	public static int getMaxNgram(String word, Type type){
+		switch(type){
+		case WORDS:
+			if(word.length() <= 4)
+				return 2;
+			else
+				return 3;
+		case TITLES:			
+			if(word.length() < 5)
+				new RuntimeException("title in getMaxNgram() too short");
+			return 5;
+		}
+		return 0; // err
 	}
 	
 	/** Get ngram field name with no prefix */
@@ -198,9 +216,9 @@ public class NgramIndexer {
 	 * @param prefix - prefix to ngram field name
 	 * @param word - word
 	 */
-	protected void createNgramFields(Document doc, String prefix, String word) {
-		int min = getMinNgram(word);
-		int max = getMaxNgram(word);
+	protected void createNgramFields(Document doc, String prefix, String word, Type type) {
+		int min = getMinNgram(word,type);
+		int max = getMaxNgram(word,type);
 		String fieldBase = getNgramField(prefix);
 		String startField= getStartField(prefix);
 		for(int i=min ; i <= max ; i++ ){

@@ -101,7 +101,7 @@ public class IndexId {
 	/** Path where status files are for incremental updater */
 	protected String statusPath;
 	/** Path where transaction data is stored */
-	protected String transactionPath;
+	protected Hashtable<Transaction,String> transactionPath;
 	/** Path to temporary index (e.g. for rebuilding spell-check words) */
 	protected String tempPath;
 	
@@ -121,6 +121,12 @@ public class IndexId {
 	
 	/** language code, e.g. "en" */
 	protected String langCode = null;
+	
+	/** if this is index that doesn't capitalize first letters of titles */
+	protected Boolean exactCase = null;
+	
+	/** on which index image are we doing transaction */
+	public static enum Transaction {INDEX, IMPORT, TEMP}; 
 
 	/**
 	 * Get index Id object given it's string representation, the actual object
@@ -304,7 +310,11 @@ public class IndexId {
 		
 		rsyncSnapshotPath = indexRsyncPath+"snapshot/" + this.dbrole;
 		statusPath = localIndexPath + "status" + sep + this.dbrole;
-		transactionPath = localIndexPath + "transaction" + sep + this.dbrole;
+		String transRoot = localIndexPath + "transaction" + sep + this.dbrole + sep; 
+		transactionPath = new Hashtable<Transaction,String>();		
+		transactionPath.put(Transaction.INDEX,transRoot+"index");
+		transactionPath.put(Transaction.IMPORT,transRoot+"import");
+		transactionPath.put(Transaction.TEMP,transRoot+"temp");
 		tempPath = localIndexPath + "temp" + sep + this.dbrole;
 
 		if(mySearch){
@@ -493,8 +503,8 @@ public class IndexId {
 		return importPath;
 	}
 	/** Where transaction data is stored */
-	public String getTransactionPath() {
-		return transactionPath;
+	public String getTransactionPath(Transaction type) {
+		return transactionPath.get(type);
 	}
 	/** Status file for incremental updater */ 
 	public String getStatusPath() {
@@ -717,7 +727,11 @@ public class IndexId {
 	/** Get the higlight index for this iid */
 	public IndexId getHighlight() {
 		if(highlight)
-			return get(dbrole);
+			return this;
+		else if(isTitlesBySuffix())			 
+			// kinda ugly, all indexes have index+hl, only titles are all-in-one, this is mainly done
+			// for performance, and since it's only a single (rather small) additional field
+			return this;
 		else
 			return get(dbrole+".hl");
 	}
@@ -728,10 +742,27 @@ public class IndexId {
 			langCode = GlobalConfiguration.getInstance().getLanguage(dbname);
 		return langCode;
 	}
+	
+	/** Get if this is index that doesn't capitalize first letters of articles */
+	public boolean getExactCase(){
+		if(exactCase == null)
+			exactCase = GlobalConfiguration.getInstance().exactCaseIndex(dbname);
+		return exactCase;
+	}
 
 	/** If this is a titles_by_suffix index, gets mapping: suffix -> iw */
 	public String getInterwikiBySuffix(String suffix) {
-		return suffixIwMap.get(suffix);
+		if(isTitlesBySuffix()){
+			if( part == null ){ // this is the main index
+				for(IndexId piid : getPhysicalIndexIds()){
+					String iw = piid.getInterwikiBySuffix(suffix);
+					if(iw != null)
+						return iw;
+				}
+			} else // this is one of the parts
+				return suffixIwMap.get(suffix);
+		}
+		throw new RuntimeException("Called getInterwikiBySuffix() on non-titles_by_suffix index");		
 	}
 	/** If index containing only titles is defined */
 	public boolean hasTitlesIndex(){

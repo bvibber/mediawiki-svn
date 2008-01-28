@@ -26,10 +26,12 @@ import org.wikimedia.lsearch.util.FSUtils;
 public class Transaction {
 	static Logger log = Logger.getLogger(Transaction.class);
 	protected IndexId iid;
-	protected boolean inTransaction; 
+	protected boolean inTransaction;
+	protected IndexId.Transaction type;
 	
-	public Transaction(IndexId iid){
+	public Transaction(IndexId iid, IndexId.Transaction type){
 		this.iid = iid;
+		this.type = type;
 		inTransaction = false;
 	}
 	
@@ -86,17 +88,17 @@ public class Transaction {
 			if(info.exists())
 				FSUtils.deleteRecursive(info.getAbsoluteFile());
 		} catch(Exception e){
-			log.error("Error removing old transaction data from "+iid.getTransactionPath()+" : "+e.getMessage());
+			log.error("Error removing old transaction data from "+iid.getTransactionPath(type)+" : "+e.getMessage());
 		}
 
 	}
 	/** This is where index backup is stored */
 	protected String getBackupDir(){
-		return iid.getTransactionPath() + Configuration.PATH_SEP + "backup" ;
+		return iid.getTransactionPath(type) + Configuration.PATH_SEP + "backup" ;
 	}
 	/** Property file holding info about the status of transaction */
 	protected String getInfoFile(){
-		return iid.getTransactionPath() + Configuration.PATH_SEP + "transaction.info";
+		return iid.getTransactionPath(type) + Configuration.PATH_SEP + "transaction.info";
 	}
 
 	protected int exec(String command) throws Exception {

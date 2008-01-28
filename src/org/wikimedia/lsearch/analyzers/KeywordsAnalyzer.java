@@ -37,6 +37,8 @@ public class KeywordsAnalyzer extends Analyzer{
 	public static final int KEYWORD_LEVELS = 5;
 	/** positional increment between different redirects */
 	public static final int TOKEN_GAP = 201;
+	
+	protected int levels = KEYWORD_LEVELS;
 
 	protected KeywordsAnalyzer(){}
 	
@@ -53,16 +55,16 @@ public class KeywordsAnalyzer extends Analyzer{
 	protected void init(ArrayList<String> keywords, FilterFactory filters, String prefix, boolean exactCase) {
 		this.prefix = prefix;
 		this.iid = filters.getIndexId();
-		tokensBySize = new KeywordsTokenStream[KEYWORD_LEVELS];
+		tokensBySize = new KeywordsTokenStream[levels];
 		if(keywords == null){
 			// init empty token streams
-			for(int i=0; i< KEYWORD_LEVELS; i++){
+			for(int i=0; i< levels; i++){
 				tokensBySize[i] = new KeywordsTokenStream(null,filters,exactCase,TOKEN_GAP);			
 			}	
 			return;
 		}
 		ArrayList<ArrayList<String>> keywordsBySize = new ArrayList<ArrayList<String>>();
-		for(int i=0;i<KEYWORD_LEVELS;i++)
+		for(int i=0;i<levels;i++)
 			keywordsBySize.add(new ArrayList<String>());
 		TokenizerOptions options = new TokenizerOptions(exactCase);
 		// arange keywords into a list by token number 
@@ -70,12 +72,12 @@ public class KeywordsAnalyzer extends Analyzer{
 			ArrayList<Token> parsed = new FastWikiTokenizerEngine(k,iid,options).parse();
 			if(parsed.size() == 0)
 				continue;
-			else if(parsed.size() < KEYWORD_LEVELS)
+			else if(parsed.size() < levels)
 				keywordsBySize.get(parsed.size()-1).add(k);
 			else
-				keywordsBySize.get(KEYWORD_LEVELS-1).add(k);
+				keywordsBySize.get(levels-1).add(k);
 		}		
-		for(int i=0; i< KEYWORD_LEVELS; i++){
+		for(int i=0; i< levels; i++){
 			tokensBySize[i] = new KeywordsTokenStream(keywordsBySize.get(i),filters,exactCase,TOKEN_GAP);			
 		}
 	}

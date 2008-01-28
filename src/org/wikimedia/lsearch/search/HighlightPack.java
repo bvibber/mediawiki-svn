@@ -5,6 +5,13 @@ import java.io.Serializable;
 import org.apache.lucene.index.Term;
 import org.wikimedia.lsearch.beans.SearchResults;
 
+/**
+ * Object returned on remote search. Contains both the results
+ * and related informations needed for highlighting. 
+ * 
+ * @author rainman
+ *
+ */
 public class HighlightPack implements Serializable {
 	public Term[] terms;
 	public int[] dfs;

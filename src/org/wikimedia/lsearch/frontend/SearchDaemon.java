@@ -20,6 +20,7 @@ import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.highlight.HighlightResult;
 import org.wikimedia.lsearch.highlight.Snippet;
 import org.wikimedia.lsearch.search.SearchEngine;
+import org.wikimedia.lsearch.spell.SuggestQuery;
 import org.wikimedia.lsearch.util.QueryStringMap;
 
 /**
@@ -84,14 +85,22 @@ public class SearchDaemon extends HttpHandler {
 						}
 					} else{
 						sendOutputLine(Integer.toString(res.getNumHits()));
-						if(res.getSuggest() != null)
-							sendOutputLine("#suggest "+encode(res.getSuggest()));
-						else 
+						SuggestQuery sq = res.getSuggest();
+						if(sq != null && sq.hasSuggestion()){
+							sendOutputLine("#suggest ["+sq.getRangesSerialized()+"] "+encode(sq.getSearchterm()));
+						} else 
 							sendOutputLine("#no suggestion");
 						if(res.getTitles() != null){
 							sendOutputLine("#interwiki "+res.getTitles().size());
 							for(ResultSet rs : res.getTitles()){
 								sendOutputLine(rs.getScore()+" "+encode(rs.getInterwiki())+" "+rs.getNamespace()+" "+encodeTitle(rs.getTitle()));
+								if(rs.getExplanation() != null)
+									sendOutputLine(rs.getExplanation().toString());
+								if(rs.getHighlight() != null){
+									HighlightResult hr = rs.getHighlight();
+									sendHighlight("title",hr.getTitle());								
+									sendHighlightWithTitle("redirect",hr.getRedirect());
+								}
 							}
 						} else
 							sendOutputLine("#interwiki 0");
