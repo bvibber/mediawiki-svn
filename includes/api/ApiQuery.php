@@ -75,6 +75,8 @@ class ApiQuery extends ApiBase {
 		'usercontribs' => 'ApiQueryContributions',
 		'watchlist' => 'ApiQueryWatchlist',
 		'exturlusage' => 'ApiQueryExtLinksUsage',
+		'users' => 'ApiQueryUsers',
+		'random' => 'ApiQueryRandom',
 	);
 
 	private $mQueryMetaModules = array (

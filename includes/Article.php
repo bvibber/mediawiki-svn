@@ -1765,7 +1765,8 @@ class Article {
 					$comment .= "$expiry_description";
 				if ( $cascade )
 					$comment .= "$cascade_description";
-
+				
+				$rowsAffected = false;
 				# Update restrictions table
 				foreach( $limit as $action => $restrictions ) {
 					if ($restrictions != '' ) {
@@ -1773,12 +1774,16 @@ class Article {
 							array( 'pr_page' => $id, 'pr_type' => $action
 								, 'pr_level' => $restrictions, 'pr_cascade' => $cascade ? 1 : 0
 								, 'pr_expiry' => $encodedExpiry ), __METHOD__  );
+						if($dbw->affectedRows() != 0)
+							$rowsAffected = true;
 					} else {
 						$dbw->delete( 'page_restrictions', array( 'pr_page' => $id,
 							'pr_type' => $action ), __METHOD__ );
+						if($dbw->affectedRows() != 0)
+							$rowsAffected = true;
 					}
 				}
-				if($dbw->affectedRows() == 0)
+				if(!$rowsAffected)
 					// No change
 					return true;
 
@@ -1800,6 +1805,8 @@ class Article {
 
 				# Update the protection log
 				$log = new LogPage( 'protect' );
+				
+				
 
 				if( $protect ) {
 					$log->addEntry( $modified ? 'modify' : 'protect', $this->mTitle, trim( $reason . " [$updated]$cascade_description$expiry_description" ) );
@@ -2089,41 +2096,10 @@ class Article {
 		$token = htmlspecialchars( $wgUser->editToken() );
 		$watch = Xml::checkLabel( wfMsg( 'watchthis' ), 'wpWatch', 'wpWatch', $wgUser->getBoolOption( 'watchdeletion' ) || $this->mTitle->userIsWatching(), array( 'tabindex' => '2' ) );
 		
-		$mDeletereasonother = Xml::label( wfMsg( 'deleteotherreason' ), 'wpReason' );
-		$mDeletereasonotherlist = wfMsgHtml( 'deletereasonotherlist' );
-		$scDeleteReasonList = wfMsgForContent( 'deletereason-dropdown' );
+		$deletereasonother = Xml::label( wfMsg( 'deleteotherreason' ), 'wpReason' );
+		$reasonDropDown = Xml::listDropDown( 'wpDeleteReasonList', wfMsgHtml( 'deletereason-dropdown' ), 
+			wfMsgForContent( 'deletereasonotherlist' ), '', 'wpReasonDropDown', 1 );
 
-		$deleteReasonList = '';
-		if ( $scDeleteReasonList != '' && $scDeleteReasonList != '-' ) { 
-			$deleteReasonList = "<option value=\"other\">$mDeletereasonotherlist</option>";
-			$optgroup = "";
-			foreach ( explode( "\n", $scDeleteReasonList ) as $option) {
-				$value = trim( htmlspecialchars($option) );
-				if ( $value == '' ) {
-					continue;
-				} elseif ( substr( $value, 0, 1) == '*' && substr( $value, 1, 1) != '*' ) {
-					// A new group is starting ...
-					$value = trim( substr( $value, 1 ) );
-					$deleteReasonList .= "$optgroup<optgroup label=\"$value\">";
-					$optgroup = "</optgroup>";
-				} elseif ( substr( $value, 0, 2) == '**' ) {
-					// groupmember
-					$selected = "";
-					$value = trim( substr( $value, 2 ) );
-					if ( $this->DeleteReasonList === $value)
-						$selected = ' selected="selected"';
-					$deleteReasonList .= "<option value=\"$value\"$selected>$value</option>";
-				} else {
-					// groupless delete reason
-					$selected = "";
-					if ( $this->DeleteReasonList === $value)
-						$selected = ' selected="selected"';
-					$deleteReasonList .= "$optgroup<option value=\"$value\"$selected>$value</option>";
-					$optgroup = "";
-				}
-			}
-			$deleteReasonList .= $optgroup;
-		}
 		$wgOut->addHTML( "
 <form id='deleteconfirm' method='post' action=\"{$formaction}\">
 	<table border='0'>
@@ -2132,14 +2108,12 @@ class Article {
 				$delcom:
 			</td>
 			<td align='left'>
-				<select tabindex='1' id='wpDeleteReasonList' name=\"wpDeleteReasonList\">
-					$deleteReasonList
-				</select>
+				$reasonDropDown
 			</td>
 		</tr>
 		<tr id=\"wpDeleteReasonRow\" name=\"wpDeleteReasonRow\">
 			<td>
-				$mDeletereasonother
+				$deletereasonother
 			</td>
 			<td align='left'>
 				<input type='text' maxlength='255' size='60' name='wpReason' id='wpReason' value=\"" . htmlspecialchars( $reason ) . "\" tabindex=\"2\" />
@@ -2952,6 +2926,10 @@ class Article {
 
 		if( $title->getNamespace() == NS_MEDIAWIKI) {
 			$wgMessageCache->replace( $title->getDBkey(), false );
+		}
+		if( $title->getNamespace() == NS_IMAGE ) {
+			$update = new HTMLCacheUpdate( $title, 'imagelinks' );
+			$update->doUpdate();
 		}
 	}
 

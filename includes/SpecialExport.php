@@ -105,6 +105,13 @@ function wfExportGetLinks( $inputPages, $pageSet, $table, $fields, $join ) {
 }
 
 /**
+ * Callback function to remove empty strings from the pages array.
+ */
+function wfFilterPage( $page ) {
+	return $page !== '' && $page !== null;
+}
+
+/**
  *
  */
 function wfSpecialExport( $page = '' ) {
@@ -198,7 +205,7 @@ function wfSpecialExport( $page = '' ) {
 		}
 		
 		/* Split up the input and look up linked pages */
-		$inputPages = array_filter( explode( "\n", $page ) );
+		$inputPages = array_filter( explode( "\n", $page ), 'wfFilterPage' );
 		$pageSet = array_flip( $inputPages );
 
 		if( $wgRequest->getCheck( 'templates' ) ) {
@@ -238,7 +245,7 @@ function wfSpecialExport( $page = '' ) {
 			#Bug 8824: Only export pages the user can read
 			$title = Title::newFromText( $page );
 			if( is_null( $title ) ) continue; #TODO: perhaps output an <error> tag or something.
-			if( !$title->userCan( 'read' ) ) continue; #TODO: perhaps output an <error> tag or something.
+			if( !$title->userCanRead() ) continue; #TODO: perhaps output an <error> tag or something.
 
 			$exporter->pageByTitle( $title );
 		}

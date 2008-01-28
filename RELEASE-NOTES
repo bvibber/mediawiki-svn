@@ -143,8 +143,6 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11897) Add alias [[Special:CreateAccount]] & [[Special:Userlogin/signup]]
   for Special:Userlogin?type=signup
 * (bug 12214) Add a predefined list of delete reasons to the file deletion form
-* (bug 12681) New messages bar should appear above page title, for consistency
-  with other message boxes
 
 === Bug fixes in 1.12 ===
 
@@ -340,6 +338,10 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Security fix for API on MSIE
 * (bug 12768) Database query syntax error in maintenance/storage/compressOld.inc
 * (bug 12753) Empty captions in MediaWiki:Sidebar result in PHP errors
+* (bug 12790) Page protection is not logged when edit-protection is used and move-protection is not
+* (bug 12793) Fix for restricted namespaces/pages in Special:Export
+* Fix for Special:Export so it doesn't ignore the page named '0'
+* Don't display rollback link if the user doesn't have all required permissions
 
 == Parser changes in 1.12 ==
 
@@ -470,7 +472,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Added iiurlwidth and iiurlheight parameters to prop=imageinfo
 * Added format=txt and format=dbg, imported from query.php
 * Added uiprop=editcount to meta=userinfo
-* meta=userinfo can now fetch information on other users as well, through the uiusers parameter
+* Added list=users which fetches user information
+* Added list=random which fetches a list of random pages
 
 === Languages updated in 1.12 ===
 
