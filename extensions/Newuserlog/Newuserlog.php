@@ -13,7 +13,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Newuserlog',
-	'version' => '2008-01-24',
+	'version' => '2008-01-29',
 	'description' => 'adds a [[Special:Log/newusers|log of account creations]] to [[Special:Log]]',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Newuserlog',
 	'author' => 'Ævar Arnfjörð Bjarmason'
@@ -39,7 +39,7 @@ function wfNewuserlog() {
 	$wgHooks['LogLine'][] = 'wfNewuserlogLogLine';
 }
 
-function wfNewuserlogHook( $user = null ) {
+function wfNewuserlogHook( $user = null, $byEmail = false ) {
 	global $wgUser, $wgContLang, $wgVersion;
 	wfLoadExtensionMessages( 'Newuserlog' );
 
@@ -62,8 +62,11 @@ function wfNewuserlogHook( $user = null ) {
 		// see bug 4756: Long usernames break block link in new user log entries
 
 		$action = 'create2';
+		$message = '';
 		if ( version_compare( $wgVersion, '1.10alpha', '>=' ) ) {
-			$message = '';
+			if( $byEmail ) {
+				$message = wfMsgForContent( 'newuserlog-byemail' );
+			}
 		} else {
 			$message = wfMsgForContent( 'newuserlog-create-text',
 				$user->getName(), $talk, $contribs, $block );
@@ -84,9 +87,10 @@ function wfNewuserlogHook( $user = null ) {
  * @param array $paramArray
  * @param string $comment
  * @param string $revert user tool links
+ * @param string $time timestamp of the log entry
  * @return bool true
  */
-function wfNewuserlogLogLine( $log_type = '', $log_action = '', $title = null, $paramArray = array(), &$comment = '', &$revert = '' ) {
+function wfNewuserlogLogLine( $log_type = '', $log_action = '', $title = null, $paramArray = array(), &$comment = '', &$revert = '', $time = '' ) {
 	if ( $log_action == 'create2' ) {
 		global $wgUser;
 		$skin = $wgUser->getSkin();
@@ -96,8 +100,10 @@ function wfNewuserlogLogLine( $log_type = '', $log_action = '', $title = null, $
 			# Fall back to a blue contributions link
 			$revert = $skin->userToolLinks( 1, $title->getDBkey() );
 		}
-		# Suppress $comment from old entries, not needed and can contain incorrect links
-		$comment = '';
+		if( $time < '20080129000000' ) {
+			# Suppress $comment from old entries (before 2008-01-29), not needed and can contain incorrect links
+			$comment = '';
+		}
 	}
 	return true;
 }

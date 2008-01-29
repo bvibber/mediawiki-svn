@@ -11,6 +11,7 @@ $messages['en'] = array(
 	'newuserlogpage'           => 'User creation log',
 	'newuserlogpagetext'       => 'This is a log of user creations',
 	'newuserlogentry'          => '', # For compatibility, don't translate this
+	'newuserlog-byemail'       => 'password sent by email',
 	'newuserlog-create-entry'  => 'New user',
 	'newuserlog-create2-entry' => 'created account for $1',
 	'newuserlog-create-text'   => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]", # For compatibility <= MW 1.9, don't translate this
@@ -136,6 +137,7 @@ $messages['cs'] = array(
 $messages['de'] = array(
 	'newuserlogpage'           => 'Neuanmeldungs-Logbuch',
 	'newuserlogpagetext'       => 'Dies ist ein Logbuch für neu erstellte Benutzerkonten.',
+	'newuserlog-byemail'       => 'das Passwort wurde per E-Mail versandt',
 	'newuserlog-create-entry'  => 'Benutzer wurde neu registriert',
 	'newuserlog-create2-entry' => 'erstellte Benutzerkonto für $1',
 );
