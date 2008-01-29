@@ -89,6 +89,11 @@ class BoardVotePage extends UnlistedSpecialPage {
 			$this->mUserKey = $_SESSION['bvUserKey'];
 			$this->mDBname = $_SESSION['bvDBname'];
 			$this->mBlocked = $_SESSION['bvBlocked'];
+		} elseif ( defined( 'BOARDVOTE_ALLOW_LOCAL' ) ) {
+			global $wgUser, $wgDBname;
+			$this->mUserKey = $wgUser->getName() . "@" . $wgDBname;
+			$this->mDBname = $wgDBname;
+			$this->mBlocked = $wgUser->isBlocked();
 		} else {
 			$this->mUserKey = false;
 			$this->mDBname = false;
@@ -362,6 +367,9 @@ class BoardVotePage extends UnlistedSpecialPage {
 	}
 
 	function isQualified( $key ) {
+		if ( defined( 'BOARDVOTE_QUALIFIED_HACK' ) ) {
+			return true;
+		}
 		$db = $this->getDB();
 		$qualified = $db->selectField( 'voters', '1', array( 'user_key' => $key ), __METHOD__ );
 		return (bool)$qualified;

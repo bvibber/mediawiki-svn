@@ -2,7 +2,7 @@
 
 wfBoardVoteInitMessages();
 
-class GoToBoardVotePage extends UnlistedSpecialPage {
+class GoToBoardVotePage extends SpecialPage {
 	function __construct() {
 		parent::__construct( "Boardvote" );
 	}
