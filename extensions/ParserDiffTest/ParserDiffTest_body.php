@@ -78,23 +78,22 @@ class ParserDiffTest extends SpecialPage
 
 		if ( $oldResult === $newResult ) {
 			$diff = wfMsgHtml( 'pdtest_no_changes' );
-			$sideBySide = false;
 		} else {
 			$diffEngine = new DifferenceEngine;
 			$diffEngine->showDiffStyle();
 			$diffBody = $diffEngine->generateDiffBody( $oldResult, $newResult );
 			$diff = DifferenceEngine::addHeader( $diffBody, "<strong>$oldClass</strong>", "<strong>$newClass</strong>" );
-
-			$sideBySide = '<table class="wikitable" width="100%">' . 
-				'<col width="50%"/>' . 
-				'<col width="50%"/>' . 
-				'<tr><th>' . htmlspecialchars( $oldClass ) . '</th>' . 
-				'<th>' . htmlspecialchars( $newClass ) . '</th></tr>' .
-				'<tr>' .
-				'<td><div style="overflow: auto">' . $oldResult . '</div></td>' . 
-				'<td><div style="overflow: auto">' . $newResult . '</div></td>' . 
-				'</tr></table>';
 		}
+
+		$sideBySide = '<table class="wikitable" width="100%">' . 
+			'<col width="50%"/>' . 
+			'<col width="50%"/>' . 
+			'<tr><th>' . htmlspecialchars( $oldClass ) . '</th>' . 
+			'<th>' . htmlspecialchars( $newClass ) . '</th></tr>' .
+			'<tr>' .
+			'<td><div style="overflow: auto">' . $oldResult . '</div></td>' . 
+			'<td><div style="overflow: auto">' . $newResult . '</div></td>' . 
+			'</tr></table>';
 
 		
 		$wgOut->addHTML( 
@@ -112,6 +111,7 @@ class ParserDiffTest extends SpecialPage
 	function parse( $parser, $text, $title ) {
 		$options = new ParserOptions;
 		$options->setTidy( true );
+		$options->setEditSection( true );
 		$output = $parser->parse( $text, $title, $options );
 		return $output->getText();
 	}
