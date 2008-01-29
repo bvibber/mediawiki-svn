@@ -172,7 +172,7 @@ class File_Ogg_Vorbis extends File_Ogg_Media
             (( '0x' . substr( $this->_lastGranulePos, 0, 8 ) ) * pow(2, 32) 
             + ( '0x' . substr( $this->_lastGranulePos, 8, 8 ) ))
             / $this->_idHeader['audio_sample_rate'];
-        $this->_avgBitrate      = ($this->_streamSize * 8) / $this->_streamLength;
+        $this->_avgBitrate      = $this->_streamLength ? ($this->_streamSize * 8) / $this->_streamLength : 0;
     }
 
     /**

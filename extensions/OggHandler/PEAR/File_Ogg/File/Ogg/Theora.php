@@ -54,8 +54,8 @@ class File_Ogg_Theora extends File_Ogg_Media
         // First make some "numeric strings"
         // These might not fit into PHP's integer type, but they will fit into 
         // the 53-bit mantissa of a double-precision number
-        $topWord = '0x' . substr( $this->_lastGranulePos, 0, 8 );
-        $bottomWord = '0x' . substr( $this->_lastGranulePos, 8, 8 );
+        $topWord = floatval( '0x' . substr( $this->_lastGranulePos, 0, 8 ) );
+        $bottomWord = floatval( '0x' . substr( $this->_lastGranulePos, 8, 8 ) );
         // Calculate the keyframe position by shifting right by KFGSHIFT
         // We don't use PHP's shift operators because they're terribly broken
         // This is made slightly simpler by the fact that KFGSHIFT < 32
@@ -67,7 +67,7 @@ class File_Ogg_Theora extends File_Ogg_Media
         // They didn't teach you that one at school did they?
         // Now put it together with the frame rate to calculate length in seconds
         $this->_streamLength = ( $keyFramePos + $offset ) / $this->_frameRate;
-        $this->_avgBitrate = ($this->_streamSize * 8) / $this->_streamLength;
+        $this->_avgBitrate = $this->_streamLength ? ($this->_streamSize * 8) / $this->_streamLength : 0;
     }
 
     /**
