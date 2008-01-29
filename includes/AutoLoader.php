@@ -382,6 +382,7 @@ function __autoload($className) {
 		'ApiUploadFile' => 'includes/api/ApiUploadFile.php',
 		'ApiTalk' 		=>	'includes/api/ApiTalk.php',
 		'ApiQueryRandomPage' => 'includes/api/ApiQueryRandomPage.php',
+		'SpecialEditTest' => 'includes/SpecialEditTest.php',
 	);
 	
 	wfProfileIn( __METHOD__ );

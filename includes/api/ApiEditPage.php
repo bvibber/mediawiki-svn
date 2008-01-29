@@ -56,9 +56,9 @@ class ApiEditPage extends ApiBase {
 	}
 
 	public function execute() {
+		global $wgUser;
 		# TODO: ConfirmEdit support
 		# TODO: Watch/stopwatching support + respect prefs
-		global $wgUser;
 		$this->getMain()->requestWriteMode();
 
 		$params = $this->extractRequestParams();
