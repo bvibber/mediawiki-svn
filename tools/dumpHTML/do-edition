@@ -12,10 +12,12 @@ edition = sys.argv[1]
 
 threads = {
 	"localhost": 4,
-	"srv122": 2,
-	"srv123": 2,
-	"srv124": 2,
-	"srv125": 2
+	"srv131": 2,
+	"srv132": 2,
+	"srv133": 2,
+	"srv134": 2,
+	"srv135": 2,
+	"srv136": 2
 }
 
 # Create some directories
@@ -23,6 +25,11 @@ try: os.makedirs(base + "/logs")
 except: pass
 try: os.makedirs(base + "/checkpoints")
 except: pass
+
+# Set up in_progress symlink
+try: os.unlink(base+'/downloads/in_progress')
+except: pass
+os.symlink(base+'/downloads/'+edition, base+'/downloads/in_progress')
 
 # Start queue server
 print "Starting queue server"
@@ -77,4 +84,9 @@ except KeyboardInterrupt:
 
 # All done, kill queue server
 os.kill(queueServer, signal.SIGKILL)
+
+# Set up current symlink
+os.unlink(base+'/downloads/in_progress')
+os.unlink(base+'/downloads/current')
+os.symlink(base+'/downloads/'+edition, base+'/downloads/current')
 

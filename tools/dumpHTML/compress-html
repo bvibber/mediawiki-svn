@@ -13,15 +13,13 @@ site=wikipedia
 base=/mnt/static
 sitebase=$base/$site
 dest=$base/downloads/$edition/$lang
+p7zip=$base/scripts/7za-readdir-hack
 
 mkdir -p $dest
 
 echo Finding files...
 cd $sitebase
 find $lang -name \*.html > $dest/html.lst
-
-#echo Filtering...
-#php scripts/filterNamespaces.php $lang wikipedia $dest/html.lst > $dest/reduced.lst
 
 find $lang/skins $lang/images -follow -type f \
 	-not \( -name \*.php -or -name \*.xcf -or -name .\* -or -name \*~ -or \
@@ -34,12 +32,11 @@ echo Creating HTML archive...
 rm -f $dest/wikipedia-$lang-html.7z
 
 # Set chunk size to 8MB for faster random access
-7za -l -ms8m a $dest/wikipedia-$lang-html.7z @$dest/html.lst @$dest/skins.lst
+$p7zip -l -ms8m a $dest/wikipedia-$lang-html.7z @$dest/html.lst @$dest/skins.lst
 
-#if [ ! -e $dest/wikipedia-$lang-reduced.7z ];then
-#	echo
-#	echo Creating reduced archive...
-#	7z -l a $dest/wikipedia-$lang-reduced.7z @$dest/reduced.lst @$dest/skins.lst
-#fi
-
+fileCount=`wc -l /mnt/static/downloads/$edition/$lang/html.lst | awk '{print $1}'` 
+if [ $fileCount -gt 2000000 ]; then
+	echo "Creating split archives"
+	$base/scripts/compress-volumes "$lang" "$edition"
+fi
 

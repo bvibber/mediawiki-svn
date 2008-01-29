@@ -6,8 +6,8 @@ $wgNoDBParam = true;
 require_once( '/home/wikipedia/common/php/maintenance/commandLine.inc' );
 
 $wikiList = array_map( 'trim', file( '/home/wikipedia/common/wikipedia.dblist' ) );
-$yaseo = array_map( 'trim', file( '/home/wikipedia/common/yaseo.dblist' ) );
-$wikiList = array_diff( $wikiList, $yaseo );
+$private = array_map( 'trim', file( '/home/wikipedia/common/private.dblist' ) );
+$wikiList = array_diff( $wikiList, $private );
 
 $targetQueueSize = 20;
 $maxArticlesPerJob = 10000;
@@ -39,6 +39,12 @@ if ( $wikiSizes ) {
 		$wikiSizes[$wiki] = $db->selectField( "`$wiki`.site_stats", 'ss_total_pages' );
 	}
 	file_put_contents( "$baseDir/checkpoints/wikiSizes", serialize( $wikiSizes ) );
+}
+
+# Temporary special case hack
+unset($wikiSizes['wikimania2007wiki']);
+foreach ( $private as $wiki ) {
+	unset( $wikiSizes[$wiki] );
 }
 
 # Compute job array

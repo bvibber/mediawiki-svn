@@ -10,8 +10,9 @@ def redirectOutput(fileName):
 	os.dup2(fd,2)
 
 def dumpHTML(outputFile, *params):
-	fullParams = ["nice", "-n15", "php","-n","dumpHTML.php"]
+	fullParams = ["nice", "-n15", "php","dumpHTML.php"]
 	fullParams.extend(params)
+	msg(" ".join(fullParams))
 	pid = os.fork()
 	if pid == 0:
 		redirectOutput(outputFile)
@@ -27,6 +28,8 @@ def dumpHTML(outputFile, *params):
 	# If the parent exited, then kill the child
 	if status == (0,0):
 		os.kill(pid, signal.SIGKILL)
+	elif os.WIFSIGNALED(status[1]):
+		msg("Process exited on signal %d" % os.WTERMSIG(status[1]))
 
 def finishWiki(outputFile, lang):
 	global edition, siteDir, baseDir
