@@ -606,20 +606,20 @@ function sosShowRevision( $revision ) {
 			$info .
 			"</ul>\n" .
 			$list );
-	    if ( $text === false ) {
-		$wgOut->addWikiText(wfmsg('hiderevision-error-missing'));
+		if ( $text === false ) {
+			$wgOut->addWikiText(wfmsg('hiderevision-error-missing'));
 		} else {
-		$wgOut->addHtml(
-			"<div>" .
-			wfOpenElement( 'textarea',
-				array(
-					'cols' => 80,
-					'rows' => 25,
-					'wrap' => 'virtual',
-					'readonly' => 'readonly' ) ) .
-			htmlspecialchars( $text ) .
-			wfCloseElement( 'textarea' ) .
-			"</div>" );
+			$wgOut->addHtml(
+				"<div>" .
+				wfOpenElement( 'textarea',
+					array(
+						'cols' => 80,
+						'rows' => 25,
+						'wrap' => 'virtual',
+						'readonly' => 'readonly' ) ) .
+				htmlspecialchars( $text ) .
+				wfCloseElement( 'textarea' ) .
+				"</div>" );
 		}
 	}
 	$dbr->freeResult( $result );

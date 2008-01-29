@@ -24,8 +24,8 @@ function wfGetDependingOnSkin () {
     global $wgCookiePrefix, $wgUser, $wgInPageEnabled ;
     
     /* do not forget about editor disabled from variable... */
-	if (!$wgInPageEnabled || !isset ($wgInPageEnabled)) {
-	return 0 ;
+    if (!$wgInPageEnabled || !isset ($wgInPageEnabled)) {
+        return 0 ;
     }
 
     if ($wgUser->getOption ('in-page', 2) == 2) {

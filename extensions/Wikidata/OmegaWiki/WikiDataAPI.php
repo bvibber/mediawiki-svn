@@ -96,7 +96,7 @@ function getTableNameWithObjectId($objectId) {
 	);
 	
 	if ($objectRecord = $dbr->fetchObject($queryResult))
-	return $objectRecord->table;
+		return $objectRecord->table;
 	else
 		return "";
 }

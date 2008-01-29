@@ -246,7 +246,7 @@ class spamRegexForm {
 
 					SRTextboxControl.onclick = function () {
 						if (!SRTextboxControl.checked) {
-						if (!SRSummaryControl.checked) {
+							if (!SRSummaryControl.checked) {
 								SRSummaryControl.checked = true ;
 							}
 						}

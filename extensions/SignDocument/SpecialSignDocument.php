@@ -30,26 +30,26 @@ class SignDocument extends SpecialPage {
 
 		$this->setHeaders();
 		if ( $wgUser->isAllowed( 'sigadmin' ) ) {
-		$this->mDocumentId = (int) $wgRequest->getVal( 'doc', null );
+			$this->mDocumentId = (int) $wgRequest->getVal( 'doc', null );
 		
-		if ( $this->mDocumentId && !is_null($wgRequest->getVal( 'viewsigs' )) ) {
-			$tmp = new SignatureViewer();
-			$tmp->execute();
-			return;
-		}
-
-		if ( $this->mDocumentId == null )
-			$this->showSelectDocument();
-		else if (!$wgRequest->wasPosted()) {
-			$this->mCurrentSig = SignDocumentSignature::newBasic();
-			$this->showSignForm();
-		}
-		else {
-			$this->dealWithPost();
-		}
+			if ( $this->mDocumentId && !is_null($wgRequest->getVal( 'viewsigs' )) ) {
+				$tmp = new SignatureViewer();
+				$tmp->execute();
+				return;
 			}
+
+			if ( $this->mDocumentId == null )
+				$this->showSelectDocument();
+			else if (!$wgRequest->wasPosted()) {
+				$this->mCurrentSig = SignDocumentSignature::newBasic();
+				$this->showSignForm();
+			}
+			else {
+				$this->dealWithPost();
+			}
+		}
 		else {
-		$wgOut->permissionRequired( 'sigadmin' );
+			$wgOut->permissionRequired( 'sigadmin' );
 		}
 	}
 

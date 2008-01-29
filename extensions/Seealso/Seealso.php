@@ -29,7 +29,7 @@ function wfSeealso () {
 	$wgParser->setHook ('seealso', 'parse_seealso' ) ;
 	$l = trim ( 'seealso-local', "" ) ;
 	if ( $l != "" )
-	$wgParser->setHook ( $l , 'parse_seealso' ) ;
+		$wgParser->setHook ( $l , 'parse_seealso' ) ;
 }
 
 function parse_seealso ( $text, $params, &$parser ) {

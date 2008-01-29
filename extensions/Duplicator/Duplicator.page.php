@@ -61,7 +61,7 @@ class SpecialDuplicator extends SpecialPage {
 
 		# If the token doesn't match or the form wasn't POSTed, stop
 		if( !$wgRequest->wasPosted() || !$wgUser->matchEditToken( $wgRequest->getVal( 'token' ), 'duplicator' ) )
-		return;
+			return;
 
 		# Check we've got a valid source title
 		if( is_object( $this->sourceTitle ) ) {

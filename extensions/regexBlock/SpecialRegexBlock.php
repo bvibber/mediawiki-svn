@@ -420,7 +420,7 @@ class regexBlockForm {
 
 		/* TODO - check infinite */
 		if ($this->mRegexBlockedExpire != 'infinite') {
-		$expiry = strtotime( $this->mRegexBlockedExpire );
+			$expiry = strtotime( $this->mRegexBlockedExpire );
 		if ( $expiry < 0 || $expiry === false ) {
 			$this->showForm( wfMsg( 'ipb_expiry_invalid' ) );
 			return;

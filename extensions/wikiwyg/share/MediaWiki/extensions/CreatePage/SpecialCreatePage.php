@@ -155,29 +155,29 @@ class CreatePageForm {
 		$titleObj = Title::makeTitle( NS_SPECIAL, 'Createpage' );
 		$action = $titleObj->escapeLocalURL( "action=submit" ) ;
 
-                if ( "" != $err ) {
-                        $wgOut->setSubtitle( wfMsgHtml( 'formerror' ) );
-                        $wgOut->addHTML( "<p class='error'>{$err}</p>\n" );
-                }
+		if ( "" != $err ) {
+			$wgOut->setSubtitle( wfMsgHtml( 'formerror' ) );
+			$wgOut->addHTML( "<p class='error'>{$err}</p>\n" );
+		}
 		$alternate_link = "<a href=\"#\" onclick=\"CreatePageNormalEdit(); return false;\" >".wfMsg ('createpage_here')."</a>" ;
 		$wgOut->addHTML ("<div id=\"createpage_subtitle\" style=\"display:none\">".wfMsg ('createpage_alternate_creation', $alternate_link)."</div>") ;
 
-	       	$edittime =  wfTimestamp(TS_MW, $this->mTimestamp) ;
+		$edittime =  wfTimestamp(TS_MW, $this->mTimestamp) ;
 		/* make a TagCloud html */
 		$cloud_html = "" ;
-	       	$MyCloud = new TagCloud ;
+		$MyCloud = new TagCloud ;
 		$num = 0 ;
 
-                if (is_array ($MyCloud->tags)) {
-                foreach ($MyCloud->tags as $name => $tag) {
-                        $cloud_html .= ("<span id=\"tag-$num\" style=\"font-size:". $tag["size"]."pt\">
-                                <a href=\"#\" id=\"cloud_$num\" onclick=\"CreatePageAddCategory ('$name', $num) ; return false ;\">$name</a>
-                                </span>
-                        ") ;
-                        $num++ ;
+		if (is_array ($MyCloud->tags)) {
+			foreach ($MyCloud->tags as $name => $tag) {
+				$cloud_html .= ("<span id=\"tag-$num\" style=\"font-size:". $tag["size"]."pt\">
+					<a href=\"#\" id=\"cloud_$num\" onclick=\"CreatePageAddCategory ('$name', $num) ; return false ;\">$name</a>
+					</span>
+				") ;
+				$num++ ;
 
-                }
-                }
+			}
+		}
 
 	       	$html = "
 <form name=\"editform\" method=\"post\" action=\"{$action}\">
@@ -253,7 +253,7 @@ class CreatePageForm {
 		$dbr =& wfGetDB (DB_SLAVE);
 		$exists = $dbr->selectField ('page', 'page_title', array ('page_title' => $page)) ;
 		if ($exists != '')
-		$wgOut->addHTML('pagetitleexists');
+			$wgOut->addHTML('pagetitleexists');
 	}
 
 	/* on success */

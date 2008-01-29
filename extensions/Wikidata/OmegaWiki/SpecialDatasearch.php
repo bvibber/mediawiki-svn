@@ -197,7 +197,7 @@ function wfSpecialDatasearch() {
 		}
 
 		function searchWords($text, $collectionId, $languageId) {
-		$dc=wdGetDataSetContext();
+			$dc=wdGetDataSetContext();
 			$dbr = &wfGetDB(DB_SLAVE);
 
 			$sql =

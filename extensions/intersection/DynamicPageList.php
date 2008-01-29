@@ -97,7 +97,7 @@ function DynamicPageList( $input ) {
 	{
 		$aParam = explode("=", $sParam);
 		if( count( $aParam ) < 2 )
-		continue;
+			continue;
 		$sType = trim($aParam[0]);
 		$sArg = trim($aParam[1]);
 		if ($sType == 'category')

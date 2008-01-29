@@ -50,7 +50,7 @@ function wfSajaxSearchImageFCKeditor( $term )
     $term = $term1;
 
     if ( strlen( str_replace( '_', '', $term ) )<3 )
-    return "";
+        return "";
 
     $db =& wfGetDB( DB_SLAVE );
     $res = $db->select( 'page', 'page_title',
