@@ -124,7 +124,12 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'asksql' => 'SQL-serĉomendo',
+	'asksql'          => 'SQL-serĉomendo',
+	'sqlislogged'     => 'Bonvolu noti ke ĉiuj serĉomendoj estas listigitaj en la loglibro.',
+	'sqlquery'        => 'Entajpu SQL-serĉomendon',
+	'querybtn'        => 'Sendu SQL-serĉomendon',
+	'selectonly'      => 'Nur nurlegecaj serĉomendoj estas permesitaj.',
+	'querysuccessful' => 'Serĉomendo sukcesas',
 );
 
 $messages['fi'] = array(

@@ -61,7 +61,7 @@ $messages['dsb'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'advancedrandom' => 'Progresa hazardpagxo',
+	'advancedrandom' => 'Progresa hazardpaĝo',
 );
 
 /** Finnish (Suomi)

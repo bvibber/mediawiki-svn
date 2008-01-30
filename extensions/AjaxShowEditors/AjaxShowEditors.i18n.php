@@ -86,8 +86,8 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'ajax-se-title'   => 'Nune redaktas:',
-	'ajax-se-pending' => 'atendas por refresxigo ... (klaku cxi tiun skatolon aux ekredaktu)',
-	'ajax-se-idling'  => '(antaux $1s)',
+	'ajax-se-pending' => 'atendas por refreŝigo ... (klaku ĉi tiun skatolon aŭ ekredaktu)',
+	'ajax-se-idling'  => '(antaŭ $1s)',
 );
 
 $messages['ext'] = array(
@@ -308,6 +308,13 @@ $messages['sv'] = array(
 	'ajax-se-title' => 'Redigeras just nu:',
 	'ajax-se-pending' => 'avvaktar omläsning ... (klicka på denna ruta eller börja redigera)',
 	'ajax-se-idling' => '($1s sedan)',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'ajax-se-idling' => '($1s క్రితం)',
 );
 
 /** Vietnamese (Tiếng Việt)

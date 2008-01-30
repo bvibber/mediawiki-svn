@@ -65,6 +65,14 @@ $messages['dsb'] = array(
 	'assert_edit_message' => 'Pódane twarźenje ($1) jo se njeraźiło.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'assert_edit_title' => 'Aserto malsukcesis',
+);
+
+
 # فارسی (Huji)
 $messages['fa'] = array(
 	'assert_edit_title'   => 'تایید ناموفق',
