@@ -336,9 +336,11 @@ $messages['ilo'] = array(
 	'createarticle' => 'Mangaramid iti articulo',
 );
 
-/** Icelandic (Íslenska) */
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
 $messages['is'] = array(
-	'createarticle' => 'Búa til grein',
+	'createarticle' => 'Búa til síðu',
 );
 
 /** Italian (Italiano)

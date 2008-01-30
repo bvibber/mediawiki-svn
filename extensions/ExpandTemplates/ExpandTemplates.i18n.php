@@ -349,6 +349,18 @@ $messages['id'] = array(
 	'expand_templates_remove_comments' => 'Buang komentar',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'expand_templates_input'           => 'Inntakstexti:',
+	'expand_templates_output'          => 'Útkoma',
+	'expand_templates_xml_output'      => 'XML-úttak',
+	'expand_templates_ok'              => 'Í lagi',
+	'expand_templates_remove_comments' => 'Fjarlægja athugasemdir',
+	'expand_templates_preview'         => 'Forskoða',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  * @author .anaconda

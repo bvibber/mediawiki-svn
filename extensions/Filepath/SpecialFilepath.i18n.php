@@ -252,10 +252,13 @@ $messages['id'] = array(
 );
 
 /** Icelandic (Íslenska)
+ * @author S.Örvarr.S
  * @author SPQRobin
  */
 $messages['is'] = array(
-	'filepath_page' => 'Skrá:',
+	'filepath'        => 'Slóð skráar',
+	'filepath_page'   => 'Skrá:',
+	'filepath_submit' => 'Slóð',
 );
 
 /** Italian (Italiano)

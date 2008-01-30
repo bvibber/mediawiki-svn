@@ -553,10 +553,13 @@ Menyebarkan informasi ini dapat berakibat kepada hilangnya hak pengawas.',
 
 /** Icelandic (Íslenska)
  * @author SPQRobin
+ * @author S.Örvarr.S
  */
 $messages['is'] = array(
+	'hiderevision-continue'      => 'Halda áfram',
 	'hiderevision-noreason'      => 'Þú verður að skilgreina ástæðu fyrir eyðingu.',
 	'hiderevision-error-missing' => 'Ekki fundið í skráasafni.',
+	'oversight-view'             => 'smáatriði',
 );
 
 /** Italian (Italiano)

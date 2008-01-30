@@ -224,6 +224,7 @@ $messages['fr'] = array(
 $messages['frp'] = array(
 	'newuserlogpage'           => 'Historico de les crèacions de comptos',
 	'newuserlogpagetext'       => 'Cen est un jornal de les crèacions de comptos utilisators.',
+	'newuserlog-byemail'       => 'mot de pâssa emmandâ per mèl',
 	'newuserlog-create-entry'  => 'Novél utilisator',
 	'newuserlog-create2-entry' => 'compto crèâ por $1',
 );
@@ -591,10 +592,14 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Mpradeep
  * @author Veeven
  */
 $messages['te'] = array(
-	'newuserlog-create-entry' => 'కొత్త వాడుకరి',
+	'newuserlogpage'           => 'కొత్త సభ్యుల లాగ్',
+	'newuserlogpagetext'       => 'ఇటీవలి కాలంలో నమోదైన సభ్యుల లాగ్ ఇది',
+	'newuserlog-create-entry'  => 'కొత్త వాడుకరి',
+	'newuserlog-create2-entry' => '$1 కోసం ఖాతా సృష్టించాం.',
 );
 
 $messages['tet'] = array(

@@ -211,6 +211,14 @@ $messages['hu'] = array(
 	'pdt_comparing_page'  => '[[$1]] kimeneteinek összehasonlítása',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'pdtest_text' => 'Inntakstexti:',
+	'pdtest_ok'   => 'Í lagi',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  */

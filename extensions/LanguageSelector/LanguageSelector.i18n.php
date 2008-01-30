@@ -89,6 +89,7 @@ $messages['fr'] = array(
  * @author Alma
  */
 $messages['gl'] = array(
+	'languageselector'         => 'Lingua',
 	'languageselector-setlang' => 'elexir',
 );
 

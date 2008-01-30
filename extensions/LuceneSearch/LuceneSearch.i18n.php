@@ -1191,11 +1191,24 @@ eller sök på wikin med någon extern söktjänst:
 );
 
 /** Telugu (తెలుగు)
+ * @author Mpradeep
  * @author Veeven
  */
 $messages['te'] = array(
-	'lucene-resultsize' => '$1 ($2 పదాలు)',
-	'searchall'         => 'అన్నీ',
+	'searchnumber'          => '<strong>$3 ఫలితాల్లో $1-$2</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>గత</span>",
+	'searchnext'            => "<span style='font-size: small'>తరువాతి</span> &#x00BB;",
+	'lucene-resultsize'     => '$1 ($2 పదాలు)',
+	'searchnoresults'       => 'క్షమించాలి, మీరడిగిన పదాలతో సరిగ్గా సరిపోయే ఫలితాలు లేవు. పదాలకు చివర "సున్నా" ఉన్నచోట "ము" పెట్టి, లేదా "ము" ఉంటే "సున్నా" పెట్టి, మళ్ళీ వెతకండి.',
+	'lucenepowersearchtext' => 'ఈ నేమ్ స్పేసుల్లో వెతుకు:
+
+$1
+
+$3 $9 $10 కొరకు వెతుకు',
+	'lucenefallback'        => 'వికీ అన్వేషణలో ఇబ్బంది ఉన్నది.
+ఇది తాత్కాలికము కావచ్చు; మళ్ళీ ఇంకొద్ది నిముషాల తరువాత ప్రయత్నించండి,
+లేదా ఏదైనా బయటి సెర్చి ఇంజను సాయంతో వికీని అన్వేషించండి:',
+	'searchall'             => 'అన్నీ',
 );
 
 $messages['ur'] = array(

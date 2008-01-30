@@ -555,11 +555,22 @@ $messages['hu'] = array(
 	'ogg-desc-link'           => 'Fájlinformációk',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ * @author Spacebirdy
+ */
 $messages['is'] = array(
-	'ogg-play' => 'Spila',
-	'ogg-pause' => 'gera hlé',
-	'ogg-play-sound' => 'Spila hljóð',
-	'ogg-more' => 'Meira...',
+	'ogg-play'              => 'Spila',
+	'ogg-pause'             => 'gera hlé',
+	'ogg-stop'              => 'Stöðva',
+	'ogg-play-video'        => 'Spila myndband',
+	'ogg-play-sound'        => 'Spila hljóð',
+	'ogg-player-soundthumb' => 'Enginn spilari',
+	'ogg-player-selected'   => '(valið)',
+	'ogg-use-player'        => 'Nota spilara:',
+	'ogg-more'              => 'Meira...',
+	'ogg-dismiss'           => 'Loka',
+	'ogg-download'          => 'Sækja skrá',
 );
 
 /** Italian (Italiano)
