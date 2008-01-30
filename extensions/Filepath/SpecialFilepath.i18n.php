@@ -531,11 +531,14 @@ Ange filens namn utan prefixet "{{ns:image}}:".',
 
 /** Telugu (తెలుగు)
  * @author Mpradeep
- * @author Veeven
  */
 $messages['te'] = array(
-	'filepath_page'   => 'ఫైలు:',
-	'filepath_submit' => 'పాత్',
+	'filepath'         => 'పూర్తి చిరునామా',
+	'filepath_page'    => '{{ns:image}}:',
+	'filepath_submit'  => 'చిరునామా',
+	'filepath-summary' => 'ఈ ప్రత్యేక పేజీలో ఫైళ్ల పేర్లు ఇస్తే వాటి పూర్తి చిరునామలు వస్తాయి. బొమ్మలైతే వాటి పూర్తి సైజుతో తెరుచుకుంటాయి, బొమ్మలు కాని ఇతర ఫైళ్లు వాటి అనుబంధ ప్రోగ్రాములతో తెరుచుకుంటాయి.
+
+పేరుకు ముందు "{{ns:image}}:" అని చేర్చవద్దు.',
 );
 
 /** Tonga (faka-Tonga)

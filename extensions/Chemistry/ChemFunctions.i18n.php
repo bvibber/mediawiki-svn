@@ -204,6 +204,13 @@ $messages['id'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Kesalahan pada masukan!',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'chemFunctions_Formula' => 'Formúla',
+);
+
 $messages['it'] = array(
 	'chemicalsources' => 'Informazioni sui composti chimici',
 	'chemFunctions_ListPage' => 'Informazioni sui composti chimici',
@@ -430,7 +437,8 @@ $messages['stq'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'chemicalsources' => 'రసాయన మూలాలు',
+	'chemicalsources'       => 'రసాయన మూలాలు',
+	'chemFunctions_Formula' => 'సూత్రం',
 );
 
 /** Turkish (Türkçe)

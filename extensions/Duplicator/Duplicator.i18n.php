@@ -174,11 +174,12 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Tlustulimu
+ * @author Yekrats
  */
 $messages['eo'] = array(
-	'duplicator'                       => 'Duobligu artikolon',
-	'duplicator-toolbox'               => 'Duobligu ĉi tiun artikolon',
-	'duplicator-header'                => 'Ĉi tiu paĝo permesas kompletan duobligon de artikolo, kreante sendependajn kopiojn de ĉiuj historioj. Ĉi tio estas utila por artikola disigo, ktp.',
+	'duplicator'                       => 'Duplikatu paĝon',
+	'duplicator-toolbox'               => 'Duplikatu ĉi paĝon',
+	'duplicator-header'                => 'Ĉi paĝo permesas la tutan dupklikatadon de paĝo, kreante sendependajn kopiojn de ĉiuj historioj. Estus utila por disigo de artikoloj, ktp.',
 	'duplicator-options'               => 'Preferoj',
 	'duplicator-source'                => 'Fonto:',
 	'duplicator-dest'                  => 'Destino:',
@@ -619,6 +620,31 @@ $messages['stq'] = array(
 	'duplicator-dest-invalid'          => 'Reek ne gultige Siel-Siede an.',
 	'duplicator-dest-exists'           => 'Ju Siede [[$1]] bestoant al. Reek ne nit bestoundende Siede an.',
 	'duplicator-toomanyrevisions'      => 'Ju Siede [[$1]] häd $2 Versione, un kon deeruum nit duplizierd wäide. Der konnen bloot Sieden mäd maximoal $3 Versione duplizierd wäide.',
+);
+
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'duplicator'                       => 'Duplicera en sida',
+	'duplicator-toolbox'               => 'Duplicera denna sida',
+	'duplicator-header'                => 'Med den här specialsidan är det möjligt att duplicera en sida, och på så sätt skapa två oberoende versioner av hela dess historik. Det kan vara användbart t.ex. om en sida ska delas upp på flera sidor.',
+	'duplicator-options'               => 'Alternativ',
+	'duplicator-source'                => 'Källsida:',
+	'duplicator-dest'                  => 'Målsida:',
+	'duplicator-dotalk'                => 'Duplicera (om möjligt) även diskussionssidan',
+	'duplicator-submit'                => 'Duplicera',
+	'duplicator-summary'               => 'Kopierad från [[$1]]',
+	'duplicator-success'               => "<big>'''[[$1]] kopierades till [[$2]].'''</big>",
+	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|sidversion|sidversioner}} kopierades.',
+	'duplicator-success-talkcopied'    => 'Diskussionssidan kopierades också.',
+	'duplicator-success-talknotcopied' => 'Diskussionssidan kunde inte dupliceras.',
+	'duplicator-failed'                => 'Sidan kunde inte dupliceras. Ett okänt fel inträffade.',
+	'duplicator-source-invalid'        => 'Du har inte angivit någon giltig källsida.',
+	'duplicator-source-notexist'       => '[[$1]] finns inte. Du måste ange en källsida som existerar.',
+	'duplicator-dest-invalid'          => 'Du har inte angivit någon giltig målsida.',
+	'duplicator-dest-exists'           => '[[$1]] finns redan. Du måste ange en målsida som inte finns.',
+	'duplicator-toomanyrevisions'      => '[[$1]] kan inte dupliceras eftersom den har för många ($2) versioner. Gränsen för duplicering är $3 sidversioner.',
 );
 
 /** Turkish (Türkçe)

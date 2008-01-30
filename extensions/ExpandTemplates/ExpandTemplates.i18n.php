@@ -291,7 +291,7 @@ $messages['hr'] = array(
 uključujući i (rekurzivno, tj. potpuno) sve uključene predloške u wikitekstu.
 Prikazuje i rezultate funkcija kao <nowiki>{{</nowiki>#if:...}} i varijabli
 kao <nowiki>{{</nowiki>CURRENTDAY}}. Funkcionira pozivanjem parsera same MedijeWiki.',
-	'expand_templates_title'           => 'Kontekstni naslov, za {{PAGENAME}} itd.:',
+	'expand_templates_title'           => 'Kontekstni naslov stranice, za {{PAGENAME}} i sl.:',
 	'expand_templates_input'           => 'Ulazni tekst:',
 	'expand_templates_output'          => 'Rezultat',
 	'expand_templates_xml_output'      => 'XML kod',
@@ -756,24 +756,25 @@ $messages['to'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Erkan Yilmaz
  * @author Karduelis
  */
 $messages['tr'] = array(
-	'expand_templates_input'   => 'Giriş metni:',
-	'expand_templates_output'  => 'Sonuç',
-	'expand_templates_preview' => 'Ön izleme',
+	'expand_templates_input'           => 'Giriş metni:',
+	'expand_templates_output'          => 'Sonuç',
+	'expand_templates_xml_output'      => 'XML üretim',
+	'expand_templates_ok'              => 'Tamam',
+	'expand_templates_remove_comments' => 'Yorumları sil',
+	'expand_templates_preview'         => 'Ön izleme',
 );
 
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
+ * @author Minh Nguyen
  */
 $messages['vi'] = array(
 	'expandtemplates'                  => 'Bung tiêu bản',
-	'expand_templates_intro'           => 'Trang đặc biệt này sẽ nhận vào một đoạn văn bản và bung 
-tất cả các tiêu bản trong nó ra một cách đệ quy cho đến hết. 
-Nó cũng bung cả những hàm cú pháp như <nowiki>{{</nowiki>#if:...}}, và những biến số như
-<nowiki>{{</nowiki>CURRENTDAY}}&mdash;thực ra cũng là các dữ liệu bình thường đặt
-trong ngoặc móc. Nó thực hiện điều này bằng cách gọi tầng dịch cú pháp từ chính MediaWiki',
+	'expand_templates_intro'           => 'Trang đặc biệt này sẽ nhận vào một đoạn văn bản và bung tất cả các tiêu bản trong nó ra một cách đệ quy cho đến hết. Nó cũng bung cả những hàm cú pháp như <nowiki>{{</nowiki>#if:…}}, và những biến số như <nowiki>{{</nowiki>CURRENTDAY}}&nbsp;– thực ra cũng là các dữ liệu bình thường đặt trong ngoặc móc. Nó thực hiện điều này bằng cách gọi tầng dịch cú pháp từ chính MediaWiki.',
 	'expand_templates_title'           => 'Tựa đề, đối với {{PAGENAME}}, v.v.:',
 	'expand_templates_input'           => 'Văn bản nhập:',
 	'expand_templates_output'          => 'Kết quả',

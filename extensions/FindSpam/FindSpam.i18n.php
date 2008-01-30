@@ -161,6 +161,13 @@ $messages['stq'] = array(
 	'findspam-notextfound' => 'Neen Biedraage fuunen',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'findspam-ip' => 'IP-adress:',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */
