@@ -172,6 +172,16 @@ $messages['oc'] = array(
 	'intersection_noincludecats' => 'DynamicPageList : avètz besonh d’inclòure al mens una categoria, o de precisar un nom d’espaci !',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: Zbyt wiele kategorii!',
+	'intersection_toofewcats'    => 'DynamicPageList: Zbyt mało kategorii!',
+	'intersection_noresults'     => 'DynamicPageList: Brak wyników!',
+	'intersection_noincludecats' => 'DynamicPageList: Musisz załączyć co najmniej jedną kategorię lub określić przestrzeń nazw!',
+);
+
 /** Portuguese (Português)
  * @author 555
  */
@@ -220,6 +230,16 @@ $messages['sv'] = array(
 	'intersection_toofewcats'    => 'DynamicPageList: För få kategorier!',
 	'intersection_noresults'     => 'DynamicPageList: Inga resultat!',
 	'intersection_noincludecats' => 'DynamicPageList: Du måste inkludera minst en kategori eller ange en namnrymd!',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: Nhiều thể loại quá!',
+	'intersection_toofewcats'    => 'DynamicPageList: Ít thể loại quá!',
+	'intersection_noresults'     => 'DynamicPageList: Không tìm thấy trang nào!',
+	'intersection_noincludecats' => 'DynamicPageList: Cần phải bao gồm ít nhất một thể loại hay định rõ một không gian tên!',
 );
 
 $messages['de-formal'] = $messages['de'];

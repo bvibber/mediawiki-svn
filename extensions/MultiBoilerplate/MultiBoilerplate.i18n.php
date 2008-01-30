@@ -58,3 +58,18 @@ $messages['nl'] = array(
 	'multiboilerplate-submit' => 'Laden',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'multiboilerplate-legend' => 'Выбор образца',
+	'multiboilerplate-submit' => 'Загрузить',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'multiboilerplate-legend' => 'Vyberte nápis',
+	'multiboilerplate-submit' => 'Načítať',
+);

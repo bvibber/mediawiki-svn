@@ -58,6 +58,14 @@ $messages['gl'] = array(
 	'mediafunctions-not-exist'     => '"$1" non existe',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dnik
+ */
+$messages['hr'] = array(
+	'mediafunctions-invalid-title' => '"$1" nije ispravan naslov',
+	'mediafunctions-not-exist'     => '"$1" ne postoji',
+);
+
 $messages['hsb'] = array(
 	'mediafunctions-invalid-title' => '"$1" płaćiwe mjeno njeje.',
 	'mediafunctions-not-exist'     => '"1" njeeksistuje',

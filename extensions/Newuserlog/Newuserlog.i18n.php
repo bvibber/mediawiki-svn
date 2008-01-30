@@ -206,9 +206,14 @@ $messages['fo'] = array(
 	'newuserlog-create-entry'  => 'Nýggjur brúkari',
 );
 
+/** French (Français)
+ * @author Hégésippe Cormier
+ * @author Grondin
+ */
 $messages['fr'] = array(
 	'newuserlogpage'           => 'Historique des créations de comptes',
 	'newuserlogpagetext'       => 'Journal des créations de comptes utilisateurs.',
+	'newuserlog-byemail'       => 'mot de passe envoyé par courriel',
 	'newuserlog-create-entry'  => 'Nouvel utilisateur',
 	'newuserlog-create2-entry' => 'compte créé pour $1',
 );
@@ -230,9 +235,14 @@ $messages['ga'] = array(
 	'newuserlog-create-entry' => 'Úsáideoir nua',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Prevert
+ */
 $messages['gl'] = array(
 	'newuserlogpage'           => 'Rexistro de usuarios',
 	'newuserlogpagetext'       => 'Este é un rexistro de creación de usuarios',
+	'newuserlog-byemail'       => 'contrasinal enviado por correo electrónico',
 	'newuserlog-create-entry'  => 'Novo usuario',
 	'newuserlog-create2-entry' => 'creada conta para $1',
 );
@@ -259,9 +269,13 @@ $messages['hr'] = array(
 	'newuserlog-create2-entry' => 'kreiran je novi suradnik $1',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'newuserlogpage'           => 'Protokol nowych wužiwarjow',
 	'newuserlogpagetext'       => 'To je protokol wutworjenja nowych wužiwarskich kontow.',
+	'newuserlog-byemail'       => 'Hesło z e-mejlku pósłane',
 	'newuserlog-create-entry'  => 'nowy wužiwar',
 	'newuserlog-create2-entry' => 'je konto za wužiwarja [[$1]] wutworił',
 );
@@ -426,9 +440,14 @@ $messages['myv'] = array(
 	'newuserlog-create-entry' => 'Од совиця',
 );
 
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Siebrand
+ */
 $messages['nl'] = array(
 	'newuserlogpage'           => 'Logboek nieuwe gebruikers',
 	'newuserlogpagetext'       => 'Hieronder staan de nieuw ingeschreven gebruikers',
+	'newuserlog-byemail'       => 'wachtwoord is verzonden per e-mail',
 	'newuserlog-create-entry'  => 'Nieuwe gebruiker',
 	'newuserlog-create2-entry' => 'heeft gebruiker $1 ingeschreven',
 );
@@ -492,16 +511,25 @@ $messages['ro'] = array(
 	'newuserlog-create2-entry' => 'a deschis cont pentru $1',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
 $messages['ru'] = array(
 	'newuserlogpage'           => 'Журнал регистрации участников',
 	'newuserlogpagetext'       => 'Список недавно зарегистрировавшихся участников',
+	'newuserlog-byemail'       => 'пароль отправлен по эл. почте',
 	'newuserlog-create-entry'  => 'Новый участник',
 	'newuserlog-create2-entry' => 'cоздал новую учётную запись: $1',
 );
 
+/** Slovak (Slovenčina)
+ * @author Robbot
+ * @author Helix84
+ */
 $messages['sk'] = array(
 	'newuserlogpage'           => 'Záznam vytvorených používateľov',
 	'newuserlogpagetext'       => 'Toto je záznam naposledy vytvorených používateľských účtov',
+	'newuserlog-byemail'       => 'heslo poslané emailom',
 	'newuserlog-create-entry'  => 'Nový používateľ',
 	'newuserlog-create2-entry' => 'Bol vytvorený účet pre $1',
 );
@@ -567,6 +595,16 @@ $messages['tet'] = array(
 	'newuserlog-create2-entry' => 'registrar uza-na\'in $1',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'newuserlogpage'           => 'Гузориши эҷоди корбар',
+	'newuserlogpagetext'       => 'Ин гузориш аз номҳои корбарии тозасохташуда аст',
+	'newuserlog-create-entry'  => 'Корбари нав',
+	'newuserlog-create2-entry' => 'Барои $1 ҳисоби корбарӣ эҷод шуд',
+);
+
 /** Tonga (faka-Tonga)
  * @author SPQRobin
  */
@@ -603,10 +641,12 @@ $messages['vec'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
+ * @author Minh Nguyen
  */
 $messages['vi'] = array(
 	'newuserlogpage'           => 'Nhật trình mở tài khoản',
 	'newuserlogpagetext'       => 'Đây là danh sách những tài khoản thành viên mở lên gần đây',
+	'newuserlog-byemail'       => 'gửi mật khẩu qua thư điện tử',
 	'newuserlog-create-entry'  => 'Tài khoản mới',
 	'newuserlog-create2-entry' => 'đã tạo tài khoản mới với tên $1',
 );
@@ -623,6 +663,7 @@ $messages['vls'] = array(
 $messages['vo'] = array(
 	'newuserlogpage'           => 'Lised gebanijafamas',
 	'newuserlogpagetext'       => 'Is palisedons jafams gebanas nulik',
+	'newuserlog-byemail'       => 'letavöd pesedon me pot leäktronik',
 	'newuserlog-create-entry'  => 'Geban nulik',
 	'newuserlog-create2-entry' => 'ejafon kali gebane: $1',
 );

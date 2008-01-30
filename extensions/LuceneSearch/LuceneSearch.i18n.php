@@ -1208,6 +1208,29 @@ $messages['ur'] = array(
 	'lucenepowersearchtext' => 'تلاش کریں، فضاۓ نام : $1 میں براۓ $3 $9 $10',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'searchnumber'          => '<strong>Kết quả từ $1 đến $2 trong tổng số $3</strong>',
+	'searchprev'            => '« <span style="font-size: small;">Trước</span>',
+	'searchnext'            => '<span style="font-size: small;">Tiếp</span> »',
+	'lucene-searchscore'    => 'Độ phù hợp: $1%',
+	'lucene-resultsize'     => '$1 ($2 chữ)',
+	'searchdidyoumean'      => 'Bạn có muốn “<a href="$1">$2</a>” không?',
+	'searchnoresults'       => 'Không tìm thấy trang nào trùng với truy vấn của bạn.',
+	'searchnearmatches'     => '<b>Các trang ở dưới có tên giống truy vấn của bạn:</b>',
+	'lucenepowersearchtext' => 'Tìm trong không gian tên:
+
+$1
+
+Tìm $3 $9',
+	'lucenefallback'        => 'Công cụ tìm kiếm trong wiki gặp khó khăn. Chắc vấn đề này chỉ tạm thời; xin hãy thử lát nữa, hoặc tìm kiếm trong wiki dùng công cụ tìm kiếm bên ngoài:',
+	'searchexactcase'       => 'Phân biệt hoa/thường',
+	'searchall'             => 'Tất cả',
+	'searchincategory'      => 'Trong thể loại',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  * @author Malafaya
