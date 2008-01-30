@@ -9,7 +9,6 @@
  * $Date: 2007-09-10 15:45:49 -0400 (Mon, 10 Sep 2007) $
  * $Rev: 3219 $
  */
-
 // Map over jQuery in case of overwrite
 if ( typeof jQuery != "undefined" )
 	var _jQuery = jQuery;

@@ -108,7 +108,12 @@ mvPlayList.prototype = {
 	    //get and parse the src playlist *and update the page*
 	    return this;	    
 	},
-	
+	//run inheritEmbedObj on every clip (we have changed the playback method) 
+	inheritEmbedObj:function(){
+		$j.each(this.tracks[0].clips, function(i,clip){	
+			clip.embed.inheritEmbedObj();
+		});
+	},
 	//set up the skeleton mvPlayList structure: 
 	//@@todo make videoTrack a proper object 
 	/*

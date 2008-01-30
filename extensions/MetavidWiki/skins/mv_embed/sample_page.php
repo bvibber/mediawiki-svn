@@ -20,7 +20,7 @@ Here are some sample embeds:<br>
 <? 
 $sample_embed = array(); 
 
-$sample_embed[0]['tag']='<video id="v1" src="'.$mv_path.'sample.ogg"></video>';
+$sample_embed[0]['tag']='<video id="v1" src="sample.ogg"></video>';
 $sample_embed[0]['desc']='basic usage with manual controls:<br>'. 
 					'<a href="javascript:document.getElementById(\'v1\').play();">Play</a> | '.
 					'<a href="javascript:document.getElementById(\'v1\').stop();">Stop</a> <br>';
@@ -50,7 +50,7 @@ $sample_embed[3]['desc'] = '<b>RSS</b> a podcast like dynamic feed for "peace"<b
 
 $plurl ='http://metavid.ucsc.edu/m3u/filters/filter_seq?filters[0][type]=match&filters[0][val]=war&start=0&rpp=10'; 
 $sample_embed[4]['tag'] = '<playlist id="warplaylist" src="'.$plurl.'"/>';
-$sample_embed[4]['desc'] = '<b>m3u</b> dynamic playlist search for "war"<br> <textarea cols="70" rows="9">'.file_get_contents($plurl).'</textarea>';
+//$sample_embed[4]['desc'] = '<b>m3u</b> dynamic playlist search for "war"<br> <textarea cols="70" rows="9">'.file_get_contents($plurl).'</textarea>';
 
 $sample_embed[5]['tag'] ='<playlist id="inline_pl">
 <!-- (hide from html rendering)
@@ -60,10 +60,12 @@ $sample_embed[5]['tag'] ='<playlist id="inline_pl">
 
 #mvclip special for metavid clips can be refreces with a single key attribute  
 |mvClip=senate_proceeding_12-07-06?t=04:46:27/04:46:58
+|image=http://metavid.ucsc.edu/image_media/senate_proceeding_12-07-06?t=04:46:27&size=320x240
 |title=I fancy Pencils 
 
 #new clips are start with |mvclip or |clip_src (everything after will apply to that clip) 
 |mvClip=house_proceeding_02-05-07_00?t=0:02:00/0:02:30
+|image=http://metavid.ucsc.edu/image_media/house_proceeding_02-05-07_00?t=0:02:00&size=320x240
 |desc=budget is like swiss cheese 
 but smells like limburger
 
@@ -84,7 +86,7 @@ $sample_embed[5]['desc'] = '<b>Inline Playlist:</b> for more info see <a href="h
 ?>
   <table border="1" cellpadding="6" width="600">
   	<? foreach($sample_embed as $key=>$aval){
-  		if($key>=3)break;	
+  		if($key>=1)break;	
   	 ?>
 	    <tr>    	
 	      <td><?=$aval['tag']?></td>
@@ -95,7 +97,7 @@ $sample_embed[5]['desc'] = '<b>Inline Playlist:</b> for more info see <a href="h
 	      </td>
 	    </tr>
 	    <? //oput a seperator between video and playlist
-	    if ($key==1){
+	    if ($key==5){
 	    	echo '<tr><td colspan="2"><b>Sample Playlists:</b></td></tr>';
 	    }
    } ?>  

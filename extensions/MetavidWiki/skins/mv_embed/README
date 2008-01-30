@@ -1,23 +1,31 @@
 ***********************************************
-/*
- * mv_embed version .5
- * for details see: http://metavid.ucsc.edu/wiki/index.php/Mv_embed 
- * and this README
- *
- * All Metavid Wiki code is Released under the GPL2
- * for more info visit http:/metavid.ucsc.edu/code
- * 
- * @author Michael Dale
- * @email dale@ucsc.edu
- * @url http://metavid.ucsc.edu
- * 
-*/
+*
+* mv_embed version .6
+* for details see: http://metavid.ucsc.edu/wiki/index.php/Mv_embed 
+* and this README
+*
+* All Metavid Wiki code is Released under the GPL2
+* for more info visit http:/metavid.ucsc.edu/code
+* 
+* @author Michael Dale
+* @email dale@ucsc.edu
+* @url http://metavid.ucsc.edu
+* 
+*
 *********************************************
+v.6
+* added msg system for compatibility with translations 
+* add support for relative file or path names for media files for cortado.
+* added support for safari 
+** will force load javascript instead of DOM injection 
+** slower on pages without video clips
+* added "experimental" support for "sequences" and editing. (see http://metavid.ucsc.edu/blog/ 
+* improved playlists usage 
 
 v.5
 * add support for playlists, basic usage: <playlist id="plid" src="playlist.xml"/>
 	* see sample_page.php for example usage of playlist
-* better support for diffrent resolutions. 
+* better support for different resolutions. 
 * inline playlist: 
 
 for details see: http://metavid.ucsc.edu/wiki/index.php/Mv_embed 
@@ -47,7 +55,7 @@ I try to include a link to their Javascript apis if I can find one:
 (initially just cortado and vlc) 
 cortado applet: a custom build of the fluendos java based applet 
 (included with the mv_embed package in the future we should get a signed applet hosted
-so that cross domain video playing does not require a copy of cortado on that server) 
+so that cross domain video playing does not require a copy of cortado+iframe on that server) 
     http://www.flumotion.net/cortado/
 
 vlc plugin: video lan client plugin

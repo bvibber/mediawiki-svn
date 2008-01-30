@@ -7,7 +7,7 @@
  * for more info visit http:/metavid.ucsc.edu/code
  *
  * @url http://metavid.ucsc.edu
- *
+ * 
  * portions sampled from the vlc browser interface:
  * http://people.videolan.org/~damienf/plugin-0.8.6.html *
  *
@@ -35,7 +35,7 @@ gMsg['loading_txt'] ='loading<blink>...</blink>';
 gMsg['select_playback']='Set Playback Prefrence';
 gMsg['link_back']='Link Back';
 gMsg['error_load_lib']='mv_embed: unable to load required javascript libraries\n'+
-			 	'insert script via DOM has failed ';
+			 	'insert script via DOM has failed, try reloading?  ';
 //plugin names:
 gMsg['ogg-player-vlc-mozilla']='VLC Plugin';
 gMsg['ogg-player-videoElement']='Native Ogg Video Support';
@@ -87,6 +87,65 @@ var video_attributes = {
     "download_link":true
 };
 
+//the mvEmbed object drives basic loading of libs:
+var mvEmbed = {
+  Version: '0.6',  
+  loaded:false,
+  load_time:0,
+  flist:Array(),
+  load_callback:false,
+  loading:false, 
+  //plugin libs var names and paths:
+  lib_jquery:{'window.jQuery':'jquery/jquery-1.2.1.js'},
+  lib_plugins:{		
+	'$j.fn.offsetParent':'jquery/plugins/jquery.dimensions.js',
+	'$j.ui.mouseInteraction':'jquery/plugins/ui.mouse.js',
+	'$j.ui.slider':'jquery/plugins/ui.slider.js'		
+  },
+  pc:null, //used to store pointer to parent clip (when in playlist mode) 
+  load_libs:function(callback){
+  	if(callback)this.load_callback = callback;
+ 	//two loading stages, first get jQuery
+	var _this = this;
+  	mvJsLoader.doLoad(this.lib_jquery,function(){
+  		//once jQuery is loaded set up no conflict & load plugins: 
+ 		_global['$j'] = jQuery.noConflict();
+		mvJsLoader.doLoad(_this.lib_plugins, function(){			
+			mvEmbed.init();
+		});	
+  	});	    		
+  },
+  userSetPlayerType:function(player){
+  	//callback to the embedType obj to set the cookie/pref: 
+  	embedTypes.userSetPlayerType(player);
+  	//fade out all pref windows and remove: 
+  	$j('.set_ogg_player_pref').fadeOut('slow',function(){
+  			$j(this).remove();
+  	});  	
+  	//@@todo temporarily disable playback or set all to loading...
+
+	//request the new player library: 
+	var plugins={};
+	plugins[embedTypes.getPlayerLib()+'Embed']='mv_'+embedTypes.getPlayerLib()+'Embed.js';
+  	mvJsLoader.doLoad(plugins, function(){
+  		js_log("done loading: " + embedTypes.getPlayerLib());
+  		//re-rewrite all the video objects on the page: 
+	  	for(i in global_ogg_list){
+	  		js_log('selector: '+'#'+global_ogg_list[i]);
+	  		$j('#'+global_ogg_list[i]).get(0).inheritEmbedObj();
+	  	}  	
+  	})  	
+  },
+  addLoadEvent:function(fn){  	
+  	this.flist.push(fn);  	
+  },  
+  init: function(){
+  	//call the callback:
+  	if(this.load_callback)this.load_callback();
+	mv_embed();	
+  }
+}
+
 /*parseUri class:*/
 var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"strict":"loose"].exec(d);for(var i=0,uri={};i<14;i++){uri[o.key[i]]=value[i]||""}uri[o.q.name]={};uri[o.key[12]].replace(o.q.parser,function(a,b,c){if(b)uri[o.q.name][b]=c});return uri};parseUri.options={strictMode:false,key:["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],q:{name:"queryKey",parser:/(?:^|&)([^&=]*)=?([^&]*)/g},parser:{strict:/^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,loose:/^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/}};
 
@@ -127,6 +186,14 @@ var embedTypes = {
 		}
 		js_log('selected:' + this.playerType);
 		js_log( this.clientSupports);
+		
+		//add the detected plugin playback type to the plugins :
+		if(this.playerType){
+			js_log('player type ok');
+			if( this.getPlayerLib() ){				
+				mvEmbed.lib_plugins[this.getPlayerLib()+'Embed']='mv_'+this.getPlayerLib()+'Embed.js';
+			}
+		}	
 	},
 	getPlayerType:function(){
 		if(!this.playerType)return false;
@@ -344,7 +411,7 @@ var mvJsLoader = {
 			 if( this.load_time++ > 2000){ //time out after ~50seconds
 			 	js_error( getMsg('error_load_lib') );
 			 }else{
-				 setTimeout('mvJsLoader.doLoad()',25);
+				setTimeout('mvJsLoader.doLoad()',25);
 			 }
 		 }else{
 		 	this.callback();
@@ -357,12 +424,19 @@ var mvJsLoader = {
  * and >= 1.1.4 not working: http://pastie.caboo.se/92595
  * $j(document).ready( function(){ */
 function init_mv_embed(){
+	js_log('mv_init');
 	global_dom_ready=1;
 	//check if this page does have video or playlist
 	if(document.getElementsByTagName("video").length!=0 ||
 	   document.getElementsByTagName("playlist").length!=0){
-		//check for mv_embed:		
-		mvEmbed.load_libs();
+		js_log('we have vids to proccess');
+		//if safari we have already foce loadded the libs
+		if(embedTypes.safari){
+			js_log('run init for safari');
+			mvEmbed.init();
+		}else{		
+			mvEmbed.load_libs();
+		}
 	}else{
 		js_log('no video or playlist on the page... (done)');
 	}	
@@ -372,69 +446,7 @@ function init_mv_embed(){
 		mvEmbed.flist.shift()();
 	}
 }
-//setup mv_embed object make version info and load required lib:
-//it also queues onLoad functions (until Prototype/Scriptaculous is loaded) 
-var mvEmbed = {
-  Version: '0.6',  
-  loaded:false,
-  load_time:0,
-  flist:Array(),
-  load_callback:false,
-  loading:false, 
-  pc:null, //used to store pointer to parent clip (when in playlist mode) 
-  load_libs:function(callback){
-  	if(callback)this.load_callback = callback;
- 	//two loading stages one to first get jQuery
-  	mvJsLoader.doLoad({'window.jQuery':'jquery/jquery-1.2.1.js'},function(){
-  		//once jQuery is loaded set up no conflict: 
- 		_global['$j'] = jQuery.noConflict();
-		//load all the rest of the libs:
-		//@@todo only load extra jquery stuff if embedtype supports slider etc 
-		var plugins = {		
-			'$j.fn.offsetParent':'jquery/plugins/jquery.dimensions.js',
-			'$j.ui.mouseInteraction':'jquery/plugins/ui.mouse.js',
-			'$j.ui.slider':'jquery/plugins/ui.slider.js'		
-		}
-		//load the detected plugin playback type:
-		if(embedTypes.getPlayerType()){
-			if( embedTypes.getPlayerLib() ){
-				plugins[embedTypes.getPlayerLib()+'Embed']='mv_'+embedTypes.getPlayerLib()+'Embed.js';
-			}
-		}	
-		mvJsLoader.doLoad(plugins, function(){	  		
-			mvEmbed.init();
-		});	
-  	});	    		
-  },
-  userSetPlayerType:function(player){
-  	//callback to the embedType obj to set the cookie/pref: 
-  	embedTypes.userSetPlayerType(player);
-  	//fade out all pref windows and remove: 
-  	$j('.set_ogg_player_pref').fadeOut('slow',function(){
-  			$j(this).remove();
-  	});  	
-  	//@@todo temporarily disable playback or set all to loading...
 
-	//request the new player library: 
-	var plugins={};
-	plugins[embedTypes.getPlayerLib()+'Embed']='mv_'+embedTypes.getPlayerLib()+'Embed.js';
-  	mvJsLoader.doLoad(plugins, function(){
-  		js_log("done loading: " + embedTypes.getPlayerLib());
-  		//re-rewrite all the video objects on the page: 
-	  	for(i in global_ogg_list){
-	  		$j('#'+global_ogg_list[i]).get(0).inheritEmbedObj();
-	  	}  	
-  	})  	
-  },
-  addLoadEvent:function(fn){  	
-  	this.flist.push(fn);  	
-  },  
-  init: function(){
-  	//call the callback:
-  	if(this.load_callback)this.load_callback();
-  	mv_embed();	
-  }
-}
 /*
  * this function allows for targeted rewriting (the host element does not have to be <video> tag)
  */
@@ -465,8 +477,27 @@ if (document.all && !window.opera){ //Crude test for IE
       init_mv_embed();
   }
 }
-
- 
+//for safari just force load all the libraries since it has no dom injection
+if(embedTypes.safari){
+	//load the base lib_jquery library: 
+	for(i in mvEmbed.lib_jquery){
+		var cur_lib_url = mv_embed_path + mvEmbed.lib_jquery[i];
+		js_log('load lib:' + cur_lib_url);
+		document.write('<script type="text/javascript" src="'+cur_lib_url+'"><\/script>');
+	}
+	
+	//load the rest (@@todo we could merge these)
+  	for(i in mvEmbed.lib_plugins){
+		var cur_lib_url = mv_embed_path + mvEmbed.lib_plugins[i];
+		js_log('load lib:' + cur_lib_url);
+		document.write('<script type="text/javascript" src="'+cur_lib_url+'"><\/script>');
+	}
+	window.onload=function(){
+		//once jQuery is loaded set up no conflict: 
+		_global['$j'] = jQuery.noConflict();
+		init_mv_embed();
+	}				
+}
 /*
 * Coverts all occurrences of <video> tag into video object
 * (if a native support is not found) 
@@ -486,9 +517,8 @@ function mv_embed(){
             if(!vid_id || vid_id==''){
   				video_elements[i].id= 'v'+ global_ogg_list.length;    	
             }
-            //js_log('on video ' + vid_id );      	                        	
-        	//create the video interface:
-			var videoInterface = new embedVideo(video_elements[i]);	
+            //create the video interface:
+	    var videoInterface = new embedVideo(video_elements[i]);	
             //swap the video element for our own embed video element           
             js_log('made videoInterface: ' + videoInterface.id)
             if( swapEmbedVideoElement(video_elements[i], videoInterface) ){
@@ -606,7 +636,7 @@ function swapEmbedVideoElement(video_element, videoInterface){
     
     //now run the getHTML on the new embedVideo Obj:
     embed_video.getHTML(); 
-    //js_log('html set:' + document.getElementById(embed_video.id).innerHTML);
+    js_log('html set:' + document.getElementById(embed_video.id).innerHTML);
     
     //store a reference to the id 
     //(for single instance plugins that need to keep track of other instances on the page)
@@ -637,7 +667,7 @@ embedVideo.prototype = {
 		return '"' + this.hx( s ) + '"';
 	},
 	init: function(element){		   
-		 //inherit all the default video_attributes 
+	   //inherit all the default video_attributes 
 	    for(var attr in video_attributes){       
 	        if(element.getAttribute(attr)){
 	            this[attr]=element.getAttribute(attr);
@@ -745,12 +775,12 @@ embedVideo.prototype = {
 	    //returns the innerHTML based on auto play option and global_embed_type
 	    //if auto play==true directly embed the plugin
 	    if(this.autoplay){ 	   
-			this.thumbnail_disp = false;
-			this.innerHTML =  this.getEmbedHTML() ;
+			this.thumbnail_disp = false;			
+			this.innerHTML = this.getEmbedHTML();
 	    }else{
 	        //if autoplay=false or render out a thumbnail with link to embed html      
 	       this.thumbnail_disp = true;
-	       this.innerHTML = this.getThumbnailHTML();
+	       this.innerHTML = this.getThumbnailHTML();	    
 	    }
 	},
 	/*
@@ -888,11 +918,11 @@ embedVideo.prototype = {
 						'thumbnail=&quot;'+embed_thumb_html+'&quot;/&gt;';
 	
 			//add the hidden embed code:
-			thumb_html+='<div id="embed_code_'+this.id+'" style="border:solid;border-color:black;overflow:hidden;display:none;position:absolute;bottom:2px;right:'+(right_offset+30)+'px;width:'+(this.width-70)+'px;z-index:1">'+
+			thumb_html+='<div id="embed_code_'+this.id+'" style="border:solid;border-color:black;overflow:hidden;display:none;position:absolute;bottom:2px;right:'+(right_offset+30)+'px;width:'+(this.width-100)+'px;z-index:1">'+
 				'<input onClick="this.select();" type="text" size="40" length="1024" value="'+embed_code_html+'">'
 				 '</div>';
 	    }	
-	    thumb_html+='</div>';	
+	    thumb_html+='</div>';		  	
 	    return thumb_html;
 	},
 	getPlayButton:function(id){
@@ -946,9 +976,11 @@ embedVideo.prototype = {
 			//js_log('rewrite embed');
 			if(!embedTypes.getPlayerType()){
 				//this.innerHTML = this.getPluginMissingHTML(); 
-				$j('#'+this.id).html(this.getPluginMissingHTML());
+				//$j('#'+this.id).html(this.getPluginMissingHTML());
+				this.innerHTML = this.getPluginMissingHTML();
 			}else{						
-				$j('#'+this.id).html(this.getEmbedHTML());
+				//$j('#'+this.id).html(this.getEmbedHTML());
+				this.innerHTML = this.getEmbedHTML();
 			}
 			this.paused = false;
 			this.thumbnail_disp=false;	
@@ -1009,7 +1041,8 @@ embedVideo.prototype = {
 			js_log('already in stopped state');
 		}else{
 			//rewrite the html to thumbnail disp 
-			$j('#'+this.id).html(this.getThumbnailHTML());
+			//$j(this).html(this.getThumbnailHTML());						
+			this.innerHTML = this.getThumbnailHTML();
 			this.thumbnail_disp=true;
 		}
 	},
@@ -1047,7 +1080,8 @@ embedVideo.prototype = {
 				return true;
 			}else{
 				//non loading request means time has passed so we need to update the innerHTML
-				$j('#'+this.id).html(this.getEmbedHTML());
+				//$j('#'+this.id).html(this.getEmbedHTML());
+				this.innerHTML = this.getEmbedHTML();
 			}
 		}
 	},
@@ -1122,7 +1156,7 @@ embedVideo.prototype = {
 	setStatus:function(value){
 		var id = (this.pc)?this.pc.pp.id:this.id;
 		//update status: 
-		$j('#info_'+id).html(value);
+		$j('#info_'+id).html(value);		
 	},
 	wrapEmebedContainer:function(embed_code){
 		//check if parent clip is set( ie we are in a playlist so name the embed container by playlistID)
@@ -1267,14 +1301,14 @@ function ntp2seconds(ntp){
 function addLoadEvent(func) {
 	mvEmbed.addLoadEvent(func);
 }
-
+//load external via dom injection
 function loadExternalJs(url){  
    js_log('load js: '+ url);
-   var e = document.createElement("script");
-   e.setAttribute('src', url);
-   e.setAttribute('type',"text/javascript");
-   e.setAttribute('defer', true);
-   document.getElementsByTagName("head")[0].appendChild(e);     
+	   var e = document.createElement("script");
+	   e.setAttribute('src', url);
+	   e.setAttribute('type',"text/javascript");
+	   //e.setAttribute('defer', true);
+	   document.getElementsByTagName("head")[0].appendChild(e);     
 }
 
 function styleSheetPresent(url){
@@ -1334,7 +1368,7 @@ function getMvEmbedPath(){
 	   }else{   	 
 	     /*
 	      * IE and non-firebug debug:
-	      */
+	      */	     
 	     /*var log_elm = document.getElementById('mv_js_log');
 	     if(!log_elm){
 	     	document.write('<div style="position:absolute;z-index:50;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');

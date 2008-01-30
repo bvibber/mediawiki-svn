@@ -17,9 +17,19 @@ var javaEmbed = {
     },
     getEmbedObj:function(){
     	if(!this.duration)this.duration=30;
-		if(mv_java_iframe){
+		if(mv_java_iframe){			
 			//make sure iframe and embed path match (java security model) 
 			var iframe_src='';
+			//if the src is relative add in current_url as path: 			
+			if(this.src[0]=='/'){
+				js_log('java: media relative path');	
+				var pURL=parseUri(document.URL);		
+				this.src=  pURL.protocol + '://' + pURL.authority + this.src;
+			}else if(parseUri(this.src).host==this.src){
+				js_log('java: media relative file');
+				var pURL=parseUri(document.URL);
+				this.src=  pURL.protocol + '://' + pURL.authority + pURL.directory + this.src;		
+			}
 			if(parseUri(mv_embed_path).host != parseUri(this.src).host){
 				iframe_src = parseUri(this.src).protocol + '://'+
 							parseUri(this.src).authority + 
@@ -27,6 +37,7 @@ var javaEmbed = {
 			}else{
 				iframe_src = mv_embed_path + 'cortado_iframe.php';
 			}
+			
 			//js_log('base iframe src:'+ iframe_src);			
        		iframe_src+= "?media_url=" + this.src + '&id=' + this.pid;
 			iframe_src+= "&width=" + this.width + "&height=" + this.height;
