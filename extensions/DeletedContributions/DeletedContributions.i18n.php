@@ -192,6 +192,13 @@ $messages['li'] = array(
 	'deletedcontributions' => 'Gewisdje gebroekersbiedraag',
 );
 
+/** Lumbaart (Lumbaart)
+ * @author SPQRobin
+ */
+$messages['lmo'] = array(
+	'deletedcontributions' => 'Cuntribüziun scancelaa',
+);
+
 /** Lozi (Silozi)
  * @author Ooswesthoesbes
  */

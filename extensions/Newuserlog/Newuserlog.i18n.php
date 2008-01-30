@@ -388,6 +388,7 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'newuserlogpage'           => 'Logbuch vun den neien Umeldungen',
 	'newuserlogpagetext'       => "Dëst ass d'Lescht vun de Benotzernimm déi ugeluecht goufen",
 	'newuserlog-create-entry'  => 'Neie Benotzer',
 	'newuserlog-create2-entry' => "Benotzerkonto fir den/d' $1 gemaach",
@@ -448,6 +449,13 @@ $messages['mr'] = array(
  */
 $messages['myv'] = array(
 	'newuserlog-create-entry' => 'Од совиця',
+);
+
+/** Newari (नेपाल भाषा)
+ * @author SPQRobin
+ */
+$messages['new'] = array(
+	'newuserlog-create-entry' => 'न्हुम्ह छ्येलेमि',
 );
 
 /** Dutch (Nederlands)

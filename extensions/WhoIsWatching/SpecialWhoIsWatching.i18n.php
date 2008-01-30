@@ -118,8 +118,8 @@ $messages['hsb'] = array(
  * @author Bdanee
  */
 $messages['hu'] = array(
-	'whoiswatching'               => 'Ki néz egy adott wiki oldalt',
-	'specialwhoiswatchingthepage' => 'Ki nézi a(z) %s lapot',
+	'whoiswatching'               => 'Ki figyel egy adott oldalt',
+	'specialwhoiswatchingthepage' => 'Ki figyeli a(z) %s oldalt',
 	'specialwhoiswatchingaddbtn'  => 'Összes kiválasztott felhasználó hozzáadása',
 );
 

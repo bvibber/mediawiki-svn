@@ -376,6 +376,13 @@ $messages['lo'] = array(
 	"sitematrix" => "ລາຍການ wiki ໃນ Wikimedia",
 );
 
+/** Lumbaart (Lumbaart)
+ * @author SPQRobin
+ */
+$messages['lmo'] = array(
+	'sitematrix' => 'Lista di Wiki che fann part de Wikimedia',
+);
+
 /** Lozi (Silozi)
  * @author Ooswesthoesbes
  */

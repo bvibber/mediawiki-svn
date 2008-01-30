@@ -344,6 +344,13 @@ $messages['li'] = array(
 Veur de bestandjsnaam in zónger 't veurvoegsel \"{{ns:image}}:\".",
 );
 
+/** Lumbaart (Lumbaart)
+ * @author SPQRobin
+ */
+$messages['lmo'] = array(
+	'filepath' => 'Percuurz daj archivi',
+);
+
 $messages['lo'] = array(
 	'filepath'         => 'ທາງໄປຫາໄຟລ໌',
 );
