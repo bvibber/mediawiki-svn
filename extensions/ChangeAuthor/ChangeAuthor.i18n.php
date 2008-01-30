@@ -297,6 +297,17 @@ $messages['hu'] = array(
 	'changeauthor-invalid-username' => 'A(z) "$1" egy érvénytelen felhasználónév.',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'changeauthor-pagenameform-go'  => 'Áfram',
+	'changeauthor-comment'          => 'Athugasemd:',
+	'changeauthor-invalid-username' => 'Rangt notandanafn „$1“.',
+	'changeauthor-nosuchuser'       => 'Notandi ekki til „$1“.',
+	'changeauthor-nosuchtitle'      => 'Engin síða er nefnd „$1“.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

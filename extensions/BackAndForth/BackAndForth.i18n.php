@@ -108,6 +108,14 @@ $messages['frp'] = array(
 	'backforth-prev' => 'Prècèdent ($1)',
 );
 
+/** Gagauz (Gagauz)
+ * @author Cuman
+ */
+$messages['gag'] = array(
+	'backforth-next' => 'Soraki ($1)',
+	'backforth-prev' => 'İlerki ($1)',
+);
+
 $messages['gl'] = array(
 	'backforth-next' => 'Seguinte ($1)',
 	'backforth-prev' => 'Anterior ($1)',
@@ -246,6 +254,14 @@ $messages['stq'] = array(
 $messages['sv'] = array(
 	'backforth-next' => 'Nästa ($1)',
 	'backforth-prev' => 'Föregående ($1)',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'backforth-next' => 'తర్వాత ($1)',
+	'backforth-prev' => 'గత ($1)',
 );
 
 /** Vietnamese (Tiếng Việt)

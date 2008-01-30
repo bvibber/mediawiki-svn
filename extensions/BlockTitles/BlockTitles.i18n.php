@@ -94,6 +94,13 @@ $messages['el'] = array(
 	'block_title_error'            => 'Συγγνώμη, ο τίτλος αυτής της σελίδας δεν επιτρέπεται να αποθηκευτεί.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'block_title_error_page_title' => 'Forbarita titolo',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  */
@@ -155,6 +162,14 @@ $messages['hu'] = array(
 $messages['hy'] = array(
 	'block_title_error_page_title' => 'Արգելափակված Անվանում',
 	'block_title_error'            => 'Ցավոք՝ այս հոդվածի անվանման հիշելը չի թույլատրվում։',
+);
+
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'block_title_error_page_title' => 'Bannaður Titill',
+	'block_title_error'            => 'Því miður, ekki er heimilt að vista titil þessara síðu.',
 );
 
 /** Italian (Italiano)
@@ -323,6 +338,14 @@ $messages['stq'] = array(
 $messages['sv'] = array(
 	'block_title_error_page_title' => 'Blockerad titel',
 	'block_title_error'            => 'Det är inte tillåtet att spara en sida under denna titel.',
+);
+
+/** Tajik (Тоҷикӣ)
+ * @author Farrukh
+ */
+$messages['tg'] = array(
+	'block_title_error_page_title' => 'Сарлавҳаҳои басташуда',
+	'block_title_error'            => 'Бубахшед, захира намудани саҳифае, ки чунин сарлавҳа дорад манъ аст.',
 );
 
 /** Vietnamese (Tiếng Việt)

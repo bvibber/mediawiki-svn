@@ -105,18 +105,21 @@ $messages['bn'] = array(
 	'bookinfo-provider'          => 'তথ্য সরবরাহকারী: $1',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
 $messages['br'] = array(
-	'bookinfo-header' => 'Titouroù war al levr',
-	'bookinfo-result-title' => 'Titl :',
-	'bookinfo-result-author' => 'Aozer :',
-	'bookinfo-result-publisher' => 'Embanner :',
-	'bookinfo-result-year' => 'Bloaz :',
-	'bookinfo-error-invalidisbn' => 'ISBN lakaet direzh.',
-	'bookinfo-error-nosuchitem' => 'Ar pezh zo bet goulennet n\'eus ket anezhañ pe n\'eo ket bet kavet.',
-	'bookinfo-error-nodriver' => 'N\'hall ket deraouiñ ur sturier titouriñ a-feson war al levrioù.',
-	'bookinfo-error-noresponse' => 'Respont ebet pe amzer glask re hir.',
-	'bookinfo-purchase' => 'Prenañ al levr-mañ adal $1',
-	'bookinfo-provider' => 'Pourvezer roadennoù : $1',
+	'bookinfo-header'            => 'Titouroù war al levr',
+	'bookinfo-result-title'      => 'Titl :',
+	'bookinfo-result-author'     => 'Aozer :',
+	'bookinfo-result-publisher'  => 'Embanner :',
+	'bookinfo-result-year'       => 'Bloaz :',
+	'bookinfo-error-invalidisbn' => 'ISBN merket direizh.',
+	'bookinfo-error-nosuchitem'  => "Ar pezh zo bet goulennet n'eus ket anezhañ pe n'eo ket bet kavet.",
+	'bookinfo-error-nodriver'    => "N'hall ket deraouiñ ur sturier titouriñ a-feson war al levrioù.",
+	'bookinfo-error-noresponse'  => 'Respont ebet pe amzer glask re hir.',
+	'bookinfo-purchase'          => 'Prenañ al levr-mañ adal $1',
+	'bookinfo-provider'          => 'Pourvezer roadennoù : $1',
 );
 
 $messages['ca'] = array(
@@ -348,6 +351,22 @@ $messages['id'] = array(
 	'bookinfo-error-noresponse' => 'Tak ada respons atau respons terlalu lama.',
 	'bookinfo-purchase' => 'Beli buku ini dari $1',
 	'bookinfo-provider' => 'Penyedia data: $1',
+);
+
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'bookinfo-header'            => 'Bókaupplýsingar',
+	'bookinfo-result-title'      => 'Titill:',
+	'bookinfo-result-author'     => 'Höfundur:',
+	'bookinfo-result-publisher'  => 'Útgefandi:',
+	'bookinfo-result-year'       => 'Ár:',
+	'bookinfo-error-invalidisbn' => 'Rangt ISBN skráð.',
+	'bookinfo-error-nosuchitem'  => 'Hluturinn er ekki til eða var ekki fundinn.',
+	'bookinfo-error-noresponse'  => 'Ekkert svar eða beiðnin fell úr gildi.',
+	'bookinfo-purchase'          => 'Festa kaup á þessari bók frá $1',
+	'bookinfo-provider'          => 'Upplýsingaveitandi: $1',
 );
 
 /* Italian (BrokenArrow) */
@@ -736,10 +755,12 @@ $messages['tet'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Erkan Yilmaz
  */
 $messages['tr'] = array(
 	'bookinfo-header'           => 'Kitap bilgisi',
 	'bookinfo-result-title'     => 'Başlık:',
+	'bookinfo-result-author'    => 'Yazar:',
 	'bookinfo-result-publisher' => 'Yayımcı:',
 	'bookinfo-result-year'      => 'Yıl:',
 	'bookinfo-provider'         => 'Veri sağlayıcısı: $1',

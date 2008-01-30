@@ -51,6 +51,13 @@ $messages['bg'] = array(
 	'call-save-failed'  => 'Следният текст НЕ БЕШЕ съхранен на страницата <big>[[$1]]</big>, тъй като тя вече съществува.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'call' => 'Galv',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  */

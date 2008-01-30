@@ -251,7 +251,7 @@ $messages['eo'] = array(
 	'badimages-subheading'     => 'Nunaj listanoj',
 	'badimages-unprivileged'   => 'Vi ne havas suficxan permison sxangxi la liston.',
 	'badimages-log-name'       => 'Nevalida bildo-listo',
-	'badimages-log-header'     => 'Jen loglibro de sxangxoj por la [[{{MediaWiki:Badimages-page}}|listo de nevalidaj bildoj]].',
+	'badimages-log-header'     => 'Jen loglibro de ŝanĝoj por la [[{{MediaWiki:Badimages-page}}|listo de nevalidaj bildoj]].',
 	'badimages-log-add'        => 'Aldonis [[$1]] al la listo de nevalidaj bildoj',
 	'badimages-log-remove'     => 'forigis [[$1]] el la listo de nevalidaj bildoj',
 	'badimages-page'           => '{{ns:help}}:Listo de nevalidaj bildoj',
@@ -358,6 +358,13 @@ $messages['frp'] = array(
 	'badimages-log-add'        => 'at apondu [[$1]] a la lista de les émâges endèsirâbles',
 	'badimages-log-remove'     => 'at enlevâ [[$1]] de la lista de les émâges endèsirâbles',
 	'badimages-page'           => '{{ns:help}}:Lista de les émâges endèsirâbles',
+);
+
+/** Gagauz (Gagauz)
+ * @author Cuman
+ */
+$messages['gag'] = array(
+	'badimages-add-btn' => 'Ekle',
 );
 
 $messages['gl'] = array(
@@ -966,9 +973,14 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'badimages-add-btn' => 'చేర్చు',
-	'badimages-name'    => 'పేరు:',
-	'badimages-reason'  => 'కారణం:',
+	'badimages-add-btn'    => 'చేర్చు',
+	'badimages-name'       => 'పేరు:',
+	'badimages-reason'     => 'కారణం:',
+	'badimages-remove'     => '(తొలగించు)',
+	'badimages-remove-btn' => 'తొలగించు',
+	'badimages-subheading' => 'ప్రస్తుత అంశాలు',
+	'badimages-log-name'   => 'చెడు బొమ్మల జాబితా',
+	'badimages-page'       => '{{ns:help}}:చెడు బొమ్మల జాబితా',
 );
 
 /** Turkish (Türkçe)

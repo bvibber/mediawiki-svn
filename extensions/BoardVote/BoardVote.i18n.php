@@ -1376,9 +1376,30 @@ Versi terenkripsi tercantum di bawah ini. Hasil tersebut akan ditampilkan untuk 
 	'go_to_board_vote'        => 'Pemilihan Dewan Wikimedia 2007',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ * @author Spacebirdy
+ */
 $messages['is'] = array(
-	'boardvote_user'          => 'Notandi',
-	'boardvote_welcome'       => 'Velkominn \'\'\'$1\'\'\'!',
+	'boardvote'              => 'Kosningar stjórnarmanna Wikimedia',
+	'boardvote_intro_change' => '<p>Þú hefur nú þegar kosið. Samt sem áður getur þú breytt
+afkvæði þínu með eyðublaðinu að neðan. Görðu svo vel að fylla í reitinn við hliðina á þeim
+sem að þú styður.</p>',
+	'boardvote_notloggedin'  => 'Þú ert ekki skráð(ur) inn. Til að kjósa þarft þú að hafa aðgang og hafa gert að minnsta kosti $1 breytingar fyrir $2 og fyrsta breytingin þarf að gerast fyrir $3.',
+	'boardvote_notqualified' => 'Þú hefur ekki leyfi til að taka þátt í þessari kosningu. Þú þarft að hafa gert $1 breytingar fyrir $2 og fyrsta breytingin þín verður að gerast fyrir $5.',
+	'boardvote_novotes'      => 'Enginn hefur kosið enn.',
+	'boardvote_time'         => 'Tími',
+	'boardvote_user'         => 'Notandi',
+	'boardvote_edits'        => 'Breytingar',
+	'boardvote_days'         => 'Dagar',
+	'boardvote_ip'           => 'Vistfang',
+	'boardvote_dumplink'     => 'Smelltu hér',
+	'boardvote_submit'       => 'Í lagi',
+	'boardvote_needadmin'    => 'Aðeins umsjónamenn kosninga geta framkvæmt þessa aðgerð.',
+	'boardvote_notstarted'   => 'Kosningarnar eru ekki enn byrjaðar',
+	'boardvote_edits_many'   => 'margar',
+	'boardvote_blocked'      => 'Því miður, þú hefur verið bannaður/bönnuð á wiki-kerfinu þínu. Bannaðir notendur mega ekki kjósa.',
+	'boardvote_welcome'      => "Velkomin '''$1'''!",
 );
 
 /** Italian (Italiano)
@@ -2859,6 +2880,8 @@ $messages['te'] = array(
 	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">వికీమీడియా బోర్డు ఎన్నికలు</a>:  జూలై 12 వరకు వోటెయ్యవచ్చు',
 	'boardvote_notstarted'   => 'వోటింగు ఇంకా మొదలు కాలేదు',
 	'boardvote_edits_many'   => 'చాలా',
+	'group-boardvote'        => 'బోర్డు వోటు నిర్వాహకులు',
+	'group-boardvote-member' => 'బోర్డు వోటు నిర్వాహకులు',
 	'boardvote_blocked'      => 'క్షమించండి, మీరు నమోదైన వికీలో మీమ్మల్ని నిషేధించారు. నిషేధించిన వాడుకరులకు వోటెయ్యడానికి అనుమతిలేదు.',
 	'boardvote_welcome'      => "స్వాగతం '''$1'''!",
 	'go_to_board_vote'       => 'వికీమీడియా బోర్డు ఎన్నికలు 2007',
@@ -2875,6 +2898,7 @@ $messages['to'] = array(
 
 /** Turkish (Türkçe)
  * @author SPQRobin
+ * @author Erkan Yilmaz
  */
 $messages['tr'] = array(
 	'boardvote'              => 'Wikimedia Mütevelli Heyeti Seçimleri',
@@ -2882,14 +2906,17 @@ $messages['tr'] = array(
 	'boardvote_notloggedin'  => 'Oturum açmamışsınız. Oy kullanabilmek için, kullanıcı olarak $2 tarihinden önce en az $1 değişikliğe sahip olmanız şart. Ayrıca ilk değişikliğinizin $3 tarihinden önce gerçekleşmiş olması gerekmekte.',
 	'boardvote_novotes'      => 'Henüz kimse oy kullanmadı.',
 	'boardvote_time'         => 'Oy kullandığı tarih',
+	'boardvote_user'         => 'Kullanıcı',
 	'boardvote_edits'        => 'Değişiklik sayısı',
 	'boardvote_days'         => 'Günleri',
+	'boardvote_ip'           => 'IP',
 	'boardvote_listintro'    => '<p>Bugüne kadar kaydedilmiş oyların listesi. Şifrelendirilmiş olarak indirmek için $1.</p>',
 	'boardvote_dumplink'     => 'buraya tıklayın',
 	'boardvote_submit'       => 'Oyunuzu kullanın',
 	'boardvote_needadmin'    => 'Bu işlemi sadece seçim yöneticileri yapabilir.',
 	'boardvote_notstarted'   => 'Oylama henüz başlamadı',
 	'boardvote_edits_many'   => 'çok',
+	'boardvote_welcome'      => "Hoş geldiniz '''$1'''!",
 );
 
 /** Tahitian (Reo Mā`ohi)

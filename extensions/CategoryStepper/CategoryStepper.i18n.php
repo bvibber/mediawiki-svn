@@ -6,7 +6,18 @@
  * @addtogroup Extensions
  */
 
-$messages = array();/** Arabic (العربية)
+$messages = array();
+
+/**
+ * English
+ * @author MinuteElectron <minuteelectron@googlemail.com>
+ */
+$messages[ 'en' ] = array(
+	'categorystepper-start' => '(Start of category)',
+	'categorystepper-end'   => '(End of category)',
+);
+
+/** Arabic (العربية)
  * @author Meno25
  */
 $messages['ar'] = array(
@@ -38,12 +49,28 @@ $messages['fr'] = array(
 	'categorystepper-end'   => '(Fin de catégorie)',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'categorystepper-start' => '(Comezo da categoría)',
+	'categorystepper-end'   => '(Final da categoría)',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
 	'categorystepper-start' => '(Spočatk kategorije)',
 	'categorystepper-end'   => '(Kónc kategorije)',
+);
+
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'categorystepper-start' => '(Upphaf flokks)',
+	'categorystepper-end'   => '(Endi flokks)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -62,6 +89,30 @@ $messages['nl'] = array(
 	'categorystepper-end'   => '(Einde van categorie)',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'categorystepper-start' => '(начало категории)',
+	'categorystepper-end'   => '(конец категории)',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'categorystepper-start' => '(začiatok kategórie)',
+	'categorystepper-end'   => '(koniec kategórie)',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'categorystepper-start' => '(వర్గంపు మొదలు)',
+	'categorystepper-end'   => '(వర్గపు చివర)',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */
@@ -69,15 +120,3 @@ $messages['vo'] = array(
 	'categorystepper-start' => '(Prim klada)',
 	'categorystepper-end'   => '(Fin klada)',
 );
-
-
-
-/**
- * English
- * @author MinuteElectron <minuteelectron@googlemail.com>
- */
-$messages[ 'en' ] = array(
-	'categorystepper-start' => '(Start of category)',
-	'categorystepper-end'   => '(End of category)',
-);
-
