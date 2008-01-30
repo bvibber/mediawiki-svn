@@ -391,12 +391,18 @@ function mvIsNtpTime($time){
  * takes ntp time of format hh:mm:ss and converts to seconds 
  */
 function ntp2seconds($str_time){
-	$time_ary = explode(':', $str_time);
-	
+	$time_ary = explode(':', $str_time);	
 	$hours=$min=$sec=0;
-	if(isset($time_ary[0]))$hours=$time_ary[0];
-	if(isset($time_ary[1]))$min=$time_ary[1];
-	if(isset($time_ary[2]))$sec=$time_ary[2];
+	if(count($time_ary)==3){
+		$hours=$time_ary[0];
+		$min=$time_ary[1];
+		$sec=$time_ary[2];
+	}else if(count($time_ary)==2){
+		$min=$time_ary[0];
+		$sec=$time_ary[1];
+	}else if(count($time_ary)==1){
+		$sec=$time_ary[0];
+	}
 	
 	return ($hours*3600) + ($min*60) + $sec;
 }

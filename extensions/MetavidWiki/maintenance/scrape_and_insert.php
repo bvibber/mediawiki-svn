@@ -8,11 +8,12 @@
  * @author Michael Dale
  * @email dale@ucsc.edu
  * @url http://metavid.ucsc.edu
- */
+ */ 
 
  $cur_path = $IP = dirname( __FILE__ );
  //include commandLine.inc from the mediaWiki maintenance dir: 
 require_once( '../../../maintenance/commandLine.inc' );
+require_once('maintenance_util.inc.php');
 
  if ( count( $args ) == 0 || isset( $options['help'] ) ) {
  	print <<<EOT
@@ -91,7 +92,7 @@ class MV_CspanScraper extends MV_BaseScraper{
 			//get the title and href if present:
 			$patern = '/overlib\(\'(.*)\((Length: ([^\)]*)).*CAPTION,\'<font size=2>(.*)<((.*href="([^"]*))|.*)>/'; 
 			preg_match_all($patern, $rawpage, $matches);
-			$person_time_ary = array();
+			$cspan_person_ary = array();
 			//format matches: 
 			foreach($matches[0] as $k=>$v){
 				$href='';
@@ -103,42 +104,141 @@ class MV_CspanScraper extends MV_BaseScraper{
 				$porg = preg_replace('/[D|R]+\-\[.*\]/', '', $porg);
 				$pparts = explode(',',$porg);
 				$pname = trim($pparts[1]) . '_' . trim($pparts[0]);			
-				$person_time_ary[]= array(
+				$cspan_person_ary[]= array(
 					'start_time'=>strip_tags($matches[1][$k]),
 					'length'=>$matches[3][$k],
 					'person_title'=>str_replace('<br>',' ',$matches[4][$k]),
-					'spoken_by'=>$pname,
+					'Spoken_by'=>$pname,
 					'href'=>$href
 				);
 			}									
 		    //group people in page matches
-		    $g_person_time_ary=array();
-		    $prev_person=null;		    
-		    foreach($person_time_ary as $ptag){
-		    	$g_person_time_ary[$ptag['spoken_by']][]=$ptag;		    			    			    
-		    }
+		    //$g_cspan_matches=array();
+		    //$prev_person=null;		    
+		    //foreach($person_time_ary as $ptag){
+		    //	$g_cspan_matches[strtolower($ptag['Spoken_by'])][]=$ptag;		    			    			    
+		    //}
 		   
-		    //retrive rows to find match: 
+		    //retrive db rows to find match: 
 		   	$dbr =& wfGetDB(DB_SLAVE);
 		    $mvd_res = MV_Index::getMVDInRange($stream->id, null, null, $mvd_type='ht_en',false,$smw_properties=array('Spoken_by'), '');
-		    $g_row_matches=array();
+		    $db_person_ary=$g_row_matches=array();
 		    //group peole in db matches:
-		   	while ($row = $dbr->fetchObject($mvd_res)) {
-		   		if(!isset($row->Spoken_by))continue;  		   				   
-   				if(!isset($g_row_matches[strtolower($row->Spoken_by)])){
-   					$g_row_matches[strtolower($row->Spoken_by)]=get_object_vars($row);
-   					$g_row_matches[strtolower($row->Spoken_by)]['end_time_sec']=$row->end_time;
+		    $cur_person = '';
+		    $curKey=0;
+		   	while ($row = $dbr->fetchObject($mvd_res)) {			   		   		   				   		
+		   		if(!isset($row->Spoken_by))continue;  	   				   
+   				if($cur_person!=$row->Spoken_by){
+   					$g_row_matches[]=get_object_vars($row);
+   					$curKey=count($g_row_matches)-1;
+   					$cur_person=$row->Spoken_by;
    				}else{
-   					$g_row_matches[strtolower($row->Spoken_by)]['end_time_sec']+=$row->end_time;
-   				}		   		
-	   			$cspan_person = next($g_person_time_ary);		   	
+   					$g_row_matches[$curKey]['end_wiki_title']=$row->wiki_title;
+   					$g_row_matches[$curKey]['end_time']+=($row->end_time-$row->start_time);
+   				}	   	
+   				//print_r($g_row_matches);
+   				//if($curKey>2){
+   				//	die;
+   				//}   				
 		   	}  
-		   	//add in sync offset data for $g_person_time_ary
-		    reset($g_person_time_ary);
-		   	foreach($g_row_matches as $rp=>$rperson){
-		   		
+		   	//don't add people if they show up for less than 1 min 		
+		   	foreach($g_row_matches as $row){
+		   		print $row['Spoken_by'] . ' on screen for '. ($row['end_time']-$row['start_time']) . "\n";
+		   		$db_person_ary[]=$row;
 		   	}
-            //find match person1->person2->person3
+		   	
+			//print_r($db_person_ary);
+			//die;
+	
+		   	//count($cspan_person_ary)	
+		   	$cur_db_inx=0;	   		
+		   	$fistValid=true;	   		 
+		   	for($i=0;$i<10;$i++){
+		   		print "looking at: ". $cspan_person_ary[$i]['Spoken_by'] . "\n";
+		   		print "\tCSPAN: ". $cspan_person_ary[$i]['Spoken_by'] . ' on screen for '. $cspan_person_ary[$i]['length'].' or:'.ntp2seconds($cspan_person_ary[$i]['length']). "\n";
+		   		//set up the next and prev pointers: 
+		   		if(isset($cspan_person_ary[$i+1])){
+		   			$next_person = (mv_is_valid_person($cspan_person_ary[$i+1]['Spoken_by']))?
+		   				$cspan_person_ary[$i+1]['Spoken_by']:null;
+		   		}else{
+		   			$next_person=null;
+		   		}
+		   		if(isset($cspan_person_ary[$i-1])){
+			   		$prev_person = (mv_is_valid_person($cspan_person_ary[$i-1]['Spoken_by']))?
+			   			$cspan_person_ary[$i-1]['Spoken_by']:null;		
+		   		}else{
+		   			$prev_person=null;
+		   		}		   			 		   	
+		   		
+		   		
+		   		if(mv_is_valid_person($cspan_person_ary[$i]['Spoken_by'])){		   					   		
+		   			print "\tis valid person looking for db sync\n";
+		   			if($prev_person==null && $next_person==null){
+		   				print "error both prev and next are null skiping person\n";		   			
+		   				continue;
+		   			}
+		   			
+		   			//check how long they where on screen (also check subquent)
+		   			$cspan_on_screen_time=ntp2seconds($cspan_person_ary[$i]['length']);
+		   			print "$cur_db_inx " . count($db_person_ary);
+		   			for($j=$cur_db_inx;$j<count($db_person_ary);$j++){		
+						print "searchig db on: " . $db_person_ary[$j]['Spoken_by'] . "!=" . $cspan_person_ary[$i]['Spoken_by'] . " \n";
+	   					$prevMatch=$curMatch=$nextMatch=false;
+	   					if($cur_db_inx==0 || $prev_person==null){
+	   						//no need to check prev in db_inx
+	   						$prevMatch=true;
+	   						print "(no back check)";
+	   					}else{
+		   					if($db_person_ary[$j-1]['Spoken_by'] ==$prev_person){
+								print "found prev match: $prev_person\n;";	
+								$prevMatch=true;								
+		   					}
+	   					}
+	   					if($db_person_ary[$j]['Spoken_by']==$cspan_person_ary[$i]['Spoken_by']){
+							print "found cur match:". $cspan_person_ary[$i]['Spoken_by']."\n";
+							$curMatch=true;
+	   					}	   	
+	   					if($next_person==null){
+	   						//no need to check next in db_inx
+	   						$nextMatch=true;
+	   						print "(no next check)";
+	   					}else{				
+							if($db_person_ary[$j+1]['Spoken_by']==$next_person){
+								print "found next match:".$next_person."\n";
+								$nextMatch=true;
+							}								
+	   					}
+	   					if($prevMatch && $curMatch && $nextMatch){
+	   						print "\nFOUND TRIPILE on $j\n";
+	   						$cur_db_inx=$j;
+	   					}				   						   				
+		   			}
+		   			
+		   			
+		   			//while($cspan_person_ary[$i+$j]['Spoken_by']==$cspan_person_ary[$i]['Spoken_by']){
+		   			//	$cspan_on_screen_time+=ntp2seconds($cspan_person_ary[$i]['length']);
+		   			//	$j++;
+		   			//}
+		   			//if on screen more than 120 our proccess really should have tagged them:
+		   			//if($cspan_on_screen_time>120){
+		   				//
+		   			//}
+		   			
+		   			/*
+		   				
+		   			}*/	
+		   			//set the first valid flag back; 
+		   		}else{
+		   			print $cspan_person_ary[$i]['Spoken_by'] . " is not valid person\n";
+		   		}
+		   	}		   
+		   	
+		   	//$inx_cspan_person_ary = array_keys($g_row_matches);
+		   	//$inx_row_person_ary = array_keys($g_person_time_ary);
+		   	//for($i=0;$i<5;$i++){
+		   		
+		   	//}		   	
+            //find match person1->person2
             
             
             //average switch time to get offset of stream

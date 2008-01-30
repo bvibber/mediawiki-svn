@@ -564,6 +564,7 @@ function mv_proccess_attr($table, $stream_id) {
 	}
 	return $out;
 }
+
 function getTypeTitle($type) {
 	switch ($type) {
 		case 'cspan_type' :
