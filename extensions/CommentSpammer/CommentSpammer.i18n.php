@@ -52,13 +52,18 @@ $messages['frp'] = array(
 	'cspammer-log-page' => 'Jornal du crèator de spame',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Siebrand
+ * @author Xosé
+ */
 $messages['gl'] = array(
 	'commentspammer-save-blocked' => 'O seu enderezo IP é sospeitoso de facer comentarios spam, de maneira que non se gardou a páxina. [[Special:Userlogin|Rexístrese ou cree unha conta]] para evitalo.',
-	'commentspammer-log-msg' => 'editar de [[Special:Contributions/$1|$1]] a [[:$2]].',
-	'commentspammer-log-msg-info' => 'Último correo spam $1 {{PLURAL:$1|día|días}} atrás, nivel de ameaza é de $2, e código de delito é de $3.
+	'commentspammer-log-msg'      => 'editar de [[Special:Contributions/$1|$1]] a [[:$2]].',
+	'commentspammer-log-msg-info' => 'Último correo spam $1 {{PLURAL:$1|día|días}} atrás, nivel de ameaza é de $2, e código de delito é de $3. 
 [http://www.projecthoneypot.org/search_ip.php?ip=$4 ver detalles], ou [[Special:Blockip/$4|bloqueo]].',
-	'cspammerlogpagetext' => 'Historial das edicións que se permitiron ou denegaron sobre a base de si a fonte foi un coñecido comentario spam.',
-	'cspammer-log-page' => 'Rexistro dos comentarios Spam',
+	'cspammerlogpagetext'         => 'Historial das edicións que se permitiron ou denegaron sobre a base de si a fonte foi un coñecido comentario spam.',
+	'cspammer-log-page'           => 'Rexistro dos comentarios Spam',
 );
 
 $messages['hsb'] = array(

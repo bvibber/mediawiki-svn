@@ -62,8 +62,8 @@ $messages['bg'] = array(
 	'filepath_page'    => 'Файл:',
 	'filepath_submit'  => 'Път',
 	'filepath-summary' => 'Тази специална страница връща пълния път до даден файл. Изображенията се показват в пълната им резолюция, а други типове файлове се отварят направо с приложенията, към които са асоциирани.
-
-Името на файла се изписва без представката "{{ns:image}}:"',
+	
+	Името на файла се изписва без представката "{{ns:image}}:"',
 );
 
 /** Bengali (বাংলা)
@@ -197,13 +197,16 @@ $messages['frp'] = array(
 Entrâd lo nom du fichiér sen lo prèfixe « {{ns:image}}: ».',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
 $messages['gl'] = array(
-	'filepath'        => 'Ruta do arquivo',
-	'filepath_page'   => 'Arquivo:',
-	'filepath_submit' => 'Ruta',
+	'filepath'         => 'Ruta do arquivo',
+	'filepath_page'    => 'Arquivo:',
+	'filepath_submit'  => 'Ruta',
 	'filepath-summary' => 'Esta páxina especial devolve a ruta completa a un ficheiro. As imaxes móstranse na súa resolución completa; outros tipos de ficheiros inícianse directamente co seu programa asociado.
-
-Introduza o nome do ficheiro sen o prefixo "{{ns:image}}:"',
+	
+	Introduza o nome do ficheiro sen o prefixo "{{ns:image}}:"',
 );
 
 $messages['he'] = array(
@@ -215,13 +218,16 @@ $messages['he'] = array(
 	יש להקליד את שם הקובץ ללא הקידומת "{{ns:image}}:".',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
 $messages['hr'] = array(
-	'filepath'        => 'Putanja datoteke',
-	'filepath_page'   => 'Datoteka:',
-	'filepath_submit' => 'Putanja',
-	'filepath-summary' => 'Ova posebna stranica daje Vam kompletnu putanju do neke datoteke. Slike se na taj način prikazuju u punoj rezoluciji, drugi tipovi datoteka se otvaraju na klik (kako je već namješteno u vašem operacijskom sustavu).
-
-Unesite ime datoteke bez predmetka (\'\'prefiksa\'\') imenskog prostora "{{ns:image}}:".',
+	'filepath'         => 'Putanja datoteke',
+	'filepath_page'    => 'Datoteka:',
+	'filepath_submit'  => 'Putanja',
+	'filepath-summary' => "Ova posebna stranica daje Vam kompletnu putanju do neke datoteke. Slike se na taj način prikazuju u punoj rezoluciji, drugi tipovi datoteka se otvaraju na klik (kako je već namješteno u vašem operacijskom sustavu).
+	
+	Unesite ime datoteke bez predmetka (''prefiksa'') imenskog prostora \"{{ns:image}}:\".",
 );
 
 $messages['hsb'] = array(

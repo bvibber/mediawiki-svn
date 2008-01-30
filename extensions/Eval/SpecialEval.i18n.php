@@ -30,11 +30,15 @@ $messages['bg'] = array(
 	'eval_code' => 'Код',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ */
 $messages['fr'] = array(
 	'eval'        => 'Évaluer',
 	'eval_submit' => 'Évaluer',
 	'eval_escape' => 'Arrêter la sortie',
 	'eval_out'    => 'Sortie',
+	'eval_code'   => 'Code',
 );
 
 $messages['gl'] = array(

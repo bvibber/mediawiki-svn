@@ -155,6 +155,7 @@ $messages['bn'] = array(
 	'webstore_scaler_empty_response' => 'ছবি মাপবর্ধকটি ২০০নং উত্তর কোডসহ একটি খালি উত্তর পাঠিয়েছে। মাপবর্ধকে পিএইচপি অসমাধানযোগ্য ত্রুটির কারণে এটি হতে পারে।',
 	'webstore_invalid_response'      => 'সার্ভার থেকে অবৈধ উত্তর এসেছে:
 
+
 $1',
 	'webstore_no_response'           => 'সার্ভার কোন উত্তর দিচ্ছে না',
 	'webstore_backend_error'         => 'স্টোরেজ সার্ভার থেকে প্রাপ্ত ত্রুটি:
@@ -220,11 +221,11 @@ $messages['fr'] = array(
 	'webstore_metadata_not_found'      => 'Fichier non trouvé : $1',
 	'webstore_postfile_not_found'      => 'Fichier à enregistrer non trouvé.',
 	'webstore_scaler_empty_response'   => "L’échantillonnage de l'image a donné une réponse nulle avec un code de 200 réponses. Ceci pourrait être du à une erreur de l'échantillonage.",
-	'webstore_invalid_response'        => 'Réponse invalide depuis le serveur :
+	'webstore_invalid_response'        => 'Réponse invalide depuis le serveur : 
 
 $1',
 	'webstore_no_response'             => 'Le serveur ne répond pas',
-	'webstore_backend_error'           => 'Erreur depuis le serveur de stockage :
+	'webstore_backend_error'           => 'Erreur depuis le serveur de stockage : 
 
 $1',
 	'webstore_php_error'               => 'Les erreurs PHP suivantes sont survenues :',

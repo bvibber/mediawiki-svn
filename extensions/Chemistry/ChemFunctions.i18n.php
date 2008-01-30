@@ -115,18 +115,22 @@ $messages['fr'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform, intrant erroné!',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
 $messages['frp'] = array(
-	'chemicalsources' => 'Sôrses por la ch·imie',
-	'chemFunctions_ListPage' => 'Sôrses por la ch·imie',
-	'chemFunctions_DataList' => 'Siut una lista de lims vers des setos que pôvont aduire des enformacions a propôs de les substances ch·imiques que vos rechèrchiéd.<br /><br />
+	'chemicalsources'                  => 'Sôrses por la ch·imie',
+	'chemFunctions_ListPage'           => 'Sôrses por la ch·imie',
+	'chemFunctions_DataList'           => 'Siut una lista de lims vers des setos que pôvont aduire des enformacions a propôs de les substances ch·imiques que vos rechèrchiéd.
+
 * [http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI <span title="« NIST » : pâge en anglès" style="text-decoration:none">Composâ $MIXCASNameFormula</span>], NIST
 * [http://ptcl.chem.ox.ac.uk/MSDS/ <span title="« MSDS » : pâge en anglès" style="text-decoration:none">MSDS</span>], Univèrsitât d’Oxford',
-	'chemFunctions_CAS' => 'Numerô CAS',
-	'chemFunctions_EINECS' => 'Numerô EINECS',
-	'chemFunctions_CHEBI' => 'ChEBI',
-	'chemFunctions_ATCCode' => 'Code ATC',
-	'chemFunctions_ECNumber' => 'Numerô CE',
-	'chemFunctions_Name' => 'Nom IUPAC',
+	'chemFunctions_CAS'                => 'Numerô CAS',
+	'chemFunctions_EINECS'             => 'Numerô EINECS',
+	'chemFunctions_CHEBI'              => 'ChEBI',
+	'chemFunctions_ATCCode'            => 'Code ATC',
+	'chemFunctions_ECNumber'           => 'Numerô CE',
+	'chemFunctions_Name'               => 'Nom IUPAC',
 	'chemFunctions_ChemFormInputError' => 'Chemform, entrent fôtif !',
 );
 
@@ -137,9 +141,8 @@ $messages['frp'] = array(
 $messages['gl'] = array(
 	'chemicalsources'        => 'Fontes químicas',
 	'chemFunctions_ListPage' => 'Fontes químicas',
-	'chemFunctions_DataList' => 'Embaixo hai unha listaxe das ligazóns aos sitios que poden proporcionar información acerca da sustancia química que procura.<br /><br />
-* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Composto $MIXCASNameFormula en NIST</a><br />
-* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Universidade de Oxford (UK) (non consultábel)</a><br />',
+	'chemFunctions_DataList' => 'Embaixo hai unha listaxe das ligazóns aos sitios que poden proporcionar información acerca da sustancia química que procura.<br /><br /> * <a 
+href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Composto $MIXCASNameFormula en NIST</a><br /> * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Universidade de Oxford (UK) (non consultábel)</a><br />',
 	'chemFunctions_CAS'      => 'número CAS',
 	'chemFunctions_Formula'  => 'Fórmula',
 );

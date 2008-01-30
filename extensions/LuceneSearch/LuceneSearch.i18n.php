@@ -74,7 +74,7 @@ $1
 
 Mirar $3 $9',
 	'lucenefallback'        => 'Bi ha abito uno problema fendo a busca en a wiki.
-Prebablement sía temporal. Prebe de fer-lo una atra begada dimpués de bels menutos,
+Prebablement sía temporal. Prebe de fer-lo una atra begada dimpués de bels menutos, 
 u faiga serbir bel buscador esterno ta esplorar a wiki.',
 	'searchexactcase'       => 'Mirar esautament (mayusclas e minusclas)',
 	'searchall'             => 'toz',
@@ -286,6 +286,31 @@ $1
 Buscar $3 $9',
 	'lucenefallback'        => 'Ha habido un problema con la búsqueda.
 Probablemente sea temporal. Intentelo de nuevo en unos minutos,
+o emplee algún buscador externo para explorar la wiki.',
+	'searchexactcase'       => 'Búsqueda sensible a mayúsculas',
+	'searchall'             => 'todos',
+	'searchincategory'      => 'en categoría',
+);
+
+/** Spanish (Español)
+ * @author Icvav
+ */
+$messages['es'] = array(
+	'searchnumber'          => '<strong>Resultados $1-$2 de $3</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Previo</span>",
+	'searchnext'            => "<span style='font-size: small'>Siguiente</span> &#x00BB;",
+	'lucene-searchscore'    => 'Relevancia: $1%',
+	'lucene-resultsize'     => '$1 ($2 palabras)',
+	'searchdidyoumean'      => '¿Quisiste decir «<a href="$1">$2</a>»?',
+	'searchnoresults'       => 'Lo sentimos, no hay ningún artículo con el texto buscado.',
+	'searchnearmatches'     => '<b>Estas páginas tienen títulos similares a tu consulta:</b>',
+	'lucenepowersearchtext' => 'Buscar sólo en los espacios de nombre:
+
+$1
+
+Buscar $3 $9',
+	'lucenefallback'        => 'Ha habido un problema con la búsqueda.
+Probablemente sea temporal. Intentelo de nuevo en unos minutos, 
 o emplee algún buscador externo para explorar la wiki.',
 	'searchexactcase'       => 'Búsqueda sensible a mayúsculas',
 	'searchall'             => 'todos',
