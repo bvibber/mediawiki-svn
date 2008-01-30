@@ -58,7 +58,12 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'tasklistprojdisp' => 'Показване',
+	'tasklist'             => 'Списък със задачи',
+	'tasklistbyproject'    => 'Списък със задачи по проект',
+	'tasklistbyprojectbad' => "Проектът '''%s''' не е валиден проект. За списък с проекти, вижте [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistchooseproj'   => 'Избор на проект:',
+	'tasklistprojdisp'     => 'Показване',
+	'tasklistbyname'       => '== Списък със задачи за %s ==',
 );
 
 $messages['de'] = array(

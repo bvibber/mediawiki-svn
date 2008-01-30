@@ -591,6 +591,22 @@ $messages['tr'] = array(
 	'imagemap_description' => 'Resim hakkında',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'imagemap_no_image'           => '&lt;imagemap&gt;: phải đưa tên hình vào dòng đầu tiên',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: hình không hợp lệ hay không tồn tại',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: không có liên kết hợp lệ ở cuối dòng $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: văn bản liên kết không hợp lệ ở dòng $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: không có đủ tọa độ cho vùng ở dòng $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: không hiểu hình dạng ở dòng $1, mỗi dòng phải bắt đầu với một trong: default, rect, circle, hay poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: phải định rõ ít nhất một vùng',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: tọa độ không hợp lệ ở dòng $1, phải là số',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: chọn desc không hợp lệ, phải là một trong: $1',
+	'imagemap_description'        => 'Thông tin về hình này',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  * @author Malafaya

@@ -260,6 +260,21 @@ $messages['id'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Pematroli',
 );
 
+/** Icelandic (Íslenska)
+ * @author Jóna Þórunn
+ */
+$messages['is'] = array(
+	'patrol-revert'        => 'Taka aftur',
+	'patrol-revert-reason' => 'Ástæða:',
+	'patrol-skip'          => 'Sleppa',
+	'patrol-reverting'     => 'Tek aftur: $1',
+	'patrol-skipped-ok'    => 'Hunsa breytingu.',
+	'patrol-reasons'       => '* Smávægilegt skemmdarverk
+* Tilraun nýliða
+* Sjá spjallsíðu',
+	'patrol-resume'        => 'Smelltu hér til að halda áfram.',
+);
+
 /* Italian (BrokenArrow) */
 $messages['it'] = array(
 	'patrol' => 'Verifica delle modifiche',

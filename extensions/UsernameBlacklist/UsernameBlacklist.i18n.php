@@ -122,6 +122,23 @@ $messages['cs'] = array(
 	'usernameblacklist-invalid-lines' => 'Následující {{plural:$1|řádka|řádky|řádky}} v&nbsp;seznamu nepovolených uživatelských jmen {{plural:$1|je neplatná|jsou neplatné|jsou neplatné}}; prosíme, opravte {{plural:$1|ji|je|je}} před uložením:',
 );
 
+/** Danish (Dansk)
+ * @author Morten LJ
+ */
+$messages['da'] = array(
+	'blacklistedusername'             => 'Sortlistet brugernavn',
+	'blacklistedusernametext'         => 'Du har valgt et brugernavn som findes på [[MediaWiki:Usernameblacklist|{{SITENAME}}s sorte liste]], vælg venligst et andet.',
+	'usernameblacklist'               => "<pre>
+# Elementerne i denne liste bliver brugt som del af en ''regular expression''
+# når brugernavne sortlistes fra oprettelse. Hvert element bør være en del en
+# punktopstilling, fx
+#
+# * Foo
+# * [Bb]ar
+</pre>",
+	'usernameblacklist-invalid-lines' => 'Nedenstående {{PLURAL:$1|linje|linjer}} i den sorte liste over brugernavne er ugyldige, ret {{PLURAL:$1|den|dem}} venligst før du gemmer:',
+);
+
 /* German (Raymond) */
 $messages['de'] = array(
 	'blacklistedusername'             => 'Benutzername auf der Sperrliste',
@@ -135,6 +152,13 @@ $messages['de'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => 'Die {{PLURAL:$1|folgende Zeile|folgenden Zeilen}} in der Liste unerwünschter Benutzernamen {{PLURAL:$1|ist|sind}} ungültig; bitte korrigiere sie vor dem Speichern:',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'blacklistedusername' => 'Malpermesita uzantnomo',
 );
 
 $messages['eu'] = array(
@@ -385,6 +409,24 @@ Basqa ataw talğañız.',
 	'usernameblacklist-invalid-lines' => 'Qatıswşı atı qara tizimindegi kelesi {{PLURAL:$1|jol|joldar}} jaramsız {{PLURAL:$1|boldı|boldı}}; saqtawdıñ aldında {{PLURAL:$1|bunı|bulardı}} durıstap şığıñız:',
 );
 
+/** Korean (한국어)
+ * @author Klutzy
+ */
+$messages['ko'] = array(
+	'blacklistedusername'             => '금지된 사용자 이름',
+	'blacklistedusernametext'         => '사용자 이름에 [[MediaWiki:Usernameblacklist|사용이 금지된 문장]]이 들어 있습니다. 다른 이름으로 가입해주세요.',
+	'usernameblacklist'               => '<pre>
+# 이 목록은 가입할 때 사용자 이름에 문제가 있는지를 검사하는 데에 쓰이고,
+# 각 항목에는 정규식이 들어갑니다.
+# 각 항목은 다음과 같이 별표 목록으로 작성되어 있어야 합니다.
+# 예:
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => '사용자 이름 블랙리스트 목록에서 다음 줄이 잘못되었습니다. 저장하기 전에 올바르게 고쳐 주세요:',
+);
+
 /* Kurdi */
 $messages['ku'] = array(
 	'blacklistedusernametext' => 'Wê navî yê te hilbijart li ser [[MediaWiki:Usernameblacklist|lîstêya navên nebaş]] e. Xêra xwe navekî din hilbijêre.',
@@ -429,6 +471,13 @@ $messages['lt'] = array(
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Ši|Šios}} {{PLURAL:$1|eilutė|eilutės}} juodajame naudotojų vardų sąraše yra {{PLURAL:$1|bloga|blogos}}; prašome {{PLURAL:$1|ją|jas}} pataisyti prieš išsaugant:',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Jacob.jose
+ */
+$messages['ml'] = array(
+	'blacklistedusername' => 'കരിമ്പട്ടികയില്‍പ്പെട്ട ഉപയോക്തൃനാമം',
+);
+
 $messages['nds'] = array(
 	'blacklistedusername' => 'Brukernaam op de swarte List',
 	'blacklistedusernametext' => 'De Brukernaam den du utsöcht hest, liekt en Naam vun de [[{{ns:8}}:Usernameblacklist|swarte List för Brukernaams]]. Söök di en annern ut.',
@@ -460,6 +509,22 @@ zwarte lijst van gebruikersnamen]]. Kies alstublieft een andere naam.',
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => 'De volgende {{PLURAL:$1|regel|regels}} in de zwarte lijst met gebruikersnamen {{PLURAL:$1|is|zijn}} onjuist; corrigeer {{PLURAL:$1|hem|ze}} alstublieft voordat u de pagina opslaat:',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'blacklistedusername'             => 'Svartelista brukarnamn',
+	'usernameblacklist'               => '<pre>
+# Punkta på denne lista vert brukte som ein del av eit regulært uttrykk
+# når ein svartelistar brukarnamn frå registrering. Kvart punkt
+# bør vere ein del av ei punktliste, til dømes
+#
+# * Arne
+# * [Bb]jarne
+</pre>',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Denne lina|Desse linene}} i lista over svartelista brukarnamn er {{PLURAL:$1|ugyldig|ugyldige}}, ver venleg og rett {{PLURAL:$1|henne|dei}} før du lagrar:',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

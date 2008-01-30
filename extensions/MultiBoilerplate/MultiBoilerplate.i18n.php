@@ -73,3 +73,4 @@ $messages['sk'] = array(
 	'multiboilerplate-legend' => 'Vyberte nápis',
 	'multiboilerplate-submit' => 'Načítať',
 );
+

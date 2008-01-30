@@ -276,6 +276,39 @@ $messages['oc'] = array(
 	'povwatch_added'                   => 'ajustat',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'povwatch'                         => 'НтзНадзор',
+	'povwatch_no_session'              => 'Ошибка. Невозможно отправить форму из-за потери данных сессии.',
+	'povwatch_not_allowed_push'        => 'Вы не являетесь администратором НтзНадзора, вы не можете моиещать страницы в списки наблюдения.',
+	'povwatch_already_subscribed'      => 'Вы уже подписаны на НтзНадзор',
+	'povwatch_subscribed'              => 'Теперь вы подписаны на НтзНадзор',
+	'povwatch_not_subscribed'          => 'Вы не подписаны на НтзНадзор, поэтому вы не можете отписаться.',
+	'povwatch_unsubscribed'            => 'Вы отписались от НтзНадзора.',
+	'povwatch_invalid_title'           => 'Указанный заголовок неверен',
+	'povwatch_pushed'                  => '[[$1]] была успешно помещёна в список наблюдения $2 участника(ов)',
+	'povwatch_intro'                   => 'НтзНадзор (PovWatch ) — служба, позволяющая скрытно помещать спорные страницы в списки наблюдения подписанных администраторов.
+
+Журнал недавних помещений в списки наблюдения доступен на странице [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list'         => 'Доступен [[Special:PovWatch/subscribers|список подписчиков]].',
+	'povwatch_subscriber_list_intro'   => '<strong>Список подписчиков</strong>',
+	'povwatch_not_allowed_subscribers' => 'Вам не разрешено просматривать список подписчиков НтзНадзора.',
+	'povwatch_unknown_subpage'         => 'Неизвестная подстраница.',
+	'povwatch_push'                    => 'Поместить',
+	'povwatch_push_intro'              => 'Используйте форму ниже, чтобы поместить страницы в списки наблюдения подписанных участников. Пожалуйста, будьте осторожны набирая название: даже несуществующие названия могут быть добавлены, и нет никакой возможности удалить название, если оно уже было добавлено.',
+	'povwatch_title'                   => 'Название:',
+	'povwatch_comment'                 => 'Примечание для журнала:',
+	'povwatch_no_log'                  => 'Нет записей в журнале.',
+	'povwatch_no_subscribers'          => 'Нет подписчиков.',
+	'povwatch_unsubscribe_intro'       => 'Вы подписались на НтзНадзор. Нажмите на кнопку ниже, чтобы отписаться.',
+	'povwatch_unsubscribe'             => 'Отписаться',
+	'povwatch_subscribe_intro'         => 'Вы не подписаны на НтзНадзор. Нажмите кнопку ниже, чтобы подписаться.',
+	'povwatch_subscribe'               => 'Подписаться',
+	'povwatch_added'                   => 'добавлен',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

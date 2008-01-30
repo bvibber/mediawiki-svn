@@ -12,7 +12,7 @@ $messages = array();
  * English
  * @author MinuteElectron <minuteelectron@googlemail.com>
  */
-$messages[ 'en' ] = array(
+$messages['en'] = array(
 	'categorystepper-start' => '(Start of category)',
 	'categorystepper-end'   => '(End of category)',
 );
@@ -120,3 +120,4 @@ $messages['vo'] = array(
 	'categorystepper-start' => '(Prim klada)',
 	'categorystepper-end'   => '(Fin klada)',
 );
+

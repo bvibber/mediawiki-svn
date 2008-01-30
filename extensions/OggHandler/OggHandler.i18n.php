@@ -1160,6 +1160,37 @@ $messages['te'] = array(
 	'ogg-desc-link' => 'ఈ ఫైలు గురించి',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'ogg-short-audio'         => 'Tập tin âm thanh Ogg $1, $2',
+	'ogg-short-video'         => 'Tập tin video Ogg $1, $2',
+	'ogg-short-general'       => 'Tập tin Ogg $1, $2',
+	'ogg-long-audio'          => '(tập tin âm thanh Ogg $1, dài $2, $3)',
+	'ogg-long-video'          => '(tập tin video Ogg $1, dài $2, $4×$5 điểm ảnh, $3)',
+	'ogg-long-multiplexed'    => '(tập tin Ogg có âm thanh và video ghép kênh, $1, dài $2, $4×$5 điểm ảnh, $3 tất cả)',
+	'ogg-long-general'        => '(tập tin phương tiện Ogg, dài $2, $3)',
+	'ogg-long-error'          => '(Tập tin Ogg có lỗi: $1)',
+	'ogg-play'                => 'Chơi',
+	'ogg-pause'               => 'Tạm ngừng',
+	'ogg-stop'                => 'Ngừng',
+	'ogg-play-video'          => 'Coi video',
+	'ogg-play-sound'          => 'Nghe âm thanh',
+	'ogg-no-player'           => 'Rất tiếc, hình như máy tính của bạn cần thêm phần mềm. Xin <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/vi">tải xuống chương trình chơi nhạc</a>.',
+	'ogg-no-xiphqt'           => 'Hình như bạn không có bộ phận XiphQT cho QuickTime, nên QuickTime không thể chơi những tập tin Ogg được. Xin <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/vi">truyền xuống XiphQT</a> hay chọn một chương trình chơi nhạc khác.',
+	'ogg-player-videoElement' => 'Phần tử <video>',
+	'ogg-player-oggPlugin'    => 'Ogg (plugin)',
+	'ogg-player-thumbnail'    => 'Chỉ hiển thị hình tĩnh',
+	'ogg-player-soundthumb'   => 'Tắt',
+	'ogg-player-selected'     => '(được chọn)',
+	'ogg-use-player'          => 'Chọn chương trình chơi:',
+	'ogg-more'                => 'Thêm nữa…',
+	'ogg-dismiss'             => 'Đóng',
+	'ogg-download'            => 'Tải tập tin xuống',
+	'ogg-desc-link'           => 'Chi tiết của tập tin này',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  * @author Smeira

@@ -1262,10 +1262,17 @@ $messages['tr'] = array(
  * @author Smeira
  */
 $messages['vo'] = array(
-	'hiderevision-continue' => 'Fövön',
-	'hiderevision-tab'      => 'Klänedön revidi',
-	'hiderevision-noreason' => 'Mutol bepenön kodi moükama at.',
-	'oversight-view'        => 'pats',
+	'hiderevision'                => 'Klänedön krütamis laidüpio',
+	'hiderevision-prompt'         => 'Dientifakot fomama moükabik:',
+	'hiderevision-continue'       => 'Fövön',
+	'hiderevision-reason'         => 'Kod (polisedon kläniko):',
+	'hiderevision-tab'            => 'Klänedön revidi',
+	'hiderevision-norevisions'    => 'Fomams nonik pevälons ad pamoükön.',
+	'hiderevision-noreason'       => 'Mutol bepenön kodi moükama at.',
+	'hiderevision-status'         => 'Fomam $1: $2',
+	'hiderevision-archive-status' => 'Pemoükon fomam se $1: $2',
+	'oversight-log-hiderev'       => 'emoükon redakami se $1',
+	'oversight-view'              => 'pats',
 );
 
 /* Cantonese (Shinjiman) */

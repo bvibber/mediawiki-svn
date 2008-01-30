@@ -338,8 +338,15 @@ $messages['kk-latn'] = array(
 	'sitematrix-others'   => 'Basqa Wikimedia jobaları',
 );
 
+/** Korean (한국어)
+ * @author Klutzy
+ * @author לערי ריינהארט
+ */
 $messages['ko'] = array(
-	'sitematrix' => '위키미디어 위키 목록',
+	'sitematrix'          => '위키미디어 위키 목록',
+	'sitematrix-language' => '언어',
+	'sitematrix-project'  => '프로젝트 이름, 각 프로젝트 간의 인터위키',
+	'sitematrix-others'   => '다른 위키미디어 프로젝트 목록',
 );
 
 $messages['la'] = array(
@@ -603,6 +610,16 @@ $messages['ur'] = array(
 
 $messages['vec'] = array(
 	'sitematrix' => 'Ełenco de tuti i projeti Wikimedia ne le varie lengoe',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'sitematrix'          => 'Danh sách các wiki của Wikimedia',
+	'sitematrix-language' => 'Ngôn ngữ',
+	'sitematrix-project'  => 'Tên dự án, tiền tố trong liên kết, và liên kết liên wiki',
+	'sitematrix-others'   => 'Các dự án khác của Wikimedia',
 );
 
 /** Volapük (Volapük)

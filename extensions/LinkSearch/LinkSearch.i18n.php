@@ -549,6 +549,18 @@ $messages['tr'] = array(
 	'linksearch-ok' => 'Ara',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'linksearch'       => 'Tìm liên kết ngoài',
+	'linksearch-ns'    => 'Không gian tên:',
+	'linksearch-ok'    => 'Tìm kiếm',
+	'linksearch-text'  => "Có thể sử dụng ký tự đại diện (''wildcard'') ở đầu tiên, ví dụ “*.wikipedia.org”.<br />Hiện hỗ trợ các giao thức: <tt>$1</tt>",
+	'linksearch-line'  => '$1 được liên kết từ $2',
+	'linksearch-error' => "Chỉ được sử dụng ký tự đại diện (''wildcard'') vào đầu tên miền (''hostname'').",
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  * @author Smeira

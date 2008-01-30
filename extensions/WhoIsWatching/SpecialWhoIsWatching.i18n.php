@@ -95,10 +95,12 @@ $messages['fr'] = array(
  * @author Alma
  */
 $messages['gl'] = array(
-	'whoiswatching'               => 'Quen está vixiando a páxina wiki',
-	'specialwhoiswatchingthepage' => 'Quen está vixiando %s',
-	'specialwhoiswatchingusage'   => 'Esta páxina especial non pode ser usada deste xeito. Use esta páxina
+	'whoiswatching'                => 'Quen está vixiando a páxina wiki',
+	'specialwhoiswatchingthepage'  => 'Quen está vixiando %s',
+	'specialwhoiswatchingusage'    => 'Esta páxina especial non pode ser usada deste xeito. Use esta páxina
 [[MediaWiki:Number_of_watching_users_pageview]] para definir un punto de entrada a esta páxina especial.',
+	'specialwhoiswatchingaddusers' => 'Engadir usuarios para vixiar a páxina',
+	'specialwhoiswatchingaddbtn'   => 'Engadir Usuarios seleccionados',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -221,3 +223,4 @@ $messages['te'] = array(
 	'specialwhoiswatchingaddusers' => 'ఈ పేజీని వీక్షించగలిగేటట్లు వాడుకరులను చేర్చండి',
 	'specialwhoiswatchingaddbtn'   => 'ఎంచుకున్న వాడుకరులను చేర్చు',
 );
+

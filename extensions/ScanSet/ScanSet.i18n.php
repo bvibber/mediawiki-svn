@@ -68,6 +68,14 @@ $messages['de'] = array(
 	'scanset_prev'                      => '← Vorheriger',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'scanset_next' => 'Sekva &gt;',
+	'scanset_prev' => '&lt; Antaŭa',
+);
+
 # فارسی (Huji)
 $messages['fa'] = array(
 	'scanset_no_name'                   => 'ScanSet: شما باید نام مجموعه را وارد کنید، مثلاً <scanset name="EB1911" />.',

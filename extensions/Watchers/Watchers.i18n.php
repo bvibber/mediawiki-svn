@@ -224,3 +224,4 @@ $messages['sv'] = array(
 	'watchers_x_or_more'     => '$1 eller fler användare bevakar sidan.',
 	'watchers_less_than_x'   => 'Färre än $1 användare bevakar sidan.',
 );
+

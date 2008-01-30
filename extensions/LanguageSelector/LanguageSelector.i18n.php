@@ -85,6 +85,13 @@ $messages['fr'] = array(
 	'languageselector-setlang' => 'Définir',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'languageselector-setlang' => 'elexir',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

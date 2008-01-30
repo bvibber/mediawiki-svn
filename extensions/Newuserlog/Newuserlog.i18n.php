@@ -262,9 +262,14 @@ $messages['he'] = array(
 	'newuserlog-create2-entry' => 'יצר חשבון עבור $1',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ * @author Dnik
+ */
 $messages['hr'] = array(
 	'newuserlogpage'           => 'Evidencija novih suradnika',
 	'newuserlogpagetext'       => 'Ispod je popis nedavno otvorenih suradničkih imena',
+	'newuserlog-byemail'       => 'lozinka poslana e-poštom',
 	'newuserlog-create-entry'  => 'Novi suradnik',
 	'newuserlog-create2-entry' => 'kreiran je novi suradnik $1',
 );
@@ -280,9 +285,13 @@ $messages['hsb'] = array(
 	'newuserlog-create2-entry' => 'je konto za wužiwarja [[$1]] wutworił',
 );
 
+/** Hungarian (Magyar)
+ * @author Dorgan
+ */
 $messages['hu'] = array(
 	'newuserlogpage'           => 'Új felhasználók naplója',
 	'newuserlogpagetext'       => 'Ez a napló az újonnan beregisztrált felhasználók listája.',
+	'newuserlog-byemail'       => 'a jelszót kiküldtük a megadott e-mail címre',
 	'newuserlog-create-entry'  => 'új felhasználóként regisztrált',
 	'newuserlog-create2-entry' => 'új felhasználót hozott létre $1 néven',
 );
