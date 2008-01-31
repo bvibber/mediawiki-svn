@@ -42,5 +42,6 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'TitleKey::schemaUpdates';
 
 // Search hooks...
 $wgHooks['PrefixSearchBackend'][] = 'TitleKey::prefixSearchBackend';
+$wgHooks['SearchGetNearMatch' ][] = 'TitleKey::searchGetNearMatch';
 
 $wgAutoloadClasses['TitleKey'] = dirname( __FILE__ ) . '/TitleKey_body.php';

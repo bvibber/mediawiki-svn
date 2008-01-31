@@ -211,4 +211,50 @@ class TitleKey {
 		
 		return $srchres;
 	}
+	
+	/**
+	 * Override the default 'go' search exact match checks.
+	 * This'll let 'mcgee' match 'McGee' etc.
+	 * @param string $term
+	 * @param Title outparam &$title
+	 */
+	static function searchGetNearMatch( $term, &$title ) {
+		$temp = Title::newFromText( $term );
+		if( $temp ) {
+			$match = self::exactMatchTitle( $temp );
+			if( $match ) {
+				// Yay!
+				$title = $match;
+				return false;
+			}
+		}
+		// No matches. :(
+		return true;
+	}
+	
+	static function exactMatchTitle( $title ) {
+		$ns = $title->getNamespace();
+		return self::exactMatch( $ns, $title->getText() );
+	}
+	
+	static function exactMatch( $ns, $text ) {
+		$key = self::normalize( $text );
+		
+		$dbr = wfGetDB( DB_SLAVE );
+		$row = $dbr->selectRow(
+			array( 'titlekey', 'page' ),
+			array( 'page_namespace', 'page_title' ),
+			array(
+				'tk_page=page_id',
+				'tk_namespace' => $ns,
+				'tk_key' => $key,
+			),
+			__METHOD__ );
+		
+		if( $row ) {
+			return Title::makeTitle( $row->page_namespace, $row->page_title );
+		} else {
+			return null;
+		}
+	}
 }
