@@ -16,5 +16,3 @@ if( isset( $options['help'] ) ) {
 	echo "Rebuilding titlekey table...\n";
 	TitleKey::populateKeys( $start );
 }
-
-?>

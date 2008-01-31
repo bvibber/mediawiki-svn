@@ -19,6 +19,13 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+$wgExtensionCredits['other'][] = array(
+	'name' => 'TitleKey',
+	'version' => '2008-01-30',
+	'description' => 'Title prefix search suggestion backend',
+	'author' => 'Brion Vibber'
+);
+
 // The 'SearchUpdate' hook would be right, but it's called in the
 // wrong place and I don't want to rewrite it all just this second.
 
@@ -37,5 +44,3 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'TitleKey::schemaUpdates';
 $wgHooks['PrefixSearchBackend'][] = 'TitleKey::prefixSearchBackend';
 
 $wgAutoloadClasses['TitleKey'] = dirname( __FILE__ ) . '/TitleKey_body.php';
-
-?>

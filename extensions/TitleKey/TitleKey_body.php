@@ -212,5 +212,3 @@ class TitleKey {
 		return $srchres;
 	}
 }
-
-?>
