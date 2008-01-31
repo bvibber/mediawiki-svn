@@ -97,7 +97,7 @@ class SpecialDuplicator extends SpecialPage {
 							# Revision count exceeds limit
 							$limit = $wgLang->formatNum( $wgDuplicatorRevisionLimit );
 							$actual = $wgLang->formatNum( $num );
-							$message = wfMsgNoTrans( 'duplicator-toomanyrevision', $this->sourceTitle->getPrefixedText(), $actual, $limit );
+							$message = wfMsgNoTrans( 'duplicator-toomanyrevisions', $this->sourceTitle->getPrefixedText(), $actual, $limit );
 							$wgOut->addWikiText( $message );
 						}
 					} else {
