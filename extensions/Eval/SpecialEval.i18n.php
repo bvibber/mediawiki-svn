@@ -96,7 +96,11 @@ $messages['ru'] = array(
 	'eval_code'   => 'Код',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
+	'eval'        => 'Eval',
 	'eval_submit' => 'Vyhodnotiť',
 	'eval_escape' => 'Výstup s únikovými klauzulami',
 	'eval_out'    => 'Výstup',

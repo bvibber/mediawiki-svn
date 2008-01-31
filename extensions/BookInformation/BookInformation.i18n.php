@@ -777,6 +777,7 @@ $messages['vo'] = array(
 	'bookinfo-result-publisher'  => 'Dabükan:',
 	'bookinfo-result-year'       => 'Yel:',
 	'bookinfo-error-invalidisbn' => 'ISBN no lonöföl.',
+	'bookinfo-error-nosuchitem'  => 'No dabinon u no petuvon.',
 	'bookinfo-error-noresponse'  => 'No edabinon geükam, u tim tulunüpik ya epasetikon.',
 	'bookinfo-purchase'          => 'Remolös buki at se $1',
 );

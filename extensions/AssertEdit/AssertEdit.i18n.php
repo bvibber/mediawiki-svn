@@ -269,6 +269,14 @@ $messages['vi'] = array(
 	'assert_edit_message' => 'Xác nhận được chỉ định ($1) đã thất bại.',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'assert_edit_title'   => 'Fümedam no eplöpon',
+	'assert_edit_message' => 'Fümedam peflagöl ($1) no eplöpon.',
+);
+
 /** 粵語 (粵語)
  * @author Shinjiman
  */
