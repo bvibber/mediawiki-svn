@@ -360,10 +360,14 @@ $messages['kk-latn'] = array(
 	'newuserlog-create2-entry' => 'jaña tirkelgi jasadı — $1',
 );
 
+/** Korean (한국어)
+ * @author Klutzy
+ */
 $messages['ko'] = array(
-	'newuserlogpage'           => '사용자 등록 기록',
-	'newuserlogpagetext'       => '사용자 등록 기록입니다.',
-	'newuserlog-create-entry'  => '새 사용자',
+	'newuserlogpage'          => '사용자 등록 기록',
+	'newuserlogpagetext'      => '사용자 등록 기록입니다.',
+	'newuserlog-byemail'      => '이메일로 암호 보냄',
+	'newuserlog-create-entry' => '새 사용자',
 );
 
 $messages['ksh'] = array(
@@ -521,6 +525,7 @@ $messages['pt'] = array(
 $messages['qu'] = array(
 	'newuserlogpage'           => "Rakiquna kamariy hallch'a",
 	'newuserlogpagetext'       => "Kayqa ruraqkunap rakiqunankunata kamariymanta hallch'am",
+	'newuserlog-byemail'       => 'e-chaskiwan kachasqa yaykuna rima',
 	'newuserlog-create-entry'  => 'Musuq ruraq',
 	'newuserlog-create2-entry' => 'kamarin $1-paq rakiqunata',
 );

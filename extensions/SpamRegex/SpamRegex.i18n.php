@@ -242,3 +242,33 @@ $messages['oc'] = array(
 	'spamregex-summary-log'          => '(Comentari)',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'spamregex'                      => 'SpamRegex',
+	'spamregex_summary'              => 'Text bol nájdený v zhrnutí úprav stránky.',
+	'spamregex-intro'                => 'Tento formulár slúži na efektívne zamedzenie ukladania nežiaduceho textu stránok. Ak text obsahuje uvedený výraz, zmeny nebude možné uložiť a používateľovi sa zobrazí upozornenie. Odporúča sa opatrnosť - výrazy by nemali byť príliš krátke ani bežne sa vyskytujúce.',
+	'spamregex-page-title'           => 'Blokovanie nežiaduceho spamu pomocou regulárnych výrazov',
+	'spamregex-currently-blocked'    => "'''Momentálne zablokované frázy.'''",
+	'spamregex-no-currently-blocked' => "'''Nie sú žiadne zablokované frázy.'''",
+	'spamregex-log-1'                => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 remove]) pridal",
+	'spamregex-log-2'                => '$1',
+	'spamregex-page-title-1'         => 'Zablokovať frázu pomocou regulárnych výrazov',
+	'spamregex-unblock-success'      => 'Odblokovanie úspešné',
+	'spamregex-unblock-message'      => 'Bol zrušený zákaz uložiť frázu „$1“.',
+	'spamregex-page-title-2'         => 'Blokovať ukladanie fráz pomocou regulárnych výrazov',
+	'spamregex-block-success'        => 'Blokovanie úspešné',
+	'spamregex-block-message'        => "Fráza '''$1''' bola zablokovaná.",
+	'spamregex-warning-1'            => 'Zadajte frázu, ktorú chcete blokovať.',
+	'spamregex-error-1'              => 'Neplatný regulárny výraz.',
+	'spamregex-warning-2'            => 'Prosím, označte aspoň jeden režim blokovania.',
+	'spamregex-already-blocked'      => '„$1“ je už blokované',
+	'spamregex-phrase-block'         => 'Blokovať frázu:',
+	'spamregex-phrase-block-text'    => 'blokovať frázu v texte stránky',
+	'spamregex-phrase-block-summary' => 'blokovať frázu v zhrnutí úprav',
+	'spamregex-block-submit'         => 'Blokovať&nbsp;túto&nbsp;frázu',
+	'spamregex-text'                 => '(v texte)',
+	'spamregex-summary-log'          => '(v zhrnutí)',
+);
+

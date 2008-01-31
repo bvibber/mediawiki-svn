@@ -379,6 +379,30 @@ $messages['su'] = array(
 	'vote-invalid-choice' => 'Anjeun kudu milih salah sahiji ti nu aya.',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'vote'                => 'Rösta',
+	'vote-header'         => "Här kan du rösta fram '''Världens Enväldige Härskare'''!",
+	'vote-current'        => "Ditt nuvarande val är '''$1'''.",
+	'vote-legend'         => 'Rösta eller ändra din röst',
+	'vote-caption'        => 'Ditt val:',
+	'vote-choices'        => 'joker|Jokern
+penguin|Pingvinen
+riddler|Gåtan',
+	'vote-submit'         => 'Rösta',
+	'vote-registered'     => 'Din röst har registrerats.',
+	'vote-view-results'   => 'Se resultat',
+	'vote-results'        => 'Omröstningsresultat',
+	'vote-results-choice' => 'Val',
+	'vote-results-count'  => 'Antal',
+	'vote-results-none'   => 'Inga röster har avgivits ännu.',
+	'vote-login'          => 'Du måste $1 för att rösta.',
+	'vote-login-link'     => 'logga in',
+	'vote-invalid-choice' => 'Du måste välja något av de angivna alternativen.',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

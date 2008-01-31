@@ -1170,9 +1170,10 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'ogg-more'      => 'మరిన్ని...',
-	'ogg-dismiss'   => 'మూసివేయి',
-	'ogg-desc-link' => 'ఈ ఫైలు గురించి',
+	'ogg-player-videoElement' => '<video> మూలకం',
+	'ogg-more'                => 'మరిన్ని...',
+	'ogg-dismiss'             => 'మూసివేయి',
+	'ogg-desc-link'           => 'ఈ ఫైలు గురించి',
 );
 
 /** Vietnamese (Tiếng Việt)

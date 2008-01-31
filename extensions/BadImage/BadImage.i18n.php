@@ -695,7 +695,8 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'badimages-name' => 'نوم:',
+	'badimages-name'   => 'نوم:',
+	'badimages-reason' => 'سبب:',
 );
 
 /* Portuguese (Lugusto) */
@@ -971,16 +972,23 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author Veeven
+ * @author Mpradeep
  */
 $messages['te'] = array(
-	'badimages-add-btn'    => 'చేర్చు',
-	'badimages-name'       => 'పేరు:',
-	'badimages-reason'     => 'కారణం:',
-	'badimages-remove'     => '(తొలగించు)',
-	'badimages-remove-btn' => 'తొలగించు',
-	'badimages-subheading' => 'ప్రస్తుత అంశాలు',
-	'badimages-log-name'   => 'చెడు బొమ్మల జాబితా',
-	'badimages-page'       => '{{ns:help}}:చెడు బొమ్మల జాబితా',
+	'badimages'                => 'పాడైన బొమ్మల జాబితా',
+	'badimages-add-btn'        => 'చేర్చు',
+	'badimages-added'          => '$1ని జాబితాలో చేర్చాం.',
+	'badimages-name'           => 'పేరు:',
+	'badimages-not-added'      => 'బొమ్మని చేర్చలేకపోయాం.',
+	'badimages-not-removed'    => 'బొమ్మని తొలగించలేకపోయాం.',
+	'badimages-reason'         => 'కారణం:',
+	'badimages-remove'         => '(తొలగించు)',
+	'badimages-remove-btn'     => 'తొలగించు',
+	'badimages-remove-confirm' => '$1ని జాబితా నుండి తొలగించాలనుకుంటున్నారని నిర్ధారించండి:',
+	'badimages-removed'        => '$1ని జాబితా నుండి తొలగించాం.',
+	'badimages-subheading'     => 'ప్రస్తుత అంశాలు',
+	'badimages-log-name'       => 'చెడు బొమ్మల జాబితా',
+	'badimages-page'           => '{{ns:help}}:చెడు బొమ్మల జాబితా',
 );
 
 /** Turkish (Türkçe)

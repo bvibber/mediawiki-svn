@@ -126,6 +126,13 @@ $messages['kk-latn'] = array(
 	'languageselector-setlang' => 'anıqtaw',
 );
 
+/** Latin (Latina)
+ * @author SPQRobin
+ */
+$messages['la'] = array(
+	'languageselector' => 'Lingua',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -43,7 +43,9 @@ $messages['ar'] = array(
  * @author Esbardu
  */
 $messages['ast'] = array(
-	'createarticle' => 'Crear páxina',
+	'tryexact'       => 'Intentar concueyar exautamente',
+	'searchfulltext' => 'Buscar testu completu',
+	'createarticle'  => 'Crear páxina',
 );
 
 $messages['az'] = array(

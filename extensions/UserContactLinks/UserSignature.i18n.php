@@ -75,6 +75,13 @@ $messages['oc'] = array(
 	'usercontactlink-baduser' => 'nom d’utilizaire incorrècte',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'usercontactlink-baduser' => 'nesprávne meno používateľa',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -65,6 +65,14 @@ $messages['oc'] = array(
 	'untidy' => 'Declassar',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'tidy'   => 'Upratať',
+	'untidy' => 'Zrušiť upratanie',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

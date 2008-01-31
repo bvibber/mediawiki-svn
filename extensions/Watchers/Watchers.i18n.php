@@ -203,13 +203,17 @@ $messages['ru'] = array(
 	'watchers_less_than_x' => "Менее чем $1 человек наблюдают за этой страницей.",
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
-	'watchers_link_title' => "Kto sleduje túto stránku?",
-	'watchers_error_article' => "<b>Chyba:</b> Článok neexistuje.",
-	'watchers_header' => "Ľudia sledujúci stránku \"$1\"",
-	'watchers_noone_watches' => "Nikto nesleduje túto stránku.",
-	'watchers_x_or_more' => "$1 alebo viac ľudí sleduje túto stránku.",
-	'watchers_less_than_x' => "Menej ako $1 ľudí sleduje túto stránku.",
+	'watchers'               => 'Sledujúci',
+	'watchers_link_title'    => 'Kto sleduje túto stránku?',
+	'watchers_error_article' => '<b>Chyba:</b> Článok neexistuje.',
+	'watchers_header'        => 'Ľudia sledujúci stránku "$1"',
+	'watchers_noone_watches' => 'Nikto nesleduje túto stránku.',
+	'watchers_x_or_more'     => '$1 alebo viac ľudí sleduje túto stránku.',
+	'watchers_less_than_x'   => 'Menej ako $1 ľudí sleduje túto stránku.',
 );
 
 /** Swedish (Svenska)

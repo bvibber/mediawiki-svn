@@ -2230,6 +2230,7 @@ Ch\'a ten-a da ment che ën bogiandse a peul arsèive n\'avis dla sigurëssa ëd
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'boardvote_novotes'  => 'تر اوسه هېچا رايه نه ده ورکړې.',
 	'boardvote_time'     => 'وخت',
 	'boardvote_user'     => 'کارونکی',
 	'boardvote_days'     => 'ورځې',

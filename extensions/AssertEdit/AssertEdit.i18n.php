@@ -213,6 +213,14 @@ $messages['pt'] = array(
 	'assert_edit_message' => 'A asserção especificada ($1) falhou.',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'assert_edit_title'   => 'Mañasqaqa manam atinchu',
+	'assert_edit_message' => 'Nisqa mañasqaqa ($1) manam atinchu.',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

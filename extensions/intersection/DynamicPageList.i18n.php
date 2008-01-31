@@ -232,6 +232,13 @@ $messages['sv'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Du måste inkludera minst en kategori eller ange en namnrymd!',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'intersection_noresults' => 'DynamicPageList: ఫలితాలు లేవు!',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -595,6 +595,23 @@ lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|A seguinte linha|As seguintes linhas}} da lista negra de nomes de utilizadores {{PLURAL:$1|é inválida|são inválidas}}; por gentileza, {{PLURAL:$1|a|as}} corrija antes de salvar as alterações:',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'blacklistedusername'             => 'Mana allin sutisuyupi ruraqpa sutin',
+	'blacklistedusernametext'         => 'Akllasqayki ruraqpa sutiykiqa [[MediaWiki:Usernameblacklist|mana allin sutisuyu]] nisqapim ruraqpa sutin. Ama hina kaspa, huk sutita akllay.',
+	'usernameblacklist'               => "<pre>
+# Kay sutisuyupi qumusqakunaqa chiqan nisqap rakinpim llamk'achisqa kanqa,
+# ruraqkunap sutinkuna mana allin sutisuyuman qillqamusqa kaptin, chay ruraqpa
+# sutinta rakiqunapaq mana llamk'achinapaq. Kay hinam qillqasqa kachun:
+#
+# * Foo
+# * [Bb]ar
+</pre>",
+	'usernameblacklist-invalid-lines' => "Ruraqpa sutinpaq mana allin sutisuyupiqa kay qatiq {{PLURAL:$1|siq'i|siq'ikuna}} manam {{PLURAL:$1|allinchu|allinchu}}; ama hina kaspa, manaraq waqaycharqaspa {{PLURAL:$1|allinchay|allinchay}}:",
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

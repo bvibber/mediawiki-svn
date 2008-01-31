@@ -340,6 +340,13 @@ $messages['sv'] = array(
 	'block_title_error'            => 'Det är inte tillåtet att spara en sida under denna titel.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'block_title_error' => 'క్షమించండి, ఈ పేజీ శీర్షికని భద్రపరచడానికి అనుమతించము.',
+);
+
 /** Tajik (Тоҷикӣ)
  * @author Farrukh
  */

@@ -314,7 +314,9 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'ajax-se-idling' => '($1s క్రితం)',
+	'ajax-se-title'   => 'ప్రస్తుతం మారుస్తున్నది:',
+	'ajax-se-pending' => 'తాజాకరణకై వేచివున్నాం... (ఈ పెట్టెపై నొక్కండి లేదా మార్చడం మొదలుపెట్టండి)',
+	'ajax-se-idling'  => '($1s క్రితం)',
 );
 
 /** Vietnamese (Tiếng Việt)

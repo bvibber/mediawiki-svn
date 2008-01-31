@@ -165,7 +165,10 @@ $messages['stq'] = array(
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'findspam-ip' => 'IP-adress:',
+	'findspam'             => 'Hitta spam',
+	'findspam-ip'          => 'IP-adress:',
+	'findspam-ok'          => 'Sök',
+	'findspam-notextfound' => 'Inga bidrag hittades',
 );
 
 /** Turkish (Türkçe)

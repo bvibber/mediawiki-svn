@@ -167,6 +167,13 @@ $messages['sv'] = array(
 	'advancedrandom' => 'Avancerad slumpsida',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'advancedrandom' => 'మొరుగైన యాదృచ్ఛికం',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

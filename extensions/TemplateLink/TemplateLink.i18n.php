@@ -116,6 +116,15 @@ $messages['pms'] = array(
 		'templatelink_newtitle' => '$1 (an transclusion)',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'templatelink'          => 'Odkaz šablóny',
+	'templatelink_empty'    => 'Musíte zadať parameter.',
+	'templatelink_newtitle' => '$1 (transkludovaná)',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -278,6 +278,30 @@ $messages['pms'] = array(
 	'formsaveerrortext' => 'A-i é sta-ie n\'eror amprevist ën salvand la pàgina \'$1\'.',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'form'                         => 'Formulár',
+	'formnoname'                   => 'Nezadali ste názov formulára',
+	'formnonametext'               => 'Musíte zadať názov formulára v tvare „Special:Form/Názovformulára“',
+	'formbadname'                  => 'Chybný názov formulára',
+	'formbadnametext'              => 'Formulár s takým názvom neexistuje.',
+	'formpattern'                  => 'formulár-$1',
+	'formtitlepattern'             => 'Pridať nový $1',
+	'formsave'                     => 'Uložiť',
+	'formindexmismatch'            => 'Vzory názvu tohto formulára sa nezhodujú a šablóny začínajú od indexu $1.',
+	'formarticleexists'            => 'Stránka existuje',
+	'formarticleexiststext'        => 'Stránka [[$1]] úž existuje.',
+	'formbadpagename'              => 'Chybný názov stránky',
+	'formbadpagenametext'          => 'Údaje formulára, ktoré ste zadali tvoria chybný názov stránky - „$1“.',
+	'formrequiredfieldpluralerror' => 'Tento formulár vyžaduje vyplnenie polí $1. Prosím, vyplňte ich.',
+	'formrequiredfielderror'       => 'Tento formulár vyžaduje vyplnenie poľa $1. Prosím, vyplňte ho.',
+	'formsavesummary'              => 'Nová stránka pomocou [[Special:Form/$1]]',
+	'formsaveerror'                => 'Chyba pri ukladaní formulára',
+	'formsaveerrortext'            => 'Pri ukladaní formulára sa vyskytla neznáma chyba „$1“.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

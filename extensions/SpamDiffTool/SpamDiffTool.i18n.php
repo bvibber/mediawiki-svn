@@ -184,6 +184,26 @@ $messages['oc'] = array(
 	'spamdifftool_submit_buttom'    => 'Sometre',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'spamdifftool'                  => 'Spravovať Čiernu listinu spamu',
+	'spamdifftool_cantedit'         => 'Prepáčte, nemáte oprávnenie upravovať Čiernu listinu spamu',
+	'spamdifftool_notext'           => "Nie je čo pridať na Čiernu listinu spamu. Pokračujte <a href='$1'>kliknutím sem</a>",
+	'spamdifftool_confirm'          => "Potvrďte, že chcete pridať tieto položky na Čiernu listinu spamu. (Môžete tiež <a href='$1' target='new'>nahlásiť problém</a>.)",
+	'spamdifftool_summary'          => 'Pridanie na Čiernu listinu spamu',
+	'spamdifftool_urls_detected'    => 'V úprave boli zistené nasledovné URL. Ktoré z nich chcete pridať na čiernu listinu spamu? Tieto voľby sú v poradí od najreštriktívnejších po menej reštriktívne. Zablokovanie celej domény zablokuje všetky odkazy na danú doménu.<br /><br />Určite nezablokujte celé domény, ktoré úmožňujú tvorbu používateľských účtov ako blogpost.com, geocities.com atď.',
+	'spamdifftool_no_urls_detected' => "Neboli zistené žiadne URL. Vráťte sa späť <a href='$1'>kliknutím sem</a>.",
+	'spamdifftool_spam_link_text'   => 'pridať medzi spam',
+	'spamdifftool_option_domain'    => 'všetky z tejto domény',
+	'spamdifftool_option_subdomain' => 'všetky z tejto subdomény',
+	'spamdifftool_option_directory' => 'túto subdoménu a adresár',
+	'spamdifftool_option_none'      => 'nič',
+	'spamdifftool_block'            => 'Blokovať:',
+	'spamdifftool_submit_buttom'    => 'Odoslať',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

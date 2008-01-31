@@ -83,6 +83,9 @@ Dës E-Mail gouf iech vun $1 iwwer den E-Mail-System vun {{SITENAME}} geschéckt
 $2',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
 	'email_footer' => '----------------------------------------------------------------------------
 Deze email is naar u verzonden via het {{SITENAME}}-emailsysteem door $1.
@@ -90,9 +93,14 @@ Deze email is naar u verzonden via het {{SITENAME}}-emailsysteem door $1.
 $2',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Siebrand
+ */
 $messages['no'] = array(
 	'email_footer' => '----------------------------------------------------------------------------
-Denne e-posten har blitt sendt deg fra $1 via {{SITENAME}}s e-postsystem.',
+Denne e-posten har blitt sendt deg fra $1 via {{SITENAME}}s e-postsystem.
+
+$2',
 );
 
 /** Occitan (Occitan)

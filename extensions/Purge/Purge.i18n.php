@@ -83,6 +83,13 @@ $messages['pt'] = array(
 	'purge' => 'purgar',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'purge' => 'очистить',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
