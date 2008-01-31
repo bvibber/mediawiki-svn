@@ -235,8 +235,8 @@ class DumpHTML {
 		$text = $this->getArticleHTML( $title );
 		
 		# Parse the XHTML to find the images
-		$images = $this->findImages( $text );
-		$this->copyImages( $images );
+		#$images = $this->findImages( $text );
+		#$this->copyImages( $images );
 		
 		$file = fopen( "{$this->dest}/index.html", "w" );
 		if ( !$file ) {
@@ -333,25 +333,28 @@ class DumpHTML {
 
 		$this->setupGlobals();
 		$i = 0;
-		for ( $hash = $start; $hash <= $end; $hash++ ) {
-			$this->setCheckpoint( 'shared image', $hash );
+		foreach ( $this->oldRepoGroup->foreignInfo as $repo ) {
+			$repoName = $repo['name'];
+			for ( $hash = $start; $hash <= $end; $hash++ ) {
+				$this->setCheckpoint( 'shared image', $hash );
+				$rel = sprintf( "%01x/%02x", intval( $hash / 16 ), $hash );
+				$dir = "{$this->destUploadDirectory}/$repoName/$rel";
+				$handle = @opendir( $dir );
+				while ( $handle && $file = readdir( $handle ) ) {
+					if ( $file[0] == '.' ) {
+						continue;
+					}
+					if ( !(++$i % REPORTING_INTERVAL ) ) {
+						print "$rel $i\r";
+					}
 
-			$dir = sprintf( "%s/%01x/%02x", $this->sharedStaticDirectory,
-		       		intval( $hash / 16 ), $hash );
-			$handle = @opendir( $dir );
-			while ( $handle && $file = readdir( $handle ) ) {
-				if ( $file[0] == '.' ) {
-					continue;
+					$title = Title::makeTitleSafe( NS_IMAGE, $file );
+					$this->doArticle( $title );
 				}
-				if ( !(++$i % REPORTING_INTERVAL ) ) {
-					print "$i\r";
+				if ( $handle ) {
+					closedir( $handle );
 				}
-
-				$title = Title::makeTitleSafe( NS_IMAGE, $file );
-				$this->doArticle( $title );
-			}
-			if ( $handle ) {
-				closedir( $handle );
+				print "\n";
 			}
 		}
 		$this->setCheckpoint( 'shared image', 'done' );
@@ -475,14 +478,14 @@ class DumpHTML {
 		}
 
 		# Parse the XHTML to find the images
-		$images = $this->findImages( $text );
-		$this->copyImages( $images );
+		#$images = $this->findImages( $text );
+		#$this->copyImages( $images );
 
 		# Write to file
 		$this->writeArticle( $title, $text );
 
 		# Do raw pages
-		wfMkdirParents( "{$this->dest}/raw", 0755 );
+		$this->mkdir( "{$this->dest}/raw", 0755 );
 		foreach( $this->rawPages as $record ) {
 			list( $file, $title, $params ) = $record;
 
@@ -509,6 +512,7 @@ class DumpHTML {
 
 	/** Write the given text to the file identified by the given title object */
 	function writeArticle( $title, $text ) {
+		wfProfileIn( __METHOD__ );
 		$filename = $this->getHashedFilename( $title );
 
 		# Temporary hack for current dump, this should be moved to 
@@ -520,6 +524,7 @@ class DumpHTML {
 		$length = strlen( $filename );
 		if ( $length > 255 ) {
 			print "Warning: Filename too long ($length bytes). Skipping.\n";
+			wfProfileOut( __METHOD__ );
 			return;
 		}
 			
@@ -546,16 +551,18 @@ class DumpHTML {
 					$this->escapeForVBScript( $fullName ) ) );
 			}
 		} else {
-			wfMkdirParents( $fullDir, 0755 );
-			wfSuppressWarnings();
+			if ( !$this->mkdir( $fullDir ) ) {
+				print "Error: unable to create directory '$fullDir'.\n";
+			}
+			#wfSuppressWarnings();
 			$success = file_put_contents( $fullName, $text );
-			wfRestoreWarnings();
+			#wfRestoreWarnings();
 		}
 
 		if ( !$success ) {
 			die("Can't open file '$fullName' for writing.\nCheck permissions or use another destination (-d).\n");
-			return;
 		}
+		wfProfileOut( __METHOD__ );
 	}
 
 	/** Escape a UTF-8 string for VBScript's Unescape() */
@@ -610,7 +617,7 @@ class DumpHTML {
 			return;
 		}
 		echo "Initialising destination directory...\n";
-		if ( !wfMkdirParents( "{$this->dest}/skins" ) ) {
+		if ( !$this->mkdir( "{$this->dest}/skins" ) ) {
 			throw new MWException( "Unable to create destination directory." );
 		}
 
@@ -719,14 +726,6 @@ class DumpHTML {
 		$newRepoGroup = $this->newRepoGroup( $this->oldRepoGroup );
 		RepoGroup::setSingleton( $newRepoGroup );
 
-
-		# Make a list of original repo URLs
-		$this->oldRepoGroup->initialiseRepos();
-		$repoPrefixes['local'] = array( $this->oldRepoGroup->getLocalRepo()->getZoneUrl('public') );
-		foreach ( $this->oldRepoGroup->foreignRepos as $name => $repo ) {
-			$repoPrefixes[$name] = $repo->getZoneUrl('public');
-		}
-
 		# Make a snapshot of the logo image and copyright icon
 		$wgLogo = $this->makeUrlSnapshot( $this->oldLogo );
 		if ( preg_match( '/<img [^>]*src="([^"]*)"/', $this->oldCopyrightIcon, $m ) ) {
@@ -747,7 +746,7 @@ class DumpHTML {
 	 */
 	function makeUrlSnapshot( $url ) {
 		global $wgServer;
-		wfMkdirParents( "{$this->dest}/misc" );
+		$this->mkdir( "{$this->dest}/misc" );
 		$destName = urldecode( basename( $url ) );
 		$destPath = "{$this->dest}/misc/$destName";
 		if ( !file_exists( $destPath ) ) {
@@ -861,7 +860,7 @@ ENDTEXT;
 		$destLoc = "$destDirBase/$rel";
 		#print "Copying $sourceLoc to $destLoc\n";
 		if ( !$this->pathExists( $destLoc ) ) {
-			wfMkdirParents( dirname( $destLoc ), 0755 );
+			$this->mkdir( dirname( $destLoc ), 0755 );
 			if ( function_exists( 'symlink' ) && !$this->forceCopy ) {
 				if ( !symlink( $sourceLoc, $destLoc ) ) {
 					print "Warning: unable to create symlink at $destLoc\n";
@@ -1112,26 +1111,41 @@ ENDTEXT;
 	}
 
 	function profile() {
-		global $wgProfiler;
+		global $wgProfiler, $wgRequestTime, $wgRUstart;
 
 		if ( !$this->udpProfile ) {
 			return;
 		}
 		if ( !$this->udpProfileInit ) {
 			$this->udpProfileInit = true;
+			$this->udpProfileCounter = 0;
 		} elseif ( $this->udpProfileCounter == 1 % $this->udpProfile ) {
+			wfProfileOut( '-total' );
 			$wgProfiler->getFunctionReport();
 			$wgProfiler = new DumpHTML_ProfilerStub;
 		}
 		if ( $this->udpProfileCounter == 0 ) {
 			$wgProfiler = new ProfilerSimpleUDP;
 			$wgProfiler->setProfileID( 'dumpHTML' );
+			$wgRequestTime = microtime( true );
+			$wgRUstart = getrusage();
+			wfProfileIn( '-total' );
 		}
 		$this->udpProfileCounter = ( $this->udpProfileCounter + 1 ) % $this->udpProfile;
 	}
 
 	function debug( $text ) {
 		print "$text\n";
+	}
+	
+	function mkdir( $dir ) {
+		if ( wfIsWindows() ) {
+			return wfMkdirParents( $dir, 0755 );
+		} else {
+			$dir = escapeshellarg( $dir );
+			`mkdir -p -- $dir`;
+			return true;
+		}
 	}
 }
 
@@ -1141,6 +1155,7 @@ class DumpHTML_ProfilerStub {
 	function getOutput() {}
 	function close() {}
 	function getFunctionReport() {}
+	function getCurrentSection() { return '';}
 }
 
 class DumpHTML_ProxyRepoGroup extends RepoGroup {
@@ -1239,10 +1254,10 @@ class DumpHTML_ProxyRepo {
 				return;
 			}
 			if ( !is_dir( dirname( $dest ) ) ) {
-				wfMkdirParents( dirname( $dest ) );
+				$this->dump->mkdir( dirname( $dest ) );
 			}
 
-			$this->dump->debug( "Copying $source to $dest" );
+			#$this->dump->debug( "Copying $source to $dest" );
 			if ( function_exists( 'symlink' ) && !$this->dump->forceCopy ) {
 				if ( !symlink( $source, $dest ) ) {
 					$this->dump->debug( "Warning: unable to create symlink at $dest" );
@@ -1295,9 +1310,9 @@ class DumpHTML_ProxyFile {
 	function fixURL( $url ) {
 		if ( is_string( $url ) && substr( $url, 0, strlen( $this->repo->backendUrl ) ) == $this->repo->backendUrl ) {
 			$rel = substr( $url, strlen( $this->repo->backendUrl ) + 1 );
+			$rel = implode('/', array_map( 'rawurldecode', explode( '/', $rel ) ) );
 			$this->repo->copyToDump( $rel );
 			$newUrl = $this->repo->url . '/' . $rel;
-			#$this->dump->debug( "$url -> $newUrl" );
 			$url = $newUrl;
 		}
 		return $url;
@@ -1323,6 +1338,7 @@ class DumpHTML_ProxyFile {
 			return;
 		}
 
+		#$this->dump->debug ( "Copying $source to $dest\n" );
 		if ( $source === false ) {
 			$sourceUrl = $this->backend->getUrl();
 			$contents = Http::get( $sourceUrl );
@@ -1335,7 +1351,7 @@ class DumpHTML_ProxyFile {
 			}
 		} else {
 			if ( !is_dir( dirname( $dest ) ) ) {
-				wfMkdirParents( dirname( $dest ) );
+				$this->dump->mkdir( dirname( $dest ) );
 			}
 
 			if ( function_exists( 'symlink' ) && !$this->dump->forceCopy ) {
