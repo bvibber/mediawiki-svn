@@ -96,6 +96,25 @@ $messages['de'] = array(
 	'pdt_comparing_page'  => 'Vergleiche Parser-Ausgabe für [[$1]]',
 );
 
+/** فارسی (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'parserdifftest'      => 'آزمون تفاوت تحلیلگر',
+	'pdtest_no_target'    => 'هدفی تعیین نشده‌است.',
+	'pdtest_page_missing' => 'صفحهٔ موردنظر در پایگاه داده یافت نشد.',
+	'pdtest_no_changes'   => 'هیچ تغییر حذف نشد.',
+	'pdtest_time_report'  => 'برای <b>$1</b> مدت $2 ثانیه صرف شد، برای <b>$3</b> مدت $4 ثانیه صرف شد.',
+	'pdtest_title'        => 'عنوان متن:',
+	'pdtest_text'         => 'متن ورودی:',
+	'pdtest_ok'           => 'تایید',
+	'pdtest_get_text'     => 'دریافت متن از صفحه',
+	'pdtest_diff'         => 'تفاوت‌ها',
+	'pdtest_side_by_side' => 'مقایسهٔ خروجی',
+	'pdt_comparing_page'  => 'مقایسهٔ خروجی تحلیلگر از [[$1]]',
+
+);
+
 /** French (Français)
  * @author Grondin
  */

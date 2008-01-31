@@ -184,15 +184,17 @@ $messages['eu'] = array(
 	'newuserlog-create2-entry' => '$1(r)entzako kontua sortu da',
 );
 
-# فارسی (Huji)
+/** فارسی (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
 	'newuserlogpage'           => 'سیاههٔ ایجاد کاربر',
 	'newuserlogpagetext'       => 'این سیاهه‌ای از نامهای کاربریِ تازه‌ساخته‌شده است',
+	'newuserlog-byemail'       => 'گذرواژه با پست الکترونیکی ارسال شد',
 	'newuserlog-create-entry'  => 'کاربر جدید',
 	'newuserlog-create2-entry' => 'برای $1 حساب کاربری ایجاد کرد',
 
 );
-
 
 $messages['fi'] = array(
 	'newuserlogpage'           => 'Uudet käyttäjät',
