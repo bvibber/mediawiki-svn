@@ -171,18 +171,19 @@ class PasswordReset extends SpecialPage
 				if ($wgRequest->wasPosted()) {
 					$name = $wgRequest->getText('wpName');
 					if ($name <> '') {
-						
-						$dbr = wfGetDB( DB_SLAVE );
-						$res = $dbr->select( 'user',
-							array( 'user_password' ),
-							array( 'user_name' => $name ),
-							__METHOD__ );
-							
-						while ( $row = $dbr->fetchObject( $res ) ) {
-							if ($row->user_password == 'DISABLED') {
+
+						$u = User::newFromName( $name );
+						if( is_null( $u ) ) {
+							return true;
+						} elseif ( 0 == $u->getID() ) {
+							return true;
+						} else {
+							$u->load();
+							if ($u->mPassword == 'DISABLED') {
 								$user->mBlockedby = 1;
 								$user->mBlockreason = wfMsg( 'passwordreset-accountdisabled' );
 							}
+							return true;
 						}
 					} 
 				} 
