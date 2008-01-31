@@ -1,8 +1,0 @@
-This extension is obsolete.
-
-Adding/removing hide revision role can be done from core product now.
-
-Use the following in LocalSettings.php (by default not assigned):
-$wgGroupPermissions['ROLENAME']['hiderevision']        = true;
-
-In the future this extension may be removed from trunk.
