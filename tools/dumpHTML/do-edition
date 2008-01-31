@@ -11,7 +11,7 @@ if len(sys.argv) < 2:
 edition = sys.argv[1]
 
 threads = {
-	"localhost": 4,
+	"localhost": 1,
 	"srv131": 2,
 	"srv132": 2,
 	"srv133": 2,

@@ -10,7 +10,7 @@ def redirectOutput(fileName):
 	os.dup2(fd,2)
 
 def dumpHTML(outputFile, *params):
-	fullParams = ["nice", "-n15", "php","dumpHTML.php"]
+	fullParams = ["nice", "nice", "-n15", "php", "-n", "dumpHTML.php"]
 	fullParams.extend(params)
 	msg(" ".join(fullParams))
 	pid = os.fork()
@@ -117,7 +117,7 @@ queueSock = socket.socket()
 queueSock.connect((queueHost, queuePort))
 queueFile = queueSock.makefile()
 
-os.chdir("/home/wikipedia/common/php-1.5/maintenance")
+os.chdir("/home/wikipedia/common/php-1.5/extensions/DumpHTML")
 waiting = False
 
 dataRegex = re.compile("data (\w+) ([a-z_-]+) (\w+) (\d+/\d+)")
@@ -143,8 +143,9 @@ while (os.getppid() > 1):
 		if type == "articles":
 			writeStatus(jobID, 'running')
 			msg(wiki + ' articles ' + slice)
-			dumpHTML(outputFile, wiki,"--no-shared-desc", #"--force-copy", "--image-snapshot",
+			dumpHTML(outputFile, wiki,"--no-shared-desc", "--image-snapshot",
 				"--interlang","-d",dest,"--slice",slice,
+				"--udp-profile","50",
 				"--checkpoint",checkpoint,"--no-overwrite")
 			
 			if isDone(checkpoint, 'everything'):
@@ -157,8 +158,9 @@ while (os.getppid() > 1):
 		elif type == "shared":
 			writeStatus(jobID, 'running')
 			msg(wiki + ' shared ' + slice)
-			dumpHTML(outputFile, wiki,"--shared-desc", #"--force-copy", "--image-snapshot",
+			dumpHTML(outputFile, wiki,"--shared-desc", "--image-snapshot",
 				"--interlang","-d",dest,"--slice",slice,
+				"--udp-profile", "50",
 				"--checkpoint",checkpoint,"--no-overwrite")
 			if isDone(checkpoint, 'shared image'):
 				msg("Done")

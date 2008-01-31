@@ -229,7 +229,7 @@ function startWiki( $wiki ) {
 	global $baseDir;
 	$lang = str_replace( 'wiki', '', $wiki );
 	print "Starting language $lang\n";
-	passthru( "$baseDir/scripts/start-lang $lang" );
+	#passthru( "$baseDir/scripts/start-lang $lang" );
 }
 
 ?>

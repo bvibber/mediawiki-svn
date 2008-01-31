@@ -21,12 +21,10 @@ echo Finding files...
 cd $sitebase
 find $lang -name \*.html > $dest/html.lst
 
-find $lang/skins $lang/images -follow -type f \
-	-not \( -name \*.php -or -name \*.xcf -or -name .\* -or -name \*~ -or \
-	-path \*/CVS/\* -or -path \*/.svn\* -or -path \*/wikimania\* \) \
-	> $dest/skins.lst
-find $lang/raw -type f >> $dest/skins.lst
-echo $lang/upload/b/bc/Wiki.png >> $dest/skins.lst
+find $lang/skins $lang/raw $lang/misc -type f > $dest/skins.lst
+echo $lang/dumpHTML.version >> $dest/skins.lst
+
+find $lang/images -not -type d > $dest/images.lst
 
 echo Creating HTML archive...
 rm -f $dest/wikipedia-$lang-html.7z
