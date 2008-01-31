@@ -54,32 +54,12 @@ class MV_StreamPage extends Article{
 	 * Overwrite view() from Article.php to add additional html to the output.
 	 */
 	public function view() {
-		global $mvgIP, $wgRequest, $wgUser, $wgOut, $wgTitle;
-		//check if this is editable page 
-		//if(!$this->isEditable()){
-		//	$this->viewRequest();
-		//}		
-		// copied from CategoryPage ...
-		//$diff = $wgRequest->getVal( 'diff' );
-		//$diffOnly = $wgRequest->getBool( 'diffonly', $wgUser->getOption( 'diffonly' ) );
-		//if ( isset( $diff ) && $diffOnly ) {
-		//	return Article::view();
-		//}
-				
-		//build layout based on page resolution?
-		
-		//create the metavid interface 
-		//(@@todo seed it article text if present
-		// will enable saving a "view" as a page)
+		global $mvgIP, $wgRequest, $wgUser, $wgOut, $wgTitle;	
 		$MV_MetavidInterface = new MV_MetavidInterface('stream', $this);			
 		//will require the mv_embed script for video playback: 
 		mvfAddHTMLHeader('stream_interface');
 		
-		$MV_MetavidInterface->render_full();			
-		/* to only display the article body 
-		 * would need to set up style as well  
-		 */				
-		//$wgOut->mArticleBodyOnly=true;	
+		$MV_MetavidInterface->render_full();
 	}
 	/*
 	 * test if this is a base editable request

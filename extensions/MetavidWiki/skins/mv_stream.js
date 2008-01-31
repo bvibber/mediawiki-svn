@@ -742,16 +742,17 @@ function mv_do_stop(){
 	}
 }
 function mv_do_play(mvd_id){
+	//stop the current	
+	$j('#embed_vid').get(0).stop();
+	
 	//foce a given mvd if set
 	if(mvd_id){
-		do_video_mvd_update(mv_init_interface.cur_mvd_id);
+		do_video_mvd_update(mvd_id);
 	}
 	//fade out the time disp:
 	$j('#mv_videoPlayerTime').fadeOut("fast");
 	//disable interface actions (mouse in out etc)
 	mv_lock_vid_updates=true;
-	//stop the current	
-	$j('#embed_vid').get(0).stop();
 	
 	//update the src if nessesary and no mvd provided:
 	if(!mvd_id){	
