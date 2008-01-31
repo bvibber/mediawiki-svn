@@ -45,10 +45,13 @@ incorporated into the official Cortado release.
 PEAR File_Ogg
 -------------
 
-The PEAR directory contains a fork of the File_Ogg package, licensed under the
-LGPL. The stock File_Ogg will not work -- I have made many aggressive changes
-including support for stream formats other than Vorbis. I'll try to get my
-changes committed to the official PEAR tree at some point in the future.
+I forked the PEAR File_Ogg package and improved it significantly in order to 
+support this extension. I have now taken over maintainership of File_Ogg and 
+merged my changes into the latest release. This extension will now work with 
+either the bundled File_Ogg class, or a File_Ogg package from PEAR with 
+version 0.3.0 or greater. It is licensed under the LGPL.
+
+http://pear.php.net/package/File_Ogg
 
 Graphics
 --------
