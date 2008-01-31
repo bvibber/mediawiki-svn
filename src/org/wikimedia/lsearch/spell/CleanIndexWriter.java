@@ -94,7 +94,7 @@ public class CleanIndexWriter {
 		//return; // don't add if preconditions are not met
 		
 		try {
-			Document doc = WikiIndexModifier.makeDocument(a,builder,iid,stopWords,analyzer);
+			Document doc = WikiIndexModifier.makeDocument(a,builder,iid,stopWords,analyzer,true);
 			writer.addDocument(doc,analyzer);
 			log.debug(iid+": Adding document "+a);
 		} catch (IOException e) {

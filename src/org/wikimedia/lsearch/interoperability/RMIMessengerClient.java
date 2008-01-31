@@ -246,7 +246,7 @@ public class RMIMessengerClient {
 			return r.highlight(hits,dbrole,terms,df,maxDoc,words,exactCase);
 		} catch(Exception e){
 			e.printStackTrace();
-			return new Highlight.ResultSet(new HashMap<String,HighlightResult>(),new HashSet<String>(),new HashSet<String>());
+			return new Highlight.ResultSet(new HashMap<String,HighlightResult>(),new HashSet<String>(),new HashSet<String>(),false);
 		}		
 	}
 	

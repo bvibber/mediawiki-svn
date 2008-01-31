@@ -67,10 +67,12 @@ public class Highlight {
 		public HashSet<String> phrases;
 		/** words found with some other query word in a sentence */
 		public HashSet<String> foundInContext;
-		public ResultSet(HashMap<String, HighlightResult> highlighted, HashSet<String> phrases, HashSet<String> foundInContext) {
+		public boolean foundAllInTitle;
+		public ResultSet(HashMap<String, HighlightResult> highlighted, HashSet<String> phrases, HashSet<String> foundInContext, boolean foundAllInTitle) {
 			this.highlighted = highlighted;
 			this.phrases = phrases;
 			this.foundInContext = foundInContext;
+			this.foundAllInTitle = foundAllInTitle;
 		}
 	}
 	/**
@@ -94,6 +96,7 @@ public class Highlight {
 		
 		HashSet<String> phrases = new HashSet<String>();
 		HashSet<String> inContext = new HashSet<String>();
+		boolean foundAllInTitle = false;
 		
 		// terms weighted with idf
 		HashMap<String,Double> weightTerm = new HashMap<String,Double>();
@@ -199,10 +202,14 @@ public class Highlight {
 			
 			if(titleSnippets.size() > 0){
 				hr.setTitle(titleSnippets.get(0).makeSnippet(256));
+				if(titleSnippets.get(0).found.containsAll(words))
+					foundAllInTitle = true;
 			}
 			
 			if(redirectSnippets != null){
 				hr.setRedirect(redirectSnippets.makeSnippet(MAX_CONTEXT));
+				if(!foundAllInTitle && redirectSnippets.found.containsAll(words))
+					foundAllInTitle = true;
 			}
 			
 			if(sectionSnippets != null){
@@ -211,7 +218,7 @@ public class Highlight {
 			res.put(key,hr);
 			
 		}
-		return new ResultSet(res,phrases,inContext);
+		return new ResultSet(res,phrases,inContext,foundAllInTitle);
 	}	
 	
 	/**

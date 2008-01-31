@@ -28,6 +28,8 @@ public class SearchResults implements Serializable {
 	protected HashSet<String> phrases = new HashSet<String>();
 	/** words found together in sentence, aid spellchecking */
 	protected HashSet<String> foundInContext = new HashSet<String>();
+	/** If we found all query words in a single title during highlighting */ 
+	protected boolean foundAllInTitle = false;
 	
 	public SearchResults(){
 		success = false;
@@ -110,6 +112,12 @@ public class SearchResults implements Serializable {
 	}
 	public void setPhrases(HashSet<String> phrases) {
 		this.phrases = phrases;
+	}
+	public boolean isFoundAllInTitle() {
+		return foundAllInTitle;
+	}
+	public void setFoundAllInTitle(boolean foundAllInTitle) {
+		this.foundAllInTitle = foundAllInTitle;
 	}
 
 	@Override

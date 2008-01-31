@@ -101,6 +101,9 @@ public class SpellCheckTest {
    	{"Sanitazer","Sanitizer"},
    	{"Sanitizer",""},
    	{"%5B2%5D:brion",""},
+   	{"boraga portugal","braga portugal"},
+   	{"moby ishmael",""},
+   	{"hediegger dasain","heidegger dasein"},
    	
    };
 

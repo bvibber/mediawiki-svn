@@ -35,7 +35,7 @@ public class SuggestTest {
 			else if(args[i].equals("-l"))
 				limit = Integer.parseInt(args[++i]);
 			else if(args[i].equals("--help")){
-				System.out.println("java SuggestTest [-s] [dbname]");
+				System.out.println("java SuggestTest [-s] [-l num] [dbname]");
 				System.out.println("Where:");
 				System.out.println("  -s       - final suggest only, no detailed report");
 				System.out.println("  -l <num> - limit number of results (default:"+limit+")");

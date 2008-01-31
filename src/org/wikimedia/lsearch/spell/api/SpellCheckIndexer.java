@@ -35,6 +35,7 @@ import org.wikimedia.lsearch.config.IndexRegistry;
 import org.wikimedia.lsearch.highlight.Highlight.FragmentScore;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
+import org.wikimedia.lsearch.ranks.StringList;
 import org.wikimedia.lsearch.search.IndexSearcherMul;
 import org.wikimedia.lsearch.search.WikiSearcher;
 import org.wikimedia.lsearch.spell.Suggest;
@@ -124,30 +125,6 @@ public class SpellCheckIndexer {
 				if(titleText != null && !rank.equals("0"))
 					addTitle(titleText,rank);
 			}
-			/*log.info("Getting most common phrases");
-			LuceneDictionary dict = new LuceneDictionary(ir,contents);
-			Word word;
-			dict.setNoProgressReport();
-			// prefix -> list of phrases
-			HashMap<String,ArrayList<Phrase>> commonPhrases = new HashMap<String,ArrayList<Phrase>>();
-			while((word = dict.next()) != null){
-				if(word.getFrequency() > (minPhraseFreq * 500) && word.getWord().contains("_")){
-					String w = word.getWord();
-					String key = w.substring(0,2);
-					ArrayList<Phrase> targ = commonPhrases.get(key);
-					if(targ == null)
-						commonPhrases.put(key,(targ=new ArrayList<Phrase>()));
-					targ.add(new Phrase(word));
-				}
-			}
-			// sort descending on freq
-			for(ArrayList<Phrase> targ : commonPhrases.values()){
-				Collections.sort(targ,  new Comparator<Phrase>() {
-					public int compare(Phrase o1, Phrase o2) {
-						return o2.freq - o1.freq;
-					}});
-			} */
-			
 			
 			log.info("Adding words and phrases");
 			LuceneDictionary dict = new LuceneDictionary(ir,contents);
@@ -155,7 +132,8 @@ public class SpellCheckIndexer {
 			Word word;
 			while((word = dict.next()) != null){
 				String w = word.getWord();
-				int freq = word.getFrequency();
+				int freq = word.getFrequency();				
+				String context = null;				
 				if(w.contains("_")){ // phrase
 					String[] words = w.split("_+");					
 					if(stopWords.contains(words[0]) || stopWords.contains(words[words.length-1]))
@@ -170,14 +148,14 @@ public class SpellCheckIndexer {
 					}
 					if(allowed && freq > minPhraseFreq){
 						boolean inTitle = ir.docFreq(new Term(title,w))!= 0;
-						/*String common = getCommonMisspell(w,freq,commonPhrases);
-						if(common != null && !validateCommonMisspell(w,common,stopWords,filters))
-							common = null; */
-						addPhrase(w,freq,inTitle,null);
+						addPhrase(w,freq,inTitle,null,null);
 					}
-				} else{
+				} else{ // word
 					if(freq > minWordFreq){
-						addWord(w,freq);
+						boolean inTitle = ir.docFreq(new Term(title,w))!= 0;
+						if(inTitle && !stopWords.contains(w))
+							context = makeContext(w,ir,fields,stopWords);
+						addWord(w,freq,context);
 					}
 				}
 			}
@@ -190,9 +168,10 @@ public class SpellCheckIndexer {
 					// start or end with stop word
 					if(stopWords.contains(words[0]) || stopWords.contains(words[words.length-1])){
 						int freq = ir.docFreq(new Term("contents",w));
-						addPhrase(w,freq,true,null);
+						//String context = makeContext(w,ir,fields,stopWords);
+						addPhrase(w,freq,true,null,null);
 					}
-				}
+				}				
 			}
 			ngramWriter.closeAndOptimize();
 			ir.close();			
@@ -202,93 +181,19 @@ public class SpellCheckIndexer {
 			return;
 		}
 		
-	}
+	}	
 	
-	private String[] splitPhrase(String p){
-		return p.split("_");		
-	}
-	
-	private boolean isNumber(String p){
-		for(int i=0;i<p.length();i++){
-			if(!Character.isDigit(p.charAt(i)))
-				return false;
-		}
-		return true;
-	}
-	
-	/** Check if this is a valid misspell correction */
-	protected boolean validateCommonMisspell(String phrase, String corrected, HashSet<String> stopWords, FilterFactory filters){
-		// no numbers, corrected words 5+ letters, & doesn't stem to same
-		// corrected words cannot be stopwords
-		String[] p = splitPhrase(phrase);
-		String[] c = splitPhrase(corrected);
-		String old=null, corr=null;
-		// no numbers or stop words
-		for(String pp : p){
-			if(isNumber(pp) || stopWords.contains(pp))
-				return false;
-		}
-		for(String cc : c){
-			if(isNumber(cc) || stopWords.contains(cc))
-				return false;
-		}
-		
-		if(p.length != c.length)
-			return true; // split/join words
-		
-		// figure out what changed
-		for(int i=0;i<p.length;i++){
-			if(!p[i].equals(c[i])){
-				old = p[i];
-				corr = c[i];
-				break;
-			}
-		}
-		// check length
-		if(old==null || corr==null || corr.length()<5)
-			return false;
-		// check stem
+	/** Provide contextual words for words and phraes in title */
+	protected String makeContext(String w, IndexReader ir, FieldNameFactory fields, HashSet<String> stopWords) throws IOException{
+		// add additional information about context
+		TermDocs ttd = ir.termDocs(new Term(fields.title(),w));
 		HashSet<String> words = new HashSet<String>();
-		words.add(old); words.add(corr);
-		if(Suggest.stem(words,filters).size() == 1)
-			return false; // new and old word stem to same
-		
-		return true;		
-	}
-	
-	/** See if this phrase is a misspell of some very common phrase */
-	protected String getCommonMisspell(String phrase, int freq, HashMap<String,ArrayList<Phrase>> commonPhrases){
-		String key = phrase.substring(0,2);
-		if(!commonPhrases.containsKey(key))
-			return null;
-		int minFreq = freq * 500;
-		for(Phrase p : commonPhrases.get(key)){
-			if(p.freq < minFreq)
-				return null;
-			if(p.dist.getDistance(phrase) == 1){				
-				return p.phrase;
-			}
+		while(ttd.next()){
+			words.addAll(new StringList(ir.document(ttd.doc()).get(fields.spellcheck_context())).toCollection());
 		}
-		return null;
-	}
-
-	/** Check if there are common mispellings of this phrase */
-	@Deprecated
-	protected boolean checkCommonPhraseMisspell(String phrase, int freq, IndexReader ir, String field) {
-		LuceneDictionary d = new LuceneDictionary(ir,field,phrase.substring(0,1));
-		d.setNoProgressReport();
-		Suggest.Metric metric = new Suggest.Metric(phrase);
-		Word word;
-		while((word = d.next()) != null){
-			if(word.getFrequency() * 100 < freq && word.getWord().indexOf("_")!=-1 ){
-				String w = word.getWord();
-				if(metric.distance(w) == 1){
-					System.out.println("Detected common mispelling for "+w+" (correct: "+phrase+")");
-					return true;
-				}
-			}
-		}
-		return false;
+		words.removeAll(stopWords);
+		words.remove(w);
+		return new StringList(words).toString();
 	}
 
 	/**
@@ -312,7 +217,7 @@ public class SpellCheckIndexer {
 	 * @param nf -  frequencies of phrase in various namespaces
 	 * @param namespaces - namespaces where phrase appears in title
 	 */
-	public void addPhrase(String phrase, int freq, boolean inTitle, String corrected){
+	public void addPhrase(String phrase, int freq, boolean inTitle, String corrected, String context){
 		if(phrase.length() <= 2){
 			log.warn("Invalid phrase: "+phrase);
 			return;
@@ -321,13 +226,14 @@ public class SpellCheckIndexer {
 		//ngramWriter.createNgramFields(doc,"phrase",phrase);
 		doc.add(new Field("phrase",phrase, Field.Store.YES, Field.Index.UN_TOKENIZED));
 		doc.add(new Field("freq",Integer.toString(freq), Field.Store.YES, Field.Index.NO));
-		if(inTitle)
+		if(inTitle){
 			doc.add(new Field("intitle","1", Field.Store.YES, Field.Index.UN_TOKENIZED));
+		}
 		if(corrected != null){
 			doc.add(new Field("misspell",corrected, Field.Store.YES, Field.Index.NO));
 			System.out.println(phrase+" -> "+corrected);
 		}
-			
+		addContext(phrase,context);			
 
 		ngramWriter.addDocument(doc);
 	}
@@ -357,7 +263,7 @@ public class SpellCheckIndexer {
 	 * @param nf - frequencies in namespaces
 	 * @param namespaces - namespaces where word appears in title
 	 */
-	public void addWord(String word, int freq){
+	public void addWord(String word, int freq, String context){
 		if(word.length() < 2)
 			return;
 		Document doc = new Document();
@@ -366,7 +272,16 @@ public class SpellCheckIndexer {
 		doc.add(new Field("freq",Integer.toString(freq), Field.Store.YES, Field.Index.NO));
 		doc.add(new Field("meta1",dmeta.doubleMetaphone(word), Field.Store.YES, Field.Index.NO));
 		doc.add(new Field("meta2",dmeta.doubleMetaphone(word,true), Field.Store.YES, Field.Index.NO));
-		
+		addContext(word,context);		
 		ngramWriter.addDocument(doc);
 	}	
+	
+	public void addContext(String key, String context){
+		if(context == null)
+			return;
+		Document doc = new Document();
+		doc.add(new Field("context_key",key, Field.Store.NO, Field.Index.UN_TOKENIZED));
+		doc.add(new Field("context", context, Field.Store.YES, Field.Index.NO));
+		ngramWriter.addDocument(doc);
+	}
 }

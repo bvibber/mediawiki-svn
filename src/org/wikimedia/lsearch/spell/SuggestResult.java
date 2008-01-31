@@ -1,5 +1,9 @@
 package org.wikimedia.lsearch.spell;
 
+import java.util.HashSet;
+
+import org.wikimedia.lsearch.ranks.StringList;
+
 public class SuggestResult {
 	String word;
 	int frequency=0;
@@ -7,6 +11,8 @@ public class SuggestResult {
 	int distMetaphone=0;
 	int distMetaphone2=0;
 	boolean sameLetters=false;
+	String serializedContext = null;
+	HashSet<String> context = null;
 	
 	static class Comparator implements java.util.Comparator<SuggestResult> {
 		public int compare(SuggestResult o1, SuggestResult o2){	
@@ -75,14 +81,20 @@ public class SuggestResult {
 		this.sameLetters = metric.hasSameLetters(word);
 	}
 	
-	/** Initialize all atributes using suggestion metrics */
+	/** Initialize all attributes using suggestion metrics */
 	public SuggestResult(String word, int frequency, Suggest.Metric metric, String meta1, String meta2) {
+		this(word,frequency,metric,meta1,meta2,null);
+	}
+	
+	/** Initiliaze using metric and serialized context */
+	public SuggestResult(String word, int frequency, Suggest.Metric metric, String meta1, String meta2, String serializedContext) {
 		this.word = word;
 		this.frequency = frequency;
 		this.dist = metric.distance(word);
 		this.distMetaphone = metric.sdmeta1.getDistance(meta1);
 		this.distMetaphone2 = metric.sdmeta2.getDistance(meta2);
 		this.sameLetters = metric.hasSameLetters(word);
+		this.serializedContext = serializedContext;
 	}
 	
 	public int getDist() {
@@ -123,6 +135,27 @@ public class SuggestResult {
 
 	public void setWord(String word) {
 		this.word = word;
+	}
+	
+	public String getSerializedContext() {
+		return serializedContext;
+	}
+	
+	public HashSet<String> getContext(){
+		if(context == null && serializedContext != null)
+			context = new StringList(serializedContext).toHashSet();
+		return context;
+	}
+	
+	public boolean inContext(String w){
+		/* if(serializedContext != null)
+			return serializedContext.indexOf(w+StringList.DELIMITER) >= 0;			
+		return false; */
+		HashSet<String> set = getContext();
+		if(set == null)
+			return false;
+		else
+			return set.contains(w);
 	}
 
 	@Override

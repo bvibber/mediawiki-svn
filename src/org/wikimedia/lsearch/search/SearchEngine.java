@@ -490,6 +490,8 @@ public class SearchEngine {
 	/** "Did you mean.." engine, use highlight results (if any) to refine suggestions, call after all other results are already obtained */
 	protected void suggest(IndexId iid, String searchterm, WikiQueryParser parser, SearchResults res, int offset, NamespaceFilterWrapper nsfw) {
 		if(offset == 0 && iid.hasSpell()){
+			if(res.isFoundAllInTitle())
+				return;
 			if(nsfw != null){
 				BitSet def = global.getDefaultNamespace(iid).getIncluded(); // spellcheck is on these namespaces
 				BitSet targ = nsfw.getFilter().getIncluded();
@@ -727,20 +729,20 @@ public class SearchEngine {
 		for(Entry<IndexId,ArrayList<String>> e : map.entrySet()){
 			IndexId piid = e.getKey();
 			for(IndexId hiid : piid.getPhysicalIndexIds()){
+				Highlight.ResultSet rs = null;
 				if(reader != null){ 
 					// we got a local reader, use it
-					Highlight.ResultSet rs = Highlight.highlight(e.getValue(),hiid,terms,df,maxDoc,words,stopWords,exactCase,reader); 
-					results.putAll(rs.highlighted);
-					res.getPhrases().addAll(rs.phrases);
-					res.getFoundInContext().addAll(rs.foundInContext);
+					rs = Highlight.highlight(e.getValue(),hiid,terms,df,maxDoc,words,stopWords,exactCase,reader); 					
 				} else{ 
 					// remote call
 					String host = cache.getRandomHost(hiid);
-					Highlight.ResultSet rs = messenger.highlight(host,e.getValue(),hiid.toString(),terms,df,maxDoc,words,exactCase);
-					results.putAll(rs.highlighted);
-					res.getPhrases().addAll(rs.phrases);
-					res.getFoundInContext().addAll(rs.foundInContext);					
+					rs = messenger.highlight(host,e.getValue(),hiid.toString(),terms,df,maxDoc,words,exactCase);
 				}
+				results.putAll(rs.highlighted);
+				res.getPhrases().addAll(rs.phrases);
+				res.getFoundInContext().addAll(rs.foundInContext);
+				if(rs.foundAllInTitle && words.size()>1)
+					res.setFoundAllInTitle(true);
 			}
 		}
 		// set highlight property

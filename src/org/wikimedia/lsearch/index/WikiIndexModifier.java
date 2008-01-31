@@ -20,6 +20,8 @@ import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.PerFieldAnalyzerWrapper;
 import org.apache.lucene.analysis.SimpleAnalyzer;
+import org.apache.lucene.analysis.Token;
+import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.Field.Index;
@@ -55,6 +57,7 @@ import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 import org.wikimedia.lsearch.ranks.Links;
+import org.wikimedia.lsearch.ranks.StringList;
 import org.wikimedia.lsearch.related.RelatedTitle;
 import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.spell.api.SpellCheckIndexer;
@@ -492,13 +495,15 @@ public class WikiIndexModifier {
 	}
 
 	/**
-	 * Make a document and a corresponding analyzer
-	 * @param rec
-	 * @param languageAnalyzer
-	 * @return array { document, analyzer }
-	 * @throws IOException 
+	 * Make a document for a regular index
+	 * @throws IOException
 	 */
 	public static Document makeDocument(Article article, FieldBuilder builder, IndexId iid, HashSet<String> stopWords, Analyzer analyzer) throws IOException{
+		return makeDocument(article,builder,iid,stopWords,analyzer,false);
+	}	
+	
+	/** Make a document with optional extra info (spellcheck context words) */
+	public static Document makeDocument(Article article, FieldBuilder builder, IndexId iid, HashSet<String> stopWords, Analyzer analyzer, boolean extraInfo) throws IOException{
 		Document doc = new Document();
 
 		// tranform record so that unnecessary stuff is deleted, e.g. some redirects
@@ -563,11 +568,16 @@ public class WikiIndexModifier {
 			Field rtitle = new Field(fields.reverse_title(), StringUtils.reverseString(article.getTitle()), Field.Store.NO, Field.Index.TOKENIZED);				 
 			rtitle.setBoost(rankBoost);
 			doc.add(rtitle);
+			
+			// extra info
+			if(extraInfo){
+				addSpellCheckInfo(doc,article.getTitle(),tokenizer.getKeywords(),tokenizer.getHeadingText(),article.getRedirectKeywords(),iid,fields);
+			}
 
 		}
 		return doc;
 	}
-	
+
 	/** Make the document that will be indexed as highlighting data */
 	public static Document makeHighlightDocument(Article article, Analyzer analyzer, ReusableLanguageAnalyzer contentAnalyzer, IndexId iid) throws IOException{
 		WikiIndexModifier.transformArticleForIndexing(article);
@@ -597,6 +607,31 @@ public class WikiIndexModifier {
 		doc.add(new Field("alttitle",Alttitles.serializeAltTitle(article,titles,new ArrayList<String>(),highlightAnalyzer,"alttitle"),Store.COMPRESS));
 		
 		return doc;
+	}
+	
+	/** Add words from different sources as additional info to provide context for spellchecks 
+	 * @throws IOException */
+	protected static void addSpellCheckInfo(Document doc, String title, HashSet<String> keywords, ArrayList<String> headingText, 
+			ArrayList<String> redirectKeywords, IndexId iid, FieldNameFactory fields) throws IOException {		
+		HashSet<String> collected = new HashSet<String>();
+		collected.add(title);
+		collected.addAll(keywords);
+		collected.addAll(headingText);
+		// collected.addAll(redirectKeywords);
+		StringBuilder sb = new StringBuilder();
+		for(String s : collected){
+			sb.append(s);
+			sb.append(" ");
+		}
+		// get individual words
+		TokenStream ts = Analyzers.getIndexerAnalyzer(new FieldBuilder(iid,false)).tokenStream("title",sb.toString());
+		Token t;
+		HashSet<String> tokenized = new HashSet<String>();
+		while((t = ts.next()) != null){
+			tokenized.add(t.termText());
+		}
+		
+		doc.add(new Field(fields.spellcheck_context(), new StringList(tokenized).toString(), Field.Store.COMPRESS, Field.Index.NO));
 	}
 	
 	/** add related aggregate field 

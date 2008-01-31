@@ -92,5 +92,9 @@ public class FieldNameFactory {
 		return exactCase;
 	}
 
+	public String spellcheck_context() {
+		return "spellcheck_context";
+	}
+
 
 }

@@ -298,7 +298,7 @@ public class FastWikiTokenizerEngine {
 					exact.setType("unicode");
 				tokens.add(exact);
 			} */
-			if(templateLevel == 0)
+			if(templateLevel == 0 && tableLevel == 0)
 				keywordTokens+=gap; // inc by gap (usually 1, can be more before paragraphs and sections)
 			
 			// add decomposed token to stream
