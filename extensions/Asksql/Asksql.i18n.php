@@ -421,17 +421,21 @@ $messages['sah'] = array(
 	'querysuccessful'  => 'Ыйытык оҥоһулунна',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Tonyfroio
+ * @author Siebrand
+ */
 $messages['scn'] = array(
-	'asksql'           => 'Query SQL',
-	'asksqltext'       => 'Lu mòdulu riportatu ccà sutta cunzenti di esequiri query diretti supra lu databbasi.
-Usari apici singuli (\'comu chisti\') pi nnicari li stringhi costanti.
+	'asksql'          => 'Query SQL',
+	'asksqltext'      => "Lu mòdulu riportatu ccà sutta cunzenti di esequiri query diretti supra lu databbasi.
+Usari apici singuli ('comu chisti') pi nnicari li stringhi costanti.
 Chista funzioni pò èssiri moltu pisanti pô server, pirciò
-si prega di usàrila cu giudizziu.',
-	'sqlislogged'      => 'Accura: tutti li query vennu arriggistrati.',
-	'sqlquery'         => 'Nzeriri la query',
-	'querybtn'         => 'Suttamitta query',
-	'selectonly'       => 'Sugnu cunzintiti sulu query di littura.',
-	'querysuccessful'  => 'Query esequita currittamenti',
+si prega di usàrila cu giudizziu.",
+	'sqlislogged'     => 'Accura: tutti li query vennu arriggistrati.',
+	'sqlquery'        => 'Nzeriri la query',
+	'querybtn'        => 'Suttamitta query',
+	'selectonly'      => 'Sugnu cunzintiti sulu query di littura.',
+	'querysuccessful' => 'Query esequita currittamenti',
 );
 
 /* Slovak
@@ -484,16 +488,20 @@ $messages['su'] = array(
 	'querysuccessful'  => 'Pamundut tos laksana',
 );
 
+/** Swedish (Svenska)
+ * @author Sannab
+ * @author Siebrand
+ */
 $messages['sv'] = array(
-	'asksql'           => 'SQL-fråga',
-	'asksqltext'       => 'Använd nedanstående formulär för att ställa en direkt fråga till databasen.
-Använd enkla citationstecken (\'så här\') för att avgränsa textsträngar.
-Detta kan leda till väsentlig belastning av servern, så använd denna funktion med måtta.',
-	'sqlislogged'      => 'Observera att alla frågor loggförs.',
-	'sqlquery'         => 'Mata in fråga',
-	'querybtn'         => 'Skicka in fråga',
-	'selectonly'       => 'Endast läs-frågor tillåts.',
-	'querysuccessful'  => 'Frågan lyckades',
+	'asksql'          => 'SQL-fråga',
+	'asksqltext'      => "Använd nedanstående formulär för att ställa en direkt fråga till databasen.
+Använd enkla citationstecken ('så här') för att avgränsa textsträngar.
+Detta kan leda till väsentlig belastning av servern, så använd denna funktion med måtta.",
+	'sqlislogged'     => 'Observera att alla frågor loggförs.',
+	'sqlquery'        => 'Mata in fråga',
+	'querybtn'        => 'Skicka in fråga',
+	'selectonly'      => 'Endast läs-frågor tillåts.',
+	'querysuccessful' => 'Frågan lyckades',
 );
 
 /** Vietnamese (Tiếng Việt)

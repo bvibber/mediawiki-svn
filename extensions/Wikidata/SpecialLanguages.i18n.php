@@ -974,6 +974,8 @@ $wdMessages['lb'] = array(
 	'ow_noedit_title'                 => "Keng Erlabniss fir z'änneren",
 	'ow_uiprefs'                      => 'Wikidata',
 	'ow_none_selected'                => '<Näischt ausgewielt>',
+	'ow_dm_OK'                        => 'OK',
+	'ow_AlternativeDefinition'        => 'Alternativ Definitioun',
 	'ow_Definition'                   => 'Definitioun',
 	'ow_Expression'                   => 'Ausdrock',
 	'ow_Expressions'                  => 'Ausdréck',
@@ -988,6 +990,7 @@ $wdMessages['lb'] = array(
 	'ow_TranslatedTextAttributeValue' => 'Text',
 	'ow_LinkAttributeValues'          => 'Linken',
 	'ow_meaningsoftitle'              => 'Bedeitung vun "$1"',
+	'ow_Permission_denied'            => '<h2>ERLAABNIS REFUSÉIERT</h2>',
 	'ow_copy_help'                    => 'Fréier oder spéider kënne mir iech hëllefen.',
 );
 
@@ -1183,6 +1186,17 @@ $wdMessages['nn'] = array(
 	'ow_Property'                           => 'Eigedom',
 	'ow_Value'                              => 'Verdi',
 	'ow_meaningsoftitle'                    => 'Tydingar av «$1»',
+	'ow_meaningsofsubtitle'                 => '<em>Wikilenkje:</em> [[$1]]',
+	'ow_Permission_denied'                  => '<h2>TILGANG FORBODE</h2>',
+	'ow_copy_no_action_specified'           => 'Ver venleg og oppgje ei handling',
+	'ow_copy_help'                          => 'Ein dag kan vi hjelpe deg.',
+	'ow_please_proved_dmid'                 => 'Det ser ut som bidraget ditt manglar ein «?dmid=<ID>» (dmid=Defined Meaning ID, nummer på definert tyding)<br />Ver venleg og ta kontakt med ein administrator på tenaren.',
+	'ow_please_proved_dc1'                  => 'Det ser ut som bidraget ditt manglar ein «?dc1=<noko>» (dc1=dataset context 1, dataval å kopiere FRÅ)<br />Ver venleg og ta kontakt med ein administrator på tenaren.',
+	'ow_please_proved_dc2'                  => 'Det ser ut som bidraget ditt manglar ein «?dc2=<noko>» (dc2=dataset context 2, dataval å kopiere TIL)<br />Ver venleg og ta kontakt med ein administrator på tenaren.',
+	'ow_copy_successful'                    => '<h2>Kopiering fullført</h2>Dei data du oppgav ser ut til å vere kopierte. Ikkje gløym å dobbelsjekke for å vere sikker!',
+	'ow_copy_unsuccessful'                  => '<h3>Kopiering feila</h3> Inga kopiering har funne stad.',
+	'ow_no_action_specified'                => '<h3>Inga handling vart oppgjeve</h3> Kanskje kom du direkte til denne sida? Normalt skal du ikkje kome hit.',
+	'ow_db_consistency_not_found'           => '<h2>Feil</h2>Det er noko gale med oppbygginga av databasen, wikidata finn ikkje gyldige data som er knytte til dette nummeret på ei definert tyding. Ho kan vere tapt. Ver venleg og ta kontakt med ein administrator på tenaren.',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

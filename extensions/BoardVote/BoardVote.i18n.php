@@ -2674,6 +2674,7 @@ Sledi rezultujuća šifrirana verzija. Biće javno predstavljena na [[Special:Bo
 /** Seeltersk (Seeltersk)
  * @author Pyt
  * @author Maartenvdbent
+ * @author Siebrand
  */
 $messages['stq'] = array(
 	'boardvote'              => 'Woalen tou dät Wikimedia-Kuratorium',
@@ -2706,7 +2707,7 @@ Wan du moatest, koast du foulgjende Eempeldhaide fäästhoolde. Dien Oustämmeng
 Ju wuude mäd dän Public Key fon do Woaladministratore ferslöäteld:
 
 <pre>$2</pre>',
-	'boardvote_nosession'    => 'Dien Wikimedia-Benutser-ID kon nit fääststoald wäide. Mäld die in dän Wiki an, in dän du tou ju Woal toulät bäst un gung deer ätter <nowiki>[[Special:Boardvote]]</nowiki>. Wäälen duur wäl, dän sien Benutserkonto nit minner as $1 Beoarbaidengen foar dän $2 apwiest, ju eerste Beoarbaidenge mout foar dän $3 geböärd weese.
+	'boardvote_nosession'    => 'Dien Wikimedia-Benutser-ID kon nit fääststoald wäide. Mäld die in dän Wiki an, in dän du tou ju Woal toulät bäst un gung deer ätter <nowiki>[[Special:Boardvote]]</nowiki>. Wäälen duur wäl, dän sien Benutserkonto nit minner as $1 Beoarbaidengen foar dän $2 apwiest, ju eerste Beoarbaidenge mout foar dän $3 geböärd weese. 
 
 Din Browser mout so konfigurierd weese, dät hie Cookies fon dän externe Woalcomputer
 <tt>wikimedia.spi-inc.org</tt> akzeptiert.',
@@ -2738,7 +2739,6 @@ Din Browser mout so konfigurierd weese, dät hie Cookies fon dän externe Woalco
 	'boardvote_redirecting'  => 'Foar ne haagere Sicherhaid un Klooregaid, wäd ju Woal moaked ap n externen, uunouhongich kontrollierden Server.
 
 Du wädst in 20 Sekunden tou dissen externen Server fääre lat. [$1 klik hier], uum fluks deerwai tou kuumen.',
-
 );
 
 $messages['su'] = array(
