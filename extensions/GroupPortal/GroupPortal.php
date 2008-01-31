@@ -42,7 +42,8 @@ function efGroupPortal_ArticlePageDataBefore ( &$article, &$fields ) {
 				$target = Title::newFromText($targetPortal);
 				
 				if( is_object( $target ) ) {
-					header('Location: ' . $target->getLocalURL() );
+					global $wgOut;
+					$wgOut->redirect( $target->getLocalURL() );
 				}
 			}
 		}
