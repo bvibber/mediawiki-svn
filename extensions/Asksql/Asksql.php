@@ -14,6 +14,14 @@
 if (!defined('MEDIAWIKI'))
 	exit;
 
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'Ask SQL',
+	'version' => '2008-01-31',
+	'description' => 'Do SQL queries through a [[Special:Asksql|special page]]',
+	'author' => 'Brion Vibber',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Asksql',
+);
+
 # Sysop SQL queries
 #   The sql user shouldn't have too many rights other the database, restrict
 #   it to SELECT only on 'page', 'revision' and 'text' tables for example
@@ -24,11 +32,7 @@ $wgAllowSysopQueries = true;
 #$wgDBsqlpassword = 'sqlpass';
 $wgSqlLogFile = "{$wgUploadDirectory}/sqllog_mFhyRe6";
 
-if ( !function_exists( 'extAddSpecialPage' ) ) {
-	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
-}
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['Asksql'] = $dir . 'Asksql.i18n.php';
-extAddSpecialPage( $dir . 'Asksql_body.php', 'Asksql', 'SpecialAsksql' );
-
-
+$wgAutoloadClasses['SpecialAsksql'] = $dir . 'Asksql_body.php';
+$wgSpecialPages['Asksql'] = 'SpecialAsksql';

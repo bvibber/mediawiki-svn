@@ -4,19 +4,17 @@ if (!defined('MEDIAWIKI')) {
 	exit;
 }
 
-/** Load up the internationalization stuff */
-wfLoadExtensionMessages( 'Asksql' );
-
 /** Main class that define a new special page*/
 class SpecialAsksql extends SpecialPage {
 
 	function SpecialAsksql() {
 		SpecialPage::SpecialPage( 'Asksql', 'asksql' );
-
 	}
 
 	function execute( $par ) {
 		global $wgAllowSysopQueries, $wgUser, $wgRequest, $wgOut;
+
+		wfLoadExtensionMessages( 'Asksql' );
 
 		if( !$wgAllowSysopQueries ) {
 			$wgOut->errorpage( 'nosuchspecialpage', 'nospecialpagetext' );
@@ -50,11 +48,11 @@ class SpecialAsksql extends SpecialPage {
  */
 class SqlQueryForm {
 	var $query = '';
-	
+
 	function SqlQueryForm( $query ) {
 		$this->query = $query;
 	}
-		
+
 	function showForm( $err ) {
 		global $wgOut, $wgUser, $wgLang;
 		global $wgLogQueries;
@@ -138,7 +136,7 @@ class SqlQueryForm {
 					}
 					$skin = $wgUser->getSkin();
 					$link = $skin->makeLink( $link );
-					$r .= "* [[$link]]<br />\n";	
+					$r .= "* [[$link]]<br />\n";
 				}
 			} else {
 
@@ -175,7 +173,7 @@ class SqlQueryForm {
 	function logQuery( $q ) {
 		global $wgSqlLogFile, $wgLogQueries, $wgUser;
 		if(!$wgLogQueries) return;
-		
+
 		$f = fopen( $wgSqlLogFile, 'a' );
 		fputs( $f, "\n\n" . wfTimestampNow() .
 			" query by " . $wgUser->getName() .
@@ -183,18 +181,15 @@ class SqlQueryForm {
 		fclose( $f );
 		$this->starttime = wfTime();
 	}
-	
+
 	function logFinishedQuery() {
 		global $wgSqlLogFile, $wgLogQueries;
 		if(!$wgLogQueries) return;
-		
+
 		$interval = wfTime() - $this->starttime;
-		
+
 		$f = fopen( $wgSqlLogFile, 'a' );
 		fputs( $f, 'finished at ' . wfTimestampNow() . "; took $interval secs\n" );
 		fclose( $f );
 	}
-
 }
-
-
