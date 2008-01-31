@@ -102,12 +102,18 @@ $1
 );
 
 /** Asturian (Asturianu)
- * @author SPQRobin
  * @author Esbardu
+ * @author SPQRobin
  */
 $messages['ast'] = array(
 	'searchnumber'          => '<strong>Resultaos $1-$2 de $3</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Ant</span>",
+	'searchnext'            => "<span style='font-size: small'>Sig</span> &#x00BB;",
+	'lucene-searchscore'    => 'Relevancia: $1%',
+	'lucene-resultsize'     => '$1 ($2 pallabres)',
+	'searchdidyoumean'      => '¿Querríes dicir: "<a href="$1">$2</a>"?',
 	'searchnoresults'       => 'Sentímoslo, nun hebo coincidencies exautes pa la to busca.',
+	'searchnearmatches'     => '<b>Estes páxines tienen títulos asemeyaos a la to consulta:</b>',
 	'lucenepowersearchtext' => 'Buscar nos espacios de nomes:
 
 $1
@@ -743,6 +749,7 @@ Petere $3 $9 $10',
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
+ * @author Siebrand
  */
 $messages['lb'] = array(
 	'searchnumber'          => '<strong>Resultater $1–$2 vun $3</strong>',
@@ -908,10 +915,14 @@ Søk etter $3 $9 $10',
 	'searchincategory'      => 'i kategori',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ * @author Siebrand
+ */
 $messages['oc'] = array(
 	'searchnumber'          => '<strong>Resultats $1-$2 sus $3</strong>',
-	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Prec.</span>',
-	'searchnext'            => '<span style=\'font-size: small\'>Seg.</span> &#x00BB;',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prec.</span>",
+	'searchnext'            => "<span style='font-size: small'>Seg.</span> &#x00BB;",
 	'lucene-searchscore'    => 'Pertinéncia : $1%',
 	'lucene-resultsize'     => '$1 ($2 mots)',
 	'searchdidyoumean'      => 'Pensavetz a : « <a href="$1">$2</a> » ?',
@@ -1223,6 +1234,7 @@ $messages['te'] = array(
 	'searchnumber'          => '<strong>$3 ఫలితాల్లో $1-$2</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>గత</span>",
 	'searchnext'            => "<span style='font-size: small'>తరువాతి</span> &#x00BB;",
+	'lucene-searchscore'    => 'సంబంధం: $1%',
 	'lucene-resultsize'     => '$1 ($2 పదాలు)',
 	'searchnoresults'       => 'క్షమించాలి, మీరడిగిన పదాలతో సరిగ్గా సరిపోయే ఫలితాలు లేవు. పదాలకు చివర "సున్నా" ఉన్నచోట "ము" పెట్టి, లేదా "ము" ఉంటే "సున్నా" పెట్టి, మళ్ళీ వెతకండి.',
 	'lucenepowersearchtext' => 'ఈ నేమ్ స్పేసుల్లో వెతుకు:
