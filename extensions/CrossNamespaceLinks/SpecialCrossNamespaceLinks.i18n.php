@@ -9,7 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'crossnamespacelinks'         => 'Cross-namespace links',
-	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Lists links across namespaces]] that shouldn\'t exist on Wikimedia projects',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Lists links across namespaces]] that shouldn\'t exist on {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'This page provides a list of links from a page in the main namespace to a page in other namespaces (except for {{ns:special}}, {{ns:talk}}, {{ns:project}} and {{ns:template}} namespaces), which are not advisable to use.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|link|links}} to $3'
 );
@@ -68,10 +68,14 @@ $messages['cs'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|odkaz|odkazy|odkazů}} do $3',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
-	'crossnamespacelinks'     => 'Seiten mit Links in andere Namensräume',
+	'crossnamespacelinks'         => 'Seiten mit Links in andere Namensräume',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Liste der Links auf Seiten anderer Namensräume]], die in {{SITENAME}} nicht vorhanden sein sollten',
 	'crossnamespacelinks-summary' => 'Diese Liste zeigt Seiten, die Links auf Seiten anderer Namensräume enthalten. Ausgenommen sind dabei die Namensräume {{ns:special}}, {{ns:talk}}, {{ns:project}} und {{ns:template}}.',
- 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|Link zeigt|Links zeigen}} in den $3-Namensraum'
+ 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|Link zeigt|Links zeigen}} in den $3-Namensraum'
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -294,7 +298,7 @@ $messages['nan'] = array(
 
 $messages['nl'] = array(
 	'crossnamespacelinks'         => 'Kruisverwijzingen tussen naamruimtes',
-	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Toont verwijzingen tussen naamruimten]] die niet zouden moeten bestaan in projecten van Wikimedia',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Toont verwijzingen tussen naamruimten]] die niet zouden moeten bestaan in {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Deze pagina voorziet in een overzicht van links vanuit een pagina in de hoofdnaamruimte naar andere naamruimtes (met uitzondering van de naamruimtes {{ns:special}}, {{ns:talk}}, {{ns:project}} en {{ns:template}}), waarvan het gebruik wordt afgeraden.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|verwijzing|verwijzingen}} naar $3',
 );
