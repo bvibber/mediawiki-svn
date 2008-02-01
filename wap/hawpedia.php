@@ -337,6 +337,11 @@ function remove_section($wikitext, $startStr, $endStr)
 		$search_pos = $secStart + strlen($startStr);
 		$secEnd = false;
 		while (true) {
+			// Guard against PHP whinging with strpos start position out of range
+			if( $search_pos > strlen( $wikitext ) )
+				break;
+			if( $search_pos + strlen( $startStr ) > strlen( $wikitext ) )
+				break;
 			$start_pos = strpos($wikitext, $startStr, $search_pos);
 			$end_pos   = strpos($wikitext, $endStr,   $search_pos + strlen($startStr));
 
