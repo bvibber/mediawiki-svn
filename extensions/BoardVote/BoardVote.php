@@ -10,11 +10,8 @@ if (!defined('MEDIAWIKI')) {
 # Extension credits
 $wgExtensionCredits['other'][] = array(
 	'name' => 'BoardVote',
-	'version' => '2008-02-01',
-	'author' => array( 'Tim Starling', 'Brion Vibber', 'others' ),
-	'description' => '[[meta:Board elections|Wikimedia Board of Trustees election]]',
-	'descriptionmsg' => 'boardvote-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:BoardVote',
+	'version' => '2008-01-08',
+	'description' => '[[meta:Board elections|Wikimedia Board of Trustees election]]'
 );
 
 # Default settings
@@ -54,4 +51,14 @@ function wfSetupBoardVote() {
 		wfDebug( __METHOD__.": Setting user language to {$_SESSION['bvLang']}\n" );
 		$_REQUEST['uselang'] = $_SESSION['bvLang'];
 	}
+}
+
+function wfBoardVoteInitMessages() {
+	static $done = false;
+	if ( $done ) return true;
+
+	$done = true;
+	wfLoadExtensionMessages( 'BoardVote' );
+
+	return true;
 }

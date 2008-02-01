@@ -9,7 +9,6 @@ $messages = array();
 
 $messages['en'] = array(
 	'boardvote'               => "Wikimedia Board of Trustees election",
-	'boardvote-desc'          => '[[meta:Board elections|Wikimedia Board of Trustees election]]',
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vote]]
 * [[Special:Boardvote/list|List votes to date]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]",
@@ -1913,7 +1912,6 @@ $messages['nds'] = array(
  */
 $messages['nl'] = array(
 	'boardvote'              => 'Wikimedia Board of Trustees-verkiezing',
-	'boardvote-desc'          => '[[meta:Board elections|Wikimedia Board of Trustees-verkiezing]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Stemmen]]
 * [[Special:Boardvote/list|Uitgebrachte stemmen tonen]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]',
