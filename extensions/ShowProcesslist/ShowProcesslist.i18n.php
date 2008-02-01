@@ -112,6 +112,7 @@ $messages['lb'] = array(
 	'showprocesslist-id'   => 'Nummer',
 	'showprocesslist-user' => 'Benotzer',
 	'showprocesslist-time' => 'Zäit',
+	'showprocesslist-info' => 'Informatiounen',
 );
 
 /** Dutch (Nederlands)

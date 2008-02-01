@@ -599,9 +599,14 @@ $messages['su'] = array(
 	'newuserlog-create2-entry' => 'rekening pikeun $1 geus dijieun',
 );
 
+/** Swedish (Svenska)
+ * @author Sannab
+ * @author Max sonnelid
+ */
 $messages['sv'] = array(
 	'newuserlogpage'           => 'Logg över nya användare',
 	'newuserlogpagetext'       => 'Detta är en logg över nyligen skapade användarkonton',
+	'newuserlog-byemail'       => 'lösenord sänt med e-post',
 	'newuserlog-create-entry'  => 'Ny användare',
 	'newuserlog-create2-entry' => 'skapade användarkonto för $1',
 );

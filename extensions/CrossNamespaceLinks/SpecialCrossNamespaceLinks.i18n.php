@@ -64,6 +64,7 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'crossnamespacelinks'         => 'Odkazy napříč jmennými prostory',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Seznam odkazů napříč jmennými prostory]], což by na {{grammar:6sg|{{SITENAME}}}} nemělo být',
 	'crossnamespacelinks-summary' => 'Na této stránce je seznam odkazů ze stránek v hlavním jmenném prostoru na stránky v jiném jmenném prostoru (kromě prostorů {{ns:special}}, {{ns:talk}}, {{ns:project}} a {{ns:template}}), což se nedoporučuje používat.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|odkaz|odkazy|odkazů}} do $3',
 );

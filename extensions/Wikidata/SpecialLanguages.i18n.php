@@ -976,6 +976,7 @@ $wdMessages['lb'] = array(
 	'ow_none_selected'                => '<Näischt ausgewielt>',
 	'ow_dm_OK'                        => 'OK',
 	'ow_AlternativeDefinition'        => 'Alternativ Definitioun',
+	'ow_AlternativeDefinitions'       => 'Alternativ Definitiounen',
 	'ow_Definition'                   => 'Definitioun',
 	'ow_Expression'                   => 'Ausdrock',
 	'ow_Expressions'                  => 'Ausdréck',
@@ -1474,6 +1475,13 @@ $wdMessages['ro'] = array(
 	'datasearch' => 'Wikidata: Căutare de date',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$wdMessages['ru'] = array(
+	'datasearch' => 'Викидата: Поиск данных',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -1759,6 +1767,36 @@ $wdMessages['sv'] = array(
 	'ow_SynonymsAndTranslations' => 'Synonymer och översättningar',
 	'ow_Source'                  => 'Källa',
 	'ow_LinkAttributeValues'     => 'Länkar',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ * @author Mpradeep
+ */
+$wdMessages['te'] = array(
+	'ow_save'                         => 'భద్రపరచు',
+	'ow_history'                      => 'చరిత్ర',
+	'ow_noedit_title'                 => 'మార్చడానికి అనుమతి లేదు',
+	'ow_none_selected'                => '<ఏమీ ఎంచుకోలేదు>',
+	'ow_dm_OK'                        => 'సరే',
+	'ow_AlternativeDefinition'        => 'ప్రత్యామ్నాయ నిర్వచనం',
+	'ow_AlternativeDefinitions'       => 'ప్రత్యామ్నాయ నిర్వచనాలు',
+	'ow_ApproximateMeanings'          => 'సమానార్థాలు',
+	'ow_ClassAttributeLevel'          => 'స్థాయి',
+	'ow_ClassAttributeType'           => 'రకం',
+	'ow_Definition'                   => 'నిర్వచనం',
+	'ow_Language'                     => 'భాష',
+	'ow_OptionAttributeOption'        => 'ఎంపిక',
+	'ow_OptionAttributeOptions'       => 'ఎంపికలు',
+	'ow_OptionAttributeValues'        => 'ఎంపిక విలువలు',
+	'ow_Text'                         => 'పాఠ్యం',
+	'ow_TextAttributeValues'          => 'సాదా పాఠ్యాలు',
+	'ow_TranslatedText'               => 'అనువాదిత పాఠ్యం',
+	'ow_TranslatedTextAttributeValue' => 'పాఠ్యం',
+	'ow_LinkAttributeValues'          => 'లింకులు',
+	'ow_Value'                        => 'విలువ',
+	'ow_Permission_denied'            => '<h2>అనుమతి నిరాకరించాం</h2>',
+	'ow_copy_help'                    => 'ఏదో ఒక రోజు, మీకు సహాయపడగలం.',
 );
 
 /** Turkish (Türkçe)

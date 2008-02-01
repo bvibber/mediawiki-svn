@@ -59,8 +59,12 @@ $messages['cdo'] = array(
 	'deletedcontributions' => 'Ké̤ṳk chēng lâi gì ê̤ṳng-hô góng-hióng',
 );
 
+/** Czech (Česky)
+ * @author Li-sung
+ */
 $messages['cs'] = array(
-	'deletedcontributions' => 'Smazané editace uživatele',
+	'deletedcontributions'      => 'Smazané editace uživatele',
+	'deletedcontributions-desc' => 'Umožňuje správcům [[Special:DeletedContributions|prohlížet smazané editace zadaného uživatele]]',
 );
 
 $messages['cy'] = array(
