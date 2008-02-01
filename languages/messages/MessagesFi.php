@@ -89,11 +89,12 @@ $magicWords = array(
 );
 
 $specialPageAliases = array(
-	'DoubleRedirects'           => array( 'Kaksinkertaiset_uudelleenohjaukset' ),
-	'BrokenRedirects'           => array( 'Virheelliset_uudelleenohjaukset' ),
+	'DoubleRedirects'           => array( 'Kaksinkertaiset_ohjaukset', 'Kaksinkertaiset_uudelleenohjaukset' ),
+	'BrokenRedirects'           => array( 'Virheelliset_ohjaukset', 'Virheelliset_uudelleenohjaukset' ),
 	'Disambiguations'           => array( 'Täsmennyssivut' ),
 	'Userlogin'                 => array( 'Kirjaudu_sisään' ),
 	'Userlogout'                => array( 'Kirjaudu_ulos' ),
+	'CreateAccount'             => array( 'Luo_tunnus' ),
 	'Preferences'               => array( 'Asetukset' ),
 	'Watchlist'                 => array( 'Tarkkailulista' ),
 	'Recentchanges'             => array( 'Tuoreet_muutokset' ),
@@ -125,6 +126,7 @@ $specialPageAliases = array(
 	'Ancientpages'              => array( 'Kuolleet_sivut' ),
 	'Deadendpages'              => array( 'Linkittömät_sivut' ),
 	'Protectedpages'            => array( 'Suojatut_sivut' ),
+	'Protectedtitles'           => array( 'Suojatut_sivunimet' ),
 	'Allpages'                  => array( 'Kaikki_sivut' ),
 	'Prefixindex'               => array( 'Etuliiteluettelo' ),
 	'Ipblocklist'               => array( 'Muokkausestot' ),
@@ -150,10 +152,10 @@ $specialPageAliases = array(
 	'Userrights'                => array( 'Käyttöoikeudet' ),
 	'MIMEsearch'                => array( 'MIME-haku' ),
 	'Unwatchedpages'            => array( 'Tarkkailemattomat_sivut' ),
-	'Listredirects'             => array( 'Uudelleenohjaukset' ),
+	'Listredirects'             => array( 'Ohjaussivut', 'Uudelleenohjaukset' ),
 	'Revisiondelete'            => array( 'Poista_muokkaus' ),
 	'Unusedtemplates'           => array( 'Käyttämättömät_mallineet' ),
-	'Randomredirect'            => array( 'Satunnainen_uudelleenohjaus' ),
+	'Randomredirect'            => array( 'Satunnainen_ohjaus', 'Satunnainen_uudelleenohjaus' ),
 	'Mypage'                    => array( 'Oma_sivu' ),
 	'Mytalk'                    => array( 'Oma_keskustelu' ),
 	'Mycontributions'           => array( 'Omat_muokkaukset' ),
@@ -311,6 +313,7 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'mytalk'         => 'Keskustelusivu',
 'anontalk'       => 'Keskustele tämän IP:n kanssa',
 'navigation'     => 'Valikko',
+'and'            => 'ja',
 
 # Metadata in edit box
 'metadata_help' => 'Sisältökuvaukset:',
@@ -1402,8 +1405,8 @@ Palaute ja lisäapu osoitteessa:
 'excontentauthor'             => 'sisälsi: ”$1” (ainoa muokkaaja oli $2)',
 'exbeforeblank'               => 'ennen tyhjentämistä sisälsi: ”$1”',
 'exblank'                     => 'oli tyhjä',
-'confirmdelete'               => 'Vahvista poisto',
-'deletesub'                   => 'Sivun $1 poisto',
+'delete-confirm'              => 'Sivun ”$1” poistaminen',
+'delete-legend'               => 'Sivun poisto',
 'historywarning'              => 'Sivua, jonka aiot poistaa on muokattu useammin kuin kerran:',
 'confirmdeletetext'           => 'Olet poistamassa sivun tai tiedoston ja kaiken sen historian. Ymmärrä teon seuraukset ja tee poisto {{GRAMMAR:genitive|{{SITENAME}}}} [[{{MediaWiki:Policy-url}}|käytäntöjen]] mukaisesti.',
 'actioncomplete'              => 'Toiminto suoritettu',
@@ -1414,7 +1417,7 @@ Palaute ja lisäapu osoitteessa:
 'deletionlog'                 => 'poistoloki',
 'reverted'                    => 'Palautettu aikaisempaan versioon',
 'deletecomment'               => 'Poistamisen syy',
-'deleteotherreason'           => 'Muu syy tai tarkennus:',
+'deleteotherreason'           => 'Muu syy tai tarkennus',
 'deletereasonotherlist'       => 'Muu syy',
 'deletereason-dropdown'       => '*Yleiset poistosyyt
 ** Lisääjän poistopyyntö
@@ -1574,7 +1577,7 @@ $1',
 'ipbother'                    => 'Vapaamuotoinen kesto',
 'ipboptions'                  => '2 tuntia:2 hours,1 päivä:1 day,3 päivää:3 days,1 viikko:1 week,2 viikkoa:2 weeks,1 kuukausi:1 month,3 kuukautta:3 months,6 kuukautta:6 months,1 vuosi:1 year,ikuinen:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'Muu kesto',
-'ipbotherreason'              => 'Muu syy',
+'ipbotherreason'              => 'Muu syy tai tarkennus',
 'ipbhidename'                 => 'Piilota IP-osoite tai tunnus estolokista, muokkausestolistasta ja käyttäjälistasta',
 'badipaddress'                => 'IP-osoite on väärin muotoiltu.',
 'blockipsuccesssub'           => 'Esto onnistui',
@@ -1738,6 +1741,7 @@ Sivujen koko historian vienti on estetty suorituskykysyistä.',
 'importuploaderrorsize'      => 'Tuontitiedoston tallennus epäonnistui. Tiedosto on suurempi kuin sallittu yläraja.',
 'importuploaderrorpartial'   => 'Tuontitiedoston tallennus epäonnistui. Tiedostosta oli lähetetty vain osa.',
 'importuploaderrortemp'      => 'Tuontitiedoston tallennus epäonnistui. Väliaikaistiedostojen kansio puuttuu.',
+'import-parse-failure'       => 'XML-tuonti epäonnistui jäsennysvirheen takia.',
 'import-noarticle'           => 'Ei tuotavaa sivua.',
 'import-nonewrevisions'      => 'Kaikki versiot on tuotu aiemmin.',
 
@@ -1828,7 +1832,6 @@ Sivujen koko historian vienti on estetty suorituskykysyistä.',
 'anonymous'        => '{{GRAMMAR:genitive|{{SITENAME}}}} anonyymit käyttäjät',
 'siteuser'         => '{{GRAMMAR:genitive|{{SITENAME}}}} käyttäjä $1',
 'lastmodifiedatby' => 'Tätä sivua muokkasi viimeksi ”$3” $2 kello $1.', # $1 date, $2 time, $3 user
-'and'              => 'ja',
 'othercontribs'    => 'Perustuu työlle, jonka teki $1.',
 'others'           => 'muut',
 'siteusers'        => '{{GRAMMAR:genitive|{{SITENAME}}}} käyttäjä(t) $1',
@@ -2318,5 +2321,20 @@ Yritä normaalia esikatselua.',
 # Core parser functions
 'unknown_extension_tag' => 'Tuntematon laajennuskoodi ”$1”.',
 
-);
+# Special:Version
+'version-extensions'               => 'Asennetut laajennukset',
+'version-specialpages'             => 'Toimintosivut',
+'version-parserhooks'              => 'Jäsenninkytkökset',
+'version-variables'                => 'Muuttujat',
+'version-other'                    => 'Muut',
+'version-mediahandlers'            => 'Median käsittelijät',
+'version-hooks'                    => 'Kytköspisteet',
+'version-extension-functions'      => 'Laajennusfunktiot',
+'version-parser-extensiontags'     => 'Jäsentimen laajennustagit',
+'version-parser-function-hooks'    => 'Jäsentimen laajennusfunktiot',
+'version-skin-extension-functions' => 'Ulkoasun laajennusfunktiot',
+'version-hook-name'                => 'Kytköspisteen nimi',
+'version-hook-subscribedby'        => 'Kytkökset',
+'version-version'                  => 'Versio',
 
+);

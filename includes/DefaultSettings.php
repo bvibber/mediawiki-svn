@@ -637,6 +637,12 @@ $wgDBerrorLog		= false;
 $wgDBClusterTimeout = 10;
 
 /**
+ * Scale load balancer polling time so that under overload conditions, the database server
+ * receives a SHOW STATUS query at an average interval of this many microseconds
+ */
+$wgDBAvgStatusPoll = 2000;
+
+/**
  * wgDBminWordLen :
  * MySQL 3.x : used to discard words that MySQL will not return any results for
  * shorter values configure mysql directly.
@@ -1550,6 +1556,14 @@ $wgDebugProfiling = false;
 $wgDebugFunctionEntry = 0;
 /** Lots of debugging output from SquidUpdate.php */
 $wgDebugSquid = false;
+
+/*
+ * Destination for wfIncrStats() data...
+ * 'cache' to go into the system cache, if enabled (memcached)
+ * 'udp' to be sent to the UDP profiler (see $wgUDPProfilerHost)
+ * false to disable
+ */
+$wgStatsMethod = 'cache';
 
 /** Whereas to count the number of time an article is viewed.
  * Does not work if pages are cached (for example with squid).

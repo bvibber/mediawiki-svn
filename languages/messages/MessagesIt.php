@@ -264,6 +264,7 @@ I seguenti collegamenti sono in lingua inglese:
 'mytalk'         => 'Le mie discussioni',
 'anontalk'       => 'Discussioni per questo IP',
 'navigation'     => 'Navigazione',
+'and'            => 'e',
 
 # Metadata in edit box
 'metadata_help' => 'Metadati:',
@@ -1031,6 +1032,7 @@ per collegare direttamente gli altri tipi di file.",
 'largefileserver'             => 'Il file supera le dimensioni consentite dalla configurazione del server.',
 'emptyfile'                   => 'Il file appena caricato sembra essere vuoto. Ciò potrebbe essere dovuto ad un errore nel nome del file. Verificare che si intenda realmente caricare questo file.',
 'fileexists'                  => 'Un file con questo nome esiste già. Verificare prima $1 se non si è sicuri di volerlo sovrascrivere.',
+'filepageexists'              => "Una pagina (ma non un'immagine) con questo nome esiste già. Verificare prima <strong><tt>$1</tt></strong> se non si è sicuri di volerla modificare.",
 'fileexists-extension'        => "Un file con nome simile a questo esiste già; l'unica differenza è l'uso delle maiuscole nell'estensione:<br />
 Nome del file caricato: <strong><tt>$1</tt></strong><br />
 Nome del file esistente: <strong><tt>$2</tt></strong><br />
@@ -1143,17 +1145,22 @@ PICT # misc.
 'filerevert-badversion'     => 'Non esistono versioni locali precedenti del file con il timestamp richiesto.',
 
 # File deletion
-'filedelete'             => 'Cancella $1',
-'filedelete-legend'      => 'Cancella il file',
-'filedelete-intro'       => "Stai per cancellare '''[[Media:$1|$1]]'''.",
-'filedelete-intro-old'   => '<span class="plainlinks">Stai cancellando la versione di \'\'\'[[Media:$1|$1]]\'\'\' del [$4 $3, $2].</span>',
-'filedelete-comment'     => 'Motivazione:',
-'filedelete-submit'      => 'Cancella',
-'filedelete-success'     => "Il file '''$1''' è stato cancellato.",
-'filedelete-success-old' => '<span class="plainlinks">La versione del $3, $2 del file \'\'\'[[Media:$1|$1]]\'\'\' è stata cancellata.</span>',
-'filedelete-nofile'      => 'Su {{SITENAME}} non esiste un file $1',
-'filedelete-nofile-old'  => "In archivio non ci sono versioni di '''$1''' con le caratteristiche indicate",
-'filedelete-iscurrent'   => 'Stai provando a cancellare la versione più recente di questo file. Per cortesia, prima riportalo ad una versione precedente.',
+'filedelete'                  => 'Cancella $1',
+'filedelete-legend'           => 'Cancella il file',
+'filedelete-intro'            => "Stai per cancellare '''[[Media:$1|$1]]'''.",
+'filedelete-intro-old'        => '<span class="plainlinks">Stai cancellando la versione di \'\'\'[[Media:$1|$1]]\'\'\' del [$4 $3, $2].</span>',
+'filedelete-comment'          => 'Motivazione:',
+'filedelete-submit'           => 'Cancella',
+'filedelete-success'          => "Il file '''$1''' è stato cancellato.",
+'filedelete-success-old'      => '<span class="plainlinks">La versione del $3, $2 del file \'\'\'[[Media:$1|$1]]\'\'\' è stata cancellata.</span>',
+'filedelete-nofile'           => 'Su {{SITENAME}} non esiste un file $1',
+'filedelete-nofile-old'       => "In archivio non ci sono versioni di '''$1''' con le caratteristiche indicate",
+'filedelete-iscurrent'        => 'Stai provando a cancellare la versione più recente di questo file. Per cortesia, prima riportalo ad una versione precedente.',
+'filedelete-otherreason'      => 'Altra motivazione o motivazione aggiuntiva:',
+'filedelete-reason-otherlist' => 'Altra motivazione',
+'filedelete-reason-dropdown'  => '*Motivazioni più comuni per la cancellazione
+** Violazione di copyright
+** File duplicato',
 
 # MIME search
 'mimesearch'         => 'Ricerca in base al tipo MIME',
@@ -1211,6 +1218,7 @@ Ciascuna riga contiene i collegamenti al primo ed al secondo redirect, oltre all
 
 'withoutinterwiki'        => 'Pagine prive di interwiki',
 'withoutinterwiki-header' => 'Le pagine indicate di seguito sono prive di collegamenti alle versioni in altre lingue:',
+'withoutinterwiki-submit' => 'Mostra',
 
 'fewestrevisions' => 'Voci con meno revisioni',
 
@@ -1412,8 +1420,8 @@ Per dare il tuo feedback e ricevere ulteriore assistenza:
 'excontentauthor'             => "il contenuto era: '$1' (e l'unico contributore era '$2')",
 'exbeforeblank'               => "Il contenuto prima dello svuotamento era: '$1'",
 'exblank'                     => 'la pagina era vuota',
-'confirmdelete'               => 'Conferma cancellazione',
-'deletesub'                   => '(Cancellazione di "$1")',
+'delete-confirm'              => 'Cancella "$1"',
+'delete-legend'               => 'Cancella',
 'historywarning'              => 'Attenzione: La pagina che si sta per cancellare ha una cronologia:',
 'confirmdeletetext'           => 'Stai per cancellare permanentemente dal database una pagina o una immagine, insieme a tutta la sua cronologia. Per cortesia, conferma che è tua intenzione procedere a tale cancellazione, che hai piena consapevolezza delle conseguenze della tua azione e che essa è conforme alle linee guida stabilite in [[{{MediaWiki:Policy-url}}]].',
 'actioncomplete'              => 'Azione completata',
@@ -1441,7 +1449,7 @@ Per dare il tuo feedback e ricevere ulteriore assistenza:
 
 La modifica più recente alla pagina è stata apportata da [[User:$3|$3]] ([[User talk:$3|discussione]]).',
 'editcomment'                 => 'Il commento alla modifica era: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'                  => 'Annullate le modifiche di [[Special:Contributions/$2|$2]] ([[User talk:$2|discussione]]), riportata alla versione precedente di [[User:$1|$1]]',
+'revertpage'                  => 'Annullate le modifiche di [[Special:Contributions/$2|$2]] ([[User talk:$2|discussione]]), riportata alla versione precedente di [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success'            => 'Annullate le modifiche di $1; riportata alla versione precedente di $2.',
 'sessionfailure'              => "Si è verificato un problema nella sessione che identifica l'accesso; il sistema non ha eseguito il comando impartito per precauzione. Tornare alla pagina precedente con il tasto 'Indietro' del proprio browser, ricaricare la pagina e riprovare.",
 'protectlogpage'              => 'Protezioni',
@@ -1721,6 +1729,7 @@ In quest'ultimo caso si può anche utilizzare un collegamento, ad esempio [[Spec
 'export-addcattext' => 'Aggiungi pagine dalla categoria:',
 'export-addcat'     => 'Aggiungi',
 'export-download'   => 'Richiedi il salvataggio come file',
+'export-templates'  => 'Includi i template',
 
 # Namespace 8 related
 'allmessages'               => 'Messaggi di sistema',
@@ -1767,6 +1776,10 @@ Tutte le operazioni di importazione trans-wiki sono registrate nel [[Special:Log
 'importuploaderrorsize'      => "Caricamento del file per l'importazione non riuscito. Il file supera le dimensioni massime consentite per l'upload.",
 'importuploaderrorpartial'   => "Caricamento del file per l'importazione non riuscito. Il file è stato caricato solo in parte.",
 'importuploaderrortemp'      => "Caricamento del file per l'importazione non riuscito. Manca una cartella temporanea.",
+'import-parse-failure'       => "Errore di analisi nell'importazione XML",
+'import-noarticle'           => 'Nessuna pagina da importare.',
+'import-nonewrevisions'      => 'Tutte le revisioni sono già state importate in precedenza.',
+'xml-error-string'           => '$1 a riga $2, colonna $3 (byte $4): $5',
 
 # Import log
 'importlogpage'                    => 'Importazioni',
@@ -1855,7 +1868,6 @@ Tutte le operazioni di importazione trans-wiki sono registrate nel [[Special:Log
 'anonymous'        => 'uno o più utenti anonimi di {{SITENAME}}',
 'siteuser'         => '$1, utente di {{SITENAME}}',
 'lastmodifiedatby' => "Questa pagina è stata modificata per l'ultima volta il $2, $1 da $3.", # $1 date, $2 time, $3 user
-'and'              => 'e',
 'othercontribs'    => 'Il testo attuale è basato su contributi di $1.',
 'others'           => 'altri',
 'siteusers'        => '$1, utenti di {{SITENAME}}',
@@ -1863,15 +1875,16 @@ Tutte le operazioni di importazione trans-wiki sono registrate nel [[Special:Log
 'nocredits'        => 'Nessuna informazione sugli autori disponibile per questa pagina.',
 
 # Spam protection
-'spamprotectiontitle'  => 'Filtro anti-spam',
-'spamprotectiontext'   => 'La pagina che si è tentato di salvare è stata bloccata dal filtro anti-spam. Ciò è probabilmente dovuto alla presenza di un collegamento a un sito esterno bloccato.',
-'spamprotectionmatch'  => 'Il filtro anti-spam è stato attivato dal seguente testo: $1',
-'subcategorycount'     => 'Questa categoria contiene {{PLURAL:$1|una sottocategoria|$1 sottocategorie}}.',
-'categoryarticlecount' => 'Questa categoria contiene {{PLURAL:$1|una pagina|$1 pagine}}.',
-'category-media-count' => 'Questa categoria contiene {{PLURAL:$1|un file|$1 file}}.',
-'spambot_username'     => 'MediaWiki - sistema di rimozione spam',
-'spam_reverting'       => "Ripristinata l'ultima versione priva di collegamenti a $1",
-'spam_blanking'        => 'Pagina svuotata, tutte le versioni contenevano collegamenti a $1',
+'spamprotectiontitle'    => 'Filtro anti-spam',
+'spamprotectiontext'     => 'La pagina che si è tentato di salvare è stata bloccata dal filtro anti-spam. Ciò è probabilmente dovuto alla presenza di un collegamento a un sito esterno bloccato.',
+'spamprotectionmatch'    => 'Il filtro anti-spam è stato attivato dal seguente testo: $1',
+'subcategorycount'       => 'Questa categoria contiene {{PLURAL:$1|una sottocategoria|$1 sottocategorie}}.',
+'categoryarticlecount'   => 'Questa categoria contiene {{PLURAL:$1|una pagina|$1 pagine}}.',
+'category-media-count'   => 'Questa categoria contiene {{PLURAL:$1|un file|$1 file}}.',
+'listingcontinuesabbrev' => 'cont.',
+'spambot_username'       => 'MediaWiki - sistema di rimozione spam',
+'spam_reverting'         => "Ripristinata l'ultima versione priva di collegamenti a $1",
+'spam_blanking'          => 'Pagina svuotata, tutte le versioni contenevano collegamenti a $1',
 
 # Info page
 'infosubtitle'   => 'Informazioni per la pagina',
@@ -2352,5 +2365,19 @@ Usare l\'anteprima standard.',
 
 # Core parser functions
 'unknown_extension_tag' => 'Tag estensione sconosciuto: "$1"',
+
+# Special:Version
+'version-extensions'               => 'Estensioni installate',
+'version-specialpages'             => 'Pagine speciali',
+'version-parserhooks'              => 'Hook del parser',
+'version-variables'                => 'Variabili',
+'version-other'                    => 'Altro',
+'version-extension-functions'      => 'Funzioni introdotte da estensioni',
+'version-parser-extensiontags'     => 'Tag riconosciuti dal parser introdotti da estensioni',
+'version-parser-function-hooks'    => 'Hook per funzioni del parser',
+'version-skin-extension-functions' => "Funzioni legate all'aspetto grafico (skin) introdotte da estensioni",
+'version-hook-name'                => "Nome dell'hook",
+'version-hook-subscribedby'        => 'Sottoscrizioni',
+'version-version'                  => 'Versione',
 
 );

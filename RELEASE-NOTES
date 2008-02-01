@@ -143,6 +143,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11897) Add alias [[Special:CreateAccount]] & [[Special:Userlogin/signup]]
   for Special:Userlogin?type=signup
 * (bug 12214) Add a predefined list of delete reasons to the file deletion form
+* Merged backends for OpenSearch suggestions and AJAX search.
+  Both now accept namespace prefixes, handle 'Media:' and 'Special:' pages,
+  and reject interwiki prefixes. PrefixSearch class centralizes this code,
+  and the backend part can be overridden by the PrefixSearchBackend hook.
+* (bug 10365) Localization of Special:Version
 
 === Bug fixes in 1.12 ===
 
@@ -474,6 +479,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Added uiprop=editcount to meta=userinfo
 * Added list=users which fetches user information
 * Added list=random which fetches a list of random pages
+* Added page parameter to action=parse to facilitate parsing of existing pages
+* Added uiprop=ratelimits to meta=userinfo
 
 === Languages updated in 1.12 ===
 
@@ -591,6 +598,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Luxembourgish (lb) (new)
 * Lingua Franca Nova (new)
 * Lak (lbe) (new)
+* Ganda (lg)
 * Limbugian (li)
 * Líguru (lij) (new)
 * Lozi (loz) (new)
@@ -663,6 +671,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Wolof (wo)
 * Wu (wuu) (new)
 * Xhosa (xh) (new)
+* Mingrelian (xmf) (new)
 * Yiddish (yi)
 * Cantonese (yue)
 * Zhuang (za)

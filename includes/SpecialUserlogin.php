@@ -153,7 +153,7 @@ class LoginForm {
 		$u->saveSettings();
 		$results['error'] = $this->mailPasswordInternal( $u, false );
 
-		wfRunHooks( 'AddNewAccount', array( $u ) );
+		wfRunHooks( 'AddNewAccount', array( $u, true ) );
 
 		$results['user'] = $u;
 		if( WikiError::isError( $results['error']  ) ) {
@@ -967,4 +967,5 @@ class LoginForm {
 		return $skin->makeKnownLinkObj( $self, htmlspecialchars( $text ), implode( '&', $attr ) );
 	}
 }
+
 

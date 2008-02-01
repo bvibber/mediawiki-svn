@@ -64,7 +64,7 @@ $messages = array(
 'tog-numberheadings'          => '머릿글 번호 매기기',
 'tog-showtoolbar'             => '편집창에 툴바 보이기 (자바스크립트)',
 'tog-editondblclick'          => '더블클릭으로 문서 편집하기 (자바스크립트)',
-'tog-editsection'             => '"편집" 부분을 눌러 부분을 편집하기',
+'tog-editsection'             => '‘편집’ 링크로 부분을 편집하는 기능 켜기',
 'tog-editsectiononrightclick' => '제목을 오른쪽 클릭해서 부분 편집하기 (자바스크립트)',
 'tog-showtoc'                 => '문서의 차례 보여주기 (머릿글이 4개 이상인 경우)',
 'tog-rememberpassword'        => '자동 로그인',
@@ -184,12 +184,13 @@ $messages = array(
 'mytalk'         => '내 사용자 토론',
 'anontalk'       => '익명 사용자 토론',
 'navigation'     => '둘러보기',
+'and'            => '그리고',
 
 # Metadata in edit box
-'metadata_help' => '메타데이터([[Project:메타데이터]]에서 자세한 설명을 볼 수 있습니다):',
+'metadata_help' => '메타데이터:',
 
 'errorpagetitle'    => '오류',
-'returnto'          => '$1(으)로 돌아가기',
+'returnto'          => '$1(으)로 돌아갑니다.',
 'tagline'           => '{{SITENAME}}',
 'help'              => '도움말',
 'search'            => '찾기',
@@ -244,7 +245,7 @@ $messages = array(
 'aboutpage'         => 'Project:소개',
 'bugreports'        => '버그 신고',
 'bugreportspage'    => 'Project:버그 신고',
-'copyright'         => '문서는 $1 저작권 하에 있습니다.',
+'copyright'         => '문서는 $1 라이센스 하에 있습니다.',
 'copyrightpagename' => '{{SITENAME}} 저작권',
 'copyrightpage'     => '{{ns:project}}:저작권',
 'currentevents'     => '요즘 화제',
@@ -252,7 +253,7 @@ $messages = array(
 'disclaimers'       => '면책 조항',
 'disclaimerpage'    => 'Project:면책 조항',
 'edithelp'          => '편집 도움말',
-'edithelppage'      => 'Help:문서 편집 도움말',
+'edithelppage'      => 'Help:편집하기',
 'helppage'          => 'Help:목차',
 'mainpage'          => '대문',
 'policy-url'        => 'Project:정책',
@@ -411,7 +412,7 @@ $2',
 'wrongpasswordempty'         => '비밀번호가 비었습니다. 다시 시도해 주세요.',
 'passwordtooshort'           => '암호가 너무 짧습니다. 암호 길이는 적어도 $1글자 이상이어야 합니다.',
 'mailmypassword'             => '새 암호를 이메일로 보내기',
-'passwordremindertitle'      => '{{SITENAME}}에서 보내는 새 암호',
+'passwordremindertitle'      => '{{SITENAME}}에서 보내는 새 임시 암호',
 'passwordremindertext'       => 'IP 주소 $1에게서 당신에게 {{SITENAME}}의 새 암호를 보내달라는 요청이 왔습니다. ($4)
 
 사용자 "$2"의 암호는 이제 "$3"입니다. 로그인한 후에 암호를 변경해 주세요.
@@ -440,7 +441,7 @@ $2',
 'resetpass_submit'        => '암호를 변경하고 로그인 하기',
 'resetpass_success'       => '암호가 성공적으로 변경되었습니다! 로그인을 해 주세요.',
 'resetpass_bad_temporary' => '잘못된 임시 암호. 암호를 이미 바꾸었거나 새로운 임시 암호를 받았을 수 있습니다.',
-'resetpass_forbidden'     => '이 위키에서 암호 변경 불가',
+'resetpass_forbidden'     => '{{SITENAME}}에서 암호 변경 불가',
 'resetpass_missing'       => '입력값 없음.',
 
 # Edit page toolbar
@@ -519,6 +520,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'anontalkpagetext'          => '----
 여기는 계정에 로그인하지 않은 익명 사용자를 위한 토론 문서입니다. 익명 사용자의 사용자 이름은 IP 주소로 나오기 때문에, 한 IP 주소를 여러 명이 같이 쓰거나 유동 IP를 사용하는 경우 엉뚱한 사람에게 의견이 전달될 수 있습니다. 이러한 문제를 피하려면 [[Special:Userlogin|계정을 만들거나 로그인해 주시기 바랍니다]].',
 'noarticletext'             => '현재 문서는 비어 있습니다. 이 제목으로 [[Special:Search/{{PAGENAME}}|검색]]하거나 문서를 [{{fullurl:{{FULLPAGENAME}}|action=edit}} 편집]할 수 있습니다.',
+'userpage-userdoesnotexist' => '‘$1’ 사용자 이름은 등록되어 있지 않습니다. 이 문서를 만들거나 편집하려면 계정을 확인해주세요.',
 'clearyourcache'            => "'''참고''': 설정을 저장한 후에 바뀐 점을 확인하기 위해서는 브라우저의 캐시를 갱신해야 합니다. '''모질라 / 파이어폭스 / 사파리''': ‘시프트’ 키를 누르면서 ‘새로 고침’을 클릭하거나, ''Ctrl-F5''를 입력; '''컨커러''': 단순히 '새로고침'을 클릭하거나 ''F5''를 입력; '''오페라''' 사용자는 ‘도구→설정’에서 캐시를 완전히 비워야 합니다.",
 'usercssjsyoucanpreview'    => "'''안내''': CSS/JS 문서를 저장하기 전에 ‘미리 보기’ 기능을 통해 작동을 확인해주세요.",
 'usercsspreview'            => "'''이것은 CSS 미리 보기로, 아직 저장하지 않았다는 것을 주의해 주세요!'''",
@@ -553,6 +555,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'protectedpagewarning'      => "'''주의: 이 문서는 관리자만 편집할 수 있도록 보호되어 있습니다. [[Project:문서 보호 정책|문서 보호 정책]]을 참고하십시오.'''",
 'semiprotectedpagewarning'  => "'''주의:''' 이 문서는 잠겨 있습니다. 등록된 사용자만이 편집할 수 있습니다.",
 'cascadeprotectedwarning'   => '<strong>주의: 다음의 문서에서 이 문서를 사용하고 있고 그 문서에 연쇄적 보호 설정이 걸려 있어, 이 문서도 편집에서 보호되어 관리자만이 편집할 수 있습니다</strong>:',
+'titleprotectedwarning'     => '<strong>주의: 이 문서는 잠겨 있어, 일부 사용자만이 생성할 수 있습니다.</strong>',
 'templatesused'             => '이 문서에서 사용한 틀:',
 'templatesusedpreview'      => '이 미리 보기에서 사용한 틀:',
 'templatesusedsection'      => '이 부분에서 사용한 틀:',
@@ -561,9 +564,13 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'edittools'                 => '<!-- 이 문서는 편집 창과 파일 올리기 창에 출력됩니다. -->',
 'nocreatetitle'             => '문서 생성 제한',
 'nocreatetext'              => '{{SITENAME}}에서 새로운 문서를 생성하는 것은 제한되어 있습니다. 이미 존재하는 다른 문서를 편집하거나, [[Special:Userlogin|로그인하거나 계정을 만들 수 있습니다]].',
-'nocreate-loggedin'         => '새 문서를 만들 권한이 없습니다.',
+'nocreate-loggedin'         => '{{SITENAME}}에서 새 문서를 만들 권한이 없습니다.',
 'permissionserrors'         => '권한 오류',
 'permissionserrorstext'     => '해당 명령을 수행할 권한이 없습니다. 다음의 이유를 확인해보세요:',
+'recreate-deleted-warn'     => "'''주의: 과거에 삭제된 문서를 다시 만들고 있습니다.'''
+
+이 문서를 계속 편집하는 것이 적합한 것인지 확인해주세요.
+과거 삭제 기록은 다음과 같습니다:",
 
 # "Undo" feature
 'undo-success' => '이 편집을 되돌리려면 아래의 변경되는 사항을 확인한 후 저장해주세요.',
@@ -572,6 +579,9 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 
 # Account creation failure
 'cantcreateaccounttitle' => '계정을 만들 수 없음',
+'cantcreateaccount-text' => '현재 아이피 주소(<strong>$1</strong>)는 [[User:$3|$3]] 사용자에 의해 계정 생성이 차단된 상태입니다.
+
+차단 이유는 다음과 같습니다: $2',
 
 # History pages
 'viewpagelogs'        => '이 문서의 기록 보기',
@@ -748,7 +758,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'show'                              => '보이기',
 'minoreditletter'                   => '잔글',
 'newpageletter'                     => '새글',
-'number_of_watching_users_pageview' => '[$1 명이 주시하고 있음]',
+'number_of_watching_users_pageview' => '[$1명이 주시하고 있음]',
 'rc_categories'                     => '다음 분류로 제한 (‘|’로 구분)',
 'rc_categories_any'                 => '모두',
 'newsectionsummary'                 => '새 주제: /* $1 */',
@@ -801,7 +811,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'uploadedimage'               => '‘[[$1]]’을(를) 올렸습니다.',
 'overwroteimage'              => '‘[[$1]]’ 파일의 새 버전을 올렸습니다.',
 'uploaddisabled'              => '올리기 비활성화됨',
-'uploaddisabledtext'          => '이 위키에서는 파일 올리기 기능이 비활성화되어 있습니다.',
+'uploaddisabledtext'          => '{{SITENAME}}에서는 파일 올리기 기능이 비활성화되어 있습니다.',
 'uploadscripted'              => '이 파일에는 HTML이나 다른 스크립트 코드가 포함되어 있어, 웹 브라우저에서 오류를 일으킬 수 있습니다.',
 'uploadcorrupt'               => '이 파일은 잘못된 형식을 가지고 있습니다. 파일을 확인하고 다시 시도해 주세요.',
 'uploadvirus'                 => '파일이 바이러스를 포함하고 있습니다! 상세 설명: $1',
@@ -851,6 +861,14 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'imagelist_user'            => '사용자',
 'imagelist_size'            => '크기',
 'imagelist_description'     => '설명',
+
+# File deletion
+'filedelete-iscurrent'        => '가장 최신 버전의 파일을 삭제하려고 하고 있습니다. 먼저 이전 버전으로 되돌린 다음에 삭제해주세요.',
+'filedelete-otherreason'      => '다른 이유/추가적인 이유:',
+'filedelete-reason-otherlist' => '다른 이유',
+'filedelete-reason-dropdown'  => '*일반적인 삭제 이유
+** 저작권 침해
+** 중복된 파일',
 
 # MIME search
 'mimesearch' => 'MIME 검색',
@@ -916,7 +934,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'nviews'                  => '$1번 읽음',
 'specialpage-empty'       => '명령에 대한 결과가 없습니다.',
 'lonelypages'             => '외톨이 문서 목록',
-'lonelypagestext'         => '다른 문서에서 연결하지 않는 문서의 목록입니다.',
+'lonelypagestext'         => '{{SITENAME}}에서, 다른 문서에서 연결하지 않는 문서의 목록입니다.',
 'uncategorizedpages'      => '분류되지 않은 문서 목록',
 'uncategorizedcategories' => '분류되지 않은 분류 목록',
 'uncategorizedimages'     => '분류되지 않은 그림 목록',
@@ -936,10 +954,13 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'shortpages'              => '짧은 문서 목록',
 'longpages'               => '긴 문서 목록',
 'deadendpages'            => '막다른 문서 목록',
-'deadendpagestext'        => '다른 문서로 연결하지 않는 문서의 목록입니다.',
+'deadendpagestext'        => '{{SITENAME}}에서, 다른 문서로 연결하지 않는 문서의 목록입니다.',
 'protectedpages'          => '보호된 문서 목록',
 'protectedpagestext'      => '다음의 문서는 이동/편집이 불가능하도록 보호되어 있습니다.',
 'protectedpagesempty'     => '보호되어 있는 문서가 없습니다.',
+'protectedtitles'         => '생성 보호된 표제어 목록',
+'protectedtitlestext'     => '다음 표제어들은 생성이 금지되어 있습니다.',
+'protectedtitlesempty'    => '해당 조건에 맞는 생성 금지 표제어가 없습니다.',
 'listusers'               => '사용자 목록',
 'specialpages'            => '특수 문서 목록',
 'spheading'               => '일반 특수 문서',
@@ -1090,8 +1111,8 @@ $NEWPAGE
 'excontentauthor'             => '내용: ‘$1’ (그리고 편집한 사람은 ‘$2’뿐)',
 'exbeforeblank'               => '비우기 전의 내용: ‘$1’',
 'exblank'                     => '빈 문서',
-'confirmdelete'               => '삭제 확인',
-'deletesub'                   => '($1 삭제)',
+'delete-confirm'              => '"$1" 삭제',
+'delete-legend'               => '삭제',
 'historywarning'              => '주의: 현재 삭제하려는 문서에는 문서 역사가 있습니다:',
 'confirmdeletetext'           => '문서나 그림, 그리고 이 문서의 역사를 삭제하려고 합니다. 삭제하기 전에 다시 한번 문서 역사를 확인해 주시기 바랍니다.',
 'actioncomplete'              => '명령완료',
@@ -1101,7 +1122,15 @@ $NEWPAGE
 'dellogpagetext'              => '아래의 목록은 최근에 삭제된 문서들입니다.',
 'deletionlog'                 => '삭제 기록',
 'reverted'                    => '이전 버전으로 되돌렸습니다.',
-'deletecomment'               => '삭제 이유',
+'deletecomment'               => '삭제 이유:',
+'deleteotherreason'           => '다른 이유/추가적인 이유:',
+'deletereasonotherlist'       => '다른 이유',
+'deletereason-dropdown'       => '*일반적인 삭제 이유
+** 작성자의 요청
+** 저작권 침해
+** 잘못된 문서',
+'delete-toobig'               => '이 문서에는 편집 역사가 $1개 있습니다. 편집 역사가 긴 문서를 삭제하면 {{SITENAME}}에 큰 혼란을 줄 수 있기 때문에, 삭제할 수 없습니다.',
+'delete-warning-toobig'       => '이 문서에는 편집 역사가 $1개 있습니다. 편집 역사가 긴 문서를 삭제하면 {{SITENAME}} 데이터베이스 동작에 큰 영향을 줄 수 있기 때문에, 주의해 주세요.',
 'rollback'                    => '편집 되돌리기',
 'rollback_short'              => '되돌리기',
 'rollbacklink'                => '되돌리기',
@@ -1111,7 +1140,7 @@ $NEWPAGE
 
 마지막으로 문서를 편집한 사람은[[User:$3|$3]]([[User talk:$3|토론]])입니다.',
 'editcomment'                 => "편집 요약: ''$1''", # only shown if there is an edit comment
-'revertpage'                  => '[[Special:Contributions/$2|$2]]([[User talk:$2|토론]])의 편집을 [[Special:Contributions/$1|$1]]의 버전으로 되돌림',
+'revertpage'                  => '[[Special:Contributions/$2|$2]]([[User talk:$2|토론]])의 편집을 [[Special:Contributions/$1|$1]]의 버전으로 되돌림', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success'            => '$1의 편집을 $2의 마지막 버전으로 되돌렸습니다.',
 'sessionfailure'              => '로그인 세션에 문제가 발생한 것 같습니다. 세션 하이재킹을 막기 위해 동작이 취소되었습니다. 브라우저의 "뒤로" 버튼을 누르고 문서를 새로고침한 후에 다시 시도해 주세요.',
 'protectlogpage'              => '문서 보호 기록',
@@ -1247,10 +1276,11 @@ $NEWPAGE
 'ipb_cant_unblock'            => '오류: 차단 ID $1이(가) 존재하지 않습니다. 이미 차단 해제되었을 수 있습니다.',
 'ip_range_invalid'            => 'IP 범위가 잘못되었습니다.',
 'proxyblocker'                => '프록시 차단',
+'proxyblocker-disabled'       => '이 기능은 비활성되어 있습니다.',
 'proxyblockreason'            => '당신의 IP 주소는 공개 프록시로 밝혀져 자동으로 차단됩니다. 만약 인터넷 사용에 문제가 있다면 인터넷 서비스 공급자에게 문의해주세요.',
 'proxyblocksuccess'           => '완료.',
-'sorbsreason'                 => '당신의 IP 주소는 DNSBL의 공개 프록시 목록에 들어있습니다.',
-'sorbs_create_account_reason' => '당신의 IP 주소는 DNSBL의 공개 프록시 목록에 들어있습니다. 계정을 만들 수 없습니다.',
+'sorbsreason'                 => '당신의 IP 주소는 {{SITENAME}}에서 사용하는 DNSBL 공개 프록시 목록에 들어 있습니다.',
+'sorbs_create_account_reason' => '당신의 IP 주소는 {{SITENAME}}에서 사용하는 DNSBL 공개 프록시 목록에 들어 있습니다. 계정을 만들 수 없습니다.',
 
 # Developer tools
 'lockdb'              => '데이터베이스 잠그기',
@@ -1283,13 +1313,14 @@ $NEWPAGE
 'movearticle'             => '문서 이동하기',
 'movenologin'             => '로그인하지 않음',
 'movenologintext'         => '[[Special:Userlogin|로그인]]해야만 문서를 이동할 수 있습니다.',
-'movenotallowed'          => '문서를 이동할 권한이 없습니다.',
+'movenotallowed'          => '{{SITENAME}}에서 문서를 이동할 권한이 없습니다.',
 'newtitle'                => '새 문서 이름',
 'move-watch'              => '이 문서 주시하기',
 'movepagebtn'             => '이동',
 'pagemovedsub'            => '문서 이동함',
 'movepage-moved'          => "<big>'''‘$1’ 문서를 ‘$2’(으)로 이동함 '''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => '문서가 이미 존재하거나, 문서 이름이 올바르지 않습니다. 다른 제목으로 시도해주세요.',
+'cantmove-titleprotected' => '새로운 제목으로 문서를 만드는 것이 금지되어 있어, 문서를 이동할 수 없습니다.',
 'talkexists'              => "'''문서는 이동되었습니다. 하지만 딸린 토론 문서의 새 이름으로 된 문서가 이미 존재해서, 토론 문서는 이동하지 않았습니다. 직접 문서를 합쳐 주세요.'''",
 'movedto'                 => '새 이름',
 'movetalk'                => '딸린 토론도 함께 이동합니다.',
@@ -1420,7 +1451,6 @@ $NEWPAGE
 'anonymous'        => '{{SITENAME}}의 익명 사용자',
 'siteuser'         => '{{SITENAME}} 사용자 $1',
 'lastmodifiedatby' => '이 문서는 $3에 의해 $2, $1에 마지막으로 바뀌었습니다.', # $1 date, $2 time, $3 user
-'and'              => '그리고',
 'othercontribs'    => '$1의 작업을 바탕으로 함.',
 'others'           => '기타',
 'siteusers'        => '{{SITENAME}} 사용자 $1',
@@ -1508,7 +1538,7 @@ $NEWPAGE
 
 # E-mail address confirmation
 'confirmemail'            => '이메일 주소 확인',
-'confirmemail_text'       => '이 위키에서는 이메일과 관련된 기능을 사용하기 전에, 이메일 인증을 받아야 합니다. 아래의 버튼을 눌러 인증 메일을 보내세요. 메일에는 인증 코드를 포함한 링크가 들어 있을 것입니다. 링크를 브라우저에서 열면 인증이 됩니다.',
+'confirmemail_text'       => '{{SITENAME}}에서는 이메일 기능을 사용하기 전에, 이메일 인증을 받아야 합니다. 아래의 버튼을 누르면 인증 메일을 보냅니다. 메일에는 인증 코드가 들어있는 링크가 있습니다. 그 링크를 웹 브라우저로 열면 인증이 완료됩니다.',
 'confirmemail_send'       => '인증 코드를 메일로 보내기',
 'confirmemail_sent'       => '인증 이메일을 보냈습니다.',
 'confirmemail_sendfailed' => '인증 이메일을 보낼 수 없습니다. 잘못된 주소인지 확인해 주십시오.
@@ -1579,5 +1609,28 @@ $1',
 'autosumm-replace' => '문서 내용을 ‘$1’으로 교체',
 'autoredircomment' => '[[$1]](으)로 넘겨주기',
 'autosumm-new'     => '새 문서: $1',
+
+# Watchlist editor
+'watchlistedit-numitems'       => '주시문서 목록에는 토론 문서를 제외하고 $1개의 문서가 들어 있습니다.',
+'watchlistedit-noitems'        => '주시문서 목록이 비어 있습니다.',
+'watchlistedit-normal-title'   => '주시문서 목록 편집하기',
+'watchlistedit-normal-legend'  => '목록에서 문서 제거하기',
+'watchlistedit-normal-explain' => "주시문서 목록에서 제거하려는 문서가 있으면, 각 항목의 체크박스를 선책한 다음 '항목 삭제'를 클릭해주세요. 또는 [[Special:Watchlist/raw|목록을 직접 편집할 수도 있습니다]].",
+'watchlistedit-normal-submit'  => '항목 삭제',
+'watchlistedit-normal-done'    => '주시문서 목록에서 다음 $1개 항목을 삭제했습니다:',
+'watchlistedit-raw-title'      => '주시문서 목록 직접 편집하기',
+'watchlistedit-raw-legend'     => '주시문서 목록 직접 편집하기',
+'watchlistedit-raw-explain'    => "주시문서 목록의 각 항목이 나와 있습니다. 필요한 항목을 직접 추가하거나 제거할 수 있습니다. 각 줄마다 하나의 제목을 쓰고, '주시문서 목록 갱신'을 누르면 됩니다.
+또는 [[Special:Watchlist/edit|일반적인 편집창]]을 쓸 수도 있습니다.",
+'watchlistedit-raw-titles'     => '목록:',
+'watchlistedit-raw-submit'     => '주시문서 목록 갱신',
+'watchlistedit-raw-done'       => '주시문서 목록을 갱신했습니다.',
+'watchlistedit-raw-added'      => '$1개 문서를 추가했습니다:',
+'watchlistedit-raw-removed'    => '$1개 문서를 제거했습니다:',
+
+# Watchlist editing tools
+'watchlisttools-view' => '주시문서 최근 바뀜',
+'watchlisttools-edit' => '주시문서 목록 보기/편집하기',
+'watchlisttools-raw'  => '주시문서 목록 직접 편집하기',
 
 );

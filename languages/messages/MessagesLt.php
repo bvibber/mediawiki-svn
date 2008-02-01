@@ -194,6 +194,7 @@ $messages = array(
 'mytalk'         => 'Mano aptarimas',
 'anontalk'       => 'Šio IP aptarimas',
 'navigation'     => 'Navigacija',
+'and'            => 'ir',
 
 # Metadata in edit box
 'metadata_help' => 'Metaduomenys:',
@@ -986,6 +987,7 @@ Norėdami panaudoti įkeltą paveikslėlį puslapyje, naudokite tokias nuorodas
 'largefileserver'             => 'Šis failas yra didesnis nei serveris yra sukonfigūruotas leisti.',
 'emptyfile'                   => 'Panašu, kad failas, kurį įkėlėte yra tuščias. Tai gali būti dėl klaidos failo pavadinime. Pasitikrinkite ar tikrai norite įkelti šitą failą.',
 'fileexists'                  => 'Failas tuo pačiu vardu jau egzistuoja, prašome pažiūrėti <strong><tt>$1</tt></strong>, jei nesate tikras, ar norite perrašyti šį failą.',
+'filepageexists'              => 'Puslapis (ne paveikslėlis) su šiuo vardu jau yra, prašome patikrinti <strong><tt>$1</tt></strong>, jei nesate įsitikinę, ar jūs norite jį keisti.',
 'fileexists-extension'        => 'Failas su panašiu pavadinimu jau yra:<br />
 Įkeliamo failo pavadinimas: <strong><tt>$1</tt></strong><br />
 Jau esančio failo pavadinimas: <strong><tt>$2</tt></strong><br />
@@ -1370,8 +1372,8 @@ Atsiliepimai ir pagalba:
 'excontentauthor'             => 'buvęs turinys: „$1“ (redagavo tik „[[{{ns:special}}:Contributions/$2|$2]]“)',
 'exbeforeblank'               => 'prieš ištrinant turinys buvo: „$1“',
 'exblank'                     => 'puslapis buvo tuščias',
-'confirmdelete'               => 'Trynimo patvirtinimas',
-'deletesub'                   => '(Trinama „$1“)',
+'delete-confirm'              => 'Ištrinta "$1"',
+'delete-legend'               => 'Trynimas',
 'historywarning'              => 'Dėmesio: Trinamas puslapis turi istoriją:',
 'confirmdeletetext'           => 'Jūs pasirinkote ištrinti puslapį ar paveikslėlį kartu su visa jo istorija.
 Prašome patvirtinti, kad jūs tikrai norite tai padaryti, žinote apie galimus padarinius, ir kad jūs tai darote atsižvelgdami į [[{{MediaWiki:Policy-url}}|politiką]].',
@@ -1858,7 +1860,6 @@ Visi tarpprojektiniai importo veiksmai yra registruojami  [[Special:Log/import|i
 'anonymous'        => 'neregistruotų {{SITENAME}} naudotojų',
 'siteuser'         => '{{SITENAME}} naudotojas $1',
 'lastmodifiedatby' => 'Šį puslapį paskutinį kartą redagavo $3 $2, $1.', # $1 date, $2 time, $3 user
-'and'              => 'ir',
 'othercontribs'    => 'Paremta $1 darbu.',
 'others'           => 'kiti',
 'siteusers'        => '{{SITENAME}} naudotojas(-ai) $1',

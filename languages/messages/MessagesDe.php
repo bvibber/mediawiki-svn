@@ -307,6 +307,7 @@ $messages = array(
 'mytalk'         => 'Eigene Diskussion',
 'anontalk'       => 'Diskussionsseite dieser IP',
 'navigation'     => 'Navigation',
+'and'            => 'und',
 
 # Metadata in edit box
 'metadata_help' => 'Metadaten:',
@@ -1106,6 +1107,7 @@ Bitte beachte, dass, genau wie bei normalen Seiteninhalten, andere Benutzer dein
 'largefileserver'             => 'Die Datei ist größer als die vom Server eingestellte Maximalgröße.',
 'emptyfile'                   => 'Die hochgeladene Datei ist leer. Der Grund kann ein Tippfehler im Dateinamen sein. Bitte kontrolliere, ob du die Datei wirklich hochladen willst.',
 'fileexists'                  => 'Eine Datei mit diesem Namen existiert bereits. Wenn du auf „Datei speichern“ klickst, wird die Datei überschrieben. Bitte prüfe <strong><tt>$1</tt></strong>, wenn du dir nicht sicher bist.',
+'filepageexists'              => 'Eine Seite (kein Bild) mit diesem Namen existiert bereits. Bitte prüfe <strong><tt>$1</tt></strong>, ob du eine Datei unter diesem Namen hochladen willst.',
 'fileexists-extension'        => 'Eine Datei mit ähnlichem Namen existiert bereits:<br />
 Name der hochzuladenden Datei: <strong><tt>$1</tt></strong><br />
 Name der vorhandenen Datei: <strong><tt>$2</tt></strong><br />
@@ -1520,10 +1522,10 @@ Um die Einstellungen deiner Beobachtungsliste anzupassen, besuche: {{fullurl:Spe
 'excontentauthor'             => "Inhalt war: '$1' (einziger Bearbeiter: [[{{ns:User}}:$2|$2]] – [[{{ns:User talk}}:$2|Diskussion]])",
 'exbeforeblank'               => "Inhalt vor dem Leeren der Seite: '$1'",
 'exblank'                     => 'Seite war leer',
-'confirmdelete'               => 'Löschen bestätigen',
-'deletesub'                   => '(Lösche „$1“)',
+'delete-confirm'              => 'Löschen von „$1“',
+'delete-legend'               => 'Löschen',
 'historywarning'              => 'Achtung, die Seite, die du löschen möchtest, hat eine Versionsgeschichte:',
-'confirmdeletetext'           => 'Du bist dabei, eine Seite oder eine Datei und alle zugehörigen älteren Versionen zu löschen. Bitte bestätige dazu, dass du dir der Konsequenzen bewusst bist, und dass du in Übereinstimmung mit den [[{{MediaWiki:Policy-url}}|Richtlinien]] handelst.',
+'confirmdeletetext'           => 'Du bist dabei, eine Seite mit allen zugehörigen älteren Versionen zu löschen. Bitte bestätige dazu, dass du dir der Konsequenzen bewusst bist, und dass du in Übereinstimmung mit den [[{{MediaWiki:Policy-url}}|Richtlinien]] handelst.',
 'actioncomplete'              => 'Aktion beendet',
 'deletedtext'                 => '„$1“ wurde gelöscht. Im $2 findest du eine Liste der letzten Löschungen.',
 'deletedarticle'              => 'hat „[[$1]]“ gelöscht',
@@ -1531,7 +1533,7 @@ Um die Einstellungen deiner Beobachtungsliste anzupassen, besuche: {{fullurl:Spe
 'dellogpagetext'              => 'Dies ist das Logbuch der gelöschten Seiten und Dateien.',
 'deletionlog'                 => 'Lösch-Logbuch',
 'reverted'                    => 'Auf eine alte Version zurückgesetzt',
-'deletecomment'               => 'Grund der Löschung',
+'deletecomment'               => 'Grund der Löschung:',
 'deleteotherreason'           => 'Anderer/ergänzender Grund:',
 'deletereasonotherlist'       => 'Anderer Grund',
 'deletereason-dropdown'       => '
@@ -1987,7 +1989,6 @@ Alle Transwiki-Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] p
 'anonymous'        => 'Anonyme(r) Benutzer auf {{SITENAME}}',
 'siteuser'         => '{{SITENAME}}-Benutzer $1',
 'lastmodifiedatby' => 'Diese Seite wurde zuletzt am $1 um $2 Uhr von $3 geändert.', # $1 date, $2 time, $3 user
-'and'              => 'und',
 'othercontribs'    => 'Basiert auf der Arbeit von $1',
 'others'           => 'andere',
 'siteusers'        => '{{SITENAME}}-Benutzer $1',
@@ -2481,4 +2482,19 @@ Bitte bestätige, dass du diese Seite wirklich neu erstellen möchten.",
 # Core parser functions
 'unknown_extension_tag' => 'Unbekannter Extension-Tag „$1“',
 
+# Special:Version
+'version-extensions'               => 'Installierte Erweiterungen',
+'version-specialpages'             => 'Spezialseiten',
+'version-parserhooks'              => 'Parser-Hooks',
+'version-variables'                => 'Variablen',
+'version-other'                    => 'Anderes',
+'version-mediahandlers'            => 'Medien-Handler',
+'version-hooks'                    => "Schnittstellen ''(Hooks)''",
+'version-extension-functions'      => 'Funktionsaufrufe',
+'version-parser-extensiontags'     => "Parser-Erweiterungen ''(tags)''",
+'version-parser-function-hooks'    => 'Parser-Funktionen',
+'version-skin-extension-functions' => 'Skin-Erweiterungs-Funktionen',
+'version-hook-name'                => 'Schnittstellenname',
+'version-hook-subscribedby'        => 'Aufruf von',
+'version-version'                  => 'Version',
 );

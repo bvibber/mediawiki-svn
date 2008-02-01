@@ -191,6 +191,7 @@ a'r [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide Canllaw Defnyddwyr]
 'mytalk'         => 'Sgwrs fi',
 'anontalk'       => 'Sgwrs ar gyfer y cyfeiriad IP hwn',
 'navigation'     => 'Panel llywio',
+'and'            => 'a/ac',
 
 'errorpagetitle'    => 'Gwall',
 'returnto'          => 'Ewch yn ôl i $1.',
@@ -258,7 +259,7 @@ a'r [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide Canllaw Defnyddwyr]
 'faq'               => 'Cwestiynau cyffredin',
 'faqpage'           => 'Project:Cwestiynau cyffredin',
 'helppage'          => 'Help:Cymorth',
-'mainpage'          => 'Prif tudalen',
+'mainpage'          => 'Hafan',
 'policy-url'        => 'Project:Polisi',
 'portal'            => 'Porth y Gymuned',
 'portal-url'        => 'Project:Porth y Gymuned',
@@ -418,7 +419,7 @@ Sicrhau rydych chi wedi sillafu\'n iawn, neu creuwch accownt newydd gyda\'r ffur
 'wrongpassword'              => "Mae'r allweddair rydych wedi teipio ddim yn cywir. Triwch eto, os gwelwch yn dda.",
 'wrongpasswordempty'         => 'Roedd y cyfrinair yn wag. Rhowch gynnig arall arni.',
 'passwordtooshort'           => "Mae eich cyfrinair yn rhy fyr. Mae'n rhaid cynnwys o leia $1 nôd.",
-'mailmypassword'             => 'E-postiwch allweddair newydd i fi',
+'mailmypassword'             => 'Anfoner cyfrinair newydd ataf trwy e-bost',
 'passwordremindertitle'      => 'Nodyn atgoffa allweddair oddiwrth {{SITENAME}}',
 'passwordremindertext'       => "Mae rhywun (chi mwy na thebyg, o'r cyfeiriad IP $1) wedi gofyn i ni anfon cyfrinair newydd ar gyfer {{SITENAME}} atoch ($4).
 Mae cyfrinair y defnyddiwr '$2' wedi'i newid i '$3'. Dylid mewngofnodi a'i newid cyn gynted â phosib.
@@ -550,8 +551,8 @@ Rydych chi'n cadarnhau mai chi yw awdur y cyfraniad, neu eich bod chi wedi'i gop
 Os nad ydych chi'n fodlon i'ch gwaith gael ei olygu heb drugaredd, neu i gopïau ymddangos ar draws y we, peidiwch a'i gyfrannu yma.<br />
 Rydych chi'n cadarnhau mai chi yw awdur y cyfraniad, neu eich bod chi wedi'i gopïo o'r parth cyhoeddus (''public domain'') neu rywle rhydd tebyg.<br />
 <strong>PEIDIWCH Â CHYFRANNU GWAITH O DAN HAWLFRAINT HEB GANIATÂD!</strong>",
-'longpagewarning'         => "<strong>RHYBUDD: Mae hyd y tudalen hon yn $1 kilobyte; mae rhai porwyr yn cael problemau yn golygu tudalennau hirach na 32kb.<br />
-Ystyriwch torri'r tudalen i mewn i ddarnau llai, os gwelwch yn dda.</strong>",
+'longpagewarning'         => "<strong>RHYBUDD: Mae'r dudalen hon yn $1 cilobeit o hyd; mae rhai porwyr yn cael trafferth wrth lwytho tudalennau sy'n hirach na 32kb.
+Byddai'n dda o beth llunio sawl tudalen llai o hyd o ddeunydd y dudalen hon.</strong>",
 'readonlywarning'         => "<strong>RHYBUDD: Mae'r databas wedi cloi i gael eu trwsio,
 felly fyddwch chi ddim yn medru cadw eich olygiadau rwan. Efalle fyddwch chi'n eisio tori-a-pastio'r
 testun i mewn i ffeil testun, a cadw hi tan hwyrach.</strong>",
@@ -934,8 +935,8 @@ Mae gan '''$2''' (neu '''$4%''') ohonynt alluoedd $5.",
 'nrevisions'              => '$1 diwygiad',
 'nviews'                  => '$1 golwgfeydd',
 'specialpage-empty'       => "Mae'r dudalen hon yn wag.",
-'lonelypages'             => 'Erthyglau heb cysylltiadau',
-'lonelypagestext'         => 'Nid oes cysylltiad yn arwain at y tudalennau canlynol oddi wrth unrhyw dudalen arall yn y wici.',
+'lonelypages'             => 'Erthyglau heb gysylltiadau iddynt',
+'lonelypagestext'         => 'Nid oes cysylltiad yn arwain at y tudalennau canlynol oddi wrth unrhyw dudalen arall yn {{SITENAME}}.',
 'uncategorizedpages'      => 'Tudalennau heb gategori',
 'uncategorizedcategories' => 'Categorïau sydd heb gategori',
 'unusedcategories'        => 'Categorïau gwag',
@@ -951,7 +952,7 @@ Mae gan '''$2''' (neu '''$4%''') ohonynt alluoedd $5.",
 'allpages'                => 'Pob tudalen',
 'prefixindex'             => 'Mynegai rhagddodiad',
 'shortpages'              => 'Erthyglau byr',
-'longpages'               => 'Erthyglau hir',
+'longpages'               => 'Tudalennau hirion',
 'deadendpages'            => 'Tudalennau heb gysylltiadau ynddynt',
 'deadendpagestext'        => "Nid oes cysylltiad yn arwain at dudalen arall oddi wrth yr un o'r tudalennau isod.",
 'listusers'               => 'Rhestr defnyddwyr',
@@ -1011,10 +1012,10 @@ Gallwch weld chwiliad mwy penodol trwy ddewis y math o lòg, enw'r defnyddiwr, n
 'listusers-noresult' => "Dim defnyddiwr i'w gael.",
 
 # E-mail user
-'mailnologin'     => 'Dim cyfeiriad i anfon',
-'mailnologintext' => 'Rhaid i chi wedi [[Special:Userlogin|mewngofnodi]]
-a rhoi cyfeiriad e-bost dilyn yn eich [[Special:Preferences|ffafraethau]]
-i anfon e-bost i ddefnyddwyr eraill.',
+'mailnologin'     => "Does dim cyfeiriad i'w anfon iddo",
+'mailnologintext' => 'Rhaid eich bod wedi [[Special:Userlogin|mewngofnodi]]
+a bod cyfeiriad e-bost dilys yn eich [[Special:Preferences|dewisiadau]]
+er mwyn medru anfon e-bost at ddefnyddwyr eraill.',
 'emailuser'       => 'Anfon e-bost at y defnyddiwr hwn',
 'emailpage'       => 'Anfon e-bost at ddefnyddiwr',
 'emailpagetext'   => 'Os yw\'r defnyddiwr hwn wedi gosod cyfeiriad e-bost yn ei ddewisiadau, gellir anfon un neges ato ar y ffurflen isod. Bydd y cyfeiriad e-bost a osodoch yn eich dewisiadau chithau yn ymddangos ym maes "Oddi wrth" yr e-bost, fel bod y defnyddiwr arall yn gallu ei ateb.',
@@ -1109,8 +1110,6 @@ Am fwy o gymorth:
 'excontentauthor'             => "y cynnwys oedd: '$1' (a'r unig gyfrannwr oedd '[[Special:Contributions/$2|$2]]')",
 'exbeforeblank'               => "y cynnwys cyn blancio oedd: '$1'",
 'exblank'                     => 'roedd y dudalen yn wag',
-'confirmdelete'               => "Cadarnháu'r dileu",
-'deletesub'                   => '(Wrthi\'n dileu "$1")',
 'historywarning'              => "Rhybudd: mae hanes i'r dudalen rydych ar fin ei dileu.",
 'confirmdeletetext'           => "Rydych chi ar fin dileu tudalen neu ddelwedd, ynghŷd â'i hanes, o'r data-bas, a hynny'n barhaol.
 Os gwelwch yn dda, cadarnhewch eich bod chi wir yn bwriadu gwneud hyn, eich bod yn deall y canlyniadau, ac yn ei wneud yn ôl [[{{MediaWiki:Policy-url}}|polisïau {{SITENAME}}]].",
@@ -1416,7 +1415,6 @@ Yn achos yr ail ddewis, mae modd defnyddio cyswllt, e.e. [[{{ns:special}}:Export
 # Attribution
 'anonymous'        => 'Defnyddwyr anhysbys {{SITENAME}}',
 'lastmodifiedatby' => 'Newidiwyd y dudalen hon ddiwethaf $2, $1 gan $3', # $1 date, $2 time, $3 user
-'and'              => 'a/ac',
 'othercontribs'    => 'Yn seiliedig ar waith gan $1.',
 'others'           => 'eraill',
 'creditspage'      => "Cydnabyddiaethau'r dudalen",

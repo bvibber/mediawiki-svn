@@ -138,6 +138,10 @@ $messages = array(
 'mytalk'         => 'Xëtu waxtaanuwaay',
 'anontalk'       => 'Waxtaan ak bii IP',
 'navigation'     => 'Joowiin',
+'and'            => 'ak',
+
+# Metadata in edit box
+'metadata_help' => 'Jéegginjoxe :',
 
 'errorpagetitle'    => 'Njuumte',
 'returnto'          => 'Dellu ci wii xët $1.',
@@ -193,11 +197,11 @@ $messages = array(
 'jumptosearch'      => 'Seet',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'         => 'Maanaam ci {{SITENAME}}',
-'aboutpage'         => 'Project:Maanaam ci',
+'aboutsite'         => 'Ci mbiri {{SITENAME}}',
+'aboutpage'         => 'Project:Ci mbiri',
 'bugreports'        => 'Ngértey njuumte yi',
 'bugreportspage'    => 'Project:Ngértey njuumte',
-'copyright'         => 'Ndef gi jàppandi na ci $1.',
+'copyright'         => 'Ëmbit li jàppandi na ci $1.',
 'currentevents'     => 'Luy xew',
 'currentevents-url' => 'Project:Luy xew',
 'disclaimers'       => 'Ay aartu',
@@ -226,7 +230,7 @@ $messages = array(
 'editsection'             => 'Soppi',
 'editold'                 => 'Soppi',
 'editsectionhint'         => 'Soppi bii xaaj : $1',
-'toc'                     => 'Tëralin',
+'toc'                     => 'Tëraliin',
 'showtoc'                 => 'Wone',
 'hidetoc'                 => 'Nëbb',
 'thisisdeleted'           => 'Da ngaa bëgg a wone walla loppanti $1 ?',
@@ -262,7 +266,7 @@ $messages = array(
 $1',
 'nodb'                 => 'Falug dattub njoxe bii di $1 antuwul',
 'laggedslavemode'      => 'Moytul, wii xët man naa bañ a man dékku coppite yi ñu mujjee def',
-'readonly'             => 'Dattub njoxe li dañ kaa jaabi',
+'readonly'             => 'Dattub njoxe li dañ kaa caabi',
 'enterlockreason'      => 'Biralal ngirtey tëj gi ak diir bi mu war a amee',
 'readonlytext'         => 'Les ajouts et mises à jour sur la base de données sont actuellement bloqués, probablement pour permettre la maintenance de la base, après quoi, tout rentrera dans l’ordre.
 L’administrateur ayant verrouillé la base de données a donné l’explication suivante :$1',
@@ -455,6 +459,7 @@ Sa màkkaanu IP mooy $3 xammeekaayu téye gi mooy #$5. Di la sakku nga joxe leen
 'anontalkpagetext'          => "---- ''Yaa ngi ci xëtu waxtaanuwaayu ab jëfandikukat bu kenn-xamul, bu bindoogul walla du jëfandikoo sàqam. Kon ngir xamme ko faaw nga jëfandikoo màkkaanub IP wan. Te màkkaanub IP jëfandikukat yu bari man nañ ka bokk. Su fekkee jëfandikukat bu kenn-xamul nga, te nga gis ne dañ laa féetale ay sànni-kaddu yoo moomul, man ngaa [[Special:Userlogin|bindu walla duggu]] ngi benn jaxase bañatee am ëllëg .''",
 'noarticletext'             => 'Fi mu ne ni amul benn mbind ci xët wii; man ngaa [[{{ns:special}}:Search/{{PAGENAME}}|tambli ab seet ci koju xët wii]] walla [{{fullurl:{{FULLPAGENAME}}|action=edit}} soppi xët wii].',
 'userpage-userdoesnotexist' => 'Bii sàqum jëfandikukat « $1 » du bu ku bindu. Seetal bu baax ndax da ngaa namma sos walla soppi wii xët.',
+'clearyourcache'            => "'''Karma :''' Soo dence xët wi ba noppi, faaw nga bës ci si sa arafukaay yii di toftal, te nga bàyyi xel ci joowukaay bi ngay jëfandikoo : '''Mozilla / Konqueror / Firefox :''' ''Shift-Ctrl-R'', '''Internet Explorer / Opera :''' ''Ctrl-F5'', '''Safari :''' ''Cmd-R''.",
 'token_suffix_mismatch'     => '<strong>Votre édition n’a été acceptée car votre navigateur a mélangé les caractères de ponctuation dans l’identifiant d’édition. L’édition a été rejetée afin d’empêcher la corruption du texte de l’article. Ce problème se produit lorsque vous utilisez un proxy anonyme à problème.</strong>',
 'editing'                   => 'Coppiteg $1',
 'editinguser'               => 'Coppiteg $1',
@@ -791,7 +796,6 @@ Sa màkkaanu IP mooy $3 xammeekaayu téye gi mooy #$5. Di la sakku nga joxe leen
 # Attribution
 'anonymous' => 'Jëfëndikookat bu binduwul gu {{SITENAME}}',
 'siteuser'  => 'Jëfëndikookat $1 bu {{SITENAME}}',
-'and'       => 'ak',
 
 # Math options
 'mw_math_html' => 'HTML su manee ne, lu ko moy PNG',

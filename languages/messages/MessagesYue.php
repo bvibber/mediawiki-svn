@@ -1053,6 +1053,7 @@ $2',
 'largefileserver'             => '呢個檔案超過咗伺服器設定允許嘅大細。',
 'emptyfile'                   => '你上載嘅檔案似乎係空嘅。噉樣可能係因為你打錯咗個檔名。請檢查吓你係唔係真係要上載呢個檔案。',
 'fileexists'                  => '呢個檔名已經存在，如果你唔肯定係唔係要更改<strong><tt>$1</tt></strong>，請先檢查佢。',
+'filepageexists'              => '有一版同名嘅頁（唔係檔案）已經存在，如果你唔肯定係唔係要更改<strong><tt>$1</tt></strong>，請先檢查佢。',
 'fileexists-extension'        => '一個相似檔名嘅檔案已經存在:<br />
 上載檔案嘅檔名: <strong><tt>$1</tt></strong><br />
 現有檔案嘅檔名: <strong><tt>$2</tt></strong><br />
@@ -1439,20 +1440,19 @@ wiki: $PAGEEDITOR_WIKI
 'excontentauthor'             => "內容係：'$1' (而且唯一嘅貢獻者係'[[Special:Contributions/$2|$2]]')",
 'exbeforeblank'               => "喺清空之前嘅內容係：'$1'",
 'exblank'                     => '頁面之前係空嘅',
-'confirmdelete'               => '確認刪除',
-'deletesub'                   => '("$1"刪除中)',
+'delete-confirm'              => '刪除"$1"',
+'delete-legend'               => '刪除',
 'historywarning'              => '警告：你要刪除嘅頁面有歷史版本：',
 'confirmdeletetext'           => '你準備刪除一個頁面或者圖像，包括佢嘅所有歷史版本。
 請確認你打算噉做，而且你知道後果係點，加上確認你噉做冇違反到[[{{MediaWiki:Policy-url}}]]。',
 'actioncomplete'              => '操作完成',
-'deletedtext'                 => '"$1"已經刪除。
-最近嘅刪除記錄請睇$2。',
+'deletedtext'                 => '"$1"已經刪除。最近嘅刪除記錄請睇$2。',
 'deletedarticle'              => '已經刪除"[[$1]]"',
 'dellogpage'                  => '刪除日誌',
 'dellogpagetext'              => '以下係最近嘅刪除清單。',
 'deletionlog'                 => '刪除日誌',
 'reverted'                    => '恢復到先前嘅修訂',
-'deletecomment'               => '刪除原因',
+'deletecomment'               => '刪除原因:',
 'deleteotherreason'           => '其它／附加嘅原因:',
 'deletereasonotherlist'       => '其它原因',
 'deletereason-dropdown'       => '

@@ -60,7 +60,8 @@ class ApiQueryUserInfo extends ApiQueryBase {
 		$vals['id'] = $wgUser->getId();
 		$vals['name'] = $wgUser->getName();
 
-		if( $wgUser->isAnon() ) $vals['anon'] = '';
+		if($wgUser->isAnon())
+			$vals['anon'] = '';
 		if (isset($this->prop['blockinfo'])) {
 			if ($wgUser->isBlocked()) {
 				$vals['blockedby'] = User::whoIs($wgUser->blockedBy());
@@ -84,10 +85,45 @@ class ApiQueryUserInfo extends ApiQueryBase {
 		if (isset($this->prop['editcount'])) {
 			$vals['editcount'] = $wgUser->getEditCount();
 		}
+		if (isset($this->prop['ratelimits'])) {
+			$vals['ratelimits'] = $this->getRateLimits();
+		}
 		return $vals;
 	}
+	
+	protected function getRateLimits()
+	{
+		global $wgUser, $wgRateLimits;
+		if(!$wgUser->isPingLimitable())
+			return array(); // No limits
+		
+		// Find out which categories we belong to
+		$categories = array();
+		if($wgUser->isAnon())
+			$categories[] = 'anon';
+		else
+			$categories[] = 'user';
+		if($wgUser->isNewBie())
+		{
+			$categories[] = 'ip';
+			$categories[] = 'subnet';
+			if(!$wgUser->isAnon())
+				$categories[] = 'newbie';
+		}
+		
+		// Now get the actual limits
+		$retval = array();
+		foreach($wgRateLimits as $action => $limits)
+			foreach($categories as $cat)
+				if(isset($limits[$cat]) && !is_null($limits[$cat]))
+				{
+					$retval[$action][$cat]['hits'] = $limits[$cat][0];
+					$retval[$action][$cat]['seconds'] = $limits[$cat][1];
+				}
+		return $retval;
+	}			
 
-	protected function getAllowedParams() {
+	public function getAllowedParams() {
 		return array (
 			'prop' => array (
 				ApiBase :: PARAM_DFLT => NULL,
@@ -98,31 +134,29 @@ class ApiQueryUserInfo extends ApiQueryBase {
 					'groups',
 					'rights',
 					'options',
-					'editcount'
+					'editcount',
+					'ratelimits'
 				)
-			),
-			'users' => array(
-				ApiBase :: PARAM_ISMULTI => true
 			)
 		);
 	}
 
-	protected function getParamDescription() {
+	public function getParamDescription() {
 		return array (
 			'prop' => array(
 				'What pieces of information to include',
-				'  blockinfo - tags if the user is blocked, by whom, and for what reason',
-				'  hasmsg    - adds a tag "message" if user has pending messages',
-				'  groups    - lists all the groups the user belongs to',
-				'  rights    - lists of all rights the user has',
-				'  options   - lists all preferences the user has set',
-				'  editcount - adds the user\'s edit count'
-			),
-			'users' => 'A list of other users to obtain the same information for'
+				'  blockinfo  - tags if the current user is blocked, by whom, and for what reason',
+				'  hasmsg     - adds a tag "message" if the current user has pending messages',
+				'  groups     - lists all the groups the current user belongs to',
+				'  rights     - lists of all rights the current user has',
+				'  options    - lists all preferences the current user has set',
+				'  editcount  - adds the current user\'s edit count',
+				'  ratelimits - lists all rate limits applying to the current user'
+			)
 		);
 	}
 
-	protected function getDescription() {
+	public function getDescription() {
 		return 'Get information about the current user';
 	}
 
@@ -130,7 +164,6 @@ class ApiQueryUserInfo extends ApiQueryBase {
 		return array (
 			'api.php?action=query&meta=userinfo',
 			'api.php?action=query&meta=userinfo&uiprop=blockinfo|groups|rights|hasmsg',
-			'api.php?action=query&meta=userinfo&uioption=rememberpassword',
 		);
 	}
 

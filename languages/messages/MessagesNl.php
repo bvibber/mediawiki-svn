@@ -41,10 +41,13 @@ $namespaceNames = array(
 );
 
 $skinNames = array(
-	'standard' => 'Klassiek',
-	'nostalgia' => 'Nostalgie',
+	'standard'    => 'Klassiek',
+	'nostalgia'   => 'Nostalgie',
 	'cologneblue' => 'Keuls blauw',
-	'myskin' => 'MijnSkin'
+	'monobook'    => 'Monobook',
+	'myskin'      => 'MijnSkin',
+	'simple'      => 'Eenvoudig',
+	'modern'      => 'Modern',
 );
 
 $dateFormats = array(
@@ -394,6 +397,7 @@ $messages = array(
 'mytalk'         => 'Mijn overleg',
 'anontalk'       => 'Overlegpagina voor dit IP-adres',
 'navigation'     => 'Navigatie',
+'and'            => 'en',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -910,7 +914,7 @@ Er kunnen details aanwezig zijn in het [{{fullurl:Special:Log/delete|page={{FULL
 'logdelete-selected'          => "{{PLURAL:$2|Geselecteerde logboekactie|Geselecteerde logboekacties}} voor '''$1:'''",
 'revdelete-text'              => 'Verwijderde bewerkingen zijn zichtbaar in de geschiedenis, maar de inhoud is niet langer publiek toegankelijk.
 
-Andere beheerders van {{SITENAME}} kunnen de verborgen inhoud benaderen en de verwijdering ongedaan maken met behulp van dit scherm, tenzij er toegevoegde beperkingen gelden die zijn ingesteld door de systeembeheerder.',
+Andere beheerders van {{SITENAME}} kunnen de verborgen inhoud benaderen en de verwijdering ongedaan maken met behulp van dit scherm, tenzij er aanvullende beperkingen gelden die zijn ingesteld door de systeembeheerder.',
 'revdelete-legend'            => 'Versiebeperkingen instellen',
 'revdelete-hide-text'         => 'De bewerkte tekst verbergen',
 'revdelete-hide-name'         => 'Actie en doel verbergen',
@@ -1172,6 +1176,7 @@ De laatste link is bedoeld voor mediabestanden.",
 'largefileserver'             => 'Het bestand is groter dan de instelling van de server toestaat.',
 'emptyfile'                   => 'Het bestand dat u heeft geüpload lijkt leeg te zijn. Dit zou kunnen komen door een typefout in de bestandsnaam. Ga a.u.b. na of u dit bestand werkelijk bedoelde te uploaden.',
 'fileexists'                  => 'Er bestaat al een bestand met deze naam. Controleer $1 als u niet zeker weet of u het huidige bestand wilt overschrijven.',
+'filepageexists'              => 'Een pagina (geen afbeelding) met deze naam bestaat al, gelieve <strong><tt>$1</tt></strong> te controleren als u niet zeker bent of u het wil wijzigen.',
 'fileexists-extension'        => 'Een bestand met dezelfde naam bestaat al:<br />
 Naam van het geüploade bestand: <strong><tt>$1</tt></strong><br />
 Naam van het bestaande bestand: <strong><tt>$2</tt></strong><br />
@@ -1560,8 +1565,8 @@ Feedback en andere assistentie:
 'excontentauthor'             => 'inhoud was: "$1" ([[Special:Contributions/$2|$2]] was de enige auteur)',
 'exbeforeblank'               => "De inhoud was: '$1'",
 'exblank'                     => 'pagina was leeg',
-'confirmdelete'               => 'Verwijdering bevestigen',
-'deletesub'                   => '("$1" aan het verwijderen)',
+'delete-confirm'              => '"$1" verwijderen',
+'delete-legend'               => 'Verwijderen',
 'historywarning'              => 'Waarschuwing: de pagina die u wilt verwijderen heeft meerdere versies:',
 'confirmdeletetext'           => 'U staat op het punt een pagina te verwijderen, inclusief de geschiedenis. Bevestig alstublieft hieronder dat dit inderdaad uw bedoeling is, dat u de gevolgen begrijpt en dat de verwijdering overeenstemt met het [[{{MediaWiki:Policy-url}}|beleid]].',
 'actioncomplete'              => 'Handeling voltooid',
@@ -1571,7 +1576,7 @@ Feedback en andere assistentie:
 'dellogpagetext'              => "Hieronder is een lijst van recent verwijderde pagina's en bestanden weergegeven.",
 'deletionlog'                 => 'Verwijderingslogboek',
 'reverted'                    => 'Eerdere versie hersteld',
-'deletecomment'               => 'Reden voor verwijderen',
+'deletecomment'               => 'Reden voor verwijderen:',
 'deleteotherreason'           => 'Andere/eventuele reden:',
 'deletereasonotherlist'       => 'Andere reden',
 'deletereason-dropdown'       => '*Veelvoorkomende verwijderingsredenen
@@ -1847,7 +1852,7 @@ Kies a.u.b. een andere paginanaam.',
 'talkpagenotmoved'        => 'De bijhorende overlegpagina is <strong>niet</strong> hernoemd.',
 '1movedto2'               => '[[$1]] hernoemd naar [[$2]]',
 '1movedto2_redir'         => '[[$1]] hernoemd over de doorverwijzing [[$2]]',
-'movelogpage'             => "Logboek hernoemde pagina's",
+'movelogpage'             => 'Hernoemingslogboek',
 'movelogpagetext'         => "Hieronder staan hernoemde pagina's.",
 'movereason'              => 'Reden',
 'revertmove'              => 'terugdraaien',
@@ -1870,7 +1875,7 @@ In het laatste geval kan u ook een link gebruiken, bijvoorbeeld [[Special:Export
 'exportnohistory'   => "---- 
 '''Let op:''' het exporteren van de gehele geschiedenis is uitgeschakeld wegens prestatieredenen.",
 'export-submit'     => 'Exporteren',
-'export-addcattext' => "Voeg pagina's toe van categorie:",
+'export-addcattext' => "Pagina's toevoegen van categorie:",
 'export-addcat'     => 'Toevoegen',
 'export-download'   => 'Als bestand opslaan',
 'export-templates'  => 'Sjablonen toevoegen',
@@ -1928,9 +1933,9 @@ Alle transwiki-importhandelingen worden opgeslagen in het [[Special:Log/import|i
 # Import log
 'importlogpage'                    => 'Importlogboek',
 'importlogpagetext'                => "Administratieve import van pagina's met geschiedenis van andere wiki's.",
-'import-logentry-upload'           => '[[$1]] geïmporteerd via een bestandsupload',
+'import-logentry-upload'           => 'importeerde [[$1]] via een bestandsupload',
 'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|versie|versies}}',
-'import-logentry-interwiki'        => 'transwiki voor $1 geslaagd',
+'import-logentry-interwiki'        => 'importeerde $1 via transwiki',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|versie|versies}} van $2',
 
 # Tooltip help for the actions
@@ -2012,7 +2017,6 @@ Alle transwiki-importhandelingen worden opgeslagen in het [[Special:Log/import|i
 'anonymous'        => 'Anonieme gebruiker(s) van {{SITENAME}}',
 'siteuser'         => '{{SITENAME}}-gebruiker $1',
 'lastmodifiedatby' => 'Deze pagina is het laatst bewerkt op $2, $1 door $3.', # $1 date, $2 time, $3 user
-'and'              => 'en',
 'othercontribs'    => 'Gebaseerd op werk van $1.',
 'others'           => 'anderen',
 'siteusers'        => '{{SITENAME}}-gebruiker(s) $1',
@@ -2521,5 +2525,21 @@ Probeer normale voorvertoning.',
 
 # Core parser functions
 'unknown_extension_tag' => 'Onbekende tag "$1"',
+
+# Special:Version
+'version-extensions'               => 'Geïnstalleerde uitbreidingen',
+'version-specialpages'             => "Speciale pagina's",
+'version-parserhooks'              => 'Parserhooks',
+'version-variables'                => 'Variabelen',
+'version-other'                    => 'Overige',
+'version-mediahandlers'            => 'Mediaverwerkers',
+'version-hooks'                    => 'Hooks',
+'version-extension-functions'      => 'Uitbreidingsfuncties',
+'version-parser-extensiontags'     => 'Parseruitbreidingstags',
+'version-parser-function-hooks'    => 'Parserfunctiehooks',
+'version-skin-extension-functions' => 'Vormgevingsuitbreidingsfuncties',
+'version-hook-name'                => 'Hooknaam',
+'version-hook-subscribedby'        => 'Geabonneerd door',
+'version-version'                  => 'Versie',
 
 );

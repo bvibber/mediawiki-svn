@@ -285,6 +285,7 @@ $messages = array(
 'mytalk'         => 'Min diskussionssida',
 'anontalk'       => 'Diskussionssidan för denna IP-adress',
 'navigation'     => 'Navigering',
+'and'            => 'och',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -1435,8 +1436,8 @@ Feedback och hjälp:
 'excontentauthor'             => "sidan innehöll '$1' (den enda som skrivit var '$2')",
 'exbeforeblank'               => "Före tömning: '$1'",
 'exblank'                     => 'sidan var tom',
-'confirmdelete'               => 'Bekräfta borttagning',
-'deletesub'                   => '(Tar bort "$1")',
+'delete-confirm'              => 'Radera "$1"',
+'delete-legend'               => 'Radera',
 'historywarning'              => 'Varning: Sidan du håller på att radera har en historik:',
 'confirmdeletetext'           => 'Du håller på att ta bort en sida med hela dess historik.
 Bekräfta att du förstår vad du håller på med och vilka konsekvenser detta leder till, och att du följer [[{{MediaWiki:Policy-url}}|riktlinjerna]].',
@@ -1448,7 +1449,7 @@ Se $2 för noteringar om de senaste raderingarna.',
 'dellogpagetext'              => 'Nedan listas de senaste raderingarna och återställningarna.',
 'deletionlog'                 => 'raderingslogg',
 'reverted'                    => 'Återgått till tidigare version',
-'deletecomment'               => 'Anledning till borttagning',
+'deletecomment'               => 'Anledning till borttagning:',
 'deleteotherreason'           => 'Annan/ytterligare anledning:',
 'deletereasonotherlist'       => 'Annan anledning',
 'deletereason-dropdown'       => '*Vanliga anledningar till radering
@@ -1887,7 +1888,6 @@ All överföring mellan wikier (transwiki) listas i  [[Special:Log/import|import
 'anonymous'        => 'Anonym användare av {{SITENAME}}',
 'siteuser'         => '{{SITENAME}} användare $1',
 'lastmodifiedatby' => 'Den här sidan ändrades senast $2, $1 av $3.', # $1 date, $2 time, $3 user
-'and'              => 'och',
 'othercontribs'    => 'Baserad på arbete av $1.',
 'others'           => 'andra',
 'siteusers'        => '{{SITENAME}} användare $1',
@@ -2378,5 +2378,21 @@ för att spara dina ändringar när du är färdig. Du kan också använda [[Spe
 
 # Core parser functions
 'unknown_extension_tag' => 'Okänd tagg "$1"',
+
+# Special:Version
+'version-extensions'               => 'Installerade programtillägg',
+'version-specialpages'             => 'Specialsidor',
+'version-parserhooks'              => 'Parser hakar',
+'version-variables'                => 'Variabler',
+'version-other'                    => 'Annat',
+'version-mediahandlers'            => 'Mediahanterare',
+'version-hooks'                    => 'Hakar',
+'version-extension-functions'      => 'Tilläggsfunktioner',
+'version-parser-extensiontags'     => 'Tilläggstaggar',
+'version-parser-function-hooks'    => 'Parserfunktioner',
+'version-skin-extension-functions' => 'Skaltillbyggnadsfunktioner',
+'version-hook-name'                => 'Namn',
+'version-hook-subscribedby'        => 'Undertecknad av',
+'version-version'                  => 'Version',
 
 );

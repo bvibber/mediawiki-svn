@@ -333,6 +333,7 @@ $messages = array(
 'mytalk'         => 'Moje diskuse',
 'anontalk'       => 'Diskuse k této IP adrese',
 'navigation'     => 'Navigace',
+'and'            => 'a',
 
 'errorpagetitle'    => 'Chyba',
 'returnto'          => 'Návrat na stránku „$1“.',
@@ -1489,19 +1490,18 @@ Rady a kontakt:
 'excontentauthor'             => 'obsah byl: „$1“ (a jediným přispěvatelem byl „[[Speciální:Contributions/$2|$2]]“)',
 'exbeforeblank'               => 'obsah před vyprázdněním byl: „$1“',
 'exblank'                     => 'stránka byla prázdná',
-'confirmdelete'               => 'Potvrdit smazání',
-'deletesub'                   => '(Maže se „$1“)',
+'delete-confirm'              => 'Smazání stránky „$1“',
+'delete-legend'               => 'Smazat',
 'historywarning'              => 'Varování: Stránka, jíž chcete smazat, má historii:',
 'confirmdeletetext'           => 'Chystáte se smazat stránku s celou její historií. Prosím potvrďte, že to opravdu chcete učinit, že si uvědomujete důsledky a že je to v souladu s [[{{MediaWiki:Policy-url}}|pravidly]].',
 'actioncomplete'              => 'Provedeno',
-'deletedtext'                 => 'Stránka nebo soubor „$1“ byla smazána.
-$2 zaznamenává poslední smazání.',
+'deletedtext'                 => 'Stránka nebo soubor „$1“ byla smazána. $2 zaznamenává poslední smazání.',
 'deletedarticle'              => 'maže „$1“',
 'dellogpage'                  => 'Kniha smazaných stránek',
 'dellogpagetext'              => 'Zde je seznam posledních smazaných stránek.',
 'deletionlog'                 => 'Kniha smazaných stránek',
 'reverted'                    => 'Obnovení předchozí verze',
-'deletecomment'               => 'Důvod smazání',
+'deletecomment'               => 'Důvod smazání:',
 'deleteotherreason'           => 'Jiný či další důvod:',
 'deletereasonotherlist'       => 'Zadejte níže důvod mazání nebo vyberte z tohoto seznamu',
 'deletereason-dropdown'       => '*Obvyklé důvody smazání
@@ -1925,7 +1925,6 @@ Do níže uvedeného editačního pole zadejte názvy stránek, které chcete ex
 'anonymous'        => 'anonymní uživatel(é) {{GRAMMAR:2sg|{{SITENAME}}}}',
 'siteuser'         => 'uživatel {{grammar:2sg|{{SITENAME}}}} $1',
 'lastmodifiedatby' => 'Tuto stránku naposledy měnil $3 v $2, $1.', # $1 date, $2 time, $3 user
-'and'              => 'a',
 'othercontribs'    => 'Do textu přispěli $1.',
 'others'           => 'ostatní',
 'siteusers'        => 'uživatel(é) {{grammar:2sg|{{SITENAME}}}} $1',
@@ -2181,7 +2180,7 @@ Obsahuje pouze seznam s odrážkami (řádka začíná s *). První odkaz na ř�
 'exif-meteringmode-2'   => 'Vážený průměr',
 'exif-meteringmode-3'   => 'Bodové',
 'exif-meteringmode-4'   => 'Zónové',
-'exif-meteringmode-5'   => 'Vzorové',
+'exif-meteringmode-5'   => 'Vzorkové',
 'exif-meteringmode-6'   => 'Částečné',
 'exif-meteringmode-255' => 'Jiné',
 
@@ -2462,5 +2461,21 @@ $1',
 
 # Core parser functions
 'unknown_extension_tag' => 'Neznámá značka rozšíření: „$1“',
+
+# Special:Version
+'version-extensions'               => 'Nainstalovaná rozšíření',
+'version-specialpages'             => 'Speciální stránky',
+'version-parserhooks'              => 'Háky parseru',
+'version-variables'                => 'Proměnné',
+'version-other'                    => 'Jiné',
+'version-mediahandlers'            => 'Obsluha médií',
+'version-hooks'                    => 'Háky',
+'version-extension-functions'      => 'Funkce rozšíření',
+'version-parser-extensiontags'     => 'Značky rozšiřující parser',
+'version-parser-function-hooks'    => 'Funkce parseru',
+'version-skin-extension-functions' => 'Funkce rozšiřující styly',
+'version-hook-name'                => 'Název háku',
+'version-hook-subscribedby'        => 'Volán z',
+'version-version'                  => 'Verze',
 
 );

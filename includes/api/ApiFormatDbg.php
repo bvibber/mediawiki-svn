@@ -48,7 +48,7 @@ class ApiFormatDbg extends ApiFormatBase {
 		$this->printText(var_export($this->getResultData(), true));
 	}
 
-	protected function getDescription() {
+	public function getDescription() {
 		return 'Output data in PHP\'s var_export() format' . parent :: getDescription();
 	}
 
@@ -56,4 +56,3 @@ class ApiFormatDbg extends ApiFormatBase {
 		return __CLASS__ . ': $Id: ApiFormatPhp.php 23531 2007-06-29 01:19:14Z simetrical $';
 	}
 }
-

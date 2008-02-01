@@ -12,6 +12,7 @@
  * @author Siebrand
  * @author לערי ריינהארט
  * @author Dnik
+ * @author Suradnik13
  */
 
 $skinNames = array(
@@ -188,6 +189,7 @@ i [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Vodič za suradnike] 
 'mytalk'         => 'Moj razgovor',
 'anontalk'       => 'Razgovor za ovu IP adresu',
 'navigation'     => 'Orijentacija',
+'and'            => 'i',
 
 # Metadata in edit box
 'metadata_help' => 'Metapodaci:',
@@ -991,6 +993,7 @@ Da biste na stranicu stavili sliku, koristite poveznice tipa
 'largefileserver'             => 'Veličina ove datoteke veća je od one dopuštene postavkama poslužitelja.',
 'emptyfile'                   => 'Datoteka koju ste postavili je prazna. Možda se radi o krivo utipkanom imenu datoteke. Provjerite želite li zaista postaviti ovu datoteku.',
 'fileexists'                  => 'Datoteka s ovim imenom već postoji, pogledajte $1 ako niste sigurni želite li je uistinu promijeniti.',
+'filepageexists'              => 'Stranica (ne slika) s ovim imenom već postoji, molimo provjerite <strong><tt>$1</tt></strong> ako niste sigurni da je želite promijeniti.',
 'fileexists-extension'        => 'Već postoji datoteka sa sličnim imenom:<br />
 Ime datoteke koju postavljate: <strong><tt>$1</tt></strong><br />
 Ime postojeće datoteke: <strong><tt>$2</tt></strong><br />
@@ -1105,7 +1108,7 @@ Slijedi evidencija brisanja ove datoteke s obrazloženjem prethodnog brisanja:",
 'filedelete-iscurrent'        => 'Pokušavate obrisati najnoviju inačicu ove datoteke. Molimo vas da prije toga vratite na stariju inačicu.',
 'filedelete-otherreason'      => 'Drugi/dodatni razlog:',
 'filedelete-reason-otherlist' => 'Drugi razlog',
-'filedelete-reason-dropdown'  => '*Česti razlozi brisanje
+'filedelete-reason-dropdown'  => '*Česti razlozi brisanja
 ** Kršenje autorskih prava
 ** Dupla datoteka
 ** Nekorištena datoteka',
@@ -1383,8 +1386,8 @@ Za pomoć posjetite:
 'excontentauthor'             => "sadržaj je bio: '$1' (a jedini urednik '$2')",
 'exbeforeblank'               => "sadržaj prije brisanja je bio: '$1'",
 'exblank'                     => 'stranica je bila prazna',
-'confirmdelete'               => 'Potvrdi brisanje',
-'deletesub'                   => '(Brišem "$1")',
+'delete-confirm'              => 'Obriši "$1"',
+'delete-legend'               => 'Obriši',
 'historywarning'              => 'UPOZORENJE: Stranica koju želite obrisati ima prijašnje inačice:',
 'confirmdeletetext'           => 'Zauvijek ćete izbrisati stranicu ili sliku zajedno s prijašnjim inačicama.
 Molim potvrdite svoju namjeru, da razumijete posljedice i da ovo radite u skladu s [[{{MediaWiki:Policy-url}}|pravilima]].',
@@ -1726,6 +1729,7 @@ U potonjem slučaju možete koristiti i poveznicu, npr. [[{{ns:special}}:Export/
 'export-addcattext' => 'Dodaj stranice iz kategorije:',
 'export-addcat'     => 'Dodaj',
 'export-download'   => 'Ponudi opciju snimanja u datoteku',
+'export-templates'  => 'Uključi predloške',
 
 # Namespace 8 related
 'allmessages'               => 'Sve sistemske poruke',
@@ -1772,6 +1776,10 @@ Transwiki uvoz stranica je zabilježen u [[Special:Log/import|evidenciji uvoza s
 'importuploaderrorsize'      => 'Uvoz datoteke nije uspio. Datoteka je veća od dozvoljene veličine.',
 'importuploaderrorpartial'   => 'Uvoz datoteke nije uspio. Datoteka je djelomično uvezena/snimljena.',
 'importuploaderrortemp'      => 'Uvoz datoteke nije uspio. Nema privremenog direktorija.',
+'import-parse-failure'       => 'Greška u parsiranju kod uvoza XML-a',
+'import-noarticle'           => 'Nema stranice za uvoz!',
+'import-nonewrevisions'      => 'Sve inačice su bile prethodno uvezene.',
+'xml-error-string'           => '$1 u retku $2, stupac $3 (bajt $4): $5',
 
 # Import log
 'importlogpage'                    => 'Evidencija uvoza članaka',
@@ -1860,7 +1868,6 @@ Transwiki uvoz stranica je zabilježen u [[Special:Log/import|evidenciji uvoza s
 'anonymous'        => 'Anonimni suradnik projekta {{SITENAME}}',
 'siteuser'         => 'Suradnik $1 na projektu {{SITENAME}}',
 'lastmodifiedatby' => 'Ovu je stranicu zadnji put mijenjao dana $2, $1 suradnik $3.', # $1 date, $2 time, $3 user
-'and'              => 'i',
 'othercontribs'    => 'Temelji se na doprinosu suradnika $1.',
 'others'           => 'drugih',
 'siteusers'        => '{{SITENAME}} suradnik(ci) $1',
@@ -2365,5 +2372,8 @@ Također možete koristiti [[Special:Watchlist/edit|uređivanje popisa putem ''k
 
 # Core parser functions
 'unknown_extension_tag' => "Nepoznat ''tag'' ekstenzije \"\$1\"",
+
+# Unknown messages
+'version-version' => 'Inačica',
 
 );

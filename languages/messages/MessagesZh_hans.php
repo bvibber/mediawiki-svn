@@ -983,7 +983,8 @@ $2',
 'large-file'                  => '建议文件大小不能超过 $1；本文件大小为 $2。',
 'largefileserver'             => '这个文件的大小比服务器配置允许的大小还要大。',
 'emptyfile'                   => '您所上传的文件不存在。这可能是由于文件名键入错误。请检查您是否真的要上传此文件。',
-'fileexists'                  => '已存在相同名称的文件，如果您无法确定您是否要改变它，请检查$1。',
+'fileexists'                  => '已存在相同名称的文件，如果您无法确定您是否要改变它，请检查<strong><tt>$1</tt></strong>。',
+'filepageexists'              => '已存在相同名称的页面（不是文件），如果您无法确定您是否要改变它，请检查<strong><tt>$1</tt></strong>。',
 'fileexists-extension'        => '一个相似名称的文件已经存在:<br />
 上载文件的档名: <strong><tt>$1</tt></strong><br />
 现有文件的档名: <strong><tt>$2</tt></strong><br />
@@ -1375,20 +1376,19 @@ $NEWPAGE
 'excontentauthor'             => '内容为: "$1" (而且唯一贡献者为"$2")',
 'exbeforeblank'               => '被清空前的内容为: "$1"',
 'exblank'                     => '页面为空',
-'confirmdelete'               => '确认删除',
-'deletesub'                   => '(正在删除"$1")',
+'delete-confirm'              => '删除“$1”',
+'delete-legend'               => '删除',
 'historywarning'              => '警告: 您将要删除的页内含有历史',
 'confirmdeletetext'           => '您即将删除一个页面或图像以及其历史。
 请确定您要进行此项操作，并且了解其后果，同时您的行为符合[[{{MediaWiki:Policy-url}}]]。',
 'actioncomplete'              => '操作完成',
-'deletedtext'                 => '"$1"已经被删除。
-最近删除的纪录请参见$2。',
+'deletedtext'                 => '"$1"已经被删除。最近删除的纪录请参见$2。',
 'deletedarticle'              => '已删除"$1"',
 'dellogpage'                  => '删除日志',
 'dellogpagetext'              => '以下是最近删除的纪录列列表:',
 'deletionlog'                 => '删除日志',
 'reverted'                    => '恢复到早期版本',
-'deletecomment'               => '删除原因',
+'deletecomment'               => '删除原因:',
 'deleteotherreason'           => '其它／附加的理由:',
 'deletereasonotherlist'       => '其它理由',
 'deletereason-dropdown'       => '

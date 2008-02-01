@@ -3169,7 +3169,13 @@ class Parser
 		$argName = trim( $nameWithSpaces );
 		$object = false;
 		$text = $frame->getArgument( $argName );
-		if (  $text === false && ( $this->ot['html'] || $this->ot['pre'] ) && $parts->getLength() > 0 ) {
+		if (  $text === false && $parts->getLength() > 0 
+		  && ( 
+		    $this->ot['html'] 
+		    || $this->ot['pre'] 
+		    || ( $this->ot['wiki'] && $frame->isTemplate() )
+		  )
+		) {
 			# No match in frame, use the supplied default
 			$object = $parts->item( 0 )->getChildren();
 		}
@@ -3665,9 +3671,6 @@ class Parser
 		# Variable replacement
 		# Because mOutputType is OT_WIKI, this will only process {{subst:xxx}} type tags
 		$text = $this->replaceVariables( $text );
-
-		# Strip out <nowiki> etc. added via replaceVariables
-		#$text = $this->strip( $text, $this->mStripState, false, array( 'gallery' ) );
 
 		# Signatures
 		$sigText = $this->getUserSig( $user );
@@ -4569,7 +4572,6 @@ class Parser
 		$this->setTitle( $wgTitle ); // not generally used but removes an ugly failure mode
 		$this->mOptions = new ParserOptions;
 		$this->setOutputType( self::OT_WIKI );
-		$curIndex = 0;
 		$outText = '';
 		$frame = $this->getPreprocessor()->newFrame();
 
@@ -4594,21 +4596,18 @@ class Parser
 			// Section zero doesn't nest, level=big
 			$targetLevel = 1000;
 		} else {
-			while ( $node ) {
-				if ( $node->getName() == 'h' ) {
-					if ( $curIndex + 1 == $sectionIndex ) {
+            while ( $node ) {
+                if ( $node->getName() == 'h' ) {
+                    $bits = $node->splitHeading();
+					if ( $bits['i'] == $sectionIndex ) {
+        				$targetLevel = $bits['level'];
 						break;
 					}
-					$curIndex++;
 				}
 				if ( $mode == 'replace' ) {
 					$outText .= $frame->expand( $node, PPFrame::RECOVER_ORIG );
 				}
 				$node = $node->getNextSibling();
-			}
-			if ( $node ) {
-				$bits = $node->splitHeading();
-				$targetLevel = $bits['level'];
 			}
 		}
 
@@ -4624,10 +4623,9 @@ class Parser
 		// Find the end of the section, including nested sections
 		do {
 			if ( $node->getName() == 'h' ) {
-				$curIndex++;
 				$bits = $node->splitHeading();
 				$curLevel = $bits['level'];
-				if ( $curIndex != $sectionIndex && $curLevel <= $targetLevel ) {
+				if ( $bits['i'] != $sectionIndex && $curLevel <= $targetLevel ) {
 					break;
 				}
 			}

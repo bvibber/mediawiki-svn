@@ -252,6 +252,7 @@ $messages = array(
 'mytalk'         => 'meng Diskussioun',
 'anontalk'       => 'Diskussioun fir dës IP Adress',
 'navigation'     => 'Navigatioun',
+'and'            => 'an',
 
 # Metadata in edit box
 'metadata_help' => 'Metadaten:',
@@ -428,6 +429,7 @@ Ufro: $2',
 'viewsourcetext'       => 'Dir kënnt de Quelltext vun dëser Säit kucken a kopéieren:',
 'protectedinterface'   => 'Op dëser Säit fannt Dir Text fir de Sprooch-Interface vun der Software an dofir ass si gespaart fir Mëssbrauch ze verhenneren.',
 'editinginterface'     => "'''Opgepasst:''' Dir sidd am Gaang, eng Säit z'änneren, déi do ass, fir Interface-Text fir d'Software ze liwweren. Ännerungen op dëser Säit änneren den Interface-Text, dee jidderee liese kann.",
+'sqlhidden'            => '(SQL-Offro verstoppt)',
 'cascadeprotected'     => 'Dës Säit ass gespaart, well duerch Cascadeprotectioun vun {{PLURAL:$1|dëser Säit|dëse Säite}} protegéiert ass:
 $2',
 'namespaceprotected'   => "Dir hutt net déi néideg Rechter fir d'Säiten am Nummraum '''$1''' ze änneren.",
@@ -645,6 +647,8 @@ Dir verspriecht ausserdeem datt dir dësen Text selwer verfaasst hutt, oder aus 
 'longpagewarning'           => '<strong>WARNUNG: Dës Säit ass $1 kB grouss; verschidde Browser kéinte Problemer hunn, Säiten ze verschaffen, déi méi grouss wéi 32 KB sinn.
 
 Iwwerleet w.e.g., ob eng Opdeelung vun der Säit a méi kleng Abschnitter méiglich ass.</strong>',
+'longpageerror'             => '<strong>FEELER: Den Text, den Dir Versicht ze späicheren, huet $1 KB. Dëst ass méi wéi den erlaabte Maximum vun $2 KB – dofir kann den Text net gespäichert ginn.</strong>',
+'readonlywarning'           => "<strong>OPGEPASST: D'Datebank gouf wéinst Maintenanceaarbechte fir Säitenànnerunge gespaart, dofir kënnt Dir déi Säit den Ament net ofspäicheren. Versuergt den Text a versicht d'Ännerunge méi spéit nach emol ze maachen.</strong>",
 'protectedpagewarning'      => '<strong>OPGEPASST: Dës Säit gouf gespaart a kann nëmme vun engem Administrateur geännert ginn.</strong>',
 'semiprotectedpagewarning'  => "'''Bemierkung:''' Dës Säit gouf esou gespaart, datt nëmme ugemellte Benotzer s'ännere kënnen.",
 'templatesused'             => 'Schablounen déi op dëser Säit am Gebrauch sinn:',
@@ -1245,8 +1249,8 @@ Wann dir dës Säit net iwwerwaache wëllt, klickt op \"Net méi iwwerwaachen\" 
 'excontentauthor'             => "Op der Säit stong: '$1' (An als eenzegen dru geschriwwen hat de '[[User:$2|Benotzer:$2]]' ([[Special:Contributions/$2|$2 Kontributiounen]])",
 'exbeforeblank'               => "Den Inhalt virum Läsche war: '$1'",
 'exblank'                     => "D'Säit war eidel",
-'confirmdelete'               => "Konfirméiert d'Läschen",
-'deletesub'                   => '("$1" gëtt geläscht)',
+'delete-confirm'              => 'Läsche vu(n) "$1"',
+'delete-legend'               => 'Läschen',
 'historywarning'              => 'Opgepasst: Déi Säit déi dir läsche wëllt huet en Historique.',
 'confirmdeletetext'           => "Dir sidd am Gaang, eng Säit mat hirem kompletten Historique vollstänneg aus der Datebank ze läschen. 
 W.e.g. konfirméiert, datt Dir dëst wierklech wëllt, datt Dir d'Konsequenze verstitt, an datt dat Ganzt en accordance mat de [[{{MediaWiki:Policy-url}}|Richtlinien]] geschitt.",
@@ -1257,7 +1261,7 @@ W.e.g. konfirméiert, datt Dir dëst wierklech wëllt, datt Dir d'Konsequenze ve
 'dellogpagetext'              => 'Hei fannt dir eng Lëscht mat rezent geläschte Säiten. All Auerzäiten sinn déi vum Server (UTC).',
 'deletionlog'                 => 'Läschungslog',
 'reverted'                    => 'Op déi Versioun virdrun zréckgesat',
-'deletecomment'               => "Grond fir d'Läschen",
+'deletecomment'               => "Grond fir d'Läschen:",
 'deleteotherreason'           => 'Aneren/ergänzende Grond:',
 'deletereasonotherlist'       => 'Anere Grond',
 'deletereason-dropdown'       => '* Heefegst Grënn fir eng Säit ze läschen
@@ -1314,6 +1318,7 @@ Hei sinn déi aktuell Astellunge fir d'Säit <strong>$1</strong>:",
 'undelete-revision'        => 'Geläschte Versioun vun $1 (Versioun  vum $2) vum $3:',
 'undelete-nodiff'          => 'Et si keng méi al Versiounen do.',
 'undeletebtn'              => 'Restauréieren',
+'undeletereset'            => 'Ofbriechen',
 'undeletecomment'          => 'Grond:',
 'undeletedarticle'         => 'huet "[[$1]]" restauréiert',
 'undeletedrevisions'       => '$1 {{PLURAL:$1|Versioun gouf|$1 Versioune goufe}} restauréiert',
@@ -1324,7 +1329,11 @@ Hei sinn déi aktuell Astellunge fir d'Säit <strong>$1</strong>:",
 'undelete-search-box'      => 'Sich no geläschte Säiten',
 'undelete-search-prefix'   => 'Weis Säiten déi esou ufänken:',
 'undelete-search-submit'   => 'Sichen',
+'undelete-bad-store-key'   => "D'Versioun vum Fichier mat dem Zäitstempel $1 konnt net restauréiert ginn: De Fichier war scho virum Läschen net méi do.",
 'undelete-error-short'     => 'Feeler bäim Restauréieren vum Fichier: $1',
+'undelete-error-long'      => 'Beim Restauréiere vun engem Fichier goufe Feeler fonnt:
+
+$1',
 
 # Namespace form on various pages
 'namespace'      => 'Nummraum:',
@@ -1461,6 +1470,7 @@ Dëst kann en drastesche Changement fir eng populär Säit bedeiten; verstitt w.
 
 An deene Fäll musst Dir d'Diskussiounssäit manuell réckelen oder fusionéieren.",
 'movearticle'             => 'Säit réckelen:',
+'movenologintext'         => 'Dir musst e registréierte Benotzer an [[Special:Userlogin|ageloggt]] sinn, fir eng Säit ze réckelen.',
 'movenotallowed'          => 'Dir hutt net déi néideg Rechter fir Säiten op {{SITENAME}} ze réckelen.',
 'newtitle'                => 'Op neien Titel:',
 'move-watch'              => 'Dës Säit iwwerwaachen',
@@ -1592,7 +1602,6 @@ An deene Fäll musst Dir d'Diskussiounssäit manuell réckelen oder fusionéiere
 'anonymous'        => 'Anonym(e) Benotzer op {{SITENAME}}',
 'siteuser'         => '{{SITENAME}}-Benotzer $1',
 'lastmodifiedatby' => "Dës Säit gouf den $1 ëm $2 Auer voum $3 fir d'lescht geännert.", # $1 date, $2 time, $3 user
-'and'              => 'an',
 'others'           => 'anerer',
 'siteusers'        => '{{SITENAME}}-Benotzer $1',
 'creditspage'      => 'Quellen',
@@ -1721,7 +1730,10 @@ An deene Fäll musst Dir d'Diskussiounssäit manuell réckelen oder fusionéiere
 'exif-subjectdistancerange'        => 'Motivdistanz',
 'exif-gpsaltitude'                 => 'Héicht',
 'exif-gpstimestamp'                => 'GPS-Zäit',
+'exif-gpsmeasuremode'              => 'Moossmethod',
+'exif-gpsdop'                      => 'Prezisioun vun der Miessung',
 'exif-gpsspeedref'                 => 'Eenheet vun der Vitesse',
+'exif-gpsspeed'                    => 'Vitesse vum GPS-Empfänger',
 'exif-gpsdestlatituderef'          => "Referenz fir d'Breet",
 'exif-gpsdestlatitude'             => 'Breet',
 'exif-gpsdestlongituderef'         => "Referenz fir d'Längt",
@@ -1776,6 +1788,7 @@ An deene Fäll musst Dir d'Diskussiounssäit manuell réckelen oder fusionéiere
 'exif-exposuremode-2' => 'Beliichtungsserie',
 
 'exif-whitebalance-0' => 'Automatesche Wäissofgläich',
+'exif-whitebalance-1' => 'Manuelle Wäissofgläich',
 
 'exif-scenecapturetype-3' => 'Nuetszeen',
 
@@ -1831,6 +1844,7 @@ Feelermeldung vum Mailserver: $1",
 
 # Scary transclusion
 'scarytranscludedisabled' => '[Interwiki-Abannung ass ausgeschalt]',
+'scarytranscludefailed'   => "[D'Siche vun der Schabloun fir $1 huet net funktionéiert]",
 'scarytranscludetoolong'  => "[Pardon d'URL ass ze laang]",
 
 # Trackbacks
@@ -1839,6 +1853,7 @@ Feelermeldung vum Mailserver: $1",
 # Delete conflict
 'deletedwhileediting' => 'Opgepasst: Dës Säit gouf geläscht nodeems datt der ugefaangen hutt se ze änneren!',
 'confirmrecreate'     => "De Benotzer [[User:$1|$1]] ([[User talk:$1|Diskussioun]]) huet dës Säit geläscht, nodeems datt där ugefaangen hutt drun ze schaffen. D'Begrënnung war: ''$2'' Bestätegt w.e.g., datt Dir dës Säit wierklich erëm nei opmaache wëllt.",
+'recreate'            => 'Erëm uleeën',
 
 # HTML dump
 'redirectingto' => 'Virugeleed op [[$1]]',
@@ -1883,6 +1898,7 @@ $1',
 
 # Friendlier slave lag warnings
 'lag-warn-normal' => 'Ännerunge vun de leschte(n) $1 Sekonnen kënne an dëser Lëscht net gewise ginn.',
+'lag-warn-high'   => 'Duerch eng héich Serverbelaaschtung kënne Verännerungen déi viru manner wéi $1 Sekonne gemaach goufen, net an dëser Lëscht ugewise ginn.',
 
 # Watchlist editor
 'watchlistedit-numitems'       => "Op Ärer Iwwerwaachungslëscht {{PLURAL:$1|steet 1 Säit|stinn $1 Säiten}}, ouni d'Diskussiounssäiten.",
