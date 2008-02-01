@@ -4,8 +4,6 @@ if (!defined('MEDIAWIKI')) {
 	die( "Not a valid entry point\n" );
 }
 
-wfBoardVoteInitMessages();
-
 class BoardVotePage extends UnlistedSpecialPage {
 	var $mPosted, $mVotedFor, $mUserDays, $mUserEdits;
 	var $mHasVoted, $mAction, $mUserKey, $mId, $mFinished;
@@ -121,6 +119,8 @@ class BoardVotePage extends UnlistedSpecialPage {
 	function execute( $par ) {
 		global $wgBoardVoteEditCount, $wgBoardVoteEndDate, $wgBoardVoteStartDate,
 			$wgBoardVoteFirstEdit, $wgOut;
+
+		wfLoadExtensionMessages( 'BoardVote' );
 
 		$this->init( $par );
 		$this->setHeaders();

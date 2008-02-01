@@ -11,6 +11,8 @@ class GoToBoardVotePage extends SpecialPage {
 		global $wgOut, $wgDBname, $site, $lang, $wgLang, $wgUser;
 		global $wgBoardVoteEditCount, $wgBoardVoteCountDate, $wgBoardVoteFirstEdit;
 
+		wfLoadExtensionMessages( 'BoardVote' );
+
 		$this->setHeaders();
 		if ( $wgUser->isLoggedIn() ) {
 			$url = 'https://wikimedia.spi-inc.org/index.php?' . wfArrayToCGI( array(
