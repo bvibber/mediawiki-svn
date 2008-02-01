@@ -11,7 +11,7 @@ if (!defined('MEDIAWIKI')) {
 
 $wgExtensionCredits['other'][] = array(
 	'name'        => 'Icon',
-	'version'     => '1.1',
+	'version'     => '1.3',
 	'author'      => 'Tim Laqua',
 	'description' => 'Allows you to use Images as Icons and Icon Links',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:Icon',
@@ -81,32 +81,34 @@ function efIcon_Render(&$parser, $img, $alt=null, $width=null, $page=null) {
 			$imageString = wfMsgForContent('icon-badwidth');
 		}
 	} else {
-		$imageString = "<img style=\"vertical-align: middle;\" src='${iURL}' alt=\"{$alt}\" title=\"{$alt}\" />";
+		$imageString = "<img class='iconimg' style=\"vertical-align: middle;\" src='${iURL}' alt=\"{$alt}\" title=\"{$alt}\" />";
 	}
-
+	
+	$output = $imageString;
+	
 	if (!empty($page)) {
-		$ptitle = Title::newFromText( $page );
-
-		// this might happen in templates...
-		if (!is_object( $ptitle )) {
-			//May be too assuming... w/e.
-			$output = $imageString;
+		if ( preg_match( '/^(?:' . wfUrlProtocols() . ')/', $page ) ) {
+			$tURL= Skin::makeInternalOrExternalUrl($page);
+			$aClass ='class="plainlinks iconlink"';
+			
+			$output = "<a ".$aClass." href='{$tURL}'>{$imageString}</a>";
 		} else {
-			if ( $ptitle->isLocal() )
-			{
-				$tURL = $ptitle->getLocalUrl();
-				$aClass='';
-			}
-			else
-			{
-				$tURL = $ptitle->getFullURL();
-				$aClass = 'class="extiw"';
-			}
-			$output = "<a ".$aClass." href='${tURL}'>{$imageString}</a>";
-		}
-	} else {
-		$output = $imageString;
-	}
+			$ptitle = Title::newFromText( $page );
 
+			// this might happen in templates...
+			if (is_object( $ptitle )) {
+				if ( $ptitle->isLocal() ) {
+					$tURL = $ptitle->getLocalUrl();
+					$aClass='';
+				} else {
+					$tURL = $ptitle->getFullURL();
+					$aClass = 'class="extiw"';
+				}
+				
+				$output = "<a ".$aClass." href='${tURL}'>{$imageString}</a>";
+			}
+		}
+	}
+	
 	return array($output, 'noparse' => true, 'isHTML' => true);
 }
