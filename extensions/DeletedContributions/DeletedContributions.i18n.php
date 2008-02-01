@@ -75,8 +75,12 @@ $messages['da'] = array(
 	'deletedcontributions' => 'Slettede brugerbidrag',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
-	'deletedcontributions' => 'Gelöschte Benutzerbeiträge',
+	'deletedcontributions'      => 'Gelöschte Benutzerbeiträge',
+	'deletedcontributions-desc' => 'Gibt Administratoren die Möglichkeit, [[Special:DeletedContributions|gelöschte Benutzerbeiträge]] einzusehen',
 );
 
 $messages['el'] = array(

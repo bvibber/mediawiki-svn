@@ -47,8 +47,12 @@ $messages['br'] = array(
 	'advancedrandom' => 'Moned dargouezhek araokaet',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
-	'advancedrandom' => 'Zufällige Seite (erweitert)',
+	'advancedrandom'      => 'Zufällige Seite (erweitert)',
+	'advancedrandom-desc' => 'Hole eine zufällige Seite, z. B. mit [[Special:AdvancedRandom/{{ns:Template}}:Featured/{{ns:Talk}}]], um eine zufällige Diskussionsseite zu einen exzellenten Artikel oder mit [[Special:AdvancedRandom/{{ns:Template}}:GFDL/{{ns:Image}}]], um eine zufällige Datei anzuzeigen, die als GFDL lizenziert ist.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

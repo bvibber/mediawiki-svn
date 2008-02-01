@@ -446,7 +446,9 @@ $wdMessages['br'] = array(
 /** Deutsch (Deutsch)
  */
 $wdMessages['de'] = array(
+	'datasearch'                            => 'Wikidata: Datensuche',
 	'langman_title'                         => 'Sprachmanager',
+	'languages'                             => 'Wikidata: Sprachen-Manager',
 	'ow_save'                               => 'Speichern',
 	'ow_history'                            => 'Versionen/Autoren',
 	'ow_datasets'                           => 'Auswahl des Datasets',
@@ -527,6 +529,9 @@ $wdMessages['de'] = array(
 	'ow_please_proved_dc1'                  => 'Oje, deiner Eingabe fehlt ?dc1=<something> (dc1=dataset context 1, dataset to copy FROM)<br>Ups, bitte kontaktiere den Serveradminstrator.',
 	'ow_please_proved_dc2'                  => 'Oje, deiner Eingabe fehlt ?dc2=<something> (dc2=dataset context 2, dataset to copy TO) <br>Ups, bitte kontaktiere den Serveradminstrator.',
 	'ow_copy_successful'                    => '<h2>Kopieren erfolgreich</h2>Deine Daten scheinen erfolgreich kopiert worden zu sein. Bitte vergiss nicht nochmals zu prüfen um sicherzugehen!',
+	'ow_copy_unsuccessful'                  => '<h3>Kopieren nicht erfolgreich</h3> Es hat keine Kopieraktion stattgefunden.',
+	'ow_no_action_specified'                => "<h3>Es wurde keine Aktion angegeben</h3> Vielleicht kamst du direkt zu dieser Seite?.",
+	'ow_db_consistency_not_found'           => "<h2>Fehler</h2>Die Datenbank ist nicht mehr konsistent. Wikidate kann keine gültigen Daten zu der ID finden. Bitte kontaktiere den Server-Administrator.",
 );
 
 /** Ελληνικά (Ελληνικά) */
@@ -1851,6 +1856,7 @@ $wdMessages['zh-hant'] = array(
 	'languages'=>'Wikidata: 語言管理員',
 );
 
+$wdMessages['de-formal'] = $wdMessages['de'];
 $wdMessages['kk'] = $wdMessages['kk-kz'];
 $wdMessages['yue'] = $wdMessages['zh-hant'];
 $wdMessages['zh'] = $wdMessages['zh-hans'];

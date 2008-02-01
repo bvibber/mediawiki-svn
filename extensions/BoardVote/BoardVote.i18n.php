@@ -547,6 +547,7 @@ Výsledná šifrovaná podoba následuje. Bude veřejně dostupná na stránce [
 );
 $messages['de'] = array(
 	'boardvote'               => "Wahlen zum Wikimedia-Kuratorium",
+	'boardvote-desc'          => '[[meta:Board elections|Wahlen zum Wikimedia-Kuratorium]]',
 	'boardvote_entry'         => "* [[meta:Board elections/2007/Candidates/de|Kandidatenvorstellungen]]
 * [[{{ns:special}}:Boardvote/vote|Abstimmen]]
 * [[{{ns:special}}:Boardvote/list|Bislang abgegebene Stimmen]]
@@ -3273,6 +3274,7 @@ $messages['zh-hant'] = array(
 稍後，您的瀏覽器可能會彈出未驗證安全憑證的警告。',
 );
 
+$messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
