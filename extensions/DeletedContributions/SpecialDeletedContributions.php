@@ -7,17 +7,17 @@
 
 $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Aaron Schulz',
-	'version' => '2008-01-09',
+	'version' => '2008-02-01',
 	'name' => 'Deleted user contributions',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:DeletedContributions',
-	'description' => 'Gives sysops the ability to browse a user\'s deleted edits.'
+	'description' => 'Gives sysops the ability to browse a user\'s deleted edits',
+	'descriptionmsg' => 'deletedcontributions-desc',
 );
 
 # Internationalisation
 $wgExtensionMessagesFiles['DeletedContributions'] = dirname(__FILE__) . '/DeletedContributions.i18n.php';
 $wgExtensionFunctions[] = 'efLoadDeletedContribs';
 
-global $wgHooks;
 $wgHooks['ContributionsToolLinks'][] = 'wfLoadContribsLink';
 $wgHooks['SpecialPageExecuteBeforeHeader'][] = 'wfDeletedContributionsMessages';
 
@@ -28,7 +28,7 @@ function wfLoadContribsLink( $id, $nt, &$links ) {
 	global $wgUser;
 	if( $wgUser->isAllowed( 'deletedhistory' ) ) {
 		wfLoadExtensionMessages( 'DeletedContributions' );
-	
+
 		$links[] = $wgUser->getSkin()->makeKnownLinkObj(
 			SpecialPage::getTitleFor( 'DeletedContributions', $nt->getDBkey() ),
 			wfMsgHtml( 'deletedcontributions' )

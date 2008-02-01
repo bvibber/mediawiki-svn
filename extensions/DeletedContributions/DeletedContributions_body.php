@@ -30,8 +30,8 @@ class DeletedContribsPager extends IndexPager {
 
 		return array(
 			'tables' => array( 'archive' ),
-			'fields' => array( 
-				'ar_rev_id', 'ar_namespace', 'ar_title', 'ar_timestamp', 'ar_comment', 'ar_minor_edit', 
+			'fields' => array(
+				'ar_rev_id', 'ar_namespace', 'ar_title', 'ar_timestamp', 'ar_comment', 'ar_minor_edit',
 				'ar_user', 'ar_user_text', 'ar_deleted'
 			),
 			'conds' => $conds,
@@ -74,12 +74,12 @@ class DeletedContribsPager extends IndexPager {
 		$pagingLinks = $this->getPagingLinks( $linkTexts );
 		$limitLinks = $this->getLimitLinks();
 		$limits = implode( ' | ', $limitLinks );
-		
-		$this->mNavigationBar = "({$pagingLinks['first']} | {$pagingLinks['last']}) " . 
+
+		$this->mNavigationBar = "({$pagingLinks['first']} | {$pagingLinks['last']}) " .
 			wfMsgHtml("viewprevnext", $pagingLinks['prev'], $pagingLinks['next'], $limits);
 		return $this->mNavigationBar;
 	}
-	
+
 	function getNamespaceCond() {
 		if ( $this->namespace !== '' ) {
 			return array( 'ar_namespace' => (int)$this->namespace );
@@ -114,19 +114,19 @@ class DeletedContribsPager extends IndexPager {
 				'minor_edit' => $row->ar_minor_edit,
 				'rev_deleted' => $row->ar_deleted,
 				) );
-	
+
 		$page = Title::makeTitle( $row->ar_namespace, $row->ar_title );
-	
+
 		$undelete = SpecialPage::getTitleFor( 'Undelete' );
 
 		$logs = SpecialPage::getTitleFor( 'Log' );
 		$dellog = $sk->makeKnownLinkObj( $logs,
 			$this->messages['deletionlog'],
 			'type=delete&page=' . $page->getPrefixedUrl() );
-		
+
 		$reviewlink = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Undelete', $page->getPrefixedDBkey() ),
 			$this->messages['undeletebtn'] );
-		
+
 		$link = $sk->makeKnownLinkObj( $undelete,
 			htmlspecialchars( $page->getPrefixedText() ),
 			'target=' . $page->getPrefixedUrl() .
@@ -140,7 +140,7 @@ class DeletedContribsPager extends IndexPager {
 
 		$comment = $sk->revComment( $rev );
 		$d = $wgLang->timeanddate( $rev->getTimestamp(), true );
-	
+
 		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
 			$d = '<span class="history-deleted">' . $d . '</span>';
 		} else {
@@ -148,7 +148,7 @@ class DeletedContribsPager extends IndexPager {
 				'target=' . $page->getPrefixedUrl() .
 				'&timestamp=' . $rev->getTimestamp() );
 		}
-		
+
 		$pagelink = $sk->makeLinkObj( $page );
 
 		if( $rev->isMinor() ) {
@@ -156,19 +156,19 @@ class DeletedContribsPager extends IndexPager {
 		} else {
 			$mflag = '';
 		}
-		
+
 
 		$ret = "{$link} ($last) ({$dellog}) ({$reviewlink}) . . {$mflag} {$pagelink} {$comment}";
 		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
 			$ret .= ' ' . wfMsgHtml( 'deletedrev' );
 		}
-	
+
 		$ret = "<li>$ret</li>\n";
-		
+
 		wfProfileOut( __METHOD__ );
 		return $ret;
 	}
-	
+
 	/**
 	 * Get the Database object in use
 	 *
@@ -177,7 +177,7 @@ class DeletedContribsPager extends IndexPager {
 	public function getDatabase() {
 		return $this->mDb;
 	}
-	
+
 }
 
 /**
@@ -191,7 +191,7 @@ function wfSpecialDeletedContributions( $par = null ) {
 	global $wgUser, $wgOut, $wgLang, $wgRequest;
 
 	$options = array();
-	
+
 	if ( isset( $par ) ) {
 		$target = $par;
 	} else {
@@ -215,7 +215,7 @@ function wfSpecialDeletedContributions( $par = null ) {
 
 	$target = $nt->getText();
 	$wgOut->setSubtitle( deletedContributionsSub( $nt, $id ) );
-	
+
 	if ( ( $ns = $wgRequest->getVal( 'namespace', null ) ) !== null && $ns !== '' ) {
 		$options['namespace'] = intval( $ns );
 	} else {
@@ -234,15 +234,15 @@ function wfSpecialDeletedContributions( $par = null ) {
 	if( ( $lag = $pager->getDatabase()->getLag() ) > 0 )
 		$wgOut->showLagWarning( $lag );
 
-	$wgOut->addHTML( 
+	$wgOut->addHTML(
 		'<p>' . $pager->getNavigationBar() . '</p>' .
 		$pager->getBody() .
 		'<p>' . $pager->getNavigationBar() . '</p>' );
-	
+
 	# If there were contributions, and it was a valid user or IP, show
 	# the appropriate "footer" message - WHOIS tools, etc.
 	if( $target != 'newbies' ) {
-		$message = IP::isIPAddress( $target )      
+		$message = IP::isIPAddress( $target )
 			? 'sp-contributions-footer-anon'
 			: 'sp-contributions-footer';
 
