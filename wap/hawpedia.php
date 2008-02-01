@@ -328,49 +328,49 @@ function remove_section($wikitext, $startStr, $endStr)
 	while (true) {
 		// do for all sections in $wikitext ...
 
-	  $secStart = strpos($wikitext, $startStr);	
-	  if ($secStart === false)
-	    break;
+		$secStart = strpos($wikitext, $startStr);	
+		if ($secStart === false)
+			break;
 
-  	// consider nested limiters
-  	$nest_count = 1;
-	  $search_pos = $secStart + strlen($startStr);
-	  $secEnd = false;
+		// consider nested limiters
+		$nest_count = 1;
+		$search_pos = $secStart + strlen($startStr);
+		$secEnd = false;
 		while (true) {
-  	  $start_pos = strpos($wikitext, $startStr, $search_pos);
-	    $end_pos   = strpos($wikitext, $endStr,   $search_pos + strlen($startStr));
-	    
-	    if (($start_pos !== false) && ($start_pos < $end_pos)) {
-	    	// nested section found
-	    	$search_pos = $start_pos + strlen($startStr);
-	    	$nest_count++;
-	    	continue;	
-    	}
+			$start_pos = strpos($wikitext, $startStr, $search_pos);
+			$end_pos   = strpos($wikitext, $endStr,   $search_pos + strlen($startStr));
 
-    	if ($end_pos !== false) {
-    		$nest_count--;
-    		if ($nest_count == 0) {
-    			// end of section found
-    		  $secEnd = $end_pos;
-    		  break;
-      	}
-      	else {
-      	  // continue after end of nested section
-      	  $search_pos = $end_pos + strlen($endStr);
-      	}
-    	}
-    	else
-    	  break; // invalid section syntax!
-  	};
+			if (($start_pos !== false) && ($start_pos < $end_pos)) {
+				// nested section found
+				$search_pos = $start_pos + strlen($startStr);
+				$nest_count++;
+				continue;	
+			}
 
-    //remove section
-    if (($secStart !== false) && ($secEnd !== false)) {
-      $wikitext = substr($wikitext, 0, $secStart) . substr($wikitext, $secEnd + strlen($endStr));
-  	}
-    else
-      break;
+			if ($end_pos !== false) {
+				$nest_count--;
+				if ($nest_count == 0) {
+					// end of section found
+					$secEnd = $end_pos;
+					break;
+				}
+				else {
+					// continue after end of nested section
+					$search_pos = $end_pos + strlen($endStr);
+				}
+			}
+			else
+				break; // invalid section syntax!
+			};
+
+		//remove section
+		if (($secStart !== false) && ($secEnd !== false)) {
+			$wikitext = substr($wikitext, 0, $secStart) . substr($wikitext, $secEnd + strlen($endStr));
+		}
+		else
+		break;
 	};
-	
+
 	return($wikitext);
 }
 
