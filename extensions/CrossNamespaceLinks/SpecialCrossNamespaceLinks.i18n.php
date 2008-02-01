@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'crossnamespacelinks'         => 'Cross-namespace links',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Lists links across namespaces]] that shouldn\'t exist on Wikimedia projects',
 	'crossnamespacelinks-summary' => 'This page provides a list of links from a page in the main namespace to a page in other namespaces (except for {{ns:special}}, {{ns:talk}}, {{ns:project}} and {{ns:template}} namespaces), which are not advisable to use.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|link|links}} to $3'
 );
@@ -293,6 +294,7 @@ $messages['nan'] = array(
 
 $messages['nl'] = array(
 	'crossnamespacelinks'         => 'Kruisverwijzingen tussen naamruimtes',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Toont verwijzingen tussen naamruimten]] die niet zouden moeten bestaan in projecten van Wikimedia',
 	'crossnamespacelinks-summary' => 'Deze pagina voorziet in een overzicht van links vanuit een pagina in de hoofdnaamruimte naar andere naamruimtes (met uitzondering van de naamruimtes {{ns:special}}, {{ns:talk}}, {{ns:project}} en {{ns:template}}), waarvan het gebruik wordt afgeraden.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|verwijzing|verwijzingen}} naar $3',
 );

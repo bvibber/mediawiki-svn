@@ -17,11 +17,12 @@ class CrossNamespaceLinks extends SpecialPage {
 	 * main()
 	 */
 	function execute( $parameters ) {
+		wfLoadExtensionMessages( 'CrossNamespaceLinks' );
 		$this->setHeaders();
 		list( $limit, $offset ) = wfCheckLimits();
-		
+
 		$cnl = new CrossNamespaceLinksPage();
-		
+
 		$cnl->doQuery( $offset, $limit );
 	}
 }
@@ -46,17 +47,17 @@ class CrossNamespaceLinksPage extends QueryPage {
 		// {{deletedpage}} links to Special: and probably some others
 		NS_SPECIAL,
 		NS_MAIN,
-		
+
 		// Many templates e.g. the deletion template and other
 		// templates that indicate that there's something wrong
 		// with the article link to the talk page.
 		NS_TALK,
-		
+
 		// Templates like the stub template link to the
 		// project namespace
 		NS_PROJECT,
 		NS_TEMPLATE,
-		
+
 		// [[Category:]] links are recored in the categorylinks
 		// table, [[:Category:]] links should not exist.
 		//NS_CATEGORY
@@ -68,6 +69,7 @@ class CrossNamespaceLinksPage extends QueryPage {
 
 	function getPageHeader() {
 		global $wgOut;
+		wfLoadExtensionMessages( 'CrossNamespaceLinks' );
 		return $wgOut->parse( wfMsg( 'crossnamespacelinks-summary' ) );
 	}
 
@@ -111,9 +113,7 @@ class CrossNamespaceLinksPage extends QueryPage {
 
 		$plink = $skin->makeKnownLink( $nt->getPrefixedText(), htmlspecialchars( $text ) );
 
+		wfLoadExtensionMessages( 'CrossNamespaceLinks' );
 		return wfMsgExt( 'crossnamespacelinkstext', array( 'parsemag' ), $plink, $wgLang->formatNum( $result->namespace ), htmlspecialchars( $wgLang->getNsText( $result->value ) ) );
 	}
-	
 }
-
-
