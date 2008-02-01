@@ -74,7 +74,7 @@ class MultipleUploadForm extends UploadForm {
 	function MultipleUploadForm( &$request ) {
 		global $wgMaxUploadFiles;
 		// call the parent constructor
-		parent::UploadForm(&$request);
+		parent::UploadForm($request);
 
 		//initialize
 		$this->mUploadTempNameArray= $this->mUploadSizeArray= $this->mOnameArray= $this->mUploadError= $this->mDestFileArray = $this->mUploadDescriptionArray = array();
@@ -306,7 +306,7 @@ class MultipleUploadForm extends UploadForm {
 		$wgOut->addHTML( '</div>' );
 		$sk = $wgUser->getSkin();
 
-		$sourcefilename .= wfMsgHtml( 'sourcefilename' );
+		$sourcefilename = wfMsgHtml( 'sourcefilename' );
 		$destfilename = wfMsgHtml( 'destfilename' );
 		$summary = wfMsg( 'fileuploadsummary' );
 		$licenses = new Licenses();
@@ -362,13 +362,13 @@ function fillDestFilenameMulti(i) {
 		$wgOut->addHTML("
 		<tr>
 			<td align='left'>
-				<input tabindex='1' type='file' name='wpUploadFile_$i' id='wpUploadFile_$i' " . ($this->mDestFile?"":"onchange='fillDestFilenameMulti($i)' ") . "size='25' />
+				<input tabindex='1' type='file' name='wpUploadFile_$i' id='wpUploadFile_$i' " . ($this->mDestName?"":"onchange='fillDestFilenameMulti($i)' ") . "size='25' />
 			</td>
 			<td align='left'>
 				<input tabindex='2' type='text' name='wpDestFile_$i' id='wpDestFile_$i' size='25' value=\"$encDestFile\" />
 			</td>
 			<td align='left'>
-				<input tabindex='3' name='wpUploadDescription_$i' id='wpUploadDescription' value=\"". htmlspecialchars( $this->mUploadDescription ) . "\" size=25>
+				<input tabindex='3' name='wpUploadDescription_$i' id='wpUploadDescription' value=\"". htmlspecialchars( $this->mComment ) . "\" size=25>
 			</td>
 		</tr>
 		<tr>" );
@@ -469,6 +469,7 @@ function wfMultiUploadToolbox( &$monobook ) {
 function wfMultiUploadShowSuccess($uploadForm) {
     global $wgOut, $wgTitle;
     if ($wgTitle->getText() == "MultipleUpload") {
+    	//debug_print_backtrace();
         $imgTitle = $uploadForm->mLocalFile->getTitle();
         $wgOut->addWikiText( "[[{$imgTitle->getFullText()}|left|thumb]]" );
         $text = wfMsgWikiHtml( 'multiupload-fileuploaded');
