@@ -172,6 +172,16 @@ $messages['la'] = array(
 	'formarticleexiststext' => 'Pagina [[$1]] iam existit.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'formsave'              => 'Späicheren',
+	'formarticleexists'     => "D'Säit gëtt et schonn.",
+	'formarticleexiststext' => "D'Säit [[$1]] gëtt et schonn.",
+	'formbadpagename'       => 'Falsche Säitennumm',
+);
+
 $messages['nl'] = array(
 	'form' => 'Formulier',
 	'formnoname' => 'Geen formuliernaam',

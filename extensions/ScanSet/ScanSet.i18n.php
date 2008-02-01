@@ -361,6 +361,14 @@ $messages['te'] = array(
 	'scanset_prev' => '&lt; గత',
 );
 
+/** Turkish (Türkçe)
+ * @author Erkan Yilmaz
+ */
+$messages['tr'] = array(
+	'scanset_next' => 'Sonraki &gt;',
+	'scanset_prev' => '&lt; Önceki',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

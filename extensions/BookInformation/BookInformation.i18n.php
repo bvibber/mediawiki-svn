@@ -763,6 +763,7 @@ $messages['tr'] = array(
 	'bookinfo-result-author'    => 'Yazar:',
 	'bookinfo-result-publisher' => 'Yayımcı:',
 	'bookinfo-result-year'      => 'Yıl:',
+	'bookinfo-purchase'         => 'Bu kitapı buradan satın al: $1',
 	'bookinfo-provider'         => 'Veri sağlayıcısı: $1',
 );
 

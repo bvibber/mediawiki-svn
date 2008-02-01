@@ -70,6 +70,13 @@ $messages['nl'] = array(
 	'contributionseditcount'  =>  'Deze gebruiker heeft $1 bewerkingen.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'contributionseditcount' => 'Denne brukaren har gjort $1 endringar.',
+);
+
 $messages['no'] = array(
 	'contributionseditcount' => 'Denne brukeren har $1 redigeringer.',
 );

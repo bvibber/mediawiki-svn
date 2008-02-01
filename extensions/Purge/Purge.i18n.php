@@ -61,6 +61,13 @@ $messages['ja'] = array(
 	'purge' => 'キャッシュ削除',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'purge' => 'eidel maachen',
+);
+
 $messages['nl'] = array(
 	'purge' => 'cache legen',
 );

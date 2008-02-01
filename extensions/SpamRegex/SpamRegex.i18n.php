@@ -272,3 +272,10 @@ $messages['sk'] = array(
 	'spamregex-summary-log'          => '(v zhrnutí)',
 );
 
+/** Southern Sami (Åarjelsaemien gïele)
+ * @author Max sonnelid
+ */
+$messages['sma'] = array(
+	'spamregex-text' => '(Tjaalege)',
+);
+

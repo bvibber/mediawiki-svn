@@ -336,9 +336,13 @@ $1',
  * @author Robby
  */
 $messages['lb'] = array(
-	'webstore_no_file'            => 'Et gouf kee Fichier eropgelueden.',
-	'webstore_metadata_not_found' => 'De Fichier $1 gouf net fonnt',
-	'webstore_no_response'        => 'De Server äntwert net',
+	'inplace_scaler_not_enough_params' => 'Net genuch Parameteren.',
+	'webstore_no_file'                 => 'Et gouf kee Fichier eropgelueden.',
+	'webstore_404'                     => 'De Fichier gouf net fonnt.',
+	'webstore_php_warning'             => 'PHP Warnung: $1',
+	'webstore_metadata_not_found'      => 'De Fichier $1 gouf net fonnt',
+	'webstore_no_response'             => 'De Server äntwert net',
+	'webstore_php_error'               => 'Dës PHP Feeler sinn opgetratt:',
 );
 
 /** Dutch (Nederlands)

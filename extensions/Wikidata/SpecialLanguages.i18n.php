@@ -658,6 +658,7 @@ $wdMessages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Sherbrooke
  */
 $wdMessages['fr'] = array(
 	'datasearch'                            => 'Wikidata: Recherche de données',
@@ -665,7 +666,7 @@ $wdMessages['fr'] = array(
 	'languages'                             => 'Wikidata: Gestion des langues',
 	'ow_save'                               => 'Sauvegarder',
 	'ow_history'                            => 'Historique',
-	'ow_datasets'                           => 'Selection des données définies',
+	'ow_datasets'                           => 'Sélection des données définies',
 	'ow_noedit_title'                       => "Aucune permission d'éditer.",
 	'ow_noedit'                             => "Vous n'êtes pas autorisé d'éditer les pages dans les données préétablies « $1 ». Veuillez voir [[Project:Permission policy|nos règles d'édition]].",
 	'ow_uipref_datasets'                    => 'Vue par défaut',
@@ -674,26 +675,24 @@ $wdMessages['fr'] = array(
 	'ow_conceptmapping_help'                => "<p>actions possibles : <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  insérer une carte</li>
 <li>&action=get&concept=<concept_id>  revoir une carte</li>
-<li>&action=list_sets  retourne une liste des préfixes de contextes possibles et sur quoi ils se réfèrent.</li>
-<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> pour un défini dans le sens d'un concept, retourne tous les autres.</li>
+<li>&action=list_sets  retourner une liste des préfixes de contextes possibles et à quoi ils réfèrent.</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> pour un défini dans le sens d'un concept, retourner tous les autres.</li>
 <li>&action=help  Voir l’aide complète.</li>
 </ul></p>",
-	'ow_conceptmapping_uitext'              => "<p>Le carte des concepts vous permets d'identifier
-que le sens défini dans une donnée soit identique
-aux sens définis dans les autres données.</p>",
-	'ow_conceptmapping_no_action_specified' => 'Excuses, je ne comprend pas « $1 ».',
+	'ow_conceptmapping_uitext'              => "<p>Le carte des concepts vous permet d'identifier quel sens défini d'un ensemble de données est identique aux sens définis pour les autres ensembles de données.</p>",
+	'ow_conceptmapping_no_action_specified' => 'Désolé, je ne sais pas comment exécuter « $1 ».',
 	'ow_dm_OK'                              => 'Valider',
 	'ow_dm_not_present'                     => 'non inscrit',
 	'ow_dm_not_found'                       => 'non trouvé dans la base de donnée ou mal rédigé',
 	'ow_mapping_successful'                 => 'Planifie tous les champs marqués avec [Valider]<br>',
-	'ow_mapping_unsuccessful'               => 'Nécessite au moins deux sens définis avanc que je puisse les relier.',
-	'ow_will_insert'                        => 'Insersera les suivants :',
+	'ow_mapping_unsuccessful'               => 'Nécessite au moins deux sens définis avant que je ne puisse les relier.',
+	'ow_will_insert'                        => 'Insèrera les suivants :',
 	'ow_contents_of_mapping'                => 'Contenu de la planification',
 	'ow_available_contexts'                 => 'Contextes disponibles',
-	'ow_add_concept_link'                   => 'Ajoute un lien aux autres concepts',
+	'ow_add_concept_link'                   => 'Ajouter un lien aux autres concepts',
 	'ow_concept_panel'                      => 'Éventail de concepts',
 	'ow_dm_badtitle'                        => "Cette page ne pointe sur aucun concept ou sens défini. Veuillez vérifier l'adresse internet.",
-	'ow_dm_missing'                         => "Cette pas semble pointer vers un concept ou sens inexistant. Veuillez vérifier l'adresse internet.",
+	'ow_dm_missing'                         => "Cette page semble pointer vers un concept ou un sens inexistant. Veuillez vérifier l'adresse Web.",
 	'ow_AlternativeDefinition'              => 'Définition alternative',
 	'ow_AlternativeDefinitions'             => 'Définitions alternatives',
 	'ow_Annotation'                         => 'Annotation',
@@ -742,7 +741,7 @@ aux sens définis dans les autres données.</p>",
 	'ow_LinkAttributeValues'                => 'Liens',
 	'ow_Property'                           => 'Propriété',
 	'ow_Value'                              => 'Valeur',
-	'ow_meaningsoftitle'                    => 'Sens de "$1"',
+	'ow_meaningsoftitle'                    => 'Sens de « $1 »',
 	'ow_meaningsofsubtitle'                 => '<em>lien wiki :</em> [[$1]]',
 	'ow_Permission_denied'                  => '<h2>PERMISSION REFUSÉE</h2>',
 	'ow_copy_no_action_specified'           => 'Merci de spécifier une action',
@@ -750,10 +749,32 @@ aux sens définis dans les autres données.</p>",
 	'ow_please_proved_dmid'                 => 'Il manque un ?dmid=<...> (dmid=SensDéfini ID)<br>Contactez l’administrateur.',
 	'ow_please_proved_dc1'                  => 'Il manque un ?dc1=<...> (dc1=contexte de la base 1, base DEPUIS laquelle on copie)<br>Contactez l’administrateur.',
 	'ow_please_proved_dc2'                  => 'Il manque un ?dc2=<...> (dc1=contexte de la base 2, base VERS laquelle on copie)<br>Contactez l’administrateur.',
-	'ow_copy_successful'                    => '<h2>Succès de la copie</h2>Vos données ont été copiées avec succès (vérifiez quand même).',
+	'ow_copy_successful'                    => "<h2>Succès de la copie</h2>Vos données ont été copiées avec succès. Veuillez vérifiez que c'est bien le cas.",
 	'ow_copy_unsuccessful'                  => "<h3>Copie infructueuse</h3> Aucune opération de copie n'a pris place.",
-	'ow_no_action_specified'                => "<h3>Aucune action n'a été spécifiée</h3> Peut-être, seriez vous venu sur cette page directement ? Vous n'avez pas besoin, en principe, d'être là.",
-	'ow_db_consistency_not_found'           => "<h2>Erreur</h2> Un problème a été trouvé dans la base de donnée. Wikidata ne peut trouver des données valides liées au numéro de sens défini. Il pourrait être perdu. Veuillez contacter l'opérateur ou l'administrateur du serveur.",
+	'ow_no_action_specified'                => "<h3>Aucune action n'a été spécifiée</h3> Peut-être êtes-vous venu sur cette page directement ? Vous n'avez pas, en principe, à être ici.",
+	'ow_db_consistency_not_found'           => "<h2>Erreur</h2>La base de données semble corrompue, wikidata ne peut trouver des données valides liées à l'identificateur (ID) du sens défini. Il pourrait être détruit. Veuillez contacter l'opérateur ou l'administrateur du serveur.",
+);
+
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$wdMessages['ga'] = array(
+	'datasearch'                 => 'Vicísonraí: Cuardaigh sonraí',
+	'langman_title'              => 'Bainisteoir teangacha',
+	'languages'                  => 'Vicísonraí: Bainisteoir teangacha',
+	'ow_save'                    => 'Sábháil',
+	'ow_history'                 => 'Stair',
+	'ow_uiprefs'                 => 'Vicísonraí',
+	'ow_Annotation'              => 'Anótáil',
+	'ow_ClassAttributeLevel'     => 'Leibhéal',
+	'ow_ClassAttributeType'      => 'Cineál',
+	'ow_Language'                => 'Teanga',
+	'ow_Spelling'                => 'Litriú',
+	'ow_Synonyms'                => 'Comhchiallaigh',
+	'ow_SynonymsAndTranslations' => 'Comhchiallaigh agus aistriúcháin',
+	'ow_Text'                    => 'Téacs',
+	'ow_TextAttributeValues'     => 'Gnáth-théacs',
+	'ow_LinkAttributeValues'     => 'Naisc',
 );
 
 /** Galician (Galego)
@@ -768,6 +789,8 @@ $wdMessages['gl'] = array(
 	'ow_add_concept_link'              => 'Engadir ligazón a outros conceptos',
 	'ow_AlternativeDefinition'         => 'Definición alternativa',
 	'ow_AlternativeDefinitions'        => 'Definicións alternativas',
+	'ow_Annotation'                    => 'Anotación',
+	'ow_ApproximateMeanings'           => 'Significados aproximados',
 	'ow_ClassAttributeLevel'           => 'Nivel',
 	'ow_Definition'                    => 'Definición',
 	'ow_DefinedMeaningAttributes'      => 'Anotación',
@@ -967,37 +990,48 @@ $wdMessages['kk-tr'] = array(
 	'langman_title' => 'Tilderdi meñgerw',
 );
 
+/** Kurdish (Kurdî / كوردی)
+ * @author Bangin
+ */
+$wdMessages['ku'] = array(
+	'ow_history' => 'Dîrok',
+	'ow_Source'  => 'Çavkanî',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $wdMessages['lb'] = array(
-	'datasearch'                      => 'Wikidata: Date sichen',
-	'langman_title'                   => 'Sproochmanager',
-	'languages'                       => 'Wikidata: Sproochmanager',
-	'ow_save'                         => 'Späicheren',
-	'ow_history'                      => 'Versiounen',
-	'ow_noedit_title'                 => "Keng Erlabniss fir z'änneren",
-	'ow_uiprefs'                      => 'Wikidata',
-	'ow_none_selected'                => '<Näischt ausgewielt>',
-	'ow_dm_OK'                        => 'OK',
-	'ow_AlternativeDefinition'        => 'Alternativ Definitioun',
-	'ow_AlternativeDefinitions'       => 'Alternativ Definitiounen',
-	'ow_Definition'                   => 'Definitioun',
-	'ow_Expression'                   => 'Ausdrock',
-	'ow_Expressions'                  => 'Ausdréck',
-	'ow_Language'                     => 'Sprooch',
-	'ow_OptionAttributeOption'        => 'Optioun',
-	'ow_OptionAttributeOptions'       => 'Optiounen',
-	'ow_Spelling'                     => 'Schreifweis',
-	'ow_Synonyms'                     => 'Synonymen',
-	'ow_Source'                       => 'Quell',
-	'ow_Text'                         => 'Text',
-	'ow_TranslatedText'               => 'Iwwersatenen Text',
-	'ow_TranslatedTextAttributeValue' => 'Text',
-	'ow_LinkAttributeValues'          => 'Linken',
-	'ow_meaningsoftitle'              => 'Bedeitung vun "$1"',
-	'ow_Permission_denied'            => '<h2>ERLAABNIS REFUSÉIERT</h2>',
-	'ow_copy_help'                    => 'Fréier oder spéider kënne mir iech hëllefen.',
+	'datasearch'                       => 'Wikidata: Date sichen',
+	'langman_title'                    => 'Sproochmanager',
+	'languages'                        => 'Wikidata: Sproochmanager',
+	'ow_save'                          => 'Späicheren',
+	'ow_history'                       => 'Versiounen',
+	'ow_datasets'                      => 'Auswiel vun den Donnéeën',
+	'ow_noedit_title'                  => "Keng Erlabniss fir z'änneren",
+	'ow_uiprefs'                       => 'Wikidata',
+	'ow_none_selected'                 => '<Näischt ausgewielt>',
+	'ow_dm_OK'                         => 'OK',
+	'ow_AlternativeDefinition'         => 'Alternativ Definitioun',
+	'ow_AlternativeDefinitions'        => 'Alternativ Definitiounen',
+	'ow_ClassAttributeLevel'           => 'Niveau',
+	'ow_Definition'                    => 'Definitioun',
+	'ow_Expression'                    => 'Ausdrock',
+	'ow_Expressions'                   => 'Ausdréck',
+	'ow_Language'                      => 'Sprooch',
+	'ow_OptionAttributeOption'         => 'Optioun',
+	'ow_OptionAttributeOptions'        => 'Optiounen',
+	'ow_Spelling'                      => 'Schreifweis',
+	'ow_Synonyms'                      => 'Synonymen',
+	'ow_Source'                        => 'Quell',
+	'ow_Text'                          => 'Text',
+	'ow_TranslatedText'                => 'Iwwersatenen Text',
+	'ow_TranslatedTextAttributeValue'  => 'Text',
+	'ow_TranslatedTextAttributeValues' => 'Iwwersetzbaren Text',
+	'ow_LinkAttributeValues'           => 'Linken',
+	'ow_meaningsoftitle'               => 'Bedeitung vun "$1"',
+	'ow_Permission_denied'             => '<h2>ERLAABNIS REFUSÉIERT</h2>',
+	'ow_copy_help'                     => 'Fréier oder spéider kënne mir iech hëllefen.',
 );
 
 /** Lithuanian (Lietuvių)
@@ -1484,7 +1518,25 @@ $wdMessages['ro'] = array(
  * @author .:Ajvol:.
  */
 $wdMessages['ru'] = array(
-	'datasearch' => 'Викидата: Поиск данных',
+	'datasearch'               => 'Викиданные: Поиск данных',
+	'langman_title'            => 'Языковой менеджер',
+	'languages'                => 'Викиданные: Языковой менеджер',
+	'ow_save'                  => 'Сохранить',
+	'ow_history'               => 'История',
+	'ow_datasets'              => 'Выбор набора данных',
+	'ow_noedit_title'          => 'Нет прав для редактирования',
+	'ow_noedit'                => 'Вам не разрешено редактировать страницы в наборе данных «$1». Обратите внимание на [[{{MediaWiki:Ow editing policy url}}|наши правила редактирования]].',
+	'ow_uipref_datasets'       => 'Вид по умолчанию',
+	'ow_uiprefs'               => 'Викиданные',
+	'ow_none_selected'         => '<Ничего не выбрано>',
+	'ow_conceptmapping_help'   => '<p>возможные действия: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  вставить соответствие</li>
+<li>&action=get&concept=<concept_id>  прочитать соответствие</li>
+<li>&action=list_sets  вывести список возможных приставок контекстов данных и мест, куда они ссылаются.</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> для одного определённого значения в концепте вывести все остальные</li>
+<li>&action=help  вывести спрвочную информацию.</li>
+</ul></p>',
+	'ow_conceptmapping_uitext' => '<p>Установка соответствий концептов позволяет вам указать какое определённое значение в одном наборе данных тождественно определённым значениям в других наборах данных.</p>',
 );
 
 /** Slovak (Slovenčina)
@@ -1765,13 +1817,38 @@ $wdMessages['stq'] = array(
  * @author Sannab
  */
 $wdMessages['sv'] = array(
-	'datasearch'                 => 'Wikidata: Datasökning',
-	'langman_title'              => 'Språkhanterare',
-	'languages'                  => 'Wikidata: Språkhanterare',
-	'ow_Language'                => 'Språk',
-	'ow_SynonymsAndTranslations' => 'Synonymer och översättningar',
-	'ow_Source'                  => 'Källa',
-	'ow_LinkAttributeValues'     => 'Länkar',
+	'datasearch'                      => 'Wikidata: Datasökning',
+	'langman_title'                   => 'Språkhanterare',
+	'languages'                       => 'Wikidata: Språkhanterare',
+	'ow_save'                         => 'Spara',
+	'ow_history'                      => 'Historia',
+	'ow_datasets'                     => 'Data-set val',
+	'ow_noedit_title'                 => 'Ingen tillåtelse till redigering',
+	'ow_noedit'                       => 'Du är inte tillåten till att redigera sidor i datasetet "$1". Var god se [[{{MediaWiki:Ow editing policy url}}|våra redigerings riktlinjer]].',
+	'ow_uipref_datasets'              => 'Standard visning',
+	'ow_uiprefs'                      => 'Wikidata',
+	'ow_none_selected'                => '<Ingen vald>',
+	'ow_available_contexts'           => 'Tillgängliga sammanhang',
+	'ow_ClassAttributeAttribute'      => 'Attribut',
+	'ow_ClassAttributeLevel'          => 'Nivå',
+	'ow_ClassAttributeType'           => 'Typ',
+	'ow_GotoSource'                   => 'Gå till källa',
+	'ow_Language'                     => 'Språk',
+	'ow_OptionAttribute'              => 'Attribut',
+	'ow_Synonyms'                     => 'Synonymer',
+	'ow_SynonymsAndTranslations'      => 'Synonymer och översättningar',
+	'ow_Source'                       => 'Källa',
+	'ow_TextAttribute'                => 'Attribut',
+	'ow_Text'                         => 'Text',
+	'ow_TextAttributeValues'          => 'Klara texter',
+	'ow_TranslatedTextAttribute'      => 'Attribut',
+	'ow_TranslatedText'               => 'Översatt text',
+	'ow_TranslatedTextAttributeValue' => 'Text',
+	'ow_LinkAttribute'                => 'Attribut',
+	'ow_LinkAttributeValues'          => 'Länkar',
+	'ow_Property'                     => 'Attribut',
+	'ow_Value'                        => 'Värde',
+	'ow_meaningsofsubtitle'           => '<em>Wiki länk:</em> [[$1]]',
 );
 
 /** Telugu (తెలుగు)
@@ -1779,29 +1856,45 @@ $wdMessages['sv'] = array(
  * @author Mpradeep
  */
 $wdMessages['te'] = array(
-	'ow_save'                         => 'భద్రపరచు',
-	'ow_history'                      => 'చరిత్ర',
-	'ow_noedit_title'                 => 'మార్చడానికి అనుమతి లేదు',
-	'ow_none_selected'                => '<ఏమీ ఎంచుకోలేదు>',
-	'ow_dm_OK'                        => 'సరే',
-	'ow_AlternativeDefinition'        => 'ప్రత్యామ్నాయ నిర్వచనం',
-	'ow_AlternativeDefinitions'       => 'ప్రత్యామ్నాయ నిర్వచనాలు',
-	'ow_ApproximateMeanings'          => 'సమానార్థాలు',
-	'ow_ClassAttributeLevel'          => 'స్థాయి',
-	'ow_ClassAttributeType'           => 'రకం',
-	'ow_Definition'                   => 'నిర్వచనం',
-	'ow_Language'                     => 'భాష',
-	'ow_OptionAttributeOption'        => 'ఎంపిక',
-	'ow_OptionAttributeOptions'       => 'ఎంపికలు',
-	'ow_OptionAttributeValues'        => 'ఎంపిక విలువలు',
-	'ow_Text'                         => 'పాఠ్యం',
-	'ow_TextAttributeValues'          => 'సాదా పాఠ్యాలు',
-	'ow_TranslatedText'               => 'అనువాదిత పాఠ్యం',
-	'ow_TranslatedTextAttributeValue' => 'పాఠ్యం',
-	'ow_LinkAttributeValues'          => 'లింకులు',
-	'ow_Value'                        => 'విలువ',
-	'ow_Permission_denied'            => '<h2>అనుమతి నిరాకరించాం</h2>',
-	'ow_copy_help'                    => 'ఏదో ఒక రోజు, మీకు సహాయపడగలం.',
+	'ow_save'                          => 'భద్రపరచు',
+	'ow_history'                       => 'చరిత్ర',
+	'ow_noedit_title'                  => 'మార్చడానికి అనుమతి లేదు',
+	'ow_uiprefs'                       => 'వికీడాటా',
+	'ow_none_selected'                 => '<ఏమీ ఎంచుకోలేదు>',
+	'ow_dm_OK'                         => 'సరే',
+	'ow_AlternativeDefinition'         => 'ప్రత్యామ్నాయ నిర్వచనం',
+	'ow_AlternativeDefinitions'        => 'ప్రత్యామ్నాయ నిర్వచనాలు',
+	'ow_ApproximateMeanings'           => 'సమానార్థాలు',
+	'ow_ClassAttributeLevel'           => 'స్థాయి',
+	'ow_ClassAttributeType'            => 'రకం',
+	'ow_Collection'                    => 'సేకరణ',
+	'ow_CollectionMembership'          => 'సేకరణ సభ్యత్వం',
+	'ow_Definition'                    => 'నిర్వచనం',
+	'ow_DefinedMeaning'                => 'నిర్వచిత అర్థం',
+	'ow_DefinedMeaningReference'       => 'నిర్వచిత అర్థం',
+	'ow_ExactMeanings'                 => 'ఖచ్చిత అర్థాలు',
+	'ow_GotoSource'                    => 'మూలానికి వెళ్ళు',
+	'ow_Language'                      => 'భాష',
+	'ow_OptionAttributeOption'         => 'ఎంపిక',
+	'ow_OptionAttributeOptions'        => 'ఎంపికలు',
+	'ow_OptionAttributeValues'         => 'ఎంపిక విలువలు',
+	'ow_OtherDefinedMeaning'           => 'ఇతర నిర్వచిత అర్థం',
+	'ow_Relations'                     => 'సంబంధాలు',
+	'ow_RelationType'                  => 'సంబంధ రకం',
+	'ow_Synonyms'                      => 'సమానార్థాలు',
+	'ow_SynonymsAndTranslations'       => 'సమానార్థాలు మరియు అనువాదాలు',
+	'ow_Source'                        => 'మూలం',
+	'ow_Text'                          => 'పాఠ్యం',
+	'ow_TextAttributeValues'           => 'సాదా పాఠ్యాలు',
+	'ow_TranslatedText'                => 'అనువాదిత పాఠ్యం',
+	'ow_TranslatedTextAttributeValue'  => 'పాఠ్యం',
+	'ow_TranslatedTextAttributeValues' => 'అనువదించదగ్గ పాఠ్యాలు',
+	'ow_LinkAttributeValues'           => 'లింకులు',
+	'ow_Value'                         => 'విలువ',
+	'ow_meaningsoftitle'               => '"$1" యొక్క అర్థాలు',
+	'ow_meaningsofsubtitle'            => '<em>వికీ లింకు:</em> [[$1]]',
+	'ow_Permission_denied'             => '<h2>అనుమతి నిరాకరించాం</h2>',
+	'ow_copy_help'                     => 'ఏదో ఒక రోజు, మీకు సహాయపడగలం.',
 );
 
 /** Turkish (Türkçe)

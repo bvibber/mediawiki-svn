@@ -1248,6 +1248,14 @@ $3 $9 $10 కొరకు వెతుకు',
 	'searchall'             => 'అన్నీ',
 );
 
+/** Turkish (Türkçe)
+ * @author Erkan Yilmaz
+ */
+$messages['tr'] = array(
+	'lucene-resultsize' => '$1 ($2 kelimeler)',
+	'searchall'         => 'hepsi',
+);
+
 $messages['ur'] = array(
 	'searchnumber'          => '<strong><font face="times new roman, urdu naskh asiatype">نـتـائـج : $3 کے $1 تـا $2 </strong></font>',
 	'searchprev'            => 'پیچھے',

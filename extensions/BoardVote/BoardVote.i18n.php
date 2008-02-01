@@ -1232,6 +1232,63 @@ Slěduje nastata zaklučowana wersija. Budźe so na [[{{ns:special}}:Boardvote/d
 	'boardvote_redirecting'   => 'Zo bychmy wěstosć a transparencu zaručili, přewjedźemy wólby na eksternym, njewotwisnje kontrolowanym serwerje. Sposrědkujemy tam w běhu 20 sekundow. [$1 Klikń tu] zo by so bjesporědnje tam dóstał. Je móžno, zo widźiš naprjedy wěstotne warnowanje wo njesignowanym certifikaće.',
 );
 
+/** Haitian (Kreyòl ayisyen)
+ * @author Masterches
+ */
+$messages['ht'] = array(
+	'boardvote'              => 'Eleksyon nan konsèy adminstrasyon fondasyon Wikimedya a',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vòt]]
+* [[Special:Boardvote/list|Lis vòt anrejistre]]
+* [[Special:Boardvote/dump|Anrejistreman kripte]]',
+	'boardvote_intro'        => '<p>Byenvini nan twazyèm eleksyon konsèy <i><a href="http://wikimediafoundation.org/wiki/Accueil" class="extiw" title="foundation:Accueil">Fondasyon Wikimedya Inc.</a></i>.
+N ap vote pou yon moun ki ap kapab reprezante kominote itilizatè a nan diferan pwojè Wikimedya yo.
+Moun sa a epi konsèy administrasyon an ap kontribiye nan oryantasyon pou pwojè yo epitou ap reprezante <i>enterè nou yo</i> ak kesyon nou yo bò kote konsèy administrasyon an.
+Yo ap deside de mwayen finansye yo ap chwazi epitou ki kote kòb al prale.</p>
+
+<p>Li tout deklarasyon tout kandida yo epitou repons yo bay anvan ou vote pou yo.
+Tout itilizatè sa yo se itilizatè epi respè, ki bay anpil tan ak efò pou fè pwojè sa yo bout, pou fè yo toujou rete lib, pou pwojè sa yo kapab difize pou tout moun.</p>
+
+<p>Ou mèt vote pou tout kandida ou ta renmen bay vwa pa ou. Kandida an ki ap mennen plis vwa ke ap eli, chwazi pou travay li mande a. Si toutfwa li ta genyen ezitasyon an plizyè kandida, ke genyen yon vòt pou depataje yo.</p>
+
+<p>Pou konnen plis, gade:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006/Fr" class="extiw" title="meta:Election_FAQ_2006/Fr">FAQ anlè eleksyon yo</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Fr" class="extiw" title="meta:Election_candidates_2006/Fr">kandida yo</a></li></ul>',
+	'boardvote_intro_change' => '<p>Ou vote deja.Men ou kapab modifye vòt ou a, itilize fòmilè sa a anba. Koche kaz ki ap koresponn ak kandida ke ou ap soutni.</p></p>',
+	'boardvote_entered'      => 'Mèsi, vòt ou an anrejistre.
+
+Si ou vle, oukapab anrejistre detay sa yo. Istorik vòt ou an :
+
+<pre>$1</pre>
+
+Li kripte ak kle piblik obsèvatè ofisyèl pou eleksyon sa a:
+
+<pre>$2</pre>
+
+Vèsyon kripte an ap vini. Li ap afiche piblikman anlè [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Ritounen]]',
+	'boardvote_notloggedin'  => 'Ou poko idantifye nan sistèm an.Pou ou kapab vote, ou dwèt itilize yon kont ki kontribiyeplis ke $1 fwa anvan $2, epitou premye kontribisyon te fèt depi $3.',
+	'boardvote_novotes'      => 'Pon moun poko vote.',
+	'boardvote_time'         => 'Tan, lè li ye',
+	'boardvote_user'         => 'Itilizatè',
+	'boardvote_edits'        => 'Modifikasyon yo',
+	'boardvote_days'         => 'Jou yo',
+	'boardvote_ip'           => 'IP',
+	'boardvote_ua'           => 'Reprezantan itilizatè sa a',
+	'boardvote_listintro'    => 'Lis moun ki vote :<br /><br />',
+	'boardvote_dumplink'     => 'Klike anlè lyen sa',
+	'boardvote_submit'       => 'OK',
+	'boardvote_strike'       => 'Elimine',
+	'boardvote_unstrike'     => 'Pa elimine',
+	'boardvote_needadmin'    => 'Administratè yo sèlman kapab fè operasyon sa',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Eleksyon nan konsèy administrasyon fondasyon Wikimedya</a> :  Vòt ouvè jiska 12 jiyè',
+	'boardvote_notstarted'   => 'Vòt an poko koumanse.',
+	'boardvote_closed'       => 'Eleksyon an fini. Rezilta a make anlè [[meta:Election results 2006/fr|paj rezilta yo]] (ht).',
+	'boardvote_edits_many'   => 'pliszyè',
+);
+
 /** Hungarian (Magyar)
  * @author Bdanee
  * @author KossuthRad
@@ -2412,6 +2469,14 @@ $messages['sah'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Куоластыырга]]
 * [[Special:Boardvote/list|Куоластаабыттар испииһэктэрэ]]
 * [[Special:Boardvote/dump|Куоластааһын хаамыыта (ким туохха куоластаабыта көрдөрүллүбэт)]]',
+	'boardvote_intro'        => '<p>«Викимедиа» пуондатын Сүбэтин (Совет поверенных, Wikimedia Board of Trustees) быыбарыгар нөрүөн нөргүй! Мы голосуем с целью избрать двух представителей сообществ участников различных проектов Викимедиа. Кинилэр биһиэхэ Викимедиа бырайыактарын кэскиллээх сайдыытын быһаарарга көмөлөһүөхтэрэ уонна <em>эһиги</em> иннигитин Сүбэҕэ көмүскүөхтэрэ. Кинилэр үбү булууну уонна үбү хайдах туһанар туһунан боппуруостары быһаарсыахтара.</p>
+
+<p>Бастаан кандидааттар этиилэрин уонна ыйытыыга хоруйдарын ааҕан баран куоластааҥ. Кандидааттар бары — бар дьоҥҥо билиини булар уонна биэрэр соруктаах биһиги бырайыактарбытын тупсарыыга элбэх сыраларын биэрбит ытыктанар дьон.</p>
+
+<p>Биир киһи хас баҕарар кандидаакка куоластыан сөп. Саамай элбэх куолаһы ылбыт кандидааттар кыайыыны ылыахтара. Куолас тэҥнэһэр түбэлтэтигэр иккистээн куоластааһын ыытыллыаҕа.</p>
+
+<p>Эбии маны көрүөххэ сөп:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">Быыбар туһунан элбэхтик бэриллэр ыйытыылар</a></li> <li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006/Ru" class="external">Кандидааттар</a></li></ul>',
 	'boardvote_intro_change' => '<p>Эн куоластаабыккын. Ол гынан баран манна баар куорманы туһанан урукку быһаарыныыгын уларытыаххын сөп. Өйүөххүн баҕарар кандидааттаргын бэлиэтээ.</p>',
 	'boardvote_entered'      => 'Махтал, эн куолаһыҥ ааҕылынна.
 

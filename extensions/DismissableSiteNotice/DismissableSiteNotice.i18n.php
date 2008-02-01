@@ -164,6 +164,13 @@ $messages['kk-latn'] = array(
 	'sitenotice_close' => 'tasalatw',
 );
 
+/** Korean (한국어)
+ * @author Klutzy
+ */
+$messages['ko'] = array(
+	'sitenotice_close' => '숨기기',
+);
+
 $messages['lb'] = array(
 	'sitenotice_close' => 'verstoppen',
 );

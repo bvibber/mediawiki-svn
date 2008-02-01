@@ -601,12 +601,12 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Sannab
- * @author Max sonnelid
+ * @author Lejonel
  */
 $messages['sv'] = array(
 	'newuserlogpage'           => 'Logg över nya användare',
 	'newuserlogpagetext'       => 'Detta är en logg över nyligen skapade användarkonton',
-	'newuserlog-byemail'       => 'lösenord sänt med e-post',
+	'newuserlog-byemail'       => 'lösenord skickat med e-post',
 	'newuserlog-create-entry'  => 'Ny användare',
 	'newuserlog-create2-entry' => 'skapade användarkonto för $1',
 );

@@ -1176,6 +1176,19 @@ $messages['te'] = array(
 	'ogg-desc-link'           => 'ఈ ఫైలు గురించి',
 );
 
+/** Turkish (Türkçe)
+ * @author Erkan Yilmaz
+ */
+$messages['tr'] = array(
+	'ogg-play'       => 'Oyna',
+	'ogg-pause'      => 'Durakla',
+	'ogg-stop'       => 'Durdur',
+	'ogg-play-video' => 'Video filmi oyna',
+	'ogg-play-sound' => 'Sesi oyna',
+	'ogg-more'       => 'Daha...',
+	'ogg-dismiss'    => 'Kapat',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -602,6 +602,7 @@ $messages['hu'] = array(
 	'math_IllegalCommandInTextModeWithHint' => 'A(z) „$1” parancs nem érvényes szöveg módban (nem „$2”-t akartál használni helyette?)',
 	'math_IllegalDelimiter'                 => 'Érvénytelen határolójel „$1” után',
 	'math_IllegalFinalBackslash'            => 'Érvénytelen visszaper-jel „\\” a bemenet végén',
+	'math_IllegalNestedFontEncodings'       => 'A betűtípuskódolási parancsokat nem lehet halmozni',
 	'math_IllegalRedefinition'              => 'A(z) „$1” parancs már definiálva van; nem definiálhatod újra',
 	'math_InvalidColour'                    => 'A szín „$1” érvénytelen',
 	'math_InvalidUtf8Input'                 => 'A bemenet során megadott szöveg nem megfelelően kódolt UTF-8 sztring',

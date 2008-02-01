@@ -128,6 +128,14 @@ $messages['hsb'] = array(
 	'assert_edit_message' => 'Podate twjerdźenje ($1) je so njeporadźiło.',
 );
 
+/** Haitian (Kreyòl ayisyen)
+ * @author Masterches
+ */
+$messages['ht'] = array(
+	'assert_edit_title'   => 'Sa ou ta renmen ajoute a pa fèt',
+	'assert_edit_message' => 'Sa ou ta renmen ajoute a ($1) pa fèt.',
+);
+
 /** Hungarian (Magyar)
  * @author Bdanee
  */

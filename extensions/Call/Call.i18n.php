@@ -105,6 +105,25 @@ Přikład 4 (URL wobhladowaka): &nbsp; <tt>http://mydomain/mywiki/index.php?Spec
 	'call-save-failed'  => 'Slědowacy tekst NJEje so na stronu <big>[[$1]]</big> składował, dokelž ta strona hižo eksistuje.',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'call'              => 'Hívás',
+	'call-text'         => "A kiegészítőnek meg kell adni egy wiki oldalt és kiegészítő paramétereket ahhoz az oldalhoz.<br><br>
+1. példa: &nbsp; <tt>[[Special:Call/Sablon neve,parm1=érték1]]</tt><br/>
+2. példa: &nbsp; <tt>[[Special:Call/Vita:Vitalapom,parm1=érték1]]</tt><br/>
+3. példa: &nbsp; <tt>[[Special:Call/:Az én lapom,parm1=érték1,parm2=érték2]]</tt><br/><br/>
+4. példa (URL a böngészőben): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:Az én lapom,parm1=érték1</tt><br/><br/>
+
+A kiegészítő meghívja az adott oldalt, és átadja neki a megadott paramétereket.<br>Láthatod a lap tartalmát, és a címét is, de a 'típusa' speciális lap lesz,<br>amit nem lehet szerkeszteni.<br>A lap tartalma változhat az általad megadott paraméterektől függően.<br><br>
+Hasznos lehet interaktív alkalmazások építésére a MediaWikivel.<br>Példának lásd <a href='http://semeb.com/dpldemo/Template:Catlist'>a DPL GUI</a>-t.<br/>
+Probléma esetén megpróbálhatod a <b>Special:Call/DebuG</b> használatát",
+	'call-save'         => "A hívás kiementét el lehet menteni egy ''$1'' nevű lapra.",
+	'call-save-success' => 'A következő szöveg el lett mentve <big>[[$1]]</big> néven.',
+	'call-save-failed'  => 'A következő szöveg NEM lett elmentve, mert már létezik <big>[[$1]]</big> nevű lap.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

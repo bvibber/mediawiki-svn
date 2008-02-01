@@ -290,11 +290,29 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Bdanee
  * @author Dorgan
  */
 $messages['hu'] = array(
-	'changeauthor-comment'          => 'Megjegyzés:',
-	'changeauthor-invalid-username' => 'A(z) "$1" egy érvénytelen felhasználónév.',
+	'changeauthor'                      => 'Változat szerzőjének megváltoztatása',
+	'changeauthor-title'                => 'Adott változat szerzőjének megváltoztatása',
+	'changeauthor-search-box'           => 'Változatok keresése',
+	'changeauthor-pagename-or-revid'    => 'Oldalnév vagy változat-azonosító',
+	'changeauthor-pagenameform-go'      => 'Menj',
+	'changeauthor-comment'              => 'Megjegyzés:',
+	'changeauthor-changeauthors-multi'  => 'Szerző(k) megváltoztatása',
+	'changeauthor-explanation-multi'    => "Ezen a lapon megváltoztathatod adott változatok szerzőjét. Egyszerűen írd át a kívánt felhasználói neveket a lenti listában, írj megjegyzést (nem kötelező), majd kattints a 'Szerző(k) megváltoztatása' gombra.",
+	'changeauthor-changeauthors-single' => 'Szerző megváltoztatása',
+	'changeauthor-explanation-single'   => "Ezen a lapon megváltoztathatod a változat szerzőjét. Egyszerűen írd át a lenti felhasználói nevet, írj megjegyzést (nem kötelező), majd kattints a 'Szerző(k) megváltoztatása' gombra.",
+	'changeauthor-invalid-username'     => 'A(z) "$1" egy érvénytelen felhasználónév.',
+	'changeauthor-nosuchuser'           => 'Nincs „$1” nevű felhasználó',
+	'changeauthor-revview'              => '$2 #$1 azonosítójú változata',
+	'changeauthor-nosuchtitle'          => 'Nem létezik „$1” nevű oldal.',
+	'changeauthor-weirderror'           => 'Egy nagyon furcsa hiba lépett fel. Próbáld újra a kérést. Ha a hiba továbbra is fennáll, az adatbázis valószínűleg hibás.',
+	'changeauthor-invalidform'          => 'Kérlek saját űrlap helyett használd a Special:ChangeAuthor lapon található változatot.',
+	'changeauthor-success'              => 'A kérésedet sikeresen végrehajtottam.',
+	'changeauthor-logentry'             => '$1 $2 azonosítójú változatának szerzőjét $3 felhasználóról $4 felhasználóra cserélte',
+	'changeauthor-logpagename'          => 'Szerző-változtatási napló',
 );
 
 /** Icelandic (Íslenska)

@@ -88,7 +88,8 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'advancedrandom' => 'Accès pas de sûr avanciê',
+	'advancedrandom'      => 'Accès a l’hasârd avanciê',
+	'advancedrandom-desc' => 'Obtint una pâge a l’hasârd dês una discussion ou un lim d’un sujèt vers una pâge balyê. Pôt étre utilisâ coment [[Special:AdvancedRandom/Template:Featured/Talk]] por obtegnir un articllo de qualitât a l’hasârd ou ben coment [[Special:AdvancedRandom/Template:GFDL/Image]] por obtegnir un fichiér desot licence GFDL a l’hasârd.',
 );
 
 /** Croatian (Hrvatski)
@@ -102,7 +103,16 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'advancedrandom' => 'Rozšěrjena připadna strona',
+	'advancedrandom'      => 'Rozšěrjena připadna strona',
+	'advancedrandom-desc' => 'Wobstaraj připadnu stronu, na př. z
+[[Special:AdvancedRandom/{{ns:Template}}:Featured/{{ns:Talk}}]], zo by připadnu diskusijnu stronu k nastawkej abo z [[Special:AdvancedRandom/{{ns:Template}}:GFDL/{{ns:Image}}]], zo by připadnu dataju dóstał, kotraž pod licencu GFDL steji.',
+);
+
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'advancedrandom-desc' => 'Megjelenít egy véletlen lapot, amely a vitalapja vagy oldala hivatkozik egy megadott oldalra, például a [[Special:AdvancedRandom/Sablon:Kiemelt/Vita]] mutat egy véletlen kiemelt szócikket vagy a [[Special:AdvancedRandom/Sablon:GFDL/Kép]] mutat egy véletlen GFDL fájlt.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -112,9 +122,12 @@ $messages['lb'] = array(
 	'advancedrandom' => 'Zoufälleg Säit (erweidert)',
 );
 
-/** Dutch (Nederlands) */
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'advancedrandom' => 'Willekeurige pagina (geavanceerd)',
+	'advancedrandom'      => 'Willekeurige pagina (geavanceerd)',
+	'advancedrandom-desc' => 'Vraag een willekeurige overlegpagina of pagina uit de hoofdnaamruimte op die verwijst naar een opgegeven pagina. Kan gebruikt worden als [[Special:AdvancedRandom/Template:Featured/Talk]] om een willekeurig etalage-artikel te tonen of als [[Special:AdvancedRandom/Template:GFDL/Image]] om een willekeurig GFDL gelicenseerd bestand te tonen',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

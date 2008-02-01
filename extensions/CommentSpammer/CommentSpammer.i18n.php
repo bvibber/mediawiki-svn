@@ -74,6 +74,17 @@ $messages['hsb'] = array(
 	'cspammer-log-page' => 'Protokol komentarnych spamowarjow',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'commentspammer-save-blocked' => 'Az IP-címed feltételezett tartalomspammer, ezért az oldal nem lett elmentve. [[Special:Userlogin|Jelentkezz be]] ennek kiküszöböléséhez.',
+	'commentspammer-log-msg'      => '[[Special:Contributions/$1|$1]] szerkesztése a(z) [[:$2]] lapon.',
+	'commentspammer-log-msg-info' => 'Utoljára $1 napja spammelt, veszélyességi szintje $2, támadókódja $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Részletek megtekintése], vagy [[Special:Blockip/$4|blokkolás]].',
+	'cspammerlogpagetext'         => 'Azon szerkesztések listája, melyek engedélyezve vagy tiltva lettek attól függően, hogy a szerző ismert tartalomspammer volt-e.',
+	'cspammer-log-page'           => 'Tartalomspammer napló',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

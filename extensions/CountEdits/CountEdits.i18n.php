@@ -264,12 +264,16 @@ $messages['kk-latn'] = array(
 	'countedits-nocontribs' => 'Bul wïkïde eş üles bolğan joq.',
 );
 
+/** Kurdish (Latin) (Kurdî / كوردی (Latin))
+ * @author Bangin
+ */
 $messages['ku-latn'] = array(
-	'countedits' => 'Guherandinan bihesbîne',
-	'countedits-username' => 'Navî bikarhêner:',
-	'countedits-ok' => 'OK',#identical but defined
+	'countedits'            => 'Guherandinan bihesbîne',
+	'countedits-username'   => 'Navî bikarhêner:',
+	'countedits-ok'         => 'OK',
 	'countedits-nosuchuser' => 'Li vê derê ne bikarhênerek bi navê $1 heye.',
 	'countedits-resulttext' => '$1 $2 guherandinan çêkirîye',
+	'countedits-mostactive' => 'Bikarhênerên tewrî çalak',
 	'countedits-nocontribs' => 'Di vê wîkîyê da guherandin tune ne.',
 );
 

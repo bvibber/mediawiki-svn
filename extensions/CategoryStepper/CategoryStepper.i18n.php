@@ -65,6 +65,14 @@ $messages['hsb'] = array(
 	'categorystepper-end'   => '(Kónc kategorije)',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'categorystepper-start' => '(a kategória eleje)',
+	'categorystepper-end'   => '(a kategória vége)',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

@@ -607,8 +607,13 @@ $messages['to'] = array(
 	'sitematrix' => "Ko e hokohoko ʻo e ngaahi ''wiki''",
 );
 
+/** Turkish (Türkçe)
+ * @author Erkan Yilmaz
+ * @author לערי ריינהארט
+ */
 $messages['tr'] = array(
-	'sitematrix' => 'Tüm Wikimedia vikilerin listesi',
+	'sitematrix'          => 'Tüm Wikimedia vikilerin listesi',
+	'sitematrix-language' => 'Dil',
 );
 
 $messages['ur'] = array(

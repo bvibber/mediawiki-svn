@@ -114,15 +114,20 @@ $messages['fi'] = array(
 	'deletedcontributions' => 'Poistetut muokkaukset',
 );
 
+/** French (Français)
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'deletedcontributions' => 'Contributions supprimées d’un utilisateur',
+	'deletedcontributions'      => 'Contributions supprimées d’un utilisateur',
+	'deletedcontributions-desc' => "Donne la possibilité aux administrateurs de [[Special:DeletedContributions|visualiser les contributions supprimées d'un utilisateur]]",
 );
 
 /** Franco-Provençal (Arpetan)
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'deletedcontributions' => 'Contribucions suprimâs d’un utilisator',
+	'deletedcontributions'      => 'Contribucions suprimâs d’un utilisator',
+	'deletedcontributions-desc' => 'Balye la possibilitât ux administrators de [[Special:DeletedContributions|visualisar les contribucions suprimâs d’un utilisator]].',
 );
 
 $messages['ga'] = array(
@@ -137,16 +142,29 @@ $messages['he'] = array(
 	'deletedcontributions' => 'תרומות משתמש מחוקות',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dnik
+ * @author SPQRobin
+ */
 $messages['hr'] = array(
-	'deletedcontributions' => 'Obrisani suradnički doprinosi',
+	'deletedcontributions'      => 'Obrisani suradnički doprinosi',
+	'deletedcontributions-desc' => 'Daje administratoru mogućnost [[Special:DeletedContributions|pregleda izbrisanih suradničkih uređivanja]]',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'deletedcontributions' => 'wušmórnjene přinoški',
+	'deletedcontributions'      => 'wušmórnjene přinoški',
+	'deletedcontributions-desc' => 'Da administratoram móžnosć [[Special:DeletedContributions|wušmórnjene wužiwarske přinoški přehladować]]',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
 $messages['hu'] = array(
-	'deletedcontributions' => 'Törölt szerkesztések',
+	'deletedcontributions'      => 'Törölt szerkesztések',
+	'deletedcontributions-desc' => 'Lehetővé teszi az adminisztrátorok számára a [[Special:DeletedContributions|törölt szerkesztések megtekintését]]',
 );
 
 $messages['hy'] = array(
@@ -308,8 +326,12 @@ $messages['stq'] = array(
 	'deletedcontributions' => 'Läskede Benutserbiedraage',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
 $messages['sv'] = array(
-	'deletedcontributions' => 'Raderade användarbidrag',
+	'deletedcontributions'      => 'Raderade användarbidrag',
+	'deletedcontributions-desc' => 'Ger administratörer möjlighet att [[Special:DeletedContributions|se användares raderade bidrag]]',
 );
 
 $messages['te'] = array(

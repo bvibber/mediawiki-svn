@@ -420,6 +420,13 @@ $messages['te'] = array(
 	'pdtest_diff'        => 'తేడాలు',
 );
 
+/** Turkish (Türkçe)
+ * @author Erkan Yilmaz
+ */
+$messages['tr'] = array(
+	'pdtest_ok' => 'Tamam',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

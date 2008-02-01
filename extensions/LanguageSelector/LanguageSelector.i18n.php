@@ -181,6 +181,14 @@ $messages['pt'] = array(
 	'languageselector-setlang' => 'seleccionar',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author MF-Warburg
+ */
+$messages['pt-br'] = array(
+	'languageselector'         => 'Idioma',
+	'languageselector-setlang' => 'selecionar',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

@@ -557,6 +557,16 @@ $messages['ja'] = array(
 	'badimages-page'           => '{{ns:help}}:ひどい画像の一覧表',
 );
 
+/** Kurdish (Kurdî / كوردی)
+ * @author Bangin
+ */
+$messages['ku'] = array(
+	'badimages-name'       => 'Nav:',
+	'badimages-reason'     => 'Sedem:',
+	'badimages-remove'     => '(jêbibe)',
+	'badimages-remove-btn' => 'Jêbibe',
+);
+
 $messages['la'] = array(
 	'badimages-add-btn' => 'Addere',
 	'badimages-name' => 'Nomen:',

@@ -116,10 +116,14 @@ $messages['fo'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|slóð|slóðir}} til $3',
 );
 
+/** French (Français)
+ * @author Grondin
+ */
 $messages['fr'] = array(
 	'crossnamespacelinks'         => 'Pages contenant des liens vers un autre espace de nom',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Énumère les liens à travers les espaces de nommages]] qui ne devraient pas exister sur {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Cette page fournit une liste des pages de l’espace de nom principal qui ont un lien vers un autre espace de nom (excepté pour les espaces de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} et {{ns:template}}), ce qui n’est recommandé.',
-	'crossnamespacelinkstext'     => '$1 : possède $2 {{PLURAL:$2|lien|liens}} vers l’espace « $3 »'
+	'crossnamespacelinkstext'     => '$1 : possède $2 {{PLURAL:$2|lien|liens}} vers l’espace « $3 »',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -127,6 +131,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'crossnamespacelinks'         => 'Pâges contegnent des lims vers un ôtro èspâço de nom',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Ènumère los lims a travèrs los èspâços de nom]] que devriant pas ègzistar dessus {{SITENAME}}.',
 	'crossnamespacelinks-summary' => 'Ceta pâge fornét una lista de les pâges de l’èspâço de nom principâl qu’ont un lim vers un ôtro èspâço de nom (èxcèptâ por los èspâços de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} et {{ns:template}}), cen qu’est pas recomandâ.',
 	'crossnamespacelinkstext'     => '$1 : at $2 {{PLURAL:$2|lim|lims}} vers l’èspâço de nom « $3 »',
 );
@@ -148,14 +153,23 @@ $messages['he'] = array(
 	'crossnamespacelinkstext'     => '$1: {{plural:$2|קישור אחד|$2 קישורים}} למרחב $3'
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ * @author Dnik
+ */
 $messages['hr'] = array(
 	'crossnamespacelinks'         => 'Poveznice između imenskih prostora',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Popis poveznica između imenskih prostora]] koje ne bi smjele postojati na {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Slijedi popis poveznica sa stranica u glavnom imenskom prostoru prema stranicama u ostalim imenskim prostorima (osim {{ns:special}}, {{ns:talk}}, {{ns:project}} i {{ns:template}}), koje nije preporučljivo rabiti.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|poveznica|poveznice|poveznica}} na imenski prostor $3',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'crossnamespacelinks'         => 'Wotkazy přez mjenowe rumy',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Lisćina wotkazow na strony druhich mjenowych rumow]], kotrež njeměli we {{GRAMMAR:lokatiw|{{SITENAME}}}} eksistować',
 	'crossnamespacelinks-summary' => 'Tuta specialna strona naliči wotkazy z nastawka we hłownym (nastawkowym) mjenowym rumje do druhich mjenowych rumow (nimo {{ns:special}}, {{ns:talk}}, {{ns:project}} a {{ns:template}}), kotrychž wužiwanje njeje doporučomne.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|wotkaz|wotkazaj|wotkazy|wotkazow}} do mjenoweho ruma „$3”',
 );
@@ -165,6 +179,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'crossnamespacelinks'         => 'Névtérközi linkek',
+	'crossnamespacelinks-desc'    => 'Listázza azokat a [[Special:CrossNamespaceLinks|névtérközi linkeket]], amelyek nem léteznek a wikin',
 	'crossnamespacelinks-summary' => 'Ez az oldal hivatkozásokat tartalmaz egy fő névtérbeli oldalról más névterekbe (kivéve a {{ns:special}}, {{ns:talk}}, {{ns:project}} és {{ns:template}} névtereket), amelyeket nem tanácsolt használni.',
 	'crossnamespacelinkstext'     => '$1: $2 link a $3 névtérbe.',
 );
@@ -396,10 +411,14 @@ $messages['su'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|numbu|numbu}} ka $3',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
 $messages['sv'] = array(
 	'crossnamespacelinks'         => 'Länkar mellan namnrymder',
+	'crossnamespacelinks-desc'    => 'Skapar en [[Special:CrossNamespaceLinks|lista över länkar mellan namnrymder]] som inte borde finnas på {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'På den här sidan finns en lista över länkar från sidor i huvudnamnrymden till sidor i andra namnrymder (utom till namnrymderna {{ns:special}}, {{ns:talk}}, {{ns:project}} och {{ns:template}}). Det rekommenderas att sådana länkar inte används.',
-	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|länk|länkar}} till $3'
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|länk|länkar}} till $3',
 );
 
 /** Telugu (తెలుగు)
