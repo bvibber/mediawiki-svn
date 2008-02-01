@@ -80,8 +80,8 @@ $messages['fi'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'advancedrandom' => 'Accès aléatoire avancé',
-	'advancedrandom-desc' => 'Obtient une page au harsard à partir d’une discussion ou d’un lien d’un sujet vers une page donnée. Peut être utilisée comme [[Special:AdvancedRandom/Template:Featured/Talk]] pour obtenir un article déterminé au hasard ou comme [[Special:AdvancedRandom/Template:GFDL/Image]] pour obtenir un fichier sous licence GFDL',
+	'advancedrandom'      => 'Accès aléatoire avancé',
+	'advancedrandom-desc' => 'Obtient une page au hasard à partir d’une discussion ou d’un lien d’un sujet vers une page donnée. Peut être utilisée comme [[Special:AdvancedRandom/Template:Featured/Talk]] pour obtenir un article déterminé au hasard ou comme [[Special:AdvancedRandom/Template:GFDL/Image]] pour obtenir un fichier sous licence GFDL',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -119,7 +119,8 @@ $messages['hu'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'advancedrandom' => 'Zoufälleg Säit (erweidert)',
+	'advancedrandom'      => 'Zoufälleg Säit (erweidert)',
+	'advancedrandom-desc' => 'Eng zoufälleg Säit weisen, z. B. mat [[Special:AdvancedRandom/{{ns:Template}}:Featured/{{ns:Talk}}]], fir eng zoufälleg Diskussiounssäit vun enger exzellenter Säit oder mat [[Special:AdvancedRandom/{{ns:Template}}:GFDL/{{ns:Image}}]], fir een zoufällege Fichier ze weisen, den als GFDL lizenzéiert ass.',
 );
 
 /** Dutch (Nederlands)
