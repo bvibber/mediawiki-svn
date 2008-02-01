@@ -1,33 +1,102 @@
-#results {
-  width: 49%;
-  margin-left: 25%;
-  border: 1px solid black;
-  display: none;
-  overflow: scroll;
-  font: menu;
-  /*color: WindowText;*/
-  color: black;
-  background-color: white;
+/* Ajax suggestion stuff */ 
+.lsearchSuggest {
+	overflow: auto; 
+	overflow-x: hidden; 
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 0px;
+	background-color: white; 
+	border-style: solid;
+	border-color: #AAAAAA;
+	border-width: 1px;
+	z-index:99; 
+	visibility:hidden; 
+	font-size:95%;	
 }
 
-#results a {
-  display: block;
-  text-decoration: none;
-  /*color: WindowText;*/
-  color: black;
-  background-color: white;
-  padding: 1px 3px;
+table.lsSuggestResults {
+	font-size: 95%;
+	cursor: pointer; 
+	border: 0; 
 }
 
-#results a:hover {
-  /*background-color: Highlight;
-  color: HighlightText;*/
-  background-color: blue;
-  color: white;
+td.lsSuggestResult, td.lsSuggestResultHl {
+	align: left; 
+	white-space: nowrap;
+	background-color: white; 
+}
+/* highlighted result */
+td.lsSuggestResultHl {
+	/*background-color: #9dccff; */
+	background-color: #4C59A6; 
+	color: white;
 }
 
-#lsearchbox input {
-  width: 50%;
-  margin-left: 25%;
+/* Special:Search styles */
+#lsearchShortForm {
+	margin-bottom: 2ex;
+}
+#lsearchbox {
+ 	width: 50%;
+  	margin-left: 0%;  	
 }
 
+li.lsearchList {
+	padding-bottom: 1em;
+}
+
+div.lsearchTitle {
+	font-size: 100%;
+}
+
+div.lsearchResult {
+	font-size: 95%;
+	width:38em;
+}
+
+span.lsearchRedirect, span.lsearchSection {
+	font-size: 95%;
+}
+
+span.lsearchMatch {
+	font-weight: bold;
+}
+
+#lsearchDidYouMean {
+	padding-bottom:1ex; 	
+}
+/** sister projects main div */
+#lsearchSister {
+	float:right;
+	width: 18em;
+	border-style: solid;
+	border-color: #AAAAAA;
+	border-width: 1px;
+	text-align: center;
+	margin-top: 2ex;
+}
+/** caption of the sister div */
+#lsearchSisterCaption {
+	font-size: 95%;	
+	font-weight: bold;
+}
+/** list of sister results */
+#lsearchSisterResults {
+	text-align: left;
+}
+/** name of sister project */
+div.lsearchSisterProject {
+	font-size: 95%;
+	text-align: left;
+	padding-left: 4px;
+	background: #afddff;
+}
+/** Individuals results in sister div */
+li.lsearchSisterResult {
+	font-size: 95%;
+}
+/** Rendering of redirect names in sister div */
+span.lsearchSisterRedirect {
+	font-size: 95%;
+}

@@ -8,13 +8,13 @@
 $messages = array();
 
 $messages['en'] = array(
-	'searchnumber'          => "<strong>Results $1-$2 of $3</strong>",
+	'searchnumber'          => "<strong>Results $1-$2 of $3</strong> <span style='font-size: 95%'>for $4</span>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prev</span>",
 	'searchnext'            => "<span style='font-size: small'>Next</span> &#x00BB;",
 	'lucene-searchscore'    => "Relevance: $1%",
 	'lucene-resultsize'     => "$1 ($2 words)",
-	'searchdidyoumean'      => "Did you mean: \"<a href=\"$1\">$2</a>\"?",
-	'searchnoresults'       => "Sorry, there were no exact matches to your query.",
+	'searchdidyoumean'      => "Did you mean: <a href=\"$1\">$2</a>",
+	'searchnoresults'       => "Sorry, there are no results for your query on this wiki.",
 	'searchnearmatches'     => "<b>These pages have similar titles to your query:</b>\n",
 	'searchnearmatch'       => "<li>$1</li>\n",
 	'lucenepowersearchtext' => "Search in namespaces:
@@ -28,7 +28,12 @@ or you can search the wiki through an external search service:\n",
 	'searchexactcase'       => 'Exact-case search',
 	'searchall'             => 'all',
 	'searchincategory'      => 'incategory',
-	'searchaliases'         => ""
+	'searchaliases'         => "",
+	'searchredirect'        => "(redirect $1)",
+	'searchsection'         => "(section $1)",
+	'searchsister'			=> "Sister projects",	
+	'searchsisterdef'		=> "wikt|Word definitions from Wiktionary: <font size='-3'>[http://en.wiktionary.org/wiki/Special:Search?search=$2&fulltext=Search (more)]</font>\nw|From free encyclopedia Wikipedia:",
+	'searchtitle'			=> "$1 - $2 Search"
 );
 
 $messages['af'] = array(

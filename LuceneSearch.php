@@ -24,6 +24,7 @@
  */
 
 # To use this, add something like the following to LocalSettings:
+#  TODO: FIX THIS!
 #
 #  $wgDisableInternalSearch = true;
 #  $wgLuceneHost = "192.168.0.1";
@@ -40,15 +41,19 @@
 ##########
 
 $wgLuceneDisableSuggestions = true;
-$wgLuceneDisableTitleMatches = false;
+$wgLuceneDisableTitleMatches = true;
 
-/** Number of seconds to cache query results */
-$wgLuceneCacheExpiry = 60 * 15;
+/** Number of seconds to cache query results, 0 turns off caching */
+$wgLuceneCacheExpiry = 0;
+
+/** For how many seconds to wait for lsearch daemon response */
+$wgLuceneDaemonTimeout = 6;
 
 # Not a valid entry point, skip unless MEDIAWIKI is defined
 if (!defined('MEDIAWIKI')) {
 	die( "This file is part of MediaWiki, it is not a valid entry point\n" );
 }
+	
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'LuceneSearch',
@@ -58,13 +63,22 @@ $wgExtensionCredits['specialpage'][] = array(
 	'description' => 'Interface for the Apache Lucene search engine',
 );
 
-/** Lucene-search (mwsearch) version. from 2.0 we support search prefixes */
-$wgLuceneSearchVersion = 1.0;
+/** 
+ * Use lsearch daemon version:
+ *   v1.0 - basic C# version
+ *   v2.0 - search prefixes 
+ *   v2.1 - suggestions, highlighted text 
+ */
+$wgLuceneSearchVersion = 2.1;
 
-/** Show additional "exact case" search button,
+/** Show additional "exact case" search button, 
  index needs to be built with exact case option */
 $wgLuceneSearchExactCase = false;
 
+/** JavaScript for the ajax suggestion engine (set to false to turn off) */
+$wgLuceneAjaxSuggestJS = $wgScriptPath . '/extensions/LuceneSearch/luceneajaxsuggest.js';
+/** Path to prefixQuery.php */
+$wgLuceneAjaxSuggestWrapper = $wgScriptPath . '/extensions/LuceneSearch/prefixQuery.php';
 
 # Internationalisation file
 require_once( 'LuceneSearch.i18n.php' );
@@ -75,12 +89,31 @@ else
 	$wgLSuseold = true;
 
 define('LS_PER_PAGE', 10);
+define('LS_INTERWIKI_PAGE', 15);
 
 if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 }
-
 extAddSpecialPage( dirname(__FILE__) . '/LuceneSearch_body.php', 'Search', 'LuceneSearch' );
-
-$wgExtensionMessagesFiles['LuceneSearch'] = dirname(__FILE__) . '/LuceneSearch.i18n.php';
 $wgAutoloadClasses['LuceneResult'] = dirname(__FILE__) . '/LuceneSearch_body.php';
+
+$wgHooks['AjaxAddScript'][] = 'luceneAjaxSuggest';
+
+function luceneAjaxSuggest($outputPage){
+	global $wgJsMimeType, $wgLuceneAjaxSuggestJS, $wgLuceneAjaxSuggestWrapper, $wgDBname;
+	global $wgScriptPath;
+	if($wgLuceneAjaxSuggestJS){
+		$outputPage->addLink(array(
+			'rel' => 'stylesheet',
+			'type' => 'text/css',
+			'media' => 'screen,projection',
+			'href' => $wgScriptPath . '/extensions/LuceneSearch/lucenesearch.css'
+			)
+		);
+		$outputPage->addScript( "<script type=\"{$wgJsMimeType}\">var wgLuceneAjaxSuggestWrapper=\"{$wgLuceneAjaxSuggestWrapper}\"; var wgDBname=\"{$wgDBname}\";</script>\n" );
+		$outputPage->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgLuceneAjaxSuggestJS}\"></script>\n" );
+	}
+	return true;
+}
+
+
