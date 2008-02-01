@@ -8,7 +8,8 @@
 $messages = array();
 
 $messages['en'] = array(
-	'advancedrandom' => 'Advanced random',
+	'advancedrandom'      => 'Advanced random',
+	'advancedrandom-desc' => 'Get a random page from whos talk or subjectpage links to a given page, can be used like [[Special:AdvancedRandom/Template:Featured/Talk]] to get a random featured article or like [[Special:AdvancedRandom/Template:GFDL/Image]] to get a random GFDL file',
 );
 
 /** Arabic (العربية)
@@ -76,6 +77,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'advancedrandom' => 'Accès aléatoire avancé',
+	'advancedrandom-desc' => 'Obtient une page au harsard à partir d’une discussion ou d’un lien d’un sujet vers une page donnée. Peut être utilisée comme [[Special:AdvancedRandom/Template:Featured/Talk]] pour obtenir un article déterminé au hasard ou comme [[Special:AdvancedRandom/Template:GFDL/Image]] pour obtenir un fichier sous licence GFDL',
 );
 
 /** Franco-Provençal (Arpetan)

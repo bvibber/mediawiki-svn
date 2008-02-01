@@ -25,6 +25,7 @@ $wgExtensionCredits['specialpage'][] = array(
 			 'to get a random featured article or like ' .
 			 '[[Special:AdvancedRandom/Template:GFDL/Image]] to ' .
 			 'get a random GFDL file',
+	'descriptionmsg' => 'advancedrandom-desc',
 	'author' => 'Ævar Arnfjörð Bjarmason'
 );
 
