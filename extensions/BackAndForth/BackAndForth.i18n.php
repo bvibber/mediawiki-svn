@@ -13,6 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'backforth-next' => 'Next ($1)',
+	'backforth-desc' => 'Adds "Next" and "Previous" alphabetic paging links to the top of articles',
 	'backforth-prev' => 'Previous ($1)',
 );
 
@@ -100,6 +101,7 @@ $messages['fi'] = array(
 
 $messages['fr'] = array(
 	'backforth-next' => 'Suivant ($1)',
+	'backforth-desc' => 'Ajoute « Suivant » et « Précédent » à la page des liens alphabétiques en haut des pages',
 	'backforth-prev' => 'Précédent ($1)',
 );
 
