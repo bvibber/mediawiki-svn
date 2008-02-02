@@ -14,6 +14,7 @@ $messages = array();
 /* English (Rob Church) */
 $messages['en'] = array(
 	'badimages' => 'Bad image list',
+	'badimages-desc' => 'Extend the bad image list capabilities of MediaWiki',
 	'badimages-add-btn' => 'Add',
 	'badimages-added' => '$1 was added to the list.',
 	'badimages-count' => "There are '''$1''' images on the bad image list.",
@@ -293,6 +294,7 @@ $messages['fi'] = array(
 /* French (Bertrand Grondin) */
 $messages['fr'] = array(
 	'badimages' => 'Liste des images indésirables',
+	'badimages-desc' => 'Augmente la capacité de la liste des images indésirables de MediaWiki',
 	'badimages-add-btn' => 'Ajouter',
 	'badimages-added' => '$1 a été ajoutée à la liste.',
 	'badimages-count' => 'Il y a \'\'\'$1\'\'\' images dans la liste des images indésirables.',

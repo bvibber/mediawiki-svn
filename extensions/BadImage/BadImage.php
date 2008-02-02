@@ -12,6 +12,15 @@
 if( defined( 'MEDIAWIKI' ) ) {
 
 	global $wgAutoloadClasses, $wgSpecialPages;
+
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'BadImages',
+	'version' => '1.0',
+	'author' => 'Rob Church',
+	'description' => 'Extend the bad image list capabilities of MediaWiki',
+	'descriptionmsg' => 'badimages-desc',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Bad_Image_List',
+);
 	
 	$dir = dirname(__FILE__) . '/';
 	$wgAutoloadClasses['BadImageList'] = $dir . 'BadImage.class.php';
