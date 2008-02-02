@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'assert_edit_title' => 'Assert failed',
+	'assert_edit_desc'  => 'Adds edit assertions for use by bots',
 	'assert_edit_message' => 'The specified assertion ($1) failed.',
 );
 
@@ -93,6 +94,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'assert_edit_title'   => "Échec de l'insertion",
+	'assert_edit_desc'  => 'Ajoute des éditions d’insertion pour l’utilisation par des bots',
 	'assert_edit_message' => "L'insertion indiquée ($1) a échoué.",
 );
 

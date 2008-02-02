@@ -18,6 +18,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Ask SQL',
 	'version' => '2008-01-31',
 	'description' => 'Do SQL queries through a [[Special:Asksql|special page]]',
+	'descriptionmsg' => 'asksql-desc',
 	'author' => 'Brion Vibber',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Asksql',
 );

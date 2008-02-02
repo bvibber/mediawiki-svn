@@ -22,6 +22,7 @@ $wgExtensionCredits['other'][] = array(
 	'version' => '2008-01-31',
 	'author' => 'Steve Sanbeg',
 	'description' => 'Adds edit assertions for use by bots',
+	'descriptionmsg' => 'assert_edit_desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Assert_Edit',
 );
 

@@ -13,6 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'asksql' => 'SQL query',
+	'asksql-desc' => 'Do SQL queries through a [[Special:Asksql|special page]]',
 	'asksqltext' => "Use the form below to make a direct query of the
 database.
 Use single quotes ('like this') to delimit string literals.
@@ -147,6 +148,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'asksql' => 'Requête SQL',
+	'asksql-desc' => 'Effectue des requêtes SQL à travers une [[Special:Asksql|page spéciale]]',
 	'asksqltext' => "Utilisez ce formulaire pour faire une requête directe dans la base de donnée.
 Utilisez les apostrophes ('comme ceci') pour les chaînes de caractères. Ceci peut souvent surcharger le serveur. Aussi, utilisez cette fonction avec parcimonie.",
 	'sqlislogged' => 'Notez bien que toutes les requêtes sont journalisées.',
