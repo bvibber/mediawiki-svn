@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'math_noblahtex'                        => 'Can\'t execute blahtex, which should be at $1',
+	'math-desc'				=> 'MathML output for &lt;math&gt; tags',
 	'math_AmbiguousInfix'                   => 'Ambiguous placement of "$1" (try using additional braces "{ ... }" to disambiguate)',
 	'math_CannotChangeDirectory'            => 'Cannot change working directory',
 	'math_CannotCreateTexFile'              => 'Cannot create tex file',
@@ -290,6 +291,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'math_noblahtex'                        => 'Ne peut exécuter blahtex, qui devrait être à $1',
+	'math-desc'				=> 'Sortie MathML pour les balises &lt;math&gt;',
 	'math_AmbiguousInfix'                   => "La position de « $1 » est ambiguë (ajouter des balises additionnelles « { ... } » peut lever l'ambiguïté)",
 	'math_CannotChangeDirectory'            => 'Ne peut changer de dossier de travail',
 	'math_CannotCreateTexFile'              => 'Ne peut créer un fichier tex',
