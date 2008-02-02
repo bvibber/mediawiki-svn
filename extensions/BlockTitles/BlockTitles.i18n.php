@@ -13,6 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'block_title_error_page_title' => 'Blocked Title',
+	'block_title_error-desc' => 'Provides a basic way of preventing articles with certain titles from being saved or created',
 	'block_title_error' => 'Sorry, the title of this page is not allowed to be saved.',
 );
 
@@ -113,7 +114,8 @@ $messages['fi'] = array(
  * French (Bertrand Grondin)
  */
 $messages['fr'] = array(
-	'block_title_error_page_title' => 'Titre invalide',		
+	'block_title_error_page_title' => 'Titre invalide',
+	'block_title_error-desc' => 'Fournit une méthode simple pour éviter que des pages avec un certain titre puissent être sauvegardées ou créées.',	
 	'block_title_error' => 'Désolé, le titre de cet article n’est pas autorisé à être sauvegardé.',
 );
 

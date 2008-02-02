@@ -11,7 +11,8 @@ if (!defined('MEDIAWIKI')) {
 $wgExtensionCredits['other'][] = array(
 	'name' => 'BoardVote',
 	'version' => '2008-01-08',
-	'description' => '[[meta:Board elections|Wikimedia Board of Trustees election]]'
+	'description' => '[[meta:Board elections|Wikimedia Board of Trustees election]]',
+	'descriptionmsg' => 'boardvote-desc',
 );
 
 # Default settings

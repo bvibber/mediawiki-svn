@@ -18,6 +18,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'BlockTitles',
 	'author' => 'Travis Derouin',
 	'description' => 'Provides a basic way of preventing articles with certain titles from being saved or created',
+	'descriptionmsg' => 'block_title_error-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:BlockTitles',
 );
 
