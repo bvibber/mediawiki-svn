@@ -1,7 +1,7 @@
 <?php
 /**
  * Player class
- * 
+ *
  * @addtogroup SpecialPage
  * @author Daniel Kinzler, brightbyte.de
  * @copyright © 2007 Daniel Kinzler
@@ -29,7 +29,7 @@ class Player {
 	var $playerTitle;
 
 	function __construct( $image, $options, $sizeDefault = 'imagesize' ) {
-		loadPlayerI18n();
+		wfLoadExtensionMessages( 'Player' );
 
 		if ( is_null( $options ) ) $options = array();
 		if ( is_string( $options ) ) $options = urldecodeMap( $options );
@@ -47,18 +47,18 @@ class Player {
 	}
 
 	static function newFromTitle( $title, $options, $sizeDefault = 'imagesize' ) {
-		loadPlayerI18n();
+		wfLoadExtensionMessages( 'Player' );
 
 		$image = Image::newFromTitle( $title );
 		if ( !$image->exists() ) {
 			throw new PlayerException(wfMsg("player-not-found"), 404);
 		}
-		
+
 		return new Player( $image, $options, $sizeDefault );
 	}
 
 	static function newFromName( $name, $options, $sizeDefault = 'imagesize' ) {
-		loadPlayerI18n();
+		wfLoadExtensionMessages( 'Player' );
 
 		$title = Title::makeTitleSafe(NS_IMAGE, $name);
 		if (!$title) throw new PlayerException(wfMsg("player-invalid-title"), 400);
@@ -68,14 +68,14 @@ class Player {
 
 	function assertAllowedType() {
 		global $wgPlayerTemplates;
-		if (!isset($wgPlayerTemplates[$this->mimetype]) || !$wgPlayerTemplates[$this->mimetype]) 
+		if (!isset($wgPlayerTemplates[$this->mimetype]) || !$wgPlayerTemplates[$this->mimetype])
 			throw new PlayerException(wfMsg("player-not-allowed"), 403);
 	}
 
 	function setType( $image ) {
 		$this->mimetype = $image->getMimeType();
 		$this->mediatype = $image->getMediaType();
-	
+
 		#FIXME: ugly hack! do this on upload!
 		if ( $this->mimetype == 'unknown/unknown' ) {
 			$mime = MimeMagic::singleton();
@@ -102,7 +102,7 @@ class Player {
 
 		if ($height<=0) $height = NULL;
 		if ($width<=0) $width = NULL;
-	
+
 		if ( $this->mediatype == MEDIATYPE_AUDIO ) {
 			//HACK! this actually depends on the player used, and thus on the mime type.
 			$imgwidth = 250;
@@ -148,30 +148,30 @@ class Player {
 			if( !isset( $limits[$wopt] ) ) {
 					$wopt = User::getDefaultOption( $sizeDefault );
 			}
-	
+
 			list($width, $height) = $limits[$wopt];
 			if (!$width) $width = $sizeDefault == 'thumbsize' ? 180 : 600;
 		}
-	
+
 		#print "[WH1: $width, $height]";
-	
+
 		if ($imgwidth && $width > $imgwidth) {
 			if ($height) $height = ceil($height * ((float)$imgwidth / $width));
 			$width = $imgwidth;
 		}
-	
+
 		if ($imgheight && $height > $imgheight) {
 			if ($width) $width = ceil($width * ((float)$imgheight / $height));
 			$height = $imgheight;
 		}
-	
+
 		#print "[WH2: $width, $height]";
-	
+
 		if (!$width) $width = ceil($height * $imgratio);
 		else if (!$height) $height = ceil($width / $imgratio);
-	
+
 		#print "[WH3: $width, $height]";
-	
+
 		$this->width = $width;
 		$this->height = $height;
 	}
@@ -193,7 +193,7 @@ class Player {
 
 		if (is_array($detector)) extract($detector);
 		else $command = $detector;
-		
+
 		$command = str_replace('$file', wfEscapeShellArg($file), $command);
 		$command = str_replace('$type', wfEscapeShellArg($mimetype), $command);
 
@@ -219,49 +219,49 @@ class Player {
 
 	/**
 	 * Set the script tags in an OutputPage object
-	 * @param OutputPage $outputPage 
+	 * @param OutputPage $outputPage
 	 */
 	static function setHeaders( &$outputPage ) {
 		global $wgJsMimeType, $wgPlayerExtensionPath, $wgContLang;
-		loadPlayerI18n();
-		
+		wfLoadExtensionMessages( 'Player' );
+
 		# Register css file for Player
-		/*$outputPage->addLink( 
-			array( 
-				'rel' => 'stylesheet', 
-				'type' => 'text/css', 
-				'href' => $wgPlayerExtensionPath . '/Player.css' 
-			) 
+		/*$outputPage->addLink(
+			array(
+				'rel' => 'stylesheet',
+				'type' => 'text/css',
+				'href' => $wgPlayerExtensionPath . '/Player.css'
+			)
 		);*/
-		
+
 		# Register css RTL file for Player
 		/*if( $wgContLang->isRTL() ) {
-			$outputPage->addLink( 
-				array( 
-					'rel' => 'stylesheet', 
-					'type' => 'text/css', 
-					'href' => $wgPlayerExtensionPath . '/Player.rtl.css' 
-				) 
+			$outputPage->addLink(
+				array(
+					'rel' => 'stylesheet',
+					'type' => 'text/css',
+					'href' => $wgPlayerExtensionPath . '/Player.rtl.css'
+				)
 			);
 		}*/
-		
-		# Register main js file for Player
-		$outputPage->addScript( 
-			"<script type=\"{$wgJsMimeType}\" src=\"{$wgPlayerExtensionPath}/Player.js\">" .
-			"</script>\n" 
-		);
-		
-			//var playerLoadingMsg = \"".Xml::escapeJsString(wfMsg('player-loading'))."\"; 
-			//var playerErrorMsg = \"".Xml::escapeJsString(wfMsg('player-error'))."\"; 
 
-		# Add messages 
-		$outputPage->addScript( 
-		"	<script type=\"{$wgJsMimeType}\"> 
-			var wgPlayerExtensionPath = \"".$wgPlayerExtensionPath."\"; 
-			</script>\n" 
+		# Register main js file for Player
+		$outputPage->addScript(
+			"<script type=\"{$wgJsMimeType}\" src=\"{$wgPlayerExtensionPath}/Player.js\">" .
+			"</script>\n"
 		);
-	}	
-	
+
+			//var playerLoadingMsg = \"".Xml::escapeJsString(wfMsg('player-loading'))."\";
+			//var playerErrorMsg = \"".Xml::escapeJsString(wfMsg('player-error'))."\";
+
+		# Add messages
+		$outputPage->addScript(
+		"	<script type=\"{$wgJsMimeType}\">
+			var wgPlayerExtensionPath = \"".$wgPlayerExtensionPath."\";
+			</script>\n"
+		);
+	}
+
 	static function processTemplate( $template, $options ) {
 		$html = $template;
 		#$html = preg_replace("!\\\\(.)!", "\1\\1\1", $html);
@@ -369,10 +369,10 @@ class Player {
 		$ajaxopt['height'] = $this->height;
 		unset($ajaxopt['caption']);
 		$ajaxopt = urlencodeMap($ajaxopt);
-	
+
 		if ( $wgUseAjax ) $js = ' this.href="javascript:void(0);"; loadPlayer("' . Xml::escapeJsString($this->title->getDBkey()) . '", "' . Xml::escapeJsString($ajaxopt) . '", "' . Xml::escapeJsString($this->uniq) . '");';
 		else $js = '';
-		
+
 		$alt = htmlspecialchars(wfMsg('player-clicktoplay', $this->title->getText()));
 		$blank = "<img src=\"$wgPlayerExtensionPath/blank.gif\" width=\"{$this->width}\" height=\"{$this->height}\" border=\"0\" alt=\"$alt\" class=\"thumbimage\" style=\"width:{$this->width} ! important; height:{$this->height} ! important;\"/>";
 
@@ -387,7 +387,7 @@ class Player {
 		}
 
 		$placeholder = '<a href="'.htmlspecialchars($spurl).'" onclick="'.htmlspecialchars($js).'" title="'.$alt.'" class="internal" style="display:block; '.$thumbstyle.'">' .
-				$blank . 
+				$blank .
 				'</a>';
 
 		$overlay = "<a id=\"{$this->uniq}-overlay\" href=\"".htmlspecialchars($spurl)."\" onclick=\"".htmlspecialchars($js)."\" title=\"$alt\" class=\"internal\" style=\"display:block; position:absolute; top:0; left:0; width:{$this->width}; height:{$this->height}; background-image:url($wgPlayerExtensionPath/play.gif); background-position:center; background-repeat:no-repeat; text-decoration:none; \">" .
@@ -402,26 +402,26 @@ class Player {
 		$sk = $wgUser->getSkin();
 
 		if ($deferred === NULL) {
-			if ( $this->mediatype == MEDIATYPE_BITMAP 
+			if ( $this->mediatype == MEDIATYPE_BITMAP
 			   || $this->mediatype == MEDIATYPE_DRAWING ) $deferred = false;
 			else $deferred = true;
 		}
-	
+
 		$pageopt = $this->options;
-		
+
 		unset($pageopt['width']);
 		unset($pageopt['height']);
 		unset($pageopt['caption']);
-	
+
 		if ($pageopt) $pagequery = "options=" . urlencode(urlencodeMap($pageopt)); //NOTE: double-encode!
 		else $pagequery = '';
 
 		$sptitle = $this->getPlayerTitle();
 		$splink = $sk->makeLinkObj( $sptitle, wfMsg('player-goto-player'), $pagequery );
-	
+
 		$iplink = $sk->makeLinkObj( $this->title, wfMsg('player-goto-page') );
 		$iflink = '<a href="'.htmlspecialchars($this->image->getURL()).'" class="internal">'.wfMsg('player-goto-file').'</a>'; #FIXME: get path
-	
+
 		$caption = @$this->options['caption'];
 		if (is_null($caption)) $caption = '';
 
@@ -456,7 +456,7 @@ class Player {
 		if (isset($attributes['class'])) $cls.= ' ' . htmlspecialchars($attributes['class']);
 		if (isset($attributes['style'])) $style.= ' ' . htmlspecialchars($attributes['style']);
 		if (isset($attributes['id'])) $attr.= ' id="' . htmlspecialchars($attributes['id']) . '"';
-	
+
 		$html= '
 		<div class="'.$cls.'" '.$attr.'>
 		<div class="thumbinner '.$innercls.'" style="width: '.($this->width+2).'px; '.$style.'" id="' . $this->uniq . '-box">
@@ -495,4 +495,3 @@ class PlayerException extends MWException {
 		return trim("{$this->code} $msg");
 	}
 }
-

@@ -1,7 +1,7 @@
 <?php
 /**
  * Special:Player, a media playback page
- * 
+ *
  * @addtogroup SpecialPage
  * @author Daniel Kinzler, brightbyte.de
  * @copyright © 2007 Daniel Kinzler
@@ -13,28 +13,23 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
-/**
- *
- */
 class SpecialPlayer extends SpecialPage {
-	
+
 	/**
 	 * Constructor
 	 */
-	function __construct() {
-		global $wgOut;
+	public function __construct() {
 		SpecialPage::SpecialPage( 'Player', '', true );
-
-		#inject messages
-		loadPlayerI18n();
 	}
-	
+
 	/**
 	 * Main execution function
 	 * @param $par Parameters passed to the page
 	 */
-	function execute( $par ) {
+	public function execute( $par ) {
 		global $wgOut, $wgRequest;
+
+		wfLoadExtensionMessages( 'Player' );
 
 		$file = $wgRequest->getVal( 'playfile', $par );
 
@@ -78,14 +73,14 @@ class SpecialPlayer extends SpecialPage {
 	function showPlayer( $title, $options ) {
 		global $wgOut, $wgUser;
 		$skin = $wgUser->getSkin();
-		
+
 		$wgOut->setPagetitle( wfMsg( "player-playertitle", htmlspecialchars($title->getText()) )  );
 		$wgOut->addWikiText( wfMsg( "player-pagetext" ) );
 
 		try {
 			$player = Player::newFromTitle( $title, $options );
 			$html = $player->getPlayerHTML( );
-	
+
 			$wgOut->addHTML( '<div id="player-display" style="text-align:center">' );
 			$wgOut->addHTML( $html );
 			$wgOut->addHTML( '</div>' );
@@ -95,7 +90,7 @@ class SpecialPlayer extends SpecialPage {
 		}
 
 		$wgOut->addHTML( wfMsg( 'player-imagepage-header', $skin->makeLinkObj( $title ) ) );
-	
+
 		if (@$player) {
 			$page = new PlayerImagePage( $player->image );
 			$page->view();
@@ -110,7 +105,7 @@ class PlayerImagePage extends ImagePage {
 
 		$this->img = $image;
 	}
-	
+
 	/** mostly copied from ImagePage class, removed stuff not needed for Special:Player **/
 	function view() {
 		global $wgOut, $wgShowEXIF, $wgRequest, $wgUser;

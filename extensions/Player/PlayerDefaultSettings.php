@@ -13,11 +13,11 @@
  */
 
 # Generic embedding, relying on mime type and browser plugin
-$wgPlayerGenericTemplate = 
-		'<object type="{{{type}}}" data="{{{url}}}" 
-			{{{#attr:height}}} {{{#attr:width}}} 
+$wgPlayerGenericTemplate =
+		'<object type="{{{type}}}" data="{{{url}}}"
+			{{{#attr:height}}} {{{#attr:width}}}
 			{{{#attr:id}}} {{{#attr:style}}} {{{#attr:class}}}>
-		
+
 			{{{#param:hidden}}}
 			{{{#param:autostart}}}
 			{{{#param:autoplay}}}
@@ -25,47 +25,47 @@ $wgPlayerGenericTemplate =
 			{{{#param:palette}}}
 			{{{#param:controls}}}
 			{{{#param:menu}}}
-			
+
 			<noembed>{{{plainalt}}}</noembed>
-			
+
 			<embed type="{{{type}}}" src="{{{url}}}"
 				{{{#attr:height}}} {{{#attr:width}}}
-				{{{#attr:autostart}}} {{{#attr:autoplay}}} {{{#attr:loop}}} 
+				{{{#attr:autostart}}} {{{#attr:autoplay}}} {{{#attr:loop}}}
 				{{{#attr:hidden}}} {{{#attr:controls}}} {{{#attr:menu}}}/>
 		</object>';
 
 # Generic embedding, relying on mime type and browser plugin,
 # plus a workaround for a kink in Adobe's SVG plugin.
-$wgPlayerSvgPluginTemplate = 
-		'<object type="image/svg+xml" data="{{{url}}}" 
-			{{{#attr:height}}} {{{#attr:width}}} 
+$wgPlayerSvgPluginTemplate =
+		'<object type="image/svg+xml" data="{{{url}}}"
+			{{{#attr:height}}} {{{#attr:width}}}
 			{{{#attr:id}}} {{{#attr:style}}} {{{#attr:class}}}>
-		
+
 			{{{#param:url|src}}}
-			
+
 			<noembed>{{{plainalt}}}</noembed>
-			
+
 			<embed type="{{{type}}}" data="{{{src}}}"
 				{{{#attr:height}}} {{{#attr:width}}}/>
 		</object>';
 
 # Requesting Flash/ShockWave plugin explicitely
-$wgPlayerFlashPluginTemplate = 
-		'<object type="application/x-shockwave-flash" data="{{{fullurl}}}" 
-			{{{#attr:height}}} {{{#attr:width}}} 
-			codebase="http://active.macromedia.com/flash2/cabs/swflash.cab#version=4,0,0,0" 
+$wgPlayerFlashPluginTemplate =
+		'<object type="application/x-shockwave-flash" data="{{{fullurl}}}"
+			{{{#attr:height}}} {{{#attr:width}}}
+			codebase="http://active.macromedia.com/flash2/cabs/swflash.cab#version=4,0,0,0"
 			{{{#attr:id}}} {{{#attr:style}}} {{{#attr:class}}}>
-		
+
 			{{{#param:fullurl|movie}}}
 			{{{#param:flashvars|FlashVars}}}
 			{{{#param:quality}}}
 			{{{#param:menu}}}
 			{{{#param:wmode}}}
 			{{{#param:scale}}}
-			
+
 			<noembed>{{{plainalt}}}</noembed>
-			
-			<embed type="{{{type}}}" src="{{{fullurl}}}" 
+
+			<embed type="{{{type}}}" src="{{{fullurl}}}"
 				{{{#attr:height}}} {{{#attr:width}}}
 				pluginspage="http://www.macromedia.com/go/getflashplayer"
 				{{{#attr:quality}}}
@@ -78,7 +78,7 @@ $wgPlayerFlashPluginTemplate =
 
 # pattern for FlashVars used by FlowPlayer (used in $wgPlayerFlowPlayerTemplate)
 define('FLOWPLAYER_FLASHVARS_TEMPLATE', '
-config={ 
+config={
 	autoPlay: "{{{autoplay|true}}}",
 	loop: "{{{loop|true}}}",
 	initialScale: "{{{fit|fit}}}",
@@ -86,12 +86,12 @@ config={
 }');
 
 # Use FlowPlayer to play FLV
-$wgPlayerFlowPlayerTemplate = 
-		'<object type="application/x-shockwave-flash" data="{{{#env:wgPlayerExtensionPath}}}/FlowPlayerLight.swf" 
-			{{{#attr:height}}} {{{#attr:width}}} 
-			codebase="http://active.macromedia.com/flash2/cabs/swflash.cab#version=4,0,0,0" 
+$wgPlayerFlowPlayerTemplate =
+		'<object type="application/x-shockwave-flash" data="{{{#env:wgPlayerExtensionPath}}}/FlowPlayerLight.swf"
+			{{{#attr:height}}} {{{#attr:width}}}
+			codebase="http://active.macromedia.com/flash2/cabs/swflash.cab#version=4,0,0,0"
 			{{{#attr:id}}} {{{#attr:style}}} {{{#attr:class}}}>
-		
+
 			<param name="movie" value="{{{#env:wgPlayerExtensionPath}}}/FlowPlayerLight.swf"/>
 			<param name="FlashVars" value="'.htmlspecialchars(FLOWPLAYER_FLASHVARS_TEMPLATE).'"/>
 			<param name="allowScriptAccess" value="sameDomain"/>
@@ -102,10 +102,10 @@ $wgPlayerFlowPlayerTemplate =
 			<param name="loop" value="true"/>
 
 			{{{#param:menu}}}
-			
+
 			<noembed>{{{plainalt}}}</noembed>
-			
-			<embed type="application/x-shockwave-flash" 
+
+			<embed type="application/x-shockwave-flash"
 				src="{{{#env:wgPlayerExtensionPath}}}/FlowPlayerLight.swf"
 				pluginspage="http://www.macromedia.com/go/getflashplayer"
 				{{{#attr:height}}} {{{#attr:width}}}
@@ -120,19 +120,19 @@ $wgPlayerFlowPlayerTemplate =
 		</object>';
 
 # Use Cortado player to play OGG vorbis/theora
-$wgPlayerCortadoPlayerTemplate = 
+$wgPlayerCortadoPlayerTemplate =
 		'<div><!-- type: {{{type}}} -->
 		<applet code="com.fluendo.player.Cortado.class"
 			archive="{{{#env:wgPlayerExtensionPath}}}/cortado-ovt-stripped-0.2.2.jar"
 			{{{#attr:height}}} {{{#attr:width}}} {{{#attr:uniq|id}}}>
-			
+
 			<param name="url" value="{{{fullurl}}}"/>
 			<param name="bufferSize" value="2000"/>
 			<param name="bufferLow" value="10"/>
 			<param name="bufferHigh" value="20"/>
 			<param name="showStatus" value="{{{showStatus|show}}}"/>
 			<param name="live" value="{{{live|false}}}"/>
-			
+
 			{{{plainalt}}}
 		</applet>
 		{{{#ifunset:terse|<br/><button onclick="document.getElementById(&quot;{{{uniq}}}&quot;).restart();">Restart</button>}}}
@@ -181,7 +181,7 @@ $wgPlayerTemplates['application/x-shockwave-flash'] = $wgPlayerFlashPluginTempla
 # embedded players
 # $wgPlayerTemplates['video/x-flv'] = $wgPlayerFlowPlayerTemplate;
 # $wgPlayerTemplates['audio/ogg'] = $wgPlayerCortadoPlayerTemplate; #vorbis
-# $wgPlayerTemplates['video/ogg'] = $wgPlayerCortadoPlayerTemplate; #theora 
+# $wgPlayerTemplates['video/ogg'] = $wgPlayerCortadoPlayerTemplate; #theora
 # $wgPlayerTemplates['application/ogg'] = $wgPlayerCortadoPlayerTemplate; #other ogg
 
 # resolution detectors
@@ -200,4 +200,3 @@ $wgPlayerMimeOverride = array(
 	'video/ogg' => 'application/ogg', #video/ogg is hardcoded for theora, but isn't supported by all browsers
 	'audio/ogg' => 'application/ogg', #audio/ogg is hardcoded for vorbis, but isn't supported by all browsers
 );
-
