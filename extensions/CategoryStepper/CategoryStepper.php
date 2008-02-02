@@ -20,7 +20,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 // Extension credits.
 $wgExtensionCredits[ 'other' ][] = array(
 	'name' => 'CategoryStepper',
-	'description' => 'Display a category stepper box on pages that are in a set set of categories.',
+	'description' => 'Display a category stepper box on pages that are in a set of categories.',
+	'descriptionmsg' => 'categorystepper-desc',
 	'author' => 'MinuteElectron',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CategoryStepper',
 	'version' => '1.2',

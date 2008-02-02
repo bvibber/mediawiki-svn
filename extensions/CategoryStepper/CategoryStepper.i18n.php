@@ -14,6 +14,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'categorystepper-start' => '(Start of category)',
+	'categorystepper-desc'  => 'Display a category stepper box on pages that are in a set of categories.',
 	'categorystepper-end'   => '(End of category)',
 );
 
@@ -46,6 +47,7 @@ $messages['dsb'] = array(
  */
 $messages['fr'] = array(
 	'categorystepper-start' => '(Début de catégorie)',
+	'categorystepper-desc'  => 'Affiche une boîte de catégorie sur des pages qui sont indiquées dans une catégorie.',
 	'categorystepper-end'   => '(Fin de catégorie)',
 );
 
