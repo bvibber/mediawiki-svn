@@ -16,12 +16,12 @@ class SmoothGallery {
                 $outputPage->addScript( '<script src="' . $extensionpath . '/scripts/jd.gallery.js" type="text/javascript"></script>' );
                 $outputPage->addScript( '<script src="' . $extensionpath . '/scripts/HistoryManager.js" type="text/javascript"></script>' );
 
-                //Add SmoothGallery css 
-                $outputPage->addLink( 
-                        array(  
-                                'rel' => 'stylesheet', 
-                                'type' => 'text/css', 
-                                'href' => $extensionpath . '/css/jd.gallery.css' 
+                //Add SmoothGallery css
+                $outputPage->addLink(
+                        array(
+                                'rel' => 'stylesheet',
+                                'type' => 'text/css',
+                                'href' => $extensionpath . '/css/jd.gallery.css'
                         )
                 );
 
@@ -41,4 +41,3 @@ class SmoothGallery {
 		return true;
 	}
 }
-

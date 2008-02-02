@@ -29,13 +29,14 @@
 if( !defined( 'MEDIAWIKI' ) )
 	die( -1 );
 
-$wgExtensionFunctions[] = "wfSmoothGallery";
+$wgExtensionFunctions[] = "efSmoothGallery";
 
 $wgHooks['OutputPageParserOutput'][] = 'smoothGalleryParserOutput';
-$wgHooks['LoadAllMessages'][] = 'loadSmoothGalleryI18n';
 
-$wgAutoloadClasses['SmoothGallery'] = dirname( __FILE__ ) . '/SmoothGalleryClass.php';
-$wgAutoloadClasses['SpecialSmoothGallery'] = dirname( __FILE__ ) . '/SpecialSmoothGallery.php';
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['SmoothGallery'] = $dir . 'SmoothGallery.i18n.php';
+$wgAutoloadClasses['SmoothGallery'] = $dir . 'SmoothGalleryClass.php';
+$wgAutoloadClasses['SpecialSmoothGallery'] = $dir . 'SpecialSmoothGallery.php';
 $wgSpecialPages['SmoothGallery'] = 'SpecialSmoothGallery';
 
 //sane defaults. always initialize to avoid register_globals vulnerabilities
@@ -44,7 +45,7 @@ $wgSmoothGalleryExtensionPath = $wgScriptPath . '/extensions/SmoothGallery';
 
 $wgSmoothGalleryArguments = array();
 
-function wfSmoothGallery() {
+function efSmoothGallery() {
 	global $wgParser;
 
 	$wgParser->setHook( 'sgallery', 'renderSmoothGallery' );
@@ -252,7 +253,7 @@ function renderGallery ( $name, $input, $parser, $calledFromSpecial, $calledAsSe
 		if ( $calledFromSpecial && $wgSmoothGalleryUseDatabase ) {
 			//load input from database
 		} else {
-			loadSmoothGalleryI18n();
+			wfLoadExtensionMessages( 'SmoothGallery' );
 			$output = wfMsg("smoothgallery-error");
 			$output .= wfMsg("smoothgallery-not-found");
 			return $output;
@@ -354,7 +355,7 @@ function renderGallery ( $name, $input, $parser, $calledFromSpecial, $calledAsSe
 	if ( $img_count <= 0 ) {
 		//The user requested images, but none of the ones requested
 		//actually exist, let's inform the user
-		loadSmoothGalleryI18n();
+		wfLoadExtensionMessages( 'SmoothGallery' );
 
 		$output = wfMsg("smoothgallery-error");
 
@@ -391,7 +392,7 @@ function renderFallback ( $fallbackArray ) {
 		$output .= $fallbackArray['fallback_image'];
 		$output .= '</div>';
 	} elseif ( $wgSmoothGalleryArguments["fallback"] == "image-warn" ) {
-		loadSmoothGalleryI18n();
+		wfLoadExtensionMessages( 'SmoothGallery' );
 		$output .= '<div id="' . $fallbackArray['name'] . '-fallback" class="MediaWikiSGalleryWarning" style="width: ' . $wgSmoothGalleryArguments["width"] . ';height: ' . $wgSmoothGalleryArguments["height"] . ';" alt="' . $fallbackArray["img_desc"] . '">';
 		$output .= wfMsg("smoothgallery-javascript-disabled");
 		$output .= '<div class="MediaWikiSGallerySingleImage">';
@@ -614,37 +615,13 @@ function smoothGalleryParserOutput( &$outputPage, &$parserOutput )  {
 }
 
 /**
- * Load the SmoothGallery internationalization file
- */
-function loadSmoothGalleryI18n() {
-	global $wgContLang, $wgMessageCache;
-
-	static $initialized = false;
-
-	if ( $initialized ) return true;
-
-	$messages = array();
-
-	$f = dirname( __FILE__ ) . '/SmoothGallery.i18n.php';
-	include( $f );
-
-	$f = dirname( __FILE__ ) . '/SmoothGallery.i18n.' . $wgContLang->getCode() . '.php';
-	if ( file_exists( $f ) ) include( $f );
-
-	$initialized = true;
-	$wgMessageCache->addMessages( $messages );
-
-	return true;
-}
-
-
-/**
  * Add extension information to Special:Version
  */
 $wgExtensionCredits['other'][] = array(
 	'name'        => 'SmoothGallery parser extension',
-	'version'     => '1.1a',
+	'version'     => '1.2',
 	'author'      => 'Ryan Lane',
 	'description' => 'Allows users to create galleries with images that have been uploaded. Allows most options of SmoothGallery',
+	'descriptionmsg' => 'smoothgallery-desc',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:SmoothGallery',
 );

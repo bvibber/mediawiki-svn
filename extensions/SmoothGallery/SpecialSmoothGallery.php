@@ -17,15 +17,14 @@ class SpecialSmoothGallery extends SpecialPage {
 	function __construct() {
 		global $wgOut;
 		SpecialPage::SpecialPage( 'SmoothGallery', '', true );
-
-		#inject messages
-		loadSmoothGalleryI18n();
 	}
 
 	function execute( $par ) {
 		global $wgSmoothGalleryUseDatabase;
 		global $wgOut;
 		global $wgRequest;
+
+		wfLoadExtensionMessages( 'SmoothGallery' );
 
 		SmoothGallery::setGalleryHeaders( $wgOut );
 		SmoothGallery::setGallerySetHeaders( $wgOut );
@@ -73,7 +72,6 @@ class SpecialSmoothGallery extends SpecialPage {
 		} else {
 			$gId = $wgRequest->getInt( 'gallery' );
 			if ( $gId == NULL ) {
-				loadSmoothGalleryI18n();
 				$output = wfMsg("smoothgallery-error");
 				$output .= wfMsg("smoothgallery-gallery-not-found");
 				$wgOut->addHTML( $output );
@@ -81,7 +79,6 @@ class SpecialSmoothGallery extends SpecialPage {
 				$dbr = wfGetDB( DB_SLAVE );
 				$row = $dbr->selectField( 'text_sg', 'sg_cache', 'sg_id=' . $dbr->addQuotes( $gId ));
 				if ( $row == false ) {
-					loadSmoothGalleryI18n();
 					$output = wfMsg("smoothgallery-error");
 					$output .= wfMsg("smoothgallery-gallery-not-found");
 					$wgOut->addHTML( $output );
@@ -91,6 +88,4 @@ class SpecialSmoothGallery extends SpecialPage {
 			}
 		}
 	}
-
 }
-
