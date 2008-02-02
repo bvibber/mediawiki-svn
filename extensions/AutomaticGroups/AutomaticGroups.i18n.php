@@ -11,5 +11,5 @@ $messages['en'] = array(
 );
 
 $messages['fr'] = array(
-	'automaticgroups-desc' => 'Configuration pour les droits d’utilisateurs et les membres d’un groupes basés sur l’ancienneté du compte utilisateur et du compte utilisateur.',
+	'automaticgroups-desc' => 'Configuration pour les droits d’utilisateurs et les membres d’un groupes basés sur l’ancienneté du compte utilisateur et nombre d’éditions.',
 );
