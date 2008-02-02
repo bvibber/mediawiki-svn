@@ -22,6 +22,16 @@ $messages['ar'] = array(
 	'intersection_noincludecats' => 'قائمة صفحة ديناميكية: ينبغي أن تضمن تصنيفا واحدا على الأقل، أو تحدد نطاقا!',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: ¡Demasiaes categoríes!',
+	'intersection_toofewcats'    => 'DynamicPageList: ¡Demasiaes poques categoríes!',
+	'intersection_noresults'     => 'DynamicPageList: ¡Nun hai resultaos!',
+	'intersection_noincludecats' => 'DynamicPageList: ¡Necesites amiestar a lo menos una categoría, o especificar un espaciu de nomes!',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -200,6 +210,16 @@ $messages['ru'] = array(
 	'intersection_toofewcats'    => 'DynamicPageList: слишком мало категорий!',
 	'intersection_noresults'     => 'DynamicPageList: нет результатов!',
 	'intersection_noincludecats' => 'DynamicPageList: вы должны включить хотя бы одну категорию или указать пространство имён!',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: категорийата наһаа элбэх!',
+	'intersection_toofewcats'    => 'DynamicPageList: Категорията наһаа аҕыйах',
+	'intersection_noresults'     => 'DynamicPageList: Түмүк суох!',
+	'intersection_noincludecats' => 'DynamicPageList: Биир эмит категорияны эбэтэр ааты (пространство имен) талыахтааххын!',
 );
 
 /** Slovak (Slovenčina)

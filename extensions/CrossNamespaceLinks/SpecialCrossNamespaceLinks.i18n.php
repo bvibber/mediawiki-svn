@@ -36,9 +36,11 @@ $messages['ar'] = array(
 
 /** Asturian (Asturianu)
  * @author SPQRobin
+ * @author Esbardu
  */
 $messages['ast'] = array(
 	'crossnamespacelinks'         => 'Enllaces ente diferentes espacios de nomes',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Llista enllaces ente espacioes de nomes]] que nun habríen esistir en {{SITENAME}}',
 	'crossnamespacelinks-summary' => "Esta páxina amuesa una llista d'enllaces dende una páxina del espaciu de nomes principal haza una páxina d'otros espacios de nomes (sacantes los espacios de nomes {{ns:special}}, {{ns:talk}}, {{ns:project}} y {{ns:template}}), que nun son aconseyables d'usar.",
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|enllaz|enllaces}} a $3',
 );

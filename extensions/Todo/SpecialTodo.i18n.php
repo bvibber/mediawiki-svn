@@ -280,6 +280,16 @@ $messages['oc'] = array(
 	'todo-form-submit'      => 'Sometre la requèsta',
 );
 
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'todo-new-queue'        => 'ny',
+	'todo-unrecognize-type' => 'Ej erkänd typ',
+	'todo-list-change'      => 'Ändra',
+	'todo-form-details'     => 'Detaljer:',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

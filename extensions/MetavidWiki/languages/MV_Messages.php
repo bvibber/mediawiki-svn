@@ -714,14 +714,38 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Bdanee
  * @author Dorgan
  */
 $messages['hu'] = array(
-	'mv_tool_search' => 'Keresés',
-	'mv_edit'        => 'Szerkesztés',
-	'mv_search_and'  => 'és',
-	'mv_search_or'   => 'vagy',
-	'mv_search_not'  => 'nem',
+	'mv_missing_stream'       => 'Hiányzó adatfolyam',
+	'mv_add_stream'           => 'Metavid adatfolyam hozzáadása',
+	'mv_edit_stream'          => 'Metavid adatfolyam szerkesztése',
+	'mv_add_stream_page'      => 'Mv adatfolyam hozzáadása',
+	'mv_add_stream_submit'    => 'Adatfolyam hozzáadása',
+	'mv_no_stream_files'      => 'Nincsenek adatfolyam-fájlok',
+	'mv_edit_stream_files'    => 'Adatfolyam-fájlok szerkesztése',
+	'mv_path_type_wiki_title' => 'wiki média cím',
+	'mv_duration_label'       => 'hossz',
+	'mv_save_changes'         => 'Változtatások mentése',
+	'mv_add_stream_file'      => 'Adatfolyam fájl hozzáadása',
+	'mv_file_list'            => 'Adatfolyam fájlok',
+	'mv_label_stream_name'    => 'Adatfolyam neve',
+	'mv_label_stream_desc'    => 'Adatfolyam leírása',
+	'edit_stream_missing'     => 'Hiányzó adatfolyam-név',
+	'mv_remove_reason'        => 'Törlés oka',
+	'mv_label_stream_type'    => 'Adatfolyam típusa',
+	'mv_metavid_file'         => 'Létező fájl a szerveren',
+	'mv_upload_file'          => 'Fájl feltöltése',
+	'mv_external_file'        => 'Külső fájl',
+	'mv_tool_search'          => 'Keresés',
+	'mv_play'                 => 'Lejátszás',
+	'mv_edit'                 => 'Szerkesztés',
+	'mv_edit_title'           => 'Szöveg szerkesztése',
+	'mv_remove'               => 'eltávolítás',
+	'mv_search_and'           => 'és',
+	'mv_search_or'            => 'vagy',
+	'mv_search_not'           => 'nem',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

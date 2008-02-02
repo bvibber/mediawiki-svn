@@ -188,6 +188,7 @@ $messages['li'] = array(
  */
 $messages['nl'] = array(
 	'assert_edit_title'   => 'Bevestiging gefaald',
+	'assert_edit_desc'    => 'Maakt rolbevestigingen mogelijk voor gebruik door bots',
 	'assert_edit_message' => 'De gevraagde bevestiging ($1) faalde.',
 );
 

@@ -57,6 +57,15 @@ $messages['hsb'] = array(
 	'eval_code'   => 'Kod',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'eval'        => 'Kiértékelés',
+	'eval_submit' => 'Kiértékelés',
+	'eval_code'   => 'Kód',
+);
+
 /** Dutch (Nederlands)
  * @author Annabel
  * @author SPQRobin

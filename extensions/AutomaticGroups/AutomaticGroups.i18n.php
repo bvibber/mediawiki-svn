@@ -13,3 +13,11 @@ $messages['en'] = array(
 $messages['fr'] = array(
 	'automaticgroups-desc' => 'Configuration pour les droits d’utilisateurs et les membres d’un groupes basés sur l’ancienneté du compte utilisateur et nombre d’éditions.',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'automaticgroups-desc' => 'Eenvoudig instellen van gebruikersrechten en groepslidmaatschap gebaseerd op leeftijd van een gebruiker en aantal bewerkingen',
+);
+

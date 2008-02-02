@@ -394,8 +394,10 @@ $messages['ja'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'duplicator-options'           => 'Méiglechkeeten',
-	'duplicator-success-revisions' => '$1 {{PLURAL:$1|Versioun gouf|Versioune goufe}} kopéiert.',
+	'duplicator-options'               => 'Méiglechkeeten',
+	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|Versioun gouf|Versioune goufe}} kopéiert.',
+	'duplicator-success-talkcopied'    => "D'Diskussiounssäit gouf och kopéiert.",
+	'duplicator-success-talknotcopied' => "D'Diskussiounssäit konnt net kopéiert ginn.",
 );
 
 /** Low German (Plattdüütsch)

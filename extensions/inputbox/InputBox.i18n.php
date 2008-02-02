@@ -612,6 +612,17 @@ $messages['ru'] = array(
 	'createarticle'           => 'Создать статью',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'inputbox-error-no-type'  => 'Вы не указали тип создаваемого поля ввода.',
+	'inputbox-error-bad-type' => 'Биллибэт тип поля ввода «$1». Бука диэн көҥүллэнэри тал: «create», «comment», «search» эбэтэр «search2».',
+	'tryexact'                => 'Чопчу булуу',
+	'searchfulltext'          => 'Тиэкиһин барытын көрдөөһүн',
+	'createarticle'           => 'Ыстатыйаны айарга',
+);
+
 /** Sindhi (سنڌي) */
 $messages['sd'] = array(
 	'createarticle' => 'نئون مضمون لکو',

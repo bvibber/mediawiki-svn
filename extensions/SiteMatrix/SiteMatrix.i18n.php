@@ -530,6 +530,16 @@ $messages['ru'] = array(
 	'sitematrix-others'   => 'Другие проекты «Фонда Викимедиа»',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'sitematrix'          => 'Викимедиа бырайыактарын испииһэгэ',
+	'sitematrix-language' => 'Тыла',
+	'sitematrix-project'  => 'Бырайыак аата, бырайыак ыккардынааҕы ыйынньык уонна интервики',
+	'sitematrix-others'   => '«Викимедиа» атын бырайыактара',
+);
+
 $messages['sk'] = array(
 	'sitematrix' => 'Zoznam wiki projektov Nadácie Wikimedia',
 	'sitematrix-language' => 'Jazyk',

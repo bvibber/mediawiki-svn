@@ -40,6 +40,24 @@ $messages['ar'] = array(
 	'pdt_comparing_page'  => 'مقارنة ناتج البارسر من [[$1]]',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'parserdifftest'      => 'Test de difencies pal análisis sintáuticu',
+	'pdtest_no_target'    => "Nun s'especificó l'oxetivu.",
+	'pdtest_page_missing' => "La páxina especificada nun s'atopó na base de datos.",
+	'pdtest_no_changes'   => 'Nun se deteutaron cambeos.',
+	'pdtest_time_report'  => '<b>$1</b> llevó $2 segundos, <b>$3</b> llevó $4 segundos.',
+	'pdtest_title'        => 'Títulu del contestu:',
+	'pdtest_text'         => "Testu d'entrada:",
+	'pdtest_ok'           => 'Aceutar',
+	'pdtest_get_text'     => 'Obtener testu de la páxina',
+	'pdtest_diff'         => 'Diferencies',
+	'pdtest_side_by_side' => 'Comparanza de salida',
+	'pdt_comparing_page'  => "Comparando l'análisis sintáuticu de salida dende [[$1]]",
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -354,6 +372,20 @@ $messages['ru'] = array(
 	'pdtest_diff'         => 'Различия',
 	'pdtest_side_by_side' => 'Сравнение вывода',
 	'pdt_comparing_page'  => 'Сравнение вывода синтаксического анализатора для [[$1]]',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'pdtest_page_missing' => 'Ыйыллыбыт сирэй билэ тиһигэр көстүбэтэ.',
+	'pdtest_no_changes'   => 'Уларыйыы көстүбэтэ.',
+	'pdtest_title'        => 'Сирэй аата:',
+	'pdtest_text'         => 'Киирэр тиэкис:',
+	'pdtest_ok'           => 'ОК',
+	'pdtest_get_text'     => 'Сирэйтэн тиэкиһи ыларга',
+	'pdtest_diff'         => 'Араастара',
+	'pdtest_side_by_side' => 'Тахсыбыты тэҥнээһин',
 );
 
 /** Slovak (Slovenčina)

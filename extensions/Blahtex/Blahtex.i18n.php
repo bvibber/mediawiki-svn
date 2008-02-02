@@ -730,6 +730,7 @@ $messages['nds'] = array(
  */
 $messages['nl'] = array(
 	'math_noblahtex'                        => 'Blahtex kan niet uitgevoerd worden. Het programma zou hier moeten staan: $1',
+	'math-desc'                             => 'MathML-uitvoer voor &lt;math&gt; tags',
 	'math_AmbiguousInfix'                   => 'Ambigue plaatsing van "$1" (probeer het op te lossen met accolades "{ ... }" om te disambigueren)',
 	'math_CannotChangeDirectory'            => 'Kan de werkmap niet wijzigen',
 	'math_CannotCreateTexFile'              => 'Kan geen tex-bestand aanmaken',

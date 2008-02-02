@@ -344,6 +344,15 @@ Do Bedrieuwere fon disse Websiede konnen neen Feroantwoudenge foar dän Inhoold 
 	'talkhere-collapse'    => 'Editor ferbiergje',
 );
 
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'talkhere-talkpage' => 'diskussions sida',
+	'talkhere-loading'  => 'laddar redigerare...',
+	'talkhere-collapse' => 'dölj redigerare',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

@@ -473,6 +473,18 @@ $messages['ru'] = array(
 	'linksearch-error' => 'Подстановочные символы могут использоваться только в начале адресов.',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'linksearch'       => 'Тас сигэлэри көрдөөһүн',
+	'linksearch-pat'   => 'Көрдөөһүн халыыба:',
+	'linksearch-ok'    => 'Бул',
+	'linksearch-text'  => 'Туруоран биэрэр бэлиэлэри туһаныахха сөп, холобур, <code>*.wikipedia.org</code>.',
+	'linksearch-line'  => 'Мантан $2 манна $1 ыйынньык',
+	'linksearch-error' => 'Туруоран биэрэр бэлиэлэри аадырыс/hostname саҕаланыытыгар эрэ туттуохха сөп.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

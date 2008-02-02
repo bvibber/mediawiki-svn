@@ -237,6 +237,22 @@ $messages['hsb'] = array(
 	'contributors-nosuchpage' => 'Strona $1 njeeksistuje.',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'contributors'             => 'Szerkesztők',
+	'contributors-toolbox'     => 'Főszerkesztők',
+	'contributors-legend'      => 'A lap főszerkesztőinek listája',
+	'contributors-target'      => 'Cím:',
+	'contributors-submit'      => 'Mutat',
+	'contributors-subtitle'    => '$1 főszerkesztői',
+	'contributors-others-long' => '$1 további szerkesztője van a lapnak.',
+	'contributors-others'      => 'és $1 további',
+	'contributors-badtitle'    => 'Érvénytelen cím.',
+	'contributors-nosuchpage'  => 'A(z) $1 lap nem létezik.',
+);
+
 /* Indonesian (Ivan Lanin) */
 $messages['id'] = array(
 	'contributors' => 'Kontributor utama',

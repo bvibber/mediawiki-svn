@@ -581,9 +581,25 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'badimages-name'       => 'Numm:',
-	'badimages-reason'     => 'Grond:',
-	'badimages-subheading' => 'Aktuell Lëscht',
+	'badimages'                => 'Lëscht vun onerwënschte Biller',
+	'badimages-add-btn'        => 'Derbäisetzen',
+	'badimages-added'          => "$1 gouf op d'Lëscht derbäigesat.",
+	'badimages-count'          => "Et gëtt '''$1''' Biller op der Lëscht vun den onerwënschte Biller.",
+	'badimages-name'           => 'Numm:',
+	'badimages-not-added'      => "D'Bild konnt net derbäigesat ginn.",
+	'badimages-not-removed'    => "D'bild konnt net vun der lëscht erofgeholl ginn.",
+	'badimages-reason'         => 'Grond:',
+	'badimages-remove'         => '(erofhuelen)',
+	'badimages-remove-btn'     => 'Erofhuelen',
+	'badimages-remove-confirm' => 'Confirméiert w.e.g. datt Dir $1 vun der Lëscht erofhuele wëllt:',
+	'badimages-removed'        => '$1 gouf vun der Lëscht erofgeholl.',
+	'badimages-subheading'     => 'Aktuell Lëscht',
+	'badimages-unprivileged'   => "(Dir hutt net genuch Rechter fir dës Lëscht z'änneren)",
+	'badimages-log-name'       => 'Lëscht vun den onerwënschte Biller',
+	'badimages-log-header'     => "Dëst ass d'Lëscht vun den Ännerunge vun der [[{{MediaWiki:Badimages-page}}|Lëscht vun den onerwënschte Biller]].",
+	'badimages-log-add'        => "huet [[$1]] op d'Lëscht vun den onerwënschte Biller derbäigesat",
+	'badimages-log-remove'     => 'huet [[$1]] vun der Lëscht vun den onerwënschte Biller erofgeholl',
+	'badimages-page'           => '{{ns:help}}: Lëscht vun den onerwënschte Biller',
 );
 
 $messages['loz'] = array(
@@ -593,27 +609,31 @@ $messages['loz'] = array(
 	'badimages-removed' => '$1 sa afi kulobala di mukoloko.',
 );
 
-/* nld / Dutch (Siebrand Mazeland) */
+/** Dutch (Nederlands)
+ * @author Siebrand
+ * @author SPQRobin
+ */
 $messages['nl'] = array(
-	'badimages' => 'Verwijderlijst afbeeldingen',
-	'badimages-add-btn' => 'Toevoegen',
-	'badimages-added' => '$1 is toegevoegd.',
-	'badimages-count' => 'Er staan \'\'\'$1\'\'\' afbeeldingen op de verwijderlijst afbeeldingen.',
-	'badimages-name' => 'Naam:',
-	'badimages-not-added' => 'De afbeelding kon niet worden toegevoegd.',
-	'badimages-not-removed' => 'De afbeelding kon niet verwijderd worden.',
-	'badimages-reason' => 'Reden:',
-	'badimages-remove' => '(verwijderen)',
-	'badimages-remove-btn' => 'Verwijderen',
+	'badimages'                => 'Verwijderlijst afbeeldingen',
+	'badimages-desc'           => 'Uitbreiding voor de lijst met ongewenste afbeeldingen in MediaWiki',
+	'badimages-add-btn'        => 'Toevoegen',
+	'badimages-added'          => '$1 is toegevoegd.',
+	'badimages-count'          => "Er staan '''$1''' afbeeldingen op de verwijderlijst afbeeldingen.",
+	'badimages-name'           => 'Naam:',
+	'badimages-not-added'      => 'De afbeelding kon niet worden toegevoegd.',
+	'badimages-not-removed'    => 'De afbeelding kon niet verwijderd worden.',
+	'badimages-reason'         => 'Reden:',
+	'badimages-remove'         => '(verwijderen)',
+	'badimages-remove-btn'     => 'Verwijderen',
 	'badimages-remove-confirm' => 'Bevestig alstublieft dat u $1 uit de lijst wilt verwijderen:',
-	'badimages-removed' => '$1 is uit de lijst verwijderd.',
-	'badimages-subheading' => 'Huidige inhoud',
-	'badimages-unprivileged' => '(U heeft niet de juiste rol om de lijst te kunnen wijzigen)',
-	'badimages-log-name' => 'Verwijderlijst afbeeldingen',
-	'badimages-log-header' => 'Dit is het logboek van wijzigingen in de [[{{MediaWiki:Badimages-page}}|verwijderlijst afbeeldingen]].',
-	'badimages-log-add' => '[[$1]] is toegevoegd aan de verwijderlijst afbeeldingen',
-	'badimages-log-remove' => '[[$1]] is verwijderd uit de verwijderlijst afbeeldingen',
-	'badimages-page' => '{{ns:help}}:Verwijderlijst afbeeldingen',
+	'badimages-removed'        => '$1 is uit de lijst verwijderd.',
+	'badimages-subheading'     => 'Huidige inhoud',
+	'badimages-unprivileged'   => '(U heeft niet de juiste rol om de lijst te kunnen wijzigen)',
+	'badimages-log-name'       => 'Verwijderlijst afbeeldingen',
+	'badimages-log-header'     => 'Dit is het logboek van wijzigingen in de [[{{MediaWiki:Badimages-page}}|verwijderlijst afbeeldingen]].',
+	'badimages-log-add'        => '[[$1]] is toegevoegd aan de verwijderlijst afbeeldingen',
+	'badimages-log-remove'     => '[[$1]] is verwijderd uit de verwijderlijst afbeeldingen',
+	'badimages-page'           => '{{ns:help}}:Verwijderlijst afbeeldingen',
 );
 
 /* Norwegian (Jon Harald Søby) */

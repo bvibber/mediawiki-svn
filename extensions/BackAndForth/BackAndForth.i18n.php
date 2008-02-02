@@ -187,8 +187,12 @@ $messages['lt'] = array(
 	'backforth-prev' => 'Ankstesnis ($1)',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
 	'backforth-next' => 'Volgende ($1)',
+	'backforth-desc' => 'Voegt alfabetische links naar "Vorige" en "Volgende" pagina toe bovenaan pagina\'s',
 	'backforth-prev' => 'Vorige ($1)',
 );
 

@@ -617,3 +617,10 @@ $1',
 	'webstore_no_handler'              => 'Pre transformáciu tohto typu MIME neexistuje obsluha',
 );
 
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'webstore_invalid_zone' => 'Ogiltig zon "$1".',
+);
+

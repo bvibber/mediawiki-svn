@@ -847,6 +847,37 @@ $messages['nl'] = array(
 	'ogg-desc-link'           => 'Over dit bestand',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'ogg-short-audio'         => 'Ogg $1-lydfil, $2',
+	'ogg-short-video'         => 'Ogg $1-videofil, $2',
+	'ogg-short-general'       => 'Ogg $1-mediafil, $2',
+	'ogg-long-audio'          => '(Ogg $1-lydfil, lengde $2, $3)',
+	'ogg-long-video'          => '(Ogg $1-videofil, lengde $2, $4×$5 pikslar, $3)',
+	'ogg-long-multiplexed'    => '(Samansett ogg lyd-/videofil, $1, lengde $2, $4×$5 pikslar, $3 til saman)',
+	'ogg-long-general'        => '(Ogg mediafil, lengde $2, $3)',
+	'ogg-long-error'          => '(Ugyldig ogg-fil: $1)',
+	'ogg-play'                => 'Spel av',
+	'ogg-pause'               => 'Pause',
+	'ogg-stop'                => 'Stopp',
+	'ogg-play-video'          => 'Spel av videofila',
+	'ogg-play-sound'          => 'Spel av lydfila',
+	'ogg-no-player'           => 'Beklagar, systemet ditt har ikkje støtta programvare til avspeling. Ver venleg og <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">last ned ein avspelar</a>.',
+	'ogg-no-xiphqt'           => 'Du ser ikkje ut til å ha XiphQT-komponenten til QuickTime. QuickTime kan ikkje spele av ogg-filer utan denne. Ver venleg og <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">last ned XiphQT</a> eller vel ein annan avspelar.',
+	'ogg-player-videoElement' => '<video>-element',
+	'ogg-player-oggPlugin'    => 'Ogg-tillegg',
+	'ogg-player-thumbnail'    => 'Berre stillbilete',
+	'ogg-player-soundthumb'   => 'Ingen avspelar',
+	'ogg-player-selected'     => '(valt)',
+	'ogg-use-player'          => 'Bruk avspelaren:',
+	'ogg-more'                => 'Meir...',
+	'ogg-dismiss'             => 'Lat att',
+	'ogg-download'            => 'Last ned fila',
+	'ogg-desc-link'           => 'Om denne fila',
+);
+
 $messages['no'] = array(
 	'ogg-short-audio' => 'Ogg $1 lydfil, $2',
 	'ogg-short-video' => 'Ogg $1 videofil, $2',
@@ -1028,36 +1059,55 @@ $messages['qu'] = array(
 	'ogg-desc-link'         => 'Kay willañiqimanta',
 );
 
+/** Russian (Русский)
+ * @author HalanTul
+ */
 $messages['ru'] = array(
-	'ogg-short-audio'      => 'Звуковой файл Ogg $1, $2',
-	'ogg-short-video'      => 'Видео-файл Ogg $1, $2',
-	'ogg-short-general'    => 'Медиа-файл Ogg $1, $2',
-	'ogg-long-audio'       => '(звуковой файл Ogg $1, длина $2, $3)',
-	'ogg-long-video'       => '(видео-файл Ogg $1, длина $2, $4×$5 пикселов, $3)',
-	'ogg-long-multiplexed' => '(мультиплексный аудио/видео-файл Ogg, $1, длина $2, $4×$5 пикселов, $3 всего)',
-	'ogg-long-general'     => '(медиа-файл Ogg, длина $2, $3)',
-	'ogg-long-error'       => '(неправильный ogg-файл: $1)',
-	'ogg-play'             => 'Воспроизвести',
-	'ogg-pause'            => 'Пауза',
-	'ogg-stop'             => 'Остановить',
-	'ogg-play-video'       => 'Воспроизвести звук',
-	'ogg-play-sound'       => 'Воспроизвести звук',
-	'ogg-no-player'        => 'Извините, ваша система не имеет необходимого программного обеспечение для воспроизведения файлов. ' .
-		'Пожалуйста, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">скачайте проигрыватель</a>.',
-	'ogg-no-xiphqt'        => 'Отсутствует компонент XiphQT для QuickTime. QuickTime не может воспроизвести ' .
-		'файл Ogg без этого компонента. Пожалуйста, ' .
-		'<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">скачайте XiphQT</a> или выберите другой проигрыватель.',
-
+	'ogg-short-audio'         => 'Звуковой файл Ogg $1, $2',
+	'ogg-short-video'         => 'Видео-файл Ogg $1, $2',
+	'ogg-short-general'       => 'Медиа-файл Ogg $1, $2',
+	'ogg-long-audio'          => '(звуковой файл Ogg $1, длина $2, $3)',
+	'ogg-long-video'          => '(видео-файл Ogg $1, длина $2, $4×$5 пикселов, $3)',
+	'ogg-long-multiplexed'    => '(мультиплексный аудио/видео-файл Ogg, $1, длина $2, $4×$5 пикселов, $3 всего)',
+	'ogg-long-general'        => '(медиа-файл Ogg, длина $2, $3)',
+	'ogg-long-error'          => '(неправильный ogg-файл: $1)',
+	'ogg-play'                => 'Воспроизвести',
+	'ogg-pause'               => 'Пауза',
+	'ogg-stop'                => 'Остановить',
+	'ogg-play-video'          => 'Воспроизвести изображение',
+	'ogg-play-sound'          => 'Воспроизвести звук',
+	'ogg-no-player'           => 'Извините, ваша система не имеет необходимого программного обеспечение для воспроизведения файлов. Пожалуйста, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">скачайте проигрыватель</a>.',
+	'ogg-no-xiphqt'           => 'Отсутствует компонент XiphQT для QuickTime. QuickTime не может воспроизвести файл Ogg без этого компонента. Пожалуйста, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">скачайте XiphQT</a> или выберите другой проигрыватель.',
 	'ogg-player-videoElement' => 'элемент <video>',
-	'ogg-player-oggPlugin' => 'Ogg модуль',
-	'ogg-player-thumbnail' => 'Только неподвижное изображение',
-	'ogg-player-soundthumb' => 'Нет проигрывателя',
-	'ogg-player-selected'  => '(выбран)',
-	'ogg-use-player'       => 'Использовать проигрыватель: ',
-	'ogg-more'             => 'Больше…',
-	'ogg-dismiss'          => 'Скрыть',
-	'ogg-download'         => 'Загрузить файл',
-	'ogg-desc-link'        => 'Информация об этом файле',
+	'ogg-player-oggPlugin'    => 'Ogg модуль',
+	'ogg-player-thumbnail'    => 'Только неподвижное изображение',
+	'ogg-player-soundthumb'   => 'Нет проигрывателя',
+	'ogg-player-selected'     => '(выбран)',
+	'ogg-use-player'          => 'Использовать проигрыватель: ',
+	'ogg-more'                => 'Больше…',
+	'ogg-dismiss'             => 'Скрыть',
+	'ogg-download'            => 'Загрузить файл',
+	'ogg-desc-link'           => 'Информация об этом файле',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'ogg-play'              => 'Оонньот',
+	'ogg-pause'             => 'Тохтото түс',
+	'ogg-stop'              => 'Тохтот',
+	'ogg-play-video'        => 'Көрдөр',
+	'ogg-play-sound'        => 'Иһитиннэр',
+	'ogg-player-oggPlugin'  => 'Ogg плагин',
+	'ogg-player-thumbnail'  => 'Хамсаабат ойууну эрэ',
+	'ogg-player-soundthumb' => 'Плеер суох',
+	'ogg-player-selected'   => '(талыллыбыт)',
+	'ogg-use-player'        => 'Бу плееры туттарга:',
+	'ogg-more'              => 'Өссө...',
+	'ogg-dismiss'           => 'Кистээ/сап',
+	'ogg-download'          => 'Билэни хачайдаа',
+	'ogg-desc-link'         => 'Бу билэ туһунан',
 );
 
 $messages['sk'] = array(

@@ -279,6 +279,13 @@ $messages['oc'] = array(
 	'usagestatisticsbadstartend' => '<b>Format de data de <i>començament</i> o de <i>fin</i> marrit !</b>',
 );
 
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'usagestatisticssubmit' => 'Generera Statistik',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

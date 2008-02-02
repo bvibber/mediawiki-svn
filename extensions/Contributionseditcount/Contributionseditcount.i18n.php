@@ -55,6 +55,13 @@ $messages['hsb'] = array(
 	'contributionseditcount' => 'Wužiwar ma $1 změnow.',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'contributionseditcount' => 'A felhasználónak $1 szerkesztése van.',
+);
+
 $messages['it'] = array(
 	'contributionseditcount' => 'Questo utente ha $1 edit',
 );

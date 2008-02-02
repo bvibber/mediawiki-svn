@@ -187,6 +187,21 @@ $messages['hsb'] = array(
 	'countedits-nocontribs' => 'Njejsu žane změny w tutym wikiju.',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'countedits'              => 'Szerkesztésszámláló',
+	'countedits-warning'      => "'''Figyelem:''' Ne ítélj meg egy könyvet a borítója alapján. Ne ítélj meg egy szerkesztőt a szerkesztéseinek száma alapján.",
+	'countedits-username'     => 'Felhasználói név:',
+	'countedits-ok'           => 'OK',
+	'countedits-nosuchuser'   => 'Nincs $1 nevű felhasználó.',
+	'countedits-resultheader' => '$1 eredményei',
+	'countedits-resulttext'   => '$1 $2 szerkesztést végzett.',
+	'countedits-mostactive'   => 'Legaktívabb szerkesztők',
+	'countedits-nocontribs'   => 'A wikinek nincsenek szerkesztői.',
+);
+
 $messages['hy'] = array(
 	'countedits' => 'Հաշվել խմբագրումները',
 	'countedits-warning' => '\'\'\'Զգուշացում.\'\'\' մի դատեք գրքի մասին կազմով և մասնակցի մասին՝ խմբագրումների քանակով։',

@@ -134,3 +134,10 @@ $messages['stq'] = array(
 		'templatelink_newtitle' => '$1 (ärsät)',
 );
 
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'templatelink' => 'Mall Länk',
+);
+

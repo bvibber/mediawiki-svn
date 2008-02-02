@@ -76,8 +76,10 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dorgan
+ * @author Bdanee
  */
 $messages['hu'] = array(
+	'findspam'    => 'Spam keresése',
 	'findspam-ip' => 'IP-cím:',
 );
 

@@ -309,17 +309,20 @@ $messages['lt'] = array(
 	'asksql' => 'SQL prieiga',
 );
 
-/* nld / Dutch (Siebrand Mazeland) */
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'asksql'           => 'SQL-zoekopdracht',
-	'asksqltext'       => 'Gebruik het onderstaande formulier om direct een query op de database te maken.
-Gebruik apostrofs (\'zo dus\') als delimiter voor strings.
-Dit kan zorgen voor zware belasting van de server, gebruik deze functie dus spaarzaam.',
-	'sqlislogged'      => 'Alle zoekopdrachten worden in een logboek opgeslagen.',
-	'sqlquery'         => 'Voer een zoekopdracht in',
-	'querybtn'         => 'Voer zoekopdracht uit',
-	'selectonly'       => 'U kunt slechts alleen-lezen zoekopdrachten uitvoeren.',
-	'querysuccessful'  => 'Zoekopdracht uitgevoerd',
+	'asksql'          => 'SQL-zoekopdracht',
+	'asksql-desc'     => 'Voer SQL-zoekopdrachten uit via een [[Special:Asksql|speciale pagina]]',
+	'asksqltext'      => "Gebruik het onderstaande formulier om direct een query op de database te maken.
+Gebruik apostrofs ('zo dus') als delimiter voor strings.
+Dit kan zorgen voor zware belasting van de server, gebruik deze functie dus spaarzaam.",
+	'sqlislogged'     => 'Alle zoekopdrachten worden in een logboek opgeslagen.',
+	'sqlquery'        => 'Voer een zoekopdracht in',
+	'querybtn'        => 'Voer zoekopdracht uit',
+	'selectonly'      => 'U kunt slechts alleen-lezen zoekopdrachten uitvoeren.',
+	'querysuccessful' => 'Zoekopdracht uitgevoerd',
 );
 
 /* Norwegian

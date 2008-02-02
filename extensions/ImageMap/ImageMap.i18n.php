@@ -518,6 +518,22 @@ $messages['ru'] = array(
 	'imagemap_description'        => 'Описание изображения',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'imagemap_no_image'           => '&lt;imagemap&gt;: бастакы строкатыгар ойуу баар буолуохтаах',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: ойуу сыыһа бэриллибит, эбэтэр отой суох',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: $1 строка бүтэһигэр сыыһа ыйынньык турбут',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: $1 строкаҕа ыйынньык баһа сыыһа суруллубут',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: недостаточно координат для фигуры в строке $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: неопознанная фигура в строке $1, каждая строка должна начинаться одним из ключевых слов: default, rect, circle или poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: саатар биир уобалас ыйыллыахтаах',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: $1 строкаҕа сыыһа координата суруллубут, чыыһыла буолуохтаах',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: desc суолтата сыыһа турбут, мантан талыахха наада: <tt>$1</tt>',
+	'imagemap_description'        => 'Ойуу туһунан',
+);
+
 /* Slovak (helix84) */
 $messages['sk'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: musí mať na prvom riadku uvedený obrázok',

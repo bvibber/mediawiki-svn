@@ -2898,6 +2898,11 @@ $1 för de krypterade uppgifterna.</p>',
 	'boardvote_blocked'      => 'Beklagar, du har blivit blockerad på din registrerade wiki. Blockerade användare är inte tillåtna att rösta.',
 	'boardvote_welcome'      => "Välkommen '''$1'''!",
 	'go_to_board_vote'       => 'Val till Wikimedias styrelse 2007',
+	'boardvote_redirecting'  => 'För bättre säkerhet och genomskinlighet, så genomförs röstningen på en extern oberoende kontrollerad server.
+
+Du kommer bli omdirigerad till den externa servern inom 20 sekunder. [$1 Klicka här] för att gå dit nu.
+
+En säkerhetsvarning om ett osignerat certifikat kanske kommer att visas.',
 );
 
 /** Telugu (తెలుగు)

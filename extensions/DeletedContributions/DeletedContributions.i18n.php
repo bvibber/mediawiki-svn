@@ -22,10 +22,12 @@ $messages['ar'] = array(
 );
 
 /** Asturian (Asturianu)
+ * @author Esbardu
  * @author SPQRobin
  */
 $messages['ast'] = array(
-	'deletedcontributions' => "Contribuciones d'usuariu borraes",
+	'deletedcontributions'      => "Contribuciones d'usuariu borraes",
+	'deletedcontributions-desc' => "Da la a los alministradores la capacidá de [[Special:Deletedcontributions|ver les ediciones borraes d'un usuariu]]",
 );
 
 $messages['ba'] = array(

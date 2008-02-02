@@ -630,6 +630,15 @@ $messages['ru'] = array(
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Следующая строка чёрного списка имён участников ошибочна, пожалуйста, исправьте её|||Следующие строки чёрного списка имён участников ошибочны, пожалуйста, исправьте их}} перед сохранением:',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'blacklistedusername'             => 'Бобуллубут аат',
+	'blacklistedusernametext'         => 'Талбыт аатыҥ [[MediaWiki:Usernameblacklist|бобуллубут ааттар испииһэктэригэр]] киирэр эбит. Атын ааты таларыҥ буоллар.',
+	'usernameblacklist-invalid-lines' => 'Хара испииһэк бу {{PLURAL:$1|строкаата сыыһалаах|строкалара сыыһалаахтар}}; уларытыаҥ иннинэ ону көннөр:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

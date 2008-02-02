@@ -294,6 +294,14 @@ $messages['ru'] = array(
 	'scanset_prev'                      => '&lt; Предыдущая',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'scanset_next' => 'Аныгыскы &gt;',
+	'scanset_prev' => '&lt; Иннинээҕи',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

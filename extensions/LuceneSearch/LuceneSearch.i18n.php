@@ -119,6 +119,12 @@ $messages['ast'] = array(
 $1
 
 Buscar $3 $9 $10',
+	'lucenefallback'        => "Hebo un problema cola busca de la wiki.
+Ye probable que seya temporal; inténtalo otra vuelta dientro d'unos momentos,
+o tamién pues buscar pela wiki al traviés d'un serviciu de busca esternu:",
+	'searchexactcase'       => 'Buscar (mayúscules/minúscules)',
+	'searchall'             => 'toos',
+	'searchincategory'      => 'nes categoríes',
 );
 
 $messages['bcl'] = array(
@@ -892,6 +898,29 @@ Zoek naar $3 $9 $10',
 	'searchincategory'      => 'binnen categorie',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'searchnumber'          => '<strong>Resultat $1–$2 av $3</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Førre</span>",
+	'searchnext'            => "<span style='font-size: small'>Neste</span> &#x00BB;",
+	'lucene-searchscore'    => 'Relevans: $1%',
+	'lucene-resultsize'     => '$1 ($2 ord)',
+	'searchdidyoumean'      => 'Meinte du: «<a href="$1">$2</a>»?',
+	'searchnoresults'       => 'Beklagar, det var ingen nøyaktige treff på søket ditt.',
+	'searchnearmatches'     => '<b>Desse sidene har namn som liknar på søket ditt:</b>',
+	'lucenepowersearchtext' => 'Søk i namnerom:
+
+$1
+
+Søk etter $3 $9 $10',
+	'lucenefallback'        => 'Det var eit problem med søket på wikien. Dette er truleg mellombels, prøv igjen snart, eller du kan søke på wikien gjennom ein ekstern søkemotor:',
+	'searchexactcase'       => 'Skil mellom store og små bokstavar',
+	'searchall'             => 'alle',
+	'searchincategory'      => 'i kategorien',
+);
+
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -1074,6 +1103,25 @@ $1
 	'searchexactcase'       => 'Искать с учётом регистра',
 	'searchall'             => 'все',
 	'searchincategory'      => 'в категории',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'searchprev'         => "&#x00AB; <span style='font-size: small'>Инн.</span>",
+	'searchnext'         => "<span style='font-size: small'>Аныг.</span> &#x00BB;",
+	'lucene-searchscore' => 'Релевантноһа: $1%',
+	'lucene-resultsize'  => '$1 ($2 тыл)',
+	'searchdidyoumean'   => 'Баҕар маннык буолаарай «<a href="1">$2</a>»?',
+	'searchnoresults'    => 'Хомойуох иһин, туох да көстүбэтэ.',
+	'searchnearmatches'  => '<b>Бу сирэйдэр эн көрдүүр сирэйгэр майгынныыр ааттаахтар:</b>',
+	'lucenefallback'     => 'Көрдүүргэ туох эрэ моһол таҕыста.
+Баҕар быстах моһол буолуо, тохтуу түһэн баран өссө боруобалаар,
+эбэтэр тас поисковиктарынан көрдөөн көр.',
+	'searchexactcase'    => 'Регистрын арааран көрдөө',
+	'searchall'          => 'бары',
+	'searchincategory'   => 'категорийаҕа',
 );
 
 /** Scots (Scots)

@@ -534,8 +534,10 @@ $messages['stq'] = array(
  * @author Max sonnelid
  */
 $messages['sv'] = array(
-	'changeauthor-pagenameform-go' => 'Gå',
-	'changeauthor-comment'         => 'Kommentar:',
+	'changeauthor-pagenameform-go'  => 'Gå',
+	'changeauthor-comment'          => 'Kommentar:',
+	'changeauthor-invalid-username' => 'Ogiltigt användarnamn "$1".',
+	'changeauthor-nosuchtitle'      => 'Det är ingen sida kallad "$1".',
 );
 
 /** Telugu (తెలుగు)

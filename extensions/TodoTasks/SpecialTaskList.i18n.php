@@ -321,6 +321,15 @@ $messages['stq'] = array(
 [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installationsanwiesengen] foar wiedere Details.",
 );
 
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'tasklistunknownproject' => 'Okänt projekt',
+	'tasklistincorrectuser'  => 'Inkorrekt användarnamn',
+	'tasklistchooseproj'     => 'Välj Projekt:',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

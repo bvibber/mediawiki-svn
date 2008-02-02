@@ -59,6 +59,13 @@ $messages['hsb'] = array(
 	'donationform-submit' => 'Přez PayPal darić',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'donationform-submit' => 'Adakozás PayPalon keresztül',
+);
+
 $messages['id'] = array(
 	'donationform-submit' => 'Donasi melalui PayPal',
 );

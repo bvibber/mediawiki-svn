@@ -48,6 +48,7 @@ $messages['ar'] = array(
 $messages['ast'] = array(
 	'newuserlogpage'           => "Rexistru de creación d'usuarios",
 	'newuserlogpagetext'       => "Esti ye un rexistru de creación d'usuarios",
+	'newuserlog-byemail'       => 'clave unviada per corréu electrónicu',
 	'newuserlog-create-entry'  => 'Usuariu nuevu',
 	'newuserlog-create2-entry' => 'creó una cuenta pa $1',
 );
@@ -127,9 +128,14 @@ $messages['crh-cyrl'] = array(
 	'newuserlog-create2-entry' => '$1 ичюн эсап ачты',
 );
 
+/** Czech (Česky)
+ * @author Martin Kozák
+ * @author Li-sung
+ */
 $messages['cs'] = array(
 	'newuserlogpage'           => 'Kniha nových uživatelů',
 	'newuserlogpagetext'       => 'Toto je záznam nově zaregistrovaných uživatelů.',
+	'newuserlog-byemail'       => 'heslo zasláno e-mailem',
 	'newuserlog-create-entry'  => 'Nově založený uživatel',
 	'newuserlog-create2-entry' => 'založil účet pro $1',
 );
@@ -545,6 +551,17 @@ $messages['ru'] = array(
 	'newuserlog-byemail'       => 'пароль отправлен по эл. почте',
 	'newuserlog-create-entry'  => 'Новый участник',
 	'newuserlog-create2-entry' => 'cоздал новую учётную запись: $1',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'newuserlogpage'           => 'Кыттааччылары бэлиэтиир сурунаал',
+	'newuserlogpagetext'       => 'Соторутааҕыта бэлиэтэммит кыттааччылар',
+	'newuserlog-byemail'       => 'киирии тыл эл. почтаннан ыытылынна',
+	'newuserlog-create-entry'  => 'Саҥа кыттааччы',
+	'newuserlog-create2-entry' => 'саҥа киһи бэлиэтэннэ $1',
 );
 
 /** Slovak (Slovenčina)

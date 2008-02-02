@@ -102,10 +102,12 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Bdanee
  * @author Dorgan
  */
 $messages['hu'] = array(
-	'languageselector' => 'Nyelv',
+	'languageselector'         => 'Nyelv',
+	'languageselector-setlang' => 'beállítás',
 );
 
 /** Kazakh
@@ -218,6 +220,14 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'languageselector-setlang' => 'välj',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'languageselector'         => 'Lian',
+	'languageselector-setlang' => 'hili',
 );
 
 /** Turkish (Türkçe)

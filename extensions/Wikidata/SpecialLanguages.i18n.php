@@ -1856,12 +1856,17 @@ $wdMessages['sv'] = array(
  * @author Mpradeep
  */
 $wdMessages['te'] = array(
+	'datasearch'                       => 'వికీడాటా: డాటా అన్వేషణ',
+	'langman_title'                    => 'భాషా నిర్వహణ',
+	'languages'                        => 'వికీడాటా: భాషా నిర్వహణ',
 	'ow_save'                          => 'భద్రపరచు',
 	'ow_history'                       => 'చరిత్ర',
+	'ow_datasets'                      => 'డాటాసెట్ ఎంపిక',
 	'ow_noedit_title'                  => 'మార్చడానికి అనుమతి లేదు',
 	'ow_uiprefs'                       => 'వికీడాటా',
 	'ow_none_selected'                 => '<ఏమీ ఎంచుకోలేదు>',
 	'ow_dm_OK'                         => 'సరే',
+	'ow_available_contexts'            => 'అందుబాటులో ఉన్న సందర్భాలు',
 	'ow_AlternativeDefinition'         => 'ప్రత్యామ్నాయ నిర్వచనం',
 	'ow_AlternativeDefinitions'        => 'ప్రత్యామ్నాయ నిర్వచనాలు',
 	'ow_ApproximateMeanings'           => 'సమానార్థాలు',
