@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'call' => 'Call',
+	'call-desc' => 'Create a hyperlink to a template (or to a normal wiki article) with parameter passing. Can be used at the browser’s command line or within wiki text.',
 	'call-text' => 'The Call extension expects a wiki page and optional parameters for that page as an argument.<br><br>
 Example 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br/>
 Example 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br/>
@@ -67,6 +68,7 @@ $messages['fi'] = array(
 
 $messages['fr'] = array(
 	'call' => 'Appel',
+	'call-desc' => 'Crée un lien hypertexte vers un modèle ou un article wiki normaux tout en y passant des paramètres. Elle peut être utilisée en ligne de commande depuis un navigateur ou à travers un texte wiki.',
 	'call-text' => 'L’extension Appel a besoin d’une page wiki et des paramètres facultatifs pour cette dernière.<br><br>
 Example 1: &nbsp; <tt>[[Special:Call/Mon modèle,parm1=value1]]</tt><br/>
 Example 2: &nbsp; <tt>[[Special:Call/Discussion:Ma discussion,parm1=value1]]</tt><br/>
