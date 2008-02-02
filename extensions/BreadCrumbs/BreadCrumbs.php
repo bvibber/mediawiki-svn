@@ -20,19 +20,23 @@ $wgBreadCrumbsDelimiter = ' &gt; ';
 # $wgBreadCrumbsCount - number of breadcrumbs to use
 $wgBreadCrumbsCount = 5;
 
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['Breadcrumbs'] = $dir . 'BreadCrumbs.i18n.php';
+
 ## Register extension setup hook and credits:
 $wgExtensionFunctions[] = 'fnBreadCrumbs';
 $wgExtensionCredits['parserhook'][] = array(
   'name'          => 'BreadCrumbs',
   'author'        => 'Manuel Schneider',
   'url'           => 'http://www.mediawiki.org/wiki/Extension:BreadCrumbs',
-  'description'   => 'Shows a breadcrumb navigation.'
+  'description'   => 'Shows a breadcrumb navigation.',
+  'descriptionmsg' => 'breadcrumbs-desc',
 );
                                 
 ## Set Hook:
 function fnBreadCrumbs() {
   global $wgHooks;
-
+  wfLoadExtensionMessages( 'Breadcrumbs');
   ## Showing and updating the breadcrumbs trail
   # Hook when viewing article header:
   $wgHooks['ArticleViewHeader'][] = 'fnBreadCrumbsShowHook';
