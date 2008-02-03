@@ -36,11 +36,16 @@ $wgExtensionCredits['parserhook'][] = array(
 	'author' => 'Brion Vibber',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CharInsert',
 	'description' => 'Allows creation of JavaScript box for inserting non-standard characters',
+	'descriptionmsg' => 'charinsert-desc',
 );
+
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['CharInsert'] = $dir . 'CharInsert.i18n.php';
 
 function setupSpecialChars() {
     global $wgParser;
     $wgParser->setHook( 'charinsert', 'charInsert' );
+    wfLoadExtensionMessages( 'CharInsert' );
 }
 
 function charInsert( $data ) {
