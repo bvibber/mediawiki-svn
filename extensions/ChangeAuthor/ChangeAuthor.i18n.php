@@ -27,6 +27,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'changeauthor' => 'Change revision author',
+	'changeauthor-desc' => 'Allows changing a revision\'s author',
 	'changeauthor-short' => 'ChangeAuthor', # don't translate or duplicate this message to other languages
 	'changeauthor-title' => 'Change the author of a revision',
 	'changeauthor-search-box' => 'Search revisions',
@@ -168,6 +169,7 @@ $messages['eo'] = array(
  */
 $messages['fr'] = array(
 	'changeauthor'                      => "Changer l'auteur des révisions",
+	'changeauthor-desc'                 => 'Permet de changer le nom de l’auteur d’une ou plusieurs modifications',
 	'changeauthor-title'                => "Changer l'auteur d'une révision",
 	'changeauthor-search-box'           => 'Rechercher des révisions',
 	'changeauthor-pagename-or-revid'    => "Titre de l'article ou numéro de la révision :",
