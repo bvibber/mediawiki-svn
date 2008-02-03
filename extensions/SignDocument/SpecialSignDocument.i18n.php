@@ -933,6 +933,18 @@ Ch\'a varda che sò dat a sio giust, e che i peulo contatela për verifiché soa
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] firmà [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'sign-selectdoc'         => 'Documento:',
+	'sign-realname'          => 'Nome:',
+	'sign-viewfield-city'    => 'Cidade',
+	'sign-viewfield-state'   => 'Estado',
+	'sign-viewfield-country' => 'País',
+	'sign-viewfield-phone'   => 'Telefone',
+);
+
 $messages['rm'] = array(
 	'sign-viewfield-realname' => 'Num',
 );
@@ -1027,5 +1039,15 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'sign-realname' => 'Noome:',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'sign-realname'                => 'Nem:',
+	'sign-viewfield-realname'      => 'Nem',
+	'sign-viewfield-country'       => 'Län',
+	'sign-viewfield-reviewcomment' => 'Küpet',
 );
 

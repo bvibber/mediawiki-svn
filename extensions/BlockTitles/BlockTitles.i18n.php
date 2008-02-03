@@ -145,9 +145,13 @@ $messages['hr'] = array(
 	'block_title_error'            => 'Nažalost, naslov ovog članka nije dozvoljeno spremiti.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'block_title_error_page_title' => 'Mjeno nastawka zablokowane',
-	'block_title_error' => 'Wodaj, ale njeje dowolene nastawk z tutym mjenom składować.',
+	'block_title_error-desc'       => 'Staji bazowu funkciju k dispoziciji, kotraž składowanju a wutworjenju nastawkow z wěstymi titlemi zadźěwa',
+	'block_title_error'            => 'Wodaj, ale njeje dowolene nastawk z tutym mjenom składować.',
 );
 
 /** Hungarian (Magyar)
@@ -240,6 +244,7 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'block_title_error_page_title' => 'Geblokkeerde paginanaam',
+	'block_title_error-desc'       => "Biedt een basisfunctionaliteit om pagina's met bepaalde paginanamen niet te kunnen opslaan of aanmaken",
 	'block_title_error'            => 'Sorry, het is niet toegestaan een pagina met deze naam op te slaan.',
 );
 
@@ -314,6 +319,7 @@ $messages['scn'] = array(
  */
 $messages['sk'] = array(
 	'block_title_error_page_title' => 'Zablokovaný názov',
+	'block_title_error-desc'       => 'Poskytuje základný prostriedok na zabránenie vytvárania či ukladania stránok s určitým názvom',
 	'block_title_error'            => 'Prepáčte, stránky s týmto názvom nie je povolené ukladať.',
 );
 

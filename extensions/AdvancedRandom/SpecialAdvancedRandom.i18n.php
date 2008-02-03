@@ -112,7 +112,7 @@ $messages['hsb'] = array(
  * @author Bdanee
  */
 $messages['hu'] = array(
-	'advancedrandom-desc' => 'Megjelenít egy véletlen lapot, amely a vitalapja vagy oldala hivatkozik egy megadott oldalra, például a [[Special:AdvancedRandom/Sablon:Kiemelt/Vita]] mutat egy véletlen kiemelt szócikket vagy a [[Special:AdvancedRandom/Sablon:GFDL/Kép]] mutat egy véletlen GFDL fájlt.',
+	'advancedrandom-desc' => 'Megjelenít egy véletlen lapot, amely vagy amelynek vitalapja egy megadott oldalra, például a [[Special:AdvancedRandom/Sablon:Kiemelt/Vita]] mutat egy véletlen kiemelt szócikket vagy a [[Special:AdvancedRandom/Sablon:GFDL/Kép]] mutat egy véletlen GFDL fájlt.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -170,7 +170,8 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'advancedrandom' => 'Rozšírený náhodný výber',
+	'advancedrandom'      => 'Rozšírený náhodný výber',
+	'advancedrandom-desc' => 'Získa náhodný odkaz na stránku zo stránky alebo diskusnej stránky. Je možné ho použiť na získanie náhodného odporúčaného článku v tvare [[Special:AdvancedRandom/Šablóna:Odporúčané/Diskusia]] alebo na získanie náhodného GFDL súboru v tvare [[Special:AdvancedRandom/Šablóna:GFDL/Obrázok]]',
 );
 
 /** Seeltersk (Seeltersk)

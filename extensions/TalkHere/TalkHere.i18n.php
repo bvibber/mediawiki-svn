@@ -301,6 +301,14 @@ J'operator d'ës sit-sì a peulo nen pijesse la responsabilità dël contnù dë
 	'talkhere-collapse'    => "stërma l'editor",
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'talkhere-talkpage' => 'discussão',
+	'talkhere-notalk'   => "''(sem comentários de momento)''",
+);
+
 /** Russian (Русский) */
 $messages['ru'] = array(
 	'talkhere-foottext'    => 'Вы можете оставить свои комментиии к этой статье в нижней части страницы.

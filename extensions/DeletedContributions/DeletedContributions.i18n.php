@@ -112,8 +112,13 @@ $messages['fa'] = array(
 	'deletedcontributions' => 'مشارکت‌های حذف شده',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ * @author Crt
+ */
 $messages['fi'] = array(
-	'deletedcontributions' => 'Poistetut muokkaukset',
+	'deletedcontributions'      => 'Poistetut muokkaukset',
+	'deletedcontributions-desc' => 'Mahdollistaa [[Special:DeletedContributions|käyttäjien poistettujen muokkausten]] selaamisen ylläpitäjille',
 );
 
 /** French (Français)
@@ -287,8 +292,12 @@ $messages['ro'] = array(
 	'deletedcontributions' => 'Contribuţii şterse',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
 $messages['ru'] = array(
-	'deletedcontributions' => 'Удалённый вклад',
+	'deletedcontributions'      => 'Удалённый вклад',
+	'deletedcontributions-desc' => 'Даёт администраторам возможность [[Special:DeletedContributions|просматривать удалённый вклад участников]]',
 );
 
 /** Yakut (Саха тыла)
@@ -298,8 +307,12 @@ $messages['sah'] = array(
 	'deletedcontributions' => 'Сотуллубут көннөрүү',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
-	'deletedcontributions' => 'Zmazané príspevky používateľa',
+	'deletedcontributions'      => 'Zmazané príspevky používateľa',
+	'deletedcontributions-desc' => 'Dáva správcovi možnosť [[Special:DeletedContributions|prehliadať zmazané príspevky používateľa]]',
 );
 
 $messages['sq'] = array(

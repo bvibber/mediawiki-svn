@@ -75,25 +75,30 @@ $messages['bg'] = array(
 	'tog-riched_disable_ns_category_talk'  => 'Изключване на разширения редактор в именно пространство „{{ns:Category_talk}}“',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'textrichditor' => '\'\'Rich Editor\'\'',
-	'tog-riched_disable' => 'Désactiver \'\'Rich Editor\'\'',
-	'tog-riched_disable_ns_main' => 'Désactiver \'\'Rich Editor\'\' dans l\'espace de noms principal.',
-	'tog-riched_disable_ns_talk' => 'Désactiver \'\'Rich Editor\'\' dans l\'espace de noms \'\'{{ns:Talk}}\'\'.',
-	'tog-riched_disable_ns_user' => 'Désactiver \'\'Rich Editor\'\' dans l\'espace de noms \'\'{{ns:User}}\'\'.',
-	'tog-riched_disable_ns_user_talk' => 'Désactiver \'\'Rich Editor\'\' dans l\'espace de noms \'\'{{ns:User_talk}}\'\'.',
-	'tog-riched_disable_ns_project' => 'Désactiver \'\'Rich Editor\'\' dans l\'espace de noms \'\'{{ns:Project}}\'\'.',
-	'tog-riched_disable_ns_project_talk' => 'Désactiver \'\'Rich Editor\'\' dans l\'espace de noms \'\'{{ns:Project_talk}}\'\'.',
-	'tog-riched_disable_ns_image' => 'Désactiver \'\'Rich Editor\'\' dans l\'espace de noms \'\'{{ns:Image}}\'\'.',
-	'tog-riched_disable_ns_image_talk' => 'Désactiver \'\'Rich Editor\'\' dans l\'espace de noms \'\'{{ns:Image_talk}}\'\'.',
-	'tog-riched_disable_ns_mediawiki' => 'Désactiver \'\'Rich Editor\'\' dans l\'espace de noms \'\'{{ns:MediaWiki}}\'\'.',
-	'tog-riched_disable_ns_mediawiki_talk' => 'Désactiver \'\'Rich Editor\'\' dans l\'espace de noms \'\'{{ns:MediaWiki_talk}}\'\'.',
-	'tog-riched_disable_ns_template' => 'Désactiver \'\'Rich Editor\'\' dans l\'espace de noms \'\'{{ns:Template}}\'\'.',
-	'tog-riched_disable_ns_template_talk' => 'Désactiver \'\'Rich Editor\'\' dans l\'espace de noms \'\'{{ns:Template_talk}}\'\'.',
-	'tog-riched_disable_ns_help' => 'Désactiver \'\'Rich Editor\'\' dans l\'espace de noms \'\'{{ns:Help}}\'\'.',
-	'tog-riched_disable_ns_help_talk' => 'Désactiver \'\'Rich Editor\'\' dans l\'espace de noms \'\'{{ns:Help_talk}}\'\'.',
-	'tog-riched_disable_ns_category' => 'Désactiver \'\'Rich Editor\'\' dans l\'espace de noms \'\'{{ns:Category}}\'\'.',
-	'tog-riched_disable_ns_category_talk' => 'Désactiver \'\'Rich Editor\'\' dans l\'espace de noms \'\'{{ns:Category_talk}}\'\'.',
+	'textrichditor'                        => "''Rich Editor''",
+	'textrichditor-desc'                   => "Utilise FCKeditor pour l'édition des pages wiki",
+	'tog-riched_disable'                   => "Désactiver ''Rich Editor''",
+	'tog-riched_disable_ns_main'           => "Désactiver ''Rich Editor'' dans l'espace de noms principal.",
+	'tog-riched_disable_ns_talk'           => "Désactiver ''Rich Editor'' dans l'espace de noms ''{{ns:Talk}}''.",
+	'tog-riched_disable_ns_user'           => "Désactiver ''Rich Editor'' dans l'espace de noms ''{{ns:User}}''.",
+	'tog-riched_disable_ns_user_talk'      => "Désactiver ''Rich Editor'' dans l'espace de noms ''{{ns:User_talk}}''.",
+	'tog-riched_disable_ns_project'        => "Désactiver ''Rich Editor'' dans l'espace de noms ''{{ns:Project}}''.",
+	'tog-riched_disable_ns_project_talk'   => "Désactiver ''Rich Editor'' dans l'espace de noms ''{{ns:Project_talk}}''.",
+	'tog-riched_disable_ns_image'          => "Désactiver ''Rich Editor'' dans l'espace de noms ''{{ns:Image}}''.",
+	'tog-riched_disable_ns_image_talk'     => "Désactiver ''Rich Editor'' dans l'espace de noms ''{{ns:Image_talk}}''.",
+	'tog-riched_disable_ns_mediawiki'      => "Désactiver ''Rich Editor'' dans l'espace de noms ''{{ns:MediaWiki}}''.",
+	'tog-riched_disable_ns_mediawiki_talk' => "Désactiver ''Rich Editor'' dans l'espace de noms ''{{ns:MediaWiki_talk}}''.",
+	'tog-riched_disable_ns_template'       => "Désactiver ''Rich Editor'' dans l'espace de noms ''{{ns:Template}}''.",
+	'tog-riched_disable_ns_template_talk'  => "Désactiver ''Rich Editor'' dans l'espace de noms ''{{ns:Template_talk}}''.",
+	'tog-riched_disable_ns_help'           => "Désactiver ''Rich Editor'' dans l'espace de noms ''{{ns:Help}}''.",
+	'tog-riched_disable_ns_help_talk'      => "Désactiver ''Rich Editor'' dans l'espace de noms ''{{ns:Help_talk}}''.",
+	'tog-riched_disable_ns_category'       => "Désactiver ''Rich Editor'' dans l'espace de noms ''{{ns:Category}}''.",
+	'tog-riched_disable_ns_category_talk'  => "Désactiver ''Rich Editor'' dans l'espace de noms ''{{ns:Category_talk}}''.",
 );
 
 $messages['gl'] = array(
@@ -307,3 +312,4 @@ $messages['sk'] = array(
 	'tog-riched_disable_ns_category' => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Category}}“',
 	'tog-riched_disable_ns_category_talk' => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Category_talk}}“',
 );
+

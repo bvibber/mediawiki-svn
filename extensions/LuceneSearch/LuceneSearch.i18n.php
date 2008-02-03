@@ -1338,10 +1338,14 @@ Tìm $3 $9',
 );
 
 /** Volapük (Volapük)
- * @author Smeira
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'searchnumber'          => '<strong>Seks $1-$2 se $3</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Büik</span>",
+	'searchnext'            => "<span style='font-size: small'>Sököl</span> &#x00BB;",
+	'lucene-searchscore'    => 'Demäd: $1%',
 	'lucene-resultsize'     => '$1 (vöds $2)',
 	'searchdidyoumean'      => 'Ba vilol-li penön: "<a href="$1">$2</a>"?',
 	'lucenepowersearchtext' => 'Sukön in nemaspads:

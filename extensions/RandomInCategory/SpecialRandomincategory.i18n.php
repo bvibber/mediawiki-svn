@@ -132,6 +132,13 @@ $messages['oc'] = array(
 	'randomincategory-submit'     => 'Amodar',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'randomincategory-label' => 'Categoria:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

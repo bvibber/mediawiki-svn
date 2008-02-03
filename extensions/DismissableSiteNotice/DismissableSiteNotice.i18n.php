@@ -285,6 +285,13 @@ $messages['tet'] = array(
 	'sitenotice_close' => 'subar',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'sitenotice_close' => 'бастан',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

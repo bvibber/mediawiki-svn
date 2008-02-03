@@ -280,6 +280,40 @@ $messages['oc'] = array(
 	'todo-form-submit'      => 'Sometre la requèsta',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'todo'                  => 'Zoznam úloh',
+	'todo-tab'              => 'zoznam úloh',
+	'todo-new-queue'        => 'nová',
+	'todo-mail-subject'     => 'Dokončená úloha zo zoznamu používateľa $1',
+	'todo-mail-body'        => 'Žiadali ste o potvrdzovací email po dokončení úlohy, ktorú ste poslali do zoznamu úloh používateľa $1.
+
+Úloha: $2
+Poslaná: $3
+
+Táto úloha bola označená ako dokončená s týmto komentárom:
+$4',
+	'todo-invalid-item'     => 'Chýbajúca alebo neplatná úloha',
+	'todo-update-else-item' => 'Pokúšate sa aktualizovať úlohy niekoho iného',
+	'todo-unrecognize-type' => 'Nerozpoznaný typ',
+	'todo-user-invalide'    => 'Zadaná úloha je neplatná, chýba alebo používateľ nepoužíva zoznam úloh',
+	'todo-item-list'        => 'Vaše úlohy',
+	'todo-no-item'          => 'Žiadne úlohy.',
+	'todo-invalid-owner'    => 'Vlastník tejto položky je neplatný',
+	'todo-add-queue'        => 'Pridať front…',
+	'todo-move-queue'       => 'Presunúť do frontu…',
+	'todo-list-for'         => 'Zoznam úloh používateľa',
+	'todo-list-change'      => 'Zmeniť',
+	'todo-list-cancel'      => 'Zrušiť',
+	'todo-new-item'         => 'Nová úloha',
+	'todo-issue-summary'    => 'Zhrnutie problému:',
+	'todo-form-details'     => 'Podrobnosti:',
+	'todo-form-email'       => 'Dostať upozornenie emailom, keď bude úloha uzatvorená. Napíšte svoju adresu:',
+	'todo-form-submit'      => 'Poslať požiadavku',
+);
+
 /** Swedish (Svenska)
  * @author Max sonnelid
  */

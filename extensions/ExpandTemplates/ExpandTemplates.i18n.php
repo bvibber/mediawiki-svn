@@ -62,6 +62,26 @@ $messages['ar'] = array(
 	'expand_templates_preview'         => 'عرض',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'expandtemplates'                  => 'Esparder plantíes',
+	'expand_templates_intro'           => "Esta páxina especial ellabora un testu espardiendo toles
+plantíes de forma recursiva. Tamién esparde les funciones d'análisis sintáuticu
+como <nowiki>{{</nowiki>#if:...}}, y variables como
+<nowiki>{{</nowiki>CURRENTDAY}}, en realidá cuasi tolo qu'heba ente llaves dobles. Funciona
+llamando a les funciones afechisques d'análisis sintáuticu de MediaWiki.",
+	'expand_templates_title'           => 'Títulu del contestu, pa {{PAGENAME}}, etc.:',
+	'expand_templates_input'           => "Testu d'entrada:",
+	'expand_templates_output'          => 'Resultáu',
+	'expand_templates_xml_output'      => 'Salida XML',
+	'expand_templates_ok'              => 'Dir',
+	'expand_templates_remove_comments' => 'Eliminar comentarios',
+	'expand_templates_generate_xml'    => "Amosar l'árbole d'análisis sintáuticu XML",
+	'expand_templates_preview'         => 'Previsualizar',
+);
+
 $messages['bcl'] = array(
 	'expand_templates_output'          => 'Resulta',
 	'expand_templates_remove_comments' => 'Tanggalon an mga komento',
@@ -606,6 +626,7 @@ Sòn a lo fa ën ciamand l\'anterprete dal programa MediaWiki.',
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'expand_templates_title'  => 'Título de contexto para {{PAGENAME}} etc.:',
 	'expand_templates_output' => 'Resultado',
 	'expand_templates_ok'     => 'OK',
 );
@@ -644,6 +665,9 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'expandtemplates'                  => 'Халыыптары тэнитии',
+	'expand_templates_intro'           => 'Бу аналлаах сирэй тиэкиһи уларытарытарыгар туох баар халыыптары тэнитэн көрдөрөр.
+Парсер функциялара эмиэ тэнитиллэллэр (холобур, <nowiki>{{</nowiki>#if:...}} уонна переменнайдар (<nowiki>{{</nowiki>CURRENTDAY}} уо.&nbsp;д.&nbsp;а.) — уопсайынан, хос фигурнай скобка иһигэр баар барыта.
+Бу дьайыы сыыһата суох, MediaWiki көмөтүнэн оҥоһуллар.',
 	'expand_templates_title'           => '{{PAGENAME}} сирэй аата уонна да атын сибидиэнньэлэр:',
 	'expand_templates_input'           => 'Киирэр сурук:',
 	'expand_templates_output'          => 'Түмүк',
@@ -765,6 +789,14 @@ $messages['te'] = array(
 	'expand_templates_ok'              => 'సరే',
 	'expand_templates_remove_comments' => 'వ్యాఖ్యలను తొలగించు',
 	'expand_templates_preview'         => 'మునుజూపు',
+);
+
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'expand_templates_output'  => 'Натиҷа',
+	'expand_templates_preview' => 'Пешнамоиш',
 );
 
 /** Tonga (faka-Tonga)

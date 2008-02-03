@@ -53,8 +53,17 @@ $messages['ar'] = array(
  * @author Esbardu
  */
 $messages['ast'] = array(
-	'blacklistedusername'     => "Nome d'usuariu na llista negra",
-	'blacklistedusernametext' => "El nome d'usuariu qu'escoyisti ta na [[MediaWiki:Usernameblacklist|llista negra de nomes d'usuariu]]. Por favor, escueyi otru nome.",
+	'blacklistedusername'             => "Nome d'usuariu na llista negra",
+	'blacklistedusernametext'         => "El nome d'usuariu qu'escoyisti ta na [[MediaWiki:Usernameblacklist|llista negra de nomes d'usuariu]]. Por favor, escueyi otru nome.",
+	'usernameblacklist'               => "<pre>
+# Les entraes d'esta llista sedrán usaes como parte d'una espresión regular
+# pa impidir la identificación d'usuarios de la llista negra. Cada elementu habría
+# ser parte d'una llista de marcadores, p. ex.
+#
+# * Foo
+# * [Bb]ar
+</pre>",
+	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|La siguiente llinia|Les siguientes llinies}} na llista blanca de nomes d'usuariu nun {{PLURAL:$1|ye válida|son válides}}; por favor {{PLURAL:$1|corríxila enantes de guardala:|corríxiles enantes de guardales:}}",
 );
 
 /** Kotava (Kotava)
@@ -627,7 +636,7 @@ $messages['ru'] = array(
 # * Foo
 # * [Bb]ar
 </pre>',
-	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Следующая строка чёрного списка имён участников ошибочна, пожалуйста, исправьте её|||Следующие строки чёрного списка имён участников ошибочны, пожалуйста, исправьте их}} перед сохранением:',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Следующая строка чёрного списка имён участников ошибочна, пожалуйста, исправьте её|Следующие строки чёрного списка имён участников ошибочны, пожалуйста, исправьте их}} перед сохранением:',
 );
 
 /** Yakut (Саха тыла)

@@ -89,9 +89,12 @@ $messages['el'] = array(
 	'player-goto-file'        => 'Αρχείο',
 );
 
-/** French (Français) */
+/** French (Français)
+ * @author Grondin
+ */
 $messages['fr'] = array(
 	'player'               => 'Lecteur',
+	'player-desc'          => "Lecteur multimedia incorporé utilisant les plugins courants du navigateur ainsi qu'une [[Special:Player|page spéciale]]",
 	'player-title'         => 'Lecteur',
 	'player-playertitle'   => 'Lecteur : $1',
 	'player-file'          => 'Nom de fichier',
@@ -101,6 +104,7 @@ $messages['fr'] = array(
 	'player-invalid-title' => 'titre non valide',
 	'player-clicktoplay'   => 'Jouer $1',
 	'player-goto-player'   => 'Lecteur',
+	'player-goto-page'     => 'Page',
 	'player-goto-file'     => 'fichier',
 );
 
@@ -172,11 +176,13 @@ $messages['lb'] = array(
 	'player-playertitle' => 'Spiller: $1',
 );
 
-/** Dutch (Nederlands) */
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'player'               => 'Speler',
+	'player'               => 'Mediaspeler',
 	'player-desc'          => 'Geïntegreerde mediaspeler die gebruik maakt van veelgebruikte browser plugins en een [[Special:Player|speciale pagina]]',
-	'player-title'         => 'Speler',
+	'player-title'         => 'Mediaspeler',
 	'player-playertitle'   => 'Speler: $1',
 	'player-file'          => 'Bestandsnaam',
 	'player-play'          => 'Afspelen',
@@ -184,7 +190,7 @@ $messages['nl'] = array(
 	'player-not-found'     => 'bestand niet gevonden',
 	'player-invalid-title' => 'ongeldige titel',
 	'player-clicktoplay'   => 'Speel $1 af',
-	'player-goto-player'   => 'speler',
+	'player-goto-player'   => 'mediaspeler',
 	'player-goto-page'     => 'Pagina',
 	'player-goto-file'     => 'bestand',
 );
@@ -256,6 +262,13 @@ $messages['pms'] = array(
 	'player-goto-file' => 'archivi',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'player-goto-page' => 'Página',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */
@@ -275,9 +288,12 @@ $messages['ru'] = array(
 	'player-goto-file'        => 'файл',
 );
 
-/** Slovak (Slovenčina) */
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
 	'player'               => 'Prehrávač',
+	'player-desc'          => 'Prehrávanie vložených multimédií pomocou bežných zásuvných modulov prehliadačov a [[Special:Player|špeciálnej stránky]]',
 	'player-title'         => 'Prehrávač',
 	'player-playertitle'   => 'Prehrávač: $1',
 	'player-file'          => 'Názov súboru',
@@ -309,3 +325,4 @@ $messages['stq'] = array(
 	'player-goto-page'        => 'Siede',
 	'player-goto-file'        => 'Doatäi',
 );
+

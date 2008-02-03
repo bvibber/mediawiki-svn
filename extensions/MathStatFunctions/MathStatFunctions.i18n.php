@@ -132,6 +132,13 @@ $messages['pms'] = array(
 	'msfunc_div_zero' => 'Division për zero',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'msfunc_div_zero' => 'Divisão por zero',
+);
+
 /** Russian (Русский)
  * @author VasilievVV
  * @author .:Ajvol:.

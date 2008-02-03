@@ -413,6 +413,16 @@ Për piasì, ch'a varda d'avej controlà sò test coma ch'as dev anans che mande
 	'createsigndoc-success'           => "La procedura për buté an firma [[$1]] a l'é andaita a bonfin. Për provela, për piasì ch'a varda [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} ambelessì].",
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'createsigndoc-pagename'      => 'Página:',
+	'createsigndoc-introtext'     => 'Introdução:',
+	'createsigndoc-optional'      => 'Opcional',
+	'createsigndoc-error-generic' => 'Erro: $1',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

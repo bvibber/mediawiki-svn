@@ -184,6 +184,7 @@ $messages['ar'] = array(
  */
 $messages['ast'] = array(
 	'boardvote'              => "Eleiciones pal Conseyu d'Alministración de Wikimedia (Board of Trustees)",
+	'boardvote-desc'         => "[[meta:Board elections|Eleiciones pal Conseyu d'Alministración de Wikimedia]]",
 	'boardvote_entry'        => "* [[Special:Boardvote/vote|Votar]]
 * [[Special:Boardvote/list|Llista de votos hasta la fecha]]
 * [[Special:Boardvote/dump|Volcáu de datos encriptaos d'eleición]]",
@@ -787,6 +788,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'boardvote'              => 'Wikimedian johtokunnan valtuutettujen vaalit',
+	'boardvote-desc'         => '[[meta:Board elections|Wikimedian johtokunnan valtuutettujen vaalit]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Äänestä]]
 * [[Special:Boardvote/list|Listaa tähänastiset äänet]]
 * [[Special:Boardvote/dump|Salattu äänestystallenne]]',
@@ -1971,6 +1973,7 @@ $messages['nds'] = array(
  */
 $messages['nl'] = array(
 	'boardvote'              => 'Wikimedia Board of Trustees-verkiezing',
+	'boardvote-desc'         => '[[meta:Board elections|Wikimedia Board of Trustees-verkiezing]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Stemmen]]
 * [[Special:Boardvote/list|Uitgebrachte stemmen tonen]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]',
@@ -2401,6 +2404,7 @@ $messages['ro'] = array(
  */
 $messages['ru'] = array(
 	'boardvote'              => 'Выборы в Совет поверенных фонда «Викимедиа»',
+	'boardvote-desc'         => '[[meta:Board elections|Выборы в Совет поверенных Викимедиа]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Проголосовать]]
 * [[Special:Boardvote/list|Посмотреть список уже проголосовавших]]
 * [[Special:Boardvote/dump|Посмотреть зашифрованную запись голосов]]',
@@ -2438,11 +2442,9 @@ $messages['ru'] = array(
 	'boardvote_user'         => 'Участник',
 	'boardvote_edits'        => 'Число правок',
 	'boardvote_days'         => 'Дни',
-	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Браузер',
 	'boardvote_listintro'    => '<p>Это список всех принятых на данный момент бюллетеней для голосования. В зашифрованном виде они доступны $1.</p>',
 	'boardvote_dumplink'     => 'здесь',
-	'boardvote_submit'       => 'OK',
 	'boardvote_strike'       => 'Зачеркнуть',
 	'boardvote_unstrike'     => 'Убрать зачёркивание',
 	'boardvote_needadmin'    => 'Эта операция доступна только администрации выборов.',
@@ -2533,6 +2535,7 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'boardvote'              => 'Voľby do Správnej rady Wikimedia',
+	'boardvote-desc'         => '[[meta:Board elections|Voľby do Rady Rady správcov Wikimedia]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Hlasovať]]
 * [[Special:Boardvote/list|Zobraziť doterajšie hlasy]]
 * [[Special:Boardvote/dump|Vypísať kryptovaný záznam volieb]]',
@@ -2959,6 +2962,25 @@ $messages['te'] = array(
 	'boardvote_blocked'      => 'క్షమించండి, మీరు నమోదైన వికీలో మీమ్మల్ని నిషేధించారు. నిషేధించిన వాడుకరులకు వోటెయ్యడానికి అనుమతిలేదు.',
 	'boardvote_welcome'      => "స్వాగతం '''$1'''!",
 	'go_to_board_vote'       => 'వికీమీడియా బోర్డు ఎన్నికలు 2007',
+);
+
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'boardvote_time'       => 'Вақт',
+	'boardvote_user'       => 'Корбар',
+	'boardvote_edits'      => 'Вироишҳо',
+	'boardvote_days'       => 'Рӯзҳо',
+	'boardvote_ip'         => 'Нишонаи IP',
+	'boardvote_ua'         => 'Амали корбар (user agent)',
+	'boardvote_dumplink'   => 'Инҷо клик кунед',
+	'boardvote_strike'     => 'Хат задан',
+	'boardvote_unstrike'   => 'Ах хат задан озод кардан',
+	'boardvote_needadmin'  => 'Фақат мудирони интихобот метавонанд ин коро анҷом диҳанд',
+	'boardvote_notstarted' => 'Раъйпурсӣ ҳануз шурӯъ нашудааст',
+	'boardvote_edits_many' => 'бисёр',
+	'boardvote_welcome'    => "Хуш омадед '''$1'''!",
 );
 
 /** Tonga (faka-Tonga)

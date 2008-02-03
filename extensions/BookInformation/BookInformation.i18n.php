@@ -44,6 +44,7 @@ $messages['ar'] = array(
  */
 $messages['ast'] = array(
 	'bookinfo-header'            => 'Información de llibros',
+	'bookinfo-desc'              => "Esparde [[Special:Booksources]] con información proviniente d'un serviciu web",
 	'bookinfo-result-title'      => 'Títulu:',
 	'bookinfo-result-author'     => 'Autor:',
 	'bookinfo-result-publisher'  => 'Editor:',
@@ -142,6 +143,7 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'bookinfo-header'            => 'Informace o knihách',
+	'bookinfo-desc'              => 'Rozšiřuje speciální stránku [[Special:Booksources|Zdroje knih]] o informace z internetových služeb',
 	'bookinfo-result-title'      => 'Název:',
 	'bookinfo-result-author'     => 'Autor:',
 	'bookinfo-result-publisher'  => 'Vydavatel:',
@@ -232,19 +234,22 @@ $messages['fa'] = array(
 
 );
 
-/* Finnish (Niklas Laxström) */
+/** Finnish (Suomi)
+ * @author Nike
+ */
 $messages['fi'] = array(
-	'bookinfo-header' => 'Kirjan tiedot',
-	'bookinfo-result-title' => 'Nimi:',
-	'bookinfo-result-author' => 'Tekijä:',
-	'bookinfo-result-publisher' => 'Kustantaja:',
-	'bookinfo-result-year' => 'Vuosi:',
+	'bookinfo-header'            => 'Kirjan tiedot',
+	'bookinfo-desc'              => 'Laajentaa [[Special:Booksources|kirjalähdesivun]] tietoja verkkopalveluista',
+	'bookinfo-result-title'      => 'Nimi:',
+	'bookinfo-result-author'     => 'Tekijä:',
+	'bookinfo-result-publisher'  => 'Kustantaja:',
+	'bookinfo-result-year'       => 'Vuosi:',
 	'bookinfo-error-invalidisbn' => 'Kelpaamaton ISBN.',
-	'bookinfo-error-nosuchitem' => 'Nimikettä ei ole olemassa tai sitä ei löytynyt.',
-	'bookinfo-error-nodriver' => 'Kirjatietoajurin alustus ei onnistunut.',
-	'bookinfo-error-noresponse' => 'Ei vastausta tai pyyntö aikakatkaistiin.',
-	'bookinfo-purchase' => 'Osta tämä kirja: $1',
-	'bookinfo-provider' => 'Tietolähde: $1',
+	'bookinfo-error-nosuchitem'  => 'Nimikettä ei ole olemassa tai sitä ei löytynyt.',
+	'bookinfo-error-nodriver'    => 'Kirjatietoajurin alustus ei onnistunut.',
+	'bookinfo-error-noresponse'  => 'Ei vastausta tai pyyntö aikakatkaistiin.',
+	'bookinfo-purchase'          => 'Osta tämä kirja: $1',
+	'bookinfo-provider'          => 'Tietolähde: $1',
 );
 
 /* French */
@@ -308,18 +313,22 @@ $messages['hr'] = array(
 	'bookinfo-provider' => 'Dobavljač podataka: $1',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'bookinfo-header' => 'Informacije wo knihach',
-	'bookinfo-result-title' => 'Titul:',
-	'bookinfo-result-author' => 'Awtor:',
-	'bookinfo-result-publisher' => 'Nakładnistwo:',
-	'bookinfo-result-year' => 'Lěto:',
+	'bookinfo-header'            => 'Informacije wo knihach',
+	'bookinfo-desc'              => 'Rozšěrja [[Special:booksources]] z informacijemi z websłužby',
+	'bookinfo-result-title'      => 'Titul:',
+	'bookinfo-result-author'     => 'Awtor:',
+	'bookinfo-result-publisher'  => 'Nakładnistwo:',
+	'bookinfo-result-year'       => 'Lěto:',
 	'bookinfo-error-invalidisbn' => 'ISBN njepłaćiwe.',
-	'bookinfo-error-nosuchitem' => 'Artikl njeeksistuje abo njeda so namakać.',
-	'bookinfo-error-nodriver' => 'Njeběše móžno wotpowědny ćěrjak za informacije wo knihach inicializować.',
-	'bookinfo-error-noresponse' => 'Žana wotmołwa abo překročenje časa.',
-	'bookinfo-purchase' => 'Tuta kniha hodźi so wot $1 kupić.',
-	'bookinfo-provider' => 'Dodawar datow: $1',
+	'bookinfo-error-nosuchitem'  => 'Artikl njeeksistuje abo njeda so namakać.',
+	'bookinfo-error-nodriver'    => 'Njeběše móžno wotpowědny ćěrjak za informacije wo knihach inicializować.',
+	'bookinfo-error-noresponse'  => 'Žana wotmołwa abo překročenje časa.',
+	'bookinfo-purchase'          => 'Tuta kniha hodźi so wot $1 kupić.',
+	'bookinfo-provider'          => 'Dodawar datow: $1',
 );
 
 /** Hungarian (Magyar)
@@ -522,19 +531,22 @@ $messages['nds'] = array(
 	'bookinfo-result-year'      => 'Johr:',
 );
 
-/* nld / Dutch (Dirk Beetstra) */
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'bookinfo-header' => 'Boekinformatie',
-	'bookinfo-result-title' => 'Titel:',
-	'bookinfo-result-author' => 'Auteur:',
-	'bookinfo-result-publisher' => 'Uitgever:',
-	'bookinfo-result-year' => 'Jaar:',
+	'bookinfo-header'            => 'Boekinformatie',
+	'bookinfo-desc'              => 'Uitbreiding voor [[Special:Booksources]] met informatie van een webservice',
+	'bookinfo-result-title'      => 'Titel:',
+	'bookinfo-result-author'     => 'Auteur:',
+	'bookinfo-result-publisher'  => 'Uitgever:',
+	'bookinfo-result-year'       => 'Jaar:',
 	'bookinfo-error-invalidisbn' => 'Onjuist ISBN ingegeven.',
-	'bookinfo-error-nosuchitem' => 'Bestaat niet of kon niet gevonden worden.',
-	'bookinfo-error-nodriver' => 'Kon de juiste Boekinformatie Driver niet initialiseren.',
-	'bookinfo-error-noresponse' => 'Geen antwoord of een time-out.',
-	'bookinfo-purchase' => 'Koop dit boek bij $1',
-	'bookinfo-provider' => 'Gegevens geleverd door: $1',
+	'bookinfo-error-nosuchitem'  => 'Bestaat niet of kon niet gevonden worden.',
+	'bookinfo-error-nodriver'    => 'Kon de juiste Boekinformatie Driver niet initialiseren.',
+	'bookinfo-error-noresponse'  => 'Geen antwoord of een time-out.',
+	'bookinfo-purchase'          => 'Koop dit boek bij $1',
+	'bookinfo-provider'          => 'Gegevens geleverd door: $1',
 );
 
 /* Norwegian (Jon Harald Søby) */
@@ -646,19 +658,22 @@ $messages['ro'] = array(
 	'bookinfo-purchase' => 'Cumpăraţi această carte de la $1',
 );
 
-/* Russian (Alexander Sigaachov) */
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
 $messages['ru'] = array(
-	'bookinfo-header' => 'Информация о книге',
-	'bookinfo-result-title' => 'Название:',
-	'bookinfo-result-author' => 'Автор:',
-	'bookinfo-result-publisher' => 'Издательство:',
-	'bookinfo-result-year' => 'Год:',
+	'bookinfo-header'            => 'Информация о книге',
+	'bookinfo-desc'              => 'Расширяет [[Special:Booksources]] сведениями из веб-служб',
+	'bookinfo-result-title'      => 'Название:',
+	'bookinfo-result-author'     => 'Автор:',
+	'bookinfo-result-publisher'  => 'Издательство:',
+	'bookinfo-result-year'       => 'Год:',
 	'bookinfo-error-invalidisbn' => 'Ошибочная ISBN-запись.',
-	'bookinfo-error-nosuchitem' => 'Данные отсутствуют или не могут быть найдены.',
-	'bookinfo-error-nodriver' => 'Ошибка инициализации соответствующего драйвера информации о книгах.',
-	'bookinfo-error-noresponse' => 'Нет ответа или превышение времени ожидания ответа.',
-	'bookinfo-purchase' => 'Купить эту книгу на $1',
-	'bookinfo-provider' => 'Поставщик информации: $1',
+	'bookinfo-error-nosuchitem'  => 'Данные отсутствуют или не могут быть найдены.',
+	'bookinfo-error-nodriver'    => 'Ошибка инициализации соответствующего драйвера информации о книгах.',
+	'bookinfo-error-noresponse'  => 'Нет ответа или превышение времени ожидания ответа.',
+	'bookinfo-purchase'          => 'Купить эту книгу на $1',
+	'bookinfo-provider'          => 'Поставщик информации: $1',
 );
 
 $messages['sah'] = array(
@@ -675,18 +690,22 @@ $messages['sah'] = array(
 	'bookinfo-provider' => 'Информацияны ким биэрбитэ: $1',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
-	'bookinfo-header' => 'Informácie o knihách',
-	'bookinfo-result-title' => 'Názov:',
-	'bookinfo-result-author' => 'Autor:',
-	'bookinfo-result-publisher' => 'Vydavateľ:',
-	'bookinfo-result-year' => 'Rok:',
+	'bookinfo-header'            => 'Informácie o knihách',
+	'bookinfo-desc'              => 'Rozširuje [[Special:Booksources|Knižné zdroje]] o informácie z webovej služby',
+	'bookinfo-result-title'      => 'Názov:',
+	'bookinfo-result-author'     => 'Autor:',
+	'bookinfo-result-publisher'  => 'Vydavateľ:',
+	'bookinfo-result-year'       => 'Rok:',
 	'bookinfo-error-invalidisbn' => 'Zadané neplatné ISBN.',
-	'bookinfo-error-nosuchitem' => 'Položka neexistuje alebo nebola nenájdená.',
-	'bookinfo-error-nodriver' => 'Nebolo možné inicializovať vhodný ovládač pre informácie o knihách.',
-	'bookinfo-error-noresponse' => 'Bez odpovede alebo čas vyhradený na odpoveď vypršal.',
-	'bookinfo-purchase' => 'Kúpiť túto knihu z $1',
-	'bookinfo-provider' => 'Poskytovateľ údajov: $1',
+	'bookinfo-error-nosuchitem'  => 'Položka neexistuje alebo nebola nenájdená.',
+	'bookinfo-error-nodriver'    => 'Nebolo možné inicializovať vhodný ovládač pre informácie o knihách.',
+	'bookinfo-error-noresponse'  => 'Bez odpovede alebo čas vyhradený na odpoveď vypršal.',
+	'bookinfo-purchase'          => 'Kúpiť túto knihu z $1',
+	'bookinfo-provider'          => 'Poskytovateľ údajov: $1',
 );
 
 /** ћирилица (ћирилица)
@@ -722,6 +741,7 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'bookinfo-header'            => 'Bokinformation',
+	'bookinfo-desc'              => 'Visar ytterligare information från en webbtjänst på [[Special:Booksources]]',
 	'bookinfo-result-title'      => 'Titel:',
 	'bookinfo-result-author'     => 'Författare:',
 	'bookinfo-result-publisher'  => 'Utgivare:',
@@ -743,6 +763,7 @@ $messages['te'] = array(
 	'bookinfo-result-author'    => 'రచయిత:',
 	'bookinfo-result-publisher' => 'ప్రచురణకర్త:',
 	'bookinfo-result-year'      => 'సంవత్సరం:',
+	'bookinfo-purchase'         => '$1 నుండి ఈ పుస్తకాన్ని కొనండి',
 );
 
 /** Tetum (Tetun)
@@ -753,6 +774,17 @@ $messages['tet'] = array(
 	'bookinfo-result-title'  => 'Títulu:',
 	'bookinfo-result-author' => 'Autór:',
 	'bookinfo-result-year'   => 'Tinan:',
+);
+
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'bookinfo-header'           => 'Иттилооти китоб',
+	'bookinfo-result-title'     => 'Унвон:',
+	'bookinfo-result-author'    => 'Муаллиф:',
+	'bookinfo-result-publisher' => 'Нашриёт:',
+	'bookinfo-result-year'      => 'Соли интишор:',
 );
 
 /** Turkish (Türkçe)

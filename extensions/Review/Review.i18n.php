@@ -455,6 +455,14 @@ $messages['pl'] = array(
 	'review_sidebar_title' => 'Ocenianie',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'review_total_statistics'       => 'Total',
+	'review_version_statistic_cell' => '$1 de $2',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

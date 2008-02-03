@@ -184,6 +184,13 @@ $messages['oc'] = array(
 	'spamdifftool_submit_buttom'    => 'Sometre',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'spamdifftool_option_none' => 'nada',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

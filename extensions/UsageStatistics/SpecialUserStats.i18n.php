@@ -279,6 +279,24 @@ $messages['oc'] = array(
 	'usagestatisticsbadstartend' => '<b>Format de data de <i>començament</i> o de <i>fin</i> marrit !</b>',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'specialuserstats'           => 'Štatistika používanosti',
+	'usagestatistics'            => 'Štatistika používanosti',
+	'usagestatisticsfor'         => '<h2>Štatistika používanosti pre používateľa [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'    => 'Všetci používatelia',
+	'usagestatisticsinterval'    => 'Interval',
+	'usagestatisticstype'        => 'Typ',
+	'usagestatisticsstart'       => 'Dátum začiatku',
+	'usagestatisticsend'         => 'Dátum konca',
+	'usagestatisticssubmit'      => 'Vytvoriť štatistiku',
+	'usagestatisticsnostart'     => '* <font color=red>Prosím, uveďte dátum začiatku</font>',
+	'usagestatisticsnoend'       => '* <font color=red>Prosím, uveďte dátum konca</font>',
+	'usagestatisticsbadstartend' => '<b>Chybný dátum <i>začiatku</i> a/alebo <i>konca</i>!</b>',
+);
+
 /** Swedish (Svenska)
  * @author Max sonnelid
  */

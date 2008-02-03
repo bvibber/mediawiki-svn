@@ -162,6 +162,13 @@ $messages['pms'] = array(
 	'profiling-no-data' => 'A l\'é pa trovasse gnun dat parej.',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'profiling-ok' => 'OK',
+);
+
 /* Slovak (helix84) */
 $messages['sk'] = array(
 	'profiling' => 'Profilovacie údaje',

@@ -103,6 +103,46 @@ $messages['bg'] = array(
 	'oversight-hidden'      => 'Скрита редакция',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'hiderevision'                => 'Revisiones escondíes permanentemente',
+	'hiderevision-prompt'         => 'Númberu de revisión pa eliminar:',
+	'hiderevision-continue'       => 'Continuar',
+	'hiderevision-text'           => "Esto habría usase '''namái''' nos siguientes casos:
+* Información personal non apropiada
+*: ''direiciones y númberos de teléfonu del domiciliu, númberos de seguridá sociales, etc''
+
+'''L'abusu d'esti sistema llevará a la perda de privilexos.'''
+
+Los elementos eliminaos nun van ser visibles por naide nel sitiu web,
+pero los borraos queden rexistraos y si t'enquivoques puen ser restauraos
+manualmente por un alministrador de la base de datos.",
+	'hiderevision-reason'         => 'Motivu (rexistraráse de forma privada):',
+	'hiderevision-submit'         => 'Esconder permanentemente estos datos',
+	'hiderevision-tab'            => 'Esconder revisión',
+	'hiderevision-norevisions'    => "Nun s'especificaron revisiones pa borrar.",
+	'hiderevision-noreason'       => "Has describir el motivu d'esta eliminación.",
+	'hiderevision-status'         => 'Revisión $1: $2',
+	'hiderevision-success'        => 'Archivada y borrada con ésitu.',
+	'hiderevision-error-missing'  => 'Non atopada na base de datos.',
+	'hiderevision-error-current'  => "Nun se pue borrar la cabera edición d'una páxina. Revierti primero esti cambéu.",
+	'hiderevision-error-delete'   => 'Nun se pudo archivar; ¿taría yá borrada previamente?',
+	'hiderevision-archive-status' => 'Revisión borrada de $1: $2',
+	'oversight-nodiff'            => 'Nun se pudieron deteutar cambeos yá que nestos momentos nun hai revisiones previes de la páxina.
+*La páxina foi borrada; o
+*Esta revisión escondida yera la primer revisión',
+	'oversight-log-hiderev'       => 'eliminó una edición de $1',
+	'oversight'                   => 'Supervisión',
+	'oversight-view'              => 'detalles',
+	'oversight-difference'        => '(Diferencia ente les revisiones previes restantes)',
+	'oversight-prev'              => 'Cabera revisión previa',
+	'oversight-hidden'            => 'Revisión escondida',
+	'oversight-header'            => 'Embaxo amuésase una llista de les revisiones escondíes recién permanentemente de la vista pública.
+Esparder esta información pue llevar a la perda permanente de privilexos de supervisión.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -1237,10 +1277,15 @@ Användare som sprider den här informationen vidare kan få sina översynsrätt
  * @author Veeven
  */
 $messages['te'] = array(
-	'hiderevision-continue' => 'కొనసాగించు',
-	'hiderevision-submit'   => 'ఈ డాటాని శాశ్వతంగా దాచు',
-	'hiderevision-tab'      => 'కూర్పుని దాచు',
-	'oversight-view'        => 'వివరాలు',
+	'hiderevision'               => 'కూర్పులను శాశ్వతంగా దాచు',
+	'hiderevision-continue'      => 'కొనసాగించు',
+	'hiderevision-submit'        => 'ఈ డాటాని శాశ్వతంగా దాచు',
+	'hiderevision-tab'           => 'కూర్పుని దాచు',
+	'hiderevision-noreason'      => 'ఈ తొలగింపుకి మీరు తప్పనిసరిగా కారణం వివరించాలి.',
+	'hiderevision-status'        => 'కూర్పు $1: $2',
+	'hiderevision-error-missing' => 'డాటాబేసులో కనబడలేదు.',
+	'oversight-view'             => 'వివరాలు',
+	'oversight-hidden'           => 'దాచిన కూర్పు',
 );
 
 $messages['tet'] = array(
@@ -1252,6 +1297,25 @@ $messages['tet'] = array(
 	'oversight-log-hiderev' => 'subar edita husi $1',
 	'oversight-view' => 'barak liu',
 	'oversight-hidden' => 'Versaun nasubar tiha ona',
+);
+
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'hiderevision'               => 'Бо ҳамешагӣ пинҳон кардани нусхаҳо',
+	'hiderevision-prompt'        => 'Шумораи нусхаҳое, ки ҳазф мешаванд:',
+	'hiderevision-continue'      => 'Идома',
+	'hiderevision-submit'        => 'Пинҳон кардан ин дода бо ҳамешагӣ',
+	'hiderevision-tab'           => 'Пинҳон кардани нусха',
+	'hiderevision-norevisions'   => 'Нусхае барои ҳазф мушаххас нашуда буд.',
+	'hiderevision-noreason'      => 'Шумо бояд далели ин ҳазфро тавзеҳ диҳед.',
+	'hiderevision-success'       => 'Бо муваффақият бойгонӣ ва ҳазф шуд.',
+	'hiderevision-error-missing' => 'Дар пойгоҳи дода пайдо нашуд.',
+	'oversight'                  => 'Назар',
+	'oversight-view'             => 'бештар',
+	'oversight-prev'             => 'Охирин нусхаи қаблӣ',
+	'oversight-hidden'           => 'Нусхаи пинҳоншуда',
 );
 
 /** Turkish (Türkçe)

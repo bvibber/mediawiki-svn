@@ -352,6 +352,8 @@ $messages['oc'] = array(
  */
 $messages['pt'] = array(
 	'pdtest_no_changes' => 'Nenhuma alteração detectada.',
+	'pdtest_title'      => 'Título do contexto:',
+	'pdtest_ok'         => 'OK',
 	'pdtest_get_text'   => 'Obter texto da página',
 	'pdtest_diff'       => 'Diferenças',
 );
@@ -452,6 +454,13 @@ $messages['te'] = array(
 	'pdtest_diff'        => 'తేడాలు',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'pdtest_diff' => 'Фарқиятҳо',
+);
+
 /** Turkish (Türkçe)
  * @author Erkan Yilmaz
  */
@@ -478,11 +487,14 @@ $messages['vi'] = array(
 );
 
 /** Volapük (Volapük)
+ * @author Malafaya
  * @author Smeira
  */
 $messages['vo'] = array(
-	'pdtest_no_changes' => 'Votükams nonik petuvons.',
-	'pdtest_diff'       => 'Difs',
+	'pdtest_no_changes'   => 'Votükams nonik petuvons.',
+	'pdtest_get_text'     => 'Getolöd vödemi se pad',
+	'pdtest_diff'         => 'Difs',
+	'pdtest_side_by_side' => 'Jonolöd leigodi',
 );
 
 $messages['de-formal'] = $messages['de'];

@@ -119,6 +119,13 @@ $messages['sv'] = array(
 	'seealso' => 'Se även',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'seealso' => 'Logolös i',
+);
+
 /** ‪中文(台灣)‬ (‪中文(台灣)‬)
  * @author Roc michael
  */

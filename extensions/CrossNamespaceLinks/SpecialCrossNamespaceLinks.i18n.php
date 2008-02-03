@@ -108,10 +108,14 @@ $messages['fa'] = array(
 
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
 $messages['fi'] = array(
 	'crossnamespacelinks'         => 'Nimiavaruuksienväliset linkit',
+	'crossnamespacelinks-desc'    => 'Listaa [[Special:CrossNamespaceLinks|nimiavaruuksien ylittävät linkit]], joita ei pitäisi olla.',
 	'crossnamespacelinks-summary' => 'Alla on lista linkeistä, jotka osoittavat päänimiavaruudesta toiseen nimiavaruuteen — pois lukien linkit {{ns:special}}-, {{ns:talk}}-, {{ns:project}}- ja {{ns:template}}nimiavaruuksiin. Linkkejä muihin nimiavaruuksiin tulisi välttää.',
-	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|linkki|linkkiä}} nimiavaruuteen $3'
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|linkki|linkkiä}} nimiavaruuteen $3',
 );
 
 $messages['fo'] = array(
@@ -366,14 +370,32 @@ $messages['ro'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 se leagă la $3',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
 $messages['ru'] = array(
 	'crossnamespacelinks'         => 'Ссылки между пространствами имён',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Выводит список ссылок между пространствами имён]], которых не должно быть в {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'На этой странице приведён список ссылок со страниц в основном пространстве имён на страницы в других пространствах (за исключением пространств имён: {{ns:special}}, {{ns:talk}}, {{ns:project}} и {{ns:template}}). Подобные ссылки не рекомендуется ставить.',
-	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|ссылка|ссылки|ссылок}} на $3'
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|ссылка|ссылки|ссылок}} на $3',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'crossnamespacelinks'         => 'Namespace`тар ыккардыларынааҕы ыйынньыктар',
+	'crossnamespacelinks-summary' => 'Манна сүрүн namespace сирэйдэриттэн атын namespace сирэйдэригэр сигэнэр ыйынньыктар испииһэктэрэ көрдөрүлүннэ (балартан ураты: {{ns:special}}, {{ns:talk}}, {{ns:project}} и {{ns:template}}). Маннык ыйынньыктары туруорар оччо биһирэммэт.',
+	'crossnamespacelinkstext'     => '$1: $3 билигин $2 {{PLURAL:$2|ыйынньыктаах|ыйынньыктаах}}',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ * @author Robbot
+ */
 $messages['sk'] = array(
 	'crossnamespacelinks'         => 'Odkazy medzi mennými priestormi',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Vypisuje odkazy medzi mennými priestormi]], ktoé by nemali na {{GRAMMAR:lokál|{{SITENAME}}}} existovať',
 	'crossnamespacelinks-summary' => 'Táto stránka poskytuje zoznam odkazov zo stránky v hlavnom mennom priestore na stránky v ostatných menných priestoroch (okrem menných priestorov {{ns:special}}, {{ns:talk}}, {{ns:project}} a {{ns:template}}), ktoré neradno používať.',
 	'crossnamespacelinkstext'     => '$1: $2 odkazuje na $3',
 );

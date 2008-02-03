@@ -288,6 +288,14 @@ $messages['pms'] = array(
 	'formsaveerrortext' => 'A-i é sta-ie n\'eror amprevist ën salvand la pàgina \'$1\'.',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'formtitlepattern'  => 'Adicionar Novo $1',
+	'formarticleexists' => 'Página Existe',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

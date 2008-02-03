@@ -34,6 +34,7 @@ $messages['ar'] = array(
  */
 $messages['ast'] = array(
 	'assert_edit_title'   => "Falló l'afirmación",
+	'assert_edit_desc'    => "Añade afirmaciones d'edición pa ser usaes por bots",
 	'assert_edit_message' => "Falló l'afirmación especificada ($1).",
 );
 
@@ -86,6 +87,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'assert_edit_title'   => 'Vahvistus epäonnistui',
+	'assert_edit_desc'    => 'Muokkausvahvistusmahdollisuus boteille',
 	'assert_edit_message' => 'Määritelty vahvistus ($1) epäonnistui.',
 );
 
@@ -127,6 +129,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'assert_edit_title'   => 'Twjerdźenje njeporadźiło',
+	'assert_edit_desc'    => 'Přidawa kontrolowe dypki za wužiwanje přez boćiki',
 	'assert_edit_message' => 'Podate twjerdźenje ($1) je so njeporadźiło.',
 );
 
@@ -237,6 +240,7 @@ $messages['qu'] = array(
  */
 $messages['ru'] = array(
 	'assert_edit_title'   => 'Утверждение не выполняется',
+	'assert_edit_desc'    => 'Добавляет утверждения для использования ботами',
 	'assert_edit_message' => 'Указанное утверждение ($1) не выполняется.',
 );
 
@@ -253,6 +257,7 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'assert_edit_title'   => 'Predpoklad zlyhal',
+	'assert_edit_desc'    => 'Pridáva predpoklady pre úpravy, ktoré využijú roboty',
 	'assert_edit_message' => 'Uvedený predpoklad ($1) zlyhal.',
 );
 
@@ -269,7 +274,15 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'assert_edit_title'   => 'Försäkran misslyckades',
+	'assert_edit_desc'    => 'Ger robotar möjlighet att använda redigeringsförsäkringar',
 	'assert_edit_message' => 'Den försäkran som angavs ($1) misslyckades.',
+);
+
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'assert_edit_title' => 'Таъйид номуваффақ шуд',
 );
 
 /** Vietnamese (Tiếng Việt)

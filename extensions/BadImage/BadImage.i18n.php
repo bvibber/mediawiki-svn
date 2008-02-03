@@ -417,26 +417,30 @@ $messages['hr'] = array(
 	'badimages-page'           => '{{ns:help}}:Popis loših slika',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'badimages' => 'Lisćina njewitanych wobrazow',
-	'badimages-add-btn' => 'Přidać',
-	'badimages-added' => '$1 bu k lisćinje přidaty.',
-	'badimages-count' => 'Lisćina njewitanych wobrazow \'\'\'$1\'\'\' zapiskow wobsahuje.',
-	'badimages-name' => 'Mjeno:',
-	'badimages-not-added' => 'Wobraz njeda so přidać.',
-	'badimages-not-removed' => 'Wobraz njeda so wotstronić.',
-	'badimages-reason' => 'Přičina:',
-	'badimages-remove' => '(wotstronić)',
-	'badimages-remove-btn' => 'Wotstronić',
+	'badimages'                => 'Lisćina njewitanych wobrazow',
+	'badimages-desc'           => 'Móžnosće lisćiny njepožadanych wobrazow w MediaWiki rozšěrić',
+	'badimages-add-btn'        => 'Přidać',
+	'badimages-added'          => '$1 bu k lisćinje přidaty.',
+	'badimages-count'          => "Lisćina njewitanych wobrazow '''$1''' zapiskow wobsahuje.",
+	'badimages-name'           => 'Mjeno:',
+	'badimages-not-added'      => 'Wobraz njeda so přidać.',
+	'badimages-not-removed'    => 'Wobraz njeda so wotstronić.',
+	'badimages-reason'         => 'Přičina:',
+	'badimages-remove'         => '(wotstronić)',
+	'badimages-remove-btn'     => 'Wotstronić',
 	'badimages-remove-confirm' => 'Prošu potwjerdź, zo chceš $1 z lisćiny wotstronić.',
-	'badimages-removed' => '$1 bu z lisćiny wotstronjeny.',
-	'badimages-subheading' => 'Aktualne zapiski',
-	'badimages-unprivileged' => '(Nimaš woprawnjenje, zo by lisćinu změnił)',
-	'badimages-log-name' => 'Lisćina njewitanych wobrazow',
-	'badimages-log-header' => 'To je protokol změnow w lisćinje njewitanych wobrazow.',
-	'badimages-log-add' => 'přida [[$1]] k lisćinje njewitanych wobrazow',
-	'badimages-log-remove' => 'wotstroni [[$1]] z lisćiny njewitanych wobrazow',
-	'badimages-page' => '{{ns:help}}:Lisćina njewitanych wobrazow',
+	'badimages-removed'        => '$1 bu z lisćiny wotstronjeny.',
+	'badimages-subheading'     => 'Aktualne zapiski',
+	'badimages-unprivileged'   => '(Nimaš woprawnjenje, zo by lisćinu změnił)',
+	'badimages-log-name'       => 'Lisćina njewitanych wobrazow',
+	'badimages-log-header'     => 'To je protokol změnow w lisćinje njewitanych wobrazow.',
+	'badimages-log-add'        => 'přida [[$1]] k lisćinje njewitanych wobrazow',
+	'badimages-log-remove'     => 'wotstroni [[$1]] z lisćiny njewitanych wobrazow',
+	'badimages-page'           => '{{ns:help}}:Lisćina njewitanych wobrazow',
 );
 
 /** Hungarian (Magyar)
@@ -838,27 +842,30 @@ $messages['scn'] = array(
 	'badimages-log-remove' => 'rimovìu [[$1]] dâ lista dê file discutibbili',
 );
 
-/* Slovak (helix84) */
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
-	'badimages' => 'Zoznam zlých obrázkov',
-	'badimages-add-btn' => 'Pridať',
-	'badimages-added' => '$1 bol pridaný do zoznamu.',
-	'badimages-count' => 'V zozname zlých obrázkov je \'\'\'$1\'\'\' obrázkov.',
-	'badimages-name' => 'Názov:',
-	'badimages-not-added' => 'Obrázok nebolo možné pridať.',
-	'badimages-not-removed' => 'Obrázok nebolo možné odstrániť.',
-	'badimages-reason' => 'Dôvod:',
-	'badimages-remove' => '(odstrániť)',
-	'badimages-remove-btn' => 'Odstrániť',
+	'badimages'                => 'Zoznam zlých obrázkov',
+	'badimages-desc'           => 'Rozširuje schopnosti Zoznamu zlých obrázkov MediaWiki',
+	'badimages-add-btn'        => 'Pridať',
+	'badimages-added'          => '$1 bol pridaný do zoznamu.',
+	'badimages-count'          => "V zozname zlých obrázkov je '''$1''' obrázkov.",
+	'badimages-name'           => 'Názov:',
+	'badimages-not-added'      => 'Obrázok nebolo možné pridať.',
+	'badimages-not-removed'    => 'Obrázok nebolo možné odstrániť.',
+	'badimages-reason'         => 'Dôvod:',
+	'badimages-remove'         => '(odstrániť)',
+	'badimages-remove-btn'     => 'Odstrániť',
 	'badimages-remove-confirm' => 'Prosím potvrďte odstránenie $1 zo zoznamu:',
-	'badimages-removed' => '$1 bol odstránený zo zoznamu.',
-	'badimages-subheading' => 'Aktuálne položky',
-	'badimages-unprivileged' => '(pre zmenu zoznamu nemáte dostatočné oprávnenie)',
-	'badimages-log-name' => 'Zoznam zlých obrázkov',
-	'badimages-log-header' => 'Toto je záznam zmien [[{{MediaWiki:Badimages-page}}|Zoznamu zlých obrázkov]].',
-	'badimages-log-add' => '[[$1]] pridaný do zoznamu zlých obrázkov',
-	'badimages-log-remove' => '[[$1]] odstránený zo zoznamu zlých obrázkov',
-	'badimages-page' => '{{ns:help}}:Zoznam zlých obrázkov',
+	'badimages-removed'        => '$1 bol odstránený zo zoznamu.',
+	'badimages-subheading'     => 'Aktuálne položky',
+	'badimages-unprivileged'   => '(pre zmenu zoznamu nemáte dostatočné oprávnenie)',
+	'badimages-log-name'       => 'Zoznam zlých obrázkov',
+	'badimages-log-header'     => 'Toto je záznam zmien [[{{MediaWiki:Badimages-page}}|Zoznamu zlých obrázkov]].',
+	'badimages-log-add'        => '[[$1]] pridaný do zoznamu zlých obrázkov',
+	'badimages-log-remove'     => '[[$1]] odstránený zo zoznamu zlých obrázkov',
+	'badimages-page'           => '{{ns:help}}:Zoznam zlých obrázkov',
 );
 
 /* Serbian default (Sasa Stefanovic) */

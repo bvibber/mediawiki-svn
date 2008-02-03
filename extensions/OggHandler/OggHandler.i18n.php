@@ -1060,7 +1060,7 @@ $messages['qu'] = array(
 );
 
 /** Russian (Русский)
- * @author HalanTul
+ * @author .:Ajvol:.
  */
 $messages['ru'] = array(
 	'ogg-short-audio'         => 'Звуковой файл Ogg $1, $2',
@@ -1074,7 +1074,7 @@ $messages['ru'] = array(
 	'ogg-play'                => 'Воспроизвести',
 	'ogg-pause'               => 'Пауза',
 	'ogg-stop'                => 'Остановить',
-	'ogg-play-video'          => 'Воспроизвести изображение',
+	'ogg-play-video'          => 'Воспроизвести видео',
 	'ogg-play-sound'          => 'Воспроизвести звук',
 	'ogg-no-player'           => 'Извините, ваша система не имеет необходимого программного обеспечение для воспроизведения файлов. Пожалуйста, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">скачайте проигрыватель</a>.',
 	'ogg-no-xiphqt'           => 'Отсутствует компонент XiphQT для QuickTime. QuickTime не может воспроизвести файл Ogg без этого компонента. Пожалуйста, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">скачайте XiphQT</a> или выберите другой проигрыватель.',
@@ -1220,10 +1220,29 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'ogg-short-audio'         => 'Ogg $1 శ్రావ్యక ఫైలు, $2',
+	'ogg-short-video'         => 'Ogg $1 వీడియో ఫైలు, $2',
+	'ogg-short-general'       => 'Ogg $1 మీడియా ఫైలు, $2',
+	'ogg-long-audio'          => '(Ogg $1 శ్రవణ ఫైలు, నిడివి $2, $3)',
+	'ogg-long-video'          => '(Ogg $1 వీడియో ఫైలు, నిడివి $2, $4×$5 పిక్సెళ్ళు, $3)',
+	'ogg-long-general'        => '(Ogg మీడియా ఫైలు, నిడివి $2, $3)',
 	'ogg-player-videoElement' => '<video> మూలకం',
+	'ogg-player-oggPlugin'    => 'Ogg ప్లగిన్',
+	'ogg-player-thumbnail'    => 'నిచ్చల చిత్రాలు మాత్రమే',
 	'ogg-more'                => 'మరిన్ని...',
 	'ogg-dismiss'             => 'మూసివేయి',
+	'ogg-download'            => 'ఫైలుని దిగుమతి చేసుకోండి',
 	'ogg-desc-link'           => 'ఈ ఫైలు గురించి',
+);
+
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'ogg-more'      => 'Бештар...',
+	'ogg-dismiss'   => 'Бастан',
+	'ogg-download'  => 'Боргирии парванда',
+	'ogg-desc-link' => 'Дар бораи ин парванда',
 );
 
 /** Turkish (Türkçe)

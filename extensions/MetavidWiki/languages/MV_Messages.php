@@ -1066,6 +1066,7 @@ $messages['oc'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Malafaya
  */
 $messages['pt'] = array(
 	'metavid'                     => 'Página Metavid',
@@ -1093,6 +1094,7 @@ $messages['pt'] = array(
 	'mv_tool_export'              => 'Exportar',
 	'mv_tool_export_title'        => 'Exportar metadados do stream',
 	'anno_en'                     => 'Anotações e Categorias',
+	'mv_time_separator'           => '$1 a $2',
 	'mv_list_streams_docu'        => 'Os seguintes streams se encontram disponíveis:',
 	'mv_list_streams_none'        => 'Não há streams disponíveis',
 	'mv_play'                     => 'Tocar',

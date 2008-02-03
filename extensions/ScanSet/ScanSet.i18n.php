@@ -35,6 +35,23 @@ $messages['ar'] = array(
 	'scanset_prev' => '&lt; السابق',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'scanset_no_name'                   => 'ScanSet: Tienes qu\'especificar un nome pal scan set, p. ex. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: Scan set non válidu o ausente.',
+	'scanset_unrecognised_index_format' => "ScanSet: Formatu d'índiz desconocíu",
+	'scanset_opendir_error'             => 'ScanSet: Error, nun se pue abrir el direutoriu $1',
+	'scanset_no_files'                  => 'ScanSet: Nun hai archivos nel direutoriu especificáu.',
+	'scanset_no_volumes'                => "ScanSet: Nun s'atoparon direutorios nesti volume",
+	'scanset_missing_index_file'        => "ScanSet: Nun s'atopó l'archivu d'índiz $1",
+	'scanset_index_file_error'          => "ScanSet: Error nel formatu d'archivu d'índiz na llinia $1",
+	'scanset_invalid_volume'            => 'ScanSet: Volume non válidu',
+	'scanset_next'                      => 'Sig &gt;',
+	'scanset_prev'                      => '&lt; Ant',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

@@ -105,6 +105,13 @@ $wdMessages['en'] = array(
 	'ow_db_consistency_not_found'          => "<h2>Error</h2>There is an issue with database consistency, wikidata cannot find valid data connected to this defined meaning ID. It might be lost. Please contact the server operator or administrator.",
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ */
+$wdMessages['af'] = array(
+	'ow_Language' => 'Taal',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -322,6 +329,7 @@ $wdMessages['bg'] = array(
 	'ow_save'                         => 'Съхранение',
 	'ow_history'                      => 'История',
 	'ow_noedit_title'                 => 'Необходими са права за редактиране',
+	'ow_none_selected'                => '<Нищо не е избрано>',
 	'ow_dm_OK'                        => 'Добре',
 	'ow_will_insert'                  => 'Ще бъде вмъкнато следното:',
 	'ow_AlternativeDefinition'        => 'Алтернативно определение',
@@ -333,6 +341,9 @@ $wdMessages['bg'] = array(
 	'ow_Definition'                   => 'Определение',
 	'ow_DefinedMeaningAttributes'     => 'Анотация',
 	'ow_ExactMeanings'                => 'Точни значения',
+	'ow_Expression'                   => 'Израз',
+	'ow_Expressions'                  => 'Изрази',
+	'ow_IncomingRelations'            => 'Входящи релации',
 	'ow_Language'                     => 'Език',
 	'ow_LevelAnnotation'              => 'Анотация',
 	'ow_PopupAnnotation'              => 'Анотация',
@@ -356,18 +367,20 @@ $wdMessages['bn'] = array(
 	'languages' => 'Wikidata: ভাষা ব্যবস্থাপক',
 );
 
-/** Brezhoneg (Brezhoneg)
+/** Breton (Brezhoneg)
+ * @author Fulup
  */
 $wdMessages['br'] = array(
-	'datasearch' => 'Wikidata: Klask roadennoù',
+	'datasearch'                            => 'Wikidata: Klask roadennoù',
 	'langman_title'                         => 'Merer yezhoù',
 	'languages'                             => 'Wikidata: Merer yezhoù',
 	'ow_save'                               => 'Enrollañ',
 	'ow_history'                            => 'Istor',
 	'ow_datasets'                           => 'Dibab an diaz',
-	'ow_noedit'                             => 'N\'oc\'h ket aotreet da zegas kemmoù war pajennoù an diaz "$1". Sellit ouzh [[{{MediaWiki:Ow editing policy url}}|ar reolennoù kemmañ]].',
 	'ow_noedit_title'                       => "N'oc'h ket aotreet da zegas kemmoù",
+	'ow_noedit'                             => 'N\'oc\'h ket aotreet da zegas kemmoù war pajennoù an diaz "$1". Sellit ouzh [[{{MediaWiki:Ow editing policy url}}|ar reolennoù kemmañ]].',
 	'ow_uipref_datasets'                    => 'Gwel dre ziouer',
+	'ow_uiprefs'                            => 'Roadennoù wiki',
 	'ow_none_selected'                      => '<Netra diuzet>',
 	'ow_conceptmapping_help'                => "<p>oberoù posupl : <ul> <li>&action=insert&<data_context_prefix>=<defined_id>&... ensoc'hañ ul liamm</li> <li>&action=get&concept=<concept_id> adkavout ul liamm</li> <li>&action=list_sets degas ur rollad rakgerioù eus kendestennoù roadennoù posupl, hag ar pezh a reont dave dezhañ.</li> <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> evit ur ster termenet en ur gendestenn, degas an holl re all</li> <li>&action=help Diskouez ar skoazell.</li> </ul></p>",
 	'ow_conceptmapping_uitext'              => "<p>Dre liammañ ar meizadoù e c'haller lakaat war wel sterioù termenet ur strobad roadennoù heñvel ouzh sterioù termenet strobadoù roadennoù all.</p>",
@@ -441,6 +454,9 @@ $wdMessages['br'] = array(
 	'ow_please_proved_dc1'                  => 'Mankout a ra un ?dc1=<...> (dc1=kendestenn an diaz 1, diaz a eiler ADAL dezhañ)<br>Kit e darempred gant merour ar servijer.',
 	'ow_please_proved_dc2'                  => 'Mankout a ra un ?dc2=<...> (dc1=kendestenn an diaz 2, diaz a eiler ADAL dezhañ)<br>Kit e darempred gant merour ar servijer.',
 	'ow_copy_successful'                    => '<h2>Eilskrid aet da benn vat</h2>Evit doare eo bet eilet mat ho roadennoù (gwiriit memes tra).',
+	'ow_copy_unsuccessful'                  => "<h3>C'hwitet eo an eiladenn</h3> N'eus bet graet eiladenn ebet.",
+	'ow_no_action_specified'                => "<h3>N'eus bet spisaet oberiadenn ebet</h3> Marteze oc'h deuet war-eeun war ar bajenn-mañ ? N'oc'h ket sañset dont amañ koulskoude.",
+	'ow_db_consistency_not_found'           => "<h2>Fazi</h2>Evit doare eo brein an diaz titouroù, n'hall ket wikidata kavout roadennoù reizh liammet ouzh ar ster termenet-mañ (ID). Marteze eo bet kollet. Kit e darempred gant oberiataer pe merer ar servijer.",
 );
 
 /** Deutsch (Deutsch)
@@ -1629,8 +1645,8 @@ $wdMessages['sk'] = array(
 	'ow_copy_no_action_specified'           => 'Prosím, zadajte činnosť',
 	'ow_copy_help'                          => 'Jedného dňa vám možno pomôžeme.',
 	'ow_please_proved_dmid'                 => 'Zdá sa, že vo vašom vstupe chýba „?dmid=<ID>“ (dmid=ID Definovaného významu)<br />Prosím kontaktujte správcu servera.',
-	'ow_please_proved_dc1'                  => 'Hmm, zdá sa že ste zabudli zadať ?dc1=<niečo>  (dcl je kontext množiny dát 1, z ktorej sa kopíruje)<br />Ops, prosím kontaktujte správcu servera.',
-	'ow_please_proved_dc2'                  => 'Hmm, zdá sa že ste zabudli zadať ?dc2=<niečo>  (dcl je kontext množiny dát 2, do ktorej sa kopíruje)<br />Ops, prosím kontaktujte správcu servera.',
+	'ow_please_proved_dc1'                  => 'Zdá sa, že ste zabudli zadať „?dc1=<niečo>“ (dcl=kontext množiny dát 1, z ktorej sa kopíruje)<br />Prosím, kontaktujte správcu servera.',
+	'ow_please_proved_dc2'                  => 'Zdá sa že ste zabudli zadať „?dc2=<niečo>“ (dcl=kontext množiny dát 2, do ktorej sa kopíruje)<br />Prosím kontaktujte správcu servera.',
 	'ow_copy_successful'                    => '<h2>Kopírovanie prebehlo úspešne</h2>Zdá sa, že vaše dáta boli skopírované úspešne. Nezabudnite to pre istotu ešte raz skontrolovať!',
 	'ow_copy_unsuccessful'                  => '<h3>Kopírovanie neúspešné</h3> Operácia kopírovania sa neuskutočnila.',
 	'ow_no_action_specified'                => '<h3>Nebola uvedená činnosť</h3> Možno ste sa snažili na túto stránku pristupovať priamo. Bežne sa sem nemáte dostať.',
@@ -1921,25 +1937,30 @@ $wdMessages['tr'] = array(
 );
 
 /** Volapük (Volapük)
+ * @author Malafaya
  */
 $wdMessages['vo'] = array(
-	'ow_history'                      => 'Jenotem',
-	'ow_add_concept_link'             => 'Läükön yümi tikädes votik',
-	'ow_concept_panel'                => 'Tikädafremül',
-	'ow_Annotation'                   => 'Penet',
-	'ow_Collection'                   => 'Konlet',
-	'ow_Definition'                   => 'Miedet',
-	'ow_DefinedMeaningAttributes'     => 'Penet',
-	'ow_Expression'                   => 'Notod',
-	'ow_Expressions'                  => 'Notods',
-	'ow_Language'                     => 'Pük',
-	'ow_LevelAnnotation'              => 'Penet',
-	'ow_PopupAnnotation'              => 'Penet',
-	'ow_Spelling'                     => 'Tonatam',
-	'ow_Source'                       => 'Fonät',
-	'ow_Text'                         => 'Vödem',
-	'ow_TranslatedTextAttributeValue' => 'Vödem',
-	'ow_LinkAttributeValues'          => 'Liuds',
+	'ow_save'                               => 'Dakipolöd',
+	'ow_history'                            => 'Jenotem',
+	'ow_conceptmapping_no_action_specified' => 'Liedo no fägob ad "$1".',
+	'ow_add_concept_link'                   => 'Läükön yümi tikädes votik',
+	'ow_concept_panel'                      => 'Tikädafremül',
+	'ow_Annotation'                         => 'Penet',
+	'ow_Collection'                         => 'Konlet',
+	'ow_Definition'                         => 'Miedet',
+	'ow_DefinedMeaningAttributes'           => 'Penet',
+	'ow_Expression'                         => 'Notod',
+	'ow_Expressions'                        => 'Notods',
+	'ow_Language'                           => 'Pük',
+	'ow_LevelAnnotation'                    => 'Penet',
+	'ow_OptionAttributeOption'              => 'Välot',
+	'ow_OptionAttributeOptions'             => 'Välots',
+	'ow_PopupAnnotation'                    => 'Penet',
+	'ow_Spelling'                           => 'Tonatam',
+	'ow_Source'                             => 'Fonät',
+	'ow_Text'                               => 'Vödem',
+	'ow_TranslatedTextAttributeValue'       => 'Vödem',
+	'ow_LinkAttributeValues'                => 'Liuds',
 );
 
 $wdMessages['zh-hans'] = array(

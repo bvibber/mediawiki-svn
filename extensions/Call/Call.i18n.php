@@ -94,6 +94,7 @@ $messages['gl'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'call-desc'         => 'Wotkaz k předłoze (abo k normalnej wikijowej stronje) z přepodaću parametrow wutworić. Da so w přikazowej lince wobhladowaka abo znutřka wikijoweho teksta wužiwać.',
 	'call-text'         => "Rozšěrjenja Call wočakuje wiki-stronu a opcionalne parametry za tutu stronu jako argument.<br><br>
 Přikład 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br/>
 Přikład 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br/>
@@ -121,7 +122,7 @@ $messages['hu'] = array(
 A kiegészítő meghívja az adott oldalt, és átadja neki a megadott paramétereket.<br>Láthatod a lap tartalmát, és a címét is, de a 'típusa' speciális lap lesz,<br>amit nem lehet szerkeszteni.<br>A lap tartalma változhat az általad megadott paraméterektől függően.<br><br>
 Hasznos lehet interaktív alkalmazások építésére a MediaWikivel.<br>Példának lásd <a href='http://semeb.com/dpldemo/Template:Catlist'>a DPL GUI</a>-t.<br/>
 Probléma esetén megpróbálhatod a <b>Special:Call/DebuG</b> használatát",
-	'call-save'         => "A hívás kiementét el lehet menteni egy ''$1'' nevű lapra.",
+	'call-save'         => "A hívás kimenetét el lehet menteni egy ''$1'' nevű lapra.",
 	'call-save-success' => 'A következő szöveg el lett mentve <big>[[$1]]</big> néven.',
 	'call-save-failed'  => 'A következő szöveg NEM lett elmentve, mert már létezik <big>[[$1]]</big> nevű lap.',
 );
@@ -139,6 +140,7 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'call'              => 'Aanroepen',
+	'call-desc'         => 'Maak een hyperlink naar een sjabloon (of naar een normale wikipagina) met gebruik van parameters. Kan gebruikt worden in de adresregel van de browser of in wikitekst.',
 	'call-text'         => "De extensie Aanroepen (Call) verwacht een wikipagina en optioneel parameters voor die pagina.<br /><br />
 Voorbeeld 1: &nbsp; <tt>[[Special:Call/Mijn sjabloon,parm1=value1]]</tt><br />
 Voorbeeld 2: &nbsp; <tt>[[Special:Call/Overleg:Een overleg,parm1=value1]]</tt><br />
@@ -193,6 +195,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'call'              => 'Call',
+	'call-desc'         => 'Vytvorí hyperodkaz na šablónu (alebo na bežnú wiki stránku) s odovzdávaním parametrov. Je možné použiť z riadka s adresou v prehliadači alebo v rámci wiki textu.',
 	'call-text'         => "Rozšírenie Call očakáva ako argumenty stránku wiki a voliteľné parametre danej stránky.<br><br>
 Príklad 1: &nbsp; <tt>[[Special:Call/Moja šablóna,parm1=value1]]</tt><br/>
 Príklad 2: &nbsp; <tt>[[Special:Call/Diskusia:Moja diskusia,parm1=value1]]</tt><br/>

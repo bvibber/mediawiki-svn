@@ -298,6 +298,13 @@ $messages['sk'] = array(
 	'tasklistprojdisp'       => 'Zobraziť',
 	'tasklistbyname'         => '== Zoznam úloh pre %s ==',
 	'tasklistnoprojects'     => "CHYBA: Zdá sa, že ste zapli  '''\$wgUseProjects''', ale nevytvorili ste [[MediaWiki:TodoTasksValidProjects]]. Pozri podrobnosti v [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Inštalačných inštrukciách].",
+	'tasklistemailbody'      => ',
+
+Niekto vám %s priradil novú úlohu.
+
+Svoj kompletný Zoznam úloh si môžete pozrieť na %s.
+
+Váš priateľský upozorňovací systém %s',
 );
 
 /** Seeltersk (Seeltersk)

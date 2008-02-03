@@ -152,6 +152,13 @@ $messages['oc'] = array(
 	'postcomment_nopostingtoadd'           => "Cap de messatge d'ajustar",
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'postcomment_leavemessagefor' => 'Deixe uma mensagem para $1',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */
@@ -179,6 +186,7 @@ $messages['sk'] = array(
 	'postcomment_addcommentdiscussionpage' => 'Pridajte svoj komentár na túto diskusnú stránku',
 	'postcomment_leavemessagefor'          => 'Nechajte správu pre $1',
 	'postcomment_post'                     => 'Poslať',
+	'postcomment_on'                       => '&nbsp;',
 	'postcomment_said'                     => 'povedal',
 	'postcomment_invalidrequest'           => 'Neplatná požiadavka.',
 	'postcomment_replyto'                  => 'Odpovedať $1',

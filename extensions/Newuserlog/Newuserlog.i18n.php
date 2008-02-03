@@ -518,9 +518,13 @@ $messages['pms'] = array(
 	'newuserlog-create2-entry' => 'Cont doertà për $1',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
 $messages['pt'] = array(
 	'newuserlogpage'           => 'Registo de criação de utilizadores',
 	'newuserlogpagetext'       => 'Este é um registo de novas contas de utilizador',
+	'newuserlog-byemail'       => 'palavra-chave enviada por correio-electrónico',
 	'newuserlog-create-entry'  => 'Novo utilizador',
 	'newuserlog-create2-entry' => 'criou conta para $1',
 );

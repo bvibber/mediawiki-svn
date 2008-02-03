@@ -206,16 +206,20 @@ Ova funkcija može opteretiti poslužitelj, stoga ju nemojte rabiti prečesto.',
 	'querysuccessful'  => 'Upit uspješno izvršen',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'asksql'           => 'SQL wotprašenje',
-	'asksqltext'       => 'Wužij tutón formular, zo by datowu banku direktnje wotprašował.
-Wužij jednore pazorki (\'kaž tutej\'); zo by znamješkowe literale wotdźělił.
-To móže husto serwer sylnišo wobćežić, prošu wužij tuž tutu funkciju zrědka.',
-	'sqlislogged'      => 'Wobkedźbuj, zo so wšě wotprašenja protokoluja.',
-	'sqlquery'         => 'Wotprašenje zapodać',
-	'querybtn'         => 'Wotprašenje wotesłać',
-	'selectonly'       => 'Su jenož wotprašenja dowolene, kotrež su jenož čitajomne.',
-	'querysuccessful'  => 'Wotprašenje wuspěšne',
+	'asksql'          => 'SQL wotprašenje',
+	'asksql-desc'     => 'Naprašowanja SQL přez [[Special:Asksql|specialnu stronu]] činić',
+	'asksqltext'      => "Wužij tutón formular, zo by datowu banku direktnje wotprašował.
+Wužij jednore pazorki ('kaž tutej'); zo by znamješkowe literale wotdźělił.
+To móže husto serwer sylnišo wobćežić, prošu wužij tuž tutu funkciju zrědka.",
+	'sqlislogged'     => 'Wobkedźbuj, zo so wšě wotprašenja protokoluja.',
+	'sqlquery'        => 'Wotprašenje zapodać',
+	'querybtn'        => 'Wotprašenje wotesłać',
+	'selectonly'      => 'Su jenož wotprašenja dowolene, kotrež su jenož čitajomne.',
+	'querysuccessful' => 'Wotprašenje wuspěšne',
 );
 
 /** Hungarian (Magyar)
@@ -443,19 +447,20 @@ si prega di usàrila cu giudizziu.",
 	'querysuccessful' => 'Query esequita currittamenti',
 );
 
-/* Slovak
- * @author helix84
+/** Slovak (Slovenčina)
+ * @author Helix84
  */
 $messages['sk'] = array(
-	'asksql' => 'SQL požiadavka',
-	'asksqltext' => "Použite tento formulár na zadanie priamej požiadavky do databázy.
+	'asksql'          => 'SQL požiadavka',
+	'asksql-desc'     => 'Vykonávanie SQL požiadaviek prostredníctvom [[Special:Asksql|špeciálnej stránky]]',
+	'asksqltext'      => "Použite tento formulár na zadanie priamej požiadavky do databázy.
 Použite jednoduché úvodzovky ('takéto') na oddelenie reťazcových literálov.
 Toto môže často znamenať závažnú dodatočnú záťaž serverov, preto prosím
 používajte túto funkciu s rozmyslom.",
-	'sqlislogged' => 'Prosím majte na pamäti, že všetky požiadavky sú zaznamenávané.',
-	'sqlquery' => 'Zadať požiadavku',
-	'querybtn' => 'Poslať požiadavku',
-	'selectonly' => 'Sú povolené požiadavky iba na čítanie.',
+	'sqlislogged'     => 'Prosím majte na pamäti, že všetky požiadavky sú zaznamenávané.',
+	'sqlquery'        => 'Zadať požiadavku',
+	'querybtn'        => 'Poslať požiadavku',
+	'selectonly'      => 'Sú povolené požiadavky iba na čítanie.',
 	'querysuccessful' => 'Požiadavka úspešne vykonaná',
 );
 

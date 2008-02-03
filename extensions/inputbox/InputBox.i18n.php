@@ -43,9 +43,11 @@ $messages['ar'] = array(
  * @author Esbardu
  */
 $messages['ast'] = array(
-	'tryexact'       => 'Intentar concueyar exautamente',
-	'searchfulltext' => 'Buscar testu completu',
-	'createarticle'  => 'Crear páxina',
+	'inputbox-error-no-type'  => "Nun especificasti la triba de caxellu d'entrada pa crear.",
+	'inputbox-error-bad-type' => "Triba de caxa d'entrada $1 non reconocida. Por favor conseña la opción ''create'', ''comment'', ''search'' o ''search2''.",
+	'tryexact'                => 'Intentar concueyar exautamente',
+	'searchfulltext'          => 'Buscar testu completu',
+	'createarticle'           => 'Crear páxina',
 );
 
 $messages['az'] = array(

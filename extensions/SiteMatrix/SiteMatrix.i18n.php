@@ -14,8 +14,13 @@ $messages['en'] = array(
 	'sitematrix-others'   => 'Other projects of Wikimedia',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ * @author לערי ריינהארט
+ */
 $messages['af'] = array(
-	"sitematrix" => "Lys van Wikimedia-wiki's",
+	'sitematrix'          => "Lys van Wikimedia-wiki's",
+	'sitematrix-language' => 'Taal',
 );
 
 /** Aragonese (Aragonés)

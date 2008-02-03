@@ -34,6 +34,14 @@ $messages['bg'] = array(
 	'categorystepper-end'   => '(Край на категорията)',
 );
 
+/** Czech (Česky)
+ * @author Li-sung
+ */
+$messages['cs'] = array(
+	'categorystepper-start' => '(začátek kategorie)',
+	'categorystepper-end'   => '(konec kategorie)',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -93,10 +101,20 @@ $messages['lb'] = array(
 
 /** Dutch (Nederlands)
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
 	'categorystepper-start' => '(Begin van categorie)',
+	'categorystepper-desc'  => "Toont een categoriebladervenster op pagina's die zich in een verzameling categorieën bevinden.",
 	'categorystepper-end'   => '(Einde van categorie)',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'categorystepper-start' => '(Início da categoria)',
+	'categorystepper-end'   => '(Fim da categoria)',
 );
 
 /** Russian (Русский)
@@ -112,6 +130,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'categorystepper-start' => '(začiatok kategórie)',
+	'categorystepper-desc'  => 'Zobrazuje navigačné pole na stránkach, ktoré sa nachádzajú v množine kategórií',
 	'categorystepper-end'   => '(koniec kategórie)',
 );
 

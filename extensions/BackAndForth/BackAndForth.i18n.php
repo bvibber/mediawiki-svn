@@ -63,6 +63,15 @@ $messages['br'] = array(
 	'backforth-prev' => 'Kent ($1)',
 );
 
+/** Czech (Česky)
+ * @author Li-sung
+ */
+$messages['cs'] = array(
+	'backforth-next' => 'Následující ($1)',
+	'backforth-desc' => 'Přidává na začátek stránky odkazy „následující“ a „předchozí“ na stránky dle abecedního řazení',
+	'backforth-prev' => 'Předchozí ($1)',
+);
+
 $messages['de'] = array(
 	'backforth-next' => 'Nächste ($1)',
 	'backforth-prev' => 'Vorherige ($1)',
@@ -128,8 +137,12 @@ $messages['hr'] = array(
 	'backforth-prev' => 'Prethodni ($1)',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'backforth-next' => 'Přichodne ($1)',
+	'backforth-desc' => 'Přidawa wotkazej "Přichodny" a "Předchadny" za alfabetiske nawigaciju horjeka na stronje',
 	'backforth-prev' => 'Předchadne ($1)',
 );
 
@@ -239,8 +252,12 @@ $messages['scn'] = array(
 	'backforth-prev' => 'Pricidenti ($1)',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
 	'backforth-next' => 'Ďalšie ($1)',
+	'backforth-desc' => 'Pridáva odkazy abecedného triedenia a odkazy „Ďalej“ a „Späť“ na vrch stránok',
 	'backforth-prev' => 'Predošlé ($1)',
 );
 

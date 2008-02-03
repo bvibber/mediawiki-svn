@@ -26,6 +26,13 @@ $messages['en'] = array(
 	'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ */
+$messages['af'] = array(
+	'imagemap_description' => 'Beeldinligting',
+);
+
 $messages['ar'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: يجب تحديد صورة في الخط الأول',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: الصورة غير صحيحة أو غير موجودة',

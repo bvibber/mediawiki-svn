@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'languageselector-setlang' => 'set',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ */
+$messages['af'] = array(
+	'languageselector' => 'Taal',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -75,6 +82,14 @@ $messages['eo'] = array(
 $messages['ext'] = array(
 	'languageselector'         => 'Palra',
 	'languageselector-setlang' => 'Acetal',
+);
+
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'languageselector'         => 'Kieli',
+	'languageselector-setlang' => 'aseta',
 );
 
 /** French (Français)

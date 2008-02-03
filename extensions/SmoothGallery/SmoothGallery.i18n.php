@@ -49,9 +49,11 @@ $messages['bg'] = array(
 /** French (Français)
  * @author Sherbrooke
  * @author Dereckson
+ * @author Grondin
  */
 $messages['fr'] = array(
 	'smoothgallery'                     => 'SmoothGallery',
+	'smoothgallery-desc'                => "Autorise les utilisateurs à créer des galeries avec des images téléchargées. Autorise plus d'options de SmoothGallery",
 	'smoothgallery-title'               => 'SmoothGallery',
 	'smoothgallery-smoothgallerytitle'  => 'SmoothGallery : $1',
 	'smoothgallery-error'               => "'''Erreur de SmoothGallery :'''",
@@ -158,6 +160,7 @@ $messages['ps'] = array(
  */
 $messages['sk'] = array(
 	'smoothgallery'                     => 'SmoothGallery',
+	'smoothgallery-desc'                => 'Umožňuje používateľom vytvárať galérie z nahraných obrázkov. Ponúka väčšinu z možností SmoothGallery',
 	'smoothgallery-title'               => 'SmoothGallery',
 	'smoothgallery-smoothgallerytitle'  => 'SmoothGallery: $1',
 	'smoothgallery-error'               => '<b>Chyba SmoothGallery:</b>',

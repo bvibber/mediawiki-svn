@@ -242,6 +242,14 @@ $messages['oc'] = array(
 	'spamregex-summary-log'          => '(Comentari)',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'spamregex-already-blocked' => '"$1" já está bloqueado',
+	'spamregex-text'            => '(Texto)',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
