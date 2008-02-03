@@ -28,12 +28,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 require_once $IP . "/includes/GlobalFunctions.php";
 require_once $IP . "/includes/ParserOptions.php";
 require_once $IP . "/includes/Parser.php";
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . "FCKeditorSajax.body.php";
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . "FCKeditorParser.body.php";
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . "FCKeditorParserOptions.body.php";
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . "FCKeditorSkin.body.php";
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . "FCKeditor.body.php";
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . "fckeditor" . DIRECTORY_SEPARATOR . "fckeditor.php";
+
+$dir = dirname(__FILE__) . '/';
+require_once $dir . "FCKeditorSajax.body.php";
+require_once $dir . "FCKeditorParser.body.php";
+require_once $dir . "FCKeditorParserOptions.body.php";
+require_once $dir . "FCKeditorSkin.body.php";
+require_once $dir . "FCKeditor.body.php";
+require_once $dir . "fckeditor" . DIRECTORY_SEPARATOR . "fckeditor.php";
+
+$wgExtensionMessagesFiles['FCKeditor'] = $dir . 'FCKeditor.i18n.php';
 
 $wgFCKEditorExtDir       = "extensions/FCKeditor";
 $wgFCKEditorDir          = "extensions/FCKeditor/fckeditor";
@@ -51,11 +55,12 @@ $wgAjaxExportList[] = 'wfSajaxGetImageUrl';
 $wgAjaxExportList[] = 'wfSajaxGetMathUrl';
 
 $wgExtensionCredits['other'][] = array(
-"name" => "FCKeditor extension",
-"author" => "FCKeditor.net (inspired by the code written by Mafs [Meta])",
-"version" => 'fckeditor/mw-extension $Rev$ 2007',
-"url" => "http://meta.wikimedia.org/wiki/FCKeditor",
-"description" => "FCKeditor extension"
+	"name" => "FCKeditor extension",
+	"author" => "FCKeditor.net (inspired by the code written by Mafs [Meta])",
+	"version" => 'fckeditor/mw-extension $Rev$ 2008',
+	"url" => "http://www.mediawiki.org/wiki/Extension:FCKeditor_(by_FCKeditor_and_Wikia)",
+	"description" => "Use the FCKeditor for editing wiki pages",
+	"descriptionmsg" => "textrichditor-desc",
 );
 
 $fckeditor = new FCKeditor("fake");
@@ -63,11 +68,3 @@ $wgFCKEditorIsCompatible = $fckeditor->IsCompatible();
 
 $oFCKeditorExtension = new FCKeditor_MediaWiki();
 $oFCKeditorExtension->registerHooks();
-
-
-
-
-
-
-
-

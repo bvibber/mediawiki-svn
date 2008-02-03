@@ -87,11 +87,11 @@ class FCKeditor_MediaWiki
             }
         }
     }
-    
+
     public function onParserAfterTidy(&$parser, &$text)
     {
         global $wgUseTeX, $wgUser, $wgTitle, $wgFCKEditorIsCompatible;
-        
+
         if (!$wgUser->getOption( 'showtoolbar' ) || $wgUser->getOption( 'riched_disable' ) || !$wgFCKEditorIsCompatible) {
             return true;
         }
@@ -99,34 +99,19 @@ class FCKeditor_MediaWiki
         if (is_object($wgTitle) && in_array($wgTitle->getNamespace(), $this->getExcludedNamespaces())) {
             return true;
         }
-        
+
         if ($wgUseTeX) {
             //it may add much overload on page with huge amount of math content...
 			$text = preg_replace('/<img class="tex" alt="([^"]*)"/m', '<img _fckfakelement="true" _fck_mw_math="$1"', $text);
 			$text = preg_replace("/<img class='tex' src=\"([^\"]*)\" alt=\"([^\"]*)\"/m", '<img src="$1" _fckfakelement="true" _fck_mw_math="$2"', $text);
         }
-        
+
     	return true;
     }
-    
+
     public function onMessagesPreLoad()
     {
-        global $wgMessageCache, $wgUser, $wgContLanguageCode;
-
-        if ( !self::$messagesLoaded ) {
-            $lang = $wgUser->getOption( 'language', $wgContLanguageCode );
-            $i18nfile = dirname( __FILE__ ) . DIRECTORY_SEPARATOR .'FCKeditor.i18n.' . $lang . '.php';
-
-            if ( file_exists( $i18nfile ) ) {
-                require( $i18nfile );
-            } else {
-                $lang = 'en';
-                require( dirname( __FILE__ ) . DIRECTORY_SEPARATOR .'FCKeditor.i18n.en.php' );
-            }
-
-            $wgMessageCache->addMessages( $messages, $lang );
-            self::$messagesLoaded = true;
-        }
+	wfLoadExtensionMessages( 'FCKeditor' );
 
         return true;
     }
@@ -173,7 +158,7 @@ class FCKeditor_MediaWiki
 
         $script = <<<HEREDOC
 <script type="text/javascript" src="$wgScriptPath/$wgFCKEditorDir/fckeditor.js"></script>
-<script type="text/javascript"> 
+<script type="text/javascript">
 var sEditorAreaCSS = '$printsheet,/mediawiki/skins/monobook/main.css?{$wgStyleVersion}';
 </script>
 <!--[if lt IE 5.5000]><script type="text/javascript">sEditorAreaCSS += ',/mediawiki/skins/monobook/IE50Fixes.css?{$wgStyleVersion}'; </script><![endif]-->
@@ -185,20 +170,20 @@ HEREDOC;
 
         if (!is_null($userStyles) && !empty($userStyles)) {
             $script .= '
-<script type="text/javascript"> 
+<script type="text/javascript">
 sEditorAreaCSS += ",'.implode(',', $userStyles).'";
 </script>';
         }
 
         $script .= <<<HEREDOC
-<script type="text/javascript"> 
+<script type="text/javascript">
 
 // Remove the mwSetupToolbar onload hook to avoid a JavaScript error with FF.
 if ( window.removeEventListener )
 	window.removeEventListener( 'load', mwSetupToolbar, false ) ;
 else if ( window.detachEvent )
 	window.detachEvent( 'onload', mwSetupToolbar ) ;
-	
+
 mwSetupToolbar = function() { return false ; } ;
 
 function onLoadFCKeditor()
@@ -206,12 +191,12 @@ function onLoadFCKeditor()
 	if ( document.getElementById('wpTextbox1') )
 	{
 		var height = $wgFCKEditorHeight ;
-		
+
 		if ( height == 0 )
         {
 			// Get the window (inner) size.
 			var height = window.innerHeight || ( document.documentElement && document.documentElement.clientHeight ) || 550 ;
-			
+
 			// Reduce the height to the offset of the toolbar.
 			var offset = document.getElementById('wikiPreview') || document.getElementById('toolbar') ;
 			while ( offset )
@@ -219,14 +204,14 @@ function onLoadFCKeditor()
 				height -= offset.offsetTop ;
 				offset = offset.offsetParent ;
 			}
-			
+
 			// Add a small space to be left in the bottom.
 			height -= 20 ;
 		}
 
 		// Enforce a minimum height.
 		height = ( !height || height < 300 ) ? 300 : height ;
-		
+
 		// Create the editor instance and replace the textarea.
 		var oFCKeditor = new FCKeditor('wpTextbox1') ;
 		oFCKeditor.BasePath = '$wgScriptPath/$wgFCKEditorDir/' ;
@@ -235,7 +220,7 @@ function onLoadFCKeditor()
 		oFCKeditor.Height = height ;
 		oFCKeditor.ToolbarSet = '$wgFCKEditorToolbarSet' ;
 		oFCKeditor.ReplaceTextarea() ;
-		
+
 		// Hide the default toolbar.
 		document.getElementById('toolbar').style.cssText = 'display:none;' ;
 	}
@@ -250,8 +235,8 @@ function showSource() {
     s.value="Wiki2HTML";
     s.name="Wiki2HTML";
     s.onclick = function wiki2html() {
-        var oEditor = FCKeditorAPI.GetInstance('wpTextbox1');        
-        WikiToHTML_Call();        
+        var oEditor = FCKeditorAPI.GetInstance('wpTextbox1');
+        WikiToHTML_Call();
         return false;
     }
     wp.parentNode.insertBefore(s, wp.nextSibling);
@@ -262,18 +247,18 @@ var sajax_request_type = "GET";
 
 function WikiToHTML_Result(result)
 {
-    var oEditor = FCKeditorAPI.GetInstance('wpTextbox1');        
+    var oEditor = FCKeditorAPI.GetInstance('wpTextbox1');
     oEditor.SetHTML(result.responseText);
 }
 function WikiToHTML_Call()
 {
-     var oEditor = FCKeditorAPI.GetInstance('wpTextbox1');        
-     sajax_do_call('wfSajaxWikiToHTML', [oEditor.GetHTML()], WikiToHTML_Result); 
+     var oEditor = FCKeditorAPI.GetInstance('wpTextbox1');
+     sajax_do_call('wfSajaxWikiToHTML', [oEditor.GetHTML()], WikiToHTML_Result);
 }
 
 addOnloadHook(showSource);
 */
-</script>        
+</script>
 HEREDOC;
 
         $wgOut->addScript($script);

@@ -36,7 +36,7 @@ class FCKeditorParser extends Parser
     }
 
     /**
-     * Add special string (that would be changed by Parser) to array and return simple unique string 
+     * Add special string (that would be changed by Parser) to array and return simple unique string
      * that will remain unchanged during whole parsing operation.
      * At the end we'll replace all this unique strings with original content
      *
@@ -276,7 +276,7 @@ class FCKeditorParser extends Parser
             }
         }
         wfProfileOut( __METHOD__ );
-        
+
         return $text;
     }
 
@@ -292,15 +292,15 @@ class FCKeditorParser extends Parser
     /**
      * Replace templates with unique text to preserve them from parsing
      *
-     * @todo if {{template}} is inside string that also must be returned unparsed, 
+     * @todo if {{template}} is inside string that also must be returned unparsed,
      * e.g. <noinclude>{{template}}</noinclude>
      * {{template}} replaced with Fckmw[n]fckmw which is wrong...
-     * 
+     *
      * @param string $text
      * @return string
      */
     private function fck_replaceTemplates( $text ) {
-        
+
         $callback = array('{' =>
         array(
         'end'=>'}',
@@ -364,8 +364,8 @@ class FCKeditorParser extends Parser
             }
             $stringToParse .= substr($text, $startingPos);
             $text = &$stringToParse;
-        }        
-        
+        }
+
         return $text;
     }
 
@@ -381,8 +381,8 @@ class FCKeditorParser extends Parser
         //html comments shouldn't be stripped
         $text = $this->fck_replaceHTMLcomments( $text );
         //as well as templates
-        $text = $this->fck_replaceTemplates( $text );                
-        
+        $text = $this->fck_replaceTemplates( $text );
+
         $finalString = parent::internalParse($text);
 
         return $finalString;
@@ -403,7 +403,7 @@ class FCKeditorParser extends Parser
         return $text;
     }
     function replaceFreeExternalLinks( $text ) { return $text; }
-    function stripNoGallery($text) {}
+    function stripNoGallery(&$text) {}
     function stripToc( $text ) {
         //$prefix = '<span class="fck_mw_magic">';
         //$suffix = '</span>';
@@ -429,7 +429,7 @@ class FCKeditorParser extends Parser
             }
             $parserOutput->setText($parserOutput->getText() . $appendString);
         }
-        
+
         if (!empty($this->fck_mw_strtr_span)) {
             $parserOutput->setText(strtr($parserOutput->getText(), $this->fck_mw_strtr_span));
         }

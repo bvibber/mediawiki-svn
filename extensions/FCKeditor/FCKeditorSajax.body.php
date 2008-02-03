@@ -3,7 +3,7 @@
 function wfSajaxGetMathUrl( $term )
 {
     $originalLink = MathRenderer::renderMath( $term );
-    
+
     if (false == strpos($originalLink, "src=\"")) {
         return "";
     }
@@ -74,11 +74,11 @@ function wfSajaxSearchImageFCKeditor( $term )
 function wfSajaxSearchArticleFCKeditor( $term )
 {
     global $wgContLang, $wgOut;
-    $limit = 10;    
+    $limit = 10;
     $ns = NS_MAIN;
-    
+
     $term = $wgContLang->checkTitleEncoding( $wgContLang->recodeInput( js_unescape( $term ) ) );
-    
+
     if (strpos($term, "Category:") === 0) {
         $ns = NS_CATEGORY;
         $term = substr($term, 9);
@@ -86,10 +86,10 @@ function wfSajaxSearchArticleFCKeditor( $term )
     }
     else if (strpos($term, ":Category:") === 0) {
         $ns = NS_CATEGORY;
-        $term = substr($term, 10);        
+        $term = substr($term, 10);
         $prefix = ":Category:";
     }
-    
+
     $term1 = str_replace( ' ', '_', $wgContLang->ucfirst( $term ) );
     $term2 = str_replace( ' ', '_', $wgContLang->lc( $term ) );
     $term3 = str_replace( ' ', '_', $wgContLang->uc( $term ) );

@@ -16,7 +16,7 @@ class FCKeditorSkin
 	 * @param boolean $thumb shows image as thumbnail in a frame
 	 * @param string $manual_thumb image name for the manual thumbnail
 	 * @param string $valign vertical alignment: baseline, sub, super, top, text-top, middle, bottom, text-bottom
-	 * @return string     * 
+	 * @return string     *
      */
     function makeImageLinkObj( $nt, $label, $alt, $align = '', $params = array(), $framed = false,
     $thumb = false, $manual_thumb = '', $valign = '' )
@@ -103,7 +103,7 @@ class FCKeditorSkin
 	 * @param File $file File object, or false if it doesn't exist
 	 *
      * @param array $frameParams Associative array of parameters external to the media handler.
-     *     Boolean parameters are indicated by presence or absence, the value is arbitrary and 
+     *     Boolean parameters are indicated by presence or absence, the value is arbitrary and
      *     will often be false.
      *          thumbnail       If present, downscale and frame
      *          manualthumb     Image name to use as a thumbnail, instead of automatic scaling
@@ -113,13 +113,13 @@ class FCKeditorSkin
      *          upright_factor  Fudge factor for "upright" tweak (default 0.75)
      *          border          If present, show a border around the image
      *          align           Horizontal alignment (left, right, center, none)
-     *          valign          Vertical alignment (baseline, sub, super, top, text-top, middle, 
+     *          valign          Vertical alignment (baseline, sub, super, top, text-top, middle,
      *                          bottom, text-bottom)
      *          alt             Alternate text for image (i.e. alt attribute). Plain text.
      *          caption         HTML for image caption.
 	 *
-     * @param array $handlerParams Associative array of media handler parameters, to be passed 
-     *       to transform(). Typical keys are "width" and "page". 
+     * @param array $handlerParams Associative array of media handler parameters, to be passed
+     *       to transform(). Typical keys are "width" and "page".
 	 */
     function makeImageLink2( Title $nt, $file, $frameParams = array(), $handlerParams = array() ) {
         $orginal = $nt->getText();
