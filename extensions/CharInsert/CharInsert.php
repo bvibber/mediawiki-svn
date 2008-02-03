@@ -45,7 +45,6 @@ $wgExtensionMessagesFiles['CharInsert'] = $dir . 'CharInsert.i18n.php';
 function setupSpecialChars() {
     global $wgParser;
     $wgParser->setHook( 'charinsert', 'charInsert' );
-    wfLoadExtensionMessages( 'CharInsert' );
 }
 
 function charInsert( $data ) {
