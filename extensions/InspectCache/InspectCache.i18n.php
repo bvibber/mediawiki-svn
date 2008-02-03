@@ -163,6 +163,13 @@ $messages['oc'] = array(
 	'inspectcache-deleted' => 'Amagatal suprimit',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'inspectcache-list' => 'Listar',
+);
+
 /** Russian (Русский)
  * @author VasilievVV
  * @author .:Ajvol:.

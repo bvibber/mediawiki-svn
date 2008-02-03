@@ -105,6 +105,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'assert_edit_title'   => 'Falyita de l’entrebetâ',
+	'assert_edit_desc'    => 'Apond des èdicions d’entrebetâ por l’usâjo per des bots.',
 	'assert_edit_message' => 'L’entrebetâ endicâ ($1) at pas reussia.',
 );
 
@@ -224,6 +225,7 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'assert_edit_title'   => 'A asserção falhou',
+	'assert_edit_desc'    => 'Adiciona asserções de edição para o uso por bots',
 	'assert_edit_message' => 'A asserção especificada ($1) falhou.',
 );
 
@@ -249,6 +251,7 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'assert_edit_title'   => 'Этии толоруллубат',
+	'assert_edit_desc'    => 'Роботтар тутталларыгар этиилэри (утверждения) эбэр',
 	'assert_edit_message' => 'Этиллибит ($1) этии толоруллубат',
 );
 

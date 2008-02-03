@@ -84,15 +84,28 @@ $messages['bg'] = array(
 	'vote-invalid-choice' => 'Необходимо е да бъде избрана една от наличните възможности.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
 $messages['br'] = array(
-	'vote' => 'Votiñ',
-	'vote-current' => 'Votet hoc\'h eus evit \'\'\'$1\'\'\'.',
-	'vote-registered' => 'Enrollet eo bet ho vot.',
-	'vote-view-results' => 'Gwelet an disoc\'hoù',
-	'vote-results' => 'Disoc\'h ar votadeg',
+	'vote'                => 'Votiñ',
+	'vote-header'         => "Amañ e c'hallit votiñ evit '''mestr an Hollved''' boulc'hurun !",
+	'vote-current'        => "Votet hoc'h eus evit '''$1'''.",
+	'vote-legend'         => 'Lakaat ur vot pe distreiñ warnañ',
+	'vote-caption'        => 'Ho tibab :',
+	'vote-choices'        => 'joker|Ar Joker
+pengouin|Ar pengouin
+sfinks|Sfinks',
+	'vote-submit'         => 'Votiñ',
+	'vote-registered'     => 'Enrollet eo bet ho vot.',
+	'vote-view-results'   => "Gwelet an disoc'hoù",
+	'vote-results'        => "Disoc'h ar votadeg",
 	'vote-results-choice' => 'Dibab',
-	'vote-login' => 'Ret eo deoc\'h $1 evit votiñ.',
-	'vote-login-link' => 'en em enrollañ',
+	'vote-results-count'  => 'Mouezh',
+	'vote-results-none'   => "N'eus bet lakaet vot ebet evit c'hoazh",
+	'vote-login'          => "Ret eo deoc'h $1 evit votiñ.",
+	'vote-login-link'     => 'en em enrollañ',
+	'vote-invalid-choice' => "Ret eo deoc'h dibab unan eus an dibarzhioù hegerz.",
 );
 
 /** Greek (Ελληνικά)
@@ -334,6 +347,14 @@ Gioanin|Gioanin',
 	'vote-login' => 'Për voté a venta $1.',
 	'vote-login-link' => 'ch\'a rintra ant ël sistema',
 	'vote-invalid-choice' => 'A venta ch\'as selession-a un-a dj\'opsion disponibij.',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'vote-legend'         => 'Colocar ou corrigir voto',
+	'vote-results-choice' => 'Escolha',
 );
 
 /** Slovak (Slovenčina)

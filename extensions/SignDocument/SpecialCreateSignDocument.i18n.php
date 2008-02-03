@@ -418,8 +418,10 @@ Për piasì, ch'a varda d'avej controlà sò test coma ch'as dev anans che mande
  */
 $messages['pt'] = array(
 	'createsigndoc-pagename'      => 'Página:',
+	'createsigndoc-minage'        => 'Idade mínima:',
 	'createsigndoc-introtext'     => 'Introdução:',
 	'createsigndoc-optional'      => 'Opcional',
+	'createsigndoc-create'        => 'Criar',
 	'createsigndoc-error-generic' => 'Erro: $1',
 );
 

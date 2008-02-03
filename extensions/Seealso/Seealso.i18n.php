@@ -77,6 +77,13 @@ $messages['hu'] = array(
 	'seealso' => 'Lásd még',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+ * @author AlefZet
+ */
+$messages['kk-cyrl'] = array(
+	'seealso' => 'Тағы қараңыз',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -96,6 +103,13 @@ $messages['nl'] = array(
  */
 $messages['oc'] = array(
 	'seealso' => 'Vejatz tanben',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'seealso' => 'Ver também',
 );
 
 /** Slovak (Slovenčina)

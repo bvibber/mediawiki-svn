@@ -280,6 +280,13 @@ $messages['oc'] = array(
 	'todo-form-submit'      => 'Sometre la requèsta',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'todo-form-details' => 'Detalhes:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

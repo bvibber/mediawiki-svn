@@ -626,9 +626,16 @@ Sòn a lo fa ën ciamand l\'anterprete dal programa MediaWiki.',
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'expand_templates_title'  => 'Título de contexto para {{PAGENAME}} etc.:',
-	'expand_templates_output' => 'Resultado',
-	'expand_templates_ok'     => 'OK',
+	'expandtemplates'                  => 'Expandir pré-definições',
+	'expand_templates_intro'           => 'Esta página especial pega em algum texto e expande todas as pré-definições nele existentes recursivamente. Também expande funções do analisador (parser) como <nowiki>{{</nowiki>#if:...}}, e variáveis como <nowiki>{{</nowiki>CURRENTDAY}}&mdash;de facto, tudo entre chavetas duplas. Isto é feito através da chamada ao estágio do analisador (parser) relevante do próprio MediaWiki.',
+	'expand_templates_title'           => 'Título de contexto para {{PAGENAME}} etc.:',
+	'expand_templates_input'           => 'Texto de entrada:',
+	'expand_templates_output'          => 'Resultado',
+	'expand_templates_xml_output'      => 'Resultado XML',
+	'expand_templates_ok'              => 'OK',
+	'expand_templates_remove_comments' => 'Remover comentários',
+	'expand_templates_generate_xml'    => 'Mostrar árvore de análise (parse) do XML',
+	'expand_templates_preview'         => 'Previsão',
 );
 
 /** Quechua (Runa Simi)

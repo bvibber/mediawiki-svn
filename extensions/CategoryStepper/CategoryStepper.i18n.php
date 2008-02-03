@@ -72,6 +72,7 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'categorystepper-start' => '(Spočatk kategorije)',
+	'categorystepper-desc'  => 'Polo category stepper na stronach zwobraznić, kotrež su w sadźbje kategorijow.',
 	'categorystepper-end'   => '(Kónc kategorije)',
 );
 

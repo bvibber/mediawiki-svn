@@ -189,6 +189,7 @@ $messages['oc'] = array(
  */
 $messages['pt'] = array(
 	'spamdifftool_option_none' => 'nada',
+	'spamdifftool_block'       => 'Bloquear:',
 );
 
 /** Slovak (Slovenčina)

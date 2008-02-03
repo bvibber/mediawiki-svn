@@ -165,6 +165,59 @@ $1',
 	'webstore_no_handler'            => 'এই MIME ধরনটি রূপান্তরের জন্য কোন হ্যান্ডলার নেই',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'inplace_access_disabled'          => "Diweredekaet eo ar moned d'ar servij-mañ evit an holl bratikoù.",
+	'inplace_access_denied'            => 'Bevennet eo ar servij-mañ diouzh IP ar pratik.',
+	'inplace_scaler_no_temp'           => 'N\'eus teul padennek reizh ebet, ret eo da $wgLocalTmpDirectory bezañ ennañ anv un teul gant gwirioù skrivañ.',
+	'inplace_scaler_not_enough_params' => 'Diouer a arventennoù zo',
+	'inplace_scaler_invalid_image'     => 'Skeudenn direizh, dibosupl termeniñ ar vent.',
+	'inplace_scaler_failed'            => "C'hoarvezet ez eus ur fazi e-ser gwaskañ/diwaskañ ar skeudenn : $1",
+	'inplace_scaler_no_handler'        => "Arc'hwel ebet evit treuzfurmiñ ar furmad MIME-se",
+	'inplace_scaler_no_output'         => "N'eus bet krouet restr dreuzfurmiñ ebet.",
+	'inplace_scaler_zero_size'         => 'Krouet ez eus bet ur restr gant ur vent mann gant an treuzfumadur.',
+	'webstore_access'                  => "Bevennet eo ar servij-mañ diouzh chomlec'h IP ar pratik.",
+	'webstore_path_invalid'            => 'Direizh eo anv ar restr.',
+	'webstore_dest_open'               => 'Dibosupl digeriñ ar restr bal "$1".',
+	'webstore_dest_lock'               => 'C\'hwitet ar prennañ war ar restr bal "$1".',
+	'webstore_dest_mkdir'              => 'Dibosupl krouiñ ar c\'havlec\'h pal "$1".',
+	'webstore_archive_lock'            => 'C\'hwitet ar prennañ war ar restr diellaouet "$1".',
+	'webstore_archive_mkdir'           => 'Dibosupl krouiñ ar c\'havlec\'h diellaouiñ "$1".',
+	'webstore_src_open'                => 'Dibosupl digeriñ ar restr tarzh "$1".',
+	'webstore_src_close'               => 'Fazi en ur serriñ ar restr tarzh "$1".',
+	'webstore_src_delete'              => 'Fazi en ur ziverkañ ar restr tarzh "$1".',
+	'webstore_rename'                  => 'Fazi en ur adenvel ar restr "$1" e "$2"..',
+	'webstore_lock_open'               => 'Fazi en ur zigeriñ ar restr prennet "$1".',
+	'webstore_lock_close'              => 'Fazi en ur serriñ ar restr prennet "$1".',
+	'webstore_dest_exists'             => 'Fazi, krouet eo bet ar restr bal "$1" dija.',
+	'webstore_temp_open'               => 'Fazi en ur zigeriñ ar restr padennek "$1".',
+	'webstore_temp_copy'               => 'Fazi en ur eilañ ar restr padennek "$1" war-du ar restr bal "$2".',
+	'webstore_temp_close'              => 'Fazi en ur serriñ ar restr padennek "$1".',
+	'webstore_temp_lock'               => 'Fazi en ur brennañ ar restr padennek "$1".',
+	'webstore_no_archive'              => "Bez'ez eus eus ar restr bal met n'eus bet roet diell ebet.",
+	'webstore_no_file'                 => "N'eus bet enporzhiet restr ebet.",
+	'webstore_move_uploaded'           => 'Fazi en ur zilec\'hiañ ar restr enporzhiet "$1" war-du al lec\'h da c\'hortoz "$2".',
+	'webstore_invalid_zone'            => 'Takad "$1" direizh.',
+	'webstore_no_deleted'              => "N'eus bet spisaet kavlec'h diellaouiñ ebet evit ar restroù diverket.",
+	'webstore_curl'                    => 'Fazi adal cURL: $1',
+	'webstore_404'                     => "N'eo ket bet kavet ar restr.",
+	'webstore_php_warning'             => 'Kemenn PHP : $1',
+	'webstore_metadata_not_found'      => "N'eo ket bet kavet ar restr : $1",
+	'webstore_postfile_not_found'      => "N'eo ket bet kavet ar restr da enrollañ.",
+	'webstore_scaler_empty_response'   => "Distroet ez eus bet ur respont goullo hag ur c'hod 200 respont gant standilhonadur ar skeudenn. Marteze diwar ur fazi standilhonañ.",
+	'webstore_invalid_response'        => 'Respont direizh digant ar servijer :
+
+$1',
+	'webstore_no_response'             => 'Direspont eo ar servijer.',
+	'webstore_backend_error'           => 'Fazi gant ar servijer stokañ :  
+
+$1',
+	'webstore_php_error'               => 'Setu ar fazioù PHP bet kavet :',
+	'webstore_no_handler'              => "N'haller ket treuzfurmiñ ar seurt MIME-mañ.",
+);
+
 $messages['el'] = array(
 	'webstore_invalid_zone' => 'Άκυρη ζώνη "$1".',
 	'webstore_404' => 'Το αρχείο δεν βρέθηκε.',

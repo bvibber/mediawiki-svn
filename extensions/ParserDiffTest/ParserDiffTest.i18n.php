@@ -80,6 +80,13 @@ $messages['bn'] = array(
 	'pdtest_side_by_side' => 'ফলাফলের তুলনা',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'pdtest_ok' => 'Mat eo',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */
@@ -351,11 +358,18 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'pdtest_no_changes' => 'Nenhuma alteração detectada.',
-	'pdtest_title'      => 'Título do contexto:',
-	'pdtest_ok'         => 'OK',
-	'pdtest_get_text'   => 'Obter texto da página',
-	'pdtest_diff'       => 'Diferenças',
+	'parserdifftest'      => 'Teste de diferenças do analisador (parser)',
+	'pdtest_no_target'    => 'Nenhum alvo foi especificado.',
+	'pdtest_page_missing' => 'A página especificada não foi encontrada na base de dados.',
+	'pdtest_no_changes'   => 'Nenhuma alteração detectada.',
+	'pdtest_time_report'  => '<b>$1</b> demorou $2 segundos, <b>$3</b> demorou $4 segundos.',
+	'pdtest_title'        => 'Título do contexto:',
+	'pdtest_text'         => 'Texto de entrada:',
+	'pdtest_ok'           => 'OK',
+	'pdtest_get_text'     => 'Obter texto da página',
+	'pdtest_diff'         => 'Diferenças',
+	'pdtest_side_by_side' => 'Comparação de resultado',
+	'pdt_comparing_page'  => 'Comparação do resultado do analisador (parser) de [[$1]]',
 );
 
 /** Russian (Русский)

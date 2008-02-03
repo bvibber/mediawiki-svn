@@ -67,6 +67,17 @@ $messages['bn'] = array(
 	'specialwhoiswatchingaddbtn'   => 'নির্বাচিত ব্যবহারকারীদের যোগ করুন',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'whoiswatching'                => 'Implijerien o sellet ouzh ur bajenn eus ar wiki',
+	'specialwhoiswatchingthepage'  => 'Implijerien o sellet %s',
+	'specialwhoiswatchingusage'    => "N'hall ket ar bajenn dibar-mañ bezañ implijet en hec'h-unan. Kit dre [[MediaWiki:Number_of_watching_users_pageview]] evit termeniñ ul lec'h mont davet ar bajenn-mañ.",
+	'specialwhoiswatchingaddusers' => 'Ouzhpennit an implijerien evit gwelet ar bajenn',
+	'specialwhoiswatchingaddbtn'   => 'Ouzhpennañ an implijerien diuzet',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

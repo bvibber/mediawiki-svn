@@ -70,6 +70,19 @@ $messages['bg'] = array(
 	'watchers_less_than_x'   => 'Най-много $1 потребители наблюдават тази страница.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'watchers'               => 'Evezhierien',
+	'watchers_link_title'    => "Piv a vez oc'h evezhiañ ar bajenn-mañ ?",
+	'watchers_error_article' => "<b>Fazi :</b> n'eus ket eus ar bajenn-se.",
+	'watchers_header'        => 'Tud a heuilh "$1"',
+	'watchers_noone_watches' => 'Den ebet ne heuilh ar bajenn-mañ.',
+	'watchers_x_or_more'     => "$1 a dud pe muioc'h a heuilh ar bajenn-mañ.",
+	'watchers_less_than_x'   => "Nebeutoc'h eget $1 implijer o deus lakaet ar bajenn-mañ war evezh.",
+);
+
 $messages['de'] = array(
 	'watchers_link_title'    => 'Wer beobachtet diese Seite?',
 	'watchers_error_article' => '"<b>Fehler:</b> Seite existiert nicht.',

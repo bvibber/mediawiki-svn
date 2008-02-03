@@ -122,25 +122,29 @@ $messages['gl'] = array(
 	'tog-riched_disable_ns_category_talk' => 'Desactivar o editor rico no espazo de nomes "{{ns:Category_talk}}"',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'textrichditor' => 'Rich editor',
-	'tog-riched_disable' => 'Rich editor deaktiwizować',
-	'tog-riched_disable_ns_main' => 'Rich editor znutřka hłowneho mjenoweho ruma deaktiwizować',
-	'tog-riched_disable_ns_talk' => 'Rich editor znutřka mjenoweho ruma "{{ns:Talk}}" deaktiwizować',
-	'tog-riched_disable_ns_user' => 'Rich editor znutřka mjenoweho ruma "{{ns:User}}" deaktiwizować',
-	'tog-riched_disable_ns_user_talk' => 'Rich editor znutřka mjenoweho ruma "{{ns:User_talk}}" deaktiwizować',
-	'tog-riched_disable_ns_project' => 'Rich editor znutřka mjenoweho ruma "{{ns:Project}}" deaktiwizować',
-	'tog-riched_disable_ns_project_talk' => 'Rich editor znutřka mjenoweho ruma "{{ns:Project_talk}}" deaktiwizować',
-	'tog-riched_disable_ns_image' => 'Rich editor znutřka mjenoweho ruma "{{ns:Image}}" deaktiwizować',
-	'tog-riched_disable_ns_image_talk' => 'Rich editor znutřka mjenoweho ruma "{{ns:Image_talk}}" deaktiwizować',
-	'tog-riched_disable_ns_mediawiki' => 'Rich editor znutřka mjenoweho ruma "{{ns:MediaWiki}}" deaktiwizować',
+	'textrichditor'                        => 'Rich editor',
+	'textrichditor-desc'                   => 'FCKeditor za wobdźěłowanje wikijowych stronow wužiwać',
+	'tog-riched_disable'                   => 'Rich editor deaktiwizować',
+	'tog-riched_disable_ns_main'           => 'Rich editor znutřka hłowneho mjenoweho ruma deaktiwizować',
+	'tog-riched_disable_ns_talk'           => 'Rich editor znutřka mjenoweho ruma "{{ns:Talk}}" deaktiwizować',
+	'tog-riched_disable_ns_user'           => 'Rich editor znutřka mjenoweho ruma "{{ns:User}}" deaktiwizować',
+	'tog-riched_disable_ns_user_talk'      => 'Rich editor znutřka mjenoweho ruma "{{ns:User_talk}}" deaktiwizować',
+	'tog-riched_disable_ns_project'        => 'Rich editor znutřka mjenoweho ruma "{{ns:Project}}" deaktiwizować',
+	'tog-riched_disable_ns_project_talk'   => 'Rich editor znutřka mjenoweho ruma "{{ns:Project_talk}}" deaktiwizować',
+	'tog-riched_disable_ns_image'          => 'Rich editor znutřka mjenoweho ruma "{{ns:Image}}" deaktiwizować',
+	'tog-riched_disable_ns_image_talk'     => 'Rich editor znutřka mjenoweho ruma "{{ns:Image_talk}}" deaktiwizować',
+	'tog-riched_disable_ns_mediawiki'      => 'Rich editor znutřka mjenoweho ruma "{{ns:MediaWiki}}" deaktiwizować',
 	'tog-riched_disable_ns_mediawiki_talk' => 'Rich editor znutřka mjenoweho ruma "{{ns:MediaWiki_talk}}" deaktiwizować',
-	'tog-riched_disable_ns_template' => 'Rich editor znutřka mjenoweho ruma "{{ns:Template}}" deaktiwizować',
-	'tog-riched_disable_ns_template_talk' => 'Rich editor znutřka mjenoweho ruma "{{ns:Template_talk}}" deaktiwizować',
-	'tog-riched_disable_ns_help' => 'Rich editor znutřka mjenoweho ruma "{{ns:Help}}" deaktiwizować',
-	'tog-riched_disable_ns_help_talk' => 'Rich editor znutřka mjenoweho ruma "{{ns:Help_talk}}" deaktiwizować',
-	'tog-riched_disable_ns_category' => 'Rich editor znutřka mjenoweho ruma the "{{ns:Category}}" deaktiwizować',
-	'tog-riched_disable_ns_category_talk' => 'Rich editor znutřka mjenoweho ruma the "{{ns:Category_talk}}" deaktiwizować',
+	'tog-riched_disable_ns_template'       => 'Rich editor znutřka mjenoweho ruma "{{ns:Template}}" deaktiwizować',
+	'tog-riched_disable_ns_template_talk'  => 'Rich editor znutřka mjenoweho ruma "{{ns:Template_talk}}" deaktiwizować',
+	'tog-riched_disable_ns_help'           => 'Rich editor znutřka mjenoweho ruma "{{ns:Help}}" deaktiwizować',
+	'tog-riched_disable_ns_help_talk'      => 'Rich editor znutřka mjenoweho ruma "{{ns:Help_talk}}" deaktiwizować',
+	'tog-riched_disable_ns_category'       => 'Rich editor znutřka mjenoweho ruma the "{{ns:Category}}" deaktiwizować',
+	'tog-riched_disable_ns_category_talk'  => 'Rich editor znutřka mjenoweho ruma the "{{ns:Category_talk}}" deaktiwizować',
 );
 
 $messages['nl'] = array(
@@ -292,24 +296,28 @@ $messages['ru'] = array(
 	'tog-riched_disable_ns_category_talk'  => 'Отключить визуальный редактор в пространстве имён «{{ns:Category_talk}}»',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
-	'textrichditor' => 'Editor formátovaného textu',
-	'tog-riched_disable' => 'Vypnúť editor formátovaného textu',
-	'tog-riched_disable_ns_main' => 'Vypnúť editor formátovaného textu v hlavnom mennom priestore',
-	'tog-riched_disable_ns_talk' => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Talk}}“',
-	'tog-riched_disable_ns_user' => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:User}}“',
-	'tog-riched_disable_ns_user_talk' => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:User_talk}}“',
-	'tog-riched_disable_ns_project' => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Project}}“',
-	'tog-riched_disable_ns_project_talk' => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Project_talk}}“',
-	'tog-riched_disable_ns_image' => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Image}}“',
-	'tog-riched_disable_ns_image_talk' => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Image_talk}}“',
-	'tog-riched_disable_ns_mediawiki' => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:MediaWiki}}“',
+	'textrichditor'                        => 'Editor formátovaného textu',
+	'textrichditor-desc'                   => 'Použiť na úpravu wiki stránok FCKeditor',
+	'tog-riched_disable'                   => 'Vypnúť editor formátovaného textu',
+	'tog-riched_disable_ns_main'           => 'Vypnúť editor formátovaného textu v hlavnom mennom priestore',
+	'tog-riched_disable_ns_talk'           => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Talk}}“',
+	'tog-riched_disable_ns_user'           => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:User}}“',
+	'tog-riched_disable_ns_user_talk'      => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:User_talk}}“',
+	'tog-riched_disable_ns_project'        => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Project}}“',
+	'tog-riched_disable_ns_project_talk'   => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Project_talk}}“',
+	'tog-riched_disable_ns_image'          => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Image}}“',
+	'tog-riched_disable_ns_image_talk'     => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Image_talk}}“',
+	'tog-riched_disable_ns_mediawiki'      => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:MediaWiki}}“',
 	'tog-riched_disable_ns_mediawiki_talk' => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:MediaWiki_talk}}“',
-	'tog-riched_disable_ns_template' => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Template}}“',
-	'tog-riched_disable_ns_template_talk' => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Template_talk}}“',
-	'tog-riched_disable_ns_help' => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Help}}“',
-	'tog-riched_disable_ns_help_talk' => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Help_talk}}“',
-	'tog-riched_disable_ns_category' => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Category}}“',
-	'tog-riched_disable_ns_category_talk' => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Category_talk}}“',
+	'tog-riched_disable_ns_template'       => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Template}}“',
+	'tog-riched_disable_ns_template_talk'  => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Template_talk}}“',
+	'tog-riched_disable_ns_help'           => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Help}}“',
+	'tog-riched_disable_ns_help_talk'      => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Help_talk}}“',
+	'tog-riched_disable_ns_category'       => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Category}}“',
+	'tog-riched_disable_ns_category_talk'  => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Category_talk}}“',
 );
 

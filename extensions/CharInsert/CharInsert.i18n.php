@@ -12,3 +12,11 @@ $messages['en'] = array(
 $messages['fr'] = array(
 'charinsert-desc' => 'Permet la création d’une boîte JavaScript pour l’insersion de caractères non-standards',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'charinsert-desc' => 'Maakt het mogelijk niet-standaard karakters in te voeren vanuit een deelvenster via JavaScript',
+);
+

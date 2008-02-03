@@ -2167,6 +2167,22 @@ $messages['pag'] = array(
 	'boardvote_edits_many' => 'dakel',
 );
 
+/** Pampanga (Kapampangan)
+ * @author SPQRobin
+ */
+$messages['pam'] = array(
+	'boardvote_novotes'    => 'Ala pang mig botu',
+	'boardvote_time'       => 'Oras',
+	'boardvote_user'       => 'Talagamit',
+	'boardvote_edits'      => 'Ding meyalili',
+	'boardvote_days'       => 'Deng aldo',
+	'boardvote_ua'         => 'Talagamit a mamajala',
+	'boardvote_dumplink'   => 'Keni ya pindutan',
+	'boardvote_needadmin'  => 'Den mung manibala king alalan (election administrator) ing makagawa kaniti.',
+	'boardvote_notstarted' => 'Ing alalan epa megumpisa',
+	'boardvote_edits_many' => 'dakal',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Sp5uhe
@@ -2307,6 +2323,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'boardvote'              => 'Eleições para o Board of Trustees da Wikimedia Foundation',
+	'boardvote-desc'         => '[[meta:Board elections|Eleições para o Conselho de Administração da Wikimedia]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Votar]]
 * [[Special:Boardvote/list|Listar votos por data]]
 * [[Special:Boardvote/dump|Dados encriptados da eleição]]',
@@ -2359,8 +2376,10 @@ A versão da encriptação segue-se, e será publicada em [[Special:Boardvote/du
 	'boardvote_edits_many'   => 'muitos',
 	'group-boardvote'        => 'Board vote administradores',
 	'group-boardvote-member' => 'Board vote administrador',
+	'grouppage-boardvote'    => '{{ns:project}}:Administrador da votação para o Conselho',
 	'boardvote_blocked'      => 'Desculpe, mas a sua conta foi bloqueada no seu wiki de registo. Utilizadores bloqueados não estão autorizados a votar.',
 	'boardvote_welcome'      => "Bem-vindo, '''$1'''!",
+	'go_to_board_vote'       => 'Eleições para o Conselho de Administração da Wikimedia 2007',
 	'boardvote_redirecting'  => 'Para maior segurança e transparência, estamos a realizar a votação num servidor externo controlado independentemente.
 
 Será redireccionado para este servidor externo dentro de 20 segundos. [$1 Clique aqui] para ser redireccionado agora.
@@ -2470,6 +2489,7 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'boardvote'              => '"Викимедиа" Сүбэтин быыбара',
+	'boardvote-desc'         => '[[meta:Board elections|Викимедиа пуондатын Сүбэтигэр быыбар]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Куоластыырга]]
 * [[Special:Boardvote/list|Куоластаабыттар испииһэктэрэ]]
 * [[Special:Boardvote/dump|Куоластааһын хаамыыта (ким туохха куоластаабыта көрдөрүллүбэт)]]',
@@ -3364,6 +3384,13 @@ $messages['zh-hant'] = array(
 20秒後瀏覽器將會自動轉到這個站外伺服器。您也可以馬上[$1 點擊這裡]直接到那裡。
 
 稍後，您的瀏覽器可能會彈出未驗證安全憑證的警告。',
+);
+
+/** Zulu (isiZulu)
+ * @author SPQRobin
+ */
+$messages['zu'] = array(
+	'boardvote_time' => 'Isikhathi',
 );
 
 $messages['de-formal'] = $messages['de'];

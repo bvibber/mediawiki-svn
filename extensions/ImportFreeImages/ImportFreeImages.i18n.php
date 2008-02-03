@@ -169,6 +169,13 @@ $messages['oc'] = array(
 	'importfreeimages_returntoform'          => "o, clicatz <a href='$1'>aicí</a> per tornar a vòstra lista de resultats.",
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'importfreeimages_owner' => 'Autor',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

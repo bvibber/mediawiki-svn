@@ -352,6 +352,7 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'changeauthor'                      => 'Auteur versie wijzigen',
+	'changeauthor-desc'                 => 'Maakt het mogelijk de auteur van een versie te wijzigen',
 	'changeauthor-title'                => 'De auteur van een bewerkingsversie wijzigen',
 	'changeauthor-search-box'           => 'Versies zoeken',
 	'changeauthor-pagename-or-revid'    => 'Paginanaam of versienummer:',
@@ -370,7 +371,6 @@ $messages['nl'] = array(
 	'changeauthor-success'              => 'Uw verzoek is succesvol verwerkt.',
 	'changeauthor-logentry'             => 'Auteur van $2 van $1 gewijzigd van $3 naar $4',
 	'changeauthor-logpagename'          => 'Auteurswijzigingenlogboek',
-	'changeauthor-rev'                  => 'r$1',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)
@@ -437,6 +437,7 @@ $messages['pt'] = array(
 	'changeauthor-nosuchuser'          => 'Utilizador "$1" não existe.',
 	'changeauthor-revview'             => 'Revisão #$1 de $2',
 	'changeauthor-nosuchtitle'         => 'Não existe nenhuma página chamada "$1".',
+	'changeauthor-logentry'            => 'Alterado autor de $2 de $1, de $3 para $4',
 );
 
 /** Russian (Русский)

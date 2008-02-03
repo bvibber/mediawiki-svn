@@ -96,9 +96,14 @@ $messages['bn'] = array(
 	'sitematrix-others'   => 'উইকিমিডিয়ার অন্যান্য প্রকল্প',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ * @author SPQRobin
+ */
 $messages['br'] = array(
-	'sitematrix' => 'Roll holl raktresoù Wikimedia',
+	'sitematrix'          => 'Roll holl raktresoù Wikimedia',
 	'sitematrix-language' => 'Yezh',
+	'sitematrix-others'   => 'Raktresoù all eus Wikimedia',
 );
 
 /** Catalan (Català)

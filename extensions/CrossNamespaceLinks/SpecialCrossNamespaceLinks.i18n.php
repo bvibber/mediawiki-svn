@@ -349,10 +349,14 @@ $messages['pms'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|anliura|anliure}} anvers a $3',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
 $messages['pt'] = array(
 	'crossnamespacelinks'         => 'Saltos de Espaços Nominais',
+	'crossnamespacelinks-desc'    => '[[{{ns:special}}:CrossNamespaceLinks|Lista ligações através de espaços nominais]] que não deviam existir em {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Esta página proporciona uma lista de links provenientes a partir de uma página no espaço nominal principal para outra alocada em outro espaço nominal (exceção feita para os espaços nominais {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), os quais costuma-se não ser aconselhável de existirem.',
-	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|linca|lincam}} para $3'
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|linca|lincam}} para $3',
 );
 
 /** Quechua (Runa Simi)
@@ -385,6 +389,7 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'crossnamespacelinks'         => 'Namespace`тар ыккардыларынааҕы ыйынньыктар',
+	'crossnamespacelinks-desc'    => '{{SITENAME}} иһигэр суох буолуохтаах [[Special:CrossNamespaceLinks|namespace`тар ыккардыларыгар сигэлэр испииһэктэрин таһаарар]]',
 	'crossnamespacelinks-summary' => 'Манна сүрүн namespace сирэйдэриттэн атын namespace сирэйдэригэр сигэнэр ыйынньыктар испииһэктэрэ көрдөрүлүннэ (балартан ураты: {{ns:special}}, {{ns:talk}}, {{ns:project}} и {{ns:template}}). Маннык ыйынньыктары туруорар оччо биһирэммэт.',
 	'crossnamespacelinkstext'     => '$1: $3 билигин $2 {{PLURAL:$2|ыйынньыктаах|ыйынньыктаах}}',
 );

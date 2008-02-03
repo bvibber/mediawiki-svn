@@ -69,6 +69,7 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'spamregex_summary'              => 'Текстът е намерен в резюмето на страницата.',
 	'spamregex-currently-blocked'    => "'''Текущо блокирани фрази:'''",
 	'spamregex-no-currently-blocked' => "'''Няма блокирани фрази.'''",
 	'spamregex-page-title-1'         => 'Блокиране на фрази чрез регулярни изрази',
@@ -248,6 +249,7 @@ $messages['oc'] = array(
 $messages['pt'] = array(
 	'spamregex-already-blocked' => '"$1" já está bloqueado',
 	'spamregex-text'            => '(Texto)',
+	'spamregex-summary-log'     => '(Sumário)',
 );
 
 /** Slovak (Slovenčina)

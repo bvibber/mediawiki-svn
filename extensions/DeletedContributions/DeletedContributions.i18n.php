@@ -269,6 +269,13 @@ $messages['oc'] = array(
 	'deletedcontributions' => 'Contribucions suprimidas d’un utilizaire',
 );
 
+/** Pampanga (Kapampangan)
+ * @author SPQRobin
+ */
+$messages['pam'] = array(
+	'deletedcontributions' => 'Deng ambag da reng talagamit a mebura',
+);
+
 $messages['pl'] = array(
 	'deletedcontributions' => 'Skasowany wkład użytkownika',
 );
@@ -277,8 +284,12 @@ $messages['pms'] = array(
 	'deletedcontributions' => 'Modìfiche faite da utent scancelà',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
 $messages['pt'] = array(
-	'deletedcontributions' => 'Edições eliminadas',
+	'deletedcontributions'      => 'Edições eliminadas',
+	'deletedcontributions-desc' => 'Permite aos sysops [[{{ns:special}}:DeletedContributions|visualizar as edições apagadas de um utilizador]]',
 );
 
 /** Quechua (Runa Simi)
@@ -304,7 +315,8 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
-	'deletedcontributions' => 'Сотуллубут көннөрүү',
+	'deletedcontributions'      => 'Сотуллубут көннөрүү',
+	'deletedcontributions-desc' => 'Администраатардарга [[Special:DeletedContributions|кыттааччылар сотуллубут көннөрүүлэрин көрөр]] кыаҕы биэрэр',
 );
 
 /** Slovak (Slovenčina)

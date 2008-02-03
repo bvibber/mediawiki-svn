@@ -762,6 +762,13 @@ $messages['zh-hant'] = array(
 	'newuserlog-create2-entry' => '已創建$1的帳戶',
 );
 
+/** Zulu (isiZulu)
+ * @author SPQRobin
+ */
+$messages['zu'] = array(
+	'newuserlog-create-entry' => 'Umsebenzi omusha',
+);
+
 $messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];

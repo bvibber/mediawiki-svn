@@ -1094,20 +1094,31 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
-	'ogg-play'              => 'Оонньот',
-	'ogg-pause'             => 'Тохтото түс',
-	'ogg-stop'              => 'Тохтот',
-	'ogg-play-video'        => 'Көрдөр',
-	'ogg-play-sound'        => 'Иһитиннэр',
-	'ogg-player-oggPlugin'  => 'Ogg плагин',
-	'ogg-player-thumbnail'  => 'Хамсаабат ойууну эрэ',
-	'ogg-player-soundthumb' => 'Плеер суох',
-	'ogg-player-selected'   => '(талыллыбыт)',
-	'ogg-use-player'        => 'Бу плееры туттарга:',
-	'ogg-more'              => 'Өссө...',
-	'ogg-dismiss'           => 'Кистээ/сап',
-	'ogg-download'          => 'Билэни хачайдаа',
-	'ogg-desc-link'         => 'Бу билэ туһунан',
+	'ogg-short-audio'         => 'Звуковой файл Ogg $1, $2',
+	'ogg-short-video'         => 'Видео-файл Ogg $1, $2',
+	'ogg-short-general'       => 'Медиа-файл Ogg $1, $2',
+	'ogg-long-audio'          => '(звуковой файл Ogg $1, уһуна $2, $3)',
+	'ogg-long-video'          => '(видео-файл Ogg $1, уһуна $2, $4×$5 пииксэллээх, $3)',
+	'ogg-long-multiplexed'    => '(мультиплексный аудио/видео-файл Ogg, $1, уһуна $2, $4×$5 пииксэллээх, барыта $3)',
+	'ogg-long-general'        => '(медиа-файл Ogg, уһуна $2, $3)',
+	'ogg-long-error'          => '(сыыһа ogg-файл: $1)',
+	'ogg-play'                => 'Оонньот',
+	'ogg-pause'               => 'Тохтото түс',
+	'ogg-stop'                => 'Тохтот',
+	'ogg-play-video'          => 'Көрдөр',
+	'ogg-play-sound'          => 'Иһитиннэр',
+	'ogg-no-player'           => 'Хомойуох иһин эн систиэмэҕэр иһитиннэрэр/көрдөрөр анал бырагырааммалар суохтар эбит. Бука диэн, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">плееры хачайдан</a>.',
+	'ogg-no-xiphqt'           => 'QuickTime маннык тэрээбэтэ: XiphQT суох эбит. Онон QuickTime бу Ogg билэни (файлы) оонньотор кыаҕа суох. Бука диэн, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> XiphQT хачайдан</a> эбэтэр атын плееры тал.',
+	'ogg-player-videoElement' => '<video> элэмиэнэ',
+	'ogg-player-oggPlugin'    => 'Ogg плагин',
+	'ogg-player-thumbnail'    => 'Хамсаабат ойууну эрэ',
+	'ogg-player-soundthumb'   => 'Плеер суох',
+	'ogg-player-selected'     => '(талыллыбыт)',
+	'ogg-use-player'          => 'Бу плееры туттарга:',
+	'ogg-more'                => 'Өссө...',
+	'ogg-dismiss'             => 'Кистээ/сап',
+	'ogg-download'            => 'Билэни хачайдаа',
+	'ogg-desc-link'           => 'Бу билэ туһунан',
 );
 
 $messages['sk'] = array(
@@ -1246,14 +1257,15 @@ $messages['tg'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Srhat
  * @author Erkan Yilmaz
  */
 $messages['tr'] = array(
-	'ogg-play'       => 'Oyna',
-	'ogg-pause'      => 'Durakla',
+	'ogg-play'       => 'Oynat',
+	'ogg-pause'      => 'Duraklat',
 	'ogg-stop'       => 'Durdur',
-	'ogg-play-video' => 'Video filmi oyna',
-	'ogg-play-sound' => 'Sesi oyna',
+	'ogg-play-video' => 'Video filmini oynat',
+	'ogg-play-sound' => 'Sesi oynat',
 	'ogg-more'       => 'Daha...',
 	'ogg-dismiss'    => 'Kapat',
 );

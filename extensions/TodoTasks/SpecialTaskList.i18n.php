@@ -280,6 +280,14 @@ $messages['pl'] = array(
 	'tasklistbyname'          => '== Lista do zrobienia dla %s ==',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'tasklistemail'      => 'Caro %s',
+	'tasklistchooseproj' => 'Seleccione Projecto:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

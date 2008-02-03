@@ -939,10 +939,19 @@ Ch\'a varda che sò dat a sio giust, e che i peulo contatela për verifiché soa
 $messages['pt'] = array(
 	'sign-selectdoc'         => 'Documento:',
 	'sign-realname'          => 'Nome:',
+	'sign-city'              => 'Cidade:',
+	'sign-state'             => 'Estado:',
+	'sign-country'           => 'País:',
+	'sign-bday'              => 'Idade:',
+	'sig-success'            => 'O documento foi assinado com sucesso.',
 	'sign-viewfield-city'    => 'Cidade',
 	'sign-viewfield-state'   => 'Estado',
 	'sign-viewfield-country' => 'País',
 	'sign-viewfield-phone'   => 'Telefone',
+	'sign-viewfield-age'     => 'Idade',
+	'sign-viewfield-options' => 'Opções',
+	'sig-anonymous'          => '<i>Anónimo</i>',
+	'sig-private'            => '<i>Privado</i>',
 );
 
 $messages['rm'] = array(

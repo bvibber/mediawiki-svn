@@ -548,6 +548,13 @@ $messages['pag'] = array(
 	'createarticle' => 'Mangawa na artikulo',
 );
 
+/** Pampanga (Kapampangan)
+ * @author SPQRobin
+ */
+$messages['pam'] = array(
+	'createarticle' => 'Gawang artikulu',
+);
+
 $messages['pl'] = array(
 	'inputbox-error-no-type'  => 'Typ pola wejściowego nie został określony',
 	'inputbox-error-bad-type' => 'Typ "$1" pola wejściowego nie został rozpoznany. Proszę wybrać "create", "comment", "search" lub "search2".',
@@ -819,6 +826,13 @@ $messages['zh-hant'] = array(
 	'tryexact'       => '嘗試精確匹配',
 	'searchfulltext' => '全文檢索',
 	'createarticle'  => '建立文章',
+);
+
+/** Zulu (isiZulu)
+ * @author SPQRobin
+ */
+$messages['zu'] = array(
+	'searchfulltext' => 'Sesha ukubhala konke',
 );
 
 $messages['de-formal'] = $messages['de'];

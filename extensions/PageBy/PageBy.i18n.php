@@ -175,6 +175,14 @@ $messages['pms'] = array(
 	'pageby-anon'         => '<i>anònim</i>',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'pageby-first' => 'Página criada por $1, $2',
+	'pageby-anon'  => '<i>anónimo</i>',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

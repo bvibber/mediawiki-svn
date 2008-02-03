@@ -160,6 +160,13 @@ $messages['oc'] = array(
 	'showprocesslist-info'    => 'Informacions',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'showprocesslist-command' => 'Comando',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

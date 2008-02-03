@@ -279,6 +279,14 @@ $messages['oc'] = array(
 	'usagestatisticsbadstartend' => '<b>Format de data de <i>començament</i> o de <i>fin</i> marrit !</b>',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'usagestatisticsallusers' => 'Todos os Utilizadores',
+	'usagestatisticsinterval' => 'Intervalo',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

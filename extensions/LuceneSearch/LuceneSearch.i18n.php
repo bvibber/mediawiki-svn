@@ -173,8 +173,14 @@ $1
 	'searchall'             => 'সমস্ত',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ * @author SPQRobin
+ */
 $messages['br'] = array(
-	'searchnoresults'       => 'Siwazh deoc\'h, n\'eus ket bet kavet respont ebet o klotañ-rik gant ho koulenn.',
+	'lucene-resultsize' => '$1 ($2 ger)',
+	'searchnoresults'   => "Siwazh deoc'h, n'eus ket bet kavet respont ebet o klotañ-rik gant ho koulenn.",
+	'searchall'         => 'An holl',
 );
 
 /** Catalan (Català)
@@ -1109,19 +1115,25 @@ $1
  * @author HalanTul
  */
 $messages['sah'] = array(
-	'searchprev'         => "&#x00AB; <span style='font-size: small'>Инн.</span>",
-	'searchnext'         => "<span style='font-size: small'>Аныг.</span> &#x00BB;",
-	'lucene-searchscore' => 'Релевантноһа: $1%',
-	'lucene-resultsize'  => '$1 ($2 тыл)',
-	'searchdidyoumean'   => 'Баҕар маннык буолаарай «<a href="1">$2</a>»?',
-	'searchnoresults'    => 'Хомойуох иһин, туох да көстүбэтэ.',
-	'searchnearmatches'  => '<b>Бу сирэйдэр эн көрдүүр сирэйгэр майгынныыр ааттаахтар:</b>',
-	'lucenefallback'     => 'Көрдүүргэ туох эрэ моһол таҕыста.
+	'searchnumber'          => '<strong>Результаты $1—$2 из $3</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Инн.</span>",
+	'searchnext'            => "<span style='font-size: small'>Аныг.</span> &#x00BB;",
+	'lucene-searchscore'    => 'Релевантноһа: $1%',
+	'lucene-resultsize'     => '$1 ($2 тыл)',
+	'searchdidyoumean'      => 'Баҕар маннык буолаарай «<a href="1">$2</a>»?',
+	'searchnoresults'       => 'Хомойуох иһин, туох да көстүбэтэ.',
+	'searchnearmatches'     => '<b>Бу сирэйдэр эн көрдүүр сирэйгэр майгынныыр ааттаахтар:</b>',
+	'lucenepowersearchtext' => 'Бу namespace`тар истэригэр көрдөөһүн:
+
+$1
+
+Поисковый запрос $3 $9 $10',
+	'lucenefallback'        => 'Көрдүүргэ туох эрэ моһол таҕыста.
 Баҕар быстах моһол буолуо, тохтуу түһэн баран өссө боруобалаар,
 эбэтэр тас поисковиктарынан көрдөөн көр.',
-	'searchexactcase'    => 'Регистрын арааран көрдөө',
-	'searchall'          => 'бары',
-	'searchincategory'   => 'категорийаҕа',
+	'searchexactcase'       => 'Регистрын арааран көрдөө',
+	'searchall'             => 'бары',
+	'searchincategory'      => 'категорийаҕа',
 );
 
 /** Scots (Scots)

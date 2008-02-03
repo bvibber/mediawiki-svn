@@ -126,6 +126,14 @@ $messages['oc'] = array(
 
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'findspam-ip' => 'Endereço IP:',
+	'findspam-ok' => 'OK',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

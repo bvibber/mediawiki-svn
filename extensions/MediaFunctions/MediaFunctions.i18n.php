@@ -117,6 +117,14 @@ $messages['ps'] = array(
 	'mediafunctions-not-exist'     => '"$1" هېڅ شتون نه لري',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'mediafunctions-invalid-title' => '"$1" não é um título válido',
+	'mediafunctions-not-exist'     => '"$1" não existe',
+);
+
 /** Russian (Русский)
  * @author VasilievVV
  */

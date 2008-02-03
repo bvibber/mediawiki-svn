@@ -124,9 +124,12 @@ $messages['gl'] = array(
 	'player-goto-file' => 'ficheiro',
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'player'               => 'Wothrawak',
+	'player-desc'          => 'Playback zasadźenych multimedijow z pomocu tykačow wobhladowaka a [[Special:Player|specialneje strony]]',
 	'player-title'         => 'Wothrawak',
 	'player-playertitle'   => 'Wothrawak: $1',
 	'player-file'          => 'Datajowe mjeno',
@@ -266,7 +269,8 @@ $messages['pms'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'player-goto-page' => 'Página',
+	'player-invalid-title' => 'título inválido',
+	'player-goto-page'     => 'Página',
 );
 
 /** Russian (Русский)

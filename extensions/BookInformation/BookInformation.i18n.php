@@ -273,6 +273,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'bookinfo-header'            => 'Enformacions sur les ôvres',
+	'bookinfo-desc'              => 'Ètend [[Special:Booksources]] avouéc des enformacions dês un sèrviço Vouèbe.',
 	'bookinfo-result-title'      => 'Titro :',
 	'bookinfo-result-author'     => 'Ôtor :',
 	'bookinfo-result-publisher'  => 'Èditor :',
@@ -623,6 +624,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'bookinfo-header'            => 'Informação de livro',
+	'bookinfo-desc'              => 'Expande [[{{ns:special}}:Booksources]] com informação proveniente de um web service',
 	'bookinfo-result-title'      => 'Título:',
 	'bookinfo-result-author'     => 'Autor:',
 	'bookinfo-result-publisher'  => 'Editora:',
@@ -676,18 +678,22 @@ $messages['ru'] = array(
 	'bookinfo-provider'          => 'Поставщик информации: $1',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
 $messages['sah'] = array(
-	'bookinfo-header' => 'Кинигэ туһунан',
-	'bookinfo-result-title' => 'Аата:',
-	'bookinfo-result-author' => 'Суруйааччы:',
-	'bookinfo-result-publisher' => 'Кинигэ кыһата:',
-	'bookinfo-result-year' => 'Сыла:',
+	'bookinfo-header'            => 'Кинигэ туһунан',
+	'bookinfo-desc'              => 'Ситим (Веб) сулууспаларын сибидиэнньэлэринэн [[Special:Booksources]] кэҥэтэр',
+	'bookinfo-result-title'      => 'Аата:',
+	'bookinfo-result-author'     => 'Суруйааччы:',
+	'bookinfo-result-publisher'  => 'Кинигэ кыһата:',
+	'bookinfo-result-year'       => 'Сыла:',
 	'bookinfo-error-invalidisbn' => 'Сыыһа ISBN турбут.',
-	'bookinfo-error-nosuchitem' => 'Бу туһунан суох эбэтэр кыайан булуллубата.',
-	'bookinfo-error-nodriver' => 'Кинигэ туһунан драйвер сатаан инициализацияламмат.',
-	'bookinfo-error-noresponse' => 'Хоруй суох эбэтэр болдьоҕо ааста.',
-	'bookinfo-purchase' => 'Бу кинигэни мантан атыылаһарга: $1',
-	'bookinfo-provider' => 'Информацияны ким биэрбитэ: $1',
+	'bookinfo-error-nosuchitem'  => 'Бу туһунан суох эбэтэр кыайан булуллубата.',
+	'bookinfo-error-nodriver'    => 'Кинигэ туһунан драйвер сатаан инициализацияламмат.',
+	'bookinfo-error-noresponse'  => 'Хоруй суох эбэтэр болдьоҕо ааста.',
+	'bookinfo-purchase'          => 'Бу кинигэни мантан атыылаһарга: $1',
+	'bookinfo-provider'          => 'Информацияны ким биэрбитэ: $1',
 );
 
 /** Slovak (Slovenčina)

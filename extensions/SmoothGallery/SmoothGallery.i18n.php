@@ -78,6 +78,7 @@ $messages['gl'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'smoothgallery-desc'                => 'Dowola wužiwarjam galerije z wobrazami, kotrež su so naharali, wutworić. Dowola najwjace opcijow ze SmoothGallery',
 	'smoothgallery-error'               => '<b>SmoothGallery zmylk:</b>',
 	'smoothgallery-gallery-not-found'   => 'Požadana galerija njeeksistuje.',
 	'smoothgallery-not-found'           => 'Žane wobrazy njebuchu ke galeriji přidate. Prošu přidaj znajmjeńša jedyn wobraz.',
@@ -184,3 +185,4 @@ $messages['sr-ec'] = array(
 	'smoothgallery-unexpected-error'    => 'Десила се неочекивана грешка. Молимо обавестите администраторе.',
 	'smoothgallery-javascript-disabled' => 'Јаваскрипт је потребан да би се галерија нормално приказала.',
 );
+
