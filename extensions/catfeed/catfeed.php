@@ -27,6 +27,18 @@
 
 
 $wgExtensionFunctions[] = 'setupCatRSSExtension';
+$wgExtensionCredits['other'][] = array(
+	'name' => 'Category Feed',
+	'version' => '2008-01-14',
+	'author' => 'Gabriel Wicke',
+	'description' => 'Uses bits from recentchanges feeds. Create in-page version, especially useful for wikinews',
+	'descriptionmsg' => 'catfeed-desc',
+	'url' => 'http://wikidev.net',
+);
+
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['catfeed'] = $dir . 'catfeed.i18n.php';
+
 if( $wgCategoryMagicGallery ) 
 	require_once('ImageGallery.php');
 
@@ -35,7 +47,7 @@ function setupCatRSSExtension() {
 	global $IP;
 	require_once( "$IP/includes/CategoryPage.php" );
 	require_once("Feed.php");
-
+	wfLoadExtensionMessages( 'catfeed' );
 	global $wgHooks;
 
 	$wgHooks['CategoryPageView'][] = 'viewCatFeed';
