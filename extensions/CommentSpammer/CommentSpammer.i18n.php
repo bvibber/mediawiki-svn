@@ -12,6 +12,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'commentspammer-save-blocked' => 'Your IP address is a suspected comment spammer, so the page has not been saved. [[Special:Userlogin|Log in or create an account]] to avoid this.',
+	'commentspammer-desc'         => 'Rejects edits from suspected comment spammers on a DNS blacklist.',
 	'commentspammer-log-msg'      => 'edit from [[Special:Contributions/$1|$1]] to [[:$2]]. ',
 	'commentspammer-log-msg-info' => 'Last spammed $1 {{PLURAL:$1|day|days}} ago, threat level is $2, and offence code is $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 View details], or [[Special:Blockip/$4|block]].',
 	'cspammerlogpagetext'         => 'Record of edits that have been allowed or denied based on whether the source was a known comment spammer.',
@@ -38,6 +39,7 @@ $messages['de'] = array(
 
 $messages['fr'] = array(
 	'commentspammer-save-blocked' => 'Votre adresse IP est celle d\'une personne suspectée de créer du pourriel : la page n\'a donc pas été sauvegardée. Veuillez vous [[Special:Userlogin|connecter ou créer un compte]] pour contourner cette interdiction.',
+	'commentspammer-desc'         => 'Rejette les modifications suspectées de spams à partir d’une liste noire figurant dans le projet HoneyPot DNS.',
 	'commentspammer-log-msg' => 'Modifications de [[Special:Contributions/$1|$1]] à [[:$2]].',
 	'commentspammer-log-msg-info' => 'Le dernier pourriel remonte à {{PLURAL:$1|$1 jour|$1 jours}}, le niveau d\'alerte est à $2 et le code d\'attaque est $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Voir détails] ou [[Special:Blockip/$4|bloquer]].',
 	'cspammerlogpagetext' => 'Journal des modifications acceptées ou rejetées selon que la source était un créateur de pourriels connu.',

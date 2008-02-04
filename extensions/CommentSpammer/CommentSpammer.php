@@ -20,7 +20,11 @@ $wgExtensionCredits['other'][] = array(
         'author' => 'Nick Jenkins',
         'url' => 'http://www.mediawiki.org/wiki/Extension:CommentSpammer',
         'description' => 'Rejects edits from suspected comment spammers on a DNS blacklist.',
+	'descriptionmsg' => 'commentspammer-desc',
 );
+
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['CommentSpammer'] = $dir . 'CommentSpammer.i18n.php';
 
 function efCommentSpammer() {
 	wfLoadExtensionMessages( 'CommentSpammer' );
