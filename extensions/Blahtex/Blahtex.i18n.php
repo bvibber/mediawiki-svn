@@ -291,7 +291,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'math_noblahtex'                        => 'Ne peut exécuter blahtex, qui devrait être à $1',
-	'math-desc'				=> 'Sortie MathML pour les balises &lt;math&gt;',
+	'math-desc'                             => 'Sortie MathML pour les balises &lt;math&gt;',
 	'math_AmbiguousInfix'                   => "La position de « $1 » est ambiguë (ajouter des balises additionnelles « { ... } » peut lever l'ambiguïté)",
 	'math_CannotChangeDirectory'            => 'Ne peut changer de dossier de travail',
 	'math_CannotCreateTexFile'              => 'Ne peut créer un fichier tex',
@@ -852,6 +852,7 @@ $messages['pt'] = array(
 	'math_noblahtex'                        => 'Não é possível executar blahtex, que deveria estar em $1',
 	'math_AmbiguousInfix'                   => 'Posicionamento ambígua de "$1" (experimente usar chavetas adicionais "{ ... }" para desfazer a ambiguidade)',
 	'math_CannotRunLatex'                   => 'Não é possível executar latex',
+	'math_CasesRowTooBig'                   => 'Só pode haver duas entradas em cada linha de um bloco "cases"',
 	'math_IllegalCharacter'                 => 'Caracter inválido nos dados introduzidos',
 	'math_IllegalCommandInMathMode'         => 'O comando "$1" é inválido em modo matemático',
 	'math_IllegalCommandInMathModeWithHint' => 'O comando "$1" é inválido em modo matemático (talvez pretendesse usar "$2"?)',

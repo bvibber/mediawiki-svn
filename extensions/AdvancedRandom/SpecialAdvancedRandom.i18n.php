@@ -202,7 +202,7 @@ $messages['vi'] = array(
 	'advancedrandom' => 'Ngẫu nhiên nâng cao',
 );
 
-/** 粵語 (粵語)
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

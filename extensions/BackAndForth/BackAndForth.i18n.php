@@ -17,16 +17,25 @@ $messages['en'] = array(
 	'backforth-prev' => 'Previous ($1)',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ */
 $messages['af'] = array(
 	'backforth-next' => 'Volgende ($1)',
 	'backforth-prev' => 'Vorige ($1)',
 );
 
+/** Old English (Anglo Saxon)
+ * @author SPQRobin
+ */
 $messages['ang'] = array(
 	'backforth-next' => 'Nīehst ($1)',
 	'backforth-prev' => 'Beforan ($1)',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
 	'backforth-next' => 'التالي ($1)',
 	'backforth-prev' => 'السابق ($1)',
@@ -40,11 +49,17 @@ $messages['ast'] = array(
 	'backforth-prev' => 'Anterior ($1)',
 );
 
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 $messages['bcl'] = array(
 	'backforth-next' => 'Sunod ($1)',
 	'backforth-prev' => 'Nakaagi ($1)',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
 $messages['bg'] = array(
 	'backforth-next' => 'Следващи ($1)',
 	'backforth-prev' => 'Предишни ($1)',
@@ -58,8 +73,11 @@ $messages['bn'] = array(
 	'backforth-prev' => 'পূর্ববর্তী ($1)',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
 $messages['br'] = array(
-	'backforth-next' => 'War-lerc\'h ($1)',
+	'backforth-next' => "War-lerc'h ($1)",
 	'backforth-prev' => 'Kent ($1)',
 );
 
@@ -72,6 +90,7 @@ $messages['cs'] = array(
 	'backforth-prev' => 'Předchozí ($1)',
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
 	'backforth-next' => 'Nächste ($1)',
 	'backforth-prev' => 'Vorherige ($1)',
@@ -85,11 +104,17 @@ $messages['dsb'] = array(
 	'backforth-prev' => 'Pjerwjejšny ($1)',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
 $messages['el'] = array(
 	'backforth-next' => 'Επόμενο ($1)',
 	'backforth-prev' => 'Προηγούμενο ($1)',
 );
 
+/** Esperanto (Esperanto)
+ * @author Tlustulimu
+ */
 $messages['eo'] = array(
 	'backforth-next' => 'Sekva ($1)',
 	'backforth-prev' => 'Antaŭa ($1)',
@@ -103,17 +128,26 @@ $messages['ext'] = array(
 	'backforth-prev' => 'Anteriol ($1)',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
 $messages['fi'] = array(
 	'backforth-next' => 'Seuraava ($1)',
 	'backforth-prev' => 'Edellinen ($1)',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ */
 $messages['fr'] = array(
 	'backforth-next' => 'Suivant ($1)',
 	'backforth-desc' => 'Ajoute « Suivant » et « Précédent » à la page des liens alphabétiques en haut des pages',
 	'backforth-prev' => 'Précédent ($1)',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
 $messages['frp'] = array(
 	'backforth-next' => 'Siuvent ($1)',
 	'backforth-prev' => 'Prècèdent ($1)',
@@ -127,11 +161,17 @@ $messages['gag'] = array(
 	'backforth-prev' => 'İlerki ($1)',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
 $messages['gl'] = array(
 	'backforth-next' => 'Seguinte ($1)',
 	'backforth-prev' => 'Anterior ($1)',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
 $messages['hr'] = array(
 	'backforth-next' => 'Slijedeći ($1)',
 	'backforth-prev' => 'Prethodni ($1)',
@@ -154,31 +194,49 @@ $messages['hu'] = array(
 	'backforth-prev' => 'Előző ($1)',
 );
 
+/** Armenian (Հայերեն)
+ * @author Teak
+ */
 $messages['hy'] = array(
 	'backforth-next' => 'Հաջորդ ($1)',
 	'backforth-prev' => 'Նախորդ ($1)',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
 $messages['is'] = array(
 	'backforth-next' => 'Næsta ($1)',
 	'backforth-prev' => 'Síðasta ($1)',
 );
 
+/** Italian (Italiano)
+ * @author Gianfranco
+ */
 $messages['it'] = array(
 	'backforth-next' => 'Successivi ($1)',
 	'backforth-prev' => 'Precedenti ($1)',
 );
 
+/** Japanese (日本語)
+ * @author Broad-Sky
+ */
 $messages['ja'] = array(
 	'backforth-next' => '次 ($1)',
 	'backforth-prev' => '前 ($1)',
 );
 
+/** Kara-Kalpak (Qaraqalpaqsha)
+ * @author Jiemurat
+ */
 $messages['kaa'] = array(
 	'backforth-next' => 'Keyingi ($1)',
-	'backforth-prev' => 'Aldın\'g\'ı ($1)',
+	'backforth-prev' => "Aldın'g'ı ($1)",
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Shushruth
+ */
 $messages['kn'] = array(
 	'backforth-next' => 'ಮುಂದಿನ ($1)',
 	'backforth-prev' => 'ಹಿಂದಿನ ($1)',
@@ -209,26 +267,41 @@ $messages['nl'] = array(
 	'backforth-prev' => 'Vorige ($1)',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
 	'backforth-next' => 'Neste ($1)',
 	'backforth-prev' => 'Forrige ($1)',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
 	'backforth-next' => 'Seguent ($1)',
 	'backforth-prev' => 'Precedent ($1)',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ */
 $messages['pl'] = array(
 	'backforth-next' => 'Następny ($1)',
 	'backforth-prev' => 'Poprzedni ($1)',
 );
 
+/** Piemontèis (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
 	'backforth-next' => 'Anans ($1)',
 	'backforth-prev' => 'André ($1)',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
 $messages['pt'] = array(
 	'backforth-next' => 'Próximo ($1)',
 	'backforth-prev' => 'Anterior ($1)',
@@ -242,11 +315,17 @@ $messages['ru'] = array(
 	'backforth-prev' => 'Пред. ($1)',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
 $messages['sah'] = array(
 	'backforth-next' => 'Аныгыскы ($1)',
 	'backforth-prev' => 'Иннинээҕи ($1)',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Tonyfroio
+ */
 $messages['scn'] = array(
 	'backforth-next' => 'Succissivi ($1)',
 	'backforth-prev' => 'Pricidenti ($1)',
@@ -269,11 +348,15 @@ $messages['sr-ec'] = array(
 	'backforth-prev' => 'Претходно ($1)',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
 $messages['stq'] = array(
 	'backforth-next' => 'Naiste ($1)',
 	'backforth-prev' => 'Foarige ($1)',
 );
 
+/** Swedish (Svenska) */
 $messages['sv'] = array(
 	'backforth-next' => 'Nästa ($1)',
 	'backforth-prev' => 'Föregående ($1)',
@@ -303,16 +386,19 @@ $messages['vo'] = array(
 	'backforth-prev' => 'Büik ($1)',
 );
 
+/** Yue (粵語) */
 $messages['yue'] = array(
 	'backforth-next' => '下一篇 ($1)',
 	'backforth-prev' => '上一篇 ($1)',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'backforth-next' => '下一条 ($1)',
 	'backforth-prev' => '上一条 ($1)',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
 	'backforth-next' => '下一條 ($1)',
 	'backforth-prev' => '上一條 ($1)',

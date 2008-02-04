@@ -54,6 +54,7 @@ $messages['br'] = array(
 	'assert_edit_message' => "C'hwitet eo an enframmadenn goulennet.",
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
 	'assert_edit_title'   => 'Anspruch fehlgeschlagen',
 	'assert_edit_message' => 'Der angegebene Anspruch ($1) ist fehlgeschlagen.',
@@ -74,12 +75,10 @@ $messages['eo'] = array(
 	'assert_edit_title' => 'Aserto malsukcesis',
 );
 
-
 # فارسی (Huji)
 $messages['fa'] = array(
 	'assert_edit_title'   => 'تایید ناموفق',
 	'assert_edit_message' => 'تایید مورد نظر ($1) ناموفق بود.',
-
 );
 
 /** Finnish (Suomi)
@@ -96,7 +95,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'assert_edit_title'   => "Échec de l'insertion",
-	'assert_edit_desc'  => 'Ajoute des éditions d’insertion pour l’utilisation par des bots',
+	'assert_edit_desc'    => 'Ajoute des éditions d’insertion pour l’utilisation par des bots',
 	'assert_edit_message' => "L'insertion indiquée ($1) a échoué.",
 );
 
@@ -114,6 +113,7 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'assert_edit_title'   => 'Afirmación fracasada',
+	'assert_edit_desc'    => 'Engade edición das afirmacións para o uso por bots.',
 	'assert_edit_message' => 'A afirmación especificada ($1) fracasou.',
 );
 
@@ -166,19 +166,24 @@ $messages['ja'] = array(
 	'assert_edit_message' => '($1)というAssert処理が失敗しました。',
 );
 
+/** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
 $messages['kk-arab'] = array(
-	'assert_edit_title' => 'ماقۇلداۋ سٵتسٸز',
+	'assert_edit_title'   => 'ماقۇلداۋ سٵتسٸز',
 	'assert_edit_message' => 'ەنگٸزٸلگەن ماقۇلداۋ ($1) سٵتسٸز.',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic)) */
 $messages['kk-cyrl'] = array(
-	'assert_edit_title' => 'Мақұлдау сәтсіз',
+	'assert_edit_title'   => 'Мақұлдау сәтсіз',
 	'assert_edit_message' => 'Енгізілген мақұлдау ($1) сәтсіз.',
 );
+
+/** Kazakh (Latin) (Қазақша (Latin)) */
 $messages['kk-latn'] = array(
-	'assert_edit_title' => 'Maquldaw sätsiz',
+	'assert_edit_title'   => 'Maquldaw sätsiz',
 	'assert_edit_message' => 'Engizilgen maquldaw ($1) sätsiz.',
 );
+
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  */
@@ -304,7 +309,7 @@ $messages['vo'] = array(
 	'assert_edit_message' => 'Fümedam peflagöl ($1) no eplöpon.',
 );
 
-/** 粵語 (粵語)
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

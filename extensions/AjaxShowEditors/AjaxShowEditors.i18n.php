@@ -13,10 +13,13 @@ $messages['en'] = array(
 	'ajax-se-idling' => '($1s ago)',
 );
 
+/** Arabic (العربية)
+ * @author Mido
+ */
 $messages['ar'] = array(
-	'ajax-se-title' => 'يقوم الآن بالتحرير:',
+	'ajax-se-title'   => 'يقوم الآن بالتحرير:',
 	'ajax-se-pending' => 'انتظار التحديث ... (اضغط على هذا الصندوق أو ابدأ في التحرير)',
-	'ajax-se-idling' => '(منذ $1ث)',
+	'ajax-se-idling'  => '(منذ $1ث)',
 );
 
 /** Asturian (Asturianu)
@@ -28,10 +31,13 @@ $messages['ast'] = array(
 	'ajax-se-idling'  => '(hai $1s)',
 );
 
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 $messages['bcl'] = array(
-	'ajax-se-title' => 'Presenteng pighihira:',
+	'ajax-se-title'   => 'Presenteng pighihira:',
 	'ajax-se-pending' => 'pendiente an pagrepresko ... (pindoton an kahon o magpoon paghirá)',
-	'ajax-se-idling' => '($1s na an nakaagi)',
+	'ajax-se-idling'  => '($1s na an nakaagi)',
 );
 
 /** Bulgarian (Български)
@@ -42,24 +48,34 @@ $messages['bg'] = array(
 	'ajax-se-idling' => '(преди $1 секунди)',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
 $messages['bn'] = array(
-	'ajax-se-title' => 'বর্তমানে সম্পাদনা করছেন:',
+	'ajax-se-title'   => 'বর্তমানে সম্পাদনা করছেন:',
 	'ajax-se-pending' => 'সতেজ(refresh) করা বাকী আছে... (এই বাক্সে ক্লিক করুন অথবা সম্পাদনা শুরু করুন)',
-	'ajax-se-idling' => '($1সেকেন্ড পূর্বে)',
+	'ajax-se-idling'  => '($1সেকেন্ড পূর্বে)',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
 $messages['br'] = array(
-	'ajax-se-title' => 'Oc\'h adaozañ :',
+	'ajax-se-title'   => "Oc'h adaozañ :",
 	'ajax-se-pending' => 'trevell war ar stern ... (klikit war ar voest-mañ pe krogit da zegas kemmoù)',
-	'ajax-se-idling' => '($1 zo)',
+	'ajax-se-idling'  => '($1 zo)',
 );
 
+/** Czech (Česky)
+ * @author Li-sung
+ */
 $messages['cs'] = array(
-	'ajax-se-title' => 'Právě edituje:',
+	'ajax-se-title'   => 'Právě edituje:',
 	'ajax-se-pending' => 'očekává se změna... (klikněte do tohoto pole nebo začněte editovat)',
-	'ajax-se-idling' => '(před $1 s)',
+	'ajax-se-idling'  => '(před $1 s)',
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
 	'ajax-se-title'   => 'Wird zur Zeit bearbeitet von:',
 	'ajax-se-pending' => 'bevorstehende Aktualisierungen… (klicke auf diesen Kasten oder beginne mit der Bearbeitung)',
@@ -75,6 +91,9 @@ $messages['dsb'] = array(
 	'ajax-se-idling'  => '(pśed $1 s)',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
 $messages['el'] = array(
 	'ajax-se-title'   => 'Τρέχουσα επεξεργασία:',
 	'ajax-se-pending' => 'εκκρεμή ανανέωση ... (κάντε κλικ σε αυτό το κουτί ή ξεκινήστε την επεξεργασία)',
@@ -90,51 +109,70 @@ $messages['eo'] = array(
 	'ajax-se-idling'  => '(antaŭ $1s)',
 );
 
+/** Extremaduran (Estremeñu)
+ * @author Better
+ */
 $messages['ext'] = array(
-	'ajax-se-title' => 'Uguañoti eitandu:',
+	'ajax-se-title'  => 'Uguañoti eitandu:',
 	'ajax-se-idling' => '(hazi $1s)',
 );
 
+/** Finnish (Suomi) */
 $messages['fi'] = array(
 	'ajax-se-title'   => 'Samanaikaiset muokkaajat:',
 	'ajax-se-pending' => 'odotetaan päivitystä… (napsauta tästä tai aloita muokkaaminen)',
 	'ajax-se-idling'  => '($1 s sitten)',
 );
 
+/** French (Français) */
 $messages['fr'] = array(
-	'ajax-se-title' => 'En train d’être modifié par :',
+	'ajax-se-title'   => 'En train d’être modifié par :',
 	'ajax-se-pending' => 'rafraîchissement en cours ... (cliquez sur ce message ou modifiez la page)',
-	'ajax-se-idling' => '(il y a $1 s)',
+	'ajax-se-idling'  => '(il y a $1 s)',
 );
 
+/** Cajun French (Français cadien)
+ * @author JeanVoisin
+ * @author RoyAlcatraz
+ */
 $messages['frc'] = array(
-	'ajax-se-title' => 'Après changer:',
+	'ajax-se-title'   => 'Après changer:',
 	'ajax-se-pending' => 'Le système est après espérer le renouvelage de la page.  Cliquez cette boëte ici ou commencez à changer la page.',
-	'ajax-se-idling' => '($1 secondes passées)',
+	'ajax-se-idling'  => '($1 secondes passées)',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
 $messages['frp'] = array(
-	'ajax-se-title' => 'Aprés étre modifiâ per :',
+	'ajax-se-title'   => 'Aprés étre modifiâ per :',
 	'ajax-se-pending' => 'rafrèchissement en cors ... (clicâd sur ceti mèssâjo ou modifiâd la pâge)',
-	'ajax-se-idling' => '(cen fât $1 s)',
+	'ajax-se-idling'  => '(cen fât $1 s)',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ */
 $messages['gl'] = array(
-	'ajax-se-title' => 'Neste momento está a editar:',
+	'ajax-se-title'   => 'Neste momento está a editar:',
 	'ajax-se-pending' => 'pendente de refresco... (clique nesta caixa ou comece a editar)',
-	'ajax-se-idling' => '(hai $1s)',
+	'ajax-se-idling'  => '(hai $1s)',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
 $messages['hr'] = array(
-	'ajax-se-title' => 'Trenutno uređujete:',
+	'ajax-se-title'   => 'Trenutno uređujete:',
 	'ajax-se-pending' => 'osvježavanje slijedi ... (kliknite na ovaj okvir ili počnite s uređivanjem)',
-	'ajax-se-idling' => '(prije $1s)',
+	'ajax-se-idling'  => '(prije $1s)',
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
 $messages['hsb'] = array(
-	'ajax-se-title' => 'Wobdźěłuje so runje wot:',
+	'ajax-se-title'   => 'Wobdźěłuje so runje wot:',
 	'ajax-se-pending' => 'aktualizuje so ... (klikń do tutoho pola abo póčni wobdźěłować)',
-	'ajax-se-idling' => '(před $1s)',
+	'ajax-se-idling'  => '(před $1s)',
 );
 
 /** Hungarian (Magyar)
@@ -146,52 +184,66 @@ $messages['hu'] = array(
 	'ajax-se-idling'  => '($1 másodperce)',
 );
 
+/** Armenian (Հայերեն)
+ * @author Teak
+ */
 $messages['hy'] = array(
-	'ajax-se-title' => 'Ներկայումս խմբագրում են.',
+	'ajax-se-title'   => 'Ներկայումս խմբագրում են.',
 	'ajax-se-pending' => 'թարմացում... (մատնահարեք այստեղ կամ սկսեք խմբագրումը)',
-	'ajax-se-idling' => '($1 վ առաջ)',
+	'ajax-se-idling'  => '($1 վ առաջ)',
 );
 
+/** Indonesian (Bahasa Indonesia) */
 $messages['id'] = array(
 	'ajax-se-title'   => 'Sedang menyunting:',
 	'ajax-se-pending' => 'pemuatan ulang ditunda ... (klik kotak ini atau mulai menyunting)',
 	'ajax-se-idling'  => '($1d lalu)',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
 $messages['is'] = array(
-	'ajax-se-title' => 'Breyti:',
+	'ajax-se-title'   => 'Breyti:',
 	'ajax-se-pending' => 'beðið er eftir glæðingu ... (smelltu á þennan kassa eða breyttu efninu)',
-	'ajax-se-idling' => '(fyrir $1 sekúndum)',
+	'ajax-se-idling'  => '(fyrir $1 sekúndum)',
 );
 
+/** Italian (Italiano) */
 $messages['it'] = array(
-	'ajax-se-title' => 'Modifica in corso:',
+	'ajax-se-title'   => 'Modifica in corso:',
 	'ajax-se-pending' => 'in attesa di aggiornamento ... (fare clic su questa casella o iniziare la modifica)',
-	'ajax-se-idling' => '(da $1 s)',
+	'ajax-se-idling'  => '(da $1 s)',
 );
 
+/** Japanese (日本語)
+ * @author Broad-Sky
+ */
 $messages['ja'] = array(
-	'ajax-se-title' => '現在編集中:',
+	'ajax-se-title'   => '現在編集中:',
 	'ajax-se-pending' => '更新します（この枠内をクリックするか編集を始めてください）',
-	'ajax-se-idling' => '（$1秒前）',
+	'ajax-se-idling'  => '（$1秒前）',
 );
 
+/** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
 $messages['kk-arab'] = array(
-	'ajax-se-title' => 'اعىمداعى ٶڭدەلۋدە:',
+	'ajax-se-title'   => 'اعىمداعى ٶڭدەلۋدە:',
 	'ajax-se-pending' => 'جاڭارتۋ كٷتٸلۋدە... (بۇل قابىشاقتى نۇقىڭىز, نەمەسە ٶڭدەۋدٸ باستاڭىز)',
-	'ajax-se-idling' => '($1 s بۇرىن)',
+	'ajax-se-idling'  => '($1 s بۇرىن)',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic)) */
 $messages['kk-cyrl'] = array(
-	'ajax-se-title' => 'Ағымдағы өңделуде:',
+	'ajax-se-title'   => 'Ағымдағы өңделуде:',
 	'ajax-se-pending' => 'жаңарту күтілуде... (бұл қабышақты нұқыңыз, немесе өңдеуді бастаңыз)',
-	'ajax-se-idling' => '($1 s бұрын)',
+	'ajax-se-idling'  => '($1 s бұрын)',
 );
 
+/** Kazakh (Latin) (Қазақша (Latin)) */
 $messages['kk-latn'] = array(
-	'ajax-se-title' => 'Ağımdağı öñdelwde:',
+	'ajax-se-title'   => 'Ağımdağı öñdelwde:',
 	'ajax-se-pending' => 'jañartw kütilwde... (bul qabışaqtı nuqıñız, nemese öñdewdi bastañız)',
-	'ajax-se-idling' => '($1 s burın)',
+	'ajax-se-idling'  => '($1 s burın)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -203,10 +255,13 @@ $messages['lb'] = array(
 	'ajax-se-idling'  => '(viru(n) $1 Sekonnen)',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
 $messages['li'] = array(
-	'ajax-se-title' => 'Memènteel aant bewèrke:',
-	'ajax-se-pending' => 'Herfrisse aant äöbere... (klik op deze bóks of sjtart \'t bewèrke)',
-	'ajax-se-idling' => '($1s geleje)',
+	'ajax-se-title'   => 'Memènteel aant bewèrke:',
+	'ajax-se-pending' => "Herfrisse aant äöbere... (klik op deze bóks of sjtart 't bewèrke)",
+	'ajax-se-idling'  => '($1s geleje)',
 );
 
 /** Lithuanian (Lietuvių)
@@ -219,68 +274,96 @@ $messages['lt'] = array(
 	'ajax-se-idling'  => '(prieš $1 s)',
 );
 
+/** Dutch (Nederlands) */
 $messages['nl'] = array(
-	'ajax-se-title' => 'Bezig met het bewerken van:',
+	'ajax-se-title'   => 'Bezig met het bewerken van:',
 	'ajax-se-pending' => 'moet nog bijgewerkt worden ... (klik op deze knop of begin met bewerken)',
-	'ajax-se-idling' => '($1s geleden)',
+	'ajax-se-idling'  => '($1s geleden)',
 );
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'ajax-se-title' => 'Redigerer:',
+	'ajax-se-title'   => 'Redigerer:',
 	'ajax-se-pending' => 'Avventer gjenoppfriskning … (klikk denne boksen eller start å redigere)',
-	'ajax-se-idling' => '($1s siden)',
+	'ajax-se-idling'  => '($1s siden)',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
-	'ajax-se-title' => 'A èsser modificat per :',
+	'ajax-se-title'   => 'A èsser modificat per :',
 	'ajax-se-pending' => 'refrescament en cors ... (clicatz sus aqueste messatge o modificatz la pagina)',
-	'ajax-se-idling' => '(i a $1 s)',
+	'ajax-se-idling'  => '(i a $1 s)',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ */
 $messages['pl'] = array(
-	'ajax-se-title' => 'Ta strona jest teraz edytowana przez:',
+	'ajax-se-title'   => 'Ta strona jest teraz edytowana przez:',
 	'ajax-se-pending' => 'oczekiwanie na odświeżenie... (kliknij na tę ramkę lub zacznij edycję)',
-	'ajax-se-idling' => '($1s temu)',
+	'ajax-se-idling'  => '($1s temu)',
 );
 
+/** Piemontèis (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
-	'ajax-se-title' => 'Antramentr ch\'as modìfica:',
-	'ajax-se-pending' => 'a l\'ha dë esse agiornà ... (Ch\'a-i bata ansima a sta casela ò pura ch\'a fasa che fé soa modìfica)',
-	'ajax-se-idling' => '(da $1 second)',
+	'ajax-se-title'   => "Antramentr ch'as modìfica:",
+	'ajax-se-pending' => "a l'ha dë esse agiornà ... (Ch'a-i bata ansima a sta casela ò pura ch'a fasa che fé soa modìfica)",
+	'ajax-se-idling'  => '(da $1 second)',
 );
 
+/** Portuguese (Português) */
 $messages['pt'] = array(
-	'ajax-se-title' => 'Editando no momento:',
+	'ajax-se-title'   => 'Editando no momento:',
 	'ajax-se-pending' => 'atualização pendente... (clique neste box ou inicie a edição)',
-	'ajax-se-idling' => '($1 segundos atrás)',
+	'ajax-se-idling'  => '($1 segundos atrás)',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
 $messages['ro'] = array(
-	'ajax-se-title' => 'Modificare curentă:',
+	'ajax-se-title'  => 'Modificare curentă:',
 	'ajax-se-idling' => '(acum $1s)',
 );
 
+/** Russian (Русский) */
 $messages['ru'] = array(
-	'ajax-se-title' => 'В настоящий момент редактируют:',
+	'ajax-se-title'   => 'В настоящий момент редактируют:',
 	'ajax-se-pending' => 'ожидание обновления... (нажмите здесь или начните редактирование)',
-	'ajax-se-idling' => '($1 с назад)',
+	'ajax-se-idling'  => '($1 с назад)',
 );
 
+/** Yakut (Саха тыла)
+ * @author Bert Jickty
+ */
 $messages['sah'] = array(
-	'ajax-se-title' => 'Билигин көннөрө сылдьаллар:',
+	'ajax-se-title'   => 'Билигин көннөрө сылдьаллар:',
 	'ajax-se-pending' => 'саҥардылларын кэтэс ... (маны баттаа эбэтэр көннөрүүнү саҕалаа)',
-	'ajax-se-idling' => '($1 c анараа өттүгэр)',
+	'ajax-se-idling'  => '($1 c анараа өттүгэр)',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Tonyfroio
+ */
 $messages['scn'] = array(
-	'ajax-se-title' => 'Canciamentu \'n corsu:',
-	'ajax-se-pending' => '\'n attesa d\'aggiornamentu ... (fari clic su chista casidda o ncignari lu canciamentu)',
-	'ajax-se-idling' => '(di $1 s)',
+	'ajax-se-title'   => "Canciamentu 'n corsu:",
+	'ajax-se-pending' => "'n attesa d'aggiornamentu ... (fari clic su chista casidda o ncignari lu canciamentu)",
+	'ajax-se-idling'  => '(di $1 s)',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
-	'ajax-se-title' => 'Práve upravuje:',
+	'ajax-se-title'   => 'Práve upravuje:',
 	'ajax-se-pending' => 'čaká sa na obnovenie... (kliknite do tohto poľa alebo začnite upravovať)',
-	'ajax-se-idling' => '(pred $1 sek)',
+	'ajax-se-idling'  => '(pred $1 sek)',
 );
 
 /** ћирилица (ћирилица)
@@ -292,22 +375,32 @@ $messages['sr-ec'] = array(
 	'ajax-se-idling'  => '(пре $1 сек)',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
 $messages['stq'] = array(
-	'ajax-se-title' => 'Wäd apstuuns beoarbaided fon:',
+	'ajax-se-title'   => 'Wäd apstuuns beoarbaided fon:',
 	'ajax-se-pending' => 'befoarstoundende Aktualisierengen... (klik ap disse Kaste of fang oun mäd ju Beoarbaidenge)',
-	'ajax-se-idling' => '(foar $1 s)',
+	'ajax-se-idling'  => '(foar $1 s)',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ * @author Irwangatot
+ */
 $messages['su'] = array(
-	'ajax-se-title' => 'Keur ngédit:',
+	'ajax-se-title'   => 'Keur ngédit:',
 	'ajax-se-pending' => 'muatkeun koropak deui ditunda... (klik kotak ieu atawa mimiti ngédit)',
-	'ajax-se-idling' => '($1 nu kaliwat)',
+	'ajax-se-idling'  => '($1 nu kaliwat)',
 );
 
+/** Swedish (Svenska)
+ * @author Sannab
+ */
 $messages['sv'] = array(
-	'ajax-se-title' => 'Redigeras just nu:',
+	'ajax-se-title'   => 'Redigeras just nu:',
 	'ajax-se-pending' => 'avvaktar omläsning ... (klicka på denna ruta eller börja redigera)',
-	'ajax-se-idling' => '($1s sedan)',
+	'ajax-se-idling'  => '($1s sedan)',
 );
 
 /** Telugu (తెలుగు)
@@ -335,22 +428,27 @@ $messages['vo'] = array(
 	'ajax-se-idling' => '(bü $1s)',
 );
 
+/** Yue (粵語)
+ * @author Shinjiman
+ */
 $messages['yue'] = array(
-	'ajax-se-title' => '而家編輯緊:',
+	'ajax-se-title'   => '而家編輯緊:',
 	'ajax-se-pending' => '而家重新整理緊 ... (撳一下呢個盒或者開始編輯)',
-	'ajax-se-idling' => '($1秒前)',
+	'ajax-se-idling'  => '($1秒前)',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
-	'ajax-se-title' => '当前编辑中:',
+	'ajax-se-title'   => '当前编辑中:',
 	'ajax-se-pending' => '正在正在刷新 ... (单击这个框或开始编辑)',
-	'ajax-se-idling' => '($1秒前)',
+	'ajax-se-idling'  => '($1秒前)',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
-	'ajax-se-title' => '目前編輯中:',
+	'ajax-se-title'   => '目前編輯中:',
 	'ajax-se-pending' => '正在重新整理 ... (按一下這個框開始編輯)',
-	'ajax-se-idling' => '($1秒前)',
+	'ajax-se-idling'  => '($1秒前)',
 );
 
 $messages['kk'] = $messages['kk-cyrl'];

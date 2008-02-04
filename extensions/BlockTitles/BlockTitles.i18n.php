@@ -74,6 +74,7 @@ $messages['br'] = array(
 	'block_title_error'            => "Ho tigarez met n'eo ket aotreet enrollañ titl ar pennad-mañ.",
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
 	'block_title_error_page_title' => 'Sperre Seitenname',
 	'block_title_error'            => 'Entschuldigung, aber eine Seite mit diesem Namen darf nicht gespeichert werden.',
@@ -110,13 +111,13 @@ $messages['fi'] = array(
 	'block_title_error'            => 'Tämän sivun nimen tallentaminen on kielletty.',
 );
 
-/**
- * French (Bertrand Grondin)
+/** French (Français)
+ * @author Grondin
  */
 $messages['fr'] = array(
 	'block_title_error_page_title' => 'Titre invalide',
-	'block_title_error-desc' => 'Fournit une méthode simple pour éviter que des pages avec un certain titre puissent être sauvegardées ou créées.',	
-	'block_title_error' => 'Désolé, le titre de cet article n’est pas autorisé à être sauvegardé.',
+	'block_title_error-desc'       => 'Fournit une méthode simple pour éviter que des pages avec un certain titre puissent être sauvegardées ou créées.',
+	'block_title_error'            => 'Désolé, le titre de cet article n’est pas autorisé à être sauvegardé.',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -192,11 +193,24 @@ $messages['ja'] = array(
 	'block_title_error' => '申し訳ありませんが、この項目名で保存することはできません。',
 );
 
+/**
+ * @author AlefZet
+ */
+$messages['kk-arab'] = array(
+	'titleblacklist'                  => '# بۇل اتاۋلاردىڭ قارا ٴتىزىمى. جۇيەلى ايتىلىمدارعا (regex) سايكەس مىنداعى اتاۋلار جاراتىلمايدى.
+ماندەمەلەر ٴۇشىن «#» نىشانىن قولدانىڭىز.',
+	'titlewhitelist'                  => '# بۇل اتاۋلاردىڭ اق ٴتىزىمى. ماندەمەلەر ٴۇشىن «#» نىشانىن قولدانىڭىز',
+	'titleblacklist-forbidden-edit'   => '«$2» دەگەن اتاۋ جاراتۋى قۇلىپتالعان.  بۇل قارا ٴتىزىمنىڭ جازباسىنا سايكەس: <code>$1</code>',
+	'titleblacklist-forbidden-move'   => '«$2» دەگەن «$3» دەگەنگە جىلجىتىلمايدى, سەبەبى «$3» دەگەن اتاۋ جاراتۋى قۇلىپتالعان. بۇل قارا ٴتىزىمنىڭ جازباسىنا سايكەس: <code>$1</code>',
+	'titleblacklist-forbidden-upload' => '«$2» دەگەن فايل اتى جاراتۋى قۇلىپتالعان.  بۇل قارا ٴتىزىمنىڭ جازباسىنا سايكەس: <code>$1</code>',
+	'titleblacklist-invalid'          => 'اتاۋلاردىڭ قارا تىزىمىندەگى كەلەسى {{PLURAL:$1|جول|جولدار}} {{PLURAL:$1||}} جارامسىز; ساقتاۋ الدىندا {{PLURAL:$1|بۇنى|بۇلاردى}} دۇرىستاپ شىعىڭىز:',
+);
+
 /** Kazakh (Қазақша)
  * @author AlefZet
  */
 $messages['kk-cyrl'] = array(
-	'titleblacklist'                  => '# Бұл атаулардың қара тізімі. Жүйелі айтылымдарға (regex) сәйкес мындағы атаулар жаратылмайды. 
+	'titleblacklist'                  => '# Бұл атаулардың қара тізімі. Жүйелі айтылымдарға (regex) сәйкес мындағы атаулар жаратылмайды.
 Мәндемелер үшін «#» нышанын қолданыңыз.',
 	'titlewhitelist'                  => '# Бұл атаулардың ақ тізімі. Мәндемелер үшін «#» нышанын қолданыңыз',
 	'titleblacklist-forbidden-edit'   => '«$2» деген атау жаратуы құлыпталған.  Бұл қара тізімнің жазбасына сәйкес: <code>$1</code>',
@@ -204,23 +218,18 @@ $messages['kk-cyrl'] = array(
 	'titleblacklist-forbidden-upload' => '«$2» деген файл аты жаратуы құлыпталған.  Бұл қара тізімнің жазбасына сәйкес: <code>$1</code>',
 	'titleblacklist-invalid'          => 'Атаулардың қара тізіміндегі келесі {{PLURAL:$1|жол|жолдар}} {{PLURAL:$1||}} жарамсыз; сақтау алдында {{PLURAL:$1|бұны|бұларды}} дұрыстап шығыңыз:',
 );
+
+/**
+ * @author AlefZet
+ */
 $messages['kk-latn'] = array(
-	'titleblacklist'                  => '# Bul atawlardıñ qara tizimi. Jüýeli aýtılımdarğa (regex) säýkes mındağı atawlar jaratılmaýdı. 
+	'titleblacklist'                  => '# Bul atawlardıñ qara tizimi. Jüýeli aýtılımdarğa (regex) säýkes mındağı atawlar jaratılmaýdı.
 Mändemeler üşin «#» nışanın qoldanıñız.',
 	'titlewhitelist'                  => '# Bul atawlardıñ aq tizimi. Mändemeler üşin «#» nışanın qoldanıñız',
 	'titleblacklist-forbidden-edit'   => '«$2» degen ataw jaratwı qulıptalğan.  Bul qara tizimniñ jazbasına säýkes: <code>$1</code>',
 	'titleblacklist-forbidden-move'   => '«$2» degen «$3» degenge jıljıtılmaýdı, sebebi «$3» degen ataw jaratwı qulıptalğan. Bul qara tizimniñ jazbasına säýkes: <code>$1</code>',
 	'titleblacklist-forbidden-upload' => '«$2» degen faýl atı jaratwı qulıptalğan.  Bul qara tizimniñ jazbasına säýkes: <code>$1</code>',
 	'titleblacklist-invalid'          => 'Atawlardıñ qara tizimindegi kelesi {{PLURAL:$1|jol|joldar}} {{PLURAL:$1||}} jaramsız; saqtaw aldında {{PLURAL:$1|bunı|bulardı}} durıstap şığıñız:',
-);
-$messages['kk-arab'] = array(
-	'titleblacklist'                  => '# بۇل اتاۋلاردىڭ قارا ٴتىزىمى. جۇيەلى ايتىلىمدارعا (regex) سايكەس مىنداعى اتاۋلار جاراتىلمايدى. 
-ماندەمەلەر ٴۇشىن «#» نىشانىن قولدانىڭىز.',
-	'titlewhitelist'                  => '# بۇل اتاۋلاردىڭ اق ٴتىزىمى. ماندەمەلەر ٴۇشىن «#» نىشانىن قولدانىڭىز',
-	'titleblacklist-forbidden-edit'   => '«$2» دەگەن اتاۋ جاراتۋى قۇلىپتالعان.  بۇل قارا ٴتىزىمنىڭ جازباسىنا سايكەس: <code>$1</code>',
-	'titleblacklist-forbidden-move'   => '«$2» دەگەن «$3» دەگەنگە جىلجىتىلمايدى, سەبەبى «$3» دەگەن اتاۋ جاراتۋى قۇلىپتالعان. بۇل قارا ٴتىزىمنىڭ جازباسىنا سايكەس: <code>$1</code>',
-	'titleblacklist-forbidden-upload' => '«$2» دەگەن فايل اتى جاراتۋى قۇلىپتالعان.  بۇل قارا ٴتىزىمنىڭ جازباسىنا سايكەس: <code>$1</code>',
-	'titleblacklist-invalid'          => 'اتاۋلاردىڭ قارا تىزىمىندەگى كەلەسى {{PLURAL:$1|جول|جولدار}} {{PLURAL:$1||}} جارامسىز; ساقتاۋ الدىندا {{PLURAL:$1|بۇنى|بۇلاردى}} دۇرىستاپ شىعىڭىز:',
 );
 
 /** Latin (Latina)
@@ -371,29 +380,28 @@ $messages['vi'] = array(
 	'block_title_error'            => 'Xin lỗi, không được phép lưu tên trang này.',
 );
 
-/**
- *
- * Cantonese (Shinjiman)
+/** Yue (粵語)
+ * @author Shinjiman
  */
 $messages['yue'] = array(
-	'block_title_error_page_title' => '已經封鎖嘅標題',		
-	'block_title_error' => '對唔住，呢篇文章嘅標題唔容許保存。',
+	'block_title_error_page_title' => '已經封鎖嘅標題',
+	'block_title_error'            => '對唔住，呢篇文章嘅標題唔容許保存。',
 );
 
-/**
- * Chinese (Simplified) (Shinjiman)
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'block_title_error_page_title' => '已封锁的标题',		
-	'block_title_error' => '抱歉，这篇文章的标题不允许保存。',
+	'block_title_error_page_title' => '已封锁的标题',
+	'block_title_error'            => '抱歉，这篇文章的标题不允许保存。',
 );
 
-/**
- * Chinese (Traditional) (Shinjiman)
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'block_title_error_page_title' => '已封鎖的標題',		
-	'block_title_error' => '抱歉，這篇文章的標題不允許保存。',
+	'block_title_error_page_title' => '已封鎖的標題',
+	'block_title_error'            => '抱歉，這篇文章的標題不允許保存。',
 );
 
 $messages['kk'] = $messages['kk-cyrl'];
