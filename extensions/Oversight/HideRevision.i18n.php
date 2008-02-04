@@ -1041,6 +1041,7 @@ $messages['rmy'] = array(
 );
 
 /** Russian (Русский)
+ * @author HalanTul
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
@@ -1063,9 +1064,9 @@ $messages['ru'] = array(
 	'hiderevision-success'        => 'Успешно заархивирована и скрыта.',
 	'hiderevision-error-missing'  => 'Не найдена в базе данных.',
 	'hiderevision-error-current'  => 'Невозможно удалить текущую версию страницы. Сначала откатите изменения',
-	'hiderevision-error-delete'   => 'Невзможно заархивировать. Проверьте, не была-ли версия удалена ранее?',
+	'hiderevision-error-delete'   => 'Невозможно заархивировать. Проверьте, не была ли версия удалена ранее?',
 	'hiderevision-archive-status' => 'Удалена версия со страницы $1: $2',
-	'oversight-nodiff'            => 'Невозможно опрдеделить изменения из-за недоступности предыдущей версии страницы. Возможно:
+	'oversight-nodiff'            => 'Невозможно определить изменения из-за недоступности предыдущей версии страницы. Возможно:
 *Данная страница была удалена
 *Скрытая версия была первой',
 	'oversight-log-hiderev'       => 'скрыта правка со страницы $1',
@@ -1076,6 +1077,43 @@ $messages['ru'] = array(
 	'oversight-hidden'            => 'Скрытая версия',
 	'oversight-header'            => 'Ниже приведены версии, которые недавно были скрыты.
 Распространение данной информации может повлечь лишение прав ревизора.',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'hiderevision'                => 'Торумнарын куруук кистээ',
+	'hiderevision-prompt'         => 'Кистэниэхтээх торум нүөмэрэ:',
+	'hiderevision-continue'       => 'Салгыы',
+	'hiderevision-text'           => "Бу сирэй киһи ''дьиҥнээх аата, дьиэтин аадырыһа, төлөппүөнүн, пааспарын нүөмэрдэрэ уонна да атын сиһилии сибидиэнньэлэр'' бэриллэр '''буоллахтарына эрэ''' туттуллуон сөп.
+
+'''Бу систиэмэни сыыһа туттуу быраап быһыытыгар тиэрдэр.'''
+
+Сирэй кистэммит торумнара MediaWiki интерфейсынан көрдөрүллүөхтэрэ суоҕа, ол гынан баран аналлаах сурунаалга суруллаллар, уонна алҕас туох эмит сыыһаны оҥордоххуна администраатар ону туһанан көннөрүөн сөп.",
+	'hiderevision-reason'         => 'Төрүөтэ (сабыылаах сурунаалга суруллуо):',
+	'hiderevision-submit'         => 'Сибидиэнньэлэри кистээ',
+	'hiderevision-tab'            => 'Торуму көрдөрүмэ',
+	'hiderevision-norevisions'    => 'Көрдөрүллүө суохтаах сирэйдэр ыйыллыбатахтар.',
+	'hiderevision-noreason'       => 'Кистиир төрүөккүн суруйуохтааххын.',
+	'hiderevision-status'         => '$1 нүөмэрдээх торум: $2',
+	'hiderevision-success'        => 'Архыыптанна уонна кистэннэ.',
+	'hiderevision-error-missing'  => 'Билэ киэбигэр көстүбэтэт.',
+	'hiderevision-error-current'  => 'Сирэй бу торумун сотор табыллыбата. Бастаан урукку торумугар төннөр.',
+	'hiderevision-error-delete'   => 'Архыыптанар кыаҕа суох; баҕар бу иннинэ сотуллубута буолаарай?',
+	'hiderevision-archive-status' => '$1 сирэй торума сотулунна: $2',
+	'oversight-nodiff'            => 'Сирэй бу иннинээҕи торума тахсыбакка уларыйыылар кыайан көрдөрүллүбэтилэр. 
+Баҕар:
+*Сирэй сотуллубута буолуо
+*Кистэниллибит торум бастакы буолуо',
+	'oversight-log-hiderev'       => 'мантан $1 көннөрүү кистэммит',
+	'oversight'                   => 'Торумнары кистээһин сурунаала',
+	'oversight-view'              => 'сиһилии',
+	'oversight-difference'        => '(бу иннинээҕи сотуллубатах торумтан уратыта)',
+	'oversight-prev'              => 'Бу иннинээҕи торум',
+	'oversight-hidden'            => 'Кистэммит торум',
+	'oversight-header'            => 'Манна соторутааҕыта кистэммит торумнар көрдөрүлүннүлэр.
+Бу сибидиэнньэлэри тарҕатыы ырытааччы быраабын быһыыга тиэрдиэн сөп.',
 );
 
 /** Slovak (Slovenčina)
@@ -1115,6 +1153,13 @@ administrátorom databázy v prípade, že spravíte chybu.",
 	'oversight-prev'              => 'Posledná predošlá revízia',
 	'oversight-hidden'            => 'Skrytá revízia',
 	'oversight-header'            => 'Dolu je zoznam revízií, ktoré boli nedávno permanentne skryté pohľadu verejnosti. Šírenie týchto informácií môže mať za dôsledok permanentnú stratu práv Dozrcu (oversight).',
+);
+
+/** Samoan (Gagana Samoa)
+ * @author MF-Warburg
+ */
+$messages['sm'] = array(
+	'hiderevision-continue' => 'Tumau',
 );
 
 /* Serbian default (Sasa Stefanovic) */
@@ -1288,15 +1333,18 @@ Användare som sprider den här informationen vidare kan få sina översynsrätt
  * @author Veeven
  */
 $messages['te'] = array(
-	'hiderevision'               => 'కూర్పులను శాశ్వతంగా దాచు',
-	'hiderevision-continue'      => 'కొనసాగించు',
-	'hiderevision-submit'        => 'ఈ డాటాని శాశ్వతంగా దాచు',
-	'hiderevision-tab'           => 'కూర్పుని దాచు',
-	'hiderevision-noreason'      => 'ఈ తొలగింపుకి మీరు తప్పనిసరిగా కారణం వివరించాలి.',
-	'hiderevision-status'        => 'కూర్పు $1: $2',
-	'hiderevision-error-missing' => 'డాటాబేసులో కనబడలేదు.',
-	'oversight-view'             => 'వివరాలు',
-	'oversight-hidden'           => 'దాచిన కూర్పు',
+	'hiderevision'                => 'కూర్పులను శాశ్వతంగా దాచు',
+	'hiderevision-prompt'         => 'తొలగించాల్సిన కూర్పు సంఖ్య:',
+	'hiderevision-continue'       => 'కొనసాగించు',
+	'hiderevision-submit'         => 'ఈ డాటాని శాశ్వతంగా దాచు',
+	'hiderevision-tab'            => 'కూర్పుని దాచు',
+	'hiderevision-norevisions'    => 'తొలగించడానికి కూర్పులేమీ ఇవ్వలేదు.',
+	'hiderevision-noreason'       => 'ఈ తొలగింపుకి మీరు తప్పనిసరిగా కారణం వివరించాలి.',
+	'hiderevision-status'         => 'కూర్పు $1: $2',
+	'hiderevision-error-missing'  => 'డాటాబేసులో కనబడలేదు.',
+	'hiderevision-archive-status' => '$1 నుండి తొలగించిన కూర్పు: $2',
+	'oversight-view'              => 'వివరాలు',
+	'oversight-hidden'            => 'దాచిన కూర్పు',
 );
 
 $messages['tet'] = array(

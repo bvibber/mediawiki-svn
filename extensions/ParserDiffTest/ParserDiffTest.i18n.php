@@ -462,6 +462,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'pdtest_no_changes'  => 'మార్పులేమీ కనబడలేదు.',
 	'pdtest_time_report' => '<b>$1</b> $2 క్షణాలు తీసుకుంది, <b>$3</b> $4 క్షణాలు తీసుకుంది.',
 	'pdtest_title'       => 'సందర్భపు శీర్షిక:',
 	'pdtest_ok'          => 'సరే',

@@ -1296,6 +1296,7 @@ $messages['te'] = array(
 	'searchnext'            => "<span style='font-size: small'>తరువాతి</span> &#x00BB;",
 	'lucene-searchscore'    => 'సంబంధం: $1%',
 	'lucene-resultsize'     => '$1 ($2 పదాలు)',
+	'searchdidyoumean'      => '"<a href="$1">$2</a>" అనా మీ ఉద్దేశం?',
 	'searchnoresults'       => 'క్షమించాలి, మీరడిగిన పదాలతో సరిగ్గా సరిపోయే ఫలితాలు లేవు. పదాలకు చివర "సున్నా" ఉన్నచోట "ము" పెట్టి, లేదా "ము" ఉంటే "సున్నా" పెట్టి, మళ్ళీ వెతకండి.',
 	'lucenepowersearchtext' => 'ఈ నేమ్ స్పేసుల్లో వెతుకు:
 

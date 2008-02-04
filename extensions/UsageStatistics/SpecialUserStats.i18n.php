@@ -306,10 +306,33 @@ $messages['sk'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Lejonel
  * @author Max sonnelid
  */
 $messages['sv'] = array(
-	'usagestatisticssubmit' => 'Generera Statistik',
+	'specialuserstats'        => 'Användarstatistik',
+	'usagestatistics'         => 'Användarstatistik',
+	'usagestatisticsfor'      => '<h2>Användarstatistik för [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers' => 'Alla användare',
+	'usagestatisticssubmit'   => 'Generera statistik',
+);
+
+/** Telugu (తెలుగు)
+ * @author Chaduvari
+ */
+$messages['te'] = array(
+	'specialuserstats'           => 'వాడుక గణాంకాలు',
+	'usagestatistics'            => 'వాడుక గణాంకాలు',
+	'usagestatisticsfor'         => '<h2>[[:user:$1|$1]] కు వాడుక గణాంకాలు</h2>',
+	'usagestatisticsallusers'    => 'వాడుకరులందరూ',
+	'usagestatisticsinterval'    => 'సమయాంతరం',
+	'usagestatisticstype'        => 'రకం',
+	'usagestatisticsstart'       => 'ప్రారంభ తేదీ',
+	'usagestatisticsend'         => 'ముగింపు తేదీ',
+	'usagestatisticssubmit'      => 'గణాంకాలను సృష్టించు',
+	'usagestatisticsnostart'     => '* <font color=red>ప్రారంభ తేదీ ఇవ్వండి</font>',
+	'usagestatisticsnoend'       => '* <font color=red>ముగింపు తేదీ ఇవ్వండి</font>',
+	'usagestatisticsbadstartend' => '<b><i>ప్రారంభ</i> మరియు/లేదా <i>ముగింపు</i> తేదీ సరైనది కాదు!</b>',
 );
 
 /** Volapük (Volapük)

@@ -59,6 +59,14 @@ $messages['br'] = array(
 	'call' => 'Galv',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'call-save-success' => 'Následující text byl uložený do stránky <big>[[$1]]</big>',
+	'call-save-failed'  => "Následující text NEBYL uložený do stránky ''$1'', protože tato stránka už existuje.",
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  */
@@ -94,6 +102,7 @@ $messages['gl'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'call'              => 'Wołać',
 	'call-desc'         => 'Wotkaz k předłoze (abo k normalnej wikijowej stronje) z přepodaću parametrow wutworić. Da so w přikazowej lince wobhladowaka abo znutřka wikijoweho teksta wužiwać.',
 	'call-text'         => "Rozšěrjenja Call wočakuje wiki-stronu a opcionalne parametry za tutu stronu jako argument.<br><br>
 Přikład 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br/>

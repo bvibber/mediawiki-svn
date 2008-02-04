@@ -109,6 +109,13 @@ $messages['it'] = array(
 	'profiling-no-data' => 'Nessun dato corrispondente.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'profiling-data-count' => 'Zielen',
+);
+
 /* nld / Dutch (Siebrand Mazeland) */
 $messages['nl'] = array(
 	'profiling' => 'Profilinggegevens',

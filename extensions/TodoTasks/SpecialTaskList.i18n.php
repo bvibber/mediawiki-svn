@@ -337,12 +337,13 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Lejonel
  * @author Max sonnelid
  */
 $messages['sv'] = array(
 	'tasklistunknownproject' => 'Okänt projekt',
-	'tasklistincorrectuser'  => 'Inkorrekt användarnamn',
-	'tasklistchooseproj'     => 'Välj Projekt:',
+	'tasklistincorrectuser'  => 'Felaktigt användarnamn',
+	'tasklistchooseproj'     => 'Välj projekt:',
 );
 
 /** Volapük (Volapük)

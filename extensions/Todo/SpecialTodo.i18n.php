@@ -323,10 +323,11 @@ $4',
 
 /** Swedish (Svenska)
  * @author Max sonnelid
+ * @author Lejonel
  */
 $messages['sv'] = array(
 	'todo-new-queue'        => 'ny',
-	'todo-unrecognize-type' => 'Ej erkänd typ',
+	'todo-unrecognize-type' => 'Okänd typ',
 	'todo-list-change'      => 'Ändra',
 	'todo-form-details'     => 'Detaljer:',
 );

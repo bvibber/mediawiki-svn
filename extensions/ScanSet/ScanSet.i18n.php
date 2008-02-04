@@ -315,8 +315,17 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
-	'scanset_next' => 'Аныгыскы &gt;',
-	'scanset_prev' => '&lt; Иннинээҕи',
+	'scanset_no_name'                   => 'ScanSet: ойуулар/хаартыскалар уопсай ааттарын суруйуохтааххын, холобур &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: ойуу/хаартыска бөлөҕө суох эбэтэр аата сыыһа суруллубут.',
+	'scanset_unrecognised_index_format' => 'ScanSet: Индекс биллибэт формата',
+	'scanset_opendir_error'             => 'ScanSet: сатаммат, $1 директория кыайан арыллыбат',
+	'scanset_no_files'                  => 'ScanSet: Сатаммата, ыйыллыбыт директорияҕа билэ суох.',
+	'scanset_no_volumes'                => 'ScanSet: не найдено директорий для томов',
+	'scanset_missing_index_file'        => 'ScanSet: $1 Индекс билэтэ көстүбэтэ',
+	'scanset_index_file_error'          => 'ScanSet: Индекс билэтигэр $1 строкаҕа сыыһалаах',
+	'scanset_invalid_volume'            => 'ScanSet: ошибочный том',
+	'scanset_next'                      => 'Аныгыскы &gt;',
+	'scanset_prev'                      => '&lt; Иннинээҕи',
 );
 
 /** Slovak (Slovenčina)
@@ -382,8 +391,9 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'scanset_next' => 'తర్వాత &gt;',
-	'scanset_prev' => '&lt; గత',
+	'scanset_missing_index_file' => 'ScanSet: $1 అనే సూచిక ఫైలు కనబడలేదు',
+	'scanset_next'               => 'తర్వాత &gt;',
+	'scanset_prev'               => '&lt; గత',
 );
 
 /** Turkish (Türkçe)

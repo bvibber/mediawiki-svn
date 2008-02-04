@@ -51,6 +51,13 @@ $messages['bg'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|сочат|сочи}} към $3',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'crossnamespacelinkstext' => '$1: $3 এ $2 {{PLURAL:$2|সংযোগ|সংযোগসমূহ}}',
+);
+
 $messages['br'] = array(
 	'crossnamespacelinks'         => 'Liammoù esaouennoù anv kroaziet',
 );

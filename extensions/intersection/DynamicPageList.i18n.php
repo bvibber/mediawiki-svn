@@ -256,7 +256,9 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'intersection_noresults' => 'DynamicPageList: ఫలితాలు లేవు!',
+	'intersection_toomanycats' => 'DynamicPageList: చాలా ఎక్కువ వర్గాలు!',
+	'intersection_toofewcats'  => 'DynamicPageList: మరీ తక్కువ వర్గాలు!',
+	'intersection_noresults'   => 'DynamicPageList: ఫలితాలు లేవు!',
 );
 
 /** Vietnamese (Tiếng Việt)

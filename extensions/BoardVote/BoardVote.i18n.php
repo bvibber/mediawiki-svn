@@ -331,6 +331,7 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'boardvote'              => 'উইকিমিডিয়া বোর্ড অফ ট্রাস্টিজ-এর নির্বাচন',
+	'boardvote-desc'         => '[[meta:Board elections|উইকিমিডিয়া ট্রাষ্টিবোর্ডের নির্বাচন]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|ভোট দিন]]
 * [[Special:Boardvote/list|এ পর্যন্ত দেওয়া ভোটের তালিকা]]
 * [[Special:Boardvote/dump|গুপ্তায়িত নির্বাচন রেকর্ড ডাম্প করা হোক]]',

@@ -354,11 +354,14 @@ Do Bedrieuwere fon disse Websiede konnen neen Feroantwoudenge foar dän Inhoold 
 
 /** Swedish (Svenska)
  * @author Max sonnelid
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'talkhere-talkpage' => 'diskussions sida',
-	'talkhere-loading'  => 'laddar redigerare...',
-	'talkhere-collapse' => 'dölj redigerare',
+	'talkhere-talkpage'    => 'diskussionssida',
+	'talkhere-addcomment'  => 'lägg till kommentar',
+	'talkhere-beforeinput' => 'Du kan lägga till en kommentar nedan',
+	'talkhere-loading'     => 'laddar redigerare...',
+	'talkhere-collapse'    => 'dölj redigerare',
 );
 
 /** Turkish (Türkçe)

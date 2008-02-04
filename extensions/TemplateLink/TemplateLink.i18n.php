@@ -135,9 +135,9 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
- * @author Max sonnelid
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'templatelink' => 'Mall Länk',
+	'templatelink' => 'Mallänk',
 );
 

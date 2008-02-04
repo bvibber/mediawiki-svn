@@ -186,6 +186,17 @@ $messages['br'] = array(
 	'badimages-page'           => '{{ns:help}}:Roll ar skeudennoù didalvoud',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'badimages-add-btn'    => 'Přidat',
+	'badimages-name'       => 'Název:',
+	'badimages-reason'     => 'Důvod:',
+	'badimages-remove-btn' => 'Odstranit',
+	'badimages-subheading' => 'Aktuální položky',
+);
+
 /* German (Raymond) */
 $messages['de'] = array(
 	'badimages'                => 'Liste unerwünschter Bilder',

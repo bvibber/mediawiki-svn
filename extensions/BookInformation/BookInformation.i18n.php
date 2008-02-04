@@ -764,12 +764,13 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'bookinfo-header'           => 'పుస్తకపు సమాచారం',
-	'bookinfo-result-title'     => 'శీర్షిక:',
-	'bookinfo-result-author'    => 'రచయిత:',
-	'bookinfo-result-publisher' => 'ప్రచురణకర్త:',
-	'bookinfo-result-year'      => 'సంవత్సరం:',
-	'bookinfo-purchase'         => '$1 నుండి ఈ పుస్తకాన్ని కొనండి',
+	'bookinfo-header'            => 'పుస్తకపు సమాచారం',
+	'bookinfo-result-title'      => 'శీర్షిక:',
+	'bookinfo-result-author'     => 'రచయిత:',
+	'bookinfo-result-publisher'  => 'ప్రచురణకర్త:',
+	'bookinfo-result-year'       => 'సంవత్సరం:',
+	'bookinfo-error-invalidisbn' => 'తప్పుడు ISBN ఇచ్చారు.',
+	'bookinfo-purchase'          => '$1 నుండి ఈ పుస్తకాన్ని కొనండి',
 );
 
 /** Tetum (Tetun)

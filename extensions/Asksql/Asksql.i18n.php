@@ -117,6 +117,14 @@ An dra-se a c'hall kargañ ar servijer spontus, setu n'emañ ket da vezañ impli
 	'querysuccessful' => "Reked disoc'het",
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'asksql'          => 'SQL dotaz',
+	'querysuccessful' => 'Dotaz byl úspěšně dokončen',
+);
+
 /** Greek (Ελληνικά)
  * @author Dead3y3
  */

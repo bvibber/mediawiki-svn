@@ -271,6 +271,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'changeauthor'                      => 'Wersijoweho awtora změnić',
+	'changeauthor-desc'                 => 'Dowola awtora wersije změnić',
 	'changeauthor-title'                => 'Awtora wersije změnić',
 	'changeauthor-search-box'           => 'Wersije pytać',
 	'changeauthor-pagename-or-revid'    => 'Mjeno strony abo ID wersije:',
@@ -471,6 +472,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'changeauthor'                      => 'Zmeniť autora revízie',
+	'changeauthor-desc'                 => 'Umožňuje zmeniť autora revízie',
 	'changeauthor-title'                => 'Zmeniť autora revízie',
 	'changeauthor-search-box'           => 'Hľadať revízie',
 	'changeauthor-pagename-or-revid'    => 'Názov stránky alebo ID revízie:',
@@ -489,7 +491,6 @@ $messages['sk'] = array(
 	'changeauthor-success'              => 'Vaša požiadavka bola úspešne spracovaná.',
 	'changeauthor-logentry'             => 'Autor $2 z $1 bol zmenený z $3 na $4',
 	'changeauthor-logpagename'          => 'Záznam zmien autorov',
-	'changeauthor-rev'                  => 'r$1',
 );
 
 /** ћирилица (ћирилица)
@@ -535,12 +536,13 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Max sonnelid
+ * @author Lejonel
  */
 $messages['sv'] = array(
 	'changeauthor-pagenameform-go'  => 'Gå',
 	'changeauthor-comment'          => 'Kommentar:',
 	'changeauthor-invalid-username' => 'Ogiltigt användarnamn "$1".',
-	'changeauthor-nosuchtitle'      => 'Det är ingen sida kallad "$1".',
+	'changeauthor-nosuchtitle'      => 'Det finns ingen sida med namnet "$1".',
 );
 
 /** Telugu (తెలుగు)

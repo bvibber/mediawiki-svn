@@ -135,6 +135,7 @@ $messages['gl'] = array(
 	'povwatch_comment'               => 'Rexistro de comentarios:',
 	'povwatch_no_log'                => 'Non hai entradas no rexistro.',
 	'povwatch_no_subscribers'        => 'Non hai subscritores.',
+	'povwatch_unsubscribe'           => 'Darse de baixa',
 	'povwatch_subscribe'             => 'Subscribir',
 	'povwatch_added'                 => 'engadido',
 );

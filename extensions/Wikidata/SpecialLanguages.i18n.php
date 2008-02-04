@@ -801,7 +801,13 @@ $wdMessages['gl'] = array(
 	'datasearch'                       => 'Wikidata: Procura de datos',
 	'langman_title'                    => 'Xestor de linguas',
 	'languages'                        => 'Wikidata: Xestor de linguas',
+	'ow_save'                          => 'Gardar',
 	'ow_history'                       => 'Historial',
+	'ow_noedit_title'                  => 'Non ten permisos para editar',
+	'ow_uiprefs'                       => 'Wikidatos',
+	'ow_none_selected'                 => '<Ningún seleccionado>',
+	'ow_dm_not_present'                => 'non introducido',
+	'ow_will_insert'                   => 'Insertará o seguinte:',
 	'ow_add_concept_link'              => 'Engadir ligazón a outros conceptos',
 	'ow_AlternativeDefinition'         => 'Definición alternativa',
 	'ow_AlternativeDefinitions'        => 'Definicións alternativas',
@@ -810,7 +816,9 @@ $wdMessages['gl'] = array(
 	'ow_ClassAttributeLevel'           => 'Nivel',
 	'ow_Definition'                    => 'Definición',
 	'ow_DefinedMeaningAttributes'      => 'Anotación',
+	'ow_DefinedMeaning'                => 'Significado definido',
 	'ow_DefinedMeaningReference'       => 'Significado definido',
+	'ow_ExactMeanings'                 => 'Significados exactos',
 	'ow_Expression'                    => 'Expresión',
 	'ow_ExpressionMeanings'            => 'Significados de expresión',
 	'ow_Expressions'                   => 'Expresións',
@@ -846,6 +854,7 @@ $wdMessages['gl'] = array(
 	'ow_meaningsofsubtitle'            => '<em>Ligazón Wiki:</em> [[$1]]',
 	'ow_Permission_denied'             => '<h2>PERMISO DENEGADO</h2>',
 	'ow_copy_no_action_specified'      => 'Precisar unha acción',
+	'ow_copy_help'                     => 'Algún día, nós poderemos axudalo.',
 	'ow_copy_unsuccessful'             => '<h3>Copia sen éxito</h3> Ningunha operación de copiado tivo lugar.',
 );
 
@@ -1934,6 +1943,34 @@ $wdMessages['tr'] = array(
 	'ow_Source'                       => 'Kaynak',
 	'ow_Text'                         => 'Metin',
 	'ow_TranslatedTextAttributeValue' => 'Metin',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$wdMessages['vi'] = array(
+	'datasearch'                      => 'Wikidata: Tìm kiếm cho dữ liệu',
+	'langman_title'                   => 'Quản lý ngôn ngữ',
+	'languages'                       => 'Wikidata: Quản lý ngôn ngữ',
+	'ow_save'                         => 'Lưu',
+	'ow_history'                      => 'Lịch sử',
+	'ow_noedit_title'                 => 'Không có quyền sửa đổi',
+	'ow_dm_OK'                        => 'Được',
+	'ow_ClassAttributeLevel'          => 'Cấp',
+	'ow_ClassAttributeType'           => 'Loại',
+	'ow_Collection'                   => 'Tập hợp',
+	'ow_Definition'                   => 'Định nghĩa',
+	'ow_Language'                     => 'Ngôn ngữ',
+	'ow_Relations'                    => 'Các mối quan hệ',
+	'ow_Spelling'                     => 'Chính tả',
+	'ow_Synonyms'                     => 'Từ đồng âm',
+	'ow_SynonymsAndTranslations'      => 'Từ đồng âm và cách dịch',
+	'ow_Source'                       => 'Nguồn',
+	'ow_Text'                         => 'Văn bản',
+	'ow_TranslatedText'               => 'Văn bản dịch',
+	'ow_TranslatedTextAttributeValue' => 'Văn bản',
+	'ow_Value'                        => 'Giá trị',
+	'ow_meaningsoftitle'              => 'Các ý nghĩa của “$1”',
 );
 
 /** Volapük (Volapük)

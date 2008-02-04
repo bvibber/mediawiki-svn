@@ -20,9 +20,16 @@ $messages['hsb'] = array(
 );
 
 /** Dutch (Nederlands)
- * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
-	'catfeed-desc' => 'Gebruikt informatie uit de recente wijzigingen. Maakt een versie binnen een pagina. In het bijzonder handig voor Wikinews.',
+	'catfeed-desc' => 'Gebruikt informatie uit de recente wijzigingen. Maakt een versie binnen een pagina. In het bijzonder handig voor Wikinews',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'catfeed-desc' => 'Používa kúsky z kanálov posledných zmien. Vytvorí verziu v rámci stránky. Obzvlášť užitočné pre Wikinews.',
 );
 

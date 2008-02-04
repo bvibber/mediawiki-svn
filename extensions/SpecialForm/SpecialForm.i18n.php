@@ -344,3 +344,10 @@ $messages['stq'] = array(
 	'formsaveerrortext'            => 'Dät roate n uunbekoanden Failer bie dät Spiekerjen fon ju Siede „$1“.',
 );
 
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'formsave' => 'Spara',
+);
+

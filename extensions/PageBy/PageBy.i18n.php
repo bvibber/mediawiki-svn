@@ -120,9 +120,10 @@ $messages['it'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'pageby-first' => 'Säit ugefaang vum $1, $2',
-	'pageby-last'  => 'Lescht <a href="$3">Ännerung</a> vum $1, $2',
-	'pageby-anon'  => '<i>anonym Benotzer</i>',
+	'pageby-first'        => 'Säit ugefaang vum $1, $2',
+	'pageby-last'         => 'Lescht <a href="$3">Ännerung</a> vum $1, $2',
+	'pageby-contributors' => 'Kontributioune vum:',
+	'pageby-anon'         => '<i>anonym Benotzer</i>',
 );
 
 /** Dutch (Nederlands)
