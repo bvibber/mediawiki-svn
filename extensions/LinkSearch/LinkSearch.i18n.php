@@ -377,6 +377,14 @@ $messages['nds'] = array(
 	'linksearch-ok' => 'Söken',
 );
 
+/** Nepali (नेपाली)
+ * @author SPQRobin
+ */
+$messages['ne'] = array(
+	'linksearch-ns' => 'नेमस्पेस:',
+	'linksearch-ok' => 'खोज्नुहोस्',
+);
+
 $messages['nl'] = array(
 	'linksearch'       => 'Externe links zoeken',
 	'linksearch-pat'   => 'Zoekpatroon:',
@@ -395,6 +403,13 @@ $messages['no'] = array(
 	'linksearch-text'  => 'Jokertegn som «*.wikipedia.org» kan brukes.<br />Støttede protokoller: <tt>$1</tt>',
 	'linksearch-line'  => '$1 lenkes fra $2',
 	'linksearch-error' => 'Jokertegn kan kun brukes foran tjenernavnet.',
+);
+
+/** Novial (Novial)
+ * @author MF-Warburg
+ */
+$messages['nov'] = array(
+	'linksearch-ok' => 'Sercha',
 );
 
 $messages['oc'] = array(

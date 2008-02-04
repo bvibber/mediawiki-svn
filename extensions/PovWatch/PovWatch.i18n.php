@@ -277,6 +277,13 @@ $messages['oc'] = array(
 	'povwatch_added'                   => 'ajustat',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'povwatch_title' => 'Título:',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

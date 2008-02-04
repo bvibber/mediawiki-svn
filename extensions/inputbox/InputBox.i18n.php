@@ -501,6 +501,13 @@ $messages['nds'] = array(
 	'createarticle'  => 'Siet anleggen',
 );
 
+/** Nepali (नेपाली)
+ * @author SPQRobin
+ */
+$messages['ne'] = array(
+	'createarticle' => 'लेख थाल्नुहोस्',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin
@@ -673,7 +680,9 @@ $messages['sr-el'] = array(
 	'createarticle'  => 'Napravi članak',
 );
 
-/** Swati (SiSwati) */
+/** Swati (SiSwati)
+ * @author Jatrobat
+ */
 $messages['ss'] = array(
 	'createarticle' => 'Kúdála intfo',
 );

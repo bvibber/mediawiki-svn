@@ -261,8 +261,12 @@ $messages['nl'] = array(
 	'deletedcontributions-desc' => 'Geeft beheerders de mogelijkheid om [[Special:DeletedContributions|verwijderde bijdragen van een gebruiker te bekijken]]',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'deletedcontributions' => 'Slettede brukerbidrag',
+	'deletedcontributions'      => 'Slettede brukerbidrag',
+	'deletedcontributions-desc' => 'Gir administratorer muligheten til å [[Special:DeletedContributions|gå over brukeres slettede bidrag]]',
 );
 
 $messages['oc'] = array(

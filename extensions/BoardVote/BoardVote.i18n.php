@@ -1456,6 +1456,7 @@ sem að þú styður.</p>',
 	'boardvote_edits'        => 'Breytingar',
 	'boardvote_days'         => 'Dagar',
 	'boardvote_ip'           => 'Vistfang',
+	'boardvote_ua'           => 'Aðgangsbúnaður',
 	'boardvote_dumplink'     => 'Smelltu hér',
 	'boardvote_submit'       => 'Í lagi',
 	'boardvote_needadmin'    => 'Aðeins umsjónamenn kosninga geta framkvæmt þessa aðgerð.',
@@ -1968,6 +1969,20 @@ $messages['nds'] = array(
 	'boardvote_welcome'    => "Moin '''$1'''.",
 );
 
+/** Nepali (नेपाली)
+ * @author SPQRobin
+ */
+$messages['ne'] = array(
+	'boardvote_entry'      => '* [[Special:Boardvote/vote|भोट हाल्नुहोस्]] 
+* [[Special:Boardvote/list|हालसम्मको सुची]] 
+* [[Special:Boardvote/dump| encrypt गरिएको रद्दी निर्वाचन सुची]]',
+	'boardvote_time'       => 'समय',
+	'boardvote_user'       => 'प्रयोगकर्ता',
+	'boardvote_days'       => 'दिनहरु',
+	'boardvote_dumplink'   => 'यहाँ क्लिक गर्नुहोस',
+	'boardvote_edits_many' => 'धेरै',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -2053,14 +2068,18 @@ U wordt over 20 seconden omgeleid naar deze externe server. [$1 Klik hier] om er
 Het is mogelijk dat u een waarschuwing krijgt vanwege een niet ondertekend certificaat.',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'boardvote'               => 'Valg til Wikimedia-styret',
-	'boardvote_entry'         => '* [[Special:Boardvote/vote|Stem]]
+	'boardvote'              => 'Valg til Wikimedia-styret',
+	'boardvote-desc'         => '[[meta:Board elections|Styrevalg i Wikimedia Foundation]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Stem]]
 * [[Special:Boardvote/list|Liste over stemmer]]
 * [[Special:Boardvote/dump|Dump med kryptert stemmehistorie]]',
-	'boardvote_intro'         => '<p>(informasjon)</p>',
-	'boardvote_intro_change'  => '<p>Du har stemt før. Du kan imidlertid endre din stemme ved hjelp av skjemaet nedenunder. Vennligst merk av boksene ved siden av kandidatene du vil gå god for.</p>',
-	'boardvote_entered'       => 'Takk, din stemme er registrert.
+	'boardvote_intro'        => '<p>(informasjon)</p>',
+	'boardvote_intro_change' => '<p>Du har stemt før. Du kan imidlertid endre din stemme ved hjelp av skjemaet nedenunder. Vennligst merk av boksene ved siden av kandidatene du vil gå god for.</p>',
+	'boardvote_entered'      => 'Takk, din stemme er registrert.
 
 Om du ønsker, kan du ta vare på følgende resultater. Din stemmegivingshistorikk er:
 
@@ -2075,33 +2094,33 @@ Dette resulterer i den følgende krypterte versjonen. Den vil vises offentlig p�
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Tilbake]]',
-	'boardvote_nosession'     => 'Vi kan ikke verifisere den Wikimedia-konto. Logg inn på wikien der du er kvalifisert til å stemme, og gå til <nowiki>[[Special:Boardvote]]</nowiki>. Du må ha en konto med minst $1 redigeringer innen $2, med første redigering før $3.',
-	'boardvote_notloggedin'   => 'Du er ikke logget inn. For å stemme må du bruke en konto med minst $1&nbsp;redigeringer før $2, og må ha redigert før $3.',
-	'boardvote_notqualified'  => 'Du er ikke kvalifisert til å stemme i dette valget. Du må ha hatt minst $3&nbsp;redigeringer før $2, du hadde $1. Din første redigering måtte også være før $5, mens din var $4.',
-	'boardvote_novotes'       => 'Ingen har stemt enda.',
-	'boardvote_time'          => 'Tid',
-	'boardvote_user'          => 'Bruker',
-	'boardvote_edits'         => 'Redigeringer',
-	'boardvote_days'          => 'Dager',
-	'boardvote_ip'            => 'IP',#identical but defined
-	'boardvote_ua'            => 'Brukeragent',
-	'boardvote_listintro'     => '<p>Dette er en liste over alle stemmer som har blitt registrert hittil. $1 for krypterte data.</p>',
-	'boardvote_dumplink'      => 'Klikk her',
-	'boardvote_submit'        => 'OK',#identical but defined
-	'boardvote_strike'        => 'Stryk',
-	'boardvote_unstrike'      => 'Fjern strykning',
-	'boardvote_needadmin'     => 'Kun valgadministratorer kan utføre dette.',
-	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">Styrevalg i Wikimedia</a>',
-	'boardvote_notstarted'    => 'Valget har ikke startet',
-	'boardvote_closed'        => 'Valget er nå stengt. Resultatene kommer snart på valgsidene.',
-	'boardvote_edits_many'    => 'mange',
-	'group-boardvote'         => 'valgadministratorer',
-	'group-boardvote-member'  => 'valgadministrator',
-	'grouppage-boardvote'     => '{{ns:project}}:Valgadministrator',
-	'boardvote_blocked'       => 'Beklager, du har blitt blokkert på den registrerte wikien. Blokkerte brukere har ikke lov til å stemme.',
-	'boardvote_welcome'       => 'Velkommen, \'\'\'$1\'\'\'!',
-	'go_to_board_vote'        => 'Styrevalg i Wikimedia',
-	'boardvote_redirecting'   => 'Av sikkerhets- og transparensgrunner kjører vi valget på en ekstern, uavhengig kontrollert tjener. Du vil nå omdirigeres til denne tjeneren innen 20 sekunder. [$1 Klikk her] for å gå dit nå. Du vil muligens motta en sikkerhetsadvarsel om et usignert sertifikat.',
+	'boardvote_nosession'    => 'Vi kan ikke verifisere den Wikimedia-konto. Logg inn på wikien der du er kvalifisert til å stemme, og gå til <nowiki>[[Special:Boardvote]]</nowiki>. Du må ha en konto med minst $1 redigeringer innen $2, med første redigering før $3.',
+	'boardvote_notloggedin'  => 'Du er ikke logget inn. For å stemme må du bruke en konto med minst $1&nbsp;redigeringer før $2, og må ha redigert før $3.',
+	'boardvote_notqualified' => 'Du er ikke kvalifisert til å stemme i dette valget. Du må ha hatt minst $3&nbsp;redigeringer før $2, du hadde $1. Din første redigering måtte også være før $5, mens din var $4.',
+	'boardvote_novotes'      => 'Ingen har stemt enda.',
+	'boardvote_time'         => 'Tid',
+	'boardvote_user'         => 'Bruker',
+	'boardvote_edits'        => 'Redigeringer',
+	'boardvote_days'         => 'Dager',
+	'boardvote_ip'           => 'IP',
+	'boardvote_ua'           => 'Brukeragent',
+	'boardvote_listintro'    => '<p>Dette er en liste over alle stemmer som har blitt registrert hittil. $1 for krypterte data.</p>',
+	'boardvote_dumplink'     => 'Klikk her',
+	'boardvote_submit'       => 'OK',
+	'boardvote_strike'       => 'Stryk',
+	'boardvote_unstrike'     => 'Fjern strykning',
+	'boardvote_needadmin'    => 'Kun valgadministratorer kan utføre dette.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Styrevalg i Wikimedia</a>',
+	'boardvote_notstarted'   => 'Valget har ikke startet',
+	'boardvote_closed'       => 'Valget er nå stengt. Resultatene kommer snart på valgsidene.',
+	'boardvote_edits_many'   => 'mange',
+	'group-boardvote'        => 'valgadministratorer',
+	'group-boardvote-member' => 'valgadministrator',
+	'grouppage-boardvote'    => '{{ns:project}}:Valgadministrator',
+	'boardvote_blocked'      => 'Beklager, du har blitt blokkert på den registrerte wikien. Blokkerte brukere har ikke lov til å stemme.',
+	'boardvote_welcome'      => "Velkommen, '''$1'''!",
+	'go_to_board_vote'       => 'Styrevalg i Wikimedia',
+	'boardvote_redirecting'  => 'Av sikkerhets- og transparensgrunner kjører vi valget på en ekstern, uavhengig kontrollert tjener. Du vil nå omdirigeres til denne tjeneren innen 20 sekunder. [$1 Klikk her] for å gå dit nå. Du vil muligens motta en sikkerhetsadvarsel om et usignert sertifikat.',
 );
 
 /** Occitan (Occitan)

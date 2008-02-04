@@ -75,6 +75,13 @@ $messages['oc'] = array(
 	'usercontactlink-baduser' => 'nom d’utilizaire incorrècte',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'usercontactlink-baduser' => 'nome de utilizador incorrecto',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

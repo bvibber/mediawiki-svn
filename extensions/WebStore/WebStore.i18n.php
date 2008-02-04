@@ -617,6 +617,21 @@ $messages['pt'] = array(
 	'inplace_scaler_not_enough_params' => 'Parâmetros insuficientes.',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'inplace_access_disabled'          => 'O acesso a este serviço foi desabilitado para todos os clientes.',
+	'inplace_access_denied'            => 'Este serviço está restringido por IP de cliente.',
+	'inplace_scaler_no_temp'           => 'Não existe directoria temporária, defina $wgLocalTmpDirectory com uma directoria onde seja possível escrever.',
+	'inplace_scaler_not_enough_params' => 'Parâmetros insuficientes.',
+	'webstore_invalid_zone'            => 'Zona "$1" inválida.',
+	'webstore_php_warning'             => 'Aviso PHP: $1',
+	'webstore_metadata_not_found'      => 'Ficheiro não encontrado: $1',
+	'webstore_no_response'             => 'Sem resposta do servidor',
+	'webstore_php_error'               => 'Foram encontrados erros PHP:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

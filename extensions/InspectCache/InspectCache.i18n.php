@@ -167,6 +167,7 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'inspectcache-ok'   => 'OK',
 	'inspectcache-list' => 'Listar',
 );
 

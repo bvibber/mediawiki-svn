@@ -46,6 +46,7 @@ $messages['ar'] = array(
  */
 $messages['ast'] = array(
 	'backforth-next' => 'Siguiente ($1)',
+	'backforth-desc' => 'Añade los enllaces de paxinación alfabética "Siguiente" y "Anterior" a lo cimero les páxines',
 	'backforth-prev' => 'Anterior ($1)',
 );
 

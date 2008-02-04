@@ -237,6 +237,15 @@ $messages['frp'] = array(
 	'newuserlog-create2-entry' => 'compto crèâ por $1',
 );
 
+/** Friulian (Furlan)
+ * @author MF-Warburg
+ */
+$messages['fur'] = array(
+	'newuserlogpage'           => 'Regjistri dai gnûfs utents',
+	'newuserlog-create-entry'  => 'al è rivât il gnûf utent',
+	'newuserlog-create2-entry' => 'creade une identitât par $1',
+);
+
 /** Irish (Gaeilge)
  * @author SPQRobin
  */
@@ -461,6 +470,14 @@ $messages['mr'] = array(
  */
 $messages['myv'] = array(
 	'newuserlog-create-entry' => 'Од совиця',
+);
+
+/** Nepali (नेपाली)
+ * @author SPQRobin
+ */
+$messages['ne'] = array(
+	'newuserlog-create-entry'  => 'नयाँ प्रयोगकर्ता',
+	'newuserlog-create2-entry' => '$1 का लागी खाता खोलियो',
 );
 
 /** Newari (नेपाल भाषा)

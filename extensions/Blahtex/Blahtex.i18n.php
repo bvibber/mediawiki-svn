@@ -265,6 +265,16 @@ $messages['br'] = array(
 	'math_WrongFontEncodingWithHint'        => 'Marteze ne zeuio ket war wel an arouezenn "$1" ma vez enkodet ar font "$2" (klaskit kentoc\'h gant an urzhiad "$3{...}")',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'math_CannotCreateTexFile'     => 'Nelze vytvořit tex soubor',
+	'math_CannotRunDvipng'         => 'Nelze spustit dvipng',
+	'math_CannotRunLatex'          => 'nelze spustit latex',
+	'math_CannotWritePngDirectory' => 'Nelze zapisovat do výstupního adresáře pro PNG',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -875,6 +885,7 @@ $messages['pt'] = array(
 	'math_TooManyMathmlNodes'               => 'Há demasiados nós na árvore MathML',
 	'math_TooManyTokens'                    => 'O texto introduzido é demasiado longo',
 	'math_UnavailableSymbolFontCombination' => 'O símbolo "$1" não está disponível no tipo de letra "$2"',
+	'math_UnexpectedNextCell'               => 'O comando "&" só pode aparecer dentro de um bloco "\\begin ... \\end"',
 	'math_UnrecognisedCommand'              => 'Comando "$1" não reconhecido',
 	'math_WrongFontEncoding'                => 'O símbolo "$1" não pode aparecer na codificação de tipo de letra "$2"',
 	'math_WrongFontEncodingWithHint'        => 'O símbolo "$1" não pode aparecer na codificação de tipo de letra "$2" (experimente usar o comando "$3{...}")',

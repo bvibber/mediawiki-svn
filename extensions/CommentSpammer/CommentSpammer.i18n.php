@@ -68,12 +68,17 @@ $messages['gl'] = array(
 	'cspammer-log-page'           => 'Rexistro dos comentarios Spam',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ * @author Siebrand
+ */
 $messages['hsb'] = array(
 	'commentspammer-save-blocked' => 'Twoja IP-adresa je podhladny komentarne spamowar - składowanje zablokowane. Wutwor konto, zo by to wobešoł.',
-	'commentspammer-log-msg' => 'změna wot [[Special:Contributions/$1|$1]] k [[:$2]]',
+	'commentspammer-desc'         => 'Wotpokazuje změny wot podhladnych spamowarjow komentarow na čornej lisćinje DNS.',
+	'commentspammer-log-msg'      => 'změna wot [[Special:Contributions/$1|$1]] k [[:$2]]',
 	'commentspammer-log-msg-info' => 'Posledni spam před $1 {{PLURAL:$1|dnjom|dnjomaj|dnjemi|dnjemi}}, stopjeń hroženja je $2 a nadpadowy kod je $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Hlej podrobnosće] abo [[Special:Blockip/$4|blokowanje]].',
-	'cspammerlogpagetext' => 'Datowa sadźba změnow, kotrež buchu dowolene abo wotpokazane, po tym hač žórło je znaty spamowar abo nic.',
-	'cspammer-log-page' => 'Protokol komentarnych spamowarjow',
+	'cspammerlogpagetext'         => 'Datowa sadźba změnow, kotrež buchu dowolene abo wotpokazane, po tym hač žórło je znaty spamowar abo nic.',
+	'cspammer-log-page'           => 'Protokol komentarnych spamowarjow',
 );
 
 /** Hungarian (Magyar)
@@ -94,12 +99,17 @@ $messages['lb'] = array(
 	'cspammer-log-page' => 'Bemierkung Spammer Logbuch',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ * @author SPQRobin
+ */
 $messages['nl'] = array(
 	'commentspammer-save-blocked' => 'Uw IP-adres wordt verdacht van spammen - opslaan is geweigerd. Maak een gebruiker aan om dit te voorkomen.',
-	'commentspammer-log-msg' => 'bewerking van [[Special:Contributions/$1|$1]] aan [[:$2]].',
+	'commentspammer-desc'         => 'Voorkomt bewerkingen van spammers via een DNS blacklist',
+	'commentspammer-log-msg'      => 'bewerking van [[Special:Contributions/$1|$1]] aan [[:$2]].',
 	'commentspammer-log-msg-info' => 'Spamde voor het laatst $1 {{PLURAL:$1|dag|dagen}} geleden. Dreigingsniveau is $2 en de overtredingscode is $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Details bekijken] of [[Special:Blockip/$4|blokkeren]].',
-	'cspammerlogpagetext' => 'Logboek met bewerkingen die toegestaan of geweigerd zijn omdat de bron een bekende spammer was.',
-	'cspammer-log-page' => 'Spamlogboek',
+	'cspammerlogpagetext'         => 'Logboek met bewerkingen die toegestaan of geweigerd zijn omdat de bron een bekende spammer was.',
+	'cspammer-log-page'           => 'Spamlogboek',
 );
 
 $messages['no'] = array(

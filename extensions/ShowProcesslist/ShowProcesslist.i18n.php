@@ -103,6 +103,7 @@ $messages['hsb'] = array(
 	'showprocesslist-command' => 'Přikaz',
 	'showprocesslist-time'    => 'Čas',
 	'showprocesslist-state'   => 'Staw',
+	'showprocesslist-info'    => 'Informacija',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -164,6 +165,7 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'showprocesslist'         => 'Mostrar Lista de Processos',
 	'showprocesslist-command' => 'Comando',
 );
 

@@ -443,6 +443,19 @@ $messages['oc'] = array(
 	'regexblock-view-time'            => 'lo $1',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'regexblock-form-reason'         => 'Motivo:',
+	'regexblock-already-blocked'     => '$1 já está bloqueada.',
+	'regexblock-stats-times'         => 'foi bloqueado em',
+	'regexblock-view-reason'         => 'motivo: $1',
+	'regexblock-view-reason-default' => 'motivo genérico',
+	'regexblock-view-block-infinite' => 'bloqueio permanente',
+	'regexblock-view-time'           => 'em $1',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

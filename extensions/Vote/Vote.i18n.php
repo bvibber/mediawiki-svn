@@ -353,8 +353,13 @@ Gioanin|Gioanin',
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'vote-header'         => "Pode votar no '''Senhor Supremo do Mundo''' aqui!",
+	'vote-current'        => "O seu voto actual é a favor de '''$1'''.",
 	'vote-legend'         => 'Colocar ou corrigir voto',
+	'vote-caption'        => 'A sua selecção:',
+	'vote-submit'         => 'Votar',
 	'vote-results-choice' => 'Escolha',
+	'vote-login'          => 'Terá de $1 para votar.',
 );
 
 /** Slovak (Slovenčina)

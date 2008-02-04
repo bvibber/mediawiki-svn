@@ -191,6 +191,13 @@ $messages['oc'] = array(
 	'lookupuser_useroptions'       => "Opcions de l'utilizaire :",
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'lookupuser_registration' => 'Data de registo: $1',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

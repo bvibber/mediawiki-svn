@@ -99,6 +99,13 @@ $messages['frp'] = array(
 	'sitenotice_close' => 'cachiér',
 );
 
+/** Friulian (Furlan)
+ * @author MF-Warburg
+ */
+$messages['fur'] = array(
+	'sitenotice_close' => 'plate',
+);
+
 /** Irish (Gaeilge)
  * @author SPQRobin
  */
@@ -192,6 +199,13 @@ $messages['nan'] = array(
 
 $messages['nds'] = array(
 	'sitenotice_close' => 'wegmaken',
+);
+
+/** Nepali (नेपाली)
+ * @author SPQRobin
+ */
+$messages['ne'] = array(
+	'sitenotice_close' => 'खारेज',
 );
 
 $messages['nl'] = array(

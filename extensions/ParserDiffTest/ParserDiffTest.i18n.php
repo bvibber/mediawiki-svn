@@ -394,14 +394,18 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
+	'parserdifftest'      => 'Синтаксис анализаторын (парсер) уларыйыытын көрүү',
+	'pdtest_no_target'    => 'Соруга ыйыллыбатах.',
 	'pdtest_page_missing' => 'Ыйыллыбыт сирэй билэ тиһигэр көстүбэтэ.',
 	'pdtest_no_changes'   => 'Уларыйыы көстүбэтэ.',
+	'pdtest_time_report'  => '<b>$1</b>$2 сөкүүндэ иһигэр, <b>$3</b> $4 $2 сөкүүндэ иһигэр.',
 	'pdtest_title'        => 'Сирэй аата:',
 	'pdtest_text'         => 'Киирэр тиэкис:',
 	'pdtest_ok'           => 'ОК',
 	'pdtest_get_text'     => 'Сирэйтэн тиэкиһи ыларга',
 	'pdtest_diff'         => 'Араастара',
 	'pdtest_side_by_side' => 'Тахсыбыты тэҥнээһин',
+	'pdt_comparing_page'  => 'Синтаксис анализаторын (парсер) таһаарыытын манна [[$1]] анаан тэҥнээһин',
 );
 
 /** Slovak (Slovenčina)

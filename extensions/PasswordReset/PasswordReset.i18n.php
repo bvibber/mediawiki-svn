@@ -272,6 +272,14 @@ $messages['pms'] = array(
 	'passwordreset-success' => 'La ciav ëd l\'utent $1 a l\'é staita cambià',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'passwordreset-invalidusername' => 'Nome de Utilizador Inválido',
+	'passwordreset-emptyusername'   => 'Nome de Utilizador Vazio',
+);
+
 $messages['rm'] = array(
 	'passwordreset-username' => 'Num d\'utilisader',
 );

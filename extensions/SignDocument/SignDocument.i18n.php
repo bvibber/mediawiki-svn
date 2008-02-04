@@ -74,6 +74,13 @@ $messages['pms'] = array(
 	'signaturelogentry' => 'a l\'é firmasse ël document $1',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'signaturelogentry' => 'assinou o documento $1',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

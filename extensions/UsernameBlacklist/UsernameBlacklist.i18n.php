@@ -501,6 +501,13 @@ $messages['nds'] = array(
 	'usernameblacklist-invalid-lines' => 'Disse {{PLURAL:$1|Reeg|Regen}} in de swarte List för Brukernaams {{PLURAL:$1|is|sünd}} nich bi de Reeg; korrigeer dat doch bevör du spiekerst:',
 );
 
+/** Nepali (नेपाली)
+ * @author SPQRobin
+ */
+$messages['ne'] = array(
+	'blacklistedusername' => 'कालोसूचीमा परेको प्रयोगकर्ता नाम',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin
@@ -623,6 +630,7 @@ $messages['qu'] = array(
 
 /** Russian (Русский)
  * @author .:Ajvol:.
+ * @author HalanTul
  */
 $messages['ru'] = array(
 	'blacklistedusername'             => 'Запрещённое имя пользователя',
@@ -630,7 +638,7 @@ $messages['ru'] = array(
 списке запрещённых имён]]. Пожалуйста, выберите другое имя.',
 	'usernameblacklist'               => '<pre>
 # Записи этого списка будут использоваться как части регулярных выражений
-# для отсеивания нежелательных имён участников во время решистрации. Каждая запись должна быть частью
+# для отсеивания нежелательных имён участников во время регистрации. Каждая запись должна быть частью
 # маркированного списка, например:
 #
 # * Foo
@@ -645,6 +653,14 @@ $messages['ru'] = array(
 $messages['sah'] = array(
 	'blacklistedusername'             => 'Бобуллубут аат',
 	'blacklistedusernametext'         => 'Талбыт аатыҥ [[MediaWiki:Usernameblacklist|бобуллубут ааттар испииһэктэригэр]] киирэр эбит. Атын ааты таларыҥ буоллар.',
+	'usernameblacklist'               => '<pre>
+# Записи этого списка будут использоваться как части регулярных выражений
+# для отсеивания нежелательных имён участников во время решистрации. Каждая запись должна быть частью
+# маркированного списка, например:
+#
+# * Foo
+# * [Bb]ar
+</pre>',
 	'usernameblacklist-invalid-lines' => 'Хара испииһэк бу {{PLURAL:$1|строкаата сыыһалаах|строкалара сыыһалаахтар}}; уларытыаҥ иннинэ ону көннөр:',
 );
 

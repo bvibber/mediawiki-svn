@@ -173,7 +173,9 @@ $messages['pms'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'profiling-ok' => 'OK',
+	'profiling-ok'           => 'OK',
+	'profiling-data-time'    => 'Tempo (todos)',
+	'profiling-data-average' => 'Tempo (média)',
 );
 
 /* Slovak (helix84) */

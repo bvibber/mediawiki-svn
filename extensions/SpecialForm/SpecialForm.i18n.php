@@ -84,6 +84,29 @@ $messages['bg'] = array(
 	'formsaveerror'                => 'Грешка при съхранение на формуляра',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'form'                         => 'Formulář',
+	'formnoname'                   => 'Nebyl zadán název formuláře',
+	'formnonametext'               => 'Musíte zadat název formuláře ve tavru „Special:Form/Názevformuláře“',
+	'formbadname'                  => 'Špatný název formuláře',
+	'formbadnametext'              => 'Formulář se zadaným názvem neexistuje',
+	'formpattern'                  => 'formulář-$1',
+	'formtitlepattern'             => 'Přidat nový $1',
+	'formsave'                     => 'Uložit',
+	'formarticleexists'            => 'Stránka existuje',
+	'formarticleexiststext'        => 'Stránka [[$1]] už existuje',
+	'formbadpagename'              => 'Špatný název stránky',
+	'formbadpagenametext'          => "Údaj formuláře, který jste zadali tvoří chybný název stránky - ''$1''.",
+	'formrequiredfieldpluralerror' => 'Tento formulář vyžaduje vyplnění polí $1. Prosím, vyplňte je.',
+	'formrequiredfielderror'       => 'Tento formulář vyžaduje vyplnění pole $1. Prosím, vyplňte ho.',
+	'formsavesummary'              => 'Nová stránka pomocí [[Special:Form/$1]]',
+	'formsaveerror'                => 'Chyba při ukládání formuláře',
+	'formsaveerrortext'            => "Při ukládání formuláře se vyskytla neznámá chyba: ''$1''.",
+);
+
 $messages['de'] = array(
 	'form'                         => 'Formular',
 	'formnoname'                   => 'Kein Formularname',

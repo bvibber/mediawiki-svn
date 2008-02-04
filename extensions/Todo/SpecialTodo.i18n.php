@@ -284,6 +284,7 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'todo-list-cancel'  => 'Cancelar',
 	'todo-form-details' => 'Detalhes:',
 );
 

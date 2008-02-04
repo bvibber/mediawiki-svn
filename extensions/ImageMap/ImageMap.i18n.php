@@ -409,6 +409,13 @@ $messages['nds'] = array(
 	'imagemap_description'          => 'Över dit Bild',
 );
 
+/** Nepali (नेपाली)
+ * @author SPQRobin
+ */
+$messages['ne'] = array(
+	'imagemap_description' => 'यो चित्रको बारेमा',
+);
+
 /* nld / Dutch (Siebrand Mazeland) */
 $messages['nl'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: geef een afbeelding op in de eerste regel',

@@ -158,14 +158,17 @@ $messages['hr'] = array(
 	'chemFunctions_Formula'  => 'Formula',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'chemicalsources' => 'Chemiske žórła',
-	'chemFunctions_ListPage' => 'Chemiske žórła',
-	'chemFunctions_DataList' => 'Deleka je lisćina websydłow, kotrež poskića dalše informacije wo substancy za kotrejž pytaš: * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br /> * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS uniwersity Oxford (UK) (njepřepytajomne)</a><br />',
-	'chemFunctions_CAS' => 'Ličba CAS',
-	'chemFunctions_EINECS' => 'EINECS',
-	'chemFunctions_Formula' => 'Formla',
-	'chemFunctions_Name' => 'Mjeno IUPAC',
+	'chemicalsources'                  => 'Chemiske žórła',
+	'chemicalsource-desc'              => 'Přidawa tafličku <nowiki><chemform></nowiki> za chemiske formle',
+	'chemFunctions_ListPage'           => 'Chemiske žórła',
+	'chemFunctions_DataList'           => 'Deleka je lisćina websydłow, kotrež poskića dalše informacije wo substancy za kotrejž pytaš: * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br /> * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS uniwersity Oxford (UK) (njepřepytajomne)</a><br />',
+	'chemFunctions_CAS'                => 'Ličba CAS',
+	'chemFunctions_Formula'            => 'Formla',
+	'chemFunctions_Name'               => 'Mjeno IUPAC',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Zapodatny zmylk',
 );
 
@@ -260,11 +263,12 @@ $messages['nds'] = array(
 );
 
 /** Dutch (Nederlands)
- * @author Siebrand
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
 	'chemicalsources'                  => 'Scheikundige bronnen',
+	'chemicalsource-desc'              => 'Voegt de tag <nowiki><chemform></nowiki> toe voor scheikundige formules',
 	'chemFunctions_ListPage'           => 'Scheikundige bronnen',
 	'chemFunctions_DataList'           => 'Hieronder staat een lijst van pagina\'s die meer informatie over de scheikundige verbinding kunnen verschaffen.
 

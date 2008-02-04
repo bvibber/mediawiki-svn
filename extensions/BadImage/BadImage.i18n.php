@@ -73,6 +73,7 @@ $messages['ar'] = array(
  */
 $messages['ast'] = array(
 	'badimages'                => "Llista d'imáxenes non válides",
+	'badimages-desc'           => "Esparde les capacidaes de la llista d'imáxenes non válides de MediaWiki",
 	'badimages-add-btn'        => 'Añader',
 	'badimages-added'          => 'Añadióse $1 a la llista.',
 	'badimages-count'          => "Hai '''$1''' imáxenes na llista d'imáxenes non válides.",
@@ -800,6 +801,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'badimages'                => 'Imagens com problemas',
+	'badimages-desc'           => 'Estenda as capacidades de listagem de imagens más do MediaWiki',
 	'badimages-add-btn'        => 'Adicionar',
 	'badimages-added'          => '$1 foi adicionado à lista.',
 	'badimages-count'          => "Atualmente existem '''$1''' imagens na lista de imagens com problemas.",

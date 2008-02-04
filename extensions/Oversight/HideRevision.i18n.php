@@ -811,6 +811,17 @@ $messages['lt'] = array(
 	'hiderevision-error-missing' => 'Nerasta duomenų bazėje',
 );
 
+/** Nepali (नेपाली)
+ * @author SPQRobin
+ */
+$messages['ne'] = array(
+	'hiderevision-tab'           => 'संस्करण लुकाउनुहोस्',
+	'hiderevision-noreason'      => 'तपाईंले यो हटाउनको कारण उल्लेख गर्नुपर्छ।',
+	'hiderevision-error-missing' => 'डेटाबेसमा भेट्टाइएन।',
+	'oversight-log-hiderev'      => '$1 बाट एक संपादन हटाइयो',
+	'oversight-view'             => 'विस्तारमा',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

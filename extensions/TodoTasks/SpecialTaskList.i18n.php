@@ -285,7 +285,9 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'tasklistemail'      => 'Caro %s',
+	'tasklistbyprojname' => "Tarefas atribuídas a '''%s'''",
 	'tasklistchooseproj' => 'Seleccione Projecto:',
+	'tasklistprojdisp'   => 'Mostrar',
 );
 
 /** Slovak (Slovenčina)

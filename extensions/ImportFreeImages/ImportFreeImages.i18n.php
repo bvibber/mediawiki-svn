@@ -173,7 +173,8 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'importfreeimages_owner' => 'Autor',
+	'importfreeimages_owner'          => 'Autor',
+	'importfreeimages_filefromflickr' => '$1 pelo utilizador <b>[$2]</b> do flickr. URL original',
 );
 
 /** Russian (Русский)

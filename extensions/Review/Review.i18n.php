@@ -460,7 +460,11 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'review_total_statistics'       => 'Total',
+	'review_statistic_cell'         => 'Média: $1 de $2<br />($4 utilizadores, $5 anónimos)',
 	'review_version_statistic_cell' => '$1 de $2',
+	'review_user_details_link'      => '(detalhes)',
+	'review_no_opinion'             => 'Sem opinião',
+	'review_comment'                => 'Comentário',
 );
 
 /** Slovak (Slovenčina)

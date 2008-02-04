@@ -1131,6 +1131,7 @@ $messages['pt'] = array(
 	'mv_remove_filter'            => 'remover filtro',
 	'mv_advaced_search'           => 'Pesquisa avançada de multimédia',
 	'mv_view_wiki_page'           => 'Ver página wiki',
+	'mv_match_text'               => '~  $1 resultados',
 	'mv_save_sequence'            => 'Salvar sequência',
 	'mv_sequence_page_desc'       => 'Salva a sequência atual',
 	'mv_sequence_add'             => 'Adicionar clipes',

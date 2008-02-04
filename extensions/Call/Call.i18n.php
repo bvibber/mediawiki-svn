@@ -181,6 +181,13 @@ L’extension <i>Apèl</i> apelarà la pagina indicada en i passant los paramèt
 	'call-save-failed'  => 'Lo tèxt seguent a pogut èsser salvargardat vèrs la pagina <big>[[$1]]</big> del fach qu’existís ja.',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'call-save' => "O resultado desta chamada seria gravado numa página chamada ''$1''.",
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

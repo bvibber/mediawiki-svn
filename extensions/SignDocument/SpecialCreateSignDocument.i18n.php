@@ -418,6 +418,8 @@ Për piasì, ch'a varda d'avej controlà sò test coma ch'as dev anans che mande
  */
 $messages['pt'] = array(
 	'createsigndoc-pagename'      => 'Página:',
+	'createsigndoc-extaddress'    => 'Cidade, Estado, País:',
+	'createsigndoc-phone'         => 'Número de telefone:',
 	'createsigndoc-minage'        => 'Idade mínima:',
 	'createsigndoc-introtext'     => 'Introdução:',
 	'createsigndoc-optional'      => 'Opcional',

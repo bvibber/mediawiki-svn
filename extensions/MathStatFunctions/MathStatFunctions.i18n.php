@@ -34,6 +34,15 @@ $messages['ca'] = array(
 	'msfunc_div_zero' => 'Divisió entre zero',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'msfunc_nan'      => 'Výsledná hodnota není číslo',
+	'msfunc_inf'      => 'Výsledná hodnota je nekonečno',
+	'msfunc_div_zero' => 'Dělení nulou',
+);
+
 $messages['de'] = array(
         'msfunc_nan'      => 'Ergebniswert ist keine Zahl',
         'msfunc_inf'      => 'Ergebniswert ist unendlich',

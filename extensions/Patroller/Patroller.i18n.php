@@ -433,6 +433,13 @@ $messages['pms'] = array(
 	'grouppage-patroller' => '{{ns:project}}:patoja',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'patrol-revert-reason' => 'Motivo:',
+);
+
 $messages['rm'] = array(
 	'patrol-revert-reason' => 'Motiv:',
 );

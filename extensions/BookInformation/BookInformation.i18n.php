@@ -550,19 +550,22 @@ $messages['nl'] = array(
 	'bookinfo-provider'          => 'Gegevens geleverd door: $1',
 );
 
-/* Norwegian (Jon Harald Søby) */
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'bookinfo-header' => 'Bokinformasjon',
-	'bookinfo-result-title' => 'Tittel:',
-	'bookinfo-result-author' => 'Forfatter:',
-	'bookinfo-result-publisher' => 'Utgiver:',
-	'bookinfo-result-year' => 'År:',
+	'bookinfo-header'            => 'Bokinformasjon',
+	'bookinfo-desc'              => 'Utvider [[Special:Booksources]] med informasjon fra en nettjeneste',
+	'bookinfo-result-title'      => 'Tittel:',
+	'bookinfo-result-author'     => 'Forfatter:',
+	'bookinfo-result-publisher'  => 'Utgiver:',
+	'bookinfo-result-year'       => 'År:',
 	'bookinfo-error-invalidisbn' => 'Ugyldig ISBN oppgitt.',
-	'bookinfo-error-nosuchitem' => 'Boken eksisterer ikke, eller kunne ikke finnes.',
-	'bookinfo-error-nodriver' => 'Kunne ikke sette i gang en passende bokinformasjonsdriver.',
-	'bookinfo-error-noresponse' => 'Ingen respons eller tidsavbrudd.',
-	'bookinfo-purchase' => 'Kjøp denne boken fra $1',
-	'bookinfo-provider' => 'Dataleverandør: $1',
+	'bookinfo-error-nosuchitem'  => 'Boken eksisterer ikke, eller kunne ikke finnes.',
+	'bookinfo-error-nodriver'    => 'Kunne ikke sette i gang en passende bokinformasjonsdriver.',
+	'bookinfo-error-noresponse'  => 'Ingen respons eller tidsavbrudd.',
+	'bookinfo-purchase'          => 'Kjøp denne boken fra $1',
+	'bookinfo-provider'          => 'Dataleverandør: $1',
 );
 
 $messages['oc'] = array(

@@ -247,7 +247,9 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'spamregex-unblock-success' => 'Desbloqueio com sucesso',
 	'spamregex-already-blocked' => '"$1" já está bloqueado',
+	'spamregex-phrase-block'    => 'Frase a bloquear:',
 	'spamregex-text'            => '(Texto)',
 	'spamregex-summary-log'     => '(Sumário)',
 );

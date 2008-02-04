@@ -285,6 +285,8 @@ $messages['oc'] = array(
 $messages['pt'] = array(
 	'usagestatisticsallusers' => 'Todos os Utilizadores',
 	'usagestatisticsinterval' => 'Intervalo',
+	'usagestatisticstype'     => 'Tipo',
+	'usagestatisticssubmit'   => 'Gerar Estatísticas',
 );
 
 /** Slovak (Slovenčina)

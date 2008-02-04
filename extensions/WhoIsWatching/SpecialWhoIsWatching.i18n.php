@@ -197,10 +197,15 @@ $messages['oc'] = array(
 	'specialwhoiswatchingaddbtn'   => 'Ajustar los utilizaires seleccionats',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
 $messages['pt'] = array(
-	'whoiswatching'               => 'Quem Está a Vigiar uma página wiki',
-	'specialwhoiswatchingthepage' => 'Quem está a vigiar %s',
-	'specialwhoiswatchingusage'   => 'Esta página especial não pode ser usada por si só. Por favor, utilize a página [[MediaWiki:Number_of_watching_users_pageview]] para definir um ponto de entrada para esta página especial.',
+	'whoiswatching'                => 'Quem Está a Vigiar uma página wiki',
+	'specialwhoiswatchingthepage'  => 'Quem está a vigiar %s',
+	'specialwhoiswatchingusage'    => 'Esta página especial não pode ser usada por si só. Por favor, utilize a página [[MediaWiki:Number_of_watching_users_pageview]] para definir um ponto de entrada para esta página especial.',
+	'specialwhoiswatchingaddusers' => 'Adicionar utilizadores à vigilância da página',
+	'specialwhoiswatchingaddbtn'   => 'Adicionar Utilizadores seleccionados',
 );
 
 /** Slovak (Slovenčina)
