@@ -70,9 +70,11 @@ public class FastWikiTokenizerTest {
 		
 		public static void main(String args[]) throws Exception{
 			Configuration.open();
-			String text = "(ant) and some. it's stupid it's something and 5\"6' or more";
+			String text = "(ant) and some. it's stupid it's something and 5\"6' or more, links abacus";
 			showTokens(text);
-			text = "| Unseen\n|-\n| \"Junior\"\n|\n| Goa'uld larva";
+			text = "{{IPA|[l&#594;s &#712;&aelig;nd&#658;&#601;&#716;l&#618;s]}} &lt; or &#60; &copy; &#169;&#1575; or &#x627;  ";
+			showTokens(text);
+			text = "| Unseen\n|-\n| \"Junior\"\n|\n| Goa'uld larva\n|} something";
 			showTokens(text);
 			text = "Peđa Stojaković";
 			showTokens(text);

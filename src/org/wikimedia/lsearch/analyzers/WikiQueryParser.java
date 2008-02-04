@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map.Entry;
 
 import org.apache.lucene.analysis.Analyzer;
@@ -1473,16 +1474,9 @@ public class WikiQueryParser {
 	}
 	
 	/** Make the main phrase query, finds exact phrases, and sloppy phrases without stop words */
-	public Query makeMainPhrase(ArrayList<String> words, String field, int slop, float boost, Query stemtitle, Query related, HashSet<String> preStopWords){
+	public Query makeMainPhrase(List<String> words, String field, int slop, float boost, Query stemtitle, Query related, HashSet<String> preStopWords, boolean exactOnly){
 		RankValue val = new RankValue();
-		boolean allStopWords = true;
-		for(String w : words){
-			if(!preStopWords.contains(w)){
-				allStopWords = false;
-				break;
-			}
-		}
-		if(allStopWords){
+		if(exactOnly){
 			CustomPhraseQuery pq = new CustomPhraseQuery(new QueryOptions.ContentsExactOptions(val,stemtitle,related));
 			for(String w : words){
 				pq.add(new Term(field,w));
@@ -1673,7 +1667,7 @@ public class WikiQueryParser {
 	} 
 	
 	/** Make the phrase that will match redirects, etc..  */
-	public Query makeAlttitleWholePhrase(ArrayList<String> words, String field, int slop, float boost, HashSet<String> preStopWords){
+	public Query makeAlttitleWholePhrase(List<String> words, String field, int slop, float boost, HashSet<String> preStopWords){
 		AggregatePhraseInfo ap = new AggregatePhraseInfo();
 		boolean allStopWords = true;
 		for(String w : words){
@@ -1701,6 +1695,47 @@ public class WikiQueryParser {
 			return pq;
 		}
 			
+	}
+	
+	protected boolean allStopWords(ArrayList<String> words, HashSet<String> preStopWords){
+		boolean allStopWords = true;
+		for(String w : words){
+			if(!preStopWords.contains(w)){
+				allStopWords = false;
+				break;
+			}
+		}
+		return allStopWords;
+	}
+	
+	/** Make split phrases on two fields: alttitle and contents */
+	public BooleanQuery makeMainSplit(ArrayList<String> words, FieldNameFactory fields, float boost, Query related, HashSet<String> stopWords){
+		BooleanQuery bq = new BooleanQuery(true);
+		boolean allStopWords = allStopWords(words,stopWords); 
+		if(allStopWords)
+			return bq;
+		for(int i=1;i<words.size();i++){
+			if(stopWords.contains(words.get(i)))
+				continue;
+			Query alt = makeAlttitleForMainSplit(words.subList(0,i),fields.alttitle(),ADD_ALTTITLE_BOOST);
+			Query main = makeMainPhrase(words.subList(i,words.size()),fields.contents(),20,MAINPHRASE_BOOST,alt,related,stopWords,allStopWords);
+			bq.add(main,Occur.SHOULD);
+			alt = makeAlttitleForMainSplit(words.subList(i,words.size()),fields.alttitle(),ADD_ALTTITLE_BOOST);
+			main = makeMainPhrase(words.subList(0,i),fields.contents(),20,MAINPHRASE_BOOST,alt,related,stopWords,allStopWords);
+			bq.add(main,Occur.SHOULD);
+		}
+		bq.setBoost(boost);
+		return bq;
+	}
+	
+	public Query makeAlttitleForMainSplit(List<String> words, String field, float boost){
+		AggregatePhraseInfo ap = new AggregatePhraseInfo();
+		CustomPhraseQuery pq = new CustomPhraseQuery(new QueryOptions.AlttitleOnlyOptions(ap));
+		for(String w : words){
+			pq.add(new Term(field,w));
+		}
+		pq.setBoost(boost);
+		return pq;
 	}
 	
 	/** Join a collection via a char/string */
@@ -1782,11 +1817,11 @@ public class WikiQueryParser {
 		HashSet<String> preStopWords = StopWords.getPredefinedSet(builder.getFilters().getIndexId());
 		// queries: main phrase (main*) + additional queries (add*)
 		Query addAlttitleQuery = null;		
-		Query mainAlttitleQuery = null;
+		Query splitAlttitleQuery = null;
 		Query mainRelatedQuery = makePhrasesForRelated(words,RELATED_SLOP,RELATED_BOOST);
 		if(wildcards==null || !wildcards.hasWildcards()){
 			addAlttitleQuery = makeAlttitleWholePhrase(words,fields.alttitle(),ADD_ALTTITLE_SLOP,ADD_ALTTITLE_BOOST,preStopWords);
-			mainAlttitleQuery = makeAlttitlePhrases(words,fields.alttitle(),ALT_PHRASES_BOOST);
+			splitAlttitleQuery = makeAlttitlePhrases(words,fields.alttitle(),ALT_PHRASES_BOOST);
 		}
 		Query addStemtitleQuery = 
 			new LogTransformScore(makeStemtitle(words,fields.stemtitle(),1,0.1f));
@@ -1794,9 +1829,11 @@ public class WikiQueryParser {
 		Query addRelatedQuery = new LogTransformScore(mainRelatedQuery);
 		addRelatedQuery.setBoost(ADD_RELATED_BOOST);
 		
-		Query mainPhrase = makeMainPhrase(words,fields.contents(),MAINPHRASE_SLOP,MAINPHRASE_BOOST,mainAlttitleQuery,mainRelatedQuery,preStopWords);
+		Query mainPhrase = makeMainPhrase(words,fields.contents(),MAINPHRASE_SLOP,MAINPHRASE_BOOST,splitAlttitleQuery,mainRelatedQuery,preStopWords,allStopWords(words,preStopWords));
 		if(mainPhrase == null)
 			return bq;
+		//BooleanQuery mainSplit = makeMainSplit(words,fields,1,mainRelatedQuery,preStopWords);
+		//mainSplit.add(mainPhrase,Occur.SHOULD);
 		// build the final query
 		BooleanQuery coreQuery = new BooleanQuery(true);		
 		BooleanQuery additional = new BooleanQuery(true);

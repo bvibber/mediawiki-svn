@@ -318,12 +318,13 @@ public class WikiIndexModifier {
 			public int compare(Redirect o1,Redirect o2){
 				return o2.getReferences() - o1.getReferences();
 			}
-		});
+		});		
 		int ns = Integer.parseInt(ar.getNamespace());
 		ar.setRank(ar.getReferences()); // base rank value
 		if(redirects != null){
 			ArrayList<String> filtered = new ArrayList<String>();
 			ArrayList<Integer> ranks = new ArrayList<Integer>();
+			ArrayList<Redirect> sorted = new ArrayList<Redirect>();
 			// index only redirects from the same namespace
 			// to avoid a lot of unusable redirects from/to
 			// user namespace, but always index redirect FROM main
@@ -331,13 +332,14 @@ public class WikiIndexModifier {
 				if(ns == r.getNamespace() || (r.getNamespace() == 0 && ns != 0)){
 					filtered.add(r.getTitle());
 					ranks.add(r.getReferences());
-					ar.addToRank(r.getReferences()+1);
+					sorted.add(r);
+					ar.addToRank(r.getReferences()+1);					
 				} else
 					log.debug("Ignoring redirect "+r+" to "+ar);
 			}
 			ar.setRedirectKeywords(filtered);
 			ar.setRedirectKeywordRanks(ranks);
-			// FIXME: should also make the key available!
+			ar.setRedirectsSorted(sorted);
 		}
 	}
 	

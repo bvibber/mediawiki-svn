@@ -104,7 +104,7 @@ def make_title_link(line,dbname,caption=''):
         caption = decoded
     return ['%s : (%1.2f) <a href="%s">%s</a>' % (interwiki[iw],score,link,caption),title]
 
-def extract_snippet(line,final_separator=True):
+def extract_snippet(line,final_separator=True,originalIsKey=False):
     parts = line.split(' ')
     type = parts[0]
     splits = de_bracket_split(parts[1])
@@ -133,7 +133,13 @@ def extract_snippet(line,final_separator=True):
         elif final_separator:
             snippet += snippet_separator
         start = sp;
-    
+    if originalIsKey:
+        origParts = original.split(":")
+        origNs = canon_namespaces[int(origParts[0])]
+        if origNs != '':
+            origNs = origNs +":"
+        original = origNs+origParts[1]
+        
     return [snippet,original]
 
 def extract_suggest(line):
@@ -239,11 +245,11 @@ class MyHandler(BaseHTTPRequestHandler):
                                 [titleHl, orig] = extract_snippet(nextLine,False)
                                 nextLine = results.readline()
                                 if nextLine.startswith('#h.redirect'):
-                                    [redirectHl, redirectLink] = extract_snippet(nextLine,False);
+                                    [redirectHl, redirectLink] = extract_snippet(nextLine,False,True);
                                     if redirectLink != None:
                                         redirectLink = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],redirectLink)
                             elif nextLine.startswith('#h.redirect'):
-                                [redirectHl, redirectLink] = extract_snippet(nextLine,False);
+                                [redirectHl, redirectLink] = extract_snippet(nextLine,False,True);
                                 if redirectLink != None:
                                     redirectLink = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],redirectLink)
                                         
@@ -316,7 +322,7 @@ class MyHandler(BaseHTTPRequestHandler):
                                 [titleHl, orig] = extract_snippet(extra,False)
                                 [link,title] = make_wiki_link(scoreLine,dbname,titleHl)
                             elif extra.startswith('#h.redirect'):
-                                [redirectHl, redirectLink] = extract_snippet(extra,False);
+                                [redirectHl, redirectLink] = extract_snippet(extra,False,True);
                                 if redirectLink != None:
                                     redirectLink = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],redirectLink)
                             elif extra.startswith('#h.section'):

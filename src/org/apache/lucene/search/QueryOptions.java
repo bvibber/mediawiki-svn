@@ -27,6 +27,8 @@ public class QueryOptions implements Serializable {
 	protected boolean takeMaxScore = false;
 	/** wether to use the stop words proportion */
 	protected boolean useStopWordLen = false;
+	/** if the custom phrase query should set nonzero score only if it's alttitle part matches */
+	protected boolean onlyOnAlttitleMatch = false;
 	
 	/** use child class constructors */
 	private QueryOptions(){
@@ -79,6 +81,16 @@ public class QueryOptions implements Serializable {
 			aggregateMeta = alttitleInfo;
 			takeMaxScore = true;
 			wholeBoost = 50000;
+		}
+	}
+	
+	/** for combinations of title/contents queries */
+	public static class AlttitleOnlyOptions extends QueryOptions {
+		public AlttitleOnlyOptions(PhraseInfo alttitleInfo){
+			aggregateMeta = alttitleInfo;
+			takeMaxScore = true;
+			wholeBoost = 10;
+			onlyOnAlttitleMatch = true;
 		}
 	}
 	

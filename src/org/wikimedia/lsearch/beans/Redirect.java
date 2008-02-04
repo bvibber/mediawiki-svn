@@ -38,6 +38,10 @@ public class Redirect implements Serializable {
 		return new Title(namespace,title);
 	}
 	
+	public String getKey(){
+		return namespace+":"+title;
+	}
+	
 	
 	
 }

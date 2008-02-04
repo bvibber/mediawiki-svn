@@ -12,19 +12,19 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 	protected int phraseLenNoStopWords;
 	protected QueryOptions options;
 	// following are for debug:
-	protected Scorer stemtitleScorer, relatedScorer;
+	protected Scorer alttitleScorer, relatedScorer;
 	
 	
-	public final static boolean DEBUG = true; // TODO: set to false in release
+	public final static boolean DEBUG = false; // TODO: set to false in release
 	public HashMap<Integer,ArrayList<Explanation>> explanations = null;
 	
 	CustomPhraseScorer(Weight weight, TermPositions[] tps, int[] offsets, int stopWordCount, Similarity similarity, 
-			byte[] norms, QueryOptions options, Scorer stemtitleScorer, Scorer relatedScorer) {
+			byte[] norms, QueryOptions options, Scorer alttitleScorer, Scorer relatedScorer) {
 		super(weight, tps, offsets, similarity, norms);		
 		this.options = options;
 		this.phraseLen = tps.length;
 		this.phraseLenNoStopWords = phraseLen - stopWordCount;
-		this.stemtitleScorer = stemtitleScorer;
+		this.alttitleScorer = alttitleScorer;
 		this.relatedScorer = relatedScorer;
 	}
 	
@@ -47,8 +47,8 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 			}
 			if (more) {
 				// skip additional scores to matched document (as if phrase is a MUST boolean clause, and these SHOULD)
-				if(stemtitleScorer != null && stemtitleScorer.doc() < first.doc)
-					stemtitleScorer.skipTo(first.doc);
+				if(alttitleScorer != null && alttitleScorer.doc() < first.doc)
+					alttitleScorer.skipTo(first.doc);
 				if(relatedScorer != null && relatedScorer.doc() < first.doc)
 					relatedScorer.skipTo(first.doc);
 				// found a doc with all of the terms
@@ -63,9 +63,9 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 	}
 
 	public boolean skipTo(int target) throws IOException {
-		if(stemtitleScorer != null){
-			if(firstTime || stemtitleScorer.doc() < target)
-				stemtitleScorer.skipTo(target);
+		if(alttitleScorer != null){
+			if(firstTime || alttitleScorer.doc() < target)
+				alttitleScorer.skipTo(target);
 		}
 		if(relatedScorer != null){
 			if(firstTime || relatedScorer.doc() < target)
@@ -88,8 +88,8 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 	 * @return frequency of the phrase in current doc, 0 if not found. 
 	 */
 	private void init() throws IOException {
-		if(stemtitleScorer != null)
-			stemtitleScorer.next();
+		if(alttitleScorer != null)
+			alttitleScorer.next();
 		if(relatedScorer != null)
 			relatedScorer.next();
 		for (PhrasePositions pp = first; more && pp != null; pp = pp.next) 
@@ -109,12 +109,13 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 		float raw = transformFreq(freq) * value; // raw score
 		//float sc = raw * Similarity.decodeNorm(norms[first.doc]); // normalize
 		float sc = raw ; // no norms
-		if(stemtitleScorer != null && stemtitleScorer.doc() == first.doc){
-			sc *= 1 + stemtitleScorer.score();
-		}
 		if(relatedScorer != null && relatedScorer.doc() == first.doc){			
 			sc *= 1 + relatedScorer.score();
 		}
+		if(alttitleScorer != null && alttitleScorer.doc() == first.doc){
+			sc *= 1 + alttitleScorer.score();
+		} else if(options.onlyOnAlttitleMatch)
+			sc = 0.0001f;
 
 		return sc; 
 	}
@@ -154,12 +155,12 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 		}
 		tfExplanation.addDetail(texp);
 		
-		if(stemtitleScorer != null && stemtitleScorer.doc() == doc){
+		if(alttitleScorer != null && alttitleScorer.doc() == doc){
 			Explanation eTitle = new Explanation();
-			eTitle.setValue(1+stemtitleScorer.score());
-			eTitle.setDescription("Stemtitle (raw score="+stemtitleScorer.score()+")");
+			eTitle.setValue(1+alttitleScorer.score());
+			eTitle.setDescription("Stemtitle (raw score="+alttitleScorer.score()+")");
 			tfExplanation.addDetail(eTitle);
-			tfExplanation.setValue(tfExplanation.getValue()*(1+stemtitleScorer.score()));
+			tfExplanation.setValue(tfExplanation.getValue()*(1+alttitleScorer.score()));
 		}
 		if(relatedScorer != null && relatedScorer.doc() == doc){
 			Explanation eRelated = new Explanation();			

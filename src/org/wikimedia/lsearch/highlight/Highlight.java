@@ -36,7 +36,7 @@ public class Highlight {
 	/** maximal length of text that surrounds highlighted words */ 
 	public static final int MAX_CONTEXT = 70;
 	/** variability in all snippets length */
-	public static final int TOLERANCE = 10;
+	public static final int TOLERANCE = 15;
 	/** too small snippets that will be extended */
 	public static final int SHORT_SNIPPET = 50;
 	/** coefficient for words that match and are close one to the other */
@@ -133,7 +133,12 @@ public class Highlight {
 			HashMap<String,Double> notInTitle = getTermsNotInTitle(weightTerm,alttitles,wordIndex);
 			ArrayList<RawSnippet> textSnippets = getBestTextSnippets(tokens, weightTerm, wordIndex, 2, false, stopWords, true, phrases, inContext );
 			ArrayList<RawSnippet> titleSnippets = getBestTextSnippets(alttitles.getTitle().getTokens(),weightTerm,wordIndex,1,true,stopWords,false,phrases,inContext);
-			RawSnippet redirectSnippets = getBestAltTitle(alttitles.getRedirects(),weightTerm,notInTitle,stopWords,wordIndex,1,phrases,inContext);
+			int redirectAdditional = 0;
+			if(titleSnippets.size()>0 && titleSnippets.get(0).found.containsAll(words) 
+					&& textTokenLength(titleSnippets.get(0).tokens) == words.size()){
+				redirectAdditional = 1; // don't show redirect if it's same as title
+			}			
+			RawSnippet redirectSnippets = getBestAltTitle(alttitles.getRedirects(),weightTerm,notInTitle,stopWords,wordIndex,redirectAdditional,phrases,inContext);
 			RawSnippet sectionSnippets = null;
 			if(redirectSnippets == null){
 				// remove stop words for section higlighting
@@ -201,7 +206,7 @@ public class Highlight {
 			}
 			
 			if(titleSnippets.size() > 0){
-				hr.setTitle(titleSnippets.get(0).makeSnippet(256));
+				hr.setTitle(titleSnippets.get(0).makeSnippet(256));		
 				if(titleSnippets.get(0).found.containsAll(words))
 					foundAllInTitle = true;
 			}
@@ -221,6 +226,16 @@ public class Highlight {
 		return new ResultSet(res,phrases,inContext,foundAllInTitle);
 	}	
 	
+	/** Number of tokens excluding aliases and glue stuff */
+	private static int textTokenLength(ArrayList<ExtToken> tokens) {
+		int len = 0;
+		for(ExtToken t : tokens){
+			if(t.getType() == Type.TEXT && t.getPositionIncrement()!=0)
+				len++;			
+		}
+		return len;
+	}
+
 	/**
 	 * Since we are not expanding templates, use a heuristic to accept
 	 * some templates as in-text stuff, e.g. language templates like
@@ -390,7 +405,7 @@ public class Highlight {
 					additionalScore += notInTitle.get(t.termText());
 				}
 			}
-			if((completeMatch && additional >= minAdditional) || additional >= minAdditional+1 || (additional != 0 && additional == notInTitle.size())){
+			if((completeMatch && additional >= minAdditional) || additional > minAdditional || (additional != 0 && additional == notInTitle.size())){
 				ArrayList<RawSnippet> snippets = getBestTextSnippets(tokens, weightTerm, wordIndex, 1, false, stopWords, false, phrases, inContext);
 				if(snippets.size() > 0){
 					RawSnippet snippet = snippets.get(0);

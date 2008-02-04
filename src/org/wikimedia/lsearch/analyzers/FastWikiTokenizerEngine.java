@@ -11,6 +11,7 @@ import org.apache.commons.lang.WordUtils;
 import org.apache.lucene.analysis.Token;
 import org.wikimedia.lsearch.analyzers.ExtToken.Position;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.util.CharacterEntityReference;
 import org.wikimedia.lsearch.util.Localization;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
 
@@ -741,6 +742,14 @@ public class FastWikiTokenizerEngine {
 		return false;
 	}
 	
+	final protected int findWithin(char target, int start, int end){
+		for(int i=start;i<end && i<textLength;i++){
+			if(text[i]==target)
+				return i;
+		}
+		return -1;
+	}
+	
 	/**
 	 * Parse Wiki text, and produce an arraylist of tokens.
 	 * Also fills the lists categories and interwikis.
@@ -781,6 +790,27 @@ public class FastWikiTokenizerEngine {
 			switch(state){			
 			case WORD:
 				switch(c){
+				case '&':
+					if(cur + 2 < textLength){
+						c1 = text[cur+1];
+						int end = findWithin(';',cur+1,cur+9);
+						// html entities
+						if(end != -1){
+							Character decoded = null;
+							if(c1 == '#')
+								decoded = CharacterEntityReference.decodeNumericEntity(new String(text,cur+2,end-cur-2));
+							else
+								decoded = CharacterEntityReference.decodeEntity(new String(text,cur+1,end-cur-1));
+							if(decoded != null){
+								c = decoded;
+								addLetter();
+								cur = end;
+								continue;
+							}
+						}
+					}
+					addLetter();
+					continue;
 				case '\'':
 					if(cur + 1 < textLength ){
 						c1 = text[cur+1];
@@ -996,6 +1026,7 @@ public class FastWikiTokenizerEngine {
 					state = ParserState.WORD;
 					continue;
 				default:
+					// addLetter(); // index URLs?
 					// addToken(); // for glue
 				}
 				continue;

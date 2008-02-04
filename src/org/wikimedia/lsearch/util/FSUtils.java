@@ -25,7 +25,7 @@ public class FSUtils {
 			break;
 		case OS_TYPE_UNIX:
 		default:
-			hardLinkCommand = new String[] {"ln", null, null};
+			hardLinkCommand = new String[] {"ln", "-f", null, null};
 		}
 	}
 
@@ -79,7 +79,7 @@ public class FSUtils {
 	 * @param linkname the symlink
 	 */
 	public static void createSymLink(String target, String linkname) throws IOException{
-		String cmd = "ln -s " + target + " " + linkname;
+		String cmd = "ln -s -f " + target + " " + linkname;
 		Command.exec(cmd);
 	}
 		

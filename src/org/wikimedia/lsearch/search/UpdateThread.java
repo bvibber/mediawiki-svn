@@ -222,6 +222,7 @@ public class UpdateThread extends Thread {
 			messenger.notifyIndexUpdated(iid,iid.getDBSearchHosts());
 			
 		} catch(IOException ioe){
+			ioe.printStackTrace();
 			log.error("I/O error updating index "+iid+" at "+li.path+" : "+ioe.getMessage());
 			badIndexes.put(li.iid.toString(),li.timestamp);
 		}

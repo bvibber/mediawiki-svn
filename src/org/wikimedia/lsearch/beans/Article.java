@@ -42,13 +42,17 @@ public class Article implements Serializable  {
 	private long pageId;
 	private int references;
 	/** all page that redirect to this page with their reference count */
-	private ArrayList<Redirect> redirects;  
-	/** generated before indexing from the list of redirects */
+	private ArrayList<Redirect> redirects;
+	
+	/** sorted list of redirect names */
 	private transient ArrayList<String> redirectKeywords;
-	/** paired with previous list, ranks for each redirect */
+	/** sorted list of ranks */
 	private transient ArrayList<Integer> redirectKeywordRanks;
+	/** sorted list of whole redirects */
+	private transient ArrayList<Redirect> redirectsSorted;
 	/** generated before indexing from the reference sto this article, and references from redirects */
 	private transient int rank;
+	
 	/** names of articles that relate to this article  */
 	private ArrayList<RelatedTitle> related;
 	/** names of articles that relate to this article  */
@@ -246,6 +250,14 @@ public class Article implements Serializable  {
 
 	public void setRedirectTargetNamespace(int redirectTargetNamespace) {
 		this.redirectTargetNamespace = redirectTargetNamespace;
+	}
+
+	public ArrayList<Redirect> getRedirectsSorted() {
+		return redirectsSorted;
+	}
+
+	public void setRedirectsSorted(ArrayList<Redirect> redirectsSorted) {
+		this.redirectsSorted = redirectsSorted;
 	}	
 	
 	

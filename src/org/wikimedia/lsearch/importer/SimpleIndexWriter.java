@@ -83,6 +83,8 @@ public class SimpleIndexWriter {
 		String path = iid.getImportPath();
 		IndexWriter writer;
 		try {
+			if(newIndex)
+				log.info("Making new index at "+path);
 			writer = new IndexWriter(path,null,newIndex); // if newIndex==true, overwrites old index
 		} catch (IOException e) {				
 			try {

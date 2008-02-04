@@ -104,6 +104,8 @@ public class SpellCheckTest {
    	{"boraga portugal","braga portugal"},
    	{"moby ishmael",""},
    	{"hediegger dasain","heidegger dasein"},
+   	{"althought","although"},
+   	{"mac surname",""},
    	
    };
 

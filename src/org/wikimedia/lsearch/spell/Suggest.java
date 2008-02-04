@@ -187,66 +187,6 @@ public class Suggest {
 				return sq;
 			}
 		}
-		/*if(titleExists(joinTokens)){
-			ArrayList<SuggestResult> titleRes = suggestTitles(joinTokens,1,POOL_TITLE,2);
-			if(titleRes.size()>0 && titleRes.get(0).dist!=0){
-				HashMap<Integer,String> changes = extractTitleChanges(joinTokens,titleRes.get(0).word,tokens);
-				if(changes != null){
-					SuggestQuery sq = makeSuggestedQuery(tokens,changes,searchterm,filters,true);
-					logRequest(sq.getSearchterm(),"titles (misspell)",start);
-					return sq;
-				}
-			}
-			// otherwise, correct
-			logRequest(searchterm,"CORRECT (exact title match)",start);
-			return new SuggestQuery(searchterm,new ArrayList<Integer>());
-		} */
-
-		
-		// perform contextual check
-		/* if(tokens.size() > 1){
-			// collect all words in context of current words
-			HashSet<String> context = new HashSet<String>();
-			HashSet<String> words = new HashSet<String>();
-			for(Token t : tokens){
-				if(!stopWords.contains(t.termText()))
-					words.add(t.termText());
-			}
-			for(String w : words){
-				TermDocs td = reader.termDocs(new Term("context_key",w));
-				if(td.next()){
-					// deserialize context words
-					Collection<String> c = new StringList(reader.document(td.doc()).get("context")).toCollection(words);
-					c.remove(w);
-					//System.out.println("Context for "+w+" : "+c);
-					context.addAll(c);
-					// check if found all words in the query
-					if(context.size() == words.size()){
-						logRequest(searchterm,"CORRECT (by context)",start);
-						return new SuggestQuery(searchterm,new ArrayList<Integer>());	
-					}
-				}
-			}			
-		} */
-
-		// check titles
-		/* if(joinTokens.length() > 7){
-			ArrayList<SuggestResult> titleRes = suggestTitles(joinTokens,1,POOL_TITLE,4);
-			if(titleRes.size()>0){
-				if(titleRes.get(0).dist!=0){
-					HashMap<Integer,String> changes = extractTitleChanges(joinTokens,titleRes.get(0).word,tokens);
-					if(changes != null){
-						SuggestQuery sq = makeSuggestedQuery(tokens,changes,searchterm,filters,true);
-						logRequest(sq.getSearchterm(),"title match",start);
-						return sq;
-					}
-				} else{
-					// otherwise, correct
-					logRequest(searchterm,"CORRECT (exact title match)",start);
-					return new SuggestQuery(searchterm,new ArrayList<Integer>());
-				}
-			}
-		} */
 		
 		// check if all words are found within phrases during highlighting
 		if(tokens.size() > 1 && tokens.size() == phrases.size() + 1){

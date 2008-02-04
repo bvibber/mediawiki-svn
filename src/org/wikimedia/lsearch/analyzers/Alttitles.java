@@ -9,6 +9,7 @@ import java.util.Set;
 import org.apache.lucene.analysis.Analyzer;
 import org.wikimedia.lsearch.analyzers.ExtToken.Position;
 import org.wikimedia.lsearch.beans.Article;
+import org.wikimedia.lsearch.beans.Redirect;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.util.Buffer;
@@ -72,14 +73,15 @@ public class Alttitles {
 		
 		// add title
 		String title = article.getTitle();
+		String titleKey = article.getTitleObject().getKey();
 		// type 0 : title
-		b.writeAlttitleInfo(title,new Aggregate(title,article.getRank(),iid,analyzer,field),0);
+		b.writeAlttitleInfo(titleKey,new Aggregate(title,article.getRank(),iid,analyzer,field),0);
 		// add all redirects
-		ArrayList<String> redirects = article.getRedirectKeywords();
+		ArrayList<Redirect> redirects = article.getRedirectsSorted();
 		ArrayList<Integer> ranks = article.getRedirectKeywordRanks();
 		for(int i=0;i<redirects.size();i++){
 			// type 1: redirect
-			b.writeAlttitleInfo(redirects.get(i),new Aggregate(redirects.get(i),ranks.get(i),iid,analyzer,field),1);
+			b.writeAlttitleInfo(redirects.get(i).getKey(),new Aggregate(redirects.get(i).getTitle(),ranks.get(i),iid,analyzer,field),1);
 		}
 		
 		// type 2: sections

@@ -158,10 +158,10 @@ public class Buffer {
 	
 	/** Format: type (1b), rank (4b), text (string), size of serialized (4b), serialized (bytes) 
 	 * @throws IOException */ 
-	public final void writeAlttitleInfo(String text, Aggregate a, int type) throws IOException{
+	public final void writeAlttitleInfo(String original, Aggregate a, int type) throws IOException{
 		write(type);
 		writeInt((int)a.boost());
-		writeStringWithLength(text);
+		writeStringWithLength(original);
 		byte[] serialized = ExtToken.serialize(new LanguageAnalyzer.ArrayTokens(a.getTokens()));		
 		writeBytesWithLength(serialized);	
 	}

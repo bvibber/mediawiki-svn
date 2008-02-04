@@ -247,6 +247,8 @@ public class RawSnippet {
 			ExtToken t = tokens.get(i);
 			if(i == showBegin && t.getType() != ExtToken.Type.TEXT){
 				// catch only specific nontext beginings
+				if(t.getText().contains("|") && (i+1<showEnd && tokens.get(i+1).getPosition() == Position.TABLE))
+					sb.append("| ");
 				if(t.getText().endsWith("\""))
 					sb.append("\""); // hack to include initial " 
 				else if(t.getText().endsWith("("))

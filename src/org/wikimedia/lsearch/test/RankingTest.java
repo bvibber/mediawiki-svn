@@ -28,12 +28,17 @@ public class RankingTest {
 		String line;
 		int lineNum = 0;
 		ArrayList<ResultSet> results = new ArrayList<ResultSet>();
+		boolean seenResults = false;
 		while ( (line = br.readLine()) != null ) {
 			if(lineNum > 1){
-				if(line.startsWith("#"))
+				if(line.startsWith("#results")){
+					seenResults = true;
+					continue;
+				}
+				if(!seenResults || line.startsWith("#"))
 					continue;
 				String[] parts = line.split(" ",3);
-				String title = URLDecoder.decode(parts[2]).replace("_"," ");
+				String title = URLDecoder.decode(parts[2],"utf-8").replace("_"," ");
 				results.add(new ResultSet(Double.parseDouble(parts[0]),parts[1],title));
 			}
 			lineNum ++ ;
@@ -150,6 +155,14 @@ public class RankingTest {
 		
 		assertHits("List of female porn stars", new String[]{
 				"0:List of female porn stars"
+		});
+		
+		assertHits("last name mac", new String[]{
+				"0:Family name"
+		});
+		
+		assertHits("frames linguistics", new String[]{
+				"0:Frame semantics (linguistics)"
 		});
 		
 		
