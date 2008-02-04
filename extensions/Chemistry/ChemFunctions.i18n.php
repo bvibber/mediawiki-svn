@@ -12,6 +12,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'chemicalsources' => 'Chemical sources',
+	'chemicalsource-desc' => 'Adds the tag <nowiki><chemform></nowiki>, for chemical formulae',
 	'chemFunctions_ListPage' => 'Chemical sources',
 	'chemFunctions_SearchExplanation' => '',
 	'chemFunctions_DataList' => 'Below is a list of links to sites that may provide information about the chemical substance you are looking for.<br /><br />
@@ -98,6 +99,7 @@ $messages['el'] = array(
  */
 $messages['fr'] = array(
 	'chemicalsources'                  => 'Sources pour la chimie',
+	'chemicalsource-desc'              => 'Ajoute la balise <nowiki><chemform></nowiki>, pour les formules chimiques',
 	'chemFunctions_ListPage'           => 'Sources pour la chimie',
 	'chemFunctions_DataList'           => 'Voici, ci-dessous, une liste de liens vers des sites qui peuvent apporter des informations à propos des substances chimiques que vous recherchez.
 

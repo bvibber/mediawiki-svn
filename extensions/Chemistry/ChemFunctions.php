@@ -16,11 +16,12 @@
 if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['other'][] = array(
-	'name'        => 'ChemFunctions',
-	'version'     => '2008-01-08',
-	'description' => 'Adds the tag <nowiki><chemform></nowiki>, for chemical formulae',
-	'author'      => 'Dirk Beetstra',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:Chemistry',
+	'name'           => 'ChemFunctions',
+	'version'        => '2008-01-08',
+	'description'    => 'Adds the tag <nowiki><chemform></nowiki>, for chemical formulae',
+	'descriptionmsg' => 'chemicalsource-desc',
+	'author'         => 'Dirk Beetstra',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Chemistry',
 );
 
 /** Chemform wikipedia extension.
