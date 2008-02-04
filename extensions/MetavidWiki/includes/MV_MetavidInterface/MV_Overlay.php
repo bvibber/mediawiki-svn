@@ -53,6 +53,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	}
 	/* output caption div links */ 
 	function get_video_timeline(){
+		wfProfileIn( __METHOD__ );
 		$out='';
 		//set up variables with exported vars in $this object
 		$start_str 	=$this->mv_interface->article->mvTitle->getStartTime();
@@ -60,6 +61,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$this->start_time = $this->mv_interface->article->mvTitle->getStartTimeSeconds();
 		$end_time 	= $this->mv_interface->article->mvTitle->getEndTimeSeconds();
 		$this->duration = $end_time-$this->start_time;		
+		//layers/filters
+		
 		foreach($this->mvd_pages as & $mvd_page){
 				$out.=$this->get_timeline_html($mvd_page);
 		}
@@ -70,6 +73,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$out.='<div style="position:absolute;top:100%;z-index:2;background:#FFFFFF;font-size:x-small">';
 		$out.=$end_str;
 		$out.='</div>';*/	
+		wfProfileOut( __METHOD__ );
 		return $out;
 	}
 	function load_transcripts(){
@@ -153,7 +157,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			'onmouseup="mv_do_play()" ' . 			
 			*/
 			'style="position:absolute;background:#'.$this->getMvdBgColor($mvd_page).';'.
-			'width:25px;';
+			'width:16px;';
 		//check if duration is set (for php calculation of height position)
 		if($this->duration){			
 			$page_duration = $mvd_page->end_time - $mvd_page->start_time;			
@@ -173,7 +177,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			$out.='height:'.$height_perc.'%;'.
 				  'top:'.$loc_perc.'%"></div>'."\n";
 		}else{
-			//don't include height and top information (javascript will position it)
+			//don't include height and top information (javascript will position it?)
 		}
 		return $out;
 	}

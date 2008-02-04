@@ -42,7 +42,7 @@ $mvWebImgLoc = $mvgScriptPath . '/stream_images';
 //full local path for images (if hosted locally) 
 $mvLocalImgLoc = $mvgIP . '/stream_images'; 
 
-//if mediaWiki should serve up redirects to images or directly send the image data from php?
+//if mediaWiki should serve up redirects to image file path or have php send the image via GD
 //if served directly its one less round trip to the server but may tax the server
 // a bit more than having apache serving the file 
 $mvServeImageRedirect=false; 
@@ -85,10 +85,19 @@ $mvDefaultSearchVideoPlaybackRes='160x120';
 $mvDefaultVideoIconSize = '80x60';
 
 
-//meta data types
-//these keys are used in the template_name, msg_desction,and application logic )
-//maybe in the future people will be able to add in arbitrary stuff but for now its hard-coded
-$mvMVDTypeKeys = array('ht_en','anno_en');
+/*
+ * meta data layers
+ * these type keys are used to allow multiple layers of metadata per stream.
+ * These values key into template_names, msg_descriptions, and application logic )
+ * Different languages should be in different tracks and documentation should be clear
+ * to insure data goes into its associative layer.
+ */
+$mvMVDTypeKeys = array('ht_en','anno_en','thomas_en');
+
+//the default set of layers (must be a subset of $mvMVDTypeKeys)
+//note: this is equivalent to ?mvd_tracks=ht_en,anno_en  in the url for the stream page.
+//this also dictates the default search layers 
+$mvMVDTypeDefaults=array('ht_en','anno_en');
 
 ###################
 # Special Pages with Interface functions

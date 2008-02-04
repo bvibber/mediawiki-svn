@@ -433,54 +433,7 @@ function do_proccess_images($stream) {
 	}
 }
 
-function do_update_wiki_page($wgTitle, $wikiText, $ns = null, $forceUpdate=false) {
-	global $botUserName;
-	if (!is_object($wgTitle)) {	
-		$wgTitle = Title :: makeTitle($ns, $wgTitle);
-	}
-	//make sure the text is utf8 encoded: 
-	$wikiText = utf8_encode($wikiText);
-	
-	$wgArticle = new Article($wgTitle);
-	if(!mvDoMvPage($wgTitle, $wgArticle, false)){
-		print "bad title: ".$wgTitle->getDBkey()." no edit";
-		if($wgTitle->exists()){
-			print "remove article";			
-			$wgArticle->doDeleteArticle( 'bad title' );		
-		}
-		//some how mvdIndex and mvd pages got out of sync do a seperate check for the mvd: 
-		if(MV_Index::getMVDbyTitle($wgArticle->mTitle->getDBkey())!=null){
-			print ', rm mvd';
-			MV_Index::remove_by_wiki_title($wgArticle->mTitle->getDBkey());			
-		}
-		print "\n";
-		return ;		
-	}		
-	if ($wgTitle->exists()) {			
-		//if last edit!=mvBot skip (don't overwite peoples improvments') 
-		$rev = & Revision::newFromTitle($wgTitle);
-		if( $botUserName!= $rev->getRawUserText()){
-			print ' skiped page edited by user:'.$rev->getRawUserText()."\n";
-			if(!$forceUpdate)return ;
-		}
-		//proc article:		
-		$cur_text = $wgArticle->getContent();
-		//if its a redirect skip
-		if(substr($cur_text, 0, strlen('#REDIRECT') )=='#REDIRECT'){
-			print ' skiped page moved by user:'.$rev->getRawUserText()."\n";
-			if(!$forceUpdate)return ;
-		}
-		//check if text is identical: 		
-		if (trim($cur_text) == trim($wikiText)) {						
-			if(!$forceUpdate)return ;
-		}
-	}
-	//got here do the edit: 	
-	$sum_txt = 'metavid bot insert';	
-	$wgArticle->doEdit($wikiText, $sum_txt);
-	print "did edit on " . $wgTitle->getDBkey() . "\n";
-	//die;
-}
+
 //given a stream name it pulls all metavid stream data and builds semantic wiki page
 function mv_semantic_stream_desc(& $mvTitle, & $stream) {
 	global $start_time, $end_time;

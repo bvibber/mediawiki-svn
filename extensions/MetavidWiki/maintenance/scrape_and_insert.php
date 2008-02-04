@@ -44,21 +44,11 @@ exit();
 	}
  }
 
-/*
- * set up the user:
- */
-$userName = 'mvBot';
-$wgUser = User::newFromName( $userName );
-if ( !$wgUser ) {
-	print "Invalid username\n";
-	exit( 1 );
-}
-if ( $wgUser->isAnon() ) {
-	$wgUser->addToDatabase();
-}
+
 
 class MV_CspanScraper extends MV_BaseScraper{	
-	var $base_url = 'http://www.c-spanarchives.org/congress/?q=node/69850';
+	var $base_url = 'http://www.c-spanarchives.org/congress/';
+	var $base_query = '?q=node/69850';
 	function procArguments(){
 		global $options, $args;		
 		if( !isset($options['stream_name']) && !isset($options['s'])){				
@@ -86,7 +76,7 @@ class MV_CspanScraper extends MV_BaseScraper{
 			}
 			$hors =  (strpos($stream->name, 'house')!==false)?'h':'s';
 			$date_req = date('Y-m-d', $stream->date_start_time);
-			$cspan_url = $this->base_url . '&date='.$date_req.'&hors='.$hors;
+			$cspan_url = $this->base_url .$this->base_query .  '&date='.$date_req.'&hors='.$hors;
 			echo $cspan_url . "\n";			
 			$rawpage = $this->doRequest($cspan_url);		
 			//get the title and href if present:
@@ -141,9 +131,9 @@ class MV_CspanScraper extends MV_BaseScraper{
    				//	die;
    				//}   				
 		   	}  
-		   	//don't add people if they show up for less than 1 min 		
+		  	//list on screen times for everyone: 
 		   	foreach($g_row_matches as $row){
-		   		print $row['Spoken_by'] . ' on screen for '. ($row['end_time']-$row['start_time']) . "\n";
+		   		//print $row['Spoken_by'] . ' on screen for '. ($row['end_time']-$row['start_time']) . "\n";
 		   		$db_person_ary[]=$row;
 		   	}
 		   	
@@ -151,28 +141,50 @@ class MV_CspanScraper extends MV_BaseScraper{
 			//die;
 	
 		   	//count($cspan_person_ary)	
-		   	$cur_db_inx=0;	   		
+		   	$cur_db_inx=0;	   	
+		   	$cur_person=null;	
 		   	$fistValid=true;	   		 
-		   	for($i=0;$i<10;$i++){
-		   		print "looking at: ". $cspan_person_ary[$i]['Spoken_by'] . "\n";
-		   		print "\tCSPAN: ". $cspan_person_ary[$i]['Spoken_by'] . ' on screen for '. $cspan_person_ary[$i]['length'].' or:'.ntp2seconds($cspan_person_ary[$i]['length']). "\n";
-		   		//set up the next and prev pointers: 
-		   		if(isset($cspan_person_ary[$i+1])){
-		   			$next_person = (mv_is_valid_person($cspan_person_ary[$i+1]['Spoken_by']))?
-		   				$cspan_person_ary[$i+1]['Spoken_by']:null;
-		   		}else{
-		   			$next_person=null;
-		   		}
-		   		if(isset($cspan_person_ary[$i-1])){
-			   		$prev_person = (mv_is_valid_person($cspan_person_ary[$i-1]['Spoken_by']))?
-			   			$cspan_person_ary[$i-1]['Spoken_by']:null;		
-		   		}else{
-		   			$prev_person=null;
-		   		}		   			 		   	
+		   	for($i=0;$i<count($cspan_person_ary);$i++){
+		   		//print "looking at: ". $cspan_person_ary[$i]['Spoken_by'] . "\n";
+		   		//print "\tCSPAN: ". $cspan_person_ary[$i]['Spoken_by'] . ' on screen for '. $cspan_person_ary[$i]['length'].' or:'.ntp2seconds($cspan_person_ary[$i]['length']). "\n";
+		   		//set up cur, the next and prev pointers: 
+		   		$cur_person = $cspan_person_ary[$i]['Spoken_by'];
 		   		
-		   		
+	   			//make sure next is not the same as current: 
+	   			//note: we don't group above since the same person can give two subsequent different speeches 
+	   			$next_person=$cur_person;
+	   			$k_person_inx=1;
+	   			$person_insert_set = array();
+	   			while($next_person==$cur_person){
+	   				if(isset($cspan_person_ary[$i+$k_person_inx])){
+		   				$potential_next_person = (mv_is_valid_person($cspan_person_ary[$i+$k_person_inx]['Spoken_by']))?
+		   					$cspan_person_ary[$i+$k_person_inx]['Spoken_by']:null;
+						if($potential_next_person==null && $k_person_inx==1){
+							$next_person=null;
+							break;
+						}else if($potential_next_person!=null){
+							$next_person=$potential_next_person;
+						}				   				
+		   				$k_person_inx++;		   				
+	   				}else{
+	   					$next_person=null;
+	   				}
+	   			}		   			
+	   			//should be no need to make sure prev is not the same as current (as we do greedy look ahead below) 
+	   			//$prev_person = $cur_person;
+	   			//$k=1;
+	   			//while($prev_person==$cur_person){
+	   				if(isset($cspan_person_ary[$i-1])){		   		
+			   			$prev_person = (mv_is_valid_person($cspan_person_ary[$i-1]['Spoken_by']))?
+			   				$cspan_person_ary[$i-1]['Spoken_by']:null;	
+			   		}else{
+	   					$prev_person=null;
+	   				}		
+	   			//}		   			   			 		   	
+
 		   		if(mv_is_valid_person($cspan_person_ary[$i]['Spoken_by'])){		   					   		
-		   			print "\tis valid person looking for db sync\n";
+		   			//print "\tis valid person looking for db sync\n";
+		   			//print "\t prev: $prev_person cur: $cur_person next: $next_person\n";
 		   			if($prev_person==null && $next_person==null){
 		   				print "error both prev and next are null skiping person\n";		   			
 		   				continue;
@@ -180,58 +192,161 @@ class MV_CspanScraper extends MV_BaseScraper{
 		   			
 		   			//check how long they where on screen (also check subquent)
 		   			$cspan_on_screen_time=ntp2seconds($cspan_person_ary[$i]['length']);
-		   			print "$cur_db_inx " . count($db_person_ary);
-		   			for($j=$cur_db_inx;$j<count($db_person_ary);$j++){		
-						print "searchig db on: " . $db_person_ary[$j]['Spoken_by'] . "!=" . $cspan_person_ary[$i]['Spoken_by'] . " \n";
+		   					   		
+		   			//print "NOW STARTING AT: $cur_db_inx of " . count($db_person_ary) . "\n";
+		   			for($j=$cur_db_inx;$j<count($db_person_ary);$j++){				   				
+						//print "searchig db on: " . $db_person_ary[$j]['Spoken_by'] . "!=" . $cspan_person_ary[$i]['Spoken_by'] . " \n";
 	   					$prevMatch=$curMatch=$nextMatch=false;
 	   					if($cur_db_inx==0 || $prev_person==null){
 	   						//no need to check prev in db_inx
 	   						$prevMatch=true;
-	   						print "(no back check)";
+	   					//	print "(no back check)";
 	   					}else{
 		   					if($db_person_ary[$j-1]['Spoken_by'] ==$prev_person){
-								print "found prev match: $prev_person\n;";	
+							//	print "found prev match: $prev_person\n;";	
 								$prevMatch=true;								
 		   					}
 	   					}
 	   					if($db_person_ary[$j]['Spoken_by']==$cspan_person_ary[$i]['Spoken_by']){
-							print "found cur match:". $cspan_person_ary[$i]['Spoken_by']."\n";
+						//	print "found cur match:". $cspan_person_ary[$i]['Spoken_by']."\n";
 							$curMatch=true;
 	   					}	   	
 	   					if($next_person==null){
 	   						//no need to check next in db_inx
 	   						$nextMatch=true;
-	   						print "(no next check)";
+	   					//	print "(no next check)";
 	   					}else{				
 							if($db_person_ary[$j+1]['Spoken_by']==$next_person){
-								print "found next match:".$next_person."\n";
+							//	print "found next match:".$next_person."\n";
 								$nextMatch=true;
 							}								
 	   					}
+	   					//if we have a match set do insert proc:
 	   					if($prevMatch && $curMatch && $nextMatch){
-	   						print "\nFOUND TRIPILE on $j\n";
+	   						//print "FOUND Match on $j\n";
+	   						//print "\t prev: $prev_person cur: $cur_person next: $next_person\n";
 	   						$cur_db_inx=$j;
+	   						//add all additional info we can from c-span: 
+	   						//also push forward for all of current (we should always hit the first series of the same person first )
+	   						$k=0;	   						
+	   						//build insert set:
+	   						$cur_start_time = $db_person_ary[$j]['start_time'];
+	   						while($cur_person==$cspan_person_ary[$i+$k]['Spoken_by']){	   							   							  						
+	   							//use the last cspan_person for start case	   							
+	   							$cspan_person_ary[$i+$k]['wiki_start_time']=$cur_start_time;
+		   						if(ntp2seconds($cspan_person_ary[$i+$k]['length']) > 
+	   									$db_person_ary[$j]['end_time']-$cur_start_time){
+		   								$cspan_person_ary[$i+$k]['wiki_end_time'] =$db_person_ary[$j]['end_time'];
+		   								//already used up our db_person_ary continue: 
+		   								print "a cspan insert sync " . 
+											' '. $cspan_person_ary[$i+$k]['wiki_start_time']. " to " .
+											$cspan_person_ary[$i+$k]['wiki_end_time']. " of " . 
+											$db_person_ary[$j]['end_time'] . " for: " .
+											$cspan_person_ary[$i]['Spoken_by'] . "\n";	
+		   								break;
+	   							}else{
+	   									$cspan_person_ary[$i+$k]['wiki_end_time'] =$cur_start_time+
+	   												ntp2seconds($cspan_person_ary[$i+$k]['length']);
+	   									//print "add " . ntp2seconds($cspan_person_ary[$i+$k]['length']) . "\n";
+	   									$cur_start_time+=ntp2seconds($cspan_person_ary[$i+$k]['length']);
+	   							} 	 
+	   							print "p cspan insert sync " . 
+										' '. $cspan_person_ary[$i+$k]['wiki_start_time']. " to " .
+										$cspan_person_ary[$i+$k]['wiki_end_time']. " of " . 
+										$db_person_ary[$j]['end_time'] . " for: " .
+											$cspan_person_ary[$i]['Spoken_by'] . "\n";	  			
+	   							//print_r($db_person_ary[$j]);
+	   							//print_r($cspan_person_ary[$i+$k]);									
+	   							$k++;
+	   							if(!isset($cspan_person_ary[$i+$k]))break;
+	   						}	   	
+	   						$k--;
+	   						//extend the last property if within 100 seconds
+	   						if(abs($cspan_person_ary[$i+$k]['wiki_end_time']-$db_person_ary[$j]['end_time'])<100){
+	   							$cspan_person_ary[$i+$k]['wiki_end_time']=$db_person_ary[$j]['end_time'];	   			
+	   							print "updated cspan insert for: ". $cspan_person_ary[$i]['Spoken_by'] . 
+										' '. $cspan_person_ary[$i+$k]['wiki_start_time']. " to " .
+										$cspan_person_ary[$i+$k]['wiki_end_time']. " of " . 
+										$db_person_ary[$j]['end_time'] . "\n";
+	   						}	 
+	   						$k++;
+//	   						/die;
+	   						//move the index to the current: 
+	   						$i=$i+$k;
+	   						continue;
 	   					}				   						   				
-		   			}
-		   			
-		   			
-		   			//while($cspan_person_ary[$i+$j]['Spoken_by']==$cspan_person_ary[$i]['Spoken_by']){
-		   			//	$cspan_on_screen_time+=ntp2seconds($cspan_person_ary[$i]['length']);
-		   			//	$j++;
-		   			//}
-		   			//if on screen more than 120 our proccess really should have tagged them:
-		   			//if($cspan_on_screen_time>120){
-		   				//
-		   			//}
-		   			
-		   			/*
-		   				
-		   			}*/	
-		   			//set the first valid flag back; 
+		   			}		    
 		   		}else{
-		   			print $cspan_person_ary[$i]['Spoken_by'] . " is not valid person\n";
+		   			//print $cspan_person_ary[$i]['Spoken_by'] . " is not valid person\n";
+		   		}		   		
+		   	}	
+		   	print "Get Additonal C-SPAN Data For \"synced\" Data:\n";
+		   	foreach($cspan_person_ary as $pData){
+		   		if(isset($pData['wiki_start_time'])){
+		   			//print_r($pData);
+		   			print $this->base_url . $pData['href'] ."\n";
+		   			$rawpage = $this->doRequest($this->base_url . $pData['href']) . "\n";
+		   			preg_match('/<\/a><\/center><\/td><th><center>([^<]*)/', $rawpage, $title_matches);
+		   			preg_match('/<table width="400">\n<tr><td>\n(.*)<\/tr><\/td>/',$rawpage, $page_matches);
+		   			if(isset($title_matches[1]) && isset($page_matches[1])){
+		   				$title = $title_matches[1];
+		   				$body = $page_matches[1];
+		   				//print_r($page_matches);
+		   			}else{
+		   				die("error can't find title or body\n");
+		   			}
+		   			//replace '' with ``
+		   			$body = str_replace('\'\'', '``', $body);
+		   			//replace H.R # with [[Catgory:: H.R #]]
+		   			$bill_pattern = '/(H\.R\.\s[0-9]+)/';
+		   			preg_match_all($bill_pattern, $body, $bill_matches);
+		   			$bill_categories=array();
+		   			if(isset($bill_matches[1])){
+		   				foreach($bill_matches[1] as $bill_name){		   					
+		   					$bill_categories[$bill_name]=$bill_name;
+		   				}
+		   			}		 
+		   			$body = preg_replace($bill_pattern, '[[Mentions Bill:=$1]]', $body);
+		   			$body.="\n\n";
+		   			//title fix hack for C-span error motion to procceed 
+		   			//@@todo add in the rest of the motions:		   			
+		   			if(strpos($title,'MOTION TO PROCEED')!==false){
+		   				$title = str_replace('MOTION TO PROCEED','', $title);
+		   				$body.="[[Bill Motion:=MOTION TO PROCEED]]\n";
+		   			}
+		   			$body="===$title===\n". $body;
+		   			$body.="[[Category:$title]]\n";
+		   			
+		   			foreach($bill_categories as $bill){
+		   				$body.="[[Category:$bill]] ";
+		   			}
+		   			$body.='[[Speach by:='.$pData['Spoken_by'].'| ]] ';
+		   			$title_str = 'thomas_en:'.$stream->name.'/'.
+		   				seconds2ntp($pData['wiki_start_time']).'/'.
+		   				seconds2ntp($pData['wiki_end_time']);
+		   						   				
+		   			$cspanTitle=Title::makeTitle(MV_NS_MVD, ucfirst($title_str));
+		   			 
+		   			//add title category
+		   			//print "do insert ".$cspanTitle->getText()." \n";
+		   			do_update_wiki_page($cspanTitle, $body);		   				
+		   			//[Page: S14580] replaced with:  [[Category:BillName]]
+		   			//would be good to link into the official record for "pages"
+		   			
+		   			//[[speach by:=name]]
+		   			//[[category:=title]]
+		   			
+		   			//for documentation: 
+		   			//semantic qualities would be Aruging For:billX or Arguging Agaist billY
+		   			
+		   			//these pages are non-editable 
+		   			//maybe put the category info into annotations layer? (since it applies to both?)
+		   			
+		   			
+		   			//do new page mvd:or_
+		   			//die;
 		   		}
-		   	}		   
+		   	}	   
 		   	
 		   	//$inx_cspan_person_ary = array_keys($g_row_matches);
 		   	//$inx_row_person_ary = array_keys($g_person_time_ary);

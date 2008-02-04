@@ -102,65 +102,56 @@ class MV_SpecialExport {
 		header('Content-Type: text/xml');
 		//print the header:
 		print '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
-?>
-<!DOCTYPE cmml SYSTEM "cmml.dtd">
-<cmml lang="en" id="simple">	
-	<stream id="<?=$this->stream_name?>" basetime="0">
-		<import id="videosrc" lang="en" title="<?=$streamTitle->getStreamNameText()?>" 
-			granulerate="25/1" contenttype="video/theora" 
-		src="<?=$streamTitle->getWebStreamURL()?>" start="0" end="60">
-			<param id="vheight" name="video.height" value="320"/>
-			<param id="vwidth"  name="video.width"  value="240"/>
-		</import>
-		<img id="stream_img" src="<?=htmlentities($streamTitle->getStreamImageURL())?>"/>
-		<a id="stream_link" href="<?=htmlentities($wgTitle->getFullURL() )?>"/>
-	</stream>	
-	<head>
-		<title><?=$streamTitle->getTitleDesc()?></title>
-	</head>
-<?
+	$tracks=array();
 	if(count($dbr->numRows($mvd_res))!=0){ 
 		global $wgOut;
+			//use catapiller for logo
 		$MV_Overlay = new MV_Overlay();	
 		$wgOut->clearHTML();	
 		while($mvd = $dbr->fetchObject($mvd_res)){	
 			$MV_Overlay->get_article_html($mvd);	
-			/*$curTitle = Title::newFromText($mvd->wiki_title, MV_NS_MVD);
-			$curArticle=new Article($curTitle);
-			*/
-			//print_r($curArticle->getContent() );
-			?>
-		<clip id="mvd_<?=$mvd->id?>" start="ntp:<?=seconds2ntp($mvd->start_time)?>" end="ntp:<?=seconds2ntp($mvd->end_time)?>">
-		<?
-			//format output based on type:
-			//@@TODO make absolute links: 			
-			switch($mvd->mvd_type){
-				case 'Ht_en':				
-					?>
-					<caption><![CDATA[
-					<?=$wgOut->getHTML();?>
-					]]></caption>
-					<?
-				break;
-				case 'Anno_en':				
-					?>								
-					<desc><![CDATA[
-						<?=$wgOut->getHTML();?>
-					]]></desc><?
-				break;
-			}
+			if(!isset($tracks[$mvd->mvd_type]))$tracks[$mvd->mvd_type]='';			
+			$tracks[$mvd->mvd_type].='						
+			<clip id="mvd_'.$mvd->id.'" start="ntp:'.seconds2ntp($mvd->start_time).'" end="ntp:'.seconds2ntp($mvd->end_time).'">
+			<img src="'.htmlentities($streamTitle->getStreamImageURL(null, seconds2ntp($mvd->start_time))).'"/>
+			<body><![CDATA[
+					'.$wgOut->getHTML().'
+				]]></body> 
+			</clip>';			 					
 			//clear wgOutput
 			$wgOut->clearHTML();
-?>
-</clip>
-<?
 		}
-	}
-?>	
-</cmml>
+	}		
+	//based on: http://trac.annodex.net/wiki/CmmlChanges
+?>
+<!DOCTYPE omdl SYSTEM "omdl.dtd">
+<omdl>
+	<stream id="<?=$this->stream_name?>" basetime="0">
+			<import id="videosrc" lang="en" title="<?=$streamTitle->getStreamNameText()?>" 
+				 contenttype="video/ogg" 
+			src="<?=$streamTitle->getWebStreamURL()?>" start="0" end="60">
+				<param id="vheight" name="video.height" value="320"/>
+				<param id="vwidth"  name="video.width"  value="240"/>
+			</import>		
+	</stream>	
 <?
-exit;
-}
+	foreach($tracks as $role=>$body_string){
+?>
+<cmml lang="en" id="simple" role="<?=$role?>">		
+	<head>
+		<title><?=wfMsg($role)?></title>
+		<img id="stream_img" src="<?=htmlentities($streamTitle->getStreamImageURL())?>"/>
+		<link rel="alternate" type="text/html" id="stream_link" href="<?=htmlentities($wgTitle->getFullURL() )?>"/>		
+	</head>
+	<?=$body_string?>
+	</cmml>
+<?
+	}
+	?>
+	</omdl>
+	<?
+	exit;
+	}
 	// @@todo integrate cache query (similar to SpecialRecentChanges::rcOutputFeed ))
 	function get_category_feed(){
 		global $wgSitename, $wgRequest, $wgOut, $wgCategoryPagingLimit;		

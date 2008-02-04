@@ -102,6 +102,7 @@
 	function getTypeMarker() {return $this->type_marker;}
 	function getWikiTitle(){ return $this->wiki_title;}
 	function getStartTime(){ return $this->start_time;}
+	function getTimeRequest(){ return $this->start_time.'/'.$this->end_time;}
 	function getEndTime(){ return $this->end_time;}
 	function getMwTitle(){return Title::MakeTitle(MV_NS_MVD, $this->wiki_title);}
 	

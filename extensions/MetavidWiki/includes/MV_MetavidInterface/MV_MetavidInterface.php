@@ -77,13 +77,13 @@
 		$this->components['MV_Overlay']->setReq('Recentchanges');
  	}*/
  	function setupStreamView(){
- 		global $mvgIP, $mvDefaultStreamViewLength, $wgOut; 		
+ 		global $mvgIP, $mvDefaultStreamViewLength, $wgOut,$mvgScriptPath,$wgUser; 		
  		//add in full title var: 
- 		$wgOut->addScript("<script type= \"text/javascript\">".'/*<![CDATA[*/'." 		
+ 		$wgOut->addScript("<script type=\"text/javascript\">".'/*<![CDATA[*/'." 		
  		var mvTitle = '{$this->article->mvTitle->getWikiTitle()}'; \n".
  		'/*]]>*/</script>'."\n");
  	
- 		//set defaults if null
+ 		//set default time range if null time range request
  		$this->article->mvTitle->setStartEndIfEmpty(
  			seconds2ntp(0), 
  			seconds2ntp($mvDefaultStreamViewLength));
@@ -101,6 +101,16 @@
 			' <span id="mv_stream_time">'.$this->article->mvTitle->getTimeDesc() . '</span>'.
 			$this->components['MV_Tools']->stream_paging_links('next') . 			
 		'</span>';	
+		
+		//add export cmml icon
+		$this->page_header.='<span id="cmml_link"/>';
+			$sTitle = Title::makeTitle(NS_SPECIAL, 'MvExportStream');	
+			$sk = $wgUser->getSkin();
+			$this->page_header.= $sk->makeKnownLinkObj($sTitle,
+				'<img style="width:28px;height:28px;" src="'.$mvgScriptPath . '/skins/images/Feed-icon_cmml_28x28.png">',
+				'feed_format=cmml&stream_name='.$this->article->mvTitle->getStreamName().'&t='.$this->article->mvTitle->getTimeRequest(),
+				'','','title="'.wfMsg('mv_export_cmml').'"');
+		$this->page_header.='</span>';
 
 		
 		$this->page_title = $this->article->mvTitle->getStreamNameText().' '.$this->article->mvTitle->getTimeDesc();

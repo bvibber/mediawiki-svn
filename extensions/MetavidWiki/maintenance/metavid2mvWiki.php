@@ -18,6 +18,9 @@ $cur_path = $IP = dirname(__FILE__);
 //include commandLine.inc from the mediaWiki maintance dir: 
 require_once ('../../../maintenance/commandLine.inc');
 require_once ('metavid2mvWiki.inc.php');
+
+//include util functions: 
+require_once('maintenance_util.inc.php');
 /*
  * assume the wiki user has access to the metavid table and that the
  * metavid table is titled `metavid`
@@ -197,18 +200,6 @@ actions:
 
 EOT;
 	exit ();
-}
-/*
- * set up the user:
- */
-$botUserName = 'MvBot';
-$wgUser = User :: newFromName($botUserName);
-if (!$wgUser) {
-	print "Invalid username\n";
-	exit (1);
-}
-if ($wgUser->isAnon()) {
-	$wgUser->addToDatabase();
 }
 
 /*

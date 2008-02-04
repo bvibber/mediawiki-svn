@@ -84,6 +84,8 @@ $messages['en'] = array(
 	'ht_en_desc'   => 'English transcripts. This overlay type is for text which spoken in the video stream. Links can be added, but all text should be what is spoken in the video stream.',
 	'anno_en'      => 'Annotations and Categories',
 	'anno_en_desc' => 'English categorizations and annotations. This overlay can be used to \"tag\"/Categorize sections of video or to add annotative information that is not spoken text',
+	'thomas_en'	   => 'Official Transcript',
+	'thomas_en_desc'=>'Official Thomas Transcript from the governments THOMAS record service. Source time synced by C-SPAN\'s c-spanarchives.org',
 
 	'mv_data_page_title' => '$1 for $2 from $3',
 	'mv_time_separator'  => '$1 to $2',
