@@ -17,6 +17,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Contributionseditcount',
 	'version' => '2008-01-11',
 	'description' => 'Displays an edit count on Special:Contributions',
+	'descriptionmsg' => 'contributionseditcount-desc',
 	'author' => 'Ævar Arnfjörð Bjarmason',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Contributionseditcount',
 );

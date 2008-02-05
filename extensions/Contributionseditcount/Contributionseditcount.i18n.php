@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'contributionseditcount'  =>  'This user has $1 edits.',
+	'contributionseditcount-desc' => 'Displays an edit count on [[Special:Contributions]]',
 );
 
 $messages['ar'] = array(
@@ -45,6 +46,7 @@ $messages['fi'] = array(
 
 $messages['fr'] = array(
 	'contributionseditcount' => 'Cet utilisateur a {{PLURAL:$1|$1 édition|$1 éditions}}.',
+	'contributionseditcount-desc' => 'Affiche un compteur d’éditions sur la page [[Special:Contributions]]',
 );
 
 $messages['gl'] = array(
