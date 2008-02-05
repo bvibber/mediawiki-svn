@@ -74,9 +74,12 @@ $messages['br'] = array(
 	'block_title_error'            => "Ho tigarez met n'eo ket aotreet enrollañ titl ar pennad-mañ.",
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
 	'block_title_error_page_title' => 'Sperre Seitenname',
+	'block_title_error-desc'       => 'Stellt eine einfache Möglichkeit bereit, die Erstellung von Seiten mit bestimmten Titeln zu verhindern.',
 	'block_title_error'            => 'Entschuldigung, aber eine Seite mit diesem Namen darf nicht gespeichert werden.',
 );
 

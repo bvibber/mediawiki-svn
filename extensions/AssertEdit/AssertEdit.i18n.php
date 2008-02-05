@@ -54,9 +54,12 @@ $messages['br'] = array(
 	'assert_edit_message' => "C'hwitet eo an enframmadenn goulennet.",
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
 	'assert_edit_title'   => 'Anspruch fehlgeschlagen',
+	'assert_edit_desc'    => 'Ergänzt Bearbeitungs-Anspruch für Bots',
 	'assert_edit_message' => 'Der angegebene Anspruch ($1) ist fehlgeschlagen.',
 );
 

@@ -198,12 +198,16 @@ $messages['cs'] = array(
 	'badimages-subheading' => 'Aktuální položky',
 );
 
-/* German (Raymond) */
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
 	'badimages'                => 'Liste unerwünschter Bilder',
+	'badimages-desc'           => 'Erweitert die Einsatzmöglichkeiten der Liste unerwünschter Bilder in MediaWiki',
 	'badimages-add-btn'        => 'Füge hinzu',
 	'badimages-added'          => '$1 wurde der Liste hinzugefügt',
 	'badimages-count'          => "Die Liste unerwünschter Bilder enthält '''$1''' Einträge",
+	'badimages-name'           => 'Name:',
 	'badimages-not-added'      => 'Das Bild konnte nicht hinzugefügt werden.',
 	'badimages-not-removed'    => 'Das Bild konnte nicht entfernt werden.',
 	'badimages-reason'         => 'Grund:',
@@ -217,6 +221,15 @@ $messages['de'] = array(
 	'badimages-log-header'     => 'Dies ist das Logbuch der Änderungen an der Liste unerwünschter Bilder.',
 	'badimages-log-add'        => 'fügte [[$1]] zu der Liste unerwünschter Bilder hinzu',
 	'badimages-log-remove'     => 'entfernte [[$1]] von der Liste unerwünschter Bilder',
+	'badimages-page'           => '{{ns:help}}:Liste unerwünschter Bilder',
+);
+
+/** German formal address (Deutsch - förmliche Anrede)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'badimages-remove-confirm' => 'Bitte bestätigen Sie, dass Sie $1 von der Liste entfernen möchten.',
+	'badimages-unprivileged'   => '(Sie haben keine Berechtigung, die Liste zu ändern)',
 );
 
 /** Lower Sorbian (Dolnoserbski)

@@ -8,7 +8,7 @@
 
 $messages = array();
 
-/* English
+/** English
  * @author Rob Church
  */
 $messages['en'] = array(
@@ -91,9 +91,12 @@ $messages['cs'] = array(
 	'backforth-prev' => 'Předchozí ($1)',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
 	'backforth-next' => 'Nächste ($1)',
+	'backforth-desc' => 'Ergänzt alphabetische „Nächste“- und „Vorherige“-Navigations-Links am Seitenkopf.',
 	'backforth-prev' => 'Vorherige ($1)',
 );
 

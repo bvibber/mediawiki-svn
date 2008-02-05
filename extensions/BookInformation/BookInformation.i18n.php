@@ -173,19 +173,22 @@ $messages['da'] = array(
 	'bookinfo-provider'          => 'Data leveret af: $1',
 );
 
-/* German (Raymond) */
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
-	'bookinfo-header' => 'Informationen über Bücher',
-	'bookinfo-result-title' => 'Titel:',
-	'bookinfo-result-author' => 'Autor:',
-	'bookinfo-result-publisher' => 'Verlag:',
-	'bookinfo-result-year' => 'Jahr:',
+	'bookinfo-header'            => 'Informationen über Bücher',
+	'bookinfo-desc'              => 'Ergänzt [[{{ns:Special}}:Booksources]] mit Informationen von einem Webangebot',
+	'bookinfo-result-title'      => 'Titel:',
+	'bookinfo-result-author'     => 'Autor:',
+	'bookinfo-result-publisher'  => 'Verlag:',
+	'bookinfo-result-year'       => 'Jahr:',
 	'bookinfo-error-invalidisbn' => 'ISBN ungültig.',
-	'bookinfo-error-nosuchitem' => 'Die Seite ist nicht vorhanden oder wurde nicht gefunden.',
-	'bookinfo-error-nodriver' => 'Es war nicht möglich, die entsprechende Buchinformations-Schnittstelle zu initialisieren.',
-	'bookinfo-error-noresponse' => 'Keine Antwort oder Zeitüberschreitung.',
-	'bookinfo-purchase' => 'Dieses Buch kann von $1 bezogen werden.',
-	'bookinfo-provider' => 'Daten-Lieferant: $1',
+	'bookinfo-error-nosuchitem'  => 'Die Seite ist nicht vorhanden oder wurde nicht gefunden.',
+	'bookinfo-error-nodriver'    => 'Es war nicht möglich, die entsprechende Buchinformations-Schnittstelle zu initialisieren.',
+	'bookinfo-error-noresponse'  => 'Keine Antwort oder Zeitüberschreitung.',
+	'bookinfo-purchase'          => 'Dieses Buch kann von $1 bezogen werden.',
+	'bookinfo-provider'          => 'Daten-Lieferant: $1',
 );
 
 $messages['el'] = array(

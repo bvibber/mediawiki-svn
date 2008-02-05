@@ -8,7 +8,7 @@
 
 $messages = array();
 
-/* English
+/** English
  * @author Rob Church
  */
 $messages['en'] = array(
@@ -123,6 +123,32 @@ An dra-se a c'hall kargañ ar servijer spontus, setu n'emañ ket da vezañ impli
 $messages['cs'] = array(
 	'asksql'          => 'SQL dotaz',
 	'querysuccessful' => 'Dotaz byl úspěšně dokončen',
+);
+
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'asksql'          => 'SQL-Abfragen',
+	'asksql-desc'     => 'SQL-Abfragen über eine [[Special:Asksql|Spezialseite]] durchführen.',
+	'asksqltext'      => "Benutze das Formular, um direkte Abfragen an die Datenbank durchzuführen.
+Benutze einfache Anführungszeichen ('wie diese'), um Zeichenketten zu trennen.
+Die Abfragen können die Server sehr stark belasten, deshalb nutze die Funktion mit Bedacht.",
+	'sqlislogged'     => 'Bitte beachte, dass alle Abfragen dokumentiert werden.',
+	'sqlquery'        => 'Abfrage eingeben',
+	'querybtn'        => 'Abfrage durchführen',
+	'selectonly'      => 'Es sind nur reine Lesezugriffe erlaubt.',
+	'querysuccessful' => 'Abfrage erfolgreich',
+);
+
+/** German - formal adress (Deutsch - förmlich)
+ * @author Raimond Spekking
+ */
+$messages['de-formal'] = array(
+	'asksqltext'      => "Benutzen Sie das Formular, um direkte Abfragen an die Datenbank durchzuführen.
+Benutzen Sie einfache Anführungszeichen ('wie diese'), um Zeichenketten zu trennen.
+Die Abfragen können die Server sehr stark belasten, deshalb nutzen Sie die Funktion mit Bedacht.",
+	'sqlislogged'     => 'Bitte beachten Sie, dass alle Abfragen dokumentiert werden.',
 );
 
 /** Greek (Ελληνικά)
