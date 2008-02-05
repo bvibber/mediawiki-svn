@@ -45,7 +45,7 @@ function efInputBoxRender( $input, $params, $parser ) {
 }
 
 class Inputbox {
-	var $type, $width, $preload, $editintro, $br, $comment;
+	var $type, $width, $preload, $editintro, $br;
 	var $defaulttext,$bgcolor,$buttonlabel,$searchbuttonlabel;
 	var $hidden, $namespaces;
 
@@ -178,7 +178,7 @@ ENDFORM;
 	function getCreateForm() {
 		global $wgScript;	
 
-		$action = htmlspecialchars( $wgScript );		
+		$action = htmlspecialchars( $wgScript );
 		if($this->type=="comment") {
 			$comment='<input type="hidden" name="section" value="new" />';
 			if(!$this->buttonlabel) {
@@ -194,7 +194,6 @@ ENDFORM;
 		$bgcolor = htmlspecialchars( $this->bgcolor );
 		$preload = htmlspecialchars( $this->preload );
 		$editintro = htmlspecialchars( $this->editintro );
-		$comment = htmlspecialchars( $this->comment );
 		$defaulttext = htmlspecialchars( $this->defaulttext );
 		$buttonlabel = htmlspecialchars( $this->buttonlabel );
 
