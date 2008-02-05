@@ -20,7 +20,9 @@ $messages['en'] = array(
 	'passwordreset-disableuser' => 'Disable User Account?',
 	'passwordreset-disableuserexplain' => '(sets an invalid password hash - user can\'t login)',
 	'passwordreset-disablesuccess' => 'User account has been disabled (user_id: $1)',
-	'passwordreset-accountdisabled' => 'Account has been disabled'
+	'passwordreset-accountdisabled' => 'Account has been disabled',
+	'disabledusers' => 'Disabled users',
+	'disabledusers-summary' => 'This is a list of users that have been disabled via PasswordReset.',	
 );
 
 $messages['af'] = array(

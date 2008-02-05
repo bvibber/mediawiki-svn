@@ -15,7 +15,6 @@ class PasswordReset extends SpecialPage
 {
         function PasswordReset() {
                 SpecialPage::SpecialPage("PasswordReset","passwordreset");
-                self::loadMessages();
         }
  
         function execute( $par ) {
@@ -154,16 +153,7 @@ class PasswordReset extends SpecialPage
 				return $message;
         }
  
-        function loadMessages() {
-                static $messagesLoaded = false;
-                global $wgMessageCache;
-                if ( $messagesLoaded ) return true;
-                $messagesLoaded = true;
-                 wfLoadExtensionMessages('PasswordReset');
-		return true;
-        }
-		
-		function GetBlockedStatus(&$user) {
+		static function GetBlockedStatus(&$user) {
 			global $wgTitle;
 			
 			if ($wgTitle->isSpecial('Userlogin')) {

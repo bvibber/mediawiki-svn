@@ -14,21 +14,24 @@ $wgExtensionCredits['specialpage'][] = array(
     'url'=>'http://www.mediawiki.org/wiki/Extension:Password_Reset',
     'author'=>'Tim Laqua',
     'description'=>"Resets Wiki user's passwords - requires 'passwordreset' privileges",
-    'version'=>'1.5'
+    'version'=>'1.6'
 );
 
 $wgAutoloadClasses['PasswordReset'] = dirname(__FILE__) . '/PasswordReset_body.php';
+$wgAutoloadClasses['Disabledusers'] = dirname(__FILE__) . '/PasswordReset_Disabledusers.php';
 $wgSpecialPages['PasswordReset'] = 'PasswordReset';
+$wgSpecialPages['Disabledusers'] = 'Disabledusers';
 $wgExtensionMessagesFiles['PasswordReset']=dirname( __FILE__ ) . '/PasswordReset.i18n.php';
-if ( version_compare( $wgVersion, '1.10.0', '<' ) ) {
-    //Extension designed for 1.10.0+, but will work on some older versions
-    //LoadAllMessages hook throws errors before 1.10.0
-} else {
-    $wgHooks['LoadAllMessages'][] = 'PasswordReset::loadMessages';
-}
 
 $wgExtensionFunctions[] = 'efPasswordReset';
 function efPasswordReset() {
 	global $wgHooks;
 	$wgHooks['GetBlockedStatus'][] = 'PasswordReset::GetBlockedStatus';
+
+	global $wgMessageCache;   
+	#Add Messages   
+	require( dirname( __FILE__ ) . '/PasswordReset.i18n.php' );   
+	foreach( $messages as $key => $value ) {   
+		  $wgMessageCache->addMessages( $messages[$key], $key );   
+	}
 }
