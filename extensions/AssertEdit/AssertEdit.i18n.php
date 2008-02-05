@@ -54,6 +54,15 @@ $messages['br'] = array(
 	'assert_edit_message' => "C'hwitet eo an enframmadenn goulennet.",
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'assert_edit_title'   => 'Předpoklad selhal',
+	'assert_edit_desc'    => 'Přidává předpoklady pro úpravy, které využijí boti',
+	'assert_edit_message' => 'Uvedený předpoklad ($1) selhal.',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -192,6 +201,7 @@ $messages['kk-latn'] = array(
  */
 $messages['li'] = array(
 	'assert_edit_title'   => 'Bevestiging mislukdj.',
+	'assert_edit_desc'    => 'Maak rolbevestiginge meugelik veur gebroek door bots',
 	'assert_edit_message' => 'De gevraogdje bevestiging ($1) mislukdje.',
 );
 

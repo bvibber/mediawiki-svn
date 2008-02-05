@@ -223,7 +223,8 @@ $messages['lb'] = array(
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
-	'deletedcontributions' => 'Gewisdje gebroekersbiedraag',
+	'deletedcontributions'      => 'Gewisdje gebroekersbiedraag',
+	'deletedcontributions-desc' => "Guf sysops de meugelikheid óm [[Special:DeletedContributions|gewisde biedraag van 'ne gebroeker te bekieke]]",
 );
 
 /** Lumbaart (Lumbaart)

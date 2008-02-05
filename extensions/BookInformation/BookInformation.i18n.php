@@ -491,6 +491,7 @@ $messages['lb'] = array(
  */
 $messages['li'] = array(
 	'bookinfo-header'            => 'Boke informatie',
+	'bookinfo-desc'              => "Oetbreijing veur [[Special:Booksources]] mit informatie van 'ne webservice",
 	'bookinfo-result-title'      => 'Titel:',
 	'bookinfo-result-author'     => 'Auteur:',
 	'bookinfo-result-publisher'  => 'Oetgaever:',
@@ -776,6 +777,8 @@ $messages['te'] = array(
 	'bookinfo-result-publisher'  => 'ప్రచురణకర్త:',
 	'bookinfo-result-year'       => 'సంవత్సరం:',
 	'bookinfo-error-invalidisbn' => 'తప్పుడు ISBN ఇచ్చారు.',
+	'bookinfo-error-nosuchitem'  => 'అంశం అసలు లేదు లేదా కనబడలేదు.',
+	'bookinfo-error-noresponse'  => 'ప్రతిస్పందన లేదు లేదా అభ్యర్థన కాలం చెల్లింది.',
 	'bookinfo-purchase'          => '$1 నుండి ఈ పుస్తకాన్ని కొనండి',
 );
 

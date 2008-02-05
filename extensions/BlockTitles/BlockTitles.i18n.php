@@ -74,6 +74,15 @@ $messages['br'] = array(
 	'block_title_error'            => "Ho tigarez met n'eo ket aotreet enrollañ titl ar pennad-mañ.",
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'block_title_error_page_title' => 'Títol blocat',
+	'block_title_error-desc'       => 'Ofereix una manera fàcil de prevenir la creació de pàgines amb certs títols.',
+	'block_title_error'            => 'Ho sento, no està permès editar una pàgina amb aquest títol.',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

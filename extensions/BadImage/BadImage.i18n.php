@@ -189,13 +189,29 @@ $messages['br'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Li-sung
  */
 $messages['cs'] = array(
-	'badimages-add-btn'    => 'Přidat',
-	'badimages-name'       => 'Název:',
-	'badimages-reason'     => 'Důvod:',
-	'badimages-remove-btn' => 'Odstranit',
-	'badimages-subheading' => 'Aktuální položky',
+	'badimages'                => 'Seznam špatných souborů',
+	'badimages-desc'           => 'Rozšiřuje schopnosti seznamu špatných souborů MediaWiki',
+	'badimages-add-btn'        => 'Přidat',
+	'badimages-added'          => '$1 byl přidán do seznamu',
+	'badimages-count'          => "Na seznamu špatných souborů je '''$1''' souborů.",
+	'badimages-name'           => 'Název:',
+	'badimages-not-added'      => 'Soubor nebylo možné přidat.',
+	'badimages-not-removed'    => 'Soubor nebylo možné odstranit',
+	'badimages-reason'         => 'Důvod:',
+	'badimages-remove'         => '(odstranit)',
+	'badimages-remove-btn'     => 'Odstranit',
+	'badimages-remove-confirm' => 'Prosím potvrďte odstranění $1 ze seznamu:',
+	'badimages-removed'        => '$1 byl odstraněn ze seznamu.',
+	'badimages-subheading'     => 'Aktuální položky',
+	'badimages-unprivileged'   => '(pro změnu seznamu nemáte dostatečná oprávnění)',
+	'badimages-log-name'       => 'Seznam špatných souborů',
+	'badimages-log-header'     => 'Toto je seznam změn [[{{MediaWiki:Badimages-page}}|seznamu špatných souborů]].',
+	'badimages-log-add'        => '[[$1]] byl přidán do seznamu špatných souborů',
+	'badimages-log-remove'     => '[[$1]] byl odstraněn ze seznamu špatných souborů',
+	'badimages-page'           => '{{ns:help}}:Seznam špatných souborů',
 );
 
 /** German (Deutsch)
@@ -813,11 +829,11 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'badimages'                => 'Imagens com problemas',
-	'badimages-desc'           => 'Estenda as capacidades de listagem de imagens más do MediaWiki',
+	'badimages'                => 'Lista de imagens problemáticas',
+	'badimages-desc'           => 'Estenda as capacidades de listagem de imagens problemáticas do MediaWiki',
 	'badimages-add-btn'        => 'Adicionar',
 	'badimages-added'          => '$1 foi adicionado à lista.',
-	'badimages-count'          => "Atualmente existem '''$1''' imagens na lista de imagens com problemas.",
+	'badimages-count'          => "Actualmente existem '''$1''' imagens na lista de imagens problemáticas.",
 	'badimages-name'           => 'Nome:',
 	'badimages-not-added'      => 'Não foi possível adicionar a imagem.',
 	'badimages-not-removed'    => 'Não foi possível remover a imagem.',
@@ -828,11 +844,11 @@ $messages['pt'] = array(
 	'badimages-removed'        => '$1 foi removido da lista.',
 	'badimages-subheading'     => 'Itens actuais',
 	'badimages-unprivileged'   => '(Você não possui permissões suficientes para alterar a listagem)',
-	'badimages-log-name'       => 'Registo de imagens com problemas',
-	'badimages-log-header'     => 'Este é um registo das alterações feitas na [[{{MediaWiki:Badimages-page}}|lista de imagens com problemas]].',
-	'badimages-log-add'        => 'adicionada [[$1]] na lista de imagens com problemas',
-	'badimages-log-remove'     => 'removida [[$1]] da lista de imagens com problemas',
-	'badimages-page'           => 'Lista de imagens com problemas',
+	'badimages-log-name'       => 'Registo de imagens problemáticas',
+	'badimages-log-header'     => 'Este é um registo das alterações feitas na [[{{MediaWiki:Badimages-page}}|lista de imagens problemáticas]].',
+	'badimages-log-add'        => 'adicionada [[$1]] na lista de imagens problemáticas',
+	'badimages-log-remove'     => 'removida [[$1]] da lista de imagens problemáticas',
+	'badimages-page'           => '{{ns:help}}:Lista de imagens problemáticas',
 );
 
 /** Rhaeto-Romance (Rumantsch)

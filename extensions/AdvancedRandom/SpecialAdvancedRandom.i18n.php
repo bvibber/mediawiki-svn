@@ -47,6 +47,13 @@ $messages['br'] = array(
 	'advancedrandom' => 'Moned dargouezhek araokaet',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'advancedrandom' => 'Pokročilý náhodný výběr',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

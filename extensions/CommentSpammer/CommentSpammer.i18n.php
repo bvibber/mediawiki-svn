@@ -112,12 +112,16 @@ $messages['nl'] = array(
 	'cspammer-log-page'           => 'Spamlogboek',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
 	'commentspammer-save-blocked' => 'IP-adressa di mistenkes for å være en kommentarforsøpler, så siden kan ikke lagres. [[Special:Userlogin|Logg inn eller opprett en konto]] for å unngå dette.',
-	'commentspammer-log-msg' => 'redigering på [[:$2]] av [[Special:Contributions/$1|$1]].',
+	'commentspammer-desc'         => 'Avviser endringer fra mistenkte spammere på en DNS-svarteliste.',
+	'commentspammer-log-msg'      => 'redigering på [[:$2]] av [[Special:Contributions/$1|$1]].',
 	'commentspammer-log-msg-info' => 'Sist forsøplet for $1 {{PLURAL:$1|dag|dager}} siden, trusselnivået er $2, og fornærmelseskoden er $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Se detaljer] eller [[Special:Blockip/$4|blokkert]].',
-	'cspammerlogpagetext' => 'Register over redigeringer som har blitt godtatt eller nektet basert på hvorvidt kilden var en kjent kommentarforsøpler.',
-	'cspammer-log-page' => 'Kommentarforsøplerlogg',
+	'cspammerlogpagetext'         => 'Register over redigeringer som har blitt godtatt eller nektet basert på hvorvidt kilden var en kjent kommentarforsøpler.',
+	'cspammer-log-page'           => 'Kommentarforsøplerlogg',
 );
 
 /** Occitan (Occitan)
@@ -157,6 +161,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'commentspammer-save-blocked' => 'Existuje podozrenie, že vaša IP adresa je adresa podozrivého spammera obsahu, preto stránka nebola uložená. Vyhnete sa tomu tým, že [[Special:Userlogin|sa prihlásite alebo si vytvoríte učet]].',
+	'commentspammer-desc'         => 'Odmieta úpravy od podozrivých spamerov z DNS blacklistu',
 	'commentspammer-log-msg'      => 'Úprava [[:$2]] od [[Special:Contributions/$1|$1]].',
 	'commentspammer-log-msg-info' => 'Naposledy spamoval pred $1 {{PLURAL:$1|dňom|dňami}}, úroveň ohrozenia je $2 a kód prehrešku je $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Zobraziť podrobnosti] alebo [[Special:Blockip/$4|zablokovať]].',
 	'cspammerlogpagetext'         => 'Záznam úprav, ktoré boli povolené alebo zamietnuté na základe toho, že zdroj bol známy spammer obsahu.',

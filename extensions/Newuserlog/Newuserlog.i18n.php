@@ -76,10 +76,12 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Zaheen
+ * @author Bellayet
  */
 $messages['bn'] = array(
 	'newuserlogpage'           => 'ব্যবহারকারী সৃষ্টি লগ',
 	'newuserlogpagetext'       => 'এটি নতুন ব্যবহারকারী সৃষ্টির লগ',
+	'newuserlog-byemail'       => 'শব্দচাবি ইমেইলের মাধ্যমে পাঠানো হয়েছে',
 	'newuserlog-create-entry'  => 'নতুন ব্যবহারকারী',
 	'newuserlog-create2-entry' => '$1-এর জন্য অ্যাকাউন্ট সৃষ্টি করা হয়েছে',
 );
@@ -421,6 +423,7 @@ $messages['lb'] = array(
 $messages['li'] = array(
 	'newuserlogpage'           => 'Logbook nuuj gebroekers',
 	'newuserlogpagetext'       => 'Hiej ónger saton de nuuj ingesjreve gebroekers',
+	'newuserlog-byemail'       => 'wachwaord is verzönje per e-mail',
 	'newuserlog-create-entry'  => "is 'ne nuje gebroeker",
 	'newuserlog-create2-entry' => 'haet de gebroeker [[user:$1|$1]] aangemaak',
 );
@@ -499,9 +502,13 @@ $messages['nl'] = array(
 	'newuserlog-create2-entry' => 'heeft gebruiker $1 ingeschreven',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
 	'newuserlogpage'           => 'Brukeropprettelseslogg',
 	'newuserlogpagetext'       => 'Dette er en logg over brukeropprettelser',
+	'newuserlog-byemail'       => 'passord sendt på e-post',
 	'newuserlog-create-entry'  => 'Ny bruker',
 	'newuserlog-create2-entry' => 'opprettet konto for $1',
 );
@@ -656,6 +663,7 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'newuserlogpage'           => 'కొత్త సభ్యుల లాగ్',
 	'newuserlogpagetext'       => 'ఇటీవలి కాలంలో నమోదైన సభ్యుల లాగ్ ఇది',
+	'newuserlog-byemail'       => 'ఈ-మెయిలులో సంకేతపదం పంపించాం',
 	'newuserlog-create-entry'  => 'కొత్త వాడుకరి',
 	'newuserlog-create2-entry' => '$1 కోసం ఖాతా సృష్టించాం.',
 );

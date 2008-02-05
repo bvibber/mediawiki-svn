@@ -444,25 +444,42 @@ Adkaset e viot war-du ar servijer diavaez-se a-benn 20 eilenn. [$1 Klikañ amañ
 Ur c\'hemenn surentez diwall a-zivout un testeni disin a c\'hallo dont war wel marteze.',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
 $messages['ca'] = array(
-	'boardvote'               => 'Eleccions al Consell d\'Administració de la Fundació Wikimedia',
-	'boardvote_entry'         => '* [[Special:Boardvote/vote|Voteu]]
+	'boardvote'              => "Eleccions al Consell d'Administració de la Fundació Wikimedia",
+	'boardvote-desc'         => "[[meta:Board elections|eleccions al Consell d'administració de Wikimedia]]",
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Voteu]]
 * [[Special:Boardvote/list|Llista de vots emesos]]
 * [[Special:Boardvote/dump|Dades encriptades de la votació]]',
-	'boardvote_intro_change'  => '<p>Ja heu votat. Podeu canviar el vostre vot usant el següent formulari. Marqueu aquells candidats que voleu aprovar.</p>',
-	'boardvote_entered'       => 'Gràcies, el vostre vot ha estat registrat. A continuació podeu comprovar-ne els detalls. Les dades del vostre vot són: <pre>$1</pre> Ha estat codificat mitjançant la clau pública de l\'administració electoral de Wikimedia: <pre>$2</pre> La versió encriptada resultant apareix a continuació. Serà mostrada públicament a [[Special:Boardvote/dump]]. <pre>$3</pre> [[Special:Boardvote/entry|Torna]]',
-	'boardvote_nosession'     => 'No s\'ha pogut determinar l\'identificador del vostre compte Wikimedia. Si us plau, identifiqueu-vos al projecte en el que teniu dret a vot i aneu a <nowiki>[[Special:Boardvote]]</nowiki>. Recordeu que heu de tenir un mínim de $1 contribucions fetes abans del $2, i que la vostra primera edició ha de ser anterior al $3.',
-	'boardvote_novotes'       => 'Encara no ha votat ningú.',
-	'boardvote_user'          => 'Usuari',
-	'boardvote_edits'         => 'Edicions',
-	'boardvote_days'          => 'Dies',
-	'boardvote_blocked'       => 'Ho sentim, el vostre compte registrat ha estat blocat. Els usuaris blocats no tenen dret a vot.',
-	'boardvote_welcome'       => 'Benvingut \'\'\'$1\'\'\'!',
-	'boardvote_redirecting'   => 'Per millorar la seguretat i la transparència de la votació, aquesta es farà en un servidor independent extern.
+	'boardvote_intro_change' => '<p>Ja heu votat. Podeu canviar el vostre vot usant el següent formulari. Marqueu aquells candidats que voleu aprovar.</p>',
+	'boardvote_entered'      => "Gràcies, el vostre vot ha estat registrat. A continuació podeu comprovar-ne els detalls. Les dades del vostre vot són: <pre>$1</pre> Ha estat codificat mitjançant la clau pública de l'administració electoral de Wikimedia: <pre>$2</pre> La versió encriptada resultant apareix a continuació. Serà mostrada públicament a [[Special:Boardvote/dump]]. <pre>$3</pre> [[Special:Boardvote/entry|Torna]]",
+	'boardvote_nosession'    => "No s'ha pogut determinar l'identificador del vostre compte Wikimedia. Si us plau, identifiqueu-vos al projecte en el que teniu dret a vot i aneu a <nowiki>[[Special:Boardvote]]</nowiki>. Recordeu que heu de tenir un mínim de $1 contribucions fetes abans del $2, i que la vostra primera edició ha de ser anterior al $3.",
+	'boardvote_notloggedin'  => "No esteu identificats dins d'un compte d'usuari. Per a votar, heu de tenir un compte amb un mínim de $1 contribucions fetes abans del dia $2, de les quals la primera ha de ser anterior al $3.",
+	'boardvote_notqualified' => "No podeu votar en aquestes eleccions. Els requisits per a votar són tenir un compte registrat amb un mínim de $3 edicions fetes abans del dia $2, i amb la primera d'aquestes edicions feta abans del $5.",
+	'boardvote_novotes'      => 'Encara no ha votat ningú.',
+	'boardvote_time'         => 'Temps',
+	'boardvote_user'         => 'Usuari',
+	'boardvote_edits'        => 'Edicions',
+	'boardvote_days'         => 'Dies',
+	'boardvote_ip'           => 'Adreça IP',
+	'boardvote_ua'           => 'Agent usuari',
+	'boardvote_listintro'    => '<p>Aquí hi ha la llista de tots els vots rebuts. $1 per les dades encriptades.</p>',
+	'boardvote_dumplink'     => 'Cliqueu ací',
+	'boardvote_submit'       => "D'acord",
+	'boardvote_strike'       => 'Anul·la',
+	'boardvote_unstrike'     => 'Recupera',
+	'boardvote_needadmin'    => 'Només els administradors electorals poden fer aquesta operació.',
+	'boardvote_notstarted'   => 'La votació encara no ha començat',
+	'boardvote_closed'       => 'La votació ha acabat, a [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En la pàgina de les eleccions] hi trobareu els resultats.',
+	'boardvote_blocked'      => 'Ho sentim, el vostre compte registrat ha estat blocat. Els usuaris blocats no tenen dret a vot.',
+	'boardvote_welcome'      => "Benvingut '''$1'''!",
+	'boardvote_redirecting'  => "Per millorar la seguretat i la transparència de la votació, aquesta es farà en un servidor independent extern.
 
-D\'aquí 20 segons sereu redirigit a aquesta pàgina. [$1 Cliqueu aquí] per anar-hi ara mateix.
+D'aquí 20 segons sereu redirigit a aquesta pàgina. [$1 Cliqueu aquí] per anar-hi ara mateix.
 
-Tingueu en compte que us pot aparèixer un avís de certificat de seguretat.',
+Tingueu en compte que us pot aparèixer un avís de certificat de seguretat.",
 );
 
 $messages['cdo'] = array(
@@ -1840,10 +1857,26 @@ D'verschlësselt Versioun dovunner fannt der ënnen. Si gëtt ëffentlech op [[S
  */
 $messages['li'] = array(
 	'boardvote'              => 'Wikimedia Board of Trustees-verkezing',
+	'boardvote-desc'         => '[[meta:Board elections|Wikimedia Board of Trustees-verkezing]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Stöm]]
 * [[Special:Boardvote/list|Oetgebrachdje stömme toeane]]
 * [[Special:Boardvote/dump|Dump geëncrypdje verkezingsopname]]',
 	'boardvote_intro_change' => "<p>Geer höb al gestömp. Geer kintj uche stöm verangere via 't óngersäöndje formeleer. Vink estebleef de vekskes nao edere kanditaat daet geer steuntj aan.</p>",
+	'boardvote_entered'      => 'Danke. Uche stöm is verwerk.
+
+Es geer wiltj kintj geer de volgende gegaeves beware. Uche stöm:
+
+<pre>$1</pre>
+
+Deze is versleuteldj mit de publieke sleutel vanne Verkezingskemissie:
+
+<pre>$2</pre>
+
+Noe völg de versleuteldje versie. Deze is aopebaor en nao te zeen op [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Trök]]',
 	'boardvote_nosession'    => "Uch Wikimedia-gebroekersnómmer kin neet bepaoldj waere. Meldj geer uch aan in de wiki wo geer volduit aan de eise en gao nao <nowiki>[[Special:Boardvote]]</nowiki>. Gebroek 'ne gebroeker mit teminste $1 biedraag veur $2 en mit uche ieëste bewèrking veur $3.",
 	'boardvote_notloggedin'  => 'Geer bönt neet aangemeldj. Geer kintj stömmes es geer uvh veur $2 teminste $1 bewèrkinge höb gemaakt en uche ieëste bewèrking mót veur $3 gemaak zeen.',
 	'boardvote_notqualified' => 'Geer kintj neet stömme in dees verkezing. Geer mót $3 bewèrkinge gemaak höbbe veur $2 en uche ieëste bewèrking mót veur $5 gemaak zeen.',
@@ -1870,6 +1903,11 @@ $messages['li'] = array(
 	'boardvote_blocked'      => 'Sorry, doe bös geblokkeerd op uche geregistreerde wiki. Geblokkeerde gebroekers moge neet stömme.',
 	'boardvote_welcome'      => "Wèlkom, '''$1'''!",
 	'go_to_board_vote'       => 'Wikimedia Bestuursverkezing 2007',
+	'boardvote_redirecting'  => "Waeges 'ne baetere beveilige en mieë transparantie vinje de verkezinge plaats op 'ne externe, ónaafhankelik beheerde server.
+
+Geer wuuertj euver 20 second ómgeleid nao deze externe server. [$1 Klik hiej] óm d'r noe haer te gaon.
+
+'t Is meugelik det geer 'n waorsjuwing krieg waeges 'n neet ónbekindj certificaat.",
 );
 
 /** Lumbaart (Lumbaart)
@@ -2440,6 +2478,7 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author .:Ajvol:.
+ * @author HalanTul
  */
 $messages['ru'] = array(
 	'boardvote'              => 'Выборы в Совет поверенных фонда «Викимедиа»',
@@ -2481,9 +2520,11 @@ $messages['ru'] = array(
 	'boardvote_user'         => 'Участник',
 	'boardvote_edits'        => 'Число правок',
 	'boardvote_days'         => 'Дни',
+	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Браузер',
 	'boardvote_listintro'    => '<p>Это список всех принятых на данный момент бюллетеней для голосования. В зашифрованном виде они доступны $1.</p>',
 	'boardvote_dumplink'     => 'здесь',
+	'boardvote_submit'       => 'OK',
 	'boardvote_strike'       => 'Зачеркнуть',
 	'boardvote_unstrike'     => 'Убрать зачёркивание',
 	'boardvote_needadmin'    => 'Эта операция доступна только администрации выборов.',
@@ -2954,6 +2995,7 @@ En säkerhetsvarning om ett osignerat certifikat kanske kommer att visas.',
  */
 $messages['te'] = array(
 	'boardvote'              => 'వికీమీడియా ట్రస్టుబోర్డు ఎన్నికలు',
+	'boardvote-desc'         => '[[meta:Board elections|వికీమీడియా ట్రస్టీల బోర్డు ఎన్నికలు]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|వోటెయ్యండి]]
 * [[Special:Boardvote/list|ఇప్పటివరకు వచ్చిన ఓట్ల జాబీతా]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]',
@@ -2999,6 +3041,7 @@ $messages['te'] = array(
 	'boardvote_edits_many'   => 'చాలా',
 	'group-boardvote'        => 'బోర్డు వోటు నిర్వాహకులు',
 	'group-boardvote-member' => 'బోర్డు వోటు నిర్వాహకులు',
+	'grouppage-boardvote'    => '{{ns:project}}:బోర్డు వోటు నిర్వహణ',
 	'boardvote_blocked'      => 'క్షమించండి, మీరు నమోదైన వికీలో మీమ్మల్ని నిషేధించారు. నిషేధించిన వాడుకరులకు వోటెయ్యడానికి అనుమతిలేదు.',
 	'boardvote_welcome'      => "స్వాగతం '''$1'''!",
 	'go_to_board_vote'       => 'వికీమీడియా బోర్డు ఎన్నికలు 2007',

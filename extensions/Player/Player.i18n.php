@@ -60,6 +60,20 @@ $messages['bg'] = array(
 	'player-goto-file'     => 'файл',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ * @author Li-sung
+ */
+$messages['cs'] = array(
+	'player'             => 'Přehrávač',
+	'player-desc'        => 'Přehrávání vložených multimédii pomocí běžných zásuvných modulů prohlížečů a [[{{ns:Special}}:Player|speciální stránky]]',
+	'player-title'       => 'Přehrávač',
+	'player-playertitle' => 'Přehrávač: $1',
+	'player-file'        => 'Název souboru',
+	'player-play'        => 'Přehrát',
+	'player-not-allowed' => 'Nepovolený formát',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'player-file'          => 'Dateiname',

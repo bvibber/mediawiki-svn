@@ -285,6 +285,7 @@ $messages['lb'] = array(
  */
 $messages['li'] = array(
 	'crossnamespacelinks'         => 'Kruutsverwiezinge tösse naamruumdjes',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Tuunt verwiezinge tösse naamruumdje]] die neet zówwe mótte bestaon op {{SITENAME}}',
 	'crossnamespacelinks-summary' => "Dees pazjena veurzuut in 'n euverzich van links vanoet 'ne pazjena in de huidnaamruumdje nao anger naamruumdjes (mit oetzönjering van de naamruumdjes {{ns:special}}, {{ns:talk}}, {{ns:project}} en {{ns:template}}, wovan 't gebroek wuuertj aafgeraoje.",
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|link|links}} nao $3',
 );

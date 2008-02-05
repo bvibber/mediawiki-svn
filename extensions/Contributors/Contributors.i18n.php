@@ -408,6 +408,7 @@ $messages['nds'] = array(
  */
 $messages['nl'] = array(
 	'contributors'             => 'Bijdragers',
+	'contributors-desc'        => 'Geeft een overzicht van de belangrijkste schrijvers aan een pagina',
 	'contributors-toolbox'     => 'Belangrijkste bijdragers',
 	'contributors-legend'      => 'Belangrijkste bijdragers van een pagina tonen',
 	'contributors-target'      => 'Titel:',
@@ -532,18 +533,21 @@ $messages['ru'] = array(
 	'contributors-nosuchpage' => 'Статья «$1» не существует.',
 );
 
-/* Slovak (helix84) */
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
-	'contributors' => 'Prispievatelia',
-	'contributors-toolbox' => 'Hlavní prispievatelia',
-	'contributors-legend' => 'Zobraziť zoznam hlavných prispievateľov článku',
-	'contributors-target' => 'Názov:',
-	'contributors-submit' => 'Zobraziť',
-	'contributors-subtitle' => 'Hlavní prispievatelia článku $1',
+	'contributors'             => 'Prispievatelia',
+	'contributors-desc'        => 'Sumarizuje hlavných prispievateľov stránky',
+	'contributors-toolbox'     => 'Hlavní prispievatelia',
+	'contributors-legend'      => 'Zobraziť zoznam hlavných prispievateľov článku',
+	'contributors-target'      => 'Názov:',
+	'contributors-submit'      => 'Zobraziť',
+	'contributors-subtitle'    => 'Hlavní prispievatelia článku $1',
 	'contributors-others-long' => 'Existuje ďalších $1 prispievateľov tohto článku.',
-	'contributors-others' => 'a $1 ďalších',
-	'contributors-badtitle' => 'Neplatný názov.',
-	'contributors-nosuchpage' => 'Článok $1 neexistuje.',
+	'contributors-others'      => 'a $1 ďalších',
+	'contributors-badtitle'    => 'Neplatný názov.',
+	'contributors-nosuchpage'  => 'Článok $1 neexistuje.',
 );
 
 /* Serbian default (Sasa Stefanovic) */

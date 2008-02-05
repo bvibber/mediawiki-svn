@@ -1354,7 +1354,9 @@ $messages['te'] = array(
 	'hiderevision-status'         => 'కూర్పు $1: $2',
 	'hiderevision-error-missing'  => 'డాటాబేసులో కనబడలేదు.',
 	'hiderevision-archive-status' => '$1 నుండి తొలగించిన కూర్పు: $2',
+	'oversight-log-hiderev'       => '$1 నుండి ఓ మార్పుని తొలగించాం',
 	'oversight-view'              => 'వివరాలు',
+	'oversight-difference'        => '(గతంలో ఉన్న కూర్పు నుండి తేడా)',
 	'oversight-hidden'            => 'దాచిన కూర్పు',
 );
 

@@ -42,6 +42,15 @@ $messages['bg'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Необходимо е да се включи поне една категория или да се посочи именно пространство!',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'intersection_toomanycats' => 'DynamicPageList: অনেক বেশি বিষয়শ্রেণী!',
+	'intersection_toofewcats'  => 'DynamicPageList: অনেক কম বিষয়শ্রেণী!',
+	'intersection_noresults'   => 'DynamicPageList: ফলাফল নাই!',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */

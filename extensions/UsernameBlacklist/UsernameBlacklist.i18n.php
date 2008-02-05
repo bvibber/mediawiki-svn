@@ -111,10 +111,21 @@ $messages['bn'] = array(
 	'usernameblacklist-invalid-lines' => 'এই {{PLURAL:$1|লাইন|লাইনসমূহ}} নিষিদ্ধ ব্যবহারকারী নাম তালিকাভুক্ত {{PLURAL:$1|নাম|নামসমূহ}} অসিদ্ধ; দয়াকরে সংরক্ষণ করার পূর্বে {{PLURAL:$1|এটি|এগুলো}} ঠিক করুন:',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
 $messages['ca'] = array(
-	'blacklistedusername' => 'Nom no permès',
-	'blacklistedusernametext' => 'El nom d\'usuari que heu escollit forma part de la [[MediaWiki:Usernameblacklist|llista de noms no permesos]]. Escolliu-ne un altre de diferent, si us plau.',
-	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|La següent línia|Les següents línies}} de la llista negra de noms d\'usuari no {{PLURAL:$1|és vàlida|són vàlides}}; si us plau, corregiu{{PLURAL:$1|-la|-les}} abans de desar-ho:',
+	'blacklistedusername'             => 'Nom no permès',
+	'blacklistedusernametext'         => "El nom d'usuari que heu escollit forma part de la [[MediaWiki:Usernameblacklist|llista de noms no permesos]]. Escolliu-ne un altre de diferent, si us plau.",
+	'usernameblacklist'               => "<pre>
+# Les línies d'aquesta lliste seran usades com a expressió regular (regexp)
+# per a prohibir el registre de certs noms d'usuari.
+# Cada ítem ha d'estar dins una llista no ordenada. Per exemple:
+#
+# * Aquesta
+# * [Pp]rova
+</pre>",
+	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|La següent línia|Les següents línies}} de la llista negra de noms d'usuari no {{PLURAL:$1|és vàlida|són vàlides}}; si us plau, corregiu{{PLURAL:$1|-la|-les}} abans de desar-ho:",
 );
 
 $messages['cs'] = array(
@@ -464,6 +475,23 @@ $messages['lb'] = array(
 # * [Bb]ar
 </pre>",
 	'usernameblacklist-invalid-lines' => 'Déi folgend {{PLURAL:$1|Linn|Linnen}} an der Lëscht vun de verbuedene Benotzernimm {{PLURAL:$1|ass|sinn}} ongültig; w.e.g virum Ofspäichere verbesseren:',
+);
+
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'blacklistedusername'             => 'Zwarteliesgebroekersnaam',
+	'blacklistedusernametext'         => "De gebroekersnaam daese höbs gekaoze steit oppe [[MediaWiki:Usernameblacklist|zwarte gebroekersnamelies]]. Kees estebleef 'ne anger naam.",
+	'usernameblacklist'               => "<pre>
+# Regels in dees lies waere gebroek es reguliere oetdrukking veur
+# gebroekersname oppe zwartelies bie insjrieving. Edere regel mót
+# óngerdeil zeen van 'ne óngenómmerde lies, wie:
+#
+# * Foo
+# * [Bb]ar
+</pre>",
+	'usernameblacklist-invalid-lines' => "De volgende {{PLURAL:$1|regel|regel}} inne zwarte gebroekersnamelies {{PLURAL:$1|is|zeen}} ónzjuus; corrigeer {{PLURAL:$1|'m|die}} estebleef veurdetse de pazjena opsleis:",
 );
 
 /* Lao */

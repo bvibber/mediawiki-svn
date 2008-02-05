@@ -292,6 +292,24 @@ $messages['lb'] = array(
 	'pdtest_diff'         => 'Ënnerscheed',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'parserdifftest'      => 'Parserversjèlletes',
+	'pdtest_no_target'    => 'Gein doel aangegaeve.',
+	'pdtest_page_missing' => 'De aangegaeve pazjena is neet aangetroffe inne database.',
+	'pdtest_no_changes'   => 'Gein verangeringe vasgesteld.',
+	'pdtest_time_report'  => '<b>$1</b> doerde $2 second, <b>$3</b> doerde $4 second.',
+	'pdtest_title'        => 'Contekstitel:',
+	'pdtest_text'         => 'Inveurteks:',
+	'pdtest_ok'           => 'ok',
+	'pdtest_get_text'     => 'Teks van pazjena ophaole',
+	'pdtest_diff'         => 'Versjèlle',
+	'pdtest_side_by_side' => 'Oetveurverglieking',
+	'pdt_comparing_page'  => 'Parseroetveur van [[$1]] verglieke',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */
@@ -334,6 +352,20 @@ $messages['nn'] = array(
 	'pdtest_diff'         => 'Skilnader',
 	'pdtest_side_by_side' => 'Samanlikning av resultatet',
 	'pdt_comparing_page'  => 'Samanliknar parserresultat frå [[$1]]',
+);
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'parserdifftest'      => 'Parserdifftest',
+	'pdtest_no_target'    => 'Intet mål oppgitt.',
+	'pdtest_no_changes'   => 'Ingen endringer oppdaget.',
+	'pdtest_title'        => 'Konteksttittel:',
+	'pdtest_ok'           => 'OK',
+	'pdtest_get_text'     => 'Få tekst fra siden',
+	'pdtest_diff'         => 'Forskjeller',
+	'pdtest_side_by_side' => 'Resultatsammenligning',
 );
 
 /** Occitan (Occitan)

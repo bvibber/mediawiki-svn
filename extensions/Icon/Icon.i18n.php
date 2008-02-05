@@ -119,6 +119,14 @@ $messages['oc'] = array(
 	'icon-badwidth' => 'Largor erronèa',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'icon-badimage' => 'Imagem Inválida',
+	'icon-badwidth' => 'Largura Inválida',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

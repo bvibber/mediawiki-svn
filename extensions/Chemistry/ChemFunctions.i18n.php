@@ -65,6 +65,24 @@ $messages['bg'] = array(
 	'chemFunctions_Formula' => 'Формула',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'chemicalsources'                  => 'Chemické zdroje',
+	'chemicalsource-desc'              => 'Přidává značku &lt;chemform&gt; pro chemické vzorce',
+	'chemFunctions_ListPage'           => 'Chemické zdroje',
+	'chemFunctions_DataList'           => 'Níže je seznam odkazů na stránky, které můžou poskytnout informace o chemikálii, kterou hledáte.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Sloučenina $MIXCASNameFormula na NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Oxfordské Universitě (nelze vyhledávat)</a><br />',
+	'chemFunctions_CAS'                => 'CAS číslo',
+	'chemFunctions_ATCCode'            => 'ATCCode',
+	'chemFunctions_ECNumber'           => 'ECNumber',
+	'chemFunctions_Formula'            => 'Formule',
+	'chemFunctions_Name'               => 'IUPAC název',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Vstupní chyba!',
+);
+
 $messages['de'] = array(
 	'chemicalsources' => 'Chemische Quellen',
 	'chemFunctions_ListPage' => 'Chemische Quellen',
@@ -282,14 +300,18 @@ $messages['nl'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Invoerfout!',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'chemicalsources' => 'Kjemiske kilder',
-	'chemFunctions_ListPage' => 'Kjemiske kilder',
-	'chemFunctions_DataList' => 'Nedenunder er en liste over lenker til sider som kan gi nyttig informasjon om den kjemiske substansen du leter etter.<br /><br />
+	'chemicalsources'                  => 'Kjemiske kilder',
+	'chemFunctions_ListPage'           => 'Kjemiske kilder',
+	'chemFunctions_DataList'           => 'Nedenunder er en liste over lenker til sider som kan gi nyttig informasjon om den kjemiske substansen du leter etter.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula ved NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS ved Oxford University (UK) (ikke søkbar)</a><br />',
-	'chemFunctions_CAS' => 'CAS-nummer',
-	'chemFunctions_Name' => 'IUPAC-navn',
+	'chemFunctions_CAS'                => 'CAS-nummer',
+	'chemFunctions_Formula'            => 'Formel',
+	'chemFunctions_Name'               => 'IUPAC-navn',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Input-feil!',
 );
 
@@ -363,27 +385,18 @@ $messages['ru'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: ошибка ввода!'
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
-	'chemicalsources' => 'Chemické zdroje',
+	'chemicalsources'        => 'Chemické zdroje',
+	'chemicalsource-desc'    => 'Pridáva značku <nowiki><chemform></nowiki> pre chemické vzorce',
 	'chemFunctions_ListPage' => 'Chemické zdroje',
-	'chemFunctions_SearchExplanation' => '',
 	'chemFunctions_DataList' => 'Nižšie je zoznam odkazov na stránky, ktoré môžu poskytnúť informácie o chemikálii, ktorú používate.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Zlúčenina $MIXCASNameFormula na NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Oxford University (UK) (nedá sa vyhľadávať)</a><br />',
-	'chemFunctions_CAS' => 'CAS číslo',
-	'chemFunctions_EINECS' => 'EINECS',
-	'chemFunctions_CHEBI' => 'CHEBI',
-	'chemFunctions_PubChem' => 'PubChem',
-	'chemFunctions_SMILES' => 'SMILES',
-	'chemFunctions_InChI' => 'InChI',
-	'chemFunctions_RTECS' => 'RTECS',
-	'chemFunctions_KEGG' => 'KEGG',
-	'chemFunctions_ATCCode' => 'ATCCode',
-	'chemFunctions_DrugBank' => 'DrugBank',
-	'chemFunctions_ECNumber' => 'ECNumber',
-	'chemFunctions_Formula' => 'Formula',
-	'chemFunctions_Name' => 'IUPAC názov',
-	'chemFunctions_ChemFormInputError' => 'Chemform: Input error!'
+	'chemFunctions_CAS'      => 'CAS číslo',
+	'chemFunctions_Name'     => 'IUPAC názov',
 );
 
 $messages['sr-ec'] = array(

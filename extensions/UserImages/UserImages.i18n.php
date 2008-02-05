@@ -144,6 +144,15 @@ $messages['pms'] = array(
 	'userimages-noimages' => '$1 a l\'ha pa carià gnun-a figura.',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'userimages-caption'  => 'Imagens carregadas por $1',
+	'userimages-noname'   => 'Nome de utilizador inválido ou não fornecido.',
+	'userimages-noimages' => '$1 não carregou quaisquer imagens.',
+);
+
 $messages['ro'] = array(
 	'userimages-caption' => 'Imagini încărcate de $1',
 	'userimages-noname' => 'Nume de utilizator nevalid sau nespecificat.',

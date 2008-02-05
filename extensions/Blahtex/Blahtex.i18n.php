@@ -267,12 +267,25 @@ $messages['br'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Li-sung
  */
 $messages['cs'] = array(
-	'math_CannotCreateTexFile'     => 'Nelze vytvořit tex soubor',
-	'math_CannotRunDvipng'         => 'Nelze spustit dvipng',
-	'math_CannotRunLatex'          => 'nelze spustit latex',
-	'math_CannotWritePngDirectory' => 'Nelze zapisovat do výstupního adresáře pro PNG',
+	'math_noblahtex'                        => 'Nelze spustit blahtex, který by měl být v $1',
+	'math-desc'                             => 'MathML výstup značek &lt;math&gt;',
+	'math_AmbiguousInfix'                   => 'Nejednoznačné umístění „$1“ (zkuste použít další závorky „{ ... }“ pro rozlišení)',
+	'math_CannotChangeDirectory'            => 'Nelze změnit pracovní adresář',
+	'math_CannotCreateTexFile'              => 'Nelze vytvořit tex soubor',
+	'math_CannotRunDvipng'                  => 'Nelze spustit dvipng',
+	'math_CannotRunLatex'                   => 'nelze spustit latex',
+	'math_CannotWritePngDirectory'          => 'Nelze zapisovat do výstupního adresáře pro PNG',
+	'math_CannotWriteTexFile'               => 'Nelze zapisovat do tex souboru',
+	'math_DoubleSubscript'                  => 'Byly nalezeny dva dolní indexy patřící ke stejnému základu (je povolený jen jeden)',
+	'math_DoubleSuperscript'                => 'Byly nalezeny dva horní indexy patřící ke stejnému základu (je povolený jen jeden)',
+	'math_IllegalCharacter'                 => 'Neplatný znak na vstupu',
+	'math_IllegalCommandInMathMode'         => 'Příkaz „$1“ není platný v matematickém režimu',
+	'math_IllegalCommandInMathModeWithHint' => 'Příkaz „$1“ není platný v matematickém režimu (možná jste chtěli místo něho použít „$2“?)',
+	'math_IllegalCommandInTextMode'         => 'Příkaz „$1“ není platný v textovém režimu',
+	'math_IllegalCommandInTextModeWithHint' => 'Příkaz „$1“ není platný v textovém režimu (možná jste chtěli místo něho použít „$2“?)',
 );
 
 /** Greek (Ελληνικά)

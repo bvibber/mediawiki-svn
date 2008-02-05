@@ -379,9 +379,10 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'changeauthor'                      => 'Endre revisjonens opphavsperson',
+	'changeauthor-desc'                 => 'Tillater endring av revisjonsforfatter',
 	'changeauthor-title'                => 'Endre en revisjons opphavsmann',
 	'changeauthor-search-box'           => 'Søk i revisjoner',
-	'changeauthor-pagename-or-revid'    => 'Artikkelnavn eller revisjons-ID:',
+	'changeauthor-pagename-or-revid'    => 'Sidenavn eller revisjons-ID:',
 	'changeauthor-pagenameform-go'      => 'Gå',
 	'changeauthor-comment'              => 'Kommentar:',
 	'changeauthor-changeauthors-multi'  => 'Endre opphavsperson(er)',
@@ -391,13 +392,12 @@ $messages['no'] = array(
 	'changeauthor-invalid-username'     => 'Ugyldig brukernavn «$1».',
 	'changeauthor-nosuchuser'           => 'Ingen bruker ved navnet «$1».',
 	'changeauthor-revview'              => 'Revisjon #$1 av $2',
-	'changeauthor-nosuchtitle'          => 'Det er ingen artikkel kalt «$1».',
+	'changeauthor-nosuchtitle'          => 'Det er ingen side ved navn «$1».',
 	'changeauthor-weirderror'           => 'En merkelig feil oppsto. Vennligst prøv igjen. Om denne feilen fortsetter, er det trolig noe gærent med databasen.',
 	'changeauthor-invalidform'          => 'Bruk skjemaet på Special:ChangeAuthor i stedet for å bruke et egendefinert skjema.',
 	'changeauthor-success'              => 'Forespørselen har blitt utført.',
 	'changeauthor-logentry'             => 'Endret opphavsperson til $2 av $1 fra $3 til $4',
 	'changeauthor-logpagename'          => 'Logg for opphavspersonsendringer',
-	'changeauthor-rev'                  => 'r$1',
 );
 
 /** Occitan (Occitan)
@@ -431,14 +431,26 @@ $messages['oc'] = array(
  * @author 555
  */
 $messages['pt'] = array(
-	'changeauthor-pagenameform-go'     => 'Ir',
-	'changeauthor-comment'             => 'Comentário:',
-	'changeauthor-changeauthors-multi' => 'Alterar autor(es)',
-	'changeauthor-invalid-username'    => 'Nome de utilizador "$1" inválido.',
-	'changeauthor-nosuchuser'          => 'Utilizador "$1" não existe.',
-	'changeauthor-revview'             => 'Revisão #$1 de $2',
-	'changeauthor-nosuchtitle'         => 'Não existe nenhuma página chamada "$1".',
-	'changeauthor-logentry'            => 'Alterado autor de $2 de $1, de $3 para $4',
+	'changeauthor'                      => 'Alterar autor de revisão',
+	'changeauthor-desc'                 => 'Permite alterar o autor de uma revisão',
+	'changeauthor-title'                => 'Alterar o autor de uma revisão',
+	'changeauthor-search-box'           => 'Pesquisar revisões',
+	'changeauthor-pagename-or-revid'    => 'Nome da página ou ID da revisão:',
+	'changeauthor-pagenameform-go'      => 'Ir',
+	'changeauthor-comment'              => 'Comentário:',
+	'changeauthor-changeauthors-multi'  => 'Alterar autor(es)',
+	'changeauthor-explanation-multi'    => "Através deste formulário, pode alterar os autores de revisões. Simplesmente mude um ou mais nomes de utilizador na lista abaixo, adicione um comentário (opcional) e clique no botão 'Alterar autor(es)'.",
+	'changeauthor-changeauthors-single' => 'Alterar autor',
+	'changeauthor-explanation-single'   => "Através deste formulário, pode alterar o autor de uma revisão. Simplesmente mude o nome de utilizador abaixo, adicione um comentário (opcional) e clique no botão 'Alterar autor'.",
+	'changeauthor-invalid-username'     => 'Nome de utilizador "$1" inválido.',
+	'changeauthor-nosuchuser'           => 'Utilizador "$1" não existe.',
+	'changeauthor-revview'              => 'Revisão #$1 de $2',
+	'changeauthor-nosuchtitle'          => 'Não existe nenhuma página chamada "$1".',
+	'changeauthor-weirderror'           => 'Ocorreu um erro muito estranho. Por favor, tente o seu pedido de novo. Se este erro persistir, provavelmente a base de dados não está em boas condições.',
+	'changeauthor-invalidform'          => 'Por favor, utilize o formulário fornecido em {{ns:special}}:ChangeAuthor em vez de um formulário personalizado.',
+	'changeauthor-success'              => 'O seu pedido foi processado com sucesso.',
+	'changeauthor-logentry'             => 'Alterado autor de $2 de $1, de $3 para $4',
+	'changeauthor-logpagename'          => 'Registo de alterações de autor',
 );
 
 /** Russian (Русский)

@@ -110,6 +110,14 @@ $messages['nl'] = array(
 	'categorystepper-end'   => '(Einde van categorie)',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'categorystepper-start' => '(Kategorislutt)',
+	'categorystepper-end'   => '(Kategoristart)',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

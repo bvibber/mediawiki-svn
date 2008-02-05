@@ -119,9 +119,19 @@ An dra-se a c'hall kargañ ar servijer spontus, setu n'emañ ket da vezañ impli
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Li-sung
  */
 $messages['cs'] = array(
 	'asksql'          => 'SQL dotaz',
+	'asksql-desc'     => 'Provádí SQL dotazy pomocí [[{{ns:Special}}:Asksql|speciální stránky]]',
+	'asksqltext'      => "Použijte tento formulář pro zadání přímého požadavku do databáze.
+Použijte jednoduché uvozovky (' a ') pro oddělení řetězcových literálů.
+Toto může znamenat závažnou dodatečnou zátěž serverů, proto prosím
+používejte s rozmyslem.",
+	'sqlislogged'     => 'Prosím mějte na paměti, že všechny dotazy jsou zaznamenávané.',
+	'sqlquery'        => 'Zadat dotaz',
+	'querybtn'        => 'Odeslat dotaz',
+	'selectonly'      => 'Jsou povoleny dotazy pouze pro čtení.',
 	'querysuccessful' => 'Dotaz byl úspěšně dokončen',
 );
 

@@ -63,6 +63,9 @@ $messages['br'] = array(
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
+	'call'              => 'Call',
+	'call-desc'         => 'Vytvoří hyperodkaz na šablonu (nebo na běžnou wiki stránku) s odevzdáním parametrů. Je možné použít z řádku s adresou v prohlížečí nebo ve wiki textu.',
+	'call-save'         => "Výstup této stránky byl uložen do stránky s názvem ''$1''.",
 	'call-save-success' => 'Následující text byl uložený do stránky <big>[[$1]]</big>',
 	'call-save-failed'  => "Následující text NEBYL uložený do stránky ''$1'', protože tato stránka už existuje.",
 );
@@ -164,6 +167,14 @@ Bij problemen kan u gebruik maken van <b>Special:Call/DebuG</b>",
 	'call-save-failed'  => 'De volgende tekst is NIET opgeslagen in pagina <big>[[$1]]</big> omdat die pagina al bestaat.',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'call-save-success' => 'Følgende tekst har blitt lagret på siden <big>[[$1]]</big>.',
+	'call-save-failed'  => 'Følgende tekst har IKKE blitt lagret på siden <big>[[$1]]</big> fordi siden allerede finnes.',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -185,7 +196,8 @@ L’extension <i>Apèl</i> apelarà la pagina indicada en i passant los paramèt
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'call-save' => "O resultado desta chamada seria gravado numa página chamada ''$1''.",
+	'call-save'         => "O resultado desta chamada seria gravado numa página chamada ''$1''.",
+	'call-save-success' => 'O seguinte texto foi gravado na página <big>[[$1]]</big>.',
 );
 
 /** Russian (Русский)

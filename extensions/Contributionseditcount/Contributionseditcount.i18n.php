@@ -75,8 +75,12 @@ $messages['lb'] = array(
 	'contributionseditcount' => 'Dëse Benotzer huet $1 Kontributiounen.',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'contributionseditcount'  =>  'Deze gebruiker heeft $1 bewerkingen.',
+	'contributionseditcount'      => 'Deze gebruiker heeft $1 bewerkingen.',
+	'contributionseditcount-desc' => 'Geeft een bewerkingsteller weer op [[Special:Contributions|Bijdragen gebruiker]]',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -121,7 +125,8 @@ $messages['sah'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'contributionseditcount' => 'Tento používateľ má $1 úprav.',
+	'contributionseditcount'      => 'Tento používateľ má $1 úprav.',
+	'contributionseditcount-desc' => 'Zobrazuje počet úprav na stránke [[Special:Contributions|Príspevky používateľa]]',
 );
 
 /** Seeltersk (Seeltersk)

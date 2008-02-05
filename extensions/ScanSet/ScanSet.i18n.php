@@ -211,6 +211,23 @@ $messages['hu'] = array(
 	'scanset_prev'                      => '← Előző',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'scanset_no_name'                   => 'ScanSet: geer mót \'ne naam veure scanset opgaeve, wie beveurbeild &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: óngeljige of missende scanset',
+	'scanset_unrecognised_index_format' => 'ScanSet: indeksopmaak wuuertj neet herkintj',
+	'scanset_opendir_error'             => 'ScanSet: fout, kin map $1 neet äöpene',
+	'scanset_no_files'                  => 'ScanSet: gein bestenj aanwezig inne opgegaeve map.',
+	'scanset_no_volumes'                => 'ScanSet: gein mappe veur volume aangetróffe',
+	'scanset_missing_index_file'        => 'ScanSet: indeksbestandj $1 neet aangetróffe',
+	'scanset_index_file_error'          => 'ScanSet: fout in op,aal indeksbestandj in regel $1',
+	'scanset_invalid_volume'            => 'ScanSet: óngeljige volume',
+	'scanset_next'                      => 'Volgende &gt;',
+	'scanset_prev'                      => '&lt; Vörge',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */

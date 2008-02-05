@@ -607,6 +607,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'imagemap_no_image'      => '&lt;imagemap&gt;: తప్పనిసరిగా మొదటి లైనులో ఓ బొమ్మని ఇవ్వాలి',
 	'imagemap_invalid_image' => '&lt;imagemap&gt;: తప్పుడు లేదా ఉనికిలో లేని బొమ్మ',
 	'imagemap_invalid_title' => '&lt;imagemap&gt;: $1వ లైనులో ఉన్న లింకులో తప్పుడు శీర్షిక',
 	'imagemap_description'   => 'ఈ బొమ్మ గురించి',

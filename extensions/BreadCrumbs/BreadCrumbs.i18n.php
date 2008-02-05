@@ -31,6 +31,13 @@ $messages['nl'] = array(
 	'breadcrumbs-desc' => 'Toont het pad dat gebruikers in de wiki doorlopen',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'breadcrumbs-desc' => 'Mostra o caminho dos utilizadores através do wiki.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
