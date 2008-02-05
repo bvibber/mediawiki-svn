@@ -11,6 +11,7 @@ $messages = array();
 /* English (Rob Church) */
 $messages['en'] = array(
 	'contributors' => 'Contributors',
+	'contributors-desc' => 'Summarises the main contributors to an article',
 	'contributors-toolbox' => 'Main contributors',
 	'contributors-legend' => 'List main contributors to a page',
 	'contributors-target' => 'Title:',
@@ -197,6 +198,7 @@ $messages['fi'] = array(
 /* French */
 $messages['fr'] = array(
 	'contributors' => 'Contributeurs',
+	'contributors-desc' => 'Met en sommaire les principaux contributeurs d’un article.',
 	'contributors-toolbox' => 'Principaux contributeurs',
 	'contributors-legend' => 'Lister les principaux contributeurs de l’article',
 	'contributors-target' => 'Titre :',

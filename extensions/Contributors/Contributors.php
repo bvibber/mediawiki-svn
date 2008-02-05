@@ -15,6 +15,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		'version' => '1.0.1beta',
 		'author' => 'Rob Church',
 		'description' => 'Summarises the main contributors to an article',
+		'descriptionmsg' => 'contributors-desc',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Contributors',
 	);
 
