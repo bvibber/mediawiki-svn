@@ -227,7 +227,7 @@ $messages['de'] = array(
 /** German formal address (Deutsch - förmliche Anrede)
  * @author Raimond Spekking
  */
-$messages['de'] = array(
+$messages['de-formal'] = array(
 	'badimages-remove-confirm' => 'Bitte bestätigen Sie, dass Sie $1 von der Liste entfernen möchten.',
 	'badimages-unprivileged'   => '(Sie haben keine Berechtigung, die Liste zu ändern)',
 );
