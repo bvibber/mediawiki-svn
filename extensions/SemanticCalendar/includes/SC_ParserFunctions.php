@@ -169,7 +169,7 @@ function scRenderSemanticCalendar (&$parser, $inDatePropertiesStr = '', $inQuery
 	}
 	if ($date_error != NULL)
 		$text .= "<div class=\"errorbox\"><strong>$date_error</strong></div>\n<div style=\"clear: both\">";
-			
+
 
 	// get day of the week that the first of this month falls on
 	$day_of_week_of_1 = date("w", mktime(0, 0, 0, $cur_month_num, 1, $cur_year));
@@ -298,5 +298,3 @@ END;
 
 	return array($text, 'noparse' => 'true');
 }
-
-?>
