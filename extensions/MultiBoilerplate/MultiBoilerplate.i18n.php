@@ -2,7 +2,7 @@
 
 /**
  * Internationalisation file for MultiBoilerplate extension.
- * 
+ *
  * @addtogroup Extensions
  */
 
@@ -14,7 +14,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'multiboilerplate'        => '',
-	'multiboilerplate-desc'   => 'Displays a box at the top of the edit page to select and load a boilerplate.',
+	'multiboilerplate-desc'   => 'Displays a box at the top of the edit page to select and load a boilerplate',
 	'multiboilerplate-label'  => '',
 	'multiboilerplate-legend' => 'Select boilerplate',
 	'multiboilerplate-submit' => 'Load',
@@ -75,4 +75,3 @@ $messages['sk'] = array(
 	'multiboilerplate-legend' => 'Vyberte nápis',
 	'multiboilerplate-submit' => 'Načítať',
 );
-
