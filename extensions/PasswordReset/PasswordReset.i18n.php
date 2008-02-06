@@ -62,21 +62,26 @@ $messages['bg'] = array(
 	'passwordreset-confirmpass'     => 'Парола (повторно)',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
-	'passwordreset'                 => 'Passwort zurücksetzen',
-	'passwordreset-invalidusername' => 'Ungültiger Benutzername',
-	'passwordreset-emptyusername'   => 'Leerer Benutzername',
-	'passwordreset-nopassmatch'     => 'Passwörter stimmen nicht überein',
-	'passwordreset-badtoken'        => 'Ungültiger „Edit Token“',
-	'passwordreset-username'        => 'Benutzername',
-	'passwordreset-newpass'         => 'Neues Passwort',
-	'passwordreset-confirmpass'     => 'Passwort bestätigen',
-	'passwordreset-submit'          => 'Passwort zurücksetzen',
-	'passwordreset-success'         => 'Passwort für Benutzer-ID $1 wurde zurückgesetzt',
-	'passwordreset-disableuser'     => 'Benutzerkonto deaktivieren?',
+	'passwordreset'                    => 'Passwort zurücksetzen',
+	'passwordreset-invalidusername'    => 'Ungültiger Benutzername',
+	'passwordreset-emptyusername'      => 'Leerer Benutzername',
+	'passwordreset-nopassmatch'        => 'Passwörter stimmen nicht überein',
+	'passwordreset-badtoken'           => 'Ungültiger „Edit Token“',
+	'passwordreset-username'           => 'Benutzername',
+	'passwordreset-newpass'            => 'Neues Passwort',
+	'passwordreset-confirmpass'        => 'Passwort bestätigen',
+	'passwordreset-submit'             => 'Passwort zurücksetzen',
+	'passwordreset-success'            => 'Passwort für Benutzer-ID $1 wurde zurückgesetzt',
+	'passwordreset-disableuser'        => 'Benutzerkonto deaktivieren?',
 	'passwordreset-disableuserexplain' => '(setzen eines ungültigen Passwort-Hashs - Anmelden unmöglich)',
-	'passwordreset-disablesuccess'  => 'Benutzerkonto wurde deaktiviert (Benutzer-ID: $1)',
-	'passwordreset-accountdisabled' => 'Benutzerkonto ist deaktiviert',
+	'passwordreset-disablesuccess'     => 'Benutzerkonto wurde deaktiviert (Benutzer-ID: $1)',
+	'passwordreset-accountdisabled'    => 'Benutzerkonto ist deaktiviert',
+	'disabledusers'                    => 'Deaktivierte Benutzerkonten',
+	'disabledusers-summary'            => 'Dies ist die Liste der deaktivierten Benutzerkonten (via PasswordReset).',	
 );
 
 $messages['el'] = array(

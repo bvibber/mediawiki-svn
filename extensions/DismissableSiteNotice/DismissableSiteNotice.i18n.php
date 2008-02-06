@@ -59,8 +59,12 @@ $messages['cs'] = array(
 	'sitenotice_close' => 'zavřít',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
 	'sitenotice_close' => 'Schließen',
+	'sitenotice-desc'  => 'Erlaubt Benutzern das Schließen der Sitenotice',
 );
 
 $messages['el'] = array(

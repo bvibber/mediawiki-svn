@@ -161,8 +161,12 @@ $messages['cs'] = array(
 	'expand_templates_preview'         => 'Náhled',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
 	'expandtemplates'                  => 'Vorlagen expandieren',
+	'expandtemplates-desc'             => 'Expandiert Vorlagen, Parser-Funktionen und Variblen zum vollständigen Wikitext und zeigt die gerenderte Vorschau',
 	'expand_templates_intro'           => 'In diese Spezialseite kann Text eingegeben werden und alle Vorlagen in ihr werden rekursiv expandiert. Auch Parserfunkionen wie <nowiki>{{</nowiki>#if:...}} und Variablen wie <nowiki>{{</nowiki>CURRENTDAY}} werden ausgewertet - faktisch alles was in doppelten geschweiften Klammern enthalten ist. Dies geschieht durch den Aufruf der jeweiligen Parser-Phasen in MediaWiki.',
 	'expand_templates_title'           => 'Kontexttitel, für {{PAGENAME}} etc.:',
 	'expand_templates_input'           => 'Eingabefeld:',
