@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /*
  * english -> portuguese translation file for hawpedia
  * $Date: 2007/02/05 20:12:22 $
