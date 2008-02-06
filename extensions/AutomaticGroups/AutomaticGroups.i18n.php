@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* Internationalization file about
    Automatic Groups extensions
    Created by Bertrand GRONDIN
@@ -18,7 +18,7 @@ $messages['fr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'automaticgroups-desc' => 'Přihódna konfiguracija wužiwarskich prawow a skupinoweho čłonstwa na zakładźe staroby we wužiwarskim konće a ličenja změnow',
+	'automaticgroups-desc' => 'P?ihódna konfiguracija wužiwarskich prawow a skupinoweho ??onstwa na zak?ad?e staroby we wužiwarskim kon?e a li?enja zm?now',
 );
 
 /** Dutch (Nederlands)
@@ -28,10 +28,15 @@ $messages['nl'] = array(
 	'automaticgroups-desc' => 'Eenvoudig instellen van gebruikersrechten en groepslidmaatschap gebaseerd op leeftijd van een gebruiker en aantal bewerkingen',
 );
 
-/** Slovak (Slovenčina)
+/** Slovak (Sloven?ina)
  * @author Helix84
  */
 $messages['sk'] = array(
-	'automaticgroups-desc' => 'Pohodlná konfigurácia práv používateľa a členstva v skupine na základe veku účtu používateľa a počtu príspevkov',
+	'automaticgroups-desc' => 'Pohodlná konfigurácia práv používate?a a ?lenstva v skupine na základe veku ú?tu používate?a a po?tu príspevkov',
 );
 
+/** Portuguese (Português)
+ */
+$messages['pt'] = array(
+	'automaticgroups-desc' => 'A configuração conveniente dos direitos de usuários e membros de grupos é baseada no tempo de registro e na quantidade de edições de cada usuário',
+);
