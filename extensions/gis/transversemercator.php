@@ -264,9 +264,11 @@ class transversemercator
 			     + (5 - 18*$T + pow($T,2) + 72*$C 
 				- 58 * $e_prime_sq)*pow($A,5)/120 );
 
-		# FIXME: Uze zone_letter
+		# FIXME: Use zone_letter
 		# if (ord($zone_letter) < ord('N'))
-		if ($latitude < 0) $northing += $this->$Northing_Offset_South;
+		if ( $latitude < 0 ) {
+			$northing += $this->Northing_Offset_South;
+		}
 
 		$this->Northing = $northing;
 		$this->Easting = $easting;
@@ -274,5 +276,3 @@ class transversemercator
 		return true;
 	}
 }
-
-
