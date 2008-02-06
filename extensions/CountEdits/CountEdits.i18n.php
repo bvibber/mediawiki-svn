@@ -13,6 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'countedits' => 'Count edits',
+	'countedits-desc' => '[Special:CountEdits|Special page]] that counts user edits and provides a top-ten contributor list',
 	'countedits-warning' => "'''Warning:''' Do not judge a book by its cover. Do not judge a contributor by their edit count.",
 	'countedits-username' => 'Username:',
 	'countedits-ok' => 'OK',
@@ -141,6 +142,7 @@ $messages['fi'] = array(
 /* French (Bertrand Grondin) */
 $messages['fr'] = array(
 	'countedits' => 'Compteur d’éditions',
+	'countedits-desc' => '[Special:CountEdits|Page spéciale]] comptabilisant le nombre d’éditions des utilisateurs et fournissant la liste des dix meilleurs contributeurs.',
 	'countedits-warning' => 'Avertissement : ne jugez pas un livre par sa couverture. Ne jugez pas non plus un utilisateur en fonction du nombre de ses contributions.',
 	'countedits-username' => 'Utilisateur',
 	'countedits-ok' => 'Accepter',
