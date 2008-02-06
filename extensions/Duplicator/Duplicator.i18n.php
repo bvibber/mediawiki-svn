@@ -13,6 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'duplicator' => 'Duplicate a page',
+	'duplicator-desc' => 'Create independent copies of articles with full edit histories',
 	'duplicator-toolbox' => 'Duplicate this page',
 	'duplicator-header' => 'This page allows the complete duplication of a page, creating independent copies of all histories. This is useful for page forking, etc.',
 	'duplicator-options' => 'Options',
@@ -228,6 +229,7 @@ $messages['fi'] = array(
 /* French */
 $messages['fr'] = array(
 	'duplicator' => 'Dupliquer un article',
+	'duplicator-desc' => 'Créer des copies distinctes d’articles avec l’historique complet des modifications.',
 	'duplicator-toolbox' => 'Dupliquer cet article',
 	'duplicator-header' => 'Cette page permet la duplication complète d’un article, en créant deux versions indépendantes de l’historique complet. Il sert par exemple à séparer un article en deux.',
 	'duplicator-options' => 'Options',
