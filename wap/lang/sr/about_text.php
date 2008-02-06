@@ -11,9 +11,9 @@ $about = Array(
 "text" => 'Wikipedia is a free content encyclopedia written by a global community of volunteers. Sometimes, false information is added to Wikipedia. Do not trust information in Wikipedia - use additional references',
 "imp1" => "Wikipedia is operated by:",
 "imp2" => "Wikimedia Foundation Inc.",
-"imp3" => "200 2nd Ave. South #358",
-"imp4" => "St. Petersburg, FL 33701-4313, USA",
-# Phone: +1-727-231-0101
+"imp3" => "P.O. Box 78350",
+"imp4" => "San Francisco, CA 94107-8350, USA",
+# Phone: +1-415-839-6885
 # http://wikimediafoundation.org/wiki/Contact_us",
 "imp5" => 'mobile@wikimedia.org',
 "wpLinkUrl" => "http://sr.wikipedia.org/",

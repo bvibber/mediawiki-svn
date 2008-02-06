@@ -9,9 +9,9 @@ $about = Array(
 "text" => 'Die Wikipedia ist eine Enzyklopädie mit freien Inhalten, die von Freiwilligen auf der ganzen Welt beigesteuerte wurden. Gelegentlich wird auch Unrichtiges zugefügt. Darum sollte man sich auf die Angaben nicht verlassen und immer weitere Quellen hinzuziehen.',
 "imp1" => 'Wikipedia wird betrieben von:',
 "imp2" => "Wikimedia Foundation Inc.",
-"imp3" => "200 2nd Ave. South #358",
-"imp4" => "St. Petersburg, FL 33701-4313, USA",
-# Phone: +1-727-231-0101
+"imp3" => "P.O. Box 78350",
+"imp4" => "San Francisco, CA 94107-8350, USA",
+# Phone: +1-415-839-6885
 # http://wikimediafoundation.org/wiki/Contact_us",
 "imp5" => 'mobile@wikimedia.org',
 "wpLinkUrl" => "http://bar.wikipedia.org/",
