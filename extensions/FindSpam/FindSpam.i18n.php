@@ -9,7 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'findspam' => 'Find spam',
-	'findspam-desc' => 'Adds a [[Special:FindSpam|special page]] that allows to find recently added spam.',
+	'findspam-desc' => 'Adds a [[Special:FindSpam|special page]] that allows to find recently added spam',
 	'findspam-ip' => 'IP address:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'No contributions found',
@@ -56,7 +56,7 @@ $messages['el'] = array(
 
 $messages['fr'] = array(
 	'findspam' => 'Recherche de spam',
-	'findspam-desc' => 'Ajoute une [[Special:FindSpam|page spéciale]] qui permet de trouver des spam ajoutés récemment.',
+	'findspam-desc' => 'Ajoute une [[Special:FindSpam|page spéciale]] qui permet de trouver des spam ajoutés récemment',
 	'findspam-ip' => 'Adresse IP :',
 	'findspam-ok' => 'Rechercher',
 	'findspam-notextfound' => 'Aucune contribution trouvée',
