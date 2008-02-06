@@ -10,6 +10,7 @@ $messages = array();
 $messages['en'] = array(
 	'sitenotice_id'    => '0', # Don't translate this
 	'sitenotice_close' => 'dismiss',
+	'sitenotice-desc'  => 'Allows users to close the sitenotice.',
 );
 
 $messages['af'] = array(
@@ -90,6 +91,7 @@ $messages['fo'] = array(
 
 $messages['fr'] = array(
 	'sitenotice_close' => 'cacher',
+	'sitenotice-desc'  => 'Permet aux utilisateurs de fermer le sitenotice.',
 );
 
 /** Franco-Provençal (Arpetan)

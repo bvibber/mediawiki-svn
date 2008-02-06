@@ -5,6 +5,7 @@ $wgExtensionCredits['other'][] = array(
         'version' => '2008-01-09',
         'author' => 'Brion Vibber',
         'description' => 'Allows users to close the sitenotice.',
+	'descriptionmsg' => 'sitenotice-desc',
         'url' => 'http://www.mediawiki.org/wiki/Extension:DismissableSiteNotice',
 );
 
