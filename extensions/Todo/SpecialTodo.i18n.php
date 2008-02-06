@@ -77,7 +77,9 @@ $4',
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'todo-list-for'     => 'Списък със задачи за',
 	'todo-list-change'  => 'Промяна',
+	'todo-list-cancel'  => 'Отмяна',
 	'todo-form-details' => 'Детайли:',
 );
 

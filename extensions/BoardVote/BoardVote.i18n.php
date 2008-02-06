@@ -299,6 +299,7 @@ $messages['bcl'] = array(
  */
 $messages['bg'] = array(
 	'boardvote'              => 'Избори за борда на Фондация Уикимедия',
+	'boardvote-desc'         => '[[meta:Board elections|Избори за борда на Уикимедия]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Гласуване]]
 * [[Special:Boardvote/list|Списък на гласовете до ммента]]
 * [[Special:Boardvote/dump|Извличане на криптирана информация]]',
@@ -2453,6 +2454,17 @@ $messages['qu'] = array(
 	'boardvote_entry'       => '* [[Special:Boardvote/vote|Runata akllay]]
 * [[Special:Boardvote/list|Ña akllanapaq nisqa kunkakuna]]
 * [[Special:Boardvote/dump|Pakaykusqa akllana qillqamusqakuna]]',
+	'boardvote_novotes'     => 'Manaraqmi pipas akllarqanchu.',
+	'boardvote_time'        => 'Pacha',
+	'boardvote_user'        => 'Ruraq',
+	'boardvote_edits'       => "Llamk'apusqakuna",
+	'boardvote_days'        => "P'unchawkuna",
+	'boardvote_listintro'   => '<p>Kayqa kunankama musyasqaña akllasqakunam. $1 pakaykusqa willakunapaq.</p>',
+	'boardvote_dumplink'    => "Kaypi ñit'iy",
+	'boardvote_strike'      => "Siq'ipay",
+	'boardvote_unstrike'    => "Amaña siq'ipaychu",
+	'boardvote_edits_many'  => 'achka',
+	'boardvote_welcome'     => "Allinmi hamusqayki '''$1'''!",
 	'boardvote_redirecting' => "Akllanakuytaqa hawa, huk runakunap kamachisqan sirwiqpim rurachkanchik aswan qasi astawan rikunalla kananpaq.
 
 Iskay chunka sikundupim chay hawa sirwiqman pusasqaykiku. [$1 Kaypi ñit'iy] chayman kunan rinaykipaq.

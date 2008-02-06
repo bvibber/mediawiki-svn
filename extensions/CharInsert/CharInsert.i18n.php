@@ -34,6 +34,13 @@ $messages['nl'] = array(
 	'charinsert-desc' => 'Maakt het mogelijk niet-standaard karakters in te voeren vanuit een deelvenster via JavaScript',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'charinsert-desc' => 'Permite a criação de uma caixa JavaScript para inserção de caracteres não "standard"',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

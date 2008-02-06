@@ -53,6 +53,13 @@ $messages['oc'] = array(
 	'tog-microid' => 'Publicar un <a href="http://microid.org/">MicroID</a> en vista de confirmar vòstra identitat alprèp de servicis extèrnes',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'tog-microid' => 'Publique um <a href="http://microid.org/">MicroID</a> para confirmar conta com serviços externos',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

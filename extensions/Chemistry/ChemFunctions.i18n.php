@@ -347,11 +347,15 @@ $messages['pms'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: eror ant ij dat!',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
 $messages['pt'] = array(
-	'chemicalsources' => 'Fontes de química',
-	'chemFunctions_ListPage' => 'Fontes de química',
-	'chemFunctions_CAS' => 'Número CAS',
-	'chemFunctions_Formula' => 'Fórmula',
+	'chemicalsources'                  => 'Fontes de química',
+	'chemicalsource-desc'              => 'Adiciona a marca <nowiki><chemform></nowiki> para fórmulas químicas',
+	'chemFunctions_ListPage'           => 'Fontes de química',
+	'chemFunctions_CAS'                => 'Número CAS',
+	'chemFunctions_Formula'            => 'Fórmula',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Erro nos dados introduzidos!',
 );
 
@@ -389,14 +393,18 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'chemicalsources'        => 'Chemické zdroje',
-	'chemicalsource-desc'    => 'Pridáva značku <nowiki><chemform></nowiki> pre chemické vzorce',
-	'chemFunctions_ListPage' => 'Chemické zdroje',
-	'chemFunctions_DataList' => 'Nižšie je zoznam odkazov na stránky, ktoré môžu poskytnúť informácie o chemikálii, ktorú používate.<br /><br />
+	'chemicalsources'                  => 'Chemické zdroje',
+	'chemicalsource-desc'              => 'Pridáva značku <nowiki><chemform></nowiki> pre chemické vzorce',
+	'chemFunctions_ListPage'           => 'Chemické zdroje',
+	'chemFunctions_DataList'           => 'Nižšie je zoznam odkazov na stránky, ktoré môžu poskytnúť informácie o chemikálii, ktorú používate.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Zlúčenina $MIXCASNameFormula na NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Oxford University (UK) (nedá sa vyhľadávať)</a><br />',
-	'chemFunctions_CAS'      => 'CAS číslo',
-	'chemFunctions_Name'     => 'IUPAC názov',
+	'chemFunctions_CAS'                => 'CAS číslo',
+	'chemFunctions_ATCCode'            => 'ATCCode',
+	'chemFunctions_ECNumber'           => 'ECNumber',
+	'chemFunctions_Formula'            => 'Vzorec',
+	'chemFunctions_Name'               => 'IUPAC názov',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Chybný vstup!',
 );
 
 $messages['sr-ec'] = array(

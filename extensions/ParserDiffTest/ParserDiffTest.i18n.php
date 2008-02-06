@@ -390,7 +390,7 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'parserdifftest'      => 'Teste de diferenças do analisador (parser)',
+	'parserdifftest'      => 'Teste de diferenças do analisador "parser"',
 	'pdtest_no_target'    => 'Nenhum alvo foi especificado.',
 	'pdtest_page_missing' => 'A página especificada não foi encontrada na base de dados.',
 	'pdtest_no_changes'   => 'Nenhuma alteração detectada.',
@@ -401,7 +401,7 @@ $messages['pt'] = array(
 	'pdtest_get_text'     => 'Obter texto da página',
 	'pdtest_diff'         => 'Diferenças',
 	'pdtest_side_by_side' => 'Comparação de resultado',
-	'pdt_comparing_page'  => 'Comparação do resultado do analisador (parser) de [[$1]]',
+	'pdt_comparing_page'  => 'Comparação do resultado do analisador "parser" de [[$1]]',
 );
 
 /** Russian (Русский)
@@ -509,7 +509,10 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
-	'pdtest_diff' => 'Фарқиятҳо',
+	'pdtest_no_changes'   => 'Ҳеҷ тағйир ҳазф нашуд.',
+	'pdtest_get_text'     => 'Дарёфти матн аз саҳифа',
+	'pdtest_diff'         => 'Фарқиятҳо',
+	'pdtest_side_by_side' => 'Муқоисаи хуруҷӣ',
 );
 
 /** Turkish (Türkçe)

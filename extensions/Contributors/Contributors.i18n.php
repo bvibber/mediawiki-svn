@@ -485,18 +485,21 @@ $messages['pms'] = array(
 	'contributors-nosuchpage'  => "L'artìcol $1 a-i é pa.",
 );
 
-/* Portuguese (Lugusto) */
+/** Portuguese (Português)
+ * @author Malafaya
+ */
 $messages['pt'] = array(
-	'contributors' => 'Contribuidores',
-	'contributors-toolbox' => 'Principais contribuidores',
-	'contributors-legend' => 'Listagem dos principais contribuidores de um artigo',
-	'contributors-target' => 'Título:',
-	'contributors-submit' => 'Exibir',
-	'contributors-subtitle' => 'Principais contribuidores de $1',
+	'contributors'             => 'Contribuidores',
+	'contributors-desc'        => 'Sumariza os principais contribuidores de uma página',
+	'contributors-toolbox'     => 'Principais contribuidores',
+	'contributors-legend'      => 'Listagem dos principais contribuidores de um artigo',
+	'contributors-target'      => 'Título:',
+	'contributors-submit'      => 'Exibir',
+	'contributors-subtitle'    => 'Principais contribuidores de $1',
 	'contributors-others-long' => 'Existem ainda outros $1 contribuidores para esta página.',
-	'contributors-others' => 'e $1 outros',
-	'contributors-badtitle' => 'Título inválido.',
-	'contributors-nosuchpage' => 'O artigo $1 não existe.',
+	'contributors-others'      => 'e $1 outros',
+	'contributors-badtitle'    => 'Título inválido.',
+	'contributors-nosuchpage'  => 'O artigo $1 não existe.',
 );
 
 $messages['rm'] = array(

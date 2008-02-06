@@ -644,6 +644,13 @@ $messages['sd'] = array(
 	'createarticle' => 'نئون مضمون لکو',
 );
 
+/** Sinhalese (සිංහල)
+ * @author Asiri wiki
+ */
+$messages['si'] = array(
+	'createarticle' => 'පිටුවක් සාදන්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  * @author Robbot

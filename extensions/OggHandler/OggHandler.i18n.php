@@ -1280,10 +1280,18 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
-	'ogg-more'      => 'Бештар...',
-	'ogg-dismiss'   => 'Бастан',
-	'ogg-download'  => 'Боргирии парванда',
-	'ogg-desc-link' => 'Дар бораи ин парванда',
+	'ogg-play'              => 'Пахш',
+	'ogg-pause'             => 'Сукут',
+	'ogg-stop'              => 'Қатъ',
+	'ogg-play-video'        => 'Пахши навор',
+	'ogg-play-sound'        => 'Пахши овоз',
+	'ogg-player-soundthumb' => 'Пахшкунанда нест',
+	'ogg-player-selected'   => '(интихобшуда)',
+	'ogg-use-player'        => 'Истифода аз пахшкунанда:',
+	'ogg-more'              => 'Бештар...',
+	'ogg-dismiss'           => 'Бастан',
+	'ogg-download'          => 'Боргирии парванда',
+	'ogg-desc-link'         => 'Дар бораи ин парванда',
 );
 
 /** Turkish (Türkçe)

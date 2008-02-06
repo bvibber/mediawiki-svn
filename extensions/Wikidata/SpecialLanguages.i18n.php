@@ -109,7 +109,14 @@ $wdMessages['en'] = array(
  * @author SPQRobin
  */
 $wdMessages['af'] = array(
-	'ow_Language' => 'Taal',
+	'ow_save'                         => 'Stoor',
+	'ow_history'                      => 'Geskiedenis',
+	'ow_Expression'                   => 'Uitdrukking',
+	'ow_Expressions'                  => 'Uitdrukkings',
+	'ow_GotoSource'                   => 'Gaan na bron',
+	'ow_Language'                     => 'Taal',
+	'ow_TranslatedTextAttributeValue' => 'Teks',
+	'ow_LinkAttributeValues'          => 'Skakels',
 );
 
 /** Aragonese (Aragonés)

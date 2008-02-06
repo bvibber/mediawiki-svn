@@ -35,6 +35,16 @@ $messages['en'] = array(
 	'badimages-page' => '{{ns:help}}:Bad image list',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ */
+$messages['af'] = array(
+	'badimages-name'       => 'Naam:',
+	'badimages-reason'     => 'Rede:',
+	'badimages-remove'     => '(skrap)',
+	'badimages-remove-btn' => 'Skrap',
+);
+
 /** Old English (Anglo Saxon)
  * @author SPQRobin
  */

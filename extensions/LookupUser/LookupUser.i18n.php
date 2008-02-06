@@ -195,7 +195,10 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'lookupuser_registration' => 'Data de registo: $1',
+	'lookupuser_nonexistent'       => 'Erro: Utilizador não existe',
+	'lookupuser_not_authenticated' => 'não autenticado',
+	'lookupuser_realname'          => 'Nome real: $1',
+	'lookupuser_registration'      => 'Data de registo: $1',
 );
 
 /** Russian (Русский)

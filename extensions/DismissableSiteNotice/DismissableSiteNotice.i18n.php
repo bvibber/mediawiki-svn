@@ -103,6 +103,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'sitenotice_close' => 'cachiér',
+	'sitenotice-desc'  => 'Pèrmèt ux utilisators de cllôre lo sitenotice.',
 );
 
 /** Friulian (Furlan)
@@ -214,8 +215,12 @@ $messages['ne'] = array(
 	'sitenotice_close' => 'खारेज',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
 	'sitenotice_close' => 'sluiten',
+	'sitenotice-desc'  => 'Stelt gebruikers in staat de siteberichten te sluiten',
 );
 
 $messages['no'] = array(
@@ -234,8 +239,12 @@ $messages['pms'] = array(
 	'sitenotice_close' => 'stërma',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
 $messages['pt'] = array(
 	'sitenotice_close' => 'ignorar',
+	'sitenotice-desc'  => 'Permite aos utilizadores fecharem a notificação do sítio',
 );
 
 /** Quechua (Runa Simi)

@@ -1382,6 +1382,7 @@ $messages['tg'] = array(
 	'hiderevision-tab'           => 'Пинҳон кардани нусха',
 	'hiderevision-norevisions'   => 'Нусхае барои ҳазф мушаххас нашуда буд.',
 	'hiderevision-noreason'      => 'Шумо бояд далели ин ҳазфро тавзеҳ диҳед.',
+	'hiderevision-status'        => 'Нусха $1: $2',
 	'hiderevision-success'       => 'Бо муваффақият бойгонӣ ва ҳазф шуд.',
 	'hiderevision-error-missing' => 'Дар пойгоҳи дода пайдо нашуд.',
 	'oversight'                  => 'Назар',

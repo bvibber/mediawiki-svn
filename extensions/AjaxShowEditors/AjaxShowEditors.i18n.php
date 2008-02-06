@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'ajax-se-idling' => '($1s ago)',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ */
+$messages['af'] = array(
+	'ajax-se-title' => 'Op dit moment besig om te wysig:',
+);
+
 /** Arabic (العربية)
  * @author Mido
  */
@@ -45,6 +52,7 @@ $messages['bcl'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'ajax-se-desc'   => 'Показва потребителите, които редактират същата страница',
 	'ajax-se-title'  => 'Редактиращ потребител:',
 	'ajax-se-idling' => '(преди $1 секунди)',
 );
@@ -275,8 +283,11 @@ $messages['lt'] = array(
 	'ajax-se-idling'  => '(prieš $1 s)',
 );
 
-/** Dutch (Nederlands) */
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
+	'ajax-se-desc'    => 'Toont gebruikers die een pagina bewerken wie dezelfde pagina aan het bewerken is',
 	'ajax-se-title'   => 'Bezig met het bewerken van:',
 	'ajax-se-pending' => 'moet nog bijgewerkt worden ... (klik op deze knop of begin met bewerken)',
 	'ajax-se-idling'  => '($1s geleden)',
@@ -318,8 +329,11 @@ $messages['pms'] = array(
 	'ajax-se-idling'  => '(da $1 second)',
 );
 
-/** Portuguese (Português) */
+/** Portuguese (Português)
+ * @author Malafaya
+ */
 $messages['pt'] = array(
+	'ajax-se-desc'    => 'Mostra utilizadores que estão a editar a mesma página',
 	'ajax-se-title'   => 'Editando no momento:',
 	'ajax-se-pending' => 'atualização pendente... (clique neste box ou inicie a edição)',
 	'ajax-se-idling'  => '($1 segundos atrás)',

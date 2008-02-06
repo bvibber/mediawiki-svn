@@ -71,9 +71,11 @@ $messages['hu'] = array(
 /** Dutch (Nederlands)
  * @author Annabel
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
 	'eval'        => 'Evalueer',
+	'eval-desc'   => 'Voegt [[Special:Eval|een interface]] toe voor de functie <code>eval()</code>',
 	'eval_submit' => 'Evalueer',
 	'eval_escape' => 'Stop uitvoer',
 	'eval_out'    => 'Uitvoer',
@@ -92,8 +94,12 @@ $messages['oc'] = array(
 
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
 $messages['pt'] = array(
-	'eval_code'   => 'Código',
+	'eval-desc' => 'Adiciona [[{{ns:special}}:Eval|uma interface]] à função <code>eval()</code>',
+	'eval_code' => 'Código',
 );
 
 /** Russian (Русский)

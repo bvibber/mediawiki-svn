@@ -620,6 +620,15 @@ $messages['tet'] = array(
 	'sitematrix-others' => 'Projetu seluk Wikimedia nian',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'sitematrix'          => 'Феҳристи викиҳои Викимедиа',
+	'sitematrix-language' => 'Забон',
+	'sitematrix-others'   => 'Дигар лоиҳаҳои Викимедиа',
+);
+
 /** Tonga (faka-Tonga)
  * @author SPQRobin
  */

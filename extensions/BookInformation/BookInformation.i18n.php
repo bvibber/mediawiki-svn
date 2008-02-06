@@ -24,6 +24,13 @@ $messages['en'] = array(
 	'bookinfo-provider' => 'Data provider: $1',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ */
+$messages['af'] = array(
+	'bookinfo-result-year' => 'Jaar:',
+);
+
 /* Arabic (Meno25) */
 $messages['ar'] = array(
 	'bookinfo-header' => 'معلومات كتاب',

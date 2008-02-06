@@ -77,6 +77,7 @@ $messages['bcl'] = array(
  */
 $messages['bg'] = array(
 	'asksql'          => 'SQL заявка',
+	'asksql-desc'     => 'Отправя не на SQL-заявки към базата данни през [[Special:Asksql|специална страница]]',
 	'asksqltext'      => "Формулярът по-долу служи за отправяне на директни заявки към базата данни.
 За ограничаване на низовите литерали се използват единични кавички ('като тези').
 Заявките към базата данни могат значително да натоварят сървъра, затова е желателно тази функционалност да се използва пестеливо.",
@@ -463,6 +464,7 @@ Sòn soèns a men-a a carié ëd travaj la màchina serventa, donca për piasì 
  */
 $messages['pt'] = array(
 	'asksql'          => 'Consulta SQL',
+	'asksql-desc'     => 'Realize consultas SQL através da [[{{ns:special}}:Asksql|página especial]]',
 	'asksqltext'      => "Utilize o formulário abaixo para realizar consultas directas à base de dados.
 Use aspas simples ('como estas') para delimitar cadeias de caracteres literais.
 Esta função frequentemente adiciona uma carga considerável ao servidor, por isso utilize-a com reserva.",

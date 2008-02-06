@@ -413,6 +413,14 @@ $messages['te'] = array(
 	'scanset_prev'               => '&lt; గత',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'scanset_next' => 'Баъдӣ &gt;',
+	'scanset_prev' => '&lt; Қаблӣ',
+);
+
 /** Turkish (Türkçe)
  * @author Erkan Yilmaz
  */

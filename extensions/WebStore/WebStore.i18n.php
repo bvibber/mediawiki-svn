@@ -60,6 +60,13 @@ $messages['en'] = array(
 	'webstore_no_handler' => 'No handler for transforming this MIME type',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ */
+$messages['af'] = array(
+	'inplace_scaler_not_enough_params' => 'Nie genoeg parameters nie.',
+);
+
 $messages['ar'] = array(
 	'inplace_access_disabled' => 'الدخول إلى هذه الخدمة تم تعطيله لكل العملاء.',
 	'inplace_access_denied' => 'هذه الخدمة مقيدة بواسطة أيبي عميل.',

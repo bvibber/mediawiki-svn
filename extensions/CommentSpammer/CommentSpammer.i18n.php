@@ -144,6 +144,13 @@ $messages['pl'] = array(
 	'cspammer-log-page' => 'Rejestr spammerów',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'commentspammer-log-msg' => 'edição de [[{{ns:special}}:Contributions/$1|$1]] a [[:$2]].',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

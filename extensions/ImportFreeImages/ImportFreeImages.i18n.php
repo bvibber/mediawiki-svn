@@ -173,8 +173,12 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'importfreeimages_owner'          => 'Autor',
-	'importfreeimages_filefromflickr' => '$1 pelo utilizador <b>[$2]</b> do flickr. URL original',
+	'importfreeimages'                       => 'Importar Imagens Livres',
+	'importfreeimages_owner'                 => 'Autor',
+	'importfreeimages_next'                  => 'Próximas $1',
+	'importfreeimages_filefromflickr'        => '$1 pelo utilizador <b>[$2]</b> do flickr. URL original',
+	'importfreeimages_promptuserforfilename' => 'Por favor, introduza um nome de ficheiro destino:',
+	'importfreeimages_returntoform'          => "Ou clique <a href='$1'>aqui</a> para voltar aos resultados da sua pesquisa",
 );
 
 /** Russian (Русский)

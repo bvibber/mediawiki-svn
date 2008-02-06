@@ -106,8 +106,12 @@ $messages['pms'] = array(
 	'contributionseditcount' => 'St\'utent-sì a l\'ha fait $1 modìfiche.',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
 $messages['pt'] = array(
-	'contributionseditcount' => 'Este utilizador tem $1 edições.',
+	'contributionseditcount'      => 'Este utilizador tem $1 edições.',
+	'contributionseditcount-desc' => 'Mostra uma contagem de edições em [[{{ns:special}}:Contributions]]',
 );
 
 /** Russian (Русский)

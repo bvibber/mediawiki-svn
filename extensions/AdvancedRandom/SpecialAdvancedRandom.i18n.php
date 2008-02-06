@@ -163,7 +163,8 @@ $messages['pl'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'advancedrandom' => 'Acesso aleatório avançado',
+	'advancedrandom'      => 'Acesso aleatório avançado',
+	'advancedrandom-desc' => 'Obtém uma página aleatória a partir de uma página de discussão ou de ligações de uma página de assunto para uma dada página. Pode ser usado como [[{{ns:special}}:AdvancedRandom/Template:Featured/Talk]] para obter um artigo em destaque aleatório ou como [[{{ns:special}}:AdvancedRandom/Template:GFDL/Image]] para obter um ficheiro GFDL aleatório',
 );
 
 /** Russian (Русский)

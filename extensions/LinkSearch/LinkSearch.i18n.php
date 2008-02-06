@@ -569,6 +569,15 @@ $messages['te'] = array(
 	'linksearch-error' => 'హోస్ట్‌నేముకు ముందు మాత్రమే వైల్డ్ కార్డులు వాడవచ్చు.',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'linksearch'    => 'Ҷусутҷӣ пайвандҳои веб',
+	'linksearch-ns' => 'Фазоином:',
+	'linksearch-ok' => 'Ҷустуҷӯ',
+);
+
 /** Tonga (faka-Tonga)
  * @author SPQRobin
  */

@@ -308,6 +308,7 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'backforth-next' => 'Próximo ($1)',
+	'backforth-desc' => 'Adiciona as ligações de paginação alfabética "Seguinte" e "Anterior" ao topo das páginas',
 	'backforth-prev' => 'Anterior ($1)',
 );
 

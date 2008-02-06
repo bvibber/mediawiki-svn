@@ -112,6 +112,16 @@ $messages['oc'] = array(
 Aqueste corrièr vos es estat mandat gràcia al sistèma de messatjariá de {{SITENAME}} per $1. $2',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'email_footer' => '----------------------------------------------------------------------------
+Este email foi enviado pelo sistema de email de {{SITENAME}} por $1.
+
+$2',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

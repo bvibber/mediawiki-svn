@@ -560,6 +560,7 @@ $messages['nds'] = array(
  */
 $messages['nl'] = array(
 	'expandtemplates'                  => 'Sjablonen substitueren',
+	'expandtemplates-desc'             => 'Substitueert sjablonen, parserfuncties en variabelen en toont wikitekst en een controleversie van een pagina',
 	'expand_templates_intro'           => 'Deze speciale pagina leest de ingegeven tekst in en
 substitueert recursief alle sjablonen in de tekst.
 Het substitueert ook alle parserfuncties zoals <nowiki>{{</nowiki>#if:...}} en
@@ -634,6 +635,7 @@ Sòn a lo fa ën ciamand l\'anterprete dal programa MediaWiki.',
  */
 $messages['pt'] = array(
 	'expandtemplates'                  => 'Expandir pré-definições',
+	'expandtemplates-desc'             => 'Expande predefinições, funções do analisador "parser" e variáveis para mostrar texto wiki expandido e prever o aspecto da página',
 	'expand_templates_intro'           => 'Esta página especial pega em algum texto e expande todas as pré-definições nele existentes recursivamente. Também expande funções do analisador (parser) como <nowiki>{{</nowiki>#if:...}}, e variáveis como <nowiki>{{</nowiki>CURRENTDAY}}&mdash;de facto, tudo entre chavetas duplas. Isto é feito através da chamada ao estágio do analisador (parser) relevante do próprio MediaWiki.',
 	'expand_templates_title'           => 'Título de contexto para {{PAGENAME}} etc.:',
 	'expand_templates_input'           => 'Texto de entrada:',

@@ -103,10 +103,15 @@ $messages['nds'] = array(
 	'findspam-ip' => 'IP-Adress:',
 );
 
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'findspam' => 'Spam vinden',
-	'findspam-ip' => 'IP-adres:',
-	'findspam-ok' => 'OK',#identical but defined
+	'findspam'             => 'Spam vinden',
+	'findspam-desc'        => 'Voegt een [[Special:FindSpam|speciale pagina]] toe die het mogelijk maakt recent toegevoegde spam te vinden',
+	'findspam-ip'          => 'IP-adres:',
+	'findspam-ok'          => 'OK',
 	'findspam-notextfound' => 'Geen bijdragen gevonden',
 );
 
@@ -132,8 +137,9 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'findspam-ip' => 'Endereço IP:',
-	'findspam-ok' => 'OK',
+	'findspam-ip'          => 'Endereço IP:',
+	'findspam-ok'          => 'OK',
+	'findspam-notextfound' => 'Não foram encontradas contribuições',
 );
 
 /** Russian (Русский)

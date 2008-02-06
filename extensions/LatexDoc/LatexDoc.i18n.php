@@ -166,6 +166,22 @@ $messages['oc'] = array(
 	'latexdoc_get_pdf'         => 'Obténer PDF',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'latexdoc_cant_write' => 'Não foi possível escrever para o ficheiro $1',
+	'latexdoc_error'      => 'Erro LaTeX
+
+Comando: $1
+
+Resultado: $2
+
+$3',
+	'latexdoc_get_dvi'    => 'Obter DVI',
+	'latexdoc_get_pdf'    => 'Obter PDF',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

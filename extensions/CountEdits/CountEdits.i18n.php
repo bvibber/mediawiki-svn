@@ -325,17 +325,21 @@ $messages['nds'] = array(
 	'countedits-nocontribs' => 'Kene Bidrääg op dit Wiki.',
 );
 
-/* nld / Dutch (Siebrand Mazeland) */
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'countedits' => 'Bewerkingen tellen',
-	'countedits-warning' => '\'\'\'Waarschuwing:\'\'\' Beoordeel het boek niet op de buitenkant. Beoordeel een redacteur niet alleen op het aantal bijdragen.',
-	'countedits-username' => 'Gebruiker:',
-	'countedits-ok' => 'OK',#identical but defined
-	'countedits-nosuchuser' => 'Er is geen gebruiker met de naam $1.',
+	'countedits'              => 'Bewerkingen tellen',
+	'countedits-desc'         => '[[Special:CountEdits|Speciale pagina]] die bijdragen van gebruikers totaliseert en een top-10 van gebruikers toont',
+	'countedits-warning'      => "'''Waarschuwing:''' Beoordeel het boek niet op de buitenkant. Beoordeel een redacteur niet alleen op het aantal bijdragen.",
+	'countedits-username'     => 'Gebruiker:',
+	'countedits-ok'           => 'OK',
+	'countedits-nosuchuser'   => 'Er is geen gebruiker met de naam $1.',
 	'countedits-resultheader' => 'Resulaten voor $1',
-	'countedits-resulttext' => '$1 heeft $2 bewerkingen gemaakt',
-	'countedits-mostactive' => 'Meest actieve redacteuren',
-	'countedits-nocontribs' => 'Er zijn geen bewerkingen op deze wiki.',
+	'countedits-resulttext'   => '$1 heeft $2 bewerkingen gemaakt',
+	'countedits-mostactive'   => 'Meest actieve redacteuren',
+	'countedits-nocontribs'   => 'Er zijn geen bewerkingen op deze wiki.',
 );
 
 /* Norwegian (Jon Harald Søby) */
@@ -545,6 +549,20 @@ $messages['tet'] = array(
  */
 $messages['tr'] = array(
 	'countedits-username' => 'Kullanıcı:',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'countedits'              => 'Đếm các sửa đổi',
+	'countedits-username'     => 'Thành viên:',
+	'countedits-ok'           => 'Đếm',
+	'countedits-nosuchuser'   => 'Không có thành viên với tên $1.',
+	'countedits-resultheader' => 'Kết quả của $1',
+	'countedits-resulttext'   => '$1 đã sửa đổi $2 lần',
+	'countedits-mostactive'   => 'Thành viên tích cực nhất',
+	'countedits-nocontribs'   => 'Chưa ai đóng góp vào wiki này.',
 );
 
 /* Cantonese (Shinjiman) */

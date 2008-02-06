@@ -1309,6 +1309,16 @@ $3 $9 $10 కొరకు వెతుకు',
 	'searchall'             => 'అన్నీ',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'searchdidyoumean'  => 'Оё манзури шумо буд: "<a href="$1">$2</a>"?',
+	'searchnoresults'   => 'Бубахшед, мавриди мутобиқ ба дархости шумо пайдо нашуд.',
+	'searchnearmatches' => '<b>Ин саҳифаҳо унвонҳои шабеҳ ба дархости шумо доранд:</b>',
+	'searchall'         => 'ҳама',
+);
+
 /** Turkish (Türkçe)
  * @author Erkan Yilmaz
  */

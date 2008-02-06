@@ -99,6 +99,7 @@ $messages['el'] = array(
 /** French (Français)
  * @author Sherbrooke
  * @author Dereckson
+ * @author Grondin
  */
 $messages['fr'] = array(
 	'passwordreset'                    => 'Remise à zéro du mot de passe',
@@ -115,6 +116,8 @@ $messages['fr'] = array(
 	'passwordreset-disableuserexplain' => "(règle un hash de mot de passe non valide - l'utilisateur ne peut pas se connecter)",
 	'passwordreset-disablesuccess'     => 'Compte utilisateur désactivé (user_id : $1)',
 	'passwordreset-accountdisabled'    => 'Ce compte a été désactivé.',
+	'disabledusers'                    => 'Utilisateurs désactivés',
+	'disabledusers-summary'            => 'Ceci est la liste des utilisateurs qui ont été désactivés par PasswordReset.',
 );
 
 /** Galician (Galego)
@@ -217,6 +220,8 @@ $messages['nl'] = array(
 	'passwordreset-disableuserexplain' => '(stelt een onjuiste wachtwoordhash in - gebruik kan niet aanmelden)',
 	'passwordreset-disablesuccess'     => 'Gebruik is gedeactiveerd (gebruikers-ID: $1)',
 	'passwordreset-accountdisabled'    => 'Gebruiker is gedeactiveerd',
+	'disabledusers'                    => 'Gedeactiveerde gebruikers',
+	'disabledusers-summary'            => 'Dit is een lijst van gebruikers die zijn gedeactiveerd via PasswordReset',
 );
 
 $messages['no'] = array(
@@ -330,6 +335,8 @@ $messages['sk'] = array(
 	'passwordreset-disableuserexplain' => '(nastaví neplatnú haš hodnotu hesla - používateľ sa nebude môcť prihlásiť)',
 	'passwordreset-disablesuccess'     => 'Používateľský účet bol zablokovaný (user_id: $1)',
 	'passwordreset-accountdisabled'    => 'Účet bol zablokovaný',
+	'disabledusers'                    => 'Vypnutí používatelia',
+	'disabledusers-summary'            => 'Toto je zoznam používateľov, ktorí boli vypnutí prostredníctvom PasswordReset.',
 );
 
 /** Seeltersk (Seeltersk)

@@ -36,9 +36,11 @@ $messages['bg'] = array(
 
 /** Czech (Česky)
  * @author Li-sung
+ * @author Matěj Grabovský
  */
 $messages['cs'] = array(
 	'categorystepper-start' => '(začátek kategorie)',
+	'categorystepper-desc'  => 'Zobrazuje navigační pole na stránkách, které se nacházejí v množině kategorií.',
 	'categorystepper-end'   => '(konec kategorie)',
 );
 
@@ -123,6 +125,7 @@ $messages['no'] = array(
  */
 $messages['pt'] = array(
 	'categorystepper-start' => '(Início da categoria)',
+	'categorystepper-desc'  => 'Apresenta uma caixa de passo de categorias nas páginas que estão num conjunto de categorias.',
 	'categorystepper-end'   => '(Fim da categoria)',
 );
 

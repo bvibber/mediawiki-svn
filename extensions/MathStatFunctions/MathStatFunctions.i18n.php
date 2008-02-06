@@ -145,6 +145,8 @@ $messages['pms'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'msfunc_nan'      => 'Valor resultante não é um número',
+	'msfunc_inf'      => 'Valor resultante é infinito',
 	'msfunc_div_zero' => 'Divisão por zero',
 );
 

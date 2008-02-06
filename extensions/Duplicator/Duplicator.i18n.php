@@ -415,6 +415,7 @@ $messages['nds'] = array(
  */
 $messages['nl'] = array(
 	'duplicator'                       => 'Kopieer een pagina',
+	'duplicator-desc'                  => "Maakt onafhankelijke kopieën van pagina's met een volledige bewerkingsgeschiedenis",
 	'duplicator-toolbox'               => 'Kopieer deze pagina',
 	'duplicator-header'                => 'Deze pagina maakt het mogelijk een pagina volledig te kopiëren, waardoor er onafhankelijke
 kopieën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzovoort.',
@@ -542,15 +543,19 @@ $messages['pms'] = array(
  * @author 555
  */
 $messages['pt'] = array(
-	'duplicator'         => 'Duplicar uma página',
-	'duplicator-toolbox' => 'Duplicar esta página',
-	'duplicator-header'  => 'Esta página permite a duplicação completa de uma página de conteúdo, criando cópias independentes de todo o seu histórico. Isto é útil para separar versões de páginas, etc.',
-	'duplicator-options' => 'Opções',
-	'duplicator-source'  => 'Fonte:',
-	'duplicator-dest'    => 'Destino:',
-	'duplicator-dotalk'  => 'Duplicar página de discussão (se aplicável)',
-	'duplicator-submit'  => 'Duplicar',
-	'duplicator-summary' => 'Copiado de [[$1]]',
+	'duplicator'                       => 'Duplicar uma página',
+	'duplicator-desc'                  => 'Criar cópias independentes de páginas com histórico completo de edições',
+	'duplicator-toolbox'               => 'Duplicar esta página',
+	'duplicator-header'                => 'Esta página permite a duplicação completa de uma página de conteúdo, criando cópias independentes de todo o seu histórico. Isto é útil para separar versões de páginas, etc.',
+	'duplicator-options'               => 'Opções',
+	'duplicator-source'                => 'Fonte:',
+	'duplicator-dest'                  => 'Destino:',
+	'duplicator-dotalk'                => 'Duplicar página de discussão (se aplicável)',
+	'duplicator-submit'                => 'Duplicar',
+	'duplicator-summary'               => 'Copiado de [[$1]]',
+	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|revisão foi copiada|revisões foram copiadas}}.',
+	'duplicator-success-talknotcopied' => 'A página de discussão não pôde ser copiada.',
+	'duplicator-dest-exists'           => '[[$1]] já existe. Por favor, forneça um título de destino que ainda não exista.',
 );
 
 /* Russian */
