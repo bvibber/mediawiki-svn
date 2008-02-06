@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'eval'        => 'Eval',
+	'eval-desc'   => 'Adds [[Special:Eval|an interface]] to the <code>eval()</code> function',
 	'eval_submit' => 'Evaluate',
 	'eval_escape' => 'Escape output',
 	'eval_out'    => 'Output',
@@ -35,6 +36,7 @@ $messages['bg'] = array(
  */
 $messages['fr'] = array(
 	'eval'        => 'Évaluer',
+	'eval-desc'   => 'Ajoute [[Special:Eval|une interface]] à la fonction <code>eval()</code>.',
 	'eval_submit' => 'Évaluer',
 	'eval_escape' => 'Arrêter la sortie',
 	'eval_out'    => 'Sortie',
