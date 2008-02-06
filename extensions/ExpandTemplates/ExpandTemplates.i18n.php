@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'expandtemplates'                  => 'Expand templates',
+	'expandtemplates-desc'             => 'Expands templates, parser functions and variables to show expanded wikitext and preview rendered page',
 	'expand_templates_intro'           => 'This special page takes some text and expands
 all templates in it recursively. It also expands parser functions like
 <nowiki>{{</nowiki>#if:...}}, and variables like
@@ -243,6 +244,7 @@ $messages['fo'] = array(
  */
 $messages['fr'] = array(
 	'expandtemplates'                  => 'Expansion des modèles',
+	'expandtemplates-desc'             => 'Augmente les modèles, les fonctions parseurs et les variables pour visionner les textes wikis étendus et prévisualise les pages ainsi rendues.',
 	'expand_templates_intro'           => 'Cette page permet de tester l’expansion de modèles,
 qui sont développés recursivement. Les fonctions et les variables prédéfinies,
 telles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}} sont aussi développées.',
