@@ -179,10 +179,10 @@ textarea.mv_ajax_textarea{
 	position:absolute;left:365px;top:30px;right:15px;bottom:10px;margin:4px;
 }
 #mv_fd_mvd_cont{
-	position:absolute;top:0px;left:25px;bottom:30px;right:12px;overflow-x:hidden;overflow-y:auto; 
+	position:absolute;top:0px;bottom:30px;right:12px;overflow-x:hidden;overflow-y:auto; 
 }
 #mv_time_line{
-	position:absolute;background:#DDDDDD;left:0px;width:25px;height:94%;overflow:hidden;
+	position:absolute;background:#DDDDDD;left:0px;height:94%;overflow:hidden;
 }
 #MV_Tools{
 	position:absolute;width:322px;top:312px;left:10px;bottom:10px;margin:4px;

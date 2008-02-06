@@ -224,9 +224,9 @@ class MV_SpecialMediaSearch extends SpecialPage {
 										
 					$mvd_out.='<span id="mvr_desc_'.$mvd->id.'">';
 										 
-					if(isset($mvd->spoken_by)){
-						$ptitle = Title::MakeTitle(NS_MAIN, $mvd->spoken_by);
-						$mvd_out.=' '.$sk->makeKnownLinkObj($ptitle, $mvd->spoken_by);
+					if(isset($mvd->spoken_by)){											
+						$ptitle = Title::MakeTitle(NS_MAIN, $mvd->spoken_by);					
+						$mvd_out.=' '.$sk->makeKnownLinkObj($ptitle);
 					}		
 					if(!isset($mvd->toplq))$mvd->toplq=false;							
 					//output short desc send partial regEx: 

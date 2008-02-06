@@ -11,6 +11,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  	/*init function should load the target overlay*/
  	//set up defaults: 
  	var $req = 'stream_transcripts'; 
+ 	var $tl_width = '16';
  	/*structures the component output and call html code generation */
  	function getHTML(){ 	 		
  		switch($this->req){
@@ -30,16 +31,45 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	}
 	function do_stream_transcripts(){
 		global $wgOut;
+		$this->procMVDReqSet();
 		$this->load_transcripts();
 		$out='';
 		//set up left hand side timeline
-		$wgOut->addHTML('<div id="mv_time_line">' . 
+		$ttl_width = count($this->mvd_tracks)*($this->tl_width);
+		$wgOut->addHTML('<div id="mv_time_line" style="width:'.$ttl_width.'px">' . 
 					$this->get_video_timeline() .
 				'</div>');
-		$wgOut->addHTML("<div id=\"mv_fd_mvd_cont\" >");
+		$wgOut->addHTML('<div id="mv_fd_mvd_cont" style="left:'.$ttl_width.'px" >');
 			$wgOut->addHTML("<div id=\"mv_add_new_mvd\" style=\"display:none;\"></div>");			
 			$this->get_transcript_pages();
 		$wgOut->addHTML("</div>");
+	}
+	//proccess the request set (load from settings if not set in url 
+	//@@todo would be good to allow user-set prefrence in the future)
+	//@@todo might have to abstract to inteface or component level (since will be used in multiple places)
+	function procMVDReqSet(){
+		global $wgRequest;
+		global $mvMVDTypeDefaultDisp, $mvMVDTypeAllAvailable;
+		$user_tracks = $wgRequest->getVal('mvd_tracks');
+		print "USER TRACKS: " . $user_tracks;
+		if($user_tracks!=''){
+			$user_set = explode(',',$user_tracks);			
+			foreach($user_set as $tk){
+				if(in_array($tk, $mvMVDTypeAllAvailable)){
+					$this->mvd_tracks[]= $tk;	
+				}	
+			}
+		}else{			
+			//do reality check on settings: 
+			foreach($mvMVDTypeDefaultDisp as $tk){
+				if(!in_array($tk, $mvMVDTypeAllAvailable)){
+					global $wgOut;
+					$wgOut->errorPage('mvd_default_mismatch','mvd_default_mismatchtext');
+				}	
+			}
+			//just set to global default: 
+			$this->mvd_tracks = $mvMVDTypeDefaultDisp;		
+		}
 	}
 	function render_menu(){
 		$base_title='';
@@ -82,7 +112,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$dbr =& wfGetDB(DB_SLAVE);	
 		$result = & MV_Index::getMVDInRange($this->mv_interface->article->mvTitle->getStreamId(), 
 							$this->mv_interface->article->mvTitle->getStartTimeSeconds(), 
-							$this->mv_interface->article->mvTitle->getEndTimeSeconds() );													
+							$this->mv_interface->article->mvTitle->getEndTimeSeconds());													
 		if($dbr->numRows($result) == 0){
 			$this->mvd_pages=array();	
 		}else{
@@ -157,7 +187,12 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			'onmouseup="mv_do_play()" ' . 			
 			*/
 			'style="position:absolute;background:#'.$this->getMvdBgColor($mvd_page).';'.
-			'width:16px;';
+			'width:'.$this->tl_width.'px;';
+		//set left based on array key:
+		$keyOrder = array_search(strtolower($mvd_page->mvd_type), $this->mvd_tracks);
+		//@@todo probably should throw an error: 
+		if($keyOrder===false)$keyOrder=0; 
+		$out.='left:'. ($keyOrder*$this->tl_width).'px;';
 		//check if duration is set (for php calculation of height position)
 		if($this->duration){			
 			$page_duration = $mvd_page->end_time - $mvd_page->start_time;			

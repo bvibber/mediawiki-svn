@@ -86,7 +86,11 @@ $messages['en'] = array(
 	'anno_en_desc' => 'English categorizations and annotations. This overlay can be used to \"tag\"/Categorize sections of video or to add annotative information that is not spoken text',
 	'thomas_en'	   => 'Official Transcript',
 	'thomas_en_desc'=>'Official Thomas Transcript from the governments THOMAS record service. Source time synced by C-SPAN\'s c-spanarchives.org',
-
+	
+	#mvd errors:
+	'mvd_default_mismatch'=>'Error in settings file',
+	'mvd_default_mismatchtext'=>'There is an error in your setting file, $mvMVDTypeDefaultDisp should be a subset of $mvMVDTypeAllAvailable',
+	
 	'mv_data_page_title' => '$1 for $2 from $3',
 	'mv_time_separator'  => '$1 to $2',
 

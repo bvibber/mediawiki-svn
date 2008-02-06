@@ -84,20 +84,21 @@ $mvDefaultVideoPlaybackRes = '320x240';
 $mvDefaultSearchVideoPlaybackRes='160x120';
 $mvDefaultVideoIconSize = '80x60';
 
-
 /*
- * meta data layers
+ * All Available meta data layers
  * these type keys are used to allow multiple layers of metadata per stream.
  * These values key into template_names, msg_descriptions, and application logic )
  * Different languages should be in different tracks and documentation should be clear
  * to insure data goes into its associative layer.
  */
-$mvMVDTypeKeys = array('ht_en','anno_en','thomas_en');
+$mvMVDTypeAllAvailable = array('ht_en','anno_en','thomas_en');
 
-//the default set of layers (must be a subset of $mvMVDTypeKeys)
-//note: this is equivalent to ?mvd_tracks=ht_en,anno_en  in the url for the stream page.
-//this also dictates the default search layers 
-$mvMVDTypeDefaults=array('ht_en','anno_en');
+/*
+ * the default display set of layers (must be a subset of $mvMVDTypeAllAvaliable)
+ * note: this is equivalent to ?mvd_tracks=ht_en,anno_en  in the url for the stream page.
+ * this also dictates the default search layers
+*/ 
+$mvMVDTypeDefaultDisp =array('ht_en','anno_en'); 
 
 ###################
 # Special Pages with Interface functions
