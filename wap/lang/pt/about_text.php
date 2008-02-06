@@ -8,8 +8,8 @@
 
 $about = Array(
 "title" => "Sobre a Wikpedia",
-"text" => 'Wikipedia is a free content encyclopedia written by a global community of volunteers. Sometimes, false information is added to Wikipedia. Do not trust information in Wikipedia - use additional references',
-"imp1" => "Wikipedia is operated by:",
+"text" => 'Wikipédia é uma enciclopédia de conteúdo livre escrito por uma comunidade de voluntários do mundo todo. As vezes, falsas informações são adicionadas na Wikipédia. Não confie totalmente no conteúdo da Wikipédia - utilize referências adicionais',
+"imp1" => "Wikipédia é operada pela:",
 "imp2" => "Wikimedia Foundation Inc.",
 "imp3" => "P.O. Box 78350",
 "imp4" => "San Francisco, CA 94107-8350, USA",
