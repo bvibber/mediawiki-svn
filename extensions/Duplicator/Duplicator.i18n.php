@@ -13,7 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'duplicator' => 'Duplicate a page',
-	'duplicator-desc' => 'Create independent copies of articles with full edit histories',
+	'duplicator-desc' => 'Create independent copies of pages with full edit histories',
 	'duplicator-toolbox' => 'Duplicate this page',
 	'duplicator-header' => 'This page allows the complete duplication of a page, creating independent copies of all histories. This is useful for page forking, etc.',
 	'duplicator-options' => 'Options',
