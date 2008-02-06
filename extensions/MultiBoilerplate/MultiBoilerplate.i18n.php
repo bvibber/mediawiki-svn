@@ -13,8 +13,10 @@ $messages = array();
  * @author MinuteElectron <minuteelectron@googlemail.com>
  */
 $messages['en'] = array(
-	'multiboilerplate-legend' => 'Select boilerplate',
+	'multiboilerplate'        => '',
+	'multiboilerplate-desc'   => 'Displays a box at the top of the edit page to select and load a boilerplate.',
 	'multiboilerplate-label'  => '',
+	'multiboilerplate-legend' => 'Select boilerplate',
 	'multiboilerplate-submit' => 'Load',
 );
 

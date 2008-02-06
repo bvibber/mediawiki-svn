@@ -22,9 +22,10 @@ if( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits[ 'other' ][] = array(
 	'name' => 'MultiBoilerplate',
 	'description' => 'Displays a box at the top of the edit page to select and load a boilerplate.',
+	'descriptionmsg' => 'multiboilerplate-desc',
 	'author' => 'MinuteElectron',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MultiBoilerplate',
-	'version' => '1.3',
+	'version' => '1.4',
 );
 
 // Hook into EditPage::showEditForm:initial to modify the edit page header.
@@ -34,10 +35,14 @@ $wgHooks[ 'EditPage::showEditForm:initial' ][] = 'wfMultiBoilerplate';
 $wgExtensionMessagesFiles[ 'MultiBoilerplate' ] = dirname( __FILE__ ) . '/MultiBoilerplate.i18n.php';
 
 // Default configuration variables.
-// Array of boilerplate names to boilerplate pages to load, for example:
-// e.g. $wgMultiBoilerplateThings[ 'My Boilerplate' ] = 'Template:My_Boilerplate';
-$wgMultiBoilerplateThings = array(); 
-// Whether or not to show the form when editing pre-existing pages.
+/* Array of boilerplate names to boilerplate pages to load, for example:
+ * e.g. $wgMultiBoilerplateOptions[ 'My Boilerplate' ] = 'Template:My Boilerplate';
+ * If set to false then the MediaWiki:multiboilerplate message is used to configure
+ * boilerplates in the format of:
+ * "* Boilerplate Name|Template:Boilerplate Template"
+ */
+$wgMultiBoilerplateOptions = array(); 
+/* Whether or not to show the form when editing pre-existing pages. */
 $wgMultiBoilerplateOverwrite = false;
 
 /**
@@ -48,30 +53,41 @@ $wgMultiBoilerplateOverwrite = false;
 function wfMultiBoilerplate( $form ) {
 
 	// Get various variables needed for this extension.
-	global $wgMultiBoilerplateThings, $wgMultiBoilerplateOverwrite, $wgArticle, $wgTitle, $wgRequest;
+	global $wgMultiBoilerplateOptions, $wgMultiBoilerplateOverwrite, $wgArticle, $wgTitle, $wgRequest;
 
 	// Load messages into the message cache.
 	wfLoadExtensionMessages( 'MultiBoilerplate' );
 
-	/* If $wgMultiBoilerplateAllowOverwrite is ture connect to the database to check if the page currently
-	 * being edited exists, if it doesn't render the box else don't (to prevent users inadvertantly overwriting
-	 * an existing page).
-	 * @todo Check if there is a pre-existing function to do this in the Article or Title objects.
-	 */
-	if( !$wgMultiBoilerplateOverwrite ) {
-		$dbr =& wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'page', 'page_id', array( 'page_id' => $wgTitle->getArticleID() ) );
-		$row = $dbr->fetchRow( $res );
-		if( is_array( $row ) ) return true; // Return true to end execution of this function.
-		$dbr->freeResult( $res );
-	}
+	// If $wgMultiBoilerplateOverwrite is true then detect whether
+	// the current page exists or not and if it does return true
+	// to end execution of this function.
+	if( !$wgMultiBoilerplateOverwrite && $wgTitle->exists( $wgTitle->getArticleID() ) ) return true;
 
 	// Generate the options list used inside the boilerplate selection box.
-	$options = '';
-	foreach( $wgMultiBoilerplateThings as $name => $template ) {
-		if( $wgRequest->getVal( 'boilerplate' ) == $template ) $selected = true;
-		$options .= Xml::option( $name, $template, $selected );
+	// If $wgMultiBoilerplateOptions is an array then use that, else fall back
+	// to the MediaWiki:Multiboilerplate message.
+	if( is_array( $wgMultiBoilerplateOptions ) ) {
+		$options = '';
+		foreach( $wgMultiBoilerplateOptions as $name => $template ) {
+			$selected = false;
+			if( $wgRequest->getVal( 'boilerplate' ) == $template ) $selected = true;
+			$options .= Xml::option( $name, $template, $selected );
+		}
+	} else {
+		$things = wfMsg( 'multiboilerplate' );
+		$options = '';
+		$things = explode( "\n", str_replace( "\r", "\n", str_replace( "\r\n", "\n", $things ) ) ); // Ensure line-endings are \n
+		foreach( $things as $row ) {
+			$row = preg_replace( '#^\*( *)#', '', $row ); // Remove the asterix (and a space if found) from the start of the line.
+			$row = explode( '|', $row );
+			if( !isset( $row[ 1 ] ) ) return true; // Invalid syntax, abort.
+			$selected = false;
+			if( $wgRequest->getVal( 'boilerplate' ) == $row[ 1 ] ) $selected = true;
+			$options .= Xml::option( $row[ 0 ], $row[ 1 ], $selected );
+		}
 	}
+	
+	if( $options == '' ) return true; // No options found in either configuration file, abort.
 
 	// Append the selection form to the top of the edit page.
 	$form->editFormPageTop .=
