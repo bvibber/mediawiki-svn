@@ -18,9 +18,12 @@ if( defined( 'MEDIAWIKI' ) ) {
 		'url' => 'http://www.mediawiki.org/wiki/Extension:ContributorsAddon',
 		'author' => 'Tim Laqua',
 		'description' => 'Adds JS onMouseOver popups to "Main Contributors" links',
+		'descriptionmsg' => 'contributorsaddon-desc',
 	);
 
-	$wgAutoloadClasses['SpecialContributorsAddon'] = dirname( __FILE__ ) . '/ContributorsAddonClass.php';
+	$dir = dirname(__FILE__) . '/';
+	$wgExtensionMessagesFiles['ContributorsAddon'] = $dir . 'ContributorsAddon.i18n.php';
+	$wgAutoloadClasses['SpecialContributorsAddon'] = $dir . 'ContributorsAddonClass.php';
 
 	function efContributorsAddon() {
 		global $wgMessageCache, $wgHooks;

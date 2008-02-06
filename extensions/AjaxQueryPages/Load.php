@@ -16,7 +16,10 @@ if( version_compare( $wgVersion, '1.11alpha', '<' ) ) {
 		'url' => 'http://www.mediawiki.org/wiki/Extension:AjaxQueryPages',
 		'author' => 'Ashar Voultoiz',
 		'description' => 'Add some AJAX to QueryPages such as [[Special:Shortpages]]',
+		'descriptionmsg' => 'ajax-qp-desc',
 	);
+
+	$wgExtensionMessagesFiles['AjaxQueryPages'] = dirname(__FILE__) . '/AjaxQueryPages.i18n.php';
 
 	// Load hooks
 	require_once('extensions/AjaxQueryPages/Hooks.php');
