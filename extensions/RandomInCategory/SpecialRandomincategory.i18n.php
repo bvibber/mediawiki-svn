@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Internationalisation file for extension RandomInCategory.
  *
@@ -140,7 +140,6 @@ $messages['pt'] = array(
 	'randomincategory-toolbox'    => 'Página aleatória',
 	'randomincategory-nocategory' => 'A categoria $1 não existe ou está vazia',
 	'randomincategory-label'      => 'Categoria:',
-	'randomincategory-submit'     => 'Avançar',
 );
 
 /** Slovak (Slovenčina)
