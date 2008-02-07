@@ -27,6 +27,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'smoothgallery'                     => 'معرض ناعم',
+	'smoothgallery-desc'                => 'يسمح للمستخدمين بإنشاء معارض بالصور التي تم رفعها. يسمح بمعظم خيارات المعرض الناعم',
 	'smoothgallery-title'               => 'معرض ناعم',
 	'smoothgallery-smoothgallerytitle'  => 'معرض ناعم: $1',
 	'smoothgallery-error'               => '<b>خطأ في المعرض الناعم:</b>',

@@ -12,8 +12,12 @@ $messages['en'] = array(
 	'contributionseditcount-desc' => 'Displays an edit count on [[Special:Contributions]]',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'contributionseditcount' => 'هذا المستخدم لديه $1 تعديل.',
+	'contributionseditcount'      => 'هذا المستخدم لديه $1 تعديل.',
+	'contributionseditcount-desc' => 'يعرض عدد المساهمات في [[Special:Contributions]]',
 );
 
 $messages['bcl'] = array(

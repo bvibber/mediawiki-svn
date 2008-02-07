@@ -16,9 +16,12 @@ $messages['af'] = array(
 	'deletedcontributions' => 'Geskrapte gebruikersbydraes',
 );
 
-/* Arabic (Meno25) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'deletedcontributions' => 'مساهمات المستخدم المحذوفة',
+	'deletedcontributions'      => 'مساهمات المستخدم المحذوفة',
+	'deletedcontributions-desc' => 'يعطي الإداريين القدرة على [[Special:DeletedContributions|تصفح مساهمات مستخدم ما المحذوفة]]',
 );
 
 /** Asturian (Asturianu)

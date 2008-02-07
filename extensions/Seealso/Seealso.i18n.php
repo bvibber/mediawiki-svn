@@ -91,6 +91,13 @@ $messages['lb'] = array(
 	'seealso' => 'Kuckt och',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Jacob.jose
+ */
+$messages['ml'] = array(
+	'seealso' => 'ഇതും/ഇവയും കാണുക',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -195,10 +195,13 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'lookupuser_intro'             => 'Introduza um nome de utilizador para visualizar as preferências desse utilizador.',
 	'lookupuser_nonexistent'       => 'Erro: Utilizador não existe',
 	'lookupuser_not_authenticated' => 'não autenticado',
+	'lookupuser_id'                => 'ID de utilizador: <tt>#$1</tt>',
 	'lookupuser_realname'          => 'Nome real: $1',
 	'lookupuser_registration'      => 'Data de registo: $1',
+	'lookupuser_useroptions'       => 'Opções de utilizador:',
 );
 
 /** Russian (Русский)

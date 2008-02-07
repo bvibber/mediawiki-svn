@@ -29,6 +29,7 @@ In case of problems you can try <b>Special:Call/DebuG</b>',
  */
 $messages['ar'] = array(
 	'call'              => 'استدعاء',
+	'call-desc'         => 'ينشيء وصلة فائقة لقالب (أو لصفحة ويكي عادية) مع تمرير المحددات. يمكن استخدامها في سطر أوامر المتصفح أو خلال نص الويكي.',
 	'call-text'         => "امتداد الاستدعاء يتوقع صفحة ويكي ومحددات اختيارية لهذه الصفحة كمدخلات.<br><br>
 مثال 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br/>
 مثال 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br/>
@@ -252,6 +253,13 @@ V prípade problémov môžete skúsuť <b>Special:Call/DebuG</b>",
 	'call-save'         => "Výstup tejto stránky by bol uložený na stránku s názvom ''$1''.",
 	'call-save-success' => 'Nasledovný text bol uložený na stránku <big>[[$1]]</big>.',
 	'call-save-failed'  => "Nasledovný text NEBOL uložený na stránku ''$1'', pretože taká stránka už existuje.",
+);
+
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'call' => 'Anropa',
 );
 
 /** Volapük (Volapük)

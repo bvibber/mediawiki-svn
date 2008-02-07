@@ -699,3 +699,11 @@ $messages['sv'] = array(
 	'webstore_invalid_zone' => 'Ogiltig zon "$1".',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'webstore_404'                => 'Dosya bulunamadı.',
+	'webstore_metadata_not_found' => '$1 dosyası bulunamadı',
+);
+

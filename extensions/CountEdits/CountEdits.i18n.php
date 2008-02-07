@@ -24,17 +24,20 @@ $messages['en'] = array(
 	'countedits-nocontribs' => 'There have been no contributions to this wiki.',
 );
 
-/* Arabic (Meno25) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'countedits' => 'عد التعديلات',
-	'countedits-warning' => '\'\'\'تحذير:\'\'\' لا تحكم على كتاب من غلافه. لا تحكم على مساهم من خلال عدد مساهماته.',
-	'countedits-username' => 'اسم المستخدم:',
-	'countedits-ok' => 'موافق',
-	'countedits-nosuchuser' => 'لا يوجد مستخدم بالاسم $1.',
+	'countedits'              => 'عد التعديلات',
+	'countedits-desc'         => '[[Special:CountEdits|صفحة خاصة]] تعد تعديلات المستخدم وتوفر قائمة لأعلى عشر مساهمين',
+	'countedits-warning'      => "'''تحذير:''' لا تحكم على كتاب من غلافه. لا تحكم على مساهم من خلال عدد مساهماته.",
+	'countedits-username'     => 'اسم المستخدم:',
+	'countedits-ok'           => 'موافق',
+	'countedits-nosuchuser'   => 'لا يوجد مستخدم بالاسم $1.',
 	'countedits-resultheader' => 'النتائج ل $1',
-	'countedits-resulttext' => '$1 لديه $2 مساهمة',
-	'countedits-mostactive' => 'أكثر المساهمين نشاطا',
-	'countedits-nocontribs' => 'لا يوجد مساهمون في هذه الويكي.',
+	'countedits-resulttext'   => '$1 لديه $2 مساهمة',
+	'countedits-mostactive'   => 'أكثر المساهمين نشاطا',
+	'countedits-nocontribs'   => 'لا يوجد مساهمون في هذه الويكي.',
 );
 
 /** Kotava (Kotava)
@@ -448,17 +451,20 @@ $messages['sah'] = array(
 	'countedits-nocontribs' => 'Бу биикигэ көннөрүү оҥоһуллубатах.',
 );
 
-/* Slovak (helix84) */
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
-	'countedits' => 'Počet príspevkov',
-	'countedits-warning' => "'''Varovanie:''' Nesúďte knihu podľa obalu. Nesúďte prispievateľa podľa počtu príspevkov.",
-	'countedits-username' => 'Používateľské meno:',
-	'countedits-ok' => 'OK',
-	'countedits-nosuchuser' => 'Používateľ s menom $1 neexistuje.',
+	'countedits'              => 'Počet príspevkov',
+	'countedits-desc'         => '[[Special:CountEdits|Špeciálna stránka]] počítajúca úpravy používateľov so zoznamom desatich s najväčším počtom úprav',
+	'countedits-warning'      => "'''Varovanie:''' Nesúďte knihu podľa obalu. Nesúďte prispievateľa podľa počtu príspevkov.",
+	'countedits-username'     => 'Používateľské meno:',
+	'countedits-ok'           => 'OK',
+	'countedits-nosuchuser'   => 'Používateľ s menom $1 neexistuje.',
 	'countedits-resultheader' => 'Výsledky pre $1',
-	'countedits-resulttext' => '$1 urobil $2 úprav',
-	'countedits-mostactive' => 'Najaktívnejší prispievatelia',
-	'countedits-nocontribs' => 'Táto wiki neobsahuje zatiaľ žiadne príspevky.',
+	'countedits-resulttext'   => '$1 urobil $2 úprav',
+	'countedits-mostactive'   => 'Najaktívnejší prispievatelia',
+	'countedits-nocontribs'   => 'Táto wiki neobsahuje zatiaľ žiadne príspevky.',
 );
 
 /* Serbian default (Sasa Stefanovic) */

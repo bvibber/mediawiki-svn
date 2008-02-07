@@ -348,6 +348,15 @@ $messages['sv'] = array(
 	'tasklistchooseproj'     => 'Välj projekt:',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'tasklist'         => 'Görev listesi',
+	'tasklistmytasks'  => 'Görevlerim',
+	'tasklistprojdisp' => 'Gösteri',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

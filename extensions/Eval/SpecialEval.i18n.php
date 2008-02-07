@@ -16,8 +16,12 @@ $messages['en'] = array(
 	'eval_code'   => 'Code',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
 	'eval'        => 'تقييم',
+	'eval-desc'   => 'يضيف [[Special:Eval|واجهة]] لوظيفة <code>eval()</code>',
 	'eval_submit' => 'تقييم',
 	'eval_escape' => 'خرج الهروب',
 	'eval_out'    => 'خرج',
@@ -98,8 +102,12 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'eval-desc' => 'Adiciona [[{{ns:special}}:Eval|uma interface]] à função <code>eval()</code>',
-	'eval_code' => 'Código',
+	'eval'        => 'Eval',
+	'eval-desc'   => 'Adiciona [[{{ns:special}}:Eval|uma interface]] à função <code>eval()</code>',
+	'eval_submit' => 'Resolver',
+	'eval_escape' => 'Resultado em "escape"',
+	'eval_out'    => 'Resultado',
+	'eval_code'   => 'Código',
 );
 
 /** Russian (Русский)
@@ -118,6 +126,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'eval'        => 'Eval',
+	'eval-desc'   => 'Pridáva [[Special:Eval|rozhranie]] k funkcii <code>eval()</code>',
 	'eval_submit' => 'Vyhodnotiť',
 	'eval_escape' => 'Výstup s únikovými klauzulami',
 	'eval_out'    => 'Výstup',
@@ -129,6 +138,13 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'eval_submit' => 'wäidierje',
+);
+
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'eval_code' => 'Kod',
 );
 
 /** Turkish (Türkçe)

@@ -96,3 +96,10 @@ $messages['stq'] = array(
 	'usercontactlink-baduser' => 'falsken Benutsernoome',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'usercontactlink-baduser' => 'Hatalı kullanıcı adı',
+);
+

@@ -24,6 +24,7 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
+	'multiboilerplate-desc'   => 'يعرض صندوقا أعلى صفحة التعديل لاختيار وتحميل طبق بويلر',
 	'multiboilerplate-legend' => 'اختر طبق البويلر',
 	'multiboilerplate-submit' => 'تحميل',
 );
@@ -32,6 +33,7 @@ $messages['ar'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
+	'multiboilerplate-desc'   => "Affiche une boîte en haut de la page d'édition afin de sélectionner et charger une page ou un modèle.",
 	'multiboilerplate-legend' => 'Sélectionner la page à incorporer',
 	'multiboilerplate-submit' => 'Charger',
 );
@@ -54,8 +56,10 @@ $messages['lb'] = array(
 
 /** Dutch (Nederlands)
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
+	'multiboilerplate-desc'   => 'Toon een venster bovenaan een bewerkingspagina voor het selecteren en laden van een standaard tekstblok',
 	'multiboilerplate-legend' => 'Sjabloon selecteren',
 	'multiboilerplate-submit' => 'Laden',
 );
@@ -72,6 +76,8 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
+	'multiboilerplate-desc'   => 'Zobrazuje pole na vrchu editovacej stránky na výber a načítanie šablóny',
 	'multiboilerplate-legend' => 'Vyberte nápis',
 	'multiboilerplate-submit' => 'Načítať',
 );
+

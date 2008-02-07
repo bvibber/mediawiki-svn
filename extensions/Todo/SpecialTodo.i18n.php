@@ -335,6 +335,13 @@ $messages['sv'] = array(
 	'todo-form-details'     => 'Detaljer:',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'todo-new-queue' => 'yeni',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

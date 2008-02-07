@@ -31,6 +31,7 @@ this function sparingly.",
  */
 $messages['ar'] = array(
 	'asksql'          => 'استعلام SQL',
+	'asksql-desc'     => 'عمل كويري إس كيو إل من خلال [[Special:Asksql|صفحة خاصة]]',
 	'asksqltext'      => "استخدم الاستمارة بالأسفل لعمل استعلام مباشر لقاعدة البيانات.
 استخدم علامات مفردة ('مثل هذه') لتحديد حدود الخيوط.
 هذا عادة يضيف عبئا كبيرا للخادم، لذا من فضلك استخدم هذه الخاصية بقلة.",
@@ -566,6 +567,7 @@ $messages['sr-ec'] = array(
  */
 $messages['stq'] = array(
 	'asksql'          => 'SQL Froage',
+	'asksql-desc'     => 'SQL-Oufroagen uur ne [[Special:Asksql|Spezialsiede]] truchfiere.',
 	'asksqltext'      => "Bruuk dät Formular hier unner uum fluks ne Oufroage fon ju Doatenboank tou moakjen.
 Bruuk eenpelde Anfierengsteekene ('as disse') uum Riegen-Eenden outougränsjen.
 Dit kon oafte dän Server oarich beläästigje, bruuk dät deeruum spoarsoam.",

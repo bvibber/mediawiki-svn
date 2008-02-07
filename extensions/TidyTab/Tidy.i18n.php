@@ -65,6 +65,14 @@ $messages['oc'] = array(
 	'untidy' => 'Declassar',
 );
 
+/** Russian (Русский)
+ * @author Kaganer
+ */
+$messages['ru'] = array(
+	'tidy'   => 'Упорядочить',
+	'untidy' => 'Разупорядочить',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

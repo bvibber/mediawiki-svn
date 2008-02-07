@@ -52,6 +52,7 @@ Isto lo fa clamando ta o parser correspondient dende o propio MediaWiki.',
  */
 $messages['ar'] = array(
 	'expandtemplates'                  => 'فرد القوالب',
+	'expandtemplates-desc'             => 'يفرد القوالب، دوال البارسر والمتغيرات لعرض نص الويكي الممدد ورؤية الصفحة الناتجة',
 	'expand_templates_intro'           => 'تتعامل هذه الصفحة الخاصة مع نصوص الويكي وتقوم بفرد كل القوالب الموجودة به. وتقوم أيضا بفرد دوال القوالب مثل <nowiki>{{</nowiki>#if:...}}, و المتغيرات مثل <nowiki>{{</nowiki>يوم}}-- و تقوم التعامل مع كل ما بين الأقواس المزدوجة. و تقوم بفعل هذا عن طريق استدعاء المعالج المناسب من الميدياويكي.',
 	'expand_templates_title'           => 'عنوان صفحة هذا النص، لأجل معالجة {{PAGENAME}} إلخ.:',
 	'expand_templates_input'           => 'النص المدخل (الأصلي)',
@@ -147,15 +148,18 @@ $messages['co'] = array(
 
 /** Czech (Česky)
  * @author Li-sung
+ * @author Matěj Grabovský
  * @author Danny B.
  */
 $messages['cs'] = array(
 	'expandtemplates'                  => 'Substituce šablon',
+	'expandtemplates-desc'             => 'Rozbaluje šablony, funkce syntaktického analyzátoru a proměnné; zobrazuje rozbalený wikitext a náhled stránky, jak se zobrazí',
 	'expand_templates_intro'           => 'Pomocí této speciální stránky můžete nechat v textu substituovat všechny šablony a funkce parseru jako <code><nowiki>{{</nowiki>#if:…...}}</code> či proměnné jako <code><nowiki>{{</nowiki>CURRENTDAY}} – tzn. prakticky všechno v dvojitých složených závorkách. K tomu se používají přímo odpovídající funkce parseru MediaWiki.',
 	'expand_templates_title'           => 'Název stránky kvůli kontextu pro <code>{{PAGENAME}}</code> apod.:',
 	'expand_templates_input'           => 'Vstupní text:',
 	'expand_templates_output'          => 'Výstup',
 	'expand_templates_xml_output'      => 'Výstup XML',
+	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Odstranit komentáře',
 	'expand_templates_generate_xml'    => 'Zobrazit syntaktický strom v XML',
 	'expand_templates_preview'         => 'Náhled',
@@ -271,6 +275,7 @@ telles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}} sont 
  */
 $messages['frp'] = array(
 	'expandtemplates'                  => 'Èxpension des modèlos',
+	'expandtemplates-desc'             => 'Ôgmente los modèlos, les fonccions d’analisa et les variâbles por visionar los tèxtes vouiquis ètendus et prèvisualise les pâges rendues d’ense.',
 	'expand_templates_intro'           => 'Ceta pâge pèrmèt d’èprovar l’èxpension de modèlos,
 que sont dèvelopâs rècursivament. Les fonccions et les variâbles prèdèfenies,
 tâles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}}, sont asse-ben dèvelopâs.',
@@ -703,6 +708,7 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'expandtemplates'                  => 'Substituovať šablóny',
+	'expandtemplates-desc'             => 'Rozbaľuje šablóny, funkcie syntaktického analyzátora a premenné; zobrazuje rozbalený wikitext a náhľad stránky ako sa zobrazí',
 	'expand_templates_intro'           => 'Táto špeciálna stránka prijme na
 vstup text a rekurzívne substituuje všetky šablóny,
 ktoré sú v ňom použité. Tiež expanduje funkcie parsera
@@ -787,6 +793,7 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'expandtemplates'                  => 'Expandera mallar',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Expanderar]] mallar, parserfunktioner och variabler till wikikod och förhandsvisar den sida som renderas',
 	'expand_templates_intro'           => 'Den här specialsidan tar en text och expanderar rekursivt alla mallar som används. Även parserfunktioner (som <nowiki>{{</nowiki>#if:...}}), variabler som <nowiki>{{</nowiki>CURRENTDAY}} och annan kod med dubbla klammerparenteser expanderas.',
 	'expand_templates_title'           => 'Sidans titel, används för t.ex. {{PAGENAME}}:',
 	'expand_templates_input'           => 'Text som ska expanderas:',

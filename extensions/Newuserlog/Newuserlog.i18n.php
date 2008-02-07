@@ -35,9 +35,14 @@ $messages['an'] = array(
 	'newuserlog-create-entry'  => 'Nuebo usuario',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ * @author Mido
+ */
 $messages['ar'] = array(
 	'newuserlogpage'           => 'سجل إنشاء الحسابات الجديدة',
 	'newuserlogpagetext'       => 'هذا سجل بعمليات إنشاء الحسابات الجديدة',
+	'newuserlog-byemail'       => 'كلمة السر تم إرسالها بواسطة البريد الإلكتروني',
 	'newuserlog-create-entry'  => 'مستخدم جديد',
 	'newuserlog-create2-entry' => 'أنشأ الحساب الخاص باسم $1',
 );
@@ -65,11 +70,13 @@ $messages['bcl'] = array(
 );
 
 /** Bulgarian (Български)
+ * @author DCLXVI
  * @author Spiritia
  */
 $messages['bg'] = array(
 	'newuserlogpage'           => 'Дневник на регистрациите',
 	'newuserlogpagetext'       => 'Тази страница съдържа дневник на потребителските регистрации',
+	'newuserlog-byemail'       => 'паролата е изпратена по е-поща',
 	'newuserlog-create-entry'  => 'Нов потребител',
 	'newuserlog-create2-entry' => 'създаде сметка за $1',
 );
@@ -349,9 +356,14 @@ $messages['it'] = array(
 	'newuserlog-create2-entry' => 'ha registrato il nome utente $1',
 );
 
+/** Japanese (日本語)
+ * @author Suisui
+ * @author JtFuruhata
+ */
 $messages['ja'] = array(
 	'newuserlogpage'           => 'アカウント作成記録',
 	'newuserlogpagetext'       => '以下は最近作成されたアカウントの一覧です。',
+	'newuserlog-byemail'       => 'パスワードを電子メールで送信しました',
 	'newuserlog-create-entry'  => '新規利用者',
 	'newuserlog-create2-entry' => 'アカウント $1 が作成されました',
 );
@@ -458,6 +470,17 @@ $messages['mk'] = array(
 	'newuserlog-create2-entry' => 'направив налог за $1',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Jacob.jose
+ */
+$messages['ml'] = array(
+	'newuserlogpage'           => 'ഉപയോക്തൃസൃഷ്ടി പ്രവര്‍ത്തനരേഖകള്‍',
+	'newuserlogpagetext'       => 'ഇത് ഉപയോക്താക്കളെ സൃഷ്ടിച്ചതിന്റെ പ്രവര്‍ത്തനരേഖകളാണ്',
+	'newuserlog-byemail'       => 'രഹസ്യവാക്ക് ഇ-മെയില്‍ വഴി അയച്ചിരിക്കുന്നു',
+	'newuserlog-create-entry'  => 'പുതിയ ഉപയോക്താവ്',
+	'newuserlog-create2-entry' => '$1 എന്ന ഉപയോക്താവിനുവേണ്ടി അക്കൗണ്ട് സൃഷ്ടിച്ചിരിക്കുന്നു',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -500,6 +523,17 @@ $messages['nl'] = array(
 	'newuserlog-byemail'       => 'wachtwoord is verzonden per e-mail',
 	'newuserlog-create-entry'  => 'Nieuwe gebruiker',
 	'newuserlog-create2-entry' => 'heeft gebruiker $1 ingeschreven',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'newuserlogpage'           => 'Brukaropprettingslogg',
+	'newuserlogpagetext'       => 'Dette er ein logg over oppretta brukarkontoar.',
+	'newuserlog-byemail'       => 'passordet er sendt på e-post',
+	'newuserlog-create-entry'  => 'Ny brukar',
+	'newuserlog-create2-entry' => 'oppretta konto for $1',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)
@@ -695,11 +729,16 @@ $messages['to'] = array(
 	'newuserlog-create2-entry' => 'Naʻe fakatupu ʻa e tohi-kau-ki-ai maʻa $1',
 );
 
+/** Turkish (Türkçe)
+ * @author Uğur Başak
+ * @author Srhat
+ */
 $messages['tr'] = array(
 	'newuserlogpage'           => 'Yeni kullanıcı kayıtları',
 	'newuserlogpagetext'       => 'En son kaydolan kullanıcı kayıtları',
+	'newuserlog-byemail'       => 'eposta yoluyla şifre gönderilmiştir',
 	'newuserlog-create-entry'  => 'Yeni kullanıcı',
-	'newuserlog-create2-entry' => '$1 yeni hesap yarattı',
+	'newuserlog-create2-entry' => '$1 yeni hesap oluşturdu',
 );
 
 /** Tahitian (Reo Mā`ohi)

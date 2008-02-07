@@ -89,6 +89,7 @@ $2',
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'email-desc'   => 'Maakt het toevoegen van aangepaste kop- en voetteksten in e-mails tussen gebruikers mogelijk',
 	'email_footer' => '----------------------------------------------------------------------------
 Deze email is naar u verzonden via het {{SITENAME}}-emailsysteem door $1.
 
@@ -135,9 +136,11 @@ $2',
 );
 
 /** Slovak (Slovenčina)
+ * @author Siebrand
  * @author Helix84
  */
 $messages['sk'] = array(
+	'email-desc'   => 'Umožňuje pridávať do emailov používateľom vlastné hlavičky a päty.',
 	'email_footer' => '----------------------------------------------------------------------------
 Tento email vám poslal $1 pomocou emailového systému {{GRAMMAR:genitív|{{SITENAME}}}}.
 

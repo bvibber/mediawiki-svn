@@ -22,6 +22,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'block_title_error_page_title' => 'عنوان ممنوع',
+	'block_title_error-desc'       => 'يوفر طريقة أساسية لمنع الصفحات بعناوين معينة من الحفظ أو الإنشاء',
 	'block_title_error'            => 'عذرا، عنوان هذه الصفحة غير مسموح بحفظه.',
 );
 
@@ -55,6 +56,7 @@ $messages['bcl'] = array(
  */
 $messages['bg'] = array(
 	'block_title_error_page_title' => 'Блокирано заглавие',
+	'block_title_error-desc'       => 'Средство за предпазване на някои страници от съхранение или създаване',
 	'block_title_error'            => 'Заглавието на тази страница е блокирано. Това не позволява страницата да бъде създадена.',
 );
 
@@ -358,6 +360,7 @@ $messages['sr-ec'] = array(
  */
 $messages['stq'] = array(
 	'block_title_error_page_title' => 'Speer Siedennoome',
+	'block_title_error-desc'       => 'Rakt ne eenfache Muugelkhaid, dät Moakjen fon Sieden mäd bestimde Tittele tou ferhinnerjen.',
 	'block_title_error'            => 'Äntscheeldigenge, man ne Siede mäd dissen Tittel duur nit spiekerd wäide.',
 );
 

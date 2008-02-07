@@ -16,7 +16,8 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'advancedrandom' => 'عشوائي متقدم',
+	'advancedrandom'      => 'عشوائي متقدم',
+	'advancedrandom-desc' => 'احصل على صفحة عشوائية من نقاش أو صفحة موضوع موصولة لصفحة معطاة، يمكن استخدامها مثل [[Special:AdvancedRandom/Template:Featured/Talk]] للحصول على مقالة مختارة عشوائية أو مثل [[Special:AdvancedRandom/Template:GFDL/Image]] للحصول على ملف عشوائي مرخص برخصة جنو للوثائق الحرة',
 );
 
 /** Asturian (Asturianu)
@@ -48,10 +49,12 @@ $messages['br'] = array(
 );
 
 /** Czech (Česky)
+ * @author Li-sung
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
-	'advancedrandom' => 'Pokročilý náhodný výběr',
+	'advancedrandom'      => 'Pokročilý náhodný výběr',
+	'advancedrandom-desc' => 'Vrátí náhodnou stránku, která sama nebo jí příslušná diskuse odkazuje na zadanou stránku. Je možné ho použít na získání náhodného nejlepšího článku ve tvaru [[{{ns:Special}}:AdvancedRandom/Šablona:Nejlepší článek/Diskuse]] nebo na získání náhodného GFDL souboru ve tvaru [[{{ns:Special}}:AdvancedRandom/Šablona:GFDL/Soubor]]',
 );
 
 /** German (Deutsch)
@@ -186,7 +189,8 @@ $messages['sk'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'advancedrandom' => 'Toufällige Siede (ferruumed)',
+	'advancedrandom'      => 'Toufällige Siede (ferruumed)',
+	'advancedrandom-desc' => 'Hoal ne toufällige Siede, t.B. mäd [[Special:AdvancedRandom/{{ns:Template}}:Featured/{{ns:Talk}}]], uum ne toufällige Diskussionssiede tou n excellenten Artikkel of mäd [[Special:AdvancedRandom/{{ns:Template}}:GFDL/{{ns:Image}}]], uum ne toufällige Doatäi antouwiesen, ju der as GFDL lizenzierd is.',
 );
 
 /** Swedish (Svenska)

@@ -191,6 +191,13 @@ $messages['su'] = array(
 	'userimages-noimages' => '$1 can kungsi ngamuatkeun gambar.',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'userimages-noimages' => '$1 resmi yüklenemedi.',
+);
+
 /* Cantonese (Shinjiman) */
 $messages['yue'] = array(
 	'userimages-caption' => '由$1上載嘅圖像',

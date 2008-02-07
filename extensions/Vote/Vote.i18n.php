@@ -429,6 +429,17 @@ riddler|Gåtan',
 	'vote-invalid-choice' => 'Du måste välja något av de angivna alternativen.',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'vote'                => 'Oy',
+	'vote-caption'        => 'Oyunuz :',
+	'vote-submit'         => 'Oy',
+	'vote-results-choice' => 'Seçim',
+	'vote-results-count'  => 'Sayma',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

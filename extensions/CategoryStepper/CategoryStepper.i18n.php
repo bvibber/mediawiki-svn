@@ -23,6 +23,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'categorystepper-start' => '(بداية التصنيف)',
+	'categorystepper-desc'  => 'يعرض صندوق تصنيف في الصفحات الموجودة في مجموعة من التصنيفات.',
 	'categorystepper-end'   => '(نهاية التصنيف)',
 );
 

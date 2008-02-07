@@ -38,6 +38,7 @@ $messages['ang'] = array(
  */
 $messages['ar'] = array(
 	'backforth-next' => 'التالي ($1)',
+	'backforth-desc' => 'يضيف وصلات "التالي" و "السابق" الأبجدية لأعلى الصفحات',
 	'backforth-prev' => 'السابق ($1)',
 );
 
@@ -358,6 +359,7 @@ $messages['sr-ec'] = array(
  */
 $messages['stq'] = array(
 	'backforth-next' => 'Naiste ($1)',
+	'backforth-desc' => 'Föiget alfabetiske "Naiste"- un "Foarige"-Navigations-Linke tou an dän Siedenkop.',
 	'backforth-prev' => 'Foarige ($1)',
 );
 
@@ -373,6 +375,14 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'backforth-next' => 'తర్వాత ($1)',
 	'backforth-prev' => 'గత ($1)',
+);
+
+/** Turkish (Türkçe)
+ * @author Srhat
+ */
+$messages['tr'] = array(
+	'backforth-next' => 'Sonraki ($1)',
+	'backforth-prev' => 'Önceki ($1)',
 );
 
 /** Vietnamese (Tiếng Việt)

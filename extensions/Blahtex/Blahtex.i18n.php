@@ -69,6 +69,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'math_noblahtex'                        => 'لم يمكن تنفيذ بلاهتك، والتي ينبغي أن تكون في $1',
+	'math-desc'                             => 'خرج MathML لوسوم &lt;math&gt;',
 	'math_AmbiguousInfix'                   => 'وضع غير مريح ل"$1" (حاول استخدام أقواس إضافية "{ ... }" للتوضيح)',
 	'math_CannotChangeDirectory'            => 'لا يمكن تغيير مجلد العمل',
 	'math_CannotCreateTexFile'              => 'لا يمكن إنشاء ملف تك',
@@ -279,6 +280,7 @@ $messages['cs'] = array(
 	'math_CannotRunLatex'                   => 'nelze spustit latex',
 	'math_CannotWritePngDirectory'          => 'Nelze zapisovat do výstupního adresáře pro PNG',
 	'math_CannotWriteTexFile'               => 'Nelze zapisovat do tex souboru',
+	'math_CasesRowTooBig'                   => 'Můžou být pouze dva záznamy v každém řádku bloku „cases“',
 	'math_DoubleSubscript'                  => 'Byly nalezeny dva dolní indexy patřící ke stejnému základu (je povolený jen jeden)',
 	'math_DoubleSuperscript'                => 'Byly nalezeny dva horní indexy patřící ke stejnému základu (je povolený jen jeden)',
 	'math_IllegalCharacter'                 => 'Neplatný znak na vstupu',
@@ -286,6 +288,11 @@ $messages['cs'] = array(
 	'math_IllegalCommandInMathModeWithHint' => 'Příkaz „$1“ není platný v matematickém režimu (možná jste chtěli místo něho použít „$2“?)',
 	'math_IllegalCommandInTextMode'         => 'Příkaz „$1“ není platný v textovém režimu',
 	'math_IllegalCommandInTextModeWithHint' => 'Příkaz „$1“ není platný v textovém režimu (možná jste chtěli místo něho použít „$2“?)',
+	'math_IllegalDelimiter'                 => 'Neplatný oddělovač za „$1“',
+	'math_IllegalFinalBackslash'            => 'Neplatné zpětné lomítko „\\“ na konci vstupu',
+	'math_IllegalNestedFontEncodings'       => 'Příkazy kódování písma nemohou být být vnořené',
+	'math_IllegalRedefinition'              => 'Příkaz „$1“ už byl definovaný; nemůžete ho předefinovat',
+	'math_InvalidColour'                    => 'Barva „$1“ není platná',
 );
 
 /** Greek (Ελληνικά)

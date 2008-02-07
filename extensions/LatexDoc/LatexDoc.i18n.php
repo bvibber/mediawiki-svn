@@ -170,16 +170,17 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'latexdoc_cant_write' => 'Não foi possível escrever para o ficheiro $1',
-	'latexdoc_error'      => 'Erro LaTeX
+	'latexdoc_cant_create_dir' => 'Não foi possível criar directoria temporária $1',
+	'latexdoc_cant_write'      => 'Não foi possível escrever para o ficheiro $1',
+	'latexdoc_error'           => 'Erro LaTeX
 
 Comando: $1
 
 Resultado: $2
 
 $3',
-	'latexdoc_get_dvi'    => 'Obter DVI',
-	'latexdoc_get_pdf'    => 'Obter PDF',
+	'latexdoc_get_dvi'         => 'Obter DVI',
+	'latexdoc_get_pdf'         => 'Obter PDF',
 );
 
 /** Romanian (Română)

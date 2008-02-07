@@ -1295,17 +1295,29 @@ $messages['tg'] = array(
 );
 
 /** Turkish (Türkçe)
- * @author Srhat
  * @author Erkan Yilmaz
+ * @author Srhat
  */
 $messages['tr'] = array(
-	'ogg-play'       => 'Oynat',
-	'ogg-pause'      => 'Duraklat',
-	'ogg-stop'       => 'Durdur',
-	'ogg-play-video' => 'Video filmini oynat',
-	'ogg-play-sound' => 'Sesi oynat',
-	'ogg-more'       => 'Daha...',
-	'ogg-dismiss'    => 'Kapat',
+	'ogg-short-audio'       => 'Ogg $1 ses dosyası, $2',
+	'ogg-short-video'       => 'Ogg $1 film dosyası, $2',
+	'ogg-short-general'     => 'Ogg $1 medya dosyası, $2',
+	'ogg-long-audio'        => '(Ogg $1 ses dosyası, süre $2, $3)',
+	'ogg-long-video'        => '(Ogg $1 film dosyası, süre $2, $4×$5 piksel, $3)',
+	'ogg-long-multiplexed'  => '(Ogg çok düzeyli ses/film dosyası, $1, süre $2, $4×$5 piksel, $3 genelde)',
+	'ogg-long-general'      => '(Ogg medya dosyası, süre $2, $3)',
+	'ogg-long-error'        => '(Geçersiz ogg dosyası: $1)',
+	'ogg-play'              => 'Oynat',
+	'ogg-pause'             => 'Duraklat',
+	'ogg-stop'              => 'Durdur',
+	'ogg-play-video'        => 'Video filmini oynat',
+	'ogg-play-sound'        => 'Sesi oynat',
+	'ogg-player-oggPlugin'  => 'Ogg eklentisi',
+	'ogg-player-soundthumb' => 'Oynatıcı yok',
+	'ogg-player-selected'   => '(seçilmiş)',
+	'ogg-more'              => 'Daha...',
+	'ogg-dismiss'           => 'Kapat',
+	'ogg-desc-link'         => 'Bu dosya hakkında',
 );
 
 /** Vietnamese (Tiếng Việt)

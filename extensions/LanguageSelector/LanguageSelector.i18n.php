@@ -125,6 +125,14 @@ $messages['hu'] = array(
 	'languageselector-setlang' => 'beállítás',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'languageselector'         => '言語選択',
+	'languageselector-setlang' => '設定',
+);
+
 /** Kazakh
  * @author AlefZet
 */

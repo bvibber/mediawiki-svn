@@ -167,8 +167,15 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'inspectcache-ok'   => 'OK',
-	'inspectcache-list' => 'Listar',
+	'inspectcache'         => 'Inspeccionar cache',
+	'inspectcache-ok'      => 'OK',
+	'inspectcache-general' => 'Cache geral',
+	'inspectcache-parser'  => 'Cache do analisador "parser"',
+	'inspectcache-message' => 'Cache de mensagens',
+	'inspectcache-get'     => 'Buscar',
+	'inspectcache-delete'  => 'Apagar',
+	'inspectcache-deleted' => 'Cache Apagada',
+	'inspectcache-list'    => 'Listar',
 );
 
 /** Russian (Русский)

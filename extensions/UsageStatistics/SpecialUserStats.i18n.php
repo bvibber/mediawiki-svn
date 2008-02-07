@@ -337,6 +337,16 @@ $messages['te'] = array(
 	'usagestatisticsbadstartend' => '<b><i>ప్రారంభ</i> మరియు/లేదా <i>ముగింపు</i> తేదీ సరైనది కాదు!</b>',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'usagestatisticsallusers' => 'Bütün kullanıcılar',
+	'usagestatisticsinterval' => 'Zaman',
+	'usagestatisticsstart'    => 'Başlangıç tarihi',
+	'usagestatisticsend'      => 'Bitiş tarihi',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

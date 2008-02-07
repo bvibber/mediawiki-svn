@@ -15,10 +15,14 @@ $messages['en'] = array(
 	'findspam-notextfound' => 'No contributions found',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'findspam' => 'إيجاد السبام',
-	'findspam-ip' => 'عنوان الأيبي:',
-	'findspam-ok' => 'موافق',
+	'findspam'             => 'إيجاد السبام',
+	'findspam-desc'        => 'يضيف [[Special:FindSpam|صفحة خاصة]] تسمح بإيجاد السبام المضاف حديثا',
+	'findspam-ip'          => 'عنوان الأيبي:',
+	'findspam-ok'          => 'موافق',
 	'findspam-notextfound' => 'لم يتم العثور على مساهمات',
 );
 
@@ -69,10 +73,14 @@ $messages['gl'] = array(
 	'findspam-notextfound' => 'Non foron atopadas contribucións',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'findspam' => 'Spam namakać',
-	'findspam-ip' => 'IP-adresa',
-	'findspam-ok' => 'W porjadku',
+	'findspam'             => 'Spam namakać',
+	'findspam-desc'        => 'Přidawa [[Special:FindSpam|specialnu stronu]], kotraž dowola tuchwilu přidaty spam namakać',
+	'findspam-ip'          => 'IP-adresa',
+	'findspam-ok'          => 'W porjadku',
 	'findspam-notextfound' => 'Žane přinoški namakane',
 );
 
@@ -93,6 +101,17 @@ $messages['lb'] = array(
 	'findspam-ip'          => 'IP-Adress:',
 	'findspam-ok'          => 'OK',
 	'findspam-notextfound' => 'Keng Kontributioune fonnt',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Jacob.jose
+ */
+$messages['ml'] = array(
+	'findspam'             => 'സ്പാം(spam) കണ്ടെത്തുക',
+	'findspam-desc'        => 'പുതുതായി ചേര്‍ക്കപ്പെട്ട സ്പാം കണ്ടെത്താനുതകുന്ന [[Special:FindSpam|പ്രത്യേക താള്‍]] ചേര്‍ക്കുന്നു',
+	'findspam-ip'          => 'IP വിലാസം:',
+	'findspam-ok'          => 'ശരി',
+	'findspam-notextfound' => 'സംഭാവനകളൊന്നും കണ്ടെത്താനായില്ല',
 );
 
 /** Low German (Plattdüütsch)
@@ -152,10 +171,14 @@ $messages['ru'] = array(
 	'findspam-notextfound' => 'Не найдено вклада',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
-	'findspam' => 'Nájsť spam',
-	'findspam-ip' => 'IP adresa:',
-	'findspam-ok' => 'OK',#identical but defined
+	'findspam'             => 'Nájsť spam',
+	'findspam-desc'        => 'Pridáva [[Special:FindSpam|špeciálnu stránku]], ktorá umožňuje nájsť nedávno pridaný spam',
+	'findspam-ip'          => 'IP adresa:',
+	'findspam-ok'          => 'OK',
 	'findspam-notextfound' => 'Neboli nájdené žiadne príspevky',
 );
 

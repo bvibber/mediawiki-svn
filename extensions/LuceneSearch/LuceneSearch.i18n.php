@@ -1321,10 +1321,14 @@ $messages['tg'] = array(
 
 /** Turkish (Türkçe)
  * @author Erkan Yilmaz
+ * @author Srhat
  */
 $messages['tr'] = array(
-	'lucene-resultsize' => '$1 ($2 kelimeler)',
-	'searchall'         => 'hepsi',
+	'searchnumber'       => '<strong>Bulunan toplam $3 sonuçtan $1-$2 arası sonuçlar</strong>',
+	'lucene-searchscore' => 'Uygunluk: $1%',
+	'lucene-resultsize'  => '$1 ($2 kelimeler)',
+	'searchdidyoumean'   => 'Bunu mu demek istediniz: "<a href="$1">$2</a>"?',
+	'searchall'          => 'hepsi',
 );
 
 $messages['ur'] = array(

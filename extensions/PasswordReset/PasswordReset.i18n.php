@@ -47,7 +47,8 @@ $messages['ar'] = array(
 	'passwordreset-disableuserexplain' => '(يضبط هاش كلمة سر غير صحيح - المستخدم لا يمكنه الدخول)',
 	'passwordreset-disablesuccess'     => 'حساب المستخدم تم تعطيله (رقم_المستخدم: $1)',
 	'passwordreset-accountdisabled'    => 'الحساب تم تعطيله',
-
+	'disabledusers'                    => 'مستخدمون معطلون',
+	'disabledusers-summary'            => 'هذه قائمة بالمستخدمين الذين تم تعطيلهم من خلال إعادة ضبط كلمة السر.',
 );
 
 /** Bulgarian (Български)
@@ -158,7 +159,8 @@ $messages['hsb'] = array(
 	'passwordreset-disableuserexplain' => '(nastaja njepłaćiwy hesłowy šmjat - wužiwar njemóže so přizjewić)',
 	'passwordreset-disablesuccess'     => 'Wužiwarske konto bu znjemóžnjene (wužiwarski_id: $1)',
 	'passwordreset-accountdisabled'    => 'Konto bu znjemóžnjene',
-
+	'disabledusers'                    => 'Znjemóžnene wužiwarske konta',
+	'disabledusers-summary'            => 'To je lisćina wužiwarskich kontow, kotrež buchu přez PasswordReset znjemóžnjene.',
 );
 
 /** Hungarian (Magyar)

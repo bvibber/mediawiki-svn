@@ -19,13 +19,17 @@ $messages['en'] = array(
 	'cspammer-log-page'           => 'Comment Spammer log',
 );
 
-/* Other languages here */
+/** Arabic (العربية)
+ * @author Meno25
+ * @author Siebrand
+ */
 $messages['ar'] = array(
 	'commentspammer-save-blocked' => 'عنوان الأيبي الخاص بك هو معلق سبام مشتبه، لذا لم يتم حفظ الصفحة. [[Special:Userlogin|ادخل أو سجل حسابا]] لتجنب هذا.',
-	'commentspammer-log-msg' => 'تعديل من [[Special:Contributions/$1|$1]] ل[[:$2]].',
+	'commentspammer-desc'         => 'يرفض التعديلات من معلقي السبام المشتبه فيهم على قائمة DNS سوداء',
+	'commentspammer-log-msg'      => 'تعديل من [[Special:Contributions/$1|$1]] ل[[:$2]].',
 	'commentspammer-log-msg-info' => 'آخر سبام منذ $1 {{PLURAL:$1|يوم|يوم}} ، مستوى التهديد هو $2، وكود الإساءة هو $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 عرض التفاصيل]، أو [[Special:Blockip/$4|منع]].',
-	'cspammerlogpagetext' => 'سجل التعديلات التي تم السماح بها أو رفضها بناء على ما إذا كان المصدر معلق سبام معروف.',
-	'cspammer-log-page' => 'سجل تعليق السبام',
+	'cspammerlogpagetext'         => 'سجل التعديلات التي تم السماح بها أو رفضها بناء على ما إذا كان المصدر معلق سبام معروف.',
+	'cspammer-log-page'           => 'سجل تعليق السبام',
 );
 
 /* German */

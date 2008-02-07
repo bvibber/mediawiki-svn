@@ -81,6 +81,7 @@ $messages['an'] = array(
  */
 $messages['ar'] = array(
 	'changeauthor'                      => 'غير مؤلف النسخة',
+	'changeauthor-desc'                 => 'يسمح بتغيير مؤلف نسخة',
 	'changeauthor-title'                => 'غير مؤلف نسخة',
 	'changeauthor-search-box'           => 'ابحث في النسخ',
 	'changeauthor-pagename-or-revid'    => 'اسم الصفحة أو رقم النسخة:',
@@ -108,6 +109,7 @@ $messages['ar'] = array(
  */
 $messages['bg'] = array(
 	'changeauthor'                      => 'Промяна на автора на редакция',
+	'changeauthor-desc'                 => 'Позволява промяна на автора на редакцията',
 	'changeauthor-title'                => 'Промяна на автора на редакция',
 	'changeauthor-search-box'           => 'Търсене на редакция',
 	'changeauthor-pagename-or-revid'    => 'Име на страница или номер на редакция:',
@@ -551,10 +553,13 @@ $messages['stq'] = array(
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'changeauthor-pagenameform-go'  => 'Gå',
-	'changeauthor-comment'          => 'Kommentar:',
-	'changeauthor-invalid-username' => 'Ogiltigt användarnamn "$1".',
-	'changeauthor-nosuchtitle'      => 'Det finns ingen sida med namnet "$1".',
+	'changeauthor-pagenameform-go'      => 'Gå',
+	'changeauthor-comment'              => 'Kommentar:',
+	'changeauthor-changeauthors-multi'  => 'Ändra upphovsman (upphovsmän)',
+	'changeauthor-changeauthors-single' => 'Ändra upphovsman',
+	'changeauthor-invalid-username'     => 'Ogiltigt användarnamn "$1".',
+	'changeauthor-nosuchtitle'          => 'Det finns ingen sida med namnet "$1".',
+	'changeauthor-logpagename'          => 'Upphovsmansändringslogg',
 );
 
 /** Telugu (తెలుగు)

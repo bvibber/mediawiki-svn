@@ -9,6 +9,13 @@ $messages['en'] = array(
 	'breadcrumbs-desc' => 'Shows the users path through the wiki.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'breadcrumbs-desc' => 'يعرض مسار المستخدمين خلال الويكي.',
+);
+
 $messages['de'] = array(
 	'breadcrumbs-desc' => 'Zeigt den Weg des Benutzers durch das Wiki.',
 
@@ -43,5 +50,12 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'breadcrumbs-desc' => 'Zobrazí cestu používateľa vo wiki.',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'breadcrumbs-desc' => 'Wiest dän Wai fon dän Benutser truch dät Wiki.',
 );
 

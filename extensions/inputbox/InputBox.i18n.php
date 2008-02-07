@@ -749,9 +749,13 @@ $messages['to'] = array(
 	'createarticle' => 'Fakatupu ʻa e kupu',
 );
 
-/** Turkish (Türkçe) */
+/** Turkish (Türkçe)
+ * @author Erkan Yilmaz
+ * @author Srhat
+ */
 $messages['tr'] = array(
-	'createarticle' => 'Sayfayı oluştur',
+	'searchfulltext' => 'Tüm metni ara',
+	'createarticle'  => 'Sayfayı oluştur',
 );
 
 $messages['uk'] = array(

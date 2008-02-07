@@ -26,6 +26,7 @@ $messages['an'] = array(
  */
 $messages['ar'] = array(
 	'assert_edit_title'   => 'التأكيد فشل',
+	'assert_edit_desc'    => 'يضيف تأكيدات تعديل للاستخدام بواسطة البوتات',
 	'assert_edit_message' => 'التأكيد المحدد ($1) فشل.',
 );
 
@@ -209,6 +210,15 @@ $messages['li'] = array(
 	'assert_edit_message' => 'De gevraogdje bevestiging ($1) mislukdje.',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Jacob.jose
+ */
+$messages['ml'] = array(
+	'assert_edit_title'   => 'ഉറപ്പുവരുത്താനുള്ള ശ്രമം പരാജയപ്പെട്ടു',
+	'assert_edit_desc'    => 'യന്ത്രങ്ങളുടെ ആവശ്യത്തിനുവേണ്ടി തിരുത്തല്‍ ഉറപ്പുവരുത്തല്‍ ഉപാധികള്‍ ചേര്‍ക്കുന്നു',
+	'assert_edit_message' => 'പ്രതിപാദ്യ ഉറപ്പുവരുത്തല്‍ ശ്രമം ($1) പരാജയപ്പെട്ടു.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -291,6 +301,7 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'assert_edit_title'   => 'Anspruch failsloain',
+	'assert_edit_desc'    => 'Föiget Beoarbaidengs-Anspruch tou foar Bots',
 	'assert_edit_message' => 'Die ounroate Anspruch ($1) is failsloain.',
 );
 

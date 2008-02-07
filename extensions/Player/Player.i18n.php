@@ -33,20 +33,23 @@ $messages['af'] = array(
 	'player-goto-page' => 'Bladsy',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'player' => 'برنامج',
-	'player-title' => 'برنامج',
-	'player-playertitle' => 'برنامج: $1',
-	'player-file' => 'اسم الملف',
-	'player-play' => 'عرض',
-	'player-imagepage-header' => '<h1>$1</h1>',#identical but defined
-	'player-not-allowed' => 'صيغة غير مسموح بها',
-	'player-not-found' => 'الملف غير موجود',
+	'player'               => 'برنامج',
+	'player-desc'          => 'عرض ملتيميديا مضمن باستخدام إضافات المتصفح العادي و [[Special:Player|صفحة خاصة]]',
+	'player-title'         => 'برنامج',
+	'player-playertitle'   => 'برنامج: $1',
+	'player-file'          => 'اسم الملف',
+	'player-play'          => 'عرض',
+	'player-not-allowed'   => 'صيغة غير مسموح بها',
+	'player-not-found'     => 'الملف غير موجود',
 	'player-invalid-title' => 'عنوان غير صحيح',
-	'player-clicktoplay' => 'عرض $1',
-	'player-goto-player' => 'برنامج',
-	'player-goto-page' => 'صفحة',
-	'player-goto-file' => 'ملف',
+	'player-clicktoplay'   => 'عرض $1',
+	'player-goto-player'   => 'برنامج',
+	'player-goto-page'     => 'صفحة',
+	'player-goto-file'     => 'ملف',
 );
 
 /** Bulgarian (Български)

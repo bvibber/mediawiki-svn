@@ -40,6 +40,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'chemicalsources'                  => 'مصادر كيميائية',
+	'chemicalsource-desc'              => 'يضيف الوسم <nowiki><chemform></nowiki>، للصيغ الكيميائية',
 	'chemFunctions_ListPage'           => 'مصادر كيميائية',
 	'chemFunctions_DataList'           => 'بالأسفل قائمة بوصلات إلى مواقع قد تحتوي على معلومات عن المادة الكيميائية التي تبحث عنها.<br /><br /> * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br /> * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS في جامعة أكسفورد (UK) (غير قابل للبحث)</a><br />',
 	'chemFunctions_CAS'                => 'رقم CAS',
@@ -62,6 +63,7 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'chemicalsource-desc'   => 'Добавя етикета <nowiki><chemform></nowiki> за химични формули',
 	'chemFunctions_Formula' => 'Формула',
 );
 
@@ -354,8 +356,14 @@ $messages['pt'] = array(
 	'chemicalsources'                  => 'Fontes de química',
 	'chemicalsource-desc'              => 'Adiciona a marca <nowiki><chemform></nowiki> para fórmulas químicas',
 	'chemFunctions_ListPage'           => 'Fontes de química',
+	'chemFunctions_DataList'           => 'Abaixo está uma lista de ligações para sítios que oferecem informação sobre a substância química que procura.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Composto $MIXCASNameFormula no NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Universidade de Oxford (Reino Unido) (não pesquisável)</a><br />',
 	'chemFunctions_CAS'                => 'Número CAS',
+	'chemFunctions_ATCCode'            => 'Código ATC',
+	'chemFunctions_ECNumber'           => 'Número EC',
 	'chemFunctions_Formula'            => 'Fórmula',
+	'chemFunctions_Name'               => 'Nome IUPAC',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Erro nos dados introduzidos!',
 );
 

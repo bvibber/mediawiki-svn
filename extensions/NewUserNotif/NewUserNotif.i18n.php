@@ -83,6 +83,15 @@ $messages['hy'] = array(
 $3 կայքում ստեղծվել է նոր մասնակցային հաշիվ՝ $2, $4-ին։',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'newusernotifsubj' => '$1：ユーザーアカウント作成通知',
+	'newusernotifbody' => 'ようこそ$1さん、
+$4、$3上に$2でユーザーアカウントを作成しました。',
+);
+
 $messages['nl'] = array(
 	'newusernotifsubj' => 'Melding van een nieuwe gebruiker op $1',
 	'newusernotifbody' => 'Hallo $1.
@@ -155,10 +164,12 @@ $messages['tet'] = array(
 );
 
 /** Turkish (Türkçe)
- * @author Karduelis
+ * @author Srhat
  */
 $messages['tr'] = array(
-	'newusernotifbody' => 'Merhaba $1',
+	'newusernotifbody' => "Merhaba $1
+
+Yeni kullanıcı hesabı, $2,$3 üzerinde $4'te oluşturuldu.",
 );
 
 $messages['yue'] = array(

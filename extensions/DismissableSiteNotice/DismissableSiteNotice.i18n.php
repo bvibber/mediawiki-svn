@@ -21,8 +21,13 @@ $messages['am'] = array(
 	'sitenotice_close' => '<-- ይህን አውጣ',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ * @author Mido
+ */
 $messages['ar'] = array(
 	'sitenotice_close' => 'إغلاق',
+	'sitenotice-desc'  => 'يسمح للمستخدمين بإغلاق إعلان الموقع',
 );
 
 /** Asturian (Asturianu)
@@ -55,8 +60,12 @@ $messages['cdo'] = array(
 	'sitenotice_close' => 'cĕk lâi',
 );
 
+/** Czech (Česky)
+ * @author Li-sung
+ */
 $messages['cs'] = array(
 	'sitenotice_close' => 'zavřít',
+	'sitenotice-desc'  => 'Umožňuje uživatelům zavřít zprávu v záhlaví',
 );
 
 /** German (Deutsch)
@@ -138,12 +147,21 @@ $messages['hr'] = array(
 	'sitenotice_close' => 'sakrij',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ * @author Dundak
+ */
 $messages['hsb'] = array(
 	'sitenotice_close' => 'schować',
+	'sitenotice-desc'  => 'Dowola wužiwarjam pobóčnu powěsć začinić',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
 $messages['hu'] = array(
 	'sitenotice_close' => 'elrejt',
+	'sitenotice-desc'  => 'Lehetővé teszi az oldalon található üzenet bezárását.',
 );
 
 $messages['hy'] = array(
@@ -283,8 +301,12 @@ $messages['sdc'] = array(
 	'sitenotice_close' => 'cua',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
 	'sitenotice_close' => 'nezobrazovať',
+	'sitenotice-desc'  => 'Umožňuje používateľom zrušiť zobrazovanie Správy lokality (sitenotice)',
 );
 
 $messages['sq'] = array(
@@ -302,8 +324,12 @@ $messages['su'] = array(
 	'sitenotice_close' => 'bubarkeun',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
 $messages['sv'] = array(
 	'sitenotice_close' => 'dölj',
+	'sitenotice-desc'  => 'Låter användare dölja meddelanden i sitenotice',
 );
 
 /** Telugu (తెలుగు)
@@ -311,6 +337,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'sitenotice_close' => 'దాచు',
+	'sitenotice-desc'  => 'సైటు గమనికని మూసివేసుకునే సదుపాయం వాడుకర్లకు ఇస్తుంది',
 );
 
 $messages['tet'] = array(

@@ -68,6 +68,23 @@ $messages['bn'] = array(
 	'scanset_prev' => '&lt; পূর্ববর্তী',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'scanset_no_name'                   => 'ScanSet: Musíte uvést název skenované množiny, např. &lt;sancset name="EB1911" /&gt;',
+	'scanset_invalid_name'              => 'ScanSet: Neplatná nebo chybějící skenovaná množina',
+	'scanset_unrecognised_index_format' => 'ScanSet: Neznámý formát indexu',
+	'scanset_opendir_error'             => 'ScanSet: Chyba, není možné otevřít adresář $1',
+	'scanset_no_files'                  => 'ScanSet: V uvedeném adresáři se nenacházejí žádné soubory.',
+	'scanset_no_volumes'                => 'ScanSet: Nebyly nalezeny žádné adresáře svazků',
+	'scanset_missing_index_file'        => 'ScanSet: Indexový soubor $1 nebyl nalezen',
+	'scanset_index_file_error'          => 'ScanSet: Chyba ve formátu indexového souboru na řádku $1',
+	'scanset_invalid_volume'            => 'ScanSet: Neplatný svazek',
+	'scanset_next'                      => 'Další →',
+	'scanset_prev'                      => '← Předchozí',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

@@ -58,6 +58,7 @@ $messages['ang'] = array(
  */
 $messages['ar'] = array(
 	'badimages'                => 'قائمة الصور السيئة',
+	'badimages-desc'           => 'يمد قدرات قائمة الصور السيئة للميدياويكي',
 	'badimages-add-btn'        => 'إضافة',
 	'badimages-added'          => '$1 تمت إضافتها للقائمة.',
 	'badimages-count'          => "توجد '''$1''' صورة في قائمة الصور السيئة.",
@@ -1059,6 +1060,7 @@ $messages['sr-el'] = array(
  */
 $messages['stq'] = array(
 	'badimages'                => 'Lieste fon nit wonskede Bielden.',
+	'badimages-desc'           => 'Ärwiedert do Iensatsmuugelkhaide fon ju Lieste fon do nit-wonskede Bielden in MediaWiki',
 	'badimages-add-btn'        => 'Föigje bietou',
 	'badimages-added'          => '$1 wuude an ju Lieste bietouföiged',
 	'badimages-count'          => "Ju Lieste fon nit wonskede Bielden änthaalt '''$1''' Iendraage.",
@@ -1155,11 +1157,16 @@ $messages['te'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Srhat
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'badimages-add-btn'    => 'Ekle',
-	'badimages-remove-btn' => 'Taşı',
+	'badimages-count'      => "Kötü resim listesinde '''$1''' resim bulunmaktadır.",
+	'badimages-name'       => 'İsim:',
+	'badimages-reason'     => 'Sebep:',
+	'badimages-remove-btn' => 'Sil',
+	'badimages-removed'    => 'Listeden $1 silindi.',
 );
 
 /** Vietnamese (Tiếng Việt)

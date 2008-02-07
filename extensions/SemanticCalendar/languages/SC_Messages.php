@@ -20,6 +20,18 @@ $messages['en'] = array(
 	'sc_error_beforeyear' => 'Error: This system cannot handle dates before $1',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'sc_previousmonth'    => 'الشهر السابق',
+	'sc_nextmonth'        => 'الشهر التالي',
+	'sc_today'            => 'اليوم',
+	'sc_gotomonth'        => 'اذهب إلى شهر',
+	'sc_error_year2038'   => 'خطأ: هذا النظام لا يمكنه معالجة التواريخ بعد 2038، بسبب [http://en.wikipedia.org/wiki/Year_2038_problem مشكلة العام 2038]',
+	'sc_error_beforeyear' => 'خطأ: هذا النظام لا يمكنه معالجة التواريخ قبل $1',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -28,6 +40,18 @@ $messages['bg'] = array(
 	'sc_nextmonth'        => 'Следващ месец',
 	'sc_error_year2038'   => 'Грешка: Системата не може да оперира с дати след 2038 година заради [http://en.wikipedia.org/wiki/Year_2038_problem проблема 2038 година]',
 	'sc_error_beforeyear' => 'Грешка: Системата не може да оперира с дати преди $1',
+);
+
+/** Persian (فارسی)
+ * @author Tofighi
+ */
+$messages['fa'] = array(
+	'sc_previousmonth'    => 'ماه گذشته',
+	'sc_nextmonth'        => 'ماه آینده',
+	'sc_today'            => 'امروز',
+	'sc_gotomonth'        => 'برو به ماه',
+	'sc_error_year2038'   => 'خطا: این سیستم نمی‌تواند تاریخ‌های بعد از 2038 را به علت [http://en.wikipedia.org/wiki/Year_2038_problem year 2038 problem] به‌کار برد.',
+	'sc_error_beforeyear' => 'خطا: این سیستم نمی‌تواند تاریخ‌های قبل از $1 را استفاده کند',
 );
 
 /** French (Français)
@@ -40,6 +64,38 @@ $messages['fr'] = array(
 	'sc_error_beforeyear' => 'Erreur : ce système ne peut supporter les dates antérieures au $1.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'sc_previousmonth'    => 'Předchadny měsac',
+	'sc_nextmonth'        => 'Přichodny měsac',
+	'sc_error_year2038'   => 'Zmylk: Tutón system njemóže [http://en.wikipedia.org/wiki/Year_2038_problem problema z lětom 2038] dla z datumami po lěće 2038 wobchadźeć.',
+	'sc_error_beforeyear' => 'Zmylk: Tutón system njemóže z datumami do $1 wobchadźeć',
+);
+
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'sc_previousmonth'    => 'Előző hónap',
+	'sc_nextmonth'        => 'Következő hónap',
+	'sc_error_year2038'   => 'Hiba: A rendszer nem képes a 2038 utáni dátumokat kezelni, [http://en.wikipedia.org/wiki/Year_2038_problem 2038-as év problémája miatt]',
+	'sc_error_beforeyear' => 'Hiba: a rendszer nem képes az $1 előtti dátumokat kezelni',
+);
+
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'sc_previousmonth'    => '前の月',
+	'sc_nextmonth'        => '次の月',
+	'sc_today'            => '今日',
+	'sc_gotomonth'        => 'この月を表示',
+	'sc_error_year2038'   => 'エラー：このシステムは2038年以降を取り扱うことができません。詳しくは[http://ja.wikipedia.org/wiki/2038%E5%B9%B4%E5%95%8F%E9%A1%8C 2038年問題]をご覧ください。',
+	'sc_error_beforeyear' => 'エラー：このシステムは$1以前を取り扱うことができません。',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -50,10 +106,13 @@ $messages['lb'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author GerardM
  */
 $messages['nl'] = array(
 	'sc_previousmonth'    => 'Vorige maand',
 	'sc_nextmonth'        => 'Volgende maand',
+	'sc_today'            => 'Vandaag',
+	'sc_gotomonth'        => 'Ga naar maand',
 	'sc_error_year2038'   => 'Fout: dit systeem kan geen datums verwerken na 2038 vanwege het [http://en.wikipedia.org/wiki/Year_2038_problem 2038-probleem]',
 	'sc_error_beforeyear' => 'Fout: dit systeem kan geen datums verwerken voor $1',
 );
@@ -74,6 +133,8 @@ $messages['pt'] = array(
 $messages['sk'] = array(
 	'sc_previousmonth'    => 'Predošlý mesiac',
 	'sc_nextmonth'        => 'Ďalší mesiac',
+	'sc_today'            => 'Dnes',
+	'sc_gotomonth'        => 'Prejsť na mesiac',
 	'sc_error_year2038'   => 'Chyba: Tento systém nedokáže pracovať s dátumami po roku 2038, kvôli [http://en.wikipedia.org/wiki/Year_2038_problem problému roku 2038]',
 	'sc_error_beforeyear' => 'Chyba: Tento systém nedokáže pracovať s dátumami pred $1',
 );

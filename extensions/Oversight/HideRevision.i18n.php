@@ -181,6 +181,46 @@ $messages['co'] = array(
 	'hiderevision-status' => 'Revisione $1: $2',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ * @author Li-sung
+ */
+$messages['cs'] = array(
+	'hiderevision'                => 'Natrvalo skrýt revize',
+	'hiderevision-prompt'         => 'Číslo revize, která se má odstranit:',
+	'hiderevision-continue'       => 'Pokračovat',
+	'hiderevision-text'           => "Tato funkce by se měla využívat '''pouze''' v následujících případech:
+* Nevhodné osobní informace
+*: ''domácí adresy a telefonní čísla, rodná čísla apod.''
+
+'''Zneužití tohoto systému povede k odebrání práv.'''
+
+Odstraněné položky nebudou viditelné nikomu prostřednictvím webové stránky,
+ale o mazáních se vede záznam a je možné je obnovit ručně
+administrátorům databáze v případě, že uděláte chybu.",
+	'hiderevision-reason'         => 'Důvod (bude zaznamenán neveřejně):',
+	'hiderevision-submit'         => 'Natrvalo skrýt tyto údaje',
+	'hiderevision-tab'            => 'Skrýt revizi',
+	'hiderevision-norevisions'    => 'Nebyly uvedeny revize, které mají být skryté.',
+	'hiderevision-noreason'       => 'Musíte uvést důvod odstranění.',
+	'hiderevision-status'         => 'Revize $1: $2',
+	'hiderevision-success'        => 'Úspěšné archivováno a smazáno.',
+	'hiderevision-error-missing'  => 'Nenalezeno v databázi.',
+	'hiderevision-error-current'  => 'Nebylo možné smazat poslední úpravu stránky. Nejprve tuto změnu vraťte.',
+	'hiderevision-error-delete'   => 'Nebylo možno archivovat; bylo už předtím smazáno.',
+	'hiderevision-archive-status' => 'Smazané revize počínaje od $1: $2',
+	'oversight-nodiff'            => 'Není možné porovnat změny, neboť momentálně neexistuje předchozí revize stránky. Buď
+* stránka byla smazána nebo
+* tato skrytá revize byla první revize',
+	'oversight-log-hiderev'       => 'odstraňuje editaci stránky $1',
+	'oversight'                   => 'Dozor',
+	'oversight-view'              => 'podrobnosti',
+	'oversight-difference'        => '(Rozdíl oproti předchozí zbývající revizi)',
+	'oversight-prev'              => 'Poslední předešlá revize',
+	'oversight-hidden'            => 'Skrytá revize',
+	'oversight-header'            => 'Níže je seznam revizí, které byly nedávno trvale skryty z veřejné historie. Šíření těchto informací může mít za důsledek trvalou ztrátu práv dozorce (oversight).',
+);
+
 /* German (Raymond) */
 $messages['de'] = array(
 	'hiderevision' => 'Versionen dauerhaft entfernen',
@@ -1357,6 +1397,7 @@ $messages['te'] = array(
 	'oversight-log-hiderev'       => '$1 నుండి ఓ మార్పుని తొలగించాం',
 	'oversight-view'              => 'వివరాలు',
 	'oversight-difference'        => '(గతంలో ఉన్న కూర్పు నుండి తేడా)',
+	'oversight-prev'              => 'చివరి గత కూర్పు',
 	'oversight-hidden'            => 'దాచిన కూర్పు',
 );
 
@@ -1406,13 +1447,16 @@ $messages['vo'] = array(
 	'hiderevision-prompt'         => 'Dientifakot fomama moükabik:',
 	'hiderevision-continue'       => 'Fövön',
 	'hiderevision-reason'         => 'Kod (polisedon kläniko):',
+	'hiderevision-submit'         => 'Klänedön nünis at laidüpio',
 	'hiderevision-tab'            => 'Klänedön revidi',
 	'hiderevision-norevisions'    => 'Fomams nonik pevälons ad pamoükön.',
 	'hiderevision-noreason'       => 'Mutol bepenön kodi moükama at.',
 	'hiderevision-status'         => 'Fomam $1: $2',
+	'hiderevision-success'        => 'Pepladon ini ragiv e pemoükon benosekiko.',
 	'hiderevision-archive-status' => 'Pemoükon fomam se $1: $2',
 	'oversight-log-hiderev'       => 'emoükon redakami se $1',
 	'oversight-view'              => 'pats',
+	'oversight-hidden'            => 'Fomam peklänedöl',
 );
 
 /* Cantonese (Shinjiman) */

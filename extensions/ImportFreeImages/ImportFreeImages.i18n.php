@@ -125,6 +125,7 @@ $messages['hu'] = array(
  */
 $messages['lb'] = array(
 	'importfreeimages_owner' => 'Auteur:',
+	'importfreeimages_next'  => 'Nächst $1',
 );
 
 $messages['nl'] = array(
@@ -175,6 +176,7 @@ $messages['oc'] = array(
 $messages['pt'] = array(
 	'importfreeimages'                       => 'Importar Imagens Livres',
 	'importfreeimages_owner'                 => 'Autor',
+	'importfreeimages_importthis'            => 'importar isto',
 	'importfreeimages_next'                  => 'Próximas $1',
 	'importfreeimages_filefromflickr'        => '$1 pelo utilizador <b>[$2]</b> do flickr. URL original',
 	'importfreeimages_promptuserforfilename' => 'Por favor, introduza um nome de ficheiro destino:',

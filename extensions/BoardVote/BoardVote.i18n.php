@@ -108,6 +108,7 @@ $messages['ang'] = array(
  */
 $messages['ar'] = array(
 	'boardvote'              => 'انتخابات مجلس أمناء ويكيميديا',
+	'boardvote-desc'         => '[[meta:Board elections|انتخابات مجلس أمناء ويكيميديا]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|صوت]]
 * [[Special:Boardvote/list|عرض الأصوات لغاية اليوم]]
 * [[Special:Boardvote/dump|نسخة مخزنة من سجل الانتخابات]]',
@@ -505,12 +506,16 @@ $messages['co'] = array(
 	'grouppage-boardvote'     => '{{ns:project}}:Cummissarii eletturali',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
 $messages['cs'] = array(
-	'boardvote'               => "Volby do Správní rady nadace Wikimedia",
-	'boardvote_entry'         => "* [[Special:Boardvote/vote|Hlasovat]]
+	'boardvote'              => 'Volby do Správní rady nadace Wikimedia',
+	'boardvote-desc'         => '[[meta:Board elections|Volby do správní rady nadace Wikimedia]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Hlasovat]]
 * [[Special:Boardvote/list|Seznam již hlasujících]]
-* [[Special:Boardvote/dump||Šifrovaný záznam hlasování]]",
-	'boardvote_intro'         => '
+* [[Special:Boardvote/dump||Šifrovaný záznam hlasování]]',
+	'boardvote_intro'        => '
 <blockquote>
 <p>Vítejte u čtvrtých voleb do Správní rady nadace Wikimedia. Hlasováním bude zvoleni tři zástupci komunity uživatelů všech projektů nadace na dvouleté období do Správní rady. Tito zástupci budou pomáhat v rozhodování o budoucím směru rozvoje projektů, jednotlivě i jako skupina, a budou reprezentovat <em>vaše</em> zájmy a ohledy ve Správní radě. Budou také rozhodovat o způsobech získávání finančních prostředků a využívání získaných peněz.</p>
 
@@ -522,8 +527,8 @@ $messages['cs'] = array(
 
 <p>Další informace (anglicky a v dalších jazycích) najdete na následujících stránkách:</p> <ul><li><a href="http://meta.wikipedia.org/wiki/Board_elections/2007/FAQ" class="external">Často kladené otázky o hlasování</a></li> <li><a href="http://meta.wikipedia.org/wiki/Board_elections/2007/Candidates/cs" class="external">Kandidáti</a></li></ul>
 </blockquote>',
-	'boardvote_intro_change'  => "<p>Již jste hlasoval(a). Můžete však svůj hlas změnit prostřednictvím níže uvedeného formuláře. Zaškrtněte čtvereček u každého kandidáta, kterého schvalujete.</p>",
-	'boardvote_entered'       => "Děkujeme vám, váš hlas byl zaznamenán.
+	'boardvote_intro_change' => '<p>Již jste hlasoval(a). Můžete však svůj hlas změnit prostřednictvím níže uvedeného formuláře. Zaškrtněte čtvereček u každého kandidáta, kterého schvalujete.</p>',
+	'boardvote_entered'      => 'Děkujeme vám, váš hlas byl zaznamenán.
 
 Pokud si přejete, můžete si poznamenat podrobnosti. Váš záznam o hlasování je:
 
@@ -537,34 +542,38 @@ Výsledná šifrovaná podoba následuje. Bude veřejně dostupná na stránce [
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Zpět]]",
-  'boardvote_nosession'     => "Nemohu určit vaše ID uživatele Wikimedie. Přihlaste se na wiki, kde splňujete podmínky a a přejděte na stránku <nowiki>[[Special:Boardvote]]</nowiki>. Musíte mít učet s alespoň $1 editacemi před $2 a první editací před $3.",
-  'boardvote_notloggedin'   => 'Nejste přihlášen(a). Pro hlasování musíte použít účet s nejméně $1 příspěvky před $2 a první editací před $3.',
-  'boardvote_notqualified'  => 'Litujeme, nejste oprávněn(a) hlasovat v těchto volbách. Musíte mít $3 editací před datem $2 a vaše první editace musí být provedena před $5.',
-  'boardvote_notstarted'    => 'Volby ještě nezačaly.',
-  'boardvote_novotes'       => 'Nikdo dosud nehlasoval.',
-	'boardvote_time'          => "Datum a čas",
-	'boardvote_user'          => "Uživatel",
-	'boardvote_edits'         => "Editací",
-	'boardvote_days'          => "Dní",
-	'boardvote_ip'            => "IP",
-	'boardvote_ua'            => "Klient",
-	'boardvote_listintro'     => "<p>Toto je seznam všech dosud zaznamenaných hlasů. Také můžete získat $1.</p>",
-	'boardvote_dumplink'      => "šifrovaný záznam hlasování",
-	'boardvote_submit'        => 'OK',
-	'boardvote_strike'        => "Zaškrtnout",
-	'boardvote_unstrike'      => "Odškrtnout",
-	'boardvote_needadmin'     => "Pouze volební správci mohou provést tuto operaci.",
-	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Volby do správní rady nadace Wikimedia</a>:",
-	'boardvote_notstarted'    => 'Volby ještě nezačaly.',
-	'boardvote_closed'        => 'Volby skončily. Podívejte se na [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/Cs výsledky].',
-	'boardvote_edits_many'    => 'mnoho',
-	'group-boardvote'         => 'Volební správci',
-	'group-boardvote-member'  => 'Volební správce',
-	'grouppage-boardvote'     => '{{ns:project}}:Volební správce',
-	'boardvote_blocked'       => 'Je nám líto, ale na své wiki jste zablokován. Zablokovaní uživatelé nemohou hlasovat.',
-	'boardvote_welcome'       => "Vítáme uživatele '''$1'''!",
+[[Special:Boardvote/entry|Zpět]]',
+	'boardvote_nosession'    => 'Nemohu určit vaše ID uživatele Wikimedie. Přihlaste se na wiki, kde splňujete podmínky a a přejděte na stránku <nowiki>[[Special:Boardvote]]</nowiki>. Musíte mít učet s alespoň $1 editacemi před $2 a první editací před $3.',
+	'boardvote_notloggedin'  => 'Nejste přihlášen(a). Pro hlasování musíte použít účet s nejméně $1 příspěvky před $2 a první editací před $3.',
+	'boardvote_notqualified' => 'Litujeme, nejste oprávněn(a) hlasovat v těchto volbách. Musíte mít $3 editací před datem $2 a vaše první editace musí být provedena před $5.',
+	'boardvote_novotes'      => 'Nikdo dosud nehlasoval.',
+	'boardvote_time'         => 'Datum a čas',
+	'boardvote_user'         => 'Uživatel',
+	'boardvote_edits'        => 'Editací',
+	'boardvote_days'         => 'Dní',
+	'boardvote_ua'           => 'Klient',
+	'boardvote_listintro'    => '<p>Toto je seznam všech dosud zaznamenaných hlasů. Také můžete získat $1.</p>',
+	'boardvote_dumplink'     => 'šifrovaný záznam hlasování',
+	'boardvote_strike'       => 'Zaškrtnout',
+	'boardvote_unstrike'     => 'Odškrtnout',
+	'boardvote_needadmin'    => 'Pouze volební správci mohou provést tuto operaci.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Volby do správní rady nadace Wikimedia</a>:',
+	'boardvote_notstarted'   => 'Volby ještě nezačaly.',
+	'boardvote_closed'       => 'Volby skončily. Podívejte se na [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/Cs výsledky].',
+	'boardvote_edits_many'   => 'mnoho',
+	'group-boardvote'        => 'Volební správci',
+	'group-boardvote-member' => 'Volební správce',
+	'grouppage-boardvote'    => '{{ns:project}}:Volební správce',
+	'boardvote_blocked'      => 'Je nám líto, ale na své wiki jste zablokován. Zablokovaní uživatelé nemohou hlasovat.',
+	'boardvote_welcome'      => "Vítáme uživatele '''$1'''!",
+	'go_to_board_vote'       => 'Volby do správní rady Wikimedia 2007',
+	'boardvote_redirecting'  => 'Pro lepší bezpečnost a transparentnost provozujeme volby na externím, nezávisle řízeném serveru.
+
+Budete přesměrování na tuto externí stránku za 20 sekund. Okamžitě tam můžete přejít [$1 kliknutím sem].
+
+Může se zobrazit bezpečnostní varování o nepodepsaném certifikátu.',
 );
+
 $messages['de'] = array(
 	'boardvote'               => "Wahlen zum Wikimedia-Kuratorium",
 	'boardvote-desc'          => '[[meta:Board elections|Wahlen zum Wikimedia-Kuratorium]]',
@@ -2145,7 +2154,7 @@ Dette resulterer i den følgende krypterte versjonen. Den vil vises offentlig p�
 	'boardvote_edits'        => 'Redigeringer',
 	'boardvote_days'         => 'Dager',
 	'boardvote_ip'           => 'IP',
-	'boardvote_ua'           => 'Brukeragent',
+	'boardvote_ua'           => 'Nettleser',
 	'boardvote_listintro'    => '<p>Dette er en liste over alle stemmer som har blitt registrert hittil. $1 for krypterte data.</p>',
 	'boardvote_dumplink'     => 'Klikk her',
 	'boardvote_submit'       => 'OK',
@@ -2162,7 +2171,14 @@ Dette resulterer i den følgende krypterte versjonen. Den vil vises offentlig p�
 	'boardvote_blocked'      => 'Beklager, du har blitt blokkert på den registrerte wikien. Blokkerte brukere har ikke lov til å stemme.',
 	'boardvote_welcome'      => "Velkommen, '''$1'''!",
 	'go_to_board_vote'       => 'Styrevalg i Wikimedia',
-	'boardvote_redirecting'  => 'Av sikkerhets- og transparensgrunner kjører vi valget på en ekstern, uavhengig kontrollert tjener. Du vil nå omdirigeres til denne tjeneren innen 20 sekunder. [$1 Klikk her] for å gå dit nå. Du vil muligens motta en sikkerhetsadvarsel om et usignert sertifikat.',
+	'boardvote_redirecting'  => 'For å øke sikkerheten og åpenheten rundt valget blir stemmegivingen avholdt på en ekstern tjener som kontrolleres av en uavhengig tredjepart. Du blir omdirigert til denne tjener om 20&nbsp;sekunder. [$1 Klikk her] for å gå direkte til tjeneren. Du vil muligens få en sikkerhetsadvarsel om et usignert sertifikat.',
+);
+
+/** Old Norse (Norrǿna)
+ * @author SPQRobin
+ */
+$messages['non'] = array(
+	'boardvote_days' => 'Dagar',
 );
 
 /** Occitan (Occitan)
@@ -2845,6 +2861,7 @@ Sledi rezultujuća šifrirana verzija. Biće javno predstavljena na [[Special:Bo
  */
 $messages['stq'] = array(
 	'boardvote'              => 'Woalen tou dät Wikimedia-Kuratorium',
+	'boardvote-desc'         => '[[meta:Board elections|Woalen tou dät Wikimedia-Kuratorium]]',
 	'boardvote_entry'        => '* [[meta:Board elections/2007/Candidates/de|Kandidoatenfoarstaalengen]]
 * [[{{ns:special}}:Boardvote/vote|Oustämme]]
 * [[{{ns:special}}:Boardvote/list|Bit nu ouroate Stämmen]]
@@ -3047,6 +3064,7 @@ $messages['te'] = array(
 	'boardvote_edits'        => 'దిద్దుబాట్లు',
 	'boardvote_days'         => 'రోజులు',
 	'boardvote_ip'           => 'ఐపీ',
+	'boardvote_ua'           => 'వాడుకరి ఏజెంటు',
 	'boardvote_listintro'    => '<p>ఇప్పటివరకు నమోదైన వోట్ల జాబితా ఇది. కోడీకరించబడిన డేటా కొరకు $1.</p>',
 	'boardvote_dumplink'     => 'ఇక్కడ నొక్కండి',
 	'boardvote_submit'       => 'సరే',
@@ -3093,10 +3111,11 @@ $messages['to'] = array(
 /** Turkish (Türkçe)
  * @author SPQRobin
  * @author Erkan Yilmaz
+ * @author Srhat
  */
 $messages['tr'] = array(
 	'boardvote'              => 'Wikimedia Mütevelli Heyeti Seçimleri',
-	'boardvote_intro_change' => '<p>Daha evvel oy kullanmıştınız. Ama oyunuzu değiştirebilirsiniz. Aşağıdaki formu kullanarak, uygun olduğunu düşündüğünüz aday ya da adayların yanına tık atıp, oyunuzu gönderiniz.</p>',
+	'boardvote_intro_change' => '<p>Daha evvel oy kullanmıştınız. Ama oyunuzu değiştirebilirsiniz. Aşağıdaki formu kullanarak, uygun olduğunu düşündüğünüz aday ya da adayların yanına işart koyup, oyunuzu gönderiniz.</p>',
 	'boardvote_notloggedin'  => 'Oturum açmamışsınız. Oy kullanabilmek için, kullanıcı olarak $2 tarihinden önce en az $1 değişikliğe sahip olmanız şart. Ayrıca ilk değişikliğinizin $3 tarihinden önce gerçekleşmiş olması gerekmekte.',
 	'boardvote_novotes'      => 'Henüz kimse oy kullanmadı.',
 	'boardvote_time'         => 'Oy kullandığı tarih',
@@ -3105,7 +3124,7 @@ $messages['tr'] = array(
 	'boardvote_days'         => 'Günleri',
 	'boardvote_ip'           => 'IP',
 	'boardvote_listintro'    => '<p>Bugüne kadar kaydedilmiş oyların listesi. Şifrelendirilmiş olarak indirmek için $1.</p>',
-	'boardvote_dumplink'     => 'buraya tıklayın',
+	'boardvote_dumplink'     => 'Buraya tıklayın',
 	'boardvote_submit'       => 'Oyunuzu kullanın',
 	'boardvote_needadmin'    => 'Bu işlemi sadece seçim yöneticileri yapabilir.',
 	'boardvote_notstarted'   => 'Oylama henüz başlamadı',

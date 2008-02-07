@@ -23,8 +23,10 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author Mido
+ * @author Meno25
  */
 $messages['ar'] = array(
+	'ajax-se-desc'    => 'يعرض المستخدمين الذين يعدلون نفس الصفحة',
 	'ajax-se-title'   => 'يقوم الآن بالتحرير:',
 	'ajax-se-pending' => 'انتظار التحديث ... (اضغط على هذا الصندوق أو ابدأ في التحرير)',
 	'ajax-se-idling'  => '(منذ $1ث)',
@@ -77,8 +79,10 @@ $messages['br'] = array(
 
 /** Czech (Česky)
  * @author Li-sung
+ * @author Matěj Grabovský
  */
 $messages['cs'] = array(
+	'ajax-se-desc'    => 'Zobrazuje uživatele, kteří upravují stejnou stránku',
 	'ajax-se-title'   => 'Právě edituje:',
 	'ajax-se-pending' => 'očekává se změna... (klikněte do tohoto pole nebo začněte editovat)',
 	'ajax-se-idling'  => '(před $1 s)',
@@ -133,8 +137,11 @@ $messages['fi'] = array(
 	'ajax-se-idling'  => '($1 s sitten)',
 );
 
-/** French (Français) */
+/** French (Français)
+ * @author Grondin
+ */
 $messages['fr'] = array(
+	'ajax-se-desc'    => 'Visualise les utilisateurs qui sont en train de modifier la même page.',
 	'ajax-se-title'   => 'En train d’être modifié par :',
 	'ajax-se-pending' => 'rafraîchissement en cours ... (cliquez sur ce message ou modifiez la page)',
 	'ajax-se-idling'  => '(il y a $1 s)',
@@ -177,8 +184,11 @@ $messages['hr'] = array(
 	'ajax-se-idling'  => '(prije $1s)',
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
+	'ajax-se-desc'    => 'Pokazuje wobdźěłowacym wužiwarjam, štóž samsnu stronu wobdźěłuje',
 	'ajax-se-title'   => 'Wobdźěłuje so runje wot:',
 	'ajax-se-pending' => 'aktualizuje so ... (klikń do tutoho pola abo póčni wobdźěłować)',
 	'ajax-se-idling'  => '(před $1s)',
@@ -376,6 +386,7 @@ $messages['scn'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
+	'ajax-se-desc'    => 'Zobrazuje používateľov, ktorí upravujú rovnakú stránku',
 	'ajax-se-title'   => 'Práve upravuje:',
 	'ajax-se-pending' => 'čaká sa na obnovenie... (kliknite do tohto poľa alebo začnite upravovať)',
 	'ajax-se-idling'  => '(pred $1 sek)',
@@ -425,6 +436,16 @@ $messages['te'] = array(
 	'ajax-se-title'   => 'ప్రస్తుతం మారుస్తున్నది:',
 	'ajax-se-pending' => 'తాజాకరణకై వేచివున్నాం... (ఈ పెట్టెపై నొక్కండి లేదా మార్చడం మొదలుపెట్టండి)',
 	'ajax-se-idling'  => '($1s క్రితం)',
+);
+
+/** Turkish (Türkçe)
+ * @author Srhat
+ */
+$messages['tr'] = array(
+	'ajax-se-desc'    => 'Düzenleme yapan kullanıcılara aynı sayfayı kimin düzenlediğini gösterir.',
+	'ajax-se-title'   => 'Şu an düzenleyen:',
+	'ajax-se-pending' => 'yenileme bekleniyor ... (bu kutuya tıklayın veya düzenlemeye başlayın)',
+	'ajax-se-idling'  => '($1s önce)',
 );
 
 /** Vietnamese (Tiếng Việt)

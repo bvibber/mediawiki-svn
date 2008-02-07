@@ -89,14 +89,17 @@ $messages['br'] = array(
 
 /** Czech (Česky)
  * @author Li-sung
+ * @author Matěj Grabovský
  */
 $messages['cs'] = array(
 	'parserdifftest'      => 'Test rozdílu parserů',
 	'pdtest_no_target'    => 'Není určen cíl.',
 	'pdtest_page_missing' => 'Určená stránka nebyla v databázi nalezena.',
 	'pdtest_no_changes'   => 'Neprojevily se žádné změny.',
+	'pdtest_time_report'  => '<b>$1</b> trval $2 {{plural:$2|sekundu|sekundy|sekund}}, <b>$3</b> trval $4 {{plural:$4|sekundu|sekundy|sekund}}.',
 	'pdtest_title'        => 'Název stránky kvůli kontextu:',
 	'pdtest_text'         => 'Vstupní text:',
+	'pdtest_ok'           => 'OK',
 	'pdtest_get_text'     => 'Použít text ze stránky',
 	'pdtest_diff'         => 'Rozdíly',
 	'pdtest_side_by_side' => 'Porovnání výstupu',
@@ -541,10 +544,11 @@ $messages['vi'] = array(
 );
 
 /** Volapük (Volapük)
- * @author Malafaya
  * @author Smeira
+ * @author Malafaya
  */
 $messages['vo'] = array(
+	'pdtest_page_missing' => 'Pad pavilöl no patuvon.',
 	'pdtest_no_changes'   => 'Votükams nonik petuvons.',
 	'pdtest_get_text'     => 'Getolöd vödemi se pad',
 	'pdtest_diff'         => 'Difs',

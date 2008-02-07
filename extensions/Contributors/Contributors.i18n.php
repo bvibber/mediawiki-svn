@@ -30,6 +30,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'contributors'             => 'المساهمون',
+	'contributors-desc'        => 'يلخص المساهمين الأساسيين لصفحة',
 	'contributors-toolbox'     => 'المساهمون الأساسيون',
 	'contributors-legend'      => 'اعرض المساهمين الأساسيين لصفحة',
 	'contributors-target'      => 'العنوان:',

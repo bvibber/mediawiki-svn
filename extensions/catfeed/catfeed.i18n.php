@@ -8,6 +8,13 @@ $messages['en'] = array(
 	'catfeed-desc' => 'Uses bits from recentchanges feeds. Create in-page version, especially useful for Wikinews.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'catfeed-desc' => 'يستخدم أجزاء من تلقيمات أحدث التغييرات. ينشيء نسخة في الصفحة، مفيد خصوصا لويكي الأخبار.',
+);
+
 $messages['fr'] = array(
 	'catfeed-desc' => 'Utilise des bits pour alimenter les modifications récentes. Crée une version de page, très pratique pour Wikinews.',
 );

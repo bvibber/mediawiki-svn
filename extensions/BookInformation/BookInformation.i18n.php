@@ -31,19 +31,22 @@ $messages['af'] = array(
 	'bookinfo-result-year' => 'Jaar:',
 );
 
-/* Arabic (Meno25) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'bookinfo-header' => 'معلومات كتاب',
-	'bookinfo-result-title' => 'العنوان:',
-	'bookinfo-result-author' => 'المؤلف:',
-	'bookinfo-result-publisher' => 'الناشر:',
-	'bookinfo-result-year' => 'السنة:',
+	'bookinfo-header'            => 'معلومات كتاب',
+	'bookinfo-desc'              => 'يمد [[Special:Booksources]] بمعلومات من خدمة ويب',
+	'bookinfo-result-title'      => 'العنوان:',
+	'bookinfo-result-author'     => 'المؤلف:',
+	'bookinfo-result-publisher'  => 'الناشر:',
+	'bookinfo-result-year'       => 'السنة:',
 	'bookinfo-error-invalidisbn' => 'ردمك غير صحيح تم إدخاله.',
-	'bookinfo-error-nosuchitem' => 'المدخل غير موجود أو لم يمكن العثور عليه.',
-	'bookinfo-error-nodriver' => 'غير قادر على بدأ درايفر معلومات كتاب مناسب.',
-	'bookinfo-error-noresponse' => 'لا رد أو الطلب انتهت فترته.',
-	'bookinfo-purchase' => 'اشتر هذا الكتاب من $1',
-	'bookinfo-provider' => 'مزود البيانات: $1',
+	'bookinfo-error-nosuchitem'  => 'المدخل غير موجود أو لم يمكن العثور عليه.',
+	'bookinfo-error-nodriver'    => 'غير قادر على بدأ درايفر معلومات كتاب مناسب.',
+	'bookinfo-error-noresponse'  => 'لا رد أو الطلب انتهت فترته.',
+	'bookinfo-purchase'          => 'اشتر هذا الكتاب من $1',
+	'bookinfo-provider'          => 'مزود البيانات: $1',
 );
 
 /** Asturian (Asturianu)
@@ -744,18 +747,22 @@ $messages['sr-ec'] = array(
 	'bookinfo-provider'         => 'Подаци из: $1',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
 $messages['stq'] = array(
-	'bookinfo-header' => 'Informatione uur Bouke',
-	'bookinfo-result-title' => 'Tittel:',
-	'bookinfo-result-author' => 'Autor:',
-	'bookinfo-result-publisher' => 'Ferlaach:',
-	'bookinfo-result-year' => 'Jier:',
+	'bookinfo-header'            => 'Informatione uur Bouke',
+	'bookinfo-desc'              => 'Föiget [[{{ns:Special}}:Booksources]] tou mäd Informatione fon n Webangebod',
+	'bookinfo-result-title'      => 'Tittel:',
+	'bookinfo-result-author'     => 'Autor:',
+	'bookinfo-result-publisher'  => 'Ferlaach:',
+	'bookinfo-result-year'       => 'Jier:',
 	'bookinfo-error-invalidisbn' => 'ISBN nit gultich.',
-	'bookinfo-error-nosuchitem' => 'Ju Siede is nit deer of wuude nit fuunen.',
-	'bookinfo-error-nodriver' => 'Dät waas nit muugelk, ju äntspreekende Boukinformations-Snitsteede tou initialisierjen.',
-	'bookinfo-error-noresponse' => 'Neen Oantwoud of ju Tied is foarbie.',
-	'bookinfo-purchase' => 'Dit Bouk kon fon $1 beleeken wäide.',
-	'bookinfo-provider' => 'Doaten-Lääwerant: $1',
+	'bookinfo-error-nosuchitem'  => 'Ju Siede is nit deer of wuude nit fuunen.',
+	'bookinfo-error-nodriver'    => 'Dät waas nit muugelk, ju äntspreekende Boukinformations-Snitsteede tou initialisierjen.',
+	'bookinfo-error-noresponse'  => 'Neen Oantwoud of ju Tied is foarbie.',
+	'bookinfo-purchase'          => 'Dit Bouk kon fon $1 beleeken wäide.',
+	'bookinfo-provider'          => 'Doaten-Lääwerant: $1',
 );
 
 /** Swedish (Svenska)
@@ -790,6 +797,7 @@ $messages['te'] = array(
 	'bookinfo-error-nosuchitem'  => 'అంశం అసలు లేదు లేదా కనబడలేదు.',
 	'bookinfo-error-noresponse'  => 'ప్రతిస్పందన లేదు లేదా అభ్యర్థన కాలం చెల్లింది.',
 	'bookinfo-purchase'          => '$1 నుండి ఈ పుస్తకాన్ని కొనండి',
+	'bookinfo-provider'          => 'డాటా పంపిణీదారు: $1',
 );
 
 /** Tetum (Tetun)

@@ -9,6 +9,20 @@ $messages['en'] = array(
 	'charinsert-desc' => 'Allows creation of JavaScript box for inserting non-standard characters',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'charinsert-desc' => 'يسمح بإنشاء صندوق جافاسكريبت لإدخال حروف غير قياسية',
+);
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'charinsert-desc' => 'Позволява създаването на Джаваскрипт-кутия за вмъкване на нестандартни символи',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -46,5 +60,12 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'charinsert-desc' => 'Umožňuje vytvoriť JavaScriptové pole na vkladanie neštandardných znakov',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'charinsert-desc' => 'Ferlööwet dät Moakjen fon n JavaScript stjuurden Box toun Ienföigjen fon Sunnerteekene',
 );
 

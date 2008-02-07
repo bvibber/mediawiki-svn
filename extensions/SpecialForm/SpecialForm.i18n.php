@@ -368,9 +368,13 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Lejonel
  * @author Max sonnelid
  */
 $messages['sv'] = array(
-	'formsave' => 'Spara',
+	'formsave'              => 'Spara',
+	'formarticleexists'     => 'Sidan existerar',
+	'formarticleexiststext' => 'Sidan [[$1]] finns redan.',
+	'formbadpagename'       => 'Dåligt sidnamn',
 );
 

@@ -1073,6 +1073,14 @@ $wdMessages['lt'] = array(
 	'datasearch' => 'Wikidata: Duomenų paieška',
 );
 
+/** Maithili (मैथिली)
+ * @author Ggajendra
+ */
+$wdMessages['mai'] = array(
+	'datasearch'    => 'विकी सूचनाकोष: सूचनाकोष ताकू',
+	'langman_title' => 'भाषा प्रबंधक',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -1548,27 +1556,101 @@ $wdMessages['ro'] = array(
 
 /** Russian (Русский)
  * @author .:Ajvol:.
+ * @author Kaganer
  */
 $wdMessages['ru'] = array(
-	'datasearch'               => 'Викиданные: Поиск данных',
-	'langman_title'            => 'Языковой менеджер',
-	'languages'                => 'Викиданные: Языковой менеджер',
-	'ow_save'                  => 'Сохранить',
-	'ow_history'               => 'История',
-	'ow_datasets'              => 'Выбор набора данных',
-	'ow_noedit_title'          => 'Нет прав для редактирования',
-	'ow_noedit'                => 'Вам не разрешено редактировать страницы в наборе данных «$1». Обратите внимание на [[{{MediaWiki:Ow editing policy url}}|наши правила редактирования]].',
-	'ow_uipref_datasets'       => 'Вид по умолчанию',
-	'ow_uiprefs'               => 'Викиданные',
-	'ow_none_selected'         => '<Ничего не выбрано>',
-	'ow_conceptmapping_help'   => '<p>возможные действия: <ul>
+	'datasearch'                            => 'Викиданные: Поиск данных',
+	'langman_title'                         => 'Языковой менеджер',
+	'languages'                             => 'Викиданные: Языковой менеджер',
+	'ow_save'                               => 'Сохранить',
+	'ow_history'                            => 'История',
+	'ow_datasets'                           => 'Выбор набора данных',
+	'ow_noedit_title'                       => 'Нет прав для редактирования',
+	'ow_noedit'                             => 'Вам не разрешено редактировать страницы в наборе данных «$1». Обратите внимание на [[{{MediaWiki:Ow editing policy url}}|наши правила редактирования]].',
+	'ow_uipref_datasets'                    => 'Вид по умолчанию',
+	'ow_uiprefs'                            => 'Викиданные',
+	'ow_none_selected'                      => '<Ничего не выбрано>',
+	'ow_conceptmapping_help'                => '<p>возможные действия: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  вставить соответствие</li>
 <li>&action=get&concept=<concept_id>  прочитать соответствие</li>
 <li>&action=list_sets  вывести список возможных приставок контекстов данных и мест, куда они ссылаются.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> для одного определённого значения в концепте вывести все остальные</li>
 <li>&action=help  вывести спрвочную информацию.</li>
 </ul></p>',
-	'ow_conceptmapping_uitext' => '<p>Установка соответствий концептов позволяет вам указать какое определённое значение в одном наборе данных тождественно определённым значениям в других наборах данных.</p>',
+	'ow_conceptmapping_uitext'              => '<p>Установка соответствий концептов позволяет вам указать какое определённое значение в одном наборе данных тождественно определённым значениям в других наборах данных.</p>',
+	'ow_conceptmapping_no_action_specified' => 'Извините, я не знаю что такое «$1».',
+	'ow_dm_OK'                              => 'OK',
+	'ow_dm_not_present'                     => 'не введено',
+	'ow_dm_not_found'                       => 'не найдено в базе данных или неформат',
+	'ow_mapping_successful'                 => 'Подключенны все поля, помеченные [OK]<br />',
+	'ow_mapping_unsuccessful'               => 'Нужно иметь по крайней мере два определённых значения, прежде чем я смогу связать их.',
+	'ow_will_insert'                        => 'Будет добавлено следующее:',
+	'ow_contents_of_mapping'                => 'Содержание отображения',
+	'ow_available_contexts'                 => 'Доступные контексты',
+	'ow_add_concept_link'                   => 'Добавить ссылку на другие концепты',
+	'ow_concept_panel'                      => 'Панель концептов',
+	'ow_dm_badtitle'                        => 'Эта страница не указывает ни на одно ОпределённоеЗначение (концепт). Пожалуйста, проверьте веб-адрес.',
+	'ow_dm_missing'                         => 'По видимому, эта страница указывает на несуществующее ОпределённоеЗначение (концепт). Пожалуйста, проверьте веб-адрес.',
+	'ow_AlternativeDefinition'              => 'Альтернативное определение',
+	'ow_AlternativeDefinitions'             => 'Альтернативные определения',
+	'ow_Annotation'                         => 'Аннотация',
+	'ow_ApproximateMeanings'                => 'Приблизительные значения',
+	'ow_ClassAttributeAttribute'            => 'Свойство',
+	'ow_ClassAttributes'                    => 'Свойства класса',
+	'ow_ClassAttributeLevel'                => 'Уровень',
+	'ow_ClassAttributeType'                 => 'Тип',
+	'ow_ClassMembership'                    => 'Членство в классах',
+	'ow_Collection'                         => 'Коллекция',
+	'ow_CollectionMembership'               => 'Присутствует в коллекциях',
+	'ow_Definition'                         => 'Определение',
+	'ow_DefinedMeaningAttributes'           => 'Аннотация',
+	'ow_DefinedMeaning'                     => 'Определённое значение',
+	'ow_DefinedMeaningReference'            => 'Определённое значение',
+	'ow_ExactMeanings'                      => 'Точные значения',
+	'ow_Expression'                         => 'Выражение',
+	'ow_ExpressionMeanings'                 => 'Значения выражений',
+	'ow_Expressions'                        => 'Выражения',
+	'ow_IdenticalMeaning'                   => 'тождественное значение?',
+	'ow_IncomingRelations'                  => 'Входящие отношения',
+	'ow_GotoSource'                         => 'Перейти к исходнику',
+	'ow_Language'                           => 'Язык',
+	'ow_LevelAnnotation'                    => 'Аннотация',
+	'ow_OptionAttribute'                    => 'Свойство',
+	'ow_OptionAttributeOption'              => 'Параметр',
+	'ow_OptionAttributeOptions'             => 'Параметры',
+	'ow_OptionAttributeValues'              => 'Значения параметров',
+	'ow_OtherDefinedMeaning'                => 'Другое определённое значение',
+	'ow_PopupAnnotation'                    => 'Аннотация',
+	'ow_Relations'                          => 'Отношения',
+	'ow_RelationType'                       => 'Тип отношения',
+	'ow_Spelling'                           => 'Правописание',
+	'ow_Synonyms'                           => 'Синонимы',
+	'ow_SynonymsAndTranslations'            => 'Синонимы и переводы',
+	'ow_Source'                             => 'Источник',
+	'ow_SourceIdentifier'                   => 'Идентификатор источника',
+	'ow_TextAttribute'                      => 'Свойство',
+	'ow_Text'                               => 'Текст',
+	'ow_TextAttributeValues'                => 'Простые тексты',
+	'ow_TranslatedTextAttribute'            => 'Свойство',
+	'ow_TranslatedText'                     => 'Переведённый текст',
+	'ow_TranslatedTextAttributeValue'       => 'Текст',
+	'ow_TranslatedTextAttributeValues'      => 'Переводимые тексты',
+	'ow_LinkAttribute'                      => 'Свойство',
+	'ow_LinkAttributeValues'                => 'Ссылки',
+	'ow_Property'                           => 'Свойство',
+	'ow_Value'                              => 'Значение',
+	'ow_meaningsoftitle'                    => 'Значение «$1»',
+	'ow_meaningsofsubtitle'                 => '<em>Вики-ссылка:</em> [[$1]]',
+	'ow_Permission_denied'                  => '<h2>ДОСТУП ЗАПРЕЩЁН</h2>',
+	'ow_copy_no_action_specified'           => 'Пожалуйста, укажите действие',
+	'ow_copy_help'                          => 'Когда-нибудь, мы вам поможем.',
+	'ow_please_proved_dmid'                 => 'Похоже, что во входных данных отсутствует «?dmid=<ID>» (dmid — идентификатор определённого значения)<br /> Пожалуйста, свяжитесь с администратором сервера.',
+	'ow_please_proved_dc1'                  => 'Похоже, что во входных данных отсутствует «?dc1=<something>» (dc1 — контекст набора данных; набор данных, откуда копировать)<br /> Пожалуйста, свяжитесь с администратором сервера.',
+	'ow_please_proved_dc2'                  => 'Похоже, что во входных данных отсутствует «dc2=<something>» (dc2 — контекст набора данных; набор данных куда копировать)<br /> Пожалуйста, свяжитесь с администратором сервера.',
+	'ow_copy_successful'                    => '<h2>Копирование успешно выполнено</h2>Похоже, что ваши данные были успешно скопированы. Но будет нелишним проверить это ещё раз.',
+	'ow_copy_unsuccessful'                  => '<h3>Копирование неудачно</h3> Не было выполнено операции копирования.',
+	'ow_no_action_specified'                => '<h3>Не было указано действие</h3> Возможно, вы зашли непосредственно на эту страницу? В ходе нормальной работы вы не должны были здесь очутиться.',
+	'ow_db_consistency_not_found'           => '<h2>Ошибка</h2>В связи с нарушением целостности базы данных, Викиданные не могут найти верных данных, связанных с этим значением идентификатора. Возможно, они потеряны. Пожалуйста, свяжитесь с оператором сервера или администратором.',
 );
 
 /** Slovak (Slovenčina)

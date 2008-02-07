@@ -576,7 +576,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'blacklistedusername'             => 'Svartelistet brukernavn',
-	'blacklistedusernametext'         => 'Brukernavnet du har valgt tilsvarer et navn på [[MediaWiki:Usernameblacklist|listen over svartelistede brukernavn]]. Velg et annet navn.',
+	'blacklistedusernametext'         => 'Brukernavnet du har valgt står på [[MediaWiki:Usernameblacklist|listen over svartelistede brukernavn]]. Velg et annet navn.',
 	'usernameblacklist'               => '<pre>
 # Punkter på denne lista vil bruke som del av et regulært uttrykk
 # når man svartelister brukernavn fra registrering. Hvert punkt
@@ -586,7 +586,6 @@ $messages['no'] = array(
 # * [Bb]jarne
 </pre>',
 	'usernameblacklist-invalid-lines' => 'Følgende {{PLURAL:$1|linje|linjer}} i brukernavnsvartelista er {{PLURAL:$1|ugyldig|ugyldige}}; vennligst rett {{PLURAL:$1|den|dem}} før du lagrer:',
-
 );
 
 /* Occitan (Cedric31) */

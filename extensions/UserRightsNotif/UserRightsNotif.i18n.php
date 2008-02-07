@@ -188,3 +188,20 @@ Mäd früntelke Gröitnis,
 $2',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'userrightsnotifybody' => 'Hoşgeldiniz $1 
+
+This is to inform you that your group memberships on $2 were changed by $3 at $4.
+
+Eklendi: $5
+
+Taşındı: $6
+
+With regards,
+
+$2',
+);
+
