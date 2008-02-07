@@ -8,6 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
+	'email-desc'   => 'Allows custom headers/footers to be added to user to user emails.',
 	'email_header' => '', # don't translate or duplicate this message to other languages
 	'email_footer' => '----------------------------------------------------------------------------
 This email has been sent to you through the {{SITENAME}} email system by $1.
@@ -42,6 +43,7 @@ $2',
 );
 
 $messages['fr'] = array (
+	'email-desc'   => 'Permet l’ajout d’en-têtes ou de pieds de page personnalisés dans les courriels expédiés aux utilisateurs disposant d’une adresse électronique.',
 	'email_footer' => '----------------------------------------------------------------------------
 Ce courrier a vous a été envoyé grâce au systeme de messagerie de {{SITENAME}} par $1.
 
