@@ -721,9 +721,12 @@ $messages['ext'] = array(
 	'boardvote_welcome'       => 'Bienviniu \'\'\'$1\'\'\'!',
 );
 
-# فارسی (Huji)
+/** فارسی (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
 	'boardvote'              => 'انتخابات هیئت امنای ویکی‌مدیا',
+	'boardvote-desc'         => '[[meta:Board elections|انتخابات هیئت امنای ویکی‌مدیا]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|رای دادن]]
 * [[Special:Boardvote/list|فهرست آرا تا کنون]]
 * [[Special:Boardvote/dump|فهرست رمزنگاری‌شده آرا]]',

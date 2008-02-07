@@ -108,8 +108,13 @@ $messages['ext'] = array(
 	'deletedcontributions' => 'Contribucionis el usuáriu esborrás',
 );
 
+/** فارسی (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
-	'deletedcontributions' => 'مشارکت‌های حذف شده',
+	'deletedcontributions'      => 'مشارکت‌های حذف شده',
+	'deletedcontributions-desc' => 'به مدیران امکان [[Special:DeletedContributions|مشاهدهٔ ویرایش‌های حذف شدهٔ یک کاربر]] را می‌دهد',
+
 );
 
 /** Finnish (Suomi)

@@ -228,9 +228,12 @@ $messages['ext'] = array(
 	'bookinfo-purchase' => 'Mercal esti libru e $1',
 );
 
-# فارسی (Huji)
+/** فارسی (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
 	'bookinfo-header'            => 'اطلاعات کتاب',
+	'bookinfo-desc'              => '[[Special:Booksources]] را با استفاده از اطلاعات یک سرویس اینترنتی گسترش می‌دهد',
 	'bookinfo-result-title'      => 'عنوان:',
 	'bookinfo-result-author'     => 'نویسنده:',
 	'bookinfo-result-publisher'  => 'ناشر:',

@@ -75,9 +75,12 @@ $messages['es'] = array(
 	'sitenotice_close' => 'ocultar',
 );
 
-# فارسی (Huji)
+/** فارسی (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
 	'sitenotice_close' => 'بستن',
+	'sitenotice-desc'  => 'به کاربرها اجازه می‌دهد که اعلانات وبگاه را پنهان کنند',
 
 );
 

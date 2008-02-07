@@ -205,9 +205,12 @@ $messages['ext'] = array(
 	'expand_templates_preview'         => 'Previsoreal',
 );
 
-# فارسی (Huji)
+/** فارسی (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
 	'expandtemplates'                  => 'بسط‌دادن الگوها',
+	'expandtemplates-desc'             => 'الگوها، دستورهای تجزیه‌کننده و متغیرها را گسترش می‌دهد تا متن نهایی را نمایش دهد و صفحه را به پیش‌نمایش در آورد',
 	'expand_templates_intro'           => 'این صفحهٔ ویژه متنی را دریافت کرده و تمام الگوهای به‌کاررفته در آن را به طور بازگشتی بسط می‌دهد. همچنین تابع‌های تجزیه چون <nowiki>{{</nowiki>#if:...}} و متغیرهایی چون  <nowiki>{{</nowiki>CURRENTDAY}} را هم بسط می‌دهد — در واقع تقریباً هرچه را که داخل دوآکولاد باشد. این کار با صدازدن مرحلهٔ تجزیهٔ مربوط در خود مدیاویکی صورت می‌گیرد.',
 	'expand_templates_title'           => 'عنوان موضوع، برای {{PAGENAME}} و غیره:',
 	'expand_templates_input'           => 'متن ورودی:',
@@ -217,6 +220,7 @@ $messages['fa'] = array(
 	'expand_templates_remove_comments' => 'حذف توضیحات',
 	'expand_templates_generate_xml'    => 'نمایش درخت تجزیهٔ XML',
 	'expand_templates_preview'         => 'پیش‌نمایش',
+
 );
 
 /** Finnish (Suomi)

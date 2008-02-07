@@ -87,10 +87,14 @@ $messages['eo'] = array(
 	'assert_edit_title' => 'Aserto malsukcesis',
 );
 
-# فارسی (Huji)
+/** فارسی (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
 	'assert_edit_title'   => 'تایید ناموفق',
+	'assert_edit_desc'    => 'امکان تایید ویرایش‌ها را برای استفاده ربات‌ها اضافه می‌کند',
 	'assert_edit_message' => 'تایید مورد نظر ($1) ناموفق بود.',
+
 );
 
 /** Finnish (Suomi)

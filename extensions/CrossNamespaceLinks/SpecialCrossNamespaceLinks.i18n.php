@@ -107,9 +107,12 @@ $messages['et'] = array(
 	'crossnamespacelinks'         => 'Lingid teise nimeruumi',
 );
 
-# فارسی (Huji)
+/** فارسی (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
 	'crossnamespacelinks'         => 'پیوندهای از یک فضای نام به فضای نام دیگر',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|پیوندهای میان‌ویکی را فهرست می‌کند]] که نباید در {{SITENAME}} وجود داشته باشند',
 	'crossnamespacelinks-summary' => 'این صفحه فهرستی از پیوندهایی که از یک صفحه در فضای نام اصلی به یک صفحه در دیگر فضاهای نام (به جز  {{ns:special}}، {{ns:talk}}، {{ns:project}} و {{ns:template}}) وجود دارد ارائه می‌کند، که استفاده از آن‌ها توصیه نمی‌شود.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|پیوند|پیوند}} به $3',
 
