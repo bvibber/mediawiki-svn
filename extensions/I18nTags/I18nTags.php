@@ -14,6 +14,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Parser i18n tags',
 	'description' => 'Access the i18n functions for number formatting, ' .
 		'grammar and plural in any available language',
+	'descriptionmsg' => 'i18ntags-desc',
 	'version' => '2.2',
 	'author' => 'Niklas Laxström',
 );
