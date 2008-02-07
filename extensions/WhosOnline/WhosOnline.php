@@ -14,7 +14,7 @@ CREATE TABLE `online` (
 	`username` varchar(255) NOT NULL default '',
 	`timestamp` char(14) NOT NULL default '',
 	PRIMARY KEY USING HASH (`userid`, `username`),
-	INDEX USING BTREE `timestamp`
+	INDEX USING BTREE (`timestamp`)
 ) TYPE=MEMORY;
 
 */
