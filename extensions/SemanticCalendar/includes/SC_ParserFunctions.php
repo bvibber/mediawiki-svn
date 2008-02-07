@@ -150,6 +150,7 @@ function scRenderSemanticCalendar (&$parser, $inDatePropertiesStr = '', $inQuery
 	$prev_month_url = $wgTitle->getLocalURL("month=$prev_month_num&year=$prev_year");
 	$next_month_url = $wgTitle->getLocalURL("month=$next_month_num&year=$next_year");
 	$today_url = $wgTitle->getLocalURL();
+	$today_text = wfMsg('sc_today');
 	$prev_month_text = wfMsg('sc_previousmonth');
 	$next_month_text = wfMsg('sc_nextmonth');
 
@@ -194,7 +195,7 @@ function scRenderSemanticCalendar (&$parser, $inDatePropertiesStr = '', $inQuery
 <td class="nav_links">
 <a href="$prev_month_url" title="$prev_month_text"><img src="$scgScriptPath/skins/images/left-arrow.png" /></a>
 &nbsp;
-<a href="$today_url">Today</a>
+<a href="$today_url">$today_text</a>
 &nbsp;
 <a href="$next_month_url" title="$next_month_text"><img src="$scgScriptPath/skins/images/right-arrow.png" /></a>
 </td>
