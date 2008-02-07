@@ -153,6 +153,7 @@ function scRenderSemanticCalendar (&$parser, $inDatePropertiesStr = '', $inQuery
 	$today_text = wfMsg('sc_today');
 	$prev_month_text = wfMsg('sc_previousmonth');
 	$next_month_text = wfMsg('sc_nextmonth');
+	$go_to_month_text = wfMsg('sc_gotomonth');
 
 	// error-checking - many UNIX-based systems, and Windows, can't handle
 	// years that are after the beginning of 2038, or before either 1970,
@@ -213,7 +214,7 @@ END;
 	$text .=<<<END
 </select>
 <input name="year" type="text" value="$cur_year" size="4">
-<input type="submit" value="Go to month">
+<input type="submit" value="$go_to_month_text">
 </form>
 </td>
 </tr>
