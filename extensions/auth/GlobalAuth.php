@@ -92,7 +92,7 @@ class GlobalAuth {
 			$fname );
 		while( $row = $dbr->fetchObject( $res ) ) {
 			if ( $row->user_wiki == $this->thiswiki || $row->user_wiki == '*' ) {
-				if ( $row->user_password == wfEncryptPassword( $row->$user_id, $password ) ) {
+				if ( $row->user_password == wfEncryptPassword( $row->user_id, $password ) ) {
 					$this->data =& $row;
 					return true;
 				}
@@ -153,7 +153,7 @@ class GlobalAuth {
 	function setPassword( $password ) {
 		$dbw =& wfGetDB( DB_MASTER );
 		$success = $dbw->update( $this->tablename,
-				array( 'user_password' => wfEncryptPassword( $this->data->user_id, $passord ) ),
+				array( 'user_password' => wfEncryptPassword( $this->data->user_id, $password ) ),
 				array( 'user_id' => $this->data->user_id,
 					'user_wiki' => $this->data->user_wiki ),
 				'GlobalAuth::setPassword' );
@@ -241,7 +241,7 @@ class GlobalAuth {
 		$seqVal = $dbw->nextSequenceValue( 'user_user_id_seq' );
 		$wiki = ( $first ? '*' : $this->thiswiki );
 		$dbw->insert( $this->tablename, array( 
-				'user_id' => $seqval,
+				'user_id' => $seqVal,
 				'user_name' => $user->getName(),
 				'user_password' => '',
 				'user_email' => $user->getEmail(),
@@ -260,7 +260,7 @@ class GlobalAuth {
 				'user_email', 'user_email_authenticated',
 				'user_real_name','user_options',
 				'user_token' ),
-			array( 'user_name' => $username,
+			array( 'user_name' => $user->getName(),
 				'user_wiki' => $wiki ),
 			$fname );
 		$this->data = $row;
@@ -301,5 +301,3 @@ class GlobalAuth {
 	}
 	
 }
-
-
