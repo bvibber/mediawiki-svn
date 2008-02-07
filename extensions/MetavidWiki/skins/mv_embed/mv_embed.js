@@ -41,13 +41,13 @@ gMsg['ogg-player-vlc-mozilla']='VLC Plugin';
 gMsg['ogg-player-videoElement']='Native Ogg Video Support';
 gMsg['ogg-player-vlc-activex']='VLC ActiveX';
 gMsg['ogg-player-oggPlay']='Annodex OggPlay Plugin';
-gMsg['ogg-player-oggPlugin']='Genneric Ogg Plugin';
+gMsg['ogg-player-oggPlugin']='Generic Ogg Plugin';
 gMsg['ogg-player-quicktime-mozilla']='Quicktime Plugin';
 gMsg['ogg-player-quicktime-activex']='Quicktime ActiveX';
 gMsg['ogg-player-cortado']='Java Cortado';
 gMsg['ogg-player-selected']=' (selected)';
 gMsg['download_clip']='Download the Clip';
-gMsg['genneric_missing_plugin']='You don\'t appear to have a supported in browser playback method<br>' +
+gMsg['generic_missing_plugin']='You don\'t appear to have a supported in browser playback method<br>' +
 		'visit the <a href="http://metavid.ucsc.edu/wiki/index.php/Client_Download">Playback Methods</a> page to download a player<br>';
 		
 //grabs from the globalMsg obj 
@@ -790,7 +790,7 @@ embedVideo.prototype = {
 	    if(this.user_missing_plugin_html){
 	        return this.user_missing_plugin_html;
 	    }else{
-		  return getMsg('genneric_missing_plugin') + ' or <a title="'+getMsg('download_clip')+'" href="'+this.src +'">'+getMsg('download_clip')+'</a>';
+		  return getMsg('generic_missing_plugin') + ' or <a title="'+getMsg('download_clip')+'" href="'+this.src +'">'+getMsg('download_clip')+'</a>';
 		}
 	},
 	//updates the video src

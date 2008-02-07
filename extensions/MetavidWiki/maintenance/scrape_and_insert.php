@@ -111,7 +111,8 @@ class MV_CspanScraper extends MV_BaseScraper{
 		   
 		    //retrive db rows to find match: 
 		   	$dbr =& wfGetDB(DB_SLAVE);
-		    $mvd_res = MV_Index::getMVDInRange($stream->id, null, null, $mvd_type='ht_en',false,$smw_properties=array('Spoken_by'), '');
+		    //$mvd_res = MV_Index::getMVDInRange($stream->id, null, null, $mvd_type='ht_en',false,$smw_properties=array('Spoken_by'), '');		    
+		    /*while ($row = $dbr->fetchObject($mvd_res)) {	   	   
 		    $db_person_ary=$g_row_matches=array();
 		    //group peole in db matches:
 		    $cur_person = '';
@@ -130,10 +131,36 @@ class MV_CspanScraper extends MV_BaseScraper{
    				//if($curKey>2){
    				//	die;
    				//}   				
-		   	}  
+		   	} */ 
+		    
+		    //get people from metavid table (and conform to mvd_res)
+		    $sql = 'SELECT  (`people_time`.`time`-`streams`.`adj_start_time`) as `time`, 	
+		    	   `person_lookup`.`name_clean`	 as `Spoken_by`   		
+		    	   FROM  `metavid`.`people_attr_stream_time` as `people_time`
+		    	   RIGHT JOIN `metavid`.`streams` as `streams` ON `streams`.`id`=`people_time`.`stream_fk`
+		    	   LEFT JOIN `metavid`.`people` as `person_lookup` ON  `person_lookup`.`id` = `people_time`.`people_fk` 
+		    	   WHERE `streams`.`name`=\''.$stream->name.'\' 		    	   		
+		    	   ORDER BY `people_time`.`time` ';		    
+			$people_res = $dbr->query($sql);			
+			$cur_person = '';
+			$curKey=0;
+			while ($row = $dbr->fetchObject($people_res)) {
+				if(!isset( $row->Spoken_by))continue;   			
+				$cur_row_person = $row->Spoken_by;
+				if($cur_person!=$cur_row_person){
+					$db_person_ary[]=get_object_vars($row);					
+					$curKey=count($db_person_ary)-1;
+					$db_person_ary[$curKey]['Spoken_by']= str_replace(' ','_',$db_person_ary[$curKey]['Spoken_by']);
+					$db_person_ary[$curKey]['start_time']=$row->time;
+					$cur_person=$cur_row_person;
+				}else{
+					//update the end time: 
+					$db_person_ary[$curKey]['end_time']=$row->time;
+				}
+			}			
 		  	//list on screen times for everyone: 
-		   	foreach($g_row_matches as $row){
-		   		//print $row['Spoken_by'] . ' on screen for '. ($row['end_time']-$row['start_time']) . "\n";
+		   	foreach($db_person_ary as $row){
+		   		print $row['Spoken_by'] . ' on screen for '. ($row['end_time']-$row['start_time']) . "\n";
 		   		$db_person_ary[]=$row;
 		   	}
 		   	
@@ -143,7 +170,7 @@ class MV_CspanScraper extends MV_BaseScraper{
 		   	//count($cspan_person_ary)	
 		   	$cur_db_inx=0;	   	
 		   	$cur_person=null;	
-		   	$fistValid=true;	   		 
+		   	$fistValid=true;	   			   	
 		   	for($i=0;$i<count($cspan_person_ary);$i++){
 		   		//print "looking at: ". $cspan_person_ary[$i]['Spoken_by'] . "\n";
 		   		//print "\tCSPAN: ". $cspan_person_ary[$i]['Spoken_by'] . ' on screen for '. $cspan_person_ary[$i]['length'].' or:'.ntp2seconds($cspan_person_ary[$i]['length']). "\n";
@@ -289,12 +316,17 @@ class MV_CspanScraper extends MV_BaseScraper{
 		   			preg_match('/<\/a><\/center><\/td><th><center>([^<]*)/', $rawpage, $title_matches);
 		   			preg_match('/<table width="400">\n<tr><td>\n(.*)<\/tr><\/td>/',$rawpage, $page_matches);
 		   			if(isset($title_matches[1]) && isset($page_matches[1])){
-		   				$title = $title_matches[1];
+		   				$title = trim($title_matches[1]);
 		   				$body = $page_matches[1];
 		   				//print_r($page_matches);
 		   			}else{
 		   				die("error can't find title or body\n");
 		   			}
+		   			//fix title case
+		   			$title = ucwords( strtolower($title));
+		   			//don't cap a few words: '
+		   			$title = str_replace(array('And','Or','Of'), array('and','or','of'), $title);
+		   			
 		   			//replace '' with ``
 		   			$body = str_replace('\'\'', '``', $body);
 		   			//replace H.R # with [[Catgory:: H.R #]]
@@ -328,7 +360,7 @@ class MV_CspanScraper extends MV_BaseScraper{
 		   			$cspanTitle=Title::makeTitle(MV_NS_MVD, ucfirst($title_str));
 		   			 
 		   			//add title category
-		   			//print "do insert ".$cspanTitle->getText()." \n";
+		   			//print "do insert ".$cspanTitle->getText()."\n$body \n\n";
 		   			do_update_wiki_page($cspanTitle, $body);		   				
 		   			//[Page: S14580] replaced with:  [[Category:BillName]]
 		   			//would be good to link into the official record for "pages"

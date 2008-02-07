@@ -125,7 +125,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				$sql.='AND (';
 				$or='';
 				foreach($mvd_type as $mtype){
-					$sql.=$or."`mvd_type'='{$mtype}' ";
+					$sql.=$or."`mvd_type`='{$mtype}' ";
 					$or='OR ';
 				}
 				$sql.=')';
@@ -133,6 +133,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				$sql.="AND `mvd_type`='{$mvd_type}' ";
 			}
 		}
+		//print $sql;
 		//get any data that covers this rage: 
 		if($end_time)$sql.=" AND `start_time` <= " . $end_time;
 		if($start_time)$sql.=" AND `end_time` >= " . $start_time; 

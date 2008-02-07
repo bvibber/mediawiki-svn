@@ -51,7 +51,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		global $wgRequest;
 		global $mvMVDTypeDefaultDisp, $mvMVDTypeAllAvailable;
 		$user_tracks = $wgRequest->getVal('mvd_tracks');
-		print "USER TRACKS: " . $user_tracks;
+		//print "USER TRACKS: " . $user_tracks;
 		if($user_tracks!=''){
 			$user_set = explode(',',$user_tracks);			
 			foreach($user_set as $tk){
@@ -112,7 +112,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$dbr =& wfGetDB(DB_SLAVE);	
 		$result = & MV_Index::getMVDInRange($this->mv_interface->article->mvTitle->getStreamId(), 
 							$this->mv_interface->article->mvTitle->getStartTimeSeconds(), 
-							$this->mv_interface->article->mvTitle->getEndTimeSeconds());													
+							$this->mv_interface->article->mvTitle->getEndTimeSeconds(), 
+							$this->mvd_tracks);													
 		if($dbr->numRows($result) == 0){
 			$this->mvd_pages=array();	
 		}else{
@@ -201,12 +202,12 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			if( $mvd_page->start_time==0){
 				$loc_perc=0;
 			}else{
-				//multiply by 94 to keep things inbounds
-				$loc_perc = round(94*( ($mvd_page->start_time-$this->start_time) / $this->duration ));
+				//multiply by 100 to keep things inbounds
+				$loc_perc = round(100*( ($mvd_page->start_time-$this->start_time) / $this->duration ));
 			}
 			//make sure we don't go out of range:
-			if( ($height_perc+$loc_perc) > 94 ){
-				$height_perc = 94-$loc_perc;
+			if( ($height_perc+$loc_perc) > 100 ){
+				$height_perc = 100-$loc_perc;
 			}  
 			if($loc_perc<0)$loc_perc=0;
 			$out.='height:'.$height_perc.'%;'.
@@ -283,11 +284,11 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$wgOut->mCategoryLinks = array();								
 	}
 	function get_add_disp($baseTitle, $mvdType, $time_range){
-		global $wgUser, $wgOut, $mvDefaultClipLength,$mvMVDTypeKeys, $wgRequest;					
+		global $wgUser, $wgOut, $mvDefaultClipLength,$mvMVDTypeAllAvailable, $wgRequest;					
 		
 		list( $this->start_context, $this->end_context) = split('/', $time_range);
 		//first make sure its a valid mvd_type 
-		if(!in_array($mvdType, $mvMVDTypeKeys))return;
+		if(!in_array($mvdType, $mvMVDTypeAllAvailable))return;
 			# Or we could throw an exception:
 			#throw new MWException( __METHOD__ . ' called invalid mvdType.' );		
 		

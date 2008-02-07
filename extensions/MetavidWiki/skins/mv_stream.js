@@ -130,7 +130,7 @@ var mv_init_interface = {
 			//null selector do init: 
 			selector='.mv_timeline_mvd_jumper,.mv_fd_mvd';		
 		}
-		js_log('selector '+selector);
+		js_log('selector: '+selector);
 		$j(selector).hoverIntent({
 			interval:200, //polling interval
 			timeout:200, //delay before onMouseOut
@@ -139,10 +139,10 @@ var mv_init_interface = {
 				mvd_id = this.id.split('_').pop();		
 				//if timeline scroll to position: 
 				if($j(this).attr('class').indexOf('mv_timeline_mvd_jumper')!=-1){
-					 scroll_to_pos(mvd_id);		
+					scroll_to_pos(mvd_id);		
 					 	//also add onclick to mv_timeline_mvd_jumper
 					$j(this).click(function(){
-						mv_do_play();
+						mv_do_play(mvd_id);
 					});
 				}
 				this_stream.mvdOver(mvd_id);
@@ -153,7 +153,9 @@ var mv_init_interface = {
 				this_stream.mvdOut(mvd_id);
 				//disable the play on click (if not highlighted) 
 				if($j(this).attr('class').indexOf('mv_timeline_mvd_jumper')!=-1)
-					$j(this).click(function(){return ;});
+					$j(this).click(function(){
+						return ;
+				});		
 			}
 		});
 	},
@@ -827,14 +829,14 @@ function highlight_tl_ts(mvd_id){
 		if($j('#mv_tl_mvd_'+mvd_id).css('background').indexOf("red")==-1)
 			mv_tl_mvd_org_color[mvd_id] = $j('#mv_tl_mvd_'+mvd_id).css('background');
 		//js_log(mvd_id + ' org color: ' + mv_tl_mvd_org_color[mvd_id]);
-		$j('#mv_tl_mvd_'+mvd_id).css({background:'red',opacity:.4,zIndex:9});
+		$j('#mv_tl_mvd_'+mvd_id).css({background:'red',opacity:.5});
 	}
 }
 function de_highlight_tl_ts(mvd_id){
 	if(mv_tl_mvd_org_color[mvd_id]){
 		//js_log(mvd_id + ' restore ' + mv_tl_mvd_org_color[mvd_id]);
 		if($j('#mv_tl_mvd_'+mvd_id).get(0)){
-			$j('#mv_tl_mvd_'+mvd_id).css({background:mv_tl_mvd_org_color[mvd_id],opacity:1,zIndex:-1});
+			$j('#mv_tl_mvd_'+mvd_id).css({background:mv_tl_mvd_org_color[mvd_id],opacity:1});
 		}
 	}
 }

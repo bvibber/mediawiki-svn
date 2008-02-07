@@ -150,9 +150,9 @@ class MV_SpecialMediaSearch extends SpecialPage {
 	}
 	/*list all the meta *layer* types */
 	function powerSearchOptions() {
-		global $mvMVDTypeKeys;
+		global $mvMVDTypeAllAvailable;
 		$opt = array();
-		foreach( $mvMVDTypeKeys as $n ) {
+		foreach( $mvMVDTypeAllAvailable as $n ) {
 			$opt['mvd_ns_' . $n] = 1;
 		}
 		//$opt['redirs'] = $this->searchRedirects ? 1 : 0;
