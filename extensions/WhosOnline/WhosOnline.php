@@ -19,12 +19,16 @@ CREATE TABLE `online` (
 
 */
 
+$wgExtensionMessagesFiles['WhosOnline'] = dirname(__FILE__) . '/Whosonline.i18n.php';
 $wgHooks['BeforePageDisplay'][] = 'wfWhosOnline_update_data';
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'WhosOnline',
+	'version' => '2008-02-07',
 	'description' => 'Creates list of logged-in & anons currently online',
-	'author' => 'Maciej Brencz (based on [http://www.chekmate.org/wiki/index.php/MW:_Whos_Online_Extension code from ChekMate Security Group])'
+	'descriptionmsg' => 'whosonline-desc',
+	'author' => 'Maciej Brencz (based on [http://www.chekmate.org/wiki/index.php/MW:_Whos_Online_Extension code from ChekMate Security Group])',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:WhosOnline',
 );
 
 $wgExtensionFunctions[] = 'wfWhosOnline';
@@ -33,38 +37,36 @@ $wgSpecialPages['WhosOnline'] = 'SpecialWhosOnline';
 // setup special page
 function wfWhosOnline() {
 	global $IP, $wgSpecialPages;
-	
-	require_once($IP.'/extensions/wikia/WhosOnline/WhosOnlineSpecialPage.php');
-	
-	wfWhosOnlineLoadMessages();
+
+	require_once($IP.'/extensions/WhosOnline/WhosOnlineSpecialPage.php');
 }
 
 // update online data
 function wfWhosOnline_update_data()
 {
-    global $wgUser, $wgDBname;
-    
-    wfProfileIn(__METHOD__);
-    
-    // write to DB (use master)
-    $db = & wfGetDB(DB_WRITE);
-    $db->selectDB( $wgDBname );    
+	global $wgUser, $wgDBname;
 
-    $now = gmdate("YmdHis", time());
+	wfProfileIn(__METHOD__);
 
-    // row to insert to table
-    $row = array
-    (
-		'userid'    => $wgUser->getID(),
-		'username'  => $wgUser->getName(),
-		'timestamp' => $now
-    );
-																	
-    $ignore = $db->ignoreErrors( true );
-    $db->insert('online', $row, __METHOD__, 'DELAYED');
-    $db->ignoreErrors( $ignore );
-    
-    wfProfileOut(__METHOD__);
-    
-    return true;
+	// write to DB (use master)
+	$db = & wfGetDB(DB_WRITE);
+	$db->selectDB( $wgDBname );
+
+	$now = gmdate("YmdHis", time());
+
+	// row to insert to table
+	$row = array
+	(
+	'userid'    => $wgUser->getID(),
+	'username'  => $wgUser->getName(),
+	'timestamp' => $now
+	);
+
+	$ignore = $db->ignoreErrors( true );
+	$db->insert('online', $row, __METHOD__, 'DELAYED');
+	$db->ignoreErrors( $ignore );
+
+	wfProfileOut(__METHOD__);
+
+	return true;
 }
