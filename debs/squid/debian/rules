@@ -151,6 +151,7 @@ config.status:
 	--with-maxfd=65536 \
 	--enable-stacktraces \
 	--enable-dlmalloc=-ltcmalloc \
+	--enable-vary-options \
 	$(DEB_HOST_ARCH_CPU)-debian-$(DEB_HOST_ARCH_OS)
 ifeq ($(DEB_HOST_ARCH_OS), linux)
 endif
