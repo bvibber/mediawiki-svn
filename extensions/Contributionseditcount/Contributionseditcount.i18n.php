@@ -57,8 +57,12 @@ $messages['gl'] = array(
 	'contributionseditcount' => 'Este usuario ten $1 edicións.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'contributionseditcount' => 'Wužiwar ma $1 změnow.',
+	'contributionseditcount'      => 'Wužiwar ma $1 změnow.',
+	'contributionseditcount-desc' => 'Zwobraznja ličbu změnow na [[Special:Contributions]]',
 );
 
 /** Hungarian (Magyar)
@@ -162,3 +166,4 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'contributionseditcount'  =>  '這個用戶擁有 $1 次編輯。',
 );
+

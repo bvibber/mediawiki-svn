@@ -277,6 +277,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'backforth-next' => 'Neste ($1)',
+	'backforth-desc' => 'Legger til lenker til «Neste» og «Forrige» alfabetiske side på toppen av sider',
 	'backforth-prev' => 'Forrige ($1)',
 );
 
@@ -363,9 +364,12 @@ $messages['stq'] = array(
 	'backforth-prev' => 'Foarige ($1)',
 );
 
-/** Swedish (Svenska) */
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
 $messages['sv'] = array(
 	'backforth-next' => 'Nästa ($1)',
+	'backforth-desc' => 'Lägger till länkarna "Nästa" och "Föregående" för alfabetisk navigation, högst upp på sidor',
 	'backforth-prev' => 'Föregående ($1)',
 );
 
@@ -418,3 +422,4 @@ $messages['zh-hant'] = array(
 	'backforth-next' => '下一條 ($1)',
 	'backforth-prev' => '上一條 ($1)',
 );
+

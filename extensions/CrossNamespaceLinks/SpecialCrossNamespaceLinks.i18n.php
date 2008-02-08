@@ -420,7 +420,7 @@ $messages['sk'] = array(
 	'crossnamespacelinks'         => 'Odkazy medzi mennými priestormi',
 	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Vypisuje odkazy medzi mennými priestormi]], ktoé by nemali na {{GRAMMAR:lokál|{{SITENAME}}}} existovať',
 	'crossnamespacelinks-summary' => 'Táto stránka poskytuje zoznam odkazov zo stránky v hlavnom mennom priestore na stránky v ostatných menných priestoroch (okrem menných priestorov {{ns:special}}, {{ns:talk}}, {{ns:project}} a {{ns:template}}), ktoré neradno používať.',
-	'crossnamespacelinkstext'     => '$1: $2 odkazuje na $3',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|odkaz|odkazy|odkazov}} na $3',
 );
 
 $messages['sq'] = array(
@@ -533,3 +533,4 @@ $messages['zh-hant'] = array(
 	'crossnamespacelinks-summary' => '本頁面提供一個從主名字空間到其他名字空間頁面的連結清單（{{ns:special}}, {{ns:talk}}, {{ns:project}} 和 {{ns:template}}名字空間的除外），我們不推薦這種從主名字空間鏈接到到其他名字的做法。',
 	'crossnamespacelinkstext' => '$1: $2 個連結到 $3'
 );
+

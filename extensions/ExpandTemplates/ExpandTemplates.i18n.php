@@ -813,7 +813,9 @@ $messages['te'] = array(
 	'expandtemplates'                  => 'మూసలను విస్తరించు',
 	'expand_templates_intro'           => 'ఈ ప్రత్యేక పేజీ మీరిచ్చిన మూసలను పూర్తిగా విస్తరించి, చూపిస్తుంది. ఇది <nowiki>{{</nowiki>#if:...}} వంటి పార్సరు ఫంక్షన్లను, <nowiki>{{</nowiki>CURRENTDAY}} వంటి చరరాశులను(వేరియబుల్) కూడా విస్తరిస్తుంది &mdash; నిజానికి జమిలి(మీసాల) బ్రాకెట్లలో ఉన్న ప్రతీదాన్నీ ఇది విస్తరిస్తుంది. మీడియావికీ నుండి సంబంధిత పార్సరు స్టేజిని పిలిచి ఇది ఈ పనిని సాధిస్తుంది.',
 	'expand_templates_title'           => '{{PAGENAME}} మొదలగు వాటి కొరకు సందర్భ శీర్షిక:',
+	'expand_templates_input'           => 'ఇన్&zwnj;పుట్ పాఠ్యం:',
 	'expand_templates_output'          => 'ఫలితం',
+	'expand_templates_xml_output'      => 'XML ఔట్&zwnj;పుట్',
 	'expand_templates_ok'              => 'సరే',
 	'expand_templates_remove_comments' => 'వ్యాఖ్యలను తొలగించు',
 	'expand_templates_preview'         => 'మునుజూపు',
@@ -913,3 +915,4 @@ $messages['zh-hant'] = array(
 	'expand_templates_remove_comments' => '移除注釋',
 	'expand_templates_preview'         => '預覽',
 );
+

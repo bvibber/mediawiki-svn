@@ -733,6 +733,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'badimages'                => 'Liste over blokkerte bilder',
+	'badimages-desc'           => 'Utvider funksjonaliteten til listen over dårlige bilder i MediaWiki',
 	'badimages-add-btn'        => 'Legg til',
 	'badimages-added'          => '$1 ble lagt til i listen.',
 	'badimages-count'          => "Det er '''$1''' bilder på lista over blokkerte bilder.",
@@ -750,6 +751,7 @@ $messages['no'] = array(
 	'badimages-log-header'     => 'Dette er en logg over endringer i [[{{MediaWiki:Badimages-page}}|lista over blokkerte bilder]].',
 	'badimages-log-add'        => 'la til [[$1]] på lista over blokkerte bilder',
 	'badimages-log-remove'     => 'fjernet [[$1]] fra lista over blokkerte bilder',
+	'badimages-page'           => 'Help:Liste over dårlige bilder',
 );
 
 /** Occitan (Occitan)
@@ -1115,6 +1117,7 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'badimages'                => 'Lista över dåliga bilder',
+	'badimages-desc'           => 'Utökar funktionaliteten hos listan över dåliga bilder i MediaWiki',
 	'badimages-add-btn'        => 'Lägg till',
 	'badimages-added'          => '$1 las till på listan.',
 	'badimages-count'          => "Det finns '''$1''' bilder på listan över dåliga bilder.",
@@ -1282,3 +1285,4 @@ $messages['zh-hant'] = array(
 	'badimages-log-remove'     => '已經由壞圖像列表中移除 [[$1]]',
 	'badimages-page'           => '{{ns:help}}:壞圖像列表',
 );
+

@@ -64,6 +64,13 @@ $messages['nl'] = array(
 	'multiboilerplate-submit' => 'Laden',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'multiboilerplate-submit' => 'Carregar',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

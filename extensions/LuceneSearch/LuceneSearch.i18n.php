@@ -789,12 +789,18 @@ Dir kënnt awer och déi extern Sichméiglichkeete benotzen:',
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
-	'lucene-searchscore' => 'Relevantie: $1%',
-	'lucene-resultsize'  => '$1 ($2 wäörd)',
-	'searchdidyoumean'   => 'Bedoeldese: "<a href="$1">$2</a>"?',
-	'searchexactcase'    => 'Huidlèttergeveulig zeuke',
-	'searchall'          => 'alle',
-	'searchincategory'   => 'in categorie',
+	'lucene-searchscore'    => 'Relevantie: $1%',
+	'lucene-resultsize'     => '$1 ($2 wäörd)',
+	'searchdidyoumean'      => 'Bedoeldese: "<a href="$1">$2</a>"?',
+	'lucenepowersearchtext' => 'Zeuk in de volgende naamruumde:
+
+$1
+
+Zeuk nao $3 $9 $10',
+	'lucenefallback'        => "d'r Is 'n steuring in de wikizeukmachine. Deze is waorsjienlik tiedelik van aerd; probeer 't euver einige tied opnuuj of doorzeuk de wiki via 'n extern zeukmesjien:",
+	'searchexactcase'       => 'Huidlèttergeveulig zeuke',
+	'searchall'             => 'alle',
+	'searchincategory'      => 'in categorie',
 );
 
 $messages['lo'] = array(
@@ -1468,3 +1474,4 @@ $1
 	'searchall'             => '所有',
 	'searchincategory'      => '在分類中'
 );
+

@@ -278,26 +278,30 @@ de todos os historiais. Resulta útil cando se subdivide unha páxina, etc.',
 	'duplicator-toomanyrevisions'      => '[[$1]] ten demasiadas ($2) revisións e non se pode copiar. O límite actual é $3.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'duplicator' => 'Nastawk duplicěrować',
-	'duplicator-toolbox' => 'Tutón nastawk duplicěrować',
-	'duplicator-header' => 'Z tutej specialnej stronu móžeš strony dospołnje duplicěrować. Při tym přewozmu so cyle stawizny strony. To móže z wužitkom być, hdyž ma so na pr. strona do wjacorych nastawkow rozdźělić.',
-	'duplicator-options' => 'Opcije',
-	'duplicator-source' => 'Žórło:',
-	'duplicator-dest' => 'Cil:',
-	'duplicator-dotalk' => 'Diskusijnu stronu sobu kopěrować (jeli móžno)',
-	'duplicator-submit' => 'Duplicěrować',
-	'duplicator-summary' => '[[$1]] kopěrowany.',
-	'duplicator-success' => '<big>\'\'\'[[$1]] bu do [[$2]] kopěrowany.\'\'\'</big>',
-	'duplicator-success-revisions' => '$1 {{PLURAL:$1|wersija bu kopěrowana|wersijow bu kopěrowane|wersiji buštej kopěrowanej|wersije buchu kopěrowane}}.',
-	'duplicator-success-talkcopied' => 'Diskusijna strona bu tež kopěrowana.',
+	'duplicator'                       => 'Nastawk duplicěrować',
+	'duplicator-desc'                  => 'Njewotwisne kopije stronow z dospołnymi wersijowymi stawiznami wutworić',
+	'duplicator-toolbox'               => 'Tutón nastawk duplicěrować',
+	'duplicator-header'                => 'Z tutej specialnej stronu móžeš strony dospołnje duplicěrować. Při tym přewozmu so cyle stawizny strony. To móže z wužitkom być, hdyž ma so na pr. strona do wjacorych nastawkow rozdźělić.',
+	'duplicator-options'               => 'Opcije',
+	'duplicator-source'                => 'Žórło:',
+	'duplicator-dest'                  => 'Cil:',
+	'duplicator-dotalk'                => 'Diskusijnu stronu sobu kopěrować (jeli móžno)',
+	'duplicator-submit'                => 'Duplicěrować',
+	'duplicator-summary'               => '[[$1]] kopěrowany.',
+	'duplicator-success'               => "<big>'''[[$1]] bu do [[$2]] kopěrowany.'''</big>",
+	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|wersija bu kopěrowana|wersijow bu kopěrowane|wersiji buštej kopěrowanej|wersije buchu kopěrowane}}.',
+	'duplicator-success-talkcopied'    => 'Diskusijna strona bu tež kopěrowana.',
 	'duplicator-success-talknotcopied' => 'Diskusijna strona njeda so kopěrować.',
-	'duplicator-failed' => 'Strona njeda so duplicěrować. Njeznaty zmylk je wustupił.',
-	'duplicator-source-invalid' => 'Prošu podaj płaćiwu žórłowu stronu.',
-	'duplicator-source-notexist' => 'Strona [[$1]] njeeksistuje. Prošu zapodaj eksistowacu stronu.',
-	'duplicator-dest-invalid' => 'Prošu podaj płaćiwu cilowu stronu.',
-	'duplicator-dest-exists' => 'Strona [[$1]] hižo eksistuje. Prošu zapodaj cilowy titl kotryž hišće njeeksistuje.',
-	'duplicator-toomanyrevisions' => 'Strona [[$1]] ma přewjele ($2) wersijow a njehodźi so tohodla kopěrować. Kopěrowanje je na strony z maksimalnje $3 wersijemi wobmjezowane.',
+	'duplicator-failed'                => 'Strona njeda so duplicěrować. Njeznaty zmylk je wustupił.',
+	'duplicator-source-invalid'        => 'Prošu podaj płaćiwu žórłowu stronu.',
+	'duplicator-source-notexist'       => 'Strona [[$1]] njeeksistuje. Prošu zapodaj eksistowacu stronu.',
+	'duplicator-dest-invalid'          => 'Prošu podaj płaćiwu cilowu stronu.',
+	'duplicator-dest-exists'           => 'Strona [[$1]] hižo eksistuje. Prošu zapodaj cilowy titl kotryž hišće njeeksistuje.',
+	'duplicator-toomanyrevisions'      => 'Strona [[$1]] ma přewjele ($2) wersijow a njehodźi so tohodla kopěrować. Kopěrowanje je na strony z maksimalnje $3 wersijemi wobmjezowane.',
 );
 
 /** Hungarian (Magyar)
@@ -443,9 +447,9 @@ kopieën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzo
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'duplicator'                       => 'Kopier en artikkel',
-	'duplicator-toolbox'               => 'Kopier denne artikkelen',
-	'duplicator-header'                => 'Denne siden muliggjør fullstendig kopiering av en artikkel, med uavhengige kopier av all historikk. Dette er nyttig for oppdeling av artikler, etc.',
+	'duplicator'                       => 'Kopier en side',
+	'duplicator-toolbox'               => 'Kopier denne siden',
+	'duplicator-header'                => 'Denne siden muliggjør fullstendig kopiering av en side, med uavhengige kopier av all historikk. Dette er nyttig for oppdeling av sider, etc.',
 	'duplicator-options'               => 'Alternativer',
 	'duplicator-source'                => 'Kilde:',
 	'duplicator-dest'                  => 'Mål:',
@@ -605,7 +609,7 @@ $messages['sk'] = array(
 	'duplicator-submit'                => 'Duplikovať',
 	'duplicator-summary'               => 'Skopírované z [[$1]]',
 	'duplicator-success'               => "<big>Vytvorená kópia '''[[$1]] na [[$2]].'''</big>",
-	'duplicator-success-revisions'     => 'Skopírovaných $1 revízií.',
+	'duplicator-success-revisions'     => '{{PLURAL:$1|Skopírovaná $1 revízia|Skopírované $1 revízie|Skopírovaných $1 revízií}}.',
 	'duplicator-success-talkcopied'    => 'Diskusné stránky boli tiež skopírované.',
 	'duplicator-success-talknotcopied' => 'Nebolo možné skopírovať diskusné stránky.',
 	'duplicator-failed'                => 'Túto stránku nebolo možné duplikovať. Vyskytla sa neznáma chyba.',
@@ -743,3 +747,4 @@ $messages['zh-hant'] = array(
 	'duplicator-dest-exists' => '[[$1]]已經存在。請提供一個未存在的目標標題。',
 	'duplicator-toomanyrevisions' => '[[$1]]有太多 ($2次) 修訂，不能夠複製。目前的上限有$3次。',
 );
+

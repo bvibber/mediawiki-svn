@@ -85,7 +85,7 @@ $messages['bg'] = array(
 	'newuserlogpagetext'       => 'Тази страница съдържа дневник на потребителските регистрации',
 	'newuserlog-byemail'       => 'паролата е изпратена по е-поща',
 	'newuserlog-create-entry'  => 'Нов потребител',
-	'newuserlog-create2-entry' => 'създаде сметка за $1',
+	'newuserlog-create2-entry' => 'създаване на сметка за $1',
 );
 
 /** Bengali (বাংলা)
@@ -190,9 +190,14 @@ $messages['eo'] = array(
 	'newuserlog-create2-entry' => 'kreis konton por $1',
 );
 
+/** Spanish (Español)
+ * @author Icvav
+ * @author Lin linao
+ */
 $messages['es'] = array(
 	'newuserlogpage'           => 'Registro de creación de usuarios',
 	'newuserlogpagetext'       => 'Este es un registro de creación de usuarios',
+	'newuserlog-byemail'       => 'contraseña enviada por correo electrónico',
 	'newuserlog-create-entry'  => 'Usuario nuevo',
 	'newuserlog-create2-entry' => 'creó una cuenta para $1',
 );
@@ -423,20 +428,26 @@ $messages['ku'] = array(
 	'newuserlog-create-entry'  => 'Bikarhênerekî nuh',
 );
 
+/** Latin (Latina)
+ * @author SPQRobin
+ * @author UV
+ */
 $messages['la'] = array(
 	'newuserlogpage'           => 'Index rationum novarum creatarum',
 	'newuserlogpagetext'       => 'Hic est index rationum novarum creatarum',
+	'newuserlog-byemail'       => 'tessera missa litteris electronicis',
 	'newuserlog-create-entry'  => 'Usor novus',
 	'newuserlog-create2-entry' => 'creavit rationem pro $1',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
- * @author SPQRobin
  * @author Robby
+ * @author SPQRobin
  */
 $messages['lb'] = array(
 	'newuserlogpage'           => 'Logbuch vun den neien Umeldungen',
 	'newuserlogpagetext'       => "Dëst ass d'Lescht vun de Benotzernimm déi ugeluecht goufen",
+	'newuserlog-byemail'       => "d'Passwuert gouf per E-Mail geschéckt",
 	'newuserlog-create-entry'  => 'Neie Benotzer',
 	'newuserlog-create2-entry' => "Benotzerkonto fir den/d' $1 gemaach",
 );
@@ -532,6 +543,7 @@ $messages['new'] = array(
 $messages['nl'] = array(
 	'newuserlogpage'           => 'Logboek nieuwe gebruikers',
 	'newuserlogpagetext'       => 'Hieronder staan de nieuw ingeschreven gebruikers',
+	'newuserlog-desc'          => 'Voegt een [[Special:Log/newusers|logboek nieuwe gebruikers toe]] toe aan de [[Special:Log|logboeken]]',
 	'newuserlog-byemail'       => 'wachtwoord is verzonden per e-mail',
 	'newuserlog-create-entry'  => 'Nieuwe gebruiker',
 	'newuserlog-create2-entry' => 'heeft gebruiker $1 ingeschreven',
@@ -554,6 +566,7 @@ $messages['nn'] = array(
 $messages['no'] = array(
 	'newuserlogpage'           => 'Brukeropprettelseslogg',
 	'newuserlogpagetext'       => 'Dette er en logg over brukeropprettelser',
+	'newuserlog-desc'          => 'Legger til en [[Special:Log/newusers|logg over nyopprettede kontoer]] på [[Special:Log]]',
 	'newuserlog-byemail'       => 'passord sendt på e-post',
 	'newuserlog-create-entry'  => 'Ny bruker',
 	'newuserlog-create2-entry' => 'opprettet konto for $1',
@@ -844,3 +857,4 @@ $messages['zh-hant'] = array(
 $messages['zu'] = array(
 	'newuserlog-create-entry' => 'Umsebenzi omusha',
 );
+

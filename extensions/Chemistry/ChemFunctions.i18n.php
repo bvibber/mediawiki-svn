@@ -162,6 +162,7 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'chemicalsources'        => 'Fontes químicas',
+	'chemicalsource-desc'    => 'Engada a etiqueta <nowiki><chemform></nowiki>, para fórmulas químicas',
 	'chemFunctions_ListPage' => 'Fontes químicas',
 	'chemFunctions_DataList' => 'Embaixo hai unha listaxe das ligazóns aos sitios que poden proporcionar información acerca da sustancia química que procura.<br /><br /> * <a 
 href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Composto $MIXCASNameFormula en NIST</a><br /> * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Universidade de Oxford (UK) (non consultábel)</a><br />',
@@ -312,6 +313,8 @@ $messages['no'] = array(
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula ved NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS ved Oxford University (UK) (ikke søkbar)</a><br />',
 	'chemFunctions_CAS'                => 'CAS-nummer',
+	'chemFunctions_ATCCode'            => 'ATCCode',
+	'chemFunctions_ECNumber'           => 'ECNumber',
 	'chemFunctions_Formula'            => 'Formel',
 	'chemFunctions_Name'               => 'IUPAC-navn',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Input-feil!',
@@ -515,3 +518,4 @@ $messages['vi'] = array(
 	'chemFunctions_Name' => 'Tên IUPAC',
 	'chemFunctions_ChemFormInputError' => 'Chemform: lỗi nhập!',
 );
+

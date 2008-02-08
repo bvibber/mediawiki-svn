@@ -15,6 +15,13 @@ $messages['ar'] = array(
 	'catfeed-desc' => 'يستخدم أجزاء من تلقيمات أحدث التغييرات. ينشيء نسخة في الصفحة، مفيد خصوصا لويكي الأخبار.',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'catfeed-desc' => 'Používá kousky z kanálů posledních změn. Vytvoří verzi v rámci stránky. Obzvlášť užitečné pro Wikinews.',
+);
+
 $messages['fr'] = array(
 	'catfeed-desc' => 'Utilise des bits pour alimenter les modifications récentes. Crée une version de page, très pratique pour Wikinews.',
 );
@@ -31,6 +38,13 @@ $messages['hsb'] = array(
  */
 $messages['nl'] = array(
 	'catfeed-desc' => 'Gebruikt informatie uit de recente wijzigingen. Maakt een versie binnen een pagina. In het bijzonder handig voor Wikinews',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'catfeed-desc' => 'Usa pedaços de "feeds" de alterações recentes. Cria uma versão dentro de uma página, especialmente útil para Wikinotícias.',
 );
 
 /** Slovak (Slovenčina)

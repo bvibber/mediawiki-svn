@@ -859,6 +859,21 @@ $messages['lb'] = array(
 	'oversight-hidden'            => 'Verstoppte Versioun',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'hiderevision-text' => "Dit deent '''allein''' gebroek te waere in de volgende gevalle:
+* Ontoelaotbare perseunlike informatie
+*: ''woonadresse en telefoonnommers, sofinommers, enzovoort''
+
+'''Misbroek van dit systeem wörd betref mit 't intrekke van rech.'''
+
+Verwiederde versies zeen neet veur edereen zichbaar via de website,
+meh verwiederde objecte waere in logbeuk biegehaje en kinnen handjmaotig
+trökgezat waere door databasebeheerders es geer 'n fout maak.",
+);
+
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */
@@ -883,6 +898,7 @@ $messages['ne'] = array(
  */
 $messages['nl'] = array(
 	'hiderevision'                => 'Versies permanent verbergen',
+	'hiderevision-desc'           => 'Verberg versies voor alle gebruikers om juridische redenen, etc.',
 	'hiderevision-prompt'         => 'Te verwijderen versienummer:',
 	'hiderevision-continue'       => 'Doorgaan',
 	'hiderevision-text'           => "Dit dient '''alleen''' gebruikt te worden in de volgende gevallen:
@@ -1582,3 +1598,4 @@ $messages['zh-hant'] = array(
 	'oversight-hidden'            => '隱藏修訂',
 	'oversight-header'            => '以下列示的是已經永久隱藏的修訂版本。請注意！洩漏這些訊息將會永遠喪失{{int:Oversight}}權限！',
 );
+

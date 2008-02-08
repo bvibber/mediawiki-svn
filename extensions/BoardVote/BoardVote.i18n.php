@@ -551,9 +551,11 @@ Výsledná šifrovaná podoba následuje. Bude veřejně dostupná na stránce [
 	'boardvote_user'         => 'Uživatel',
 	'boardvote_edits'        => 'Editací',
 	'boardvote_days'         => 'Dní',
+	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Klient',
 	'boardvote_listintro'    => '<p>Toto je seznam všech dosud zaznamenaných hlasů. Také můžete získat $1.</p>',
 	'boardvote_dumplink'     => 'šifrovaný záznam hlasování',
+	'boardvote_submit'       => 'OK',
 	'boardvote_strike'       => 'Zaškrtnout',
 	'boardvote_unstrike'     => 'Odškrtnout',
 	'boardvote_needadmin'    => 'Pouze volební správci mohou provést tuto operaci.',
@@ -3084,18 +3086,36 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
+	'boardvote_entered'    => 'Аз шумо миннатдорем, раъйи шумо сабт шуд.
+
+Агар майл дошта бошед, шумо метавонед тавзеҳоти зеринро барои бойгонӣ нигоҳ доред. Раъйи шумо чунин сабт шудааст:
+
+<pre>$1</pre>
+
+Ин раъй бо калиди умумии мудирони интихобот, ки дар зер омада, рамзгузорӣ шудааст:
+
+<pre>$2</pre>
+
+Ба таври умумӣ [[Special:Boardvote/dump]] натиҷаи рамзгузорӣ дар идома омадааст. Ин натиҷа дар намоиш дода мешавад.
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Бозгашт]]',
+	'boardvote_novotes'    => 'Ҳанӯз касе раъй надодааст.',
 	'boardvote_time'       => 'Вақт',
 	'boardvote_user'       => 'Корбар',
 	'boardvote_edits'      => 'Вироишҳо',
 	'boardvote_days'       => 'Рӯзҳо',
 	'boardvote_ip'         => 'Нишонаи IP',
 	'boardvote_ua'         => 'Амали корбар (user agent)',
+	'boardvote_listintro'  => '<p>Ин феҳристи тамоми раъйҳои сабтшуда то кунун аст. $1 барои додаҳои рамзгузоришуда.</p>',
 	'boardvote_dumplink'   => 'Инҷо клик кунед',
 	'boardvote_strike'     => 'Хат задан',
 	'boardvote_unstrike'   => 'Ах хат задан озод кардан',
 	'boardvote_needadmin'  => 'Фақат мудирони интихобот метавонанд ин коро анҷом диҳанд',
 	'boardvote_notstarted' => 'Раъйпурсӣ ҳануз шурӯъ нашудааст',
 	'boardvote_edits_many' => 'бисёр',
+	'boardvote_blocked'    => 'Мутаасифона, дастрасии шумо дар викии мавриди назар қатъ шудааст. Корбароне, ки дастрасиашон қатъ шудааст, иҷозати раъй додан надоранд.',
 	'boardvote_welcome'    => "Хуш омадед '''$1'''!",
 );
 
@@ -3489,3 +3509,4 @@ $messages['zh-hant'] = array(
 $messages['zu'] = array(
 	'boardvote_time' => 'Isikhathi',
 );
+

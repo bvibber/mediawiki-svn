@@ -293,6 +293,38 @@ $messages['cs'] = array(
 	'math_IllegalNestedFontEncodings'       => 'Příkazy kódování písma nemohou být být vnořené',
 	'math_IllegalRedefinition'              => 'Příkaz „$1“ už byl definovaný; nemůžete ho předefinovat',
 	'math_InvalidColour'                    => 'Barva „$1“ není platná',
+	'math_InvalidUtf8Input'                 => 'Vstupní řetězec nebyl platný UTF-8',
+	'math_LatexFontNotSpecified'            => 'Nebylo nalezeno uvedené písmo LaTeXu pro „$1“',
+	'math_LatexPackageUnavailable'          => 'Nebylo možno vykreslit PNG, protože balík LaTeXu „$1“ není dostupný',
+	'math_MismatchedBeginAndEnd'            => 'Příkazy „$1“ a „$2“ se neshodují',
+	'math_MisplacedLimits'                  => 'Příkaz „$1“ může následovat jen za matematickým operátorem (zvažte použití „\\mathop“)',
+	'math_MissingCommandAfterNewcommand'    => 'Chybějící nebo neplatný nový název po příkazu „\\newcommand“ (musí být definován jen jeden příkaz; musí začínat zpětným lomítkem „\\“ a obsahovat jen alfabetické znaky)',
+	'math_MissingDelimiter'                 => 'Chybí oddělovač za „$1“',
+	'math_MissingOpenBraceAfter'            => 'Chybí otevírající složená závorka „{“ za „$1“',
+	'math_MissingOpenBraceAtEnd'            => 'Chybí otevírající složená závorka „{“ na konci vstupu',
+	'math_MissingOpenBraceBefore'           => 'Chybí otevírající složená závorka „{“ před „$1“',
+	'math_MissingOrIllegalParameterCount'   => 'Chybějící nebo neplatný počet parametrů v definici „$1“ (musí být jediná číslice mezi 1 a 9 včetně)',
+	'math_MissingOrIllegalParameterIndex'   => 'Chybějící nebo neplatný počet parametrů v definici „$1“',
+	'math_NonAsciiInMathMode'               => 'Ne-ASCII znaky je možné použít pouze v textovém režimu (zkuste uzavřít problematické znaky do „\\text{...}“)',
+	'math_NotEnoughArguments'               => 'Nebyl poskytnut dostatek parametrů pro „$1“',
+	'math_PngIncompatibleCharacter'         => 'Nebylo možné správně vygenerovat PNG obsahující znak $1',
+	'math_ReservedCommand'                  => 'Příkaz „$1“ je vyhrazen pro vnitřní použití blahtexem',
+	'math_SubstackRowTooBig'                => 'V každém řádku bloku „substack“ může být jen jeden záznam',
+	'math_TooManyMathmlNodes'               => 'Ve stromu MathML je příliš moc uzlů',
+	'math_TooManyTokens'                    => 'Vstup je příliš dlouhý',
+	'math_UnavailableSymbolFontCombination' => 'Symbol „$1“ není dostupný v písmu „$2“',
+	'math_UnexpectedNextCell'               => 'Příkaz „&“ se může vyskytovat jen uvnitř bloku „\\begin ... \\end“',
+	'math_UnexpectedNextRow'                => 'Příkaz „\\\\“ se může vyskytovat jen uvnitř bloku „\\begin ... \\end“',
+	'math_UnmatchedBegin'                   => 'Vyskytl se „\\begin“ bez odpovídajícího „\\end“',
+	'math_UnmatchedCloseBrace'              => 'vyskytla se uzavírající složená závorka „}“ bez odpovídající otevírající složené závorky „{“',
+	'math_UnmatchedEnd'                     => 'Vyskytl se „\\end“ bez odpovídajícího „\\begin“',
+	'math_UnmatchedLeft'                    => 'Vyskytl se „\\left“ bez odpovídajícího „\\right“',
+	'math_UnmatchedOpenBrace'               => 'Vyskytla se otevírající složená závorka „{“ bez odpovídající uzavírající složené závorky „}“',
+	'math_UnmatchedOpenBracket'             => 'Vyskytla se otevírající hranatá závorka „[“ bez odpovídající uzavírající hranaté závorky „]“',
+	'math_UnmatchedRight'                   => 'Vyskytl se „\\right“ bez odpovídajícího „\\left“',
+	'math_UnrecognisedCommand'              => 'Nerozpoznatelný příkaz „$1“',
+	'math_WrongFontEncoding'                => 'Symbol „$1“ se nemůže nacházet v kódování písma „$2“',
+	'math_WrongFontEncodingWithHint'        => 'Symbol „$1“ se nemůže nacházet v kódování písma „$2“ (zkuste použít příkaz „$3{...}“)',
 );
 
 /** Greek (Ελληνικά)
@@ -814,6 +846,18 @@ $messages['nl'] = array(
 	'math_UnrecognisedCommand'              => 'Commando "$1" niet herkend',
 	'math_WrongFontEncoding'                => 'Het symbool "$1" mag niet voorkomen in lettertypecodering "$2"',
 	'math_WrongFontEncodingWithHint'        => 'Het symbool "$1" mag niet voorkomen in lettertypecodering "$2". Probeer het commando "$3{...}" te gebruiken.',
+);
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'math_CannotChangeDirectory'   => 'Kan ikke endre arbeidsmappe',
+	'math_CannotCreateTexFile'     => 'Kan ikke opprette tex-fil',
+	'math_CannotRunDvipng'         => 'Kan ikke kjøre dvipng',
+	'math_CannotRunLatex'          => 'Kan ikke kjøre latex',
+	'math_CannotWritePngDirectory' => 'Kan ikke skrive til PNG-mappe',
+	'math_CannotWriteTexFile'      => 'Kan ikke skriv til tex-fil',
 );
 
 /** Occitan (Occitan)

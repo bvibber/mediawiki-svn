@@ -151,6 +151,14 @@ $messages['stq'] = array(
 	'icon-badwidth' => 'Falske Bratte',
 );
 
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'icon-badimage' => 'Dålig Bild',
+	'icon-badwidth' => 'Dålig Bredd',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

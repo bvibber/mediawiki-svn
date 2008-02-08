@@ -422,20 +422,21 @@ $messages['ne'] = array(
 	'imagemap_description' => 'यो चित्रको बारेमा',
 );
 
-/* nld / Dutch (Siebrand Mazeland) */
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'imagemap_no_image'             => '&lt;imagemap&gt;: geef een afbeelding op in de eerste regel',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;: de afbeelding is corrupt of bestaat niet',
-	'imagemap_no_link'              => '&lt;imagemap&gt;: er is geen geldige link aangetroffen aan het einde van regel $1',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: er staat een ongeldige titel in de verwijzing op regel $1',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: niet genoeg coördinaten voor vorm in regel $1',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: niet herkende vorm in regel $1, iedere regel moet beginnen met één van de commando\'s: default, rect, circle of poly',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;: er moet tenminste één gebied gespecificeerd worden',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: ongeldige coördinaten in regel $1, moet een getal zijn',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: ongeldige beschrijvingsspecificatie, dit moet er één zijn uit de volgende lijst: $1',
-	'imagemap_description'          => 'Over deze afbeelding',
-	# Note to translators: keep the same order
-	'imagemap_desc_types'           => 'rechtsboven, rechtsonder, linksonder, linksboven, geen',
+	'imagemap_desc'               => 'Maakt aanklikbare imagemaps mogelijk met de tag <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: geef een afbeelding op in de eerste regel',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: de afbeelding is corrupt of bestaat niet',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: er is geen geldige link aangetroffen aan het einde van regel $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: er staat een ongeldige titel in de verwijzing op regel $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: niet genoeg coördinaten voor vorm in regel $1',
+	'imagemap_unrecognised_shape' => "&lt;imagemap&gt;: niet herkende vorm in regel $1, iedere regel moet beginnen met één van de commando's: default, rect, circle of poly",
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: er moet tenminste één gebied gespecificeerd worden',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: ongeldige coördinaten in regel $1, moet een getal zijn',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: ongeldige beschrijvingsspecificatie, dit moet er één zijn uit de volgende lijst: $1',
+	'imagemap_description'        => 'Over deze afbeelding',
 );
 
 /* Norwegian (Jon Harald Søby) */
@@ -705,3 +706,4 @@ $messages['zh-hant'] = array(
 	'imagemap_description'          => '關於這幅圖像',
 	'imagemap_desc_types'           => '右上, 右下, 左下, 左上, 無',
 );
+

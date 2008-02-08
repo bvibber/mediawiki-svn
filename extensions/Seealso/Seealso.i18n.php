@@ -105,6 +105,13 @@ $messages['nl'] = array(
 	'seealso' => 'Zie ook',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'seealso' => 'Se også',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

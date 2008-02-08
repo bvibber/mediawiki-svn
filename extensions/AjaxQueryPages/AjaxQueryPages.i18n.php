@@ -53,6 +53,13 @@ $messages['nl'] = array(
 	'ajax-qp-desc' => "Voegt wat AJAX toe aan QueryPages zoals [[Special:Shortpages|Korte pagina's]]",
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'ajax-qp-desc' => 'Legger til noe AJAX på spørringssider som [[Special:Shortpages]]',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -65,5 +72,12 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'ajax-qp-desc' => 'Pridáva AJAX na stránky požiadaviek ako [[Special:Shortpages|{{MediaWiki:shortpages}}]]',
+);
+
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'ajax-qp-desc' => 'Lägger till AJAX-funktioner på vissa specialsidor, som t.ex. [[Special:Shortpages]]',
 );
 

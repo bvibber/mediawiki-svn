@@ -302,18 +302,23 @@ $messages['frp'] = array(
 	'bookinfo-provider'          => 'Fornissor de les balyês : $1',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Xosé
+ */
 $messages['gl'] = array(
-	'bookinfo-header' => 'Información do libro',
-	'bookinfo-result-title' => 'Título:',
-	'bookinfo-result-author' => 'Autor:',
-	'bookinfo-result-publisher' => 'Publicación:',
-	'bookinfo-result-year' => 'Ano:',
+	'bookinfo-header'            => 'Información do libro',
+	'bookinfo-desc'              => 'Ampliar [[Special:Booksources]] con información dun servizo web',
+	'bookinfo-result-title'      => 'Título:',
+	'bookinfo-result-author'     => 'Autor:',
+	'bookinfo-result-publisher'  => 'Publicación:',
+	'bookinfo-result-year'       => 'Ano:',
 	'bookinfo-error-invalidisbn' => 'O ISBN introducido non é válido.',
-	'bookinfo-error-nosuchitem' => 'O artigo non existe ou non foi atopado.',
-	'bookinfo-error-nodriver' => 'Non é posíbel comezar unha apropiada búsqueda de información sobre libros.',
-	'bookinfo-error-noresponse' => 'Non se recibiu resposta ou a solicitude caducou.',
-	'bookinfo-purchase' => 'Compre este libro de $1',
-	'bookinfo-provider' => 'Fornecedor de datos: $1',
+	'bookinfo-error-nosuchitem'  => 'O artigo non existe ou non foi atopado.',
+	'bookinfo-error-nodriver'    => 'Non é posíbel comezar unha apropiada búsqueda de información sobre libros.',
+	'bookinfo-error-noresponse'  => 'Non se recibiu resposta ou a solicitude caducou.',
+	'bookinfo-purchase'          => 'Compre este libro de $1',
+	'bookinfo-provider'          => 'Fornecedor de datos: $1',
 );
 
 $messages['hr'] = array(
@@ -819,6 +824,8 @@ $messages['tg'] = array(
 	'bookinfo-result-author'    => 'Муаллиф:',
 	'bookinfo-result-publisher' => 'Нашриёт:',
 	'bookinfo-result-year'      => 'Соли интишор:',
+	'bookinfo-purchase'         => 'Харидани ин китоб аз $1',
+	'bookinfo-provider'         => 'Муҳаёкунандаи иттилоот: $1',
 );
 
 /** Turkish (Türkçe)
@@ -895,3 +902,4 @@ $messages['zh-hant'] = array(
 	'bookinfo-purchase' => '在$1買這本書',
 	'bookinfo-provider' => '資料提供者: $1',
 );
+

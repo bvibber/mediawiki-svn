@@ -318,7 +318,9 @@ $messages['sv'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
-	'assert_edit_title' => 'Таъйид номуваффақ шуд',
+	'assert_edit_title'   => 'Таъйид номуваффақ шуд',
+	'assert_edit_desc'    => 'Имкони таъйиди вироишҳоро барои истифодаи роботҳо илова мекунад',
+	'assert_edit_message' => 'Таъйиди мавриди назар ($1) номувофиқ буд.',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -360,3 +362,4 @@ $messages['zh-hant'] = array(
 	'assert_edit_title'   => '維護失敗',
 	'assert_edit_message' => '所指定的斷言 ($1) 失敗。',
 );
+

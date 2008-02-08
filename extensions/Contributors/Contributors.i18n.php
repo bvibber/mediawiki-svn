@@ -227,17 +227,21 @@ $messages['gl'] = array(
 	'contributors-nosuchpage'  => 'Non existe a páxina $1.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'contributors' => 'Přinošowarjo',
-	'contributors-toolbox' => 'Hłowni přinošowarjo',
-	'contributors-legend' => 'Pokazaj hłownych přinošowarjow strony',
-	'contributors-target' => 'Titl:',
-	'contributors-submit' => 'Pokazać',
-	'contributors-subtitle' => 'Hłowni přinošowarjo strony $1',
+	'contributors'             => 'Přinošowarjo',
+	'contributors-desc'        => 'Zjima hłownych přinošowarjow strony',
+	'contributors-toolbox'     => 'Hłowni přinošowarjo',
+	'contributors-legend'      => 'Pokazaj hłownych přinošowarjow strony',
+	'contributors-target'      => 'Titl:',
+	'contributors-submit'      => 'Pokazać',
+	'contributors-subtitle'    => 'Hłowni přinošowarjo strony $1',
 	'contributors-others-long' => 'Je hišće druhich $1 přinošowarjow k tutej stronje.',
-	'contributors-others' => 'a $1 {{PLURAL:$1|druhi|druhej|druzy|druhich}}',
-	'contributors-badtitle' => 'Njepłaćiwy titl.',
-	'contributors-nosuchpage' => 'Strona $1 njeeksistuje.',
+	'contributors-others'      => 'a $1 {{PLURAL:$1|druhi|druhej|druzy|druhich}}',
+	'contributors-badtitle'    => 'Njepłaćiwy titl.',
+	'contributors-nosuchpage'  => 'Strona $1 njeeksistuje.',
 );
 
 /** Hungarian (Magyar)
@@ -681,3 +685,4 @@ $messages['zh-hant'] = array(
 	'contributors-badtitle' => '不正確的標題。',
 	'contributors-nosuchpage' => '條目$1不存在。',
 );
+

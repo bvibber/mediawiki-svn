@@ -62,6 +62,8 @@ $messages['fr'] = array(
  * @author Alma
  */
 $messages['gl'] = array(
+	'randomincategory'            => 'Páxina aleatoria na categoría',
+	'randomincategory-toolbox'    => 'Páxina aleatoria',
 	'randomincategory-nocategory' => 'A categoría $1 non existe ou está baleira',
 	'randomincategory-label'      => 'Categoría:',
 	'randomincategory-submit'     => 'Adiante',

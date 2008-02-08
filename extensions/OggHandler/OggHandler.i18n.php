@@ -866,6 +866,7 @@ $messages['nds'] = array(
  * @author SPQRobin
  */
 $messages['nl'] = array(
+	'ogg-desc'                => 'andelt Ogg Theora en Vorbis bestanden af met een JavaScript mediaspeler',
 	'ogg-short-audio'         => 'Ogg $1 geluidsbestand, $2',
 	'ogg-short-video'         => 'Ogg $1 videobestand, $2',
 	'ogg-short-general'       => 'Ogg $1 mediabestand, $2',
@@ -1477,3 +1478,4 @@ $messages['zh-hant'] = array(
 	'ogg-download'         => '下載檔案',
 	'ogg-desc-link'        => '關於這個檔案',
 );
+

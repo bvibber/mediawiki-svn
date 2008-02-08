@@ -224,3 +224,11 @@ $messages['stq'] = array(
 	'inspectcache-list'    => 'Lieste',
 );
 
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'inspectcache-delete' => 'Ta bort',
+	'inspectcache-list'   => 'Lista',
+);
+

@@ -168,8 +168,10 @@ $messages['frp'] = array(
 
 /** Galician (Galego)
  * @author Xosé
+ * @author Alma
  */
 $messages['gl'] = array(
+	'ajax-se-desc'    => 'Amosar aos usuarios que están editando na mesma páxina',
 	'ajax-se-title'   => 'Neste momento está a editar:',
 	'ajax-se-pending' => 'pendente de refresco... (clique nesta caixa ou comece a editar)',
 	'ajax-se-idling'  => '(hai $1s)',
@@ -307,6 +309,7 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'ajax-se-desc'    => 'Vis hvilke brukere som redigerer samme side',
 	'ajax-se-title'   => 'Redigerer:',
 	'ajax-se-pending' => 'Avventer gjenoppfriskning … (klikk denne boksen eller start å redigere)',
 	'ajax-se-idling'  => '($1s siden)',
@@ -422,8 +425,10 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Sannab
+ * @author Lejonel
  */
 $messages['sv'] = array(
+	'ajax-se-desc'    => 'Visar under sidredigering vilka användare som redigerar samma sida',
 	'ajax-se-title'   => 'Redigeras just nu:',
 	'ajax-se-pending' => 'avvaktar omläsning ... (klicka på denna ruta eller börja redigera)',
 	'ajax-se-idling'  => '($1s sedan)',
@@ -486,3 +491,4 @@ $messages['zh-hant'] = array(
 	'ajax-se-pending' => '正在重新整理 ... (按一下這個框開始編輯)',
 	'ajax-se-idling'  => '($1秒前)',
 );
+

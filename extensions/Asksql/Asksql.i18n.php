@@ -411,6 +411,7 @@ Dit kan zorgen voor zware belasting van de server, gebruik deze functie dus spaa
  */
 $messages['no'] = array(
 	'asksql'          => 'SQL-spørring',
+	'asksql-desc'     => 'Gjør SQL-spørringer gjennom en [[Special:Asksql|spesialside]]',
 	'asksqltext'      => "Bruk skjemaet under for å foreta en direkte spørring av databasen. Bruk enkle anførselstegn ('som dette') for å merke strenger. Dette kan putte press på tjenerytelsen, så bruk funksjonen med varsomhet.",
 	'sqlislogged'     => 'Merk at alle spørringer logges.',
 	'sqlquery'        => 'Skriv inn spørring',
@@ -594,9 +595,11 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Sannab
  * @author Siebrand
+ * @author Lejonel
  */
 $messages['sv'] = array(
 	'asksql'          => 'SQL-fråga',
+	'asksql-desc'     => 'Ger möjlighet att ställa SQL-frågor via en [[Special:Asksql|specialsida]]',
 	'asksqltext'      => "Använd nedanstående formulär för att ställa en direkt fråga till databasen.
 Använd enkla citationstecken ('så här') för att avgränsa textsträngar.
 Detta kan leda till väsentlig belastning av servern, så använd denna funktion med måtta.",
@@ -668,3 +671,4 @@ $messages['zh-hant'] = array(
 	'selectonly'      => '只允許唯讀模式的查詢。',
 	'querysuccessful' => '查詢完成',
 );
+

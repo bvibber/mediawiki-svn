@@ -322,9 +322,9 @@ en zorg er alstublieft voor dat alle velden de juiste waarden hebben
  */
 $messages['no'] = array(
 	'createsigndocument'              => 'Slå på dokumentsignering',
-	'createsigndoc-head'              => "Bruk dette skjemaet for å opprette et «signaturdokument» for denne artikkelen, slik at brukere kan signere den via [[Special:SignDocument]]. Vennligst oppgi artikkelens navn, hvilken brukergruppe som skal kunne signere den, hvilke felter som skal være synlige for brukerne, hvilke som skal være valgfrie, minimumsalder for å kunne signere dokumentet (om denne ikke oppgis, er det ingen grense); og en kjapp introduksjonstekst som beskriver dokumentet og gir instruksjoner til brukerne.
+	'createsigndoc-head'              => "Bruk dette skjemaet for å opprette et «signaturdokument» for denne siden, slik at brukere kan signere den via [[Special:SignDocument]]. Vennligst oppgi sidens navn, hvilken brukergruppe som skal kunne signere den, hvilke felter som skal være synlige for brukerne, hvilke som skal være valgfrie, minimumsalder for å kunne signere dokumentet (om denne ikke oppgis, er det ingen grense), og en kjapp introduksjonstekst som beskriver dokumentet og gir instruksjoner til brukerne.
 
-<b>Det er ingen måte å slette eller endre signaturdokumenter etter at de opprettes</b> uten direkte databasetilgang. Teksten på artikkelen på signatursiden vil også være den ''nåværende'' teksten, uavhengig av hvilke endringer som gjøres etter i dag. Vær hundre prosent sikker på at dokumentet er stabilt når det signeres, og vær også sikker på at du oppgir alle felt som de burde være, ''før du lagrer dette skjemaet''.",
+<b>Det er ingen måte å slette eller endre signaturdokumenter etter at de opprettes</b> uten direkte databasetilgang. Teksten på siden på signatursiden vil også være den ''nåværende'' teksten, uavhengig av hvilke endringer som gjøres etter i dag. Vær hundre prosent sikker på at dokumentet er stabilt når det signeres, og vær også sikker på at du oppgir alle felt som de burde være, ''før du lagrer dette skjemaet''.",
 	'createsigndoc-pagename'          => 'Side:',
 	'createsigndoc-allowedgroup'      => 'Tillatt gruppe:',
 	'createsigndoc-email'             => 'E-postadresse:',

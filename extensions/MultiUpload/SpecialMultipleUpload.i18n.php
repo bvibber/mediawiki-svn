@@ -228,6 +228,15 @@ $messages['pl'] = array(
 				",
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'multipleupload-ignoreallwarnings' => "Ignorar '''todos os avisos''' e, mesmo assim, gravar os ficheiros.",
+	'multipleupload-saveallfiles'      => 'Gravar todos os ficheiros',
+	'multipleupload-page'              => '{{ns:project}}:Política de eliminação de ficheiros',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

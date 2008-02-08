@@ -85,6 +85,15 @@ $messages['ca'] = array(
 	'block_title_error'            => 'Ho sento, no està permès editar una pàgina amb aquest títol.',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'block_title_error_page_title' => 'Zablokovaný název',
+	'block_title_error-desc'       => 'Poskytuje základní prostředek na zabránění vytváření čí ukládání stránek s určitým názvem',
+	'block_title_error'            => 'Promiňte, stránky s tímto názvem není povoleno ukládat.',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -276,7 +285,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'block_title_error_page_title' => 'Blokkert tittel',
-	'block_title_error'            => 'Beklager, tittelen på denne artikkelen kunne ikke lagres.',
+	'block_title_error'            => 'Beklager, det er ikke lov å lagre en side med denne tittelen.',
 );
 
 /** Occitan (Occitan)
@@ -370,6 +379,7 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'block_title_error_page_title' => 'Blockerad titel',
+	'block_title_error-desc'       => 'Erbjuder ett enkelt sätt att förhindra att sidor med vissa titlar sparas eller skapas',
 	'block_title_error'            => 'Det är inte tillåtet att spara en sida under denna titel.',
 );
 
@@ -419,3 +429,4 @@ $messages['zh-hant'] = array(
 	'block_title_error_page_title' => '已封鎖的標題',
 	'block_title_error'            => '抱歉，這篇文章的標題不允許保存。',
 );
+

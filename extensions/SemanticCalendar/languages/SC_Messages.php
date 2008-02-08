@@ -42,6 +42,25 @@ $messages['bg'] = array(
 	'sc_error_beforeyear' => 'Грешка: Системата не може да оперира с дати преди $1',
 );
 
+/** German (Deutsch)
+ * @author Krabina
+ */
+$messages['de'] = array(
+	'sc_previousmonth'    => 'Voriger Monat',
+	'sc_nextmonth'        => 'Nächster Monat',
+	'sc_today'            => 'Heute',
+	'sc_gotomonth'        => 'Gehe zu Monat',
+	'sc_error_year2038'   => 'Fehler: Das System kann aufgrund des [http://de.wikipedia.org/wiki/Jahr-2038-Problem Jahr-2038-Problems] Datumsangeben nach dem Jahr 2038 nicht verarbeiten.',
+	'sc_error_beforeyear' => 'Fehler: Das System kann Datumsangaben vor $1 nicht verarbeiten.',
+);
+
+/** Deutsch (Sie-Form) (Deutsch (Sie-Form))
+ * @author Krabina
+ */
+$messages['de-formal'] = array(
+	'sc_previousmonth' => 'Voriges Monat',
+);
+
 /** Persian (فارسی)
  * @author Tofighi
  */
@@ -60,8 +79,20 @@ $messages['fa'] = array(
 $messages['fr'] = array(
 	'sc_previousmonth'    => 'Mois précédent',
 	'sc_nextmonth'        => 'Mois suivant',
+	'sc_today'            => "Aujourd'hui",
+	'sc_gotomonth'        => 'Aller vers le mois',
 	'sc_error_year2038'   => "Erreur : ce système ne supporte les dates après 2038, dû au [http://fr.wikipedia.org/wiki/Bogue_de_l%27an_2038 Bogue de l'an 2038]",
 	'sc_error_beforeyear' => 'Erreur : ce système ne peut supporter les dates antérieures au $1.',
+);
+
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'sc_previousmonth' => 'Mes anterior',
+	'sc_nextmonth'     => 'Mes seguinte',
+	'sc_today'         => 'Hoxe',
+	'sc_gotomonth'     => 'Ir ao mes',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

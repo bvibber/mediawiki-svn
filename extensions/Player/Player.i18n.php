@@ -286,6 +286,9 @@ $messages['pms'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'player-file'          => 'Nome do ficheiro',
+	'player-not-allowed'   => 'formato não permitido',
+	'player-not-found'     => 'ficheiro não encontrado',
 	'player-invalid-title' => 'título inválido',
 	'player-goto-page'     => 'Página',
 );

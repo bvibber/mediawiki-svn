@@ -290,8 +290,14 @@ $messages['pms'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'passwordreset'                 => 'Repor Palavra-Chave',
 	'passwordreset-invalidusername' => 'Nome de Utilizador Inválido',
 	'passwordreset-emptyusername'   => 'Nome de Utilizador Vazio',
+	'passwordreset-nopassmatch'     => 'Palavras-Chave não coincidem',
+	'passwordreset-username'        => 'Nome de utilizador',
+	'passwordreset-newpass'         => 'Nova Palavra-Chave',
+	'passwordreset-confirmpass'     => 'Confirme Palavra-Chave',
+	'passwordreset-submit'          => 'Repor Palavra-Chave',
 );
 
 $messages['rm'] = array(
@@ -399,3 +405,4 @@ $messages['zh-hant'] = array(
 	'passwordreset-submit' => '重設密碼',
 	'passwordreset-success' => 'User_id: $1 的密碼已經重設'
 );
+

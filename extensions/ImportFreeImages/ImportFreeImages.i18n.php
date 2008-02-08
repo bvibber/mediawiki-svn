@@ -175,6 +175,7 @@ $messages['oc'] = array(
  */
 $messages['pt'] = array(
 	'importfreeimages'                       => 'Importar Imagens Livres',
+	'importfreeimages_nophotosfound'         => "Nenhuma fotografia foi encontrada segundo o seu critério de busca '$1'; por favor, tente de novo.",
 	'importfreeimages_owner'                 => 'Autor',
 	'importfreeimages_importthis'            => 'importar isto',
 	'importfreeimages_next'                  => 'Próximas $1',
@@ -229,6 +230,16 @@ $messages['stq'] = array(
 	'importfreeimages_filefromflickr'        => '$1 fon Benutser <b>[$2]</b> fon flickr. Originoal URL',
 	'importfreeimages_promptuserforfilename' => 'Reek n Siel-Doatäinoome ien:',
 	'importfreeimages_returntoform'          => "Of klik <a href='$1'>hier</a>, uum tou ju Siede mäd do Säikresultoate touräächtoukuumen.",
+);
+
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'importfreeimages'            => 'Importera Fria Bilder',
+	'importfreeimages_owner'      => 'Upphovsman',
+	'importfreeimages_importthis' => 'import denna',
+	'importfreeimages_next'       => 'Nästa $1',
 );
 
 /** Volapük (Volapük)

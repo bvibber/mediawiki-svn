@@ -197,7 +197,8 @@ $messages['stq'] = array(
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'advancedrandom' => 'Avancerad slumpsida',
+	'advancedrandom'      => 'Avancerad slumpsida',
+	'advancedrandom-desc' => 'Väljer slumpmässigt en sida som länkar till en viss sida eller som inkluderar en viss mall. Kan användas genom [[Special:AdvancedRandom/Template:Featured/Talk]] för att slumpvis välja en utvald artikel, eller genom [[Special:AdvancedRandom/Template:GFDL/Image]] för att visa an slumvald GFDL-fil',
 );
 
 /** Telugu (తెలుగు)
@@ -234,3 +235,4 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'advancedrandom' => '進階隨機',
 );
+

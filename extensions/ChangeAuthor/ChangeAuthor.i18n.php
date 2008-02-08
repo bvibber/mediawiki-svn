@@ -127,6 +127,17 @@ $messages['bg'] = array(
 	'changeauthor-rev'                  => 'р$1',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'changeauthor'                   => 'Změnit autora revize',
+	'changeauthor-desc'              => 'Umožňuje změnit autora revize',
+	'changeauthor-title'             => 'Změnit autora revize',
+	'changeauthor-search-box'        => 'Hledat revize',
+	'changeauthor-pagename-or-revid' => 'Název stránky nebo ID revize:',
+);
+
 $messages['de'] = array(
 	'changeauthor' => 'Autor einer Version ändern',
 	'changeauthor-title' => 'Autor einer Version ändern',

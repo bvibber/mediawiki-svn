@@ -35,6 +35,13 @@ $messages['el'] = array(
 	'donationform-submit' => 'Δωρίστε μέσω PayPal',
 );
 
+/** Spanish (Español)
+ * @author Lin linao
+ */
+$messages['es'] = array(
+	'donationform-submit' => 'Donar a través de PayPal.',
+);
+
 $messages['ext'] = array(
 	'donationform-submit' => 'Donal meyanti PayPal',
 );
@@ -177,3 +184,4 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'donationform-submit' => '經PayPal捐款',
 );
+

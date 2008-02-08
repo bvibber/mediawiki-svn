@@ -16,6 +16,13 @@ $messages['ar'] = array(
 	'breadcrumbs-desc' => 'يعرض مسار المستخدمين خلال الويكي.',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'breadcrumbs-desc' => 'Zobrazí cestu uživatele ve wiki.',
+);
+
 $messages['de'] = array(
 	'breadcrumbs-desc' => 'Zeigt den Weg des Benutzers durch das Wiki.',
 
@@ -36,6 +43,13 @@ $messages['hsb'] = array(
  */
 $messages['nl'] = array(
 	'breadcrumbs-desc' => 'Toont het pad dat gebruikers in de wiki doorlopen',
+);
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'breadcrumbs-desc' => 'Viser brukerens sti gjennom wikien.',
 );
 
 /** Portuguese (Português)

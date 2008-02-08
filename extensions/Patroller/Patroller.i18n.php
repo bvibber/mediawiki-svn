@@ -437,7 +437,14 @@ $messages['pms'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'patrol-revert-reason' => 'Motivo:',
+	'patrol-endorse'         => 'Aprovar',
+	'patrol-revert'          => 'Reverter',
+	'patrol-revert-reason'   => 'Motivo:',
+	'patrol-skip'            => 'Saltar',
+	'patrol-reverting'       => 'Revertendo: $1',
+	'group-patroller'        => 'Patrulhadores',
+	'group-patroller-member' => 'Patrulhador',
+	'grouppage-patroller'    => '{{ns:project}}:Patrulhador',
 );
 
 $messages['rm'] = array(
@@ -617,3 +624,4 @@ $messages['zh-hant'] = array(
 	'group-patroller-member' => '巡邏員',
 	'grouppage-patroller' => '{{ns:project}}:巡邏員',
 );
+

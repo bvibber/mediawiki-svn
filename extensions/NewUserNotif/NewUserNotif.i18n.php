@@ -119,6 +119,15 @@ $messages['pms'] = array(
 	'newusernotifbody' => 'Bondì $1, un neuv utent, $2, a l\'é stait creà ansima a $3 dël $4.',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'newusernotifbody' => 'Olá, $1,
+
+Uma nova conta de utilizador, $2, foi criada em $3 em $4.',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */
@@ -186,3 +195,4 @@ $messages['zh-hant'] = array(
 	'newusernotifsubj' => '$1的新用戶通知',
 	'newusernotifbody' => "你好 $1，\n\n一個新的用戶帳號$2，已經在$4於$3創建。",
 );
+
