@@ -9,11 +9,14 @@
 
 $messages = array();
 
-/* English (Rob Church) */
+/** English
+ * @author Rob Church
+ */
 $messages['en'] = array(
+	'usernameblacklist-desc'  => 'Adds a [[MediaWiki:usernameblacklist|Usernameblacklist]] to restrict the creation of user accounts matching one or more regular expressions',
 	'blacklistedusername'     => 'Blacklisted username',
 	'blacklistedusernametext' => 'The user name you have chosen matches the [[MediaWiki:Usernameblacklist|list of blacklisted usernames]]. Please choose another name.',
-	'usernameblacklist' => '<pre>
+	'usernameblacklist'       => '<pre>
 # Entries in this list will be used as part of a regular expression when
 # blacklisting usernames from registration. Each item should be part of
 # a bulleted list, e.g.
@@ -159,10 +162,13 @@ $messages['da'] = array(
 	'usernameblacklist-invalid-lines' => 'Nedenstående {{PLURAL:$1|linje|linjer}} i den sorte liste over brugernavne er ugyldige, ret {{PLURAL:$1|den|dem}} venligst før du gemmer:',
 );
 
-/* German (Raymond) */
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
+	'usernameblacklist-desc'          => 'Ergänzt eine [[MediaWiki:usernameblacklist|Liste unerwünschter Benutzernamen]], deren Erstellung auf Basis regulärer Ausdrücke unterbunden wird',
 	'blacklistedusername'             => 'Benutzername auf der Sperrliste',
-	'blacklistedusernametext'         => 'Der gewählte Benutzername steht auf der [[MediaWiki:Usernameblacklist|Liste der gesperrten Benutzernamen]]. Bitte einen anderen wählen.',
+	'blacklistedusernametext'         => 'Der gewählte Benutzername steht auf der [[MediaWiki:Usernameblacklist|Liste der unerwünschten Benutzernamen]]. Bitte wähle einen anderen.',
 	'usernameblacklist'               => '<pre>
 # Einträge in dieser Liste sind Teil eines regulären Ausdrucks,
 # der bei der Prüfung von Neuanmeldungen auf unerwünschte Benutzernamen angewendet wird.
@@ -172,6 +178,14 @@ $messages['de'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => 'Die {{PLURAL:$1|folgende Zeile|folgenden Zeilen}} in der Liste unerwünschter Benutzernamen {{PLURAL:$1|ist|sind}} ungültig; bitte korrigiere sie vor dem Speichern:',
+);
+
+/** German - formal address (Deutsch - formale Anrede)
+ * @author Raimond Spekking
+ */
+$messages['de-formal'] = array(
+	'blacklistedusernametext'         => 'Der gewählte Benutzername steht auf der [[MediaWiki:Usernameblacklist|Liste der unerwünschten Benutzernamen]]. Bitte wählen Sie einen anderen.',
+	'usernameblacklist-invalid-lines' => 'Die {{PLURAL:$1|folgende Zeile|folgenden Zeilen}} in der Liste unerwünschter Benutzernamen {{PLURAL:$1|ist|sind}} ungültig; bitte korrigieren Sie diese vor dem Speichern:',
 );
 
 /** Esperanto (Esperanto)
@@ -846,7 +860,6 @@ $messages['zh-hant'] = array(
 	'usernameblacklist-invalid-lines' => '以下在用戶名黑名單中{{PLURAL:$1|一行|多行}}不正確；請於保存之前改正{{PLURAL:$1|它|它們}}:',
 );
 
-$messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];

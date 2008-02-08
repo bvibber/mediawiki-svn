@@ -13,14 +13,16 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'efUsernameBlacklistSetup';
 	$wgExtensionCredits['other'][] = array(
-		'name' => 'Username Blacklist',
-		'author' => 'Rob Church',
-		'url' => 'http://www.mediawiki.org/wiki/Extension:Username_Blacklist',
-		'description' => 'Restrict the creation of user accounts matching one or more regular expressions',
-		);
+		'name'           => 'Username Blacklist',
+		'author'         => 'Rob Church',
+		'version'        => '1.7.1', # see README
+		'url'            => 'http://www.mediawiki.org/wiki/Extension:Username_Blacklist',
+		'description'    => 'Restrict the creation of user accounts matching one or more regular expressions',
+		'descriptionmsg' => 'usernameblacklist-desc'
+	);
 
-$dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.php';
+	$dir = dirname(__FILE__) . '/';
+	$wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.php';
 
 	$wgAvailableRights[] = 'uboverride';
 	$wgGroupPermissions['sysop']['uboverride'] = true;
@@ -55,7 +57,7 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 			return true;
 		}
 	}
-	
+
 	/**
 	 * When the blacklist page is edited, invalidate the blacklist cache
 	 *
@@ -69,18 +71,18 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 			$blacklist->invalidateCache();
 		}
 		return true;
-	}	
-	
+	}
+
 	/**
 	 * If editing the username blacklist page, check for validity and whine at the user.
 	 */
 	function efUsernameBlacklistValidate( $editPage, $text, $section, &$hookError ) {
 		if( $editPage->mTitle->getNamespace() == NS_MEDIAWIKI &&
 		 	$editPage->mTitle->getDBkey() == 'Usernameblacklist' ) {
-			
+
 			$blacklist = UsernameBlacklist::fetch();
 			$badLines = $blacklist->validate( $text );
-			
+
 			if( $badLines ) {
 				wfLoadExtensionMessages( 'UsernameBlacklist' );
 				$badList = "*<tt>" .
@@ -94,14 +96,14 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 					$badList .
 					"</div>\n" .
 					"<br clear='all' />\n";
-				
+
 				// This is kind of odd, but... :D
 				return true;
 			}
 		}
 		return true;
 	}
-	
+
 	class UsernameBlacklist {
 		
 		var $regex;		
@@ -114,7 +116,7 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 		function transform( $text ) {
 			return trim( $text, ' *' );
 		}
-		
+
 		/**
 		 * Is the supplied text an appropriate fragment to include?
 		 *
@@ -124,7 +126,7 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 		function isUsable( $text ) {
 			return substr( $text, 0, 1 ) == '*';
 		}
-		
+
 		/**
 		 * Attempt to fetch the blacklist from cache; build it if needs be
 		 *
@@ -141,7 +143,7 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 				return $list;
 			}
 		}
-		
+
 		/**
 		 * Build the blacklist from scratch, using the message page
 		 *
@@ -155,7 +157,7 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 				return array();
 			}
 		}
-		
+
 		/**
 		 * Build one or more blacklist regular expressions from the input.
 		 * If a fragment causes an error, we'll return multiple items
@@ -168,11 +170,11 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 			$groups = $this->fragmentsFromInput( $input );
 			if( count( $groups ) ) {
 				$combinedRegex = '/(' . implode( '|', $groups ) . ')/u';
-			
+
 				wfSuppressWarnings();
 				$ok = ( preg_match( $combinedRegex, '' ) !== false );
 				wfRestoreWarnings();
-			
+
 				if( $ok ) {
 					return array( $combinedRegex );
 				} else {
@@ -186,7 +188,7 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 				return array();
 			}
 		}
-		
+
 		/**
 		 * Break input down by line, remove comments, and strip to regex fragments.
 		 * @input string
@@ -202,7 +204,7 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 			}
 			return $groups;
 		}
-		
+
 		/**
 		 * Go through a set of input and return a list of lines which
 		 * produce invalid regexes.
@@ -224,7 +226,7 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 			}
 			return $bad;
 		}
-		
+
 		/**
 		 * Invalidate the blacklist cache
 		 */
@@ -232,7 +234,7 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 			global $wgMemc;
 			$wgMemc->delete( $this->key );
 		}
-		
+
 		/**
 		 * Match a username against the blacklist
 		 * @param $username Username to check
@@ -243,7 +245,7 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 				wfSuppressWarnings();
 				$match = preg_match( $regex, $username );
 				wfRestoreWarnings();
-				
+
 				if( $match ) {
 					return true;
 				} elseif( $match === false ) {
@@ -252,7 +254,7 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 			}
 			return false;
 		}
-		
+
 		/**
 		 * Constructor
 		 * Prepare the regular expression
@@ -273,9 +275,9 @@ $wgExtensionMessagesFiles['UsernameBlacklist'] = $dir . 'UsernameBlacklist.i18n.
 				$blackList = new UsernameBlacklist();
 			return $blackList;
 		}
-		
+
 	}
-	
+
 } else {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	die( 1 );

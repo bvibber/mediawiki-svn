@@ -128,6 +128,11 @@ example above), but I'll provide a couple of useful links:
 13/03/2007
 1.7
 	Ignore all non-list lines when constructing the regular expression
+
+08/02/2008
+1.7.1
+	Add 'descriptionmsg' to $wgExtensionCredits for localization description
+	on Special:Version
 	
 == 8. Thanks... ==
 
