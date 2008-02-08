@@ -26,7 +26,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 /* special page init */
 function wfRegexBlockSetup() {
-	global $IP, $wgMessageCache;
+	global $IP;
 	if (!wfSimplifiedRegexCheckSharedDB())
 		return ;
 	require_once($IP. '/includes/SpecialPage.php');

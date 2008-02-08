@@ -28,7 +28,7 @@ $wgExtensionFunctions[] = 'efMediaFunctionsSetup';
  * the message cache
  */
 function efMediaFunctionsSetup() {
-	global $wgParser, $wgMessageCache;
+	global $wgParser;
 	$wgParser->setFunctionHook( 'mediamime', array( 'MediaFunctions', 'mediamime' ) );
 	$wgParser->setFunctionHook( 'mediasize', array( 'MediaFunctions', 'mediasize' ) );
 	$wgParser->setFunctionHook( 'mediaheight', array( 'MediaFunctions', 'mediaheight' ) );

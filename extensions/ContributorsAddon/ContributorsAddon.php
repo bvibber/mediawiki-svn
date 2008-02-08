@@ -26,7 +26,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgAutoloadClasses['SpecialContributorsAddon'] = $dir . 'ContributorsAddonClass.php';
 
 	function efContributorsAddon() {
-		global $wgMessageCache, $wgHooks;
+		global $wgHooks;
 		$wgHooks['OutputPageParserOutput'][] = 'efContributorsAddonSetup';
 		return true;
 	}

@@ -4,18 +4,17 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-global $wgMessageCache;
-$wgMessageCache->addMessage( 'purgecache', 'Purge cache' );
-
 class PurgeCache extends SpecialPage {
 
 	function PurgeCache() {
 		SpecialPage::SpecialPage( 'PurgeCache', 'purgecache' );
-		wfLoadExtensionMessages('PurgeCache');
 	}
 	
 	function execute() {
 		global $wgUser, $wgRequest, $wgOut;
+
+		wfLoadExtensionMessages('PurgeCache');
+
 		$this->setHeaders();
 		if( $wgUser->isAllowed( 'purgecache' ) ) {
 			if( $wgRequest->getCheck( 'purge' ) && $wgRequest->wasPosted() ) {
@@ -39,6 +38,3 @@ class PurgeCache extends SpecialPage {
 		return $form;
 	}
 }
-
-
-

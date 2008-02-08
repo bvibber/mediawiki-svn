@@ -304,19 +304,4 @@ class Patroller extends SpecialPage {
 				? $custom
 				: $request->getText( 'wpPatrolRevertReasonCommon' );
 	}
-
-	/**
-	 * Initialise extension messages
-	 */
-	public static function initialiseMessages() {
-		static $init = false;
-		if( !$init ) {
-			global $wgMessageCache;
-			require_once( dirname( __FILE__ ) . '/Patroller.i18n.php' );
-			foreach( efPatrollerMessages() as $lang => $messages )
-				$wgMessageCache->addMessages( $messages, $lang );
-			$init = true;
-		}
-		return true;
-	}
 }

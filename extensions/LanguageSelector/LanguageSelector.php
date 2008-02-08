@@ -73,7 +73,7 @@ $wgExtensionMessagesFiles['LanguageSelector'] = $dir . 'LanguageSelector.i18n.ph
 function wfLanguageSelectorExtension() {
 	wfLoadExtensionMessages( 'LanguageSelector' );
 	global $wgLanguageSelectorLanguages, $wgLanguageSelectorDetectLanguage, $wgLanguageSelectorRequestedLanguage, $wgLanguageSelectorLocation;
-	global $wgUser, $wgLang, $wgRequest, $wgCookiePrefix, $wgCookiePath, $wgMessageCache, $wgOut, $wgJsMimeType, $wgHooks, $wgParser;
+	global $wgUser, $wgLang, $wgRequest, $wgCookiePrefix, $wgCookiePath, $wgOut, $wgJsMimeType, $wgHooks, $wgParser;
 
 	$wgParser->setHook('languageselector', 'wfLanguageSelectorTag' );
 
