@@ -346,39 +346,43 @@ $messages['fo'] = array(
 	'oversight' => 'Yvirlit',
 );
 
-/* French (Bertrand Grondin) */
+/** French (Français)
+ * @author Sherbrooke
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'hiderevision' => 'Cacher définitivement les révisions',
-	'hiderevision-prompt' => 'Numéro d’édition à supprimer :',
-	'hiderevision-continue' => 'Continuer',
-	'hiderevision-text' => 'Cette fonctionnalité doit être utilisée \'\'\'uniquement\'\'\' pour les cas suivants :
+	'hiderevision'                => 'Cacher définitivement les révisions',
+	'hiderevision-desc'           => 'Masque les modifications individuelles de tous les utilisateurs pour des motifs légaux, etc.',
+	'hiderevision-prompt'         => 'Numéro d’édition à supprimer :',
+	'hiderevision-continue'       => 'Continuer',
+	'hiderevision-text'           => "Cette fonctionnalité doit être utilisée '''uniquement''' pour les cas suivants :
 * Information personnelle inappropriée,
-*: \'\'Adresse personnelle et numéro de téléphone, numéro de sécurité sociale, etc...\'\'
+*: ''Adresse personnelle et numéro de téléphone, numéro de sécurité sociale, etc...''
 
-\'\'\' L\'abus de cette fonctionnalité impliquera la perte de ces privilèges.\'\'\'
+''' L'abus de cette fonctionnalité impliquera la perte de ces privilèges.'''
 
-Les articles effacés ne sont plus visibles dans ce système, mais ces suppressions sont journalisées et peuvent être restaurées manuellement par un administrateur ayant l\'accès direct sur la base de données si vous avez fait une erreur.',
-	'hiderevision-reason' => 'Motif (sera enregistré séparément) :',
-	'hiderevision-submit' => 'Cacher cette donnée de manière permanente',
-	'hiderevision-tab' => 'Cacher la modification',
-	'hiderevision-norevisions' => 'Aucune modification indiquée à supprimer.',
-	'hiderevision-noreason' => 'Vous devez indiquer la raison précise de cette suppression.',
-	'hiderevision-status' => 'Modification $1 : $2',
-	'hiderevision-success' => 'Archivé et supprimé avec succès.',
-	'hiderevision-error-missing' => 'Non trouvé dans la base de données.',
-	'hiderevision-error-current' => 'Ne peut supprimer la dernière révision dans une page. Faites une annulation d’édition auparavant.',
-	'hiderevision-error-delete' => 'Ne peut être archivé ; la page aurait-elle été supprimée ?',
+Les articles effacés ne sont plus visibles dans ce système, mais ces suppressions sont journalisées et peuvent être restaurées manuellement par un administrateur ayant l'accès direct sur la base de données si vous avez fait une erreur.",
+	'hiderevision-reason'         => 'Motif (sera enregistré séparément) :',
+	'hiderevision-submit'         => 'Cacher cette donnée de manière permanente',
+	'hiderevision-tab'            => 'Cacher la modification',
+	'hiderevision-norevisions'    => 'Aucune modification indiquée à supprimer.',
+	'hiderevision-noreason'       => 'Vous devez indiquer la raison précise de cette suppression.',
+	'hiderevision-status'         => 'Modification $1 : $2',
+	'hiderevision-success'        => 'Archivé et supprimé avec succès.',
+	'hiderevision-error-missing'  => 'Non trouvé dans la base de données.',
+	'hiderevision-error-current'  => 'Ne peut supprimer la dernière révision dans une page. Faites une annulation d’édition auparavant.',
+	'hiderevision-error-delete'   => 'Ne peut être archivé ; la page aurait-elle été supprimée ?',
 	'hiderevision-archive-status' => 'Modification supprimée de $1 : $2',
-	'oversight-nodiff' => 'Impossible de détecter des changements tant que ne se trouve aucune révision antérieure pour la page. Les raisons peuvent être les suivantes :
+	'oversight-nodiff'            => 'Impossible de détecter des changements tant que ne se trouve aucune révision antérieure pour la page. Les raisons peuvent être les suivantes :
 *La page a été supprimée,
 *La révision cachée était la toute première de la page',
-	'oversight-log-hiderev' => 'a supprimé une édition de $1',
-	'oversight' => 'Surveiller',
-	'oversight-view' => 'détails',
-	'oversight-difference' => '(Différence par rapport à la révision précédente)',
-	'oversight-prev' => 'Dernière révision précédente',
-	'oversight-hidden' => 'Révision cachée',
-	'oversight-header' => 'Ci-dessous, figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges d’Oversight.',
+	'oversight-log-hiderev'       => 'a supprimé une édition de $1',
+	'oversight'                   => 'Surveiller',
+	'oversight-view'              => 'détails',
+	'oversight-difference'        => '(Différence par rapport à la révision précédente)',
+	'oversight-prev'              => 'Dernière révision précédente',
+	'oversight-hidden'            => 'Révision cachée',
+	'oversight-header'            => 'Ci-dessous, figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges d’Oversight.',
 );
 
 /** Franco-Provençal (Arpetan)

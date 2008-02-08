@@ -240,8 +240,10 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Seb35
  * @author Sherbrooke
+ * @author Grondin
  */
 $messages['fr'] = array(
+	'usernameblacklist-desc'          => "Ajoute une [[MediaWiki:usernameblacklist|liste noire des noms d'utilisateur]] pour restreindre la création des comptes d'utilisateurs faisant partie d'une ou plusieurs expressions régulières.",
 	'blacklistedusername'             => 'Noms d’utilisateurs en liste noire',
 	'blacklistedusernametext'         => 'Le nom d’utilisateur que vous avez choisi se trouve sur la
 [[MediaWiki:Usernameblacklist|liste des noms interdits]]. Veuillez choisir un autre nom.',

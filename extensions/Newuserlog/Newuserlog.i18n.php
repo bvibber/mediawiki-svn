@@ -25,10 +25,16 @@ $messages['af'] = array(
 	'newuserlog-create2-entry' => 'rekening geskep vir $1',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ * @author Teferra
+ */
 $messages['am'] = array(
 	'newuserlogpage'           => 'የአባልነት መዝገብ (user log)',
 	'newuserlogpagetext'       => 'ይህ መዝገብ ወደ አባልነት የገቡትን ብዕር ስሞች ይዘርዝራል።',
+	'newuserlog-byemail'       => 'ማለፊያ-ቃል በኤ-መልዕት ተልኳል',
 	'newuserlog-create-entry'  => 'አዲስ አባል',
+	'newuserlog-create2-entry' => 'ለ$1 መዝገብ ተከፍቷል',
 );
 
 $messages['an'] = array(
@@ -235,6 +241,7 @@ $messages['fo'] = array(
 $messages['fr'] = array(
 	'newuserlogpage'           => 'Historique des créations de comptes',
 	'newuserlogpagetext'       => 'Journal des créations de comptes utilisateurs.',
+	'newuserlog-desc'          => 'Ajoute un [[Special:Log/newusers|journal des créations de comptes]] à [[Special:Log]]',
 	'newuserlog-byemail'       => 'mot de passe envoyé par courriel',
 	'newuserlog-create-entry'  => 'Nouvel utilisateur',
 	'newuserlog-create2-entry' => 'compte créé pour $1',

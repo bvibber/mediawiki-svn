@@ -164,19 +164,21 @@ $messages['fa'] = array(
 
 );
 
-/* French */
+/** French (Français)
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'imagemap_no_image'             => '&lt;imagemap&gt; : vous devez spécifier une image dans la première ligne',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt; : l’image est invalide ou n’existe pas',
-	'imagemap_no_link'              => '&lt;imagemap&gt; : aucun lien valide n’a été trouvé à la fin de la ligne $1',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt; : titre invalide dans le lien à la ligne  $1',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt; : pas assez de coordonnées pour la forme à la ligne  $1',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt; : forme non reconnue à la ligne $1, chaque ligne doit commencer avec un des mots suivants : '.
-								   'default, rect, circle or poly',
-	'imagemap_no_areas'             => '&lt;imagemap&gt; : au moins une spécification d’aire doit être donnée',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt; : coordonnée invalide à la ligne $1, doit être un nombre',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt; : paramètre « desc » invalide, les paramètres possibles sont : $1',
-	'imagemap_description'          => 'À propos de cette image',
+	'imagemap_desc'               => 'Permet une carte image cliente à être cliquée en utilisant la balise <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image'           => '&lt;imagemap&gt; : vous devez spécifier une image dans la première ligne',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt; : l’image est invalide ou n’existe pas',
+	'imagemap_no_link'            => '&lt;imagemap&gt; : aucun lien valide n’a été trouvé à la fin de la ligne $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt; : titre invalide dans le lien à la ligne  $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt; : pas assez de coordonnées pour la forme à la ligne  $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt; : forme non reconnue à la ligne $1, chaque ligne doit commencer avec un des mots suivants : default, rect, circle or poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt; : au moins une spécification d’aire doit être donnée',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt; : coordonnée invalide à la ligne $1, doit être un nombre',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt; : paramètre « desc » invalide, les paramètres possibles sont : $1',
+	'imagemap_description'        => 'À propos de cette image',
 );
 
 /** Franco-Provençal (Arpetan)
