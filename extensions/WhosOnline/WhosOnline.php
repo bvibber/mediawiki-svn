@@ -19,7 +19,7 @@ CREATE TABLE `online` (
 
 */
 
-$wgExtensionMessagesFiles['WhosOnline'] = dirname(__FILE__) . '/Whosonline.i18n.php';
+$wgExtensionMessagesFiles['WhosOnline'] = dirname(__FILE__) . '/WhosOnline.i18n.php';
 $wgHooks['BeforePageDisplay'][] = 'wfWhosOnline_update_data';
 
 $wgExtensionCredits['other'][] = array(
