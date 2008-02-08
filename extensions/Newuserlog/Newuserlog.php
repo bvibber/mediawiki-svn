@@ -12,11 +12,12 @@ if (!defined('MEDIAWIKI')) die();
  */
 
 $wgExtensionCredits['other'][] = array(
-	'name' => 'Newuserlog',
-	'version' => '2008-01-29',
-	'description' => 'adds a [[Special:Log/newusers|log of account creations]] to [[Special:Log]]',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Newuserlog',
-	'author' => 'Ævar Arnfjörð Bjarmason'
+	'name'           => 'Newuserlog',
+	'version'        => '2008-02-08',
+	'description'    => 'Ads a [[Special:Log/newusers|log of account creations]] to [[Special:Log]]',
+	'descriptionmsg' => 'newuserlog-desc',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Newuserlog',
+	'author'         => 'Ævar Arnfjörð Bjarmason'
 );
 
 $wgExtensionFunctions[] = 'wfNewuserlog';

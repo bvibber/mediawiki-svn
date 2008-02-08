@@ -10,6 +10,7 @@ $messages = array();
 $messages['en'] = array(
 	'newuserlogpage'           => 'User creation log',
 	'newuserlogpagetext'       => 'This is a log of user creations',
+	'newuserlog-desc'          => 'Adds a [[Special:Log/newusers|log of account creations]] to [[Special:Log]]',
 	'newuserlogentry'          => '', # For compatibility, don't translate this
 	'newuserlog-byemail'       => 'password sent by email',
 	'newuserlog-create-entry'  => 'New user',
@@ -149,9 +150,13 @@ $messages['cs'] = array(
 	'newuserlog-create2-entry' => 'založil účet pro $1',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
 	'newuserlogpage'           => 'Neuanmeldungs-Logbuch',
 	'newuserlogpagetext'       => 'Dies ist ein Logbuch für neu erstellte Benutzerkonten.',
+	'newuserlog-desc'          => 'Fügt ein Logbuch der [[Special:Log/newusers|Benutzerneuanmeldungen]] hinzu',
 	'newuserlog-byemail'       => 'das Passwort wurde per E-Mail versandt',
 	'newuserlog-create-entry'  => 'Benutzer wurde neu registriert',
 	'newuserlog-create2-entry' => 'erstellte Benutzerkonto für $1',
@@ -833,7 +838,6 @@ $messages['zu'] = array(
 	'newuserlog-create-entry' => 'Umsebenzi omusha',
 );
 
-$messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
