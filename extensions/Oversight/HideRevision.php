@@ -39,10 +39,12 @@ $wgGroupPermissions['*']['oversight'] = false;
 
 $wgExtensionFunctions[] = 'hrSetup';
 $wgExtensionCredits['specialpage'][] = array(
-	'name' => 'Oversight',
-	'author' => 'Brion Vibber',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Oversight',
-	'description' => 'Hide individual revisions from all users for legal reasons, etc.',
+	'name'           => 'Oversight',
+	'author'         => 'Brion Vibber',
+	'version'        => '2008-02-08',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Oversight',
+	'description'    => 'Hide individual revisions from all users for legal reasons, etc.',
+	'descriptionmsg' => 'hiderevision-desc',
 );
 
 $dir = dirname(__FILE__) . '/';

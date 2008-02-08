@@ -9,6 +9,7 @@ $messages = array();
 /* English (Brion Vibber) */
 $messages['en'] = array(
 	'hiderevision' => 'Permanently hide revisions',
+	'hiderevision-desc' => 'Hide individual revisions from all users for legal reasons, etc.',
 	// Empty form
 	'hiderevision-prompt' => 'Revision number to remove:',
 	'hiderevision-continue' => 'Continue',
@@ -221,9 +222,12 @@ administrátorům databáze v případě, že uděláte chybu.",
 	'oversight-header'            => 'Níže je seznam revizí, které byly nedávno trvale skryty z veřejné historie. Šíření těchto informací může mít za důsledek trvalou ztrátu práv dozorce (oversight).',
 );
 
-/* German (Raymond) */
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
 	'hiderevision' => 'Versionen dauerhaft entfernen',
+	'hiderevision-desc' => 'Verbirgt aus juristischen Gründen einzelne Versionen vor allen Benutzern',
 	'hiderevision-prompt' => 'Zu entfernende Versionsnummer:',
 	'hiderevision-continue' => 'Weiter',
 	'hiderevision-text' => "Dies darf '''ausschließlich''' in den folgenden Fällen geschehen:
@@ -238,7 +242,7 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 	'hiderevision-submit' => 'Entferne diese Daten dauerhaft',
 	'hiderevision-tab' => 'Entferne Versionen',
 	'hiderevision-norevisions' => 'Es wurde keine Version zum Entfernen angegeben.',
-	'hiderevision-noreason' => 'Sie müssen einen Grund für die Entfernung angeben.',
+	'hiderevision-noreason' => 'Du musst einen Grund für die Entfernung angeben.',
 	'hiderevision-status' => 'Version $1: $2',
 	'hiderevision-success' => 'Erfolgreich archiviert und entfernt.',
 	'hiderevision-error-missing' => 'In der Datenbank nicht gefunden.',
@@ -255,6 +259,14 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 	'oversight-prev' => 'Letzte vorhergehenden Version',
 	'oversight-hidden' => 'Entfernte Version',
 	'oversight-header' => 'Es folgt die Liste der dauerhaft für die öffentliche Einsicht entfernten Versionen. Die Veröffentlichung dieser Informationen kann den dauerhaften Entzug der Oversight-Rechte bedeuten.',
+);
+
+/** German - formal address (Deutsche - förmliche Anrede)
+ * @author Raimond Spekking
+ */
+$messages['de-formal'] = array(
+	'hiderevision-noreason' => 'Sie müssen einen Grund für die Entfernung angeben.',
+	'hiderevision-error-current' => 'Die letzte Bearbeitung einer Seite kann nicht entfernt werden. Setzen Sie die Bearbeitung erst zurück.',
 );
 
 /** Greek (Ελληνικά)
@@ -1567,7 +1579,6 @@ $messages['zh-hant'] = array(
 	'oversight-header'            => '以下列示的是已經永久隱藏的修訂版本。請注意！洩漏這些訊息將會永遠喪失{{int:Oversight}}權限！',
 );
 
-$messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
