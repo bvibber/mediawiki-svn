@@ -13,7 +13,7 @@ $messages = array();
  * @author Rob Church
  */
 $messages['en'] = array(
-	'usernameblacklist-desc'  => 'Adds a [[MediaWiki:usernameblacklist|Usernameblacklist]] to restrict the creation of user accounts matching one or more regular expressions',
+	'usernameblacklist-desc'  => 'Adds a [[MediaWiki:Usernameblacklist|username blacklist]] to restrict the creation of user accounts matching one or more regular expressions',
 	'blacklistedusername'     => 'Blacklisted username',
 	'blacklistedusernametext' => 'The user name you have chosen matches the [[MediaWiki:Usernameblacklist|list of blacklisted usernames]]. Please choose another name.',
 	'usernameblacklist'       => '<pre>
@@ -166,7 +166,7 @@ $messages['da'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'usernameblacklist-desc'          => 'Ergänzt eine [[MediaWiki:usernameblacklist|Liste unerwünschter Benutzernamen]], deren Erstellung auf Basis regulärer Ausdrücke unterbunden wird',
+	'usernameblacklist-desc'          => 'Ergänzt eine [[MediaWiki:Usernameblacklist|Liste unerwünschter Benutzernamen]], deren Erstellung auf Basis regulärer Ausdrücke unterbunden wird',
 	'blacklistedusername'             => 'Benutzername auf der Sperrliste',
 	'blacklistedusernametext'         => 'Der gewählte Benutzername steht auf der [[MediaWiki:Usernameblacklist|Liste der unerwünschten Benutzernamen]]. Bitte wähle einen anderen.',
 	'usernameblacklist'               => '<pre>
@@ -243,7 +243,7 @@ $messages['fi'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'usernameblacklist-desc'          => "Ajoute une [[MediaWiki:usernameblacklist|liste noire des noms d'utilisateur]] pour restreindre la création des comptes d'utilisateurs faisant partie d'une ou plusieurs expressions régulières.",
+	'usernameblacklist-desc'          => "Ajoute une [[MediaWiki:Usernameblacklist|liste noire des noms d'utilisateur]] pour restreindre la création des comptes d'utilisateurs faisant partie d'une ou plusieurs expressions régulières.",
 	'blacklistedusername'             => 'Noms d’utilisateurs en liste noire',
 	'blacklistedusernametext'         => 'Le nom d’utilisateur que vous avez choisi se trouve sur la
 [[MediaWiki:Usernameblacklist|liste des noms interdits]]. Veuillez choisir un autre nom.',
