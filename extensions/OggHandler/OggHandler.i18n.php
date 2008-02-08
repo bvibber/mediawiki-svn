@@ -11,6 +11,7 @@ $magicWords = array(
 $messages = array();
 
 $messages['en'] = array(
+	'ogg-desc'             => 'Handler for Ogg Theora and Vorbis files, with JavaScript player',
 	'ogg-short-audio'      => 'Ogg $1 sound file, $2',
 	'ogg-short-video'      => 'Ogg $1 video file, $2',
 	'ogg-short-general'    => 'Ogg $1 media file, $2',
@@ -242,7 +243,11 @@ $messages['cs'] = array(
 	'ogg-desc-link'           => 'O tomto souboru',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
+	'ogg-desc'                => 'Steuerungsprogramm for Ogg Theora- und Vorbis-Dateien, inklusive einer JavaScript-Abspielsoftware',
 	'ogg-short-audio'         => 'Ogg-$1-Audiodatei, $2',
 	'ogg-short-video'         => 'Ogg-$1-Videodatei, $2',
 	'ogg-short-general'       => 'Ogg-$1-Mediadatei, $2',
@@ -258,7 +263,7 @@ $messages['de'] = array(
 	'ogg-play-sound'          => 'Audio abspielen',
 	'ogg-no-player'           => 'Dein System scheint über keine Abspielsoftware zu verfügen. Bitte installiere <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware</a>.',
 	'ogg-no-xiphqt'           => 'Dein System scheint nicht über die XiphQT-Komponente für QuickTime zu verfügen. QuickTime kann ohne diese Komponente keine Ogg-Dateien abspielen.' .
-		'Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">lade XiphQT</a> oder währe eine andere Abspielsoftware.',
+		'Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">lade XiphQT</a> oder wähle eine andere Abspielsoftware.',
 	'ogg-player-videoElement' => '<video>-Element',
 	'ogg-player-oggPlugin'    => 'Ogg-Plugin',
 	'ogg-player-thumbnail'    => 'Zeige Vorschaubild',
@@ -269,6 +274,15 @@ $messages['de'] = array(
 	'ogg-dismiss'             => 'Schließen',
 	'ogg-download'            => 'Datei speichern',
 	'ogg-desc-link'           => 'Über diese Datei',
+);
+
+/** German - formal address (Deutsch - förmliche Anrede)
+ * @author Raimond Spekking
+ */
+$messages['de-formal'] = array(
+	'ogg-no-player'           => 'Ihr System scheint über keine Abspielsoftware zu verfügen. Bitte installieren Sie <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware</a>.',
+	'ogg-no-xiphqt'           => 'Ihr System scheint nicht über die XiphQT-Komponente für QuickTime zu verfügen. QuickTime kann ohne diese Komponente keine Ogg-Dateien abspielen.' .
+		'Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">laden Sie XiphQT</a> oder wählen Sie eine andere Abspielsoftware.',
 );
 
 $messages['el'] = array(
@@ -1458,7 +1472,6 @@ $messages['zh-hant'] = array(
 	'ogg-desc-link'        => '關於這個檔案',
 );
 
-$messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
