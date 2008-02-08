@@ -7,10 +7,11 @@
 
 $messages = array();
 
-/* English
+/** English
  * @author Tim Starling
  */
 $messages['en'] = array(
+	'imagemap_desc'                 => 'Allows client-side clickable image maps using <tt><nowiki><imagemap></nowiki></tt> tag',
 	'imagemap_no_image'             => '&lt;imagemap&gt;: must specify an image in the first line',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: image is invalid or non-existent',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: no valid link was found at the end of line $1',
@@ -120,8 +121,11 @@ $messages['da'] = array(
 	'imagemap_desc_types'           => 'top-højre, bund-højre, bund-venstre, top-venstre, ingen',
 );
 
-/* German (Raymond) */
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
+	'imagemap_desc'                 => "Ermöglicht die Erstellung von verweissensitiven Grafiken ''(image maps)'' mit Hilfe der <tt><nowiki><imagemap></nowiki></tt>-Syntax",
 	'imagemap_no_image'             => '&lt;imagemap&gt;-Fehler: In der ersten Zeile muss ein Bild angegeben werden',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;-Fehler: Bild ist ungültig oder nicht vorhanden',
 	'imagemap_no_link'              => '&lt;imagemap&gt;-Fehler: Am Ende von Zeile $1 wurde kein gültiger Link gefunden',
@@ -700,7 +704,6 @@ $messages['zh-hant'] = array(
 	'imagemap_desc_types'           => '右上, 右下, 左下, 左上, 無',
 );
 
-$messages['de-formal'] = $messages['de'];
 $messages['kk'] = $messages['kk-cyrl'];
 $messages['kk-cn'] = $messages['kk-arab'];
 $messages['kk-kz'] = $messages['kk-cyrl'];
