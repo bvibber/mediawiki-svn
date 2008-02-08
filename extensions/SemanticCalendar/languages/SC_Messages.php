@@ -54,13 +54,6 @@ $messages['de'] = array(
 	'sc_error_beforeyear' => 'Fehler: Das System kann Datumsangaben vor $1 nicht verarbeiten.',
 );
 
-/** Deutsch (Sie-Form) (Deutsch (Sie-Form))
- * @author Krabina
- */
-$messages['de-formal'] = array(
-	'sc_previousmonth' => 'Voriges Monat',
-);
-
 /** Persian (فارسی)
  * @author Tofighi
  */
