@@ -360,8 +360,3 @@ $messages['zh-hant'] = array(
 	'assert_edit_title'   => '維護失敗',
 	'assert_edit_message' => '所指定的斷言 ($1) 失敗。',
 );
-
-$messages['kk'] = $messages['kk-cyrl'];
-$messages['kk-cn'] = $messages['kk-arab'];
-$messages['kk-kz'] = $messages['kk-cyrl'];
-$messages['kk-tr'] = $messages['kk-latn'];

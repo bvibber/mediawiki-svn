@@ -512,10 +512,3 @@ riddler|謎人",
 	'vote-login-link' => '登入',
 	'vote-invalid-choice' => '您一定要在可以選擇的選項中選擇一個。',
 );
-
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-sg'] = $messages['zh-hans'];
-$messages['zh-tw'] = $messages['zh-hant'];
-$messages['zh-yue'] = $messages['yue'];

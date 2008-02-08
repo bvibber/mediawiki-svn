@@ -515,5 +515,3 @@ $messages['vi'] = array(
 	'chemFunctions_Name' => 'Tên IUPAC',
 	'chemFunctions_ChemFormInputError' => 'Chemform: lỗi nhập!',
 );
-
-$messages['sr'] = $messages['sr-ec'];

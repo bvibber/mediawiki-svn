@@ -169,10 +169,3 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'minnamelength-error' => '你的用戶名太短。最少的長度是$1個字元。',
 );
-
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-sg'] = $messages['zh-hans'];
-$messages['zh-tw'] = $messages['zh-hant'];
-$messages['zh-yue'] = $messages['yue'];

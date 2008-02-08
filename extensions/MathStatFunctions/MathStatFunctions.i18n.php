@@ -207,11 +207,3 @@ $messages['zh-hant'] = array(
         'msfunc_inf' => "結果數值是無限" ,
         'msfunc_div_zero' => "除以零",
 );
-
-$messages['sr'] = $messages['sr-ec'];
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-sg'] = $messages['zh-hans'];
-$messages['zh-tw'] = $messages['zh-hant'];
-$messages['zh-yue'] = $messages['yue'];

@@ -703,14 +703,3 @@ $messages['zh-hant'] = array(
 	'imagemap_description'          => '關於這幅圖像',
 	'imagemap_desc_types'           => '右上, 右下, 左下, 左上, 無',
 );
-
-$messages['kk'] = $messages['kk-cyrl'];
-$messages['kk-cn'] = $messages['kk-arab'];
-$messages['kk-kz'] = $messages['kk-cyrl'];
-$messages['kk-tr'] = $messages['kk-latn'];
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-sg'] = $messages['zh-hant'];
-$messages['zh-tw'] = $messages['zh-hans'];
-$messages['zh-yue'] = $messages['yue'];

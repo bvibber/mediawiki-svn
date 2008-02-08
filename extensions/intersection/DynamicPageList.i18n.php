@@ -279,5 +279,3 @@ $messages['vi'] = array(
 	'intersection_noresults'     => 'DynamicPageList: Không tìm thấy trang nào!',
 	'intersection_noincludecats' => 'DynamicPageList: Cần phải bao gồm ít nhất một thể loại hay định rõ một không gian tên!',
 );
-
-$messages['de-formal'] = $messages['de'];

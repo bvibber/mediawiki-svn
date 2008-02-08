@@ -393,12 +393,3 @@ $messages['zh-hant'] = array(
 	'talkhere-loading'     => '載入編輯器...',
 	'talkhere-collapse'    => '隱藏編輯器',
 );
-
-$messages['de-formal'] = $messages['de'];
-$messages['kk'] = $messages['kk-cyrl'];
-$messages['kk-cn'] = $messages['kk-arab'];
-$messages['kk-kz'] = $messages['kk-cyrl'];
-$messages['kk-tr'] = $messages['kk-latn'];
-$messages['zh'] = $messages['zh-hant'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-tw'] = $messages['zh-hant'];

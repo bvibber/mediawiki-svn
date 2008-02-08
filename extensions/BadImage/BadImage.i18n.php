@@ -1282,10 +1282,3 @@ $messages['zh-hant'] = array(
 	'badimages-log-remove'     => '已經由壞圖像列表中移除 [[$1]]',
 	'badimages-page'           => '{{ns:help}}:壞圖像列表',
 );
-
-	$messages['zh'] = $messages['zh-hans'];
-	$messages['zh-cn'] = $messages['zh-hans'];
-	$messages['zh-hk'] = $messages['zh-hant'];
-	$messages['zh-sg'] = $messages['zh-hant'];
-	$messages['zh-tw'] = $messages['zh-hans'];
-	$messages['zh-yue'] = $messages['yue'];

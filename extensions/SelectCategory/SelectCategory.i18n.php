@@ -210,12 +210,3 @@ $messages['zh-hant'] = array(
 	'selectcategory-title'    => '選擇分類',
 	'selectcategory-subtitle' => '按著Shift鍵再以滑鼠選取連續的項目，按著Ctrl鍵再以滑鼠選取非連續的項目。',
 );
-
-$messages['de-formal'] = $messages['de'];
-
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-sg'] = $messages['zh-hans'];
-$messages['zh-tw'] = $messages['zh-hant'];
-$messages['zh-yue'] = $messages['yue'];

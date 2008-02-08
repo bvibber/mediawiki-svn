@@ -125,10 +125,3 @@ $messages['zh-hant'] = array(
 	'signaturelogpagetext'  => '這個是所有經過[[Special:SignDocument]]簽署文件的日誌。',
 	'signaturelogentry'     => '已經簽署$1文件',
 );
-
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-sg'] = $messages['zh-hans'];
-$messages['zh-tw'] = $messages['zh-hant'];
-$messages['zh-yue'] = $messages['yue'];

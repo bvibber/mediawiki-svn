@@ -681,11 +681,3 @@ $messages['zh-hant'] = array(
 	'contributors-badtitle' => '不正確的標題。',
 	'contributors-nosuchpage' => '條目$1不存在。',
 );
-
-$messages['kk'] = $messages['kk-kz'];
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-sg'] = $messages['zh-hant'];
-$messages['zh-tw'] = $messages['zh-hans'];
-$messages['zh-yue'] = $messages['yue'];

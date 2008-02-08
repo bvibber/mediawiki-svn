@@ -668,10 +668,3 @@ $messages['zh-hant'] = array(
 	'selectonly'      => '只允許唯讀模式的查詢。',
 	'querysuccessful' => '查詢完成',
 );
-
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-sg'] = $messages['zh-hant'];
-$messages['zh-tw'] = $messages['zh-hans'];
-$messages['zh-yue'] = $messages['yue'];

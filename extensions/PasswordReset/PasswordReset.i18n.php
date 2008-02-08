@@ -399,10 +399,3 @@ $messages['zh-hant'] = array(
 	'passwordreset-submit' => '重設密碼',
 	'passwordreset-success' => 'User_id: $1 的密碼已經重設'
 );
-
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-sg'] = $messages['zh-hans'];
-$messages['zh-tw'] = $messages['zh-hant'];
-$messages['zh-yue'] = $messages['yue'];

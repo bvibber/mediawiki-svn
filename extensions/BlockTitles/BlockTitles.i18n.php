@@ -419,14 +419,3 @@ $messages['zh-hant'] = array(
 	'block_title_error_page_title' => '已封鎖的標題',
 	'block_title_error'            => '抱歉，這篇文章的標題不允許保存。',
 );
-
-$messages['kk'] = $messages['kk-cyrl'];
-$messages['kk-cn'] = $messages['kk-arab'];
-$messages['kk-kz'] = $messages['kk-cyrl'];
-$messages['kk-tr'] = $messages['kk-latn'];
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-sg'] = $messages['zh-hant'];
-$messages['zh-tw'] = $messages['zh-hans'];
-$messages['zh-yue'] = $messages['yue'];

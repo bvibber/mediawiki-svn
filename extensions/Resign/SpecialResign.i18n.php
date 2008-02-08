@@ -337,10 +337,3 @@ $messages['zh-hant'] = array(
 	'resign-success'   => "'''這些權限已經成功地移除。'''",
 	'resign-logentry'  => '自行移除了$2權限',
 );
-
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-sg'] = $messages['zh-hans'];
-$messages['zh-tw'] = $messages['zh-hant'];
-$messages['zh-yue'] = $messages['yue'];

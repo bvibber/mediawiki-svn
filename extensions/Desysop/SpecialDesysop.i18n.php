@@ -451,11 +451,3 @@ $messages['zh-hant'] = array(
 	'desysop'              => '解除一位用戶的操作員權限',
 	'desysopnot_sysop'     => '這位用戶不是一位管理員',
 );
-
-$messages['sr'] = $messages['sr-ec'];
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-sg'] = $messages['zh-hans'];
-$messages['zh-tw'] = $messages['zh-hant'];
-$messages['zh-yue'] = $messages['yue'];

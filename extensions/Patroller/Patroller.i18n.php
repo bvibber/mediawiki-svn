@@ -617,10 +617,3 @@ $messages['zh-hant'] = array(
 	'group-patroller-member' => '巡邏員',
 	'grouppage-patroller' => '{{ns:project}}:巡邏員',
 );
-
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-sg'] = $messages['zh-hant'];
-$messages['zh-tw'] = $messages['zh-hans'];
-$messages['zh-yue'] = $messages['yue'];

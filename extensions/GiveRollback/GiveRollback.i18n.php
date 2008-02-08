@@ -603,10 +603,3 @@ $messages['zh-hant'] = array(
 	'giverollback-logentrygrant' => '已經給予 [[$1]] 的快速回退權限',
 	'giverollback-logentryrevoke' => '已經撤銷 [[$1]] 的快速回退權限',
 );
-
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-sg'] = $messages['zh-hant'];
-$messages['zh-tw'] = $messages['zh-hans'];
-$messages['zh-yue'] = $messages['yue'];

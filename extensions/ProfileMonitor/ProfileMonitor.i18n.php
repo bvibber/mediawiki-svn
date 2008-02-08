@@ -247,10 +247,3 @@ $messages['zh-hant'] = array(
 	'profiling-data-average' => '時間 (平均)',
 	'profiling-no-data' => '找不到對應的資料。',
 );
-
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-sg'] = $messages['zh-hant'];
-$messages['zh-tw'] = $messages['zh-hans'];
-$messages['zh-yue'] = $messages['yue'];

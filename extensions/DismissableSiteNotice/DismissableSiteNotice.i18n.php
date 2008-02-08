@@ -377,16 +377,3 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'sitenotice_close' => '關閉',
 );
-
-$messages['de-formal'] = $messages['de'];
-$messages['kk'] = $messages['kk-cyrl'];
-$messages['kk-cn'] = $messages['kk-arab'];
-$messages['kk-kz'] = $messages['kk-cyrl'];
-$messages['kk-tr'] = $messages['kk-latn'];
-$messages['pt-br'] = $messages['pt'];
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-min-nan'] = $messages['nan'];
-$messages['zh-sg'] = $messages['zh-hans'];
-$messages['zh-yue'] = $messages['yue'];

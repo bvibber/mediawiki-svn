@@ -554,5 +554,3 @@ $messages['vo'] = array(
 	'pdtest_diff'         => 'Difs',
 	'pdtest_side_by_side' => 'Jonolöd leigodi',
 );
-
-$messages['de-formal'] = $messages['de'];

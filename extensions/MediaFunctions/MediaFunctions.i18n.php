@@ -171,10 +171,3 @@ $messages['zh-hant'] = array(
 	'mediafunctions-invalid-title' => '"$1" 不是一個有效的標題',
 	'mediafunctions-not-exist'     => '"$1" 不存在',
 );
-
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-sg'] = $messages['zh-hant'];
-$messages['zh-tw'] = $messages['zh-hans'];
-$messages['zh-yue'] = $messages['yue'];

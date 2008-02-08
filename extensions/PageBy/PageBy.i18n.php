@@ -251,11 +251,3 @@ $messages['zh-hant'] = array(
 	'pageby-contributors' => '貢獻者:',
 	'pageby-anon'         => '<i>匿名</i>',
 );
-
-$messages['de-formal'] = $messages['de'];
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-sg'] = $messages['zh-hans'];
-$messages['zh-tw'] = $messages['zh-hant'];
-$messages['zh-yue'] = $messages['yue'];

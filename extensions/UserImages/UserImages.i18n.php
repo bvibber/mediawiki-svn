@@ -218,10 +218,3 @@ $messages['zh-hant'] = array(
 	'userimages-noname' => '無效或未有填寫帳號名稱。',
 	'userimages-noimages' => '$1沒有上傳圖像。',
 );
-
-$messages['zh'] = $messages['zh-hans'];
-$messages['zh-cn'] = $messages['zh-hans'];
-$messages['zh-hk'] = $messages['zh-hant'];
-$messages['zh-sg'] = $messages['zh-hans'];
-$messages['zh-tw'] = $messages['zh-hant'];
-$messages['zh-yue'] = $messages['yue'];
