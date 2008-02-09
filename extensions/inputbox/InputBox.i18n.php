@@ -14,6 +14,7 @@
 $messages = array();
 
 $messages['en'] = array(
+	'inputbox-desc'           => 'Allow inclusion of predefined HTML forms.',
 	'inputbox-error-no-type'  => 'You have not specified the type of input box to create.',
 	'inputbox-error-bad-type' => 'Input box type "$1" not recognised. Please specify "create", "comment", "search" or "search2".',
 	'tryexact'                => 'Try exact match',
@@ -230,6 +231,7 @@ $messages['fo'] = array(
 );
 
 $messages['fr'] = array(
+	'inputbox-desc'           => 'Permet l’inclusion de formulaires HTML prédéfinis.',
 	'inputbox-error-no-type'  => 'Vous n’avez pas précisé le type de la boîte d’entrée à créer.',
 	'inputbox-error-bad-type' => 'Type de boîte entrée $1 non reconnue. Indiquez l\'option \'\'create\'\', \'\'comment\'\', \'\'search\'\' ou \'\'searche2\'\'.',
 	'tryexact'                => 'Essayez la correspondance exacte.',

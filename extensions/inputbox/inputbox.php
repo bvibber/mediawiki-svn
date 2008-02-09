@@ -21,10 +21,11 @@
  */ 
 $wgExtensionFunctions[] = 'efInputBoxSetup';
 $wgExtensionCredits['parserhook'][] = array(
-	'name' => 'Inputbox',
-	'author' => array( 'Erik Moeller', 'Leonardo Pimenta', 'Rob Church' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Inputbox',
-	'description' => 'Allow inclusion of predefined HTML forms.',
+	'name'           => 'Inputbox',
+	'author'         => array( 'Erik Moeller', 'Leonardo Pimenta', 'Rob Church' ),
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Inputbox',
+	'description'    => 'Allow inclusion of predefined HTML forms.',
+	'descriptionmsg' => 'inputbox-desc',
 );
 
 $dir = dirname(__FILE__) . '/';
