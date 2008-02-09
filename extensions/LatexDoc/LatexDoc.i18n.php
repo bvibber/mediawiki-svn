@@ -20,6 +20,7 @@ Output: $2
 $3",
 	'latexdoc_get_dvi' => 'Get DVI',
 	'latexdoc_get_pdf' => 'Get PDF',
+	'latexdoc-desc'    => 'Latex Doc.',
 );
 
 /** Arabic (العربية)
@@ -79,6 +80,7 @@ Sortie : $2
 $3",
 	'latexdoc_get_dvi' => 'Obtenir DVI',
 	'latexdoc_get_pdf' => 'Obtenir PDF',
+	'latexdoc-desc'    => 'Document LaTex.',
 );
 
 /** Galician (Galego)

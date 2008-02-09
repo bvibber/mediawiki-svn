@@ -10,6 +10,7 @@ $wgExtensionCredits['other'][] = array(
 	'author'      => 'Tim Starling',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:LatexDoc',
 	'description' => 'LatexDoc',
+	'descriptionmsg' => 'latexdoc-desc',
 );
 
 $wgExtensionFunctions[] = 'wfLatexDocInit';
