@@ -7,11 +7,12 @@
  */
 
 $wgExtensionCredits['specialpage'][] = array(
-	'name' => 'Link Search',
-	'author' => 'Brion Vibber',
-	'description' => 'Find pages with external links matching specific patterns',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:LinkSearch',
-	'version' => '1.2',
+	'name'           => 'Link Search',
+	'author'         => 'Brion Vibber',
+	'description'    => 'Find pages with external links matching specific patterns',
+	'descriptionmsg' => 'linksearch-desc',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:LinkSearch',
+	'version'        => '1.2',
 );
 
 $wgExtensionMessagesFiles['LinkSearch'] = dirname(__FILE__) . '/LinkSearch.i18n.php';

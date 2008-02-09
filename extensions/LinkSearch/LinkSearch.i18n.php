@@ -10,6 +10,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'linksearch'       => 'Search web links',
+	'linksearch-desc'       => 'Find pages with external links matching specific patterns',
 	'linksearch-pat'   => 'Search pattern:',
 	'linksearch-ns'    => 'Namespace:',
 	'linksearch-ok'    => 'Search',
@@ -164,6 +165,7 @@ $messages['fo'] = array(
 
 $messages['fr'] = array(
 	'linksearch'       => 'Rechercher des liens Internet',
+	'linksearch-desc'       => 'Recherche des pages dans lesquelles un lien externe apparaît.',
 	'linksearch-pat'   => 'Rechercher l’expression :',
 	'linksearch-ns'    => 'Espace de noms :',
 	'linksearch-ok'    => 'Rechercher',
