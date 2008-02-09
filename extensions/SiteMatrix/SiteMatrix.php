@@ -17,6 +17,8 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $wgExtensionMessagesFiles['SiteMatrix'] = dirname(__FILE__) . '/SiteMatrix.i18n.php';
 
+$wgSiteMatrixFile = '/home/wikipedia/common/langlist';
+
 if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 }

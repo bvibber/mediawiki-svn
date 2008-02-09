@@ -12,13 +12,13 @@ require_once( $IP.'/languages/Names.php' );
 class SiteMatrix
 {
 	public $langlist, $sites, $names, $hosts;
-	public $wikipediaSpecial, $hidden, $specials, $matrix;
+	public $wikipediaSpecial, $hidden, $specials, $matrix, $count;
 
 	public function __construct()
 	{
-		global $wgLocalDatabases, $IP;
+		global $wgLocalDatabases, $IP, $wgSiteMatrixFile;
 
-		$this->langlist = array_map( 'trim', file( '/home/wikipedia/common/langlist' ) );
+		$this->langlist = array_map( 'trim', file( $wgSiteMatrixFile ) );
 		sort( $this->langlist );
 		$xLanglist = array_flip( $this->langlist );
 
@@ -78,6 +78,7 @@ class SiteMatrix
 				}
 			}
 		}
+		$this->count = count( $wgLocalDatabases );
 	}
 }
 
@@ -101,7 +102,7 @@ class SiteMatrixPage extends SpecialPage {
 			header("Content-Type: text/xml; charset=utf-8");
 			echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 			echo "<sitematrix>\n";
-			echo "\t<matrix>\n";
+			echo "\t<matrix size=\"{$matrix->count}\">\n";
 			foreach ( $matrix->langlist as $lang ) {
 				$langhost = str_replace("_", "-", $lang);
 				echo "\t\t<language code=\"{$langhost}\" name=\"".htmlspecialchars($wgLanguageNames[$lang])."\">\n";
@@ -187,6 +188,7 @@ class SiteMatrixPage extends SpecialPage {
 		}
 		$s .= '</ul>';
 		$wgOut->addHTML( $s );
+		$wgOut->addHTML( wfMsgWikiHtml( 'sitematrix-total', $matrix->count ) );
 	}
 }
 
@@ -206,7 +208,9 @@ class ApiQuerySiteMatrix extends ApiQueryBase {
 		$result = $this->getResult();
 		$matrix = new SiteMatrix();
 
-		$matrix_out = array();
+		$matrix_out = array(
+			'count' => $matrix->count,
+		);
 		foreach ( $matrix->langlist as $lang ) {
 			$langhost = str_replace("_", "-", $lang);
 			$language = array(
@@ -248,7 +252,7 @@ class ApiQuerySiteMatrix extends ApiQueryBase {
 		}
 
 		$result->setIndexedTagName($specials, 'special');
-		$result->addValue(null, "specials", $specials);
+		$result->addValue("sitematrix", "specials", $specials);
 	}
 
 	protected function getAllowedParams() {
