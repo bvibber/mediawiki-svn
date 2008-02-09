@@ -250,11 +250,12 @@ $messages['grc'] = array(
 );
 
 $messages['he'] = array(
-	'sitematrix'          => 'רשימת אתרי ויקי של ויקימדיה',
-	'sitematrix-language' => 'שפה',
-	'sitematrix-project'  => 'שם הפרויקט, קישורי אינטרוויקי ובין המיזמים',
-	'sitematrix-others'   => 'מיזמים אחרים של ויקימדיה',
-	'sitematrix-total'    => "'''מספר האתרים: $1'''",
+	'sitematrix'           => 'רשימת אתרי ויקי של ויקימדיה',
+	'sitematrix-language'  => 'שפה',
+	'sitematrix-project'   => 'שם הפרויקט, קישורי אינטרוויקי ובין המיזמים',
+	'sitematrix-others'    => 'מיזמים אחרים של ויקימדיה',
+	'sitematrix-total'     => "'''מספר האתרים: $1'''",
+	'sitematrix-sitetotal' => 'סך הכל',
 );
 
 $messages['hr'] = array(
