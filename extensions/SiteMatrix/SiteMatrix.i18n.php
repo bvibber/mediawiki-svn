@@ -253,6 +253,7 @@ $messages['he'] = array(
 	'sitematrix-language' => 'שפה',
 	'sitematrix-project'  => 'שם הפרויקט, קישורי אינטרוויקי ובין המיזמים',
 	'sitematrix-others'   => 'מיזמים אחרים של ויקימדיה',
+	'sitematrix-total'    => "'''מספר האתרים: $1'''",
 );
 
 $messages['hr'] = array(
