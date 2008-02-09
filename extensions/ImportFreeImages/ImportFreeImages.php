@@ -34,11 +34,12 @@ $wgIFI_ThumbType = "t"; // s for square t for thumbnail
 require_once("SpecialPage.php");
 
 $wgExtensionCredits['other'][] = array(
-    'name' => 'ImportFreeImages',
-    'version' => '2008-01-11',
-    'author' => 'Travis Derouin',
-    'description' => 'Provides a way of importing properly licensed photos from flickr.',
-    'url' => 'http://www.mediawiki.org/wiki/Extension:ImportFreeImages',
+	'name'           => 'ImportFreeImages',
+	'version'        => '2008-01-11',
+	'author'         => 'Travis Derouin',
+	'description'    => 'Provides a way of importing properly licensed photos from flickr.',
+	'descriptionmsg' => 'importfreeimages-desc',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:ImportFreeImages',
 );
 
 $wgExtensionMessagesFiles['ImportFreeImages'] = dirname(__FILE__) . '/ImportFreeImages.i18n.php';

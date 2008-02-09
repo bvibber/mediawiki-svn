@@ -12,6 +12,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'importfreeimages'                => 'Import Free Images',
+	'importfreeimages-desc'           => 'Provides a way of importing properly licensed photos from flickr.',
 	'importfreeimages_description'    => 'This page allows you to search properly licensed photos from flickr and import them into your wiki.',
 	'importfreeimages_noapikey'       => 'You have not configured your Flickr API Key. To do so, please obtain a API key from  [http://www.flickr.com/services/api/misc.api_keys.html here] and set wgFlickrAPIKey in ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'  => 'No photos were found for your search criteria \'$1\', please try again.',
@@ -67,6 +68,7 @@ $messages['de'] = array(
 		/*French (Bertrand GRONDIN)*/
 $messages['fr'] = array(
 	'importfreeimages'                => 'Importer des Images Libres',
+	'importfreeimages-desc'           => 'Fournit un moyen d’importer des photographies proprement sous licence depuis flickr.',
 	'importfreeimages_description'    => 'Cette page vous permet de rechercher proprement des images sous licences depuis flickr et de les importer dans votre wiki.',
 	'importfreeimages_noapikey'       => 'Vous n’avez pas configuré votre Clef API Flickr. Pour ce faire, vous êtes prié d’obtenir une clef API à partir de [http://www.flickr.com/services/api/misc.api_keys.html ce lien] et de configurer wgFlickrAPIKey dans ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'  => 'Aucune photo n’a été trouvée à partir de vos critères de recherches  \'$1\', veuillez essayer à nouveau.',
