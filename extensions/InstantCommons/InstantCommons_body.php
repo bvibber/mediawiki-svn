@@ -47,7 +47,7 @@ class ApiInstantCommons extends ApiBase {
 
 		$astriks = str_repeat('--- ', 8);
 		$msg .= "\n$astriks InstantCommons: Prop  $astriks\n\n";
-		$msg .= "\n See http://meta.wikimedia.org/wiki/InstantCommons\n\n";
+		$msg .= "\n See http://www.mediawiki.org/wiki/InstantCommons\n\n";
 		return $msg;
 	}
 
@@ -188,4 +188,4 @@ class ApiInstantCommons extends ApiBase {
    }
 	
 }
-?>
+
