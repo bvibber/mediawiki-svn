@@ -654,6 +654,19 @@ $messages['ku'] = array(
 	'badimages-remove-btn' => 'Jêbibe',
 );
 
+/** Kurdish (Latin) (Kurdî / كوردی (Latin))
+ * @author Bangin
+ */
+$messages['ku-latn'] = array(
+	'badimages'            => 'Lîsteya wêneyên pîs',
+	'badimages-add-btn'    => 'Têkê',
+	'badimages-name'       => 'Nav:',
+	'badimages-reason'     => 'Sedem:',
+	'badimages-remove'     => '(jêbibe)',
+	'badimages-remove-btn' => 'Jêbibe',
+	'badimages-log-name'   => 'Lîsteya wêneyên pîs',
+);
+
 /** Latin (Latina)
  * @author SPQRobin
  */
@@ -1177,6 +1190,7 @@ $messages['tr'] = array(
  */
 $messages['vi'] = array(
 	'badimages'                => 'Danh sách hình phản cảm',
+	'badimages-desc'           => 'Mở rộng tính tương thích danh sách hình phản cảm của MediaWiki',
 	'badimages-add-btn'        => 'Thêm',
 	'badimages-added'          => 'Đã thêm $1 vào danh sách.',
 	'badimages-count'          => "Có '''$1''' hình trong danh sách hình phản cảm.",

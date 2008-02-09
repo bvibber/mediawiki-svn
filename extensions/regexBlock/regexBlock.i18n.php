@@ -54,6 +54,16 @@ $messages['en'] = array(
 	'regexblock-view-time' => 'on $1',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ */
+$messages['af'] = array(
+	'regexblock-form-reason'    => 'Rede:',
+	'regexblock-stats-username' => 'Vir $1',
+	'regexblock-view-reason'    => 'rede: $1',
+	'regexblock-view-time'      => 'op $1',
+);
+
 $messages['ar'] = array(
 	'regexblock' => 'منع ريجيكس',
 	'regexblock-page-title' => 'منع الاسم بواسطة تعبير منتظم',
@@ -391,6 +401,13 @@ $messages['nl'] = array(
 	'regexblock-view-stats'           => '(statistieken)',
 	'regexblock-view-empty'           => 'De lijst van geblokkeerde namen en IP-adressen is leeg.',
 	'regexblock-view-time'            => 'op $1',
+);
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'regexblock-view-go' => '{{int:Go}}',
 );
 
 /** Occitan (Occitan)

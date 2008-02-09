@@ -130,6 +130,7 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'inspectcache'         => 'Cache inspecteren',
+	'inspectcache-desc'    => 'Een eenvoudig hulpmiddel voor het debuggen van de inhoud van de gedeelde cache',
 	'inspectcache-ok'      => 'OK',
 	'inspectcache-general' => 'Algemene cache',
 	'inspectcache-parser'  => 'Parsercache',

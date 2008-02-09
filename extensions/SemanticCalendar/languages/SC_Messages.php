@@ -20,6 +20,13 @@ $messages['en'] = array(
 	'sc_error_beforeyear' => 'Error: This system cannot handle dates before $1',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ */
+$messages['af'] = array(
+	'sc_gotomonth' => 'Gaan na maand',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -124,8 +131,11 @@ $messages['ja'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'sc_previousmonth' => 'Vireschte Mount',
-	'sc_nextmonth'     => 'Nächste Mount',
+	'sc_previousmonth'    => 'Vireschte Mount',
+	'sc_nextmonth'        => 'Nächste Mount',
+	'sc_today'            => 'Haut',
+	'sc_error_year2038'   => 'Feeler: Dëse System ka wéint dem [http://de.wikipedia.org/wiki/Jahr-2038-Problem Joer-2038-Problem] Datumen nom Joer 2038 net verschaffen.',
+	'sc_error_beforeyear' => 'Feeler: Dëse System kann net mat Datume virum $1 ëmgoen.',
 );
 
 /** Dutch (Nederlands)
@@ -177,5 +187,17 @@ $messages['vi'] = array(
 $messages['vo'] = array(
 	'sc_previousmonth' => 'Mul büik',
 	'sc_nextmonth'     => 'Mul sököl',
+);
+
+/** ‪中文(台灣)‬ (‪中文(台灣)‬)
+ * @author Roc michael
+ */
+$messages['zh-tw'] = array(
+	'sc_previousmonth'    => '前一月',
+	'sc_nextmonth'        => '次一月',
+	'sc_today'            => '今日',
+	'sc_gotomonth'        => '前往',
+	'sc_error_year2038'   => '錯誤：此系統無法處理2038之後的日期：其原因為 [http://en.wikipedia.org/wiki/Year_2038_problem year 2038 problem]',
+	'sc_error_beforeyear' => '錯誤：此系統無法處理 $1 之前的日期',
 );
 

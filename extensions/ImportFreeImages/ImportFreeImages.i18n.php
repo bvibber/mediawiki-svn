@@ -92,17 +92,21 @@ $messages['gl'] = array(
 	'importfreeimages_returntoform' => 'Ou, prema <a href=\'$1\'>here</a> para voltar á súa procura de resultados',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'importfreeimages'              => 'Swobodne wobrazy importować',
-	'importfreeimages_description'  => 'Tuta strona ći dowola na Flickr za wobrazami z prihódnej ličencu pytać a je do swojeho wiki importować.',
-	'importfreeimages_noapikey'     => 'Njejsy swój kluč Flickr API konfigurował. Prošu požadaj jón [http://www.flickr.com/services/api/misc.api_keys.html jowle] a nastaj $wgFlickrAPIKey w ImportFreeImages.php.',
-	'importfreeimages_nophotosfound' => 'Njejsu so žane fota za twoje pytanske kriterije "$1" namakali.',
-	'importfreeimages_owner'        => 'Awtor',
-	'importfreeimages_importthis'   => 'importować',
-	'importfreeimages_next'         => 'Přichodny $1',
-	'importfreeimages_filefromflickr' => '$1 wot wužiwarja <b>[$2]</b> z flickra. Originalny URL',
+	'importfreeimages'                       => 'Swobodne wobrazy importować',
+	'importfreeimages-desc'                  => 'Skići móžnosć porjadnje licencowanych fotow z flickr importować.',
+	'importfreeimages_description'           => 'Tuta strona ći dowola na Flickr za wobrazami z prihódnej ličencu pytać a je do swojeho wiki importować.',
+	'importfreeimages_noapikey'              => 'Njejsy swój kluč Flickr API konfigurował. Prošu požadaj jón [http://www.flickr.com/services/api/misc.api_keys.html jowle] a nastaj $wgFlickrAPIKey w ImportFreeImages.php.',
+	'importfreeimages_nophotosfound'         => 'Njejsu so žane fota za twoje pytanske kriterije "$1" namakali.',
+	'importfreeimages_owner'                 => 'Awtor',
+	'importfreeimages_importthis'            => 'importować',
+	'importfreeimages_next'                  => 'Přichodny $1',
+	'importfreeimages_filefromflickr'        => '$1 wot wužiwarja <b>[$2]</b> z flickra. Originalny URL',
 	'importfreeimages_promptuserforfilename' => 'Prošu zapodaj mjeno ciloweje dataje:',
-	'importfreeimages_returntoform' => 'Abo klikń <a href=\'$1\'>sem</a>, zo by k stronje z pytanskimi wuslědkami wróćił.',
+	'importfreeimages_returntoform'          => "Abo klikń <a href='$1'>sem</a>, zo by k stronje z pytanskimi wuslědkami wróćił.",
 );
 
 /** Hungarian (Magyar)
@@ -130,17 +134,22 @@ $messages['lb'] = array(
 	'importfreeimages_next'  => 'Nächst $1',
 );
 
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'importfreeimages'              => 'Vrije afbeeldingen importeren',
-	'importfreeimages_description'  => 'Deze pagina laat u toe om juist gelicenseerde foto\'s van flickr te zoeken and die te importeren naar uw wiki.',
-	'importfreeimages_noapikey'     => 'U heeft geen Flickr API Key ingesteld. U kunt een API-sleutel [http://www.flickr.com/services/api/misc.api_keys.html hier] verkrijgen en instellen als wgFlickrAPIKey in ImportFreeImages.php.',
-	'importfreeimages_nophotosfound' => 'Er zijn geen foto\'s gevonden voor uw zoekcriteria \'$1\', probeer opniew.',
-	'importfreeimages_owner'        => 'Auteur',
-	'importfreeimages_importthis'   => 'dit importeren',
-	'importfreeimages_next'         => 'Volgende $1',
-	'importfreeimages_filefromflickr' => '$1 door gebruiker <b>[$2]</b> van flickr. Oorspronkelijke URL',
+	'importfreeimages'                       => 'Vrije afbeeldingen importeren',
+	'importfreeimages-desc'                  => 'Maakt het mogelijk om correct gelicenseerde afbeeldingen van Flickr te importeren',
+	'importfreeimages_description'           => "Deze pagina laat u toe om juist gelicenseerde foto's van flickr te zoeken and die te importeren naar uw wiki.",
+	'importfreeimages_noapikey'              => 'U heeft geen Flickr API Key ingesteld. U kunt een API-sleutel [http://www.flickr.com/services/api/misc.api_keys.html hier] verkrijgen en instellen als wgFlickrAPIKey in ImportFreeImages.php.',
+	'importfreeimages_nophotosfound'         => "Er zijn geen foto's gevonden voor uw zoekcriteria '$1', probeer opniew.",
+	'importfreeimages_owner'                 => 'Auteur',
+	'importfreeimages_importthis'            => 'dit importeren',
+	'importfreeimages_next'                  => 'Volgende $1',
+	'importfreeimages_filefromflickr'        => '$1 door gebruiker <b>[$2]</b> van flickr. Oorspronkelijke URL',
 	'importfreeimages_promptuserforfilename' => 'Gelieve een bestandsnaam op te geven:',
-	'importfreeimages_returntoform' => 'Of, klik <a href=\'$1\'>hier</a> om terug te keren naar uw zoekresultaten',
+	'importfreeimages_returntoform'          => "Of, klik <a href='$1'>hier</a> om terug te keren naar uw zoekresultaten",
 );
 
 $messages['no'] = array(
@@ -236,9 +245,10 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Max sonnelid
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'importfreeimages'            => 'Importera Fria Bilder',
+	'importfreeimages'            => 'Importera fria bilder',
 	'importfreeimages_owner'      => 'Upphovsman',
 	'importfreeimages_importthis' => 'import denna',
 	'importfreeimages_next'       => 'Nästa $1',

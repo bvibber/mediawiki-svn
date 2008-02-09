@@ -169,10 +169,15 @@ $messages['lt'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Jums reikia įtraukti bent vieną kategoriją, arba nurodyti vardų sritį!',
 );
 
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'intersection_toomanycats' => 'DynamicPageList: Te veel categorieën!',
-	'intersection_toofewcats' => 'DynamicPageList: Te weinig categorieën!',
-	'intersection_noresults' => 'DynamicPageList: Geen resultaten!',
+	'intersection-desc'          => 'Geeft als uitvoer een ongenummerde lijst met de meest recent toegevoegde items in een categorie, of een combinatie van categorieën',
+	'intersection_toomanycats'   => 'DynamicPageList: Te veel categorieën!',
+	'intersection_toofewcats'    => 'DynamicPageList: Te weinig categorieën!',
+	'intersection_noresults'     => 'DynamicPageList: Geen resultaten!',
 	'intersection_noincludecats' => 'DynamicPageList: U moet tenminste een categorie of een naamruimte opgeven!',
 );
 
@@ -281,3 +286,4 @@ $messages['vi'] = array(
 	'intersection_noresults'     => 'DynamicPageList: Không tìm thấy trang nào!',
 	'intersection_noincludecats' => 'DynamicPageList: Cần phải bao gồm ít nhất một thể loại hay định rõ một không gian tên!',
 );
+

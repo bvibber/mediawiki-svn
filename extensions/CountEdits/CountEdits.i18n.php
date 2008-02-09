@@ -24,6 +24,13 @@ $messages['en'] = array(
 	'countedits-nocontribs' => 'There have been no contributions to this wiki.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ */
+$messages['af'] = array(
+	'countedits-username' => 'Gebruikersnaam:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -609,3 +616,4 @@ $messages['zh-hant'] = array(
 	'countedits-mostactive' => '最活躍的貢獻者',
 	'countedits-nocontribs' => '在這個wiki中沒有貢獻。',
 );
+

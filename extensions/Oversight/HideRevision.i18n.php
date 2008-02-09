@@ -532,38 +532,42 @@ učinite pogrešku.',
 Objavljivanje ove informacije može prouzročiti trajan gubitak prava nadzora.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'hiderevision' => 'Wersije na přeco schować',
-	'hiderevision-prompt' => 'Wersijowe čisło, kotrež ma so wotstronić:',
-	'hiderevision-continue' => 'Dale',
-	'hiderevision-text' => 'To smě \'\'\'jeničce\'\'\' w slědowacych padach wužić;
+	'hiderevision'                => 'Wersije na přeco schować',
+	'hiderevision-desc'           => 'Chowa jednotliwe wersije z prawniskich přičinow atd. před wšěmi wužiwarjemi',
+	'hiderevision-prompt'         => 'Wersijowe čisło, kotrež ma so wotstronić:',
+	'hiderevision-continue'       => 'Dale',
+	'hiderevision-text'           => "To smě '''jeničce''' w slědowacych padach wužić;
 * Wosobinske informacije:
-*: \'\'woprawdźite mjeno, adresa, telefonowe čisło a podobne priwatne podrobnosće\'\'
+*: ''woprawdźite mjeno, adresa, telefonowe čisło a podobne priwatne podrobnosće''
 
-\'\'\'Znjewužiwanje tutoho systema zawinuje zhubjenje tutych prawow!\'\'\'
+'''Znjewužiwanje tutoho systema zawinuje zhubjenje tutych prawow!'''
 
-Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wušmórnjenja protokoluja so a hodźa so manuelnje wot administratora datoweje banki wobnowić, jeli činiš zmylk.',
-	'hiderevision-reason' => 'Přičina (protokoluje so skradźu)',
-	'hiderevision-submit' => 'Tute daty na stajnje schować',
-	'hiderevision-tab' => 'Wersiju schować',
-	'hiderevision-norevisions' => 'Žane wersije za wušmórnjenje podate.',
-	'hiderevision-noreason' => 'Dyrbiš přičinu za wotstronjenje podać.',
-	'hiderevision-status' => 'Wersija $1: $2',
-	'hiderevision-success' => 'Wuspěšnje archiwowany a zničeny.',
-	'hiderevision-error-missing' => 'W datowej bance njenamakany.',
-	'hiderevision-error-current' => 'Poslednja změna njehodźi so wušmórnyć. Staj tutu změnu wróćo.',
-	'hiderevision-error-delete' => 'Njemóžno do archiwa přewjesć – bu wersija do toho wušmórnjena?',
+Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wušmórnjenja protokoluja so a hodźa so manuelnje wot administratora datoweje banki wobnowić, jeli činiš zmylk.",
+	'hiderevision-reason'         => 'Přičina (protokoluje so skradźu)',
+	'hiderevision-submit'         => 'Tute daty na stajnje schować',
+	'hiderevision-tab'            => 'Wersiju schować',
+	'hiderevision-norevisions'    => 'Žane wersije za wušmórnjenje podate.',
+	'hiderevision-noreason'       => 'Dyrbiš přičinu za wotstronjenje podać.',
+	'hiderevision-status'         => 'Wersija $1: $2',
+	'hiderevision-success'        => 'Wuspěšnje archiwowany a zničeny.',
+	'hiderevision-error-missing'  => 'W datowej bance njenamakany.',
+	'hiderevision-error-current'  => 'Poslednja změna njehodźi so wušmórnyć. Staj tutu změnu wróćo.',
+	'hiderevision-error-delete'   => 'Njemóžno do archiwa přewjesć – bu wersija do toho wušmórnjena?',
 	'hiderevision-archive-status' => 'Wušmórnjena wersija z $1: $2',
-	'oversight-nodiff' => 'Njeje přirunanje wersijow móžno, dokelž prjedawša wersija njeje. Móžnej přičinje:
+	'oversight-nodiff'            => 'Njeje přirunanje wersijow móžno, dokelž prjedawša wersija njeje. Móžnej přičinje:
 *Strona bu zničena
 *Schowana wersija běše přenja wersija',
-	'oversight-log-hiderev' => 'změna wot $1 bu wotstronjena.',
-	'oversight' => 'Oversight',#identical but defined
-	'oversight-view' => 'podrobnosće',
-	'oversight-difference' => '(Rozdźěl wot předchadneje zwostawaceje wersije)',
-	'oversight-prev' => 'Poslednja předchadna wersija',
-	'oversight-hidden' => 'Schowana wersija',
-	'oversight-header' => 'Slěduje lisćina wersijow na stajnje schowanych za zjawnosć. Wozjewjenje tutych informacijow móže k stajnemu zhubjenju prawow za Oversight wjesć.',
+	'oversight-log-hiderev'       => 'změna wot $1 bu wotstronjena.',
+	'oversight'                   => 'Oversight',
+	'oversight-view'              => 'podrobnosće',
+	'oversight-difference'        => '(Rozdźěl wot předchadneje zwostawaceje wersije)',
+	'oversight-prev'              => 'Poslednja předchadna wersija',
+	'oversight-hidden'            => 'Schowana wersija',
+	'oversight-header'            => 'Slěduje lisćina wersijow na stajnje schowanych za zjawnosć. Wozjewjenje tutych informacijow móže k stajnemu zhubjenju prawow za Oversight wjesć.',
 );
 
 /** Hungarian (Magyar)
@@ -895,10 +899,11 @@ $messages['ne'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
 	'hiderevision'                => 'Versies permanent verbergen',
-	'hiderevision-desc'           => 'Verberg versies voor alle gebruikers om juridische redenen, etc.',
+	'hiderevision-desc'           => 'Verberg bewerkingen voor alle gebruikers om juridische redenen, etc.',
 	'hiderevision-prompt'         => 'Te verwijderen versienummer:',
 	'hiderevision-continue'       => 'Doorgaan',
 	'hiderevision-text'           => "Dit dient '''alleen''' gebruikt te worden in de volgende gevallen:
@@ -1084,6 +1089,7 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'hiderevision'                => 'Ocultar revisões permanentemente',
+	'hiderevision-desc'           => 'Esconde, de todos os utilizadores, revisões individuais por razões legais, etc.',
 	'hiderevision-prompt'         => 'Número da revisão (edição) a ser removida:',
 	'hiderevision-continue'       => 'Avançar',
 	'hiderevision-text'           => "Isto deverá ser utilizado '''apenas''' nos seguintes casos:
@@ -1204,6 +1210,7 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'hiderevision'                => 'Natrvalo skryť revízie',
+	'hiderevision-desc'           => 'Skrýva jednotlivé určené revízie všetkým používateľom (z právnych dôvodov atď.)',
 	'hiderevision-prompt'         => 'Číslo revízie, ktorá sa má odstrániť:',
 	'hiderevision-continue'       => 'Pokračovať',
 	'hiderevision-text'           => "Táto funkcia by sa mala využívať '''výlučne''' v nasledovných prípadoch:
@@ -1379,6 +1386,7 @@ Muugelke Gruunde:
  */
 $messages['sv'] = array(
 	'hiderevision'                => 'Dölj sidversioner permanent',
+	'hiderevision-desc'           => 'Döljer enskilda sidversioner från alla användare, t.ex. av juridiska skäl',
 	'hiderevision-prompt'         => 'Nummer för sidversionen som ska tas bort:',
 	'hiderevision-continue'       => 'Fortsätt',
 	'hiderevision-text'           => "Översyn ska användas '''endast''' i följande fall:

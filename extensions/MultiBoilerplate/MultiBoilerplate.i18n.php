@@ -42,6 +42,7 @@ $messages['fr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'multiboilerplate-desc'   => 'Zwobraznja horjeka na wobdźěłowanskej stronje polo za wuběranje a začitanje tekstoweho elementa',
 	'multiboilerplate-legend' => 'Tekstowy element wubrać',
 	'multiboilerplate-submit' => 'Začitać',
 );
@@ -59,7 +60,7 @@ $messages['lb'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'multiboilerplate-desc'   => 'Toon een venster bovenaan een bewerkingspagina voor het selecteren en laden van een standaard tekstblok',
+	'multiboilerplate-desc'   => 'Toont een venster bovenaan een bewerkingspagina voor het selecteren en laden van een standaard tekstblok',
 	'multiboilerplate-legend' => 'Sjabloon selecteren',
 	'multiboilerplate-submit' => 'Laden',
 );

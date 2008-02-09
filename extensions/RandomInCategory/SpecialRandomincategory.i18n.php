@@ -123,6 +123,13 @@ $messages['nl'] = array(
 	'randomincategory-submit'     => 'OK',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'randomincategory-submit' => '{{int:Go}}',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

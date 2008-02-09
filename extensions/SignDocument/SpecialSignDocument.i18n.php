@@ -105,9 +105,14 @@ $messages['en'] = array(
 	'$1] signed [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ */
 $messages['af'] = array(
-	'sign-realname' => 'Naam:',
+	'sign-realname'           => 'Naam:',
+	'sign-city'               => 'Stad:',
 	'sign-viewfield-realname' => 'Naam',
+	'sign-viewfield-city'     => 'Stad',
 );
 
 $messages['ang'] = array(
@@ -1062,6 +1067,38 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'sign-realname' => 'Noome:',
+);
+
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'signdocument'            => 'Signera Dokument',
+	'sign-nodocselected'      => 'Var god att välj dokumentet du vill signera.',
+	'sign-selectdoc'          => 'Dokument:',
+	'sign-docheader'          => '<div class="noarticletext">Var god att använd detta sätt till att signera dokumentet "[[$1]]," visas nedan. Var god att läs igenom hela dokumentet, och om du vill markera ditt stöd för det, var god att fyll i dom efterfrågade fälten för att signera det.</div>',
+	'sign-error-nosuchdoc'    => 'Dokumentet du efterfrågade ($1) existerar inte.',
+	'sign-realname'           => 'Namn:',
+	'sign-address'            => 'Gatuadress:',
+	'sign-city'               => 'Stad:',
+	'sign-state'              => 'Stat:',
+	'sign-zip'                => 'Postnummer:',
+	'sign-country'            => 'Land:',
+	'sign-phone'              => 'Telefonnummer:',
+	'sign-bday'               => 'Ålder:',
+	'sign-email'              => 'E-postadress:',
+	'sign-viewfield-realname' => 'Namn',
+	'sign-viewfield-address'  => 'Adress',
+	'sign-viewfield-city'     => 'Stad',
+	'sign-viewfield-state'    => 'Stat',
+	'sign-viewfield-country'  => 'Land',
+	'sign-viewfield-zip'      => 'Postnummer',
+	'sign-viewfield-ip'       => 'IP-adress',
+	'sign-viewfield-phone'    => 'Telefon',
+	'sign-viewfield-email'    => 'E-post',
+	'sign-viewfield-age'      => 'Ålder',
+	'sign-signatures'         => 'Signaturer',
 );
 
 /** Volapük (Volapük)

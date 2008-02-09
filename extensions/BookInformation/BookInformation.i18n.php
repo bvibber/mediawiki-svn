@@ -824,6 +824,8 @@ $messages['tg'] = array(
 	'bookinfo-result-author'    => 'Муаллиф:',
 	'bookinfo-result-publisher' => 'Нашриёт:',
 	'bookinfo-result-year'      => 'Соли интишор:',
+	'bookinfo-error-nosuchitem' => 'Ин маврид вуҷуд надорад ё пайдо нашуд.',
+	'bookinfo-error-noresponse' => 'Посухе вуҷуд надошт ё мӯҳлати дархост сипарӣ шуд.',
 	'bookinfo-purchase'         => 'Харидани ин китоб аз $1',
 	'bookinfo-provider'         => 'Муҳаёкунандаи иттилоот: $1',
 );

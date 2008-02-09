@@ -19,6 +19,13 @@ $messages['en'] = array(
 	'showprocesslist-info' => 'Info',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ */
+$messages['af'] = array(
+	'showprocesslist-user' => 'Gebruiker',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

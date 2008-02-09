@@ -152,11 +152,11 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
- * @author Max sonnelid
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'icon-badimage' => 'Dålig Bild',
-	'icon-badwidth' => 'Dålig Bredd',
+	'icon-badimage' => 'Dålig bild',
+	'icon-badwidth' => 'Dålig bredd',
 );
 
 /** Turkish (Türkçe)

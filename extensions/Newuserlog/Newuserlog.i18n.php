@@ -151,9 +151,22 @@ $messages['crh-cyrl'] = array(
 $messages['cs'] = array(
 	'newuserlogpage'           => 'Kniha nových uživatelů',
 	'newuserlogpagetext'       => 'Toto je záznam nově zaregistrovaných uživatelů.',
+	'newuserlog-desc'          => 'Přidává do [[Special:Log|protokolovacích záznamů]] přehled [[Special:Log/newusers|nově zaregistrovaných uživatelů]].',
 	'newuserlog-byemail'       => 'heslo zasláno e-mailem',
 	'newuserlog-create-entry'  => 'Nově založený uživatel',
 	'newuserlog-create2-entry' => 'založil účet pro $1',
+);
+
+/** Danish (Dansk)
+ * @author Morten LJ
+ */
+$messages['da'] = array(
+	'newuserlogpage'           => 'Brugeroprettelseslog',
+	'newuserlogpagetext'       => 'Dette er en log over de senest oprettede brugere',
+	'newuserlog-desc'          => 'Tilføjer en [[Speciel:Loglister/newusers|brugeroprettelseslog]] til [[Speciel:Loglister]]',
+	'newuserlog-byemail'       => 'kodeord tilsend pr. e-mail',
+	'newuserlog-create-entry'  => 'Ny bruger',
+	'newuserlog-create2-entry' => 'oprettede brugerkonto for $1',
 );
 
 /** German (Deutsch)
@@ -324,6 +337,7 @@ $messages['hr'] = array(
 $messages['hsb'] = array(
 	'newuserlogpage'           => 'Protokol nowych wužiwarjow',
 	'newuserlogpagetext'       => 'To je protokol wutworjenja nowych wužiwarskich kontow.',
+	'newuserlog-desc'          => 'Přidawa [[Special:Log/newusers|protokol wo wutworjenjach kontow]] k [[Special:Log]]',
 	'newuserlog-byemail'       => 'Hesło z e-mejlku pósłane',
 	'newuserlog-create-entry'  => 'nowy wužiwar',
 	'newuserlog-create2-entry' => 'je konto za wužiwarja [[$1]] wutworił',
@@ -543,7 +557,7 @@ $messages['new'] = array(
 $messages['nl'] = array(
 	'newuserlogpage'           => 'Logboek nieuwe gebruikers',
 	'newuserlogpagetext'       => 'Hieronder staan de nieuw ingeschreven gebruikers',
-	'newuserlog-desc'          => 'Voegt een [[Special:Log/newusers|logboek nieuwe gebruikers toe]] toe aan de [[Special:Log|logboeken]]',
+	'newuserlog-desc'          => 'Voegt een [[Special:Log/newusers|logboek van nieuwe gebruikers]] toe aan de [[Special:Log|logboeken]]',
 	'newuserlog-byemail'       => 'wachtwoord is verzonden per e-mail',
 	'newuserlog-create-entry'  => 'Nieuwe gebruiker',
 	'newuserlog-create2-entry' => 'heeft gebruiker $1 ingeschreven',
@@ -607,6 +621,7 @@ $messages['pms'] = array(
 $messages['pt'] = array(
 	'newuserlogpage'           => 'Registo de criação de utilizadores',
 	'newuserlogpagetext'       => 'Este é um registo de novas contas de utilizador',
+	'newuserlog-desc'          => 'Adiciona um [[{{ns:special}}:Log/newusers|registo de criação de contas]] a [[{{ns:special}}:Log]]',
 	'newuserlog-byemail'       => 'palavra-chave enviada por correio-electrónico',
 	'newuserlog-create-entry'  => 'Novo utilizador',
 	'newuserlog-create2-entry' => 'criou conta para $1',
@@ -658,6 +673,7 @@ $messages['sah'] = array(
 $messages['sk'] = array(
 	'newuserlogpage'           => 'Záznam vytvorených používateľov',
 	'newuserlogpagetext'       => 'Toto je záznam naposledy vytvorených používateľských účtov',
+	'newuserlog-desc'          => 'Pridáva [[Special:Log/newusers|záznam vytvorených používateľov]] na stránku [[Special:Log]]',
 	'newuserlog-byemail'       => 'heslo poslané emailom',
 	'newuserlog-create-entry'  => 'Nový používateľ',
 	'newuserlog-create2-entry' => 'Bol vytvorený účet pre $1',
@@ -710,6 +726,7 @@ $messages['su'] = array(
 $messages['sv'] = array(
 	'newuserlogpage'           => 'Logg över nya användare',
 	'newuserlogpagetext'       => 'Detta är en logg över nyligen skapade användarkonton',
+	'newuserlog-desc'          => 'Lägger till en [[Special:Log/newusers|logg över nyskapade konton]] i [[Special:Log]]',
 	'newuserlog-byemail'       => 'lösenord skickat med e-post',
 	'newuserlog-create-entry'  => 'Ny användare',
 	'newuserlog-create2-entry' => 'skapade användarkonto för $1',
@@ -722,6 +739,7 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'newuserlogpage'           => 'కొత్త సభ్యుల లాగ్',
 	'newuserlogpagetext'       => 'ఇటీవలి కాలంలో నమోదైన సభ్యుల లాగ్ ఇది',
+	'newuserlog-desc'          => '[[Special:Log/newusers|కొత్త సభ్యుల లాగ్]]ను [[Special:Log]]కు కలుపుతుంది',
 	'newuserlog-byemail'       => 'ఈ-మెయిలులో సంకేతపదం పంపించాం',
 	'newuserlog-create-entry'  => 'కొత్త వాడుకరి',
 	'newuserlog-create2-entry' => '$1 కోసం ఖాతా సృష్టించాం.',
@@ -790,6 +808,7 @@ $messages['vec'] = array(
 $messages['vi'] = array(
 	'newuserlogpage'           => 'Nhật trình mở tài khoản',
 	'newuserlogpagetext'       => 'Đây là danh sách những tài khoản thành viên mở lên gần đây',
+	'newuserlog-desc'          => 'Thêm một [[Special:Log/newusers|nhật trình tạo tài khoản]] vào [[Special:Log|danh sách nhật trình]]',
 	'newuserlog-byemail'       => 'gửi mật khẩu qua thư điện tử',
 	'newuserlog-create-entry'  => 'Tài khoản mới',
 	'newuserlog-create2-entry' => 'đã tạo tài khoản mới với tên $1',

@@ -240,7 +240,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Seb35
  * @author Sherbrooke
- * @author Grondin
+ * @author SPQRobin
  */
 $messages['fr'] = array(
 	'usernameblacklist-desc'          => "Ajoute une [[MediaWiki:Usernameblacklist|liste noire des noms d'utilisateur]] pour restreindre la création des comptes d'utilisateurs faisant partie d'une ou plusieurs expressions régulières.",
@@ -638,12 +638,15 @@ $messages['pms'] = array(
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|La riga|Le righe}} ant la lista nèira dë stranòm ambelessì sota a {{PLURAL:$1|l\'é nen bon-a|son nen bon-a}}; për piasì, ch\'a-j daga deuit anans che salvé:',
 );
 
-/* Portuguese (Lugusto) */
+/** Portuguese (Português)
+ * @author Malafaya
+ * @author SPQRobin
+ */
 $messages['pt'] = array(
-	'blacklistedusername' => 'Nome de utilizador na lista negra',
-	'blacklistedusernametext' => 'O nome de utilizador selecionado é similar a um presente na [[MediaWiki:Usernameblacklist|
-lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
-	'usernameblacklist' => '<pre>
+	'usernameblacklist-desc'          => 'Adiciona uma [[MediaWiki:Usernameblacklist|lista negra de nomes de utilizador]] para restringir a criação de contas de utilizador que obedeçam a uma ou mais expressões regulares',
+	'blacklistedusername'             => 'Nome de utilizador na lista negra',
+	'blacklistedusernametext'         => 'O nome de utilizador seleccionado é semelhante a um presente na [[MediaWiki:Usernameblacklist|lista negra de nomes de utilizadores]]. Por favor, escolha outro nome.',
+	'usernameblacklist'               => '<pre>
 # As entradas nesta lista são usadas como parte de uma expressão regular
 # ao impedir utilizadores de se registarem. Cada item deverá ser parte
 # de uma lista com marcadores. Exemplo:
@@ -651,7 +654,7 @@ lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
 # * Algo
 # * [Ff]ulano
 </pre>',
-	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|A seguinte linha|As seguintes linhas}} da lista negra de nomes de utilizadores {{PLURAL:$1|é inválida|são inválidas}}; por gentileza, {{PLURAL:$1|a|as}} corrija antes de salvar as alterações:',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|A seguinte linha|As seguintes linhas}} da lista negra de nomes de utilizadores {{PLURAL:$1|é inválida|são inválidas}}; por favor,  corrija-{{PLURAL:$1|a|as}} antes de gravar as alterações:',
 );
 
 /** Quechua (Runa Simi)
@@ -711,6 +714,7 @@ $messages['sah'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
+	'usernameblacklist-desc'          => 'Pridáva [[MediaWiki:Usernameblacklist|čiernu listinu mien používateľov]], aby sa obmedzila tvorba používateľských účtov zodpovedajúcich jednému alebo viacerým regulárnym výrazom',
 	'blacklistedusername'             => 'Používateľské meno na čiernej listine',
 	'blacklistedusernametext'         => 'Používateľské meno, ktoré ste si zvolili sa nachádza na [[MediaWiki:Usernameblacklist|
 čiernej listine používateľských mien]]. Prosím, zvoľte si iné.',
@@ -748,11 +752,14 @@ $messages['su'] = array(
 	'blacklistedusernametext' => 'Ngaran pamaké nu dipilih cocog jeung [[MediaWiki:Usernameblacklist|ngaran pamaké nu dicorét]]. Mangga pilih ngaran séjén.',
 );
 
-/* Swedish */
+/** Swedish (Svenska)
+ * @author SPQRobin
+ */
 $messages['sv'] = array(
-	'blacklistedusername' => 'Svartlistat användarnamn',
-	'blacklistedusernametext' => 'Det användarnamn du vill använda är [[MediaWiki:Usernameblacklist|svartlistat]]. Välj ett annat namn.',
-	'usernameblacklist' => '<pre>
+	'usernameblacklist-desc'          => 'Lägger till en [[MediaWiki:Usernameblacklist|svart lista för användarnamn]] som hindrar användarkonton från att skapas om de matchar ett eller flera reguljära uttryck',
+	'blacklistedusername'             => 'Svartlistat användarnamn',
+	'blacklistedusernametext'         => 'Det användarnamn du vill använda är [[MediaWiki:Usernameblacklist|svartlistat]]. Välj ett annat namn.',
+	'usernameblacklist'               => '<pre>
 # Innehållet i den här listan används som del i ett reguljärt uttryck
 # för att förhindra användarnamn från att registreras.
 # Varje post i listan måste inledas med en asterisk (*); t.ex.
@@ -861,3 +868,4 @@ $messages['zh-hant'] = array(
 </pre>',
 	'usernameblacklist-invalid-lines' => '以下在用戶名黑名單中{{PLURAL:$1|一行|多行}}不正確；請於保存之前改正{{PLURAL:$1|它|它們}}:',
 );
+

@@ -120,6 +120,14 @@ $messages['el'] = array(
 	'talkhere-beforeinput' => 'Μπορείτε να προσθέσετε ένα σχόλιο παρακάτω',
 );
 
+/** Spanish (Español)
+ * @author Lin linao
+ */
+$messages['es'] = array(
+	'talkhere-talkpage'   => 'página de discusión',
+	'talkhere-addcomment' => 'agregar comentario',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */
@@ -393,3 +401,4 @@ $messages['zh-hant'] = array(
 	'talkhere-loading'     => '載入編輯器...',
 	'talkhere-collapse'    => '隱藏編輯器',
 );
+

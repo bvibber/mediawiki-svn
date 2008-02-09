@@ -106,8 +106,10 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Dead3y3
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'ajax-se-desc'    => 'Δείχνει στους χρήστες που επεξεργάζονται ποιος επεξεργάζεται την ίδια σελίδα',
 	'ajax-se-title'   => 'Τρέχουσα επεξεργασία:',
 	'ajax-se-pending' => 'εκκρεμή ανανέωση ... (κάντε κλικ σε αυτό το κουτί ή ξεκινήστε την επεξεργασία)',
 	'ajax-se-idling'  => '($1s πριν)',
@@ -271,6 +273,7 @@ $messages['kk-latn'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'ajax-se-desc'    => "Weist déi Benotzer déi amgaang sinn déi selwescht Säit z'änneren.",
 	'ajax-se-title'   => 'Elo geännert vum:',
 	'ajax-se-pending' => 'soll geännert ginn ... (klickt op dës Këscht oder fénkt u mat änneren)',
 	'ajax-se-idling'  => '(viru(n) $1 Sekonnen)',

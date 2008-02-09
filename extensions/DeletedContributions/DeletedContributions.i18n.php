@@ -393,8 +393,13 @@ $messages['uk'] = array(
 	'deletedcontributions' => 'Вилучені редагування користувачів',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ * @author SPQRobin
+ */
 $messages['vi'] = array(
-	'deletedcontributions' => 'Đóng góp đã bị xóa của thành viên',
+	'deletedcontributions'      => 'Đóng góp đã bị xóa của thành viên',
+	'deletedcontributions-desc' => 'Cung cấp cho sysop khả năng [[Special:DeletedContributions|xem các sửa đổi đã bị xóa của thành viên]]',
 );
 
 $messages['vo'] = array(
@@ -412,3 +417,4 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'deletedcontributions' => '已刪除的用戶貢獻',
 );
+

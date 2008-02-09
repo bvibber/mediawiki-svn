@@ -263,6 +263,13 @@ $messages['it'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Input non corretto.'
 );
 
+/** Kurdish (Latin) (Kurdî / كوردی (Latin))
+ * @author Bangin
+ */
+$messages['ku-latn'] = array(
+	'chemFunctions_Name' => 'Nava IUPAC',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -479,6 +486,13 @@ $messages['stq'] = array(
 	'chemFunctions_Formula'            => 'Formel',
 	'chemFunctions_Name'               => 'IUPAC Noome',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Iengoawe-Failer!',
+);
+
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'chemFunctions_Name' => 'IUPAC Namn',
 );
 
 /** Telugu (తెలుగు)

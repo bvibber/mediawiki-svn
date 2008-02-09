@@ -207,11 +207,18 @@ $messages['fi'] = array(
 	'sitematrix-others'   => 'Muut Wikimedian projektit',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ * @author Grondin
+ * @author Seb35
+ */
 $messages['fr'] = array(
-	'sitematrix' => 'Liste des wikis de Wikimedia Foundation',
-	'sitematrix-language' => 'Langue',
-	'sitematrix-project' => 'Nom du projet, lien interprojet et lien interwiki',
-	'sitematrix-others' => 'Autres projets de Wikimedia Foundation',
+	'sitematrix'           => 'Liste des wikis de Wikimedia Foundation',
+	'sitematrix-language'  => 'Langue',
+	'sitematrix-project'   => 'Nom du projet, lien interprojet et lien interwiki',
+	'sitematrix-others'    => 'Autres projets de Wikimedia Foundation',
+	'sitematrix-total'     => "'''Total du compte : $1'''",
+	'sitematrix-sitetotal' => 'Total',
 );
 
 $messages['frc'] = array(
@@ -265,11 +272,16 @@ $messages['hr'] = array(
 	'sitematrix-others' => 'Ostali projekti Wikimedije',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'sitematrix' => 'Lisćina wšěch wikijow we Wikimediji',
-	'sitematrix-language' => 'Rěč',
-	'sitematrix-project' => 'Projektowe mjeno, mjezyprojektowy wotkaz a mjezyrěčny wotkaz',
-	'sitematrix-others' => 'Dalše projekty we Wikimediji',
+	'sitematrix'           => 'Lisćina wšěch wikijow we Wikimediji',
+	'sitematrix-language'  => 'Rěč',
+	'sitematrix-project'   => 'Projektowe mjeno, mjezyprojektowy wotkaz a mjezyrěčny wotkaz',
+	'sitematrix-others'    => 'Dalše projekty we Wikimediji',
+	'sitematrix-total'     => "'''Cyłkowna ličba: $1'''",
+	'sitematrix-sitetotal' => 'Dohromady',
 );
 
 /** Hungarian (Magyar)
@@ -439,11 +451,16 @@ $messages['nds'] = array(
 	'sitematrix-language' => 'Spraak',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'sitematrix' => 'Lijst met Wikimedia-wiki\'s',
-	'sitematrix-language' => 'Taal',
-	'sitematrix-project' => 'Naam van het project, interprojectlink en interwikilink',
-	'sitematrix-others' => 'Andere projecten van Wikimedia',
+	'sitematrix'           => "Lijst met Wikimedia-wiki's",
+	'sitematrix-language'  => 'Taal',
+	'sitematrix-project'   => 'Naam van het project, interprojectlink en interwikilink',
+	'sitematrix-others'    => 'Andere projecten van Wikimedia',
+	'sitematrix-total'     => "'''Totaal aantal: $1'''",
+	'sitematrix-sitetotal' => 'Totaal',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -717,3 +734,4 @@ $messages['zh-tw'] = array(
 	'sitematrix-project'  => '計畫名稱、跨計畫連結以及跨維基連結',
 	'sitematrix-others'   => '維基媒體的其它計畫',
 );
+

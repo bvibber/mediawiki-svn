@@ -55,8 +55,12 @@ $messages['gl'] = array(
 	'eval_code'   => 'Código',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'eval'        => 'Wuhódnoćenje',
+	'eval-desc'   => 'Přidawa [[Special:Eval|interfejs]] k funkciji <code>eval()</code>',
 	'eval_submit' => 'Wuhódnoćić',
 	'eval_escape' => 'Wudaće přetorhnyć',
 	'eval_out'    => 'Wudaće',

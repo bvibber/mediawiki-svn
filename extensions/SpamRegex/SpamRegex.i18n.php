@@ -34,6 +34,14 @@ $messages['en'] = array(
 	'spamregex-summary-log' => '(Summary)',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ */
+$messages['af'] = array(
+	'spamregex-text'        => '(Teks)',
+	'spamregex-summary-log' => '(Opsomming)',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

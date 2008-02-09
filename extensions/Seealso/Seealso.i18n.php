@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'seealso' => 'See also',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ */
+$messages['af'] = array(
+	'seealso' => 'Sien ook',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

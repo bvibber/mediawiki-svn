@@ -216,6 +216,7 @@ $messages['ca'] = array(
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
+	'ogg-desc'                => 'Obsluha souborů Ogg Theora a Vorbis s JavaScriptovým přehrávačem',
 	'ogg-short-audio'         => 'Zvukový soubor ogg $1, $2',
 	'ogg-short-video'         => 'Videosoubor ogg $1, $2',
 	'ogg-short-general'       => 'Soubor média ogg $1, $2',
@@ -516,32 +517,37 @@ $messages['hr'] = array(
 	'ogg-desc-link' => 'O ovoj datoteci',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ * @author Dundak
+ */
 $messages['hsb'] = array(
-	'ogg-short-audio' => 'Awdiodataja Ogg $1, $2',
-	'ogg-short-video' => 'Widejodataja Ogg $1, $2',
-	'ogg-short-general' => 'Ogg medijowa dataja $1, $2',
-	'ogg-long-audio' => '(Ogg-awdiodataja $1, dołhosć: $2, $3)',
-	'ogg-long-video' => '(Ogg-widejodataja $1, dołhosć: $2, $4×$5 pikselow, $3)',
-	'ogg-long-multiplexed' => 'Ogg awdio-/widejodataja, $1, dołhosć: $2, $4×$5 pikselow, $3)',
-	'ogg-long-general' => '(Ogg medijowa dataja, dołhosć: $2, $3)',
-	'ogg-long-error' => '(Njepłaćiwa ogg-dataja: $1)',
-	'ogg-play' => 'Wothrać',
-	'ogg-pause' => 'Přestawka',
-	'ogg-stop' => 'Stój',
-	'ogg-play-video' => 'Widejo wothrać',
-	'ogg-play-sound' => 'Zynk wothrać',
-	'ogg-no-player' => 'Bohužel twój system po wšěm zdaću nima wothrawansku software. Prošu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">sćehń wothrawak</a>.',
-	'ogg-no-xiphqt' => 'Po wšěm zdaću nimaš komponentu XiphQT za QuickTime. QuickTime njemóže Ogg-dataje bjez tuteje komponenty wothrawać. Prošu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">sćehń XiphQT</a> abo wubjer druhi wothrawak.',
+	'ogg-desc'                => 'Wodźenski program za dataje Ogg Theora a Vorbis, z JavaScriptowym wothrawakom',
+	'ogg-short-audio'         => 'Awdiodataja Ogg $1, $2',
+	'ogg-short-video'         => 'Widejodataja Ogg $1, $2',
+	'ogg-short-general'       => 'Ogg medijowa dataja $1, $2',
+	'ogg-long-audio'          => '(Ogg-awdiodataja $1, dołhosć: $2, $3)',
+	'ogg-long-video'          => '(Ogg-widejodataja $1, dołhosć: $2, $4×$5 pikselow, $3)',
+	'ogg-long-multiplexed'    => 'Ogg awdio-/widejodataja, $1, dołhosć: $2, $4×$5 pikselow, $3)',
+	'ogg-long-general'        => '(Ogg medijowa dataja, dołhosć: $2, $3)',
+	'ogg-long-error'          => '(Njepłaćiwa ogg-dataja: $1)',
+	'ogg-play'                => 'Wothrać',
+	'ogg-pause'               => 'Přestawka',
+	'ogg-stop'                => 'Stój',
+	'ogg-play-video'          => 'Widejo wothrać',
+	'ogg-play-sound'          => 'Zynk wothrać',
+	'ogg-no-player'           => 'Bohužel twój system po wšěm zdaću nima wothrawansku software. Prošu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">sćehń wothrawak</a>.',
+	'ogg-no-xiphqt'           => 'Po wšěm zdaću nimaš komponentu XiphQT za QuickTime. QuickTime njemóže Ogg-dataje bjez tuteje komponenty wothrawać. Prošu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">sćehń XiphQT</a> abo wubjer druhi wothrawak.',
 	'ogg-player-videoElement' => 'Element <video>',
-	'ogg-player-oggPlugin' => 'Tykač Ogg',
-	'ogg-player-thumbnail' => 'Napohlad pokazać',
-	'ogg-player-soundthumb' => 'Žadyn wothrawak',
-	'ogg-player-selected' => '(wubrany)',
-	'ogg-use-player' => 'Wothrawak wubrać:',
-	'ogg-more' => 'Wjace ...',
-	'ogg-dismiss' => 'Začinić',
-	'ogg-download' => 'Dataju sćahnyć',
-	'ogg-desc-link' => 'Wo tutej dataji',
+	'ogg-player-oggPlugin'    => 'Tykač Ogg',
+	'ogg-player-thumbnail'    => 'Napohlad pokazać',
+	'ogg-player-soundthumb'   => 'Žadyn wothrawak',
+	'ogg-player-selected'     => '(wubrany)',
+	'ogg-use-player'          => 'Wothrawak wubrać:',
+	'ogg-more'                => 'Wjace ...',
+	'ogg-dismiss'             => 'Začinić',
+	'ogg-download'            => 'Dataju sćahnyć',
+	'ogg-desc-link'           => 'Wo tutej dataji',
 );
 
 /** Haitian (Kreyòl ayisyen)
@@ -866,7 +872,7 @@ $messages['nds'] = array(
  * @author SPQRobin
  */
 $messages['nl'] = array(
-	'ogg-desc'                => 'andelt Ogg Theora en Vorbis bestanden af met een JavaScript mediaspeler',
+	'ogg-desc'                => 'Handelt Ogg Theora- en Vorbis-bestanden af met een JavaScript-mediaspeler',
 	'ogg-short-audio'         => 'Ogg $1 geluidsbestand, $2',
 	'ogg-short-video'         => 'Ogg $1 videobestand, $2',
 	'ogg-short-general'       => 'Ogg $1 mediabestand, $2',
@@ -1061,6 +1067,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'ogg-desc'                => 'Manuseador para ficheiros Ogg Theora e Vorbis, com reprodutor JavaScript',
 	'ogg-short-audio'         => 'Áudio Ogg $1, $2',
 	'ogg-short-video'         => 'Vídeo Ogg $1, $2',
 	'ogg-short-general'       => 'Multimédia Ogg $1, $2',
@@ -1168,32 +1175,36 @@ $messages['sah'] = array(
 	'ogg-desc-link'           => 'Бу билэ туһунан',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
-	'ogg-short-audio' => 'Zvukový súbor ogg $1, $2',
-	'ogg-short-video' => 'Video súbor ogg $1, $2',
-	'ogg-short-general' => 'Multimediálny súbor ogg $1, $2',
-	'ogg-long-audio' => '(Zvukový súbor ogg $1, dĺžka $2, $3)',
-	'ogg-long-video' => '(Video súbor ogg $1, dĺžka $2, $3)',
-	'ogg-long-multiplexed' => '(Multiplexovaný zvukový/video súbor ogg, $1, dĺžka $2, $4×$5 pixelov, $3 celkom)',
-	'ogg-long-general' => '(Multimediálny súbor ogg $1, dĺžka $2, $3)',
-	'ogg-long-error' => '(Neplatný súbor ogg: $1)',
-	'ogg-play' => 'Prehrať',
-	'ogg-pause' => 'Pozastaviť',
-	'ogg-stop' => 'Zastaviť',
-	'ogg-play-video' => 'Prehrať video',
-	'ogg-play-sound' => 'Prehrať zvuk',
-	'ogg-no-player' => 'Prepáčte, zdá sa, že váš systém nemá žiadny podporovaný softvér na prehrávanie. Prosím, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">stiahnite si prehrávač</a>.',
-	'ogg-no-xiphqt' => 'Zdá sa, že nemáte komponent QuickTime XiphQT. QuickTime nedokáže prehrávať ogg súbory bez tohto komponentu. Prosím, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">stiahnite si XiphQT</a> alebo si vyberte iný prehrávač.',
+	'ogg-desc'                => 'Obsluha súborov Ogg Theora a Vorbis s JavaScriptovým prehrávačom',
+	'ogg-short-audio'         => 'Zvukový súbor ogg $1, $2',
+	'ogg-short-video'         => 'Video súbor ogg $1, $2',
+	'ogg-short-general'       => 'Multimediálny súbor ogg $1, $2',
+	'ogg-long-audio'          => '(Zvukový súbor ogg $1, dĺžka $2, $3)',
+	'ogg-long-video'          => '(Video súbor ogg $1, dĺžka $2, $3)',
+	'ogg-long-multiplexed'    => '(Multiplexovaný zvukový/video súbor ogg, $1, dĺžka $2, $4×$5 pixelov, $3 celkom)',
+	'ogg-long-general'        => '(Multimediálny súbor ogg $1, dĺžka $2, $3)',
+	'ogg-long-error'          => '(Neplatný súbor ogg: $1)',
+	'ogg-play'                => 'Prehrať',
+	'ogg-pause'               => 'Pozastaviť',
+	'ogg-stop'                => 'Zastaviť',
+	'ogg-play-video'          => 'Prehrať video',
+	'ogg-play-sound'          => 'Prehrať zvuk',
+	'ogg-no-player'           => 'Prepáčte, zdá sa, že váš systém nemá žiadny podporovaný softvér na prehrávanie. Prosím, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">stiahnite si prehrávač</a>.',
+	'ogg-no-xiphqt'           => 'Zdá sa, že nemáte komponent QuickTime XiphQT. QuickTime nedokáže prehrávať ogg súbory bez tohto komponentu. Prosím, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">stiahnite si XiphQT</a> alebo si vyberte iný prehrávač.',
 	'ogg-player-videoElement' => 'element <video>',
-	'ogg-player-oggPlugin' => 'zásovný modul ogg',
-	'ogg-player-thumbnail' => 'iba nepohyblivý obraz',
-	'ogg-player-soundthumb' => 'žiadny prehrávač',
-	'ogg-player-selected' => '(vybraný)',
-	'ogg-use-player' => 'Použiť prehrávač:',
-	'ogg-more' => 'viac...',
-	'ogg-dismiss' => 'Zatvoriť',
-	'ogg-download' => 'Stiahnuť súbor',
-	'ogg-desc-link' => 'O tomto súbore',
+	'ogg-player-oggPlugin'    => 'zásovný modul ogg',
+	'ogg-player-thumbnail'    => 'iba nepohyblivý obraz',
+	'ogg-player-soundthumb'   => 'žiadny prehrávač',
+	'ogg-player-selected'     => '(vybraný)',
+	'ogg-use-player'          => 'Použiť prehrávač:',
+	'ogg-more'                => 'viac...',
+	'ogg-dismiss'             => 'Zatvoriť',
+	'ogg-download'            => 'Stiahnuť súbor',
+	'ogg-desc-link'           => 'O tomto súbore',
 );
 
 /** ћирилица (ћирилица)
@@ -1243,39 +1254,41 @@ Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"
 	'ogg-desc-link'           => 'Uur disse Doatäi',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
 $messages['sv'] = array(
-	'ogg-short-audio'      => 'Ogg $1 ljudfil, $2',
-	'ogg-short-video'      => 'Ogg $1 videofil, $2',
-	'ogg-short-general'    => 'Ogg $1 mediafil, $2',
-	'ogg-long-audio'       => '(Ogg $1 ljudfil, längd $2, $3)',
-	'ogg-long-video'       => '(Ogg $1 videofil, längd $2, $4×$5 pixel, $3)',
-	'ogg-long-multiplexed' => '(Ogg multiplexad ljud/video-fil, $1, längd $2, $4×$5 pixel, $3 totalt)',
-	'ogg-long-general'     => '(Ogg mediafil, längd $2, $3)',
-	'ogg-long-error'       => '(Felaktig ogg-fil: $1)',
-	'ogg-play'             => 'Spela upp',
-	'ogg-pause'            => 'Pausa',
-	'ogg-stop'             => 'Stoppa',
-	'ogg-play-video'       => 'Spela upp video',
-	'ogg-play-sound'       => 'Spela upp ljud',
-	'ogg-no-player'        => 'Tyvärr verkar det inte finnas någon mediaspelare som stöds installerad i ditt system. ' .
-		'Det finns <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">spelare att ladda ner</a>.',
-	'ogg-no-xiphqt'        => 'Du verkar inte ha XiphQT-komponenten för QuickTime. Utan den kan inte QuickTime spela upp ogg-filer.' .
-		'Du kan <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ladda ner XiphQT</a> eller välja någon annan spelare.',
-
+	'ogg-desc'                => 'Stöder filtyperna Ogg Theora och Ogg Vorbis med en JavaScript-baserad mediaspelare',
+	'ogg-short-audio'         => 'Ogg $1 ljudfil, $2',
+	'ogg-short-video'         => 'Ogg $1 videofil, $2',
+	'ogg-short-general'       => 'Ogg $1 mediafil, $2',
+	'ogg-long-audio'          => '(Ogg $1 ljudfil, längd $2, $3)',
+	'ogg-long-video'          => '(Ogg $1 videofil, längd $2, $4×$5 pixel, $3)',
+	'ogg-long-multiplexed'    => '(Ogg multiplexad ljud/video-fil, $1, längd $2, $4×$5 pixel, $3 totalt)',
+	'ogg-long-general'        => '(Ogg mediafil, längd $2, $3)',
+	'ogg-long-error'          => '(Felaktig ogg-fil: $1)',
+	'ogg-play'                => 'Spela upp',
+	'ogg-pause'               => 'Pausa',
+	'ogg-stop'                => 'Stoppa',
+	'ogg-play-video'          => 'Spela upp video',
+	'ogg-play-sound'          => 'Spela upp ljud',
+	'ogg-no-player'           => 'Tyvärr verkar det inte finnas någon mediaspelare som stöds installerad i ditt system. Det finns <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">spelare att ladda ner</a>.',
+	'ogg-no-xiphqt'           => 'Du verkar inte ha XiphQT-komponenten för QuickTime. Utan den kan inte QuickTime spela upp ogg-filer.Du kan <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ladda ner XiphQT</a> eller välja någon annan spelare.',
 	'ogg-player-videoElement' => '<video>-element',
-	'ogg-player-oggPlugin' => 'Ogg-plugin',
-	'ogg-player-thumbnail' => 'Endast stillbilder',
-	'ogg-player-soundthumb' => 'Ingen spelare',
-	'ogg-player-selected'  => '(vald)',
-	'ogg-use-player'       => 'Välj mediaspelare: ',
-	'ogg-more'             => 'Alternativ...',
-	'ogg-dismiss'          => 'Stäng',
-	'ogg-download'         => 'Ladda ner filen',
-	'ogg-desc-link'        => 'Om filen',
+	'ogg-player-oggPlugin'    => 'Ogg-plugin',
+	'ogg-player-thumbnail'    => 'Endast stillbilder',
+	'ogg-player-soundthumb'   => 'Ingen spelare',
+	'ogg-player-selected'     => '(vald)',
+	'ogg-use-player'          => 'Välj mediaspelare: ',
+	'ogg-more'                => 'Alternativ...',
+	'ogg-dismiss'             => 'Stäng',
+	'ogg-download'            => 'Ladda ner filen',
+	'ogg-desc-link'           => 'Om filen',
 );
 
 /** Telugu (తెలుగు)
  * @author Veeven
+ * @author వైజాసత్య
  */
 $messages['te'] = array(
 	'ogg-short-audio'         => 'Ogg $1 శ్రావ్యక ఫైలు, $2',
@@ -1290,7 +1303,9 @@ $messages['te'] = array(
 	'ogg-player-videoElement' => '<video> మూలకం',
 	'ogg-player-oggPlugin'    => 'Ogg ప్లగిన్',
 	'ogg-player-thumbnail'    => 'నిచ్చల చిత్రాలు మాత్రమే',
+	'ogg-player-soundthumb'   => 'ప్లేయర్ లేదు',
 	'ogg-player-selected'     => '(ఎంచుకున్నారు)',
+	'ogg-use-player'          => 'ప్లేయర్ ఉపయోగించు:',
 	'ogg-more'                => 'మరిన్ని...',
 	'ogg-dismiss'             => 'మూసివేయి',
 	'ogg-download'            => 'ఫైలుని దిగుమతి చేసుకోండి',

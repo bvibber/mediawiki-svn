@@ -82,7 +82,9 @@ $messages['hu'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'protectsection_forbidden' => 'Verbueden',
+	'protectsection_add_remove' => 'Dir hutt versicht, e protegéierten Abschnitt derbäizesetzen oder ze läschen.',
+	'protectsection_modify'     => "Dir hutt versicht fir protegéierten Text z'änneren.",
+	'protectsection_forbidden'  => 'Verbueden',
 );
 
 $messages['nl'] = array(

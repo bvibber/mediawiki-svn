@@ -45,6 +45,13 @@ $messages['en'] = array(
 	'formsaveerrortext' => 'There was an unknown error saving page \'$1\'.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ */
+$messages['af'] = array(
+	'formsave' => 'Stoor',
+);
+
 $messages['ar'] = array(
 	'form' => 'استمارة',
 	'formnoname' => 'لا اسم استمارة',

@@ -23,6 +23,13 @@ $messages['bg'] = array(
 	'charinsert-desc' => 'Позволява създаването на Джаваскрипт-кутия за вмъкване на нестандартни символи',
 );
 
+/** Czech (Česky)
+ * @author Li-sung
+ */
+$messages['cs'] = array(
+	'charinsert-desc' => 'Umožňuje vytvoření JavaScriptového políčka, které zjednodušuje vkládání neobvyklých znaků',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

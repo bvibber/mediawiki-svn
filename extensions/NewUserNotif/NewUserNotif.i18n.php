@@ -167,6 +167,15 @@ $messages['stq'] = array(
 N näi Benutserkonto, $2, wuude ap n $4 ap $3 anlaid.',
 );
 
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'newusernotifbody' => 'Hej $1,
+
+Ett nytt användar konto, $2, har skapats på $3 som $4.',
+);
+
 $messages['tet'] = array(
 	'newusernotifsubj' => 'Mensajen kona-ba uza-na\'in foun ba $1',
 	'newusernotifbody' => 'Olá $1,\n\nuza-na\'in foun, $2, registrar tiha iha $3 iha loron $4.',

@@ -501,19 +501,21 @@ $messages['ps'] = array(
 	'imagemap_description' => 'ددې انځور په اړه',
 );
 
-/* Portuguese (Lugusto) */
+/** Portuguese (Português)
+ * @author Malafaya
+ */
 $messages['pt'] = array(
-	'imagemap_no_image'             => '&lt;imagemap&gt;: é necessário especificar uma imagem na primeira linha',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;: imagem inválida ou inexistente',
-	'imagemap_no_link'              => '&lt;imagemap&gt;: não foi encontrado um link válido ao final da linha $1',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: título inválido no link da linha $1',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: coordenadas insuficientes para formar uma figura na linha $1',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: figura não reconhecida na linha $1. Cada linha precisa iniciar com: '.
-								   'default, rect, circle ou poly',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;: é necessário fornecer ao menos uma especificação de área',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: coordenada inválida na linha $1. 0 necessário que seja um número',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: especificação desc inválida. 0 necessário que seja uma dentre: <tt>$1</tt>',
-	'imagemap_description'          => 'Sobre esta imagem',
+	'imagemap_desc'               => 'Permite mapas de imagem clicáveis no lado do cliente usando a "tag" <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: é necessário especificar uma imagem na primeira linha',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: imagem inválida ou inexistente',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: não foi encontrado um link válido ao final da linha $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: título inválido no link da linha $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: coordenadas insuficientes para formar uma figura na linha $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: figura não reconhecida na linha $1. Cada linha precisa iniciar com: default, rect, circle ou poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: é necessário fornecer ao menos uma especificação de área',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: coordenada inválida na linha $1. 0 necessário que seja um número',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: especificação desc inválida. 0 necessário que seja uma dentre: <tt>$1</tt>',
+	'imagemap_description'        => 'Sobre esta imagem',
 );
 
 /** Quechua (Runa Simi)
@@ -555,19 +557,21 @@ $messages['sah'] = array(
 	'imagemap_description'        => 'Ойуу туһунан',
 );
 
-/* Slovak (helix84) */
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
-	'imagemap_no_image'             => '&lt;imagemap&gt;: musí mať na prvom riadku uvedený obrázok',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;: obrázok je neplatný alebo neexistuje',
-	'imagemap_no_link'              => '&lt;imagemap&gt;: na konci riadka $1 nebol nájdený platný odkaz',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: neplatný nadpis v odkaze na riadku $1',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: nedostatok súradníc na vytvorenie tvaru na riadku $1',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: nerozpoznaný tvar na riadku $1, každý riadok musí začínať jedným z: '.
-								   'default, rect, circle alebo poly',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;: musí byť zadaná najmenej jedna špecifikácia oblasti',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: neplatná súradnica na riadku $1, musí to byť číslo',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: neplatný popis, musí byť jedno z nasledovných: $1',
-	'imagemap_description'          => 'O tomto obrázku',
+	'imagemap_desc'               => 'Poskytuje klikateľné obrázkové mapy spracúvané na strane klienta pomocou značky <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: musí mať na prvom riadku uvedený obrázok',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: obrázok je neplatný alebo neexistuje',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: na konci riadka $1 nebol nájdený platný odkaz',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: neplatný nadpis v odkaze na riadku $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: nedostatok súradníc na vytvorenie tvaru na riadku $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: nerozpoznaný tvar na riadku $1, každý riadok musí začínať jedným z: default, rect, circle alebo poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: musí byť zadaná najmenej jedna špecifikácia oblasti',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: neplatná súradnica na riadku $1, musí to byť číslo',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: neplatný popis, musí byť jedno z nasledovných: $1',
+	'imagemap_description'        => 'O tomto obrázku',
 );
 
 /** ћирилица (ћирилица)
@@ -593,21 +597,21 @@ $messages['stq'] = array(
 	'imagemap_description'        => 'Uur disse Bielde',
 );
 
-/* Swedish */
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
 $messages['sv'] = array(
-	'imagemap_no_image'             => '&lt;imagemap&gt;: en bild måste anges på första raden',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;: bilden är ogiltig eller existerar inte',
-	'imagemap_no_link'              => '&lt;imagemap&gt;: ingen giltig länk fanns i slutet av rad $1',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: felaktig titel i länken på rad $1',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: koordinater saknas för området på rad $1',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: okänd områdesform på rad $1, varje rad måste börja med något av följande: '.
-								   '<tt>default, rect, circle, poly</tt>',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;: minst ett område måste specificeras',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: ogiltig koordinat på rad $1, koordinater måste vara tal',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: ogiltig specifikation av desc, den måste var en av följande: <tt>$1</tt>',
-	'imagemap_description'          => 'Bildinformation',
-	# Note to translators: keep the same order
-	'imagemap_desc_types'           => 'uppe till höger, nere till höger, nere till vänster, uppe till vänster, ingen',
+	'imagemap_desc'               => 'Tillåt klient-sid klickbara bild kartor använande <tt><nowiki><imagemap></nowiki></tt> tillägget',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: en bild måste anges på första raden',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: bilden är ogiltig eller existerar inte',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: ingen giltig länk fanns i slutet av rad $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: felaktig titel i länken på rad $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: koordinater saknas för området på rad $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: okänd områdesform på rad $1, varje rad måste börja med något av följande: <tt>default, rect, circle, poly</tt>',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: minst ett område måste specificeras',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: ogiltig koordinat på rad $1, koordinater måste vara tal',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: ogiltig specifikation av desc, den måste var en av följande: <tt>$1</tt>',
+	'imagemap_description'        => 'Bildinformation',
 );
 
 /** Telugu (తెలుగు)
@@ -622,6 +626,13 @@ $messages['te'] = array(
 
 $messages['tet'] = array(
 	'imagemap_description'          => 'Kona-ba imajen ne\'e',
+);
+
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'imagemap_description' => 'Дар бораи ин акс',
 );
 
 /** Turkish (Türkçe)

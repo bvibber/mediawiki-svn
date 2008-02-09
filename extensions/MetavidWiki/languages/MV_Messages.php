@@ -1481,11 +1481,13 @@ Alebo môžete <a href="$3">Pridať stream</a>.',
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'mv_play'       => 'Spela',
-	'mv_edit'       => 'Redigera',
-	'mv_history'    => 'Historik',
-	'mv_search_and' => 'och',
-	'mv_search_or'  => 'eller',
-	'mv_category'   => 'kategori',
+	'mv_tool_export' => 'Exportera',
+	'mv_play'        => 'Spela',
+	'mv_edit'        => 'Redigera',
+	'mv_history'     => 'Historik',
+	'mv_edit_title'  => 'Redigera Text',
+	'mv_search_and'  => 'och',
+	'mv_search_or'   => 'eller',
+	'mv_category'    => 'kategori',
 );
 

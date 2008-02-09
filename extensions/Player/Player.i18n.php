@@ -350,3 +350,19 @@ $messages['stq'] = array(
 	'player-goto-file'        => 'Doatäi',
 );
 
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'player'               => 'Spelare',
+	'player-title'         => 'Spelare',
+	'player-playertitle'   => 'Spelare: $1',
+	'player-file'          => 'Fil namn',
+	'player-play'          => 'Spela',
+	'player-invalid-title' => 'ogiltig titel',
+	'player-clicktoplay'   => 'Spela $1',
+	'player-goto-player'   => 'spelare',
+	'player-goto-page'     => 'Sida',
+	'player-goto-file'     => 'fil',
+);
+

@@ -99,6 +99,15 @@ $messages['stq'] = array(
 	'signaturelogentry'    => 'häd dät Dokument $1 unnerschrieuwen',
 );
 
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'signaturelogpage'     => 'Signatur Logg',
+	'signaturelogpagetext' => 'Detta är en logg över alla signaturer tillaggda till dokument via [[Special:SignDocument]].',
+	'signaturelogentry'    => 'signera dokumentet $1',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */
@@ -125,3 +134,4 @@ $messages['zh-hant'] = array(
 	'signaturelogpagetext'  => '這個是所有經過[[Special:SignDocument]]簽署文件的日誌。',
 	'signaturelogentry'     => '已經簽署$1文件',
 );
+

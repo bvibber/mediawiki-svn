@@ -304,7 +304,12 @@ $messages['hr'] = array(
 	'createarticle'           => 'Stvori članak',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Dundak
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
+	'inputbox-desc'           => 'Zapřijeće předdefinowanych HTML-formularow dowolić.',
 	'inputbox-error-no-type'  => 'Njesy typ zapodatneho kašćika podał.',
 	'inputbox-error-bad-type' => 'Typ zapodatneho kašćika "$1" je njeznaty. Prošu podaj płaćiwy typ: "create", "comment", "search" abo "search2".',
 	'tryexact'                => 'Dokładne pytanje spytać',
@@ -515,6 +520,7 @@ $messages['ne'] = array(
  * @author SPQRobin
  */
 $messages['nl'] = array(
+	'inputbox-desc'           => 'Maakt het toevoegen van voorgedefinieerde HTML-formulieren mogelijk',
 	'inputbox-error-no-type'  => 'U heeft het type inputbox niet aangegeven. Zie [http://www.mediawiki.org/wiki/Extension:Inputbox MediaWiki.org] voor meer informatie.',
 	'inputbox-error-bad-type' => 'Inputbox-type "$1" niet herkend. Gebruik "create", "comment", "search" of "search2".',
 	'tryexact'                => 'Zoeken op exacte overeenkomst',
@@ -733,6 +739,13 @@ $messages['te'] = array(
 	'createarticle'  => 'వ్యాసాన్ని సృష్టించు',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'createarticle' => 'Эҷоди мақола',
+);
+
 $messages['th'] = array(
 	'tryexact'       => 'ค้นหาตรงทุกตัวอักษร',
 	'searchfulltext' => 'ค้นหาข้อมูล',
@@ -856,3 +869,4 @@ $messages['zh-hant'] = array(
 $messages['zu'] = array(
 	'searchfulltext' => 'Sesha ukubhala konke',
 );
+

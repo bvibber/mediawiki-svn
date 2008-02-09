@@ -681,8 +681,30 @@ $messages['eo'] = array(
 	'boardvote_welcome' => "Bonvenon '''$1'''!",
 );
 
+/** Spanish (Español)
+ * @author Lin linao
+ */
 $messages['es'] = array(
-	'boardvote_redirecting'   => 'Para mejorar la seguridad y la transparencia, la votación se está realizando en un servidor externo y controlado independientemente.
+	'boardvote'              => 'Elección del Consejo de Administración de la Fundación Wikimedia',
+	'boardvote-desc'         => '[[meta:Board elections|Elección del Consejo de Administración de la Fundación Wikimedia]]',
+	'boardvote_intro'        => '<p>Bienvenido a la segunda elección del Consejo de Administración de la Fundación Wikimedia. Estamos votando por dos personas para que representen a la comunidad de usuarios de todos los proyectos de Wikimedia. Los dos candidatos elegidos yudarán a determinar la dirección que tomarán en el futuro los proyectos de Wikimedia, individualmente y como grupo, y representan <em>tus</em> intereses y preocupaciones ante el Consejo de Administración. Ellos decidirán la forma de obtener financiamiento y el destino del dinero recaudado.</p>
+
+<p>Por favor, antes de votar lee cuidadosamente las afirmaciones de los candidatos y sus respuestas a las consultas. Cada uno de ellos es un usuario respetado, que ha contribuido con mucho tiempo y esfuerzo para crear en estos proyectos un buen ambiente agradable destinado a la promoción y libre distribución del conocimiento humano.</p>
+
+<p>Puedes votar por tantos candidatos como desees. El candidato que acumule la mayor cantidad de votos en cada posición será considerado el ganador en esa posición. En caso de igual cantidad de votos en un puesto, se llevará a cabo una votación para desempatar.</p>
+
+<p>Para más información, lee:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">Election FAQ</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006" class="external">Candidates</a></li></ul>',
+	'boardvote_notloggedin'  => 'No has iniciado sesión. Para votar, debes tener una cuenta con al menos $1 contribuciones antes del $2 y haber hecho la primera edición antes del $3.',
+	'boardvote_notqualified' => 'No cumples con los requisitos para votar en esta elección. Necesitas tener $3 ediciones antes del $2 y haber hecho tu primera edición antes del $5.',
+	'boardvote_user'         => 'Usuario',
+	'boardvote_edits'        => 'Ediciones',
+	'boardvote_ip'           => 'IP',
+	'boardvote_dumplink'     => 'Haz click aquí',
+	'boardvote_notstarted'   => 'La votación todavía no ha comenzado',
+	'boardvote_welcome'      => "¡Bienvenido, '''$1'''!",
+	'boardvote_redirecting'  => 'Para mejorar la seguridad y la transparencia, la votación se está realizando en un servidor externo y controlado independientemente.
 
 Serás redireccionado a este servidor externo en 20 segundos. [$1 Haz click aquí] para ir ahora.
 
@@ -3086,7 +3108,22 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
-	'boardvote_entered'    => 'Аз шумо миннатдорем, раъйи шумо сабт шуд.
+	'boardvote'              => 'Интихоботи Ҳайати Амнои Викимедиа',
+	'boardvote-desc'         => '[[meta:Board elections|Интихоботи Ҳайати Амнои Викимедиа]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Раъй додан]]
+* [[Special:Boardvote/list|Феҳристи раъй то кунун]]
+* [[Special:Boardvote/dump|Феҳристи рамзнигорӣ шудаи интихобот]]',
+	'boardvote_intro'        => '<p>Ба дувумин интихоботи Ҳайати Амнои Викимедиа хуш омадед. Мо барои интихоби ду нафар намояндаи ҷомеаъ и корбарони лоиҳаҳои мухталифи Викимедиа раъй медиҳем. Онҳо дар таъйини ҷаҳтгириҳои баъдии лоиҳаҳои Викимедиа, ба танҳои ва ба унвони як гурӯҳ, кӯмак мекунанд. Дар мавриди роҳҳои касбии худ шавқу ҳавас ва нигарониҳои <em>шуморо</em> ба Ҳайати Амно намояндагӣ мекунанд. Онҳо даромад ва сарфи роҳҳои сарфи он ва афзудани онро ҳалу фасл менамоянд.</p>
+
+<p>Лутфан, қабл аз раъй додан изҳороти ҳар намоянда ва посухҳояш ба пурсишҳоро бо диққат бихонед. Ҳар яке аз намояндаҳо як фарди мӯҳтарам аст, ки вақт ва қувваи зиёдеро сарфи табдили ин лоиҳаҳо ба муҳити гарм ки муттаҳид ба ҷамъовари ва паҳн кардани дониши озод ба башарият аст, карда аст.</p>
+
+<p>Шумо метавонед ба ҳар теъдоди номзад, ки мехоҳед раъй бидиҳед. Номзаде бо бештарин раъй дар ҳар мақом, ғолиби ҳамон мақом хоҳад гашт. Дар ҳолате, ки раъйи чанд номзадҳо баробар шавад, раъйгирии дигаре барои онҳо анҷом хоҳад шуд.</p>
+
+<p>Барои иттилооти бештар, нигаред:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">Пурсишҳо дар мавриди Интихобот</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006" class="external">Номзадҳо</a></li></ul>',
+	'boardvote_intro_change' => '<p>Шумо пеш аз ин раъй додаед. Бо ин ҳол метавонед бо истифода аз форми зерин раъйи худро тағйир диҳед. Лутфан ҷабъаи канори номи номзадҳое, ки мавриди қабулатон ҳастанд аломати раъй бизанед.</p>',
+	'boardvote_entered'      => 'Аз шумо миннатдорем, раъйи шумо сабт шуд.
 
 Агар майл дошта бошед, шумо метавонед тавзеҳоти зеринро барои бойгонӣ нигоҳ доред. Раъйи шумо чунин сабт шудааст:
 
@@ -3101,22 +3138,28 @@ $messages['tg'] = array(
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Бозгашт]]',
-	'boardvote_novotes'    => 'Ҳанӯз касе раъй надодааст.',
-	'boardvote_time'       => 'Вақт',
-	'boardvote_user'       => 'Корбар',
-	'boardvote_edits'      => 'Вироишҳо',
-	'boardvote_days'       => 'Рӯзҳо',
-	'boardvote_ip'         => 'Нишонаи IP',
-	'boardvote_ua'         => 'Амали корбар (user agent)',
-	'boardvote_listintro'  => '<p>Ин феҳристи тамоми раъйҳои сабтшуда то кунун аст. $1 барои додаҳои рамзгузоришуда.</p>',
-	'boardvote_dumplink'   => 'Инҷо клик кунед',
-	'boardvote_strike'     => 'Хат задан',
-	'boardvote_unstrike'   => 'Ах хат задан озод кардан',
-	'boardvote_needadmin'  => 'Фақат мудирони интихобот метавонанд ин коро анҷом диҳанд',
-	'boardvote_notstarted' => 'Раъйпурсӣ ҳануз шурӯъ нашудааст',
-	'boardvote_edits_many' => 'бисёр',
-	'boardvote_blocked'    => 'Мутаасифона, дастрасии шумо дар викии мавриди назар қатъ шудааст. Корбароне, ки дастрасиашон қатъ шудааст, иҷозати раъй додан надоранд.',
-	'boardvote_welcome'    => "Хуш омадед '''$1'''!",
+	'boardvote_nosession'    => 'Система қодир ба ташхиси номи корбарии шумо дар Викимедиа нест. Лутфан ба викие, ки дар он миҷоз ба раъй додан ҳастед ворид шавед, ва ба он шумо бояд аз як ҳисоби корбарӣ истифода кунед, ки ҳадди ақал $1 ҳиссагузорӣ пеш аз $2 дошта бошад, ва аввалин вироиш тавассути он пеш аз $3 анҷом шуда бошад.',
+	'boardvote_novotes'      => 'Ҳанӯз касе раъй надодааст.',
+	'boardvote_time'         => 'Вақт',
+	'boardvote_user'         => 'Корбар',
+	'boardvote_edits'        => 'Вироишҳо',
+	'boardvote_days'         => 'Рӯзҳо',
+	'boardvote_ip'           => 'Нишонаи IP',
+	'boardvote_ua'           => 'Амали корбар (user agent)',
+	'boardvote_listintro'    => '<p>Ин феҳристи тамоми раъйҳои сабтшуда то кунун аст. $1 барои додаҳои рамзгузоришуда.</p>',
+	'boardvote_dumplink'     => 'Инҷо клик кунед',
+	'boardvote_submit'       => 'Таъйид',
+	'boardvote_strike'       => 'Хат задан',
+	'boardvote_unstrike'     => 'Ах хат задан озод кардан',
+	'boardvote_needadmin'    => 'Фақат мудирони интихобот метавонанд ин коро анҷом диҳанд',
+	'boardvote_notstarted'   => 'Раъйпурсӣ ҳануз шурӯъ нашудааст',
+	'boardvote_edits_many'   => 'бисёр',
+	'group-boardvote'        => 'Мудирияти интихоботи ҳайати амно',
+	'group-boardvote-member' => 'Мудири интихоботи ҳайати амно',
+	'grouppage-boardvote'    => '{{ns:project}}:Мудири интихоботи ҳайати амно',
+	'boardvote_blocked'      => 'Мутаасифона, дастрасии шумо дар викии мавриди назар қатъ шудааст. Корбароне, ки дастрасиашон қатъ шудааст, иҷозати раъй додан надоранд.',
+	'boardvote_welcome'      => "Хуш омадед '''$1'''!",
+	'go_to_board_vote'       => 'Интихоботи соли 2007 Ҳайати Амнои Викимедиа',
 );
 
 /** Tonga (faka-Tonga)
