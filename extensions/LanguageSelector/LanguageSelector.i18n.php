@@ -11,7 +11,8 @@ $messages = array();
  * @author SPQRobin
 */
 $messages['en'] = array(
-	'languageselector' => 'Language',
+	'languageselector'         => 'Language',
+	'languageselector-desc'    => 'Language selector on every page, also for visitors',
 	'languageselector-setlang' => 'set',
 );
 
@@ -96,7 +97,8 @@ $messages['fi'] = array(
  * @author Bertrand GRONDIN
 */
 $messages['fr'] = array(
-	'languageselector' => 'Langue',
+	'languageselector'         => 'Langue',
+	'languageselector-desc'    => 'Sélecteur de langue sur chaque page, même pour les visiteurs.',
 	'languageselector-setlang' => 'Définir',
 );
 

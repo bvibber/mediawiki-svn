@@ -22,10 +22,11 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionCredits['other'][] = array( 
-	'name' => 'LanguageSelector', 
-	'author' => 'Daniel Kinzler', 
-	'url' => 'http://mediawiki.org/wiki/Extension:LanguageSelector',
-	'description' => 'language selector on every page, also for visitors',
+	'name'           => 'Language Selector', 
+	'author'         => 'Daniel Kinzler', 
+	'url'            => 'http://mediawiki.org/wiki/Extension:LanguageSelector',
+	'description'    => 'language selector on every page, also for visitors',
+	'descriptionmsg' => 'languageselector-desc',
 );
 
 define( 'LANGUAGE_SELECTOR_USE_CONTENT_LANG',    0 ); #no detection
