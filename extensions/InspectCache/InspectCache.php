@@ -11,11 +11,12 @@ if (!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['specialpage'][] = array(
-	'version'     => '0.2',
-	'name'        => 'InspectCache',
-	'author'      => 'Tim Starling, Brion Vibber',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:InspectCache',
-	'description' => 'A simple debugging tool to inspect the contents of the shared cache',
+	'version'        => '0.2',
+	'name'           => 'InspectCache',
+	'author'         => 'Tim Starling, Brion Vibber',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:InspectCache',
+	'description'    => 'A simple debugging tool to inspect the contents of the shared cache',
+	'descriptionmsg' => 'inspectcache-desc',
 );
 
 $dir = dirname(__FILE__) . '/';

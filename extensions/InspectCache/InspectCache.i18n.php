@@ -8,15 +8,16 @@
 $messages = array();
 
 $messages['en'] = array(
-	'inspectcache' => 'Inspect Cache',
-	'inspectcache-ok' => 'OK',
+	'inspectcache'         => 'Inspect Cache',
+	'inspectcache-desc'    => 'A simple debugging tool to inspect the contents of the shared cache',
+	'inspectcache-ok'      => 'OK',
 	'inspectcache-general' => 'General cache',
-	'inspectcache-parser' => 'Parser cache',
+	'inspectcache-parser'  => 'Parser cache',
 	'inspectcache-message' => 'Message cache',
-	'inspectcache-get' => 'Get',
-	'inspectcache-delete' => 'Delete',
+	'inspectcache-get'     => 'Get',
+	'inspectcache-delete'  => 'Delete',
 	'inspectcache-deleted' => 'Deleted Cache',
-	'inspectcache-list' => 'List',
+	'inspectcache-list'    => 'List',
 );
 
 /** Arabic (العربية)
@@ -58,6 +59,7 @@ $messages['de'] = array(
  */
 $messages['fr'] = array(
 	'inspectcache'         => 'Inspection du Cache',
+	'inspectcache-desc'    => 'Un simple outil de déboggage pour inspecter les éléments dans le cache partagé.',
 	'inspectcache-ok'      => 'Lancer',
 	'inspectcache-general' => 'Cache général',
 	'inspectcache-parser'  => 'Cache des parsers',
