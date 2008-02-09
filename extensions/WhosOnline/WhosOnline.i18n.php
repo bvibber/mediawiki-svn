@@ -9,12 +9,12 @@ $messages = array();
 
 $messages['en'] = array(
 	'whosonline'      => 'Who\'s online',
-	'whosonline-desc' => 'Creates list of logged-in & anons currently online',
+	'whosonline-desc' => 'Displays [[Special:WhosOnline|a list]] of logged-in and anonymous users currently online',
 );
 
 $messages['nl'] = array(
 	'whosonline'      => 'Wie is er online',
-	'whosonline-desc' => 'Maakt een lijst van aangemelde en anonieme gebruikers die actief zijn',
+	'whosonline-desc' => 'Toont [[Special:WhosOnline|een lijst]] van aangemelde en anonieme gebruikers die actief zijn',
 );
 
 $messages['pl'] = array(
