@@ -31,11 +31,12 @@ define('DPL2_VERSION', '0.8.1');
  */
 $wgExtensionFunctions[] = "wfDynamicPageList2";
 $wgExtensionCredits['parserhook'][] = array(
-	'name' => 'DynamicPageList2',
-	'author' => '[http://en.wikinews.org/wiki/User:IlyaHaykinson IlyaHaykinson], [http://en.wikinews.org/wiki/User:Amgine Amgine], [http://de.wikipedia.org/wiki/Benutzer:Unendlich Unendlich], [http://meta.wikimedia.org/wiki/User:Dangerman Cyril Dangerville]',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:DynamicPageList2',
-	'description' => 'hack of the original [http://www.mediawiki.org/wiki/Extension:DynamicPageList DynamicPageList] extension featuring many Improvements',
-  	'version' => DPL2_VERSION
+	'name'           => 'DynamicPageList2',
+	'author'         => '[http://en.wikinews.org/wiki/User:IlyaHaykinson IlyaHaykinson], [http://en.wikinews.org/wiki/User:Amgine Amgine], [http://de.wikipedia.org/wiki/Benutzer:Unendlich Unendlich], [http://meta.wikimedia.org/wiki/User:Dangerman Cyril Dangerville]',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:DynamicPageList2',
+	'description'    => 'hack of the original [http://www.mediawiki.org/wiki/Extension:DynamicPageList DynamicPageList] extension featuring many Improvements',
+	'descriptionmsg' => 'dpl2-desc',
+  	'version'        => DPL2_VERSION
   );
 
 /**
