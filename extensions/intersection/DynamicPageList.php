@@ -44,9 +44,11 @@ $wgDLPAllowUnlimitedCategories = false; // Allow unlimited categories
 
 $wgExtensionFunctions[] = "wfDynamicPageList";
 $wgExtensionCredits['parserhook'][] = array(
-	'name' => 'DynamicPageList',
-	'description' => 'outputs a bulleted list of the most recent items residing in a category, or a union of several categories',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Intersection'
+	'name'           => 'DynamicPageList',
+	'description'    => 'outputs a bulleted list of the most recent items residing in a category, or a union of several categories',
+	'descriptionmsg' => 'intersection-desc',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Intersection',
+	'author'         => '[http://en.wikinews.org/wiki/User:Amgine Amgine], [http://en.wikinews.org/wiki/User:IlyaHaykinson IlyaHaykinson]',
 );
 
 $dir = dirname(__FILE__) . '/';

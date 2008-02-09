@@ -9,9 +9,10 @@
 $messages= array();
 
 $messages['en'] = array(
-	'intersection_toomanycats' => 'DynamicPageList: Too many categories!',
-	'intersection_toofewcats' => 'DynamicPageList: Too few categories!',
-	'intersection_noresults' => 'DynamicPageList: No results!',
+	'intersection-desc'          => 'outputs a bulleted list of the most recent items residing in a category, or a union of several categories',
+	'intersection_toomanycats'   => 'DynamicPageList: Too many categories!',
+	'intersection_toofewcats'    => 'DynamicPageList: Too few categories!',
+	'intersection_noresults'     => 'DynamicPageList: No results!',
 	'intersection_noincludecats' => 'DynamicPageList: You need to include at least one category, or specify a namespace!',
 );
 
@@ -90,9 +91,10 @@ $messages['fi'] = array(
 
 # French translation by Bertrand GRONDIN
 $messages['fr'] = array (
-	'intersection_toomanycats' => 'DynamicPageList : Trop de catégories !',
-	'intersection_toofewcats' => 'DynamicPageList : Pas assez de catégories !',
-	'intersection_noresults' => 'DynamicPageList : Aucun résultat !',
+	'intersection-desc'          => 'Affiche une liste, à puces, des articles les plus récents dans une catégorie, ou à partir d’une combinaison de plusieurs catégories.',
+	'intersection_toomanycats'   => 'DynamicPageList : Trop de catégories !',
+	'intersection_toofewcats'    => 'DynamicPageList : Pas assez de catégories !',
+	'intersection_noresults'     => 'DynamicPageList : Aucun résultat !',
 	'intersection_noincludecats' => 'DynamicPageList : vous avez besoin d’inclure au moins une catégorie, ou préciser un nom d’espace !',
 );
 
