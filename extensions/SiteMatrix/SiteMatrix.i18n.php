@@ -8,11 +8,12 @@
 $messages = array();
 
 $messages['en'] = array(
-	'sitematrix'          => 'List of Wikimedia wikis',
-	'sitematrix-language' => 'Language',
-	'sitematrix-project'  => 'Name of project, interproject link and interwiki link',
-	'sitematrix-others'   => 'Other projects of Wikimedia',
-	'sitematrix-total'    => "'''Total count: $1'''",
+	'sitematrix'           => 'List of Wikimedia wikis',
+	'sitematrix-language'  => 'Language',
+	'sitematrix-project'   => 'Name of project, interproject link and interwiki link',
+	'sitematrix-others'    => 'Other projects of Wikimedia',
+	'sitematrix-total'     => "'''Total count: $1'''",
+	'sitematrix-sitetotal' => 'Total',
 );
 
 /** Afrikaans (Afrikaans)

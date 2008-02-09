@@ -12,7 +12,7 @@ require_once( $IP.'/languages/Names.php' );
 class SiteMatrix
 {
 	public $langlist, $sites, $names, $hosts;
-	public $wikipediaSpecial, $hidden, $specials, $matrix, $count;
+	public $wikipediaSpecial, $hidden, $specials, $matrix, $count, $countPerSite;
 
 	public function __construct()
 	{
@@ -60,6 +60,12 @@ class SiteMatrix
 			'foundation', 'mediawiki',
 		);
 
+		# Initialize $countPerSite
+		$this->countPerSite = array();
+		foreach( $this->sites as $site ) {
+			$this->countPerSite[$site] = 0;
+		}
+
 		# Tabulate the matrix
 		$this->specials = array();
 		$this->matrix = array();
@@ -73,6 +79,7 @@ class SiteMatrix
 						$this->specials[] = $lang;
 					} else {
 						$this->matrix[$site][$lang] = 1;
+						$this->countPerSite[$site]++;
 					}
 					break;
 				}
@@ -164,6 +171,14 @@ class SiteMatrixPage extends SpecialPage {
 			}
 			$s .= "</tr>\n";
 		}
+
+		# Total
+		$s .= '<tr style="font-weight: bold"><td><a id="total" name="total"></a>' . wfMsgHtml( 'sitematrix-sitetotal' ) . '</td>';
+		foreach( $matrix->names as $site => $name ) {
+			$url = "http://{$matrix->hosts[$site]}/";
+			$s .= "<td><a href=\"{$url}\">{$matrix->countPerSite[$site]}</a></td>";
+		}
+		$s .= '</tr>';
 		$s .= "</table>\n";
 
 		# Specials
