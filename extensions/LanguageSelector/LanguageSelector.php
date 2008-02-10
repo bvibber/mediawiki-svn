@@ -25,6 +25,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'Language Selector', 
 	'author'         => 'Daniel Kinzler', 
 	'url'            => 'http://mediawiki.org/wiki/Extension:LanguageSelector',
+	'version'	 => '2008-02-10',
 	'description'    => 'language selector on every page, also for visitors',
 	'descriptionmsg' => 'languageselector-desc',
 );
@@ -71,19 +72,29 @@ $wgLanguageSelectorRequestedLanguage = NULL;
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['LanguageSelector'] = $dir . 'LanguageSelector.i18n.php';
 
+function wgLanguageSelectorSetHook() {
+	global $wgParser;
+	$wgParser->setHook('languageselector', 'wfLanguageSelectorTag' );
+	return true;
+}
+
 function wfLanguageSelectorExtension() {
 	wfLoadExtensionMessages( 'LanguageSelector' );
 	global $wgLanguageSelectorLanguages, $wgLanguageSelectorDetectLanguage, $wgLanguageSelectorRequestedLanguage, $wgLanguageSelectorLocation;
-	global $wgUser, $wgLang, $wgRequest, $wgCookiePrefix, $wgCookiePath, $wgOut, $wgJsMimeType, $wgHooks, $wgParser;
+	global $wgUser, $wgLang, $wgRequest, $wgCookiePrefix, $wgCookiePath, $wgOut, $wgJsMimeType, $wgHooks;
 
-	$wgParser->setHook('languageselector', 'wfLanguageSelectorTag' );
+	if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+		$wgHooks['ParserFirstCallInit'][] = 'wgLanguageSelectorSetHook';
+	} else {
+		wgLanguageSelectorSetHook();
+	}
 
 	if ( $wgLanguageSelectorLanguages === NULL ) {
 		$wgLanguageSelectorLanguages = @$GLOBALS['wgPolyglotLanguages'];
 	}
 	
 	if ( $wgLanguageSelectorLanguages === NULL ) {
-		$wgLanguageSelectorLanguages = array_keys( $GLOBALS['wgLanguageNames'] );
+		$wgLanguageSelectorLanguages = array_keys( Language::getLanguageNames( true ) );
 	}
 
 	$setlang = $wgRequest->getVal('setlang');
@@ -327,17 +338,17 @@ function wfLanguageSelectorAbortNewAccount( &$u ) { //FIXME: doesn't quite work 
 }
 
 function wfLanguageSelectorHTML( $style = NULL, $class = NULL, $selectorstyle = NULL, $buttonstyle = NULL ) {
-	global $wgLanguageSelectorLanguages, $wgTitle, $wgLang, $wgContLang;
+	global $wgLanguageSelectorLanguages, $wgTitle, $wgLang, $wgContLang, $wgScript;
 
 	static $id = 0;
 	$id += 1;
 
 	$code = $wgLang->getCode();
-	$url = $wgTitle->getFullURL();
 
 	$html = '';
 	$html .= Xml::openElement('span', array('id' => 'languageselector-box-'.$id, 'class' => 'languageselector ' . $class, 'style' => $style ));
-	$html .= Xml::openElement('form', array('name' => 'languageselector-form-'.$id, 'id' => 'languageselector-form-'.$id, 'method' => 'get', 'action' => $url, 'style' => 'display:inline;'));
+	$html .= Xml::openElement('form', array('name' => 'languageselector-form-'.$id, 'id' => 'languageselector-form-'.$id, 'method' => 'get', 'action' => $wgScript, 'style' => 'display:inline;'));
+	$html .= Xml::hidden( 'title', $wgTitle->getPrefixedDBKey() );
 	$html .= Xml::openElement('select', array('name' => 'setlang', 'id' => 'languageselector-select-'.$id, 'style' => $selectorstyle));
 
 	foreach ($wgLanguageSelectorLanguages as $ln) {
