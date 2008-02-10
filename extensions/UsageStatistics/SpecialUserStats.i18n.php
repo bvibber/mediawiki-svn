@@ -20,6 +20,12 @@ $messages['en'] = array(
 	'usagestatisticsnostart'     => '* <font color=red>Please specify a start date</font>',
 	'usagestatisticsnoend'       => '* <font color=red>Please specify an end date</font>',
 	'usagestatisticsbadstartend' => '<b>Bad <i>Start</i> and/or <i>End</i> date!</b>',
+        'usagestatisticsintervalday'   => 'Day',
+        'usagestatisticsintervalweek'  => 'Week',
+        'usagestatisticsintervalmonth' => 'Month',
+        'usagestatisticsincremental'   => 'Incremental',
+        'usagestatisticscumulative'    => 'Cumulative',
+        'usagestatisticscalselect'     => 'Select',
 );
 
 /** Arabic (العربية)
@@ -353,5 +359,23 @@ $messages['tr'] = array(
 $messages['vo'] = array(
 	'usagestatisticsallusers' => 'Gebans Valik',
 	'usagestatisticssubmit'   => 'Jafön Statitis',
+);
+
+/** Deutsch (German)
+* @author Katharina Wolkwitz
+*/
+$messages['de'] =array(
+  'specialuserstats'           => 'Nutzungs-Statistik',
+  'usagestatistics'            => 'Nutzungs-Statistik',
+  'usagestatisticsfor'         => '<h2>Nutzungs-Statistik für [[:user:$1|$1]]</h2>',
+  'usagestatisticsallusers'    => 'Alle Nutzer',
+  'usagestatisticsinterval'    => 'Zeitraum',
+  'usagestatisticstype'        => 'Berechnungsart',
+  'usagestatisticsstart'       => 'Start-Datum',
+  'usagestatisticsend'         => 'End-Datum',
+  'usagestatisticssubmit'      => 'Statistik generieren',
+  'usagestatisticsnostart'     => '* <font color=red>Start-Datum eingeben</font>',
+  'usagestatisticsnoend'       => '* <font color=red>End-Datum eingeben</font>',
+  'usagestatisticsbadstartend' => '<b>Unpassendes/fehlerhaftes <i>Start-Datum</i> oder <i>End-Datum</i> !</b>',
 );
 

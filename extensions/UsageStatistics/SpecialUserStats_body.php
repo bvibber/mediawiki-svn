@@ -236,9 +236,9 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
   <td align='right'>". wfMsg('usagestatisticsinterval') .":</td>
   <td align='left'>
     <select name='interval'>
-      <option value='86400'>Day
-      <option value='604800'>Week
-      <option value='2629744' selected>Month
+      <option value='86400'>". wfMsg('usagestatisticsintervalday') ."
+      <option value='604800'>". wfMsg('usagestatisticsintervalweek') ."
+      <option value='2629744' selected>". wfMsg('usagestatisticsintervalmonth') ."
     </select>
   </td>
 </tr>
@@ -246,8 +246,8 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
   <td align='right'>". wfMsg('usagestatisticstype') .":</td>
   <td align='left'>
     <select name='type'>
-      <option value='incremental'>Incremental
-      <option value='cumulative' selected>Cumulative
+      <option value='incremental'>". wfMsg('usagestatisticsincremental') ."
+      <option value='cumulative' selected>". wfMsg('usagestatisticscumulative') ."
     </select>
   </td>
 </tr>
@@ -260,7 +260,7 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
       cal1.showNavigationDropdowns();
     </SCRIPT>
     <A HREF='#' onClick=\"cal1.select(document.forms[0].start,'anchor1','MM/dd/yyyy'); return false;\" NAME='anchor1' 
-ID='anchor1'>select</A>
+ID='anchor1'>". wfMsg('usagestatisticscalselect') ."</A>
   </td>
 </tr>
 <tr>
