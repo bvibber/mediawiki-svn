@@ -211,10 +211,12 @@ $messages['lb'] = array(
 );
 
 /** Limburgish (Limburgs)
+ * @author Matthias
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
 	'sitenotice_close' => 'sloet',
+	'sitenotice-desc'  => 'Stelt gebroekers in staat de siteberichten te sluite',
 );
 
 $messages['lt'] = array(
@@ -362,6 +364,14 @@ $messages['ur'] = array(
 	'sitenotice_close' => 'ترک',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'sitenotice_close' => 'giấu',
+	'sitenotice-desc'  => 'Để người dùng đóng thông báo ở đầu các trang',
+);
+
 $messages['yue'] = array(
 	'sitenotice_close' => '閂咗佢',
 );
@@ -377,3 +387,4 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'sitenotice_close' => '關閉',
 );
+

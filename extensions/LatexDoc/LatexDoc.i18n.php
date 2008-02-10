@@ -39,6 +39,7 @@ $messages['ar'] = array(
 $3',
 	'latexdoc_get_dvi'         => 'احصل على DVI',
 	'latexdoc_get_pdf'         => 'احصل على PDF',
+	'latexdoc-desc'            => 'وثيقة لا تكس',
 );
 
 /** Bulgarian (Български)
@@ -118,6 +119,7 @@ Wudaće: $2
 $3',
 	'latexdoc_get_dvi'         => 'DVI wzać',
 	'latexdoc_get_pdf'         => 'PDF wzać',
+	'latexdoc-desc'            => 'Latex-dokument.',
 );
 
 /** Hungarian (Magyar)
@@ -154,6 +156,7 @@ Uitvoer: $2
 $3',
 	'latexdoc_get_dvi'         => 'DVI maken',
 	'latexdoc_get_pdf'         => 'PDF maken',
+	'latexdoc-desc'            => 'Collaboratief bewerken van LaTeX-documenten',
 );
 
 /** Occitan (Occitan)
@@ -172,6 +175,7 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'latexdoc_no_text'         => 'A página não contém qualquer texto, não é possível gerar DVI',
 	'latexdoc_cant_create_dir' => 'Não foi possível criar directoria temporária $1',
 	'latexdoc_cant_write'      => 'Não foi possível escrever para o ficheiro $1',
 	'latexdoc_error'           => 'Erro LaTeX
@@ -183,6 +187,7 @@ Resultado: $2
 $3',
 	'latexdoc_get_dvi'         => 'Obter DVI',
 	'latexdoc_get_pdf'         => 'Obter PDF',
+	'latexdoc-desc'            => 'Documento Latex',
 );
 
 /** Romanian (Română)
@@ -237,6 +242,7 @@ Výstup: $2
 $3',
 	'latexdoc_get_dvi'         => 'Stiahnuť DVI',
 	'latexdoc_get_pdf'         => 'Stiahnuť PDF',
+	'latexdoc-desc'            => 'Latex Doc.',
 );
 
 /** Volapük (Volapük)

@@ -43,6 +43,23 @@ $messages['bg'] = array(
 $2',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'userrightsnotifysubject' => 'Kemmoù emezeladur e strolladoù implijerien war $1',
+	'userrightsnotifybody'    => "Demat $1
+
+Setu aze ur c'hemenn evit ho kelaouiñ eo bet kemmet hoc'h emezeladur d'ar strolladoù implijerien war $2 gant $3 d'an $4.
+
+Ouzhpennet : $5
+Tennet : $6
+
+A galon,
+
+$2",
+);
+
 /** Catalan (Català)
  * @author SMP
  */

@@ -214,6 +214,15 @@ $messages['stq'] = array(
 	'pageby-anon'         => '<i>anonym</i>',
 );
 
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'pageby-first' => 'Sida skapad av $1, $2',
+	'pageby-last'  => 'Sist <a href="$3">modifierad</a> av $1, $2',
+	'pageby-anon'  => '<i>anonym</i>',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */
@@ -251,3 +260,4 @@ $messages['zh-hant'] = array(
 	'pageby-contributors' => '貢獻者:',
 	'pageby-anon'         => '<i>匿名</i>',
 );
+

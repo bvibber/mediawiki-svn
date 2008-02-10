@@ -713,6 +713,28 @@ $messages['loz'] = array(
 	'badimages-removed'    => '$1 sa afi kulobala di mukoloko.',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Jacob.jose
+ */
+$messages['ml'] = array(
+	'badimages'                => 'മോശം ചിത്രങ്ങളുടെ പട്ടിക',
+	'badimages-add-btn'        => 'ചേര്‍ക്കുക',
+	'badimages-added'          => '$1 പട്ടികയിലേക്കു ചേര്‍ത്തിരിക്കുന്നു',
+	'badimages-count'          => "മോശം ചിത്രങ്ങളുടെ പട്ടികയില്‍ '''$1''' ചിത്രങ്ങള്‍ ഉണ്ട്.",
+	'badimages-name'           => 'നാമം:',
+	'badimages-not-added'      => 'ഈ ചിത്രം ചേര്‍ക്കാന്‍ സാധിച്ചില്ല',
+	'badimages-not-removed'    => 'ഈ ചിത്രം നീക്കംചെയ്യാന്‍ സാധിച്ചില്ല',
+	'badimages-reason'         => 'കാരണം:',
+	'badimages-remove'         => '(നീക്കം ചെയ്യുക)',
+	'badimages-remove-btn'     => 'നീക്കം ചെയ്യുക',
+	'badimages-remove-confirm' => 'താങ്കള്‍ $1 പട്ടികയില്‍നിന്നും നീക്കാന്‍ ആഗ്രഹിക്കുന്നെന്നു ദയവായി സ്ഥിരീകരിക്കുക',
+	'badimages-removed'        => '$1 പട്ടികയില്‍നിന്നു നീക്കി',
+	'badimages-subheading'     => 'നിലവിലുള്ള ഇനങ്ങള്‍',
+	'badimages-log-name'       => 'മോശം ചിത്രങ്ങളുടെ പട്ടിക',
+	'badimages-log-add'        => 'മോശം ചിത്രങ്ങളുടെ പട്ടികയിലേയ്ക്ക് [[$1]] ചേര്‍ത്തു',
+	'badimages-log-remove'     => 'മോശം ചിത്രങ്ങളുടെ പട്ടികയില്‍നിന്ന് [[$1]] നീക്കംചെയ്തു',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'i18ntags-desc' => 'Access the i18n functions for number formatting, grammar and plural in any available language',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'i18ntags-desc' => 'يسمح بالوصول إلى وظيفة الترجمة لصيغ الأرقام، قواعد اللغة والجمع في أي لغة متوفرة',
+);
+
 $messages['fr'] = array(
 	'i18ntags-desc' => 'Permet l’accès des fonctions i18n pour le format des nombres, la grammaire et le pluriel dans chaque langue disponible.',
 );

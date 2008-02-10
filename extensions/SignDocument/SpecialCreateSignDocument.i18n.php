@@ -464,6 +464,24 @@ $messages['ss'] = array(
 	'createsigndoc-create' => 'Kúdála',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'createsigndoc-pagename'          => 'Sida:',
+	'createsigndoc-email'             => 'E-postadress:',
+	'createsigndoc-address'           => 'Gatuadress:',
+	'createsigndoc-extaddress'        => 'Ort, delstat, land:',
+	'createsigndoc-phone'             => 'Telefonnummer:',
+	'createsigndoc-bday'              => 'Födelsedatum:',
+	'createsigndoc-minage'            => 'Minimiålder:',
+	'createsigndoc-hidden'            => 'dolt',
+	'createsigndoc-optional'          => 'frivilligt',
+	'createsigndoc-create'            => 'Skapa',
+	'createsigndoc-error-generic'     => 'Fel: $1',
+	'createsigndoc-error-pagenoexist' => 'Fel: Sidan [[$1]] finns inte.',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

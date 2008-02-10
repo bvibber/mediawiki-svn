@@ -433,6 +433,20 @@ $messages['ja'] = array(
 	'expand_templates_remove_comments' => 'コメントを除去',
 );
 
+/** Jutish (Jysk)
+ * @author Huslåke
+ */
+$messages['jut'] = array(
+	'expand_templates_title'           => 'Context titel, før {{SITENAME}}:',
+	'expand_templates_input'           => 'Input skrevselenger:',
+	'expand_templates_output'          => 'Resultåt',
+	'expand_templates_xml_output'      => 'XML output',
+	'expand_templates_ok'              => 'OK',
+	'expand_templates_remove_comments' => 'Slet kommentår',
+	'expand_templates_generate_xml'    => 'Se XML parse træ',
+	'expand_templates_preview'         => 'Førhåndsvesnenge',
+);
+
 $messages['kk-arab'] = array(
 	'expandtemplates'                  => 'ۇلگىلەردى ۇلعايتۋ',
 	'expand_templates_intro'           => 'وسى قۇرال ارنايى بەتى الدەبىر ٴماتىندى الادى دا,

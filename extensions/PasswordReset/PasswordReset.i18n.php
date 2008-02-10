@@ -367,6 +367,13 @@ $messages['stq'] = array(
 	'passwordreset-accountdisabled'    => 'Benutserkonto is deaktivierd',
 );
 
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'passwordreset-username' => 'Användarnamn',
+);
+
 $messages['yue'] = array(
 	'passwordreset' => '密碼重設',
 	'passwordreset-invalidusername' => '無效嘅用戶名',

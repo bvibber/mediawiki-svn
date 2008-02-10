@@ -1176,6 +1176,7 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'math_InvalidColour' => 'Färgen "$1" är ogiltig',
+	'math_TooManyTokens' => 'Inmatningen är för lång',
 );
 
 /** Vietnamese (Tiếng Việt)

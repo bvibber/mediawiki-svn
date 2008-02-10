@@ -264,6 +264,7 @@ Alternativ kannst du auch die externen Suchmöglichkeiten nutzen:\n",
  * @author MF-Warburg
  */
 $messages['el'] = array(
+	'searchnumber'       => '<strong>Αποτελέσματα $1-$2 από $3</strong>',
 	'lucene-searchscore' => 'Σχετικότητα: $1%',
 	'lucene-resultsize'  => '$1 ($2 λέξεις)',
 	'searchdidyoumean'   => 'Μήπως εννοείτε: "<a href="$1">$2</a>";',
@@ -787,8 +788,12 @@ Dir kënnt awer och déi extern Sichméiglichkeete benotzen:',
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
+ * @author Matthias
  */
 $messages['li'] = array(
+	'searchnumber'          => '<strong>Resultate $1-$2 van $3</strong>',
+	'searchprev'            => "« <span style='font-size: small'>Vorige</span>",
+	'searchnext'            => "<span style='font-size: small'>Volgende</span> »",
 	'lucene-searchscore'    => 'Relevantie: $1%',
 	'lucene-resultsize'     => '$1 ($2 wäörd)',
 	'searchdidyoumean'      => 'Bedoeldese: "<a href="$1">$2</a>"?',

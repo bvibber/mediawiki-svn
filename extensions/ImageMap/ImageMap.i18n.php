@@ -34,17 +34,21 @@ $messages['af'] = array(
 	'imagemap_description' => 'Beeldinligting',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'imagemap_no_image'             => '&lt;imagemap&gt;: يجب تحديد صورة في الخط الأول',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;: الصورة غير صحيحة أو غير موجودة',
-	'imagemap_no_link'              => '&lt;imagemap&gt;: لم يتم العثور على وصلة صحيحة في نهاية السطر $1',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: عنوان غير صحيح في الوصلة في السطر $1',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: إحداثيات غير كافية للشكل عند الخط $1',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: شكل غير معروف عند الخط $1, كل خط يجب أن يبدأ بواحد من: default, rect, circle or poly',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;: على الأقل محدد مساحة واحد يجب إعطاؤه',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: إحداثي غير صحيح عند الخط $1، يجب أن يكون رقما',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: محدد وصف غير صحيح، يجب أن يكون واحدا من: <tt>$1</tt>',
-	'imagemap_description'          => 'حول هذه الصورة',
+	'imagemap_desc'               => 'يسمح بخرائط قابلة للضغط عليها من طرف العميل باستخدام وسم <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: يجب تحديد صورة في الخط الأول',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: الصورة غير صحيحة أو غير موجودة',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: لم يتم العثور على وصلة صحيحة في نهاية السطر $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: عنوان غير صحيح في الوصلة في السطر $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: إحداثيات غير كافية للشكل عند الخط $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: شكل غير معروف عند الخط $1, كل خط يجب أن يبدأ بواحد من: default, rect, circle or poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: على الأقل محدد مساحة واحد يجب إعطاؤه',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: إحداثي غير صحيح عند الخط $1، يجب أن يكون رقما',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: محدد وصف غير صحيح، يجب أن يكون واحدا من: <tt>$1</tt>',
+	'imagemap_description'        => 'حول هذه الصورة',
 );
 
 /** Asturian (Asturianu)
@@ -92,6 +96,7 @@ $messages['bn'] = array(
  * @author Li-sung
  */
 $messages['cs'] = array(
+	'imagemap_desc'               => 'Umožňuje vytvoření klikací mapy obrázku na straně klienta pomocí značky <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image'           => '&lt;imagemap&gt;: na první řádce musí být určen obrázek',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: soubor není platný nebo neexistuje',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: nebyl nalezen žádný platný odkaz na konci řádku $1',
@@ -265,6 +270,7 @@ $messages['hsb'] = array(
  * @author Bdanee
  */
 $messages['hu'] = array(
+	'imagemap_desc'               => 'Lehetővé teszi kliensoldali imagemap-ek létrehozását a <tt><nowiki><imagemap></nowiki></tt> tag segítségével',
 	'imagemap_no_image'           => '&lt;imagemap&gt;: kell egy előírt kép az első sorban',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: érvénytelen vagy nem létező kép',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: nincs érvényes link a(z) $1. sor végén',
@@ -383,6 +389,23 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'imagemap_description' => 'Iwwert dëst Bild',
+);
+
+/** Limburgish (Limburgs)
+ * @author Matthias
+ */
+$messages['li'] = array(
+	'imagemap_desc'               => 'Maakt aanklikbare imagemaps meugelijk met de tag <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image'           => "&lt;imagemap&gt;: geef 'n afbeelding op in de eerste regel",
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: de afbeelding is corrupt of bestaat neet',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: er is geen geldige link aangetroffen aan het einde van regel $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: er staat een ongeldige titel in de verwijzing op regel $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: neet genoeg coördinaten veur vorm in regel $1',
+	'imagemap_unrecognised_shape' => "&lt;imagemap&gt;: neet herkende vorm in regel $1, iedere regel mot beginne met éin van de commando's: default, rect, circle of poly",
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: er moet tenminste één gebied gespecificeerd worde',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: ongeldige coördinaten in regel $1, moet een getal zien',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: ongeldige beschrijvingsspecificatie, dit moet er één zijn uit de volgende lijst: $1',
+	'imagemap_description'        => 'Euver deze aafbeelding',
 );
 
 /** Lithuanian (Lietuvių)

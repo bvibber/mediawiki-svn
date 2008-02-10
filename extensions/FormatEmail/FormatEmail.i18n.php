@@ -124,6 +124,7 @@ Aqueste corrièr vos es estat mandat gràcia al sistèma de messatjariá de {{SI
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'email-desc'   => 'Permite que sejam adicionados cabeçalhos/rodapés personalizados aos emails dos utilizadores.',
 	'email_footer' => '----------------------------------------------------------------------------
 Este email foi enviado pelo sistema de email de {{SITENAME}} por $1.
 

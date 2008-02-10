@@ -97,6 +97,24 @@ $messages['bg'] = array(
 	'usagestatisticsbadstartend' => '<b>Невалидна <i>Начална</i> и/или <i>Крайна</i> дата!</b>',
 );
 
+/** Deutsch (German)
+* @author Katharina Wolkwitz
+*/
+$messages['de'] =array(
+  'specialuserstats'           => 'Nutzungs-Statistik',
+  'usagestatistics'            => 'Nutzungs-Statistik',
+  'usagestatisticsfor'         => '<h2>Nutzungs-Statistik für [[:user:$1|$1]]</h2>',
+  'usagestatisticsallusers'    => 'Alle Nutzer',
+  'usagestatisticsinterval'    => 'Zeitraum',
+  'usagestatisticstype'        => 'Berechnungsart',
+  'usagestatisticsstart'       => 'Start-Datum',
+  'usagestatisticsend'         => 'End-Datum',
+  'usagestatisticssubmit'      => 'Statistik generieren',
+  'usagestatisticsnostart'     => '* <font color=red>Start-Datum eingeben</font>',
+  'usagestatisticsnoend'       => '* <font color=red>End-Datum eingeben</font>',
+  'usagestatisticsbadstartend' => '<b>Unpassendes/fehlerhaftes <i>Start-Datum</i> oder <i>End-Datum</i> !</b>',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -215,20 +233,27 @@ $messages['lb'] = array(
 
 /** Dutch (Nederlands)
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
-	'specialuserstats'           => 'Gebruiksstatistieken',
-	'usagestatistics'            => 'Gebruiksstatistieken',
-	'usagestatisticsfor'         => '<h2>Gebruikersstatistieken voor [[User:$1|$1]]</h2>',
-	'usagestatisticsallusers'    => 'Alle gebruikers',
-	'usagestatisticsinterval'    => 'Onderbreking',
-	'usagestatisticstype'        => 'Type',
-	'usagestatisticsstart'       => 'Begindatum',
-	'usagestatisticsend'         => 'Einddatum',
-	'usagestatisticssubmit'      => 'Statistieken tonen',
-	'usagestatisticsnostart'     => '* <font color=red>Gelieve een begindatum op te geven</font>',
-	'usagestatisticsnoend'       => '* <font color=red>Gelieve een einddatum op te geven</font>',
-	'usagestatisticsbadstartend' => '<b>Slechte <i>begindatum</i> en/of <i>einddatum</i>!</b>',
+	'specialuserstats'             => 'Gebruiksstatistieken',
+	'usagestatistics'              => 'Gebruiksstatistieken',
+	'usagestatisticsfor'           => '<h2>Gebruikersstatistieken voor [[User:$1|$1]]</h2>',
+	'usagestatisticsallusers'      => 'Alle gebruikers',
+	'usagestatisticsinterval'      => 'Onderbreking',
+	'usagestatisticstype'          => 'Type',
+	'usagestatisticsstart'         => 'Begindatum',
+	'usagestatisticsend'           => 'Einddatum',
+	'usagestatisticssubmit'        => 'Statistieken tonen',
+	'usagestatisticsnostart'       => '* <font color=red>Gelieve een begindatum op te geven</font>',
+	'usagestatisticsnoend'         => '* <font color=red>Gelieve een einddatum op te geven</font>',
+	'usagestatisticsbadstartend'   => '<b>Slechte <i>begindatum</i> en/of <i>einddatum</i>!</b>',
+	'usagestatisticsintervalday'   => 'Dag',
+	'usagestatisticsintervalweek'  => 'Week',
+	'usagestatisticsintervalmonth' => 'Maand',
+	'usagestatisticsincremental'   => 'Incrementeel',
+	'usagestatisticscumulative'    => 'Cumulatief',
+	'usagestatisticscalselect'     => 'Selecteren',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -299,18 +324,24 @@ $messages['pt'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'specialuserstats'           => 'Štatistika používanosti',
-	'usagestatistics'            => 'Štatistika používanosti',
-	'usagestatisticsfor'         => '<h2>Štatistika používanosti pre používateľa [[:user:$1|$1]]</h2>',
-	'usagestatisticsallusers'    => 'Všetci používatelia',
-	'usagestatisticsinterval'    => 'Interval',
-	'usagestatisticstype'        => 'Typ',
-	'usagestatisticsstart'       => 'Dátum začiatku',
-	'usagestatisticsend'         => 'Dátum konca',
-	'usagestatisticssubmit'      => 'Vytvoriť štatistiku',
-	'usagestatisticsnostart'     => '* <font color=red>Prosím, uveďte dátum začiatku</font>',
-	'usagestatisticsnoend'       => '* <font color=red>Prosím, uveďte dátum konca</font>',
-	'usagestatisticsbadstartend' => '<b>Chybný dátum <i>začiatku</i> a/alebo <i>konca</i>!</b>',
+	'specialuserstats'             => 'Štatistika používanosti',
+	'usagestatistics'              => 'Štatistika používanosti',
+	'usagestatisticsfor'           => '<h2>Štatistika používanosti pre používateľa [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'      => 'Všetci používatelia',
+	'usagestatisticsinterval'      => 'Interval',
+	'usagestatisticstype'          => 'Typ',
+	'usagestatisticsstart'         => 'Dátum začiatku',
+	'usagestatisticsend'           => 'Dátum konca',
+	'usagestatisticssubmit'        => 'Vytvoriť štatistiku',
+	'usagestatisticsnostart'       => '* <font color=red>Prosím, uveďte dátum začiatku</font>',
+	'usagestatisticsnoend'         => '* <font color=red>Prosím, uveďte dátum konca</font>',
+	'usagestatisticsbadstartend'   => '<b>Chybný dátum <i>začiatku</i> a/alebo <i>konca</i>!</b>',
+	'usagestatisticsintervalday'   => 'Deň',
+	'usagestatisticsintervalweek'  => 'Týždeň',
+	'usagestatisticsintervalmonth' => 'Mesiac',
+	'usagestatisticsincremental'   => 'Inkrementálna',
+	'usagestatisticscumulative'    => 'Kumulatívna',
+	'usagestatisticscalselect'     => 'Vybrať',
 );
 
 /** Swedish (Svenska)
@@ -359,23 +390,5 @@ $messages['tr'] = array(
 $messages['vo'] = array(
 	'usagestatisticsallusers' => 'Gebans Valik',
 	'usagestatisticssubmit'   => 'Jafön Statitis',
-);
-
-/** Deutsch (German)
-* @author Katharina Wolkwitz
-*/
-$messages['de'] =array(
-  'specialuserstats'           => 'Nutzungs-Statistik',
-  'usagestatistics'            => 'Nutzungs-Statistik',
-  'usagestatisticsfor'         => '<h2>Nutzungs-Statistik für [[:user:$1|$1]]</h2>',
-  'usagestatisticsallusers'    => 'Alle Nutzer',
-  'usagestatisticsinterval'    => 'Zeitraum',
-  'usagestatisticstype'        => 'Berechnungsart',
-  'usagestatisticsstart'       => 'Start-Datum',
-  'usagestatisticsend'         => 'End-Datum',
-  'usagestatisticssubmit'      => 'Statistik generieren',
-  'usagestatisticsnostart'     => '* <font color=red>Start-Datum eingeben</font>',
-  'usagestatisticsnoend'       => '* <font color=red>End-Datum eingeben</font>',
-  'usagestatisticsbadstartend' => '<b>Unpassendes/fehlerhaftes <i>Start-Datum</i> oder <i>End-Datum</i> !</b>',
 );
 

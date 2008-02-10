@@ -53,6 +53,13 @@ $messages['nl'] = array(
 	'ajax-qp-desc' => "Voegt wat AJAX toe aan QueryPages zoals [[Special:Shortpages|Korte pagina's]]",
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'ajax-qp-desc' => 'Legg til AJAX-funksjonar på visse spesialsider, som [[Special:Shortpages]].',
+);
+
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

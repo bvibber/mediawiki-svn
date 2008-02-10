@@ -16,10 +16,14 @@ $messages['en'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: You need to include at least one category, or specify a namespace!',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'intersection_toomanycats' => 'قائمة صفحة ديناميكية: تصنيفات كثيرة جدا!',
-	'intersection_toofewcats' => 'قائمة صفحة ديناميكية: تصنيفات قليلة جدا!',
-	'intersection_noresults' => 'قائمة صفحة ديناميكية: لا نتائج!',
+	'intersection-desc'          => 'يخرج قائمة معلمة بأحدث المدخلات الساكنة في تصنيف، أو اتحاد عدة تصنيفات',
+	'intersection_toomanycats'   => 'قائمة صفحة ديناميكية: تصنيفات كثيرة جدا!',
+	'intersection_toofewcats'    => 'قائمة صفحة ديناميكية: تصنيفات قليلة جدا!',
+	'intersection_noresults'     => 'قائمة صفحة ديناميكية: لا نتائج!',
 	'intersection_noincludecats' => 'قائمة صفحة ديناميكية: ينبغي أن تضمن تصنيفا واحدا على الأقل، أو تحدد نطاقا!',
 );
 
@@ -159,6 +163,17 @@ $messages['lb'] = array(
 	'intersection_noresults' => 'Dynamesch Säite-Lëscht: Kee Resultat!',
 );
 
+/** Limburgish (Limburgs)
+ * @author Matthias
+ */
+$messages['li'] = array(
+	'intersection-desc'          => 'Geeft als uitvoer een ongenummerde lijst met de meest recent toegevoegde items in een categorie, of een combinatie van categorieë',
+	'intersection_toomanycats'   => 'DynamicPageList: Te veel categorieë!',
+	'intersection_toofewcats'    => 'DynamicPageList: Te weinig categorieë!',
+	'intersection_noresults'     => 'DynamicPageList: Gein resultate!',
+	'intersection_noincludecats' => 'DynamicPageList: U moet tenminste een categorie of een naamruimte opgeve!',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */
@@ -210,8 +225,10 @@ $messages['pl'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Malafaya
  */
 $messages['pt'] = array(
+	'intersection-desc'          => 'constrói uma lista pontuada dos itens mais recentes presentes numa categoria, ou uma união de várias categorias',
 	'intersection_toomanycats'   => 'DynamicPageList: Categorias em excesso!',
 	'intersection_toofewcats'    => 'DynamicPageList: Poucas categorias!',
 	'intersection_noresults'     => 'DynamicPageList: Sem resultados!',
@@ -242,6 +259,7 @@ $messages['sah'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
+	'intersection-desc'          => 'Vypíše zoznam najnovších položiek v kategórii alebo zjednotení niekoľkých kategórií',
 	'intersection_toomanycats'   => 'DynamicPageList: Príliš veľa kategórií!',
 	'intersection_toofewcats'    => 'DynamicPageList: Príliš málo kategórií!',
 	'intersection_noresults'     => 'DynamicPageList: Žiadne výsledky!',
@@ -262,6 +280,7 @@ $messages['stq'] = array(
  * @author Lejonel
  */
 $messages['sv'] = array(
+	'intersection-desc'          => 'Skapar punktlistor över de nyaste sidorna i en eller flera kategorier',
 	'intersection_toomanycats'   => 'DynamicPageList: För många kategorier!',
 	'intersection_toofewcats'    => 'DynamicPageList: För få kategorier!',
 	'intersection_noresults'     => 'DynamicPageList: Inga resultat!',

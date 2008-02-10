@@ -36,12 +36,15 @@ $messages['an'] = array(
 	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|A linia|As linias}} siguients d'a lista negra de nombres d'usuarios no {{PLURAL:$1|ye|son}} correutas; por fabor, corricha-{{PLURAL:$1|lo|los}} antes d'alzar-la:",
 );
 
-/* Arabic (Meno25) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'blacklistedusername' => 'اسم مستخدم في القائمة السوداء',
-	'blacklistedusernametext' => 'اسم المستخدم الذي اخترته يطابق [[MediaWiki:Usernameblacklist|
+	'usernameblacklist-desc'          => 'يضيف [[MediaWiki:Usernameblacklist|قائمة سوداء لأسماء المستخدمين]] لتحديد إنشاء حسابات المستخدم التي تطابق تعبيرا منتظما أو أكثر',
+	'blacklistedusername'             => 'اسم مستخدم في القائمة السوداء',
+	'blacklistedusernametext'         => 'اسم المستخدم الذي اخترته يطابق [[MediaWiki:Usernameblacklist|
 قائمة أسماء المستخدمين السوداء]]. من فضلك اختر اسما آخر.',
-	'usernameblacklist' => '<pre>
+	'usernameblacklist'               => '<pre>
 # المدخلات في هذه القائمة ستستخدم كجزء من تعبير منتظم عند
 # منع أسماء المستخدمين في القائمة السوداء من التسجيل. كل مدخلة يجب أن تكون جزءا من
 # قائمة مرقمة، كمثال.
@@ -112,6 +115,24 @@ $messages['bn'] = array(
 	'blacklistedusernametext' => 'ব্যবহারকারীর নাম [[MediaWiki:Usernameblacklist|কালতালিকাভুক্ত ব্যবহারকারীর নাম সমূহের]] সাথে মিলেছে। দয়াকরে অন্য নাম পছন্দ করুন।',
 	'usernameblacklist' => '<pre> # এই তালিকায় ভুক্তি সমূহ রেগুলার এক্সপ্রেশনের অংশ হিসেবে ব্যবহৃত হবে যেখানে # রেজিষ্ট্রশন থেকে নিষিদ্ধ ব্যবহারকারী নামসমূহ। প্রতিটি উপাদান # একটি বুলেট তালিকার অংশ হয়ে থাকবে, অর্থাৎ # # * Foo # * [Bb]ar </pre>',
 	'usernameblacklist-invalid-lines' => 'এই {{PLURAL:$1|লাইন|লাইনসমূহ}} নিষিদ্ধ ব্যবহারকারী নাম তালিকাভুক্ত {{PLURAL:$1|নাম|নামসমূহ}} অসিদ্ধ; দয়াকরে সংরক্ষণ করার পূর্বে {{PLURAL:$1|এটি|এগুলো}} ঠিক করুন:',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'usernameblacklist-desc'          => 'Ouzhpennañ a ra ul [[MediaWiki:Usernameblacklist|listenn zu an implijerien]] evit mirout ouzh kontoù implijer da glotañ gant ul lavarenn pe lavarennoù reizh zo',
+	'blacklistedusername'             => 'Anvioù implijerien war al listenn zu',
+	'blacklistedusernametext'         => "Emañ an anv hoc'h eus dibabet war al [[MediaWiki:Usernameblacklist|listenn zu]]. Dibabit un anv all mar plij.",
+	'usernameblacklist'               => "<pre>
+# Implijet e vo ar penngerioù er roll-mañ evel elfennoù eus lavarennoù reizh
+# a-benn mirout ouzh an anvioù berzet d'en em enrollañ. Dleout a rafe pep elfenn bezañ en ur 
+# roll poentaouet, da sk.
+#
+# * Foo
+# * [Bb]ar
+</pre>",
+	'usernameblacklist-invalid-lines' => 'Fall {{PLURAL:$1|eo|eo}} al {{PLURAL:$1|linenn|linennoù}} da-heul eus listenn zu an anvioù implijerien; reizhit {{PLURAL:$1|anezhañ|anezho}} a-raok enrollañ mar plij :',
 );
 
 /** Catalan (Català)
@@ -343,6 +364,7 @@ $messages['hsb'] = array(
  * @author Bdanee
  */
 $messages['hu'] = array(
+	'usernameblacklist-desc'          => 'Egy [[MediaWiki:Usernameblacklist|feketelista]] segítségével megakadályozhatjuk a listán szereplő reguláris kifejezésekre illeszkedő felhasználói nevek létrehozását.',
 	'blacklistedusername'             => 'Feketelistás felhasználónév',
 	'blacklistedusernametext'         => 'Az általad választott felhasználónév megegyezik a egyik [[MediaWiki:Usernameblacklist|feketelistán lévővel]]. Válassz másikat.',
 	'usernameblacklist'               => '<pre>
@@ -497,6 +519,7 @@ $messages['lb'] = array(
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
+	'usernameblacklist-desc'          => "Voeg 'n [[MediaWiki:Usernameblacklist|zwarte lijst veur gebroekersname]] toe om 't make van gebroekers die voldoen aan ein of meer reguliere expressies te veurkomme",
 	'blacklistedusername'             => 'Zwarteliesgebroekersnaam',
 	'blacklistedusernametext'         => "De gebroekersnaam daese höbs gekaoze steit oppe [[MediaWiki:Usernameblacklist|zwarte gebroekersnamelies]]. Kees estebleef 'ne anger naam.",
 	'usernameblacklist'               => "<pre>
@@ -575,7 +598,9 @@ zwarte lijst van gebruikersnamen]]. Kies alstublieft een andere naam.',
  * @author Eirik
  */
 $messages['nn'] = array(
+	'usernameblacklist-desc'          => 'Legg til ei [[MediaWiki:Usernameblacklist|liste over svartelista brukarnamn]] for å hindre bruk av brukarnamn som inneheld eit eller fleire regulære uttrykk.',
 	'blacklistedusername'             => 'Svartelista brukarnamn',
+	'blacklistedusernametext'         => 'Brukarnamnet du har valt er [[MediaWiki:Usernameblacklist|svartelista]]. Ver venleg og vel eit anna namn.',
 	'usernameblacklist'               => '<pre>
 # Punkta på denne lista vert brukte som ein del av eit regulært uttrykk
 # når ein svartelistar brukarnamn frå registrering. Kvart punkt

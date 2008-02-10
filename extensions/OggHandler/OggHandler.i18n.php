@@ -57,6 +57,7 @@ $messages['af'] = array(
  * @author Alnokta
  */
 $messages['ar'] = array(
+	'ogg-desc'                     => 'متحكم لملفات أو جي جي ثيورا وفوربيس، مع لاعب جافاسكريبت',
 	'ogg-short-audio'              => 'Ogg $1 ملف صوت، $2',
 	'ogg-short-video'              => 'Ogg $1 ملف فيديو، $2',
 	'ogg-short-general'            => 'Ogg $1 ملف ميديا، $2',
@@ -564,6 +565,7 @@ $messages['ht'] = array(
  * @author Tgr
  */
 $messages['hu'] = array(
+	'ogg-desc'                => 'JavaScript nyelven írt lejátszó Ogg Theora és Vorbis fájlokhoz',
 	'ogg-short-audio'         => 'Ogg $1 hangfájl, $2',
 	'ogg-short-video'         => 'Ogg $1 videofájl, $2',
 	'ogg-short-general'       => 'Ogg $1 médiafájl, $2',
@@ -779,8 +781,10 @@ $messages['lb'] = array(
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
+ * @author Matthias
  */
 $messages['li'] = array(
+	'ogg-desc'                => "Handelt Ogg Theora- en Vorbis-bestande aaf met 'n JavaScript-mediaspeler",
 	'ogg-short-audio'         => 'Ogg $1 geluidsbestandj, $2',
 	'ogg-short-video'         => 'Ogg $1 videobestandj, $2',
 	'ogg-short-general'       => 'Ogg $1 mediabestandj, $2',

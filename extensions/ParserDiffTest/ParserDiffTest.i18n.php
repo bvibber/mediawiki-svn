@@ -227,6 +227,7 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'parserdifftest'      => 'Test rozdźělow parsera',
 	'pdtest_no_target'    => 'Žadyn cil podaty.',
 	'pdtest_page_missing' => 'Podata strona njebu w datowej bance namakana.',
 	'pdtest_no_changes'   => 'Žane změny wotkryte.',
@@ -554,3 +555,4 @@ $messages['vo'] = array(
 	'pdtest_diff'         => 'Difs',
 	'pdtest_side_by_side' => 'Jonolöd leigodi',
 );
+

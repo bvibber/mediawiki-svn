@@ -173,6 +173,13 @@ $messages['stq'] = array(
 	'donationform-submit' => 'Spändje uur PayPal',
 );
 
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'donationform-submit' => 'Donera via PayPal',
+);
+
 $messages['yue'] = array(
 	'donationform-submit' => '透過PayPal捐款',
 );

@@ -134,6 +134,7 @@ $messages['lb'] = array(
 	'sc_previousmonth'    => 'Vireschte Mount',
 	'sc_nextmonth'        => 'Nächste Mount',
 	'sc_today'            => 'Haut',
+	'sc_gotomonth'        => 'Géi op de Mount',
 	'sc_error_year2038'   => 'Feeler: Dëse System ka wéint dem [http://de.wikipedia.org/wiki/Jahr-2038-Problem Joer-2038-Problem] Datumen nom Joer 2038 net verschaffen.',
 	'sc_error_beforeyear' => 'Feeler: Dëse System kann net mat Datume virum $1 ëmgoen.',
 );
@@ -149,6 +150,18 @@ $messages['nl'] = array(
 	'sc_gotomonth'        => 'Ga naar maand',
 	'sc_error_year2038'   => 'Fout: dit systeem kan geen datums verwerken na 2038 vanwege het [http://en.wikipedia.org/wiki/Year_2038_problem 2038-probleem]',
 	'sc_error_beforeyear' => 'Fout: dit systeem kan geen datums verwerken voor $1',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'sc_previousmonth'    => 'Førre månad',
+	'sc_nextmonth'        => 'Neste månad',
+	'sc_today'            => 'I dag',
+	'sc_gotomonth'        => 'Gå til månad',
+	'sc_error_year2038'   => 'Feil: Dette systemet taklar ikkje datoar etter 2038, grunna [http://en.wikipedia.org/wiki/Year_2038_problem år 2038-problemet].',
+	'sc_error_beforeyear' => 'Feil: Dette systemet taklar ikkje datoar før $1.',
 );
 
 /** Portuguese (Português)

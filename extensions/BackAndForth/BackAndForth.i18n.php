@@ -263,6 +263,14 @@ $messages['lt'] = array(
 	'backforth-prev' => 'Ankstesnis ($1)',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Jacob.jose
+ */
+$messages['ml'] = array(
+	'backforth-next' => 'അടുത്ത ($1)',
+	'backforth-prev' => 'മുന്നെയുള്ള ($1)',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

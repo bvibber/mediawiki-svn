@@ -33,6 +33,7 @@ $messages['am'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
+	'inputbox-desc'           => 'يسمح بتضمين أشكال HTML معرفة مسبقا.',
 	'inputbox-error-no-type'  => 'لم تقم بتحديد نوع صندوق الإدخال للإنشاء.',
 	'inputbox-error-bad-type' => 'نوع صندوق الإدخال "$1" لم يتم التعرف عليه. من فضلك حدد "create"، "comment"، "search" أو "search2".',
 	'tryexact'                => 'ابحث عن عنوان مطابق',
@@ -135,6 +136,7 @@ $messages['crh-cyrl'] = array(
  * @author Li-sung
  */
 $messages['cs'] = array(
+	'inputbox-desc'           => 'Umožňuje vkládat určité HTML formuláře.',
 	'inputbox-error-no-type'  => 'Není určen typ formulářového pole k vytvoření.',
 	'inputbox-error-bad-type' => 'Nerozpoznaný typ pole „$1“. Uveďte jednu z možností: „create“, „comment“, „search“ nebo „search2“.',
 	'tryexact'                => 'Vyzkoušet přesné hledání',
@@ -322,6 +324,7 @@ $messages['hsb'] = array(
  * @author KossuthRad
  */
 $messages['hu'] = array(
+	'inputbox-desc'           => 'Lehetővé teszi előre megadott HTML-űrlapok beillesztését',
 	'inputbox-error-no-type'  => 'Nem adtad meg, hogy milyen típusú beviteli mezőt akarsz készíteni.',
 	'inputbox-error-bad-type' => '„$1” típusú beviteli mező nem ismert. „create”, „comment”, „search” vagy „search2” egyikét add meg.',
 	'tryexact'                => 'Pontos párosítást igényel',
@@ -456,11 +459,15 @@ $messages['lg'] = array(
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
+ * @author Matthias
  */
 $messages['li'] = array(
-	'tryexact'       => 'Perbeer exacte euvereinkoms',
-	'searchfulltext' => 'Zeuk dèr volledige tèks',
-	'createarticle'  => "Maak 'ne pazjena aan",
+	'inputbox-desc'           => "Maakt 't toevoege van veurgedefinieerde HTML-formuliere meugelijk",
+	'inputbox-error-no-type'  => "U heeft 't type inputbox neet aangegeve. Zie [http://www.mediawiki.org/wiki/Extension:Inputbox MediaWiki.org] veur meer informatie.",
+	'inputbox-error-bad-type' => 'Inputbox-type "$1" neet herkend. Gebroek "create", "comment", "search" of "search2".',
+	'tryexact'                => 'Perbeer exacte euvereinkoms',
+	'searchfulltext'          => 'Zeuk dèr volledige tèks',
+	'createarticle'           => "Maak 'ne pazjena aan",
 );
 
 $messages['lo'] = array(
@@ -594,12 +601,16 @@ $messages['ps'] = array(
 	'createarticle'  => 'نوې ليکنه پيلول',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
 $messages['pt'] = array(
+	'inputbox-desc'           => 'Permite a inclusão de formulários HTML pré-definidos.',
 	'inputbox-error-no-type'  => 'Você não especificou o tipo de box de inserção a ser criado.',
 	'inputbox-error-bad-type' => 'O box de inserção de tipo "$1" não foi reconhecido. Por gentileza, especifique "create", "comment", "search" ou "search2".',
-	'tryexact'       => 'Tentar a exata expressão',
-	'searchfulltext' => 'Pesquisar no texto completo',
-	'createarticle'  => 'Criar página',
+	'tryexact'                => 'Tentar a exata expressão',
+	'searchfulltext'          => 'Pesquisar no texto completo',
+	'createarticle'           => 'Criar página',
 );
 
 /** Quechua (Runa Simi)
@@ -664,6 +675,7 @@ $messages['si'] = array(
  * @author Robbot
  */
 $messages['sk'] = array(
+	'inputbox-desc'           => 'Umožňuje vloženie preddefinovaných HTML formulárov',
 	'inputbox-error-no-type'  => 'Neuviedli ste typ vstupného poľa, ktoré sa má vytvoriť.',
 	'inputbox-error-bad-type' => 'Vstupné pole typu „$1“ nie je podporované. Prosím, použite „create“, „comment“, „search“ alebo „search2“.',
 	'tryexact'                => 'Skúste presné vyhľadávanie',
@@ -723,6 +735,7 @@ $messages['su'] = array(
  * @author Lejonel
  */
 $messages['sv'] = array(
+	'inputbox-desc'           => 'Ger möjlighet att använda fördefinerade HTML-formulär.',
 	'inputbox-error-no-type'  => 'Du har inte angivit vilken typ av inputbox som ska skapas..',
 	'inputbox-error-bad-type' => '"$1" är inte en känd typ av inputbox. Giltiga typer är "create", "comment", "search" och "search2".',
 	'tryexact'                => 'Försök hitta exakt matchning',

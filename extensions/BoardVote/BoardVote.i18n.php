@@ -657,17 +657,22 @@ $messages['diq'] = array(
 
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ * @author MF-Warburg
+ */
 $messages['el'] = array(
-	'boardvote_novotes'       => 'Κανείς δεν έχει ψηφίσει ακόμη.',
-	'boardvote_user'          => 'Χρήστης',
-	'boardvote_edits'         => 'Επεξεργασίες',
-	'boardvote_days'          => 'Ημέρες',
-	'boardvote_ip'            => 'IP',#identical but defined
-	'boardvote_dumplink'      => 'Πάτησε εδώ',
-	'boardvote_submit'        => 'Εντάξει',
-	'boardvote_notstarted'    => 'Η ψηφοφορία δεν έχει αρχίσει ακόμη',
-	'boardvote_welcome'       => 'Καλώς ήλθατε \'\'\'$1\'\'\'!',
-	'boardvote_redirecting'   => 'Για καλύτερη ασφάλεια και διαφάνεια, η ψηφοφορία διεξάγεται σε εξωτερικό, ανεξάρτητα ελεγχόμενο server.
+	'boardvote_novotes'     => 'Κανείς δεν έχει ψηφίσει ακόμη.',
+	'boardvote_user'        => 'Χρήστης',
+	'boardvote_edits'       => 'Επεξεργασίες',
+	'boardvote_days'        => 'Ημέρες',
+	'boardvote_ip'          => 'IP',
+	'boardvote_listintro'   => '<p>Αυτός είναι ένας κατάλογος με όλες τις ψηφοφορίες που έχουν καταγραφεί μέχρι σήμερα. $1 για τα κρυπτογραφημένα δεδομένα</p>',
+	'boardvote_dumplink'    => 'Πάτησε εδώ',
+	'boardvote_submit'      => 'Εντάξει',
+	'boardvote_notstarted'  => 'Η ψηφοφορία δεν έχει αρχίσει ακόμη',
+	'boardvote_welcome'     => "Καλώς ήλθατε '''$1'''!",
+	'boardvote_redirecting' => 'Για καλύτερη ασφάλεια και διαφάνεια, η ψηφοφορία διεξάγεται σε εξωτερικό, ανεξάρτητα ελεγχόμενο server.
 
 Θα μεταφερθείτε αυτόματα στον εξωτερικό αυτό server σε 20 δευτερόλεπτα. [$1 Πατήστε εδώ] για να μεταφερθείτε εκεί άμεσα.
 
@@ -1608,6 +1613,18 @@ $messages['ja'] = array(
 サーバ証明書のセキュリティに関する警告が表示される場合があります。',
 );
 
+/** Jutish (Jysk)
+ * @author Huslåke
+ */
+$messages['jut'] = array(
+	'boardvote_time'  => 'Tid',
+	'boardvote_user'  => 'Bruger',
+	'boardvote_edits' => 'Redigærer',
+	'boardvote_days'  => 'Tåg',
+	'boardvote_ip'    => 'IP',
+	'boardvote_ua'    => 'User agent',
+);
+
 /** Georgian (ქართული)
  * @author Alsandro
  */
@@ -1891,6 +1908,7 @@ D'verschlësselt Versioun dovunner fannt der ënnen. Si gëtt ëffentlech op [[S
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
+ * @author Matthias
  */
 $messages['li'] = array(
 	'boardvote'              => 'Wikimedia Board of Trustees-verkezing',
@@ -1898,6 +1916,27 @@ $messages['li'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Stöm]]
 * [[Special:Boardvote/list|Oetgebrachdje stömme toeane]]
 * [[Special:Boardvote/dump|Dump geëncrypdje verkezingsopname]]',
+	'boardvote_intro'        => '<p>Welkom bie de tweede verkiezinge veur de Wikimedia Board of Trustees. We
+kieze twee personen die de gebroekersgemeenschap vertegenwoordige in de
+versjellden Wikimedia-projecte. Ze bepalen mede de toekomstige richting
+van Wikimedia-projecten, individueel en als groep, en behartigen <em>uw</em>
+belangen en zorgen bij de Board of Trustees. Ze beslissen ook over hoe
+inkomsten gemaakt kunnen worden en waar het opgehaalde geld aan wordt
+besteed.</p>
+
+<p>Lees alstublieft de kandidaatstelling en de antwoorden op vragen zorgvuldig
+voordat u stemt. Iedere kandidaat is een gewaardeerde gebruiker die
+aanzielijke hoeveelheden tijd en moeite heeft besteed aan het bouwen van
+uitnodigende omgevingen die toegewijd zijn aan het nastreven en vrij verspreiden
+van menselijke kennis.</p>
+
+<p>U mag veur zoveel kandidate stemme as u wilt. De kandidaat met de meeste
+stemme voor iddere positie wordt tot winnaar oetgerope voor de betreffende
+positie. In geval de stemme stake wordt er een tweede ronde gehoude.</p>
+
+<p>Meer informatie:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">Bestuursverkiezing FAQ</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006" class="external">Kandidate</a></li></ul>',
 	'boardvote_intro_change' => "<p>Geer höb al gestömp. Geer kintj uche stöm verangere via 't óngersäöndje formeleer. Vink estebleef de vekskes nao edere kanditaat daet geer steuntj aan.</p>",
 	'boardvote_entered'      => 'Danke. Uche stöm is verwerk.
 
@@ -2006,6 +2045,23 @@ Paskutinė koduota versija žemiau. Ji bus viešai rodoma [[Special:Boardvote/du
 Jūs būsite peradresuotas į šį išorinį serverį po 20 sekundžių. [1$ Spauskite čia], jei norite patekti dabar.
 
 Gali būti rodomas saugumo įspėjimas apie nepasirašytą sertifikatą.',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Jacob.jose
+ */
+$messages['ml'] = array(
+	'boardvote_novotes'    => 'ആരും ഇതുവരെ വോട്ടുചെയ്തിട്ടില്ല.',
+	'boardvote_time'       => 'സമയം',
+	'boardvote_user'       => 'ഉപയോക്താവ്',
+	'boardvote_edits'      => 'തിരുത്തലുകള്‍',
+	'boardvote_days'       => 'ദിവസങ്ങള്‍',
+	'boardvote_ip'         => 'IP',
+	'boardvote_dumplink'   => 'ഇവിടെ അമര്‍ത്തുക',
+	'boardvote_submit'     => 'ശരി',
+	'boardvote_strike'     => 'വെട്ടുക',
+	'boardvote_edits_many' => 'ധാരാളം',
+	'boardvote_welcome'    => "സ്വാഗതം '''$1'''!",
 );
 
 /** Erzya (эрзянь кель)
@@ -3102,6 +3158,11 @@ $messages['te'] = array(
 	'boardvote_blocked'      => 'క్షమించండి, మీరు నమోదైన వికీలో మీమ్మల్ని నిషేధించారు. నిషేధించిన వాడుకరులకు వోటెయ్యడానికి అనుమతిలేదు.',
 	'boardvote_welcome'      => "స్వాగతం '''$1'''!",
 	'go_to_board_vote'       => 'వికీమీడియా బోర్డు ఎన్నికలు 2007',
+	'boardvote_redirecting'  => 'మెరుగైన భద్రత మరియు పారదర్శకత కొరకు, వోటింగుని బయటి, స్వతంత్ర నియంత్రిత సేవికపై నడుపుతున్నాం.
+
+20 క్షణాల్లో మీమ్మల్ని అక్కడికి చేరుస్తాం. ఇప్పుడే అక్కడికి వెళ్ళడానికి [$1 ఇక్కడ నొక్కండి].
+
+సంతకంలేని దృవపత్రం గురించి ఓ భద్రతా హెచ్చరిక చూపించబడవచ్చు.',
 );
 
 /** Tajik (Тоҷикӣ)
@@ -3200,6 +3261,73 @@ $messages['tr'] = array(
  */
 $messages['ty'] = array(
 	'boardvote_user' => 'Ta’ata fa’a’ohipa',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'boardvote'              => 'Bầu cử cho Ban Quản trị Wikimedia',
+	'boardvote-desc'         => '[[meta:Board elections|Bầu cử cho Ban Quản trị Wikimedia]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Bỏ phiếu]]
+* [[Special:Boardvote/list|Danh sách những lá phiếu đến nay]]
+* [[Special:Boardvote/dump|Hồ sơ bầu cử mật mã hóa]]',
+	'boardvote_intro'        => '<p>Chào mừng bạn đã tới cuộc bầu cử lần thứ hai cho Ban Quản tri Wikimedia. Chúng ta sẽ bầu cho hai người đại diện cho cộng đồng thành viên trên các dự án Wikimedia. Họ sẽ cùng định hướng tương lai của các dự án, từng người một và toàn bộ, và sẽ theo những quan tâm và chuyện lo <em>của bạn</e> tại Ban Quản trị. Họ sẽ quyết định về cách phát thu nhập và cách sử dụng tiền cho.</p>
+
+<p>Xin hãy đọc những lời tuyên bố và trả lời của những ứng cử cẩn thận trước khi bỏ phiếu. Mọi ứng cử viên là thành viên được cộng đồng kính trọng, và họ đã đóng góp nhiều sức và thì giờ để làm mỗi dự án thân mật để kiếm và phổ biến thông tin.</p>
+
+<p>Bạn được phép bỏ phiếu cho hơn một ứng cử viên. Trong mỗi cuộc thi, người ứng cử được nhiều lá phiếu nhất sẽ thắng ghế đó. Nếu trường hợp là hai người cùng số phiếu thì sẽ bầu cử lại.</p>
+
+<p>Để biết thêm về bầu cử này, xem:</p>
+<ul>
+<li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">Hỏi đáp về bầu cử</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006" class="external">Giới thiệu các ứng cử viên</a></li>
+</ul>',
+	'boardvote_intro_change' => '<p>Bạn đã bỏ phiếu rồi, nhưng có thể đổi phiếu dùng biểu mẫu ở dưới. Xin hãy đánh hộp kiểm bên cạnh mọi ứng cử viên mà bạn muốn ủng hộ.</p>',
+	'boardvote_entered'      => 'Cám ơn bạn, lá phiếu của bạn đã được lưu thành công. Bạn có thể ghi xuống những chi tiết ở dưới để nhớ lựa chọn. Lá phiếu của bạn là:
+
+<pre>$1</pre>
+
+Nó đã mật mã hóa dùng chiều khóa công cộng của nhóm viên chức bầu cử:
+
+<pre>$2</pre>
+
+Kết quả là phiên bản đã mật mã hóa ở dưới. Trang [[Special:Boardvote/dump]] sẽ liệt kê nó cho mọi người xem.
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Trở lại]]',
+	'boardvote_nosession'    => 'Rất tiếc, không biết ID thành viên Wikimedia của bạn. Xin hãy đăng nhập tại wiki mà bạn đã có đủ tiêu chuẩn, và đi vào <nowiki>[[Special:Boardvote]]</nowiki>. Bạn cần phải sử dụng tài khoản đã đóng góp $1 lần trở lên trước $2, và đã đóng góp lần đầu tiên trước $3.',
+	'boardvote_notloggedin'  => 'Bạn chưa đăng nhập. Để bỏ phiếu, bạn cần phải sử dụng tài khoản đã đóng góp $1 lần trở lên trước $2, và đã đóng góp lần đầu tiên trước $3.',
+	'boardvote_notqualified' => 'Rất tiếc, tài khoản này chỉ có $1 sửa đổi trước $2, nên không đủ tiêu chuẩn bỏ phiếu kỳ này. Bạn cần phải đã đóng góp $3 lần trở lên trước $2, và đã đóng góp lần đầu tiên trước $5. Nếu bạn làm thêm sửa đổi dùng tài khoản khác ở đây hay ở một wiki khác thuộc về Quỹ Hỗ trợ Wikimedia, xin hãy sử dụng tài khoản đó để bỏ phiếu.',
+	'boardvote_novotes'      => 'Chưa có ai bỏ phiếu.',
+	'boardvote_time'         => 'Lúc giờ',
+	'boardvote_user'         => 'Thành viên',
+	'boardvote_edits'        => 'Số lần sửa đổi',
+	'boardvote_days'         => 'Thời gian đóng góp',
+	'boardvote_ip'           => 'Địa chỉ IP',
+	'boardvote_ua'           => 'Trình duyệt',
+	'boardvote_listintro'    => '<p>Danh sách này có tất cả mọi lá phiếu đến lúc này. $1 có dữ liệu mật mã hóa.</p>',
+	'boardvote_dumplink'     => 'Hãy nhấn chuột vào đây',
+	'boardvote_submit'       => 'Được',
+	'boardvote_strike'       => 'Gạch bỏ',
+	'boardvote_unstrike'     => 'Phục hồi',
+	'boardvote_needadmin'    => 'Chỉ có viên chức bầu cử được làm việc này.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Bầu cử cho Ban Quản trị Wikimedia</a> cho đến ngày 12 tháng 7',
+	'boardvote_notstarted'   => 'Cuộc bầu cử chưa bắt đầu',
+	'boardvote_closed'       => 'Kỳ bầu cử này đã kết thúc rồi. Hãy xem [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En kết quả bầu cử].',
+	'boardvote_edits_many'   => 'nhiều',
+	'group-boardvote'        => 'Các viên chức bầu cử',
+	'group-boardvote-member' => 'Viên chức bầu cử',
+	'grouppage-boardvote'    => '{{ns:project}}:Viên chức bầu cử',
+	'boardvote_blocked'      => 'Rất tiếc, tài khoản của bạn đã bị cấm. Các thành viên bị cấm không được phép bỏ phiếu.',
+	'boardvote_welcome'      => "Hoan nghênh '''$1'''!",
+	'go_to_board_vote'       => 'Bầu cử cho Ban Quản trị Wikimedia 2007',
+	'boardvote_redirecting'  => 'Để cho cuộc bầu cử này được an toàn và trong sạch hơn, chúng ta thực hiện nó trên máy chủ bên ngoài được quản lý riêng khỏi các máy thường.
+
+Bạn sẽ được chuyển đến máy chủ này trong vòng 20 giây. Hãy [$1 nhấn chuột vào đây] để qua đấy ngay.
+
+Bạn có thể gặp lời cảnh cáo nói về một giấy chứng nhận chưa được ký.',
 );
 
 /** Volapük (Volapük)

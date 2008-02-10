@@ -535,6 +535,7 @@ $messages['fr'] = array(
 	'mv_search_stream_title'         => 'Rechercher le flux actuel',
 	'mv_new_ht_en'                   => 'Nouvelle transcription',
 	'mv_new_anno_en'                 => 'Nouvelle balise ou annotation',
+	'mv_protect_source_material'     => 'Matériel source original protégé en écriture',
 );
 
 /** Galician (Galego)
@@ -939,6 +940,7 @@ $messages['nl'] = array(
 	'mv_search_stream_title'         => 'Zoeken in de huidige stream',
 	'mv_new_ht_en'                   => 'Nieuwe transcriptie',
 	'mv_new_anno_en'                 => 'Nieuwe tag of annotatie',
+	'mv_protect_source_material'     => 'Origineel bronmateriaal dat niet bewerkt kan worden',
 );
 
 /** Occitan (Occitan)
@@ -1477,6 +1479,7 @@ Alebo môžete <a href="$3">Pridať stream</a>.',
 	'mv_search_stream_title'         => 'Hľadať v aktuálnom streame',
 	'mv_new_ht_en'                   => 'Nový prepis',
 	'mv_new_anno_en'                 => 'Nová značka alebo poznámka',
+	'mv_protect_source_material'     => 'Originálny zdrojový materiál zamknutý proti úpravám',
 );
 
 /** Swedish (Svenska)

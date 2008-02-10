@@ -58,50 +58,44 @@ $messages['qqq'] = array(
 	'oversight' => 'Oversight extension. The name of the page Special:Oversight, used in the list of special pages and at the top of Special:Oversight.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'hiderevision' => 'أخف النسخ بشكل دائم',
-	'hiderevision-prompt' => 'رقم النسخة للإزالة:',
-	'hiderevision-continue' => 'استمر',
-	'hiderevision-text' => 'هذا يجب أن يستخدم \'\'\'فقط\'\'\' في الحالات التالية:
+	'hiderevision'                => 'أخف النسخ بشكل دائم',
+	'hiderevision-desc'           => 'إخفاء نسخ منفردة من كل المستخدمين لأسباب قانونية، إلى آخره.',
+	'hiderevision-prompt'         => 'رقم النسخة للإزالة:',
+	'hiderevision-continue'       => 'استمر',
+	'hiderevision-text'           => "هذا يجب أن يستخدم '''فقط''' في الحالات التالية:
 * معلومات شخصية غير ملائمة
-*: \'\'عناوين المنازل وأرقام الهواتف، أرقام التأمين الاجتماعي، إلى آخره\'\'
+*: ''عناوين المنازل وأرقام الهواتف، أرقام التأمين الاجتماعي، إلى آخره''
 
-\'\'\'إساءة استخدام هذا النظام سينتج عنه فقد الصلاحيات.\'\'\'
+'''إساءة استخدام هذا النظام سينتج عنه فقد الصلاحيات.'''
 
 المدخلات المزالة لن تكون مرئية لأي شخص عبر موقع الويب،
-لكن عمليات الحذف ستسجل ويمكن استرجاعها يدويا بواسطة مدير قاعدة بيانات لو ارتكبت خطأ.',
-	'hiderevision-reason' => 'السبب (سيسجل سرا):',
-	'hiderevision-submit' => 'أخف هذه البيانات بشكل دائم',
-	'hiderevision-tab' => 'إخفاء النسخة',
-	'hiderevision-norevisions' => 'لا نسخ محددة للحذف.',
-	'hiderevision-noreason' => 'يجب أن تصف السبب لهذه الإزالة.',
-	'hiderevision-status' => 'النسخة $1: $2',
-	'hiderevision-success' => 'تمت الأرشفة والحذف بنجاح.',
-	'hiderevision-error-missing' => 'غير موجود في قاعدة البيانات.',
-	'hiderevision-error-current' => 'لا يمكن حذف آخر تعديل لصفحة. استرجع هذا التغيير أولا.',
-	'hiderevision-error-delete' => 'لم يمكن الأرشفة؛ هل تم حذفها سابقا؟',
+لكن عمليات الحذف ستسجل ويمكن استرجاعها يدويا بواسطة مدير قاعدة بيانات لو ارتكبت خطأ.",
+	'hiderevision-reason'         => 'السبب (سيسجل سرا):',
+	'hiderevision-submit'         => 'أخف هذه البيانات بشكل دائم',
+	'hiderevision-tab'            => 'إخفاء النسخة',
+	'hiderevision-norevisions'    => 'لا نسخ محددة للحذف.',
+	'hiderevision-noreason'       => 'يجب أن تصف السبب لهذه الإزالة.',
+	'hiderevision-status'         => 'النسخة $1: $2',
+	'hiderevision-success'        => 'تمت الأرشفة والحذف بنجاح.',
+	'hiderevision-error-missing'  => 'غير موجود في قاعدة البيانات.',
+	'hiderevision-error-current'  => 'لا يمكن حذف آخر تعديل لصفحة. استرجع هذا التغيير أولا.',
+	'hiderevision-error-delete'   => 'لم يمكن الأرشفة؛ هل تم حذفها سابقا؟',
 	'hiderevision-archive-status' => 'النسخة المحذوفة من $1: $2',
-	'oversight-nodiff' => 'غير قادر على تتبع التغييرات حيث أنه لا توجد نسخة سابقة للصفحة. إما:
+	'oversight-nodiff'            => 'غير قادر على تتبع التغييرات حيث أنه لا توجد نسخة سابقة للصفحة. إما:
 *الصفحة تم حذفها
 *هذه النسخة المخفية كانت النسخة الأولى',
-	'oversight-log-hiderev' => 'أزال تعديلا من $1',
-	'oversight' => 'أوفرسايت',
-	'oversight-view' => 'التفاصيل',
-	'oversight-difference' => '(الفرق من النسخة المتبقية السابقة)',
-	'oversight-prev' => 'آخر نسخة سابقة',
-	'oversight-hidden' => 'نسخة مخفية',
-	'oversight-header' => 'بالأسفل قائمة بالنسخ التي تم إخفاؤها بشكل دائم حديثا عن العامة.
+	'oversight-log-hiderev'       => 'أزال تعديلا من $1',
+	'oversight'                   => 'أوفرسايت',
+	'oversight-view'              => 'التفاصيل',
+	'oversight-difference'        => '(الفرق من النسخة المتبقية السابقة)',
+	'oversight-prev'              => 'آخر نسخة سابقة',
+	'oversight-hidden'            => 'نسخة مخفية',
+	'oversight-header'            => 'بالأسفل قائمة بالنسخ التي تم إخفاؤها بشكل دائم حديثا عن العامة.
 إفشاء هذه المعلومات يمكن أن ينتج عنه فقد دائم لصلاحيات الأوفرسايت.',
-);
-/** Bulgarian (Български)
- * @author DCLXVI
- */
-$messages['bg'] = array(
-	'hiderevision-continue' => 'Продължаване',
-	'hiderevision-tab'      => 'Скриване на редакцията',
-	'hiderevision-status'   => 'Редакция $1: $2',
-	'oversight-view'        => 'детайли',
-	'oversight-hidden'      => 'Скрита редакция',
 );
 
 /** Asturian (Asturianu)
@@ -576,6 +570,7 @@ Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wuš
  */
 $messages['hu'] = array(
 	'hiderevision'                => 'Állandó rejtett átdolgozások',
+	'hiderevision-desc'           => 'Adott változatok eltüntetése az összes felhasználó elöl, például jogi okokból.',
 	'hiderevision-prompt'         => 'Eltávolítandó változat:',
 	'hiderevision-continue'       => 'Folytatódik',
 	'hiderevision-text'           => "Ez az eszköz '''csak''' az alábbi esetekben használható:
@@ -864,10 +859,15 @@ $messages['lb'] = array(
 );
 
 /** Limburgish (Limburgs)
+ * @author Matthias
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
-	'hiderevision-text' => "Dit deent '''allein''' gebroek te waere in de volgende gevalle:
+	'hiderevision'                => 'Versies permanent verberge',
+	'hiderevision-desc'           => 'Verberg bewerkinge veur alle gebroekers om juridische redene, etc.',
+	'hiderevision-prompt'         => 'Te verwijdere versienummer:',
+	'hiderevision-continue'       => 'Doorguuen',
+	'hiderevision-text'           => "Dit deent '''allein''' gebroek te waere in de volgende gevalle:
 * Ontoelaotbare perseunlike informatie
 *: ''woonadresse en telefoonnommers, sofinommers, enzovoort''
 
@@ -876,6 +876,22 @@ $messages['li'] = array(
 Verwiederde versies zeen neet veur edereen zichbaar via de website,
 meh verwiederde objecte waere in logbeuk biegehaje en kinnen handjmaotig
 trökgezat waere door databasebeheerders es geer 'n fout maak.",
+	'hiderevision-status'         => 'Versie $1: $2',
+	'hiderevision-success'        => 'Archiveren en verwijderen geslaagd.',
+	'hiderevision-error-missing'  => 'Niet gevonden in database.',
+	'hiderevision-error-current'  => 'De laatste bewerkin van een pagina kan niet verwijderd worden. Draai de bewerking eerst terug.',
+	'hiderevision-error-delete'   => 'Archiveren mislukt; waren de gegevens al verwijderd?',
+	'hiderevision-archive-status' => 'Verwijder versie van $1: $2',
+	'oversight-nodiff'            => 'Neet in staat om de wijziginge weer te gaeve omdat er gein eerdere versie van de pagina aanwezig is, omdat:
+*De pagina waar gewis
+*Deze verborge versie de eerste versie waar',
+	'oversight-log-hiderev'       => "wiste 'n bewerking oet $1",
+	'oversight'                   => 'Oversight',
+	'oversight-view'              => 'details',
+	'oversight-difference'        => '(Versjille met vorge zichtbare versie)',
+	'oversight-prev'              => 'Letste vorge versie',
+	'oversight-hidden'            => 'Verborge versie',
+	'oversight-header'            => "Hie onder steit 'n lijst met versies die permanent verborge zien veur idderein. 't Vriegaeve van deze informatie kan tot gevolg höbbe dat Oversightrechte worde ingenaeme.",
 );
 
 /** Lithuanian (Lietuvių)
@@ -937,6 +953,44 @@ teruggeet worden door databasebeheerders als u een fout maakt.",
 	'oversight-hidden'            => 'Verborgen versie',
 	'oversight-header'            => 'Hieronder staat een lijst met versies die permanent verborgen zijn voor iedereen.
 Het vrijgeven van deze informatie kan tot gevolg hebben dat Oversightrechten worden ingenomen.',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'hiderevision'                => 'Fjern versjonar av sider permanent',
+	'hiderevision-desc'           => 'Fjern individuelle versjonar av sider for alle brukarane, til dømes av juridiske grunnar.',
+	'hiderevision-prompt'         => 'Nummeret på versjonen som skal fjernast:',
+	'hiderevision-continue'       => 'Hald fram',
+	'hiderevision-text'           => "Denne funksjonen bør '''berre''' brukast i slike tilfelle:
+* Upassande perslonleg informasjon
+*: ''Heimeadresser og telefonnummer, personnummer osb.''
+
+'''Misbruk av dette systemet vil føre til at du mistar retten til å bruke det.'''
+
+Versjonar av sider som vert fjerna vil ikkje vere tilgjengelege for nokon via nettsida, men slettingane vert logga og kan attopprettast manuelt av ein databaseadministrator dersom du gjer ein feil.",
+	'hiderevision-reason'         => 'Grunn (vert logga privat):',
+	'hiderevision-submit'         => 'Fjern denne informasjonen permanent',
+	'hiderevision-tab'            => 'Fjern versjonen',
+	'hiderevision-norevisions'    => 'Ingen versjonar er merka for fjerning.',
+	'hiderevision-noreason'       => 'Du må gje ein grunn for denne fjerninga.',
+	'hiderevision-status'         => 'Versjon $1: $2',
+	'hiderevision-success'        => 'Versjonen vart arkivert og fjerna.',
+	'hiderevision-error-missing'  => 'Ikkje funne i databasen.',
+	'hiderevision-error-current'  => 'Kan ikkje slette den siste endringa på ei side. Rull attende denne endringa fyrst.',
+	'hiderevision-error-delete'   => 'Kunne ikkje arkivere, er endringa sletta tidlegare?',
+	'hiderevision-archive-status' => 'Sletta versjon frå $1: $2',
+	'oversight-nodiff'            => 'Kunne ikke spore endringer sidan det ikke finst tidlegare versjonar av sida. Enten:
+*Er sida sletta
+*Eller den fjerna versjonen var den fyrste versjonen',
+	'oversight-log-hiderev'       => 'fjerna ei endring frå $1',
+	'oversight'                   => 'Versjonsfjerning',
+	'oversight-view'              => 'detaljar',
+	'oversight-difference'        => '(Skilnad frå tidlegare attverande versjon)',
+	'oversight-prev'              => 'Siste tidlegare versjon',
+	'oversight-hidden'            => 'Fjerna versjon',
+	'oversight-header'            => 'Dette er ei liste over dei siste versjonane av sider som permanent er fjerna frå offentleg innsyn. Å gje denne informasjonen vidare kan gjere til at du permanent mistar retten til versjonsfjerning.',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

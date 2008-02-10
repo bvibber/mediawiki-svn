@@ -24,17 +24,21 @@ $messages['en'] = array(
 	'importfreeimages_returntoform'   => 'Or, click <a href=\'$1\'>here</a> to return to your search results',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'importfreeimages'              => 'استيراد صور حرة',
-	'importfreeimages_description'  => 'هذه الصفحة تسمح لك بالبحث في الصور المرخصة جيدا من فلكر واستيرادها إلى الويكي الخاص بك.',
-	'importfreeimages_noapikey'     => 'لم تقم بضبط مفتاح API فلكر الخاص بك. لفعل هذا، من فضلك احصل على مفتاح API من  [http://www.flickr.com/services/api/misc.api_keys.html هنا] واضبط wgFlickrAPIKey في ImportFreeImages.php.',
-	'importfreeimages_nophotosfound' => 'لا صور تم العثور عليها لمدخلة البحث الخاصة بك \'$1\'، من فضلك حاول مرة ثانية.',
-	'importfreeimages_owner'        => 'المؤلف',
-	'importfreeimages_importthis'   => 'استورد هذا',
-	'importfreeimages_next'         => '$1 التالي',
-	'importfreeimages_filefromflickr' => '$1 بواسطة المستخدم <b>[$2]</b> من فلكر. المسار الأصلي',
+	'importfreeimages'                       => 'استيراد صور حرة',
+	'importfreeimages-desc'                  => 'يوفر طريقة لاستيراد صور مرخصة بشكل سليم من فليكر.',
+	'importfreeimages_description'           => 'هذه الصفحة تسمح لك بالبحث في الصور المرخصة جيدا من فلكر واستيرادها إلى الويكي الخاص بك.',
+	'importfreeimages_noapikey'              => 'لم تقم بضبط مفتاح API فلكر الخاص بك. لفعل هذا، من فضلك احصل على مفتاح API من  [http://www.flickr.com/services/api/misc.api_keys.html هنا] واضبط wgFlickrAPIKey في ImportFreeImages.php.',
+	'importfreeimages_nophotosfound'         => "لا صور تم العثور عليها لمدخلة البحث الخاصة بك '$1'، من فضلك حاول مرة ثانية.",
+	'importfreeimages_owner'                 => 'المؤلف',
+	'importfreeimages_importthis'            => 'استورد هذا',
+	'importfreeimages_next'                  => '$1 التالي',
+	'importfreeimages_filefromflickr'        => '$1 بواسطة المستخدم <b>[$2]</b> من فلكر. المسار الأصلي',
 	'importfreeimages_promptuserforfilename' => 'من فضلك أدخل اسما لتخزين الملف به:',
-	'importfreeimages_returntoform' => 'أو، اضغط <a href=\'$1\'>هنا</a> للعودة إلى نتائج بحثك',
+	'importfreeimages_returntoform'          => "أو، اضغط <a href='$1'>هنا</a> للعودة إلى نتائج بحثك",
 );
 
 /** Bulgarian (Български)
@@ -186,6 +190,7 @@ $messages['oc'] = array(
  */
 $messages['pt'] = array(
 	'importfreeimages'                       => 'Importar Imagens Livres',
+	'importfreeimages-desc'                  => 'Providencia uma forma de importar fotografias devidamente licenciadas do flickr.',
 	'importfreeimages_nophotosfound'         => "Nenhuma fotografia foi encontrada segundo o seu critério de busca '$1'; por favor, tente de novo.",
 	'importfreeimages_owner'                 => 'Autor',
 	'importfreeimages_importthis'            => 'importar isto',
@@ -216,6 +221,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'importfreeimages'                       => 'Importovať slobodné obrázky',
+	'importfreeimages-desc'                  => 'Umožňuje importovanie obrázkov so správnou licenciou z flickr',
 	'importfreeimages_description'           => 'Táto stránka vám umožní importovať správne licencované obrázky z flickr a importovať ich na vašu wiki.',
 	'importfreeimages_noapikey'              => 'Nenakonfigurovali ste kľúč API Flickr. Urobíte tak po získaní kľúča API [http://www.flickr.com/services/api/misc.api_keys.html odtiaľto] a nastavení premennej wgFlickrAPIKey v ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'         => 'Neboli nájdené žiadne obrázky zodpovedajúce vašim kritériám vyhľadávania „$1“. Prosím, skúste to znova.',

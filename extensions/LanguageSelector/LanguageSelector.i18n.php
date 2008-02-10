@@ -28,6 +28,7 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'languageselector'         => 'اللغة',
+	'languageselector-desc'    => 'اختيار اللغة في كل صفحة، أيضا للزائرين',
 	'languageselector-setlang' => 'ضبط',
 );
 
@@ -115,6 +116,7 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'languageselector'         => 'Rěč',
+	'languageselector-desc'    => 'Wuběr rěčow na kóždej stronje, tež za wopytowarjow',
 	'languageselector-setlang' => 'stajić',
 );
 
@@ -177,10 +179,11 @@ $messages['nds'] = array(
 );
 
 /** Dutch (Nederlands)
- * @author SPQRobin
-*/
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'languageselector' => 'Taal',
+	'languageselector'         => 'Taal',
+	'languageselector-desc'    => 'Taalselectie op iedere pagina, ook voor gebruikers die niet zijn aangemeld',
 	'languageselector-setlang' => 'instellen',
 );
 
@@ -229,6 +232,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'languageselector'         => 'Jazyk',
+	'languageselector-desc'    => 'Výber jazyka na každej stránke, aj pre návštevníkov',
 	'languageselector-setlang' => 'nastaviť',
 );
 
@@ -292,3 +296,4 @@ $messages['zh-hant'] = array(
 	'languageselector' => '語言',
 	'languageselector-setlang' => '設定',
 );
+

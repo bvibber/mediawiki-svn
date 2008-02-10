@@ -173,3 +173,11 @@ $messages['stq'] = array(
 	'randomincategory-submit'     => 'OK',
 );
 
+/** Swedish (Svenska)
+ * @author Max sonnelid
+ */
+$messages['sv'] = array(
+	'randomincategory-label'  => 'Kategori:',
+	'randomincategory-submit' => 'Gå',
+);
+

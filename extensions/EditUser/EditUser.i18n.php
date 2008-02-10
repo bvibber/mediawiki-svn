@@ -27,3 +27,15 @@ $messages['fi'] = array(
 	'edituser-username' => 'Nimi',
 	'edituser-dosearch' => 'Hae',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'edituser-desc'     => 'Maakt het voor geautoriseerde gebruikers mogelijk de voorkeuren van andere gebruikers te bewerken',
+	'edituser'          => 'Gebruiker bewerken',
+	'edituser-logout'   => 'Gebruiker afmelden',
+	'edituser-username' => 'Naam',
+	'edituser-dosearch' => 'Zoeken',
+);
+

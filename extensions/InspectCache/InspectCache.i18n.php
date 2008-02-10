@@ -25,6 +25,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'inspectcache'         => 'اشتبه في الكاش',
+	'inspectcache-desc'    => 'أداة ديبجينج بسيطة لفحص محتويات الكاش المشترك',
 	'inspectcache-ok'      => 'موافق',
 	'inspectcache-general' => 'الكاش العام',
 	'inspectcache-parser'  => 'كاش البارسر',
@@ -90,6 +91,7 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'inspectcache'         => 'Pufrowak pruwować',
+	'inspectcache-desc'    => 'Jednory nastroj za pytanje zmylkow, za přepruwowanje wobsaha dźěleneho pufrowaka',
 	'inspectcache-ok'      => 'W porjadku',
 	'inspectcache-general' => 'Powšitkowny pufrowak',
 	'inspectcache-parser'  => 'Parserowy pufrowak',
@@ -202,6 +204,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'inspectcache'         => 'Inšpekcia vyrovnávacej pamäte',
+	'inspectcache-desc'    => 'Jednoduchý ladiaci nástroj na skúmanie obsahu zdieľanej vyrovnávacej pamäte',
 	'inspectcache-ok'      => 'OK',
 	'inspectcache-general' => 'Všeobecná vyrovnávacia pamäť',
 	'inspectcache-parser'  => 'Vyrovnávacia pamäť syntaktického analyzátora',

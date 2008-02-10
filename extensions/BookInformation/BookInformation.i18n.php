@@ -535,6 +535,17 @@ $messages['lt'] = array(
 	'bookinfo-purchase'          => 'Pirkti šią knygą iš $1',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Jacob.jose
+ */
+$messages['ml'] = array(
+	'bookinfo-header'           => 'പുസ്തകത്തെക്കുറിച്ചുള്ള വിവരങ്ങള്‍',
+	'bookinfo-result-title'     => 'തലക്കെട്ട്:',
+	'bookinfo-result-author'    => 'ഗ്രന്ഥകര്‍ത്താവ്:',
+	'bookinfo-result-publisher' => 'പ്രസാധകന്‍:',
+	'bookinfo-result-year'      => 'വര്‍ഷം:',
+);
+
 /** Erzya (эрзянь кель)
  * @author Amdf
  */
@@ -842,6 +853,24 @@ $messages['tr'] = array(
 	'bookinfo-result-year'      => 'Yıl:',
 	'bookinfo-purchase'         => 'Bu kitapı buradan satın al: $1',
 	'bookinfo-provider'         => 'Veri sağlayıcısı: $1',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'bookinfo-header'            => 'Thông tin về sách',
+	'bookinfo-desc'              => 'Mở rộng [[{{ns:Special}}:Booksources]] để cung cấp thông tin từ một dịch vụ Web',
+	'bookinfo-result-title'      => 'Tên:',
+	'bookinfo-result-author'     => 'Tác giả:',
+	'bookinfo-result-publisher'  => 'Nhà xuất bản:',
+	'bookinfo-result-year'       => 'Năm:',
+	'bookinfo-error-invalidisbn' => 'Số ISBN không hợp lệ.',
+	'bookinfo-error-nosuchitem'  => 'Khoản này không tồn tại hay không kiếm được.',
+	'bookinfo-error-nodriver'    => 'Không có thể khởi chạy chương trình thông tin sách phù hợp.',
+	'bookinfo-error-noresponse'  => 'Không có trả lời, hay đã chờ trả lời lâu quá.',
+	'bookinfo-purchase'          => 'Mua sách này từ $1',
+	'bookinfo-provider'          => 'Dịch vụ cung cấp dữ liệu: $1',
 );
 
 /** Volapük (Volapük)

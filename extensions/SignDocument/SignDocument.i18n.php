@@ -100,12 +100,12 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
- * @author Max sonnelid
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'signaturelogpage'     => 'Signatur Logg',
-	'signaturelogpagetext' => 'Detta är en logg över alla signaturer tillaggda till dokument via [[Special:SignDocument]].',
-	'signaturelogentry'    => 'signera dokumentet $1',
+	'signaturelogpage'     => 'Signeringslogg',
+	'signaturelogpagetext' => 'Detta är en logg över alla signaturer som lagts till dokument via [[Special:SignDocument]].',
+	'signaturelogentry'    => 'signerade dokumentet $1',
 );
 
 /** Volapük (Volapük)

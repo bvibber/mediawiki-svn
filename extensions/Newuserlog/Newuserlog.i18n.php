@@ -49,6 +49,7 @@ $messages['an'] = array(
 $messages['ar'] = array(
 	'newuserlogpage'           => 'سجل إنشاء الحسابات الجديدة',
 	'newuserlogpagetext'       => 'هذا سجل بعمليات إنشاء الحسابات الجديدة',
+	'newuserlog-desc'          => 'يضيف [[Special:Log/newusers|سجل بإنشاء الحسابات]] إلى [[Special:Log]]',
 	'newuserlog-byemail'       => 'كلمة السر تم إرسالها بواسطة البريد الإلكتروني',
 	'newuserlog-create-entry'  => 'مستخدم جديد',
 	'newuserlog-create2-entry' => 'أنشأ الحساب الخاص باسم $1',
@@ -100,8 +101,17 @@ $messages['bn'] = array(
 	'newuserlog-create2-entry' => '$1-এর জন্য অ্যাকাউন্ট সৃষ্টি করা হয়েছে',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ * @author SPQRobin
+ */
 $messages['br'] = array(
+	'newuserlogpage'           => "Marilh ar c'hontoù krouet",
+	'newuserlogpagetext'       => "Marilh krouiñ ar c'hontoù implijer",
+	'newuserlog-desc'          => 'Ouzhpennañ a ra ur [[Special:Log/newusers|marilh krouiñ kontoù]] da [[Special:Log|roll an holl varilhoù]]',
+	'newuserlog-byemail'       => 'ger-tremen kaset dre bostel',
 	'newuserlog-create-entry'  => 'Implijer nevez',
+	'newuserlog-create2-entry' => 'kont krouet evit $1',
 );
 
 $messages['ca'] = array(
@@ -345,10 +355,12 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dorgan
+ * @author Bdanee
  */
 $messages['hu'] = array(
 	'newuserlogpage'           => 'Új felhasználók naplója',
 	'newuserlogpagetext'       => 'Ez a napló az újonnan beregisztrált felhasználók listája.',
+	'newuserlog-desc'          => 'A [[Special:Log|rendszernaplókat]] kiegészíti az [[Special:Log/newusers|új felhasználói fiókok készítésének naplójával]]',
 	'newuserlog-byemail'       => 'a jelszót kiküldtük a megadott e-mail címre',
 	'newuserlog-create-entry'  => 'új felhasználóként regisztrált',
 	'newuserlog-create2-entry' => 'új felhasználót hozott létre $1 néven',
@@ -468,10 +480,12 @@ $messages['lb'] = array(
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
+ * @author Matthias
  */
 $messages['li'] = array(
 	'newuserlogpage'           => 'Logbook nuuj gebroekers',
 	'newuserlogpagetext'       => 'Hiej ónger saton de nuuj ingesjreve gebroekers',
+	'newuserlog-desc'          => "Voegt 'n [[Special:Log/newusers|logbook van nuje gebroejkers]] toe aan de [[special:Log|logbuuek]].",
 	'newuserlog-byemail'       => 'wachwaord is verzönje per e-mail',
 	'newuserlog-create-entry'  => "is 'ne nuje gebroeker",
 	'newuserlog-create2-entry' => 'haet de gebroeker [[user:$1|$1]] aangemaak',
@@ -569,6 +583,7 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'newuserlogpage'           => 'Brukaropprettingslogg',
 	'newuserlogpagetext'       => 'Dette er ein logg over oppretta brukarkontoar.',
+	'newuserlog-desc'          => 'Legg til ein [[Special:Log/newusers|logg over brukaropprettingar]] på [[Special:Log]].',
 	'newuserlog-byemail'       => 'passordet er sendt på e-post',
 	'newuserlog-create-entry'  => 'Ny brukar',
 	'newuserlog-create2-entry' => 'oppretta konto for $1',

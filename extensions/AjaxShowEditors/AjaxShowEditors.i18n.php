@@ -298,6 +298,13 @@ $messages['lt'] = array(
 	'ajax-se-idling'  => '(prieš $1 s)',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Jacob.jose
+ */
+$messages['ml'] = array(
+	'ajax-se-title' => 'നിലവില്‍ തിരുത്തിക്കൊണ്ടിരിക്കുന്നത്:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -306,6 +313,16 @@ $messages['nl'] = array(
 	'ajax-se-title'   => 'Bezig met het bewerken van:',
 	'ajax-se-pending' => 'moet nog bijgewerkt worden ... (klik op deze knop of begin met bewerken)',
 	'ajax-se-idling'  => '($1s geleden)',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'ajax-se-desc'    => 'Viser kva brukarar som endrar same side som ein sjølv',
+	'ajax-se-title'   => 'Endrar no:',
+	'ajax-se-pending' => 'Ventar på oppdatering … (klikk på denne boksen eller set i gang med å endre)',
+	'ajax-se-idling'  => '($1 sekund sidan)',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

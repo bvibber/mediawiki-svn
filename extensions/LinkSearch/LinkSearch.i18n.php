@@ -23,8 +23,12 @@ $messages['af'] = array(
 	'linksearch'       => 'Soek webskakels',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
 	'linksearch'       => 'بحث وصلات الويب',
+	'linksearch-desc'  => 'ابحث عن الصفحات التي تحتوي على وصلات خارجية تطابق أنماطا معينة',
 	'linksearch-pat'   => 'نمط البحث:',
 	'linksearch-ns'    => 'النطاق:',
 	'linksearch-ok'    => 'بحث',
@@ -226,8 +230,12 @@ $messages['hr'] = array(
 	'linksearch-error' => 'Džoker znakovi se mogu rabiti samo na početku imena poslužitelja.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'linksearch'       => 'Pytanje eksternych wotkazow',
+	'linksearch-desc'  => 'Strony z wotkazami namakać, kotrež so z specifiskimi mustrami kryja',
 	'linksearch-pat'   => 'Pytanski muster:',
 	'linksearch-ns'    => 'Mjenowy rum:',
 	'linksearch-ok'    => 'OK',
@@ -387,8 +395,13 @@ $messages['ne'] = array(
 	'linksearch-ok' => 'खोज्नुहोस्',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ * @author SPQRobin
+ */
 $messages['nl'] = array(
 	'linksearch'       => 'Externe links zoeken',
+	'linksearch-desc'  => "Pagina's zoeken met externe links die aan een bepaald patroon voldoen",
 	'linksearch-pat'   => 'Zoekpatroon:',
 	'linksearch-ns'    => 'Naamruimte:',
 	'linksearch-ok'    => 'Zoeken',
@@ -453,8 +466,12 @@ $messages['pms'] = array(
 	'linksearch-error' => 'Ij ciapatut as peulo butesse mach an prinsipi dël nòm dël servent.',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
 $messages['pt'] = array(
 	'linksearch'       => 'Procurar por links da web',
+	'linksearch-desc'  => 'Busca páginas com ligações externas que correspondem a padrões específicos',
 	'linksearch-pat'   => 'Padrão de procura:',
 	'linksearch-ns'    => 'Espaço nominal:',
 	'linksearch-ok'    => 'Pesquisar',
@@ -507,6 +524,7 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'linksearch'       => 'Hľadať webové odkazy',
+	'linksearch-desc'  => 'Hľadanie stránok s externými odkazmi zodpovedajúcimi zadanému vzoru',
 	'linksearch-pat'   => 'Vyhľadávací vzor:',
 	'linksearch-ns'    => 'Menný priestor:',
 	'linksearch-ok'    => 'Hľadať',
@@ -547,8 +565,12 @@ $messages['stq'] = array(
 	'linksearch-error' => 'Wildcards konnen bloot an dän Ounfang fon ju URL ferwoand wäide.',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
 $messages['sv'] = array(
 	'linksearch'       => 'Sök webblänkar',
+	'linksearch-desc'  => 'Söker efter externa länkar som matchar vissa mönster',
 	'linksearch-pat'   => 'Sökmönster:',
 	'linksearch-ns'    => 'Namnrymd:',
 	'linksearch-ok'    => 'Sök',
@@ -647,3 +669,4 @@ $messages['zh-hant'] = array(
 	'linksearch-line'  => '$1 連自 $2',
 	'linksearch-error' => '萬用字元僅可在主機名稱的開頭使用。',
 );
+

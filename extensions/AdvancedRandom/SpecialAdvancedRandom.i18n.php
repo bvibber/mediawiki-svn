@@ -141,6 +141,14 @@ $messages['nl'] = array(
 	'advancedrandom-desc' => 'Vraag een willekeurige overlegpagina of pagina uit de hoofdnaamruimte op die verwijst naar een opgegeven pagina. Kan gebruikt worden als [[Special:AdvancedRandom/Template:Featured/Talk]] om een willekeurig etalage-artikel te tonen of als [[Special:AdvancedRandom/Template:GFDL/Image]] om een willekeurig GFDL gelicenseerd bestand te tonen',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'advancedrandom'      => 'Avansert tilfeldig side',
+	'advancedrandom-desc' => 'Finn ei tilfeldig side der det på sjølve sida eller diskusjonssida vert lenka til ei oppgjeve side, kan brukast til dømes med [[Special:AdvancedRandom/Mal:Utvald side/Diskusjon]] for å få ei tilfeldig utvald side eller med [[Special:AdvancedRandom/Mal:GFDL/Fil]] for å få ei tilfeldig GFDL-fil.',
+);
+
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
