@@ -7,6 +7,7 @@ import org.apache.lucene.analysis.TokenFilter;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.snowball.SnowballFilter;
 import org.apache.lucene.analysis.th.ThaiWordFilter;
+import org.wikimedia.lsearch.analyzers.EnglishSingularFilter.EnglishSingular;
 import org.wikimedia.lsearch.config.IndexId;
 
 /**
@@ -24,6 +25,7 @@ public class FilterFactory {
 	protected Class langFilter = null;
 	protected boolean usingCJK = false;
 	protected ArrayList<Class> additionalFilters = null;
+	protected Singular singular = null;
 	
 	protected FilterFactory noStemmerFilterFactory=null;
 	protected Set<String> stopWords;
@@ -40,10 +42,10 @@ public class FilterFactory {
 		this.iid = iid;
 		this.type = type;
 		init();
-		noStemmerFilterFactory = new FilterFactory(iid,lang,snowballName,false,useLangFilter,null,langFilter,additionalFilters); 
+		noStemmerFilterFactory = new FilterFactory(iid,lang,snowballName,false,useLangFilter,null,langFilter,additionalFilters,singular); 
 	}
 		
-	public FilterFactory(IndexId iid, String lang, String snowballName, boolean useStemmer, boolean useLangFilter, Class stemmer, Class langFilter, ArrayList<Class> additionalFilters) {
+	public FilterFactory(IndexId iid, String lang, String snowballName, boolean useStemmer, boolean useLangFilter, Class stemmer, Class langFilter, ArrayList<Class> additionalFilters, Singular singular) {
 		this.iid = iid;
 		this.lang = lang;
 		this.snowballName = snowballName;
@@ -52,6 +54,7 @@ public class FilterFactory {
 		this.stemmer = stemmer;
 		this.langFilter = langFilter;
 		this.additionalFilters = additionalFilters;
+		this.singular = singular;
 	}
 	
 	public FilterFactory getNoStemmerFilterFactory() {
@@ -100,6 +103,7 @@ public class FilterFactory {
 		
 		// figure out language-dependent filters
 		useLangFilter = true;
+		
 		if(lang.equals("th"))
 			langFilter = ThaiWordFilter.class;
 		else if(lang.equals("sr"))
@@ -114,11 +118,24 @@ public class FilterFactory {
 			useLangFilter = false;
 		
 		// additional filters
-		if(type == Type.SPELL_CHECK){
-			additionalFilters = new ArrayList<Class>();
-			additionalFilters.add(PhraseFilter.class);
-		}
+		if(type == Type.SPELL_CHECK)
+			addAdditionalFilter(PhraseFilter.class);
 		
+		if(type != Type.SPELL_CHECK && lang.equals("en"))
+			addAdditionalFilter(EnglishSingularFilter.class);
+		
+		// singulars
+		if(lang.equals("en"))
+			singular = new EnglishSingular();
+		else
+			singular = null;
+		
+	}
+	
+	protected void addAdditionalFilter(Class filterClass){
+		if(additionalFilters == null)
+			additionalFilters = new ArrayList<Class>();
+		additionalFilters.add(filterClass);
 	}
 	
 	public TokenFilter makeStemmer(TokenStream in){
@@ -196,6 +213,14 @@ public class FilterFactory {
 
 	public IndexId getIndexId() {
 		return iid;
+	}
+	
+	public boolean hasSingular(){
+		return singular != null;
+	}
+	
+	public Singular getSingular() {
+		return singular;
 	}
 	
 	

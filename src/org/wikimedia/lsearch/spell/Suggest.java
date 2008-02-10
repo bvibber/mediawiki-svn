@@ -32,7 +32,7 @@ import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
 import org.wikimedia.lsearch.analyzers.FieldNameFactory;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
-import org.wikimedia.lsearch.analyzers.WikiQueryParser;
+import org.wikimedia.lsearch.analyzers.WikiQueryParserOld;
 import org.wikimedia.lsearch.beans.ResultSet;
 import org.wikimedia.lsearch.beans.SearchResults;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
@@ -940,24 +940,6 @@ public class Suggest {
 			log.error("Cannot stem words "+word1+", "+word2+" : "+e.getMessage());			
 		}
 		return false;
-	}
-	
-	/** check if stemmed newWord is 1) not same to stememed oldWord, OR  2) not in stemmed set*/
-	public boolean stemNotSameOrInSet(String oldWord, String newWord, FilterFactory filters, Set<String> stemmedSet){
-		if(!filters.hasStemmer())
-			return false;
-		ArrayList<String> in = new ArrayList<String>();
-		in.add(oldWord); in.add(newWord);
-		TokenStream ts = filters.makeStemmer(new StringsTokenStream(in));
-		try {
-			Token t1 = ts.next();
-			Token t2 = ts.next();
-			if(t1 != null && t2 != null && (t1.termText().equals(t2.termText()) && stemmedSet.contains(t2.termText())))
-				return false;
-		} catch (IOException e) {
-			log.error("Cannot stem words "+oldWord+", "+oldWord+" : "+e.getMessage());			
-		}
-		return true;
 	}
 	
 	/** stem all words in the set */

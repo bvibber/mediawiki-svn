@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
@@ -14,53 +13,24 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.Token;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.index.Term;
-import org.apache.lucene.queryParser.ParseException;
 import org.apache.lucene.search.BooleanClause;
 import org.apache.lucene.search.BooleanQuery;
-import org.apache.lucene.search.CombinedPhraseQuery;
-import org.apache.lucene.search.ConstMinScore;
-import org.apache.lucene.search.CustomBoostQuery;
-import org.apache.lucene.search.CustomPhraseQuery;
-import org.apache.lucene.search.Explanation;
 import org.apache.lucene.search.LogTransformScore;
 import org.apache.lucene.search.PhraseQuery;
+import org.apache.lucene.search.PositionalOptions;
+import org.apache.lucene.search.PositionalQuery;
 import org.apache.lucene.search.Query;
-import org.apache.lucene.search.QueryOptions;
+import org.apache.lucene.search.RelevanceQuery;
 import org.apache.lucene.search.TermQuery;
-import org.apache.lucene.search.WildcardQuery;
 import org.apache.lucene.search.BooleanClause.Occur;
-import org.apache.lucene.search.function.CustomScoreQuery;
-import org.apache.lucene.search.function.FieldScoreQuery;
-import org.apache.lucene.search.function.ValueSource;
-import org.apache.lucene.search.function.ValueSourceQuery;
-import org.apache.lucene.search.spans.SpanNearQuery;
-import org.apache.lucene.search.spans.SpanQuery;
-import org.apache.lucene.search.spans.SpanTermQuery;
-import org.mediawiki.importer.ExactListFilter;
+import org.wikimedia.lsearch.analyzers.WikiQueryParserOld.NamespacePolicy;
+import org.wikimedia.lsearch.analyzers.WikiQueryParserOld.TokenType;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
-import org.wikimedia.lsearch.index.WikiIndexModifier;
-import org.wikimedia.lsearch.search.AggregatePhraseInfo;
 import org.wikimedia.lsearch.search.NamespaceFilter;
-import org.wikimedia.lsearch.search.RankField;
-import org.wikimedia.lsearch.search.RankValue;
 import org.wikimedia.lsearch.search.Wildcards;
-import org.wikimedia.lsearch.search.RankField.RankFieldSource;
-import org.wikimedia.lsearch.util.UnicodeDecomposer;
 
 /**
- * Replacement for Lucene QueryParser, a subset of syntax is supported:
- * 
- * - Boolean operators (both AND, OR and +/-) are permitted, and 
- * clauses can be grouped via parenthesis.
- * - Phrase search, by enclosing in "" (e.g. "some phrase")
- * - Range, wildcard and fuzzy queries are disabled
- * 
- * Aliases (introduced by analyzer) are boosted by 0.5
- * 
- * The query for contents is rewritten as "contents:query title:query^2"
- * 
- * The class <b>IS NOT</b> thread safe, i.e. one instance of an object
- * cannot be used by multiple threads
+ * Parser for wiki query syntax
  * 
  * @author rainman
  *
@@ -76,7 +46,7 @@ public class WikiQueryParser {
 	private char c; // current character
 	private int queryLength; // length of the parsed text
 	private int lookup; // lookahead index
-	private String field; // current field
+	private String currentField; // current field
 	private String defaultField; // the default field value
 	private float defaultBoost = 1;
 	private float defaultAliasBoost = ALIAS_BOOST;
@@ -107,14 +77,14 @@ public class WikiQueryParser {
 	public static float CONTENTS_BOOST = 0.2f;
 	
 	// main phrase stuff:
-	public static int MAINPHRASE_SLOP = 50;
+	public static int MAINPHRASE_SLOP = 100;
 	public static float MAINPHRASE_BOOST = 2f;
 	public static float RELATED_BOOST = 4f;	
 	public static int RELATED_SLOP = 0;
 	public static float ALT_PHRASES_BOOST = 0.4f;
 	// additional to main phrase:
 	public static float ADD_STEMTITLE_BOOST = 2;
-	public static float ADD_ALTTITLE_BOOST = 2;
+	public static float ADD_ALTTITLE_BOOST = 1;
 	public static int ADD_ALTTITLE_SLOP = 10;
 	public static float ADD_RELATED_BOOST = 2;
 	
@@ -148,10 +118,11 @@ public class WikiQueryParser {
 	protected static GlobalConfiguration global=null;
 	protected FieldBuilder.BuilderSet builder;
 	protected FieldNameFactory fields;
+	protected FilterFactory filters;
 	protected HashSet<String> stopWords;
 	protected Wildcards wildcards = null;
 	
-	/** default value for boolean queries */
+	/** default operator (must = AND, should = OR) for boolean queries */
 	public BooleanClause.Occur boolDefault = BooleanClause.Occur.MUST;
 	
 	/** Init namespace queries */
@@ -200,6 +171,7 @@ public class WikiQueryParser {
 		this.analyzer = analyzer;
 		this.builder = builder;
 		this.fields = builder.getFields();
+		this.filters = builder.getFilters();
 		tokens = new ArrayList<Token>();
 		this.namespacePolicy = nsPolicy;
 		disableTitleAliases = true;
@@ -538,17 +510,17 @@ public class WikiQueryParser {
 	
 	/** Make a lucene term from string */
 	private Term makeTerm(String t){
-		if(field == null)
+		if(currentField == null)
 			return new Term(defaultField,builder.isExactCase()? t : t.toLowerCase());
-		else if(!field.equals("incategory") && 
+		else if(!currentField.equals("incategory") && 
 				(namespacePolicy == NamespacePolicy.IGNORE || 
 						namespacePolicy == NamespacePolicy.REWRITE))
 			return new Term(defaultField,t);
-		else if(field.equals("incategory")){
+		else if(currentField.equals("incategory")){
 			String norm = t.replace("_"," "); // bug 10822
 			return new Term("category",builder.isExactCase()? norm : norm.toLowerCase());
 		} else
-			return new Term(field,t);
+			return new Term(currentField,t);
 	}
 	
 	/** Parses a phrase query (i.e. between ""), the cur
@@ -571,7 +543,7 @@ public class WikiQueryParser {
 		if(length != 0){
 			query = new PhraseQuery();
 			// if it's a category don't tokenize it, we want whole category name
-			if(field!=null && field.equals("incategory"))
+			if(currentField!=null && currentField.equals("incategory"))
 				query.add(makeTerm()); 
 			else{
 				analyzeBuffer();
@@ -619,7 +591,7 @@ public class WikiQueryParser {
 		Query fieldsubquery = null; // e.g. 'all:something else' will be parsed 'something else' 
 		
 		// assume default namespace value on rewrite
-		if(!returnOnFieldDef && field == null && needsRewrite()){
+		if(!returnOnFieldDef && currentField == null && needsRewrite()){
 			fieldQuery = namespaceRewriteQuery; 
 		}
 		
@@ -651,23 +623,23 @@ public class WikiQueryParser {
 							break mainloop;
 						}
 					}
-					if(field == null || definedExplicitField){
+					if(currentField == null || definedExplicitField){
 						// set field name
-						field = new String(buffer,0,length);
-						if((defaultNamespaceName!=null && field.equals(defaultNamespaceName)) || field.equals(defaultField)){
-							field = null;
+						currentField = new String(buffer,0,length);
+						if((defaultNamespaceName!=null && currentField.equals(defaultNamespaceName)) || currentField.equals(defaultField)){
+							currentField = null;
 							break; // repeated definition of field, ignore
 						}
 						definedExplicitField = true;
 						
-						fieldQuery = getNamespaceQuery(field); // depending on policy rewrite this field
+						fieldQuery = getNamespaceQuery(currentField); // depending on policy rewrite this field
 						if(fieldQuery != null){
 							// save field, we will need it to be set to null to fetch categories
-							String myfield = field;
-							field = null;
+							String myfield = currentField;
+							currentField = null;
 							// fetch the clause until the next field
 							fieldsubquery = parseClause(level+1,true,myfield);
-							field = myfield;
+							currentField = myfield;
 						}
 					} else{
 						// nested field names, don't allow, just add to query
@@ -678,7 +650,7 @@ public class WikiQueryParser {
 				case WORD:
 					if(fieldQuery != null){
 						backToken();
-						String myfield = (topFieldName != null)? topFieldName : (field !=null)? field : (defaultNamespaceName!=null)? defaultNamespaceName : defaultField; 
+						String myfield = (topFieldName != null)? topFieldName : (currentField !=null)? currentField : (defaultNamespaceName!=null)? defaultNamespaceName : defaultField; 
 						fieldsubquery = parseClause(level+1,true,myfield);
 					} else{
 						analyzeBuffer();
@@ -786,7 +758,7 @@ public class WikiQueryParser {
 		}
 		
 		if(definedExplicitField)
-			field = null;
+			currentField = null;
 		return query;
 	}
 	
@@ -824,12 +796,12 @@ public class WikiQueryParser {
 	 * @return
 	 */
 	private Query makeQueryFromTokens(BooleanClause.Occur toplevelOccur){
-		BooleanClause.Occur aliasOccur;
 		BooleanQuery bq = null;
 		TermQuery t;
+		boolean addAliases = true;
 	
 		// categories should not be analyzed
-		if(field != null && field.equals("incategory")){
+		if(currentField != null && currentField.equals("incategory")){
 			return new TermQuery(makeTerm());
 		}
 		
@@ -850,73 +822,57 @@ public class WikiQueryParser {
 		}
 		
 		if(toplevelOccur == BooleanClause.Occur.MUST_NOT)
-			aliasOccur = null; // do not add aliases
-		else
-			aliasOccur = BooleanClause.Occur.SHOULD;
+			addAliases = false;
 
 		if(tokens.size() == 1){
 			t = new TermQuery(makeTerm(tokens.get(0)));
 			t.setBoost(defaultBoost);
 			return t;
 		} else{
-			BooleanQuery cur;
-			cur = bq = new BooleanQuery();
 			// make a nested boolean query
-			for(int i=0; i<tokens.size(); i++){
+			ArrayList<BooleanQuery> queries = new ArrayList<BooleanQuery>();
+			ArrayList<Token> aliases = new ArrayList<Token>();
+			for(int i=0; i<tokens.size(); i++, aliases.clear()){
+				BooleanQuery query = new BooleanQuery();
+				queries.add(query);
+				// main token
 				Token token = tokens.get(i);
-				if(token.getPositionIncrement() == 0){
-					if(aliasOccur == null); // ignore stemmed/aliases if prefixed with MUST_NOT
-					else if(token.type().equals("stemmed")){						
-						// stemmed word
-						t = new TermQuery(makeTerm(token));
-						t.setBoost(defaultAliasBoost*defaultBoost);
-						cur.add(t,aliasOccur);
-					} else if(token.type().equals("alias")){
-						// produced by alias engine (e.g. for sr)
-						t = new TermQuery(makeTerm(token));
-						t.setBoost(defaultAliasBoost*defaultBoost);
-						cur.add(t,aliasOccur);
-					} else if (token.type().equals("transliteration")){
-						// if not in nested query make one
-						if(cur == bq  && (i+1) < tokens.size() && tokens.get(i+1).getPositionIncrement()==0){
-							t = new TermQuery(makeTerm(token));
+				t = new TermQuery(makeTerm(token));
+				t.setBoost(defaultBoost);
+				query.add(t,Occur.SHOULD);
+				// group aliases together
+				for(int j=i+1;j<tokens.size();j++){
+					if(tokens.get(j).getPositionIncrement() == 0){
+						aliases.add(tokens.get(j));
+						i = j;
+					} else
+						break;
+				}				
+				if(addAliases){
+					for(Token alias : aliases){
+						t = new TermQuery(makeTerm(alias));
+						if (alias.type().equals("transliteration") || alias.type().equals("unicode"))
 							t.setBoost(defaultBoost);
-							cur = new BooleanQuery();
-							cur.add(t,BooleanClause.Occur.SHOULD);
-							bq.add(cur,BooleanClause.Occur.SHOULD);
-							continue;
-						} else{
-							// alternative transliteration
-							t = new TermQuery(makeTerm(token));
-							t.setBoost(defaultBoost);
-							cur.add(t,aliasOccur);
-							// fetch the next token to same query if it's transliteration
-							if((i+1) < tokens.size() && tokens.get(i+1).getPositionIncrement()==0 && tokens.get(i+1).type().equals("transliteration"))
-								continue;
-						}
-					}
-					if( cur != bq) // returned from nested query
-						cur = bq;
-				} else{
-					t = new TermQuery(makeTerm(token));
-					t.setBoost(defaultBoost);
-					if(tokens.size() > 2 && (i+1) < tokens.size() && tokens.get(i+1).getPositionIncrement()==0){
-						// make nested query. this is needed when single word is tokenized
-						// into many words of which they all have aliases
-						// e.g. anti-hero => anti hero
-						cur = new BooleanQuery();
-						cur.add(t,BooleanClause.Occur.SHOULD);
-						if(token.type().equals("unicode"))
-							bq.add(cur,BooleanClause.Occur.SHOULD);
 						else
-							bq.add(cur,boolDefault);
-					} else if((i+1) >= tokens.size() || tokens.get(i+1).getPositionIncrement()!=0)
-						cur.add(t,boolDefault);
-					else
-						cur.add(t,BooleanClause.Occur.SHOULD); // add the original word with SHOULD					
+							t.setBoost(defaultAliasBoost*defaultBoost);
+						query.add(t,Occur.SHOULD);
+					}
 				}
 			}
+			// don't returned nested if one query only
+			if(queries.size() == 1){
+				BooleanQuery q = queries.get(0);
+				// one nested clause
+				if(q.getClauses().length == 1)
+					return q.getClauses()[0].getQuery();
+				return queries.get(0);
+			}
+			// multiple tokens, e.g. super-hero -> +super +hero
+			bq = new BooleanQuery();
+			for(Query q : queries)
+				bq.add(q,boolDefault);
 			return bq;
+			
 		}
 	}
 	
@@ -932,7 +888,7 @@ public class WikiQueryParser {
 	private void reset(){
 		cur = 0; 
 		length = 0;
-		field = null;	
+		currentField = null;	
 		prev_cur = 0;
 		explicitOccur = null;
 	}
@@ -944,8 +900,8 @@ public class WikiQueryParser {
 	}
 	
 	/** 
-	 * Parse a string repesentation of query and return a Query object.
-	 * Will not try to transform field names into namespace boolean queries.
+	 * Simple parse on one default field, no rewrites.
+	 * 
 	 * @param queryText
 	 * @return
 	 */
@@ -959,176 +915,196 @@ public class WikiQueryParser {
 		return query;		
 	}
 	
-	/** Duplicate a term query, setting "title" as field */
-	private TermQuery makeTitleTermQuery(TermQuery tq){
-		if(disableTitleAliases && tq.getBoost()==defaultAliasBoost)
-			return null;
-		Term term = tq.getTerm();
-		if(term.field().equals(defaultField)){
-			TermQuery tq2 = new TermQuery(
-					new Term(fields.title(),term.text()));
-			tq2.setBoost(tq.getBoost()*TITLE_BOOST);
-			
-			return tq2;
+	/* ======================= FULL-QUERY PARSING ========================= */
+	
+	public static class ParsingOptions {
+		/** use a custom namespace-transformation policy */
+		NamespacePolicy policy = null;
+		/** only parse the main query (on contents and title) without relevance stuff */
+		boolean coreQueryOnly = false;
+		/** interface to fetch wildcard hits */
+		Wildcards wildcards = null;
+		
+		public ParsingOptions() {}		
+		public ParsingOptions(NamespacePolicy policy){
+			this.policy = policy;
 		}
-		return null;
+		public ParsingOptions(boolean coreQueryOnly){
+			this.coreQueryOnly = coreQueryOnly;
+		}
+		public ParsingOptions(Wildcards wildcards){
+			this.wildcards = wildcards;
+		}
+		public ParsingOptions(NamespacePolicy policy, Wildcards wildcards){
+			this.policy = policy;
+			this.wildcards = wildcards;
+		}
 	}
 	
-	/** Duplicate a phrase query, setting "title" as field */
-	private PhraseQuery makeTitlePhraseQuery(PhraseQuery pq){
-		if(disableTitleAliases && pq.getBoost()==defaultAliasBoost)
-			return null;
-		PhraseQuery pq2 = new PhraseQuery();
-		Term[] terms = pq.getTerms();
-		if(terms.length > 0 && terms[0].field().equals(defaultField)){
-			for(int j=0;j<terms.length;j++){
-				pq2.add(new Term(fields.title(),terms[j].text()));
-			}
-			pq2.setBoost(pq.getBoost()*TITLE_BOOST);
-			
-			return pq2;
-		}		
-		return null;
+	/** Parse a full query with default options */
+	public Query parse(String queryText){
+		return parse(queryText,new ParsingOptions());
 	}
 	
 	/**
-	 * Recursively add title term for each contents term.
-	 * e.g. (foo bar) => (foo bar title:foo title:bar)
+	 * Construct a full query on all the fields in the index from search text
 	 * 
-	 * @param query
-	 * @return
 	 */
-	@Deprecated
-	protected Query rewriteQuery(Query query){
-		BooleanQuery nq; // the returned new query
+	@SuppressWarnings("unchecked")
+	public Query parse(String queryText, ParsingOptions options){
+		this.wildcards = options.wildcards;
+		queryText = quoteCJK(queryText);
+		NamespacePolicy defaultPolicy = this.namespacePolicy;
+		if(options.policy != null)
+			this.namespacePolicy = options.policy;		
+		defaultBoost = CONTENTS_BOOST;
+		defaultAliasBoost = ALIAS_BOOST;
+		Query qc = parseRaw(queryText);		
+		Object[] qtwords = makeTitlePart(queryText);
+		Query qt = (Query) qtwords[0];
+		words = (ArrayList<String>) qtwords[1];
+		this.namespacePolicy = defaultPolicy;
+		if(qc == null || qt == null)
+			return new BooleanQuery();		
+		if(qc.equals(qt))
+			return qc; // don't duplicate (probably a query for categories only)
 		
-		if(query instanceof TermQuery){
-			TermQuery tq = (TermQuery) query;			
-			TermQuery tq2 = makeTitleTermQuery(tq);
-			if(tq2 != null){				
-				nq = new BooleanQuery();
-				nq.add(tq,boolDefault);
-				nq.add(tq2,BooleanClause.Occur.SHOULD);
-				return nq;
+		BooleanQuery bq = new BooleanQuery(true);
+		bq.add(qc,Occur.SHOULD);
+		bq.add(qt,Occur.SHOULD);
+		// add additional must_not clause if needed
+		BooleanQuery forbidden = extractForbidden(bq);
+		if(forbidden != null)
+			bq.add(forbidden,Occur.MUST_NOT);
+		
+		if(options.coreQueryOnly || words == null || words.size()==0)
+			return bq;
+		
+		// work out singular forms of words
+		ArrayList<String> singularWords = null;
+		if(filters.hasSingular()){
+			Singular singular = filters.getSingular();
+			singularWords = new ArrayList<String>();
+			boolean diff = false;
+			for(String w : words){
+				String sw = singular.getSingular(w);
+				if(sw != null){
+					singularWords.add(sw);
+					diff = true;
+				} else
+					singularWords.add(w);
 			}
-		} else if(query instanceof PhraseQuery){
-			PhraseQuery pq = (PhraseQuery) query;
-			PhraseQuery pq2 = makeTitlePhraseQuery(pq);
-			if(pq2 != null){	
-				nq = new BooleanQuery();
-				nq.add(pq,boolDefault);
-				nq.add(pq2,BooleanClause.Occur.SHOULD);
-				return nq;
-			}
-		} else if(query instanceof BooleanQuery){
-			BooleanQuery bq = (BooleanQuery) query;
-			nq = new BooleanQuery();
-			BooleanClause cs[] = bq.getClauses();
-			ArrayList<BooleanClause> newClauses = new ArrayList<BooleanClause>();
-			ArrayList<BooleanClause> oldClauses = new ArrayList<BooleanClause>();
-			// loop over clauses, replace the nested clauses, others add
-			for(BooleanClause clause : cs){
-				Query q = clause.getQuery();
-				Query q2;
-				if(q instanceof BooleanQuery){
-					q2 = rewriteQuery(q);
-					oldClauses.add(new BooleanClause(q2,clause.getOccur()));
-				} else{
-					if(q instanceof TermQuery)
-						q2 = makeTitleTermQuery((TermQuery)q);
-					else if(q instanceof PhraseQuery)
-						q2 = makeTitlePhraseQuery((PhraseQuery)q);
-					else 
-						q2 = null;
+			if(!diff) // all words are same as original words
+				singularWords = null;
+		}
 
-					if(q2 != null)
-						newClauses.add(new BooleanClause(q2,clause.getOccur())); // titles are always with or!
+		// redirect match (when redirect is not contained in contents or title)
+		Query redirects = makeAlttitleForRedirects(words,20,1);
+		if(redirects != null)
+			bq.add(redirects,Occur.SHOULD);
+		// main phrase combined with relevance meatrics
+		Query mainPhrase = makeMainPhraseWithRelevance(words,singularWords);
+		if(mainPhrase == null)
+			return bq;
 
-					oldClauses.add(clause);
-				}
-			}
-			
-			// re-add clauses in a neat order
-			for(BooleanClause clause : oldClauses)
-				nq.add(clause);
-			// add all new clauses in a single boolean clause
-			if(newClauses.size() != 0){
-				Query nquery = null; 
-				// don't nest simple boolean quries
-				if(newClauses.size() == 1)
-					nquery = newClauses.get(0).getQuery();
-				else{
-					BooleanQuery newbq;
-					nquery = newbq = new BooleanQuery();
-					for(BooleanClause clause : newClauses)
-						newbq.add(clause);
-				}
-				BooleanQuery oldq = nq;
-				nq = new BooleanQuery();
-				nq.add(oldq,BooleanClause.Occur.MUST);
-				nq.add(nquery,BooleanClause.Occur.SHOULD);
-			}
-			return nq;
-		}
+		// additional queries
+		Query related = new LogTransformScore(makeRelatedRelevance(words,RELATED_SLOP,RELATED_BOOST));
 		
-		return query;
-	}	
-	
-	/** Parse into query using namespace policy */
-	@Deprecated
-	public Query parse(String queryText, NamespacePolicy policy) throws ParseException{
-		this.namespacePolicy = policy;
-		return parse(queryText);
-	}
-	
-	/** 
-	 * Parse a string repesentation of query and returns a Query object
-	 * Does all the necessary processing, adds "title" field. 
-	 *  
-	 * @throws ParseException 
-	 * */
-	@Deprecated
-	public Query parse(String queryText) throws ParseException{		
-		Query query = rewriteQuery( parseRaw( queryText ) );
-		if(query == null)
-			throw new ParseException("Parsing failed, returned null query");
+		// full query
+		BooleanQuery additional = new BooleanQuery(true);
+		additional.add(mainPhrase,Occur.MUST);
+		if(related != null)
+			additional.add(related,Occur.SHOULD);
 		
-		return query;		
+		BooleanQuery full = new BooleanQuery(true);
+		full.add(bq,Occur.MUST);
+		full.add(additional,Occur.SHOULD);
+		
+		return full;
 	}
 	
-	protected boolean isNamespaceQuery(Query q){
-		if(q instanceof TermQuery)
-			return ((TermQuery)q).getTerm().field().equals("namespace");
-		else if(q instanceof BooleanQuery){
-			for(BooleanClause cl : ((BooleanQuery)q).getClauses()){
-				if(cl.getQuery() instanceof TermQuery && 
-						((TermQuery)cl.getQuery()).getTerm().field().equals("namespace"));
-				else	
-					return false;
+	/** Quote CJK chars to avoid frequency-based analysis */
+	protected String quoteCJK(String queryText){
+		if(!builder.filters.isUsingCJK())
+			return queryText;
+		
+		StringBuilder sb = new StringBuilder();
+		int c;
+		boolean prevCJK = false;
+		int offset = 0;
+		boolean closeQuote = false;
+		boolean inQuotes = false;
+		for(int i=0;i<queryText.length();i++){
+			c = queryText.codePointAt(i);
+			if(c == '"') inQuotes = !inQuotes;
+			if(inQuotes)
+				continue;
+			if(CJKFilter.isCJKChar(c)){
+				if(!prevCJK){ // begin of CJK stream
+					if(i!=0)
+						sb.append(queryText.substring(offset,i));
+					offset = i;
+					sb.append('"');
+					closeQuote = true;
+					prevCJK = true;
+				}
+			} else if(prevCJK){
+				// end of CJK stream
+				sb.append(queryText.substring(offset,i));
+				offset = i;
+				sb.append('"');
+				closeQuote = true;
+				prevCJK = false;
 			}
-			return true;
 		}
-		return false;
+		if(offset == 0  && !closeQuote)
+			return queryText;
+		else{
+			sb.append(queryText.substring(offset,queryText.length()));
+			if(closeQuote)
+				sb.append('"');
+			return sb.toString();
+		}
 	}
 	
-	protected void addWords(ArrayList<String> list, TermQuery tq){
-		String f = tq.getTerm().field();
-		if(!f.equals("category") && !f.equals("namespace"))
-			list.add(tq.getTerm().text());
-	}
-	protected void addWords(ArrayList<String> list, PhraseQuery pq){
-		for(Term term : pq.getTerms()){
-			String f = term.field();
-			if(!f.equals("category") && !f.equals("namespace"))
-				list.add(term.text());
+	/** Make title query in format: title:query stemtitle:stemmedquery
+	 *  Also extract words from query (to be used for phrases additional scores)
+	 *  @return { query, arraylist<string> of words } */
+	protected Object[] makeTitlePart(String queryText) {
+		String contentField = defaultField;
+		float olfDefaultBoost = defaultBoost;
+		defaultField = fields.title(); // now parse the title part
+		if(ADD_STEM_TITLE && builder.getFilters().hasStemmer())
+			defaultBoost = TITLE_BOOST; // we have stem titles
+		else
+			defaultBoost = TITLE_BOOST+STEM_TITLE_BOOST; // no stem titles, add-up boosts
+		defaultAliasBoost = TITLE_ALIAS_BOOST;
+		Query qt = parseRaw(queryText);
+		Query qs = null;
+		// stemmed title
+		if(ADD_STEM_TITLE && builder.getFilters().hasStemmer()){
+			defaultField = fields.stemtitle(); 
+			defaultBoost = STEM_TITLE_BOOST;
+			defaultAliasBoost = STEM_TITLE_ALIAS_BOOST;
+			qs = parseRaw(queryText);
 		}
-	}	
-	protected void addWords(ArrayList<String> list, Query q){
-		if(q instanceof TermQuery){
-			addWords(list,(TermQuery)q);
-		} else if(q instanceof PhraseQuery){
-			addWords(list,(PhraseQuery)q);
-		}
+		// pop stack
+		defaultField = contentField;
+		defaultBoost = olfDefaultBoost;
+		defaultAliasBoost = ALIAS_BOOST;
+
+		ArrayList<String> words = extractWords(qt);
+		
+		if(qt == qs) // either null, or category query
+			return new Object[] {qt,words};
+		if(qt == null)
+			return new Object[] {qs,words};
+		if(qs == null)
+			return new Object[] {qt,words};
+		BooleanQuery bq = new BooleanQuery(true);
+		bq.add(qt,Occur.SHOULD);
+		bq.add(qs,Occur.SHOULD);
+		return new Object[] {bq,words};
 	}
 	
 	/** Extract all words from the query */
@@ -1193,454 +1169,124 @@ public class WikiQueryParser {
 		return list;	
 	}
 	
-	/** 
-	 * Doing some very simple analysis extract span queries to use for
-	 * redirect field. Currently only extracts if all boolean clauses are
-	 * required or if it's a phrase query. This is since making span
-	 * queries in non-trivial in other cases. :(
-	 * 
-	 * The function heavily depends on the format of output of parser,
-	 * especially for rewrite. 
-	 * 
-	 * @param query
-	 * @param level - recursion level
-	 * @return
-	 */
-	protected Query extractSpans(Query query, int level, String fieldName, float boost) {
-		// phrase, or termquery just rewrite field name
-		if(query instanceof TermQuery){
-			TermQuery tq = (TermQuery)query;
-			TermQuery ret = new TermQuery(new Term(fieldName,tq.getTerm().text()));
-			ret.setBoost(boost);
-			return ret;
-		} else if(query instanceof PhraseQuery){
-			PhraseQuery phrase = new PhraseQuery();
-			for(Term term : ((PhraseQuery)query).getTerms()){
-				phrase.add(new Term(fieldName,term.text()));				
-			}
-			phrase.setBoost(boost);
-			return phrase;
-		} else if(query instanceof BooleanQuery){
-			BooleanQuery bq = (BooleanQuery)query;
-			// check for rewritten queries, TODO: parse complex multi-part rewrites
-			if(level==0 && namespacePolicy != null && namespacePolicy == NamespacePolicy.REWRITE){
-				if(bq.getClauses().length == 2 && isNamespaceQuery(bq.getClauses()[0].getQuery())){
-					BooleanQuery ret = new BooleanQuery();
-					ret.add(bq.getClauses()[0]);
-					// the second clause is always the query
-					ret.add(extractSpans(bq.getClauses()[1].getQuery(),level+1,fieldName,boost),BooleanClause.Occur.MUST);
-					return ret;
-				} else
-					return null;
-			}
-			// we can parse if all clauses are required
-			boolean canTransform = true;
-			for(BooleanClause cl : bq.getClauses()){
-				if(cl.getOccur() != BooleanClause.Occur.MUST){
-					canTransform = false;
-					break;
-				}
-			}
-			if(!canTransform)
-				return null;
-			// rewrite into span queries + categories
-			ArrayList<SpanQuery> spans = new ArrayList<SpanQuery>();
-			ArrayList<Query> categories = new ArrayList<Query>();
-			for(BooleanClause cl : bq.getClauses()){
-				Query q = cl.getQuery();
-				if(q instanceof TermQuery){ // -> SpanTermQuery
-					TermQuery tq = (TermQuery)q;
-					Term t = tq.getTerm(); 
-					if(t.field().equals("category")){
-						categories.add(q);
-					} else {
-						SpanTermQuery stq = new SpanTermQuery(new Term(fieldName,t.text()));
-						spans.add(stq);
-					}
-				} else if(q instanceof PhraseQuery){ // -> SpanNearQuery(slop=0,inOrder=true)
-					PhraseQuery pq = (PhraseQuery)q;
-					Term[] terms = pq.getTerms();
-					if(terms == null || terms.length==0)
-						continue;
-					if(terms[0].field().equals("category")){
-						categories.add(q);
-					} else{
-						SpanTermQuery[] spanTerms = new SpanTermQuery[terms.length];
-						for(int i=0; i<terms.length; i++ ){
-							spanTerms[i] = new SpanTermQuery(new Term(fieldName,terms[i].text()));
-						}
-						SpanNearQuery snq = new SpanNearQuery(spanTerms,0,true);
-						snq.setBoost(boost);
-						spans.add(snq);
-					}
-				} else // nested boolean or wildcard query
-					return null;
-			}
-			// create the queries
-			Query cat = null;
-			SpanQuery span = null;
-			if(categories.size() != 0){
-				if(categories.size() == 1)					
-					cat = categories.get(0);
-				else{
-					BooleanQuery b = new BooleanQuery();
-					for(Query q : categories)
-						b.add(q,BooleanClause.Occur.MUST);
-					cat = b; // intersection of categories, bool query 
-				}
-			}
-			if(spans.size() != 0){
-				if(spans.size() == 1)
-					span = spans.get(0);
-				else{
-					// make a span-near query that has a slop 1/2 of tokenGap
-					span = new SpanNearQuery(spans.toArray(new SpanQuery[] {}),(KeywordsAnalyzer.TOKEN_GAP-1)/2,false);
-					span.setBoost(boost);
-				}
-			}
-			if(cat != null && span != null){
-				BooleanQuery ret = new BooleanQuery();
-				ret.add(span,BooleanClause.Occur.MUST);
-				ret.add(cat,BooleanClause.Occur.MUST);
-				return ret;
-			} else if(span != null)
-				return span;
-			else // we don't want categories only
-				return null; 
-
-		}
-		return null;
-	}
-
-	protected BooleanQuery multiplySpans(Query query, int level, String fieldName, float boost){
-		BooleanQuery bq = new BooleanQuery(true);
-		for(int i=1;i<=KeywordsAnalyzer.KEYWORD_LEVELS;i++){
-			Query q = extractSpans(query,0,fieldName+i,boost/i);
-			if(q != null)
-				bq.add(q,BooleanClause.Occur.SHOULD);
-		}
-		
-		if(bq.getClauses() == null || bq.getClauses().length==0)
-			return null;
-		else
-			return bq;
-	}
-	
-	/** Make a redirect query in format altitle1:query altitle2:query ... redirect:spanquery */
-	protected BooleanQuery makeRedirectQuery(String queryText, Query qt) {
-		BooleanQuery bq = new BooleanQuery(true);
-		float olfDefaultBoost = defaultBoost;
-		String contentField = defaultField;
-		defaultBoost = ALT_TITLE_BOOST;
-		defaultAliasBoost = ALT_TITLE_ALIAS_BOOST;
-		for(int i=1;i<=WikiIndexModifier.ALT_TITLES;i++){
-			defaultField = fields.alttitle()+i; 
-			Query q = parseRaw(queryText);
-			if(q != null)
-				bq.add(q,BooleanClause.Occur.SHOULD);
-		}
-		// pop stack
-		defaultField = contentField;
-		defaultBoost = olfDefaultBoost;
-		defaultAliasBoost = ALIAS_BOOST;
-		
-		if(bq.getClauses() == null || bq.getClauses().length==0)
-			return null;
-		else
-			return bq;
-
-	}
-	
-	/** Make title query in format: title:query stemtitle:stemmedquery
-	 *  Also extract words from query (to be used for phrases additional scores)
-	 *  @return { query, arraylist<string> of words } */
-	protected Object[] makeTitleQuery(String queryText) {
-		String contentField = defaultField;
-		float olfDefaultBoost = defaultBoost;
-		defaultField = fields.title(); // now parse the title part
-		if(ADD_STEM_TITLE && builder.getFilters().hasStemmer())
-			defaultBoost = TITLE_BOOST; // we have stem titles
-		else
-			defaultBoost = TITLE_BOOST+STEM_TITLE_BOOST; // no stem titles, add-up boosts
-		defaultAliasBoost = TITLE_ALIAS_BOOST;
-		Query qt = parseRaw(queryText);
-		Query qs = null;
-		// stemmed title
-		if(ADD_STEM_TITLE && builder.getFilters().hasStemmer()){
-			defaultField = fields.stemtitle(); 
-			defaultBoost = STEM_TITLE_BOOST;
-			defaultAliasBoost = STEM_TITLE_ALIAS_BOOST;
-			qs = parseRaw(queryText);
-		}
-		// pop stack
-		defaultField = contentField;
-		defaultBoost = olfDefaultBoost;
-		defaultAliasBoost = ALIAS_BOOST;
-
-		ArrayList<String> words = extractWords(qt);
-		
-		if(qt == qs) // either null, or category query
-			return new Object[] {qt,words};
-		if(qt == null)
-			return new Object[] {qs,words};
-		if(qs == null)
-			return new Object[] {qt,words};
-		BooleanQuery bq = new BooleanQuery(true);
-		bq.add(qt,BooleanClause.Occur.SHOULD);
-		bq.add(qs,BooleanClause.Occur.SHOULD);
-		return new Object[] {bq,words};
-	}
-	
-	/** Quote CJK chars to avoid frequency-based analysis */
-	protected String quoteCJK(String queryText){
-		if(!builder.filters.isUsingCJK())
-			return queryText;
-		
-		StringBuilder sb = new StringBuilder();
-		int c;
-		boolean prevCJK = false;
-		int offset = 0;
-		boolean closeQuote = false;
-		boolean inQuotes = false;
-		for(int i=0;i<queryText.length();i++){
-			c = queryText.codePointAt(i);
-			if(c == '"') inQuotes = !inQuotes;
-			if(inQuotes)
-				continue;
-			if(CJKFilter.isCJKChar(c)){
-				if(!prevCJK){ // begin of CJK stream
-					if(i!=0)
-						sb.append(queryText.substring(offset,i));
-					offset = i;
-					sb.append('"');
-					closeQuote = true;
-					prevCJK = true;
-				}
-			} else if(prevCJK){
-				// end of CJK stream
-				sb.append(queryText.substring(offset,i));
-				offset = i;
-				sb.append('"');
-				closeQuote = true;
-				prevCJK = false;
-			}
-		}
-		if(offset == 0  && !closeQuote)
-			return queryText;
-		else{
-			sb.append(queryText.substring(offset,queryText.length()));
-			if(closeQuote)
-				sb.append('"');
-			return sb.toString();
-		}
-	}
-	
-	/** make two-word queries for some simple queries */
-	protected Query makeTitlePhrases(Query q){
-		if(q instanceof BooleanQuery){
-			boolean allReq = true;
-			BooleanQuery bq = (BooleanQuery) q;
-			for(BooleanClause bc : bq.getClauses()){
-				if(!bc.getOccur().equals(BooleanClause.Occur.MUST) || !(bc.getQuery() instanceof TermQuery) ||
-						!(((TermQuery)bc.getQuery()).getTerm().field().equals("title"))){
-					allReq = false;
-					break;
-				}
-			}
-			if(allReq){
-				BooleanQuery ret = new BooleanQuery(true);
-				Term last = null;
-				// make phrases '+very +long +query' => "very long" "long query"
-				for(BooleanClause bc : bq.getClauses()){
-					Term t = ((TermQuery)bc.getQuery()).getTerm();
-					if(last != null){
-						PhraseQuery pq = new PhraseQuery();
-						pq.add(new Term("stemtitle",last.text()));
-						pq.add(new Term("stemtitle",t.text()));
-						pq.setBoost(TITLE_PHRASE_BOOST);
-						pq.setSlop(2);
-						ret.add(pq,BooleanClause.Occur.SHOULD);
-					}
-					last = t;
-					
-				}
-				if(ret.getClauses() != null && ret.getClauses().length != 0)
-					return ret;
-			}
-		} 
-		
-		return null;
-		
-	}
-	
-	/** Make the main phrase query, finds exact phrases, and sloppy phrases without stop words */
-	public Query makeMainPhrase(List<String> words, String field, int slop, float boost, Query stemtitle, Query related, HashSet<String> preStopWords, boolean exactOnly){
-		RankValue val = new RankValue();
-		if(exactOnly){
-			CustomPhraseQuery pq = new CustomPhraseQuery(new QueryOptions.ContentsExactOptions(val,stemtitle,related));
-			for(String w : words){
-				pq.add(new Term(field,w));
-			}
-			pq.setSlop(slop);
-			pq.setBoost(boost);
-			return pq;
-		} else{
-			CombinedPhraseQuery pq = new CombinedPhraseQuery(new QueryOptions.CombinedMainOptions(null,null),new QueryOptions.ContentsSloppyOptions(val,stemtitle,related),
-					new QueryOptions.ContentsExactOptions(val,stemtitle,related),preStopWords);
-			for(String w : words){
-				pq.add(new Term(field,w));
-			}
-			pq.setSlop(slop);
-			pq.setBoost(boost);
-			return pq;
-		}
-	}
-	
-	/** make single phrase for related field */
-	protected PhraseQuery makePhraseForRelated(ArrayList<String> words, int slop, AggregatePhraseInfo aphi){
-		CustomPhraseQuery pq = new CustomPhraseQuery(new QueryOptions.RelatedOptions(aphi));
-		for(String w : words){
-			pq.add(new Term("related",w));
-		}
-		pq.setSlop(slop);
-		return pq;
-	}
-	
-	/** Make phrase queries for additional scores */
-	public Query makePhrasesForRelated(ArrayList<String> words, int slop, float boost){
-		if(words.size() <= 2){
-			PhraseQuery pq = makePhraseForRelated(words,slop,new AggregatePhraseInfo());
-			pq.setBoost(boost);
-			return pq;
-		} else{
-			AggregatePhraseInfo aphi = new AggregatePhraseInfo();
-			BooleanQuery bq = new BooleanQuery(true);
-			ArrayList<String> phrase = new ArrayList<String>();
-			int i = 0;
-			// make phrases with anchors in non-stopwords
-			while(i < words.size()){
-				phrase.clear();
-				for(;i<words.size();i++){
-					String w = words.get(i);
-					if(phrase.size() == 0 || stopWords.contains(w))
-						phrase.add(w);
-					else{
-						phrase.add(w);						
-						break;
-					}
-				}
-				if(phrase.size() > 1)
-					bq.add(makePhraseForRelated(phrase,slop,aphi),Occur.SHOULD);
-			}
-			// make word queries
-			for(String w : words){
-				if(!stopWords.contains(w)){
-					phrase.clear();
-					phrase.add(w);
-					PhraseQuery pq = makePhraseForRelated(phrase,slop,aphi);
-					pq.setBoost(0.25f); // 1/4 of original related boost for words 
-					bq.add(pq,Occur.SHOULD);
-				}
-			}
-			bq.setBoost(boost);
-			if(bq.getClauses() != null && bq.getClauses().length != 0)
-				return bq;
-			else
-				return null;
-		}
-			
-	}
-	
-	public Query makeWordQueries(ArrayList<String> words, String field, float boost, float minScore){
+	/** Extract MUST_NOT clauses form a query */
+	protected BooleanQuery extractForbidden(Query q){
 		BooleanQuery bq = new BooleanQuery();
-		if(words.size() == 1){
-			TermQuery tq = new TermQuery(new Term(field,words.get(0)));
-			tq.setBoost(boost);
-			if(minScore != 0)
-				return new ConstMinScore(tq,minScore);
-			return tq;
-		} else if(words.size() > 1){
-			for(String w : words){
-				TermQuery tq = new TermQuery(new Term(field,w));
-				if(minScore != 0)
-					bq.add(new ConstMinScore(tq,minScore),Occur.SHOULD);
+		extractForbiddenRecursive(bq,q);
+		if(bq.getClauses().length == 0)
+			return null;
+		
+		return bq;
+	}
+	/** Recursivily extract all MUST_NOT clauses from query */ 
+	protected void extractForbiddenRecursive(BooleanQuery forbidden, Query q){
+		if(q instanceof BooleanQuery){
+			BooleanQuery bq = (BooleanQuery)q;
+			for(BooleanClause cl : bq.getClauses()){
+				if(cl.getOccur() == Occur.MUST_NOT)
+					forbidden.add(cl.getQuery(),Occur.SHOULD);
 				else
-					bq.add(tq,Occur.SHOULD);
+					extractForbiddenRecursive(forbidden,cl.getQuery());
 			}
-			bq.setBoost(boost);
-			return bq;
 		}
-		return null;		
-	} 
-	
-	public Query makeStemtitlePhrase(ArrayList<String> words, String field){
-		PhraseQuery pq = new PhraseQuery();
-		for(String w : words){
-			pq.add(new Term(field,w));
-		}
-		return pq;
 	}
 	
-	/** Make the stemtitle query, words and phrases anchored in non-stopwords */
-	public Query makeStemtitle(ArrayList<String> words, String field, float boost, float minScore){
+	protected void addWords(ArrayList<String> list, TermQuery tq){
+		String f = tq.getTerm().field();
+		if(!f.equals("category") && !f.equals("namespace"))
+			list.add(tq.getTerm().text());
+	}
+	protected void addWords(ArrayList<String> list, PhraseQuery pq){
+		for(Term term : pq.getTerms()){
+			String f = term.field();
+			if(!f.equals("category") && !f.equals("namespace"))
+				list.add(term.text());
+		}
+	}	
+	protected void addWords(ArrayList<String> list, Query q){
+		if(q instanceof TermQuery){
+			addWords(list,(TermQuery)q);
+		} else if(q instanceof PhraseQuery){
+			addWords(list,(PhraseQuery)q);
+		}
+	}
+	
+	/** Get phrase words, valid only after parse() call */
+	public ArrayList<String> getWords(){		
+		return words;
+	}
+	
+	/** Make the main phrases with relevance metrics */ 
+	protected Query makeMainPhraseWithRelevance(ArrayList<String> words, ArrayList<String> singularWords){
+		Query main = null;
+						
+		PositionalQuery exact = new PositionalQuery(new PositionalOptions.Exact());
+		PositionalQuery sloppy = new PositionalQuery(new PositionalOptions.Sloppy());
+		PositionalQuery singular = singularWords != null? new PositionalQuery(new PositionalOptions.Sloppy()) : null;
+		BooleanQuery combined = new BooleanQuery(true);
+		
+		// main phrases
+		int pos = 0;
+		for(int i=0;i<words.size();i++){
+			String w = words.get(i);
+			boolean stop = stopWords.contains(w); 
+			Term term = new Term(fields.contents(),w);
+			exact.add(term,stop);		
+			if(!stop)
+				sloppy.add(term,pos,stop); // maintain gaps
+			if(!stop && singular!=null)
+				singular.add(new Term(fields.contents(),singularWords.get(i)),pos,stop);
+			pos++;
+		}
+		// combined exact and sloppy (if exists)
+		if(sloppy.getTerms().length != 0){
+			sloppy.setSlop(MAINPHRASE_SLOP);
+			combined.add(exact,Occur.SHOULD);
+			combined.add(sloppy,Occur.SHOULD);
+			if(singular!=null){
+				singular.setSlop(MAINPHRASE_SLOP);
+				combined.add(singular,Occur.SHOULD);
+			}
+			main = combined;
+		} else
+			main = exact;
+		
+		main.setBoost(MAINPHRASE_BOOST);
+		
+		// relevance measures
+		Query alttitle = makeAlttitleRelevance(words,ALT_PHRASES_BOOST);
+		if(singularWords != null)
+			alttitle = embed(alttitle,makeAlttitleRelevance(singularWords,ALT_PHRASES_BOOST));
+		Query related = makeRelatedRelevance(words,RELATED_SLOP,RELATED_BOOST);
+		if(singularWords != null)
+			related = embed(related,makeRelatedRelevance(singularWords,RELATED_SLOP,RELATED_BOOST));
+		
+		RelevanceQuery whole = new RelevanceQuery(main);
+		whole.addRelevanceMeasure(alttitle);
+		whole.addRelevanceMeasure(related);
+		
+		return whole;
+	}
+	
+	private BooleanQuery embed(Query q1, Query q2){
+		BooleanQuery bq = new BooleanQuery(true);
+		bq.add(q1,Occur.SHOULD);
+		bq.add(q2,Occur.SHOULD);
+		return bq;
+	}
+	
+	/** Relevance metrics based on rank (of titles and redirects) */
+	protected Query makeAlttitleRelevance(ArrayList<String> words, float boost){
+		String field = fields.alttitle();
 		BooleanQuery bq = new BooleanQuery(true);
 		if(words.size() == 1){
-			TermQuery tq = new TermQuery(new Term(field,words.get(0)));
-			tq.setBoost(boost);
-			if(minScore != 0)
-				return new ConstMinScore(tq,minScore);
-			bq.add(tq,Occur.SHOULD);
-		} else if(words.size() > 1){
-			// add words
-			for(String w : words){
-				TermQuery tq = new TermQuery(new Term(field,w));
-				if(minScore != 0)
-					bq.add(new ConstMinScore(tq,minScore),Occur.SHOULD);
-				else
-					bq.add(tq,Occur.SHOULD);
-			}
-			// phrases
-			int i =0;
-			ArrayList<String> phrase = new ArrayList<String>();
-			while(i < words.size()){
-				phrase.clear();
-				for(;i<words.size();i++){
-					String w = words.get(i);
-					if(phrase.size() == 0 || stopWords.contains(w))
-						phrase.add(w);
-					else{
-						phrase.add(w);						
-						break;
-					}
-				}
-				if(phrase.size() > 1)
-					bq.add(makeStemtitlePhrase(phrase,field),Occur.SHOULD);
-			}
-		}
-		bq.setBoost(boost);
-		return bq;		
-	} 
-	
-	public Query makeAlttitlePhrase(ArrayList<String> words, String field, AggregatePhraseInfo ap){
-		CustomPhraseQuery pq = new CustomPhraseQuery(new QueryOptions.AlttitleOptions(ap));
-		for(String w : words)
-			pq.add(new Term(field,w));
-		return pq;
-	}
-	
-	/** Make the stemtitle query for additional score */
-	public Query makeAlttitlePhrases(ArrayList<String> words, String field, float boost){		
-		AggregatePhraseInfo ap = new AggregatePhraseInfo();
-		if(words.size() == 1){
-			CustomPhraseQuery pq = new CustomPhraseQuery(new QueryOptions.AlttitleOptions(ap));
+			PositionalQuery pq = new PositionalQuery(new PositionalOptions.Alttitle());
 			pq.add(new Term(field,words.get(0)));
-			pq.setBoost(boost);			
-			return pq;
+			bq.add(pq,Occur.SHOULD);
 		} else{
-			BooleanQuery bq = new BooleanQuery(true);
 			// add words
 			for(String w : words){
-				CustomPhraseQuery pq = new CustomPhraseQuery(new QueryOptions.AlttitleOptions(ap));
+				PositionalQuery pq = new PositionalQuery(new PositionalOptions.Alttitle());
 				pq.add(new Term(field,w));
 				bq.add(pq,Occur.SHOULD);
 			}
@@ -1659,97 +1305,119 @@ public class WikiQueryParser {
 					}
 				}
 				if(phrase.size() > 1)
-					bq.add(makeAlttitlePhrase(phrase,field,ap),Occur.SHOULD);
-			}
-			bq.setBoost(boost);
-			return bq;
-		}				
-	} 
-	
-	/** Make the phrase that will match redirects, etc..  */
-	public Query makeAlttitleWholePhrase(List<String> words, String field, int slop, float boost, HashSet<String> preStopWords){
-		AggregatePhraseInfo ap = new AggregatePhraseInfo();
-		boolean allStopWords = true;
-		for(String w : words){
-			if(!preStopWords.contains(w)){
-				allStopWords = false;
-				break;
+					bq.add(makeAlttitlePhrase(phrase,field,new PositionalOptions.Alttitle(),0),Occur.SHOULD);
 			}
 		}
-		if(allStopWords){
-			CustomPhraseQuery pq = new CustomPhraseQuery(new QueryOptions.AlttitleExactOptions(ap));
-			for(String w : words){
-				pq.add(new Term(field,w));
-			}
+		// add the whole-only query
+		bq.add(makeAlttitlePhrase(words,field,new PositionalOptions.AlttitleWhole(),20),Occur.SHOULD);		
+		return bq;
+
+	}
+	
+	private Query makeAlttitlePhrase(ArrayList<String> words, String field, PositionalOptions options, int slop){
+		PositionalQuery pq = new PositionalQuery(options);
+		for(String w : words)
+			pq.add(new Term(field,w),stopWords.contains(w));
+		if(slop != 0)
 			pq.setSlop(slop);
+		return pq;
+	}
+	
+	/** Make relevance metrics based on context via related articles */
+	protected Query makeRelatedRelevance(ArrayList<String> words, int slop, float boost){
+		if(words.size() <= 2){
+			PhraseQuery pq = makePhraseForRelated(words,slop);
 			pq.setBoost(boost);
 			return pq;
 		} else{
-			CombinedPhraseQuery pq = new CombinedPhraseQuery(new QueryOptions.CombinedAlttitleOptions(), new QueryOptions.AlttitleSloppyOptions(ap),
-					new QueryOptions.AlttitleExactOptions(ap),preStopWords);
-			for(String w : words){
-				pq.add(new Term(field,w));
+			BooleanQuery bq = new BooleanQuery(true);
+			ArrayList<String> phrase = new ArrayList<String>();
+			int i = 0;
+			// make phrases with anchors in non-stopwords
+			while(i < words.size()){
+				phrase.clear();
+				for(;i<words.size();i++){
+					String w = words.get(i);
+					if(phrase.size() == 0 || stopWords.contains(w))
+						phrase.add(w);
+					else{
+						phrase.add(w);						
+						break;
+					}
+				}
+				if(phrase.size() > 1)
+					bq.add(makePhraseForRelated(phrase,slop),Occur.SHOULD);
 			}
-			pq.setSlop(slop);
-			pq.setBoost(boost);
-			return pq;
+			// make word queries
+			for(String w : words){
+				if(!stopWords.contains(w)){
+					phrase.clear();
+					phrase.add(w);
+					PhraseQuery pq = makePhraseForRelated(phrase,slop);
+					pq.setBoost(0.25f); // 1/4 of original related boost for words 
+					bq.add(pq,Occur.SHOULD);
+				}
+			}
+			bq.setBoost(boost);
+			if(bq.getClauses() != null && bq.getClauses().length != 0)
+				return bq;
+			else
+				return null;
 		}
 			
 	}
 	
-	protected boolean allStopWords(ArrayList<String> words, HashSet<String> preStopWords){
-		boolean allStopWords = true;
+	private PhraseQuery makePhraseForRelated(ArrayList<String> words, int slop){
+		PositionalQuery pq = new PositionalQuery(new PositionalOptions.Related());
 		for(String w : words){
-			if(!preStopWords.contains(w)){
-				allStopWords = false;
-				break;
-			}
+			pq.add(new Term("related",w),stopWords.contains(w));
 		}
-		return allStopWords;
+		pq.setSlop(slop);
+		return pq;
 	}
 	
-	/** Make split phrases on two fields: alttitle and contents */
-	public BooleanQuery makeMainSplit(ArrayList<String> words, FieldNameFactory fields, float boost, Query related, HashSet<String> stopWords){
-		BooleanQuery bq = new BooleanQuery(true);
-		boolean allStopWords = allStopWords(words,stopWords); 
-		if(allStopWords)
-			return bq;
-		for(int i=1;i<words.size();i++){
-			if(stopWords.contains(words.get(i)))
-				continue;
-			Query alt = makeAlttitleForMainSplit(words.subList(0,i),fields.alttitle(),ADD_ALTTITLE_BOOST);
-			Query main = makeMainPhrase(words.subList(i,words.size()),fields.contents(),20,MAINPHRASE_BOOST,alt,related,stopWords,allStopWords);
-			bq.add(main,Occur.SHOULD);
-			alt = makeAlttitleForMainSplit(words.subList(i,words.size()),fields.alttitle(),ADD_ALTTITLE_BOOST);
-			main = makeMainPhrase(words.subList(0,i),fields.contents(),20,MAINPHRASE_BOOST,alt,related,stopWords,allStopWords);
-			bq.add(main,Occur.SHOULD);
-		}
-		bq.setBoost(boost);
-		return bq;
-	}
 	
-	public Query makeAlttitleForMainSplit(List<String> words, String field, float boost){
-		AggregatePhraseInfo ap = new AggregatePhraseInfo();
-		CustomPhraseQuery pq = new CustomPhraseQuery(new QueryOptions.AlttitleOnlyOptions(ap));
-		for(String w : words){
-			pq.add(new Term(field,w));
-		}
+	/** Additional query to match words in redirects that are not in title or article */
+	protected Query makeAlttitleForRedirects(ArrayList<String> words, int slop, float boost){
+		PositionalQuery pq = new PositionalQuery(new PositionalOptions.RedirectMatch());
+		for(String w : words)
+			pq.add(new Term(fields.alttitle(),w),stopWords.contains(w));
+		pq.setSlop(slop);
 		pq.setBoost(boost);
 		return pq;
 	}
 	
-	/** Join a collection via a char/string */
-	protected String join(Collection<String> col, String sep){
-		StringBuffer sb = new StringBuffer();
-		boolean first = true;
-		for(String s : col){
-			if(!first){
-				sb.append(sep);
-			} else
-				first = false;
-			sb.append(s);
+	public void setNamespacePolicy(NamespacePolicy namespacePolicy) {
+		this.namespacePolicy = namespacePolicy;
+	}
+
+	
+	/** Make alttitle phrase for titles indexes  */
+	public Query makeAlttitleForTitles(List<String> words, int slop, float boost){
+		BooleanQuery main = new BooleanQuery(true);
+
+		PositionalQuery exact = new PositionalQuery(new PositionalOptions.AlttitleExact());
+		PositionalQuery sloppy = new PositionalQuery(new PositionalOptions.AlttitleSloppy());
+
+		// make exact + sloppy
+		int pos = 0;
+		for(String w : words){
+			Term term = new Term(fields.alttitle(),w);
+			boolean isStop = stopWords.contains(w);
+			exact.add(term,isStop);			 
+			if(!isStop)
+				sloppy.add(term,pos,isStop); // maintain gaps
+			pos++;
 		}
-		return sb.toString();
+		if(sloppy.getTerms().length == 0)
+			return exact;
+		
+		sloppy.setSlop(ADD_ALTTITLE_SLOP);
+		main.add(exact,Occur.SHOULD);
+		main.add(sloppy,Occur.SHOULD);
+		main.setBoost(ADD_ALTTITLE_BOOST);
+		return main;
+			
 	}
 	
 	/** Make a query to search grouped titles indexes */
@@ -1764,8 +1432,10 @@ public class WikiQueryParser {
 		Query q = parseRaw(queryText);
 		
 		ArrayList<String> words = extractWords(q);
-		HashSet<String> preStopWords = StopWords.getPredefinedSet(builder.getFilters().getIndexId());
-		Query alttitle = makeAlttitleWholePhrase(words,fields.alttitle(),ADD_ALTTITLE_SLOP,ADD_ALTTITLE_BOOST,preStopWords);
+		if(words == null || words.size() == 0)
+			return q;
+		
+		Query alttitle = makeAlttitleForTitles(words,ADD_ALTTITLE_SLOP,ADD_ALTTITLE_BOOST);
 		
 		this.builder = oldBuilder;		
 		this.defaultField = oldDefaultField;
@@ -1780,146 +1450,5 @@ public class WikiQueryParser {
 		return whole;
 		
 	}
-	
-	/**
-	 * Main function for multi-pass parsing.
-	 * 
-	 * @param queryText
-	 * @param policy
-	 * @param makeRedirect
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	protected Query parseMultiPass(String queryText, NamespacePolicy policy, boolean makeRedirect, boolean makeKeywords, Wildcards wildcards){
-		this.wildcards = wildcards;
-		queryText = quoteCJK(queryText);
-		if(policy != null)
-			this.namespacePolicy = policy;		
-		defaultBoost = CONTENTS_BOOST;
-		defaultAliasBoost = ALIAS_BOOST;
-		Query qc = parseRaw(queryText);		
-		Object[] qtwords = makeTitleQuery(queryText);
-		// qt = title query, qp = title phrase query
-		Query qt = (Query) qtwords[0];
-		words = (ArrayList<String>) qtwords[1];
-		if(qc == null || qt == null)
-			return new BooleanQuery();		
-		if(qc.equals(qt))
-			return qc; // don't duplicate (probably a query for categories only)
-		
-		BooleanQuery bq = new BooleanQuery(true);
-		bq.add(qc,BooleanClause.Occur.SHOULD);
-		bq.add(qt,BooleanClause.Occur.SHOULD);
-		
-		if(words.size() == 0)
-			return bq;
 
-		HashSet<String> preStopWords = StopWords.getPredefinedSet(builder.getFilters().getIndexId());
-		// queries: main phrase (main*) + additional queries (add*)
-		Query addAlttitleQuery = null;		
-		Query splitAlttitleQuery = null;
-		Query mainRelatedQuery = makePhrasesForRelated(words,RELATED_SLOP,RELATED_BOOST);
-		if(wildcards==null || !wildcards.hasWildcards()){
-			addAlttitleQuery = makeAlttitleWholePhrase(words,fields.alttitle(),ADD_ALTTITLE_SLOP,ADD_ALTTITLE_BOOST,preStopWords);
-			splitAlttitleQuery = makeAlttitlePhrases(words,fields.alttitle(),ALT_PHRASES_BOOST);
-		}
-		Query addStemtitleQuery = 
-			new LogTransformScore(makeStemtitle(words,fields.stemtitle(),1,0.1f));
-		addStemtitleQuery.setBoost(ADD_STEMTITLE_BOOST);		
-		Query addRelatedQuery = new LogTransformScore(mainRelatedQuery);
-		addRelatedQuery.setBoost(ADD_RELATED_BOOST);
-		
-		Query mainPhrase = makeMainPhrase(words,fields.contents(),MAINPHRASE_SLOP,MAINPHRASE_BOOST,splitAlttitleQuery,mainRelatedQuery,preStopWords,allStopWords(words,preStopWords));
-		if(mainPhrase == null)
-			return bq;
-		//BooleanQuery mainSplit = makeMainSplit(words,fields,1,mainRelatedQuery,preStopWords);
-		//mainSplit.add(mainPhrase,Occur.SHOULD);
-		// build the final query
-		BooleanQuery coreQuery = new BooleanQuery(true);		
-		BooleanQuery additional = new BooleanQuery(true);
-		BooleanQuery addTitleQuery = new BooleanQuery(true); 
-		
-		if(mainPhrase != null)
-			additional.add(mainPhrase,Occur.MUST);
-		if(mainRelatedQuery != null)
-			additional.add(addRelatedQuery,Occur.SHOULD);
-		if(addStemtitleQuery != null)
-			additional.add(addStemtitleQuery,Occur.SHOULD); 
-		if(addAlttitleQuery != null)
-			additional.add(addAlttitleQuery,Occur.SHOULD);		
-		
-		/* if(alttitle2Query != null)
-			additional.add(alttitle2Query,Occur.SHOULD); */
-		
-		coreQuery.add(bq,Occur.MUST);
-		coreQuery.add(additional,Occur.SHOULD);
-		//coreQuery.add(addTitleQuery,Occur.SHOULD);
-			
-		return coreQuery;
-		
-	}
-	
-	public Query parseWithWildcards(String queryText, NamespacePolicy policy, Wildcards wildcards){
-		return parseMultiPass(queryText,policy,false,false,wildcards);
-	}
-	
-	/**
-	 * Three parse pases: contents, title, redirect
-	 * 
-	 * @param queryText
-	 * @param policy
-	 * @return
-	 * @throws ParseException
-	 */
-	public Query parseThreePass(String queryText, NamespacePolicy policy) throws ParseException{
-		return parseMultiPass(queryText,policy,true,false,null);
-	}
-	
-	/**
-	 * Depending on settings for db, do all 4 passes of parsing:
-	 * 1) contents
-	 * 2) titles
-	 * 3) redirects
-	 * 4) keywords
-	 */
-	public Query parseFourPass(String queryText, NamespacePolicy policy, String dbname) throws ParseException{
-		boolean makeKeywords = global.useKeywordScoring(dbname);
-		return parseMultiPass(queryText,policy,true,makeKeywords,null);
-	}
-	
-	public Query parseFourPass(String queryText, NamespacePolicy policy, boolean makeKeywords) throws ParseException{
-		return parseMultiPass(queryText,policy,true,makeKeywords,null);
-	}
-	
-	/** 
-	 * Parse the query according to policy. Instead of rewrite phrase, simply pass 
-	 * twice the query with different default fields. 
-	 * 
-	 * @param queryText
-	 * @param policy
-	 * @return
-	 * @throws ParseException
-	 */
-	public Query parseTwoPass(String queryText, NamespacePolicy policy) throws ParseException{
-		return parseMultiPass(queryText,policy,false,false,null);
-	}
-	
-	public NamespacePolicy getNamespacePolicy() {
-		return namespacePolicy;
-	}
-	public void setNamespacePolicy(NamespacePolicy namespacePolicy) {
-		this.namespacePolicy = namespacePolicy;
-	}
-	public FieldBuilder.BuilderSet getBuilder() {
-		return builder;
-	}
-	public void setBuilder(FieldBuilder.BuilderSet builder) {
-		this.builder = builder;
-	}
-	
-	/** Get phrase words, valid only after parseMultiPass parser call */
-	public ArrayList<String> getWords(){
-		return words;
-	}
-	
 }

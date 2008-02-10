@@ -15,8 +15,15 @@ import org.apache.lucene.analysis.TokenStream;
  *
  */
 public class EnglishSingularFilter extends TokenFilter{
-	Token next = null;
-	protected EnglishSingularFilter(TokenStream input) {
+	/** Wrapper for finding sinular forms of the word */
+	public static class EnglishSingular implements Singular{
+		public String getSingular(String word) {
+			return findSingular(word);
+		}
+		
+	}
+	Token next = null, next2=null;
+	public EnglishSingularFilter(TokenStream input) {
 		super(input);
 	}
 
@@ -24,15 +31,22 @@ public class EnglishSingularFilter extends TokenFilter{
 	public Token next() throws IOException {
 		if(next != null){
 			Token t = next;
-			next = null;
+			next = next2;
+			next2 = null;
 			return t;
 		}
 		Token t = input.next();
 		if(t == null)
 			return null;
 		
-		if(t.getPositionIncrement() != 0)
+		if(t.getPositionIncrement() != 0){			
 			next = singular(t);
+			if(next != null){
+				next2 = input.next();
+				if(next2 != null && next2.getPositionIncrement()==0 && next2.termText().equals(next.termText()))
+					next2 = null; // next2 (stemmed) will be same as next, ignore!
+			}
+		}
 		
 		return t;
 	}
@@ -49,13 +63,13 @@ public class EnglishSingularFilter extends TokenFilter{
 		return null;
 	}
 	
-	protected final String findSingular(String w){		
+	protected static final String findSingular(String w){		
 		// quick check 
-		if(w.charAt(w.length()-1) != 's')
+		if(w.length() <= 3 || w.charAt(w.length()-1) != 's')
 			return null;
 		// exceptions (from porter2)
 		if("news".equals(w) || "atlas".equals(w) || "cosmos".equals(w) 
-				|| "bias".equals(w) || "andes".equals(w))
+				|| "bias".equals(w) || "andes".equals(w) || "aries".equals(w))
 			return null;
 		// irregular forms
 		String irregular = irregularSingular.get(w);
@@ -140,6 +154,7 @@ public class EnglishSingularFilter extends TokenFilter{
 		// ies -> ie
 		irregularSingular.put("cookies","cookie");
 	}
+	
 	
 
 }

@@ -29,11 +29,21 @@ public class Aggregate {
 		if(stopWords != null){
 			noStopWordsLength = 0;		
 			for(Token t : tokens){
-				if(!stopWords.contains(t))
+				if(!stopWords.contains(t.termText()) && t.getPositionIncrement()!=0)
 					noStopWordsLength++;
 			}
-		} else
-			noStopWordsLength = tokens.size();
+		} else{
+			noStopWordsLength = noAliasLenth();
+		}
+	}
+	
+	public int noAliasLenth(){
+		int len = 0;
+		for(Token t : tokens){
+			if(t.getPositionIncrement() != 0)
+				len++;
+		}
+		return len;
 	}
 	
 	/** Construct with specific analyzer  
@@ -41,7 +51,7 @@ public class Aggregate {
 	public Aggregate(String text, float boost, IndexId iid, Analyzer analyzer, String field) throws IOException{		
 		this.tokens = toTokenArray(analyzer.tokenStream(field,text));
 		this.boost = boost;
-		this.noStopWordsLength = tokens.size();
+		this.noStopWordsLength = noAliasLenth();
 	}
 	
 	private ArrayList<Token> toTokenArray(TokenStream stream) throws IOException {

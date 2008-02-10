@@ -106,6 +106,7 @@ public class SpellCheckTest {
    	{"hediegger dasain","heidegger dasein"},
    	{"althought","although"},
    	{"mac surname",""},
+   	{"chater 13 bakrupcy","chapter 13 bankruptcy"},
    	
    };
 

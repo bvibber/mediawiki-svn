@@ -26,7 +26,7 @@ import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
 import org.wikimedia.lsearch.analyzers.FieldNameFactory;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
-import org.wikimedia.lsearch.analyzers.WikiQueryParser;
+import org.wikimedia.lsearch.analyzers.WikiQueryParserOld;
 import org.wikimedia.lsearch.analyzers.WikiTokenizer;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
@@ -129,9 +129,9 @@ public class HighlightDaemon extends Thread {
 		String lang = global.getLanguage(dbname);
 		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid,exactCase);
 		FieldBuilder.BuilderSet bs = new FieldBuilder(iid,dCase).getBuilder(dCase);
-		WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),
-				new NamespaceFilter("0"),analyzer,bs,WikiQueryParser.NamespacePolicy.IGNORE,null);
-		Query q = parser.parseFourPass(query,WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
+		WikiQueryParserOld parser = new WikiQueryParserOld(bs.getFields().contents(),
+				new NamespaceFilter("0"),analyzer,bs,WikiQueryParserOld.NamespacePolicy.IGNORE,null);
+		Query q = parser.parseFourPass(query,WikiQueryParserOld.NamespacePolicy.IGNORE,iid.getDBname());
 		Scorer scorer = new QueryScorer(q);
 		SimpleHTMLFormatter formatter = new SimpleHTMLFormatter("<span class=\"searchmatch\">","</span>");
 		Highlighter highlighter = new Highlighter(formatter,scorer);

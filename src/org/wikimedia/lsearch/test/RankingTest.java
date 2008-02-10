@@ -94,7 +94,7 @@ public class RankingTest {
 		});
 		
 		assertHits("call me ishmael",new String[]{
-				"0:Moby Dick"
+				"0:Moby-Dick"
 		});
 		
 		assertHits("moon radius",new String[]{
@@ -163,6 +163,10 @@ public class RankingTest {
 		
 		assertHits("frames linguistics", new String[]{
 				"0:Frame semantics (linguistics)"
+		});
+		
+		assertHits("french revolution timeline", new String[]{
+				"0:Timeline of the French Revolution"
 		});
 		
 		

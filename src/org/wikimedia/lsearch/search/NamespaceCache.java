@@ -13,7 +13,7 @@ import org.apache.lucene.search.Filter;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.QueryFilter;
 import org.apache.lucene.search.TermQuery;
-import org.wikimedia.lsearch.analyzers.WikiQueryParser;
+import org.wikimedia.lsearch.analyzers.WikiQueryParserOld;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 
 /**
@@ -99,12 +99,12 @@ public class NamespaceCache {
 	}
 	
 	protected static CachingWrapperFilter makeFilter(NamespaceFilter key){
-		Query q = WikiQueryParser.generateRewrite(key);
+		Query q = WikiQueryParserOld.generateRewrite(key);
 		return new CachingWrapperFilter(new QueryFilter(q));
 	}
 	
 	protected static CachingWrapperFilter makeRedirectFilter(NamespaceFilter key){
-		Query q = WikiQueryParser.generateRedirectRewrite(key);
+		Query q = WikiQueryParserOld.generateRedirectRewrite(key);
 		return new CachingWrapperFilter(new QueryFilter(q));
 	}
 }

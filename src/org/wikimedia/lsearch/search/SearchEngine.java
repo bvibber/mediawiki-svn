@@ -1,12 +1,9 @@
 package org.wikimedia.lsearch.search;
 
 import java.io.IOException;
-import java.io.Reader;
-import java.net.URI;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.BitSet;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -22,8 +19,6 @@ import org.apache.lucene.index.Term;
 import org.apache.lucene.index.TermDocs;
 import org.apache.lucene.index.TermEnum;
 import org.apache.lucene.queryParser.ParseException;
-import org.apache.lucene.search.Hits;
-import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.Searchable;
 import org.apache.lucene.search.SearchableMul;
@@ -31,9 +26,10 @@ import org.apache.lucene.search.Searcher;
 import org.apache.lucene.search.TopDocs;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
-import org.wikimedia.lsearch.analyzers.FieldNameFactory;
 import org.wikimedia.lsearch.analyzers.StopWords;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
+import org.wikimedia.lsearch.analyzers.WikiQueryParser.NamespacePolicy;
+import org.wikimedia.lsearch.analyzers.WikiQueryParser.ParsingOptions;
 import org.wikimedia.lsearch.beans.ResultSet;
 import org.wikimedia.lsearch.beans.SearchResults;
 import org.wikimedia.lsearch.beans.Title;
@@ -45,14 +41,11 @@ import org.wikimedia.lsearch.frontend.SearchServer;
 import org.wikimedia.lsearch.highlight.Highlight;
 import org.wikimedia.lsearch.highlight.HighlightResult;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
-import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.ranks.StringList;
 import org.wikimedia.lsearch.related.Related;
 import org.wikimedia.lsearch.related.RelatedTitle;
-import org.wikimedia.lsearch.spell.Suggest;
 import org.wikimedia.lsearch.spell.SuggestQuery;
 import org.wikimedia.lsearch.util.Localization;
-import org.wikimedia.lsearch.util.QueryStringMap;
 
 /**
  * Search engine implementation. The implementation is independent of frontend used to
@@ -189,7 +182,6 @@ public class SearchEngine {
 	protected SearchResults relatedSearch(IndexId iid, String searchterm, int offset, int limit) {
 		readLocalization(iid);
 		IndexId rel = iid.getRelated();
-		IndexId lin = iid.getLinks();
 		SearcherCache cache = SearcherCache.getInstance();
 		SearchResults res = new SearchResults();
 		try {
@@ -361,13 +353,8 @@ public class SearchEngine {
 		if(nsDefault == null || nsDefault.cardinality() == 0)
 			nsDefault = new NamespaceFilter("0"); // default to main namespace
 		FieldBuilder.BuilderSet bs = new FieldBuilder(iid,exactCase).getBuilder(exactCase);
-		ArrayList<String> stopWords = null;
-		try{
-			stopWords = StopWords.getCached(iid);
-		} catch(IOException e){
-			log.warn("Error fetching stop words for "+iid+" : "+e.getMessage());
-		}
-		WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),nsDefault,analyzer,bs,WikiQueryParser.NamespacePolicy.IGNORE,stopWords);
+		HashSet<String> stopWords = StopWords.getPredefinedSet(iid);
+		WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),nsDefault,analyzer,bs,NamespacePolicy.IGNORE,stopWords);
 		HashSet<NamespaceFilter> fields = parser.getFieldNamespaces(searchterm);
 		NamespaceFilterWrapper nsfw = null;
 		Query q = null;
@@ -517,11 +504,11 @@ public class SearchEngine {
 			q = parser.parseRaw(searchterm);
 		} else if(nsfw == null){
 			if(searchAll)
-				q = parser.parseWithWildcards(searchterm,WikiQueryParser.NamespacePolicy.IGNORE,wildcards);
+				q = parser.parse(searchterm,new ParsingOptions(NamespacePolicy.IGNORE,wildcards));
 			else
-				q = parser.parseWithWildcards(searchterm,WikiQueryParser.NamespacePolicy.REWRITE,wildcards);				
+				q = parser.parse(searchterm,new ParsingOptions(NamespacePolicy.REWRITE,wildcards));				
 		} else{
-			q = parser.parseWithWildcards(searchterm,WikiQueryParser.NamespacePolicy.IGNORE,wildcards);
+			q = parser.parse(searchterm,new ParsingOptions(NamespacePolicy.IGNORE,wildcards));
 			log.info("Using NamespaceFilterWrapper "+nsfw);
 		}
 		return q;

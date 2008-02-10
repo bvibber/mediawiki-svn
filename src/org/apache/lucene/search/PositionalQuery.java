@@ -5,20 +5,20 @@ import java.io.IOException;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.index.TermPositions;
-import org.apache.lucene.search.*;
-import org.apache.lucene.search.PhraseQuery.PhraseWeight;
 
 /**
- * PhraseQuery where score is based on the position of phrase in the document
+ * Phrase query with 
+ * 1) extra boost for different position ranges within the document 
+ * 2) ability to use aggregate positional information if available 
  * 
  * @author rainman
  *
  */
-public class CustomPhraseQuery extends PhraseQuery {
-	protected QueryOptions options; 
+public class PositionalQuery extends PhraseQuery {
+	protected PositionalOptions options; 
 	protected int stopWordCount = 0;
 	
-	public CustomPhraseQuery(QueryOptions options){
+	public PositionalQuery(PositionalOptions options){
 		this.options = options;
 	}
 
@@ -36,96 +36,51 @@ public class CustomPhraseQuery extends PhraseQuery {
 		add(term,position);
 	}
 	
-	@Override
-	public Query rewrite(IndexReader reader) throws IOException {
-		if(options.stemtitle != null)
-			options.stemtitle.rewrite(reader);
-		if(options.related != null)
-			options.related.rewrite(reader);
-		return this;
-	}
-
 	public String toString(String f) {
 		String s = super.toString(f);
-		String stem="", rel="";
-		if(options.stemtitle != null)
-			stem = options.stemtitle.toString();
-		if(options.related != null)
-			rel = options.related.toString();
-		return "(custom "+s+ ((stem.length()+rel.length()>0)? " with "+stem+" "+rel : "")+")";
+		return "(positional "+s+")";
 	}
 	
 	protected Weight createWeight(Searcher searcher) throws IOException {
-		return new CustomPhraseWeight(searcher);
+		return new PositionalWeight(searcher);
 	}
 	
-	protected class CustomPhraseWeight extends PhraseWeight{
-		protected Weight stemtitleWeight = null;
-		protected Weight relatedWeight = null;
-		
-		public CustomPhraseWeight(Searcher searcher) throws IOException{
+	/**
+	 * Weight
+	 * 
+	 * @author rainman
+	 *
+	 */
+	protected class PositionalWeight extends PhraseWeight{		
+		public PositionalWeight(Searcher searcher) throws IOException{
 			super(searcher);
-			// init additional weights
-			if(options.stemtitle != null)
-				stemtitleWeight = options.stemtitle.createWeight(searcher);
-			if(options.related != null)
-				relatedWeight = options.related.createWeight(searcher);
-		}
-		
-		public float sumOfSquaredWeights() throws IOException {
-			if(stemtitleWeight != null)
-				stemtitleWeight.sumOfSquaredWeights();
-			if(relatedWeight != null)
-				relatedWeight.sumOfSquaredWeights();
-			queryWeight = idf * getBoost();             // compute query weight
-			return queryWeight * queryWeight;           // square it
-		}
-	    
-		public void normalize(float queryNorm) {
-			if(stemtitleWeight != null)
-				stemtitleWeight.normalize(queryNorm);
-			if(relatedWeight != null)
-				relatedWeight.normalize(queryNorm);
-			this.queryNorm = queryNorm;
-			queryWeight *= queryNorm;                   // normalize query weight
-			value = queryWeight * idf;                  // idf for document 
 		}
 		
 		public Scorer scorer(IndexReader reader) throws IOException {
 			if (terms.size() == 0)			  // optimize zero-term case
 				return null;
-			
-			// init meta info for this local indexreader
-			if(options.rankMeta != null)
-				options.rankMeta.init(reader);
-			if(options.aggregateMeta != null)
-				options.aggregateMeta.init(reader,field);
-			
+						
 			TermPositions[] tps = new TermPositions[terms.size()];
 			for (int i = 0; i < terms.size(); i++) {
 				TermPositions p = reader.termPositions((Term)terms.elementAt(i));
 				if (p == null)
 					return null;
 				tps[i] = p;
-			}
+			}			
 			
-			// additional scorers
-			Scorer stemtitleScorer = null;
-			Scorer relatedScorer = null;
-			if(stemtitleWeight != null)
-				stemtitleScorer = stemtitleWeight.scorer(reader);
-			if(relatedWeight != null)
-				relatedScorer = relatedWeight.scorer(reader);
+			// init aggregate meta field if any
+			if(options.aggregateMeta != null)
+				options.aggregateMeta.init(reader,field);
 
 			if( terms.size() == 1)
-				return new TermCustomPhraseScorer(this, tps, getPositions(), stopWordCount, 
-						similarity,reader.norms(field), options, stemtitleScorer, relatedScorer);
-			else if( slop == 0 )				  // optimize exact case
-				return new ExactCustomPhraseScorer(this, tps, getPositions(), stopWordCount,
-						similarity,	reader.norms(field), options, stemtitleScorer, relatedScorer);
+				return new PositionalScorer.TermScorer(this, tps, getPositions(), stopWordCount, 
+						similarity,reader.norms(field), options);
+			else if( slop == 0 )				 
+				return new PositionalScorer.ExactScorer(this, tps, getPositions(), stopWordCount,
+						similarity,	reader.norms(field), options);
 			else
-				return new SloppyCustomPhraseScorer(this, tps, getPositions(), stopWordCount, 
-						similarity, slop,	reader.norms(field), options, stemtitleScorer, relatedScorer);
+				return new PositionalScorer.SloppyScorer(this, tps, getPositions(), stopWordCount, 
+						similarity, slop,	reader.norms(field), options);
 		}
 		
 	    public Explanation explain(IndexReader reader, int doc)
@@ -181,20 +136,13 @@ public class CustomPhraseQuery extends PhraseQuery {
 
 	      Explanation tfExpl = scorer(reader).explain(doc);
 	      fieldExpl.addDetail(tfExpl);
-	      // additional scorers
-	      /*Explanation add = new Explanation(1,"Additional explanations:");
-	      if(stemtitleWeight != null)
-	      	add.addDetail(stemtitleWeight.scorer(reader).explain(doc));
-	      if(relatedWeight != null)
-	      	add.addDetail(relatedWeight.scorer(reader).explain(doc));
-	      fieldExpl.addDetail(add); */
 	      
 	      fieldExpl.addDetail(idfExpl);
 
 	      Explanation fieldNormExpl = new Explanation();
 	      //byte[] fieldNorms = reader.norms(field);
+	      //fieldNorms!=null ? Similarity.decodeNorm(fieldNorms[doc]) : 0.0f;
 	      float fieldNorm = 1;
-	        //fieldNorms!=null ? Similarity.decodeNorm(fieldNorms[doc]) : 0.0f;
 	      fieldNormExpl.setValue(fieldNorm);
 	      fieldNormExpl.setDescription("fieldNorm(field="+field+", doc="+doc+")");
 	      fieldExpl.addDetail(fieldNormExpl);
@@ -214,4 +162,5 @@ public class CustomPhraseQuery extends PhraseQuery {
 	      return result;
 	    }
 	}
+	
 }

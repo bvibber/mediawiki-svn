@@ -3,8 +3,9 @@ package org.wikimedia.lsearch.search;
 import java.io.IOException;
 import java.io.Serializable;
 
+import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexReader;
-import org.apache.lucene.search.PhraseInfo;
+import org.apache.lucene.search.AggregateInfo;
 import org.wikimedia.lsearch.analyzers.AggregateAnalyzer;
 import org.wikimedia.lsearch.search.AggregateMetaField.AggregateMetaFieldSource;
 
@@ -16,7 +17,7 @@ import org.wikimedia.lsearch.search.AggregateMetaField.AggregateMetaFieldSource;
  * @author rainman
  *
  */
-public class AggregatePhraseInfo implements PhraseInfo, Serializable  {
+public class AggregateInfoImpl implements AggregateInfo, Serializable  {
 	protected transient AggregateMetaFieldSource src = null;
 	
 	/** Call this while (local) scorer is constructed to init cached meta info */
@@ -28,15 +29,15 @@ public class AggregatePhraseInfo implements PhraseInfo, Serializable  {
 		return pos / AggregateAnalyzer.TOKEN_GAP;
 	}
 	
-	public int length(int docid, int pos) {
+	public int length(int docid, int pos) throws IOException {
 		return src.getLength(docid,getSlot(pos));
 	}
 	
-	public float boost(int docid, int pos) {
+	public float boost(int docid, int pos) throws IOException {
 		return src.getBoost(docid,getSlot(pos));
 	}
 
-	public int lengthNoStopWords(int docid, int pos) {
+	public int lengthNoStopWords(int docid, int pos) throws IOException {
 		return src.getLengthNoStopWords(docid,getSlot(pos));
 	}
 
