@@ -217,9 +217,15 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
                 $csv_pages .= "$pages,";
             }
         }
-        $wgOut->AddWikiText("== Individual user $type edits statistics ==");
+	if ($type == 'cumulative') {
+	$nature = wfMsg('usagestatisticscumulative-text');
+	}
+	else {
+	$nature = wfMsg ('usagestatisticsincremental-text');
+	}
+        $wgOut->AddWikiText("== ". wfMsg ('usagestatistics-editindividual', $nature) ." ==");
         $wgOut->AddWikiText("<pre>$csv$csv_edits</pre>");
-        $wgOut->AddWikiText("== Individual user $type pages statistics ==");
+        $wgOut->AddWikiText("== ". wfMsg ('usagestatistics-editpages', $nature) ."  ==");
         $wgOut->AddWikiText("<pre>$csv$csv_pages</pre>");
  
         return;
@@ -272,7 +278,7 @@ ID='anchor1'>". wfMsg('usagestatisticscalselect') ."</A>
       cal2.showNavigationDropdowns();
     </SCRIPT>
     <A HREF='#' onClick=\"cal2.select(document.forms[0].end,'anchor2','MM/dd/yyyy'); return false;\" NAME='anchor2' 
-ID='anchor2'>select</A>
+ID='anchor2'>". wfMsg('usagestatisticscalselect')."</A>
   </td>
 </tr>
 </table>

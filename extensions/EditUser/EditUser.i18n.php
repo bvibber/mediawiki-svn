@@ -18,6 +18,14 @@ $messages['en'] = array(
 	'edituser-dosearch' => 'Search',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'edituser-username' => 'Anv',
+	'edituser-dosearch' => 'Klask',
+);
+
 /* Finnish
  * @author Jack Phoenix
  */
@@ -26,6 +34,17 @@ $messages['fi'] = array(
 	'edituser-logout' => 'Kirjaa käyttäjä ulos',
 	'edituser-username' => 'Nimi',
 	'edituser-dosearch' => 'Hae',
+);
+
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'edituser-desc'     => "Permet aux utilisateurs disposant de certains privilèges d'éditer les préférences des autres utilisateurs.",
+	'edituser'          => "Éditer l'utilisateur",
+	'edituser-logout'   => 'Ferme la session utilisateur',
+	'edituser-username' => 'Nom',
+	'edituser-dosearch' => 'Rechercher',
 );
 
 /** Dutch (Nederlands)
@@ -38,4 +57,3 @@ $messages['nl'] = array(
 	'edituser-username' => 'Naam',
 	'edituser-dosearch' => 'Zoeken',
 );
-

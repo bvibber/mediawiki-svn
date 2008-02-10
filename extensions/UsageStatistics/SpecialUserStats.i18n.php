@@ -10,6 +10,7 @@ $messages = array();
 $messages['en'] = array(
 	'specialuserstats'           => 'Usage Statistics',
 	'usagestatistics'            => 'Usage Statistics',
+	'usagestatistics-desc'       => 'Show individual user and overall wiki usage statistics',
 	'usagestatisticsfor'         => '<h2>Usage statistics for [[:user:$1|$1]]</h2>',
 	'usagestatisticsallusers'    => 'All Users',
 	'usagestatisticsinterval'    => 'Interval',
@@ -24,8 +25,12 @@ $messages['en'] = array(
         'usagestatisticsintervalweek'  => 'Week',
         'usagestatisticsintervalmonth' => 'Month',
         'usagestatisticsincremental'   => 'Incremental',
+	'usagestatisticsincremental-text' => 'incremental',
         'usagestatisticscumulative'    => 'Cumulative',
+        'usagestatisticscumulative-text'    => 'cumulative',
         'usagestatisticscalselect'     => 'Select',
+	'usagestatistics-editindividual' => 'Individual user $1 edits statistics',
+	'usagestatistics-editpages'    => '  Individual user $1 pages statistics',
 );
 
 /** Arabic (العربية)
@@ -97,6 +102,15 @@ $messages['bg'] = array(
 	'usagestatisticsbadstartend' => '<b>Невалидна <i>Начална</i> и/или <i>Крайна</i> дата!</b>',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'usagestatisticsintervalday'   => 'Deiz',
+	'usagestatisticsintervalweek'  => 'Sizhun',
+	'usagestatisticsintervalmonth' => 'Miz',
+);
+
 /** Deutsch (German)
 * @author Katharina Wolkwitz
 */
@@ -145,18 +159,29 @@ $messages['fi'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'specialuserstats'           => "Statistiques d'utilisation",
-	'usagestatistics'            => 'Statistiques Utilisation',
-	'usagestatisticsfor'         => '<h2>Statistiques Utilisation pour [[:user:$1|$1]]</h2>',
-	'usagestatisticsallusers'    => 'Tous les utilisateurs',
-	'usagestatisticsinterval'    => 'Intervalle',
-	'usagestatisticstype'        => 'Type',
-	'usagestatisticsstart'       => 'Date de début',
-	'usagestatisticsend'         => 'Date de fin',
-	'usagestatisticssubmit'      => 'Générer les statistiques',
-	'usagestatisticsnostart'     => '* <font color=red>Entrer une date de début</font>',
-	'usagestatisticsnoend'       => '* <font color=red>Entrer une date de fin</font>',
-	'usagestatisticsbadstartend' => '<b>Mauvais format de date de <i>début</i> ou de <i>fin</i> !</b>',
+	'specialuserstats'                 => "Statistiques d'utilisation",
+	'usagestatistics'                  => 'Statistiques Utilisation',
+	'usagestatistics-desc'             => 'Affiche les statistiques individuelles des utilisateurs ainsi que l’utilisation sur l’ensemble du wiki.',
+	'usagestatisticsfor'               => '<h2>Statistiques Utilisation pour [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'          => 'Tous les utilisateurs',
+	'usagestatisticsinterval'          => 'Intervalle',
+	'usagestatisticstype'              => 'Type',
+	'usagestatisticsstart'             => 'Date de début',
+	'usagestatisticsend'               => 'Date de fin',
+	'usagestatisticssubmit'            => 'Générer les statistiques',
+	'usagestatisticsnostart'           => '* <font color=red>Entrer une date de début</font>',
+	'usagestatisticsnoend'             => '* <font color=red>Entrer une date de fin</font>',
+	'usagestatisticsbadstartend'       => '<b>Mauvais format de date de <i>début</i> ou de <i>fin</i> !</b>',
+	'usagestatisticsintervalday'       => 'Jour',
+	'usagestatisticsintervalweek'      => 'Semaine',
+	'usagestatisticsintervalmonth'     => 'Mois',
+	'usagestatisticsincremental'       => 'Incrémentale',
+	'usagestatisticsincremental-text'  => 'incrémentales',
+	'usagestatisticscumulative'        => 'Cumulative',
+	'usagestatisticscumulative-text'   => 'cumulatives',
+	'usagestatisticscalselect'         => 'Sélectionner',
+	'usagestatistics-editindividual'   => 'Éditions statistiques $1 par utilisateur',
+	'usagestatistics-editpages'        => 'Statistiques $1 des pages par seul utilisateur',
 );
 
 /** Galician (Galego)
