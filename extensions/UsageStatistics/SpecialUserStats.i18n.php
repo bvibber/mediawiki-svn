@@ -30,7 +30,7 @@ $messages['en'] = array(
         'usagestatisticscumulative-text'    => 'cumulative',
         'usagestatisticscalselect'     => 'Select',
 	'usagestatistics-editindividual' => 'Individual user $1 edits statistics',
-	'usagestatistics-editpages'    => '  Individual user $1 pages statistics',
+	'usagestatistics-editpages'    => 'Individual user $1 pages statistics',
 );
 
 /** Arabic (العربية)
