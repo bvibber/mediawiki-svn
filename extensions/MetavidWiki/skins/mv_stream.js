@@ -45,7 +45,7 @@ var golobal_org_ptext=false;
 
 //@@todo context sensitive init scripts
 //init the interface on page load
-addLoadEvent(mv_load_interface_libs);
+mv_addLoadEvent(mv_load_interface_libs);
 
 function mv_load_interface_libs(){
 	js_log('mv_load_interface_libs');

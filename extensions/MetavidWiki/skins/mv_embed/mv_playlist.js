@@ -84,7 +84,7 @@ mvPlayList.prototype = {
     		//no src set check for innerHTML: 
     		if(element.innerHTML==''){
     			//check if we are in IE .. (ie does not expose innerHTML for video or playlist tags) 
-    			if(isIE()){
+    			if(embedTypes.msie){
     				var bodyHTML = document.body.innerHTML;
     				var vpos = bodyHTML.indexOf(element.outerHTML);
     				if(vpos!=-1){

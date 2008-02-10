@@ -1,6 +1,6 @@
 /*sequencer helper code */
 
-addLoadEvent(setup_sequencer); 	
+mv_addLoadEvent(setup_sequencer); 	
 mvSeq=null;
 function setup_sequencer(){	
 	mv_do_sequence({

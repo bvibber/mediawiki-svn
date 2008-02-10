@@ -1,4 +1,4 @@
-<?php
+t		<?php
 /*
  * scrape_and_insert.php Created on Oct 1, 2007
  * 
@@ -45,10 +45,14 @@ exit();
  }
 
 
-
 class MV_CspanScraper extends MV_BaseScraper{	
 	var $base_url = 'http://www.c-spanarchives.org/congress/';
 	var $base_query = '?q=node/69850';
+	//swich on letter types:
+	var $bill_types = array('H.J.RES.'=>'hj', 'H.R.'=>'h', 'H.RES.'=>'hr', 
+							'S.'=>'s', 'S.CON.RES.'=>'sc', 'S.J.RES'=>'sj', 'S.RES.1'=>'sr');
+							
+	var $govTrack_bill_url ='http://www.govtrack.us/congress/bill.xpd?bill=';
 	function procArguments(){
 		global $options, $args;		
 		if( !isset($options['stream_name']) && !isset($options['s'])){				
@@ -310,17 +314,39 @@ class MV_CspanScraper extends MV_BaseScraper{
 		   	print "Get Additonal C-SPAN Data For \"synced\" Data:\n";
 		   	foreach($cspan_person_ary as $pData){
 		   		if(isset($pData['wiki_start_time'])){
-		   			//print_r($pData);
-		   			print $this->base_url . $pData['href'] ."\n";
-		   			$rawpage = $this->doRequest($this->base_url . $pData['href']) . "\n";
+		   			//print_r($pData);		   			
+		   			$bill_categories=array();
+		   			$rawpage = $this->doRequest($this->base_url . $pData['href']);
+		   			//$rawpage = $this->doRequest('http://www.c-spanarchives.org/congress/?q=node/77531&id=8330447');
+		   			
 		   			preg_match('/<\/a><\/center><\/td><th><center>([^<]*)/', $rawpage, $title_matches);
 		   			preg_match('/<table width="400">\n<tr><td>\n(.*)<\/tr><\/td>/',$rawpage, $page_matches);
+		   			
 		   			if(isset($title_matches[1]) && isset($page_matches[1])){
 		   				$title = trim($title_matches[1]);
 		   				$body = $page_matches[1];
 		   				//print_r($page_matches);
 		   			}else{
 		   				die("error can't find title or body\n");
+		   			}
+		   			
+		   			//do debate tag search:		   			
+		   			preg_match('/<td colspan="2">Debate:\s<[^>]*>([^<]*)/', $rawpage, $debate_matches);		   			
+		   			if(isset($debate_matches[1])){
+		   				$bill_key = trim($debate_matches[1]);
+		   				print "found debate: tag " .$bill_key."\n";
+		   				$bill_categories[$bill_key]=$bill_key;	
+		   				//build gov-track-congress-session friendly debate url:
+						$this->get_and_proccess_govtrack_billid($bill_key,$stream->date_start_time);												
+		   				  	   		
+		   			}		   			
+		   			$annotate_body ='';		   			
+		   			$annotate_body.='Speach By: [[Speach by:='.str_replace('_',' ',$pData['Spoken_by']).']] ';
+		   			//title fix hack for C-span error motion to procceed 
+		   			//@@todo add in the rest of the motions:		   			
+		   			if(strpos($title,'MOTION TO PROCEED')!==false){
+		   				$title = str_replace('MOTION TO PROCEED','', $title);
+		   				//$annotate_body.="[[Bill Motion:=MOTION TO PROCEED]]\n";
 		   			}
 		   			//fix title case
 		   			$title = ucwords( strtolower($title));
@@ -329,39 +355,94 @@ class MV_CspanScraper extends MV_BaseScraper{
 		   			
 		   			//replace '' with ``
 		   			$body = str_replace('\'\'', '``', $body);
-		   			//replace H.R # with [[Catgory:: H.R #]]
-		   			$bill_pattern = '/(H\.R\.\s[0-9]+)/';
+		   			//replace bill names with [[Catgory:: bill name #]]		   		
+		   			//$bill_pattern = '/(H\.R\.\s[0-9]+)/';
+		   			$bill_pattern='/';
+		   			$bill_pattern_ary=array();
+		   			$or='';
+		   			foreach($this->bill_types as $cspanT=>$govtrakT){
+		   				$cspanT = str_replace('RES', '[\s]?RES', $cspanT);//sometimes spaces before res in text
+		   				$cspanT = str_replace('CON', '[\s]?CON', $cspanT);//sometimes spaces before res in text
+		   				$bill_pattern.=$or.'('.str_replace('.','\\.\s', $cspanT).'\s?[0-9]+)';
+		   				$bill_pattern_ary[]='('.str_replace('.','\\.\s', $cspanT).'\s?[0-9]+)';
+		   				$or='|';
+		   			}
+		   			$bill_pattern.='/i';//case insensative
+		   			//$body='bla bla H.R. 3453 test S. 3494 some more text';
+		   			//print "pattern:".$bill_pattern . "\n";
 		   			preg_match_all($bill_pattern, $body, $bill_matches);
-		   			$bill_categories=array();
+		   			//print_r($bill_matches);		   			
 		   			if(isset($bill_matches[1])){
-		   				foreach($bill_matches[1] as $bill_name){		   					
-		   					$bill_categories[$bill_name]=$bill_name;
+		   				foreach($bill_matches as$k=> $bill_type_ary){
+		   					if($k!=0){
+		   						if(isset($bill_type_ary[0])){		
+		   							$bill_categories[$bill_type_ary[0]]=str_replace(' ','',$bill_type_ary[0]);
+		   						}else if(isset($bill_type_ary[1])){		
+		   							$bill_categories[$bill_type_ary[1]]=str_replace(' ','',$bill_type_ary[1]);
+		   						}
+		   					}
 		   				}
-		   			}		 
-		   			$body = preg_replace($bill_pattern, '[[Mentions Bill:=$1]]', $body);
-		   			$body.="\n\n";
-		   			//title fix hack for C-span error motion to procceed 
-		   			//@@todo add in the rest of the motions:		   			
-		   			if(strpos($title,'MOTION TO PROCEED')!==false){
-		   				$title = str_replace('MOTION TO PROCEED','', $title);
-		   				$body.="[[Bill Motion:=MOTION TO PROCEED]]\n";
-		   			}
-		   			$body="===$title===\n". $body;
-		   			$body.="[[Category:$title]]\n";
+		   			}		 	
+		   					   			
+		   			$body = preg_replace($bill_pattern_ary, '[[Mentions Bill:=$0]]', $body);	
+		   			//print "BODY: $body";
 		   			
+		   			//source the doument:
+		   			$body.="\n\n".'Source: [[Data Source Name:=C-SPAN Congressional Chronicle]] [[Data Source URL:='.$this->base_url . $pData['href'].']]'; 
+		   				   					   			
+		   			$body.="\n";
+		   			//add the title to the top of the page: 
+		   			$body="===$title===\n". $body;		   			
+		   			$cspan_title_str = 'Thomas_en:'.$stream->name.'/'.
+		   				seconds2ntp($pData['wiki_start_time']).'/'.
+		   				seconds2ntp($pData['wiki_end_time']);		   				
+		   			$cspanTitle=Title::makeTitle(MV_NS_MVD, ucfirst($cspan_title_str));
+		   			//print "do edit ".$cspanTitle->getText()."\n";
+		   			do_update_wiki_page($cspanTitle, $body);				   			
+		   			//protect editing of the offical record (but allow moving for sync)	
+		   			$cspanTitle->loadRestrictions();
+					global $wgRestrictionTypes;
+					foreach( $wgRestrictionTypes as $action ) {
+						// Fixme: this form currently requires individual selections,
+						// but the db allows multiples separated by commas.
+						$mRestrictions[$action] = implode( '', $cspanTitle->getRestrictions( $action ) );
+					}
+					$article = new Article($cspanTitle);
+					$mRestrictions['edit']['sysop']=true;
+					$expiry = Block::infinity();
+					$dbw = wfGetDb(DB_MASTER);
+					$dbw->begin();
+					$ok = $article->updateRestrictions( $mRestrictions,wfMsg('mv_source_material'), false, $expiry );					
+					if($ok){
+						print "updated permisions for ". $cspanTitle->getText()."\n";
+		   				$dbw->commit();
+					}else{
+						print "failed to update restrictions\n";
+					}
+		   			
+		   					   			
+		   			//proccess each bill to the annotation body;
+		   			$bcat=''; 
+		   			$bill_lead_in ="\n\nBill ";
 		   			foreach($bill_categories as $bill){
-		   				$body.="[[Category:$bill]] ";
+		   				if(trim($bill)!=''){
+			   				$this->get_and_proccess_govtrack_billid($bill,$stream->date_start_time);		
+			   				$annotate_body.=$bill_lead_in.'[[Bill:='.$this->cur_bill_short_title.']] ';
+			   				$bill_lead_in=' , ';		   				   		
+			   				$bcat.="[[Category:$bill]] ";
+		   				}
 		   			}
-		   			$body.='[[Speach by:='.$pData['Spoken_by'].'| ]] ';
-		   			$title_str = 'thomas_en:'.$stream->name.'/'.
+		   			if(trim($title)!=''){
+		   				$annotate_body.="[[Category:$title]]\n";
+		   			}
+		   					   			
+		   			$anno_title_str =  'Anno_en:'.$stream->name.'/'.
 		   				seconds2ntp($pData['wiki_start_time']).'/'.
 		   				seconds2ntp($pData['wiki_end_time']);
-		   						   				
-		   			$cspanTitle=Title::makeTitle(MV_NS_MVD, ucfirst($title_str));
-		   			 
-		   			//add title category
-		   			//print "do insert ".$cspanTitle->getText()."\n$body \n\n";
-		   			do_update_wiki_page($cspanTitle, $body);		   				
+		   						   			
+		   			$annoTitle =Title::makeTitle(MV_NS_MVD, ucfirst($anno_title_str));
+		   			//print "do edit ".$annoTitle->getText()."\n";
+		   			do_update_wiki_page($annoTitle, $annotate_body);
 		   			//[Page: S14580] replaced with:  [[Category:BillName]]
 		   			//would be good to link into the official record for "pages"
 		   			
@@ -378,8 +459,7 @@ class MV_CspanScraper extends MV_BaseScraper{
 		   			//do new page mvd:or_
 		   			//die;
 		   		}
-		   	}	   
-		   	
+		   	}	   		   	
 		   	//$inx_cspan_person_ary = array_keys($g_row_matches);
 		   	//$inx_row_person_ary = array_keys($g_person_time_ary);
 		   	//for($i=0;$i<5;$i++){
@@ -392,7 +472,120 @@ class MV_CspanScraper extends MV_BaseScraper{
             //use offset to insert all $person_time_array data 
 		}
 	}
+	/* converts c-span bill_id to gov_track bill id */
+	function get_and_proccess_govtrack_billid($bill_key, $stream_date){
+		global $MvBillTypes;
+		//first get the year to detrim the house session: 
+		$year =date('y', $stream_date);
+		$session='';
+		if($year=='01'||$year=='02'){$session='107';
+		}else if($year=='03'||$year=='04'){$session='108';
+		}else if($year=='06'||$year=='05'){$session='109';
+		}else if($year=='07'||$year=='08'){$session='110';
+		}else if($year=='09'||$year=='10'){$session='111';
+		}else if($year=='11'||$year=='12'){$session='112';}
+		$this->cur_session=$session;	
+		foreach($this->bill_types as $cspanT=>$govtrakT){
+			$bill_key = trim($bill_key);
+			if(substr($bill_key, 0,strlen($cspanT))==$cspanT){
+				$govTrackBillId= $govtrakT.$session.'-'.trim(substr($bill_key,strlen($cspanT)));
+			}
+		}
+		if($govTrackBillId){
+			$this->proccessGovTrackBill($govTrackBillId, $bill_key);	
+			$this->govTrackBillId= $govTrackBillId;								
+		}else{
+			print 'error in getting govTrack bill id on: '. $bill_key . "\n";
+			return null;
+		}	
+	}
+	function proccessGovTrackBill($govTrackBillId, $bill_key){
+		//get the bill title & its sponser / cosponsers: 
+		$rawGovTrackPage = $this->doRequest($this->govTrack_bill_url . $govTrackBillId);
+		//$rawGovTrackPage = $this->doRequest('http://www.govtrack.us/congress/bill.xpd?bill=h110-400');
+									
+		print "gov_track id: ". $govTrackBillId . " from: " . $this->govTrack_bill_url . $govTrackBillId. "\n";
+		
+		//get title: 
+		
+		preg_match('/property="dc:title" datatype="xsd:string" style="margin-bottom: 1em">([^<]*)<\/div><p style="margin-top: 1.75em; margin-bottom: 1.75em">([^<]*)/',$rawGovTrackPage, $title_match);
+		if(isset($title_match[1])){
+			$title_short  = str_replace('_',' ',$title_match[1]);
+			$this->cur_bill_short_title=$title_short;
+			$title_desc = $title_match[2];
+		}else{
+			die('could not get title for bill: ' . $govTrackBillId);
+		}
+		
+		//print "raw govtrack:\n $rawGovTrackPage";
+		//get the $thomas_match 
+		preg_match('/thomas\.loc\.gov\/cgi-bin\/bdquery\/z\?(.*):/', $rawGovTrackPage, $thomas_match);								
+		//get introduced: //strange .* does not seem to work :( 
+		preg_match('/Introduced<\/nobr><\/td><td style="padding-left: 1em; font-size: 75%; color: #333333"><nobr>([^<]*)/m', $rawGovTrackPage, $date_intro_match);	
+		//print_r($date_intro_match);						
+		//get sponsor govtrack_id: 
+		preg_match('/usbill:sponsor[^<]*<a href="person.xpd\?id=([^"]*)/', $rawGovTrackPage, $sponsor_match);			
+		//lookup govtrack_id 
+		//print_r($sponsor_match);
+		if(isset($sponsor_match[1])){
+			$sponsor_name = str_replace('_',' ',$this->get_wiki_name_from_govid($sponsor_match[1]));
+		}
+		//get cosponsor chunk:
+		$scospon=strpos($rawGovTrackPage, 'Cosponsors [as of');
+		$cochunk = substr($rawGovTrackPage, 
+			$scospon,								 
+			strpos($rawGovTrackPage, '<a href="/faq.xpd#cosponsors">')-$scospon);							
+		preg_match_all('/person.xpd\?id=([^"]*)/',$cochunk,  $cosponsor_match);				
+									
+		$bp = "{{Bill|\n".
+			'GovTrackID='.$govTrackBillId."|\n";
+		if(isset($thomas_match[1]))$bp.='ThomasID='.$thomas_match[1]."|\n";
+		if(isset($this->cur_session))$bp.='Session='.$this->cur_session."|\n";
+		$bp.='Bill Key='.$bill_key."|\n";							
+		if(isset($date_intro_match[1]))$bp.='Date Introduced='.$date_intro_match[1]."|\n";
+		if($title_desc){
+			$bp.='Title Description='.$title_desc."|\n";
+		}													
+		if($sponsor_name)$bp.='Sponsor='.$sponsor_name."|\n";
+		
+		if(isset($cosponsor_match[1])){
+			foreach($cosponsor_match[1] as $k=>$govid){
+				$cosponsor_name = $this->get_wiki_name_from_govid($govid);
+				if($cosponsor_name){
+					$bp.='Cosponsor '.($k+1).'='.$cosponsor_name."|\n";	
+				}
+			}	
+		}							
+		$bp.="}}\n";		
+		//set up the base bill page:
+		$wgBillTitle = Title::newFromText($title_short);
+		do_update_wiki_page($wgBillTitle, $bp);
+		//set up a redirect for the bill key, and a link for the category page: 
+		$wgBillKeyTitle =Title::newFromText($bill_key);
+		do_update_wiki_page($wgBillKeyTitle, '#REDIRECT [['.$title_short.']]');							
+		//set up link on the category page:
+		$wgCatPageTitle =Title::newFromText($bill_key, NS_CATEGORY);		
+		do_update_wiki_page($wgCatPageTitle, 'Also see [[:'.$wgBillTitle->getText().']]');		
+	}
+	function get_wiki_name_from_govid($govID){
+		if(!isset($this->govTrack_cache)){
+			$sql = 'SELECT * FROM `smw_relations` WHERE `relation_title` = \'GovTrack_Person_ID\'';
+			$dbr = wfGetDB( DB_SLAVE );	
+			$res = $dbr->query($sql);
+			while ($row = $dbr->fetchObject($res)) {
+				$this->govTrack_cache[$row->object_title]=$row->subject_title;
+			}
+		}
+		if(!isset($this->govTrack_cache[$govID])){
+			$wgTitle = Title::newFromText('CongressVid:Missing_People');
+			append_to_wiki_page($wgTitle, "Missing GovTrack person: [http://www.govtrack.us/congress/person.xpd?id=$govID $govID] \n\n");
+			return false;	
+		}
+		return str_replace('_',' ',$this->govTrack_cache[$govID]);
+	}
+				
 }
+
 class MV_BaseScraper{
 	function __construct(){
 		$this->procArguments();

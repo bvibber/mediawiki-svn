@@ -197,6 +197,9 @@ $messages['en'] = array(
 	'mv_search_stream_title' => 'Search the Current Stream',
 	'mv_new_ht_en'           => 'New Transcript',
 	'mv_new_anno_en'         => 'New Tag or Annotation',
+	
+	#msg for bots and maintance 
+	'mv_protect_source_material'=> 'Original Source Material protected from edits'
 );
 
 /** Arabic (العربية)

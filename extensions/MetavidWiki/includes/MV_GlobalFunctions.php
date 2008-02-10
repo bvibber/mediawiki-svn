@@ -85,9 +85,6 @@ function mvSetupExtension(){
 	require_once( dirname(__FILE__) . '/specials/MV_SpecialMediaSearch.php');
 
 
-	//set up search:
-	//extAddSpecialPage( dirname(__FILE__) . '/LuceneSearch_body.php', 'Search', 'LuceneSearch' );
-
 	/**********************************************/
 	/***** register hooks                     *****/
 	/**********************************************/
@@ -114,10 +111,10 @@ function mvSetupExtension(){
 	$wgExtensionCredits['other'][] = array(
 	    'name' => 'Metavid Wiki Extension',
 	    'author' => 'Michael Dale',
-	    'version' => 'pre 0.1',
+	    'version' => 'alpha 0.1',
 		'url' => 'http://metavid.org',
 		'description' => 'Video Metadata Editor, Clip Sequencer and Media Search<br>' .
-				'[http://metavid.ucsc.edu/wiki/index.php/System_Overview View Online Documentation]'
+				'[http://metavid.ucsc.edu/wiki/index.php/Metavid Wiki Software]'
 	);
 }	
 /**********************************************/

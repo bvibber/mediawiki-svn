@@ -7,4 +7,5 @@ include_once(dirname(__FILE__)  .'/'.'MV_DefaultSettings.php');
  */
 $mvExternalImages = true;
 $mvExternalImgServerPath = 'http://mvprime.cse.ucsc.edu/wiki/index.php';
+
 ?>

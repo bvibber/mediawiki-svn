@@ -207,8 +207,7 @@ textarea.mv_ajax_textarea{
 }
 
 #cmml_link{
-	position: absolute; right: 17px; top: 18px;width:28px;height:28px;
+	position: absolute; right: 17px; top: 18px;width:28px;height:28px;z-index:2;
 
 }
-
 

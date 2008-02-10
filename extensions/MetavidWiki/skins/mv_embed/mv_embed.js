@@ -592,15 +592,6 @@ function do_playlist_functions(){
 	});
 }
 
-
-//state attributes (per html5 spec http://www.whatwg.org/specs/web-apps/current-work/#video)
-var video_states={
-    "paused":true,
-    "readyState":0,  //http://www.whatwg.org/specs/web-apps/current-work/#readystate
-    "currentTime":0, //current playback position (should be overwritten by local functions) 
-    "duration":NaN   //media duration (read from file)
-}
-
 /*
 * createEmbedVideoElement 
 * takes a video element as input and swaps it out with 
@@ -615,7 +606,7 @@ function swapEmbedVideoElement(video_element, videoInterface){
 			if(method=='style'){
 					embed_video.setAttribute('style', videoInterface[method]);			
 			}else if(method=='class'){
-				if(isIE())
+				if(embedTypes.msie)
 					embed_video.setAttribute("className", videoInterface['class']);
 				else
 					embed_video.setAttribute("class", videoInterface['class']);
@@ -654,6 +645,13 @@ var embedVideo = function(element) {
 //base embedVideo object
 embedVideo.prototype = {
 	slider:null,
+	//state attributes (per html5 spec http://www.whatwg.org/specs/web-apps/current-work/#video)
+	video_states:{
+	    "paused":true,
+	    "readyState":0,  //http://www.whatwg.org/specs/web-apps/current-work/#readystate
+	    "currentTime":0, //current playback position (should be overwritten by local functions) 
+	    "duration":NaN   //media duration (read from file)
+	},
 	//utility functions for property values: 
 	hx : function ( s ) {
 		if ( typeof s != 'String' ) {
@@ -678,8 +676,8 @@ embedVideo.prototype = {
 	        }
 	    }
 	    //init the default states: 
-	    for(var state in video_states){
-	    	 this[state]=video_states[state];
+	    for(var state in this.video_states){
+	    	 this[state]=this.video_states[state];
 	    }
 	    //if the thumbnail is null replace with default thumb:
 	    if(!this['thumbnail']){
@@ -786,12 +784,15 @@ embedVideo.prototype = {
 	/*
 	* get missing plugin html (check for user included code)
 	*/ 
-	getPluginMissingHTML : function(){		
+	getPluginMissingHTML : function(){	
+		//keep the box width hight:
+		var out = '<span style="width:'+this.width+'px;height:'+this.height+'px">';
 	    if(this.user_missing_plugin_html){
-	        return this.user_missing_plugin_html;
+	      out+= this.user_missing_plugin_html;
 	    }else{
-		  return getMsg('generic_missing_plugin') + ' or <a title="'+getMsg('download_clip')+'" href="'+this.src +'">'+getMsg('download_clip')+'</a>';
+		  out+= getMsg('generic_missing_plugin') + ' or <a title="'+getMsg('download_clip')+'" href="'+this.src +'">'+getMsg('download_clip')+'</a>';
 		}
+		return out + '</span>';
 	},
 	//updates the video src
 	updateVideoSrc : function(src){
@@ -1096,7 +1097,7 @@ embedVideo.prototype = {
 		if (window.document[this.pid]){
 	        return window.document[this.pid];
 		}
-		if (isIE()){
+		if (embedTypes.msie){
 			return document.getElementById(this.pid );	       
 		}else{
 	    	 if (document.embeds && document.embeds[this.pid])
@@ -1235,7 +1236,7 @@ embedVideo.prototype = {
 /* returns html for a transparent png (for ie<7)*/
 function getTransparentPng(image){
 	if(!image.style)image.style='';
-	if( isIE() ){
+	if( embedTypes.msie ){
 		return '<span id="'+image.id+'" style="display:inline-block;width:'+image.width+'px;height:'+image.height+'px;' +
     		'filter:progid:DXImageTransform.Microsoft.AlphaImageLoader' +
     		'(src=\''+image.src+'\', sizingMethod=\'scale\');"></span>';	
@@ -1268,15 +1269,6 @@ function getTransparentPng(image){
 
 
 /*
-IE specific functions:  
-*/
-//check if we are an IE browser
-function isIE(){
-    return navigator.appName.indexOf("Microsoft") != -1;
-    //return !(navigator.plugins && navigator.plugins.length);
-}
-
-/*
 * utility functions: 
 */
 function seconds2ntp(sec){
@@ -1298,17 +1290,17 @@ function ntp2seconds(ntp){
 	return parseInt(times[0]*3600)+parseInt(times[1]*60)+parseFloat(times[2]);
 }
 //addLoadEvent for adding functions to be run when the page DOM is done loading
-function addLoadEvent(func) {
+function mv_addLoadEvent(func) {
 	mvEmbed.addLoadEvent(func);
 }
 //load external via dom injection
 function loadExternalJs(url){  
-   js_log('load js: '+ url);
-	   var e = document.createElement("script");
-	   e.setAttribute('src', url);
-	   e.setAttribute('type',"text/javascript");
-	   //e.setAttribute('defer', true);
-	   document.getElementsByTagName("head")[0].appendChild(e);     
+   	js_log('load js: '+ url);
+	var e = document.createElement("script");
+	e.setAttribute('src', url);
+	e.setAttribute('type',"text/javascript");
+	//e.setAttribute('defer', true);
+	document.getElementsByTagName("head")[0].appendChild(e);     
 }
 
 function styleSheetPresent(url){
@@ -1384,27 +1376,3 @@ function getMvEmbedPath(){
 function js_error(string){
 	alert(string);
 }
-//dump the output of a variable/objec (firebug does this for us)
-function dump(arr,level) {
-	var dumped_text = "";
-	if(!level) level = 0;	
-	//The padding given at the beginning of the line.
-	var level_padding = "";
-	for(var j=0;j<level+1;j++) level_padding += "    ";
-	
-	if(typeof(arr) == 'object') { //Array/Hashes/Objects
-	 for(var item in arr) {
-	  var value = arr[item];
-	 
-	  if(typeof(value) == 'object') { //If it is an array,
-	   dumped_text += level_padding + "'" + item + "' ...\n";
-	   dumped_text += dump(value,level+1);
-	  } else {
-	   dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
-	  }
-	 }
-	} else { //Stings/Chars/Numbers etc.
-	 dumped_text = "===>"+arr+"<===("+typeof(arr)+")";
-	}
-	return dumped_text;
-} 

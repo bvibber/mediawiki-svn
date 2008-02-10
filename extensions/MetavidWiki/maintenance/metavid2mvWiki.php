@@ -78,7 +78,7 @@ $valid_attributes = array (
 		'The Name as it appears in on screen video text'
 	),
 	'gov_track_id' => array (
-		'GovTrack ID',
+		'GovTrack Person ID',
 		'Congress Person\' <a href="www.govtrack.us">govtrack.us</a> person ID'
 	),
 	'osid' => array (
@@ -102,7 +102,7 @@ $valid_attributes = array (
 		'The Cogress Persons Political party'
 	)
 );
-//cheep state look up:
+//state look up:
 $states_ary = array (
 	'AL' => 'Alabama',
 	'AK' => 'Alaska',
@@ -219,6 +219,7 @@ switch ($args[0]) {
 	case 'update_templates' :
 		upTemplate_person(true);
 		upTempalte_Ht_en(true);
+		upTemplate_bill(true);
 	break;
 	//by default treat the argument as a stream name: 
 	case 'mvd_error_check':

@@ -25,6 +25,7 @@ if ( !$wgUser ) {
 if ( $wgUser->isAnon() ) {
 	$wgUser->addToDatabase();
 }
+
  //returns true if person found in category person: 
  $mv_valid_people_cache = array();
 function mv_is_valid_person($person_key){
@@ -44,6 +45,26 @@ function mv_is_valid_person($person_key){
 		$mv_valid_people_cache[$person_key]=false;
 	}	
 	return $mv_valid_people_cache[$person_key];
+}
+function append_to_wiki_page($wgTitle, $append_text, $unique=true){
+	global $botUserName;
+	if ($wgTitle->exists()) {
+		$wgArticle = new Article($wgTitle);
+		$cur_text = $wgArticle->getContent();
+		if($unique){
+			if(strpos($cur_text, $append_text)!==false){
+				print "no insert $append_text already present\n";
+				return;
+			}
+		}
+		$cur_text.=$append_text;
+		//do the edit: 	
+		$sum_txt = 'metavid append';	
+		$wgArticle->doEdit($cur_text, $sum_txt);
+		print "did append on " . $wgTitle->getDBkey() . "\n";
+	}else{
+		print "can't append page does not exist\n";
+	}
 }
 function do_update_wiki_page($wgTitle, $wikiText, $ns = null, $forceUpdate=false) {
 	global $botUserName;
@@ -74,7 +95,7 @@ function do_update_wiki_page($wgTitle, $wikiText, $ns = null, $forceUpdate=false
 		//if last edit!=mvBot skip (don't overwite peoples improvments') 
 		$rev = & Revision::newFromTitle($wgTitle);
 		if( $botUserName!= $rev->getRawUserText()){
-			print ' skiped page edited by user:'.$rev->getRawUserText()." != $botUserName \n";
+			print ' skiped page ' .$wgTitle->getText(). ' edited by user:'.$rev->getRawUserText()." != $botUserName \n";
 			if(!$forceUpdate)return ;
 		}
 		//proc article:		
@@ -86,7 +107,7 @@ function do_update_wiki_page($wgTitle, $wikiText, $ns = null, $forceUpdate=false
 		}
 		//check if text is identical: 		
 		if (trim($cur_text) == trim($wikiText)) {
-			print "text is identical (no update)\n";					
+			print "text " .$wgTitle->getText() ." is identical (no update)\n";					
 			if(!$forceUpdate)return ;
 		}
 	}
