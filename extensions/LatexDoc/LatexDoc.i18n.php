@@ -20,7 +20,7 @@ Output: $2
 $3",
 	'latexdoc_get_dvi' => 'Get DVI',
 	'latexdoc_get_pdf' => 'Get PDF',
-	'latexdoc-desc'    => 'Latex Doc.',
+	'latexdoc-desc'    => 'Collaborative editing of LaTeX documents',
 );
 
 /** Arabic (العربية)
