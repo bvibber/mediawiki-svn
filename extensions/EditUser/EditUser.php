@@ -9,25 +9,16 @@ if(!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['specialpage'][] = array(
-'name' => 'EditUser',
-'description' => 'Allows privelaged users to edit other users\' preferences',
-'author' => 'Ryan Schmidt',
-'version' => '1.2',
-'url' => 'http://www.mediawiki.org/wiki/Extension:EditUser',
+	'name' => 'EditUser',
+	'version' => '1.3',
+	'author' => 'Ryan Schmidt',
+	#'description' => 'Allows privileged users to edit other users\' preferences',
+	'descriptionmsg' => 'edituser-desc',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:EditUser',
 );
 
-$wgAutoloadClasses['EditUser'] = dirname(__FILE__) . '/EditUser.page.php';
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['EditUser'] = $dir .'EditUser.i18n.php';
+$wgAutoloadClasses['EditUser'] = $dir . 'EditUser_body.php';
 $wgSpecialPages['EditUser'] = 'EditUser';
 $wgAvailableRights[] = 'edituser';
-
-$wgExtensionFunctions[] = 'efEditUser';
-
-/**
-* Populate the message cache and register the special page
-*/
-function efEditUser() {
-	global $wgMessageCache;
-	require_once( dirname( __FILE__ ) . '/EditUser.i18n.php' );
-	foreach( efEditUserMessages() as $lang => $messages )
-		$wgMessageCache->addMessages( $messages, $lang );
-}

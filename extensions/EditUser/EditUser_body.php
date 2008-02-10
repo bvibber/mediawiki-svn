@@ -11,7 +11,7 @@ class EditUser extends SpecialPage {
 	var $mReset, $mPosted, $mToggles, $mUseAjaxSearch, $mSearchNs, $mRealName, $mImageSize;
 	var $mUnderline, $mWatchlistEdits;
 
-	 function EditUser() {
+	public function __construct() {
 		SpecialPage::SpecialPage('EditUser', 'edituser');
 	}
 
@@ -89,12 +89,15 @@ class EditUser extends SpecialPage {
 		return true;
 	}
 
-	function execute( $par ) {
+	public function execute( $par ) {
 		global $wgOut, $wgUser, $wgRequest;
 		if( !$wgUser->isAllowed( 'edituser' ) ) {
 			$wgOut->permissionRequired( 'edituser' );
 			return false;
 		}
+
+		wfLoadExtensionMessages( 'EditUser' );
+
 		$this->setHeaders();
 		if(!isset($par))
 			$wgOut->addHtml($this->makeSearchForm());
