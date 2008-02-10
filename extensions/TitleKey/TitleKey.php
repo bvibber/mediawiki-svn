@@ -21,9 +21,11 @@
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'TitleKey',
-	'version' => '2008-01-30',
+	'version' => '2008-02-10',
+	'author' => 'Brion Vibber',
 	'description' => 'Title prefix search suggestion backend',
-	'author' => 'Brion Vibber'
+	'descriptionmsg' => 'titlekey-desc',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:TitleKey',
 );
 
 // The 'SearchUpdate' hook would be right, but it's called in the
@@ -44,4 +46,6 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'TitleKey::schemaUpdates';
 $wgHooks['PrefixSearchBackend'][] = 'TitleKey::prefixSearchBackend';
 $wgHooks['SearchGetNearMatch' ][] = 'TitleKey::searchGetNearMatch';
 
-$wgAutoloadClasses['TitleKey'] = dirname( __FILE__ ) . '/TitleKey_body.php';
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['TitleKey'] = $dir . 'TitleKey.i18n.php';
+$wgAutoloadClasses['TitleKey'] = $dir . 'TitleKey_body.php';
