@@ -17,6 +17,6 @@ $messages['en'] = array(
 /** Dutch (Nederlands)
  * @author Siebrand
  */
-$messages['en'] = array(
+$messages['nl'] = array(
 	'titlekey-desc' => 'Backend voor zoeksuggesties voor paginanaamvoorvoegsels',
 );
