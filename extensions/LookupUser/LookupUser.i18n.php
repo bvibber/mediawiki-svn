@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'lookupuser'                   => 'Look up user info',
+	'lookupuser-desc'              => 'Retrieve information about a user such as email address and ID',
 	'lookupuser_intro'             => 'Enter a username to view the preferences of that user.',
 	'lookupuser_nonexistent'       => 'Error: User does not exist',
 	'lookupuser_authenticated'     => 'authenticated on $1',
@@ -70,17 +71,18 @@ $messages['el'] = array(
 );
 
 $messages['fr'] = array(
-	'lookupuser' => 'Parcourir les informations de l\'usager',
-	'lookupuser_intro' => 'Saisir un nom d\'utilisateur pour voir ses préférences',
-	'lookupuser_nonexistent' => 'Erreur : l\'utilisateur n\'existe pas',
-	'lookupuser_authenticated' => 'Courriel d\'identification : $1',
+	'lookupuser'                   => 'Parcourir les informations de l\'usager',
+	'lookupuser-desc'              => 'Extrait les informations concernant un utilisateur telles qu’une adresse électronique et le numéro ID',
+	'lookupuser_intro'             => 'Saisir un nom d\'utilisateur pour voir ses préférences',
+	'lookupuser_nonexistent'       => 'Erreur : l\'utilisateur n\'existe pas',
+	'lookupuser_authenticated'     => 'Courriel d\'identification : $1',
 	'lookupuser_not_authenticated' => 'pas identifié',
-	'lookupuser_id' => 'ID de l\'utilisateur : <tt>#$1</tt>',
-	'lookupuser_email' => 'Courriel : [[Special:Emailuser/$2|$1]]',
-	'lookupuser_realname' => 'Nom réel : $1',
-	'lookupuser_registration' => 'Date d\'enregistrement : $1',
-	'lookupuser_touched' => 'Enregistrement de l\'utilisateur touché pour la dernière fois : $1',
-	'lookupuser_useroptions' => 'Options de l\'utilisateur :',
+	'lookupuser_id'                => 'ID de l\'utilisateur : <tt>#$1</tt>',
+	'lookupuser_email'             => 'Courriel : [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'          => 'Nom réel : $1',
+	'lookupuser_registration'      => 'Date d\'enregistrement : $1',
+	'lookupuser_touched'           => 'Enregistrement de l\'utilisateur touché pour la dernière fois : $1',
+	'lookupuser_useroptions'       => 'Options de l\'utilisateur :',
 );
 
 $messages['gl'] = array(
