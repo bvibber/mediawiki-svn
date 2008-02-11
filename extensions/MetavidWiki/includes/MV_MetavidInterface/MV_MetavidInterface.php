@@ -77,12 +77,7 @@
 		$this->components['MV_Overlay']->setReq('Recentchanges');
  	}*/
  	function setupStreamView(){
- 		global $mvgIP, $mvDefaultStreamViewLength, $wgOut,$mvgScriptPath,$wgUser; 		
- 		//add in full title var: 
- 		$wgOut->addScript("<script type=\"text/javascript\">".'/*<![CDATA[*/'." 		
- 		var mvTitle = '{$this->article->mvTitle->getWikiTitle()}'; \n".
- 		'/*]]>*/</script>'."\n");
- 	
+ 		global $mvgIP, $mvDefaultStreamViewLength, $wgOut,$mvgScriptPath,$wgUser; 		 	 	
  		//set default time range if null time range request
  		$this->article->mvTitle->setStartEndIfEmpty(
  			seconds2ntp(0), 
@@ -93,7 +88,15 @@
 			$this->components[$cp_name] = new $cp_name( 
 				array('mv_interface'=>&$this)
 			);				
-		}		
+		}
+		//proccess track request:
+		$this->components['MV_Overlay']->procMVDReqSet();				
+		//add in title & tracks var:
+ 		$wgOut->addScript('<script type="text/javascript">/*<![CDATA[*/'." 		
+ 		var mvTitle = '{$this->article->mvTitle->getWikiTitle()}'; 
+ 		var mvTracks = '".$this->components['MV_Overlay']->getMVDReqString(). '\';
+ 		/*]]>*/</script>'."\n");
+		
 		//also add prev next pagging	 		
 		$this->page_header ='<span style="position:relative;top:-12px;font-weight:bold">'.
  			$this->article->mvTitle->getStreamNameText().

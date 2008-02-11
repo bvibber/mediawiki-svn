@@ -50,7 +50,7 @@ class MV_CspanScraper extends MV_BaseScraper{
 	var $base_query = '?q=node/69850';
 	//swich on letter types:
 	var $bill_types = array('H.J.RES.'=>'hj', 'H.R.'=>'h', 'H.RES.'=>'hr', 
-							'S.'=>'s', 'S.CON.RES.'=>'sc', 'S.J.RES'=>'sj', 'S.RES.1'=>'sr');
+							'S.CON.RES.'=>'sc', 'S.J.RES'=>'sj', 'S.RES.1'=>'sr', 'S.'=>'s');
 							
 	var $govTrack_bill_url ='http://www.govtrack.us/congress/bill.xpd?bill=';
 	function procArguments(){
@@ -314,8 +314,12 @@ class MV_CspanScraper extends MV_BaseScraper{
 		   	print "Get Additonal C-SPAN Data For \"synced\" Data:\n";
 		   	foreach($cspan_person_ary as $pData){
 		   		if(isset($pData['wiki_start_time'])){
-		   			//print_r($pData);		   			
+		   			//init:  			
 		   			$bill_categories=array();
+		   			$annotate_body ='';	
+		   			$body='';
+		   			$bill_key=null;
+		   			
 		   			$rawpage = $this->doRequest($this->base_url . $pData['href']);
 		   			//$rawpage = $this->doRequest('http://www.c-spanarchives.org/congress/?q=node/77531&id=8330447');
 		   			
@@ -328,20 +332,19 @@ class MV_CspanScraper extends MV_BaseScraper{
 		   				//print_r($page_matches);
 		   			}else{
 		   				die("error can't find title or body\n");
-		   			}
-		   			
+		   			}		   			
 		   			//do debate tag search:		   			
 		   			preg_match('/<td colspan="2">Debate:\s<[^>]*>([^<]*)/', $rawpage, $debate_matches);		   			
 		   			if(isset($debate_matches[1])){
 		   				$bill_key = trim($debate_matches[1]);
-		   				print "found debate: tag " .$bill_key."\n";
-		   				$bill_categories[$bill_key]=$bill_key;	
+		   				print "found debate: tag " .$bill_key."\n";		   				
 		   				//build gov-track-congress-session friendly debate url:
-						$this->get_and_proccess_govtrack_billid($bill_key,$stream->date_start_time);												
-		   				  	   		
+						if($this->get_and_proccess_govtrack_billid($bill_key,$stream->date_start_time)!=null){
+							$bill_categories[$bill_key]=$bill_key;	
+						}													   				  	   		
 		   			}		   			
-		   			$annotate_body ='';		   			
-		   			$annotate_body.='Speach By: [[Speach by:='.str_replace('_',' ',$pData['Spoken_by']).']] ';
+		   				   			
+		   			$annotate_body.='Speech By: [[Speech by:='.str_replace('_',' ',$pData['Spoken_by']).']] ';
 		   			//title fix hack for C-span error motion to procceed 
 		   			//@@todo add in the rest of the motions:		   			
 		   			if(strpos($title,'MOTION TO PROCEED')!==false){
@@ -370,20 +373,29 @@ class MV_CspanScraper extends MV_BaseScraper{
 		   			$bill_pattern.='/i';//case insensative
 		   			//$body='bla bla H.R. 3453 test S. 3494 some more text';
 		   			//print "pattern:".$bill_pattern . "\n";
-		   			preg_match_all($bill_pattern, $body, $bill_matches);
-		   			//print_r($bill_matches);		   			
+		   			preg_match_all($bill_pattern, $body, $bill_matches);		   				   		
 		   			if(isset($bill_matches[1])){
-		   				foreach($bill_matches as$k=> $bill_type_ary){
+		   				foreach($bill_matches as $k=> $bill_type_ary){
 		   					if($k!=0){
-		   						if(isset($bill_type_ary[0])){		
-		   							$bill_categories[$bill_type_ary[0]]=str_replace(' ','',$bill_type_ary[0]);
+		   						if(isset($bill_type_ary[0])){				   						
+		   							$bill_name =$bill_type_ary[0];
 		   						}else if(isset($bill_type_ary[1])){		
-		   							$bill_categories[$bill_type_ary[1]]=str_replace(' ','',$bill_type_ary[1]);
+		   							$bill_name=$bill_type_ary[1];
+		   						}else{
+		   							continue;
+		   						}	
+		   						//if the first letter is lower case not likely a bill 
+		   						if(islower($bill_name[0]))continue;
+		   						//conform white space and case:
+		   						$bill_name=str_replace(array('S. ','Con. ', 'Res. '),array('S.', 'CON.', 'RES. '),$bill_name);
+		   						//make sure its not a false possitave and load bill data from govTrack: 
+		   						if($this->get_and_proccess_govtrack_billid($bill_name,$stream->date_start_time)){
+		   							$bill_categories[$bill_name]=$bill_name;
 		   						}
 		   					}
 		   				}
 		   			}		 	
-		   					   			
+
 		   			$body = preg_replace($bill_pattern_ary, '[[Mentions Bill:=$0]]', $body);	
 		   			//print "BODY: $body";
 		   			
@@ -407,6 +419,7 @@ class MV_CspanScraper extends MV_BaseScraper{
 						// but the db allows multiples separated by commas.
 						$mRestrictions[$action] = implode( '', $cspanTitle->getRestrictions( $action ) );
 					}
+					
 					$article = new Article($cspanTitle);
 					$mRestrictions['edit']['sysop']=true;
 					$expiry = Block::infinity();
@@ -420,16 +433,16 @@ class MV_CspanScraper extends MV_BaseScraper{
 						print "failed to update restrictions\n";
 					}
 		   			
-		   					   			
 		   			//proccess each bill to the annotation body;
 		   			$bcat=''; 
 		   			$bill_lead_in ="\n\nBill ";
+		   			//print_r($bill_categories);		   			
 		   			foreach($bill_categories as $bill){
-		   				if(trim($bill)!=''){
-			   				$this->get_and_proccess_govtrack_billid($bill,$stream->date_start_time);		
+		   				if(trim($bill)!=''){	
+		   					//use short title for category and long title for semantic link... (highly arbitrary)					
 			   				$annotate_body.=$bill_lead_in.'[[Bill:='.$this->cur_bill_short_title.']] ';
 			   				$bill_lead_in=' , ';		   				   		
-			   				$bcat.="[[Category:$bill]] ";
+			   				$annotate_body.="[[Category:$bill]] ";
 		   				}
 		   			}
 		   			if(trim($title)!=''){
@@ -446,7 +459,7 @@ class MV_CspanScraper extends MV_BaseScraper{
 		   			//[Page: S14580] replaced with:  [[Category:BillName]]
 		   			//would be good to link into the official record for "pages"
 		   			
-		   			//[[speach by:=name]]
+		   			//[[Speech by:=name]]
 		   			//[[category:=title]]
 		   			
 		   			//for documentation: 
@@ -489,13 +502,16 @@ class MV_CspanScraper extends MV_BaseScraper{
 			$bill_key = trim($bill_key);
 			if(substr($bill_key, 0,strlen($cspanT))==$cspanT){
 				$govTrackBillId= $govtrakT.$session.'-'.trim(substr($bill_key,strlen($cspanT)));
+				break;
 			}
 		}
+		print "GOT bill id: $govTrackBillId from $bill_key\n";
 		if($govTrackBillId){
 			$this->proccessGovTrackBill($govTrackBillId, $bill_key);	
-			$this->govTrackBillId= $govTrackBillId;								
+			$this->govTrackBillId= $govTrackBillId;		
+			return 	$this->govTrackBillId;					
 		}else{
-			print 'error in getting govTrack bill id on: '. $bill_key . "\n";
+			print 'error in getting govTrack bill id on: '. $bill_key . " (skiped)\n";
 			return null;
 		}	
 	}
@@ -510,7 +526,7 @@ class MV_CspanScraper extends MV_BaseScraper{
 		
 		preg_match('/property="dc:title" datatype="xsd:string" style="margin-bottom: 1em">([^<]*)<\/div><p style="margin-top: 1.75em; margin-bottom: 1.75em">([^<]*)/',$rawGovTrackPage, $title_match);
 		if(isset($title_match[1])){
-			$title_short  = str_replace('_',' ',$title_match[1]);
+			$title_short  = str_replace(array('_','...'),array(' ',''),$title_match[1]);
 			$this->cur_bill_short_title=$title_short;
 			$title_desc = $title_match[2];
 		}else{
@@ -540,7 +556,7 @@ class MV_CspanScraper extends MV_BaseScraper{
 		$bp = "{{Bill|\n".
 			'GovTrackID='.$govTrackBillId."|\n";
 		if(isset($thomas_match[1]))$bp.='ThomasID='.$thomas_match[1]."|\n";
-		if(isset($this->cur_session))$bp.='Session='.$this->cur_session."|\n";
+		if(isset($this->cur_session))$bp.='Session='.$this->cur_session."th session|\n";
 		$bp.='Bill Key='.$bill_key."|\n";							
 		if(isset($date_intro_match[1]))$bp.='Date Introduced='.$date_intro_match[1]."|\n";
 		if($title_desc){
@@ -557,6 +573,7 @@ class MV_CspanScraper extends MV_BaseScraper{
 			}	
 		}							
 		$bp.="}}\n";		
+		$body.="\n\n".'Source: [[Data Source Name:=GovTrack]] [[Data Source URL:='.$this->govTrack_bill_url . $govTrackBillId.']]';
 		//set up the base bill page:
 		$wgBillTitle = Title::newFromText($title_short);
 		do_update_wiki_page($wgBillTitle, $bp);
@@ -565,7 +582,7 @@ class MV_CspanScraper extends MV_BaseScraper{
 		do_update_wiki_page($wgBillKeyTitle, '#REDIRECT [['.$title_short.']]');							
 		//set up link on the category page:
 		$wgCatPageTitle =Title::newFromText($bill_key, NS_CATEGORY);		
-		do_update_wiki_page($wgCatPageTitle, 'Also see [[:'.$wgBillTitle->getText().']]');		
+		do_update_wiki_page($wgCatPageTitle, 'See Bill Page For More Info: [[:'.$wgBillTitle->getText().']]');		
 	}
 	function get_wiki_name_from_govid($govID){
 		if(!isset($this->govTrack_cache)){
@@ -578,7 +595,7 @@ class MV_CspanScraper extends MV_BaseScraper{
 		}
 		if(!isset($this->govTrack_cache[$govID])){
 			$wgTitle = Title::newFromText('CongressVid:Missing_People');
-			append_to_wiki_page($wgTitle, "Missing GovTrack person: [http://www.govtrack.us/congress/person.xpd?id=$govID $govID] \n\n");
+			append_to_wiki_page($wgTitle, "Missing GovTrack person: [http://www.govtrack.us/congress/person.xpd?id=$govID $govID]");
 			return false;	
 		}
 		return str_replace('_',' ',$this->govTrack_cache[$govID]);

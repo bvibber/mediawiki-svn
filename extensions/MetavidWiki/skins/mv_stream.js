@@ -829,7 +829,7 @@ function highlight_tl_ts(mvd_id){
 		if($j('#mv_tl_mvd_'+mvd_id).css('background').indexOf("red")==-1)
 			mv_tl_mvd_org_color[mvd_id] = $j('#mv_tl_mvd_'+mvd_id).css('background');
 		//js_log(mvd_id + ' org color: ' + mv_tl_mvd_org_color[mvd_id]);
-		$j('#mv_tl_mvd_'+mvd_id).css({background:'red',opacity:.5});
+		$j('#mv_tl_mvd_'+mvd_id).css({background:'red',opacity:.4});
 	}
 }
 function de_highlight_tl_ts(mvd_id){
@@ -899,6 +899,10 @@ function mv_tool_disp(tool_id){
 		time_range = org_vid_src.substr( org_vid_src.indexOf('?t=')+3 );
 		post_vars['time_range']=time_range;
 	}
+	//set tracks from mv var:
+	if(tool_id=='mang_layers'){
+		post_vars['tracks']=mvTracks;
+	}
 	sajax_request_type='POST';
 	mv_sajax_do_call('mv_tool_disp', [tool_id, wgNamespaceNumber, wgTitle], f, post_vars);
 	function f( request ) {
@@ -932,6 +936,13 @@ function mv_tool_disp(tool_id){
 					  		$j('#mv_tool_cont').html( mv_result['innerHTML']);
 					  		mv_setup_search();
 					  	});
+  					break;
+  					case 'mang_layers':
+  						$j('#mv_tool_cont').html( mv_result['innerHTML']);
+  						//add in hooks for turnning on off layers (via click on link)
+  						$j('a.mv_mang_layers').click(function(){
+  							$j('#option_'+this.id.substring(2)).get(0).checked = !$j('#option_'+this.id.substring(2)).get(0).checked;
+  						});
   					break;
   					default:
   						//set the content payload

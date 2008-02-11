@@ -78,12 +78,14 @@ $messages['en'] = array(
 	'mv_tool_overlay'        => 'Template Overlays',
 	'mv_tool_overlay_title'  => 'Template based metadata Overlays',
 	'mv_results_found_for'   => 'Search Results <b>$1</b> to <b>$2</b> of <b>$3</b> for:',
+	'mv_tool_mang_layers'	 => 'Mannage Layers',
+	'mv_update_layers'		 => 'Update Layers',
 
 	#mvd types:
 	'ht_en'        => 'Transcript',
 	'ht_en_desc'   => 'English transcripts. This overlay type is for text which spoken in the video stream. Links can be added, but all text should be what is spoken in the video stream.',
 	'anno_en'      => 'Annotations and Categories',
-	'anno_en_desc' => 'English categorizations and annotations. This overlay can be used to \"tag\"/Categorize sections of video or to add annotative information that is not spoken text',
+	'anno_en_desc' => 'English categorizations and annotations. This overlay can be used to Categorize sections of video or to add annotative information that is not spoken text',
 	'thomas_en'	   => 'Official Transcript',
 	'thomas_en_desc'=>'Official Thomas Transcript from the governments THOMAS record service. Source time synced by C-SPAN\'s c-spanarchives.org',
 	
@@ -191,6 +193,7 @@ $messages['en'] = array(
 	'mv_stream_tool_heading' => 'Stream Tools',
 	'mv_tool_missing'        => 'tool request ($1) does not exist',
 	'mv_bad_tool_request'    => 'bad tool line should be form: tool_name|tool_display_name',
+	'mv_update_layers'		 => 'update layers view',
 
 	#msg for overlay interface:
 	'mv_search_stream'       => 'Search Stream',

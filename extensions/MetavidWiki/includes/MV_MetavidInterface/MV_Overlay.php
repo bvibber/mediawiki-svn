@@ -44,33 +44,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			$this->get_transcript_pages();
 		$wgOut->addHTML("</div>");
 	}
-	//proccess the request set (load from settings if not set in url 
-	//@@todo would be good to allow user-set prefrence in the future)
-	//@@todo might have to abstract to inteface or component level (since will be used in multiple places)
-	function procMVDReqSet(){
-		global $wgRequest;
-		global $mvMVDTypeDefaultDisp, $mvMVDTypeAllAvailable;
-		$user_tracks = $wgRequest->getVal('mvd_tracks');
-		//print "USER TRACKS: " . $user_tracks;
-		if($user_tracks!=''){
-			$user_set = explode(',',$user_tracks);			
-			foreach($user_set as $tk){
-				if(in_array($tk, $mvMVDTypeAllAvailable)){
-					$this->mvd_tracks[]= $tk;	
-				}	
-			}
-		}else{			
-			//do reality check on settings: 
-			foreach($mvMVDTypeDefaultDisp as $tk){
-				if(!in_array($tk, $mvMVDTypeAllAvailable)){
-					global $wgOut;
-					$wgOut->errorPage('mvd_default_mismatch','mvd_default_mismatchtext');
-				}	
-			}
-			//just set to global default: 
-			$this->mvd_tracks = $mvMVDTypeDefaultDisp;		
-		}
-	}
+
 	function render_menu(){
 		$base_title='';
 		//set the base title to the stream name: 

@@ -57,7 +57,7 @@ function append_to_wiki_page($wgTitle, $append_text, $unique=true){
 				return;
 			}
 		}
-		$cur_text.=$append_text;
+		$cur_text.="\n\n".$append_text;
 		//do the edit: 	
 		$sum_txt = 'metavid append';	
 		$wgArticle->doEdit($cur_text, $sum_txt);
@@ -78,7 +78,7 @@ function do_update_wiki_page($wgTitle, $wikiText, $ns = null, $forceUpdate=false
 	
 	$wgArticle = new Article($wgTitle);
 	if(!mvDoMvPage($wgTitle, $wgArticle, false)){
-		print "bad title: ".$wgTitle->getDBkey()." no edit";
+		print "bad title: ".$wgTitle->getNsText() .':'.$wgTitle->getDBkey()." no edit";
 		if($wgTitle->exists()){
 			print "remove article";			
 			$wgArticle->doDeleteArticle( 'bad title' );		
@@ -95,7 +95,7 @@ function do_update_wiki_page($wgTitle, $wikiText, $ns = null, $forceUpdate=false
 		//if last edit!=mvBot skip (don't overwite peoples improvments') 
 		$rev = & Revision::newFromTitle($wgTitle);
 		if( $botUserName!= $rev->getRawUserText()){
-			print ' skiped page ' .$wgTitle->getText(). ' edited by user:'.$rev->getRawUserText()." != $botUserName \n";
+			print ' skiped page ' .$wgTitle->getNsText() .':'.$wgTitle->getText(). ' edited by user:'.$rev->getRawUserText()." != $botUserName \n";
 			if(!$forceUpdate)return ;
 		}
 		//proc article:		
@@ -107,14 +107,15 @@ function do_update_wiki_page($wgTitle, $wikiText, $ns = null, $forceUpdate=false
 		}
 		//check if text is identical: 		
 		if (trim($cur_text) == trim($wikiText)) {
-			print "text " .$wgTitle->getText() ." is identical (no update)\n";					
+			print "text " .$wgTitle->getNsText() .':'.$wgTitle->getText() ." is identical (no update)\n";					
 			if(!$forceUpdate)return ;
 		}
 	}
 	//got here do the edit: 	
 	$sum_txt = 'metavid bot insert';	
 	$wgArticle->doEdit($wikiText, $sum_txt);
-	print "did edit on " . $wgTitle->getDBkey() . "\n";
+	print "did edit on ". $wgTitle->getNsText() .':'. $wgTitle->getDBkey() . "\n";
 	//die;
 }
+function islower($i) { return (strtolower($i) === $i);}
 ?>

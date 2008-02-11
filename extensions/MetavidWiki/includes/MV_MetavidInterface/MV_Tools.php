@@ -10,7 +10,8 @@
  if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  global $mvgIP;
  require_once($mvgIP . '/includes/MV_MetavidInterface/MV_Component.php');
- class MV_Tools extends MV_Component{ 	 	
+ class MV_Tools extends MV_Component{
+ 	var $mv_valid_tools = array('mang_layers','search','navigate','export','embed','overlay');
  	function getHTML(){
  		global $wgOut;
  		//@@todo look at mv_interface context to get what to display in tool box:
@@ -61,6 +62,9 @@
 					$this->innerHTML = $wgOut->getHTML();
 				}
 			break;			
+			case 'mang_layers':
+				$this->innerHTML = $this->get_mang_layers_page($title_str);
+			break;
 			case 'search':			
 				$title = Title::newFromText($title_str, MV_NS_STREAM);
 				//render search box
@@ -103,6 +107,7 @@
 		return '<a href="javascript:mv_tool_disp(\'stream_page\')">'.wfMsg('mv_stream_meta').'</a>' .' | '. 
 			'<a href="javascript:mv_tool_disp(\'menu\')">'.wfMsg('mv_stream_tool_heading').'</a>';
 	}
+
 	/* outputs basic stream paging (this could be done client side) */
 	function stream_paging_links($return_set='both'){
 		global $wgUser, $mvDefaultStreamViewLength,$mvgScriptPath;
@@ -140,12 +145,11 @@
 	 * @@todo better integration with wiki 
 	 * (ie tool listing should be a page like navigationBar or in our case MvStreamTools
 	 */
-	function getToolsListing(){
-		$mv_valid_tools = array('search','navigate','export','embed','overlay');
+	function getToolsListing(){		
 		$out='';
 		$heading=wfMsg('mv_stream_tool_heading') . ':';
 		$out.='<ul>';
-		foreach($mv_valid_tools as $tool_id){				 
+		foreach($this->mv_valid_tools as $tool_id){				 
 			$out.='<li><a title="'.wfMsg('mv_tool_'.$tool_id.'_title').
 			'" href="javascript:mv_tool_disp(\''.$tool_id.'\')">' .
 			wfMsg('mv_tool_'.$tool_id) . '</li>'."\n";
@@ -183,6 +187,21 @@
 			<a href="javascript:tool_disp(\'overlay\')>Overlay Set</a><br>
 		';*/			
 	}
+	//returns layers overview text 
+	function get_mang_layers_page($stream_title){
+		global $mvMVDTypeAllAvailable;
+		$out='<h3>'.wfMsg('mv_tool_mang_layers').'</h3>';
+		//grab the current track set: 	
+		$this->procMVDReqSet();			
+		foreach($mvMVDTypeAllAvailable as $type_key){
+			//@@todo use something better than "title" for type_key description 
+			$checked = (in_array($type_key, $this->mvd_tracks))?' checked':'';
+			$out.='<input type="checkbox" name="option_'.$type_key.'"  id="option_'.$type_key.'" value="'.$type_key.'" '.$checked.'/> '.
+				'<a class="mv_mang_layers" id="a_'.$type_key.'" title="'.wfMsg($type_key.'_desc').'" href="#">'.wfMsg($type_key).'</a><br>';
+		}		
+		$out.='<input id="submit_mang_layers" type="submit" value="'.wfMsg('mv_update_layers').'">';
+		return $out;
+	}
 	function get_nav_page($stream_title){
 		global $mvgIP;		
 		//output sliders for stream navigation: 
@@ -194,15 +213,12 @@
 		$stream =  new MV_Stream(array('name'=>$stream_title));
 		//$out.= "sn: ". $stream->name . '<br>';
 		$duration = $stream->getDuration();
-		//$out.=" duration: $duration";
-		
-		include_once($mvgIP. '/includes/MV_MetavidInterface/MV_Overlay.php');
+		//$out.=" duration: $duration";			
 		$MvOverlay = new MV_Overlay();					
 		
 		$titleKey = 'mvd_type:'.ucfirst($stream_title).'/'.$_REQUEST['time_range'];
 		$out.= $MvOverlay->get_adjust_disp($titleKey, 'nav');
-		$out.='<input type="button" id="mv_go_nav" value="Go">';
-		
+		$out.='<input type="button" id="mv_go_nav" value="Go">';		
 		//set range: 
 		$this->js_eval = "var end_time = {$duration};";
 		return $out;
