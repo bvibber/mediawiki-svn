@@ -12,6 +12,13 @@ $wgAutoloadClasses['ParserDiffTest'] = dirname(__FILE__) . '/ParserDiffTest_body
 $wgExtensionMessagesFiles['ParserDiffTest'] = dirname(__FILE__).'/ParserDiffTest.i18n.php';
 $wgSpecialPages['ParserDiffTest'] = 'ParserDiffTest';
 
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'Parser Diff Test',
+	'version' => '2008-01-29',
+	'author' => 'Tim Starling',
+	'description' => 'Special page for comparing the output of two different parsers.',
+	'descriptionmsg' => 'pdtest-desc',
+);
 
 $wgPDT_OldConf = array( 'class' => 'Parser_OldPP' );
 $wgPDT_NewConf = array( 'class' => 'Parser' );
