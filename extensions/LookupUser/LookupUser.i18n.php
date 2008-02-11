@@ -9,7 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'lookupuser'                   => 'Look up user info',
-	'lookupuser-desc'              => 'Retrieve information about a user such as email address and ID',
+	'lookupuser-desc'              => '[[Special:LookupUser|Retrieve information]] about a user such as email address and ID',
 	'lookupuser_intro'             => 'Enter a username to view the preferences of that user.',
 	'lookupuser_nonexistent'       => 'Error: User does not exist',
 	'lookupuser_authenticated'     => 'authenticated on $1',
