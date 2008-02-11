@@ -84,6 +84,7 @@ $messages['bcl'] = array(
 $messages['bg'] = array(
 	'newuserlogpage'           => 'Дневник на регистрациите',
 	'newuserlogpagetext'       => 'Тази страница съдържа дневник на потребителските регистрации',
+	'newuserlog-desc'          => 'Добавя [[Special:Log/newusers|дневник на регистрациите]] в страницата с [[Special:Log|дневниците]]',
 	'newuserlog-byemail'       => 'паролата е изпратена по е-поща',
 	'newuserlog-create-entry'  => 'Нов потребител',
 	'newuserlog-create2-entry' => 'създаване на сметка за $1',
@@ -666,6 +667,7 @@ $messages['ro'] = array(
 $messages['ru'] = array(
 	'newuserlogpage'           => 'Журнал регистрации участников',
 	'newuserlogpagetext'       => 'Список недавно зарегистрировавшихся участников',
+	'newuserlog-desc'          => 'Добавляет [[Special:Log/newusers|журнал создания учётных записей]] на страницу [[Special:Log]]',
 	'newuserlog-byemail'       => 'пароль отправлен по эл. почте',
 	'newuserlog-create-entry'  => 'Новый участник',
 	'newuserlog-create2-entry' => 'cоздал новую учётную запись: $1',
@@ -749,13 +751,13 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
- * @author Mpradeep
  * @author Veeven
+ * @author Mpradeep
  */
 $messages['te'] = array(
-	'newuserlogpage'           => 'కొత్త సభ్యుల లాగ్',
-	'newuserlogpagetext'       => 'ఇటీవలి కాలంలో నమోదైన సభ్యుల లాగ్ ఇది',
-	'newuserlog-desc'          => '[[Special:Log/newusers|కొత్త సభ్యుల లాగ్]]ను [[Special:Log]]కు కలుపుతుంది',
+	'newuserlogpage'           => 'కొత్త వాడుకరుల లాగ్',
+	'newuserlogpagetext'       => 'ఇటీవలి కాలంలో నమోదైన వాడుకరుల లాగ్ ఇది',
+	'newuserlog-desc'          => '[[Special:Log/newusers|కొత్త వాడుకరుల లాగ్]]ను [[Special:Log]]కు కలుపుతుంది',
 	'newuserlog-byemail'       => 'ఈ-మెయిలులో సంకేతపదం పంపించాం',
 	'newuserlog-create-entry'  => 'కొత్త వాడుకరి',
 	'newuserlog-create2-entry' => '$1 కోసం ఖాతా సృష్టించాం.',

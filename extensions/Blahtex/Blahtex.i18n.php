@@ -212,6 +212,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'math_noblahtex'                        => 'Dibosupl erounit Blahtex, a zlefe bezañ e $1',
+	'math-desc'                             => 'Ezvont MathML evit ar balizennoù &lt;math&gt;',
 	'math_AmbiguousInfix'                   => 'Amjestr eo lec\'hiadur "$1" (klaskit ouzhpennañ balizennoù "{ ... }" evit sevel an amjestregezh)',
 	'math_CannotChangeDirectory'            => 'Dibosupl cheñch teuliad labour',
 	'math_CannotCreateTexFile'              => 'Dibosupl krouiñ ur restr tex',
@@ -775,7 +776,8 @@ $messages['ja'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'math_InvalidColour' => 'D\'Faarw "$1" gëtt et net',
+	'math_InvalidColour'                    => 'D\'Faarw "$1" gëtt et net',
+	'math_UnavailableSymbolFontCombination' => 'D\'Symbol "$1" gëtt et an der Schrëft "$2" net.',
 );
 
 /** Low German (Plattdüütsch)

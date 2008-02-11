@@ -109,6 +109,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'asksql'          => 'Reked SQL',
+	'asksql-desc'     => 'Sevel a ra rekedoù SQL dre ur [[Special:Asksql|bajenn zibar]]',
 	'asksqltext'      => "Ober gant ar furmskrid a-is evit sevel ur reked war-eeun ouzh ar bank titouroù.
 Ober gant unskraboù('evel-hen') evit termeniñ an neudennad.
 An dra-se a c'hall kargañ ar servijer spontus, setu n'emañ ket da vezañ implijet re alies.",

@@ -72,6 +72,7 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'ajax-se-desc'    => 'Lakaat a ra war wel an implijerien zo o kemmañ an hevelep pajenn',
 	'ajax-se-title'   => "Oc'h adaozañ :",
 	'ajax-se-pending' => 'trevell war ar stern ... (klikit war ar voest-mañ pe krogit da zegas kemmoù)',
 	'ajax-se-idling'  => '($1 zo)',

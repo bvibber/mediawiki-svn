@@ -42,6 +42,7 @@ $messages['ast'] = array(
  */
 $messages['bg'] = array(
 	'sitenotice_close' => 'скриване',
+	'sitenotice-desc'  => 'Позволява на потребителите да премахват полето sitenotice',
 );
 
 $messages['bn'] = array(
@@ -287,6 +288,7 @@ $messages['ro'] = array(
  */
 $messages['ru'] = array(
 	'sitenotice_close' => 'скрыть',
+	'sitenotice-desc'  => 'Позволяет участникам скрывать уведомления сайта',
 );
 
 /** Yakut (Саха тыла)

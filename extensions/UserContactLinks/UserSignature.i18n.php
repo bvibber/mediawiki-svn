@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'usercontactlink-baduser' => 'incorrect username',
 );
 
+/** Faeag Rotuma (Faeag Rotuma)
+ * @author Mattbray
+ */
+$messages['rtm'] = array(
+	'usercontactlink-baduser' => 'Seseva',
+);
+
 $messages['ar'] = array(
 	'usercontactlink-baduser' => 'اسم مستخدم غير صحيح',
 );

@@ -25,6 +25,13 @@ $messages['fr'] = array(
 	'contributorsaddon-desc' => 'Ajoute le popup JS onMouseOver aux liens des « Contributeurs principaux »',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'contributorsaddon-desc' => 'Přidawa JavaScriptowe wuskakowanske wokna onMouseOver k wotkazam "Hłowni přinošowarjo"',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  */

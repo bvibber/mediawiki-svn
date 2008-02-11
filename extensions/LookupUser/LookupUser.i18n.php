@@ -144,11 +144,12 @@ $messages['lb'] = array(
 );
 
 /** Dutch (Nederlands)
- * @author SPQRobin
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
 	'lookupuser'                   => 'Gebruikersinformatie opzoeken',
+	'lookupuser-desc'              => '[[Special:LookupUser|Informatie inzien]] van een gebruiker, zoals e-mailadres en gebruikersnummer',
 	'lookupuser_intro'             => 'Geef een gebruikersnaam in om de voorkeuren van die gebruiker te bekijken.',
 	'lookupuser_nonexistent'       => 'Fout: Gebruiker bestaat niet',
 	'lookupuser_authenticated'     => 'E-mailbevestiging: $1',
@@ -159,7 +160,6 @@ $messages['nl'] = array(
 	'lookupuser_registration'      => 'Registratiedatum: $1',
 	'lookupuser_touched'           => 'Gebruikersvoorkeuren laatst gewijzigd: $1',
 	'lookupuser_useroptions'       => 'Gebruikersopties:',
-
 );
 
 $messages['no'] = array(

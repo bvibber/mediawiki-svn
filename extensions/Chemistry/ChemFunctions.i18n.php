@@ -359,6 +359,17 @@ $messages['pms'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: eror ant ij dat!',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'chemicalsources'        => 'کيميايي سرچينې',
+	'chemFunctions_ListPage' => 'کيميايي سرچينې',
+	'chemFunctions_CAS'      => 'CAS ګڼ',
+	'chemFunctions_Formula'  => 'فورمول',
+	'chemFunctions_Name'     => 'IUPAC نوم',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -486,6 +497,24 @@ $messages['stq'] = array(
 	'chemFunctions_Formula'            => 'Formel',
 	'chemFunctions_Name'               => 'IUPAC Noome',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Iengoawe-Failer!',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'chemicalsources'                  => 'Rujukan kimia',
+	'chemicalsource-desc'              => 'Nambahkeun tag <nowiki><chemform></nowiki>, pikeun rumus kimia',
+	'chemFunctions_ListPage'           => 'Rujukan kimia',
+	'chemFunctions_DataList'           => 'Di handap ieu dibéréndélkeun tumbu ka loka-loka nu sugan nyadiakeun émbaran ngeunaan jat kimia anu keur ditéang.<br/><br/>
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS at the Oxford University (UK) (teu bisa nyusud)</a><br />',
+	'chemFunctions_CAS'                => 'Nomer CAS',
+	'chemFunctions_ATCCode'            => 'ATCCode',
+	'chemFunctions_ECNumber'           => 'ECNumber',
+	'chemFunctions_Formula'            => 'Rumus',
+	'chemFunctions_Name'               => 'Ngaran IUPAC',
+	'chemFunctions_ChemFormInputError' => 'Chemform: salah asupan!',
 );
 
 /** Swedish (Svenska)

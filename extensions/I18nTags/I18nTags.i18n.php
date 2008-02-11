@@ -37,6 +37,13 @@ $messages['nl'] = array(
 	'i18ntags-desc' => 'Geeft toegang tot de i18n-functies voor nummeropmaak, grammatica en meervoud in alle beschikbare talen',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'i18ntags-desc' => 'Acede às funções de i18n para formatação de números, gramática e plural em qualquer língua disponível',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

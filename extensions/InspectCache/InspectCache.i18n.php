@@ -43,6 +43,16 @@ $messages['bg'] = array(
 	'inspectcache-delete' => 'Изтриване',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'inspectcache-ok'     => 'Mat eo',
+	'inspectcache-delete' => '
+Diverkañ',
+	'inspectcache-list'   => 'Roll',
+);
+
 $messages['de'] = array(
 	'inspectcache'         => 'Cache ansehen',
 	'inspectcache-ok'      => 'OK',
@@ -166,6 +176,14 @@ $messages['oc'] = array(
 	'inspectcache-get'     => 'Obténer',
 	'inspectcache-delete'  => 'Suprimir',
 	'inspectcache-deleted' => 'Amagatal suprimit',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'inspectcache-delete' => 'ړنګول',
+	'inspectcache-list'   => 'لړليک',
 );
 
 /** Portuguese (Português)

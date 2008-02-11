@@ -148,6 +148,13 @@ $messages['stq'] = array(
 	'contributionseditcount' => 'Dissen Benutser häd $1 Beoarbaidengen.',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'contributionseditcount' => 'Denna användaren har $1 redigeringar.',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

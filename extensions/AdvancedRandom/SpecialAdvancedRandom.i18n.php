@@ -45,7 +45,8 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'advancedrandom' => 'Moned dargouezhek araokaet',
+	'advancedrandom'      => 'Moned dargouezhek araokaet',
+	'advancedrandom-desc' => 'Tapout a ra ur bajenn dre zegouezh diwar ur gaoz pe ul liamm danvezel bennak war-du ur bajenn lakaet. Gallout a ra bezañ implijet evel [[Special:AdvancedRandom/Template:Featured/Talk]] evit tapout ur pennad termenet dre zegouezh pe evel [[Special:AdvancedRandom/Template:GFDL/Image]] a-benn tapout ur restr dindan aotre GFDL',
 );
 
 /** Czech (Česky)

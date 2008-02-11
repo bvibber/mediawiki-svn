@@ -80,6 +80,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'backforth-next' => "War-lerc'h ($1)",
+	'backforth-desc' => 'Ouzhpennañ a ra "da-heul" ha "kent" war pajenn al liammoù alfabetek e laez ar pajennoù',
 	'backforth-prev' => 'Kent ($1)',
 );
 
@@ -311,6 +312,13 @@ $messages['pl'] = array(
 $messages['pms'] = array(
 	'backforth-next' => 'Anans ($1)',
 	'backforth-prev' => 'André ($1)',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'backforth-next' => 'راتلونکی ($1)',
 );
 
 /** Portuguese (Português)

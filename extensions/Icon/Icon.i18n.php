@@ -119,6 +119,14 @@ $messages['oc'] = array(
 	'icon-badwidth' => 'Largor erronèa',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'icon-badimage' => 'ناسم انځور',
+	'icon-badwidth' => 'ناسم سوروالی',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -149,6 +157,14 @@ $messages['sk'] = array(
 $messages['stq'] = array(
 	'icon-badimage' => 'Defekte Bielde',
 	'icon-badwidth' => 'Falske Bratte',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'icon-badimage' => 'Gambar joré',
+	'icon-badwidth' => 'Ukuran teu loyog',
 );
 
 /** Swedish (Svenska)

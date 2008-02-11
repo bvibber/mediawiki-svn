@@ -797,6 +797,8 @@ $messages['li'] = array(
 	'lucene-searchscore'    => 'Relevantie: $1%',
 	'lucene-resultsize'     => '$1 ($2 wäörd)',
 	'searchdidyoumean'      => 'Bedoeldese: "<a href="$1">$2</a>"?',
+	'searchnoresults'       => 'Sorry, uch zeukopdracht haeft gein resultate opgeleverd.',
+	'searchnearmatches'     => '<b>Deze paginaname kómme euverein mit dien zeukopdracht:</b>',
 	'lucenepowersearchtext' => 'Zeuk in de volgende naamruumde:
 
 $1

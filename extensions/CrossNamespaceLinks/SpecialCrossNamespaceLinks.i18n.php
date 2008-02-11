@@ -48,8 +48,13 @@ $messages['ast'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|enllaz|enllaces}} a $3',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ * @author DCLXVI
+ */
 $messages['bg'] = array(
 	'crossnamespacelinks'         => 'Препратки между различни именни пространства',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Списък с препратки между именните пространства]], които не би трябвало да съществуват в {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Тази страница съдържа списък от препратки от страница от основното именно пространство към страници в други именни пространства (с изключение на {{ns:special}}, {{ns:talk}}, {{ns:project}} и {{ns:template}}), които препратки не е препоръчително да се използват.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|сочат|сочи}} към $3',
 );
@@ -365,6 +370,13 @@ $messages['pms'] = array(
 	'crossnamespacelinks'         => 'Anliure antra spassi nominaj diferent',
 	'crossnamespacelinks-summary' => 'Sta pàgina-sì a la smon na lista d\'anliure ch\'a men-o da na pàgina d\'un chèich ëspassi nominal a na pàgina ch\'a la sta ant n\'àotr. (Sòn gavà jë spassi {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), sòn a l\'é mej nen felo.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|anliura|anliure}} anvers a $3',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'crossnamespacelinkstext' => '$1: $2 $3 ته {{PLURAL:$2|تړنه|تړنې}}',
 );
 
 /** Portuguese (Português)

@@ -62,8 +62,10 @@ $messages['be'] = array(
 
 /** Bulgarian (Български)
  * @author Spiritia
+ * @author DCLXVI
  */
 $messages['bg'] = array(
+	'inputbox-desc'  => 'Позволява вмъкването на HTML формуляри.',
 	'tryexact'       => 'Пълно и точно съвпадение',
 	'searchfulltext' => 'Претърсване на целия текст',
 	'createarticle'  => 'Създаване',

@@ -181,3 +181,10 @@ $messages['sv'] = array(
 	'randomincategory-submit' => 'Gå',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'randomincategory-label' => 'Klad:',
+);
+

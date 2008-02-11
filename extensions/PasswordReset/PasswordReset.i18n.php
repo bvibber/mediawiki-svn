@@ -374,6 +374,13 @@ $messages['sv'] = array(
 	'passwordreset-username' => 'Användarnamn',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'passwordreset-username' => 'Gebananem',
+);
+
 $messages['yue'] = array(
 	'passwordreset' => '密碼重設',
 	'passwordreset-invalidusername' => '無效嘅用戶名',

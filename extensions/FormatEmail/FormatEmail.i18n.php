@@ -64,7 +64,11 @@ Esta mensaxe foille enviada a través do ((SITENAME)) sistema de email por $1.',
 
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
+	'email-desc'   => 'Dowola wužiwarjej e-mejlkam swójske hłowowe/nohowe linki přidać',
 	'email_footer' => '----------------------------------------------------------------------------
 Tuta e-mejl bu ći wot $1 přez e-mejlowy system {{SITENAME}} pósłana.',
 );
@@ -118,6 +122,16 @@ $messages['oc'] = array(
 	'email_footer' => '----------------------------------------------------------------------------
 
 Aqueste corrièr vos es estat mandat gràcia al sistèma de messatjariá de {{SITENAME}} per $1. $2',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'email_footer' => '----------------------------------------------------------------------------
+همدا برېښناليک تاسو ته د {{SITENAME}} د برېښناليکي غونډال له لخوا د $1 له لوري درلېږل شوی.
+
+$2',
 );
 
 /** Portuguese (Português)

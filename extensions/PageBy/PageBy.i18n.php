@@ -231,6 +231,13 @@ $messages['tr'] = array(
 	'pageby-anon'         => '<i>anonim</i>',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'pageby-contributors' => 'Keblünans:',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

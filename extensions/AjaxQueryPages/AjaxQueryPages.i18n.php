@@ -25,6 +25,13 @@ $messages['bg'] = array(
 	'ajax-qp-desc' => 'Добавя AJAX към QueryPages като напр. [[Special:Shortpages]]',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'ajax-qp-desc' => "Ouzhpennañ a ra skriptoù AJAX d'ar pajennoù rekediñ evel [[Special:Shortpages]]",
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

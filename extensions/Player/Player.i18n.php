@@ -366,3 +366,11 @@ $messages['sv'] = array(
 	'player-goto-file'     => 'fil',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'player-goto-page' => 'Pad',
+	'player-goto-file' => 'ragiv',
+);
+

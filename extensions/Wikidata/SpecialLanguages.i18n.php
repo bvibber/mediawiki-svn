@@ -1556,17 +1556,19 @@ $wdMessages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $wdMessages['ps'] = array(
-	'ow_save'                         => 'خوندي کول',
-	'ow_history'                      => 'پېښليک',
-	'ow_Definition'                   => 'پېژند',
-	'ow_Language'                     => 'ژبه',
-	'ow_Synonyms'                     => 'هممانيزونه',
-	'ow_SynonymsAndTranslations'      => 'هممانيزونه او ژباړې',
-	'ow_Source'                       => 'سرچينه',
-	'ow_Text'                         => 'متن',
-	'ow_TranslatedTextAttributeValue' => 'متن',
-	'ow_LinkAttributeValues'          => 'تړنې',
-	'ow_copy_no_action_specified'     => 'لطفاً يوه کړنه ځانګړې کړی',
+	'ow_save'                          => 'خوندي کول',
+	'ow_history'                       => 'پېښليک',
+	'ow_Definition'                    => 'پېژند',
+	'ow_Language'                      => 'ژبه',
+	'ow_Synonyms'                      => 'هممانيزونه',
+	'ow_SynonymsAndTranslations'       => 'هممانيزونه او ژباړې',
+	'ow_Source'                        => 'سرچينه',
+	'ow_Text'                          => 'متن',
+	'ow_TranslatedText'                => 'ژباړل شوی متن',
+	'ow_TranslatedTextAttributeValue'  => 'متن',
+	'ow_TranslatedTextAttributeValues' => 'د ژباړلو وړ متن',
+	'ow_LinkAttributeValues'           => 'تړنې',
+	'ow_copy_no_action_specified'      => 'لطفاً يوه کړنه ځانګړې کړی',
 );
 
 /** Portuguese (Português)

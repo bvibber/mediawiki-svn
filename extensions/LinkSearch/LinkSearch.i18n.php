@@ -94,9 +94,11 @@ $messages['co'] = array(
 
 /** Czech (Česky)
  * @author Li-sung
+ * @author Matěj Grabovský
  */
 $messages['cs'] = array(
 	'linksearch'       => 'Hledání externích odkazů',
+	'linksearch-desc'  => 'Hledání stránek s externími odkazy odpovídající zadanému vzoru',
 	'linksearch-pat'   => 'Vyhledávací vzor:',
 	'linksearch-ns'    => 'Jmenný prostor:',
 	'linksearch-ok'    => 'Hledat',
@@ -471,6 +473,14 @@ $messages['pms'] = array(
 	'linksearch-text'  => 'As peulo dovresse dij ciapatut coma "*.wikipedia.org".<br />Protocòj ch\'as peulo dovré: <tt>$1</tt>',
 	'linksearch-line'  => '$1 a l\'ha n\'anliura ch\'a-i riva dzora da $2',
 	'linksearch-error' => 'Ij ciapatut as peulo butesse mach an prinsipi dël nòm dël servent.',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'linksearch-ns' => 'نوم-تشيال:',
+	'linksearch-ok' => 'لټون',
 );
 
 /** Portuguese (Português)

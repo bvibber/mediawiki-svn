@@ -393,19 +393,23 @@ $messages['bn'] = array(
 অস্বাক্ষরিত সার্টিফিকেটের সম্পর্কিত একটি সতর্কিকরণ বার্তা দেখাতে পারে।',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
 $messages['br'] = array(
-	'boardvote'               => 'Dilennadeg Kuzul-merañ Diazezadur Wikimedia',
-	'boardvote_entry'         => '* [[Special:Boardvote/vote|Vot]]
+	'boardvote'              => 'Dilennadeg Kuzul-merañ Diazezadur Wikimedia',
+	'boardvote-desc'         => '[[meta:Board elections|Dilennadeg da Guzul-merañ Diazezadur Wikimedia]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vot]]
 * [[Special:Boardvote/list|Roll ar mouezhioù evit poent]]
 * [[Special:Boardvote/dump|Enrolladennoù sifrennet]]',
-	'boardvote_intro_change'  => '<p>Mouezhiet hoc\'h eus c\'hoazh. Distreiñ war ho vot a c\'hallit ober koulskoude en ur implijout ar furmskrid a-is. Mar plij, klikit war ar logoù a-dal da anv kement emstriver aprouet ganeoc\'h.</p>',
-	'boardvote_entered'       => 'Trugarez vras, enrollet eo bet ho mouezh.
+	'boardvote_intro_change' => "<p>Mouezhiet hoc'h eus c'hoazh. Distreiñ war ho vot a c'hallit ober koulskoude en ur implijout ar furmskrid a-is. Mar plij, klikit war ar logoù a-dal da anv kement emstriver aprouet ganeoc'h.</p>",
+	'boardvote_entered'      => "Trugarez vras, enrollet eo bet ho mouezh.
 
-Mar karit e c\'hallit enrollañ an elfennoù da-heul. Setu an titouroù evit ho vot :
+Mar karit e c'hallit enrollañ an elfennoù da-heul. Setu an titouroù evit ho vot :
 
 <pre>$1</pre>
 
-Sifrennet eo bet gant alc\'hwez foran Dilennadeg ar Verourien :
+Sifrennet eo bet gant alc'hwez foran Dilennadeg ar Verourien :
 
 <pre>$2</pre>
 
@@ -413,37 +417,37 @@ Setu ar stumm sifrennet anezhañ. Dispaket e vo ent foran war [[Special:Boardvot
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Kent]]',
-	'boardvote_nosession'     => 'N\'hallan ket termeniñ hoc\'h anv implijer war Wikimedia. Trugarez d\'en em lugañ war ar wiki m\'oc\'h bet anvet ha kit da <nowiki>[[Special:Boardvote]]</nowiki>. Ret eo deoc\'h implijout ur gont gant da nebeutañ $1 degasadenn a-raok an $2, ha gant ur c\'hemm kentañ a-raok an $3.',
-	'boardvote_notloggedin'   => 'N\'oc\'h ket luget. Evit votiñ e rankit implijout ur gont gant da nebeutañ $1 degasadenn a-raok an $2 ha gant ur c\'hemm kentañ a-raok an $3.',
-	'boardvote_notqualified'  => 'N\'hallit ket votiñ en dilennadeg-mañ. Ret eo deoc\'h bezañ graet $3 kemm a-raok an $2 hag ho kemm kentañ a rank bezañ bet graet a-raok an $5',
-	'boardvote_novotes'       => 'Den n\'eus votet c\'hoazh.',
-	'boardvote_time'          => 'Eur',
-	'boardvote_user'          => 'Implijer',
-	'boardvote_edits'         => 'Degasadennoù',
-	'boardvote_days'          => 'Deiz',
-	'boardvote_ua'            => 'Dileuriad an implijer',
-	'boardvote_listintro'     => '<p>setu aze ur roll eus an holl votoù bet enrollet evit ar mare. $1 evit ar roadennoù sifrennet.</p>',
-	'boardvote_dumplink'      => 'Klikañ amañ',
-	'boardvote_submit'        => 'Mat eo',
-	'boardvote_strike'        => 'Barrenniñ',
-	'boardvote_unstrike'      => 'Divarrenniñ',
-	'boardvote_needadmin'     => 'An ober-mañ n\'hall bezañ kaset da benn nemet gant merourien.',
-	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">Dilennadeg Kuzul-merañ Wikimedia</a>:  Vot digor betek an 12 a viz Gouere',
-	'boardvote_notstarted'    => 'N\'eo ket digor ar vot c\'hoazh',
-	'boardvote_closed'        => 'Serr eo ar vot bremañ, gwelet [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En pajenn an dilennadeg evit an disoc\'hoù] dizale.',
-	'boardvote_edits_many'    => 'kalz',
-	'group-boardvote'         => 'Izili eus ar C\'huzul-merañ a vot',
-	'group-boardvote-member'  => 'Ezel eus ar c\'huzul-merañ a vot',
-	'grouppage-boardvote'     => '{{ns:project}} : ezel eus ar chuzul-merañ a vot',
-	'boardvote_blocked'       => 'Ho tigarez, stanket oc\'h bet war ar wiki m\'emaoc\'h enrollet. N\'eo ket aotreet an izili stanket da votiñ.',
-	'boardvote_welcome'       => 'Degemer mat \'\'\'$1\'\'\'!',
-	'go_to_board_vote'        => 'Dilennadeg Kuzul-merañ Wikimedia 2007',
-	'boardvote_redirecting'   => 'Evit gwellaat ar surentez hag an dreuzwelusted eo bet aozet ar votadeg adal ur servijer kontrollet ha dizalc\'h diavaez.
+[[Special:Boardvote/entry|Kent]]",
+	'boardvote_nosession'    => "N'hallan ket termeniñ hoc'h anv implijer war Wikimedia. Trugarez d'en em lugañ war ar wiki m'oc'h bet anvet ha kit da <nowiki>[[Special:Boardvote]]</nowiki>. Ret eo deoc'h implijout ur gont gant da nebeutañ $1 degasadenn a-raok an $2, ha gant ur c'hemm kentañ a-raok an $3.",
+	'boardvote_notloggedin'  => "N'oc'h ket luget. Evit votiñ e rankit implijout ur gont gant da nebeutañ $1 degasadenn a-raok an $2 ha gant ur c'hemm kentañ a-raok an $3.",
+	'boardvote_notqualified' => "N'hallit ket votiñ en dilennadeg-mañ. Ret eo deoc'h bezañ graet $3 kemm a-raok an $2 hag ho kemm kentañ a rank bezañ bet graet a-raok an $5",
+	'boardvote_novotes'      => "Den n'eus votet c'hoazh.",
+	'boardvote_time'         => 'Eur',
+	'boardvote_user'         => 'Implijer',
+	'boardvote_edits'        => 'Degasadennoù',
+	'boardvote_days'         => 'Deiz',
+	'boardvote_ua'           => 'Dileuriad an implijer',
+	'boardvote_listintro'    => '<p>setu aze ur roll eus an holl votoù bet enrollet evit ar mare. $1 evit ar roadennoù sifrennet.</p>',
+	'boardvote_dumplink'     => 'Klikañ amañ',
+	'boardvote_submit'       => 'Mat eo',
+	'boardvote_strike'       => 'Barrenniñ',
+	'boardvote_unstrike'     => 'Divarrenniñ',
+	'boardvote_needadmin'    => "An ober-mañ n'hall bezañ kaset da benn nemet gant merourien.",
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Dilennadeg Kuzul-merañ Wikimedia</a>:  Vot digor betek an 12 a viz Gouere',
+	'boardvote_notstarted'   => "N'eo ket digor ar vot c'hoazh",
+	'boardvote_closed'       => "Serr eo ar vot bremañ, gwelet [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En pajenn an dilennadeg evit an disoc'hoù] dizale.",
+	'boardvote_edits_many'   => 'kalz',
+	'group-boardvote'        => "Izili eus ar C'huzul-merañ a vot",
+	'group-boardvote-member' => "Ezel eus ar c'huzul-merañ a vot",
+	'grouppage-boardvote'    => '{{ns:project}} : ezel eus ar chuzul-merañ a vot',
+	'boardvote_blocked'      => "Ho tigarez, stanket oc'h bet war ar wiki m'emaoc'h enrollet. N'eo ket aotreet an izili stanket da votiñ.",
+	'boardvote_welcome'      => "Degemer mat '''$1'''!",
+	'go_to_board_vote'       => 'Dilennadeg Kuzul-merañ Wikimedia 2007',
+	'boardvote_redirecting'  => "Evit gwellaat ar surentez hag an dreuzwelusted eo bet aozet ar votadeg adal ur servijer kontrollet ha dizalc'h diavaez.
 
 Adkaset e viot war-du ar servijer diavaez-se a-benn 20 eilenn. [$1 Klikañ amañ] evit mont di diouzhtu.
 
-Ur c\'hemenn surentez diwall a-zivout un testeni disin a c\'hallo dont war wel marteze.',
+Ur c'hemenn surentez diwall a-zivout un testeni disin a c'hallo dont war wel marteze.",
 );
 
 /** Catalan (Català)
@@ -2051,17 +2055,30 @@ Gali būti rodomas saugumo įspėjimas apie nepasirašytą sertifikatą.',
  * @author Jacob.jose
  */
 $messages['ml'] = array(
-	'boardvote_novotes'    => 'ആരും ഇതുവരെ വോട്ടുചെയ്തിട്ടില്ല.',
-	'boardvote_time'       => 'സമയം',
-	'boardvote_user'       => 'ഉപയോക്താവ്',
-	'boardvote_edits'      => 'തിരുത്തലുകള്‍',
-	'boardvote_days'       => 'ദിവസങ്ങള്‍',
-	'boardvote_ip'         => 'IP',
-	'boardvote_dumplink'   => 'ഇവിടെ അമര്‍ത്തുക',
-	'boardvote_submit'     => 'ശരി',
-	'boardvote_strike'     => 'വെട്ടുക',
-	'boardvote_edits_many' => 'ധാരാളം',
-	'boardvote_welcome'    => "സ്വാഗതം '''$1'''!",
+	'boardvote'              => 'വിക്കിമീഡിയ ബോര്‍ഡ് ഓഫ് ട്രസ്റ്റീസിനായുള്ള തിരഞ്ഞെടുപ്പ്',
+	'boardvote-desc'         => '[[meta:Board elections|വിക്കിമീഡിയ ബോര്‍ഡ് ഓഫ് ട്രസ്റ്റീസിനായുള്ള തെരഞ്ഞെടുപ്പ്]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|വോട്ട് ചെയ്യുക]]
+* [[Special:Boardvote/list|ഇന്നുവരെയുള്ള വോട്ടുകള്‍ നിരത്തുക]]
+* [[Special:Boardvote/dump|എന്‍‌ക്രിപ്റ്റ് ചെയ്ത തെരഞ്ഞെടുപ്പ് റിക്കാര്‍ഡുകള്‍ ശേഖരിക്കുക]]',
+	'boardvote_novotes'      => 'ആരും ഇതുവരെ വോട്ടുചെയ്തിട്ടില്ല.',
+	'boardvote_time'         => 'സമയം',
+	'boardvote_user'         => 'ഉപയോക്താവ്',
+	'boardvote_edits'        => 'തിരുത്തലുകള്‍',
+	'boardvote_days'         => 'ദിവസങ്ങള്‍',
+	'boardvote_ip'           => 'IP',
+	'boardvote_ua'           => 'യൂസര്‍ ഏജന്റ് (User agent)',
+	'boardvote_dumplink'     => 'ഇവിടെ അമര്‍ത്തുക',
+	'boardvote_submit'       => 'ശരി',
+	'boardvote_strike'       => 'വെട്ടുക',
+	'boardvote_notstarted'   => 'വോട്ടെടുപ്പ് ആരംഭിച്ചിട്ടില്ല',
+	'boardvote_closed'       => 'വോട്ടെടുപ്പ് അവസാനിച്ചു, താമസിയാതെതന്നെ [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En തെരഞ്ഞെടുപ്പു താള്‍] ശ്രദ്ധിച്ചാല്‍ ഫലങ്ങള്‍ അറിയാവുന്നതാണ്.',
+	'boardvote_edits_many'   => 'ധാരാളം',
+	'group-boardvote'        => 'ബോര്‍ഡ് വോട്ട് കാര്യനിര്‍‌വാഹകര്‍',
+	'group-boardvote-member' => 'ബോര്‍ഡ് വോട്ട് കാര്യനിര്‍‌വാഹകന്‍/കാര്യനിര്‍വാഹക',
+	'grouppage-boardvote'    => '{{ns:project}}:ബോര്‍ഡ് വോട്ട് കാര്യനിര്‍‌വാഹകന്‍',
+	'boardvote_blocked'      => 'ക്ഷമിക്കുക, താങ്കള്‍ രജിസ്റ്റര്‍ ചെയ്ത വിക്കിയില്‍ താങ്കള്‍ നിലവില്‍ തടയപ്പെട്ടിരിക്കുകയാണ്. തടയപ്പെട്ട ഉപയോക്താക്കള്‍ക്ക് വോട്ട് ചെയ്യാന്‍ അവകാശമില്ല.',
+	'boardvote_welcome'      => "സ്വാഗതം '''$1'''!",
+	'go_to_board_vote'       => 'വിക്കിമീഡിയ ബോര്‍ഡ് തെരഞ്ഞെടുപ്പ് 2008',
 );
 
 /** Erzya (эрзянь кель)
@@ -3148,6 +3165,7 @@ $messages['te'] = array(
 	'boardvote_listintro'    => '<p>ఇప్పటివరకు నమోదైన వోట్ల జాబితా ఇది. కోడీకరించబడిన డేటా కొరకు $1.</p>',
 	'boardvote_dumplink'     => 'ఇక్కడ నొక్కండి',
 	'boardvote_submit'       => 'సరే',
+	'boardvote_strike'       => 'కొట్టివేయు',
 	'boardvote_needadmin'    => 'ఎన్నికల నిర్వాహకులు మాత్రమే ఈ పని చెయ్యగలరు.',
 	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">వికీమీడియా బోర్డు ఎన్నికలు</a>:  జూలై 12 వరకు వోటెయ్యవచ్చు',
 	'boardvote_notstarted'   => 'వోటింగు ఇంకా మొదలు కాలేదు',

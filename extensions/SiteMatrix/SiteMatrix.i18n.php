@@ -87,10 +87,11 @@ $messages['be'] = array(
  * @author לערי ריינהארט
  */
 $messages['bg'] = array(
-	'sitematrix'          => 'Списък на уикитата на Уикимедия',
-	'sitematrix-language' => 'Език',
-	'sitematrix-project'  => 'Име на проекта, междупроектна препратка и междууики',
-	'sitematrix-others'   => 'Други проекти на Уикимедия',
+	'sitematrix'           => 'Списък на уикитата на Уикимедия',
+	'sitematrix-language'  => 'Език',
+	'sitematrix-project'   => 'Име на проекта, междупроектна препратка и междууики',
+	'sitematrix-others'    => 'Други проекти на Уикимедия',
+	'sitematrix-sitetotal' => 'Общо',
 );
 
 /** Bengali (বাংলা)
@@ -729,10 +730,11 @@ $messages['vi'] = array(
  * @author Smeira
  */
 $messages['vo'] = array(
-	'sitematrix'          => 'Lised vükas ela Wikimedia',
-	'sitematrix-language' => 'Pük',
-	'sitematrix-project'  => 'Nem proyega, yüm vüproyegik e yüm vüvükik',
-	'sitematrix-others'   => 'Proyeks votik ela Wikimedia',
+	'sitematrix'           => 'Lised vükas ela Wikimedia',
+	'sitematrix-language'  => 'Pük',
+	'sitematrix-project'   => 'Nem proyega, yüm vüproyegik e yüm vüvükik',
+	'sitematrix-others'    => 'Proyeks votik ela Wikimedia',
+	'sitematrix-sitetotal' => 'Valod',
 );
 
 $messages['wa'] = array(

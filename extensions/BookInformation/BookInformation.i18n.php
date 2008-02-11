@@ -122,6 +122,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'bookinfo-header'            => 'Titouroù war al levr',
+	'bookinfo-desc'              => 'Astenn a ra [[Special:Booksources]] gant titouroù adal ur servij Kenrouedad',
 	'bookinfo-result-title'      => 'Titl :',
 	'bookinfo-result-author'     => 'Aozer :',
 	'bookinfo-result-publisher'  => 'Embanner :',

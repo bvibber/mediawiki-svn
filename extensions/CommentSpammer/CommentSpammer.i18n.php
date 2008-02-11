@@ -100,7 +100,8 @@ $messages['hu'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'cspammer-log-page' => 'Bemierkung Spammer Logbuch',
+	'commentspammer-log-msg' => 'Ännerunge vun [[Special:Contributions/$1|$1]] fir [[:$2]].',
+	'cspammer-log-page'      => 'Bemierkung Spammer Logbuch',
 );
 
 /** Dutch (Nederlands)

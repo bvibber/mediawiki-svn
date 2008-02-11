@@ -490,6 +490,14 @@ $messages['pms'] = array(
 	'contributors-nosuchpage'  => "L'artìcol $1 a-i é pa.",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'contributors'        => 'ونډه لرونکي',
+	'contributors-target' => 'سرليک:',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -621,15 +629,24 @@ $messages['stq'] = array(
  */
 $messages['su'] = array(
 	'contributors'             => 'Kontributor',
+	'contributors-desc'        => 'Ngabéréndélkeun kontributor utama hiji kaca',
 	'contributors-toolbox'     => 'Kontributor utama',
-	'contributors-legend'      => 'Béréndélkeun kontributor utama artikel',
+	'contributors-legend'      => 'Ngabéréndélkeun kontributor utama hiji kaca',
 	'contributors-target'      => 'Judul:',
 	'contributors-submit'      => 'Témbongkeun',
 	'contributors-subtitle'    => 'Kontributor utama $1',
 	'contributors-others-long' => 'Aya $1 kontributor séjénna pikeun kaca ieu.',
 	'contributors-others'      => 'sarta $1 lianna',
 	'contributors-badtitle'    => 'Judulna teu sah.',
-	'contributors-nosuchpage'  => 'Teu aya artikel $1.',
+	'contributors-nosuchpage'  => 'Kaca $1 euweuh.',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'contributors-target' => 'Titel:',
+	'contributors-submit' => 'Visa',
 );
 
 /** Volapük (Volapük)

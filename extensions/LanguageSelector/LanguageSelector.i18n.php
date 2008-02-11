@@ -39,6 +39,15 @@ $messages['bg'] = array(
 	'languageselector' => 'Език',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'languageselector'         => 'Yezh',
+	'languageselector-desc'    => 'Dibaber yezhoù war pep pajenn, evit ar weladennerien zoken.',
+	'languageselector-setlang' => 'Termeniñ',
+);
+
 /** Catalan (Català)
  * @author SMP
  */
@@ -179,11 +188,11 @@ $messages['nds'] = array(
 );
 
 /** Dutch (Nederlands)
- * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
 	'languageselector'         => 'Taal',
-	'languageselector-desc'    => 'Taalselectie op iedere pagina, ook voor gebruikers die niet zijn aangemeld',
+	'languageselector-desc'    => 'Taalselectie op iedere pagina, ook voor gebruikers die niet aangemeld zijn',
 	'languageselector-setlang' => 'instellen',
 );
 
@@ -201,6 +210,13 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'languageselector'         => 'Lenga',
 	'languageselector-setlang' => 'Definir',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'languageselector' => 'ژبه',
 );
 
 /** Portuguese (Português)

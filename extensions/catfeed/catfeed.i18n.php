@@ -15,6 +15,13 @@ $messages['ar'] = array(
 	'catfeed-desc' => 'يستخدم أجزاء من تلقيمات أحدث التغييرات. ينشيء نسخة في الصفحة، مفيد خصوصا لويكي الأخبار.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'catfeed-desc' => 'Implijout a ra bitoù evit boueta an degasadennoù nevez. Sevel a ra stumm ur bajenn, ar pezh zo emsav-tre evit Wikinews.',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

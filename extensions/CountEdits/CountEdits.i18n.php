@@ -149,18 +149,21 @@ $messages['fi'] = array(
 	'countedits-nocontribs' => 'Tätä wikiä ei ole muokattu.',
 );
 
-/* French (Bertrand Grondin) */
+/** French (Français)
+ * @author Grondin
+ * @author Sherbrooke
+ */
 $messages['fr'] = array(
-	'countedits' => 'Compteur d’éditions',
-	'countedits-desc' => '[Special:CountEdits|Page spéciale]] comptabilisant le nombre d’éditions des utilisateurs et fournissant la liste des dix meilleurs contributeurs.',
-	'countedits-warning' => 'Avertissement : ne jugez pas un livre par sa couverture. Ne jugez pas non plus un utilisateur en fonction du nombre de ses contributions.',
-	'countedits-username' => 'Utilisateur',
-	'countedits-ok' => 'Accepter',
-	'countedits-nosuchuser' => 'Il n’y a aucun utilisateur correspondant à $1',
+	'countedits'              => 'Compteur d’éditions',
+	'countedits-desc'         => '[[Special:CountEdits|Page spéciale]] comptabilisant le nombre d’éditions des utilisateurs et fournissant la liste des dix meilleurs contributeurs.',
+	'countedits-warning'      => 'Avertissement : ne jugez pas un livre par sa couverture. Ne jugez pas non plus un utilisateur en fonction du nombre de ses contributions.',
+	'countedits-username'     => 'Utilisateur',
+	'countedits-ok'           => 'Accepter',
+	'countedits-nosuchuser'   => 'Aucun utilisateur ne correspond à $1',
 	'countedits-resultheader' => 'Résultats pour $1',
-	'countedits-resulttext' => '$1 a fait {{PLURAL:$2|$2 édition|$2 éditions}}',
-	'countedits-mostactive' => 'Contributeurs les plus actifs',
-	'countedits-nocontribs' => 'Aucune contribution sur ce wiki.',
+	'countedits-resulttext'   => '$1 a fait {{PLURAL:$2|$2 édition|$2 éditions}}',
+	'countedits-mostactive'   => 'Contributeurs les plus actifs',
+	'countedits-nocontribs'   => 'Aucune contribution sur ce wiki.',
 );
 
 $messages['gl'] = array(
@@ -539,6 +542,14 @@ $messages['su'] = array(
 	'countedits-resulttext' => '$1 geus nyieun $2 éditan',
 	'countedits-mostactive' => 'Kontributor panggetolna',
 	'countedits-nocontribs' => 'Can aya kontribusi ka ieu wiki.',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'countedits-username'   => 'Användarnamn:',
+	'countedits-resulttext' => '$1 har gjort $2 redigeringar',
 );
 
 /** Telugu (తెలుగు)

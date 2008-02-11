@@ -47,6 +47,7 @@ $messages['ar'] = array(
  */
 $messages['bg'] = array(
 	'importfreeimages'                       => 'Внасяне на свободни картинки',
+	'importfreeimages-desc'                  => 'Позволява внасянето на подходящо лицензирани картинки от flickr.',
 	'importfreeimages_description'           => 'Тази страница позволява търсенето на подходящо лицензирани картинки от flickr и качването им в уикито.',
 	'importfreeimages_noapikey'              => 'Не е конфигуриран Flickr API ключ. Такъв API ключ може да се получи [http://www.flickr.com/services/api/misc.api_keys.html оттук], след което е необходимо да се настрои wgFlickrAPIKey в ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'         => "Не бяха открити резултати за търсенето ви по критерия '$1'. Моля, опитайте отново.",
@@ -185,6 +186,13 @@ $messages['oc'] = array(
 	'importfreeimages_returntoform'          => "o, clicatz <a href='$1'>aicí</a> per tornar a vòstra lista de resultats.",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'importfreeimages_owner' => 'ليکوال',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -247,6 +255,23 @@ $messages['stq'] = array(
 	'importfreeimages_filefromflickr'        => '$1 fon Benutser <b>[$2]</b> fon flickr. Originoal URL',
 	'importfreeimages_promptuserforfilename' => 'Reek n Siel-Doatäinoome ien:',
 	'importfreeimages_returntoform'          => "Of klik <a href='$1'>hier</a>, uum tou ju Siede mäd do Säikresultoate touräächtoukuumen.",
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'importfreeimages'                       => 'Impor Gambar Bébas',
+	'importfreeimages-desc'                  => 'Muka jalan pikeun ngimpor poto-poto ti flickr anu lisénsina loyog.',
+	'importfreeimages_description'           => 'Ieu kaca méré jalan ka anjeun pikeun nyiar poto-poto ti flickr anu lisénsina loyog sarta langsung diimpor ka wiki anjeun.',
+	'importfreeimages_noapikey'              => 'Anjeun can nyetél konfigurasi Flickr API Key. Mangga nyungkeun heula konci API ti [http://www.flickr.com/services/api/misc.api_keys.html dieu], lajeng sét wgFlickrAPIKey dina ImportFreeImages.php.',
+	'importfreeimages_nophotosfound'         => "Euweuh poto nu loyog jeung kriteria '$1', mangga cobian deui.",
+	'importfreeimages_owner'                 => 'Karya',
+	'importfreeimages_importthis'            => 'impor ieu',
+	'importfreeimages_next'                  => '$1 salajengna',
+	'importfreeimages_filefromflickr'        => '$1 ku <b>[$2]</b> ti flickr. URL asalna',
+	'importfreeimages_promptuserforfilename' => 'Jieun ngaran koropak nu ditujul:',
+	'importfreeimages_returntoform'          => "Atawa, klik <a href='$1'>di dieu</a> pikeun balik deui ka hasil nyusud",
 );
 
 /** Swedish (Svenska)

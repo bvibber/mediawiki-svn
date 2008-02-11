@@ -178,6 +178,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'badimages'                => 'Roll ar skeudennoù fall',
+	'badimages-desc'           => 'Kreskiñ a ra barregezh roll skeudennoù da argas MediaWiki',
 	'badimages-add-btn'        => 'Ouzhpennañ',
 	'badimages-added'          => "Ouzhpennet eo bet $1 d'ar roll.",
 	'badimages-count'          => "'''$1''' skeudenn zo war roll ar skeudennoù fall.",
@@ -620,10 +621,11 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
- * @author Tmnk
+ * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'badimages'                => 'ひどい画像の一覧',
+	'badimages'                => '好ましくない画像の一覧',
+	'badimages-desc'           => 'MediaWiki　に「好ましくない画像リスト」機能を追加する',
 	'badimages-add-btn'        => '追加',
 	'badimages-added'          => '$1 を一覧に追加しました。',
 	'badimages-count'          => "この一覧には '''$1''' 個の画像が登録されています。",
@@ -641,7 +643,7 @@ $messages['ja'] = array(
 	'badimages-log-header'     => 'これは [[{{MediaWiki:Badimages-page}}|{{int:badimages}}]]への変更の記録です。',
 	'badimages-log-add'        => '[[$1]] を一覧に追加しました。',
 	'badimages-log-remove'     => '[[$1]] を一覧から削除しました。',
-	'badimages-page'           => '{{ns:help}}:ひどい画像の一覧表',
+	'badimages-page'           => '{{ns:help}}:好ましくない画像の一覧表',
 );
 
 /** Kurdish (Kurdî / كوردی)

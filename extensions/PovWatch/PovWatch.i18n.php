@@ -350,3 +350,10 @@ Záznam posledných zoznamov sledovaných stránok sa nachádza na [[Special:Pov
 	'povwatch_added'                   => 'pridaný',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'povwatch_title' => 'Tiäd:',
+);
+

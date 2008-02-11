@@ -523,3 +523,11 @@ $messages['sk'] = array(
 	'regexblock-view-time'            => '$1',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'regexblock-form-reason' => 'Kod:',
+	'regexblock-view-all'    => 'Valik',
+);
+

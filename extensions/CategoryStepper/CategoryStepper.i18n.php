@@ -35,6 +35,15 @@ $messages['bg'] = array(
 	'categorystepper-end'   => '(Край на категорията)',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'categorystepper-start' => '(penn-kentañ ar rummad)',
+	'categorystepper-desc'  => 'Diskouez a ra ur voest rummata war pajennoù zo en un strobad rummadoù.',
+	'categorystepper-end'   => '(Dibenn ar rummad)',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

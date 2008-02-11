@@ -231,6 +231,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'parserdifftest'      => 'Test rozdźělow parsera',
+	'pdtest-desc'         => 'Specialna strona za přirunanje wudaća dweju rozdźělneju parserow.',
 	'pdtest_no_target'    => 'Žadyn cil podaty.',
 	'pdtest_page_missing' => 'Podata strona njebu w datowej bance namakana.',
 	'pdtest_no_changes'   => 'Žane změny wotkryte.',
@@ -330,6 +331,7 @@ $messages['lt'] = array(
  */
 $messages['nl'] = array(
 	'parserdifftest'      => 'Parserverschillentest',
+	'pdtest-desc'         => '[[Special:ParserDiffTestSpecial|Speciale pagina]] voor het vergelijken van de uitvoer van twee verschillende parsers',
 	'pdtest_no_target'    => 'Geen doel aangegeven.',
 	'pdtest_page_missing' => 'De aangegeven pagina is niet aangetroffen in de database.',
 	'pdtest_no_changes'   => 'Geen wijzigingen vastgesteld.',
@@ -398,6 +400,7 @@ $messages['oc'] = array(
  */
 $messages['pt'] = array(
 	'parserdifftest'      => 'Teste de diferenças do analisador "parser"',
+	'pdtest-desc'         => '[[Special:ParserDiffTestSpecial|Página especial]] para comparar o resultado de dois analisadores "parser" diferentes',
 	'pdtest_no_target'    => 'Nenhum alvo foi especificado.',
 	'pdtest_page_missing' => 'A página especificada não foi encontrada na base de dados.',
 	'pdtest_no_changes'   => 'Nenhuma alteração detectada.',
@@ -485,9 +488,11 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'parserdifftest'      => 'Parserskillnadstest',
+	'pdtest-desc'         => 'Special sida för att jämföra utdatan av två olika parser.',
 	'pdtest_no_target'    => 'Ingen målsida angavs.',
 	'pdtest_page_missing' => 'Den angivna sidan hittades inte i databasen.',
 	'pdtest_no_changes'   => 'Inga ändringar hittades.',

@@ -52,6 +52,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'assert_edit_title'   => "C'hwitet eo an enframmañ",
+	'assert_edit_desc'    => 'Ouzhpennañ a ra degasadennoù enframmañ da vezañ implijet gant botoù',
 	'assert_edit_message' => "C'hwitet eo an enframmadenn goulennet.",
 );
 

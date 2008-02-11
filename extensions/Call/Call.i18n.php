@@ -57,7 +57,20 @@ $messages['bg'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'call' => 'Galv',
+	'call'              => 'Galv',
+	'call-desc'         => 'Krouiñ a ra ur gourliamm davet ur patrom (pe ur pennad wiki boutin) en ur dremen arventennoù drezañ. Gallout a ra bezañ implijet evel linenn urzhiad adal ur merdeer pe e testenn ur wiki.',
+	'call-text'         => "Ezhomm en deus an astenn galv eus ur bajenn wiki hag eus an arventennoù diret eviti.<br><br>
+Skouer 1: &nbsp; <tt>[[Special:Call/Ma fatrom,parm1=value1]]</tt><br/>
+Skouer 2: &nbsp; <tt>[[Special:Call/Kaozeal:Ma c'haozeadenn,parm1=value1]]</tt><br/>
+Skouer 3: &nbsp; <tt>[[Special:Call/:Ma fajenn,parm1=value1,parm2=value2]]</tt><br/><br/>
+Skouer 4 (chomlec'h evit merdeer): &nbsp; <tt>http://madomani/mywiki/index.php?Special:Call/:Ma fajenn,parm1=value1</tt><br/><br/>
+
+Gervel a raio an astenn <i>Galv</i> ar bajenn merket en ur dremen an arventennoù drezi.<br>Gwelout a reot danvez ar bajenn hag an titl anezhi met 'tres' ur bajenn zibar a vo warni<br>ha n'hallo ket kemmoù bezañ degaset warni.<br>An titouroù a vo warni a vo diouzh talvoud an arventennoù bet merket ganeoc'h.<br><br>
+Emsav-kenañ eo an <i>Astenn Galv</i> evit sevel arloadoù etregwezhiat gant MediaWiki.<br>Da skouer, gwelet <a href='http://semeb.com/dpldemo/Template:Catlist'>the DPL GUI</a> ..<br/>
+M'ho pez kudennoù e c'hallit klask ober gant <b>Special:Call/DebuG</b>",
+	'call-save'         => "Gallout a rafe ar pezh zo merket gant ar galv-mañ bezañ enrollet en ur bajenn anvet ''$1''.",
+	'call-save-success' => 'Enrollet eo bet an destenn da-heul war ar bajenn <big>[[$1]]</big> .',
+	'call-save-failed'  => "N'EO KET BET enrollet an destenn da-heul war ar bajenn <big>[[$1]]</big> rak bez'ez eus anezhi c'hoazh.",
 );
 
 /** Czech (Česky)
@@ -193,6 +206,13 @@ L’extension <i>Apèl</i> apelarà la pagina indicada en i passant los paramèt
 	'call-save-failed'  => 'Lo tèxt seguent a pogut èsser salvargardat vèrs la pagina <big>[[$1]]</big> del fach qu’existís ja.',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'call-save-success' => 'لاندينی متن د <big>[[$1]]</big> مخ کې خوندي شوی.',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -253,6 +273,17 @@ V prípade problémov môžete skúsuť <b>Special:Call/DebuG</b>",
 	'call-save'         => "Výstup tejto stránky by bol uložený na stránku s názvom ''$1''.",
 	'call-save-success' => 'Nasledovný text bol uložený na stránku <big>[[$1]]</big>.',
 	'call-save-failed'  => "Nasledovný text NEBOL uložený na stránku ''$1'', pretože taká stránka už existuje.",
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'call'              => 'Calukan',
+	'call-desc'         => "Jieun hipertumbu ka citakan (atawa ka kaca wiki biasa) nu mibanda ''parameter passing''. Ieu bisa dipaké dina the browser’s command line or within wiki text.",
+	'call-save'         => "Kaluaran ieu panyaluk bakal disimpen di kaca nu disebut ''$1''.",
+	'call-save-success' => 'Tulisan di handap ieu geus disimpen dina kaca <big>[[$1]]</big> .',
+	'call-save-failed'  => 'Tulisan di handap ieu CAN disimpen dina kaca <big>[[$1]]</big> kusabab éta kaca geus aya.',
 );
 
 /** Swedish (Svenska)

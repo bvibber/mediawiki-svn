@@ -123,6 +123,7 @@ $messages['pms'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'newusernotifsubj' => 'Nova Notificação de Utilizador para $1',
 	'newusernotifbody' => 'Olá, $1,
 
 Uma nova conta de utilizador, $2, foi criada em $3 em $4.',

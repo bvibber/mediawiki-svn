@@ -654,6 +654,14 @@ Sòn a lo fa ën ciamand l\'anterprete dal programa MediaWiki.',
 	'expand_templates_preview'         => 'Preuva',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'expand_templates_output'  => 'پايله',
+	'expand_templates_preview' => 'مخکتنه',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -687,6 +695,7 @@ $messages['qu'] = array(
  */
 $messages['ru'] = array(
 	'expandtemplates'                  => 'Развёртка шаблонов',
+	'expandtemplates-desc'             => 'Раскрывает шаблоны, функции парсера и переменные, чтобы показать развёрнутый вики-текст и просмотреть отрисованную страницу',
 	'expand_templates_intro'           => 'Эта служебная страница преобразует текст, рекурсивно разворачивая все шаблоны в нём.
 Также развёртке подвергаются все функции парсера (например, <nowiki>{{</nowiki>#if:...}} и переменные (<nowiki>{{</nowiki>CURRENTDAY}} и т.&nbsp;п.) — в общем, всё внутри двойных фигурных скобок.
 Это производится корректным образом, с вызовом соответствующего обработчика MediaWiki.',

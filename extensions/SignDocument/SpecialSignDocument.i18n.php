@@ -1108,7 +1108,12 @@ $messages['sv'] = array(
  */
 $messages['vo'] = array(
 	'sign-realname'                => 'Nem:',
+	'sign-city'                    => 'Zif:',
+	'sign-state'                   => 'Tat:',
+	'sign-country'                 => 'Län:',
 	'sign-viewfield-realname'      => 'Nem',
+	'sign-viewfield-city'          => 'Zif',
+	'sign-viewfield-state'         => 'Tat',
 	'sign-viewfield-country'       => 'Län',
 	'sign-viewfield-reviewcomment' => 'Küpet',
 );

@@ -127,6 +127,14 @@ $messages['bg'] = array(
 	'changeauthor-rev'                  => 'р$1',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'changeauthor-pagenameform-go' => 'Mont',
+	'changeauthor-comment'         => 'Notenn :',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -437,6 +445,13 @@ $messages['oc'] = array(
 	'changeauthor-logentry'             => "Modificacion de l'autor de $2 de $1 dempuèi $3 vèrs $4",
 	'changeauthor-logpagename'          => "Jornal dels cambiaments faches per l'autor",
 	'changeauthor-rev'                  => 'r$1',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'changeauthor-pagenameform-go' => 'ورځه',
 );
 
 /** Portuguese (Português)

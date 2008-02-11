@@ -487,6 +487,7 @@ $messages['sv'] = array(
  */
 $messages['vo'] = array(
 	'createsigndoc-pagename'      => 'Pad:',
+	'createsigndoc-extaddress'    => 'Zif, Tat, Län:',
 	'createsigndoc-error-generic' => 'Pöl: $1',
 );
 

@@ -45,6 +45,7 @@ $messages['ar'] = array(
 $messages['bg'] = array(
 	'sc_previousmonth'    => 'Предходен месец',
 	'sc_nextmonth'        => 'Следващ месец',
+	'sc_today'            => 'Днес',
 	'sc_error_year2038'   => 'Грешка: Системата не може да оперира с дати след 2038 година заради [http://en.wikipedia.org/wiki/Year_2038_problem проблема 2038 година]',
 	'sc_error_beforeyear' => 'Грешка: Системата не може да оперира с дати преди $1',
 );
@@ -200,6 +201,7 @@ $messages['vi'] = array(
 $messages['vo'] = array(
 	'sc_previousmonth' => 'Mul büik',
 	'sc_nextmonth'     => 'Mul sököl',
+	'sc_today'         => 'Adelo',
 );
 
 /** ‪中文(台灣)‬ (‪中文(台灣)‬)

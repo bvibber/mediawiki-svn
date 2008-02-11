@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'titlekey-desc' => 'Title prefix search suggestion backend',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'titlekey-desc' => 'نهاية اقتراح بحث عنوان البادئة',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -25,7 +32,7 @@ $messages['de'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'titlekey-desc' => 'Retour en arrière',
+	'titlekey-desc' => "Retour vers la fin de la suggestion de recherche d'un préfixe de titre",
 );
 
 /** Dutch (Nederlands)
@@ -33,6 +40,13 @@ $messages['fr'] = array(
  */
 $messages['nl'] = array(
 	'titlekey-desc' => 'Backend voor zoeksuggesties voor paginanaamvoorvoegsels',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'titlekey-desc' => 'Motor de sugestão de pesquisa por prefixo de título',
 );
 
 /** Slovak (Slovenčina)

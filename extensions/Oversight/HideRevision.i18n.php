@@ -142,6 +142,7 @@ Esparder esta información pue llevar a la perda permanente de privilexos de sup
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'hiderevision-desc'        => 'Добавя възможност за скриване на отделни версии',
 	'hiderevision-continue'    => 'Продължаване',
 	'hiderevision-submit'      => 'Перманентно скриване на информацията',
 	'hiderevision-tab'         => 'Скриване на редакцията',
@@ -182,6 +183,7 @@ $messages['co'] = array(
  */
 $messages['cs'] = array(
 	'hiderevision'                => 'Natrvalo skrýt revize',
+	'hiderevision-desc'           => 'Skrývá jednotlivé určené revize všem uživatelům (z právních důvodů apod.)',
 	'hiderevision-prompt'         => 'Číslo revize, která se má odstranit:',
 	'hiderevision-continue'       => 'Pokračovat',
 	'hiderevision-text'           => "Tato funkce by se měla využívat '''pouze''' v následujících případech:
@@ -875,6 +877,11 @@ $messages['li'] = array(
 Verwiederde versies zeen neet veur edereen zichbaar via de website,
 meh verwiederde objecte waere in logbeuk biegehaje en kinnen handjmaotig
 trökgezat waere door databasebeheerders es geer 'n fout maak.",
+	'hiderevision-reason'         => 'Ree (wordt discreet opgeslage):',
+	'hiderevision-submit'         => 'Deze gegaeves permanent verberge',
+	'hiderevision-tab'            => 'Verberg versie',
+	'hiderevision-norevisions'    => "d'r Zeen gein te wisse versies opgegaeve.",
+	'hiderevision-noreason'       => "Doe mós 'n ree opgaeve veur 't wisse.",
 	'hiderevision-status'         => 'Versie $1: $2',
 	'hiderevision-success'        => 'Archiveren en verwijderen geslaagd.',
 	'hiderevision-error-missing'  => 'Niet gevonden in database.',

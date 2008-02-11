@@ -45,8 +45,13 @@ $messages['be'] = array(
 	'deletedcontributions' => 'Выдалены ўклад удзельніка',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ * @author SPQRobin
+ */
 $messages['bg'] = array(
-	'deletedcontributions' => 'Изтрити приноси на потребител',
+	'deletedcontributions'      => 'Изтрити приноси на потребител',
+	'deletedcontributions-desc' => 'Предоставя на администраторите възможността да [[Special:DeletedContributions|разглеждат изтритите приноси на потребител]]',
 );
 
 /** Bengali (বাংলা)

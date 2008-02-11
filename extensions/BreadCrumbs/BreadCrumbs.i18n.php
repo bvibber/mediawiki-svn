@@ -16,6 +16,13 @@ $messages['ar'] = array(
 	'breadcrumbs-desc' => 'يعرض مسار المستخدمين خلال الويكي.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'breadcrumbs-desc' => 'Diskouez a ra liamm ar pajennoù diwezhañ bet sellet gant an implijer war ar wiki.',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -29,6 +36,13 @@ $messages['de'] = array(
 );
 $messages['fr'] = array(
 	'breadcrumbs-desc' => 'Affiche le lien des dernières pages que l’utilisateur a visitées dans le wiki.',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'breadcrumbs-desc' => 'Pokazujo drogu wužywarja pśez wiki.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

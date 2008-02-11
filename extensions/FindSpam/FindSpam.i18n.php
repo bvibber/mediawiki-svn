@@ -42,9 +42,17 @@ $messages['ast'] = array(
  */
 $messages['bg'] = array(
 	'findspam'             => 'Откриване на спам',
+	'findspam-desc'        => 'Добавя [[Special:FindSpam|специална страница]], която може да се използва за откриване на спам',
 	'findspam-ip'          => 'IP адрес:',
 	'findspam-ok'          => 'Търсене',
 	'findspam-notextfound' => 'Няма намерени приноси',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'findspam-ok' => 'Mat eo',
 );
 
 $messages['de'] = array(
@@ -150,6 +158,13 @@ $messages['oc'] = array(
 	'findspam-ok'          => 'Recercar',
 	'findspam-notextfound' => 'Cap de contribucion trobada',
 
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'findspam-ip' => 'IP پته:',
 );
 
 /** Portuguese (Português)
