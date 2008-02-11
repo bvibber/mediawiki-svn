@@ -76,12 +76,16 @@ $messages['de'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Es muss mindestens eine Kategorie eingebunden werden oder gebe einen Namensraum an!',
 );
 
-# فارسی (Huji - 4)
+/** فارسی (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
+	'intersection-desc'          => 'فهرست گلوله‌ای از صفحه‌هایی به نمایش در می‌آورد که به تازگی در یک یا چند رده وارد شده‌اند',
 	'intersection_toomanycats'   => 'DynamicPageList: تعداد رده‌ها زیاد است!',
 	'intersection_toofewcats'    => 'DynamicPageList: تعداد رده‌ها کم است!',
 	'intersection_noresults'     => 'DynamicPageList: نتیجه‌ای وجود ندارد!',
 	'intersection_noincludecats' => 'DynamicPageList: شما حداقل باید یک رده را وارد کنید، یا یک فضای نام را مشخص کنید!',
+
 );
 
 /** Finnish (Suomi)

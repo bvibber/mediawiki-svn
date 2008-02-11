@@ -202,8 +202,11 @@ $messages['ext'] = array(
 	'createarticle'           => 'Creal artículu',
 );
 
-# فارسی (Huji)
+/** فارسی (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
+	'inputbox-desc'           => 'اجازهٔ استفاده از فرم‌های HTML از پیش تعریف شده را می‌دهد',
 	'inputbox-error-no-type'  => 'نوع جعبهٔ ورودی  ایجادشونده را مشخص نکرده‌اید.',
 	'inputbox-error-bad-type' => 'نوع \\\'\\\'$1\\\'\\\' برای جعبهٔ ورودی شناخته نیست. لطفاً یکی از موارد "create", "comment", "search" or "search2" را مشخص کنید.',
 	'tryexact'                => 'مطابقت نظیر به نظیر را بیازما',

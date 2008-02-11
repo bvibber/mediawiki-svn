@@ -300,10 +300,11 @@ $messages['es'] = array(
 	'ogg-download' => 'Bajar archivo',
 );
 
-/** Persian (فارسی)
+/** فارسی (فارسی)
  * @author Huji
  */
 $messages['fa'] = array(
+	'ogg-desc'                => 'به دست گیرندهٔ پرونده‌های Ogg Theora و Vorbis، با پخش‌کنندهٔ مبتنی بر JavaScript',
 	'ogg-short-audio'         => 'پرونده صوتی Ogg $1، $2',
 	'ogg-short-video'         => 'پرونده تصویری Ogg $1، $2',
 	'ogg-short-general'       => 'پرونده Ogg $1، $2',
@@ -329,6 +330,7 @@ $messages['fa'] = array(
 	'ogg-dismiss'             => 'بستن',
 	'ogg-download'            => 'بارگیری پرونده',
 	'ogg-desc-link'           => 'دربارهٔ این پرونده',
+
 );
 
 /** Finnish (Suomi)

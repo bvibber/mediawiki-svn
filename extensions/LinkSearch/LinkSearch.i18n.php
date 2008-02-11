@@ -141,9 +141,12 @@ $messages['ext'] = array(
 	'linksearch-ok'    => 'Landeal',
 );
 
-# فارسی (Huji)
+/** فارسی (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
 	'linksearch'       => 'جستجوی پیوندهای وب',
+	'linksearch-desc'  => 'صفحه‌هایی را پیدا می‌کند که در آن‌ها پیوند به بیرون با الگوهای مشخصی انطباق دارد',
 	'linksearch-pat'   => 'جستجوی الگو:',
 	'linksearch-ns'    => 'فضای نام:',
 	'linksearch-ok'    => 'جستجو',

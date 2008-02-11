@@ -154,8 +154,11 @@ $messages['ext'] = array(
 	'imagemap_description'          => 'Al tentu esta imahin',
 );
 
-# فارسی (Huji)
+/** فارسی (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
+	'imagemap_desc'               => 'امکان ایجاد نقشه‌های تصویری قابل کلیک کردن در سمت کاربر را با استفاده از برچسب <tt><nowiki><imagemap></nowiki></tt> فراهم می‌آورد',
 	'imagemap_no_image'           => '<imagemap>: باید در اولین سطر یک تصویر را مشخص کنید',
 	'imagemap_invalid_image'      => '<imagemap>: تصویر غیرمجاز است یا وجود ندارد',
 	'imagemap_no_link'            => '<imagemap>: هیچ پیوند مجازی تا انتهای سطر $1 پیدا نشد',

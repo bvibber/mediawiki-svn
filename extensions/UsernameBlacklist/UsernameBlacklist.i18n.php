@@ -229,10 +229,14 @@ $messages['ext'] = array(
 	'blacklistedusernametext' => "El nombri d'usuáriu qu'as lihiu s'alcuentra ena [[MediaWiki:Usernameblacklist|lista negra]]. Pol favol, descohi otru nombri.",
 );
 
+/** فارسی (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
-	'blacklistedusername' => 'نام کاربری غیر مجاز',
-	'blacklistedusernametext' => 'نام کاربری مورد نظر شما در با [[MediaWiki:Usernameblacklist|فهرست سیاه نام‌های کاربری]] مطابقت دارد. لطفاً یک نام کاربری دیگر انتخاب کنید.',
-	'usernameblacklist' => '<pre>
+	'usernameblacklist-desc'          => 'یک [[MediaWiki:Usernameblacklist|فهرست سیاه نام کاربری]] اضافه می‌کند که برای جلوگیری از ساختن حساب‌های کاربری با الگوهای مشخص به کار می‌رود',
+	'blacklistedusername'             => 'نام کاربری غیر مجاز',
+	'blacklistedusernametext'         => 'نام کاربری مورد نظر شما در با [[MediaWiki:Usernameblacklist|فهرست سیاه نام‌های کاربری]] مطابقت دارد. لطفاً یک نام کاربری دیگر انتخاب کنید.',
+	'usernameblacklist'               => '<pre>
 # مدخل‌های این صفحه به عنوان یک الگوی regular expression برای 
 # فهرست سیاه هنگام ثبت نام کاربری به کار می‌روند. هر مورد باید
 # در یک سطر جدا که با علامت * آغاز شده باشد تعریف گردد، مانند:
@@ -240,6 +244,7 @@ $messages['fa'] = array(
 # * فلان
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|سطر|سطرهای}} زیر از فهرست سیاه نام کاربری غیر مجاز {{PLURAL:$1|است|هستند}}؛ لطفاً {{PLURAL:$1|آن|آن‌ها}} را قبل از ذخیره کردن صفحه اصلاح کنید:',
+
 );
 
 /** Finnish (Suomi)
