@@ -14,7 +14,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'inputbox-desc'           => 'Allow inclusion of predefined HTML forms.',
+	'inputbox-desc'           => 'Allow inclusion of predefined HTML forms',
 	'inputbox-error-no-type'  => 'You have not specified the type of input box to create.',
 	'inputbox-error-bad-type' => 'Input box type "$1" not recognised. Please specify "create", "comment", "search" or "search2".',
 	'tryexact'                => 'Try exact match',
@@ -158,6 +158,7 @@ $messages['da'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
+	'inputbox-desc'           => 'Erlaubt die Einbindung vordefinierter HTML-Formulare',
 	'inputbox-error-no-type'  => 'Du hast keinen Eingabefeld-Typ angegeben.',
 	'inputbox-error-bad-type' => 'Der Eingabefeld-Typ „$1“ ist unbekannt. Bitte gib einen gültigen Typ an: „create“, „comment“, „search“ oder „search2“.',
 	'tryexact'                => 'Versuche exakte Suche:',

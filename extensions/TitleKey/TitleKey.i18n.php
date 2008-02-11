@@ -8,10 +8,17 @@
 $messages = array();
 
 /** English
- * @author Raymond Spekking
+ * @author Brion Vibber
  */
 $messages['en'] = array(
 	'titlekey-desc' => 'Title prefix search suggestion backend',
+);
+
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'titlekey-desc' => 'Hintergrundprozess für die Titelsuche',
 );
 
 /** French (Français)

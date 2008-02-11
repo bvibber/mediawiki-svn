@@ -9,7 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'parserdifftest' => 'Parser diff test',
-	'pdtest-desc' => 'Special page for comparing the output of two different parsers.',
+	'pdtest-desc' => '[[Special:ParserDiffTestSpecial|Special page]] for comparing the output of two different parsers',
 	'pdtest_no_target' => 'No target specified.',
 	'pdtest_page_missing' => 'The specified page was not found in the database.',
 	'pdtest_no_changes' => 'No changes detected.',
@@ -112,6 +112,7 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'parserdifftest'      => 'Parser-Differenz-Test',
+	'pdtest-desc'         => '[[Special:ParserDiffTestSpecial|Spezialseite]] zum Vergleich der Ausgabe von zwei verschiedenen Parsern',
 	'pdtest_no_target'    => 'Kein Ziel angegeben.',
 	'pdtest_page_missing' => 'Die angegebene Seite wurde nicht in der Datenbank gefunden.',
 	'pdtest_no_changes'   => 'Keine Unterschiede gefunden.',

@@ -10,7 +10,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'linksearch'       => 'Search web links',
-	'linksearch-desc'       => 'Find pages with external links matching specific patterns',
+	'linksearch-desc'  => 'Find pages with external links matching specific patterns',
 	'linksearch-pat'   => 'Search pattern:',
 	'linksearch-ns'    => 'Namespace:',
 	'linksearch-ok'    => 'Search',
@@ -105,8 +105,12 @@ $messages['cs'] = array(
 	'linksearch-error' => 'Zástupné znaky lze použít jen na začátku doménového jména.',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
 	'linksearch'       => 'Weblink-Suche',
+	'linksearch-desc'  => 'Findet Seiten mit externen Links, die einem vorgegebenen Suchmuster entsprechen',
 	'linksearch-pat'   => 'Suchmuster:',
 	'linksearch-ns'    => 'Namensraum:',
 	'linksearch-ok'    => 'Suchen',

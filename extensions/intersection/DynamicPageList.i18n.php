@@ -9,7 +9,7 @@
 $messages= array();
 
 $messages['en'] = array(
-	'intersection-desc'          => 'outputs a bulleted list of the most recent items residing in a category, or a union of several categories',
+	'intersection-desc'          => 'Outputs a bulleted list of the most recent items residing in a category, or a union of several categories',
 	'intersection_toomanycats'   => 'DynamicPageList: Too many categories!',
 	'intersection_toofewcats'    => 'DynamicPageList: Too few categories!',
 	'intersection_noresults'     => 'DynamicPageList: No results!',
@@ -70,6 +70,7 @@ $messages['cs'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
+	'intersection-desc'          => 'Ausgabe einer Liste der aktuellsten Einträge in einer Kategorie, oder der Schnittmenge mehrerer Kategorien',
 	'intersection_toomanycats'   => 'DynamicPageList: Zuviele Kategorien!',
 	'intersection_toofewcats'    => 'DynamicPageList: Zuwenige Kategorien!',
 	'intersection_noresults'     => 'DynamicPageList: Kein Ergebnis!',
