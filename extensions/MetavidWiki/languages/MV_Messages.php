@@ -78,8 +78,8 @@ $messages['en'] = array(
 	'mv_tool_overlay'        => 'Template Overlays',
 	'mv_tool_overlay_title'  => 'Template based metadata Overlays',
 	'mv_results_found_for'   => 'Search Results <b>$1</b> to <b>$2</b> of <b>$3</b> for:',
-	'mv_tool_mang_layers'	 => 'Mannage Layers',
-	'mv_update_layers'		 => 'Update Layers',
+	'mv_tool_mang_layers'	 => 'Manage Layers',
+	'mv_update_layers'       => 'Update Layers',
 
 	#mvd types:
 	'ht_en'        => 'Transcript',
