@@ -49,7 +49,7 @@ gMsg['ogg-player-selected']=' (selected)';
 gMsg['download_clip']='Download the Clip';
 gMsg['generic_missing_plugin']='You don\'t appear to have a supported in browser playback method<br>' +
 		'visit the <a href="http://metavid.ucsc.edu/wiki/index.php/Client_Download">Playback Methods</a> page to download a player<br>';
-		
+
 //grabs from the globalMsg obj 
 //@@todo integrate msg serving into CMS
 function getMsg( key ) {
@@ -395,10 +395,15 @@ var mvJsLoader = {
 			 var cur_load=0;
 			 for(p in objPath){
 				 cur_path = (cur_path=='')?cur_path+objPath[p]:cur_path+'.'+objPath[p];
-				 //js_log("looking at path: "+ cur_path + " = " + eval('typeof '+cur_path));
+				 js_log("looking at path: "+ cur_path);
+				 js_log("eval:  " + eval('typeof ('+cur_path+');'));
 				 if(eval('typeof '+cur_path)=='undefined'){
 					 cur_load = loading=1;
 					 break;
+				 }
+				 //if we have made the full comparison break out: 
+				 if(cur_path==i){
+				 	break;
 				 }
 		 	 }
 			 if(cur_load){
