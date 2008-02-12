@@ -16,6 +16,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Tim Starling',
 	'name' => 'Makesysop',
 	'description' => 'Gives bureaucrats/stewards the ability to modify user levels',
+	'descriptionmsg' => 'makesysop-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Makesysop'
 );
 

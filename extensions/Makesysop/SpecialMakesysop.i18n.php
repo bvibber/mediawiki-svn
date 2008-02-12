@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'makesysoptitle'       => 'Make a user into a sysop',
+	'makesysop-desc'       => 'Gives bureaucrats/stewards the ability to modify user levels',
 	'makesysoptext'        => 'This form is used by bureaucrats to turn ordinary users into administrators. Type the name of the user in the box and press the button to make the user an administrator.',
 	'makesysopname'        => 'Name of the user:',
 	'makesysopsubmit'      => 'Make this user into a sysop',
@@ -491,6 +492,7 @@ $messages['fo'] = array(
  */
 $messages['fr'] = array(
 	'makesysoptitle'           => 'Donner les droits d’administrateur à un utilisateur',
+	'makesysop-desc'           => 'Donne aux bureaucrates ou aux stewards la possibilité de modifier les niveaux des utilisateurs.',
 	'makesysoptext'            => 'Ce formulaire est utilisé par les bureaucrates pour donner les droits d’administrateur à un utilisateur ordinaire. Inscrivez le nom de l’utilisateur dans le cadre et appuyez sur le bouton pour donner les droits en question.',
 	'makesysopname'            => 'Nom de l’utilisateur :',
 	'makesysopsubmit'          => 'Donner les droits d’administrateur à cet utilisateur',
