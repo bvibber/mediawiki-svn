@@ -11,8 +11,9 @@ $messages = array();
  * @author Magnus Manske
  */
 $messages['en'] = array(
-	'filelist' => 'File List',
-	'filelist-show-list' => 'Show list',
+	'filelist'              => 'File List',
+	'filelist-desc'         => 'Special Page for listing uploaded files',
+	'filelist-show-list'    => 'Show list',
 	'filelist-show-gallery' => 'Show gallery',
 );
 
@@ -47,8 +48,9 @@ $messages['bg'] = array(
  * @author Bertrand Grondin
  */
 $messages['fr'] = array(
-	'filelist' => 'Liste des fichiers',
-	'filelist-show-list' => 'Voir la liste',
+	'filelist'              => 'Liste des fichiers',
+	'filelist-desc'         => 'Page spéciale pour énumérer les fichiers téléchargés.',
+	'filelist-show-list'    => 'Voir la liste',
 	'filelist-show-gallery' => 'Voir la gallerie',
 );
 
