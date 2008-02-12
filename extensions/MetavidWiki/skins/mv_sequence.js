@@ -54,11 +54,13 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 		switch(edit_action){
 			case 'save':
 				eval(data);
-				if(mv_result['status']=='ok'){
-					//redirect to save page: 
-					window.location.href = wgServer+
+				if(mv_result['status']=='ok'){					
+					//wait 2 more seconds and then redirect to updated page: 
+					setTimeout(function(){
+						window.location.href = wgServer+
 						((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript) +
 						'/' + wgPageName + '?action=purge';
+					}, 2000);
 				}else if(mv_result['status']=='error'){
   					$j('#mv_seq_edit_preview').html( mv_result['error_txt'] );   				
 	  			}
