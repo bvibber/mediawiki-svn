@@ -18,10 +18,11 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionFunctions[] = 'efMakeBot';
 	$wgAvailableRights[] = 'makebot';
 	$wgExtensionCredits['specialpage'][] = array(
-		'name' => 'MakeBot',
-		'author' => 'Rob Church',
-		'url' => 'http://www.mediawiki.org/wiki/Extension:MakeBot',
-		'description' => 'Special page allows local bureaucrats to grant and revoke bot permissions',
+		'name'           => 'MakeBot',
+		'author'         => 'Rob Church',
+		'url'            => 'http://www.mediawiki.org/wiki/Extension:MakeBot',
+		'description'    => 'Special page allows local bureaucrats to grant and revoke bot permissions',
+		'descriptionmsg' => 'makebot-desc',
 	 );
 	/**
 	 * Load internationalization file

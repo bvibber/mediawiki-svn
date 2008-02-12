@@ -13,7 +13,8 @@ $messages = array();
 
 /* English (Rob Church) */
 $messages['en'] = array(
-	'makebot' => 'Grant or revoke bot status',
+	'makebot'                 => 'Grant or revoke bot status',
+	'makebot-desc'            => 'Special page allows local bureaucrats to grant and revoke bot permissions',
 	'makebot-header'          => '\'\'\'A local bureaucrat can use this page to grant or revoke [[{{MediaWiki:Grouppage-bot}}|bot status]] to another user account.\'\'\'<br />Bot status hides a user\'s edits from [[Special:Recentchanges|recent changes]] and similar lists, and is useful for flagging users who make automated edits. This should be done in accordance with applicable policies.',
 	'makebot-username'        => 'Username:',
 	'makebot-search'          => 'Go',
@@ -353,6 +354,7 @@ $messages['fo'] = array(
 /* French (Bertrand Grondin) */
 $messages['fr'] = array(
 	'makebot'                 => 'Accorder ou révoquer les droits de bot',
+	'makebot-desc'            => 'Page spéciale permettant aux bureaucrates locaux d’accorder ou de révoquer les permissions de bot.',
 	'makebot-header'          => '\'\'\'Un bureaucrate local peut utiliser cette page pour accorder ou révoquer le [[{{MediaWiki:Grouppage-bot}}|Statut de Bot]] à un autre compte d\'utilisateur.\'\'\'<br />Le statut de bot a pour particularité de masquer les éditions des utilisateurs dans la page des [[Special:Recentchanges|modification récentes]] et de toutes autres listes similaires. Ceci est très utile pour marquer les utilisateurs qui veulent faire des éditions automatiques. Ceci ne doit être fait que conformément aux règles édictées au sein de chaque projet.',
 	'makebot-username'        => 'Nom d’utilisateur :',
 	'makebot-search'          => 'Valider',
