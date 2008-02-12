@@ -11,7 +11,7 @@ if (!defined('MEDIAWIKI')) {
 
 $wgExtensionCredits['other'][] = array(
 	'name'        => 'Icon',
-	'version'     => '1.3',
+	'version'     => '1.4',
 	'author'      => 'Tim Laqua',
 	'description' => 'Allows you to use Images as Icons and Icon Links',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:Icon',
@@ -109,6 +109,5 @@ function efIcon_Render(&$parser, $img, $alt=null, $width=null, $page=null) {
 			}
 		}
 	}
-	
-	return array($output, 'noparse' => true, 'isHTML' => true);
+	return $parser->insertStripItem($output, $parser->mStripState);
 }
