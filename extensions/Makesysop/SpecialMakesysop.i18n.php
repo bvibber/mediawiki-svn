@@ -312,15 +312,19 @@ $messages['da'] = array(
 	'already_bureaucrat'	=> 'Denne bruger er allerede bureaucrat',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
 	'makesysoptitle'           => 'Mache einen Benutzer zum Administrator',
+	'makesysop-desc'           => '[[Special:Makesysop|Spezialseite]], auf der Bürokraten/Stewards Benutzerrechte ändern können',
 	'makesysoptext'            => 'Mit diesem Formular können Bürokraten normale Benutzer zu Administratoren machen.',
 	'makesysopname'            => 'Benutzername:',
 	'makesysopsubmit'          => 'Mache diesen Benutzer zu einem Administrator',
 	'makesysopok'              => '<b>Benutzer „$1“ ist nun ein Administrator.</b>',
 	'makebureaucratok'         => '<b>Benutzer „$1“ ist nun ein Bürokrat.</b>',
 	'makesysopfail'            => '<b>Benutzer „$1“ existiert nicht.</b>',
-	'makesysop-see-userrights' => 'Siehe [[{{ns:Special}}:Userrights]] für weitere Optionen.',
+	'makesysop-see-userrights' => 'Siehe [[{#Special:Userrights}}]] für weitere Optionen.',
 	'setbureaucratflag'        => 'Mache Benutzer zum Bürokraten',
 	'rights'                   => 'Rechte:',
 	'set_user_rights'          => 'Benutzerrechte setzen',

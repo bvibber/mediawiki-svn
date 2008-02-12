@@ -153,10 +153,12 @@ $messages['da'] = array(
 );
 
 $messages['de'] = array(
-	"sitematrix"          => "Liste der Wikimedia-Wikis",
-	'sitematrix-language' => 'Sprache',
-	'sitematrix-project'  => 'Projektname, Interprojekt-Link und Interwiki-Link',
-	'sitematrix-others'   => 'Weitere Wikimedia-Projekte',
+	"sitematrix"           => "Liste der Wikimedia-Wikis",
+	'sitematrix-language'  => 'Sprache',
+	'sitematrix-project'   => 'Projektname, Interprojekt-Link und Interwiki-Link',
+	'sitematrix-others'    => 'Weitere Wikimedia-Projekte',
+	'sitematrix-total'     => "'''Gesamtanzahl: $1'''",
+	'sitematrix-sitetotal' => 'Gesamt',
 );
 
 /** Lower Sorbian (Dolnoserbski)

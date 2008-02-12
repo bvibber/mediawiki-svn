@@ -196,10 +196,13 @@ $messages['cu'] = array(
 	'makebot-logentryrevoke'  => 'Отѧ аѵтоматьство ѹ польѕевател [[$1]]',
 );
 
-/* German (Raymond) */
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
-	'makebot' => 'Botstatus erteilen oder entziehen',
-	'makebot-header'         => "'''Ein Bürokrat dieses Projektes kann anderen Benutzern – in Übereinstimmung mit den lokalen Richtlinien – [[Help:Bot|Botstatus]] erteilen oder entziehen.'''<br /> Mit Botstatus werden die Bearbeitungen eines Bot-Benutzerkontos in den [[Special:Recentchanges|Letzten Änderungen]] und ähnlichen Listen versteckt. Die Botmarkierung ist darüberhinaus zur Feststellung automatischer Bearbeitungen nützlich.",
+	'makebot'                => 'Botstatus erteilen oder entziehen',
+	'makebot-desc'           => '[[Special:Makebot|Spezialseite]], auf der lokale Bürokraten den Botstatus erteilen und entziehen können',
+	'makebot-header'         => "'''Ein Bürokrat dieses Projektes kann anderen Benutzern – in Übereinstimmung mit den lokalen Richtlinien – [[{{ns:help}}:Bot|Botstatus]] erteilen oder entziehen.'''<br /> Mit Botstatus werden die Bearbeitungen eines Bot-Benutzerkontos in den [[{{#Special:Recentchanges}}|Letzten Änderungen]] und ähnlichen Listen versteckt. Die Botmarkierung ist darüberhinaus zur Feststellung automatischer Bearbeitungen nützlich.",
 	'makebot-username'       => 'Benutzername:',
 	'makebot-search'         => 'Status abfragen',
 	'makebot-isbot'          => '„[[User:$1|$1]]“ hat Botstatus.',
