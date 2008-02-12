@@ -28,6 +28,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	function procMVDReqSet(){
 		global $wgRequest;
 		global $mvMVDTypeDefaultDisp, $mvMVDTypeAllAvailable;
+		//if already computed return: 
 		if(count($this->mvd_tracks)!=0)return $this->mvd_tracks;
 		$user_tracks = $wgRequest->getVal('tracks');
 		//print "USER TRACKS: " . $user_tracks;
@@ -49,6 +50,18 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			//just set to global default: 
 			$this->mvd_tracks = $mvMVDTypeDefaultDisp;		
 		}
+	}
+	function getStateReq(){
+		global $wgRequest;
+		$req='';
+		$this->procMVDReqSet();
+		if(count($this->mvd_tracks)!=0){
+			$req.='&tracks='.$this->getMVDReqString();
+		}
+		if($wgRequest->getVal('tool_disp')!=''){
+			$req.='&tool_disp='.$wgRequest->getVal('tool_disp');
+		}
+		return $req; 
 	}
 	function getMVDReqString(){
 		return implode(',',$this->mvd_tracks);

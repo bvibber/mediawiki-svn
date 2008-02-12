@@ -49,7 +49,6 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 		"?action=ajax";
 	//add in mediaWiki ajax hook req 
 	uri+='&rs=mv_edit_sequence_submit';
-
 	$j.post(uri, post_vars, function(data){
 		switch(edit_action){
 			case 'save':

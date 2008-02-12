@@ -51,7 +51,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		if(isset($this->mv_interface->article->mvTitle)){
 			$base_title = $this->mv_interface->article->mvTitle->getStreamName();
 		}
-		return '<a title="'.wfMsg('mv_search_stream_title').'" href="javascript:mv_tool_disp(\'search\')">'.wfMsg('mv_search_stream').'</a>' .
+		//'<a title="'.wfMsg('mv_search_stream_title').'" href="javascript:mv_tool_disp(\'search\')">'.wfMsg('mv_search_stream').'</a>'
+		return '<a title="'.wfMsg('mv_mang_layers_title').'" href="javascript:mv_tool_disp(\'mang_layers\')">'.wfMsg('mv_mang_layers').'</a>' .
 			' | ' .	'<a title="'.wfMsg('mv_new_ht_en').'" href="javascript:mv_disp_add_mvd(\'ht_en\')">'.wfMsg('mv_new_ht_en').'</a>' . 
 			' | ' . '<a href="javascript:mv_disp_add_mvd(\'anno_en\')">'.wfMsg('mv_new_anno_en').'</a>';
 	}

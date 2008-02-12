@@ -110,7 +110,10 @@
 			'<a href="javascript:mv_tool_disp(\'menu\')">'.wfMsg('mv_stream_tool_heading').'</a>';
 	}
 
-	/* outputs basic stream paging (this could be done client side) */
+	/* 
+	 * outputs basic stream paging (this could be done client side)
+	 *  
+	 */
 	function stream_paging_links($return_set='both'){
 		global $wgUser, $mvDefaultStreamViewLength,$mvgScriptPath;
 		$sk = $wgUser->getSkin();
@@ -124,7 +127,9 @@
 				$prev_time_end = $mvTitle->getEndTimeSeconds()- $mvDefaultStreamViewLength;
 				if($prev_time_end < $mvDefaultStreamViewLength)$prev_time_end =$mvDefaultStreamViewLength;			
 				$newTitle = Title::MakeTitle(MV_NS_STREAM, $mvTitle->getStreamName().'/'.seconds2ntp($prev_time_start).'/'.seconds2ntp($prev_time_end));
-				$prev_link = $sk->makeKnownLinkObj($newTitle, '<img style="index:5" border="0" src="'.$mvgScriptPath.'/skins/images/results_previous.png">');			
+				$prev_link = $sk->makeKnownLinkObj($newTitle,
+								 '<img style="index:5" border="0" src="'.$mvgScriptPath.'/skins/images/results_previous.png">',
+								$this->getStateReq() );			
 			}
 		}
 		if($return_set=='both'||$return_set=='next'){
@@ -135,7 +140,9 @@
 				$next_time_end = $mvTitle->getEndTimeSeconds()+$mvDefaultStreamViewLength;
 				if($next_time_end >  $mvTitle->getDuration())$next_time_end=$mvTitle->getDuration();
 				$newTitle =Title::MakeTitle(MV_NS_STREAM, $mvTitle->getStreamName().'/'.seconds2ntp($next_time_start).'/'.seconds2ntp($next_time_end));
-				$next_link= $sk->makeKnownLinkObj($newTitle, '<img style="index:5" border="0" src="'.$mvgScriptPath.'/skins/images/results_next.png">');
+				$next_link= $sk->makeKnownLinkObj($newTitle, 
+									'<img style="index:5" border="0" src="'.$mvgScriptPath.'/skins/images/results_next.png">',
+									$this->getStateReq() );
 			}	
 		}	
 		if($return_set=='both')return $prev_link . ' ' . $next_link;

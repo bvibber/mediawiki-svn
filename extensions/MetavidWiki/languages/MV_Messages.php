@@ -201,6 +201,8 @@ $messages['en'] = array(
 	'mv_search_stream_title' => 'Search the Current Stream',
 	'mv_new_ht_en'           => 'New Transcript',
 	'mv_new_anno_en'         => 'New Tag or Annotation',
+	'mv_mang_layers'		 => 'Mannage Layers',
+	'mv_mang_layers_title'	 => 'Mannage the Layer Display Set for the current stream',
 	
 	#msg for bots and maintance 
 	'mv_protect_source_material'=> 'Original Source Material protected from edits'
