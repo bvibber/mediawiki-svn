@@ -65,6 +65,13 @@ $messages['de'] = array(
 	'inspectcache-list'    => 'Liste',
 );
 
+/** Ewe (Eʋegbe)
+ * @author M.M.S.
+ */
+$messages['ee'] = array(
+	'inspectcache-delete' => 'Tutui',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -164,6 +171,14 @@ $messages['no'] = array(
 	'inspectcache-deleted' => 'Slettet mellomlagring',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'inspectcache-delete' => 'Phumula',
+	'inspectcache-list'   => 'Lenano',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -191,6 +206,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'inspectcache'         => 'Inspeccionar cache',
+	'inspectcache-desc'    => 'Uma ferramenta simples de depuração para inspeccionar o conteúdo da cache partilhada',
 	'inspectcache-ok'      => 'OK',
 	'inspectcache-general' => 'Cache geral',
 	'inspectcache-parser'  => 'Cache do analisador "parser"',

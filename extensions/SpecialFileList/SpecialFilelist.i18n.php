@@ -65,9 +65,11 @@ $messages['gl'] = array(
 
 /** Upper Sorbian (Hornjoserbsce)
  * @author Dundak
+ * @author Michawiki
  */
 $messages['hsb'] = array(
 	'filelist'              => 'Lisćina datajow',
+	'filelist-desc'         => 'Specialna strona za nalistowanje nahratych datajow',
 	'filelist-show-list'    => 'Lisćinu pokazać',
 	'filelist-show-gallery' => 'Galeriju pokazać',
 );

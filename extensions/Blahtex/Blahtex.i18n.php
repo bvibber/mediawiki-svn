@@ -336,16 +336,21 @@ $messages['el'] = array(
 );
 
 /** Finnish (Suomi)
- * @author Nike
  * @author Cimon Avaro
+ * @author Nike
  */
 $messages['fi'] = array(
-	'math_noblahtex'             => 'Blahtexin suorittaminen epäonnistui. Sen pitäisi sijaita kohteessa $1.',
-	'math_CannotChangeDirectory' => 'Työhakemiston vaihtaminen epäonnistui.',
-	'math_CannotCreateTexFile'   => 'Tex-tiedoston luominen epäonnistui.',
-	'math_NotEnoughArguments'    => 'Liian vähän argumentteja komennolle $1.',
-	'math_TooManyTokens'         => 'Syöte on liian pitkä.',
-	'math_UnrecognisedCommand'   => 'Tunnistamaton komento ”$1”',
+	'math_noblahtex'                        => 'Blahtexin suorittaminen epäonnistui. Sen pitäisi sijaita kohteessa $1.',
+	'math_CannotChangeDirectory'            => 'Työhakemiston vaihtaminen epäonnistui.',
+	'math_CannotCreateTexFile'              => 'Tex-tiedoston luominen epäonnistui.',
+	'math_CannotWriteTexFile'               => 'Ei voitu kirjoittaa tex tiedostoon',
+	'math_IllegalCharacter'                 => 'Asiaankuulumaton merkki syötteessä',
+	'math_NotEnoughArguments'               => 'Liian vähän argumentteja komennolle $1.',
+	'math_PngIncompatibleCharacter'         => 'Ei onnistu tuottaa oikein PNG:iä joka sisältää merkin $1',
+	'math_ReservedCommand'                  => 'Komento "$1" on varattu blahtexin sisäiseen käyttöön',
+	'math_TooManyTokens'                    => 'Syöte on liian pitkä.',
+	'math_UnavailableSymbolFontCombination' => 'Symbolia "$1" ei löydy fontista "$2"',
+	'math_UnrecognisedCommand'              => 'Tunnistamaton komento ”$1”',
 );
 
 /** French (Français)
@@ -765,11 +770,63 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
- * @author Tmnk
+ * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'math_noblahtex'      => '$1にあるべきblahtexを実行できません。',
-	'math_AmbiguousInfix' => '"$1"の位置付けが曖昧です。(波かっこ"{ ... }"の記述を加えて、曖昧な位置付けを直してください。)',
+	'math_noblahtex'                        => '$1にあるべきblahtexを実行できません',
+	'math-desc'                             => '&lt;math&gt;タグを用いたMathML出力',
+	'math_AmbiguousInfix'                   => '"$1"が曖昧な場所にあります（修正するには、"{ ... }"のくくりを追加するなどしてください）',
+	'math_CannotChangeDirectory'            => '作業用ディレクトリに移動できません',
+	'math_CannotCreateTexFile'              => 'texファイルを作成できません',
+	'math_CannotRunDvipng'                  => 'dvipngを実行できません',
+	'math_CannotRunLatex'                   => 'latexを実行できません',
+	'math_CannotWritePngDirectory'          => 'PNG出力ディレクトリに書き込みできません',
+	'math_CannotWriteTexFile'               => 'texファイルを書き込みできません',
+	'math_CasesRowTooBig'                   => '"cases" ブロックの各行には2項目のみ記述可能です',
+	'math_DoubleSubscript'                  => '同一ベースライン上に2つの下付き文字があります（1つのみ有効です）',
+	'math_DoubleSuperscript'                => '同一ベースライン上に2つの上付き文字があります（1つのみ有効です）',
+	'math_IllegalCharacter'                 => '入力文字列中に不正な文字を検出しました',
+	'math_IllegalCommandInMathMode'         => 'コマンド "$1" は数式モードでは使えません',
+	'math_IllegalCommandInMathModeWithHint' => 'コマンド "$1" は数式モードでは使えません（"$2" を使うつもりではありませんでしたか？）',
+	'math_IllegalCommandInTextMode'         => 'コマンド "$1" はテキストモードでは使えません',
+	'math_IllegalCommandInTextModeWithHint' => 'コマンド "$1" はテキストモードでは使えません（"$2" を使うつもりではありませんでしたか？）',
+	'math_IllegalDelimiter'                 => '"$1" 以降の区切り文字が不正です',
+	'math_IllegalFinalBackslash'            => '入力文字列の終わりに不正な "\\"（バックスラッシュまたは円記号）を検知しました',
+	'math_IllegalNestedFontEncodings'       => '文字エンコードコマンドはネストできません',
+	'math_IllegalRedefinition'              => 'コマンド "$1" は定義済みであり、再定義できません',
+	'math_InvalidColour'                    => '"$1" は有効な色指定ではありません',
+	'math_InvalidUtf8Input'                 => '入力文字列は有効なUTF-8形式ではありません',
+	'math_LatexFontNotSpecified'            => '"$1" というフォントはLaTeXに登録されていません',
+	'math_LatexPackageUnavailable'          => 'LaTeXパッケージ "$1" が利用できないため、PNGを出力できません',
+	'math_MismatchedBeginAndEnd'            => 'コマンド "$1" と "$2"　は有効な組み合わせではありません',
+	'math_MisplacedLimits'                  => 'コマンド "$1" は数式演算子の後でのみ使用可能です（"\\mathop" の使用をご検討ください）',
+	'math_MissingCommandAfterNewcommand'    => '"\\newcommand" に続く新しいコマンドが存在しないか不正です（"\\" から始まりアルファベットのみで記述される、1コマンドの正確な定義でなくてはいけません）',
+	'math_MissingDelimiter'                 => '"$1" に続く区切り文字がありません',
+	'math_MissingOpenBraceAfter'            => '"$1" の後に、始め波括弧 "{" がありません',
+	'math_MissingOpenBraceAtEnd'            => '入力文字列の終わりに、始め波括弧 "{" がありません',
+	'math_MissingOpenBraceBefore'           => '"$1" の前に、始め波括弧 "{" がありません',
+	'math_MissingOrIllegalParameterCount'   => '"$1" の定義に引数の数が指定されていないか不正です（1から9までの一桁の数字を指定します）',
+	'math_MissingOrIllegalParameterIndex'   => '"$1" の定義に引数の添え字がないか不正です',
+	'math_NonAsciiInMathMode'               => 'ASCII以外の文字はテキストモードのみ利用可能です（問題のある文字は "\\text{...}" 中で使用してください）',
+	'math_NotEnoughArguments'               => '"$1" に渡される引数が足りません',
+	'math_PngIncompatibleCharacter'         => '文字 $1 を含んだPNGは正しく出力できません',
+	'math_ReservedCommand'                  => 'コマンド "$1" はblahtexの予約語です。',
+	'math_SubstackRowTooBig'                => '"substack" ブロックの各行には1項目のみ記述可能です',
+	'math_TooManyMathmlNodes'               => 'MathMLツリーにあるノードが多すぎます',
+	'math_TooManyTokens'                    => '入力文字列が長すぎます',
+	'math_UnavailableSymbolFontCombination' => 'シンボル "$1" は、フォント "$2" で利用できません',
+	'math_UnexpectedNextCell'               => 'コマンド "&" は "\\begin ... \\end" ブロック内でのみ利用可能です',
+	'math_UnexpectedNextRow'                => 'コマンド "\\\\" は "\\begin ... \\end" ブロック内でのみ利用可能です',
+	'math_UnmatchedBegin'                   => '対となる "\\end" のない "\\begin" があります',
+	'math_UnmatchedCloseBrace'              => '対となる "}" のない "{" があります',
+	'math_UnmatchedEnd'                     => '対となる "\\begin" のない "\\end" があります',
+	'math_UnmatchedLeft'                    => '対となる "\\right" のない "\\left" があります',
+	'math_UnmatchedOpenBrace'               => '対となる "}" のない "{" があります',
+	'math_UnmatchedOpenBracket'             => '対となる "]" のない "[" があります',
+	'math_UnmatchedRight'                   => '対となる "\\left" のない "\\right" があります',
+	'math_UnrecognisedCommand'              => 'コマンド "$1" は有効なコマンドではありません',
+	'math_WrongFontEncoding'                => 'シンボル "$1" は、文字エンコード "$2" で利用できません',
+	'math_WrongFontEncodingWithHint'        => 'シンボル "$1" は、文字エンコード "$2" で利用できません（"$3{...}" をお試しください）',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -661,6 +661,14 @@ $messages['diq'] = array(
 
 );
 
+/** Ewe (Eʋegbe)
+ * @author M.M.S.
+ */
+$messages['ee'] = array(
+	'boardvote_user'    => 'Ezãla',
+	'boardvote_welcome' => "Woezɔ loo '''$1'''!",
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author MF-Warburg
@@ -1599,18 +1607,23 @@ Il voto espresso in forma cifrata è riportato di seguito. È inoltre visibile a
 	'boardvote_redirecting'  => 'Per una migliore sicurezza e trasparenza, il voto si tiene su un server esterno, a controllo indipendente. Sarai reindirizzato a questo server esterno in 20 secondi. [$1 Clicca qui] per raggiungerlo direttamente. Potrebbe apparire un avviso di sicurezza riguardante un certificato di protezione non verificato.',
 );
 
+/** Japanese (日本語)
+ * @author Broad-Sky
+ * @author JtFuruhata
+ */
 $messages['ja'] = array(
-	'boardvote'               => 'ウィキメディア財団理事選挙',
-	'boardvote_novotes'       => 'まだ誰も投票していません。',
-	'boardvote_user'          => '利用者',
-	'boardvote_dumplink'      => 'ここをクリック',
-	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">ウィキメディア財団総選挙</a>:  7月12日まで投票実施中',
-	'boardvote_notstarted'    => 'まだ投票は始まっていません',
-	'group-boardvote'         => '選挙管理委員会',
-	'group-boardvote-member'  => '選挙管理委員',
-	'boardvote_welcome'       => '\'\'\'$1\'\'\'さん ようこそ!',
-	'go_to_board_vote'        => 'ウィキメディア財団総選挙2007',
-	'boardvote_redirecting'   => 'セキュリティと透明性を確保するため、外部の独立したサーバ上で投票を行っています。
+	'boardvote'              => 'ウィキメディア財団理事選挙',
+	'boardvote-desc'         => '[[meta:Board elections|ウィキメディア財団理事選挙]]',
+	'boardvote_novotes'      => 'まだ誰も投票していません。',
+	'boardvote_user'         => '利用者',
+	'boardvote_dumplink'     => 'ここをクリック',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">ウィキメディア財団総選挙</a>:  7月12日まで投票実施中',
+	'boardvote_notstarted'   => 'まだ投票は始まっていません',
+	'group-boardvote'        => '選挙管理委員会',
+	'group-boardvote-member' => '選挙管理委員',
+	'boardvote_welcome'      => "'''$1'''さん ようこそ!",
+	'go_to_board_vote'       => 'ウィキメディア財団総選挙2007',
+	'boardvote_redirecting'  => 'セキュリティと透明性を確保するため、外部の独立したサーバ上で投票を行っています。
 
 20秒後に外部サーバへ転送されます。[$1 ここをクリック]するとすぐに投票ページに移動できます。
 
@@ -2276,6 +2289,16 @@ Dette resulterer i den følgende krypterte versjonen. Den vil vises offentlig p�
  */
 $messages['non'] = array(
 	'boardvote_days' => 'Dagar',
+);
+
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'boardvote_time'  => 'Nako',
+	'boardvote_user'  => 'Mošomiši',
+	'boardvote_edits' => 'Fetogo',
+	'boardvote_days'  => 'Matšatši',
 );
 
 /** Occitan (Occitan)

@@ -418,18 +418,22 @@ $messages['it'] = array(
 	'bookinfo-provider' => 'Dati estratti da: $1',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
 $messages['ja'] = array(
-	'bookinfo-header' => '書籍情報',
-	'bookinfo-result-title' => 'タイトル:',
-	'bookinfo-result-author' => '著者:',
-	'bookinfo-result-publisher' => '出版:',
-	'bookinfo-result-year' => '出版年:',
+	'bookinfo-header'            => '書籍情報',
+	'bookinfo-desc'              => '[[Special:Boolsources|{{int:booksources}}]]の機能を拡張し、ウェブサービスから情報を取得する',
+	'bookinfo-result-title'      => 'タイトル:',
+	'bookinfo-result-author'     => '著者:',
+	'bookinfo-result-publisher'  => '出版:',
+	'bookinfo-result-year'       => '出版年:',
 	'bookinfo-error-invalidisbn' => '不正な ISBN です。',
-	'bookinfo-error-nosuchitem' => '指定したものが見つかりません。',
-	'bookinfo-error-nodriver' => '適切な Book Information ドライバが認識できません。',
-	'bookinfo-error-noresponse' => 'リクエストを送信しましたが、応答がないかタイムアウトしました。',
-	'bookinfo-purchase' => 'この本を $1 から購入する',
-	'bookinfo-provider' => 'データ提供元: $1',
+	'bookinfo-error-nosuchitem'  => '指定したものが見つかりません。',
+	'bookinfo-error-nodriver'    => '適切な書籍情報エクステンション用ドライバが認識できません。',
+	'bookinfo-error-noresponse'  => 'リクエストを送信しましたが、応答がないかタイムアウトしました。',
+	'bookinfo-purchase'          => 'この本を $1 から購入する',
+	'bookinfo-provider'          => 'データ提供元: $1',
 );
 
 /** Georgian (ქართული)
@@ -600,6 +604,18 @@ $messages['no'] = array(
 	'bookinfo-error-noresponse'  => 'Ingen respons eller tidsavbrudd.',
 	'bookinfo-purchase'          => 'Kjøp denne boken fra $1',
 	'bookinfo-provider'          => 'Dataleverandør: $1',
+);
+
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'bookinfo-result-title'     => 'Thaetlele',
+	'bookinfo-result-author'    => 'Mongwadi:',
+	'bookinfo-result-publisher' => 'Mogatiši:',
+	'bookinfo-result-year'      => 'Ngwaga:',
+	'bookinfo-error-nosuchitem' => 'Hlogwana ga e gona goba ga e humanege.',
+	'bookinfo-purchase'         => 'Reka puku ye go $1',
 );
 
 $messages['oc'] = array(

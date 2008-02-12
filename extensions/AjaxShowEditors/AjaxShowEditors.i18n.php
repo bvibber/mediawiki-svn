@@ -133,8 +133,11 @@ $messages['ext'] = array(
 	'ajax-se-idling' => '(hazi $1s)',
 );
 
-/** Finnish (Suomi) */
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ */
 $messages['fi'] = array(
+	'ajax-se-desc'    => 'Näyttää muokkauslaatikon yhteydessä ketkä muokkaavat samaa sivua samanaikaisesti',
 	'ajax-se-title'   => 'Samanaikaiset muokkaajat:',
 	'ajax-se-pending' => 'odotetaan päivitystä… (napsauta tästä tai aloita muokkaaminen)',
 	'ajax-se-idling'  => '($1 s sitten)',
@@ -242,8 +245,10 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Broad-Sky
+ * @author JtFuruhata
  */
 $messages['ja'] = array(
+	'ajax-se-desc'    => '同じページを編集している利用者を表示する',
 	'ajax-se-title'   => '現在編集中:',
 	'ajax-se-pending' => '更新します（この枠内をクリックするか編集を始めてください）',
 	'ajax-se-idling'  => '（$1秒前）',
@@ -334,6 +339,15 @@ $messages['no'] = array(
 	'ajax-se-title'   => 'Redigerer:',
 	'ajax-se-pending' => 'Avventer gjenoppfriskning … (klikk denne boksen eller start å redigere)',
 	'ajax-se-idling'  => '($1s siden)',
+);
+
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'ajax-se-title'   => 'Ka se sebaka, o fetola',
+	'ajax-se-pending' => 'Hlabošo ea rarela (thathapa lepokisi le goba thoma go fetola)',
+	'ajax-se-idling'  => '($1s yago feta)',
 );
 
 /** Occitan (Occitan)

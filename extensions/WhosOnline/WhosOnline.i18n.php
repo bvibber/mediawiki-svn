@@ -36,6 +36,22 @@ $messages['fr'] = array(
 	'whosonline-desc' => 'Affiche [[Special:WhosOnline|une liste]] des personnes inscrites et des utilisateurs anonymes actuellement en ligne',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'whosonline'      => 'Štóž je online',
+	'whosonline-desc' => 'Zwobraznja [[Special:WhosOnline|lisćinu]] přizjewjenych a anonymnych wužiwarjow, kotřiž su runje online',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'whosonline'      => 'Wien ass online',
+	'whosonline-desc' => 'Weist [[Special:WhosOnline|eng Lëscht]] vun den ageloggten an anonyme Benotzer déi elo online sinn',
+);
+
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
  */
@@ -67,6 +83,14 @@ $messages['pt'] = array(
 $messages['sk'] = array(
 	'whosonline'      => 'Kto je online',
 	'whosonline-desc' => 'Zobrazuje [[Special:WhosOnline|zoznam]] prihlásených a anonymných používateľov, ktorí sú momentálne online',
+);
+
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'whosonline'      => 'Vem är ansluten',
+	'whosonline-desc' => 'Visar [[Special:WhosOnline|en lista]] över inloggade och anonyma användare som för närvarande är anslutna',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -133,6 +133,13 @@ $messages['pms'] = array(
 	'minnamelength-error' => 'Sò stranòm a l\'é tròp curt. A venta ch\'al sia longh almanch $1 caràter.',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'minnamelength-error' => 'O seu nome de utilizador é demasiado curto. O tamanho mínimo é $1.',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */
@@ -169,3 +176,4 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'minnamelength-error' => '你的用戶名太短。最少的長度是$1個字元。',
 );
+

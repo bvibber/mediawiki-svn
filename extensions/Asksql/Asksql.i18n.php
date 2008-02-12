@@ -358,9 +358,11 @@ prega quindi di usarla con molta parsimonia.",
 
 /** Japanese (日本語)
  * @author Kkkdc
+ * @author JtFuruhata
  */
 $messages['ja'] = array(
 	'asksql'          => 'SQLクエリの実行',
+	'asksql-desc'     => '[[Special:Asksql|{{int:specialpage}}]]からSQLクエリを実行する',
 	'asksqltext'      => "以下のフォームを使用して、データベースへ直接SQLクエリを送信できます。
 文字列リテラルの区切りにはシングルクォート（'～'）を用いてください。
 この機能の使用はサーバに相当の負荷をかけることがあります。使用は控えめにしてください。",

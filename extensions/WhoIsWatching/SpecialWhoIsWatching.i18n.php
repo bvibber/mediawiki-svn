@@ -181,9 +181,11 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'whoiswatching'               => 'Hvem overvåker en wikiside',
-	'specialwhoiswatchingthepage' => 'Hvem overvåker %s',
-	'specialwhoiswatchingusage'   => 'Denne spesialsiden kan ikke brukes selvstendig. Bruk siden [[MediaWiki:Number of watching users pageview]] for å definere et inngangspunkt for denne spesialsiden.',
+	'whoiswatching'                => 'Hvem overvåker en wikiside',
+	'specialwhoiswatchingthepage'  => 'Hvem overvåker %s',
+	'specialwhoiswatchingusage'    => 'Denne spesialsiden kan ikke brukes selvstendig. Bruk siden [[MediaWiki:Number of watching users pageview]] for å definere et inngangspunkt for denne spesialsiden.',
+	'specialwhoiswatchingaddusers' => 'Legg til siden i brukeres overvåkningsliste',
+	'specialwhoiswatchingaddbtn'   => 'Legg til valgte brukere',
 );
 
 /** Occitan (Occitan)
@@ -236,6 +238,7 @@ $messages['stq'] = array(
 $messages['sv'] = array(
 	'whoiswatching'                => 'Användare som bevakar en sida',
 	'specialwhoiswatchingthepage'  => 'Användare som övervakar %s',
+	'specialwhoiswatchingusage'    => 'Den här specialsidan kan inte användas utan parametrar. Använd [[MediaWiki:Number_of_watching_userspageview]] för att ange en ingång till denna specialsida.',
 	'specialwhoiswatchingaddusers' => 'Lägg till användare som övervakare av sidan',
 	'specialwhoiswatchingaddbtn'   => 'Lägg till valda',
 );

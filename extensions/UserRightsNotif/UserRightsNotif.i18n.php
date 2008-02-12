@@ -205,6 +205,23 @@ Mäd früntelke Gröitnis,
 $2',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'userrightsnotifysubject' => 'Ändring av gruppmedlemskap på $1',
+	'userrightsnotifybody'    => 'Hej $1,
+
+Det här är ett meddelande om att ditt medlemskap i användargrupper på $2 har ändrats av $3 den $4.
+
+Lade till: $5
+Tog bort: $6
+
+Hälsningar 
+
+$2',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

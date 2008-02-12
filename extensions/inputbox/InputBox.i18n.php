@@ -178,6 +178,13 @@ $messages['dsb'] = array(
 	'createarticle'  => 'Nastawk natworiś',
 );
 
+/** Ewe (Eʋegbe)
+ * @author M.M.S.
+ */
+$messages['ee'] = array(
+	'createarticle' => 'Dze nuŋɔŋlɔ yeye gɔme',
+);
+
 $messages['el'] = array(
 	'tryexact'       => 'Δοκιμάστε την επακριβή αντιστοιχία.',
 	'searchfulltext' => 'Αναζήτηση με το πλήρες κείμενο',

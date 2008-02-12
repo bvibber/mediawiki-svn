@@ -354,6 +354,13 @@ $messages['no'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|lenke|lenker}} til $3',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|lhlomaganyo|dihlomaganyo}} go $3',
+);
+
 $messages['oc'] = array(
 	'crossnamespacelinks'         => 'Paginas contenent de ligams vèrs un autre espaci de nom',
 	'crossnamespacelinks-summary' => 'Aquesta pagina fornís una lista de las paginas de l’espaci de nom principal qu\'an un ligam vèrs un autre espaci de nom (exceptat pels espacis de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), çò qu’es recomandat.',
@@ -426,11 +433,12 @@ $messages['sah'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Danny B.
  * @author Robbot
  */
 $messages['sk'] = array(
 	'crossnamespacelinks'         => 'Odkazy medzi mennými priestormi',
-	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Vypisuje odkazy medzi mennými priestormi]], ktoé by nemali na {{GRAMMAR:lokál|{{SITENAME}}}} existovať',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Vypisuje odkazy medzi mennými priestormi]], ktoré by nemali na {{GRAMMAR:lokál|{{SITENAME}}}} existovať',
 	'crossnamespacelinks-summary' => 'Táto stránka poskytuje zoznam odkazov zo stránky v hlavnom mennom priestore na stránky v ostatných menných priestoroch (okrem menných priestorov {{ns:special}}, {{ns:talk}}, {{ns:project}} a {{ns:template}}), ktoré neradno používať.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|odkaz|odkazy|odkazov}} na $3',
 );

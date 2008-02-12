@@ -72,6 +72,13 @@ $messages['dsb'] = array(
 	'languageselector-setlang' => 'stajiś',
 );
 
+/** Ewe (Eʋegbe)
+ * @author M.M.S.
+ */
+$messages['ee'] = array(
+	'languageselector' => 'Gbe',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -204,6 +211,13 @@ $messages['no'] = array(
 	'languageselector-setlang' => 'sett',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'languageselector' => 'Polelo',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -221,9 +235,11 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Malafaya
  */
 $messages['pt'] = array(
 	'languageselector'         => 'Idioma',
+	'languageselector-desc'    => 'Selector de língua em todas as páginas, também para visitantes',
 	'languageselector-setlang' => 'seleccionar',
 );
 
@@ -262,8 +278,10 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
+	'languageselector'         => 'Språk',
 	'languageselector-setlang' => 'välj',
 );
 

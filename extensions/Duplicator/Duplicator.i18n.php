@@ -470,6 +470,16 @@ $messages['no'] = array(
 	'duplicator-toomanyrevisions'      => '[[$1]] har for mange revisjoner, og kan ikke kopieres. Nåværende grense er $3.',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'duplicator'         => 'Pedifatša letlakala',
+	'duplicator-toolbox' => 'Pedifatša letlakala le',
+	'duplicator-source'  => 'Mothapo:',
+	'duplicator-submit'  => 'Pedifatša',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

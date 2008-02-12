@@ -225,11 +225,12 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
- * @author Broad-Sky
+ * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'backforth-next' => '次 ($1)',
-	'backforth-prev' => '前 ($1)',
+	'backforth-next' => '次へ ($1)',
+	'backforth-desc' => 'ページ上部に"次へ"と"前へ"のリンクを追加する',
+	'backforth-prev' => '前へ ($1)',
 );
 
 /** Kara-Kalpak (Qaraqalpaqsha)
@@ -288,6 +289,14 @@ $messages['no'] = array(
 	'backforth-next' => 'Neste ($1)',
 	'backforth-desc' => 'Legger til lenker til «Neste» og «Forrige» alfabetiske side på toppen av sider',
 	'backforth-prev' => 'Forrige ($1)',
+);
+
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'backforth-next' => 'Latela ($1)',
+	'backforth-prev' => 'Gofeta ($1)',
 );
 
 /** Occitan (Occitan)

@@ -159,6 +159,7 @@ Probléma esetén megpróbálhatod a <b>Special:Call/DebuG</b> használatát",
 $messages['lb'] = array(
 	'call'              => 'Opruff',
 	'call-save-success' => 'Dësen Text gouf op der Säit <big>[[$1]]</big> gespäichert.',
+	'call-save-failed'  => 'Dësen Text konnt NET op der Säit <big>[[$1]]</big> ofgespäichert ginn, well et dës Säit scho gëtt.',
 );
 
 /** Dutch (Nederlands)

@@ -46,6 +46,13 @@ $messages['br'] = array(
 	'edituser-dosearch' => 'Klask',
 );
 
+/** Ewe (Eʋegbe)
+ * @author M.M.S.
+ */
+$messages['ee'] = array(
+	'edituser-dosearch' => 'Dii',
+);
+
 /* Finnish
  * @author Jack Phoenix
  */
@@ -76,6 +83,17 @@ $messages['hsb'] = array(
 	'edituser-logout'   => 'Wužiwarja wotzjewić',
 	'edituser-username' => 'Mjeno',
 	'edituser-dosearch' => 'Pytanje',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'edituser-desc'     => "Erlaabt et Benotzer déi gewësse Rechter hunn anere Benotzer hir Astellungen z'änneren",
+	'edituser'          => 'Benotzer änneren',
+	'edituser-logout'   => 'Sessioun vum Benotzer zoumaachen',
+	'edituser-username' => 'Numm',
+	'edituser-dosearch' => 'Sichen',
 );
 
 /** Dutch (Nederlands)

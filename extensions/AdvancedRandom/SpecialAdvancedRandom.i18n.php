@@ -126,6 +126,14 @@ $messages['hu'] = array(
 	'advancedrandom-desc' => 'Megjelenít egy véletlen lapot, amely vagy amelynek vitalapja egy megadott oldalra, például a [[Special:AdvancedRandom/Sablon:Kiemelt/Vita]] mutat egy véletlen kiemelt szócikket vagy a [[Special:AdvancedRandom/Sablon:GFDL/Kép]] mutat egy véletlen GFDL fájlt.',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'advancedrandom'      => 'おまかせ表示（ページ指定）',
+	'advancedrandom-desc' => '[[Special:AdvancedRandom/Template:Featured/Talk]]でノート上の利用者ページ、または[[Special:AdvancedRandom/Template:GFDL/Image]]でページにあるGFDLファイルといったように、与えられたページに含まれるリンクからランダムで表示を行う',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

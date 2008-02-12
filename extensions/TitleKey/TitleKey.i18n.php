@@ -28,11 +28,25 @@ $messages['de'] = array(
 	'titlekey-desc' => 'Hintergrundprozess für die Titelsuche',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'titlekey-desc' => 'Proces w slězynje za naraźenje pytanja za titlami',
+);
+
 /** French (Français)
  * @author Grondin
  */
 $messages['fr'] = array(
 	'titlekey-desc' => "Retour vers la fin de la suggestion de recherche d'un préfixe de titre",
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'titlekey-desc' => 'Pozadkowy proces za namjety tituloweho pytanja',
 );
 
 /** Dutch (Nederlands)

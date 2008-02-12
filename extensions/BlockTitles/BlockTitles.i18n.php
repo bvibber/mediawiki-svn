@@ -129,9 +129,11 @@ $messages['eo'] = array(
 
 /** Finnish (Suomi)
  * @author Nike
+ * @author Cimon Avaro
  */
 $messages['fi'] = array(
 	'block_title_error_page_title' => 'Estetty sivunnimi',
+	'block_title_error-desc'       => 'Tarjoaa yksinkertaisen menetelmän estää artikkelin tallentaminen tai synnyttäminen jos sillä on tietynkaltainen artikkelinimi',
 	'block_title_error'            => 'Tämän sivun nimen tallentaminen on kielletty.',
 );
 
@@ -212,9 +214,13 @@ $messages['it'] = array(
 	'block_title_error'            => 'Siamo spiacenti, non è consentito salvare una pagina con questo titolo.',
 );
 
-/** Japanese (日本語) */
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
 $messages['ja'] = array(
-	'block_title_error' => '申し訳ありませんが、この項目名で保存することはできません。',
+	'block_title_error_page_title' => 'ブロックされた項目',
+	'block_title_error-desc'       => '重要な項目に対して勝手に保存または作成が行われないように、基本的な方策を提供する',
+	'block_title_error'            => '申し訳ありませんが、この項目名でページを保存することは許可できません。',
 );
 
 /**

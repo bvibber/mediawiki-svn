@@ -143,6 +143,14 @@ $messages['no'] = array(
 	'profiling-no-data' => 'Ingen passende resultater.',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'profiling-data-time'    => 'Nako (ka moka)',
+	'profiling-data-average' => 'Nako (kakaretšo)',
+);
+
 $messages['oc'] = array(
 	'profiling' => 'Donadas per evaluar',
 	'profiling-process' => 'Cadena de caractèrs de tractar :',
@@ -247,3 +255,4 @@ $messages['zh-hant'] = array(
 	'profiling-data-average' => '時間 (平均)',
 	'profiling-no-data' => '找不到對應的資料。',
 );
+

@@ -121,6 +121,13 @@ $messages['de'] = array(
 	'linksearch-error' => 'Wildcards können nur am Anfang der URL verwendet werden.',
 );
 
+/** Ewe (Eʋegbe)
+ * @author M.M.S.
+ */
+$messages['ee'] = array(
+	'linksearch-ok' => 'Dii',
+);
+
 $messages['el'] = array(
 	'linksearch-ok'    => 'Αναζήτηση',
 );
@@ -434,6 +441,13 @@ $messages['no'] = array(
  */
 $messages['nov'] = array(
 	'linksearch-ok' => 'Sercha',
+);
+
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'linksearch-ok' => 'Fetleka',
 );
 
 $messages['oc'] = array(

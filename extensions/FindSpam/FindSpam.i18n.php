@@ -149,6 +149,13 @@ $messages['no'] = array(
 	'findspam-notextfound' => 'Ingen bidrag funnet',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'findspam-ip' => 'IP Atrese',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

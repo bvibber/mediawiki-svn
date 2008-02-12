@@ -441,6 +441,20 @@ $messages['no'] = array(
 	'contributors-nosuchpage'  => 'Artikkelen $1 eksisterer ikke.',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'contributors'             => 'Baabedi',
+	'contributors-toolbox'     => 'Baabedi ba bagolo',
+	'contributors-legend'      => 'Lenano la baabedi ba bagolo go letlakala',
+	'contributors-target'      => 'Thaetlele',
+	'contributors-submit'      => 'Bontšha',
+	'contributors-subtitle'    => 'Moabedi wo mogolo go $1',
+	'contributors-others-long' => 'Gonale baabedi ba $1 ba bangwe go letlakala le.',
+	'contributors-nosuchpage'  => 'Letlakala $1 ga le gona.',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

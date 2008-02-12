@@ -117,9 +117,29 @@ $messages['bg'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'usagestatisticsintervalday'   => 'Deiz',
-	'usagestatisticsintervalweek'  => 'Sizhun',
-	'usagestatisticsintervalmonth' => 'Miz',
+	'specialuserstats'                => 'Stadegoù implijout',
+	'usagestatistics'                 => 'Stadegoù implijout',
+	'usagestatistics-desc'            => 'Diskouez a ra stadegoù personel an implijerien hag an implij war ar wiki en e bezh',
+	'usagestatisticsfor'              => '<h2>Stadegoù implijout evit [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'         => 'An holl implijerien',
+	'usagestatisticsinterval'         => 'Esaouenn',
+	'usagestatisticstype'             => 'Seurt',
+	'usagestatisticsstart'            => 'Deiziad kregiñ',
+	'usagestatisticsend'              => 'Deiziad echuiñ',
+	'usagestatisticssubmit'           => 'Sevel ar stadegoù',
+	'usagestatisticsnostart'          => '* <font color=red>Merkit un deiziad kregiñ mar plij</font>',
+	'usagestatisticsnoend'            => '* <font color=red>Merkit un deiziad echuiñ mar plij</font>',
+	'usagestatisticsbadstartend'      => '<b>Fall eo furmad an deiziad <i>Kregiñ</i> pe/hag <i>Echuiñ</i> !</b>',
+	'usagestatisticsintervalday'      => 'Deiz',
+	'usagestatisticsintervalweek'     => 'Sizhun',
+	'usagestatisticsintervalmonth'    => 'Miz',
+	'usagestatisticsincremental'      => 'Azvuiadel',
+	'usagestatisticsincremental-text' => 'azvuiadel',
+	'usagestatisticscumulative'       => 'Sammadel',
+	'usagestatisticscumulative-text'  => 'sammadel',
+	'usagestatisticscalselect'        => 'Dibab',
+	'usagestatistics-editindividual'  => 'Stadegoù savet $1 gant an implijer',
+	'usagestatistics-editpages'       => 'Stadegoù $1 ar pajennoù gant an implijer e-unan',
 );
 
 /** Deutsch (German)
@@ -401,6 +421,7 @@ $messages['sk'] = array(
 $messages['sv'] = array(
 	'specialuserstats'        => 'Användarstatistik',
 	'usagestatistics'         => 'Användarstatistik',
+	'usagestatistics-desc'    => 'Visar användningsstatistik för enskilda användare och för wikin som helhet',
 	'usagestatisticsfor'      => '<h2>Användarstatistik för [[:user:$1|$1]]</h2>',
 	'usagestatisticsallusers' => 'Alla användare',
 	'usagestatisticssubmit'   => 'Generera statistik',

@@ -149,6 +149,14 @@ $messages['stq'] = array(
 	'mediafunctions-not-exist'     => '„$1“ bestoant nit',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'mediafunctions-invalid-title' => '"$1" är inte en giltig titel',
+	'mediafunctions-not-exist'     => '"$1" existerar inte',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */
@@ -171,3 +179,4 @@ $messages['zh-hant'] = array(
 	'mediafunctions-invalid-title' => '"$1" 不是一個有效的標題',
 	'mediafunctions-not-exist'     => '"$1" 不存在',
 );
+

@@ -246,6 +246,13 @@ Een logboek met recent toegewezen pagina's op volglijsten is te bekijken op [[Sp
 	'povwatch_added'                   => 'toegevoegd',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'povwatch_title' => 'Thaetlele:',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

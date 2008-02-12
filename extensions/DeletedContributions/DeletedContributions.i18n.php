@@ -283,6 +283,13 @@ $messages['no'] = array(
 	'deletedcontributions-desc' => 'Gir administratorer muligheten til å [[Special:DeletedContributions|gå over brukeres slettede bidrag]]',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'deletedcontributions' => 'Diabe tša mošomiši tšeo di phumutšwego',
+);
+
 $messages['oc'] = array(
 	'deletedcontributions' => 'Contribucions suprimidas d’un utilizaire',
 );
@@ -379,8 +386,12 @@ $messages['sv'] = array(
 	'deletedcontributions-desc' => 'Ger administratörer möjlighet att [[Special:DeletedContributions|se användares raderade bidrag]]',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
 $messages['te'] = array(
-	'deletedcontributions' => 'తొలగించబడిన సభ్యుని రచనలు',
+	'deletedcontributions'      => 'తొలగించబడిన సభ్యుని రచనలు',
+	'deletedcontributions-desc' => 'నిర్వాహకులకు [[Special:DeletedContributions|వాడుకరుల యొక్క తొలగించిన మార్పులను]] చూసే అవకాశం కలిగిస్తుంది',
 );
 
 /** Tonga (faka-Tonga)

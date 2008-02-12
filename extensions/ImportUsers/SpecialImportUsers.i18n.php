@@ -56,6 +56,32 @@ $messages['ar'] = array(
 	'importusers-realname'                => 'الاسم الحقيقي',
 );
 
+/** German (Deutsch)
+ * @author MF-Warburg
+ */
+$messages['de'] = array(
+	'importusers'                         => 'Benutzer importieren',
+	'importusers-desc'                    => 'Importiert Benutzer aus einer CSV-Datei; Codierung: UTF-8',
+	'importusers-uploadfile'              => 'Datei hochladen',
+	'importusers-form-caption'            => 'CSV-Datei (UTF-8)',
+	'importusers-form-file'               => 'Benutzerdateiformat (csv):',
+	'importusers-form-replace-present'    => 'Bestehende Benutzer ersetzen',
+	'importusers-form-button'             => 'Importieren',
+	'importusers-user-added'              => 'Der Benutzer <b>%s</b> wurde importiert.',
+	'importusers-user-present-update'     => 'Ein Benutzer <b>%s</b> existiert bereits. Aktualisiert.',
+	'importusers-user-present-not-update' => 'Ein Benutzer <b>%s</b> existiert bereits. Nicht aktualisiert.',
+	'importusers-user-invalid-format'     => 'Die Benutzerdaten in Zeile #%s haben ein ungültiges Format oder sind leer. Übersprungen.',
+	'importusers-log'                     => 'Benutzerimport-Logbuch',
+	'importusers-log-summary'             => 'Zusammenfassung',
+	'importusers-log-summary-all'         => 'Alle',
+	'importusers-log-summary-added'       => 'Hinzugefügt',
+	'importusers-log-summary-updated'     => 'Aktualisiert',
+	'importusers-login-name'              => 'Benutzername',
+	'importusers-password'                => 'Passwort',
+	'importusers-email'                   => 'E-Mail',
+	'importusers-realname'                => 'Echter Name',
+);
+
 $messages['fr'] = array(
 	'importusers' => 'Importer des utilisateurs' ,
 	'importusers-desc' => 'Importe des utilisateurs en bloc depuis un fichier CVS ; encodage : UTF-8.',
@@ -77,6 +103,50 @@ $messages['fr'] = array(
 	'importusers-password' => 'mot de passe',
 	'importusers-email' => 'adresse courriel',
 	'importusers-realname' => 'nom réel',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'importusers'                         => 'Wužiwarjow importować',
+	'importusers-desc'                    => 'Wužiwarjow we wulkich mnóstwach z CSV-dataje importować; kodowanje: UTF-8',
+	'importusers-uploadfile'              => 'Dataju nahrać',
+	'importusers-form-caption'            => 'CSV-dataju (UTF-8) zapodać',
+	'importusers-form-file'               => 'Format wužiwarskeje dataje (csv):',
+	'importusers-form-replace-present'    => 'Eksistowacych wužiwarjow narunać',
+	'importusers-form-button'             => 'Importować',
+	'importusers-user-added'              => 'Wužiwar <b>%s</b> je so přidał.',
+	'importusers-user-present-update'     => 'Wužiwar <b>%s</b> hižo eksistuje. Zaktualizowany.',
+	'importusers-user-present-not-update' => 'Wužiwar <b>%s</b> hižo eksistuje. Žana aktualizacija.',
+	'importusers-user-invalid-format'     => 'Wužiwarske daty w lince #%s ma njepłaćiwy format abo su prózdne. Přeskočene.',
+	'importusers-log'                     => 'Importowy protokol',
+	'importusers-log-summary'             => 'Zjeće',
+	'importusers-log-summary-all'         => 'Wšě',
+	'importusers-log-summary-added'       => 'Přidaty',
+	'importusers-log-summary-updated'     => 'Zaktualizowany.',
+	'importusers-login-name'              => 'Přizjewjenske mjeno',
+	'importusers-password'                => 'hesło',
+	'importusers-email'                   => 'e-mejl',
+	'importusers-realname'                => 'woprawdźite mjeno',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'importusers'                      => 'Benotzer importéieren',
+	'importusers-uploadfile'           => 'Fichier eroplueden',
+	'importusers-form-replace-present' => 'Benotzer déi et scho gëtt ersetzen',
+	'importusers-form-button'          => 'Importéieren',
+	'importusers-log'                  => 'Lëscht vun den Importen',
+	'importusers-log-summary'          => 'Resumé',
+	'importusers-log-summary-all'      => 'Alleguer',
+	'importusers-log-summary-added'    => 'derbäigesat',
+	'importusers-log-summary-updated'  => 'Aktualiséiert',
+	'importusers-password'             => 'Passwuert',
+	'importusers-email'                => 'E-Mailadress',
+	'importusers-realname'             => 'richtege Numm',
 );
 
 /** Dutch (Nederlands)
@@ -143,14 +213,18 @@ $messages['pt'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Lejonel
  */
 $messages['sv'] = array(
+	'importusers'                     => 'Importera användare',
+	'importusers-uploadfile'          => 'Ladda upp fil',
 	'importusers-form-button'         => 'Importera',
 	'importusers-log'                 => 'Import logg',
+	'importusers-log-summary'         => 'Sammanfattning',
 	'importusers-log-summary-all'     => 'Alla',
-	'importusers-log-summary-added'   => 'Tillaggd',
+	'importusers-log-summary-added'   => 'Tillagd',
 	'importusers-log-summary-updated' => 'Uppdaterad',
-	'importusers-login-name'          => 'Inloggnings namn',
+	'importusers-login-name'          => 'Inloggningsnamn',
 	'importusers-password'            => 'lösenord',
 	'importusers-email'               => 'e-post',
 );

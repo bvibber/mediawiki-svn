@@ -53,6 +53,13 @@ $messages['hsb'] = array(
 	'ajax-qp-desc' => 'AJAX naprašowanskim stronam kaž na př. [[Special:shortpages]] přidać',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'ajax-qp-desc' => 'AJAXを用いて[[Special:Shortpages]]のようなページ要求を行う',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

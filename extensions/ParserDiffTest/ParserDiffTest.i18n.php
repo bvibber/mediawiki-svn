@@ -28,6 +28,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'parserdifftest'      => 'اختبار فرق البارسر',
+	'pdtest-desc'         => '[[Special:ParserDiffTestSpecial|صفحة خاصة]] لمقارنة ناتج بارسرين مختلفين',
 	'pdtest_no_target'    => 'لا هدف تم تحديده.',
 	'pdtest_page_missing' => 'الصفحة المحددة لم يتم العثور عليها في قاعدة البيانات.',
 	'pdtest_no_changes'   => 'لا تغييرات تم تبينها.',
@@ -492,7 +493,7 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'parserdifftest'      => 'Parserskillnadstest',
-	'pdtest-desc'         => 'Special sida för att jämföra utdatan av två olika parser.',
+	'pdtest-desc'         => '[[Special:ParserDiffTestSpecial|Specialsida]] för att jämföra resultaten från två olika parsrar.',
 	'pdtest_no_target'    => 'Ingen målsida angavs.',
 	'pdtest_page_missing' => 'Den angivna sidan hittades inte i databasen.',
 	'pdtest_no_changes'   => 'Inga ändringar hittades.',

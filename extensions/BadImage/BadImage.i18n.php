@@ -335,9 +335,11 @@ $messages['ext'] = array(
 
 /** Finnish (Suomi)
  * @author Nike
+ * @author Cimon Avaro
  */
 $messages['fi'] = array(
 	'badimages'                => 'Kiellettyjen kuvien luettelo',
+	'badimages-desc'           => 'Kehittää MediaWikin ominaisuuksia huonojen kuvatiedostojen listaamisen suhteen',
 	'badimages-add-btn'        => 'Lisää',
 	'badimages-added'          => '”$1” lisättiin luetteloon.',
 	'badimages-count'          => "Luettelossa on '''$1''' kuvaa.",
@@ -789,6 +791,29 @@ $messages['no'] = array(
 	'badimages-log-add'        => 'la til [[$1]] på lista over blokkerte bilder',
 	'badimages-log-remove'     => 'fjernet [[$1]] fra lista over blokkerte bilder',
 	'badimages-page'           => 'Help:Liste over dårlige bilder',
+);
+
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'badimages'                => 'Lenano la dinepe tšago senyega',
+	'badimages-add-btn'        => 'Lokela',
+	'badimages-added'          => '$1 e loketše go lenano.',
+	'badimages-count'          => "Go nale dinepe tše '''$1''' go lenano la dinepe tšago senyega",
+	'badimages-name'           => 'Leina:',
+	'badimages-not-added'      => 'Senepe ga sa lokelwa.',
+	'badimages-not-removed'    => 'Senepe ga sa tlošwa.',
+	'badimages-reason'         => 'Lebaka:',
+	'badimages-remove'         => '(tloša)',
+	'badimages-remove-btn'     => 'Tloša',
+	'badimages-remove-confirm' => 'Ka kopelo, tiišêtša gore o nyaka go tloša $1 go lenano:',
+	'badimages-removed'        => '$1 e tlošitšwe go lenano.',
+	'badimages-subheading'     => 'Dihlogwana tša bjale',
+	'badimages-unprivileged'   => '(Ga o na tumello yago fetola lenano)',
+	'badimages-log-name'       => 'Lenano la dinepe tšago senyega',
+	'badimages-log-add'        => 'Loketše [[$1]] go lenano la dinepe tšago senyega',
+	'badimages-log-remove'     => 'Tlošitše [[$1]] go lenano la dinepe tšago senyega',
 );
 
 /** Occitan (Occitan)

@@ -297,3 +297,12 @@ Uunoainde Doatäie wäide fluks läsked, sjuch do [[{{MediaWiki:Multipleupload-p
 	'multiupload-toolbox'              => 'Hoochleeden fon moorere Doatäie',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'multipleupload'              => 'Ladda upp filer',
+	'multipleupload-saveallfiles' => 'Spara alla filer',
+	'multiupload-fileuploaded'    => 'Fil uppladdad.',
+);
+

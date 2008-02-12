@@ -21,6 +21,13 @@ $messages['ar'] = array(
 	'newusermessage-desc' => 'يضيف [[MediaWiki:NewUserMessage|رسالة]] إلى صفحات نقاش المستخدمين الجدد',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'newusermessage-desc' => '[[MediaWiki:NewUserMessage|Powěsć]] k nowo wutwórjenym wužywarskim diskusijnym bokam pśidaś',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -32,7 +39,14 @@ $messages['fr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'newusermessage-desc' => '[[MediaWiki:NewUserMessage|Powěsć]] nowo wutwarjenym wužiwarskim diskusijnym stronam přidać',
+	'newusermessage-desc' => '[[MediaWiki:NewUserMessage|Powěsć]] nowo wutworjenym wužiwarskim diskusijnym stronam přidać',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'newusermessage-desc' => "Ee [[MediaWiki:NewUserMessage|Message]] op d'Diskussiounssäite vun neie Benotzer setzen",
 );
 
 /* Dutch (Nederlands)

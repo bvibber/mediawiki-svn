@@ -177,11 +177,12 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
- * @author Tmnk
+ * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'assert_edit_title'   => 'Assertの失敗',
-	'assert_edit_message' => '($1)というAssert処理が失敗しました。',
+	'assert_edit_title'   => 'アサーションの失敗',
+	'assert_edit_desc'    => 'ボットが利用する編集アサーション',
+	'assert_edit_message' => 'アサーション ($1) に失敗しました。',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */

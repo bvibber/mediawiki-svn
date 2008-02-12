@@ -48,6 +48,13 @@ $messages['hsb'] = array(
 	'charinsert-desc' => 'Dowola wutworjenje JavaScriptoweho kašćika za zasunjenje njestandardnych znamješkow',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'charinsert-desc' => 'Erlaabt et eng JavaScript-gesteiert Këscht ze maache fir Sonnerzeechen anzesetzen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

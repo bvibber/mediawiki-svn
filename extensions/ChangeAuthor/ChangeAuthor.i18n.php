@@ -170,6 +170,13 @@ $messages['de'] = array(
 	'changeauthor-rev' => 'Version $1',
 );
 
+/** Ewe (Eʋegbe)
+ * @author M.M.S.
+ */
+$messages['ee'] = array(
+	'changeauthor-pagenameform-go' => 'Yi',
+);
+
 $messages['el'] = array(
 	'changeauthor-comment' => 'Σχόλιο:',
 	'changeauthor-invalid-username' => 'Άκυρο όνομα-χρήστη  "$1".',
@@ -419,6 +426,20 @@ $messages['no'] = array(
 	'changeauthor-success'              => 'Forespørselen har blitt utført.',
 	'changeauthor-logentry'             => 'Endret opphavsperson til $2 av $1 fra $3 til $4',
 	'changeauthor-logpagename'          => 'Logg for opphavspersonsendringer',
+);
+
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'changeauthor'                   => 'Fetola  poeletšo ya mongwadi',
+	'changeauthor-title'             => 'Fetola mongwadi wa poeletšo',
+	'changeauthor-search-box'        => 'Fetleka dipoeletšo',
+	'changeauthor-pagename-or-revid' => 'Leina la letlaka goba ID ya poeletšo:',
+	'changeauthor-pagenameform-go'   => 'Sepela',
+	'changeauthor-comment'           => 'Ahlaahla:',
+	'changeauthor-revview'           => 'Poeletšo #$1 ya $2',
+	'changeauthor-nosuchtitle'       => 'Gago letlakala lago bitšwa  "$1".',
 );
 
 /** Occitan (Occitan)

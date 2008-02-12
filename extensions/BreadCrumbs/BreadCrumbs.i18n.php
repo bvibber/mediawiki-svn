@@ -52,6 +52,20 @@ $messages['hsb'] = array(
 	'breadcrumbs-desc' => 'Pokazuje wužiwarjam puć přez wiki',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'breadcrumbs-desc' => '利用者のウィキ上での軌跡を表示する',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'breadcrumbs-desc' => "Weist de Benotzer hire Wee duerch d'Wiki.",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

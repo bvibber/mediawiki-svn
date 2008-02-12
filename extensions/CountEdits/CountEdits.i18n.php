@@ -190,16 +190,20 @@ $messages['hr'] = array(
 	'countedits-nocontribs' => 'Nema suradnika na ovom wikiju.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'countedits' => 'Ličak přinoškow',
-	'countedits-warning' => '\'\'\'Kedźbu\'\'\': Njeposudź knihu wobalki dla, njeposudź wužiwarja ličby jeho přinoškow dla!',
-	'countedits-username' => 'Wužiwarske mjeno:',
-	'countedits-ok' => 'W porjadku',
-	'countedits-nosuchuser' => 'Wužiwar z mjenom $1 njeeksistuje.',
+	'countedits'              => 'Ličak přinoškow',
+	'countedits-desc'         => '[[Special:CountEdits|Specialna strona]], kotraž wužiwarske změny liči a lisćinu dźesać wužiwarjow z najwjace změnami k dispoziciji steji',
+	'countedits-warning'      => "'''Kedźbu''': Njeposudź knihu wobalki dla, njeposudź wužiwarja ličby jeho přinoškow dla!",
+	'countedits-username'     => 'Wužiwarske mjeno:',
+	'countedits-ok'           => 'W porjadku',
+	'countedits-nosuchuser'   => 'Wužiwar z mjenom $1 njeeksistuje.',
 	'countedits-resultheader' => 'Wuslědki za wužiwarja $1',
-	'countedits-resulttext' => '$1 je $2 wobdźěłanjow sčinił.',
-	'countedits-mostactive' => 'Najaktiwniši přinošowarjo',
-	'countedits-nocontribs' => 'Njejsu žane změny w tutym wikiju.',
+	'countedits-resulttext'   => '$1 je $2 wobdźěłanjow sčinił.',
+	'countedits-mostactive'   => 'Najaktiwniši přinošowarjo',
+	'countedits-nocontribs'   => 'Njejsu žane změny w tutym wikiju.',
 );
 
 /** Hungarian (Magyar)
@@ -368,6 +372,19 @@ $messages['no'] = array(
 	'countedits-nocontribs' => 'Det har ikke vært noen redigeringer på denne wikien.',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'countedits'              => 'Bala diphetogo',
+	'countedits-username'     => 'Leina la mošomiši:',
+	'countedits-nosuchuser'   => 'Gago mošomiši wa goba le leina $1.',
+	'countedits-resultheader' => 'Diphetho tša $1',
+	'countedits-resulttext'   => '$1 o dirile diphetogo tše $2',
+	'countedits-mostactive'   => 'Baabedi ba mahlahla kudu',
+	'countedits-nocontribs'   => 'Gago baabedi go Wiki ye.',
+);
+
 $messages['oc'] = array(
 	'countedits' => 'Comptaire d’edicions',
 	'countedits-warning' => '\'\'\'Avertiment\'\'\' : jutjetz pas un libre per sa cobertura. Jutjetz pas tanpauc un utilizaire en foncion del nombre de sas contribucions.',
@@ -412,17 +429,20 @@ $messages['ps'] = array(
 	'countedits-username' => 'کارن-نوم:',
 );
 
-/* Portuguese (Lugusto) */
+/** Portuguese (Português)
+ * @author Malafaya
+ */
 $messages['pt'] = array(
-	'countedits' => 'Contador de edições',
-	'countedits-warning' => "'''Atenção:''' Não julgue um livro pela sua capa. Não julgue um contribuidor pela contagem de suas edições.",
-	'countedits-username' => 'Utilizador:',
-	'countedits-ok' => 'Ok',
-	'countedits-nosuchuser' => 'Não foi encontrado um utilizador com o nome $1.',
+	'countedits'              => 'Contador de edições',
+	'countedits-desc'         => '[[{{ns:Special}}:CountEdits|Página especial]] que conta as edições de utilizadores e fornece uma lista dos dez contribuidores de topo',
+	'countedits-warning'      => "'''Atenção:''' Não julgue um livro pela sua capa. Não julgue um contribuidor pela contagem de suas edições.",
+	'countedits-username'     => 'Utilizador:',
+	'countedits-ok'           => 'Ok',
+	'countedits-nosuchuser'   => 'Não foi encontrado um utilizador com o nome $1.',
 	'countedits-resultheader' => 'Resultados para $1',
-	'countedits-resulttext' => '$1 fez $2 edições',
-	'countedits-mostactive' => 'Contribuidores mais activos',
-	'countedits-nocontribs' => 'Não possui contribuições neste wiki.',
+	'countedits-resulttext'   => '$1 fez $2 edições',
+	'countedits-mostactive'   => 'Contribuidores mais activos',
+	'countedits-nocontribs'   => 'Não possui contribuições neste wiki.',
 );
 
 /* Romanian (KlaudiuMihăilă) */

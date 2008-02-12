@@ -102,6 +102,13 @@ $messages['no'] = array(
 	'contributionseditcount' => 'Denne brukeren har $1 redigeringer.',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'contributionseditcount' => 'Mošomiši o nale diphetogo tše $1.',
+);
+
 $messages['oc'] = array(
 	'contributionseditcount' => 'Aqueste utilizaire a {{PLURAL:$1|$1 edicion|$1 edicions}}.',
 );
@@ -149,10 +156,10 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
- * @author M.M.S.
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'contributionseditcount' => 'Denna användaren har $1 redigeringar.',
+	'contributionseditcount' => 'Denna användare har gjort $1 redigeringar.',
 );
 
 /** Volapük (Volapük)

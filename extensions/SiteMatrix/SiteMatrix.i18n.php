@@ -58,10 +58,11 @@ $messages['ar'] = array(
  * @author SPQRobin
  */
 $messages['ast'] = array(
-	'sitematrix'          => 'Llista de wikis de Wikimedia',
-	'sitematrix-language' => 'Llingua',
-	'sitematrix-project'  => 'Nomes del proyeutu, del enllaz interproyeutu y del enllaz interwiki',
-	'sitematrix-others'   => 'Otros proyeutos de Wikimedia',
+	'sitematrix'           => 'Llista de wikis de Wikimedia',
+	'sitematrix-language'  => 'Llingua',
+	'sitematrix-project'   => 'Nomes del proyeutu, del enllaz interproyeutu y del enllaz interwiki',
+	'sitematrix-others'    => 'Otros proyeutos de Wikimedia',
+	'sitematrix-sitetotal' => 'Total',
 );
 
 $messages['bcl'] = array(
@@ -174,6 +175,14 @@ $messages['dsb'] = array(
 	'sitematrix-language' => 'Rěc',
 	'sitematrix-project'  => 'Projektowe mě, interprojektowy wótkaz a interwiki-wótkaz',
 	'sitematrix-others'   => 'Dalšne projekty Wikimedije',
+);
+
+/** Ewe (Eʋegbe)
+ * @author M.M.S.
+ */
+$messages['ee'] = array(
+	'sitematrix'          => 'Wikimedia wikiwo ƒe xexlẽme',
+	'sitematrix-language' => 'Gbe',
 );
 
 $messages['el'] = array(
@@ -300,6 +309,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'sitematrix'           => 'Lisćina wšěch wikijow we Wikimediji',
+	'sitematrix-desc'      => 'Zwobraznja [[Special:SiteMatrix|lisćinu wikijow Wikimedije]]',
 	'sitematrix-language'  => 'Rěč',
 	'sitematrix-project'   => 'Projektowe mjeno, mjezyprojektowy wotkaz a mjezyrěčny wotkaz',
 	'sitematrix-others'    => 'Dalše projekty we Wikimediji',
@@ -559,6 +569,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'sitematrix'           => 'Lista de sítios Wikimedia',
+	'sitematrix-desc'      => 'Apresenta uma [[{{ns:Special}}:SiteMatrix|lista de wikis Wikimedia]]',
 	'sitematrix-language'  => 'Idioma',
 	'sitematrix-project'   => 'Nome do projecto, link interprojecto e link interwiki',
 	'sitematrix-others'    => 'Outros projectos da Wikimedia',
@@ -664,6 +675,7 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'sitematrix'           => 'Lista över Wikimedias wikier',
+	'sitematrix-desc'      => 'Visar en [[Special:SiteMatrix|lista över Wikimedias wikier]]',
 	'sitematrix-language'  => 'Språk',
 	'sitematrix-project'   => 'Projektnamn, interprojektlänk och interwiki-länk',
 	'sitematrix-others'    => 'Andra Wikimediaprojekt',
@@ -673,13 +685,16 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author Mpradeep
+ * @author Veeven
  * @author לערי ריינהארט
  */
 $messages['te'] = array(
-	'sitematrix'          => 'వికీమీడియా వికీల జాబితా',
-	'sitematrix-language' => 'భాష',
-	'sitematrix-project'  => 'ప్రాజెక్టు పేరు, అంతర్‌ప్రాజెక్టు లింకు మరియు అంతర్వికీ లింకు',
-	'sitematrix-others'   => 'వికీమీడియాలోని ఇతర ప్రాజెక్టులు',
+	'sitematrix'           => 'వికీమీడియా వికీల జాబితా',
+	'sitematrix-language'  => 'భాష',
+	'sitematrix-project'   => 'ప్రాజెక్టు పేరు, అంతర్‌ప్రాజెక్టు లింకు మరియు అంతర్వికీ లింకు',
+	'sitematrix-others'    => 'వికీమీడియాలోని ఇతర ప్రాజెక్టులు',
+	'sitematrix-total'     => "'''మొత్తం సంఖ్య: $1'''",
+	'sitematrix-sitetotal' => 'మొత్తం',
 );
 
 $messages['tet'] = array(

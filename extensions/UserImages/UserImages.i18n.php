@@ -191,6 +191,15 @@ $messages['su'] = array(
 	'userimages-noimages' => '$1 can kungsi ngamuatkeun gambar.',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'userimages-caption'  => 'Bilder som laddats upp av $1',
+	'userimages-noname'   => 'Användarnamnet är ogiltigt eller angavs ej.',
+	'userimages-noimages' => '$1 har inte laddat upp några bilder.',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */
@@ -218,3 +227,4 @@ $messages['zh-hant'] = array(
 	'userimages-noname' => '無效或未有填寫帳號名稱。',
 	'userimages-noimages' => '$1沒有上傳圖像。',
 );
+

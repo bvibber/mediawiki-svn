@@ -403,6 +403,16 @@ $messages['nl'] = array(
 	'review_comment'                                         => 'Opmerking',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'review_total_statistics'       => 'Yohle',
+	'review_statistics_left_corner' => 'Poeletšo',
+	'review_version_link'           => 'Poeletšo #$1',
+	'review_version_statistic_cell' => '$1 ya $2',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  * @author Siebrand

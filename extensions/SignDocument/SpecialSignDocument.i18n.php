@@ -762,6 +762,20 @@ $messages['no'] = array(
 	'sign-uniquequery-1signed2'       => '[{{fullurl:Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] signerte [{{fullurl:Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'sign-realname'           => 'Leina:',
+	'sign-city'               => 'Toropo:',
+	'sign-country'            => 'Naga:',
+	'sign-bday'               => 'Mengwaga:',
+	'sign-email'              => 'Email atrese:',
+	'sign-viewfield-realname' => 'Leina',
+	'sign-viewfield-city'     => 'Toropo',
+	'sign-viewfield-country'  => 'Naga',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

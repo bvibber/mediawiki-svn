@@ -23,18 +23,22 @@ $messages['en'] = array(
 	'lookupuser_useroptions'       => 'User options:',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'lookupuser' => 'ابحث عن معلومات المستخدم',
-	'lookupuser_intro' => 'أدخل اسم مستخدم لرؤية تفضيلات هذا المستخدم.',
-	'lookupuser_nonexistent' => 'المستخدم غير موجود',
-	'lookupuser_authenticated' => 'تأكيد البريد الإلكتروني: $1',
+	'lookupuser'                   => 'ابحث عن معلومات المستخدم',
+	'lookupuser-desc'              => '[[Special:LookupUser|يعرض معلومات]] عن المستخدم مثل عنوان البريد الإلكتروني والرقم',
+	'lookupuser_intro'             => 'أدخل اسم مستخدم لرؤية تفضيلات هذا المستخدم.',
+	'lookupuser_nonexistent'       => 'المستخدم غير موجود',
+	'lookupuser_authenticated'     => 'تأكيد البريد الإلكتروني: $1',
 	'lookupuser_not_authenticated' => 'غير مرخص',
-	'lookupuser_id' => 'رقم المستخدم: <tt>#$1</tt>',
-	'lookupuser_email' => 'البريد الإلكتروني: [[Special:Emailuser/$2|$1]]',
-	'lookupuser_realname' => 'الاسم الحقيقي: $1',
-	'lookupuser_registration' => 'تاريخ التسجيل: $1',
-	'lookupuser_touched' => 'سجل المستخدم تم تعديله آخر مرة في: $1',
-	'lookupuser_useroptions' => 'خيارات المستخدم:',
+	'lookupuser_id'                => 'رقم المستخدم: <tt>#$1</tt>',
+	'lookupuser_email'             => 'البريد الإلكتروني: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'          => 'الاسم الحقيقي: $1',
+	'lookupuser_registration'      => 'تاريخ التسجيل: $1',
+	'lookupuser_touched'           => 'سجل المستخدم تم تعديله آخر مرة في: $1',
+	'lookupuser_useroptions'       => 'خيارات المستخدم:',
 );
 
 /** Bulgarian (Български)
@@ -99,18 +103,22 @@ $messages['gl'] = array(
 	'lookupuser_useroptions' => 'Opcións do usuario:',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'lookupuser' => 'Wužiwarske informacije sej wobhladać',
-	'lookupuser_intro' => 'Zapodaj wužiwarske mjeno, zo by nastajenja toho wužiwarja wobhladował.',
-	'lookupuser_nonexistent' => 'Zmylk: Wužiwar njeeksistuje',
-	'lookupuser_authenticated' => 'E-mejlowe awtentizowanje: $1',
+	'lookupuser'                   => 'Wužiwarske informacije sej wobhladać',
+	'lookupuser-desc'              => '[[Special:LookupUser|Informacije wo wužiwarja wotwołać]], na přikład e-mejlowu adresu a ID',
+	'lookupuser_intro'             => 'Zapodaj wužiwarske mjeno, zo by nastajenja toho wužiwarja wobhladował.',
+	'lookupuser_nonexistent'       => 'Zmylk: Wužiwar njeeksistuje',
+	'lookupuser_authenticated'     => 'E-mejlowe awtentizowanje: $1',
 	'lookupuser_not_authenticated' => 'njeawtentizowany',
-	'lookupuser_id' => 'Wužiwarski ID: <tt>#$1</tt>',
-	'lookupuser_email' => 'E-mejl: [[Special:Emailuser/$2|$1]]',
-	'lookupuser_realname' => 'Woprawdźite mjeno: $1',
-	'lookupuser_registration' => 'Datum registrowanja: $1',
-	'lookupuser_touched' => 'Posledni přistup na wužiwarske daty: $1',
-	'lookupuser_useroptions' => 'Wužiwarske opcije:',
+	'lookupuser_id'                => 'Wužiwarski ID: <tt>#$1</tt>',
+	'lookupuser_email'             => 'E-mejl: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'          => 'Woprawdźite mjeno: $1',
+	'lookupuser_registration'      => 'Datum registrowanja: $1',
+	'lookupuser_touched'           => 'Posledni přistup na wužiwarske daty: $1',
+	'lookupuser_useroptions'       => 'Wužiwarske opcije:',
 );
 
 /** Hungarian (Magyar)
@@ -257,6 +265,13 @@ $messages['stq'] = array(
 	'lookupuser_registration'      => 'Doatum fon ju Registrierenge: $1',
 	'lookupuser_touched'           => 'Benutserkonto toulääst rööged: $1',
 	'lookupuser_useroptions'       => 'Ienstaalengen fon dät Benutserkonto:',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'lookupuser_email' => 'E-post: [[Special:Emailuser/$2|$1]]',
 );
 
 /** Volapük (Volapük)

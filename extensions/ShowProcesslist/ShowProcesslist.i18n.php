@@ -153,6 +153,13 @@ $messages['no'] = array(
 	'showprocesslist-info'    => 'Info',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'showprocesslist-time' => 'Nako',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

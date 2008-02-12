@@ -335,6 +335,7 @@ $messages['ar'] = array(
 	'mv_view_wiki_page'              => 'عرض صفحة الويكي',
 	'mv_error_mvd_not_found'         => 'خطأ إم في دي غير موجود',
 	'mv_match_text'                  => '~  $1 مطابقة',
+	'mv_match_text_one'              => '~ 1 تطابق',
 	'mv_edit_sequence'               => 'تعديل التتابع:$1',
 	'mv_sequence_player_title'       => 'عرض التتابع',
 	'mv_save_sequence'               => 'حفظ التتابع',
@@ -361,6 +362,8 @@ $messages['ar'] = array(
 	'mv_search_stream_title'         => 'ابحث في الستريم الحالي',
 	'mv_new_ht_en'                   => 'ترانسكريبت جديد',
 	'mv_new_anno_en'                 => 'وسم أو أنوتاشن جديد',
+	'mv_mang_layers'                 => 'التحكم بالطبقات',
+	'mv_mang_layers_title'           => 'التحكم بمجموعة عرض الطبقة للستريم الحالي',
 	'mv_protect_source_material'     => 'المادة المصدر الأصلية محمية من التعديلات',
 );
 
@@ -520,6 +523,7 @@ $messages['fr'] = array(
 	'mv_view_wiki_page'              => 'Voir la page wiki',
 	'mv_error_mvd_not_found'         => 'Erreur, aucune metavid de trouvée',
 	'mv_match_text'                  => '~ $1 similitudes',
+	'mv_match_text_one'              => '~ 1 occurence',
 	'mv_edit_sequence'               => 'Édition de la séquence : $1',
 	'mv_sequence_player_title'       => 'lecteur de séquence',
 	'mv_save_sequence'               => 'Sauvegarder la séquence',
@@ -546,6 +550,8 @@ $messages['fr'] = array(
 	'mv_search_stream_title'         => 'Rechercher le flux actuel',
 	'mv_new_ht_en'                   => 'Nouvelle transcription',
 	'mv_new_anno_en'                 => 'Nouvelle balise ou annotation',
+	'mv_mang_layers'                 => 'Gère les couches',
+	'mv_mang_layers_title'           => "Gère les paramètres d'affichage de la couche pour le flux courant",
 	'mv_protect_source_material'     => 'Matériel source original protégé en écriture',
 );
 
@@ -721,6 +727,7 @@ $messages['hsb'] = array(
 	'mv_view_wiki_page'              => 'Wikijowu stronu wobhladać',
 	'mv_error_mvd_not_found'         => 'Zmylk mvd njenamakany',
 	'mv_match_text'                  => '~ $1 {{PLURAL:$1|wotpowědnik|wotpowědnikaj|wotpowědniki|wotpowědnikow}}',
+	'mv_match_text_one'              => '~ 1 wotpowědnik',
 	'mv_edit_sequence'               => 'Wobdźěłanje sekwency:$1',
 	'mv_sequence_player_title'       => 'Wothrawak sekwencow',
 	'mv_save_sequence'               => 'Sekwencu składować',
@@ -747,6 +754,8 @@ $messages['hsb'] = array(
 	'mv_search_stream_title'         => 'Aktualny stream přepytać',
 	'mv_new_ht_en'                   => 'Nowy přepis',
 	'mv_new_anno_en'                 => 'Nowa taflička abo přispomnjenka',
+	'mv_mang_layers'                 => 'Woršty zrjadować',
+	'mv_mang_layers_title'           => 'Sadźbu worštow za aktualny prud zrjadować',
 	'mv_protect_source_material'     => 'Originalny žórłowy material přećiwo změnam škitany.',
 );
 
@@ -959,6 +968,14 @@ $messages['nl'] = array(
 	'mv_protect_source_material'     => 'Origineel bronmateriaal dat niet bewerkt kan worden',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'mv_search_and' => 'le',
+	'mv_search_or'  => 'goba',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -1117,6 +1134,7 @@ $messages['pt'] = array(
 	'mv_missing_stream'           => 'Stream não localizado: $1',
 	'mv_ogg_low_quality'          => 'Ogg Theora para Stream Web, armazenado em metavid',
 	'mv_ogg_high_quality'         => 'Ogg Theora de Alta Qualidade, armazenado em metavid',
+	'mv_archive_org_link'         => 'Liga para os originais mpeg2 de Archive.org',
 	'mv_error_stream_missing'     => '<span class="error">Erro: Não há um ficheiro de vídeo associado com este stream.</span><br />Por favor, reporte este facto ao administrador do sítio.',
 	'mv_stream_meta'              => 'Página de stream',
 	'mv_add_stream_submit'        => 'Adicionar stream',
@@ -1145,6 +1163,7 @@ $messages['pt'] = array(
 	'mv_tool_export_title'        => 'Exportar metadados do stream',
 	'mv_results_found_for'        => 'Resultados de Busca <b>$1</b> a <b>$2</b> de <b>$3</b> para:',
 	'anno_en'                     => 'Anotações e Categorias',
+	'mvd_default_mismatch'        => 'Erro no ficheiro de configuração',
 	'mv_time_separator'           => '$1 a $2',
 	'mv_list_streams_docu'        => 'Os seguintes streams se encontram disponíveis:',
 	'mv_list_streams_none'        => 'Não há streams disponíveis',
@@ -1499,17 +1518,25 @@ Alebo môžete <a href="$3">Pridať stream</a>.',
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author Max sonnelid
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'mv_tool_export' => 'Exportera',
-	'mv_play'        => 'Spela',
-	'mv_edit'        => 'Redigera',
-	'mv_history'     => 'Historik',
-	'mv_edit_title'  => 'Redigera Text',
-	'mv_search_and'  => 'och',
-	'mv_search_or'   => 'eller',
-	'mv_category'    => 'kategori',
+	'mv_save_changes'    => 'Spara ändringar',
+	'mv_upload_file'     => 'Ladda upp fil',
+	'mv_tool_search'     => 'Sök',
+	'mv_tool_navigate'   => 'Navigera',
+	'mv_tool_export'     => 'Exportera',
+	'mv_time_separator'  => '$1 till $2',
+	'mv_play'            => 'Spela',
+	'mv_edit'            => 'Redigera',
+	'mv_history'         => 'Historik',
+	'mv_edit_title'      => 'Redigera Text',
+	'mv_search_category' => 'Kategori',
+	'mv_search_and'      => 'och',
+	'mv_search_or'       => 'eller',
+	'mv_category'        => 'kategori',
+	'mv_view_wiki_page'  => 'Visa wiki sida',
 );
 

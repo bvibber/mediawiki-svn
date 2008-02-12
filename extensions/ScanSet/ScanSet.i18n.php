@@ -70,9 +70,10 @@ $messages['bn'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Danny B.
  */
 $messages['cs'] = array(
-	'scanset_no_name'                   => 'ScanSet: Musíte uvést název skenované množiny, např. &lt;sancset name="EB1911" /&gt;',
+	'scanset_no_name'                   => 'ScanSet: Musíte uvést název skenované množiny, např. &lt;scanset name="EB1911" /&gt;',
 	'scanset_invalid_name'              => 'ScanSet: Neplatná nebo chybějící skenovaná množina',
 	'scanset_unrecognised_index_format' => 'ScanSet: Neznámý formát indexu',
 	'scanset_opendir_error'             => 'ScanSet: Chyba, není možné otevřít adresář $1',

@@ -336,6 +336,7 @@ $wdMessages['bg'] = array(
 	'ow_save'                         => 'Съхранение',
 	'ow_history'                      => 'История',
 	'ow_noedit_title'                 => 'Необходими са права за редактиране',
+	'ow_uiprefs'                      => 'Уикиданни',
 	'ow_none_selected'                => '<Нищо не е избрано>',
 	'ow_dm_OK'                        => 'Добре',
 	'ow_will_insert'                  => 'Ще бъде вмъкнато следното:',
@@ -1409,6 +1410,25 @@ $wdMessages['no'] = array(
 	'ow_copy_successful'                    => '<h2>Kopiering fullført</h2>Dataene dine er kopiert. Ikke glem å dobbeltsjekke for å være sikker!',
 	'ow_copy_unsuccessful'                  => '<h3>Kopiering ikke fullført</h3> Ingen kopiering har funnet sted.',
 	'ow_no_action_specified'                => '<h3>Ingen handling ble oppgitt</h3> Kanskje du kom direkte til denne siden? Vanligvis trenger du ikke å være her.',
+);
+
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$wdMessages['nso'] = array(
+	'ow_GotoSource'                   => 'Eya go mothopo',
+	'ow_Language'                     => 'Polelo',
+	'ow_Spelling'                     => 'Mopeleto',
+	'ow_Synonyms'                     => 'Mahlalošêtšagotee',
+	'ow_Source'                       => 'Mothopo',
+	'ow_Text'                         => 'Dihlaka',
+	'ow_TranslatedTextAttributeValue' => 'Dihlaka',
+	'ow_LinkAttributeValues'          => 'Hlomaganyo',
+	'ow_meaningsoftitle'              => 'Hlaloso tša "$1"',
+	'ow_meaningsofsubtitle'           => '<em>Hlomaganyo ya Wiki:</em> [[$1]]',
+	'ow_Permission_denied'            => '<h2>TUMELLO E LATOTŠWE</h2>',
+	'ow_copy_no_action_specified'     => 'Ka kgopela kgetha seo o nyakago gose phetha',
+	'ow_copy_help'                    => 'Ka tšatši le lengwe, re ka go thuša.',
 );
 
 /** Occitan (Occitan)

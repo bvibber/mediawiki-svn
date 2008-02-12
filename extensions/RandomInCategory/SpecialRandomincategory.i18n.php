@@ -130,6 +130,13 @@ $messages['no'] = array(
 	'randomincategory-submit' => '{{int:Go}}',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'randomincategory-submit' => 'Sepela',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

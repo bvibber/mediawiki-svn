@@ -611,6 +611,13 @@ $messages['no'] = array(
 	'expand_templates_preview'         => 'Forhåndsvisning',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'expand_templates_output' => 'Phetho',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

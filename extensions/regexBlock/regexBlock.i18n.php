@@ -410,6 +410,22 @@ $messages['no'] = array(
 	'regexblock-view-go' => '{{int:Go}}',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'regexblock-form-username'     => 'IP Atrese goba leina la mošomiši:',
+	'regexblock-form-reason'       => 'Lebaka:',
+	'regexblock-block-log'         => "Leina la mošomiši goba IP atrese '''$1''' e thibilwe.",
+	'regexblock-form-submit-empty' => 'Efa leina la mošomiši goba IP atrese go thiba.',
+	'regexblock-stats-username'    => 'Ya $1',
+	'regexblock-stats-times'       => 'e thibilwe ka',
+	'regexblock-view-all'          => 'Kamoka',
+	'regexblock-view-go'           => 'Sepela',
+	'regexblock-view-reason'       => 'lebaka: $1',
+	'regexblock-view-block-by'     => 'thibilwe ke',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

@@ -351,10 +351,14 @@ $messages['hr'] = array(
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|$1 slijedeći redak|Slijedeća $1 retka|Slijedećih $1 redova}} u popisu zabranjenih suradničkih imena {{PLURAL:$1|je nevaljan|su nevaljana|je nevaljano}}; molimo ispravite {{PLURAL:$1|ga|ih|ih}} prije snimanja:',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'blacklistedusername' => 'Tute wužiwarske mjeno steji na čornej lisćinje.',
-	'blacklistedusernametext' => 'Wubrane wužiwarske mjeno steji na [[MediaWiki:Usernameblacklist|čornej lisćinje wužiwarskich mjenow]]. Prošu wubjer druhe mjeno.',
-	'usernameblacklist' => '<pre>
+	'usernameblacklist-desc'          => 'Přidawa [[MediaWiki:Usernameblacklist|čorneje lisćiny wužiwarjow]], zo by so wutworjenje wužiwarskich kontow wobmjezowało, kotrež jednomu regularnemu wurazej abo wjacorym regularnym wurazom wotpowěduja',
+	'blacklistedusername'             => 'Tute wužiwarske mjeno steji na čornej lisćinje.',
+	'blacklistedusernametext'         => 'Wubrane wužiwarske mjeno steji na [[MediaWiki:Usernameblacklist|čornej lisćinje wužiwarskich mjenow]]. Prošu wubjer druhe mjeno.',
+	'usernameblacklist'               => '<pre>
 # Zapiski w tutej lisćinje budu so jako dźěl regularneho wuraza wužiwać, 
 # hdyž so wužiwarske mjena z registracije blokuja. Kóždy zapisk měł dźěl
 # nječisłowaneje lisćiny być, na př.

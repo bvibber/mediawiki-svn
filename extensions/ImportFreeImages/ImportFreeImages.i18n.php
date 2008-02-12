@@ -170,6 +170,14 @@ $messages['no'] = array(
 	'importfreeimages_returntoform' => 'Elle rklikk <a href="$1">her</a> for å gå tilbake til søkeresultatene',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'importfreeimages_owner' => 'Mongwadi',
+	'importfreeimages_next'  => 'Latela $1',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -199,6 +207,7 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'importfreeimages'                       => 'Importar Imagens Livres',
 	'importfreeimages-desc'                  => 'Providencia uma forma de importar fotografias devidamente licenciadas do flickr.',
+	'importfreeimages_description'           => 'Esta página permite-lhe procurar fotografias devidamente licenciadas no flickr e importá-las para o seu wiki.',
 	'importfreeimages_nophotosfound'         => "Nenhuma fotografia foi encontrada segundo o seu critério de busca '$1'; por favor, tente de novo.",
 	'importfreeimages_owner'                 => 'Autor',
 	'importfreeimages_importthis'            => 'importar isto',

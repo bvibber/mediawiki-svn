@@ -103,6 +103,13 @@ $messages['stq'] = array(
 	'usercontactlink-baduser' => 'falsken Benutsernoome',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'usercontactlink-baduser' => 'felaktigt användarnamn',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */
