@@ -9,10 +9,11 @@ if (!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['specialpage'][] = array(
-	'name' => 'SiteMatrix',
-	'version' => '2008-01-09',
-	'description' => 'Displays a list of Wikimedia wikis',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:SiteMatrix',
+	'name'           => 'SiteMatrix',
+	'version'        => '2008-02-12',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:SiteMatrix',
+	'description'    => 'Displays a list of Wikimedia wikis',
+	'descriptionmsg' => 'sitematrix-desc',
 );
 
 $wgExtensionMessagesFiles['SiteMatrix'] = dirname(__FILE__) . '/SiteMatrix.i18n.php';

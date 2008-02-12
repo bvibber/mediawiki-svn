@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'sitematrix'           => 'List of Wikimedia wikis',
+	'sitematrix-desc'      => 'Displays a [[Special:SiteMatrix|list of Wikimedia wikis]]',
 	'sitematrix-language'  => 'Language',
 	'sitematrix-project'   => 'Name of project, interproject link and interwiki link',
 	'sitematrix-others'    => 'Other projects of Wikimedia',
@@ -152,8 +153,12 @@ $messages['da'] = array(
 	'sitematrix-others'   => 'Andre projekter under Wikimedia',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
 	"sitematrix"           => "Liste der Wikimedia-Wikis",
+	'sitematrix-desc'      => 'Zeigt eine [[Special:SiteMatrix|Liste der Wikimedia-Wikis]]',
 	'sitematrix-language'  => 'Sprache',
 	'sitematrix-project'   => 'Projektname, Interprojekt-Link und Interwiki-Link',
 	'sitematrix-others'    => 'Weitere Wikimedia-Projekte',
