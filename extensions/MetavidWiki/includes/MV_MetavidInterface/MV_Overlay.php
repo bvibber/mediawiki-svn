@@ -191,10 +191,10 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		}
 		return $out;
 	}
+	/*could probably speed things up by not using the revision class and just parse format wikitext in the mvd_page*/
 	function get_article_html(&$mvd_page){
 		global $wgOut;		
-		$mvdTile = Title::makeTitle(MV_NS_MVD, $mvd_page->wiki_title );		
-		
+		$mvdTile = Title::makeTitle(MV_NS_MVD, $mvd_page->wiki_title );				
 		//print "js_log('titleDB: ".$tsTitle->getDBkey() ."');\n";
 		if($mvdTile->exists()){	
 			//grab the article text:
@@ -204,6 +204,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			if(isset($this->preMoveArtileText)){
 				$wikiText = & $this->preMoveArtileText; 				 
 			}else{
+				//@@todo throw error: 
 				//print "error article: "	.  $mvd_page->wiki_title . " not there \n";
 				print "js_log('missing: " .$mvd_page->wiki_title."');\n";
 				return ;				
@@ -214,7 +215,10 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$this->parse_format_text($wikiText, $mvdTile);				
 					
 	}
-	function parse_format_text($text, &$mvdTile){
+	function get_wiki_text(&$mvd_page){
+		
+	}
+	function parse_format_text(&$text, &$mvdTile){
 		global $wgOut;
 		global $wgParser, $wgUser, $wgTitle, $wgContLang;
 		$template_key='';			

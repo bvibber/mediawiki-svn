@@ -145,11 +145,6 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		$result =& $dbr->query( $sql, 'MV_Index:time_index_query'); 	 	
  		return $result;
  	}
- 	function get_mvd_type_sql($mvd_type){
- 		if(is_array($mvd_type)){
- 			
- 		} 		
- 	}
  	function remove_by_stream_id($stream_id){
  		global $mvIndexTableName;
  		$dbw =& wfGetDB(DB_WRITE); 
@@ -360,9 +355,10 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  	}
  	/*inserts search result into proper range and stream */ 
  	function insert_merge_range(& $sranges, &$ret_ary, $row, $doRowInsert=true){
- 		foreach($sranges as & $srange){	 		
- 				if($srange)	
- 				//check if current encasolates $srow encapsulate and insert
+ 		foreach($sranges as & $srange){ 						
+ 				//skip if srange row 0 has same mvd (topq already inserted)
+ 				//if($srange['rows'][0]->id==$row->id )continue ;
+ 				//check if current $srow encapsulate and insert
  				if($row->start_time <= $srange['s']  && $row->end_time >= $srange['e']){
  					$srange['s']= $row->start_time;
  					$srange['e']= $row->end_time;

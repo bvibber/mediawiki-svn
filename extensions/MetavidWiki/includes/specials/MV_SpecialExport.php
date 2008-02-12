@@ -23,10 +23,12 @@ global $IP, $smwgIP;
 function doExportStream($par = null){$MvSpecialExport = new MV_SpecialExport('stream',$par);}
 function doExportCat($par = null){$MvSpecialExport = new MV_SpecialExport('category',$par);}
 function doExportSeq($par = null){$MvSpecialExport = new MV_SpecialExport('sequence',$par);}
+function doExportSearch($par = null){$MvSpecialExport = new MV_SpecialExport('search',$par);}
 
 SpecialPage::addPage( new SpecialPage('MvVideoFeed','',true,'doExportCat',false) );
 SpecialPage::addPage( new SpecialPage('MvExportStream','',true,'doExportStream',false) );
 SpecialPage::addPage( new SpecialPage('MvExportSequence','',true,'doExportSeq',false) );
+SpecialPage::addPage( new SpecialPage('MvExportSearch','',true,'doExportSearch',false) );
 
 //extend supported feed types:
 $wgFeedClasses['cmml']='CmmlFeed';
@@ -56,6 +58,9 @@ class MV_SpecialExport {
 			case 'category':
 				$this->cat=$wgRequest->getVal('cat'); 	
 				$this->get_category_feed();		
+			break;
+			case 'search':
+				$this->get_search_feed();
 			break;
 			case 'sequence':			
 				$this->seq_title = $this->par;
@@ -209,57 +214,44 @@ class MV_SpecialExport {
 				$this->nextPage = $x->cl_sortkey;
 				break;
 			}				
-			$title = Title::makeTitle( $x->page_namespace, $x->page_title );
-			$article = new Article($title);
-			$mvTitle = new MV_Title($title);
-			
-			//this should be done cleaner & we need absolute links
-			$wgOut->clearHTML(); 			
-			$wgOut->addWikiText($article->getContent() );
-			$desc_html = $wgOut->getHTML();		
-			$wgOut->clearHTML();	
-						
-			$stream_url = $mvTitle->getWebStreamURL();
-			
-			$talkpage = $title->getTalkPage();
-			
-			
-			
-			$type_desc = ($mvTitle->getMvdTypeKey())?wfMsg($mvTitle->getMvdTypeKey()):'';			
-			$time_desc = ($mvTitle->getTimeDesc())?$mvTitle->getTimeDesc():'';
-				
-			$thumb_ref = $mvTitle->getStreamImageURL('320x240');
-			$desc ='<![CDATA[
-					
-<center class="mv_rss_view_only">
-<a href="'.$title->getFullUrl().'"><img src="'.$thumb_ref.'" border="0" /></a>
-</center>
-<br />'.
-	
-	$desc_html. 
-']]>';
-?>
-	<item>
-		<link><?=mvRSSFeed::xmlEncode($title->getFullUrl())?></link>
-		<title><?=mvRSSFeed::xmlEncode(
-			$mvTitle->getStreamNameText() . ' ' .  $time_desc)?></title>
-		<description><?=$desc?></description>
-		<enclosure type="video/ogg" url="<?=mvRSSFeed::xmlEncode($stream_url)?>"/>
-		<comments><?=mvRSSFeed::xmlEncode($talkpage->getFullUrl())?></comments>
-		<media:thumbnail url="<?=mvRSSFeed::xmlEncode($thumb_ref)?>"/>
-		<?
-		/*todo add in alternate streams HQ, lowQ archive.org etc: 
-		<media:group>
-    		<media:content blip:role="Source" expression="full" fileSize="2702848" height="240" isDefault="true" type="video/msvideo" url="http://blip.tv/file/get/Conceptdude-EroticDanceOfANiceBabe266.avi" width="360"></media:content>
-    		<media:content blip:role="web" expression="full" fileSize="3080396" height="240" isDefault="false" type="video/x-flv" url="http://blip.tv/file/get/Conceptdude-EroticDanceOfANiceBabe266.flv" width="360"></media:content>
-  		</media:group>
-  		*/
-  		?>
-	</item>
-			<?		
+			$title = Title::makeTitle( $x->page_namespace, $x->page_title );			
+			$this->feed->outPutItem($title);
 		}				
 		$this->feed->outFooter();
 		//$this->rows =  
+	}
+	function get_search_feed(){	
+		global $wgSitename, $wgOut;	
+		//set up search obj: 
+		$sms = new MV_SpecialMediaSearch();
+		//setup filters:
+		$sms->setUpFilters();
+		//do the search:
+		$sms->doSearch();
+		//get the search page title:
+		$msTitle = Title::MakeTitle(NS_SPECIAL, 'MediaSearch');
+		
+		$this->feed = new mvRSSFeed(
+			$wgSitename . ' - ' .wfMsg('mediasearch'). ' : '. $sms->getFilterDesc(), //title 
+			$sms->getFilterDesc(), //description
+			$msTitle->getFullUrl().'?'.$sms->get_httpd_filters_query() //link 
+		);
+		$this->feed->outHeader();	
+		//for each search result: 		
+		foreach ($sms->results as $stream_id => & $stream_set) {			
+			$matches = 0;
+			$stream_out = $mvTitle = '';			
+			foreach ($stream_set as & $srange) {
+				$cat_html = $mvd_out = '';
+				$range_match=0;						
+				foreach ($srange['rows'] as $inx=> & $mvd) {								
+					$matches++;			
+					$wTitle = Title::MakeTitle(MV_NS_MVD, $mvd->wiki_title);
+					$this->feed->outPutItem($wTitle);
+				}
+			}
+		}
+		$this->feed->outFooter();		
 	}      
 }
 class mvRSSFeed extends ChannelFeed{
@@ -279,8 +271,55 @@ class mvRSSFeed extends ChannelFeed{
 	<channel>
 	<title><?=$this->getTitle()?></title>
 	<link><?=$this->getUrl()?></link>
-	<description><?=$this->getDescription()?></description>';	
+	<description><?=$this->getDescription()?></description>	
 	<?
+	}
+	function outPutItem($wikiTitle, $desc_text=''){
+		global $wgOut;		
+		$mvTitle = new MV_Title($wikiTitle);
+		//@@todo this should be done cleaner/cached 
+		//@@todo we need absolute links
+		
+		$thumb_ref = $mvTitle->getStreamImageURL('320x240');
+		if($desc_text==''){
+			$article = new Article($wikiTitle);
+			$wgOut->clearHTML(); 			
+			$wgOut->addWikiText($article->getContent() );
+			$desc_html = $wgOut->getHTML();		
+			$wgOut->clearHTML();					
+		}else{
+			$desc_html = &$desc_text;
+		}
+		$desc_xml ='<![CDATA[				
+			<center class="mv_rss_view_only">
+			<a href="'.$wikiTitle->getFullUrl().'"><img src="'.$thumb_ref.'" border="0" /></a>
+			</center>
+			<br />'.
+			$desc_html. 
+			']]>';
+				
+		$stream_url = $mvTitle->getWebStreamURL();			
+		$talkpage = $wikiTitle->getTalkPage();			
+					
+		$type_desc = ($mvTitle->getMvdTypeKey())?wfMsg($mvTitle->getMvdTypeKey()):'';			
+		$time_desc = ($mvTitle->getTimeDesc())?$mvTitle->getTimeDesc():'';					
+		?>	
+		<item>
+		<link><?=mvRSSFeed::xmlEncode($wikiTitle->getFullUrl())?></link>
+		<title><?=mvRSSFeed::xmlEncode(
+			$mvTitle->getStreamNameText() . ' ' .  $time_desc)?></title>
+		<description><?=$desc_xml?></description>
+		<enclosure type="video/ogg" url="<?=mvRSSFeed::xmlEncode($stream_url)?>"/>
+		<comments><?=mvRSSFeed::xmlEncode($talkpage->getFullUrl())?></comments>
+		<media:thumbnail url="<?=mvRSSFeed::xmlEncode($thumb_ref)?>"/>
+		<? /*todo add in alternate streams HQ, lowQ archive.org etc: 
+		<media:group>
+    		<media:content blip:role="Source" expression="full" fileSize="2702848" height="240" isDefault="true" type="video/msvideo" url="http://blip.tv/file/get/Conceptdude-EroticDanceOfANiceBabe266.avi" width="360"></media:content>
+    		<media:content blip:role="web" expression="full" fileSize="3080396" height="240" isDefault="false" type="video/x-flv" url="http://blip.tv/file/get/Conceptdude-EroticDanceOfANiceBabe266.flv" width="360"></media:content>
+  		</media:group>
+  		*/ ?> 
+		</item>
+		<?
 	}
 }
 ?>

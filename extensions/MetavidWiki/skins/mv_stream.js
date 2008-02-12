@@ -118,6 +118,11 @@ var mv_init_interface = {
 		//add all the hover hooks:
 		this.addHoverHooks();				
 		
+		//do any tool specific hooks: 
+		this.tool_key = parseUri(document.URL).queryKey.tool_disp;
+		if(this.tool_key){
+			mv_proc_tool_result(this.tool_key, {'status':'ok','innerHTML':$j('#mv_tool_cont').html()} );
+		}
 		
 		//unlock the interface updates once everything is setup: 
 		mv_lock_vid_updates=false;		
@@ -910,55 +915,70 @@ function mv_tool_disp(tool_id){
 	 	if (request.status != 200){
   			 result= "<div class='error'> " + request.status + " " + request.statusText + ": " + result + "</div>";           
   			 $j('#mv_tool_cont').html( result);
-  		}else{  			
+  		}else{  	  			
   			//result should set up object mv_result
   			eval(result);
-  			if(mv_result['status']=='ok'){  				
-  				//run any request javascript call backs
-  				//do per tool post-req js actions: 
-  				switch(tool_id){
-  					case 'navigate':		
-  						//set the content payload
-		  				$j('#mv_tool_cont').html( mv_result['innerHTML']);  				
-						eval(mv_result['js_eval']);  	
-						$j('#mv_go_nav').click(function() {
-								window.location.href = wgScript+
-								'/'+wgPageName+'/'+$j('#mv_start_hr_nav').val()+
-								'/'+$j('#mv_end_hr_nav').val();							
-						});
-						add_adjust_hooks('nav', end_time);						
-  					break;
-  					case 'search':
-  						//load search.js  ... @@todo cleanup path
-  						mvJsLoader.doLoad({  	  
-							'mv_setup_search':'../mv_search.js'
-					  	},function(){   
-					  		$j('#mv_tool_cont').html( mv_result['innerHTML']);
-					  		mv_setup_search();
-					  	});
-  					break;
-  					case 'mang_layers':
-  						$j('#mv_tool_cont').html( mv_result['innerHTML']);
-  						//add in hooks for turnning on off layers (via click on link)
-  						$j('a.mv_mang_layers').click(function(){
-  							$j('#option_'+this.id.substring(2)).get(0).checked = !$j('#option_'+this.id.substring(2)).get(0).checked;
-  						});
-  					break;
-  					default:
-  						//set the content payload
-		  				$j('#mv_tool_cont').html( mv_result['innerHTML']);
-  					break;
-  				}
-  			}else if(mv_result['status']=='error'){
-  				$j('#mv_tool_cont').html( mv_result['error_txt']);
-  			}
-  			//do add new fd:
+  			mv_proc_tool_result(tool_id, mv_result);	  			  			
   		}
 		 //unlock the interface updates
 		 mv_lock_vid_updates=false;
 	}
 }
-
+function mv_proc_tool_result(tool_id, mv_result){
+	if(mv_result['status']=='ok'){  				
+		//run any request javascript call backs
+		//do per tool post-req js actions: 
+		switch(tool_id){
+			case 'navigate':		
+				//set the content payload
+  				$j('#mv_tool_cont').html( mv_result['innerHTML']);  				
+				eval(mv_result['js_eval']);  	
+				$j('#mv_go_nav').click(function() {
+						window.location.href = wgScript+
+						'/'+wgPageName+'/'+$j('#mv_start_hr_nav').val()+
+						'/'+$j('#mv_end_hr_nav').val();							
+				});
+				add_adjust_hooks('nav', end_time);						
+			break;
+			case 'search':
+				//load search.js  ... @@todo cleanup path
+				mvJsLoader.doLoad({  	  
+					'mv_setup_search':'../mv_search.js'
+			  	},function(){   
+			  		$j('#mv_tool_cont').html( mv_result['innerHTML']);
+			  		mv_setup_search();
+			  	});
+			break;
+			case 'mang_layers':
+				$j('#mv_tool_cont').html( mv_result['innerHTML']);
+				//add in hooks for turnning on off layers (via click on link)
+				$j('a.mv_mang_layers').click(function(){
+					$j('#option_'+this.id.substring(2)).get(0).checked = !$j('#option_'+this.id.substring(2)).get(0).checked;
+					return false;
+				});
+				//add in function for page rewrite on submit
+				$j('#submit_mang_layers').click(function(){
+					var track_req = coma = '';
+					//build track_req:
+					$j('a.mv_mang_layers').each(function(){
+						if($j('#option_'+this.id.substring(2)).get(0).checked){
+							track_req+=coma+this.id.substring(2);
+							coma=',';
+						}
+					})
+					window.location.href = wgScript+'/'+wgCanonicalNamespace+':'+mvTitle+'?tracks='+track_req+'&tool_disp=mang_layers';
+					return false;
+				});
+			break;
+			default:
+				//set the content payload
+  				$j('#mv_tool_cont').html( mv_result['innerHTML']);
+			break;
+		}
+	}else if(mv_result['status']=='error'){
+		$j('#mv_tool_cont').html( mv_result['error_txt']);
+	}
+}
 /* js functions that are slight modification of 
  * existing mediawiki code (if adopted upstream these can be removed)
  * @@todo we could switch to jquery ajax calls)

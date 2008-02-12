@@ -164,6 +164,7 @@ $messages['en'] = array(
 	'mv_view_wiki_page'           => 'View wiki page',
 	'mv_error_mvd_not_found'      => 'Error mvd not found',
 	'mv_match_text'               => '~  $1 matches',
+	'mv_match_text_one'			  => '~ 1 match',
 
 	#sequence text:
 	'mv_edit_sequence'            => 'Editing Sequence:$1',

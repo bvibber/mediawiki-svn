@@ -13,10 +13,16 @@
  class MV_Tools extends MV_Component{
  	var $mv_valid_tools = array('mang_layers','search','navigate','export','embed','overlay');
  	function getHTML(){
- 		global $wgOut;
+ 		global $wgOut, $wgRequest;
  		//@@todo look at mv_interface context to get what to display in tool box:
  		$wgOut->addHTML('<div id="mv_tool_cont">');
- 		$this->get_tool_html('stream_page');
+ 		$tool_req = $wgRequest->getVal('tool_disp');
+ 		if(in_array($tool_req, $this->mv_valid_tools)){
+ 			$this->get_tool_html($tool_req);
+ 			$wgOut->addHTML($this->innerHTML);
+ 		}else{
+ 			$this->get_tool_html('stream_page');
+ 		}
 		$wgOut->addHTML('</div>');
 	}
 	/*function getStreamPage(){
@@ -24,16 +30,12 @@
 	}*/	
 	function get_tool_html($tool_id, $ns='', $title_str=''){		
 		global $wgUser;
+		if($title_str=='')$title_str = $this->mv_interface->article->mvTitle->getStreamName();
+		if($ns=='')$ns = MV_NS_STREAM;
 		switch($tool_id){
 			case 'stream_page':
 				global $wgOut, $wgParser;
-				//render the wiki page for this stream
-				if($title_str==''){
-					//$wgOut->addWikiText( $this->mv_interface->article->getContent() );
-					//get the base stream name for the tile str: 
-					$title_str = $this->mv_interface->article->mvTitle->getStreamName();
-					$ns = MV_NS_STREAM;
-				}		
+				//render the wiki page for this stream				
 				$title = Title::newFromText($title_str, $ns);			
 				$curRevision = Revision::newFromTitle($title);
 				

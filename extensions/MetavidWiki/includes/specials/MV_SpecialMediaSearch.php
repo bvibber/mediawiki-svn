@@ -152,8 +152,12 @@ class MV_SpecialMediaSearch extends SpecialPage {
 	function powerSearchOptions() {
 		global $mvMVDTypeAllAvailable;
 		$opt = array();
+		//group track_req
+		$opt['tracks']='';
+		$coma='';
 		foreach( $mvMVDTypeAllAvailable as $n ) {
-			$opt['mvd_ns_' . $n] = 1;
+			$opt['tracks'].= $coma. $n;
+			$coma=',';	
 		}
 		//$opt['redirs'] = $this->searchRedirects ? 1 : 0;
 		//$opt['searchx'] = 1;
@@ -187,15 +191,23 @@ class MV_SpecialMediaSearch extends SpecialPage {
 						$this->get_httpd_filters_query() );
 			}
 		}		
+		//add the rss link: 
+		$sTitle=Title::MakeTitle(NS_SPECIAL, 'MvExportSearch');
+		$o.='<span style="float:right;">';
+		$o.=$sk->makeKnownLinkObj($sTitle, 
+			'<img border="0" src="' . $mvgScriptPath . '/skins/images/feed-icon-28x28.png">',
+			$this->get_httpd_filters_query() );
+		$o.='</span>';
 		//add the results bar:
 		$o.=$this->getResultsBar();
-		foreach ($this->results as $stream_id => & $stream_set) {
+		//print_r($this->results);
+		foreach ($this->results as $stream_id => & $stream_set) {			
 			$matches = 0;
 			$stream_out = $mvTitle = '';			
 			foreach ($stream_set as & $srange) {
 				$cat_html = $mvd_out = '';
-				$range_match=0;		
-				foreach ($srange['rows'] as $inx=> & $mvd) {					
+				$range_match=0;						
+				foreach ($srange['rows'] as $inx=> & $mvd) {								
 					$matches++;			
 					$mvTitle = new MV_Title($mvd->wiki_title);
 
@@ -233,6 +245,13 @@ class MV_SpecialMediaSearch extends SpecialPage {
 					if (!$mvd->toplq){					
 						$mvd_out.= $this->termHighlight($mvd->text, implode('|', $this->getTerms()));						
 					}else {
+						if($mvdTitle->exists()){	
+							//grab the article text:
+							$curRevision = Revision::newFromTitle($mvdTitle);			
+							$wikiText = $curRevision->getText();
+						}else{
+							$wikiText = & $mvd->text;
+						}
 						//@@todo parse category info if present
 						$cat_html = '';					
 						//run via parser to add in Category info: 
@@ -240,16 +259,20 @@ class MV_SpecialMediaSearch extends SpecialPage {
 						$parserOptions->setEditSection(false);
 						$parserOptions->setTidy(true);
 						$title = Title :: MakeTitle(MV_NS_MVD, $mvd->wiki_title);
-						$parserOutput = $wgParser->parse($mvd->text, $title, $parserOptions);
+						$parserOutput = $wgParser->parse($wikiText, $title, $parserOptions);
 						$cats = $parserOutput->getCategories();
 						foreach ($cats as $catkey => $title_str) {
-							$title = Title :: MakeTitle(NS_CATEGORY, $catkey);
-							$cat_html .= ' ' . $sk->makeKnownLinkObj($title, $catkey);
+							$catTitle = Title :: MakeTitle(NS_CATEGORY, $catkey);
+							$cat_html .= ' ' . $sk->makeKnownLinkObj($catTitle);
 						}
 						//add category pre-text:
 						//if ($cat_html != '')
-						$mvd_out.= wfMsg('Categories') . ':' . $cat_html;
-						$mvd_out.= wfMsg('mv_match_text', count($srange['rows']))."\n";
+						//$mvd_out.= wfMsg('Categories') . ':' . $cat_html;
+						$mvd_out.=$cat_html;
+						
+						$mvd_out.= (count($srange['rows'])-1==1)
+							? wfMsg('mv_match_text_one')
+							: wfMsg('mv_match_text', count($srange['rows'])-1);
 						//$wgOut->addCategoryLinks( $parserOutput->getCategories() );						
 						//$cat_html = $sk->getCategories();
 						//empty out the categories
@@ -258,7 +281,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 					$mvd_out.='</span>';
 					$mvd_out .= '<div id="mvr_' . $mvd->id . '" style="display:none;background:#'.$bgcolor.';" ></div>';
 					$mvd_out .= '<br>' . "\n";					
-				}
+				}			
 				$stream_out .= $mvd_out;
 				/*if(count($srange['rows'])!=1){					
 					$stream_out .= '&nbsp;' . $cat_html . ' In range:' . 
@@ -274,7 +297,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 			/*$o.='<br><img class="mv_stream_play_button" name="'.$nsary[MV_NS_STREAM].':' .
 				$mvTitle->getStreamName() .
 					'" align="left" src="'.$mvgScriptPath.'/skins/mv_embed/images/vid_play_sm.png">';
-			*/
+			*/					
 			$o.= '<h3>' . $mvTitle->getStreamNameText() . wfMsg('mv_match_text', $matches).'</h3>';
 			$o.= '<div id="mv_stream_' . $stream_id . '">' . $stream_out . '</div>';
 		}
@@ -380,12 +403,10 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		if(count($mvd)!=0){			
 			$mvTitle = new MV_Title($mvd->wiki_title);
 			//validate title and load stream ref:
-			if($mvTitle->validRequestTitle()){
-				//confirm the stream exists: 
-				
+			if($mvTitle->validRequestTitle()){				
 				list($vWidth, $vHeight) = explode('x', $mvDefaultSearchVideoPlaybackRes); 
 				$embedHTML='<span style="float:left;width:'.($vWidth+20).'px">' . 
-									$mvTitle->getEmbedVideoHtml('vid_'.$mvd_id, $mvDefaultSearchVideoPlaybackRes) .
+								$mvTitle->getEmbedVideoHtml('vid_'.$mvd_id, $mvDefaultSearchVideoPlaybackRes) .
 							'</span>';
 				$wgOut->clearHTML();
 								
@@ -501,7 +522,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		$o=$a='';
 		foreach($this->filters as $inx=>$f){	
 			if($inx!=0)$a=wfMsg('mv_search_'.$f['a']).' ';		
-			$o.=' '.$a.wfMsg('mv_'.$f['t']).' <b>'. $f['v'].'</b> ';			
+			$o.=' '.$a.wfMsg('mv_'.$f['t']).' <b>'. str_replace('_',' ',$f['v']).'</b> ';			
 		}
 		return $o;
 	}
