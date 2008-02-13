@@ -127,11 +127,12 @@ $messages['de'] = array(
 	'pdt_comparing_page'  => 'Vergleiche Parser-Ausgabe für [[$1]]',
 );
 
-/** فارسی (فارسی)
+/** Persian (فارسی)
  * @author Huji
  */
 $messages['fa'] = array(
 	'parserdifftest'      => 'آزمون تفاوت تحلیلگر',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|صفحهٔ ویژه]] برای مقایسهٔ خروجی دو تجزیه‌کنندهٔ مختلف',
 	'pdtest_no_target'    => 'هدفی تعیین نشده‌است.',
 	'pdtest_page_missing' => 'صفحهٔ موردنظر در پایگاه داده یافت نشد.',
 	'pdtest_no_changes'   => 'هیچ تغییر حذف نشد.',
@@ -143,7 +144,6 @@ $messages['fa'] = array(
 	'pdtest_diff'         => 'تفاوت‌ها',
 	'pdtest_side_by_side' => 'مقایسهٔ خروجی',
 	'pdt_comparing_page'  => 'مقایسهٔ خروجی تحلیلگر از [[$1]]',
-
 );
 
 /** French (Français)

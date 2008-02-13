@@ -216,17 +216,17 @@ $messages['ext'] = array(
 	'sitematrix-others'   => 'Otrus proyeutus de Wikimedia',
 );
 
-/** فارسی (فارسی)
+/** Persian (فارسی)
  * @author Huji
  */
 $messages['fa'] = array(
 	'sitematrix'           => 'فهرست ویکی‌های ویکی‌مدیا',
+	'sitematrix-desc'      => '[[Special:SiteMatrix|فهرستی]] از ویکی‌های ویکی‌مدیا را نمایش می‌دهد',
 	'sitematrix-language'  => 'زبان',
 	'sitematrix-project'   => 'نام پروژه، پیوند میان‌پروژه و پیوند میان‌ویکی',
 	'sitematrix-others'    => 'دیگر پروژه‌های ویکی‌مدیا',
 	'sitematrix-total'     => "'''جمع کل: $1'''",
 	'sitematrix-sitetotal' => 'کل',
-
 );
 
 /** Finnish (Suomi)
