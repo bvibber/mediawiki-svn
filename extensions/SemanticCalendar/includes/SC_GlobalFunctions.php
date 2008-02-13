@@ -7,7 +7,7 @@
 
 if (!defined('MEDIAWIKI')) die();
 
-define('SC_VERSION','0.1.1');
+define('SC_VERSION','0.1.2');
 
 // constants for special properties
 
@@ -165,12 +165,13 @@ function scfGetEvents_1_0($date_property, $filter_query) {
 	$query  = SMWQueryProcessor::createQuery($query_string, $params, $inline, $format, $printouts);
 	$results = smwfGetStore()->getQueryResult($query);
 	while ($row = $results->getNext()) {
-		$event_name = $row[0];
-		$event_title = $event_name->getNextObject()->getTitle();
-		$event_date = $row[1];
-		$event_timestamp = $event_date->getNextObject()->getNumericValue();
-		$actual_date = date("Y-m-d", $event_timestamp);
-		$events[] = array($event_title, $actual_date);
+		$event_names = $row[0];
+		$event_dates = $row[1];
+		$event_title = $event_names->getNextObject()->getTitle();
+		while ($event_date = $event_dates->getNextObject()) {
+			$actual_date = date("Y-m-d", $event_date->getNumericValue());
+			$events[] = array($event_title, $actual_date);
+		}
 	}
 	return $events;
 }
