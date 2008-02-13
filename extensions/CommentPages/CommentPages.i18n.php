@@ -1,9 +1,9 @@
 <?php
-    $wgCommentsPagesMessages = array();
+$wgCommentsPagesMessages = array();
 
-    $wgCommentsPagesMessages['en'] = array(
-        'commenttab-editintro' => '',
-        'commenttab-preload' => '',
-        'nstab-comments' => 'Commentary',
-    );
+$wgCommentsPagesMessages['en'] = array(
+'commenttab-editintro' => '',
+'commenttab-preload' => '',
+'nstab-comments' => 'Commentary',
+);
 
