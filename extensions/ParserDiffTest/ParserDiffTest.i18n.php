@@ -9,7 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'parserdifftest' => 'Parser diff test',
-	'pdtest-desc' => '[[Special:ParserDiffTestSpecial|Special page]] for comparing the output of two different parsers',
+	'pdtest-desc' => '[[Special:ParserDiffTest|Special page]] for comparing the output of two different parsers',
 	'pdtest_no_target' => 'No target specified.',
 	'pdtest_page_missing' => 'The specified page was not found in the database.',
 	'pdtest_no_changes' => 'No changes detected.',
@@ -28,7 +28,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'parserdifftest'      => 'اختبار فرق البارسر',
-	'pdtest-desc'         => '[[Special:ParserDiffTestSpecial|صفحة خاصة]] لمقارنة ناتج بارسرين مختلفين',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|صفحة خاصة]] لمقارنة ناتج بارسرين مختلفين',
 	'pdtest_no_target'    => 'لا هدف تم تحديده.',
 	'pdtest_page_missing' => 'الصفحة المحددة لم يتم العثور عليها في قاعدة البيانات.',
 	'pdtest_no_changes'   => 'لا تغييرات تم تبينها.',
@@ -113,7 +113,7 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'parserdifftest'      => 'Parser-Differenz-Test',
-	'pdtest-desc'         => '[[Special:ParserDiffTestSpecial|Spezialseite]] zum Vergleich der Ausgabe von zwei verschiedenen Parsern',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Spezialseite]] zum Vergleich der Ausgabe von zwei verschiedenen Parsern',
 	'pdtest_no_target'    => 'Kein Ziel angegeben.',
 	'pdtest_page_missing' => 'Die angegebene Seite wurde nicht in der Datenbank gefunden.',
 	'pdtest_no_changes'   => 'Keine Unterschiede gefunden.',
@@ -332,7 +332,7 @@ $messages['lt'] = array(
  */
 $messages['nl'] = array(
 	'parserdifftest'      => 'Parserverschillentest',
-	'pdtest-desc'         => '[[Special:ParserDiffTestSpecial|Speciale pagina]] voor het vergelijken van de uitvoer van twee verschillende parsers',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Speciale pagina]] voor het vergelijken van de uitvoer van twee verschillende parsers',
 	'pdtest_no_target'    => 'Geen doel aangegeven.',
 	'pdtest_page_missing' => 'De aangegeven pagina is niet aangetroffen in de database.',
 	'pdtest_no_changes'   => 'Geen wijzigingen vastgesteld.',
@@ -401,7 +401,7 @@ $messages['oc'] = array(
  */
 $messages['pt'] = array(
 	'parserdifftest'      => 'Teste de diferenças do analisador "parser"',
-	'pdtest-desc'         => '[[Special:ParserDiffTestSpecial|Página especial]] para comparar o resultado de dois analisadores "parser" diferentes',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Página especial]] para comparar o resultado de dois analisadores "parser" diferentes',
 	'pdtest_no_target'    => 'Nenhum alvo foi especificado.',
 	'pdtest_page_missing' => 'A página especificada não foi encontrada na base de dados.',
 	'pdtest_no_changes'   => 'Nenhuma alteração detectada.',
@@ -493,7 +493,7 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'parserdifftest'      => 'Parserskillnadstest',
-	'pdtest-desc'         => '[[Special:ParserDiffTestSpecial|Specialsida]] för att jämföra resultaten från två olika parsrar.',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Specialsida]] för att jämföra resultaten från två olika parsrar.',
 	'pdtest_no_target'    => 'Ingen målsida angavs.',
 	'pdtest_page_missing' => 'Den angivna sidan hittades inte i databasen.',
 	'pdtest_no_changes'   => 'Inga ändringar hittades.',
@@ -564,4 +564,3 @@ $messages['vo'] = array(
 	'pdtest_diff'         => 'Difs',
 	'pdtest_side_by_side' => 'Jonolöd leigodi',
 );
-
