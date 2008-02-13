@@ -81,6 +81,7 @@ class WhitelistEdit extends SpecialPage
     function ProcessContractorEditChanges()
     {
         global $wgOut, $wgUser, $wgRequest;
+        global $wgServer, $wgArticlePath;
         $dbr = wfGetDB( DB_SLAVE );
 
         # first lets process the changes to the existing entries
@@ -123,30 +124,55 @@ class WhitelistEdit extends SpecialPage
         
         $pages = preg_split('/\n/', $newPages, -1, PREG_SPLIT_NO_EMPTY);
         foreach ($pages as $entry => $pagename){
-            # strip leading and trailing white spaces
-            if (preg_match('/^\s*(.*?)\s*$/', $pagename, $match))
-                $pagename = $match[1];
+            $pagename = trim($pagename);
+            if ($pagename == '')
+                continue;
 
-            # this is for some reason a case insensitive search, so be ware!!!
-            if (!$dbr->selectRow('whitelist',
-                                 array('wl_id'),
-                                 array('wl_user_id'    => $contractorId,
-                                       'wl_page_title' => $pagename
-                                      ),
-                                 __METHOD__
-                                 )
-                )
-            $dbr->insert('whitelist',
-                         array('wl_user_id'    => $contractorId,
-                               'wl_page_title' => $pagename,
-                               'wl_allow_edit' => ($newAction == 'SetEdit') ? 1 : 0,
-                               'wl_expires_on' => ($expiryDate == '') ? "" : date("Y-m-d H:i:s", strtotime($expiryDate)),
-                               'wl_updated_by_user_id' => $wgUser->getId()
-                              ),
-                         __METHOD__
-                        );
+            # If the input is a URL, then convert it back to a title
+            $myArticlePath = str_replace("$1", '', $wgArticlePath);
+            $myArticlePath = str_replace("/", '\\/', $myArticlePath);
+            $myServer = str_replace("/", '\\/', $wgServer);
+            if (preg_match("/^$myServer$myArticlePath(.*)$/", $pagename, $matches))
+                $pagename = preg_replace('/_/', ' ', $matches[1]);
+
+            self::insertNewPage($dbr, $contractorId, $pagename, $newAction, $expiryDate);
+
+            # check to see if the page is a redirect and if so, add the redirected-to page also
+            $title = Title::newFromText($pagename);
+            if ($title)
+            {
+                $article = new Article($title);
+                $pagetext = $article->getContent();
+                $redirecttitle = Title::newFromRedirect($pagetext);
+                if ($redirecttitle)
+                    self::insertNewPage($dbr, $contractorId, $redirecttitle->getPrefixedText(), $newAction, $expiryDate);
+            }
         }
         return;
+    }
+
+    function InsertNewPage($dbr, $contractorId, $pagename, $newAction, $expiryDate)
+    {
+        global $wgUser;
+        
+        # this is for some reason a case insensitive search, so be ware!!!
+        if (!$dbr->selectRow('whitelist',
+                                array('wl_id'),
+                                array('wl_user_id'    => $contractorId,
+                                    'wl_page_title' => $pagename
+                                    ),
+                                __METHOD__
+                                )
+            )
+        $dbr->insert('whitelist',
+                        array('wl_user_id'    => $contractorId,
+                            'wl_page_title' => $pagename,
+                            'wl_allow_edit' => ($newAction == 'SetEdit') ? 1 : 0,
+                            'wl_expires_on' => ($expiryDate == '') ? "" : date("Y-m-d H:i:s", strtotime($expiryDate)),
+                            'wl_updated_by_user_id' => $wgUser->getId()
+                            ),
+                        __METHOD__
+                    );
     }
 
     function DisplayContractorEditDetails($contractorId)
@@ -179,7 +205,7 @@ END
         
         ob_start();
 print  <<<END
-<form name="mainform" method="get">
+<form name="mainform" method="post">
   <input type="hidden" name="contractor" value="$contractorId">
   <table cellpadding=0 cellspacing=10 border=0>
     <tr>
@@ -215,7 +241,10 @@ END;
         for ($row = $dbr->fetchObject($res); $row; $row = $dbr->fetchObject($res)) {
             $wgOut->addHtml("<tr><td><center><input type='checkbox' name='cb_modify[]' value='$row->wl_id'></center></td><td>");
             $page_title = Title::newFromText($row->wl_page_title);
-            $wgOut->addHtml('<a href="' . $page_title->getFullUrl() . '">' . $row->wl_page_title . "</a>");
+            if ($page_title == NULL)
+                $wgOut->addHtml(wfMsg('whitelistbadtitle') . $row->wl_page_title);
+            else
+                $wgOut->addHtml('<a href="' . $page_title->getFullUrl() . '">' . $row->wl_page_title . "</a>");
             $wgOut->addHTML("</td><td><center>");
             if ($row->wl_allow_edit)
                 $wgOut->addHtml(wfMsg('whitelisttableedit'));
@@ -293,7 +322,7 @@ END;
         if (!method_exists($required, 'AddCalendarJavascript'))
             $wgOut->addWikiText(wfMsg('whitelistnocalendar'));
         
-        $wgOut->addHTML("<form method=\"get\">");
+        $wgOut->addHTML("<form method=\"post\">");
         $wgOut->addHTML('<select name="contractor">');
         
         $users = array();
@@ -379,9 +408,15 @@ class WhiteList extends SpecialPage
         }
         $dbr->freeResult($res);
 
+        $pages = array();
+        
         foreach ($wgWhitelistOverride['always']['read'] as $page)
-            $wgOut->addWikiText("* [[$page]]");
+            array_push($pages, $page);
         foreach ($wgWhitelistOverride['always']['edit'] as $page)
+            array_push($pages, $page);
+
+        sort($pages);
+        foreach ($pages as $page)
             $wgOut->addWikiText("* [[$page]]");
     }
 }

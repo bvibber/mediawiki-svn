@@ -56,7 +56,8 @@ $allMessages = array(
         'whitelistnewtableprocess'    => 'Process',
         'whitelistselectrestricted'   => '== Select Restricted User Name ==',
         'whitelistpagelist'           => "== {{SITENAME}} pages for $1 ==",
-        'whitelistnocalendar'         => "<font color='red' size=3>It looks like [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], a prerequisite for this extension, was not installed properly!</font>"
+        'whitelistnocalendar'         => "<font color='red' size=3>It looks like [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], a prerequisite for this extension, was not installed properly!</font>",
+        'whitelistbadtitle'           => 'Bad title - ',
      )
 );
 ?>

@@ -46,7 +46,7 @@ function wfCheckWhitelist(&$title, &$wgUser, $action, &$result) {
 			$wgWhitelistOverride['always']['read'] = array();
 
 		if( !isset($wgWhitelistOverride['always']['edit']) )
-			$wgWhitelistOverride['always']['edit'] = array();
+			$wgWhitelistOverride['always']['edit'] = array($wgUser->getUserPage()->getPrefixedText(), $wgUser->getTalkPage()->getPrefixedText());
 		
 		if( !isset($wgWhitelistOverride['never']['read']) )
 			$wgWhitelistOverride['never']['read'] = array();
