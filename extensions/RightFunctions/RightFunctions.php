@@ -33,7 +33,7 @@ $wgRightFunctionsDisableFunctions = array();
 
 function wfRightFunctions() {
 	global $wgParser, $wgExtRightFunctions;
-	
+
 	$wgExtRightFunctions = new ExtRightFunctions();
 	$wgParser->setFunctionHook( 'test', array(&$wgExtRightFunctions, 'test') );
 	$wgParser->setFunctionHook( 'ifright', array(&$wgExtRightFunctions, 'ifright') );
@@ -66,7 +66,7 @@ function wfRightFunctionsLanguageGetMagic( &$magicWords, $langCode ) {
 		$magicWords['getrestrictions'] = array( 0, 'getrestrictions' );
 	}
 	return true;
-} 
+}
 
 Class ExtRightFunctions {
 	function ifright( &$parser, $right = '', $then = '', $else = '' ) {
@@ -98,7 +98,7 @@ Class ExtRightFunctions {
 		}
 		return $else;
 	}
-	
+
 	function switchright( &$parser ) {
 		$args = func_get_args();
 		array_shift( $args );
@@ -122,7 +122,7 @@ Class ExtRightFunctions {
 				}
 			}
 		}
-		
+
 		if ( count( $parts ) == 1) {
 			return $parts[0];
 		} elseif ( !is_null( $default ) ) {
@@ -131,7 +131,7 @@ Class ExtRightFunctions {
 			return '';
 		}
 	}
-	
+
 	function userrights( &$parser, $name = '' ) {
 		global $wgUser, $wgRightFunctionsDisableFunctions, $wgRightFunctionsAllowCaching;
 		if(in_array('userrights', $wgRightFunctionsDisableFunctions)) {
@@ -153,7 +153,7 @@ Class ExtRightFunctions {
 		}
 		return trim($userrights);
 	}
-	
+
 	function usergroup( &$parser, $name = '' ) {
 		global $wgUser, $wgRightFunctionsUserGroups, $wgRightFunctionsDisableFunctions, $wgRightFunctionsAllowCaching;
 		if(in_array('usergroup', $wgRightFunctionsDisableFunctions)) {
@@ -180,7 +180,7 @@ Class ExtRightFunctions {
 		}
 		return $right;
 	}
-	
+
 	function ifgroup(&$parser, $group = '', $then = '', $else = '', $name = '') {
 		global $wgUser, $wgRightFunctionsDisableFunctions, $wgRightFunctionsAllowCaching;
 		if(in_array('ifgroup', $wgRightFunctionsDisableFunctions)) {
@@ -202,7 +202,7 @@ Class ExtRightFunctions {
 		}
 		return $else;
 	}
-	
+
 	function switchgroup( &$parser ) {
 		$args = func_get_args();
 		array_shift( $args );
@@ -226,7 +226,7 @@ Class ExtRightFunctions {
 				}
 			}
 		}
-		
+
 		if ( count( $parts ) == 1) {
 			return $parts[0];
 		} elseif ( !is_null( $default ) ) {
@@ -235,7 +235,7 @@ Class ExtRightFunctions {
 			return '';
 		}
 	}
-	
+
 	function ifpageright(&$parser, $right = '', $then = '', $else = '', $page = '') {
 		global $wgUser, $wgRightFunctionsDisableFunctions, $wgRightFunctionsAllowExpensiveQueries, $wgRightFunctionsAllowCaching;
 		if(in_array('ifpageright', $wgRightFunctionsDisableFunctions)) {
@@ -256,7 +256,7 @@ Class ExtRightFunctions {
 		}
 		return $else;
 	}
-	
+
 	function ifpageallowed(&$parser, $name = '', $right = '', $then = '', $else = '', $page = '') {
 		global $wgRightFunctionsAllowExpensiveQueries, $wgRightFunctionsDisableFunctions, $wgRightFunctionsAllowCaching;
 		if(in_array('ifpageallowed', $wgRightFunctionsDisableFuntions) || $name == '') {
@@ -279,7 +279,7 @@ Class ExtRightFunctions {
 		}
 		return $else;
 	}
-	
+
 	function ifprotected(&$parser, $then = '', $else = '', $page = '', $type = 'fscn') {
 		global $wgRightFunctionsAllowCaching, $wgRightFunctionsDisableFunctions;
 		if(in_array('ifprotected', $wgRightFunctionsDisableFunctions)) {
@@ -287,7 +287,7 @@ Class ExtRightFunctions {
 		}
 		if(!$wgRightFunctionsAllowCaching) {
 			$parser->disableCache();
-		}	
+		}
 		if($page) {
 			$title = Title::newFromText($page);
 			if(!$title->exists())
@@ -310,7 +310,7 @@ Class ExtRightFunctions {
 		}
 		return $else;
 	}
-	
+
 	function getrestrictions(&$parser, $right = 'edit', $page = '', $returnall = false) {
 		global $wgRightFunctionsAllowCaching, $wgRightFunctionsDisableFunctions, $wgRestrictionLevels;
 		wfLoadExtensionMessages( 'RightFunctions' );
