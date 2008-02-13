@@ -11,14 +11,18 @@ $wgAjaxExportList[] = "wfAjaxQueryPages";
 function wfAjaxQueryPages( $specialpagename, $offset, $limit ) {
 
 	// Make sure we requested an existing special page
-	if( !$spObj = SpecialPage::getPage( $specialpagename ) ) {
+	if( !$spObj = SpecialPage::getPageByAlias( $specialpagename ) ) {
 		return null;
 	}
 
-	// todo check values
-	$_REQUEST['offset'] = (int) $offset;
-	$_REQUEST['limit'] = (int) $limit;
+	// Alter the GET request.
+	$_GET['offset'] = (int) $offset;
+	$_GET['limit'] = (int) $limit;
 
+	// HACK : rebuild the webrequest object so it knows about offset & limit
+	global $wgRequest ;
+	$wgRequest->__construct();
+	
 	$spObj->execute( null );
 
 	global $wgOut;

@@ -1,5 +1,7 @@
 var wgAjaxQueryPages = {};
 
+wgAjaxQueryPages.inprogress = false;
+
 wgAjaxQueryPages.onLoad = function() {
 	wgAjaxQueryPages.replacelinks( document );
 }
@@ -23,11 +25,17 @@ wgAjaxQueryPages.replacelinks = function( target ) {
 }
 
 wgAjaxQueryPages.call = function( offset, limit) {
+	if( wgAjaxQueryPages.inprogress )
+		return;
+	wgAjaxQueryPages.inprogress = true;
+
 	sajax_do_call(
 		"wfAjaxQueryPages",
 		[wgCanonicalSpecialPageName, offset, limit],
 		wgAjaxQueryPages.processResult
 		);
+	// Reallow request if it is not done in 2 seconds
+	wgAjaxQueryPages.timeoutID = window.setTimeout( function() { wgAjaxQueryPages.inprogress = false; }, 2000);
 
 }
 
@@ -49,6 +57,8 @@ wgAjaxQueryPages.processResult = function(request) {
 	wgAjaxQueryPages.replacelinks( response.firstChild );
 
 	spcontent[0].innerHTML = response.firstChild.innerHTML ;
+
+	wgAjaxQueryPages.inprogress = false;
 }
 
 hookEvent( "load", wgAjaxQueryPages.onLoad );
