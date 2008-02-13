@@ -27,6 +27,7 @@ function wfCommentPagesSkinTemplateTabs ( &$skin, &$content_actions )
 	$namespace = $skin->mTitle->getNamespace();
 	$class = '';
 	$page = '';
+	$query = '';
 
 	if ($namespace == 0 || $namespace == 1) {
 		$comments = Title::newFromText($wgContLang->getNSText($wgCommentPagesNS).':'.$pagename);
