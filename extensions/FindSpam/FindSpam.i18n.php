@@ -178,6 +178,8 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'findspam'             => 'Encontrar "spam"',
+	'findspam-desc'        => 'Adiciona uma [[{{ns:special}}:FindSpam|página especial]] que permite encontrar "spam" adicionado recentemente',
 	'findspam-ip'          => 'Endereço IP:',
 	'findspam-ok'          => 'OK',
 	'findspam-notextfound' => 'Não foram encontradas contribuições',

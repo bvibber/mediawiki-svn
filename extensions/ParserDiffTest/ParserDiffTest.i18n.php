@@ -214,6 +214,7 @@ $messages['he'] = array(
  */
 $messages['hr'] = array(
 	'parserdifftest'      => 'Test razlika parsera',
+	'pdtest-desc'         => '[[Special:ParserDiffTestSpecial|Posebna stranica]] za usporedbu rezultata dva različita parsera',
 	'pdtest_no_target'    => 'Odredište nije zadano.',
 	'pdtest_page_missing' => 'Zadana stranica nije nađena u bazi podataka.',
 	'pdtest_no_changes'   => 'Promjene nisu nađene.',
@@ -383,6 +384,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'parserdifftest'      => 'Tèst de dif per parser',
+	'pdtest-desc'         => 'Pagina especiala per comparar la sortida de dos parsaires diferents.',
 	'pdtest_no_target'    => "Cap de cibla pas d'indicada",
 	'pdtest_page_missing' => 'La pagina especificada es pas estada trobada dins la banca de donadas.',
 	'pdtest_no_changes'   => 'Cap de cambiament es pas estat detectat.',
@@ -420,6 +422,7 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'parserdifftest'      => 'Проверка изменений синтаксического анализатора',
+	'pdtest-desc'         => '[[Special:ParserDiffTestSpecial|Служебная страница]] для сравнения вывода двух разных парсеров',
 	'pdtest_no_target'    => 'Не указана цель.',
 	'pdtest_page_missing' => 'Указанная страница не найдена в базе данных.',
 	'pdtest_no_changes'   => 'Изменений не обнаружено.',
@@ -564,3 +567,4 @@ $messages['vo'] = array(
 	'pdtest_diff'         => 'Difs',
 	'pdtest_side_by_side' => 'Jonolöd leigodi',
 );
+

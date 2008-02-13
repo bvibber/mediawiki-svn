@@ -22,6 +22,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'filelist'              => 'قائمة الملف',
+	'filelist-desc'         => 'صفحة خاصة لعرض الملفات المرفوعة',
 	'filelist-show-list'    => 'عرض القائمة',
 	'filelist-show-gallery' => 'عرض المعرض',
 );
@@ -94,9 +95,11 @@ $messages['lb'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
 	'filelist'              => 'Bestandenlijst',
+	'filelist-desc'         => '[[Special:Filelist|Speciale pagina]] met een lijst van geüploade bestanden',
 	'filelist-show-list'    => 'Lijst bekijken',
 	'filelist-show-gallery' => 'Galerij bekijken',
 );
@@ -115,6 +118,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'filelist'              => 'Lista dels fichièrs',
+	'filelist-desc'         => 'Pagina especiala per enumerar los fichièrs telecargats.',
 	'filelist-show-list'    => 'Veire la lista',
 	'filelist-show-gallery' => 'Veire la galariá',
 );

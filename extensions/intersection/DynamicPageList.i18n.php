@@ -244,6 +244,7 @@ $messages['pt'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
+	'intersection-desc'          => 'Выводит в маркированный список последние добавления в категорию или объединение нескольких категорий',
 	'intersection_toomanycats'   => 'DynamicPageList: слишком много категорий!',
 	'intersection_toofewcats'    => 'DynamicPageList: слишком мало категорий!',
 	'intersection_noresults'     => 'DynamicPageList: нет результатов!',

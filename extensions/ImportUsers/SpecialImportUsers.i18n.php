@@ -218,6 +218,7 @@ $messages['pt'] = array(
 $messages['sv'] = array(
 	'importusers'                     => 'Importera användare',
 	'importusers-uploadfile'          => 'Ladda upp fil',
+	'importusers-form-caption'        => 'Sätt in CSV-fil (UTF-8)',
 	'importusers-form-button'         => 'Importera',
 	'importusers-log'                 => 'Import logg',
 	'importusers-log-summary'         => 'Sammanfattning',

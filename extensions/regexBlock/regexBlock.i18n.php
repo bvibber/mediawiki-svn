@@ -483,6 +483,7 @@ $messages['pt'] = array(
 	'regexblock-form-reason'         => 'Motivo:',
 	'regexblock-already-blocked'     => '$1 já está bloqueada.',
 	'regexblock-stats-times'         => 'foi bloqueado em',
+	'regexblock-view-go'             => 'Ir',
 	'regexblock-view-reason'         => 'motivo: $1',
 	'regexblock-view-reason-default' => 'motivo genérico',
 	'regexblock-view-block-infinite' => 'bloqueio permanente',
@@ -537,6 +538,13 @@ $messages['sk'] = array(
 	'regexblock-view-stats'           => '(štatistiky)',
 	'regexblock-view-empty'           => 'Zoznam blokovaných mien a IP adries je prázdny.',
 	'regexblock-view-time'            => '$1',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'regexblock-view-go' => 'Gå',
 );
 
 /** Volapük (Volapük)

@@ -528,8 +528,12 @@ $messages['rm'] = array(
 	'linksearch-ok'    => 'Tschertgar',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
 $messages['ru'] = array(
 	'linksearch'       => 'Поиск внешних ссылок',
+	'linksearch-desc'  => 'Позволяет находить страницы с внешними ссылками, соответствующими указанному шаблону',
 	'linksearch-pat'   => 'Шаблон для поиска:',
 	'linksearch-ns'    => 'Пространство имён:',
 	'linksearch-ok'    => 'Искать',

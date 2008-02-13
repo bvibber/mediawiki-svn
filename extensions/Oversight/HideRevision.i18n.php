@@ -490,40 +490,45 @@ $messages['he'] = array(
 שחרור מידע זה לציבור עלול לגרום להסרה לצמיתות של ההרשאות.',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ * @author Dnik
+ */
 $messages['hr'] = array(
-	'hiderevision' => 'Trajno sakrij uređivanja',
-	'hiderevision-prompt' => 'Oznaka (broj) uređivanja koju sakrivate:',
-	'hiderevision-continue' => 'Nastavi',
-	'hiderevision-text' => 'Ovaj alat treba biti uporabljen \'\'\'samo\'\'\' u slijedećim slučajevima:
+	'hiderevision'                => 'Trajno sakrij uređivanja',
+	'hiderevision-desc'           => 'Sakrijte pojedine inačice od svih korisnika zbog pravnih razloga ili sl.',
+	'hiderevision-prompt'         => 'Oznaka (broj) uređivanja koju sakrivate:',
+	'hiderevision-continue'       => 'Nastavi',
+	'hiderevision-text'           => "Ovaj alat treba biti uporabljen '''samo''' u slijedećim slučajevima:
 * Navođenje osobnih informacija
-*: \'\'kućne adrese i telefonski brojevi, JMBG itd\'\'
+*: ''kućne adrese i telefonski brojevi, JMBG itd''
 
-\'\'\'Zloporaba ovog alata povlači gubitak prava.\'\'\'
+'''Zloporaba ovog alata povlači gubitak prava.'''
 
 Uklonjene promjene neće biti vidljive nikome putem web preglednika,
 ali uklanjanje se evidentira i može biti vraćeno ručno ukoliko
-učinite pogrešku.',
-	'hiderevision-reason' => 'Razlog (bit će pohranjen u evidenciji nedostupnoj suradnicima):',
-	'hiderevision-submit' => 'Trajno sakrij',
-	'hiderevision-tab' => 'Sakrij uređivanje',
-	'hiderevision-norevisions' => 'Niste naveli uređivanja koje želite ukloniti.',
-	'hiderevision-noreason' => 'Morate navesti razlog uklanjanja/skrivanja uređivanja.',
-	'hiderevision-status' => 'Uređivanje $1: $2',
-	'hiderevision-success' => 'Uspješno arhivirano i obrisano.',
-	'hiderevision-error-missing' => 'Nije nađeno u bazi podataka.',
-	'hiderevision-error-current' => 'Ne mogu obrisati posljednje uređivanje stranice. Prvo uklonite tu promjenu (\'\'revert\'\').',
-	'hiderevision-error-delete' => 'Ne mogu arhivirati; moguće je promjena već bila prethodno obrisana?',
+učinite pogrešku.",
+	'hiderevision-reason'         => 'Razlog (bit će pohranjen u evidenciji nedostupnoj suradnicima):',
+	'hiderevision-submit'         => 'Trajno sakrij',
+	'hiderevision-tab'            => 'Sakrij uređivanje',
+	'hiderevision-norevisions'    => 'Niste naveli uređivanja koje želite ukloniti.',
+	'hiderevision-noreason'       => 'Morate navesti razlog uklanjanja/skrivanja uređivanja.',
+	'hiderevision-status'         => 'Uređivanje $1: $2',
+	'hiderevision-success'        => 'Uspješno arhivirano i obrisano.',
+	'hiderevision-error-missing'  => 'Nije nađeno u bazi podataka.',
+	'hiderevision-error-current'  => "Ne mogu obrisati posljednje uređivanje stranice. Prvo uklonite tu promjenu (''revert'').",
+	'hiderevision-error-delete'   => 'Ne mogu arhivirati; moguće je promjena već bila prethodno obrisana?',
 	'hiderevision-archive-status' => 'Obrisana uređivanja $1: $2',
-	'oversight-nodiff' => 'Nemoguće praćenje promjena jer nema prethodnih promjena stranice. Ili je:
+	'oversight-nodiff'            => 'Nemoguće praćenje promjena jer nema prethodnih promjena stranice. Ili je:
 *stranica obrisana
 *ova skrivena promjena je prva promjena',
-	'oversight-log-hiderev' => 'uklonjeno uređivanje $1',
-	'oversight' => 'Nadzor (\'\'oversight\'\')',
-	'oversight-view' => 'potankosti',
-	'oversight-difference' => '(razlike prema prethodnim promjenama)',
-	'oversight-prev' => 'Posljednje prethodno uređivanje',
-	'oversight-hidden' => 'Skriveno uređivanje',
-	'oversight-header' => 'Slijedi popis uređivanja nedavno trajno skrivenih od javnosti.
+	'oversight-log-hiderev'       => 'uklonjeno uređivanje $1',
+	'oversight'                   => "Nadzor (''oversight'')",
+	'oversight-view'              => 'potankosti',
+	'oversight-difference'        => '(razlike prema prethodnim promjenama)',
+	'oversight-prev'              => 'Posljednje prethodno uređivanje',
+	'oversight-hidden'            => 'Skriveno uređivanje',
+	'oversight-header'            => 'Slijedi popis uređivanja nedavno trajno skrivenih od javnosti.
 Objavljivanje ove informacije može prouzročiti trajan gubitak prava nadzora.',
 );
 
@@ -1041,6 +1046,7 @@ Revisjoner som fjernes vil ikke være tilgjengelige for noen via nettsiden, men 
  */
 $messages['oc'] = array(
 	'hiderevision'                => 'Amagar definitivament las revisions',
+	'hiderevision-desc'           => 'Amaga las modificacions individualas de totes los utilizaires per de motius legals, etc.',
 	'hiderevision-prompt'         => 'Numèro d’edicion de suprimir :',
 	'hiderevision-continue'       => 'Contunhar',
 	'hiderevision-text'           => "Aquesta foncionalitat deu èsser utilizada '''unicament''' pels cases seguents : * Informacion personala inapropriada, *: ''Adreça personala e numèro de telèfon, numèro de seguretat sociala, etc...'' ''' L'abús d'aquesta foncionalitat implicarà la pèrda d'aquestes privilègis.''' Los articles escafats son pas mai visibles dins aqueste sistèma, mas aquestas supressions son jornalizadas e pòdon èsser restauradas manualament per un administrator qu'a un accès dirècte sus la banca de donadas se avètz fach una error.",
@@ -1195,6 +1201,7 @@ $messages['rmy'] = array(
  */
 $messages['ru'] = array(
 	'hiderevision'                => 'Скрыть версию страницы',
+	'hiderevision-desc'           => 'Скрывает отдельные версии страниц от всех пользователей, используется по судебно-юридическим причинам и т. п.',
 	'hiderevision-prompt'         => 'Номер версии, которую требуется скрыть:',
 	'hiderevision-continue'       => 'Продолжить',
 	'hiderevision-text'           => "Данная страница должна использоваться '''только''' в случае разглашения личной информации —''реальные имя и фамилия, домашние адреса и номера телефонов, паспортов, и тому подобное''.
@@ -1487,6 +1494,7 @@ $messages['te'] = array(
 	'hiderevision'                => 'కూర్పులను శాశ్వతంగా దాచు',
 	'hiderevision-prompt'         => 'తొలగించాల్సిన కూర్పు సంఖ్య:',
 	'hiderevision-continue'       => 'కొనసాగించు',
+	'hiderevision-reason'         => 'కారణం (అంతరంగికంగా లాగ్ చేస్తాం):',
 	'hiderevision-submit'         => 'ఈ డాటాని శాశ్వతంగా దాచు',
 	'hiderevision-tab'            => 'కూర్పుని దాచు',
 	'hiderevision-norevisions'    => 'తొలగించడానికి కూర్పులేమీ ఇవ్వలేదు.',

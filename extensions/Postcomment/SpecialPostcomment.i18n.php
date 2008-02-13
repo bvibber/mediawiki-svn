@@ -157,6 +157,8 @@ $messages['oc'] = array(
  */
 $messages['pt'] = array(
 	'postcomment_leavemessagefor' => 'Deixe uma mensagem para $1',
+	'postcomment_said'            => 'disse',
+	'postcomment_invalidrequest'  => 'Pedido inválido.',
 );
 
 /** Russian (Русский)

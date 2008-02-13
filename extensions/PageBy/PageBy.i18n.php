@@ -180,8 +180,9 @@ $messages['pms'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'pageby-first' => 'Página criada por $1, $2',
-	'pageby-anon'  => '<i>anónimo</i>',
+	'pageby-first'        => 'Página criada por $1, $2',
+	'pageby-contributors' => 'Contribuidores:',
+	'pageby-anon'         => '<i>anónimo</i>',
 );
 
 /** Russian (Русский)

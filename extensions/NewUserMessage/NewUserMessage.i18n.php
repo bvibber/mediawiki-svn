@@ -42,6 +42,13 @@ $messages['hsb'] = array(
 	'newusermessage-desc' => '[[MediaWiki:NewUserMessage|Powěsć]] nowo wutworjenym wužiwarskim diskusijnym stronam přidać',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'newusermessage-desc' => '新規登録利用者のトークページに[[MediaWiki:NewUserMessage|メッセージ]]を書き込む',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -54,6 +61,13 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'newusermessage-desc' => 'Voegt een [[MediaWiki:NewUserMessage|bericht]] toe aan de overlegpagina van nieuwe gebruikers',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'newusermessage-desc' => "Ajusta un [[MediaWiki:NewUserMessage|messatge]] dins la pagina de discussion d'un utilizaire novèl.",
 );
 
 /** Portuguese (Português)

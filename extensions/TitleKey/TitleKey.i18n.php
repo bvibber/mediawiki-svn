@@ -56,6 +56,13 @@ $messages['nl'] = array(
 	'titlekey-desc' => 'Backend voor zoeksuggesties voor paginanaamvoorvoegsels',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'titlekey-desc' => "Retorn vèrs la fin de la sugestion de recèrca d'un prefix de títol",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

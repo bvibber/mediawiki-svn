@@ -104,6 +104,15 @@ $messages['is'] = array(
 	'categorystepper-end'   => '(Endi flokks)',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'categorystepper-start' => '（カテゴリの先頭）',
+	'categorystepper-desc'  => '指定されたカテゴリに所属するページへ、カテゴリ内ページが順番に表示できるボックスを追加する',
+	'categorystepper-end'   => '（カテゴリの最後）',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -316,6 +316,15 @@ $messages['sv'] = array(
 	'assert_edit_message' => 'Den försäkran som angavs ($1) misslyckades.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'assert_edit_title'   => 'ఉటంకింపు విఫలమైంది',
+	'assert_edit_desc'    => 'బాట్లు వాడే దిద్దుబాటు ఉటంకింపులను చేరుస్తుంది',
+	'assert_edit_message' => 'ఉటంకింపు ($1) విఫలమైంది.',
+);
+
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */

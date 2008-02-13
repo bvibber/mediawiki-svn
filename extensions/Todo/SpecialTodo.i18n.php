@@ -260,6 +260,7 @@ $4',
  */
 $messages['oc'] = array(
 	'todo'                  => "Lista dels prètzfaches d'executar",
+	'todo-tab'              => 'todo',
 	'todo-new-queue'        => 'Novèl',
 	'todo-mail-subject'     => 'Article acabat sus la lista dels prètzfaches de $1',
 	'todo-mail-body'        => "Avètz demandat la confirmacion per corrièr electronic per çò que concernís l'acabament d'un article qu'aviatz sus la lista dels preètzfaches de $1. Article : $2 Somes : $3 Aqueste article es estat marcat coma acabat amb lo comentari seguent : $4",

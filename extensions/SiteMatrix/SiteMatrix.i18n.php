@@ -46,6 +46,7 @@ $messages['ang'] = array(
  */
 $messages['ar'] = array(
 	'sitematrix'           => 'قائمة مشاريع ويكيميديا',
+	'sitematrix-desc'      => 'يعرض [[Special:SiteMatrix|قائمة بويكيات ويكيميديا]]',
 	'sitematrix-language'  => 'اللغة',
 	'sitematrix-project'   => 'اسم المشروع، وصلة المشروع الداخلية ووصلة الإنترويكي',
 	'sitematrix-others'    => 'مشاريع ويكيميديا الأخرى',
@@ -233,10 +234,13 @@ $messages['fa'] = array(
  * @author Nike
  */
 $messages['fi'] = array(
-	'sitematrix'          => 'Luettelo Wikimedian wikeistä',
-	'sitematrix-language' => 'Kieli',
-	'sitematrix-project'  => 'Projektin nimi, projektienvälinen linkki ja interwiki-linkki',
-	'sitematrix-others'   => 'Muut Wikimedian projektit',
+	'sitematrix'           => 'Luettelo Wikimedian wikeistä',
+	'sitematrix-desc'      => 'Näyttää [[Special:SiteMatrix|luettelon Wikimedian wikeistä]]',
+	'sitematrix-language'  => 'Kieli',
+	'sitematrix-project'   => 'Projektin nimi, projektienvälinen linkki ja interwiki-linkki',
+	'sitematrix-others'    => 'Muut Wikimedian projektit',
+	'sitematrix-total'     => "'''Kaikki yhteensä: $1'''",
+	'sitematrix-sitetotal' => 'Yhteensä',
 );
 
 /** French (Français)
@@ -246,6 +250,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'sitematrix'           => 'Liste des wikis de Wikimedia Foundation',
+	'sitematrix-desc'      => 'Affiche une [[Special:SiteMatrix|liste de wikis de la Fondation Wikimedia]]',
 	'sitematrix-language'  => 'Langue',
 	'sitematrix-project'   => 'Nom du projet, lien interprojet et lien interwiki',
 	'sitematrix-others'    => 'Autres projets de Wikimedia Foundation',
@@ -297,11 +302,18 @@ $messages['he'] = array(
 	'sitematrix-sitetotal' => 'סך הכל',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ * @author Dnik
+ * @author לערי ריינהארט
+ */
 $messages['hr'] = array(
-	'sitematrix' => 'Tablica Wikimedijinih projekata',
-	'sitematrix-language' => 'Jezik',
-	'sitematrix-project' => 'Ime projekta, poveznica među projektima i međuwiki poveznica',
-	'sitematrix-others' => 'Ostali projekti Wikimedije',
+	'sitematrix'           => 'Tablica Wikimedijinih projekata',
+	'sitematrix-language'  => 'Jezik',
+	'sitematrix-project'   => 'Ime projekta, poveznica među projektima i međuwiki poveznica',
+	'sitematrix-others'    => 'Ostali projekti Wikimedije',
+	'sitematrix-total'     => "'''Ukupni broj: $1'''",
+	'sitematrix-sitetotal' => 'Ukupno',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -494,9 +506,11 @@ $messages['nds'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
 	'sitematrix'           => "Lijst met Wikimedia-wiki's",
+	'sitematrix-desc'      => 'Toont een [[Special:SiteMatrix|lijst van Wikimedia-wikis]]',
 	'sitematrix-language'  => 'Taal',
 	'sitematrix-project'   => 'Naam van het project, interprojectlink en interwikilink',
 	'sitematrix-others'    => 'Andere projecten van Wikimedia',
@@ -525,11 +539,17 @@ $messages['no'] = array(
 	'sitematrix-others'   => 'Andre Wikimedia-prosjekter',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
-	'sitematrix' => 'Lista dels wikis Wikimedia',
-	'sitematrix-language' => 'Lenga',
-	'sitematrix-project' => 'Nom del projècte, ligam interprojècte e ligam interwiki',
-	'sitematrix-others' => 'Autres projèctes de Wikimedia Foundation',
+	'sitematrix'           => 'Lista dels wikis Wikimedia',
+	'sitematrix-desc'      => 'Aficha una [[Special:SiteMatrix|tièra de wikis de la Fondacion Wikimèdia]]',
+	'sitematrix-language'  => 'Lenga',
+	'sitematrix-project'   => 'Nom del projècte, ligam interprojècte e ligam interwiki',
+	'sitematrix-others'    => 'Autres projèctes de Wikimedia Foundation',
+	'sitematrix-total'     => "'''Total del compte : $1'''",
+	'sitematrix-sitetotal' => 'Total',
 );
 
 /** Pangasinan (Pangasinan)
@@ -603,10 +623,13 @@ $messages['ro'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
-	'sitematrix'          => 'Список проектов Викимедиа',
-	'sitematrix-language' => 'Язык',
-	'sitematrix-project'  => 'Имя проекта, межпроектная ссылка и интервики',
-	'sitematrix-others'   => 'Другие проекты «Фонда Викимедиа»',
+	'sitematrix'           => 'Список проектов Викимедиа',
+	'sitematrix-desc'      => 'Показывает [[Special:SiteMatrix|список проектов Викимедиа]]',
+	'sitematrix-language'  => 'Язык',
+	'sitematrix-project'   => 'Имя проекта, межпроектная ссылка и интервики',
+	'sitematrix-others'    => 'Другие проекты «Фонда Викимедиа»',
+	'sitematrix-total'     => "'''Общее количество: $1'''",
+	'sitematrix-sitetotal' => 'Всего',
 );
 
 /** Yakut (Саха тыла)
@@ -690,6 +713,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'sitematrix'           => 'వికీమీడియా వికీల జాబితా',
+	'sitematrix-desc'      => '[[Special:SiteMatrix|వికీమీడియా యొక్క వికీల జాబితా]]ని చూపిస్తుంది',
 	'sitematrix-language'  => 'భాష',
 	'sitematrix-project'   => 'ప్రాజెక్టు పేరు, అంతర్‌ప్రాజెక్టు లింకు మరియు అంతర్వికీ లింకు',
 	'sitematrix-others'    => 'వికీమీడియాలోని ఇతర ప్రాజెక్టులు',

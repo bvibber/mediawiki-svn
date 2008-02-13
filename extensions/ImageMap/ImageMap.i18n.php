@@ -559,6 +559,7 @@ $messages['qu'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
+	'imagemap_desc'               => 'Позволяет указывать срабатывающие на нажатие карты изображений на стороне клиента с помощью тега <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image'           => '&lt;imagemap&gt;: в первой строке должно быть задано изображение',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: неверное или отсутствующее изображение',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: неверная ссылка в конце строки $1',

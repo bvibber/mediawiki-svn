@@ -155,11 +155,12 @@ $messages['nl'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'minipreview-desc'                => "Aficha un mini aperebut, aprèp vèrs un imatge, pichons apercebuts d'autres mèdias dins las meteissas categorias o alara afichat dins las meteissas paginas.",
 	'minipreview-files_in_category'   => 'I a {{PLURAL:$1|un fiquièr|$1 fiquièrs}} al total dins aquesta categoria.',
 	'minipreview-files_in_gallery'    => "I a {{PLURAL:$1|un fiquièr|$1 fiquièrs}} al total dins aquesta galariá d'imatges.",
 	'minipreview-no_more_files_here'  => 'Pas mai cap de fichièr dins aquesta direccion',
-	'minipreview-ignore_categories'   => 'Aquò es la lista dels noms de categoria o de prefixes de nom. Aquestas categorias son pas afichadas per MiniPreview. Per exemple, « * PD- » aficharà pas totas las categorias que lo nom comença per « PD- », tala coma « PD-old ». * GFDL- * GFDL * CC- * PD- * Self',
 	'minipreview-no_category_gallery' => 'Pas de categoria ni de galariá!',
+	'minipreview-ignore_categories'   => 'Aquò es la lista dels noms de categoria o de prefixes de nom. Aquestas categorias son pas afichadas per MiniPreview. Per exemple, « * PD- » aficharà pas totas las categorias que lo nom comença per « PD- », tala coma « PD-old ». * GFDL- * GFDL * CC- * PD- * Self',
 );
 
 $messages['pl'] = array(
@@ -226,6 +227,14 @@ $messages['sk'] = array(
 * CC-
 * PD-
 * Self',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'minipreview-files_in_category' => '$1 filer totelt in denna kategori.',
+	'minipreview-files_in_gallery'  => '$1 filer totalt i detta galleri.',
 );
 
 /** Turkish (Türkçe)

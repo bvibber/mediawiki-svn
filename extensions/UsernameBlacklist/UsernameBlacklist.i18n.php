@@ -713,6 +713,7 @@ $messages['qu'] = array(
  * @author HalanTul
  */
 $messages['ru'] = array(
+	'usernameblacklist-desc'          => 'Добавляет [[MediaWiki:Usernameblacklist|чёрный список имён участников]], позволяющий запретить создание учётных записей, соответствующих указанным регулярным выражениям',
 	'blacklistedusername'             => 'Запрещённое имя пользователя',
 	'blacklistedusernametext'         => 'Имя пользователя, которое вы выбрали, находится в [[MediaWiki:Usernameblacklist|
 списке запрещённых имён]]. Пожалуйста, выберите другое имя.',

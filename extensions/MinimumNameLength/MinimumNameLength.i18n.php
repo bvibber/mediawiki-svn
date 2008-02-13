@@ -162,6 +162,13 @@ $messages['su'] = array(
 	'minnamelength-error' => 'Landihan anjeun pondok teuing. Paling henteu kudu $1.',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'minnamelength-error' => 'Ditt användarnamn är för kort. Den minsta längden är $1.',
+);
+
 /* Cantonese (Shinjiman) */
 $messages['yue'] = array(
 	'minnamelength-error' => '你嘅用戶名太短喇。最少嘅長度係$1個字元。',

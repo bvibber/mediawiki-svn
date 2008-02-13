@@ -969,6 +969,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'ogg-desc'                => 'Supòrt pels fichièrs Ogg Theora e Vorbis, amb un lector Javascript',
 	'ogg-short-audio'         => 'Fichièr son Ogg $1, $2',
 	'ogg-short-video'         => 'Fichièr vidèo Ogg $1, $2',
 	'ogg-short-general'       => 'Fichièr mèdia Ogg $1, $2',
@@ -1123,6 +1124,7 @@ $messages['qu'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
+	'ogg-desc'                => 'Обработчик файлов Ogg Theora и Vorbis с использованием JavaScript-проигрывателя',
 	'ogg-short-audio'         => 'Звуковой файл Ogg $1, $2',
 	'ogg-short-video'         => 'Видео-файл Ogg $1, $2',
 	'ogg-short-general'       => 'Медиа-файл Ogg $1, $2',
@@ -1306,6 +1308,8 @@ $messages['te'] = array(
 	'ogg-long-error'          => '(తప్పుడు ogg ఫైలు: $1)',
 	'ogg-play'                => 'ఆడించు',
 	'ogg-pause'               => 'ఆపు',
+	'ogg-stop'                => 'ఆపివేయి',
+	'ogg-play-video'          => 'వీడియోని ఆడించు',
 	'ogg-player-videoElement' => '<video> మూలకం',
 	'ogg-player-oggPlugin'    => 'Ogg ప్లగిన్',
 	'ogg-player-thumbnail'    => 'నిచ్చల చిత్రాలు మాత్రమే',

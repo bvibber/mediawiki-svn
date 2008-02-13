@@ -232,9 +232,12 @@ $messages['pl'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'multipleupload'                   => 'Carregar ficheiros',
 	'multipleupload-ignoreallwarnings' => "Ignorar '''todos os avisos''' e, mesmo assim, gravar os ficheiros.",
 	'multipleupload-saveallfiles'      => 'Gravar todos os ficheiros',
 	'multipleupload-page'              => '{{ns:project}}:Política de eliminação de ficheiros',
+	'multiupload-fileuploaded'         => 'Ficheiro carregado.',
+	'multiupload-toolbox'              => 'Carregar múltiplos ficheiros',
 );
 
 /** Russian (Русский)
@@ -303,6 +306,7 @@ Uunoainde Doatäie wäide fluks läsked, sjuch do [[{{MediaWiki:Multipleupload-p
 $messages['sv'] = array(
 	'multipleupload'              => 'Ladda upp filer',
 	'multipleupload-saveallfiles' => 'Spara alla filer',
+	'multipleupload-page'         => '{{ns:project}}:Filborttagnings policy',
 	'multiupload-fileuploaded'    => 'Fil uppladdad.',
 );
 

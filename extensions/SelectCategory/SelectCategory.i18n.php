@@ -187,6 +187,13 @@ $messages['stq'] = array(
 	'selectcategory-subtitle' => 'Shift-Muus uum moorere ätterfoulgjende Iendraage tou (de-)selektierjen, Strg-Muus uum eenpelde Iendraage tou (de-)selektierjen.',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'selectcategory-title' => 'Välj kategorier',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */
@@ -210,3 +217,4 @@ $messages['zh-hant'] = array(
 	'selectcategory-title'    => '選擇分類',
 	'selectcategory-subtitle' => '按著Shift鍵再以滑鼠選取連續的項目，按著Ctrl鍵再以滑鼠選取非連續的項目。',
 );
+

@@ -271,7 +271,9 @@ $messages['stq'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'lookupuser_email' => 'E-post: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_email'        => 'E-post: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'     => 'Riktigt namn: $1',
+	'lookupuser_registration' => 'Registrerings datum: $1',
 );
 
 /** Volapük (Volapük)

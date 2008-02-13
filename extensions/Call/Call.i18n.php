@@ -153,6 +153,27 @@ Probléma esetén megpróbálhatod a <b>Special:Call/DebuG</b> használatát",
 	'call-save-failed'  => 'A következő szöveg NEM lett elmentve, mert már létezik <big>[[$1]]</big> nevű lap.',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'call'              => 'ページ呼び出し',
+	'call-desc'         => 'テンプレート（または普通のウィキページ）にパラメータを渡すハイパーリンクを作成できます。ブラウザのアドレス欄やウィキテキスト内部でも利用可能です。',
+	'call-text'         => "ページ呼び出しエクステンションは、あるウィキページに、そのページが取る引数であるオプションパラメータが設定されていることを想定しています。<br /><br />
+例1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br />
+例2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br />
+例3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br /><br />
+例4 (ブラウザURL): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:MyPage,parm1=value1</tt><br /><br />
+
+<i>ページ呼び出しエクステンション</i> は、与えられたページをパラメータ付きで呼び出します。<br>あなたは呼び出されたページ内容とタイトルを見ることはできますが、'ページのタイプ'は特別ページ、<br />つまりそのページを編集することはできません。<br />ページ内容は指定したパラメータによって変化します。<br /><br />
+
+<i>ページ呼び出しエクステンション</i> は、MediaWiki上でインタラクティブなアプリケーションを構築するのに便利です。<br />[http://semeb.com/dpldemo/Template:Catlist the DPL GUI]を参考にしてください。<br />
+問題が発生した場合は、<b>[[Special:Call/DebuG]]</b> をお試しください。",
+	'call-save'         => "このページ呼び出し結果は、ページ ''$1'' として保存されます。",
+	'call-save-success' => '以下のテキストが、ページ <big>[[$1]]</big> として保存されました。',
+	'call-save-failed'  => "以下のテキストは、既に同名のページが存在するため、ページ <big>[[$1]]</big> として'''保存されませんでした'''。",
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

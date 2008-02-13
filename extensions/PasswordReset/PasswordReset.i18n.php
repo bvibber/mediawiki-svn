@@ -257,6 +257,8 @@ $messages['oc'] = array(
 	'passwordreset-disableuserexplain' => "(règla un hash de senhal pas valid - l'utilizaire pòt pas se connectar)",
 	'passwordreset-disablesuccess'     => "Compte d'utilizaire desactivat (user_id : $1)",
 	'passwordreset-accountdisabled'    => 'Aqueste compte es estat desactivat.',
+	'disabledusers'                    => 'Utilizaires desactivats',
+	'disabledusers-summary'            => 'Aquò es la tièra dels utilizaires que son estats desactivats per PasswordReset.',
 );
 
 $messages['pl'] = array(
@@ -298,6 +300,7 @@ $messages['pt'] = array(
 	'passwordreset-newpass'         => 'Nova Palavra-Chave',
 	'passwordreset-confirmpass'     => 'Confirme Palavra-Chave',
 	'passwordreset-submit'          => 'Repor Palavra-Chave',
+	'passwordreset-disableuser'     => 'Desactivar Conta de Utilizador?',
 );
 
 $messages['rm'] = array(

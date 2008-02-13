@@ -65,6 +65,15 @@ $messages['nl'] = array(
 	'multiboilerplate-submit' => 'Laden',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'multiboilerplate-desc'   => "Aficha una boita en naut de la pagina d'edicion per seleccionar e cargar una pagina o un modèl.",
+	'multiboilerplate-legend' => "Seleccionar la pagina d'incorporar",
+	'multiboilerplate-submit' => 'Cargar',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

@@ -408,6 +408,7 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'newuserlogpage'           => 'アカウント作成記録',
 	'newuserlogpagetext'       => '以下は最近作成されたアカウントの一覧です。',
+	'newuserlog-desc'          => '[[Special:Log/newusers|アカウント作成記録]]を[[Special:Log|ログ]]に追加する',
 	'newuserlog-byemail'       => 'パスワードを電子メールで送信しました',
 	'newuserlog-create-entry'  => '新規利用者',
 	'newuserlog-create2-entry' => 'アカウント $1 が作成されました',
@@ -525,10 +526,11 @@ $messages['mk'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
+ * @author Shijualex
  */
 $messages['ml'] = array(
-	'newuserlogpage'           => 'ഉപയോക്തൃസൃഷ്ടി പ്രവര്‍ത്തനരേഖകള്‍',
-	'newuserlogpagetext'       => 'ഇത് ഉപയോക്താക്കളെ സൃഷ്ടിച്ചതിന്റെ പ്രവര്‍ത്തനരേഖകളാണ്',
+	'newuserlogpage'           => 'പുതിയ ഉപയോക്താക്കളുടെ പട്ടിക',
+	'newuserlogpagetext'       => 'പുതിയതായി അംഗത്വമെടുത്ത ഉപയോക്താക്കളുടെ പട്ടിക താഴെ കാണാം.',
 	'newuserlog-byemail'       => 'രഹസ്യവാക്ക് ഇ-മെയില്‍ വഴി അയച്ചിരിക്കുന്നു',
 	'newuserlog-create-entry'  => 'പുതിയ ഉപയോക്താവ്',
 	'newuserlog-create2-entry' => '$1 എന്ന ഉപയോക്താവിനുവേണ്ടി അക്കൗണ്ട് സൃഷ്ടിച്ചിരിക്കുന്നു',
@@ -603,9 +605,14 @@ $messages['no'] = array(
 	'newuserlog-create2-entry' => 'opprettet konto for $1',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
 	'newuserlogpage'           => 'Istoric de las creacions de comptes',
-	'newuserlogpagetext'       => 'Jornal de las creacions de comptes d\'utilizaires',
+	'newuserlogpagetext'       => "Jornal de las creacions de comptes d'utilizaires",
+	'newuserlog-desc'          => 'Ajusta un [[Special:Log/newusers|jornal de las creacions de comptes]] a [[Special:Log]]',
+	'newuserlog-byemail'       => 'senhal mandat per corrièr electronic',
 	'newuserlog-create-entry'  => 'Utilizaire novèl',
 	'newuserlog-create2-entry' => 'compte creat per $1',
 );

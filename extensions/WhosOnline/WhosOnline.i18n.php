@@ -65,6 +65,14 @@ $messages['nl'] = array(
 	'whosonline-desc' => 'Toont [[Special:WhosOnline|een lijst]] van aangemelde en anonieme gebruikers die actief zijn',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'whosonline'      => 'Qui es en linha',
+	'whosonline-desc' => "Aficha [[Special:WhosOnline|una tièra]] de personas inscrichas e d'utilizaires anonims actualament en linha",
+);
+
 $messages['pl'] = array(
 	'whosonline' => 'Kto online',
 );

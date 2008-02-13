@@ -474,6 +474,7 @@ $messages['pt'] = array(
 	'review_version_statistic_cell' => '$1 de $2',
 	'review_user_details_link'      => '(detalhes)',
 	'review_has_been_stored'        => "<span id='review_has_been_stored'>A sua revisão analisada foi guardada!</span>",
+	'review_topic'                  => 'Tópico',
 	'review_no_opinion'             => 'Sem opinião',
 	'review_comment'                => 'Comentário',
 );
@@ -520,5 +521,12 @@ $messages['sk'] = array(
 	'review_no_opinion'                                      => 'bez názoru',
 	'review_rating'                                          => 'Hodnotenie',
 	'review_comment'                                         => 'Komentár',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'review_comment' => 'Kommentar',
 );
 

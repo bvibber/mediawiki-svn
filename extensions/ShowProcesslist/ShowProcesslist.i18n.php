@@ -213,6 +213,21 @@ $messages['stq'] = array(
 	'showprocesslist-info'    => 'Info',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'showprocesslist'         => 'Visa lista över processer',
+	'showprocesslist-id'      => 'ID',
+	'showprocesslist-user'    => 'Användare',
+	'showprocesslist-host'    => 'Värd',
+	'showprocesslist-db'      => 'Databas',
+	'showprocesslist-command' => 'Kommando',
+	'showprocesslist-time'    => 'Tid',
+	'showprocesslist-state'   => 'Tillstånd',
+	'showprocesslist-info'    => 'Information',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

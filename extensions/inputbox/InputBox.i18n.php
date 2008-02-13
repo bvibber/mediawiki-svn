@@ -653,6 +653,7 @@ $messages['roa-rup'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
+	'inputbox-desc'           => 'Позволяет включать заранее определённые HTML-формы',
 	'inputbox-error-no-type'  => 'Вы не указали тип создаваемого поля ввода.',
 	'inputbox-error-bad-type' => 'Неизвестный тип поля ввода «$1». Пожалуйста, укажите один из допустимых типов: «create», «comment», «search» или «search2».',
 	'tryexact'                => 'Строгий поиск',
@@ -760,9 +761,10 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'tryexact'       => 'ఖచ్చితమైన పోలిక కొరకు ప్రయత్నించు',
-	'searchfulltext' => 'పూర్తి పాఠ్యంలో వెతుకు',
-	'createarticle'  => 'వ్యాసాన్ని సృష్టించు',
+	'inputbox-error-no-type' => 'ఏ రకమైన ఇన్&zwnj;పుట్ పెట్టెని తయారుచేయాలో మీరు చెప్పలేదు.',
+	'tryexact'               => 'ఖచ్చితమైన పోలిక కొరకు ప్రయత్నించు',
+	'searchfulltext'         => 'పూర్తి పాఠ్యంలో వెతుకు',
+	'createarticle'          => 'వ్యాసాన్ని సృష్టించు',
 );
 
 /** Tajik (Тоҷикӣ)

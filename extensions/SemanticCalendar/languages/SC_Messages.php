@@ -165,6 +165,18 @@ $messages['nn'] = array(
 	'sc_error_beforeyear' => 'Feil: Dette systemet taklar ikkje datoar før $1.',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'sc_previousmonth'    => 'Mes precedent',
+	'sc_nextmonth'        => 'Mes seguent',
+	'sc_today'            => 'Uèi',
+	'sc_gotomonth'        => 'Anar vèrs lo mes',
+	'sc_error_year2038'   => "Error : aqueste sistèma supòrta pas las datas aprèp 2038, es degut al [http://fr.wikipedia.org/wiki/Bogue_de_l%27an_2038 Bòg de l'an 2038]",
+	'sc_error_beforeyear' => 'Error : aqueste sistèma pòt pas suportar las datas anterioras al $1.',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -185,6 +197,18 @@ $messages['sk'] = array(
 	'sc_gotomonth'        => 'Prejsť na mesiac',
 	'sc_error_year2038'   => 'Chyba: Tento systém nedokáže pracovať s dátumami po roku 2038, kvôli [http://en.wikipedia.org/wiki/Year_2038_problem problému roku 2038]',
 	'sc_error_beforeyear' => 'Chyba: Tento systém nedokáže pracovať s dátumami pred $1',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'sc_previousmonth'    => 'Föregående månad',
+	'sc_nextmonth'        => 'Nästa månad',
+	'sc_today'            => 'Idag',
+	'sc_gotomonth'        => 'Gå till månad',
+	'sc_error_year2038'   => 'Error: Detta system kan inte hantera datum efter år 2038, vederbörlig till [http://sv.wikipedia.org/wiki/År 2038-problemet år 2038 problemet]',
+	'sc_error_beforeyear' => 'Error: Detta system kan inte hantera datum före $1',
 );
 
 /** Vietnamese (Tiếng Việt)
