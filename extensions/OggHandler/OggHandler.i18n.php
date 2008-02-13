@@ -249,7 +249,7 @@ $messages['cs'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'ogg-desc'                => 'Steuerungsprogramm for Ogg Theora- und Vorbis-Dateien, inklusive einer JavaScript-Abspielsoftware',
+	'ogg-desc'                => 'Steuerungsprogramm für Ogg Theora- und Vorbis-Dateien, inklusive einer JavaScript-Abspielsoftware',
 	'ogg-short-audio'         => 'Ogg-$1-Audiodatei, $2',
 	'ogg-short-video'         => 'Ogg-$1-Videodatei, $2',
 	'ogg-short-general'       => 'Ogg-$1-Mediadatei, $2',
