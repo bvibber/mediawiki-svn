@@ -5,30 +5,24 @@
  *  Released under the GPL
  */
 
-require_once( 'CommentPages.i18n.php' );
-
-$wgExtensionFunctions[] = 'wfCommentPages';
 $wgExtensionCredits['other'][] = array(
-	'name'        => '[http://www.mediawiki.org/wiki/User:Zachary/CommentPages CommentPages]',
-	'author'      => '[http://en.wikinews.org/wiki/User:Zachary Zachary Hauri]',
-	'description' => 'Comment pages for main namespace',
+	'name'           => 'CommentPages',
+	'version'        => '2008-02-13',
+	'author'         => '[http://en.wikinews.org/wiki/User:Zachary Zachary Hauri]',
+	'description'    => 'Comment pages for the main namespace',
+	'descriptionmsg' => 'commentpages-desc',
+	'url'            => 'http://www.mediawiki.org/wiki/User:Zachary/CommentPages',
 );
 
-function wfCommentPages ()
-{
-	# Add messages
-	global $wgMessageCache, $wgCommentsPagesMessages;
-	foreach( $wgCommentsPagesMessages as $key => $value ) {
-		$wgMessageCache->addMessages( $wgCommentsPagesMessages[$key], $key );
-	}
-
-	global $wgHooks;
-	$wgHooks['SkinTemplateTabs'][]  = 'wfCommentPagesSkinTemplateTabs';
-}
+$wgExtensionMessagesFiles['CommentPages'] = dirname(__FILE__) . '/CommentPages.i18n.php';
+$wgHooks['SkinTemplateTabs'][]  = 'wfCommentPagesSkinTemplateTabs';
 
 function wfCommentPagesSkinTemplateTabs ( &$skin, &$content_actions )
 {
 	global $wgContLang, $wgCommentPagesNS;
+
+	wfLoadExtensionMessages( 'CommentPages' );
+
 	$pagename = $skin->mTitle->getText();
 	$namespace = $skin->mTitle->getNamespace();
 	$class = '';

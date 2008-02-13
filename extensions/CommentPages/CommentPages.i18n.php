@@ -1,9 +1,15 @@
 <?php
-$wgCommentsPagesMessages = array();
+/**
+ * Internationalisation file for extension CommentPages.
+ *
+ * @addtogroup Extensions
+*/
 
-$wgCommentsPagesMessages['en'] = array(
-'commenttab-editintro' => '',
-'commenttab-preload' => '',
-'nstab-comments' => 'Commentary',
+$messages = array();
+
+$messages['en'] = array(
+	'commentpages-desc'    => 'Comment pages for the main namespace',
+	'commenttab-editintro' => '',
+	'commenttab-preload'   => '',
+	'nstab-comments'       => 'Commentary',
 );
-
