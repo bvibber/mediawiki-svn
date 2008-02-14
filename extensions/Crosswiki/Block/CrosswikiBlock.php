@@ -8,11 +8,13 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'VasilievVV',
 	'version' => '1.0alpha',
 //	'url' => 'http://www.mediawiki.org/wiki/Extension:Crosswiki_Blocking',
-	'description' => 'Allows to block users on other wikis'
+	'description' => 'Allows to block users on other wikis',
+	'descriptionmsg' => 'crosswikiblock-desc',
 );
 
-$wgExtensionMessagesFiles['CrosswikiBlock'] = dirname( __FILE__ ) . '/CrosswikiBlock.i18n.php';
-$wgAutoloadClasses['SpecialCrosswikiBlock'] = dirname( __FILE__ ) . '/CrosswikiBlock.page.php';
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['CrosswikiBlock'] = $dir . 'CrosswikiBlock.i18n.php';
+$wgAutoloadClasses['SpecialCrosswikiBlock'] = $dir . 'CrosswikiBlock.page.php';
 
 //$wgExtensionFunctions[] = 'efSetupTitleBlacklistHooks';
 

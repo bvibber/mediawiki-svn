@@ -4,9 +4,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-# Add messages
-wfLoadExtensionMessages( 'CrosswikiBlock' );
-
 /**
  * Special page allows authorised users to rename
  * user accounts
@@ -30,6 +27,9 @@ class SpecialCrosswikiBlock extends SpecialPage {
 	public function execute( $par ) {
 		global $wgOut, $wgUser, $wgTitle, $wgRequest, $wgContLang, $wgLang;
 		global $wgVersion, $wgMaxNameChars, $wgCapitalLinks;
+
+		# Add messages
+		wfLoadExtensionMessages( 'CrosswikiBlock' );
 
 		$this->setHeaders();
 
@@ -112,8 +112,8 @@ class SpecialCrosswikiBlock extends SpecialPage {
 			$userProxy = UserRightsProxy::newFromName( $db, $name );
 			$this->mUserProxy = $userProxy;
 			if( !$userProxy ) {
-				if( $output ) 
-					$this->showForm( wfMsgWikiHtml( 'crosswikiblock-nouser', 
+				if( $output )
+					$this->showForm( wfMsgWikiHtml( 'crosswikiblock-nouser',
 						htmlspecialchars( $name ), htmlspecialchars( $db ), htmlspecialchars( $username ) ) );
 				return array( 'usernotfound', $name, $db, $username );
 			}
@@ -146,7 +146,7 @@ class SpecialCrosswikiBlock extends SpecialPage {
 	public function showForm( $err = '' ) {
 		global $wgOut, $wgContLang, $wgRequest, $wgUser;
 		global $wgStylePath, $wgStyleVersion;
-		
+
 		$titleObj = $this->getTitle();
 		$action = $titleObj->escapeLocalURL( "action=submit" );
 		$alignRight = $wgContLang->isRtl() ? 'left' : 'right';
@@ -273,7 +273,7 @@ class CrosswikiBlock {
 	public function commit() {
 		global $wgDBname;
 		$dbw = $this->getDB();
-	
+
 		$ipb_id = $dbw->nextSequenceValue('ipblocks_ipb_id_val');
 		$values = array(
 			'ipb_id' => $ipb_id,

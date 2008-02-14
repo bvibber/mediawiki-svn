@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	# Special page
+	'crosswikiblock-desc'       => 'Allows to block users on other wikis using a [[Special:Crosswikiblock|special page]]',
 	'crosswikiblock'            => 'Block user on other wiki',
 	'crosswikiblock-header'     => 'This page allows to block user on other wiki.
 Please check if you are allowed to act on this wiki and your actions match all policies.',
