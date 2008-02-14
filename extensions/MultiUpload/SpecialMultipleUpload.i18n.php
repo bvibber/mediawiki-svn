@@ -9,7 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'multipleupload'                   => "Upload files",
-	'multipleupload-desc'              => 'Allows users to upload several files at once.',
+	'multipleupload-desc'              => 'Allows users to [[Special:MultipleUpload|upload several files at once]]',
 	'multipleupload-ignoreallwarnings' => "Ignore '''all warnings''' and save the files anyway.",
 	'multipleupload-saveallfiles'      => "Save all files",
 	'multipleupload-addresswarnings'   => "Please address any warnings before reuploading files.",
@@ -87,7 +87,7 @@ $messages['el'] = array(
  */
 $messages['fr'] = array(
 	'multipleupload'                   => 'Télécharger des fichiers',
-	'multipleupload-desc'              => 'Permet aux utilisateurs d’importer, en une seule fois, plusieurs fichiers.',
+	'multipleupload-desc'              => 'Permet aux utilisateurs d’importer, [[Special:MultipleUpload|en une seule fois, plusieurs fichiers]]',
 	'multipleupload-ignoreallwarnings' => "Ignorer '''tous les avertissements''' et sauvegarder les fichiers en question.",
 	'multipleupload-saveallfiles'      => 'Sauvegarder tous les fichiers',
 	'multipleupload-addresswarnings'   => 'Vérifiez les avertissements affichés avant de télécharger à nouveau les fichiers.',
