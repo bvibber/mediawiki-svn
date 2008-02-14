@@ -7,12 +7,12 @@
 
 $messages = array();
 
-/* English
+/** English
  * @author ravis Derouin
  */
 $messages['en'] = array(
 	'importfreeimages'                => 'Import Free Images',
-	'importfreeimages-desc'           => 'Provides a way of importing properly licensed photos from flickr.',
+	'importfreeimages-desc'           => 'Provides a way of [[Special:ImportFreeImages|importing properly licensed photos]] from [http://www.flickr.com flickr]',
 	'importfreeimages_description'    => 'This page allows you to search properly licensed photos from flickr and import them into your wiki.',
 	'importfreeimages_noapikey'       => 'You have not configured your Flickr API Key. To do so, please obtain a API key from  [http://www.flickr.com/services/api/misc.api_keys.html here] and set wgFlickrAPIKey in ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'  => 'No photos were found for your search criteria \'$1\', please try again.',
@@ -59,7 +59,8 @@ $messages['bg'] = array(
 
 $messages['de'] = array(
 	'importfreeimages'                => 'Import freier Bilder',
-	'importfreeimages_description'    => 'Diese Seite erlaubt dir, auf Flickr nach Bildern unter einer freien Lizenz zu suchen und diese in dein Wiki zu importieren.',
+	'importfreeimages-desc'           => 'Ermöglicht den [[Special:ImportFreeImages|Import freier Bilder]] von [http://www.flickr.com Flickr]',
+	'importfreeimages_description'    => 'Diese Seite erlaubt dir, in Flickr nach Bildern unter einer freien Lizenz zu suchen und diese in dein Wiki zu importieren.',
 	'importfreeimages_noapikey'       => 'Du hast noch keinen Flickr-API-Schlüssel konfiguriert. Bitte beantrage ihn [http://www.flickr.com/services/api/misc.api_keys.html hier] und setze ihn in $wgFlickrAPIKey in ImportFreeImages.php ein.',
 	'importfreeimages_nophotosfound'  => 'Es wurden keine Fotos mit den Suchkriterien „$1“ gefunden.',
 	'importfreeimages_owner'          => 'Autor',

@@ -33,9 +33,9 @@ $wgIFI_ThumbType = "t"; // s for square t for thumbnail
 
 require_once("SpecialPage.php");
 
-$wgExtensionCredits['other'][] = array(
+$wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'ImportFreeImages',
-	'version'        => '2008-01-11',
+	'version'        => '2008-02-14',
 	'author'         => 'Travis Derouin',
 	'description'    => 'Provides a way of importing properly licensed photos from flickr.',
 	'descriptionmsg' => 'importfreeimages-desc',
