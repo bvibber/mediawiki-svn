@@ -51,6 +51,7 @@ class MV_CspanScraper extends MV_BaseScraper{
 	//swich on letter types:
 	var $bill_types = array('H.J.RES.'=>'hj', 'H.R.'=>'h', 'H.RES.'=>'hr', 
 							'S.CON.RES.'=>'sc', 'S.J.RES'=>'sj', 'S.RES.1'=>'sr', 'S.'=>'s');
+	var $bill_titles=array();
 							
 	var $govTrack_bill_url ='http://www.govtrack.us/congress/bill.xpd?bill=';
 	function procArguments(){
@@ -344,7 +345,7 @@ class MV_CspanScraper extends MV_BaseScraper{
 						}													   				  	   		
 		   			}		   			
 		   				   			
-		   			$annotate_body.='Speech By: [[Speech by:='.str_replace('_',' ',$pData['Spoken_by']).']] ';
+		   			
 		   			//title fix hack for C-span error motion to procceed 
 		   			//@@todo add in the rest of the motions:		   			
 		   			if(strpos($title,'MOTION TO PROCEED')!==false){
@@ -353,8 +354,8 @@ class MV_CspanScraper extends MV_BaseScraper{
 		   			}
 		   			//fix title case
 		   			$title = ucwords( strtolower($title));
-		   			//don't cap a few words: '
-		   			$title = str_replace(array('And','Or','Of'), array('and','or','of'), $title);
+		   			//don't Cap a Few of the Words: '
+		   			$title = str_replace(array(' And',' Or',' Of', ' A'), array(' and',' or',' of', ' a'), $title);
 		   			
 		   			//replace '' with ``
 		   			$body = str_replace('\'\'', '``', $body);
@@ -366,14 +367,17 @@ class MV_CspanScraper extends MV_BaseScraper{
 		   			foreach($this->bill_types as $cspanT=>$govtrakT){
 		   				$cspanT = str_replace('RES', '[\s]?RES', $cspanT);//sometimes spaces before res in text
 		   				$cspanT = str_replace('CON', '[\s]?CON', $cspanT);//sometimes spaces before res in text
-		   				$bill_pattern.=$or.'('.str_replace('.','\\.\s', $cspanT).'\s?[0-9]+)';
-		   				$bill_pattern_ary[]='('.str_replace('.','\\.\s', $cspanT).'\s?[0-9]+)';
+		   				//replace . with \.[\s]?
+		   				$bill_pattern.=$or.'('.str_replace('.','\\.[\s]?', $cspanT).'\s?[0-9]+)';
+		   				$bill_pattern_ary[]='('.str_replace('.','\\.[\s]?', $cspanT).'\s?[0-9]+)';
 		   				$or='|';
 		   			}
 		   			$bill_pattern.='/i';//case insensative
 		   			//$body='bla bla H.R. 3453 test S. 3494 some more text';
 		   			//print "pattern:".$bill_pattern . "\n";
-		   			preg_match_all($bill_pattern, $body, $bill_matches);		   				   		
+		   			preg_match_all($bill_pattern, $body, $bill_matches);	
+		   			//print_r($bill_matches);
+		   			//die;	   				   		
 		   			if(isset($bill_matches[1])){
 		   				foreach($bill_matches as $k=> $bill_type_ary){
 		   					if($k!=0){
@@ -394,10 +398,13 @@ class MV_CspanScraper extends MV_BaseScraper{
 		   						}
 		   					}
 		   				}
-		   			}		 	
-
-		   			$body = preg_replace($bill_pattern_ary, '[[Mentions Bill:=$0]]', $body);	
-		   			//print "BODY: $body";
+		   			}	
+		   			// add speech by attribute to annotation body:  						
+		   			$annotate_body.='Speech By: [[Speech by:='.str_replace('_',' ',$pData['Spoken_by']).']] ';
+		   			//add speech by attribute to body as well?  
+		   			$body.="\n\n".'Speech By: [[Speech by:='.str_replace('_',' ',$pData['Spoken_by']).']] ';
+					//add any mentions of bills with linkback to full bill title:
+		   			$body = preg_replace_callback($bill_pattern_ary,array('self','bill_pattern_cp'), $body);			   		
 		   			
 		   			//source the doument:
 		   			$body.="\n\n".'Source: [[Data Source Name:=C-SPAN Congressional Chronicle]] [[Data Source URL:='.$this->base_url . $pData['href'].']]'; 
@@ -430,7 +437,7 @@ class MV_CspanScraper extends MV_BaseScraper{
 						print "updated permisions for ". $cspanTitle->getText()."\n";
 		   				$dbw->commit();
 					}else{
-						print "failed to update restrictions\n";
+						print "failed to update restrictions :(\n";
 					}
 		   			
 		   			//proccess each bill to the annotation body;
@@ -485,6 +492,13 @@ class MV_CspanScraper extends MV_BaseScraper{
             //use offset to insert all $person_time_array data 
 		}
 	}
+	function bill_pattern_cp($matches){	
+		if(isset($this->bill_titles[$matches[0]])){
+		 	return "[[Mentions Bill:=". $this->bill_titles[$matches[0]] ."|{$matches[0]}]]";	
+		 }else{
+		 	return "[[Mentions Bill:={$matches[0]}]]";
+		 }
+	}
 	/* converts c-span bill_id to gov_track bill id */
 	function get_and_proccess_govtrack_billid($bill_key, $stream_date){
 		global $MvBillTypes;
@@ -529,6 +543,7 @@ class MV_CspanScraper extends MV_BaseScraper{
 			$title_short  = str_replace(array('_','...'),array(' ',''),$title_match[1]);
 			$this->cur_bill_short_title=$title_short;
 			$title_desc = $title_match[2];
+			$this->bill_titles[$bill_key]=$title_short;
 		}else{
 			die('could not get title for bill: ' . $govTrackBillId);
 		}

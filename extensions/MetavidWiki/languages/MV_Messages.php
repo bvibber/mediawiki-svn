@@ -149,7 +149,9 @@ $messages['en'] = array(
 	'mv_search_or'                   => 'or',
 	'mv_search_not'                  => 'not',
 	'mv_search_stream_name'          => 'Stream Name',
+	'mv_search_date_range'			 => 'Date Range',
 	'mv_stream_name'                 => 'stream name',
+	'mv_date_range'					 => 'date range',
 
 	'mv_match'     => 'match',
 	'mv_spoken_by' => 'spoken by',

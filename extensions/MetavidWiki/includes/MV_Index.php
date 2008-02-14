@@ -164,7 +164,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		$dbr =& wfGetDB(DB_SLAVE);
  		//organize the queries (group full-text searches and category/attributes)
  		//if the attribute is not a numerical just add it to the fulltext query 
- 		$ftq=$snq=$toplq_cat=''; //top query and full text query ='' 		 	
+ 		$ftq=$snq=$toplq_cat=$date_range_join=$date_range_where=$asql=''; //top query and full text query ='' 		 	
  		if($filters=='')return array(); 		
  		
  		$selOpt = ($mvDo_SQL_CALC_FOUND_ROWS)?'SQL_CALC_FOUND_ROWS':''; 
@@ -177,9 +177,9 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  			//proocc and or for fulltext:
  			if(!isset($f['a']))$f['a']='and';
  			switch($f['a']){
- 				case 'and':$aon='+';break;
- 				case 'or':$aon='';break;
- 				case 'not':$aon='-';break;
+ 				case 'and':$aon='+';$asql='AND';break;
+ 				case 'or':$aon='';$asql='OR';break;
+ 				case 'not':$aon='-';$asql='NOT';break;
  			}
  			//add to the fulltext query: 
  			switch($f['t']){
@@ -205,6 +205,19 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			 			case 'not':$toplq_cat='NOT';break;
 			 		}	
  					$toplq_cat.=" $categoryTable.`cl_to`='".mysql_escape_string($f['v'])."'";
+ 				break;
+ 				case 'date_range':
+ 					$date_range_join = ' JOIN  `mv_streams` ' .
+ 							'ON `'.$mvIndexTableName.'`.`stream_id` =`mv_streams`.`id` ';
+ 					
+ 					list($month, $day, $year) = explode('/',$f['vs']);
+ 					$sts = mktime(0,0,0,$month, $day, $year);
+ 					list($month, $day, $year) = explode('/',$f['ve']);
+ 					$ets = mktime(0,0,0,$month, $day+1, $year); //(the start of the next day) 			
+ 					$date_range_where.= $asql . '( `mv_streams`.`date_start_time` > '
+ 														. mysql_escape_string($sts) . 
+												 ' AND `mv_streams`.`date_start_time` < '. mysql_escape_string($ets) . 
+												 ')';
  				break;
  				case 'stream_name':
  					if($snq!=''){
@@ -235,11 +248,13 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  			
  			$sql = "SELECT `mv_page_id` as `id`, `stream_id`,`start_time`,`end_time`, `wiki_title`, $searchindexTable.`si_text` as `text`
 	 			FROM `$mvIndexTableName` 
+	 			$date_range_join
 	 			JOIN $categoryTable ON `$mvIndexTableName`.`mv_page_id` = $categoryTable.`cl_from`
 	 			LEFT JOIN $searchindexTable ON `$mvIndexTableName`.`mv_page_id` = $searchindexTable.`si_page` 
 	 			WHERE `mvd_type`='Anno_en' " .
 	 			" $toplq_cat " .
-	 			" $snq " .  		
+	 			" $snq " .  	
+	 			" $date_range_where " .	
 	 			"LIMIT 0, 200";
 	 		//echo "topQ: $sql \n\n";
  			$top_result = $dbr->query($sql); 			
@@ -281,7 +296,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	 		$sql = "SELECT $selOpt `mv_page_id` as `id`,`stream_id`,`start_time`,`end_time`, `wiki_title`, $searchindexTable.`si_text` AS `text` ";
 	 		if($mvSpokenByInSearchResult)$sql.=",`smw_relations`.`object_title` as `spoken_by` ";
 	 		$sql.="FROM `$mvIndexTableName` 
-	 			JOIN $searchindexTable ON `$mvIndexTableName`.`mv_page_id` = $searchindexTable.`si_page` ";
+	 			JOIN $searchindexTable ON `$mvIndexTableName`.`mv_page_id` = $searchindexTable.`si_page` 
+	 			$date_range_join ";
 	 			
  			//include spoken by relation in results (LEFT JOIN should not be *that* costly )
  			if($mvSpokenByInSearchResult){
@@ -293,6 +309,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	 			$sql.="	MATCH ( $searchindexTable.`si_text` ) 
 	 				AGAINST('$ftq' IN BOOLEAN MODE) ";
 	 		}
+	 		$sql.=" $date_range_where ";
 	 		$sql.="LIMIT {$this->offset}, {$this->limit} ";
  		}
  		//echo "SQL:".$sql;  			

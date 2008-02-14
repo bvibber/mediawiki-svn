@@ -1,18 +1,22 @@
 /*search code could theoretically run without mv_embed */
 
-_global = this;
-if(typeof $j =='undefined'){
-	_global['$j'] = jQuery.noConflict();
-}
-$j(document).ready(function(){
-	add_highlight_function();
-	mv_setup_search();
-});
+//_global = this;
+//if(typeof $j =='undefined'){
+//	_global['$j'] = jQuery.noConflict();
+//}
+mv_addLoadEvent(mv_pre_setup_search); 	
 
 var maxFilters = 8;
-
+function mv_pre_setup_search(){
+	//make sure we have jQuery and any base requried libs: 
+	mvJsLoader.doLoad(mvEmbed.lib_jquery, function(){
+ 		_global['$j'] = jQuery.noConflict();
+		mv_setup_search();
+	});
+}
 function mv_setup_search(){
-	//reset 
+	js_log('mv_setup_search');
+	add_highlight_function();
 	//look for existing auto completes:
 	for(i=0;i<maxFilters;i++){
 		if( $j('#mv_person_input_'+i).get(0)){
@@ -24,6 +28,22 @@ function mv_setup_search(){
 		window.location.href = wgScript+ '/'+
 			$j(this).attr('name');
 	})
+	//set up bindings for existing date range:
+	if(typeof mvDateInitObj!='undefined'){
+		$j('.mv_search_select').each(function(){
+			//get mv_sel_# number
+			id_parts = $j(this).attr('id').split('_');
+			var type = id_parts[1];
+			var inx = id_parts[2]; 		
+			//js_log('looking at: '+ $j("#"+this.id+" option:selected").val())
+			if($j("#"+this.id+" option:selected").val()=='date_range'){
+				add_date_binddings(inx, mvDateInitObj);
+			}
+		});
+	}else{
+		js_log('mvDateInitObj is undefined');
+	}
+	
 	//set up actions: 
 	$j('.mv_search_select').change(function(){
 		//get mv_sel_# number
@@ -33,19 +53,45 @@ function mv_setup_search(){
 		//js_log("id: "+$j(this).attr('id')+" got t:" + type+ ' Index:' + inx + ' val:' + $j("#"+this.id + " option:selected").val() );
 		switch($j("#"+this.id+" option:selected").val()){
 			case 'category':
-				$j('#mvs_'+inx+'_tc').html('<input style="font-size: 12px;" ' +
-					'size="9" class="mv_search_text" type="text" name="f['+inx+'][v]" value="" >'); 
-				//add autocomplete for category names
+				$j('#mvs_'+inx+'_tc').html('<input class="mv_search_text"' +
+					'size="9" type="text" name="f['+inx+'][v]" value="" >'); 
+				//@@todo add autocomplete for category names
 			break;
 			case 'stream_name':
-				$j('#mvs_'+inx+'_tc').html('<input style="font-size: 12px;" ' +
-					'size="9" class="mv_search_text" type="text" name="f['+inx+'][v]" value="" >'); 
-				//add autocomplete for stream name
+				$j('#mvs_'+inx+'_tc').html('<input class="mv_search_text" ' +
+					'size="9"  type="text" name="f['+inx+'][v]" value="" >'); 
+				////@@todo add autocomplete for stream name
 			break;
 			case 'match':
 				//match text is special cuz it gets highlighted in resutls with class: mv_hl_text
-				$j('#mvs_'+inx+'_tc').html('<input style="font-size: 12px;" ' +
-					'size="9" class="mv_search_text mv_hl_text" type="text" name="f['+inx+'][v]" value="" >'); 
+				$j('#mvs_'+inx+'_tc').html('<input class="mv_search_text mv_hl_text" ' +
+					'size="9"  type="text" name="f['+inx+'][v]" value="" >'); 
+			break;
+			case 'date_range':
+				$j('#mvs_'+inx+'_tc').html(global_loading_txt);
+				var load_js_set = { 'Date.fromString':'jquery/plugins/date.js',
+									'$j.fn.datePicker':'jquery/plugins/jquery.datePicker.js'};
+				if(embedTypes.msie6){
+					js_log('using IE v6 need iframe as well');
+					load_js_set['$j.fn.bgIframe'] = 'jquery/plugins/jquery.bgiframe.js';
+				}
+				uri = wgServer +
+					((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript);	
+				mvJsLoader.doLoad(load_js_set,function(){
+					searchDateObj = $j.get(uri, 
+						{action:'ajax',rs:'mv_date_obj'},
+						function(data){
+							eval(data);
+							if(mv_result){
+								//we ave to load the jQuery date plugin & the date_range data set (and mesg) 
+								$j('#mvs_'+inx+'_tc').html('<input class="date-pick_'+inx+' mv_search_text"  '+
+									'size="9" type="text" id="vs_'+inx+'" name="f['+inx+'][vs]" value="" > to ' +
+									'<input class="date-pick_'+inx+' mv_search_text"  '+
+									'size="9" type="text" id="ve_'+inx+'" name="f['+inx+'][ve]" value="" >');
+								add_date_binddings(inx, mv_result);
+							}														
+					});					
+			  	});
 			break;
 			case 'spoken_by':				
 				$j('#mvs_'+inx+'_tc').html( $j('#mv_person')
@@ -76,6 +122,76 @@ function mv_setup_search(){
 			break;
 		};	
 	});
+}
+function add_date_binddings(inx, mvDateInitObj){
+	//@@todo load the date format from the server
+	Date.format = 'mm/dd/yyyy';
+	//populate with default start and end times (if empty): 
+	$j('.date-pick_'+inx).each(function(){
+		if($j(this).attr('name')=='f[1][vs]'){
+			if($j(this).val()=='')$j(this).val(mvDateInitObj['sd']);			
+		}else{
+			if($j(this).val()=='')$j(this).val(mvDateInitObj['ed']);			
+		}
+		//update start end times: 
+		d = new Date($j(this).val());
+		if($j(this).id=='vs_'+inx){			
+			$j('#ve_'+inx).dpSetStartDate(d.addDays(1).asString());
+		}else if($j(this).id=='ve_'+inx){
+			$j('#vs_'+inx).dpSetStartDate(d.addDays(-1).asString());
+		}
+	}).trigger('change');//apply the current val as selected date	
+	//set up date range: 
+	$j('.date-pick_'+inx).datePicker({
+		clickInput:true,
+		startDate:mvDateInitObj['sd'],
+		endDate:mvDateInitObj['ed'],
+		renderCallback:function($td, thisDate, month, year){		
+			//@@todo fix upstream...month seems to be off by 1 ? or it starts at 0? 
+			month= thisDate.getMonth()+1;
+			//js_log('renderCallback: '+ thisDate.getDate() +' '+ month +' '+ year );
+			//js_log(mvDateInitObj['sdays']);
+			//check if thisDate is in db (mvDateInitObj)
+			if(typeof mvDateInitObj['sdays'][year] != 'undefined'){
+				if(typeof mvDateInitObj['sdays'][year][month] != 'undefined'){
+					if(typeof mvDateInitObj['sdays'][year][month][thisDate.getDate()]!='undefined'){
+						js_log("FOUND date match" + thisDate.getDate());
+						$td.addClass('has_streams');
+						$td.attr('title',mvDateInitObj['sdays'][year][month][thisDate.getDate()] + ' Streams');
+					}
+				}
+			}
+		}
+	});
+	//eliminate the "chose date text (don't ask why we need 4 &nbsp;'s)
+	$j('.dp-choose-date').html('&nbsp;&nbsp;&nbsp;&nbsp;');
+
+	//add cell render function cb (to show which days have videos) 
+	
+	
+	//bind start date end date ranges (so you can select invalid date range): 
+	$j('#vs_'+inx).bind(
+		'dpClosed',
+		function(e, selectedDates)
+		{
+			var d = selectedDates[0];
+			if (d) {
+				d = new Date(d);
+				$j('#ve_'+inx).dpSetStartDate(d.addDays(1).asString());
+			}
+		}
+	);
+	$j('#ve_'+inx).bind(
+		'dpClosed',
+		function(e, selectedDates)
+		{
+			var d = selectedDates[0];
+			if (d) {
+				d = new Date(d);
+				$j('#vs_'+inx).dpSetEndDate(d.addDays(-1).asString());
+			}
+		}
+	);
 }
 function mv_ex(mvd_id){
 	uri = wgServer +

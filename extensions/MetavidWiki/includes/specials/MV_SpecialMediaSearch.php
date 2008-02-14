@@ -43,15 +43,15 @@ class MV_SpecialSearch extends SpecialPage{
 class MV_SpecialMediaSearch extends SpecialPage {
 	//initial values for selctors ( keys into language as 'mv_search_$val')
 	var $sel_filter_types = array (
-		'match',
-		'spoken_by',
+		'match', 		//full text search
+		'spoken_by',	
 		'category',	
-		//'date' 		 //search in a given date range
+		'date_range', //search in a given date range
+		//not yet active: 
 		//'stream_name', //search within a particular stream
-		//'stream_range' //for returning only in a given range 
-		//'mvd_layer'	 //specify a specific meta-layer
-		//'smw_property' not active yet
-		//'smw_property_numeric' not active
+		//'layers'	 //specify a specific meta-layer set
+		//'smw_property' 
+		//'smw_property_numeric'
 	);	
 	var $sel_filter_andor = array (
 		'and',
@@ -442,7 +442,8 @@ class MV_SpecialMediaSearch extends SpecialPage {
 	}
 	function list_active_filters() {
 		global $mvgScriptPath;
-		$s='';	
+		$s=$so='';	
+		$dateObjOut=false;
 		$s .= '<div id="mv_active_filters" style="margin-bottom:10px;">';			
 		foreach ($this->filters as $i => $filter) {
 			if (!isset ($filter['v'])) //value
@@ -461,11 +462,33 @@ class MV_SpecialMediaSearch extends SpecialPage {
 			$s .= '<span id="mvs_' . $i . '_tc">';
 			switch ($filter['t']) {			
 				case 'match' :
-					$s .= $this->text_entry($i, 'v', $filter['v'], ' mv_hl_text');
+					$s .= $this->text_entry($i, 'v', $filter['v'], 'mv_hl_text');
 					break;
 				case 'category' :
 					//$s.=$this->get_ref_ac($i, $filter['v']);
 					$s .= $this->text_entry($i, 'v', $filter['v']);
+				break;
+				case 'date_range':
+					$s .=wfMsg('mv_time_separator',
+							$this->text_entry($i, 'vs', $filter['vs'], 'date-pick_'.$i, 'id="vs_'.$i.'"'),
+							$this->text_entry($i, 've', $filter['ve'], 'date-pick_'.$i, 'id="ve_'.$i.'"')
+						);
+					//also output dateObj (if not already outputed):
+					if(!$dateObjOut){
+						global $wgOut;
+						//add all date scripts:
+						$wgOut->addScript("\n".
+							'<!-- required plugins -->
+							<script type="text/javascript" src="'.$mvgScriptPath.'/skins/mv_embed/jquery/plugins/date.js"></script>
+							<!--[if IE]><script type="text/javascript" src="'.$mvgScriptPath.'/skins/mv_embed/jquery/plugins/jquery.bgiframe.js"></script><![endif]-->
+							
+							<!-- jquery.datePicker.js -->
+							<script type="text/javascript" src="'.$mvgScriptPath.'/skins/mv_embed/jquery/plugins/jquery.datePicker.js"></script>
+							<script language="javascript" type="text/javascript">'.
+							$this->getJsonDateObj('mvDateInitObj') .
+							'</script>');
+						$dateObjOut=true;
+					}
 				break;
 				case 'stream_name':
 					$s .= $this->text_entry($i, 'v', $filter['v']);
@@ -503,7 +526,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		$s .= '<input id="mv_do_search" type="submit" ' .
 		' value="' . wfMsg('mv_run_search') . '">';				
 		
-		return $s;
+		return $s . $so;
 	}
 	function getResultsBar(){		
 		$o='<div class="mv_result_bar">';
@@ -521,8 +544,12 @@ class MV_SpecialMediaSearch extends SpecialPage {
 	function getFilterDesc(){
 		$o=$a='';
 		foreach($this->filters as $inx=>$f){	
-			if($inx!=0)$a=wfMsg('mv_search_'.$f['a']).' ';		
-			$o.=' '.$a.wfMsg('mv_'.$f['t']).' <b>'. str_replace('_',' ',$f['v']).'</b> ';			
+			if($inx!=0)$a=wfMsg('mv_search_'.$f['a']).' ';	
+			if($f['t']=='date_range'){ //handle special case of date range: 
+				$o.=' '.$a.wfMsg('mv_'.$f['t']).' '.wfMsg('mv_time_separator', '<b>'.$f['vs'].'</b>','<b>'.$f['ve'].'</b>');
+			}else{
+				$o.=' '.$a.wfMsg('mv_'.$f['t']).' <b>'. str_replace('_',' ',$f['v']).'</b> ';
+			}
 		}
 		return $o;
 	}
@@ -574,10 +601,42 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		return $s;
 	}
 	//could be a suggest: 
-	function text_entry($i, $key, $val = '', $more_class='') {
-		$s = '<input class="mv_search_text'.$more_class.'" style="font-size: 12px;" onchange="" 
+	function text_entry($i, $key, $val = '', $more_class='', $more_attr='') {
+		if($more_class!='')$more_class=' '.$more_class;		
+		$s = '<input '.$more_attr.' class="mv_search_text'.$more_class.'" style="font-size: 12px;" onchange="" 
 						size="9" type="text" name="f[' . $i . '][' . $key . ']" value="' . $val . '">';
 		return $s;
+	}
+	//return a json date obj 
+	//@@todo fix for big sites...(will start to be no fun if number of streams > 1000 ... over many years)
+	function getJsonDateObj($obj_name='mv_result'){
+		$dbr =& wfGetDB(DB_SLAVE);		
+		$sql = 'SELECT `date_start_time` FROM `mv_streams` ' .
+				'WHERE `date_start_time` IS NOT NULL ' .
+				'ORDER BY `date_start_time` ASC  LIMIT 0, 1000';
+		$res = $dbr->query($sql);
+		$start_day=time();
+		$end_day=0;
+		$delta=0;
+		$sDays = array();
+		while($row =  $dbr->fetchObject( $res )){			
+			if($row->date_start_time==0)continue; //skip empty / zero values
+			if($row->date_start_time < $start_day)$start_day=$row->date_start_time;
+			if($row->date_start_time > $end_day)$end_day = $row->date_start_time;			
+			list($month,$day, $year) = explode('/',date('m/d/Y',$row->date_start_time));
+			$month = trim($month, '0');
+			$day = trim($day, '0');
+			if(!isset($sDays[$year]))$sDays[$year]=array();
+			if(!isset($sDays[$year][$month]))$sDays[$year][$month]=array();	
+			if(!isset($sDays[$year][$month][$day])){
+				$sDays[$year][$month][$day]=1;	
+			}else{
+				$sDays[$year][$month][$day]++;	
+			}			
+		}
+		return php2jsObj(array('sd'=>date('m/d/Y', $start_day),
+							   'ed'=>date('m/d/Y',$end_day),
+							   'sdays'=>$sDays), $obj_name);
 	}
 }
 ?>

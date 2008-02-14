@@ -255,10 +255,15 @@
 		return $MV_Tools->get_tool_html($tool_id, $ns, $title_str);
 	}
 	function mv_expand_wt($mvd_id){		
-		global $mvgIP, $wgRequest;		
+		global $wgRequest;		
 		$search_terms = explode('|',$wgRequest->getVal('st'));	
 		$mvSearch = new MV_SpecialMediaSearch();		
 		return $mvSearch->expand_wt($mvd_id, $search_terms);
+	}
+	function mv_date_obj(){
+		//returns the date object for existing stream set
+		//@@todo this is very cacheable since it only changes when a streams change date or a new stream is added. 
+		return MV_SpecialMediaSearch::getJsonDateObj();	
 	}
 	function mv_frame_server($stream_name='',$req_time='', $req_size=''){
 		global $wgRequest;

@@ -1,4 +1,7 @@
-Early version of the metavid wiki extension. More documentation to follow.
+== About ==
+Metavid Wiki is a project for extending MediaWiki with media
+functions that enable community engagement with audio video metdata.
+For more details visit metavid.ucsc.edu
 
 == Disclaimer ==
 Metavid Wiki is still under development. 
@@ -6,12 +9,12 @@ For more info come by #metavid or email dale@ucsc.edu
 
 ==Short technical Description==
 Metavid builds off of semantic mediaWiki but is not dependent on it. Its
-just a matter of how structured you want your metadata ;) Also metavid Wiki
-needs the parserFunctions extension as well as ExtensionFunctions.php
+just a matter of how structured you want your metadata ;) 
 
 Metavid Wiki adds the following namespaces:
-MV_NS_STREAM : The base namespace for media with temporal meta data.
-    It manages stream file sets, and top level metadata for the stream.
+MV_NS_STREAM : Stream : The base namespace for media with temporal meta data.
+    It manages stream file sets, and top level metadata for the stream. And
+    provides an interface for editing temporal metadata associated with the stream.
 MV_NS_MVD : The namespace for temporal metadata. Pages in this namespace
     follow the following format Stream_Name:mvd_type:time_start/time_end
 MV_NS_SEQUENCE : The namespace for view/editing sequences/playlists.
@@ -27,7 +30,7 @@ Mv_Embed is a stand alone javascript library for playing back ogg theora
 video in the browser. It extends oggHandler's plugin detect script and dynamically
 calls javascript libraries which generalize plugin api's to something near
 html5 video tag. Mv_embed also supports basic sequences via rss, xspf,
-m3u or custom inline format and includes a basic sequence editor. 
+m3u or custom inline format and includes a basic in-browser sequence editor. 
 
 ==Install:==
 
@@ -41,7 +44,7 @@ $smwgNamespaceIndex=100;
 $mvNamespaceIndex=$smwgNamespaceIndex + 6;
 include_once("$IP/extensions/MetavidWiki/includes/MV_Settings.php");
 
-//include SemanticMediaWiki settings
+//include SemanticMediaWiki settings (if used) 
 include_once("$IP/extensions/SemanticMediaWiki/includes/SMW_Settings.php");
 enableSemantics('localhost');
 

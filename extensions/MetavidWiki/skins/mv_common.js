@@ -1,6 +1,7 @@
 /*@@TODO should be set by mediaWiki so it uses wfMsg */
 var global_loading_txt = 'loading<blink>...</blink>';
 
+
 function add_adjust_hooks(mvd_id, track_dur, o){
 	if(track_dur)track_dur=parseInt(track_dur);
 	js_log('add_adjust_hooks: ' + mvd_id + ' td: '+ track_dur);

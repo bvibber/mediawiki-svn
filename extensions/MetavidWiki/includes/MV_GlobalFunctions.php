@@ -317,6 +317,7 @@ $wgAjaxExportList[] = 'mv_adjust_submit';
 $wgAjaxExportList[] = 'mv_expand_wt';
 $wgAjaxExportList[] = 'mv_submit_remove';
 $wgAjaxExportList[] = 'mv_tool_disp';
+$wgAjaxExportList[] = 'mv_date_obj';
 
 //media serving 
 $wgAjaxExportList[] = 'mv_frame_server';

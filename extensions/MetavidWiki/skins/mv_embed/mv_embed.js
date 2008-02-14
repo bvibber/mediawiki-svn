@@ -259,6 +259,7 @@ var embedTypes = {
  	detect: function() {
 		 // First some browser detection
 		 this.msie = ( navigator.appName == "Microsoft Internet Explorer" );
+		 this.msie6 = ( navigator.userAgent.indexOf("MSIE 6")===false);
 		 this.opera = ( navigator.appName == 'Opera' );
 		 this.safari = ( navigator.vendor && navigator.vendor.substr( 0, 5 ) == 'Apple' );
 		
@@ -395,8 +396,8 @@ var mvJsLoader = {
 			 var cur_load=0;
 			 for(p in objPath){
 				 cur_path = (cur_path=='')?cur_path+objPath[p]:cur_path+'.'+objPath[p];
-				 js_log("looking at path: "+ cur_path);
-				 js_log("eval:  " + eval('typeof ('+cur_path+');'));
+				 //js_log("looking at path: "+ cur_path);
+				 //js_log("eval:  " + eval('typeof ('+cur_path+');'));
 				 if(eval('typeof '+cur_path)=='undefined'){
 					 cur_load = loading=1;
 					 break;
