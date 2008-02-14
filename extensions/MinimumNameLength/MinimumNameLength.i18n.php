@@ -12,6 +12,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'minnamelength-error' => 'Your username is too short. The minimum length is $1.',
+	'minnamelength-desc'  => 'Enforce a minimum username length',
 );
 
 /* Arabic */
@@ -49,7 +50,8 @@ $messages['fi'] = array(
 
 /* French (Ashar Voultoiz) */
 $messages['fr'] = array(
-	'minnamelength-error' => 'Votre nom d\'utilisateur est trop court (minimum $1).',
+	'minnamelength-error' => 'Votre nom d’utilisateur est trop court (minimum $1).',
+	'minnamelength-desc'  => 'Exige une longueur minimale pour un nom d’utilisateur.',
 );
 
 $messages['gl'] = array(
