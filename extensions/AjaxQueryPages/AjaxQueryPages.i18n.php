@@ -25,6 +25,13 @@ $messages['bg'] = array(
 	'ajax-qp-desc' => 'Добавя AJAX към QueryPages като напр. [[Special:Shortpages]]',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'ajax-qp-desc' => 'কোয়েরি পাতাগুলিতে, যেমন [[Special:Shortpages]]-এ, কিছু AJAX যোগ করা হবে',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -81,11 +88,25 @@ $messages['no'] = array(
 	'ajax-qp-desc' => 'Legger til noe AJAX på spørringssider som [[Special:Shortpages]]',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'ajax-qp-desc' => "Ajusta d'escript AJAX a las paginas de requèstas talas coma [[Special:Shortpages]]",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'ajax-qp-desc' => 'Adiciona algum AJAX a QueryPages tal como [[{{ns:special}}:Shortpages]]',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'ajax-qp-desc' => 'Добавляет немного AJAX в QueryPages, например, [[Special:Shortpages]]',
 );
 
 /** Slovak (Slovenčina)

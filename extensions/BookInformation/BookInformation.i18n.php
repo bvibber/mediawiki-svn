@@ -618,18 +618,22 @@ $messages['nso'] = array(
 	'bookinfo-purchase'         => 'Reka puku ye go $1',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
-	'bookinfo-header' => 'Informacions suls obratges',
-	'bookinfo-result-title' => 'Títol:',
-	'bookinfo-result-author' => 'Autor:',
-	'bookinfo-result-publisher' => 'Editor:',
-	'bookinfo-result-year' => 'Annada:',
+	'bookinfo-header'            => 'Informacions suls obratges',
+	'bookinfo-desc'              => "Espandís [[Special:Booksources]] amb d'informacions a partir d’un servici internet",
+	'bookinfo-result-title'      => 'Títol:',
+	'bookinfo-result-author'     => 'Autor:',
+	'bookinfo-result-publisher'  => 'Editor:',
+	'bookinfo-result-year'       => 'Annada:',
 	'bookinfo-error-invalidisbn' => 'ISBN invalid.',
-	'bookinfo-error-nosuchitem' => 'Aqueste element existís pas o es pas pogut èsser trobat.',
-	'bookinfo-error-nodriver' => 'Impossible d’inicializar un motor d’informacion suls obratges.',
-	'bookinfo-error-noresponse' => 'Cap de responsa o depassament de la sosta.',
-	'bookinfo-purchase' => 'Comprar aqueste libre sus $1',
-	'bookinfo-provider' => 'Fornidor de donadas : $1',
+	'bookinfo-error-nosuchitem'  => 'Aqueste element existís pas o es pas pogut èsser trobat.',
+	'bookinfo-error-nodriver'    => 'Impossible d’inicializar un motor d’informacion suls obratges.',
+	'bookinfo-error-noresponse'  => 'Cap de responsa o depassament de la sosta.',
+	'bookinfo-purchase'          => 'Comprar aqueste libre sus $1',
+	'bookinfo-provider'          => 'Fornidor de donadas : $1',
 );
 
 $messages['pl'] = array(
@@ -665,10 +669,12 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'bookinfo-result-title'     => 'سرليک:',
-	'bookinfo-result-author'    => 'ليکوال:',
-	'bookinfo-result-publisher' => 'خپرونکی:',
-	'bookinfo-result-year'      => 'کال:',
+	'bookinfo-header'            => 'د کتاب مالومات',
+	'bookinfo-result-title'      => 'سرليک:',
+	'bookinfo-result-author'     => 'ليکوال:',
+	'bookinfo-result-publisher'  => 'خپرونکی:',
+	'bookinfo-result-year'       => 'کال:',
+	'bookinfo-error-invalidisbn' => 'تاسو يو ناسم ISBN ليکلی.',
 );
 
 /** Portuguese (Português)

@@ -82,10 +82,14 @@ u faiga serbir bel buscador esterno ta esplorar a wiki.',
 	'searchincategory'      => 'en a categoría',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
+	'lucene-desc'           => 'واجهة لمحرك بحث لوسين أباتشي',
 	'searchnumber'          => '<strong>النتائج $1-$2 ل$3</strong>',
-	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>السابق</span>',
-	'searchnext'            => '<span style=\'font-size: small\'>التالي</span> &#x00BB;',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>السابق</span>",
+	'searchnext'            => "<span style='font-size: small'>التالي</span> &#x00BB;",
 	'lucene-searchscore'    => 'الارتباط: $1٪',
 	'lucene-resultsize'     => '$1 ($2 كلمة)',
 	'searchdidyoumean'      => 'هل تقصد: "<a href="$1">$2</a>"?',
@@ -218,8 +222,10 @@ $messages['cdo'] = array(
 
 /** Czech (Česky)
  * @author Li-sung
+ * @author Matěj Grabovský
  */
 $messages['cs'] = array(
+	'lucene-desc'           => 'Rozhraní pro vyhledávací engine Apache Lucene',
 	'searchnumber'          => '<strong>Výsledky $1–$2 z $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Předchozí</span>",
 	'searchnext'            => "<span style='font-size: small'>Následující</span> &#x00BB;",
@@ -234,7 +240,7 @@ Hledat ve jmenných prostorech:
 $1
 
 Hledat $3 $9 $10',
-	'lucenefallback'        => 'Při hledání došlo k chybě. Problém je pravděpodobně dočasný, zkuste hledání později, případně můžete vyzkoušet externí vyhledávač:\n',
+	'lucenefallback'        => 'Při hledání došlo k chybě. Problém je pravděpodobně dočasný, zkuste hledání později, případně můžete vyzkoušet externí vyhledávač:\\n',
 	'searchexactcase'       => 'Rozlišovat velikost',
 	'searchall'             => 'vše',
 	'searchincategory'      => 'v kategorii',
@@ -434,10 +440,15 @@ $messages['fo'] = array(
 	'lucenepowersearchtext' => 'Leita í navnaøki: $1 Leita eftur $3 $9',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ * @author Grondin
+ */
 $messages['fr'] = array(
+	'lucene-desc'           => 'Interface pour le moteur de recherche Apache Lucene',
 	'searchnumber'          => '<strong>Résultats $1 – $2 sur $3</strong>',
-	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Préc.</span>',
-	'searchnext'            => '<span style=\'font-size: small\'>Suiv.</span> &#x00BB;',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Préc.</span>",
+	'searchnext'            => "<span style='font-size: small'>Suiv.</span> &#x00BB;",
 	'lucene-searchscore'    => 'Pertinence : $1%',
 	'lucene-resultsize'     => '$1 ($2 mots)',
 	'searchdidyoumean'      => 'Pensiez-vous à : « <a href="$1">$2</a> » ?',
@@ -561,10 +572,14 @@ ili možete pretraživati wiki pomoću vanjske tražilice:',
 	'searchincategory'      => 'u kategoriji',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
+	'lucene-desc'           => 'Interfejs za pytawu Apache "Lucene"',
 	'searchnumber'          => '<strong>Wuslědki $1–$2 z $3</strong>',
-	'searchprev'            => '&larr; <span style=\'font-size: smaller\'>Předchadny</span>',
-	'searchnext'            => '<span style=\'font-size: smaller\'>Přichodny</span> &rarr;',
+	'searchprev'            => "&larr; <span style='font-size: smaller'>Předchadny</span>",
+	'searchnext'            => "<span style='font-size: smaller'>Přichodny</span> &rarr;",
 	'lucene-searchscore'    => 'Relewanca: $1%',
 	'lucene-resultsize'     => '$1 ($2 słowow)',
 	'searchdidyoumean'      => 'Měnješe ty „<a href="$1">$2</a>“?',
@@ -903,6 +918,7 @@ $messages['nds'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'lucene-desc'           => 'Interface voor de zoekmachine Apache Lucene',
 	'searchnumber'          => '<strong>Resultaten $1-$2 van $3</strong>',
 	'searchprev'            => "« <span style='font-size: small'>Vorige</span>",
 	'searchnext'            => "<span style='font-size: small'>Volgende</span> »",
@@ -997,6 +1013,7 @@ Tèxt de recercar : $3 $9',
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'lucene-desc'           => 'Interfejs dla wyszukiwarki Apache Lucene',
 	'searchnumber'          => '<strong>Wyniki $1-$2 z $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Poprzednia</span>",
 	'searchnext'            => "<span style='font-size: small'>Następna</span> &#x00BB;",
@@ -1108,6 +1125,7 @@ ichataq hawa maskanawan wikipi maskay.",
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
+	'lucene-desc'           => 'Интерфейс для поискового движка Apache Lucene',
 	'searchnumber'          => '<strong>Результаты $1—$2 из $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Пред.</span>",
 	'searchnext'            => "<span style='font-size: small'>След.</span> &#x00BB;",
@@ -1184,6 +1202,7 @@ Ye can rake the wiki wi an ootside rake service:',
  * @author Robbot
  */
 $messages['sk'] = array(
+	'lucene-desc'           => 'Rozhranie pre vyhľadávač Apache Lucene',
 	'searchnumber'          => '<strong>Výsledky $1-$2 zo $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Späť</span>",
 	'searchnext'            => "<span style='font-size: small'>Ďalej</span> &#x00BB;",
@@ -1279,8 +1298,10 @@ Uurs koast du uk do externe Säikmuugelkhaide nutsje:',
 
 /** Swedish (Svenska)
  * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sv'] = array(
+	'lucene-desc'           => 'Gränssnitt för Apache Lucene sökmotorn',
 	'searchnumber'          => '<strong>Resultat $1-$2 av $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Föregående</span>",
 	'searchnext'            => "<span style='font-size: small'>Nästa</span> &#x00BB;",

@@ -385,16 +385,20 @@ $messages['nso'] = array(
 	'countedits-nocontribs'   => 'Gago baabedi go Wiki ye.',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
-	'countedits' => 'Comptaire d’edicions',
-	'countedits-warning' => '\'\'\'Avertiment\'\'\' : jutjetz pas un libre per sa cobertura. Jutjetz pas tanpauc un utilizaire en foncion del nombre de sas contribucions.',
-	'countedits-username' => 'Nom d\'utilizaire:',
-	'countedits-ok' => 'D\'acòrdi',
-	'countedits-nosuchuser' => 'I a pas d\'utilizaire amb lo nom $1.',
+	'countedits'              => 'Comptaire d’edicions',
+	'countedits-desc'         => '[[Special:CountEdits|Pagina especiala]] comptabilizant lo nombre d’edicions dels utilizaires e provesissent la lista dels dètz melhors contributors.',
+	'countedits-warning'      => "'''Avertiment''' : jutjetz pas un libre per sa cobertura. Jutjetz pas tanpauc un utilizaire en foncion del nombre de sas contribucions.",
+	'countedits-username'     => "Nom d'utilizaire:",
+	'countedits-ok'           => "D'acòrdi",
+	'countedits-nosuchuser'   => "I a pas d'utilizaire amb lo nom $1.",
 	'countedits-resultheader' => 'Resultats per $1',
-	'countedits-resulttext' => '$1 a fach $2 modificacions',
-	'countedits-mostactive' => 'Contributors mai actius',
-	'countedits-nocontribs' => 'Cap de contribucion sus aqueste wiki.',
+	'countedits-resulttext'   => '$1 a fach $2 modificacions',
+	'countedits-mostactive'   => 'Contributors mai actius',
+	'countedits-nocontribs'   => 'Cap de contribucion sus aqueste wiki.',
 );
 
 $messages['pl'] = array(
@@ -568,7 +572,10 @@ $messages['su'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
+	'countedits'            => 'Räkna redigeringar',
 	'countedits-username'   => 'Användarnamn:',
+	'countedits-ok'         => 'OK',
+	'countedits-nosuchuser' => 'Det finns ingen användare med namnet $1.',
 	'countedits-resulttext' => '$1 har gjort $2 redigeringar',
 );
 

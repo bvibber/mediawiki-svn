@@ -38,3 +38,42 @@ Return to:
 * [[Special:CrosswikiBlock|Block form]]
 * [[$4]]",
 );
+
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ */
+$messages['nl'] = array(
+	'crosswikiblock-desc'           => 'Laat toe om gebruikers op andere wikis te blokkeren via een [[Special:Crosswikiblock|speciale pagina]]',
+	'crosswikiblock'                => 'Gebruiker blokkeren op een andere wiki',
+	'crosswikiblock-header'         => 'Deze pagina laat toe om gebruikers te blokkeren op een andere wiki.
+Gelieve te controleren of u de juiste rechten hebt op deze wiki en of uw acties het beleid volgt.',
+	'crosswikiblock-target'         => 'IP-adres of gebruikersnaam en bestemmingswiki:',
+	'crosswikiblock-expiry'         => 'Duur:',
+	'crosswikiblock-reason'         => 'Reden:',
+	'crosswikiblock-submit'         => 'Deze gebruiker blokkeren',
+	'crosswikiblock-anononly'       => 'Alleen anonieme gebruikers blokkeren',
+	'crosswikiblock-nocreate'       => 'Gebruiker aanmaken voorkomen',
+	'crosswikiblock-autoblock'      => "Automatisch het laatste IP-adres gebruikt door deze gebruiker blokkeren, en elke volgende IP's waarmee ze proberen te bewerken",
+	'crosswikiblock-noemail'        => 'Het verzenden van e-mails door deze gebruiker voorkomen',
+	'crosswikiblock-nousername'     => 'Er werd geen gebruikersnaam opgegeven',
+	'crosswikiblock-local'          => 'Plaatselijke blokkades worden niet ondersteund door dit formulier. Gebruik daarvoor [[Special:Blockip]].',
+	'crosswikiblock-dbnotfound'     => 'Database $1 bestaat niet',
+	'crosswikiblock-noname'         => '"$1" is geen geldige gebruikersnaam.',
+	'crosswikiblock-nouser'         => 'Gebruiker "$3" is niet gevonden.',
+	'crosswikiblock-noexpiry'       => 'Ongeldige duur: $1.',
+	'crosswikiblock-noreason'       => 'Geen reden opgegeven.',
+	'crosswikiblock-alreadyblocked' => 'Gebruiker $3 is al geblokkeerd.',
+	'crosswikiblock-success'        => "Gebruiker '''$3''' succesvol geblokkeerd.
+
+Teruggaan naar:
+* [[Special:CrosswikiBlock|Blokkeerformulier]]
+* [[$4]]",
+);
+
+/** Polish (Polski)
+ * @author Equadus
+ */
+$messages['pl'] = array(
+	'crosswikiblock-dbnotfound' => 'Baza $1 nie istnieje',
+);
+

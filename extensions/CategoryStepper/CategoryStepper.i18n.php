@@ -139,6 +139,15 @@ $messages['no'] = array(
 	'categorystepper-end'   => '(Kategoristart)',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'categorystepper-start' => '(Començament de categoria)',
+	'categorystepper-desc'  => 'Aficha una boita de categoria sus de paginas que son indicadas dins una categoria.',
+	'categorystepper-end'   => '(Fin de categoria)',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -163,6 +172,14 @@ $messages['sk'] = array(
 	'categorystepper-start' => '(začiatok kategórie)',
 	'categorystepper-desc'  => 'Zobrazuje navigačné pole na stránkach, ktoré sa nachádzajú v množine kategórií',
 	'categorystepper-end'   => '(koniec kategórie)',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'categorystepper-start' => '(Start av kategori)',
+	'categorystepper-end'   => '(Slut av kategori)',
 );
 
 /** Telugu (తెలుగు)

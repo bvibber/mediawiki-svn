@@ -290,8 +290,12 @@ $messages['nso'] = array(
 	'deletedcontributions' => 'Diabe tša mošomiši tšeo di phumutšwego',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
-	'deletedcontributions' => 'Contribucions suprimidas d’un utilizaire',
+	'deletedcontributions'      => 'Contribucions suprimidas d’un utilizaire',
+	'deletedcontributions-desc' => "Balha la possibilitat als administrators de [[Special:DeletedContributions|visualizar las contribucions suprimidas d'un utilizaire]]",
 );
 
 /** Pampanga (Kapampangan)
@@ -301,8 +305,13 @@ $messages['pam'] = array(
 	'deletedcontributions' => 'Deng ambag da reng talagamit a mebura',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ * @author Derbeth
+ */
 $messages['pl'] = array(
-	'deletedcontributions' => 'Skasowany wkład użytkownika',
+	'deletedcontributions'      => 'Skasowany wkład użytkownika',
+	'deletedcontributions-desc' => 'Pozwala administratorom na [[Special:DeletedContributions|przeglądanie skasowanego wkładu użytkowników]]',
 );
 
 $messages['pms'] = array(

@@ -127,6 +127,20 @@ $messages['bg'] = array(
 	'changeauthor-rev'                  => 'р$1',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'changeauthor'                     => 'সংশোধন লেখক পরিবর্তন',
+	'changeauthor-desc'                => 'কোন সংশোধনের লেখক পরিবর্তন করার সুযোগ দেয়',
+	'changeauthor-title'               => 'কোন সংশোধনের লেখক পরিবর্তন করুন',
+	'changeauthor-search-box'          => 'সংশোধনগুলিতে অনুসন্ধান',
+	'changeauthor-pagename-or-revid'   => 'পাতার নাম বা সংশোধন আইডি:',
+	'changeauthor-pagenameform-go'     => 'চলো',
+	'changeauthor-comment'             => 'মন্তব্য:',
+	'changeauthor-changeauthors-multi' => 'লেখক(দের) পরিবর্তন করুন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -357,6 +371,32 @@ $messages['is'] = array(
 	'changeauthor-nosuchtitle'      => 'Engin síða er nefnd „$1“.',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'changeauthor'                      => '特定版編集者の変更',
+	'changeauthor-desc'                 => '特定版の編集者を変更できるようになります',
+	'changeauthor-title'                => '特定版の編集者を変更',
+	'changeauthor-search-box'           => '特定版の検索',
+	'changeauthor-pagename-or-revid'    => 'ページ名または特定版ID:',
+	'changeauthor-pagenameform-go'      => '検索',
+	'changeauthor-comment'              => '編集内容の要約:',
+	'changeauthor-changeauthors-multi'  => '変更',
+	'changeauthor-explanation-multi'    => "このフォームから特定版編集者を変更することができます。一人または複数の利用者名を下のリストから選択し、編集内容の要約を付記し（任意です）、'変更' ボタンを押してください。",
+	'changeauthor-changeauthors-single' => '変更',
+	'changeauthor-explanation-single'   => "このフォームから特定版編集者を変更することができます。利用者名を下のリストから選択し、編集内容の要約を付記し（任意です）、'変更' ボタンを押してください。",
+	'changeauthor-invalid-username'     => '"$1" は不正な利用者名です。',
+	'changeauthor-nosuchuser'           => '"$1" という利用者は存在しません。',
+	'changeauthor-revview'              => '$2 の特定版 #$1',
+	'changeauthor-nosuchtitle'          => '"$1" という名前のページはありません。',
+	'changeauthor-weirderror'           => '予測不能なエラーが発生しました。もう一度操作してください。それでもエラーが発生する場合は、恐らくデータベースが破壊されています。',
+	'changeauthor-invalidform'          => '独自のフォームではなく、[[Special:ChangeAuthor|特定版編集者の変更]]が提供するフォームを利用してください。',
+	'changeauthor-success'              => '要求された処理が完了しました。',
+	'changeauthor-logentry'             => '編集者の変更 $1 の特定版 $2、$3 から $4 へ',
+	'changeauthor-logpagename'          => '編集者の変更ログ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -447,6 +487,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'changeauthor'                      => "Cambiar l'autor de las revisions",
+	'changeauthor-desc'                 => 'Permet de cambiar lo nom de l’autor d’una o mantuna modificacions',
 	'changeauthor-title'                => "Cambiar l'autor d'una revision",
 	'changeauthor-search-box'           => 'Recercar de revisions',
 	'changeauthor-pagename-or-revid'    => "Títol de l'article o ID de revision :",
@@ -465,7 +506,15 @@ $messages['oc'] = array(
 	'changeauthor-success'              => 'Vòstra requèsta es estada tractada amb succès.',
 	'changeauthor-logentry'             => "Modificacion de l'autor de $2 de $1 dempuèi $3 vèrs $4",
 	'changeauthor-logpagename'          => "Jornal dels cambiaments faches per l'autor",
-	'changeauthor-rev'                  => 'r$1',
+);
+
+/** Polish (Polski)
+ * @author Equadus
+ */
+$messages['pl'] = array(
+	'changeauthor-changeauthors-single' => 'Zmień autora',
+	'changeauthor-invalid-username'     => 'Niepoprawna nazwa użytkownika "$1".',
+	'changeauthor-nosuchuser'           => 'Brak użytkownika "$1".',
 );
 
 /** Pashto (پښتو)
@@ -473,6 +522,7 @@ $messages['oc'] = array(
  */
 $messages['ps'] = array(
 	'changeauthor-pagenameform-go' => 'ورځه',
+	'changeauthor-nosuchtitle'     => 'داسې هېڅ کوم مخ نشته چې نوم يې "$1" وي.',
 );
 
 /** Portuguese (Português)
@@ -597,9 +647,13 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Max sonnelid
+ * @author M.M.S.
  * @author Lejonel
  */
 $messages['sv'] = array(
+	'changeauthor-title'                => 'Ändra upphovsmanen av en revision',
+	'changeauthor-search-box'           => 'Sök revisioner',
+	'changeauthor-pagename-or-revid'    => 'Sidnamn eller revisions ID:',
 	'changeauthor-pagenameform-go'      => 'Gå',
 	'changeauthor-comment'              => 'Kommentar:',
 	'changeauthor-changeauthors-multi'  => 'Ändra upphovsman (upphovsmän)',

@@ -21,6 +21,13 @@ $messages['ar'] = array(
 	'newusermessage-desc' => 'يضيف [[MediaWiki:NewUserMessage|رسالة]] إلى صفحات نقاش المستخدمين الجدد',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'newusermessage-desc' => 'Přidává [[MediaWiki:NewUserMessage|zprávu]] do nově vytvořených uživatelských diskusních stránek',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -32,7 +39,7 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'newusermessage-desc' => '[[MediaWiki:NewUserMessage|Powěsć]] k nowo wutwórjenym wužywarskim diskusijnym bokam pśidaś',
+	'newusermessage-desc' => '[[MediaWiki:NewUserMessage|Powěsć]] k nowo napóranym wužywarskim diskusijnym bokam pśidaś',
 );
 
 /** French (Français)
@@ -82,6 +89,13 @@ $messages['oc'] = array(
  */
 $messages['pt'] = array(
 	'newusermessage-desc' => 'Adiciona uma [[MediaWiki:NewUserMessage|mensagem]] às páginas de discussão de novos utilizadores',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'newusermessage-desc' => 'Pridáva [[MediaWiki:NewUserMessage|správu]] do novo vytvorených používateľských diskusných stránok',
 );
 
 /** Vietnamese (Tiếng Việt)

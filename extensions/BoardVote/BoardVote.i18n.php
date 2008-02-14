@@ -1368,10 +1368,12 @@ Vèsyon kripte an ap vini. Li ap afiche piblikman anlè [[Special:Boardvote/dump
 /** Hungarian (Magyar)
  * @author Bdanee
  * @author KossuthRad
+ * @author Tgr
  * @author Dorgan
  */
 $messages['hu'] = array(
 	'boardvote'              => 'Wikimedia Kuratórium választás',
+	'boardvote-desc'         => '[[meta:Board elections|Wikimedia Kuratórium választás]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Szavazz!]]
 * [[Special:Boardvote/list|Szavazatok listája]]
 * [[Special:Boardvote/dump|Választási jegyzőkönyv titkosított dump-ja]]',
@@ -1434,7 +1436,7 @@ A titkosított adatokhoz $1.</p>',
 	'boardvote_notstarted'   => 'A szavazás még nem indult el.',
 	'boardvote_closed'       => 'A szavazás már lezárult, az eredmények hamarosan [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En itt].',
 	'boardvote_edits_many'   => 'Sok',
-	'group-boardvote'        => 'Választási adminisztrátorok',
+	'group-boardvote'        => 'választási adminisztrátorok',
 	'group-boardvote-member' => 'Választási adminisztrátor',
 	'grouppage-boardvote'    => '{{ns:project}}:Választási adminisztrátor',
 	'boardvote_blocked'      => 'Elnézést, a te regisztrációd blokkolva van wikin. A blokkolt usereknek nem megengedett a szavazás.',
@@ -2306,6 +2308,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'boardvote'              => 'Eleccions al conselh d’administracion de la Wikimedia Foundation',
+	'boardvote-desc'         => "[[meta:Board elections|Eleccions al Conselh d'administracion de Wikimèdia]]",
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vòte]]
 * [[Special:Boardvote/list|Lista dels vòtes enregistrats]]
 * [[Special:Boardvote/dump|Enregistraments criptats]]',
@@ -2387,6 +2390,7 @@ $messages['pam'] = array(
  */
 $messages['pl'] = array(
 	'boardvote'              => 'Wybory do Rady Powierniczej Fundacji Wikimedia',
+	'boardvote-desc'         => '[[meta:Board elections|Mechanizm głosowania w wyborach do Rady powierniczej Wikimedia]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Głosuj]]
 * [[Special:Boardvote/list|Pokaż listę głosów]]
 * [[Special:Boardvote/dump|Zrzut zakodowanych danych wyborów]]',
@@ -2431,6 +2435,7 @@ Oto zakodowana wersja. Będzie ona publicznie wyświetlona w [[Special:Boardvote
 	'grouppage-boardvote'    => '{{ns:project}}:Administrator wyborów',
 	'boardvote_blocked'      => 'Przykro nam, ale zablokowani użytkownicy nie mogą głosować.',
 	'boardvote_welcome'      => "Witamy, '''$1'''!",
+	'go_to_board_vote'       => 'Wybory do Rady Powierniczej Fundacji Wikimedia 2007',
 	'boardvote_redirecting'  => 'Ze względu na bezpieczeństwo i przejrzystość, głosowanie odbywa się na zewnętrznym, niezależnie kontrolowanym serwerze. Zostaniesz przekierowany (-a) na ten serwer za 20 sekund. [$1 Kliknij tu] aby przejść tam już teraz. Może pojawić się ostrzeżenie o niepodpisanym certyfikacie.',
 );
 
@@ -2512,6 +2517,7 @@ $messages['ps'] = array(
 	'boardvote_user'     => 'کارونکی',
 	'boardvote_days'     => 'ورځې',
 	'boardvote_dumplink' => 'دلته وټوکۍ',
+	'boardvote_submit'   => 'هو/ښه',
 	'boardvote_welcome'  => "'''$1''' ته ښه راغلاست!",
 );
 

@@ -251,12 +251,21 @@ $messages['no'] = array(
 	'sitenotice_close' => 'lukk',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
 	'sitenotice_close' => 'amagar',
+	'sitenotice-desc'  => 'Permet als utilizaires de tampar lo sitenotice',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ * @author Derbeth
+ */
 $messages['pl'] = array(
 	'sitenotice_close' => 'ukryj',
+	'sitenotice-desc'  => 'Umożliwia użytkownikom wyłączenie wyświetlania komunikatu [[MediaWiki:sitenotice|sitenotice]]',
 );
 
 $messages['pms'] = array(

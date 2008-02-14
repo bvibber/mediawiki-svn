@@ -234,6 +234,26 @@ Staal sicher, dät du nit komplette Domains blokkierst, do der separate Benutser
 	'spamdifftool_submit_buttom'    => 'Spiekerje',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'spamdifftool'                  => 'Hantera svarta listan för spam',
+	'spamdifftool_cantedit'         => 'Du har tyvärr inte behörighet att redigera svarta listan för spam.',
+	'spamdifftool_notext'           => "Ingen text lades till i svarta listan för spam. Klicka <a href='$1'>här</a> för att fortsätta.",
+	'spamdifftool_confirm'          => "Bekräfta att du vill lägga till följande poster i svarta listan för spam. (Rapportera problem <a href='$1' target='new'>här</a>.)",
+	'spamdifftool_summary'          => 'Utökar svarta listan för spam',
+	'spamdifftool_urls_detected'    => 'Härunder listas de URL:er som hittades i redigeringen. Välj de du vill lägga till i svarta lista för spam. Blockeringsalternativen är ordnade från mer omfattande till mindre omfattande blockering. Om en hel domän blockeras så stoppas alla länkar till den domänen. <br /><br />Undvik att helt blockera domäner som är värd för många olika användare, såsom blogspot.com, geocities.com, m.fl.',
+	'spamdifftool_no_urls_detected' => "Ingen URL hittades. <a href='$1'>Gå tillbaka</a>.",
+	'spamdifftool_spam_link_text'   => 'lägg till i spamlistan',
+	'spamdifftool_option_domain'    => 'hela domänen',
+	'spamdifftool_option_subdomain' => 'hela subdomänen',
+	'spamdifftool_option_directory' => 'denna katalog i subdomänen',
+	'spamdifftool_option_none'      => 'ingenting',
+	'spamdifftool_block'            => 'Blockera:',
+	'spamdifftool_submit_buttom'    => 'Lägg till',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

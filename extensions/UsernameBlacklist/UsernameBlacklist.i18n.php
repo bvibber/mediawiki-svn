@@ -152,10 +152,15 @@ $messages['ca'] = array(
 	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|La següent línia|Les següents línies}} de la llista negra de noms d'usuari no {{PLURAL:$1|és vàlida|són vàlides}}; si us plau, corregiu{{PLURAL:$1|-la|-les}} abans de desar-ho:",
 );
 
+/** Czech (Česky)
+ * @author Danny B.
+ * @author Matěj Grabovský
+ */
 $messages['cs'] = array(
-	'blacklistedusername' => 'Nepovolené uživatelské jméno',
-	'blacklistedusernametext' => 'Vámi vybrané uživatelské jméno se shoduje s&nbsp;některým ze [[MediaWiki:Usernameblacklist|seznamu nepovolených uživatelských jmen]]. Prosíme, vyberte si jiné jméno.',
-	'usernameblacklist' => '<pre>
+	'usernameblacklist-desc'          => 'Přidává [[MediaWiki:Usernameblacklist|černou listinu uživatelských jmen]], aby se omezila tvorba uživatelských účtů odpovídajících jednomu nebo více regulárním výrazům',
+	'blacklistedusername'             => 'Nepovolené uživatelské jméno',
+	'blacklistedusernametext'         => 'Vámi vybrané uživatelské jméno se shoduje s&nbsp;některým ze [[MediaWiki:Usernameblacklist|seznamu nepovolených uživatelských jmen]]. Prosíme, vyberte si jiné jméno.',
+	'usernameblacklist'               => '<pre>
 # Položky v&nbsp;tomto seznamu budou použity jako části regulárního výrazu
 # při kontrole nepovolených uživatelských jmen při registraci.
 # Každý výraz by měl být označen jako položka nečíslovaného seznamu, např.:
@@ -476,6 +481,13 @@ Basqa ataw talğañız.',
 	'usernameblacklist-invalid-lines' => 'Qatıswşı atı qara tizimindegi kelesi {{PLURAL:$1|jol|joldar}} jaramsız {{PLURAL:$1|boldı|boldı}}; saqtawdıñ aldında {{PLURAL:$1|bunı|bulardı}} durıstap şığıñız:',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'blacklistedusername' => 'ឈ្មោះអ្នកប្រើប្រាស់ ត្រូវបានដាក់ ក្នុងបញ្ជីខ្មៅ',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  */
@@ -638,12 +650,15 @@ $messages['no'] = array(
 	'usernameblacklist-invalid-lines' => 'Følgende {{PLURAL:$1|linje|linjer}} i brukernavnsvartelista er {{PLURAL:$1|ugyldig|ugyldige}}; vennligst rett {{PLURAL:$1|den|dem}} før du lagrer:',
 );
 
-/* Occitan (Cedric31) */
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
-	'blacklistedusername' => 'Noms d’utilizaires en lista negra',
-	'blacklistedusernametext' => 'Lo nom d’utilizaire qu\'avètz causit se tròba sus la [[MediaWiki:Usernameblacklist|lista dels noms interdiches]]. Causissètz un autre nom.',
-	'usernameblacklist' => '<pre> # Las dintradas d\'aquesta lista seràn utilizadas en tant qu\'expressions regularas # per empachar la creacion de noms d\'utilizaires interdiches. Cada item deu # far partida d\'una lista de piuses, per exemple # # * Foo # * [Bb]ar </pre>',
-	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|La linha seguenta|Las linhas seguentas}} de la lista negra dels noms d\'utilizaires {{PLURAL:$1|es invalida|son invalidas}} ; corregissetz-{{PLURAL:$1|la|las}} abans d\'enregistrar :',
+	'usernameblacklist-desc'          => "Ajusta una [[MediaWiki:Usernameblacklist|lista negra dels noms d'utilizaire]] per restrenher la creacion dels comptes d'utilizaires fasent partida d'una o mantuna expression regulara.",
+	'blacklistedusername'             => 'Noms d’utilizaires en lista negra',
+	'blacklistedusernametext'         => "Lo nom d’utilizaire qu'avètz causit se tròba sus la [[MediaWiki:Usernameblacklist|lista dels noms interdiches]]. Causissètz un autre nom.",
+	'usernameblacklist'               => "<pre> # Las dintradas d'aquesta lista seràn utilizadas en tant qu'expressions regularas # per empachar la creacion de noms d'utilizaires interdiches. Cada item deu # far partida d'una lista de piuses, per exemple # # * Foo # * [Bb]ar </pre>",
+	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|La linha seguenta|Las linhas seguentas}} de la lista negra dels noms d'utilizaires {{PLURAL:$1|es invalida|son invalidas}} ; corregissetz-{{PLURAL:$1|la|las}} abans d'enregistrar :",
 );
 
 /** Polish (Polski)

@@ -44,6 +44,7 @@ $messages['ast'] = array(
  */
 $messages['bn'] = array(
 	'assert_edit_title'   => 'অ্যাসার্ট ব্যর্থ',
+	'assert_edit_desc'    => 'বটদের ব্যবহারের জন্য এডিট অ্যাসার্শন যোগ করা হবে',
 	'assert_edit_message' => 'নির্দেশিত অ্যাসার্শনটি ($1) ব্যর্থ হয়েছে।',
 );
 
@@ -243,6 +244,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'assert_edit_title'   => "L'insercion a pas capitat",
+	'assert_edit_desc'    => "Ajusta d'edicions d’insercion per l’utilizacion per de bòts",
 	'assert_edit_message' => "L'insercion indicada ($1) a pas capitat.",
 );
 
@@ -251,6 +253,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'assert_edit_title'   => 'Brak wystąpień',
+	'assert_edit_desc'    => 'Dodaje funkcjonalność weryfikacji zalogowania oraz flagi bota przy próbie edycji do wykorzystania przez boty',
 	'assert_edit_message' => 'Określone żądanie ($1) nie wystąpiło.',
 );
 

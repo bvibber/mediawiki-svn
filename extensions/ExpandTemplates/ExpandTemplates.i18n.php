@@ -623,6 +623,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'expandtemplates'                  => 'Espandiment dels modèls',
+	'expandtemplates-desc'             => 'Augmenta los modèls, las foncions parsairs e las variablas per visionar los tèxtes wikis espandits e previsualiza las paginas atal rendudas.',
 	'expand_templates_intro'           => 'Aquesta pagina permet de testar l’espandiment de modèls, que son desvolopats recursivament. Las foncions e las variablas predefinidas, coma <nowiki>{{</nowiki>#if:...}} e <nowiki>{{</nowiki>CURRENTDAY}} tanben son desvolopadas.',
 	'expand_templates_title'           => 'Títol de l’article, util per exemple se lo modèl utiliza {{PAGENAME}} :',
 	'expand_templates_input'           => 'Picatz vòstre tèxt aicí :',
@@ -634,14 +635,21 @@ $messages['oc'] = array(
 	'expand_templates_preview'         => 'Previsualizacion',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
 	'expandtemplates'                  => 'Rozwijanie szablonów',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Rozwija szablony, funkcje analizatora składni oraz zmienne]] by pokazać rozwiniętą składnię wiki oraz podgląd zinterpretowanej strony',
 	'expand_templates_intro'           => 'Ta strona specjalna pobiera tekst i rozwija w nim rekursywnie wszystkie szablony. Rozwija także [[Wikipedia:Funkcje parsera|funkcje parsera]] takie jak <nowiki>{{</nowiki>#if...}} i zmienne jak <nowiki>{{</nowiki>CURRENTDAY}} &ndash; w zasadzie prawie wszystko w podwójnych nawiasach klamrowych. Robi się to przez wezwanie odpowiedniego przebiegu (etapu) parsera z samego MediaWiki.',
 	'expand_templates_title'           => 'Tytuł kontekstu, dla komunikatów typu {{PAGENAME}} itp.:',
 	'expand_templates_input'           => 'Tekst wejściowy:',
 	'expand_templates_output'          => 'Rezultat',
-	'expand_templates_ok'              => 'OK',#identical but defined
+	'expand_templates_xml_output'      => 'wynik w formacie XML',
+	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Usuń komentarze',
+	'expand_templates_generate_xml'    => 'Pokaż drzewo analizatora składni w formacie XML',
 	'expand_templates_preview'         => 'Podgląd',
 );
 

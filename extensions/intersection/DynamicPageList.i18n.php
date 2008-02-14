@@ -58,8 +58,10 @@ $messages['bn'] = array(
 
 /** Czech (Česky)
  * @author Li-sung
+ * @author Matěj Grabovský
  */
 $messages['cs'] = array(
+	'intersection-desc'          => 'Vypíše seznam nejnovějších položek v kategorii nebo sjednotí několik kategorií',
 	'intersection_toomanycats'   => 'DynamicPageList: Příliš mnoho kategorií!',
 	'intersection_toofewcats'    => 'DynamicPageList: Málo kategorií!',
 	'intersection_noresults'     => 'DynamicPageList: Žádné výsledky!',
@@ -212,6 +214,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'intersection-desc'          => 'Aficha una lista, amb de piuses, dels articles mai recents dins una categoria, o a partir d’una combinason de mantuna categoria.',
 	'intersection_toomanycats'   => 'DynamicPageList : Tròp de categorias !',
 	'intersection_toofewcats'    => 'DynamicPageList : Pas pro de categorias !',
 	'intersection_noresults'     => 'DynamicPageList : Pas cap de resultat !',

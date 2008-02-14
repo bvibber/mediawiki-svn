@@ -129,6 +129,7 @@ Os ficheiros inapropiados eliminaranse inmediatamente: vexa a [[{{MediaWiki:Mult
  */
 $messages['hsb'] = array(
 	'multipleupload'                   => 'Dataje nahrać',
+	'multipleupload-desc'              => 'Dowola wužiwarjam [[Special:MultipleUpload|wjacore dataje na jedne dobo nahrać]]',
 	'multipleupload-ignoreallwarnings' => "'''Wšě warnowanja''' ignorować a dataje składować.",
 	'multipleupload-saveallfiles'      => 'Wšě dataje składować',
 	'multipleupload-addresswarnings'   => 'Prošu wobkedźbuj warnowanja, prjedy hač dataje znowa nahraješ.',
@@ -162,6 +163,7 @@ $messages['hu'] = array(
  */
 $messages['nl'] = array(
 	'multipleupload'                   => 'Bestanden uploaden',
+	'multipleupload-desc'              => 'Laat gebruikers toe om meerdere bestanden [[Special:MultipleUpload|in één keer te uploaden]]',
 	'multipleupload-ignoreallwarnings' => "'''Alle waarschuwingen''' negeren en de bestanden sowieso uploaden.",
 	'multipleupload-saveallfiles'      => 'Alle bestanden opslaan',
 	'multipleupload-addresswarnings'   => 'Los alstublieft de waarschuwingen op voordat u het opnieuw probeert.',

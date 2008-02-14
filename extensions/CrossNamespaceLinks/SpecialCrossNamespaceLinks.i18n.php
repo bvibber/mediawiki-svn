@@ -361,14 +361,23 @@ $messages['nso'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|lhlomaganyo|dihlomaganyo}} go $3',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
 	'crossnamespacelinks'         => 'Paginas contenent de ligams vèrs un autre espaci de nom',
-	'crossnamespacelinks-summary' => 'Aquesta pagina fornís una lista de las paginas de l’espaci de nom principal qu\'an un ligam vèrs un autre espaci de nom (exceptat pels espacis de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), çò qu’es recomandat.',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Enumèra los ligams a travèrs los espacis de nomenatges]] que deurián pas existir sus {{SITENAME}}',
+	'crossnamespacelinks-summary' => "Aquesta pagina fornís una lista de las paginas de l’espaci de nom principal qu'an un ligam vèrs un autre espaci de nom (exceptat pels espacis de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), çò qu’es recomandat.",
 	'crossnamespacelinkstext'     => '$1 : possedís $2 {{PLURAL:$2|ligam|ligams}} vèrs l’espaci « $3 »',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
 	'crossnamespacelinks'         => 'Linki między przestrzeniami nazw',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Generuje spis linków pomiędzy przestrzeniami nazw]], których nie powinno być na {{GRAMMAR:Ms.lp|{{SITENAME}}}}',
 	'crossnamespacelinks-summary' => 'Ta strona podaje listę linków ze stron w głównej przestrzeni nazw do stron w innych przestrzeniach nazw (poza przestrzeniami {{ns:special}}, {{ns:talk}}, {{ns:project}} i {{ns:template}}). Odradza się używanie takich linków.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|link|linki}} do $3',
 );

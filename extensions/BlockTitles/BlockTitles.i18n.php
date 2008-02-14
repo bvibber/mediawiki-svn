@@ -300,6 +300,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'block_title_error_page_title' => 'Títol invalid',
+	'block_title_error-desc'       => 'Provesís un metòde simple per evitar que de paginas amb un cèrt títol pòscan èsser salvagardadas o creadas.',
 	'block_title_error'            => "O planhèm, lo títol d'aqueste article es pas autorizat a èsser salvagardat.",
 );
 

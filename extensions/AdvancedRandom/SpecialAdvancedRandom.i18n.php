@@ -38,7 +38,8 @@ $messages['avk'] = array(
  * @author Zaheen
  */
 $messages['bn'] = array(
-	'advancedrandom' => 'উন্নততর অনির্ধারিত',
+	'advancedrandom'      => 'উন্নততর অনির্ধারিত',
+	'advancedrandom-desc' => 'এমন একটি অনির্দিষ্ট পাতা নিয়ে আসুন যার আলোচনা বা বিষয়বস্তু পাতা থেকে কোন একটি প্রদত্ত পাতায় সংযোগগুলি [[Special:AdvancedRandom/Template:Featured/Talk]]-এর মত কোন অনির্দিষ্ট নির্বাচিত নিবন্ধ কিংবা [[Special:AdvancedRandom/Template:GFDL/Image]]-এর মত কোন অজানা জিএফডিএল ফাইল আনতে ব্যবহার করা যাবে।',
 );
 
 /** Breton (Brezhoneg)
@@ -169,7 +170,8 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'advancedrandom' => 'Accès aleatòri avançat',
+	'advancedrandom'      => 'Accès aleatòri avançat',
+	'advancedrandom-desc' => "Obten una pagina a l'azard a partir d’una discussion o d’un ligam d’un subjècte vèrs una pagina donada. Pòt èsser utilizada coma [[Special:AdvancedRandom/Template:Featured/Talk]] per obténer un article determinat a l' azard o coma [[Special:AdvancedRandom/Template:GFDL/Image]] per obténer un fichièr jos licéncia GFDL",
 );
 
 /** Polish (Polski)

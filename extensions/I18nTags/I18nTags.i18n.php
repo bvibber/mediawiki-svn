@@ -19,6 +19,13 @@ $messages['ar'] = array(
 	'i18ntags-desc' => 'يسمح بالوصول إلى وظيفة الترجمة لصيغ الأرقام، قواعد اللغة والجمع في أي لغة متوفرة',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'i18ntags-desc' => 'Přístup k i18n funkcím  pro formátování čísel, gramatiku a plurály v jakémkoliv z dostupných jazyků',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
 */
@@ -42,6 +49,13 @@ $messages['hsb'] = array(
  */
 $messages['nl'] = array(
 	'i18ntags-desc' => 'Geeft toegang tot de i18n-functies voor nummeropmaak, grammatica en meervoud in alle beschikbare talen',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'i18ntags-desc' => 'Permet l’accès de las foncions i18n pel format dels nombres, la gramatica e lo plural dins cada lenga disponibla.',
 );
 
 /** Portuguese (Português)

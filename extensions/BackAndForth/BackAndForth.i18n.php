@@ -51,6 +51,14 @@ $messages['ast'] = array(
 	'backforth-prev' => 'Anterior ($1)',
 );
 
+/** Kotava (Kotava)
+ * @author Nkosi ya Cabinda
+ */
+$messages['avk'] = array(
+	'backforth-next' => 'Radimif ($1)',
+	'backforth-prev' => 'Abdif ($1)',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
@@ -72,6 +80,7 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'backforth-next' => 'পরবর্তী ($1)',
+	'backforth-desc' => 'পাতার শীর্ষে "পূর্ববর্তী" ও "পরবর্তী" বর্ণানুক্রমিক সংযোগ যোগ করা হবে',
 	'backforth-prev' => 'পূর্ববর্তী ($1)',
 );
 
@@ -304,6 +313,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'backforth-next' => 'Seguent ($1)',
+	'backforth-desc' => 'Ajusta « Seguent » e « Precedent » a la pagina dels ligams alfabetics en naut de las paginas',
 	'backforth-prev' => 'Precedent ($1)',
 );
 
@@ -344,6 +354,7 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'backforth-next' => 'След. ($1)',
+	'backforth-desc' => 'Добавляет на верх страницы ссылки на следующую и предыдущую по алфавиту страницы',
 	'backforth-prev' => 'Пред. ($1)',
 );
 

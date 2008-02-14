@@ -128,6 +128,7 @@ $messages['el'] = array(
  */
 $messages['fr'] = array(
 	'povwatch'                         => 'Surveillance des guerres d’éditions',
+	'povwatch_desc'                    => "Extension pour [[Special:PovWatch|ajouter des pages la liste de suivi]] d'autres utilisateurs",
 	'povwatch_no_session'              => 'Erreur : Impossible de soumettre le formulaire à la suite de la perte des données de la session.',
 	'povwatch_not_allowed_push'        => 'Vous n’êtes pas un administrateur pour la surveillance des guerres d’édition. Vous ne pouvez pas ajouter les articles dans la liste correspondante.',
 	'povwatch_already_subscribed'      => 'Vous êtes déjà inscrit pour la surveillance des guerre d’édition.',
@@ -180,6 +181,7 @@ $messages['gl'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'povwatch_desc'                    => 'Rozšěrjenje za [[Special:PovWatch|zasunjenje stronow do wobkedźbowankow]] druhich wužiwarjow',
 	'povwatch_no_session'              => 'Zmylk: Formular njeda so straty datow dla wotesłać.',
 	'povwatch_not_allowed_push'        => 'Njejsy administrator za PovWatch, njemóžeš nastawki do wobkedźbowankow sunyć.',
 	'povwatch_already_subscribed'      => 'Sy PovWatch hižo abonował',
@@ -251,9 +253,11 @@ $messages['li'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
 	'povwatch'                         => 'PovWatch',
+	'povwatch_desc'                    => "[[Special:PovWatch|Speciale pagina]] om pagina's op de volglijst van andere gebruikers te plaatsen",
 	'povwatch_no_session'              => 'Fout: het formulier kon niet verwerkt worden omdat de sessiegegevens verloren zijn gegaan.',
 	'povwatch_not_allowed_push'        => "U bent geen beheerder van PovWatch en kan geen pagina's op volglijsten zetten.",
 	'povwatch_already_subscribed'      => 'U bent al geabonneerd op PovWatch',
@@ -365,6 +369,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'povwatch'                         => 'PovWatch',
+	'povwatch_desc'                    => 'Rozšírenie na [[Special:PovWatch|pridávanie stránok na zoznamy sledovaných stránok]] ostatných používateľov',
 	'povwatch_no_session'              => 'Error: nebolo možné odoslať formulár kvôli strate údajov prihlasovacej relácie.',
 	'povwatch_not_allowed_push'        => 'Nie ste správca PovWatch, nemôžete pridávať stránky na zoznamy sledovaných stránok.',
 	'povwatch_already_subscribed'      => 'Už ste sa prihlásili na odber PovWatch',
@@ -391,6 +396,16 @@ Záznam posledných zoznamov sledovaných stránok sa nachádza na [[Special:Pov
 	'povwatch_subscribe_intro'         => 'Nie ste prihlásený na odber PovWatch. Prihlásiť odber môžete kliknutím na tlačidlo dolu.',
 	'povwatch_subscribe'               => 'Prihlásiť odber',
 	'povwatch_added'                   => 'pridaný',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'povwatch_unknown_subpage' => 'Okänd undersida.',
+	'povwatch_push'            => 'Tryck',
+	'povwatch_title'           => 'Titel:',
+	'povwatch_comment'         => 'Logg kommentar:',
 );
 
 /** Volapük (Volapük)

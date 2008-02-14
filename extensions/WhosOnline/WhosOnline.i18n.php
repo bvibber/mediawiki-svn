@@ -20,6 +20,22 @@ $messages['ar'] = array(
 	'whosonline-desc' => 'يعرض [[Special:WhosOnline|قائمة]] للمستخدمين المسجلين والمجهولين الموجودين حاليا على الشبكة',
 );
 
+/** Kotava (Kotava)
+ * @author Nkosi ya Cabinda
+ */
+$messages['avk'] = array(
+	'whosonline'      => 'Toktan tir dogluyayan ?',
+	'whosonline-desc' => 'Nedira va [[Special:WhosOnline|vexala]] dem dogluyayan favesik yo isu yoltiskik',
+);
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'whosonline'      => 'Кой е на линия',
+	'whosonline-desc' => 'Показва [[Special:WhosOnline|списък]] с анонимни потребители и влезли потребители, които са на линия',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

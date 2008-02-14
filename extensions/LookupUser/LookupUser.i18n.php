@@ -189,6 +189,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'lookupuser'                   => "Percórrer las informacions de l'utilizaire",
+	'lookupuser-desc'              => 'Extracha las informacions concernent un utilizaire talas coma una adreça electronica e lo numèro ID',
 	'lookupuser_intro'             => "Picar un nom d'utilizaire per veire sas preferéncias",
 	'lookupuser_nonexistent'       => "Error : l'utilizaire existís pas",
 	'lookupuser_authenticated'     => "Corrièr electronic d'identificacion : $1",
@@ -238,6 +239,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'lookupuser'                   => 'Vyhľadať informácie o používateľovi',
+	'lookupuser-desc'              => '[[Special:LookupUser|Získať informácií]] o používateľovi ako emailová adresa a ID',
 	'lookupuser_intro'             => 'Zadajte používateľské meno, ktorého nastavenia chcete zobraziť.',
 	'lookupuser_nonexistent'       => 'Chyba: Používateľ neexistuje',
 	'lookupuser_authenticated'     => 'Overenie emailu: $1',

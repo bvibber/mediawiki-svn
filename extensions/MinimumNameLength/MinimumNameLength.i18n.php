@@ -68,8 +68,12 @@ $messages['hr'] = array(
 	'minnamelength-error' => 'Vaše suradničko ime je prekratko. Duljina mora biti bar $1.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'minnamelength-error' => 'Wužiwarske mjeno je překrótke. Minimalna dołhosć je $1 znamješkow.',
+	'minnamelength-desc'  => 'Minimalnu dołhosć wužiwarskeho mjena wunuzować',
 );
 
 /** Hungarian (Magyar)
@@ -116,8 +120,13 @@ $messages['lb'] = array(
 	'minnamelength-error' => "Äre Benotzernumm ass ze kuerz. D'Mindestlängt ass $1.",
 );
 
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Siebrand
+ */
 $messages['nl'] = array(
 	'minnamelength-error' => 'Uw gebruikersnaam is te kort. De minimale lengte is $1.',
+	'minnamelength-desc'  => 'Laat toe om een minimumlengte voor gebruikersnamen te bepalen',
 );
 
 /* Norwegian (Jon Harald Søby) */

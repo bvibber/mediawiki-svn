@@ -40,11 +40,25 @@ $messages['hsb'] = array(
 	'catfeed-desc' => 'Wužiwa bity z kanalow aktualnych změnow. Wutwor wersiju w stronje, kotraž je wosebje wužitna za WikiNews.',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'catfeed-desc' => '最近の更新をフィードします。ページ内バージョンで作成されているため、特にウィキニュースでは便利です。',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'catfeed-desc' => 'Gebruikt informatie uit de recente wijzigingen. Maakt een versie binnen een pagina. In het bijzonder handig voor Wikinews',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'catfeed-desc' => 'Utiliza de bits per alimentar las modificacions recentas. Crèa una version de pagina, fòrça practica per Wikinews.',
 );
 
 /** Portuguese (Português)

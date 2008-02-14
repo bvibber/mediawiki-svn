@@ -128,6 +128,7 @@ $messages['oc'] = array(
  */
 $messages['sk'] = array(
 	'filelist'              => 'Zoznam súborov',
+	'filelist-desc'         => 'Špeciálna stránka zobrazujúca nahrané súbory',
 	'filelist-show-list'    => 'Zobraziť zoznam',
 	'filelist-show-gallery' => 'Zobraziť galériu',
 );

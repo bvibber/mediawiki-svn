@@ -91,6 +91,7 @@ $messages['be'] = array(
  */
 $messages['bg'] = array(
 	'sitematrix'           => 'Списък на уикитата на Уикимедия',
+	'sitematrix-desc'      => 'Показва списък с [[Special:SiteMatrix|уикитата във фермата]]',
 	'sitematrix-language'  => 'Език',
 	'sitematrix-project'   => 'Име на проекта, междупроектна препратка и междууики',
 	'sitematrix-others'    => 'Други проекти на Уикимедия',
@@ -134,10 +135,12 @@ $messages['cdo'] = array(
 
 /** Czech (Česky)
  * @author Li-sung
+ * @author Matěj Grabovský
  * @author לערי ריינהארט
  */
 $messages['cs'] = array(
 	'sitematrix'           => 'Seznam všech wiki nadace Wikimedia',
+	'sitematrix-desc'      => 'Zobrazuje [[Special:SiteMatrix|seznam projektů nadace Wikimedia]]',
 	'sitematrix-language'  => 'Jazyk',
 	'sitematrix-project'   => 'Jméno projektu, meziprojektový odkaz a mezijazykový odkaz',
 	'sitematrix-others'    => 'Ostatní projekty nadace Wikimedia',
@@ -433,10 +436,13 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'sitematrix'          => 'Lëscht vun de Wikimedia-Wikiën',
-	'sitematrix-language' => 'Sprooch',
-	'sitematrix-project'  => 'Numm vum Projet, Interprojet-Link an Interwiki-Link',
-	'sitematrix-others'   => 'Aner Wikimedia-Projetën',
+	'sitematrix'           => 'Lëscht vun de Wikimedia-Wikiën',
+	'sitematrix-desc'      => 'Weis eng  [[Special:SiteMatrix|Lëscht vun de Wikimedia-Wikien]]',
+	'sitematrix-language'  => 'Sprooch',
+	'sitematrix-project'   => 'Numm vum Projet, Interprojet-Link an Interwiki-Link',
+	'sitematrix-others'    => 'Aner Wikimedia-Projetën',
+	'sitematrix-total'     => "'''Total vum Kont: $1'''",
+	'sitematrix-sitetotal' => 'Total',
 );
 
 /** Limburgish (Limburgs)
@@ -559,11 +565,19 @@ $messages['pag'] = array(
 	'sitematrix' => 'Listaan na saray Wikimedia wiki',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Sp5uhe
+ * @author Siebrand
+ */
 $messages['pl'] = array(
-	'sitematrix' => 'Lista projektów Wikimedia',
-	'sitematrix-language' => 'Język',
-	'sitematrix-project' => 'Nazwa projektu, link do projektu i link interwiki',
-	'sitematrix-others' => 'Inne projekty Wikimedia',
+	'sitematrix'           => 'Lista projektów Wikimedia',
+	'sitematrix-desc'      => 'Pokazuje [[Special:SiteMatrix|spis wiki Fundacji Wikimedia]]',
+	'sitematrix-language'  => 'Język',
+	'sitematrix-project'   => 'Nazwa projektu, link do projektu i link interwiki',
+	'sitematrix-others'    => 'Inne projekty Wikimedia',
+	'sitematrix-total'     => "'''Ogólna liczba: $1'''",
+	'sitematrix-sitetotal' => 'Suma',
 );
 
 $messages['pms'] = array(
@@ -647,6 +661,7 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'sitematrix'           => 'Zoznam wiki projektov Nadácie Wikimedia',
+	'sitematrix-desc'      => 'Zobrazenie [[Special:SiteMatrix|zoznamu wiki projektov Wikimedia]]',
 	'sitematrix-language'  => 'Jazyk',
 	'sitematrix-project'   => 'Názov projektu, medziprojektový odkaz a interwiki odkaz',
 	'sitematrix-others'    => 'Iné projekty nadácie Wikimedia',

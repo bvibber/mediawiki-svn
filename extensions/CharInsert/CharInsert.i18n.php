@@ -37,6 +37,13 @@ $messages['de'] = array(
 	'charinsert-desc' => 'Erlaubt die Erstellung einer JavaScript gesteuerten Box zum Einfügen von Sonderzeichen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'charinsert-desc' => 'Dowólujo napóranje JavaScriptowego kašćika za zasajźenje specielnych znamješkow',
+);
+
 $messages['fr'] = array(
 'charinsert-desc' => 'Permet la création d’une boîte JavaScript pour l’insersion de caractères non-standards',
 );
@@ -46,6 +53,13 @@ $messages['fr'] = array(
  */
 $messages['hsb'] = array(
 	'charinsert-desc' => 'Dowola wutworjenje JavaScriptoweho kašćika za zasunjenje njestandardnych znamješkow',
+);
+
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'charinsert-desc' => '標準外の文字挿入を行うJavaScriptボックスを追加する',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -60,6 +74,13 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'charinsert-desc' => 'Maakt het mogelijk niet-standaard karakters in te voeren vanuit een deelvenster via JavaScript',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'charinsert-desc' => 'Permet la creacion d’una boita JavaScript per l’insersion de caractèrs pas estandards',
 );
 
 /** Portuguese (Português)

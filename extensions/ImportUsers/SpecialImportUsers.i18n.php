@@ -175,6 +175,32 @@ $messages['nl'] = array(
 	'importusers-realname'                => 'echte naam',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'importusers'                         => "Importar d'utilizaires",
+	'importusers-desc'                    => "Impòrta d'utilizaires en blòt dempuèi un fichièr CVS ; encodatge : UTF-8.",
+	'importusers-uploadfile'              => 'Importar lo fichièr',
+	'importusers-form-caption'            => 'Entratz un fichièr CVS (UTF-8)',
+	'importusers-form-file'               => 'Format del fichièr utilizaire (csv) :',
+	'importusers-form-replace-present'    => 'Remplaça los utilizaires existents',
+	'importusers-form-button'             => 'Importar',
+	'importusers-user-added'              => 'L’utilizaire <b>%s</b> es estat ajustat.',
+	'importusers-user-present-update'     => 'l’utilizaire <b>%s</b> existís ja. Mesa a jorn efectuada.',
+	'importusers-user-present-not-update' => 'L’utilizaire <b>%s</b> existís ja. Pas mes a jorn.',
+	'importusers-user-invalid-format'     => "Las donadas d'utilizaire dins la linha #%s son dins un format marrit o alara son inexistentas. Cap d'accion.",
+	'importusers-log'                     => 'Jornal dels impòrts',
+	'importusers-log-summary'             => 'Somari',
+	'importusers-log-summary-all'         => 'Total',
+	'importusers-log-summary-added'       => 'Ajustat',
+	'importusers-log-summary-updated'     => 'Mesa a jorn',
+	'importusers-login-name'              => "Nom de l'escais",
+	'importusers-password'                => 'Senhal',
+	'importusers-email'                   => 'adreça de corrièr electronic',
+	'importusers-realname'                => 'nom vertadièr',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -209,6 +235,32 @@ $messages['pt'] = array(
 	'importusers-password'                => 'palavra-chave',
 	'importusers-email'                   => 'email',
 	'importusers-realname'                => 'nome real',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'importusers'                         => 'Import používateľov',
+	'importusers-desc'                    => 'Hromadné importovanie používateľov z CSV súboru; kódovanie: UTF-8',
+	'importusers-uploadfile'              => 'Nahrať súbor',
+	'importusers-form-caption'            => 'Vstupný CSV súbor (UTF-8)',
+	'importusers-form-file'               => 'Formát súboru (csv):',
+	'importusers-form-replace-present'    => 'Nahradiť existujúcich používateľov',
+	'importusers-form-button'             => 'Importovať',
+	'importusers-user-added'              => 'Používateľ <b>%s</b> bol pridaný.',
+	'importusers-user-present-update'     => 'Používateľ <b>%s</b> už existuje. Aktualizovaný.',
+	'importusers-user-present-not-update' => 'Používateľ <b>%s</b> už existuje. Ponecháva sa bez aktualizácie.',
+	'importusers-user-invalid-format'     => 'Údaje na riadku #%s majú neplatný formát alebo je riadok prázdny. Riadok preskočený.',
+	'importusers-log'                     => 'Záznam importov',
+	'importusers-log-summary'             => 'Zhrnutie',
+	'importusers-log-summary-all'         => 'Všetky',
+	'importusers-log-summary-added'       => 'Pridané',
+	'importusers-log-summary-updated'     => 'Aktualizované',
+	'importusers-login-name'              => 'Prihlasovacie meno',
+	'importusers-password'                => 'heslo',
+	'importusers-email'                   => 'email',
+	'importusers-realname'                => 'skutočné meno',
 );
 
 /** Swedish (Svenska)

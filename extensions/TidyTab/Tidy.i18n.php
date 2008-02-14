@@ -49,6 +49,14 @@ $messages['hsb'] = array(
 	'untidy' => 'Njeporjadny',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'tidy'   => 'Klasséieren',
+	'untidy' => 'Net klasséieren',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -95,6 +95,7 @@ $messages['br'] = array(
  */
 $messages['cs'] = array(
 	'parserdifftest'      => 'Test rozdílu parserů',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Speciální stránka]] pro porovnání výstupů dvou rozdílných syntaktických analyzátorů',
 	'pdtest_no_target'    => 'Není určen cíl.',
 	'pdtest_page_missing' => 'Určená stránka nebyla v databázi nalezena.',
 	'pdtest_no_changes'   => 'Neprojevily se žádné změny.',
@@ -398,6 +399,23 @@ $messages['oc'] = array(
 	'pdt_comparing_page'  => 'Comparason del parser en sortida a partir de [[$1]]',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Strona specjalna]] pozwalająca porównać wyniki oraz skuteczność dwóch różnych analizatorów składni',
+	'pdtest_no_target'    => 'Nie określono obiektu działania',
+	'pdtest_page_missing' => 'Wybranej strony nie odnaleziono w bazie danych.',
+	'pdtest_no_changes'   => 'Nie wykryto zmian.',
+	'pdtest_time_report'  => 'Analizator składni <b>$1</b> potrzebował $2 sekund, a <b>$3</b> potrzebował $4 sekund.',
+	'pdtest_text'         => 'Tekst wejściowy:',
+	'pdtest_ok'           => 'OK',
+	'pdtest_get_text'     => 'Pobierz tekst ze strony',
+	'pdtest_diff'         => 'Różnice',
+	'pdtest_side_by_side' => 'Porównanie wyników',
+	'pdt_comparing_page'  => 'Porównuję wynik działania analizatora składni z [[$1]]',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -459,6 +477,7 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'parserdifftest'      => 'Test rozdielov syntaktického analyzátora',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Špeciálna stránka]] na porovnanie výstupov dvoch rozdielnych syntaktických analyzátorov',
 	'pdtest_no_target'    => 'Nebol zadaný cieľ.',
 	'pdtest_page_missing' => 'Zadaná stránka nebola nájdená v databáze.',
 	'pdtest_no_changes'   => 'Neboli zistené žiadne zmeny.',

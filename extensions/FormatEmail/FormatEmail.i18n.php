@@ -119,6 +119,7 @@ $2',
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'email-desc'   => 'Permet l’ajust d’entèstas o de pès de pagina personalizats dins los corrièrs electronics mandats als utilizaires dispausant d’una adreça electronica.',
 	'email_footer' => '----------------------------------------------------------------------------
 
 Aqueste corrièr vos es estat mandat gràcia al sistèma de messatjariá de {{SITENAME}} per $1. $2',

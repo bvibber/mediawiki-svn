@@ -206,6 +206,7 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'formtitlepattern'      => 'Nei $1 derbäisetzen',
 	'formsave'              => 'Späicheren',
 	'formarticleexists'     => "D'Säit gëtt et schonn.",
 	'formarticleexiststext' => "D'Säit [[$1]] gëtt et schonn.",

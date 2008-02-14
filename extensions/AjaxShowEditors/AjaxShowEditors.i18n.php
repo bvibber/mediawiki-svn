@@ -61,8 +61,10 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Zaheen
  */
 $messages['bn'] = array(
+	'ajax-se-desc'    => 'একই পাতায় সম্পাদনা করছেন এমন ব্যবহারকারীদের দেখাবে',
 	'ajax-se-title'   => 'বর্তমানে সম্পাদনা করছেন:',
 	'ajax-se-pending' => 'সতেজ(refresh) করা বাকী আছে... (এই বাক্সে ক্লিক করুন অথবা সম্পাদনা শুরু করুন)',
 	'ajax-se-idling'  => '($1সেকেন্ড পূর্বে)',
@@ -278,6 +280,13 @@ $messages['kk-latn'] = array(
 	'ajax-se-idling'  => '($1 s burın)',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'ajax-se-title' => 'កំពុង កែប្រែ ៖',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -357,6 +366,7 @@ $messages['nso'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'ajax-se-desc'    => 'Visualiza los utilizaires que son a modificar la meteissa pagina.',
 	'ajax-se-title'   => 'A èsser modificat per :',
 	'ajax-se-pending' => 'refrescament en cors ... (clicatz sus aqueste messatge o modificatz la pagina)',
 	'ajax-se-idling'  => '(i a $1 s)',
@@ -398,8 +408,11 @@ $messages['ro'] = array(
 	'ajax-se-idling' => '(acum $1s)',
 );
 
-/** Russian (Русский) */
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
 $messages['ru'] = array(
+	'ajax-se-desc'    => 'Показывает пользователей, редактирующих одну и ту же страницу',
 	'ajax-se-title'   => 'В настоящий момент редактируют:',
 	'ajax-se-pending' => 'ожидание обновления... (нажмите здесь или начните редактирование)',
 	'ajax-se-idling'  => '($1 с назад)',

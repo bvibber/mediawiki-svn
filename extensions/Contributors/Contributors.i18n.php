@@ -460,6 +460,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'contributors'             => 'Contributors',
+	'contributors-desc'        => 'Met en somari los contributors principals d’una pagina',
 	'contributors-toolbox'     => 'Contributors principals',
 	'contributors-legend'      => 'Listar los contributors principals de l’article',
 	'contributors-target'      => 'Títol:',
@@ -659,8 +660,16 @@ $messages['su'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'contributors-target' => 'Titel:',
-	'contributors-submit' => 'Visa',
+	'contributors'             => 'Bidragsgivare',
+	'contributors-toolbox'     => 'Huvud bidragsgivare',
+	'contributors-legend'      => 'Lista huvud bidragsgivarna till en sida',
+	'contributors-target'      => 'Titel:',
+	'contributors-submit'      => 'Visa',
+	'contributors-subtitle'    => 'Huvud bidragsgivarna till $1',
+	'contributors-others-long' => 'Det är $1 andra bidragsgivare till denna sida.',
+	'contributors-others'      => 'och $1 andra',
+	'contributors-badtitle'    => 'Ogiltig titel.',
+	'contributors-nosuchpage'  => 'Sidan $1 existerar inte.',
 );
 
 /** Volapük (Volapük)

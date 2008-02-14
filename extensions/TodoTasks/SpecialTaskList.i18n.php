@@ -60,6 +60,7 @@ $messages['ar'] = array(
 $messages['bg'] = array(
 	'tasklist'             => 'Списък със задачи',
 	'tasklistbyproject'    => 'Списък със задачи по проект',
+	'tasklistmytasks'      => 'Моите задачи',
 	'tasklistbyprojectbad' => "Проектът '''%s''' не е валиден проект. За списък с проекти, вижте [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistchooseproj'   => 'Избор на проект:',
 	'tasklistprojdisp'     => 'Показване',

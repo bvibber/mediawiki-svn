@@ -105,6 +105,17 @@ $messages['ast'] = array(
 	'badimages-page'           => "{{ns:help}}:Llista d'imáxenes non válides",
 );
 
+/** Kotava (Kotava)
+ * @author Nkosi ya Cabinda
+ */
+$messages['avk'] = array(
+	'badimages'         => 'Ewavaja yo',
+	'badimages-add-btn' => 'Loplekura',
+	'badimages-added'   => '$1 su zo kovexalar.',
+	'badimages-count'   => "'''$1''' ewava tid ewavaja.",
+	'badimages-name'    => 'Yolt :',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
@@ -152,6 +163,7 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'badimages'                => 'অচল ছবির তালিকা',
+	'badimages-desc'           => 'মিডিয়াউইকির অচল ছবির তালিকা তৈরির ক্ষমতা সম্প্রসারণ করা হবে',
 	'badimages-add-btn'        => 'যোগ করা হোক',
 	'badimages-added'          => '$1-কে তালিকাতে যোগ করা হয়েছে।',
 	'badimages-count'          => "অচল ছবির তালিকায় '''$1'''টি ছবি আছে।",
@@ -648,6 +660,13 @@ $messages['ja'] = array(
 	'badimages-page'           => '{{ns:help}}:好ましくない画像の一覧表',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'badimages-remove' => '(ដកចេញ)',
+);
+
 /** Kurdish (Kurdî / كوردی)
  * @author Bangin
  */
@@ -822,6 +841,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'badimages'                => 'Lista dels imatges indesirables',
+	'badimages-desc'           => 'Augmenta la capacitat de la lista dels imatges indesirables de MediaWiki',
 	'badimages-add-btn'        => 'Ajustar',
 	'badimages-added'          => '$1 es estat ajustat a la lista.',
 	'badimages-count'          => "I a '''$1''' imatges dins la lista dels imatges indesirables.",
@@ -952,9 +972,12 @@ $messages['ro'] = array(
 	'badimages-unprivileged'   => '(Nu aveţi drepturi suficiente pentru modificarea listei)',
 );
 
-/* Russian (Alexander Sigachov) */
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
 $messages['ru'] = array(
 	'badimages'                => 'Список нежелательных изображений',
+	'badimages-desc'           => 'Расширяет возможности списка запрещённых изображений MediaWiki',
 	'badimages-add-btn'        => 'Добавить',
 	'badimages-added'          => '$1 добавлено в список.',
 	'badimages-count'          => "Всего в списке '''$1''' нежелательных изображений.",

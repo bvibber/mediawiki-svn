@@ -95,11 +95,11 @@ $messages['nl'] = array(
  */
 $messages['oc'] = array(
 	'eval'        => 'Evaluar',
+	'eval-desc'   => 'Ajusta [[Special:Eval|una interfàcia]] a la foncion <code>eval()</code>.',
 	'eval_submit' => 'Evaluar',
 	'eval_escape' => 'Arrèstar la sortida',
 	'eval_out'    => 'Sortida',
 	'eval_code'   => 'Còde',
-
 );
 
 /** Portuguese (Português)

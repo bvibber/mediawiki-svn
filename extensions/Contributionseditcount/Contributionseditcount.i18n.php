@@ -109,8 +109,12 @@ $messages['nso'] = array(
 	'contributionseditcount' => 'Mošomiši o nale diphetogo tše $1.',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
-	'contributionseditcount' => 'Aqueste utilizaire a {{PLURAL:$1|$1 edicion|$1 edicions}}.',
+	'contributionseditcount'      => 'Aqueste utilizaire a {{PLURAL:$1|$1 edicion|$1 edicions}}.',
+	'contributionseditcount-desc' => 'Aficha un comptaire d’edicions sus la pagina [[Special:Contributions]]',
 );
 
 $messages['pl'] = array(

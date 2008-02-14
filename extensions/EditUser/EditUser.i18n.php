@@ -85,6 +85,15 @@ $messages['hsb'] = array(
 	'edituser-dosearch' => 'Pytanje',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'edituser'          => 'កែប្រែ អ្នកប្រើប្រាស់',
+	'edituser-username' => 'ឈ្មោះ',
+	'edituser-dosearch' => 'ស្វែងរក',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -106,6 +115,17 @@ $messages['nl'] = array(
 	'edituser-logout'   => 'Gebruiker afmelden',
 	'edituser-username' => 'Naam',
 	'edituser-dosearch' => 'Zoeken',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'edituser-desc'     => "Permet als utilizaires dispausant de cèrts privilègis d'editar las preferéncias dels autres utilizaires.",
+	'edituser'          => "Editar l'utilizaire",
+	'edituser-logout'   => "Tampa la session d'utilizaire",
+	'edituser-username' => 'Nom',
+	'edituser-dosearch' => 'Recercar',
 );
 
 /** Pashto (پښتو)
@@ -142,6 +162,9 @@ $messages['sk'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
+	'edituser-desc'     => 'Tillåt privilegierade användare till att redigera andra användares inställningar',
+	'edituser'          => 'Redigera användare',
+	'edituser-logout'   => 'Logga ut användare',
 	'edituser-username' => 'Namn',
 	'edituser-dosearch' => 'Sök',
 );

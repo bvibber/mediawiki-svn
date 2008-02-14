@@ -39,6 +39,13 @@ $messages['nl'] = array(
 	'contributorsaddon-desc' => 'Voegt "JavaScript onMouseOver"-popups toe aan de link "Belangrijkste schrijvers"',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'contributorsaddon-desc' => 'Ajusta lo popup JS onMouseOver als ligams dels « Contributors principals »',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

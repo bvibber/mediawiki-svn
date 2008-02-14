@@ -60,6 +60,16 @@ favor usa esta función con xacíu.",
 	'querysuccessful' => 'Consulta efeutuada correutamente',
 );
 
+/** Kotava (Kotava)
+ * @author Nkosi ya Cabinda
+ */
+$messages['avk'] = array(
+	'sqlquery'        => 'Va kucilara bazel !',
+	'querybtn'        => 'Va kucilara staksel !',
+	'selectonly'      => 'Anton belisa kucilara zo rictar.',
+	'querysuccessful' => 'Kucilanhara',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
@@ -94,6 +104,7 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'asksql'          => 'এসকিউএল কোয়েরি',
+	'asksql-desc'     => 'একটি [[Special:Asksql|বিশেষ পাতার]] সাহায্যে এসকিউএল কোয়েরি সম্পাদন করা যাবে',
 	'asksqltext'      => "ডাটাবেজে সরাসরি কোয়েরি করার জন্য নিচের ফর্মটি ব্যবহার করুন।
 স্ট্রিং লিটেরাল সীমায়িত করার জন্য একক উদ্ধৃতিচিহ্ন ('এ ভাবে') ব্যবহার করুন।
 এতে সার্ভারের উপর যথেষ্ট চাপ পড়তে পারে, তাই অনুগ্রহ করে কৃচ্ছ্রতার সাথে এই ফাংশনটি ব্যবহার করুন।",
@@ -428,6 +439,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'asksql'          => 'Requèsta SQL',
+	'asksql-desc'     => 'Efectua de requèstas SQL a travèrs una [[Special:Asksql|pagina especiala]]',
 	'asksqltext'      => "Utilizatz aqueste formulari per far una requèsta dirècta dins la banca de donadas. Utilizatz los apostròfes ('atal') per las cadenas de caractèrs. Aquò pòt sovent subrecargar lo serveire. Alara, utilizatz aquesta foncion amb parsimoniá.",
 	'sqlislogged'     => 'Notatz plan que totas las requèstas son jornalizadas.',
 	'sqlquery'        => 'Entratz la requèsta',
@@ -495,11 +507,12 @@ Această opţiune încarcă de obicei serverul, deci vă rugăm să o folosiţi 
 	'querysuccessful' => 'Interogare terminată cu succes',
 );
 
-/* Russian
- * @author Alexander Sigachov
+/** Russian (Русский)
+ * @author .:Ajvol:.
  */
 $messages['ru'] = array(
 	'asksql'          => 'SQL-запрос',
+	'asksql-desc'     => 'Выполнение SQL-запросов с помощью [[Special:Asksql|служебной страницы]]',
 	'asksqltext'      => "Данную форму можно использовать для прямых запросов к базе данных.
 Используйте одинарные кавычки для обозначения символьных последоветельностей ('вот так').
 Запросы могут стать причиной значительной нагрузки на сервер, используйте данную функцию осторожно.",

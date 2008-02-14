@@ -1069,6 +1069,39 @@ $wdMessages['kk-tr'] = array(
 	'langman_title' => 'Tilderdi meñgerw',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$wdMessages['km'] = array(
+	'datasearch'                      => 'Wikidata: ស្វែងរក ទិន្នន័យ',
+	'langman_title'                   => 'អ្នកគ្រប់គ្រង ភាសា',
+	'languages'                       => 'Wikidata: អ្នកគ្រប់គ្រង ភាសា',
+	'ow_save'                         => 'រក្សាទុក',
+	'ow_history'                      => 'ប្រវត្តិ',
+	'ow_noedit_title'                 => 'មិនអនុញ្ញាតិ អោយ កែប្រែ',
+	'ow_uipref_datasets'              => 'បង្ហាញ តាមលំនាំដើម',
+	'ow_uiprefs'                      => 'ទិន្នន័យ វិគី',
+	'ow_none_selected'                => '<គ្មានអ្វី ត្រូវបានជ្រើសយក>',
+	'ow_dm_OK'                        => 'យល់ព្រម',
+	'ow_dm_not_present'               => 'មិនបានបញ្ចូល',
+	'ow_ClassAttributeAttribute'      => 'សេចក្តីកំណត់',
+	'ow_ClassAttributeLevel'          => 'កំរិត',
+	'ow_ClassAttributeType'           => 'ប្រភេទ',
+	'ow_Definition'                   => 'និយមន័យ',
+	'ow_IdenticalMeaning'             => 'ន័យ ស្រដៀងគ្នា ?',
+	'ow_Language'                     => 'ភាសា',
+	'ow_OptionAttributeOption'        => 'ជំរើស',
+	'ow_OptionAttributeOptions'       => 'ជំរើស នានា',
+	'ow_OptionAttributeValues'        => 'តំលៃ នានា នៃ ជំរើស',
+	'ow_Relations'                    => 'ទំនាក់ទំនង',
+	'ow_RelationType'                 => 'ប្រភេទ ទំនាក់ទំនង',
+	'ow_Text'                         => 'អត្ថបទ',
+	'ow_TranslatedText'               => 'អត្ថបទ ត្រូវបានប្រែសំរួល',
+	'ow_TranslatedTextAttributeValue' => 'អត្ថបទ',
+	'ow_LinkAttributeValues'          => 'តំណភ្ជាប់ នានា',
+	'ow_Value'                        => 'តំលៃ',
+);
+
 /** Kurdish (Kurdî / كوردی)
  * @author Bangin
  */
@@ -1529,6 +1562,44 @@ als senses definits dins las autras donadas.</p>",
 	'ow_copy_unsuccessful'                  => "<h3>Còpia infructuosa</h3> Cap d'operacion de còpia a pas pres plaça.",
 	'ow_no_action_specified'                => "<h3>Cap d'accion es pas estada especificada</h3> Benlèu, seriatz vengut sus aquesta pagina dirèctament ? Avètz pas besonh, en principi, d'èsser aicí.",
 	'ow_db_consistency_not_found'           => "<h2>Error</h2> Un problèma es estat trobat dins la banca de donadas. Wikidata pòt pas trobar de donadas validas ligadas al numèro de sens definit. Poiriá èsser perdut. Contactatz l'operator o l'administrator del serveire.",
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$wdMessages['pl'] = array(
+	'datasearch'                  => 'Wikidata: Wyszukiwanie danych',
+	'langman_title'               => 'Menadżer języków',
+	'languages'                   => 'Wikidata: Menadżer języków',
+	'ow_save'                     => 'Zapisz',
+	'ow_history'                  => 'Historia',
+	'ow_datasets'                 => 'Wybór zbioru danych',
+	'ow_noedit_title'             => 'Brak uprawnień do wykonania edycji',
+	'ow_noedit'                   => 'Nie masz uprawnień do wykonania edycji w zbiorze danych "$1". Zobacz [[{{MediaWiki:Ow editing policy url}}|zasady nadawania uprawnień do edycji]].',
+	'ow_uipref_datasets'          => 'Widok domyślny',
+	'ow_AlternativeDefinition'    => 'Inna defnicja',
+	'ow_ClassAttributeAttribute'  => 'Atrybut',
+	'ow_ClassAttributes'          => 'Atrybuty klas',
+	'ow_ClassAttributeLevel'      => 'Poziom',
+	'ow_ClassAttributeType'       => 'Typ',
+	'ow_Collection'               => 'Kolekcja',
+	'ow_GotoSource'               => 'Idź do źródła',
+	'ow_Language'                 => 'Język',
+	'ow_OptionAttribute'          => 'Właściwość',
+	'ow_OptionAttributeOption'    => 'Opcja',
+	'ow_OptionAttributeOptions'   => 'Opcje',
+	'ow_OptionAttributeValues'    => 'Wartość opcji',
+	'ow_Spelling'                 => 'Ortografia',
+	'ow_Synonyms'                 => 'Snonimy',
+	'ow_Source'                   => 'Źródło',
+	'ow_TextAttribute'            => 'Właściwość',
+	'ow_TranslatedTextAttribute'  => 'Właściwość',
+	'ow_LinkAttribute'            => 'Właściwość',
+	'ow_LinkAttributeValues'      => 'Linki',
+	'ow_Property'                 => 'Właściwość',
+	'ow_Value'                    => 'Wartość',
+	'ow_Permission_denied'        => '<h2>DOSTĘP ZABRONIONY</h2>',
+	'ow_copy_no_action_specified' => 'Określ akcję',
 );
 
 /** Piemontèis (Piemontèis)

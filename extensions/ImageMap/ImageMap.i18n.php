@@ -92,6 +92,13 @@ $messages['bn'] = array(
 	'imagemap_description' => 'এই চিত্র সম্পর্কে',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'imagemap_description' => 'Diwar-benn ar skeudenn-mañ',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */
@@ -483,31 +490,39 @@ $messages['no'] = array(
 	'imagemap_description'          => 'Om dette bildet',
 );
 
-/* Occitan (Cedric31) */
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
-	'imagemap_no_image'             => '&lt;imagemap&gt; : devètz especificar un imatge dins la primièra linha',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt; : l’imatge es invalid o existís pas',
-	'imagemap_no_link'              => '&lt;imagemap&gt; : cap de ligam valid es pas estat trobat a la fin de la linha $1',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt; : títol invalid dins lo ligam a la linha $1',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt; : pas pro de coordenadas per la forma a la linha $1',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt; : forma pas reconeguda a la linha $1, cada linha deu començar amb un dels mots seguents : default, rect, circle o poly',
-	'imagemap_no_areas'             => '&lt;imagemap&gt; : al mens una especificacion d’aira deu èsser balhada',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt; : coordenada invalida a la linha $1, deu èsser un nombre',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt; : paramètre « desc » invalid, los paramètres possibles son : $1',
-	'imagemap_description'          => 'A prepaus d\'aqueste imatge',
+	'imagemap_desc'               => "Permet qu'una mapa imatge clienta siá clicabla en utilizant la balisa <tt><nowiki><imagemap></nowiki></tt>",
+	'imagemap_no_image'           => '&lt;imagemap&gt; : devètz especificar un imatge dins la primièra linha',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt; : l’imatge es invalid o existís pas',
+	'imagemap_no_link'            => '&lt;imagemap&gt; : cap de ligam valid es pas estat trobat a la fin de la linha $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt; : títol invalid dins lo ligam a la linha $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt; : pas pro de coordenadas per la forma a la linha $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt; : forma pas reconeguda a la linha $1, cada linha deu començar amb un dels mots seguents : default, rect, circle o poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt; : al mens una especificacion d’aira deu èsser balhada',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt; : coordenada invalida a la linha $1, deu èsser un nombre',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt; : paramètre « desc » invalid, los paramètres possibles son : $1',
+	'imagemap_description'        => "A prepaus d'aqueste imatge",
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
-	'imagemap_no_image'             => '&lt;imagemap&gt;: należy wpisać grafikę w pierwszej linii',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;: grafika jest niepoprawna lub nie istnieje',
-	'imagemap_no_link'              => '&lt;imagemap&gt;: nie znaleziono poprawnego linku na końcu linii $1',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: niepoprawny tytuł linku w linii $1',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: niewystarczająca liczba współrzędnych dla kształtu zdefiniowanego w linii $1',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: nierozpoznany kształt w linii $1; każda linia musi zawierać tekst: default, rect, circle lub poly',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;: należy podać przynajmniej jedną specyfikację pola',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: nieprawidłowa współrzędna w linii $1; należy podać liczbę',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: nieprawidłowa specyfikacja opisu; należy wpisać jeden z wariantów: <tt>$1</tt>',
-	'imagemap_description'          => 'Informacje o tej grafice',
+	'imagemap_desc'               => 'Umożliwia stworzenie po stronie klienta klikalnej mapy z użyciem znacznika <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: należy wpisać grafikę w pierwszej linii',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: grafika jest niepoprawna lub nie istnieje',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: nie znaleziono poprawnego linku na końcu linii $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: niepoprawny tytuł linku w linii $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: niewystarczająca liczba współrzędnych dla kształtu zdefiniowanego w linii $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: nierozpoznany kształt w linii $1; każda linia musi zawierać tekst: default, rect, circle lub poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: należy podać przynajmniej jedną specyfikację pola',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: nieprawidłowa współrzędna w linii $1; należy podać liczbę',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: nieprawidłowa specyfikacja opisu; należy wpisać jeden z wariantów: <tt>$1</tt>',
+	'imagemap_description'        => 'Informacje o tej grafice',
 );
 
 /* Piedmontese (Bèrto 'd Sèra) */

@@ -434,6 +434,13 @@ $messages['frp'] = array(
 	'ogg-desc-link'           => 'A propôs de ceti fichiér',
 );
 
+/** Irish (Gaeilge)
+ * @author Spacebirdy
+ */
+$messages['ga'] = array(
+	'ogg-dismiss' => 'Dún',
+);
+
 $messages['gl'] = array(
 	'ogg-short-audio' => 'Ficheiro de son Ogg $1, $2',
 	'ogg-short-video' => 'Ficheiro de vídeo Ogg $1, $2',
@@ -1002,6 +1009,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'ogg-desc'                => 'Obsługa dla Ogg z kodekami obrazu Theora oraz dźwięku Vobis z odtwarzaczem w JavaScript',
 	'ogg-short-audio'         => 'Plik dźwiękowy Ogg $1, $2',
 	'ogg-short-video'         => 'Plik wideo Ogg $1, $2',
 	'ogg-short-general'       => 'Plik multimedialny Ogg $1, $2',

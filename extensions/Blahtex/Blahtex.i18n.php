@@ -181,6 +181,7 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'math_noblahtex'                        => 'blahtex চালানো গেল না, যেটি $1-এ থাকার কথা',
+	'math-desc'                             => '&lt;math&gt; ট্যাগের জন্য ম্যাথএমএল আউটপুট',
 	'math_AmbiguousInfix'                   => '"$1"-এর অবস্থান দ্ব্যর্থবোধক (অতিরিক্ত দ্বিতীয় বন্ধনী "{ ... }" ব্যবহার করে দ্ব্যর্থতা নিরসনের চেষ্টা করুন)',
 	'math_CannotChangeDirectory'            => 'সক্রিয় ডিরেক্টরি পরিবর্তন করা যাচ্ছে না',
 	'math_CannotCreateTexFile'              => 'টেক ফাইল সৃষ্টি করা যাচ্ছে না',
@@ -205,6 +206,13 @@ $messages['bn'] = array(
 	'math_LatexFontNotSpecified'            => '"$1"-এর জন্য কোন লেটেক ফন্ট নির্দিষ্ট করে দেওয়া হয়নি',
 	'math_LatexPackageUnavailable'          => 'PNG রেন্ডার করা যাচ্ছে না, কারণ "$1" লেটেক প্যাকেজটি লভ্য নয়',
 	'math_MismatchedBeginAndEnd'            => '"$1" এবং "$2" নির্দেশ দুইটি মিলছে না',
+	'math_MisplacedLimits'                  => '"$1" কমান্ডটি শুধুমাত্র একটি গাণিতিক অপারেটরের পরেই ব্যবহৃত হতে পারে ("\\mathop" ব্যবহার করতে পারেন)',
+	'math_MissingDelimiter'                 => '"$1"-এর পরে সীমায়ক নেই',
+	'math_MissingOpenBraceAfter'            => '"$1"-এর পরে উন্মুক্ত বন্ধনী "{" নেই',
+	'math_MissingOpenBraceAtEnd'            => 'ইনপুটের শেষে দরকারী উন্মুক্ত বন্ধনী "{" নেই',
+	'math_MissingOpenBraceBefore'           => '"$1"-এর আগে দরকারী উন্মুক্ত বন্ধনী "{" নেই',
+	'math_TooManyMathmlNodes'               => 'ম্যাথএমএল বৃক্ষে গ্রন্থির (node) সংখ্যা অত্যধিক',
+	'math_TooManyTokens'                    => 'ইনপুট অতিরিক্ত দীর্ঘ',
 );
 
 /** Breton (Brezhoneg)
@@ -924,6 +932,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'math_noblahtex'                        => 'Pòt pas executar blahtex, que deuriá èsser a $1',
+	'math-desc'                             => 'Sortida MathML per las balisas &lt;math&gt;',
 	'math_AmbiguousInfix'                   => "La posicion de « $1 » es ambigua (ajustar de balisas adicionalas « { ... } » pòt levar l'ambigüitat)",
 	'math_CannotChangeDirectory'            => 'Pòt pas cambiar de dorsièr de trabalh',
 	'math_CannotCreateTexFile'              => 'Pòt pas crear un fichièr tex',
@@ -976,6 +985,21 @@ $messages['oc'] = array(
 	'math_UnrecognisedCommand'              => 'Comanda desconeguda « $1 »',
 	'math_WrongFontEncoding'                => "Lo simbòl « $1 » pòt aparéisser pas dins l'encodatge de caractèrs « $2 ».",
 	'math_WrongFontEncodingWithHint'        => "Lo simbòl « $1 » poiriá èsser pas afichat per l'encodatge de caractèrs « $2 » (ensajatz la comanda « $3{...} »).",
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ * @author Equadus
+ */
+$messages['pl'] = array(
+	'math_CannotChangeDirectory'            => 'Nie można zmienić katalogu roboczego',
+	'math_IllegalCharacter'                 => 'Nieprawidłowy znak w danych wejściowych',
+	'math_InvalidColour'                    => 'Kolor "$1" jest niepoprawny',
+	'math_NotEnoughArguments'               => 'Zbyt mało argumentów dla "$1"',
+	'math_TooManyTokens'                    => 'Zbyt długie dane wejściowe',
+	'math_UnavailableSymbolFontCombination' => 'Brak znaku "$1" w czcionce "$2"',
+	'math_UnrecognisedCommand'              => 'Nierozpoznane polecenie "$1"',
+	'math_WrongFontEncodingWithHint'        => 'Znak "$1" może nie występować w czcionce "$2" (spróbuj użyć polecenia "$3{...}")',
 );
 
 /** Portuguese (Português)
@@ -1102,6 +1126,7 @@ $messages['ro'] = array(
  */
 $messages['ru'] = array(
 	'math_noblahtex'                        => 'Невозможно запустить blahtex, его ожидаемое расположение: $1',
+	'math-desc'                             => 'MathML-вывод для тега &lt;math&gt;',
 	'math_AmbiguousInfix'                   => 'Неоднозначное расположение «$1» (попробуйте использовать дополнительные скобки «{ ... }» для разрешения неоднозначности)',
 	'math_CannotChangeDirectory'            => 'Невозможно изменить рабочую директорию',
 	'math_CannotCreateTexFile'              => 'Невозможно создать tex-файл',
@@ -1231,11 +1256,15 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author Max sonnelid
  */
 $messages['sv'] = array(
-	'math_InvalidColour' => 'Färgen "$1" är ogiltig',
-	'math_TooManyTokens' => 'Inmatningen är för lång',
+	'math_CannotChangeDirectory' => 'Kan inte ändra arbetsregistret',
+	'math_CannotCreateTexFile'   => 'Kan inte skapa tex fil',
+	'math_CannotWriteTexFile'    => 'Kan inte skriva till tex fil',
+	'math_InvalidColour'         => 'Färgen "$1" är ogiltig',
+	'math_TooManyTokens'         => 'Inmatningen är för lång',
 );
 
 /** Vietnamese (Tiếng Việt)

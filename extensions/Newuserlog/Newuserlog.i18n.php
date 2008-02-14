@@ -32,9 +32,9 @@ $messages['af'] = array(
 $messages['am'] = array(
 	'newuserlogpage'           => 'የአባልነት መዝገብ (user log)',
 	'newuserlogpagetext'       => 'ይህ መዝገብ ወደ አባልነት የገቡትን ብዕር ስሞች ይዘርዝራል።',
-	'newuserlog-byemail'       => 'ማለፊያ-ቃል በኤ-መልዕት ተልኳል',
+	'newuserlog-byemail'       => 'ማለፊያ-ቃል በኤ-መልዕክት ተልኳል',
 	'newuserlog-create-entry'  => 'አዲስ አባል',
-	'newuserlog-create2-entry' => 'ለ$1 መዝገብ ተከፍቷል',
+	'newuserlog-create2-entry' => 'ለ$1 አባልነት ተፈጥሯል',
 );
 
 $messages['an'] = array(
@@ -190,6 +190,18 @@ $messages['de'] = array(
 	'newuserlog-byemail'       => 'das Passwort wurde per E-Mail versandt',
 	'newuserlog-create-entry'  => 'Benutzer wurde neu registriert',
 	'newuserlog-create2-entry' => 'erstellte Benutzerkonto für $1',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'newuserlogpage'           => 'Protokol nowych wužywarjow',
+	'newuserlogpagetext'       => 'To jo protokol wó nowych wužywarskich kontow.',
+	'newuserlog-desc'          => 'Pśidawa protokol wó [[Special:Log/newusers|nowych wužywarskich kontach]] k [[Special:Log]]',
+	'newuserlog-byemail'       => 'Pótajne słowo bu pśez e-mail pósłane.',
+	'newuserlog-create-entry'  => 'Nowy wužywaŕ',
+	'newuserlog-create2-entry' => 'konto za $1 napórane.',
 );
 
 $messages['el'] = array(
@@ -349,10 +361,10 @@ $messages['hr'] = array(
 $messages['hsb'] = array(
 	'newuserlogpage'           => 'Protokol nowych wužiwarjow',
 	'newuserlogpagetext'       => 'To je protokol wutworjenja nowych wužiwarskich kontow.',
-	'newuserlog-desc'          => 'Přidawa [[Special:Log/newusers|protokol wo wutworjenjach kontow]] k [[Special:Log]]',
+	'newuserlog-desc'          => 'Přidawa [[Special:Log/newusers|protokol wo nowych kontach]] k [[Special:Log]]',
 	'newuserlog-byemail'       => 'Hesło z e-mejlku pósłane',
-	'newuserlog-create-entry'  => 'nowy wužiwar',
-	'newuserlog-create2-entry' => 'je konto za wužiwarja [[$1]] wutworił',
+	'newuserlog-create-entry'  => 'Nowy wužiwar',
+	'newuserlog-create2-entry' => 'konto za wužiwarja $1 wutworjene',
 );
 
 /** Hungarian (Magyar)
@@ -624,9 +636,15 @@ $messages['pag'] = array(
 	'newuserlog-create-entry' => 'Balon user',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ * @author Derbeth
+ */
 $messages['pl'] = array(
 	'newuserlogpage'           => 'Nowi użytkownicy',
 	'newuserlogpagetext'       => 'To jest rejestr ostatnio utworzonych kont użytkowników',
+	'newuserlog-desc'          => 'Dodaje [[Special:Log/newusers|rejestr utworzeń kont]] do [[Special:Log|Specjalna:Log]]',
+	'newuserlog-byemail'       => 'hasło zostało wysłane e-mailem',
 	'newuserlog-create-entry'  => 'Nowy użytkownik',
 	'newuserlog-create2-entry' => 'utworzono nowe konto $1',
 );

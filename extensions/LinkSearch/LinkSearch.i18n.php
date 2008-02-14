@@ -450,8 +450,12 @@ $messages['nso'] = array(
 	'linksearch-ok' => 'Fetleka',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
 	'linksearch'       => 'Recercar de ligams Internet',
+	'linksearch-desc'  => 'Recèrca de las paginas dins lasqualas un ligam extèrn apareis.',
 	'linksearch-pat'   => 'Recercar l’expression :',
 	'linksearch-ns'    => 'Espaci de noms :',
 	'linksearch-ok'    => 'Recercar',
@@ -469,8 +473,13 @@ $messages['pag'] = array(
 	'linksearch-ok'  => 'Anapen',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
 	'linksearch'       => 'Szukanie linków zewnętrznych',
+	'linksearch-desc'  => 'Odnajduje strony zawierające zewnętrzne linki pasujące do zadanego wzorca',
 	'linksearch-pat'   => 'Wzorzec wyszukiwania:',
 	'linksearch-ns'    => 'Przestrzeń nazw:',
 	'linksearch-ok'    => 'Szukaj',

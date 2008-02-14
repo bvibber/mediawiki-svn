@@ -56,6 +56,15 @@ $messages['ca'] = array(
 	'languageselector-setlang' => 'selecciona',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'languageselector'         => 'Jazyk',
+	'languageselector-desc'    => 'Výběr jazyka na každé straně, také pro návštěvníky',
+	'languageselector-setlang' => 'nastavit',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
 */
@@ -172,6 +181,13 @@ $messages['kk-latn'] = array(
 	'languageselector-setlang' => 'anıqtaw',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'languageselector' => 'ភាសា',
+);
+
 /** Latin (Latina)
  * @author SPQRobin
  */
@@ -224,6 +240,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'languageselector'         => 'Lenga',
+	'languageselector-desc'    => 'Selector de lenga sus cada pagina, quitament pels visitaires.',
 	'languageselector-setlang' => 'Definir',
 );
 

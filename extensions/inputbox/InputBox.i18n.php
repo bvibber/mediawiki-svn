@@ -569,6 +569,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'inputbox-desc'           => 'Permet l’inclusion de formularis HTML predefinits',
 	'inputbox-error-no-type'  => 'Avètz pas precisat lo tipe de la boita de dintrada de crear.',
 	'inputbox-error-bad-type' => "Tipe de boita dintrada $1 pas reconeguda. Indicatz l'opcion ''create'', ''comment'', ''search'' o ''searche2''.",
 	'tryexact'                => 'Ensajatz la correspondéncia exacta',

@@ -485,6 +485,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'duplicator'                       => 'Duplicar un article',
+	'duplicator-desc'                  => 'Crear de còpias distinctas d’articles amb l’istoric complet de las modificacions.',
 	'duplicator-toolbox'               => 'Duplicar aqueste article',
 	'duplicator-header'                => 'Aquesta pagina permet la duplicacion complèta d’un article, en creant doas versions independentas de l’istoric complet. Servís per exemple a separar un article en dos.',
 	'duplicator-options'               => 'Opcions',

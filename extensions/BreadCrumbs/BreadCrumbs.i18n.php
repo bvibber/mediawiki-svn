@@ -80,6 +80,13 @@ $messages['no'] = array(
 	'breadcrumbs-desc' => 'Viser brukerens sti gjennom wikien.',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'breadcrumbs-desc' => 'Aficha lo ligam de las darrièras paginas que l’utilizaire a visitadas dins lo wiki.',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

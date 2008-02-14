@@ -161,10 +161,10 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'findspam'             => 'Recèrca de spam',
+	'findspam-desc'        => 'Ajusta una [[Special:FindSpam|pagina especiala]] que permet de trobar de spam ajustats recentament',
 	'findspam-ip'          => 'Adreça IP:',
 	'findspam-ok'          => 'Recercar',
 	'findspam-notextfound' => 'Cap de contribucion trobada',
-
 );
 
 /** Pashto (پښتو)
