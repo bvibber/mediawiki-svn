@@ -117,6 +117,11 @@ public class NamespaceFilter implements Serializable {
 		return included.nextSetBit(0);		
 	}
 	
+	/** if empty filter ("all" keyword") */
+	public boolean isAll(){
+		return cardinality() == 0; 
+	}
+	
 	@Override
 	public String toString() {
 		return included.toString();

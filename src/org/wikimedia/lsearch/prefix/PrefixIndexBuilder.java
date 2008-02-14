@@ -11,14 +11,18 @@ import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.SimpleAnalyzer;
+import org.apache.lucene.analysis.Token;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.index.TermDocs;
+import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
+import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.analyzers.LowercaseAnalyzer;
 import org.wikimedia.lsearch.analyzers.PrefixAnalyzer;
+import org.wikimedia.lsearch.analyzers.TokenizerOptions;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexThread;
@@ -63,6 +67,7 @@ public class PrefixIndexBuilder {
 		
 		IndexId iid = IndexId.get(dbname);
 		IndexId pre = iid.getPrefix();
+		FilterFactory filters = new FilterFactory(iid);
 		
 		long start = System.currentTimeMillis();
 		
@@ -77,22 +82,44 @@ public class PrefixIndexBuilder {
 			LuceneDictionary dict = links.getKeys();
 			dict.setNoProgressReport();
 			Word w;
+			// lowercase redirect keys 
+			HashSet<String> addedRedirects = new HashSet<String>();
 			// iterate over all documents in the index
-			while((w = dict.next()) != null){
+			key_loop: while((w = dict.next()) != null){
 				String key = w.getWord();
 				if(++count % 1000 == 0)
 					System.out.println("Processed "+count);
-				String redirect = links.getRedirectTarget(key);
+				int ref = links.getNumInLinks(key);
+				String redirect = links.getRedirectTarget(key);				
 				if(redirect == null)
 					redirect = "";
 				else if(redirect.equalsIgnoreCase(key))
-					continue; // ignore camelcase redirects					
-				int ref = links.getNumInLinks(key);
+					continue; // ignore camelcase redirects (case Aa -> AA)
+				else if(addedRedirects.contains(key.toLowerCase()))
+					continue;
+				else{
+					// check case Aa -> B, AA -> B
+					ArrayList<String> allRedirects = links.getRedirectsTo(redirect);
+					for(String r : allRedirects){
+						if(!r.equals(key) && r.equalsIgnoreCase(key)){
+							// discard if there is a camel-case redirect with more inlinks
+							if(links.getNumInLinks(r) > ref)
+								continue key_loop;
+						}
+					}
+				}
+				// add to index
 				Document d = new Document();
-				d.add(new Field("key",key,Field.Store.YES,Field.Index.TOKENIZED));
+				d.add(new Field("key",key,Field.Store.YES,Field.Index.NO));
+				ArrayList<Token> canonized = canonize(key,iid,filters); 
+				for(Token t : canonized){
+					d.add(new Field("key",t.termText(),Field.Store.NO,Field.Index.TOKENIZED));
+				}
 				d.add(new Field("redirect",redirect,Field.Store.YES,Field.Index.NO));
 				d.add(new Field("ref",Integer.toString(ref),Field.Store.YES,Field.Index.NO));			
-				writer.addDocument(d);
+				writer.addDocument(d);				
+				if(redirect != null)
+					addedRedirects.add(key);				
 			}
 			log.info("Optimizing temp index");
 			writer.optimize();
@@ -113,16 +140,23 @@ public class PrefixIndexBuilder {
 				continue;
 			TermDocs td = ir.termDocs(t);
 			// key -> rank
-			HashMap<String,Integer> refs = new HashMap<String,Integer>();
+			HashMap<String,Double> refs = new HashMap<String,Double>();
 			while(td.next()){
 				Document d = ir.document(td.doc());
-				refs.put(d.get("key"),Integer.parseInt(d.get("ref")));
+				String key = d.get("key");
+				double ref = Integer.parseInt(d.get("ref")) * lengthCoeff(key,prefix);
+				if(key.equalsIgnoreCase(prefix))
+					ref = Double.MAX_VALUE; // always put exact match first
+				refs.put(key,ref);
 			}
-			ArrayList<Entry<String,Integer>> sorted = new ArrayList<Entry<String,Integer>>();
+			ArrayList<Entry<String,Double>> sorted = new ArrayList<Entry<String,Double>>();
 			sorted.addAll(refs.entrySet());
-			Collections.sort(sorted,new Comparator<Entry<String,Integer>>() {
-				public int compare(Entry<String,Integer> o1, Entry<String,Integer> o2){
-					return o2.getValue() - o1.getValue();
+			Collections.sort(sorted,new Comparator<Entry<String,Double>>() {
+				public int compare(Entry<String,Double> o1, Entry<String,Double> o2){
+					double d = o2.getValue() - o1.getValue();
+					if(d == 0) return 0;
+					if(d > 0) return 1;
+					else return -1;
 				}
 			});
 			ArrayList<String> selected = new ArrayList<String>();
@@ -143,7 +177,12 @@ public class PrefixIndexBuilder {
 			if(ir.isDeleted(i))
 				continue;
 			Document d = new Document();
-			d.add(new Field("key",ir.document(i).get("key"),Field.Store.YES,Field.Index.TOKENIZED));
+			String key = ir.document(i).get("key");
+			d.add(new Field("key",key,Field.Store.YES,Field.Index.NO));
+			ArrayList<Token> canonized = canonize(key,iid,filters); 
+			for(Token t : canonized){
+				d.add(new Field("key",t.termText(),Field.Store.NO,Field.Index.TOKENIZED));
+			}
 			writer.addDocument(d);
 		}
 		ir.close();
@@ -156,6 +195,22 @@ public class PrefixIndexBuilder {
 		System.out.println("Finished in "+formatTime(delta));
 	}
 	
+	private static ArrayList<Token> canonize(String key, IndexId iid, FilterFactory filters) throws IOException{
+		FastWikiTokenizerEngine tokenizer = new FastWikiTokenizerEngine(key,iid,new TokenizerOptions.PrefixCanonization());
+		return filters.canonize(tokenizer.parse());		
+	}
+	
+	private static double lengthCoeff(String key, String prefix) {
+		if(prefix.length() >= key.length())
+			return 1;
+		else
+			return square(((double)prefix.length())/((double)key.length()));
+	}
+	
+	final private static double square(double x){
+		return x*x;
+	}
+
 	private static String formatTime(long l) {
 		l /= 1000;
 		if(l >= 3600) return l/3600+"h "+(l%3600)/60+"m "+(l%60)+"s";

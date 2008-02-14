@@ -34,19 +34,17 @@ public class LinkReader implements DumpWriter {
 	/** ns:title -> number of referring articles */
 	CompactLinks links;
 	HashSet<String> interwiki;
-	String langCode;
+	IndexId iid;
 	boolean readRedirects;
 	
-	public LinkReader(CompactLinks links, String langCode){
-		this(links,langCode,false);
+	public LinkReader(CompactLinks links, IndexId iid){
+		this(links,iid,false);
 	}
 	
-	public LinkReader(CompactLinks links, String langCode, boolean readRedirects){
+	public LinkReader(CompactLinks links, IndexId iid, boolean readRedirects){
 		this.links = links;
 		this.readRedirects = readRedirects;
-		if(langCode == null || langCode.equals(""))
-			langCode = "en";
-		this.langCode = langCode;
+		this.iid = iid;
 		interwiki = Localization.getInterwiki();
 	}
 	public void writeRevision(Revision revision) throws IOException {
@@ -58,7 +56,7 @@ public class LinkReader implements DumpWriter {
 	public void writeEndPage() throws IOException {
 		CompactArticleLinks p = links.get(page.Title.Namespace+":"+page.Title.Text);
 		// register redirect
-		Title redirect = Localization.getRedirectTitle(revision.Text,langCode);
+		Title redirect = Localization.getRedirectTitle(revision.Text,iid);
 		if(redirect != null && readRedirects){
 			CompactArticleLinks cs = findArticleLinks(redirect.getNamespace(),redirect.getTitle());
 			if(cs != null){

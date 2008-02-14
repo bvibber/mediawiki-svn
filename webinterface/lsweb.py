@@ -12,17 +12,19 @@ canon_namespaces = { 0 : '', 1: 'Talk', 2: 'User', 3: 'User_talk',
                     4 : 'Project', 5 : 'Project_talk', 6 : 'Image', 7 : 'Image_talk',
                     8 : 'MediaWiki', 9: 'MediaWiki_talk', 10: 'Template', 11: 'Template_talk',
                     12 : 'Help', 13: 'Help_talk', 14: 'Category', 15: 'Category_talk',
-                    100: 'Portal', 101: 'Portal_talk' }
+                    100: 'Portal', 101: 'Portal_talk', 112: 'Portal',  113: 'Portal_talk'}
 prefix_aliases = { 'm': 0, 'mt' : 1, 'u' : 2, 'ut' : 3, 'p': 4, 'pt':5, 'i':6, 'it':7,
                    'mw':8, 'mwt':9, 't':10, 'tt':11, 'h':12, 'ht':13, 'c':14, 'ct': 15}
 
 snippet_separator = " <b>...</b> ";
  
-def make_link(params,offset):
+def make_link(params,offset,method='search',query=None):
     ''' Duplicate existing query (denoted by params), but with a different offset '''
     dupl = copy.copy(params)
     dupl['offset'] = [offset]
-    return "/search?"+urllib.urlencode(dupl,True)
+    if query != None:
+        dupl['query'] = [query]
+    return '/%s?%s' % (method,urllib.urlencode(dupl,True))
 
 
 def rewrite_callback(match):
@@ -176,7 +178,8 @@ class MyHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         try:
             s = urlparse.urlparse(self.path)
-            if s[2] == '/search':
+            if s[2] == '/search' or s[2] == '/related':
+                method = s[2][1:]
                 start_time = time.time()
                 params = {}
                 # parse key1=val1&key2=val2 syntax
@@ -213,7 +216,7 @@ class MyHandler(BaseHTTPRequestHandler):
                     dbname = dbname[0:-6]
 
                 # make search url for ls2
-                search_url = 'http://%s/search/%s/%s' % (host,dbname,urllib.quote(rewritten.encode('utf-8')))
+                search_url = 'http://%s/%s/%s/%s' % (host,method,dbname,urllib.quote(rewritten.encode('utf-8')))
                 search_params = urllib.urlencode({'limit' : limit, 'offset' : offset, 'namespaces' : ','.join(namespaces), "case" : case}, True)
                 
                 # process search results
@@ -263,27 +266,35 @@ class MyHandler(BaseHTTPRequestHandler):
                         else:
                             line = nextLine
                             nextLine = ''
+                        if line.startswith('#h.date'):
+                            line = results.readline() # just skip
+                        if line.startswith('#h.wordcount'):
+                            line = results.readline() # just skip
+                            
                     # html headers
                     self.send_response(200)
                     self.send_header('Cache-Control','no-cache')
                     self.send_header('Content-type','text/html')
                     self.end_headers()
                     self.wfile.write('<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>')
-                    self.wfile.write('<body>Query: %s <br>' % query)
+                    if method == 'related':
+                        self.wfile.write('<body>Articles related to article: %s <br>' % query)
+                    else:
+                        self.wfile.write('<body>Query: %s <br>' % query)
                     if suggest != "":
                         sparams = params.copy()
                         sparams['query'] = suggest;
-                        slink = make_link(sparams,0)
+                        slink = make_link(sparams,0,method)
                         self.wfile.write('Did you mean: <a href="%s">%s</a><br>' % (slink,suggestHl))
                     
                     # generate next/prev searchbar
                     if offset != 0:
-                        link = make_link(params,max(offset-limit,0))                        
+                        link = make_link(params,max(offset-limit,0),method)
                         prev = '<a href="%s">&lt; Previous %s</a>' % (link,limit)
                     else:
                         prev = "&lt; Previous"
                     if numhits > lasthit:
-                        link = make_link(params,offset+limit)
+                        link = make_link(params,offset+limit,method)
                         next = '<a href="%s">Next %s &gt;</a>' % (link,limit)
                     else:
                         next = "Next &gt;"
@@ -312,6 +323,8 @@ class MyHandler(BaseHTTPRequestHandler):
                         sectionHl = ''
                         sectionLink = None
                         titleHl = ''
+                        date = None;
+                        wordcount = None;
                         [link,title] = make_wiki_link(scoreLine,dbname)
                         while i+1 < len(lines):                            
                             extra = lines[i+1]
@@ -329,6 +342,10 @@ class MyHandler(BaseHTTPRequestHandler):
                                 [sectionHl, sectionLink] = extract_snippet(extra,False);
                                 if sectionLink != None:
                                     sectionLink = 'http://%s.wikipedia.org/wiki/%s#%s' % (dbname[0:2],title,sectionLink)
+                            elif extra.startswith('#h.date'):
+                                date = extra.split(' ')[1]
+                            elif extra.startswith('#h.wordcount'):
+                                wordcount = extra.split(' ')[1]
                             else:
                                 break
                             i+=1
@@ -342,6 +359,16 @@ class MyHandler(BaseHTTPRequestHandler):
                         if textHl != '':
                             textHl = textHl
                             self.wfile.write('<div style="width:500px"><font size="-1">%s</font></div>' % textHl)
+                        if date != None:
+                            self.wfile.write('<font size="-1"><i>Date: %s</i></font>' % date)
+                        if wordcount != None:
+                            dateprefix = ''
+                            if date != None:
+                                dateprefix = ' -- '
+                            self.wfile.write('<font size="-1">%s<i>%s words</i></font>' % (dateprefix,wordcount))
+                        if date != None or wordcount != None:
+                            self.wfile.write('<br/>')
+                        # self.wfile.write('<font size="-1"><a href="%s">Related</a></font><br/>' % make_link(params,0,'related',title.replace('_',' ')))
                         i += 1 
                     
                     # write the grouped titles stuff    

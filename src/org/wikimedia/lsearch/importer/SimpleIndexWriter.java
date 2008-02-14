@@ -117,7 +117,7 @@ public class SimpleIndexWriter {
 	/** Add single article to logical index. It will add the article to the right index part 
 	 * @throws IOException */
 	public void addArticle(Article a) throws IOException{
-		if(!WikiIndexModifier.checkAddPreconditions(a,langCode))
+		if(!WikiIndexModifier.checkAddPreconditions(a,iid))
 			return; // don't add if preconditions are not met
 		
 		IndexId target = getTarget(a);
@@ -161,7 +161,7 @@ public class SimpleIndexWriter {
 	
 	/** Add to highlight index */
 	public void addArticleHighlight(Article a){
-		if(!WikiIndexModifier.checkAddPreconditions(a,langCode))
+		if(!WikiIndexModifier.checkAddPreconditions(a,iid))
 			return; // don't add if preconditions are not met
 		IndexId target = getTarget(a);		
 		IndexWriter writer = indexes.get(target.toString());
@@ -178,7 +178,7 @@ public class SimpleIndexWriter {
 	
 	/** Add to title to the titles index */
 	public void addArticleTitle(Article a){
-		if(!WikiIndexModifier.checkAddPreconditions(a,langCode))
+		if(!WikiIndexModifier.checkAddPreconditions(a,iid))
 			return; // don't add if preconditions are not met
 		IndexId target = getTarget(a);		
 		IndexWriter writer = indexes.get(target.toString());

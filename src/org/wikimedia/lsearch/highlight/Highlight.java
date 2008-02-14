@@ -128,6 +128,7 @@ public class Highlight {
 			
 			ArrayList<ExtToken> tokens = (ArrayList<ExtToken>) ret[0];
 			Alttitles alttitles = (Alttitles) ret[1];
+			String date = (String) ret[2];
 			preprocessTemplates(tokens);
 			
 			HashMap<String,Double> notInTitle = getTermsNotInTitle(weightTerm,alttitles,wordIndex);
@@ -207,20 +208,27 @@ public class Highlight {
 			}
 			
 			if(titleSnippets.size() > 0){
-				hr.setTitle(titleSnippets.get(0).makeSnippet(256));		
+				hr.setTitle(titleSnippets.get(0).makeSnippet(256,true));		
 				if(titleSnippets.get(0).found.containsAll(words))
 					foundAllInTitle = true;
 			}
 			
 			if(redirectSnippets != null){
-				hr.setRedirect(redirectSnippets.makeSnippet(MAX_CONTEXT));
+				hr.setRedirect(redirectSnippets.makeSnippet(MAX_CONTEXT,true));
 				if(!foundAllInTitle && redirectSnippets.found.containsAll(words))
 					foundAllInTitle = true;
 			}
 			
 			if(sectionSnippets != null){
-				hr.setSection(sectionSnippets.makeSnippet(MAX_CONTEXT));
+				hr.setSection(sectionSnippets.makeSnippet(MAX_CONTEXT,true));
 			}
+			
+			// date
+			hr.setDate(date);
+			
+			// word count
+			hr.setWordCount(textTokenLength(tokens));
+			
 			res.put(key,hr);
 			
 		}
@@ -784,7 +792,7 @@ public class Highlight {
 		}		
 	}
 	
-	/** @return ArrayList<ExtToken> tokens, Altitles alttitles */
+	/** @return ArrayList<ExtToken> tokens, Altitles alttitles, String date */
 	protected static Object[] getTokens(IndexReader reader, String key, Set<String> termSet) throws IOException{
 		TermDocs td = reader.termDocs(new Term("key",key));
 		if(td.next()){
@@ -796,7 +804,8 @@ public class Highlight {
 			Document doc = reader.document(td.doc());
 			ArrayList<ExtToken> tokens = ExtToken.deserialize(doc.getBinaryValue("text"),terms,posMap);
 			Alttitles alttitles  = Alttitles.deserializeAltTitle(doc.getBinaryValue("alttitle"),terms,posMap);
-			return new Object[] {tokens, alttitles};
+			String date = doc.get("date");
+			return new Object[] {tokens, alttitles, date};
 		} else
 			return null;
 	}

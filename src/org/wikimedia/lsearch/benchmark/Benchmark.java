@@ -21,6 +21,7 @@ public class Benchmark extends Thread {
 	protected String namespaceFilter;
 	protected static boolean sample;
 	protected int limit;
+	protected boolean searchOnly;
 	
 	protected int thread; // current thread
 		
@@ -38,12 +39,12 @@ public class Benchmark extends Thread {
 	protected static Object sharedLock = new Object();
 	
 	/** Use this to construct the main thread */
-	public Benchmark(String host, int port, String database, String verb, Terms terms, int words, String namespace, String namespaceFilter, int limit) {
-		this(host,port,database,verb,terms,words,namespace,namespaceFilter,limit,0,0);
+	public Benchmark(String host, int port, String database, String verb, Terms terms, int words, String namespace, String namespaceFilter, int limit, boolean searchOnly) {
+		this(host,port,database,verb,terms,words,namespace,namespaceFilter,limit,0,0,searchOnly);
 	}
 	
 	/** Use this to construct a benchmark thread */
-	public Benchmark(String host, int port, String database, String verb, Terms terms, int words, String namespace, String namespaceFilter, int limit, int runs, int thread) {
+	public Benchmark(String host, int port, String database, String verb, Terms terms, int words, String namespace, String namespaceFilter, int limit, int runs, int thread, boolean searchOnly) {
 		this.host = host;
 		this.port = port;
 		this.database = database;
@@ -55,6 +56,7 @@ public class Benchmark extends Thread {
 		this.namespace = namespace;
 		this.namespaceFilter = namespaceFilter;
 		this.limit = limit;
+		this.searchOnly = searchOnly;
 	}
 
 	/** Start benchmarking on main thread */
@@ -69,7 +71,7 @@ public class Benchmark extends Thread {
 		collector = new Collector(100,threads*runs,threads);
 		
 		for(int i=0;i<threads;i++)
-			new Benchmark(host,port,database,verb,terms,words,namespace,namespaceFilter,limit,runs,i).start();
+			new Benchmark(host,port,database,verb,terms,words,namespace,namespaceFilter,limit,runs,i,searchOnly).start();
 		
 		// wait until all thread finish
 		while(activeThreads != 0){
@@ -128,6 +130,8 @@ public class Benchmark extends Thread {
 			query = URLEncoder.encode(namespace+":"+query).replaceAll("\\+","%20");
 			urlString = "http://"+host+":"+port+"/"+verb+"/"+database+"/"+query+"?limit="+limit;
 		}
+		if(searchOnly)
+			urlString += "&searchonly=true";
 		if(sample){
 			System.out.println("url ~ "+urlString);
 			sample = false;
@@ -193,6 +197,7 @@ public class Benchmark extends Thread {
 		String wordfile = null;
 		Terms terms;
 		int defaultLimit = 20;
+		boolean searchOnly = false;
 		
 		for(int i = 0; i < args.length; i++) {
 			if (args[i].equals("-h")) {
@@ -222,6 +227,8 @@ public class Benchmark extends Thread {
 				lang = args[++i];
 			} else if (args[i].equals("-s") || args[i].equals("-sample")) {
 				sample = true;
+			} else if (args[i].equals("-so")) {
+				searchOnly = true;
 			} else if (args[i].equals("--help")) {
 				System.out.println("Usage: java Benchmark <options>\n"+
 				                   "  -h  host (default: "+host+")\n"+
@@ -236,7 +243,8 @@ public class Benchmark extends Thread {
 				                   "  -l  language (default: "+lang+")\n"+
 				                   "  -s  show sample url (default: "+sample+")\n"+
 				                   "  -lm  limit number of results (default: "+defaultLimit+")\n"+
-				                   "  -wf <file> use file with search terms (default: none)\n");
+				                   "  -wf <file> use file with search terms (default: none)\n"+
+				                   "  -so benchmark search only (default:"+searchOnly+")\n");
 				return;
 			} else{
 				System.out.println("Unrecognized switch: "+args[i]);
@@ -253,7 +261,7 @@ public class Benchmark extends Thread {
 			terms = new WordTerms("./test-data/words-wikilucene.ngram.gz");
 		
 		System.out.println("Running benchmark on "+database+" "+host+":"+port+" with "+threads+" theads each "+runs+" runs, "+words+" words, filter: "+((namespace == "")? namespaceFilter : namespace)+", lang "+lang);
-		Benchmark bench = new Benchmark(host, port, database, verb, terms, words, namespace, namespaceFilter, defaultLimit);
+		Benchmark bench = new Benchmark(host, port, database, verb, terms, words, namespace, namespaceFilter, defaultLimit, searchOnly);
 		bench.startBenchmark(threads,runs);
 		bench.printReport();
 	}

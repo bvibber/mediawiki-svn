@@ -16,6 +16,8 @@ public class TokenizerOptions {
 	boolean highlightParsing = false;
 	/** if text should be tidied */
 	boolean simplifyGlue = false;
+	/** Treat whole text as single token */
+	boolean noTokenization = false;
 	
 	public TokenizerOptions(boolean exactCase){
 		this.exactCase = exactCase;
@@ -43,6 +45,13 @@ public class TokenizerOptions {
 			this.highlightParsing = true;
 			this.relocationParsing = false;
 			this.simplifyGlue = false;
+		}
+	}
+	/** Used to filter prefixes (up to FastWikiTokenizer.MAX_WORD_LEN chars) */
+	public static class PrefixCanonization extends TokenizerOptions {
+		public PrefixCanonization(){
+			super(false);
+			this.noTokenization = true;
 		}
 	}
 }

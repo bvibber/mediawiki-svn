@@ -31,15 +31,19 @@ public class EnglishSingularFilter extends TokenFilter{
 	public Token next() throws IOException {
 		if(next != null){
 			Token t = next;
-			next = next2;
-			next2 = null;
+			next = null;
 			return t;
 		}
-		Token t = input.next();
-		if(t == null)
+		Token t = null;
+		if(next2 != null){
+			t = next2;
+			next2 = null;
+		} else
+			t = input.next();
+		if(t == null) // EOS
 			return null;
 		
-		if(t.getPositionIncrement() != 0){			
+		if(t.getPositionIncrement() != 0 && !(t instanceof ExtToken && ((ExtToken)t).getType()!=ExtToken.Type.TEXT)){			
 			next = singular(t);
 			if(next != null){
 				next2 = input.next();

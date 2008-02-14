@@ -109,7 +109,6 @@ public class Suggest {
 	
 	public Suggest(IndexId iid) throws IOException{
 		SearcherCache cache = SearcherCache.getInstance();
-		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		this.iid = iid;
 		this.searcher = cache.getLocalSearcher(iid.getSpell());
 		this.reader = searcher.getIndexReader();
@@ -169,7 +168,7 @@ public class Suggest {
 		ArrayList<Change> suggestions = new ArrayList<Change>(); 
 		ArrayList<Change> suggestionsTitle = new ArrayList<Change>();
 		HashMap<String,HashSet<String>> contextCache = new HashMap<String,HashSet<String>>();
-
+		
 		// check common misspells
 		String joinTokens = joinTokens(" ",tokens);
 		ArrayList<SuggestResult> titleRes = new ArrayList<SuggestResult>();
@@ -463,7 +462,7 @@ public class Suggest {
 							// substitute words that are preserved via contextual info only (and isolated words)
 							// prefer the title word if the proposed and title word stem to same
 							if(c==null || (c.freq==0 && preserveTokens.containsKey(inx))
-									|| (target!=null && stemsToSame(w,target,filters))){							
+									|| (target!=null && filters.stemsToSame(w,target))){							
 								proposedChanges.put(inx,w);
 								alwaysReplace.add(inx);
 								if(using.equals(""))
@@ -538,7 +537,7 @@ public class Suggest {
 			if(w.equals(nt))
 				continue; // trying to subtitute same			
 			// incorrect words, or doesn't stem to same
-			boolean sameStem = (alwaysReplace.contains(e.getKey()))? false : stemsToSame(w,nt,filters); 
+			boolean sameStem = (alwaysReplace.contains(e.getKey()))? false : filters.stemsToSame(w,nt); 
 			if(!sameStem || (sameStem && reader.docFreq(new Term("word",w)) == 0)){
 				int so = t.startOffset();
 				int eo = t.endOffset();
@@ -924,68 +923,6 @@ public class Suggest {
 		return null;
 	}
 	
-	/** check if two words have same stemmed variants */
-	public boolean stemsToSame(String word1, String word2, FilterFactory filters){
-		if(!filters.hasStemmer())
-			return false;
-		ArrayList<String> in = new ArrayList<String>();
-		in.add(word1); in.add(word2);
-		TokenStream ts = filters.makeStemmer(new StringsTokenStream(in));
-		try {
-			Token t1 = ts.next();
-			Token t2 = ts.next();
-			if(t1 != null && t2 != null && t1.termText().equals(t2.termText()))
-				return true;
-		} catch (IOException e) {
-			log.error("Cannot stem words "+word1+", "+word2+" : "+e.getMessage());			
-		}
-		return false;
-	}
-	
-	/** stem all words in the set */
-	public static HashSet<String> stem(HashSet<String> set, FilterFactory filters){
-		if(!filters.hasStemmer())
-			return new HashSet<String>();
-		HashSet<String> ret = new HashSet<String>();
-		TokenStream ts = filters.makeStemmer(new StringsTokenStream(set));
-		try {
-			Token t;
-			while((t = ts.next()) != null)
-				ret.add(t.termText());
-			return ret;
-		} catch (IOException e) {
-			log.error("Cannot stem set "+set+" : "+e.getMessage());
-			return new HashSet<String>();
-		}
-	}
-	/** Stem one word */
-	public static String stem(String word, FilterFactory filters){
-		if(!filters.hasStemmer())
-			return null;
-		HashSet<String> set = new HashSet<String>();
-		set.add(word);
-		HashSet<String> ret = stem(set,filters);
-		if(ret.size() == 0)
-			return null;
-		else
-			return ret.iterator().next();
-	}
-	
-	static class StringsTokenStream extends TokenStream {
-		Iterator<String> input;
-		int count = 0;
-		StringsTokenStream(Collection<String> input){
-			this.input = input.iterator();
-		}
-		@Override
-		public Token next() throws IOException {
-			if(input.hasNext())
-				return new Token(input.next(),count,count++);
-			else
-				return null;
-		}
-		
-	}
 	
 	protected void logRequest(String searchterm, String using, long start){
 		log.info(iid+" suggest: ["+searchterm+"] using=["+using+"] in "+(System.currentTimeMillis()-start)+" ms");

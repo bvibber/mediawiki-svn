@@ -27,6 +27,7 @@ package org.wikimedia.lsearch.beans;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import org.wikimedia.lsearch.related.RelatedTitle;
 
@@ -42,7 +43,8 @@ public class Article implements Serializable  {
 	private long pageId;
 	private int references;
 	/** all page that redirect to this page with their reference count */
-	private ArrayList<Redirect> redirects;
+	private ArrayList<Redirect> redirects;	
+	private Date date = null;
 	
 	/** sorted list of redirect names */
 	private transient ArrayList<String> redirectKeywords;
@@ -99,7 +101,7 @@ public class Article implements Serializable  {
 	}
 	
 	public Article(long pageId, int namespace, String titleText, String text, boolean redirect, int references, int redirectTargetNamespace, 
-			ArrayList<Redirect> redirects, ArrayList<RelatedTitle> related, ArrayList<String> anchorText) {
+			ArrayList<Redirect> redirects, ArrayList<RelatedTitle> related, ArrayList<String> anchorText, Date date) {
 		this.namespace = Integer.toString(namespace);
 		this.title = titleText;
 		contents = text;
@@ -110,6 +112,7 @@ public class Article implements Serializable  {
 		this.related = related;
 		this.anchorText = anchorText;
 		this.redirectTargetNamespace = redirectTargetNamespace;
+		this.date = date;
 	}
 	
 	public boolean isRedirect() {
@@ -258,7 +261,16 @@ public class Article implements Serializable  {
 
 	public void setRedirectsSorted(ArrayList<Redirect> redirectsSorted) {
 		this.redirectsSorted = redirectsSorted;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}	
+	
 	
 	
 	

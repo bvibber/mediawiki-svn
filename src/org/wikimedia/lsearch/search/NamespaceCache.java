@@ -4,15 +4,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Hashtable;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.index.IndexReader;
-import org.apache.lucene.index.Term;
 import org.apache.lucene.search.CachingWrapperFilter;
 import org.apache.lucene.search.Filter;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.QueryFilter;
-import org.apache.lucene.search.TermQuery;
+import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.analyzers.WikiQueryParserOld;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 
@@ -75,18 +75,19 @@ public class NamespaceCache {
 						cache.put(nsf,cwf);
 						filters.add(cwf);
 					}
-					if(redirectCache.containsKey(nsf))
-						redirects.add(redirectCache.get(nsf));
-					else{ // make the bitset of all pages that redirect to namespace
-						log.info("Making redirect cache for "+nsf);
-						CachingWrapperFilter cwf = makeRedirectFilter(nsf);
-						redirectCache.put(nsf,cwf);
-						redirects.add(cwf);						
-					}
+					redirects.add(getRedirectFilter(nsf));
 				}
 				log.debug("Made composite filter for "+key);
 				// never cache composite filters
 				return new NamespaceCompositeFilter(filters,redirects).bits(reader);				
+			} else if(key.isAll()){
+				ArrayList<Filter> redirects = new ArrayList<Filter>();
+				for(NamespaceFilter nsf : cache.keySet())
+					redirects.add(getRedirectFilter(nsf));
+				CachingWrapperFilter cwf = new CachingWrapperFilter(new NamespaceCompositeFilter(new ArrayList<Filter>(),redirects));
+				cache.put(key,cwf); // always cache
+				log.info("Made \"all\" filter");
+				return cwf.bits(reader);
 			}
 			// build new filter from query
 			CachingWrapperFilter cwf = makeFilter(key);
@@ -98,13 +99,24 @@ public class NamespaceCache {
 		}
 	}
 	
+	protected static Filter getRedirectFilter(NamespaceFilter nsf){
+		if(redirectCache.containsKey(nsf))
+			return redirectCache.get(nsf);
+		else{ // make the bitset of all pages that redirect to namespace
+			log.info("Making redirect cache for "+nsf);
+			CachingWrapperFilter cwf = makeRedirectFilter(nsf);
+			redirectCache.put(nsf,cwf);
+			return cwf;						
+		}
+	}
+	
 	protected static CachingWrapperFilter makeFilter(NamespaceFilter key){
-		Query q = WikiQueryParserOld.generateRewrite(key);
+		Query q = WikiQueryParser.generateRewrite(key);
 		return new CachingWrapperFilter(new QueryFilter(q));
 	}
 	
 	protected static CachingWrapperFilter makeRedirectFilter(NamespaceFilter key){
-		Query q = WikiQueryParserOld.generateRedirectRewrite(key);
+		Query q = WikiQueryParser.generateRedirectRewrite(key);
 		return new CachingWrapperFilter(new QueryFilter(q));
 	}
 }

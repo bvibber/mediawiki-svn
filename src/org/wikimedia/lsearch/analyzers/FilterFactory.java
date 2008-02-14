@@ -1,13 +1,20 @@
 package org.wikimedia.lsearch.analyzers;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
+import org.apache.lucene.analysis.Token;
 import org.apache.lucene.analysis.TokenFilter;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.snowball.SnowballFilter;
 import org.apache.lucene.analysis.th.ThaiWordFilter;
 import org.wikimedia.lsearch.analyzers.EnglishSingularFilter.EnglishSingular;
+import org.wikimedia.lsearch.analyzers.LanguageAnalyzer.ArrayTokens;
 import org.wikimedia.lsearch.config.IndexId;
 
 /**
@@ -223,7 +230,80 @@ public class FilterFactory {
 		return singular;
 	}
 	
+	/** check if two words have same stemmed variants */
+	public boolean stemsToSame(String word1, String word2){
+		if(!hasStemmer())
+			return false;
+		ArrayList<String> in = new ArrayList<String>();
+		in.add(word1); in.add(word2);
+		TokenStream ts = makeStemmer(new StringsTokenStream(in));
+		try {
+			Token t1 = ts.next();
+			Token t2 = ts.next();
+			if(t1 != null && t2 != null && t1.termText().equals(t2.termText()))
+				return true;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 	
+	/** stem a collection of words */
+	public ArrayList<String> stem(Collection<String> list){
+		if(!hasStemmer())
+			return new ArrayList<String>();
+		ArrayList<String> ret = new ArrayList<String>();
+		TokenStream ts = makeStemmer(new StringsTokenStream(list));
+		try {
+			Token t;
+			while((t = ts.next()) != null)
+				ret.add(t.termText());
+			return ret;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return new ArrayList<String>();
+		}
+	}
+	/** Stem one word */
+	public String stem(String word){
+		if(!hasStemmer())
+			return null;
+		ArrayList<String> list = new ArrayList<String>();
+		list.add(word);
+		ArrayList<String> ret = stem(list);
+		if(ret.size() == 0)
+			return null;
+		else
+			return ret.iterator().next();
+	}
 	
+	public static class StringsTokenStream extends TokenStream {
+		Iterator<String> input;
+		int count = 0;
+		StringsTokenStream(Collection<String> input){
+			this.input = input.iterator();
+		}
+		@Override
+		public Token next() throws IOException {
+			if(input.hasNext())
+				return new Token(input.next(),count,count++);
+			else
+				return null;
+		}
+		
+	}
 	
+	/** For languages with canonical form (e.g. latin for serbian) filter tokens 
+	 * @throws IOException */
+	public ArrayList<Token> canonize(ArrayList<Token> tokens) throws IOException{
+		if(lang.equals("sr")){
+			TokenStream ts = makeCustomFilter(new ArrayTokens(tokens));
+			ArrayList<Token> res = new ArrayList<Token>();
+			Token t = null;
+			while((t = ts.next()) != null)
+				res.add(t);
+			return res;
+		} else
+			return tokens;
+	}
 }

@@ -122,7 +122,7 @@ public class RankingTest {
 		});
 		
 		assertHits("middle east conflict",new String[]{
-				"0:Arab-Israeli conflict"
+				"0:List of conflicts in the Middle East"
 		});
 		
 		assertHits("houston we have a problem",new String[]{
@@ -145,8 +145,8 @@ public class RankingTest {
 				"0:Lewinsky scandal"
 		});
 		
-		assertHits("french revolution timeline", new String[]{
-				"0:Timeline of the French Revolution"
+		assertHits("french revolution", new String[]{
+				"0:French Revolution"
 		});		
 		
 		assertHits("singapore fruit", new String[]{
@@ -167,6 +167,14 @@ public class RankingTest {
 		
 		assertHits("french revolution timeline", new String[]{
 				"0:Timeline of the French Revolution"
+		});
+		
+		assertHits("braga portugal", new String[]{
+				"0:Braga"
+		});
+		
+		assertHits("why is moon in zenith smaller that on horizon", new String[]{
+			"0:Moon illusion"
 		});
 		
 		

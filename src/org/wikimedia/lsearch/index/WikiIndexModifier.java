@@ -6,15 +6,18 @@ package org.wikimedia.lsearch.index;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Set;
+import java.util.TimeZone;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
@@ -255,7 +258,7 @@ public class WikiIndexModifier {
 		}
 
 		public boolean checkPreconditions(IndexUpdateRecord rec){
-			return checkAddPreconditions(rec.getArticle(),langCode);
+			return checkAddPreconditions(rec.getArticle(),rec.getIndexId());
 		}
 	}
 	
@@ -290,8 +293,8 @@ public class WikiIndexModifier {
 	 * @param langCode
 	 * @return
 	 */	
-	public static boolean checkAddPreconditions(Article ar, String langCode){
-		Title redirect = Localization.getRedirectTitle(ar.getContents(),langCode);
+	public static boolean checkAddPreconditions(Article ar, IndexId iid){
+		Title redirect = Localization.getRedirectTitle(ar.getContents(),iid);
 		int ns = Integer.parseInt(ar.getNamespace());
 		if(redirect!=null && redirect.getNamespace() == ns){
 			return false; // don't add redirects to same namespace, always add as redirect field
@@ -508,6 +511,11 @@ public class WikiIndexModifier {
 	public static Document makeDocument(Article article, FieldBuilder builder, IndexId iid, HashSet<String> stopWords, Analyzer analyzer, boolean extraInfo) throws IOException{
 		Document doc = new Document();
 
+		if(article.getNamespace().equals("0") && article.getTitle().equals("NPOV")){
+			int b =0;
+			b++;
+		}
+		
 		// tranform record so that unnecessary stuff is deleted, e.g. some redirects
 		transformArticleForIndexing(article);
 				
@@ -584,11 +592,14 @@ public class WikiIndexModifier {
 	public static Document makeHighlightDocument(Article article, Analyzer analyzer, ReusableLanguageAnalyzer contentAnalyzer, IndexId iid) throws IOException{
 		WikiIndexModifier.transformArticleForIndexing(article);
 		String key = article.getTitleObject().getKey();
+		SimpleDateFormat isoDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+		isoDate.setTimeZone(TimeZone.getTimeZone("GMT"));
 		Document doc = new Document();
 		doc.add(new Field("key",key,Store.NO,Index.UN_TOKENIZED));
 		doc.add(new Field("text",ExtToken.serialize(contentAnalyzer.tokenStream("contents",article.getContents())),Store.COMPRESS));
 		ArrayList<String> sections = contentAnalyzer.getWikiTokenizer().getHeadingText();
 		doc.add(new Field("alttitle",Alttitles.serializeAltTitle(article,iid,sections,analyzer,"alttitle"),Store.COMPRESS));
+		doc.add(new Field("date",isoDate.format(article.getDate()),Store.YES,Index.NO));
 		return doc;
 	}
 	

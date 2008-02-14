@@ -138,7 +138,8 @@ abstract public class PositionalScorer extends PhraseScorer {
 			int len = options.aggregateMeta.length(doc(),start);
 			int lenNoStopWords = options.aggregateMeta.lengthNoStopWords(doc(),start);
 			float wholeBoost = (phraseLen == len)? options.wholeBoost : 1;
-			float wholeBoostNoStopWords = (phraseLenNoStopWords == lenNoStopWords)? options.wholeNoStopWordsBoost : 1;
+			// no stop boost - only if matched words >= stop words
+			float wholeBoostNoStopWords = (phraseLenNoStopWords == lenNoStopWords && lenNoStopWords>=(len-lenNoStopWords))? options.wholeNoStopWordsBoost : 1;
 			float boost = options.aggregateMeta.boost(doc(),start);
 			float wholeOnly = 1;
 			if(options.onlyWholeMatch && wholeBoost==1 && wholeBoostNoStopWords==1)

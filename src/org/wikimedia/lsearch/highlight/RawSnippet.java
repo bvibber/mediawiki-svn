@@ -127,13 +127,17 @@ public class RawSnippet {
 		return index;
 	}
 	
+	/** Make a text snippet */
+	public Snippet makeSnippet(int context){
+		return makeSnippet(context,false);
+	}
 	/** 
 	 * Construct a snippet of predefined length
 	 * 
 	 * @param context - max number of chars for the snippet
 	 * @return
 	 */ 
-	public Snippet makeSnippet(int context){		
+	public Snippet makeSnippet(int context, boolean showAllGlue){		
 		int showBegin, showEnd;
 		
 		// unstub the whole snippet
@@ -245,17 +249,17 @@ public class RawSnippet {
 				continue;
 			}
 			ExtToken t = tokens.get(i);
-			if(i == showBegin && t.getType() != ExtToken.Type.TEXT){
+			if(i == showBegin && t.getType() != ExtToken.Type.TEXT && !showAllGlue){
 				// catch only specific nontext beginings
-				if(t.getText().contains("|") && (i+1<showEnd && tokens.get(i+1).getPosition() == Position.TABLE))
-					sb.append("| ");
+				//if(t.getText().contains("|") && (i+1<showEnd && tokens.get(i+1).getPosition() == Position.TABLE))
+				//	sb.append("| ");
 				if(t.getText().endsWith("\""))
 					sb.append("\""); // hack to include initial " 
 				else if(t.getText().endsWith("("))
 					sb.append("("); // hack to include initial (
 				continue;
 			}
-			if(i == showEnd-1 && t.getType() != ExtToken.Type.TEXT){
+			if(i == showEnd-1 && t.getType() != ExtToken.Type.TEXT && !showAllGlue){
 				// exlude some final delimiters
 				if(t.getText().contains("(") || t.getText().contains("[") || t.getText().contains("{"))
 					continue;

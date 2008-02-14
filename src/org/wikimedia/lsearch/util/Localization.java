@@ -14,6 +14,7 @@ import java.util.Map.Entry;
 import org.apache.log4j.Logger;
 import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.Configuration;
+import org.wikimedia.lsearch.config.IndexId;
 
 /** 
  * Provides localization for namespace names, and provides interwiki map. 
@@ -34,8 +35,6 @@ public class Localization {
 	protected static HashSet<String> interwiki = null;
 	/** lowecased canonical names of namespaces */
 	protected static Hashtable<String,Integer> canonicalNamespaces = new Hashtable<String,Integer>();
-	/** dbname -> meta namespace name */
-	protected static Hashtable<String,String> metaNamespaces = new Hashtable<String,String>();
 	/** custom maps (for oai headers, etc..) dbname -> nsname -> nsindex  */
 	protected static Hashtable<String,Hashtable<String,Integer>> customNamespaces = new Hashtable<String,Hashtable<String,Integer>>();
 	
@@ -58,14 +57,7 @@ public class Localization {
 		canonicalNamespaces.put("category",14);
 		canonicalNamespaces.put("category_talk",15);
 	}
-	
-	/** set meta namespaces for specific db names */
-	public static void setMetaNamespace(Map<String,String> dbmeta){
-		synchronized(lock){
-			metaNamespaces.putAll(dbmeta);
-		}
-	}
-	
+		
 	/** Add custom mapping not found in localization files from other source, e.g. project name, etc.. */
 	public static void addCustomMapping(String namespace, int index, String dbname){
 		synchronized(lock){
@@ -98,8 +90,6 @@ public class Localization {
 			// get db-specific names, like meta namespaces or ones obtained via oai or other ways
 			if(dbname != null){
 				res.addAll(collect(customNamespaces.get(dbname),nsId));
-				if(nsId == 4 && metaNamespaces.containsKey(dbname))
-					res.add(metaNamespaces.get(dbname));
 			}
 			return res;
 		}
@@ -118,9 +108,6 @@ public class Localization {
 				ret.putAll(namespaces.get(langCode));
 			// db-specific
 			if(dbname != null){
-				// meta namespaces
-				if(metaNamespaces.containsKey(dbname))
-					ret.put(metaNamespaces.get(dbname),4);
 				// custom 
 				if(customNamespaces.containsKey(dbname))
 					ret.putAll(customNamespaces.get(dbname));
@@ -270,7 +257,9 @@ public class Localization {
 	}
 	
 	/** If text redirects to some page, get that page's title object */
-	public static Title getRedirectTitle(String text, String lang){
+	public static Title getRedirectTitle(String text, IndexId iid){
+		String lang = iid.getLangCode();
+		String dbname = iid.getDBname();
 		String full = getRedirectTarget(text,lang);
 		if(full == null)
 			return null;
@@ -286,6 +275,10 @@ public class Localization {
 			Hashtable<String,Integer> map = namespaces.get(lang);
 			if(map!=null && map.containsKey(ns))
 				return new Title(map.get(ns),parts[1]);
+			// check custom
+			Hashtable<String,Integer> cmap = customNamespaces.get(dbname);
+			if(cmap!=null && cmap.containsKey(ns))
+				return new Title(cmap.get(ns),parts[1]);
 		}
 		// not recognized namespace, using main
 		return new Title(0,full);		

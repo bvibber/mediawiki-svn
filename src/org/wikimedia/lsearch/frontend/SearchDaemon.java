@@ -61,7 +61,7 @@ public class SearchDaemon extends HttpHandler {
 		}
 		what = paths[1];
 		dbname = paths[2];
-		searchterm = paths[3];
+		searchterm = paths[3].trim();
 		
 		log.info(MessageFormat.format("query:{0} what:{1} dbname:{2} term:{3}",
 			new Object[] {rawUri, what, dbname, searchterm}));	
@@ -120,6 +120,9 @@ public class SearchDaemon extends HttpHandler {
 									sendHighlight("text",sn);
 								sendHighlightWithTitle("redirect",hr.getRedirect());
 								sendHighlightWithFragment("section",hr.getSection());
+								if(hr.getDate() != null)
+									sendHighlight("date",hr.getDate());
+								sendHighlight("wordcount",Integer.toString(hr.getWordCount()));
 							}
 						}
 					}
@@ -184,6 +187,10 @@ public class SearchDaemon extends HttpHandler {
 		String s = makeHighlight(type,snippet);
 		if(s != null)
 			sendOutputLine(s);
+	}
+	
+	private void sendHighlight(String type, String text){
+		sendOutputLine("#h."+type+" "+text);
 	}
 	
 	private void sendHighlightWithTitle(String type, Snippet snippet){

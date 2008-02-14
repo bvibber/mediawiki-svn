@@ -91,7 +91,7 @@ public class RelatedBuilder {
 		log.info("Second pass, geting in/out links...");
 		// second pass - in/out links
 		input = Tools.openInputFile(inputfile);
-		LinkReader rr = new LinkReader(links,langCode);
+		LinkReader rr = new LinkReader(links,iid);
 		reader = new XmlDumpReader(input,new ProgressFilter(rr, 5000));
 		reader.readDump();
 		links.compactAll();

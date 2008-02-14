@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.zip.GZIPInputStream;
 
 import org.apache.log4j.Logger;
@@ -27,7 +28,9 @@ public class WordNet {
 	 * @param words
 	 * @return
 	 */
-	public static ArrayList<ArrayList<String>> replaceOne(ArrayList<String> words){
+	public static ArrayList<ArrayList<String>> replaceOne(ArrayList<String> words, String langCode){
+		if(!langCode.equals("en"))
+			return null;
 		ensureLoaded();
 		ArrayList<ArrayList<String>> ret = new ArrayList<ArrayList<String>>();
 		if(state == State.FAILED)
@@ -35,26 +38,38 @@ public class WordNet {
 		
 		for(int i=0;i<words.size();i++){
 			// see if we can replace some words beginning at i
-			Object[] retObjects = find(i,words);
+			Object[] retObjects = findSynSet(i,words);
 			int len = (Integer)retObjects[0];
 			String[][] synset = (String[][])retObjects[1];
 			if(len != 0 && synset != null){
 				// replace the matched word with each synonym
 				for(String[] synonymWords : synset){
-					// each replacement is a new list of words
-					ArrayList<String> r = new ArrayList<String>();
-					r.addAll(words.subList(0,i));
-					for(String s : synonymWords)
-						r.add(s);
-					r.addAll(words.subList(i+len,words.size()));
-					ret.add(r);
+					if(!synEqual(words.subList(i,i+len),synonymWords)){
+						// each replacement is a new list of words
+						ArrayList<String> r = new ArrayList<String>();
+						r.addAll(words.subList(0,i));
+						for(String s : synonymWords)
+							r.add(s);
+						r.addAll(words.subList(i+len,words.size()));
+						ret.add(r);
+					}
 				}				
 			}
 		}
 		return ret;
 	}
 	
-	protected static final Object[] find(int start, ArrayList<String> words){
+	private static boolean synEqual(List<String> s1, String[] s2) {
+		if(s1.size() != s2.length)
+			return false;
+		for(int i=0;i<s1.size();i++){
+			if(!s1.get(i).equals(s2[i]))
+				return false;
+		}
+		return true;
+	}
+
+	protected static final Object[] findSynSet(int start, ArrayList<String> words){
 		Node p = searchTree;
 		String[][] synset = null;
 		int len = 0;

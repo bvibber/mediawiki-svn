@@ -35,6 +35,7 @@ public class IndexUpdateRecord implements Serializable {
 	/** Used to identify this object in a back report */
 	protected ReportId reportId;
 	
+	@Deprecated
 	public IndexUpdateRecord(String dbrole, long pageId, Title title, String text, boolean redirect, int rank, Action role){
 		// FIXME: redirect target might be wrong (but then this is deprecated...)
 		article = new Article(pageId,title,text,redirect,rank,0);

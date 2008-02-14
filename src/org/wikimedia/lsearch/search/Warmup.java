@@ -1,6 +1,8 @@
 package org.wikimedia.lsearch.search;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Hashtable;
 
 import org.apache.log4j.Logger;
@@ -110,8 +112,10 @@ public class Warmup {
 
 	/** Preload all predefined filters */
 	protected static void makeNamespaceFilters(IndexSearcherMul is, IndexId iid) {
-		Hashtable<String,NamespaceFilter> filters = global.getNamespacePrefixes();
-		for(NamespaceFilter filter : filters.values()){
+		ArrayList<NamespaceFilter> filters = new ArrayList<NamespaceFilter>();
+		filters.addAll(global.getNamespacePrefixes().values());
+		filters.add(new NamespaceFilter()); // "all"
+		for(NamespaceFilter filter : filters){
 			try {
 				is.search(new TermQuery(new Term("contents","wikipedia")),
 						new NamespaceFilterWrapper(filter));

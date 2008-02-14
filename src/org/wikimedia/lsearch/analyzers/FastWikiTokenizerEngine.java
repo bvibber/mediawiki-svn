@@ -152,13 +152,15 @@ public class FastWikiTokenizerEngine {
 	
 	/** Add transliteration to token alias, create alias if it doesn't exist */
 	private final void addToTokenAlias(String transliteration) {
-		if(aliasLength == 0){
+		if(aliasLength == -1){
 			System.arraycopy(decompBuffer,0,aliasBuffer,0,decompLength);
 			aliasLength = decompLength;
 		}
-		for(char cc : transliteration.toCharArray())
-			if(aliasLength < aliasBuffer.length)
-				aliasBuffer[aliasLength++] = cc;
+		if(transliteration.length() != 0){
+			for(char cc : transliteration.toCharArray())
+				if(aliasLength < aliasBuffer.length)
+					aliasBuffer[aliasLength++] = cc;
+		}
 	}
 	
 	/** 
@@ -191,7 +193,7 @@ public class FastWikiTokenizerEngine {
 			}
 			// decompose token, maintain alias if needed
 			decompLength = 0;
-			aliasLength = 0;
+			aliasLength = -1;
 			boolean addToAlias;
 			boolean addDecomposed = false;
 			for(int i=0;i<length;i++){
@@ -262,8 +264,8 @@ public class FastWikiTokenizerEngine {
 					addToAlias = false;
 				} 
 				
-				// delete single quotes in aliases
-				if(cl == '\''){
+				// delete single quotes / dots in aliases
+				if(!options.noTokenization && (cl == '\'' || (cl=='.' && !numberToken))){
 					addToTokenAlias("");
 					addToAlias = false;
 				}
@@ -273,49 +275,31 @@ public class FastWikiTokenizerEngine {
 				if(decomp == null){
 					if(decompLength<decompBuffer.length)
 						decompBuffer[decompLength++] = cl;
-					if(addToAlias && aliasLength!=0 && aliasLength<aliasBuffer.length)
+					if(addToAlias && aliasLength>=0 && aliasLength<aliasBuffer.length)
 						aliasBuffer[aliasLength++] = cl;
 				} else{
 					addDecomposed = true; // there are differences to the original version 
 					for(decompi = 0; decompi < decomp.length; decompi++){
 						if(decompLength<decompBuffer.length)
 							decompBuffer[decompLength++] = decomp[decompi];
-						if(addToAlias && aliasLength!=0 && aliasLength<aliasBuffer.length)
+						if(addToAlias && aliasLength>=0 && aliasLength<aliasBuffer.length)
 							aliasBuffer[aliasLength++] = decomp[decompi];
 					}
 				}			
 			}
-			// make the original buffered version
-			// TODO: maybe do this optionally for some languages
-			/* if(!("de".equals(language) && aliasLength!=0)){ 
-				Token exact;
-				if(exactCase)
-					exact = new Token(
-							new String(buffer, 0, length), start, start + length);
-				else
-					exact = new Token(
-							new String(buffer, 0, length).toLowerCase(), start, start + length);
-				if(addDecomposed && decompLength!=0)
-					exact.setType("unicode");
-				tokens.add(exact);
-			} */
 			if(templateLevel == 0 && tableLevel == 0)
 				keywordTokens+=gap; // inc by gap (usually 1, can be more before paragraphs and sections)
 			
 			// add decomposed token to stream
 			if(decompLength!=0){
 				Token t = makeToken(new String(decompBuffer, 0, decompLength), start, start + length, true);
-				/*if(!"de".equals(language)){
-					t.setPositionIncrement(0);
-					t.setType("transliteration");
-				} */
 				t.setPositionIncrement(gap);
 				if(gap != 1)
 					gap = 1; // reset token gap
 				addToTokens(t);
 			}
 			// add alias (if any) token to stream
-			if(aliasLength!=0){
+			if(aliasLength>0){
 				Token t = makeToken(new String(aliasBuffer, 0, aliasLength), start, start + length, false);
 				t.setPositionIncrement(0);
 				t.setType("transliteration");
@@ -404,14 +388,14 @@ public class FastWikiTokenizerEngine {
 				// work out breaks
 				if(lc == '.' && !inLink)
 					type = ExtToken.Type.SENTENCE_BREAK;
-				if(last == '\n' && (lc == ':' || lc == '*' || lc=='#' || lc=='\n'))
+				if(last == '\n' && (lc == ':' || lc == '*' || lc=='#' || lc=='\n' || lc==';'))
 					type = ExtToken.Type.SENTENCE_BREAK;
 				if(last == '\n' && lc =='|' && i+1<glueLength && glueBuffer[i+1]=='-')
 					type = ExtToken.Type.SENTENCE_BREAK;
 
 				if(lc == '{' || lc == '}' || lc == '[' || lc == ']' 
 					|| lc == '<' || lc == '>' || lc=='*' || lc=='#' 
-						|| lc == '\n' || lc == '\r' || lc == '=')
+						|| lc == '\n' || lc == '\r' || lc == '=' || (lc==';' && last=='\n'))
 					continue; // forbidden chars
 
 				if(lc == '\'' && (last == '\'' || (i<glueLength-1 && glueBuffer[i+1]=='\'')))
@@ -428,11 +412,14 @@ public class FastWikiTokenizerEngine {
 			// work out minor breaks within sentences
 			if(type != ExtToken.Type.SENTENCE_BREAK && isMinorBreak(lc)){
 				type = ExtToken.Type.MINOR_BREAK;
-			}
+			}			
 			if(tempLength < tempBuffer.length)
 				tempBuffer[tempLength++] = lc;
 			top = lc;
 		}
+		// add extra space if ending with pipe
+		if(tempLength>0 && tempBuffer[tempLength-1]=='|' && tempLength+1<tempBuffer.length)
+			tempBuffer[tempLength++]=' ';
 		String glue = null;
 		if(tempLength != 0)
 			glue = new String(tempBuffer,0,tempLength);
@@ -497,7 +484,10 @@ public class FastWikiTokenizerEngine {
 	private final void addLetter(){
 		try{			
 			// add new character to buffer
-			if(Character.isLetter(c) || (c == '\'' && cur>0 && Character.isLetter(text[cur-1]) && cur+1<textLength && Character.isLetter(text[cur+1]) ) || decomposer.isCombiningChar(c)){				
+			if(Character.isLetter(c) 
+					|| (c == '\'' && cur>0 && Character.isLetter(text[cur-1]) && cur+1<textLength && Character.isLetter(text[cur+1]) ) 
+					|| (c == '.' && cur+1<textLength && Character.isLetter(text[cur+1]))
+					|| decomposer.isCombiningChar(c)){				
 				if(numberToken) // we were fetching a number
 					addToken(false);
 
@@ -507,7 +497,7 @@ public class FastWikiTokenizerEngine {
 				if(length < buffer.length)
 					buffer[length++] = c;
 			// add digits
-			} else if(Character.isDigit(c)){				
+			} else if(Character.isDigit(c) || (c == '.' && cur+1<textLength && Character.isDigit(text[cur+1]))){				
 				if(length == 0)
 					start = cur;
 				numberToken = true;
@@ -770,9 +760,15 @@ public class FastWikiTokenizerEngine {
 		else 
 			return tokens; // already parsed
 		
-		// before starting, make sure this is not a redirect
-		//if(isRedirect())
-		//	return tokens;
+		if(options.noTokenization){ // whole text single token
+			//if(textLength >= MAX_WORD_LEN)
+			//	throw new RuntimeException("Cannot handle untokenized text larger than "+MAX_WORD_LEN+" : "+new String(text));
+			for(cur = 0; cur < textLength && length<buffer.length; cur++){
+				buffer[length++] = text[cur];
+			}
+			addToken(); 
+			return tokens;
+		}
 		
 		for(cur = 0; cur < textLength; cur++ ){
 			c = text[cur];			
@@ -927,6 +923,10 @@ public class FastWikiTokenizerEngine {
 					}					
 					continue;
 				case '.':
+					if(cur+1<textLength && (Character.isLetter(text[cur+1]) || Character.isDigit(text[cur+1]))){
+						addLetter();
+						continue;
+					}						
 				case '(':
 				case ')':
 				case '?':

@@ -90,9 +90,54 @@ public class PositionalOptions implements Serializable {
 		public RedirectMatch(){
 			aggregateMeta = new AggregateInfoImpl();
 			takeMaxScore = true;
-			wholeNoStopWordsBoost = 10000;
-			wholeBoost = 500000;
+			// these are so large because we take their sqrt and multiply with query norm
+			wholeNoStopWordsBoost = 100000000;
+			wholeBoost = 500000000;
 			useNoStopWordLen = true;
 		}
 	}
+
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		result = PRIME * result + Float.floatToIntBits(exactBoost);
+		result = PRIME * result + (onlyWholeMatch ? 1231 : 1237);
+		result = PRIME * result + (takeMaxScore ? 1231 : 1237);
+		result = PRIME * result + (useBeginBoost ? 1231 : 1237);
+		result = PRIME * result + (useNoStopWordLen ? 1231 : 1237);
+		result = PRIME * result + Float.floatToIntBits(wholeBoost);
+		result = PRIME * result + Float.floatToIntBits(wholeNoStopWordsBoost);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final PositionalOptions other = (PositionalOptions) obj;
+		if (Float.floatToIntBits(exactBoost) != Float.floatToIntBits(other.exactBoost))
+			return false;
+		if (onlyWholeMatch != other.onlyWholeMatch)
+			return false;
+		if (takeMaxScore != other.takeMaxScore)
+			return false;
+		if (useBeginBoost != other.useBeginBoost)
+			return false;
+		if (useNoStopWordLen != other.useNoStopWordLen)
+			return false;
+		if (Float.floatToIntBits(wholeBoost) != Float.floatToIntBits(other.wholeBoost))
+			return false;
+		if (Float.floatToIntBits(wholeNoStopWordsBoost) != Float.floatToIntBits(other.wholeNoStopWordsBoost))
+			return false;
+		return true;
+	}
+	
+	
+	
+	
 }

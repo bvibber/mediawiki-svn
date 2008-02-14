@@ -23,9 +23,8 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.search.RelevanceQuery;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.BooleanClause.Occur;
-import org.wikimedia.lsearch.analyzers.WikiQueryParserOld.NamespacePolicy;
-import org.wikimedia.lsearch.analyzers.WikiQueryParserOld.TokenType;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
+import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.search.Wildcards;
 
@@ -54,7 +53,7 @@ public class WikiQueryParser {
 	
 	private TokenStream tokenStream; 
 	private ArrayList<Token> tokens; // tokens from analysis
-	protected ArrayList<String> words;
+	protected ArrayList<String> words, wordsFromParser;
 	
 	/** sometimes the fieldsubquery takes the bool modifier, to retrieve it, use this variable,
 	 *  this will always point to the last unused bool modifier */
@@ -121,6 +120,7 @@ public class WikiQueryParser {
 	protected FilterFactory filters;
 	protected HashSet<String> stopWords;
 	protected Wildcards wildcards = null;
+	protected IndexId iid;
 	
 	/** default operator (must = AND, should = OR) for boolean queries */
 	public BooleanClause.Occur boolDefault = BooleanClause.Occur.MUST;
@@ -172,6 +172,7 @@ public class WikiQueryParser {
 		this.builder = builder;
 		this.fields = builder.getFields();
 		this.filters = builder.getFilters();
+		this.iid = filters.getIndexId();
 		tokens = new ArrayList<Token>();
 		this.namespacePolicy = nsPolicy;
 		disableTitleAliases = true;
@@ -361,10 +362,10 @@ public class WikiQueryParser {
 			if(Character.isLetterOrDigit(c)){
 				int start = cur;
 				tokenType = fetchToken();
-				if(tokenType == TokenType.WORD){
+				if(tokenType == TokenType.WORD && (start==0 || text[start-1]!='-') && !bufferIsWildCard()){
 					analyzeBuffer();
 					for(Token t : tokens){
-						if(t.type().equals("word"))
+						if(t.getPositionIncrement()!=0)
 							ret.add(new Token(t.termText(),start+t.startOffset(),start+t.endOffset(),"word"));
 					}					
 				}
@@ -410,7 +411,7 @@ public class WikiQueryParser {
 				continue; // ignore single quotes (it's -> its)
 			
 			// pluses and minuses, underscores can be within words (to prevent to be missinterpeted), *,? are for wildcard queries
-			if(!Character.isWhitespace(ch) && ch != ':' && ch != '(' && ch != ')' && ch !='[' && ch != ']' && ch != '.' && ch != ',' && ch != ';' && ch != '"'){
+			if(!Character.isWhitespace(ch) && ch != ':' && ch != '(' && ch != ')' && ch !='[' && ch != ']' && ch != ',' && ch != ';' && ch != '"'){
 				if(length<buffer.length)
 					buffer[length++] = ch;
 			} else{
@@ -602,7 +603,7 @@ public class WikiQueryParser {
 				continue;
 			
 			// terms, fields
-			if(Character.isLetterOrDigit(c) || c == '[' ||  c=='*' || c=='?'){
+			if(Character.isLetterOrDigit(c) || c=='.' || c == '[' ||  c=='*' || c=='?'){
 				// check for generic namespace prefixes, e.g. [0,1]:
 				if(c == '['){
 					if(fetchGenericPrefix())
@@ -824,23 +825,27 @@ public class WikiQueryParser {
 		if(toplevelOccur == BooleanClause.Occur.MUST_NOT)
 			addAliases = false;
 
-		if(tokens.size() == 1){
+		if(tokens.size() == 1){		
 			t = new TermQuery(makeTerm(tokens.get(0)));
 			t.setBoost(defaultBoost);
+			if(toplevelOccur != Occur.MUST_NOT)
+				wordsFromParser.add(t.getTerm().text());
 			return t;
 		} else{
 			// make a nested boolean query
 			ArrayList<BooleanQuery> queries = new ArrayList<BooleanQuery>();
 			ArrayList<Token> aliases = new ArrayList<Token>();
-			for(int i=0; i<tokens.size(); i++, aliases.clear()){
+			for(int i=0; i<tokens.size(); i++){
 				BooleanQuery query = new BooleanQuery();
-				queries.add(query);
 				// main token
 				Token token = tokens.get(i);
 				t = new TermQuery(makeTerm(token));
 				t.setBoost(defaultBoost);
+				if(toplevelOccur != Occur.MUST_NOT)
+					wordsFromParser.add(t.getTerm().text());
 				query.add(t,Occur.SHOULD);
 				// group aliases together
+				aliases.clear();
 				for(int j=i+1;j<tokens.size();j++){
 					if(tokens.get(j).getPositionIncrement() == 0){
 						aliases.add(tokens.get(j));
@@ -858,10 +863,11 @@ public class WikiQueryParser {
 						query.add(t,Occur.SHOULD);
 					}
 				}
+				queries.add(query);
 			}
 			// don't returned nested if one query only
 			if(queries.size() == 1){
-				BooleanQuery q = queries.get(0);
+				BooleanQuery q = (BooleanQuery)queries.get(0);
 				// one nested clause
 				if(q.getClauses().length == 1)
 					return q.getClauses()[0].getQuery();
@@ -869,8 +875,12 @@ public class WikiQueryParser {
 			}
 			// multiple tokens, e.g. super-hero -> +super +hero
 			bq = new BooleanQuery();
-			for(Query q : queries)
-				bq.add(q,boolDefault);
+			for(BooleanQuery q : queries){
+				if(q.getClauses().length == 1)
+					bq.add(q.getClauses()[0].getQuery(),boolDefault);
+				else
+					bq.add(q,boolDefault);
+			}
 			return bq;
 			
 		}
@@ -891,6 +901,7 @@ public class WikiQueryParser {
 		currentField = null;	
 		prev_cur = 0;
 		explicitOccur = null;
+		wordsFromParser = new ArrayList<String>();
 	}
 	
 	/** Init parsing, call this function to parse text */ 
@@ -914,6 +925,8 @@ public class WikiQueryParser {
 		
 		return query;		
 	}
+	
+	
 	
 	/* ======================= FULL-QUERY PARSING ========================= */
 	
@@ -980,6 +993,11 @@ public class WikiQueryParser {
 		if(options.coreQueryOnly || words == null || words.size()==0)
 			return bq;
 		
+		// filter out stop words to SHOULD (this enables queries in form of question)
+		if(!allStopWords(words,stopWords)){
+			filterStopWords(bq);
+		}
+		
 		// work out singular forms of words
 		ArrayList<String> singularWords = null;
 		if(filters.hasSingular()){
@@ -997,13 +1015,14 @@ public class WikiQueryParser {
 			if(!diff) // all words are same as original words
 				singularWords = null;
 		}
+		
+		// work out stemmed words
+		ArrayList<String> stemmedWords = filters.stem(words);
+		if(stemmedWords != null && (stemmedWords.equals(words) || stemmedWords.equals(singularWords) || stemmedWords.size()==0))
+			stemmedWords = null;
 
-		// redirect match (when redirect is not contained in contents or title)
-		Query redirects = makeAlttitleForRedirects(words,20,1);
-		if(redirects != null)
-			bq.add(redirects,Occur.SHOULD);
 		// main phrase combined with relevance meatrics
-		Query mainPhrase = makeMainPhraseWithRelevance(words,singularWords);
+		Query mainPhrase = makeMainPhraseWithRelevance(words,singularWords,stemmedWords);
 		if(mainPhrase == null)
 			return bq;
 
@@ -1014,15 +1033,41 @@ public class WikiQueryParser {
 		BooleanQuery additional = new BooleanQuery(true);
 		additional.add(mainPhrase,Occur.MUST);
 		if(related != null)
-			additional.add(related,Occur.SHOULD);
+			additional.add(related,Occur.SHOULD); 
 		
 		BooleanQuery full = new BooleanQuery(true);
 		full.add(bq,Occur.MUST);
 		full.add(additional,Occur.SHOULD);
 		
+		// redirect match (when redirect is not contained in contents or title)
+		Query redirects = makeAlttitleForRedirects(words,20,1);
+		if(redirects != null)
+			full.add(redirects,Occur.SHOULD);
+		if(singularWords != null){
+			Query redirectsSing = makeAlttitleForRedirects(singularWords,20,0.8f);
+			if(redirectsSing != null)
+				full.add(redirectsSing,Occur.SHOULD);
+		}
+		
 		return full;
 	}
 	
+	/** Recursively transverse queries and put stop words to SHOULD */
+	private void filterStopWords(BooleanQuery bq) {
+		if(stopWords==null && stopWords.size()==0)
+			return;
+		for(BooleanClause cl : bq.getClauses()){
+			Query q = cl.getQuery();
+			Occur o = cl.getOccur();
+			if(q instanceof BooleanQuery){
+				filterStopWords((BooleanQuery)q);
+			} else if(q instanceof TermQuery && o.equals(Occur.MUST) 
+					&& stopWords.contains(((TermQuery)q).getTerm().text())){
+				cl.setOccur(Occur.SHOULD);
+			}
+		}
+	}
+
 	/** Quote CJK chars to avoid frequency-based analysis */
 	protected String quoteCJK(String queryText){
 		if(!builder.filters.isUsingCJK())
@@ -1093,7 +1138,8 @@ public class WikiQueryParser {
 		defaultBoost = olfDefaultBoost;
 		defaultAliasBoost = ALIAS_BOOST;
 
-		ArrayList<String> words = extractWords(qt);
+		//ArrayList<String> words = extractWords(qt);
+		ArrayList<String> words = wordsFromParser;
 		
 		if(qt == qs) // either null, or category query
 			return new Object[] {qt,words};
@@ -1107,70 +1153,8 @@ public class WikiQueryParser {
 		return new Object[] {bq,words};
 	}
 	
-	/** Extract all words from the query */
-	public ArrayList<String> extractWords(Query query){
-		ArrayList<String> list = new ArrayList<String>();
-		if(query == null)
-			return list;
-		else if(query instanceof TermQuery || query instanceof PhraseQuery){
-			addWords(list,query);
-			return list;
-		} else if(query instanceof BooleanQuery){
-			BooleanQuery bq = (BooleanQuery)query;
-			BooleanClause[] cl = bq.getClauses();
-			// check if first clause is namespace rewrite part
-			boolean ignoreFirst = false;
-			if(cl.length > 1){
-				Query qn = cl[0].getQuery();
-				if(qn instanceof TermQuery && ((TermQuery)qn).getTerm().field().equals("namespace"))
-					ignoreFirst = true;
-				else if (qn instanceof BooleanQuery && ((BooleanQuery)qn).getClauses().length>1){
-					Query q1 = ((BooleanQuery)qn).getClauses()[0].getQuery();
-					if(q1 instanceof TermQuery && ((TermQuery)q1).getTerm().field().equals("namespace"))
-						ignoreFirst = true;
-				}
-			}
-			for(BooleanClause c : cl){
-				if(ignoreFirst){
-					ignoreFirst = false;
-					continue;
-				}
-				Query q = c.getQuery();
-				if(q instanceof TermQuery || q instanceof PhraseQuery)
-					addWords(list,q);
-				else if(q instanceof BooleanQuery){
-					BooleanClause[] bcl = ((BooleanQuery)q).getClauses();
-					if(bcl.length == 0);
-					else if(bcl.length == 1 && bcl[0].getOccur() != Occur.MUST_NOT)
-						addWords(list,bcl[0].getQuery());
-					else if(bcl.length == 2){
-						// TODO: this might break in some complex queries! (with some parenthesis and transliterations...)
-						if(bcl[0].getOccur() == Occur.MUST && bcl[1].getOccur() == Occur.SHOULD)
-							// second is alias
-							addWords(list,bcl[0].getQuery());
-						else if(bcl[0].getOccur() == Occur.MUST && bcl[1].getOccur() == Occur.MUST){
-							// both are legal words
-							addWords(list,bcl[0].getQuery());
-							addWords(list,bcl[1].getQuery());
-						} else if(bcl[0].getOccur() == Occur.SHOULD && bcl[1].getOccur() == Occur.SHOULD){
-							// first is transliterated, other is alias
-							addWords(list,bcl[0].getQuery());
-						}
-					} else{
-						// multple-parsed, add all required
-						for(BooleanClause b : bcl){
-							if(b.getOccur() == Occur.MUST)
-								addWords(list,b.getQuery());
-						}
-					}
-				}				
-			}
-		}
-		return list;	
-	}
-	
 	/** Extract MUST_NOT clauses form a query */
-	protected BooleanQuery extractForbidden(Query q){
+	protected static BooleanQuery extractForbidden(Query q){
 		BooleanQuery bq = new BooleanQuery();
 		extractForbiddenRecursive(bq,q);
 		if(bq.getClauses().length == 0)
@@ -1179,7 +1163,7 @@ public class WikiQueryParser {
 		return bq;
 	}
 	/** Recursivily extract all MUST_NOT clauses from query */ 
-	protected void extractForbiddenRecursive(BooleanQuery forbidden, Query q){
+	protected static void extractForbiddenRecursive(BooleanQuery forbidden, Query q){
 		if(q instanceof BooleanQuery){
 			BooleanQuery bq = (BooleanQuery)q;
 			for(BooleanClause cl : bq.getClauses()){
@@ -1189,6 +1173,12 @@ public class WikiQueryParser {
 					extractForbiddenRecursive(forbidden,cl.getQuery());
 			}
 		}
+	}
+	/** Extract forbidden terms from a query into a hashset */ 
+	public static void extractForbiddenInto(Query q, HashSet<Term> forbidden){
+		BooleanQuery bq = extractForbidden(q);
+		if(bq != null)
+			bq.extractTerms(forbidden);
 	}
 	
 	protected void addWords(ArrayList<String> list, TermQuery tq){
@@ -1217,13 +1207,16 @@ public class WikiQueryParser {
 	}
 	
 	/** Make the main phrases with relevance metrics */ 
-	protected Query makeMainPhraseWithRelevance(ArrayList<String> words, ArrayList<String> singularWords){
+	protected Query makeMainPhraseWithRelevance(ArrayList<String> words, ArrayList<String> singularWords, ArrayList<String> stemmedWords){
 		Query main = null;
 						
 		PositionalQuery exact = new PositionalQuery(new PositionalOptions.Exact());
 		PositionalQuery sloppy = new PositionalQuery(new PositionalOptions.Sloppy());
-		PositionalQuery singular = singularWords != null? new PositionalQuery(new PositionalOptions.Sloppy()) : null;
+		PositionalQuery stemmed = new PositionalQuery(new PositionalOptions.Sloppy());
+		PositionalQuery singular = new PositionalQuery(new PositionalOptions.Sloppy());
 		BooleanQuery combined = new BooleanQuery(true);
+		
+		ArrayList<ArrayList<String>> wordnet = WordNet.replaceOne(words,iid.getLangCode());
 		
 		// main phrases
 		int pos = 0;
@@ -1234,8 +1227,10 @@ public class WikiQueryParser {
 			exact.add(term,stop);		
 			if(!stop)
 				sloppy.add(term,pos,stop); // maintain gaps
-			if(!stop && singular!=null)
+			if(!stop && singularWords!=null)
 				singular.add(new Term(fields.contents(),singularWords.get(i)),pos,stop);
+			if(!stop && stemmedWords!=null)
+				stemmed.add(new Term(fields.contents(),stemmedWords.get(i)),pos,stop);
 			pos++;
 		}
 		// combined exact and sloppy (if exists)
@@ -1243,9 +1238,31 @@ public class WikiQueryParser {
 			sloppy.setSlop(MAINPHRASE_SLOP);
 			combined.add(exact,Occur.SHOULD);
 			combined.add(sloppy,Occur.SHOULD);
-			if(singular!=null){
+			// singulars
+			if(singularWords != null){
 				singular.setSlop(MAINPHRASE_SLOP);
 				combined.add(singular,Occur.SHOULD);
+			}
+			// stemmed
+			if(stemmedWords != null){
+				stemmed.setSlop(MAINPHRASE_SLOP);
+				combined.add(stemmed,Occur.SHOULD);
+			}
+			// wordnet			
+			if(wordnet != null){
+				for(ArrayList<String> wnwords : wordnet){
+					pos = 0;
+					PositionalQuery wnquery = new PositionalQuery(new PositionalOptions.Sloppy());
+					for(int i=0;i<wnwords.size();i++){
+						String w = wnwords.get(i);
+						boolean stop = stopWords.contains(w); 
+						if(!stop)
+							wnquery.add(new Term(fields.contents(),w),pos,stop);
+						pos++;
+					}
+					wnquery.setSlop(MAINPHRASE_SLOP);
+					combined.add(wnquery,Occur.SHOULD);
+				}
 			}
 			main = combined;
 		} else
@@ -1253,13 +1270,25 @@ public class WikiQueryParser {
 		
 		main.setBoost(MAINPHRASE_BOOST);
 		
-		// relevance measures
+		// relevance measures: alttitle
 		Query alttitle = makeAlttitleRelevance(words,ALT_PHRASES_BOOST);
+		ArrayList<Query> altAdd = new ArrayList<Query>();
 		if(singularWords != null)
-			alttitle = embed(alttitle,makeAlttitleRelevance(singularWords,ALT_PHRASES_BOOST));
+			altAdd.add(makeAlttitleRelevance(singularWords,ALT_PHRASES_BOOST));
+		if(wordnet!=null)
+			for(ArrayList<String> wnwords : wordnet)
+				altAdd.add(makeAlttitleRelevance(wnwords,ALT_PHRASES_BOOST));
+		alttitle = combine(alttitle,altAdd);
+		
+		// related
 		Query related = makeRelatedRelevance(words,RELATED_SLOP,RELATED_BOOST);
+		ArrayList<Query> relAdd = new ArrayList<Query>();
 		if(singularWords != null)
-			related = embed(related,makeRelatedRelevance(singularWords,RELATED_SLOP,RELATED_BOOST));
+			relAdd.add(makeRelatedRelevance(singularWords,RELATED_SLOP,RELATED_BOOST));
+		if(wordnet!=null)
+			for(ArrayList<String> wnwords : wordnet)
+				relAdd.add(makeRelatedRelevance(wnwords,RELATED_SLOP,RELATED_BOOST));
+		related = combine(related,relAdd);
 		
 		RelevanceQuery whole = new RelevanceQuery(main);
 		whole.addRelevanceMeasure(alttitle);
@@ -1268,6 +1297,16 @@ public class WikiQueryParser {
 		return whole;
 	}
 	
+	private Query combine(Query query, ArrayList<Query> additional) {
+		if(additional.size()==0)
+			return query;
+		BooleanQuery bq = new BooleanQuery(true);
+		bq.add(query,Occur.SHOULD);
+		for(Query q : additional)
+			bq.add(q,Occur.SHOULD);
+		return bq;
+	}
+
 	private BooleanQuery embed(Query q1, Query q2){
 		BooleanQuery bq = new BooleanQuery(true);
 		bq.add(q1,Occur.SHOULD);
@@ -1431,7 +1470,7 @@ public class WikiQueryParser {
 		
 		Query q = parseRaw(queryText);
 		
-		ArrayList<String> words = extractWords(q);
+		ArrayList<String> words = wordsFromParser;
 		if(words == null || words.size() == 0)
 			return q;
 		
@@ -1450,5 +1489,18 @@ public class WikiQueryParser {
 		return whole;
 		
 	}
+	
+	/** check if all the words in the array are stop words */
+	private boolean allStopWords(ArrayList<String> words, HashSet<String> preStopWords){
+		if(words == null || words.size() == 0)
+			return false;
+		for(String w : words){
+			if(!preStopWords.contains(w)){
+				return false;
+			}
+		}
+		return true;
+	}
+
 
 }

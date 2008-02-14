@@ -2,6 +2,7 @@ package org.wikimedia.lsearch.oai;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
@@ -68,8 +69,9 @@ public class IndexUpdatesCollector implements DumpWriter {
 		this.page = page;
 	}
 	public void writeEndPage() throws IOException {
+		Date date = new Date(revision.Timestamp.getTimeInMillis());
 		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,revision.isRedirect(),
-				references,0,redirects,new ArrayList<RelatedTitle>(), new ArrayList<String>()); // references and related titles are set correctly later (in incremental updater)
+				references,0,redirects,new ArrayList<RelatedTitle>(), new ArrayList<String>(),date); // references and related titles are set correctly later (in incremental updater)
 		log.debug("Collected "+article+" with rank "+references+" and "+redirects.size()+" redirects: "+redirects);
 		records.add(new IndexUpdateRecord(iid,article,IndexUpdateRecord.Action.UPDATE));
 		log.debug(iid+": Update for "+article);

@@ -276,58 +276,13 @@ public class ExtToken extends Token {
 	
 	/** c - current char, prev - previous char */
 	private static boolean isText(char c, char prev, char next){
-		return Character.isLetterOrDigit(c) || (c=='\'' && Character.isLetter(prev) && Character.isLetter(next)) || decomposer.isCombiningChar(c); 
+		return Character.isLetterOrDigit(c) 
+		|| (c=='\'' && Character.isLetter(prev) && Character.isLetter(next))
+		|| (c=='.' && (Character.isLetterOrDigit(prev) || Character.isLetterOrDigit(next)))
+		|| decomposer.isCombiningChar(c); 
 	}
 	
-	/** Get a single token from a string, beginning at position inx */
-	private static ExtToken getToken(String s, int inx){
-		Type type;
-		char c = s.charAt(inx);
-		char c1 = '\0';
-		if(inx + 1 < s.length())
-			c1 = s.charAt(inx+1);
-		if(isText(c,'\0',c1))
-			type = Type.TEXT;
-		else if(FastWikiTokenizerEngine.isMinorBreak(c))
-			type = Type.MINOR_BREAK;
-		else
-			type = Type.GLUE;
-		
-		int start = inx;
-		int end = s.length();
-		
-		char prev = c;
-		for(int i=inx+1;i<s.length();i++,prev=c){
-			c = s.charAt(i);
-			if(i+1 < s.length())
-				c1 = s.charAt(i+1);
-			if(type == Type.TEXT && !isText(c,prev,c1)){
-				end = i;
-				break;
-			} else if(type != Type.TEXT){
-				// minor break markers are not saved, we infere them
-				if(FastWikiTokenizerEngine.isMinorBreak(c))
-					type = Type.MINOR_BREAK;
-				
-				if(isText(c,prev,c1)){
-					end = i;
-					break;
-				}					
-			}
-		}
-		return new ExtToken(s.substring(start,end),start,end,type,null);
-	}
-	
-	private static void tokenize(ArrayList<ExtToken> tokens, String s, Position pos){
-		for(int i=0;i<s.length();){
-			ExtToken t = getToken(s,i);
-			t.setPosition(pos);
-			tokens.add(t);
-			i += t.termText().length();						
-		}
-	}
-	
-	private static char getUtf8Char(byte[] serialized, int start, int end){
+	private static Object[] getUtf8Char(byte[] serialized, int start, int end){
 		int ch, ch2, ch3;
 		int cc = start;
 		char tmpc;
@@ -343,7 +298,7 @@ public class ExtToken extends Token {
 		case 7:
 			cc += 1;
 			tmpc = (char)ch; // for debugging
-			return tmpc;
+			return new Object[] {tmpc,cc};
 		case 12: 
 		case 13:
 			cc += 2;
@@ -355,7 +310,7 @@ public class ExtToken extends Token {
 					throw new IllegalStateException();
 				else {
 					tmpc = (char)(((ch & 0x1F) <<6)|(ch2 & 0x3F));
-					return tmpc;
+					return new Object[] {tmpc,cc};
 				}
 			}
 		case 14:
@@ -371,7 +326,7 @@ public class ExtToken extends Token {
 					tmpc = (char)(((ch  & 0x0F) << 12)|
 							((ch2 & 0x3F) << 6) |
 							((ch3 & 0x3F) << 0));
-					return tmpc;
+					return new Object[] {tmpc,cc};
 				}
 			}
 		default:
@@ -381,8 +336,15 @@ public class ExtToken extends Token {
 
 	private static ExtToken makeStubToken(byte[] serialized, int start, int end, int startOffset, int endOffset, Position pos){
 		Type type;
-		char c = getUtf8Char(serialized,start,end);
+		Object ret[] = getUtf8Char(serialized,start,end);
+		char c = (Character) ret[0];
+		int start2 = (Integer) ret[1];
 		char c1 = '\0';
+		if(start2 < end){
+			Object ret2[] = getUtf8Char(serialized,start2,end);
+			c1 = (Character) ret2[0];
+		}
+		 
 		if(isText(c,'\0',c1))
 			type = Type.TEXT;
 		else{

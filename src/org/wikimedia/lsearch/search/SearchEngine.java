@@ -26,6 +26,7 @@ import org.apache.lucene.search.Searcher;
 import org.apache.lucene.search.TopDocs;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
+import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.analyzers.StopWords;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser.NamespacePolicy;
@@ -82,6 +83,7 @@ public class SearchEngine {
 		if (what.equals("search") || what.equals("explain")) {
 			int offset = 0, limit = 100; boolean exactCase = false;
 			int iwlimit = 10;
+			boolean searchOnly = false;
 			if (query.containsKey("offset"))
 				offset = Math.max(Integer.parseInt((String)query.get("offset")), 0);
 			if (query.containsKey("limit"))
@@ -90,8 +92,10 @@ public class SearchEngine {
 				iwlimit = Math.min(Integer.parseInt((String)query.get("iwlimit")), MAXLINES);
 			if (query.containsKey("case") && global.exactCaseIndex(iid.getDBname()) && ((String)query.get("case")).equalsIgnoreCase("exact"))
 				exactCase = true;
+			if(query.containsKey("searchonly"))
+				searchOnly = Boolean.parseBoolean((String)query.get("searchonly"));
 			NamespaceFilter namespaces = new NamespaceFilter((String)query.get("namespaces"));
-			SearchResults res = search(iid, searchterm, offset, limit, iwlimit, namespaces, what.equals("explain"), exactCase, false);
+			SearchResults res = search(iid, searchterm, offset, limit, iwlimit, namespaces, what.equals("explain"), exactCase, false, searchOnly);
 			if(res!=null && res.isRetry()){
 				int retries = 0;
 				if(iid.isSplit() || iid.isNssplit()){
@@ -100,7 +104,7 @@ public class SearchEngine {
 					retries = 1;
 				
 				while(retries > 0 && res.isRetry()){
-					res = search(iid, searchterm, offset, limit, iwlimit, namespaces, what.equals("explain"), exactCase, false);
+					res = search(iid, searchterm, offset, limit, iwlimit, namespaces, what.equals("explain"), exactCase, false, searchOnly);
 					retries--;
 				}
 				if(res.isRetry())
@@ -119,7 +123,7 @@ public class SearchEngine {
 			if (query.containsKey("case") && global.exactCaseIndex(iid.getDBname()) && ((String)query.get("case")).equalsIgnoreCase("exact"))
 				exactCase = true;
 			NamespaceFilter namespaces = new NamespaceFilter((String)query.get("namespaces"));
-			return search(iid, searchterm, offset, limit, iwlimit, namespaces, what.equals("rawexplain"), exactCase, true);
+			return search(iid, searchterm, offset, limit, iwlimit, namespaces, what.equals("rawexplain"), exactCase, true, true);
 		} else if (what.equals("titlematch")) {
 				// TODO: return searchTitles(searchterm);
 		} else if (what.equals("prefix")){
@@ -199,6 +203,14 @@ public class SearchEngine {
 					ResultSet rs = new ResultSet(rt.getScore(),t.getNamespaceAsString(),t.getTitle());
 					res.addResult(rs);
 				}
+				// highlight stuff
+				Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid);
+				NamespaceFilter nsDefault = new NamespaceFilter(key.substring(0,key.indexOf(':')));
+				FieldBuilder.BuilderSet bs = new FieldBuilder(iid).getBuilder();
+				HashSet<String> stopWords = StopWords.getPredefinedSet(iid);				
+				WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),nsDefault,analyzer,bs,NamespacePolicy.IGNORE,stopWords);
+				Query q = parser.parse(key.substring(key.indexOf(':')+1),new WikiQueryParser.ParsingOptions(true));
+				highlight(iid,q,parser.getWords(),searcher,res);
 			} else{
 				res.setSuccess(true);
 				res.setNumHits(0);
@@ -348,7 +360,7 @@ public class SearchEngine {
 	 * Search on iid, with query searchterm. View results from offset to offset+limit, using
 	 * the default namespaces filter
 	 */
-	public SearchResults search(IndexId iid, String searchterm, int offset, int limit, int iwlimit, NamespaceFilter nsDefault, boolean explain, boolean exactCase, boolean raw){
+	public SearchResults search(IndexId iid, String searchterm, int offset, int limit, int iwlimit, NamespaceFilter nsDefault, boolean explain, boolean exactCase, boolean raw, boolean searchOnly){
 		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid,exactCase);
 		if(nsDefault == null || nsDefault.cardinality() == 0)
 			nsDefault = new NamespaceFilter("0"); // default to main namespace
@@ -366,7 +378,7 @@ public class SearchEngine {
 		// if search is over one field, try to use filters
 		if(fields.size()==1){
 			if(fields.contains(new NamespaceFilter())){
-				nsfw = null;  // empty filter: "all" keyword
+				nsfw = new NamespaceFilterWrapper(new NamespaceFilter());  // empty filter: "all" keyword
 				searchAll = true;
 			} else if(!fields.contains(nsDefault)){ 
 				// use the specified prefix in the query (if it can be cached)
@@ -384,7 +396,7 @@ public class SearchEngine {
 			
 			TopDocs hits=null;
 			// see if we can search only part of the index
-			if(nsfw!=null && (iid.isMainsplit() || iid.isNssplit())){
+			if(nsfw!=null && !nsfw.getFilter().isAll() && (iid.isMainsplit() || iid.isNssplit())){
 				HashSet<IndexId> parts = new HashSet<IndexId>();
 				for(NamespaceFilter f : nsfw.getFilter().decompose()){
 					parts.add(iid.getPartByNamespace(f.getNamespace()));										
@@ -414,10 +426,11 @@ public class SearchEngine {
 						RMIMessengerClient messenger = new RMIMessengerClient();						
 						HighlightPack pack = messenger.searchPart(piid,searchterm,q,nsfw,offset,limit,explain,host);
 						res = pack.res;
-						
-						highlight(iid,q,parser.getWords(),pack.terms,pack.dfs,pack.maxDoc,res,exactCase,null);
-						fetchTitles(res,searchterm,nsfw,iid,parser,wildcards,offset,0,iwlimit,explain);
-						suggest(iid,searchterm,parser,res,offset,nsfw);
+						if(!searchOnly){
+							highlight(iid,q,parser.getWords(),pack.terms,pack.dfs,pack.maxDoc,res,exactCase,null);
+							fetchTitles(res,searchterm,nsfw,iid,parser,wildcards,offset,0,iwlimit,explain);
+							suggest(iid,searchterm,parser,res,offset,nsfw);
+						}
 						return res;
 					}
 				} 
@@ -442,10 +455,12 @@ public class SearchEngine {
 				q = parseQuery(searchterm,parser,iid,raw,nsfw,searchAll,wildcards);
 								
 				hits = searcher.search(q,nsfw,offset+limit);
-				res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);				
-				highlight(iid,q,parser.getWords(),searcher,res,exactCase);
-				fetchTitles(res,searchterm,nsfw,iid,parser,wildcards,offset,0,iwlimit,explain);
-				suggest(iid,searchterm,parser,res,offset,nsfw);
+				res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
+				if(!searchOnly){
+					highlight(iid,q,parser.getWords(),searcher,res,exactCase);
+					fetchTitles(res,searchterm,nsfw,iid,parser,wildcards,offset,0,iwlimit,explain);
+					suggest(iid,searchterm,parser,res,offset,nsfw);
+				}
 				return res;
 			} catch(Exception e){				
 				if(e.getMessage()!=null && e.getMessage().equals("time limit")){
@@ -658,10 +673,13 @@ public class SearchEngine {
 		String fieldExact = field+"_exact";
 		HashSet<Term> termSet = new HashSet<Term>();
 		q.extractTerms(termSet);
+		HashSet<Term> forbidden = new HashSet<Term>();
+		WikiQueryParser.extractForbiddenInto(q,forbidden);
 		Iterator<Term> it = termSet.iterator();
 		while(it.hasNext()){
-			String fieldName = it.next().field(); 
-			if(!(fieldName.equals(field) || fieldName.equals(fieldExact)))
+			Term t = it.next();
+			String fieldName = t.field(); 
+			if(!(fieldName.equals(field) || fieldName.equals(fieldExact)) || forbidden.contains(t))
 				it.remove();
 		}
 		return termSet.toArray(new Term[] {});
@@ -669,10 +687,19 @@ public class SearchEngine {
 	
 	/** Highlight search results, and set the property in ResultSet */
 	protected void highlight(IndexId iid, Query q, ArrayList<String> words, WikiSearcher searcher, SearchResults res, boolean exactCase) throws IOException{
-		Term[] terms = getTerms(q,"contents");
+		FilterFactory filters = new FilterFactory(iid);
+		Term[] terms = filters.hasStemmer()? getTerms(q,"stemtitle") : getTerms(q,"title");
 		int[] df = searcher.docFreqs(terms); 
 		int maxDoc = searcher.maxDoc();
 		highlight(iid,q,words,terms,df,maxDoc,res,exactCase,null);
+	}
+	
+	/** Highlight search results, and set the property in ResultSet */
+	protected void highlight(IndexId iid, Query q, ArrayList<String> words, IndexSearcherMul searcher, SearchResults res) throws IOException{
+		Term[] terms = getTerms(q,"contents");
+		int[] df = searcher.docFreqs(terms); 
+		int maxDoc = searcher.maxDoc();
+		highlight(iid,q,words,terms,df,maxDoc,res,false,null);
 	}
 	
 	/** Highlight search results from titles index */

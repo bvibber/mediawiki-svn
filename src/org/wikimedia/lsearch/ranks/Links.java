@@ -253,7 +253,7 @@ public class Links {
 		
 		ContextParser cp = new ContextParser(text,imageLocalized,categoryLocalized,interwiki);
 		
-		Title redirect = Localization.getRedirectTitle(text,langCode);
+		Title redirect = Localization.getRedirectTitle(text,iid.getDB());
 		String redirectsTo = null;
 		if(redirect != null){
 			redirectsTo = findTargetLink(redirect.getNamespace(),redirect.getTitle(),exactCase);
@@ -364,15 +364,7 @@ public class Links {
 	/** Get number of backlinks to this title */
 	public int getNumInLinks(String key) throws IOException{
 		ensureRead();
-		/*String cacheKey = "getNumInLinks:"+key;
-		Object ref = refCache.get(cacheKey);
-		if(ref != null)
-			return (Integer) ref;
-		else{ */
-			int r = reader.docFreq(new Term("links",key));
-			//refCache.put(cacheKey,r);
-			return r; 
-		//}
+		return reader.docFreq(new Term("links",key));
 	}
 	
 	/** Make cache: doc_id -> number of inlinks */

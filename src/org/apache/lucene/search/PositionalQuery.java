@@ -162,5 +162,34 @@ public class PositionalQuery extends PhraseQuery {
 	      return result;
 	    }
 	}
+
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = super.hashCode();
+		result = PRIME * result + ((options == null) ? 0 : options.hashCode());
+		result = PRIME * result + stopWordCount;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final PositionalQuery other = (PositionalQuery) obj;
+		if (options == null) {
+			if (other.options != null)
+				return false;
+		} else if (!options.equals(other.options))
+			return false;
+		if (stopWordCount != other.stopWordCount)
+			return false;
+		return true;
+	}
+	
 	
 }

@@ -72,6 +72,16 @@ public class FastWikiTokenizerTest {
 			Configuration.open();
 			String text = "(ant) and some. it's stupid it's something and 5\"6' or more, links abacus";
 			showTokens(text);
+			text = "; list\n;list2.\n;list3";
+			showTokens(text);
+			text = "[http://ls2.wikimedia.org test inteface] for ls2";
+			showTokens(text);
+			text = "{{Infobox Country\n| fullcountryname = République française\n| image_flag = Flag_of_France.svg\n| image_coa = France_coa.png\n| image_location = Europe location FRA.png\n| nationalmotto = <small>''National [[motto]]: [[Liberty, Equality, Brotherhood]]<br>([[French language|French]]: Liberté, Egalité, Fraternité)''</small>\n| nationalsong = ''[[La Marseillaise]]''\n| officiallanguages = [[French language|French]]\n| populationtotal = 63,044,000<ref>Whole territory of the French Republic, including all the overseas departments and territories, but excluding the French territory of Terre Adélie in Antarctica where sovereignty is suspended since the signing of the [[Antarctic Treaty]] in 1959</ref>\n* [[Metropolitan France]]: 60,560,000<ref name=\"met euro\">Metropolitan (i.e. European) France only</ref>\n| populationrank = 42\n| populationdensity = 111/km&sup2\n| countrycapital = [[Paris]]\n| countrylargestcity = [[Paris]]\n| areatotal = 674,843 km²\n| arearank = 40\n| areawater =\n| areawaterpercent =\n| establishedin =\n| leadertitlename = [[President of France|President]]:\n:[[Nicolas Sarkozy]]\n[[List of Prime Ministers of France|Prime Minister]]:\n:[[François Fillon]]\n| currency = [[Euro]] (€)<ref>Whole of the French Republic except the overseas territories in the Pacific Ocean</ref>, [[CFP Franc]]<ref name=\"French over\">French overseas territories in the Pacific Ocean only</ref>\n| utcoffset = in [[European Summer Time|summer]]\n:[[Central European Time|CET]] ([[Coordinated Universal Time|UTC]]+1)<ref name=\"met euro\" />\n:[[Central European Summer Time|CEST]] ([[Coordinated Universal Time|UTC]]+2)<ref name=\"met euro\" />\n| dialingcode = 33\n| internettld = [[.fr]]\n}}";
+			showTokens(text);
+			text = "|something|else| is| there| to | see";
+			showTokens(text);
+			text = "-test 3.14 and U.S.A and more, .test more";
+			showTokens(text);			
 			text = "{{IPA|[l&#594;s &#712;&aelig;nd&#658;&#601;&#716;l&#618;s]}} &lt; or &#60; &copy; &#169;&#1575; or &#x627;  ";
 			showTokens(text);
 			text = "| Unseen\n|-\n| \"Junior\"\n|\n| Goa'uld larva\n|} something";

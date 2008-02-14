@@ -2,6 +2,7 @@ package org.wikimedia.lsearch.spell;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -69,6 +70,7 @@ public class CleanIndexImporter implements DumpWriter {
 			int references = links.getNumInLinks(key);
 			boolean isRedirect = links.isRedirect(key);
 			int redirectTargetNamespace = links.getRedirectTargetNamespace(key);
+			Date date = new Date(revision.Timestamp.getTimeInMillis());
 
 			// make list of redirects
 			ArrayList<Redirect> redirects = new ArrayList<Redirect>();
@@ -79,7 +81,7 @@ public class CleanIndexImporter implements DumpWriter {
 			}
 			// make article
 			Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,
-					references,redirectTargetNamespace,redirects,new ArrayList<RelatedTitle>(),anchors);
+					references,redirectTargetNamespace,redirects,new ArrayList<RelatedTitle>(),anchors,date);
 
 			writer.addArticle(article);
 		}

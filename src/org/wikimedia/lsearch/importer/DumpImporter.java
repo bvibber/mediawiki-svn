@@ -2,6 +2,8 @@ package org.wikimedia.lsearch.importer;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -45,13 +47,14 @@ public class DumpImporter implements DumpWriter {
 	RelatedStorage related;
 	boolean makeIndex, makeHighlight, makeTitle;
 	GlobalConfiguration global;
+	IndexId iid;
 
 	public DumpImporter(String dbname, int limit, Boolean optimize, Integer mergeFactor, 
 			Integer maxBufDocs, boolean newIndex, Links links, String langCode,
 			boolean makeIndex, boolean makeHighlight, boolean makeTitle, boolean newTitlesIndex){
 		Configuration.open(); // make sure configuration is loaded
 		global = GlobalConfiguration.getInstance();
-		IndexId iid = IndexId.get(dbname);
+		iid = IndexId.get(dbname);
 		if(makeIndex)
 			indexWriter = new SimpleIndexWriter(iid, optimize, mergeFactor, maxBufDocs, newIndex, iid);
 		if(makeHighlight)
@@ -84,6 +87,7 @@ public class DumpImporter implements DumpWriter {
 		ArrayList<Redirect> redirects = new ArrayList<Redirect>();
 		ArrayList<String> anchors = new ArrayList<String>();
 		ArrayList<RelatedTitle> rel = new ArrayList<RelatedTitle>();
+		Date date = new Date(revision.Timestamp.getTimeInMillis());
 		
 		references = links.getNumInLinks(key);
 		isRedirect = links.isRedirect(key);
@@ -101,7 +105,7 @@ public class DumpImporter implements DumpWriter {
 			rel = related.getRelated(key);
 		// make article
 		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,
-				references,redirectTargetNamespace,redirects,rel,anchors);
+				references,redirectTargetNamespace,redirects,rel,anchors,date);
 		// index
 		if(indexWriter != null)
 			indexWriter.addArticle(article);
@@ -122,7 +126,11 @@ public class DumpImporter implements DumpWriter {
 		// nop
 	}
 	public void writeSiteinfo(Siteinfo info) throws IOException {
-		// nop
+		Iterator it = info.Namespaces.orderedEntries();
+		while(it.hasNext()){
+			Entry<Integer,String> pair = (Entry<Integer,String>)it.next();
+			Localization.addCustomMapping(pair.getValue(),pair.getKey(),iid.getDBname());
+		}
 	}	
 	public void writeStartWiki() throws IOException {
 		// nop		
