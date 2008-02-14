@@ -8,7 +8,7 @@
 $messages = array();
 
 /** English
- * @author ravis Derouin
+ * @author Travis Derouin
  */
 $messages['en'] = array(
 	'importfreeimages'                => 'Import Free Images',

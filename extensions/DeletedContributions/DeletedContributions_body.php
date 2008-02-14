@@ -1,6 +1,6 @@
 <?php
 /**
- * Extension based on SpecialContributions for arhived revisions
+ * Extension based on SpecialContributions for archived revisions
  */
 
 class DeletedContribsPager extends IndexPager {
