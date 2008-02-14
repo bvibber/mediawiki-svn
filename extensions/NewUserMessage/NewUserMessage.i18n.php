@@ -7,7 +7,7 @@
 
 $messages = array();
 
-/* English
+/** English
  * @author [http://www.organicdesign.co.nz/User:Nad Nad]
  */
 $messages['en'] = array(
@@ -19,6 +19,13 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'newusermessage-desc' => 'يضيف [[MediaWiki:NewUserMessage|رسالة]] إلى صفحات نقاش المستخدمين الجدد',
+);
+
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'newusermessage-desc' => 'Fügt eine [[MediaWiki:NewUserMessage|Nachricht]] neu angelegten Benutzerdiskussionsseiten hinzu',
 );
 
 /** Lower Sorbian (Dolnoserbski)

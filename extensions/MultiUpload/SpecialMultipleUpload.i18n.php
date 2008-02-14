@@ -58,13 +58,14 @@ $messages['bg'] = array(
  */
 $messages['de'] = array(
 	'multipleupload'                   => 'Dateien hochladen',
+	'multipleupload-desc'              => 'Erlaubt das [[Special:MultipleUpload|Hochladen mehrerer Dateien]] in einer Aktion',
 	'multipleupload-ignoreallwarnings' => "Ignoriere '''alle Warnungen''' und speichere die Dateien.",
 	'multipleupload-saveallfiles'      => "Alle Dateien speichern",
 	'multipleupload-addresswarnings'   => "Bitte jede Warnung anzeigen vor dem erneuten Hochladen von Dateien.",
 	'multipleupload-page'              => "{{ns:project}}:Löschrichtlinien",
 	'multipleupload-text'              => "Gleichzeitiges Hochladen mehrerer Dateien.
 
-Währe 'Browse' und wähle jede Datei aus, die du hochladen möchtest. Dz kannst gleichzeitig zwischen 1 und $1 Dateien hochladen.
+Wähle 'Browse' und wähle jede Datei aus, die du hochladen möchtest. Du kannst gleichzeitig zwischen 1 und $1 Dateien hochladen.
 
 Du kannst wahlweise auch einen '''Ziel-Dateinamen''' vorgeben und eine '''Beschreibung''' für deine Dateien.
 

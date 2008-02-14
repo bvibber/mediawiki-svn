@@ -61,6 +61,7 @@ $messages['ca'] = array(
 */
 $messages['de'] = array(
 	'languageselector'         => 'Sprache',
+	'languageselector-desc'    => 'Sprachenauswahl auf jeder Seiten, auch für Besucher',
 	'languageselector-setlang' => 'setzen',
 );
 

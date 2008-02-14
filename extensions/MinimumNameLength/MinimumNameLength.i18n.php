@@ -1,13 +1,13 @@
 <?php
 /**
- * Internationalisation file for extension ImportFreeImages.
+ * Internationalisation file for extension MinumumNameLength
  *
  * @addtogroup Extensions
  */
 
 $messages = array();
 
-/* English
+/** English
  * @author Rob Church
  */
 $messages['en'] = array(
@@ -35,8 +35,11 @@ $messages['ca'] = array(
 	'minnamelength-error' => "El vostre nom d'usuari és massa curt. La longitud mínima és de $1.",
 );
 
-/* German */
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
+	'minnamelength-desc'  => 'Erzwinge eine Mindestlänge des Benutzernamens',
 	'minnamelength-error' => 'Der Benutzername ist zu kurz. Die Mindestlänge beträgt $1 Zeichen.',
 );
 

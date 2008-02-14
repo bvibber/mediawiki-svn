@@ -19,6 +19,13 @@ $messages['ar'] = array(
 	'i18ntags-desc' => 'يسمح بالوصول إلى وظيفة الترجمة لصيغ الأرقام، قواعد اللغة والجمع في أي لغة متوفرة',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+*/
+$messages['de'] = array(
+	'i18ntags-desc' => 'Zugriff auf die i18n-Funktionen zur Zahlenformatierung, Plural- und Grammatikbildung in jeder verfügbaren Sprache',
+);
+
 $messages['fr'] = array(
 	'i18ntags-desc' => 'Permet l’accès des fonctions i18n pour le format des nombres, la grammaire et le pluriel dans chaque langue disponible.',
 );
