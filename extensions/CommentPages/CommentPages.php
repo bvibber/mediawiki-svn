@@ -11,7 +11,7 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => '[http://en.wikinews.org/wiki/User:Zachary Zachary Hauri]',
 	'description'    => 'Comment pages for the main namespace',
 	'descriptionmsg' => 'commentpages-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/User:Zachary/CommentPages',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:CommentPages',
 );
 
 $wgExtensionMessagesFiles['CommentPages'] = dirname(__FILE__) . '/CommentPages.i18n.php';
@@ -29,7 +29,7 @@ function wfCommentPagesSkinTemplateTabs ( &$skin, &$content_actions )
 	$page = '';
 	$query = '';
 
-	if ($namespace == 0 || $namespace == 1) {
+	if ($namespace == NS_MAIN || $namespace == NS_TALK) {
 		$comments = Title::newFromText($wgContLang->getNSText($wgCommentPagesNS).':'.$pagename);
 		$newcontent_actions = array();
 
