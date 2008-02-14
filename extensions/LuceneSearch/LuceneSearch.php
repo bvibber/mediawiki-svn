@@ -51,11 +51,12 @@ if (!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['specialpage'][] = array(
-	'name' => 'LuceneSearch',
-	//'version' => '2.0',
-	'author' => array( 'Brion Vibber', 'Robert Stojnić' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:LuceneSearch',
-	'description' => 'Interface for the Apache Lucene search engine',
+	'name'           => 'LuceneSearch',
+	'version'        => '2.0',
+	'author'         => array( 'Brion Vibber', 'Robert Stojnić' ),
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:LuceneSearch',
+	'description'    => 'Interface for the Apache Lucene search engine',
+	'descriptionmsg' => 'lucene-desc',
 );
 
 /** Lucene-search (mwsearch) version. from 2.0 we support search prefixes */

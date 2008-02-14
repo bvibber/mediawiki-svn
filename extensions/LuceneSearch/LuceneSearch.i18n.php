@@ -8,6 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
+	'lucene-desc'           => 'Interface for the Apache Lucene search engine',
 	'searchnumber'          => "<strong>Results $1-$2 of $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prev</span>",
 	'searchnext'            => "<span style='font-size: small'>Next</span> &#x00BB;",
@@ -239,7 +240,11 @@ Hledat $3 $9 $10',
 	'searchincategory'      => 'v kategorii',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
+	'lucene-desc'           => 'Schnittstelle für die Apache-Suchmaschine „Lucene“',
 	'searchnumber'		=> "<strong>Ergebnisse $1–$2 von $3</strong>",
 	'searchprev'            => "&larr; <span style='font-size: smaller'>Vorherige</span>",
 	'searchnext'            => "<span style='font-size: smaller'>Nächste</span> &rarr;",
