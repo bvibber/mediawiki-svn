@@ -11,5 +11,5 @@ $messages = array();
  */
 $messages['en'] = array(
 	'forcepreview'      => 'Save page (use preview first)',
-	'forcepreview-desc' => 'Force preview for unprivelaged users',
+	'forcepreview-desc' => 'Force preview for unprivileged users',
 );
