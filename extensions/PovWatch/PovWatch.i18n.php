@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'povwatch' => 'PovWatch',
+	'povwatch_desc' => 'Extension for [[Special:PovWatch|pushing pages on to the watchlists]] of other users',
 	'povwatch_no_session' => 'Error: Could not submit form due to a loss of session data.',
 	'povwatch_not_allowed_push' => 'You are not a PovWatch admin, you can\'t push pages to watchlists.',
 	'povwatch_already_subscribed' => 'You are already subscribed to PovWatch',
@@ -78,6 +79,41 @@ $messages['bg'] = array(
 	'povwatch_unknown_subpage' => 'Непозната подстраница.',
 	'povwatch_title'           => 'Заглавие:',
 	'povwatch_no_log'          => 'Дневникът не съдържа записи.',
+);
+
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'povwatch'                         => 'PovWatch',
+	'povwatch_desc'                    => 'Erweiterung, um [[Special:PovWatch|Seiten auf die Beobachtungsliste]] anderer Benutzer hinzuzufügen',
+	'povwatch_no_session'              => 'Fehler: Formulardaten können nicht verarbeitet werden, da die Sizungsdaten verloren gegangen sind.',
+	'povwatch_not_allowed_push'        => 'Du bist kein PovWatch-Administrator und kannst fremden Beobachtungslisten keine Seiten hinzufügen.',
+	'povwatch_already_subscribed'      => 'Du bist bereits für PovWatch registriert',
+	'povwatch_subscribed'              => 'Du bist nun für PovWatch registriert',
+	'povwatch_not_subscribed'          => 'Du bist nicht für PovWatch registriert; eine Abmeldung ist daher nicht möglich.',
+	'povwatch_unsubscribed'            => 'Du bist nun von PovWatch abgemeldet',
+	'povwatch_invalid_title'           => 'Der angegebene Seitenname ist ungültig',
+	'povwatch_pushed'                  => '[[$1]] wurde erfolgreich der Beobachtungsliste von $2 hinzugefügt.',
+	'povwatch_intro'                   => 'PovWatch ist ein Service, um umstrittene Seiten diskret den Beobachtungslisten von registrierten Administratoren hinzuzufügen.
+
+	Ein Logbuch der über mittels PovWatch hinzugefügten Seiten ist verfügbar unter [[{{ns:special}}:PovWatch/log]].',
+	'povwatch_subscriber_list'         => 'Eine [[Special:PovWatch/subscribers|Liste der registrierten Benutzer]] ist verfügbar.',
+	'povwatch_subscriber_list_intro'   => '<strong>Liste der registrierten Benutzer</strong>',
+	'povwatch_not_allowed_subscribers' => 'Du hast keine Berechtigung, die PovWatch-Benutzerliste einzusehen.',
+	'povwatch_unknown_subpage'         => 'Unbekannte Unterseite',
+	'povwatch_push'                    => 'Hinzufügen',
+	'povwatch_push_intro'              => 'Benutze das Formular, um Seiten den Beobachtungslisten der registrierten Benutzer hinzuzufügen.
+	Bitte beachte: auch nicht vorhandene Seiten können hinzugefügt werde und es gibt keinen Weg, dies rückgängig zu machen.',
+	'povwatch_title'                   => 'Seitenname:',
+	'povwatch_comment'                 => 'Logbuch-Kommentar:',
+	'povwatch_no_log'                  => 'Das Logbuch enthält keine Einträge.',
+	'povwatch_no_subscribers'          => 'Es gibt keine registrierten Benutzer.',
+	'povwatch_unsubscribe_intro'       => 'Du bist für PovWatch registriert. Klicke auf die Schaltfläche, um dich abzumelden.',
+	'povwatch_unsubscribe'             => 'Abmelden',
+	'povwatch_subscribe_intro'         => 'Du bist nicht für PovWatch registriert. Klicke auf die Schaltfläche, um dich anzumelden.',
+	'povwatch_subscribe'               => 'Registrieren',
+	'povwatch_added'                   => 'hinzugefügt',
 );
 
 /** Greek (Ελληνικά)
