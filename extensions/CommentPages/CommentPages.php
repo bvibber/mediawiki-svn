@@ -52,9 +52,9 @@ function wfCommentPagesSkinTemplateTabs ( &$skin, &$content_actions )
 			// Insert the comment tab before the edit link
 			if ($key == 'edit') {
 				$newcontent_actions['comments'] = array(
-				'class' => $class,
-				'text'  => wfMsg('nstab-comments'),
-				'href'  => $comments->getFullURL($query),
+					'class' => $class,
+					'text'  => wfMsg('nstab-comments'),
+					'href'  => $comments->getFullURL($query),
 				);
 			}
 			$newcontent_actions[$key] = $value;
@@ -94,9 +94,11 @@ function wfCommentPagesSkinTemplateTabs ( &$skin, &$content_actions )
 		);
 
 		foreach ($content_actions as $key => $value) {
-			if ($key != 'talk') {
+			if ($key != 'talk')
 				$newcontent_actions[$key] = $value;
-			}
+
+			if ($key == 'nstab-comments')
+				$newcontent_actions['nstab-comments']['text'] = wfMsg( 'nstab-comments' );
 		}
 
 		$content_actions = $newcontent_actions;
