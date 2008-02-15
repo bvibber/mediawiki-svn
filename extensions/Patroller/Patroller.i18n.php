@@ -15,6 +15,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'patrol' => 'Patrol edits',
+	'patrol-desc' => 'Enhanced patrolling interface with workload sharing',
 	'patrol-endorse' => 'Endorse',
 	'patrol-revert' => 'Revert',
 	'patrol-revert-reason' => 'Reason:',
@@ -142,6 +143,7 @@ $messages['es'] = array(
 /* French */
 $messages['fr'] = array(
 	'patrol' => 'Vérification des modifications',
+	'patrol-desc' => 'Interface mettant en valeur le patrouillage collaboratif.',
 	'patrol-endorse' => 'Accepter',
 	'patrol-revert' => 'Annuler',
 	'patrol-revert-reason' => 'Motif :',

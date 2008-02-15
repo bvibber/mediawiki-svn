@@ -14,6 +14,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '1.0rc2',
 	'author' => 'Rob Church',
 	'description' => 'Enhanced patrolling interface with workload sharing',
+	'descriptionmsg' => 'patrol-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Patroller',
 );
 
