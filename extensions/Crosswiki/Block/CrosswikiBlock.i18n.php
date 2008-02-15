@@ -39,6 +39,41 @@ Return to:
 * [[$4]]",
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	# Special page
+	'crosswikiblock-desc'       => 'Erlaubt die Sperre von Benutzern in anderen Wikis über eine [[Special:Crosswikiblock|Spezialseite]]',
+	'crosswikiblock'            => 'Sperre Benutzer in einem anderen Wiki',
+	'crosswikiblock-header'     => 'Diese Spezialseite erlaubt die Sperre eines Benutzers in einem anderen Wiki.
+	Bitte prüfe, ob du die Befugnis hast, in diesem anderen Wiki zu sperren und ob deine Aktion deren Richtlinien entspricht.',
+	'crosswikiblock-target'     => 'IP-Adresse oder Benutzername und Zielwiki:',
+	'crosswikiblock-expiry'     => 'Sperrdauer:',
+	'crosswikiblock-reason'     => 'Begründung:',
+	'crosswikiblock-submit'     => 'IP-Adresse/Benutzer sperren',
+	'crosswikiblock-anononly'   => 'Sperre nur anonyme Benutzer (angemeldete Benutzer mit dieser IP-Adresse werden nicht gesperrt). In vielen Fällen empfehlenswert.',
+	'crosswikiblock-nocreate'   => 'Erstellung von Benutzerkonten verhindern',
+	'crosswikiblock-autoblock'  => 'Sperre die aktuell von diesem Benutzer genutzte IP-Adresse sowie automatisch alle folgenden, von denen aus er Bearbeitungen oder das Anlegen von Benutzeraccounts versucht.',
+	'crosswikiblock-noemail'    => 'E-Mail-Versand sperren',
+
+	# Errors and success message
+	'crosswikiblock-nousername'     => 'Es wurde kein Benutzername eingegeben',
+	'crosswikiblock-local'          => 'Lokale Sperren werden durch dieses Interface nicht unterstützt. Benutze [[{{#special:Blockip}}]]',
+	'crosswikiblock-dbnotfound'     => 'Datenbank $1 ist nicht vorhanden',
+	'crosswikiblock-noname'         => '„$1“ ist kein gültiger Benutzername.',
+	'crosswikiblock-nouser'         => 'Benutzer „$3“ nicht gefunden.',
+	'crosswikiblock-noexpiry'       => 'Ungültige Sperrdauer: $1.',
+	'crosswikiblock-noreason'       => 'Begründung fehlt.',
+	'crosswikiblock-notoken'        => 'Ungültiges Bearbeitungs-Token.',
+	'crosswikiblock-alreadyblocked' => 'Benutzer „$3“ ist bereits gesperrt.',
+	'crosswikiblock-success'        => "Benutzer '''„$3“''' erfolgreich gesperrt.
+
+Zurück zu:
+* [[Special:CrosswikiBlock|Sperrformular]]
+* [[$4]]",
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  */
