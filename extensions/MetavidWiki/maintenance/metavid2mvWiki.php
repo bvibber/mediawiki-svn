@@ -189,13 +189,14 @@ ie: senate_proceeding_04-11-07
 options:
 		--noimage will skip image downloading 
 		--skiptext skips text sync
+		--force will force updates (normally if edited by a human its skiped)
 actions:
-		stream_name  will proccess that stream name		
+		\$stream_name  will proccess that stream name		
 		'all_in_sync' will insert all streams that are tagged in_sync
 		'all_with_files' will insert all streams with files (and categorize acording to sync status)
 		[stream_name] will insert all records for the given stream name
 		'people' will insert all the people articles 	
-		'update_templates' will update all the templates 
+		'update_templates' will update templates & some semantic properties  
 		'file_check' checks inserted streams file urls/pointers
 
 EOT;
@@ -217,9 +218,8 @@ switch ($args[0]) {
 		do_people_insert();
 	break;
 	case 'update_templates' :
-		upTemplate_person(true);
-		upTempalte_Ht_en(true);
-		upTemplate_bill(true);
+		$force = (isset($options['force']))?true:false;
+		upTemplates($force);
 	break;
 	//by default treat the argument as a stream name: 
 	case 'mvd_error_check':

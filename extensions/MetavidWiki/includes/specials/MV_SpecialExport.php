@@ -53,7 +53,15 @@ class MV_SpecialExport {
 				$this->stream_name = $wgRequest->getVal('stream_name');	
 				$this->req_time = $wgRequest->getVal('t');		
 				if(!$this->req_time)$this->req_time = $wgRequest->getVal('time_range');
-				$this->get_stream_cmml();
+				
+				switch($this->feed_format ){
+					case 'cmml':
+						$this->get_stream_cmml();
+					break;
+					case 'roe':
+						$this->get_roe_desc();
+					break;
+				}				
 			break;
 			case 'category':
 				$this->cat=$wgRequest->getVal('cat'); 	
@@ -94,7 +102,44 @@ class MV_SpecialExport {
  		$o.='</playlist>';
  		print $o;
 	}
-	function get_stream_cmml(){		
+	//start high level: 
+	function get_roe_desc(){
+		//returns a high level description with cmml links (or inline-populated upon request)
+		 $streamTitle = new MV_Title($this->stream_name.'/'.$this->req_time);
+		if(!$streamTitle->doesStreamExist()){
+			//@@todo we should output the error in XML friendly manner
+			die('stream does not exist');
+		}
+		//get the stream stream req 
+		header('Content-Type: text/xml');
+		//print the header:
+		print '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
+		?>
+<ROE>
+	<head>
+		<link rel="alternate" type="text/html" href="<?=htmlentities($wgTitle->getFullURL() )?>" />
+		<img id="stream_thumb" src="<?=htmlentities($streamTitle->getStreamImageURL())?>"/>
+	</head>
+		<?
+		
+		//get all avaliable files
+		$file_list =$streamTitle->mvStream->getFileList(); 		
+		?>
+		<track id="v" provides="video">
+			<switch distinction="quality">
+			<? foreach($file_list as $sf){ ?>
+				<video id="<?=htmlentities($sf->getNameKey())?>"
+					  src="<?=htmlentities($sf->getFullURL())?>"
+					  content-type=<?=htmlentities($sf->getContentType())?>
+			<? } ?>
+			</switch>
+		</track>
+		<?
+		//get all avaliable stream text layers ( inline request CMML (if apropo ))		 
+	}
+	
+	/*get stream CMML (prefix all tags if nessesary) */
+	function get_stream_cmml($prefix=''){		
 		$dbr =& wfGetDB(DB_SLAVE);		
 		//get the stream title	
 		$streamTitle = new MV_Title($this->stream_name.'/'.$this->req_time);		
@@ -106,31 +151,32 @@ class MV_SpecialExport {
 		//get the stream stream req 
 		header('Content-Type: text/xml');
 		//print the header:
-		print '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
-	$tracks=array();
-	if(count($dbr->numRows($mvd_res))!=0){ 
-		global $wgOut;
-			//use catapiller for logo
-		$MV_Overlay = new MV_Overlay();	
-		$wgOut->clearHTML();	
-		while($mvd = $dbr->fetchObject($mvd_res)){	
-			$MV_Overlay->get_article_html($mvd);	
-			if(!isset($tracks[$mvd->mvd_type]))$tracks[$mvd->mvd_type]='';			
-			$tracks[$mvd->mvd_type].='						
-			<clip id="mvd_'.$mvd->id.'" start="ntp:'.seconds2ntp($mvd->start_time).'" end="ntp:'.seconds2ntp($mvd->end_time).'">
-			<img src="'.htmlentities($streamTitle->getStreamImageURL(null, seconds2ntp($mvd->start_time))).'"/>
-			<body><![CDATA[
-					'.$wgOut->getHTML().'
-				]]></body> 
-			</clip>';			 					
-			//clear wgOutput
-			$wgOut->clearHTML();
-		}
-	}		
-	//based on: http://trac.annodex.net/wiki/CmmlChanges
+		print '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';		
+		$tracks=array();
+		if(count($dbr->numRows($mvd_res))!=0){ 
+			global $wgOut;
+				//use catapiller for logo
+			$MV_Overlay = new MV_Overlay();	
+			$wgOut->clearHTML();	
+			while($mvd = $dbr->fetchObject($mvd_res)){	
+				$MV_Overlay->get_article_html($mvd);	
+				if(!isset($tracks[$mvd->mvd_type]))$tracks[$mvd->mvd_type]='';			
+				$tracks[$mvd->mvd_type].='						
+				<clip id="mvd_'.$mvd->id.'" start="ntp:'.seconds2ntp($mvd->start_time).'" end="ntp:'.seconds2ntp($mvd->end_time).'">
+				<img src="'.htmlentities($streamTitle->getStreamImageURL(null, seconds2ntp($mvd->start_time))).'"/>
+				<body><![CDATA[
+						'.$wgOut->getHTML().'
+					]]></body> 
+				</clip>';			 					
+				//clear wgOutput
+				$wgOut->clearHTML();
+			}
+		}		
+ 	    //based on: http://trac.annodex.net/wiki/CmmlChanges
 ?>
-<!DOCTYPE omdl SYSTEM "omdl.dtd">
-<omdl>
+<!DOCTYPE roe SYSTEM "http://svn.annodex.net/standards/roe/roe_1_0.xsd">
+<ROE>
+	<body>
 	<stream id="<?=$this->stream_name?>" basetime="0">
 			<import id="videosrc" lang="en" title="<?=$streamTitle->getStreamNameText()?>" 
 				 contenttype="video/ogg" 
@@ -144,9 +190,7 @@ class MV_SpecialExport {
 ?>
 <cmml lang="en" id="simple" role="<?=$role?>">		
 	<head>
-		<title><?=wfMsg($role)?></title>
-		<img id="stream_img" src="<?=htmlentities($streamTitle->getStreamImageURL())?>"/>
-		<link rel="alternate" type="text/html" id="stream_link" href="<?=htmlentities($wgTitle->getFullURL() )?>"/>		
+		<title><?=wfMsg($role)?></title>					
 	</head>
 	<?=$body_string?>
 	</cmml>

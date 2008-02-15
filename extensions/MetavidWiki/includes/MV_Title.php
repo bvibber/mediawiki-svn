@@ -217,8 +217,8 @@
 			//make sure we have streamFiles (used to generate the link)				
 			$mvStreamFile = new MV_StreamFile($this->mvStream);
 			//if link empty return false:			
-			if($mvStreamFile->get_link()=='')return false;			
-			return $mvStreamFile->get_link() . $anx_req;
+			if($mvStreamFile->getFullURL()=='')return false;			
+			return $mvStreamFile->getFullURL() . $anx_req;
 		}else{
 			//@@todo throw ERROR
 			return false;

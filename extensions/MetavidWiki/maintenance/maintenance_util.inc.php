@@ -108,7 +108,7 @@ function do_update_wiki_page($wgTitle, $wikiText, $ns = null, $forceUpdate=false
 		//check if text is identical: 		
 		if (trim($cur_text) == trim($wikiText)) {
 			print "text " .$wgTitle->getNsText() .':'.$wgTitle->getText() ." is identical (no update)\n";					
-			if(!$forceUpdate)return ;
+			return ;
 		}
 	}
 	//got here do the edit: 	

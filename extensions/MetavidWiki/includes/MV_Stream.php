@@ -115,7 +115,7 @@ class MV_Stream {
 		global $mvStreamFilesTable;
 		$dbr = & wfGetDB(DB_READ);
 		$result = $dbr->select($dbr->tableName($mvStreamFilesTable), '*', array (
-			'stream_id' => $this->id
+			'stream_id' => $this->getStreamId()
 		));
 		//print_r($result);		
 		$file_list = array();

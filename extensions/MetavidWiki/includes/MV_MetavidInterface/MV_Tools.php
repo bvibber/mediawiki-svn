@@ -11,7 +11,14 @@
  global $mvgIP;
  require_once($mvgIP . '/includes/MV_MetavidInterface/MV_Component.php');
  class MV_Tools extends MV_Component{
- 	var $mv_valid_tools = array('mang_layers','search','navigate','export','embed','overlay');
+ 	var $mv_valid_tools = array(
+		'mang_layers',
+		//'search',
+		'navigate',
+		'export',
+		//'embed',
+		//'overlay'
+	);
  	function getHTML(){
  		global $wgOut, $wgRequest;
  		//@@todo look at mv_interface context to get what to display in tool box:

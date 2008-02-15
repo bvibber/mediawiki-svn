@@ -52,16 +52,22 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		}
 	}
 	function getStateReq(){
-		global $wgRequest;
+		global $wgRequest, $mvMVDTypeDefaultDisp;
 		$req='';
 		$this->procMVDReqSet();
+		$and='';
 		if(count($this->mvd_tracks)!=0){
-			$req.='&tracks='.$this->getMVDReqString();
+			//don't include request if identical to default: '
+			if($this->mvd_tracks!=$mvMVDTypeDefaultDisp){
+				$req.='tracks='.$this->getMVDReqString();
+				$and='&';
+			}
 		}
+		//save tool_disp: 
 		if($wgRequest->getVal('tool_disp')!=''){
-			$req.='&tool_disp='.$wgRequest->getVal('tool_disp');
+			$req.=$and.'tool_disp='.$wgRequest->getVal('tool_disp');
 		}
-		return $req; 
+		return $req;
 	}
 	function getMVDReqString(){
 		return implode(',',$this->mvd_tracks);

@@ -72,8 +72,7 @@
 						//@@todo clean up link
 						'<span class="gallerytext" style="float:left">'.
 						$sk->makeKnownLinkObj( $nt, $mvTitle->getStreamNameText().' '. $mvTitle->getTimeDesc() ) .
-						'</span>'.
-						
+						'</span>'.						
 					'</div>';
 					 
 					$nb = '';

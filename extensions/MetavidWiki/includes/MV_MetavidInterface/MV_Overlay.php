@@ -195,6 +195,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	/*could probably speed things up by not using the revision class and just parse format wikitext in the mvd_page*/
 	function get_article_html(&$mvd_page){
 		global $wgOut;		
+		
 		$mvdTile = Title::makeTitle(MV_NS_MVD, $mvd_page->wiki_title );				
 		//print "js_log('titleDB: ".$tsTitle->getDBkey() ."');\n";
 		if($mvdTile->exists()){	
@@ -211,8 +212,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				return ;				
 			}						
 		}		
-		$mvdTile = new MV_Title( $mvd_page->wiki_title );			
-		
+		$mvdTile = new MV_Title( $mvd_page->wiki_title );					
 		$this->parse_format_text($wikiText, $mvdTile);				
 					
 	}

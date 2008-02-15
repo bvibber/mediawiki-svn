@@ -13,19 +13,29 @@
  /*
   * Templates: 
   */
- function upTempalte_Ht_en($force = false) {
-	$wgTemplateTitle = Title :: makeTitle(NS_TEMPLATE, 'Ht_en');
-	if (!$wgTemplateTitle->exists() || $force) {
-		do_update_wiki_page($wgTemplateTitle, '<noinclude>
+ function upTemplates($force=false){
+/***************************************************
+ * Transcripts: 
+ * updates transcript templates
+ ***************************************************/
+ 	$wgTemplateTitle = Title :: makeTitle(NS_TEMPLATE, 'Ht_en');
+	do_update_wiki_page($wgTemplateTitle, '<noinclude>
 		This is the default Template for the display of transcript text. 
 		</noinclude><includeonly>{{ #if:  {{{PersonName|}}} | {{ #ifexist: Image:{{{PersonName}}}.jpg | [[Image:{{{PersonName}}}.jpg|44px|left]]|[[Image:Missing person.jpg|44px|left]]}} |}}{{ #if:{{{PersonName|}}}|[[{{{PersonName}}}]]: |}}{{{BodyText}}}
-		</includeonly>');
+		</includeonly>',null, $force);
+/****************************************************
+ * Archive.org file type semantics
+ ****************************************************/  
+	$archive_org_ftypes = array('64Kb_MPEG4','256Kb_MPEG4','MPEG1','MPEG2','flash_flv');
+	foreach($archive_org_ftypes as $ftype){
+		$pTitle= Title::makeTitle(SMW_NS_PROPERTY, 'Ao_file_'.$ftype );
+		do_update_wiki_page($pTitle, '[[has type::URL]]',null, $force);
 	}
-}
-function upTemplate_bill($force=false){
-	$wgTemplateTitle = Title :: makeTitle(NS_TEMPLATE, 'Bill');
-	if (!$wgTemplateTitle->exists() || $force) {
-		do_update_wiki_page($wgTemplateTitle, '<noinclude>Bill Person Template simplifies the structure of articles about Bills.
+/*****************************************************
+ * Bill Templates
+ ****************************************************/
+	$wgTemplateTitle = Title :: makeTitle(NS_TEMPLATE, 'Bill');	
+	do_update_wiki_page($wgTemplateTitle, '<noinclude>Bill Person Template simplifies the structure of articles about Bills.
 <pre>{{Bill|
 GovTrackID=The GovTrack Bill ID (used to key-into GovTracks Bill info)|
 ThomasID=The bill\'s Tomas id (used for Thomas linkback)|
@@ -51,44 +61,42 @@ Cosponsor #= Where # is 1-70 for listing all cosponsors|
 {{ #if: {{{GovTrackID|}}}|* GovTrack Bill Overview:[http://www.govtrack.us/congress/bill.xpd?bill={{{GovTrackID}}}] [[GovTrack Bill ID:={{{GovTrackID}}}| ]] |}} 
 [[Category:Bill]]
 </includeonly>
-');
-		//update some semnatic property types:
-		$wgPropTitle = Title::newFromText('Data_Source_URL', SMW_NS_PROPERTY);
-		do_update_wiki_page($wgPropTitle, '[[has type::URL]]');
-		
-		$wgPropTitle = Title::newFromText('Date_Bill_Introduced', SMW_NS_PROPERTY);
-		do_update_wiki_page($wgPropTitle, '[[has type::Date]]');
+',null, $force);
+	//update some semnatic property types:
+	$wgPropTitle = Title::newFromText('Data_Source_URL', SMW_NS_PROPERTY);
+	do_update_wiki_page($wgPropTitle, '[[has type::URL]]',null, $force);
+	
+	$wgPropTitle = Title::newFromText('Date_Bill_Introduced', SMW_NS_PROPERTY);
+	do_update_wiki_page($wgPropTitle, '[[has type::Date]]',null, $force);
 
-	}
-}
-function upTemplate_person($force = false) {
+/***************************************
+ *  Update people templates
+ ***************************************/ 
 	global $valid_attributes;
 	$wgTemplateTitle = Title :: makeTitle(NS_TEMPLATE, 'Congress Person');
-	if (!$wgTemplateTitle->exists() || $force) {
-		$wgTemplateArticle = new Article($wgTemplateTitle);
-		$template_body = '<noinclude>Congress Person template simplifies 
-				the structure of articles about Congress People.
-				<pre>{{Congress Person|' . "\n";
-		foreach ($valid_attributes as $dbKey => $attr) {
-			list ($name, $desc) = $attr;
-			$template_body .= $name . '=' . $desc . "|\n";
-		}
-		$template_body .= '}}</pre>' .
-		'The order of the fields is not relevant. The template name (Congress Person) should be given as the \'\'first\'\' thing on a page.
-				</noinclude>' .
-		'<includeonly>' . "\n";
-		//include the image if present: 
-		$template_body .= '{{ #if: { Image:{{PAGENAME}}.jpg}| [[Image:{{PAGENAME}}.jpg]] |}}' . "\n";
-		foreach ($valid_attributes as $dbKey => $attr) {
-			list ($name, $desc) = $attr;
-			//raw semantic data (@@todo make pretty template table thing)
-			$template_body .= "{{ #if: {{{" . $name . "}}}| [[$name:={{{" . $name . "}}}| ]] |}} \n";
-		}
-		$template_body .= '[[Category:Congress Person]] [[Category:Person]]
-				</includeonly>';
-		echo "updated 'Congress Person' template\n";
-		do_update_wiki_page($wgTemplateTitle, $template_body);
+	$wgTemplateArticle = new Article($wgTemplateTitle);
+	$template_body = '<noinclude>Congress Person template simplifies 
+			the structure of articles about Congress People.
+			<pre>{{Congress Person|' . "\n";
+	foreach ($valid_attributes as $dbKey => $attr) {
+		list ($name, $desc) = $attr;
+		$template_body .= $name . '=' . $desc . "|\n";
 	}
+	$template_body .= '}}</pre>' .
+	'The order of the fields is not relevant. The template name (Congress Person) should be given as the \'\'first\'\' thing on a page.
+			</noinclude>' .
+	'<includeonly>' . "\n";
+	//include the image if present: 
+	$template_body .= '{{ #if: { Image:{{PAGENAME}}.jpg}| [[Image:{{PAGENAME}}.jpg]] |}}' . "\n";
+	foreach ($valid_attributes as $dbKey => $attr) {
+		list ($name, $desc) = $attr;
+		//raw semantic data (@@todo make pretty template table thing)
+		$template_body .= "{{ #if: {{{" . $name . "}}}| [[$name:={{{" . $name . "}}}| ]] |}} \n";
+	}
+	$template_body .= '[[Category:Congress Person]] [[Category:Person]]
+			</includeonly>';
+	echo "updated 'Congress Person' template\n";
+	do_update_wiki_page($wgTemplateTitle, $template_body,null, $force);
 }
 function do_people_insert() {
 	global $valid_attributes, $states_ary;
@@ -226,7 +234,8 @@ function do_stream_file_check(& $old_stream) {
 		//print "set: " . print_r($set);
 		//remove old file pointers: 
 		$dbw = wfGetDB(DB_WRITE);
-		$sql = "DELETE FROM `mv_stream_files` WHERE `stream_id`=".$mvStream->id;
+		$sql = "DELETE FROM `mv_stream_files` WHERE `stream_id`=".$mvStream->id . " AND " .
+				"(`file_desc_msg`='mv_ogg_high_quality' OR `file_desc_msg`='mv_ogg_low_quality')";
 		$dbw->query($sql);
 		//update files:
 		foreach ($set as $qf) {
@@ -318,7 +327,8 @@ function do_stream_insert($mode, $stream_name = '') {
 			do_add_stream($mvTitle, $stream);
 			echo "stream " . $mvTitle->getStreamName() . " added \n";
 		} else {			
-				do_update_wiki_page($stream->name, mv_semantic_stream_desc($mvTitle, $stream), MV_NS_STREAM);
+				$force = (isset($options['force']))?true:false;
+				do_update_wiki_page($stream->name, mv_semantic_stream_desc($mvTitle, $stream), MV_NS_STREAM,$force);
 			//$updated = ' updated' echo "stream " . $mvTitle->getStreamName() . " already present $updated\n";
 		}
 		//add duration and start_time attr		
@@ -511,20 +521,56 @@ function mv_semantic_stream_desc(& $mvTitle, & $stream) {
 		']' . "\n\n";
 	}	
 	if ($stream->archive_org != '') {
-		$out .= '==More Media Sources=='."\n";	
-		$out .= '*[[Archive.org]] hosted original copy ' .
-		'[http://www.archive.org/details/mv_' . $stream->name . ']' . "\n";
-	}
-	//all streams have congretional cronical: 
-	$out .= '*[[CSPAN]]\'s Congressional Chronicle ' .
-	'[http://www.c-spanarchives.org/congress/?q=node/69850&date=' . $cspan_date . '&hors=' . $ch_type . ']';
-	$out .= "\n\n";
-	$out .= $pout;
-	$out .= '[[stream_duration:=' . ($end_time - $start_time) . '| ]]' . "\n";
-	if($stream->org_start_time){
-		$out .= '[[original_date:='.$stream->org_start_time.'| ]]';
-	}
-	
+		//grab file list from archive.org:
+		require_once('scrape_and_insert.inc.php');
+		$aos = new MV_ArchiveOrgScrape();
+		$file_list = $aos->getFileList($stream->name);
+		if($file_list){
+			$out .= '==More Media Sources=='."\n";	
+			$out .= '*[[Archive.org]] hosted original copy ' .
+			'[http://www.archive.org/details/mv_' . $stream->name . ']' . "\n";
+			
+			//all streams have congretional cronical: 
+			$out .= '*[[CSPAN]]\'s Congressional Chronicle ' .
+			'[http://www.c-spanarchives.org/congress/?q=node/69850&date=' . $cspan_date . '&hors=' . $ch_type . ']';		
+			//also output 'direct' semantic links to alternate file qualities:
+			$out.="\n===Full File Links===\n";	
+			$dbw = wfGetDB(DB_WRITE);		
+			foreach($file_list as $file){
+				$name = str_replace(' ', '_',$file[2]);
+				$url = $file[1];
+				$size = $file[3];
+				$out .= "*[[ao_file_{$name}:={$url}|$name]] {$size}\n";
+				
+				//add these files into the mv_files table:
+				//@@todo future we should tie the mv_files table to the semantic properties? 
+				//check if already present:
+				$quality_msg = 'ao_file_'.$name;
+				$path_type = 'url_file';
+				$dbr = wfGetDB(DB_SLAVE);
+				$res = $dbr->query("SELECT * FROM `mv_stream_files` 
+						WHERE `stream_id`={$mvTitle->getStreamId()} 
+						AND `file_desc_msg`='{$quality_msg}'");
+				if($dbr->numRows($res) == 0){
+					$sql = "INSERT INTO `mv_stream_files` (`stream_id`, `file_desc_msg`, `path_type`, `path`)" .
+					" VALUES ('{$mvTitle->getStreamId()}', '{$quality_msg}', '{$path_type}','{$url}' )";
+				}else{
+					$row = $dbr->fetchObject($res);
+					//update that msg key *just in case* 
+					$sql = "UPDATE  `mv_stream_files` SET `path_type`='{$path_type}', `path`='$url' WHERE `id`={$row->id}";
+				}					
+				$dbw->query($sql);								
+			}
+			$dbw->commit();
+			//more semantic properties 
+			$out .= "\n\n";
+			$out .= $pout;
+			$out .= '[[stream_duration:=' . ($end_time - $start_time) . '| ]]' . "\n";
+			if($stream->org_start_time){
+				$out .= '[[original_date:='.$stream->org_start_time.'| ]]';
+			}
+		}			
+	}		
 	//add stream category (based on sync status)
 	switch($stream->sync_status){
 		case 'not_checked':

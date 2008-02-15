@@ -54,12 +54,15 @@ class MV_StreamPage extends Article{
 	 * Overwrite view() from Article.php to add additional html to the output.
 	 */
 	public function view() {
-		global $mvgIP, $wgRequest, $wgUser, $wgOut, $wgTitle;	
-		$MV_MetavidInterface = new MV_MetavidInterface('stream', $this);			
-		//will require the mv_embed script for video playback: 
+		global $mvgIP, $wgRequest, $wgUser, $wgOut, $wgTitle;			
+		wfProfileIn( __METHOD__ );
+		
+		$MV_MetavidInterface = new MV_MetavidInterface('stream', $this);				
+		//will require the mv_embed script for video playback:		
 		mvfAddHTMLHeader('stream_interface');
 		
-		$MV_MetavidInterface->render_full();
+		$MV_MetavidInterface->render_full();	
+		wfProfileOut( __METHOD__ );	
 	}
 	/*
 	 * test if this is a base editable request

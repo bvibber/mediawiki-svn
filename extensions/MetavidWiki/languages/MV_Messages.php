@@ -18,6 +18,11 @@ $messages['en'] = array(
 	'mv_ogg_low_quality'      => 'Web Streamable ogg theora, hosted on metavid',
 	'mv_ogg_high_quality'     => 'High Quality ogg theora, hosted on metavid',
 	'mv_archive_org_link'     => 'Links into Archive.org mpeg2 originals',
+	'ao_file_64Kb_MPEG4'	  => 'Archive.org - mpeg4 64kbs',
+	'ao_file_256Kb_MPEG4'	  => 'Archive.org - mpeg4 256kbs',
+	'ao_file_MPEG1'	  		  => 'Archive.org - mpeg1',
+	'ao_file_MPEG2'	  		  => 'Archive.org - mpeg2 original',
+	'ao_file_flash_flv'  	  => 'Archive.org - flash video',
 
 	'mv_error_stream_missing' => '<span class="error">Error: There is no video file associated with this stream.</span><br />Please report this to the site administrator.',
 

@@ -26,6 +26,16 @@
  	var $path='';
  	var $_parent_stream=null;
  	
+ 	//@@todo this should not be hard coded... read the header of the file? or extend path_type 
+ 	var $msg_content_type_lookup = array(
+ 		'ao_file_256Kb_MPEG4'	=>'video/mp4',
+ 		'ao_file_64Kb_MPEG4'	=>'video/mp4',
+ 		'ao_file_flash_flv'		=>'video/x-flv',
+ 		'ao_file_MPEG1'			=>'video/mpeg',
+ 		'ao_file_MPEG2'			=>'video/mpeg-2',
+ 		'mv_ogg_high_quality'	=>'video/ogg',
+ 		'mv_ogg_low_quality'	=>'video/ogg'
+ 	);
  	function __construct(&$parent_stream, $initRow=''){
  		$this->_parent_stream =& $parent_stream;
  		//no init val.. popluate from db 		 	
@@ -39,6 +49,9 @@
 				$this->updateValues($initRow);				
 			}
  		}
+ 	}
+ 	function getNameKey(){
+ 		return $this->file_desc_msg;
  	}
  	function updateValues($initRow){
 		foreach ($initRow as $key => $val) {			
@@ -110,9 +123,8 @@
  		return $this->path;
  		//return str_replace('{sn}',$this->_parent_stream->name, $this->path);
  	}
- 	function get_link(){ 		
- 		global $mvVideoArchivePaths;
- 		return $this->getPath();
+ 	function getFullURL(){
+ 		//@@todo check on path if local 
  		/*if(isset($mvVideoArchivePaths[ $this->path_type ] )){
  			//we can return the link
  			return $mvVideoArchivePaths[ $this->path_type ] . $this->getPath();
@@ -122,6 +134,14 @@
  			}
  		}
  		return null;	*/
+ 		return $this->getPath();
+ 	}
+ 	function getContentType(){
+ 		if(isset($this->msg_content_type_lookup[$this->file_desc_msg])){
+ 			return $this->msg_content_type_lookup[$this->file_desc_msg];
+ 		}else{
+ 			return '';
+ 		}
  	}
  	function get_desc(){
  		return $this->file_desc_msg;
