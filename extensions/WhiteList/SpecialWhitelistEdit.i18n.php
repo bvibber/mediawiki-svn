@@ -54,10 +54,16 @@ $allMessages = array(
         'whitelistnewtableedit'       => 'Set to Edit',
         'whitelistnewtableview'       => 'Set to View',
         'whitelistnewtableprocess'    => 'Process',
+        'whitelistnewtablereview'     => 'Review',
         'whitelistselectrestricted'   => '== Select Restricted User Name ==',
         'whitelistpagelist'           => "== {{SITENAME}} pages for $1 ==",
         'whitelistnocalendar'         => "<font color='red' size=3>It looks like [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], a prerequisite for this extension, was not installed properly!</font>",
         'whitelistbadtitle'           => 'Bad title - ',
+        'whitelistoverview'           => "== Overview of changes for $1 ==",
+        'whitelistoverviewcd'         => "* Changing date to '''$1''' for [[$2]]",
+        'whitelistoverviewsa'         => "* Setting access to '''$1''' for [[$2]]",
+        'whitelistoverviewrm'         => "* Removing access to [[$1]]",
+        'whitelistoverviewna'         => "* Adding [[$1]] to whitelist with access '''$2''' and '''$3''' expiry date",
      )
 );
 ?>

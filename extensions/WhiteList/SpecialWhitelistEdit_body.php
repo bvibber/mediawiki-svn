@@ -67,10 +67,13 @@ class WhitelistEdit extends SpecialPage
             return;
         }
 
-        if ($wgRequest->getVal('submit', '') == 'Process')
-            self::ProcessContractorEditChanges();
-            
-        self::DisplayContractorEditDetails($contractorId);
+        if ($wgRequest->getVal('submit', '') == wfMsg('whitelistnewtablereview'))
+            self::ProcessContractorEditChanges(0);
+        else
+        {
+            self::ProcessContractorEditChanges(1);
+            self::DisplayContractorEditDetails($contractorId);
+        }
     }
 
     function loadMessages() {
@@ -78,7 +81,7 @@ class WhitelistEdit extends SpecialPage
         return true;
     }
 
-    function ProcessContractorEditChanges()
+    function ProcessContractorEditChanges($doit)
     {
         global $wgOut, $wgUser, $wgRequest;
         global $wgServer, $wgArticlePath;
@@ -90,37 +93,105 @@ class WhitelistEdit extends SpecialPage
         $NewExpiryDate = $wgRequest->getVal('NewExpiryDate', '');
         $action = $wgRequest->getVal('action', '');
 
+        if (!$doit)
+        {
+            # create the form for submitting the same data after review
+            $wgOut->addHtml("<form name='mainform' method='post'>");
+            $wgOut->addHtml("<input type='hidden' name='contractor' value='$contractorId'>");
+            foreach ($modify_array as $modify)
+                $wgOut->addHtml("<input type='hidden' name='' value=''>");
+            $wgOut->addHtml("<input type='hidden' name='cb_modify[]' value='$modify'>");
+            $wgOut->addHtml("<input type='hidden' name='NewExpiryDate' value='$NewExpiryDate'>");
+            $wgOut->addHtml("<input type='hidden' name='action' value='$action'>");
+
+            $ContractorUser = User::newFromID($contractorId);
+            $wgOut->addWikiText(wfMsg('whitelistoverview', $ContractorUser->getRealName()));
+        }
+
         if ($action == 'ChangeDate') {
             $date = ($NewExpiryDate == '') ? "" : date("Y-m-d H:i:s", strtotime($NewExpiryDate));
             foreach ($modify_array as $entry => $rowid)
-                $dbr->update('whitelist',
-                             array('wl_expires_on' => $date,
-                                   'wl_updated_by_user_id' => $wgUser->getId()
-                                  ),
-                             array('wl_id' => $rowid),
-                             __METHOD__
-                            );
+            {
+                if ($doit)
+                {
+                    $dbr->update('whitelist',
+                                 array('wl_expires_on' => $date,
+                                       'wl_updated_by_user_id' => $wgUser->getId()
+                                      ),
+                                 array('wl_id' => $rowid),
+                                 __METHOD__
+                                );
+                }
+                else
+                {
+                    $pagename = $dbr->selectField('whitelist',
+                                                  'wl_page_title',
+                                                  array('wl_id' => $rowid),
+                                                  __METHOD__
+                                                 );
+                    $wgOut->addWikiText(wfMsg('whitelistoverviewcd', $date, $pagename));
+                }
+            }
         } else if (($action == 'SetEdit') || ($action == 'SetView')) {
             foreach ($modify_array as $entry => $rowid)
-                $dbr->update('whitelist',
-                             array('wl_allow_edit' => ($action == 'SetEdit') ? 1 : 0,
-                                   'wl_updated_by_user_id' => $wgUser->getId()
-                                  ),
-                             array('wl_id' => $rowid),
-                             __METHOD__
-                            );
+            {
+                if ($doit)
+                {
+                    $dbr->update('whitelist',
+                                 array('wl_allow_edit' => ($action == 'SetEdit') ? 1 : 0,
+                                       'wl_updated_by_user_id' => $wgUser->getId()
+                                      ),
+                                 array('wl_id' => $rowid),
+                                 __METHOD__
+                                );
+                }
+                else
+                {
+                    $pagename = $dbr->selectField('whitelist',
+                                                  'wl_page_title',
+                                                  array('wl_id' => $rowid),
+                                                  __METHOD__
+                                                 );
+                    $wgOut->addWikiText(wfMsg('whitelistoverviewsa',
+                                              ($action == 'SetEdit') ? wfMsg('whitelisttablesetedit') : wfMsg('whitelisttablesetview'),
+                                              $pagename
+                                             )
+                                       );
+                }
+            }
         } else if ($action == 'Remove') {
             foreach ($modify_array as $entry => $rowid)
-                $dbr->delete('whitelist',
-                            array('wl_id' => $rowid),
-                            __METHOD__
-                            );
+            {
+                if ($doit)
+                {
+                    $dbr->delete('whitelist',
+                                array('wl_id' => $rowid),
+                                __METHOD__
+                                );
+                }
+                else
+                {
+                    $pagename = $dbr->selectField('whitelist',
+                                                  'wl_page_title',
+                                                  array('wl_id' => $rowid),
+                                                  __METHOD__
+                                                 );
+                    $wgOut->addWikiText(wfMsg('whitelistoverviewrm', $pagename));
+                }
+            }
         }
 
         # now process the new additions, but make sure not to add duplicates
         $newPages = $wgRequest->getVal('newPages','');
         $expiryDate = $wgRequest->getVal('ExpiryDate','');
         $newAction = $wgRequest->getVal('newAction','');
+
+        if (!$doit)
+        {
+            $wgOut->addHtml("<input type='hidden' name='newPages' value='$newPages'>");
+            $wgOut->addHtml("<input type='hidden' name='ExpiryDate' value='$expiryDate'>");
+            $wgOut->addHtml("<input type='hidden' name='newAction' value='$newAction'>");
+        }
         
         $pages = preg_split('/\n/', $newPages, -1, PREG_SPLIT_NO_EMPTY);
         foreach ($pages as $entry => $pagename){
@@ -135,7 +206,15 @@ class WhitelistEdit extends SpecialPage
             if (preg_match("/^$myServer$myArticlePath(.*)$/", $pagename, $matches))
                 $pagename = preg_replace('/_/', ' ', $matches[1]);
 
-            self::insertNewPage($dbr, $contractorId, $pagename, $newAction, $expiryDate);
+            if ($doit)
+                self::insertNewPage($dbr, $contractorId, $pagename, $newAction, $expiryDate);
+            else
+                $wgOut->addWikiText(wfMsg('whitelistoverviewna',
+                                          $pagename,
+                                          ($action == 'SetEdit') ? wfMsg('whitelisttablesetedit') : wfMsg('whitelisttablesetview'),
+                                          $expiryDate
+                                         )
+                                   );
 
             # check to see if the page is a redirect and if so, add the redirected-to page also
             $title = Title::newFromText($pagename);
@@ -145,9 +224,24 @@ class WhitelistEdit extends SpecialPage
                 $pagetext = $article->getContent();
                 $redirecttitle = Title::newFromRedirect($pagetext);
                 if ($redirecttitle)
-                    self::insertNewPage($dbr, $contractorId, $redirecttitle->getPrefixedText(), $newAction, $expiryDate);
+                    if ($doit)
+                        self::insertNewPage($dbr, $contractorId, $redirecttitle->getPrefixedText(), $newAction, $expiryDate);
+                    else
+                        $wgOut->addWikiText(wfMsg('whitelistoverviewna',
+                                                $redirecttitle->getPrefixedText(),
+                                                ($action == 'SetEdit') ? wfMsg('whitelisttablesetedit') : wfMsg('whitelisttablesetview'),
+                                                $expiryDate
+                                                )
+                                           );
             }
         }
+        
+        if (!$doit)
+        {
+            $wgOut->addHTML("<p><input type='submit' value='" . wfMsg('whitelistnewtableprocess') . "' />");
+            $wgOut->addHtml("</form>");
+        }
+        
         return;
     }
 
@@ -307,7 +401,7 @@ END;
                         wfMsg('whitelistnewtableview') .
                         "</td><td><DIV ID='testdiv2' STYLE=\"position:absolute;visibility:hidden;background-color:white;layer-background-color:white;\">" .
                         "</DIV></td></tr></table></td></tr><tr><td><center><input type='submit' name='submit' value='" .
-                        wfMsg('whitelistnewtableprocess') .
+                        wfMsg('whitelistnewtablereview') .
                         "' /></center></td></tr></table></form>"
                        );
     }
