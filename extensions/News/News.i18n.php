@@ -6,7 +6,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'newsextension-desc'          => 'shows customized recent changes on a wiki pages or as RSS or Atom feed.',
+	'newsextension-desc'          => 'Shows customized recent changes on a wiki pages or as RSS or Atom feed',
 	'newsextension-unknownformat' => '$1: unknown feed format : $2<br />',	
 	'newsextension-feednotfound'  => '$1: feed page not found : $2<br />',
 	'newsextension-feedrequest'   => '$1: handling feed request for $2<br />',
