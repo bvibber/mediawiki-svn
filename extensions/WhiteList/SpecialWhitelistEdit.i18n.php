@@ -56,7 +56,7 @@ $allMessages = array(
         'whitelistnewtableprocess'    => 'Process',
         'whitelistnewtablereview'     => 'Review',
         'whitelistselectrestricted'   => '== Select Restricted User Name ==',
-        'whitelistpagelist'           => "== {{SITENAME}} pages for $1 ==",
+        'whitelistpagelist'           => "{{SITENAME}} pages for $1",
         'whitelistnocalendar'         => "<font color='red' size=3>It looks like [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], a prerequisite for this extension, was not installed properly!</font>",
         'whitelistbadtitle'           => 'Bad title - ',
         'whitelistoverview'           => "== Overview of changes for $1 ==",
@@ -64,6 +64,9 @@ $allMessages = array(
         'whitelistoverviewsa'         => "* Setting access to '''$1''' for [[$2]]",
         'whitelistoverviewrm'         => "* Removing access to [[$1]]",
         'whitelistoverviewna'         => "* Adding [[$1]] to whitelist with access '''$2''' and '''$3''' expiry date",
+        'whitelistrequest'            => "Request access to more pages",
+        'whitelistrequestmsg'         => "$1 has requested access to the following pages:\n\n$2",
+        'whitelistrequestconf'        => "Request for new pages was sent to $1",
      )
 );
 ?>

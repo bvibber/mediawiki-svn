@@ -486,7 +486,7 @@ class WhiteList extends SpecialPage
     }
 
     function execute($user = '') {
-        global $wgRequest, $wgOut, $wgUser, $wgWhitelistOverride;
+        global $wgRequest, $wgOut, $wgUser, $wgWhitelistOverride, $wgWhiteListManagerGroup, $wgSitename;
         $dbr = wfGetDB( DB_SLAVE );
 
         $user = ($user == '') ? $wgUser : User::newFromId($user);
@@ -494,24 +494,71 @@ class WhiteList extends SpecialPage
         $this->setHeaders();
         $wgOut->setPagetitle(wfMsgTL('whitelist'));
 
-        $wgOut->addWikiText(wfMsg('whitelistpagelist', $user->getRealName()));
+        if ($wgRequest->getVal('submit', '') == wfMsg('whitelistnewtableprocess'))
+        {
+            $sender = new MailAddress($wgUser->getEmail(), $wgUser->getRealName());
+            $to = '';
+            if (constant("MW_USER_VERSION") < 4) {
+                $to = new User();
+                $to->mId = $wgRequest->getint('manager',0);
+            } else {
+                $to = User::newFromId($wgRequest->getint('manager',0));
+            }
+            $to->sendMail("[${wgSitename}] " . wfMsg('whitelistrequest'),
+                          wfMsg('whitelistrequestmsg',$wgUser->getRealName(), $wgRequest->getVal('newPages')),
+                          $sender->toString()
+                         );
+
+            $wgOut->addWikiText(wfMsg('whitelistrequestconf', $to->getRealName()));
+            $wgOut->addWikiText("");
+        }
+
+        
+        $wgOut->addHtml("<table cellspacing=0 cellpadding=2 border=1 width=100%><tr>");
+        $wgOut->addHtml("<th>" . wfMsg('whitelistpagelist', $user->getRealName()) . "</th><th>" . wfMsg('whitelistrequest') . "</th>");
+        $wgOut->addHtml("</tr><tr><td width=30%>");
 
         $res = WhitelistEdit::contractorWhitelistTable($dbr, $user->getId());
         for ($row = $dbr->fetchObject($res); $row; $row = $dbr->fetchObject($res)) {
             $wgOut->addWikiText("* [[$row->wl_page_title]]");
         }
         $dbr->freeResult($res);
-
         $pages = array();
-        
         foreach ($wgWhitelistOverride['always']['read'] as $page)
             array_push($pages, $page);
         foreach ($wgWhitelistOverride['always']['edit'] as $page)
             array_push($pages, $page);
-
         sort($pages);
         foreach ($pages as $page)
             $wgOut->addWikiText("* [[$page]]");
+
+                
+        $wgOut->addHtml("</td><td valign=top>");
+        $wgOut->addHtml("<table cellspacing=0 cellpadding=2 border=0 width=100%><tr><td align='right'>$wgWhiteListManagerGroup:</td><td>");
+        $wgOut->addHTML("<form method=\"post\">");
+        $wgOut->addHTML('<select name="manager">');
+        
+        $users = array();
+        $res = $dbr->select( 'user_groups', 'ug_user', array('ug_group'=>$wgWhiteListManagerGroup), __METHOD__);
+        for ( $row = $dbr->fetchObject($res); $row; $row = $dbr->fetchObject($res)) {
+            $u = User::newFromID($row->ug_user);
+            $users[$u->getRealName()] = $row->ug_user;
+        }
+        $dbr->freeResult($res);
+        ksort($users);
+        foreach ($users as $name => $id)
+            $wgOut->addHTML("<option value=\"$id\">".$name."</option>");
+        $wgOut->addHTML('</select> ');
+
+        
+        $wgOut->addHtml("</td></tr><tr><td align='right'>" . wfMsg('mywhitelistpages') . ":</td><td>");
+        $wgOut->addHtml("<textarea name='newPages' cols=40 rows=5></textarea>");
+        $wgOut->addHtml("</td></tr><tr><td colspan=2><center>");
+        $wgOut->addHTML("<input type='submit' name='submit' value='" . wfMsg('whitelistnewtableprocess') . "' />");
+        $wgOut->addHTML("</form>");
+        $wgOut->addHtml("</center></td></tr></table>");        
+        $wgOut->addHtml("</td></tr></table>");
+        $wgOut->addHtml("</td></tr></table>");
     }
 }
 
