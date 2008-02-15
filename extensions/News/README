@@ -209,7 +209,7 @@ and $2 will be replaced by the requested feed format.
 If you are using pretty URLs with $wgArticlePath set to $wgScript/$1 or /wiki/$1,
 etc, you can use the following for nicer feed URLs: 
   $wgNewsFeedURLPattern = $wgArticlePath . '?feed=$2';
-(note that $wgArticlePath already contains $1 withe the meaning "page title")
+(note that $wgArticlePath already contains $1 with the meaning "page title")
 If you want to use rewrite rules for canonical feed URLs, like /feed/Foo.rss,
 set
   $wgNewsFeedURLPattern = '/feed/$1.$2';

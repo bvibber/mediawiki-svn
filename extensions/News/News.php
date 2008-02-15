@@ -19,8 +19,13 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'News', 
 	'author' => 'Daniel Kinzler, brightbyte.de', 
 	'url' => 'http://mediawiki.org/wiki/Extension:News',
+	'version' => '2008-02-15',
 	'description' => 'shows customized recent changes on a wiki pages or as RSS or Atom feed',
+	'descriptionmsg' => 'newsextension-desc',
 );
+
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['NewsExtension'] = $dir . 'News.i18n.php';
 
 $wgNewsFeedURLPattern = false; // pattern for feed-URLs; useful when using rewrites for canonical feed URLs
 $wgNewsFeedUserPattern = false; // pattern to use for the author-field in feed items.
@@ -39,6 +44,7 @@ function wfNewsExtension() {
     $wgParser->setHook( "news", "wfNewsTag" );
     $wgParser->setHook( "newsfeed", "wfNewsFeedTag" );
     $wgParser->setHook( "newsfeedlink", "wfNewsFeedLinkTag" );
+    wfLoadExtensionMessages( 'NewsExtension' );
 }
 
 function wfNewsTag( $templatetext, $argv, &$parser ) {
@@ -87,18 +93,18 @@ function wfNewsArticleFromTitle( &$title, &$article ) {
     if ($action != 'view' && $action != 'purge') return true;
 
     if ( !isset($wgFeedClasses[$format] ) ) {
-        wfDebug("$fname: unknown feed format: $format\n");
+	wfDebug( wfMsg( 'newsextension-unknownformat', $fname, $format) );
         wfHttpError(400, "Bad Request", "unknown feed format: " . $format); //TODO: better code & text
         return false;
     }
 
     if (!$title->exists()) {
-        wfDebug("$fname: feed page not found: " . $title->getPrefixedDBKey() . "\n");
+	wfDebug( wfMsg( 'newsextension-feednotfound', $fname, $title->getPrefixedDBKey() ) );
         wfHttpError(404, "Not Found", "feed page not found: " . $title->getPrefixedText()); //TODO: better text
         return false;
     }
 
-    wfDebug("$fname: handling feed request for " . $title->getPrefixedDBKey() . "\n");
+    wfDebug( wfMsg( 'newsextension-feedrequest', $fname,  $title->getPrefixedDBKey() ) );
 
     $article = new NewsFeedPage( $title, $format );
     return false;
