@@ -296,6 +296,19 @@ $messages['grc'] = array(
 	'sitematrix-language' => 'γλωσσα',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Dsvyas
+ */
+$messages['gu'] = array(
+	'sitematrix'           => 'વિકિમીડીયા વિકિઓની યાદી',
+	'sitematrix-desc'      => '[[Special:SiteMatrix|વિકિમીડીયા વિકિઓની યાદી]] દર્શાવે છે',
+	'sitematrix-language'  => 'ભાષા',
+	'sitematrix-project'   => 'પરિયોજનાનું નામ, આંતરપરિયોજનાની કડી અને આંતરવિકિની કડી',
+	'sitematrix-others'    => 'વિકિમીડીયાની અન્ય પરિયોજનાઓ',
+	'sitematrix-total'     => "'''કુલ સંખ્યા: $1'''",
+	'sitematrix-sitetotal' => 'કુલ',
+);
+
 $messages['he'] = array(
 	'sitematrix'           => 'רשימת אתרי ויקי של ויקימדיה',
 	'sitematrix-language'  => 'שפה',

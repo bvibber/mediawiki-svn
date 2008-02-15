@@ -41,13 +41,19 @@ $messages['de'] = array(
 	'cspammer-log-page'           => 'Kommentar-Spammer Logbuch',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ * @author Siebrand
+ * @author Urhixidur
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'commentspammer-save-blocked' => 'Votre adresse IP est celle d\'une personne suspectée de créer du pourriel : la page n\'a donc pas été sauvegardée. Veuillez vous [[Special:Userlogin|connecter ou créer un compte]] pour contourner cette interdiction.',
-	'commentspammer-desc'         => 'Rejette les modifications suspectées de spams à partir d’une liste noire figurant dans le projet HoneyPot DNS',
-	'commentspammer-log-msg' => 'Modifications de [[Special:Contributions/$1|$1]] à [[:$2]].',
-	'commentspammer-log-msg-info' => 'Le dernier pourriel remonte à {{PLURAL:$1|$1 jour|$1 jours}}, le niveau d\'alerte est à $2 et le code d\'attaque est $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Voir détails] ou [[Special:Blockip/$4|bloquer]].',
-	'cspammerlogpagetext' => 'Journal des modifications acceptées ou rejetées selon que la source était un créateur de pourriels connu.',
-	'cspammer-log-page' => 'Journal du créateur de pourriels',
+	'commentspammer-save-blocked' => "Votre adresse IP est celle d'une personne suspectée de créer du pourriel : la page n'a donc pas été sauvegardée. Veuillez vous [[Special:Userlogin|connecter ou créer un compte]] pour contourner cette interdiction.",
+	'commentspammer-desc'         => 'Rejette les modifications soupçonnées de pollupostage à partir d’une liste noire figurant dans le projet HoneyPot DNS',
+	'commentspammer-log-msg'      => 'Modifications de [[Special:Contributions/$1|$1]] à [[:$2]].',
+	'commentspammer-log-msg-info' => "Le dernier pourriel remonte à {{PLURAL:$1|$1 jour|$1 jours}}, le niveau d'alerte est à $2 et le code d'attaque est $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Voir détails] ou [[Special:Blockip/$4|bloquer]].",
+	'cspammerlogpagetext'         => 'Journal des modifications acceptées ou rejetées selon que la source était un créateur de pourriels connu.',
+	'cspammer-log-page'           => 'Journal du créateur de pourriels',
 );
 
 $messages['frp'] = array(
@@ -94,6 +100,18 @@ $messages['hu'] = array(
 	'commentspammer-log-msg-info' => 'Utoljára $1 napja spammelt, veszélyességi szintje $2, támadókódja $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Részletek megtekintése], vagy [[Special:Blockip/$4|blokkolás]].',
 	'cspammerlogpagetext'         => 'Azon szerkesztések listája, melyek engedélyezve vagy tiltva lettek attól függően, hogy a szerző ismert tartalomspammer volt-e.',
 	'cspammer-log-page'           => 'Tartalomspammer napló',
+);
+
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'commentspammer-save-blocked' => 'あなたのIPアドレスはスパム投稿に用いられているとの疑いがあるため、ページは保存されませんでした。[[{{ns:Special}}:Userlogin|ログインまたはアカウントの作成]]を行ってください。',
+	'commentspammer-desc'         => 'DNSブラックリストに記載されたコメントスパム投稿容疑IPアドレスからの編集を拒絶する',
+	'commentspammer-log-msg'      => '利用者 [[{{ns:Special}}:Contributions/$1|$1]] による [[:$2]] の編集',
+	'commentspammer-log-msg-info' => '最後のスパム行為は $1{{PLURAL:$1|日|日}}前 / 脅威レベル $2 / 防御コード $3 / [http://www.projecthoneypot.org/search_ip.php?ip=$4 詳細表示] / [[{{ns:Special}}:Blockip/$4|ブロック状況]]',
+	'cspammerlogpagetext'         => 'この編集履歴は、判明しているコメントスパマーによる投稿の許可/拒否状況を示します。',
+	'cspammer-log-page'           => 'スパム投稿ログ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

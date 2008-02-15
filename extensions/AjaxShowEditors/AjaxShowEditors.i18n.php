@@ -179,12 +179,13 @@ $messages['frp'] = array(
 
 /** Galician (Galego)
  * @author Xosé
+ * @author Toliño
  * @author Alma
  */
 $messages['gl'] = array(
 	'ajax-se-desc'    => 'Amosar aos usuarios que están editando na mesma páxina',
 	'ajax-se-title'   => 'Neste momento está a editar:',
-	'ajax-se-pending' => 'pendente de refresco... (clique nesta caixa ou comece a editar)',
+	'ajax-se-pending' => 'pendente de refresco... (faga clic nesta caixa ou comece a editar)',
 	'ajax-se-idling'  => '(hai $1s)',
 );
 

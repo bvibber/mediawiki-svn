@@ -45,6 +45,16 @@ $messages['bg'] = array(
 	'filelist-show-gallery' => 'Показване на галерията',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'filelist'              => 'Lisćina datajow',
+	'filelist-desc'         => 'Specialny bok za nalistowanje nagratych datajow',
+	'filelist-show-list'    => 'Lisćinu pokazaś',
+	'filelist-show-gallery' => 'Galeriju pokazaś',
+);
+
 /** French
  * @author Bertrand Grondin
  */
@@ -140,5 +150,15 @@ $messages['sr-ec'] = array(
 	'filelist'              => 'Списак фајлова',
 	'filelist-show-list'    => 'Прикажи списак',
 	'filelist-show-gallery' => 'Прикажи галерију',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'filelist'              => 'Fil lista',
+	'filelist-desc'         => 'Special sida för att lista uppladdade filer',
+	'filelist-show-list'    => 'Visa lista',
+	'filelist-show-gallery' => 'Visa galleri',
 );
 

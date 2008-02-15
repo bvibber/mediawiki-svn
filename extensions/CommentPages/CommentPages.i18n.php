@@ -38,6 +38,14 @@ $messages['hsb'] = array(
 	'nstab-comments'    => 'Komentar',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'commentpages-desc' => 'メイン名前空間のコメントページ',
+	'nstab-comments'    => 'コメント',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

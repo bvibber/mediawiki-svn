@@ -720,6 +720,7 @@ $messages['vo'] = array(
 	'imagemap_invalid_image' => '&lt;imagemap&gt;: magod no lonöfon u no dabinon',
 	'imagemap_no_link'       => '&lt;imagemap&gt;: yüm lonöföl no petuvon finü lien: $1',
 	'imagemap_invalid_title' => '&lt;imagemap&gt;: tiäd no lonöföl pö yüm su lien: $1',
+	'imagemap_invalid_coord' => '&lt;imagemap&gt;: koordinats no lonöföls su lien $1: mutons binön num',
 	'imagemap_description'   => 'Tefü magod at',
 );
 

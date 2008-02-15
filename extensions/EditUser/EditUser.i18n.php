@@ -46,6 +46,17 @@ $messages['br'] = array(
 	'edituser-dosearch' => 'Klask',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'edituser-desc'     => 'Dowólujo wopšawnjenym wužywarjam nastajenja drugich wužywarjow wobźěłaś',
+	'edituser'          => 'Wužywarja wobźěłaś',
+	'edituser-logout'   => 'Wužywarja wótzjawiś',
+	'edituser-username' => 'Mě',
+	'edituser-dosearch' => 'Pytanje',
+);
+
 /** Ewe (Eʋegbe)
  * @author M.M.S.
  */

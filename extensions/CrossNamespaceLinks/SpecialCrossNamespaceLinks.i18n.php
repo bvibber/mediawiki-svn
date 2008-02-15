@@ -499,9 +499,11 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author Mpradeep
+ * @author Chaduvari
  */
 $messages['te'] = array(
 	'crossnamespacelinks'         => 'అంతర-నేంస్పేసు లింకులు',
+	'crossnamespacelinks-desc'    => '{{SITENAME}} లో ఉండకూడని  [[Special:CrossNamespaceLinks|నేముస్పేసు నుండి నేముస్పేసుకు ఉండే లింకులను ఒక జాబితాగా చూపిస్తుంది]]',
 	'crossnamespacelinks-summary' => 'ప్రధాన నేంస్పేసులోని పేజీల నుండి ఇతర నేంస్పేసులలోని ({{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} నేంస్పేసులు కాకుండా) పేజీలకు ఉన్న లింకుల జాబితాను ఇక్కడ చూడవచ్చు. అలా లింకులు ఇవ్వడం ఆచరణీయం కాదు.',
 	'crossnamespacelinkstext'     => '$1: $3కు {{PLURAL:$2|ఒక లింకు|$2 లింకులు}}',
 );

@@ -43,6 +43,7 @@ A log of recent watchlist pushes is available at [[Special:PovWatch/log]].',
  */
 $messages['ar'] = array(
 	'povwatch'                         => 'مراقبة بي أو في',
+	'povwatch_desc'                    => 'امتداد [[Special:PovWatch|لدفع الصفحات إلى قوائم مراقبة]] المستخدمين الآخرين',
 	'povwatch_no_session'              => 'خطأ: لم يمكن تنفيذ الاستمارة نتيجة فقد في بيانات الجلسة.',
 	'povwatch_not_allowed_push'        => 'أنت لست إداري مراقبة بي أو في، لا يمكنك دفع صفحات إلى قوائم مراقبة.',
 	'povwatch_already_subscribed'      => 'أنت مشترك بالفعل في مراقبة بي أو في',
@@ -125,10 +126,11 @@ $messages['el'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'povwatch'                         => 'Surveillance des guerres d’éditions',
-	'povwatch_desc'                    => "Extension pour [[Special:PovWatch|ajouter des pages la liste de suivi]] d'autres utilisateurs",
+	'povwatch_desc'                    => 'Extension permettant d’[[Special:PovWatch|ajouter des pages à la liste de suivi]] d’autres utilisateurs',
 	'povwatch_no_session'              => 'Erreur : Impossible de soumettre le formulaire à la suite de la perte des données de la session.',
 	'povwatch_not_allowed_push'        => 'Vous n’êtes pas un administrateur pour la surveillance des guerres d’édition. Vous ne pouvez pas ajouter les articles dans la liste correspondante.',
 	'povwatch_already_subscribed'      => 'Vous êtes déjà inscrit pour la surveillance des guerre d’édition.',

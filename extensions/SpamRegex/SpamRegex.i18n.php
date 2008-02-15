@@ -299,3 +299,11 @@ $messages['sma'] = array(
 	'spamregex-text' => '(Tjaalege)',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'spamregex-text'        => '(Text)',
+	'spamregex-summary-log' => '(Sammanfattning)',
+);
+

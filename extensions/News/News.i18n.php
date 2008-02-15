@@ -23,6 +23,27 @@ $messages['en'] = array(
 	'newsextension-freshfeed'     => '$1: outputting fresh feed<br />',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'newsextension-desc'          => 'يعرض أحدث تغييرات معدلة في صفحات الويكي أو كتلقيم آر إس إس أو أتوم.',
+	'newsextension-unknownformat' => '$1: صيغة تلقيم غير معروفة : $2<br />',
+	'newsextension-feednotfound'  => '$1: صفحة التلقيم غير موجودة : $2<br />',
+	'newsextension-feedrequest'   => '$1: معالجة طلب التلقيم ل $2<br />',
+	'newsextension-checkok'       => '$1: كاش HTTP على ما يرام، رأس 304 تم إرسالها</br >',
+	'newsextension-checkok1'      => '$1: جاري التحقق الكاش على ما يرام:  IMS $2 vs. $3 التي تم تغييرها<br />',
+	'newsextension-gotcached'     => '$1: ($2? "حصلت على كاش" : "لا كاش")<br />',
+	'newsextension-purge'         => '$1: إفراغ الكاش، تجاهل الكاش<br />',
+	'newsextension-loggin'        => '$1: تم تسجيل الدخول، يتم تجاهل الكاش<br />',
+	'newsextension-outputting'    => '$1: ينتج نسخة كاش ($2): $3 < {$4}<br />',
+	'newsextension-stale'         => '$1: تم العثور على نسخة كاش قديمة ($2): $3 >= {$4}<br />',
+	'newsextension-nofoundonpage' => '$1: لا تلقيم تم العثور عليه في الصفحة: $2<br / >',
+	'newsextension-renderedfeed'  => '$1: أنتج التلقيم<br />',
+	'newsextension-cachingfeed'   => '$1: تخبئة التلقيم ($2)<br / >',
+	'newsextension-freshfeed'     => '$1: ينتج تلقيما جديدا<br />',
+);
+
 $messages['fr'] = array(
 	'newsextension-desc'          => 'Visionne les modifications récentes spécifiques sur une page wiki ou comme un flux RSS ou Atom.',
 	'newsextension-unknownformat' => '$1 : format de flux inconnu : $2<br />',
@@ -40,3 +61,11 @@ $messages['fr'] = array(
 	'newsextension-cachingfeed'   => '$1 : cache l’alimentation ($2)<br / >',
 	'newsextension-freshfeed'     => '$1 : sortie alimentation récente<br />',
 );
+
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ */
+$messages['nl'] = array(
+	'newsextension-desc' => 'Aangepaste recente wijzigingen tonen op een wikipagina, of als RSS-feed of Atom-feed',
+);
+

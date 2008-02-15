@@ -601,6 +601,7 @@ Je nachwilny problem z nutřkownej pytawu. Spytaj za někotre wokomiki hišće r
  * @author Bdanee
  */
 $messages['hu'] = array(
+	'lucene-desc'           => 'Felület az Apache Lucene keresőmotor számára',
 	'searchnumber'          => '<strong>$1-$2, összesen: $3 találat</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>előző</span>",
 	'searchnext'            => "<span style='font-size: small'>következő</span> &#x00BB;",
@@ -1073,8 +1074,10 @@ $1
 
 /** Portuguese (Português)
  * @author 555
+ * @author Malafaya
  */
 $messages['pt'] = array(
+	'lucene-desc'           => 'Interface para o motor de busca Apache Lucene',
 	'searchnumber'          => '<strong>Resultados $1-$2 de $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Anterior</span>",
 	'searchnext'            => "<span style='font-size: small'>Posterior</span> &#x00BB;",
@@ -1298,10 +1301,10 @@ Uurs koast du uk do externe Säikmuugelkhaide nutsje:',
 
 /** Swedish (Svenska)
  * @author Max sonnelid
- * @author M.M.S.
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'lucene-desc'           => 'Gränssnitt för Apache Lucene sökmotorn',
+	'lucene-desc'           => 'Gränssnitt för sökmotorn Apache Lucene',
 	'searchnumber'          => '<strong>Resultat $1-$2 av $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Föregående</span>",
 	'searchnext'            => "<span style='font-size: small'>Nästa</span> &#x00BB;",
@@ -1326,8 +1329,8 @@ eller sök på wikin med någon extern söktjänst:
 );
 
 /** Telugu (తెలుగు)
- * @author Mpradeep
  * @author Veeven
+ * @author Mpradeep
  */
 $messages['te'] = array(
 	'searchnumber'          => '<strong>$3 ఫలితాల్లో $1-$2</strong>',
@@ -1337,6 +1340,7 @@ $messages['te'] = array(
 	'lucene-resultsize'     => '$1 ($2 పదాలు)',
 	'searchdidyoumean'      => '"<a href="$1">$2</a>" అనా మీ ఉద్దేశం?',
 	'searchnoresults'       => 'క్షమించాలి, మీరడిగిన పదాలతో సరిగ్గా సరిపోయే ఫలితాలు లేవు. పదాలకు చివర "సున్నా" ఉన్నచోట "ము" పెట్టి, లేదా "ము" ఉంటే "సున్నా" పెట్టి, మళ్ళీ వెతకండి.',
+	'searchnearmatches'     => '<b>ఈ పేజీల శీర్షికలు మీ అన్వేషణకి దగ్గరగా ఉన్నాయి:</b>',
 	'lucenepowersearchtext' => 'ఈ నేమ్ స్పేసుల్లో వెతుకు:
 
 $1
@@ -1346,6 +1350,7 @@ $3 $9 $10 కొరకు వెతుకు',
 ఇది తాత్కాలికము కావచ్చు; మళ్ళీ ఇంకొద్ది నిముషాల తరువాత ప్రయత్నించండి,
 లేదా ఏదైనా బయటి సెర్చి ఇంజను సాయంతో వికీని అన్వేషించండి:',
 	'searchall'             => 'అన్నీ',
+	'searchincategory'      => 'వర్గంలో',
 );
 
 /** Tajik (Тоҷикӣ)
@@ -1419,6 +1424,9 @@ $messages['vo'] = array(
 $1
 
 Sukön: $3 $9 $10',
+	'lucenefallback'        => 'Suk in vük at älabon säkädi.
+Säkäd at binon luveratiko nelaidik; steifülös dönu pos timüls anik.
+Kanol i sukön in vük at medü sukadün plödik:',
 	'searchall'             => 'valik',
 );
 

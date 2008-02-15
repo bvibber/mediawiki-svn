@@ -44,8 +44,11 @@ $messages['dsb'] = array(
 	'charinsert-desc' => 'Dowólujo napóranje JavaScriptowego kašćika za zasajźenje specielnych znamješkow',
 );
 
+/** French (Français)
+ * @author Urhixidur
+ */
 $messages['fr'] = array(
-'charinsert-desc' => 'Permet la création d’une boîte JavaScript pour l’insersion de caractères non-standards',
+	'charinsert-desc' => 'Permet la création d’une boîte JavaScript pour l’insertion de caractères non-standards',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -59,7 +62,7 @@ $messages['hsb'] = array(
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'charinsert-desc' => '標準外の文字挿入を行うJavaScriptボックスを追加する',
+	'charinsert-desc' => '特殊文字の挿入を行うJavaScriptボックスを追加する',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

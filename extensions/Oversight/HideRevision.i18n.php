@@ -576,7 +576,7 @@ Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wuš
  */
 $messages['hu'] = array(
 	'hiderevision'                => 'Állandó rejtett átdolgozások',
-	'hiderevision-desc'           => 'Adott változatok eltüntetése az összes felhasználó elöl, például jogi okokból.',
+	'hiderevision-desc'           => 'Adott változatok eltüntetése az összes felhasználó elől, például jogi okokból.',
 	'hiderevision-prompt'         => 'Eltávolítandó változat:',
 	'hiderevision-continue'       => 'Folytatódik',
 	'hiderevision-text'           => "Ez az eszköz '''csak''' az alábbi esetekben használható:

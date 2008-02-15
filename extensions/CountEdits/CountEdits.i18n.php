@@ -572,11 +572,14 @@ $messages['su'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'countedits'            => 'Räkna redigeringar',
-	'countedits-username'   => 'Användarnamn:',
-	'countedits-ok'         => 'OK',
-	'countedits-nosuchuser' => 'Det finns ingen användare med namnet $1.',
-	'countedits-resulttext' => '$1 har gjort $2 redigeringar',
+	'countedits'              => 'Räkna redigeringar',
+	'countedits-username'     => 'Användarnamn:',
+	'countedits-ok'           => 'OK',
+	'countedits-nosuchuser'   => 'Det finns ingen användare med namnet $1.',
+	'countedits-resultheader' => 'Resultat för $1',
+	'countedits-resulttext'   => '$1 har gjort $2 redigeringar',
+	'countedits-mostactive'   => 'Mest aktiva bidragsgivare',
+	'countedits-nocontribs'   => 'Det har inte blivigt några redigeringar på denna wiki.',
 );
 
 /** Telugu (తెలుగు)

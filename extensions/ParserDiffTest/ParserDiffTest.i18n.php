@@ -253,6 +253,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'parserdifftest'      => 'Értelmezők közötti eltérés tesztelése',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Speciális lap]] a két különböző szövegértelmező kimenetének összehasonlítására',
 	'pdtest_no_target'    => 'Nincs cél megadva',
 	'pdtest_page_missing' => 'A megadott oldal nem található az adatbázisban.',
 	'pdtest_no_changes'   => 'Nincsenek eltérések.',
@@ -537,6 +538,7 @@ $messages['te'] = array(
 	'pdtest_time_report' => '<b>$1</b> $2 క్షణాలు తీసుకుంది, <b>$3</b> $4 క్షణాలు తీసుకుంది.',
 	'pdtest_title'       => 'సందర్భపు శీర్షిక:',
 	'pdtest_ok'          => 'సరే',
+	'pdtest_get_text'    => 'పేజీనుండి పాఠ్యాన్ని పొందండి',
 	'pdtest_diff'        => 'తేడాలు',
 );
 

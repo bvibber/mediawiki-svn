@@ -154,12 +154,14 @@ Le gestionnaire du site n’est pas responsable de leur contenu.',
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
+ * @author Siebrand
  */
 $messages['gl'] = array(
 	'talkhere-foottext'    => 'Os comentarios anteriores poderían ter sido deixados polos visitantes.
 
 Os operadores deste sitio non poden asumir a responsabilidade polo contido de ditos comentarios.',
-	'talkhere-talkpage'    => 'páxina de discusión',
+	'talkhere-talkpage'    => 'páxina de conversa',
 	'talkhere-notalk'      => "''(aínda sen comentarios)''",
 	'talkhere-addcomment'  => 'engadir comentario',
 	'talkhere-beforeinput' => 'Vostede pode engadir un comentario a continuación',

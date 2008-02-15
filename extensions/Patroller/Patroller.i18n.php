@@ -36,29 +36,32 @@ $messages['en'] = array(
 	'grouppage-patroller' => '{{ns:project}}:Patroller',
 );
 
-/* Arabic (Meno25) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'patrol' => 'تعديلات مراجعة',
-	'patrol-endorse' => 'تأكيد',
-	'patrol-revert' => 'استرجاع',
-	'patrol-revert-reason' => 'السبب:',
-	'patrol-skip' => 'تجاهل',
-	'patrol-reverting' => 'استرجاع: $1',
-	'patrol-nonefound' => 'لم يتم العثور على تعديلات مناسبة للمراجعة.',
-	'patrol-endorsed-ok' => 'تم تعليم التعديل كمراجع.',
+	'patrol'                 => 'تعديلات مراجعة',
+	'patrol-desc'            => 'واجهة مراجعة محسنة مع تشارك ضغط العمل',
+	'patrol-endorse'         => 'تأكيد',
+	'patrol-revert'          => 'استرجاع',
+	'patrol-revert-reason'   => 'السبب:',
+	'patrol-skip'            => 'تجاهل',
+	'patrol-reverting'       => 'استرجاع: $1',
+	'patrol-nonefound'       => 'لم يتم العثور على تعديلات مناسبة للمراجعة.',
+	'patrol-endorsed-ok'     => 'تم تعليم التعديل كمراجع.',
 	'patrol-endorsed-failed' => 'هذا التعديل لم يمكن تعليمه كمراجع.',
-	'patrol-reverted-ok' => 'التعديل تم استرجاعه.',
+	'patrol-reverted-ok'     => 'التعديل تم استرجاعه.',
 	'patrol-reverted-failed' => 'لم يمكن استرجاع التعديل.',
-	'patrol-skipped-ok' => 'تجاهل التعديل.',
-	'patrol-reasons' => '* تخريب بسيط
+	'patrol-skipped-ok'      => 'تجاهل التعديل.',
+	'patrol-reasons'         => '* تخريب بسيط
 * تجربة مستخدم جديد
 * انظر صفحة النقاش',
-	'patrol-another' => 'اعرض تعديلا آخر، إن أمكن.',
-	'patrol-stopped' => 'لقد اخترت عدم مراجعة تعديل آخر. $1',
-	'patrol-resume' => 'اضغط هنا للمتابعة.',
-	'group-patroller' => 'مراجعون',
+	'patrol-another'         => 'اعرض تعديلا آخر، إن أمكن.',
+	'patrol-stopped'         => 'لقد اخترت عدم مراجعة تعديل آخر. $1',
+	'patrol-resume'          => 'اضغط هنا للمتابعة.',
+	'group-patroller'        => 'مراجعون',
 	'group-patroller-member' => 'مراجع',
-	'grouppage-patroller' => '{{ns:project}}:مراجع',
+	'grouppage-patroller'    => '{{ns:project}}:مراجع',
 );
 
 $messages['bcl'] = array(
@@ -164,28 +167,33 @@ $messages['fr'] = array(
 	'grouppage-patroller' => '{{ns:project}}:Patrouilleur',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Toliño
+ * @author Alma
+ */
 $messages['gl'] = array(
-	'patrol' => 'Patrullar edicións',
-	'patrol-endorse' => 'Apoiar',
-	'patrol-revert' => 'Desfacer',
-	'patrol-revert-reason' => 'Motivo:',
-	'patrol-skip' => 'Saltar',
-	'patrol-reverting' => 'A desfacer: $1',
-	'patrol-nonefound' => 'Non se atoparon edicións adecuadas para patrullar.',
-	'patrol-endorsed-ok' => 'Marcouse esta edición como patrullada.',
+	'patrol'                 => 'Patrullar edicións',
+	'patrol-endorse'         => 'Apoiar',
+	'patrol-revert'          => 'Desfacer',
+	'patrol-revert-reason'   => 'Motivo:',
+	'patrol-skip'            => 'Saltar',
+	'patrol-reverting'       => 'A desfacer: $1',
+	'patrol-nonefound'       => 'Non se atoparon edicións adecuadas para patrullar.',
+	'patrol-endorsed-ok'     => 'Marcouse esta edición como patrullada.',
 	'patrol-endorsed-failed' => 'Non se puido marcar a edición como patrullada.',
-	'patrol-reverted-ok' => 'Desfíxose esta edición.',
+	'patrol-reverted-ok'     => 'Desfíxose esta edición.',
 	'patrol-reverted-failed' => 'Non se puido desfacer esta edición.',
-	'patrol-skipped-ok' => 'Ignórase a edición.',
-	'patrol-reasons' => '* Simple vandalismo
+	'patrol-skipped-ok'      => 'Ignórase a edición.',
+	'patrol-reasons'         => '* Simple vandalismo
 * Probas de novato
-* Ver a páxina de discusión',
-	'patrol-another' => 'Mostrar outra edición, se existe.',
-	'patrol-stopped' => 'Optou por non patrullar outra edición. $1',
-	'patrol-resume' => 'Prema aquí para recomezar.',
-	'group-patroller' => 'Patrulleiros',
+* Ver a páxina de conversa',
+	'patrol-another'         => 'Mostrar outra edición, se existe.',
+	'patrol-stopped'         => 'Optou por non patrullar outra edición. $1',
+	'patrol-resume'          => 'Prema aquí para recomezar.',
+	'group-patroller'        => 'Patrulleiros',
 	'group-patroller-member' => 'Patrulleiro',
-	'grouppage-patroller' => '{{ns:project}}:Patrulleiro',
+	'grouppage-patroller'    => '{{ns:project}}:Patrulleiro',
 );
 
 $messages['hsb'] = array(
@@ -314,29 +322,32 @@ $messages['lb'] = array(
 	'patrol-reverted-ok'   => "D'Ännerung gouf zréckgesat.",
 );
 
-/* nld / Dutch (Siebrand Mazeland) */
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'patrol' => 'Wijzigingen controleren',
-	'patrol-endorse' => 'Goedkeuren',
-	'patrol-revert' => 'Terugdraaien',
-	'patrol-revert-reason' => 'Reden:',
-	'patrol-skip' => 'Overslaan',
-	'patrol-reverting' => '$1 aan het terugdraaien',
-	'patrol-nonefound' => 'Er zijn geen te controleren wijzigingen gevonden.',
-	'patrol-endorsed-ok' => 'De bewerking is gemarkteerd als gecontroleerd.',
+	'patrol'                 => 'Wijzigingen controleren',
+	'patrol-desc'            => 'Verbeterde interface voor controle van wijzigingen met mogelijkheden om werklast te delen',
+	'patrol-endorse'         => 'Goedkeuren',
+	'patrol-revert'          => 'Terugdraaien',
+	'patrol-revert-reason'   => 'Reden:',
+	'patrol-skip'            => 'Overslaan',
+	'patrol-reverting'       => '$1 aan het terugdraaien',
+	'patrol-nonefound'       => 'Er zijn geen te controleren wijzigingen gevonden.',
+	'patrol-endorsed-ok'     => 'De bewerking is gemarkteerd als gecontroleerd.',
 	'patrol-endorsed-failed' => 'De bewerking kon niet gemarkeerd worden als gecontroleerd.',
-	'patrol-reverted-ok' => 'De bewerking is teruggedraaid.',
+	'patrol-reverted-ok'     => 'De bewerking is teruggedraaid.',
 	'patrol-reverted-failed' => 'De bewerking kon niet teruggedraaid worden.',
-	'patrol-skipped-ok' => 'Bewerking wordt genegeerd.',
-	'patrol-reasons' => '* Eenvoudig vandalisme
+	'patrol-skipped-ok'      => 'Bewerking wordt genegeerd.',
+	'patrol-reasons'         => '* Eenvoudig vandalisme
 * Zandbakken
 * Zie overlegpagina',
-	'patrol-another' => 'Toon andere bewerking als beschikbaar.',
-	'patrol-stopped' => 'U heeft gekozen geen andere bewerking te controleren. $1',
-	'patrol-resume' => 'Klik hier om verder te gaan.',
-	'group-patroller' => 'Controleurs',
+	'patrol-another'         => 'Toon andere bewerking als beschikbaar.',
+	'patrol-stopped'         => 'U heeft gekozen geen andere bewerking te controleren. $1',
+	'patrol-resume'          => 'Klik hier om verder te gaan.',
+	'group-patroller'        => 'Controleurs',
 	'group-patroller-member' => 'Controleur',
-	'grouppage-patroller' => '{{ns:project}}:Controleur',
+	'grouppage-patroller'    => '{{ns:project}}:Controleur',
 );
 
 /* Norwegian (Jon Harald Søby) */

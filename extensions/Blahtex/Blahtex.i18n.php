@@ -363,6 +363,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Sherbrooke
+ * @author Urhixidur
  * @author Grondin
  */
 $messages['fr'] = array(
@@ -393,7 +394,7 @@ $messages['fr'] = array(
 	'math_LatexPackageUnavailable'          => "Ne peut rendre le fichier PNG car le paquetage LaTeX « $1 » n'est pas accessible.",
 	'math_MismatchedBeginAndEnd'            => 'Les commandes « $1 » et « $2 » ne correspondent pas.',
 	'math_MisplacedLimits'                  => "La commande « $1 » doit apparaître après un opérateur lorsqu'en mode math (suggestion : essayez « mathop »).",
-	'math_MissingCommandAfterNewcommand'    => 'Un nouveau nom de commande est manquant ou fautif après « \\newcommand » (il doit y avoir précisément une commande définie, elle doit commencer par « \\ » et ne contenir que des caractères alphabétique).',
+	'math_MissingCommandAfterNewcommand'    => 'Un nouveau nom de commande est manquant ou fautif après « \\newcommand » (il doit y avoir précisément une commande définie, elle doit commencer par « \\ » et ne contenir que des caractères alphabétiques).',
 	'math_MissingDelimiter'                 => 'Un délimiteur manque après « $1 ».',
 	'math_MissingOpenBraceAfter'            => 'La balise « { » manque après « $1 »',
 	'math_MissingOpenBraceAtEnd'            => 'La balise « { » manque à la fin de la saisie.',
@@ -405,7 +406,7 @@ $messages['fr'] = array(
 	'math_PngIncompatibleCharacter'         => 'Ne peut générer le fichier PNG qui contient le caractère $1.',
 	'math_ReservedCommand'                  => 'La commande « $1 » est réservée à blahtex.',
 	'math_SubstackRowTooBig'                => "Il ne peut y avoir qu'une seule entrée dans chaque rangée d'un bloc « sous-pilé ».",
-	'math_TooManyMathmlNodes'               => "Il y a trop de noeuds dans l'arbre MathML.",
+	'math_TooManyMathmlNodes'               => 'Il y a trop de nœuds dans l’arbre MathML.',
 	'math_TooManyTokens'                    => 'La donnée saisie est trop longue.',
 	'math_UnavailableSymbolFontCombination' => "Le symbole « $1 » n'est pas disponible pour la police de caractères « $2 ».",
 	'math_UnexpectedNextCell'               => 'La commande « & » peut seulement apparaître dans un bloc « \\begin ... \\end ».',

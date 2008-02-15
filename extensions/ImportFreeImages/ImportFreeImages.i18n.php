@@ -47,7 +47,7 @@ $messages['ar'] = array(
  */
 $messages['bg'] = array(
 	'importfreeimages'                       => 'Внасяне на свободни картинки',
-	'importfreeimages-desc'                  => 'Позволява внасянето на подходящо лицензирани картинки от flickr.',
+	'importfreeimages-desc'                  => 'Позволява [[Special:ImportFreeImages|внасянето на подходящо лицензирани картинки]] от [http://www.flickr.com flickr].',
 	'importfreeimages_description'           => 'Тази страница позволява търсенето на подходящо лицензирани картинки от flickr и качването им в уикито.',
 	'importfreeimages_noapikey'              => 'Не е конфигуриран Flickr API ключ. Такъв API ключ може да се получи [http://www.flickr.com/services/api/misc.api_keys.html оттук], след което е необходимо да се настрои wgFlickrAPIKey в ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'         => "Не бяха открити резултати за търсенето ви по критерия '$1'. Моля, опитайте отново.",

@@ -115,6 +115,7 @@ $messages['el'] = array(
 
 /** French (Français)
  * @author Sherbrooke
+ * @author Urhixidur
  * @author Grondin
  */
 $messages['fr'] = array(
@@ -134,7 +135,7 @@ $messages['fr'] = array(
 	'chemFunctions_ECNumber'           => 'Nomenclature EC',
 	'chemFunctions_Formula'            => 'Formule',
 	'chemFunctions_Name'               => 'Nom UICPA',
-	'chemFunctions_ChemFormInputError' => 'Chemform, intrant erroné!',
+	'chemFunctions_ChemFormInputError' => 'Chemform, intrant erroné !',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -261,6 +262,25 @@ $messages['it'] = array(
 	'chemFunctions_Formula' => 'Formula',
 	'chemFunctions_Name' => 'Nome IUPAC',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Input non corretto.'
+);
+
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'chemicalsources'                  => '化学関連の検索',
+	'chemicalsource-desc'              => '化学式のためのタグ <nowiki><chemform></nowiki> を追加する',
+	'chemFunctions_ListPage'           => '化学関連の検索',
+	'chemFunctions_DataList'           => '以下のリストは、あなたが検索した化学物質に関する情報を提供しているサイトです。
+
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">$MIXCASNameFormula 化合物（アメリカ国立標準技術研究所）</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">化学物質安全性データシート（英オックスフォード大学、検索できません）</a><br />',
+	'chemFunctions_CAS'                => 'CAS登録番号',
+	'chemFunctions_ATCCode'            => 'ATC分類',
+	'chemFunctions_ECNumber'           => 'EC番号',
+	'chemFunctions_Formula'            => '化学式',
+	'chemFunctions_Name'               => 'IUPAC名',
+	'chemFunctions_ChemFormInputError' => 'Chemform: 入力エラー！',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
@@ -519,10 +539,14 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author Max sonnelid
  */
 $messages['sv'] = array(
-	'chemFunctions_Name' => 'IUPAC Namn',
+	'chemFunctions_CAS'      => 'CAS nummer',
+	'chemFunctions_ATCCode'  => 'ATC kod',
+	'chemFunctions_ECNumber' => 'EC nummer',
+	'chemFunctions_Name'     => 'IUPAC Namn',
 );
 
 /** Telugu (తెలుగు)

@@ -15,9 +15,12 @@ $messages['en'] = array(
 	'minnamelength-desc'  => 'Enforce a minimum username length',
 );
 
-/* Arabic */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
 	'minnamelength-error' => 'اسم المستخدم قصير للغاية. أقل طول مسموح به هو $1.',
+	'minnamelength-desc'  => 'يجبر على طول أدنى لاسم المستخدم',
 );
 
 $messages['bcl'] = array(

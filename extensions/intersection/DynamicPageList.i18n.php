@@ -315,3 +315,13 @@ $messages['vi'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Cần phải bao gồm ít nhất một thể loại hay định rõ một không gian tên!',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: Klads tu mödiks!',
+	'intersection_toofewcats'    => 'DynamicPageList: Klads tu nemödiks!',
+	'intersection_noresults'     => 'DynamicPageList: Seks nonik!',
+	'intersection_noincludecats' => 'DynamicPageList: Nedol välön kladi pu bali, u nemaspadi!',
+);
+

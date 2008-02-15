@@ -269,20 +269,22 @@ $messages['fi'] = array(
 	'bookinfo-provider'          => 'Tietolähde: $1',
 );
 
-/* French */
+/** French (Français)
+ * @author Urhixidur
+ */
 $messages['fr'] = array(
-	'bookinfo-header' => 'Informations sur les ouvrages',
-	'bookinfo-desc' => 'Étend [[Special:Booksources]] avec des informations à partir d’un service internet',
-	'bookinfo-result-title' => 'Titre :',
-	'bookinfo-result-author' => 'Auteur :',
-	'bookinfo-result-publisher' => 'Éditeur :',
-	'bookinfo-result-year' => 'Année :',
+	'bookinfo-header'            => 'Informations sur les ouvrages',
+	'bookinfo-desc'              => 'Étend [[Special:Booksources]] avec des informations à partir d’un service Internet',
+	'bookinfo-result-title'      => 'Titre :',
+	'bookinfo-result-author'     => 'Auteur :',
+	'bookinfo-result-publisher'  => 'Éditeur :',
+	'bookinfo-result-year'       => 'Année :',
 	'bookinfo-error-invalidisbn' => 'ISBN invalide.',
-	'bookinfo-error-nosuchitem' => 'Cet élément n’existe pas ou n’a pas pu être trouvé.',
-	'bookinfo-error-nodriver' => 'Impossible d’initialiser un moteur d’information sur les ouvrages.',
-	'bookinfo-error-noresponse' => 'Aucune réponse ou dépassement du délai.',
-	'bookinfo-purchase' => 'Acheter ce livre sur $1',
-	'bookinfo-provider' => 'Fournisseur des données : $1',
+	'bookinfo-error-nosuchitem'  => 'Cet élément n’existe pas ou n’a pas pu être trouvé.',
+	'bookinfo-error-nodriver'    => 'Impossible d’initialiser un moteur d’information sur les ouvrages.',
+	'bookinfo-error-noresponse'  => 'Aucune réponse ou dépassement du délai.',
+	'bookinfo-purchase'          => 'Acheter ce livre sur $1',
+	'bookinfo-provider'          => 'Fournisseur des données : $1',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -825,15 +827,18 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author Veeven
+ * @author Chaduvari
  */
 $messages['te'] = array(
 	'bookinfo-header'            => 'పుస్తకపు సమాచారం',
+	'bookinfo-desc'              => 'ఏదైనా వెబ్ సేవ నుండి వచ్చిన సమాచారంతో [[Special:Booksources]] ను విస్తరిస్తుంది',
 	'bookinfo-result-title'      => 'శీర్షిక:',
 	'bookinfo-result-author'     => 'రచయిత:',
 	'bookinfo-result-publisher'  => 'ప్రచురణకర్త:',
 	'bookinfo-result-year'       => 'సంవత్సరం:',
 	'bookinfo-error-invalidisbn' => 'తప్పుడు ISBN ఇచ్చారు.',
 	'bookinfo-error-nosuchitem'  => 'అంశం అసలు లేదు లేదా కనబడలేదు.',
+	'bookinfo-error-nodriver'    => 'సముచితమైన పుస్తక సమాచార డ్రైవరును మేల్కొలపలేకున్నాం.',
 	'bookinfo-error-noresponse'  => 'ప్రతిస్పందన లేదు లేదా అభ్యర్థన కాలం చెల్లింది.',
 	'bookinfo-purchase'          => '$1 నుండి ఈ పుస్తకాన్ని కొనండి',
 	'bookinfo-provider'          => 'డాటా పంపిణీదారు: $1',

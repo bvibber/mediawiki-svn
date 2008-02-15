@@ -88,7 +88,7 @@ $messages['bcl'] = array(
  */
 $messages['bg'] = array(
 	'asksql'          => 'SQL заявка',
-	'asksql-desc'     => 'Отправя не на SQL-заявки към базата данни през [[Special:Asksql|специална страница]]',
+	'asksql-desc'     => 'Отправяне на SQL-заявки към базата данни през [[Special:Asksql|специална страница]]',
 	'asksqltext'      => "Формулярът по-долу служи за отправяне на директни заявки към базата данни.
 За ограничаване на низовите литерали се използват единични кавички ('като тези').
 Заявките към базата данни могат значително да натоварят сървъра, затова е желателно тази функционалност да се използва пестеливо.",
@@ -215,18 +215,18 @@ $messages['fi'] = array(
 	'querysuccessful' => 'Kysely onnistui',
 );
 
-/* French
- * @author Bertrand Grondin
+/** French (Français)
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'asksql'          => 'Requête SQL',
 	'asksql-desc'     => 'Effectue des requêtes SQL à travers une [[Special:Asksql|page spéciale]]',
-	'asksqltext'      => "Utilisez ce formulaire pour faire une requête directe dans la base de donnée.
+	'asksqltext'      => "Utilisez ce formulaire pour faire une requête directe dans la base de données.
 Utilisez les apostrophes ('comme ceci') pour les chaînes de caractères. Ceci peut souvent surcharger le serveur. Aussi, utilisez cette fonction avec parcimonie.",
 	'sqlislogged'     => 'Notez bien que toutes les requêtes sont journalisées.',
 	'sqlquery'        => 'Entrez la requête',
 	'querybtn'        => 'Soumettre la requête',
-	'selectonly'      => 'Seules les requêtes en lectures seules sont permises.',
+	'selectonly'      => 'Seules les requêtes en lecture seulement sont permises.',
 	'querysuccessful' => 'La requête a été exécutée avec succès.',
 );
 

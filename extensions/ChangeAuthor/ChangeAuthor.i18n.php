@@ -208,6 +208,7 @@ $messages['eo'] = array(
  * @author Sherbrooke
  * @author Dereckson
  * @author Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'changeauthor'                      => "Changer l'auteur des révisions",
@@ -218,9 +219,9 @@ $messages['fr'] = array(
 	'changeauthor-pagenameform-go'      => 'Aller',
 	'changeauthor-comment'              => 'Commentaire :',
 	'changeauthor-changeauthors-multi'  => 'Changer auteur(s)',
-	'changeauthor-explanation-multi'    => "Avec ce formulaire, vous pouvez changer les auteurs des révisions. Modifier un ou plusieurs noms d'usager dans la liste, ajouter un commentaire (facultatif) et cliquer le bouton ''Changer auteur(s)''.",
+	'changeauthor-explanation-multi'    => "Avec ce formulaire, vous pouvez changer les auteurs des révisions. Modifiez un ou plusieurs noms d'usager dans la liste, ajoutez un commentaire (facultatif) et cliquez le bouton ''Changer auteur(s)''.",
 	'changeauthor-changeauthors-single' => "Changer l'auteur",
-	'changeauthor-explanation-single'   => "Avec ce formulaire, vous pouvez changer l'auteur d'une révision. Changer le nom d'auteur ci-dessous, ajouter un commentaire (facultatif) et cliquer sur le bouton ''Changer l'auteur''.",
+	'changeauthor-explanation-single'   => "Avec ce formulaire, vous pouvez changer l'auteur d'une révision. Changez le nom d'auteur ci-dessous, ajoutez un commentaire (facultatif) et cliquez sur le bouton ''Changer l'auteur''.",
 	'changeauthor-invalid-username'     => "Nom d'utilisateur « $1 » invalide",
 	'changeauthor-nosuchuser'           => "Pas d'utilisateur « $1 »",
 	'changeauthor-revview'              => 'Révision #$1 de $2',
@@ -230,7 +231,6 @@ $messages['fr'] = array(
 	'changeauthor-success'              => 'Votre requête a été traitée avec succès.',
 	'changeauthor-logentry'             => "Modification de l'auteur de $2 de $1 depuis $3 vers $4",
 	'changeauthor-logpagename'          => "Journal des changements faits par l'auteur",
-	'changeauthor-rev'                  => 'r$1',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -646,11 +646,13 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
- * @author Max sonnelid
  * @author M.M.S.
+ * @author Max sonnelid
  * @author Lejonel
  */
 $messages['sv'] = array(
+	'changeauthor'                      => 'Ändra revisions upphovsman',
+	'changeauthor-desc'                 => 'Tillåt ändring av revisions upphovsman',
 	'changeauthor-title'                => 'Ändra upphovsmanen av en revision',
 	'changeauthor-search-box'           => 'Sök revisioner',
 	'changeauthor-pagename-or-revid'    => 'Sidnamn eller revisions ID:',
@@ -659,7 +661,9 @@ $messages['sv'] = array(
 	'changeauthor-changeauthors-multi'  => 'Ändra upphovsman (upphovsmän)',
 	'changeauthor-changeauthors-single' => 'Ändra upphovsman',
 	'changeauthor-invalid-username'     => 'Ogiltigt användarnamn "$1".',
+	'changeauthor-revview'              => 'Revision #$1 av $2',
 	'changeauthor-nosuchtitle'          => 'Det finns ingen sida med namnet "$1".',
+	'changeauthor-logentry'             => 'Ändrad upphovsman av $2 av $1 från $3 till $4',
 	'changeauthor-logpagename'          => 'Upphovsmansändringslogg',
 );
 

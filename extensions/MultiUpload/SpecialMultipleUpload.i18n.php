@@ -31,6 +31,7 @@ Inappropriate files will be deleted immediately, see the [[{{MediaWiki:Multipleu
  */
 $messages['ar'] = array(
 	'multipleupload'                   => 'رفع الملفات',
+	'multipleupload-desc'              => 'يسمح للمستخدمين [[Special:MultipleUpload|برفع عدة ملفات في وقت واحد]]',
 	'multipleupload-ignoreallwarnings' => "تجاهل '''كل التحذيرات''' واحفظ الملفات على أية حال.",
 	'multipleupload-saveallfiles'      => 'حفظ كل الملفات',
 	'multipleupload-addresswarnings'   => 'من فضلك صحح أية تحذيرات قبل إعادة رفع الملفات.',

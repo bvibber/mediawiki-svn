@@ -1318,6 +1318,7 @@ $messages['te'] = array(
 	'ogg-pause'               => 'ఆపు',
 	'ogg-stop'                => 'ఆపివేయి',
 	'ogg-play-video'          => 'వీడియోని ఆడించు',
+	'ogg-play-sound'          => 'శబ్ధాన్ని వినిపించు',
 	'ogg-player-videoElement' => '<video> మూలకం',
 	'ogg-player-oggPlugin'    => 'Ogg ప్లగిన్',
 	'ogg-player-thumbnail'    => 'నిచ్చల చిత్రాలు మాత్రమే',

@@ -253,6 +253,7 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Xosé
+ * @author Toliño
  * @author Alma
  */
 $messages['gl'] = array(
@@ -263,13 +264,13 @@ de todos os historiais. Resulta útil cando se subdivide unha páxina, etc.',
 	'duplicator-options'               => 'Opcións',
 	'duplicator-source'                => 'Fonte:',
 	'duplicator-dest'                  => 'Destino:',
-	'duplicator-dotalk'                => 'Duplicar a páxina de discusión (se proceder)',
+	'duplicator-dotalk'                => 'Duplicar a páxina de conversa (se procede)',
 	'duplicator-submit'                => 'Duplicar',
 	'duplicator-summary'               => 'Copiado desde [[$1]]',
 	'duplicator-success'               => "<big>'''Copiouse [[$1]] a [[$2]].'''</big>",
 	'duplicator-success-revisions'     => '{{PLURAL:$1|Copiouse|Copiáronse}} $1 revisións.',
-	'duplicator-success-talkcopied'    => 'Tamén se copiou a páxina de discusión.',
-	'duplicator-success-talknotcopied' => 'Non se puido copiar a páxina de discusión.',
+	'duplicator-success-talkcopied'    => 'Tamén se copiou a páxina de conversa.',
+	'duplicator-success-talknotcopied' => 'Non se puido copiar a páxina de conversa.',
 	'duplicator-failed'                => 'Non se puido copiar a páxina. Produciuse un erro descoñecido.',
 	'duplicator-source-invalid'        => 'Forneza un título de orixe válido.',
 	'duplicator-source-notexist'       => 'Non existe [[$1]]. Forneza un título de páxina que exista.',

@@ -438,12 +438,21 @@ $messages['sk'] = array(
  * @author Max sonnelid
  */
 $messages['sv'] = array(
-	'specialuserstats'        => 'Användarstatistik',
-	'usagestatistics'         => 'Användarstatistik',
-	'usagestatistics-desc'    => 'Visar användningsstatistik för enskilda användare och för wikin som helhet',
-	'usagestatisticsfor'      => '<h2>Användarstatistik för [[:user:$1|$1]]</h2>',
-	'usagestatisticsallusers' => 'Alla användare',
-	'usagestatisticssubmit'   => 'Generera statistik',
+	'specialuserstats'             => 'Användarstatistik',
+	'usagestatistics'              => 'Användarstatistik',
+	'usagestatistics-desc'         => 'Visar användningsstatistik för enskilda användare och för wikin som helhet',
+	'usagestatisticsfor'           => '<h2>Användarstatistik för [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'      => 'Alla användare',
+	'usagestatisticsinterval'      => 'Intervall',
+	'usagestatisticsstart'         => 'Startdatum',
+	'usagestatisticsend'           => 'Slutdatum',
+	'usagestatisticssubmit'        => 'Visa statistik',
+	'usagestatisticsnostart'       => '* <font color=red>Ange ett startdatum</font>',
+	'usagestatisticsnoend'         => '* <font color=red>Ange ett slutdatum</font>',
+	'usagestatisticsbadstartend'   => '<b>Felaktigt <i>start-</i> eller <i>slutdatum!</i></b>',
+	'usagestatisticsintervalday'   => 'Dag',
+	'usagestatisticsintervalweek'  => 'Vecka',
+	'usagestatisticsintervalmonth' => 'Månad',
 );
 
 /** Telugu (తెలుగు)

@@ -893,29 +893,34 @@ $messages['fo'] = array(
 	'boardvote_dumplink'      => 'Trýst her',
 	'boardvote_welcome'       => 'Vælkomin \'\'\'$1\'\'\'!',
 );
+
+/** French (Français)
+ * @author Urhixidur
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'boardvote'               => "Élections au conseil d’administration de la Wikimedia Foundation",
-	'boardvote-desc'          => '[[meta:Board elections|Élections au conseil d’administration de la Wikimedia Foundation]]',
-	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vote]]
+	'boardvote'              => 'Élections au conseil d’administration de la Fondation Wikimedia',
+	'boardvote-desc'         => "[[meta:Board elections|Élections au Conseil d'administration de Wikimedia]]",
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vote]]
 * [[Special:Boardvote/list|Liste des votes enregistrés]]
-* [[Special:Boardvote/dump|Enregistrements cryptés]]",
-	'boardvote_intro'         => "
-<p>Bienvenue aux troisièmes élections du conseil d'administration de <i><a href=\"http://wikimediafoundation.org/wiki/Accueil\" class=\"extiw\" title=\"foundation:Accueil\">Wikimedia Foundation Inc.</a></i>.
+* [[Special:Boardvote/dump|Enregistrements cryptés]]',
+	'boardvote_intro'        => '
+<p>Bienvenue aux troisièmes élections du conseil d\'administration de <i><a href="http://wikimediafoundation.org/wiki/Accueil" class="extiw" title="foundation:Accueil">Wikimedia Foundation Inc.</a></i>.
 Nous votons pour une personne qui représentera la communauté des utilisateurs sur les différents projets Wikimedia.
-Cette personne et le conseil d'administration contribueront à orienter la direction de ces projets et représenteront <i>vos</i> intérêts et préoccupations auprès du conseil d'administration.
-Ils décideront des moyens de financement et de l'affectation des fonds.</p>
+Cette personne et le conseil d\'administration contribueront à orienter la direction de ces projets et représenteront <i>vos</i> intérêts et préoccupations auprès du conseil d\'administration.
+Ils décideront des moyens de financement et de l\'affectation des fonds.</p>
 
 <p>Lisez attentivement les déclarations des candidats et leurs réponses aux questions avant de voter.
-Tous les candidats sont des utilisateurs respectés, qui ont donné beaucoup de temps et d'effort pour faire de ces projets un endroit accueillant dédié au développement de la libre diffusion du savoir humain.</p>
+Tous les candidats sont des utilisateurs respectés, qui ont donné beaucoup de temps et d\'effort pour faire de ces projets un endroit accueillant dédié au développement de la libre diffusion du savoir humain.</p>
 
-<p>Vous pouvez voter pour autant de candidats que vous le souhaitez. Celui qui remportera le plus de voix sera déclaré élu pour le poste auquel il s'est présenté. En cas de ballotage, il y aura un vote de départage.</p>
+<p>Vous pouvez voter pour autant de candidats que vous le souhaitez. Celui qui remportera le plus de voix sera déclaré élu pour le poste auquel il s\'est présenté. En cas de ballotage, il y aura un vote de départage.</p>
 
-<p>Pour plus d'information, voyez :</p>
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2006/Fr\" class=\"extiw\" title=\"meta:Election_FAQ_2006/Fr\">FAQ sur les élections</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Election_candidates_2006/Fr\" class=\"extiw\" title=\"meta:Election_candidates_2006/Fr\">Candidat-e-s</a></li></ul>
-",
-	'boardvote_intro_change'  => "<p>Vous avez déjà voté. Cependant vous pouvez modifier votre vote en utilisant le formulaire ci-dessous. Merci de cocher les cases en regard de chaque candidat qui a votre support.</p></p>",
-	'boardvote_entered'       => "Merci, votre vote a été enregistré.
+<p>Pour plus d\'information, voyez :</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006/Fr" class="extiw" title="meta:Election_FAQ_2006/Fr">FAQ sur les élections</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Fr" class="extiw" title="meta:Election_candidates_2006/Fr">Candidat-e-s</a></li></ul>
+',
+	'boardvote_intro_change' => '<p>Vous avez déjà voté. Cependant vous pouvez modifier votre vote en utilisant le formulaire ci-dessous. Merci de cocher les cases en regard de chaque candidat qui a votre support.</p></p>',
+	'boardvote_entered'      => 'Merci, votre vote a été enregistré.
 
 Si vous le souhaitez, vous pouvez enregistrer les détails suivants. Votre historique de vote est :
 
@@ -929,34 +934,31 @@ La version cryptée suit. Elle sera affichée publiquement sur [[Special:Boardvo
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Retour]]",
-	'boardvote_nosession'     => "Impossible de déterminer votre identifiant Wikimedia. Veuillez vous rendre sur votre wiki d’origine, vous enregistrer, et vous rendre sur la page <nowiki>[[Special:Boardvote]]</nowiki>. Vous devez posséder un compte avec au moins $1 contributions effectuées avant le $2, et avoir effectué votre première édition avant le $3.",
-	'boardvote_notloggedin'   => "Vous n’êtes actuellement pas authentifié. Pour voter, vous devez utiliser un compte comportant au moins $1 contributions avant le $2, et dont la première remonte au $3.",
-	'boardvote_notqualified'  => "Vous ne répondez pas à l’une des conditions requises pour voter lors de ce scrutin. Il est nécessaire d’avoir $3 contributions avant le $2,  et vous en avez effectuées $1. En outre, votre première modification date du $4, et elle doit avoir été faite avant le $5.",
-	'boardvote_novotes'       => "Personne n’a encore voté.",
-	'boardvote_time'          => "Heure ",
-	'boardvote_user'          => "Utilisateur",
-	'boardvote_edits'         => "Modifications ",
-	'boardvote_days'          => "Jours",
-	'boardvote_ip'            => "IP",
-	'boardvote_ua'            => "Représentant de l’utilisateur",
-	'boardvote_listintro'     => "Liste des personnes ayant voté :<br /><br />",
-	'boardvote_dumplink'      => "Cliquez ici",
-	'boardvote_submit'        => 'OK',
-	'boardvote_strike'        => "biffer ",
-	'boardvote_unstrike'      => "débiffer ",
-	'boardvote_needadmin'     => "Seuls les administrateurs du vote peuvent effectuer cette opération.",
-	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Élections au conseil d’administration Wikimedia</a> :  Vote ouvert jusqu’au 12 juillet",
-	'boardvote_notstarted'    => 'Le vote n’est pas encore commencé.',
-	'boardvote_closed'        => 'L’élection est désormais close. Le résultat est proclamé sur [[meta:Election results 2006/fr|la page de résultats]] (fr).',
-	'boardvote_edits_many'    => 'plusieurs ',
-	'group-boardvote'         => 'Membres votants du conseil d’administration',
-	'group-boardvote-member'  => 'Membre votant du conseil d’administration',
-	'grouppage-boardvote'     => '{{ns:project}}:membre votant du conseil d’administration',
-	'boardvote_blocked'       => 'Désolé, mais vous avez été bloqué sur votre wiki d’origine. Les utilisateurs bloqués ne peuvent pas voter.',
-	'boardvote_welcome'       => "Bienvenue '''$1'''!",
-	'go_to_board_vote'        => 'Wikimedia Board Elections 2007',
-	'boardvote_redirecting'   => 'Pour plus de transparence et sécurité le vote se déroule sur un serveur externe et indépendant.
+[[Special:Boardvote/entry|Retour]]',
+	'boardvote_nosession'    => 'Impossible de déterminer votre identifiant Wikimedia. Veuillez vous rendre sur votre wiki d’origine, vous enregistrer, et vous rendre sur la page <nowiki>[[Special:Boardvote]]</nowiki>. Vous devez posséder un compte avec au moins $1 contributions effectuées avant le $2, et avoir effectué votre première édition avant le $3.',
+	'boardvote_notloggedin'  => 'Vous n’êtes actuellement pas authentifié. Pour voter, vous devez utiliser un compte comportant au moins $1 contributions avant le $2, et dont la première remonte au moins au $3.',
+	'boardvote_notqualified' => 'Vous ne répondez pas à l’une des conditions requises pour voter lors de ce scrutin. Il est nécessaire d’avoir $3 contributions avant le $2,  et vous en avez effectuées $1. En outre, votre première modification date du $4, et elle doit avoir été faite avant le $5.',
+	'boardvote_novotes'      => 'Personne n’a encore voté.',
+	'boardvote_time'         => 'Heure ',
+	'boardvote_user'         => 'Utilisateur',
+	'boardvote_edits'        => 'Modifications ',
+	'boardvote_days'         => 'Jours',
+	'boardvote_ua'           => 'Représentant de l’utilisateur',
+	'boardvote_listintro'    => 'Liste des personnes ayant voté :<br /><br />',
+	'boardvote_dumplink'     => 'Cliquez ici',
+	'boardvote_strike'       => 'biffer ',
+	'boardvote_unstrike'     => 'débiffer ',
+	'boardvote_needadmin'    => 'Seuls les administrateurs du vote peuvent effectuer cette opération.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Élections au conseil d’administration Wikimedia</a> :  Vote ouvert jusqu’au 12 juillet',
+	'boardvote_notstarted'   => 'Le vote n’est pas encore commencé.',
+	'boardvote_closed'       => 'L’élection est désormais close. Le résultat est proclamé sur [[meta:Election results 2006/fr|la page de résultats]] (fr).',
+	'boardvote_edits_many'   => 'plusieurs ',
+	'group-boardvote'        => 'Membres votants du conseil d’administration',
+	'group-boardvote-member' => 'Membre votant du conseil d’administration',
+	'grouppage-boardvote'    => '{{ns:project}}:membre votant du conseil d’administration',
+	'boardvote_blocked'      => 'Désolé, mais vous avez été bloqué sur votre wiki d’origine. Les utilisateurs bloqués ne peuvent pas voter.',
+	'boardvote_welcome'      => "Bienvenue '''$1'''!",
+	'boardvote_redirecting'  => 'Pour plus de transparence et sécurité le vote se déroule sur un serveur externe et indépendant.
 
 Vous serez redirigé à ce serveur externe en 20 secondes. [$1 Cliquez ici] pour y aller maintenant.
 
@@ -3150,6 +3152,7 @@ En säkerhetsvarning om ett osignerat certifikat kanske kommer att visas.',
 /** Telugu (తెలుగు)
  * @author Veeven
  * @author Mpradeep
+ * @author Chaduvari
  */
 $messages['te'] = array(
 	'boardvote'              => 'వికీమీడియా ట్రస్టుబోర్డు ఎన్నికలు',
@@ -3182,6 +3185,7 @@ $messages['te'] = array(
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|వెనక్కు]]',
+	'boardvote_nosession'    => 'మీ వికీమీడియా వాడుకరి ఐడీని నిర్ధారించుకోలేకున్నాం. మీకు సభ్యత్వం ఉన్న వికీలో లాగినయ్యి, <nowiki>[[Special:Boardvote]]</nowiki> కు వెళ్ళండి. మీరు వాడే ఖాతాతో $2 నాటికి కనీసం $1 రచనలు చేసి ఉండాలి. అలాగే మొదటి దిద్దుబాటు $3 కంటే ముందు చేసి ఉండాలి.',
 	'boardvote_notloggedin'  => 'మీరు లాగిన్ అయిలేరు. వోటేసేందుకు మీకో ఎకౌంటుండి, $2 లోపు కనీసం $1 రచనలు చేసి ఉండాలి.',
 	'boardvote_notqualified' => 'సారీ, $2 లోపు మీరు చేసిన రచనలు $1 మాత్రమే. వోటేసేందుకు కనీసం $3 ఉండాలి.',
 	'boardvote_novotes'      => 'ఇంకా ఎవరూ ఓటెయ్యలేదు.',
@@ -3195,9 +3199,11 @@ $messages['te'] = array(
 	'boardvote_dumplink'     => 'ఇక్కడ నొక్కండి',
 	'boardvote_submit'       => 'సరే',
 	'boardvote_strike'       => 'కొట్టివేయు',
+	'boardvote_unstrike'     => 'కొట్టెయ్యవద్దు',
 	'boardvote_needadmin'    => 'ఎన్నికల నిర్వాహకులు మాత్రమే ఈ పని చెయ్యగలరు.',
 	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">వికీమీడియా బోర్డు ఎన్నికలు</a>:  జూలై 12 వరకు వోటెయ్యవచ్చు',
 	'boardvote_notstarted'   => 'వోటింగు ఇంకా మొదలు కాలేదు',
+	'boardvote_closed'       => 'వోటింగు పూర్తయింది. త్వరలో వెలువడనున్న ఫలితాల కోసం [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En ఎన్నికల పేజీ] చూడండి',
 	'boardvote_edits_many'   => 'చాలా',
 	'group-boardvote'        => 'బోర్డు వోటు నిర్వాహకులు',
 	'group-boardvote-member' => 'బోర్డు వోటు నిర్వాహకులు',

@@ -383,6 +383,13 @@ $messages['vi'] = array(
 	'sitenotice-desc'  => 'Để người dùng đóng thông báo ở đầu các trang',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'sitenotice-desc' => 'Dälon gebanes ad nemogükön jonami topädanunama',
+);
+
 $messages['yue'] = array(
 	'sitenotice_close' => '閂咗佢',
 );
