@@ -8,6 +8,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'passwordreset' => 'Password Reset',
+	'passwordreset' => "Resets Wiki user's passwords - requires 'passwordreset' privileges",
 	'passwordreset-invalidusername' => 'Invalid Username',
 	'passwordreset-emptyusername' => 'Empty Username',
 	'passwordreset-nopassmatch' => 'Passwords do not match',
@@ -104,6 +105,7 @@ $messages['el'] = array(
  */
 $messages['fr'] = array(
 	'passwordreset'                    => 'Remise à zéro du mot de passe',
+	'passwordreset-desc'               => "Réinitialise les mots de passe wiki des utilisateurs - nécessite les privilièges « passwordreset »",
 	'passwordreset-invalidusername'    => "Nom d'usager inconnu",
 	'passwordreset-emptyusername'      => "Nom d'usager vide",
 	'passwordreset-nopassmatch'        => 'Les mots de passe que vous avez saisis ne sont pas identiques.',
