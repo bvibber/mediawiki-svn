@@ -33,6 +33,7 @@ if( !defined( 'REVIEW_CSS' ) ) define('REVIEW_CSS', $wgScriptPath.'/extensions/R
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Review',
 	'description' => 'The resurrected validation feature.',
+	'descriptionmsg' => 'review-desc',
 	'author' => 'Magnus Manske',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Review'
 );

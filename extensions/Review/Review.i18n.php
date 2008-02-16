@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'review_sidebar_title' => "Review",
+	'review-desc' => 'The resurrected [[Special:Review|validation]] feature.',
 	'review_topics' => "# The following is the list of topics and ranges for the review extension.
 # Each topic is defined by a line of five values, separated by ':' (all other lines are ignored).
 # The order is: numerical key (>0), name, max range (>1; 2=yes/no), meaning of lowest value (e.g., 'bad'), meaning of highest value (e.g., 'good').
@@ -216,8 +217,9 @@ $messages['fi'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'review_sidebar_title'                                   => 'Révision',
-	'review_topics'                                          => "# Liste de sujets pour l'extension « review » de MediaWiki.
+	'review_sidebar_title'  => 'Révision',
+	'review-desc' => 'Relance la fonctionnalité de [[Special:Review|validation]] d’un article.',
+	'review_topics' => "# Liste de sujets pour l'extension « review » de MediaWiki.
 # ....
 # Chaque sujet est défini par une liste de données séparées par « : » (toute autre liste est ignorée).
 # ....
