@@ -11,7 +11,8 @@ $wgExtensionFunctions[] = 'wfPurge';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Purge',
 	'author' => 'Ævar Arnfjörð Bjarmason',
-	'description' => 'Adds a purge tab on all normal pages and bypasses the purge check for anonymous users allowing for quick purging of the cache'
+	'description' => 'Adds a purge tab on all normal pages and bypasses the purge check for anonymous users allowing for quick purging of the cache',
+	'descriptionmsg' => 'purge-desc',
 );
 
 $dir = dirname(__FILE__) . '/';

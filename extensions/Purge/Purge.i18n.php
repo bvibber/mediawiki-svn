@@ -10,6 +10,7 @@ $messages = array();
 /*Original text by Ævar Arnfjörð Bjarmason*/
 $messages['en'] = array(
 	'purge' => 'purge',
+	'purge-desc' => 'Adds a purge tab on all normal pages and bypasses the purge check for anonymous users allowing for quick purging of the cache',
 );
 
 $messages['ar'] = array(
@@ -37,6 +38,7 @@ $messages['de'] = array(
 /*Translation by Bertrand GRONDIN*/
 $messages['fr'] = array(
 	'purge' => 'purger',
+	'purge-desc' => 'Ajoute un onglet « Purger » sur toutes les pages normales et active sa sélection pour les utilisateurs anonymes pour une purge rapide du cache.',
 );
 
 $messages['gl'] = array(
