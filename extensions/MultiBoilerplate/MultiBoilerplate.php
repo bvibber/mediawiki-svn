@@ -14,18 +14,16 @@
  */
 
 // If this is run directly from the web die as this is not a valid entry point.
-if( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Invalid entry point.' );
-}
+if( !defined( 'MEDIAWIKI' ) ) die( 'Invalid entry point.' );
 
 // Extension credits.
 $wgExtensionCredits[ 'other' ][] = array(
-	'name' => 'MultiBoilerplate',
-	'description' => 'Displays a box at the top of the edit page to select and load a boilerplate.',
+	'name'           => 'MultiBoilerplate',
+	'description'    => 'Displays a box at the top of the edit page to select and load a boilerplate.',
 	'descriptionmsg' => 'multiboilerplate-desc',
-	'author' => 'MinuteElectron',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:MultiBoilerplate',
-	'version' => '1.4',
+	'author'         => 'MinuteElectron',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:MultiBoilerplate',
+	'version'        => '1.4',
 );
 
 // Hook into EditPage::showEditForm:initial to modify the edit page header.

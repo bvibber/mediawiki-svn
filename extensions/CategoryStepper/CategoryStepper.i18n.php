@@ -8,14 +8,14 @@
 
 $messages = array();
 
-/**
- * English
+/** English
  * @author MinuteElectron <minuteelectron@googlemail.com>
  */
 $messages['en'] = array(
-	'categorystepper-start' => '(Start of category)',
+	'categorystepper'       => '',
 	'categorystepper-desc'  => 'Display a category stepper box on pages that are in a set of categories.',
 	'categorystepper-end'   => '(End of category)',
+	'categorystepper-start' => '(Start of category)',
 );
 
 /** Arabic (العربية)
@@ -197,4 +197,3 @@ $messages['vo'] = array(
 	'categorystepper-start' => '(Prim klada)',
 	'categorystepper-end'   => '(Fin klada)',
 );
-

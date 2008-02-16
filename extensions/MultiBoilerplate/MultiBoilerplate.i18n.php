@@ -8,8 +8,7 @@
 
 $messages = array();
 
-/**
- * English
+/** English
  * @author MinuteElectron <minuteelectron@googlemail.com>
  */
 $messages['en'] = array(
@@ -97,4 +96,3 @@ $messages['sk'] = array(
 	'multiboilerplate-legend' => 'Vyberte nápis',
 	'multiboilerplate-submit' => 'Načítať',
 );
-
