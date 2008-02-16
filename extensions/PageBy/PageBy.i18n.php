@@ -15,7 +15,7 @@ $messages = array();
  * @author Daniel Kinzler, brightbyte.de
  */
 $messages['en'] = array(
-	'pageby-desc'         => 'Shows contributors inline on a wiki page using the tag<code><nowiki><pageby></nowiki></code>.',
+	'pageby-desc'         => 'Shows contributors inline on a wiki page using the tag<code><nowiki><pageby></nowiki></code>',
 	'pageby-first'        => 'Page created by $1, $2',
 	'pageby-last'         => 'Last <a href="$3">modified</a> by $1, $2',
 	'pageby-contributors' => 'Contributors:',
@@ -72,7 +72,7 @@ $messages['el'] = array(
  * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'pageby-desc'         => 'Affiche les contributeurs en ligne sur une page wiki utilisant la balise <code><nowiki><pageby></nowiki></code>.',
+	'pageby-desc'         => 'Affiche les contributeurs en ligne sur une page wiki utilisant la balise <code><nowiki><pageby></nowiki></code>',
 	'pageby-first'        => 'Page créée par $1, $2',
 	'pageby-last'         => 'Dernière <a href="$3">modification</a> le $1, $2',
 	'pageby-contributors' => 'Contributeurs:',
