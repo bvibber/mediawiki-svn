@@ -20,6 +20,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Daniel Kinzler, brightbyte.de',
 	'url' => 'http://mediawiki.org/wiki/Extension:PageBy',
 	'description' => 'Shows contributors inline on a wiki page using the tag <nowiki><pageby></nowiki>',
+	'descriptionmsg' => 'pageby-desc',
 );
 
 $dir = dirname(__FILE__) . '/';
