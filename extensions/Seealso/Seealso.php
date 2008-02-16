@@ -12,10 +12,11 @@ Set system message "seealso_local" to use a localized version, e.g., to "sieheau
 */
 
 $wgExtensionCredits['parserhook'][] = array(
-	'name'        => 'Seealso',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:See_also',
-	'author'      => 'Magnus Manske',
-	'description' => 'Localised \'See also\' headings using the tag <nowiki><seealso></nowiki>',
+	'name'           => 'Seealso',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:See_also',
+	'author'         => 'Magnus Manske',
+	'description'    => 'Localised \'See also\' headings using the tag <nowiki><seealso></nowiki>',
+	'descriptionmsg' => 'seealso-desc',
 );
 
 $wgExtensionFunctions[] = "wfSeealso";

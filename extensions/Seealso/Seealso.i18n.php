@@ -11,7 +11,8 @@ $messages = array();
  * @author Magnus Manske
  */
 $messages['en'] = array(
-	'seealso' => 'See also',
+	'seealso'      => 'See also',
+	'seealso-desc' => 'Localised \'See also\' headings using the tag <code><nowiki><seealso></nowiki></code>.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -61,6 +62,7 @@ $messages['el'] = array(
  */
 $messages['fr'] = array(
 	'seealso' => 'Voir aussi',
+	'seealso-desc' => 'En-tête « Voir aussi » utilisée par la balise <code><nowiki><seealso></nowiki></code>.',
 );
 
 /** Galician (Galego)
