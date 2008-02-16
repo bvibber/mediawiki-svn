@@ -18,6 +18,14 @@ if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 }
 
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'Purge Cache',
+	'author' => 'Rob Church',
+	'description' => 'Special page used to wipe the OBJECTCACHE table',
+	'descriptionmsg' => 'purgecache-desc',
+	'version' => '2008-01-09',
+);
+
 $dir = dirname(__FILE__) . '/';
 extAddSpecialPage( $dir . 'PurgeCache_body.php', 'PurgeCache', 'PurgeCache' );
 $wgExtensionMessagesFiles['PurgeCache'] = $dir . 'PurgeCache.i18n.php';

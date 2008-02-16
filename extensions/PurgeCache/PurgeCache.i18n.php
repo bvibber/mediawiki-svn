@@ -10,6 +10,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'purgecache' => 'Purge cache',
+	'purgecache-desc' => 'Special page used to wipe the OBJECTCACHE table',
 	'purgecache-warning' => 'This will purge the cache tables.',
 	'purgecache-purged' => 'The cache has been purged.',
 	'purgecache-button' => 'Purge',
@@ -43,10 +44,11 @@ $messages['ca'] = array(
 );
 
 $messages['fr'] = array(
-	'purgecache' => 'Purger le cache',
+	'purgecache'         => 'Purger le cache',
+	'purgecache-desc'    => 'Page spéciale utilisée pour effacer la table OBJECTCACHE',
 	'purgecache-warning' => 'Ceci purgera les tables du cache.',
-	'purgecache-purged' => 'Le cache a été purgé.',
-	'purgecache-button' => 'Purger',
+	'purgecache-purged'  => 'Le cache a été purgé.',
+	'purgecache-button'  => 'Purger',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
