@@ -8,6 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
+	'scanset-desc' => 'View scanned page images from Andreas Grosz\'s CD/DVD sets',
 	'scanset_no_name' => 'ScanSet: You must specify a scan set name, e.g. &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name' => 'ScanSet: Invalid or missing scan set.',
 	'scanset_unrecognised_index_format' => 'ScanSet: Unknown index format',
@@ -139,6 +140,7 @@ $messages['fi'] = array(
  * @author Dereckson
  */
 $messages['fr'] = array(
+	'scanset-desc'                      => 'Affiche les images numérisées à partir des paramétrages CD/DVD d’Andréas Grosz',
 	'scanset_no_name'                   => 'ScanSet : Vous devez spécifier un nom pour le scanset, par exemple &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name'              => 'ScanSet : set invalide ou manquant',
 	'scanset_unrecognised_index_format' => "ScanSet : Format d'index inconnu",

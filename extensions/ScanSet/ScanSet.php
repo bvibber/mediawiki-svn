@@ -16,6 +16,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'ScanSet',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ScanSet',
 	'description' => 'View scanned page images from Andreas Grosz\'s CD/DVD sets',
+	'descriptionmsg' => 'scanset-desc',
 	'author' => 'Tim Starling',
 );
 
