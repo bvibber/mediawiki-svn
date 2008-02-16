@@ -16,6 +16,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'selectcategory-title'    => 'Select categories',
+	'selectcategory-desc'     => 'Allows the user to select from existing categories when editing a page',
 	'selectcategory-subtitle' => 'Shift-mouse to select multiple contiguous entries, Ctrl-mouse to select non-contiguous entries.',
 );
 
@@ -71,6 +72,7 @@ $messages['el'] = array(
  */
 $messages['fr'] = array(
 	'selectcategory-title'    => 'Choix de catégories',
+	'selectcategory-desc'     => 'Permet à l’utilisateur de sélectionner des catégories existantes lors de l’édition d’une page',
 	'selectcategory-subtitle' => 'Maj+click afin de (dé)sélectionner plusieurs catégories d’affilée, Ctrl+click afin de (dé)sélectionner des catégories individuellement.',
 );
 
