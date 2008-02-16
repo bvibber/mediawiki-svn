@@ -14,8 +14,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Random in category',
+	'version' => '2008-01-14',
 	'author' => 'VasilievVV',
 	'description' => 'Special page to get a random page in category',
+	'descriptionmsg' => 'randomincategory-desc',
 );
 
 $wgExtensionMessagesFiles['RandomInCategory'] = dirname(__FILE__) . '/SpecialRandomincategory.i18n.php';

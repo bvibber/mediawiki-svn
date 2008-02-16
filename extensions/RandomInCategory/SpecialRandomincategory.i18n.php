@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'randomincategory'                => 'Random page in category',
+	'randomincategory-desc'           => 'Special page to get a random page in category',
 	'randomincategory-toolbox'        => 'Random page',
 	'randomincategory-nocategory'     => 'Category $1 doesn\'t exist or is empty',
 	'randomincategory-label'          => 'Category:',
@@ -52,6 +53,7 @@ $messages['de'] = array(
  */
 $messages['fr'] = array(
 	'randomincategory'            => 'Page au hasard dans la catégorie',
+	'randomincategory-desc'       => 'Page spéciale pour obtenir une page au hasard dans une catégorie.',
 	'randomincategory-toolbox'    => 'Page au hasard',
 	'randomincategory-nocategory' => 'La catégorie « $1 » n’existe pas ou est vide',
 	'randomincategory-label'      => 'Catégorie :',
