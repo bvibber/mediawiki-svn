@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'resign'           => 'Resign',
+	'resign-desc'      => 'Gives users the ability to [[Special:Resign|remove their permissions]].',
 	'resign-text'      => "You can '''remove your permissions''' (e.g. sysop) in this page. Please check the permissions you would like to remove.
 
 Remember: '''You cannot get your permissions back this way!''' You will have to convince a bureaucrat or steward to grant you back the permissions. Please use this page very carefully.",
@@ -84,7 +85,8 @@ Muista: '''Et voi saada oikeuksiasi takaisin tämän sivun avulla!''' Sinun täy
 );
 
 $messages['fr'] = array(
-	'resign' => 'Quitter',
+	'resign' => 'Retirer ses propres permissions',
+	'resign-desc'      => 'Donne aux utilisateurs la possibilité de [[Special:Resign|retirer leurs propres permissions]].',
 	'resign-text' => 'Vous pouvez vous \'\'\'retirer vos droits\'\'\' (d\'adminsitrateurs, par exemple) dans cette page-ci. Prière de vérifier celles que vous souhaitez retirer.
 
 \'\'\'Par contre, vous ne pouvez plus les obtenir par cette page-ci !\'\'\' Vous devrez convaincre un bureaucrate ou un steward de vous les rendre. Dès lors, soyez prudent avant de modifier vos permissions.',

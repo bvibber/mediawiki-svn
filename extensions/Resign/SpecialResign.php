@@ -14,7 +14,8 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '2008-01-11',
 	'name' => 'Resign',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Resign',
-	'description' => 'Gives users the ability to remove their permissions'
+	'description' => 'Gives users the ability to remove their permissions',
+	'descriptionmsg' =>  'resign-desc',
 );
 
 # Add resign permission for every group set in the database
