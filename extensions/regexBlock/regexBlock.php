@@ -18,6 +18,14 @@ if($wgContactLink == ''){
 	$wgContactLink = '[[Special:Contact|contact Wikia]]';
 }
 
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'Regex Block',
+	'version' => '2008-02-08',
+	'author' => 'Bartek',
+	'description' => 'Extension used for blocking users names and IP addresses with regular expressions. Contains both the blocking mechanism and a special page to add/manage blocks.',
+	'descriptionmsg' => 'regexblock-desc',
+);
+
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['RegexBlock'] = $dir . 'regexBlock.i18n.php';
 
