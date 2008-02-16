@@ -25,14 +25,17 @@ $messages['af'] = array(
 );
 
 /** Arabic (العربية)
- * @author Mido
  * @author Meno25
+ * @author Mido
  */
 $messages['ar'] = array(
-	'ajax-se-desc'    => 'يعرض المستخدمين الذين يعدلون نفس الصفحة',
-	'ajax-se-title'   => 'يقوم الآن بالتحرير:',
-	'ajax-se-pending' => 'انتظار التحديث ... (اضغط على هذا الصندوق أو ابدأ في التحرير)',
-	'ajax-se-idling'  => '(منذ $1ث)',
+	'ajax-se-desc'             => 'يعرض المستخدمين الذين يعدلون نفس الصفحة',
+	'ajax-se-title'            => 'يقوم الآن بالتحرير:',
+	'ajax-se-pending'          => 'انتظار التحديث ... (اضغط على هذا الصندوق أو ابدأ في التحرير)',
+	'ajax-se-idling'           => '(منذ $1ث)',
+	'ajax-se-pagedoesnotexist' => 'الصفحة غير موجودة',
+	'ajax-se-userinvalid'      => 'خطأ: المستخدم غير صحيح',
+	'ajax-se-usernotfound'     => 'خطأ: المستخدم غير موجود',
 );
 
 /** Asturian (Asturianu)
@@ -155,10 +158,13 @@ $messages['fi'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'ajax-se-desc'    => 'Visualise les utilisateurs qui sont en train de modifier la même page.',
-	'ajax-se-title'   => 'En train d’être modifié par :',
-	'ajax-se-pending' => 'rafraîchissement en cours ... (cliquez sur ce message ou modifiez la page)',
-	'ajax-se-idling'  => '(il y a $1 s)',
+	'ajax-se-desc'             => 'Visualise les utilisateurs qui sont en train de modifier la même page.',
+	'ajax-se-title'            => 'En train d’être modifié par :',
+	'ajax-se-pending'          => 'rafraîchissement en cours ... (cliquez sur ce message ou modifiez la page)',
+	'ajax-se-idling'           => '(il y a $1 s)',
+	'ajax-se-pagedoesnotexist' => 'la page n’existe pas',
+	'ajax-se-userinvalid'      => 'ERREUR : utilisateur incorrect',
+	'ajax-se-usernotfound'     => 'ERREUR : Utilisateur introuvable',
 );
 
 /** Cajun French (Français cadien)
@@ -181,15 +187,18 @@ $messages['frp'] = array(
 );
 
 /** Galician (Galego)
- * @author Xosé
  * @author Toliño
+ * @author Xosé
  * @author Alma
  */
 $messages['gl'] = array(
-	'ajax-se-desc'    => 'Amosar aos usuarios que están editando na mesma páxina',
-	'ajax-se-title'   => 'Neste momento está a editar:',
-	'ajax-se-pending' => 'pendente de refresco... (faga clic nesta caixa ou comece a editar)',
-	'ajax-se-idling'  => '(hai $1s)',
+	'ajax-se-desc'             => 'Amosar aos usuarios que están editando na mesma páxina',
+	'ajax-se-title'            => 'Neste momento está a editar:',
+	'ajax-se-pending'          => 'pendente de refresco... (faga clic nesta caixa ou comece a editar)',
+	'ajax-se-idling'           => '(hai $1s)',
+	'ajax-se-pagedoesnotexist' => 'a páxina non existe',
+	'ajax-se-userinvalid'      => 'ERRO: usuario inválido',
+	'ajax-se-usernotfound'     => 'ERRO: o usuario non foi atopado',
 );
 
 /** Croatian (Hrvatski)
@@ -331,10 +340,13 @@ $messages['ml'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'ajax-se-desc'    => 'Toont gebruikers die een pagina bewerken wie dezelfde pagina aan het bewerken is',
-	'ajax-se-title'   => 'Bezig met het bewerken van:',
-	'ajax-se-pending' => 'moet nog bijgewerkt worden ... (klik op deze knop of begin met bewerken)',
-	'ajax-se-idling'  => '($1s geleden)',
+	'ajax-se-desc'             => 'Toont gebruikers die een pagina bewerken wie dezelfde pagina aan het bewerken is',
+	'ajax-se-title'            => 'Bezig met het bewerken van:',
+	'ajax-se-pending'          => 'moet nog bijgewerkt worden ... (klik op deze knop of begin met bewerken)',
+	'ajax-se-idling'           => '($1s geleden)',
+	'ajax-se-pagedoesnotexist' => 'pagina bestaat niet',
+	'ajax-se-userinvalid'      => 'FOUT: ongeldige gebruiker',
+	'ajax-se-usernotfound'     => 'FOUT: gebruiker niet gevonden',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -479,14 +491,18 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author Sannab
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'ajax-se-desc'    => 'Visar under sidredigering vilka användare som redigerar samma sida',
-	'ajax-se-title'   => 'Redigeras just nu:',
-	'ajax-se-pending' => 'avvaktar omläsning ... (klicka på denna ruta eller börja redigera)',
-	'ajax-se-idling'  => '($1s sedan)',
+	'ajax-se-desc'             => 'Visar under sidredigering vilka användare som redigerar samma sida',
+	'ajax-se-title'            => 'Redigeras just nu:',
+	'ajax-se-pending'          => 'avvaktar omläsning ... (klicka på denna ruta eller börja redigera)',
+	'ajax-se-idling'           => '($1s sedan)',
+	'ajax-se-pagedoesnotexist' => 'sidan existerar inte',
+	'ajax-se-userinvalid'      => 'ERR: ogiltig användare',
+	'ajax-se-usernotfound'     => 'ERR: användare inte hittad',
 );
 
 /** Telugu (తెలుగు)

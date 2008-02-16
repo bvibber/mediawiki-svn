@@ -93,6 +93,14 @@ $messages['de'] = array(
 	'deletedcontributions-desc' => 'Gibt Administratoren die Möglichkeit, [[Special:DeletedContributions|gelöschte Benutzerbeiträge]] einzusehen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'deletedcontributions'      => 'Wulašowane wužywarske pśinoski',
+	'deletedcontributions-desc' => 'Dawa administratoram móžnosć, [[Special:DeletedContributions|wulašowane wužywarske pśinoski]] póglědaś',
+);
+
 $messages['el'] = array(
 	'deletedcontributions' => 'Διαγραμμένες συνεισφορές χρήστη',
 );

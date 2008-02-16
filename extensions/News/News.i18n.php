@@ -44,6 +44,13 @@ $messages['ar'] = array(
 	'newsextension-freshfeed'     => '$1: ينتج تلقيما جديدا<br />',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'newsextension-desc' => 'Pokazujo pśiměrjone aktualne změny na wikijowych bokach abo ako RSS abo kanal Atom',
+);
+
 $messages['fr'] = array(
 	'newsextension-desc'          => 'Visionne les modifications récentes spécifiques sur une page wiki ou comme un flux RSS ou Atom.',
 	'newsextension-unknownformat' => '$1 : format de flux inconnu : $2<br />',
@@ -66,6 +73,17 @@ $messages['fr'] = array(
  * @author SPQRobin
  */
 $messages['nl'] = array(
-	'newsextension-desc' => 'Aangepaste recente wijzigingen tonen op een wikipagina, of als RSS-feed of Atom-feed',
+	'newsextension-desc'          => 'Aangepaste recente wijzigingen tonen op een wikipagina, of als RSS-feed of Atom-feed',
+	'newsextension-unknownformat' => '$1: onbekend feed-formaat: $2<br />',
+	'newsextension-feednotfound'  => '$1: feed-pagina niet gevonden: $2<br />',
+	'newsextension-feedrequest'   => '$1: bezig met afhandelen van feed-aanvraag voor $2<br />',
+	'newsextension-nofoundonpage' => '$1: geen feed gevonden op pagina: $2<br />',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'newsextension-desc' => 'Zobrazuje prispôsobené Posledné úpravy na wiki stránkach alebo ako kanál RSS alebo Atom',
 );
 

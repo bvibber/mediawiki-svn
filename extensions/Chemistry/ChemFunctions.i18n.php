@@ -543,9 +543,12 @@ $messages['su'] = array(
  * @author Max sonnelid
  */
 $messages['sv'] = array(
+	'chemicalsources'        => 'Kemiska källor',
+	'chemFunctions_ListPage' => 'Kemiska källor',
 	'chemFunctions_CAS'      => 'CAS nummer',
 	'chemFunctions_ATCCode'  => 'ATC kod',
 	'chemFunctions_ECNumber' => 'EC nummer',
+	'chemFunctions_Formula'  => 'Formel',
 	'chemFunctions_Name'     => 'IUPAC Namn',
 );
 

@@ -22,6 +22,14 @@ $messages['ar'] = array(
 	'nstab-comments'    => 'تعليق',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'commentpages-desc' => 'Komentarowe boki za głowny mjenjowy rum',
+	'nstab-comments'    => 'Komentary',
+);
+
 /** French (Français)
  * @author Grondin
  */

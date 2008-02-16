@@ -153,6 +153,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'contributors'             => 'Pśinosowarje',
+	'contributors-desc'        => 'Zespominujo głownych pśinosowarjow boka',
 	'contributors-toolbox'     => 'Głowne pśinosowarje',
 	'contributors-legend'      => 'Głowne pśinosowarje boka pokazaś',
 	'contributors-target'      => 'Titel',

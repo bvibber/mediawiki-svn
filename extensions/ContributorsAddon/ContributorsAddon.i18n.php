@@ -18,6 +18,13 @@ $messages['ar'] = array(
 	'contributorsaddon-desc' => 'يضيف منبثقات JS onMouseOver إلى وصلات "المساهمون الأساسيون"',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'contributorsaddon-desc' => 'Pśidawa wuskokajuce wókna JS onMouseover k wótkazam "Głowne pśinosowarje"',
+);
+
 /** French (Français)
  * @author Grondin
  */

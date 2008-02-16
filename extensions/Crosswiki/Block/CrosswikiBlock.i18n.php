@@ -244,3 +244,47 @@ $messages['pt'] = array(
 	'crosswikiblock-alreadyblocked' => 'O utilizador $3 já está bloqueado.',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'crosswikiblock-desc'           => 'Umožňuje blokovanie používateľov na iných wiki pomocou [[Special:Crosswikiblock|špeciálnej stránky]]',
+	'crosswikiblock'                => 'Zablokovať používateľa na inej wiki',
+	'crosswikiblock-header'         => 'Táto stránka umožňuje zablokovať používateľa na inej wiki.
+Prosím, overte si, či máte povolené na danej wiki konať a vaše konanie je v súlade so všetkými pravidlami.',
+	'crosswikiblock-target'         => 'IP adresa alebo používateľské meno a cieľová wiki:',
+	'crosswikiblock-expiry'         => 'Expirácia:',
+	'crosswikiblock-reason'         => 'Dôvod:',
+	'crosswikiblock-submit'         => 'Zablokovať tohto používateľa',
+	'crosswikiblock-anononly'       => 'Zablokovať iba anonymných používateľov',
+	'crosswikiblock-nocreate'       => 'Zabrániť tvorbe účtov',
+	'crosswikiblock-autoblock'      => 'Automaticky blokovať poslednú IP adresu, ktorú tento používateľ použil a akékoľvek ďalšie adresy, z ktorých sa pokúsia upravovať.',
+	'crosswikiblock-noemail'        => 'Zabrániť používateľovi odosielať email',
+	'crosswikiblock-nousername'     => 'Nebolo zadané používateľské meno',
+	'crosswikiblock-local'          => 'Toto rozhranie nepodporuje lokálne blokovanie. Použite [[Special:Blockip]].',
+	'crosswikiblock-dbnotfound'     => 'Databáza $1 neexistuje',
+	'crosswikiblock-noname'         => '„$1“ nie je platné používateľské meno.',
+	'crosswikiblock-nouser'         => 'Používateľ „$3“ nebol nájdený.',
+	'crosswikiblock-noexpiry'       => 'Neplatná expirácia: $1.',
+	'crosswikiblock-noreason'       => 'Nebol uvedený dôvod.',
+	'crosswikiblock-notoken'        => 'Neplatný upravovací token.',
+	'crosswikiblock-alreadyblocked' => 'Používateľ $3 je už zablokovaný.',
+	'crosswikiblock-success'        => "Používateľ '''$3''' bol úspešne zablokovaný.
+
+Vrátiť sa na:
+* [[Special:CrosswikiBlock|Blokovací formulár]]
+* [[$4]]",
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'crosswikiblock-desc'   => 'Gör det möjligt att blockera användare på andra wikier med hjälp av en [[Special:Crosswikiblock|specialsida]]',
+	'crosswikiblock'        => 'Blockera användare på en annan wiki',
+	'crosswikiblock-expiry' => 'Utgång:',
+	'crosswikiblock-reason' => 'Anledning:',
+	'crosswikiblock-submit' => 'Blockera denna användare',
+);
+

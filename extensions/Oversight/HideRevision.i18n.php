@@ -1492,6 +1492,7 @@ Användare som sprider den här informationen vidare kan få sina översynsrätt
  */
 $messages['te'] = array(
 	'hiderevision'                => 'కూర్పులను శాశ్వతంగా దాచు',
+	'hiderevision-desc'           => 'చట్టబద్ధమైన, మొదలగు కారణాల వల్ల అందరు వాడుకర్ల నుండి వ్యక్తిగత కూర్పులను దాచు',
 	'hiderevision-prompt'         => 'తొలగించాల్సిన కూర్పు సంఖ్య:',
 	'hiderevision-continue'       => 'కొనసాగించు',
 	'hiderevision-reason'         => 'కారణం (అంతరంగికంగా లాగ్ చేస్తాం):',
@@ -1501,6 +1502,7 @@ $messages['te'] = array(
 	'hiderevision-noreason'       => 'ఈ తొలగింపుకి మీరు తప్పనిసరిగా కారణం వివరించాలి.',
 	'hiderevision-status'         => 'కూర్పు $1: $2',
 	'hiderevision-error-missing'  => 'డాటాబేసులో కనబడలేదు.',
+	'hiderevision-error-current'  => 'ఈ పేజీకి జరిగిన చిట్ట చివరి మార్పుని తొలగించలేము. ఈ మార్పుని మొదట తిరగ్గొట్టండి.',
 	'hiderevision-archive-status' => '$1 నుండి తొలగించిన కూర్పు: $2',
 	'oversight-log-hiderev'       => '$1 నుండి ఓ మార్పుని తొలగించాం',
 	'oversight-view'              => 'వివరాలు',

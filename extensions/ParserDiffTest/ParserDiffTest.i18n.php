@@ -186,9 +186,12 @@ $messages['frp'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Xosé
  */
 $messages['gl'] = array(
+	'pdtest_no_target'  => 'Non se especificou o destino.',
 	'pdtest_no_changes' => 'Non foron detectados cambios.',
+	'pdtest_ok'         => 'De acordo',
 	'pdtest_diff'       => 'Diferenzas',
 );
 
@@ -534,12 +537,17 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'pdtest_no_changes'  => 'మార్పులేమీ కనబడలేదు.',
-	'pdtest_time_report' => '<b>$1</b> $2 క్షణాలు తీసుకుంది, <b>$3</b> $4 క్షణాలు తీసుకుంది.',
-	'pdtest_title'       => 'సందర్భపు శీర్షిక:',
-	'pdtest_ok'          => 'సరే',
-	'pdtest_get_text'    => 'పేజీనుండి పాఠ్యాన్ని పొందండి',
-	'pdtest_diff'        => 'తేడాలు',
+	'pdtest-desc'         => 'రెండు వేర్వేరు పార్సర్ల యొక్క ఔట్&zwnj;పుట్&zwnj;ని పోల్చిచూసేందుకు [[Special:ParserDiffTest|ప్రత్యేక పేజీ]]',
+	'pdtest_no_target'    => 'లక్ష్యం ఏమీ ఇవ్వలేదు.',
+	'pdtest_page_missing' => 'చెప్పిన ఆ పేజీ డాటాబేసులో కనబడలేదు.',
+	'pdtest_no_changes'   => 'మార్పులేమీ కనబడలేదు.',
+	'pdtest_time_report'  => '<b>$1</b> $2 క్షణాలు తీసుకుంది, <b>$3</b> $4 క్షణాలు తీసుకుంది.',
+	'pdtest_title'        => 'సందర్భపు శీర్షిక:',
+	'pdtest_text'         => 'ఇన్&zwnj;పుట్ పాఠ్యం:',
+	'pdtest_ok'           => 'సరే',
+	'pdtest_get_text'     => 'పేజీనుండి పాఠ్యాన్ని పొందండి',
+	'pdtest_diff'         => 'తేడాలు',
+	'pdtest_side_by_side' => 'అవుట్&zwnj;పుట్ పోలిక',
 );
 
 /** Tajik (Тоҷикӣ)

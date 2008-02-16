@@ -895,8 +895,8 @@ $messages['fo'] = array(
 );
 
 /** French (Français)
- * @author Urhixidur
  * @author Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'boardvote'              => 'Élections au conseil d’administration de la Fondation Wikimedia',
@@ -943,9 +943,11 @@ La version cryptée suit. Elle sera affichée publiquement sur [[Special:Boardvo
 	'boardvote_user'         => 'Utilisateur',
 	'boardvote_edits'        => 'Modifications ',
 	'boardvote_days'         => 'Jours',
+	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Représentant de l’utilisateur',
 	'boardvote_listintro'    => 'Liste des personnes ayant voté :<br /><br />',
 	'boardvote_dumplink'     => 'Cliquez ici',
+	'boardvote_submit'       => 'Valider',
 	'boardvote_strike'       => 'biffer ',
 	'boardvote_unstrike'     => 'débiffer ',
 	'boardvote_needadmin'    => 'Seuls les administrateurs du vote peuvent effectuer cette opération.',
@@ -958,6 +960,7 @@ La version cryptée suit. Elle sera affichée publiquement sur [[Special:Boardvo
 	'grouppage-boardvote'    => '{{ns:project}}:membre votant du conseil d’administration',
 	'boardvote_blocked'      => 'Désolé, mais vous avez été bloqué sur votre wiki d’origine. Les utilisateurs bloqués ne peuvent pas voter.',
 	'boardvote_welcome'      => "Bienvenue '''$1'''!",
+	'go_to_board_vote'       => 'Élections 2007 au Conseil d’administration de la Wikimedia',
 	'boardvote_redirecting'  => 'Pour plus de transparence et sécurité le vote se déroule sur un serveur externe et indépendant.
 
 Vous serez redirigé à ce serveur externe en 20 secondes. [$1 Cliquez ici] pour y aller maintenant.
@@ -1043,12 +1046,17 @@ $messages['ga'] = array(
 	'boardvote_dumplink' => 'Gliogáil anseo',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Alma
+ * @author Toliño
+ */
 $messages['gl'] = array(
-	'boardvote'               => 'Elección dos Membros do Consello de Administración de Wikimedia',
-	'boardvote_entry'         => '* [[Special:Boardvote/vote|Votar]]
+	'boardvote'              => 'Elección dos Membros do Consello de Administración de Wikimedia',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Votar]]
 * [[Special:Boardvote/list|Listaxe de votos ata a data]]
 * [[Special:Boardvote/dump|Crear un vaciado do rexistro cifrado de eleccións]]',
-	'boardvote_intro'         => '<p>Reciba a nosa benvida ás segundas eleccións de Membros do Consello de Administración de Wikimedia.
+	'boardvote_intro'        => '<p>Reciba a nosa benvida ás segundas eleccións de Membros do Consello de Administración de Wikimedia.
 Estamos a escoller dúas persoas para que representen á comunidade de usuarios dos diversos
 proxectos de Wikipedia. Axudarán a determinar a dirección futura que tomarán os proxectos de
 Wikimedia, individualmente e como grupo, e representarán os <em>teus</em> intereses e preocupacións
@@ -1061,10 +1069,10 @@ do coñecemento humano.</p>
 
 <p>Vostede pode votar por tantos candidatos como quixer. O candidato con máis votos por cada posto será
 declarado gañador dese posto. En caso de empate celebrarase unha nova elección para ese posto.</p>',
-	'boardvote_intro_change'  => '<p>Vostede votou antes. Porén, pode cambiar o sentido do seu voto usando o formulario seguinte. Por favor, sinale os cadriños contiguos a cada candidato a quen vostede aprobe.</p>',
-	'boardvote_entered'       => 'Grazas, rexistrouse o seu voto.
+	'boardvote_intro_change' => '<p>Vostede votou antes. Porén, pode cambiar o sentido do seu voto usando o formulario seguinte. Por favor, sinale os cadriños contiguos a cada candidato a quen vostede aprobe.</p>',
+	'boardvote_entered'      => 'Grazas, rexistrouse o seu voto.
 
-Se quixer, pode gardar os detalles seguintes. O seu rexistro de voto é:
+Se quere, pode gardar os detalles seguintes. O seu rexistro de voto é:
 
 <pre>$1</pre>
 
@@ -1077,40 +1085,41 @@ A versión seguinte, sen encriptar, é a que segue. Mostrarase publicamente en [
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Atrás]]',
-	'boardvote_nosession'     => 'Non se pode determinar o seu ID de usuario de Wikipedia. Rexístrese no wiki no que cumpre os requisitos e vaia a <nowiki>[[Special:Boardvote]]</nowiki>. Debe usar unha conta cun mínimo de $1 contribucións antes de $2 e cunha primeira edición anterior a $3.',
-	'boardvote_notloggedin'   => 'Vostede non está rexistrado. Para votar, vostede debe usar unha conta con como mínimo $1 contribucións antes de $2, e cunha primeira edición antes de $3.',
-	'boardvote_notqualified'  => 'Vostede non está cualificado para votar nesta elección. Necesita ter feitas $3 edicións antes $2, e a súa primeira edición debe ser anterior a $5.',
-	'boardvote_novotes'       => 'Aínda non votou ninguén.',
-	'boardvote_time'          => 'Tempo',
-	'boardvote_user'          => 'Usuario',
-	'boardvote_edits'         => 'Edicións',
-	'boardvote_days'          => 'Días',
-	'boardvote_ip'            => 'Enderezo IP',
-	'boardvote_ua'            => 'Axente de usuario',
-	'boardvote_listintro'     => '<p>Esta é unha listaxe de todos os votos rexistrados
+	'boardvote_nosession'    => 'Non se pode determinar o seu ID de usuario de Wikipedia. Rexístrese no wiki no que cumpre os requisitos e vaia a <nowiki>[[Special:Boardvote]]</nowiki>. Debe usar unha conta cun mínimo de $1 contribucións antes de $2 e cunha primeira edición anterior a $3.',
+	'boardvote_notloggedin'  => 'Vostede non está rexistrado. Para votar, vostede debe usar unha conta con como mínimo $1 contribucións antes de $2, e cunha primeira edición antes de $3.',
+	'boardvote_notqualified' => 'Vostede non está cualificado para votar nesta elección. Necesita ter feitas $3 edicións antes $2, e a súa primeira edición debe ser anterior a $5.',
+	'boardvote_novotes'      => 'Aínda non votou ninguén.',
+	'boardvote_time'         => 'Tempo',
+	'boardvote_user'         => 'Usuario',
+	'boardvote_edits'        => 'Edicións',
+	'boardvote_days'         => 'Días',
+	'boardvote_ip'           => 'Enderezo IP',
+	'boardvote_ua'           => 'Axente de usuario',
+	'boardvote_listintro'    => '<p>Esta é unha listaxe de todos os votos rexistrados
 até o momento. $1 para os datos encriptados.</p>',
-	'boardvote_dumplink'      => 'Prema aquí',
-	'boardvote_submit'        => 'De acordo',
-	'boardvote_strike'        => 'Tachar',
-	'boardvote_unstrike'      => 'Quitar o tachado',
-	'boardvote_needadmin'     => 'Esta operación só a poden realizar os administradores da elección.',
-	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">Eleccións ao Consello de Administración de Wikimedia</a>:  Votación aberta até o 12 de xullo',
-	'boardvote_notstarted'    => 'Aínda non comezou a votación',
-	'boardvote_closed'        => 'Agora a votación está fechada, vexa [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En a páxina das eleccións para os resultados] pronto.',
-	'boardvote_edits_many'    => 'moitos',
-	'group-boardvote'         => 'Administradores da votación ao Consello de Administración',
-	'group-boardvote-member'  => 'Administrador da votación ao Consello de Administración',
-	'grouppage-boardvote'     => '{{ns:project}}:Administrador de eleccións ao Consello de Administración',
-	'boardvote_blocked'       => 'Sentímolo, vostede foi bloqueado no wiki no que está rexistrado. Aos usuarios bloqueados non se lles permite votar.',
-	'boardvote_welcome'       => 'Reciba a nosa benvida, \'\'\'$1\'\'\'!',
-	'go_to_board_vote'        => 'Eleccións do Consello de Administración de Wikimedia de 2007',
-	'boardvote_redirecting'   => 'Para unha maior seguranza e transparencia, a votación realízase nun servidor
+	'boardvote_dumplink'     => 'Prema aquí',
+	'boardvote_submit'       => 'De acordo',
+	'boardvote_strike'       => 'Tachar',
+	'boardvote_unstrike'     => 'Quitar o tachado',
+	'boardvote_needadmin'    => 'Esta operación só a poden realizar os administradores da elección.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Eleccións ao Consello de Administración de Wikimedia</a>:  Votación aberta até o 12 de xullo',
+	'boardvote_notstarted'   => 'Aínda non comezou a votación',
+	'boardvote_closed'       => 'Agora a votación está fechada, vexa [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En a páxina das eleccións para os resultados] pronto.',
+	'boardvote_edits_many'   => 'moitos',
+	'group-boardvote'        => 'Administradores da votación ao Consello de Administración',
+	'group-boardvote-member' => 'Administrador da votación ao Consello de Administración',
+	'grouppage-boardvote'    => '{{ns:project}}:Administrador de eleccións ao Consello de Administración',
+	'boardvote_blocked'      => 'Sentímolo, vostede foi bloqueado no wiki no que está rexistrado. Aos usuarios bloqueados non se lles permite votar.',
+	'boardvote_welcome'      => "Reciba a nosa benvida, '''$1'''!",
+	'go_to_board_vote'       => 'Eleccións do Consello de Administración de Wikimedia de 2007',
+	'boardvote_redirecting'  => 'Para unha maior seguranza e transparencia, a votación realízase nun servidor
 externo con control independente.
 
 Vai ser redirixido cara este servidor externo en 20 segundos. [$1 Prema aquí] para ir a el agora.
 
 Pode que lle apareza unha advertencia de seguranza acerca dun certificado sen asinar.',
 );
+
 $messages['he'] = array(
 	'boardvote'               => "בחירות לחבר הנאמנים של ויקימדיה",
 	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|הצבעה]]

@@ -50,6 +50,16 @@ $messages['de'] = array(
 	'pageby-anon'         => '<i>anonym</i>',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'pageby-first'        => 'Bok napórany wót $1, $2',
+	'pageby-last'         => 'Slědny raz <a href="$3">změnjony</a> wót $1, $2',
+	'pageby-contributors' => 'Pśinosowarje:',
+	'pageby-anon'         => '<i>anonymny</i>',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

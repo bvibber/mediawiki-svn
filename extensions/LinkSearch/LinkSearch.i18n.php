@@ -545,7 +545,7 @@ $messages['ru'] = array(
 	'linksearch-desc'  => 'Позволяет находить страницы с внешними ссылками, соответствующими указанному шаблону',
 	'linksearch-pat'   => 'Шаблон для поиска:',
 	'linksearch-ns'    => 'Пространство имён:',
-	'linksearch-ok'    => 'Искать',
+	'linksearch-ok'    => 'Найти',
 	'linksearch-text'  => 'Можно использовать подстановочные символы, например, <code>*.wikipedia.org</code>.',
 	'linksearch-line'  => 'Ссылка на $1 из $2',
 	'linksearch-error' => 'Подстановочные символы могут использоваться только в начале адресов.',
@@ -629,6 +629,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'linksearch'       => 'వెబ్ లింకుల్లో వెతుకు',
+	'linksearch-desc'  => 'ప్రత్యేక సరళిని పోలిన [[Special:Linksearch|బయటి లింకులు ఉన్న పేజీలను కనుక్కోండి]]',
 	'linksearch-pat'   => 'వెతకాల్సిన నమూనా:',
 	'linksearch-ns'    => 'నేమ్ స్పేసు:',
 	'linksearch-ok'    => 'వెతుకు',

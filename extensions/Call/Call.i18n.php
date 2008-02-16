@@ -313,10 +313,13 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author Max sonnelid
  */
 $messages['sv'] = array(
-	'call' => 'Anropa',
+	'call'              => 'Anropa',
+	'call-save-success' => 'Den följande texten har blivigt sparad till sidan <big>[[$1]]</big> .',
+	'call-save-failed'  => 'Den följande texten har INTE blivigt sparad till sidan <big>[[$1]]</big> för att sidan redan existerar.',
 );
 
 /** Volapük (Volapük)

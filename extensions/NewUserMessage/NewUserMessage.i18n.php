@@ -23,9 +23,10 @@ $messages['ar'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Li-sung
  */
 $messages['cs'] = array(
-	'newusermessage-desc' => 'Přidává [[MediaWiki:NewUserMessage|zprávu]] do nově vytvořených uživatelských diskusních stránek',
+	'newusermessage-desc' => 'Přidává [[MediaWiki:NewUserMessage|zprávu]] na diskusní stránky nově vytvořených uživatelů',
 );
 
 /** German (Deutsch)

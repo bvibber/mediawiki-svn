@@ -271,6 +271,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'multipleupload'                   => 'Nahrať súbory',
+	'multipleupload-desc'              => 'Umožňuje používateľom [[Special:MultipleUpload|nahrať viacero súborov naraz]]',
 	'multipleupload-ignoreallwarnings' => "Ignorovať '''všetky upozornenia''' a napriek nim súbor uložiť.",
 	'multipleupload-saveallfiles'      => 'Uložiť všetky súbory',
 	'multipleupload-addresswarnings'   => 'Prosím, predtým než znovu nahráte súbory, napravte všetky upozornenia.',

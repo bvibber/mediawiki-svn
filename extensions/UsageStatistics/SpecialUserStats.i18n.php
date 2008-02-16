@@ -453,6 +453,7 @@ $messages['sv'] = array(
 	'usagestatisticsintervalday'   => 'Dag',
 	'usagestatisticsintervalweek'  => 'Vecka',
 	'usagestatisticsintervalmonth' => 'Månad',
+	'usagestatisticscalselect'     => 'Välj',
 );
 
 /** Telugu (తెలుగు)

@@ -164,8 +164,12 @@ $messages['ru'] = array(
 	'minnamelength-error' => 'Ваше имя участника слишком коротко. Минимальная длина — $1.',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
 	'minnamelength-error' => 'Vaše používateľské meno je príliš krátke. Minimálna dĺžka je $1.',
+	'minnamelength-desc'  => 'Vynútiť minimálnu dĺžku používateľského mena',
 );
 
 /** Seeltersk (Seeltersk)

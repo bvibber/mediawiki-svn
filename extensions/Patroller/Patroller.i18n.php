@@ -492,29 +492,32 @@ $messages['ru'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Патрулирование',
 );
 
-/* Slovak (helix84) */
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
-	'patrol' => 'Strážiť úpravy',
-	'patrol-endorse' => 'Schváliť',
-	'patrol-revert' => 'Vrátiť',
-	'patrol-revert-reason' => 'Dôvod:',
-	'patrol-skip' => 'Preskočiť',
-	'patrol-reverting' => 'Vraciam: $1',
-	'patrol-nonefound' => 'Neboli nájdené vhodné úpravy na stráženie.',
-	'patrol-endorsed-ok' => 'Úprava bola označená ako strážená.',
+	'patrol'                 => 'Strážiť úpravy',
+	'patrol-desc'            => 'Rozšírené rozhranie na stráženie s rozkladaním pracovnej záťaže',
+	'patrol-endorse'         => 'Schváliť',
+	'patrol-revert'          => 'Vrátiť',
+	'patrol-revert-reason'   => 'Dôvod:',
+	'patrol-skip'            => 'Preskočiť',
+	'patrol-reverting'       => 'Vraciam: $1',
+	'patrol-nonefound'       => 'Neboli nájdené vhodné úpravy na stráženie.',
+	'patrol-endorsed-ok'     => 'Úprava bola označená ako strážená.',
 	'patrol-endorsed-failed' => 'Úpravu nebolo možné označiť ako stráženú',
-	'patrol-reverted-ok' => 'Úprava bola vrátená.',
+	'patrol-reverted-ok'     => 'Úprava bola vrátená.',
 	'patrol-reverted-failed' => 'Úpravu nebolo možné vrátiť.',
-	'patrol-skipped-ok' => 'Ignorujem úpravu.',
-	'patrol-reasons' => '* Jednoduchý vandaizmus
+	'patrol-skipped-ok'      => 'Ignorujem úpravu.',
+	'patrol-reasons'         => '* Jednoduchý vandaizmus
 * Nováčikovský test
 * Pozri diskusiu',
-	'patrol-another' => 'Zobraz ďalšiu úpravu, ak existuje.',
-	'patrol-stopped' => 'Zvolili ste nestrážiť ďalšiu úpravu. $1',
-	'patrol-resume' => 'Kliknutím sem pokračujte.',
-	'group-patroller' => 'Strážcovia',
+	'patrol-another'         => 'Zobraz ďalšiu úpravu, ak existuje.',
+	'patrol-stopped'         => 'Zvolili ste nestrážiť ďalšiu úpravu. $1',
+	'patrol-resume'          => 'Kliknutím sem pokračujte.',
+	'group-patroller'        => 'Strážcovia',
 	'group-patroller-member' => 'Strážca',
-	'grouppage-patroller' => '{{ns:project}}:Strážca',
+	'grouppage-patroller'    => '{{ns:project}}:Strážca',
 );
 
 /** Seeltersk (Seeltersk)

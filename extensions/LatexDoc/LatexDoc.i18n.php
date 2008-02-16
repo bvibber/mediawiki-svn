@@ -246,6 +246,14 @@ $3',
 	'latexdoc-desc'            => 'Latex Doc.',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'latexdoc_get_dvi' => 'Hämta DVI',
+	'latexdoc_get_pdf' => 'Hämta PDF',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

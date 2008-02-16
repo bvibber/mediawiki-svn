@@ -661,6 +661,7 @@ $messages['sv'] = array(
 	'changeauthor-changeauthors-multi'  => 'Ändra upphovsman (upphovsmän)',
 	'changeauthor-changeauthors-single' => 'Ändra upphovsman',
 	'changeauthor-invalid-username'     => 'Ogiltigt användarnamn "$1".',
+	'changeauthor-nosuchuser'           => 'Ingen sådan användare "$1".',
 	'changeauthor-revview'              => 'Revision #$1 av $2',
 	'changeauthor-nosuchtitle'          => 'Det finns ingen sida med namnet "$1".',
 	'changeauthor-logentry'             => 'Ändrad upphovsman av $2 av $1 från $3 till $4',

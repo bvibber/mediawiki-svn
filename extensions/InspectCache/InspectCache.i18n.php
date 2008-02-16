@@ -268,8 +268,11 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sv'] = array(
+	'inspectcache-ok'     => 'OK',
+	'inspectcache-get'    => 'Hämta',
 	'inspectcache-delete' => 'Ta bort',
 	'inspectcache-list'   => 'Lista',
 );
