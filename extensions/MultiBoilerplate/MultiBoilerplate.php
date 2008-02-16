@@ -23,7 +23,7 @@ $wgExtensionCredits[ 'other' ][] = array(
 	'descriptionmsg' => 'multiboilerplate-desc',
 	'author'         => 'MinuteElectron',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:MultiBoilerplate',
-	'version'        => '1.4',
+	'version'        => '1.5',
 );
 
 // Hook into EditPage::showEditForm:initial to modify the edit page header.
@@ -108,7 +108,17 @@ function wfMultiBoilerplate( $form ) {
 	// If the Load button has been pushed replace the article text with the boilerplate.
 	if( $wgRequest->getText( 'boilerplate', false ) ) {
 		$plate = new Article( Title::newFromURL( $wgRequest->getVal( 'boilerplate' ) ) );
-		$form->textbox1 = $plate->fetchContent();
+		$content = $plate->fetchContent();
+		/* Strip out noinclude tags and contained data, and strip includeonly
+		 * tags (but retain contained data). If a function exists in the
+		 * parser exists to do this it would be nice to replace this with it (I
+		 * found one with a name as if it would do this, but it didn't seam to
+		 * work).
+		 */
+		$content = preg_replace( '#<noinclude>(.*?)</noinclude>#', '', $content );
+		$content = preg_replace( '#<includeonly>(.*?)</includeonly>#', '$1', $content );
+		// TODO: Handle <onlyinclude> tags.
+		$form->textbox1 = $content;
 	}
 
 	// Return true so things don't break.
