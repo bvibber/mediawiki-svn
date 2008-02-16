@@ -17,15 +17,17 @@ function wfAjaxShowEditors( $articleId, $username ) {
 	global $wgOut;
 	$articleId = intval($articleId);
 
+	wfLoadExtensionMessages( 'AjaxShowEditors' );
+
 	// Validate request
 	$title = Title::newFromID( $articleId );
-	if( !($title) ) { return 'ERR: page id invalid'; }
+	if( !($title) ) { return wfMsg( 'ajax-se-pagedoesnotexist' ); }
 
 	$user = User::newFromSession() ;
-	if( !$user ) { return 'ERR: user invalid'; }
+	if( !$user ) { return wfMsg( 'ajax-se-userinvalid' ); }
 
 	$username = $user->getName();
-	if( !(  $user->isLoggedIn() or User::isIP( $username )  ) ) { return 'ERR: user not found'; }
+	if( !(  $user->isLoggedIn() or User::isIP( $username )  ) ) { return wfMsg( 'ajax-se-usernotfound' ); }
 
 
 	// When did the user started editing ?
@@ -98,7 +100,6 @@ function wfAjaxShowEditors( $articleId, $username ) {
 				$editor->editings_user
 			);
 
-		wfLoadExtensionMessages( 'AjaxShowEditors' );
 		$wikitext .= ' ' . wfMsg( 'ajax-se-idling', '<span>'.$idle.'</span>' );
 	}
 	return $wikitext ;

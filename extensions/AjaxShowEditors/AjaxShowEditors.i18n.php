@@ -8,10 +8,13 @@
 $messages = array();
 
 $messages['en'] = array(
-	'ajax-se-desc' => 'Shows editing users who is editing the same page',
-	'ajax-se-title' => 'Currently editing:',
-	'ajax-se-pending' => 'pending refresh ... (click this box or start editing)',
-	'ajax-se-idling' => '($1s ago)',
+	'ajax-se-desc'             => 'Shows editing users who is editing the same page',
+	'ajax-se-title'            => 'Currently editing:',
+	'ajax-se-pending'          => 'pending refresh ... (click this box or start editing)',
+	'ajax-se-idling'           => '($1s ago)',
+	'ajax-se-pagedoesnotexist' => 'page does not exist',
+	'ajax-se-userinvalid'      => 'ERR: user invalid',
+	'ajax-se-usernotfound'     => 'ERR: user not found',
 );
 
 /** Afrikaans (Afrikaans)
