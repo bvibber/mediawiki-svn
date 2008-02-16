@@ -9,7 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'regexblock' => 'RegexBlock',
-	'regexblokc-desc' => 'Extension used for blocking users names and IP addresses with regular expressions. Contains both the blocking mechanism and a [[Special:Regexblock|special page]] to add/manage blocks',
+	'regexblock-desc' => 'Extension used for blocking users names and IP addresses with regular expressions. Contains both the blocking mechanism and a [[Special:Regexblock|special page]] to add/manage blocks',
 	'regexblock-page-title' => 'Regular Expression Name Block',
 	'regexblockstats' => 'Regex Block Statistics',
 	'regexblock-reason-ip' => 'This IP address is prevented from editing due to vandalism or other disruption by you or by someone who shares your IP address. If you believe this is in error, please $1' ,
