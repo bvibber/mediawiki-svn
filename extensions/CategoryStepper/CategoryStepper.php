@@ -22,7 +22,7 @@ $wgExtensionCredits[ 'other' ][] = array(
 	'descriptionmsg' => 'categorystepper-desc',
 	'author'         => 'MinuteElectron',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:CategoryStepper',
-	'version'        => '1.3',
+	'version'        => '1.4',
 );
 
 // Hook into OutputPageBeforeHTML to add content to the end of the content.
@@ -38,6 +38,7 @@ $wgExtensionMessagesFiles[ 'CategoryStepper' ] = dirname( __FILE__ ) . '/Categor
  * If set to false then the MediaWiki:categorystepper message is used to
  * configure categories in the format of:
  * "* Category Name|Stepper Title"
+ * The second segment is optional and defaults to the category name.
  */
 $wgCategoryStepper = array();
 
@@ -72,7 +73,7 @@ function wfCategoryStepper( &$out, &$text ) {
 		foreach( $things as $row ) {
 			$row = preg_replace( '#^\*( *)#', '', $row ); // Remove the asterix (and a space if found) from the start of the line.
 			$row = explode( '|', $row );
-			if( !isset( $row[ 1 ] ) ) return true; // Invalid syntax, abort.
+			if( !isset( $row[ 1 ] ) ) $row[ 1 ] = $row[ 0 ];
 			$wgCategoryStepper[ $row[ 0 ] ] = $row[ 1 ];
 		}
 	}
