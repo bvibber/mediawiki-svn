@@ -7,6 +7,7 @@
 $messages = array();
 $messages['en'] = array(
 	'signaturelogpage'      => 'Signature Log',
+	'signature-desc'        => 'Enables document [[Special:SignDocument|signing]]',
 	'signaturelogpagetext'  => 'This is a log of all signatures added to documents via [[Special:SignDocument]].',
 	'signaturelogentry'     => 'signed the document $1',
 );
@@ -34,6 +35,7 @@ $messages['dsb'] = array(
 
 $messages['fr'] = array(
 	'signaturelogpage' => 'Journal des signatures',
+	'signature-desc'        => 'Active la [[Special:SignDocument|signature]] des documents',
 	'signaturelogpagetext' => 'Ceci est le journal de toutes les signatures ajoutées aux documents via [[Special:SignDocument]].',
 	'signaturelogentry' => 'a signé le document $1.',
 );

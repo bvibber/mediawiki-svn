@@ -36,6 +36,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'SignDocument',
 	'author' => 'Daniel Cannon',
 	'description' => 'Enables document signing',
+	'descriptionmsg' => 'signature-desc',
 	'version' => '2008-01-15',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SignDocument',
 );
