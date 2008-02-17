@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'showprocesslist' => 'Show Process List',
+	'showprocesslist-desc' => 'Display the output of SHOW FULL PROCESSLIST',
 	'showprocesslist-id' => 'Id',
 	'showprocesslist-user' => 'User',
 	'showprocesslist-host' => 'Host',
@@ -77,6 +78,7 @@ $messages['el'] = array(
 
 $messages['fr'] = array(
 	'showprocesslist' => 'Voir la liste des processus',
+	'showprocesslist-desc' => 'Affiche la sortie de SHOW FULL PROCESSLIST',
 	'showprocesslist-id' => 'n°',
 	'showprocesslist-user' => 'Utilisateur',
 	'showprocesslist-host' => 'Hôte',
