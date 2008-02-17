@@ -13,8 +13,12 @@ $messages['en'] = array(
 	'purge-desc' => 'Adds a purge tab on all normal pages and bypasses the purge check for anonymous users allowing for quick purging of the cache',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'purge' => 'إفراغ الكاش',
+	'purge'      => 'إفراغ الكاش',
+	'purge-desc' => 'يضيف لسان إفراغ للكاش في كل الصفحات العادية ويتفادى تحقق الكاش للمستخدمين المجهولين مما يسمح بإفراغ الكاش بشكل سريع',
 );
 
 /** Bulgarian (Български)
@@ -70,8 +74,20 @@ $messages['lb'] = array(
 	'purge' => 'eidel maachen',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Pdxx
+ */
+$messages['lt'] = array(
+	'purge' => 'atnaujinti',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ * @author SPQRobin
+ */
 $messages['nl'] = array(
-	'purge' => 'cache legen',
+	'purge'      => 'cache legen',
+	'purge-desc' => "Voegt een tabblad purge toe op alle normale pagina's en laat de purgecontrole weg voor anonieme gebruikers zodat de cache snel gepurged kan worden",
 );
 
 $messages['no'] = array(
@@ -103,7 +119,8 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'purge' => 'prečistiť',
+	'purge'      => 'prečistiť',
+	'purge-desc' => 'Pridáva záložku „Prečistiť“ na všetky bežné stránky a obchádza kontrolu prečistenia, čím umožňuje anonymným používateľom rýchle prečistenie vyrovnávacej pamäte',
 );
 
 /** Seeltersk (Seeltersk)

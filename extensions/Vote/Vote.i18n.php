@@ -84,6 +84,30 @@ $messages['bg'] = array(
 	'vote-invalid-choice' => 'Необходимо е да бъде избрана една от наличните възможности.',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'vote'                => 'ভোট দিন',
+	'vote-header'         => "আপনি এখানে '''বিশ্বের সর্বাধিপতি'''-র জন্য এখানে ভোট দিতে পারেন!",
+	'vote-current'        => "আপনার বর্তমান ভোট  '''$1'''-এর জন্য সংরক্ষিত।",
+	'vote-legend'         => 'ভোট স্থাপন বা পরিবর্তন করুন',
+	'vote-caption'        => 'আপনার নির্বাচন:',
+	'vote-choices'        => 'জোকার|দ্য জোকার
+পেঙ্গুইন|দ্য পেঙ্গুইন
+রিডলার|রিডলার',
+	'vote-submit'         => 'ভোট দিন',
+	'vote-registered'     => 'আপনার ভোট নিবন্ধিত হয়েছে।',
+	'vote-view-results'   => 'ফলাফল দেখুন',
+	'vote-results'        => 'ভোটের ফলাফল',
+	'vote-results-choice' => 'পছন্দ',
+	'vote-results-count'  => 'গণনা',
+	'vote-results-none'   => 'এ পর্যন্ত কোন ভোট পড়েনি।',
+	'vote-login'          => 'ভোট দিতে হলে আপনাকে অবশ্যই $1 করতে হবে।',
+	'vote-login-link'     => 'লগ ইন',
+	'vote-invalid-choice' => 'আপনাকে অবশ্যই প্রদত্ত পছন্দগুলি থেকে যেকোন একটি নির্বাচন করতে হবে।',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -512,3 +536,4 @@ riddler|謎人",
 	'vote-login-link' => '登入',
 	'vote-invalid-choice' => '您一定要在可以選擇的選項中選擇一個。',
 );
+

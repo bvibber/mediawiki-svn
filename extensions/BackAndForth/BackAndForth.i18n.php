@@ -405,7 +405,7 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'backforth-next' => 'Nästa ($1)',
-	'backforth-desc' => 'Lägger till länkarna "Nästa" och "Föregående" för alfabetisk navigation, högst upp på sidor',
+	'backforth-desc' => 'Lägger till länkar till "Nästa" och "Föregående" sida i alfabetisk ordning högst upp på sidor',
 	'backforth-prev' => 'Föregående ($1)',
 );
 

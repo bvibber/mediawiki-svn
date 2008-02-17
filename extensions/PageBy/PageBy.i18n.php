@@ -26,6 +26,7 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
+	'pageby-desc'         => 'يعرض المساهمين في صفحة ويكي متجاورين باستخدام الوسم <code><nowiki><pageby></nowiki></code>',
 	'pageby-first'        => 'الصفحة تم إنشاؤها بواسطة $1، $2',
 	'pageby-last'         => 'تم <a href="$3">تعديلها</a> آخر مرة بواسطة $1، $2',
 	'pageby-contributors' => 'مساهمون:',
@@ -142,6 +143,7 @@ $messages['lb'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'pageby-desc'         => 'Toons de auteurs van een wikipagina op de pagina zelf met de tag <code><nowiki><pageby></nowiki></code>',
 	'pageby-first'        => 'Pagina gemaakt door $1, $2',
 	'pageby-last'         => 'Laatste <a href="$3">wijziging</a> door $1, $2',
 	'pageby-contributors' => 'Redacteuren:',
@@ -208,9 +210,10 @@ $messages['ru'] = array(
 );
 
 /** Slovak (Slovenčina)
- * @author helix84
+ * @author Helix84
  */
 $messages['sk'] = array(
+	'pageby-desc'         => 'Zobrazuje prispievateľov priamo na wiki stránke pomocou značky <code><nowiki><pageby></nowiki></code>',
 	'pageby-first'        => 'Stránku vytvoril $1, $2',
 	'pageby-last'         => 'Naposledy <a href="$3">zmenil</a> $1, $2',
 	'pageby-contributors' => 'Prispievatelia:',
@@ -229,11 +232,13 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sv'] = array(
-	'pageby-first' => 'Sida skapad av $1, $2',
-	'pageby-last'  => 'Sist <a href="$3">modifierad</a> av $1, $2',
-	'pageby-anon'  => '<i>anonym</i>',
+	'pageby-first'        => 'Sida skapad av $1, $2',
+	'pageby-last'         => 'Sist <a href="$3">modifierad</a> av $1, $2',
+	'pageby-contributors' => 'Bidragsgivare:',
+	'pageby-anon'         => '<i>anonym</i>',
 );
 
 /** Turkish (Türkçe)

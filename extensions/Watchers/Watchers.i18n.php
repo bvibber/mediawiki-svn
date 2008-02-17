@@ -70,6 +70,19 @@ $messages['bg'] = array(
 	'watchers_less_than_x'   => 'Най-много $1 потребители наблюдават тази страница.',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'watchers'               => 'নজরদারগণ',
+	'watchers_link_title'    => 'কে এই পাতাটি নজরে রাখছেন?',
+	'watchers_error_article' => '<b>ত্রুটি:</b> পাতাটির অস্তিত্ব নেই।',
+	'watchers_header'        => 'যারা "$1" নজরে রাখছেন',
+	'watchers_noone_watches' => 'এই পাতাটি কেউ নজরে রাখছেন না।',
+	'watchers_x_or_more'     => 'এই পাতাটি $1 বা তারও বেশি লোক নজরে রাখছেন।',
+	'watchers_less_than_x'   => '$1-এরও কম লোক এই পাতাটি নজরে রাখছেন।',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

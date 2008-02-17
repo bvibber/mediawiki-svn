@@ -53,6 +53,26 @@ $messages['bg'] = array(
 	'call-save-failed'  => 'Следният текст НЕ БЕШЕ съхранен на страницата <big>[[$1]]</big>, тъй като тя вече съществува.',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'call'              => 'কল',
+	'call-desc'         => 'প্যারামিটার পাস করে কোন টেম্পলেটের (বা সাধারণ উইকি পাতার) দিকে একটি সংযোগ সৃষ্টি করুন। ব্রাউজারের কমান্ড লাইনে কিংবা উইকি টেক্সটের ভেতরে ব্যবহার করা যাবে।',
+	'call-text'         => "কল এক্সটেনশনটি আর্গুমেন্ট হিসেবে কোন উইকি পাতা এবং সেই পাতার জন্য ঐচ্ছিক প্যারামিটারসমূহ প্রত্যাশা করে।<br><br>
+উদাহরণ ১: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br/>
+উদাহরণ ২: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br/>
+উদাহরণ ৩: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br/><br/>
+উদাহরণ ৪ (ব্রাউজার URL): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt><br/><br/>
+
+<i>কল এক্সটেনশন</i> প্রদত্ত পাতাটিকে কল করবে এবং প্যারামিটার সরবরাহ করবে।<br>আপনি কল করা পাতা ও তার শিরোনাম দেখতে পাবেন কিন্তু পাতাটির 'টাইপ' হবে বিশেষ পাতার টাইপ,<br>অর্থাৎ এই পাতাটি সম্পাদনা করা যাবে না।<br>আপনি কী বিষয়বস্তু দেখতে পাবেন তা নির্ভর করবে আপনার সরবরাহকৃত প্যারামিটারের মানগুলির উপর।<br><br>
+<i>কল এক্সটেনশন</i> মিডিয়াউইকির সাথে মিথস্ক্রিয়াশীল অ্যাপ্লিকেশন তৈরিতে কাজে লাগতে পারে। <br>উদাহরণের জন্য দেখুন <a href='http://semeb.com/dpldemo/Template:Catlist'>ডিপিএল গুই</a> ..<br/>
+কোন সমস্যা হলে আপনি <b>Special:Call/DebuG</b> ব্যবহার করতে পারেন",
+	'call-save'         => "এই কলটির আউটপুট ''$1'' নামের পাতায় সংরক্ষণ করা হবে।",
+	'call-save-success' => '<big>[[$1]]</big> পাতায় নিচের টেক্সট সংরক্ষণ করা হয়েছে।',
+	'call-save-failed'  => '<big>[[$1]]</big> পাতায় নিচের টেক্সট সংরক্ষণ করা হয়নি, কারণ পাতাটি ইতিমধ্যেই বিদ্যমান।',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -313,13 +333,33 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
- * @author M.M.S.
+ * @author Lejonel
  * @author Max sonnelid
  */
 $messages['sv'] = array(
 	'call'              => 'Anropa',
-	'call-save-success' => 'Den följande texten har blivigt sparad till sidan <big>[[$1]]</big> .',
-	'call-save-failed'  => 'Den följande texten har INTE blivigt sparad till sidan <big>[[$1]]</big> för att sidan redan existerar.',
+	'call-desc'         => 'Ger möjlighet att skapa länkar till mallar (eller vanliga wikisidor) med angivna parametrar. Länkarna kan användas i webbläsarens adressfält eller i wikitext.',
+	'call-text'         => "Programtillägget Call (Anropa) förväntar sig att en wikisida, och eventuellt parametrar till sidan, anges som argument.<br /><br />
+Exempel 1: &nbsp; <tt>[[Special:Call/Min mall,parm1=värde1]]</tt><br />
+Exempel 2: &nbsp; <tt>[[Special:Call/Talk:Min diskussion,parm1=värde1]]</tt><br />
+Exempel 3: &nbsp; <tt>[[Special:Call/:Min sida,parm1=värde1,parm2=värde2]]</tt><br /><br />
+Example 4 (URL för adressfältet): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:Min_sida,parm1=värde1</tt><br /><br />
+
+<i>Call</i>-tillägget anropar den angivna sidan och skickar med parametrarna.<br />Du kommer att se den anropade sidans innehåll och titel, men sidan som visas är en specialsida och kan därför inte redigeras.<br />
+Innehållet som visas kan variera beroende på värdena på de parametrar som skickas med.<br /><br />
+Tillägget <i>Call</i> kan användas för att skapa interaktiva applikationer med MediaWiki.<br />
+Se som ett exempel <a href='http://semeb.com/dpldemo/Template:Catlist'>gränssnittet för DPL</a> <br />
+Om du har några problem så kan du prova <b>Special:Call/DebuG</b>.",
+	'call-save'         => "Resultatet av det här anropet skulle ha sparats på en sida med titeln ''$1''.",
+	'call-save-success' => 'Följande text har sparats på sidan <big>[[$1]]</big>.',
+	'call-save-failed'  => 'Följande text har <b>inte</b> sparats på sidan <big>[[$1]]</big> eftersom sidan redan existerar.',
+);
+
+/** Telugu (తెలుగు)
+ * @author వైజాసత్య
+ */
+$messages['te'] = array(
+	'call' => 'పిలువు',
 );
 
 /** Volapük (Volapük)

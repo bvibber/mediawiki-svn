@@ -55,6 +55,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'review_sidebar_title'                                   => 'مراجعة',
+	'review-desc'                                            => 'خاصية [[Special:Review|التحقق]] المشهورة.',
 	'review_topics'                                          => "# التالي هو قائمة المواضيع والنطاقات لامتداد المراجعة.
 # كل موضوع معرف بواسطة سطر من خمس قيم، مفصولة بواسطة ':' (كل السطور الأخرى سيتم تجاهلها).
 # الترتيب هو: مفتاح رقمي (>0)، اسم، أقصى نطاق (>1؛ 2=نعم/لا)، معنى أقل قيمة (مثال، 'سيء')، معنى أعلى قيمة (مثال، 'جيد').
@@ -366,6 +367,7 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'review_sidebar_title'                                   => 'Beoordelen',
+	'review-desc'                                            => 'De wederopstanding van de optie [[Special:Review|validatie]]',
 	'review_topics'                                          => "# The following is the list of topics and ranges for the review extension.
 # Each topic is defined by a line of five values, separated by ':' (all other lines are ignored).
 # The order is: numerical key (>0), name, max range (>1; 2=yes/no), meaning of lowest value (e.g., 'bad'), meaning of highest value (e.g., 'good').
@@ -486,6 +488,7 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'review_sidebar_title'                                   => 'Kontrola',
+	'review-desc'                                            => 'Oživená možnosť [[Special:Review|overovania]].',
 	'review_topics'                                          => '# Toto je zoznam téma a rozsahov rozšírenia Kontrola (Review)
 # Každú tému definuje riadok s piatimi hodnotami oddelenými „:“ (všetky ostatné riadky sú ignorované).
 # Poradie je: číselný kľúč (>0), názov, max. rozsah (>1; 2=áno/nie), význam najnižšej hodnoty (napr., „zlý“), význam najvyššej hodnoty (napr., „dobrý“).

@@ -36,6 +36,13 @@ $messages['bg'] = array(
 	'usercontactlink-baduser' => 'Некоректно потребителско име',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'usercontactlink-baduser' => 'বেঠিক ব্যবহারকারী নাম',
+);
+
 $messages['de'] = array(
 	'usercontactlink-baduser' => 'falscher Benutzername',
 );

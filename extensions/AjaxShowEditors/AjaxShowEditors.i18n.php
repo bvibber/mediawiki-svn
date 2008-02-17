@@ -66,14 +66,17 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
- * @author Bellayet
  * @author Zaheen
+ * @author Bellayet
  */
 $messages['bn'] = array(
-	'ajax-se-desc'    => 'একই পাতায় সম্পাদনা করছেন এমন ব্যবহারকারীদের দেখাবে',
-	'ajax-se-title'   => 'বর্তমানে সম্পাদনা করছেন:',
-	'ajax-se-pending' => 'সতেজ(refresh) করা বাকী আছে... (এই বাক্সে ক্লিক করুন অথবা সম্পাদনা শুরু করুন)',
-	'ajax-se-idling'  => '($1সেকেন্ড পূর্বে)',
+	'ajax-se-desc'             => 'একই পাতায় সম্পাদনা করছেন এমন ব্যবহারকারীদের দেখাবে',
+	'ajax-se-title'            => 'বর্তমানে সম্পাদনা করছেন:',
+	'ajax-se-pending'          => 'সতেজ(refresh) করা বাকী আছে... (এই বাক্সে ক্লিক করুন অথবা সম্পাদনা শুরু করুন)',
+	'ajax-se-idling'           => '($1সেকেন্ড পূর্বে)',
+	'ajax-se-pagedoesnotexist' => 'পাতাটির অস্তিত্ব নেই',
+	'ajax-se-userinvalid'      => 'ত্রুটি: অবৈধ ব্যবহারকারী',
+	'ajax-se-usernotfound'     => 'ত্রুটি: ব্যবহারকারী খুঁজে পাওয়া যায়নি',
 );
 
 /** Breton (Brezhoneg)
@@ -214,10 +217,13 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'ajax-se-desc'    => 'Pokazuje wobdźěłowacym wužiwarjam, štóž samsnu stronu wobdźěłuje',
-	'ajax-se-title'   => 'Wobdźěłuje so runje wot:',
-	'ajax-se-pending' => 'aktualizuje so ... (klikń do tutoho pola abo póčni wobdźěłować)',
-	'ajax-se-idling'  => '(před $1s)',
+	'ajax-se-desc'             => 'Pokazuje wobdźěłowacym wužiwarjam, štóž samsnu stronu wobdźěłuje',
+	'ajax-se-title'            => 'Wobdźěłuje so runje wot:',
+	'ajax-se-pending'          => 'aktualizuje so ... (klikń do tutoho pola abo póčni wobdźěłować)',
+	'ajax-se-idling'           => '(před $1s)',
+	'ajax-se-pagedoesnotexist' => 'strona njeeksistuje',
+	'ajax-se-userinvalid'      => 'ZMYLK: wužiwar njepłaćiwy',
+	'ajax-se-usernotfound'     => 'ZMYLK: wužiwar njenamakany',
 );
 
 /** Hungarian (Magyar)
@@ -428,10 +434,13 @@ $messages['ro'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
-	'ajax-se-desc'    => 'Показывает пользователей, редактирующих одну и ту же страницу',
-	'ajax-se-title'   => 'В настоящий момент редактируют:',
-	'ajax-se-pending' => 'ожидание обновления... (нажмите здесь или начните редактирование)',
-	'ajax-se-idling'  => '($1 с назад)',
+	'ajax-se-desc'             => 'Показывает пользователей, редактирующих одну и ту же страницу',
+	'ajax-se-title'            => 'В настоящий момент редактируют:',
+	'ajax-se-pending'          => 'ожидание обновления... (нажмите здесь или начните редактирование)',
+	'ajax-se-idling'           => '($1 с назад)',
+	'ajax-se-pagedoesnotexist' => 'страница не существует',
+	'ajax-se-userinvalid'      => 'ОШБ: ошибочный участник',
+	'ajax-se-usernotfound'     => 'ОШБ: участник не найден',
 );
 
 /** Yakut (Саха тыла)
@@ -456,10 +465,13 @@ $messages['scn'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'ajax-se-desc'    => 'Zobrazuje používateľov, ktorí upravujú rovnakú stránku',
-	'ajax-se-title'   => 'Práve upravuje:',
-	'ajax-se-pending' => 'čaká sa na obnovenie... (kliknite do tohto poľa alebo začnite upravovať)',
-	'ajax-se-idling'  => '(pred $1 sek)',
+	'ajax-se-desc'             => 'Zobrazuje používateľov, ktorí upravujú rovnakú stránku',
+	'ajax-se-title'            => 'Práve upravuje:',
+	'ajax-se-pending'          => 'čaká sa na obnovenie... (kliknite do tohto poľa alebo začnite upravovať)',
+	'ajax-se-idling'           => '(pred $1 sek)',
+	'ajax-se-pagedoesnotexist' => 'stránka neexistuje',
+	'ajax-se-userinvalid'      => 'CHYBA: neplatný používateľ',
+	'ajax-se-usernotfound'     => 'CHYBA: používateľ nebol nájdený',
 );
 
 /** ћирилица (ћирилица)
@@ -491,9 +503,9 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
- * @author M.M.S.
- * @author Sannab
  * @author Lejonel
+ * @author Sannab
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'ajax-se-desc'             => 'Visar under sidredigering vilka användare som redigerar samma sida',
@@ -501,8 +513,8 @@ $messages['sv'] = array(
 	'ajax-se-pending'          => 'avvaktar omläsning ... (klicka på denna ruta eller börja redigera)',
 	'ajax-se-idling'           => '($1s sedan)',
 	'ajax-se-pagedoesnotexist' => 'sidan existerar inte',
-	'ajax-se-userinvalid'      => 'ERR: ogiltig användare',
-	'ajax-se-usernotfound'     => 'ERR: användare inte hittad',
+	'ajax-se-userinvalid'      => 'Fel: ogiltig användare',
+	'ajax-se-usernotfound'     => 'Fel: användaren hittades inte',
 );
 
 /** Telugu (తెలుగు)

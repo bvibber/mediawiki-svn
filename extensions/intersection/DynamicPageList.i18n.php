@@ -300,9 +300,10 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'intersection_toomanycats' => 'DynamicPageList: చాలా ఎక్కువ వర్గాలు!',
-	'intersection_toofewcats'  => 'DynamicPageList: మరీ తక్కువ వర్గాలు!',
-	'intersection_noresults'   => 'DynamicPageList: ఫలితాలు లేవు!',
+	'intersection_toomanycats'   => 'DynamicPageList: చాలా ఎక్కువ వర్గాలు!',
+	'intersection_toofewcats'    => 'DynamicPageList: మరీ తక్కువ వర్గాలు!',
+	'intersection_noresults'     => 'DynamicPageList: ఫలితాలు లేవు!',
+	'intersection_noincludecats' => 'DynamicPageList: మీరు కనీసం ఒక్క వర్గాన్నైనా చేర్చాలి, లేదా ఓ నేమ్&zwnj;స్పేసునైనా ఇవ్వాలి!',
 );
 
 /** Vietnamese (Tiếng Việt)

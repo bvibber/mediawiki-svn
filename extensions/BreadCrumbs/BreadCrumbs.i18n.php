@@ -16,6 +16,13 @@ $messages['ar'] = array(
 	'breadcrumbs-desc' => 'يعرض مسار المستخدمين خلال الويكي.',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'breadcrumbs-desc' => 'ব্যবহারকারীদেরকে উইকির ভেতর দিয়ে পথ দেখায়।',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -94,6 +101,13 @@ $messages['pt'] = array(
 	'breadcrumbs-desc' => 'Mostra o caminho dos utilizadores através do wiki.',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'breadcrumbs-desc' => 'Показывает путь пользователей по вики.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -106,5 +120,12 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'breadcrumbs-desc' => 'Wiest dän Wai fon dän Benutser truch dät Wiki.',
+);
+
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'breadcrumbs-desc' => 'Visar användarens väg genom wikin.',
 );
 

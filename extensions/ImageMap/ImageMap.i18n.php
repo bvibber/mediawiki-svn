@@ -673,7 +673,12 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'imagemap_no_image'      => '&lt;imagemap&gt;: తప్పనిసరిగా మొదటి లైనులో ఓ బొమ్మని ఇవ్వాలి',
 	'imagemap_invalid_image' => '&lt;imagemap&gt;: తప్పుడు లేదా ఉనికిలో లేని బొమ్మ',
+	'imagemap_no_link'       => '&lt;imagemap&gt;: $1వ లైను చివర సరియైన లింకు కనబడలేదు',
 	'imagemap_invalid_title' => '&lt;imagemap&gt;: $1వ లైనులో ఉన్న లింకులో తప్పుడు శీర్షిక',
+	'imagemap_missing_coord' => '&lt;imagemap&gt;: ఆకృతికి తగినన్ని నిరూపకాలు $1వ లైనులో లేవు',
+	'imagemap_no_areas'      => '&lt;imagemap&gt;: కనీసం ఒక్క areaని అయినా ఇచ్చితీరాలి',
+	'imagemap_invalid_coord' => '&lt;imagemap&gt;: $1వ లైనులో తప్పుడు నిరూపకం, అది ఖచ్చితంగా సంఖ్య అయివుండాలి.',
+	'imagemap_invalid_desc'  => '&lt;imagemap&gt;: descని తప్పుగా ఇచ్చారు, అది వీటిల్లో ఏదో ఒకటి అయివుండాలి: <tt>$1</tt>',
 	'imagemap_description'   => 'ఈ బొమ్మ గురించి',
 );
 

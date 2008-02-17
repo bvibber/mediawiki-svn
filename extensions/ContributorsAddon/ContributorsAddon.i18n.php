@@ -46,6 +46,13 @@ $messages['nl'] = array(
 	'contributorsaddon-desc' => 'Voegt "JavaScript onMouseOver"-popups toe aan de link "Belangrijkste schrijvers"',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'contributorsaddon-desc' => 'Legger til JavaScript-sprettoppvinduer med lenker til «hovedbidragsytere»',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

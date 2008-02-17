@@ -45,8 +45,13 @@ $messages['bg'] = array(
 	'sitenotice-desc'  => 'Позволява на потребителите да премахват полето sitenotice',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ * @author Bellayet
+ */
 $messages['bn'] = array(
 	'sitenotice_close' => 'নোটিশ বন্ধ করুন',
+	'sitenotice-desc'  => 'ব্যবহারকারীদেরকে সাইট নোটিশ বন্ধ করার সুযোগ দেয়',
 );
 
 $messages['br'] = array(
@@ -247,8 +252,12 @@ $messages['nl'] = array(
 	'sitenotice-desc'  => 'Stelt gebruikers in staat de siteberichten te sluiten',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
 	'sitenotice_close' => 'lukk',
+	'sitenotice-desc'  => 'Gjør at brukere kan fjerne toppbeskjeden',
 );
 
 /** Occitan (Occitan)

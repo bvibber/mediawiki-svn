@@ -497,6 +497,7 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'regexblock'                      => 'RegexBlock',
+	'regexblock-desc'                 => 'Rozšírenie na blokovanie používateľských mien a IP adries na základe regulárnych výrazov. Obsahuje mechanizmus blokovania a [[Special:Regexblock|špeciálnu stránku]] na pridávanie a správu blokovaní',
 	'regexblock-page-title'           => 'Blokovanie mena na základe regulárneho výrazu',
 	'regexblockstats'                 => 'Štatistika regex blokovaní',
 	'regexblock-reason-ip'            => 'Tejto IP adrese bolo zakázané upravovanie kvôli vandalizmu alebo inej rušivej činnosti, ktorú ste vykonával vy alebo niekto, s kým máte spoločnú vašu IP adresu. Ak veríte, že toto je omyl, prosím $1',

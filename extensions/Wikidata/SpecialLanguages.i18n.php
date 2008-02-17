@@ -814,14 +814,18 @@ $wdMessages['gl'] = array(
 	'ow_noedit_title'                  => 'Non ten permisos para editar',
 	'ow_uiprefs'                       => 'Wikidatos',
 	'ow_none_selected'                 => '<Ningún seleccionado>',
+	'ow_dm_OK'                         => 'De acordo',
 	'ow_dm_not_present'                => 'non introducido',
 	'ow_will_insert'                   => 'Insertará o seguinte:',
+	'ow_available_contexts'            => 'Contextos disponíbeis',
 	'ow_add_concept_link'              => 'Engadir ligazón a outros conceptos',
 	'ow_AlternativeDefinition'         => 'Definición alternativa',
 	'ow_AlternativeDefinitions'        => 'Definicións alternativas',
 	'ow_Annotation'                    => 'Anotación',
 	'ow_ApproximateMeanings'           => 'Significados aproximados',
+	'ow_ClassAttributeAttribute'       => 'Atributo',
 	'ow_ClassAttributeLevel'           => 'Nivel',
+	'ow_ClassAttributeType'            => 'Tipo',
 	'ow_Definition'                    => 'Definición',
 	'ow_DefinedMeaningAttributes'      => 'Anotación',
 	'ow_DefinedMeaning'                => 'Significado definido',
@@ -2145,6 +2149,7 @@ $wdMessages['stq'] = array(
 /** Swedish (Svenska)
  * @author Max sonnelid
  * @author Sannab
+ * @author M.M.S.
  */
 $wdMessages['sv'] = array(
 	'datasearch'                      => 'Wikidata: Datasökning',
@@ -2158,6 +2163,7 @@ $wdMessages['sv'] = array(
 	'ow_uipref_datasets'              => 'Standard visning',
 	'ow_uiprefs'                      => 'Wikidata',
 	'ow_none_selected'                => '<Ingen vald>',
+	'ow_dm_OK'                        => 'OK',
 	'ow_available_contexts'           => 'Tillgängliga sammanhang',
 	'ow_ClassAttributeAttribute'      => 'Attribut',
 	'ow_ClassAttributeLevel'          => 'Nivå',

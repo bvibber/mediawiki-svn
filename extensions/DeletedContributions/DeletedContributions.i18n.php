@@ -55,10 +55,12 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Zaheen
  * @author Bellayet
  */
 $messages['bn'] = array(
-	'deletedcontributions' => 'মুছে ফেলা ব্যবহারকারী অবদান',
+	'deletedcontributions'      => 'মুছে ফেলা ব্যবহারকারী অবদান',
+	'deletedcontributions-desc' => 'প্রশাসকদের [[Special:DeletedContributions|কোন ব্যবহারকারীর মুছে ফেলা সম্পাদনাগুলি ব্রাউজ করার]] ক্ষমতা দেয়',
 );
 
 $messages['ca'] = array(

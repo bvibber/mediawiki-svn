@@ -38,6 +38,13 @@ $messages['fr'] = array(
 	'nstab-comments'    => 'Commentaire',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'nstab-comments' => 'Comentario',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -91,6 +98,14 @@ $messages['sk'] = array(
 $messages['sv'] = array(
 	'commentpages-desc' => 'Lägger till kommentarsidor för sidor i huvudnamnrymden',
 	'nstab-comments'    => 'Kommentarer',
+);
+
+/** Telugu (తెలుగు)
+ * @author వైజాసత్య
+ */
+$messages['te'] = array(
+	'commentpages-desc' => 'ప్రధాన నేంస్పేసులోని పేజీలకు చర్చా పేజీలు',
+	'nstab-comments'    => 'వ్యాఖ్యానము',
 );
 
 /** Vietnamese (Tiếng Việt)

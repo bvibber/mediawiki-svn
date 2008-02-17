@@ -25,6 +25,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'selectcategory-title'    => 'اختر التصنيفات',
+	'selectcategory-desc'     => 'يسمح للمستخدم بالاختيار من التصنيفات الموجودة عند تعديل صفحة',
 	'selectcategory-subtitle' => 'Shift-mouse لاختيار مدخلات متوافقة متعددة، Ctrl-mouse لاختيار مدخلات غير متوافقة.',
 );
 
@@ -178,6 +179,7 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'selectcategory-title'    => 'Vybrať kategórie',
+	'selectcategory-desc'     => 'Umožňuje používateľovi vybrať z existujúcich kategórií pri úprave stránky',
 	'selectcategory-subtitle' => 'Shift+kliknutie označí súvislú skupinu položiek, ctrl+kliknutie označí jednotlivé nesúvislé položky.',
 );
 

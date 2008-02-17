@@ -169,6 +169,29 @@ Revenir vers :
 * [[$4]].",
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Xosé
+ */
+$messages['gl'] = array(
+	'crosswikiblock-desc'           => 'Permite bloquear usuarios doutros wikis mediante unha [[Special:Crosswikiblock|páxina especial]]',
+	'crosswikiblock'                => 'Usuario bloqueado noutro wiki',
+	'crosswikiblock-expiry'         => 'Caducidade:',
+	'crosswikiblock-reason'         => 'Razón:',
+	'crosswikiblock-submit'         => 'Bloquear este usuario',
+	'crosswikiblock-anononly'       => 'Bloquear só usuarios anónimos',
+	'crosswikiblock-noname'         => '"$1" non é un nome de usuario válido.',
+	'crosswikiblock-nouser'         => 'Non se atopa o usuario "$3".',
+	'crosswikiblock-noexpiry'       => 'Caducidade non válida: $1.',
+	'crosswikiblock-noreason'       => 'Ningunha razón especificada.',
+	'crosswikiblock-alreadyblocked' => 'O usuario $3 xa está bloqueado.',
+	'crosswikiblock-success'        => "O usuario '''$3''' foi bloqueado con éxito.
+
+Voltar a:
+* [[Special:CrosswikiBlock|Formulario de bloqueo]]
+* [[$4]]",
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

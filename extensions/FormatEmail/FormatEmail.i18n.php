@@ -107,8 +107,10 @@ $2',
 
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Siebrand
+ * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'email-desc'   => 'Gjør at egedefinerte beskjeder kan legges til toppen eller bunnen av brukereres e-poster.',
 	'email_footer' => '----------------------------------------------------------------------------
 Denne e-posten har blitt sendt deg fra $1 via {{SITENAME}}s e-postsystem.
 

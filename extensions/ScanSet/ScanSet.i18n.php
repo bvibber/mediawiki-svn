@@ -22,18 +22,22 @@ $messages['en'] = array(
 	'scanset_prev' => '&lt; Prev',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'scanset_no_name' => 'سكان مجموعة: يجب عليك تحديد اسم سكان مجموعة، مثال &lt;scanset name="EB1911" /&gt;.',
-	'scanset_invalid_name' => 'سكان مجموعة: سكان مجموعة غير صحيحة أو ناقصة.',
+	'scanset-desc'                      => 'عرض صور الصفحات المنسوخة من مجموعات أندرياس جروز CD/DVD',
+	'scanset_no_name'                   => 'سكان مجموعة: يجب عليك تحديد اسم سكان مجموعة، مثال &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'سكان مجموعة: سكان مجموعة غير صحيحة أو ناقصة.',
 	'scanset_unrecognised_index_format' => 'سكان مجموعة: صيغة فهرس غير معروفة',
-	'scanset_opendir_error' => 'سكان مجموعة: خطأ، لا يمكن فتح المجلد $1',
-	'scanset_no_files' => 'سكان مجموعة: لا توجد ملفات في المجلد المحدد.',
-	'scanset_no_volumes' => 'سكان مجموعة: لا توجد مجلدات حجم',
-	'scanset_missing_index_file' => 'سكان مجموعة: ملف الفهرس $1 لم يتم العثور عليه',
-	'scanset_index_file_error' => 'سكان مجموعة: خطأ في صيغة ملف الفهرس عند السطر $1',
-	'scanset_invalid_volume' => 'سكان مجموعة: حجم غير صحيح',
-	'scanset_next' => 'التالي &gt;',
-	'scanset_prev' => '&lt; السابق',
+	'scanset_opendir_error'             => 'سكان مجموعة: خطأ، لا يمكن فتح المجلد $1',
+	'scanset_no_files'                  => 'سكان مجموعة: لا توجد ملفات في المجلد المحدد.',
+	'scanset_no_volumes'                => 'سكان مجموعة: لا توجد مجلدات حجم',
+	'scanset_missing_index_file'        => 'سكان مجموعة: ملف الفهرس $1 لم يتم العثور عليه',
+	'scanset_index_file_error'          => 'سكان مجموعة: خطأ في صيغة ملف الفهرس عند السطر $1',
+	'scanset_invalid_volume'            => 'سكان مجموعة: حجم غير صحيح',
+	'scanset_next'                      => 'التالي &gt;',
+	'scanset_prev'                      => '&lt; السابق',
 );
 
 /** Asturian (Asturianu)
@@ -65,8 +69,18 @@ $messages['bg'] = array(
  * @author Zaheen
  */
 $messages['bn'] = array(
-	'scanset_next' => 'পরবর্তী &gt;',
-	'scanset_prev' => '&lt; পূর্ববর্তী',
+	'scanset-desc'                      => 'Andreas Grosz-এর CD/DVD সেটগুলি থেকে স্ক্যান করা পাতার ছবিগুলি দেখুন',
+	'scanset_no_name'                   => 'স্ক্যানসেট: আপনাকে অবশ্যই একটি স্ক্যান সেট নাম দিতে হবে, যেমন &lt;scanset name="EB1911" /&gt;।',
+	'scanset_invalid_name'              => 'স্ক্যানসেট: অবৈধ বা অবর্তমান স্ক্যান সেট।',
+	'scanset_unrecognised_index_format' => 'স্ক্যানসেট: ইন্ডেক্স ফরম্যাট অজানা',
+	'scanset_opendir_error'             => 'স্ক্যানসেট: ত্রুটি, $1 ডিরেক্টরি খোলা যাচ্ছে না',
+	'scanset_no_files'                  => 'স্ক্যানসেট: প্রদত্ত ডিরেক্টরিতে কোন ফাইল নেই।',
+	'scanset_no_volumes'                => 'স্ক্যানসেট: কোন ভলিউম ডিরেক্টরি খুঁজে পাওয়া যায়নি',
+	'scanset_missing_index_file'        => 'স্ক্যানসেট: $1 ইনডেক্স ফাইলটি খুঁজে পাওয়া যায়নি',
+	'scanset_index_file_error'          => 'স্ক্যানসেট: $1 নং লাইনে ইন্ডেক্স ফাইল ফরম্যাটে ত্রুটি',
+	'scanset_invalid_volume'            => 'স্ক্যানসেট: অবৈধ ভলিউম',
+	'scanset_next'                      => 'পরবর্তী &gt;',
+	'scanset_prev'                      => '&lt; পূর্ববর্তী',
 );
 
 /** Czech (Česky)
@@ -74,6 +88,7 @@ $messages['bn'] = array(
  * @author Danny B.
  */
 $messages['cs'] = array(
+	'scanset-desc'                      => 'Zobrazuje stránky s naskenovanými obrázky z CD/DVD Andrease Grosza',
 	'scanset_no_name'                   => 'ScanSet: Musíte uvést název skenované množiny, např. &lt;scanset name="EB1911" /&gt;',
 	'scanset_invalid_name'              => 'ScanSet: Neplatná nebo chybějící skenovaná množina',
 	'scanset_unrecognised_index_format' => 'ScanSet: Neznámý formát indexu',
@@ -261,6 +276,7 @@ $messages['lt'] = array(
  * @author SPQRobin
  */
 $messages['nl'] = array(
+	'scanset-desc'                      => "Maakt het mogelijk gescande afbeeldingen van de cd's/dvd's van Andreas Grosz te bekijken",
 	'scanset_no_name'                   => 'ScanSet: u moet een naam voor de scanset opgeven, zoals bijvoorbeeld &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name'              => 'ScanSet: ongeldige of missende scanset',
 	'scanset_unrecognised_index_format' => 'ScanSet: indexopmaak wordt niet herkend',
@@ -278,6 +294,7 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'scanset-desc'                      => 'Vis bilder av skannede sider fra Andreas Grosz’ CD-/DVD-sett',
 	'scanset_unrecognised_index_format' => 'ScanSet: Ukjent indeksformat',
 	'scanset_opendir_error'             => 'ScanSet: Feil, kan ikke åpne mappen $1',
 	'scanset_no_files'                  => 'ScanSet: Ingen filer i mappen som ble oppgitt.',
@@ -335,6 +352,7 @@ $messages['pt'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
+	'scanset-desc'                      => 'Просмотр изображений отсканированных страниц из CD/DVD коллекциий Андеаса Гроса (Andreas Grosz)',
 	'scanset_no_name'                   => 'ScanSet: вы должны указать название коллекции снимков, например &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name'              => 'ScanSet: ошибка в названии набора снимков, или указанный набор отсутствует',
 	'scanset_unrecognised_index_format' => 'ScanSet: неизвестный формат индекса',
@@ -369,6 +387,7 @@ $messages['sah'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
+	'scanset-desc'                      => 'Zobraziť stránky s naskenovanými obrázkami z CD/DVD Andreasa Grosza',
 	'scanset_no_name'                   => 'ScanSet: Musíte uviesť názov skenovanej množiny, napr. &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name'              => 'ScanSet: neplatná alebo chýbajúca skenovaná množina.',
 	'scanset_unrecognised_index_format' => 'ScanSet: Neznámy formát indexu',
@@ -409,8 +428,10 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
+	'scanset-desc'                      => "Visa skannade sid bilder från Andreas Grosz's CD/DVD grupper",
 	'scanset_no_name'                   => 'ScanSet: Du måste ange ett namn på ett scan-set, t.ex. &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name'              => 'ScanSet: Angivet scan-set är felaktigt eller finns inte.',
 	'scanset_unrecognised_index_format' => 'ScanSet: Okänt indexformat',
@@ -428,6 +449,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'scanset_no_files'           => 'ScanSet: మీరు చెప్పిన డైరెక్టరీలో ఫైళ్ళు ఏమీ లేవు.',
 	'scanset_missing_index_file' => 'ScanSet: $1 అనే సూచిక ఫైలు కనబడలేదు',
 	'scanset_next'               => 'తర్వాత &gt;',
 	'scanset_prev'               => '&lt; గత',

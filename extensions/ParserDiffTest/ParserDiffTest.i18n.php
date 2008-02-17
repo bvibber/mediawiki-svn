@@ -69,17 +69,22 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Zaheen
  */
 $messages['bn'] = array(
+	'parserdifftest'      => 'পার্সার পার্থক্য পরীক্ষা',
+	'pdtest-desc'         => 'দুইটি ভিন্ন পার্সারের আউটপুটের তুলনা করার জন্য [[Special:ParserDiffTest|বিশেষ পাতা]]',
 	'pdtest_no_target'    => 'কোন লক্ষ্য নির্ধারিত হয়নি।',
 	'pdtest_page_missing' => 'ডাটাবেজে এ ধরনের পাতা খুজে পাওয়া যায়নি।',
 	'pdtest_no_changes'   => 'কোন পরিবর্তন পাওয়া যায়নি।',
 	'pdtest_time_report'  => '<b>$1</b> সময় নেয় $2 সেকেন্ড, <b>$3</b> সময় নেয় $4 সেকেন্ড।',
+	'pdtest_title'        => 'প্রতিবেশ শিরোনাম:',
 	'pdtest_text'         => 'লেখা ইনপুট:',
 	'pdtest_ok'           => 'ঠিকা আছে',
 	'pdtest_get_text'     => 'পাতা থেকে লেখা পাওয়া যাবে',
 	'pdtest_diff'         => 'পার্থক্যসমূহ',
 	'pdtest_side_by_side' => 'ফলাফলের তুলনা',
+	'pdt_comparing_page'  => '[[$1]] থেকে পার্সার আউটপুট তুলনা করা হচ্ছে',
 );
 
 /** Breton (Brezhoneg)
@@ -185,13 +190,14 @@ $messages['frp'] = array(
 );
 
 /** Galician (Galego)
- * @author Alma
  * @author Xosé
+ * @author Alma
  */
 $messages['gl'] = array(
 	'pdtest_no_target'  => 'Non se especificou o destino.',
 	'pdtest_no_changes' => 'Non foron detectados cambios.',
 	'pdtest_ok'         => 'De acordo',
+	'pdtest_get_text'   => 'Obter texto da páxina',
 	'pdtest_diff'       => 'Diferenzas',
 );
 
@@ -548,6 +554,7 @@ $messages['te'] = array(
 	'pdtest_get_text'     => 'పేజీనుండి పాఠ్యాన్ని పొందండి',
 	'pdtest_diff'         => 'తేడాలు',
 	'pdtest_side_by_side' => 'అవుట్&zwnj;పుట్ పోలిక',
+	'pdt_comparing_page'  => '[[$1]] నుండి పార్సర్ అవుట్&zwnj;పుట్&zwnj;ని పోలుస్తున్నాం',
 );
 
 /** Tajik (Тоҷикӣ)

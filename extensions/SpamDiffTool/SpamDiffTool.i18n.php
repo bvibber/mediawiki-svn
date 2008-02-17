@@ -57,6 +57,16 @@ $messages['bg'] = array(
 	'spamdifftool_submit_buttom'    => 'Съхранение',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'spamdifftool'          => 'স্প্যাম কালোতালিকা ব্যবস্থাপনা করুন',
+	'spamdifftool_cantedit' => 'দুঃখিত - আপনার স্প্যাম কালোতালিকা সম্পাদনা করার অধিকার নেই।',
+	'spamdifftool_notext'   => "স্প্যাম কালোতালিকায় যোগ করার জন্য কোন টেক্সট নেই। <a href='$1'>এখানে</a> ক্লিক করে অগ্রসর হোন।",
+	'spamdifftool_confirm'  => "স্প্যাম কালোতালিকায় এই ভুক্তিগুলি যোগ করার ব্যাপারটি নিশ্চিত করুন। (সমস্যা হলে <a href='$1' target='new'>এখানে</a> ক্লিক করুন।)",
+);
+
 $messages['de'] = array(
 	'spamdifftool'                  => 'Spam-Blacklist bearbeiten',
 	'spamdifftool_cantedit'         => 'Du hast keine Berechitung zur Bearbeitung der Spam-Blacklist.',

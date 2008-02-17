@@ -207,12 +207,33 @@ $messages['bn'] = array(
 	'math_LatexPackageUnavailable'          => 'PNG রেন্ডার করা যাচ্ছে না, কারণ "$1" লেটেক প্যাকেজটি লভ্য নয়',
 	'math_MismatchedBeginAndEnd'            => '"$1" এবং "$2" নির্দেশ দুইটি মিলছে না',
 	'math_MisplacedLimits'                  => '"$1" কমান্ডটি শুধুমাত্র একটি গাণিতিক অপারেটরের পরেই ব্যবহৃত হতে পারে ("\\mathop" ব্যবহার করতে পারেন)',
+	'math_MissingCommandAfterNewcommand'    => '"\\newcommand"-এর পরে নতুন কমান্ড নামটি অনুপস্থিত কিংবা অবৈধ (কেবল একটি কমান্ড সংজ্ঞায়িত থাকতে হবে; এটি অবশ্যই একটি ব্যাকস্ল্যাশ "\\" দিয়ে শুরু হতে হবে এবং এতে শুধু বর্ণমালার ক্যারেক্টার থাকতে পারবে)',
 	'math_MissingDelimiter'                 => '"$1"-এর পরে সীমায়ক নেই',
 	'math_MissingOpenBraceAfter'            => '"$1"-এর পরে উন্মুক্ত বন্ধনী "{" নেই',
 	'math_MissingOpenBraceAtEnd'            => 'ইনপুটের শেষে দরকারী উন্মুক্ত বন্ধনী "{" নেই',
 	'math_MissingOpenBraceBefore'           => '"$1"-এর আগে দরকারী উন্মুক্ত বন্ধনী "{" নেই',
+	'math_MissingOrIllegalParameterCount'   => '"$1"-এর সংজ্ঞায় প্যারামিটার সংখ্যা অনুপস্থিত কিংবা অবৈধ (এটিকে অবশ্যই ১ থেকে ৯ পর্যন্ত সংখ্যাগুলির যেকোন একটি সংখ্যা হতে হবে)',
+	'math_MissingOrIllegalParameterIndex'   => '"$1"-এর সংজ্ঞায় প্যারামিটার সূচক অনুপস্থিত কিংবা অবৈধ',
+	'math_NonAsciiInMathMode'               => 'অ-আস্কি ক্যারেক্টারগুলি কেবল টেক্সট মোডে ব্যবহার করা যাবে (সমস্যাযুক্ত ক্যারেক্টারগুলি "\\text{...}"-এর ভেতরে লেখার চেষ্টা করুন)',
+	'math_NotEnoughArguments'               => '"$1"-এর জন্য যথেষ্ট আর্গুমেন্ট সরবরাহ করা হয়নি',
+	'math_PngIncompatibleCharacter'         => '$1 ক্যারেক্টার ধারণকারী PNG সঠিকভাবে সৃষ্টি করা যায়নি',
+	'math_ReservedCommand'                  => '"$1" কমান্ডটি ব্লাটেকের অভ্যন্তরীণ ব্যবহারের জন্য রক্ষিত',
+	'math_SubstackRowTooBig'                => '"সাবস্ট্যাক" ব্লকের প্রতি সারিতে কেবলমাত্র একটি ভুক্তি থাকতে পারবে',
 	'math_TooManyMathmlNodes'               => 'ম্যাথএমএল বৃক্ষে গ্রন্থির (node) সংখ্যা অত্যধিক',
 	'math_TooManyTokens'                    => 'ইনপুট অতিরিক্ত দীর্ঘ',
+	'math_UnavailableSymbolFontCombination' => '"$1" প্রতীকটি "$2" ফন্টে নেই',
+	'math_UnexpectedNextCell'               => '"&" কমান্ডটি শুধুমাত্র একটি "\\begin ... \\end" ব্লকের মধ্যেই স্থান পেতে পারে',
+	'math_UnexpectedNextRow'                => '"\\\\" কমান্ডটি শুধুমাত্র একটি "\\begin ... \\end" ব্লকের মধ্যেই স্থান পেতে পারে',
+	'math_UnmatchedBegin'                   => '"\\begin" খুঁজে পাওয়া গেছে যার কোন সংশ্লিষ্ট "\\end" নেই',
+	'math_UnmatchedCloseBrace'              => 'সমাপ্তকারী বন্ধনী "}" খুঁজে পাওয়া গেছে যার কোন সংশ্লিষ্ট আরম্ভকারী বন্ধনী "{" নেই',
+	'math_UnmatchedEnd'                     => '"\\end" খুঁজে পাওয়া গেছে যার কোন সংশ্লিষ্ট "\\begin" নেই',
+	'math_UnmatchedLeft'                    => '"\\left" খুঁজে পাওয়া গেছে যার কোন সংশ্লিষ্ট "\\right" নেই',
+	'math_UnmatchedOpenBrace'               => 'আরম্ভকারী বন্ধনী "{" খুঁজে পাওয়া গেছে যার কোন সংশ্লিষ্ট সমাপ্তকারী বন্ধনী "}" নেই',
+	'math_UnmatchedOpenBracket'             => 'আরম্ভকারী বর্গাকার বন্ধনী "[" খুঁজে পাওয়া গেছে যার কোন সংশ্লিষ্ট সমাপ্তকারী বর্গাকার বন্ধনী "]" নেই',
+	'math_UnmatchedRight'                   => '"\\right" খুঁজে পাওয়া গেছে যার কোন সংশ্লিষ্ট "\\left" নেই',
+	'math_UnrecognisedCommand'              => '"$1" কমান্ডটি পরিচিত নয়',
+	'math_WrongFontEncoding'                => '"$1" প্রতীকটি "$2" ফন্ট এনকোডিং-এ উপস্থিত না-ও থাকতে পারে',
+	'math_WrongFontEncodingWithHint'        => '"$1" প্রতীকটি "$2" ফন্ট এনকোডিং-এ উপস্থিত না-ও থাকতে পারে ("$3{...}" কমান্ডটি চেষ্টা করে দেখুন)',
 );
 
 /** Breton (Brezhoneg)
@@ -1261,11 +1282,14 @@ $messages['stq'] = array(
  * @author Max sonnelid
  */
 $messages['sv'] = array(
-	'math_CannotChangeDirectory' => 'Kan inte ändra arbetsregistret',
-	'math_CannotCreateTexFile'   => 'Kan inte skapa tex fil',
-	'math_CannotWriteTexFile'    => 'Kan inte skriva till tex fil',
-	'math_InvalidColour'         => 'Färgen "$1" är ogiltig',
-	'math_TooManyTokens'         => 'Inmatningen är för lång',
+	'math_CannotChangeDirectory'   => 'Kan inte ändra arbetsregistret',
+	'math_CannotCreateTexFile'     => 'Kan inte skapa tex fil',
+	'math_CannotRunDvipng'         => 'Kan inte sätta in dvipng',
+	'math_CannotRunLatex'          => 'Kan inte sätta in latex',
+	'math_CannotWritePngDirectory' => 'Kan inte skriva till utdata PNG register',
+	'math_CannotWriteTexFile'      => 'Kan inte skriva till tex fil',
+	'math_InvalidColour'           => 'Färgen "$1" är ogiltig',
+	'math_TooManyTokens'           => 'Inmatningen är för lång',
 );
 
 /** Vietnamese (Tiếng Việt)

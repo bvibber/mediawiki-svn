@@ -62,9 +62,11 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Zaheen
  */
 $messages['bn'] = array(
 	'block_title_error_page_title' => 'নিষিদ্ধ শিরোনাম',
+	'block_title_error-desc'       => 'বিশেষ কিছু শিরোনামের পাতা সংরক্ষণ বা সৃষ্টিতে বাধাদানের একটি প্রাথমিক উপায় প্রদান করে।',
 	'block_title_error'            => 'দুঃখিত, এই শিরোনামে পাতাটি সংরক্ষণ করার অনুমোদন নাই।',
 );
 
@@ -344,6 +346,7 @@ $messages['ro'] = array(
  */
 $messages['ru'] = array(
 	'block_title_error_page_title' => 'Запрещённое название',
+	'block_title_error-desc'       => 'Предоставляет базовую возможность запрета сохранения или создания статей с указанными заголовками',
 	'block_title_error'            => 'Извините, страница с подобным названием не может быть сохранена.',
 );
 
@@ -395,7 +398,8 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'block_title_error' => 'క్షమించండి, ఈ పేజీ శీర్షికని భద్రపరచడానికి అనుమతించము.',
+	'block_title_error_page_title' => 'నిషేధించిన శీర్షిక',
+	'block_title_error'            => 'క్షమించండి, ఈ పేజీ శీర్షికని భద్రపరచడానికి అనుమతించము.',
 );
 
 /** Tajik (Тоҷикӣ)

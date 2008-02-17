@@ -61,8 +61,10 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Zaheen
  */
 $messages['bn'] = array(
+	'crossnamespacelinks'     => 'আন্তঃনামস্থান সংযোগযমূহ',
 	'crossnamespacelinkstext' => '$1: $3 এ $2 {{PLURAL:$2|সংযোগ|সংযোগসমূহ}}',
 );
 

@@ -116,6 +116,35 @@ $messages['bg'] = array(
 	'usagestatisticsintervalmonth' => 'Месец',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'specialuserstats'                => 'ব্যবহার পরিসংখ্যান',
+	'usagestatistics'                 => 'ব্যবহার পরিসংখ্যান',
+	'usagestatistics-desc'            => 'একজন নির্দিষ্ট ব্যবহারকারী এবং সামগ্রিক উইকি ব্যবহার পরিসংখ্যান দেখানো হোক',
+	'usagestatisticsfor'              => '<h2>ব্যবহারকারী [[:user:$1|$1]]-এর জন্য ব্যবহার পরিসংখ্যান</h2>',
+	'usagestatisticsallusers'         => 'সব ব্যবহারকারী',
+	'usagestatisticsinterval'         => 'ব্যবধান',
+	'usagestatisticstype'             => 'ধরন',
+	'usagestatisticsstart'            => 'শুরুর তারিখ',
+	'usagestatisticsend'              => 'শেষের তারিখ',
+	'usagestatisticssubmit'           => 'পরিসংখ্যান সৃষ্টি করা হোক',
+	'usagestatisticsnostart'          => '* <font color=red>অনুগ্রহ করে একটি শুরুর তারিখ দিন</font>',
+	'usagestatisticsnoend'            => '* <font color=red>অনুগ্রহ করে একটি শেষের তারিখ দিন</font>',
+	'usagestatisticsbadstartend'      => '<b>ভুল <i>শুরু</i> এবং/অথবা <i>শেষের</i> তারিখ!</b>',
+	'usagestatisticsintervalday'      => 'দিন',
+	'usagestatisticsintervalweek'     => 'সপ্তাহ',
+	'usagestatisticsintervalmonth'    => 'মাস',
+	'usagestatisticsincremental'      => 'বর্ধমান',
+	'usagestatisticsincremental-text' => 'বর্ধমান',
+	'usagestatisticscumulative'       => 'ক্রমবর্ধমান',
+	'usagestatisticscumulative-text'  => 'ক্রমবর্ধমান',
+	'usagestatisticscalselect'        => 'নির্বাচন করুন',
+	'usagestatistics-editindividual'  => 'একক ব্যবহারকারী $1-এর সম্পাদনার পরিসংখ্যান',
+	'usagestatistics-editpages'       => 'একক ব্যবহারকারী $1-এর পাতাগুলির পরিসংখ্যান',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -222,18 +251,21 @@ $messages['fr'] = array(
  * @author Alma
  */
 $messages['gl'] = array(
-	'specialuserstats'           => 'Estatísticas do Uso',
-	'usagestatistics'            => 'Estatísticas do Uso',
-	'usagestatisticsfor'         => '<h2>Estatísticas de uso para [[:usuario:$1|$1]]</h2>',
-	'usagestatisticsallusers'    => 'Todos os Usuarios',
-	'usagestatisticsinterval'    => 'Intervalo',
-	'usagestatisticstype'        => 'Clase',
-	'usagestatisticsstart'       => 'Data de comezo',
-	'usagestatisticsend'         => 'Data de fin',
-	'usagestatisticssubmit'      => 'Xenerar Estatísticas',
-	'usagestatisticsnostart'     => '* <font color=red>Especifique unha data de comezo</font>',
-	'usagestatisticsnoend'       => '* <font color=red>Especifique unha data de fin</font>',
-	'usagestatisticsbadstartend' => '<b>Malo <i>Comezo</i> e/ou <i>Fin</i> da data!</b>',
+	'specialuserstats'             => 'Estatísticas do Uso',
+	'usagestatistics'              => 'Estatísticas do Uso',
+	'usagestatisticsfor'           => '<h2>Estatísticas de uso para [[:usuario:$1|$1]]</h2>',
+	'usagestatisticsallusers'      => 'Todos os Usuarios',
+	'usagestatisticsinterval'      => 'Intervalo',
+	'usagestatisticstype'          => 'Clase',
+	'usagestatisticsstart'         => 'Data de comezo',
+	'usagestatisticsend'           => 'Data de fin',
+	'usagestatisticssubmit'        => 'Xenerar Estatísticas',
+	'usagestatisticsnostart'       => '* <font color=red>Especifique unha data de comezo</font>',
+	'usagestatisticsnoend'         => '* <font color=red>Especifique unha data de fin</font>',
+	'usagestatisticsbadstartend'   => '<b>Malo <i>Comezo</i> e/ou <i>Fin</i> da data!</b>',
+	'usagestatisticsintervalday'   => 'Día',
+	'usagestatisticsintervalweek'  => 'Semana',
+	'usagestatisticsintervalmonth' => 'Mes',
 );
 
 /** Croatian (Hrvatski)
@@ -302,8 +334,8 @@ $messages['lb'] = array(
 );
 
 /** Dutch (Nederlands)
- * @author SPQRobin
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
 	'specialuserstats'                => 'Gebruiksstatistieken',
@@ -316,8 +348,8 @@ $messages['nl'] = array(
 	'usagestatisticsstart'            => 'Begindatum',
 	'usagestatisticsend'              => 'Einddatum',
 	'usagestatisticssubmit'           => 'Statistieken tonen',
-	'usagestatisticsnostart'          => '* <font color=red>Gelieve een begindatum op te geven</font>',
-	'usagestatisticsnoend'            => '* <font color=red>Gelieve een einddatum op te geven</font>',
+	'usagestatisticsnostart'          => '* <font color=red>Geef een begindatum op</font>',
+	'usagestatisticsnoend'            => '* <font color=red>Geef een einddatum op</font>',
 	'usagestatisticsbadstartend'      => '<b>Slechte <i>begindatum</i> en/of <i>einddatum</i>!</b>',
 	'usagestatisticsintervalday'      => 'Dag',
 	'usagestatisticsintervalweek'     => 'Week',
@@ -327,6 +359,8 @@ $messages['nl'] = array(
 	'usagestatisticscumulative'       => 'Cumulatief',
 	'usagestatisticscumulative-text'  => 'cumulatief',
 	'usagestatisticscalselect'        => 'Selecteren',
+	'usagestatistics-editindividual'  => '$1 bewerkingsstatistieken voor enkele gebruiker',
+	'usagestatistics-editpages'       => '$1 paginastatistieken voor enkele gebruiker',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

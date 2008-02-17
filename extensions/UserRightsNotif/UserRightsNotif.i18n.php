@@ -43,6 +43,23 @@ $messages['bg'] = array(
 $2',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'userrightsnotifysubject' => '$1-এ দলের সদস্যপদ পরিবর্তন',
+	'userrightsnotifybody'    => 'প্রিয় $1
+
+আপনার অবগতির জন্য জানানো যাচ্ছে যে $2-এ আপনার দলীয় সদস্যপদ $3 পরিবর্তন করে $4 করেছেন।
+
+যোগ করা হয়েছে: $5
+মুছে ফেলা হয়েছে: $6
+
+ধন্যবাদান্তে,
+
+$2',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

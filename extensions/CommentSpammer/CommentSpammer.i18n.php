@@ -217,3 +217,10 @@ $messages['stq'] = array(
 	'cspammer-log-page'           => 'Kommentoar-Spammer Logbouk',
 );
 
+/** Telugu (తెలుగు)
+ * @author వైజాసత్య
+ */
+$messages['te'] = array(
+	'cspammer-log-page' => 'వ్యాఖ్యల స్పామింగు లాగ్',
+);
+

@@ -21,6 +21,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'purgecache'         => 'إفراغ الكاش',
+	'purgecache-desc'    => '[[Special:PurgeCache|صفحة خاصة]] تستخدم لمسح جدول OBJECTCACHE',
 	'purgecache-warning' => 'هذا سيفرغ جداول الكاش.',
 	'purgecache-purged'  => 'تم إفراغ الكاش',
 	'purgecache-button'  => 'إفراغ',
@@ -96,6 +97,7 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'purgecache'         => 'Cache legen',
+	'purgecache-desc'    => '[[Special:PurgeCache|Speciale pagina]] om de table OBJECTCACHE op legen',
 	'purgecache-warning' => 'Hiermee worden de cachetabellen geleegd.',
 	'purgecache-purged'  => 'De cache is geleegd.',
 	'purgecache-button'  => 'Cache legen',
@@ -146,6 +148,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'purgecache'         => 'Prečistiť vyrovnávaciu pamäť',
+	'purgecache-desc'    => '[[Special:PurgeCache|Špeciálna stránka]] na vyčistenie tabuľky OBJECTCACHE',
 	'purgecache-warning' => 'Toto prečistí tabuľky vyrovnávacej pamäte',
 	'purgecache-purged'  => 'Vyrovnávacia pamäť boal prečistená.',
 	'purgecache-button'  => 'Prečistiť',

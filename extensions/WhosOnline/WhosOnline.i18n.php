@@ -52,6 +52,13 @@ $messages['fr'] = array(
 	'whosonline-desc' => 'Affiche [[Special:WhosOnline|une liste]] des personnes inscrites et des utilisateurs anonymes actuellement en ligne',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'whosonline' => 'Quen está conectado',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

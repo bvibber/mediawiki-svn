@@ -105,6 +105,19 @@ $messages['fr'] = array(
 	'importusers-realname' => 'nom réel',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'importusers-uploadfile'        => 'Cargar ficheiro',
+	'importusers-log-summary'       => 'Resumo',
+	'importusers-log-summary-all'   => 'Todo',
+	'importusers-log-summary-added' => 'Engadido',
+	'importusers-password'          => 'contrasinal',
+	'importusers-email'             => 'correo electrónico',
+	'importusers-realname'          => 'nome real',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

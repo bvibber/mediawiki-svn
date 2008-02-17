@@ -102,10 +102,13 @@ $messages['bg'] = array(
  * @author Zaheen
  */
 $messages['bn'] = array(
-	'sitematrix'          => 'উইকিমিডিয়া উইকিগুলির তালিকা',
-	'sitematrix-language' => 'ভাষা',
-	'sitematrix-project'  => 'প্রকল্পের নাম, আন্তঃপ্রকল্প সংযোগ এবং আন্তঃউইকি সংযোগ',
-	'sitematrix-others'   => 'উইকিমিডিয়ার অন্যান্য প্রকল্প',
+	'sitematrix'           => 'উইকিমিডিয়া উইকিগুলির তালিকা',
+	'sitematrix-desc'      => '[[Special:SiteMatrix|মিডিয়াউইকির উইকিগুলির একটি তালিকা]] প্রদর্শন করে',
+	'sitematrix-language'  => 'ভাষা',
+	'sitematrix-project'   => 'প্রকল্পের নাম, আন্তঃপ্রকল্প সংযোগ এবং আন্তঃউইকি সংযোগ',
+	'sitematrix-others'    => 'উইকিমিডিয়ার অন্যান্য প্রকল্প',
+	'sitematrix-total'     => "'''সর্বমোট: $1'''",
+	'sitematrix-sitetotal' => 'মোট',
 );
 
 /** Breton (Brezhoneg)
@@ -285,11 +288,17 @@ $messages['ga'] = array(
 	'sitematrix-others'   => 'Tionscadail eile ar Vicíméid',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Xosé
+ */
 $messages['gl'] = array(
-	'sitematrix' => 'Listaxe dos wikis de Wikimedia',
-	'sitematrix-language' => 'Linguaxe',
-	'sitematrix-project' => 'Nome do proxecto, ligazón entre proxectos e ligazón entre wikis',
-	'sitematrix-others' => 'Outros proxectos de Wikimedia',
+	'sitematrix'           => 'Listaxe dos wikis de Wikimedia',
+	'sitematrix-language'  => 'Linguaxe',
+	'sitematrix-project'   => 'Nome do proxecto, ligazón entre proxectos e ligazón entre wikis',
+	'sitematrix-others'    => 'Outros proxectos de Wikimedia',
+	'sitematrix-total'     => "'''Suma total: $1'''",
+	'sitematrix-sitetotal' => 'Total',
 );
 
 $messages['grc'] = array(
@@ -552,10 +561,13 @@ $messages['nn'] = array(
  * @author לערי ריינהארט
  */
 $messages['no'] = array(
-	'sitematrix'          => 'Liste over Wikimedia-prosjekter',
-	'sitematrix-language' => 'Språk',
-	'sitematrix-project'  => 'Prosjektets navn, interprosjektlenke og interwikilenke',
-	'sitematrix-others'   => 'Andre Wikimedia-prosjekter',
+	'sitematrix'           => 'Liste over Wikimedia-prosjekter',
+	'sitematrix-desc'      => 'Viser en [[Special:SiteMatrix|liste over Wikimedia-wikier]]',
+	'sitematrix-language'  => 'Språk',
+	'sitematrix-project'   => 'Prosjektets navn, interprosjektlenke og interwikilenke',
+	'sitematrix-others'    => 'Andre Wikimedia-prosjekter',
+	'sitematrix-total'     => "'''Totalt antall: $1'''",
+	'sitematrix-sitetotal' => 'Total',
 );
 
 /** Occitan (Occitan)

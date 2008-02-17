@@ -23,6 +23,13 @@ $messages['bg'] = array(
 	'charinsert-desc' => 'Позволява създаването на Джаваскрипт-кутия за вмъкване на нестандартни символи',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'charinsert-desc' => 'আদর্শ নয় এমন ক্যারেক্টার অনুপ্রবেশ করানোর জন্য জাভাস্ক্রিপ্ট বাক্স সৃষ্টি অনুমোদন করে',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */

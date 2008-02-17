@@ -25,6 +25,15 @@ $messages['bg'] = array(
 	'msfunc_div_zero' => 'Деление на нула',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'msfunc_nan'      => 'ফলাফলের মানটি কোন সংখ্যা নয়',
+	'msfunc_inf'      => 'ফলাফলের মান অসীম',
+	'msfunc_div_zero' => 'শূন্য দিয়ে বিভাজন',
+);
+
 /** Catalan (Català)
  * @author SMP
  */
@@ -207,3 +216,4 @@ $messages['zh-hant'] = array(
         'msfunc_inf' => "結果數值是無限" ,
         'msfunc_div_zero' => "除以零",
 );
+

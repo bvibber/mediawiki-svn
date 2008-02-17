@@ -35,6 +35,15 @@ $messages['bg'] = array(
 	'categorystepper-end'   => '(Край на категорията)',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'categorystepper-desc'  => 'যেসব পাতা বিষয়শ্রেণীসমূহের একটি সেটে আছে, সেসব পাতাতে একটি বিষয়শ্রেণী স্টেপার বক্স দেখানো হোক।',
+	'categorystepper-end'   => '(বিষয়শ্রেণীর সমাপ্তি)',
+	'categorystepper-start' => '(বিষয়শ্রেণীর শুরু)',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -183,11 +192,12 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author వైజాసత్య
  * @author Veeven
  */
 $messages['te'] = array(
-	'categorystepper-start' => '(వర్గంపు మొదలు)',
 	'categorystepper-end'   => '(వర్గపు చివర)',
+	'categorystepper-start' => '(వర్గపు మొదలు)',
 );
 
 /** Volapük (Volapük)
@@ -197,3 +207,4 @@ $messages['vo'] = array(
 	'categorystepper-start' => '(Prim klada)',
 	'categorystepper-end'   => '(Fin klada)',
 );
+

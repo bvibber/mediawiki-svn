@@ -194,7 +194,8 @@ $messages['pt'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
-	'advancedrandom' => 'Продвинутая случайная',
+	'advancedrandom'      => 'Продвинутая случайная',
+	'advancedrandom-desc' => 'Выдаёт случайную страницу с подстраницы или страницы обсуждения которой есть ссылка на указанную страницу. Может использоваться по примеру [[Special:AdvancedRandom/Template:Featured/Talk]], чтобы получить случайную избранную статью, или [[Special:AdvancedRandom/Template:GFDL/Image]], чтобы получить случайный GFDL-файл.',
 );
 
 /** Slovak (Slovenčina)

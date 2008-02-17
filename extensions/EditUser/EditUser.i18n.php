@@ -46,6 +46,17 @@ $messages['br'] = array(
 	'edituser-dosearch' => 'Klask',
 );
 
+/** German (Deutsch)
+ * @author MF-Warburg
+ */
+$messages['de'] = array(
+	'edituser-desc'     => 'Erlaubt berechtigten Benutzern, die Einstellungen anderer Benutzer zu verändern',
+	'edituser'          => 'Benutzereinstellungen ändern',
+	'edituser-logout'   => 'Benutzer abmelden',
+	'edituser-username' => 'Name',
+	'edituser-dosearch' => 'Suchen',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -83,6 +94,13 @@ $messages['fr'] = array(
 	'edituser-logout'   => 'Ferme la session utilisateur',
 	'edituser-username' => 'Nom',
 	'edituser-dosearch' => 'Rechercher',
+);
+
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'edituser-username' => 'Nome',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -156,6 +174,16 @@ $messages['pt'] = array(
 	'edituser-logout'   => 'Terminar sessão do utilizador',
 	'edituser-username' => 'Nome',
 	'edituser-dosearch' => 'Pesquisar',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'edituser-desc'     => 'Позволяет привилегированным участникам править настройки других участников',
+	'edituser'          => 'Изменить участника',
+	'edituser-username' => 'Имя',
+	'edituser-dosearch' => 'Найти',
 );
 
 /** Slovak (Slovenčina)

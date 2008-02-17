@@ -51,6 +51,13 @@ $messages['nl'] = array(
 	'i18ntags-desc' => 'Geeft toegang tot de i18n-functies voor nummeropmaak, grammatica en meervoud in alle beschikbare talen',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'i18ntags-desc' => 'Få tilgang til internasjonaliseringsfunksjoner for nummerformatering, grammatikk og flertall i alle tilgjengelige språk',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -63,6 +70,13 @@ $messages['oc'] = array(
  */
 $messages['pt'] = array(
 	'i18ntags-desc' => 'Acede às funções de i18n para formatação de números, gramática e plural em qualquer língua disponível',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'i18ntags-desc' => 'Доступ к функциям интернационализации, таким как, форматирование чисел, преобразование грамматической формы, выбор формы множественного числа, для любого доступного языка',
 );
 
 /** Slovak (Slovenčina)

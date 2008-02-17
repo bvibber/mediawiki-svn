@@ -105,8 +105,15 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Zaheen
  */
 $messages['bn'] = array(
+	'expandtemplates'                  => 'টেম্পলেট সম্প্রসারণ',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|টেম্পলেট, পার্সার ফাংশন এবং ভ্যারিয়েবল সপ্রসারণ করে]] সম্প্রসারিত উইকিটেক্সট দেখুন এবং উপস্থাপিত পাতাটি প্রাকদর্শন করুন',
+	'expand_templates_intro'           => 'এই বিশেষ পাতাটি কিছু টেক্সট গ্রহণ করে এবং এর ভেতরের সব টেম্পলেট পুনরাবৃত্ত উপায়ে সপ্রসারিত করে। এছাড়াও এটি It also expands parser functions like
+<nowiki>{{</nowiki>#if:...}}-এর মত পার্সার ফাংশন, <nowiki>{{</nowiki>CURRENTDAY}-এর মত ভ্যারিয়েবল &mdash;মোটকথা দ্বিতীয় বন্ধনীর মধ্যে অবস্থিত সবকিছুকেই সম্প্রসারিত করতে পারে।
+এটি সংশ্লিষ্ট পার্সার পর্যায় থেকে স্বয়ং মিডিয়াউইকিকে কল করে এই কাজটি করে থাকে।',
+	'expand_templates_title'           => 'প্রাতিবেশিক শিরোনাম, {{PAGENAME}}, ইত্যাদির জন্য:',
 	'expand_templates_input'           => 'ইনপুটকৃত লেখা:',
 	'expand_templates_output'          => 'ফলাফল',
 	'expand_templates_xml_output'      => 'XML আউটপুট',
@@ -600,13 +607,17 @@ Hiervoor worden de relevante functies van de MediaWiki-parser gebruikt.',
 	'expand_templates_preview'         => 'Voorvertoning',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
 	'expandtemplates'                  => 'Utvid maler',
 	'expand_templates_intro'           => 'Denne siden tar en tekst og utvider alle maler brukt i teksten. Den utvider også alle funksjoner som <nowiki>{{</nowiki>#if:…}}, og variabler som <nowiki>{{</nowiki>CURRENTDAY}}. <!--It does this by calling the relevant parser stage from MediaWiki itself.-->',
 	'expand_templates_title'           => 'Konteksttittel, for {{PAGENAME}}, etc.:',
 	'expand_templates_input'           => 'Skriv inn tekst:',
 	'expand_templates_output'          => 'Resultat',
-	'expand_templates_ok'              => 'OK',#identical but defined
+	'expand_templates_xml_output'      => 'XML-resultat',
+	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Fjern kommentarer',
 	'expand_templates_preview'         => 'Forhåndsvisning',
 );

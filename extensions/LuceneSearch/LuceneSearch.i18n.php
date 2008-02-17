@@ -160,8 +160,10 @@ $1
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Zaheen
  */
 $messages['bn'] = array(
+	'lucene-desc'           => 'অ্যাপাচি লুসিন অনুসন্ধান ইঞ্জিনের জন্য ইন্টারফেস',
 	'searchnumber'          => '<strong>ফলাফলসমূহ $3 এর $1-$2</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>পূর্ববর্তী</span>",
 	'searchnext'            => "<span style='font-size: small'>পরবর্তী</span> &#x00BB;",
@@ -175,7 +177,11 @@ $messages['bn'] = array(
 $1
 
 অনুসন্ধান করা হয়েছে $3 $9 $10 এর জন্য',
+	'lucenefallback'        => 'উইকি অনুসন্ধানটিতে সমস্যা হয়েছে।
+এটি সম্ভবত সাময়িক; কিছুক্ষণ পরে আবার চেষ্টা করুন, কিংবা আপনি একটি বহিঃস্থ অনুসন্ধান সেবার সাহায্যে উইকিটি অনুসন্ধান করতে পারেন:',
+	'searchexactcase'       => 'হুবহু একই হাতের লেখা অনুসন্ধান',
 	'searchall'             => 'সমস্ত',
+	'searchincategory'      => 'বিষয়শ্রেণীতে',
 );
 
 /** Breton (Brezhoneg)
@@ -680,10 +686,14 @@ Testo da ricercare $3 $9 $10',
 	'searchincategory'      => 'incategoria',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
 $messages['ja'] = array(
+	'lucene-desc'           => 'Apache Lucene 全文検索エンジンへのインタフェースを提供する',
 	'searchnumber'          => '<strong>$3 件中 $1 - $2 件目</strong>',
-	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>前へ</span>',
-	'searchnext'            => '<span style=\'font-size: small\'>次へ</span> &#x00BB;',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>前へ</span>",
+	'searchnext'            => "<span style='font-size: small'>次へ</span> &#x00BB;",
 	'lucene-searchscore'    => '関連性：$1%',
 	'lucene-resultsize'     => '$1 （$2語）',
 	'searchdidyoumean'      => 'もしかして: "<a href="$1">$2</a>"',
@@ -695,6 +705,9 @@ $1
 
 検索語: $3 $9 $10',
 	'lucenefallback'        => '検索中に一時的な問題が発生しました。しばらく経ってから再度検索するか、外部の検索サービスを使用してください:',
+	'searchexactcase'       => '大文字・小文字を区別する検索',
+	'searchall'             => 'all',
+	'searchincategory'      => 'incategory',
 );
 
 $messages['kaa'] = array(

@@ -67,6 +67,24 @@ $messages['bg'] = array(
 	'chemFunctions_Formula' => 'Формула',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'chemicalsources'                  => 'রাসায়নিক উৎসসমূহ',
+	'chemicalsource-desc'              => 'রাসায়নিক সংকেতের জন্য <nowiki><chemform></nowiki> ট্যাগটি যোগ করে',
+	'chemFunctions_ListPage'           => 'রাসায়নিক উৎসসমূহ',
+	'chemFunctions_DataList'           => 'আপনি যে রাসায়নিক পদার্থটি খুঁজছেন, তার সম্পর্কে তথ্য দিতে পারে এমন কতগুলি সাইটের প্রতি সংযোগসমূহের একটি তালিকা নিচে দেওয়া হল।<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">NIST-এ Compound $MIXCASNameFormula</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">যুক্তরাজ্যের অক্সফোর্ড বিশ্ববিদ্যালয়ে MSDS (অনুসন্ধানযোগ্য নয়)</a><br />',
+	'chemFunctions_CAS'                => 'CAS সংখ্যা',
+	'chemFunctions_ATCCode'            => 'ATCকোড',
+	'chemFunctions_ECNumber'           => 'ECNumber',
+	'chemFunctions_Formula'            => 'সংকেত',
+	'chemFunctions_Name'               => 'IUPAC নাম',
+	'chemFunctions_ChemFormInputError' => 'রাসায়নিক ফর্ম: ইনপুট ত্রুটি!',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

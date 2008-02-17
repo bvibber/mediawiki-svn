@@ -375,6 +375,8 @@ $messages['bn'] = array(
 	'boardvote_listintro'    => '<p>এটি এ তারিখ পর্যন্ত গ্রহণকৃত সমস্ত ভোটের তালিকা। এনক্রিপ্ট ডাটার জন্য $1।</p>',
 	'boardvote_dumplink'     => 'এখানে ক্লিক করুন',
 	'boardvote_submit'       => 'ঠিক আছে',
+	'boardvote_strike'       => 'কেটে দিন',
+	'boardvote_unstrike'     => 'কাটা উঠিয়ে নিন',
 	'boardvote_needadmin'    => 'শুধু নির্বাচন প্রশাসকগণ এই কাজটি করতে পারবেন।',
 	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">উইকিমিডিয়া বোর্ড নির্বাচন</a>:  ভোট গ্রহণ শুরু হবে ১২ই জুলাই',
 	'boardvote_notstarted'   => 'এখনও ভোট গ্রহণ শুরু হয়নি',
@@ -1049,7 +1051,6 @@ $messages['ga'] = array(
 /** Galician (Galego)
  * @author Xosé
  * @author Alma
- * @author Toliño
  */
 $messages['gl'] = array(
 	'boardvote'              => 'Elección dos Membros do Consello de Administración de Wikimedia',

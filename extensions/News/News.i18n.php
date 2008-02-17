@@ -69,6 +69,13 @@ $messages['fr'] = array(
 	'newsextension-freshfeed'     => '$1 : sortie alimentation récente<br />',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'newsextension-desc' => 'Pokazuje přiměrjene aktualne změny na wikijowych stronach abo jako RSS abo kanal Atom',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  */

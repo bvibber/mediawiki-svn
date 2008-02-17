@@ -131,14 +131,26 @@ $messages['bg'] = array(
  * @author Zaheen
  */
 $messages['bn'] = array(
-	'changeauthor'                     => 'সংশোধন লেখক পরিবর্তন',
-	'changeauthor-desc'                => 'কোন সংশোধনের লেখক পরিবর্তন করার সুযোগ দেয়',
-	'changeauthor-title'               => 'কোন সংশোধনের লেখক পরিবর্তন করুন',
-	'changeauthor-search-box'          => 'সংশোধনগুলিতে অনুসন্ধান',
-	'changeauthor-pagename-or-revid'   => 'পাতার নাম বা সংশোধন আইডি:',
-	'changeauthor-pagenameform-go'     => 'চলো',
-	'changeauthor-comment'             => 'মন্তব্য:',
-	'changeauthor-changeauthors-multi' => 'লেখক(দের) পরিবর্তন করুন',
+	'changeauthor'                      => 'সংশোধন লেখক পরিবর্তন',
+	'changeauthor-desc'                 => 'কোন সংশোধনের লেখক পরিবর্তন করার সুযোগ দেয়',
+	'changeauthor-title'                => 'কোন সংশোধনের লেখক পরিবর্তন করুন',
+	'changeauthor-search-box'           => 'সংশোধনগুলিতে অনুসন্ধান',
+	'changeauthor-pagename-or-revid'    => 'পাতার নাম বা সংশোধন আইডি:',
+	'changeauthor-pagenameform-go'      => 'চলো',
+	'changeauthor-comment'              => 'মন্তব্য:',
+	'changeauthor-changeauthors-multi'  => 'লেখক(দের) পরিবর্তন করুন',
+	'changeauthor-explanation-multi'    => "এই ফর্মটির সাহায্যে আপনি সংশোধনের লেখকদের পরিবর্তন করতে পারবেন। নিচের তালিকার এক বা একাধিক ব্যবহারকারী নাম পরিবর্তন করুন, একটি মন্তব্য যোগ করুন (ঐচ্ছিক) এবং 'লেখক(গণ) পরিবর্তন করা হোক' বোতামটিতে ক্লিক করুন।",
+	'changeauthor-changeauthors-single' => 'লেখক পরিবর্তন',
+	'changeauthor-explanation-single'   => "এই ফর্মটির সাহায্যে আপনি একটি সংশোধনের লেখক পরিবর্তন করতে পারবেন। নিচের ব্যবহারকারী নামটি পরিবর্তন করুন, একটি মন্তব্য যোগ করুন (ঐচ্ছিক) এবং 'লেখক পরিবর্তন করা হোক' বোতামটিতে ক্লিক করুন।",
+	'changeauthor-invalid-username'     => '"$1" ব্যবহারকারী নামটি অবৈধ।',
+	'changeauthor-nosuchuser'           => '"$1" নামে কোন ব্যবহারকারী নেই।',
+	'changeauthor-revview'              => '$2-এর সংশোধন নং $1',
+	'changeauthor-nosuchtitle'          => '"$1" শিরোনামের কোন পাতা নেই।',
+	'changeauthor-weirderror'           => 'একটি খুবই অদ্ভুত ত্রুটি ঘটেছে। দয়া করে আপনার অনুরোধটি দিয়ে আবার চেষ্টে করুন। এই ত্রুটিটি যদি বারবার দেখাতে থাকে, তবে সম্ভবত ডাটাবেজ কাজ করছে না।',
+	'changeauthor-invalidform'          => 'কাস্টম ফর্মের পরিবর্তে অনুগ্রহ করে Special:ChangeAuthor-এর দেয়া ফর্মটি ব্যবহার করুন।',
+	'changeauthor-success'              => 'আপনার অনুরোধটি সফলভাবে প্রক্রিয়া করা হয়েছে।',
+	'changeauthor-logentry'             => '$3 থেকে $1-এর $2-এর লেখক পরিবর্তন করে $4 করা হয়েছে',
+	'changeauthor-logpagename'          => 'লেখক পরিবর্তন লগ',
 );
 
 /** Breton (Brezhoneg)
@@ -557,6 +569,7 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'changeauthor'                      => 'Изменение автора правки',
+	'changeauthor-desc'                 => 'Позволяет изменять автора правки',
 	'changeauthor-title'                => 'Изменение автора правки',
 	'changeauthor-search-box'           => 'Поиск правок',
 	'changeauthor-pagename-or-revid'    => 'Название статьи или идентификатор правки:',
@@ -575,7 +588,6 @@ $messages['ru'] = array(
 	'changeauthor-success'              => 'Запрос успешно обработан.',
 	'changeauthor-logentry'             => 'Изменён автор $2 $1 с $3 на $4',
 	'changeauthor-logpagename'          => 'Журнал изменения авторов',
-	'changeauthor-rev'                  => 'r$1',
 );
 
 /** Slovak (Slovenčina)
@@ -669,11 +681,18 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author వైజాసత్య
  * @author Veeven
  */
 $messages['te'] = array(
-	'changeauthor-pagenameform-go' => 'వెళ్ళు',
-	'changeauthor-comment'         => 'వ్యాఖ్య:',
+	'changeauthor-pagenameform-go'      => 'వెళ్ళు',
+	'changeauthor-comment'              => 'వ్యాఖ్య:',
+	'changeauthor-changeauthors-multi'  => 'రచయిత(లు) ను మార్చు',
+	'changeauthor-changeauthors-single' => 'రచయితను మార్చు',
+	'changeauthor-invalid-username'     => '"$1" అనేది తప్పుడు వాడుకరి పేరు.',
+	'changeauthor-nosuchuser'           => '"$1" అనే పేరుతో సభ్యులెవరూ లేరు.',
+	'changeauthor-nosuchtitle'          => '"$1" అనే పేరుతో పేజీ లేదు.',
+	'changeauthor-success'              => 'మీ అభ్యర్థనని విజయవంతంగా పూర్తిచేసాం.',
 );
 
 /** Turkish (Türkçe)

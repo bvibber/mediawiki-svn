@@ -105,6 +105,7 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'bookinfo-header'            => 'বই বিষয়ক তথ্য',
+	'bookinfo-desc'              => '[[Special:Booksources]]-কে কোন ওয়েব সেবার তথ্যসহ সম্প্রসারিত করে',
 	'bookinfo-result-title'      => 'শিরোনাম:',
 	'bookinfo-result-author'     => 'লেখক:',
 	'bookinfo-result-publisher'  => 'প্রকাশক:',

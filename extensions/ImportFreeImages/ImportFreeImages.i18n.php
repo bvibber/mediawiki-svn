@@ -246,6 +246,7 @@ $messages['sk'] = array(
 	'importfreeimages_description'           => 'Táto stránka vám umožní importovať správne licencované obrázky z flickr a importovať ich na vašu wiki.',
 	'importfreeimages_noapikey'              => 'Nenakonfigurovali ste kľúč API Flickr. Urobíte tak po získaní kľúča API [http://www.flickr.com/services/api/misc.api_keys.html odtiaľto] a nastavení premennej wgFlickrAPIKey v ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'         => 'Neboli nájdené žiadne obrázky zodpovedajúce vašim kritériám vyhľadávania „$1“. Prosím, skúste to znova.',
+	'importfreeimages_invalidurl'            => '„$1“ nie je platný obrázok Flickr.',
 	'importfreeimages_owner'                 => 'Autor',
 	'importfreeimages_importthis'            => 'importovať toto',
 	'importfreeimages_next'                  => 'Ďalších $1',

@@ -110,10 +110,15 @@ $messages['bg'] = array(
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Следният ред|Следните редове}} в черния списък за потребителски имена {{PLURAL:$1|е невалиден|са невалидни}}; Необходимо е да {{PLURAL:$1|бъде поправен|бъдат поправени}} преди да {{PLURAL:$1|бъде съхранен|бъдат съхранени}}:',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ * @author Zaheen
+ */
 $messages['bn'] = array(
-	'blacklistedusername' => 'নিষিদ্ধ ঘোষিত ব্যবহারকারী নাম',
-	'blacklistedusernametext' => 'ব্যবহারকারীর নাম [[MediaWiki:Usernameblacklist|কালতালিকাভুক্ত ব্যবহারকারীর নাম সমূহের]] সাথে মিলেছে। দয়াকরে অন্য নাম পছন্দ করুন।',
-	'usernameblacklist' => '<pre> # এই তালিকায় ভুক্তি সমূহ রেগুলার এক্সপ্রেশনের অংশ হিসেবে ব্যবহৃত হবে যেখানে # রেজিষ্ট্রশন থেকে নিষিদ্ধ ব্যবহারকারী নামসমূহ। প্রতিটি উপাদান # একটি বুলেট তালিকার অংশ হয়ে থাকবে, অর্থাৎ # # * Foo # * [Bb]ar </pre>',
+	'usernameblacklist-desc'          => 'একটি [[MediaWiki:Usernameblacklist|ব্যবহারকারী কালোতালিকা]] যোগ করে যাতে এক বা একাধিক রেগুলার এক্সপ্রেশনের সাথে মিলে যায় এমন নামের ব্যবহারকারী অ্যাকাউন্ট সৃষ্টি করা না যায়',
+	'blacklistedusername'             => 'নিষিদ্ধ ঘোষিত ব্যবহারকারী নাম',
+	'blacklistedusernametext'         => 'ব্যবহারকারীর নাম [[MediaWiki:Usernameblacklist|কালতালিকাভুক্ত ব্যবহারকারীর নাম সমূহের]] সাথে মিলেছে। দয়াকরে অন্য নাম পছন্দ করুন।',
+	'usernameblacklist'               => '<pre> # এই তালিকায় ভুক্তি সমূহ রেগুলার এক্সপ্রেশনের অংশ হিসেবে ব্যবহৃত হবে যেখানে # রেজিষ্ট্রশন থেকে নিষিদ্ধ ব্যবহারকারী নামসমূহ। প্রতিটি উপাদান # একটি বুলেট তালিকার অংশ হয়ে থাকবে, অর্থাৎ # # * Foo # * [Bb]ar </pre>',
 	'usernameblacklist-invalid-lines' => 'এই {{PLURAL:$1|লাইন|লাইনসমূহ}} নিষিদ্ধ ব্যবহারকারী নাম তালিকাভুক্ত {{PLURAL:$1|নাম|নামসমূহ}} অসিদ্ধ; দয়াকরে সংরক্ষণ করার পূর্বে {{PLURAL:$1|এটি|এগুলো}} ঠিক করুন:',
 );
 
@@ -523,6 +528,7 @@ $messages['ku-latn'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'usernameblacklist-desc'          => "Eng [[MediaWiki:Usernameblacklist|Lëscht vun onerwënswchte Benotzernimm]] kompletéieren, fir d'Opmaache vu Benotzerkonten ze verhënneren déi aus enger oder méi regulären Ausdréck zesummegesat sinn.",
 	'blacklistedusername'             => 'Verbuede Benotzernimm',
 	'blacklistedusernametext'         => 'De gewielte Benotzernumm steet op der [[MediaWiki:Usernameblacklist|Lëscht vun de verbuedene Benotzernimm]]. Sicht iech w.e.g en anere Benotzernumm.',
 	'usernameblacklist'               => "<pre>
@@ -822,8 +828,10 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author Mpradeep
+ * @author Veeven
  */
 $messages['te'] = array(
+	'usernameblacklist-desc'          => 'రెగ్యులర్ ఎక్స్&zwnj;ప్రెషన్లతో సరిపోలే వాడుకరి ఖాతాలను సృష్టించడాన్ని నిరోధించడానికి గాను [[MediaWiki:Usernameblacklist|వాడుకరి పేర్ల నిరోధపు జాబితా]]ని చేరుస్తుంది',
 	'blacklistedusername'             => 'అనుమతిలేని పేరు',
 	'blacklistedusernametext'         => 'మీరు ఎంచుకున్న సభ్యనామం, [[MediaWiki:Usernameblacklist|అనుమతించని పేర్ల జాబితా]]లో ఉంది. దయచేసి ఇంకో పేరుని ఎంచుకోండి.',
 	'usernameblacklist'               => '<pre>

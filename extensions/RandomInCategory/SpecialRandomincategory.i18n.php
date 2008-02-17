@@ -21,6 +21,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'randomincategory'            => 'صفحة عشوائية في التصنيف',
+	'randomincategory-desc'       => '[[Special:Randomincategory|صفحة خاصة]] للحصول على صفحة عشوائية في تصنيف',
 	'randomincategory-toolbox'    => 'صفحة عشوائية',
 	'randomincategory-nocategory' => 'التصنيف $1 غير موجود أو فارغ',
 	'randomincategory-label'      => 'التصنيف:',
@@ -114,11 +115,12 @@ $messages['lb'] = array(
 );
 
 /** Dutch (Nederlands)
- * @author Siebrand
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
 	'randomincategory'            => 'Willekeurige pagina in een categorie',
+	'randomincategory-desc'       => '[[Special:Randomincategory|Speciale pagina]] om een willekeurige pagina in een categorie te tonen',
 	'randomincategory-toolbox'    => 'Willekeurige pagina',
 	'randomincategory-nocategory' => 'Categorie $1 bestaat niet of is leeg',
 	'randomincategory-label'      => 'Categorie:',
@@ -166,6 +168,7 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'randomincategory'            => 'Náhodná stránka v kategórii',
+	'randomincategory-desc'       => '[Special:Randomincategory|Špeciálna stránka]] na výber náhodnej stránky z kategórie',
 	'randomincategory-toolbox'    => 'Náhodná stránka',
 	'randomincategory-nocategory' => 'Kategória $1 neexistuje alebo je prázdna',
 	'randomincategory-label'      => 'Kategória:',
