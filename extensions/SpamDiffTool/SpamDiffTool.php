@@ -24,7 +24,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Travis Derouin',
 	'description' => 'Provides a basic way of adding new entries to the Spam Blacklist from diff pages',
 	'descriptionmsg' => 'spamdifftool-desc',
-	'url' => 'http://www.mediawiki.org/wiki/SpamDiffTool_Extension',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:SpamDiffTool',
 );
 
 $dir = dirname(__FILE__) . '/';
