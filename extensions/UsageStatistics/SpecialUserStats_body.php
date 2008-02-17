@@ -3,7 +3,7 @@ class SpecialUserStats extends SpecialPage
 {
 	function SpecialUserStats() {
 		SpecialPage::SpecialPage("SpecialUserStats");
-		self::loadMessages();
+		wfLoadExtensionMessages( 'UserStats' );
 		return true;
 	}
 
@@ -37,18 +37,6 @@ class SpecialUserStats extends SpecialPage
 			$db = wfGetDB( DB_SLAVE );
 			self::GetUserUsage($db,$user,$start,$end,$interval,$type);
 		}
-	}
-
-	function loadMessages() {
-		static $messagesLoaded = false;
-		global $wgMessageCache;
-		if ( $messagesLoaded ) return;
-		$messagesLoaded = true;
-			require( dirname( __FILE__ ) . '/SpecialUserStats.i18n.php' );
-		foreach ( $messages as $lang => $langMessages ) {
-			$wgMessageCache->addMessages( $langMessages, $lang );
-		}
-		return true;
 	}
 
 	function GetUserUsage($db,$user,$start,$end,$interval,$type) {
