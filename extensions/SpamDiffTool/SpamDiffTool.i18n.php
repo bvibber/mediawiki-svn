@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'spamdifftool' => 'Manage Spam Blacklist',
+	'spamdifftool-desc' => 'Provides a basic way of adding new entries to the Spam Blacklist from diff pages',
 	'spamdifftool_cantedit' => 'Sorry - you don\'t have permission to edit the Spam Blacklist.',
 	'spamdifftool_notext' => 'There is no text to add to the Spam Blacklist. Click <a href=\'$1\'>here</a> to continue.',
 	'spamdifftool_confirm' => 'Confirm that you want to add these entries to the Spam Blacklist. (Click <a href=\'$1\' target=\'new\'>here</a> to report a problem.)',
@@ -84,6 +85,7 @@ $messages['el'] = array(
 
 $messages['fr'] = array(
 	'spamdifftool' => 'Gestion de la Liste Noire des Spams',
+	'spamdifftool-desc' => 'Fournit une méthode simple pour ajouter des entrées dans la liste noire des Spam à partir des diff',
 	'spamdifftool_cantedit' => 'Désolé - Vous n’avez pas la permission d’éditer la Liste Noire des Spams.',
 	'spamdifftool_notext' => 'Il n’y a pas de texte à ajouter à la Liste Noire des Spams. Cliquez <a href=\'$1\'>ici</a> pour continuer. ',
 	'spamdifftool_confirm' => 'Confirmez que vous voulez ajouter ces entrées dans la Liste Noire des Spams. (Cliquez <a href=\'$1\' target=\'new\'>ici</a> pour signaler tout problème.)',
