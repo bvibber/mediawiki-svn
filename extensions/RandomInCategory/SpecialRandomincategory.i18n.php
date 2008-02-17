@@ -131,7 +131,12 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'randomincategory-submit' => '{{int:Go}}',
+	'randomincategory'            => 'Tilfeldig side fra en kategori',
+	'randomincategory-desc'       => '[[Special:Randomincategory|Spesialside] for å få en tilfeldig side fra en kategori',
+	'randomincategory-toolbox'    => 'Tilfeldig side',
+	'randomincategory-nocategory' => 'Kategorien $1 finner ikke, eller er tom',
+	'randomincategory-label'      => 'Kategori:',
+	'randomincategory-submit'     => '{{int:Go}}',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)

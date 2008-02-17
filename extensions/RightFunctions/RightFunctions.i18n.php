@@ -52,6 +52,13 @@ $messages['nl'] = array(
 	'rightfunctions-restcasc' => '$1 (van bovengelegen bronnen)',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'rightfunctions' => 'Rettighetsbaserte parserfunksjoner',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

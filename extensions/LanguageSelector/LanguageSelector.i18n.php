@@ -225,6 +225,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'languageselector'         => 'Språk',
+	'languageselector-desc'    => 'Språkvelger på alle sider, også for gjester',
 	'languageselector-setlang' => 'sett',
 );
 

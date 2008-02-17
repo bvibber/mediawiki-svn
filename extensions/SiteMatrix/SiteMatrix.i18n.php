@@ -400,8 +400,18 @@ $messages['it'] = array(
 	'sitematrix-others'   => 'Altri progetti Wikimedia',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ * @author לערי ריינהארט
+ */
 $messages['ja'] = array(
-	"sitematrix" => "Wikimediaウィキの一覧",
+	'sitematrix'           => 'Wikimediaウィキの一覧',
+	'sitematrix-desc'      => '[[{{ns:Special}}:SiteMatrix|Wikimediaウィキの一覧]]を表示する',
+	'sitematrix-language'  => '言語',
+	'sitematrix-project'   => 'プロジェクト名、プロジェクト間リンク、ウィキ間リンク',
+	'sitematrix-others'    => 'Wikimedia以外のプロジェクト',
+	'sitematrix-total'     => "'''総計: $1'''",
+	'sitematrix-sitetotal' => '合計',
 );
 
 $messages['ka'] = array(

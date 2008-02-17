@@ -170,18 +170,22 @@ $messages['nl'] = array(
 	'lookupuser_useroptions'       => 'Gebruikersopties:',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'lookupuser' => 'Finn brukerinformasjon',
-	'lookupuser_intro' => 'Skriv inn et brukernavn for å vise brukerens innstillinger.',
-	'lookupuser_nonexistent' => 'Feil: Brukeren eksisterer ikke',
-	'lookupuser_authenticated' => 'E-postbekrefting: $1',
+	'lookupuser'                   => 'Finn brukerinformasjon',
+	'lookupuser-desc'              => '[[Special:LookupUser|Innhent informasjon]] en bruker, som f.eks. e-postadresse og ID',
+	'lookupuser_intro'             => 'Skriv inn et brukernavn for å vise brukerens innstillinger.',
+	'lookupuser_nonexistent'       => 'Feil: Brukeren eksisterer ikke',
+	'lookupuser_authenticated'     => 'E-postbekrefting: $1',
 	'lookupuser_not_authenticated' => 'ikke bekreftet',
-	'lookupuser_id' => 'Bruker-ID: <tt>#$1</tt>',
-	'lookupuser_email' => 'E-post: [[Special:Emailuser/$2|$1]]',
-	'lookupuser_realname' => 'Virkelig navn: $1',
-	'lookupuser_registration' => 'Registrasjonsdato: $1',
-	'lookupuser_touched' => 'Innstillinger sist endret: $1',
-	'lookupuser_useroptions' => 'Brukervalg:',
+	'lookupuser_id'                => 'Bruker-ID: <tt>#$1</tt>',
+	'lookupuser_email'             => 'E-post: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'          => 'Virkelig navn: $1',
+	'lookupuser_registration'      => 'Registrasjonsdato: $1',
+	'lookupuser_touched'           => 'Innstillinger sist endret: $1',
+	'lookupuser_useroptions'       => 'Brukervalg:',
 );
 
 /** Occitan (Occitan)

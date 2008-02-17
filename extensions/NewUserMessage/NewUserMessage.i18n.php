@@ -78,6 +78,13 @@ $messages['nl'] = array(
 	'newusermessage-desc' => 'Voegt een [[MediaWiki:NewUserMessage|bericht]] toe aan de overlegpagina van nieuwe gebruikers',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'newusermessage-desc' => 'Legger inn en [[MediaWiki:NewUserMessage|beskjed]] på nye brukeres diskusjonssider',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

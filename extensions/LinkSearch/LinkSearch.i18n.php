@@ -426,8 +426,12 @@ $messages['nl'] = array(
 	'linksearch-error' => 'Wildcards zijn alleen toegestaan aan het begin van een hostnaam.',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
 	'linksearch'       => 'Søk i eksterne lenker',
+	'linksearch-desc'  => '[[Special:Linksearch|Finn sider med eksterne lenker]] med visse mønstre',
 	'linksearch-pat'   => 'Søkemønster:',
 	'linksearch-ns'    => 'Navnerom:',
 	'linksearch-ok'    => 'Søk',

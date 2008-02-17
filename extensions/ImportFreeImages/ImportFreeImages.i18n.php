@@ -34,6 +34,7 @@ $messages['ar'] = array(
 	'importfreeimages_description'           => 'هذه الصفحة تسمح لك بالبحث في الصور المرخصة جيدا من فلكر واستيرادها إلى الويكي الخاص بك.',
 	'importfreeimages_noapikey'              => 'لم تقم بضبط مفتاح API فلكر الخاص بك. لفعل هذا، من فضلك احصل على مفتاح API من  [http://www.flickr.com/services/api/misc.api_keys.html هنا] واضبط wgFlickrAPIKey في ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'         => "لا صور تم العثور عليها لمدخلة البحث الخاصة بك '$1'، من فضلك حاول مرة ثانية.",
+	'importfreeimages_invalidurl'            => 'المسار "$1" ليس صورة فليكر صحيحة.',
 	'importfreeimages_owner'                 => 'المؤلف',
 	'importfreeimages_importthis'            => 'استورد هذا',
 	'importfreeimages_next'                  => '$1 التالي',
@@ -72,19 +73,22 @@ $messages['de'] = array(
 	'importfreeimages_returntoform'   => 'Oder klicke <a href=\'$1\'>hier</a>, um zu der Seite mit den Suchergebnissen zurückzukommen.',
 );
 
-		/*French (Bertrand GRONDIN)*/
+/** French (Français)
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'importfreeimages'                => 'Importer des Images Libres',
-	'importfreeimages-desc'           => 'Fournit un moyen d’importer des photographies proprement sous licence depuis flickr.',
-	'importfreeimages_description'    => 'Cette page vous permet de rechercher proprement des images sous licences depuis flickr et de les importer dans votre wiki.',
-	'importfreeimages_noapikey'       => 'Vous n’avez pas configuré votre Clef API Flickr. Pour ce faire, vous êtes prié d’obtenir une clef API à partir de [http://www.flickr.com/services/api/misc.api_keys.html ce lien] et de configurer wgFlickrAPIKey dans ImportFreeImages.php.',
-	'importfreeimages_nophotosfound'  => 'Aucune photo n’a été trouvée à partir de vos critères de recherches  \'$1\', veuillez essayer à nouveau.',
-	'importfreeimages_owner'          => 'Auteur',
-	'importfreeimages_importthis'     => 'l’importer',
-	'importfreeimages_next'           => ' $1 suivants',
-	'importfreeimages_filefromflickr' => '$1 par l’utilisateur <b>[$2]</b> depuis flickr. URL d’origine ',
+	'importfreeimages'                       => 'Importer des Images Libres',
+	'importfreeimages-desc'                  => 'Fournit un moyen d’importer des photographies proprement sous licence depuis flickr.',
+	'importfreeimages_description'           => 'Cette page vous permet de rechercher proprement des images sous licences depuis flickr et de les importer dans votre wiki.',
+	'importfreeimages_noapikey'              => 'Vous n’avez pas configuré votre Clef API Flickr. Pour ce faire, vous êtes prié d’obtenir une clef API à partir de [http://www.flickr.com/services/api/misc.api_keys.html ce lien] et de configurer wgFlickrAPIKey dans ImportFreeImages.php.',
+	'importfreeimages_nophotosfound'         => "Aucune photo n’a été trouvée à partir de vos critères de recherches  '$1', veuillez essayer à nouveau.",
+	'importfreeimages_invalidurl'            => "L'adresse « $1 » n’est pas une image Flickr correcte.",
+	'importfreeimages_owner'                 => 'Auteur',
+	'importfreeimages_importthis'            => 'l’importer',
+	'importfreeimages_next'                  => ' $1 suivants',
+	'importfreeimages_filefromflickr'        => '$1 par l’utilisateur <b>[$2]</b> depuis flickr. URL d’origine ',
 	'importfreeimages_promptuserforfilename' => 'Veuillez indiquer le nom du fichier de destination : ',
-	'importfreeimages_returntoform'   => 'ou, cliquez <a href=\'$1\'>ici</a> pour revenir à votre liste de résultats.',
+	'importfreeimages_returntoform'          => "ou, cliquez <a href='$1'>ici</a> pour revenir à votre liste de résultats.",
 );
 
 $messages['gl'] = array(

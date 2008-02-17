@@ -32,6 +32,7 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'showprocesslist'         => 'عرض قائمة العمل',
+	'showprocesslist-desc'    => 'يعرض ناتج [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id'      => 'رقم',
 	'showprocesslist-user'    => 'مستخدم',
 	'showprocesslist-host'    => 'مضيف',
@@ -190,6 +191,7 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'showprocesslist'         => 'Zobraziť zoznam procesov',
+	'showprocesslist-desc'    => 'Zobrazuje výstup [[Special:ShowProcesslist|Úplného zoznamu procesov]]',
 	'showprocesslist-id'      => 'ID',
 	'showprocesslist-user'    => 'Používateľ',
 	'showprocesslist-host'    => 'Stroj',

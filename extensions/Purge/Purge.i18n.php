@@ -90,8 +90,12 @@ $messages['nl'] = array(
 	'purge-desc' => "Voegt een tabblad purge toe op alle normale pagina's en laat de purgecontrole weg voor anonieme gebruikers zodat de cache snel gepurged kan worden",
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'purge' => 'gjenoppfrisk',
+	'purge'      => 'gjenoppfrisk',
+	'purge-desc' => 'Legger til en fane for gjenoppfrisking på alle vanlige sider, og slår av gjenoppfriskingssjekken for anonyme brukere, hvilket gjør at mellomlageret kan oppdateres raskere',
 );
 
 /** Occitan (Occitan)

@@ -228,17 +228,26 @@ $messages['nl'] = array(
 	'disabledusers-summary'            => 'Dit is een lijst van gebruikers die zijn gedeactiveerd via PasswordReset',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'passwordreset' => 'Passordresetting',
-	'passwordreset-invalidusername' => 'Ugyldig brukernavn',
-	'passwordreset-emptyusername' => 'Tomt brukernavn',
-	'passwordreset-nopassmatch' => 'Passordene er ikke de samme',
-	'passwordreset-badtoken' => 'Ugyldig redigeringstegn',
-	'passwordreset-username' => 'Brukernavn',
-	'passwordreset-newpass' => 'Nytt passord',
-	'passwordreset-confirmpass' => 'Bekreft passord',
-	'passwordreset-submit' => 'Resett passord',
-	'passwordreset-success' => 'Passordet for brukeren «$1» har blitt resatt.',
+	'passwordreset'                    => 'Passordresetting',
+	'passwordreset-invalidusername'    => 'Ugyldig brukernavn',
+	'passwordreset-emptyusername'      => 'Tomt brukernavn',
+	'passwordreset-nopassmatch'        => 'Passordene er ikke de samme',
+	'passwordreset-badtoken'           => 'Ugyldig redigeringstegn',
+	'passwordreset-username'           => 'Brukernavn',
+	'passwordreset-newpass'            => 'Nytt passord',
+	'passwordreset-confirmpass'        => 'Bekreft passord',
+	'passwordreset-submit'             => 'Resett passord',
+	'passwordreset-success'            => 'Passordet for brukeren «$1» har blitt resatt.',
+	'passwordreset-disableuser'        => 'Deaktiver kontoen?',
+	'passwordreset-disableuserexplain' => '(setter et ugyldig passord – brukeren kan ikke logge inn)',
+	'passwordreset-disablesuccess'     => 'Kontoen er blitt deaktivert (bruker-ID: $1)',
+	'passwordreset-accountdisabled'    => 'Kontoen er blitt deaktivert',
+	'disabledusers'                    => 'Deaktiverte kontoer',
+	'disabledusers-summary'            => 'Dette er en liste over kontoer som har blitt deaktiverte via passordresetting.',
 );
 
 /** Occitan (Occitan)

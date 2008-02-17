@@ -979,6 +979,7 @@ Søk etter $3 $9 $10',
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'lucene-desc'           => 'Grensesnitt for Apaches søkemotor Lucene',
 	'searchnumber'          => '<strong>Resultat $1–$2 av $3</strong>',
 	'searchprev'            => '« <span style="font-size:small;">Forrige</span>',
 	'searchnext'            => '<span style="font-size:small;">Neste</span> »',

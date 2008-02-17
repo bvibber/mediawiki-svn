@@ -93,8 +93,11 @@ $messages['nl'] = array(
 	'protectsection_forbidden'  => 'Verboden',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'protectsection_add_remove' => 'Du prøvde å legge til eller fjerne et beskyttet avsnitt',
+	'protectsection_add_remove' => 'Du prøvde å legge til eller fjerne en beskyttet seksjon',
 	'protectsection_modify'     => 'Du prøvde å endre beskyttet tekst',
 	'protectsection_forbidden'  => 'Forbudt',
 );

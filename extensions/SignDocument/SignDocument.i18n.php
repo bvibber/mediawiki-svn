@@ -12,10 +12,14 @@ $messages['en'] = array(
 	'signaturelogentry'     => 'signed the document $1',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'signaturelogpage' => 'سجل التوقيع',
+	'signaturelogpage'     => 'سجل التوقيع',
+	'signature-desc'       => 'يفعل [[Special:SignDocument|توقيع]] الوثيقة',
 	'signaturelogpagetext' => 'هذا سجل بكل التوقيعات التي أضيفت إلى الوثائق من خلال [[Special:SignDocument]].',
-	'signaturelogentry' => 'وقع الوثيقة $1',
+	'signaturelogentry'    => 'وقع الوثيقة $1',
 );
 
 $messages['de'] = array(
@@ -88,6 +92,7 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'signaturelogpage'     => 'Záznam podpisov',
+	'signature-desc'       => 'Umožňuje [[Special:SignDocument|podpisovanie]] dokumentov',
 	'signaturelogpagetext' => 'Toto je záznam všetkých podpisov, ktoré boli pridané do dokumentov prostredníctvom [[Special:SignDocument]].',
 	'signaturelogentry'    => 'podpísal dokument $1',
 );

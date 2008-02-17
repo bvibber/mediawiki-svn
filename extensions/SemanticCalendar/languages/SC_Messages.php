@@ -165,6 +165,18 @@ $messages['nn'] = array(
 	'sc_error_beforeyear' => 'Feil: Dette systemet taklar ikkje datoar før $1.',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'sc_previousmonth'    => 'Forrige måned',
+	'sc_nextmonth'        => 'Neste måned',
+	'sc_today'            => 'I dag',
+	'sc_gotomonth'        => 'Gå til måned',
+	'sc_error_year2038'   => 'Feil: Systemet kan ikke behandle datoer etter 2038, på grunn av [http://en.wikipedia.org/wiki/Year_2038_problem År 2038-problemet]',
+	'sc_error_beforeyear' => 'Feil: Systemet kan ikke behandle datoer før $1',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

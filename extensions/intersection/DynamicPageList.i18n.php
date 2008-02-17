@@ -203,10 +203,14 @@ $messages['nl'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: U moet tenminste een categorie of een naamruimte opgeven!',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'intersection_toomanycats' => 'Dynamisk sideliste: For mange kategorier!',
-	'intersection_toofewcats' => 'Dynamisk sidelist: For få kategorier!',
-	'intersection_noresults' => 'Dynamisk sideliste: Ingen resultater!',
+	'intersection-desc'          => 'Gir en punktliste over de nyeste elementene i en kategori, eller elementer som er felles i flere kategorier',
+	'intersection_toomanycats'   => 'Dynamisk sideliste: For mange kategorier!',
+	'intersection_toofewcats'    => 'Dynamisk sidelist: For få kategorier!',
+	'intersection_noresults'     => 'Dynamisk sideliste: Ingen resultater!',
 	'intersection_noincludecats' => 'Dynamisk sideliste: Du må inkludere minst én kategori, eller oppgi et navnerom!',
 );
 

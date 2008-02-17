@@ -295,6 +295,8 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'scanset-desc'                      => 'Vis bilder av skannede sider fra Andreas Grosz’ CD-/DVD-sett',
+	'scanset_no_name'                   => 'ScanSet: Du må oppgi navnet på et ScanSet, f.eks. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: Ugyldig eller manglende ScanSet.',
 	'scanset_unrecognised_index_format' => 'ScanSet: Ukjent indeksformat',
 	'scanset_opendir_error'             => 'ScanSet: Feil, kan ikke åpne mappen $1',
 	'scanset_no_files'                  => 'ScanSet: Ingen filer i mappen som ble oppgitt.',

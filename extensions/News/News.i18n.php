@@ -87,6 +87,13 @@ $messages['nl'] = array(
 	'newsextension-nofoundonpage' => '$1: geen feed gevonden op pagina: $2<br />',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'newsextension-desc' => 'Viser egendefinerte siste endringer på en wikiside, eller en RSS- eller Atom-føde',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

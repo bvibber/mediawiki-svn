@@ -113,6 +113,17 @@ $messages['nn'] = array(
 	'purgecache-button'  => 'Slett mellomlagring',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'purgecache'         => 'Slett mellomlager',
+	'purgecache-desc'    => '[[Special:PurgeCache|Spesialside]] brukt for å slette OBJETCACHE-tabellen',
+	'purgecache-warning' => 'Dette vil slette mellomlagertabellene.',
+	'purgecache-purged'  => 'Mellomlageret har blitt slettet.',
+	'purgecache-button'  => 'Slett',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

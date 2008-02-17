@@ -106,14 +106,20 @@ $messages['nl'] = array(
 	'smoothgallery-javascript-disabled' => 'Om deze galerij goed te bekijken dient JavaScript ingeschakeld te zijn.',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'smoothgallery' => 'Mykt galleri',
-	'smoothgallery-title' => 'Mykt galleri',
-	'smoothgallery-smoothgallerytitle' => 'Mykt galleri: $1',
-	'smoothgallery-error' => '<b>Feil med mykt galleri:</b>',
-	'smoothgallery-not-found' => 'Ingen bilder ble lagt til i galleriet. Legg til minst ett bilde.',
-	'smoothgallery-no-images' => 'Ingen bilder ble funnet i dette galleriet. Forsikre deg om at alle bilder finnes. Følgende bilder ble ikke funnet. $1',
-	'smoothgallery-unexpected-error' => 'Det var en uventet feil. Lever en feilrapport.',
+	'smoothgallery'                     => 'Mykt galleri',
+	'smoothgallery-desc'                => 'Lar brukere opprette gallerier med bilder som er blitt lastet opp. Tillater de fleste av SmoothGallerys valgmuligheter.',
+	'smoothgallery-title'               => 'Mykt galleri',
+	'smoothgallery-smoothgallerytitle'  => 'Mykt galleri: $1',
+	'smoothgallery-error'               => '<b>Feil med mykt galleri:</b>',
+	'smoothgallery-gallery-not-found'   => 'Det etterspurte galleriet finnes ikke.',
+	'smoothgallery-not-found'           => 'Ingen bilder ble lagt til i galleriet. Legg til minst ett bilde.',
+	'smoothgallery-no-images'           => 'Ingen bilder ble funnet i dette galleriet. Forsikre deg om at alle bilder finnes. Følgende bilder ble ikke funnet. $1',
+	'smoothgallery-unexpected-error'    => 'Det var en uventet feil. Lever en feilrapport.',
+	'smoothgallery-javascript-disabled' => 'Javascript er nødvendig for å vise dette galleriet korrekt.',
 );
 
 /** Occitan (Occitan)

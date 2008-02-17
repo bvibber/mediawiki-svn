@@ -440,6 +440,24 @@ $messages['it'] = array(
 	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|La seguente riga|Le seguenti righe}} dell'elenco dei nomi utente non consentiti {{PLURAL:$1|non è valida|non sono valide}}; si prega di correggere {{PLURAL:$1|l'errore|gli errori}} prima di salvare la pagina.",
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'usernameblacklist-desc'          => '正規表現の禁止ワードに一つ以上一致する場合は利用者アカウントの作成を制限する[[MediaWiki:Usernameblacklist|利用者名ブラックリスト]]を追加',
+	'blacklistedusername'             => 'ブラックリストに掲載されている利用者名です',
+	'blacklistedusernametext'         => 'あなたが申請した利用者名は、[[MediaWiki:Usernameblacklist|ブラックリストに掲載されているもの]]と一致しました。違う利用者名を選んでください。',
+	'usernameblacklist'               => '<pre>
+# このリストに記載する正規表現は、利用者アカウント作成の際、ブラックリストに掲載されている
+# 利用者名かどうかを判断するために用いられます。各アイテムは、箇条書きの一部として記述する
+# 必要があります。例えば以下の通りです。
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => '以下の{{PLURAL:$1|行|行}}に記載された利用者ブラックリスト{{PLURAL:$1|は|は}}正しく記述できていません。保存する前に{{PLURAL:$1|これ|これら}}を修正してください:',
+);
+
 /* Kazakh Arabic (kk:AlefZet) */
 $messages['kk-arab'] = array(
 	'blacklistedusername' => 'قارا تىزىمدەگى قاتىسۋشى اتى',
@@ -643,6 +661,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'usernameblacklist-desc'          => 'Legger til en [[MediaWiki:Usernameblacklist|svarteliste for brukernavn]] for å forhindre opprettelsen av brukernavn som tilsvarer ett eller flere regulære uttrykk',
 	'blacklistedusername'             => 'Svartelistet brukernavn',
 	'blacklistedusernametext'         => 'Brukernavnet du har valgt står på [[MediaWiki:Usernameblacklist|listen over svartelistede brukernavn]]. Velg et annet navn.',
 	'usernameblacklist'               => '<pre>
