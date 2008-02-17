@@ -2,7 +2,7 @@
 
 class ShowProcesslistPage extends UnlistedSpecialPage {
 	function ShowProcesslistPage() {
-		UnlistedSpecialPage::UnlistedSpecialPage('ShowProcesslist');
+		SpecialPage::SpecialPage('ShowProcesslist', 'siteadmin');
 		wfLoadExtensionMessages( 'showprocesslist' );
 	}
 
