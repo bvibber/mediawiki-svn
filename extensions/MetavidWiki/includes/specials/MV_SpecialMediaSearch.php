@@ -614,7 +614,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		$sql = 'SELECT `date_start_time` FROM `mv_streams` ' .
 				'WHERE `date_start_time` IS NOT NULL ' .
 				'ORDER BY `date_start_time` ASC  LIMIT 0, 1000';
-		$res = $dbr->query($sql);
+		$res = $dbr->query($sql, 'MV_SpecialMediaSearch:getJsonDateObj');
 		$start_day=time();
 		$end_day=0;
 		$delta=0;

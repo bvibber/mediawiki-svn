@@ -53,6 +53,13 @@
  	function getNameKey(){
  		return $this->file_desc_msg;
  	}
+ 	function getContentType(){
+ 		if(isset($this->msg_content_type_lookup[$this->file_desc_msg])){
+ 			return $this->msg_content_type_lookup[$this->file_desc_msg];
+ 		}
+ 		//default content type? 
+ 		return 'application/octet-stream';
+ 	}
  	function updateValues($initRow){
 		foreach ($initRow as $key => $val) {			
 			//make sure the key exisit and is not private
@@ -90,8 +97,8 @@
  		}
  	}
  	function getStreamFileDB($quality=null){
-		global $mvDefaultVideoQualityId, $mvStreamFilesTable;
-		if($quality==null)$quality=$mvDefaultVideoQualityId;
+		global $mvDefaultVideoQualityKey, $mvStreamFilesTable;
+		if($quality==null)$quality=$mvDefaultVideoQualityKey;
 		$dbr = & wfGetDB(DB_READ);
 		$result = $dbr->select($dbr->tableName($mvStreamFilesTable), array('path'), array (			
 			'stream_id' => $this->_parent_stream->getStreamId(),
@@ -108,8 +115,8 @@
 	//@@todo as mentioned before we should better integrate with medaiWikis commons file system
 	//returns the local path (if the video file is local) if not return null 
 	function getLocalPath($quality=null){
-		global $mvLocalVideoLoc,$mvDefaultVideoQualityId;
-		if($quality==null)$quality=$mvDefaultVideoQualityId;
+		global $mvLocalVideoLoc,$mvDefaultVideoQualityKey;
+		if($quality==null)$quality=$mvDefaultVideoQualityKey;
 		
 		if(!is_dir($mvLocalVideoLoc))return null;		
 		if(!is_file($mvLocalVideoLoc . $this->_parent_stream->getStreamName() ))return null;
@@ -136,15 +143,8 @@
  		return null;	*/
  		return $this->getPath();
  	}
- 	function getContentType(){
- 		if(isset($this->msg_content_type_lookup[$this->file_desc_msg])){
- 			return $this->msg_content_type_lookup[$this->file_desc_msg];
- 		}else{
- 			return '';
- 		}
- 	}
  	function get_desc(){
- 		return $this->file_desc_msg;
+ 		return wfMsg( $this->file_desc_msg);
  	}
  }
 ?>

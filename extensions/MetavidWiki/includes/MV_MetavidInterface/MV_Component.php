@@ -44,7 +44,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			foreach($mvMVDTypeDefaultDisp as $tk){
 				if(!in_array($tk, $mvMVDTypeAllAvailable)){
 					global $wgOut;
-					$wgOut->errorPage('mvd_default_mismatch','mvd_default_mismatchtext');
+					$wgOut->errorPage('mvd_default_mismatch','mvd_default_mismatch_text');
 				}	
 			}
 			//just set to global default: 
@@ -70,6 +70,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		return $req;
 	}
 	function getMVDReqString(){
+		if(count($this->mvd_tracks)==0)$this->procMVDReqSet();
 		return implode(',',$this->mvd_tracks);
 	}
  	function getReqStreamName(){ 

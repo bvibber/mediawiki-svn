@@ -60,7 +60,7 @@ $mvShellOggFrameGrab = '';
 $mvVideoArchivePaths['mvprime']= 'http://metavid.ucsc.edu/media/';
 $mvVideoArchivePaths['cap1'] = 'http://128.114.20.23/media/';
 
-$mvDefaultVideoQualityId = 'mv_ogg_low_quality';
+$mvDefaultVideoQualityKey = 'mv_ogg_low_quality';
 
 #local path to video archive (if hosted locally)
 $mvLocalVideoLoc = '/metavid/video_archive';

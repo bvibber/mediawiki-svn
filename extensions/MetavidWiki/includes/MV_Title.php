@@ -193,13 +193,13 @@
 	 * returns full web accessible path to stream
 	 * (by default this is the web streameable version of the file)
 	 * web stream is file_desc_msg as: mv_ogg_low_quality
-	 * $mvDefaultVideoQualityId in MV_Settings.php
+	 * $mvDefaultVideoQualityKey in MV_Settings.php
 	 * 
 	 * @@todo point to MV_OggSplit (for segmenting the ogg stream)
 	 * (for now using anx)
 	 */
 	function getWebStreamURL(){
-		global $mvStreamFilesTable, $mvVideoArchivePaths, $mvDefaultVideoQualityId;
+		global $mvStreamFilesTable, $mvVideoArchivePaths, $mvDefaultVideoQualityKey;
 		//@@todo mediawiki path for media (insted of hard link to $mvVideoArchive)
 		//@@todo make sure file exisits
 		$anx_req='';
@@ -211,7 +211,7 @@
 			$dbr = & wfGetDB(DB_READ);
 			$result = $dbr->select($dbr->tableName($mvStreamFilesTable), array('path'), array (			
 				'stream_id' => $this->mvStream->id,
-				'file_desc_msg'=>$mvDefaultVideoQualityId
+				'file_desc_msg'=>$mvDefaultVideoQualityKey
 			));
 			$streamFile  =$dbr->fetchObject($result);					
 			//make sure we have streamFiles (used to generate the link)				

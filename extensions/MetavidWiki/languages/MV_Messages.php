@@ -15,8 +15,8 @@ $messages['en'] = array(
 	'mv_missing_stream' => 'Missing Stream: $1',
 
 	#stream/files key descriptions:
-	'mv_ogg_low_quality'      => 'Web Streamable ogg theora, hosted on metavid',
-	'mv_ogg_high_quality'     => 'High Quality ogg theora, hosted on metavid',
+	'mv_ogg_low_quality'      => 'Web Streamable - Ogg Theora 300kbs',
+	'mv_ogg_high_quality'     => 'High Quality - Ogg Theora 900kbs',
 	'mv_archive_org_link'     => 'Links into Archive.org mpeg2 originals',
 	'ao_file_64Kb_MPEG4'	  => 'Archive.org - mpeg4 64kbs',
 	'ao_file_256Kb_MPEG4'	  => 'Archive.org - mpeg4 256kbs',
@@ -88,7 +88,7 @@ $messages['en'] = array(
 
 	#mvd types:
 	'ht_en'         => 'Transcript',
-	'ht_en_desc'    => 'English transcripts. This overlay type is for text which spoken in the video stream. Links can be added, but all text should be what is spoken in the video stream.',
+	'ht_en_desc'    => 'English transcripts. This overlay type is for spoken text',
 	'anno_en'       => 'Annotations and Categories',
 	'anno_en_desc'  => 'English categorizations and annotations. This overlay can be used to Categorize sections of video or to add annotative information that is not spoken text',
 	'thomas_en'     => 'Official Transcript',
@@ -96,7 +96,7 @@ $messages['en'] = array(
 
 	#mvd errors:
 	'mvd_default_mismatch'     => 'Error in settings file',
-	'mvd_default_mismatchtext' => 'There is an error in your setting file, $mvMVDTypeDefaultDisp should be a subset of $mvMVDTypeAllAvailable',
+	'mvd_default_mismatch_text' => 'There is an error in your setting file, $mvMVDTypeDefaultDisp should be a subset of $mvMVDTypeAllAvailable',
 
 	'mv_data_page_title' => '$1 for $2 from $3',
 	'mv_time_separator'  => '$1 to $2',

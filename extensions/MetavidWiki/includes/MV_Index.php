@@ -79,7 +79,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	 			 	AND `start_time` < {$et} 
 					) 
 				)"; 		  			  
- 		$result = $dbr->query($sql);
+ 		$result = $dbr->query($sql, 'MV_Index:getNearCount');
  		$row = $dbr->fetchObject( $result );
  		//print_r($row);
  		return $row->count; 		 		
@@ -107,6 +107,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  	function getMVDInRange($stream_id, $start_time=null, $end_time=null, $mvd_type='all',$getText=false,$smw_properties=array(), $limit='LIMIT 0, 200'){
  		global $mvIndexTableName, $mvDefaultClipLength; 		
  		$dbr =& wfGetDB(DB_SLAVE);	 		
+ 		//set mvd_type if empty: 
+ 		if($mvd_type==null)$mvd_type='all';
  		
  		$sql_sel = "SELECT `mv_page_id` as `id`, `mvd_type`, `wiki_title`, `stream_id`, `start_time`, `end_time` ";
  		$sql_from=" FROM {$dbr->tableName($mvIndexTableName)} ";
@@ -119,17 +121,20 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		} 	
  		$sql = $sql_sel . $sql_from; 	
  		$sql.= "WHERE `stream_id`={$stream_id} ";
+ 		
 		if($mvd_type!='all'){
 			//check if mvd_type is array:
 			if(is_array($mvd_type)){
 				$sql.='AND (';
 				$or='';
 				foreach($mvd_type as $mtype){
+					//confirm its a valid mvd_type: 
 					$sql.=$or."`mvd_type`='{$mtype}' ";
 					$or='OR ';
 				}
 				$sql.=')';
 			}else{
+				//confirm its a valid mvd_type: 
 				$sql.="AND `mvd_type`='{$mvd_type}' ";
 			}
 		}
@@ -143,6 +148,19 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$sql.=$limit;
 		//echo $sql;
  		$result =& $dbr->query( $sql, 'MV_Index:time_index_query'); 	 	
+ 		return $result;
+ 	} 	
+	/*@@todo figure another way this is not a very fast query: */
+ 	function getMVDTypeInRange($stream_id, $start_time=null, $end_time=null){
+ 		global $mvIndexTableName;
+ 		$dbr =& wfGetDB(DB_SLAVE);	 		 		
+ 		$sql = "SELECT `mvd_type`";
+ 		$sql.= " FROM {$dbr->tableName($mvIndexTableName)} " .
+ 				  " WHERE `stream_id` =".$stream_id; 				
+ 		if($end_time)$sql.=" AND `start_time` <= " . $end_time;
+		if($start_time)$sql.=" AND `end_time` >= " . $start_time;
+		$sql.= " GROUP BY `mvd_type`"; 		
+ 		$result = & $dbr->query( $sql, 'MV_Index:time_mvd_type_query'); 	 
  		return $result;
  	}
  	function remove_by_stream_id($stream_id){
@@ -257,7 +275,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	 			" $date_range_where " .	
 	 			"LIMIT 0, 200";
 	 		//echo "topQ: $sql \n\n";
- 			$top_result = $dbr->query($sql); 			
+ 			$top_result = $dbr->query($sql, 'MV_Index:doFiltersQuery_topQ'); 			
  			if($dbr->numRows($top_result)==0)return array();
  			//set up ranges sql query
  			$sql="SELECT $selOpt `mv_page_id` as `id`, `stream_id`,`start_time`,`end_time`, `wiki_title`, $searchindexTable.`si_text` as `text` ";
@@ -313,7 +331,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	 		$sql.="LIMIT {$this->offset}, {$this->limit} ";
  		}
  		//echo "SQL:".$sql;  			
- 		$result = $dbr->query($sql);
+ 		$result = $dbr->query($sql,  'MV_Index:doFiltersQuery_base');
  		
  		$this->numResults=$dbr->numRows($result);
  		if($dbr->numRows($result)==0) return array();

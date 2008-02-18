@@ -128,7 +128,7 @@ class MV_Stream {
 	 * returns full web accessible path to stream
 	 * (by default this is the web streamable version of the file)
 	 * web stream is file_desc_msg as: mv_ogg_low_quality
-	 * $mvDefaultVideoQualityId in MV_Settings.php
+	 * $mvDefaultVideoQualityKey in MV_Settings.php
 	 * 
 	 * @@todo move into mvTitle class 
 	 * @@todo point to MV_OggSplit (for segmenting the ogg stream)

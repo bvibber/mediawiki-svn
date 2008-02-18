@@ -111,7 +111,7 @@
 			$sk = $wgUser->getSkin();
 			$this->page_header.= $sk->makeKnownLinkObj($sTitle,
 				'<img style="width:28px;height:28px;" src="'.$mvgScriptPath . '/skins/images/Feed-icon_cmml_28x28.png">',
-				'feed_format=cmml&stream_name='.$this->article->mvTitle->getStreamName().'&t='.$this->article->mvTitle->getTimeRequest(),
+				'feed_format=roe&stream_name='.$this->article->mvTitle->getStreamName().'&t='.$this->article->mvTitle->getTimeRequest(),
 				'','','title="'.wfMsg('mv_export_cmml').'"');
 		$this->page_header.='</span>';
 

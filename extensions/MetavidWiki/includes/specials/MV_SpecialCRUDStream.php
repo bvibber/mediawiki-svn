@@ -167,7 +167,7 @@ class MV_SpecialCRUDStream {
 		foreach($stream_files as $sf){
 				$html.='<tr>';
 					$html.='<td width="150">'.$sf->getFullURL().'</td>';
-					$html.='<td>'.wfMsg( $sf->get_desc() ).'</td>';											
+					$html.='<td>'.$sf->get_desc().'</td>';											
 				$html.='</tr>';
 		}
 		$html .='</table></fieldset>';

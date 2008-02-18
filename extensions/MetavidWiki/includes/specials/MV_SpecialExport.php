@@ -104,102 +104,128 @@ class MV_SpecialExport {
 	}
 	//start high level: 
 	function get_roe_desc(){
+		global $mvDefaultVideoQualityKey;
+		$dbr =& wfGetDB(DB_SLAVE);		
 		//returns a high level description with cmml links (or inline-populated upon request)
 		 $streamTitle = new MV_Title($this->stream_name.'/'.$this->req_time);
 		if(!$streamTitle->doesStreamExist()){
 			//@@todo we should output the error in XML friendly manner
 			die('stream does not exist');
 		}
+		$streamPageTitle = Title::newFromText($this->stream_name.'/'.$this->req_time, MV_NS_STREAM);
+		//get the default mvd set: 
+		$mvcp = new MV_Component();
+		$mvcp->procMVDReqSet();
+		
+		//get all track types avaliable in current range: 
+		$mvd_type_res = MV_Index::getMVDTypeInRange($streamTitle->getStreamId(),
+				$streamTitle->getStartTimeSeconds(), 
+				$streamTitle->getEndTimeSeconds());		
+		
+		//get all avaliable files
+		$file_list =$streamTitle->mvStream->getFileList(); 	
+	
+		
 		//get the stream stream req 
 		header('Content-Type: text/xml');
 		//print the header:
 		print '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
-		?>
+		?>		
+<!DOCTYPE roe SYSTEM "http://svn.annodex.net/standards/roe/roe_1_0.xsd">
 <ROE>
 	<head>
-		<link rel="alternate" type="text/html" href="<?=htmlentities($wgTitle->getFullURL() )?>" />
+		<link rel="alternate" type="text/html" href="<?=htmlentities($streamPageTitle->getFullURL() )?>" />
 		<img id="stream_thumb" src="<?=htmlentities($streamTitle->getStreamImageURL())?>"/>
 	</head>
-		<?
-		
-		//get all avaliable files
-		$file_list =$streamTitle->mvStream->getFileList(); 		
-		?>
+	<body>
 		<track id="v" provides="video">
 			<switch distinction="quality">
-			<? foreach($file_list as $sf){ ?>
-				<video id="<?=htmlentities($sf->getNameKey())?>"
-					  src="<?=htmlentities($sf->getFullURL())?>"
-					  content-type=<?=htmlentities($sf->getContentType())?>
-			<? } ?>
+		<? foreach($file_list as $file){ 				
+				$dAttr= ($file->getNameKey()==$mvDefaultVideoQualityKey)?' default="true"':'';
+			?>
+				<video id="<?=htmlentities($file->getNameKey())?>"<?=$dAttr?> title="<?=htmlentities($file->get_desc())?>" content-type="<?=htmlentities($file->getContentType())?>" />	
+		<?}?>
+	</switch>
+		</track>
+		<track id="t" provides="text layers">
+			<switch distinction="layer">
+<?				while($row = $dbr->fetchObject($mvd_type_res)){
+					//output cmml header: 
+					//@@todo lookup language for layer key paterns 
+					$sTitle = Title::makeTitle(NS_SPECIAL, 'MvExportStream');
+					$query = 'stream_name='.$this->stream_name.'&feed_format=cmml&tracks='.strtolower($row->mvd_type);		
+					$clink = $sTitle->getFullURL($query);					
+?>
+				<text id="<?=$row->mvd_type?>" title="<?=wfMsg($row->mvd_type)?>" lang="en" content-type="text/cmml" src="<?=htmlentities($clink)?>">
+<?
+					//output inline cmml: 
+					if(in_array(strtolower($row->mvd_type), $mvcp->mvd_tracks)){
+						$this->get_stream_cmml(true, $row->mvd_type);
+					}	
+					//close text track
+?>
+				</text>
+<?			
+				}	
+			?>		
 			</switch>
 		</track>
-		<?
-		//get all avaliable stream text layers ( inline request CMML (if apropo ))		 
+	</body>
+</ROE><?
+		//get all avaliable stream text layers ( inline request CMML (if apropo ))		
 	}
 	
-	/*get stream CMML (prefix all tags if nessesary) */
-	function get_stream_cmml($prefix=''){		
+	/*get stream CMML */
+	function get_stream_cmml($inline=false, $force_track=null){		
 		$dbr =& wfGetDB(DB_SLAVE);		
+		//set cmml name space if inline: 
+		$ns = ($inline)?'cmml:':'';
+		$ns='';
 		//get the stream title	
 		$streamTitle = new MV_Title($this->stream_name.'/'.$this->req_time);		
 		$wgTitle = Title::newFromText($this->stream_name.'/'.$this->req_time, MV_NS_STREAM);
 		//do mvd_index query:
 		$mvd_res = MV_Index::getMVDInRange($streamTitle->getStreamId(),
 				$streamTitle->getStartTimeSeconds(), 
-				$streamTitle->getEndTimeSeconds());
+				$streamTitle->getEndTimeSeconds(), $force_track);
 		//get the stream stream req 
-		header('Content-Type: text/xml');
+		if(!$inline)header('Content-Type: text/xml');
 		//print the header:
-		print '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';		
+		if(!$inline)print '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'."\n";		
+		if(!$inline)print '<!DOCTYPE cmml SYSTEM "cmml.dtd">'."\n";		
 		$tracks=array();
 		if(count($dbr->numRows($mvd_res))!=0){ 
 			global $wgOut;
-				//use catapiller for logo
 			$MV_Overlay = new MV_Overlay();	
 			$wgOut->clearHTML();	
 			while($mvd = $dbr->fetchObject($mvd_res)){	
 				$MV_Overlay->get_article_html($mvd);	
 				if(!isset($tracks[$mvd->mvd_type]))$tracks[$mvd->mvd_type]='';			
 				$tracks[$mvd->mvd_type].='						
-				<clip id="mvd_'.$mvd->id.'" start="ntp:'.seconds2ntp($mvd->start_time).'" end="ntp:'.seconds2ntp($mvd->end_time).'">
-				<img src="'.htmlentities($streamTitle->getStreamImageURL(null, seconds2ntp($mvd->start_time))).'"/>
-				<body><![CDATA[
-						'.$wgOut->getHTML().'
-					]]></body> 
-				</clip>';			 					
+						<'.$ns.'clip id="mvd_'.$mvd->id.'" start="ntp:'.seconds2ntp($mvd->start_time).'" end="ntp:'.seconds2ntp($mvd->end_time).'">
+							<'.$ns.'img src="'.htmlentities($streamTitle->getStreamImageURL(null, seconds2ntp($mvd->start_time))).'"/>
+							<'.$ns.'body><![CDATA[
+									'.$wgOut->getHTML().'
+								]]></'.$ns.'body> 
+						</'.$ns.'clip>';			 					
 				//clear wgOutput
 				$wgOut->clearHTML();
 			}
 		}		
  	    //based on: http://trac.annodex.net/wiki/CmmlChanges
+
+		foreach($tracks as $role=>$body_string){
 ?>
-<!DOCTYPE roe SYSTEM "http://svn.annodex.net/standards/roe/roe_1_0.xsd">
-<ROE>
-	<body>
-	<stream id="<?=$this->stream_name?>" basetime="0">
-			<import id="videosrc" lang="en" title="<?=$streamTitle->getStreamNameText()?>" 
-				 contenttype="video/ogg" 
-			src="<?=$streamTitle->getWebStreamURL()?>" start="0" end="60">
-				<param id="vheight" name="video.height" value="320"/>
-				<param id="vwidth"  name="video.width"  value="240"/>
-			</import>		
-	</stream>	
+					<cmml lang="en" id="<?=$role?>" role="<?=wfMsg($role)?>" xmlns="http://svn.annodex.net/standards/cmml_2_0.dtd">		
+						<<?=$ns?>head>
+							<<?=$ns?>title><?=wfMsg($role)?></<?=$ns?>title>	
+							<<?=$ns?>description><?=htmlentities(wfMsg($role.'_desc'))?></<?=$ns?>description>				
+						</<?=$ns?>head>
+						<?=$body_string?>
+						
+					</cmml>
 <?
-	foreach($tracks as $role=>$body_string){
-?>
-<cmml lang="en" id="simple" role="<?=$role?>">		
-	<head>
-		<title><?=wfMsg($role)?></title>					
-	</head>
-	<?=$body_string?>
-	</cmml>
-<?
-	}
-	?>
-	</omdl>
-	<?
-	exit;
+		}
 	}
 	// @@todo integrate cache query (similar to SpecialRecentChanges::rcOutputFeed ))
 	function get_category_feed(){
