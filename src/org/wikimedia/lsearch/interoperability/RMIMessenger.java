@@ -18,6 +18,7 @@ import org.wikimedia.lsearch.highlight.Highlight;
 import org.wikimedia.lsearch.highlight.HighlightResult;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.search.HighlightPack;
+import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
 import org.wikimedia.lsearch.search.SuffixFilterWrapper;
 import org.wikimedia.lsearch.search.SuffixNamespaceWrapper;
@@ -159,5 +160,5 @@ public interface RMIMessenger extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public SuggestQuery suggest(String dbrole, String searchterm, ArrayList<Token> tokens, HashSet<String> phrases, HashSet<String> foundInContext) throws RemoteException;
+	public SuggestQuery suggest(String dbrole, String searchterm, ArrayList<Token> tokens, HashSet<String> phrases, HashSet<String> foundInContext, int firstRank, NamespaceFilter nsf) throws RemoteException;
 }

@@ -71,7 +71,7 @@ public class Analyzers {
 	 * @return analyzer
 	 */
 	public static PerFieldAnalyzerWrapper getIndexerAnalyzer(FieldBuilder builder){
-		PerFieldAnalyzerWrapper analyzer = new PerFieldAnalyzerWrapper(new SimpleAnalyzer());
+		PerFieldAnalyzerWrapper analyzer = new PerFieldAnalyzerWrapper(getReusableAnalyzer(builder.getBuilder().getFilters().getNoStemmerFilterFactory(),false));
 		
 		for(FieldBuilder.BuilderSet bs : builder.getBuilders()){
 			FieldNameFactory fields = bs.getFields();

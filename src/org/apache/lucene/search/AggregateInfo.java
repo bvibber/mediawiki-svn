@@ -21,4 +21,10 @@ public interface AggregateInfo {
 	
 	/** boost for phrase at position pos*/
 	public float boost(int docid, int pos) throws IOException;
+	
+	/** ranking boost for the whole document */
+	public float rank(int docid) throws IOException;
+	
+	/** if this meta provides ranking data */
+	public boolean hasRankingData();
 }

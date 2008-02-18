@@ -26,6 +26,7 @@ import org.wikimedia.lsearch.analyzers.TokenizerOptions;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexThread;
+import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.ranks.StringList;
 import org.wikimedia.lsearch.spell.api.LuceneDictionary;
@@ -70,41 +71,49 @@ public class PrefixIndexBuilder {
 		FilterFactory filters = new FilterFactory(iid);
 		
 		long start = System.currentTimeMillis();
+		// FIXME: shouldn't be using import path
+		Links links = Links.openForRead(iid,iid.getLinks().getImportPath());
 		
 		if(!usetemp){
 			IndexWriter writer = new IndexWriter(pre.getTempPath(),new PrefixAnalyzer(),true);
 			writer.setMergeFactor(20);
 			writer.setMaxBufferedDocs(500);
-			// FIXME: shouldn't be using import path
-			Links links = Links.openForRead(iid,iid.getLinks().getImportPath());
 			log.info("Writing temp index");
 			int count = 0;
 			LuceneDictionary dict = links.getKeys();
 			dict.setNoProgressReport();
 			Word w;
 			// lowercase redirect keys 
-			HashSet<String> addedRedirects = new HashSet<String>();
+			HashMap<String,String> addedRedirects = new HashMap<String,String>();
 			// iterate over all documents in the index
 			key_loop: while((w = dict.next()) != null){
 				String key = w.getWord();
 				if(++count % 1000 == 0)
 					System.out.println("Processed "+count);
 				int ref = links.getNumInLinks(key);
-				String redirect = links.getRedirectTarget(key);				
+				String redirect = links.getRedirectTarget(key);
+				boolean redirectAddition = false;
+				String stripped = strip(key);
 				if(redirect == null)
 					redirect = "";
-				else if(redirect.equalsIgnoreCase(key))
+				else if(strip(redirect).equalsIgnoreCase(stripped))
 					continue; // ignore camelcase redirects (case Aa -> AA)
-				else if(addedRedirects.contains(key.toLowerCase()))
+				else if(redirect.equals(addedRedirects.get(strip(key))))
 					continue;
 				else{
 					// check case Aa -> B, AA -> B
-					ArrayList<String> allRedirects = links.getRedirectsTo(redirect);
+					ArrayList<String> allRedirects = links.getRedirectsTo(redirect);					
 					for(String r : allRedirects){
-						if(!r.equals(key) && r.equalsIgnoreCase(key)){
-							// discard if there is a camel-case redirect with more inlinks
-							if(links.getNumInLinks(r) > ref)
-								continue key_loop;
+						if(!r.equals(key)){
+							String rs = strip(r);
+							if(rs.equals(stripped)){
+								// discard if there is a camel-case redirect with more inlinks
+								int nref = links.getNumInLinks(r); 
+								if(nref > ref)
+									continue key_loop;
+								else if(nref == ref)
+									redirectAddition = true;
+							}
 						}
 					}
 				}
@@ -118,8 +127,8 @@ public class PrefixIndexBuilder {
 				d.add(new Field("redirect",redirect,Field.Store.YES,Field.Index.NO));
 				d.add(new Field("ref",Integer.toString(ref),Field.Store.YES,Field.Index.NO));			
 				writer.addDocument(d);				
-				if(redirect != null)
-					addedRedirects.add(key);				
+				if(redirect != null && redirectAddition)
+					addedRedirects.put(strip(key),redirect);				
 			}
 			log.info("Optimizing temp index");
 			writer.optimize();
@@ -161,7 +170,7 @@ public class PrefixIndexBuilder {
 			});
 			ArrayList<String> selected = new ArrayList<String>();
 			for(int i=0;i<perPrefix && i<sorted.size();i++){
-				String key = sorted.get(i).getKey();
+				String key = sorted.get(i).getKey();				
 				selected.add(key);
 			}
 			Document d = new Document();
@@ -195,6 +204,26 @@ public class PrefixIndexBuilder {
 		System.out.println("Finished in "+formatTime(delta));
 	}
 	
+	public static String strip(String s){
+		s = s.toLowerCase();
+		return FastWikiTokenizerEngine.stripTitle(s);
+		/* char[] buf = new char[s.length()];
+		int len = 0;
+		for(int i=0;i<s.length();i++){
+			char ch = s.charAt(i);
+			if(ch == ':' || ch == '(' || ch == ')' || ch =='[' || ch == ']' || ch == '.' || ch == ',' 
+				|| ch == ';' || ch == '"' || ch=='-' || ch=='+' || ch=='*' || ch=='!' || ch=='~' || ch=='$' 
+					|| ch == '%' || ch == '^' || ch == '&' || ch == '_' || ch=='=' || ch=='|' || ch=='\\' || ch=='?' || ch==' '){
+				if(len==0 || buf[len-1]!=' ')
+					buf[len++] = ' ';
+			} else
+				buf[len++] = ch;
+		}
+		while(len>0 && buf[len-1]==' ')
+			len--;
+		return new String(buf,0,len); */
+	}
+	
 	private static ArrayList<Token> canonize(String key, IndexId iid, FilterFactory filters) throws IOException{
 		FastWikiTokenizerEngine tokenizer = new FastWikiTokenizerEngine(key,iid,new TokenizerOptions.PrefixCanonization());
 		return filters.canonize(tokenizer.parse());		
@@ -204,7 +233,7 @@ public class PrefixIndexBuilder {
 		if(prefix.length() >= key.length())
 			return 1;
 		else
-			return square(((double)prefix.length())/((double)key.length()));
+			return Math.sqrt(((double)prefix.length())/((double)key.length()));
 	}
 	
 	final private static double square(double x){

@@ -470,9 +470,11 @@ public class FastWikiTokenizerEngine {
 				}
 				tokens.add(tt); // re-add nonconent tokens
 			}
-			nonContentTokens.clear();
-			t.setPositionIncrement(PARAGRAPH_GAP);
-			keywordTokens += PARAGRAPH_GAP; 
+			if(!first){
+				nonContentTokens.clear();
+				t.setPositionIncrement(PARAGRAPH_GAP);
+				keywordTokens += PARAGRAPH_GAP;
+			}
 		}
 		tokens.add(t);
 	}
@@ -1347,7 +1349,7 @@ public class FastWikiTokenizerEngine {
 	}
 	
 	/** Delete everything that is not being indexes, decompose chars */
-	public static String stipTitle(String title){
+	public static String stripTitle(String title){
 		UnicodeDecomposer decomposer = UnicodeDecomposer.getInstance();
 		char[] str = title.toCharArray();
 		char[] buf = new char[256];
@@ -1356,7 +1358,7 @@ public class FastWikiTokenizerEngine {
 			char ch = str[i];
 			if(ch == ':' || ch == '(' || ch == ')' || ch =='[' || ch == ']' || ch == '.' || ch == ',' 
 				|| ch == ';' || ch == '"' || ch=='-' || ch=='+' || ch=='*' || ch=='!' || ch=='~' || ch=='$' 
-					|| ch == '%' || ch == '^' || ch == '&' || ch == '_' || ch=='=' || ch=='|' || ch=='\\'){
+					|| ch == '%' || ch == '^' || ch == '&' || ch == '_' || ch=='=' || ch=='|' || ch=='\\' || ch=='?'){
 				if(len > 0 && buf[len-1]!=' '){
 					if(len >= buf.length){ // extend buf
 						char[] n = new char[buf.length*2];

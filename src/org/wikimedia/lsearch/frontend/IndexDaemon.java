@@ -23,18 +23,18 @@ public class IndexDaemon {
 			indexer.start();
 		}
 	}
-
+	@Deprecated
 	public void updatePage(String databaseName, String pageId, Title title, String isRedirect, String text ) {
-		// FIXME: ranks are ignored!
-		IndexThread.enqueue(new IndexUpdateRecord(databaseName, Long.parseLong(pageId), title, text, isRedirect.equals("1"), 1, IndexUpdateRecord.Action.UPDATE));
+		// FIXME: ranks & redirects are ignored!
+		IndexThread.enqueue(new IndexUpdateRecord(databaseName, Long.parseLong(pageId), title, text, null, 1, IndexUpdateRecord.Action.UPDATE));
 	}
-
+	@Deprecated
 	public void deletePage(String databaseName, String pageId, Title title) {
-		IndexThread.enqueue(new IndexUpdateRecord(databaseName,Long.parseLong(pageId),title,"",false, 1, IndexUpdateRecord.Action.DELETE));
+		IndexThread.enqueue(new IndexUpdateRecord(databaseName,Long.parseLong(pageId),title,"",null, 1, IndexUpdateRecord.Action.DELETE));
 	}
-
+	@Deprecated
 	public void addPage(String databaseName, String pageId, Title title, String text) {
-		IndexThread.enqueue(new IndexUpdateRecord(databaseName, Long.parseLong(pageId), title, text, false, 1, IndexUpdateRecord.Action.ADD));
+		IndexThread.enqueue(new IndexUpdateRecord(databaseName, Long.parseLong(pageId), title, text, null, 1, IndexUpdateRecord.Action.ADD));
 	}
 
 	public String getStatus() {

@@ -24,6 +24,7 @@ import org.wikimedia.lsearch.highlight.HighlightResult;
 import org.wikimedia.lsearch.index.IndexThread;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.search.HighlightPack;
+import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
 import org.wikimedia.lsearch.search.NetworkStatusThread;
 import org.wikimedia.lsearch.search.SearchEngine;
@@ -149,10 +150,10 @@ public class RMIMessengerImpl implements RMIMessenger {
 		}
 	}
 	
-	public SuggestQuery suggest(String dbrole, String searchterm, ArrayList<Token> tokens, HashSet<String> phrases, HashSet<String> foundInContext) throws RemoteException {
+	public SuggestQuery suggest(String dbrole, String searchterm, ArrayList<Token> tokens, HashSet<String> phrases, HashSet<String> foundInContext, int firstRank, NamespaceFilter nsf) throws RemoteException {
 		IndexId iid = IndexId.get(dbrole);
 		try{
-			return new Suggest(iid).suggest(searchterm,tokens,phrases,foundInContext);
+			return new Suggest(iid).suggest(searchterm,tokens,phrases,foundInContext,firstRank,nsf);
 		} catch(Exception e){
 			e.printStackTrace();
 			throw new RemoteException("Exception on "+dbrole,e);

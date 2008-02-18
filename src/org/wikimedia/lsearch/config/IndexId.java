@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Hashtable;
 
 import org.apache.log4j.Logger;
+import org.wikimedia.lsearch.search.NamespaceFilter;
 
 /**
  * Encapsulated an index ID in form db.part, e.g. entest.mainpart.
@@ -124,6 +125,9 @@ public class IndexId {
 	
 	/** if this is index that doesn't capitalize first letters of titles */
 	protected Boolean exactCase = null;
+	
+	/** Namespaces that are searched by default */
+	protected NamespaceFilter defaultNs = null;
 	
 	/** on which index image are we doing transaction */
 	public static enum Transaction {INDEX, IMPORT, TEMP}; 
@@ -784,6 +788,13 @@ public class IndexId {
 			return 0;
 		else
 			return suffixIwMap.size();
+	}
+	/** Get namespaces of default search */
+	public NamespaceFilter getDefaultNamespace(){
+		if(defaultNs == null){
+			defaultNs = GlobalConfiguration.getInstance().getDefaultNamespace(this);
+		}		
+		return defaultNs;		
 	}
 		
 }

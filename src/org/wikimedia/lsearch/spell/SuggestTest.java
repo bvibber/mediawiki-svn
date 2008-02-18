@@ -82,7 +82,7 @@ public class SuggestTest {
 					last = text;
 				}
 			}
-			System.out.println("#suggest: "+sc.suggest(inputtext,parser.tokenizeBareText(inputtext),new HashSet<String>(),new HashSet<String>()));
+			System.out.println("#suggest: "+sc.suggest(inputtext,parser.tokenizeBareText(inputtext),new HashSet<String>(),new HashSet<String>(),0,new NamespaceFilter("0")));
 			System.out.println("(finished in "+(System.currentTimeMillis()-start)+" ms)");
 		}
 		

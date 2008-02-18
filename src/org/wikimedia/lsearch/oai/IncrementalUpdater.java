@@ -305,6 +305,7 @@ public class IncrementalUpdater {
 		//OldLinks links = new OldLinks(store.getPageReferences(titles,dbname));
 		//HashMap<Title,ArrayList<RelatedTitle>> rel = store.getRelatedPages(titles,dbname);
 		// update
+		// FIXME: wow, this is BCE ... 
 		for(IndexUpdateRecord rec : records){
 			if(rec.isDelete())
 				continue;
@@ -315,7 +316,7 @@ public class IncrementalUpdater {
 			anchors.addAll(aa.getAnchorText());
 			// set references
 			ar.setReferences(aa.getReferences());
-			ar.setRedirect(aa.isRedirect());
+			//ar.setRedirect(aa.isRedirect());
 			if(aa.isRedirect())
 				ar.setRedirectTargetNamespace(aa.getRedirectTargetNamespace());
 			if(ar.getRedirects() != null){

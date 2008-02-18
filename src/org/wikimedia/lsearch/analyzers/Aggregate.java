@@ -24,8 +24,13 @@ public class Aggregate {
 	/** Construct from arbitrary text that will be tokenized 
 	 * @throws IOException */
 	public Aggregate(String text, float boost, IndexId iid, Analyzer analyzer, String field, HashSet<String> stopWords) throws IOException{
-		this.tokens = toTokenArray(analyzer.tokenStream(field,text));
+		setTokens(toTokenArray(analyzer.tokenStream(field,text)),stopWords);
 		this.boost = boost;
+		
+	}
+	/** Set new token array, calc length, etc.. */
+	public void setTokens(ArrayList<Token> tokens, HashSet<String> stopWords){
+		this.tokens = tokens;
 		if(stopWords != null){
 			noStopWordsLength = 0;		
 			for(Token t : tokens){
@@ -33,11 +38,11 @@ public class Aggregate {
 					noStopWordsLength++;
 			}
 		} else{
-			noStopWordsLength = noAliasLenth();
+			noStopWordsLength = noAliasLength();
 		}
 	}
-	
-	public int noAliasLenth(){
+	/** Number of tokens without aliases */
+	public int noAliasLength(){
 		int len = 0;
 		for(Token t : tokens){
 			if(t.getPositionIncrement() != 0)
@@ -51,7 +56,7 @@ public class Aggregate {
 	public Aggregate(String text, float boost, IndexId iid, Analyzer analyzer, String field) throws IOException{		
 		this.tokens = toTokenArray(analyzer.tokenStream(field,text));
 		this.boost = boost;
-		this.noStopWordsLength = noAliasLenth();
+		this.noStopWordsLength = noAliasLength();
 	}
 	
 	private ArrayList<Token> toTokenArray(TokenStream stream) throws IOException {
@@ -88,5 +93,6 @@ public class Aggregate {
 	public ArrayList<Token> getTokens() {
 		return tokens;
 	}
+	
 	
 }

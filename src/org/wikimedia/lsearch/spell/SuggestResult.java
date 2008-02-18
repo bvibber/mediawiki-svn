@@ -10,6 +10,8 @@ public class SuggestResult {
 	int dist=0;
 	int distMetaphone=0;
 	int distMetaphone2=0;
+	String meta1 = null;
+	String meta2 = null;
 	boolean sameLetters=false;
 	String serializedContext = null;
 	HashSet<String> context = null;
@@ -95,6 +97,8 @@ public class SuggestResult {
 		this.distMetaphone2 = metric.sdmeta2.getDistance(meta2);
 		this.sameLetters = metric.hasSameLetters(word);
 		this.serializedContext = serializedContext;
+		this.meta1 = meta1;
+		this.meta2 = meta2;
 	}
 	
 	public int getDist() {
@@ -160,7 +164,7 @@ public class SuggestResult {
 
 	@Override
 	public String toString() {
-		return "("+word + " dist:" + dist + ",freq:" + frequency+",meta:"+distMetaphone+",meta2:"+distMetaphone2+")" ;
+		return "("+word + " dist:" + dist + ",freq:" + frequency+",metaD:"+distMetaphone+",metaD2:"+distMetaphone2+",meta1:"+meta1+",meta2:"+meta2+")" ;
 	}
 
 	@Override

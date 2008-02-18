@@ -135,18 +135,29 @@ public class AggregateMetaField {
 			// run background caching
 			new CachingThread().start();
 		}
-		
 		protected int getValueIndex(int docid, int position){
+			return getValueIndex(docid,position,false);
+		}
+		protected int getValueIndex(int docid, int position, boolean checkExists){
 			int start = index[docid];
 			int end = (docid == index.length-1)? length.length : index[docid+1];
-			if(position >= end-start)
-				try {
-					throw new ArrayIndexOutOfBoundsException("Requestion position "+position+" on field "+field+" for "+docid+" ["+reader.document(docid).get("title")+"], but last valid index is "+(end-start-1));
-				} catch (IOException e) {
-					e.printStackTrace();
-					throw new ArrayIndexOutOfBoundsException("Requestion position "+position+" on field "+field+" unavailable");
-				}
+			if(position >= end-start){
+				if(checkExists) // if true this is not an error
+					return -1; 
+				else
+					throwException(docid,position,end-start-1);
+			}
 			return start+position;
+		}
+		
+		private void throwException(int docid, int position, int lastValid){
+			try {
+				// first try to give more detailed error
+				throw new ArrayIndexOutOfBoundsException("Requestion position "+position+" on field "+field+" for "+docid+" ["+reader.document(docid).get("namespace")+":"+reader.document(docid).get("title")+"], but last valid index is "+lastValid);
+			} catch (IOException e) {
+				e.printStackTrace();
+				throw new ArrayIndexOutOfBoundsException("Requestion position "+position+" on field "+field+" unavailable");
+			}			
 		}
 		
 		protected byte[] getStored(int docid) throws CorruptIndexException, IOException{
@@ -165,16 +176,33 @@ public class AggregateMetaField {
 				return getStored(docid)[position*6+1];
 			return lengthNoStopWords[getValueIndex(docid,position)];
 		}
-		/** Get boost for position 
-		 * @throws IOException 
-		 * @throws CorruptIndexException */
-		public float getBoost(int docid, int position) throws CorruptIndexException, IOException{
+		/** generic function to get boost value at some position, if checkExists=true won't die on error */
+		private float getBoost(int docid, int position, boolean checkExists) throws CorruptIndexException, IOException{
 			if(!cachingFinished){
 				byte[] stored = getStored(docid);
+				if(stored == null || (position*6+5)>=stored.length){
+					if(checkExists)
+						return 1;
+					else
+						throwException(docid,position,(stored==null)? 0 : (stored.length/6));
+				}
 				int boostInt = (((stored[position*6+2]&0xff) << 24) + ((stored[position*6+3]&0xff) << 16) + ((stored[position*6+4]&0xff) << 8) + ((stored[position*6+5]&0xff) << 0));
 				return Float.intBitsToFloat(boostInt);
 			}
-			return boost[getValueIndex(docid,position)];
+			int inx = getValueIndex(docid,position,checkExists);
+			if(inx == -1) // value not found, fine ... (were looking for boost)
+				return 1;
+			return boost[inx];
+		}
+		
+		/** Get boost for position */ 
+		public float getBoost(int docid, int position) throws CorruptIndexException, IOException{
+			return getBoost(docid,position,false);
+		}
+		
+		/** Get rank (boost at position 0) */
+		public float getRank(int docid) throws CorruptIndexException, IOException{
+			return getBoost(docid,0,true);
 		}
 	}
 }

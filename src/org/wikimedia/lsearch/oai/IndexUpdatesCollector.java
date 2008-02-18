@@ -53,7 +53,7 @@ public class IndexUpdatesCollector implements DumpWriter {
 	
 	public void addDeletion(long pageId){
 		// pageId is enough for page deletion
-		Article article = new Article(pageId,-1,"","",false,1,0);
+		Article article = new Article(pageId,-1,"","",null,1,0);
 		records.add(new IndexUpdateRecord(iid,article,IndexUpdateRecord.Action.DELETE));
 		log.debug(iid+": Deletion for "+pageId);
 	}
@@ -70,7 +70,11 @@ public class IndexUpdatesCollector implements DumpWriter {
 	}
 	public void writeEndPage() throws IOException {
 		Date date = new Date(revision.Timestamp.getTimeInMillis());
-		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,revision.isRedirect(),
+		org.wikimedia.lsearch.beans.Title redirect = Localization.getRedirectTitle(revision.Text,iid);
+		String redirectTo = null;
+		if(redirect != null)
+			redirectTo = redirect.getKey();
+		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,redirectTo,
 				references,0,redirects,new ArrayList<RelatedTitle>(), new ArrayList<String>(),date); // references and related titles are set correctly later (in incremental updater)
 		log.debug("Collected "+article+" with rank "+references+" and "+redirects.size()+" redirects: "+redirects);
 		records.add(new IndexUpdateRecord(iid,article,IndexUpdateRecord.Action.UPDATE));

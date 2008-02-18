@@ -520,10 +520,6 @@ public class Links {
 				//map = (HashMap<String, ArrayList<String>>) in.readObject();				
 				// cache it !
 				//cache.put(new Element(cacheKey,map));
-				if(from.equals("0:1910") && to.equals("0:April")){
-					int b =0;
-					b++;
-				}
 				cache.put(cacheKey,map);
 				return map.get(to);
 			/* } catch (ClassNotFoundException e) {

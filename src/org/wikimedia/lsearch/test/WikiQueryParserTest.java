@@ -1,5 +1,6 @@
 package org.wikimedia.lsearch.test;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
 import org.apache.lucene.analysis.Analyzer;
@@ -100,7 +101,8 @@ public class WikiQueryParserTest extends TestCase {
 			
 			assertEquals("[(box,0,3)]",parser.tokenizeBareText("box").toString());
 			
-			
+			q = parser.parse("douglas adams -guides");
+			assertEquals("[contents:adams, contents:dougla, contents:douglas, contents:adam]", Arrays.toString(parser.getHighlightTerms()));
 
 		} catch(Exception e){
 			e.printStackTrace();

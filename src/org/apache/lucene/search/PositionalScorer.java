@@ -18,6 +18,7 @@ abstract public class PositionalScorer extends PhraseScorer {
 	protected int phraseLen;
 	protected int phraseLenNoStopWords;
 	protected PositionalOptions options;
+	protected boolean useExactBoost = true;
 	
 	/** super-detailed debug info */
 	public final static boolean DEBUG = false; 
@@ -93,20 +94,26 @@ abstract public class PositionalScorer extends PhraseScorer {
 		//System.out.println("freqScore at start="+start+", dist="+distance);
 		int offset = start + distance;
 		float begin = 1;
+		float rank = 1;
 		if(options.useBeginBoost){
 			if(offset < 25)
-				begin = 16;
+				begin = options.beginTable[0];
+			if(offset < 50)
+				begin = options.beginTable[1];
 			else if(offset < 200)
-				begin = 4;
+				begin = options.beginTable[2];
 			else if(offset < 500)
-				begin = 2;
+				begin = options.beginTable[3];
+			// only fetch ranking data on begin-of-article match
+			if(begin>1 && options.rankMeta != null)
+				rank = 1 + (float)Math.log10(options.rankMeta.rank(doc())) * (begin/options.beginTable[0]);
 		}
 
 		float exact = 1;
-		if(distance == 0)
+		if(distance == 0 && useExactBoost)
 			exact = options.exactBoost;
 		
-		float baseScore = begin * exact * 1.0f / (distance + 1);
+		float baseScore = rank * begin * exact * (float)Math.sqrt(1.0f / (distance + 1));
 		if(DEBUG){
 			// provide very extensive explanations
 			if(explanations == null)
@@ -124,12 +131,16 @@ abstract public class PositionalScorer extends PhraseScorer {
 			eBegin.setValue(begin);
 			eBegin.setDescription("Begin (offset="+offset+")");
 			e.addDetail(eBegin);
+			Explanation eRank = new Explanation();
+			eRank.setValue(rank);
+			eRank.setDescription("Begin rank");
+			e.addDetail(eRank);
 			Explanation eExact = new Explanation();
 			eExact.setValue(exact);
 			eExact.setDescription("Exact (distance="+distance+")");
 			e.addDetail(eExact);
 			Explanation eDist = new Explanation();
-			eDist.setValue(1.0f / (distance+1));
+			eDist.setValue((float)Math.sqrt(1.0f / (distance+1)));
 			eDist.setDescription("Distance (distance="+distance+")");
 			e.addDetail(eDist);
 		}
@@ -139,8 +150,12 @@ abstract public class PositionalScorer extends PhraseScorer {
 			int lenNoStopWords = options.aggregateMeta.lengthNoStopWords(doc(),start);
 			float wholeBoost = (phraseLen == len)? options.wholeBoost : 1;
 			// no stop boost - only if matched words >= stop words
-			float wholeBoostNoStopWords = (phraseLenNoStopWords == lenNoStopWords && lenNoStopWords>=(len-lenNoStopWords))? options.wholeNoStopWordsBoost : 1;
-			float boost = options.aggregateMeta.boost(doc(),start);
+			float wholeBoostNoStopWords = (phraseLenNoStopWords == lenNoStopWords && lenNoStopWords>=(len-lenNoStopWords) && lenNoStopWords>1)? options.wholeNoStopWordsBoost : 1;
+			float boost = 1;
+			if(options.useRankForWholeMatch && (wholeBoost>1 || wholeBoostNoStopWords>1))
+				boost = options.aggregateMeta.rank(doc());
+			else
+				boost = options.aggregateMeta.boost(doc(),start);
 			float wholeOnly = 1;
 			if(options.onlyWholeMatch && wholeBoost==1 && wholeBoostNoStopWords==1)
 				wholeOnly = 0; // we didn't match the whole thing
@@ -192,6 +207,7 @@ abstract public class PositionalScorer extends PhraseScorer {
 		TermScorer(Weight weight, TermPositions[] tps, int[] offsets, int stopWordCount, Similarity similarity, 
 				byte[] norms, PositionalOptions options) {
 			super(weight, tps, offsets, stopWordCount, similarity, norms, options);
+			useExactBoost = false; // we won't use exact boost since all hits would be exact 
 		}
 
 		protected final float phraseFreq() throws IOException {

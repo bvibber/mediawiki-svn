@@ -16,12 +16,18 @@ import org.wikimedia.lsearch.config.IndexRegistry;
 /**
  * Filter that outputs phrases and words mixed, e.g.
  * novi sad is a city -> novi, sad, novi_sad, is, sad_is, a, is_a, city, a_city
+ * Note: outputs only unique tokens
  * 
  * @author rainman
  *
  */
 public class PhraseFilter extends TokenFilter {
 	protected Set<String> stopWords = null;
+	/** 
+	 * since we are only concerned about term document frequencies we will output
+	 * only unique tokens to help reduce index size 
+	 */
+	protected HashSet<String> processed = new HashSet<String>();
 	
 	public PhraseFilter(TokenStream input) {
 		super(input);
@@ -45,6 +51,17 @@ public class PhraseFilter extends TokenFilter {
 	
 	@Override
 	public Token next() throws IOException {
+		for(;;){ // output only unique
+			Token t = nextPhraseOrWord();
+			if(t == null)
+				return null; // EOS
+			if(!processed.contains(t.termText())){
+				processed.add(t.termText());
+				return t;
+			}
+		}
+	}
+	public Token nextPhraseOrWord() throws IOException {
 		if(pairReady && pair1!=null && pair2!=null && stopWords!=null && 
 				(stopWords.contains(pair1.termText()) || stopWords.contains(pair2.termText()))){
 			pairReady = false;

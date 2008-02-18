@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.StringTokenizer;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
@@ -29,6 +30,8 @@ import org.apache.lucene.search.TermQuery;
 import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
 import org.wikimedia.lsearch.analyzers.FieldNameFactory;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
+import org.wikimedia.lsearch.analyzers.LanguageAnalyzer;
+import org.wikimedia.lsearch.analyzers.StringTokenStream;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.config.IndexRegistry;
@@ -120,10 +123,13 @@ public class SpellCheckIndexer {
 				if(ir.isDeleted(i))
 					continue;
 				Document d = ir.document(i);
+				// normal title
 				String titleText = d.get(title);
-				String rank = d.get("rank");
-				if(titleText != null && !rank.equals("0"))
-					addTitle(titleText,rank);
+				if(titleText != null){
+					String rank = d.get("rank");
+					String redirect = d.get("redirect");				
+					addTitle(titleText,rank,redirect);
+				}				
 			}
 			
 			log.info("Adding words and phrases");
@@ -173,6 +179,32 @@ public class SpellCheckIndexer {
 					}
 				}				
 			}
+			log.info("Adding titles (other namespaces)");
+			// add all titles
+			for(int i=0;i<ir.maxDoc();i++){
+				if(ir.isDeleted(i))
+					continue;
+				Document d = ir.document(i);
+				// title + namespace
+				String allTitleText = d.get("ns_title"); 
+				if(allTitleText != null){
+					String namespace = d.get("ns_namespace");
+					String rank = d.get("ns_rank");
+					String redirect = d.get("ns_redirect");		
+					addNsTitle(allTitleText,namespace,rank,redirect);
+				}
+			}
+			// add words/phrases
+			log.info("Adding words and phrases (other namespaces)");
+			dict = new LuceneDictionary(ir,"ns_title");
+			while((word = dict.next()) != null){
+				String w = word.getWord();
+				if(w.contains("_")){ // phrase					
+					addNsPhrase(w,ir);
+				} else{ // word
+					addNsWord(w,ir);
+				}
+			}
 			ngramWriter.closeAndOptimize();
 			ir.close();			
 		} catch (IOException e) {
@@ -196,20 +228,98 @@ public class SpellCheckIndexer {
 		return new StringList(words).toString();
 	}
 
+	
+	
 	/**
 	 * Register a title in the index, without tokenization, strip of accents and such. 
 	 * 
 	 * @param title
 	 */
-	public void addTitle(String title, String rank){
+	public void addTitle(String title, String rank, String redirect){
 		Document doc = new Document();
-		String stripped = FastWikiTokenizerEngine.stipTitle(title.toLowerCase());
+		String stripped = FastWikiTokenizerEngine.stripTitle(title.toLowerCase());
 		doc.add(new Field("title", stripped, Field.Store.YES, Field.Index.UN_TOKENIZED));
 		doc.add(new Field("rank", rank, Field.Store.YES, Field.Index.NO));
+		if(redirect!=null){
+			String redirectStripped = FastWikiTokenizerEngine.stripTitle(redirect.substring(redirect.indexOf(':')+1).toLowerCase());
+			if(!stripped.equals(redirectStripped)){
+				doc.add(new Field("redirect", redirectStripped, Field.Store.YES, Field.Index.NO));
+			}
+		}
 		if(title.length() >= 5)
 			ngramWriter.createNgramFields(doc,"title",stripped,NgramIndexer.Type.TITLES);		
 		ngramWriter.addDocument(doc);
 	}
+	/** Add titles in all namespaces */	
+	public void addNsTitle(String title, String ns, String rank, String redirect){
+		Document doc = new Document();
+		String stripped = FastWikiTokenizerEngine.stripTitle(title.toLowerCase());
+		doc.add(new Field("ns_title", ns+":"+stripped, Field.Store.YES, Field.Index.UN_TOKENIZED));
+		doc.add(new Field("ns_namespace", ns, Field.Store.YES, Field.Index.UN_TOKENIZED));
+		doc.add(new Field("ns_rank", rank, Field.Store.YES, Field.Index.NO));
+		if(redirect!=null && redirect.substring(0,redirect.indexOf(':')).equals(ns)){
+			String redirectStripped = FastWikiTokenizerEngine.stripTitle(redirect.substring(redirect.indexOf(':')+1).toLowerCase());
+			if(!stripped.equals(redirectStripped)){
+				doc.add(new Field("ns_redirect", redirectStripped, Field.Store.YES, Field.Index.NO));
+			}
+		}
+		if(title.length() >= 5)
+			ngramWriter.createNgramFields(doc,"ns_title",stripped,NgramIndexer.Type.NS_TITLES);		
+		ngramWriter.addDocument(doc);
+	}
+	
+	static class SimpleInt {
+		int count = 0;
+	}
+	protected HashMap<String,SimpleInt> getFrequencies(String w, IndexReader reader) throws IOException{
+		HashMap<String,SimpleInt> ret = new HashMap<String,SimpleInt>();
+		TermDocs td = reader.termDocs(new Term("ns_title",w));
+		while(td.next()){
+			String ns = reader.document(td.doc()).get("ns_namespace"); 
+			SimpleInt i = ret.get(ns);
+			if(i == null){
+				i = new SimpleInt();
+				ret.put(ns,i);
+			}
+			i.count++;
+		}
+		return ret;
+		
+	}
+ 
+	/** Add phrase in namespace other than default */
+	public void addNsPhrase(String phrase, IndexReader ir) throws IOException {
+		if(phrase.length() <= 2){
+			log.warn("Invalid phrase: "+phrase);
+			return;
+		}
+		HashMap<String,SimpleInt> freq = getFrequencies(phrase,ir);
+		
+		Document doc = new Document();
+		doc.add(new Field("ns_phrase", phrase, Field.Store.YES, Field.Index.UN_TOKENIZED));
+		doc.add(new Field("ns_namespace", new StringTokenStream(freq.keySet())));
+		for(Entry<String,SimpleInt> e : freq.entrySet()){
+			doc.add(new Field("ns_freq_"+e.getKey(), Integer.toString(e.getValue().count), Field.Store.YES, Field.Index.NO));
+		}
+		ngramWriter.addDocument(doc);
+	}
+	
+	/** Add word in ns other than default */
+	public void addNsWord(String word, IndexReader ir) throws IOException {
+		if(word.length() < 2)
+			return;
+		HashMap<String,SimpleInt> freq = getFrequencies(word,ir);
+		Document doc = new Document();
+		ngramWriter.createNgramFields(doc,"ns_word",word,NgramIndexer.Type.WORDS);
+		doc.add(new Field("ns_word",word, Field.Store.YES, Field.Index.UN_TOKENIZED));
+		for(Entry<String,SimpleInt> e : freq.entrySet())
+			doc.add(new Field("ns_freq_"+e.getKey(), Integer.toString(e.getValue().count), Field.Store.YES, Field.Index.NO));
+		doc.add(new Field("meta1",dmeta.doubleMetaphone(word), Field.Store.YES, Field.Index.NO));
+		doc.add(new Field("meta2",dmeta.doubleMetaphone(word,true), Field.Store.YES, Field.Index.NO));
+		ngramWriter.addDocument(doc);
+	}	
+
+	
 	/** 
 	 * Add phrase to index
 	 * 

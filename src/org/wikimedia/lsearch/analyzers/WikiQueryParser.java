@@ -54,6 +54,7 @@ public class WikiQueryParser {
 	private TokenStream tokenStream; 
 	private ArrayList<Token> tokens; // tokens from analysis
 	protected ArrayList<String> words, wordsFromParser;
+	protected Term[] highlightTerms = null;
 	
 	/** sometimes the fieldsubquery takes the bool modifier, to retrieve it, use this variable,
 	 *  this will always point to the last unused bool modifier */
@@ -80,7 +81,7 @@ public class WikiQueryParser {
 	public static float MAINPHRASE_BOOST = 2f;
 	public static float RELATED_BOOST = 4f;	
 	public static int RELATED_SLOP = 0;
-	public static float ALT_PHRASES_BOOST = 0.4f;
+	public static float ALTTITLE_RELEVANCE_BOOST = 2f;
 	// additional to main phrase:
 	public static float ADD_STEMTITLE_BOOST = 2;
 	public static float ADD_ALTTITLE_BOOST = 1;
@@ -359,7 +360,7 @@ public class WikiQueryParser {
 			} else if(fieldLevel != -1 && level>fieldLevel)
 				continue;
 			
-			if(Character.isLetterOrDigit(c)){
+			if(Character.isLetterOrDigit(c) || c=='?' || c=='*'){
 				int start = cur;
 				tokenType = fetchToken();
 				if(tokenType == TokenType.WORD && (start==0 || text[start-1]!='-') && !bufferIsWildCard()){
@@ -810,8 +811,8 @@ public class WikiQueryParser {
 		// wildcard signs are allowed only at the end of the word, minimum one letter word
 		if(length>1 && wildcards != null && bufferIsWildCard()){
 			Term term = makeTerm();
-			if(term.field().equals("stemtitle") || term.field().equals("stemtitle_exact"))
-				return null; // don't do wildcards for stemtitles
+			//if(term.field().equals("stemtitle") || term.field().equals("stemtitle_exact"))
+			//	return null; // don't do wildcards for stemtitles
 			Query ret = wildcards.makeQuery(term.text(),term.field());
 			if(ret != null){
 				ret.setBoost(WILDCARD_BOOST);
@@ -990,6 +991,15 @@ public class WikiQueryParser {
 		if(forbidden != null)
 			bq.add(forbidden,Occur.MUST_NOT);
 		
+		// extract terms that are going to be highlighted
+		HashSet<Term> hterms = new HashSet<Term>();
+		qc.extractTerms(hterms);
+		HashSet<Term> forbiddenTerms = new HashSet<Term>();
+		if(forbidden != null)
+			forbidden.extractTerms(forbiddenTerms);
+		hterms.removeAll(forbiddenTerms);
+		highlightTerms = hterms.toArray(new Term[] {});
+		
 		if(options.coreQueryOnly || words == null || words.size()==0)
 			return bq;
 		
@@ -1040,13 +1050,15 @@ public class WikiQueryParser {
 		full.add(additional,Occur.SHOULD);
 		
 		// redirect match (when redirect is not contained in contents or title)
-		Query redirects = makeAlttitleForRedirects(words,20,1);
-		if(redirects != null)
-			full.add(redirects,Occur.SHOULD);
-		if(singularWords != null){
-			Query redirectsSing = makeAlttitleForRedirects(singularWords,20,0.8f);
-			if(redirectsSing != null)
-				full.add(redirectsSing,Occur.SHOULD);
+		if(wildcards == null || !wildcards.hasWildcards()){
+			Query redirects = makeAlttitleForRedirects(words,20,1);
+			if(redirects != null)
+				full.add(redirects,Occur.SHOULD);
+			if(singularWords != null){
+				Query redirectsSing = makeAlttitleForRedirects(singularWords,20,0.8f);
+				if(redirectsSing != null)
+					full.add(redirectsSing,Occur.SHOULD);
+			}
 		}
 		
 		return full;
@@ -1271,13 +1283,13 @@ public class WikiQueryParser {
 		main.setBoost(MAINPHRASE_BOOST);
 		
 		// relevance measures: alttitle
-		Query alttitle = makeAlttitleRelevance(words,ALT_PHRASES_BOOST);
+		Query alttitle = makeAlttitleRelevance(words,ALTTITLE_RELEVANCE_BOOST);
 		ArrayList<Query> altAdd = new ArrayList<Query>();
 		if(singularWords != null)
-			altAdd.add(makeAlttitleRelevance(singularWords,ALT_PHRASES_BOOST));
+			altAdd.add(makeAlttitleRelevance(singularWords,ALTTITLE_RELEVANCE_BOOST));
 		if(wordnet!=null)
 			for(ArrayList<String> wnwords : wordnet)
-				altAdd.add(makeAlttitleRelevance(wnwords,ALT_PHRASES_BOOST));
+				altAdd.add(makeAlttitleRelevance(wnwords,ALTTITLE_RELEVANCE_BOOST));
 		alttitle = combine(alttitle,altAdd);
 		
 		// related
@@ -1307,12 +1319,6 @@ public class WikiQueryParser {
 		return bq;
 	}
 
-	private BooleanQuery embed(Query q1, Query q2){
-		BooleanQuery bq = new BooleanQuery(true);
-		bq.add(q1,Occur.SHOULD);
-		bq.add(q2,Occur.SHOULD);
-		return bq;
-	}
 	
 	/** Relevance metrics based on rank (of titles and redirects) */
 	protected Query makeAlttitleRelevance(ArrayList<String> words, float boost){
@@ -1348,7 +1354,8 @@ public class WikiQueryParser {
 			}
 		}
 		// add the whole-only query
-		bq.add(makeAlttitlePhrase(words,field,new PositionalOptions.AlttitleWhole(),20),Occur.SHOULD);		
+		bq.add(makeAlttitlePhrase(words,field,new PositionalOptions.AlttitleWhole(),20),Occur.SHOULD);
+		bq.setBoost(boost);
 		return bq;
 
 	}
@@ -1359,6 +1366,7 @@ public class WikiQueryParser {
 			pq.add(new Term(field,w),stopWords.contains(w));
 		if(slop != 0)
 			pq.setSlop(slop);
+		pq.setBoost(words.size());
 		return pq;
 	}
 	
@@ -1501,6 +1509,13 @@ public class WikiQueryParser {
 		}
 		return true;
 	}
+
+	/** Valid after parse() call - contents terms to be highlighted */
+	public Term[] getHighlightTerms() {
+		return highlightTerms;
+	}
+	
+	
 
 
 }

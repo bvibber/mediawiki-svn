@@ -67,12 +67,16 @@ public class Highlight {
 		public HashSet<String> phrases;
 		/** words found with some other query word in a sentence */
 		public HashSet<String> foundInContext;
+		/** If all words are found within one article title */
 		public boolean foundAllInTitle;
-		public ResultSet(HashMap<String, HighlightResult> highlighted, HashSet<String> phrases, HashSet<String> foundInContext, boolean foundAllInTitle) {
+		/** Rank of the first hit, used as title-suggestion threshold */
+		public int firstHitRank = 0;
+		public ResultSet(HashMap<String, HighlightResult> highlighted, HashSet<String> phrases, HashSet<String> foundInContext, boolean foundAllInTitle, int firstHitRank) {
 			this.highlighted = highlighted;
 			this.phrases = phrases;
 			this.foundInContext = foundInContext;
 			this.foundAllInTitle = foundAllInTitle;
+			this.firstHitRank = firstHitRank;
 		}
 	}
 	/**
@@ -97,6 +101,7 @@ public class Highlight {
 		HashSet<String> phrases = new HashSet<String>();
 		HashSet<String> inContext = new HashSet<String>();
 		boolean foundAllInTitle = false;
+		int firstHitRank = 0;
 		
 		// terms weighted with idf
 		HashMap<String,Double> weightTerm = new HashMap<String,Double>();
@@ -115,7 +120,8 @@ public class Highlight {
 			reader = cache.getLocalSearcher(iid.getHighlight()).getIndexReader();
 		HashMap<String,HighlightResult> res = new HashMap<String,HighlightResult>();
 		Set<String> allTerms = weightTerm.keySet();
-		for(String key : hits){
+		for(int hi=0;hi<hits.size();hi++){
+			String key = hits.get(hi);
 			Object[] ret = null;
 			try{
 				ret = getTokens(reader,key,allTerms);			
@@ -130,6 +136,9 @@ public class Highlight {
 			Alttitles alttitles = (Alttitles) ret[1];
 			String date = (String) ret[2];
 			preprocessTemplates(tokens);
+			
+			if(hi == 0)  
+				firstHitRank = alttitles.getTitle().getRank();
 			
 			HashMap<String,Double> notInTitle = getTermsNotInTitle(weightTerm,alttitles,wordIndex);
 			ArrayList<RawSnippet> textSnippets = getBestTextSnippets(tokens, weightTerm, wordIndex, 2, false, stopWords, true, phrases, inContext );
@@ -232,7 +241,7 @@ public class Highlight {
 			res.put(key,hr);
 			
 		}
-		return new ResultSet(res,phrases,inContext,foundAllInTitle);
+		return new ResultSet(res,phrases,inContext,foundAllInTitle,firstHitRank);
 	}	
 	
 	/** Number of tokens excluding aliases and glue stuff */
@@ -431,6 +440,19 @@ public class Highlight {
 				// get snippet with best score
 				Collections.sort(res,  new Comparator<RawSnippet>() {
 					public int compare(RawSnippet o1, RawSnippet o2) {
+						// most terms found
+						int f = o2.found.size() - o1.found.size();
+						if(f != 0)
+							return f;
+						// in shortest overall text
+						int l = o1.textLength - o2.textLength;
+						if(l != 0)
+							return l;
+						// with best rank
+						int r = o2.alttitle.getRank() - o1.alttitle.getRank();
+						if(r != 0)
+							return r;
+						// and max score
 						double d = o2.score - o1.score;
 						if(d > 0)
 							return 1;

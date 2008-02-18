@@ -36,9 +36,9 @@ public class IndexUpdateRecord implements Serializable {
 	protected ReportId reportId;
 	
 	@Deprecated
-	public IndexUpdateRecord(String dbrole, long pageId, Title title, String text, boolean redirect, int rank, Action role){
+	public IndexUpdateRecord(String dbrole, long pageId, Title title, String text, String redirectTo, int rank, Action role){
 		// FIXME: redirect target might be wrong (but then this is deprecated...)
-		article = new Article(pageId,title,text,redirect,rank,0);
+		article = new Article(pageId,title,text,redirectTo,rank,0);
 		this.action = role;
 		iid = IndexId.get(dbrole);
 		alwaysAdd = true;

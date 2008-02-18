@@ -10,6 +10,9 @@ import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
+import org.apache.lucene.document.Field.Index;
+import org.apache.lucene.document.Field.Store;
+import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexWriter;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
@@ -98,10 +101,27 @@ public class CleanIndexWriter {
 			writer.addDocument(doc,analyzer);
 			log.debug(iid+": Adding document "+a);
 		} catch (IOException e) {
+			e.printStackTrace();
 			log.error("I/O Error writing articlet "+a+" to index "+writer);
 		} catch(Exception e){
 			e.printStackTrace();
 			log.error("Error adding document "+a+" with message: "+e.getMessage());
+		}
+	}
+	
+	/** Add title/redirect with ranks information only */
+	public void addTitleOnly(Article article) {
+		Document doc = new Document();
+		doc.add(new Field("ns_title",article.getTitle(),Store.YES,Index.TOKENIZED));
+		doc.add(new Field("ns_namespace",article.getNamespace(),Store.YES,Index.UN_TOKENIZED));
+		doc.add(new Field("ns_rank",Integer.toString(article.getRank()),Store.YES,Index.NO));
+		if(article.isRedirect())
+			doc.add(new Field("ns_redirect",article.getRedirectTarget(),Store.YES,Index.NO));
+		try {
+			writer.addDocument(doc,analyzer);
+		} catch (IOException e) {
+			e.printStackTrace();
+			log.error("Error adding title info for article "+article+" with message: "+e.getMessage());
 		}
 	}
 	
@@ -139,4 +159,5 @@ public class CleanIndexWriter {
 			log.warn("Cannot write metadata : "+e.getMessage());
 		}
 	}
+
 }

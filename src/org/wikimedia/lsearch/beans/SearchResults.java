@@ -30,6 +30,8 @@ public class SearchResults implements Serializable {
 	protected HashSet<String> foundInContext = new HashSet<String>();
 	/** If we found all query words in a single title during highlighting */ 
 	protected boolean foundAllInTitle = false;
+	/** threshold for filtering suggestions */
+	protected int firstHitRank = 0;
 	
 	public SearchResults(){
 		success = false;
@@ -118,6 +120,15 @@ public class SearchResults implements Serializable {
 	}
 	public void setFoundAllInTitle(boolean foundAllInTitle) {
 		this.foundAllInTitle = foundAllInTitle;
+	}
+	public int getFirstHitRank() {
+		return firstHitRank;
+	}
+	public void setFirstHitRank(int firstHitRank) {
+		this.firstHitRank = firstHitRank;
+	}
+	public void addToFirstHitRank(int rank){
+		firstHitRank += rank;
 	}
 
 	@Override

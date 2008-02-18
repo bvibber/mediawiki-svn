@@ -39,7 +39,6 @@ import org.wikimedia.lsearch.related.RelatedTitle;
  */
 public class Article implements Serializable  {
 	private String namespace, title, contents;
-	private boolean redirect;
 	private long pageId;
 	private int references;
 	/** all page that redirect to this page with their reference count */
@@ -61,25 +60,26 @@ public class Article implements Serializable  {
 	private ArrayList<String> anchorText;
 	/** If this is redirect, the redirect target namespace */
 	private int redirectTargetNamespace = 0;
+	/** Target if this is redirect, null otherwise */
+	private String redirectTo = null;
 	
 	public Article(){
 		namespace="";
 		title="";
 		contents="";
 		pageId = 0;
-		redirect=false;
 		references = 0;
 		redirects=new ArrayList<Redirect>();
 		related = new ArrayList<RelatedTitle>();
 		anchorText = new ArrayList<String>();
 	}
 	
-	public Article(long pageId, Title title, String text, boolean redirect, int references, int redirectTargetNamespace) {
+	public Article(long pageId, Title title, String text, String redirectTo, int references, int redirectTargetNamespace) {
 		namespace = Integer.toString(title.getNamespace());
 		this.title = title.getTitle();
 		contents = text;
 		this.pageId = pageId;
-		this.redirect = redirect;
+		this.redirectTo = redirectTo;
 		this.references = references;
 		this.redirects = new ArrayList<Redirect>();
 		this.related = new ArrayList<RelatedTitle>();
@@ -87,11 +87,11 @@ public class Article implements Serializable  {
 		this.redirectTargetNamespace = redirectTargetNamespace;
 	}
 	
-	public Article(long pageId, int namespace, String titleText, String text, boolean redirect, int references, int redirectTargetNamespace) {
+	public Article(long pageId, int namespace, String titleText, String text, String redirectTo, int references, int redirectTargetNamespace) {
 		this.namespace = Integer.toString(namespace);
 		this.title = titleText;
 		contents = text;
-		this.redirect = redirect;
+		this.redirectTo = redirectTo;
 		this.pageId = pageId;
 		this.references = references;
 		this.redirects = new ArrayList<Redirect>();
@@ -100,12 +100,12 @@ public class Article implements Serializable  {
 		this.redirectTargetNamespace = redirectTargetNamespace;
 	}
 	
-	public Article(long pageId, int namespace, String titleText, String text, boolean redirect, int references, int redirectTargetNamespace, 
+	public Article(long pageId, int namespace, String titleText, String text, String redirectTo, int references, int redirectTargetNamespace, 
 			ArrayList<Redirect> redirects, ArrayList<RelatedTitle> related, ArrayList<String> anchorText, Date date) {
 		this.namespace = Integer.toString(namespace);
 		this.title = titleText;
 		contents = text;
-		this.redirect = redirect;
+		this.redirectTo = redirectTo;
 		this.pageId = pageId;
 		this.references = references;
 		this.redirects = redirects;
@@ -116,12 +116,13 @@ public class Article implements Serializable  {
 	}
 	
 	public boolean isRedirect() {
-		return redirect;
+		return redirectTo != null;
 	}
 	
-	public void setRedirect(boolean redirect) {
-		this.redirect = redirect;
+	public String getRedirectTarget(){
+		return redirectTo;
 	}
+	
 	/**
 	 * @return Returns article body
 	 */
@@ -160,7 +161,7 @@ public class Article implements Serializable  {
 	}
 	
 	public String toString() {
-		return "(" + namespace + ",\"" + title + "\")";
+		return "(pageId=" + pageId + ", namespace=" + namespace + ", title=\"" + title + "\")";
 	}
 	
 	/** Page Rank: how many articles link to this article */

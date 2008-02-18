@@ -141,6 +141,7 @@ def extract_snippet(line,final_separator=True,originalIsKey=False):
         if origNs != '':
             origNs = origNs +":"
         original = origNs+origParts[1]
+        snippet = origNs+snippet;
         
     return [snippet,original]
 

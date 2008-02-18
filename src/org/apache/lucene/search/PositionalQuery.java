@@ -71,6 +71,9 @@ public class PositionalQuery extends PhraseQuery {
 			// init aggregate meta field if any
 			if(options.aggregateMeta != null)
 				options.aggregateMeta.init(reader,field);
+			
+			if(options.rankMeta != null)
+				options.rankMeta.init(reader,field);
 
 			if( terms.size() == 1)
 				return new PositionalScorer.TermScorer(this, tps, getPositions(), stopWordCount, 

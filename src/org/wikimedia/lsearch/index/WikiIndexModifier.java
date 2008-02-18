@@ -510,11 +510,6 @@ public class WikiIndexModifier {
 	/** Make a document with optional extra info (spellcheck context words) */
 	public static Document makeDocument(Article article, FieldBuilder builder, IndexId iid, HashSet<String> stopWords, Analyzer analyzer, boolean extraInfo) throws IOException{
 		Document doc = new Document();
-
-		if(article.getNamespace().equals("0") && article.getTitle().equals("NPOV")){
-			int b =0;
-			b++;
-		}
 		
 		// tranform record so that unnecessary stuff is deleted, e.g. some redirects
 		transformArticleForIndexing(article);
@@ -582,6 +577,8 @@ public class WikiIndexModifier {
 			// extra info
 			if(extraInfo){
 				addSpellCheckInfo(doc,article.getTitle(),tokenizer.getKeywords(),tokenizer.getHeadingText(),article.getRedirectKeywords(),iid,fields);
+				if(article.isRedirect())
+					doc.add(new Field("redirect",article.getRedirectTarget(),Store.YES,Index.NO));
 			}
 
 		}
@@ -652,7 +649,7 @@ public class WikiIndexModifier {
 	protected static void makeRelated(Document doc, String prefix, Article article, IndexId iid, HashSet<String> stopWords, Analyzer analyzer) throws IOException{
 		ArrayList<Aggregate> items = new ArrayList<Aggregate>();
 		for(RelatedTitle rt : article.getRelated()){
-			addToItems(items,new Aggregate(rt.getRelated().getTitle(),transformRelated(rt.getScore()),iid,analyzer,prefix,stopWords));
+			addToItems(items,new Aggregate(rt.getRelated().getTitle(),transformRelated(rt.getScore()),iid,analyzer,prefix,stopWords),stopWords);
 		}
 		makeAggregate(doc,prefix,items);
 	}
@@ -663,26 +660,32 @@ public class WikiIndexModifier {
 		ArrayList<Aggregate> items = new ArrayList<Aggregate>();
 		// add title
 		String title = article.getTitle();		
-		addToItems(items, new Aggregate(title,transformRank(article.getRank()),iid,analyzer,prefix,stopWords));
+		addToItems(items, new Aggregate(title,transformRank(article.getRank()),iid,analyzer,prefix,stopWords),stopWords);
 		// add all redirects
 		ArrayList<String> redirects = article.getRedirectKeywords();
 		ArrayList<Integer> ranks = article.getRedirectKeywordRanks();
 		for(int i=0;i<redirects.size();i++){
-			addToItems(items, new Aggregate(redirects.get(i),transformRank(ranks.get(i)),iid,analyzer,prefix,stopWords));
+			addToItems(items, new Aggregate(redirects.get(i),transformRank(ranks.get(i)),iid,analyzer,prefix,stopWords),stopWords);
 		}
 		if(tokenizer != null){
 			// add section headings!
 			for(String h : tokenizer.getHeadingText()){			
-				addToItems(items, new Aggregate(title+" "+h,rankBoost*HEADINGS_BOOST,iid,analyzer,prefix,stopWords));
+				addToItems(items, new Aggregate(title+" "+h,rankBoost*HEADINGS_BOOST,iid,analyzer,prefix,stopWords),stopWords);
 			}
 		}
 		makeAggregate(doc,prefix,items);
 	}	
 	
 	
-	private static void addToItems(ArrayList<Aggregate> items, Aggregate a){
-		if(a.length() != 0)
+	private static void addToItems(ArrayList<Aggregate> items, Aggregate a, HashSet<String> stopWords){
+		if(a.length() != 0){
+			ArrayList<Token> tokens = a.getTokens();
+			if(tokens.size()==2 && tokens.get(1).type().equals("singular")){
+				tokens.remove(1); // we don't want singulars for single-token titles or redirects
+				a.setTokens(tokens,stopWords);
+			}
 			items.add(a);
+		}
 	}
 	
 	protected static void makeAggregate(Document doc, String prefix, ArrayList<Aggregate> items){

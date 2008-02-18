@@ -64,27 +64,35 @@ public class CleanIndexImporter implements DumpWriter {
 		this.page = page;
 	}
 	public void writeEndPage() throws IOException {
-		// only for articles in default namespace(s)
-		if(nsf.contains(page.Title.Namespace)){
-			String key = page.Title.Namespace+":"+page.Title.Text;		 
-			int references = links.getNumInLinks(key);
-			boolean isRedirect = links.isRedirect(key);
-			int redirectTargetNamespace = links.getRedirectTargetNamespace(key);
-			Date date = new Date(revision.Timestamp.getTimeInMillis());
+		String key = page.Title.Namespace+":"+page.Title.Text;		 
+		int references = links.getNumInLinks(key);			
+		String redirectTo = links.getRedirectTarget(key);
+		int redirectTargetNamespace = links.getRedirectTargetNamespace(key);
+		if(redirectTo != null){
+			ArrayList<String> redirectsHere = links.getRedirectsTo(key);
+			references -= redirectsHere.size(); // we want raw rank, without redirects
 
-			// make list of redirects
-			ArrayList<Redirect> redirects = new ArrayList<Redirect>();
-			ArrayList<String> anchors = new ArrayList<String>();
-			for(String rk : links.getRedirectsTo(key)){
-				String[] parts = rk.toString().split(":",2);
-				redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],links.getNumInLinks(rk)));
-			}
-			// make article
-			Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,
-					references,redirectTargetNamespace,redirects,new ArrayList<RelatedTitle>(),anchors,date);
+			if(redirectTargetNamespace<0 || !nsf.contains(redirectTargetNamespace))
+				redirectTo = null; // redirect to other namespace
+		}			
+		Date date = new Date(revision.Timestamp.getTimeInMillis());
 
-			writer.addArticle(article);
+		// make list of redirects
+		ArrayList<Redirect> redirects = new ArrayList<Redirect>();
+		ArrayList<String> anchors = new ArrayList<String>();
+		for(String rk : links.getRedirectsTo(key)){
+			String[] parts = rk.toString().split(":",2);
+			redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],links.getNumInLinks(rk)));
 		}
+		// make article
+		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,redirectTo,
+				references,redirectTargetNamespace,redirects,new ArrayList<RelatedTitle>(),anchors,date);
+
+		// only for articles in default namespace(s)
+		if(nsf.contains(page.Title.Namespace))
+			writer.addArticle(article);
+		else
+			writer.addTitleOnly(article);
 	}	
 	
 	public void close() throws IOException {

@@ -3,9 +3,12 @@ package org.apache.lucene.search;
 import java.io.Serializable;
 
 import org.wikimedia.lsearch.search.AggregateInfoImpl;
+import org.wikimedia.lsearch.search.AggregateInfoImpl.RankInfo;
+import org.wikimedia.lsearch.test.RankingTest;
 
 public class PositionalOptions implements Serializable {
 	protected AggregateInfo aggregateMeta = null;
+	protected RankInfo rankMeta = null;
 
 	/** use additional boosts when phrase if at the beginning of document */
 	protected boolean useBeginBoost = false;	
@@ -21,10 +24,15 @@ public class PositionalOptions implements Serializable {
 	protected boolean useNoStopWordLen = false;
 	/** nonzero score only on whole match (either all words, or all words without stopwords */
 	protected boolean onlyWholeMatch = false;
+	/** table of boost values for first 25, 50, 200, 500 tokens */
+	protected float beginTable[] = { 16, 4, 4, 2 };
+	/** useful for redirects - use main rank as whole-match boost */
+	protected boolean useRankForWholeMatch = false;
 	
 	/** Options specific for phrases in contents */
 	public static class Sloppy extends PositionalOptions {
 		public Sloppy(){
+			rankMeta = new RankInfo();
 			useBeginBoost = true;
 			exactBoost = 1;
 			useNoStopWordLen = true;
@@ -34,8 +42,10 @@ public class PositionalOptions implements Serializable {
 	/** Options specific for phrases that match exactly in contents */
 	public static class Exact extends PositionalOptions {
 		public Exact(){
+			rankMeta = new RankInfo();
 			useBeginBoost = true;
 			exactBoost = 8;
+			//beginTable = new float[] { 256, 64, 4, 2 }; 
 		}
 	}
 	
@@ -94,6 +104,7 @@ public class PositionalOptions implements Serializable {
 			wholeNoStopWordsBoost = 100000000;
 			wholeBoost = 500000000;
 			useNoStopWordLen = true;
+			useRankForWholeMatch = true;
 		}
 	}
 

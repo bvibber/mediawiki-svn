@@ -90,7 +90,8 @@ public class DumpImporter implements DumpWriter {
 		Date date = new Date(revision.Timestamp.getTimeInMillis());
 		
 		references = links.getNumInLinks(key);
-		isRedirect = links.isRedirect(key);
+		String redirectTo = links.getRedirectTarget(key);
+		isRedirect = redirectTo != null;
 		redirectTargetNamespace = isRedirect? links.getRedirectTargetNamespace(key) : -1;
 		
 		// make list of redirects
@@ -104,7 +105,7 @@ public class DumpImporter implements DumpWriter {
 		if(makeIndex && related != null)
 			rel = related.getRelated(key);
 		// make article
-		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,
+		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,redirectTo,
 				references,redirectTargetNamespace,redirects,rel,anchors,date);
 		// index
 		if(indexWriter != null)

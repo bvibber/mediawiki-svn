@@ -66,7 +66,7 @@ public class SpellCheckTest {
    private static final String[][] CHECK = { 
    	{"annul of improbably research", "annals of improbable research" },
    	{"los angles", "los angeles" },
-   	{"what is the type of engineers thats deal with various depth of the eart crust", "what is the type of engineers thats deal with various depths of the earth crust"},
+   	{"what is the type of engineers thats deal with various depth of the eart crust", "what is the type of engineers thats deal with various depth of the earth crust"},
    	{"argentina cilmage", "argentina climate"},
    	{"Vista Compatibly", "Vista Compatible"},
    	{"sarah thomson", "sarah thompson"},
@@ -107,6 +107,8 @@ public class SpellCheckTest {
    	{"althought","although"},
    	{"mac surname",""},
    	{"chater 13 bakrupcy","chapter 13 bankruptcy"},
+   	{"althought","although"},
+   	{"vlah", "vlachs"},
    	
    };
 

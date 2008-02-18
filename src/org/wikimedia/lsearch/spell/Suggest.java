@@ -53,6 +53,8 @@ public class Suggest {
 	protected IndexReader reader;
 	protected static WeakHashMap<IndexSearcher,Set<String>> stopWordsIndexes = new WeakHashMap<IndexSearcher,Set<String>>();
 	protected Set<String> stopWords;
+	protected NamespaceFilter defaultNs;
+	protected HashMap<String,Boolean> wordExistCache = new HashMap<String,Boolean>();
 	
 	/** Distance an metaphone metrics */
 	static public class Metric {
@@ -97,6 +99,11 @@ public class Suggest {
 		public boolean hasSameLetters(String w){
 			return sd.hasSameLetters(w);
 		}
+		@Override
+		public String toString() {
+			return "("+word + ",meta1:"+meta1+",meta2:"+meta2+")" ;
+		}
+
 	}
 	
 	/** Number of results to fetch */
@@ -112,6 +119,7 @@ public class Suggest {
 		this.iid = iid;
 		this.searcher = cache.getLocalSearcher(iid.getSpell());
 		this.reader = searcher.getIndexReader();
+		this.defaultNs = iid.getDefaultNamespace();
 		
 		synchronized(stopWordsIndexes){
 			if(!stopWordsIndexes.containsKey(searcher)){
@@ -153,37 +161,78 @@ public class Suggest {
 	}
 	
 	/** 
-	 * Make a suggestion:
+	 * Make a suggestion for a query
 	 *    
-	 * @return suggested query, or null if no suggestions 
 	 * @throws IOException 
 	 */
 	@SuppressWarnings("unchecked")
-	public SuggestQuery suggest(String searchterm, ArrayList<Token> tokens, HashSet<String> phrases, HashSet<String> foundInContext) throws IOException{		
+	public SuggestQuery suggest(String searchterm, ArrayList<Token> tokens, HashSet<String> phrases, HashSet<String> foundInContext, int firstRank, NamespaceFilter nsf) throws IOException{		
 		FilterFactory filters = new FilterFactory(iid);
 		long start = System.currentTimeMillis();
 
+		if(tokens.size() > 30){
+			logRequest(searchterm,"too many words to spellcheck ("+tokens.size()+")",start);
+			return new SuggestQuery(searchterm,new ArrayList<Integer>());
+		}
+		
 		// init suggestions
 		int minFreq = 0;
 		ArrayList<Change> suggestions = new ArrayList<Change>(); 
 		ArrayList<Change> suggestionsTitle = new ArrayList<Change>();
 		HashMap<String,HashSet<String>> contextCache = new HashMap<String,HashSet<String>>();
 		
-		// check common misspells
-		String joinTokens = joinTokens(" ",tokens);
+		// check title common misspells via redirects 
+		String joinTokens = joinTokens(" ",tokens);		
+		String redirectTarget = followRedirect(joinTokens);
+		if(redirectTarget != null){
+			EditDistance ed = new EditDistance(joinTokens);
+			if(ed.getDistance(redirectTarget) <= 2 && betterRank(titleRank(redirectTarget),firstRank)){
+				HashMap<Integer,String> changes = extractTitleChanges(joinTokens,redirectTarget,tokens);
+				if(changes != null){
+					SuggestQuery sq = makeSuggestedQuery(tokens,changes,searchterm,filters,new HashSet<Integer>());
+					logRequest(sq.getSearchterm(),"titles (via redirect)",start);
+					return sq;
+				}
+			}
+		}
+		// title misspells via title suggestions
 		ArrayList<SuggestResult> titleRes = new ArrayList<SuggestResult>();
 		if(joinTokens.length() > 7)
 			titleRes = suggestTitles(joinTokens,1,POOL_TITLE,4);
 		if(titleRes.size()>0 && titleRes.get(0).dist<2){
-			if(titleRes.get(0).dist==0){
+			SuggestResult r = titleRes.get(0);
+			if(r.dist==0){
 				logRequest(searchterm,"CORRECT (exact title match)",start);
 				return new SuggestQuery(searchterm,new ArrayList<Integer>());
 			}
-			HashMap<Integer,String> changes = extractTitleChanges(joinTokens,titleRes.get(0).word,tokens);
-			if(changes != null){
-				SuggestQuery sq = makeSuggestedQuery(tokens,changes,searchterm,filters,changes.keySet());
-				logRequest(sq.getSearchterm(),"titles (misspell)",start);
-				return sq;
+			if(betterRank(r.frequency,firstRank)){
+				HashMap<Integer,String> changes = extractTitleChanges(joinTokens,r.word,tokens);
+				if(changes != null){
+					SuggestQuery sq = makeSuggestedQuery(tokens,changes,searchterm,filters,changes.keySet());
+					logRequest(sq.getSearchterm(),"titles (misspell)",start);
+					return sq;
+				}
+			}
+		}
+
+		ArrayList<SuggestResult> singleWordSug = null;
+		
+		// single word misspells
+		if(tokens.size() == 1){
+			String w = tokens.get(0).termText();
+			singleWordSug = suggestWords(w,w,POOL,POOL);
+			if(singleWordSug.size() > 0){
+				SuggestResult r = singleWordSug.get(0);
+				if(r.dist == 0){
+					logRequest(searchterm,"CORRECT (by single word index)",start);
+					return new SuggestQuery(searchterm,new ArrayList<Integer>());
+				} else if(r.dist == 1 && betterRank(r.frequency,firstRank)){
+					HashMap<Integer,String> proposedChanges = new HashMap<Integer,String>();
+					proposedChanges.put(0,r.word);
+					SuggestQuery sq = makeSuggestedQuery(tokens,proposedChanges,searchterm,filters,new HashSet<Integer>());
+					logRequest(sq.getSearchterm(),"single word common misspell",start);
+					return sq;
+				}
 			}
 		}
 		
@@ -193,12 +242,12 @@ public class Suggest {
 			return new SuggestQuery(searchterm,new ArrayList<Integer>());
 		}	
 		
-		// word suggestions
-		ArrayList<ArrayList<SuggestResult>> wordSug = new ArrayList<ArrayList<SuggestResult>>();
 		// indexes of words in found during highlighting in phrases
 		HashSet<Integer> inPhrases = new HashSet<Integer>();
 		// words that might spellcheck to stop words
 		ArrayList<SuggestResult> possibleStopWords = new ArrayList<SuggestResult>();
+		// word suggestions
+		ArrayList<ArrayList<SuggestResult>> wordSug = new ArrayList<ArrayList<SuggestResult>>();
 		
 		// suggest words, splits, joins
 		for(int i=0;i<tokens.size();i++){
@@ -225,11 +274,11 @@ public class Suggest {
 			}
 				
 			// suggest word
-			ArrayList<SuggestResult> sug = suggestWords(w,POOL);
+			ArrayList<SuggestResult> sug = (tokens.size() == 1)? singleWordSug : suggestWords(w,w,POOL,POOL);
 			if(sug.size() > 0){
 				wordSug.add(sug);
 				SuggestResult maybeStopWord = null;
-				// find the result where the wors is changed to stopword
+				// find the result where the word is changed to stopword
 				for(SuggestResult r : sug){
 					if(stopWords.contains(r.getWord())){
 						maybeStopWord = r;
@@ -333,6 +382,7 @@ public class Suggest {
 
 						}
 						//log.info("Checking "+phrase);
+						//boolean inContext = inContext(s1.word,allWordsCol,w2,s2.word,contextCache,allWords) || inContext(s2.word,allWordsCol,w1,s1.word,contextCache,allWords);
 						boolean inContext = inContext(s1.word,s2.word,contextCache,allWords) || inContext(s2.word,s1.word,contextCache,allWords); 
 						if(freq > 0 || inContext){
 							// number of characters added/substracted
@@ -363,7 +413,8 @@ public class Suggest {
 							}*/ else
 								accept = false;
 							
-							if(accept){
+							// for incontext: no all change or all preserve
+							if(accept && !(c.freq==0 && (c.substitutes.size()==0 || (c.substitutes.size()==2 && good1 && good2)))){
 								if(mindist == -1)
 									mindist = dist + 1;
 								if(!forTitlesOnly)
@@ -377,7 +428,7 @@ public class Suggest {
 		}
 		// try to construct a valid title by spell-checking all words
 		if(suggestionsTitle.size() > 0 && tokens.size() > 1){
-			Object[] ret = calculateChanges(suggestionsTitle,searchterm.length()/2);
+			Object[] ret = calculateChanges(suggestionsTitle,searchterm.length()/2,tokens,null,null);
 			HashMap<Integer,String> changes = (HashMap<Integer,String>) ret[0];
 			// construct title
 			StringBuilder proposedTitle = new StringBuilder();
@@ -410,7 +461,7 @@ public class Suggest {
 		int distance = 0;
 		if(suggestions.size() > 0){
 			// found some suggestions
-			Object[] ret = calculateChanges(suggestions,searchterm.length()/2);
+			Object[] ret = calculateChanges(suggestions,searchterm.length()/2,tokens,contextCache,allWords);
 			proposedChanges = (HashMap<Integer,String>) ret[0];
 			preserveTokens = (HashMap<Integer,String>) ret[1];
 			changeCause = (HashMap<Integer,Change>) ret[2];
@@ -443,11 +494,11 @@ public class Suggest {
 				SuggestResult tr = titleRes.get(0);
 				HashMap<Integer,String> changes = extractTitleChanges(joinTokens,tr.word,tokens);
 				if(changes != null){
-					if(tr.dist <= distance){
+					if(tr.dist <= distance && (betterRank(tr.frequency,firstRank) || proposedChanges.equals(changes))){
 						// we found a much better suggestion ! 
 						proposedChanges = changes;
 						alwaysReplace.addAll(proposedChanges.keySet());
-						using = "titles";
+						using = "titles";						
 					} else{
 						// resolve conflicts
 						for(Entry<Integer,String> e : changes.entrySet()){
@@ -476,9 +527,35 @@ public class Suggest {
 			}
 		}
 		
+		// see if both searchterm and proposed query all redirect to same article
+		if(redirectTarget != null){
+			String prop = followRedirect(joinTokens(" ",tokens,proposedChanges));
+			if(prop != null && prop.equals(redirectTarget)){
+				logRequest(searchterm,"CORRECT (spellcheck to redirect to same article)",start);
+				return new SuggestQuery(searchterm,new ArrayList<Integer>());
+			}			
+		}
+		
 		SuggestQuery sq = makeSuggestedQuery(tokens,proposedChanges,searchterm,filters,alwaysReplace);
 		logRequest(sq.getSearchterm(),using,start);
 		return sq;
+	}
+	
+	/** compare if first rank is higher */
+	final private boolean betterRank(int rank, int topRank){
+		System.out.println("betterRank("+rank+","+topRank+")");
+		return rank > topRank + noise(topRank); // inc. noise - actual rank when searching can be higher than at index time 
+	}
+	
+	final private int noise(int rank){
+		if(rank < 20)
+			return 2;
+		if(rank < 100)
+			return 5;
+		if(rank < 1000)
+			return 20;
+		else
+			return 50;
 	}
 	
 	private boolean inContext(String context, String w, HashMap<String,HashSet<String>> contextCache, LookupSet allWords) throws IOException{
@@ -488,6 +565,21 @@ public class Suggest {
 			contextCache.put(context,set);
 		}
 		return set.contains(w);
+	}
+	
+	private boolean inContext(String context, HashSet<String> words, HashMap<String,HashSet<String>> contextCache, LookupSet allWords) throws IOException{
+		HashSet<String> set = contextCache.get(context);
+		if(set == null){
+			set = getContext(context,allWords);
+			contextCache.put(context,set);
+		}
+		if(set == null || set.size()==0)
+			return false;		
+		for(String w : words){
+			if(!stopWords.contains(w) && !w.equals(context) && !set.contains(w))
+				return false;				
+		}
+		return true;
 	}
 	
 	private HashSet<String> getContext(String w, LookupSet allWords) throws IOException{
@@ -501,12 +593,37 @@ public class Suggest {
 	
 	/** Return true if word exists in the index */
 	private boolean wordExists(String w) throws IOException{
-		return reader.docFreq(new Term("word",w)) != 0;
+		Boolean b = wordExistCache.get(w);
+		if(b == null){
+			b = reader.docFreq(new Term("word",w)) != 0;
+			wordExistCache.put(w,b);
+		}
+		return b;
 	}
 	
 	/** Return true if (striped) title exists in the index */
 	private boolean titleExists(String w) throws IOException{
 		return reader.docFreq(new Term("title",w)) != 0;
+	}
+	
+	/** Return title rank  */
+	private int titleRank(String w) throws IOException{
+		TermDocs td = reader.termDocs(new Term("title",w));
+		if(td.next()){
+			String s = reader.document(td.doc()).get("rank");
+			if(s != null)
+				return Integer.parseInt(s);
+		}
+		return 0;
+	}
+	
+	/** return redirect target if w is a redirect, null otherwise */
+	private String followRedirect(String w) throws IOException{
+		TermDocs td = reader.termDocs(new Term("title",w));
+		if(td.next()){
+			return reader.document(td.doc()).get("redirect");
+		}
+		return null;
 	}
 	
 	/** Add a correct word to word suggestions */
@@ -558,7 +675,7 @@ public class Suggest {
 	
 	
 	/** Extract a map: token_index -> new string for changed titles */
-	public HashMap<Integer,String> extractTitleChanges(String joined, String corrected, ArrayList<Token> tokens){
+	final public HashMap<Integer,String> extractTitleChanges(String joined, String corrected, ArrayList<Token> tokens){
 		HashMap<Integer,String> map = new HashMap<Integer,String>();
 		// based on edit distance, examine which spaces are eaten up, and which created, so that
 		// we can correctly show differences between new and old strings
@@ -594,12 +711,18 @@ public class Suggest {
 					return null; // no large changes
 			}
 		}
+		// cleanup unchanged
+		HashMap<Integer,String> changes = new HashMap<Integer,String>();
+		for(Entry<Integer,String> e : map.entrySet()){
+			if(!tokens.get(e.getKey()).termText().equals(e.getValue()))
+				changes.put(e.getKey(),e.getValue());
+		}
 		
-		return map;
+		return changes;
 	}
 	
 	/** Accept change in the title iff we would accept it as a word change */
-	protected boolean acceptChange(String orig, String corr){
+	final protected boolean acceptChange(String orig, String corr){
 		if(orig.equals("") || corr.equals(""))
 			return false;
 		Metric metric = new Metric(orig);
@@ -608,11 +731,11 @@ public class Suggest {
 		String meta2 = dmeta.doubleMetaphone(corr,true);
 		SuggestResult r = new SuggestResult(corr, // new NamespaceFreq(d.get("freq")).getFrequency(nsf),
 				0, metric, meta1, meta2);			
-		return acceptWord(r,metric);			
+		return acceptWord(r,metric);
 	}
 	
 	/** Transverse the cost matrix and extract mapping of old vs new spaces */
-	protected static void extractSpaceMap(int[][] d, int i, int j, HashMap<Integer,Integer> spaceMap, String str1, String str2) {
+	final protected void extractSpaceMap(int[][] d, int i, int j, HashMap<Integer,Integer> spaceMap, String str1, String str2) {
 		int cost = d[i][j];
 		if(i == 0 || j == 0)
 			return;				
@@ -629,17 +752,21 @@ public class Suggest {
 		if(str1.charAt(i-1)==' ' && str2.charAt(j-1)==' ')
 			spaceMap.put(i-1,j-1);
 	}
-
+	
 	/** Glue tokens together */
 	protected String joinTokens(String glue, ArrayList<Token> tokens) {
-		boolean first = true;
+		return joinTokens(glue,tokens,null);
+	}
+	protected String joinTokens(String glue, ArrayList<Token> tokens, HashMap<Integer,String> changes) {
 		StringBuilder sb = new StringBuilder();
-		for(Token t : tokens){
-			if(!first)
+		for(int i=0;i<tokens.size();i++){
+			Token t = tokens.get(i);
+			if(i>0)
 				sb.append(glue);
+			if(changes!=null && changes.containsKey(i))
+				sb.append(changes.get(i));
 			else
-				first = false;
-			sb.append(t.termText());
+				sb.append(t.termText());
 		}
 		return sb.toString();
 	}
@@ -673,63 +800,152 @@ public class Suggest {
 	 * that changes the query least.
 	 * 
 	 * @return accept, preserve, distance, summed_distance
+	 * @throws IOException 
 	 */ 
-	protected Object[] calculateChanges(ArrayList<Change> changes, int maxDist){
-		// sort suggested changes by relevance
-		Collections.sort(changes,new Comparator<Change>() {
-			public int compare(Change o1, Change o2){					
-				if(o1.dist == o2.dist){
-					if(o1.type != o2.type)
-						return o2.freq - o1.freq;
-					else if(o2.type == Change.Type.PHRASE && o2.type != o1.type) // favour phrase suggestions
+	protected Object[] calculateChanges(ArrayList<Change> changesImmutable, int maxDist, ArrayList<Token> tokens, HashMap<String,HashSet<String>> contextCache, LookupSet allWords) throws IOException{
+		ArrayList<Change> changes = new ArrayList<Change>();
+		changes.addAll(changesImmutable);
+		recalculate: for(;;){
+			// sort suggested changes by relevance
+			Collections.sort(changes,new Comparator<Change>() {
+				public int compare(Change o1, Change o2){					
+					if(o1.dist == o2.dist){
+						if(o1.type != o2.type)
+							return o2.freq - o1.freq;
+						else if(o2.type == Change.Type.PHRASE && o2.type != o1.type) // favour phrase suggestions
+							return 1;
+						else if(o1.type == Change.Type.PHRASE && o2.type != o1.type)
+							return -1;					
+						else if(o2.type == Change.Type.WORD && o2.type != o1.type) // disfavour word suggestions
+							return -1;					
+						else if(o1.type == Change.Type.WORD && o2.type != o1.type) 
+							return 1;
+						else
+							return o2.freq - o1.freq;
+					} else if(o1.dist - o2.dist == -1 && o1.freq * 100 < o2.freq && o1.freq != 0){
 						return 1;
-					else if(o1.type == Change.Type.PHRASE && o2.type != o1.type)
-						return -1;					
-					else if(o2.type == Change.Type.WORD && o2.type != o1.type) // disfavour word suggestions
-						return -1;					
-					else if(o1.type == Change.Type.WORD && o2.type != o1.type) 
-						return 1;
-					else
-						return o2.freq - o1.freq;
-				} else if(o1.dist - o2.dist == -1 && o1.freq * 100 < o2.freq && o1.freq != 0){
-					return 1;
-				} else if(o1.dist - o2.dist == 1 && o2.freq * 100 < o1.freq && o2.freq != 0){
-					return -1;
-				} else 
-					return o1.dist - o2.dist;					
-			}
-		});
-		
-		log.info("Sorted changes: "+changes);
-		
-		HashMap<Integer,String> accept = new HashMap<Integer,String>();
-		HashMap<Integer,String> preserve = new HashMap<Integer,String>();
-		HashMap<Integer,Change> changeObjects = new HashMap<Integer,Change>();
-		int dist = 0;
-		for(Change c : changes){
-			boolean acceptChange = true;
-			for(Entry<Integer,String> e : c.substitutes.entrySet()){
-				String acceptedTerm = accept.get(e.getKey());
-				String preservedTerm = preserve.get(e.getKey());
-				if((acceptedTerm != null && !acceptedTerm.equals(e.getValue()))
-					|| (preservedTerm != null && !preservedTerm.equals(e.getValue()))){
-					acceptChange = false; // conflicting suggestions
-					break;
+					} else if(o1.dist - o2.dist == 1 && o2.freq * 100 < o1.freq && o2.freq != 0){
+						return -1;
+					} else 
+						return o1.dist - o2.dist;					
+				}
+			});
+
+			log.info("Sorted changes: "+changes);
+
+			HashMap<Integer,String> accept = new HashMap<Integer,String>();
+			HashMap<Integer,String> preserve = new HashMap<Integer,String>();
+			HashMap<Integer,Change> changeObjects = new HashMap<Integer,Change>();
+			HashSet<Integer> processedChange = new HashSet<Integer>(); // indexes in changes processed in stages
+			int dist = 0;
+			// first pass: preserve good words
+			for(int i=0;i<changes.size();i++){
+				Change c = changes.get(i);
+				if(c.substitutes.size() == 0){
+					for(Entry<Integer,String> e : c.preserves.entrySet()){
+						preserve.put(e.getKey(),e.getValue());				
+						changeObjects.put(e.getKey(),c);
+					}
+					processedChange.add(i);
 				}
 			}
-			if(acceptChange && (dist + c.dist < maxDist)){
+			// second pass: change words that are not valid words
+			for(int i=0;i<changes.size();i++){
+				if(processedChange.contains(i))
+					continue;
+				Change c = changes.get(i);
+				if(c.substitutes.size() > 0){
+					boolean changesBadWord = false;
+					for(Integer inx : c.substitutes.keySet())
+						if(!wordExists(tokens.get(inx).termText())){
+							changesBadWord = true;
+							break;
+						}
+					if(changesBadWord){
+						log.info("Considering "+c);
+						boolean acceptChange = true;
+						for(Entry<Integer,String> e : c.substitutes.entrySet()){
+							String acceptedTerm = accept.get(e.getKey());
+							String preservedTerm = preserve.get(e.getKey());
+							if((acceptedTerm != null && !acceptedTerm.equals(e.getValue()))
+									|| (preservedTerm != null && !preservedTerm.equals(e.getValue()))){
+								acceptChange = false; // conflicting suggestions
+								break;
+							}
+						}
+						if(acceptChange && (dist + c.dist < maxDist)){
+							log.info("Applying "+c);
+							processedChange.add(i);
+							for(Entry<Integer,String> e : c.substitutes.entrySet()){
+								accept.put(e.getKey(),e.getValue());
+								changeObjects.put(e.getKey(),c);
+							}
+							for(Entry<Integer,String> e : c.preserves.entrySet()){
+								preserve.put(e.getKey(),e.getValue());				
+								changeObjects.put(e.getKey(),c);
+							}
+							dist += c.dist;
+						}
+					}
+				}
+			}
+			// third pass: valid words changed by phrases
+			for(int i=0;i<changes.size();i++){
+				if(processedChange.contains(i))
+					continue;
+				Change c = changes.get(i);
+				boolean acceptChange = true;
 				for(Entry<Integer,String> e : c.substitutes.entrySet()){
-					accept.put(e.getKey(),e.getValue());
-					changeObjects.put(e.getKey(),c);
+					String acceptedTerm = accept.get(e.getKey());
+					String preservedTerm = preserve.get(e.getKey());
+					if((acceptedTerm != null && !acceptedTerm.equals(e.getValue()))
+							|| (preservedTerm != null && !preservedTerm.equals(e.getValue()))){
+						acceptChange = false; // conflicting suggestions
+						break;
+					}
 				}
-				for(Entry<Integer,String> e : c.preserves.entrySet()){
-					preserve.put(e.getKey(),e.getValue());				
-					changeObjects.put(e.getKey(),c);
+				if(acceptChange && (dist + c.dist < maxDist)){
+					log.info("Applying "+c);
+					processedChange.add(i);
+					for(Entry<Integer,String> e : c.substitutes.entrySet()){
+						accept.put(e.getKey(),e.getValue());
+						changeObjects.put(e.getKey(),c);
+					}
+					for(Entry<Integer,String> e : c.preserves.entrySet()){
+						preserve.put(e.getKey(),e.getValue());				
+						changeObjects.put(e.getKey(),c);
+					}
+					dist += c.dist;
 				}
-				dist += c.dist;
 			}
+			// check changes made on context - all words need to be in context
+			if(contextCache!=null && allWords != null){
+				HashSet<String> words = new HashSet<String>();
+				words.addAll(accept.values()); 
+				words.addAll(preserve.values());
+				for(int i=0;i<tokens.size();i++)
+					if(!accept.containsKey(i) && !preserve.containsKey(i))
+						words.add(tokens.get(i).termText());
+				for(Entry<Integer,String> e : accept.entrySet()){
+					Change c = changeObjects.get(e.getKey());
+					if(c.freq == 0){
+						boolean contextMatch = false;
+						for(String w : c.preserves.values())
+							if(inContext(w,words,contextCache,allWords))
+								contextMatch = true;
+						for(String w : c.substitutes.values())
+							if(inContext(w,words,contextCache,allWords))
+								contextMatch = true;
+						if(!contextMatch){ // the substituon doesn't match the whole context of query
+							changes.remove(c);
+							continue recalculate;
+						}
+					}
+				}
+			}
+
+			return new Object[] {accept, preserve, changeObjects, dist};
 		}
-		return new Object[] {accept, preserve, changeObjects, dist};
 	}
 	
 	public ArrayList<SuggestResult> suggestWords(String word, int num){
@@ -818,13 +1034,16 @@ public class Suggest {
 
 	
 	/** Check if word can be accepted as suggestion, i.e. if it's not too different from typed-in word */
-	protected boolean acceptWord(SuggestResult r, Metric m){
+	final protected boolean acceptWord(SuggestResult r, Metric m){
 		// for very short words, don't check anything, rely of frequency only
 		if(m.word.length() == 2 && r.word.length() == 2)
 			return true;
 		// check metaphones: don't add if the pronunciation is something completely unrelated
-		else if((r.distMetaphone < m.meta1.length() || r.distMetaphone2 < m.meta2.length()) && (r.distMetaphone<=3 || r.distMetaphone2<=3)
-				&& (r.dist <= m.word.length()/2 || r.dist <= r.word.length()/2) && Math.abs(m.word.length()-r.word.length()) <= 3
+		else if((r.distMetaphone < m.meta1.length() || r.distMetaphone2 < m.meta2.length() 
+				   || (r.meta1!=null && m.meta1!=null && (r.meta1.contains(m.meta1) || m.meta1.contains(r.meta1)))) 
+				&& (r.distMetaphone<=3 || r.distMetaphone2<=3)
+				&& (r.dist <= m.word.length()/2 || r.dist <= r.word.length()/2) 
+				&& Math.abs(m.word.length()-r.word.length()) <= 3
 				&& r.dist<m.word.length() && r.dist<r.word.length())
 			return true;
 		else

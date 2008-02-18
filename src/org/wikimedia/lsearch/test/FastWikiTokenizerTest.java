@@ -24,7 +24,7 @@ import org.wikimedia.lsearch.index.WikiIndexModifier;
 
 public class FastWikiTokenizerTest {		
 		public static void displayTokensForParser(String text) {
-			FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(text,IndexId.get("enwiki"),new TokenizerOptions.Highlight());
+			FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(text,IndexId.get("enwiki"),new TokenizerOptions(false));
 			Token[] tokens = parser.parse().toArray(new Token[] {});
 			for (int i = 0; i < tokens.length; i++) {
 				Token token = tokens[i];
@@ -71,6 +71,8 @@ public class FastWikiTokenizerTest {
 		public static void main(String args[]) throws Exception{
 			Configuration.open();
 			String text = "(ant) and some. it's stupid it's something and 5\"6' or more, links abacus";
+			showTokens(text);
+			text = "<!--uncomment if needed ''For the current|defunct federal|provincial electoral district, see [[Burnaby—Richmond (electoral district)]]'' --->\n'''Burnaby—Richmond''' (also known as '''Burnaby—Richmond—Delta''') was a federal [[electoral district (Canada)|electoral district]] in [[British Columbia]], [[Canada]], that was  represented in the [[Canadian House of Commons]] from 1949 to 1979.\nThis [[Riding (division)|riding]] was created as \"Burnaby—Richmond\" in 1947 from parts of [[New Westminster (electoral district)|New Westminster]] and [[Vancouver North]] ridings.\nThe name of the electoral district was changed in 1970 to \"Burnaby—Richmond—Delta\".\n\nIt was abolished in 1976 when it was redistributed into [[Burnaby (electoral district)|Burnaby]] and [[Richmond—South Delta]] ridings.\n\n==Election results==\n\n{{CanElec1|1949}}\n|-\n{{Canadian elections/Liberals}}\n|GOODE, Tom ||align=right|12,848\n|-\n{{Canadian elections/CCF}}\n|STEEVES, Dorothy Gretchen ||align=right|12,553\n";
 			showTokens(text);
 			text = "; list\n;list2.\n;list3";
 			showTokens(text);

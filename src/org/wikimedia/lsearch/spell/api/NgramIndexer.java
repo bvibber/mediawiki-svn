@@ -24,7 +24,7 @@ public class NgramIndexer {
 	protected IndexWriter writer;
 	protected IndexReader reader;
 	
-	public static enum Type {WORDS, TITLES};
+	public static enum Type {WORDS, TITLES, NS_TITLES};
 	
 	public NgramIndexer(){
 		path = null;
@@ -168,6 +168,17 @@ public class NgramIndexer {
 			if(word.length() < 5)
 				new RuntimeException("title in getMinNgram() too short");
 			return 5;
+		case NS_TITLES:
+			if(word.length() <= 4)
+				return 1;
+			else if(word.length() <= 6)
+				return 2;
+			else if(word.length() <= 8)
+				return 3;
+			else if(word.length() <= 10)
+				return 4;
+			else 
+				return 5;
 		}
 		return 0; // err
 	}
@@ -184,6 +195,15 @@ public class NgramIndexer {
 			if(word.length() < 5)
 				new RuntimeException("title in getMaxNgram() too short");
 			return 5;
+		case NS_TITLES:
+			if(word.length() <= 4)
+				return 2;
+			else if(word.length() <= 6)
+				return 3;
+			else if(word.length() <= 8)
+				return 4;
+			else 
+				return 5;
 		}
 		return 0; // err
 	}

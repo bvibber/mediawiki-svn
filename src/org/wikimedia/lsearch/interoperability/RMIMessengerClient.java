@@ -26,6 +26,7 @@ import org.wikimedia.lsearch.highlight.Highlight;
 import org.wikimedia.lsearch.highlight.HighlightResult;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.search.HighlightPack;
+import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
 import org.wikimedia.lsearch.search.SearcherCache;
 import org.wikimedia.lsearch.search.SuffixFilterWrapper;
@@ -246,7 +247,7 @@ public class RMIMessengerClient {
 			return r.highlight(hits,dbrole,terms,df,maxDoc,words,exactCase);
 		} catch(Exception e){
 			e.printStackTrace();
-			return new Highlight.ResultSet(new HashMap<String,HighlightResult>(),new HashSet<String>(),new HashSet<String>(),false);
+			return new Highlight.ResultSet(new HashMap<String,HighlightResult>(),new HashSet<String>(),new HashSet<String>(),false,0);
 		}		
 	}
 	
@@ -266,10 +267,10 @@ public class RMIMessengerClient {
 		}
 	}
 	
-	public SuggestQuery suggest(String host, String dbrole, String searchterm, ArrayList<Token> tokens, HashSet<String> phrases, HashSet<String> foundInContext){
+	public SuggestQuery suggest(String host, String dbrole, String searchterm, ArrayList<Token> tokens, HashSet<String> phrases, HashSet<String> foundInContext, int firstRank, NamespaceFilter nsf){
 		try{
 			RMIMessenger r = messengerFromCache(host);
-			return r.suggest(dbrole,searchterm,tokens,phrases,foundInContext);
+			return r.suggest(dbrole,searchterm,tokens,phrases,foundInContext,firstRank,nsf);
 		} catch(Exception e){
 			e.printStackTrace();
 			if(cache == null)

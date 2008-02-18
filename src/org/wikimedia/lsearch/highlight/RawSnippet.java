@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.lucene.analysis.Token;
 import org.wikimedia.lsearch.analyzers.Alttitles;
 import org.wikimedia.lsearch.analyzers.ExtToken;
 import org.wikimedia.lsearch.analyzers.ExtToken.Position;
@@ -30,6 +31,9 @@ public class RawSnippet {
 	protected HashSet<String> found;
 	protected int sequenceNum;
 	protected Set<String> stopWords;
+
+	// for custom scoring
+	protected int textLength = 0;
 	
 	/** number of chars in [start,end) in tokens */
 	protected int charLen(int start, int end){
@@ -284,10 +288,6 @@ public class RawSnippet {
 	final private boolean isolatedStopWords(String text, int index) {
 		if(stopWords == null || stopWords.size()==0 || !stopWords.contains(text))
 			return false;
-		if(text.equals("they")){
-			int b = 0;
-			b++;
-		}
 		// look before the word
 		for(int prev=index-1;prev>=0;prev--){
 			ExtToken t = tokens.get(prev);
@@ -345,6 +345,16 @@ public class RawSnippet {
 		this.cur = f;
 		this.sequenceNum = f.sequenceNum;
 		this.stopWords = stopWords;
+		this.textLength = noAliasLength();
+	}
+	
+	protected int noAliasLength(){
+		int len = 0;
+		for(ExtToken t : tokens){
+			if(t.getType() == ExtToken.Type.TEXT && t.getPositionIncrement() != 0)
+				len++;
+		}
+		return len;
 	}
 
 	public int getBestEnd() {

@@ -457,7 +457,7 @@ public class SearchEngine {
 				hits = searcher.search(q,nsfw,offset+limit);
 				res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
 				if(!searchOnly){
-					highlight(iid,q,parser.getWords(),searcher,res,exactCase);
+					highlight(iid,q,parser.getWords(),searcher,parser.getHighlightTerms(),res,exactCase);
 					fetchTitles(res,searchterm,nsfw,iid,parser,wildcards,offset,0,iwlimit,explain);
 					suggest(iid,searchterm,parser,res,offset,nsfw);
 				}
@@ -492,21 +492,23 @@ public class SearchEngine {
 	/** "Did you mean.." engine, use highlight results (if any) to refine suggestions, call after all other results are already obtained */
 	protected void suggest(IndexId iid, String searchterm, WikiQueryParser parser, SearchResults res, int offset, NamespaceFilterWrapper nsfw) {
 		if(offset == 0 && iid.hasSpell()){
-			if(res.isFoundAllInTitle())
-				return;
-			if(nsfw != null){
+			//if(res.isFoundAllInTitle())
+			//	return;
+			/* if(nsfw != null){
 				BitSet def = global.getDefaultNamespace(iid).getIncluded(); // spellcheck is on these namespaces
 				BitSet targ = nsfw.getFilter().getIncluded();
-				if(!def.intersects(targ))
+				if(!def.intersects(targ) && !nsfw.getFilter().isAll())
 					return; // trying to spellcheck in namespaces other than built for
-			}
+			} */
+			if(nsfw == null)
+				return; // query on many overlapping namespaces, won't try to spellcheck to not mess things up
 			// suggest !
 			res.setSuggest(null);
 			ArrayList<Token> tokens = parser.tokenizeBareText(searchterm);			
 			RMIMessengerClient messenger = new RMIMessengerClient();
 			// find host 
 			String host = cache.getRandomHost(iid.getSpell());
-			SuggestQuery sq = messenger.suggest(host,iid.toString(),searchterm,tokens,res.getPhrases(),res.getFoundInContext());
+			SuggestQuery sq = messenger.suggest(host,iid.toString(),searchterm,tokens,res.getPhrases(),res.getFoundInContext(),res.getFirstHitRank(),nsfw.getFilter());
 			res.setSuggest(sq);			
 		}
 	}
@@ -593,9 +595,12 @@ public class SearchEngine {
 		SearchResults r = makeTitlesSearchResults(searcher,hits,iwoffset,iwlimit,main,searchterm,q,searchStart,explain);
 		highlightTitles(main,q,words,searcher,r);
 		
-		if(r.isSuccess())
-			res.setTitles(r.getResults());				
-		else
+		if(r.isSuccess()){
+			res.setTitles(r.getResults());
+			if(r.isFoundAllInTitle())
+				res.setFoundAllInTitle(true);
+			//res.addToFirstHitRank(r.getNumHits());
+		} else
 			log.error("Error getting grouped titles search results: "+r.getErrorMsg());
 	}
 	
@@ -686,9 +691,7 @@ public class SearchEngine {
 	}
 	
 	/** Highlight search results, and set the property in ResultSet */
-	protected void highlight(IndexId iid, Query q, ArrayList<String> words, WikiSearcher searcher, SearchResults res, boolean exactCase) throws IOException{
-		FilterFactory filters = new FilterFactory(iid);
-		Term[] terms = filters.hasStemmer()? getTerms(q,"stemtitle") : getTerms(q,"title");
+	protected void highlight(IndexId iid, Query q, ArrayList<String> words, WikiSearcher searcher, Term[] terms, SearchResults res, boolean exactCase) throws IOException{
 		int[] df = searcher.docFreqs(terms); 
 		int maxDoc = searcher.maxDoc();
 		highlight(iid,q,words,terms,df,maxDoc,res,exactCase,null);
@@ -756,9 +759,10 @@ public class SearchEngine {
 				res.getPhrases().addAll(rs.phrases);
 				res.getFoundInContext().addAll(rs.foundInContext);
 				if(rs.foundAllInTitle && words.size()>1)
-					res.setFoundAllInTitle(true);
+					res.setFoundAllInTitle(true);				
 			}
 		}
+		res.addToFirstHitRank(res.getNumHits());
 		// set highlight property
 		for(Entry<String,HighlightResult> e : results.entrySet()){
 			keys.get(e.getKey()).setHighlight(e.getValue());

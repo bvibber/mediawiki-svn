@@ -65,7 +65,7 @@ public class AggregateAnalyzer extends Analyzer {
 		
 		for(int i=0;i<items.size();i++){
 			Aggregate ag = items.get(i);
-			buf[i*6] = (byte)(ag.noAliasLenth() & 0xff);
+			buf[i*6] = (byte)(ag.noAliasLength() & 0xff);
 			buf[i*6+1] = (byte)(ag.getNoStopWordsLength() & 0xff);
 			int boost = Float.floatToIntBits(ag.boost()); 
 	      buf[i*6+2] = (byte)((boost >>> 24) & 0xff);

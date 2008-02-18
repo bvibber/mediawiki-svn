@@ -19,9 +19,14 @@ import org.wikimedia.lsearch.search.AggregateMetaField.AggregateMetaFieldSource;
  */
 public class AggregateInfoImpl implements AggregateInfo, Serializable  {
 	protected transient AggregateMetaFieldSource src = null;
-	
+	protected boolean hasRankingData = false;
+	protected String field = null;
+		
 	/** Call this while (local) scorer is constructed to init cached meta info */
 	public void init(IndexReader reader, String field) throws IOException {
+		this.field = field;
+		if(field.startsWith("alttitle"))
+			hasRankingData = true;
 		src = AggregateMetaField.getCachedSource(reader,field);
 	}
 
@@ -39,6 +44,26 @@ public class AggregateInfoImpl implements AggregateInfo, Serializable  {
 
 	public int lengthNoStopWords(int docid, int pos) throws IOException {
 		return src.getLengthNoStopWords(docid,getSlot(pos));
+	}
+	
+	public float rank(int docid) throws IOException {
+		if(hasRankingData)
+			return src.getRank(docid);
+		else 
+			throw new RuntimeException("Trying to fetch ranking data on field "+field+" where its not available.");
+	}
+
+	public boolean hasRankingData() {
+		return hasRankingData;
+	}
+	
+	/** Provides ranking information */
+	public static class RankInfo extends AggregateInfoImpl {
+		@Override
+		public void init(IndexReader reader, String field) throws IOException {
+			super.init(reader, "alttitle");
+		}
+		
 	}
 
 }
