@@ -225,6 +225,9 @@ switch ($args[0]) {
 	case 'mvd_error_check':
 		
 	break;
+	case 'rm_congress_persons':
+		do_rm_congress_persons();
+	break;
 	default :
 		do_stream_insert('stream', $args[0]);
 	break;

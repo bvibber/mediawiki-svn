@@ -587,6 +587,18 @@ function mv_semantic_stream_desc(& $mvTitle, & $stream) {
 	
 	return $out;
 }
+function do_rm_congress_persons(){
+	$dbr =& wfGetDB(DB_SLAVE);		
+	$result = $dbr->query( " SELECT *
+	FROM `categorylinks`
+	WHERE `cl_to` LIKE 'Congress_Person' ");
+	while($row = $dbr->fetchObject($result)){		
+		$pTitle = Title::makeTitle(NS_MAIN, $row->cl_sortkey);
+		$pArticle = new Article($pTitle);
+		$pArticle->doDeleteArticle( 'removed reason' );
+		print "removed title: " .$pTitle->getText() . "\n";
+	}
+}
 function mv_proccess_attr($table, $stream_id) {
 	global $start_time, $end_time;
 	$dbr = wfGetDB(DB_SLAVE);
