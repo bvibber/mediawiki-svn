@@ -21,15 +21,18 @@
 # The translation comes from another wiki 
 # that can be accessed through interlanguage links
 
- 
 $wgHooks['OutputPageBeforeHTML'][] = 'addMatchedText' ;
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'DoubleWiki',
 	//'author' => '',
 	//'url' => '',
-	'description' => 'Displays an article and its translation from another wiki on two columns of the same page',
+	'version'        => '2008-02-18',
+	'description'    => 'Displays a page and its translation from another wiki on two columns of the same page',
+	'descriptionmsg' => 'doublewiki-desc',
 );
+
+$wgExtensionMessagesFiles['DoubleWiki'] = dirname(__FILE__)  . '/DoubleWiki.i18n.php';
 
 function addMatchedText ( &$parserOutput , &$text ) { 
 
@@ -48,7 +51,7 @@ function addMatchedText ( &$parserOutput , &$text ) {
 			$myURL = $wgTitle -> getLocalURL() ;
 			$languageName = $wgContLang->getLanguageName( $nt->getInterwiki() );
 			$myLanguage = $wgLang->getLanguageName( $wgContLanguageCode );
-			
+
 			$sep = ( in_string( '?', $url ) ) ? '&' : '?'; 
 			$translation = wfGetHttp( $url.$sep.'action=render' );
 			if ( $translation !== null ) {
@@ -128,7 +131,7 @@ function matchColumns( $left_text, $left_title, $left_url, $right_text, $right_t
 	$right_slices = preg_split( $tag_pattern, $right_text );
 	preg_match_all( $tag_pattern, $left_text,  $left_tags, PREG_PATTERN_ORDER );
 	preg_match_all( $tag_pattern, $right_text, $right_tags, PREG_PATTERN_ORDER );
-  
+
 	/**
 	 * Order slices in a two-column array.
 	 * slices that are surrounded by the same tag belong in the same line
@@ -150,9 +153,9 @@ function matchColumns( $left_text, $left_title, $left_url, $right_text, $right_t
 		if ( $i==$max_i - 1 )  { 
 			for ( $k=$j ; $k < $max_k  ; $k++ ) $right_chunk .= $right_slices[$k];
 			$found = true;
-		} 
+		}
 		else for ( $k=$j ; $k < $max_k  ; $k++ ) {
-			
+
 			#look for requested tag in the text
 			$a = strpos ( $right_slices[$k], $left_tags[1][$i] );
 			if( $a ) {
@@ -172,7 +175,7 @@ function matchColumns( $left_text, $left_title, $left_url, $right_text, $right_t
 				$j = $k;
 				break;
 			}
-			
+
 			$right_chunk .= $right_slices[$k];
 
 			if( $k < $max_k - 1 ) {
@@ -182,7 +185,6 @@ function matchColumns( $left_text, $left_title, $left_url, $right_text, $right_t
 				    break;
 				}
 			}
-		  
 		}
 		if( $found ) {
 
@@ -330,5 +332,3 @@ function nesting_delta ( $text ) {
 	return array($counter, $opening, $closure);
 
 }
-
-
