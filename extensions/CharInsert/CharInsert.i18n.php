@@ -6,7 +6,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'charinsert-desc' => 'Allows creation of JavaScript box for inserting non-standard characters',
+	'charinsert-desc' => 'Allows creation of JavaScript box for [[MediaWiki:Edittools|inserting non-standard characters]]',
 );
 
 /** Arabic (العربية)
@@ -41,7 +41,7 @@ $messages['cs'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'charinsert-desc' => 'Erlaubt die Erstellung einer JavaScript gesteuerten Box zum Einfügen von Sonderzeichen',
+	'charinsert-desc' => 'Erlaubt die Erstellung einer JavaScript gesteuerten Leiste zum [[MediaWiki:Edittools|Einfügen von Sonderzeichen]]',
 );
 
 /** Lower Sorbian (Dolnoserbski)
