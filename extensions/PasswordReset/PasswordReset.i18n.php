@@ -69,6 +69,7 @@ $messages['bg'] = array(
  */
 $messages['de'] = array(
 	'passwordreset'                    => 'Passwort zurücksetzen',
+	'passwordreset'                    => "Zurücksetzen eines Benutzer-Passwortes - ''passwordreset''-Recht notwendig",
 	'passwordreset-invalidusername'    => 'Ungültiger Benutzername',
 	'passwordreset-emptyusername'      => 'Leerer Benutzername',
 	'passwordreset-nopassmatch'        => 'Passwörter stimmen nicht überein',

@@ -59,18 +59,32 @@ $messages['bg'] = array(
 	'importfreeimages_returntoform'          => "Или щракнете <a href='$1'>тук</a> за да се върнете към резултати от търсенето си",
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
-	'importfreeimages'                => 'Import freier Bilder',
-	'importfreeimages-desc'           => 'Ermöglicht den [[Special:ImportFreeImages|Import freier Bilder]] von [http://www.flickr.com Flickr]',
-	'importfreeimages_description'    => 'Diese Seite erlaubt dir, in Flickr nach Bildern unter einer freien Lizenz zu suchen und diese in dein Wiki zu importieren.',
-	'importfreeimages_noapikey'       => 'Du hast noch keinen Flickr-API-Schlüssel konfiguriert. Bitte beantrage ihn [http://www.flickr.com/services/api/misc.api_keys.html hier] und setze ihn in $wgFlickrAPIKey in ImportFreeImages.php ein.',
-	'importfreeimages_nophotosfound'  => 'Es wurden keine Fotos mit den Suchkriterien „$1“ gefunden.',
-	'importfreeimages_owner'          => 'Autor',
-	'importfreeimages_importthis'     => 'importieren',
-	'importfreeimages_next'           => 'Nächste $1',
-	'importfreeimages_filefromflickr' => '$1 von Benutzer <b>[$2]</b> von flickr. Original URL',
+	'importfreeimages'                       => 'Import freier Bilder',
+	'importfreeimages-desc'                  => 'Ermöglicht den [[Special:ImportFreeImages|Import freier Bilder]] von [http://www.flickr.com Flickr]',
+	'importfreeimages_description'           => 'Diese Seite erlaubt dir, in Flickr nach Bildern unter einer freien Lizenz zu suchen und diese in dein Wiki zu importieren.',
+	'importfreeimages_noapikey'              => 'Du hast noch keinen Flickr-API-Schlüssel konfiguriert. Bitte beantrage ihn [http://www.flickr.com/services/api/misc.api_keys.html hier] und setze ihn in $wgFlickrAPIKey in ImportFreeImages.php ein.',
+	'importfreeimages_nophotosfound'         => 'Es wurden keine Fotos mit den Suchkriterien „$1“ gefunden.',
+	'importfreeimages_invalidurl'            => 'Die URL „$1“ ist kein gültiges Flickr-Bild.',
+	'importfreeimages_owner'                 => 'Autor',
+	'importfreeimages_importthis'            => 'importieren',
+	'importfreeimages_next'                  => 'Nächste $1',
+	'importfreeimages_filefromflickr'        => '$1 von Benutzer <b>[$2]</b> von flickr. Original URL',
 	'importfreeimages_promptuserforfilename' => 'Bitte gebe einen Ziel-Dateinamen ein:',
-	'importfreeimages_returntoform'   => 'Oder klicke <a href=\'$1\'>hier</a>, um zu der Seite mit den Suchergebnissen zurückzukommen.',
+	'importfreeimages_returntoform'          => 'Oder klicke <a href=\'$1\'>hier</a>, um zu der Seite mit den Suchergebnissen zurückzukommen.',
+);
+
+/** German - formal address (Deutsch - förmliche Anrede)
+ * @author Raimond Spekking
+ */
+$messages['de-formal'] = array(
+	'importfreeimages_description'           => 'Diese Seite erlaubt Ihnen, in Flickr nach Bildern unter einer freien Lizenz zu suchen und diese in Ihr Wiki zu importieren.',
+	'importfreeimages_noapikey'              => 'Sie haben noch keinen Flickr-API-Schlüssel konfiguriert. Bitte beantragen Sie ihn [http://www.flickr.com/services/api/misc.api_keys.html hier] und setzen Sie ihn in $wgFlickrAPIKey in ImportFreeImages.php ein.',
+	'importfreeimages_promptuserforfilename' => 'Bitte geben Sie einen Ziel-Dateinamen ein:',
+	'importfreeimages_returntoform'          => 'Oder klicken Sie <a href=\'$1\'>hier</a>, um zu der Seite mit den Suchergebnissen zurückzukommen.',
 );
 
 /** French (Français)

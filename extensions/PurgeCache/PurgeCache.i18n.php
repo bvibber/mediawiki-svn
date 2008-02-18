@@ -44,6 +44,17 @@ $messages['ca'] = array(
 	'purgecache-button'  => 'Purga',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'purgecache'         => 'Cache löschen',
+	'purgecache-desc'    => '[[Special:PurgeCache|Spezialseite]], um die OBJECTCACHE-Tabelle zu löschen',
+	'purgecache-warning' => 'Dies löscht den Cache.',
+	'purgecache-purged'  => 'Der Cache wurde gelöscht.',
+	'purgecache-button'  => 'Löschen',
+);
+
 $messages['fr'] = array(
 	'purgecache'         => 'Purger le cache',
 	'purgecache-desc'    => '[[Special:PurgeCache|Page spéciale]] utilisée pour effacer la table OBJECTCACHE',

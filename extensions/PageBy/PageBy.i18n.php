@@ -44,8 +44,10 @@ $messages['bg'] = array(
 
 /** German (Deutsch)
  * @author Daniel Kinzler
+ * @author Raimond Spekking
  */
 $messages['de'] = array(
+	'pageby-desc'         => 'Zeigt die Autoren innerhalb einer Wikiseite. Syntax: <tt><nowiki><pageby></nowiki></tt>',
 	'pageby-first'        => 'Seite angelegt von $1, $2',
 	'pageby-last'         => 'Zuletzt <a href="$3">geändert</a> von $1, $2',
 	'pageby-contributors' => 'Beiträge:',

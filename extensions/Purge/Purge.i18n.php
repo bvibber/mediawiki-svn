@@ -7,7 +7,9 @@
 
 $messages = array();
 
-/*Original text by Ævar Arnfjörð Bjarmason*/
+/** English
+ * @author Ævar Arnfjörð Bjarmason
+ */
 $messages['en'] = array(
 	'purge' => 'purge',
 	'purge-desc' => 'Adds a purge tab on all normal pages and bypasses the purge check for anonymous users allowing for quick purging of the cache',
@@ -35,8 +37,12 @@ $messages['ca'] = array(
 	'purge' => 'purga',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
-	'purge' => 'Cache leeren',
+	'purge'      => 'Cache leeren',
+	'purge-desc' => 'Ergänzt einen „Purge“-Reiter für alle normalen Seiten zur schnellen Cache-Löschung und umgeht die Purge-Prüfung für anonyme Benutzer',
 );
 
 /*Translation by Bertrand GRONDIN*/

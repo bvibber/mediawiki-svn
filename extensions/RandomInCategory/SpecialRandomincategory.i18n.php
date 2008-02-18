@@ -43,6 +43,7 @@ $messages['bg'] = array(
  */
 $messages['de'] = array(
 	'randomincategory'                => 'Zufällige Seite in einer Kategorie',
+	'randomincategory-desc'           => '[[Special:Randomincategory|Spezialseite]], um eine zufällige Seite auf einer Kategorie zu holen',
 	'randomincategory-toolbox'        => 'Zufällige Seite',
 	'randomincategory-nocategory'     => 'Kategorie $1 ist nicht vorhanden oder leer',
 	'randomincategory-label'          => 'Kategorie:',

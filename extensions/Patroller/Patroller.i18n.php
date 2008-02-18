@@ -10,7 +10,7 @@
 
 $messages = array();
 
-/* English
+/** English
  * @author Rob Church
  */
 $messages['en'] = array(
@@ -93,9 +93,12 @@ $messages['bg'] = array(
 	'group-patroller-member' => 'Патрулиращ',
 );
 
-/* German (Raymond) */
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
 	'patrol'                 => 'Kontrolle der Bearbeitungen',
+	'patrol-desc'            => 'Erweiterte Schnittstelle für die Kontrolle von Bearbeitungen',
 	'patrol-endorse'         => 'Bestätigen',
 	'patrol-revert'          => 'Zurücksetzen',
 	'patrol-revert-reason'   => 'Grund:',
