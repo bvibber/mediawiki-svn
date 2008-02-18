@@ -54,6 +54,14 @@ $messages['nl'] = array(
 	'forcepreview-desc' => 'Toont bewerkingen eerst ter controle voor gebruikers zonder rechten',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'forcepreview'      => 'Lagre side (forhåndsvis først)',
+	'forcepreview-desc' => 'Tvinger brukere til å forhåndsvise siden dersom de ikke har riktige rettigheter',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

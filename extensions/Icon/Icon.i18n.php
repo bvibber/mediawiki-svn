@@ -111,6 +111,14 @@ $messages['nl'] = array(
 	'icon-badwidth' => 'Onjuiste breedte',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'icon-badimage' => 'Dårlig bilde',
+	'icon-badwidth' => 'Dårlig bredde',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

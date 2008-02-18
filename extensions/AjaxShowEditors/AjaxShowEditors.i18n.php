@@ -369,10 +369,13 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'ajax-se-desc'    => 'Vis hvilke brukere som redigerer samme side',
-	'ajax-se-title'   => 'Redigerer:',
-	'ajax-se-pending' => 'Avventer gjenoppfriskning … (klikk denne boksen eller start å redigere)',
-	'ajax-se-idling'  => '($1s siden)',
+	'ajax-se-desc'             => 'Vis hvilke brukere som redigerer samme side',
+	'ajax-se-title'            => 'Redigerer:',
+	'ajax-se-pending'          => 'Avventer gjenoppfriskning … (klikk denne boksen eller start å redigere)',
+	'ajax-se-idling'           => '($1s siden)',
+	'ajax-se-pagedoesnotexist' => 'siden finnes ikke',
+	'ajax-se-userinvalid'      => 'Feil: ugyldig bruker',
+	'ajax-se-usernotfound'     => 'Feil: bruker ikke funnet',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -521,9 +524,10 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'ajax-se-title'   => 'ప్రస్తుతం మారుస్తున్నది:',
-	'ajax-se-pending' => 'తాజాకరణకై వేచివున్నాం... (ఈ పెట్టెపై నొక్కండి లేదా మార్చడం మొదలుపెట్టండి)',
-	'ajax-se-idling'  => '($1s క్రితం)',
+	'ajax-se-title'            => 'ప్రస్తుతం మారుస్తున్నది:',
+	'ajax-se-pending'          => 'తాజాకరణకై వేచివున్నాం... (ఈ పెట్టెపై నొక్కండి లేదా మార్చడం మొదలుపెట్టండి)',
+	'ajax-se-idling'           => '($1s క్రితం)',
+	'ajax-se-pagedoesnotexist' => 'పేజీ ఉనికిలో లేదు',
 );
 
 /** Turkish (Türkçe)

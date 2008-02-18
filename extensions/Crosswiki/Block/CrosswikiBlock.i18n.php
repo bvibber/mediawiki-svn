@@ -180,6 +180,9 @@ $messages['gl'] = array(
 	'crosswikiblock-reason'         => 'Razón:',
 	'crosswikiblock-submit'         => 'Bloquear este usuario',
 	'crosswikiblock-anononly'       => 'Bloquear só usuarios anónimos',
+	'crosswikiblock-nocreate'       => 'Impedir a creación de contas',
+	'crosswikiblock-noemail'        => 'Advertir ao usuario do envío de correo electrónico',
+	'crosswikiblock-dbnotfound'     => 'A base de datos $1 non existe',
 	'crosswikiblock-noname'         => '"$1" non é un nome de usuario válido.',
 	'crosswikiblock-nouser'         => 'Non se atopa o usuario "$3".',
 	'crosswikiblock-noexpiry'       => 'Caducidade non válida: $1.',
@@ -237,6 +240,37 @@ Gelieve te controleren of u de juiste rechten hebt op deze wiki en of uw acties 
 
 Teruggaan naar:
 * [[Special:CrosswikiBlock|Blokkeerformulier]]
+* [[$4]]",
+);
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'crosswikiblock-desc'           => 'Gjør det mulig å blokkere brukere på andre wikier ved hjelp av en [[Special:Crosswikiblock|spesialside]]',
+	'crosswikiblock'                => 'Blokker brukere på andre wikier',
+	'crosswikiblock-header'         => 'Denne siden gjør at man kan blokkere brukere på andre wikier. Sjekk om du har tillatelse til å gjøre det på denne wikien, og at du følger alle retningslinjene.',
+	'crosswikiblock-target'         => 'IP-adresse eller brukernavn og målwiki:',
+	'crosswikiblock-expiry'         => 'Utløper:',
+	'crosswikiblock-reason'         => 'Begrunnelse:',
+	'crosswikiblock-submit'         => 'Blokker denne brukeren',
+	'crosswikiblock-anononly'       => '{{int:Ipbanononly}}',
+	'crosswikiblock-nocreate'       => '{{int:Ipbcreateaccount}}',
+	'crosswikiblock-autoblock'      => '{{int:ipbenableautoblock}}',
+	'crosswikiblock-noemail'        => '{{int:ipbemailban}}',
+	'crosswikiblock-nousername'     => 'Ingen brukernavn ble skrevet inn',
+	'crosswikiblock-local'          => 'Lokale blokkeringer støttes ikke av dette grensesnittet. Bruk [[Special:Blockip]]',
+	'crosswikiblock-dbnotfound'     => 'Databasen $1 finnes ikke',
+	'crosswikiblock-noname'         => '«$1» er ikke et gyldig brukernavn.',
+	'crosswikiblock-nouser'         => 'Brukeren «$3» ble ikke funnet.',
+	'crosswikiblock-noexpiry'       => 'Ugyldig utløpstid: $1.',
+	'crosswikiblock-noreason'       => 'Ingen begrunnelse gitt.',
+	'crosswikiblock-notoken'        => 'Ugyldig redigeringstegn.',
+	'crosswikiblock-alreadyblocked' => '$3 er allerede blokkert.',
+	'crosswikiblock-success'        => "'''$3''' er blokkert.
+
+Tilbake til:
+* [[Special:CrosswikiBlock|Blokkeringsskjemaet]]
 * [[$4]]",
 );
 
@@ -304,10 +338,19 @@ Vrátiť sa na:
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'crosswikiblock-desc'   => 'Gör det möjligt att blockera användare på andra wikier med hjälp av en [[Special:Crosswikiblock|specialsida]]',
-	'crosswikiblock'        => 'Blockera användare på en annan wiki',
-	'crosswikiblock-expiry' => 'Utgång:',
-	'crosswikiblock-reason' => 'Anledning:',
-	'crosswikiblock-submit' => 'Blockera denna användare',
+	'crosswikiblock-desc'           => 'Gör det möjligt att blockera användare på andra wikier med hjälp av en [[Special:Crosswikiblock|specialsida]]',
+	'crosswikiblock'                => 'Blockera användare på en annan wiki',
+	'crosswikiblock-expiry'         => 'Utgång:',
+	'crosswikiblock-reason'         => 'Anledning:',
+	'crosswikiblock-submit'         => 'Blockera denna användare',
+	'crosswikiblock-noname'         => '"$1" är inte ett giltigt användarnamn.',
+	'crosswikiblock-alreadyblocked' => 'Användare $3 är redan blockerad.',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'crosswikiblock-reason' => 'కారణం:',
 );
 

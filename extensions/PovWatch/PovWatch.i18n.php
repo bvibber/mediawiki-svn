@@ -288,6 +288,17 @@ Een logboek met recent toegewezen pagina's op volglijsten is te bekijken op [[Sp
 	'povwatch_added'                   => 'toegevoegd',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'povwatch_unknown_subpage' => 'Ukjent underside.',
+	'povwatch_title'           => 'Tittel:',
+	'povwatch_comment'         => 'Loggkommentar:',
+	'povwatch_no_log'          => 'Det er ingen elementer i loggen.',
+	'povwatch_added'           => 'lagt til',
+);
+
 /** Northern Sotho (Sesotho sa Leboa)
  * @author Mohau
  */

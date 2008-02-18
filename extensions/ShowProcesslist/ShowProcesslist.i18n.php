@@ -131,6 +131,7 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'showprocesslist'         => 'Proceslijst bekijken',
+	'showprocesslist-desc'    => 'Toont de uitvoer van [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id'      => 'ID',
 	'showprocesslist-user'    => 'Gebruiker',
 	'showprocesslist-host'    => 'Host',

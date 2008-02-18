@@ -132,9 +132,12 @@ $messages['nl'] = array(
 	'minnamelength-desc'  => 'Laat toe om een minimumlengte voor gebruikersnamen te bepalen',
 );
 
-/* Norwegian (Jon Harald Søby) */
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
 	'minnamelength-error' => 'Brukernavnet ditt er for kort. Minimumslengden er $1.',
+	'minnamelength-desc'  => 'Innfør minstelengde på brukernavn',
 );
 
 $messages['oc'] = array(

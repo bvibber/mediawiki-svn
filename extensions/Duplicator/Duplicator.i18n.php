@@ -258,6 +258,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'duplicator'                       => 'Duplicar unha páxina',
+	'duplicator-desc'                  => 'Crear copias independentes das páxinas cos historiais completos de edición',
 	'duplicator-toolbox'               => 'Duplicar esta páxina',
 	'duplicator-header'                => 'Esta páxina permite a duplicación completa dunha páxina e crea copias independentes
 de todos os historiais. Resulta útil cando se subdivide unha páxina, etc.',
@@ -451,6 +452,7 @@ kopieën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzo
  */
 $messages['no'] = array(
 	'duplicator'                       => 'Kopier en side',
+	'duplicator-desc'                  => 'Opprett uavhengige kopier av sider med full redigeringshistorikk',
 	'duplicator-toolbox'               => 'Kopier denne siden',
 	'duplicator-header'                => 'Denne siden muliggjør fullstendig kopiering av en side, med uavhengige kopier av all historikk. Dette er nyttig for oppdeling av sider, etc.',
 	'duplicator-options'               => 'Alternativer',
@@ -682,6 +684,13 @@ $messages['sv'] = array(
 	'duplicator-dest-invalid'          => 'Du har inte angivit någon giltig målsida.',
 	'duplicator-dest-exists'           => '[[$1]] finns redan. Du måste ange en målsida som inte finns.',
 	'duplicator-toomanyrevisions'      => '[[$1]] kan inte dupliceras eftersom den har för många ($2) versioner. Gränsen för duplicering är $3 sidversioner.',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'duplicator-options' => 'ఎంపికలు',
 );
 
 /** Turkish (Türkçe)

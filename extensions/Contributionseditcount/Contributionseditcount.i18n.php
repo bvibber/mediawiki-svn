@@ -98,8 +98,12 @@ $messages['nn'] = array(
 	'contributionseditcount' => 'Denne brukaren har gjort $1 endringar.',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'contributionseditcount' => 'Denne brukeren har $1 redigeringer.',
+	'contributionseditcount'      => 'Denne brukeren har $1 redigeringer.',
+	'contributionseditcount-desc' => 'Viser en redigeringsteller på [[Special:Contributions]]',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)

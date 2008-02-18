@@ -772,6 +772,7 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
+	'usernameblacklist-desc'          => '[[MediaWiki:Usernameblacklist|Кыттааччылар бобуллубут ааттарын]] эбэр, ол оннук ааттары бэлиэтиири көҥүллээбэт.',
 	'blacklistedusername'             => 'Бобуллубут аат',
 	'blacklistedusernametext'         => 'Талбыт аатыҥ [[MediaWiki:Usernameblacklist|бобуллубут ааттар испииһэктэригэр]] киирэр эбит. Атын ааты таларыҥ буоллар.',
 	'usernameblacklist'               => '<pre>

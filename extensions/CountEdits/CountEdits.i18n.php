@@ -359,17 +359,20 @@ $messages['nl'] = array(
 	'countedits-nocontribs'   => 'Er zijn geen bewerkingen op deze wiki.',
 );
 
-/* Norwegian (Jon Harald Søby) */
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'countedits' => 'Tell redigeringer',
-	'countedits-warning' => '\'\'\'Advarsel:\'\'\' Ikke sku hunden på hårene. Ikke døm en bidragsyter på antall redigeringer.',
-	'countedits-username' => 'Brukernavn:',
-	'countedits-ok' => 'OK',#identical but defined
-	'countedits-nosuchuser' => 'Det er ingen bruker ved navnet $1.',
+	'countedits'              => 'Tell redigeringer',
+	'countedits-desc'         => '[[Special:CountEdits|Spesialside]] om teller antall redigeringer av brukere, og gir en liste over de ti mest aktive brukerne',
+	'countedits-warning'      => "'''Advarsel:''' Ikke sku hunden på hårene. Ikke døm en bidragsyter på antall redigeringer.",
+	'countedits-username'     => 'Brukernavn:',
+	'countedits-ok'           => 'OK',
+	'countedits-nosuchuser'   => 'Det er ingen bruker ved navnet $1.',
 	'countedits-resultheader' => 'Resultater for $1',
-	'countedits-resulttext' => '$1 har gjort $2 redigeringer',
-	'countedits-mostactive' => 'Mest aktive bidragsytere',
-	'countedits-nocontribs' => 'Det har ikke vært noen redigeringer på denne wikien.',
+	'countedits-resulttext'   => '$1 har gjort $2 redigeringer',
+	'countedits-mostactive'   => 'Mest aktive bidragsytere',
+	'countedits-nocontribs'   => 'Det har ikke vært noen redigeringer på denne wikien.',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -586,7 +589,9 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'countedits-ok' => 'సరే',
+	'countedits-username'     => 'వాడుకరి పేరు:',
+	'countedits-ok'           => 'సరే',
+	'countedits-resultheader' => '$1కి ఫలితాలు',
 );
 
 $messages['tet'] = array(

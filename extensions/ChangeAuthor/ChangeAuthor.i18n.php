@@ -681,8 +681,8 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
- * @author వైజాసత్య
  * @author Veeven
+ * @author వైజాసత్య
  */
 $messages['te'] = array(
 	'changeauthor-pagenameform-go'      => 'వెళ్ళు',
@@ -691,6 +691,7 @@ $messages['te'] = array(
 	'changeauthor-changeauthors-single' => 'రచయితను మార్చు',
 	'changeauthor-invalid-username'     => '"$1" అనేది తప్పుడు వాడుకరి పేరు.',
 	'changeauthor-nosuchuser'           => '"$1" అనే పేరుతో సభ్యులెవరూ లేరు.',
+	'changeauthor-revview'              => '$2 యొక్క #$1వ కూర్పు',
 	'changeauthor-nosuchtitle'          => '"$1" అనే పేరుతో పేజీ లేదు.',
 	'changeauthor-success'              => 'మీ అభ్యర్థనని విజయవంతంగా పూర్తిచేసాం.',
 );

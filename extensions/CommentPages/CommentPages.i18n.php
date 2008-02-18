@@ -42,7 +42,8 @@ $messages['fr'] = array(
  * @author Alma
  */
 $messages['gl'] = array(
-	'nstab-comments' => 'Comentario',
+	'commentpages-desc' => 'Páxinas de comentario para o espazo de nomes principal',
+	'nstab-comments'    => 'Comentario',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -75,6 +76,14 @@ $messages['lb'] = array(
 $messages['nl'] = array(
 	'commentpages-desc' => "Opmerkingenpagina's voor de hoofdnaamruimte",
 	'nstab-comments'    => 'Opmerkingen',
+);
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'commentpages-desc' => 'Legger til kommentarsider for sider i hovednavnerommet',
+	'nstab-comments'    => 'Kommentarer',
 );
 
 /** Occitan (Occitan)

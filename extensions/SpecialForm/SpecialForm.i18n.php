@@ -380,6 +380,11 @@ $messages['stq'] = array(
  * @author Max sonnelid
  */
 $messages['sv'] = array(
+	'form'                  => 'Formulär',
+	'formnoname'            => 'Formulärnamn saknas',
+	'formnonametext'        => 'Du måste ange ett formulärnamn på formen "Special:Form/Formulärnamn".',
+	'formbadname'           => 'Felaktigt formulärnamn',
+	'formbadnametext'       => 'Det finns inget formulär med det namnet.',
 	'formsave'              => 'Spara',
 	'formarticleexists'     => 'Sidan existerar',
 	'formarticleexiststext' => 'Sidan [[$1]] finns redan.',

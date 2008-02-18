@@ -262,6 +262,7 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
+	'intersection-desc'          => 'Категорияларга бүтэһик эбиилэри эбэтэр категориялар холбонууларын бэлиэлээх (маркированнай) испииһэк курдук таһаарар',
 	'intersection_toomanycats'   => 'DynamicPageList: категорийата наһаа элбэх!',
 	'intersection_toofewcats'    => 'DynamicPageList: Категорията наһаа аҕыйах',
 	'intersection_noresults'     => 'DynamicPageList: Түмүк суох!',
@@ -314,6 +315,7 @@ $messages['te'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'intersection-desc'          => 'Cho ra danh sách những khoản gần đây nhất được xếp vào một thể loại hay hợp của hơn một thể loại',
 	'intersection_toomanycats'   => 'DynamicPageList: Nhiều thể loại quá!',
 	'intersection_toofewcats'    => 'DynamicPageList: Ít thể loại quá!',
 	'intersection_noresults'     => 'DynamicPageList: Không tìm thấy trang nào!',

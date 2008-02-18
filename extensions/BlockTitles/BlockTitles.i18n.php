@@ -135,7 +135,7 @@ $messages['eo'] = array(
  */
 $messages['fi'] = array(
 	'block_title_error_page_title' => 'Estetty sivunnimi',
-	'block_title_error-desc'       => 'Tarjoaa yksinkertaisen menetelmän estää artikkelin tallentaminen tai synnyttäminen jos sillä on tietynkaltainen artikkelinimi',
+	'block_title_error-desc'       => 'Tarjoaa helpon tavan estää tietynnimisten sivujen tallentaminen tai luominen',
 	'block_title_error'            => 'Tämän sivun nimen tallentaminen on kielletty.',
 );
 
@@ -294,6 +294,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'block_title_error_page_title' => 'Blokkert tittel',
+	'block_title_error-desc'       => 'Tilbyr en enkel måte å forhindre sider med visse titler å lagres eller opprettes',
 	'block_title_error'            => 'Beklager, det er ikke lov å lagre en side med denne tittelen.',
 );
 

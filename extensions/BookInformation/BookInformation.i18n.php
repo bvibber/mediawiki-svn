@@ -509,7 +509,9 @@ $messages['lb'] = array(
 	'bookinfo-result-year'       => 'Joer:',
 	'bookinfo-error-invalidisbn' => 'Dir hutt eng ISBN aginn déi et net gëtt.',
 	'bookinfo-error-nosuchitem'  => "D'Säit gëtt et net oder si gouf net fonnt.",
+	'bookinfo-error-noresponse'  => "Keng Äntwert oder d'Ufro huet ze laang gebraucht (timed out)",
 	'bookinfo-purchase'          => 'Dëst Buch op $1 kafen',
+	'bookinfo-provider'          => 'Informatioune vun: $1',
 );
 
 /** Limburgish (Limburgs)

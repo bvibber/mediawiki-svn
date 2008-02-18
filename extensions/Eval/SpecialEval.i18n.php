@@ -90,6 +90,14 @@ $messages['nl'] = array(
 	'eval_code'   => 'Code',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'eval_out'  => 'Resultat',
+	'eval_code' => 'Kode',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -145,10 +153,14 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author Max sonnelid
  */
 $messages['sv'] = array(
-	'eval_code' => 'Kod',
+	'eval'        => 'Eval',
+	'eval-desc'   => 'Lägger till [[Special:Eval|ett gränssnitt]] till <code>eval()</code> funktionen',
+	'eval_submit' => 'Evalvera',
+	'eval_code'   => 'Kod',
 );
 
 /** Turkish (Türkçe)

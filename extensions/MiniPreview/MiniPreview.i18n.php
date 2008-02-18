@@ -151,6 +151,23 @@ $messages['nl'] = array(
 * Self',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'minipreview-desc'                => 'Miniforhåndsvisning viser små forhåndsvisninger av media i samme kategorier eller fra samme sider',
+	'minipreview-files_in_category'   => 'Totalt $1 filer i denne kategorien.',
+	'minipreview-files_in_gallery'    => 'Totalt $1 filer i dette galleriet.',
+	'minipreview-no_more_files_here'  => 'Ingen flere filer i denne retningen.',
+	'minipreview-no_category_gallery' => 'Ingen kategorier eller gallerier!',
+	'minipreview-ignore_categories'   => 'Følgende er en liste over kategorinavn eller begynnelser på såden. Disse kategoriene vil ikke vises av Miniforhåndsvisning. For eksempel vil «* PD-» gjøre at bilder ikke velges ut fordi de er i kategorier som begynner med «PD-», slik som «PD-old».
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

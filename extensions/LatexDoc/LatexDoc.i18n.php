@@ -159,6 +159,22 @@ $3',
 	'latexdoc-desc'            => 'Collaboratief bewerken van LaTeX-documenten',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'latexdoc_no_text'         => 'Siden inneholder ikke noe tekst, kan ikke generere DVI',
+	'latexdoc_cant_create_dir' => 'Kan ikke opprette midlertid mappe $1',
+	'latexdoc_cant_write'      => 'Kan ikke skrive til filen $1',
+	'latexdoc_error'           => 'LaTeX-feil
+
+Kommando: $1
+
+Resultat: $2
+
+$3',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

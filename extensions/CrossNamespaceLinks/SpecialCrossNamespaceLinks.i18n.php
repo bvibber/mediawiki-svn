@@ -239,8 +239,12 @@ Sono esclusi i collegamenti verso i namespace {{ns:special}}, {{ns:talk}}, {{ns:
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|collegamento|collegamenti}} al namespace $3',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
 $messages['ja'] = array(
 	'crossnamespacelinks'         => '名前空間をまたぐリンク',
+	'crossnamespacelinks-desc'    => '{{SITENAME}} には含まれない、[[{{ns:special}}:CrossNamespaceLinks|名前空間をまたぐリンク]]',
 	'crossnamespacelinks-summary' => '通常名前空間から他の名前空間（ {{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} を除く）のページへとリンクしているページの一覧です。',
 	'crossnamespacelinkstext'     => '$1: $2 個 の $3 へのリンク',
 );
@@ -424,10 +428,11 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author .:Ajvol:.
+ * @author Illusion
  */
 $messages['ru'] = array(
 	'crossnamespacelinks'         => 'Ссылки между пространствами имён',
-	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Выводит список ссылок между пространствами имён]], которых не должно быть в {{SITENAME}}',
+	'crossnamespacelinks-desc'    => 'Выводит [[Special:CrossNamespaceLinks|список ссылок между пространствами имён]], которых не должно быть в {{grammar:genitive|{{SITENAME}}}}',
 	'crossnamespacelinks-summary' => 'На этой странице приведён список ссылок со страниц в основном пространстве имён на страницы в других пространствах (за исключением пространств имён: {{ns:special}}, {{ns:talk}}, {{ns:project}} и {{ns:template}}). Подобные ссылки не рекомендуется ставить.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|ссылка|ссылки|ссылок}} на $3',
 );

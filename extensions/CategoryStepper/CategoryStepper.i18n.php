@@ -144,8 +144,9 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'categorystepper-start' => '(Kategorislutt)',
+	'categorystepper-desc'  => 'Vis en boks med kategoristeg på alle sider som er i et sett av kategorier.',
 	'categorystepper-end'   => '(Kategoristart)',
+	'categorystepper-start' => '(Kategorislutt)',
 );
 
 /** Occitan (Occitan)

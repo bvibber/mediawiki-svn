@@ -560,6 +560,7 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'linksearch'       => 'Тас сигэлэри көрдөөһүн',
+	'linksearch-desc'  => 'Этиллибит халыыпка сөп түбэһэр [[Special:Linksearch|тас сигэлээх (ыйынньыктаах) сирэйдэри көрдөрөр]]',
 	'linksearch-pat'   => 'Көрдөөһүн халыыба:',
 	'linksearch-ok'    => 'Бул',
 	'linksearch-text'  => 'Туруоран биэрэр бэлиэлэри туһаныахха сөп, холобур, <code>*.wikipedia.org</code>.',
@@ -672,6 +673,8 @@ $messages['tr'] = array(
  */
 $messages['vi'] = array(
 	'linksearch'       => 'Tìm liên kết ngoài',
+	'linksearch-desc'  => '[[Special:Linksearch|Tìm những trang có liên kết ngoài]] trùng với mẫu',
+	'linksearch-pat'   => 'Mẫu liên kết:',
 	'linksearch-ns'    => 'Không gian tên:',
 	'linksearch-ok'    => 'Tìm kiếm',
 	'linksearch-text'  => "Có thể sử dụng ký tự đại diện (''wildcard'') ở đầu tiên, ví dụ “*.wikipedia.org”.<br />Hiện hỗ trợ các giao thức: <tt>$1</tt>",

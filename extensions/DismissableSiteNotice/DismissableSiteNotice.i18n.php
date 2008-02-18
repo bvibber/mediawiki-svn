@@ -189,8 +189,12 @@ $messages['it'] = array(
 	'sitenotice_close' => 'nascondi',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
 $messages['ja'] = array(
 	'sitenotice_close' => '非表示',
+	'sitenotice-desc'  => 'サイトからのお知らせを利用者が非表示にすることを可能とする',
 );
 
 $messages['kk-arab'] = array(
@@ -212,8 +216,13 @@ $messages['ko'] = array(
 	'sitenotice_close' => '숨기기',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ * @author SPQRobin
+ */
 $messages['lb'] = array(
 	'sitenotice_close' => 'verstoppen',
+	'sitenotice-desc'  => "Erlaabt et de Benotzer fir d'Sitenotice zouzemaachen",
 );
 
 /** Limburgish (Limburgs)
@@ -314,6 +323,7 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'sitenotice_close' => 'кистээ',
+	'sitenotice-desc'  => 'Саайт биллэриилэрин көрбөт гынар',
 );
 
 /** Sassarese (Sassarese)

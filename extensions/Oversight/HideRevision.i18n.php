@@ -1026,6 +1026,7 @@ Versjonar av sider som vert fjerna vil ikkje vere tilgjengelege for nokon via ne
  */
 $messages['no'] = array(
 	'hiderevision'                => 'Fjern revisjoner permanent',
+	'hiderevision-desc'           => 'Skjul enkeltrevisjoner fra alle brukere av juridiske grunner, etc.',
 	'hiderevision-prompt'         => 'Nummer på revisjonen som skal fjernes:',
 	'hiderevision-continue'       => 'Fortsett',
 	'hiderevision-text'           => "Dette burde '''kun''' brukes i følgende saker:
@@ -1257,6 +1258,7 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'hiderevision'                => 'Торумнарын куруук кистээ',
+	'hiderevision-desc'           => 'Сирэй сорох торумнарын кыттааччылартан барытыттан кистиир, суут-сокуон ирдэбилинэн иҥин туһаныллар.',
 	'hiderevision-prompt'         => 'Кистэниэхтээх торум нүөмэрэ:',
 	'hiderevision-continue'       => 'Салгыы',
 	'hiderevision-text'           => "Бу сирэй киһи ''дьиҥнээх аата, дьиэтин аадырыһа, төлөппүөнүн, пааспарын нүөмэрдэрэ уонна да атын сиһилии сибидиэнньэлэр'' бэриллэр '''буоллахтарына эрэ''' туттуллуон сөп.
@@ -1564,6 +1566,46 @@ $messages['tg'] = array(
  */
 $messages['tr'] = array(
 	'hiderevision-error-missing' => 'Veritabanında bulunamadı',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'hiderevision'                => 'Giấu phiên bản',
+	'hiderevision-desc'           => 'Giấu những phiên bản để cho tất cả mọi người dùng không xem được, vì lý do luật pháp, v.v.',
+	'hiderevision-prompt'         => 'Số phiên bản để giấu:',
+	'hiderevision-continue'       => 'Tiếp',
+	'hiderevision-text'           => "'''Chỉ''' được xài chức năng này trong những trường hợp có:
+
+* Thông tin cá nhân không thích hợp
+*: ''địa chỉ và số điện thoại nhà, số an sinh xã hội, v.v.''
+
+'''Nếu lạm dụng chức năng này, bạn sẽ bị mất quyền truy cập nó.'''
+
+Không ai có thể dùng website để xem phiên bản sau khi nó được giấu, nhưng phiên bản sẽ được ghi vào nhật ký và người quản lý cơ sỡ dữ liệu có thể khôi phục bằng tay nếu bạn giấu nhầm.",
+	'hiderevision-reason'         => 'Lý do (cho nhật ký giữ kín):',
+	'hiderevision-submit'         => 'Giấu dữ liệu để khó khôi phục',
+	'hiderevision-tab'            => 'Giấu phiên bản',
+	'hiderevision-norevisions'    => 'Bạn chưa chọn phiên bản để giấu.',
+	'hiderevision-noreason'       => 'Bạn cần phải đưa vào lý do giấu phiên bản.',
+	'hiderevision-status'         => 'Phiên bản $1: $2',
+	'hiderevision-success'        => 'Dữ liệu được lưu trữ và giấu thành công.',
+	'hiderevision-error-missing'  => 'Không tìm được phiên bản trong cơ sỡ dữ liệu.',
+	'hiderevision-error-current'  => 'Không có thể giấu phiên bản hiện hành của trang. Hãy lùi lại sửa đổi này trước.',
+	'hiderevision-error-delete'   => 'Không có thể lưu trữ phiên bản; có phải nó đã được giấu không?',
+	'hiderevision-archive-status' => 'Giấu phiên bản khỏi $1: $2',
+	'oversight-nodiff'            => 'Không có thể so sánh các thay đổi tại vì trang này không có phiên bản về trước. Có thể là:
+
+*Trang bị xóa
+*Bản giấu này là phiên bản đầu tiên của trang',
+	'oversight-log-hiderev'       => 'giấu sửa đổi khỏi $1',
+	'oversight'                   => 'Nhật ký giám sát',
+	'oversight-view'              => 'chi tiết',
+	'oversight-difference'        => '(Khác biệt với bản cuối cùng còn lại)',
+	'oversight-prev'              => 'Phiên bản trước',
+	'oversight-hidden'            => 'Phiên bản giấu',
+	'oversight-header'            => 'Đây là các phiên bản bị giấu luôn khỏi các độc giả. Nếu đưa ra thông tin này, bạn sẽ mất quyền giám sát luôn.',
 );
 
 /** Volapük (Volapük)

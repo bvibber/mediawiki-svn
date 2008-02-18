@@ -428,16 +428,23 @@ $messages['it'] = array(
 	'expand_templates_preview'         => 'Anteprima',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
 $messages['ja'] = array(
 	'expandtemplates'                  => 'テンプレートを展開',
-	'expand_templates_intro'           => '入力したウィキ構文に含まれている全てのテンプレートを再帰的に展開します。
-<nowiki>{{</nowiki>#if:...}} のようなパーサ関数や、<nowiki>{{</nowiki>CURRENTDAY}} のような変数など、
-<nowiki>{{</nowiki> ～ }} で囲まれているものが展開されます。',
+	'expandtemplates-desc'             => 'ウィキ構文を展開し、ページプレビューを行う{{ns:special}}ページ [[{{ns:special}}:ExpandTemplates|テンプレート、パーサー関数、変数の展開]]',
+	'expand_templates_intro'           => '指定したウィキ構文に含まれている全てのテンプレートを再帰的に展開します。
+<nowiki>{{</nowiki>#if:...}} のようなパーサー関数や、<nowiki>{{</nowiki>CURRENTDAY}} のような変数など、<nowiki>{{</nowiki> ～ }} で囲まれているものも展開されます。
+これは、MediaWiki 自身の適切な構文解釈段階で呼び出されます。',
 	'expand_templates_title'           => '{{PAGENAME}} 等に使用するページ名: ',
 	'expand_templates_input'           => '展開するテキスト',
 	'expand_templates_output'          => '展開結果',
+	'expand_templates_xml_output'      => 'XML出力',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'コメントを除去',
+	'expand_templates_generate_xml'    => 'XML構文解釈ツリーを表示',
+	'expand_templates_preview'         => 'プレビュー',
 );
 
 /** Jutish (Jysk)
@@ -612,6 +619,7 @@ Hiervoor worden de relevante functies van de MediaWiki-parser gebruikt.',
  */
 $messages['no'] = array(
 	'expandtemplates'                  => 'Utvid maler',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Utvider maler, parserfunksjoner og variabler]] for å vise resultatråteksten og forhåndsvise siden slik den blir',
 	'expand_templates_intro'           => 'Denne siden tar en tekst og utvider alle maler brukt i teksten. Den utvider også alle funksjoner som <nowiki>{{</nowiki>#if:…}}, og variabler som <nowiki>{{</nowiki>CURRENTDAY}}. <!--It does this by calling the relevant parser stage from MediaWiki itself.-->',
 	'expand_templates_title'           => 'Konteksttittel, for {{PAGENAME}}, etc.:',
 	'expand_templates_input'           => 'Skriv inn tekst:',
@@ -619,6 +627,7 @@ $messages['no'] = array(
 	'expand_templates_xml_output'      => 'XML-resultat',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Fjern kommentarer',
+	'expand_templates_generate_xml'    => 'Vis parsetre som XML',
 	'expand_templates_preview'         => 'Forhåndsvisning',
 );
 
@@ -740,6 +749,7 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'expandtemplates'                  => 'Халыыптары тэнитии',
+	'expandtemplates-desc'             => 'Халыыптар тэнитиллиилэрэ',
 	'expand_templates_intro'           => 'Бу аналлаах сирэй тиэкиһи уларытарытарыгар туох баар халыыптары тэнитэн көрдөрөр.
 Парсер функциялара эмиэ тэнитиллэллэр (холобур, <nowiki>{{</nowiki>#if:...}} уонна переменнайдар (<nowiki>{{</nowiki>CURRENTDAY}} уо.&nbsp;д.&nbsp;а.) — уопсайынан, хос фигурнай скобка иһигэр баар барыта.
 Бу дьайыы сыыһата суох, MediaWiki көмөтүнэн оҥоһуллар.',

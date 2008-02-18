@@ -154,10 +154,11 @@ $messages['sr-ec'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'filelist'              => 'Fil lista',
-	'filelist-desc'         => 'Special sida för att lista uppladdade filer',
+	'filelist'              => 'Fillista',
+	'filelist-desc'         => 'Specialsida som visar en lista över uppladdade filer',
 	'filelist-show-list'    => 'Visa lista',
 	'filelist-show-gallery' => 'Visa galleri',
 );

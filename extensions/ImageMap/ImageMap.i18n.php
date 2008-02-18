@@ -476,18 +476,21 @@ $messages['nl'] = array(
 	'imagemap_description'        => 'Over deze afbeelding',
 );
 
-/* Norwegian (Jon Harald Søby) */
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'imagemap_no_image'             => '&lt;imagemap&gt;: må angi et bilde i første linje',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;: bilde er ugyldig eller ikke-eksisterende',
-	'imagemap_no_link'              => '&lt;imagemap&gt;: ingen gyldig lenke ble funnet i slutten av linje $1',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: ugyldig tittel i lenke på linje $1',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: ikke nok koordinater for form på linje $1',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: ugjenkjennelig form på linje $1; hver linje må starte med enten: default, rect, circle eller poly',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;: minst en områdespesifikasjon må gis',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: ugyldig koordinat i slutten av linje $1, må være et tall',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: ugyldig desc-spesifisering, må være enten: <tt>$1</tt>',
-	'imagemap_description'          => 'Om dette bildet',
+	'imagemap_desc'               => 'Gjør at man kan bruke klikkbare bilder ved hjelp av <tt><nowiki><imagemap></nowiki></tt>.',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: må angi et bilde i første linje',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: bilde er ugyldig eller ikke-eksisterende',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: ingen gyldig lenke ble funnet i slutten av linje $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: ugyldig tittel i lenke på linje $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: ikke nok koordinater for form på linje $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: ugjenkjennelig form på linje $1; hver linje må starte med enten: default, rect, circle eller poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: minst en områdespesifikasjon må gis',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: ugyldig koordinat i slutten av linje $1, må være et tall',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: ugyldig desc-spesifisering, må være enten: <tt>$1</tt>',
+	'imagemap_description'        => 'Om dette bildet',
 );
 
 /** Occitan (Occitan)
@@ -591,6 +594,7 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
+	'imagemap_desc'               => 'Бу <tt><nowiki><imagemap></nowiki></tt> тиэги туһанан клиент өттүгэр каартаны баттааһын үлэлиирин көҥүллүүр',
 	'imagemap_no_image'           => '&lt;imagemap&gt;: бастакы строкатыгар ойуу баар буолуохтаах',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: ойуу сыыһа бэриллибит, эбэтэр отой суох',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: $1 строка бүтэһигэр сыыһа ыйынньык турбут',
@@ -704,6 +708,7 @@ $messages['tr'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'imagemap_desc'               => 'Thêm những bản đồ hình có liên kết dùng thẻ <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image'           => '&lt;imagemap&gt;: phải đưa tên hình vào dòng đầu tiên',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: hình không hợp lệ hay không tồn tại',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: không có liên kết hợp lệ ở cuối dòng $1',

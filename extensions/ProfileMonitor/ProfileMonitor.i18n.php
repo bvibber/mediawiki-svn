@@ -207,6 +207,13 @@ $messages['stq'] = array(
 	'profiling-data-count' => 'täl',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'profiling-ok' => 'OK',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

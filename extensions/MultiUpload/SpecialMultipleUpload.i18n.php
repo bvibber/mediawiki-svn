@@ -185,6 +185,7 @@ Onrelevante afbeeldingen zullen onmiddelijk verwijderd worden, zie het [[{{Media
  */
 $messages['no'] = array(
 	'multipleupload'                   => 'Last opp filer',
+	'multipleupload-desc'              => 'Lar brukere [[Special:MultipleUpload|laste opp flere filer på én gang]]',
 	'multipleupload-ignoreallwarnings' => "Ignorer '''alle advarsler''' og lagre filene likevel.",
 	'multipleupload-saveallfiles'      => 'Lagre alle filer',
 	'multipleupload-addresswarnings'   => 'Vennligst addresser alle advarsler før du laster opp filene igjen.',

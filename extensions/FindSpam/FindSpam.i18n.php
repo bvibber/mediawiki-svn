@@ -142,10 +142,14 @@ $messages['nl'] = array(
 	'findspam-notextfound' => 'Geen bijdragen gevonden',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'findspam' => 'Finn forsøpling',
-	'findspam-ip' => 'IP-adresse:',
-	'findspam-ok' => 'OK',#identical but defined
+	'findspam'             => 'Finn forsøpling',
+	'findspam-desc'        => 'Legger til en [[Special:FindSpam|spesialside]] som lar deg finne spam som er blitt lagt til nylig',
+	'findspam-ip'          => 'IP-adresse:',
+	'findspam-ok'          => 'OK',
 	'findspam-notextfound' => 'Ingen bidrag funnet',
 );
 

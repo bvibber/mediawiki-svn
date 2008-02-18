@@ -13,7 +13,7 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'charinsert-desc' => 'يسمح بإنشاء صندوق جافاسكريبت لإدخال حروف غير قياسية',
+	'charinsert-desc' => 'يسمح بإنشاء صندوق جافاسكريبت [[MediaWiki:Edittools|لإدخال حروف غير قياسية]]',
 );
 
 /** Bulgarian (Български)
@@ -83,7 +83,12 @@ $messages['lb'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'charinsert-desc' => 'Maakt het mogelijk niet-standaard karakters in te voeren vanuit een deelvenster via JavaScript',
+	'charinsert-desc' => 'Maakt het mogelijk [[MediaWiki:Edittools|niet-standaard karakters]] in te voeren vanuit een deelvenster via JavaScript',
+);
+
+/** Norwegian (‪Norsk (bokmål)‬) */
+$messages['no'] = array(
+	'charinsert-desc' => 'Tilbyr oppretting av en JavaScript-boks for innsetting av uvanlige tegn',
 );
 
 /** Occitan (Occitan)

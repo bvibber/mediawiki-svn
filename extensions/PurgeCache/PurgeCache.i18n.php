@@ -63,6 +63,13 @@ $messages['fr'] = array(
 	'purgecache-button'  => 'Purger',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'purgecache-button' => 'Depurar',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

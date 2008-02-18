@@ -409,7 +409,13 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'regexblock-view-go' => '{{int:Go}}',
+	'regexblock'              => 'Regex-blokkering',
+	'regexblock-desc'         => 'Utvidelse som brukes for å blokkere brukernavn og IP-adresser ved hjelp av regulære uttrykk. Inneholder både blokkeringsmekanismen og en [[Special:Regexblock|spesialside]] for å legge til og endre blokkeringer',
+	'regexblockstats'         => 'Regex-blokkeringsstatistikk',
+	'regexblock-reason-ip'    => 'Denne IP-adressen er hindret fra å redigere på grunn av hærverk eller annen forstyrrelse av deg eller noen andre som bruker samme IP-adresse. Om du mener dette er en feil, vennligst $1',
+	'regexblock-reason-name'  => 'Dette brukernavnet er hindret fra å redigere på grunn av hærverk eller annen forstyrrelse. Om du mener dette er en feil, vennligst $1',
+	'regexblock-reason-regex' => 'Dette brukernavnet er forhindret fra redigering på grunn av hærverk eller annen forstyrrelse av en bruker med lignende navn. Vennligst opprett et annet brukernavn eller $1 om problemet.',
+	'regexblock-view-go'      => '{{int:Go}}',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)

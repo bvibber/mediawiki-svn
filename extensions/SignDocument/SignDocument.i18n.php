@@ -56,10 +56,14 @@ $messages['hsb'] = array(
 	'signaturelogentry' => 'je dokument $1 podpisał',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'signaturelogpage'      => 'Logboek ondertekeningen',
-	'signaturelogpagetext'  => 'Dit is een logboek van alle ondertekeningen van documenten via [[Special:SignDocument]].',
-	'signaturelogentry'     => 'ondertekende het document $1',
+	'signaturelogpage'     => 'Logboek ondertekeningen',
+	'signature-desc'       => 'Maakt het [[Special:SignDocument|ondertekenen]] van documenten mogelijk',
+	'signaturelogpagetext' => 'Dit is een logboek van alle ondertekeningen van documenten via [[Special:SignDocument]].',
+	'signaturelogentry'    => 'ondertekende het document $1',
 );
 
 $messages['no'] = array(

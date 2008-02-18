@@ -160,15 +160,19 @@ $messages['nl'] = array(
 	'inspectcache-list'    => 'Tonen',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'inspectcache' => 'Inspiser mellomlagring',
-	'inspectcache-ok' => 'OK',#identical but defined
+	'inspectcache'         => 'Inspiser mellomlagring',
+	'inspectcache-ok'      => 'OK',
 	'inspectcache-general' => 'Generell mellomlagring',
-	'inspectcache-parser' => 'Parsermellomlagring',
+	'inspectcache-parser'  => 'Parsermellomlagring',
 	'inspectcache-message' => 'Mellomlagring av meldinger',
-	'inspectcache-get' => 'Skaff',
-	'inspectcache-delete' => 'Slett',
+	'inspectcache-get'     => 'Skaff',
+	'inspectcache-delete'  => 'Slett',
 	'inspectcache-deleted' => 'Slettet mellomlagring',
+	'inspectcache-list'    => 'Liste',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)

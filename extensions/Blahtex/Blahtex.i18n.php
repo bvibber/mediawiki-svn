@@ -365,20 +365,20 @@ $messages['el'] = array(
 );
 
 /** Finnish (Suomi)
- * @author Cimon Avaro
  * @author Nike
+ * @author Cimon Avaro
  */
 $messages['fi'] = array(
 	'math_noblahtex'                        => 'Blahtexin suorittaminen epäonnistui. Sen pitäisi sijaita kohteessa $1.',
 	'math_CannotChangeDirectory'            => 'Työhakemiston vaihtaminen epäonnistui.',
 	'math_CannotCreateTexFile'              => 'Tex-tiedoston luominen epäonnistui.',
-	'math_CannotWriteTexFile'               => 'Ei voitu kirjoittaa tex tiedostoon',
-	'math_IllegalCharacter'                 => 'Asiaankuulumaton merkki syötteessä',
+	'math_CannotWriteTexFile'               => 'Tex-tiedostoon kirjoittaminen epäonnistui.',
+	'math_IllegalCharacter'                 => 'Kelpaamaton merkki syötteessä',
 	'math_NotEnoughArguments'               => 'Liian vähän argumentteja komennolle $1.',
-	'math_PngIncompatibleCharacter'         => 'Ei onnistu tuottaa oikein PNG:iä joka sisältää merkin $1',
-	'math_ReservedCommand'                  => 'Komento "$1" on varattu blahtexin sisäiseen käyttöön',
+	'math_PngIncompatibleCharacter'         => 'Merkin $1 sisältävän PNG-tiedoston luominen oikein ei onnistu',
+	'math_ReservedCommand'                  => 'Komento <tt>$1</tt> on varattu blahtexin sisäiseen käyttöön',
 	'math_TooManyTokens'                    => 'Syöte on liian pitkä.',
-	'math_UnavailableSymbolFontCombination' => 'Symbolia "$1" ei löydy fontista "$2"',
+	'math_UnavailableSymbolFontCombination' => 'Symbolia <tt>$1</tt> ei löydy fontista $2.',
 	'math_UnrecognisedCommand'              => 'Tunnistamaton komento ”$1”',
 );
 
@@ -941,12 +941,43 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'math_CannotChangeDirectory'   => 'Kan ikke endre arbeidsmappe',
-	'math_CannotCreateTexFile'     => 'Kan ikke opprette tex-fil',
-	'math_CannotRunDvipng'         => 'Kan ikke kjøre dvipng',
-	'math_CannotRunLatex'          => 'Kan ikke kjøre latex',
-	'math_CannotWritePngDirectory' => 'Kan ikke skrive til PNG-mappe',
-	'math_CannotWriteTexFile'      => 'Kan ikke skriv til tex-fil',
+	'math-desc'                             => 'MathML-resultat for &lt;math&gt;-tagger',
+	'math_AmbiguousInfix'                   => 'Tvetydig plassering av «$1» (prøv å bruke ekstra parenteser «{ ... }» for å gjøre entydig)',
+	'math_CannotChangeDirectory'            => 'Kan ikke endre arbeidsmappe',
+	'math_CannotCreateTexFile'              => 'Kan ikke opprette tex-fil',
+	'math_CannotRunDvipng'                  => 'Kan ikke kjøre dvipng',
+	'math_CannotRunLatex'                   => 'Kan ikke kjøre latex',
+	'math_CannotWritePngDirectory'          => 'Kan ikke skrive til PNG-mappe',
+	'math_CannotWriteTexFile'               => 'Kan ikke skriv til tex-fil',
+	'math_IllegalCharacter'                 => 'Ulovlig tegn i opphavstekst',
+	'math_IllegalCommandInMathMode'         => 'Kommandoen «$1» er ulovlig i mattemodus',
+	'math_IllegalCommandInMathModeWithHint' => 'Kommandoen «$1» er ulovlig i mattemodus (kanskje du mente å bruke «$2» i stedet?)',
+	'math_IllegalCommandInTextMode'         => 'Kommandoen «$1» er ulovlig i tekstmodus',
+	'math_IllegalCommandInTextModeWithHint' => 'Kommandoen «$1» er ulovlig i tekstmodus (kanskje du mente å bruke «$2» i stedet?)',
+	'math_InvalidColour'                    => 'Fargen «$1» er ugyldig',
+	'math_InvalidUtf8Input'                 => 'Den innskrevne teksten var ikke gyldig UTF-8',
+	'math_LatexFontNotSpecified'            => 'Ingen LaTeX-skrifttype har blitt oppgitt for «$1»',
+	'math_MismatchedBeginAndEnd'            => 'Kommandoene «$1» og «$2» stemmer ikke overens',
+	'math_MisplacedLimits'                  => 'Kommandoen «$1» kan bare opptre etter en matteoperator (overvei å bruke «\\mathop»)',
+	'math_MissingCommandAfterNewcommand'    => 'Manglende eller ulovlig ny kommando etter «\\newcommand» (nøyaktig én kommentar må være definert; den må begynne med en omvendt skråstrek «\\» og inneholde kun bokstaver)',
+	'math_MissingDelimiter'                 => 'Manglende skilletegn etter «$1»',
+	'math_MissingOrIllegalParameterCount'   => 'Manglende eller ulovlig parameterantall funnet i definisjonen av «$1» (må være et enkelt siffer fra og med 1 til og med 9)',
+	'math_MissingOrIllegalParameterIndex'   => 'Manglende eller ulovlig parameterindeks i definisjonen av «$1»',
+	'math_NonAsciiInMathMode'               => 'Tegn som ikke er i ASCII kan kun brukes i tekstmodus (prøv å omringe problemtegnene med «\\text{...}»)',
+	'math_NotEnoughArguments'               => 'For få argumenter ble gitt for «$1»',
+	'math_PngIncompatibleCharacter'         => 'Kunne ikke generere PNG med tegnet $1',
+	'math_ReservedCommand'                  => 'Kommandoen «$1» er reservert for intern bruk av blahtex',
+	'math_TooManyMathmlNodes'               => 'Det er for mange noder i MathML-treet',
+	'math_UnavailableSymbolFontCombination' => 'Symbolet «$1» er ikke tilgjengelig i skrifttypen «$2»',
+	'math_UnexpectedNextCell'               => 'Kommandoen «&» kan kun opptre inne i en «\\begin ... \\end»-blokk',
+	'math_UnexpectedNextRow'                => 'Kommandoen «\\\\» kan kun opptre inne i en «\\begin ... \\end»-blokk',
+	'math_UnmatchedBegin'                   => 'Fant «\\begin» uten tilsvarende «\\end»',
+	'math_UnmatchedEnd'                     => 'Fant «\\end» uten tilsvarende «\\begin»',
+	'math_UnmatchedLeft'                    => 'Fant «\\left» uten tilsvarende «\\right»',
+	'math_UnmatchedRight'                   => 'Fant «\\right» uten tilsvarende «\\left»',
+	'math_UnrecognisedCommand'              => 'Ugjenkjennelig kommando «$1»',
+	'math_WrongFontEncoding'                => 'Symbolet «$1» kan ikke opptre i tegnkodingen «$2»',
+	'math_WrongFontEncodingWithHint'        => 'Symbolet «$1» kan ikke opptre i tegnkodingen «$2» (prøv å bruke kommandoen «$3{...}»)',
 );
 
 /** Occitan (Occitan)

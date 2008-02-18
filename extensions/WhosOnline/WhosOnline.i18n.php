@@ -44,6 +44,14 @@ $messages['br'] = array(
 	'whosonline-desc' => 'Diskouez a ra [[Special:WhosOnline|ur roll]] eus an dud enskrivet hag eus an dud dianav zo enlinenn bremañ.',
 );
 
+/** German (Deutsch)
+ * @author MF-Warburg
+ */
+$messages['de'] = array(
+	'whosonline'      => 'Wer ist online',
+	'whosonline-desc' => 'Zeigt [[Special:WhosOnline|eine Liste]] der eingeloggten und anonymen Benutzer, die im Moment online sind',
+);
+
 /** French (Français)
  * @author Grondin
  */

@@ -182,6 +182,7 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'spamdifftool'                  => 'Zwarte Lijst beheren',
+	'spamdifftool-desc'             => 'Maakt het mogelijk nieuwe regels aan de zwarte lijst voor spam toe te voegen op basis van verschillen',
 	'spamdifftool_cantedit'         => 'Sorry - u heeft geen toelating om de Zwarte Lijst tegen Spam te bewerken.',
 	'spamdifftool_notext'           => "Er is geen tekst om toe te voegen aan de Zwarte Lijst tegen spam. Klik <a href='$1'>hier</a> om door te gaan.",
 	'spamdifftool_confirm'          => "Bevestig dat u deze namen aan de Zwarte Lijst tegen spam  wil toevoegen. (Klik <a href='$1' target='new'>hier</a> om een probleem te melden.)",

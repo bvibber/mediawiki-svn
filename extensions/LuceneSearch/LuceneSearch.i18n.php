@@ -558,10 +558,15 @@ $1
 	'searchincategory'      => 'בקטגוריה',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ * @author Dnik
+ */
 $messages['hr'] = array(
+	'lucene-desc'           => 'Sučelje prema tražilici Apache Lucene',
 	'searchnumber'          => '<strong>Rezultati $1-$2 od $3</strong>',
-	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Prethodno</span>',
-	'searchnext'            => '<span style=\'font-size: small\'>Slijedeći</span> &#x00BB;',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prethodno</span>",
+	'searchnext'            => "<span style='font-size: small'>Slijedeći</span> &#x00BB;",
 	'lucene-searchscore'    => 'Povezanost: $1%',
 	'lucene-resultsize'     => '$1 ($2 riječi)',
 	'searchdidyoumean'      => 'Da li ste mislili: "<a href="$1">$2</a>"?',
@@ -1168,6 +1173,7 @@ $1
  * @author HalanTul
  */
 $messages['sah'] = array(
+	'lucene-desc'           => 'Apache Lucene диэн көрдүүр движок интерфейса',
 	'searchnumber'          => '<strong>Результаты $1—$2 из $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Инн.</span>",
 	'searchnext'            => "<span style='font-size: small'>Аныг.</span> &#x00BB;",
@@ -1403,6 +1409,7 @@ $messages['ur'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'lucene-desc'           => 'Giao diện của bộ tìm kiếm Apache Lucene',
 	'searchnumber'          => '<strong>Kết quả từ $1 đến $2 trong tổng số $3</strong>',
 	'searchprev'            => '« <span style="font-size: small;">Trước</span>',
 	'searchnext'            => '<span style="font-size: small;">Tiếp</span> »',

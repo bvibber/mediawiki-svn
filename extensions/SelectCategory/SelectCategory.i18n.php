@@ -79,9 +79,11 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Xosé
+ * @author Alma
  */
 $messages['gl'] = array(
 	'selectcategory-title'    => 'Seleccionar categorías',
+	'selectcategory-desc'     => 'Amosa ao usuario para seleccionar das categorías existentes cando edita unha páxina',
 	'selectcategory-subtitle' => 'Faga clic co botón de maiúsculas e o rato para seleccionar varias entradas contiguas. Co botón Ctrl e o rato para seleccionar entradas non contiguas.',
 );
 
@@ -131,6 +133,7 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'selectcategory-title'    => 'Selecteer categorieën',
+	'selectcategory-desc'     => 'Stelt gebruikers in staat uit bestaande categorieën te kiezen bij het bewerken van een pagina',
 	'selectcategory-subtitle' => 'Shiftklik om meerdere opeenvolgende categorieën te selecteren, Ctrlklik om niet-openvolgende categorieën te selecteren.',
 );
 

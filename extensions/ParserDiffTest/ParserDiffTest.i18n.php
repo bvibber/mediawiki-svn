@@ -190,15 +190,16 @@ $messages['frp'] = array(
 );
 
 /** Galician (Galego)
- * @author Xosé
  * @author Alma
+ * @author Xosé
  */
 $messages['gl'] = array(
-	'pdtest_no_target'  => 'Non se especificou o destino.',
-	'pdtest_no_changes' => 'Non foron detectados cambios.',
-	'pdtest_ok'         => 'De acordo',
-	'pdtest_get_text'   => 'Obter texto da páxina',
-	'pdtest_diff'       => 'Diferenzas',
+	'pdtest_no_target'    => 'Non se especificou o destino.',
+	'pdtest_page_missing' => 'A páxina especificada non foi atopada na base de datos.',
+	'pdtest_no_changes'   => 'Non foron detectados cambios.',
+	'pdtest_ok'           => 'De acordo',
+	'pdtest_get_text'     => 'Obter texto da páxina',
+	'pdtest_diff'         => 'Diferenzas',
 );
 
 /** Hebrew (עברית)
@@ -381,13 +382,18 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'parserdifftest'      => 'Parserdifftest',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Spesialside]] for sammenligning av resultatet fra to forskjellige parsere',
 	'pdtest_no_target'    => 'Intet mål oppgitt.',
+	'pdtest_page_missing' => 'Den oppgitte siden ble ikke funnet i databasen.',
 	'pdtest_no_changes'   => 'Ingen endringer oppdaget.',
+	'pdtest_time_report'  => '<b>$1</b> tok $2 sekunder, <b>$3</b> tok $4 sekunder.',
 	'pdtest_title'        => 'Konteksttittel:',
+	'pdtest_text'         => 'Skriv inn tekst:',
 	'pdtest_ok'           => 'OK',
 	'pdtest_get_text'     => 'Få tekst fra siden',
 	'pdtest_diff'         => 'Forskjeller',
 	'pdtest_side_by_side' => 'Resultatsammenligning',
+	'pdt_comparing_page'  => 'Sammeligner parserresultat fra [[$1]]',
 );
 
 /** Occitan (Occitan)
@@ -469,6 +475,7 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'parserdifftest'      => 'Синтаксис анализаторын (парсер) уларыйыытын көрүү',
+	'pdtest-desc'         => 'Икки тус туспа парсердар таһаарыыларын уратытын көрдөрөр [[Special:ParserDiffTestSpecial|аналлаах сирэй]]',
 	'pdtest_no_target'    => 'Соруга ыйыллыбатах.',
 	'pdtest_page_missing' => 'Ыйыллыбыт сирэй билэ тиһигэр көстүбэтэ.',
 	'pdtest_no_changes'   => 'Уларыйыы көстүбэтэ.',
@@ -576,9 +583,11 @@ $messages['tr'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
+ * @author Minh Nguyen
  */
 $messages['vi'] = array(
 	'parserdifftest'      => 'So sánh kiểm thử bằng hàm phân tích',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Trang đặc biệt]] để so sánh mã nguồn được sản xuất bởi hai bộ xử lý khác nhau',
 	'pdtest_no_target'    => 'Chưa xác định mục tiêu',
 	'pdtest_page_missing' => 'Trang chỉ định không tìm thấy trong cơ sở dữ liệu.',
 	'pdtest_no_changes'   => 'Không tìm thấy sự khác biệt nào.',

@@ -105,16 +105,21 @@ $messages['fr'] = array(
 	'importfreeimages_returntoform'          => "ou, cliquez <a href='$1'>ici</a> pour revenir à votre liste de résultats.",
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Xosé
+ */
 $messages['gl'] = array(
-	'importfreeimages'              => 'Importar Imaxes Libres',
-	'importfreeimages_description'  => 'Esta páxina permítelle procurar fotos de flickr con licenza correcta e importalos ao seu wiki.',
-	'importfreeimages_nophotosfound' => 'Ningunhas fotos foron atopadas cos criterios \'$1\' de procura, ténteo de novo.',
-	'importfreeimages_owner'        => 'Autor',
-	'importfreeimages_importthis'   => 'importar isto',
-	'importfreeimages_next'         => 'Seguinte $1',
-	'importfreeimages_filefromflickr' => '$1 polo usuario <b>[$2]</b> de flickr. Orixinal URL',
+	'importfreeimages'                       => 'Importar Imaxes Libres',
+	'importfreeimages_description'           => 'Esta páxina permítelle procurar fotos de flickr con licenza correcta e importalos ao seu wiki.',
+	'importfreeimages_nophotosfound'         => "Ningunhas fotos foron atopadas cos criterios '$1' de procura, ténteo de novo.",
+	'importfreeimages_invalidurl'            => 'A URL "$1" non é unha imaxe válida de Flickr',
+	'importfreeimages_owner'                 => 'Autor',
+	'importfreeimages_importthis'            => 'importar isto',
+	'importfreeimages_next'                  => 'Seguinte $1',
+	'importfreeimages_filefromflickr'        => '$1 polo usuario <b>[$2]</b> de flickr. Orixinal URL',
 	'importfreeimages_promptuserforfilename' => 'Introduza un nome de ficheiro de destino:',
-	'importfreeimages_returntoform' => 'Ou, prema <a href=\'$1\'>here</a> para voltar á súa procura de resultados',
+	'importfreeimages_returntoform'          => "Ou, prema <a href='$1'>here</a> para voltar á súa procura de resultados",
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -169,6 +174,7 @@ $messages['nl'] = array(
 	'importfreeimages_description'           => "Deze pagina laat u toe om juist gelicenseerde foto's van flickr te zoeken and die te importeren naar uw wiki.",
 	'importfreeimages_noapikey'              => 'U heeft geen Flickr API Key ingesteld. U kunt een API-sleutel [http://www.flickr.com/services/api/misc.api_keys.html hier] verkrijgen en instellen als wgFlickrAPIKey in ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'         => "Er zijn geen foto's gevonden voor uw zoekcriteria '$1', probeer opniew.",
+	'importfreeimages_invalidurl'            => 'De URL "$1" is geen geldige afbeelding op Flickr.',
 	'importfreeimages_owner'                 => 'Auteur',
 	'importfreeimages_importthis'            => 'dit importeren',
 	'importfreeimages_next'                  => 'Volgende $1',
@@ -177,17 +183,22 @@ $messages['nl'] = array(
 	'importfreeimages_returntoform'          => "Of, klik <a href='$1'>hier</a> om terug te keren naar uw zoekresultaten",
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'importfreeimages'              => 'Imperter frie bilder',
-	'importfreeimages_description'  => 'Denne siden lar deg søke i bilder med riktig lisens på Flickr og importere dem til wikien din.',
-	'importfreeimages_noapikey'     => 'Du har ikke konfigurert API-nøkkelen din for Flickr. For å gjøre det må du skaffe en API-nøkkel [http://www.flickr.com/services/api/misc.api_keys.html herfra] og sette wgFlickrAPIKey i ImportFreeImages.php.',
-	'importfreeimages_nophotosfound' => 'Ingen bilder ble funnet for søket «$1». Prøv igjen.',
-	'importfreeimages_owner'        => 'Opphavsperson',
-	'importfreeimages_importthis'   => 'importer',
-	'importfreeimages_next'         => 'Neste $1',
-	'importfreeimages_filefromflickr' => '$1 av brukeren <b>[$2]</b> fra Flickr. Original URL',
+	'importfreeimages'                       => 'Imperter frie bilder',
+	'importfreeimages-desc'                  => 'Gir muligheten til å [[Special:ImportFreeImages|importere fri bilder]] fra [http://flickr.com flickr]',
+	'importfreeimages_description'           => 'Denne siden lar deg søke i bilder med riktig lisens på Flickr og importere dem til wikien din.',
+	'importfreeimages_noapikey'              => 'Du har ikke konfigurert API-nøkkelen din for Flickr. For å gjøre det må du skaffe en API-nøkkel [http://www.flickr.com/services/api/misc.api_keys.html herfra] og sette wgFlickrAPIKey i ImportFreeImages.php.',
+	'importfreeimages_nophotosfound'         => 'Ingen bilder ble funnet for søket «$1». Prøv igjen.',
+	'importfreeimages_invalidurl'            => 'URL-en «$1» er ikke et gyldig Flickr-bilde',
+	'importfreeimages_owner'                 => 'Opphavsperson',
+	'importfreeimages_importthis'            => 'importer',
+	'importfreeimages_next'                  => 'Neste $1',
+	'importfreeimages_filefromflickr'        => '$1 av brukeren <b>[$2]</b> fra Flickr. Original URL',
 	'importfreeimages_promptuserforfilename' => 'Skriv inn et målnavn for filen:',
-	'importfreeimages_returntoform' => 'Elle rklikk <a href="$1">her</a> for å gå tilbake til søkeresultatene',
+	'importfreeimages_returntoform'          => 'Elle rklikk <a href="$1">her</a> for å gå tilbake til søkeresultatene',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -308,13 +319,16 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Max sonnelid
+ * @author M.M.S.
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'importfreeimages'            => 'Importera fria bilder',
-	'importfreeimages_owner'      => 'Upphovsman',
-	'importfreeimages_importthis' => 'import denna',
-	'importfreeimages_next'       => 'Nästa $1',
+	'importfreeimages'               => 'Importera fria bilder',
+	'importfreeimages_nophotosfound' => "Inga bilder hittades för dina sök kriterier '$1', var god pröva igen.",
+	'importfreeimages_invalidurl'    => 'URL-en "$1" är inte en gilitg Flickr bild.',
+	'importfreeimages_owner'         => 'Upphovsman',
+	'importfreeimages_importthis'    => 'import denna',
+	'importfreeimages_next'          => 'Nästa $1',
 );
 
 /** Volapük (Volapük)

@@ -431,15 +431,16 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'contributors'             => 'Bidragsytere',
+	'contributors-desc'        => 'Gir sammendrag av hovedbidragsyterne på en side',
 	'contributors-toolbox'     => 'Hovedbidragsytere',
-	'contributors-legend'      => 'Liste over hovedbidragsytere til en artikkel',
+	'contributors-legend'      => 'Liste over hovedbidragsytere til en side',
 	'contributors-target'      => 'Tittel:',
 	'contributors-submit'      => 'Vis',
 	'contributors-subtitle'    => 'Hovedbidragsytere på $1',
 	'contributors-others-long' => 'Det er $1 andre bidragsytere på denne siden.',
 	'contributors-others'      => 'og $1 andre',
 	'contributors-badtitle'    => 'Ugyldig tittel.',
-	'contributors-nosuchpage'  => 'Artikkelen $1 eksisterer ikke.',
+	'contributors-nosuchpage'  => 'Siden $1 eksisterer ikke.',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -671,6 +672,13 @@ $messages['sv'] = array(
 	'contributors-others'      => 'och $1 andra',
 	'contributors-badtitle'    => 'Ogiltig titel.',
 	'contributors-nosuchpage'  => 'Sidan $1 existerar inte.',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'contributors-target' => 'శీర్షిక:',
 );
 
 /** Volapük (Volapük)

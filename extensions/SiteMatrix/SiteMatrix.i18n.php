@@ -334,6 +334,7 @@ $messages['he'] = array(
  */
 $messages['hr'] = array(
 	'sitematrix'           => 'Tablica Wikimedijinih projekata',
+	'sitematrix-desc'      => 'Prikazuje [[Special:SiteMatrix|popis wikija Wikimedije]]',
 	'sitematrix-language'  => 'Jezik',
 	'sitematrix-project'   => 'Ime projekta, poveznica među projektima i međuwiki poveznica',
 	'sitematrix-others'    => 'Ostali projekti Wikimedije',
@@ -685,10 +686,13 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
-	'sitematrix'          => 'Викимедиа бырайыактарын испииһэгэ',
-	'sitematrix-language' => 'Тыла',
-	'sitematrix-project'  => 'Бырайыак аата, бырайыак ыккардынааҕы ыйынньык уонна интервики',
-	'sitematrix-others'   => '«Викимедиа» атын бырайыактара',
+	'sitematrix'           => 'Викимедиа бырайыактарын испииһэгэ',
+	'sitematrix-desc'      => '[[Special:SiteMatrix|Викимедиа бырайыактарын испииһэгин]] көрдөрөр',
+	'sitematrix-language'  => 'Тыла',
+	'sitematrix-project'   => 'Бырайыак аата, бырайыак ыккардынааҕы ыйынньык уонна интервики',
+	'sitematrix-others'    => '«Викимедиа» атын бырайыактара',
+	'sitematrix-total'     => "'''Уопсай ахсаана: $1'''",
+	'sitematrix-sitetotal' => 'Барыта',
 );
 
 /** Slovak (Slovenčina)

@@ -213,8 +213,13 @@ $messages['it'] = array(
 	'deletedcontributions' => 'Contributi utente cancellati',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ * @author SPQRobin
+ */
 $messages['ja'] = array(
-	'deletedcontributions' => '利用者の削除された投稿履歴',
+	'deletedcontributions'      => '利用者の削除された投稿履歴',
+	'deletedcontributions-desc' => '{{int:group-sysop}}に[[{{ns:special}}:DeletedContributions|利用者の削除された投稿履歴]]の閲覧機能を提供する',
 );
 
 $messages['kk-cyrl'] = array(
@@ -430,11 +435,12 @@ $messages['uk'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
+ * @author Minh Nguyen
  * @author SPQRobin
  */
 $messages['vi'] = array(
 	'deletedcontributions'      => 'Đóng góp đã bị xóa của thành viên',
-	'deletedcontributions-desc' => 'Cung cấp cho sysop khả năng [[Special:DeletedContributions|xem các sửa đổi đã bị xóa của thành viên]]',
+	'deletedcontributions-desc' => 'Cung cấp cho người quản lý khả năng [[Special:DeletedContributions|xem các sửa đổi đã bị xóa của thành viên]]',
 );
 
 $messages['vo'] = array(

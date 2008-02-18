@@ -335,8 +335,10 @@ $messages['pl'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Malafaya
  */
 $messages['pt'] = array(
+	'scanset-desc'                      => 'Ver imagens de páginas digitalizadas do conjunto de CD/DVD de Andreas Grosz',
 	'scanset_no_name'                   => 'ScanSet: É necessário especificar um nome de conjunto de scans (por exemplo, &lt;scanset name="EB1911" /&gt;).',
 	'scanset_invalid_name'              => 'ScanSet: conjunto de scans inválido ou não encontrado.',
 	'scanset_unrecognised_index_format' => 'ScanSet: formato de índice desconhecido',
@@ -352,9 +354,10 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author .:Ajvol:.
+ * @author HalanTul
  */
 $messages['ru'] = array(
-	'scanset-desc'                      => 'Просмотр изображений отсканированных страниц из CD/DVD коллекциий Андеаса Гроса (Andreas Grosz)',
+	'scanset-desc'                      => 'Просмотр изображений отсканированных страниц из CD/DVD коллекций Андреаса Гроса (Andreas Grosz)',
 	'scanset_no_name'                   => 'ScanSet: вы должны указать название коллекции снимков, например &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name'              => 'ScanSet: ошибка в названии набора снимков, или указанный набор отсутствует',
 	'scanset_unrecognised_index_format' => 'ScanSet: неизвестный формат индекса',
@@ -372,6 +375,7 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
+	'scanset-desc'                      => 'Андреас Грос (Andreas Grosz) CD/DVD коллекциятыттан сканердаммыт ойуулары көрүү',
 	'scanset_no_name'                   => 'ScanSet: ойуулар/хаартыскалар уопсай ааттарын суруйуохтааххын, холобур &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name'              => 'ScanSet: ойуу/хаартыска бөлөҕө суох эбэтэр аата сыыһа суруллубут.',
 	'scanset_unrecognised_index_format' => 'ScanSet: Индекс биллибэт формата',

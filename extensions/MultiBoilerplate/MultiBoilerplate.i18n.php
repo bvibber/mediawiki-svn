@@ -64,6 +64,13 @@ $messages['nl'] = array(
 	'multiboilerplate-submit' => 'Laden',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'multiboilerplate-submit' => 'Last',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -96,3 +103,4 @@ $messages['sk'] = array(
 	'multiboilerplate-legend' => 'Vyberte nápis',
 	'multiboilerplate-submit' => 'Načítať',
 );
+

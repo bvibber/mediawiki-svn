@@ -279,6 +279,7 @@ $messages['ga'] = array(
  * @author Alma
  */
 $messages['gl'] = array(
+	'inputbox-desc'           => 'Permitir a inclusión de formularios predefinidos de HTML',
 	'inputbox-error-no-type'  => 'Non se especificou o tipo de caixa de entrada para crear.',
 	'inputbox-error-bad-type' => 'A caixa de entrada de tipo "$1" non se recoñece. Especifique "crear", "comentario", "procurar" ou "procurar2".',
 	'tryexact'                => 'Tentar coincidencias exactas',
@@ -311,7 +312,12 @@ $messages['he'] = array(
 	'createarticle'  => 'יצירת הדף',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ * @author Dnik
+ */
 $messages['hr'] = array(
+	'inputbox-desc'           => 'Dozvoli uključivanje predefiniranih obrazaca u HTML-u',
 	'inputbox-error-no-type'  => 'Niste naveli tip ulaznog polja koje želite stvoriti.',
 	'inputbox-error-bad-type' => 'Tip ulaznog polja "$1" nije prepoznat. Molimo navedite "create", "comment", "search" ili "search2".',
 	'tryexact'                => 'Pokušaj naći točan pogodak',
@@ -558,6 +564,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'inputbox-desc'           => 'Tillater inkludering av forhåndsdefinerte HTML-skjemaer',
 	'inputbox-error-no-type'  => 'Du har ikke oppgitt hva slags inputboks du vil lage.',
 	'inputbox-error-bad-type' => 'Inputboks av typen «$1» gjenkjennes ikke. Vennligst velg «create», «comment», «search» eller «search2».',
 	'tryexact'                => 'Prøv nøyaktig treff',
@@ -666,6 +673,7 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
+	'inputbox-desc'           => 'Эрдэттэн талыллыбыт HTML-формалары холбуур',
 	'inputbox-error-no-type'  => 'Вы не указали тип создаваемого поля ввода.',
 	'inputbox-error-bad-type' => 'Биллибэт тип поля ввода «$1». Бука диэн көҥүллэнэри тал: «create», «comment», «search» эбэтэр «search2».',
 	'tryexact'                => 'Чопчу булуу',
@@ -822,10 +830,16 @@ $messages['vec'] = array(
 	'createarticle' => 'Crea voçe',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
 $messages['vi'] = array(
-	'tryexact'       => 'Thử tìm đoạn văn khớp chính xác với từ khóa',
-	'searchfulltext' => 'Tìm toàn văn',
-	'createarticle'  => 'Viết bài mới',
+	'inputbox-desc'           => 'Thêm những biểu mẫu HTML đơn giản',
+	'inputbox-error-no-type'  => 'Bạn chưa định rõ loại biểu mẫu để tạo ra.',
+	'inputbox-error-bad-type' => 'Loại biểu mẫu “$1” không hợp lệ. Xin hãy chọn “create”, “comment”, “search”, hay “search2”.',
+	'tryexact'                => 'Thử tìm đoạn văn khớp chính xác với từ khóa',
+	'searchfulltext'          => 'Tìm toàn văn',
+	'createarticle'           => 'Viết bài mới',
 );
 
 /** Volapük (Volapük)

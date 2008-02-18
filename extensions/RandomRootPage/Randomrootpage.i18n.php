@@ -15,6 +15,14 @@ $messages['en'] = array(
 	'randomrootpage-desc'     => '[[Special:Randomrootpage|Special page]] which fetches a random root page',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'randomrootpage'      => 'صفحة جذر عشوائية',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|صفحة خاصة]] تعرض صفحة جذر عشوائية',
+);
+
 /** Persian (فارسی)
  * @author Hojjat (aka Huji)
  */
@@ -30,3 +38,12 @@ $messages['nl'] = array(
 	'randomrootpage'          => 'Willekeurige hoofdpagina',
 	'randomrootpage-desc'     => '[[Special:Randomrootpage|Speciale pagina]] die een willekeurige hoofdpagina toont',
 );
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'randomrootpage'      => 'Tilfeldig rotside',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Spesialside]] som henter en tilfeldig rotside',
+);
+

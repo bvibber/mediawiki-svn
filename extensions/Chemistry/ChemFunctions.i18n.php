@@ -353,6 +353,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'chemicalsources'                  => 'Kjemiske kilder',
+	'chemicalsource-desc'              => 'Legger til taggen <nowiki><chemform></nowiki> for kjemiske formler',
 	'chemFunctions_ListPage'           => 'Kjemiske kilder',
 	'chemFunctions_DataList'           => 'Nedenunder er en liste over lenker til sider som kan gi nyttig informasjon om den kjemiske substansen du leter etter.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula ved NIST</a><br />
@@ -574,8 +575,10 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'chemicalsources'       => 'రసాయన మూలాలు',
-	'chemFunctions_Formula' => 'సూత్రం',
+	'chemicalsources'        => 'రసాయన మూలాలు',
+	'chemFunctions_ListPage' => 'రసాయన మూలాలు',
+	'chemFunctions_CAS'      => 'CAS సంఖ్య',
+	'chemFunctions_Formula'  => 'సూత్రం',
 );
 
 /** Turkish (Türkçe)

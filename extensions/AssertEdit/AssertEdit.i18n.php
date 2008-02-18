@@ -236,6 +236,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'assert_edit_title'   => 'Redigeringsforsikring mislyktes.',
+	'assert_edit_desc'    => 'Legger til redigeringsforsikring til bruk for roboter',
 	'assert_edit_message' => 'Den spesifiserte redigeringsforsikringen ($1) mislyktes.',
 );
 

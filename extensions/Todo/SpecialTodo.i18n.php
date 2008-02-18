@@ -136,6 +136,7 @@ $messages['gl'] = array(
 	'todo-list-change'      => 'Cambiar',
 	'todo-list-cancel'      => 'Cancelar',
 	'todo-new-item'         => 'Novo artigo',
+	'todo-issue-summary'    => 'Resumo do tema:',
 	'todo-form-details'     => 'Detalles:',
 	'todo-form-email'       => 'Para recibir unha notificación por correo electrónico cando o artigo esté pechado, teclee o seu enderezo aquí:',
 	'todo-form-submit'      => 'Presentar Consulta',

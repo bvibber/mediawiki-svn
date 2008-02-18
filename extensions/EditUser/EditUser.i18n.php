@@ -100,6 +100,7 @@ $messages['fr'] = array(
  * @author Alma
  */
 $messages['gl'] = array(
+	'edituser'          => 'Editar Usuario',
 	'edituser-username' => 'Nome',
 );
 
@@ -144,6 +145,17 @@ $messages['nl'] = array(
 	'edituser-logout'   => 'Gebruiker afmelden',
 	'edituser-username' => 'Naam',
 	'edituser-dosearch' => 'Zoeken',
+);
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'edituser-desc'     => 'Lar priviligerte brukere redigere andre brukeres innstillinger',
+	'edituser'          => 'Rediger bruker',
+	'edituser-logout'   => 'Logg ut brukeren',
+	'edituser-username' => 'Navn',
+	'edituser-dosearch' => '{{int:Search}}',
 );
 
 /** Occitan (Occitan)
@@ -206,6 +218,14 @@ $messages['sv'] = array(
 	'edituser-logout'   => 'Logga ut användare',
 	'edituser-username' => 'Namn',
 	'edituser-dosearch' => 'Sök',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'edituser-username' => 'పేరు',
+	'edituser-dosearch' => 'వెతుకు',
 );
 
 /** Volapük (Volapük)
