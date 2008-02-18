@@ -356,13 +356,12 @@
 				$wgRightsText ) . "\n</div>";
 		*/
 	
-		/*if( $wgUser->getOption('showtoolbar') and !$this->isCssJsSubpage ) {
+		if( $wgUser->getOption('showtoolbar') and !$this->isCssJsSubpage ) {
 			# prepare toolbar for edit buttons
 			$toolbar = $this->getEditToolbar();
 		} else {
 			$toolbar = '';
-		}*/
-		$toolbar='';
+		}		
 
 		// activate checkboxes if user wants them to be always active
 		if( !$this->preview && !$this->diff ) {

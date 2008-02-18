@@ -89,7 +89,7 @@ var video_attributes = {
 
 //the mvEmbed object drives basic loading of libs:
 var mvEmbed = {
-  Version: '0.6',  
+  Version: '0.7',  
   loaded:false,
   load_time:0,
   flist:Array(),
@@ -430,10 +430,12 @@ var mvJsLoader = {
  * for an example of the problem see:1.1.3 working:http://pastie.caboo.se/92588
  * and >= 1.1.4 not working: http://pastie.caboo.se/92595
  * $j(document).ready( function(){ */
-function init_mv_embed(){
+function init_mv_embed(force){
 	js_log('mv_init');
-	if(mv_init_done)return ;
-	mv_init_done=true;
+	if(!force){
+		if(mv_init_done)return ;
+		mv_init_done=true;
+	}
 	//check if this page does have video or playlist
 	if(document.getElementsByTagName("video").length!=0 ||
 	   document.getElementsByTagName("playlist").length!=0){
@@ -1372,14 +1374,14 @@ function getMvEmbedPath(){
 	     /*
 	      * IE and non-firebug debug:
 	      */	     
-	     /*var log_elm = document.getElementById('mv_js_log');
+	     var log_elm = document.getElementById('mv_js_log');
 	     if(!log_elm){
 	     	document.write('<div style="position:absolute;z-index:50;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
 	     	var log_elm = document.getElementById('mv_js_log');
 	     }
 	     if(log_elm){
 	     	log_elm.value+=string+"\n";
-	     }*/
+	     }
 	   }
 	}
 //}

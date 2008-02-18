@@ -324,6 +324,11 @@ function mv_edit_disp(titleKey, mvd_id){
 		//add javascript hooks     
 		add_autocomplete(mvd_id);     
 		add_adjust_hooks(mvd_id);            
+		//add buttons if relevent: 
+		js_log('edit buttons: ' + typeof mwEditButtons);
+		mwEditButtons=[]; //empty out the global editButtons array
+		js_log('updated now: edit buttons: ' + typeof mwEditButtons);
+		mwSetupToolbar();
       }
 }
 function mv_history_disp(titleKey, mvd_id){

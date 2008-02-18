@@ -217,8 +217,8 @@ function mv_ex(mvd_id){
 			js_log('set to: '+ data);
 			$j('#mvr_'+mvd_id).html(data);
 			hl_search_terms('#mvr_'+mvd_id);
-			//rn v_embed rewrite: 
-			init_mv_embed();
+			//re run mv_embed rewrite: 
+			init_mv_embed(true);
 		});
 	}else{
 		$j('#mvr_desc_'+mvd_id).fadeIn('fast');
