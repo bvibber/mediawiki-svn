@@ -3,14 +3,13 @@
  * Internationalisation file for Poem extension.
  *
  * @addtogroup Extensions
-*/
+ */
 
 $messages = array();
 
 $messages['en'] = array(
 	'poem-desc' => 'Adds <tt>&lt;poem&gt;</tt> tag for poem formatting',
 );
-
 
 /** German (Deutsch)
  * @author Raimond Spekking
