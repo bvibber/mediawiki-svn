@@ -20,12 +20,15 @@
 
 $wgExtensionFunctions[]="wfPoemExtension";
 $wgExtensionCredits['parserhook'][] = array(
-	'name' => 'Poem',
-	'author' => array( 'Nikola Smolenski', 'Brion Vibber', 'Steve Sanbeg' ),
-	'description' => 'Adds <tt>&lt;poem&gt;</tt> tag for poem formatting',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Poem'
+	'name'           => 'Poem',
+	'author'         => array( 'Nikola Smolenski', 'Brion Vibber', 'Steve Sanbeg' ),
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Poem',
+	'version'        => '2008-02-18',
+	'description'    => 'Adds <tt>&lt;poem&gt;</tt> tag for poem formatting',
+	'descriptionmsg' => 'poem-desc',
 );
 $wgParserTestFiles[] = dirname( __FILE__ ) . "/poemParserTests.txt";
+$wgExtensionMessagesFiles['Poem'] =  dirname(__FILE__) . '/Poem.i18n.php';
 
 function wfPoemExtension() {
 	$GLOBALS['wgParser']->setHook("poem","PoemExtension");
@@ -33,36 +36,35 @@ function wfPoemExtension() {
 
 function PoemExtension( $in, $param=array(), $parser=null ) {
 
-    if (method_exists($parser, 'recursiveTagParse')) {
-    	//new methods in 1.8 allow nesting <nowiki> in <poem>.
-        $tag = $parser->insertStripItem("<br />", $parser->mStripState);
-	$text = preg_replace(
-		array("/^\n/","/\n$/D","/\n/",    "/^( +)/me"),
-		array("",     "",      "$tag\n","str_replace(' ','&nbsp;','\\1')"),
-		$in );
-		$text = $parser->recursiveTagParse($text);
-     } else {
-  
-	$text = preg_replace(
-		array("/^\n/","/\n$/D","/\n/",    "/^( +)/me"),
-		array("",     "",      "<br />\n","str_replace(' ','&nbsp;','\\1')"),
-		$in );
-	$ret = $parser->parse(
-		$text,
-		$parser->getTitle(),
-		$parser->getOptions(),
-		// We begin at line start
-		true,
-		// Important, otherwise $this->clearState()
-		// would get run every time <ref> or
-		// <references> is called, fucking the whole
-		// thing up.
-		false
-	);
-	
-	$text = $ret->getText();
-    }
-  
+	if( method_exists( $parser, 'recursiveTagParse' ) ) {
+		//new methods in 1.8 allow nesting <nowiki> in <poem>.
+		$tag = $parser->insertStripItem( "<br />", $parser->mStripState );
+		$text = preg_replace(
+			array( "/^\n/", "/\n$/D", "/\n/", "/^( +)/me" ),
+			array( "", "", "$tag\n", "str_replace(' ','&nbsp;','\\1')" ),
+			$in );
+			$text = $parser->recursiveTagParse( $text );
+	} else {
+		$text = preg_replace(
+			array( "/^\n/", "/\n$/D", "/\n/", "/^( +)/me" ),
+			array( "", "", "<br />\n", "str_replace(' ','&nbsp;','\\1')" ),
+			$in );
+		$ret = $parser->parse(
+			$text,
+			$parser->getTitle(),
+			$parser->getOptions(),
+			// We begin at line start
+			true,
+			// Important, otherwise $this->clearState()
+			// would get run every time <ref> or
+			// <references> is called, fucking the whole
+			// thing up.
+			false
+		);
+
+		$text = $ret->getText();
+	}
+
 	global $wgVersion;
 	if( version_compare( $wgVersion, "1.7alpha" ) >= 0 ) {
 		// Pass HTML attributes through to the output.
@@ -71,18 +73,16 @@ function PoemExtension( $in, $param=array(), $parser=null ) {
 		// Can't guarantee safety on 1.6 or older.
 		$attribs = array();
 	}
-	
+
 	// Wrap output in a <div> with "poem" class.
 	if( isset( $attribs['class'] ) ) {
 		$attribs['class'] = 'poem ' . $attribs['class'];
 	} else {
 		$attribs['class'] = 'poem';
 	}
-	
+
 	return wfOpenElement( 'div', $attribs ) .
 		"\n" .
 		trim( $text ) .
 		"\n</div>";
 }
-
-
