@@ -30,12 +30,12 @@ class EditMessagesPage extends SpecialPage {
 
 		$wgOut->addHTML( "<form method=\"POST\" action=\"$encAction\">" );
 		$wgOut->addHTML( "<p><label>" . wfMsgHtml( 'editmsg-target' ) .
-			Xml::element( 'input', array( 'type' => 'text', 'name' => 'messageName', 
+			Xml::element( 'input', array( 'type' => 'text', 'name' => 'messageName',
 				'value' => $messageName, 'size' => 70 ) ) .
 			'</label></p>' );
-		$wgOut->addHTML( '<p>' . Xml::element( 'input', 
+		$wgOut->addHTML( '<p>' . Xml::element( 'input',
 			array(
-				'type' => 'submit', 
+				'type' => 'submit',
 				'name' => 'editmsg_search',
 				'value' => wfMsg( 'editmsg-search' )
 			) ) . '</p>' );
@@ -57,13 +57,13 @@ class EditMessagesPage extends SpecialPage {
 			if ( isset( $messages[$messageName] ) ) {
 				$msgValue = $messages[$messageName];
 				$originalMsgs[$lang] = $msgValue;
-				$wgOut->addHTML( '<tr>' . 
-					Xml::element( 'td', null, $lang ) . 
-					Xml::tags( 'td', null, 
-						Xml::element( 'textarea', 
+				$wgOut->addHTML( '<tr>' .
+					Xml::element( 'td', null, $lang ) .
+					Xml::tags( 'td', null,
+						Xml::element( 'textarea',
 							array(
 								'name' => "msg[{$lang}]",
-								'rows' => ceil( mb_strlen( $msgValue ) / 70 ) 
+								'rows' => ceil( mb_strlen( $msgValue ) / 70 )
 								          + substr_count( $msgValue, "\n" ),
 								'cols' => '70',
 							), $msgValue
@@ -83,7 +83,7 @@ class EditMessagesPage extends SpecialPage {
 			'name' => 'messageName',
 			'value' => $messageName
 		)));
-		$wgOut->addHTML( '<p>' . Xml::element( 'input', 
+		$wgOut->addHTML( '<p>' . Xml::element( 'input',
 			array(
 				'type' => 'submit',
 				'name' => 'editmsg_get_patch',
@@ -110,7 +110,7 @@ class EditMessagesPage extends SpecialPage {
 		if (  !$messageName ) {
 			throw new MWException( 'Bad form input: messageName missing' );
 		}
-	
+
 		$quote = "['\"]";
 		$encMsgName = preg_quote( $messageName, '/' );
 
@@ -188,7 +188,7 @@ class EditMessagesPage extends SpecialPage {
 
 			$length = $i - $startPos + 1;
 
-			# Evaluate the string that we just got from the message file, so that we can 
+			# Evaluate the string that we just got from the message file, so that we can
 			# see if it matches the expected starting value
 			$fileValue = eval( 'return ' . substr( $text, $startPos, $length ) . ';' );
 
@@ -223,7 +223,7 @@ class EditMessagesPage extends SpecialPage {
 
 		foreach ( $warnings as $warningType => $warnings2 ) {
 			if ( count( $warnings2 ) ) {
-				$wgOut->addWikiMsg( 'editmsg-warning-' . $warningType, 
+				$wgOut->addWikiMsg( 'editmsg-warning-' . $warningType,
 					implode( ', ', $warnings2 ) );
 			}
 		}
@@ -232,11 +232,11 @@ class EditMessagesPage extends SpecialPage {
 			$wgOut->addHTML( '<pre><bdo dir="ltr">' . htmlspecialchars( $out ) . '</bdo></pre>' );
 			$encodedValue = chunk_split( base64_encode( gzdeflate( $out ) ), 120, ' ' );
 			$encAction = $this->getTitle()->escapeFullUrl();
-			$wgOut->addHTML( 
-				"<p>\n" . 
-				"<form method=\"POST\" action=\"$encAction\">" . 
+			$wgOut->addHTML(
+				"<p>\n" .
+				"<form method=\"POST\" action=\"$encAction\">" .
 				"<input type=\"hidden\" name=\"diffText\" value=\"$encodedValue\"/>" .
-				'<input type="submit" name="editmsg_apply_patch" value="' . 
+				'<input type="submit" name="editmsg_apply_patch" value="' .
 					htmlspecialchars( wfMsg( 'editmsg-apply-patch' ) ) . '"/>' .
 				'</form></p>' );
 		}
@@ -276,4 +276,3 @@ class EditMessagesPage extends SpecialPage {
 		$wgOut->addHTML( '<p>' . $sk->makeLinkObj( $this->getTitle(), wfMsg( 'editmsg-new-search' ) ) . '</p>' );
 	}
 }
-
