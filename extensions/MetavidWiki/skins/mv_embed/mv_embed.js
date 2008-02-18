@@ -27,7 +27,7 @@ var mv_media_iframe_path = '/mv_embed/';
 
 var global_ogg_list = new Array();
 var _global = this;
-var global_dom_ready=0;
+var mv_init_done=false;
 
 if(!gMsg){var gMsg={};}
 //all default msg in [english] should be overwitten by the CMS languge msg system.
@@ -189,10 +189,11 @@ var embedTypes = {
 		
 		//add the detected plugin playback type to the plugins :
 		if(this.playerType){
-			js_log('player type ok');
+			js_log('player type ok: '+this.getPlayerLib());
 			if( this.getPlayerLib() ){				
 				mvEmbed.lib_plugins[this.getPlayerLib()+'Embed']='mv_'+this.getPlayerLib()+'Embed.js';
 			}
+			js_log('set lib: '  +mvEmbed.lib_plugins[this.getPlayerLib()+'Embed']);
 		}	
 	},
 	getPlayerType:function(){
@@ -431,7 +432,8 @@ var mvJsLoader = {
  * $j(document).ready( function(){ */
 function init_mv_embed(){
 	js_log('mv_init');
-	global_dom_ready=1;
+	if(mv_init_done)return ;
+	mv_init_done=true;
 	//check if this page does have video or playlist
 	if(document.getElementsByTagName("video").length!=0 ||
 	   document.getElementsByTagName("playlist").length!=0){
@@ -475,11 +477,12 @@ if (document.addEventListener) {
 }
 //for IE:
 if (document.all && !window.opera){ //Crude test for IE
+js_log('doing IE on ready');
 //Define a "blank" external JavaScript tag
   document.write('<script type="text/javascript" id="contentloadtag" defer="defer" src="javascript:void(0)"><\/script>')
   var contentloadtag=document.getElementById("contentloadtag")
   contentloadtag.onreadystatechange=function(){
-    if (this.readyState=="complete")
+    if (this.readyState=="complete" || this.readyState=='loaded')
       init_mv_embed();
   }
 }
@@ -504,6 +507,8 @@ if(embedTypes.safari){
 		init_mv_embed();
 	}				
 }
+//backup "onload" in case on DOM ready does not fire
+window.onload = init_mv_embed;
 /*
 * Coverts all occurrences of <video> tag into video object
 * (if a native support is not found) 
@@ -1367,14 +1372,14 @@ function getMvEmbedPath(){
 	     /*
 	      * IE and non-firebug debug:
 	      */	     
-	     /*var log_elm = document.getElementById('mv_js_log');
+	     var log_elm = document.getElementById('mv_js_log');
 	     if(!log_elm){
 	     	document.write('<div style="position:absolute;z-index:50;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
 	     	var log_elm = document.getElementById('mv_js_log');
 	     }
 	     if(log_elm){
 	     	log_elm.value+=string+"\n";
-	     }*/
+	     }
 	   }
 	}
 //}
