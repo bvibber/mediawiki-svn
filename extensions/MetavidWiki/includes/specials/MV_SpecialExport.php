@@ -181,13 +181,22 @@ class MV_SpecialExport {
 		//set cmml name space if inline: 
 		$ns = ($inline)?'cmml:':'';
 		$ns='';
+		if(!$force_track){
+			//check the request to get trac set:
+			$mvcp = new MV_Component();
+			$mvcp->procMVDReqSet();
+			$tracks = $mvcp->mvd_tracks;
+		}else{
+			$tracks = $force_track;
+		}
+		
 		//get the stream title	
 		$streamTitle = new MV_Title($this->stream_name.'/'.$this->req_time);		
 		$wgTitle = Title::newFromText($this->stream_name.'/'.$this->req_time, MV_NS_STREAM);
 		//do mvd_index query:
 		$mvd_res = MV_Index::getMVDInRange($streamTitle->getStreamId(),
 				$streamTitle->getStartTimeSeconds(), 
-				$streamTitle->getEndTimeSeconds(), $force_track);
+				$streamTitle->getEndTimeSeconds(), $tracks);
 		//get the stream stream req 
 		if(!$inline)header('Content-Type: text/xml');
 		//print the header:

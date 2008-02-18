@@ -121,7 +121,6 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		} 	
  		$sql = $sql_sel . $sql_from; 	
  		$sql.= "WHERE `stream_id`={$stream_id} ";
- 		
 		if($mvd_type!='all'){
 			//check if mvd_type is array:
 			if(is_array($mvd_type)){
