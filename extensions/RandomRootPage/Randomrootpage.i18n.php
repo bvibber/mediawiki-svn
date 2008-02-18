@@ -1,10 +1,9 @@
 <?php
-
 /**
- * Internationalisation file for extension SpecialFileList.
+ * Internationalisation file for extension RandomRootpage.
  *
  * @addtogroup Extensions
-*/
+ */
 
 $messages = array();
 
@@ -22,4 +21,12 @@ $messages['en'] = array(
 $messages['fa'] = array(
 	'randomrootpage'          => 'صفحهٔ تصادفی سرشاخه',
 	'randomrootpage-desc'     => '[[Special:Randomrootpage|صفحهٔ ویژه‌ای]] که به طور تصادفی یکی از صفحه‌های سرشاخه را نشان می دهد',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'randomrootpage'          => 'Willekeurige hoofdpagina',
+	'randomrootpage-desc'     => '[[Special:Randomrootpage|Speciale pagina]] die een willekeurige hoofdpagina toont',
 );
