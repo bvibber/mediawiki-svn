@@ -136,14 +136,16 @@ class MV_SpecialExport {
 	<head>
 		<link rel="alternate" type="text/html" href="<?=htmlentities($streamPageTitle->getFullURL() )?>" />
 		<img id="stream_thumb" src="<?=htmlentities($streamTitle->getStreamImageURL())?>"/>
+		<title><?=htmlentities($streamTitle->getTitleDesc())?></title>
 	</head>
 	<body>
 		<track id="v" provides="video">
 			<switch distinction="quality">
 		<? foreach($file_list as $file){ 				
-				$dAttr= ($file->getNameKey()==$mvDefaultVideoQualityKey)?' default="true"':'';
+				$dAttr=($file->getNameKey()==$mvDefaultVideoQualityKey)?' default="true"':'';
+				$dSrc=($file->getPathType()=='url_anx')?$streamTitle->getWebStreamURL($file->getNameKey()):$file->getFullURL();
 			?>
-				<video id="<?=htmlentities($file->getNameKey())?>"<?=$dAttr?> title="<?=htmlentities($file->get_desc())?>" content-type="<?=htmlentities($file->getContentType())?>" />	
+				<video id="<?=htmlentities($file->getNameKey())?>"<?=$dAttr?> src="<?=$dSrc?>" title="<?=htmlentities($file->get_desc())?>" content-type="<?=htmlentities($file->getContentType())?>" />	
 		<?}?>
 	</switch>
 		</track>
@@ -156,7 +158,7 @@ class MV_SpecialExport {
 					$query = 'stream_name='.$this->stream_name.'&feed_format=cmml&tracks='.strtolower($row->mvd_type);		
 					$clink = $sTitle->getFullURL($query);					
 ?>
-				<text id="<?=$row->mvd_type?>" title="<?=wfMsg($row->mvd_type)?>" lang="en" content-type="text/cmml" src="<?=htmlentities($clink)?>">
+				<text id="<?=$row->mvd_type?>" title="<?=wfMsg($row->mvd_type)?>" node_count="<?=$row->count?>" lang="en" content-type="text/cmml" src="<?=htmlentities($clink)?>">
 <?
 					//output inline cmml: 
 					if(in_array(strtolower($row->mvd_type), $mvcp->mvd_tracks)){

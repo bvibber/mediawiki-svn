@@ -475,17 +475,17 @@ function rewrite_by_id(vid_id){
 if (document.addEventListener) {
     document.addEventListener("DOMContentLoaded", function(){init_mv_embed()}, false);
 }
-//for IE:
-if (document.all && !window.opera){ //Crude test for IE
-js_log('doing IE on ready');
+//for IE (temporarally disabled causing empty document rewrites:
+/*if (document.all && !window.opera){ //Crude test for IE
+	js_log('doing IE on ready');
 //Define a "blank" external JavaScript tag
   document.write('<script type="text/javascript" id="contentloadtag" defer="defer" src="javascript:void(0)"><\/script>')
   var contentloadtag=document.getElementById("contentloadtag")
   contentloadtag.onreadystatechange=function(){
     if (this.readyState=="complete" || this.readyState=='loaded')
       init_mv_embed();
-  }
-}
+  } 
+}*/
 //for safari just force load all the libraries since it has no dom injection
 if(embedTypes.safari){
 	//load the base lib_jquery library: 
@@ -1372,14 +1372,14 @@ function getMvEmbedPath(){
 	     /*
 	      * IE and non-firebug debug:
 	      */	     
-	     var log_elm = document.getElementById('mv_js_log');
+	     /*var log_elm = document.getElementById('mv_js_log');
 	     if(!log_elm){
 	     	document.write('<div style="position:absolute;z-index:50;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
 	     	var log_elm = document.getElementById('mv_js_log');
 	     }
 	     if(log_elm){
 	     	log_elm.value+=string+"\n";
-	     }
+	     }*/
 	   }
 	}
 //}

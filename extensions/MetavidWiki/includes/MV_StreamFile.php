@@ -130,6 +130,9 @@
  		return $this->path;
  		//return str_replace('{sn}',$this->_parent_stream->name, $this->path);
  	}
+ 	function getPathType(){
+ 		return $this->path_type;
+ 	}
  	function getFullURL(){
  		//@@todo check on path if local 
  		/*if(isset($mvVideoArchivePaths[ $this->path_type ] )){

@@ -42,15 +42,16 @@ function mv_setup_search(){
 		});
 	}else{
 		js_log('mvDateInitObj is undefined');
-	}
-	
+	}	
+	//remove all old search_text binddings: 
+	$j('.mv_search_select').unbind();
 	//set up actions: 
 	$j('.mv_search_select').change(function(){
 		//get mv_sel_# number
 		id_parts = $j(this).attr('id').split('_');
 		var type = id_parts[1];
 		var inx = id_parts[2]; 
-		//js_log("id: "+$j(this).attr('id')+" got t:" + type+ ' Index:' + inx + ' val:' + $j("#"+this.id + " option:selected").val() );
+		js_log("id: "+$j(this).attr('id')+" got t:" + type+ ' Index:' + inx + ' val:' + $j("#"+this.id + " option:selected").val() );
 		switch($j("#"+this.id+" option:selected").val()){
 			case 'category':
 				$j('#mvs_'+inx+'_tc').html('<input class="mv_search_text"' +

@@ -153,7 +153,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  	function getMVDTypeInRange($stream_id, $start_time=null, $end_time=null){
  		global $mvIndexTableName;
  		$dbr =& wfGetDB(DB_SLAVE);	 		 		
- 		$sql = "SELECT `mvd_type`";
+ 		$sql = "SELECT COUNT(*) as `count`, `mvd_type`";
  		$sql.= " FROM {$dbr->tableName($mvIndexTableName)} " .
  				  " WHERE `stream_id` =".$stream_id; 				
  		if($end_time)$sql.=" AND `start_time` <= " . $end_time;

@@ -1971,11 +1971,11 @@ function bindReady(){
 	
 	// If IE is used, use the excellent hack by Matthias Miller
 	// http://www.outofhanwell.com/blog/index.php?title=the_window_onload_problem_revisited
-	else if ( jQuery.browser.msie ) {
-	
+	else if ( jQuery.browser.msie ) {				
 		// Only works if you document.write() it
-		document.write("<scr" + "ipt id=__ie_init defer=true " + 
-			"src=//:><\/script>");
+		//commented out by mdale (makes empty document when jQuery loaded dynamically )
+		/*document.write("<script id=__ie_init defer=true " + 
+			"src=//:><\/script>");*/
 	
 		// Use the defer script hack
 		var script = document.getElementById("__ie_init");
