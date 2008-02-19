@@ -44,8 +44,14 @@ function dtgSetupExtension() {
 	/**********************************************/
 	/***** credits (see "Special:Version")    *****/
 	/**********************************************/
-	$wgExtensionCredits['specialpage'][]= array('name'=>'Data Transfer', 'version'=>DT_VERSION, 'author'=>'Yaron Koren',
-          'url'=>'http://discoursedb.org/SemanticForms/', 'description' => 'Allows for importing and exporting structured data contained in template calls.');
+	$wgExtensionCredits['specialpage'][]= array(
+		'name'           => 'Data Transfer',
+		'version'        => DT_VERSION,
+		'author'         => 'Yaron Koren',
+		'url'            => 'http://discoursedb.org/SemanticForms/',
+		'description'    => 'Allows for importing and exporting structured data contained in template calls',
+		'descriptionmsg' => 'dt-desc',
+	);
 
 	return true;
 }
@@ -141,5 +147,3 @@ function dtfLoadMessagesManually() {
 /**********************************************/
 /***** other global helpers               *****/
 /**********************************************/
-
-?>

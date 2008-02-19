@@ -16,11 +16,8 @@ $dtgScriptPath = $wgScriptPath . '/extensions/DataTransfer';
 $dtgIP = $IP . '/extensions/DataTransfer';
 ##
 
-
 // PHP fails to find relative includes at some level of inclusion:
 //$pathfix = $IP . $dtgScriptPath;
 
 // load global functions
 require_once('DT_GlobalFunctions.php');
-
-?>

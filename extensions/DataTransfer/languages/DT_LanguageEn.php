@@ -11,5 +11,3 @@ class DT_LanguageEn extends DT_Language {
 );
 
 }
-
-?>

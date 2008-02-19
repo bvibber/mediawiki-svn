@@ -32,5 +32,3 @@ abstract class DT_Language {
 		return $this->m_SpecialPropertyAliases;
 	}
 }
-
-?>

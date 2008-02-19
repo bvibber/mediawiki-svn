@@ -11,15 +11,16 @@ $messages = array();
  * @author Yaron Koren
  */
 $messages['en'] = array(
-	'viewxml' => 'View XML',
-	'dt_viewxml_docu' => 'Please select among the following categories and namespaces to view in XML format.',
-	'dt_viewxml_categories' => 'Categories',
-	'dt_viewxml_namespaces' => 'Namespaces',
+	'dt-desc'                     => 'Allows for importing and exporting structured data contained in template calls',
+	'viewxml'                     => 'View XML',
+	'dt_viewxml_docu'             => 'Please select among the following categories and namespaces to view in XML format.',
+	'dt_viewxml_categories'       => 'Categories',
+	'dt_viewxml_namespaces'       => 'Namespaces',
 	'dt_viewxml_simplifiedformat' => 'Simplified format',
-	'dt_xml_namespace' => 'Namespace',
-	'dt_xml_page' => 'Page',
-	'dt_xml_field' => 'Field',
-	'dt_xml_name' => 'Name',
-	'dt_xml_title' => 'Title',
-	'dt_xml_freetext' => 'Free_Text',
+	'dt_xml_namespace'            => 'Namespace',
+	'dt_xml_page'                 => 'Page',
+	'dt_xml_field'                => 'Field',
+	'dt_xml_name'                 => 'Name',
+	'dt_xml_title'                => 'Title',
+	'dt_xml_freetext'             => 'Free_Text',
 );
