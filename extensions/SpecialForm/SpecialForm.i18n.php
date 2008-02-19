@@ -391,3 +391,10 @@ $messages['sv'] = array(
 	'formbadpagename'       => 'Dåligt sidnamn',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'formsave' => 'భద్రపరచు',
+);
+

@@ -111,6 +111,15 @@ $messages['lb'] = array(
 	'userimages-noimages' => '$1 huet keng Biller eropgelueden.',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'userimages-caption'  => 'Iliustracijos, įkeltos $1',
+	'userimages-noname'   => 'Neteisingas naudotojo vardas arba netiekiama.',
+	'userimages-noimages' => '$1 nėra įkėlęs iliustracijų.',
+);
+
 /* nld / Dutch */
 $messages['nl'] = array(
 	'userimages-caption' => 'Afbeeldingen toegevoegd door $1',

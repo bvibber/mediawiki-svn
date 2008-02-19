@@ -20,7 +20,7 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'charinsert-desc' => 'Позволява създаването на Джаваскрипт-кутия за вмъкване на нестандартни символи',
+	'charinsert-desc' => 'Позволява създаването на Джаваскрипт-кутия за [[MediaWiki:Edittools|вмъкване на нестандартни символи]]',
 );
 
 /** Bengali (বাংলা)
@@ -53,23 +53,24 @@ $messages['dsb'] = array(
 
 /** French (Français)
  * @author Urhixidur
+ * @author Meithal
  */
 $messages['fr'] = array(
-	'charinsert-desc' => 'Permet la création d’une boîte JavaScript pour l’insertion de caractères non-standards',
+	'charinsert-desc' => 'Permet la création d’une boîte JavaScript pour l’[[MediaWiki:Edittools|insertion de caractères non-standards]]',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'charinsert-desc' => 'Dowola wutworjenje JavaScriptoweho kašćika za zasunjenje njestandardnych znamješkow',
+	'charinsert-desc' => 'Dowola wutworjenje JavaScriptoweho kašćika za [[MediaWiki:Edittools|zasunjenje specialnych znamješkow]]',
 );
 
 /** Japanese (日本語)
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'charinsert-desc' => '特殊文字の挿入を行うJavaScriptボックスを追加する',
+	'charinsert-desc' => '[[MediaWiki:Edittools|特殊文字の挿入]]を行うJavaScriptボックスを追加する',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -109,7 +110,7 @@ $messages['pt'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'charinsert-desc' => 'Umožňuje vytvoriť JavaScriptové pole na vkladanie neštandardných znakov',
+	'charinsert-desc' => 'Umožňuje vytvoriť JavaScriptové pole na [[MediaWiki:Edittools|vkladanie neštandardných znakov]]',
 );
 
 /** Seeltersk (Seeltersk)
@@ -117,5 +118,12 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'charinsert-desc' => 'Ferlööwet dät Moakjen fon n JavaScript stjuurden Box toun Ienföigjen fon Sunnerteekene',
+);
+
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'charinsert-desc' => 'Gör det möjligt att infoga [[MediaWiki:Edittools|specialtecken]] i redigeringsrutan med hjälp av JavaScript',
 );
 

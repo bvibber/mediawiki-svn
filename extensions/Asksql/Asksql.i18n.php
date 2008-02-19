@@ -399,10 +399,17 @@ Esou Ufroen kënnen zu enger grousser Belaaschtung vun de Servere féieren, dofi
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Hugo.arg
  * @author Matasg
  */
 $messages['lt'] = array(
-	'asksql' => 'SQL prieiga',
+	'asksql'          => 'SQL prieiga',
+	'asksql-desc'     => 'Daryti SQL užklausas [[Special:Asksql|specialiajame puslapyje]]',
+	'sqlislogged'     => 'Atminkite, kad visos užklausos yra įregistruotos.',
+	'sqlquery'        => 'Įvesti užklausą',
+	'querybtn'        => 'Patvirtinti užklausą',
+	'selectonly'      => 'Tiktai neredaguojamos užklausos yra leidžiamos.',
+	'querysuccessful' => 'Užklausa sėkminga.',
 );
 
 /** Dutch (Nederlands)

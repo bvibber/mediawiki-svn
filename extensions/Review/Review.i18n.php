@@ -314,6 +314,7 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'review_sidebar_title'                                   => 'Přepruwować',
+	'review-desc'                                            => 'Wobnowjena [[Special:Review|pruwowanska]] funkcija.',
 	'review_topics'                                          => "# Deleka je lisćina temow a wobwodow za rozšěrjenje Review.
 # Kóžda tema definuje so přez linku pjeć hódnotow wotdźělenych přez ':' (wšě druhe linki ignoruja so).
 # Porjad je: numeriski kluč (>0), mjeno, maksimalny wobwod (>1; 2=haj/ně), woznam najnišeje hódnoty (na př. 'špatny'), woznam najwyšeje hódnoty (na př. 'dobry').
@@ -533,5 +534,17 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'review_comment' => 'Kommentar',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'review_sidebar_title'          => 'సమీక్ష',
+	'review_total_statistics'       => 'మొత్తం',
+	'review_statistics_left_corner' => 'కూర్పు',
+	'review_version_link'           => 'కూర్పు #$1',
+	'review_user_details_link'      => '(వివరాలు)',
+	'review_comment'                => 'వ్యాఖ్య',
 );
 

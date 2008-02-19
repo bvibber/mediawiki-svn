@@ -141,12 +141,13 @@ $messages['nl'] = array(
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)
+ * @author Lejonel
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'categorystepper-desc'  => 'Vis en boks med kategoristeg på alle sider som er i et sett av kategorier.',
-	'categorystepper-end'   => '(Kategoristart)',
-	'categorystepper-start' => '(Kategorislutt)',
+	'categorystepper-end'   => '(Kategorislutt)',
+	'categorystepper-start' => '(Kategoristart)',
 );
 
 /** Occitan (Occitan)
@@ -186,10 +187,12 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'categorystepper-start' => '(Start av kategori)',
-	'categorystepper-end'   => '(Slut av kategori)',
+	'categorystepper-desc'  => 'Visar en kategoribläddrarruta (länkar till nästa och föregående sida) på sidor i en grupp av kategorier.',
+	'categorystepper-end'   => '(Slut på kategorin)',
+	'categorystepper-start' => '(Början på kategorin)',
 );
 
 /** Telugu (తెలుగు)

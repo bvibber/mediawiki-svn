@@ -282,6 +282,13 @@ $messages['sv'] = array(
 	'lookupuser_registration' => 'Registrerings datum: $1',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'lookupuser_useroptions' => 'వాడుకరి ఎంపికలు:',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

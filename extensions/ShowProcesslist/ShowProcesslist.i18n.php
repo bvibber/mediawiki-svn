@@ -108,6 +108,7 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'showprocesslist'         => 'Lisćinu procesow pokazać',
+	'showprocesslist-desc'    => 'Wudaće [[Special:showProcesslist|DOSPOŁNU LISĆINU PROCESOW POKAZAĆ]] zwobraznić',
 	'showprocesslist-user'    => 'Wužiwar',
 	'showprocesslist-host'    => 'Serwer',
 	'showprocesslist-command' => 'Přikaz',
@@ -231,6 +232,13 @@ $messages['sv'] = array(
 	'showprocesslist-time'    => 'Tid',
 	'showprocesslist-state'   => 'Tillstånd',
 	'showprocesslist-info'    => 'Information',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'showprocesslist-time' => 'సమయం',
 );
 
 /** Volapük (Volapük)

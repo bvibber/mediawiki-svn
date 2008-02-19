@@ -575,6 +575,13 @@ $messages['su'] = array(
 	'grouppage-patroller' => '{{ns:project}}:Nu ngaronda',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'patrol-revert-reason' => 'కారణం:',
+);
+
 /* Cantonese (Hillgentleman, Shinjiman) */
 $messages['yue'] = array(
 	'patrol' => '巡啲編輯',

@@ -281,3 +281,11 @@ $messages['sv'] = array(
 	'inspectcache-list'   => 'Lista',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'inspectcache-ok'     => 'సరే',
+	'inspectcache-delete' => 'తొలగించు',
+);
+

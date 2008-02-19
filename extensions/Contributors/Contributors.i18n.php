@@ -679,6 +679,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'contributors-target' => 'శీర్షిక:',
+	'contributors-submit' => 'చూపించు',
 );
 
 /** Volapük (Volapük)

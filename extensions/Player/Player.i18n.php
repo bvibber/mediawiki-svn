@@ -366,6 +366,14 @@ $messages['sv'] = array(
 	'player-goto-file'     => 'fil',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'player-goto-page' => 'పేజీ',
+	'player-goto-file' => 'ఫైలు',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

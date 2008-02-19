@@ -77,7 +77,8 @@ $messages['gl'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'seealso' => 'Hlej tež',
+	'seealso'      => 'Hlej tež',
+	'seealso-desc' => "Lokalizowane nadpisma 'Hlej tež' z pomocu taflički <code><nowiki><seealso></nowiki></code>",
 );
 
 /** Hungarian (Magyar)
@@ -99,6 +100,13 @@ $messages['kk-cyrl'] = array(
  */
 $messages['lb'] = array(
 	'seealso' => 'Kuckt och',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'seealso' => 'Žiūrėkite taip pat',
 );
 
 /** Malayalam (മലയാളം)

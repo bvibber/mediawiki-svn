@@ -421,6 +421,13 @@ $messages['sv'] = array(
 	'povwatch_comment'         => 'Logg kommentar:',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'povwatch_title' => 'శీర్షిక:',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

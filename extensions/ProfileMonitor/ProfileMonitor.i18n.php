@@ -214,6 +214,13 @@ $messages['sv'] = array(
 	'profiling-ok' => 'OK',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'profiling-ok' => 'సరే',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

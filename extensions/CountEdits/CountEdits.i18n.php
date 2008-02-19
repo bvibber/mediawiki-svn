@@ -330,6 +330,22 @@ $messages['lb'] = array(
 	'countedits-nocontribs'   => 'Keng Ännerungen op dëser Wiki.',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'countedits'              => 'Keitimų skaičiavimas',
+	'countedits-desc'         => '[[Special:CountEdits|Specialus puslapis]], kuris skaičiuoja naudotojų keitimus ir pateikia dešimtuką aktyviausių dalyvių',
+	'countedits-warning'      => "'''Dėmesio:''' Nevertinkite knygos pagal jos viršelį. Nevertinkite naudotojo pagal jo keitimų skaičių.",
+	'countedits-username'     => 'Naudotojo vardas:',
+	'countedits-ok'           => 'Gerai',
+	'countedits-nosuchuser'   => 'Nėra naudotojo vardu $1.',
+	'countedits-resultheader' => 'Rezultatai $1',
+	'countedits-resulttext'   => '$1 atliko $2 keitimų',
+	'countedits-mostactive'   => 'Aktyviausi naudotojai',
+	'countedits-nocontribs'   => 'Šioje wiki nebuvo naudotojų.',
+);
+
 $messages['nds'] = array(
 	'countedits' => 'Tellen, wo faken de Bruker Sieden ännert hett',
 	'countedits-warning' => '\'\'\'Wohrschau:\'\'\' Schasst de Deern nich na ehr Schört reken. Wo faken en Bruker Sieden ännert hett, seggt nix över sien Arbeit ut.',

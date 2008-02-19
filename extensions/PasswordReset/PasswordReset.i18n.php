@@ -389,6 +389,13 @@ $messages['sv'] = array(
 	'passwordreset-username' => 'Användarnamn',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'passwordreset-username' => 'వాడుకరిపేరు',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

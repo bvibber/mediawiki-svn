@@ -1054,6 +1054,7 @@ $messages['ga'] = array(
  */
 $messages['gl'] = array(
 	'boardvote'              => 'Elección dos Membros do Consello de Administración de Wikimedia',
+	'boardvote-desc'         => '[[meta:Board elections|Elección dos Membros do Consello de Administración de Wikimedia]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Votar]]
 * [[Special:Boardvote/list|Listaxe de votos ata a data]]
 * [[Special:Boardvote/dump|Crear un vaciado do rexistro cifrado de eleccións]]',
@@ -2031,9 +2032,11 @@ $messages['loz'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Matasg
+ * @author Hugo.arg
  */
 $messages['lt'] = array(
 	'boardvote'              => 'Vikimedijos išlaikymo tarybos rinkimai',
+	'boardvote-desc'         => '[[meta:Board elections|Vikimedijos Valdytojų tarybos rinkimai]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Balsuoti]]
 * [[Special:Boardvote/list|Balsavimų sąrašas]]
 * [[Special:Boardvote/dump|Koduoti rinkimų rezultatai]]',

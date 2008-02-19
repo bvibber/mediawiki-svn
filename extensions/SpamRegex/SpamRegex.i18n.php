@@ -307,3 +307,10 @@ $messages['sv'] = array(
 	'spamregex-summary-log' => '(Sammanfattning)',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'spamregex-text' => '(పాఠ్యం)',
+);
+

@@ -268,6 +268,19 @@ $messages['lb'] = array(
 	'vote-invalid-choice' => 'Dir musst eng vun de Méiglechkeeten auswielen.',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'vote'              => 'Balsuoti',
+	'vote-current'      => "Tavo dabartinis balsas yra už '''$1'''.",
+	'vote-caption'      => 'Tavo pasirinkimas:',
+	'vote-submit'       => 'Balsuoti',
+	'vote-registered'   => 'Jūsų balsas buvo užregistruotas.',
+	'vote-view-results' => 'Žiūrėti rezultatus',
+	'vote-login-link'   => 'registruotis',
+);
+
 $messages['nl'] = array(
 	'vote' => 'Stemmen',
 	'vote-header' => 'U kunt hier stemmen voor \'\'\'Alleenheerser over de Wereld\'\'\'!',

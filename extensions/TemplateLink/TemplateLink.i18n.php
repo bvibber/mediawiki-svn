@@ -141,3 +141,10 @@ $messages['sv'] = array(
 	'templatelink' => 'Mallänk',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'templatelink' => 'మూస లింకు',
+);
+

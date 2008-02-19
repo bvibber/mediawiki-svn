@@ -691,6 +691,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'duplicator-options' => 'ఎంపికలు',
+	'duplicator-source'  => 'స్కోరు:',
 );
 
 /** Turkish (Türkçe)

@@ -181,6 +181,7 @@ $messages['gag'] = array(
  */
 $messages['gl'] = array(
 	'backforth-next' => 'Seguinte ($1)',
+	'backforth-desc' => 'Engade "Seguinte" e "Anterior" ao buscar as ligazóns alfabéticas na cabeceira das páxinas',
 	'backforth-prev' => 'Anterior ($1)',
 );
 

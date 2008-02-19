@@ -464,6 +464,7 @@ $messages['gag'] = array(
  */
 $messages['gl'] = array(
 	'badimages'                => 'Listaxe de imaxes con fallas',
+	'badimages-desc'           => 'Incluir a listaxe de imaxes con fallas as habilidades de MediaWiki',
 	'badimages-add-btn'        => 'Engadir',
 	'badimages-added'          => '$1 foi engadida á listaxe.',
 	'badimages-count'          => "Hai '''$1''' imaxes na listaxe de imaxes con fallas.",
@@ -734,6 +735,20 @@ $messages['loz'] = array(
 	'badimages-remove'     => '(afi kulobala)',
 	'badimages-remove-btn' => 'Afi kulobala',
 	'badimages-removed'    => '$1 sa afi kulobala di mukoloko.',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'badimages'                => 'Blogas paveikslėlių sąrašas',
+	'badimages-add-btn'        => 'Pridėti',
+	'badimages-added'          => '$1 buvo pridėtas prie sąrašo.',
+	'badimages-name'           => 'Pavadinimas:',
+	'badimages-reason'         => 'Priežastis:',
+	'badimages-remove'         => '(pašalinti)',
+	'badimages-remove-btn'     => 'Pašalinti',
+	'badimages-remove-confirm' => 'Patvirtinkite, jog norite pašalinti $1 iš sąrašo:',
 );
 
 /** Malayalam (മലയാളം)

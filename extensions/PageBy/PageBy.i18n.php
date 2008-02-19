@@ -93,8 +93,11 @@ $messages['gl'] = array(
 	'pageby-anon'         => '<i>anónimo</i>',
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
+	'pageby-desc'         => 'Pokazuje přinošowarjow znutřka wikijoweje strony z pomocu taflički <code><nowiki><pageby></nowiki></code>',
 	'pageby-first'        => 'Strona wutworjena wot $1, $2',
 	'pageby-last'         => 'Posledni raz <a href="$3">změnjeny</a> wot $1, $2',
 	'pageby-contributors' => 'Přinoški:',

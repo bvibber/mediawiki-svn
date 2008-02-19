@@ -323,6 +323,15 @@ $messages['sv'] = array(
 	'importusers-email'               => 'e-post',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'importusers-log-summary-all' => 'అన్నీ',
+	'importusers-password'        => 'సంకేతపదం',
+	'importusers-email'           => 'ఈ-మెయిల్',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

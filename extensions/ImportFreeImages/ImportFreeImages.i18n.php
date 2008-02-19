@@ -131,6 +131,7 @@ $messages['hsb'] = array(
 	'importfreeimages_description'           => 'Tuta strona ći dowola na Flickr za wobrazami z prihódnej ličencu pytać a je do swojeho wiki importować.',
 	'importfreeimages_noapikey'              => 'Njejsy swój kluč Flickr API konfigurował. Prošu požadaj jón [http://www.flickr.com/services/api/misc.api_keys.html jowle] a nastaj $wgFlickrAPIKey w ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'         => 'Njejsu so žane fota za twoje pytanske kriterije "$1" namakali.',
+	'importfreeimages_invalidurl'            => 'URL "$1" płaćiwy wobraz Flickr njeje.',
 	'importfreeimages_owner'                 => 'Awtor',
 	'importfreeimages_importthis'            => 'importować',
 	'importfreeimages_next'                  => 'Přichodny $1',
@@ -329,6 +330,13 @@ $messages['sv'] = array(
 	'importfreeimages_owner'         => 'Upphovsman',
 	'importfreeimages_importthis'    => 'import denna',
 	'importfreeimages_next'          => 'Nästa $1',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'importfreeimages_next' => 'తర్వాతి $1',
 );
 
 /** Volapük (Volapük)

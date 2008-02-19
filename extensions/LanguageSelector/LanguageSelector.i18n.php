@@ -203,6 +203,14 @@ $messages['lb'] = array(
 	'languageselector-setlang' => 'Wielt',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'languageselector'         => 'Kalba',
+	'languageselector-setlang' => 'nustatyti',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -302,6 +310,13 @@ $messages['stq'] = array(
 $messages['sv'] = array(
 	'languageselector'         => 'Språk',
 	'languageselector-setlang' => 'välj',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'languageselector' => 'భాష',
 );
 
 /** Tetum (Tetun)

@@ -482,6 +482,13 @@ $messages['sv'] = array(
 	'createsigndoc-error-pagenoexist' => 'Fel: Sidan [[$1]] finns inte.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'createsigndoc-pagename' => 'పేజీ:',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

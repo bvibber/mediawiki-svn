@@ -516,10 +516,15 @@ $messages['lo'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Hugo.arg
  * @author Matasg
  */
 $messages['lt'] = array(
-	'newuserlog-create-entry' => 'Naujas naudotojas',
+	'newuserlogpage'           => 'Naudotojo kūrimo registras',
+	'newuserlogpagetext'       => 'Tai yra naudotojų kūrimo registras',
+	'newuserlog-byemail'       => 'slaptažodis nusiųstas elektroniniu paštu',
+	'newuserlog-create-entry'  => 'Naujas naudotojas',
+	'newuserlog-create2-entry' => 'sukurta paskyra $1',
 );
 
 /** Latvian (Latviešu)

@@ -100,6 +100,7 @@ $messages['gsw'] = array(
  */
 $messages['hsb'] = array(
 	'selectcategory-title'    => 'Kategorije wubrać',
+	'selectcategory-desc'     => 'Zmóžnja wužiwarjej z eksistowacych kategorijow wubrać, hdyž stronu wobdźěłuje',
 	'selectcategory-subtitle' => 'Umschalt-Myš, zo bychu so wjacore susodne zapiski wubrali, Strg-myš, zo bychu so njesusodne zapiski wubrali.',
 );
 

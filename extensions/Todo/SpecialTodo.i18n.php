@@ -338,6 +338,13 @@ $messages['sv'] = array(
 	'todo-form-details'     => 'Detaljer:',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'todo-form-details' => 'వివరాలు:',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

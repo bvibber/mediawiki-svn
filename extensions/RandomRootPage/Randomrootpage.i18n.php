@@ -31,6 +31,30 @@ $messages['fa'] = array(
 	'randomrootpage-desc'     => '[[Special:Randomrootpage|صفحهٔ ویژه‌ای]] که به طور تصادفی یکی از صفحه‌های سرشاخه را نشان می دهد',
 );
 
+/** French (Français)
+ * @author Meithal
+ */
+$messages['fr'] = array(
+	'randomrootpage'      => 'Page racine aléatoire',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Page spéciale]] qui va chercher une page racine au hasard',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'randomrootpage'      => 'Připadna korjenjowa strona',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Specialna strona]], kotraž připadnu korjenjowu stronu zwobraznja',
+);
+
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$messages['hu'] = array(
+	'randomrootpage'      => 'Véletlen lap a gyökérből',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Speciális lap]], amely egy véletlen lapot jelenít meg a gyökérből',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -45,5 +69,21 @@ $messages['nl'] = array(
 $messages['no'] = array(
 	'randomrootpage'      => 'Tilfeldig rotside',
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Spesialside]] som henter en tilfeldig rotside',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'randomrootpage'      => 'Náhodná koreňová stránka',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Špeciálna stránka]], ktorá zobrazuje náhodnú koreňovú stránku',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'randomrootpage'      => 'Trang gốc ngẫu nhiên',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Trang đặc biệt]] để truy xuất một trang gốc ngẫu nhiên',
 );
 

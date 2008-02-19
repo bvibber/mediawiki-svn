@@ -52,6 +52,13 @@ $messages['dsb'] = array(
 	'breadcrumbs-desc' => 'Pokazujo drogu wužywarja pśez wiki.',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'breadcrumbs-desc' => 'Amosa aos usuarios a traxectoria a través do wiki.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

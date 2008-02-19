@@ -99,6 +99,18 @@ M'ho pez kudennoù e c'hallit klask ober gant <b>Special:Call/DebuG</b>",
 $messages['cs'] = array(
 	'call'              => 'Call',
 	'call-desc'         => 'Vytvoří hyperodkaz na šablonu (nebo na běžnou wiki stránku) s odevzdáním parametrů. Je možné použít z řádku s adresou v prohlížečí nebo ve wiki textu.',
+	'call-text'         => "Doplněk Call očekává jako argumenty wiki stránku a volitelné parametry dané stránky.<br /><br />
+Příklad 1: &nbsp; <tt>[[Special:Call/Moje šablona,parm1=value1]]</tt><br />
+Příklad 2: &nbsp; <tt>[[Special:Call/Diskuse:Moje diskuse,parm1=value1]]</tt><br />
+Příklad 3: &nbsp; <tt>[[Special:Call/:Moje stránka,parm1=value1,parm2=value2]]</tt><br /><br />
+Příklad 4 (URL prohlížeče): &nbsp; <tt>http://mojedomena/mojewiki/index.php?Special:Call/:Moje stránka,parm1=value1</tt><br /><br />
+
+<i>Doplněk Call</i> zavolá danbou stránku a odevzdá jí parametry.<br />
+Uvidíte obsah zavolané stránky a její název, ale její 'typ' bude speciální stránka,<br />tj. takovou stránku není možné uprovat.<br />
+Obsah, který uvidíte se může lišit v závislosti na parametrech, které jste odevzdali.<br /><br />
+<i>Doplněk Call</i> je užitečný při budovaní interaktivních aplikací pomocí MediaWiki.<br />
+Jako příklad se můžete podívat na <a href='http://semeb.com/dpldemo/Template:Catlist'>GUI DPL</a> ..<br />
+V případě problémů můžete zkusit <b>Special:Call/DebuG</b>",
 	'call-save'         => "Výstup této stránky byl uložen do stránky s názvem ''$1''.",
 	'call-save-success' => 'Následující text byl uložený do stránky <big>[[$1]]</big>',
 	'call-save-failed'  => "Následující text NEBYL uložený do stránky ''$1'', protože tato stránka už existuje.",
@@ -131,8 +143,10 @@ L’extension <i>Appel</i> appellera la page indiquée en lui passant les param�
 
 /** Galician (Galego)
  * @author Xosé
+ * @author Alma
  */
 $messages['gl'] = array(
+	'call'              => 'Chamada',
 	'call-save'         => "A saída desta chamada gardaríase nunha páxina chamada ''$1''.",
 	'call-save-success' => 'O texto seguinte gardouse na páxina <big>[[$1]]</big>.',
 	'call-save-failed'  => 'O texto seguinte NON se gardou na páxina <big>[[$1]]</big> porque xa existe esa páxina.',

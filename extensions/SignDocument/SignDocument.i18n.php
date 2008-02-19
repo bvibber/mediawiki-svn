@@ -50,10 +50,14 @@ $messages['gl'] = array(
 	'signaturelogentry' => 'asinou o documento $1',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'signaturelogpage' => 'Proatokol podpisow',
+	'signaturelogpage'     => 'Proatokol podpisow',
+	'signature-desc'       => 'Zmóžnja [[Special:SignDocument|podpisowanje]] dokumenta',
 	'signaturelogpagetext' => 'Tio estas protokol wšěch podpisow, kotrež buchu přez [[Special:SignDocument]] dokumentam přidate.',
-	'signaturelogentry' => 'je dokument $1 podpisał',
+	'signaturelogentry'    => 'je dokument $1 podpisał',
 );
 
 /** Dutch (Nederlands)

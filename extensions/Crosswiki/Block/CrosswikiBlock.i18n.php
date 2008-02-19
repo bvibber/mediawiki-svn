@@ -195,6 +195,38 @@ Voltar a:
 * [[$4]]",
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'crosswikiblock-desc'           => 'Dowola wužiwarjow na druhich wikijach z pomocu [[Special:Crosswikiblock|specialneje strony]] blokować',
+	'crosswikiblock'                => 'Wužiwarja na druhim wikiju blokować',
+	'crosswikiblock-header'         => 'Tuta strona dowola wužiwarja na druhim wikiju blokować.
+Prošu pruwuj, hač maš dowolnosć na tym wikiju skutkować a swoje akcije wšěm prawidłam wotpowěduja.',
+	'crosswikiblock-target'         => 'IP-adresa abo wužiwarske mjeno a cilowy wiki:',
+	'crosswikiblock-expiry'         => 'Spadnjenje:',
+	'crosswikiblock-reason'         => 'Přičina:',
+	'crosswikiblock-submit'         => 'Tutoho wužiwarja blokować',
+	'crosswikiblock-anononly'       => 'Jenož anonymnych wužiwarjow blokować',
+	'crosswikiblock-nocreate'       => 'Wutworjenju konta zadźěwać',
+	'crosswikiblock-autoblock'      => 'Awtomatisce poslednju IPa-dresu wužitu wot tutoho wužiwarja blokować, inkluziwnje naslědnych IP-adresow, z kotrychž pospytuje wobdźěłać',
+	'crosswikiblock-noemail'        => 'Słanju e-mejlkow wot wužiwarja zadźěwać',
+	'crosswikiblock-nousername'     => 'Njebu wužiwarske mjeno zapodate',
+	'crosswikiblock-local'          => 'Lokalne blokowanja so přez tutón interfejs njepodpěruja. Wužij [[Special:Blockip]]',
+	'crosswikiblock-dbnotfound'     => 'Datowa banka $1 njeeksistuje',
+	'crosswikiblock-noname'         => '"$1" płaćiwe wužiwarske mjeno njeje.',
+	'crosswikiblock-nouser'         => 'Wužiwar "$3" njebu namakany.',
+	'crosswikiblock-noexpiry'       => 'Njepłaćiwe spadnjenje: $1.',
+	'crosswikiblock-noreason'       => 'Žana přičina podata.',
+	'crosswikiblock-notoken'        => 'Njepłaćiwy wobdźełanski token.',
+	'crosswikiblock-alreadyblocked' => 'Wužiwar $3 je hižo zablokowany.',
+	'crosswikiblock-success'        => "Wužiwar '''$3''' wuspěšnje zablokowany.
+
+Wróćo k:
+* [[Special:CrosswikiBlock|Blokowanski formular]]
+* [[$4]]",
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

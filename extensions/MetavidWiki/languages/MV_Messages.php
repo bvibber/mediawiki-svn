@@ -690,7 +690,7 @@ $messages['hsb'] = array(
 	'thomas_en'                      => 'Oficielna transkripcija',
 	'thomas_en_desc'                 => 'Oficielna transkripcija Thomas z wopismoweje słužby THOMAS knježerstwa. Žórłowy čas přez C-SPAN spanarchives.org synchronizowany.',
 	'mvd_default_mismatch'           => 'Zmylk w dataji nastajenjow',
-	'mvd_default_mismatchtext'       => 'Je zmylk w twojej dataji nastajenjow, $mvMVDTypeDefaultDisp měl dźěl z  $mvMVDTypeAllAvailable być.',
+	'mvd_default_mismatch_text'      => 'Je zmylk w twojej dataji nastajenjow, $mvMVDTypeDefaultDisp měł podmnóstwo  $mvMVDTypeAllAvailable być',
 	'mv_data_page_title'             => '$1 za $2 z $3',
 	'mv_time_separator'              => '$1 hač $2',
 	'mv_list_streams'                => 'Lisćina streamow Metavid',
@@ -1543,7 +1543,7 @@ Alebo môžete <a href="$3">Pridať stream</a>.',
 	'thomas_en'                      => 'Oficiálny prepis',
 	'thomas_en_desc'                 => 'Oficiálny prepis z vládnej služby záznamov THOMAS. Synchronizácia zdrojového času C-SPAN (c-spanarchives.org).',
 	'mvd_default_mismatch'           => 'Chyba v súbore nastavení',
-	'mvd_default_mismatchtext'       => 'Vo vašom súbore nastavení je chyba, $mvMVDTypeDefaultDisp by malo byť podmnožinou $mvMVDTypeAllAvailable',
+	'mvd_default_mismatch_text'      => 'Vo vašom súbore nastavení je chyba, $mvMVDTypeDefaultDisp by malo byť podmnožinou $mvMVDTypeAllAvailable',
 	'mv_data_page_title'             => '$1 pre $2 z $3',
 	'mv_time_separator'              => '$1 až $2',
 	'mv_list_streams'                => 'Zoznam streamov Metavid',
@@ -1660,5 +1660,17 @@ $messages['sv'] = array(
 	'mv_search_or'           => 'eller',
 	'mv_category'            => 'kategori',
 	'mv_view_wiki_page'      => 'Visa wiki sida',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'mv_duration_label' => 'నిడివి',
+	'mv_remove_reason'  => 'తొలగింపునకు కారణం:',
+	'mv_tool_search'    => 'వెతుకు',
+	'mv_search_and'     => 'మరియు',
+	'mv_search_or'      => 'లేదా',
+	'mv_category'       => 'వర్గం',
 );
 

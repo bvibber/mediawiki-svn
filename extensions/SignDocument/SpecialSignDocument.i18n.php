@@ -1120,6 +1120,24 @@ $messages['sv'] = array(
 	'sign-signatures'         => 'Signaturer',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'sign-realname'           => 'పేరు:',
+	'sign-city'               => 'నగరం:',
+	'sign-state'              => 'రాష్ట్రం:',
+	'sign-country'            => 'దేశం:',
+	'sign-bday'               => 'వయసు:',
+	'sign-viewfield-realname' => 'పేరు',
+	'sign-viewfield-address'  => 'చిరునామా',
+	'sign-viewfield-state'    => 'రాష్ట్రం',
+	'sign-viewfield-country'  => 'దేశం',
+	'sign-viewfield-age'      => 'వయసు',
+	'sign-viewfield-options'  => 'ఎంపికలు',
+	'sign-review-comment'     => 'వ్యాఖ్య',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

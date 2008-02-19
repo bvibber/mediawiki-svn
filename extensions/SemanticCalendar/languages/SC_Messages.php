@@ -140,6 +140,17 @@ $messages['lb'] = array(
 	'sc_error_beforeyear' => 'Feeler: Dëse System kann net mat Datume virum $1 ëmgoen.',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'sc_previousmonth'    => 'Praeitas mėnuo',
+	'sc_nextmonth'        => 'Ateinantis mėnuo',
+	'sc_today'            => 'Šiandien',
+	'sc_gotomonth'        => 'Eiti į mėnesį',
+	'sc_error_beforeyear' => 'Klaida: Ši sistema negali suprasti datų, ankstesnių nei $1',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author GerardM
@@ -221,6 +232,15 @@ $messages['sv'] = array(
 	'sc_gotomonth'        => 'Gå till månad',
 	'sc_error_year2038'   => 'Error: Detta system kan inte hantera datum efter år 2038, vederbörlig till [http://sv.wikipedia.org/wiki/År 2038-problemet år 2038 problemet]',
 	'sc_error_beforeyear' => 'Error: Detta system kan inte hantera datum före $1',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'sc_previousmonth' => 'క్రితం నెల',
+	'sc_nextmonth'     => 'తర్వాతి నెల',
+	'sc_today'         => 'ఈరోజు',
 );
 
 /** Vietnamese (Tiếng Việt)

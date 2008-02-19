@@ -563,6 +563,7 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'chemicalsources'        => 'Kemiska källor',
+	'chemicalsource-desc'    => 'Lägger till tillägget <nowiki><chemform></nowiki>, för kemiska formulär',
 	'chemFunctions_ListPage' => 'Kemiska källor',
 	'chemFunctions_CAS'      => 'CAS nummer',
 	'chemFunctions_ATCCode'  => 'ATC kod',

@@ -537,9 +537,11 @@ $messages['vec'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
+ * @author Minh Nguyen
  */
 $messages['vi'] = array(
 	'crossnamespacelinks'         => 'Liên kết qua tên miền không gian',
+	'crossnamespacelinks-desc'    => 'Liệt kê [[Special:CrossNamespaceLinks|các liên kết giữa không gian tên]] mà không nên có tại {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Trang này liệt danh sách các liên kết từ một trang ở không gian tên chính đến một trang ở không gian tên khác (trừ không gian tên {{ns:special}}, {{ns:talk}}, {{ns:project}} và {{ns:template}}), là điều không khuyến khích sử dụng.',
 	'crossnamespacelinkstext'     => '$1: $2 liên kết đến $3',
 );

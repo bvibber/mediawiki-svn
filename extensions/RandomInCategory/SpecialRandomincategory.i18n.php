@@ -73,9 +73,12 @@ $messages['gl'] = array(
 	'randomincategory-submit'     => 'Adiante',
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'randomincategory'            => 'Připadna strona w kategoriji',
+	'randomincategory-desc'       => '[[Special:Randomincategory|Specialna strona]], zo by připadnu stronu do kategorije přewzała',
 	'randomincategory-toolbox'    => 'Připadna strona',
 	'randomincategory-nocategory' => 'Kategorija $1 njeeksistuje abo je prózdna',
 	'randomincategory-label'      => 'Kategorija:',
@@ -172,10 +175,11 @@ $messages['pt'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Michawiki
  */
 $messages['sk'] = array(
 	'randomincategory'            => 'Náhodná stránka v kategórii',
-	'randomincategory-desc'       => '[Special:Randomincategory|Špeciálna stránka]] na výber náhodnej stránky z kategórie',
+	'randomincategory-desc'       => '[[Special:Randomincategory|Špeciálna stránka]] na výber náhodnej stránky z kategórie',
 	'randomincategory-toolbox'    => 'Náhodná stránka',
 	'randomincategory-nocategory' => 'Kategória $1 neexistuje alebo je prázdna',
 	'randomincategory-label'      => 'Kategória:',
@@ -199,6 +203,15 @@ $messages['stq'] = array(
 $messages['sv'] = array(
 	'randomincategory-label'  => 'Kategori:',
 	'randomincategory-submit' => 'Gå',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'randomincategory-toolbox' => 'యాదృచ్ఛిక పేజీ',
+	'randomincategory-label'   => 'వర్గం:',
+	'randomincategory-submit'  => 'వెళ్ళు',
 );
 
 /** Volapük (Volapük)

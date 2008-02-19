@@ -240,6 +240,13 @@ $messages['sv'] = array(
 	'findspam-notextfound' => 'Inga bidrag hittades',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'findspam-ok' => 'సరే',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

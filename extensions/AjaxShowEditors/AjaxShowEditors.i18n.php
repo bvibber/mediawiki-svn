@@ -90,14 +90,17 @@ $messages['br'] = array(
 );
 
 /** Czech (Česky)
- * @author Li-sung
  * @author Matěj Grabovský
+ * @author Li-sung
  */
 $messages['cs'] = array(
-	'ajax-se-desc'    => 'Zobrazuje uživatele, kteří upravují stejnou stránku',
-	'ajax-se-title'   => 'Právě edituje:',
-	'ajax-se-pending' => 'očekává se změna... (klikněte do tohoto pole nebo začněte editovat)',
-	'ajax-se-idling'  => '(před $1 s)',
+	'ajax-se-desc'             => 'Zobrazuje uživatele, kteří upravují stejnou stránku',
+	'ajax-se-title'            => 'Právě edituje:',
+	'ajax-se-pending'          => 'očekává se změna... (klikněte do tohoto pole nebo začněte editovat)',
+	'ajax-se-idling'           => '(před $1 s)',
+	'ajax-se-pagedoesnotexist' => 'stránka neexistuje',
+	'ajax-se-userinvalid'      => 'CHYBA: neplatný uživatel',
+	'ajax-se-usernotfound'     => 'CHYBA: uživatel nebly nalezen',
 );
 
 /** German (Deutsch)
@@ -326,13 +329,18 @@ $messages['li'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Hugo.arg
  * @author Garas
  * @author Vpovilaitis
  */
 $messages['lt'] = array(
-	'ajax-se-title'   => 'Dabar redaguojama:',
-	'ajax-se-pending' => 'laukiama atnaujinimo... (paspauskite šį laukelį arba pradėkite redaguoti)',
-	'ajax-se-idling'  => '(prieš $1 s)',
+	'ajax-se-desc'             => 'Rodo redaguojančius naudotojus, kurie redaguoja tuo pat metu',
+	'ajax-se-title'            => 'Dabar redaguojama:',
+	'ajax-se-pending'          => 'laukiama atnaujinimo... (paspauskite šį laukelį arba pradėkite redaguoti)',
+	'ajax-se-idling'           => '(prieš $1 s)',
+	'ajax-se-pagedoesnotexist' => 'puslapis neegzistuoja',
+	'ajax-se-userinvalid'      => 'ERR: naudotojas neteisingas',
+	'ajax-se-usernotfound'     => 'ERR: naudotojas nerastas',
 );
 
 /** Malayalam (മലയാളം)
