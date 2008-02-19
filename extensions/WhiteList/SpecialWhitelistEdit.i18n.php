@@ -67,6 +67,7 @@ $allMessages = array(
         'whitelistrequest'            => "Request access to more pages",
         'whitelistrequestmsg'         => "$1 has requested access to the following pages:\n\n$2",
         'whitelistrequestconf'        => "Request for new pages was sent to $1",
+        'whitelistnonrestricted'      => "User '''$1''' is not a restricted user. This page is only applicable to restricted users",
      )
 );
 ?>
