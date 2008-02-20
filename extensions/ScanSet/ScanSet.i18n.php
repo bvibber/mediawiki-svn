@@ -127,8 +127,11 @@ $messages['eo'] = array(
 	'scanset_prev' => '&lt; Antaŭa',
 );
 
-# فارسی (Huji)
+/** فارسی (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
+	'scanset-desc'                      => 'مشاهدهٔ تصاویر پویش‌شده از لوح فشردهٔ Andreas Grosz',
 	'scanset_no_name'                   => 'ScanSet: شما باید نام مجموعه را وارد کنید، مثلاً <scanset name="EB1911" />.',
 	'scanset_invalid_name'              => 'ScanSet: مجموعهٔ غیرمجاز یا گمشده',
 	'scanset_unrecognised_index_format' => 'ScanSet: بافت نامشخص اندیس',
@@ -140,8 +143,8 @@ $messages['fa'] = array(
 	'scanset_invalid_volume'            => 'ScanSet: مجلد غیرمجاز',
 	'scanset_next'                      => 'بعدی >',
 	'scanset_prev'                      => '< قبلی',
-
 );
+
 
 /** Finnish (Suomi)
  * @author Nike

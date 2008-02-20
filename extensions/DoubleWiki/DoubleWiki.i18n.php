@@ -39,6 +39,14 @@ $messages['de'] = array(
 	'doublewiki-desc' => 'Zeigt eine Seite und ihre Übersetzung aus einem anderen Wiki zweispaltig auf derselben Seite an',
 );
 
+/** فارسی (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'doublewiki-desc' => 'یک صفحه و ترجمهٔ آن از یک ویکی دیگر را در دو ستون در همان صفحه نمایش می‌دهد',
+);
+
+
 /** French (Français)
  * @author Meithal
  */

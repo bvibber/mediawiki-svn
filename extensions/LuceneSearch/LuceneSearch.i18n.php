@@ -390,8 +390,11 @@ u pueis landeal nel güiqui a través dun landeru esternu:',
 	'searchincategory'      => 'encategoria',
 );
 
-# فارسی (Huji)
+/** فارسی (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
+	'lucene-desc'           => 'رابطی برای موتور جستجوی لوسین آپاچی',
 	'searchnumber'          => '<strong>نتایج $1-$2 از $3</strong>',
 	'searchprev'            => "« <span style='font-size: small'>قبلی</span>",
 	'searchnext'            => "<span style='font-size: small'>بعدی</span> »",
@@ -410,7 +413,6 @@ $1
 	'searchexactcase'       => 'جستجوی حساس به حروف بزرگ و کوچک',
 	'searchall'             => 'همه',
 	'searchincategory'      => 'دررده',
-
 );
 
 /** Finnish (Suomi)

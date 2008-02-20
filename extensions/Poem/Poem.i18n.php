@@ -32,6 +32,13 @@ $messages['de'] = array(
 	'poem-desc' => 'Fügt das <tt>&lt;poem&gt;</tt>-Tag zur Formatierung von Gedichten hinzu',
 );
 
+/** فارسی (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'poem-desc' => 'برچسب <tt>&lt;poem&gt;</tt> را برای قالب‌بندی شعرها می‌افزاید',
+);
+
 /** French (Français)
  * @author Grondin
  */
