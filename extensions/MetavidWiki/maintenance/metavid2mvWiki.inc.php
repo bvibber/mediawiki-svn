@@ -175,7 +175,7 @@ do_update_wiki_page($wgPropTitle, '[[has type:=Page;Number]]',null, $force);
  ************************************/
  $wgTempNavImg = Title::makeTitle(NS_TEMPLATE, 'Navimg');
  do_update_wiki_page($wgTempNavImg, '<div style="position: relative; width: {{{xsize|{{{size|}}}}}}px; height: {{{ysize|{{{size|}}}}}}px; overflow: hidden;"><div style="position: absolute; top: 0; left: 0; font-size: 200pt; width: {{{xsize|{{{size|}}}}}}px; height: {{{ysize|{{{size|}}}}}}px;  overflow: hidden; line-height: {{{ysize|{{{size|}}}}}}px; z-index: 3;">[[:{{{link|}}}|{{{linktext|&nbsp;}}}]]</div><div style="position: absolute; top: 0; left: 0; z-index: 2;">[[Image:{{{image|}}}|{{{xsize|{{{size|}}}}}}px|image page]]</div></div><noinclude>
-Simple Usage example: {{navimg|xsize=50|ysize=50|image=Wikimedia-logo.svg|link=MediaWiki}}
+Simple Usage example:<nowiki> {{navimg|xsize=50|ysize=50|image=Wikimedia-logo.svg|link=MediaWiki}} </nowiki>
 </noinclude>
 ');
 }

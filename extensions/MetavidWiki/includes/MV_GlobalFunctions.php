@@ -123,8 +123,8 @@ function mvSetupExtension(){
 
 	/**
 	*  This method is in charge of inserting additional CSS, JScript, and meta tags
-	*  into the html header of each page.  It is either called by pages 
-	*  that will be embedding video
+	*  into the html header of each page.  It is called by pages 
+	*  that will be embedding video or use metavid interfaces 
 	* 
 	* @@todo split up embed js & interface js include calls
 	*
