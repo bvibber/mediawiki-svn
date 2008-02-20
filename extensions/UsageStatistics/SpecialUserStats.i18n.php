@@ -249,6 +249,7 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'specialuserstats'               => 'Estatísticas do Uso',
@@ -259,7 +260,7 @@ $messages['gl'] = array(
 	'usagestatisticstype'            => 'Clase',
 	'usagestatisticsstart'           => 'Data de comezo',
 	'usagestatisticsend'             => 'Data de fin',
-	'usagestatisticssubmit'          => 'Xenerar Estatísticas',
+	'usagestatisticssubmit'          => 'Xerar Estatísticas',
 	'usagestatisticsnostart'         => '* <font color=red>Especifique unha data de comezo</font>',
 	'usagestatisticsnoend'           => '* <font color=red>Especifique unha data de fin</font>',
 	'usagestatisticsbadstartend'     => '<b>Malo <i>Comezo</i> e/ou <i>Fin</i> da data!</b>',
@@ -268,6 +269,7 @@ $messages['gl'] = array(
 	'usagestatisticsintervalmonth'   => 'Mes',
 	'usagestatisticscalselect'       => 'Seleccionar',
 	'usagestatistics-editindividual' => 'Estatísticas das edicións do usuario individual $1',
+	'usagestatistics-editpages'      => 'Páxinas estatísticas do usuario individual $1',
 );
 
 /** Croatian (Hrvatski)
@@ -321,18 +323,21 @@ $messages['hsb'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'specialuserstats'           => 'Benotzungs-Statistiken',
-	'usagestatistics'            => 'Benotzungs-Statistiken',
-	'usagestatisticsfor'         => '<h2>Benotzungs-Statistik fir [[:user:$1|$1]]</h2>',
-	'usagestatisticsallusers'    => 'All Benotzer',
-	'usagestatisticsinterval'    => 'Intervall',
-	'usagestatisticstype'        => 'Typ',
-	'usagestatisticsstart'       => 'Ufanksdatum',
-	'usagestatisticsend'         => 'Schlussdatum',
-	'usagestatisticssubmit'      => 'Statistik opstellen',
-	'usagestatisticsnostart'     => '* <font color=red>Gitt w.e.g een Ufanksdatum un</font>',
-	'usagestatisticsnoend'       => '* <font color=red>Gitt w.e.g. ee Schlussdatum un</font>',
-	'usagestatisticsbadstartend' => '<b>Falsche Format vum <i>Ufanks-</i> oder vum <i>Schluss</i> Datum!</b>',
+	'specialuserstats'             => 'Benotzungs-Statistiken',
+	'usagestatistics'              => 'Benotzungs-Statistiken',
+	'usagestatisticsfor'           => '<h2>Benotzungs-Statistik fir [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'      => 'All Benotzer',
+	'usagestatisticsinterval'      => 'Intervall',
+	'usagestatisticstype'          => 'Typ',
+	'usagestatisticsstart'         => 'Ufanksdatum',
+	'usagestatisticsend'           => 'Schlussdatum',
+	'usagestatisticssubmit'        => 'Statistik opstellen',
+	'usagestatisticsnostart'       => '* <font color=red>Gitt w.e.g een Ufanksdatum un</font>',
+	'usagestatisticsnoend'         => '* <font color=red>Gitt w.e.g. ee Schlussdatum un</font>',
+	'usagestatisticsbadstartend'   => '<b>Falsche Format vum <i>Ufanks-</i> oder vum <i>Schluss</i> Datum!</b>',
+	'usagestatisticsintervalday'   => 'Dag',
+	'usagestatisticsintervalweek'  => 'Woch',
+	'usagestatisticsintervalmonth' => 'Mount',
 );
 
 /** Dutch (Nederlands)

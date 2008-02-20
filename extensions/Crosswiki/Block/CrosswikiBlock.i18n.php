@@ -176,6 +176,7 @@ Revenir vers :
 $messages['gl'] = array(
 	'crosswikiblock-desc'           => 'Permite bloquear usuarios doutros wikis mediante unha [[Special:Crosswikiblock|páxina especial]]',
 	'crosswikiblock'                => 'Usuario bloqueado noutro wiki',
+	'crosswikiblock-target'         => 'Enderezo IP ou nome de usuario e wiki de destino:',
 	'crosswikiblock-expiry'         => 'Caducidade:',
 	'crosswikiblock-reason'         => 'Razón:',
 	'crosswikiblock-submit'         => 'Bloquear este usuario',
@@ -324,6 +325,7 @@ $messages['pt'] = array(
 	'crosswikiblock-submit'         => 'Bloquear este utilizador',
 	'crosswikiblock-anononly'       => 'Bloquear apenas utilizadores anónimos',
 	'crosswikiblock-nocreate'       => 'Impedir criação de conta',
+	'crosswikiblock-noemail'        => 'Impedir utilizador de enviar email',
 	'crosswikiblock-nousername'     => 'Nenhum nome de utilizador foi introduzido',
 	'crosswikiblock-dbnotfound'     => 'A base de dados $1 não existe',
 	'crosswikiblock-noname'         => '"$1" não é um nome de utilizador válido.',
@@ -331,6 +333,11 @@ $messages['pt'] = array(
 	'crosswikiblock-noexpiry'       => 'Expiração inválida: $1.',
 	'crosswikiblock-noreason'       => 'Nenhum motivo especificado.',
 	'crosswikiblock-alreadyblocked' => 'O utilizador $3 já está bloqueado.',
+	'crosswikiblock-success'        => "Utilizador '''$3''' bloqueado com sucesso.
+
+Voltar para:
+* [[{{ns:special}}:CrosswikiBlock|Formulário de bloqueio]]
+* [[$4]]",
 );
 
 /** Slovak (Slovenčina)

@@ -34,7 +34,7 @@ $messages['bn'] = array(
  * @author Li-sung
  */
 $messages['cs'] = array(
-	'charinsert-desc' => 'Umožňuje vytvoření JavaScriptového políčka, které zjednodušuje vkládání neobvyklých znaků',
+	'charinsert-desc' => 'Umožňuje vytvoření JavaScriptového políčka, které zjednodušuje [[MediaWiki:Edittools|vkládání neobvyklých znaků]]',
 );
 
 /** German (Deutsch)
@@ -77,7 +77,7 @@ $messages['ja'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'charinsert-desc' => 'Erlaabt et eng JavaScript-gesteiert Këscht ze maache fir Sonnerzeechen anzesetzen',
+	'charinsert-desc' => 'Erlaabt et eng JavaScript-gesteiert Këscht ze maache fir [[MediaWiki:Edittools|Sonnerzeechen anzesetzen]]',
 );
 
 /** Dutch (Nederlands)
@@ -103,7 +103,7 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'charinsert-desc' => 'Permite a criação de uma caixa JavaScript para inserção de caracteres não "standard"',
+	'charinsert-desc' => 'Permite a criação de uma caixa JavaScript para [[MediaWiki:Edittools|inserção de caracteres não "standard"]]',
 );
 
 /** Slovak (Slovenčina)

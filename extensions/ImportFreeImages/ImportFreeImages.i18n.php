@@ -161,8 +161,9 @@ $messages['hu'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'importfreeimages_owner' => 'Auteur:',
-	'importfreeimages_next'  => 'Nächst $1',
+	'importfreeimages_owner'      => 'Auteur:',
+	'importfreeimages_importthis' => 'importéieren',
+	'importfreeimages_next'       => 'Nächst $1',
 );
 
 /** Dutch (Nederlands)
@@ -239,10 +240,11 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'importfreeimages'                       => 'Importar Imagens Livres',
-	'importfreeimages-desc'                  => 'Providencia uma forma de importar fotografias devidamente licenciadas do flickr.',
+	'importfreeimages-desc'                  => 'Providencia uma forma de [[{{ns:special}}:ImportFreeImages|importar fotografias devidamente licenciadas]] do [http://www.flickr.com flickr].',
 	'importfreeimages_description'           => 'Esta página permite-lhe procurar fotografias devidamente licenciadas no flickr e importá-las para o seu wiki.',
 	'importfreeimages_noapikey'              => 'Você não configurou a sua chave de API Flickr. Para o fazer, por favor obtenha uma chave de API [http://www.flickr.com/services/api/misc.api_keys.html aqui] e atribua-a a wgFlickrAPIKey em ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'         => "Nenhuma fotografia foi encontrada segundo o seu critério de busca '$1'; por favor, tente de novo.",
+	'importfreeimages_invalidurl'            => 'A URL "$1" não é uma imagem Flickr válida.',
 	'importfreeimages_owner'                 => 'Autor',
 	'importfreeimages_importthis'            => 'importar isto',
 	'importfreeimages_next'                  => 'Próximas $1',

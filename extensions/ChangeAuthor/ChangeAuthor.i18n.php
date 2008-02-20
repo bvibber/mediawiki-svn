@@ -165,11 +165,30 @@ $messages['br'] = array(
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
-	'changeauthor'                   => 'Změnit autora revize',
-	'changeauthor-desc'              => 'Umožňuje změnit autora revize',
-	'changeauthor-title'             => 'Změnit autora revize',
-	'changeauthor-search-box'        => 'Hledat revize',
-	'changeauthor-pagename-or-revid' => 'Název stránky nebo ID revize:',
+	'changeauthor'                      => 'Změnit autora revize',
+	'changeauthor-desc'                 => 'Umožňuje změnit autora revize',
+	'changeauthor-title'                => 'Změnit autora revize',
+	'changeauthor-search-box'           => 'Hledat revize',
+	'changeauthor-pagename-or-revid'    => 'Název stránky nebo ID revize:',
+	'changeauthor-pagenameform-go'      => 'Vykonat',
+	'changeauthor-comment'              => 'Komentář:',
+	'changeauthor-changeauthors-multi'  => 'Změnit autora (autory)',
+	'changeauthor-changeauthors-single' => 'Změnit autora',
+	'changeauthor-invalid-username'     => 'Neplatné uživatelské jméno: „$1“.',
+	'changeauthor-nosuchuser'           => 'Uživatel „$1“ neexistuje.',
+	'changeauthor-revview'              => 'Revize #$1 {{plural:$2|z|ze|z}} $2',
+	'changeauthor-nosuchtitle'          => 'Stránka s názvem „$1“ neexistuje.',
+	'changeauthor-invalidform'          => 'Prosím, použijte formulář Special:ChangeAuthor raději než vlastní formulář.',
+	'changeauthor-success'              => 'Vaše požadavky byly úspěšně zpracovány.',
+	'changeauthor-logentry'             => 'Autor $2 z $1 byl změněn z $3 na $4',
+	'changeauthor-logpagename'          => 'Záznam změn autorů',
+);
+
+/** Danish (Dansk)
+ * @author M.M.S.
+ */
+$messages['da'] = array(
+	'changeauthor-pagenameform-go' => 'Gå',
 );
 
 $messages['de'] = array(
@@ -416,6 +435,7 @@ $messages['lb'] = array(
 	'changeauthor-title'                => 'Auteur vun enger Versioun änneren',
 	'changeauthor-search-box'           => 'Versioune sichen',
 	'changeauthor-pagename-or-revid'    => 'Säitenumm oder Versiounsnummer:',
+	'changeauthor-pagenameform-go'      => 'Lass',
 	'changeauthor-comment'              => 'Bemierkung:',
 	'changeauthor-changeauthors-multi'  => 'Auteur(en) änneren',
 	'changeauthor-changeauthors-single' => 'Auteur änneren',
@@ -659,24 +679,29 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
- * @author Max sonnelid
  * @author Lejonel
+ * @author Max sonnelid
  */
 $messages['sv'] = array(
-	'changeauthor'                      => 'Ändra revisions upphovsman',
-	'changeauthor-desc'                 => 'Tillåt ändring av revisions upphovsman',
-	'changeauthor-title'                => 'Ändra upphovsmanen av en revision',
-	'changeauthor-search-box'           => 'Sök revisioner',
-	'changeauthor-pagename-or-revid'    => 'Sidnamn eller revisions ID:',
+	'changeauthor'                      => 'Ändra upphovsman för sidversion',
+	'changeauthor-desc'                 => 'Gör det möjligt att ändra upphovsman för sidversioner',
+	'changeauthor-title'                => 'Ändra upphovsman för en sidversion',
+	'changeauthor-search-box'           => 'Välj sidversion eller sida',
+	'changeauthor-pagename-or-revid'    => 'Sidnamn eller versions-ID:',
 	'changeauthor-pagenameform-go'      => 'Gå',
 	'changeauthor-comment'              => 'Kommentar:',
-	'changeauthor-changeauthors-multi'  => 'Ändra upphovsman (upphovsmän)',
-	'changeauthor-changeauthors-single' => 'Ändra upphovsman',
-	'changeauthor-invalid-username'     => 'Ogiltigt användarnamn "$1".',
-	'changeauthor-nosuchuser'           => 'Ingen sådan användare "$1".',
-	'changeauthor-revview'              => 'Revision #$1 av $2',
+	'changeauthor-changeauthors-multi'  => 'Ändra',
+	'changeauthor-explanation-multi'    => 'Med hjälp av det här formuläret kan du ändra upphovsmännen för sidversioner. Byt ut ett eller flera av användarnamnen i listan härunder, skriv (om du vill) en kommentar och tryck sedan på knappen "Ändra".',
+	'changeauthor-changeauthors-single' => 'Ändra',
+	'changeauthor-explanation-single'   => 'Med hjälp av det här formuläret kan du ändra upphovsmannen för en sidversion. Byt ut användarnamnet härunder, skriv (om du vill) en kommentar och tryck sedan på knappen "Ändra".',
+	'changeauthor-invalid-username'     => 'Användarnamnet "$1" är ogiltigt.',
+	'changeauthor-nosuchuser'           => 'Det finns ingen användare med namnet "$1".',
+	'changeauthor-revview'              => 'Version #$1 av $2',
 	'changeauthor-nosuchtitle'          => 'Det finns ingen sida med namnet "$1".',
-	'changeauthor-logentry'             => 'Ändrad upphovsman av $2 av $1 från $3 till $4',
+	'changeauthor-weirderror'           => 'Ett mycket konstigt fel inträffade. Försök en gång till. Om samma fel upprepas så är databasen förmodligen trasig.',
+	'changeauthor-invalidform'          => 'Var vänlig använd formuläret som finns på [[Special:ChangeAuthor]], istället för ett formulär som någon annan skapat.',
+	'changeauthor-success'              => 'Upphovsmansändringen är genomförd.',
+	'changeauthor-logentry'             => 'ändrade upphovsman för $2 av $1 från $3 till $4',
 	'changeauthor-logpagename'          => 'Upphovsmansändringslogg',
 );
 

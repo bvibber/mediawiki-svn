@@ -303,6 +303,25 @@ $messages['it'] = array(
 	'pdt_comparing_page'  => 'Confronto tra gli output del parser per [[$1]]',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'parserdifftest'      => 'パーサー比較テスト',
+	'pdtest-desc'         => '2つの異なるパーサー間での出力結果を比較する[[{{ns:special}}:ParserDiffTest|{{int:specialpage}}]]。',
+	'pdtest_no_target'    => '対象が指定されていません。',
+	'pdtest_page_missing' => '指定されたページはデータベースに存在していません。',
+	'pdtest_no_changes'   => '違いが検出できませんでした。',
+	'pdtest_time_report'  => '<b>$1</b> の処理に $2 秒、<b>$3</b> の処理に $4 秒かかりました。',
+	'pdtest_title'        => '比較元のページタイトル:',
+	'pdtest_text'         => '比較するテキスト:',
+	'pdtest_ok'           => '比較',
+	'pdtest_get_text'     => 'ページからテキストを取得',
+	'pdtest_diff'         => '差異',
+	'pdtest_side_by_side' => '出力の比較',
+	'pdt_comparing_page'  => '[[$1]]のパーサー出力を比較',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

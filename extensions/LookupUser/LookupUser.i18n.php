@@ -210,6 +210,7 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'lookupuser-desc'              => '[[{{ns:special}}:LookupUser|Retorna informação]] sobre um utilizador tal como o endereço de email e o ID',
 	'lookupuser_intro'             => 'Introduza um nome de utilizador para visualizar as preferências desse utilizador.',
 	'lookupuser_nonexistent'       => 'Erro: Utilizador não existe',
 	'lookupuser_authenticated'     => 'Autenticação por email: $1',
@@ -277,6 +278,8 @@ $messages['stq'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
+	'lookupuser_nonexistent'  => 'Error: Användare existerar inte',
+	'lookupuser_id'           => 'Användar ID: <tt>#$1</tt>',
 	'lookupuser_email'        => 'E-post: [[Special:Emailuser/$2|$1]]',
 	'lookupuser_realname'     => 'Riktigt namn: $1',
 	'lookupuser_registration' => 'Registrerings datum: $1',

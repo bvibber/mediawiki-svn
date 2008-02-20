@@ -294,6 +294,7 @@ $messages['ga'] = array(
  */
 $messages['gl'] = array(
 	'sitematrix'           => 'Listaxe dos wikis de Wikimedia',
+	'sitematrix-desc'      => 'Mostra unha [[Special:SiteMatrix|listaxe dos wikis de Wikimedia]]',
 	'sitematrix-language'  => 'Linguaxe',
 	'sitematrix-project'   => 'Nome do proxecto, ligazón entre proxectos e ligazón entre wikis',
 	'sitematrix-others'    => 'Outros proxectos de Wikimedia',
@@ -819,10 +820,13 @@ $messages['vec'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'sitematrix'          => 'Danh sách các wiki của Wikimedia',
-	'sitematrix-language' => 'Ngôn ngữ',
-	'sitematrix-project'  => 'Tên dự án, tiền tố trong liên kết, và liên kết liên wiki',
-	'sitematrix-others'   => 'Các dự án khác của Wikimedia',
+	'sitematrix'           => 'Danh sách các wiki của Wikimedia',
+	'sitematrix-desc'      => 'Liệt kê [[Special:SiteMatrix|các wiki trực thuộc Wikimedia]]',
+	'sitematrix-language'  => 'Ngôn ngữ',
+	'sitematrix-project'   => 'Tên dự án, tiền tố trong liên kết, và liên kết liên wiki',
+	'sitematrix-others'    => 'Các dự án khác của Wikimedia',
+	'sitematrix-total'     => "'''$1 wiki tổng cộng'''",
+	'sitematrix-sitetotal' => 'Tổng cộng',
 );
 
 /** Volapük (Volapük)

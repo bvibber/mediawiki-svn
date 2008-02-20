@@ -133,13 +133,18 @@ $messages['br'] = array(
 	'expand_templates_preview'         => 'Rakwelet',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
 $messages['ca'] = array(
 	'expandtemplates'                  => 'Expansió de plantilles',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Expandeix plantilles, funcions i variables]] per a mostrar-vos la sintaxi expandida i previsualitzar el resultat que es mostrarà a les pàgines',
 	'expand_templates_intro'           => 'Aquesta pàgina especial permet provar plantilles, amb expansions recursives. Les funcions i les variables predefinides, com ara <nowiki>{{</nowiki>#if:...}} o <nowiki>{{</nowiki>CURRENTDAY}}, també són substituïdes.',
 	'expand_templates_title'           => 'Títol per contextualitzar ({{PAGENAME}}, etc):',
 	'expand_templates_input'           => 'El vostre text:',
 	'expand_templates_output'          => 'Resultat:',
 	'expand_templates_remove_comments' => 'Elimina els comentaris',
+	'expand_templates_preview'         => 'Previsualitza',
 );
 
 /** Chechen (Нохчийн)

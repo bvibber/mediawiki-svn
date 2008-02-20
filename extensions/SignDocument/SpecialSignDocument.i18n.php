@@ -583,13 +583,20 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'sign-selectdoc'               => 'Dokument:',
 	'sign-realname'                => 'Numm:',
+	'sign-zip'                     => 'Postleitzuel:',
 	'sign-country'                 => 'Land:',
+	'sign-phone'                   => 'Telefonsnummer:',
 	'sign-bday'                    => 'Alter:',
 	'sign-email'                   => 'E-Mail-Adress:',
 	'sign-viewfield-realname'      => 'Numm',
 	'sign-viewfield-address'       => 'Adress',
+	'sign-viewfield-ip'            => 'IP-Adress',
+	'sign-viewfield-email'         => 'E-Mail',
 	'sign-viewfield-age'           => 'Alter',
+	'sign-viewfield-options'       => 'Optiounen',
+	'sig-anonymous'                => '<i>Anonym</i>',
 	'sign-viewfield-reviewcomment' => 'Bemierkung',
 	'sign-review-comment'          => 'Bemierkung',
 );

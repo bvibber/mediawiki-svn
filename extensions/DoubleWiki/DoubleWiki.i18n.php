@@ -18,6 +18,13 @@ $messages['ar'] = array(
 	'doublewiki-desc' => 'يعرض صفحة وترجمتها من ويكي أخرى على عمودين من نفس الصفحة',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'doublewiki-desc' => "Mostra una pàgina i la seva traducció d'una altra wiki amb dues columnes a la mateixa pàgina",
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -51,6 +58,13 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'doublewiki-desc' => 'Az adott lap mellett megjeleníti annak fordítását egy másik wikiből, két oszlopban, ugyanazon az oldalon',
+);
+
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'doublewiki-desc' => 'あるページと、他ウィキにある別言語の該当ページを、横に並べて同一ページに表示する',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -93,6 +93,14 @@ $messages['oc'] = array(
 	'nstab-comments' => 'Comentari',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'commentpages-desc' => 'Páginas de comentários para o espaço nominal principal',
+	'nstab-comments'    => 'Comentário',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

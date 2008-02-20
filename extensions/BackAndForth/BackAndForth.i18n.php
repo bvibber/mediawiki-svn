@@ -102,6 +102,13 @@ $messages['cs'] = array(
 	'backforth-prev' => 'Předchozí ($1)',
 );
 
+/** Danish (Dansk)
+ * @author M.M.S.
+ */
+$messages['da'] = array(
+	'backforth-next' => 'Næste ($1)',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

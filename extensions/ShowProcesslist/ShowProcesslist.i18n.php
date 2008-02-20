@@ -148,6 +148,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'showprocesslist'         => 'Vis prosessliste',
+	'showprocesslist-desc'    => 'Vis resultatet av [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id'      => 'ID',
 	'showprocesslist-user'    => 'Bruker',
 	'showprocesslist-host'    => 'Vert',

@@ -70,10 +70,14 @@ $messages['nl'] = array(
 	'signaturelogentry'    => 'ondertekende het document $1',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'signaturelogpage' => 'Signaturlogg',
+	'signaturelogpage'     => 'Signaturlogg',
+	'signature-desc'       => 'Slår på [[Special:SignDocument|dokumentsignering]]',
 	'signaturelogpagetext' => 'Dette er en logg over alle signaturer lagt til dokumenter via [[Special:SignDocument]].',
-	'signaturelogentry' => 'signerte dokumentet $1',
+	'signaturelogentry'    => 'signerte dokumentet $1',
 );
 
 $messages['oc'] = array(

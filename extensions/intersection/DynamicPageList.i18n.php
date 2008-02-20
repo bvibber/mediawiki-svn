@@ -163,6 +163,17 @@ $messages['it'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: È necessario includere almeno una categoria oppure specificare un namespace.',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'intersection-desc'          => '単一カテゴリ内または複数カテゴリ内において最近更新された項目を箇条書きで表示する',
+	'intersection_toomanycats'   => 'DynamicPageList: カテゴリ指定が多すぎます！',
+	'intersection_toofewcats'    => 'DynamicPageList: カテゴリ指定が少なすぎます！',
+	'intersection_noresults'     => 'DynamicPageList: 最近更新された項目はありません！',
+	'intersection_noincludecats' => 'DynamicPageList: 1つ以上のカテゴリ、または名前空間を指定する必要があります！',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -116,11 +116,17 @@ $messages['br'] = array(
 	'newuserlog-create2-entry' => 'kont krouet evit $1',
 );
 
+/** Catalan (Català)
+ * @author Toniher
+ * @author SMP
+ */
 $messages['ca'] = array(
-	'newuserlogpage'           => 'Registre de creació de l\'usuari',
+	'newuserlogpage'           => "Registre de creació de l'usuari",
 	'newuserlogpagetext'       => 'Aquest és un registre de creació de nous usuaris',
+	'newuserlog-desc'          => 'Afegeix un [[Special:Log/newusers|registre de creació de comptes]] a [[Special:Log]]',
+	'newuserlog-byemail'       => 'contrasenya enviada per correu electrònic',
 	'newuserlog-create-entry'  => 'Nou usuari',
-	'newuserlog-create2-entry' => 's\'ha creat un compte per a $1',
+	'newuserlog-create2-entry' => "s'ha creat un compte per a $1",
 );
 
 $messages['cdo'] = array(
@@ -319,12 +325,13 @@ $messages['ga'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  * @author Prevert
  */
 $messages['gl'] = array(
 	'newuserlogpage'           => 'Rexistro de usuarios',
 	'newuserlogpagetext'       => 'Este é un rexistro de creación de usuarios',
-	'newuserlog-desc'          => 'Engada un [[Special:Log/newusers|rexistro de creación de contas]] to [[Special:Log]]',
+	'newuserlog-desc'          => 'Engada un [[Special:Log/newusers|rexistro de creación de contas]] a [[Special:Log]]',
 	'newuserlog-byemail'       => 'contrasinal enviado por correo electrónico',
 	'newuserlog-create-entry'  => 'Novo usuario',
 	'newuserlog-create2-entry' => 'creada conta para $1',
@@ -662,6 +669,17 @@ $messages['pms'] = array(
 	'newuserlogpagetext'       => 'Sossì a l\'é un registr andova ch\'as marco le creassion dj\'utent',
 	'newuserlog-create-entry'  => 'Neuv utent',
 	'newuserlog-create2-entry' => 'Cont doertà për $1',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'newuserlogpage'           => 'د کارن-نوم د جوړېدو يادښت',
+	'newuserlogpagetext'       => 'دا د کارن-نوم د جوړېدو يادښت دی',
+	'newuserlog-byemail'       => 'پټنوم مو برېښناليک ته درولېږه',
+	'newuserlog-create-entry'  => 'نوی کارونکی',
+	'newuserlog-create2-entry' => 'د $1 لپاره کارن-حساب جوړ شو',
 );
 
 /** Portuguese (Português)

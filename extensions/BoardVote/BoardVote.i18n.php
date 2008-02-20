@@ -582,6 +582,14 @@ Budete přesměrování na tuto externí stránku za 20 sekund. Okamžitě tam m
 Může se zobrazit bezpečnostní varování o nepodepsaném certifikátu.',
 );
 
+/** Danish (Dansk)
+ * @author M.M.S.
+ */
+$messages['da'] = array(
+	'boardvote_user'    => 'Bruger',
+	'boardvote_welcome' => "Velkommen '''$1'''!",
+);
+
 $messages['de'] = array(
 	'boardvote'               => "Wahlen zum Wikimedia-Kuratorium",
 	'boardvote-desc'          => '[[meta:Board elections|Wahlen zum Wikimedia-Kuratorium]]',

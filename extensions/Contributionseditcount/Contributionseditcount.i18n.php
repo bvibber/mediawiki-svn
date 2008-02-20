@@ -53,8 +53,13 @@ $messages['fr'] = array(
 	'contributionseditcount-desc' => 'Affiche un compteur d’éditions sur la page [[Special:Contributions]]',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Xosé
+ */
 $messages['gl'] = array(
-	'contributionseditcount' => 'Este usuario ten $1 edicións.',
+	'contributionseditcount'      => 'Este usuario ten $1 edicións.',
+	'contributionseditcount-desc' => 'Mostra a conta de edicións en [[Special:Contributions]]',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -164,10 +169,12 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'contributionseditcount' => 'Denna användare har gjort $1 redigeringar.',
+	'contributionseditcount'      => 'Denna användare har gjort $1 redigeringar.',
+	'contributionseditcount-desc' => 'Visa en redigerings räkning på [[Special:Contributions]]',
 );
 
 /** Volapük (Volapük)

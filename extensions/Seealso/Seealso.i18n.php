@@ -67,10 +67,12 @@ $messages['fr'] = array(
 );
 
 /** Galician (Galego)
+ * @author Toliño
  * @author Alma
  */
 $messages['gl'] = array(
-	'seealso' => 'Véxase tamén',
+	'seealso'      => 'Véxase tamén',
+	'seealso-desc' => "Cabeceira 'Véxase tamén' localizada empregando a etiqueta <code><nowiki><seealso></nowiki></code>",
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -128,7 +130,8 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'seealso' => 'Se også',
+	'seealso'      => 'Se også',
+	'seealso-desc' => 'Oversatte «Se også»-overskrifter med bruk av taggen <code><nowiki><seealso></nowiki></code>',
 );
 
 /** Occitan (Occitan)

@@ -238,6 +238,13 @@ $messages['cs'] = array(
 	'badimages-page'           => '{{ns:help}}:Seznam špatných souborů',
 );
 
+/** Danish (Dansk)
+ * @author M.M.S.
+ */
+$messages['da'] = array(
+	'badimages-name' => 'Navn:',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -461,10 +468,11 @@ $messages['gag'] = array(
  * @author Alma
  * @author Xosé
  * @author SPQRobin
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'badimages'                => 'Listaxe de imaxes con fallas',
-	'badimages-desc'           => 'Incluir a listaxe de imaxes con fallas as habilidades de MediaWiki',
+	'badimages-desc'           => 'Incluír a listaxe de imaxes con fallas as habilidades de MediaWiki',
 	'badimages-add-btn'        => 'Engadir',
 	'badimages-added'          => '$1 foi engadida á listaxe.',
 	'badimages-count'          => "Hai '''$1''' imaxes na listaxe de imaxes con fallas.",

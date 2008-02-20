@@ -153,6 +153,15 @@ $messages['pms'] = array(
 	'userimages-noimages' => '$1 a l\'ha pa carià gnun-a figura.',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'userimages-caption'  => 'انځورونه د $1 له خوا پورته شوي',
+	'userimages-noname'   => 'ناسم کارن-نوم او يا هم هېڅ کارن-نوم نه دی ورکړ شوی.',
+	'userimages-noimages' => '$1 هېڅ کوم انځور نه دی پورته کړی.',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

@@ -273,12 +273,13 @@ $messages['fr'] = array(
 /** Galician (Galego)
  * @author Alma
  * @author Siebrand
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'review_sidebar_title'                   => 'Revisado',
 	'review_topic_page'                      => 'Revisados os temas',
 	'review_sidebar_explanation'             => "O extremo esquerdo da caixiña sempre significa 'sen opinión'.",
-	'review_your_review'                     => 'O seu examen desta páxina/revisión:',
+	'review_your_review'                     => 'O seu exame desta páxina/revisión:',
 	'review_page_link'                       => 'revisar estatísticas',
 	'review_sidebar_final'                   => 'Para revisar os datos desta páxina, véxase $1',
 	'review_for_page'                        => 'Revisión para a páxina "$1"',
@@ -358,7 +359,10 @@ $messages['hsb'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'review_statistics_left_corner' => 'Versioun',
 	'review_version_statistic_cell' => '$1 vu(n) $2',
+	'review_user_details_link'      => '(Detailer)',
+	'review_no_opinion'             => 'Keng Meenung',
 	'review_comment'                => 'Bemierkung',
 );
 
@@ -406,6 +410,22 @@ $messages['nl'] = array(
 	'review_no_opinion'                                      => 'Geen mening',
 	'review_rating'                                          => 'Waardering',
 	'review_comment'                                         => 'Opmerking',
+);
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'review_total_statistics'       => 'Totalt',
+	'review_statistics_left_corner' => 'Revisjon',
+	'review_version_link'           => 'Revisjon #$1',
+	'review_statistic_cell'         => 'Gjennomsnitt: $1 av $2<br />($4 registrerte, $5 uregistrerte)',
+	'review_version_statistic_cell' => '$1 av $2',
+	'review_user_details_link'      => '(detaljer)',
+	'review_blocked'                => 'Du er blokkert, gå vekk.',
+	'review_topic'                  => 'Emne',
+	'review_no_opinion'             => 'Ingen mening',
+	'review_comment'                => 'Kommentar',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)

@@ -158,6 +158,14 @@ $messages['hu'] = array(
 	'multiupload-toolbox'              => 'Több fájl feltöltése',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'multipleupload'           => 'Fichieren eroplueden',
+	'multiupload-fileuploaded' => 'Fichier eropgelueden',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

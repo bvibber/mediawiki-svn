@@ -109,11 +109,15 @@ $messages['fr'] = array(
  * @author Alma
  */
 $messages['gl'] = array(
+	'importusers'                   => 'Importar Usuarios',
 	'importusers-uploadfile'        => 'Cargar ficheiro',
+	'importusers-form-button'       => 'Importar',
 	'importusers-user-added'        => 'Usuario <b>%s</b> foi engadido.',
+	'importusers-log'               => 'Importar rexistro',
 	'importusers-log-summary'       => 'Resumo',
 	'importusers-log-summary-all'   => 'Todo',
 	'importusers-log-summary-added' => 'Engadido',
+	'importusers-login-name'        => 'Rexistrar nome',
 	'importusers-password'          => 'contrasinal',
 	'importusers-email'             => 'correo electrónico',
 	'importusers-realname'          => 'nome real',
@@ -313,6 +317,7 @@ $messages['sv'] = array(
 	'importusers-form-caption'        => 'Sätt in CSV-fil (UTF-8)',
 	'importusers-form-button'         => 'Importera',
 	'importusers-user-added'          => 'Användare <b>%s</b> hat blivigt tillagd.',
+	'importusers-user-present-update' => 'Användare <b>%s</b> existerar redan. Uppdaterad.',
 	'importusers-log'                 => 'Import logg',
 	'importusers-log-summary'         => 'Sammanfattning',
 	'importusers-log-summary-all'     => 'Alla',
@@ -321,6 +326,7 @@ $messages['sv'] = array(
 	'importusers-login-name'          => 'Inloggningsnamn',
 	'importusers-password'            => 'lösenord',
 	'importusers-email'               => 'e-post',
+	'importusers-realname'            => 'riktigt namn',
 );
 
 /** Telugu (తెలుగు)

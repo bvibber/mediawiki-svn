@@ -183,6 +183,13 @@ $messages['pl'] = array(
 	'advancedrandom' => 'Bardzo losowo',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'advancedrandom' => 'پرمختللې ناټاکنه',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

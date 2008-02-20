@@ -103,6 +103,13 @@ $messages['cs'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Vstupní chyba!',
 );
 
+/** Danish (Dansk)
+ * @author M.M.S.
+ */
+$messages['da'] = array(
+	'chemFunctions_Name' => 'IUPAC Navn',
+);
+
 $messages['de'] = array(
 	'chemicalsources' => 'Chemische Quellen',
 	'chemFunctions_ListPage' => 'Chemische Quellen',
@@ -560,10 +567,11 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Max sonnelid
+ * @author Lejonel
  */
 $messages['sv'] = array(
 	'chemicalsources'        => 'Kemiska källor',
-	'chemicalsource-desc'    => 'Lägger till tillägget <nowiki><chemform></nowiki>, för kemiska formulär',
+	'chemicalsource-desc'    => 'Lägger till taggen <nowiki><chemform></nowiki>, för kemiska formler',
 	'chemFunctions_ListPage' => 'Kemiska källor',
 	'chemFunctions_CAS'      => 'CAS nummer',
 	'chemFunctions_ATCCode'  => 'ATC kod',

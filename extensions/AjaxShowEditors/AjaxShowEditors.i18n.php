@@ -313,10 +313,13 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'ajax-se-desc'    => "Weist déi Benotzer déi amgaang sinn déi selwescht Säit z'änneren.",
-	'ajax-se-title'   => 'Elo geännert vum:',
-	'ajax-se-pending' => 'soll geännert ginn ... (klickt op dës Këscht oder fénkt u mat änneren)',
-	'ajax-se-idling'  => '(viru(n) $1 Sekonnen)',
+	'ajax-se-desc'             => "Weist déi Benotzer déi amgaang sinn déi selwescht Säit z'änneren.",
+	'ajax-se-title'            => 'Elo geännert vum:',
+	'ajax-se-pending'          => 'soll geännert ginn ... (klickt op dës Këscht oder fénkt u mat änneren)',
+	'ajax-se-idling'           => '(viru(n) $1 Sekonnen)',
+	'ajax-se-pagedoesnotexist' => "d'Säit gëtt et net",
+	'ajax-se-userinvalid'      => 'Feeler: Benotzer ongëlteg',
+	'ajax-se-usernotfound'     => 'Feeler: Benotzer net fonnt',
 );
 
 /** Limburgish (Limburgs)
@@ -427,10 +430,13 @@ $messages['pms'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'ajax-se-desc'    => 'Mostra utilizadores que estão a editar a mesma página',
-	'ajax-se-title'   => 'Editando no momento:',
-	'ajax-se-pending' => 'atualização pendente... (clique neste box ou inicie a edição)',
-	'ajax-se-idling'  => '($1 segundos atrás)',
+	'ajax-se-desc'             => 'Mostra utilizadores que estão a editar a mesma página',
+	'ajax-se-title'            => 'Editando no momento:',
+	'ajax-se-pending'          => 'atualização pendente... (clique neste box ou inicie a edição)',
+	'ajax-se-idling'           => '($1 segundos atrás)',
+	'ajax-se-pagedoesnotexist' => 'página não existe',
+	'ajax-se-userinvalid'      => 'ERR: utilizador inválido',
+	'ajax-se-usernotfound'     => 'ERR: utilizador não encontrado',
 );
 
 /** Romanian (Română)

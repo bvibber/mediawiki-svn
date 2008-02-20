@@ -387,10 +387,16 @@ $messages['it'] = array(
 	'createarticle'           => 'Crea voce',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
 $messages['ja'] = array(
-	'tryexact'       => '一致する項目を検索',
-	'searchfulltext' => '全文検索',
-	'createarticle'  => '項目を作成',
+	'inputbox-desc'           => 'あらかじめ定義されたHTMLフォーム埋め込み機能を有効にする',
+	'inputbox-error-no-type'  => '作成すべき入力ボックスのタイプが指定されていません。',
+	'inputbox-error-bad-type' => '"$1" というタイプの入力ボックスは定義されていません。"create"、"comment"、"search"、"search2"が指定可能です。',
+	'tryexact'                => '一致する項目を検索',
+	'searchfulltext'          => '全文検索',
+	'createarticle'           => '項目を作成',
 );
 
 $messages['jv'] = array(

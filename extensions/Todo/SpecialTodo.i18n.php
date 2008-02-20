@@ -228,6 +228,7 @@ $4',
  */
 $messages['no'] = array(
 	'todo'                  => 'Oppgaveliste',
+	'todo-tab'              => 'oppgaver',
 	'todo-new-queue'        => 'ny',
 	'todo-mail-subject'     => 'Fullførte oppgave på $1s oppgaveliste',
 	'todo-mail-body'        => 'Du ba om en e-postbekreftelse om fullføringen av en oppgave på $1s oppgaveliste.
@@ -254,7 +255,6 @@ $4',
 	'todo-form-details'     => 'Detaljer:',
 	'todo-form-email'       => 'For å motta beskjed på e-post når oppgaven er fullført, skriv inn e-postadressen din her:',
 	'todo-form-submit'      => 'Utfør',
-
 );
 
 /** Occitan (Occitan)
@@ -283,6 +283,13 @@ $messages['oc'] = array(
 	'todo-form-details'     => 'Precisions :',
 	'todo-form-email'       => 'Per recebre las notificacions per corrièr electronic un còp l’article clausurat, inscrivissètz vòstra adreça dins lo quadre çaijós :',
 	'todo-form-submit'      => 'Sometre la requèsta',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'todo-new-queue' => 'نوی',
 );
 
 /** Portuguese (Português)

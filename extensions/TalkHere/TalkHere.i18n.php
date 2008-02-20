@@ -266,6 +266,21 @@ De beheerders van deze site dragen geen verantwoordelijkheid voor de inhoud van 
 	'talkhere-collapse'    => 'editor verbergen',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'talkhere-foottext'    => 'Kommentarene ovenfor ble lagt igjen av besøkende.
+
+Sidens operatører kan ikke ta ansvar for innholdet i slike kommentarer.',
+	'talkhere-talkpage'    => 'diskusjonsside',
+	'talkhere-notalk'      => "''(ingen kommentarer ennå)''",
+	'talkhere-addcomment'  => 'legg til kommentar',
+	'talkhere-beforeinput' => 'Du kan legge til en kommentar nedenfor',
+	'talkhere-loading'     => 'laster redigerer...',
+	'talkhere-collapse'    => 'skjul redigerer',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

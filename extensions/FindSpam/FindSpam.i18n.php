@@ -74,10 +74,14 @@ $messages['fr'] = array(
 	'findspam-notextfound' => 'Aucune contribution trouvée',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
 $messages['gl'] = array(
-	'findspam' => 'Atopar spam',
-	'findspam-ip' => 'Enderezo IP:',
-	'findspam-ok' => 'De acordo',
+	'findspam'             => 'Atopar spam',
+	'findspam-desc'        => 'Engada unha [[Special:FindSpam|páxina especial]] que permita atopar recentemente spam engadido',
+	'findspam-ip'          => 'Enderezo IP:',
+	'findspam-ok'          => 'De acordo',
 	'findspam-notextfound' => 'Non foron atopadas contribucións',
 );
 

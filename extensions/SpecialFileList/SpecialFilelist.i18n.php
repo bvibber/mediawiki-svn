@@ -70,6 +70,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'filelist'              => 'Listaxe de arquivos',
+	'filelist-desc'         => 'Páxina especial para listar ficheiros cargados',
 	'filelist-show-list'    => 'Amosar listaxe',
 	'filelist-show-gallery' => 'Amosar galería',
 );
@@ -119,6 +120,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'filelist'              => 'Filliste',
+	'filelist-desc'         => 'Spesialside som viser en liste over opplastede filer',
 	'filelist-show-list'    => 'Vis liste',
 	'filelist-show-gallery' => 'Vis gallery',
 );
@@ -131,6 +133,16 @@ $messages['oc'] = array(
 	'filelist-desc'         => 'Pagina especiala per enumerar los fichièrs telecargats.',
 	'filelist-show-list'    => 'Veire la lista',
 	'filelist-show-gallery' => 'Veire la galariá',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'filelist'              => 'د دوتنو لړليک',
+	'filelist-desc'         => 'د پورته شويو دوتنو د لړليک ځانګړی مخ',
+	'filelist-show-list'    => 'لړليک ښکاره کول',
+	'filelist-show-gallery' => 'نندارتون ښکاره کول',
 );
 
 /** Slovak (Slovenčina)

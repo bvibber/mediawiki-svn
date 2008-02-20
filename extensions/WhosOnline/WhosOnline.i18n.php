@@ -96,6 +96,14 @@ $messages['nl'] = array(
 	'whosonline-desc' => 'Toont [[Special:WhosOnline|een lijst]] van aangemelde en anonieme gebruikers die actief zijn',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'whosonline'      => 'Hvem er logget på',
+	'whosonline-desc' => 'Viser [[Special:WhosOnline|en liste]] over innloggede og anonyme brukere som er koblet til',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

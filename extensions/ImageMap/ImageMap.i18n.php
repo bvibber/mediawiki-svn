@@ -335,8 +335,10 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Kahusi
+ * @author JtFuruhata
  */
 $messages['ja'] = array(
+	'imagemap_desc'               => '<tt><nowiki><imagemap></nowiki></tt>タグによるクライアントサイドのクリッカブルマップ機能を有効にする',
 	'imagemap_no_image'           => '&lt;imagemap&gt;: 最初の行で画像を指定して下さい。',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: 画像が無効、又は存在しません。',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: 有効なリンクが$1行目の最後に存在しません。',

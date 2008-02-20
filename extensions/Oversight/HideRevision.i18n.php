@@ -721,31 +721,43 @@ in caso di errori.",
 La divulgazione di tali informazioni può dar luogo alla rimozione permanente dei diritti di oversight.',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ * @author Kahusi
+ */
 $messages['ja'] = array(
-	'hiderevision' => '永久的な版の秘匿',
-	'hiderevision-prompt' => '消去する版の番号(oldid):',
-	'hiderevision-continue' => '続ける',
-	'hiderevision-text' => 'これは、\'\'\'以下の場合に限って\'\'\'使用すべきです：
-; 不適切な個人情報
-: \'\'個人の住所や電話番号、社会保障番号、その他\'\'
+	'hiderevision'                => '永久的な版の秘匿',
+	'hiderevision-desc'           => '法律上の理由などにより特定版を全利用者から閲覧不可能にする',
+	'hiderevision-prompt'         => '秘匿する特定版ID:',
+	'hiderevision-continue'       => '続ける',
+	'hiderevision-text'           => "これは、'''以下の場合に限って'''使用すべきです：
+* 不適切な個人情報
+*: ''個人の住所や電話番号、社会保障番号、その他''
 
-\'\'\'このシステムを悪用したり乱用したりする事は、Oversight権限を失う事になります。\'\'\'
+'''このシステムを悪用したり乱用したりする事は、秘匿版閲覧権限を失う事になります。'''
 
-消去されたアイテムはウェブサイト上では誰も見る事が出来ません。但し、消去はログ化されている為、貴方が間違って消去した場合に、データベース管理者により手動で復帰する事が出来ます。',
-	'hiderevision-reason' => '理由(内密にログ化されます):',
-	'hiderevision-submit' => '永久にこのデータを秘匿する',
-	'hiderevision-tab' => '版の秘匿',
-	'hiderevision-noreason' => '消去する理由を記して下さい。',
-	'hiderevision-status' => '版番号 $1 に就いて: $2',
-	'hiderevision-success' => 'アーカイブ化と削除に成功しました。',
-	'hiderevision-error-missing' => 'データベース内に見付かりません。',
-	'hiderevision-error-current' => 'ページの最新版は削除することが出来ません。先にこの版を差し戻してください。',
-	'hiderevision-error-delete' => 'アーカイブ化出来ませんでした。その版は過去に削除されていませんか?',
-	'oversight-nodiff' => '現在前の差分を辿る事が出来ません。ページが削除されたか、秘匿した版が最初の版であると考えられます。',
-	'oversight-log-hiderev' => '―― $1の編集を消去',
-	'oversight-view' => '詳細',
-	'oversight-hidden' => '秘匿された版',
-	'oversight-header' => '下記は、最近永久に秘匿され、非公開となった版の一覧です。この情報を公開する事は、Oversight権限を永久に失う事になるかも知れません。',
+消去されたアイテムはウェブサイト上では誰も見る事が出来ません。但し、消去はログ化されている為、貴方が間違って消去した場合に、データベース管理者により手動で復帰する事が出来ます。",
+	'hiderevision-reason'         => '理由(内密にログ化されます):',
+	'hiderevision-submit'         => '永久にこのデータを秘匿する',
+	'hiderevision-tab'            => '版の秘匿',
+	'hiderevision-norevisions'    => '削除する版が指定されていません。',
+	'hiderevision-noreason'       => '消去する理由を記して下さい。',
+	'hiderevision-status'         => '特定版ID $1: $2',
+	'hiderevision-success'        => 'アーカイブ化と削除に成功しました。',
+	'hiderevision-error-missing'  => 'データベースに存在しませんでした。',
+	'hiderevision-error-current'  => 'ページの最新版は削除することができません。先にこの版を差し戻してください。',
+	'hiderevision-error-delete'   => 'アーカイブ化できませんでした。その版は過去に削除されていませんか?',
+	'hiderevision-archive-status' => '$1 の削除版: $2',
+	'oversight-nodiff'            => 'このページには現時点より前の版がないため、変更履歴を遡ることができません。以下の理由が考えられます:
+*このページは既に削除されている
+*この秘匿された版は最初の版である',
+	'oversight-log-hiderev'       => '―― $1の編集を消去',
+	'oversight'                   => '秘匿版の閲覧',
+	'oversight-view'              => '詳細',
+	'oversight-difference'        => '（残存している前の版との差分）',
+	'oversight-prev'              => '残存している前の版',
+	'oversight-hidden'            => '秘匿された版',
+	'oversight-header'            => '下記は、最近永久に秘匿され、非公開となった版の一覧です。この情報を公開する事は、Oversight権限を永久に失う事になるかも知れません。',
 );
 
 /* Kazakh Arabic (AlefZet) */

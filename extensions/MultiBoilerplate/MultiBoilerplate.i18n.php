@@ -68,6 +68,8 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'multiboilerplate-desc'   => 'Viser en boks på toppen av redigeringssiden for å velge og laste en standardtekst',
+	'multiboilerplate-legend' => 'Velg standardtekst',
 	'multiboilerplate-submit' => 'Last',
 );
 

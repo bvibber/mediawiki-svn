@@ -63,8 +63,13 @@ $messages['bn'] = array(
 	'deletedcontributions-desc' => 'প্রশাসকদের [[Special:DeletedContributions|কোন ব্যবহারকারীর মুছে ফেলা সম্পাদনাগুলি ব্রাউজ করার]] ক্ষমতা দেয়',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ * @author SPQRobin
+ */
 $messages['ca'] = array(
-	'deletedcontributions' => 'Contribucions esborrades',
+	'deletedcontributions'      => 'Contribucions esborrades',
+	'deletedcontributions-desc' => "Dóna als administradors l'habilitat de [[Special:DeletedContributions|consultar les edicions eliminades d'un usuari]]",
 );
 
 $messages['cdo'] = array(
@@ -331,6 +336,13 @@ $messages['pl'] = array(
 
 $messages['pms'] = array(
 	'deletedcontributions' => 'Modìfiche faite da utent scancelà',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'deletedcontributions' => 'د کارونکي ونډې ړنګې شوې',
 );
 
 /** Portuguese (Português)

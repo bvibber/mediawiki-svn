@@ -72,9 +72,13 @@ $messages['br'] = array(
 	'crossnamespacelinks'         => 'Liammoù esaouennoù anv kroaziet',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
 $messages['ca'] = array(
 	'crossnamespacelinks'         => 'Enllaços entre espais de noms',
-	'crossnamespacelinks-summary' => 'Aquesta pàgina conté una llista d\'enllaços des de pàgines de l\'espai de noms principal a pàgines d\'altres espais de noms (a excepció dels espais {{ns:special}}, {{ns:talk}}, {{ns:project}} i {{ns:template}}) que no és recomanable tenir.',
+	'crossnamespacelinks-desc'    => "[[Special:CrossNamespaceLinks|Mostra els enllaços entre espais de noms]], que no haurien d'existir al projecte {{SITENAME}}",
+	'crossnamespacelinks-summary' => "Aquesta pàgina conté una llista d'enllaços des de pàgines de l'espai de noms principal a pàgines d'altres espais de noms (a excepció dels espais {{ns:special}}, {{ns:talk}}, {{ns:project}} i {{ns:template}}) que no és recomanable tenir.",
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|enllaç|enllaços}} a $3',
 );
 
@@ -162,8 +166,13 @@ $messages['frp'] = array(
 	'crossnamespacelinkstext'     => '$1 : at $2 {{PLURAL:$2|lim|lims}} vers l’èspâço de nom « $3 »',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Xosé
+ */
 $messages['gl'] = array(
 	'crossnamespacelinks'         => 'Ligazóns a través de espazos de nomes',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Listaxe ás ligazóns aos espazos de nomes]] que non existían en {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Esta páxina fornece unha listaxe con ligazóns desde unha páxina no espazo de nomes principal cara a unha páxina noutro espazo de nomes (excepto os espazos de nomes {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}} namespaces), que se recomenda non empregar.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|ligazón|ligazóns}} cara $3',
 );

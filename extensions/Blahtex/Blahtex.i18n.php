@@ -506,6 +506,7 @@ $messages['frp'] = array(
 /** Galician (Galego)
  * @author Xosé
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'math_noblahtex'                        => 'Non se pode executar blahtex, que debe estar en $1',
@@ -541,7 +542,7 @@ $messages['gl'] = array(
 	'math_MissingOpenBraceBefore'           => 'Falta unha chave de apertura "{" antes de "$1"',
 	'math_MissingOrIllegalParameterCount'   => 'Falta ou non é válida a contaxe de parámetros na definición de "$1" (ten que ser un díxito único entre 1 e 9 inclusive)',
 	'math_MissingOrIllegalParameterIndex'   => 'Falta ou non é válido un índice de parámetro na definición de "$1"',
-	'math_NonAsciiInMathMode'               => 'Os caracteres fora do conxunto ASCII só se poden usar no modo texto (tente encerrar os caracteres problemáticos dentro de "\\text{...}")',
+	'math_NonAsciiInMathMode'               => 'Os caracteres fóra do conxunto ASCII só se poden usar no modo texto (tente encerrar os caracteres problemáticos dentro de "\\text{...}")',
 	'math_NotEnoughArguments'               => 'Non se forneceron argumentos dabondo para "$1"',
 	'math_PngIncompatibleCharacter'         => 'Non se pode xerar correctamente un PNG que conteña o carácter $1',
 	'math_ReservedCommand'                  => 'O comando "$1" está reservado para uso interno de blahtex',

@@ -30,6 +30,13 @@ $messages['fr'] = array(
 	'forcepreview-desc' => "Force la prévisualisation pour les utilisateurs ne disposant d'aucun privilège",
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'forcepreview' => 'Gardar páxina (usar vista previa)',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -60,6 +67,14 @@ $messages['nl'] = array(
 $messages['no'] = array(
 	'forcepreview'      => 'Lagre side (forhåndsvis først)',
 	'forcepreview-desc' => 'Tvinger brukere til å forhåndsvise siden dersom de ikke har riktige rettigheter',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'forcepreview'      => 'Gravar página (use a previsão primeiro)',
+	'forcepreview-desc' => 'Força previsão para utilizadores sem privilégios',
 );
 
 /** Slovak (Slovenčina)

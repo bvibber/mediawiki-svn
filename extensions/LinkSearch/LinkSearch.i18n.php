@@ -309,8 +309,12 @@ $messages['it'] = array(
 	'linksearch-error' => "I metacaratteri possono essere usati solo all'inizio del nome dell'host.",
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
 $messages['ja'] = array(
 	'linksearch'       => '外部リンクの検索',
+	'linksearch-desc'  => '指定されたパターンに一致する[[{{ns:special}}:Linksearch|外部リンクを含むページを検索する]]',
 	'linksearch-pat'   => '検索パターン:',
 	'linksearch-ns'    => '名前空間:',
 	'linksearch-ok'    => '検索',

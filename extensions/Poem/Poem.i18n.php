@@ -39,6 +39,13 @@ $messages['fr'] = array(
 	'poem-desc' => 'Ajoute la balise <tt>&lt;poem&gt;</tt> pour le formatage des poèmes',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'poem-desc' => 'Engada a etiqueta <tt>&lt;poem&gt;</tt> para o formato poema',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -51,6 +58,13 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'poem-desc' => '<tt>&lt;poem&gt;</tt> tag a versek formázásához',
+);
+
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'poem-desc' => '詩的な文章フォーマットで記述できる<tt>&lt;poem&gt;</tt>タグを追加する',
 );
 
 /** Lithuanian (Lietuvių)

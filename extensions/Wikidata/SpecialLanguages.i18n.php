@@ -1667,6 +1667,7 @@ $wdMessages['ps'] = array(
 	'ow_TranslatedTextAttributeValues' => 'د ژباړلو وړ متن',
 	'ow_LinkAttributeValues'           => 'تړنې',
 	'ow_copy_no_action_specified'      => 'لطفاً يوه کړنه ځانګړې کړی',
+	'ow_copy_help'                     => 'يوه ورځ به موږ ستاسو سره مرسته وکړو.',
 );
 
 /** Portuguese (Português)

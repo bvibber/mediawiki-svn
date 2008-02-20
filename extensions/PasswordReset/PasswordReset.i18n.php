@@ -126,6 +126,7 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Xosé
+ * @author Toliño
  * @author Alma
  */
 $messages['gl'] = array(
@@ -141,7 +142,8 @@ $messages['gl'] = array(
 	'passwordreset-disableuser'     => 'Desactivar a Conta de Usuario?',
 	'passwordreset-disablesuccess'  => 'Desactivouse a conta do usuario (user_id: $1)',
 	'passwordreset-accountdisabled' => 'A conta foi desabilitada',
-
+	'disabledusers'                 => 'Usuarios desabilitados',
+	'disabledusers-summary'         => 'Esta é unha listaxe dos usuarios que teñen desabilitada a vía PasswordReset.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -201,6 +203,7 @@ $messages['io'] = array(
  */
 $messages['lb'] = array(
 	'passwordreset-emptyusername' => 'Eidele Benotzernumm',
+	'passwordreset-nopassmatch'   => 'Déi Passwierder déi Dir aginn hutt sinn net identesch',
 	'passwordreset-username'      => 'Benotzernumm',
 	'passwordreset-newpass'       => 'Neit Passwuert',
 	'passwordreset-confirmpass'   => 'Passwuert confirméieren',
@@ -298,6 +301,17 @@ $messages['pms'] = array(
 	'passwordreset-confirmpass' => 'Confermè la ciav',
 	'passwordreset-submit' => 'Cambié la ciav',
 	'passwordreset-success' => 'La ciav ëd l\'utent $1 a l\'é staita cambià',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'passwordreset-invalidusername' => 'ناسم کارن-نوم',
+	'passwordreset-emptyusername'   => 'تش کارن-نوم',
+	'passwordreset-nopassmatch'     => 'پټنومونه مو کټ مټ د يو بل سره سمون نه خوري',
+	'passwordreset-username'        => 'کارن-نوم',
+	'passwordreset-newpass'         => 'نوی پټنوم',
 );
 
 /** Portuguese (Português)

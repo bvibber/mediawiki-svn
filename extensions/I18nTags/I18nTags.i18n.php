@@ -44,6 +44,13 @@ $messages['hsb'] = array(
 	'i18ntags-desc' => 'Přistup k funkcijam i18n za formatowanje ličbow, gramatiku a plural w kóždej k dispoziciji stejacej rěči',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'i18ntags-desc' => '対応言語における数値書式、文法、複数形に関するi18n関数へのアクセスを提供する',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  */

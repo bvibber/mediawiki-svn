@@ -79,6 +79,13 @@ $messages['hu'] = array(
 	'mediafunctions-not-exist'     => '„$1” nem létezik',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'mediafunctions-not-exist' => '"$1" gëtt et net',
+);
+
 $messages['nds'] = array(
 	'mediafunctions-invalid-title' => '„$1“ is keen validen Titel',
 	'mediafunctions-not-exist'     => '„$1“ gifft dat nich',

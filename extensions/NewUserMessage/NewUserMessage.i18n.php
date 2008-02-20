@@ -50,6 +50,13 @@ $messages['fr'] = array(
 	'newusermessage-desc' => "Ajoute un [[MediaWiki:NewUserMessage|message]] dans la page de discussion d'un nouvel utilisateur.",
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'newusermessage-desc' => 'Engade unha [[MediaWiki:NewUserMessage|mensaxe]] ás páxinas de conversa dos usuarios novos',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

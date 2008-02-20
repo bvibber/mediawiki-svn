@@ -131,10 +131,12 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'languageselector'         => 'Lingua',
-	'languageselector-setlang' => 'elexir',
+	'languageselector-desc'    => 'Seleccionador da lingua en todas as páxinas, tamén para os visitantes',
+	'languageselector-setlang' => 'elixir',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -257,7 +259,8 @@ $messages['oc'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'languageselector' => 'ژبه',
+	'languageselector'      => 'ژبه',
+	'languageselector-desc' => 'د ژب ټاکنې پټه دې په هر مخ وي، د کتونکو لپاره هم',
 );
 
 /** Portuguese (Português)

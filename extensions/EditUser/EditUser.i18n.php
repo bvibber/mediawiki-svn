@@ -97,11 +97,15 @@ $messages['fr'] = array(
 );
 
 /** Galician (Galego)
+ * @author Toliño
  * @author Alma
  */
 $messages['gl'] = array(
+	'edituser-desc'     => 'Permitir que usuarios con privilexios poidan editar as preferencias doutros usuarios',
 	'edituser'          => 'Editar Usuario',
+	'edituser-logout'   => 'Saír do sistema',
 	'edituser-username' => 'Nome',
+	'edituser-dosearch' => 'Procurar',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

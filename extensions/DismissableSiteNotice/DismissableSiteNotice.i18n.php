@@ -58,8 +58,12 @@ $messages['br'] = array(
 	'sitenotice_close' => 'kuzhat',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
 $messages['ca'] = array(
 	'sitenotice_close' => 'amaga',
+	'sitenotice-desc'  => "Permet als usuaris tancar el ''sitenotice''",
 );
 
 $messages['cdo'] = array(

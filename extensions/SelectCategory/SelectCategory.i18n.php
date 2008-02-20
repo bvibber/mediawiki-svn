@@ -171,6 +171,13 @@ $messages['pms'] = array(
 	'selectcategory-subtitle' => "Ch'a dòvra sò rat con la ciav dlë Shift sgnacà për sërne ëd categorìe ch'as ven-o l'un-a dapress a l'àotra, ò pura con ën sgmacand la ciav Ctrl për pieje un-a pr'un-a.",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'selectcategory-title' => 'وېشنيزې ټاکل',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

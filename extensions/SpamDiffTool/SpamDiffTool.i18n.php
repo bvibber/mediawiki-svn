@@ -198,6 +198,26 @@ $messages['nl'] = array(
 	'spamdifftool_submit_buttom'    => 'OK',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'spamdifftool'                  => 'Håndter spamsvartelisten',
+	'spamdifftool-desc'             => 'Gir en enkel måte å legge til nye elementer i spamsvartelisten fra diffsider',
+	'spamdifftool_cantedit'         => 'Du har dessverre ikke rettighet til å redigere spamsvartelisten.',
+	'spamdifftool_notext'           => 'Ingen tekst ble lagt til i spamsvartelisten. Klikk <a href=\'$1\'">her</a> for å fortsette.',
+	'spamdifftool_confirm'          => "Bekreft at du vil legge til følgende poster i spamsvartelisten. (Rapporter et problem <a href='$1' target='new'>her</a>.)",
+	'spamdifftool_summary'          => 'Legger til i spamsvartelisten',
+	'spamdifftool_no_urls_detected' => "Ingen URL-er funnet. <a href='$1'>Gå tilbake</a>.",
+	'spamdifftool_spam_link_text'   => 'legg til i spamlisten',
+	'spamdifftool_option_domain'    => 'hele domenet',
+	'spamdifftool_option_subdomain' => 'hele underdomenet',
+	'spamdifftool_option_directory' => 'dette underdomenet og mappen',
+	'spamdifftool_option_none'      => 'ingenting',
+	'spamdifftool_block'            => 'Blokker:',
+	'spamdifftool_submit_buttom'    => 'Legg til',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

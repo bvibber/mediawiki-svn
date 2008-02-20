@@ -221,6 +221,14 @@ $messages['nl'] = array(
 	'spamregex-summary-log'          => '(Samenvatting)',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'spamregex-text'        => '(Tekst)',
+	'spamregex-summary-log' => '(Sammendrag)',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

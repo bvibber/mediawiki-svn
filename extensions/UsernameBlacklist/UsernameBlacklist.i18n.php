@@ -223,7 +223,8 @@ $messages['de-formal'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'blacklistedusername' => 'Malpermesita uzantnomo',
+	'usernameblacklist-desc' => 'Aldonas [[MediaWiki:Usernameblacklist|Forbarlisto de uzantonomoj]] por malpermesi la kreadon de uzantokontoj laŭ unu aŭ pluraj regulesprimoj.',
+	'blacklistedusername'    => 'Malpermesita uzantnomo',
 );
 
 $messages['eu'] = array(
@@ -890,8 +891,10 @@ $messages['tr'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
+ * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'usernameblacklist-desc'          => 'Thêm [[MediaWiki:Usernameblacklist|danh sách đen về tên người dùng]] để cấm không được mở tài khoản dùng tên trùng với một biểu thức chính quy',
 	'blacklistedusername'             => 'Danh sách đen về tên người dùng',
 	'blacklistedusernametext'         => 'Tên người dùng mà bạn chọn trùng khớp với [[MediaWiki:Usernameblacklist|danh sách đen về tên người dùng]]. Xin hãy chọn một tên khác.',
 	'usernameblacklist'               => '<pre>

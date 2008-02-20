@@ -575,6 +575,13 @@ $messages['su'] = array(
 	'grouppage-patroller' => '{{ns:project}}:Nu ngaronda',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'patrol-revert-reason' => 'Anledning:',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
