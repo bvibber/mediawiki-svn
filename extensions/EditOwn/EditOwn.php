@@ -24,12 +24,15 @@ EOT;
 }
 
 $wgExtensionCredits['other'][] = array(
-		'name' => 'EditOwn',
-		'author' => 'Roan Kattouw',
-		'url' => 'http://www.mediawiki.org/wiki/Extension:EditOwn',
-		'version' => '1.0',
-		'description' => 'Users without the editall right can only edit pages they\'ve created'
+	'name'          => 'EditOwn',
+	'author'        => 'Roan Kattouw',
+	'url'           => 'http://www.mediawiki.org/wiki/Extension:EditOwn',
+	'version'       => '1.0.1',
+	'description'   => 'Users without the editall right can only edit pages they\'ve created'
+	'descriptiomsg' => '',
 );
+
+$wgExtensionMessagesFiles['EditOwn'] = dirname(__FILE__) . '/EditOwn.i18n.php';
 
 $wgHooks['userCan'][] = 'EditOwn';
 
