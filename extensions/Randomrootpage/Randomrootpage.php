@@ -12,9 +12,9 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Random root page',
-	'version'        => '2008-02-18',
+	'version'        => '1.0',
 	'author'         => 'Hojjat (aka Huji)',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:RandomRootPage',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Randomrootpage',
 	'descriptionmsg' => 'randomrootpage-desc',
 );
 
