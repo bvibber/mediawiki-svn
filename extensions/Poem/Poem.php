@@ -36,18 +36,23 @@ function wfPoemExtension() {
 
 function PoemExtension( $in, $param=array(), $parser=null ) {
 
+	/* using newlines in the text will cause the parser to add <p> tags,
+ 	 * which may not be desired in some cases
+	 */
+	$nl = $param['compact']? '' : "\n";
+  
 	if( method_exists( $parser, 'recursiveTagParse' ) ) {
 		//new methods in 1.8 allow nesting <nowiki> in <poem>.
 		$tag = $parser->insertStripItem( "<br />", $parser->mStripState );
 		$text = preg_replace(
 			array( "/^\n/", "/\n$/D", "/\n/", "/^( +)/me" ),
-			array( "", "", "$tag\n", "str_replace(' ','&nbsp;','\\1')" ),
+			array( "", "", "$tag$nl", "str_replace(' ','&nbsp;','\\1')" ),
 			$in );
 			$text = $parser->recursiveTagParse( $text );
 	} else {
 		$text = preg_replace(
 			array( "/^\n/", "/\n$/D", "/\n/", "/^( +)/me" ),
-			array( "", "", "<br />\n", "str_replace(' ','&nbsp;','\\1')" ),
+			array( "", "", "<br />$nl", "str_replace(' ','&nbsp;','\\1')" ),
 			$in );
 		$ret = $parser->parse(
 			$text,
@@ -82,7 +87,7 @@ function PoemExtension( $in, $param=array(), $parser=null ) {
 	}
 
 	return wfOpenElement( 'div', $attribs ) .
-		"\n" .
+		$nl .
 		trim( $text ) .
-		"\n</div>";
+		"$nl</div>";
 }
