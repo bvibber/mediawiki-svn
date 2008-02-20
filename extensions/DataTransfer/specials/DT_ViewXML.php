@@ -237,9 +237,14 @@ function getXMLForPage($title, $simplified_format, $groupings, $depth=0) {
   $page_contents = str_replace('{{PAGENAME}}', '&#123;&#123;PAGENAME&#125;&#125;', $page_contents);
   // escape out parser functions
   $page_contents = preg_replace('/{{(#.+)}}/', '&#123;&#123;$1&#125;&#125;', $page_contents);
+  // escape out transclusions
+  $page_contents = preg_replace('/{{(:.+)}}/', '&#123;&#123;$1&#125;&#125;', $page_contents);
   // escape out variable names
   $page_contents = str_replace('{{{', '&#123;&#123;&#123;', $page_contents);
   $page_contents = str_replace('}}}', '&#125;&#125;&#125;', $page_contents);
+  // escape out tables
+  $page_contents = str_replace('{|', '&#123;|', $page_contents);
+  $page_contents = str_replace('|}', '|&#125;', $page_contents);
   $free_text = "";
   $free_text_id = 1;
   $template_name = "";
@@ -328,9 +333,11 @@ function getXMLForPage($title, $simplified_format, $groupings, $depth=0) {
               // "field_name" is actually the value
               if ($simplified_format) {
                 $field_name = str_replace(' ', '_', $field_name);
-                $text .= "<" . $field_id . ">";
+                // add "Field" to the beginning of the file name, since
+                // XML tags that are simply numbers aren't allowed
+                $text .= "<" . $field_str . '_' . $field_id . ">";
                 $text .= trim($field_name);
-                $text .= "</" . $field_id . ">";
+                $text .= "</" . $field_str . '_' . $field_id . ">";
               } else {
                 $text .= "<$field_str $name_str=\"$field_id\">";
                 $text .= trim($field_name);
@@ -381,6 +388,9 @@ function getXMLForPage($title, $simplified_format, $groupings, $depth=0) {
   }
 
   $text .= "</$page_str>\n";
+  // escape back the curly brackets that were escaped out at the beginning
+  $text = str_replace('&amp;#123;', '{', $text);
+  $text = str_replace('&amp;#125;', '}', $text);
   return $text;
 }
 
