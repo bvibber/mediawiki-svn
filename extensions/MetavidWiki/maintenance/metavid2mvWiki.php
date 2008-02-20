@@ -75,31 +75,62 @@ $optionsWithArgs = array ();
 $valid_attributes = array (
 	'name_ocr' => array (
 		'Name OCR',
-		'The Name as it appears in on screen video text'
+		'The Name as it appears in on screen video text',
+		'text'
 	),
-	'gov_track_id' => array (
-		'GovTrack Person ID',
-		'Congress Person\' <a href="www.govtrack.us">govtrack.us</a> person ID'
+	'maplight_id' => array(
+		'MAPLight Person ID',
+		'MAPLight person id for linking into maplight data',
+		'text'
 	),
 	'osid' => array (
 		'Open Secrets ID',
-		'Congress Person\'s <a href="http://www.opensecrets.org/">Open Secrets</a> Id'
+		'Congress Person\'s <a href="http://www.opensecrets.org/">Open Secrets</a> Id',
+		'text'
 	),
+	'gov_track_id' => array (
+		'GovTrack Person ID',
+		'Congress Person\' <a href="www.govtrack.us">govtrack.us</a> person ID',
+		'text'
+	),	
 	'bioguide' => array (
 		'Bio Guide ID',
-		'Congressional Biographical Directory id'
+		'Congressional Biographical Directory id',
+		'text'
 	),
 	'title' => array (
 		'Title',
-		'Title (Sen. or Rep.)'
+		'Title (Sen. or Rep.)',
+		'page'	
 	),
 	'state' => array (
 		'State',
-		'State'
-		), //do look up
+		'State',
+		'page'
+	), //do look up
 	'party' => array (
 		'Party',
-		'The Cogress Persons Political party'
+		'The Cogress Persons Political party',
+		'page'	
+	),
+	'first' => array(
+		'First Name',
+		'(first name)',
+		'text'
+	),
+	'middle' => array(
+		'Middle Name',
+		'(middle name)',
+		'text'
+	),
+	'district'=>array(
+		'District',
+		'The district # page ie: 3rd District',
+	),
+	'last'	=> array(
+		'Last Name',
+		'(last name)',
+		'text'
 	)
 );
 //state look up:

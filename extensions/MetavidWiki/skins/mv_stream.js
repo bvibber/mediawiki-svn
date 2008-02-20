@@ -325,8 +325,8 @@ function mv_edit_disp(titleKey, mvd_id){
 		add_autocomplete(mvd_id);     
 		add_adjust_hooks(mvd_id);            
 		//add buttons if relevent: 				
-		mvSetupToolbar();
-		mwEditButtons = [];
+		mwSetupToolbar();
+		mwEditButtons = []; //empty edit buttons
       }
 }
 

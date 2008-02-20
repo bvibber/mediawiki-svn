@@ -183,13 +183,16 @@ class MV_SpecialExport {
 		//set cmml name space if inline: 
 		$ns = ($inline)?'cmml:':'';
 		$ns='';
+		$encap=false;//if we should have a parent cmml tag
 		if(!$force_track){
 			//check the request to get trac set:
 			$mvcp = new MV_Component();
 			$mvcp->procMVDReqSet();
 			$tracks = $mvcp->mvd_tracks;
+			if(count($mvcp->mvd_tracks)>1)$encap=true;
 		}else{
 			$tracks = $force_track;
+			$encap=false;
 		}
 		
 		//get the stream title	
@@ -223,8 +226,8 @@ class MV_SpecialExport {
 				$wgOut->clearHTML();
 			}
 		}		
+		if($encap)print '<cmml_set>';
  	    //based on: http://trac.annodex.net/wiki/CmmlChanges
-
 		foreach($tracks as $role=>$body_string){
 ?>
 					<cmml lang="en" id="<?=$role?>" role="<?=wfMsg($role)?>" xmlns="http://svn.annodex.net/standards/cmml_2_0.dtd">		
@@ -233,10 +236,11 @@ class MV_SpecialExport {
 							<<?=$ns?>description><?=htmlentities(wfMsg($role.'_desc'))?></<?=$ns?>description>				
 						</<?=$ns?>head>
 						<?=$body_string?>
-						
+												
 					</cmml>
 <?
 		}
+		if($encap)print '</cmml_set>';
 	}
 	// @@todo integrate cache query (similar to SpecialRecentChanges::rcOutputFeed ))
 	function get_category_feed(){

@@ -33,41 +33,113 @@
 	}
 /*****************************************************
  * Bill Templates
- ****************************************************/
-	$wgTemplateTitle = Title :: makeTitle(NS_TEMPLATE, 'Bill');	
-	do_update_wiki_page($wgTemplateTitle, '<noinclude>Bill Person Template simplifies the structure of articles about Bills.
+ ****************************************************/	
+	$bill_template='<noinclude>Bill Person Template simplifies the structure of articles about Bills.
 <pre>{{Bill|
 GovTrackID=The GovTrack Bill ID (used to key-into GovTracks Bill info)|
 ThomasID=The bill\'s Tomas id (used for Thomas linkback)|
+MAPLightBillID=The Map light Bill ID (used for supporting and opposing interest)|
+OpenCongressBillID=The open congress bill id (used for bill rss feeds)|
 Title Description=The short title/description of the bill|
 Date Introduced=The date the bill was introduced|
-Session=The session of congress (110 for 2007-08) |
+Session=The session of congress (110 for 2007-08, 109 for 2005-2006 etc)|
 Bill Key=The short bill name ie: H.R. #|
 Sponsor=Who the Bill was Sponsored By|
-Cosponsor #= Where # is 1-70 for listing all cosponsors|
+Cosponsor #=Cosponsor, Where # is 1-70 for listing all cosponsors|
+Supporting Interest #=Interest, Where # is 1-20 for listing top supporting interests|
+Opposing Interest #=Interest, Where # is 1-20 for listing top opposing interests|				
 }}</pre>The template name (Bill) should be given as the \'\'first\'\' thing on a page. The Cosponsored list should come at the end.
 </noinclude><includeonly>
 ==Bill [[Bill Key:={{{Bill Key}}}]] in the {{ #if: {{{Session|}}}| [[Congress Session:={{{Session}}}]] |}} of Congress==
+<span style="float:right">{{navimg|xsize=50|ysize=50|image=Crystal_Clear_mimetype_video.png|link=Category:{{{Bill Key}}}}}</span>
 {{ #if: {{{Title Description|}}}|{{{Title Description}}} |}}
 
-<span style="background:#eee">{{ #if: {{{Bill Key|}}}| Media tagged/categorized with [[:Category:{{{Bill Key}}}]] |}}</span>
+{{ #if: {{{Bill Key|}}}| Media in [[:Category:{{{Bill Key}}}]] |}}
 {{ #if: {{{Date Introduced|}}}|* Date Introduced: [[Date Bill Introduced:={{{Date Introduced}}}]] |}}
-{{ #if: {{{Sponsor|}}}|* Sponsor: [[Bill Sponsor:={{{Sponsor}}}]] |}}
-{{ #if: {{{Cosponsor 1|}}}|* Cosponsor: [[Bill Cosponsor:={{{Cosponsor 1}}}]] |}}{{ #if: {{{Cosponsor 2|}}}|, [[Bill Cosponsor:={{{Cosponsor 2}}}]] |}}{{ #if: {{{Cosponsor 3|}}}|, [[Bill Cosponsor:={{{Cosponsor 3}}}]] |}}{{ #if: {{{Cosponsor 4|}}}|, [[Bill Cosponsor:={{{Cosponsor 4}}}]] |}}{{ #if: {{{Cosponsor 5|}}}|, [[Bill Cosponsor:={{{Cosponsor 5}}}]] |}}{{ #if: {{{Cosponsor 6|}}}|, [[Bill Cosponsor:={{{Cosponsor 6}}}]] |}}{{ #if: {{{Cosponsor 7|}}}|, [[Bill Cosponsor:={{{Cosponsor 7}}}]] |}}{{ #if: {{{Cosponsor 8|}}}|, [[Bill Cosponsor:={{{Cosponsor 8}}}]] |}}{{ #if: {{{Cosponsor 9|}}}|, [[Bill Cosponsor:={{{Cosponsor 9}}}]] |}}{{ #if: {{{Cosponsor 10|}}}|, [[Bill Cosponsor:={{{Cosponsor 10}}}]] |}}{{ #if: {{{Cosponsor 11|}}}|, [[Bill Cosponsor:={{{Cosponsor 11}}}]] |}}{{ #if: {{{Cosponsor 12|}}}|, [[Bill Cosponsor:={{{Cosponsor 12}}}]] |}}{{ #if: {{{Cosponsor 13|}}}|, [[Bill Cosponsor:={{{Cosponsor 13}}}]] |}}{{ #if: {{{Cosponsor 14|}}}|, [[Bill Cosponsor:={{{Cosponsor 14}}}]] |}}{{ #if: {{{Cosponsor 15|}}}|, [[Bill Cosponsor:={{{Cosponsor 15}}}]] |}}{{ #if: {{{Cosponsor 16|}}}|, [[Bill Cosponsor:={{{Cosponsor 16}}}]] |}}{{ #if: {{{Cosponsor 17|}}}|, [[Bill Cosponsor:={{{Cosponsor 17}}}]] |}}{{ #if: {{{Cosponsor 18|}}}|, [[Bill Cosponsor:={{{Cosponsor 18}}}]] |}}{{ #if: {{{Cosponsor 19|}}}|, [[Bill Cosponsor:={{{Cosponsor 19}}}]] |}}{{ #if: {{{Cosponsor 20|}}}|, [[Bill Cosponsor:={{{Cosponsor 20}}}]] |}}{{ #if: {{{Cosponsor 21|}}}|, [[Bill Cosponsor:={{{Cosponsor 21}}}]] |}}{{ #if: {{{Cosponsor 22|}}}|, [[Bill Cosponsor:={{{Cosponsor 22}}}]] |}}{{ #if: {{{Cosponsor 23|}}}|, [[Bill Cosponsor:={{{Cosponsor 23}}}]] |}}{{ #if: {{{Cosponsor 24|}}}|, [[Bill Cosponsor:={{{Cosponsor 24}}}]] |}}{{ #if: {{{Cosponsor 25|}}}|, [[Bill Cosponsor:={{{Cosponsor 25}}}]] |}}{{ #if: {{{Cosponsor 26|}}}|, [[Bill Cosponsor:={{{Cosponsor 26}}}]] |}}{{ #if: {{{Cosponsor 27|}}}|, [[Bill Cosponsor:={{{Cosponsor 27}}}]] |}}{{ #if: {{{Cosponsor 28|}}}|, [[Bill Cosponsor:={{{Cosponsor 28}}}]] |}}{{ #if: {{{Cosponsor 29|}}}|, [[Bill Cosponsor:={{{Cosponsor 29}}}]] |}}{{ #if: {{{Cosponsor 30|}}}|, [[Bill Cosponsor:={{{Cosponsor 30}}}]] |}}{{ #if: {{{Cosponsor 31|}}}|, [[Bill Cosponsor:={{{Cosponsor 31}}}]] |}}{{ #if: {{{Cosponsor 32|}}}|, [[Bill Cosponsor:={{{Cosponsor 32}}}]] |}}{{ #if: {{{Cosponsor 33|}}}|, [[Bill Cosponsor:={{{Cosponsor 33}}}]] |}}{{ #if: {{{Cosponsor 34|}}}|, [[Bill Cosponsor:={{{Cosponsor 34}}}]] |}}{{ #if: {{{Cosponsor 35|}}}|, [[Bill Cosponsor:={{{Cosponsor 35}}}]] |}}{{ #if: {{{Cosponsor 36|}}}|, [[Bill Cosponsor:={{{Cosponsor 36}}}]] |}}{{ #if: {{{Cosponsor 37|}}}|, [[Bill Cosponsor:={{{Cosponsor 37}}}]] |}}{{ #if: {{{Cosponsor 38|}}}|, [[Bill Cosponsor:={{{Cosponsor 38}}}]] |}}{{ #if: {{{Cosponsor 39|}}}|, [[Bill Cosponsor:={{{Cosponsor 39}}}]] |}}{{ #if: {{{Cosponsor 40|}}}|, [[Bill Cosponsor:={{{Cosponsor 40}}}]] |}}{{ #if: {{{Cosponsor 41|}}}|, [[Bill Cosponsor:={{{Cosponsor 41}}}]] |}}{{ #if: {{{Cosponsor 42|}}}|, [[Bill Cosponsor:={{{Cosponsor 42}}}]] |}}{{ #if: {{{Cosponsor 43|}}}|, [[Bill Cosponsor:={{{Cosponsor 43}}}]] |}}{{ #if: {{{Cosponsor 44|}}}|, [[Bill Cosponsor:={{{Cosponsor 44}}}]] |}}{{ #if: {{{Cosponsor 45|}}}|, [[Bill Cosponsor:={{{Cosponsor 45}}}]] |}}{{ #if: {{{Cosponsor 46|}}}|, [[Bill Cosponsor:={{{Cosponsor 46}}}]] |}}{{ #if: {{{Cosponsor 47|}}}|, [[Bill Cosponsor:={{{Cosponsor 47}}}]] |}}{{ #if: {{{Cosponsor 48|}}}|, [[Bill Cosponsor:={{{Cosponsor 48}}}]] |}}{{ #if: {{{Cosponsor 49|}}}|, [[Bill Cosponsor:={{{Cosponsor 49}}}]] |}}{{ #if: {{{Cosponsor 50|}}}|, [[Bill Cosponsor:={{{Cosponsor 50}}}]] |}}{{ #if: {{{Cosponsor 51|}}}|, [[Bill Cosponsor:={{{Cosponsor 51}}}]] |}}{{ #if: {{{Cosponsor 52|}}}|, [[Bill Cosponsor:={{{Cosponsor 52}}}]] |}}{{ #if: {{{Cosponsor 53|}}}|, [[Bill Cosponsor:={{{Cosponsor 53}}}]] |}}{{ #if: {{{Cosponsor 54|}}}|, [[Bill Cosponsor:={{{Cosponsor 54}}}]] |}}{{ #if: {{{Cosponsor 55|}}}|, [[Bill Cosponsor:={{{Cosponsor 55}}}]] |}}{{ #if: {{{Cosponsor 56|}}}|, [[Bill Cosponsor:={{{Cosponsor 56}}}]] |}}{{ #if: {{{Cosponsor 57|}}}|, [[Bill Cosponsor:={{{Cosponsor 57}}}]] |}}{{ #if: {{{Cosponsor 58|}}}|, [[Bill Cosponsor:={{{Cosponsor 58}}}]] |}}{{ #if: {{{Cosponsor 59|}}}|, [[Bill Cosponsor:={{{Cosponsor 59}}}]] |}}{{ #if: {{{Cosponsor 60|}}}|, [[Bill Cosponsor:={{{Cosponsor 60}}}]] |}}{{ #if: {{{Cosponsor 61|}}}|, [[Bill Cosponsor:={{{Cosponsor 61}}}]] |}}{{ #if: {{{Cosponsor 62|}}}|, [[Bill Cosponsor:={{{Cosponsor 62}}}]] |}}{{ #if: {{{Cosponsor 63|}}}|, [[Bill Cosponsor:={{{Cosponsor 63}}}]] |}}{{ #if: {{{Cosponsor 64|}}}|, [[Bill Cosponsor:={{{Cosponsor 64}}}]] |}}{{ #if: {{{Cosponsor 65|}}}|, [[Bill Cosponsor:={{{Cosponsor 65}}}]] |}}{{ #if: {{{Cosponsor 66|}}}|, [[Bill Cosponsor:={{{Cosponsor 66}}}]] |}}{{ #if: {{{Cosponsor 67|}}}|, [[Bill Cosponsor:={{{Cosponsor 67}}}]] |}}{{ #if: {{{Cosponsor 68|}}}|, [[Bill Cosponsor:={{{Cosponsor 68}}}]] |}}{{ #if: {{{Cosponsor 69|}}}|, [[Bill Cosponsor:={{{Cosponsor 69}}}]] |}}
+{{ #if: {{{Sponsor|}}}|* Sponsor: [[Bill Sponsor:={{{Sponsor}}}]] |}}';
+$bill_template.='{{ #if: {{{Cosponsor 1|}}}|* Cosponsor: [[Bill Cosponsor:={{{Cosponsor 1}}}]] |}}';
 
+//$bill_template.='{{ #for: {{{n}}} | {{{Cosponsor $n$}}}<br/> }}';
+for($i=2;$i<70;$i++){	
+	$bill_template.='{{ #if: {{{Cosponsor '.$i.'|}}}|, [[Bill Cosponsor:={{{Cosponsor '.$i.'}}}]] |}}';
+}
+//output mapLight info if present:
+$bill_template.='{{ #if: {{{MapLightBillID|}}}|==Intrests who<span style="color:green">support</span> bill becoming law=='."\n".' |}}';
+for($i=1;$i<20;$i++){
+	$bill_template.='{{ #if: {{{Supporting Interest '.$i.'|}}}|* [[Supporting Interest:={{{Supporting Interest '.$i.'}}}]]'."\n".' |}}';
+}
+$bill_template.='{{ #if: {{{MapLightBillID|}}}|==Interests who<span style="color:red">oppose</span> bill becoming law=='."\n".' |}}';
+for($i=1;$i<20;$i++){
+	$bill_template.='{{ #if: {{{Opposing Interest '.$i.'|}}}|* [[Opposing Interest:={{{Supporting Interest '.$i.'}}}]]'."\n".'|}}';
+}
+//@@todo could do inline rss once we get a good cache model for http://www.mediawiki.org/wiki/Extension:RSS_Reader
+// maybe just action=purge on as a cron job, with $parser->disableCache(); commented out 
+$bill_template.='{{ #if: {{{OpenCongressBillID|}}}|==Bill RSS Feeds==
+* In the News [http://www.opencongress.org/bill/{{{OpenCongressBillID|}}}/atom_news]
+* Blog Coverage [http://www.opencongress.org/bill/{{{OpenCongressBillID|}}}/atom_blogs]
+* Bill Actions [http://www.opencongress.org/bill/{{{OpenCongressBillID|}}}/atom]
+|}}';
 
-==External Sources==
-{{ #if: {{{ThomasID|}}}|* Thomas Official Information:[http://thomas.loc.gov/cgi-bin/bdquery/z?{{{ThomasID}}}:] [[Thomas Bill ID:={{{ThomasID}}}| ]] |}}
-{{ #if: {{{GovTrackID|}}}|* GovTrack Bill Overview:[http://www.govtrack.us/congress/bill.xpd?bill={{{GovTrackID}}}] [[GovTrack Bill ID:={{{GovTrackID}}}| ]] |}} 
+$bill_template.='
+==Data Sources==  		
+{{ #if: {{{ThomasID|}}}|* [[Metavid Sources#Thomas|Thomas]] Official Bill Information:[[Data_Source_URL:=http://thomas.loc.gov/cgi-bin/bdquery/z?{{{ThomasID}}}:]] [[Thomas Bill ID:={{{ThomasID}}}| ]] |}}
+{{ #if: {{{GovTrackID|}}}|* [[Metavid Sources#GovTrack|GovTrack]] Bill Overview:[[Data_Source_URL:=http://www.govtrack.us/congress/bill.xpd?bill={{{GovTrackID}}}]] [[GovTrack Bill ID:={{{GovTrackID}}}| ]] |}} 
+{{ #if: {{{MapLightBillID|}}}|* [[Metavid Sources#MapLight|MapLight]] Bill Overview:[[Data_Source_URL:=http://maplight.org/map/us/bill/{{{MapLightBillID}}}]] [[Map Light Bill ID:={{{MapLightBillID}}}| ]] |}}
 [[Category:Bill]]
-</includeonly>
-',null, $force);
+</includeonly>';	
+	$wgTemplateTitle = Title :: makeTitle(NS_TEMPLATE, 'Bill');
+	do_update_wiki_page($wgTemplateTitle,$bill_template ,null, $force);
 	//update some semnatic property types:
 	$wgPropTitle = Title::newFromText('Data_Source_URL', SMW_NS_PROPERTY);
 	do_update_wiki_page($wgPropTitle, '[[has type::URL]]',null, $force);
 	
 	$wgPropTitle = Title::newFromText('Date_Bill_Introduced', SMW_NS_PROPERTY);
 	do_update_wiki_page($wgPropTitle, '[[has type::Date]]',null, $force);
+/***************************************
+ * Interest Group templates:
+ **************************************/
+ $interest_template = '<noinclude>Interest Group Template simplifies the structure of articles about Interest Groups.
+<pre>{{Interest Group|
+MapLightInterestID=The MapLight Interest ID|
+Funded Name #=funded name where 1 is 1-100 for top 100 contributions|
+Funded Amount #=funded amount to name 1 (required pair to funded name #)|	
+Supported Bill #=Bills the Interest group supported (long name) 1-100|
+Opposed Bill #=Bills Interest group Opposed (long name) 1-100|
+}}</pre>
+</noinclude><includeonly>
+{{ #if: {{{Funded Name 1|}}}|==Recipients Funded==
+Showing contributions 2001-2008 Senate / 2005-2008 House [[Data_Source_URL:=http://maplight.org/map/us/interest/{{{MapLightInterestID}}}|source]]
+|}}';
+/*
+ * output top 100 contributers
+ */
+ $interest_template.='{{ #if: {{{Funded Name 1|}}}|==Bill Supported Funded==
+Showing contributions 2001-2008 Senate / 2005-2008 House [[Data_Source_URL:=http://maplight.org/map/us/interest/{{{MapLightInterestID}}}|source]]
+|}}';
+for($i=1;$i<100;$i++){
+	 $interest_template.='{{ #if: {{{Funded Name '.$i.'|}}}|*[[Funded:={{{Funded Name '.$i.'}}};{{{Funded Amount 1}}}]]
+|}}';
+}
+/*
+ * output bills supported / opposed template vars:
+ */
+foreach(array('Supported','Opposed') as $pos){
+	$interest_template.='{{ #if: {{{'.$pos.' Bill '.$i.'|}}}|=='.$pos.' Bills==
+Pulled from maplight [[Data_Source_URL:=http://maplight.org/map/us/interest/{{{MapLightInterestID}}}/bills|source]]
+|}}'; 
+	for($i=1;$i<200;$i++){	 
+		$interest_template.='{{ #if: {{{'.$pos.' Bill '.$i.'|}}}|*[['.$pos.' Bill:={{{'.$pos.' Bill '.$i.'}}}]]
+|}}';
+	}
+}
+$interest_template.='[[Category:Interest Group]]
+</includeonly>';
+
+$wgTemplateTitle = Title :: makeTitle(NS_TEMPLATE, 'Interest Group');
+do_update_wiki_page($wgTemplateTitle,$interest_template ,null, $force);
+
+$wgPropTitle = Title::newFromText('Funded', SMW_NS_PROPERTY);
+do_update_wiki_page($wgPropTitle, '[[has type:=Page;Number]]',null, $force);
 
 /***************************************
  *  Update people templates
@@ -79,9 +151,10 @@ Cosponsor #= Where # is 1-70 for listing all cosponsors|
 			the structure of articles about Congress People.
 			<pre>{{Congress Person|' . "\n";
 	foreach ($valid_attributes as $dbKey => $attr) {
-		list ($name, $desc) = $attr;
+		list ($name, $desc) = $attr;				 
 		$template_body .= $name . '=' . $desc . "|\n";
 	}
+	
 	$template_body .= '}}</pre>' .
 	'The order of the fields is not relevant. The template name (Congress Person) should be given as the \'\'first\'\' thing on a page.
 			</noinclude>' .
@@ -89,21 +162,30 @@ Cosponsor #= Where # is 1-70 for listing all cosponsors|
 	//include the image if present: 
 	$template_body .= '{{ #if: { Image:{{PAGENAME}}.jpg}| [[Image:{{PAGENAME}}.jpg]] |}}' . "\n";
 	foreach ($valid_attributes as $dbKey => $attr) {
-		list ($name, $desc) = $attr;
-		//raw semantic data (@@todo make pretty template table thing)
-		$template_body .= "{{ #if: {{{" . $name . "}}}| [[$name:={{{" . $name . "}}}| ]] |}} \n";
-	}
+		list ($name, $desc) = $attr;	
+			$template_body .= "{{ #if: {{{" . $name . "}}}| [[$name:={{{" . $name . "}}}| ]] \n|}}";		
+	}	
 	$template_body .= '[[Category:Congress Person]] [[Category:Person]]
 			</includeonly>';
 	echo "updated 'Congress Person' template\n";
 	do_update_wiki_page($wgTemplateTitle, $template_body,null, $force);
+	
+/************************************
+ * page helpers
+ ************************************/
+ $wgTempNavImg = Title::makeTitle(NS_TEMPLATE, 'Navimg');
+ do_update_wiki_page($wgTempNavImg, '<div style="position: relative; width: {{{xsize|{{{size|}}}}}}px; height: {{{ysize|{{{size|}}}}}}px; overflow: hidden;"><div style="position: absolute; top: 0; left: 0; font-size: 200pt; width: {{{xsize|{{{size|}}}}}}px; height: {{{ysize|{{{size|}}}}}}px;  overflow: hidden; line-height: {{{ysize|{{{size|}}}}}}px; z-index: 3;">[[:{{{link|}}}|{{{linktext|&nbsp;}}}]]</div><div style="position: absolute; top: 0; left: 0; z-index: 2;">[[Image:{{{image|}}}|{{{xsize|{{{size|}}}}}}px|image page]]</div></div><noinclude>
+Simple Usage example: {{navimg|xsize=50|ysize=50|image=Wikimedia-logo.svg|link=MediaWiki}}
+</noinclude>
+');
 }
 function do_people_insert() {
 	global $valid_attributes, $states_ary;
 	$dbr = wfGetDB(DB_SLAVE);
 
-	//check person
-	upTemplate_person();
+	include_once('scrape_and_insert.inc.php');		
+	$mvScrape = new MV_BaseScraper();
+	
 	//do people query:
 	$res = $dbr->query("SELECT * FROM `metavid`.`people`");
 	if ($dbr->numRows($res) == 0)
@@ -113,20 +195,59 @@ function do_people_insert() {
 		$person_ary[] = $person;
 	}
 	foreach ($person_ary as $person) {
+		
 		$person_title = Title :: newFromUrl($person->name_clean);
 		//semantic data via template:
 		$page_body = '{{Congress Person|' . "\n";
-		foreach ($valid_attributes as $dbKey => $attr) {
-			list ($name, $desc) = $attr;
-			if (trim($person-> $dbKey) != '') {
-				if ($dbKey == 'state')
-					$person->state = $states_ary[$person->state];
-				$page_body .= "|{$name}={$person->$dbKey}|  \n";
+		foreach ($valid_attributes as $dbKey => $attr) {			
+			list ($name, $desc) = $attr;							
+			if ($dbKey == 'district'){
+				//special case for district:
+				if($person->district){
+					if($person->district!=0){
+						$page_body .= "{$name}=".text_number($person->district).' District'."|\n";
+					}
+				}
+			}else if($dbKey=='maplight_id'){
+				print 'do_maplight_id'."\n";
+				//try to grab the maplight id
+				$raw_results = $mvScrape->doRequest('http://maplight.org/map/us/legislator/search/'.$person->last.'+'.$person->first);
+				preg_match_all('/map\/us\/legislator\/([^"]*)">(.*)<\/a>.*<td>([^<]*)<.*<td>([^<]*)<.*<td>([^<]*)<.*<td>([^<]*)</U',$raw_results, $matches);
+				//print_r($matches);
+				//die;
+				//do point system for match
+				$point=array();
+				$title_lookup=array('Rep.'=>'House','Sen.'=>'Senate');	
+				if(isset($matches['2'])){			
+					foreach($matches['2'] as $k=>$name_html){
+						if(!isset($point[$k]))$point[$k]=0;
+						list($lname,$fname) = explode(',',trim(strip_tags($name_html)));
+						if($person->first==$fname)$point[$k]+=2;
+						if($person->last==$lname)$point[$k]+=2;
+						if($person->state==$matches['3'][$k])$point[$k]++;
+						if($person->district==$matches['4'][$k])$point[$k]++;
+						if($person->party==$matches['5'][$k])$point[$k]++;				
+						if($title_lookup[$person->title]==$matches['6'])$point[$k]++;						
+					}									
+					//sort the point score 
+					asort($point);
+					reset($point);
+					$page_body .="{$name}=".key($point)."|\n";
+				}			
+			}else{			
+				if (trim($person->$dbKey) != '') {		
+					if ($dbKey == 'state')	$person->state = $states_ary[$person->state];				
+					$page_body .= "{$name}={$person->$dbKey}|  \n";
+				}
 			}
 		}
+			
 		//add in the full name attribute: 
-		$page_body .= "|Full Name=" . $person->title . ' ' . $person->first .
-		' ' . $person->middle . ' ' . $person->last . "|  \n";
+		$page_body .= "Full Name=" . $person->title . ' ' . $person->first .
+			' ' . $person->middle . ' ' . $person->last . "|  \n";			
+		
+			
+			
 		$page_body .= '}}';
 		//add in basic info to be overwitten by tranclude (from
 		$full_name = $person->title . ' ' . $person->first .
@@ -138,6 +259,7 @@ function do_people_insert() {
 				 			"Text Spoken By [[Special:MediaSearch/person/{$person->name_clean}|$full_name]] "; 
 				;
 		do_update_wiki_page($person_title, $page_body);		
+		die;
 	}
 	foreach ($person_ary as $person) {
 		//download/upload all the photos:
