@@ -494,17 +494,13 @@ public class SearchEngine {
 		if(offset == 0 && iid.hasSpell()){
 			//if(res.isFoundAllInTitle())
 			//	return;
-			/* if(nsfw != null){
-				BitSet def = global.getDefaultNamespace(iid).getIncluded(); // spellcheck is on these namespaces
-				BitSet targ = nsfw.getFilter().getIncluded();
-				if(!def.intersects(targ) && !nsfw.getFilter().isAll())
-					return; // trying to spellcheck in namespaces other than built for
-			} */
 			if(nsfw == null)
 				return; // query on many overlapping namespaces, won't try to spellcheck to not mess things up
 			// suggest !
 			res.setSuggest(null);
-			ArrayList<Token> tokens = parser.tokenizeBareText(searchterm);			
+			ArrayList<Token> tokens = parser.tokenizeBareText(searchterm);
+			if(tokens.size() == 0)
+				return; // nothing to spellchek
 			RMIMessengerClient messenger = new RMIMessengerClient();
 			// find host 
 			String host = cache.getRandomHost(iid.getSpell());
@@ -515,17 +511,18 @@ public class SearchEngine {
 
 	protected Query parseQuery(String searchterm, WikiQueryParser parser, IndexId iid, boolean raw, NamespaceFilterWrapper nsfw, boolean searchAll, Wildcards wildcards) throws ParseException {
 		Query q = null;
+		Fuzzy fuzzy = new Fuzzy(iid,cache.getRandomHost(iid.getSpell()));
 		if(raw){
 			// do minimal parsing, make a raw query
 			parser.setNamespacePolicy(WikiQueryParser.NamespacePolicy.LEAVE);
 			q = parser.parseRaw(searchterm);
 		} else if(nsfw == null){
 			if(searchAll)
-				q = parser.parse(searchterm,new ParsingOptions(NamespacePolicy.IGNORE,wildcards));
+				q = parser.parse(searchterm,new ParsingOptions(NamespacePolicy.IGNORE,wildcards,fuzzy));
 			else
-				q = parser.parse(searchterm,new ParsingOptions(NamespacePolicy.REWRITE,wildcards));				
+				q = parser.parse(searchterm,new ParsingOptions(NamespacePolicy.REWRITE,wildcards,fuzzy));				
 		} else{
-			q = parser.parse(searchterm,new ParsingOptions(NamespacePolicy.IGNORE,wildcards));
+			q = parser.parse(searchterm,new ParsingOptions(NamespacePolicy.IGNORE,wildcards,fuzzy));
 			log.info("Using NamespaceFilterWrapper "+nsfw);
 		}
 		return q;

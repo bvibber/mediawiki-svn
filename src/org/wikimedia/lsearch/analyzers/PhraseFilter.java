@@ -23,6 +23,7 @@ import org.wikimedia.lsearch.config.IndexRegistry;
  */
 public class PhraseFilter extends TokenFilter {
 	protected Set<String> stopWords = null;
+	protected FilterFactory filters = null;
 	/** 
 	 * since we are only concerned about term document frequencies we will output
 	 * only unique tokens to help reduce index size 
@@ -42,6 +43,8 @@ public class PhraseFilter extends TokenFilter {
 	protected boolean pairReady = false;
 	protected Token nextToken = null;
 	
+	protected Token canonized = null;
+	
 	protected boolean forPhrase(Token t){
 		if(stopWords!=null && stopWords.contains(t.termText()))
 			return false;
@@ -52,9 +55,21 @@ public class PhraseFilter extends TokenFilter {
 	@Override
 	public Token next() throws IOException {
 		for(;;){ // output only unique
+			if(canonized != null){
+				if(!processed.contains(canonized.termText())){
+					processed.add(canonized.termText());
+					Token t = canonized;
+					canonized = null;
+					return t;
+				}
+			}
+			
 			Token t = nextPhraseOrWord();
 			if(t == null)
 				return null; // EOS
+			if(filters != null)
+				canonized = filters.canonizeToken(t);
+			
 			if(!processed.contains(t.termText())){
 				processed.add(t.termText());
 				return t;
@@ -123,5 +138,15 @@ public class PhraseFilter extends TokenFilter {
 	public void setStopWords(Set<String> stopWords) {
 		this.stopWords = stopWords;
 	}
+
+	public FilterFactory getFilters() {
+		return filters;
+	}
+
+	public void setFilters(FilterFactory filters) {
+		this.filters = filters;
+	}
+	
+	
 
 }

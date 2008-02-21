@@ -64,7 +64,7 @@ public class CleanIndexImporter implements DumpWriter {
 		this.page = page;
 	}
 	public void writeEndPage() throws IOException {
-		String key = page.Title.Namespace+":"+page.Title.Text;		 
+		String key = page.Title.Namespace+":"+page.Title.Text;
 		int references = links.getNumInLinks(key);			
 		String redirectTo = links.getRedirectTarget(key);
 		int redirectTargetNamespace = links.getRedirectTargetNamespace(key);

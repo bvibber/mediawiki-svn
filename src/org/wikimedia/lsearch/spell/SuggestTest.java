@@ -12,7 +12,7 @@ import org.apache.lucene.search.spell.SpellChecker;
 import org.apache.lucene.store.FSDirectory;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
-import org.wikimedia.lsearch.analyzers.WikiQueryParserOld;
+import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.beans.SearchResults;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
@@ -52,7 +52,7 @@ public class SuggestTest {
 		NamespaceFilter nsDefault = new NamespaceFilter("0"); // default to main namespace
 		FieldBuilder.Case dCase = FieldBuilder.Case.IGNORE_CASE;
 		FieldBuilder.BuilderSet bs = new FieldBuilder(iid,dCase).getBuilder(dCase);
-		WikiQueryParserOld parser = new WikiQueryParserOld(bs.getFields().contents(),nsDefault,analyzer,bs,WikiQueryParserOld.NamespacePolicy.IGNORE,null);
+		WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),nsDefault,analyzer,bs,WikiQueryParser.NamespacePolicy.IGNORE,null);
 		while(true){
 			System.out.print(">> ");
 			String inputtext = in.readLine().trim();
@@ -68,7 +68,7 @@ public class SuggestTest {
 						System.out.println("METAPHONES: "+dmeta.doubleMetaphone(text)+", "+dmeta.doubleMetaphone(text,true));
 						System.out.println("SUGGEST: ");
 						int count = 0;
-						for(SuggestResult r : sc.suggestWords(text,limit)){
+						for(SuggestResult r : sc.suggestWords(text,limit,null)){
 							if(++count >= limit )
 								break;
 							System.out.println(r);

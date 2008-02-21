@@ -1,10 +1,11 @@
 package org.wikimedia.lsearch.spell;
 
+import java.io.Serializable;
 import java.util.HashSet;
 
 import org.wikimedia.lsearch.ranks.StringList;
 
-public class SuggestResult {
+public class SuggestResult implements Serializable {
 	String word;
 	int frequency=0;
 	int dist=0;

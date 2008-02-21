@@ -82,11 +82,11 @@ public class Wildcards {
 		if(terms.size() == 0)
 			return null; // no match or error
 				
-		return makeQuery(terms,field);
+		return makeQueryFromTerms(terms,field);
 	}
 	
 	/** Construct DijunctionMaxQuery from terms */
-	protected Query makeQuery(HashSet<String> terms, String field){
+	protected Query makeQueryFromTerms(HashSet<String> terms, String field){
 		if(terms.size() > MAX_TERMS){
 			HashSet<String> temp = new HashSet<String>();
 			int count = 0;
@@ -127,11 +127,11 @@ public class Wildcards {
 	
 	protected static WildcardType getType(String wildcard){
 		if(wildcard == null || wildcard.equals(""))
-			return WildcardType.INVALID;
-		boolean pre = wildcard.startsWith("*") || wildcard.startsWith("?");
-		boolean suff = wildcard.endsWith("*") || wildcard.endsWith("?"); 
-		int preInx = first(wildcard.indexOf("*"),wildcard.indexOf("?"));
-		int sufInx = last(wildcard.lastIndexOf("*"),wildcard.lastIndexOf("?"));
+			return WildcardType.INVALID;		
+		boolean pre = wildcard.endsWith("*") || wildcard.endsWith("?");
+		boolean suff = wildcard.startsWith("*") || wildcard.startsWith("?");		
+		int preInx = last(wildcard.lastIndexOf("*"),wildcard.lastIndexOf("?"));
+		int sufInx = first(wildcard.indexOf("*"),wildcard.indexOf("?"));
 		if(pre && !suff)
 			return WildcardType.PREFIX;
 		else if(suff && !pre)
@@ -164,7 +164,7 @@ public class Wildcards {
 		Term wildcardTerm = null;
 		FieldNameFactory fields = new FieldNameFactory(exactCase);
 		if(type == WildcardType.PREFIX){
-			field = fields.contents();
+			field = fields.title();
 			wildcardTerm = new Term(field,wildcard);
 		} else{
 			field = fields.reverse_title();
@@ -172,6 +172,19 @@ public class Wildcards {
 		}
 		
 		// get terms
+		addTerms(ret,wildcardTerm,reader,type);
+		
+		// fetch additional terms from contents if we are not overflowing limits
+		if(type == WildcardType.PREFIX && ret.size() < MAX_TERMS){
+			field = fields.contents();
+			wildcardTerm = new Term(field,wildcard);
+			addTerms(ret,wildcardTerm,reader,type);
+		}
+		
+		return ret;
+	}
+	
+	protected static void addTerms(ArrayList<String> ret, Term wildcardTerm, IndexReader reader, WildcardType type) throws IOException{
 		Term t;
 		WildcardTermEnum te = new WildcardTermEnum(reader,wildcardTerm);
 		while((t = te.term()) != null){
@@ -185,8 +198,6 @@ public class Wildcards {
 			if(ret.size() >= MAX_TERMS)
 				break;
 		}
-		
-		return ret;
 	}
 
 }

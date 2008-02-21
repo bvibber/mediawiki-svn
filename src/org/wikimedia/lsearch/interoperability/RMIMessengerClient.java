@@ -33,6 +33,7 @@ import org.wikimedia.lsearch.search.SuffixFilterWrapper;
 import org.wikimedia.lsearch.search.SuffixNamespaceWrapper;
 import org.wikimedia.lsearch.search.Wildcards;
 import org.wikimedia.lsearch.spell.SuggestQuery;
+import org.wikimedia.lsearch.spell.SuggestResult;
 
 /**
  * Invokes procedures on a remote RMIMessenger.
@@ -63,6 +64,10 @@ public class RMIMessengerClient {
 		this.alwaysRemote = alwaysRemote;		
 	}
 	
+	protected boolean isLocal(String host){
+		return global.isLocalhost(host) || host.equals("localhost") || host.equals("127.0.0.1") || host.equals("");
+	}
+	
 	/** notify remote hosts that a local search index is changes (to reload remote object) */
 	public void notifyIndexUpdated(IndexId iid, Collection<String> hosts){
 		if(cache == null)
@@ -77,7 +82,7 @@ public class RMIMessengerClient {
 			return;
 		}
 		for(String host : hosts){
-			if(global.isLocalhost(host) || host.equals("localhost") || host.equals("127.0.0.1") || host.equals(""))
+			if(isLocal(host))
 				continue; // don't notify localhost
 			if(deadHosts.contains(new SearchHost(iid,host)))
 				continue;
@@ -257,9 +262,11 @@ public class RMIMessengerClient {
 			return r.searchTitles(dbrole,searchterm,words,query,filter,offset,limit,explain);
 		} catch(Exception e){
 			e.printStackTrace();
-			if(cache == null)
-				cache = SearcherCache.getInstance();
-			cache.invalidateSearchable(IndexId.get(dbrole),host);
+			if(!isLocal(host)){
+				if(cache == null)
+					cache = SearcherCache.getInstance();
+				cache.invalidateSearchable(IndexId.get(dbrole),host);
+			}
 			SearchResults res = new SearchResults();
 			res.setErrorMsg("Error searching titles: "+e.getMessage());			
 			log.warn("Error invoking remote method searchTitles on host "+host+" : "+e.getMessage());
@@ -273,11 +280,24 @@ public class RMIMessengerClient {
 			return r.suggest(dbrole,searchterm,tokens,phrases,foundInContext,firstRank,nsf);
 		} catch(Exception e){
 			e.printStackTrace();
-			if(cache == null)
-				cache = SearcherCache.getInstance();
-			cache.invalidateSearchable(IndexId.get(dbrole),host);			
+			if(!isLocal(host)){
+				if(cache == null)
+					cache = SearcherCache.getInstance();
+				cache.invalidateSearchable(IndexId.get(dbrole),host);
+			}
 			log.warn("Error invoking suggest() on "+host+" : "+e.getMessage());
 			return null;
 		}		
 	}
+	public ArrayList<SuggestResult> getFuzzy(String host, String dbrole, String word, NamespaceFilter nsf) {
+		try{
+			RMIMessenger r = messengerFromCache(host);
+			return r.getFuzzy(dbrole,word,nsf);
+		} catch(Exception e){
+			e.printStackTrace();
+			log.warn("Error invoking getFuzzyt() on "+host+" : "+e.getMessage());
+			return new ArrayList<SuggestResult>();
+		}
+	}
+	
 }

@@ -70,6 +70,9 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parseRaw(".test 3.14 and.. so");
 			assertEquals("+(contents:.test contents:test) +contents:3.14 +contents:and +contents:so",q.toString());
 			
+			q = parser.parseRaw("i'll get");
+			assertEquals("+(contents:i'll contents:ill) +contents:get",q.toString());
+			
 			/* =================== FULL QUERIES ================= */
 			
 			q = parser.parse("simple query",new WikiQueryParser.ParsingOptions(true));
@@ -95,11 +98,11 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parse("douglas adams OR qian zhongshu OR (ibanez guitars)");
 			assertEquals("[douglas, adams, qian, zhongshu, ibanez, guitars]",parser.getWords().toString());
 			
-			assertEquals("[(douglas,0,7)]",parser.tokenizeBareText("douglas adam*").toString());
+			assertEquals("[(douglas,0,7), (adam,8,12,type=wildcard)]",parser.tokenizeBareText("douglas adam*").toString());
 			
 			assertEquals("[(douglas,0,7)]",parser.tokenizeBareText("douglas -adams").toString());
 			
-			assertEquals("[(box,0,3)]",parser.tokenizeBareText("box").toString());
+			assertEquals("[(box,0,3), (ven,4,7,type=fuzzy), (i'll,9,13)]",parser.tokenizeBareText("box ven~ i'll").toString());
 			
 			q = parser.parse("douglas adams -guides");
 			assertEquals("[contents:adams, contents:dougla, contents:douglas, contents:adam]", Arrays.toString(parser.getHighlightTerms()));

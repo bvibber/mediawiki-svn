@@ -17,7 +17,6 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TermQuery;
 import org.wikimedia.lsearch.analyzers.Analyzers;
-import org.wikimedia.lsearch.analyzers.WikiQueryParserOld;
 import org.wikimedia.lsearch.beans.LocalIndex;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;

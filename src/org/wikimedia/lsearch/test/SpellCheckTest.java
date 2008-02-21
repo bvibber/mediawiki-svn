@@ -109,6 +109,7 @@ public class SpellCheckTest {
    	{"chater 13 bakrupcy","chapter 13 bankruptcy"},
    	{"althought","although"},
    	{"vlah", "vlachs"},
+   	{"kuna albinism", ""},
    	
    };
 

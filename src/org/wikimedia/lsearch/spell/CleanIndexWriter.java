@@ -114,7 +114,7 @@ public class CleanIndexWriter {
 		Document doc = new Document();
 		doc.add(new Field("ns_title",article.getTitle(),Store.YES,Index.TOKENIZED));
 		doc.add(new Field("ns_namespace",article.getNamespace(),Store.YES,Index.UN_TOKENIZED));
-		doc.add(new Field("ns_rank",Integer.toString(article.getRank()),Store.YES,Index.NO));
+		doc.add(new Field("ns_rank",Integer.toString(article.getReferences()),Store.YES,Index.NO));
 		if(article.isRedirect())
 			doc.add(new Field("ns_redirect",article.getRedirectTarget(),Store.YES,Index.NO));
 		try {

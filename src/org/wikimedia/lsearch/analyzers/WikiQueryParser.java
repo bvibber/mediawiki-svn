@@ -25,6 +25,7 @@ import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.BooleanClause.Occur;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.search.Fuzzy;
 import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.search.Wildcards;
 
@@ -92,6 +93,7 @@ public class WikiQueryParser {
 	public static float EXACT_CONTENTS_BOOST = 1f;
 	public static float ANCHOR_BOOST = 0.02f;
 	public static float WILDCARD_BOOST = 2f;
+	public static float FUZZY_BOOST = 4f;
 	
 	public static boolean ADD_STEM_TITLE = true;
 	public static boolean ADD_TITLE_PHRASES = true;
@@ -121,6 +123,7 @@ public class WikiQueryParser {
 	protected FilterFactory filters;
 	protected HashSet<String> stopWords;
 	protected Wildcards wildcards = null;
+	protected Fuzzy fuzzy = null;
 	protected IndexId iid;
 	
 	/** default operator (must = AND, should = OR) for boolean queries */
@@ -360,14 +363,20 @@ public class WikiQueryParser {
 			} else if(fieldLevel != -1 && level>fieldLevel)
 				continue;
 			
-			if(Character.isLetterOrDigit(c) || c=='?' || c=='*'){
+			if(Character.isLetterOrDigit(c) || c=='?' || c=='*' || c=='~'){
 				int start = cur;
 				tokenType = fetchToken();
-				if(tokenType == TokenType.WORD && (start==0 || text[start-1]!='-') && !bufferIsWildCard()){
+				if(tokenType == TokenType.WORD && (start==0 || text[start-1]!='-')){
+					String type = "word";
+					if(bufferIsWildCard())
+						type = "wildcard";
+					else if(bufferIsFuzzy())
+						type = "fuzzy";
 					analyzeBuffer();
 					for(Token t : tokens){
-						if(t.getPositionIncrement()!=0)
-							ret.add(new Token(t.termText(),start+t.startOffset(),start+t.endOffset(),"word"));
+						if(t.getPositionIncrement()!=0){
+							ret.add(new Token(t.termText(),start+t.startOffset(),start+t.endOffset(),type));
+						}
 					}					
 				}
 			} else if(c == '['){
@@ -395,6 +404,17 @@ public class WikiQueryParser {
 			return null;
 	}
 	
+	private NamespaceFilter getNamespaceFilter(String fieldName){
+		if(fieldName == null)
+			return defaultNamespaceFilter;
+		else if(namespaceFilters.contains(fieldName))
+			return namespaceFilters.get(fieldName);
+		else if(fieldName.startsWith("["))
+			return new NamespaceFilter(fieldName.substring(1,fieldName.length()-1));
+		else
+			return defaultNamespaceFilter;
+	}
+	
 	/**
 	 * Fetch token into <code>buffer</code> starting from current position (<code>cur</code>)
 	 * 
@@ -407,9 +427,6 @@ public class WikiQueryParser {
 			ch = text[cur];
 			if(length == 0 && ch == ' ')
 				continue; // ignore whitespaces
-			
-			if(ch == '\'')
-				continue; // ignore single quotes (it's -> its)
 			
 			// pluses and minuses, underscores can be within words (to prevent to be missinterpeted), *,? are for wildcard queries
 			if(!Character.isWhitespace(ch) && ch != ':' && ch != '(' && ch != ')' && ch !='[' && ch != ']' && ch != ',' && ch != ';' && ch != '"'){
@@ -791,6 +808,10 @@ public class WikiQueryParser {
 		return false;
 	}
 	
+	private boolean bufferIsFuzzy(){
+		return length>1 && (buffer[0]=='~' || buffer[length-1]=='~');
+	}
+	
 	/** 
 	 * Constructs either a termquery or a boolean query depending on
 	 * analysis of the fetched token. A single "word" might be analyzed
@@ -820,6 +841,16 @@ public class WikiQueryParser {
 			} else{
 				// something is wrong, try making normal query
 				return new TermQuery(term);
+			}
+		}
+		// parse fuzzy queries
+		if(length>1 && fuzzy != null && bufferIsFuzzy()){
+			Term term = makeTerm();
+			String termText = term.text().replaceAll("~","");
+			Query ret = fuzzy.makeQuery(termText,term.field(),getNamespaceFilter(currentField));
+			if(ret != null){
+				ret.setBoost(FUZZY_BOOST);
+				return ret;
 			}
 		}
 		
@@ -938,6 +969,8 @@ public class WikiQueryParser {
 		boolean coreQueryOnly = false;
 		/** interface to fetch wildcard hits */
 		Wildcards wildcards = null;
+		/** fuzzy queries interface */
+		Fuzzy fuzzy = null;
 		
 		public ParsingOptions() {}		
 		public ParsingOptions(NamespacePolicy policy){
@@ -949,9 +982,10 @@ public class WikiQueryParser {
 		public ParsingOptions(Wildcards wildcards){
 			this.wildcards = wildcards;
 		}
-		public ParsingOptions(NamespacePolicy policy, Wildcards wildcards){
+		public ParsingOptions(NamespacePolicy policy, Wildcards wildcards, Fuzzy fuzzy){
 			this.policy = policy;
 			this.wildcards = wildcards;
+			this.fuzzy = fuzzy;
 		}
 	}
 	
@@ -967,6 +1001,7 @@ public class WikiQueryParser {
 	@SuppressWarnings("unchecked")
 	public Query parse(String queryText, ParsingOptions options){
 		this.wildcards = options.wildcards;
+		this.fuzzy = options.fuzzy;
 		queryText = quoteCJK(queryText);
 		NamespacePolicy defaultPolicy = this.namespacePolicy;
 		if(options.policy != null)
@@ -1513,6 +1548,15 @@ public class WikiQueryParser {
 	/** Valid after parse() call - contents terms to be highlighted */
 	public Term[] getHighlightTerms() {
 		return highlightTerms;
+	}
+	
+	/** @return if last parsed query had wildcards in it */
+	public boolean hasWildcards(){
+		return wildcards!=null && wildcards.hasWildcards();
+	}
+	/** @return if last parsed query has fuzzy words in it */
+	public boolean hasFuzzy(){
+		return fuzzy!=null && fuzzy.hasFuzzy();
 	}
 	
 	

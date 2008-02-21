@@ -19,9 +19,7 @@ import org.apache.lucene.index.Term;
 import org.apache.lucene.index.TermDocs;
 import org.wikimedia.lsearch.analyzers.Alttitles;
 import org.wikimedia.lsearch.analyzers.ExtToken;
-import org.wikimedia.lsearch.analyzers.FieldNameFactory;
-import org.wikimedia.lsearch.analyzers.StopWords;
-import org.wikimedia.lsearch.analyzers.WikiQueryParserOld;
+import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.analyzers.ExtToken.Position;
 import org.wikimedia.lsearch.analyzers.ExtToken.Type;
 import org.wikimedia.lsearch.config.IndexId;
@@ -32,7 +30,7 @@ public class Highlight {
 	protected static SearcherCache cache = null;
 	static Logger log = Logger.getLogger(Highlight.class);
 	
-	public static final int SLOP = WikiQueryParserOld.MAINPHRASE_SLOP;
+	public static final int SLOP = WikiQueryParser.MAINPHRASE_SLOP;
 	/** maximal length of text that surrounds highlighted words */ 
 	public static final int MAX_CONTEXT = 70;
 	/** variability in all snippets length */

@@ -121,7 +121,7 @@ public class StringList {
 	}
 
 	public static class LookupSet {
-		HashSet<String> allow = null; 
+		public HashSet<String> allow = null; 
 		public static final int MASK = 2047;
 		protected boolean[] lookup = null;
 		

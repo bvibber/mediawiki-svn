@@ -23,6 +23,7 @@ import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
 import org.wikimedia.lsearch.search.SuffixFilterWrapper;
 import org.wikimedia.lsearch.search.SuffixNamespaceWrapper;
 import org.wikimedia.lsearch.spell.SuggestQuery;
+import org.wikimedia.lsearch.spell.SuggestResult;
 
 /** Facilitates communication between both indexers and searcher */
 public interface RMIMessenger extends Remote {
@@ -161,4 +162,15 @@ public interface RMIMessenger extends Remote {
 	 * @throws RemoteException
 	 */
 	public SuggestQuery suggest(String dbrole, String searchterm, ArrayList<Token> tokens, HashSet<String> phrases, HashSet<String> foundInContext, int firstRank, NamespaceFilter nsf) throws RemoteException;
+
+	/**
+	 * Fetch words for fuzzy queries (e.g. query~)
+	 * 
+	 * @param dbrole
+	 * @param word
+	 * @param nsf
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ArrayList<SuggestResult> getFuzzy(String dbrole, String word, NamespaceFilter nsf) throws RemoteException; 
 }

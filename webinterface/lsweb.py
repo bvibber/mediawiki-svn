@@ -162,6 +162,9 @@ def extract_suggest(line):
         hi += 2
     if start < len(text):
         snippet += text[start:len(text)]
+        
+    for key,val in canon_namespaces.iteritems():
+        snippet = snippet.replace('[%d]' % key, val)
     
     return [snippet,text]
     

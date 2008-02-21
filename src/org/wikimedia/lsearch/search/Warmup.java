@@ -7,14 +7,13 @@ import java.util.Hashtable;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.index.Term;
-import org.apache.lucene.queryParser.ParseException;
 import org.apache.lucene.search.Hits;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TermQuery;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
 import org.wikimedia.lsearch.analyzers.FieldNameFactory;
-import org.wikimedia.lsearch.analyzers.WikiQueryParserOld;
+import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.benchmark.SampleTerms;
 import org.wikimedia.lsearch.benchmark.Terms;
 import org.wikimedia.lsearch.benchmark.WordTerms;
@@ -68,12 +67,12 @@ public class Warmup {
 	protected static void warmupSearchTerms(IndexSearcherMul is, IndexId iid, int count, boolean useDelay) {
 		String lang = global.getLanguage(iid.getDBname());
 		FieldBuilder.BuilderSet b = new FieldBuilder(iid).getBuilder();
-		WikiQueryParserOld parser = new WikiQueryParserOld(b.getFields().contents(),"0",Analyzers.getSearcherAnalyzer(iid,false),b,WikiQueryParserOld.NamespacePolicy.IGNORE,null);
+		WikiQueryParser parser = new WikiQueryParser(b.getFields().contents(),"0",Analyzers.getSearcherAnalyzer(iid,false),b,WikiQueryParser.NamespacePolicy.IGNORE,null);
 		Terms terms = getTermsForLang(lang);
 		
 		try{	
 			for(int i=0; i < count ; i++){
-				Query q = parser.parseFourPass(terms.next(),WikiQueryParserOld.NamespacePolicy.IGNORE,iid.getDBname());
+				Query q = parser.parse(terms.next());
 				Hits hits = is.search(q);
 				for(int j =0; j<20 && j<hits.length(); j++)
 					hits.doc(j); // retrieve some documents
@@ -87,9 +86,6 @@ public class Warmup {
 		} catch (IOException e) {
 			e.printStackTrace();
 			log.error("Error warming up local IndexSearcherMul for "+iid);
-		} catch (ParseException e) {
-			e.printStackTrace();
-			log.error("Error parsing query in warmup of IndexSearcherMul for "+iid);
 		} catch (Exception e) {
 			e.printStackTrace();
 			log.error("Exception during warmup "+e.getMessage());
@@ -130,13 +126,11 @@ public class Warmup {
 		try{
 			String lang = global.getLanguage(iid.getDBname());
 			FieldBuilder.BuilderSet b = new FieldBuilder(iid).getBuilder();
-			WikiQueryParserOld parser = new WikiQueryParserOld(b.getFields().contents(),"0",Analyzers.getSearcherAnalyzer(iid,false),b,WikiQueryParserOld.NamespacePolicy.IGNORE,null);
-			Query q = parser.parseFourPass("a OR very OR long OR title OR involving OR both OR wikipedia OR and OR pokemons",WikiQueryParserOld.NamespacePolicy.IGNORE,iid.getDBname());
+			WikiQueryParser parser = new WikiQueryParser(b.getFields().contents(),"0",Analyzers.getSearcherAnalyzer(iid,false),b,WikiQueryParser.NamespacePolicy.IGNORE,null);
+			Query q = parser.parse("a OR very OR long OR title OR involving OR both OR wikipedia OR and OR pokemons");
 			is.search(q,new NamespaceFilterWrapper(new NamespaceFilter("0")));
 		} catch (IOException e) {
 			log.error("Error warming up local IndexSearcherMul for "+iid);
-		} catch (ParseException e) {
-			log.error("Error parsing query in warmup of IndexSearcherMul for "+iid);
 		}
 	}
 

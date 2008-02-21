@@ -377,7 +377,7 @@ public class SearcherCache {
 	 * @param rs
 	 */
 	public void invalidateSearchable(IndexId iid, String host, SearchableMul rs){
-		if(global.isLocalhost(host)){
+		if(global.isLocalhost(host) || host=="localhost" || host==""){
 			log.error("Should use function invalidateLocalSearcher for local searcher invalidation");
 			return;
 		}

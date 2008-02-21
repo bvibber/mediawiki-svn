@@ -34,6 +34,7 @@ import org.wikimedia.lsearch.search.SuffixNamespaceWrapper;
 import org.wikimedia.lsearch.search.Wildcards;
 import org.wikimedia.lsearch.spell.Suggest;
 import org.wikimedia.lsearch.spell.SuggestQuery;
+import org.wikimedia.lsearch.spell.SuggestResult;
 
 /** Local implementation for {@link RMIMessenger} */
 public class RMIMessengerImpl implements RMIMessenger {
@@ -159,6 +160,16 @@ public class RMIMessengerImpl implements RMIMessenger {
 			throw new RemoteException("Exception on "+dbrole,e);
 		}
 	}
+	
+	public ArrayList<SuggestResult> getFuzzy(String dbrole, String word, NamespaceFilter nsf) throws RemoteException {
+		IndexId iid = IndexId.get(dbrole);
+		try {
+			return new Suggest(iid).getFuzzy(word,nsf);
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new RemoteException("Exception on "+dbrole,e);
+		}
+	}
 
 	protected RMIMessengerImpl(){
 		networkStatus = null;
@@ -172,4 +183,6 @@ public class RMIMessengerImpl implements RMIMessenger {
 		
 		return instance;
 	}
+
+
 }

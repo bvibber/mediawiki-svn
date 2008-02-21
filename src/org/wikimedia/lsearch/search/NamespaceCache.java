@@ -13,7 +13,6 @@ import org.apache.lucene.search.Filter;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.QueryFilter;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
-import org.wikimedia.lsearch.analyzers.WikiQueryParserOld;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 
 /**

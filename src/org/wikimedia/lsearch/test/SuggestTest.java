@@ -39,7 +39,7 @@ public class SuggestTest {
 		int bad=0;
 		long start = System.currentTimeMillis();
 		for(String[] m : DATA){
-			ArrayList<SuggestResult> res = sc.suggestWords(m[0],5);
+			ArrayList<SuggestResult> res = sc.suggestWords(m[0],5,null);
 			if(res.size() > 0){
 				SuggestResult r = res.get(0);
 				if(r.getWord().equals(m[1]))

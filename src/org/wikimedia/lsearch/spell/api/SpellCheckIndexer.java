@@ -129,7 +129,11 @@ public class SpellCheckIndexer {
 					String rank = d.get("rank");
 					String redirect = d.get("redirect");				
 					addTitle(titleText,rank,redirect);
-				}				
+					String canonicalTitle = filters.canonizeString(titleText);
+					if(canonicalTitle != null)
+						addTitle(canonicalTitle,rank,filters.canonicalStringFilter(redirect));
+				}
+				
 			}
 			
 			log.info("Adding words and phrases");
@@ -152,12 +156,12 @@ public class SpellCheckIndexer {
 							break; 
 						}
 					}
-					if(allowed && freq > minPhraseFreq){
+					if(allowed && freq >= minPhraseFreq){
 						boolean inTitle = ir.docFreq(new Term(title,w))!= 0;
 						addPhrase(w,freq,inTitle,null,null);
 					}
 				} else{ // word
-					if(freq > minWordFreq){
+					if(freq >= minWordFreq){
 						boolean inTitle = ir.docFreq(new Term(title,w))!= 0;
 						if(inTitle && !stopWords.contains(w))
 							context = makeContext(w,ir,fields,stopWords);
@@ -192,6 +196,9 @@ public class SpellCheckIndexer {
 					String rank = d.get("ns_rank");
 					String redirect = d.get("ns_redirect");		
 					addNsTitle(allTitleText,namespace,rank,redirect);
+					String canonicalTitle = filters.canonizeString(allTitleText);
+					if(canonicalTitle != null)
+						addNsTitle(canonicalTitle,namespace,rank,filters.canonicalStringFilter(redirect));
 				}
 			}
 			// add words/phrases
@@ -254,7 +261,7 @@ public class SpellCheckIndexer {
 	public void addNsTitle(String title, String ns, String rank, String redirect){
 		Document doc = new Document();
 		String stripped = FastWikiTokenizerEngine.stripTitle(title.toLowerCase());
-		doc.add(new Field("ns_title", ns+":"+stripped, Field.Store.YES, Field.Index.UN_TOKENIZED));
+		doc.add(new Field("ns_title", ns+":"+stripped, Field.Store.YES, Field.Index.NO));
 		doc.add(new Field("ns_namespace", ns, Field.Store.YES, Field.Index.UN_TOKENIZED));
 		doc.add(new Field("ns_rank", rank, Field.Store.YES, Field.Index.NO));
 		if(redirect!=null && redirect.substring(0,redirect.indexOf(':')).equals(ns)){
@@ -264,7 +271,7 @@ public class SpellCheckIndexer {
 			}
 		}
 		if(title.length() >= 5)
-			ngramWriter.createNgramFields(doc,"ns_title",stripped,NgramIndexer.Type.NS_TITLES);		
+			ngramWriter.createNgramFields(doc,"ns_title",stripped,NgramIndexer.Type.TITLES);		
 		ngramWriter.addDocument(doc);
 	}
 	
@@ -309,13 +316,17 @@ public class SpellCheckIndexer {
 		if(word.length() < 2)
 			return;
 		HashMap<String,SimpleInt> freq = getFrequencies(word,ir);
+		int freqSum = 0;
+		for(SimpleInt f : freq.values())
+			freqSum += f.count;
 		Document doc = new Document();
 		ngramWriter.createNgramFields(doc,"ns_word",word,NgramIndexer.Type.WORDS);
 		doc.add(new Field("ns_word",word, Field.Store.YES, Field.Index.UN_TOKENIZED));
 		for(Entry<String,SimpleInt> e : freq.entrySet())
 			doc.add(new Field("ns_freq_"+e.getKey(), Integer.toString(e.getValue().count), Field.Store.YES, Field.Index.NO));
-		doc.add(new Field("meta1",dmeta.doubleMetaphone(word), Field.Store.YES, Field.Index.NO));
-		doc.add(new Field("meta2",dmeta.doubleMetaphone(word,true), Field.Store.YES, Field.Index.NO));
+		doc.add(new Field("ns_freq",Integer.toString(freqSum),Field.Store.YES, Field.Index.NO));
+		doc.add(new Field("ns_meta1",dmeta.doubleMetaphone(word), Field.Store.YES, Field.Index.NO));
+		doc.add(new Field("ns_meta2",dmeta.doubleMetaphone(word,true), Field.Store.YES, Field.Index.NO));
 		ngramWriter.addDocument(doc);
 	}	
 

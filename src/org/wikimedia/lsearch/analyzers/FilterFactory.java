@@ -33,6 +33,7 @@ public class FilterFactory {
 	protected boolean usingCJK = false;
 	protected ArrayList<Class> additionalFilters = null;
 	protected Singular singular = null;
+	protected boolean hasCanonicalFilter = false;
 	
 	protected FilterFactory noStemmerFilterFactory=null;
 	protected Set<String> stopWords;
@@ -49,10 +50,10 @@ public class FilterFactory {
 		this.iid = iid;
 		this.type = type;
 		init();
-		noStemmerFilterFactory = new FilterFactory(iid,lang,snowballName,false,useLangFilter,null,langFilter,additionalFilters,singular); 
+		noStemmerFilterFactory = new FilterFactory(iid,lang,snowballName,false,useLangFilter,null,langFilter,additionalFilters,singular,hasCanonicalFilter); 
 	}
 		
-	public FilterFactory(IndexId iid, String lang, String snowballName, boolean useStemmer, boolean useLangFilter, Class stemmer, Class langFilter, ArrayList<Class> additionalFilters, Singular singular) {
+	public FilterFactory(IndexId iid, String lang, String snowballName, boolean useStemmer, boolean useLangFilter, Class stemmer, Class langFilter, ArrayList<Class> additionalFilters, Singular singular, boolean hasCanonicalFiler) {
 		this.iid = iid;
 		this.lang = lang;
 		this.snowballName = snowballName;
@@ -62,6 +63,7 @@ public class FilterFactory {
 		this.langFilter = langFilter;
 		this.additionalFilters = additionalFilters;
 		this.singular = singular;
+		this.hasCanonicalFilter = hasCanonicalFiler;
 	}
 	
 	public FilterFactory getNoStemmerFilterFactory() {
@@ -137,6 +139,10 @@ public class FilterFactory {
 		else
 			singular = null;
 		
+		// canonical filters
+		if(lang.equals("sr"))
+			hasCanonicalFilter = true;
+		
 	}
 	
 	protected void addAdditionalFilter(Class filterClass){
@@ -185,6 +191,7 @@ public class FilterFactory {
 				chain = (TokenStream) filter.getConstructor(TokenStream.class).newInstance(chain);
 				if(filter.getName().equals("org.wikimedia.lsearch.analyzers.PhraseFilter")){
 					((PhraseFilter) chain).setStopWords(stopWords);
+					((PhraseFilter) chain).setFilters(this);
 				}
 			}
 			return chain;
@@ -296,6 +303,8 @@ public class FilterFactory {
 	/** For languages with canonical form (e.g. latin for serbian) filter tokens 
 	 * @throws IOException */
 	public ArrayList<Token> canonize(ArrayList<Token> tokens) throws IOException{
+		if(!hasCanonicalFilter)
+			return null;
 		if(lang.equals("sr")){
 			TokenStream ts = makeCustomFilter(new ArrayTokens(tokens));
 			ArrayList<Token> res = new ArrayList<Token>();
@@ -305,5 +314,44 @@ public class FilterFactory {
 			return res;
 		} else
 			return tokens;
+	}
+	/** For languages with canonical form, canonize a single token */
+	public Token canonizeToken(Token t){
+		if(!hasCanonicalFilter)
+			return null;
+		if(lang.equals("sr")){
+			String nt = new SerbianFilter(null).convert(t.termText());
+			if(!t.equals(nt)){
+				Token tt = new Token(nt,t.startOffset(),t.endOffset());
+				tt.setPositionIncrement(0);
+				tt.setType("alias");
+				return tt;
+			}
+		} 
+		return null;
+	}
+	/** for lang with canonical forms canonize one word */
+	public String canonizeString(String w){
+		if(!hasCanonicalFilter)
+			return null;
+		if(lang.equals("sr")){
+			if(w == null)
+				return null;
+			String nw = new SerbianFilter(null).convert(w);
+			if(!w.equals(nw))
+				return nw;
+		} 
+		return null;
+	}
+	/** always return the canonical form, even if its identical to the input */
+	public String canonicalStringFilter(String w){
+		if(!hasCanonicalFilter)
+			return null;
+		if(lang.equals("sr")){
+			if(w == null)
+				return null;
+			return new SerbianFilter(null).convert(w);
+		} 
+		return w;
 	}
 }

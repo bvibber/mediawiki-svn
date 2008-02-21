@@ -63,5 +63,25 @@ public class ObjectCache {
 		return "HITS: "+hits+" ("+((float)hits*100/total)+"%), MISS: "+miss+" ("+((float)miss*100/total)+"%)";
 	}
 	
+	/** Synchronized version of ObjectCache */
+	public static class Sync extends ObjectCache {
+		Object lock = new Object();
+		
+		public Sync(int size){
+			super(size);
+		}
+		
+		public void put(String key, Object obj){
+			synchronized (lock){
+				super.put(key,obj);
+			}
+		}
+		
+		public Object get(String key){
+			synchronized(lock){
+				return super.get(key);
+			}
+		}
+	}
 	
 }
