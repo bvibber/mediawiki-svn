@@ -211,7 +211,8 @@ $messages['stq'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'profiling-ok' => 'OK',
+	'profiling-ok'         => 'OK',
+	'profiling-data-count' => 'Räkna',
 );
 
 /** Telugu (తెలుగు)

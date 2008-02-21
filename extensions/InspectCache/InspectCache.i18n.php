@@ -287,5 +287,6 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'inspectcache-ok'     => 'సరే',
 	'inspectcache-delete' => 'తొలగించు',
+	'inspectcache-list'   => 'జాబితా',
 );
 

@@ -200,6 +200,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'imagemap_desc'               => 'Pèrmèt una mapa émâge clianta a étre clicâ en utilisent la balisa <tt><nowiki><imagemap></nowiki></tt>.',
 	'imagemap_no_image'           => '&lt;imagemap&gt; : vos dête spècefiar una émâge dens la premiére legne',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt; : l’émâge est envalida ou ègziste pas',
 	'imagemap_no_link'            => '&lt;imagemap&gt; : nion lim valido at étâ trovâ a la fin de la legne $1',
@@ -675,8 +676,10 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author Veeven
+ * @author Chaduvari
  */
 $messages['te'] = array(
+	'imagemap_desc'          => '<tt><nowiki><imagemap></nowiki></tt> ట్యాగును వాడటం ద్వారా క్లిక్కదగ్గ క్లయంటు-వైపు ఇమేజి మ్యాపులను అనుమతిస్తుంది',
 	'imagemap_no_image'      => '&lt;imagemap&gt;: తప్పనిసరిగా మొదటి లైనులో ఓ బొమ్మని ఇవ్వాలి',
 	'imagemap_invalid_image' => '&lt;imagemap&gt;: తప్పుడు లేదా ఉనికిలో లేని బొమ్మ',
 	'imagemap_no_link'       => '&lt;imagemap&gt;: $1వ లైను చివర సరియైన లింకు కనబడలేదు',

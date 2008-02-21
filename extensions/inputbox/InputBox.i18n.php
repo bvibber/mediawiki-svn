@@ -258,6 +258,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'inputbox-desc'           => 'Pèrmèt l’encllusion de formulèros HTML prèdèfenis.',
 	'inputbox-error-no-type'  => 'Vos éd pas spècefiâ lo tipo de la bouèta d’entrâ a crèar.',
 	'inputbox-error-bad-type' => "Tipo de bouèta d’entrâ « $1 » pas recognu. Endicâd lo chouèx ''create'', ''comment'', ''search'' ou ben ''searche2''.",
 	'tryexact'                => 'Èprovâd la corrèspondance ègzacta.',
@@ -604,7 +605,12 @@ $messages['pam'] = array(
 	'createarticle' => 'Gawang artikulu',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
+	'inputbox-desc'           => 'Umożliwia włączenie w treść strony wcześniej zdefiniowanych formularzy HTML',
 	'inputbox-error-no-type'  => 'Typ pola wejściowego nie został określony',
 	'inputbox-error-bad-type' => 'Typ "$1" pola wejściowego nie został rozpoznany. Proszę wybrać "create", "comment", "search" lub "search2".',
 	'tryexact'                => 'Użyj dokładnego wyrażenia',
@@ -774,8 +780,10 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author Veeven
+ * @author Chaduvari
  */
 $messages['te'] = array(
+	'inputbox-desc'          => 'ముందే నిర్వచించబడిన HTML ఫారములను చేర్చనివ్వు',
 	'inputbox-error-no-type' => 'ఏ రకమైన ఇన్&zwnj;పుట్ పెట్టెని తయారుచేయాలో మీరు చెప్పలేదు.',
 	'tryexact'               => 'ఖచ్చితమైన పోలిక కొరకు ప్రయత్నించు',
 	'searchfulltext'         => 'పూర్తి పాఠ్యంలో వెతుకు',

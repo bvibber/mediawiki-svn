@@ -565,19 +565,23 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Lejonel
  * @author M.M.S.
  * @author Max sonnelid
- * @author Lejonel
  */
 $messages['sv'] = array(
-	'chemicalsources'        => 'Kemiska källor',
-	'chemicalsource-desc'    => 'Lägger till taggen <nowiki><chemform></nowiki>, för kemiska formler',
-	'chemFunctions_ListPage' => 'Kemiska källor',
-	'chemFunctions_CAS'      => 'CAS nummer',
-	'chemFunctions_ATCCode'  => 'ATC kod',
-	'chemFunctions_ECNumber' => 'EC nummer',
-	'chemFunctions_Formula'  => 'Formel',
-	'chemFunctions_Name'     => 'IUPAC Namn',
+	'chemicalsources'                  => 'Kemiska källor',
+	'chemicalsource-desc'              => 'Lägger till taggen <nowiki><chemform></nowiki>, för kemiska formler',
+	'chemFunctions_ListPage'           => 'Kemiska källor',
+	'chemFunctions_DataList'           => 'I listan härunder finns länkar till webbplatser som kan ha information om den kemiska substans du söker efter.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Förening $MIXCASNameFormula hos NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">Säkerhetsblad (MSDS) på Oxfords universitets webbplats</a><br />',
+	'chemFunctions_CAS'                => 'CAS-nummer',
+	'chemFunctions_ATCCode'            => 'ATC-kod',
+	'chemFunctions_ECNumber'           => 'EC-nummer',
+	'chemFunctions_Formula'            => 'Formel',
+	'chemFunctions_Name'               => 'IUPAC-namn',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Fel i indata!',
 );
 
 /** Telugu (తెలుగు)

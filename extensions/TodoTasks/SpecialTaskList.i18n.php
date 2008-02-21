@@ -349,6 +349,13 @@ $messages['sv'] = array(
 	'tasklistchooseproj'     => 'Välj projekt:',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'tasklistemail' => 'ప్రియమైన %s',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

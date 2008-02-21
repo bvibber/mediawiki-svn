@@ -177,6 +177,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'scanset-desc'                      => 'Afiche les émâges numerisâs dês los paramètrâjos CD/DVD d’Andréas Grosz.',
 	'scanset_no_name'                   => 'ScanSet : vos dête spècefiar un nom por lo scansèt, per ègzemplo &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name'              => 'ScanSet : scansèt envalido ou manquent',
 	'scanset_unrecognised_index_format' => 'ScanSet : format d’endèxe encognu',
@@ -252,6 +253,24 @@ $messages['hu'] = array(
 	'scanset_invalid_volume'            => 'ScanSet: érvénytelen kötet',
 	'scanset_next'                      => 'Következő &gt;',
 	'scanset_prev'                      => '← Előző',
+);
+
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'scanset-desc'                      => 'スキャンページ画像を、Andreas Grosz のCD/DVD索引形式で表示する',
+	'scanset_no_name'                   => 'ScanSet: スキャンセット名を指定する必要があります　（例：&lt;scanset name="EB1911" /&gt;）',
+	'scanset_invalid_name'              => 'ScanSet: スキャンセットが見つからないか不正です',
+	'scanset_unrecognised_index_format' => 'ScanSet: 対応していない索引形式です',
+	'scanset_opendir_error'             => 'ScanSet: ディレクトリ $1 を開くことができません',
+	'scanset_no_files'                  => 'ScanSet: 指定されたディレクトリに該当するファイルはありません',
+	'scanset_no_volumes'                => 'ScanSet: 文献ディレクトリが見つかりません',
+	'scanset_missing_index_file'        => 'ScanSet: 索引ファイル $1 が見つかりません',
+	'scanset_index_file_error'          => 'ScanSet: 索引ファイル $1行目の書式に誤りがあります',
+	'scanset_invalid_volume'            => 'ScanSet: 文献の指定が不正です',
+	'scanset_next'                      => '次へ &gt;',
+	'scanset_prev'                      => '&lt; 前へ',
 );
 
 /** Limburgish (Limburgs)
@@ -483,6 +502,14 @@ $messages['tg'] = array(
 $messages['tr'] = array(
 	'scanset_next' => 'Sonraki &gt;',
 	'scanset_prev' => '&lt; Önceki',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'scanset_next' => 'Sau →',
+	'scanset_prev' => '← Trước',
 );
 
 /** Volapük (Volapük)

@@ -291,6 +291,7 @@ $messages['pt'] = array(
 	'player-not-found'     => 'ficheiro não encontrado',
 	'player-invalid-title' => 'título inválido',
 	'player-goto-page'     => 'Página',
+	'player-goto-file'     => 'ficheiro',
 );
 
 /** Russian (Русский)
@@ -370,6 +371,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'player-play'      => 'ఆడించు',
 	'player-goto-page' => 'పేజీ',
 	'player-goto-file' => 'ఫైలు',
 );

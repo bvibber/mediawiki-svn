@@ -146,9 +146,10 @@ $messages['lb'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
-	'pageby-desc'         => 'Toons de auteurs van een wikipagina op de pagina zelf met de tag <code><nowiki><pageby></nowiki></code>',
+	'pageby-desc'         => 'Toont de auteurs van een wikipagina op de pagina zelf met de tag <code><nowiki><pageby></nowiki></code>',
 	'pageby-first'        => 'Pagina gemaakt door $1, $2',
 	'pageby-last'         => 'Laatste <a href="$3">wijziging</a> door $1, $2',
 	'pageby-contributors' => 'Redacteuren:',
@@ -245,6 +246,13 @@ $messages['sv'] = array(
 	'pageby-last'         => 'Sist <a href="$3">modifierad</a> av $1, $2',
 	'pageby-contributors' => 'Bidragsgivare:',
 	'pageby-anon'         => '<i>anonym</i>',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'pageby-anon' => '<i>అనామకులు</i>',
 );
 
 /** Turkish (Türkçe)

@@ -106,3 +106,10 @@ $messages['sk'] = array(
 	'multiboilerplate-submit' => 'Načítať',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'multiboilerplate-submit' => 'Ladda',
+);
+

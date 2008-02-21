@@ -477,6 +477,7 @@ Texte à rechercher : $3 $9 $10',
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'lucene-desc'           => 'Entèrface por lo motor de rechèrche Apache Lucene',
 	'searchnumber'          => '<strong>Rèsultats $1 – $2 dessus $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prèc.</span>",
 	'searchnext'            => "<span style='font-size: small'>Siuv.</span> &#x00BB;",
@@ -1409,12 +1410,13 @@ $messages['ur'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'lucene-desc'           => 'Giao diện của bộ tìm kiếm Apache Lucene',
 	'searchnumber'          => '<strong>Kết quả từ $1 đến $2 trong tổng số $3</strong>',
 	'searchprev'            => '« <span style="font-size: small;">Trước</span>',
-	'searchnext'            => '<span style="font-size: small;">Tiếp</span> »',
+	'searchnext'            => "<span style='font-size: small'>Tiếp</span> &#x00BB;",
 	'lucene-searchscore'    => 'Độ phù hợp: $1%',
 	'lucene-resultsize'     => '$1 ($2 chữ)',
 	'searchdidyoumean'      => 'Bạn có muốn “<a href="$1">$2</a>” không?',

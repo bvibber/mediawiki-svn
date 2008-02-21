@@ -207,6 +207,7 @@ $messages['eo'] = array(
  */
 $messages['fi'] = array(
 	'asksql'          => 'SQL-kysely',
+	'asksql-desc'     => 'Mahdollistaa SQL-kyselyiden tekemisen [[Special:Asksql|toimintosivun]] kautta',
 	'asksqltext'      => "Käytä alla olevaa lomaketta tehdäksesi suoria kyselyitä tietokannasta. Merkkijonovakioita merkitään yksinkertaisilla lainausmerkeillä ('näin'). Kyselyt voivat usein kuormittaa palvelinta huomattavasti, joten käytä tätä toimintoa säästeliäästi.",
 	'sqlislogged'     => 'Huomioithan, että kaikki kyselyt kirjataan.',
 	'sqlquery'        => 'Kirjoita kysely',

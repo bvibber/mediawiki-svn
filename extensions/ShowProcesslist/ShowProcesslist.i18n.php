@@ -239,6 +239,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'showprocesslist-user' => 'వాడుకరి',
 	'showprocesslist-time' => 'సమయం',
 );
 

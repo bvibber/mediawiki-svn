@@ -113,6 +113,7 @@ $messages['fr'] = array (
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'intersection-desc'          => 'Afiche una lista de puges des articllos los ples novéls dens una catègorie, ou ben dês una combinèson de plusiors catègories.',
 	'intersection_toomanycats'   => 'DynamicPageList : trop de catègories !',
 	'intersection_toofewcats'    => 'DynamicPageList : pas prod de catègories !',
 	'intersection_noresults'     => 'DynamicPageList : nion rèsultat !',

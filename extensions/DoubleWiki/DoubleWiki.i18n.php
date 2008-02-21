@@ -54,6 +54,13 @@ $messages['fr'] = array(
 	'doublewiki-desc' => 'Affiche une page et sa traduction depuis un autre wiki en deux colonnes sur la même page',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'doublewiki-desc' => 'Afiche una pâge et sa traduccion dês un ôtro vouiqui en doves colones sur la méma pâge.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -89,6 +96,20 @@ $messages['nl'] = array(
 	'doublewiki-desc' => 'Toont een pagina en de vertaling uit een andere wiki in twee kolommen op dezelfde pagina',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'doublewiki-desc' => 'Viser en side og dens oversettelse fra en annen wiki side ved side',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'doublewiki-desc' => 'Wyświetla w dwu kolumnach treść oraz pochodzące z wiki w innym języku tłumaczenie',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -115,6 +136,13 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'doublewiki-desc' => 'Visar en sida och dess översättning från en annan wiki bredvid varandra på samma sida',
+);
+
+/** Telugu (తెలుగు)
+ * @author Chaduvari
+ */
+$messages['te'] = array(
+	'doublewiki-desc' => 'పేజీని, మరో వికీలో దాని అనువాదాన్ని ఒకే పేజీలో రెండు నిలువు వరుసల్లో చూపించు',
 );
 
 /** Vietnamese (Tiếng Việt)

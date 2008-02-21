@@ -349,6 +349,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'todo-new-queue'    => 'కొత్తది',
 	'todo-form-details' => 'వివరాలు:',
 );
 

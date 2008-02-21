@@ -332,6 +332,7 @@ $messages['sv'] = array(
 	'importfreeimages_owner'         => 'Upphovsman',
 	'importfreeimages_importthis'    => 'import denna',
 	'importfreeimages_next'          => 'Nästa $1',
+	'importfreeimages_returntoform'  => "Eller, klicka <a href='$1'>här</a> för att gå tillbaka till dina sök resultat",
 );
 
 /** Telugu (తెలుగు)

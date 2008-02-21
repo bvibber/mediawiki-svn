@@ -170,6 +170,13 @@ $messages['sv'] = array(
 	'seealso' => 'Se även',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'seealso' => 'ఇవి కూడా చూడండి',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

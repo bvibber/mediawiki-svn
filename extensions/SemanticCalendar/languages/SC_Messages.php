@@ -206,6 +206,7 @@ $messages['oc'] = array(
 $messages['pt'] = array(
 	'sc_previousmonth'    => 'Mês anterior',
 	'sc_nextmonth'        => 'Mês seguinte',
+	'sc_today'            => 'Hoje',
 	'sc_error_year2038'   => 'Erro: Este sistema não consegue tratar datas posteriores a 2038 devido ao [http://pt.wikipedia.org/wiki/Problema_do_ano_2038 problema do ano 2038]',
 	'sc_error_beforeyear' => 'Erro: Este sistema não consegue tratar datas anteriores a $1',
 );

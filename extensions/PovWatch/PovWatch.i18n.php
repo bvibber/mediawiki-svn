@@ -292,6 +292,7 @@ Een logboek met recent toegewezen pagina's op volglijsten is te bekijken op [[Sp
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'povwatch_invalid_title'   => 'Den gitte tittelen var ugyldig',
 	'povwatch_unknown_subpage' => 'Ukjent underside.',
 	'povwatch_title'           => 'Tittel:',
 	'povwatch_comment'         => 'Loggkommentar:',
@@ -341,7 +342,9 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'povwatch_title' => 'Título:',
+	'povwatch_invalid_title'   => 'O título especificado é inválido',
+	'povwatch_unknown_subpage' => 'Subpágina desconhecida.',
+	'povwatch_title'           => 'Título:',
 );
 
 /** Russian (Русский)
@@ -419,6 +422,7 @@ $messages['sv'] = array(
 	'povwatch_push'            => 'Tryck',
 	'povwatch_title'           => 'Titel:',
 	'povwatch_comment'         => 'Logg kommentar:',
+	'povwatch_added'           => 'tillaggd',
 );
 
 /** Telugu (తెలుగు)

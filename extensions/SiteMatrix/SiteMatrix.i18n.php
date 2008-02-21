@@ -272,10 +272,13 @@ $messages['frc'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'sitematrix'          => 'Lista des vouiquis de Wikimedia Foundation',
-	'sitematrix-language' => 'Lengoua',
-	'sitematrix-project'  => 'Nom du projèt, lim entèrprojèt et lim entèrvouiqui',
-	'sitematrix-others'   => 'Ôtros projèts de Wikimedia Foundation',
+	'sitematrix'           => 'Lista des vouiquis de Wikimedia Foundation',
+	'sitematrix-desc'      => 'Afiche una [[Special:SiteMatrix|lista de vouiquis de la Wikimedia Foundation]].',
+	'sitematrix-language'  => 'Lengoua',
+	'sitematrix-project'   => 'Nom du projèt, lim entèrprojèt et lim entèrvouiqui',
+	'sitematrix-others'    => 'Ôtros projèts de Wikimedia Foundation',
+	'sitematrix-total'     => "'''Soma du compto : $1'''",
+	'sitematrix-sitetotal' => 'Soma',
 );
 
 /** Irish (Gaeilge)

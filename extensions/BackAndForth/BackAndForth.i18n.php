@@ -346,6 +346,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'backforth-next' => 'راتلونکی ($1)',
+	'backforth-prev' => 'پخوانی ($1)',
 );
 
 /** Portuguese (Português)

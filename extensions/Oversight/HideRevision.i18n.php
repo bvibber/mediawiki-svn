@@ -332,26 +332,34 @@ $messages['fa'] = array(
 
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
 $messages['fi'] = array(
-	'hiderevision' => 'Pysyvä versioiden piilottaminen',
-	'hiderevision-prompt' => 'Poistettava versionumero:',
-	'hiderevision-continue' => 'Jatka',
-	'hiderevision-text' => 'Tätä toimintoa tulisi käyttää \'\'\'vain\'\'\' seuraavissa tapauksissa:
+	'hiderevision'                => 'Versioiden pysyvä piilottaminen',
+	'hiderevision-prompt'         => 'Poistettava versionumero',
+	'hiderevision-continue'       => 'Jatka',
+	'hiderevision-text'           => "Tätä toimintoa tulisi käyttää '''vain''' seuraavissa tapauksissa:
 * Sopimattomat henkilötiedot
-*: \'\'esim. kotiosoitteet, puhelinnumerot ja henkilötunnukset.\'\'
+*: ''esim. kotiosoitteet, puhelinnumerot ja henkilötunnukset.''
 
-\'\'\'Tämän järjestelmän väärinkäyttö johtaa käyttöoikeuksien menetykseen.\'\'\'
+'''Tämän järjestelmän väärinkäyttö johtaa käyttöoikeuksien menetykseen.'''
 
-Poistetut kohteet eivät näy kenellekään web-sivuston kautta, mutta kaikki poistot kirjataan ja tietokannan ylläpitäjä voi manuaalisesti palauttaa vahingossa poistetut kohteet.',
-	'hiderevision-reason' => 'Syy (kirjataan yksityisesti):',
-	'hiderevision-submit' => 'Piilota nämä tiedot pysyvästi',
-	'hiderevision-tab' => 'Piilota versio',
-	'hiderevision-norevisions' => 'Poistettavaa versiota ei ole määritelty.',
-	'hiderevision-noreason' => 'Poistosyy on määriteltävä.',
-	'hiderevision-success' => 'Arkistoitu ja poistettu onnistuneesti.',
-	'hiderevision-error-missing' => 'Ei löydy tietokannasta.',
-	'hiderevision-error-current' => 'Uusinta muokkausta ei voi poistaa. Palauta muutos ensin.',
-	'oversight-log-hiderev' => 'poisti muokkauksen sivulta $1',
+Poistetut kohteet eivät näy kenellekään web-sivuston kautta, mutta kaikki poistot kirjataan ja tietokannan ylläpitäjä voi manuaalisesti palauttaa vahingossa poistetut kohteet.",
+	'hiderevision-reason'         => 'Syy (kirjataan yksityisesti)',
+	'hiderevision-submit'         => 'Piilota pysyvästi nämä tiedot',
+	'hiderevision-tab'            => 'Piilota versio',
+	'hiderevision-norevisions'    => 'Poistettavaa versiota ei ole määritetty.',
+	'hiderevision-noreason'       => 'Poistosyy on määritettävä.',
+	'hiderevision-status'         => 'Versio $1: $2',
+	'hiderevision-success'        => 'Arkistoitu ja poistettu onnistuneesti.',
+	'hiderevision-error-missing'  => 'Ei löydy tietokannasta.',
+	'hiderevision-error-current'  => 'Sivun viimeisintä muokkausta ei voi poistaa. Palauta muutos ensin.',
+	'hiderevision-archive-status' => 'Poistettu versio $1: $2',
+	'oversight-log-hiderev'       => 'poisti muokkauksen sivulta $1',
+	'oversight-view'              => 'tiedot',
+	'oversight-hidden'            => 'Piilotettu versio',
+	'oversight-header'            => 'Alla on lista pysyvästi julkiselta näkyvyydeltä piilotetuista versioista. Näiden tietojen julkaiseminen voi johtaa tämän työkalun käyttöoikeuksien menetykseen.',
 );
 
 $messages['fo'] = array(
@@ -402,6 +410,7 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
  */
 $messages['frp'] = array(
 	'hiderevision'                => 'Cachiér por de bon les vèrsions',
+	'hiderevision-desc'           => 'Mâsque les modificacions endividuèles de tôs los utilisators por des rêsons lègâles, etc.',
 	'hiderevision-prompt'         => 'Numerô de vèrsion a suprimar :',
 	'hiderevision-continue'       => 'Continuar',
 	'hiderevision-text'           => "Ceta fonccionalitât dêt étre utilisâ '''ren que''' por los câs siuvents :

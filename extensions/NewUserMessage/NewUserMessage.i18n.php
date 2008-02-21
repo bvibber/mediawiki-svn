@@ -113,6 +113,13 @@ $messages['sk'] = array(
 	'newusermessage-desc' => 'Pridáva [[MediaWiki:NewUserMessage|správu]] do novo vytvorených používateľských diskusných stránok',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'newusermessage-desc' => 'Lägger till ett [[MediaWiki:NewUserMessage|meddelande]] till nyligen skapade användardiskussions sidor',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

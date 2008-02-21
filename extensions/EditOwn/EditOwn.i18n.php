@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'editown-desc' => 'Users without the editall right can only edit pages they\'ve created',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'editown-desc' => 'المستخدمون بدون الصلاحية editall يمكنهم تعديل الصفحات التي قاموا بإنشائها فقط',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -33,5 +40,19 @@ $messages['hsb'] = array(
  */
 $messages['nl'] = array(
 	'editown-desc' => "Gebruikers zonder het recht ''editall'' kunnen alleen pagina's bewerken die ze zelf hebben gemaakt",
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'editown-desc' => 'Používatelia bez oprávnenia editall môžu upravovať iba stránky, ktoré vytvorili',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'editown-desc' => 'Người dùng không có quyền sửa toàn bộ (editall) chỉ có thể sửa đổi những trang do họ tạo ra',
 );
 

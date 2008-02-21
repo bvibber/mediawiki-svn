@@ -299,6 +299,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'usernameblacklist-desc'          => 'Apond una [[MediaWiki:Usernameblacklist|lista nêre des noms d’utilisator]] por rètrendre la crèacion des comptos d’utilisators étent dens yona ou plusiors èxprèssions règuliéres.',
 	'blacklistedusername'             => 'Noms d’utilisator en lista nêre',
 	'blacklistedusernametext'         => 'Lo nom d’utilisator que vos éd chouèsi/cièrdu sè trove sur la [[MediaWiki:Usernameblacklist|lista des noms dèfendus]]. Volyéd chouèsir/cièrdre un ôtro nom.',
 	'usernameblacklist'               => '<pre>
@@ -692,6 +693,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'usernameblacklist-desc'          => 'Dodaje funkcjonalność [[MediaWiki:Usernameblacklist|czarnej listy użytkowników]] do ograniczania możliwości tworzenia kont użytkowników odpowiadających jednemu lub wielu wyrażeniom regularnym',
 	'blacklistedusername'             => 'Nazwa użytkownika na czarnej liście',
 	'blacklistedusernametext'         => 'Wybrana przez ciebie nazwa użytkownika pasuje do [[MediaWiki:Usernameblacklist|czarnej listy]]. Prosimy o wybranie innej nazwy.',
 	'usernameblacklist'               => '<pre>

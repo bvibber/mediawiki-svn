@@ -217,6 +217,18 @@ $messages['stq'] = array(
 	'cspammer-log-page'           => 'Kommentoar-Spammer Logbouk',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'commentspammer-save-blocked' => 'Din IP-adress misstänks vara en kommentarspammare. Därför har sidan inte sparats. [[Special:Userlogin|Logga in eller skapa ett användarkonto]] för att undvika detta.',
+	'commentspammer-desc'         => 'Stoppar redigeringar som misstänks komma från kommentarspammare som finns på en svart lista',
+	'commentspammer-log-msg'      => 'redigering av [[:$2]] från [[Special:Contributions/$1|$1]].',
+	'commentspammer-log-msg-info' => 'Spammade senast för $1 {{PLURAL:$1|dag|dagar}} sedan, hotnivån är $2 och förbrytelsekoden är $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Se mer information] eller [[Special:Blockip/$4|blockera]].',
+	'cspammerlogpagetext'         => 'Det här är en logg över redigeringar som har tillåtits eller stoppats beroende på om källan är en känd kommentarspammare.',
+	'cspammer-log-page'           => 'Kommentarspamslogg',
+);
+
 /** Telugu (తెలుగు)
  * @author వైజాసత్య
  */

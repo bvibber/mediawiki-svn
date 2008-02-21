@@ -173,6 +173,9 @@ Kommando: $1
 Resultat: $2
 
 $3',
+	'latexdoc_get_dvi'         => 'Hent DVI',
+	'latexdoc_get_pdf'         => 'Hent PDF',
+	'latexdoc-desc'            => 'Felles redigering av LaTeX-dokumenter',
 );
 
 /** Occitan (Occitan)

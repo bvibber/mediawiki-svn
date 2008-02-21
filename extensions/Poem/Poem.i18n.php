@@ -46,6 +46,13 @@ $messages['fr'] = array(
 	'poem-desc' => 'Ajoute la balise <tt>&lt;poem&gt;</tt> pour le formatage des poèmes',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'poem-desc' => 'Apond la balisa <tt>&lt;poem&gt;</tt> por lo formatâjo des poèmos.',
+);
+
 /** Galician (Galego)
  * @author Alma
  */
@@ -86,6 +93,20 @@ $messages['lt'] = array(
  */
 $messages['nl'] = array(
 	'poem-desc' => 'Voegt de tag <tt>&lt;poem&gt;</tt> toe voor de opmaak van poëzie',
+);
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'poem-desc' => 'Legger til taggen <tt>&lt;poem&gt;</tt> for å kunne formatere dikt',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'poem-desc' => 'Dodaje znacznik <tt>&lt;poem&gt;</tt> służący do formatowania wierszy',
 );
 
 /** Portuguese (Português)

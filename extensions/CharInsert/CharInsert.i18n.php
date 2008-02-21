@@ -87,9 +87,11 @@ $messages['nl'] = array(
 	'charinsert-desc' => 'Maakt het mogelijk [[MediaWiki:Edittools|niet-standaard karakters]] in te voeren vanuit een deelvenster via JavaScript',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬) */
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'charinsert-desc' => 'Tilbyr oppretting av en JavaScript-boks for innsetting av uvanlige tegn',
+	'charinsert-desc' => 'Gjør det mulig å sette inn [[MediaWiki:Edittools|spesialtegn]] i redigeringsruten med hjelp av JavaScript',
 );
 
 /** Occitan (Occitan)

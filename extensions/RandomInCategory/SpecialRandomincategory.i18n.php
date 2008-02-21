@@ -199,10 +199,13 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sv'] = array(
-	'randomincategory-label'  => 'Kategori:',
-	'randomincategory-submit' => 'Gå',
+	'randomincategory'         => 'Slump sida i kategori',
+	'randomincategory-toolbox' => 'Slump sida',
+	'randomincategory-label'   => 'Kategori:',
+	'randomincategory-submit'  => 'Gå',
 );
 
 /** Telugu (తెలుగు)

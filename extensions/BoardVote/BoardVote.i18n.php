@@ -1631,19 +1631,60 @@ Il voto espresso in forma cifrata è riportato di seguito. È inoltre visibile a
 );
 
 /** Japanese (日本語)
- * @author Broad-Sky
  * @author JtFuruhata
+ * @author Broad-Sky
  */
 $messages['ja'] = array(
-	'boardvote'              => 'ウィキメディア財団理事選挙',
-	'boardvote-desc'         => '[[meta:Board elections|ウィキメディア財団理事選挙]]',
+	'boardvote'              => 'ウィキメディア財団 理事選挙',
+	'boardvote-desc'         => '[[meta:Board elections|ウィキメディア財団 理事選挙]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|投票]]
+* [[Special:Boardvote/list|現在までの投票]]
+* [[Special:Boardvote/dump|暗号化された投票データのダンプ]]',
+	'boardvote_intro'        => '2006年度の選挙は終了しました。
+
+<p>より詳細な情報はこちらをご覧ください:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">FAQ</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006" class="external">候補者一覧</a></li></ul>',
+	'boardvote_intro_change' => '<p>あなたは既に投票済みです。投票する候補者の変更は、以下のフォームから行うことができます。支持する候補者の投票欄をチェックしてください。</p>',
+	'boardvote_entered'      => 'ありがとうございます、あなたの投票は正常に記録されました。
+
+あなたが望むなら、以下の詳細を記録しておくとよいでしょう。あなたの投票記録は:
+
+<pre>$1</pre>
+
+これを、選挙管理委員会の公開鍵を用いて暗号化します:
+
+<pre>$2</pre>
+
+暗号化された投票データは以下のとおりです。これは[[Special:Boardvote/dump|暗号化された投票データのダンプ]]から一般に公開されます。
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|戻る]]',
+	'boardvote_nosession'    => 'ウィキメデイア利用者IDを確認できません。投票資格のあるウィキにログインし、<nowiki>[[Special:Boardvote]]</nowiki>へ進んでください。投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ最初の編集が$3以前のものである必要があります。',
+	'boardvote_notloggedin'  => 'あなたはログインしていません。投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ最初の編集が$3以前のものである必要があります。',
+	'boardvote_notqualified' => 'あなたには、この選挙の投票資格がありません。投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ最初の編集が$3以前のものである必要があります。',
 	'boardvote_novotes'      => 'まだ誰も投票していません。',
+	'boardvote_time'         => '時刻',
 	'boardvote_user'         => '利用者',
-	'boardvote_dumplink'     => 'ここをクリック',
+	'boardvote_edits'        => '編集回数',
+	'boardvote_days'         => '日数',
+	'boardvote_ip'           => 'IPアドレス',
+	'boardvote_ua'           => 'ユーザーエージェント',
+	'boardvote_listintro'    => '<p>現在までに行われた投票の記録です。暗号化されたデータは$1。<p>',
+	'boardvote_dumplink'     => 'こちらをクリックしてください',
+	'boardvote_submit'       => '投票',
+	'boardvote_strike'       => '抹消',
+	'boardvote_unstrike'     => '抹消取り消し',
+	'boardvote_needadmin'    => 'この処理は選挙管理委員のみ行うことができます。',
 	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">ウィキメディア財団総選挙</a>:  7月12日まで投票実施中',
 	'boardvote_notstarted'   => 'まだ投票は始まっていません',
+	'boardvote_closed'       => '投票は終了しました。後日[http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En 選挙結果のページ]をご覧ください。',
+	'boardvote_edits_many'   => '多数',
 	'group-boardvote'        => '選挙管理委員会',
 	'group-boardvote-member' => '選挙管理委員',
+	'grouppage-boardvote'    => '{{ns:project}}:選挙管理委員',
+	'boardvote_blocked'      => '申し訳ありません、あなたは登録されているウィキでブロック対象となっています。ブロックされた利用者は投票することができません。',
 	'boardvote_welcome'      => "'''$1'''さん ようこそ!",
 	'go_to_board_vote'       => 'ウィキメディア財団総選挙2007',
 	'boardvote_redirecting'  => 'セキュリティと透明性を確保するため、外部の独立したサーバ上で投票を行っています。

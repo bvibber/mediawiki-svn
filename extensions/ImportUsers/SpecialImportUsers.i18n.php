@@ -56,6 +56,18 @@ $messages['ar'] = array(
 	'importusers-realname'                => 'الاسم الحقيقي',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'importusers'                 => 'Внасяне на потребители',
+	'importusers-uploadfile'      => 'Качване на файл',
+	'importusers-form-button'     => 'Внасяне',
+	'importusers-log'             => 'Дневник на внасянията',
+	'importusers-log-summary-all' => 'Всички',
+	'importusers-password'        => 'парола',
+);
+
 /** German (Deutsch)
  * @author MF-Warburg
  */
@@ -333,6 +345,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'importusers-log-summary'     => 'సంగ్రహం',
 	'importusers-log-summary-all' => 'అన్నీ',
 	'importusers-password'        => 'సంకేతపదం',
 	'importusers-email'           => 'ఈ-మెయిల్',

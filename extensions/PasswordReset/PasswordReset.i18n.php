@@ -327,6 +327,8 @@ $messages['pt'] = array(
 	'passwordreset-confirmpass'     => 'Confirme Palavra-Chave',
 	'passwordreset-submit'          => 'Repor Palavra-Chave',
 	'passwordreset-disableuser'     => 'Desactivar Conta de Utilizador?',
+	'passwordreset-accountdisabled' => 'A conta foi desactivada',
+	'disabledusers'                 => 'Utilizadores desactivados',
 );
 
 $messages['rm'] = array(
@@ -397,10 +399,15 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author Max sonnelid
  */
 $messages['sv'] = array(
-	'passwordreset-username' => 'Användarnamn',
+	'passwordreset-invalidusername' => 'Ogiltigt användarnamn',
+	'passwordreset-emptyusername'   => 'Tomt användarnamn',
+	'passwordreset-nopassmatch'     => 'Lösenordet matchar inte',
+	'passwordreset-username'        => 'Användarnamn',
+	'passwordreset-newpass'         => 'Nytt lösenord',
 );
 
 /** Telugu (తెలుగు)
@@ -408,6 +415,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'passwordreset-username' => 'వాడుకరిపేరు',
+	'passwordreset-newpass'  => 'కొత్త సంకేతపదం',
 );
 
 /** Volapük (Volapük)

@@ -210,6 +210,7 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'lookupuser'                   => 'Procurar informação de utilizador',
 	'lookupuser-desc'              => '[[{{ns:special}}:LookupUser|Retorna informação]] sobre um utilizador tal como o endereço de email e o ID',
 	'lookupuser_intro'             => 'Introduza um nome de utilizador para visualizar as preferências desse utilizador.',
 	'lookupuser_nonexistent'       => 'Erro: Utilizador não existe',

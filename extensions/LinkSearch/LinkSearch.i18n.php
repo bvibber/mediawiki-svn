@@ -199,6 +199,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'linksearch'       => 'Rechèrchiér des lims Malyâjo',
+	'linksearch-desc'  => '[[Special:Linksearch|Rechèrche des pâges dens lesquintes un lim de defôr]] aparêt.',
 	'linksearch-pat'   => 'Rechèrchiér l’èxprèssion :',
 	'linksearch-ns'    => 'Èspâço de nom :',
 	'linksearch-ok'    => 'Rechèrchiér',
@@ -674,10 +675,11 @@ $messages['tr'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'linksearch'       => 'Tìm liên kết ngoài',
-	'linksearch-desc'  => '[[Special:Linksearch|Tìm những trang có liên kết ngoài]] trùng với mẫu',
+	'linksearch-desc'  => '[[Special:Linksearch|Tìm những trang có liên kết ngoài]] trùng với mẫu chỉ định',
 	'linksearch-pat'   => 'Mẫu liên kết:',
 	'linksearch-ns'    => 'Không gian tên:',
 	'linksearch-ok'    => 'Tìm kiếm',

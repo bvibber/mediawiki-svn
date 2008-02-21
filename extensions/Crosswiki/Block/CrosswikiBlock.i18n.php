@@ -382,8 +382,16 @@ $messages['sv'] = array(
 	'crosswikiblock-expiry'         => 'Utgång:',
 	'crosswikiblock-reason'         => 'Anledning:',
 	'crosswikiblock-submit'         => 'Blockera denna användare',
+	'crosswikiblock-dbnotfound'     => 'Databasen $1 existerar inte',
 	'crosswikiblock-noname'         => '"$1" är inte ett giltigt användarnamn.',
+	'crosswikiblock-nouser'         => 'Användare "$3" hittades inte.',
+	'crosswikiblock-noexpiry'       => 'Ogiltig utgång: $1.',
 	'crosswikiblock-alreadyblocked' => 'Användare $3 är redan blockerad.',
+	'crosswikiblock-success'        => "Användare '''$3''' blev lyckat blockerad.
+
+Tillbaka till:
+* [[Special:CrosswikiBlock|Blockerings sätt]]
+* [[$4]]",
 );
 
 /** Telugu (తెలుగు)

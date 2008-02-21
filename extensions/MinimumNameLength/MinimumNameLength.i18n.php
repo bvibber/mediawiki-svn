@@ -158,6 +158,7 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'minnamelength-error' => 'O seu nome de utilizador é demasiado curto. O tamanho mínimo é $1.',
+	'minnamelength-desc'  => 'Obrigar a um comprimento mínimo do nome de utilizador',
 );
 
 /** Russian (Русский)

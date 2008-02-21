@@ -75,6 +75,7 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'purgecache'         => 'Pufrowak wuprózdnić',
+	'purgecache-desc'    => '[[Special:PurgeCache|Specialna strona]], zo by so tabela OBJECTCACHE wuprózdniła',
 	'purgecache-warning' => 'To budźe tabele pufrowaka prózdnić.',
 	'purgecache-purged'  => 'Pufrowak je so wuprózdnił.',
 	'purgecache-button'  => 'Prózdnić',

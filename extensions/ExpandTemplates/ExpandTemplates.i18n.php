@@ -776,11 +776,12 @@ $messages['sk'] = array(
 	'expandtemplates-desc'             => 'Rozbaľuje šablóny, funkcie syntaktického analyzátora a premenné; zobrazuje rozbalený wikitext a náhľad stránky ako sa zobrazí',
 	'expand_templates_intro'           => 'Táto špeciálna stránka prijme na
 vstup text a rekurzívne substituuje všetky šablóny,
-ktoré sú v ňom použité. Tiež expanduje funkcie parsera
-ako <nowiki>{{</nowiki>#if:...}} a premenné ako
-<nowiki>{{</nowiki>CURRENTDAY}}—v podstate
+ktoré sú v ňom použité. Tiež expanduje funkcie
+syntaktického analyzátora ako <nowiki>{{</nowiki>#if:...}}
+a premenné ako <nowiki>{{</nowiki>CURRENTDAY}}—v podstate
 takmer všetko v zložených zátvorkách. Robí to pomocou
-volania relevantnej fázy parsera samotného MediaWiki.',
+volania relevantnej fázy syntaktického analyzátora
+samotného MediaWiki.',
 	'expand_templates_title'           => 'Názov kontextu pre {{PAGENAME}} atď.:',
 	'expand_templates_input'           => 'Vstupný text:',
 	'expand_templates_output'          => 'Výsledok',

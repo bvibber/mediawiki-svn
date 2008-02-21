@@ -248,6 +248,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'findspam-ip' => 'IP చిరునామా:',
 	'findspam-ok' => 'సరే',
 );
 

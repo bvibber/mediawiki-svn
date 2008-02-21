@@ -60,6 +60,16 @@ $messages['hsb'] = array(
 	'signaturelogentry'    => 'je dokument $1 podpisał',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'signaturelogpage'     => 'Lëscht vun den Ënnerschreften',
+	'signature-desc'       => "Aktivéiert d'[[Special:SignDocument|ënnerschreiwen]] vun Dokumenten",
+	'signaturelogpagetext' => "Dëst ass d'Lëscht vun allen Ënnnerschreften déi op dëst Dokument iwwer [[Special:SignDocument]] derbäigesat goufen.",
+	'signaturelogentry'    => "huet d'Dokument $1 ënnerschriwwen",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -120,9 +130,11 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'signaturelogpage'     => 'Signeringslogg',
+	'signature-desc'       => 'Gör det möjligt att [[Special:SignDocument|signera]] dokument',
 	'signaturelogpagetext' => 'Detta är en logg över alla signaturer som lagts till dokument via [[Special:SignDocument]].',
 	'signaturelogentry'    => 'signerade dokumentet $1',
 );

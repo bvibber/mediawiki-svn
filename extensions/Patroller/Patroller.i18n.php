@@ -579,7 +579,11 @@ $messages['su'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'patrol-revert-reason' => 'Anledning:',
+	'patrol-revert-reason'   => 'Anledning:',
+	'patrol-another'         => 'Visa andra redigeringar, om det är tillgängligt.',
+	'group-patroller'        => 'Patrullerare',
+	'group-patroller-member' => 'Patrullerare',
+	'grouppage-patroller'    => '{{ns:project}}:Patrullerare',
 );
 
 /** Telugu (తెలుగు)

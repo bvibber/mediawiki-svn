@@ -407,6 +407,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'ogg-desc'                => 'Supôrt por los fichiérs Ogg Theora et Vorbis, avouéc un liésor JavaScript',
 	'ogg-short-audio'         => 'Fichiér son Ogg $1, $2',
 	'ogg-short-video'         => 'Fichiér vidèô Ogg $1, $2',
 	'ogg-short-general'       => 'Fichiér multimèdia Ogg $1, $2',

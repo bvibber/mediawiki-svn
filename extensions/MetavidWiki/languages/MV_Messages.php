@@ -1006,6 +1006,8 @@ $messages['no'] = array(
 	'metavid'                        => 'Metavid-side',
 	'mv_ogg_high_quality'            => 'Høy kvalitet – Ogg Theora 900kbs',
 	'mv_archive_org_link'            => 'Lenker til mpeg2-originaler hos Archive.org',
+	'mv_path_type_url_anx'           => 'full medie-URL',
+	'mv_path_type_wiki_title'        => 'medietittel på wiki',
 	'mv_path_type_label'             => 'stitype',
 	'mv_duration_label'              => 'varighet',
 	'mv_save_changes'                => 'Lagre endringer',
@@ -1048,6 +1050,7 @@ $messages['no'] = array(
 	'mv_search_and'                  => 'og',
 	'mv_search_or'                   => 'eller',
 	'mv_search_not'                  => 'ikke',
+	'mv_match'                       => 'treff',
 	'mv_spoken_by'                   => 'opplest av',
 	'mv_category'                    => '{{int:category}}',
 	'mv_search_no_results'           => 'Ingen medietreff',
@@ -1667,17 +1670,20 @@ $messages['sv'] = array(
 	'mv_search_or'           => 'eller',
 	'mv_category'            => 'kategori',
 	'mv_view_wiki_page'      => 'Visa wiki sida',
+	'mv_sequence_add_manual' => 'Lägg till efter namn',
 );
 
 /** Telugu (తెలుగు)
  * @author Veeven
  */
 $messages['te'] = array(
-	'mv_duration_label' => 'నిడివి',
-	'mv_remove_reason'  => 'తొలగింపునకు కారణం:',
-	'mv_tool_search'    => 'వెతుకు',
-	'mv_search_and'     => 'మరియు',
-	'mv_search_or'      => 'లేదా',
-	'mv_category'       => 'వర్గం',
+	'mv_duration_label'  => 'నిడివి',
+	'mv_save_changes'    => 'మార్పులను భద్రపరచు',
+	'mv_remove_reason'   => 'తొలగింపునకు కారణం:',
+	'mv_tool_search'     => 'వెతుకు',
+	'mv_search_category' => 'వర్గం',
+	'mv_search_and'      => 'మరియు',
+	'mv_search_or'       => 'లేదా',
+	'mv_category'        => 'వర్గం',
 );
 

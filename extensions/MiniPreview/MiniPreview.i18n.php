@@ -250,8 +250,9 @@ $messages['sk'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'minipreview-files_in_category' => '$1 filer totelt in denna kategori.',
-	'minipreview-files_in_gallery'  => '$1 filer totalt i detta galleri.',
+	'minipreview-files_in_category'   => '$1 filer totelt in denna kategori.',
+	'minipreview-files_in_gallery'    => '$1 filer totalt i detta galleri.',
+	'minipreview-no_category_gallery' => 'Inga kategorier eller gallerier!',
 );
 
 /** Turkish (Türkçe)

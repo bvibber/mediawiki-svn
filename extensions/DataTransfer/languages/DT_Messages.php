@@ -43,6 +43,21 @@ $messages['ar'] = array(
 	'dt_xml_freetext'             => 'نص حر',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'dt_viewxml_categories'       => 'Категории',
+	'dt_viewxml_namespaces'       => 'Именни пространства',
+	'dt_viewxml_simplifiedformat' => 'Опростен формат',
+	'dt_xml_namespace'            => 'Именно пространство',
+	'dt_xml_page'                 => 'Страница',
+	'dt_xml_field'                => 'Поле',
+	'dt_xml_name'                 => 'Име',
+	'dt_xml_title'                => 'Заглавие',
+	'dt_xml_freetext'             => 'Свободен текст',
+);
+
 /** German (Deutsch)
  * @author Krabina
  */
@@ -207,11 +222,32 @@ $messages['sk'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'dt_xml_page' => 'Sida',
+	'viewxml'                     => 'Visa XML',
+	'dt_viewxml_docu'             => 'Var god välj mellan dom följande kategorierna och namnrymderna för att visa i XML format.',
+	'dt_viewxml_categories'       => 'Kategorier',
+	'dt_viewxml_namespaces'       => 'Namnrymder',
+	'dt_viewxml_simplifiedformat' => 'Förenklat format',
+	'dt_xml_namespace'            => 'Namnrymd',
+	'dt_xml_page'                 => 'Sida',
+	'dt_xml_field'                => 'Fält',
+	'dt_xml_name'                 => 'Namn',
+	'dt_xml_title'                => 'Titel',
+	'dt_xml_freetext'             => 'Fri Text',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'dt_viewxml_categories' => 'వర్గాలు',
+	'dt_xml_page'           => 'పేజీ',
+	'dt_xml_name'           => 'పేరు',
+	'dt_xml_title'          => 'శీర్షిక',
 );
 
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
+ * @author Siebrand
  */
 $messages['vi'] = array(
 	'dt-desc'                     => 'Cho phép nhập và xuất dữ liệu có cấu trúc được chứa trong lời gọi tiêu bản',
@@ -226,5 +262,23 @@ $messages['vi'] = array(
 	'dt_xml_name'                 => 'Tên',
 	'dt_xml_title'                => 'Tựa đề',
 	'dt_xml_freetext'             => 'Văn bản Tự do',
+);
+
+/** ‪中文(台灣)‬ (‪中文(台灣)‬)
+ * @author Roc michael
+ */
+$messages['zh-tw'] = array(
+	'dt-desc'                     => '允許匯入及匯出引用樣板(template calls)的結構性資料',
+	'viewxml'                     => '查看 XML',
+	'dt_viewxml_docu'             => '請選取以下的分類及名字空間以查看其XML格式的資料',
+	'dt_viewxml_categories'       => '分類',
+	'dt_viewxml_namespaces'       => '名字空間',
+	'dt_viewxml_simplifiedformat' => '簡化的格式',
+	'dt_xml_namespace'            => '名字空間',
+	'dt_xml_page'                 => '頁面',
+	'dt_xml_field'                => '欄位',
+	'dt_xml_name'                 => '名稱',
+	'dt_xml_title'                => '標題(Title)',
+	'dt_xml_freetext'             => '隨意文字',
 );
 

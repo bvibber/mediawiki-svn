@@ -176,6 +176,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'parserdifftest'      => 'Èprôva de dif por parsar',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Pâge spèciâla]] por comparar la sortia de doux parsors difèrents.',
 	'pdtest_no_target'    => 'Niona ciba endicâ.',
 	'pdtest_page_missing' => 'La pâge endicâ at pas étâ trovâ dens la bâsa de balyês.',
 	'pdtest_no_changes'   => 'Nion changement dècelâ.',

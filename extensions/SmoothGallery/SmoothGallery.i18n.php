@@ -69,8 +69,8 @@ $messages['de'] = array(
 
 /** French (Français)
  * @author Sherbrooke
- * @author Dereckson
  * @author Grondin
+ * @author Dereckson
  */
 $messages['fr'] = array(
 	'smoothgallery'                     => 'SmoothGallery',
@@ -81,6 +81,7 @@ $messages['fr'] = array(
 	'smoothgallery-gallery-not-found'   => "La galerie demandée n'existe pas.",
 	'smoothgallery-not-found'           => 'Aucune image ajoutée à la galerie. Ajoutez au moins une image.',
 	'smoothgallery-no-images'           => "Aucune image trouvée dans cette galerie. Vérifiez que toutes les images requises existent. Ces images n'ont pas été trouvées : $1.",
+	'smoothgallery-invalid-images'      => 'Les images demandées suivantes sont d’un format incorrect : $1',
 	'smoothgallery-unexpected-error'    => 'Erreur inattendue. Prière de remplir un rapport de bogue.',
 	'smoothgallery-javascript-disabled' => "JavaScript est nécessaire pour voir cette galerie d'images (<code><nowiki><gallery>...</gallery></nowiki></code>).",
 );
@@ -121,6 +122,7 @@ $messages['nl'] = array(
 	'smoothgallery-gallery-not-found'   => 'De gevraagde galerij bestaat niet.',
 	'smoothgallery-not-found'           => 'Er zijn geen afbeeldingen opgenomen in een galerij. Voeg alstublieft tenminste één afbeelding toe.',
 	'smoothgallery-no-images'           => 'Er zijn geen afbeeldingen aangetroffen in deze galerij. Zorg ervoor dat alle afbeeldingen bestaan. De volgende afbeeldingen zijn niet aangetroffen: $1',
+	'smoothgallery-invalid-images'      => 'De volgende aangevraagde afbeeldingen hadden een ongeldig type: $1',
 	'smoothgallery-unexpected-error'    => 'Er is een onverwachte fout opgetreden. Dien alstublieft een foutrapport in.',
 	'smoothgallery-javascript-disabled' => 'Om deze galerij goed te bekijken dient JavaScript ingeschakeld te zijn.',
 );
@@ -197,6 +199,7 @@ $messages['sk'] = array(
 	'smoothgallery-gallery-not-found'   => 'Požadovaná galéria neexistuje.',
 	'smoothgallery-not-found'           => 'Žiadne obrázky neboli pridané do galérie. Prosím, pridajte aspoň jeden obrázok.',
 	'smoothgallery-no-images'           => 'V tejto galérii neboli nájdené žiadne obrázky. Uistite sa, že všetky požadované obrázky existujú. Nasledovné obrázky neboli nájdené: $1',
+	'smoothgallery-invalid-images'      => 'Nasledovné požadované obrázky boli neplatného typu: $1',
 	'smoothgallery-unexpected-error'    => 'Nastala neočakávaná chyba. Prosím, podajte správu o chybe.',
 	'smoothgallery-javascript-disabled' => 'Správne zobrazenie tejto galérie vyžaduje JavaScript.',
 );

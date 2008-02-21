@@ -415,6 +415,7 @@ $messages['nl'] = array(
 $messages['no'] = array(
 	'regexblock'                      => 'Regex-blokkering',
 	'regexblock-desc'                 => 'Utvidelse som brukes for å blokkere brukernavn og IP-adresser ved hjelp av regulære uttrykk. Inneholder både blokkeringsmekanismen og en [[Special:Regexblock|spesialside]] for å legge til og endre blokkeringer',
+	'regexblock-page-title'           => 'Tittelblokkering ved hjelp av regulære uttrykk',
 	'regexblockstats'                 => 'Regex-blokkeringsstatistikk',
 	'regexblock-reason-ip'            => 'Denne IP-adressen er hindret fra å redigere på grunn av hærverk eller annen forstyrrelse av deg eller noen andre som bruker samme IP-adresse. Om du mener dette er en feil, vennligst $1',
 	'regexblock-reason-name'          => 'Dette brukernavnet er hindret fra å redigere på grunn av hærverk eller annen forstyrrelse. Om du mener dette er en feil, vennligst $1',
@@ -438,6 +439,7 @@ $messages['no'] = array(
 	'regexblock-stats-title'          => 'Statistikk for blokkering med regulære uttrykk',
 	'regexblock-stats-username'       => 'For $1',
 	'regexblock-stats-times'          => 'ble blokkert',
+	'regexblock-stats-logging'        => 'logging fra adresse',
 	'regexblock-currently-blocked'    => 'Nåværende blokkerte adresser:',
 	'regexblock-view-blocked'         => 'Vis de blokkerte etter:',
 	'regexblock-view-all'             => 'Alle',
@@ -528,8 +530,11 @@ $messages['oc'] = array(
  */
 $messages['pt'] = array(
 	'regexblock-form-reason'         => 'Motivo:',
+	'regexblock-block-success'       => 'Bloqueio com sucesso',
 	'regexblock-already-blocked'     => '$1 já está bloqueada.',
+	'regexblock-stats-username'      => 'Para $1',
 	'regexblock-stats-times'         => 'foi bloqueado em',
+	'regexblock-view-all'            => 'Todos',
 	'regexblock-view-go'             => 'Ir',
 	'regexblock-view-reason'         => 'motivo: $1',
 	'regexblock-view-reason-default' => 'motivo genérico',
@@ -592,13 +597,17 @@ $messages['sk'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'regexblock-view-go' => 'Gå',
+	'regexblock-form-username' => 'IP adress eller användarnamn:',
+	'regexblock-form-reason'   => 'Anledning:',
+	'regexblock-view-go'       => 'Gå',
 );
 
 /** Telugu (తెలుగు)
  * @author Veeven
  */
 $messages['te'] = array(
+	'regexblock-form-username'  => 'IP చిరునామా లేదా వాడుకరి పేరు:',
+	'regexblock-form-reason'    => 'కారణం:',
 	'regexblock-stats-username' => '$1 కొరకు',
 	'regexblock-view-all'       => 'అన్నీ',
 	'regexblock-view-go'        => 'వెళ్ళు',

@@ -244,6 +244,7 @@ Bij problemen kan u gebruik maken van <b>Special:Call/DebuG</b>",
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'call-desc'         => 'Gir mulighet til å skape linker til maler (eller vanlige wikisider) med angitte parametre. Lenkene kan brukes i nettleserens adressefelt eller i wikitekst.',
 	'call-save-success' => 'Følgende tekst har blitt lagret på siden <big>[[$1]]</big>.',
 	'call-save-failed'  => 'Følgende tekst har IKKE blitt lagret på siden <big>[[$1]]</big> fordi siden allerede finnes.',
 );

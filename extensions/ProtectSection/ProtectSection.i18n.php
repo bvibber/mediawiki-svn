@@ -111,6 +111,13 @@ $messages['oc'] = array(
 	'protectsection_forbidden'  => 'Interdich',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'protectsection_forbidden' => 'Proibido',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

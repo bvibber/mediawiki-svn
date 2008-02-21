@@ -302,6 +302,7 @@ $messages['fr'] = array(
 $messages['frp'] = array(
 	'newuserlogpage'           => 'Historico de les crèacions de comptos',
 	'newuserlogpagetext'       => 'Cen est un jornal de les crèacions de comptos utilisators.',
+	'newuserlog-desc'          => 'Apond un [[Special:Log/newusers|jornal de les crèacions de comptos]] a [[Special:Log]].',
 	'newuserlog-byemail'       => 'mot de pâssa emmandâ per mèl',
 	'newuserlog-create-entry'  => 'Novél utilisator',
 	'newuserlog-create2-entry' => 'compto crèâ por $1',

@@ -467,8 +467,10 @@ $messages['ss'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
+	'createsigndocument'              => 'Möjliggör dokument signering',
 	'createsigndoc-pagename'          => 'Sida:',
 	'createsigndoc-email'             => 'E-postadress:',
 	'createsigndoc-address'           => 'Gatuadress:',
@@ -487,7 +489,11 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'createsigndoc-pagename' => 'పేజీ:',
+	'createsigndoc-pagename'   => 'పేజీ:',
+	'createsigndoc-email'      => 'ఈ-మెయిల్ చిరునామా:',
+	'createsigndoc-extaddress' => 'నగరం, రాష్ట్రం, దేశం:',
+	'createsigndoc-bday'       => 'పుట్టినరోజు:',
+	'createsigndoc-introtext'  => 'పరిచయం:',
 );
 
 /** Volapük (Volapük)
