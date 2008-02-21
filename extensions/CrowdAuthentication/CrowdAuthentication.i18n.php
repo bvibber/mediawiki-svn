@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'crowdauthentication-desc' => 'Authentication plugin for Atlassian Crowd',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'crowdauthentication-desc' => 'Authentisierung-Erweiterung für Atlassian Crowd',
+);
+
 /** French (Français)
  * @author Grondin
  */

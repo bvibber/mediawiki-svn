@@ -49,6 +49,24 @@ $messages['bg'] = array(
 	'smoothgallery-javascript-disabled' => 'За правилно показване на галерията е необходим Javascript.',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'smoothgallery'                     => 'SmoothGallery',
+	'smoothgallery-desc'                => 'Ermöglicht die Erstellung von interaktiven Bildgalerien',
+	'smoothgallery-title'               => 'SmoothGallery',
+	'smoothgallery-smoothgallerytitle'  => 'SmoothGallery: $1',
+
+	'smoothgallery-error'               => '<b>SmoothGallery-Fehler:</b>',
+	'smoothgallery-gallery-not-found'   => 'Die angeforderte Galerie ist nicht vorhanden.',
+	'smoothgallery-not-found'           => 'Die Galerie enthält keine Bilder. Bitte mindestens ein Bild hinzufügen.',
+	'smoothgallery-no-images'           => 'In der Galerie sind keine Bilder zu finden. Sind alle angeforderten Bilder vorhanden?. Es fehlen: $1',
+	'smoothgallery-invalid-images'      => 'Die folgenden Bilder haben einen ungültigen Typ: $1',
+	'smoothgallery-unexpected-error'    => 'Es ist ein unerwarteter Fehler aufgetreten. Bitte schreibe eine Fehlermeldung.',
+	'smoothgallery-javascript-disabled' => 'JavaScript wird benötigt, um die Galerie darzustellen.',
+);
+
 /** French (Français)
  * @author Sherbrooke
  * @author Dereckson

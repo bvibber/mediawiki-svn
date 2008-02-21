@@ -106,6 +106,7 @@ $messages['cs'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
+	'scanset-desc'                      => 'Darstellung gescannter Seiten von Andreas Groszs CD/DVD-Set',
 	'scanset_no_name'                   => 'ScanSet: Es muss ein Scan-Set-Name angegeben werden, z. B. &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name'              => 'ScanSet: Ungültiges oder fehlendes Scan-Set.',
 	'scanset_unrecognised_index_format' => 'ScanSet: Unbekanntes Indexformat',
