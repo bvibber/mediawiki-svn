@@ -690,7 +690,7 @@ getKmlNode: function() {
               '&nbsp;&nbsp;&nbsp;'+
               '&nbsp;&nbsp;&nbsp;'+
               '&nbsp;&nbsp;&nbsp;'+
-		      _['width']+': '+
+		      _['gm-width']+': '+
 		      '<select id="select_width" onchange="emap.configureMap({\'width\':this.value})">'+
               '<option></option>';
           for(var i=50;i<=700;i+=25)
@@ -698,7 +698,7 @@ getKmlNode: function() {
 		  html += '</select>'+
 		      '&nbsp;&nbsp;&nbsp;'+
 		      '&nbsp;&nbsp;&nbsp;'+
-		      _['height']+': '+
+		      _['gm-height']+': '+
 		      '<select id="select_height" onchange="emap.configureMap({\'height\':this.value})">'+
               '<option></option>';
           for(var i=50;i<=600;i+=25)
@@ -1344,7 +1344,7 @@ getKmlNode: function() {
                     if (attrs['name'] != undefined) {
                       existing_maps[i] = attrs['name'];
                     } else {
-                      existing_maps[i] = _['map']+' #'+(i+1);
+                      existing_maps[i] = _['gm-map']+' #'+(i+1);
                     }
                     i++;
                   }
