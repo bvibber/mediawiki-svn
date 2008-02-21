@@ -116,8 +116,7 @@ class GoogleMaps {
 		&$pContLang,
 		&$pGlobalParser,
 		&$pProxyKey,
-		&$pTitle,
-		) {
+		&$pTitle ) {
 
 		$this->mApiKey	 =& $pApiKey;
 		$this->mEnablePaths =& $pEnablePaths;

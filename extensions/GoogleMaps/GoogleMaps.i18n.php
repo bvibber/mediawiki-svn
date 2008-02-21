@@ -86,7 +86,7 @@ $wgGoogleMapsMessages['en'] = array(
 
 $wgGoogleMapsMessages['ar'] = array(
 	'incompatible browser' => 'لكي تشاهد الخريطة المراد ادخالها في هذا الفضاء، ستحتاج لإستخدام <a href="http://local.google.com/support/bin/answer.py?answer=16532&topic=1499">متصفح ويب متوافق</a>.',
-	'no editor' => 'لسوء الحظ ، متصفّحك لا يدعم ميزّات انشاء الخريطة التفاعلية. جرّب آخر نسخة <a href="http://www.microsoft.com/ie">لمستكشف أنترنت</a> (ويندوز) او <a href="http://www.mozilla.org/products/firefox">فايرفوكس</a> (ويندوز، ماك، و لينكس).'،
+	'no editor' => 'لسوء الحظ ، متصفّحك لا يدعم ميزّات انشاء الخريطة التفاعلية. جرّب آخر نسخة <a href="http://www.microsoft.com/ie">لمستكشف أنترنت</a> (ويندوز) او <a href="http://www.mozilla.org/products/firefox">فايرفوكس</a> (ويندوز، ماك، و لينكس).',
 	'make marker' => 'تعليق (wiki mark-up OK):',
 	'remove' => 'حذف',
 	'caption' => 'تعليق',
@@ -102,7 +102,7 @@ $wgGoogleMapsMessages['ar'] = array(
 	'no results' => 'آسف ، لا توجد نتائج',
 	'searching' => 'في بحث...',
 	'map' => 'خريطة',
-	'note' => 'ملاحظة: كن متأكّدا من نسخ الذي تريد حفظه في المقالة (أدناه) قبل النّقر على "حمّل الخريطة "،" حفظ "أو" استعرض "!'،
+	'note' => 'ملاحظة: كن متأكّدا من نسخ الذي تريد حفظه في المقالة (أدناه) قبل النّقر على "حمّل الخريطة "،" حفظ "أو" استعرض "!',
 	'instructions' => 'أدناه ويكي mark-up لانشاء الخريطة above.',
 	'are you sure' => 'هل انت متأكد ؟',
 	'clear all points' => 'أحذف كلّ النقاط',
