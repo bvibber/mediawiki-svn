@@ -190,7 +190,7 @@ $wgGoogleMapsMessages['bg'] = array(
 	'gm-back' => 'обратно',
 );
 
-$wgGoogleMapsMessages['bg'] = array(
+$wgGoogleMapsMessages['br'] = array(
 	'gm-incompatible-browser' => 'Para ver o mapa que iria neste espaço, você precisará usar um <a href="http://local.google.com/support/bin/answer.py?answer=16532&topic=1499">navegador compatível</a>.',
 	'gm-no-editor' => 'Infelizmente, o seu navegador não suporta o recurso de mapa interativo. Experimente uma versão mais recente do <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) ou do <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, Linux).',
 	'gm-make-marker' => 'Texto explicativo (Marcar wiki OK):',
