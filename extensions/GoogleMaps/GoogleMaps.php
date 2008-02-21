@@ -12,7 +12,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
   die( );
 }
 
-# This file	contains the hook registration and installation
+# This file contains the hook registration and installation
 
 // require the message file
 require( 'extensions/GoogleMaps/GoogleMaps.i18n.php' );
@@ -77,11 +77,11 @@ function wfGoogleMaps_Install() {
 	if( !isset( $wgGoogleMapsDefaults ) ) {
 		$wgGoogleMapsDefaults = null;
 	}
-	if(	!isset(	$wgGoogleMapsCustomMessages	) )	{
-		$wgGoogleMapsCustomMessages	= null;
+	if( !isset( $wgGoogleMapsCustomMessages ) ) {
+		$wgGoogleMapsCustomMessages = null;
 	}
 	if( !isset( $wgGoogleMapsUrlPath ) ) {
-		$wgGoogleMapsUrlPath  = "{$wgScriptPath}/extensions/GoogleMaps";
+		$wgGoogleMapsUrlPath = "{$wgScriptPath}/extensions/GoogleMaps";
 	}
 	if( !isset( $wgXhtmlNamespaces ) ) {
 		$wgXhtmlNamespaces = null;
@@ -177,9 +177,9 @@ $wgExtensionFunctions[] = 'wfGoogleMaps_Install'; # array( $wgGoogleMapExtension
 
 // extension credits
 $wgExtensionCredits['other'][] = array(
-	'name'        => 'Google Maps	Extension',
+	'name'        => 'Google Maps Extension',
 	'author'      => 'Evan Miller',
-	'version'     => '0.9.0',
+	'version'     => '0.9.1',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:Google_Maps',
-	'description' => 'Easily create maps with	wiki-fied markers'
+	'description' => 'Easily create maps with wiki-fied markers'
 );

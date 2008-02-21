@@ -248,8 +248,8 @@ JAVASCRIPT;
 		image.height = 22;
 		image.src = '{$this->mUrlPath}/button_map_open.gif';
 		image.border = 0;
-		image.alt = _['make map'];
-		image.title = _['make map'];
+		image.alt = _['gm-make-map'];
+		image.title = _['gm-make-map'];
 		image.style.cursor = "pointer";
 		image.onclick = function() {
 			if( !this.initDone ) {
@@ -260,14 +260,14 @@ JAVASCRIPT;
 			}
 			if( this.buttonOn ) {
 				this.src = this.src.replace(/_close/,"_open");
-				this.alt = _['make map'];
-				this.title = _['make map'];
+				this.alt = _['gm-make-map'];
+				this.title = _['gm-make-map'];
 				this.buttonOn = false;
 			}
 			else {
 				this.src = this.src.replace(/_open/,"_close");
-				this.alt = _['hide map'];
-				this.title = _['hide map'];
+				this.alt = _['gm-hide-map'];
+				this.title = _['gm-hide-map'];
 				this.buttonOn = true;
 			}
 			return false;
@@ -395,7 +395,7 @@ JAVASCRIPT;
 		}
 
 		$o = array_merge($o, array('number_of_maps' => $this->mGoogleMapsOnThisPage,
-			'incompatible_message' => $this->translateMessage( 'incompatible browser' )));
+			'incompatible_message' => $this->translateMessage( 'gm-incompatible-browser' )));
 		$outputter = new GoogleMapsJsOutputter($this->mLanguage, $this->mProxyKey, $this->mEnablePaths);
 		$outputter->addHeader($o);
 		GoogleMaps::renderContent($pContent, &$pParser, &$pLocalParser,
@@ -455,13 +455,13 @@ JAVASCRIPT;
 		// if the line matches the tab format, add the tabs
 		else if( $syntax == "0" && preg_match( '/^\/([^\\\\]+)\\\\ *(.*)$/', $line, $matches ) ) {
 			$parsed = $pLocalParser->parse( $matches[2], $pParserTitle, $pParserOptions, false );
-			$tabs[] = array( 'title' => $matches[1], 'caption' => $parsed->getText());
+			$tabs[] = array( 'title' => $matches[1], 'gm-caption' => $parsed->getText());
 			$state = GoogleMaps::PARSE_ADD_MARKER;
 		}
 		else if ($syntax != "0" && preg_match( '/^\/([^\\\\]+)\\\\$/', $line, $matches ) ) {
 			if (count($tabs)) {
 				$parsed = $pLocalParser->parse( $caption, $pParserTitle, $pParserOptions, false );
-				$tabs[count($tabs)-1]['caption'] = $parsed->getText();
+				$tabs[count($tabs)-1]['gm-caption'] = $parsed->getText();
 				$caption = '';
 			}
 			$tabs[] = array( 'title' => $matches[1] );
@@ -475,7 +475,7 @@ JAVASCRIPT;
 			if( $state == GoogleMaps::PARSE_ADD_MARKER ) {
 				$parsed = $pLocalParser->parse( $caption, $pParserTitle, $pParserOptions, false );
 				if (count($tabs)) {
-					$tabs[count($tabs)-1]['caption'] = $parsed->getText();
+					$tabs[count($tabs)-1]['gm-caption'] = $parsed->getText();
 					$outputter->addMarker( $lat, $lon, $icon, $title, $tabs, isset($lineColor) );
 				} else {
 					$outputter->addMarker( $lat, $lon, $icon, $title, $parsed->getText(), isset($lineColor));
@@ -532,7 +532,7 @@ JAVASCRIPT;
 	if( $state == GoogleMaps::PARSE_ADD_MARKER ) {
 		$parsed = $pLocalParser->parse( $caption, $pParser->mTitle, $pParser->mOptions, false );
 		if (count($tabs) > 0) {
-			$tabs[count($tabs)-1]['caption'] = $parsed->getText();
+			$tabs[count($tabs)-1]['gm-caption'] = $parsed->getText();
 			$outputter->addMarker( $lat, $lon, $icon, $title, $tabs, isset($lineColor) );
 		} else {
 			$outputter->addMarker( $lat, $lon, $icon, $title, $parsed->getText(), isset($lineColor));

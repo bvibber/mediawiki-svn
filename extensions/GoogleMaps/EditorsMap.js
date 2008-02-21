@@ -179,12 +179,12 @@ EditorsMarker.prototype = {
     getBalloonFooter: function() {
       var message = '';
       if (this.search_result) {
-          message += '<a href="javascript:void(0)" onclick="emap.removeActiveMarkerAndJumpBack()">'+_['back']+'</a>&nbsp;&nbsp;';
+          message += '<a href="javascript:void(0)" onclick="emap.removeActiveMarkerAndJumpBack()">'+_['gm-back']+'</a>&nbsp;&nbsp;';
       }
-      message += '<a href="javascript:void(0)" onclick="emap.updateActiveMarker()">'+_['save point']+'</a>'+
-	  '&nbsp;&nbsp;<a href="javascript:void(0)" onclick="emap.removeActiveMarker()">'+_['remove']+'</a>';
+      message += '<a href="javascript:void(0)" onclick="emap.updateActiveMarker()">'+_['gm-save-point']+'</a>'+
+	  '&nbsp;&nbsp;<a href="javascript:void(0)" onclick="emap.removeActiveMarker()">'+_['gm-remove']+'</a>';
       if (GME_PATHS_SUPPORTED && this.path == undefined) {
-	  message += '&nbsp;&nbsp;<a href="javascript:void(0)" onclick="emap.startPath()">'+_['start path']+'</a>';
+	  message += '&nbsp;&nbsp;<a href="javascript:void(0)" onclick="emap.startPath()">'+_['gm-start-path']+'</a>';
       }
       message += '<div style="color: #aaa; font-size: 10px;">'+
 	  this.emap.round(this.getPoint().lat())+', '+
@@ -196,9 +196,9 @@ EditorsMarker.prototype = {
       if (this.tabs.length) {
 	  var tabs = [];
 	  for(var t=0; t < this.tabs.length; t++) {
-              label = this.emap.rtl ? ((parseInt(t)+1)+' '+_['tab']) : _['tab']+' '+(parseInt(t)+1);
-              content = _['tab title']+':<br />'+'<input size="24" id="tab_title_'+t+'" value="'+this.tabs[t].title+'" />'+
-		      '<br />'+_['caption']+':<br />'+
+              label = this.emap.rtl ? ((parseInt(t)+1)+' '+_['gm-tab']) : _['gm-tab']+' '+(parseInt(t)+1);
+              content = _['gm-tab-title']+':<br />'+'<input size="24" id="tab_title_'+t+'" value="'+this.tabs[t].title+'" />'+
+		      '<br />'+_['gm-caption']+':<br />'+
 		      '<textarea class="balloon_textarea" id="tab_content_'+t+'">'+
 		      this.tabs[t].content+'</textarea><br />'+
 		      this.getBalloonFooter();
@@ -210,10 +210,10 @@ EditorsMarker.prototype = {
 	  this.gmarker.openInfoWindowTabsHtml(tabs);
       } else {
           var content = '';
-          content += _['balloon title'];
+          content += _['gm-balloon-title'];
           content += '<br /><input style="width: 260px;" type="text" id="balloon_title" value="'+this.gmarker.getTitle()+'"/>';
           content += '<br />';
-          content += _['make marker'];
+          content += _['gm-make-marker'];
           content += '<br /><textarea style="width: 260px;" id="balloon_textarea" class="balloon_textarea">';
           content += this.caption;
           content += '</textarea><br />';
@@ -506,7 +506,7 @@ EditorsMap.prototype = {
     initialize: function(options) {
 	if (!GBrowserIsCompatible()) {
 	    this.mother_div = document.createElement('div');
-	    this.mother_div.innerHTML = _['no editor'];
+	    this.mother_div.innerHTML = _['gm-no-editor'];
 	    document.getElementById(options.container).appendChild(this.mother_div);
 	    return;
 	}
@@ -573,20 +573,20 @@ EditorsMap.prototype = {
          this.search_div = document.createElement("div");
          if (options.geocoder || options.localsearch) {
              if (options.localsearch) {
-                 this.search_div.innerHTML = _['search preface'];
+                 this.search_div.innerHTML = _['gm-search-preface'];
              } else {
-                 this.search_div.innerHTML = _['geocode preface'];
+                 this.search_div.innerHTML = _['gm-geocode-preface'];
              }
              this.search_div.innerHTML +=
                  '<br /><input type="text" size="40" id="address_input" onkeypress="emap.findAddressIfEnter(event)" />&nbsp;&nbsp;&nbsp;'+
-                 '<a href="javascript:void(0)" onclick="emap.findAddress();">'+_['search']+'</a>&nbsp;&nbsp;&nbsp;'+
+                 '<a href="javascript:void(0)" onclick="emap.findAddress();">'+_['gm-search']+'</a>&nbsp;&nbsp;&nbsp;'+
                  '<a href="javascript:void(0)" onclick="emap.clearResults()" id="clear_search_results" style="display: none;">'+
-                 _['clear search']+'</a>';
+                 _['gm-clear-search']+'</a>';
              this.searching_div = document.createElement("div");
-             this.searching_div.innerHTML = _['searching'];
+             this.searching_div.innerHTML = _['gm-searching'];
              this.searching_div.style.display = 'none';
          } else {
-             this.search_div.innerHTML = _['no search preface'];
+             this.search_div.innerHTML = _['gm-no-search-preface'];
          }
 
          if (options.localsearch) {
@@ -613,7 +613,7 @@ EditorsMap.prototype = {
          this.path_info_div.style.width   = "460px";
 
          this.instructions_div = document.createElement("div");
-         this.instructions_div.innerHTML = '<p>'+_['instructions']+'&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="if(confirm(\''+_['are you sure']+'\')) { emap.clearMap(); }">'+_['clear all points']+'</a></p>';
+         this.instructions_div.innerHTML = '<p>'+_['gm-instructions']+'&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="if(confirm(\''+_['gm-are-you-sure']+'\')) { emap.clearMap(); }">'+_['gm-clear-all-points']+'</a></p>';
 
          this.map_dump_div = document.createElement("pre");
 
@@ -664,10 +664,10 @@ getKmlNode: function() {
                 var text_sep = '&nbsp;&nbsp;&nbsp;';
                 var div = document.createElement("div");
               var html =
-                  _['kml include'] +
+                  _['gm-kml-include'] +
               '<input onfocus="if(this.value == \'http://\') { this.value = \'\'; }" id="kml_include" type="text" style="width: 300px" value="http://" /> '+
-              '<a id="kml_include_link" href="javascript:void(0)" onclick="this.blur(); emap.addXmlSource(document.getElementById(\'kml_include\').value)">'+_['kml include link']+'</a>'+
-              '<span id="kml_include_loading" style="display: none;">'+_['kml loading']+'</span>';
+              '<a id="kml_include_link" href="javascript:void(0)" onclick="this.blur(); emap.addXmlSource(document.getElementById(\'kml_include\').value)">'+_['gm-kml-include-link']+'</a>'+
+              '<span id="kml_include_loading" style="display: none;">'+_['gm-kml-loading']+'</span>';
           div.innerHTML = html;
           return div;
             },
@@ -682,11 +682,11 @@ getKmlNode: function() {
               '&nbsp;&nbsp;&nbsp;'+
               '&nbsp;&nbsp;&nbsp;'+
               '&nbsp;&nbsp;&nbsp;';
-		  var html = _['zoom control']+': '+
-              this.getRadioOption('controls', 'large', _['large'])+
-              this.getRadioOption('controls', 'medium', _['medium'])+
-              this.getRadioOption('controls', 'small', _['small'])+
-              this.getRadioOption('controls', 'none', _['no zoom control'])+
+		  var html = _['gm-zoom-control']+': '+
+              this.getRadioOption('controls', 'large', _['gm-large'])+
+              this.getRadioOption('controls', 'medium', _['gm-medium'])+
+              this.getRadioOption('controls', 'small', _['gm-small'])+
+              this.getRadioOption('controls', 'none', _['gm-no-zoom-control'])+
               '&nbsp;&nbsp;&nbsp;'+
               '&nbsp;&nbsp;&nbsp;'+
               '&nbsp;&nbsp;&nbsp;'+
@@ -724,9 +724,9 @@ getKmlNode: function() {
                     },
 
     getControlSwitch: function(control) {
-		      return _[control+' control']+': '+
-              this.getRadioOption(control, 'yes', _['yes'])+
-              this.getRadioOption(control, 'no', _['no']);
+		      return _['gm-'+control+'-control']+': '+
+              this.getRadioOption(control, 'yes', _['gm-yes'])+
+              this.getRadioOption(control, 'no', _['gm-no']);
                       },
 
 /********** Map methods ************/
@@ -990,7 +990,7 @@ getKmlNode: function() {
 			     editors_map.localSearch.execute(addr);
 			 } else {
                              editors_map.searching_div.style.display = 'none';
-			     alert(_['no results']);
+			     alert(_['gm-no-results']);
 			 }
 		     } else { // We have a geo-code!
 			 editors_map.searching_div.style.display = 'none';
@@ -1043,13 +1043,13 @@ getKmlNode: function() {
                          if (phone)
                            text += phone+'<br />';
                          text += '<a href="javascript:void(0)" onclick="emap.clipResult(\''+result.titleNoFormatting.replace(/'/g, '\\\'')+
-                             '\', '+result.lat+', '+result.lng+')">'+_['clip result']+'</a>';
+                             '\', '+result.lat+', '+result.lng+')">'+_['gm-clip-result']+'</a>';
                          result_div.innerHTML = text;
                          this.local_search_results.appendChild(result_div);
                        }
                        if(!this.localSearch.results[0]) {
                          // probably shouldn't alert, but it gets attention.
-                         alert(_['no results']);
+                         alert(_['gm-no-results']);
                        }
                      },
 
@@ -1185,8 +1185,8 @@ getKmlNode: function() {
                  }
                  if (p == this.active_path) {
                      str += '<div style="margin: 4px; clear: both;">'+
-                         '<b>'+_['editing path']+'</b>&nbsp;&nbsp;'+
-                         '<a href="javascript:void(0)" onclick="emap.endPath()">'+_['save path']+'</a>&nbsp;&nbsp;'+
+                         '<b>'+_['gm-editing-path']+'</b>&nbsp;&nbsp;'+
+                         '<a href="javascript:void(0)" onclick="emap.endPath()">'+_['gm-save-path']+'</a>&nbsp;&nbsp;'+
                          '</div>';
                  } else {
                      str += this.getLineLinksHtml(this.paths[p], p);
@@ -1226,22 +1226,22 @@ getKmlNode: function() {
     getLineLinksHtml: function(path, index) {
           str = '<div style="clear: both;">';
           str += '<a onclick="javascript:emap.activatePath('+index+')" href="javascript:void(0)">'+
-              _['edit path']+
+              _['gm-edit-path']+
               '</a>';
           str += ' - '+
               '<a onclick="javascript:emap.paths['+index+'].jump()" href="javascript:void(0)">'+
-              _['show path']+
+              _['gm-show-path']+
               '</a>';
 
           if (path.poly) {
               str += ' - '+
                   '<a onclick="emap.paths['+index+'].removeFill()"'+
-                  ' href="javascript:void(0)">'+_['remove fill']+'</a>'+
+                  ' href="javascript:void(0)">'+_['gm-remove-fill']+'</a>'+
                   '&nbsp;&nbsp;';
           } else {
               str += ' - '+
                   '<a onclick="emap.paths['+index+'].addFill()"'+
-                  ' href="javascript:void(0)">'+_['add fill']+'</a>';
+                  ' href="javascript:void(0)">'+_['gm-add-fill']+'</a>';
           }
           str += '</div>';
           return str;
@@ -1249,7 +1249,7 @@ getKmlNode: function() {
 
     getLineOptionsHtml: function(path, index) {
          str = '';
-         str += '<div style="float: left; clear: left;">'+_['line color']+':</div>';
+         str += '<div style="float: left; clear: left;">'+_['gm-line-color']+':</div>';
          str += '<div ';
          str += 'onclick="emap.paths['+index+'].colorSelector.toggle_color_select()" ';
          str += 'id="pick_color_'+index+'" ';
@@ -1261,7 +1261,7 @@ getKmlNode: function() {
              'width: 12px;"';
          str += '></div>';
          str += '<div style="float: left; padding: 0px 3px;">';
-         str += _['opacity']+': <select style="font-size: 10px;" onchange="emap.paths['+index+'].setLineOpacity(this.value, '+index+'); this.blur()">';
+         str += _['gm-opacity']+': <select style="font-size: 10px;" onchange="emap.paths['+index+'].setLineOpacity(this.value, '+index+'); this.blur()">';
          for (i=0;i<=100;i+=10) {
              str += '<option ';
              if (i == parseInt(path.line_opacity*10+0.999)*10) {
@@ -1270,7 +1270,7 @@ getKmlNode: function() {
              str += 'value="'+(i/100)+'">'+i+'%</option>';
          }
          str += '</select>';
-         str += '&nbsp;&nbsp;'+_['line width']+': ';
+         str += '&nbsp;&nbsp;'+_['gm-line-width']+': ';
          str += '<select style="font-size: 10px;" onchange="emap.paths['+index+'].setStroke(this.value, '+index+'); this.blur()">';
          for (i=1;i<=12;i++) {
              str += '<option ';
@@ -1288,7 +1288,7 @@ getKmlNode: function() {
         str = '';
         str += '<div style="clear: both;">';
 
-        str += '<div style="float: left;">'+_['fill color']+':</div>';
+        str += '<div style="float: left;">'+_['gm-fill-color']+':</div>';
         str += '<div ';
         str += 'onclick="emap.paths['+p+'].colorSelectorFill.toggle_color_select()" ';
         str += 'id="fill_color_'+p+'" ';
@@ -1301,7 +1301,7 @@ getKmlNode: function() {
             'width: 12px;';
         str += '"></div>';
         str += '<div style="float: left; padding: 0px 3px;">';
-        str += _['opacity']+': '+
+        str += _['gm-opacity']+': '+
             '<select style="font-size: 10px;" onchange="emap.paths['+p+'].setFillOpacity(this.value, '+p+'); this.blur()">';
         for (i=0;i<=100;i+=10) {
             str += '<option ';
@@ -1351,18 +1351,18 @@ getKmlNode: function() {
                 }
                 this.maps_in_article = i;
                 if (existing_maps[0]) {
-                  map_selector_html = _['load map from article']+' <select id="load_map_selector">';
+                  map_selector_html = _['gm-load-map-from-article']+' <select id="load_map_selector">';
                   for (var e=0; e < existing_maps.length; e++) {
                     map_selector_html += '<option value="'+(+e+1)+'">'+existing_maps[e]+"</option>";
                   }
                   map_selector_html += '</select>&nbsp;&nbsp;'+
                       '<a href="javascript:void(0)" onclick="emap.loadMap(document.getElementById(\'load_map_selector\').value)">'+
-                      _['load map']+'</a>&nbsp;&nbsp;&nbsp;'+
+                      _['gm-load-map']+'</a>&nbsp;&nbsp;&nbsp;'+
                       '<a href="javascript:void(0)" onclick="javascript:emap.refreshMapList()">'+
-                      _['refresh list']+'</a>';
+                      _['gm-refresh-list']+'</a>';
                   return map_selector_html;
                 }
-                return _['no maps']+' <a href="javascript:void(0)" onclick="javascript:emap.refreshMapList()">'+_['refresh list']+'</a>';
+                return _['gm-no-maps']+' <a href="javascript:void(0)" onclick="javascript:emap.refreshMapList()">'+_['gm-refresh-list']+'</a>';
 	      },
 
     refreshMapList: function() {

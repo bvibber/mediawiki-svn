@@ -82,7 +82,7 @@ JAVASCRIPT;
             $caption = preg_replace('/[\r\n]+/', '', $pCaption);
         } else if (is_array($pCaption)) {
             foreach ($pCaption as $tab) {
-                $tab['caption'] = preg_replace('/[\r\n]+/', '', $tab['caption']);
+                $tab['gm-caption'] = preg_replace('/[\r\n]+/', '', $tab['gm-caption']);
             }
         }
         $options = array();
@@ -118,7 +118,7 @@ JAVASCRIPT;
                 $tabs[] = "new GInfoWindowTab('" .
                     addslashes(GoogleMaps::fixStringDirection($t['title'], $this->mLanguage->isRTL())).
                     "', '".
-                    addslashes(GoogleMaps::fixBlockDirection(GoogleMaps::fixTidy($t['caption']), $this->mLanguage->isRTL())) .
+                    addslashes(GoogleMaps::fixBlockDirection(GoogleMaps::fixTidy($t['gm-caption']), $this->mLanguage->isRTL())) .
                     "')";
             }
             $this->mOutput .= " marker.tabs = [ ".implode(',', $tabs)." ]; ";
