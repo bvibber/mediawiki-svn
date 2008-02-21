@@ -1,26 +1,15 @@
 <?php
 // These are the messages displayed. Most are used for the Editor's Map.
 
-// To add messages for another language, just make a key that's the same as
-// the $wgLanguageCode you want it to work for. You can translate as many or as few
-// messages as you'd like; the extension will just fall back on the English
-// version.
-
-// In addition, if you'd prefer not to mess with this file, you can just define
-// messages in LocalSettings.php with a variable called $wgGoogleMapsCustomMessages.
-// That variable will override the messages here. It should look something like
-
-// $wgGoogleMapsCustomMessages = array( "yes" => "Ja", "no" => "Nein" );
-
-// i.e., you shouldn't have the intermediate language code key like you see below.
-
-// Using $wgGoogleMapsCustomMessages is a good idea to make future upgrades of this
-// extension easier, but you are encouraged to contribute your translation to the project.
-// Just send an email to me at emmiller@gmail.com, including the language code ("de", "en", etc.)
-// and the relevant data structure, and I'll include it in the next release.
+// You are encouraged to contribute your translation to the project.
+// Go to translatewiki.net and edit the message group "Google Maps" for your
+// language.
 
 $wgGoogleMapsMessages = array();
 
+/**
+ * @author Evan Miller
+ */
 $wgGoogleMapsMessages['en'] = array(
 	'gm-incompatible-browser' => 'In order to see the map that would go in this space, you will need to use a <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">compatible web browser</a>.',
 	'gm-no-editor' => 'Unfortunately, your browser does not support the interactive map-making features. Try the latest version of <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) or <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux).',
@@ -86,6 +75,9 @@ $wgGoogleMapsMessages['en'] = array(
 	'gm-kml-export' => 'Export this map to KML',
 );
 
+/**
+ * @author ترجمان05
+ */
 $wgGoogleMapsMessages['ar'] = array(
 	'gm-incompatible-browser' => 'لكي تشاهد الخريطة المراد ادخالها في هذا الفضاء، ستحتاج لإستخدام <a href="http://local.google.com/support/bin/answer.py?answer=16532&topic=1499">متصفح ويب متوافق</a>.',
 	'gm-no-editor' => 'لسوء الحظ ، متصفّحك لا يدعم ميزّات انشاء الخريطة التفاعلية. جرّب آخر نسخة <a href="http://www.microsoft.com/ie">لمستكشف أنترنت</a> (ويندوز) او <a href="http://www.mozilla.org/products/firefox">فايرفوكس</a> (ويندوز، ماك، و لينكس).',
@@ -202,6 +194,9 @@ $wgGoogleMapsMessages['bg'] = array(
 	'gm-kml-export'            => 'Изнасяне на картата като KML',
 );
 
+/**
+ * @author <anonymous>
+ */
 $wgGoogleMapsMessages['br'] = array(
 	'gm-incompatible-browser' => 'Para ver o mapa que iria neste espaço, você precisará usar um <a href="http://local.google.com/support/bin/answer.py?answer=16532&topic=1499">navegador compatível</a>.',
 	'gm-no-editor' => 'Infelizmente, o seu navegador não suporta o recurso de mapa interativo. Experimente uma versão mais recente do <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) ou do <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, Linux).',
@@ -377,6 +372,10 @@ $wgGoogleMapsMessages['de-formal'] = array(
 	'gm-editing-path'         => 'Klicken Sie auf die Karte, um diesen Pfad zu verlängern.',
 );
 
+/**
+ * @author Acrida
+ * @author <anonymous>
+ */
 $wgGoogleMapsMessages['es'] = array(
 	'gm-incompatible-browser' => 'Para ver el mapa que hay en esta p&aacute;gina, necesitas usar un <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">navegador compatible</a>.',
 	'gm-no-editor' => 'Desgraciadamente, tu navegador no soporta la funci&oacute;n interactiva de construcci&oacute;n de mapas. Prueba la &oucute;ltima versi&oacute;n de <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac y Linux).',
@@ -427,6 +426,9 @@ $wgGoogleMapsMessages['es'] = array(
 	'gm-hide-map' => 'ocultar mapa',
 );
 
+/**
+ * @author Sylvestre
+ */
 $wgGoogleMapsMessages['fr'] = array(
 	'gm-incompatible-browser' => 'Pour voir la carte qui devrait &ecirc;tre dans cette espace, utilisez un <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">navigateur compatible</a>.',
 	'gm-no-editor' => 'Malheureusement, votre navigateur ne supporte pas la cr&eacute;ation interactive de carte. Essayez d\'installer la derni&egrave;re version de <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux) ou au pire <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows)',
@@ -476,7 +478,9 @@ $wgGoogleMapsMessages['fr'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author BB70
  * @author Siebrand
+ * @author <anonymous>
  */
 $wgGoogleMapsMessages['nl'] = array(
 	'gm-incompatible-browser'  => 'Om deze kaart te bekijken dient u gebruik te maken van een <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">geschikte browser</a>.',
@@ -565,6 +569,9 @@ $wgGoogleMapsMessages['pt'] = array(
 	'gm-kml-export'            => 'Exportar este mapa para KML',
 );
 
+/**
+ * @author Evan Miller
+ */
 $wgGoogleMapsMessages['ru'] = array(
 	'gm-incompatible-browser' => 'Для просмотра карты воспользуйтесь <a href=\"http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499\">совместимым броузером</a>.',
 	'gm-no-editor' => 'К сожалению, ваш броузер на поддерживает функцию создания интерактивных карт. Воспользуйтесь свежей версией <a href=\"http://www.microsoft.com/ie\">Internet Explorer</a> (Windows) или <a href=\"http://www.mozilla.org/products/firefox\">Firefox</a> (Windows, Mac и Linux).',
@@ -615,6 +622,9 @@ $wgGoogleMapsMessages['ru'] = array(
 	'gm-hide-map' => 'Спрятать карту',
 );
 
+/**
+ * @author <anonymous>
+ */
 /* FIXME: 'zh-hans' or 'zh-hant'?
 $wgGoogleMapsMessages['zh'] = array(
 	'gm-make-marker' => '建立标记 (wiki mark-up OK):',
@@ -663,4 +673,3 @@ $wgGoogleMapsMessages['zh'] = array(
 	'gm-make-map' => '添加一个卫星地图',
 	'gm-hide-map' => '隐藏此地图',
 ); */
-
