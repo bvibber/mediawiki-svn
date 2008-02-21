@@ -7,7 +7,7 @@
 
 if (!defined('MEDIAWIKI')) die();
 
-define('DT_VERSION','0.1');
+define('DT_VERSION','0.1.1');
 
 // constants for special properties
 define('DT_SP_HAS_XML_GROUPING', 1);
@@ -48,8 +48,8 @@ function dtgSetupExtension() {
 		'name'           => 'Data Transfer',
 		'version'        => DT_VERSION,
 		'author'         => 'Yaron Koren',
-		'url'            => 'http://discoursedb.org/SemanticForms/',
-		'description'    => 'Allows for importing and exporting structured data contained in template calls',
+		'url'            => 'http://www.mediawiki.org/wiki/Extension:Data_Transfer',
+		'description'    => 'Exports wiki pages as XML, using template calls as the data structure',
 		'descriptionmsg' => 'dt-desc',
 	);
 
