@@ -19,6 +19,8 @@
 // Just send an email to me at emmiller@gmail.com, including the language code ("de", "en", etc.)
 // and the relevant data structure, and I'll include it in the next release.
 
+$wgGoogleMapsMessages = array();
+
 $wgGoogleMapsMessages['en'] = array(
 	'incompatible browser' => 'In order to see the map that would go in this space, you will need to use a <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">compatible web browser</a>.',
 	'no editor' => 'Unfortunately, your browser does not support the interactive map-making features. Try the latest version of <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) or <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux).',
