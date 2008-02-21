@@ -133,8 +133,8 @@ EditorsMarker.prototype = {
 
     rebuildMarker: function(title, icon) {
                  this.emap.zapGMarker(this.gmarker);
-	       this.gmarker = new GMarker(this.gmarker.getPoint(), 
-                       { 'icon':icon, 
+	       this.gmarker = new GMarker(this.gmarker.getPoint(),
+                       { 'icon':icon,
                          'draggable':this.gmarker.draggable(),
                          'title':title });
 	       this.emap.gmap.addOverlay(this.gmarker);
@@ -209,7 +209,7 @@ EditorsMarker.prototype = {
 	  }
 	  this.gmarker.openInfoWindowTabsHtml(tabs);
       } else {
-          var content = ''; 
+          var content = '';
           content += _['balloon title'];
           content += '<br /><input style="width: 260px;" type="text" id="balloon_title" value="'+this.gmarker.getTitle()+'"/>';
           content += '<br />';
@@ -438,7 +438,7 @@ EditorsPath.prototype = {
          this.container.childNodes[0].nodeValue = this.stroke+'#'+this.fraction2hex(this.line_opacity)+this.line_color;
          if (this.poly) {
              this.container.childNodes[0].nodeValue += ' (#'+this.fraction2hex(this.fill_opacity)+this.fill_color+')';
-         } 
+         }
      },
 
     setFillOpacity: function(opacity, index) {
@@ -663,7 +663,7 @@ EditorsMap.prototype = {
 getKmlNode: function() {
                 var text_sep = '&nbsp;&nbsp;&nbsp;';
                 var div = document.createElement("div");
-              var html = 
+              var html =
                   _['kml include'] +
               '<input onfocus="if(this.value == \'http://\') { this.value = \'\'; }" id="kml_include" type="text" style="width: 300px" value="http://" /> '+
               '<a id="kml_include_link" href="javascript:void(0)" onclick="this.blur(); emap.addXmlSource(document.getElementById(\'kml_include\').value)">'+_['kml include link']+'</a>'+
@@ -732,7 +732,7 @@ getKmlNode: function() {
 /********** Map methods ************/
 
 // call this instead of the set* functions
-// to update the printed map attributes at 
+// to update the printed map attributes at
 // the same time.
     configureMap: function(attrs) {
                     if (attrs.width)
@@ -821,7 +821,7 @@ getKmlNode: function() {
 
     startPath: function() {
                  this.singletons.removeMarker(this.active_marker);
-                 this.addPath(this.default_color, this.default_opacity, 
+                 this.addPath(this.default_color, this.default_opacity,
                          this.stroke, this.default_color, this.default_opacity).addMarker(this.active_marker);
                  this.updateActiveMarker();
                  this.gmap.closeInfoWindow();
@@ -859,7 +859,7 @@ getKmlNode: function() {
      },
 
     selectPath: function(path) {
-        if (this.selected_path != undefined 
+        if (this.selected_path != undefined
                 && this.paths[this.selected_path]) {
             this.paths[this.selected_path].deselect();
         }
@@ -981,7 +981,7 @@ getKmlNode: function() {
 	     if (!this.geocoder) {
 		 if (this.localSearch) {
 		     this.localSearch.execute(addr);
-		 } 
+		 }
 		 return;
 	     }
 	     this.geocoder.getLocations(addr, function(response) {
@@ -1163,7 +1163,7 @@ getKmlNode: function() {
              if (this.paths[p]) {
                  if (this.paths[p].distance == 0) {
                      this.paths[p].updateDistance();
-                 } 
+                 }
                  if (this.paths[p].distance > max) {
                      max = this.paths[p].distance;
                  }
@@ -1266,7 +1266,7 @@ getKmlNode: function() {
              str += '<option ';
              if (i == parseInt(path.line_opacity*10+0.999)*10) {
                  str += ' selected="selected" ';
-             } 
+             }
              str += 'value="'+(i/100)+'">'+i+'%</option>';
          }
          str += '</select>';
@@ -1526,7 +1526,7 @@ addXmlSource: function(url) {
                   document.getElementById('kml_include_loading').style.display = '';
                   document.getElementById('kml_include').value = 'http://';
                   var emap = this;
-                  geoxml = new GGeoXml(url, 
+                  geoxml = new GGeoXml(url,
                       function() {
                           if (!geoxml.loadedCorrectly()) {
                               alert("Failed to load XML file");
@@ -1546,7 +1546,7 @@ dumpXmlSources: function() {
                     emap.kml_list.innerHTML = '';
                     for(var i=0; i<this.includes.length; i++) {
                           var li = document.createElement("li");
-                          li.innerHTML = this.includes[i].url + 
+                          li.innerHTML = this.includes[i].url +
                           ' (<a href="javascript:void(0)" onclick="emap.showXmlPoints('+i+')">show points</a>)'+
                           ' (<a href="javascript:void(0)" onclick="emap.removeXmlSource('+i+')">remove</a>)';
                           emap.kml_list.appendChild(li);

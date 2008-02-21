@@ -107,18 +107,18 @@ JAVASCRIPT;
                 $this->mOutput .= " marker.caption += '<p><b>" . addslashes($title) . "</b></p>';";
             }
             if( $caption ) {
-                $this->mOutput .= " marker.caption += '" . 
-                    addslashes( GoogleMaps::fixBlockDirection(GoogleMaps::fixTidy($caption), $this->mLanguage->isRTL())) . 
+                $this->mOutput .= " marker.caption += '" .
+                    addslashes( GoogleMaps::fixBlockDirection(GoogleMaps::fixTidy($caption), $this->mLanguage->isRTL())) .
                     "';";
             }
         // if there's tabs add them to the marker
         } else if( is_array($pCaption) && count($pCaption) ) { // dump the tabs from the previous marker
             $tabs = array();
             foreach($pCaption as $t) {
-                $tabs[] = "new GInfoWindowTab('" . 
+                $tabs[] = "new GInfoWindowTab('" .
                     addslashes(GoogleMaps::fixStringDirection($t['title'], $this->mLanguage->isRTL())).
-                    "', '". 
-                    addslashes(GoogleMaps::fixBlockDirection(GoogleMaps::fixTidy($t['caption']), $this->mLanguage->isRTL())) . 
+                    "', '".
+                    addslashes(GoogleMaps::fixBlockDirection(GoogleMaps::fixTidy($t['caption']), $this->mLanguage->isRTL())) .
                     "')";
             }
             $this->mOutput .= " marker.tabs = [ ".implode(',', $tabs)." ]; ";
@@ -129,7 +129,7 @@ JAVASCRIPT;
     }
 
     function addIcon($icon, $template) {
-        $this->mOutput .= " mapIcons['{$icon}'] = new GIcon(G_DEFAULT_ICON, '" . 
+        $this->mOutput .= " mapIcons['{$icon}'] = new GIcon(G_DEFAULT_ICON, '" .
             addslashes( str_replace( "{label}", $icon, $template ) ) . "');";
     }
 
@@ -155,7 +155,7 @@ JAVASCRIPT;
       if (!GBrowserIsCompatible()) {
           document.getElementById("map{$numberOfMaps}").innerHTML = "{$incompatibleMessage}";
           return;
-      } 
+      }
       var map = new GMap2(document.getElementById("map{$numberOfMaps}"));
       map.addMapType(G_PHYSICAL_MAP);
       GME_DEFAULT_ICON = G_DEFAULT_ICON;
@@ -207,7 +207,7 @@ JAVASCRIPT;
             $this->mOutput .= " document.getElementById('map{$numberOfMaps}').style.direction = 'rtl'; ";
         }
 
-        $this->mOutput .= '} addLoadEvent(makeMap' . $numberOfMaps . ');%%ENDJAVASCRIPT' . 
+        $this->mOutput .= '} addLoadEvent(makeMap' . $numberOfMaps . ');%%ENDJAVASCRIPT' .
             $this->mProxyKey . '%%';
     }
 

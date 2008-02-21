@@ -8,51 +8,49 @@ require_once("includes/SpecialPage.php");
 // Easy links to KML files
 
 class GoogleMapsKML extends SpecialPage {
-    function execute( $params ) {
-        global $wgRequest, $wgOut, $wgTitle, $wgUser;
-        global $wgContLang, $wgProxyKey, $wgParser;
-        $article = $wgRequest->getText( 'article', $params );
-        $map     = $wgRequest->getText( 'map', $params );
+	function execute( $params ) {
+		global $wgRequest, $wgOut, $wgTitle, $wgUser;
+		global $wgContLang, $wgProxyKey, $wgParser;
+		$article = $wgRequest->getText( 'article', $params );
+		$map     = $wgRequest->getText( 'map', $params );
 
-        $wgOut->disable();
-        header("Cache-Control: no-cache, must-revalidate");
-        header("Content-type: application/vnd.google-earth.kml+xml");
-        header('Content-Disposition: attachment; filename="'.$article.'.kml"');
+		$wgOut->disable();
+		header("Cache-Control: no-cache, must-revalidate");
+		header("Content-type: application/vnd.google-earth.kml+xml");
+		header('Content-Disposition: attachment; filename="'.$article.'.kml"');
 
-        $title = Title::newFromText($article);
-        if ($title) {
-            $revision = Revision::newFromTitle($title);
+		$title = Title::newFromText($article);
+		if ($title) {
+			$revision = Revision::newFromTitle($title);
 
-            $mapOptions = GoogleMaps::getMapSettings($title, 
-                array('icons' => 'http://maps.google.com/mapfiles/kml/pal4/{label}.png',
-                      'icon' => 'icon57'));
+			$mapOptions = GoogleMaps::getMapSettings($title,
+			array('icons' => 'http://maps.google.com/mapfiles/kml/pal4/{label}.png',
+			'icon' => 'icon57'));
 
-            $outputter = new GoogleMapsKmlOutputter($wgContLang,
-                str_replace('{label}', $mapOptions['icon'], $mapOptions['icons']));
+			$outputter = new GoogleMapsKmlOutputter($wgContLang,
+			str_replace('{label}', $mapOptions['icon'], $mapOptions['icons']));
 
-            $wgParser->mOptions = ParserOptions::newFromUser( $wgUser );
-            $wgParser->mOptions->setEditSection( false );
-            $wgParser->mTitle = $wgTitle;
+			$wgParser->mOptions = ParserOptions::newFromUser( $wgUser );
+			$wgParser->mOptions->setEditSection( false );
+			$wgParser->mTitle = $wgTitle;
 
-            if (preg_match_all("/<googlemap(.*?)>(.*?)<\/googlemap>/s", $revision->getText(), $matches)) {
-                $outputter->addFileHeader();
-                for($i=0;$i<count($matches[2]);$i++) {
-                    $attrs = Sanitizer::decodeTagAttributes($matches[1][$i]);
-                    $mapOptions['syntax'] = isset($attrs['syntax']) ? $attrs['syntax'] : "0";
-                    $outputter->addHeader(isset($attrs['title']) ? $attrs['title'] : "Map #".($i+1));
-                    GoogleMaps::renderContent($matches[2][$i], &$wgParser, new Parser(), 
-                        $wgParser->mTitle, $wgParser->mOptions, $outputter, $mapOptions);
-                    $outputter->addTrailer();
-                }
-                $outputter->addFileTrailer();
-                echo $outputter->render();
-            } else {
-                echo "No maps in $article!";
-            }
-        } else {
-            echo "No article found by the name of $article";
-        }
-    }
+			if (preg_match_all("/<googlemap(.*?)>(.*?)<\/googlemap>/s", $revision->getText(), $matches)) {
+				$outputter->addFileHeader();
+				for($i=0;$i<count($matches[2]);$i++) {
+					$attrs = Sanitizer::decodeTagAttributes($matches[1][$i]);
+					$mapOptions['syntax'] = isset($attrs['syntax']) ? $attrs['syntax'] : "0";
+					$outputter->addHeader(isset($attrs['title']) ? $attrs['title'] : "Map #".($i+1));
+					GoogleMaps::renderContent($matches[2][$i], &$wgParser, new Parser(),
+					$wgParser->mTitle, $wgParser->mOptions, $outputter, $mapOptions);
+					$outputter->addTrailer();
+				}
+				$outputter->addFileTrailer();
+				echo $outputter->render();
+			} else {
+				echo "No maps in $article!";
+			}
+		} else {
+			echo "No article found by the name of $article";
+		}
+	}
 }
-
-?>
