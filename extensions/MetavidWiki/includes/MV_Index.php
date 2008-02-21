@@ -441,7 +441,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		}else{			 			
  			return $dbr->fetchObject( $result );
  		} 		
- 	}
+ 	} 	
  	function getMVDbyTitle($title_key, $fields='*'){ 	
  		global $mvIndexTableName;	
  		$dbr =& wfGetDB(DB_SLAVE);

@@ -1296,6 +1296,10 @@ function seconds2ntp(sec){
 }
 /* takes hh:mm:ss input returns number of seconds */
 function ntp2seconds(ntp){
+	if(!ntp){
+		js_log('ntp2seconds:not valid ntp:'+ntp);
+		return null;
+	}
 	times = ntp.split(':');
 	if(times.length!=3)
 		return null;

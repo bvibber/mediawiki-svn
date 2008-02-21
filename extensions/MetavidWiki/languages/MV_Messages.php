@@ -48,6 +48,8 @@ $messages['en'] = array(
 	'mv_updated_stream_files'       => 'Updated Stream Files Record',
 	'mv_removed_file_stream'        => 'Removed Stream file: $1',
 	'mv_missing_stream_text'        => 'The stream you requested <b>$1</b> is not available.<br />You may want to check the <a href="$2">Stream List</a><br />Or you many want to <a href="$3">Add The Stream</a>.',
+	'mv_user_cant_edit'				=> 'You may have to $1 to edit, $2', //$1 is login link and $2 is cancel link
+
 
 	'mv_add_stream_file'            => 'Add Stream File',
 	'mv_media_path'                 => 'media path',
