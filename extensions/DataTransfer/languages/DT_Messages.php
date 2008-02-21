@@ -22,7 +22,7 @@ $messages['en'] = array(
 	'dt_xml_field'                => 'Field',
 	'dt_xml_name'                 => 'Name',
 	'dt_xml_title'                => 'Title',
-	'dt_xml_freetext'             => 'Free_Text',
+	'dt_xml_freetext'             => 'Free Text',
 );
 
 /** Arabic (العربية)
@@ -76,7 +76,7 @@ $messages['fr'] = array(
 	'dt_xml_field'                => 'Champ',
 	'dt_xml_name'                 => 'Nom',
 	'dt_xml_title'                => 'Titre',
-	'dt_xml_freetext'             => 'Texte_Libre',
+	'dt_xml_freetext'             => 'Texte Libre',
 );
 
 /** Galician (Galego)
@@ -93,7 +93,7 @@ $messages['gl'] = array(
 	'dt_xml_field'                => 'Campo',
 	'dt_xml_name'                 => 'Nome',
 	'dt_xml_title'                => 'Título',
-	'dt_xml_freetext'             => 'Texto_Libre',
+	'dt_xml_freetext'             => 'Texto Libre',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -111,7 +111,7 @@ $messages['hsb'] = array(
 	'dt_xml_field'                => 'Polo',
 	'dt_xml_name'                 => 'Mjeno',
 	'dt_xml_title'                => 'Titul',
-	'dt_xml_freetext'             => 'Swobodny_tekst',
+	'dt_xml_freetext'             => 'Swobodny tekst',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -146,7 +146,7 @@ $messages['nl'] = array(
 	'dt_xml_field'                => 'Veld',
 	'dt_xml_name'                 => 'Naam',
 	'dt_xml_title'                => 'Titel',
-	'dt_xml_freetext'             => 'Vrije_tekst',
+	'dt_xml_freetext'             => 'Vrije tekst',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)
@@ -182,7 +182,7 @@ $messages['pt'] = array(
 	'dt_xml_field'                => 'Campo',
 	'dt_xml_name'                 => 'Nome',
 	'dt_xml_title'                => 'Título',
-	'dt_xml_freetext'             => 'Texto_Livre',
+	'dt_xml_freetext'             => 'Texto Livre',
 );
 
 /** Slovak (Slovenčina)
@@ -200,7 +200,7 @@ $messages['sk'] = array(
 	'dt_xml_field'                => 'Pole',
 	'dt_xml_name'                 => 'Názov',
 	'dt_xml_title'                => 'Nadpis',
-	'dt_xml_freetext'             => 'Voľný_text',
+	'dt_xml_freetext'             => 'Voľný text',
 );
 
 /** Swedish (Svenska)
@@ -225,6 +225,6 @@ $messages['vi'] = array(
 	'dt_xml_field'                => 'Trường',
 	'dt_xml_name'                 => 'Tên',
 	'dt_xml_title'                => 'Tựa đề',
-	'dt_xml_freetext'             => 'Văn_bản_Tự_do',
+	'dt_xml_freetext'             => 'Văn bản Tự do',
 );
 
