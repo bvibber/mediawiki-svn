@@ -631,7 +631,7 @@ EditorsMap.prototype = {
          this.note_div.style.padding = "10px";
          this.note_div.style.fontWeight = 'bold';
          this.note_div.style.fontStyle = 'italic';
-         this.note_div.innerHTML = _['note'];
+         this.note_div.innerHTML = _['gm-note'];
 
          this.root_div = document.createElement("div");
          this.root_div.setAttribute('id', 'mother_div');
