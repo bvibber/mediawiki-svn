@@ -42,6 +42,13 @@ $messages['nl'] = array(
 	'editown-desc' => "Gebruikers zonder het recht ''editall'' kunnen alleen pagina's bewerken die ze zelf hebben gemaakt",
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'editown-desc' => 'Участники без права «editall» могут править только страницы, которые сами создали',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

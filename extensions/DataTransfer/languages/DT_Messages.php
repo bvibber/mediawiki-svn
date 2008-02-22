@@ -200,6 +200,24 @@ $messages['pt'] = array(
 	'dt_xml_freetext'             => 'Texto Livre',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'dt-desc'                     => 'Позволяет импортировать и экспортировать структурированные данные, содержащиеся в вызовах шаблонов',
+	'viewxml'                     => 'Просмотр XML',
+	'dt_viewxml_docu'             => 'Пожалуйста, выберите категории и пространства имён для просмотра в формате XML.',
+	'dt_viewxml_categories'       => 'Категории',
+	'dt_viewxml_namespaces'       => 'Пространства имён',
+	'dt_viewxml_simplifiedformat' => 'Упрощённый формат',
+	'dt_xml_namespace'            => 'Пространство имён',
+	'dt_xml_page'                 => 'Страница',
+	'dt_xml_field'                => 'Поле',
+	'dt_xml_name'                 => 'Имя',
+	'dt_xml_title'                => 'Заголовок',
+	'dt_xml_freetext'             => 'Свободный текст',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

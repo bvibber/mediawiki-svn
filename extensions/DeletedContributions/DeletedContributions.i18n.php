@@ -16,6 +16,14 @@ $messages['af'] = array(
 	'deletedcontributions' => 'Geskrapte gebruikersbydraes',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'deletedcontributions'      => "Contrebuzions d'usuario borratas",
+	'deletedcontributions-desc' => "Premite a os almenistradors [[Special:DeletedContributions|beyer as edizions borratas d'un usuario]]",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

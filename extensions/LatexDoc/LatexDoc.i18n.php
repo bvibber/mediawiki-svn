@@ -244,6 +244,7 @@ $messages['ru'] = array(
 $3',
 	'latexdoc_get_dvi'         => 'Получить DVI',
 	'latexdoc_get_pdf'         => 'Получить PDF',
+	'latexdoc-desc'            => 'Совместное редактирование документов LaTeX',
 );
 
 /** Slovak (Slovenčina)

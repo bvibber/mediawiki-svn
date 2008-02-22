@@ -463,54 +463,57 @@ $1',
 	'webstore_no_handler'              => 'Dit MIME-type kan niet getransformeerd worden',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'inplace_access_disabled' => 'Tilgangen til denne tjenesten har blitt slått av for alle klienter.',
-	'inplace_access_denied' => 'Denne tjenesten begrenses av klientens IP.',
-	'inplace_scaler_no_temp' => 'Ingen gyldig midlertidig mappe, sett $wgLocalTmpDirectory til en skrivbar mappe.',
+	'inplace_access_disabled'          => 'Tilgangen til denne tjenesten har blitt slått av for alle klienter.',
+	'inplace_access_denied'            => 'Denne tjenesten begrenses av klientens IP.',
+	'inplace_scaler_no_temp'           => 'Ingen gyldig midlertidig mappe, sett $wgLocalTmpDirectory til en skrivbar mappe.',
 	'inplace_scaler_not_enough_params' => 'Ikke not parametere.',
-	'inplace_scaler_invalid_image' => 'Ugyldig bilde, kunne ikke fastslå størrelse.',
-	'inplace_scaler_failed' => 'En feil oppsto under bildeskalering: $1',
-	'inplace_scaler_no_handler' => 'Ingen behandler for endring av denne MIME-typen',
-	'inplace_scaler_no_output' => 'Ingen endringsresultatfil ble produsert.',
-	'inplace_scaler_zero_size' => 'Endringen produserte en tom resultatfil.',
-	'webstore_access' => 'Tjenesten begrenses av klientens IP.',
-	'webstore_path_invalid' => 'Filnavnet var ugyldig.',
-	'webstore_dest_open' => 'Kunne ikke åpne målfil «$1».',
-	'webstore_dest_lock' => 'Kunne ikke låses på målfil «$1».',
-	'webstore_dest_mkdir' => 'Kunne ikke opprette målmappe «$1».',
-	'webstore_archive_lock' => 'Kunne ikke låses på arkivfil «$1».',
-	'webstore_archive_mkdir' => 'Kunne ikke opprette arkivmappe «$1».',
-	'webstore_src_open' => 'Kunne ikke åpne kildefil «$1».',
-	'webstore_src_close' => 'Feil under lukking av kildefil «$1».',
-	'webstore_src_delete' => 'Feil under sletting av kildefil «$1».',
-	'webstore_rename' => 'Feil under omdøping av «$1» til «$2».',
-	'webstore_lock_open' => 'Feil under åpning av låsfil «$1».',
-	'webstore_lock_close' => 'Feil under lukking av låsfil «$1».',
-	'webstore_dest_exists' => 'Feil, målfilen «$1» finnes.',
-	'webstore_temp_open' => 'Feil under åpning av midlertidig fil «$1».',
-	'webstore_temp_copy' => 'Feil under kopiering av midlertidig fil «$1» til målfil «$2».',
-	'webstore_temp_close' => 'Feil under lukking av midlertidig fil «$1».',
-	'webstore_temp_lock' => 'Feil under låsing av midlertidig fil «$1».',
-	'webstore_no_archive' => 'Målfilen finnes og ikke noe arkiv ble gitt.',
-	'webstore_no_file' => 'Ingen fil ble lastet opp.',
-	'webstore_move_uploaded' => 'Feil under flytting av opplastet fil «$1» til midlertidig sted «$2».',
-	'webstore_invalid_zone' => 'Ugyldig sone «$1».',
-	'webstore_no_deleted' => 'Ingen arkivmappe for slettede filer er oppgitt.',
-	'webstore_curl' => 'Feil fra cURL: $1',
-	'webstore_404' => 'Fil ikke funnet.',
-	'webstore_php_warning' => 'PHP-advarsel: $1',
-	'webstore_metadata_not_found' => 'Fil ikke funnet: $1',
-	'webstore_postfile_not_found' => 'Fil  som skal postes ikke funnet.',
-	'webstore_scaler_empty_response' => 'Bildeskalereren ga et tomt svar med en 200-responskode. Dette kan være på grunn av en fatal PHP-feil i  skalereren.',
-	'webstore_invalid_response' => 'Ugyldig svar fra tjener:
+	'inplace_scaler_invalid_image'     => 'Ugyldig bilde, kunne ikke fastslå størrelse.',
+	'inplace_scaler_failed'            => 'En feil oppsto under bildeskalering: $1',
+	'inplace_scaler_no_handler'        => 'Ingen behandler for endring av denne MIME-typen',
+	'inplace_scaler_no_output'         => 'Ingen endringsresultatfil ble produsert.',
+	'inplace_scaler_zero_size'         => 'Endringen produserte en tom resultatfil.',
+	'webstore_access'                  => 'Tjenesten begrenses av klientens IP.',
+	'webstore_path_invalid'            => 'Filnavnet var ugyldig.',
+	'webstore_dest_open'               => 'Kunne ikke åpne målfil «$1».',
+	'webstore_dest_lock'               => 'Kunne ikke låses på målfil «$1».',
+	'webstore_dest_mkdir'              => 'Kunne ikke opprette målmappe «$1».',
+	'webstore_archive_lock'            => 'Kunne ikke låses på arkivfil «$1».',
+	'webstore_archive_mkdir'           => 'Kunne ikke opprette arkivmappe «$1».',
+	'webstore_src_open'                => 'Kunne ikke åpne kildefil «$1».',
+	'webstore_src_close'               => 'Feil under lukking av kildefil «$1».',
+	'webstore_src_delete'              => 'Feil under sletting av kildefil «$1».',
+	'webstore_rename'                  => 'Feil under omdøping av «$1» til «$2».',
+	'webstore_lock_open'               => 'Feil under åpning av låsfil «$1».',
+	'webstore_lock_close'              => 'Feil under lukking av låsfil «$1».',
+	'webstore_dest_exists'             => 'Feil, målfilen «$1» finnes.',
+	'webstore_temp_open'               => 'Feil under åpning av midlertidig fil «$1».',
+	'webstore_temp_copy'               => 'Feil under kopiering av midlertidig fil «$1» til målfil «$2».',
+	'webstore_temp_close'              => 'Feil under lukking av midlertidig fil «$1».',
+	'webstore_temp_lock'               => 'Feil under låsing av midlertidig fil «$1».',
+	'webstore_no_archive'              => 'Målfilen finnes og ikke noe arkiv ble gitt.',
+	'webstore_no_file'                 => 'Ingen fil ble lastet opp.',
+	'webstore_move_uploaded'           => 'Feil under flytting av opplastet fil «$1» til midlertidig sted «$2».',
+	'webstore_invalid_zone'            => 'Ugyldig sone «$1».',
+	'webstore_no_deleted'              => 'Ingen arkivmappe for slettede filer er angitt.',
+	'webstore_curl'                    => 'Feil fra cURL: $1',
+	'webstore_404'                     => 'Fil ikke funnet.',
+	'webstore_php_warning'             => 'PHP-advarsel: $1',
+	'webstore_metadata_not_found'      => 'Fil ikke funnet: $1',
+	'webstore_postfile_not_found'      => 'Fil  som skal postes ikke funnet.',
+	'webstore_scaler_empty_response'   => 'Bildeskalereren ga et tomt svar med en 200-responskode. Dette kan være på grunn av en fatal PHP-feil i  skalereren.',
+	'webstore_invalid_response'        => 'Ugyldig svar fra tjener:
 
 $1',
-	'webstore_no_response' => 'Ingen respons fra tjener.',
-	'webstore_backend_error' => 'Feil fra lagringstjener:
+	'webstore_no_response'             => 'Ingen respons fra tjener.',
+	'webstore_backend_error'           => 'Feil fra lagringstjener:
 
 $1',
-	'webstore_php_error' => 'PHP-feil ble funnet:',
-	'webstore_no_handler' => 'Ingen behandler for endring av denne MIME-typen',
+	'webstore_php_error'               => 'PHP-feil ble funnet:',
+	'webstore_no_handler'              => 'Ingen behandler for endring av denne MIME-typen',
 );
 
 /** Occitan (Occitan)
@@ -702,6 +705,14 @@ $1',
  */
 $messages['sv'] = array(
 	'webstore_invalid_zone' => 'Ogiltig zon "$1".',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'webstore_404'         => 'ఫైలు కనబడలేదు.',
+	'webstore_php_warning' => 'PHP హెచ్చరిక: $1',
 );
 
 /** Turkish (Türkçe)

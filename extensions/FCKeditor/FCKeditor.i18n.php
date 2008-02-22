@@ -295,6 +295,7 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'textrichditor'                        => 'Визуальный редактор',
+	'textrichditor-desc'                   => 'Использование FCKeditor для редактирования вики-страниц',
 	'tog-riched_disable'                   => 'Отключить визуальный редактор',
 	'tog-riched_disable_ns_main'           => 'Отключить визуальный редактор в главном пространстве имён',
 	'tog-riched_disable_ns_talk'           => 'Отключить визуальный редактор в пространстве имён «{{ns:Talk}}»',

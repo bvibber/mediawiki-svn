@@ -22,6 +22,14 @@ $messages['ar'] = array(
 	'nstab-comments'    => 'تعليق',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'commentpages-desc' => 'Diskusní stránky hlavního jmenného prostoru',
+	'nstab-comments'    => 'Komentář',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -99,6 +107,14 @@ $messages['oc'] = array(
 $messages['pt'] = array(
 	'commentpages-desc' => 'Páginas de comentários para o espaço nominal principal',
 	'nstab-comments'    => 'Comentário',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'commentpages-desc' => 'Страницы комментариев для основного пространства имён',
+	'nstab-comments'    => 'Примечание',
 );
 
 /** Slovak (Slovenčina)

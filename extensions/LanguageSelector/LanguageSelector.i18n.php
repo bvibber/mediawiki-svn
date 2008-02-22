@@ -286,6 +286,7 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'languageselector'         => 'Язык',
+	'languageselector-desc'    => 'Выбор языка на каждой странице, также и для посетителей',
 	'languageselector-setlang' => 'установить',
 );
 

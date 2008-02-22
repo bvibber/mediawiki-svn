@@ -389,6 +389,13 @@ $messages['sv'] = array(
 	'talkhere-collapse'    => 'dölj redigerare',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'talkhere-talkpage' => 'చర్చా పేజీ',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

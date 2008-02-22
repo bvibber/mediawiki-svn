@@ -146,7 +146,8 @@ $messages['pt'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
-	'contributionseditcount' => 'Этот участник сделал $1 правок.',
+	'contributionseditcount'      => 'Этот участник сделал $1 правок.',
+	'contributionseditcount-desc' => 'Показывает количество правок на странице [[Special:Contributions]]',
 );
 
 $messages['sah'] = array(

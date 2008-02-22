@@ -75,6 +75,13 @@ $messages['pt'] = array(
 	'catfeed-desc' => 'Usa pedaços de "feeds" de alterações recentes. Cria uma versão dentro de uma página, especialmente útil para Wikinotícias.',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'catfeed-desc' => 'Использует некоторые части ленты свежих правок, создаёт её версию внутри страницы. Особенно полезно для Викиновостей.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

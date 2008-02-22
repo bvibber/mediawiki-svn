@@ -11,11 +11,25 @@ $messages['en'] = array(
 	'doublewiki-desc' => 'Displays a page and its translation from another wiki on two columns of the same page',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'doublewiki-desc' => "Amuestra una pachina y a suya traduzión de atra wiki en dos columnas d'a mesma pachina",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
 $messages['ar'] = array(
 	'doublewiki-desc' => 'يعرض صفحة وترجمتها من ويكي أخرى على عمودين من نفس الصفحة',
+);
+
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'doublewiki-desc' => "Amuesa una páxina y la so traducción d'otra wiki en dos columnes na mesma páxina",
 );
 
 /** Catalan (Català)

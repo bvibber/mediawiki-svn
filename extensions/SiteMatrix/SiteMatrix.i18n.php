@@ -32,9 +32,11 @@ $messages['af'] = array(
  */
 $messages['an'] = array(
 	'sitematrix'          => 'Lista de wikis de Wikimedia',
+	'sitematrix-desc'     => 'Amuestra una [[Special:SiteMatrix|lista de wikis de Wikimedia]]',
 	'sitematrix-language' => 'Luenga',
 	'sitematrix-project'  => "Nombre d'o procheuto, binclo entre procheutos y binclo interwiki",
 	'sitematrix-others'   => 'Atros procheutos de Wikimedia',
+	'sitematrix-total'    => "'''Total: $1'''",
 );
 
 $messages['ang'] = array(
@@ -60,6 +62,7 @@ $messages['ar'] = array(
  */
 $messages['ast'] = array(
 	'sitematrix'           => 'Llista de wikis de Wikimedia',
+	'sitematrix-desc'      => 'Amuesa una [[Special:SiteMatrix|llista de les wikis de Wikimedia]]',
 	'sitematrix-language'  => 'Llingua',
 	'sitematrix-project'   => 'Nomes del proyeutu, del enllaz interproyeutu y del enllaz interwiki',
 	'sitematrix-others'    => 'Otros proyeutos de Wikimedia',

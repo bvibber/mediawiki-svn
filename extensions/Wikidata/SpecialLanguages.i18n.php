@@ -1442,14 +1442,14 @@ $wdMessages['no'] = array(
 	'ow_meaningsoftitle'                    => 'Betydninger av «$1»',
 	'ow_meaningsofsubtitle'                 => '<em>Wikilenke:</em> [[$1]]',
 	'ow_Permission_denied'                  => '<h2>TILGANG NEKTET</h2>',
-	'ow_copy_no_action_specified'           => 'Vennligst oppgi en handling',
+	'ow_copy_no_action_specified'           => 'Vennligst angi en handling',
 	'ow_copy_help'                          => 'En dag vil vi kunne hjelpe deg.',
 	'ow_please_proved_dmid'                 => 'Det virker som om teksten din mangler en «?dmid=<ID>» (dmid=ID for definert betydning)<br />Vennligst kontakt en systemadministrator.',
 	'ow_please_proved_dc1'                  => 'Det virker som om teksten din mangler en «?dc1=<noe>» (dc1=datasettkontekst 1, datasett det skal kopieres FRA)<br />Vennligst kontakt en systemadministrator.',
 	'ow_please_proved_dc2'                  => 'Det virker som om teksten din mangler en «?dc2=<noe>» (dc2=datasettkontekst 2, datasett å kopiere TIL)<br />Vennligst kontakt en systemadministrator.',
 	'ow_copy_successful'                    => '<h2>Kopiering fullført</h2>Dataene dine er kopiert. Ikke glem å dobbeltsjekke for å være sikker!',
 	'ow_copy_unsuccessful'                  => '<h3>Kopiering ikke fullført</h3> Ingen kopiering har funnet sted.',
-	'ow_no_action_specified'                => '<h3>Ingen handling ble oppgitt</h3> Kanskje du kom direkte til denne siden? Vanligvis trenger du ikke å være her.',
+	'ow_no_action_specified'                => '<h3>Ingen handling ble angitt</h3> Kanskje du kom direkte til denne siden? Vanligvis trenger du ikke å være her.',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)

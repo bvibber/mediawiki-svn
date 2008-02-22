@@ -31,8 +31,17 @@ $messages['en'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'usernameblacklist-desc'          => "Usa una [[MediaWiki:Usernameblacklist|lista negra de nombres d'usuario]] ta restrinchir a creyazión de cuentas d'usuario que consonen con una u más espresions regulars",
 	'blacklistedusername'             => "Nombre d'usuario en a lista negra",
 	'blacklistedusernametext'         => "O nombre d'usuario que ha trigato concuerda con belún d'os nombre en a [[MediaWiki:Usernameblacklist|lista negra]]. Por fabor, eslicha un atro nombre.",
+	'usernameblacklist'               => "<pre>
+# As linias d'ista lista se ferán serbir como espresions regulars (regexp)
+# ta pribar o rechistro de bels nombres d'usuario.
+# Cada ítem ha d'estar aintro d'una lista no ordenata. Por exemplo:
+#
+# * Falso
+# * [Pp]reba
+</pre>",
 	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|A linia|As linias}} siguients d'a lista negra de nombres d'usuarios no {{PLURAL:$1|ye|son}} correutas; por fabor, corricha-{{PLURAL:$1|lo|los}} antes d'alzar-la:",
 );
 

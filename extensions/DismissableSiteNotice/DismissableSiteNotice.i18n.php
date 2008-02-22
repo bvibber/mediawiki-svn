@@ -21,6 +21,14 @@ $messages['am'] = array(
 	'sitenotice_close' => '<-- ይህን አውጣ',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'sitenotice_close' => 'amagar',
+	'sitenotice-desc'  => 'Premitir que os usuario zarren o "sitenotice"',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Mido

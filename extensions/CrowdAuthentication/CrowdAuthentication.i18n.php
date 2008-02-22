@@ -50,6 +50,13 @@ $messages['nl'] = array(
 	'crowdauthentication-desc' => 'Authenticatieplugin voor Atlassian Crowd',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'crowdauthentication-desc' => 'Модуль аутентификации для Atlassian Crowd',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

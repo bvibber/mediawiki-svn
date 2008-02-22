@@ -127,6 +127,7 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'eval'        => 'Вычисление',
+	'eval-desc'   => 'Добавляет [[Special:Eval|интерфейс]] для функции <code>eval()</code>',
 	'eval_submit' => 'Вычислить',
 	'eval_escape' => 'Экранировать вывод',
 	'eval_out'    => 'Вывод',

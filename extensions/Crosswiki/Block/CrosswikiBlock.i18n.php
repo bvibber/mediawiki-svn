@@ -340,6 +340,38 @@ Voltar para:
 * [[$4]]",
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'crosswikiblock-desc'           => 'Позволяет блокировать участников на других вики с помощью [[Special:Crosswikiblock|служебной страницы]]',
+	'crosswikiblock'                => 'Блокировка участников на других вики',
+	'crosswikiblock-header'         => 'Эта страница позволяет блокировать участников на других вики.
+Пожалуйста, убедитесь, что вам разрешено производить подобные действия на этой вики и что вы следуете всем правилам.',
+	'crosswikiblock-target'         => 'IP-адрес или имя участника и целевая вики:',
+	'crosswikiblock-expiry'         => 'Истекает:',
+	'crosswikiblock-reason'         => 'Причина:',
+	'crosswikiblock-submit'         => 'Заблокировать этого участника',
+	'crosswikiblock-anononly'       => 'Заблокировать только анонимных участников',
+	'crosswikiblock-nocreate'       => 'Запретить создание учётных записей',
+	'crosswikiblock-autoblock'      => 'Автоматически заблокировать последний использованный этим участником IP-адрес и любые последующие IP-адреса с которых производятся попытки редактирования',
+	'crosswikiblock-noemail'        => 'Запретить участнику отправку электронной почты',
+	'crosswikiblock-nousername'     => 'Не введено имя участника',
+	'crosswikiblock-local'          => 'Локальные блокировки не поддерживаются через этот интерфейс. Используйте [[Special:Blockip]].',
+	'crosswikiblock-dbnotfound'     => 'База данных $1 не существует',
+	'crosswikiblock-noname'         => '«$1» не является допустимым именем участника.',
+	'crosswikiblock-nouser'         => 'Участник «$1» не найден.',
+	'crosswikiblock-noexpiry'       => 'Ошибочный срок окончания: $1.',
+	'crosswikiblock-noreason'       => 'Не указана причина.',
+	'crosswikiblock-notoken'        => 'Ошибочный маркер правки.',
+	'crosswikiblock-alreadyblocked' => 'Участник $3 уже заблокирован.',
+	'crosswikiblock-success'        => "Участник '''$3''' успешно заблокирован.
+
+Вернуться к:
+* [[Special:CrosswikiBlock|форма блокировки]]
+* [[$4]]",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -398,6 +430,8 @@ Tillbaka till:
  * @author Veeven
  */
 $messages['te'] = array(
-	'crosswikiblock-reason' => 'కారణం:',
+	'crosswikiblock-reason'   => 'కారణం:',
+	'crosswikiblock-nocreate' => 'ఖాతా సృష్టింపుని నివారించు',
+	'crosswikiblock-noreason' => 'కారణం తెలుపలేదు.',
 );
 

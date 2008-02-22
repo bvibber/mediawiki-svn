@@ -432,9 +432,9 @@ $messages['no'] = array(
 	'regexblock-form-submit'          => 'Blokker&nbsp;denne&nbsp;brukeren',
 	'regexblock-block-log'            => "Brukeren '''$1''' har blitt blokkert.",
 	'regexblock-block-success'        => 'Blokkering lyktes',
-	'regexblock-form-submit-empty'    => 'Oppgi et brukernavn eller en IP-adresse å blokkere.',
+	'regexblock-form-submit-empty'    => 'Angi et brukernavn eller en IP-adresse å blokkere.',
 	'regexblock-form-submit-regex'    => 'Ugyldig regulært uttrykk',
-	'regexblock-form-submit-expiry'   => 'Oppgi en utløpstid.',
+	'regexblock-form-submit-expiry'   => 'Angi en utløpstid.',
 	'regexblock-already-blocked'      => '$1 er blokkert fra før.',
 	'regexblock-stats-title'          => 'Statistikk for blokkering med regulære uttrykk',
 	'regexblock-stats-username'       => 'For $1',
@@ -600,18 +600,20 @@ $messages['sv'] = array(
 	'regexblock-form-username' => 'IP adress eller användarnamn:',
 	'regexblock-form-reason'   => 'Anledning:',
 	'regexblock-view-go'       => 'Gå',
+	'regexblock-view-time'     => 'på $1',
 );
 
 /** Telugu (తెలుగు)
  * @author Veeven
  */
 $messages['te'] = array(
-	'regexblock-form-username'  => 'IP చిరునామా లేదా వాడుకరి పేరు:',
-	'regexblock-form-reason'    => 'కారణం:',
-	'regexblock-stats-username' => '$1 కొరకు',
-	'regexblock-view-all'       => 'అన్నీ',
-	'regexblock-view-go'        => 'వెళ్ళు',
-	'regexblock-view-reason'    => 'కారణం: $1',
+	'regexblock-form-username'       => 'IP చిరునామా లేదా వాడుకరి పేరు:',
+	'regexblock-form-reason'         => 'కారణం:',
+	'regexblock-stats-username'      => '$1 కొరకు',
+	'regexblock-view-all'            => 'అన్నీ',
+	'regexblock-view-go'             => 'వెళ్ళు',
+	'regexblock-view-reason'         => 'కారణం: $1',
+	'regexblock-view-reason-default' => 'సాధారణ కారణం',
 );
 
 /** Volapük (Volapük)

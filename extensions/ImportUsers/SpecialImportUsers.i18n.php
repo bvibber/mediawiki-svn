@@ -293,6 +293,32 @@ $messages['pt'] = array(
 	'importusers-realname'                => 'nome real',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'importusers'                         => 'Импортирование участников',
+	'importusers-desc'                    => 'Импорт большого количества участников из CSV-файла; кодировка: UTF-8',
+	'importusers-uploadfile'              => 'Загрузить файл',
+	'importusers-form-caption'            => 'Введите CVS-файл (UTF-8)',
+	'importusers-form-file'               => 'Формат файла участников (csv):',
+	'importusers-form-replace-present'    => 'Заменять существующих участников',
+	'importusers-form-button'             => 'Импортировать',
+	'importusers-user-added'              => 'Был добавлен участник <b>%s</b>.',
+	'importusers-user-present-update'     => 'Участник <b>%s</b> уже существует. Обновлён.',
+	'importusers-user-present-not-update' => 'Участник <b>%s</b> уже существует. Не обновлён.',
+	'importusers-user-invalid-format'     => 'Данные участника в строке #%s имеют неправильный формат или пусты. Пропущен.',
+	'importusers-log'                     => 'Журнал импорта',
+	'importusers-log-summary'             => 'Итого',
+	'importusers-log-summary-all'         => 'Всего',
+	'importusers-log-summary-added'       => 'Добавлено',
+	'importusers-log-summary-updated'     => 'Обновлено',
+	'importusers-login-name'              => 'Имя учётной записи',
+	'importusers-password'                => 'пароль',
+	'importusers-email'                   => 'эл. почта',
+	'importusers-realname'                => 'настоящее имя',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

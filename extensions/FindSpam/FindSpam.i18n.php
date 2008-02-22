@@ -198,6 +198,7 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'findspam'             => 'Поиск спама',
+	'findspam-desc'        => 'Добавляет [[Special:FindSpam|служебную страницу]], позволяющую найти недавно добавленный спам',
 	'findspam-ip'          => 'IP-адрес:',
 	'findspam-ok'          => 'OK',
 	'findspam-notextfound' => 'Не найдено вклада',

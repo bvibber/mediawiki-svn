@@ -414,8 +414,10 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'passwordreset-username' => 'వాడుకరిపేరు',
-	'passwordreset-newpass'  => 'కొత్త సంకేతపదం',
+	'passwordreset-invalidusername' => 'తప్పుడు వాడుకరిపేరు',
+	'passwordreset-nopassmatch'     => 'సంకేతపదాలు సరిపోలలేదు',
+	'passwordreset-username'        => 'వాడుకరిపేరు',
+	'passwordreset-newpass'         => 'కొత్త సంకేతపదం',
 );
 
 /** Volapük (Volapük)

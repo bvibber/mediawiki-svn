@@ -198,6 +198,7 @@ $messages['pt'] = array(
 $messages['ru'] = array(
 	'edituser-desc'     => 'Позволяет привилегированным участникам править настройки других участников',
 	'edituser'          => 'Изменить участника',
+	'edituser-logout'   => 'Завершить сеанс участника',
 	'edituser-username' => 'Имя',
 	'edituser-dosearch' => 'Найти',
 );

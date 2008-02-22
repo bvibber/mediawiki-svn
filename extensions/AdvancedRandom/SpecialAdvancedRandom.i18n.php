@@ -165,7 +165,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'advancedrandom'      => 'Avansert tilfeldig side',
-	'advancedrandom-desc' => 'Finn en tilfeldig side der det på selve siden eller diskusjonssiden blir lenket til en oppgitt side, kan brukes for eksempel med [[Special:AdvancedRandom/Mal:Utmerket artikkel/Diskusjon]] for å få en tilfeldig utmerket artikkel, eller som [[Special:AdvancedRandom/Mal:GFDL/Bilde]] for å få en tilfeldig GFDL-fil.',
+	'advancedrandom-desc' => 'Finn en tilfeldig side der det på selve siden eller diskusjonssiden blir lenket til en angitt side, kan brukes for eksempel med [[Special:AdvancedRandom/Mal:Utmerket artikkel/Diskusjon]] for å få en tilfeldig utmerket artikkel, eller som [[Special:AdvancedRandom/Mal:GFDL/Bilde]] for å få en tilfeldig GFDL-fil.',
 );
 
 /** Occitan (Occitan)

@@ -29,6 +29,14 @@ $messages['am'] = array(
 	'createarticle' => 'አዲስ አርዕስት ለመፍጠር',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'searchfulltext' => 'Mirar por testo completo',
+	'createarticle'  => 'Creyar pachina',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -45,6 +53,7 @@ $messages['ar'] = array(
  * @author Esbardu
  */
 $messages['ast'] = array(
+	'inputbox-desc'           => 'Permite la inclusión de formularios HTML predefiníos',
 	'inputbox-error-no-type'  => "Nun especificasti la triba de caxellu d'entrada pa crear.",
 	'inputbox-error-bad-type' => "Triba de caxa d'entrada $1 non reconocida. Por favor conseña la opción ''create'', ''comment'', ''search'' o ''search2''.",
 	'tryexact'                => 'Intentar concueyar exautamente',
@@ -572,7 +581,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'inputbox-desc'           => 'Tillater inkludering av forhåndsdefinerte HTML-skjemaer',
-	'inputbox-error-no-type'  => 'Du har ikke oppgitt hva slags inputboks du vil lage.',
+	'inputbox-error-no-type'  => 'Du har ikke angitt hva slags inputboks du vil lage.',
 	'inputbox-error-bad-type' => 'Inputboks av typen «$1» gjenkjennes ikke. Vennligst velg «create», «comment», «search» eller «search2».',
 	'tryexact'                => 'Prøv nøyaktig treff',
 	'searchfulltext'          => 'Søk full tekst',

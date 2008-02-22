@@ -1061,7 +1061,7 @@ Revisjoner som fjernes vil ikke være tilgjengelige for noen via nettsiden, men 
 	'hiderevision-submit'         => 'Skjul denne informasjonen permanent',
 	'hiderevision-tab'            => 'Skjul revisjon',
 	'hiderevision-norevisions'    => 'Ingen revisjoner merket for sletting.',
-	'hiderevision-noreason'       => 'Du må oppgi en grunn for denne slettingen.',
+	'hiderevision-noreason'       => 'Du må angi en grunn for denne slettingen.',
 	'hiderevision-status'         => 'Revisjon $1: $2',
 	'hiderevision-success'        => 'Arkivert og slettet.',
 	'hiderevision-error-missing'  => 'Ikke funnet i databasen.',

@@ -175,3 +175,10 @@ $messages['sv'] = array(
 	'filelist-show-gallery' => 'Visa galleri',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'filelist' => 'ఫైళ్ళ జాబితా',
+);
+

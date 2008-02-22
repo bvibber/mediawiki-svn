@@ -371,6 +371,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'player-file'      => 'ఫైలు పేరు',
 	'player-play'      => 'ఆడించు',
 	'player-goto-page' => 'పేజీ',
 	'player-goto-file' => 'ఫైలు',

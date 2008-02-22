@@ -258,9 +258,11 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'importfreeimages'                       => 'Импортирование свободных изображений',
+	'importfreeimages-desc'                  => 'Позволяет [[Special:ImportFreeImages|импортировать должным образом лицензированные фотографии]] с [http://www.flickr.com flickr]',
 	'importfreeimages_description'           => 'С помощью этой страницы вы можете искать должным образом лицензированные фотографии с Flickr и импортировать их в эту вики.',
 	'importfreeimages_noapikey'              => 'Вы не настроили ваш Flickr API-ключ. Чтобы это сделать, пожалуйста, получите API-ключ [http://www.flickr.com/services/api/misc.api_keys.html здесь] и установите wgFlickrAPIKey в ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'         => 'Не найдено фотографий по условию «$1», попробуйте ещё раз.',
+	'importfreeimages_invalidurl'            => 'Адрес «$1» не является допустимым именем изображения с Flickr.',
 	'importfreeimages_owner'                 => 'Автор',
 	'importfreeimages_importthis'            => 'Импортировать это',
 	'importfreeimages_next'                  => 'Следующие $1',

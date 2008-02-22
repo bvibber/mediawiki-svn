@@ -37,9 +37,17 @@ $messages['am'] = array(
 	'newuserlog-create2-entry' => 'ለ$1 አባልነት ተፈጥሯል',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ * @author SPQRobin
+ */
 $messages['an'] = array(
 	'newuserlogpage'           => 'Rechistro de nuebos usuarios',
+	'newuserlogpagetext'       => "Isto ye un rechistro de creyazión d'usuarios",
+	'newuserlog-desc'          => 'Adibe un [[Special:Log/newusers|rechistro de creyazión de cuentas]] ta [[Special:Log]]',
+	'newuserlog-byemail'       => 'Palabra de paso nimbiata por correu electronico',
 	'newuserlog-create-entry'  => 'Nuebo usuario',
+	'newuserlog-create2-entry' => "S'ha creyato una cuenta ta $1",
 );
 
 /** Arabic (العربية)

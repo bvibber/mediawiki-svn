@@ -77,6 +77,14 @@ $messages['pt'] = array(
 	'forcepreview-desc' => 'Força previsão para utilizadores sem privilégios',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'forcepreview'      => 'Сохранить страницу (сначала используйте предпросмотр)',
+	'forcepreview-desc' => 'Обязательно использование предпросмотра для непривилегированных участников',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -478,6 +478,7 @@ $messages['sv'] = array(
 	'createsigndoc-phone'             => 'Telefonnummer:',
 	'createsigndoc-bday'              => 'Födelsedatum:',
 	'createsigndoc-minage'            => 'Minimiålder:',
+	'createsigndoc-introtext'         => 'Introduktion:',
 	'createsigndoc-hidden'            => 'dolt',
 	'createsigndoc-optional'          => 'frivilligt',
 	'createsigndoc-create'            => 'Skapa',
@@ -493,7 +494,9 @@ $messages['te'] = array(
 	'createsigndoc-email'      => 'ఈ-మెయిల్ చిరునామా:',
 	'createsigndoc-extaddress' => 'నగరం, రాష్ట్రం, దేశం:',
 	'createsigndoc-bday'       => 'పుట్టినరోజు:',
+	'createsigndoc-minage'     => 'కనిష్ట వయసు:',
 	'createsigndoc-introtext'  => 'పరిచయం:',
+	'createsigndoc-optional'   => 'ఐచ్చికం',
 );
 
 /** Volapük (Volapük)

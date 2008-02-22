@@ -311,6 +311,7 @@ $messages['sma'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
+	'spamregex-log-2'       => ' på $1',
 	'spamregex-text'        => '(Text)',
 	'spamregex-summary-log' => '(Sammanfattning)',
 );

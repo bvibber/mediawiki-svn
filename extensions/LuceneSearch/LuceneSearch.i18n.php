@@ -111,6 +111,7 @@ $1
  * @author SPQRobin
  */
 $messages['ast'] = array(
+	'lucene-desc'           => 'Interfaz pal motor de busca Apache Lucene',
 	'searchnumber'          => '<strong>Resultaos $1-$2 de $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Ant</span>",
 	'searchnext'            => "<span style='font-size: small'>Sig</span> &#x00BB;",

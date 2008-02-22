@@ -16,6 +16,17 @@ $messages['en'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: You need to include at least one category, or specify a namespace!',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'intersection-desc'          => "Preduz una lista d'os elementos más rezients que bi ha en una categoría u a unión de barios categorías",
+	'intersection_toomanycats'   => 'DynamicPageList: Masiadas categorías!',
+	'intersection_toofewcats'    => 'DynamicPageList: numero insufizient de categorías!',
+	'intersection_noresults'     => 'DynamicPageList: No bi ha garra resultau!',
+	'intersection_noincludecats' => "DynamicPageList: Ha d'encluyir á lo menos una categoría u endicar un espazio de nombres!",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

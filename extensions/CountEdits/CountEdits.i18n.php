@@ -480,16 +480,19 @@ $messages['ro'] = array(
 	'countedits-nocontribs' => 'Nu există contribuitori la acest wiki.',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
 $messages['ru'] = array(
-	'countedits' => 'Подсчитать правки',
-	'countedits-warning' => "'''Внимание:''' не судите о книге по её обложке. Не судите об участнике по количеству его правок.",
-	'countedits-username' => 'Участник:',
-	'countedits-ok' => 'OK',
-	'countedits-nosuchuser' => 'Не существует участника с именем $1.',
+	'countedits'              => 'Подсчитать правки',
+	'countedits-desc'         => '[[Special:CountEdits|Служебная страница]], подсчитывающая количество правок участников и выводящая список из 10 участников, имеющих наибольший вклад',
+	'countedits-warning'      => "'''Внимание:''' не судите о книге по её обложке. Не судите об участнике по количеству его правок.",
+	'countedits-username'     => 'Участник:',
+	'countedits-nosuchuser'   => 'Не существует участника с именем $1.',
 	'countedits-resultheader' => 'Данные для $1',
-	'countedits-resulttext' => '$1 сделал $2 правок',
-	'countedits-mostactive' => 'Наиболее активные участники',
-	'countedits-nocontribs' => 'Нет правок в этой вики.',
+	'countedits-resulttext'   => '$1 сделал $2 правок',
+	'countedits-mostactive'   => 'Наиболее активные участники',
+	'countedits-nocontribs'   => 'Нет правок в этой вики.',
 );
 
 
@@ -607,6 +610,7 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'countedits-username'     => 'వాడుకరి పేరు:',
 	'countedits-ok'           => 'సరే',
+	'countedits-nosuchuser'   => '$1 అనే పేరుతో వాడుకరి ఎవరూ లేరు.',
 	'countedits-resultheader' => '$1కి ఫలితాలు',
 );
 

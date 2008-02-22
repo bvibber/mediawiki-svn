@@ -552,18 +552,21 @@ $messages['ro'] = array(
 	'contributors-nosuchpage'  => 'Articolul $1 nu există.',
 );
 
-/* Russian */
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
 $messages['ru'] = array(
-	'contributors' => 'Авторы',
-	'contributors-toolbox' => 'Основные авторы',
-	'contributors-legend' => 'Формирует список основных авторов статьи',
-	'contributors-target' => 'Название:',
-	'contributors-submit' => 'Показать',
-	'contributors-subtitle' => 'Основные авторы $1',
+	'contributors'             => 'Авторы',
+	'contributors-desc'        => 'Определяет основных участников работы над страницей',
+	'contributors-toolbox'     => 'Основные авторы',
+	'contributors-legend'      => 'Формирует список основных авторов статьи',
+	'contributors-target'      => 'Название:',
+	'contributors-submit'      => 'Показать',
+	'contributors-subtitle'    => 'Основные авторы $1',
 	'contributors-others-long' => 'Кроме указанных, у данной страницы есть ещё $1 авторов.',
-	'contributors-others' => 'и ещё $1 других',
-	'contributors-badtitle' => 'Ошибочное название.',
-	'contributors-nosuchpage' => 'Статья «$1» не существует.',
+	'contributors-others'      => 'и ещё $1 других',
+	'contributors-badtitle'    => 'Ошибочное название.',
+	'contributors-nosuchpage'  => 'Статья «$1» не существует.',
 );
 
 /** Slovak (Slovenčina)
@@ -678,8 +681,27 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'contributors-target' => 'శీర్షిక:',
-	'contributors-submit' => 'చూపించు',
+	'contributors-target'     => 'శీర్షిక:',
+	'contributors-submit'     => 'చూపించు',
+	'contributors-badtitle'   => 'తప్పుడు శీర్షిక.',
+	'contributors-nosuchpage' => '$1 అనే పేజీ లేనే లేదు.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'contributors'             => 'Những người đóng góp',
+	'contributors-desc'        => 'Liệt kê những người đóng góp chính của một trang',
+	'contributors-toolbox'     => 'Những người đóng góp chính',
+	'contributors-legend'      => 'Liệt kê những người đóng góp chính của một trang',
+	'contributors-target'      => 'Tên trang:',
+	'contributors-submit'      => 'Liệt kê',
+	'contributors-subtitle'    => 'Những người đóng góp chính của $1',
+	'contributors-others-long' => 'Cũng có $1 người thêm đóng góp vào trang này.',
+	'contributors-others'      => 'vào $1 người khác',
+	'contributors-badtitle'    => 'Tên trang không hợp lệ.',
+	'contributors-nosuchpage'  => 'Trang $1 không tồn tại.',
 );
 
 /** Volapük (Volapük)

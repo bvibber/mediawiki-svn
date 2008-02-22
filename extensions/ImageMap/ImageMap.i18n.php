@@ -659,9 +659,10 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Max sonnelid
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'imagemap_desc'               => 'Tillåt klient-sid klickbara bild kartor använande <tt><nowiki><imagemap></nowiki></tt> tillägget',
+	'imagemap_desc'               => 'Lägger till taggen <tt><nowiki><imagemap></nowiki></tt> för klickbara bilder',
 	'imagemap_no_image'           => '&lt;imagemap&gt;: en bild måste anges på första raden',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: bilden är ogiltig eller existerar inte',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: ingen giltig länk fanns i slutet av rad $1',

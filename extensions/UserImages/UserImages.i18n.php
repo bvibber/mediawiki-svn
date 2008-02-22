@@ -127,10 +127,12 @@ $messages['nl'] = array(
 	'userimages-noimages' => '$1 heeft geen afbeeldingen toegevoegd.',
 );
 
-/* Norwegian (Jon Harald Søby) */
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'userimages-caption' => 'Bilder lastet opp av $1',
-	'userimages-noname' => 'Ugyldig brukernavn, eller intet oppgitt brukernavn.',
+	'userimages-caption'  => 'Bilder lastet opp av $1',
+	'userimages-noname'   => 'Ugyldig brukernavn, eller intet angitt brukernavn.',
 	'userimages-noimages' => '$1 har ingen bildeopplastinger.',
 );
 

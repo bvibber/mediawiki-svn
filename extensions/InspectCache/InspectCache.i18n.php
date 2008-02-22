@@ -229,6 +229,7 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'inspectcache'         => 'Просмотр кэша',
+	'inspectcache-desc'    => 'Простой инструмент отладки для просмотра содержимого общего кеша',
 	'inspectcache-ok'      => 'OK',
 	'inspectcache-general' => 'Общий кэш',
 	'inspectcache-parser'  => 'Кэш парсера',

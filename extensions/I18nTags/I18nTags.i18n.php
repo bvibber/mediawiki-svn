@@ -93,3 +93,10 @@ $messages['sk'] = array(
 	'i18ntags-desc' => 'Prístup k i18n funkciám pre formátovanie čísel, gramatiku a plurál v ktoromkoľvek z dostupných jazykov',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'i18ntags-desc' => 'Truy cập các hàm quốc tế hóa về định dạng số, ngữ pháp, và biến cách trong các ngôn ngữ có sẵn',
+);
+

@@ -553,7 +553,10 @@ $messages['sk'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'review_comment' => 'Kommentar',
+	'review_sidebar_title'     => 'Granska',
+	'review_page_link'         => 'granska statistik',
+	'review_user_details_link' => '(detaljer)',
+	'review_comment'           => 'Kommentar',
 );
 
 /** Telugu (తెలుగు)

@@ -172,8 +172,9 @@ $messages['pt'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
-	'categorystepper-start' => '(начало категории)',
+	'categorystepper-desc'  => 'Показывает навигационную панель на страницах, относящихся к множеству категорий.',
 	'categorystepper-end'   => '(конец категории)',
+	'categorystepper-start' => '(начало категории)',
 );
 
 /** Slovak (Slovenčina)
