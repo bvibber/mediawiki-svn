@@ -18,7 +18,8 @@ $wgExtensionFunctions[] = 'wfRegexBlockStatsPageSetup';
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Regex Block Stats',
 	'author' => 'Bartek',
-	'description' => 'Displays block statistics for the regexblock extension'
+	'description' => 'Displays block statistics for the regexblock extension',
+	'descriptionmsg' => 'regexblock-stat-desc',
 );
 
 /* special page setup function */
