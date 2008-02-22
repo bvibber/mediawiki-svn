@@ -71,145 +71,7 @@ define('CC_OFFSET', -30);
 
 $optionsWithArgs = array ();
 
-//valid attributes dbkey=>semantic name
-$valid_attributes = array (
-	'name_ocr' => array (
-		'Name OCR',
-		'The Name as it appears in on screen video text',
-		'text'
-	),
-	'maplight_id' => array(
-		'MAPLight Person ID',
-		'MAPLight person id for linking into maplight data',
-		'text'
-	),
-	'osid' => array (
-		'Open Secrets ID',
-		'Congress Person\'s <a href="http://www.opensecrets.org/">Open Secrets</a> Id',
-		'text'
-	),
-	'gov_track_id' => array (
-		'GovTrack Person ID',
-		'Congress Person\' <a href="www.govtrack.us">govtrack.us</a> person ID',
-		'text'
-	),	
-	'bioguide' => array (
-		'Bio Guide ID',
-		'Congressional Biographical Directory id',
-		'text'
-	),
-	'title' => array (
-		'Title',
-		'Title (Sen. or Rep.)',
-		'page'	
-	),
-	'state' => array (
-		'State',
-		'State',
-		'page'
-	), //do look up
-	'party' => array (
-		'Party',
-		'The Cogress Persons Political party',
-		'page'	
-	),
-	'first' => array(
-		'First Name',
-		'(first name)',
-		'text'
-	),
-	'middle' => array(
-		'Middle Name',
-		'(middle name)',
-		'text'
-	),
-	'district'=>array(
-		'District',
-		'The district # page ie: 3rd District',
-	),
-	'last'	=> array(
-		'Last Name',
-		'(last name)',
-		'text'
-	)
-);
-//state look up:
-$states_ary = array (
-	'AL' => 'Alabama',
-	'AK' => 'Alaska',
-	'AS' => 'American Samoa',
-	'AZ' => 'Arizona',
-	'AR' => 'Arkansas',
-	'AE' => 'Armed Forces - Europe',
-	'AP' => 'Armed Forces - Pacific',
-	'AA' => 'Armed Forces - USA/Canada',
-	'CA' => 'California',
-	'CO' => 'Colorado',
-	'CT' => 'Connecticut',
-	'DE' => 'Delaware',
-	'DC' => 'District of Columbia',
-	'FM' => 'Federated States of Micronesia',
-	'FL' => 'Florida',
-	'GA' => 'Georgia',
-	'GU' => 'Guam',
-	'HI' => 'Hawaii',
-	'ID' => 'Idaho',
-	'IL' => 'Illinois',
-	'IN' => 'Indiana',
-	'IA' => 'Iowa',
-	'KS' => 'Kansas',
-	'KY' => 'Kentucky',
-	'LA' => 'Louisiana',
-	'ME' => 'Maine',
-	'MH' => 'Marshall Islands',
-	'MD' => 'Maryland',
-	'MA' => 'Massachusetts',
-	'MI' => 'Michigan',
-	'MN' => 'Minnesota',
-	'MS' => 'Mississippi',
-	'MO' => 'Missouri',
-	'MT' => 'Montana',
-	'NE' => 'Nebraska',
-	'NV' => 'Nevada',
-	'NH' => 'New Hampshire',
-	'NJ' => 'New Jersey',
-	'NM' => 'New Mexico',
-	'NY' => 'New York',
-	'NC' => 'North Carolina',
-	'ND' => 'North Dakota',
-	'OH' => 'Ohio',
-	'OK' => 'Oklahoma',
-	'OR' => 'Oregon',
-	'PA' => 'Pennsylvania',
-	'PR' => 'Puerto Rico',
-	'RI' => 'Rhode Island',
-	'SC' => 'South Carolina',
-	'SD' => 'South Dakota',
-	'TN' => 'Tennessee',
-	'TX' => 'Texas',
-	'UT' => 'Utah',
-	'VT' => 'Vermont',
-	'VI' => 'Virgin Islands',
-	'VA' => 'Virginia',
-	'WA' => 'Washington',
-	'WV' => 'West Virginia',
-	'WI' => 'Wisconsin',
-	'WY' => 'Wyoming',
-	'AB' => 'Alberta',
-	'BC' => 'British Columbia',
-	'MB' => 'Manitoba',
-	'NB' => 'New Brunswick',
-	'NF' => 'Newfoundland',
-	'MP' => 'Northern Mariana Island ',
-	'NT' => 'Northwest Territories',
-	'NS' => 'Nova Scotia',
-	'ON' => 'Ontario',
-	'PW' => 'Palau Island',
-	'PE' => 'Prince Edward Island',
-	'QC' => 'Quebec',
-	'SK' => 'Saskatchewan',
-	'YT' => 'Yukon Territory'
-);
+
 
 if (count($args) == 0 || isset ($options['help'])) {
 	print<<<EOT
@@ -250,6 +112,7 @@ switch ($args[0]) {
 	break;
 	case 'update_templates' :
 		$force = (isset($options['force']))?true:false;
+		include_once('metavid_gov_templates.php');
 		upTemplates($force);
 	break;
 	//by default treat the argument as a stream name: 

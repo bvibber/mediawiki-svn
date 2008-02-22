@@ -131,7 +131,7 @@ function mvSetupExtension(){
 	*  $out is the modified OutputPage.
 	*/
 	function mvfAddHTMLHeader($head_set='') {
-		global $mvgHeadersInPlace; // record whether headers were created already
+		global $mvgHeadersInPlace; // record whether headers were created already (hopefully you don't call addHeader twice)
 		global $mvgArticleHeadersInPlace; // record whether article name specific headers are already there
 		global $mvgScriptPath, $wgJsMimeType, $wgOut;		
 			

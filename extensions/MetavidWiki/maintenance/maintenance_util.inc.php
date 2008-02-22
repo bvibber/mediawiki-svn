@@ -26,7 +26,7 @@ if ( $wgUser->isAnon() ) {
 	$wgUser->addToDatabase();
 }
 
- //returns true if person found in category person: 
+ //returns true if person found in the wiki 
  $mv_valid_people_cache = array();
 function mv_is_valid_person($person_key){
 	global $mv_valid_people_cache;
@@ -34,14 +34,29 @@ function mv_is_valid_person($person_key){
 		return $mv_valid_people_cache[$person_key];
 	}
 	$dbr = wfGetDB(DB_SLAVE);
-	$result = $dbr->select( 'categorylinks', 'cl_sortkey', 
+	/*$result = $dbr->select( 'categorylinks', 'cl_sortkey', 
 			array('cl_to'=>'Person', 
 			'cl_sortkey'=>str_replace('_',' ',$person_key)),
 			__METHOD__,
-			array('LIMIT'=>'1'));
+			array('LIMIT'=>'1'));*/
+	list($fname, $lname) = explode('_', $person_key);
+	$firstok=$lastok=false;
+	$result = $dbr->query('SELECT `subject_title` FROM `smw_attributes` WHERE `attribute_title` = \'First_Name\'AND `value_xsd`=\''.$fname.'\'');	
 	if($dbr->numRows($result)!= 0){
+		$firstok=true;
+		$frow=$dbr->fetchObject($result);
+		$result = $dbr->query("SELECT `subject_title` FROM `smw_attributes`
+ WHERE `attribute_title` = 'Last_Name'
+ AND `subject_title`='$frow->subject_title'
+ AND `value_xsd`='{$lname}'");
+		if($dbr->numRows($result)!= 0)$lastok=true;
+	}
+				
+	if($firstok && $lastok){
+		print $person_key . " valid\n";
 		$mv_valid_people_cache[$person_key]=true;
 	}else{
+		print $person_key . " not valid\n";
 		$mv_valid_people_cache[$person_key]=false;
 	}	
 	return $mv_valid_people_cache[$person_key];
@@ -63,7 +78,8 @@ function append_to_wiki_page($wgTitle, $append_text, $unique=true){
 		$wgArticle->doEdit($cur_text, $sum_txt);
 		print "did append on " . $wgTitle->getDBkey() . "\n";
 	}else{
-		print "can't append page does not exist\n";
+		print "append request to empty page... creating\n";
+		do_update_wiki_page($wgTitle, $append_text);
 	}
 }
 function do_update_wiki_page($wgTitle, $wikiText, $ns = null, $forceUpdate=false) {

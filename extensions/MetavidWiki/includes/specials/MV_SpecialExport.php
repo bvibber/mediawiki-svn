@@ -47,11 +47,13 @@ class MV_SpecialExport {
 		$html='';
 		//set universal variables: 
 		$this->feed_format = $wgRequest->getVal('feed_format');	
-		
+		$error_page = '';
 		switch($this->export_type){
 			case 'stream':
-				$this->stream_name = $wgRequest->getVal('stream_name');	
+				$this->stream_name = $wgRequest->getVal('stream_name');				
+				if($this->stream_name=='')$error_page.=wfMsg('edit_stream_missing').", ";
 				$this->req_time = $wgRequest->getVal('t');		
+				if($this->req_time=='')$error_page.=wfMsg('mv_missing_req_time');
 				if(!$this->req_time)$this->req_time = $wgRequest->getVal('time_range');
 				
 				switch($this->feed_format ){
@@ -65,18 +67,26 @@ class MV_SpecialExport {
 			break;
 			case 'category':
 				$this->cat=$wgRequest->getVal('cat'); 	
-				$this->get_category_feed();		
+				if($this->cat==''){
+					$error_page.=wfMsg('mv_missing_cat');
+				}else{
+					$this->get_category_feed();
+				}		
 			break;
 			case 'search':
 				$this->get_search_feed();
 			break;
 			case 'sequence':			
-				$this->seq_title = $this->par;
+				$this->seq_title = $this->par;				
 				$this->get_sequence_xspf();
 			break;			
 		}
 		//@@todo cleaner exit? 
-		exit();
+		if($error_page==''){
+			exit();
+		}else{
+			$wgOut->addHTML($error_page);
+		}	
 	}    
 	function get_sequence_xspf(){		
 		//get the sequence article and export in xspf format: 		

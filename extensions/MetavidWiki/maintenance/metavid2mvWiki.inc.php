@@ -13,304 +13,7 @@
  /*
   * Templates: 
   */
- function upTemplates($force=false){
-/***************************************************
- * Transcripts: 
- * updates transcript templates
- ***************************************************/
- 	$wgTemplateTitle = Title :: makeTitle(NS_TEMPLATE, 'Ht_en');
-	do_update_wiki_page($wgTemplateTitle, '<noinclude>
-		This is the default Template for the display of transcript text. 
-		</noinclude><includeonly>{{ #if:  {{{PersonName|}}} | {{ #ifexist: Image:{{{PersonName}}}.jpg | [[Image:{{{PersonName}}}.jpg|44px|left]]|[[Image:Missing person.jpg|44px|left]]}} |}}{{ #if:{{{PersonName|}}}|[[{{{PersonName}}}]]: |}}{{{BodyText}}}
-		</includeonly>',null, $force);
-/****************************************************
- * Archive.org file type semantics
- ****************************************************/  
-	$archive_org_ftypes = array('64Kb_MPEG4','256Kb_MPEG4','MPEG1','MPEG2','flash_flv');
-	foreach($archive_org_ftypes as $ftype){
-		$pTitle= Title::makeTitle(SMW_NS_PROPERTY, 'Ao_file_'.$ftype );
-		do_update_wiki_page($pTitle, '[[has type::URL]]',null, $force);
-	}
-/*****************************************************
- * Bill Templates
- ****************************************************/	
-	$bill_template='<noinclude>Bill Person Template simplifies the structure of articles about Bills.
-<pre>{{Bill|
-GovTrackID=The GovTrack Bill ID (used to key-into GovTracks Bill info)|
-ThomasID=The bill\'s Tomas id (used for Thomas linkback)|
-MAPLightBillID=The Map light Bill ID (used for supporting and opposing interest)|
-OpenCongressBillID=The open congress bill id (used for bill rss feeds)|
-Title Description=The short title/description of the bill|
-Date Introduced=The date the bill was introduced|
-Session=The session of congress (110 for 2007-08, 109 for 2005-2006 etc)|
-Bill Key=The short bill name ie: H.R. #|
-Sponsor=Who the Bill was Sponsored By|
-Cosponsor #=Cosponsor, Where # is 1-70 for listing all cosponsors|
-Supporting Interest #=Interest, Where # is 1-20 for listing top supporting interests|
-Opposing Interest #=Interest, Where # is 1-20 for listing top opposing interests|				
-}}</pre>The template name (Bill) should be given as the \'\'first\'\' thing on a page. The Cosponsored list should come at the end.
-</noinclude><includeonly>
-==Bill [[Bill Key:={{{Bill Key}}}]] in the {{ #if: {{{Session|}}}| [[Congress Session:={{{Session}}}]] |}} of Congress==
-<span style="float:right">{{navimg|xsize=50|ysize=50|image=Crystal_Clear_mimetype_video.png|link=Category:{{{Bill Key}}}}}</span>
-{{ #if: {{{Title Description|}}}|{{{Title Description}}} |}}
-
-{{ #if: {{{Bill Key|}}}| Media in [[:Category:{{{Bill Key}}}]] |}}
-{{ #if: {{{Date Introduced|}}}|* Date Introduced: [[Date Bill Introduced:={{{Date Introduced}}}]] |}}
-{{ #if: {{{Sponsor|}}}|* Sponsor: [[Bill Sponsor:={{{Sponsor}}}]] |}}';
-$bill_template.='{{ #if: {{{Cosponsor 1|}}}|* Cosponsor: [[Bill Cosponsor:={{{Cosponsor 1}}}]] |}}';
-
-//$bill_template.='{{ #for: {{{n}}} | {{{Cosponsor $n$}}}<br/> }}';
-for($i=2;$i<70;$i++){	
-	$bill_template.='{{ #if: {{{Cosponsor '.$i.'|}}}|, [[Bill Cosponsor:={{{Cosponsor '.$i.'}}}]] |}}';
-}
-//output mapLight info if present:
-$bill_template.='{{ #if: {{{MapLightBillID|}}}|==Intrests who<span style="color:green">support</span> bill becoming law=='."\n".' |}}';
-for($i=1;$i<20;$i++){
-	$bill_template.='{{ #if: {{{Supporting Interest '.$i.'|}}}|* [[Supporting Interest:={{{Supporting Interest '.$i.'}}}]]'."\n".' |}}';
-}
-$bill_template.='{{ #if: {{{MapLightBillID|}}}|==Interests who<span style="color:red">oppose</span> bill becoming law=='."\n".' |}}';
-for($i=1;$i<20;$i++){
-	$bill_template.='{{ #if: {{{Opposing Interest '.$i.'|}}}|* [[Opposing Interest:={{{Supporting Interest '.$i.'}}}]]'."\n".'|}}';
-}
-//@@todo could do inline rss once we get a good cache model for http://www.mediawiki.org/wiki/Extension:RSS_Reader
-// maybe just action=purge on as a cron job, with $parser->disableCache(); commented out 
-$bill_template.='{{ #if: {{{OpenCongressBillID|}}}|==Bill RSS Feeds==
-* In the News [http://www.opencongress.org/bill/{{{OpenCongressBillID|}}}/atom_news]
-* Blog Coverage [http://www.opencongress.org/bill/{{{OpenCongressBillID|}}}/atom_blogs]
-* Bill Actions [http://www.opencongress.org/bill/{{{OpenCongressBillID|}}}/atom]
-|}}';
-
-$bill_template.='
-==Data Sources==  		
-{{ #if: {{{ThomasID|}}}|* [[Metavid Sources#Thomas|Thomas]] Official Bill Information:[[Data_Source_URL:=http://thomas.loc.gov/cgi-bin/bdquery/z?{{{ThomasID}}}:]] [[Thomas Bill ID:={{{ThomasID}}}| ]] |}}
-{{ #if: {{{GovTrackID|}}}|* [[Metavid Sources#GovTrack|GovTrack]] Bill Overview:[[Data_Source_URL:=http://www.govtrack.us/congress/bill.xpd?bill={{{GovTrackID}}}]] [[GovTrack Bill ID:={{{GovTrackID}}}| ]] |}} 
-{{ #if: {{{MapLightBillID|}}}|* [[Metavid Sources#MapLight|MapLight]] Bill Overview:[[Data_Source_URL:=http://maplight.org/map/us/bill/{{{MapLightBillID}}}]] [[Map Light Bill ID:={{{MapLightBillID}}}| ]] |}}
-[[Category:Bill]]
-</includeonly>';	
-	$wgTemplateTitle = Title :: makeTitle(NS_TEMPLATE, 'Bill');
-	do_update_wiki_page($wgTemplateTitle,$bill_template ,null, $force);
-	//update some semnatic property types:
-	$wgPropTitle = Title::newFromText('Data_Source_URL', SMW_NS_PROPERTY);
-	do_update_wiki_page($wgPropTitle, '[[has type::URL]]',null, $force);
-	
-	$wgPropTitle = Title::newFromText('Date_Bill_Introduced', SMW_NS_PROPERTY);
-	do_update_wiki_page($wgPropTitle, '[[has type::Date]]',null, $force);
-/***************************************
- * Interest Group templates:
- **************************************/
- $interest_template = '<noinclude>Interest Group Template simplifies the structure of articles about Interest Groups.
-<pre>{{Interest Group|
-MapLightInterestID=The MapLight Interest ID|
-Funded Name #=funded name where 1 is 1-100 for top 100 contributions|
-Funded Amount #=funded amount to name 1 (required pair to funded name #)|	
-Supported Bill #=Bills the Interest group supported (long name) 1-100|
-Opposed Bill #=Bills Interest group Opposed (long name) 1-100|
-}}</pre>
-</noinclude><includeonly>
-{{ #if: {{{Funded Name 1|}}}|==Recipients Funded==
-Showing contributions 2001-2008 Senate / 2005-2008 House [[Data_Source_URL:=http://maplight.org/map/us/interest/{{{MapLightInterestID}}}|source]]
-|}}';
-/*
- * output top 100 contributers
- */
- $interest_template.='{{ #if: {{{Funded Name 1|}}}|==Bill Supported Funded==
-Showing contributions 2001-2008 Senate / 2005-2008 House [[Data_Source_URL:=http://maplight.org/map/us/interest/{{{MapLightInterestID}}}|source]]
-|}}';
-for($i=1;$i<100;$i++){
-	 $interest_template.='{{ #if: {{{Funded Name '.$i.'|}}}|*[[Funded:={{{Funded Name '.$i.'}}};{{{Funded Amount 1}}}]]
-|}}';
-}
-/*
- * output bills supported / opposed template vars:
- */
-foreach(array('Supported','Opposed') as $pos){
-	$interest_template.='{{ #if: {{{'.$pos.' Bill '.$i.'|}}}|=='.$pos.' Bills==
-Pulled from maplight [[Data_Source_URL:=http://maplight.org/map/us/interest/{{{MapLightInterestID}}}/bills|source]]
-|}}'; 
-	for($i=1;$i<200;$i++){	 
-		$interest_template.='{{ #if: {{{'.$pos.' Bill '.$i.'|}}}|*[['.$pos.' Bill:={{{'.$pos.' Bill '.$i.'}}}]]
-|}}';
-	}
-}
-$interest_template.='[[Category:Interest Group]]
-</includeonly>';
-
-$wgTemplateTitle = Title :: makeTitle(NS_TEMPLATE, 'Interest Group');
-do_update_wiki_page($wgTemplateTitle,$interest_template ,null, $force);
-
-$wgPropTitle = Title::newFromText('Funded', SMW_NS_PROPERTY);
-do_update_wiki_page($wgPropTitle, '[[has type:=Page;Number]]',null, $force);
-
-/***************************************
- *  Update people templates
- ***************************************/ 
-	global $valid_attributes;
-	$wgTemplateTitle = Title :: makeTitle(NS_TEMPLATE, 'Congress Person');
-	$wgTemplateArticle = new Article($wgTemplateTitle);
-	$template_body = '<noinclude>Congress Person template simplifies 
-			the structure of articles about Congress People.
-			<pre>{{Congress Person|' . "\n";
-	foreach ($valid_attributes as $dbKey => $attr) {
-		list ($name, $desc) = $attr;				 
-		$template_body .= $name . '=' . $desc . "|\n";
-	}
-	
-	$template_body .= '}}</pre>' .
-	'The order of the fields is not relevant. The template name (Congress Person) should be given as the \'\'first\'\' thing on a page.
-			</noinclude>' .
-	'<includeonly>' . "\n";
-	//include the image if present: 
-	$template_body .= '{{ #if: { Image:{{PAGENAME}}.jpg}| [[Image:{{PAGENAME}}.jpg]] |}}' . "\n";
-	foreach ($valid_attributes as $dbKey => $attr) {
-		list ($name, $desc) = $attr;	
-			$template_body .= "{{ #if: {{{" . $name . "}}}| [[$name:={{{" . $name . "}}}| ]] \n|}}";		
-	}	
-	$template_body .= '[[Category:Congress Person]] [[Category:Person]]
-			</includeonly>';
-	echo "updated 'Congress Person' template\n";
-	do_update_wiki_page($wgTemplateTitle, $template_body,null, $force);
-	
-/************************************
- * page helpers
- ************************************/
- $wgTempNavImg = Title::makeTitle(NS_TEMPLATE, 'Navimg');
- do_update_wiki_page($wgTempNavImg, '<div style="position: relative; width: {{{xsize|{{{size|}}}}}}px; height: {{{ysize|{{{size|}}}}}}px; overflow: hidden;"><div style="position: absolute; top: 0; left: 0; font-size: 200pt; width: {{{xsize|{{{size|}}}}}}px; height: {{{ysize|{{{size|}}}}}}px;  overflow: hidden; line-height: {{{ysize|{{{size|}}}}}}px; z-index: 3;">[[:{{{link|}}}|{{{linktext|&nbsp;}}}]]</div><div style="position: absolute; top: 0; left: 0; z-index: 2;">[[Image:{{{image|}}}|{{{xsize|{{{size|}}}}}}px|image page]]</div></div><noinclude>
-Simple Usage example:<nowiki> {{navimg|xsize=50|ysize=50|image=Wikimedia-logo.svg|link=MediaWiki}} </nowiki>
-</noinclude>
-');
-}
-function do_people_insert() {
-	global $valid_attributes, $states_ary;
-	$dbr = wfGetDB(DB_SLAVE);
-
-	include_once('scrape_and_insert.inc.php');		
-	$mvScrape = new MV_BaseScraper();
-	
-	//do people query:
-	$res = $dbr->query("SELECT * FROM `metavid`.`people`");
-	if ($dbr->numRows($res) == 0)
-		die('could not find people: ' . "\n");
-	$person_ary = array ();
-	while ($person = $dbr->fetchObject($res)) {
-		$person_ary[] = $person;
-	}
-	foreach ($person_ary as $person) {
-		
-		$person_title = Title :: newFromUrl($person->name_clean);
-		//semantic data via template:
-		$page_body = '{{Congress Person|' . "\n";
-		foreach ($valid_attributes as $dbKey => $attr) {			
-			list ($name, $desc) = $attr;							
-			if ($dbKey == 'district'){
-				//special case for district:
-				if($person->district){
-					if($person->district!=0){
-						$page_body .= "{$name}=".text_number($person->district).' District'."|\n";
-					}
-				}
-			}else if($dbKey=='maplight_id'){
-				print 'do_maplight_id'."\n";
-				//try to grab the maplight id
-				$raw_results = $mvScrape->doRequest('http://maplight.org/map/us/legislator/search/'.$person->last.'+'.$person->first);
-				preg_match_all('/map\/us\/legislator\/([^"]*)">(.*)<\/a>.*<td>([^<]*)<.*<td>([^<]*)<.*<td>([^<]*)<.*<td>([^<]*)</U',$raw_results, $matches);
-				//print_r($matches);
-				//die;
-				//do point system for match
-				$point=array();
-				$title_lookup=array('Rep.'=>'House','Sen.'=>'Senate');	
-				if(isset($matches['2'])){			
-					foreach($matches['2'] as $k=>$name_html){
-						if(!isset($point[$k]))$point[$k]=0;
-						list($lname,$fname) = explode(',',trim(strip_tags($name_html)));
-						if($person->first==$fname)$point[$k]+=2;
-						if($person->last==$lname)$point[$k]+=2;
-						if($person->state==$matches['3'][$k])$point[$k]++;
-						if($person->district==$matches['4'][$k])$point[$k]++;
-						if($person->party==$matches['5'][$k])$point[$k]++;				
-						if($title_lookup[$person->title]==$matches['6'])$point[$k]++;						
-					}									
-					//sort the point score 
-					asort($point);
-					reset($point);
-					$page_body .="{$name}=".key($point)."|\n";
-				}			
-			}else{			
-				if (trim($person->$dbKey) != '') {		
-					if ($dbKey == 'state')	$person->state = $states_ary[$person->state];				
-					$page_body .= "{$name}={$person->$dbKey}|  \n";
-				}
-			}
-		}
-			
-		//add in the full name attribute: 
-		$page_body .= "Full Name=" . $person->title . ' ' . $person->first .
-			' ' . $person->middle . ' ' . $person->last . "|  \n";			
-		
-			
-			
-		$page_body .= '}}';
-		//add in basic info to be overwitten by tranclude (from
-		$full_name = $person->title . ' ' . $person->first .
-		' ' . $person->middle . ' ' . $person->last;
-		if (trim($full_name) == '')
-			$full_name = $person->name_clean;			
-		 
-		$page_body .= "\n" .'Basic Person page For <b>' . $full_name . "</b><br>\n".
-				 			"Text Spoken By [[Special:MediaSearch/person/{$person->name_clean}|$full_name]] "; 
-				;
-		do_update_wiki_page($person_title, $page_body);		
-		die;
-	}
-	foreach ($person_ary as $person) {
-		//download/upload all the photos:
-		$imgTitle = Title :: makeTitle(NS_IMAGE, $person->name_clean . '.jpg');
-		//if(!$imgTitle->exists()){			
-		global $wgTmpDirectory;
-		$url = 'http://www.opensecrets.org/politicians/img/pix/' . $person->osid . '.jpg';
-		//print $wgTmpDirectory . "\n";
-		$local_file = tempnam($wgTmpDirectory, 'WEBUPLOAD');
-		//copy file:
-
-		# Check if already there existence
-		$image = wfLocalFile($imgTitle);
-		if ($image->exists()) {
-			echo ($imgTitle->getDBkey() . " already in the wiki\n");
-			continue;
-		}
-
-		for ($ct = 0; $ct < 10; $ct++) {
-			if (!@ copy($url, $local_file)) {
-				print ("failed to copy $url to local_file (tring again) \n");
-			} else {
-				print "copy success\n";
-				$ct = 10;
-			}
-			if ($ct == 9)
-				print 'complete failure' . "\n";
-		}
-
-		# Stash the file
-		echo ("Saving " . $imgTitle->getDBkey() . "...");
-		$image = wfLocalFile($imgTitle);
-
-		$archive = $image->publish($local_file);
-		if (WikiError :: isError($archive)) {
-			echo ("failed.\n");
-			continue;
-		}
-		echo ("importing...");
-		$comment = 'Image file for [[' . $person->name_clean . ']]';
-		$license = '';
-
-		if ($image->recordUpload($archive, $comment, $license)) {
-			# We're done!
-			echo ("done.\n");
-		} else {
-			echo ("failed.\n");
-		}
-		//}
-	}
-}
+ 
 //$i=0;
 function do_stream_attr_check($old_stream) {
 	global $i;
@@ -374,7 +77,7 @@ function do_stream_file_check(& $old_stream) {
 		}
 		if(!$found)do_insert_stream_file($mvStream, $old_stream, 'mv_archive_org_link');
 	}*/	
-}
+} 
 function do_insert_stream_file($mvStream, $old_stream, $quality_msg) {
 	global $mvVideoArchivePaths;
 	$dbw = wfGetDB(DB_WRITE);
@@ -709,6 +412,148 @@ function mv_semantic_stream_desc(& $mvTitle, & $stream) {
 	
 	return $out;
 }
+function do_people_insert() {
+	global $valid_attributes, $states_ary;
+	$dbr = wfGetDB(DB_SLAVE);
+
+	include_once('scrape_and_insert.inc.php');		
+	$mvScrape = new MV_BaseScraper();
+	
+	//do people query:
+	$res = $dbr->query("SELECT * FROM `metavid`.`people`");
+	if ($dbr->numRows($res) == 0)
+		die('could not find people: ' . "\n");
+	$person_ary = array ();
+	while ($person = $dbr->fetchObject($res)) {
+		$person_ary[] = $person;
+	}
+	foreach ($person_ary as $person) {		
+		$person_title = Title :: newFromUrl($person->name_clean);
+		//semantic data via template:
+		$page_body = '{{Congress Person|' . "\n";
+		foreach ($valid_attributes as $dbKey => $attr) {			
+			list ($name, $desc) = $attr;							
+			if ($dbKey == 'district'){
+				//special case for district:
+				if($person->district){
+					if($person->district!=0){
+						$page_body .= "{$name}=".text_number($person->district).' District'."|\n";
+					}
+				}
+			}else if($dbKey=='maplight_id'){
+				//print 'do_maplight_id'."\n";
+				//try to grab the maplight id
+				$raw_results = $mvScrape->doRequest('http://maplight.org/map/us/legislator/search/'.$person->last.'+'.$person->first);
+				preg_match_all('/map\/us\/legislator\/([^"]*)">(.*)<\/a>.*<td>([^<]*)<.*<td>([^<]*)<.*<td>([^<]*)<.*<td>([^<]*)</U',$raw_results, $matches);
+				
+				//do point system for match
+				$point=array();
+				$title_lookup=array('Rep.'=>'House','Sen.'=>'Senate');	
+				if(isset($matches['2'])){			
+					foreach($matches['2'] as $k=>$name_html){
+						if(!isset($point[$k]))$point[$k]=0;
+						list($lname,$fname) = explode(',',trim(strip_tags($name_html)));
+						if(strtolower($person->first)==strtolower($fname))$point[$k]+=2;
+						if(strtolower($person->last)==strtolower($lname))$point[$k]+=2;
+						if($person->state==$matches['3'][$k])$point[$k]++;
+						if($person->district==$matches['4'][$k])$point[$k]++;
+						if($person->party==$matches['5'][$k])$point[$k]++;				
+						if($title_lookup[$person->title]==$matches['6'])$point[$k]++;						
+					}
+					$max=0;					
+					$mapk=null;				
+					//print_r($point);
+					foreach($point as $k=>$v){
+						if($v>$max){
+							$mapk=$matches[1][$k];
+							$max=$v;
+						}						
+					}							
+					print "MapLightKey $mapk best match:".strtolower(trim(strip_tags($matches['2'][$mapk]))). " for $person->last  $person->first\n";
+					/*if(strtolower($person->last)=='yarmuth'){					
+						print_r($person);
+						for($i=0;$i<7;$i++){
+							print $matches[$i][$mapk]."\n";
+						}						
+					}*/
+					$page_body .="{$name}=".$mapk."|\n";					
+				}			
+			}else{			
+				if (trim($person->$dbKey) != '') {		
+					if ($dbKey == 'state')	$person->state = $states_ary[$person->state];				
+					$page_body .= "{$name}={$person->$dbKey}|  \n";
+				}
+			}
+		}
+			
+		//add in the full name attribute: 
+		$page_body .= "Full Name=" . $person->title . ' ' . $person->first .
+			' ' . $person->middle . ' ' . $person->last . "|  \n";			
+		
+			
+			
+		$page_body .= '}}';
+		//add in basic info to be overwitten by tranclude (from
+		$full_name = $person->title . ' ' . $person->first .
+		' ' . $person->middle . ' ' . $person->last;
+		if (trim($full_name) == '')
+			$full_name = $person->name_clean;			
+		 
+		$page_body .= "\n" .'Basic Person page For <b>' . $full_name . "</b><br>\n".
+				 			"Text Spoken By [[Special:MediaSearch/person/{$person->name_clean}|$full_name]] "; 
+				;
+		do_update_wiki_page($person_title, $page_body);		
+	}
+	foreach ($person_ary as $person) {
+		//download/upload all the photos:
+		$imgTitle = Title :: makeTitle(NS_IMAGE, $person->name_clean . '.jpg');
+		//if(!$imgTitle->exists()){			
+		global $wgTmpDirectory;
+		$url = 'http://www.opensecrets.org/politicians/img/pix/' . $person->osid . '.jpg';
+		//print $wgTmpDirectory . "\n";
+		$local_file = tempnam($wgTmpDirectory, 'WEBUPLOAD');
+		//copy file:
+
+		# Check if already there existence
+		$image = wfLocalFile($imgTitle);
+		if ($image->exists()) {
+			echo ($imgTitle->getDBkey() . " already in the wiki\n");
+			continue;
+		}
+
+		for ($ct = 0; $ct < 10; $ct++) {
+			if (!@ copy($url, $local_file)) {
+				print ("failed to copy $url to local_file (tring again) \n");
+			} else {
+				print "copy success\n";
+				$ct = 10;
+			}
+			if ($ct == 9)
+				print 'complete failure' . "\n";
+		}
+
+		# Stash the file
+		echo ("Saving " . $imgTitle->getDBkey() . "...");
+		$image = wfLocalFile($imgTitle);
+
+		$archive = $image->publish($local_file);
+		if (WikiError :: isError($archive)) {
+			echo ("failed.\n");
+			continue;
+		}
+		echo ("importing...");
+		$comment = 'Image file for [[' . $person->name_clean . ']]';
+		$license = '';
+
+		if ($image->recordUpload($archive, $comment, $license)) {
+			# We're done!
+			echo ("done.\n");
+		} else {
+			echo ("failed.\n");
+		}
+		//}
+	}
+}
 function do_rm_congress_persons(){
 	$dbr =& wfGetDB(DB_SLAVE);		
 	$result = $dbr->query( " SELECT *
@@ -778,4 +623,143 @@ function getTypeTitle($type) {
 			break;
 	}
 }
+//valid attributes dbkey=>semantic name
+$valid_attributes = array (
+	'name_ocr' => array (
+		'Name OCR',
+		'The Name as it appears in on screen video text',
+		'string'
+	),
+	'maplight_id' => array(
+		'MAPLight Person ID',
+		'MAPLight person id for linking into maplight data',
+		'string'
+	),
+	'osid' => array (
+		'Open Secrets ID',
+		'Congress Person\'s <a href="http://www.opensecrets.org/">Open Secrets</a> Id',
+		'string'
+	),
+	'gov_track_id' => array (
+		'GovTrack Person ID',
+		'Congress Person\' <a href="www.govtrack.us">govtrack.us</a> person ID',
+		'string'
+	),	
+	'bioguide' => array (
+		'Bio Guide ID',
+		'Congressional Biographical Directory id',
+		'string'
+	),
+	'title' => array (
+		'Title',
+		'Title (Sen. or Rep.)',
+		'string'	
+	),
+	'state' => array (
+		'State',
+		'State',
+		'page'
+	), //do look up
+	'party' => array (
+		'Party',
+		'The Cogress Persons Political party',
+		'page'	
+	),
+	'first' => array(
+		'First Name',
+		'(first name)',
+		'string'
+	),
+	'middle' => array(
+		'Middle Name',
+		'(middle name)',
+		'string'
+	),
+	'last'	=> array(
+		'Last Name',
+		'(last name)',
+		'string'
+	),
+	'district'=>array(
+		'District',
+		'The district # page ie: 3rd District',
+	)	
+);
+//state look up:
+$states_ary = array (
+	'AL' => 'Alabama',
+	'AK' => 'Alaska',
+	'AS' => 'American Samoa',
+	'AZ' => 'Arizona',
+	'AR' => 'Arkansas',
+	'AE' => 'Armed Forces - Europe',
+	'AP' => 'Armed Forces - Pacific',
+	'AA' => 'Armed Forces - USA/Canada',
+	'CA' => 'California',
+	'CO' => 'Colorado',
+	'CT' => 'Connecticut',
+	'DE' => 'Delaware',
+	'DC' => 'District of Columbia',
+	'FM' => 'Federated States of Micronesia',
+	'FL' => 'Florida',
+	'GA' => 'Georgia',
+	'GU' => 'Guam',
+	'HI' => 'Hawaii',
+	'ID' => 'Idaho',
+	'IL' => 'Illinois',
+	'IN' => 'Indiana',
+	'IA' => 'Iowa',
+	'KS' => 'Kansas',
+	'KY' => 'Kentucky',
+	'LA' => 'Louisiana',
+	'ME' => 'Maine',
+	'MH' => 'Marshall Islands',
+	'MD' => 'Maryland',
+	'MA' => 'Massachusetts',
+	'MI' => 'Michigan',
+	'MN' => 'Minnesota',
+	'MS' => 'Mississippi',
+	'MO' => 'Missouri',
+	'MT' => 'Montana',
+	'NE' => 'Nebraska',
+	'NV' => 'Nevada',
+	'NH' => 'New Hampshire',
+	'NJ' => 'New Jersey',
+	'NM' => 'New Mexico',
+	'NY' => 'New York',
+	'NC' => 'North Carolina',
+	'ND' => 'North Dakota',
+	'OH' => 'Ohio',
+	'OK' => 'Oklahoma',
+	'OR' => 'Oregon',
+	'PA' => 'Pennsylvania',
+	'PR' => 'Puerto Rico',
+	'RI' => 'Rhode Island',
+	'SC' => 'South Carolina',
+	'SD' => 'South Dakota',
+	'TN' => 'Tennessee',
+	'TX' => 'Texas',
+	'UT' => 'Utah',
+	'VT' => 'Vermont',
+	'VI' => 'Virgin Islands',
+	'VA' => 'Virginia',
+	'WA' => 'Washington',
+	'WV' => 'West Virginia',
+	'WI' => 'Wisconsin',
+	'WY' => 'Wyoming',
+	'AB' => 'Alberta',
+	'BC' => 'British Columbia',
+	'MB' => 'Manitoba',
+	'NB' => 'New Brunswick',
+	'NF' => 'Newfoundland',
+	'MP' => 'Northern Mariana Island ',
+	'NT' => 'Northwest Territories',
+	'NS' => 'Nova Scotia',
+	'ON' => 'Ontario',
+	'PW' => 'Palau Island',
+	'PE' => 'Prince Edward Island',
+	'QC' => 'Quebec',
+	'SK' => 'Saskatchewan',
+	'YT' => 'Yukon Territory'
+);
 ?>
