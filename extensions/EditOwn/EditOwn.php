@@ -28,7 +28,7 @@ $wgExtensionCredits['other'][] = array(
 	'author'        => 'Roan Kattouw',
 	'url'           => 'http://www.mediawiki.org/wiki/Extension:EditOwn',
 	'version'       => '1.0.1',
-	'description'   => 'Users without the editall right can only edit pages they\'ve created'
+	'description'   => 'Users without the editall right can only edit pages they\'ve created',
 	'descriptiomsg' => '',
 );
 
