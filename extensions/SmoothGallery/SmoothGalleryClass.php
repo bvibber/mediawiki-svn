@@ -166,7 +166,7 @@ class SmoothGallery {
 					. "&input=" . htmlspecialchars( $img_list ) );
 	
 				//Provide the link
-				return '<a href="' . $output . '">' . $galleryArray["gallery_name"] . '</a>';
+				return '<a href="' . $output . '">' . $name . '</a>';
 			}
 		}
 	
