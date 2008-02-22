@@ -144,8 +144,14 @@ class SmoothGallery {
 	
 				//This is a dirty, dirty hack that should be replaced. It works, and
 				//it is safe, but there *MUST* be a better way to do this...
-				//TODO make a list of images seperated by |
 				$img_list = '';
+				foreach ( $galleryArray["images"] as $imageArray ) {
+					if ( $img_list == '' ) {
+						$img_list = $imageArray["title"] . "\n";
+					} else {
+						$img_list .= $img_list . '|' . $imageArray["title"] . "\n";
+					}
+				}
 	
 				//Get a local link from the special page
 				$sp = Title::newFromText( "Special:SmoothGallery" );

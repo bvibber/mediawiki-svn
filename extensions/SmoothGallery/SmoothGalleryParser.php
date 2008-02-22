@@ -281,8 +281,10 @@ class SmoothGalleryParser {
 				//Get the text from the image page's description
 				$fulldesc = $img_rev->getText();
 			}
-	
-			if ( $parser ) { //convert wikitext to HTML
+
+			//convert wikitext to HTML
+			//TODO: find out why this doesn't work with special pages
+			if ( $parser && !$this->special ) {
 				$pout = $parser->recursiveTagParse( $fulldesc, $title, $parser->mOptions, true );
 				$fulldesc =  strip_tags( $pout );
 				#$fulldesc =  strip_tags( $pout->getText() );
