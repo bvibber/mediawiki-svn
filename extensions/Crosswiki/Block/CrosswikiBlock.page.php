@@ -5,11 +5,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * Special page allows authorised users to rename
- * user accounts
+ * Special page allows stewards to block users on other wiki
  */
 class SpecialCrosswikiBlock extends SpecialPage {
-
 	var $mUserProxy, $mUsername, $mDatabase;
 
 	/**
@@ -169,8 +167,7 @@ class SpecialCrosswikiBlock extends SpecialPage {
 				" . Xml::input( 'wpBlockAddress', 45, htmlspecialchars( strval( $wgRequest->getVal( 'wpBlockAddress' ) ) ),
 					array(
 						'tabindex' => '1',
-						'id' => 'mw-bi-target',
-						'onchange' => 'updateBlockOptions()' ) ) . "
+						'id' => 'mw-bi-target', ) ) . "
 			</td>
 		</tr>
 		<tr id='wpBlockExpiry'>
@@ -243,83 +240,129 @@ class SpecialCrosswikiBlock extends SpecialPage {
 	}
 }
 
-class CrosswikiBlock {
-	public static function normalizeOptions( $user, &$options ) {
-		if( User::isIP( $user ) ) {
-			$options['autoblock'] = false;
-			$options['noemail'] = false;
+class SpecialCrosswikiUnblock extends SpecialPage {
+	var $mUserProxy, $mUsername, $mDatabase;
+
+	/**
+	 * Constructor
+	 */
+	public function __construct() {
+		parent::__construct( 'Crosswikiunblock', 'crosswikiblock' );
+	}
+
+	/**
+	 * Show the special page
+	 *
+	 * @param mixed $par Parameter passed to the page
+	 */
+	public function execute( $par ) {
+		global $wgOut, $wgUser, $wgTitle, $wgRequest, $wgContLang, $wgLang;
+		global $wgVersion, $wgMaxNameChars, $wgCapitalLinks;
+
+		# Add messages
+		wfLoadExtensionMessages( 'CrosswikiBlock' );
+
+		$this->setHeaders();
+
+		if ( !$wgUser->isAllowed( 'crosswikiblock' ) ) {
+			$wgOut->permissionRequired( 'crosswikiblock' );
+			return;
+		}
+
+		if ( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
+			return;
+		}
+
+		$action = $wgRequest->getVal( 'action' );
+		if( $action == 'submit' ) {
+			$target = $wgRequest->getVal( 'wpUnblockTarget' );
+			$reason = $wgRequest->getVal( 'wpUnblockReason' );
+			$parsedUsername = CrosswikiBlock::parseBlockAddress( $target );
+			if( isset( $parsedUsername['error'] ) ) {
+				switch( $parsedUsername['error'] ) {
+					case 'nowiki':
+						$this->showForm( wfMsgWikiHtml( 'crosswikiunblock-local' ) );
+						break;
+					case 'invalidwiki':
+						$this->showForm( wfMsgWikiHtml( 'crosswikiblock-dbnotfound', $parsedUsername['wiki'] ) );
+						break;
+					case 'invalidusername':
+						$this->showForm( wfMsgWikiHtml( 'crosswikiblock-noname', $parsedUsername['username'] ) );
+						break;
+					default:
+						$this->showForm( wfMsgWikiHtml( 'unknownerror' ) );
+				}
+			} else {
+				$blockRow = CrosswikiBlock::getBlockRow( $parsedUsername );
+				if( !$blockRow ) {
+					$this->showForm( wfMsgWikiHtml( 'crosswikiblock-noblock' ) );
+					return;
+				}
+				$block = CrosswikiBlock::newFromRow( $blockRow, $parsedUsername['wiki'] );
+				$result = $block->remove();
+				if( !$result ) {
+					$this->showForm( wfMsgWikiHtml( 'crosswikiblock-noblock' ) );
+				} else {
+					$block->logUnblock( $reason );
+					$wgOut->addHTML( wfMsgWikiHtml( 'crosswikiunblock-success', htmlspecialchars($target),
+						Title::newMainPage()->getFullText() ) );
+				}
+			}
 		} else {
-			$options['anononly'] = false;
+			$this->showForm();
 		}
 	}
 
-	public function __construct( $db = '', $target = '', $proxy = null, $by = null, $expiry = '', $reason = '', $timestamp = '',
-	 $autoblock = 0, $options = array() ) {
-		$this->mDb = $db;
-		$this->mTarget = $target;
-		$this->mProxy = $proxy;
-		$this->mBy = $by;
-		$this->mExpiry = Block::decodeExpiry( $expiry  );
-		$this->mTimestamp = wfTimestamp( TS_MW, $timestamp );
-		$this->mReason = $reason;
-		$this->mAutoblock = $autoblock;
-		$this->mOptions = $options;
-	}
+	public function showForm( $err = '' ) {
+		global $wgOut, $wgContLang, $wgRequest, $wgUser;
+		global $wgStylePath, $wgStyleVersion;
 
-	public function getDB() {
-		return UserRightsProxy::getDB( $this->mDb );
-	}
+		$titleObj = $this->getTitle();
+		$action = $titleObj->escapeLocalURL( "action=submit" );
+		$alignRight = $wgContLang->isRtl() ? 'left' : 'right';
 
-	public function commit() {
-		global $wgDBname;
-		$dbw = $this->getDB();
+		$mIpbuser = Xml::label( wfMsg( 'crosswikiunblock-user' ), 'mw-bi-target' );
+		$mIpbreason = Xml::label( wfMsg( 'crosswikiunblock-reason' ), 'mw-bi-target' );
 
-		$ipb_id = $dbw->nextSequenceValue('ipblocks_ipb_id_val');
-		$values = array(
-			'ipb_id' => $ipb_id,
-			'ipb_address' => $this->mTarget,
-			'ipb_user' => $this->mProxy ? $this->mProxy->getId() : 0,
-			'ipb_by' => 0,
-			'ipb_by_text' => $this->mBy->getName() . '@' . $wgDBname,
-			'ipb_reason' => $this->mReason,
-			'ipb_timestamp' => $dbw->timestamp( $this->mTimestamp ),
-			'ipb_auto' => $this->mAutoblock,
-			'ipb_anon_only' => $this->mOptions['anononly'],
-			'ipb_create_account' => $this->mOptions['nocreate'],
-			'ipb_enable_autoblock' => $this->mOptions['autoblock'],
-			'ipb_expiry' => Block::encodeExpiry( $this->mExpiry, $dbw ),
-			'ipb_range_start' => '',
-			'ipb_range_end' => '',
-			'ipb_deleted'	=> false,
-			'ipb_block_email' => $this->mOptions['noemail']
-		);
-		$dbw->insert( 'ipblocks', $values, __METHOD__, array( 'IGNORE' ) );
-		$affected = $dbw->affectedRows();
-		$dbw->commit();
+		if ( "" != $err ) {
+			$wgOut->setSubtitle( wfMsgHtml( 'formerror' ) );
+			$wgOut->addHTML( "<strong class='error'>{$err}</strong>\n" );
+		}
 
-		return $affected;
-	}
+		$wgOut->addHTML( wfMsgWikiHtml( 'crosswikiunblock-header' ) );
+		$wgOut->addHTML( "<form id=\"crosswikiunblock\" method=\"post\" action=\"{$action}\">
+	<table border='0'>
+		<tr>
+			<td align=\"$alignRight\">{$mIpbuser}</td>
+			<td>
+				" . Xml::input( 'wpUnblockTarget', 45, htmlspecialchars( strval( $wgRequest->getVal( 'wpUnblockTarget' ) ) ),
+					array(
+						'tabindex' => '1',
+						'id' => 'mw-bi-target', ) ) . "
+			</td>
+		</tr>
+		<tr id=\"wpBlockReason\">
+			<td align=\"$alignRight\">{$mIpbreason}</td>
+			<td>
+				" . Xml::input( 'wpUnblockReason', 45, htmlspecialchars( strval( $wgRequest->getVal( 'wpUnblockReason' ) ) ),
+					array( 'tabindex' => '5', 'id' => 'mw-bi-reason',
+			       		       'maxlength'=> '200' ) ) . "
+			</td>
+		</tr>" );
 
-	public function log( $strexpire ) {
-		$logParams = array(
-			$strexpire,
-			self::formatLogOptions( $this->mOptions ),
-		);
-		$log = new LogPage( 'block' );
-		$log->addEntry( 'block', Title::makeTitleSafe( NS_USER, $this->mTarget . '@' . $this->mDb ),
-			  $this->mReason, $logParams );
-	}
+		$wgOut->addHTML("
+		<tr>
+			<td style='padding-top: 1em'>&nbsp;</td>
+			<td style='padding-top: 1em'>
+				" . Xml::submitButton( wfMsg( 'crosswikiunblock-submit' ),
+							array( 'name' => 'wpBlock', 'tabindex' => '11' ) ) . "
+			</td>
+		</tr>" );
 
-	static function formatLogOptions( $opts ) {
-		$r = array();
-		if( $opts['anononly'] )
-			$r[] = 'anononly';
-		if( $opts['nocreate'] )
-			$r[] = 'nocreate';
-		if( !$opts['autoblock'] )
-			$r[] = 'noautoblock';
-		if( $opts['noemail'] )
-			$r[] = 'blockemail';
-		return implode( ',', $r );
+		$token = $wgUser->editToken();
+		$wgOut->addHTML( Xml::hidden( 'wpEditToken', $token ) );
+
+		$wgOut->addHTML( '</table></form>' );
 	}
 }

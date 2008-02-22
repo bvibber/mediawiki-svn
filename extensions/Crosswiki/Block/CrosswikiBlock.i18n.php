@@ -22,6 +22,19 @@ Please check if you are allowed to act on this wiki and your actions match all p
 	'crosswikiblock-autoblock'  => 'Automatically block the last IP address used by this user, and any subsequent IPs they try to edit from',
 	'crosswikiblock-noemail'    => 'Prevent user from sending e-mail',
 
+	# Special:Unblock
+	'crosswikiunblock'              => 'Unblock user on other wiki',
+	'crosswikiunblock-header'       => 'This page allows to unblock user on other wiki.
+Please check if you are allowed to act on this wiki and your actions match all policies.',
+	'crosswikiunblock-user'         => 'Username, IP address or block ID and destination wiki:',
+	'crosswikiunblock-reason'       => 'Reason:',
+	'crosswikiunblock-submit'       => 'Unblock this user',
+	'crosswikiunblock-success'      => "User '''$1''' unblocked successfully.
+
+Return to:
+* [[Special:CrosswikiBlock|Block form]]
+* [[$2]]",
+
 	# Errors and success message
 	'crosswikiblock-nousername'     => 'No username was inputed',
 	'crosswikiblock-local'          => 'Local blocks are not supported via this interface. Use [[Special:Blockip]]',
@@ -32,11 +45,13 @@ Please check if you are allowed to act on this wiki and your actions match all p
 	'crosswikiblock-noreason'       => 'No reason specified.',
 	'crosswikiblock-notoken'        => 'Invalid edit token.',
 	'crosswikiblock-alreadyblocked' => 'User $3 is already blocked.',
+	'crosswikiblock-noblock'        => 'This user isn\'t blocked.',
 	'crosswikiblock-success'        => "User '''$3''' blocked successfully.
 
 Return to:
 * [[Special:CrosswikiBlock|Block form]]
 * [[$4]]",
+	'crosswikiunblock-local'          => 'Local blocks are not supported via this interface. Use [[Special:Ipblocklist]]',
 );
 
 /** Arabic (العربية)
