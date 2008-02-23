@@ -114,7 +114,7 @@ function mvSetupExtension(){
 	    'version' => 'alpha 0.1',
 		'url' => 'http://metavid.org',
 		'description' => 'Video Metadata Editor, Clip Sequencer and Media Search<br>' .
-				'[http://metavid.ucsc.edu/wiki/index.php/Metavid Wiki Software]'
+				'[http://metavid.ucsc.edu/wiki/index.php/MetaVidWiki_Software More about MetaVidWiki Software]'
 	);
 }	
 /**********************************************/
@@ -172,7 +172,9 @@ function mvSetupExtension(){
 							  	'<style type="text/css">@import "'.$mvgScriptPath . '/skins/mv_customIE6.css";</style>'.
 							  '<![endif]-->'
 					);
-			
+			//add in the semantic wiki css if in stream interface
+			if($head_set=='stream_interface')
+				$wgOut->addScript('<link rel="stylesheet" type="text/css" media="screen, projection" href="/mvWiki/extensions/SemanticMediaWiki/skins/SMW_custom.css" />');
 			$mvgHeadersInPlace=true;
 		}
 		return true; // always return true, in order not to stop MW's hook processing!

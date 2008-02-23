@@ -58,7 +58,7 @@ $mvShellOggFrameGrab = '';
  
 #define the video media locations based on path/server names 
 $mvVideoArchivePaths['mvprime']= 'http://metavid.ucsc.edu/media/';
-$mvVideoArchivePaths['cap1'] = 'http://128.114.20.23/media/';
+$mvVideoArchivePaths['cap1'] = 'http://128.114.20.64/media/';
 
 $mvDefaultVideoQualityKey = 'mv_ogg_low_quality';
 

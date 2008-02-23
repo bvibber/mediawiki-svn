@@ -35,7 +35,7 @@ function do_stream_attr_check($old_stream) {
 	//$i++;
 }
 function do_stream_file_check(& $old_stream) {
-	global $mvgIP;
+	global $mvgIP, $mvVideoArchivePaths;
 	$mvStream = & mvGetMVStream(array (
 		'name' => $old_stream->name
 	));
@@ -43,7 +43,7 @@ function do_stream_file_check(& $old_stream) {
 
 	if ($old_stream->trascoded != 'none') {
 		//print "transcode is: " . $old_stream->trascoded;
-		if ($old_stream->trascoded == 'low')
+		/*if ($old_stream->trascoded == 'low')
 			$set = array (
 				'mv_ogg_low_quality'
 			);
@@ -55,7 +55,21 @@ function do_stream_file_check(& $old_stream) {
 			$set = array (
 				'mv_ogg_high_quality',
 				'mv_ogg_low_quality'
-			);
+		);*/
+		//find the files and check for them on the servers:
+		//@@todo have multiple file locations for same file? 
+		foreach($mvVideoArchivePaths as $path){
+			if(url_exists($path . $old_stream->stream_name . '.ogg')){
+				$set['mv_ogg_low_quality']=$path . $old_stream->stream_name . '.ogg';
+				//force cap1 path @@todo remove!: 
+				$set['mv_ogg_low_quality']='http://128.114.20.64/media/' . $old_stream->stream_name . '.ogg';
+			}
+			if(url_exists($path . $old_stream->stream_name . '.HQ.ogg')){
+				$set['mv_ogg_high_quality']=$path . $old_stream->stream_name . '.HQ.ogg';
+				//force cap1 path @@todo remove!: 
+				$set['mv_ogg_high_quality']='http://128.114.20.64/media/' . $old_stream->stream_name . '.HQ.ogg';
+			}
+		}		
 		//print "set: " . print_r($set);
 		//remove old file pointers: 
 		$dbw = wfGetDB(DB_WRITE);
@@ -63,8 +77,8 @@ function do_stream_file_check(& $old_stream) {
 				"(`file_desc_msg`='mv_ogg_high_quality' OR `file_desc_msg`='mv_ogg_low_quality')";
 		$dbw->query($sql);
 		//update files:
-		foreach ($set as $qf) {
-			do_insert_stream_file($mvStream, $old_stream, $qf);
+		foreach ($set as $qf=>$path_url) {
+			do_insert_stream_file($mvStream, $path_url, $qf);
 		}
 	}
 	//check for archive.org stuff too..
@@ -78,16 +92,11 @@ function do_stream_file_check(& $old_stream) {
 		if(!$found)do_insert_stream_file($mvStream, $old_stream, 'mv_archive_org_link');
 	}*/	
 } 
-function do_insert_stream_file($mvStream, $old_stream, $quality_msg) {
+
+function do_insert_stream_file($mvStream, $path, $quality_msg) {
 	global $mvVideoArchivePaths;
 	$dbw = wfGetDB(DB_WRITE);
-	if ($quality_msg == 'mv_ogg_low_quality') {		
-		$path = $mvVideoArchivePaths[$old_stream->archive_server] . $mvStream->name. '.ogg';		
-	} else if ($quality_msg == 'mv_ogg_high_quality') {
-		$path = $mvVideoArchivePaths[$old_stream->archive_server] .$mvStream->name.'.HQ.ogg';
-	}else{
-		return '';
-	}
+
 	//get file duration from nfo file (if avaliable ): 
 	$nfo_url = $path . '.nfo';
 	$nfo_txt = file($nfo_url);	
@@ -109,8 +118,7 @@ function do_insert_stream_file($mvStream, $old_stream, $quality_msg) {
 	}else{
 		echo "missing nfo file: $nfo_url \n";
 		$dur=0;
-	}
-	
+	}	
 	$sql = "INSERT INTO `mv_stream_files` (`stream_id`, `file_desc_msg`, `path`, `duration`)" .
 		" VALUES ('{$mvStream->id}', '{$quality_msg}', " ." '{$path}', {$dur} )";
 	$dbw->query($sql);
@@ -272,7 +280,7 @@ function do_proccess_images($stream) {
 		//get streamImage obj:
 		$mv_stream_id = $MVStreams[$stream->name]->getStreamId();
 		$local_img_dir = MV_StreamImage :: getLocalImageDir($mv_stream_id);
-		$metavid_img_url = 'http://metavid.ucsc.edu/image_media/' . $row->id . '.jpg';
+		$metavid_img_url = 'http://mvbox2.cse.ucsc.edu/image_media/' . $row->id . '.jpg';
 		
 		$local_img_file = $local_img_dir . '/' . $relative_time . '.jpg';
 		//check if the image already exist in the new table
