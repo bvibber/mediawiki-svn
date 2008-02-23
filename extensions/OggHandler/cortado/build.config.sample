@@ -1,0 +1,15 @@
+# use this file to customize build properties
+
+# which compiler to use; "modern" or "jikes" currently work
+# used by all javac tasks by default
+# build.compiler       jikes
+
+# choose between debug and stripped builds
+# build.type           debug
+
+# choose additional compiler flags
+# NOTE: these can be used to set debug flags for jikes with ant < 1.6.5,
+# which does not respect debuglevel flags for jikes
+
+# build.debug.flags    lines,source
+# build.stripped.flags

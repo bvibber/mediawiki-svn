@@ -1,0 +1,32 @@
+TODO for cortado
+
+- recover from discont in oggdemux
+
+- implement Query duration/position, not sure how to do that since
+  we only have the byte position. possibly put duration as a param or
+  maybe do a single seek for the last page to get the last granule position.
+  We need position/duration in time to implement current position in the
+  GUI since using the byte position would result in values way past the
+  actual playback position because of buffering.
+
+- clean up some issues with pause/play stuttering.
+
+- disable sound option
+
+- possibly use java2 image functions?
+
+- network speed?
+
+- pop up an error dialog for java.security.AccessControlException when
+  doing at java.net.URLConnection.getContentType(Unknown Source)
+	at com.fluendo.player.Cortado.start(Cortado.java:432)
+	at sun.applet.AppletPanel.run(Unknown Source)
+  to tell the user his stream and his applet need to be on the same server
+
+- generate cortado.spec
+- ant release generates "stripped" jars that are bigger than debug jars
+
+- generate Dist.java during build only when it is not already there
+
+
+wim

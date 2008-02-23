@@ -1,0 +1,128 @@
+<Project
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns="http://usefulinc.com/ns/doap#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:admin="http://webns.net/mvcb/">
+
+ <name>Cortado</name>
+ <shortname>cortado</shortname>
+ <homepage rdf:resource="http://www.flumotion.net/cortado/" />
+ <created>2004-11-19</created>
+ <shortdesc xml:lang="en">
+Cortado is a multimedia framework for Java written by Fluendo.
+</shortdesc>
+ <description xml:lang="en">
+This is Cortado, a multimedia framework for Java written by Fluendo.
+
+It contains:
+- JST, a port of the GStreamer 0.10 design to Java
+- jcraft, a copy of the JCraft JOgg/Jorbis code
+- jheora, an implementation of Theora in Java
+- codecs (currently only containing the Smoke codec, a variant on Jpeg)
+- JST plugins for:
+  - HTTP source element
+  - Ogg and Multipart demuxers
+  - Theora, JPEG and Smoke video decoders
+  - Vorbis and MuLaw audio decoders
+   - Java 1.1 sun.audio API audio sink
+   - Java 1.4 javax.sound.sampled API audio sink
+- examples
+- applets
+
+ </description>
+ <category></category>
+ <bug-database rdf:resource="https://core.fluendo.com/flumotion/trac/newticket?component=cortado" />
+ <screenshots></screenshots>
+ <mailing-list rdf:resource="http://lists.fluendo.com/mailman/listinfo/flumotion-devel" />
+ <programming-language>Java</programming-language>
+ <license rdf:resource="http://usefulinc.com/doap/licenses/gpl" />
+ <download-page rdf:resource="http://www.flumotion.net/" />
+
+ <repository>
+   <SVNRepository>
+     <anon-root>https://core.fluendo.com/svn/</anon-root>
+     <module>cortado</module>
+     <browse rdf:resource="https://core.fluendo.com/flumotion/trac/browser/cortado" />
+   </SVNRepository>
+ </repository> 
+
+ <maintainer>
+  <foaf:Person>
+     <foaf:name>Wim Taymans</foaf:name>
+  </foaf:Person>
+ </maintainer>
+
+ <release>
+  <Version>
+   <revision>0.1.0</revision>
+   <branch>0.1</branch>
+   <name>Merry Christmas</name>
+   <created>2004-12-24</created>
+   <file-release rdf:resource="http://www.flumotion.net/src/cortado/cortado-0.1.0.tar.gz" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-mmjs-0.1.0.jar" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-ovt-0.1.0.jar" />
+  </Version>
+ </release>
+
+ <release>
+  <Version>
+   <revision>0.1.2</revision>
+   <branch>0.1</branch>
+   <name>Semicolon</name>
+   <created>2005-04-22</created>
+   <file-release rdf:resource="http://www.flumotion.net/src/cortado/cortado-0.1.2.tar.gz" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-mmjs-0.1.2.jar" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-ovt-0.1.2.jar" />
+  </Version>
+ </release>
+
+ <release>
+  <Version>
+   <revision>0.2.0</revision>
+   <branch>0.2</branch>
+   <name>Broken Record</name>
+   <created>2006-05-19</created>
+   <file-release rdf:resource="http://www.flumotion.net/src/cortado/cortado-0.2.0.tar.gz" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-mmjs-stripped-0.2.0.jar" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-ov-stripped-0.2.0.jar" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-ovt-stripped-0.2.0.jar" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-mmjs-stripped-0.2.0.jar" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-ov-debug-0.2.0.jar" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-ovt-debug-0.2.0.jar" />
+  </Version>
+ </release>
+
+ <release>
+  <Version>
+   <revision>0.2.1</revision>
+   <branch>0.2</branch>
+   <name>Flapoorke</name>
+   <created>2006-09-14</created>
+   <file-release rdf:resource="http://www.flumotion.net/src/cortado/cortado-0.2.1.tar.gz" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-mmjs-stripped-0.2.1.jar" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-ov-stripped-0.2.1.jar" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-ovt-stripped-0.2.1.jar" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-mmjs-stripped-0.2.1.jar" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-ov-debug-0.2.1.jar" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-ovt-debug-0.2.1.jar" />
+  </Version>
+ </release>
+
+ <release>
+  <Version>
+   <revision>0.2.2</revision>
+   <branch>0.2</branch>
+   <name>Really Tested Verily Exceptionally</name>
+   <created>2006-10-26</created>
+   <file-release rdf:resource="http://www.flumotion.net/src/cortado/cortado-0.2.2.tar.gz" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-mmjs-stripped-0.2.2.jar" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-ov-stripped-0.2.2.jar" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-ovt-stripped-0.2.2.jar" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-mmjs-stripped-0.2.2.jar" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-ov-debug-0.2.2.jar" />
+   <file-release rdf:resource="http://www.flumotion.net/jar/cortado/cortado-ovt-debug-0.2.2.jar" />
+  </Version>
+ </release>
+
+</Project>

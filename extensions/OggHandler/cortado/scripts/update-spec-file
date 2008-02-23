@@ -1,0 +1,36 @@
+#!/bin/bash
+
+scriptsdir=`dirname $0`
+topsrcdir=`cd $scriptsdir/.. && pwd`
+
+# this script updates the spec file to fill in VERSION and RELEASE
+# this script takes the VERSION as an argument
+# if no nano given, VERSION is set to version and RELEASE to 1
+# if nano is given, VERSION is set to version and RELEASE is set to 0.revision.1
+
+VERSION=$1
+
+nano=`echo $VERSION | cut -d'.' -f 4`
+
+branch=`$scriptsdir/get-branch`
+revision=`$scriptsdir/get-revision`
+# sanitize the nr (modified) output for a spec file
+revision=`echo $revision | sed 's/ (modified)/.modified/g'`
+
+if test "x$nano" = "x"
+then
+  RELEASE=1
+else
+  RELEASE=0.svn.$revision
+  if test "x$branch" != "xtrunk"
+  then
+    RELEASE=$RELEASE.$branch
+  fi
+  RELEASE=$RELEASE.1
+fi
+
+cat $topsrcdir/cortado.spec.in | \
+  sed s/@VERSION@/$VERSION/ | \
+  sed s/@RELEASE@/$RELEASE/ > $topsrcdir/cortado.spec
+echo Version: $VERSION
+echo Release: $RELEASE

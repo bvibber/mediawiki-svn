@@ -1,0 +1,15 @@
+#!/bin/bash
+
+scriptsdir=`dirname $0`
+topsrcdir=`cd $scriptsdir/.. && pwd`
+
+if test ! -e $topsrcdir/.svn
+then
+  echo "(unknown)"
+  exit 0
+fi
+
+URL=`svn info $topsrcdir/ChangeLog | grep URL | sed 's/URL: //g'`
+# we consider the directory right before top-level ChangeLog to be the
+# branch name
+basename `dirname $URL`
