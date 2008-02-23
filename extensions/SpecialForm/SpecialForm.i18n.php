@@ -395,6 +395,8 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'formsave' => 'భద్రపరచు',
+	'formsave'          => 'భద్రపరచు',
+	'formarticleexists' => 'పేజీ ఉంది',
+	'formbadpagename'   => 'తప్పుడు పేజీ పేరు',
 );
 

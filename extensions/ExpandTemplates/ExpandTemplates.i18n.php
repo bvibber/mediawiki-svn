@@ -554,9 +554,11 @@ $messages['lb'] = array(
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
+ * @author Matthias
  */
 $messages['li'] = array(
 	'expandtemplates'                  => 'Sjablone plekke',
+	'expandtemplates-desc'             => "Substitueert sjablone, parserfunctions, variabele en toent wikiteksti en 'n controleversioe van 'n pagina",
 	'expand_templates_intro'           => "Dees speciaal pazjena laes de ingegaeve teks in en plektj (mitte functie subst) recursief alle sjablone in de teks. 't Plek ouch alle parserfuncties wie <nowiki>{{</nowiki>#if:...}} en variabele wie <nowiki>{{</nowiki>CURRENTDAY}} - vriejwaal al tösse dóbbel accolades.
 Hiej veur waere de relevante functies van de MediaWiki-parser gebroek.",
 	'expand_templates_title'           => 'Contekstitel, veur {{PAGENAME}}, etc:',
@@ -698,7 +700,10 @@ Sòn a lo fa ën ciamand l\'anterprete dal programa MediaWiki.',
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'expandtemplates'          => 'کينډۍ غځول',
+	'expand_templates_input'   => 'ځايونکی متن:',
 	'expand_templates_output'  => 'پايله',
+	'expand_templates_ok'      => 'ښه/هو',
 	'expand_templates_preview' => 'مخکتنه',
 );
 

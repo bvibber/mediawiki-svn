@@ -103,6 +103,13 @@ $messages['lb'] = array(
 	'doublewiki-desc' => 'Weist eng Säit an hir Iwwersetzung aus enger anerer Wiki an zwou Kolonnen op der selweschter Säit',
 );
 
+/** Limburgish (Limburgs)
+ * @author Matthias
+ */
+$messages['li'] = array(
+	'doublewiki-desc' => "Toent 'n pagina en de vertaling oet 'n andere wiki in twie kolomme op dezelfde pagina",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -326,3 +326,10 @@ $messages['sv'] = array(
 	'multiupload-fileuploaded'    => 'Fil uppladdad.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'multipleupload-saveallfiles' => 'అన్ని ఫైళ్ళనూ భద్రపరచు',
+);
+

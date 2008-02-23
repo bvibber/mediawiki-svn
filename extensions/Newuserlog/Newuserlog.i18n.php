@@ -424,9 +424,14 @@ $messages['is'] = array(
 	'newuserlog-create2-entry' => 'bjó til notanda fyrir $1',
 );
 
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
 $messages['it'] = array(
 	'newuserlogpage'           => 'Registro nuovi utenti',
 	'newuserlogpagetext'       => 'Di seguito viene riportato il registro dei nomi utente di nuova creazione',
+	'newuserlog-desc'          => 'Aggiunge un [[Special:Log/newusers|registro degli utenti creati]] alla [[Special:Log|pagina dei registri]]',
+	'newuserlog-byemail'       => 'password inviata via mail',
 	'newuserlog-create-entry'  => 'si è registrato',
 	'newuserlog-create2-entry' => 'ha registrato il nome utente $1',
 );

@@ -1341,6 +1341,14 @@ $messages['sv'] = array(
 	'math_TooManyTokens'           => 'Inmatningen är för lång',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'math_InvalidColour'       => '"$1" అనే రంగు సరైంది కాదు',
+	'math_UnrecognisedCommand' => '"$1" అనేది గుర్తుతెలియని ఆదేశం',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

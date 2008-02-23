@@ -43,6 +43,13 @@ $messages['dsb'] = array(
 	'newusermessage-desc' => '[[MediaWiki:NewUserMessage|Powěsć]] k nowo napóranym wužywarskim diskusijnym bokam pśidaś',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'newusermessage-desc' => 'Aldonu [[MediaWiki:NewUserMessage|mesaĝon]] al diskuto-paĝo de nove kreita uzanto',
+);
+
 /** French (Français)
  * @author Grondin
  */

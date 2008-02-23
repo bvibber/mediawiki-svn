@@ -261,6 +261,7 @@ $messages['te'] = array(
 	'dt_xml_page'           => 'పేజీ',
 	'dt_xml_name'           => 'పేరు',
 	'dt_xml_title'          => 'శీర్షిక',
+	'dt_xml_freetext'       => 'స్వేచ్ఛా పాఠ్యం',
 );
 
 /** Vietnamese (Tiếng Việt)

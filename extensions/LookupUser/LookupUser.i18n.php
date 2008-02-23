@@ -290,7 +290,10 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'lookupuser_useroptions' => 'వాడుకరి ఎంపికలు:',
+	'lookupuser_nonexistent'  => 'పొరపాటు: వాడుకరి ఉనికిలో లేరు',
+	'lookupuser_realname'     => 'నిజమైన పేరు: $1',
+	'lookupuser_registration' => 'నమోదైన తేదీ: $1',
+	'lookupuser_useroptions'  => 'వాడుకరి ఎంపికలు:',
 );
 
 /** Volapük (Volapük)

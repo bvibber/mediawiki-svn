@@ -470,6 +470,14 @@ riddler|Gåtan',
 	'vote-invalid-choice' => 'Du måste välja något av de angivna alternativen.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'vote-caption'      => 'మీ ఎంపిక:',
+	'vote-view-results' => 'ఫలితాలు చూడండి',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

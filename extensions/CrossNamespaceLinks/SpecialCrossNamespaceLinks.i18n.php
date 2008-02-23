@@ -148,12 +148,13 @@ $messages['fo'] = array(
 );
 
 /** French (Français)
+ * @author Urhixidur
  * @author Grondin
  */
 $messages['fr'] = array(
 	'crossnamespacelinks'         => 'Pages contenant des liens vers un autre espace de nom',
 	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Énumère les liens à travers les espaces de nommages]] qui ne devraient pas exister sur {{SITENAME}}',
-	'crossnamespacelinks-summary' => 'Cette page fournit une liste des pages de l’espace de nom principal qui ont un lien vers un autre espace de nom (excepté pour les espaces de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} et {{ns:template}}), ce qui n’est recommandé.',
+	'crossnamespacelinks-summary' => 'Cette page fournit une liste des pages de l’espace de nom principal qui ont un lien vers un autre espace de nom (excepté pour les espaces de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} et {{ns:template}}), ce qui n’est pas recommandé.',
 	'crossnamespacelinkstext'     => '$1 : possède $2 {{PLURAL:$2|lien|liens}} vers l’espace « $3 »',
 );
 

@@ -353,29 +353,32 @@ $messages['nl'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Controleur',
 );
 
-/* Norwegian (Jon Harald Søby) */
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'patrol' => 'Patruljer redigeringer',
-	'patrol-endorse' => 'Godkjenn',
-	'patrol-revert' => 'Tilbakestill',
-	'patrol-revert-reason' => 'Grunn:',
-	'patrol-skip' => 'Hopp over',
-	'patrol-reverting' => 'Tilbakestiller: $1',
-	'patrol-nonefound' => 'Ingen redigeringer passende for patruljering kunne finnes.',
-	'patrol-endorsed-ok' => 'Redigeringen ble merket som patruljert.',
+	'patrol'                 => 'Patruljer redigeringer',
+	'patrol-desc'            => 'Forbedret patruljeringsgrensesnitt med arbeidsfordeling',
+	'patrol-endorse'         => 'Godkjenn',
+	'patrol-revert'          => 'Tilbakestill',
+	'patrol-revert-reason'   => 'Grunn:',
+	'patrol-skip'            => 'Hopp over',
+	'patrol-reverting'       => 'Tilbakestiller: $1',
+	'patrol-nonefound'       => 'Ingen redigeringer passende for patruljering kunne finnes.',
+	'patrol-endorsed-ok'     => 'Redigeringen ble merket som patruljert.',
 	'patrol-endorsed-failed' => 'Redigeringen kunne ikke merkes som patruljert.',
-	'patrol-reverted-ok' => 'Redigeringen ble tilbakestilt.',
+	'patrol-reverted-ok'     => 'Redigeringen ble tilbakestilt.',
 	'patrol-reverted-failed' => 'Redigeringen kunne ikke tilbakestilles.',
-	'patrol-skipped-ok' => 'Ignorerer redigering.',
-	'patrol-reasons' => '* Enkel vandalisme
+	'patrol-skipped-ok'      => 'Ignorerer redigering.',
+	'patrol-reasons'         => '* Enkel vandalisme
 * Nybegynnertest
 * Se diskusjonsside',
-	'patrol-another' => 'Vis en annen redigering, om tilgjenglig.',
-	'patrol-stopped' => 'Du har valgt å ikke patruljere en annen redigering. $1',
-	'patrol-resume' => 'Klikk her for å fortsette.',
-	'group-patroller' => 'Patruljører',
+	'patrol-another'         => 'Vis en annen redigering, om tilgjenglig.',
+	'patrol-stopped'         => 'Du har valgt å ikke patruljere en annen redigering. $1',
+	'patrol-resume'          => 'Klikk her for å fortsette.',
+	'group-patroller'        => 'Patruljører',
 	'group-patroller-member' => 'Patruljør',
-	'grouppage-patroller' => '{{ns:project}}:Patruljør',
+	'grouppage-patroller'    => '{{ns:project}}:Patruljør',
 );
 
 /* Occitan (Cedric31) */
@@ -591,6 +594,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'patrol-revert-reason' => 'కారణం:',
+	'patrol-resume'        => 'కొనసాగించడానికి ఇక్కడ నొక్కండి.',
 );
 
 /* Cantonese (Hillgentleman, Shinjiman) */

@@ -208,6 +208,7 @@ $messages['no'] = array(
 	'spamdifftool_notext'           => 'Ingen tekst ble lagt til i spamsvartelisten. Klikk <a href=\'$1\'">her</a> for å fortsette.',
 	'spamdifftool_confirm'          => "Bekreft at du vil legge til følgende poster i spamsvartelisten. (Rapporter et problem <a href='$1' target='new'>her</a>.)",
 	'spamdifftool_summary'          => 'Legger til i spamsvartelisten',
+	'spamdifftool_urls_detected'    => 'Nedenfr listes de URL-ene som ble funnet i redigeringen; hvilken av dem vil du legge til i spamsvartelisten? Disse valgmulighetene står i rekkefølgen strengest til mildest, blokkering av hele domenet vil blokkere alle lenker til alt som kommer fra det domenet.<br /><br />Ikke blikker hele domener til sider som er vert for mange brukere, type blogpost.com, geocities.com osv.',
 	'spamdifftool_no_urls_detected' => "Ingen URL-er funnet. <a href='$1'>Gå tilbake</a>.",
 	'spamdifftool_spam_link_text'   => 'legg til i spamlisten',
 	'spamdifftool_option_domain'    => 'hele domenet',

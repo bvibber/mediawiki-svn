@@ -18,6 +18,7 @@ $messages['en'] = array(
  */
 $messages['an'] = array(
 	'assert_edit_title'   => "L'aserzión ha fallato",
+	'assert_edit_desc'    => "Adibe aserzions d'edizión emplegatas por os bots",
 	'assert_edit_message' => "L'aserzión espezificata ($1) ha fallato.",
 );
 

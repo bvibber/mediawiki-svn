@@ -101,6 +101,13 @@ $messages['sv'] = array(
 	'forcepreview-desc' => 'Tvingar användare att förhandsgranska om de saknar rätt behörighet',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'forcepreview' => 'పేజీని భద్రపరచండి (ముందుగా సరిచూడండి)',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

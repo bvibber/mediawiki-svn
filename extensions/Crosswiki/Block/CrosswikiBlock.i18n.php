@@ -70,6 +70,17 @@ $messages['ar'] = array(
 	'crosswikiblock-nocreate'       => 'امنع إنشاء الحسابات',
 	'crosswikiblock-autoblock'      => 'تلقائيا امنع آخر عنوان أيبي تم استخدامه بواسطة هذا المستخدم، وأي أيبيهات لاحقة يحاول التعديل منها',
 	'crosswikiblock-noemail'        => 'امنع المستخدم من إرسال بريد إلكتروني',
+	'crosswikiunblock'              => 'رفع المنع عن مستخدم في ويكي أخرى',
+	'crosswikiunblock-header'       => 'هذه الصفحة تسمح برفع المنع عن مستخدم في ويكي أخرى.
+من فضلك تحقق من أنه مسموح لك بالعمل على هذه الويكي وأن أفعالك تطابق كل السياسات.',
+	'crosswikiunblock-user'         => 'اسم المستخدم، عنوان الأيبي أو رقم المنع والويكي المستهدفة:',
+	'crosswikiunblock-reason'       => 'السبب:',
+	'crosswikiunblock-submit'       => 'رفع المنع عن هذا المستخدم',
+	'crosswikiunblock-success'      => "المستخدم '''$1''' تم رفع المنع عنه بنجاح.
+
+ارجع إلى:
+* [[Special:CrosswikiBlock|استمارة المنع]]
+* [[$2]]",
 	'crosswikiblock-nousername'     => 'لا اسم مستخدم تم إدخاله',
 	'crosswikiblock-local'          => 'عمليات المنع المحلية غير مدعومة من خلال هذه الواجهة. استخدم [[Special:Blockip]]',
 	'crosswikiblock-dbnotfound'     => 'قاعدة البيانات $1 غير موجودة',
@@ -79,11 +90,13 @@ $messages['ar'] = array(
 	'crosswikiblock-noreason'       => 'لا سبب تم تحديده.',
 	'crosswikiblock-notoken'        => 'نص تعديل غير صحيح.',
 	'crosswikiblock-alreadyblocked' => 'المستخدم $3 ممنوع بالفعل.',
+	'crosswikiblock-noblock'        => 'هذا المستخدم ليس ممنوعا.',
 	'crosswikiblock-success'        => "المستخدم '''$3''' تم منعه بنجاح.
 
 ارجع إلى:
 * [[Special:CrosswikiBlock|استمارة المنع]]
 * [[$4]]",
+	'crosswikiunblock-local'        => 'عمليات المنع المحلية غير مدعومة بواسطة هذه الواجهة. استخدم [[Special:Ipblocklist]]',
 );
 
 /** Bulgarian (Български)
@@ -152,6 +165,7 @@ Zurück zu:
 
 /** French (Français)
  * @author Grondin
+ * @author Meithal
  * @author Urhixidur
  */
 $messages['fr'] = array(
@@ -168,20 +182,33 @@ Vérifiez si vous êtes habilité pour agir sur ce wiki et que vos actions respe
 	'crosswikiblock-nocreate'       => 'Interdire la création de compte',
 	'crosswikiblock-autoblock'      => "Bloque automatiquement la dernière adresse IP utilisée par cet utilisateur, et toutes les IP subséquentes qui essaient d'éditer",
 	'crosswikiblock-noemail'        => "Interdire à l'utilisateur d'envoyer un courriel",
+	'crosswikiunblock'              => "Débloquer en écriture un utilisateur d'un autre wiki",
+	'crosswikiunblock-header'       => "Cette page permet de débloquer en écriture un utilisateur d'un autre wiki.
+Veuillez vous assurer que vous possédez les droits et respectez les règles en vigueur sur ce wiki.",
+	'crosswikiunblock-user'         => "Nom d'utilisateur, adresse IP ou l'id de blocage et le wiki ciblé :",
+	'crosswikiunblock-reason'       => 'Motif :',
+	'crosswikiunblock-submit'       => 'Débloquer en écriture cet utilisateur',
+	'crosswikiunblock-success'      => "L'utilisateur '''1$''' a été débloqué en écriture avec succès.
+
+Revenir à :
+* [[Special:CrosswikiBlock|Formulaire de blocage]]
+* [[$2]]",
 	'crosswikiblock-nousername'     => "Aucun nom d'utilisateur n'a été indiqué",
 	'crosswikiblock-local'          => 'Les blocages locaux ne sont pas supportés au travers de cette interface. Utilisez [[Special:Blockip]].',
-	'crosswikiblock-dbnotfound'     => 'La base de donnée « $1 » n’existe pas',
+	'crosswikiblock-dbnotfound'     => 'La base de données « $1 » n’existe pas',
 	'crosswikiblock-noname'         => '« $1 » n’est pas un nom d’utilisateur valide.',
 	'crosswikiblock-nouser'         => 'L’utilisateur « $3 » est introuvable.',
 	'crosswikiblock-noexpiry'       => 'Date ou durée d’expiration incorrecte : $1.',
 	'crosswikiblock-noreason'       => 'Aucun motif indiqué.',
 	'crosswikiblock-notoken'        => 'Édition prise incorrecte.',
 	'crosswikiblock-alreadyblocked' => 'L’utilisateur « $3 » est déjà bloqué.',
+	'crosswikiblock-noblock'        => "Cet utilisateur n'est pas bloqué en écriture.",
 	'crosswikiblock-success'        => "L’utilisateur '''$3''' a été bloqué avec succès.
 
 Revenir vers :
 * [[Special:CrosswikiBlock|Le formulaire de blocage]] ;
 * [[$4]].",
+	'crosswikiunblock-local'        => 'Les blocages en écriture locaux ne sont pas supportés via cette interface. Utilisez [[Special:Ipblocklist]]',
 );
 
 /** Galician (Galego)
@@ -306,6 +333,16 @@ $messages['no'] = array(
 	'crosswikiblock-nocreate'       => '{{int:Ipbcreateaccount}}',
 	'crosswikiblock-autoblock'      => '{{int:ipbenableautoblock}}',
 	'crosswikiblock-noemail'        => '{{int:ipbemailban}}',
+	'crosswikiunblock'              => 'Avblokker brukeren på andre wikier',
+	'crosswikiunblock-header'       => 'Denne siden lar deg avblokkere brukere på andre wikier. Sjekk om du har lov til å gjøre dette på den lokale wikien i henhold til deres retningslinjer.',
+	'crosswikiunblock-user'         => 'Brukernavn, IP-adresse eller blokkerings-ID og målwiki:',
+	'crosswikiunblock-reason'       => 'Begrunnelse:',
+	'crosswikiunblock-submit'       => 'Avblokker brukeren',
+	'crosswikiunblock-success'      => "Brukeren '''$1''' ble avblokkert.
+
+Tilbake til:
+* [[Special:CrosswikiBlock|Blokkeringsskjema]]
+* [[$2]]",
 	'crosswikiblock-nousername'     => 'Ingen brukernavn ble skrevet inn',
 	'crosswikiblock-local'          => 'Lokale blokkeringer støttes ikke av dette grensesnittet. Bruk [[Special:Blockip]]',
 	'crosswikiblock-dbnotfound'     => 'Databasen $1 finnes ikke',
@@ -315,11 +352,13 @@ $messages['no'] = array(
 	'crosswikiblock-noreason'       => 'Ingen begrunnelse gitt.',
 	'crosswikiblock-notoken'        => 'Ugyldig redigeringstegn.',
 	'crosswikiblock-alreadyblocked' => '$3 er allerede blokkert.',
+	'crosswikiblock-noblock'        => 'Denne brukeren er ikke blokkert.',
 	'crosswikiblock-success'        => "'''$3''' er blokkert.
 
 Tilbake til:
 * [[Special:CrosswikiBlock|Blokkeringsskjemaet]]
 * [[$4]]",
+	'crosswikiunblock-local'        => 'Lokale blokkeringer støttes ikke via dette grensesnittet. Bruk [[Special:Ipblocklist]].',
 );
 
 /** Polish (Polski)
@@ -371,6 +410,17 @@ $messages['ru'] = array(
 	'crosswikiblock-nocreate'       => 'Запретить создание учётных записей',
 	'crosswikiblock-autoblock'      => 'Автоматически заблокировать последний использованный этим участником IP-адрес и любые последующие IP-адреса с которых производятся попытки редактирования',
 	'crosswikiblock-noemail'        => 'Запретить участнику отправку электронной почты',
+	'crosswikiunblock'              => 'Разблокировать участника в этой вики',
+	'crosswikiunblock-header'       => 'Эта страница позволяет разблокировать участников в других вики.
+Пожалуйста, убедитесь что вам разрешены подобные действия и что что они соответствуют всем правилам.',
+	'crosswikiunblock-user'         => 'Имя участника, IP-адрес или идентификатор блокировки на целевой вики:',
+	'crosswikiunblock-reason'       => 'Причина:',
+	'crosswikiunblock-submit'       => 'Разблокировать участника',
+	'crosswikiunblock-success'      => "Участник '''$1''' успешно разблокирован.
+
+Вернуться к:
+* [[Special:CrosswikiBlock|Форма блокировки]]
+* [[$2]]",
 	'crosswikiblock-nousername'     => 'Не введено имя участника',
 	'crosswikiblock-local'          => 'Локальные блокировки не поддерживаются через этот интерфейс. Используйте [[Special:Blockip]].',
 	'crosswikiblock-dbnotfound'     => 'База данных $1 не существует',
@@ -380,11 +430,13 @@ $messages['ru'] = array(
 	'crosswikiblock-noreason'       => 'Не указана причина.',
 	'crosswikiblock-notoken'        => 'Ошибочный маркер правки.',
 	'crosswikiblock-alreadyblocked' => 'Участник $3 уже заблокирован.',
+	'crosswikiblock-noblock'        => 'Этот участник не был заблокирован.',
 	'crosswikiblock-success'        => "Участник '''$3''' успешно заблокирован.
 
 Вернуться к:
 * [[Special:CrosswikiBlock|форма блокировки]]
 * [[$4]]",
+	'crosswikiunblock-local'        => 'Локальные блокировки не поддерживаются с помощью этого интерфейса. Используйте [[Special:Ipblocklist]]',
 );
 
 /** Slovak (Slovenčina)
@@ -403,6 +455,17 @@ Prosím, overte si, či máte povolené na danej wiki konať a vaše konanie je 
 	'crosswikiblock-nocreate'       => 'Zabrániť tvorbe účtov',
 	'crosswikiblock-autoblock'      => 'Automaticky blokovať poslednú IP adresu, ktorú tento používateľ použil a akékoľvek ďalšie adresy, z ktorých sa pokúsia upravovať.',
 	'crosswikiblock-noemail'        => 'Zabrániť používateľovi odosielať email',
+	'crosswikiunblock'              => 'Odblokovať používateľa na inej wiki',
+	'crosswikiunblock-header'       => 'Táto stránka umožňuje odblokovanie používateľa na inej wiki.
+Prosím, uistite sa, že máte povolenie konať na tejto wiki a vaše konanie je v súlade so všetkými pravidlami.',
+	'crosswikiunblock-user'         => 'Používateľské meno, IP adresa alebo ID blokovania a cieľová wiki:',
+	'crosswikiunblock-reason'       => 'Dôvod:',
+	'crosswikiunblock-submit'       => 'Odblokovať tohto používateľa',
+	'crosswikiunblock-success'      => "Používateľ '''$1''' bol úspešne odblokovaný.
+
+Vrátiť sa na:
+* [[Special:CrosswikiBlock|Formulár blokovania]]
+* [[$2]]",
 	'crosswikiblock-nousername'     => 'Nebolo zadané používateľské meno',
 	'crosswikiblock-local'          => 'Toto rozhranie nepodporuje lokálne blokovanie. Použite [[Special:Blockip]].',
 	'crosswikiblock-dbnotfound'     => 'Databáza $1 neexistuje',
@@ -412,11 +475,13 @@ Prosím, overte si, či máte povolené na danej wiki konať a vaše konanie je 
 	'crosswikiblock-noreason'       => 'Nebol uvedený dôvod.',
 	'crosswikiblock-notoken'        => 'Neplatný upravovací token.',
 	'crosswikiblock-alreadyblocked' => 'Používateľ $3 je už zablokovaný.',
+	'crosswikiblock-noblock'        => 'Tento používateľ nie je zablokovaný.',
 	'crosswikiblock-success'        => "Používateľ '''$3''' bol úspešne zablokovaný.
 
 Vrátiť sa na:
 * [[Special:CrosswikiBlock|Blokovací formulár]]
 * [[$4]]",
+	'crosswikiunblock-local'        => 'Lokálne blokovania nie sú týmto rozhraním podporované. Použite [[Special:Ipblocklist]].',
 );
 
 /** Swedish (Svenska)
@@ -429,6 +494,7 @@ $messages['sv'] = array(
 	'crosswikiblock-expiry'         => 'Utgång:',
 	'crosswikiblock-reason'         => 'Anledning:',
 	'crosswikiblock-submit'         => 'Blockera denna användare',
+	'crosswikiunblock-reason'       => 'Anledning:',
 	'crosswikiblock-dbnotfound'     => 'Databasen $1 existerar inte',
 	'crosswikiblock-noname'         => '"$1" är inte ett giltigt användarnamn.',
 	'crosswikiblock-nouser'         => 'Användare "$3" hittades inte.',
@@ -447,6 +513,8 @@ Tillbaka till:
 $messages['te'] = array(
 	'crosswikiblock-reason'   => 'కారణం:',
 	'crosswikiblock-nocreate' => 'ఖాతా సృష్టింపుని నివారించు',
+	'crosswikiunblock-reason' => 'కారణం:',
+	'crosswikiblock-noname'   => '"$1" అన్నది సరైన వాడుకరిపేరు కాదు.',
 	'crosswikiblock-noreason' => 'కారణం తెలుపలేదు.',
 );
 

@@ -138,6 +138,21 @@ $messages['el'] = array(
 	'chemFunctions_ListPage' => 'Χημικές πηγές',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'chemicalsources'                  => 'Kemiaj fontoj',
+	'chemicalsource-desc'              => 'Aldonas la vikimarko <nowiki><chemform></nowiki> por kemiaj formuloj',
+	'chemFunctions_ListPage'           => 'Kemiaj fontoj',
+	'chemFunctions_CAS'                => 'CAS-nombro',
+	'chemFunctions_ATCCode'            => 'ATC-kodo',
+	'chemFunctions_ECNumber'           => 'ECNombro',
+	'chemFunctions_Formula'            => 'Formulo',
+	'chemFunctions_Name'               => 'IUPAC Nomo',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Eraro de enigo!',
+);
+
 /** French (Français)
  * @author Sherbrooke
  * @author Urhixidur
@@ -453,6 +468,9 @@ $messages['ru'] = array(
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Соединение $MIXCASNameFormula на сайте NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS на сайте Оксфордского университета (Великобритания) (поиск отсутствует)</a><br />',
 	'chemFunctions_CAS'                => 'CAS-число',
+	'chemFunctions_ATCCode'            => 'ATCCode',
+	'chemFunctions_ECNumber'           => 'ECNumber',
+	'chemFunctions_Formula'            => 'Формула',
 	'chemFunctions_Name'               => 'IUPAC-название',
 	'chemFunctions_ChemFormInputError' => 'Chemform: ошибка ввода!',
 );

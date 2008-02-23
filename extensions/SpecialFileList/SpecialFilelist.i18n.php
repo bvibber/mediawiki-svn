@@ -38,9 +38,11 @@ $messages['avk'] = array(
 
 /** Bulgarian (Български)
  * @author Spiritia
+ * @author DCLXVI
  */
 $messages['bg'] = array(
 	'filelist'              => 'Списък на файловете',
+	'filelist-desc'         => 'Специална страница със списък на качените файлове',
 	'filelist-show-list'    => 'Показване на списъка',
 	'filelist-show-gallery' => 'Показване на галерията',
 );
@@ -179,6 +181,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'filelist' => 'ఫైళ్ళ జాబితా',
+	'filelist'           => 'ఫైళ్ళ జాబితా',
+	'filelist-show-list' => 'జాబితాని చూపించు',
 );
 

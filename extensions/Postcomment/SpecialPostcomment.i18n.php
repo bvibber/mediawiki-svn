@@ -197,6 +197,23 @@ $messages['sk'] = array(
 	'postcomment_nopostingtoadd'           => 'Niet pridať aký príspevok.',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'postcomment_notloggedin'              => 'Du är inte inloggad.',
+	'postcomment_youareloggedinas'         => 'Du är inloggad som $1',
+	'postcomment_addcommentdiscussionpage' => 'Lägg till din kommentar på denna diskussions sida',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'postcomment_said'    => 'అన్నారు',
+	'postcomment_replyto' => '$1కి స్పందన',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

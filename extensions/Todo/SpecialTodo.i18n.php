@@ -349,8 +349,12 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'todo-new-queue'    => 'కొత్తది',
-	'todo-form-details' => 'వివరాలు:',
+	'todo-new-queue'        => 'కొత్తది',
+	'todo-unrecognize-type' => 'గుర్తుతెలియని రకం',
+	'todo-item-list'        => 'మీ అంశాలు',
+	'todo-list-change'      => 'మార్చు',
+	'todo-new-item'         => 'కొత్త అంశం',
+	'todo-form-details'     => 'వివరాలు:',
 );
 
 /** Turkish (Türkçe)

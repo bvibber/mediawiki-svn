@@ -394,6 +394,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'talkhere-talkpage' => 'చర్చా పేజీ',
+	'talkhere-notalk'   => "''(ఇంకా వ్యాఖ్యలు లేవు)''",
 );
 
 /** Turkish (Türkçe)

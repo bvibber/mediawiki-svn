@@ -324,6 +324,13 @@ $messages['pms'] = array(
 	'block_title_error'            => "Ch'a scusa, ma ës tìtol-sì as peul nen dovresse",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'block_title_error' => 'بخښنه غواړو چې د همدغه مخ د سرليک د خوندي کولو اجازه نشته.',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author 555

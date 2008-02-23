@@ -165,6 +165,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'inspectcache'         => 'Inspiser mellomlagring',
+	'inspectcache-desc'    => 'Et enkelt feilsøkingsverktøy for å inspisere innholdet i det delte mellomlageret',
 	'inspectcache-ok'      => 'OK',
 	'inspectcache-general' => 'Generell mellomlagring',
 	'inspectcache-parser'  => 'Parsermellomlagring',

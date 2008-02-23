@@ -178,6 +178,13 @@ $messages['sv'] = array(
 	'contributionseditcount-desc' => 'Visa en redigerings räkning på [[Special:Contributions]]',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'contributionseditcount' => 'ఈ వాడుకరి $1 మార్పులు చేసారు.',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

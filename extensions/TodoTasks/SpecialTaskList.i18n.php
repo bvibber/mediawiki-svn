@@ -236,6 +236,13 @@ $messages['no'] = array(
 	'tasklistprojdisp'       => 'Vis',
 	'tasklistbyname'         => '== Oppgaveliste for %s ==',
 	'tasklistnoprojects'     => "FEIL: Det ser ut som om du har slått på '''\$wgUseProjects''' uten å opprette [[MediaWiki:TodoTasksValidProjects]]. Se [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 installasjonsintruksjonene] for flere detaljer.",
+	'tasklistemailbody'      => ',
+
+Noen har gitt deg en ny oppgave på %s.
+
+For å se den fullstendige oppgavelisten din, gå til %s.
+
+Fra %ss varslingssystem',
 );
 
 /** Occitan (Occitan)

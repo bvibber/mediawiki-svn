@@ -52,6 +52,20 @@ $messages['dsb'] = array(
 	'breadcrumbs-desc' => 'Pokazujo drogu wužywarja pśez wiki.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'breadcrumbs-desc' => 'Montras la vojon de uzanto tra la vikio.',
+);
+
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ */
+$messages['fi'] = array(
+	'breadcrumbs-desc' => 'Näyttää käyttäjän reitin wikissä.',
+);
+
 /** Galician (Galego)
  * @author Alma
  */

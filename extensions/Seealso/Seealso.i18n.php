@@ -58,6 +58,14 @@ $messages['el'] = array(
 	'seealso' => 'Δείτε επίσης',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'seealso'      => 'Vidu ankaŭ',
+	'seealso-desc' => "Asimilita 'Vidu ankaŭ' sekcio-titolo uzante la markojn <code><nowiki><seealso></nowiki></code>.",
+);
+
 /** French (Français)
  * @author Bertrand GRONDIN
  */

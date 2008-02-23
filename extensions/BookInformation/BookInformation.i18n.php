@@ -503,6 +503,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'bookinfo-header'            => 'Informatiounen iwwer Bicher',
+	'bookinfo-desc'              => '[[Special:Booksources|Bicherreferenzen]] mat Informatiounen vun enger Offer um Internet',
 	'bookinfo-result-title'      => 'Titel:',
 	'bookinfo-result-author'     => 'Auteur:',
 	'bookinfo-result-publisher'  => 'Editeur:',
@@ -685,6 +686,7 @@ $messages['ps'] = array(
 	'bookinfo-result-publisher'  => 'خپرونکی:',
 	'bookinfo-result-year'       => 'کال:',
 	'bookinfo-error-invalidisbn' => 'تاسو يو ناسم ISBN ليکلی.',
+	'bookinfo-purchase'          => 'همدا کتاب د $1 نه وپېرۍ',
 );
 
 /** Portuguese (Português)

@@ -142,16 +142,23 @@ Esparder esta información pue llevar a la perda permanente de privilexos de sup
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'hiderevision-desc'        => 'Добавя възможност за скриване на отделни версии',
-	'hiderevision-continue'    => 'Продължаване',
-	'hiderevision-submit'      => 'Перманентно скриване на информацията',
-	'hiderevision-tab'         => 'Скриване на редакцията',
-	'hiderevision-norevisions' => 'Не са посочени редакции за изтриване.',
-	'hiderevision-noreason'    => 'Необходимо е да се посочи причина за това премахване.',
-	'hiderevision-status'      => 'Редакция $1: $2',
-	'hiderevision-success'     => 'Архивирано и изтрито успешно.',
-	'oversight-view'           => 'детайли',
-	'oversight-hidden'         => 'Скрита редакция',
+	'hiderevision'                => 'Перманентно скриване на версии',
+	'hiderevision-desc'           => 'Добавя възможност за скриване на отделни версии',
+	'hiderevision-prompt'         => 'Номер на версия за премахване:',
+	'hiderevision-continue'       => 'Продължаване',
+	'hiderevision-submit'         => 'Перманентно скриване на информацията',
+	'hiderevision-tab'            => 'Скриване на редакцията',
+	'hiderevision-norevisions'    => 'Не са посочени редакции за изтриване.',
+	'hiderevision-noreason'       => 'Необходимо е да се посочи причина за това премахване.',
+	'hiderevision-status'         => 'Редакция $1: $2',
+	'hiderevision-success'        => 'Архивирано и изтрито успешно.',
+	'hiderevision-error-current'  => 'Последната редакция на страницата не може да бъде изтрита. Необходимо е първо да бъде върната.',
+	'hiderevision-archive-status' => 'Изтрита версия от $1: $2',
+	'oversight-log-hiderev'       => 'премахната редакция от $1',
+	'oversight-view'              => 'детайли',
+	'oversight-hidden'            => 'Скрита редакция',
+	'oversight-header'            => 'По-долу е посочен списък на версии, които наскоро са били перманентно премахнати от публичния архив.
+Изнасянето на тази информация може да доведе до отнемане на правата за достъп до този инструмент.',
 );
 
 /** Bengali (বাংলা)

@@ -99,6 +99,66 @@ $messages['af'] = array(
 	'boardvote_welcome'       => 'Welkom \'\'\'$1\'\'\'!',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'boardvote'              => "Elezión d'o Consello d'Almenistrazión d'a Fundazión Wikimedia",
+	'boardvote-desc'         => "[[meta:Board elections|Elezión d'o Consello d'Almenistrazión d'a Fundazión Wikimedia]]",
+	'boardvote_entry'        => "* [[Special:Boardvote/vote|Botar]]
+* [[Special:Boardvote/list|Amostrar os botos dica agora]]
+* [[Special:Boardvote/dump|Bulcar o rechistro zifrato d'a elezión]]",
+	'boardvote_intro_change' => "<p>Ya ha botato denantes. Manimenos puede cambiar o suyo boto si quiere 
+fendo serbir o formulario d'abaixo. Siñale por fabor as caxas amán de cada 
+candidato que quiera aprebar</p>",
+	'boardvote_entered'      => "Grazias, o suyo boto s'ha rechistrato.
+
+Si lo deseya, puede alzar os siguients detalles. O suyo rechistro de boto ye:
+
+<pre>$1</pre>
+
+S'ha zifrato con a clau publica d'os Almenistradors d'a Elezión:
+
+<pre>$2</pre>
+
+A bersión zifrata resultant ye a que sigue. S'amuestra publicament en [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Enta zaga]]",
+	'boardvote_nosession'    => "No puedo identificar-le como usuario de Wikimedia. Por fabor, dentre ta una wiki an que pueda botar y baiga ta <nowiki>[[Special:Boardvote]]</nowiki>. Ta poder botar ha de tener una cuenta con un menimo de  $1 contrebuzions antes d'o $2, y con a primer edizión antes d'o $3.",
+	'boardvote_notloggedin'  => "No ha enzetato garra sesión. Ta poder botar, ha d'usar una cuenta con un menimo de $1 contrebuzions feitas antes de $2, y con a primer edizión feita antes de $3.",
+	'boardvote_notqualified' => "No cumple as condizions ta poder botar en ista elezión. Amenista aber feito $3 edizions antes d'o $2 y a suya primer edizión ha d'estar anterior á o $5.",
+	'boardvote_novotes'      => 'Dengún no ha botato encara.',
+	'boardvote_time'         => 'Tiempo',
+	'boardvote_user'         => 'Usuario',
+	'boardvote_edits'        => 'Edizions',
+	'boardvote_days'         => 'Días',
+	'boardvote_ip'           => 'Adreza IP',
+	'boardvote_ua'           => "Representant de l'usuario",
+	'boardvote_listintro'    => "<p>Esta ye una lista de toz os botos que s'han rechistrato
+dica agora. $1 ta beyer os datos zifratos.</p>",
+	'boardvote_dumplink'     => 'Faiga click aquí',
+	'boardvote_submit'       => 'OK',
+	'boardvote_strike'       => 'Nular',
+	'boardvote_unstrike'     => 'Recuperar',
+	'boardvote_needadmin'    => "Sólo os Almenistradors d'a Elezión puede fer ista operazión.",
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Elezions ta o Consello de Wikimedia</a>:  Botazión ubierta dica o 12 de chulio',
+	'boardvote_notstarted'   => 'A botazión no ha prenzipiato encara',
+	'boardvote_closed'       => "A botazión ya ye zarrata, mire-se [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En a pachina d'as elezions ta beyer os resultaus] luego.",
+	'boardvote_edits_many'   => 'muitos',
+	'group-boardvote'        => "Almenistradors d'a botazión",
+	'group-boardvote-member' => "Almenistrador d'a botazión",
+	'boardvote_blocked'      => 'Lo sentimos, pero ye estato bloqueyato en a wiki en que ye rechistrato. Os usuarios bloqueyatos no pueden botar.',
+	'boardvote_welcome'      => "Biemplegau '''$1'''!",
+	'go_to_board_vote'       => 'Elezions ta o Consello de Wikimedia 2007',
+	'boardvote_redirecting'  => "Ta amillorar a seguranza y a transparenzia, a botazión s'está fendo en un serbidor esterno y controlato independientment. 
+
+Será endrezato enta este serbidor esterno en 20 segundos. [$1 Punche aquí] ta ir-ie agora.
+
+Puestar que s'amuestre una albertenzia de seguranza sobre un zertificato no siñato..",
+);
+
 $messages['ang'] = array(
 	'boardvote_user'          => 'Brūcend',
 );

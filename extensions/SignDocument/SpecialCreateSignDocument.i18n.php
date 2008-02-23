@@ -490,13 +490,17 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'createsigndoc-pagename'   => 'పేజీ:',
-	'createsigndoc-email'      => 'ఈ-మెయిల్ చిరునామా:',
-	'createsigndoc-extaddress' => 'నగరం, రాష్ట్రం, దేశం:',
-	'createsigndoc-bday'       => 'పుట్టినరోజు:',
-	'createsigndoc-minage'     => 'కనిష్ట వయసు:',
-	'createsigndoc-introtext'  => 'పరిచయం:',
-	'createsigndoc-optional'   => 'ఐచ్చికం',
+	'createsigndoc-pagename'          => 'పేజీ:',
+	'createsigndoc-email'             => 'ఈ-మెయిల్ చిరునామా:',
+	'createsigndoc-address'           => 'ఇంటి చిరునామా:',
+	'createsigndoc-extaddress'        => 'నగరం, రాష్ట్రం, దేశం:',
+	'createsigndoc-phone'             => 'ఫోన్ నంబర్:',
+	'createsigndoc-bday'              => 'పుట్టినరోజు:',
+	'createsigndoc-minage'            => 'కనిష్ట వయసు:',
+	'createsigndoc-introtext'         => 'పరిచయం:',
+	'createsigndoc-optional'          => 'ఐచ్చికం',
+	'createsigndoc-error-generic'     => 'పొరపాటు: $1',
+	'createsigndoc-error-pagenoexist' => 'పొరపాటు: [[$1]] అనే పేజీ లేనే లేదు.',
 );
 
 /** Volapük (Volapük)

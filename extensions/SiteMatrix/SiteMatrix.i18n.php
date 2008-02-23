@@ -98,6 +98,7 @@ $messages['bg'] = array(
 	'sitematrix-language'  => 'Език',
 	'sitematrix-project'   => 'Име на проекта, междупроектна препратка и междууики',
 	'sitematrix-others'    => 'Други проекти на Уикимедия',
+	'sitematrix-total'     => "'''Общ брой: $1'''",
 	'sitematrix-sitetotal' => 'Общо',
 );
 
@@ -367,6 +368,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'sitematrix'           => 'Az összes Wikimedia wiki listája',
+	'sitematrix-desc'      => 'A [[Special:SiteMatrix|Wikimedia wikijeinek listája]]',
 	'sitematrix-language'  => 'Nyelv',
 	'sitematrix-project'   => 'A projekt neve, projekt- és nyelvközi link',
 	'sitematrix-others'    => 'Más Wikimedia projektek',
@@ -487,9 +489,11 @@ $messages['lb'] = array(
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
+ * @author Matthias
  */
 $messages['li'] = array(
 	'sitematrix'           => "Lies van Wikimedia wiki's",
+	'sitematrix-desc'      => "Toent 'n [[special:SiteMatrix|lijst van Wikimedia-wiki's]]",
 	'sitematrix-language'  => 'Taal',
 	'sitematrix-project'   => "Naam van 't perjèk, interperjèk link enne interwiki link",
 	'sitematrix-others'    => 'Anger perjèkter van Wikimedia',

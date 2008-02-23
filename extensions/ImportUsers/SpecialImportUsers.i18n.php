@@ -373,8 +373,10 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'importusers-log-summary'     => 'సంగ్రహం',
 	'importusers-log-summary-all' => 'అన్నీ',
+	'importusers-login-name'      => 'ప్రవేశపు పేరు',
 	'importusers-password'        => 'సంకేతపదం',
 	'importusers-email'           => 'ఈ-మెయిల్',
+	'importusers-realname'        => 'నిజమైన పేరు',
 );
 
 /** Volapük (Volapük)

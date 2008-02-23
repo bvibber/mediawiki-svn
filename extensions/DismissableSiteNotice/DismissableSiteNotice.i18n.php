@@ -159,10 +159,12 @@ $messages['he'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Dnik
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
 	'sitenotice_close' => 'sakrij',
+	'sitenotice-desc'  => 'Dopušta korisnicima zatvaranje obavijesti',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

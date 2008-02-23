@@ -238,6 +238,21 @@ $messages['eo'] = array(
 	'changeauthor-nosuchtitle' => 'Estas neniu pagxo titolata "$1".',
 );
 
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'changeauthor'                      => 'Muuta muokkausrevision tekijä',
+	'changeauthor-desc'                 => 'Mahdollistaa muokkausrevision tekijän muuttamisen',
+	'changeauthor-title'                => 'Muuttaa muokkausrevision tekijän',
+	'changeauthor-search-box'           => 'Hae muokkausrevisioita',
+	'changeauthor-comment'              => 'Kommentti:',
+	'changeauthor-changeauthors-single' => 'Muuta tekijä',
+	'changeauthor-nosuchtitle'          => 'Ei ole sivua nimeltä "$1".',
+	'changeauthor-success'              => 'Pyyntö on suoritettu onnistuneesti.',
+);
+
 /** French (Français)
  * @author Sherbrooke
  * @author Dereckson
@@ -713,6 +728,8 @@ $messages['sv'] = array(
  * @author వైజాసత్య
  */
 $messages['te'] = array(
+	'changeauthor-search-box'           => 'కూర్పులను వెతకండి',
+	'changeauthor-pagename-or-revid'    => 'పేజీ పేరు లేదా కూర్పు ఐడీ:',
 	'changeauthor-pagenameform-go'      => 'వెళ్ళు',
 	'changeauthor-comment'              => 'వ్యాఖ్య:',
 	'changeauthor-changeauthors-multi'  => 'రచయిత(లు) ను మార్చు',

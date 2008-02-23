@@ -215,20 +215,23 @@ $messages['nl'] = array(
 	'player-goto-file'     => 'bestand',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'player' => 'Avspiller',
-	'player-title' => 'Avspiller',
-	'player-playertitle' => 'Avspiller: $1',
-	'player-file' => 'Filnavn',
-	'player-play' => 'Spill av',
-	'player-imagepage-header' => '<h1>$1</h1>',#identical but defined
-	'player-not-allowed' => 'ikke tillatt format',
-	'player-not-found' => 'fil ikke funnet',
+	'player'               => 'Avspiller',
+	'player-desc'          => 'Inkludert multimediespiller med vanlige programtillegg for nettlesere og en [[Special:Player|spesialside]]',
+	'player-title'         => 'Avspiller',
+	'player-playertitle'   => 'Avspiller: $1',
+	'player-file'          => 'Filnavn',
+	'player-play'          => 'Spill av',
+	'player-not-allowed'   => 'ikke tillatt format',
+	'player-not-found'     => 'fil ikke funnet',
 	'player-invalid-title' => 'ugyldig tittel',
-	'player-clicktoplay' => 'Spill av $1',
-	'player-goto-player' => 'avspiller',
-	'player-goto-page' => 'Side',
-	'player-goto-file' => 'fil',
+	'player-clicktoplay'   => 'Spill av $1',
+	'player-goto-player'   => 'avspiller',
+	'player-goto-page'     => 'Side',
+	'player-goto-file'     => 'fil',
 );
 
 /** Occitan (Occitan)
@@ -373,6 +376,7 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'player-file'      => 'ఫైలు పేరు',
 	'player-play'      => 'ఆడించు',
+	'player-not-found' => 'ఫైలు కనబడలేదు',
 	'player-goto-page' => 'పేజీ',
 	'player-goto-file' => 'ఫైలు',
 );

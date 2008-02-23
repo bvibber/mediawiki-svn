@@ -1185,6 +1185,8 @@ $messages['te'] = array(
 	'sign-viewfield-email'         => 'ఈమెయిల్',
 	'sign-viewfield-age'           => 'వయసు',
 	'sign-viewfield-options'       => 'ఎంపికలు',
+	'sig-anonymous'                => '<i>అనామకం</i>',
+	'sig-private'                  => '<i>అంతరంగికం</i>',
 	'sign-viewfield-reviewcomment' => 'వ్యాఖ్య',
 	'sign-review-comment'          => 'వ్యాఖ్య',
 );

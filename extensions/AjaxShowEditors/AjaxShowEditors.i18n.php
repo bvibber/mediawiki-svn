@@ -151,13 +151,15 @@ $messages['ext'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Cimon Avaro
  */
 $messages['fi'] = array(
-	'ajax-se-desc'    => 'Näyttää muokkauslaatikon yhteydessä ketkä muokkaavat samaa sivua samanaikaisesti',
-	'ajax-se-title'   => 'Samanaikaiset muokkaajat:',
-	'ajax-se-pending' => 'odotetaan päivitystä… (napsauta tästä tai aloita muokkaaminen)',
-	'ajax-se-idling'  => '($1 s sitten)',
+	'ajax-se-desc'             => 'Näyttää muokkauslaatikon yhteydessä ketkä muokkaavat samaa sivua samanaikaisesti',
+	'ajax-se-title'            => 'Samanaikaiset muokkaajat:',
+	'ajax-se-pending'          => 'odotetaan päivitystä… (napsauta tästä tai aloita muokkaaminen)',
+	'ajax-se-idling'           => '($1 s sitten)',
+	'ajax-se-pagedoesnotexist' => 'sivua ei ole',
 );
 
 /** French (Français)

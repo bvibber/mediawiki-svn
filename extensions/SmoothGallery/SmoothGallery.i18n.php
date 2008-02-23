@@ -45,6 +45,7 @@ $messages['ar'] = array(
  */
 $messages['bg'] = array(
 	'smoothgallery-desc'                => 'Позволява на потребителите да създават галерии с качените от тях файлове.',
+	'smoothgallery-gallery-not-found'   => 'Поисканата галерия не съществува',
 	'smoothgallery-not-found'           => 'Не бяха добавени картинки в галерията. Необходимо е да се добави поне една картинка.',
 	'smoothgallery-no-images'           => 'Не бяха открити картинки в галерията. Необходимо е всички картинки да съществуват. Следните картинки не бяха намерени: $1',
 	'smoothgallery-javascript-disabled' => 'За правилно показване на галерията е необходим Javascript.',
@@ -140,6 +141,7 @@ $messages['no'] = array(
 	'smoothgallery-gallery-not-found'   => 'Det etterspurte galleriet finnes ikke.',
 	'smoothgallery-not-found'           => 'Ingen bilder ble lagt til i galleriet. Legg til minst ett bilde.',
 	'smoothgallery-no-images'           => 'Ingen bilder ble funnet i dette galleriet. Forsikre deg om at alle bilder finnes. Følgende bilder ble ikke funnet. $1',
+	'smoothgallery-invalid-images'      => 'Følgende etterspurte bilder var av en ugyldig type: $1',
 	'smoothgallery-unexpected-error'    => 'Det var en uventet feil. Lever en feilrapport.',
 	'smoothgallery-javascript-disabled' => 'Javascript er nødvendig for å vise dette galleriet korrekt.',
 );

@@ -210,6 +210,13 @@ $messages['sv'] = array(
 	'selectcategory-title' => 'Välj kategorier',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'selectcategory-title' => 'వర్గాలను ఎంచుకోండి',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

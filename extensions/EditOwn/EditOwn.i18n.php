@@ -42,6 +42,13 @@ $messages['nl'] = array(
 	'editown-desc' => "Gebruikers zonder het recht ''editall'' kunnen alleen pagina's bewerken die ze zelf hebben gemaakt",
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'editown-desc' => "Brukere uten ''editall''-rettigheter kan kun redigere sider de selv har opprettet",
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

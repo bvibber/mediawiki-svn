@@ -81,6 +81,13 @@ $messages['ja'] = array(
 	'poem-desc' => '詩的な文章フォーマットで記述できる<tt>&lt;poem&gt;</tt>タグを追加する',
 );
 
+/** Limburgish (Limburgs)
+ * @author Matthias
+ */
+$messages['li'] = array(
+	'poem-desc' => 'Voegt de tag <tt>&lt;poem&gt;</tt> toe veur de opmaak van poëzie',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Hugo.arg
  */

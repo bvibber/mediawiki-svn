@@ -64,7 +64,13 @@ $messages['ast'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'pdtest_diff' => 'Разлики',
+	'pdtest_no_target'    => 'Не беше посочена цел.',
+	'pdtest_page_missing' => 'Поисканата страница не беше открита в базата данни.',
+	'pdtest_no_changes'   => 'Не са направени промени.',
+	'pdtest_time_report'  => '<b>$1</b> отне $2 секунди, <b>$3</b> отне $4 секунди.',
+	'pdtest_ok'           => 'Добре',
+	'pdtest_get_text'     => 'Извличане на текст от страница',
+	'pdtest_diff'         => 'Разлики',
 );
 
 /** Bengali (বাংলা)
@@ -336,9 +342,11 @@ $messages['lb'] = array(
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
+ * @author Matthias
  */
 $messages['li'] = array(
 	'parserdifftest'      => 'Parserversjèlletes',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Speciale pagina]] voor het vergelijken van de uitvoer van twee verschillende parsers',
 	'pdtest_no_target'    => 'Gein doel aangegaeve.',
 	'pdtest_page_missing' => 'De aangegaeve pazjena is neet aangetroffe inne database.',
 	'pdtest_no_changes'   => 'Gein verangeringe vasgesteld.',
@@ -450,6 +458,15 @@ $messages['pl'] = array(
 	'pdtest_diff'         => 'Różnice',
 	'pdtest_side_by_side' => 'Porównanie wyników',
 	'pdt_comparing_page'  => 'Porównuję wynik działania analizatora składni z [[$1]]',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'pdtest_text' => 'ځايونکی متن:',
+	'pdtest_ok'   => 'ښه/هو',
+	'pdtest_diff' => 'توپيرونه',
 );
 
 /** Portuguese (Português)

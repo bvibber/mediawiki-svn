@@ -52,6 +52,14 @@ $messages['de'] = array(
 	'whosonline-desc' => 'Zeigt [[Special:WhosOnline|eine Liste]] der eingeloggten und anonymen Benutzer, die im Moment online sind',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'whosonline'      => 'Kiu estas konektita',
+	'whosonline-desc' => 'Montras [[Special:WhosOnline|listo]] de ensalutitaj kaj anonimaj uzantoj nune konektitaj',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -138,6 +146,13 @@ $messages['sk'] = array(
 $messages['sv'] = array(
 	'whosonline'      => 'Vem är ansluten',
 	'whosonline-desc' => 'Visar [[Special:WhosOnline|en lista]] över inloggade och anonyma användare som för närvarande är anslutna',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'whosonline' => 'ఆన్&zwnj;లైన్లో ఎవరున్నారు',
 );
 
 /** Vietnamese (Tiếng Việt)

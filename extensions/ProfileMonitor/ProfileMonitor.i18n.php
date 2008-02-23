@@ -219,7 +219,8 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'profiling-ok' => 'సరే',
+	'profiling-ok'           => 'సరే',
+	'profiling-data-process' => 'ప్రక్రియ',
 );
 
 /** Turkish (Türkçe)

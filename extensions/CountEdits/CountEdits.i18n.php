@@ -152,10 +152,11 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'countedits'              => 'Compteur d’éditions',
-	'countedits-desc'         => '[[Special:CountEdits|Page spéciale]] comptabilisant le nombre d’éditions des utilisateurs et fournissant la liste des dix meilleurs contributeurs.',
+	'countedits-desc'         => '[[Special:CountEdits|Page spéciale]] comptabilisant le nombre d’éditions des utilisateurs et fournissant la liste des dix principaux contributeurs.',
 	'countedits-warning'      => 'Avertissement : ne jugez pas un livre par sa couverture. Ne jugez pas non plus un utilisateur en fonction du nombre de ses contributions.',
 	'countedits-username'     => 'Utilisateur',
 	'countedits-ok'           => 'Accepter',
@@ -488,6 +489,7 @@ $messages['ru'] = array(
 	'countedits-desc'         => '[[Special:CountEdits|Служебная страница]], подсчитывающая количество правок участников и выводящая список из 10 участников, имеющих наибольший вклад',
 	'countedits-warning'      => "'''Внимание:''' не судите о книге по её обложке. Не судите об участнике по количеству его правок.",
 	'countedits-username'     => 'Участник:',
+	'countedits-ok'           => 'OK',
 	'countedits-nosuchuser'   => 'Не существует участника с именем $1.',
 	'countedits-resultheader' => 'Данные для $1',
 	'countedits-resulttext'   => '$1 сделал $2 правок',

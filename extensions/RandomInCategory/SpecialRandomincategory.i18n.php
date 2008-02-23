@@ -212,9 +212,10 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'randomincategory-toolbox' => 'యాదృచ్ఛిక పేజీ',
-	'randomincategory-label'   => 'వర్గం:',
-	'randomincategory-submit'  => 'వెళ్ళు',
+	'randomincategory-toolbox'    => 'యాదృచ్ఛిక పేజీ',
+	'randomincategory-nocategory' => '$1 అనే వర్గం లేదు లేదా ఖాళీగా ఉంది',
+	'randomincategory-label'      => 'వర్గం:',
+	'randomincategory-submit'     => 'వెళ్ళు',
 );
 
 /** Volapük (Volapük)

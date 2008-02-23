@@ -164,6 +164,13 @@ $messages['sv'] = array(
 	'mediafunctions-not-exist'     => '"$1" existerar inte',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'mediafunctions-invalid-title' => '"$1" అనేది సరైన శీర్షిక కాదు',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

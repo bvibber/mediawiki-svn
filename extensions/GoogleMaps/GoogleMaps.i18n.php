@@ -447,6 +447,7 @@ $wgGoogleMapsMessages['es'] = array(
 /** French (Français)
  * @author Sylvestre
  * @author Grondin
+ * @author Meithal
  */
 $wgGoogleMapsMessages['fr'] = array(
 	'gm-incompatible-browser'  => 'Pour voir la carte qui devrait &ecirc;tre dans cette espace, utilisez un <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">navigateur compatible</a>.',
@@ -478,6 +479,7 @@ $wgGoogleMapsMessages['fr'] = array(
 	'gm-scale-control'         => 'Echelle',
 	'gm-overview-control'      => "Vue d'ensemble",
 	'gm-selector-control'      => 'Selection Carte/Satelite',
+	'gm-zoom-control'          => 'Navigation',
 	'gm-large'                 => 'Grande',
 	'gm-medium'                => 'Moyenne',
 	'gm-small'                 => 'Petite',
@@ -490,6 +492,7 @@ $wgGoogleMapsMessages['fr'] = array(
 	'gm-search'                => 'Rechercher',
 	'gm-clear-search'          => 'Nettoyer les r&eacute;sultats des recherches',
 	'gm-meters'                => 'm&egrave;tres',
+	'gm-miles'                 => 'miles',
 	'gm-editing-path'          => "Cliquez sur la carte pour ajouter d'autres points &agrave; ce trajet.",
 	'gm-save-path'             => 'Sauvegarder',
 	'gm-edit-path'             => 'Ajouter des points',
@@ -573,20 +576,26 @@ $wgGoogleMapsMessages['hsb'] = array(
  * @author Robby
  */
 $wgGoogleMapsMessages['lb'] = array(
-	'gm-balloon-title'   => 'Titel:',
-	'gm-save-point'      => 'Späicheren and zoumaachen',
-	'gm-no-results'      => 'Pardon, kee Resultat',
-	'gm-searching'       => 'Sich ...',
-	'gm-map'             => 'Kaart',
-	'gm-are-you-sure'    => 'Sidd Dir sécher?',
-	'gm-no-zoom-control' => 'Keen',
-	'gm-yes'             => 'Jo',
-	'gm-no'              => 'Neen',
-	'gm-search'          => 'Sichen',
-	'gm-meters'          => 'Meter',
-	'gm-miles'           => 'Meilen',
-	'gm-save-path'       => 'Späicheren',
-	'gm-back'            => 'zréck',
+	'gm-balloon-title'    => 'Titel:',
+	'gm-save-point'       => 'Späicheren and zoumaachen',
+	'gm-load-map'         => 'Kaart lueden',
+	'gm-no-results'       => 'Pardon, kee Resultat',
+	'gm-searching'        => 'Sich ...',
+	'gm-map'              => 'Kaart',
+	'gm-are-you-sure'     => 'Sidd Dir sécher?',
+	'gm-width'            => 'Breet',
+	'gm-height'           => 'Héicht',
+	'gm-overview-control' => 'Iwwersiicht',
+	'gm-small'            => 'Kleng',
+	'gm-no-zoom-control'  => 'Keen',
+	'gm-yes'              => 'Jo',
+	'gm-no'               => 'Neen',
+	'gm-search'           => 'Sichen',
+	'gm-meters'           => 'Meter',
+	'gm-miles'            => 'Meilen',
+	'gm-save-path'        => 'Späicheren',
+	'gm-color-path'       => 'Farf änneren',
+	'gm-back'             => 'zréck',
 );
 
 /** Dutch (Nederlands)
@@ -657,6 +666,74 @@ $wgGoogleMapsMessages['nl'] = array(
 	'gm-kml-export'            => 'Deze kaart naar KML exporteren',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$wgGoogleMapsMessages['no'] = array(
+	'gm-incompatible-browser'  => 'For å kunne se kartet som skulle ha vært her, må du bruke en <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">kompatibel nettleser</a>.',
+	'gm-no-editor'             => 'Dessverre støtter ikke nettleseren din de interaktive kartlagingstjenestene. Prøv den nyeste versjonen av <a href="http://www.microsoft.com/norge/windows/ie/default.mspx">Internet Explorer</a> (Windows) eller <a href="http://www.mozilla-europe.org/no/products/firefox/">Firefox</a> (Windows, Mac og Linux).',
+	'gm-balloon-title'         => 'Tittel:',
+	'gm-make-marker'           => 'Bildetekst (wikikoding kan brukes):',
+	'gm-remove'                => 'fjern',
+	'gm-caption'               => 'Bildetekst',
+	'gm-tab-title'             => 'Fanetittel',
+	'gm-tab'                   => 'Fane',
+	'gm-start-path'            => 'start en sti',
+	'gm-trace-area'            => 'spor et område',
+	'gm-save-point'            => 'lagre og lukk',
+	'gm-load-map-from-article' => 'Last et kart fra siden:',
+	'gm-no-maps'               => 'Ingen kart å laste fra denne siden.',
+	'gm-refresh-list'          => 'Oppdater liste',
+	'gm-load-map'              => 'Last kart',
+	'gm-clip-result'           => 'Legg til på kart',
+	'gm-no-results'            => 'Beklager, ingen resultater',
+	'gm-searching'             => 'søker...',
+	'gm-map'                   => 'Kart',
+	'gm-note'                  => 'Merk: Husk å kopiere det til vil lagre på siden nedenfor før du trykker «Last kart», «Lagre» eller «Forhåndsvisning»!',
+	'gm-instructions'          => 'Nedenfor er wikikoden for å lage kartet ovenfor.',
+	'gm-are-you-sure'          => 'Er du sikker?',
+	'gm-clear-all-points'      => 'Tøm alle punkter',
+	'gm-refresh-points'        => 'Oppdater punkter',
+	'gm-width'                 => 'Bredde',
+	'gm-height'                => 'Høyde',
+	'gm-scale-control'         => 'Skala',
+	'gm-overview-control'      => 'Oversikt',
+	'gm-selector-control'      => 'Kart-/satelittvelger',
+	'gm-zoom-control'          => 'Navigasjon',
+	'gm-large'                 => 'Stor',
+	'gm-medium'                => 'Middels',
+	'gm-small'                 => 'Liten',
+	'gm-no-zoom-control'       => 'Ingen',
+	'gm-yes'                   => 'Ja',
+	'gm-no'                    => 'Nei',
+	'gm-search-preface'        => 'Klikk på kartet for å legge til et punkt, eller hoppe til en by, et land, en adresse eller en forretning',
+	'gm-geocode-preface'       => 'Klikk på kartet for å legge til et punkt, eller for å hoppe til en by, et land eller en adresse:',
+	'gm-no-search-preface'     => 'Klikk på kartet for å legge til et punkt.',
+	'gm-search'                => 'Søk',
+	'gm-clear-search'          => 'tøm søkeresultater',
+	'gm-meters'                => 'meter',
+	'gm-miles'                 => 'miles',
+	'gm-editing-path'          => 'Klikk på kartet for å legge til flere punkter på denne stien.',
+	'gm-save-path'             => 'Lagre',
+	'gm-edit-path'             => 'legg til punkter',
+	'gm-show-path'             => 'vis punkter',
+	'gm-color-path'            => 'endre farge',
+	'gm-color-fill'            => 'endre fyllfarge',
+	'gm-add-fill'              => 'fyll område',
+	'gm-remove-fill'           => 'fjern fyll',
+	'gm-fill-color'            => 'Fyllfarge',
+	'gm-line-color'            => 'Linjefarge',
+	'gm-opacity'               => 'Ugjennomsiktighet',
+	'gm-line-width'            => 'Bredde',
+	'gm-make-map'              => 'lag et kart',
+	'gm-hide-map'              => 'skjul kart',
+	'gm-back'                  => 'tilbake',
+	'gm-kml-include'           => 'Ekstern KML/GeoRSS:',
+	'gm-kml-include-link'      => 'legg til på kart',
+	'gm-kml-loading'           => 'laster...',
+	'gm-kml-export'            => 'Eksporter dette kartet til KML',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -682,7 +759,6 @@ $wgGoogleMapsMessages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author Evan Miller
  * @author .:Ajvol:.
  */
 $wgGoogleMapsMessages['ru'] = array(
@@ -729,6 +805,7 @@ $wgGoogleMapsMessages['ru'] = array(
 	'gm-clear-search'          => 'Удалить результаты поиска',
 	'gm-meters'                => 'метры',
 	'gm-miles'                 => 'мили',
+	'gm-editing-path'          => 'Щёлкните на карте, чтобы добавить точек в этот путь.',
 	'gm-save-path'             => 'Сохранить',
 	'gm-edit-path'             => 'Добавить точки',
 	'gm-show-path'             => 'показать точки',
@@ -824,6 +901,8 @@ $wgGoogleMapsMessages['sv'] = array(
 	'gm-balloon-title'         => 'Titel:',
 	'gm-load-map-from-article' => 'Ladda en karta från sidan:',
 	'gm-load-map'              => 'Ladda karta',
+	'gm-clip-result'           => 'Lägg till till karta',
+	'gm-no-results'            => 'Beklagar, inga resultat',
 	'gm-searching'             => 'söker...',
 	'gm-map'                   => 'Karta',
 	'gm-are-you-sure'          => 'Är du säker?',
@@ -854,14 +933,22 @@ $wgGoogleMapsMessages['sv'] = array(
  */
 $wgGoogleMapsMessages['te'] = array(
 	'gm-balloon-title' => 'శీర్షిక:',
+	'gm-remove'        => 'తొలగించు',
+	'gm-tab-title'     => 'టాబ్ శీర్షిక',
+	'gm-save-point'    => 'భద్రపరచు &amp; మూసేయి',
+	'gm-searching'     => 'వెతుకుతున్నాం...',
 	'gm-width'         => 'వెడల్పు',
 	'gm-height'        => 'ఎత్తు',
+	'gm-large'         => 'పెద్ద',
+	'gm-medium'        => 'మధ్యస్థం',
+	'gm-small'         => 'చిన్న',
 	'gm-yes'           => 'అవును',
 	'gm-no'            => 'కాదు',
 	'gm-search'        => 'వెతుకు',
 	'gm-meters'        => 'మీటర్లు',
 	'gm-miles'         => 'మైళ్ళు',
 	'gm-save-path'     => 'భద్రపరచు',
+	'gm-line-color'    => 'లైను రంగు',
 	'gm-line-width'    => 'వెడల్పు',
 );
 

@@ -31,9 +31,10 @@ $messages['de'] = array(
 /** French (Français)
  * @author Grondin
  * @author Meithal
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'crowdauthentication-desc' => "Plugin d'authenfication pour l’affluence de l'Atlas",
+	'crowdauthentication-desc' => 'Plugiciel d’authenfication pour l’affluence de l’Atlas',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -48,6 +49,13 @@ $messages['hsb'] = array(
  */
 $messages['nl'] = array(
 	'crowdauthentication-desc' => 'Authenticatieplugin voor Atlassian Crowd',
+);
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'crowdauthentication-desc' => 'Autentiseringsprogramtillegg for Atlassian Crowd',
 );
 
 /** Russian (Русский)

@@ -148,6 +148,7 @@ $messages['bg'] = array(
 	'searchnumber'          => '<strong>Резултати $1–$2 от $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Предишни</span>",
 	'searchnext'            => "<span style='font-size: small'>Следващи</span> &#x00BB;",
+	'lucene-searchscore'    => 'Релевантност: $1%',
 	'lucene-resultsize'     => '$1 ($2 думи)',
 	'searchnoresults'       => 'За съжаление нямаше точни съвпадения със заявката ви.',
 	'searchnearmatches'     => '<b>Следните страници имат сходни с търсенето имена:</b>',
@@ -834,6 +835,7 @@ Dir kënnt awer och déi extern Sichméiglichkeete benotzen:',
  * @author Matthias
  */
 $messages['li'] = array(
+	'lucene-desc'           => 'Interface veur de zeukmachine Apache Lucene',
 	'searchnumber'          => '<strong>Resultate $1-$2 van $3</strong>',
 	'searchprev'            => "« <span style='font-size: small'>Vorige</span>",
 	'searchnext'            => "<span style='font-size: small'>Volgende</span> »",

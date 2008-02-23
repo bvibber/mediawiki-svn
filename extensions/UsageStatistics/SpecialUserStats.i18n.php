@@ -199,6 +199,33 @@ $messages['el'] = array(
 	'usagestatisticstype' => 'Τύπος',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'specialuserstats'                => 'Statistiko de uzado',
+	'usagestatistics'                 => 'Statistiko de uzado',
+	'usagestatistics-desc'            => 'Montru individuan uzanton kaj ĉiun statistikon pri uzado de vikio',
+	'usagestatisticsfor'              => '<h2>Statistiko pri uzado por [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'         => 'Ĉiuj uzantoj',
+	'usagestatisticsinterval'         => 'Intervalo',
+	'usagestatisticstype'             => 'Tipo',
+	'usagestatisticsstart'            => 'Komenco-dato',
+	'usagestatisticsend'              => 'Fino-dato',
+	'usagestatisticssubmit'           => 'Generu statistikojn',
+	'usagestatisticsnostart'          => '* <font color=red>Bonvolu entajpi komenco-daton.</font>',
+	'usagestatisticsnoend'            => '* <font color=red>Bonvolu entajpi fino-daton.</font>',
+	'usagestatisticsbadstartend'      => '<b>Malbona <i>Komenca</i> kaj/aŭ <i>Fina</i> dato!</b>',
+	'usagestatisticsintervalday'      => 'Tago',
+	'usagestatisticsintervalweek'     => 'Semajno',
+	'usagestatisticsintervalmonth'    => 'Monato',
+	'usagestatisticsincremental'      => 'Krementa <!-- laŭ Komputada Leksikono -->',
+	'usagestatisticsincremental-text' => 'Krementa <!-- laŭ Komputada Leksikono -->',
+	'usagestatisticscalselect'        => 'Elektu',
+	'usagestatistics-editindividual'  => 'Individua uzanto $1 redaktoj statistikoj',
+	'usagestatistics-editpages'       => 'Individua uzanto $1 paĝoj statistikoj',
+);
+
 /** Finnish (Suomi)
  * @author Japsu
  */

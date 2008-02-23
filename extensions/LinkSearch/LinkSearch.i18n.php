@@ -371,11 +371,18 @@ $messages['lb'] = array(
 );
 
 /** Limburgish (Limburgs)
+ * @author Matthias
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
-	'linksearch-ns' => 'Naamruumdje:',
-	'linksearch-ok' => 'Zeuk',
+	'linksearch'       => 'Extern links zeuke',
+	'linksearch-desc'  => "Pagina's zoeken met externe links die aan een bepaald patroon voldoen",
+	'linksearch-pat'   => 'Zeukpatroon:',
+	'linksearch-ns'    => 'Naamruumdje:',
+	'linksearch-ok'    => 'Zeuk',
+	'linksearch-text'  => 'Wildcards wie "*.wikipedia.org" of "*.org" zeen toegestaon.',
+	'linksearch-line'  => '$1 gelink vanaaf $2',
+	'linksearch-error' => 'Wildcards zijn alleen toegestaan aan het begin van een hostnaam.',
 );
 
 $messages['lo'] = array(
@@ -511,8 +518,9 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'linksearch-ns' => 'نوم-تشيال:',
-	'linksearch-ok' => 'لټون',
+	'linksearch-pat' => 'د پلټنې مخبېلګه:',
+	'linksearch-ns'  => 'نوم-تشيال:',
+	'linksearch-ok'  => 'لټون',
 );
 
 /** Portuguese (Português)

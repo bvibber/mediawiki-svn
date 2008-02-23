@@ -274,6 +274,13 @@ $messages['sv'] = array(
 	'latexdoc_get_pdf' => 'Hämta PDF',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'latexdoc_no_text' => 'పేజీలో పాఠ్యమేమీ లేదు, DVIని సృష్టించలేము',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

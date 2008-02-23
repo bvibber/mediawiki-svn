@@ -94,8 +94,12 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'eval_out'  => 'Resultat',
-	'eval_code' => 'Kode',
+	'eval'        => 'Eval',
+	'eval-desc'   => 'Legger til [[Special:Eval|et grensesnitt]] til <code>eval()</code>-funksjonen',
+	'eval_submit' => 'Evaluer',
+	'eval_escape' => 'Unnvik utdata',
+	'eval_out'    => 'Resultat',
+	'eval_code'   => 'Kode',
 );
 
 /** Occitan (Occitan)

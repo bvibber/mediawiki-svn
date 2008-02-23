@@ -56,6 +56,13 @@ $messages['nl'] = array(
 	'titlekey-desc' => 'Backend voor zoeksuggesties voor paginanaamvoorvoegsels',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'titlekey-desc' => 'Bakstykke for søk etter tittelprefiks',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

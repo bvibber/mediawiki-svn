@@ -408,6 +408,7 @@ $messages['sv'] = array(
 	'passwordreset-nopassmatch'     => 'Lösenordet matchar inte',
 	'passwordreset-username'        => 'Användarnamn',
 	'passwordreset-newpass'         => 'Nytt lösenord',
+	'passwordreset-confirmpass'     => 'Konfirmera lösenord',
 );
 
 /** Telugu (తెలుగు)
@@ -415,9 +416,12 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'passwordreset-invalidusername' => 'తప్పుడు వాడుకరిపేరు',
+	'passwordreset-emptyusername'   => 'ఖాళీ వాడుకరి పేరు',
 	'passwordreset-nopassmatch'     => 'సంకేతపదాలు సరిపోలలేదు',
 	'passwordreset-username'        => 'వాడుకరిపేరు',
 	'passwordreset-newpass'         => 'కొత్త సంకేతపదం',
+	'passwordreset-confirmpass'     => 'సంకేతపదాన్ని నిర్ధారించండి',
+	'passwordreset-disableuser'     => 'వాడుకరి ఖాతాని అచేతనం చేయాలా?',
 );
 
 /** Volapük (Volapük)

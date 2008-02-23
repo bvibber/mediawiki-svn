@@ -117,6 +117,13 @@ $messages['sv'] = array(
 	'usercontactlink-baduser' => 'felaktigt användarnamn',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'usercontactlink-baduser' => 'తప్పుడు వాడుకరిపేరు',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

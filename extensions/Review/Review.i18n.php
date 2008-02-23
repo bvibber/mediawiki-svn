@@ -416,6 +416,8 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'review_sidebar_explanation'    => 'Den venstre avmerkingsboksen betyr alltid «ingen mening».',
+	'review_error'                  => 'Noe er feil!',
 	'review_total_statistics'       => 'Totalt',
 	'review_statistics_left_corner' => 'Revisjon',
 	'review_version_link'           => 'Revisjon #$1',
@@ -563,11 +565,14 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'review_sidebar_title'          => 'సమీక్ష',
-	'review_total_statistics'       => 'మొత్తం',
-	'review_statistics_left_corner' => 'కూర్పు',
-	'review_version_link'           => 'కూర్పు #$1',
-	'review_user_details_link'      => '(వివరాలు)',
-	'review_comment'                => 'వ్యాఖ్య',
+	'review_sidebar_title'                   => 'సమీక్ష',
+	'review_total_statistics'                => 'మొత్తం',
+	'review_statistics_left_corner'          => 'కూర్పు',
+	'review_version_link'                    => 'కూర్పు #$1',
+	'review_version_reviews_link'            => '<small>(కూర్పు సమీక్షలు)</small>',
+	'review_user_details_link'               => '(వివరాలు)',
+	'revision_review_this_page_version_link' => 'పేజీ యొక్క ఈ కూర్పుని సమీక్షించండి.',
+	'review_page_review'                     => '"$1" పేజీ యొక్క సమీక్ష',
+	'review_comment'                         => 'వ్యాఖ్య',
 );
 
