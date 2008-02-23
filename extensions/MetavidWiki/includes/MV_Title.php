@@ -13,7 +13,9 @@
  if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  
  /*@@TODO document 
-  * 
+  * @@todo title implementation is a bit messy ..
+  * MV_Title should really just extend title and be passed around as a title
+  *  instead of having two objects (Title and MV_title)
   */
  class MV_Title extends Title{
  	var $stream_name=null;

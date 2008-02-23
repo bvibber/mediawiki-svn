@@ -485,12 +485,7 @@ function mvDoMetavidStreamPage(&$title, &$article){
 		$streamTitle = Title::newFromText( $mvTitle->getStreamName(), MV_NS_STREAM);
 		//print " new title: " . $streamTitle . "\n";		
 		$article = new MV_StreamPage($streamTitle, $mvTitle);
-	}else{		
-		//if its key word Main_Page (present the default interface)
-		if($title->getDBkey()=='Main_Page'){
-			$title->mNamespace= NS_SPECIAL;				
-			$article = new MV_StreamPage($title, $mvTitle);
-		}		
+	}else{				
 		mvMissingStreamPage($mvTitle->stream_name);
 	}	
 }

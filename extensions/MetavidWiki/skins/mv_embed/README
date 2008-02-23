@@ -11,8 +11,12 @@
 * @email dale@ucsc.edu
 * @url http://metavid.ucsc.edu
 * 
-*
 *********************************************
+
+v.7
+
+
+
 v.6
 * added msg system for compatibility with translations 
 * add support for relative file or path names for media files for cortado.
@@ -28,7 +32,7 @@ v.5
 * better support for different resolutions. 
 * inline playlist: 
 
-for details see: http://metavid.ucsc.edu/wiki/index.php/Mv_embed 
+
 
 
 v.4 
@@ -47,7 +51,6 @@ http://wiki.xiph.org/index.php/OggPlayJavascriptAPI
 
 & integrate the video element as close as possible with the html5 spec:
 http://www.whatwg.org/specs/web-apps/current-work/#video
-
 
 it attempts to wrap these calls for the following players:
 I try to include a link to their Javascript apis if I can find one: 
@@ -69,21 +72,22 @@ totem:
 
 
 Sample Usage:
-mv_embed.js is included somewhere in the page then in the html:
+<script type="text/javascript" src="mv_embed.js" /> 
 <video id="video_id" src="video_url"></video>
-once the page loads the video_id object is created as a video object
+
+once the page loads the video_id object is rewritten as an mv_embed object
 
 
-Supported Attributes for <video> tag: type name  [default] description
-    bool    autoplay    [false]  if the clip should play on page load
-    bool    controls   [true]  if the default interface should be displayed (see interface)
-    string  id          null    the id of the html element useful for grabbing the video object
-    string  src			null	the url src for the video file 
-    string  thumbnail   logo    the thumbnail to be displayed a frame grab is ideal.
-    string  linkback    link    a info link back for more info about this stream 
-    							(useful for when the clip is embed externally) 
-    int     width       [320]   the video display width
-    int     height      [240]   the video display height
-
-   bool    embed_link  [ture]  if the html to include this clip on an external page should be displayed
+Supported Attributes for <video> tag:
+type 	name  		[default] 	description
+bool    autoplay    [false]  	if the clip should play on page load
+bool    controls   	[true]  	if the default interface should be displayed (see interface)
+string  id          null    	the id of the html element useful for grabbing the video object
+string  src			null		the url src for the video file 
+string  thumbnail   logo    	the thumbnail to be displayed a frame grab is ideal.
+string  linkback    link    	a info link back for more info about this stream 
+								(useful for when the clip is embed externally) 
+int     width       [320]   	the video display width
+int     height      [240]   	the video display height
+bool    embed_link  [ture] 	 	if the html to embed this clip on an external page should be displayed
 

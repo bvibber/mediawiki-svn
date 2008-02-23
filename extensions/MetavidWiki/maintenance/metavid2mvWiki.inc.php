@@ -58,18 +58,30 @@ function do_stream_file_check(& $old_stream) {
 		);*/
 		//find the files and check for them on the servers:
 		//@@todo have multiple file locations for same file? 
+		$set=array();
 		foreach($mvVideoArchivePaths as $path){
-			if(url_exists($path . $old_stream->stream_name . '.ogg')){
-				$set['mv_ogg_low_quality']=$path . $old_stream->stream_name . '.ogg';
+			if(url_exists($path . $old_stream->name . '.ogg')){
+				$set['mv_ogg_low_quality']=$path . $old_stream->name . '.ogg';
 				//force cap1 path @@todo remove!: 
-				$set['mv_ogg_low_quality']='http://128.114.20.64/media/' . $old_stream->stream_name . '.ogg';
+				$set['mv_ogg_low_quality']='http://128.114.20.64/media/' . $old_stream->name . '.ogg';
 			}
-			if(url_exists($path . $old_stream->stream_name . '.HQ.ogg')){
-				$set['mv_ogg_high_quality']=$path . $old_stream->stream_name . '.HQ.ogg';
+			if(url_exists($path . $old_stream->name . '.HQ.ogg')){
+				$set['mv_ogg_high_quality']=$path . $old_stream->name . '.HQ.ogg';
 				//force cap1 path @@todo remove!: 
-				$set['mv_ogg_high_quality']='http://128.114.20.64/media/' . $old_stream->stream_name . '.HQ.ogg';
+				$set['mv_ogg_high_quality']='http://128.114.20.64/media/' . $old_stream->name . '.HQ.ogg';
 			}
 		}		
+		if(count($set)==0){
+			//no files present (remove stream) 
+			print 'no files present remove from wiki)'."\n";
+			//make a valid mv title (with requted time: )
+			$mvTitle = new MV_Title( $old_stream->name); 
+			
+			$streamTitle = Title::newFromText( $old_stream->name, MV_NS_STREAM);
+			//print " new title: " . $streamTitle . "\n";		
+			$article = new MV_StreamPage($streamTitle, $mvTitle);
+			$article->doDelete('no files present for stream');		
+		}
 		//print "set: " . print_r($set);
 		//remove old file pointers: 
 		$dbw = wfGetDB(DB_WRITE);
@@ -151,6 +163,7 @@ function do_stream_insert($mode, $stream_name = '') {
 	}
 	print "working on " . count($streams) . ' streams'."\n";
 	foreach ($streams as $stream) {
+		print "on stream $stream->name \n";
 		//init the stream
 		$MVStreams[$stream->name] = new MV_Stream($stream);
 		//check if the stream has already been added to the wiki (if not add it)	
@@ -170,6 +183,7 @@ function do_stream_insert($mode, $stream_name = '') {
 		//do insert/copy all media images 
 		if(!isset($options['noimage'])){
 			do_proccess_images($stream);
+			print "done with images";
 		}
 
 		//check for files (make sure they match with metavid db values
@@ -268,13 +282,13 @@ function do_proccess_images($stream) {
 	print "Found " . $img_count . " images for stream " . $stream->name . "\n";
 	//grab from metavid and copy to local directory structure: 
 	$i=$j= 0;	
-	while ($row = $dbr->fetchObject($image_res)) {
+	while ($row = $dbr->fetchObject($image_res)) {		
 		$relative_time = $row->time - $stream->adj_start_time;
 		//status updates: 
-		if ($i == 10) {			
+		//if ($i == 10) {			
 			print "On image $j of $img_count time: " . seconds2ntp($relative_time) . "\n";
 			$i = 0;
-		}
+		//}
 		$j++;
 		$i++;
 		//get streamImage obj:
@@ -292,7 +306,7 @@ function do_proccess_images($stream) {
 		if ($dbr->numRows($img_check) != 0) {
 			//make sure its there: 
 			if (is_file($local_img_file)) {
-				//print "skiped stream_id:" . $mv_stream_id . " time: " . $relative_time . "\n";
+				print "skiped stream_id:" . $mv_stream_id . " time: " . $relative_time . "\n";
 				continue;
 			} else {
 				//grab but don't insert: 
@@ -304,17 +318,19 @@ function do_proccess_images($stream) {
 			$dbw->insert('mv_stream_images', array (
 				'stream_id' => $MVStreams[$stream->name]->getStreamId(), 'time' => $relative_time));
 			$img_id = $dbw->insertId();
-			//$grab = exec('cd ' . $img_path . '; wget ' . $im_url);
+			//$grab = exec('cd ' . $img_path . '; wget ' . $im_url);			
 		}
 
 		if (is_file($local_img_file)) {
 			echo "skipped $local_img_file \n";
 			continue;
 		}
+		print "run copy: $metavid_img_url, $local_img_file \n";
 		if (!copy($metavid_img_url, $local_img_file)) {
 			echo "failed to copy $metavid_img_url to $local_img_file...\n";
 		} else {
-			//all good don't report anything'		
+			//all good don't report anything'
+			print "all good\n";		
 		}
 	}
 }
@@ -691,6 +707,7 @@ $valid_attributes = array (
 	'district'=>array(
 		'District',
 		'The district # page ie: 3rd District',
+		'page'
 	)	
 );
 //state look up:
