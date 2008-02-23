@@ -500,7 +500,7 @@ class WhiteList extends SpecialPage
         }
 
         $this->setHeaders();
-        $wgOut->setPagetitle(wfMsgTL('whitelist'));
+        $wgOut->setPagetitle(wfMsg('whitelist'));
 
         if (!in_array($wgWhiteListRestrictedGroup, $user->getGroups()))
         {
