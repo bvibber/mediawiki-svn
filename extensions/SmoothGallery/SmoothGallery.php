@@ -42,7 +42,7 @@ $wgSpecialPages['SmoothGallery'] = 'SpecialSmoothGallery';
 //sane defaults. always initialize to avoid register_globals vulnerabilities
 $wgSmoothGalleryDelimiter = "\n";
 $wgSmoothGalleryExtensionPath = $wgScriptPath . '/extensions/SmoothGallery';
-$wgSmoothGalleryUseDatabase = true;
+$wgSmoothGalleryUseDatabase = false;
 
 function efSmoothGallery() {
 	global $wgParser;
