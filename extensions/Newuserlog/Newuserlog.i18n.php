@@ -279,9 +279,13 @@ $messages['fa'] = array(
 
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
 $messages['fi'] = array(
 	'newuserlogpage'           => 'Uudet käyttäjät',
 	'newuserlogpagetext'       => 'Tämä on loki luoduista käyttäjätunnuksista.',
+	'newuserlog-desc'          => 'Lisää lokin [[Special:Log/newusers|luoduista käyttäjätunnuksista]].',
 	'newuserlog-create-entry'  => 'Uusi käyttäjä',
 	'newuserlog-create2-entry' => 'loi käyttäjätunnuksen tunnukselle $1',
 );
@@ -468,6 +472,18 @@ $messages['kk-latn'] = array(
 	'newuserlogpagetext'       => 'Bul qatıswşı tirkelgi jasaw jwrnalı',
 	'newuserlog-create-entry'  => 'Jaña qatıswşı',
 	'newuserlog-create2-entry' => 'jaña tirkelgi jasadı — $1',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'newuserlogpage'           => 'កំណត់ហេតុ នៃការបង្កើតគណនី',
+	'newuserlogpagetext'       => 'នេះជា កំណត់ហេតុ នៃការបង្កើតអ្នកប្រើប្រាស់',
+	'newuserlog-desc'          => 'បន្ថែម [[Special:Log/newusers|កំណត់ហេតុ នៃការបង្កើតគណនី]] ទៅ [[Special:Log]]',
+	'newuserlog-byemail'       => 'ពាក្យសំងាត់ ត្រូវបានផ្ញើ ដោយអ៊ីមែវល៍',
+	'newuserlog-create-entry'  => 'អ្នកប្រើប្រាស់ ថ្មី',
+	'newuserlog-create2-entry' => 'បានបង្កើតគណនី សំរាប់ $1',
 );
 
 /** Korean (한국어)

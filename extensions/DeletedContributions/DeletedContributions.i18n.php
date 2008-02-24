@@ -154,7 +154,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'deletedcontributions'      => 'Poistetut muokkaukset',
-	'deletedcontributions-desc' => 'Mahdollistaa [[Special:DeletedContributions|käyttäjien poistettujen muokkausten]] selaamisen ylläpitäjille',
+	'deletedcontributions-desc' => 'Mahdollistaa [[Special:DeletedContributions|käyttäjien poistettujen muokkausten]] selaamisen ylläpitäjille.',
 );
 
 /** French (Français)
@@ -222,8 +222,12 @@ $messages['is'] = array(
 	'deletedcontributions' => 'Eyddar breytingar notenda',
 );
 
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
 $messages['it'] = array(
-	'deletedcontributions' => 'Contributi utente cancellati',
+	'deletedcontributions'      => 'Contributi utente cancellati',
+	'deletedcontributions-desc' => 'fornisce agli amministratori la possibilità di [[Special:DeletedContributions|visualizzare i contributi cancellati di un utente]]',
 );
 
 /** Japanese (日本語)
@@ -245,6 +249,14 @@ $messages['kk-arab'] = array(
 	'deletedcontributions' => 'قاتىسۋشىنىڭ جويىلعان ۇلەسى',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'deletedcontributions'      => 'ការរួមចំណែក ត្រូវបានលុបចេញ',
+	'deletedcontributions-desc' => 'ផ្តល់លទ្ធភាព អោយអ្នកថែទាំប្រព័ន្ធ [[Special:DeletedContributions|រាវរក កំណែប្រែបានលុបចេញ របស់អ្នកប្រើប្រាស់]]',
+);
+
 $messages['ku-latn'] = array(
 	'deletedcontributions' => 'Guherandinên bikarhênerekî yê jêbirî',
 );
@@ -257,7 +269,8 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'deletedcontributions' => 'Geläschte Kontributiounen',
+	'deletedcontributions'      => 'Geläschte Kontributiounen',
+	'deletedcontributions-desc' => "Gëtt den Administrateuren d'Möiglechkeet, [Special:DeletedContributions|geläschte Kontributioune vun engem Benotzer]] ze kucken.",
 );
 
 /** Limburgish (Limburgs)
@@ -463,8 +476,13 @@ $messages['vi'] = array(
 	'deletedcontributions-desc' => 'Cung cấp cho người quản lý khả năng [[Special:DeletedContributions|xem các sửa đổi đã bị xóa của thành viên]]',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ * @author SPQRobin
+ */
 $messages['vo'] = array(
-	'deletedcontributions' => 'Gebanakeblünots pemoüköl',
+	'deletedcontributions'      => 'Gebanakeblünots pemoüköl',
+	'deletedcontributions-desc' => 'Mögükön guvanes ad logön lisedi redakamas pemoüköl gebana seimik',
 );
 
 $messages['yue'] = array(

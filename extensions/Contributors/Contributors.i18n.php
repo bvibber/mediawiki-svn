@@ -690,6 +690,14 @@ $messages['te'] = array(
 	'contributors-nosuchpage' => '$1 అనే పేజీ లేనే లేదు.',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'contributors'         => 'ผู้เขียน',
+	'contributors-toolbox' => 'ผู้เขียนหลัก',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

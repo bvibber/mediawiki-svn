@@ -34,6 +34,7 @@ $messages['af'] = array(
  */
 $messages['an'] = array(
 	'expandtemplates'                  => 'Espandir plantillas',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Estendilla as plantillas, funzions de parseyo y bariables]] ta amostrar o wikitesto estendillato y prebeyer a pachina',
 	'expand_templates_intro'           => 'Ista pachina espezial prene bel testo y espande recursibament todas as plantillas que bi ha en el. Tamién espande as funzions parser como <nowiki>{{</nowiki>#if:...}}, y as bariables como <nowiki>{{</nowiki>CURRENTDAY}}&mdash; en cheneral tot o que sía entre dobles claus.
 Isto lo fa clamando ta o parser correspondient dende o propio MediaWiki.',
 	'expand_templates_title'           => 'Títol ta contestualizar ({{PAGENAME}} etz.):',
@@ -422,6 +423,7 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'expandtemplates'                  => 'Espansione dei template',
+	'expandtemplates-desc'             => "[[Special:ExpandTemplates|Espande i template, le funzioni del parser e le variabili]] per mostrare il wikitesto espanso e visualizzare un'anteprima della pagina nella sua forma finale",
 	'expand_templates_intro'           => 'Questa pagina speciale elabora un testo espandendo tutti i template presenti. Calcola inoltre il risultato delle funzioni supportate dal parser come <nowiki>{{</nowiki>#if:...}} e delle variabili di sistema quali <nowiki>{{</nowiki>CURRENTDAY}}, ovvero praticamente tutto ciò che si trova tra doppie parentesi graffe. Funziona richiamando le opportune funzioni del parser di MediaWiki.',
 	'expand_templates_title'           => 'Contesto (per {{PAGENAME}} ecc.):',
 	'expand_templates_input'           => 'Testo da espandere:',

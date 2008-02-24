@@ -171,6 +171,14 @@ $messages['te'] = array(
 	'mediafunctions-invalid-title' => '"$1" అనేది సరైన శీర్షిక కాదు',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'mediafunctions-invalid-title' => 'Tên “$1” không hợp lệ',
+	'mediafunctions-not-exist'     => '“$1” không tồn tại',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

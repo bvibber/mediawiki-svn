@@ -108,10 +108,11 @@ $messages['el'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'player'               => 'Lecteur',
-	'player-desc'          => "Lecteur multimedia incorporé utilisant les plugins courants du navigateur ainsi qu'une [[Special:Player|page spéciale]]",
+	'player-desc'          => 'Lecteur multimedia incorporé utilisant les plugiciels courants du navigateur ainsi qu’une [[Special:Player|page spéciale]]',
 	'player-title'         => 'Lecteur',
 	'player-playertitle'   => 'Lecteur : $1',
 	'player-file'          => 'Nom de fichier',

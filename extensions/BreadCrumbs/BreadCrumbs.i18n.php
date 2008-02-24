@@ -150,3 +150,10 @@ $messages['sv'] = array(
 	'breadcrumbs-desc' => 'Visar användarens väg genom wikin.',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'breadcrumbs-desc' => 'Hiển thị lối đến trang wiki',
+);
+

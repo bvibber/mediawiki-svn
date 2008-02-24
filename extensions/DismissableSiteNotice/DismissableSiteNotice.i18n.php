@@ -199,8 +199,12 @@ $messages['is'] = array(
 	'sitenotice_close' => 'fela',
 );
 
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
 $messages['it'] = array(
 	'sitenotice_close' => 'nascondi',
+	'sitenotice-desc'  => 'Consente agli utenti di chiudere il sitenotice',
 );
 
 /** Japanese (日本語)
@@ -420,7 +424,8 @@ $messages['vi'] = array(
  * @author Smeira
  */
 $messages['vo'] = array(
-	'sitenotice-desc' => 'Dälon gebanes ad nemogükön jonami topädanunama',
+	'sitenotice_close' => 'klänedön',
+	'sitenotice-desc'  => 'Dälon gebanes ad nemogükön jonami topädanunama',
 );
 
 $messages['yue'] = array(

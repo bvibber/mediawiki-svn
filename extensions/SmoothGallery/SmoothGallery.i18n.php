@@ -107,6 +107,7 @@ $messages['hsb'] = array(
 	'smoothgallery-gallery-not-found'   => 'Požadana galerija njeeksistuje.',
 	'smoothgallery-not-found'           => 'Žane wobrazy njebuchu ke galeriji přidate. Prošu přidaj znajmjeńša jedyn wobraz.',
 	'smoothgallery-no-images'           => 'W tutej galeriji njebuchu wobrazy namakane. Zawěsć, zo wšě wobrazy eksistuja. Slědowace wobrazy njebuchu namakane: $1',
+	'smoothgallery-invalid-images'      => 'Slědowace požadane wobrazy maja njepłaćiwy typ:',
 	'smoothgallery-unexpected-error'    => 'Běše njewočakowany zmylk. Prošu spisaj zmylkowu rozprawu.',
 	'smoothgallery-javascript-disabled' => 'Javascript je trjeba, zo by so tuta galerija prawje zwobrazniła.',
 );
@@ -219,5 +220,12 @@ $messages['sr-ec'] = array(
 	'smoothgallery-no-images'           => 'Није пронађена слика у галерији. Уверите се да тражене слике постоје. Следеће слиек нису пронађене: $1',
 	'smoothgallery-unexpected-error'    => 'Десила се неочекивана грешка. Молимо обавестите администраторе.',
 	'smoothgallery-javascript-disabled' => 'Јаваскрипт је потребан да би се галерија нормално приказала.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'smoothgallery-error' => '<b>Lỗi SmoothGallery:</b>',
 );
 

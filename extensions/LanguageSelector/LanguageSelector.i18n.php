@@ -162,6 +162,7 @@ $messages['hu'] = array(
  */
 $messages['ja'] = array(
 	'languageselector'         => '言語選択',
+	'languageselector-desc'    => 'ログイン状況を問わず利用できる、各ページの言語選択機能',
 	'languageselector-setlang' => '設定',
 );
 
@@ -336,6 +337,15 @@ $messages['tet'] = array(
  */
 $messages['tr'] = array(
 	'languageselector' => 'Dil',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'languageselector'         => 'Ngôn ngữ',
+	'languageselector-desc'    => 'Hộp để chọn ngôn ngữ ở các trang, cũng được cung cấp cho những người vô danh',
+	'languageselector-setlang' => 'đổi',
 );
 
 /** Volapük (Volapük)

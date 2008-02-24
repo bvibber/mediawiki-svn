@@ -185,6 +185,13 @@ $messages['te'] = array(
 	'seealso' => 'ఇవి కూడా చూడండి',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'seealso' => 'Xem thêm',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

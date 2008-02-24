@@ -445,13 +445,13 @@ $wgGoogleMapsMessages['es'] = array(
 );
 
 /** French (Français)
- * @author Sylvestre
+ * @author Urhixidur
  * @author Grondin
  * @author Meithal
  */
 $wgGoogleMapsMessages['fr'] = array(
-	'gm-incompatible-browser'  => 'Pour voir la carte qui devrait &ecirc;tre dans cette espace, utilisez un <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">navigateur compatible</a>.',
-	'gm-no-editor'             => 'Malheureusement, votre navigateur ne supporte pas la cr&eacute;ation interactive de carte. Essayez d\'installer la derni&egrave;re version de <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux) ou au pire <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows)',
+	'gm-incompatible-browser'  => 'Pour voir la carte qui devrait être dans cet espace, utilisez un <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">navigateur compatible</a>.',
+	'gm-no-editor'             => 'Malheureusement, votre navigateur ne supporte pas la création interactive de carte. Essayez d’installer la dernière version de <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux) ou au pire <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows)',
 	'gm-balloon-title'         => 'Titre :',
 	'gm-make-marker'           => 'Légende (wiki annotation OK):',
 	'gm-remove'                => 'Enlever',
@@ -462,23 +462,23 @@ $wgGoogleMapsMessages['fr'] = array(
 	'gm-trace-area'            => 'trace une zone',
 	'gm-save-point'            => 'Enregistrer & fermer',
 	'gm-load-map-from-article' => "Charger une carte de l'article:",
-	'gm-no-maps'               => 'Pas de carte dans cet article &agrave; charger.',
-	'gm-refresh-list'          => 'Mettre &agrave; jour la liste',
+	'gm-no-maps'               => 'Pas de carte dans cet article à charger.',
+	'gm-refresh-list'          => 'Mettre à jour la liste',
 	'gm-load-map'              => 'Charger la carte',
-	'gm-clip-result'           => 'Ajouter &agrave; la carte',
-	'gm-no-results'            => 'Désolé, pas de r&eacute;sultats',
+	'gm-clip-result'           => 'Ajouter à la carte',
+	'gm-no-results'            => 'Désolé, pas de résultats',
 	'gm-searching'             => 'Recherche...',
 	'gm-map'                   => 'Carte',
-	'gm-note'                  => 'Note: assurez vous d\'avoir bien copi&eacute; ce que vous voulez enregistrer dans l\'article avant de cliquer sur "Charger la carte", "Enregistrer" ou "Preview"!',
-	'gm-instructions'          => "Si dessous, l'annotation wiki pour cr&eacute;er la carte obtenue au dessus.",
-	'gm-are-you-sure'          => 'Etes-vous sur ?',
+	'gm-note'                  => 'Note : Assurez-vous d’avoir bien copié ce que vous voulez enregistrer dans l’article avant de cliquer sur « Charger la carte, Enregistrer » ou « Prévisualiser » !',
+	'gm-instructions'          => 'Ci-dessous, l’annotation wiki pour créer la carte obtenue ci-dessus.',
+	'gm-are-you-sure'          => 'Êtes-vous sûr ?',
 	'gm-clear-all-points'      => 'Enlever tous les points',
-	'gm-refresh-points'        => 'Mettre &agrave; jour les points',
+	'gm-refresh-points'        => 'Mettre à jour les points',
 	'gm-width'                 => 'Largeur',
 	'gm-height'                => 'Hauteur',
-	'gm-scale-control'         => 'Echelle',
+	'gm-scale-control'         => 'Échelle',
 	'gm-overview-control'      => "Vue d'ensemble",
-	'gm-selector-control'      => 'Selection Carte/Satelite',
+	'gm-selector-control'      => 'Sélection Carte/Satellite',
 	'gm-zoom-control'          => 'Navigation',
 	'gm-large'                 => 'Grande',
 	'gm-medium'                => 'Moyenne',
@@ -486,14 +486,14 @@ $wgGoogleMapsMessages['fr'] = array(
 	'gm-no-zoom-control'       => 'Non',
 	'gm-yes'                   => 'Oui',
 	'gm-no'                    => 'Non',
-	'gm-search-preface'        => 'Cliquez sur la carte pour ajouter un point ou se déplacer vers une ville, pays, adresse:',
+	'gm-search-preface'        => 'Cliquez sur la carte pour ajouter un point ou se déplacer vers une ville, pays, ou adresse :',
 	'gm-geocode-preface'       => 'Cliquez sur la carte pour ajouter un point, ou pour aller vers une ville, un pays ou une adresse :',
 	'gm-no-search-preface'     => 'Cliquez sur la carte pour ajouter un point.',
 	'gm-search'                => 'Rechercher',
-	'gm-clear-search'          => 'Nettoyer les r&eacute;sultats des recherches',
-	'gm-meters'                => 'm&egrave;tres',
-	'gm-miles'                 => 'miles',
-	'gm-editing-path'          => "Cliquez sur la carte pour ajouter d'autres points &agrave; ce trajet.",
+	'gm-clear-search'          => 'Nettoyer les résultats des recherches',
+	'gm-meters'                => 'mètres',
+	'gm-miles'                 => 'milles',
+	'gm-editing-path'          => 'Cliquez sur la carte pour ajouter d’autres points à ce trajet.',
 	'gm-save-path'             => 'Sauvegarder',
 	'gm-edit-path'             => 'Ajouter des points',
 	'gm-show-path'             => 'afficher les points',
@@ -899,6 +899,7 @@ $wgGoogleMapsMessages['sk'] = array(
  */
 $wgGoogleMapsMessages['sv'] = array(
 	'gm-balloon-title'         => 'Titel:',
+	'gm-save-point'            => 'spara &amp; stäng',
 	'gm-load-map-from-article' => 'Ladda en karta från sidan:',
 	'gm-load-map'              => 'Ladda karta',
 	'gm-clip-result'           => 'Lägg till till karta',

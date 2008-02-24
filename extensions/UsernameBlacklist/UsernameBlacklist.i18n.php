@@ -438,6 +438,7 @@ $messages['is'] = array(
  * @author BrokenArrow
  */
 $messages['it'] = array(
+	'usernameblacklist-desc'          => 'Aggiunge una [[MediaWiki:Usernameblacklist|blacklist dei nomi utente]] per impedire la creazione di account corrispondenti a una o più espressioni regolari',
 	'blacklistedusername'             => 'Nome utente non consentito',
 	'blacklistedusernametext'         => 'Il nome utente scelto è inserito nella [[MediaWiki:Usernameblacklist|lista dei nomi non consentiti]]. Si prega di scegliere un altro nome.',
 	'usernameblacklist'               => '<pre>

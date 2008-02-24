@@ -190,3 +190,11 @@ $messages['tr'] = array(
 	'icon-badimage' => 'Kötü resim',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'icon-badimage' => 'Hình không hợp lệ',
+	'icon-badwidth' => 'Độ ngang không hợp lệ',
+);
+

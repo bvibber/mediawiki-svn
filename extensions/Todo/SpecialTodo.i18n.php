@@ -10,7 +10,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'todo' => 'Todo list',
-	'todo-desc' => 'Experimental personal todo list extension',
+	'todo-desc' => 'Experimental personal [[Special:Todo|todo list]] extension',
 	'todo-tab' => 'todo',
 	'todo-new-queue' => 'new',
 	'todo-mail-subject' => "Completed item on $1's todo list",
@@ -97,7 +97,7 @@ $messages['el'] = array(
 
 $messages['fr'] = array (
 	'todo'              => 'Liste des tâches à exécuter',
-	'todo-desc'         => 'Extension expérimentale d’une liste personnelle de tâche à accomplir.',
+	'todo-desc'         => 'Extension expérimentale d’une [[Special:Todo|liste personnelle de tâche à accomplir]]',
 	'todo-tab'          => 'à faire',
 	'todo-new-queue'    => 'Nouveau',
 	'todo-mail-subject' => "Article achevé sur la liste des tâches de $1",
@@ -357,6 +357,14 @@ $messages['te'] = array(
 	'todo-list-change'      => 'మార్చు',
 	'todo-new-item'         => 'కొత్త అంశం',
 	'todo-form-details'     => 'వివరాలు:',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'todo-list-change' => 'เปลี่ยน',
+	'todo-list-cancel' => 'ยกเลิก',
 );
 
 /** Turkish (Türkçe)

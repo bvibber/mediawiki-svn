@@ -489,6 +489,22 @@ $messages['tr'] = array(
 	'vote-results-count'  => 'Sayma',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'vote'                => 'Bỏ phiếu',
+	'vote-legend'         => 'Bỏ hay đổi phiếu',
+	'vote-caption'        => 'Lựa chọn của bạn:',
+	'vote-submit'         => 'Bỏ phiếu',
+	'vote-view-results'   => 'Xem kết quả',
+	'vote-results'        => 'Kết quả bỏ phiếu',
+	'vote-results-choice' => 'Lựa chọn',
+	'vote-results-count'  => 'Đếm',
+	'vote-login'          => 'Bạn cần $1 trước khi bỏ phiếu.',
+	'vote-login-link'     => 'đăng nhập',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

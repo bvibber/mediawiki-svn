@@ -194,3 +194,12 @@ $messages['sr-ec'] = array(
 	'purgecache-button'  => 'Освежи',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'purgecache'        => 'Tẩy sạch vùng nhớ đệm',
+	'purgecache-purged' => 'Đã tẩy sạch vùng nhớ đệm.',
+	'purgecache-button' => 'Làm tươi',
+);
+

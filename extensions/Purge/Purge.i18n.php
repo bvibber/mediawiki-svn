@@ -55,8 +55,12 @@ $messages['gl'] = array(
 	'purge' => 'limpar',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'purge' => 'rjedźić',
+	'purge'      => 'wuprózdnić',
+	'purge-desc' => 'Přidawa rajtark "wuprózdnić" za spěšne wurjedźenje pufrowaka na wšěch normalnych stronach a wobeńdźe kontrolu za anonymnych wužiwarjow',
 );
 
 /** Hungarian (Magyar)
@@ -152,5 +156,12 @@ $messages['to'] = array(
  */
 $messages['tr'] = array(
 	'purge' => 'Temizle',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'purge' => 'làm tươi',
 );
 

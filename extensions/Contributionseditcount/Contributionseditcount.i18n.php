@@ -81,11 +81,25 @@ $messages['it'] = array(
 	'contributionseditcount' => 'Questo utente ha $1 edit',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'contributionseditcount' => 'អ្នកប្រើប្រាស់នេះ មាន $1 កំណែប្រែ។',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
 	'contributionseditcount' => 'Dëse Benotzer huet $1 Kontributiounen.',
+);
+
+/** Lao (ລາວ)
+ * @author Passawuth
+ */
+$messages['lo'] = array(
+	'contributionseditcount' => 'ຜູ້ໃຊ້ຮາຍນີ້ ທຳການດັດແກ້ທັງໝົດ $1 ຄັ້ງ',
 );
 
 /** Dutch (Nederlands)
@@ -183,6 +197,13 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'contributionseditcount' => 'ఈ వాడుకరి $1 మార్పులు చేసారు.',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'contributionseditcount' => 'ผู้ใช้คนนี้ได้แก้ไขทั้งหมด $1 ครั้ง',
 );
 
 /** Volapük (Volapük)

@@ -199,28 +199,32 @@ $messages['gl'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Patrulleiro',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'patrol' => 'Dohladowanje změnow',
-	'patrol-endorse' => 'Přihłosować',
-	'patrol-revert' => 'Cofnyć',
-	'patrol-revert-reason' => 'Přičina:',
-	'patrol-skip' => 'Přeskočić',
-	'patrol-reverting' => 'Cofnjenje: $1',
-	'patrol-nonefound' => 'Za dohladowanje njebuchu přihódne změny namakane.',
-	'patrol-endorsed-ok' => 'Tuta změna bu jako dohladowana markěrowana.',
+	'patrol'                 => 'Dohladowanje změnow',
+	'patrol-desc'            => 'Rozšěrjeny kontrolowy interfejs za dźělenje dźěłowych ćežow',
+	'patrol-endorse'         => 'Přihłosować',
+	'patrol-revert'          => 'Cofnyć',
+	'patrol-revert-reason'   => 'Přičina:',
+	'patrol-skip'            => 'Přeskočić',
+	'patrol-reverting'       => 'Cofnjenje: $1',
+	'patrol-nonefound'       => 'Za dohladowanje njebuchu přihódne změny namakane.',
+	'patrol-endorsed-ok'     => 'Tuta změna bu jako dohladowana markěrowana.',
 	'patrol-endorsed-failed' => 'Tuta změna njemóže so jako dohladowana markěrować.',
-	'patrol-reverted-ok' => 'Změna bu cofnjena.',
+	'patrol-reverted-ok'     => 'Změna bu cofnjena.',
 	'patrol-reverted-failed' => 'Změna njeda so cofnyć',
-	'patrol-skipped-ok' => 'Změna so ignoruje.',
-	'patrol-reasons' => '* Jednory wandalizm
+	'patrol-skipped-ok'      => 'Změna so ignoruje.',
+	'patrol-reasons'         => '* Jednory wandalizm
 * Test nowačka
 * Hlej diskusijna strona',
-	'patrol-another' => 'Dalšu změnu pokazać, jeli k dispoziciji stejaca.',
-	'patrol-stopped' => 'Sy rozsudźił, zo njeby žane dalše změny dohladował.',
-	'patrol-resume' => 'Klikń sem, zo by pokročował.',
-	'group-patroller' => 'Dohladowarjo',
+	'patrol-another'         => 'Dalšu změnu pokazać, jeli k dispoziciji stejaca.',
+	'patrol-stopped'         => 'Sy rozsudźił, zo njeby žane dalše změny dohladował.',
+	'patrol-resume'          => 'Klikń sem, zo by pokročował.',
+	'group-patroller'        => 'Dohladowarjo',
 	'group-patroller-member' => 'Dohladowar',
-	'grouppage-patroller' => '{{ns:project}}:Dohladowar',
+	'grouppage-patroller'    => '{{ns:project}}:Dohladowar',
 );
 
 /** Hungarian (Magyar)

@@ -160,12 +160,13 @@ $messages['fa'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'parserdifftest'      => 'Test de diff pour parser',
+	'parserdifftest'      => 'Test de diff pour parseur',
 	'pdtest-desc'         => 'Page spéciale pour comparer la sortie de deux parseurs différents.',
 	'pdtest_no_target'    => "Aucune cible d'indiquée",
-	'pdtest_page_missing' => "La page indiquée n'a pas été trouvée dans la base de donnée.",
+	'pdtest_page_missing' => 'La page indiquée n’a pas été trouvée dans la base de données.',
 	'pdtest_no_changes'   => 'Aucun changement de détecté.',
 	'pdtest_time_report'  => '<b>$1</b> a pris $2 secondes, <b>$3</b> a pris $4 secondes.',
 	'pdtest_title'        => 'Titre du contexte :',
@@ -174,7 +175,7 @@ $messages['fr'] = array(
 	'pdtest_get_text'     => 'Obtenir le texte depuis la page',
 	'pdtest_diff'         => 'Différences',
 	'pdtest_side_by_side' => 'Comparaison en sortie',
-	'pdt_comparing_page'  => 'Comparaison du parser en sortie à partir de [[$1]]',
+	'pdt_comparing_page'  => 'Comparaison des sorties du parseur pour [[$1]]',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -297,6 +298,7 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'parserdifftest'      => 'Verifica delle modifiche introdotte nel parser',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Pagina speciale]] per mettere a confronto il risultato di due parser diversi',
 	'pdtest_no_target'    => 'Nessuna pagina specificata.',
 	'pdtest_page_missing' => 'La pagina richiesta non è stata trovata nel database.',
 	'pdtest_no_changes'   => 'Non sono state rilevate differenze.',

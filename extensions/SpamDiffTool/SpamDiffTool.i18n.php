@@ -134,11 +134,12 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'spamdifftool'                  => 'Administrar a Listaxe Negra de Spam',
 	'spamdifftool_cantedit'         => 'Sentímolo - vostede non ten permisos para editar na Listaxe Negra de Spam.',
-	'spamdifftool_notext'           => "Non hai texto para engadir a Listaxe negra de Spam. Prema <a href='$1'>here</a> para continuar.",
+	'spamdifftool_notext'           => "Non hai texto para engadir a Listaxe negra de Spam. Prema <a href='$1'>aquí</a> para continuar.",
 	'spamdifftool_summary'          => 'Engadindo a Listaxe Negra de Spam',
 	'spamdifftool_no_urls_detected' => "Ningunhas urls foron detectadas. Prema <a href='$1'>aquí</a> para voltar.",
 	'spamdifftool_spam_link_text'   => 'engadir a spam',
@@ -149,21 +150,25 @@ $messages['gl'] = array(
 	'spamdifftool_block'            => 'Bloqueo:',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'spamdifftool' => 'Spamowu čornu lisćinu zrjadować',
-	'spamdifftool_cantedit' => 'Bohužel nimaš dowolenje spamowu čornu lisćinu wobdźěłować.',
-	'spamdifftool_notext' => 'Njeje žadyn tekst, kotryž móhł so spamowej čornej lisćinje přidać. Klikń <href=\'$1\'>sem</a>, zo by pokročował.',
-	'spamdifftool_confirm' => 'Potwjerdź, zo chceš tute zapiski spamowej čornej lisćinje přidać. (Klikń <a href=\'$1\' target=\'new\'>sem</a>, zo by wo problemje rozprawjał.)',
-	'spamdifftool_summary' => 'Spamowej čornej lisćinje přidać',
-	'spamdifftool_urls_detected' => 'Slědowace URL buchu w změnach wotkryte, kotre z nich chceš rady spamowej čornej lisćinje přidać? Tute opcije rjaduja wot bóle restriktiwne do mjenje restriktiwne, blokowanje cyłeje domejny budźe wšě wotkazy k něčemu, štož z tuteje domejny přińdźe, blokować.<br /><br />Zawěsć so, zo njeby cyle domejny blokował, kotrež wužiwarske konta hospoduja, kaž blogpost.com, geocities.com atd.',
-	'spamdifftool_no_urls_detected' => 'Njebuchu žane url wotkryte. Klikń <a href=\'$1\'>sem</a>, zo by so wróćił.',
-	'spamdifftool_spam_link_text' => 'k spamej přidać',
-	'spamdifftool_option_domain' => 'wšo z tuteje domejny',
+	'spamdifftool'                  => 'Spamowu čornu lisćinu zrjadować',
+	'spamdifftool-desc'             => 'Skići zakładne wašnje přidawanja nowych zapiskow spamowej čornej lisćinje ze stronow z rozdźělemi wersijow',
+	'spamdifftool_cantedit'         => 'Bohužel nimaš dowolenje spamowu čornu lisćinu wobdźěłować.',
+	'spamdifftool_notext'           => "Njeje žadyn tekst, kotryž móhł so spamowej čornej lisćinje přidać. Klikń <href='$1'>sem</a>, zo by pokročował.",
+	'spamdifftool_confirm'          => "Potwjerdź, zo chceš tute zapiski spamowej čornej lisćinje přidać. (Klikń <a href='$1' target='new'>sem</a>, zo by wo problemje rozprawjał.)",
+	'spamdifftool_summary'          => 'Spamowej čornej lisćinje přidać',
+	'spamdifftool_urls_detected'    => 'Slědowace URL buchu w změnach wotkryte, kotre z nich chceš rady spamowej čornej lisćinje přidać? Tute opcije rjaduja wot bóle restriktiwne do mjenje restriktiwne, blokowanje cyłeje domejny budźe wšě wotkazy k něčemu, štož z tuteje domejny přińdźe, blokować.<br /><br />Zawěsć so, zo njeby cyle domejny blokował, kotrež wužiwarske konta hospoduja, kaž blogpost.com, geocities.com atd.',
+	'spamdifftool_no_urls_detected' => "Njebuchu žane url wotkryte. Klikń <a href='$1'>sem</a>, zo by so wróćił.",
+	'spamdifftool_spam_link_text'   => 'k spamej přidać',
+	'spamdifftool_option_domain'    => 'wšo z tuteje domejny',
 	'spamdifftool_option_subdomain' => 'wšě z tuteje poddomejny',
 	'spamdifftool_option_directory' => 'tutu poddomejnu a tutón zapis',
-	'spamdifftool_option_none' => 'ničo',
-	'spamdifftool_block' => 'Blokować:',
-	'spamdifftool_submit_buttom' => 'Wotesłać',
+	'spamdifftool_option_none'      => 'ničo',
+	'spamdifftool_block'            => 'Blokować:',
+	'spamdifftool_submit_buttom'    => 'Wotesłać',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

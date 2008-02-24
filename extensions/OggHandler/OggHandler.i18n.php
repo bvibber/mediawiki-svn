@@ -372,6 +372,7 @@ $messages['fo'] = array(
 /** French (Français)
  * @author Seb35
  * @author Sherbrooke
+ * @author Urhixidur
  * @author Grondin
  */
 $messages['fr'] = array(
@@ -384,7 +385,7 @@ $messages['fr'] = array(
 	'ogg-long-multiplexed'    => '(Fichier multiplexé audio/vidéo Ogg, $1, durée $2, $4×$5 pixels, $3)',
 	'ogg-long-general'        => '(Fichier média Ogg, durée $2, $3)',
 	'ogg-long-error'          => '(Fichier Ogg invalide : $1)',
-	'ogg-play'                => 'Lire',
+	'ogg-play'                => 'Lecture',
 	'ogg-pause'               => 'Pause',
 	'ogg-stop'                => 'Arrêt',
 	'ogg-play-video'          => 'Lire la vidéo',
@@ -392,7 +393,7 @@ $messages['fr'] = array(
 	'ogg-no-player'           => 'Désolé, votre système ne possède apparemment aucun des lecteurs supportés. Veuillez installer <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">un des lecteurs supportés</a>.',
 	'ogg-no-xiphqt'           => 'Vous n\'avez apparemment pas le composant XiphQT pour Quicktime. Quicktime ne peut pas lire les fichiers Ogg sans ce composant. Veuillez <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">télécharger XiphQT</a> ou choisir un autre lecteur.',
 	'ogg-player-videoElement' => 'Élément <video>',
-	'ogg-player-oggPlugin'    => 'Plugin Ogg',
+	'ogg-player-oggPlugin'    => 'Plugiciel Ogg',
 	'ogg-player-thumbnail'    => 'Image statique seulement',
 	'ogg-player-soundthumb'   => 'Aucun lecteur',
 	'ogg-player-selected'     => '(sélectionné)',
@@ -626,6 +627,7 @@ $messages['is'] = array(
  * @author .anaconda
  */
 $messages['it'] = array(
+	'ogg-desc'                => 'Gestore per i file Ogg Theora e Vorbis, con programma di riproduzione in JavaScript',
 	'ogg-short-audio'         => 'File audio Ogg $1, $2',
 	'ogg-short-video'         => 'File video Ogg $1, $2',
 	'ogg-short-general'       => 'File multimediale Ogg $1, $2',

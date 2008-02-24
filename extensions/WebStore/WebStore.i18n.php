@@ -723,3 +723,11 @@ $messages['tr'] = array(
 	'webstore_metadata_not_found' => '$1 dosyası bulunamadı',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'webstore_curl'        => 'Lỗi cURL: $1',
+	'webstore_php_warning' => 'Cảnh báo PHP: $1',
+);
+

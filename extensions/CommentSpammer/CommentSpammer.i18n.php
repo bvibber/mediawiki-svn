@@ -36,7 +36,11 @@ $messages['ar'] = array(
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
-	'commentspammer-log-msg' => 'úprava [[:$2]] od [[Special:Contributions/$1|$1]].',
+	'commentspammer-save-blocked' => 'Existuje podezření, že vaše IP adresa je adresa podezřelého spammera obsahu, proto stránka nebyla uložena. Vyhněte se tomu tím, že [[Special:Userlogin|se přihlásíte]] nebo [[Special:Createaccount|si vytvoříte účet]].',
+	'commentspammer-desc'         => 'Odmítá úpravy od podezřelých spamerů z černé listiny DNS',
+	'commentspammer-log-msg'      => 'úprava [[:$2]] od [[Special:Contributions/$1|$1]].',
+	'cspammerlogpagetext'         => 'Záznam úprav, které byly povoleny nebo zamítnuty na základě toho, že zdroj byl známý spammer obsahu.',
+	'cspammer-log-page'           => 'Záznam spamerů obsahu',
 );
 
 /* German */

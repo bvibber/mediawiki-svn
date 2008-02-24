@@ -1349,11 +1349,20 @@ $messages['te'] = array(
 	'math_UnrecognisedCommand' => '"$1" అనేది గుర్తుతెలియని ఆదేశం',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'math_TooManyTokens' => 'สิ่งที่ใส่ลงไปยาวเกินกว่าที่ระบบจะรับได้',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
+ * @author Minh Nguyen
  */
 $messages['vi'] = array(
 	'math_noblahtex'                        => 'Không thể thực thi blahtex, đáng ra phải ở $1',
+	'math-desc'                             => 'Cho ra mã MathML khi gặp những thẻ &lt;math&gt;',
 	'math_AmbiguousInfix'                   => 'Dùng "$1" gây khó hiểu (hãy thử dùng thêm dấu ngoặc móc "{ ... }" để rõ ràng hơn)',
 	'math_CannotChangeDirectory'            => 'Không thể thay đổi thư mục hiện hành',
 	'math_CannotCreateTexFile'              => 'Không thể tạo được tập tin tex',

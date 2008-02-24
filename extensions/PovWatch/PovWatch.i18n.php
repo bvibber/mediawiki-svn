@@ -133,21 +133,21 @@ $messages['fr'] = array(
 	'povwatch_desc'                    => 'Extension permettant d’[[Special:PovWatch|ajouter des pages à la liste de suivi]] d’autres utilisateurs',
 	'povwatch_no_session'              => 'Erreur : Impossible de soumettre le formulaire à la suite de la perte des données de la session.',
 	'povwatch_not_allowed_push'        => 'Vous n’êtes pas un administrateur pour la surveillance des guerres d’édition. Vous ne pouvez pas ajouter les articles dans la liste correspondante.',
-	'povwatch_already_subscribed'      => 'Vous êtes déjà inscrit pour la surveillance des guerre d’édition.',
+	'povwatch_already_subscribed'      => 'Vous êtes déjà inscrit pour la surveillance des guerres d’édition.',
 	'povwatch_subscribed'              => 'Vous êtes maintenant inscrit pour la surveillance des guerres d’édition.',
-	'povwatch_not_subscribed'          => "Vous n’êtes pas inscrit pour la surveillance des guerres d’édition. Ainsi, vous ne pouvez donc pas résilier l'inscription.",
+	'povwatch_not_subscribed'          => 'Vous n’êtes pas inscrit pour la surveillance des guerres d’édition. Par conséquent, vous ne pouvez pas résilier d’inscription.',
 	'povwatch_unsubscribed'            => 'Votre inscription pour la surveillance des guerres d’édition est maintenant résiliée.',
 	'povwatch_invalid_title'           => 'Le titre indiqué est invalide.',
 	'povwatch_pushed'                  => '[[$1]] a été inscrite avec succès dans la liste de surveillance de l’utilisateur $2.',
-	'povwatch_intro'                   => 'La surveillance des guerre d’édition est un service qui autorise la surveillance discrète des articles conflictuels. Ceux-ci peuvent être inscrits dans la liste de surveillance des administrateurs enregistrés.
+	'povwatch_intro'                   => 'La surveillance des guerres d’édition est un service qui autorise la surveillance discrète des articles conflictuels. Ceux-ci peuvent être inscrits dans la liste de surveillance des administrateurs enregistrés.
 
 Un journal de surveillance des articles inscrits est disponible sur [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list'         => 'Une [[Special:PovWatch/subscribers|liste des abonnés]] est disponible.',
 	'povwatch_subscriber_list_intro'   => '<strong>Liste des abonnés</strong>',
-	'povwatch_not_allowed_subscribers' => 'Vous n’avez pas la permission de visionner la liste des personnes inscrite pour la surveillance des guerre d’édition.',
-	'povwatch_unknown_subpage'         => 'Sous-pages inconnue.',
+	'povwatch_not_allowed_subscribers' => 'Vous n’avez pas la permission de visionner la liste des personnes inscrites pour la surveillance des guerres d’édition.',
+	'povwatch_unknown_subpage'         => 'Sous-page inconnue.',
 	'povwatch_push'                    => 'Inscrire',
-	'povwatch_push_intro'              => 'Utilisez le formulaire ci-dessous pour inscrire les articles dans la liste de suivi affectée aux utilisateurs abonnés. Inscrivez scrupuleusement le titre : les articles peuvent même être ajoutés, et il n’existe aucune issue pour les retirer une fois inscrits.',
+	'povwatch_push_intro'              => 'Utilisez le formulaire ci-dessous pour inscrire les articles dans la liste de suivi affectée aux utilisateurs abonnés. Inscrivez scrupuleusement le titre : un article inexistant peut être spécifié, et il n’existe aucun moyen de retirer un titre une fois inscrit.',
 	'povwatch_title'                   => 'Titre :',
 	'povwatch_comment'                 => 'Commentaire du journal :',
 	'povwatch_no_log'                  => 'Il n’existe aucune entrée dans le journal.',
@@ -430,6 +430,15 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'povwatch_title' => 'శీర్షిక:',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'povwatch_title'       => 'Tên trang:',
+	'povwatch_unsubscribe' => 'Ngừng theo dõi',
+	'povwatch_subscribe'   => 'Theo dõi',
 );
 
 /** Volapük (Volapük)

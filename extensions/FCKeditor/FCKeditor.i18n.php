@@ -340,3 +340,10 @@ $messages['sk'] = array(
 	'tog-riched_disable_ns_category_talk'  => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Category_talk}}“',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'textrichditor-desc' => 'Dùng FCKeditor để sửa đổi trang wiki',
+);
+

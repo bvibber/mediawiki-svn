@@ -611,26 +611,19 @@ $messages['tr'] = array(
 	'chemFunctions_Name' => 'IUPAC adı',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
 $messages['vi'] = array(
-	'chemicalsources' => 'Nguồn hóa học',
-	'chemFunctions_ListPage' => 'Nguồn hóa học',
-	'chemFunctions_SearchExplanation' => '',
-	'chemFunctions_DataList' => 'Đây là danh sách những website có thể cung cấp thông tin về chất hóa học này:<br /><br />
+	'chemicalsources'                  => 'Nguồn hóa học',
+	'chemicalsource-desc'              => 'Thêm thẻ <nowiki><chemform></nowiki> để viết biểu thức hóa học',
+	'chemFunctions_ListPage'           => 'Nguồn hóa học',
+	'chemFunctions_DataList'           => 'Đây là danh sách những website có thể cung cấp thông tin về chất hóa học này:<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Chất $MIXCASNameFormula tại NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS tại Đại học Oxford (Anh)</a><br /> (không có bộ tìm kiếm)',
-	'chemFunctions_CAS' => 'Số CAS',
-	'chemFunctions_EINECS' => 'EINECS',
-	'chemFunctions_CHEBI' => 'CHEBI',
-	'chemFunctions_PubChem' => 'PubChem',
-	'chemFunctions_SMILES' => 'SMILES',
-	'chemFunctions_InChI' => 'InChI',
-	'chemFunctions_RTECS' => 'RTECS',
-	'chemFunctions_KEGG' => 'KEGG',
-	'chemFunctions_ATCCode' => 'ATCCode',
-	'chemFunctions_DrugBank' => 'DrugBank',
-	'chemFunctions_ECNumber' => 'ECNumber',
-	'chemFunctions_Formula' => 'Công thức',
-	'chemFunctions_Name' => 'Tên IUPAC',
+	'chemFunctions_CAS'                => 'Số CAS',
+	'chemFunctions_Formula'            => 'Công thức',
+	'chemFunctions_Name'               => 'Tên IUPAC',
 	'chemFunctions_ChemFormInputError' => 'Chemform: lỗi nhập!',
 );
 

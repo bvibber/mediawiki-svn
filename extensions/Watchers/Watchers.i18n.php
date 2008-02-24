@@ -162,6 +162,19 @@ $messages['it'] = array(
 	'watchers_less_than_x' => "La pagina è osservata da meno di $1 utenti.",
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'watchers'               => 'អ្នកតាមដាន',
+	'watchers_link_title'    => 'អ្នកណាកំពុងតាមដាន ទំព័រនេះ?',
+	'watchers_error_article' => '<b>កំហុស៖</b> ទំព័រមិនមាន ។',
+	'watchers_header'        => 'មានមនុស្ស កំពុងតាមដាន "$1"',
+	'watchers_noone_watches' => 'គ្មានមនុស្ស កំពុងតាមដាន ទំព័រនេះ',
+	'watchers_x_or_more'     => '$1 ឬ ច្រើនគ្នា កំពុងតាមដាន ទំព័រនេះ ។',
+	'watchers_less_than_x'   => 'តិចជាង $1 នាក់ កំពុងតាមដានទំព័រនេះ ។',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -111,13 +111,16 @@ $messages['fi'] = array(
 	'intersection_noresults'   => 'DynamicPageList: Ei tuloksia.',
 );
 
-# French translation by Bertrand GRONDIN
-$messages['fr'] = array (
+/** French (Français)
+ * @author Grondin
+ * @author Urhixidur
+ */
+$messages['fr'] = array(
 	'intersection-desc'          => 'Affiche une liste, à puces, des articles les plus récents dans une catégorie, ou à partir d’une combinaison de plusieurs catégories.',
 	'intersection_toomanycats'   => 'DynamicPageList : Trop de catégories !',
 	'intersection_toofewcats'    => 'DynamicPageList : Pas assez de catégories !',
 	'intersection_noresults'     => 'DynamicPageList : Aucun résultat !',
-	'intersection_noincludecats' => 'DynamicPageList : vous avez besoin d’inclure au moins une catégorie, ou préciser un nom d’espace !',
+	'intersection_noincludecats' => 'DynamicPageList : vous devez inclure au moins une catégorie, ou préciser un nom d’espace !',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -148,10 +151,14 @@ $messages['hr'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Morate uključiti bar jednu kategoriju, ili odabrati imenski prostor!',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'intersection_toomanycats' => 'DynamicPageList: Přewjele kategorijow!',
-	'intersection_toofewcats' => 'DynamicPageList: Přemało kategorijow!',
-	'intersection_noresults' => 'DynamicPageList: Žane wuslědki!',
+	'intersection-desc'          => 'Wudaće lisćiny najaktualnišich zapiskow w jednej kategoriji abo w skupinje kategorijow',
+	'intersection_toomanycats'   => 'DynamicPageList: Přewjele kategorijow!',
+	'intersection_toofewcats'    => 'DynamicPageList: Přemało kategorijow!',
+	'intersection_noresults'     => 'DynamicPageList: Žane wuslědki!',
 	'intersection_noincludecats' => 'DynamicPageList: Dyrbiš znajmjeńša kednu kategoriju zapřijeć abo mjenowy rum podać!',
 );
 
@@ -169,6 +176,7 @@ $messages['hu'] = array(
  * @author BrokenArrow
  */
 $messages['it'] = array(
+	'intersection-desc'          => "Visualizza un elenco puntato con gli elementi più recenti inseriti in una categoria o nell'unione di più categorie",
 	'intersection_toomanycats'   => 'DynamicPageList: Numero di categorie eccessivo.',
 	'intersection_toofewcats'    => 'DynamicPageList: Numero di categorie insufficiente.',
 	'intersection_noresults'     => 'DynamicPageList: Nessun risultato.',

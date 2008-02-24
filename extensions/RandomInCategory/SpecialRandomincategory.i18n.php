@@ -96,6 +96,18 @@ $messages['hu'] = array(
 	'randomincategory-submit'     => 'Menj',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'randomincategory'            => 'ទំព័រព្រាវ ក្នុងចំណាត់ក្រុម',
+	'randomincategory-desc'       => '[[Special:Randomincategory|ទំព័រពិសេស]] ដើម្បីទទួលបាន ទំព័រព្រាវ ក្នុងចំណាត់ក្រុម',
+	'randomincategory-toolbox'    => 'ទំព័រព្រាវ',
+	'randomincategory-nocategory' => 'ចំណាត់ក្រុម $1 មិនមាន ឬ ទទេ',
+	'randomincategory-label'      => 'ចំណាត់ក្រុម ៖',
+	'randomincategory-submit'     => 'ទៅ',
+);
+
 /** Latin (Latina)
  * @author UV
  */

@@ -68,20 +68,23 @@ $messages['eo'] = array(
 	'latexdoc_no_text' => 'Pagxo enhavas neniom da teksto; ne eblas fari DVI',
 );
 
+/** French (Français)
+ * @author Urhixidur
+ */
 $messages['fr'] = array(
-	'latexdoc_no_text' => 'L’article ne contient pas de texte. Impossible de créer DVI',
+	'latexdoc_no_text'         => 'L’article ne contient pas de texte. Impossible de créer DVI',
 	'latexdoc_cant_create_dir' => 'Impossible de créer le répertoire temporaire $1',
-	'latexdoc_cant_write' => 'Impossible d’écrige dans le fichier $1',
-	'latexdoc_error' => "Erreur LaTeX
+	'latexdoc_cant_write'      => 'Impossible d’écrire dans le fichier $1',
+	'latexdoc_error'           => 'Erreur LaTeX
 
 Commande : $1
 
 Sortie : $2
 
-$3",
-	'latexdoc_get_dvi' => 'Obtenir DVI',
-	'latexdoc_get_pdf' => 'Obtenir PDF',
-	'latexdoc-desc'    => 'Document LaTex.',
+$3',
+	'latexdoc_get_dvi'         => 'Obtenir DVI',
+	'latexdoc_get_pdf'         => 'Obtenir PDF',
+	'latexdoc-desc'            => 'Document LaTeX.',
 );
 
 /** Galician (Galego)

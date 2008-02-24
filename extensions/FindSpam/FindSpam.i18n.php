@@ -66,11 +66,15 @@ $messages['el'] = array(
 	'findspam-ip' => 'Διεύθυνση IP:',
 );
 
+/** French (Français)
+ * @author Urhixidur
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'findspam' => 'Recherche de spam',
-	'findspam-desc' => 'Ajoute une [[Special:FindSpam|page spéciale]] qui permet de trouver des spam ajoutés récemment',
-	'findspam-ip' => 'Adresse IP :',
-	'findspam-ok' => 'Rechercher',
+	'findspam'             => 'Recherche de pollupostages',
+	'findspam-desc'        => 'Ajoute une [[Special:FindSpam|page spéciale]] qui permet de trouver des pollupostages ajoutés récemment',
+	'findspam-ip'          => 'Adresse IP :',
+	'findspam-ok'          => 'Rechercher',
 	'findspam-notextfound' => 'Aucune contribution trouvée',
 );
 

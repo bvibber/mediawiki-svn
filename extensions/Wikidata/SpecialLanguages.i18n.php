@@ -2266,6 +2266,14 @@ $wdMessages['te'] = array(
 	'ow_copy_help'                          => 'ఏదో ఒక రోజు, మీకు సహాయపడగలం.',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$wdMessages['th'] = array(
+	'ow_save'    => 'บันทึก',
+	'ow_history' => 'ประวัติ',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */
@@ -2295,10 +2303,15 @@ $wdMessages['vi'] = array(
 	'ow_history'                      => 'Lịch sử',
 	'ow_noedit_title'                 => 'Không có quyền sửa đổi',
 	'ow_dm_OK'                        => 'Được',
+	'ow_AlternativeDefinition'        => 'Định nghĩa khác',
+	'ow_AlternativeDefinitions'       => 'Các định nghĩa khác',
+	'ow_ApproximateMeanings'          => 'Ý nghĩa gần',
 	'ow_ClassAttributeLevel'          => 'Cấp',
 	'ow_ClassAttributeType'           => 'Loại',
 	'ow_Collection'                   => 'Tập hợp',
 	'ow_Definition'                   => 'Định nghĩa',
+	'ow_DefinedMeaning'               => 'Định nghĩa',
+	'ow_DefinedMeaningReference'      => 'Định nghĩa',
 	'ow_Language'                     => 'Ngôn ngữ',
 	'ow_Relations'                    => 'Các mối quan hệ',
 	'ow_Spelling'                     => 'Chính tả',
@@ -2310,6 +2323,7 @@ $wdMessages['vi'] = array(
 	'ow_TranslatedTextAttributeValue' => 'Văn bản',
 	'ow_Value'                        => 'Giá trị',
 	'ow_meaningsoftitle'              => 'Các ý nghĩa của “$1”',
+	'ow_meaningsofsubtitle'           => '<em>Liên kết wiki:</em> [[$1]]',
 );
 
 /** Volapük (Volapük)

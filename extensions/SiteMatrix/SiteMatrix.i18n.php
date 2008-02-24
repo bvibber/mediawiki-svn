@@ -245,7 +245,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'sitematrix'           => 'Luettelo Wikimedian wikeistä',
-	'sitematrix-desc'      => 'Näyttää [[Special:SiteMatrix|luettelon Wikimedian wikeistä]]',
+	'sitematrix-desc'      => 'Näyttää [[Special:SiteMatrix|luettelon Wikimedian wikeistä]].',
 	'sitematrix-language'  => 'Kieli',
 	'sitematrix-project'   => 'Projektin nimi, projektienvälinen linkki ja interwiki-linkki',
 	'sitematrix-others'    => 'Muut Wikimedian projektit',
@@ -404,10 +404,13 @@ $messages['is'] = array(
  * @author לערי ריינהארט
  */
 $messages['it'] = array(
-	'sitematrix'          => 'Elenco di tutti i progetti Wikimedia nelle varie lingue',
-	'sitematrix-language' => 'Lingua',
-	'sitematrix-project'  => 'Nome del progetto, collegamento interprogetto e collegamento inter-wiki',
-	'sitematrix-others'   => 'Altri progetti Wikimedia',
+	'sitematrix'           => 'Elenco di tutti i progetti Wikimedia nelle varie lingue',
+	'sitematrix-desc'      => 'Mostra un [[Special:SiteMatrix|elenco dei siti Wikimedia]]',
+	'sitematrix-language'  => 'Lingua',
+	'sitematrix-project'   => 'Nome del progetto, collegamento interprogetto e collegamento inter-wiki',
+	'sitematrix-others'    => 'Altri progetti Wikimedia',
+	'sitematrix-total'     => "'''Conteggio totale: $1'''",
+	'sitematrix-sitetotal' => 'Totale',
 );
 
 /** Japanese (日本語)

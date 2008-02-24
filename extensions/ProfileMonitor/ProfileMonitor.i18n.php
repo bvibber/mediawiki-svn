@@ -37,17 +37,21 @@ $messages['ar'] = array(
 	'profiling-no-data' => 'لم يتم إيجاد بيانات مطابقة.',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ * @author Urhixidur
+ */
 $messages['fr'] = array(
-	'profiling' => 'Données pour évaluer',
-	'profiling-process' => 'Chaîne de caractères à traiter :',
-	'profiling-wildcard' => 'Utilisez des « joker »',
-	'profiling-ok' => 'Accepter',
-	'profiling-data' => 'Données d\'évaluation de « $1 »',
+	'profiling'              => 'Données pour évaluer',
+	'profiling-process'      => 'Chaîne de caractères à traiter :',
+	'profiling-wildcard'     => 'Utilisez un passe-partout',
+	'profiling-ok'           => 'Accepter',
+	'profiling-data'         => "Données d'évaluation de « $1 »",
 	'profiling-data-process' => 'Traiter',
-	'profiling-data-count' => 'Compter',
-	'profiling-data-time' => 'Durée (tout)',
+	'profiling-data-count'   => 'Compter',
+	'profiling-data-time'    => 'Durée (totale)',
 	'profiling-data-average' => 'Durée (moyenne)',
-	'profiling-no-data' => 'Aucune donnée correspondante trouvée',
+	'profiling-no-data'      => 'Aucune donnée correspondante trouvée',
 );
 
 /** Galician (Galego)

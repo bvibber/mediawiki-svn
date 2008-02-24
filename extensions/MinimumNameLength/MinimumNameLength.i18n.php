@@ -54,9 +54,12 @@ $messages['fi'] = array(
 	'minnamelength-error' => 'Käyttäjänimesi on liian lyhyt. Minimipituus on $1.',
 );
 
-/* French (Ashar Voultoiz) */
+/** French (Français)
+ * @author Ashar Voultoiz
+ * @author Urhixidur
+ */
 $messages['fr'] = array(
-	'minnamelength-error' => 'Votre nom d’utilisateur est trop court (minimum $1).',
+	'minnamelength-error' => 'Votre nom d’utilisateur est trop court (minimum $1 caractères).',
 	'minnamelength-desc'  => 'Exige une longueur minimale pour un nom d’utilisateur.',
 );
 

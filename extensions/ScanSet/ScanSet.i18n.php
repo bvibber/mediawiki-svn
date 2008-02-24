@@ -255,6 +255,24 @@ $messages['hu'] = array(
 	'scanset_prev'                      => '← Előző',
 );
 
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
+$messages['it'] = array(
+	'scanset-desc'                      => 'Mostra le immagini delle scansioni provenienti dai CD/DVD di Andreas Grosz',
+	'scanset_no_name'                   => 'ScanSet: è necessario indicare un nome per il set di scansioni, ad es. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: set di scansioni errato o mancante.',
+	'scanset_unrecognised_index_format' => 'ScanSet: formato indice sconosciuto',
+	'scanset_opendir_error'             => 'ScanSet: errore, impossibile aprire la directory $1',
+	'scanset_no_files'                  => 'Scanset: nella directory indicata non è presente alcun file.',
+	'scanset_no_volumes'                => 'ScanSet: directory di volume non trovate',
+	'scanset_missing_index_file'        => 'ScanSet: file indice $1 non trovato',
+	'scanset_index_file_error'          => 'ScanSet: errore nel formato del file indice alla riga $1',
+	'scanset_invalid_volume'            => 'ScanSet: volume non valido',
+	'scanset_next'                      => 'Successivo &gt;',
+	'scanset_prev'                      => '&lt; Precedente',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

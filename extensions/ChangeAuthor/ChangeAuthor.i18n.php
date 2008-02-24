@@ -239,17 +239,18 @@ $messages['eo'] = array(
 );
 
 /** Finnish (Suomi)
- * @author Cimon Avaro
  * @author Crt
+ * @author Cimon Avaro
  */
 $messages['fi'] = array(
-	'changeauthor'                      => 'Muuta muokkausrevision tekijä',
-	'changeauthor-desc'                 => 'Mahdollistaa muokkausrevision tekijän muuttamisen',
-	'changeauthor-title'                => 'Muuttaa muokkausrevision tekijän',
-	'changeauthor-search-box'           => 'Hae muokkausrevisioita',
+	'changeauthor'                      => 'Muuta muokkausversion tekijä',
+	'changeauthor-desc'                 => 'Mahdollistaa muokkausversion tekijän muuttamisen.',
+	'changeauthor-title'                => 'Muuta muokkausversion tekijä',
+	'changeauthor-search-box'           => 'Hae muokkausversioita',
+	'changeauthor-pagenameform-go'      => 'Siirry',
 	'changeauthor-comment'              => 'Kommentti:',
 	'changeauthor-changeauthors-single' => 'Muuta tekijä',
-	'changeauthor-nosuchtitle'          => 'Ei ole sivua nimeltä "$1".',
+	'changeauthor-nosuchtitle'          => 'Sivua nimeltä ”$1” ei ole.',
 	'changeauthor-success'              => 'Pyyntö on suoritettu onnistuneesti.',
 );
 

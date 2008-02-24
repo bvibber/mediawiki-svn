@@ -183,15 +183,19 @@ $messages['fo'] = array(
 	'linksearch-ns'    => 'Navnarúm:',
 );
 
+/** French (Français)
+ * @author Urhixidur
+ * @author Sherbrooke
+ */
 $messages['fr'] = array(
 	'linksearch'       => 'Rechercher des liens Internet',
-	'linksearch-desc'       => 'Recherche des pages dans lesquelles un lien externe apparaît.',
+	'linksearch-desc'  => 'Recherche des pages dans lesquelles un lien externe apparaît.',
 	'linksearch-pat'   => 'Rechercher l’expression :',
 	'linksearch-ns'    => 'Espace de noms :',
 	'linksearch-ok'    => 'Rechercher',
-	'linksearch-text'  => 'Cette page spéciale permet de rechercher les pages dans lesquelles un lien externe apparaît.<br />Des caractères « joker » peuvent être utilisés, par exemple <code>*.wikipedia.org</code>.',
+	'linksearch-text'  => 'Cette page spéciale permet de rechercher les pages dans lesquelles un lien externe apparaît.<br />Des caractères passe-partout peuvent être utilisés, par exemple <code>*.wikipedia.org</code>.',
 	'linksearch-line'  => '$1 avec un lien à partir de $2',
-	'linksearch-error' => 'Les caractères « joker » ne peuvent être utilisés qu’au début du nom de domaine.',
+	'linksearch-error' => 'Les caractères passe-partout ne peuvent être utilisés qu’au début du nom de domaine.',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -302,6 +306,7 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'linksearch'       => 'Ricerca collegamenti esterni',
+	'linksearch-desc'  => '[[Special:Linksearch|Trova le pagine con collegamenti esterni]] che corrispondono a criteri specificati',
 	'linksearch-pat'   => 'Pattern di ricerca:',
 	'linksearch-ns'    => 'Namespace:',
 	'linksearch-ok'    => 'Cerca',

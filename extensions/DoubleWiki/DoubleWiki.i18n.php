@@ -89,6 +89,13 @@ $messages['hu'] = array(
 	'doublewiki-desc' => 'Az adott lap mellett megjeleníti annak fordítását egy másik wikiből, két oszlopban, ugyanazon az oldalon',
 );
 
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
+$messages['it'] = array(
+	'doublewiki-desc' => 'Mostra una pagina e la sua traduzione proveniente da un altro sito wiki su due colonne affiancate',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */
@@ -171,5 +178,12 @@ $messages['te'] = array(
  */
 $messages['vi'] = array(
 	'doublewiki-desc' => 'Hiển thị một trang và bản dịch của nó tại wiki khác vào 2 cột trong cùng một trang',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'doublewiki-desc' => 'Jonön padi sa tradutod onik se vük votik su padüls tel pada ot',
 );
 

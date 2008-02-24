@@ -405,6 +405,15 @@ $messages['tr'] = array(
 	'talkhere-addcomment' => 'Yorumu ekle',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'talkhere-talkpage' => 'trang thảo luận',
+	'talkhere-loading'  => 'đang nạp bộ soạn…',
+	'talkhere-collapse' => 'giấu bộ soạn',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

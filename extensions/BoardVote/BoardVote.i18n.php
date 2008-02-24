@@ -1626,6 +1626,7 @@ sem að þú styður.</p>',
  */
 $messages['it'] = array(
 	'boardvote'              => 'Elezioni del Consiglio direttivo della Wikimedia Foundation',
+	'boardvote-desc'         => '[[meta:Board elections|Elezioni del Consiglio direttivo Wikimedia]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vota]]
 * [[Special:Boardvote/list|Visualizza i voti espressi sinora]]
 * [[Special:Boardvote/dump|Scarica i voti in forma cifrata]]',
@@ -3511,6 +3512,7 @@ Bạn có thể gặp lời cảnh cáo nói về một giấy chứng nhận ch
  */
 $messages['vo'] = array(
 	'boardvote'              => 'Daväl Kipedalefa Fünoda: Wikimedia',
+	'boardvote-desc'         => '[[meta:Board elections|Daväl Kipedalefa Fünoda: Wikimedia]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vögodön]]
 * [[Special:Boardvote/list|Lised vögodas jünuik]]
 * [[Special:Boardvote/dump|Davälaregistar pejüföl]]',

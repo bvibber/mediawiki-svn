@@ -567,6 +567,24 @@ $messages['tr'] = array(
 	'usagestatisticsend'      => 'Bitiş tarihi',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'specialuserstats'             => 'Thống kê sử dụng',
+	'usagestatistics'              => 'Thống kê sử dụng',
+	'usagestatisticsfor'           => '<h2>Thống kê sử dụng về [[User:$1|$1]]</h2>',
+	'usagestatisticsallusers'      => 'Mọi người dùng',
+	'usagestatisticstype'          => 'Loại',
+	'usagestatisticsstart'         => 'Ngày đầu',
+	'usagestatisticsend'           => 'Ngày cuối',
+	'usagestatisticssubmit'        => 'Tính ra thống kê',
+	'usagestatisticsintervalday'   => 'Ngày',
+	'usagestatisticsintervalweek'  => 'Tuần',
+	'usagestatisticsintervalmonth' => 'Tháng',
+	'usagestatisticscalselect'     => 'Chọn',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

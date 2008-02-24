@@ -263,6 +263,16 @@ $messages['tr'] = array(
 	'pageby-anon'         => '<i>anonim</i>',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'pageby-first'        => 'Trang được tạo ra bởi $1, $2',
+	'pageby-last'         => '<a href="$3">Sửa đổi</a> lần cuối bởi $1, $2',
+	'pageby-contributors' => 'Những người đóng góp:',
+	'pageby-anon'         => '<i>vô danh</i>',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

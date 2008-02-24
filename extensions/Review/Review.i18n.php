@@ -215,12 +215,13 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Sherbrooke
  * @author Dereckson
+ * @author Urhixidur
  * @author Grondin
  */
 $messages['fr'] = array(
-	'review_sidebar_title'  => 'Révision',
-	'review-desc' => 'Relance la fonctionnalité de [[Special:Review|validation]] d’un article.',
-	'review_topics' => "# Liste de sujets pour l'extension « review » de MediaWiki.
+	'review_sidebar_title'                                   => 'Révision',
+	'review-desc'                                            => 'Relance la fonctionnalité de [[Special:Review|validation]] d’un article.',
+	'review_topics'                                          => "# Liste de sujets pour l'extension « review » de MediaWiki.
 # ....
 # Chaque sujet est défini par une liste de données séparées par « : » (toute autre liste est ignorée).
 # ....
@@ -237,7 +238,7 @@ $messages['fr'] = array(
 1:Qualité:5:mauvais:bon
 2:Prêt pour 1.0:2:non:oui",
 	'review_topic_page'                                      => 'Sujets à révision',
-	'review_sidebar_explanation'                             => 'La boîte à cocher à la gauche toute signifie toujours « sans opinion ».',
+	'review_sidebar_explanation'                             => 'La boîte à cocher la plus à gauche toute signifie toujours « sans opinion ».',
 	'review_save'                                            => 'Sauvegarder la révision',
 	'review_your_review'                                     => 'Votre révision de cette page ou révision :',
 	'review_sidebar_you_have_other_reviews_for_this_article' => 'Vous avez déjà révisé les autres versions de cette page. Vos autres évaluations seront fusionnées avec celle-ci si vous avez sélectionné « sans opinion ».',
@@ -245,7 +246,7 @@ $messages['fr'] = array(
 	'review_sidebar_final'                                   => 'Pour voir les données de révision de la vue de cette page, aller à $1',
 	'review_for_page'                                        => 'Révision pour la page « $1 »',
 	'review_for_user'                                        => 'Révision pour contributeur « $1 »',
-	'review_error'                                           => 'Quelque chose est brisé.',
+	'review_error'                                           => 'Quelque chose cloche.',
 	'review_no_reviews_for_page'                             => "Il n'y a pas de révisions pour « $1 ».",
 	'review_total_statistics'                                => 'Total',
 	'review_statistics_left_corner'                          => 'Révision',

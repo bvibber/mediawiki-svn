@@ -86,23 +86,24 @@ $messages['el'] = array(
 /** French (Français)
  * @author Grondin
  * @author Dereckson
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'multipleupload'                   => 'Télécharger des fichiers',
-	'multipleupload-desc'              => 'Permet aux utilisateurs d’importer, [[Special:MultipleUpload|en une seule fois, plusieurs fichiers]]',
-	'multipleupload-ignoreallwarnings' => "Ignorer '''tous les avertissements''' et sauvegarder les fichiers en question.",
+	'multipleupload'                   => 'Importer (téléverser) des fichiers',
+	'multipleupload-desc'              => 'Permet aux utilisateurs d’importer (téléverser), [[Special:MultipleUpload|en une seule fois, plusieurs fichiers]]',
+	'multipleupload-ignoreallwarnings' => "Ignorer '''tous les avertissements''' et sauvegarder les fichiers malgré tout.",
 	'multipleupload-saveallfiles'      => 'Sauvegarder tous les fichiers',
-	'multipleupload-addresswarnings'   => 'Vérifiez les avertissements affichés avant de télécharger à nouveau les fichiers.',
-	'multipleupload-page'              => '{{ns:project}}:Règles pour la suppression de fichier',
-	'multipleupload-text'              => "Télécharger plusieurs fichiers ici.
+	'multipleupload-addresswarnings'   => 'Vérifiez les avertissements affichés avant d’importer (téléverser) à nouveau les fichiers.',
+	'multipleupload-page'              => '{{ns:project}}:Règles de suppression de fichiers',
+	'multipleupload-text'              => "Importez (Téléversez) plusieurs fichiers ici.
 
-Choisissez « Rechercher » et sélectionner chaque fichier que vous voulez télécharger. Vous pouvez en télécharger actuellement de 1 jusqu’à  $1 fichiers.
+Choisissez « Rechercher » et sélectionnez chaque fichier que vous voulez importer. Vous pouvez importer de 1 à $1 fichiers à la fois.
 
-Vous pouver inscrire la '''destination du fichier''' et Remplir le '''Sommaire''' pour décrire votre image.
+Vous pouvez optionnellement spécifier la '''destination du fichier''' et remplir le '''Sommaire''' pour décrire votre image.
 
-Les images non pertinentes pourront être effacées immédiatement. Voyez la page [[{{MediaWiki:Multipleupload-page}}|image deletion policy]].",
-	'multiupload-fileuploaded'         => 'Fichier téléchargé',
-	'multiupload-toolbox'              => 'Télécharger plusieurs fichiers',
+Les images non pertinentes pourront être supprimées immédiatement. Voyez la page des [[{{MediaWiki:Multipleupload-page}}|Règles de suppression d’images]].",
+	'multiupload-fileuploaded'         => 'Fichier importé (téléversé).',
+	'multiupload-toolbox'              => 'Importer (Téléverser) plusieurs fichiers',
 );
 
 /** Galician (Galego)
@@ -331,5 +332,15 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'multipleupload-saveallfiles' => 'అన్ని ఫైళ్ళనూ భద్రపరచు',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'multipleupload'                   => 'อัปโหลดไฟล์',
+	'multipleupload-ignoreallwarnings' => "ไม่สนใจ '''คำเตือน''' และบันทึกไฟล์",
+	'multipleupload-saveallfiles'      => 'บันทึกไฟล์ทั้งหมด',
+	'multiupload-fileuploaded'         => 'ไฟล์ถูกอัปโหลดเรียบร้อยแล้ว',
 );
 

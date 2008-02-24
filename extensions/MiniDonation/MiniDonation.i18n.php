@@ -180,6 +180,13 @@ $messages['sv'] = array(
 	'donationform-submit' => 'Donera via PayPal',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'donationform-submit' => 'Quyên góp dùng PayPal',
+);
+
 $messages['yue'] = array(
 	'donationform-submit' => '透過PayPal捐款',
 );

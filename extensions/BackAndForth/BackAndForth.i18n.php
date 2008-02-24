@@ -426,6 +426,13 @@ $messages['te'] = array(
 	'backforth-prev' => 'గత ($1)',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'backforth-next' => 'ต่อไป ($1)',
+);
+
 /** Turkish (Türkçe)
  * @author Srhat
  */

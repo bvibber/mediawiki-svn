@@ -31,6 +31,24 @@ $messages['af'] = array(
 	'bookinfo-result-year' => 'Jaar:',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'bookinfo-header'            => "Informazión d'o libro",
+	'bookinfo-desc'              => 'Estendilla [[Special:Booksources]] con informazión sobre un serbizio web',
+	'bookinfo-result-title'      => 'Títol:',
+	'bookinfo-result-author'     => 'Autor:',
+	'bookinfo-result-publisher'  => 'Editorial:',
+	'bookinfo-result-year'       => 'Año:',
+	'bookinfo-error-invalidisbn' => "S'ha escrito un ISBN incorreuto.",
+	'bookinfo-error-nosuchitem'  => "No esiste l'elemento u no s'ha puesto trobar.",
+	'bookinfo-error-nodriver'    => "No s'ha puesto enzetar un Driver de Informazión de Libros (Book Information Driver) conforme.",
+	'bookinfo-error-noresponse'  => "No bi ha garra respuesta u o tiempo de respuesta s'ha acotolato.",
+	'bookinfo-purchase'          => 'Mercar iste libro dende $1',
+	'bookinfo-provider'          => 'Furnidor de datos: $1',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -406,19 +424,22 @@ $messages['is'] = array(
 	'bookinfo-provider'          => 'Upplýsingaveitandi: $1',
 );
 
-/* Italian (BrokenArrow) */
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
 $messages['it'] = array(
-	'bookinfo-header' => 'Informazioni sui libri',
-	'bookinfo-result-title' => 'Titolo:',
-	'bookinfo-result-author' => 'Autore:',
-	'bookinfo-result-publisher' => 'Editore:',
-	'bookinfo-result-year' => 'Anno:',
+	'bookinfo-header'            => 'Informazioni sui libri',
+	'bookinfo-desc'              => 'Aggiunge a [[Special:Booksources]] informazioni provenienti da un servizio Web',
+	'bookinfo-result-title'      => 'Titolo:',
+	'bookinfo-result-author'     => 'Autore:',
+	'bookinfo-result-publisher'  => 'Editore:',
+	'bookinfo-result-year'       => 'Anno:',
 	'bookinfo-error-invalidisbn' => 'Codice ISBN errato.',
-	'bookinfo-error-nosuchitem' => 'Elemento inesistente o non trovato.',
-	'bookinfo-error-nodriver' => 'Impossibile inizializzare un driver corretto per le Informazioni sui libri.',
-	'bookinfo-error-noresponse' => 'Mancata risposta o risposta assente.',
-	'bookinfo-purchase' => 'Acquista il libro presso: $1',
-	'bookinfo-provider' => 'Dati estratti da: $1',
+	'bookinfo-error-nosuchitem'  => 'Elemento inesistente o non trovato.',
+	'bookinfo-error-nodriver'    => 'Impossibile inizializzare un driver corretto per le Informazioni sui libri.',
+	'bookinfo-error-noresponse'  => 'Mancata risposta o risposta assente.',
+	'bookinfo-purchase'          => 'Acquista il libro presso: $1',
+	'bookinfo-provider'          => 'Dati estratti da: $1',
 );
 
 /** Japanese (日本語)
@@ -490,6 +511,21 @@ $messages['kk-arab'] = array(
 	'bookinfo-error-noresponse'  => 'ەش جاۋاپ جوق نە سۇرانىمدىڭ مەزگىلى ٴوتىپ كەتتى.',
 	'bookinfo-purchase'          => 'بۇل كىتاپتى $1 دەگەننەن ساتىپ الۋ',
 	'bookinfo-provider'          => 'دەرەك جەتىستىرۋشىسى: $1',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'bookinfo-header'           => 'ពត៌មានសៀវភៅ',
+	'bookinfo-desc'             => 'ពង្រីក [[Special:Booksources]] ជាមួយពត៌មាន ពីសេវាវ៉ែប',
+	'bookinfo-result-title'     => 'ចំណងជើង៖',
+	'bookinfo-result-author'    => 'អ្នកនិពន្ធ៖',
+	'bookinfo-result-publisher' => 'ក្រុមហ៊ុនបោះពុម្ភផ្សាយ ៖',
+	'bookinfo-result-year'      => 'ឆ្នាំ៖',
+	'bookinfo-error-nosuchitem' => 'មុខរបស់ មិនមាន ឬ មិនអាចរកឃើញ ។',
+	'bookinfo-purchase'         => 'ជាវសៀវភៅនេះ ពី $1',
+	'bookinfo-provider'         => 'អ្នកផ្គត់ផ្គង់ទិន្នន័យ៖ $1',
 );
 
 $messages['la'] = array(
@@ -925,6 +961,7 @@ $messages['vo'] = array(
 	'bookinfo-error-nosuchitem'  => 'No dabinon u no petuvon.',
 	'bookinfo-error-noresponse'  => 'No edabinon geükam, u tim tulunüpik ya epasetikon.',
 	'bookinfo-purchase'          => 'Remolös buki at se $1',
+	'bookinfo-provider'          => 'Nüns pesedons se: $1',
 );
 
 /* Cantonese (Shinjiman) */

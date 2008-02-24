@@ -302,6 +302,17 @@ Gelieve te controleren of u de juiste rechten hebt op deze wiki en of uw acties 
 	'crosswikiblock-nocreate'       => 'Gebruiker aanmaken voorkomen',
 	'crosswikiblock-autoblock'      => "Automatisch het laatste IP-adres gebruikt door deze gebruiker blokkeren, en elke volgende IP's waarmee ze proberen te bewerken",
 	'crosswikiblock-noemail'        => 'Het verzenden van e-mails door deze gebruiker voorkomen',
+	'crosswikiunblock'              => 'Gebruiker op een andere wiki deblokkeren',
+	'crosswikiunblock-header'       => 'Via deze pagina kan u een gebruiker op een andere wiki deblokkeren.
+Controleer alstublieft of u dit op die wiki mag doen en of u in overeenstemming met het beleid handelt.',
+	'crosswikiunblock-user'         => 'Gebruiker, IP-adres of blokkadenummer en bestemmingswiki:',
+	'crosswikiunblock-reason'       => 'Reden:',
+	'crosswikiunblock-submit'       => 'Gebruiker deblokkeren',
+	'crosswikiunblock-success'      => "Gebruiker '''$1''' is gedeblokkeerd.
+
+Ga terug naar:
+* [[Special:CrosswikiBlock|Blokkadeformulier]]
+* [[$2]]",
 	'crosswikiblock-nousername'     => 'Er werd geen gebruikersnaam opgegeven',
 	'crosswikiblock-local'          => 'Plaatselijke blokkades worden niet ondersteund door dit formulier. Gebruik daarvoor [[Special:Blockip]].',
 	'crosswikiblock-dbnotfound'     => 'Database $1 bestaat niet',
@@ -311,11 +322,13 @@ Gelieve te controleren of u de juiste rechten hebt op deze wiki en of uw acties 
 	'crosswikiblock-noreason'       => 'Geen reden opgegeven.',
 	'crosswikiblock-notoken'        => 'Onjuist bewerkingstoken.',
 	'crosswikiblock-alreadyblocked' => 'Gebruiker $3 is al geblokkeerd.',
+	'crosswikiblock-noblock'        => 'Deze gebruiker is niet geblokkeerd',
 	'crosswikiblock-success'        => "Gebruiker '''$3''' succesvol geblokkeerd.
 
 Teruggaan naar:
 * [[Special:CrosswikiBlock|Blokkeerformulier]]
 * [[$4]]",
+	'crosswikiunblock-local'        => 'Plaatselijke blokkades worden niet ondersteund door dit formulier. Gebruik daarvoor [[Special:Ipblocklist]].',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

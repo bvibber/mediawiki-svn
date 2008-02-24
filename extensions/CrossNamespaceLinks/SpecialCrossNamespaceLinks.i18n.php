@@ -242,8 +242,13 @@ $messages['is'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|tengja|tengir}} $3',
 );
 
+/** Italian (Italiano)
+ * @author .anaconda
+ * @author BrokenArrow
+ */
 $messages['it'] = array(
 	'crossnamespacelinks'         => 'Collegamenti tra namespace',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Elenco dei collegamenti tra namespace]] che non dovrebbero esistere su {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Questa pagina presenta un elenco di collegamenti tra le pagine del namespace principale e le pagine di altri namespace, che non dovrebbero essere usati.
 
 Sono esclusi i collegamenti verso i namespace {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}.',
@@ -255,7 +260,7 @@ Sono esclusi i collegamenti verso i namespace {{ns:special}}, {{ns:talk}}, {{ns:
  */
 $messages['ja'] = array(
 	'crossnamespacelinks'         => '名前空間をまたぐリンク',
-	'crossnamespacelinks-desc'    => '{{SITENAME}} には含まれない、[[{{ns:special}}:CrossNamespaceLinks|名前空間をまたぐリンク]]',
+	'crossnamespacelinks-desc'    => '{{SITENAME}} などを除いた、[[{{ns:special}}:CrossNamespaceLinks|名前空間をまたぐリンク]]',
 	'crossnamespacelinks-summary' => '通常名前空間から他の名前空間（ {{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} を除く）のページへとリンクしているページの一覧です。',
 	'crossnamespacelinkstext'     => '$1: $2 個 の $3 へのリンク',
 );
@@ -563,6 +568,7 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'crossnamespacelinks'         => 'Yüms bevü nemaspads',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Lisedön yümis vü nemaspads]], kels no dabinabons in {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Su pad at palisedons yüms de pad nemaspada cifik lü pad nemaspadas votik (pläamü nemaspads: {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), kelas geb no pakomandon.',
 	'crossnamespacelinkstext'     => '$1: {{PLURAL:$2|yüm|yüms}} $2 lü $3',
 );

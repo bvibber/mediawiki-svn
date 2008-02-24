@@ -122,6 +122,14 @@ $messages['ja'] = array(
 	'categorystepper-end'   => '（カテゴリの最後）',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'categorystepper-end'   => '(ការបញ្ចាប់ នៃចំណាត់ក្រុម)',
+	'categorystepper-start' => '(ការចាប់ផ្តើម នៃចំណាត់ក្រុម)',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

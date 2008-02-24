@@ -49,6 +49,13 @@ $messages['hsb'] = array(
 	'titlekey-desc' => 'Pozadkowy proces za namjety tituloweho pytanja',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'titlekey-desc' => 'タイトルの前方一致検索を容易にする内部機構',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -175,6 +175,7 @@ $messages['hu'] = array(
  */
 $messages['it'] = array(
 	'assert_edit_title'   => 'Asserzione non riuscita',
+	'assert_edit_desc'    => 'Aggiunge asserzioni di modifica ad uso dei bot',
 	'assert_edit_message' => "L'asserzione indicata ($1) non è riuscita.",
 );
 

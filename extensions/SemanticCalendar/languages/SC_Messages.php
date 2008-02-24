@@ -76,13 +76,14 @@ $messages['fa'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'sc_previousmonth'    => 'Mois précédent',
 	'sc_nextmonth'        => 'Mois suivant',
 	'sc_today'            => "Aujourd'hui",
 	'sc_gotomonth'        => 'Aller vers le mois',
-	'sc_error_year2038'   => "Erreur : ce système ne supporte les dates après 2038, dû au [http://fr.wikipedia.org/wiki/Bogue_de_l%27an_2038 Bogue de l'an 2038]",
+	'sc_error_year2038'   => 'Erreur : ce système ne supporte pas les dates postérieures à 2038, à cause du [http://fr.wikipedia.org/wiki/Bogue_de_l%27an_2038 Bogue de l’an 2038]',
 	'sc_error_beforeyear' => 'Erreur : ce système ne peut supporter les dates antérieures au $1.',
 );
 

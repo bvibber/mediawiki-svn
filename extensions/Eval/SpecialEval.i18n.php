@@ -175,6 +175,13 @@ $messages['tr'] = array(
 	'eval_code' => 'Kod',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'eval_code' => 'Mã nguồn',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

@@ -181,9 +181,10 @@ $messages['fa'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'imagemap_desc'               => 'Permet une carte image cliente à être cliquée en utilisant la balise <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_desc'               => 'Permet les cartes images clientes cliquables, grâce à la balise <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image'           => '&lt;imagemap&gt; : vous devez spécifier une image dans la première ligne',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt; : l’image est invalide ou n’existe pas',
 	'imagemap_no_link'            => '&lt;imagemap&gt; : aucun lien valide n’a été trouvé à la fin de la ligne $1',
@@ -320,18 +321,22 @@ $messages['is'] = array(
 	'imagemap_description' => 'Um þessa mynd',
 );
 
-/* Italian (AnyFile, fixed typos by BrokenArrow) */
+/** Italian (Italiano)
+ * @author Anyfile
+ * @author BrokenArrow
+ */
 $messages['it'] = array(
-	'imagemap_no_image'             => "&lt;imagemap&gt;: si deve specificare un'immagine nella prima riga",
-	'imagemap_invalid_image'        => "&lt;imagemap&gt;: l'immagine non è valida o non esiste",
-	'imagemap_no_link'              => '&lt;imagemap&gt;: non è stato trovato alcun collegamento valido alla fine della riga $1',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: titolo del collegamento non valido nella riga $1',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: non ci sono abbastanza coordinate per la forma specificata nella riga $1',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: Forma (shape) non riconosciuta nella riga $1, ogni riga deve iniziare con uno dei seguenti: default, rect, circle o poly',
-	'imagemap_no_areas'             => "&lt;imagemap&gt;: deve essere specificata almeno un'area",
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: coordinata non valida nella riga $1, deve essere un numero',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: Valore non valido per il parametro desc, deve essere uno dei seguenti: $1',
-	'imagemap_description'          => 'Informazioni sull\'immagine',
+	'imagemap_desc'               => "Consente di realizzare ''image map'' cliccabili lato client con il tag <tt><nowiki><imagemap></nowiki></tt>",
+	'imagemap_no_image'           => "&lt;imagemap&gt;: si deve specificare un'immagine nella prima riga",
+	'imagemap_invalid_image'      => "&lt;imagemap&gt;: l'immagine non è valida o non esiste",
+	'imagemap_no_link'            => '&lt;imagemap&gt;: non è stato trovato alcun collegamento valido alla fine della riga $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: titolo del collegamento non valido nella riga $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: non ci sono abbastanza coordinate per la forma specificata nella riga $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: Forma (shape) non riconosciuta nella riga $1, ogni riga deve iniziare con uno dei seguenti: default, rect, circle o poly',
+	'imagemap_no_areas'           => "&lt;imagemap&gt;: deve essere specificata almeno un'area",
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: coordinata non valida nella riga $1, deve essere un numero',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: Valore non valido per il parametro desc, deve essere uno dei seguenti: $1',
+	'imagemap_description'        => "Informazioni sull'immagine",
 );
 
 /** Japanese (日本語)

@@ -63,6 +63,13 @@ $messages['hsb'] = array(
 	'usercontactlink-baduser' => 'njekorektne wužiwarske mjeno',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'usercontactlink-baduser' => 'ឈ្មោះអ្នកប្រើប្រាស់ មិនត្រឹមត្រូវ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -129,5 +136,12 @@ $messages['te'] = array(
  */
 $messages['tr'] = array(
 	'usercontactlink-baduser' => 'Hatalı kullanıcı adı',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'usercontactlink-baduser' => 'tên hiệu không đúng',
 );
 

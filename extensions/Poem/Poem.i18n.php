@@ -74,6 +74,13 @@ $messages['hu'] = array(
 	'poem-desc' => '<tt>&lt;poem&gt;</tt> tag a versek formázásához',
 );
 
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
+$messages['it'] = array(
+	'poem-desc' => 'Aggiunge il tag <tt>&lt;poem&gt;</tt> per la formattazione dei testi poetici',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

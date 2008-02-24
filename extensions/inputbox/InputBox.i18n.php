@@ -390,6 +390,7 @@ $messages['is'] = array(
  * @author BrokenArrow
  */
 $messages['it'] = array(
+	'inputbox-desc'           => "Consente l'inserimento di moduli HTML predefiniti",
 	'inputbox-error-no-type'  => 'Non è stato specificato il tipo di inputbox da creare.',
 	'inputbox-error-bad-type' => '"$1" non è un tipo di inputbox riconosciuto. Scegliere il tipo tra "create", "comment", "search" e "search2".',
 	'tryexact'                => 'Cerca corrispondenza esatta',

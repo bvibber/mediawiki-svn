@@ -102,22 +102,22 @@ $messages['el'] = array(
 /** French (Français)
  * @author Sherbrooke
  * @author Dereckson
+ * @author Urhixidur
  * @author Grondin
  */
 $messages['fr'] = array(
 	'passwordreset'                    => 'Remise à zéro du mot de passe',
-	'passwordreset-desc'               => "Réinitialise les mots de passe wiki des utilisateurs - nécessite les privilièges « passwordreset »",
 	'passwordreset-invalidusername'    => "Nom d'usager inconnu",
 	'passwordreset-emptyusername'      => "Nom d'usager vide",
 	'passwordreset-nopassmatch'        => 'Les mots de passe que vous avez saisis ne sont pas identiques.',
-	'passwordreset-badtoken'           => 'Token de modification inconnu',
+	'passwordreset-badtoken'           => 'Jeton de modification inconnu',
 	'passwordreset-username'           => "Nom d'usager",
 	'passwordreset-newpass'            => 'Nouveau mot de passe',
 	'passwordreset-confirmpass'        => 'Confirmez le mot de passe',
 	'passwordreset-submit'             => 'Remise à zéro du mot de passe',
-	'passwordreset-success'            => "Le mot de passe a été remis à zréo pour le ''user_id'' $1.",
+	'passwordreset-success'            => 'Le mot de passe a été remis à zéro pour l’usager $1.',
 	'passwordreset-disableuser'        => 'Désactiver le compte utilisateur ?',
-	'passwordreset-disableuserexplain' => "(règle un hash de mot de passe non valide - l'utilisateur ne peut pas se connecter)",
+	'passwordreset-disableuserexplain' => '(spécifie un hachage de mot de passe invalide - l’utilisateur ne pourra pas se connecter)',
 	'passwordreset-disablesuccess'     => 'Compte utilisateur désactivé (user_id : $1)',
 	'passwordreset-accountdisabled'    => 'Ce compte a été désactivé.',
 	'disabledusers'                    => 'Utilisateurs désactivés',

@@ -134,6 +134,16 @@ $messages['hu'] = array(
 	'specialwhoiswatchingaddbtn'  => 'Összes kiválasztott felhasználó hozzáadása',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'whoiswatching'                => 'អ្នកដែលកំពុងតាមដាន ទំព័រវិគី',
+	'specialwhoiswatchingthepage'  => 'អ្នកដែលកំពុងតាមដាន %s',
+	'specialwhoiswatchingaddusers' => 'បន្ថែមអ្នកប្រើប្រាស់ ដើម្បីតាមដានទំព័រ',
+	'specialwhoiswatchingaddbtn'   => 'បន្ថែមអ្នកប្រើប្រាស់ ដែលបានជ្រើសយក',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -73,14 +73,15 @@ $messages['ee'] = array(
 );
 
 /** French (Français)
+ * @author Urhixidur
  * @author Grondin
  */
 $messages['fr'] = array(
-	'inspectcache'         => 'Inspection du Cache',
-	'inspectcache-desc'    => 'Un simple outil de déboggage pour inspecter les éléments dans le cache partagé.',
+	'inspectcache'         => 'Inspection du cache',
+	'inspectcache-desc'    => 'Un simple outil de débogage pour inspecter les éléments dans le cache partagé.',
 	'inspectcache-ok'      => 'Lancer',
 	'inspectcache-general' => 'Cache général',
-	'inspectcache-parser'  => 'Cache des parsers',
+	'inspectcache-parser'  => 'Cache des parseurs',
 	'inspectcache-message' => 'Cache des messages',
 	'inspectcache-get'     => 'Obtenir',
 	'inspectcache-delete'  => 'Supprimer',

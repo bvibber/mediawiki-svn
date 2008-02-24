@@ -129,6 +129,22 @@ $messages['hsb'] = array(
 	'dt_xml_freetext'             => 'Swobodny tekst',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'viewxml'                     => 'មើល XML',
+	'dt_viewxml_docu'             => 'ជ្រើសយក ចំណោម ចំណាត់ក្រុម និង វាលឈ្មោះ ដើម្បីមើលជាទំរង់ XML ។',
+	'dt_viewxml_categories'       => 'ចំណាត់ក្រុម',
+	'dt_viewxml_namespaces'       => 'វាលឈ្មោះ',
+	'dt_viewxml_simplifiedformat' => 'ទំរង់សាមញ្ញ',
+	'dt_xml_namespace'            => 'វាលឈ្មោះ',
+	'dt_xml_page'                 => 'ទំព័រ',
+	'dt_xml_name'                 => 'ឈ្មោះ',
+	'dt_xml_title'                => 'ចំណងជើង',
+	'dt_xml_freetext'             => 'អត្ថបទសេរី',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

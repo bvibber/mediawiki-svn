@@ -278,6 +278,31 @@ Alternativ kannst du auch die externen Suchmöglichkeiten nutzen:\n",
 
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'lucene-desc'           => 'Interfejs za pytański program Apache "Lucene"',
+	'searchnumber'          => '<strong>Wuslědki $1-$2 z $3</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Slědny</span>",
+	'searchnext'            => "<span style='font-size: small'>Pśiducy</span> &#x00BB;",
+	'lucene-searchscore'    => 'Relewanca: $1%',
+	'lucene-resultsize'     => '$1 ($2 słowow)',
+	'searchdidyoumean'      => 'Sy "<a href="$1">$2</a>" měnił?',
+	'searchnoresults'       => 'Bóžko njejsu žedne góźbne boki za twóje pytańske wótpšašanje.',
+	'searchnearmatches'     => '<b>Toś te boki maju k pytańskemu wótpšašanjoju pódobne titule:</b>',
+	'lucenepowersearchtext' => 'Pytanje w mjenjowych rumach:
+
+$1
+
+Pytanje za $3 $9 $10',
+	'lucenefallback'        => 'Pśi wikijowym pytanju jo problem nastał.
+To jo nejskerjej tuchylu; wopytaj pózdźej hyšći raz abo móžoš teke wiki z eksterneju pytańskej słužbu pśepytaś:',
+	'searchexactcase'       => 'Pytanje z eksaktnym wjelikopisanjom/małopisanjom',
+	'searchall'             => 'wše',
+	'searchincategory'      => 'w kategoriji',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author MF-Warburg
@@ -675,6 +700,7 @@ Leita að $3 $9',
  * @author BrokenArrow
  */
 $messages['it'] = array(
+	'lucene-desc'           => 'Interfaccia per il motore di ricerca Lucene di Apache',
 	'searchnumber'          => '<strong>Risultati da $1 a $2 su un totale di $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Precedente</span>",
 	'searchnext'            => "<span style='font-size: small'>Successivo</span> &#x00BB;",

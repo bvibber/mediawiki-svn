@@ -375,6 +375,7 @@ $messages['fo'] = array(
 
 /** French (Français)
  * @author Sherbrooke
+ * @author Urhixidur
  * @author Grondin
  */
 $messages['fr'] = array(
@@ -404,12 +405,12 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 *La page a été supprimée,
 *La révision cachée était la toute première de la page',
 	'oversight-log-hiderev'       => 'a supprimé une édition de $1',
-	'oversight'                   => 'Surveiller',
+	'oversight'                   => 'Supervision',
 	'oversight-view'              => 'détails',
 	'oversight-difference'        => '(Différence par rapport à la révision précédente)',
 	'oversight-prev'              => 'Dernière révision précédente',
 	'oversight-hidden'            => 'Révision cachée',
-	'oversight-header'            => 'Ci-dessous, figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges d’Oversight.',
+	'oversight-header'            => 'Ci-dessous figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges de {{MediaWiki:Oversight}}.',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -701,6 +702,7 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'hiderevision'                => 'Oscuramento permanente di una revisione',
+	'hiderevision-desc'           => 'Rende invisibili a tutti gli utenti singole revisioni delle pagine (per motivi legali, ecc.)',
 	'hiderevision-prompt'         => 'Numero della revisione da oscurare:',
 	'hiderevision-continue'       => 'Continua',
 	'hiderevision-text'           => "Questa funzione deve essere usata '''unicamente''' nei seguenti casi:
