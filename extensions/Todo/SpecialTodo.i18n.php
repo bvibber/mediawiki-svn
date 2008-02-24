@@ -10,6 +10,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'todo' => 'Todo list',
+	'todo-desc' => 'Experimental personal todo list extension',
 	'todo-tab' => 'todo',
 	'todo-new-queue' => 'new',
 	'todo-mail-subject' => "Completed item on $1's todo list",
@@ -96,6 +97,7 @@ $messages['el'] = array(
 
 $messages['fr'] = array (
 	'todo'              => 'Liste des tâches à exécuter',
+	'todo-desc'         => 'Extension expérimentale d’une liste personnelle de tâche à accomplir.',
 	'todo-tab'          => 'à faire',
 	'todo-new-queue'    => 'Nouveau',
 	'todo-mail-subject' => "Article achevé sur la liste des tâches de $1",
