@@ -341,6 +341,7 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Nike
  */
 $messages['fi'] = array(
 	'hiderevision'                => 'Versioiden pysyvä piilottaminen',
@@ -366,7 +367,7 @@ Poistetut kohteet eivät näy kenellekään web-sivuston kautta, mutta kaikki po
 	'oversight-log-hiderev'       => 'poisti muokkauksen sivulta $1',
 	'oversight-view'              => 'tiedot',
 	'oversight-hidden'            => 'Piilotettu versio',
-	'oversight-header'            => 'Alla on lista pysyvästi julkiselta näkyvyydeltä piilotetuista versioista. Näiden tietojen julkaiseminen voi johtaa tämän työkalun käyttöoikeuksien menetykseen.',
+	'oversight-header'            => 'Alla on lista pysyvästi piilotetuista versioista, jotka eivät näy julkisesti. Näiden tietojen julkaiseminen voi johtaa tämän työkalun käyttöoikeuksien menetykseen.',
 );
 
 $messages['fo'] = array(

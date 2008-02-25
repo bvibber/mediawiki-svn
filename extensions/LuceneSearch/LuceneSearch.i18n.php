@@ -526,6 +526,15 @@ ou ben d’utilisar un sèrviço de rechèrche de defôr.',
 	'searchincategory'      => 'Chèrchiér dens les catègories',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'searchdidyoumean'  => 'Stavitu par câs cirint "<a href="$1">$2</a>"?',
+	'searchnoresults'   => 'Nol è stât cjatât nissun risultât corispuindint esatementri ae to ricercje.',
+	'searchnearmatches' => '<b>Chestis pagjinis a àn titui simii a chel cirût:</b>',
+);
+
 /** Irish (Gaeilge)
  * @author SPQRobin
  */

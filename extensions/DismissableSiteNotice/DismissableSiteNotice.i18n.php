@@ -256,6 +256,13 @@ $messages['lt'] = array(
 	'sitenotice_close' => 'paslėpti',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'sitenotice_close' => 'पुसा',
+);
+
 $messages['nan'] = array(
 	'sitenotice_close' => 'Chhú-siau',
 );

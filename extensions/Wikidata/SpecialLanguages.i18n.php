@@ -981,6 +981,20 @@ $wdMessages['id'] = array(
 	'languages'=>'Wikidata: Pengelola bahasa',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$wdMessages['ja'] = array(
+	'datasearch'      => 'ウィキデータ: データ検索',
+	'langman_title'   => '言語マネージャ',
+	'languages'       => 'ウィキデータ: 言語マネージャ',
+	'ow_save'         => '保存',
+	'ow_history'      => '履歴',
+	'ow_datasets'     => 'データセット',
+	'ow_noedit_title' => '編集権限がありません',
+	'ow_noedit'       => 'データセット "$1" の編集権限がありません。[[{{MediaWiki:Ow editing policy url}}|編集方針]]をご覧ください。',
+);
+
 /** Georgian (ქართული)
  * @author Sopho
  * @author Malafaya
@@ -1166,6 +1180,58 @@ $wdMessages['lt'] = array(
 $wdMessages['mai'] = array(
 	'datasearch'    => 'विकी सूचनाकोष: सूचनाकोष ताकू',
 	'langman_title' => 'भाषा प्रबंधक',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$wdMessages['mr'] = array(
+	'datasearch'                            => 'विकिविदा:विदा शोध',
+	'langman_title'                         => 'भाषा प्रबंधक',
+	'languages'                             => 'विकिविदा:भाषाप्रबंधक',
+	'ow_save'                               => 'जतन करा',
+	'ow_history'                            => 'इतिहास',
+	'ow_datasets'                           => 'विदा-संच निवड',
+	'ow_noedit_title'                       => 'संपादनाकरिता परवानगी नाही',
+	'ow_noedit'                             => 'विदासंच "$1"मधील पाने संपादीत करण्याची तुम्हाला परवानगी नाही.कृपया [[{{MediaWiki:Ow editing policy url}}|आमची संपादन निती]]पहा.',
+	'ow_uipref_datasets'                    => 'अविचल दृश्य',
+	'ow_uiprefs'                            => 'विकिविदा',
+	'ow_none_selected'                      => '<कोणतेही निवडले नाही>',
+	'ow_conceptmapping_no_action_specified' => '"$1" कसे करावे मला ठावूक नाही,क्षमस्व',
+	'ow_dm_OK'                              => 'ठीक',
+	'ow_dm_not_present'                     => 'भरले नाही',
+	'ow_dm_not_found'                       => 'विदेत सापडले नाही अथवा बरोबर नाही',
+	'ow_available_contexts'                 => 'उपलब्ध संदर्भ',
+	'ow_concept_panel'                      => 'संकल्पना दल',
+	'ow_ClassAttributeLevel'                => 'पातळी',
+	'ow_ClassAttributeType'                 => 'प्रकार',
+	'ow_Definition'                         => 'व्याख्या',
+	'ow_ExactMeanings'                      => 'नेमका अर्थ',
+	'ow_GotoSource'                         => 'स्रोताकडे जा',
+	'ow_Language'                           => 'भाषा',
+	'ow_OptionAttributeOption'              => 'पर्याय',
+	'ow_Relations'                          => 'नाते',
+	'ow_RelationType'                       => 'नाते प्रकार',
+	'ow_Spelling'                           => 'स्पेलींग',
+	'ow_Synonyms'                           => 'समानार्थी शब्द',
+	'ow_SynonymsAndTranslations'            => 'समानार्थी शब्द आणि भाषांतरे',
+	'ow_Source'                             => 'स्रोत',
+	'ow_SourceIdentifier'                   => 'स्रोत जाणकार',
+	'ow_TextAttribute'                      => 'मालमत्ता',
+	'ow_Text'                               => 'मसुदा',
+	'ow_TextAttributeValues'                => 'केवळ साधा मजकुर',
+	'ow_TranslatedTextAttribute'            => 'मालमत्ता',
+	'ow_TranslatedText'                     => 'भाषांतरीत मजकुर',
+	'ow_TranslatedTextAttributeValue'       => 'मजकुर',
+	'ow_TranslatedTextAttributeValues'      => 'भाशांतरकरण्या योग्य मजकुर',
+	'ow_LinkAttribute'                      => 'मालमत्ता',
+	'ow_LinkAttributeValues'                => 'दुवे',
+	'ow_Property'                           => 'मालमत्ता',
+	'ow_Value'                              => 'मुल्य',
+	'ow_meaningsoftitle'                    => '"$1"चे अर्थ',
+	'ow_meaningsofsubtitle'                 => '<em>विकिदुवा:</em> [[$1]]',
+	'ow_copy_no_action_specified'           => 'कृपया कृती निर्देशीत करा',
+	'ow_copy_help'                          => 'एकदिवस आम्ही तुम्हाला मदत करु शकु',
 );
 
 /** Dutch (Nederlands)

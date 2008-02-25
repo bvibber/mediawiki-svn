@@ -242,6 +242,7 @@ $messages['eo'] = array(
  * @author Crt
  * @author Cimon Avaro
  * @author Siebrand
+ * @author Nike
  */
 $messages['fi'] = array(
 	'changeauthor'                      => 'Muuta muokkausversion tekijä',
@@ -249,7 +250,7 @@ $messages['fi'] = array(
 	'changeauthor-title'                => 'Muuta muokkausversion tekijä',
 	'changeauthor-search-box'           => 'Hae muokkausversioita',
 	'changeauthor-pagenameform-go'      => 'Siirry',
-	'changeauthor-comment'              => 'Kommentti:',
+	'changeauthor-comment'              => 'Kommentti',
 	'changeauthor-changeauthors-single' => 'Muuta tekijä',
 	'changeauthor-nosuchtitle'          => 'Sivua nimeltä ”$1” ei ole.',
 	'changeauthor-success'              => 'Pyyntö on suoritettu onnistuneesti.',

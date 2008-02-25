@@ -367,7 +367,7 @@ Ga terug naar:
 Teruggaan naar:
 * [[Special:CrosswikiBlock|Blokkeerformulier]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'Plaatselijke blokkades worden niet ondersteund door dit formulier. Gebruik daarvoor [[Special:Ipblocklist]].',
+	'crosswikiunblock-local'        => 'Plaatselijke deblokkades worden niet ondersteund door dit formulier. Gebruik daarvoor [[Special:Ipblocklist]].',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

@@ -61,9 +61,10 @@ $messages['eo'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Nike
  */
 $messages['fi'] = array(
-	'breadcrumbs-desc' => 'Näyttää käyttäjän reitin wikissä.',
+	'breadcrumbs-desc' => 'Näyttää käyttäjän kulkeman reitin wikissä.',
 );
 
 /** Galician (Galego)

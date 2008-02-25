@@ -324,6 +324,15 @@ $messages['frp'] = array(
 	'bookinfo-provider'          => 'Fornissor de les balyês : $1',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'bookinfo-header'        => 'Informazions sui libris',
+	'bookinfo-result-title'  => 'Titul:',
+	'bookinfo-result-author' => 'Autôr:',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Xosé
@@ -591,6 +600,18 @@ $messages['ml'] = array(
 	'bookinfo-result-author'    => 'ഗ്രന്ഥകര്‍ത്താവ്:',
 	'bookinfo-result-publisher' => 'പ്രസാധകന്‍:',
 	'bookinfo-result-year'      => 'വര്‍ഷം:',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'bookinfo-result-title'      => 'शिर्षक:',
+	'bookinfo-result-author'     => 'लेखक:',
+	'bookinfo-result-publisher'  => 'प्रकाशक:',
+	'bookinfo-result-year'       => 'वर्ष',
+	'bookinfo-error-invalidisbn' => 'चूकीचा ISBN भरला',
+	'bookinfo-provider'          => 'विदा दाता: $1',
 );
 
 /** Erzya (эрзянь кель)

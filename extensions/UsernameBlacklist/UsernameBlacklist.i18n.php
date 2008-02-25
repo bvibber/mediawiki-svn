@@ -422,11 +422,23 @@ $messages['hy'] = array(
 	'usernameblacklist-invalid-lines' => 'Մասնակցայի անունների արգելման ցանկի հետևյալ {{PLURAL:$1|տողը|տողերը}} անթույլատրելի են; խնդրում ենք ուղղել {{PLURAL:$1|դա|դրանք}} էջը հիշելուց առաջ.',
 );
 
-/* Indonesian (Ivan Lanin) */
-	$messages['id'] = array(
-	'blacklistedusername' => 'Daftar hitam nama pengguna',
-	'blacklistedusernametext' => 'Nama pengguna yang Anda pilih berada dalam [[MediaWiki:Usernameblacklist|
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'usernameblacklist-desc'          => 'Menambahkan [[MediaWiki:Usernameblacklist|daftar hitam nama pengguna]] untuk membatasi pembuatan akun pengguna yang cocok dengan salah satu atau lebih ekspresi regular',
+	'blacklistedusername'             => 'Daftar hitam nama pengguna',
+	'blacklistedusernametext'         => 'Nama pengguna yang Anda pilih berada dalam [[MediaWiki:Usernameblacklist|
 daftar hitam nama pengguna]]. Harap pilih nama lain.',
+	'usernameblacklist'               => '<pre>
+# Entri pada daftar ini akan digunakan sebagai bagian dari suatu ekspresi regular sewaktu
+# membuat daftar hitam nama pengguna pada pendaftaran. Tiap item harus merupakan bagian dari
+# suatu daftar seperti
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Entri|Entri}} pada daftar hitam nama pengguna {{PLURAL:$1|ini|berikut}} tidak valid; silakan perbaiki {{PLURAL:$1|entri|entri}} tersebut sebelum disimpan:',
 );
 
 $messages['is'] = array(

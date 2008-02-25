@@ -1280,6 +1280,7 @@ $messages['th'] = array(
 	'badimages-add-btn'    => 'เพิ่ม',
 	'badimages-added'      => '$1 ถูกเพิ่มไปยังรายชื่อเรียบร้อยแล้ว',
 	'badimages-count'      => "มีภาพทั้งหมด '''$1''' ภาพในรายชื่อภาพ",
+	'badimages-name'       => 'ชื่อ :',
 	'badimages-reason'     => 'เหตุผล :',
 	'badimages-remove-btn' => 'เอาออก',
 );

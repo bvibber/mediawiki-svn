@@ -399,6 +399,16 @@ $messages['ja'] = array(
 	'duplicator-toomanyrevisions' => '[[$1]] は版が多すぎるため（$2 版）複製できません。現在の上限は $3 版までです。',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'duplicator-options' => 'ជំរើស',
+	'duplicator-source'  => 'ប្រភព ៖',
+	'duplicator-dest'    => 'គោលដៅ ៖',
+	'duplicator-summary' => 'បានចំលងពី [[$1]]',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

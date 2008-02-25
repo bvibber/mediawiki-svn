@@ -409,9 +409,14 @@ $messages['hy'] = array(
 	'newuserlog-create2-entry' => 'ստեղծեց նոր հաշիվ $1 մասնակցի համար',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
 $messages['id'] = array(
 	'newuserlogpage'           => 'Log pengguna baru',
 	'newuserlogpagetext'       => 'Di bawah ini adalah log pendaftaran pengguna baru',
+	'newuserlog-desc'          => 'Menambahkan [[Special:Log/newusers|log pembuatan akun]] di [[Special:Log]]',
+	'newuserlog-byemail'       => 'kata sandi dikirim melalui surat-e',
 	'newuserlog-create-entry'  => 'mendaftar sebagai pengguna',
 	'newuserlog-create2-entry' => 'mendaftarkan akun untuk $1',
 );
@@ -888,6 +893,18 @@ $messages['tr'] = array(
  */
 $messages['ty'] = array(
 	'newuserlog-create-entry' => 'Ta’ata fa’a’ohipa ’āpī',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'newuserlogpage'           => 'Журнал нових користувачів',
+	'newuserlogpagetext'       => 'Список нещодавно зареєстрованих користувачів',
+	'newuserlog-desc'          => 'Додає [[Special:Log/newusers|журнал нових користувачів]] на сторінку [[Special:Log]]',
+	'newuserlog-byemail'       => 'пароль надісланий електронною поштою',
+	'newuserlog-create-entry'  => 'Новий користувач',
+	'newuserlog-create2-entry' => 'створив обліковий запис для',
 );
 
 $messages['ur'] = array(

@@ -197,6 +197,7 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'todo'                  => 'Takenlijst',
+	'todo-desc'             => 'Experimentele uitbreiding voor een persoonlijke [[Special:Todo|takenlijst]]',
 	'todo-tab'              => 'taken',
 	'todo-new-queue'        => 'nieuw',
 	'todo-mail-subject'     => 'Afgerond actiepunt op actielijst $1',
@@ -226,11 +227,12 @@ $4',
 	'todo-form-submit'      => 'Zoekopdracht uitvoeren',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'todo'                  => 'Oppgaveliste',
+	'todo-desc'             => 'Eksperimentell personlig utvidelse for [[Special:Todo|oppgavelister]].',
 	'todo-tab'              => 'oppgaver',
 	'todo-new-queue'        => 'ny',
 	'todo-mail-subject'     => 'Fullførte oppgave på $1s oppgaveliste',

@@ -2241,6 +2241,21 @@ $messages['ml'] = array(
 	'go_to_board_vote'       => 'വിക്കിമീഡിയ ബോര്‍ഡ് തെരഞ്ഞെടുപ്പ് 2008',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'boardvote_time'       => 'वेळ',
+	'boardvote_user'       => 'सदस्य',
+	'boardvote_edits'      => 'संपादने',
+	'boardvote_ip'         => 'अंकपत्ता',
+	'boardvote_ua'         => 'सदस्य एजंट',
+	'boardvote_submit'     => 'ठीक',
+	'boardvote_strike'     => 'खोडा',
+	'boardvote_unstrike'   => 'खोडणे रद्द',
+	'boardvote_edits_many' => 'खूप',
+);
+
 /** Erzya (эрзянь кель)
  * @author Amdf
  */

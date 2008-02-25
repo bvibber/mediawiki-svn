@@ -47,11 +47,18 @@ $messages['ar'] = array(
 	'multiupload-toolbox'              => 'رفع ملفات متعددة',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ * @author DCLXVI
+ */
 $messages['bg'] = array(
-	'multipleupload'    => 'Качване на файлове',
-	'multipleupload-ignoreallwarnings' => 'Пренебрегване на \'\'\'всички предупреждения\'\'\' и съхраняване на файловете въпреки тях.',
-	'multipleupload-saveallfiles' => 'Запазване на всички файлове',
-	'multipleupload-page' => '{{ns:project}}:Политика за изтриване на файлове',
+	'multipleupload'                   => 'Качване на файлове',
+	'multipleupload-desc'              => 'Позволява на потребителите да [[Special:MultipleUpload|качват по няколко файла наведнъж]]',
+	'multipleupload-ignoreallwarnings' => "Пренебрегване на '''всички предупреждения''' и съхраняване на файловете въпреки тях.",
+	'multipleupload-saveallfiles'      => 'Запазване на всички файлове',
+	'multipleupload-page'              => '{{ns:project}}:Политика за изтриване на файлове',
+	'multiupload-fileuploaded'         => 'Файлът беше качен.',
+	'multiupload-toolbox'              => 'Качване на няколко файла',
 );
 
 /** German (Deutsch)

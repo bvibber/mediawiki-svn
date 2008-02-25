@@ -598,6 +598,14 @@ $messages['lt'] = array(
 	'expand_templates_preview'         => 'Peržiūra',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'expand_templates_ok'      => 'ठिक',
+	'expand_templates_preview' => 'झलक',
+);
+
 $messages['nan'] = array(
 	'expandtemplates'                  => 'Khok-chhiong pang-bô͘',
 	'expand_templates_input'           => 'Su-ji̍p bûn-jī:',

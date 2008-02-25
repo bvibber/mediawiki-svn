@@ -285,6 +285,15 @@ $messages['frp'] = array(
 	'sitematrix-sitetotal' => 'Soma',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'sitematrix'           => 'Liste di ducj i progjets Wikimedia',
+	'sitematrix-language'  => 'Lenghe',
+	'sitematrix-sitetotal' => 'Totâl',
+);
+
 /** Irish (Gaeilge)
  * @author Alison
  */
