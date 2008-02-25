@@ -16,8 +16,6 @@
 	private $mPerRow = 4; // How many images wide should the gallery be?
 	private $mWidths = 120, $mHeights = 120; // How wide/tall each thumbnail should be
 	
-	private $already_named_resource = array();
-	
  	function toHTML() {
  		global $wgLang, $mvDefaultAspectRatio;
 
@@ -35,7 +33,8 @@
 
 		$params = array( 'width' => $this->mWidths, 'height' => $this->mHeights );
 		$i = 0;
-		foreach ( $this->mImages as $pair ) {		
+		$this->already_named_resource=array();
+		foreach ( $this->mImages as $pair ) {			
 			$nt = $pair[0];
 			$text = $pair[1];
 			
@@ -50,14 +49,7 @@
 				$nt->getNamespace() == MV_NS_STREAM || 
 				$nt->getNamespace() == MV_NS_SEQUENCE ){
 				//$vpad = floor( ( 1.25*$this->mHeights - $thumb->height ) /2 ) - 2;				
-				$mvTitle = new MV_Title($nt);	
-				
-				//make sure we don't do duplicates 
-				/*if(isset($this->already_named_resource[$mvTitle->getStreamName().'/'.$mvTitle->getTimeRequest()])){
-					$this->already_named_resource[$mvTitle->getStreamName().'/'.$mvTitle->getTimeRequest()]=true;
-				}else{
-					continue;
-				}*/
+				$mvTitle = new MV_Title($nt);							
 				
 				//remap MVD namespace links into the Stream view (so contextual metadata is present)
 				if($nt->getNamespace() == MV_NS_MVD ){

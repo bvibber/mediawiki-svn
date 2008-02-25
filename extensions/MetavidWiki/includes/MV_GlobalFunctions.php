@@ -92,7 +92,7 @@ function mvSetupExtension(){
 	//$wgHooks['ArticleSave'][] = 'mvSaveHook';
 	$wgHooks['ArticleSaveComplete'][] = 'mvSaveHook';
 	$wgHooks['ArticleDelete'][] = 'mvDeleteHook';
-	$wgHooks['ArticleFromTitle'][] = 'mvDoMvPage';		
+	$wgHooks['ArticleFromTitle'][] = 'mvDoMvPage';			
 		
 	$wgHooks['TitleMoveComplete'][]='mvMoveHook';
 	$wgHooks['TitleisValidMove'][]='mvisValidMoveOperation';	
@@ -102,7 +102,7 @@ function mvSetupExtension(){
 	$wgHooks['CustomEditor'][] = 'mvCustomEditor';
 	$wgParser->setHook( 'sequence', 'mvSeqTag' );
 
-
+	$wgHooks['BeforePageDisplay'][] = 'mvDoSpecialPage';
 	
 	
 	/**********************************************/
@@ -139,7 +139,7 @@ function mvSetupExtension(){
 			//all sets use mv_common script: *not used much yet*  
 			$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_common.js\"></script>");
 					
-			if($head_set=='search' || $head_set=='sequence' || $head_set=='stream_interface'||$head_set=='embed')
+			if($head_set=='smw_ext'|| $head_set=='search' || $head_set=='sequence' || $head_set=='stream_interface'||$head_set=='embed')
 				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mv_embed.js\"></script>");
 			
 			if($head_set=='search' || $head_set=='sequence'){	
@@ -155,7 +155,8 @@ function mvSetupExtension(){
 				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_sequence.js\"></script>");																				
 			if($head_set=='stream_interface')
 				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_stream.js\" ></script>");	
-
+			if($head_set=='smw_ext')
+				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_smw_ext.js\" ></script>");
 			 
 			$mvCssUrl = $mvgScriptPath . '/skins/mv_custom.css';
 			$wgOut->addLink(array(

@@ -285,10 +285,10 @@ function do_proccess_images($stream) {
 	while ($row = $dbr->fetchObject($image_res)) {		
 		$relative_time = $row->time - $stream->adj_start_time;
 		//status updates: 
-		//if ($i == 10) {			
+		if ($i == 10) {			
 			print "On image $j of $img_count time: " . seconds2ntp($relative_time) . "\n";
 			$i = 0;
-		//}
+		}
 		$j++;
 		$i++;
 		//get streamImage obj:
@@ -325,12 +325,12 @@ function do_proccess_images($stream) {
 			echo "skipped $local_img_file \n";
 			continue;
 		}
-		print "run copy: $metavid_img_url, $local_img_file \n";
+		//print "run copy: $metavid_img_url, $local_img_file \n";
 		if (!copy($metavid_img_url, $local_img_file)) {
 			echo "failed to copy $metavid_img_url to $local_img_file...\n";
 		} else {
 			//all good don't report anything'
-			print "all good\n";		
+			//print "all good\n";		
 		}
 	}
 }

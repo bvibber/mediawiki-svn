@@ -40,11 +40,11 @@ Opposing Interest #=Interest, Where # is 1-20 for listing top opposing interests
 ==Bill [[Bill Key:={{{Bill Key}}}]] in the {{ #if: {{{Session|}}}| [[Congress Session:={{{Session}}}]] |}} of Congress==
 <span style="float:right">{{navimg|xsize=50|ysize=50|image=Crystal_Clear_mimetype_video.png|link=Category:{{{Bill Key}}}}}</span>
 {{ #if: {{{Title Description|}}}|{{{Title Description}}} |}}
-
 {{ #if: {{{Bill Key|}}}| Media in [[:Category:{{{Bill Key}}}]] |}}
 {{ #if: {{{Date Introduced|}}}|* Date Introduced: [[Date Bill Introduced:={{{Date Introduced}}}]] |}}
 {{ #if: {{{Sponsor|}}}|* Sponsor: [[Bill Sponsor:={{{Sponsor}}}]] |}}';
-$bill_template.='{{ #if: {{{Cosponsor 1|}}}|* Cosponsor: [[Bill Cosponsor:={{{Cosponsor 1}}}]] |}}';
+$bill_template.='
+{{ #if: {{{Cosponsor 1|}}}|* Cosponsor: [[Bill Cosponsor:={{{Cosponsor 1}}}]] |}}';
 
 //$bill_template.='{{ #for: {{{n}}} | {{{Cosponsor $n$}}}<br/> }}';
 for($i=2;$i<70;$i++){	
@@ -61,7 +61,8 @@ for($i=1;$i<20;$i++){
 }
 //@@todo could do inline rss once we get a good cache model for http://www.mediawiki.org/wiki/Extension:RSS_Reader
 // maybe just action=purge on as a cron job, with $parser->disableCache(); commented out 
-$bill_template.='{{ #if: {{{OpenCongressBillID|}}}|==Bill RSS Feeds==
+$bill_template.='
+{{ #if: {{{OpenCongressBillID|}}}|==Bill RSS Feeds==
 * In the News [http://www.opencongress.org/bill/{{{OpenCongressBillID|}}}/atom_news]
 * Blog Coverage [http://www.opencongress.org/bill/{{{OpenCongressBillID|}}}/atom_blogs]
 * Bill Actions [http://www.opencongress.org/bill/{{{OpenCongressBillID|}}}/atom][[Open Congress Bill ID:={{{OpenCongressBillID|}}}|]]

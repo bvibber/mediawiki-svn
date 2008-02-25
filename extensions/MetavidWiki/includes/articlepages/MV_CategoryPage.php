@@ -23,7 +23,8 @@ class MV_CategoryPage extends CategoryPage{
 }
 class MvCategoryViewer extends CategoryViewer {
 	var $show_mv_links=false;
-		
+	private $already_named_resource = array();
+			
 	function getHTML(){
 		$s='';
 		return $s .parent::getHTML(); 
@@ -72,8 +73,14 @@ class MvCategoryViewer extends CategoryViewer {
 			} elseif( $title->getNamespace() == MV_NS_MVD ||
 				 $title->getNamespace() ==  MV_NS_STREAM ||
 				 $title->getNamespace() ==  MV_NS_SEQUENCE ){				 	
-				$this->show_mv_links=true;					 					 
-				$this->addMVThumb($title,  $x->cl_sortkey, $x->page_len, $x->page_is_redirect);
+				$this->show_mv_links=true;				
+				
+				//make sure we don't do duplicate stream links:
+				$mvTitle = new MV_Title($title);
+				if(!isset($this->already_named_resource[$mvTitle->getStreamName().'/'.$mvTitle->getTimeRequest()])){
+					$this->already_named_resource[$mvTitle->getStreamName().'/'.$mvTitle->getTimeRequest()]=true;	
+					$this->addMVThumb($title,  $x->cl_sortkey, $x->page_len, $x->page_is_redirect);				
+				}	 					 				
 			} else {
 				$this->addPage( $title, $x->cl_sortkey, $x->page_len, $x->page_is_redirect );
 			}

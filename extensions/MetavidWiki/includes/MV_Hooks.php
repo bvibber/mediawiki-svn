@@ -128,6 +128,17 @@
 		}*/	
 
 	}
+	/*
+	 * mvDoSpecialPage hanndles additional javascript for some special pages 	 
+	 */
+	 function mvDoSpecialPage($wgOut){
+	 	global $wgTitle;	
+	 	//if special semantic browse page: 
+ 		if($wgTitle->getNamespace()==NS_SPECIAL && $wgTitle->getText()=='Browse'){
+ 			mvfAddHTMLHeader('smw_ext');
+ 		}
+	 	return true;
+	 }
  	/*
  	 * mvDoMvPage handles the article rewriting 
  	 * by processing the given title request/namespace

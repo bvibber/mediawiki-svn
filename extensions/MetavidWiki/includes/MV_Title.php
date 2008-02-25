@@ -173,7 +173,11 @@
 		return $this->stream_name . '/'.$start_ntp . $end_ntp;
 	}
 	function getTimeDesc(){	
-		return wfMsg('mv_time_separator', $this->getStartTime(), $this->getEndTime());
+		if($this->getStartTime() && $this->getEndTime()){
+			return wfMsg('mv_time_separator', $this->getStartTime(), $this->getEndTime());
+		}else{
+			return '';
+		}
 	}
 	function getStreamImageURL($size=null, $req_time=null, $foce_server=''){		
 		global $mvImageArchive, $mvDefaultVideoPlaybackRes;
